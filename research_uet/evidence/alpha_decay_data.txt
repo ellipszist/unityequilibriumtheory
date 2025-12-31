@@ -1,0 +1,9 @@
+# Isotope, Q_Value_MeV, Half_Life_Sec, Source
+Po-212, 8.95, 3.0e-7, NNDC
+Po-214, 7.83, 1.64e-4, NNDC
+Po-210, 5.41, 1.196e7, NNDC
+Rn-222, 5.59, 3.30e5, NNDC
+Ra-226, 4.87, 5.02e10, NNDC
+U-238, 4.27, 1.41e17, NNDC
+Th-232, 4.08, 4.43e17, NNDC
+Sm-147, 2.23, 3.34e18, NNDC

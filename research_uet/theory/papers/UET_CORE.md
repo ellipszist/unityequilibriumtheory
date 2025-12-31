@@ -19,8 +19,8 @@
 
 ---
 
-## Abstract
-
+## 1. Introduction
+UET is a cross-domain phase-field theory.
 Unity Equilibrium Theory (UET) proposes a universal framework linking information, entropy, and physical dynamics across domains. The core equation:
 
 ```

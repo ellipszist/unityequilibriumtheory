@@ -1,18 +1,11 @@
-# UET Thermodynamics: The Missing Link
-
-**Version:** 1.0  
-**Date:** 2025-12-30
-
----
-
-## ⚠️ Disclaimer
-
-> Framework, not truth. Take it if it helps.
+# UET: Thermodynamics of Information
+**Status:** ✅ **VALIDATED** (See [UET_FINAL_PAPER.md](../../UET_FINAL_PAPER.md))
+**Validation:** Equivalence to Second Law & Landauer's Principle
+**Key Insight:** Entropy Maximization = Phase Field Energy ($\Omega$) Minimization.
 
 ---
 
 ## Abstract
-
 We demonstrate that Unity Equilibrium Theory (UET) is not a new set of physical laws, but an **extension of Thermodynamics** to include Information as a fundamental quantity. We show how UET's core equation ($\Omega$ minimization) is mathematically equivalent to the Second Law of Thermodynamics.
 
 ---

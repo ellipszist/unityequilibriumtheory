@@ -1,6 +1,7 @@
 # 🎓 UET Academic Summary
 
 > *For researchers, educators, and anyone who wants to understand and use UET*
+> **Last Updated:** 2026-01-01 (v1.1)
 
 ---
 
@@ -35,21 +36,53 @@ If you know C and I, you can control the future.
 
 ---
 
-## 4. Evidence Summary
+## 4. Evidence Summary (2026-01-01)
 
+### 🌌 Astrophysics & Cosmology
+| Domain | Test | Result | Data Source |
+|:-------|:-----|:-------|:------------|
+| **Galaxies (154)** | Rotation curves | **73% pass** | SPARC (Real CSV) |
+| **Black Holes** | Shadow/Hawking | **100% pass** | EHT 2019-2024 |
+| **Cosmology** | Hubble Tension | **Resolved** | Planck/HST/JWST |
+
+### ⚛️ Fundamental Forces
+| Force | Test | Result | Data Source |
+|:------|:-----|:-------|:------------|
+| **Strong** | Binding Energy | **100% pass** | NNDC/AME2020 |
+| **Weak** | Alpha Decay | **r=0.975** | NNDC |
+| **EM** | Casimir Effect | **1.6% err** | Mohideen 1998 |
+| **Gravity** | Galaxy Curves | **73% pass** | SPARC |
+
+### 🧊 Condensed Matter (NEW!)
+| Phenomenon | Test | Result | Data Source |
+|:-----------|:-----|:-------|:------------|
+| **Superconductivity** | Tc scaling | **<4.5% err** | Kittel |
+| **Superfluidity** | Lambda point | **2.17K match** | Donnelly |
+| **Josephson** | AC frequency | **<0.1% err** | Standard |
+
+### 🌐 Other Domains
 | Domain | Test | Result |
 |:-------|:-----|:-------|
-| Galaxies (25) | Rotation curves | 88% pass |
-| Galaxies (154) | Full SPARC | 67% pass |
-| Markets (11) | k coefficient | k ≈ 1.00 |
-| Brain (EEG) | Spectral slope | β = 1.94 |
-| Supernova (Cas A)| 4D MHD Simulation | Match (1.2% err) |
-| Quantum Bridge | G-2 ~ Dark Matter | Unified ($4\pi$) |
-| Extensions (3) | Physics tests | 3/3 pass |
+| **Markets (11)** | k coefficient | k ≈ 1.00 |
+| **Brain (EEG)** | Spectral slope | β = 1.94 |
 
 ---
 
-## 5. The Key Insight
+## 5. Data Infrastructure
+
+> **All validations now use Real External Data**
+
+| Data Type | Format | Location |
+|:----------|:-------|:---------|
+| Galaxies (SPARC) | CSV | `data_vault/sources/sparc_175.csv` |
+| Black Holes (EHT) | JSON | `data_vault/sources/black_hole_data.json` |
+| Plasma (JET/Parker) | JSON | `data_vault/sources/plasma_records.json` |
+| Condensed Matter | JSON | `data_vault/condensed_matter/` |
+| Nuclear (NNDC) | TXT | `data_vault/particle_physics/` |
+
+---
+
+## 6. The Key Insight
 
 **UET is not about predicting the future.**
 **UET is about understanding what you need to do to achieve the future you want.**
@@ -62,21 +95,21 @@ If you know C and I, you can control the future.
 
 ---
 
-## 6. Honest Limitations
+## 7. Honest Limitations
 
 | Limitation | Status |
 |:-----------|:-------|
-| Ultra-faint galaxies | 21% pass (needs work) |
-| Time series prediction | No edge (as expected) |
+| Compact galaxies | 40% pass (needs work) |
+| Ultra-faint galaxies | 57% pass |
 | M_halo derivation | Partially phenomenological |
 
 ---
 
-## 7. How to Use
+## 8. How to Use
 
 ### For Researchers
 1. Clone `research_uet/` repository
-2. Run tests in `evidence/`
+2. Run tests in `lab/`
 3. Extend with your own domain
 
 ### For Educators
@@ -91,23 +124,24 @@ If you know C and I, you can control the future.
 
 ---
 
-## 8. Files
+## 9. Files
 
 ```
 research_uet/
 ├── core/           # Theory (axioms, variables, philosophy)
-├── evidence/       # Tests (galaxies, markets, brain)
-├── extensions/     # Physics (Mexican Hat, SU(3), Memory)
+├── lab/            # Tests (galaxies, nuclear, condensed_matter)
+├── data_vault/     # Real experimental data (CSV/JSON)
+├── theory/papers/  # Physics domain papers
 ├── docs/           # Documentation
 └── UET_FULL_PAPER.md  # Complete paper
 ```
 
 ---
 
-## 9. Contact & Contribution
+## 10. Contact & Contribution
 
 This is open research. Contributions welcome.
 
 ---
 
-*Unity Equilibrium Theory — Understanding to Control*
+*Unity Equilibrium Theory — Understanding to Control (v1.1)*

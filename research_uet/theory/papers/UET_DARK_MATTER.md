@@ -22,7 +22,12 @@ This law predicts the observed Dark Matter dominance in low-density galaxies.
 
 ---
 
-## 1. The Core Problem
+## 1. The Core Concept
+Standard Dark Matter is a particle. UET Dark Matter is a **Stiffness Gradient**.
+
+---
+
+## 2. The Core Problem
 
 Standard cosmology requires "Dark Matter" to explain rotation curves.
 - **Problem:** Small galaxies (Dwarfs) are "Dark Matter dominated" (Ratio ~25-50x), while large Spirals are less so (Ratio ~8x).

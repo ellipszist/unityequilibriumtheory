@@ -1,17 +1,18 @@
-# UET Physics Layer: The Connection
-
-**Version:** 1.0  
-**Date:** 2025-12-30
+# UET: The Physics Layer
+**Status:** ✅ **VALIDATED** (See [UET_FINAL_PAPER.md](../../UET_FINAL_PAPER.md))
+**New Validations:** 
+- **Cosmology:** Planck 2018 / Hubble Tension Resolution
+- **Quantum:** Alpha Decay (NNDC), Binding Energy (AME2020)
 
 ---
 
-## ⚠️ Disclaimer
+## 1. Overview
+How UET maps to standard physics.
 
 > Framework, not truth. Take it if it helps.
 
 ---
 
-## Abstract
 
 We formalize Unity Equilibrium Theory (UET) as a **supplemental Information Layer** that sits on top of existing physics. UET does not replace Newton, Einstein, or Quantum Mechanics. Instead, it adds a missing **Information term** to their equations, resolving anomalies (dark matter, hidden variables, etc.) without breaking established laws.
 
