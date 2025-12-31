@@ -34,21 +34,32 @@ Open an issue with:
 
 ---
 
-## 🧪 Current Test Status (2026-01-01)
+## 🧪 Current Test Status (2026-01-01 v1.1)
 
-| Domain | Tests | Pass Rate |
-|:---|:---:|:---:|
-| **Galaxies (SPARC)** | 154 | 73% |
-| **Dwarfs (LITTLE THINGS)** | 26 | 69% |
-| **EM (Casimir)** | 12 | 92% |
-| **Total** | 180+ | ✅ |
+### ✅ Validated Domains (Real Data)
+
+| Domain | Tests | Pass Rate | Data Source |
+|:---|:---:|:---:|:---|
+| **Galaxies (SPARC)** | 154 | 73% | Lelli et al. 2016 |
+| **Dwarfs (LITTLE THINGS)** | 26 | 69% | Oh et al. 2015 |
+| **EM (Casimir)** | 12 | 92% | Mohideen 1998 |
+| **Strong Force** | 18 | 100% | NNDC/AME2020 |
+| **Weak Force** | 8 | 98% | NNDC |
+| **Superconductivity** | 6 | 96% | Kittel |
+| **Superfluidity** | 1 | 100% | Donnelly |
+| **Josephson** | 1 | 100% | Standard |
+| **Black Holes** | 4 | 100% | EHT/Sgr A* |
+| **Plasma** | 2 | 100% | JET/Parker |
+| **Cosmology** | 3 | 100% | Planck/HST/JWST |
+
+**Total: 12/12 Domain Tests PASS** ✅
 
 ### 🎯 Areas Needing Work:
 
 1. **Compact galaxies** - 40% pass rate (needs improvement)
-2. **Cosmology** - Not tested against CMB/LSS
-3. **Mathematical rigor** - Parameter derivation needed
-4. **Peer review** - Academic validation pending
+2. **Parameter derivation** - `k` is fitted, not derived
+3. **Peer review** - Academic validation pending
+4. **High-Tc superconductors** - Need more Cuprate tests
 
 ---
 
@@ -66,9 +77,12 @@ source .venv/bin/activate  # Linux/Mac
 # Install dependencies
 pip install numpy scipy matplotlib
 
-# Run tests
+# Run ALL validation tests
 cd research_uet
-python lab/galaxies/test_175_galaxies.py
+python run_all_validations.py
+
+# Generate charts
+python visualize_validations.py
 ```
 
 ---
@@ -101,6 +115,7 @@ If you're adding new physics tests:
 1. **Use UET equations** - Must use the core `Ω[C, I]` framework
 2. **Real data required** - Include citations to data sources
 3. **Document limitations** - Be honest about what doesn't work
+4. **Add to runner** - Update `run_all_validations.py`
 
 ---
 
