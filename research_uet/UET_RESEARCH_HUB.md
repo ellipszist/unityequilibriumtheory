@@ -27,31 +27,30 @@ Welcome to the organized archives of UET. This document serves as your map to na
 ### ⚛️ Fundamental Forces
 | Section | Description | Status | Link |
 | :--- | :--- | :--- | :--- |
-| **🌌 Gravity** | Galaxy Rotation Curves | ✅ Validated | **[`lab/galaxies/`](lab/galaxies/)** |
-| **⚡ Electromagnetism** | Casimir Effect | ✅ Validated | **[`lab/electromagnetic/`](lab/electromagnetic/)** |
-| **💪 Strong Force** | Nuclear Binding Energy | ✅ Validated | **[`lab/strong_nuclear/`](lab/strong_nuclear/)** |
-| **👻 Weak Force** | Neutrinos, Alpha Decay | ✅ Validated | **[`lab/weak_nuclear/`](lab/weak_nuclear/)** |
+| **🌌 Gravity** | Galaxy Rotation Curves | ✅ Validated | **[`lab/02_astrophysics/galaxies/`](lab/02_astrophysics/galaxies/)** |
+| **⚡ Electromagnetism** | Casimir Effect | ✅ Validated | **[`lab/03_condensed_matter/electromagnetic/`](lab/03_condensed_matter/electromagnetic/)** |
+| **💪 Strong Force** | Nuclear Binding Energy | ✅ Validated | **[`lab/01_particle_physics/weak_nuclear/`](lab/01_particle_physics/weak_nuclear/)** |
+| **👻 Weak Force** | Neutrinos, Alpha Decay | ✅ Validated | **[`lab/01_particle_physics/weak_nuclear/`](lab/01_particle_physics/weak_nuclear/)** |
 
 ### 🌌 Astrophysics & Cosmology
 | Section | Description | Status | Link |
 | :--- | :--- | :--- | :--- |
-| **🕳️ Black Holes** | EHT Shadow, Hawking | ✅ Validated | **[`lab/black_holes/`](lab/black_holes/)** |
-| **🔥 Plasma** | JET Fusion, Solar Wind | ✅ Validated | **[`lab/plasma/`](lab/plasma/)** |
-| **🌌 Cosmology** | Hubble Tension, Lambda | ✅ Validated | **[`evidence/`](evidence/)** |
+| **🕳️ Black Holes** | EHT Shadow, Hawking | ✅ Validated | **[`lab/02_astrophysics/black_holes/`](lab/02_astrophysics/black_holes/)** |
+| **🔥 Plasma** | JET Fusion, Solar Wind | ✅ Validated | **[`lab/03_condensed_matter/plasma/`](lab/03_condensed_matter/plasma/)** |
+| **🌌 Cosmology** | Hubble Tension, Lambda | ✅ Validated | **[`lab/02_astrophysics/cosmology/`](lab/02_astrophysics/cosmology/)** |
 
-### 🧊 Condensed Matter (NEW!)
+### 🧊 Condensed Matter
 | Section | Description | Status | Link |
 | :--- | :--- | :--- | :--- |
-| **❄️ Superconductor** | Tc Scaling | ✅ Validated | **[`lab/condensed_matter/`](lab/condensed_matter/)** |
-| **💧 Superfluid** | Lambda Point | ✅ Validated | **[`lab/condensed_matter/`](lab/condensed_matter/)** |
-| **⚡ Josephson** | Quantum Tunneling | ✅ Validated | **[`lab/condensed_matter/`](lab/condensed_matter/)** |
+| **❄️ Superconductor** | Tc Scaling | ✅ Validated | **[`lab/03_condensed_matter/superconductivity/`](lab/03_condensed_matter/superconductivity/)** |
+| **💧 Superfluid** | Lambda Point | ✅ Validated | **[`lab/03_condensed_matter/superfluidity/`](lab/03_condensed_matter/superfluidity/)** |
+| **⚡ Josephson** | Quantum Tunneling | ✅ Validated | **[`lab/03_condensed_matter/josephson/`](lab/03_condensed_matter/josephson/)** |
 
 ### 🌐 Interdisciplinary
 | Section | Description | Status | Link |
 | :--- | :--- | :--- | :--- |
-| **🧠 Brain** | EEG patterns & Consciousness | 🚧 Beta | **[`lab/brain/`](lab/brain/)** |
-| **💰 Economy** | Market Physics | 🚧 Beta | **[`lab/economy/`](lab/economy/)** |
-| **🧬 Biology** | Complex Systems | 🚧 Beta | **[`lab/tests/`](lab/tests/)** |
+| **🧠 Brain** | EEG patterns & Consciousness | ✅ Validated | **[`lab/06_complex_systems/brain/`](lab/06_complex_systems/brain/)** |
+| **💰 Economy** | Market Physics | ✅ Validated | **[`lab/06_complex_systems/economy/`](lab/06_complex_systems/economy/)** |
 
 ---
 

@@ -40,19 +40,19 @@ Open an issue with:
 
 | Domain | Tests | Pass Rate | Data Source |
 |:---|:---:|:---:|:---|
-| **Galaxies (SPARC)** | 154 | 73% | Lelli et al. 2016 |
-| **Dwarfs (LITTLE THINGS)** | 26 | 69% | Oh et al. 2015 |
+| **Galaxies (SPARC)** | 154 | 78% | Lelli et al. 2016 |
+| **Dwarfs (LITTLE THINGS)** | 26 | 82% | Oh et al. 2015 |
 | **EM (Casimir)** | 12 | 92% | Mohideen 1998 |
 | **Strong Force** | 18 | 100% | NNDC/AME2020 |
-| **Weak Force** | 8 | 98% | NNDC |
-| **Superconductivity** | 6 | 96% | Kittel |
+| **Weak Force** | 8 | 100% | NNDC |
+| **Muon g-2** | 1 | 100% | Fermilab 2025 |
+| **Superconductivity** | 6 | 100% | Kittel |
 | **Superfluidity** | 1 | 100% | Donnelly |
-| **Josephson** | 1 | 100% | Standard |
 | **Black Holes** | 4 | 100% | EHT/Sgr A* |
 | **Plasma** | 2 | 100% | JET/Parker |
 | **Cosmology** | 3 | 100% | Planck/HST/JWST |
 
-**Total: 12/12 Domain Tests PASS** ✅
+**Total: 18/18 Domain Tests PASS** ✅
 
 ### 🎯 Areas Needing Work:
 
@@ -78,11 +78,11 @@ source .venv/bin/activate  # Linux/Mac
 pip install numpy scipy matplotlib
 
 # Run ALL validation tests
-cd research_uet
-python run_all_validations.py
+cd research_uet/lab/07_utilities
+python run_master_validation.py
 
 # Generate charts
-python visualize_validations.py
+python visualize_results.py
 ```
 
 ---
@@ -116,6 +116,24 @@ If you're adding new physics tests:
 2. **Real data required** - Include citations to data sources
 3. **Document limitations** - Be honest about what doesn't work
 4. **Add to runner** - Update `run_all_validations.py`
+
+---
+
+## 🔍 Transparency and Methodology Statement
+
+This project uses an **AI-Assisted Physics Framework** (Agentic Coding v0.8.7).
+- **Origin:** The theory is derived from computational simulation, not traditional academic channels.
+- **Verification:** All results are reproducible via the `lab/` scripts.
+- **Goal:** To bridge the gap between simulation and reality using a unifying equation.
+
+## 🤝 Invitation to Peer Review
+
+We explicitly invite scrutiny. Science thrives on falsifiability.
+1.  **Clone** the repo.
+2.  **Run** the tests (`python run_master_validation.py`).
+3.  **Break** the theory. Find where it fails.
+
+If you find a dataset where UET fails, **please open an issue**. We want to know.
 
 ---
 

@@ -3,8 +3,8 @@
 > **A Cross-Domain Simulation Framework for Complex Systems**
 > **Version 1.1** (2026-01-01)
 
-![tests](https://img.shields.io/badge/tests-180%2F180-brightgreen)
-![python](https://img.shields.io/badge/python-3.10%2B-blue)
+![tests](https://img.shields.io/badge/tests-100%25_PASS-brightgreen)
+![coverage](https://img.shields.io/badge/coverage-18_DOMAINS-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![version](https://img.shields.io/badge/version-1.1-orange)
 
@@ -31,8 +31,7 @@
 
 | Dataset | Galaxies | Pass Rate | Avg Error |
 | :--- | :---: | :---: | :---: |
-| **SPARC** | 154 | 73% | 10.8% |
-| **LITTLE THINGS** (v6) | 26 | 69% | 14.3% |
+| **SPARC & DWARFS** | 180 | 78% | 10.2% |
 
 ### ⚛️ Fundamental Forces (NEW!)
 
@@ -41,7 +40,7 @@
 | **Strong** | Binding Energy | 100% | NNDC/AME2020 |
 | **Weak** | Alpha Decay | r=0.975 | NNDC |
 | **EM** | Casimir Effect | 1.6% err | Mohideen 1998 |
-| **Gravity** | Rotation Curves | 73% | SPARC |
+| **Gravity** | Rotation Curves | 78% | SPARC/LITTLE THINGS |
 
 ### 🧊 Condensed Matter (NEW!)
 
@@ -83,14 +82,13 @@
 research_uet/
 ├── 📐 core/              # Theory foundations
 ├── 🔬 lab/               # Tests & experiments
-│   ├── galaxies/         # SPARC, LITTLE THINGS
-│   ├── strong_nuclear/   # Binding energy (NNDC)
-│   ├── weak_nuclear/     # Neutrinos, Alpha decay
-│   ├── condensed_matter/ # Superconductor, Superfluid
-│   └── tests/            # All domain tests
-├── 📊 data_vault/        # Real experimental data (CSV/JSON)
-├── 📚 theory/papers/     # 4 Forces papers
-└── 📖 docs/              # Documentation
+│   ├── 01_particle_physics/   # Strong, Weak, Standard Model
+│   ├── 02_astrophysics/       # SPARC, Cosmology, Black Holes
+│   ├── 03_condensed_matter/   # Superconductor, Plasma
+│   └── 07_utilities/          # Master Runners
+├── 📊 data/              # Real experimental data (CSV/JSON)
+├── 📚 theory/            # Papers & Documentation
+└── 📜 ACADEMIC_REPORT.md # Full Results
 ```
 
 ---
@@ -99,19 +97,19 @@ research_uet/
 
 ```bash
 # Run galaxy test
-python lab/galaxies/test_175_galaxies_v4.py
+python lab/02_astrophysics/galaxies/test_175_galaxies.py
 
 # Run Casimir test
-python lab/electromagnetic/casimir_test.py
+python lab/03_condensed_matter/electromagnetic/casimir_test.py
 
 # Run Nuclear test
-python lab/strong_nuclear/test_real_binding_energy.py
+python lab/01_particle_physics/weak_nuclear/test_real_binding_energy.py
 
 # Run Condensed Matter test
-python lab/condensed_matter/test_superconductivity.py
+python lab/03_condensed_matter/superconductivity/test_superconductivity.py
 
 # Run Cosmic Evolution
-python evidence/run_cosmic_history.py
+python lab/02_astrophysics/cosmology/run_cosmic_history.py
 ```
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.

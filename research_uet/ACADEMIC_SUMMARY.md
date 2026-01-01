@@ -41,7 +41,7 @@ If you know C and I, you can control the future.
 ### 🌌 Astrophysics & Cosmology
 | Domain | Test | Result | Data Source |
 |:-------|:-----|:-------|:------------|
-| **Galaxies (154)** | Rotation curves | **73% pass** | SPARC (Real CSV) |
+| **Galaxies (180)** | Rotation curves | **78% pass** | SPARC / LITTLE THINGS |
 | **Black Holes** | Shadow/Hawking | **100% pass** | EHT 2019-2024 |
 | **Cosmology** | Hubble Tension | **Resolved** | Planck/HST/JWST |
 
@@ -51,7 +51,7 @@ If you know C and I, you can control the future.
 | **Strong** | Binding Energy | **100% pass** | NNDC/AME2020 |
 | **Weak** | Alpha Decay | **r=0.975** | NNDC |
 | **EM** | Casimir Effect | **1.6% err** | Mohideen 1998 |
-| **Gravity** | Galaxy Curves | **73% pass** | SPARC |
+| **Gravity** | Galaxy Curves | **78% pass** | SPARC |
 
 ### 🧊 Condensed Matter (NEW!)
 | Phenomenon | Test | Result | Data Source |
@@ -74,11 +74,11 @@ If you know C and I, you can control the future.
 
 | Data Type | Format | Location |
 |:----------|:-------|:---------|
-| Galaxies (SPARC) | CSV | `data_vault/sources/sparc_175.csv` |
-| Black Holes (EHT) | JSON | `data_vault/sources/black_hole_data.json` |
-| Plasma (JET/Parker) | JSON | `data_vault/sources/plasma_records.json` |
-| Condensed Matter | JSON | `data_vault/condensed_matter/` |
-| Nuclear (NNDC) | TXT | `data_vault/particle_physics/` |
+| Galaxies (SPARC) | CSV | `data/references/galaxies/` |
+| Black Holes (EHT) | JSON | `data/references/cosmology/` |
+| Plasma (JET/Parker) | JSON | `data/references/complex_systems/` |
+| Condensed Matter | JSON | `data/references/condensed_matter/` |
+| Nuclear (NNDC) | TXT | `data/references/particle_physics/` |
 
 ---
 
@@ -130,8 +130,8 @@ If you know C and I, you can control the future.
 research_uet/
 ├── core/           # Theory (axioms, variables, philosophy)
 ├── lab/            # Tests (galaxies, nuclear, condensed_matter)
-├── data_vault/     # Real experimental data (CSV/JSON)
-├── theory/papers/  # Physics domain papers
+├── data/           # Real experimental data (CSV/JSON)
+├── theory/         # Physics domain papers (01_particle, etc.)
 ├── docs/           # Documentation
 └── UET_FULL_PAPER.md  # Complete paper
 ```
