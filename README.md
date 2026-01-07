@@ -151,8 +151,7 @@ git clone https://github.com/unityequilibrium/Equation-UET-v0.8.7.git
 cd Equation-UET-v0.8.7
 
 # Run ALL validation tests
-cd research_uet/lab/07_utilities
-python run_master_validation.py
+python research_uet/topics/run_all_tests.py
 ```
 
 ---
