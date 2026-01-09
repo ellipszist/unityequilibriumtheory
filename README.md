@@ -243,4 +243,5 @@ GRADE: EXCELLENT (100+ tests, 90%+ pass)
 
 *Version 0.8.7 | MIT License | Last Updated: 2026-01-09*
 
-*[GitHub](https://github.com/unityequilibrium/Equation-UET-v0.8.7)*
+*[GitHub](https://github.com/unityequilibrium/Equation-UET-v0.8.7) | [📊 View All Experiments](https://github.com/unityequilibrium/Equation-UET-v0.8.7/tree/main/research_uet/topics)*
+
