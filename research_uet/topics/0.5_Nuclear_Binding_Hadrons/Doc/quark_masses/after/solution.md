@@ -16,4 +16,4 @@ UET treats particle generations as topological resonances of the vacuum.
 *Fig 1: Quark Masses vs Generation. The UET fit (Red Line) demonstrates a consistent log-linear scaling, identifying the generations as discrete information octaves.*
 
 ## 4. Conclusion
-Quark masses are not random constants but eigenstates of a unified Information Field equation. The top quark is "heavy" because it carries the maximum allowable information bit-depth for a fermion.
+Quark masses are not random constants but eigenstates of an integrated Information Field equation. The top quark is "heavy" because it carries the maximum allowable information bit-depth for a fermion.

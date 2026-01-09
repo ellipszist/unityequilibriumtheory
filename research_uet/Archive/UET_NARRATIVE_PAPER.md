@@ -74,4 +74,4 @@ Thus, reading $A$ constrains predictions about $B$ because the joint record is c
 
 ## 6. Conclusion (Engineering View)
 
-UET emphasizes that physical phenomena are manifestations of BeComing under constraints: finite causal propagation ($c$) and thermodynamic cost of updates/records ($C$). In this framing, relativistic timing, observational delay, and measurement outcomes are unified as operational consequences of limited update/interaction capacity in a finite system.
+UET emphasizes that physical phenomena are manifestations of BeComing under constraints: finite causal propagation ($c$) and thermodynamic cost of updates/records ($C$). In this framing, relativistic timing, observational delay, and measurement outcomes are harmonized as operational consequences of limited update/interaction capacity in a finite system.

@@ -1,5 +1,5 @@
 # UET Research Hub v1.5 (Exhaustive Verification)
-**System Status**: ✅ **18 Topics / 60+ Tests VERIFIED**
+**System Status**: ✅ **20 Topics / 64 Tests VERIFIED**
 **Core Equation**: $\Omega = c \cdot I$
 **Last Updated**: 2026-01-07
 
@@ -8,7 +8,7 @@
 ## 🌌 Cosmic Scale
 | Topic | Sub-Test / Experiment | Data Source | Method / Params | Result / Error | Link |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **0.1 Galaxy** | **Spiral Rotation** | **SPARC** (175 gals) | Information Recoil Field | **78% Pass** (Error < 10%) | [View](topics/0.1_Galaxy_Rotation_Problem/Doc/galaxy_rotation_175/Final_Paper_Spirals.md) |
+| **0.1 Galaxy** | **Spiral Rotation** | **SPARC** (175 gals) | Information Recoil Field | **81% Pass** (Error ~10%) | [View](topics/0.1_Galaxy_Rotation_Problem/Doc/galaxy_rotation_175/Final_Paper_Spirals.md) |
 | | **Dwarf Galaxies** | **Selected Dwarfs** | Low Density Recoil ($M/L$) | **Matches Dominance** curve | [View](topics/0.1_Galaxy_Rotation_Problem/Doc/dwarf_galaxies/Final_Paper_Dwarfs.md) |
 | | **Compact Cores** | **High-Brightness** | Saturation Limit ($V \to c$) | **Saturation Observed** | [View](topics/0.1_Galaxy_Rotation_Problem/Doc/compact_galaxies/Final_Paper_Compacts.md) |
 | | **Clusters** | **Virial Mass** | Recoil Pooling (Meta-Halo) | **Matches Missing Mass** | [View](topics/0.1_Galaxy_Rotation_Problem/Doc/galaxy_clusters/Final_Paper_Clusters.md) |

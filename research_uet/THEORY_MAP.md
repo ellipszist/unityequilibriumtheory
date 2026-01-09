@@ -41,7 +41,7 @@ How "Normal World" concepts translate to "UET Information" concepts.
 
 ---
 
-## 3. The Unified System Flowchart
+## 3. The Unity System Flowchart
 How the Universe processes a single event (e.g., an apple falling).
 
 ```mermaid

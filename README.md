@@ -1,4 +1,4 @@
-# Unified Equilibrium Theory (UET): The Thermodynamic Cost of Reality v0.8.7
+# Unity Equilibrium Theory (UET): The Thermodynamic Cost of Reality v0.8.7
 
 ![tests](https://img.shields.io/badge/tests-60_PASS-brightgreen)
 ![coverage](https://img.shields.io/badge/coverage-18_DOMAINS-blue)
@@ -24,7 +24,7 @@ Physics is not abstract philosophy. It is the **System Administration of the Uni
 
 The entire universe is modeled as a maximization of equilibrium ($\Omega$) where **Existence has a Price**.
 
-$$\Omega = c \cdot I$$
+$$\Omega=C\cdot I$$   
 
 *   **c (Speed of Light)**: The **Processing Limit**. It acts as the "Exchange Rate" between Space and Time. It emerged naturally from our calculations as the constraint on causality.
 *   **I (Information Check)**: The **Latency** or "Lag" of existence. In physics, we call this Mass.
@@ -39,8 +39,8 @@ For computational simulation, this logic translates into the Phase Field equatio
 | Term | Meaning | UET Status |
 | :--- | :--- | :---: |
 | **Universal** | Fixed law, applies everywhere | ❌ NOT this |
+| **Unified** | Fixed law, applies everywhere | ❌ NOT this |
 | **Unity** | Connects domains, context-aware | ✅ This |
-
 ---
 
  1. The Tree of Physics

@@ -49,7 +49,7 @@ except ImportError:
 
 
 # 2. Add DATA to path
-# Old Path: lab/05_unified_theory/effect_of_motion/data
+# Old Path: lab/05_unity_theory/effect_of_motion/data
 # New Path: topics/0.10_Fluid_Dynamics_Chaos/Data/brownian
 DATA_DIR = TOPIC_DIR / "Data" / "brownian"
 if DATA_DIR.exists():
@@ -69,7 +69,9 @@ try:
 except ImportError as e:
     print(f"❌ Import Failed: {e}")
     print(f"   Current sys.path: {sys.path}")
-    print(f"   Data Dir Files: {list(DATA_DIR.glob('*')) if DATA_DIR.exists() else 'N/A'}")
+    print(
+        f"   Data Dir Files: {list(DATA_DIR.glob('*')) if DATA_DIR.exists() else 'N/A'}"
+    )
     sys.exit(1)
 
 
@@ -130,7 +132,9 @@ def run_test():
     uncertainty = msd_data["uncertainty_m2"]
 
     print(f"📊 Data: {len(times)} time points")
-    print(f"   Particle: r = {params['r']*1e6:.2f} μm in water at {params['T']-273.15:.1f}°C")
+    print(
+        f"   Particle: r = {params['r']*1e6:.2f} μm in water at {params['T']-273.15:.1f}°C"
+    )
     print(f"   Diffusion coefficient: D = {D:.2e} m²/s")
     print()
 
@@ -174,7 +178,9 @@ def run_test():
     # Total entropy at different times
     print("   Total entropy produced:")
     for t in [0.1, 1.0, 10.0]:
-        _, S = uet_entropy_production(t, D, params["T"], params["kB"], params["eta"], params["r"])
+        _, S = uet_entropy_production(
+            t, D, params["T"], params["kB"], params["eta"], params["r"]
+        )
         print(f"      t = {t:.1f}s: ΔS = {S:.2e} J/K")
 
     print()

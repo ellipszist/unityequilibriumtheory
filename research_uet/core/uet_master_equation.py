@@ -163,7 +163,9 @@ def potential_derivative(C: np.ndarray, params: UETParameters) -> np.ndarray:
 # =============================================================================
 
 
-def information_coupling(C: np.ndarray, I: np.ndarray, dx: float, params: UETParameters) -> float:
+def information_coupling(
+    C: np.ndarray, I: np.ndarray, dx: float, params: UETParameters
+) -> float:
     """
     📝 AXIOM 2: Information Emerges from Irreversibility
 
@@ -335,7 +337,9 @@ def strategic_boost(density: float, scale: float = 1.0) -> float:
     return np.clip(beta_U, 1.5, 15.0)
 
 
-def game_theory_potential(C: np.ndarray, density: float, scale: float = 1.0) -> np.ndarray:
+def game_theory_potential(
+    C: np.ndarray, density: float, scale: float = 1.0
+) -> np.ndarray:
     """
     Game Theory correction to potential for high-conflict systems.
 
@@ -386,7 +390,9 @@ def update_equilibrium(C_eq_current: float, local_conditions: dict) -> float:
 # =============================================================================
 
 
-def layer_coherence_term(C_layers: List[np.ndarray], dx: float, params: UETParameters) -> float:
+def layer_coherence_term(
+    C_layers: List[np.ndarray], dx: float, params: UETParameters
+) -> float:
     """
     🔗 AXIOM 10: Multi-layer Coherence Requirement
 
@@ -416,13 +422,13 @@ def layer_coherence_term(C_layers: List[np.ndarray], dx: float, params: UETParam
 
 
 # =============================================================================
-# UNIFIED DENSITY LAW (GALAXY ROTATION)
+# UNITY DENSITY LAW (GALAXY ROTATION)
 # =============================================================================
 
 
 def calculate_halo_ratio(rho: float, sigma_bar: float, r_kpc: float) -> float:
     """
-    🌌 Unified Density Law: M_halo / M_disk Ratio
+    🌌 Unity Density Law: M_halo / M_disk Ratio
 
     Derivation from UET_GALAXY_ROTATION_PAPER.md:
     Ratio = Ratio_0 * (rho / rho_0)^-gamma
@@ -564,9 +570,9 @@ def dynamics_step_complete(
         laplacian[-1] = laplacian[-2]
     else:
         laplacian = np.zeros_like(C)
-        laplacian[1:-1, 1:-1] = (C[2:, 1:-1] - 2 * C[1:-1, 1:-1] + C[:-2, 1:-1]) / dx**2 + (
-            C[1:-1, 2:] - 2 * C[1:-1, 1:-1] + C[1:-1, :-2]
-        ) / dx**2
+        laplacian[1:-1, 1:-1] = (
+            C[2:, 1:-1] - 2 * C[1:-1, 1:-1] + C[:-2, 1:-1]
+        ) / dx**2 + (C[1:-1, 2:] - 2 * C[1:-1, 1:-1] + C[1:-1, :-2]) / dx**2
 
     diffusion = params.kappa * laplacian
 

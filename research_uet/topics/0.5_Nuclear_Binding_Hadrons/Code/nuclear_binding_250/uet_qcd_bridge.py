@@ -20,13 +20,18 @@ import sys
 # Import from UET V3.0 Master Equation
 import sys
 from pathlib import Path
+
 _root = Path(__file__).parent
 while _root.name != "research_uet" and _root.parent != _root:
     _root = _root.parent
 sys.path.insert(0, str(_root.parent))
 try:
     from research_uet.core.uet_master_equation import (
-        UETParameters, SIGMA_CRIT, strategic_boost, potential_V, KAPPA_BEKENSTEIN
+        UETParameters,
+        SIGMA_CRIT,
+        strategic_boost,
+        potential_V,
+        KAPPA_BEKENSTEIN,
     )
 except ImportError:
     pass  # Use local definitions if not available
@@ -112,7 +117,7 @@ def alpha_s_uet_v2(Q, beta_uet=0.03, Q0=1.0):
 
 def alpha_s_uet_v3(Q, Lambda_UET=0.25):
     """
-    UET-enhanced QCD v3 - Unified formula.
+    UET-enhanced QCD v3 - Integrated formula.
 
     Uses modified Λ that absorbs UET effects:
     Λ_UET = Λ_QCD × (1 + β_correction)

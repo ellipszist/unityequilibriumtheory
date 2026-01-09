@@ -21,7 +21,7 @@
 | galaxy_clusters | Virial Mass | Coma, Bullet Cluster | Multiple |
 
 ### Data Files Needed:
-- [ ] `sparc_175_rotcurves.csv` - All 175 SPARC galaxies
+- [x] `sparc_175.csv` - All 175 SPARC galaxies (Verified)
 - [ ] `little_things_26.csv` - 26 dwarf irregulars
 - [ ] `cluster_mass.json` - Coma, Bullet, Abell
 
@@ -199,7 +199,7 @@
 | jacobson | Thermo → GR | Jacobson 1995 | `1995PhRvL..75.1260J` |
 
 ### Data Files Needed:
-- [ ] `berut_2012.json` - Landauer limit verified
+- [x] `berut_2012.json` - Landauer limit verified (Verified)
 - [ ] `bekenstein_bound.json` - S ≤ 2πRE/ℏc
 
 ---

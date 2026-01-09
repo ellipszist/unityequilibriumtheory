@@ -32,7 +32,7 @@ SUMMARY
   Passed: 4/4
 
   Note: Complex systems tests are qualitative.
-  UET provides a unified framework but detailed
+  UET provides an integrated framework but detailed
   predictions require domain-specific modeling.
 ======================================================================
 

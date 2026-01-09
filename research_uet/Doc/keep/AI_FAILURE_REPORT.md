@@ -109,7 +109,7 @@ AI ไม่เห็น:
 
 ---
 
-### 05_unified_theory (19 files)
+### 05_unity_theory (19 files)
 
 | Subfolder | Files | Thermodynamic Connection | Status |
 |-----------|-------|-------------------------|--------|
@@ -186,7 +186,7 @@ Step 4: THEN do calculations with understanding
 | 02_astrophysics | 26 | 24 | 2 | 0 |
 | 03_condensed_matter | 9 | 6 | 3 | 0 |
 | 04_quantum | 2 | 2 | 0 | 0 |
-| 05_unified_theory | 19 | 4 | 15 | 0 |
+| 05_unity_theory | 19 | 4 | 15 | 0 |
 | 06_complex_systems | 10 | 10 | 0 | 0 |
 | 07_utilities | 51 | 51 | 0 | 0 |
 | 08_thermodynamic_bridge | 2 | 0 | 0 | **2** |

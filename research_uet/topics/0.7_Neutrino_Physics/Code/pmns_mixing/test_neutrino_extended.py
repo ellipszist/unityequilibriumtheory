@@ -64,7 +64,7 @@ def uet_neutrino_mass_mechanism():
     # m_nu = m_e * G_F * m_e^2 ?? No, too small.
 
     # UET See-Saw analog: mixing with high scale M_I (Information scale)
-    # Calibrated to standard GUT scale ~ 2e15 GeV (Unified Field Scale)
+    # Calibrated to standard GUT scale ~ 2e15 GeV (Unity Equilibrium Scale)
     v = 246e9  # eV (Higgs VEV)
     M_I = 2e15 * 1e9  # eV (Information/GUT scale)
 

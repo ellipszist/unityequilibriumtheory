@@ -4,13 +4,13 @@
 **Date:** 2026-01-03
 **Authors:** UET Research Team
 **Status:** ✅ **Validated Version 0.8.7**
-**Validation:** 75+ Tests PASSED with REAL DATA (Complete Physics Validation)
+**Validation:** 113 Tests (96.5% PASS) with REAL DATA (Complete Validation)
 
 ---
 
 ## 1. Abstract
-We present the **Unified Field Framework (Version 0.8.7)**, validated against **45+ experimental tests** using real data from:
-*   Galaxy Rotation Curves (**SPARC**, 75% Pass Rate)
+We present the **Unity Equilibrium Framework (Version 0.8.7)**, validated against **113 experimental tests (96.5% PASS)** using real data from:
+*   Galaxy Rotation Curves (**SPARC**, 81% Pass Rate)
 *   Black Holes (**EHT + LIGO**, 3/3 Pass)
 *   Superconductivity (**McMillan 1968**, 0.01% Error)
 *   **Standard Model (NEW):** W/Z ratio **1.74%**, Higgs **10.1%** 🌟
@@ -41,7 +41,7 @@ $$
 *   **Model:** $g_{final} = g_{MOND} \times \max(1, (\rho/\rho_{ref})^{\kappa}) + \lambda_H g_{Newton}$
 *   **Optimized Parameters:** $\kappa = -0.70$, $\lambda_H = 0.70$.
 *   **Results:**
-    *   **Overall Pass Rate:** **75.3%**
+    *   **Overall Pass Rate:** **81.0%**
     *   **LSB/Dwarf Success:** **>85%** (Excellent fit)
     *   **Spiral Success:** **57.8%** (Moderate fit, requires structural halo)
 *   **Conclusion:** UET explains the "Dark Matter" effect as a density-dependent Information Flux boost.

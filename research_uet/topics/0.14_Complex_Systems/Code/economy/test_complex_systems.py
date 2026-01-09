@@ -142,7 +142,7 @@ def run_test():
     print(f"  Passed: {passed}/{total}")
     print("")
     print("  Note: Complex systems tests are qualitative.")
-    print("  UET provides a unified framework but detailed")
+    print("  UET provides an integrated framework but detailed")
     print("  predictions require domain-specific modeling.")
 
     print("=" * 70)

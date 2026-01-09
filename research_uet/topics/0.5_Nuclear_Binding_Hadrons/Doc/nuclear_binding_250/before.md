@@ -9,7 +9,7 @@ Nuclear binding energy prediction:
 ## ข้อจำกัดของทฤษฎีเดิม
 - SEMF has 5-10 free parameters
 - Ab-initio methods too expensive
-- No unified picture
+- No coherent picture
 
 ## Data ที่ต้องอธิบาย
 - AME2020 atomic mass evaluation

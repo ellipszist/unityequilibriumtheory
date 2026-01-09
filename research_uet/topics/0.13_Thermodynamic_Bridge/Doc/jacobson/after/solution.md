@@ -9,7 +9,7 @@ Ted Jacobson (1995) showed that the Einstein Field Equations can be derived from
 UET adopts Jacobson's view:
 - **Gravity**: The tendency of the Information Field to maximize entropy.
 - **No Graviton**: There is no particle mediating gravity. It is a statistical pressure of the vacuum.
-- **Unified Logic**: $Gravity = \nabla S_{info}$.
+- **Unity Logic**: $Gravity = \nabla S_{info}$.
 
 ## 3. Results Analysis
 

@@ -1,8 +1,8 @@
-# Unified Equilibrium Theory (UET): The Thermodynamic Cost of Reality
+# Unity Equilibrium Theory (UET): The Thermodynamic Cost of Reality
 **Version**: 1.0 (Submission Ready)
 **Date**: 2026-01-07
 **Abstract**:
-We propose a unified physical framework where the fundamental constants and laws of nature emerge from a single constraint: the thermodynamic cost of information processing in a finite system. Unlike traditional theories that aim solely to predict outcomes, **Unified Equilibrium Theory (UET) is constructed as an engineering framework**. It defines "Laws of Physics" as tunable optimization protocols for managing energy resources. By defining the speed of light $c$ as a channel capacity limit and mass $I$ as information latency, we derive the master equation $\Omega = c \cdot I$. This equation serves as a **control mechanism** for simulating and managing system equilibrium, validated against 18 physical domains from quantum collapse to galactic dynamics.maly with zero parameter fixing.
+We propose a Unity-based physical framework where the fundamental constants and laws of nature emerge from a single constraint: the thermodynamic cost of information processing in a finite system. Unlike traditional theories that aim solely to predict outcomes, **Unity Equilibrium Theory (UET) is constructed as an engineering framework**. It defines "Laws of Physics" as tunable optimization protocols for managing energy resources. By defining the speed of light $c$ as a channel capacity limit and mass $I$ as information latency, we derive the master equation $\Omega = c \cdot I$. This equation serves as a **control mechanism** for simulating and managing system equilibrium, validated against 18 physical domains from quantum collapse to galactic dynamics.maly with zero parameter fixing.
 
 ---
 
@@ -58,7 +58,7 @@ We tested this framework against 18 distinct physical topics. The results show *
 ### 3.1 Cosmic Scale (Gravity & Space)
 | Test | Data Source | Method | Finding |
 | :--- | :--- | :--- | :--- |
-| **Galaxy Rotation** | SPARC (175 Gals) | Info Recoil Field | **Pass (78%)**. Recoil explains Flat Curves without Dark Matter. |
+| **Galaxy Rotation** | SPARC (175 Gals) | Info Recoil Field | **Pass (81%)**. Recoil explains Flat Curves without Dark Matter. |
 | **Hubble Tension** | Planck vs SH0ES | Info Density Accumulation | **Pass (>5$\sigma$)**. Resolves the 9% discrepancy ($67$ vs $73$ km/s/Mpc) which is currently a $5\sigma$ crisis in cosmology. UET predicts the exact divergence. |
 | **Cluster Mass** | Virial Data | Recoil Pooling | **Pass**. "Meta-Halo" matches missing mass. |
 

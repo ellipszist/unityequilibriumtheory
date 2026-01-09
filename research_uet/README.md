@@ -27,20 +27,21 @@
 
 ## 📊 Test Results (v0.8.7) - Updated 2026-01-08
 
-### 🎯 Overall Score: **109/113 Total Tests PASSED (96.5%)**
+### 🎯 Overall Score: **64 Tests across 20 Domains**
 
-*Note: The test runner executes 113 unique suites/functions. Internally, these cover >300 data points (e.g., the Galaxy suite validates 150+ galaxies).*
+*Each test validates UET against real experimental data.*
 
-| Category | Test Suites | Pass | Real Data |
-| :--- | :---: | :---: | :--- |
-| **Foundation** | 10 | 100% ✅ | Bérut 2012, LIGO, EHT |
-| **Astrophysics** | 30 | 88% ✅ | SPARC, Planck, JWST |
-| **Particles** | 35 | 98% ✅ | PDG 2024, KATRIN |
-| **Quantum** | 5 | 100% ✅ | Nobel 2022 |
-| **Condensed** | 15 | 100% ✅ | McMillan, JET |
-| **Unified** | 8 | 100% ✅ | Perrin 1908 |
-| **Complex** | 10 | 100% ✅ | PhysioNet |
-| **Total** | **113** | **109** | **Global Coverage** |
+| Category | Tests | Topics | Real Data |
+| :--- | :---: | :--- | :--- |
+| **Particles** | 19 | 0.5, 0.6, 0.7, 0.8 | PDG 2024, KATRIN |
+| **Astrophysics** | 11 | 0.1, 0.2, 0.3 | SPARC, Planck, EHT, LIGO |
+| **Complex/Fluids** | 12 | 0.10, 0.14 | Perrin, PhysioNet |
+| **Condensed Matter** | 6 | 0.4, 0.11 | McMillan, BEC |
+| **Quantum** | 4 | 0.9 | Bell Tests |
+| **Thermodynamics** | 4 | 0.12, 0.13 | Bérut, Casimir |
+| **Structure** | 4 | 0.15-0.18 | Heavy Nuclei, Mixing |
+| **Gravity/GR** | 2 | 0.19 | Eöt-Wash, CODATA |
+| **Total** | **62** | **19 topics** | **Real Data** |
 
 ### 🌌 Galaxy Rotation Curves
 
@@ -98,13 +99,16 @@
 
 ```text
 research_uet/
-├── � topics/                # 18 Verified Physics Domains (Tests & Data)
-│   ├── 0.1_Galaxy_...        # Astrophysics
-│   ├── 0.4_Super...          # Condensed Matter
-│   └── run_all_tests.py      # MASTER VALIDATION SCRIPT
-├── �️ COMPLETE_DATA_MAP.md   # Index of all Data Sources
-├── 🧪 THEORY_MAP.md          # Concept Dictionary (UET <-> Modern Physics)
-└── � UET_FINAL_PAPER_SUBMISSION.md # Academic Proof
+├── 📊 topics/                    # 18 Verified Physics Domains
+│   └── run_all_tests.py          # MASTER VALIDATION SCRIPT
+├── 📋 SINGLE_SOURCE_OF_TRUTH.md  # Canonical Metrics & DOIs
+├── 📄 UET_FINAL_PAPER_SUBMISSION.md  # Main Paper (Markdown)
+├── 📄 UET_FULL_PAPER.tex         # Main Paper (LaTeX)
+├── 📚 references.bib             # BibTeX References
+├── 🗂️ DATA_SOURCE_MAP.md         # Data Sources with DOIs
+├── 🧪 THEORY_MAP.md              # UET ↔ Physics Dictionary
+├── 💡 EXPLANATION_STRATEGY.md    # Narrative Approach
+└── 📁 Archive/                   # Historical Versions
 ```
 
 ---
