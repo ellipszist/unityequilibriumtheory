@@ -55,11 +55,11 @@ This is how we actually calculate physics:
 
 $$\Omega[C,I] = \int \left[ \underbrace{V(C)}_{\text{Physical Cost}} + \underbrace{\frac{\kappa}{2}|\nabla C|^2}_{\text{Interaction Limit}} + \underbrace{\beta C I}_{\text{THE BRIDGE}} \right] dx$$
 
-**แต่ละ term หมายถึงอะไร?**
+**What does each term mean?**
 
-- **V(C) — Physical Cost**: พลังงานในการ "มีอยู่" ⚡ (เช่น E = mc²)
-- **κ|∇C|²/2 — Interaction Limit**: พลังงานในการ "เปลี่ยนแปลง" 🌊 (เช่น แรงตึงผิว, Gravity gradient)
-- **βCI — THE BRIDGE**: จุดเชื่อมระหว่าง Matter ↔ Information 🌉 (Landauer limit, Bekenstein bound)
+- **V(C) — Physical Cost**: Cost of "becoming" ⚡ — Nothing is static, everything is always becoming
+- **κ|∇C|²/2 — Interaction Limit**: Cost of change in space 🌊 — Gradients require energy
+- **βCI — THE BRIDGE**: Link between Matter ↔ Information 🌉 — Landauer limit, Bekenstein bound
 
 ---
 
