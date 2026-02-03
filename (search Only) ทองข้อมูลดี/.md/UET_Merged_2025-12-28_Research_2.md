@@ -23277,7 +23277,7 @@ $$F = m \cdot \frac{2\pi r^3}{M} \cdot \nabla E = \frac{GMm}{r^2}$$
 - [03-strong-force-uet](../03-strong-force-uet/) - Different structure ✅
 
 ---
-*Verified in UET Harness v0.8.7 on 2025-12-28*
+*Verified in UET Harness v0.9.0 on 2025-12-28*
 
 
 ---
@@ -24405,7 +24405,7 @@ $$ [สมการสุดท้าย] $$
 
 # 🔹 Source: file_164.md
 
-# UET Research Index - Version 0.8.7
+# UET Research Index - Version 0.9.0
 
 ## COMPLETE: 52/52 TESTS PASSED
 
@@ -24597,7 +24597,7 @@ uet-harness/
 │   ├── uet_core/           # PDE solvers, physical kernels
 │   ├── uet_analytics/      # Statistical analysis and plotting
 │   └── uet_utils/          # General helpers
-├── tests/                  # Automated validation suite (from v0.8.7)
+├── tests/                  # Automated validation suite (from v0.9.0)
 │   ├── unit/               # Code unit tests
 │   └── physics/            # Physical validation tests (16 topic folders)
 ├── .gitignore
@@ -24750,7 +24750,7 @@ UET sets E₀ directly from cosmological measurements, avoiding the 10¹²⁰ hi
 
 ## 6. Numerical Validation
 
-### Final Pass Rates (v0.8.7)
+### Final Pass Rates (v0.9.0)
 | Category | Tests | Pass Rate | Status |
 |----------|-------|-----------|--------|
 | Fundamental Forces | 15/15 | 100% | ✅ |
@@ -24900,10 +24900,10 @@ To create a searchable, user-friendly high-level overview of UET for the scienti
 # UET Data Archiving Plan (Zenodo)
 
 ## Goal
-To provide a immutable, citable record of the UET v0.8.7 validation data and code.
+To provide a immutable, citable record of the UET v0.9.0 validation data and code.
 
 ## Zenodo Metadata
-- **Title:** Unified Energy Theory (UET) Validation Suite v0.8.7
+- **Title:** Unified Energy Theory (UET) Validation Suite v0.9.0
 - **Creators:** UET Research Team
 - **Description:** This dataset contains the full 52-test validation suite for UET, including the stability tester, raw results JSON, and topic-specific literature reviews.
 - **License:** Creative Commons Attribution 4.0 International
@@ -25041,7 +25041,7 @@ $$F = m \cdot \frac{2\pi r^3}{M} \cdot \nabla E = \frac{GMm}{r^2}$$
 - [03-strong-force-uet](../03-strong-force-uet/) - Different structure ✅
 
 ---
-*Verified in UET Harness v0.8.7 on 2025-12-28*
+*Verified in UET Harness v0.9.0 on 2025-12-28*
 
 
 ---
@@ -565156,7 +565156,7 @@ Both forces have **identical mathematical structure!**
 - [05-unification](../05-unification/) - R² = 1.0 ✅
 
 ---
-*Verified in UET Harness v0.8.7 on 2025-12-28*
+*Verified in UET Harness v0.9.0 on 2025-12-28*
 
 
 ---
@@ -567001,7 +567001,7 @@ UET is **consistent** with quantum mechanics because:
 - [05-unification](../05-unification/) - Framework comparison
 
 ---
-*Verified in UET Harness v0.8.7 on 2025-12-28*
+*Verified in UET Harness v0.9.0 on 2025-12-28*
 
 **Phase 2 Quantum Extension: STARTED ✅**
 
@@ -567294,7 +567294,7 @@ These are the "3 classical tests" proposed by Einstein:
 - [black-hole-uet](../black-hole-uet/) - CCBH cosmology
 
 ---
-*Verified in UET Harness v0.8.7 on 2025-12-28*
+*Verified in UET Harness v0.9.0 on 2025-12-28*
 
 **Phase 3 GR: ALL CLASSICAL TESTS PASSED! ✅**
 
@@ -567455,7 +567455,7 @@ Verify fundamental constant relationships in UET.
 - [06-quantum](../06-quantum-extension/) - Casimir F=-∇E
 
 ---
-*Verified in UET Harness v0.8.7 on 2025-12-28*
+*Verified in UET Harness v0.9.0 on 2025-12-28*
 
 **Phase 4: ALL UNIFICATION TESTS PASSED! ✅**
 
@@ -568083,7 +568083,7 @@ docs/0.8.7/
 
 Ready for peer review and collaboration.
 
-**Repository:** UET Harness v0.8.7  
+**Repository:** UET Harness v0.9.0  
 **Tests:** 36/36 PASSED  
 **Status:** Publication-ready 🚀
 
