@@ -1,0 +1,87 @@
+# =============================================================================
+# UET Knowledge Base — Central Configuration
+# =============================================================================
+# All API keys, model assignments, and cost budgets in one place.
+# This file is the SINGLE SOURCE OF TRUTH for all agent configurations.
+#
+# SECURITY: Do NOT commit this file with real API keys to version control.
+#           Use config.toml.example for the template.
+# =============================================================================
+
+[openrouter]
+base_url = "https://openrouter.ai/api/v1"
+
+# === API Keys ===
+# Use one key for everything, or separate keys per agent to track costs
+# independently on the OpenRouter dashboard.
+[openrouter.keys]
+default = "sk-or-v1-CHANGEME"              # <-- Replace with your key
+# embedding = "sk-or-v1-embed-CHANGEME"    # Optional: separate key for embeddings
+# orchestrator = "sk-or-v1-orch-CHANGEME"  # Optional: separate key for orchestrator
+
+# =============================================================================
+# AGENT CONFIGURATIONS
+# =============================================================================
+# Each agent has: model, key_name (which key to use), budget limits
+
+[agents.orchestrator]
+model = "qwen/qwen3-coder-next"
+key_name = "default"
+max_tokens_per_call = 4096
+daily_budget_usd = 0.50
+description = "Routes user queries to specialized agents"
+
+[agents.local_data]
+model = "zhipu/glm-4.7-flash"
+key_name = "default"
+max_tokens_per_call = 2048
+daily_budget_usd = 0.20
+description = "Searches local research data via MCP"
+
+[agents.web_research]
+model = "deepseek/deepseek-v3.2"
+key_name = "default"
+max_tokens_per_call = 4096
+daily_budget_usd = 0.30
+description = "Deep web research and reasoning"
+
+[agents.equation_expert]
+model = "qwen/qwen3-30b-a3b:free"
+key_name = "default"
+max_tokens_per_call = 4096
+daily_budget_usd = 0.00
+description = "Math and equation analysis (free tier)"
+
+[agents.embedding]
+model = "qwen/qwen3-embedding-8b"
+key_name = "default"
+daily_budget_usd = 0.50
+description = "Text → vector embeddings for search"
+
+# =============================================================================
+# VECTOR DATABASE
+# =============================================================================
+
+[vector_db]
+engine = "lancedb"                          # lancedb | sqlite_vss | qdrant
+path = "./knowledge_base/vectors"           # Relative to research_uet/
+embedding_dim = 1024                        # Semantic embedding dimensions
+uet_vector_dim = 20                         # UET physics vector dimensions
+
+# =============================================================================
+# COST TRACKING
+# =============================================================================
+
+[cost_tracking]
+log_file = "./knowledge_base/cost_log.jsonl"  # Per-call cost log
+alert_threshold_usd = 1.00                    # Alert when daily total exceeds this
+retention_days = 90                            # Keep logs for N days
+
+# =============================================================================
+# UET TENSORIZER
+# =============================================================================
+
+[tensorizer]
+grid_size = 64                              # Grid resolution for C/I fields
+default_scale = "general"                   # Fallback scale for unknown topics
+axiom_count = 12                            # Number of UET axioms
