@@ -26,6 +26,40 @@ This folder (`research_uet/`) contains the **Core Physics Logic**. At the heart 
 
 $$ \Omega[C,I] = \int \left( \underbrace{V(C)}_{\text{Energy}} + \underbrace{\frac{\kappa}{2}|\nabla C|^2}_{\text{Geometry}} + \underbrace{\beta C \cdot I}_{\text{Information}} + \underbrace{\gamma_J \nabla \cdot J}_{\text{Exchange}} \right) d^3x $$
 
+### Symmetries & Conservation Laws (Noether's Theorem)
+
+The UET Master Equation is now enhanced with **Noether's Theorem** and **Lorentz Invariance**:
+
+| Symmetry | Conservation Law | Implementation | Test Status |
+|:---------|:-----------------|:---------------|:------------|
+| **U(1) Gauge** | Charge Conservation | `uet_noether.py` | ✅ PASS |
+| **Translation** | Momentum Conservation | `uet_noether.py` | ✅ PASS |
+| **Rotation** | Angular Momentum Conservation | `uet_noether.py` | ❌ FAIL (field not symmetric) |
+| **Scale Invariance** | Scale-Invariant Quantities | `uet_noether.py` (via RG Flow) | ✅ PASS |
+| **Lorentz Invariance** | Energy-Momentum Conservation | `uet_lorentz.py` | ✅ PASS |
+
+**Comprehensive Testing Results:**
+
+**Lorentz Invariance:**
+- ✅ Real field: PASS
+- ✅ Complex field: PASS
+- ✅ Schwarzschild metric: PASS
+- ✅ Kerr metric: PASS
+- ✅ FRW metric: PASS
+- ✅ Time-dependent field: PASS
+
+**Noether's Theorem (Conservation Laws):**
+- ✅ Momentum conservation: PASS
+- ✅ Charge conservation: PASS
+- ❌ Energy conservation: FAIL (field not static)
+- ❌ Angular momentum conservation: FAIL (field not symmetric)
+
+**Core Modules:**
+- `uet_master_equation.py` - Master Equation implementation
+- `uet_noether.py` - Noether's Theorem implementation
+- `uet_lorentz.py` - Lorentz invariance implementation
+- `test_lorentz_noether_comprehensive.py` - Comprehensive test suite
+
 ### 1. The Terms (How to Apply)
 
 | Term | Component | Python Interpretation | Application |
