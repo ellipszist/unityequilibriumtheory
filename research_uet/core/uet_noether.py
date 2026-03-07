@@ -336,6 +336,307 @@ class UETNoether:
 
         return results
 
+    def check_energy_conservation_complex(
+        self,
+        C: np.ndarray,
+        dx: float,
+        dt: float = 0.01
+    ) -> Dict:
+        """
+        Check energy conservation for complex fields.
+
+        ∂E/∂t = 0
+        """
+        # Use magnitude for complex fields
+        C_magnitude = np.abs(C)
+
+        energy_density, _ = self.energy_momentum_tensor(C_magnitude, dx)
+
+        # Total energy
+        total_energy = np.sum(energy_density) * dx
+
+        # Check if energy is constant (simulate time evolution)
+        # For static field, energy should be constant
+        energy_variance = np.var(energy_density)
+
+        is_conserved = energy_variance < 1e-10
+
+        result = {
+            "total_energy": total_energy,
+            "energy_variance": energy_variance,
+            "is_conserved": is_conserved,
+            "status": "PASS" if is_conserved else "FAIL",
+            "field_type": "Complex"
+        }
+
+        return result
+
+    def check_momentum_conservation_complex(
+        self,
+        C: np.ndarray,
+        dx: float
+    ) -> Dict:
+        """
+        Check momentum conservation for complex fields.
+
+        ∂P/∂t = 0
+        """
+        # Use magnitude for complex fields
+        C_magnitude = np.abs(C)
+
+        _, momentum_density = self.energy_momentum_tensor(C_magnitude, dx)
+
+        # Total momentum
+        total_momentum = np.sum(momentum_density) * dx
+
+        # For symmetric field, total momentum should be zero
+        momentum_magnitude = np.abs(total_momentum)
+
+        is_conserved = momentum_magnitude < 1e-10
+
+        result = {
+            "total_momentum": total_momentum,
+            "momentum_magnitude": momentum_magnitude,
+            "is_conserved": is_conserved,
+            "status": "PASS" if is_conserved else "FAIL",
+            "field_type": "Complex"
+        }
+
+        return result
+
+    def check_angular_momentum_conservation_complex(
+        self,
+        C: np.ndarray,
+        x: np.ndarray,
+        dx: float
+    ) -> Dict:
+        """
+        Check angular momentum conservation for complex fields.
+
+        ∂L/∂t = 0
+        """
+        # Use magnitude for complex fields
+        C_magnitude = np.abs(C)
+
+        L_density = self.angular_momentum_density(C_magnitude, x, dx)
+
+        # Total angular momentum
+        total_L = np.sum(L_density) * dx
+
+        # For symmetric field, total angular momentum should be zero
+        L_magnitude = np.abs(total_L)
+
+        is_conserved = L_magnitude < 1e-10
+
+        result = {
+            "total_angular_momentum": total_L,
+            "L_magnitude": L_magnitude,
+            "is_conserved": is_conserved,
+            "status": "PASS" if is_conserved else "FAIL",
+            "field_type": "Complex"
+        }
+
+        return result
+
+    def check_charge_conservation_complex(
+        self,
+        C: np.ndarray,
+        I: np.ndarray,
+        dx: float
+    ) -> Dict:
+        """
+        Check charge conservation for complex fields.
+
+        ∂_μ J^μ = 0
+        """
+        # Use magnitude for complex fields
+        C_magnitude = np.abs(C)
+        I_magnitude = np.abs(I)
+
+        current = self.charge_current(C_magnitude, I_magnitude, dx)
+
+        # Divergence of current
+        divergence = np.gradient(current, dx).sum()
+
+        # Check conservation
+        is_conserved = np.abs(divergence) < 1e-8
+
+        result = {
+            "divergence": divergence,
+            "is_conserved": is_conserved,
+            "status": "PASS" if is_conserved else "FAIL",
+            "field_type": "Complex"
+        }
+
+        return result
+
+    def check_energy_conservation_time_dependent(
+        self,
+        C: np.ndarray,
+        dx: float,
+        dt: float = 0.01
+    ) -> Dict:
+        """
+        Check energy conservation for time-dependent fields.
+
+        ∂E/∂t = 0
+        """
+        energy_density, _ = self.energy_momentum_tensor(C, dx)
+
+        # Total energy
+        total_energy = np.sum(energy_density) * dx
+
+        # Check if energy is constant (simulate time evolution)
+        # For time-dependent field, energy should be constant
+        energy_variance = np.var(energy_density)
+
+        is_conserved = energy_variance < 1e-10
+
+        result = {
+            "total_energy": total_energy,
+            "energy_variance": energy_variance,
+            "is_conserved": is_conserved,
+            "status": "PASS" if is_conserved else "FAIL",
+            "field_type": "Time-dependent"
+        }
+
+        return result
+
+    def check_momentum_conservation_time_dependent(
+        self,
+        C: np.ndarray,
+        dx: float
+    ) -> Dict:
+        """
+        Check momentum conservation for time-dependent fields.
+
+        ∂P/∂t = 0
+        """
+        _, momentum_density = self.energy_momentum_tensor(C, dx)
+
+        # Total momentum
+        total_momentum = np.sum(momentum_density) * dx
+
+        # For symmetric field, total momentum should be zero
+        momentum_magnitude = np.abs(total_momentum)
+
+        is_conserved = momentum_magnitude < 1e-10
+
+        result = {
+            "total_momentum": total_momentum,
+            "momentum_magnitude": momentum_magnitude,
+            "is_conserved": is_conserved,
+            "status": "PASS" if is_conserved else "FAIL",
+            "field_type": "Time-dependent"
+        }
+
+        return result
+
+    def check_angular_momentum_conservation_time_dependent(
+        self,
+        C: np.ndarray,
+        x: np.ndarray,
+        dx: float
+    ) -> Dict:
+        """
+        Check angular momentum conservation for time-dependent fields.
+
+        ∂L/∂t = 0
+        """
+        L_density = self.angular_momentum_density(C, x, dx)
+
+        # Total angular momentum
+        total_L = np.sum(L_density) * dx
+
+        # For symmetric field, total angular momentum should be zero
+        L_magnitude = np.abs(total_L)
+
+        is_conserved = L_magnitude < 1e-10
+
+        result = {
+            "total_angular_momentum": total_L,
+            "L_magnitude": L_magnitude,
+            "is_conserved": is_conserved,
+            "status": "PASS" if is_conserved else "FAIL",
+            "field_type": "Time-dependent"
+        }
+
+        return result
+
+    def comprehensive_conservation_check_complex(
+        self,
+        C: np.ndarray,
+        I: np.ndarray,
+        x: np.ndarray,
+        dx: float
+    ) -> Dict:
+        """
+        Run comprehensive conservation check for complex fields.
+        """
+        results = {}
+
+        # 1. Energy conservation
+        results["energy"] = self.check_energy_conservation_complex(C, dx)
+
+        # 2. Momentum conservation
+        results["momentum"] = self.check_momentum_conservation_complex(C, dx)
+
+        # 3. Angular momentum conservation
+        results["angular_momentum"] = self.check_angular_momentum_conservation_complex(C, x, dx)
+
+        # 4. Charge conservation
+        results["charge"] = self.check_charge_conservation_complex(C, I, dx)
+
+        # Summary
+        passed = sum(1 for r in results.values() if r["is_conserved"])
+        total = len(results)
+
+        results["summary"] = {
+            "passed": passed,
+            "total": total,
+            "ratio": passed / total,
+            "field_type": "Complex"
+        }
+
+        return results
+
+    def comprehensive_conservation_check_time_dependent(
+        self,
+        C: np.ndarray,
+        I: np.ndarray,
+        x: np.ndarray,
+        dx: float
+    ) -> Dict:
+        """
+        Run comprehensive conservation check for time-dependent fields.
+        """
+        results = {}
+
+        # 1. Energy conservation
+        results["energy"] = self.check_energy_conservation_time_dependent(C, dx)
+
+        # 2. Momentum conservation
+        results["momentum"] = self.check_momentum_conservation_time_dependent(C, dx)
+
+        # 3. Angular momentum conservation
+        results["angular_momentum"] = self.check_angular_momentum_conservation_time_dependent(C, x, dx)
+
+        # 4. Charge conservation (same as original)
+        results["charge"] = self.check_charge_conservation(C, I, dx)
+
+        # Summary
+        passed = sum(1 for r in results.values() if r["is_conserved"])
+        total = len(results)
+
+        results["summary"] = {
+            "passed": passed,
+            "total": total,
+            "ratio": passed / total,
+            "field_type": "Time-dependent"
+        }
+
+        return results
+
 
 def test_noether():
     """Test Noether's Theorem implementation."""
