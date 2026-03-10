@@ -1,20 +1,8 @@
 
 
+version: "3.9"
+
 services:
-  # === The Brain (API Server) ===
-  uet_kb:
-    build: 
-      context: .
-      dockerfile: Dockerfile
-    image: uet_kb:latest
-    container_name: uet_kb_server
-    depends_on:
-      - postgres
-    environment:
-      - RUST_LOG=info
-    # Override default localhost with docker service name 'postgres'
-    command: ["uet_kb", "--db-url", "postgres://postgres:postgres@postgres:5432/uet_kb", "init-db"]
-    
   # === The Memory (Database) ===
   postgres:
     image: pgvector/pgvector:pg16
@@ -22,11 +10,55 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: uet_kb
+      POSTGRES_DB: uetlab
     ports:
-      - "5433:5432" # Expose to host for local dev/testing
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # === The Brain (Rust API) ===
+  uet_api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: uet_api_server
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - RUST_LOG=info
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/uetlab
+      - JWT_SECRET=${JWT_SECRET:-dev-secret-change-in-production}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID:-}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET:-}
+      - GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID:-}
+      - GITHUB_CLIENT_SECRET=${GITHUB_CLIENT_SECRET:-}
+      - OAUTH_REDIRECT_URL=${OAUTH_REDIRECT_URL:-http://localhost:3000/auth/callback}
+      - FRONTEND_URL=${FRONTEND_URL:-http://localhost:3000}
+    ports:
+      - "3001:3001"
+    command: ["uet_api"]
+
+  # === The Face (Next.js Web) ===
+  uet_web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    container_name: uet_web_server
+    depends_on:
+      - uet_api
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=http://localhost:3001
+      - PORT=3000
+    ports:
+      - "3000:3000"
+    command: ["node", "server.js"]
 
 volumes:
   postgres_data:

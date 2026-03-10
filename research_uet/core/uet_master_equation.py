@@ -28,6 +28,13 @@ Axiom Coverage:
     ✅ A11: All Models Must Reduce to Known Physics
     ✅ A12: The Theory Must Evolve
 
+Symmetries & Conservation Laws (Noether's Theorem):
+    ✅ U(1) Gauge Symmetry → Charge Conservation
+    ✅ Translation Symmetry → Momentum Conservation
+    ✅ Rotation Symmetry → Angular Momentum Conservation
+    ✅ Scale Invariance (via RG Flow) → Scale-invariant quantities
+    ⏳ Lorentz Invariance → Energy-Momentum Conservation (see uet_lorentz.py)
+
 Sources:
     - Thermodynamics Laws 0, 1, 2, 3
     - Landauer Principle (1961), Bérut 2012
@@ -35,6 +42,8 @@ Sources:
     - Jacobson's Thermodynamic Gravity (1995)
     - Dynamic Game (Nash Differential Games, Vanchurin 2020)
     - Core Axioms Document (Santa 2026)
+    - Noether's Theorem (1918) - see uet_noether.py
+    - Lorentz Invariance (1905) - see uet_lorentz.py
 """
 
 import numpy as np

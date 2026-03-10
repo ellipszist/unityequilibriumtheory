@@ -1,40 +1,74 @@
-# Build Stage
-# Build Stage
-FROM rust:slim-bookworm as builder
+# Multi-stage Dockerfile for UET Platform
+# Builds: uet_api (Rust backend), uet_web (Next.js frontend)
+
+# ==================== Rust Backend Build ====================
+FROM rust:slim-bookworm AS rust-builder
 
 WORKDIR /app
 
-# Install build dependencies (if needed, e.g. for rusqlite bundled or lancedb)
-RUN apt-get update && apt-get install -y pkg-config libssl-dev protobuf-compiler
+# Install build dependencies
+RUN apt-get update && apt-get install -y pkg-config libssl-dev protobuf-compiler && rm -rf /var/lib/apt/lists/*
 
 # Copy Cargo workspace files
 COPY Cargo.toml Cargo.lock ./
 COPY uet_core ./uet_core
 COPY uet_kb ./uet_kb
+COPY uet_api ./uet_api
 
-# Build the release binary
-# We target the specific binary to avoid building everything if not needed
-RUN cargo build --release -p uet_kb
+# Build the API binary
+RUN cargo build --release -p uet_api
 
-# Runtime Stage
+# ==================== Node Frontend Build ====================
+FROM node:20-alpine AS node-builder
+
+WORKDIR /app
+
+# Copy package files
+COPY uet_web/package*.json ./
+
+# Install dependencies
+RUN npm ci
+
+# Copy source
+COPY uet_web ./
+
+# Build Next.js
+RUN npm run build
+
+# ==================== Runtime Stage ====================
 FROM debian:bookworm-slim
 
 WORKDIR /app
 
 # Install runtime dependencies
-RUN apt-get update && apt-get install -y ca-certificates && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y \
+    ca-certificates \
+    curl \
+    nodejs \
+    npm \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copy binary from builder
-COPY --from=builder /app/target/release/uet_kb /usr/local/bin/uet_kb
+# Copy Rust API binary
+COPY --from=rust-builder /app/target/release/uet_api /usr/local/bin/uet_api
 
-# Copy any necessary assets (like config or scripts)
-# COPY config.toml . 
+# Copy Node.js app
+COPY --from=node-builder /app/.next ./uet_web/.next
+COPY --from=node-builder /app/public ./uet_web/public
+COPY --from=node-builder /app/package*.json ./uet_web/
+COPY --from=node-builder /app/node_modules ./uet_web/node_modules
 
-# Environment variables
+# Copy migrations
+COPY uet_api/migrations ./migrations
+
+# Environment
 ENV RUST_LOG=info
+ENV NODE_ENV=production
 
-# Expose port (if we add server later, e.g. 3000)
-# EXPOSE 3000
+# Expose ports (API: 3001, Web: 3000)
+EXPOSE 3000 3001
 
-# Default command
-CMD ["uet_kb", "--help"]
+# Start script will run both services
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
+CMD ["/start.sh"]

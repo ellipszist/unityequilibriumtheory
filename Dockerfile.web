@@ -1,0 +1,43 @@
+# Dockerfile for UET Web (Next.js Frontend)
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Copy package files
+COPY uet_web/package*.json ./
+
+# Install dependencies
+RUN npm ci
+
+# Copy source
+COPY uet_web ./
+
+# Build Next.js
+ENV NEXT_TELEMETRY_DISABLED=1
+RUN npm run build
+
+# Runtime Stage
+FROM node:20-alpine AS runner
+
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+
+# Create nextjs user
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+# Copy static files and standalone build
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+
+# Expose web port
+EXPOSE 3000
+
+CMD ["node", "server.js"]

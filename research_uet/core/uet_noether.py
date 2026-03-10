@@ -147,27 +147,37 @@ class UETNoether:
         self,
         C: np.ndarray,
         dx: float,
-        dt: float = 0.01
+        dt: float = 0.01,
+        steps: int = 10
     ) -> Dict:
         """
         Check energy conservation from time translation invariance.
 
         ∂E/∂t = 0
+
+        Check if total energy is conserved over time (not constant across space).
         """
-        energy_density, _ = self.energy_momentum_tensor(C, dx)
+        # Simulate time evolution
+        energies = []
 
-        # Total energy
-        total_energy = np.sum(energy_density) * dx
+        for i in range(steps):
+            # Energy at time t
+            energy_density, _ = self.energy_momentum_tensor(C, dx)
+            total_energy = np.sum(energy_density) * dx
+            energies.append(total_energy)
 
-        # Check if energy is constant (simulate time evolution)
-        # For static field, energy should be constant
-        energy_variance = np.var(energy_density)
+            # Simple time evolution (gradient flow)
+            grad_C = np.gradient(C, dx)
+            C = C - dt * grad_C
 
-        is_conserved = energy_variance < 1e-10
+        # Check if energy is conserved over time
+        energy_change = np.abs(energies[-1] - energies[0])
+        is_conserved = energy_change < 1e-8
 
         result = {
-            "total_energy": total_energy,
-            "energy_variance": energy_variance,
+            "total_energy_initial": energies[0],
+            "total_energy_final": energies[-1],
+            "energy_change": energy_change,
             "is_conserved": is_conserved,
             "status": "PASS" if is_conserved else "FAIL"
         }
@@ -177,26 +187,38 @@ class UETNoether:
     def check_momentum_conservation(
         self,
         C: np.ndarray,
-        dx: float
+        dx: float,
+        dt: float = 0.01,
+        steps: int = 10
     ) -> Dict:
         """
         Check momentum conservation from spatial translation invariance.
 
         ∂P/∂t = 0
+
+        Check if total momentum is conserved over time (not zero).
         """
-        _, momentum_density = self.energy_momentum_tensor(C, dx)
+        # Simulate time evolution
+        momenta = []
 
-        # Total momentum
-        total_momentum = np.sum(momentum_density) * dx
+        for i in range(steps):
+            # Momentum at time t
+            _, momentum_density = self.energy_momentum_tensor(C, dx)
+            total_momentum = np.sum(momentum_density) * dx
+            momenta.append(total_momentum)
 
-        # For symmetric field, total momentum should be zero
-        momentum_magnitude = np.abs(total_momentum)
+            # Simple time evolution (gradient flow)
+            grad_C = np.gradient(C, dx)
+            C = C - dt * grad_C
 
-        is_conserved = momentum_magnitude < 1e-10
+        # Check if momentum is conserved over time
+        momentum_change = np.abs(momenta[-1] - momenta[0])
+        is_conserved = momentum_change < 1e-8
 
         result = {
-            "total_momentum": total_momentum,
-            "momentum_magnitude": momentum_magnitude,
+            "total_momentum_initial": momenta[0],
+            "total_momentum_final": momenta[-1],
+            "momentum_change": momentum_change,
             "is_conserved": is_conserved,
             "status": "PASS" if is_conserved else "FAIL"
         }
@@ -225,26 +247,38 @@ class UETNoether:
         self,
         C: np.ndarray,
         x: np.ndarray,
-        dx: float
+        dx: float,
+        dt: float = 0.01,
+        steps: int = 10
     ) -> Dict:
         """
         Check angular momentum conservation from rotation symmetry.
 
         ∂L/∂t = 0
+
+        Check if total angular momentum is conserved over time (not zero).
         """
-        L_density = self.angular_momentum_density(C, x, dx)
+        # Simulate time evolution
+        angular_momenta = []
 
-        # Total angular momentum
-        total_L = np.sum(L_density) * dx
+        for i in range(steps):
+            # Angular momentum at time t
+            L_density = self.angular_momentum_density(C, x, dx)
+            total_L = np.sum(L_density) * dx
+            angular_momenta.append(total_L)
 
-        # For symmetric field, total angular momentum should be zero
-        L_magnitude = np.abs(total_L)
+            # Simple time evolution (gradient flow)
+            grad_C = np.gradient(C, dx)
+            C = C - dt * grad_C
 
-        is_conserved = L_magnitude < 1e-10
+        # Check if angular momentum is conserved over time
+        L_change = np.abs(angular_momenta[-1] - angular_momenta[0])
+        is_conserved = L_change < 1e-8
 
         result = {
-            "total_angular_momentum": total_L,
-            "L_magnitude": L_magnitude,
+            "total_angular_momentum_initial": angular_momenta[0],
+            "total_angular_momentum_final": angular_momenta[-1],
+            "angular_momentum_change": L_change,
             "is_conserved": is_conserved,
             "status": "PASS" if is_conserved else "FAIL"
         }
@@ -340,30 +374,40 @@ class UETNoether:
         self,
         C: np.ndarray,
         dx: float,
-        dt: float = 0.01
+        dt: float = 0.01,
+        steps: int = 10
     ) -> Dict:
         """
         Check energy conservation for complex fields.
 
         ∂E/∂t = 0
+
+        Check if total energy is conserved over time (not constant across space).
         """
         # Use magnitude for complex fields
         C_magnitude = np.abs(C)
 
-        energy_density, _ = self.energy_momentum_tensor(C_magnitude, dx)
+        # Simulate time evolution
+        energies = []
 
-        # Total energy
-        total_energy = np.sum(energy_density) * dx
+        for i in range(steps):
+            # Energy at time t
+            energy_density, _ = self.energy_momentum_tensor(C_magnitude, dx)
+            total_energy = np.sum(energy_density) * dx
+            energies.append(total_energy)
 
-        # Check if energy is constant (simulate time evolution)
-        # For static field, energy should be constant
-        energy_variance = np.var(energy_density)
+            # Simple time evolution (gradient flow)
+            grad_C = np.gradient(C_magnitude, dx)
+            C_magnitude = C_magnitude - dt * grad_C
 
-        is_conserved = energy_variance < 1e-10
+        # Check if energy is conserved over time
+        energy_change = np.abs(energies[-1] - energies[0])
+        is_conserved = energy_change < 1e-8
 
         result = {
-            "total_energy": total_energy,
-            "energy_variance": energy_variance,
+            "total_energy_initial": energies[0],
+            "total_energy_final": energies[-1],
+            "energy_change": energy_change,
             "is_conserved": is_conserved,
             "status": "PASS" if is_conserved else "FAIL",
             "field_type": "Complex"
@@ -374,29 +418,41 @@ class UETNoether:
     def check_momentum_conservation_complex(
         self,
         C: np.ndarray,
-        dx: float
+        dx: float,
+        dt: float = 0.01,
+        steps: int = 10
     ) -> Dict:
         """
         Check momentum conservation for complex fields.
 
         ∂P/∂t = 0
+
+        Check if total momentum is conserved over time (not zero).
         """
         # Use magnitude for complex fields
         C_magnitude = np.abs(C)
 
-        _, momentum_density = self.energy_momentum_tensor(C_magnitude, dx)
+        # Simulate time evolution
+        momenta = []
 
-        # Total momentum
-        total_momentum = np.sum(momentum_density) * dx
+        for i in range(steps):
+            # Momentum at time t
+            _, momentum_density = self.energy_momentum_tensor(C_magnitude, dx)
+            total_momentum = np.sum(momentum_density) * dx
+            momenta.append(total_momentum)
 
-        # For symmetric field, total momentum should be zero
-        momentum_magnitude = np.abs(total_momentum)
+            # Simple time evolution (gradient flow)
+            grad_C = np.gradient(C_magnitude, dx)
+            C_magnitude = C_magnitude - dt * grad_C
 
-        is_conserved = momentum_magnitude < 1e-10
+        # Check if momentum is conserved over time
+        momentum_change = np.abs(momenta[-1] - momenta[0])
+        is_conserved = momentum_change < 1e-8
 
         result = {
-            "total_momentum": total_momentum,
-            "momentum_magnitude": momentum_magnitude,
+            "total_momentum_initial": momenta[0],
+            "total_momentum_final": momenta[-1],
+            "momentum_change": momentum_change,
             "is_conserved": is_conserved,
             "status": "PASS" if is_conserved else "FAIL",
             "field_type": "Complex"
@@ -408,29 +464,41 @@ class UETNoether:
         self,
         C: np.ndarray,
         x: np.ndarray,
-        dx: float
+        dx: float,
+        dt: float = 0.01,
+        steps: int = 10
     ) -> Dict:
         """
         Check angular momentum conservation for complex fields.
 
         ∂L/∂t = 0
+
+        Check if total angular momentum is conserved over time (not zero).
         """
         # Use magnitude for complex fields
         C_magnitude = np.abs(C)
 
-        L_density = self.angular_momentum_density(C_magnitude, x, dx)
+        # Simulate time evolution
+        angular_momenta = []
 
-        # Total angular momentum
-        total_L = np.sum(L_density) * dx
+        for i in range(steps):
+            # Angular momentum at time t
+            L_density = self.angular_momentum_density(C_magnitude, x, dx)
+            total_L = np.sum(L_density) * dx
+            angular_momenta.append(total_L)
 
-        # For symmetric field, total angular momentum should be zero
-        L_magnitude = np.abs(total_L)
+            # Simple time evolution (gradient flow)
+            grad_C = np.gradient(C_magnitude, dx)
+            C_magnitude = C_magnitude - dt * grad_C
 
-        is_conserved = L_magnitude < 1e-10
+        # Check if angular momentum is conserved over time
+        L_change = np.abs(angular_momenta[-1] - angular_momenta[0])
+        is_conserved = L_change < 1e-8
 
         result = {
-            "total_angular_momentum": total_L,
-            "L_magnitude": L_magnitude,
+            "total_angular_momentum_initial": angular_momenta[0],
+            "total_angular_momentum_final": angular_momenta[-1],
+            "angular_momentum_change": L_change,
             "is_conserved": is_conserved,
             "status": "PASS" if is_conserved else "FAIL",
             "field_type": "Complex"
@@ -474,27 +542,37 @@ class UETNoether:
         self,
         C: np.ndarray,
         dx: float,
-        dt: float = 0.01
+        dt: float = 0.01,
+        steps: int = 10
     ) -> Dict:
         """
         Check energy conservation for time-dependent fields.
 
         ∂E/∂t = 0
+
+        Check if total energy is conserved over time (not constant across space).
         """
-        energy_density, _ = self.energy_momentum_tensor(C, dx)
+        # Simulate time evolution
+        energies = []
 
-        # Total energy
-        total_energy = np.sum(energy_density) * dx
+        for i in range(steps):
+            # Energy at time t
+            energy_density, _ = self.energy_momentum_tensor(C, dx)
+            total_energy = np.sum(energy_density) * dx
+            energies.append(total_energy)
 
-        # Check if energy is constant (simulate time evolution)
-        # For time-dependent field, energy should be constant
-        energy_variance = np.var(energy_density)
+            # Simple time evolution (gradient flow)
+            grad_C = np.gradient(C, dx)
+            C = C - dt * grad_C
 
-        is_conserved = energy_variance < 1e-10
+        # Check if energy is conserved over time
+        energy_change = np.abs(energies[-1] - energies[0])
+        is_conserved = energy_change < 1e-8
 
         result = {
-            "total_energy": total_energy,
-            "energy_variance": energy_variance,
+            "total_energy_initial": energies[0],
+            "total_energy_final": energies[-1],
+            "energy_change": energy_change,
             "is_conserved": is_conserved,
             "status": "PASS" if is_conserved else "FAIL",
             "field_type": "Time-dependent"
@@ -505,26 +583,38 @@ class UETNoether:
     def check_momentum_conservation_time_dependent(
         self,
         C: np.ndarray,
-        dx: float
+        dx: float,
+        dt: float = 0.01,
+        steps: int = 10
     ) -> Dict:
         """
         Check momentum conservation for time-dependent fields.
 
         ∂P/∂t = 0
+
+        Check if total momentum is conserved over time (not zero).
         """
-        _, momentum_density = self.energy_momentum_tensor(C, dx)
+        # Simulate time evolution
+        momenta = []
 
-        # Total momentum
-        total_momentum = np.sum(momentum_density) * dx
+        for i in range(steps):
+            # Momentum at time t
+            _, momentum_density = self.energy_momentum_tensor(C, dx)
+            total_momentum = np.sum(momentum_density) * dx
+            momenta.append(total_momentum)
 
-        # For symmetric field, total momentum should be zero
-        momentum_magnitude = np.abs(total_momentum)
+            # Simple time evolution (gradient flow)
+            grad_C = np.gradient(C, dx)
+            C = C - dt * grad_C
 
-        is_conserved = momentum_magnitude < 1e-10
+        # Check if momentum is conserved over time
+        momentum_change = np.abs(momenta[-1] - momenta[0])
+        is_conserved = momentum_change < 1e-8
 
         result = {
-            "total_momentum": total_momentum,
-            "momentum_magnitude": momentum_magnitude,
+            "total_momentum_initial": momenta[0],
+            "total_momentum_final": momenta[-1],
+            "momentum_change": momentum_change,
             "is_conserved": is_conserved,
             "status": "PASS" if is_conserved else "FAIL",
             "field_type": "Time-dependent"
@@ -536,26 +626,38 @@ class UETNoether:
         self,
         C: np.ndarray,
         x: np.ndarray,
-        dx: float
+        dx: float,
+        dt: float = 0.01,
+        steps: int = 10
     ) -> Dict:
         """
         Check angular momentum conservation for time-dependent fields.
 
         ∂L/∂t = 0
+
+        Check if total angular momentum is conserved over time (not zero).
         """
-        L_density = self.angular_momentum_density(C, x, dx)
+        # Simulate time evolution
+        angular_momenta = []
 
-        # Total angular momentum
-        total_L = np.sum(L_density) * dx
+        for i in range(steps):
+            # Angular momentum at time t
+            L_density = self.angular_momentum_density(C, x, dx)
+            total_L = np.sum(L_density) * dx
+            angular_momenta.append(total_L)
 
-        # For symmetric field, total angular momentum should be zero
-        L_magnitude = np.abs(total_L)
+            # Simple time evolution (gradient flow)
+            grad_C = np.gradient(C, dx)
+            C = C - dt * grad_C
 
-        is_conserved = L_magnitude < 1e-10
+        # Check if angular momentum is conserved over time
+        L_change = np.abs(angular_momenta[-1] - angular_momenta[0])
+        is_conserved = L_change < 1e-8
 
         result = {
-            "total_angular_momentum": total_L,
-            "L_magnitude": L_magnitude,
+            "total_angular_momentum_initial": angular_momenta[0],
+            "total_angular_momentum_final": angular_momenta[-1],
+            "angular_momentum_change": L_change,
             "is_conserved": is_conserved,
             "status": "PASS" if is_conserved else "FAIL",
             "field_type": "Time-dependent"

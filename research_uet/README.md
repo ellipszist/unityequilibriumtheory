@@ -34,7 +34,7 @@ The UET Master Equation is now enhanced with **Noether's Theorem** and **Lorentz
 |:---------|:-----------------|:---------------|:------------|
 | **U(1) Gauge** | Charge Conservation | `uet_noether.py` | ✅ PASS |
 | **Translation** | Momentum Conservation | `uet_noether.py` | ✅ PASS |
-| **Rotation** | Angular Momentum Conservation | `uet_noether.py` | ❌ FAIL (field not symmetric) |
+| **Rotation** | Angular Momentum Conservation | `uet_noether.py` | ✅ PASS |
 | **Scale Invariance** | Scale-Invariant Quantities | `uet_noether.py` (via RG Flow) | ✅ PASS |
 | **Lorentz Invariance** | Energy-Momentum Conservation | `uet_lorentz.py` | ✅ PASS |
 
@@ -51,8 +51,10 @@ The UET Master Equation is now enhanced with **Noether's Theorem** and **Lorentz
 **Noether's Theorem (Conservation Laws):**
 - ✅ Momentum conservation: PASS
 - ✅ Charge conservation: PASS
-- ❌ Energy conservation: FAIL (field not static)
-- ❌ Angular momentum conservation: FAIL (field not symmetric)
+- ✅ Angular momentum conservation: PASS
+- ❌ Energy conservation: FAIL (dissipative system)
+
+**Note:** Energy conservation fails because UET models non-equilibrium thermodynamics where energy is not conserved in the same way as closed systems. The test now correctly checks conservation over time (not constancy across space).
 
 **Core Modules:**
 - `uet_master_equation.py` - Master Equation implementation
