@@ -1,6 +1,10 @@
 pub mod canonical;
 pub mod ledger;
 pub mod types;
+pub mod storage;
+pub mod state;
+pub mod p2p;
+pub mod consensus;
 
 pub use canonical::{canonical_hash_hex, canonical_json, merkle_root_hex, CanonicalError};
 pub use ledger::{assemble_block, build_unsigned_header, proof_hashes_hex, sign_header, tx_hashes_hex};
