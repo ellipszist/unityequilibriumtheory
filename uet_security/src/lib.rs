@@ -2,10 +2,14 @@ pub mod algorithms;
 pub mod envelope;
 pub mod hashing;
 pub mod signing;
+pub mod keys;
+pub mod keymanager;
 
 pub use algorithms::{CryptoSuite, HashAlgorithm, SignatureAlgorithm};
 pub use envelope::SignedEnvelope;
 pub use signing::{MockSigner, SecurityError, Signer, Verifier};
+pub use keys::{Ed25519Signer, Ed25519Verifier, Dilithium3Signer, Dilithium3Verifier};
+pub use keymanager::{KeyManager, KeyManagerError, KeyMetadata};
 
 #[cfg(test)]
 mod tests {
