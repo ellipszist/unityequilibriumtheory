@@ -1,5 +1,7 @@
 mod db;
 mod mcp;
+mod mcp_http;
+mod embeddings;
 
 use clap::{Parser, Subcommand};
 use std::path::Path;
@@ -19,7 +21,7 @@ struct Cli {
 enum Commands {
     /// Initialize the database (Install extensions & Tables)
     InitDb,
-    /// Ingest a text file (Fake embedding for now)
+    /// Ingest a text file with real hash-based embeddings
     Ingest {
         #[arg(short, long)]
         file: String,
@@ -29,8 +31,13 @@ enum Commands {
         #[arg(short, long)]
         query: String,
     },
-    /// Start the MCP JSON-RPC Server
+    /// Start the MCP JSON-RPC Server (stdin/stdout)
     StartMcpServer,
+    /// Start the MCP HTTP Server
+    StartHttpServer {
+        #[arg(short, long, default_value = "3002")]
+        port: u16,
+    },
 }
 
 #[tokio::main]
@@ -67,16 +74,15 @@ async fn main() {
             let doc_id = db::insert_document(&pool, None, file, &content, None).await.expect("Failed to insert doc");
             println!("Created Document ID: {}", doc_id);
 
-            // Mock Chunking & Embedding
-            let chunks = content.split('\n').filter(|s| !s.trim().is_empty());
-            for (_i, chunk_text) in chunks.enumerate() {
-                // Mock Embedding: use 1024 for semantic, 20 for physics
-                let s_vec = vec![0.0; 1024]; 
-                let p_vec = vec![0.0; 20];
+            // Chunk & Embed with real hash-based embeddings
+            let chunks: Vec<&str> = content.split('\n').filter(|s| !s.trim().is_empty()).collect();
+            for chunk_text in &chunks {
+                let s_vec = embeddings::hash_embed(chunk_text, 1024);
+                let p_vec = vec![0.0; 20]; // Physics vector filled by domain-specific tools
 
                 db::insert_chunk(&pool, &doc_id, chunk_text, &s_vec, &p_vec).await.expect("Failed to insert chunk");
             }
-            println!("✅ Ingestion complete.");
+            println!("✅ Ingested {} chunks with embeddings.", chunks.len());
         }
         Some(Commands::Search { query }) => {
             println!("Searching for: '{}'", query);
@@ -88,8 +94,8 @@ async fn main() {
                 }
             };
             
-            // Query Embedding (Mock 1024d)
-            let vec = vec![0.0; 1024]; 
+            // Generate query embedding
+            let vec = embeddings::hash_embed(query, 1024); 
             
             // Top K = 5
             match db::search_similar(&pool, &vec, 5).await {
@@ -104,6 +110,11 @@ async fn main() {
         Some(Commands::StartMcpServer) => {
             if let Err(e) = mcp::run_mcp_server(&cli.db_url).await {
                 eprintln!("MCP Server Error: {}", e);
+            }
+        }
+        Some(Commands::StartHttpServer { port }) => {
+            if let Err(e) = mcp_http::run_http_mcp_server(&cli.db_url, *port).await {
+                eprintln!("MCP HTTP Server Error: {}", e);
             }
         }
         None => {
