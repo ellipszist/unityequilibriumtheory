@@ -68,6 +68,7 @@ We categorize our research into **3 Impact Zones**:
 | [0.29](0.29_Ocean_Recovery/) | **Ocean Recovery** | Ocean Acidification | Graphene Ocean Shield | ✅ |
 | [0.30](0.30_Mega_Flora_Biotech/) | **Mega Flora Biotech** | Agricultural Yield | Acoustic Nutrient Delivery | ✅ |
 | [0.31](0.31_SpaceTime_Propulsion/) | **SpaceTime Propulsion** | Interstellar Travel | Relativistic Slingshot | ✅ |
+| [0.32](0.32_Micro_Nuclear_Fusion/) | **Micro Nuclear Fusion** | High Energy / Low Input | Graphene-Perovskite UET Resonance | ✅ |
 
 ---
 
