@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Save } from 'lucide-react';
-import { ThemeToggle } from '@/components/theme-toggle';
+import AppShell from '@/components/layout/AppShell';
 
 export default function EditProfilePage() {
   const router = useRouter();
@@ -68,17 +68,8 @@ export default function EditProfilePage() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground text-sm">
-      <header className="sticky top-0 z-50 flex items-center justify-between h-14 px-6 border-b border-border bg-background/80 backdrop-blur-md">
-        <div className="flex items-center gap-4">
-          <Link href={`/${locale}/profile/${userId || ''}`} className="p-1.5 rounded-lg hover:bg-muted transition-colors">
-            <ArrowLeft size={18} />
-          </Link>
-          <h1 className="font-semibold">Edit Profile</h1>
-        </div>
-        <ThemeToggle />
-      </header>
-
+    <AppShell>
+      <div className="h-full overflow-y-auto">
       <div className="max-w-lg mx-auto w-full py-10 px-4">
         <form onSubmit={handleSubmit} className="space-y-5">
           {error && (
@@ -152,6 +143,7 @@ export default function EditProfilePage() {
           </div>
         </form>
       </div>
-    </div>
+      </div>
+    </AppShell>
   );
 }
