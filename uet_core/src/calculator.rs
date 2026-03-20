@@ -38,7 +38,13 @@ impl UnityCalculator {
         // 2. Kappa derivation (Information Inertia)
         // If info_density is 0, we fallback to a safe small value to avoid NaN
         let safe_density = if self.info_density > 0.0 { self.info_density } else { 1e-10 };
-        let kappa = beta / safe_density;
+        let mut kappa = beta / safe_density;
+
+        // Apply Planck Boundary (The Universe's Floor)
+        // From 0.23_Unity_Scale_Link: The minimum valid information tension in the universe is 0.5
+        if kappa < 0.5 {
+            kappa = 0.5;
+        }
 
         // 3. Construct Parameters with Context
         let mut params = UETParameters::default();
@@ -72,5 +78,17 @@ mod tests {
         
         let beta_ev = params.beta / 1.602176634e-19;
         assert!((beta_ev - 0.0179).abs() < 0.001);
+    }
+
+    #[test]
+    fn test_planck_boundary() {
+        // Scenario with extreme information density near a black hole singularity
+        // Density is massive, which would naturally drive kappa towards 0.
+        let extrem_density = 1e40;
+        let calc = UnityCalculator::new(1e-35, 300.0, extrem_density);
+        let params = calc.derive_parameters();
+
+        // The Planck boundary safety must arrest the fall precisely at 0.5
+        assert_eq!(params.kappa, 0.5, "Planck boundary minimum of 0.5 not enforced!");
     }
 }

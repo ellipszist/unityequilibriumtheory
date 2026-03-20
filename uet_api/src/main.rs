@@ -1,3 +1,4 @@
+mod agent;
 mod auth;
 mod config;
 mod db;
@@ -66,7 +67,9 @@ async fn main() -> anyhow::Result<()> {
         .route("/api/auth/oauth/google", get(handlers::google_auth))
         .route("/api/auth/oauth/google/callback", get(handlers::google_callback))
         .route("/api/auth/oauth/github", get(handlers::github_auth))
-        .route("/api/auth/oauth/github/callback", get(handlers::github_callback));
+        .route("/api/auth/oauth/github/callback", get(handlers::github_callback))
+        .route("/api/workchat", post(agent::workchat_handler))
+        .route("/api/workchat/ingest", post(agent::ingest_handler));
 
     // Protected routes (auth middleware applied)
     let protected_routes = Router::new()

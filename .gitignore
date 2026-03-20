@@ -67,3 +67,9 @@ uet_api/.fastembed_cache/
 # Node
 node_modules/
 .next/
+.obsidian/
+/uet_history/
+/uet_knowledge_state.json
+/uet_web/Docs_software_design/*
+!/uet_web/Docs_software_design/daily_reports/
+!/uet_web/Docs_software_design/daily_reports/**

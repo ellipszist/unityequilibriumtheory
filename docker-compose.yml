@@ -38,8 +38,8 @@ services:
       - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET:-}
       - GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID:-}
       - GITHUB_CLIENT_SECRET=${GITHUB_CLIENT_SECRET:-}
-      - OAUTH_REDIRECT_URL=${OAUTH_REDIRECT_URL:-http://localhost:3000/auth/callback}
-      - FRONTEND_URL=${FRONTEND_URL:-http://localhost:3000}
+      - OAUTH_REDIRECT_URL=${OAUTH_REDIRECT_URL:-http://localhost:3002/auth/callback}
+      - FRONTEND_URL=${FRONTEND_URL:-http://localhost:3002}
     ports:
       - "3001:3001"
     command: ["uet_api"]
@@ -49,15 +49,18 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.web
+      args:
+        DATABASE_URL: postgres://postgres:postgres@postgres:5432/uetlab
     container_name: uet_web_server
     depends_on:
       - uet_api
     environment:
       - NODE_ENV=production
       - NEXT_PUBLIC_API_URL=http://localhost:3001
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/uetlab
       - PORT=3000
     ports:
-      - "3000:3000"
+      - "3005:3000"
     command: ["node", "server.js"]
 
 volumes:

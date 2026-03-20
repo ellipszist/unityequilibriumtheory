@@ -1,7 +1,9 @@
 # Dockerfile for UET Web (Next.js Frontend)
-FROM node:20-alpine AS builder
+FROM node:20-bookworm-slim AS builder
 
 WORKDIR /app
+ARG DATABASE_URL
+ENV DATABASE_URL=${DATABASE_URL}
 
 # Copy package files
 COPY uet_web/package*.json ./
@@ -17,14 +19,16 @@ ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 
 # Runtime Stage
-FROM node:20-alpine AS runner
+FROM node:20-bookworm-slim AS runner
 
 WORKDIR /app
+ARG DATABASE_URL
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
+ENV DATABASE_URL=${DATABASE_URL}
 
 # Create nextjs user
 RUN addgroup --system --gid 1001 nodejs
