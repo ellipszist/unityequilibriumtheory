@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation';
 import { useParams } from 'next/navigation';
 import MessengerPopover from '@/components/chat/MessengerPopover';
 import NotificationBell from '@/components/layout/NotificationBell';
+import ProfilePopover from '@/components/layout/ProfilePopover';
 import { useChatContext } from '@/components/chat/ChatProvider';
 
 const INSTALL_COMMANDS: Record<string, string> = {
@@ -88,13 +89,7 @@ export default function Home() {
             </Link>
             <MessengerPopover onOpenChat={(contact) => openChat(contact)} />
             <NotificationBell />
-            <Link href={`/${locale}/account`} className="w-9 h-9 rounded-full bg-gradient-to-br from-[#0d7a5f] to-emerald-600 flex items-center justify-center text-white text-xs font-bold ml-0.5" title="Profile">
-              U
-            </Link>
-            <div className="flex items-center gap-1 ml-1">
-              <LocaleSwitcher />
-              <ThemeToggle />
-            </div>
+            <ProfilePopover />
           </div>
         </div>
       </nav>
