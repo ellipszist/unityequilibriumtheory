@@ -7,7 +7,7 @@ export async function GET(
 ) {
   try {
     const prisma = getPrisma()
-    const projects = await prisma.project.findMany({
+    const projects = await (prisma as any).project.findMany({
       where: { workspaceId: params.id },
       include: {
         tasks: {
@@ -52,13 +52,13 @@ export async function POST(
     // Auto-create project if none specified
     let targetProjectId = projectId
     if (!targetProjectId) {
-      const defaultProject = await prisma.project.findFirst({
+      const defaultProject = await (prisma as any).project.findFirst({
         where: { workspaceId: params.id, name: 'Default' },
       })
       if (defaultProject) {
         targetProjectId = defaultProject.id
       } else {
-        const newProject = await prisma.project.create({
+        const newProject = await (prisma as any).project.create({
           data: {
             workspaceId: params.id,
             ownerId: userId,
