@@ -1,48 +1,30 @@
 "use client";
 
-import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
-import { Sparkles, Github, BookOpen, MessageSquare, ArrowRight, Zap, Network, Scale, Copy, Check, Globe, Terminal, Cpu, Database, Shield, LayoutGrid, Bell, MessageCircle } from 'lucide-react';
-import { ThemeToggle } from '@/components/theme-toggle';
-import { LocaleSwitcher } from "@/components/locale-switcher";
-import { useRouter } from 'next/navigation';
+import { Sparkles, Github, BookOpen, MessageSquare, ArrowRight, Zap, Network, Scale, Globe, Cpu, Database, Shield } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import MessengerPopover from '@/components/chat/MessengerPopover';
+import MenuPopover from '@/components/layout/MenuPopover';
 import NotificationBell from '@/components/layout/NotificationBell';
 import ProfilePopover from '@/components/layout/ProfilePopover';
 import { useChatContext } from '@/components/chat/ChatProvider';
-
-const INSTALL_COMMANDS: Record<string, string> = {
-  "Python Library": "pip install git+https://github.com/unityequilibrium/UnityEquilibriumTheory.git",
-  "Topic Verification": "git clone ... && cd UnityEquilibriumTheory && pip install -e .",
-  "Developer Setup": "pip install -e '.[dev]'",
-};
 
 const FEATURES = [
   { icon: Cpu, title: "Runs on Your Machine", desc: "macOS, Windows, or Linux. Private by default — your data stays yours." },
   { icon: Globe, title: "Any Framework", desc: "Connect to Next.js, React, Rust, Python. Works with any language or stack." },
   { icon: Database, title: "Persistent Knowledge", desc: "Remembers equations, proofs, and concepts uniquely tuned to UET." },
-  { icon: Terminal, title: "Full API Access", desc: "Query the UET knowledge base via REST or MCP JSON-RPC endpoints." },
+  { icon: Zap, title: "Full API Access", desc: "Query the UET knowledge base via REST or MCP JSON-RPC endpoints." },
   { icon: Shield, title: "Quantum-Resistant", desc: "Built with Dilithium PQ signatures and SHA3/BLAKE3 hashing from day one." },
   { icon: Zap, title: "Proof-of-Useful-Work", desc: "Mining = solving real UET equations. Earn Uet-Cash for valid proofs." },
 ];
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState("Python Library");
-  const [copied, setCopied] = useState(false);
   const t = useTranslations('Index');
   const tNav = useTranslations('Navigation');
   const params = useParams();
   const locale = params?.locale as string || 'en';
   const { openChat } = useChatContext();
-
-  function handleCopy() {
-    navigator.clipboard.writeText(INSTALL_COMMANDS[activeTab]);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  }
 
   return (
     <div className="flex flex-col min-h-screen bg-white dark:bg-[#0a0a0f] text-black dark:text-white">
@@ -74,19 +56,14 @@ export default function Home() {
               <Sparkles className="w-4 h-4 text-purple-500" />
               Workchat
             </Link>
-            <Link href={`/${locale}/docs`} className="hover:text-black dark:hover:text-white transition-colors">
-              {t('readDocs')}
-            </Link>
-            <Link href={`/${locale}/topics`} className="hover:text-black dark:hover:text-white transition-colors">
-              Topics
+            <Link href={`/${locale}/news`} className="hover:text-black dark:hover:text-white transition-colors">
+              News
             </Link>
           </div>
 
           {/* Right nav — Facebook-style icons */}
           <div className="flex items-center gap-1.5">
-            <Link href={`/${locale}/search`} className="w-9 h-9 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 flex items-center justify-center transition-colors" title="Menu">
-              <LayoutGrid size={17} className="text-black/70 dark:text-white/70" />
-            </Link>
+            <MenuPopover />
             <MessengerPopover onOpenChat={(contact) => openChat(contact)} />
             <NotificationBell />
             <ProfilePopover />
@@ -111,55 +88,18 @@ export default function Home() {
             {t('description')}
           </p>
 
-          {/* Quick-start command block */}
-          <div className="w-full max-w-2xl rounded-xl border border-black/10 dark:border-white/10 bg-gray-100 dark:bg-black/50 overflow-hidden shadow-2xl">
-            {/* Tabs */}
-            <div className="flex items-center gap-1 px-4 py-2 border-b border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5">
-              {Object.keys(INSTALL_COMMANDS).map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
-                    activeTab === tab
-                      ? "bg-[#0d7a5f] text-white"
-                      : "text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white"
-                  }`}
-                >
-                  {tab}
-                </button>
-              ))}
-            </div>
-            {/* Command */}
-            <div className="flex items-center justify-between px-5 py-4">
-              <code className="text-sm text-green-600 dark:text-green-400 font-mono whitespace-pre-wrap text-left break-all">
-                <span className="text-black/40 dark:text-white/40">$ </span>
-                {INSTALL_COMMANDS[activeTab]}
-              </code>
-              <button
-                onClick={handleCopy}
-                className="ml-4 p-1.5 rounded hover:bg-black/10 dark:hover:bg-white/10 text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors flex-shrink-0 self-start"
-              >
-                {copied ? <Check size={16} className="text-green-600 dark:text-green-400" /> : <Copy size={16} />}
-              </button>
-            </div>
-          </div>
-          <p className="mt-3 text-xs text-black/40 dark:text-white/40">
-            Choose <strong className="text-black/70 dark:text-white/70">Python Library</strong> for API usage, or <strong className="text-black/70 dark:text-white/70">Topic Verification</strong> to reproduce the 31 domains.
-          </p>
-
           <div className="flex items-center gap-4 mt-8">
             <Link
-              href="/docs"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#0d7a5f] hover:bg-[#0b644d] text-white font-semibold text-sm transition-colors"
+              href={`/${locale}/feed`}
+              className="flex items-center gap-2 px-6 py-2.5 rounded-lg bg-[#0d7a5f] hover:bg-[#0b644d] text-white font-semibold text-sm transition-colors"
             >
-              <BookOpen size={16} /> {t('readDocs')}
+              Get Started
             </Link>
             <Link
-              href="https://github.com/unityequilibrium/UnityEquilibriumTheory"
-              target="_blank"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-lg border border-black/20 dark:border-white/20 hover:bg-black/10 dark:hover:bg-white/10 text-sm transition-colors"
+              href={`/${locale}/docs`}
+              className="flex items-center gap-2 px-6 py-2.5 rounded-lg border border-black/20 dark:border-white/20 hover:bg-black/10 dark:hover:bg-white/10 text-sm transition-colors"
             >
-              <Github size={16} /> {t('viewGithub')}
+              <BookOpen size={16} /> {t('readDocs')}
             </Link>
           </div>
         </section>

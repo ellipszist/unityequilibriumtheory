@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import { useParams, useSearchParams } from 'next/navigation';
 import { PenSquare, TrendingUp, Clock, Users, User, MessageCircle } from 'lucide-react';
+import CreatePostModal from '@/components/feed/CreatePostModal';
 import AppShell from '@/components/layout/AppShell';
 import ThreePanelLayout from '@/components/layout/ThreePanelLayout';
 import ProfilePanel from '@/components/feed/ProfilePanel';
@@ -96,6 +97,8 @@ export default function FeedPage() {
     return () => observer.disconnect();
   }, [hasMore, loading, fetchPosts]);
 
+  const [showCreateModal, setShowCreateModal] = useState(false);
+
   const modes: { key: FeedMode; label: string; icon: typeof Clock }[] = [
     { key: 'latest', label: 'Latest', icon: Clock },
     { key: 'trending', label: 'Trending', icon: TrendingUp },
@@ -134,13 +137,13 @@ export default function FeedPage() {
             ))}
           </div>
 
-          <Link
-            href={`/${locale}/feed/new`}
+          <button
+            onClick={() => setShowCreateModal(true)}
             className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-xs font-semibold hover:bg-primary/90 transition-colors"
           >
             <PenSquare size={14} />
             New Post
-          </Link>
+          </button>
         </div>
 
         {/* Tag filter indicator */}
@@ -181,6 +184,11 @@ export default function FeedPage() {
         </div>
       </div>
         }
+      />
+      <CreatePostModal
+        open={showCreateModal}
+        onClose={() => setShowCreateModal(false)}
+        onPosted={() => { setShowCreateModal(false); fetchPosts(); }}
       />
     </AppShell>
   );
