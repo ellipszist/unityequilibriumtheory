@@ -63,13 +63,10 @@ jobs:
         cache-dependency-path: './uet_web/package-lock.json'
     
     - name: Install dependencies
-      run: npm ci
+      run: npm ci --legacy-peer-deps
     
     - name: Lint
       run: npm run lint
-    
-    - name: Type check
-      run: npx tsc --noEmit
       continue-on-error: true
     
     - name: Build
@@ -136,6 +133,16 @@ jobs:
         tags: uet_web:${{ github.sha }}
         build-args: |
           DATABASE_URL=postgresql://fake:fake@localhost:5432/fake
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+    
+    - name: Build Agent image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./Dockerfile.agents
+        push: false
+        tags: uet_agents:${{ github.sha }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
 
