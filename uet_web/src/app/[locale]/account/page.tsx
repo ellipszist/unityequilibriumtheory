@@ -99,7 +99,7 @@ export default function AccountDashboard() {
     INTEGRATIONS.map((t) => ({ id: t, content: <span className="text-xs font-medium">{t}</span> }))
   );
 
-  const API_BASE = "http://localhost:3001";
+  const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
   const DEV_MODE = process.env.NODE_ENV === "development";
 
   // Dev mock data for previewing UI without backend

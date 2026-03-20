@@ -68,8 +68,8 @@ services:
       - uet_agents
     environment:
       - NODE_ENV=production
-      - NEXT_PUBLIC_API_URL=http://localhost:3001
       - NEXT_PUBLIC_AGENT_URL=http://uet_agents:8001
+      - NEXT_PUBLIC_API_URL=http://uet_api:3001
       - DATABASE_URL=postgres://postgres:postgres@postgres:5432/uetlab
       - PORT=3000
     ports:

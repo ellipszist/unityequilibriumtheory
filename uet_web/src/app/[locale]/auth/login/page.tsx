@@ -17,7 +17,7 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:3001/api/auth/login", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001"}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -132,7 +132,7 @@ export default function LoginPage() {
 
           <div className="mt-4 grid grid-cols-2 gap-3">
             <a
-              href="http://localhost:3001/api/auth/oauth/google"
+              href={`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001"}/api/auth/oauth/google`}
               className="flex items-center justify-center gap-2 py-2.5 rounded-lg border border-white/10 bg-white/5 text-white/70 text-sm hover:bg-white/10"
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24">
@@ -144,7 +144,7 @@ export default function LoginPage() {
               Google
             </a>
             <a
-              href="http://localhost:3001/api/auth/oauth/github"
+              href={`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001"}/api/auth/oauth/github`}
               className="flex items-center justify-center gap-2 py-2.5 rounded-lg border border-white/10 bg-white/5 text-white/70 text-sm hover:bg-white/10"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
