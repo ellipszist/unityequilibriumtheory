@@ -64,6 +64,10 @@ uet_core/target/
 uet_miner/uet_miner.exe
 uet_miner/uet_miner_linux
 
+# API keys / local config (NEVER commit these)
+research_uet/knowledge_base/config.toml
+research_uet/knowledge_base/cost_log.jsonl
+
 # ML model cache
 uet_api/.fastembed_cache/
 
