@@ -4,11 +4,14 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
-import { Sparkles, Github, BookOpen, MessageSquare, ArrowRight, Zap, Network, Scale, Copy, Check, Globe, Terminal, Cpu, Database, Shield } from 'lucide-react';
+import { Sparkles, Github, BookOpen, MessageSquare, ArrowRight, Zap, Network, Scale, Copy, Check, Globe, Terminal, Cpu, Database, Shield, LayoutGrid, Bell, MessageCircle } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { LocaleSwitcher } from "@/components/locale-switcher";
 import { useRouter } from 'next/navigation';
 import { useParams } from 'next/navigation';
+import MessengerPopover from '@/components/chat/MessengerPopover';
+import NotificationBell from '@/components/layout/NotificationBell';
+import { useChatContext } from '@/components/chat/ChatProvider';
 
 const INSTALL_COMMANDS: Record<string, string> = {
   "Python Library": "pip install git+https://github.com/unityequilibrium/UnityEquilibriumTheory.git",
@@ -32,6 +35,7 @@ export default function Home() {
   const tNav = useTranslations('Navigation');
   const params = useParams();
   const locale = params?.locale as string || 'en';
+  const { openChat } = useChatContext();
 
   function handleCopy() {
     navigator.clipboard.writeText(INSTALL_COMMANDS[activeTab]);
@@ -57,37 +61,37 @@ export default function Home() {
             <img src="/logo.png" alt="UET Logo" className="w-8 h-8 object-contain" />
             UET
           </div>
-          <div className="flex items-center gap-4 text-sm font-medium text-black/60 dark:text-white/60">
+          {/* Center nav links */}
+          <div className="flex items-center gap-6 text-sm font-medium text-black/60 dark:text-white/60">
             <Link href={`/${locale}/feed`} className="hover:text-black dark:hover:text-white transition-colors">
               Feed
             </Link>
-            <Link href={`/${locale}/messages`} className="hover:text-black dark:hover:text-white transition-colors">
-              Messages
+            <Link href={`/${locale}/workspaces`} className="hover:text-black dark:hover:text-white transition-colors">
+              Projects
+            </Link>
+            <Link href={`/${locale}/chat`} className="hover:text-black dark:hover:text-white transition-colors flex items-center gap-1">
+              <Sparkles className="w-4 h-4 text-purple-500" />
+              Workchat
             </Link>
             <Link href={`/${locale}/docs`} className="hover:text-black dark:hover:text-white transition-colors">
               {t('readDocs')}
             </Link>
-            <Link href={`/${locale}/chat`} className="hover:text-black dark:hover:text-white transition-colors flex items-center gap-1">
-              <Sparkles className="w-4 h-4 text-purple-500" />
-              Workchat Studio
-            </Link>
             <Link href={`/${locale}/topics`} className="hover:text-black dark:hover:text-white transition-colors">
               Topics
             </Link>
-            <Link
-              href="https://github.com/unityequilibrium/UnityEquilibriumTheory"
-              target="_blank"
-              className="flex items-center gap-1.5 hover:text-black dark:hover:text-white transition-colors"
-            >
-              <Github size={15} /> GitHub
+          </div>
+
+          {/* Right nav — Facebook-style icons */}
+          <div className="flex items-center gap-1.5">
+            <Link href={`/${locale}/search`} className="w-9 h-9 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 flex items-center justify-center transition-colors" title="Menu">
+              <LayoutGrid size={17} className="text-black/70 dark:text-white/70" />
             </Link>
-            <Link
-              href="/account"
-              className="px-3 py-1.5 rounded-md bg-black/10 dark:bg-white/10 hover:bg-black/20 dark:hover:bg-white/20 text-black dark:text-white transition-colors text-sm"
-            >
-              {tNav('dashboard')}
+            <MessengerPopover onOpenChat={(contact) => openChat(contact)} />
+            <NotificationBell />
+            <Link href={`/${locale}/account`} className="w-9 h-9 rounded-full bg-gradient-to-br from-[#0d7a5f] to-emerald-600 flex items-center justify-center text-white text-xs font-bold ml-0.5" title="Profile">
+              U
             </Link>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 ml-1">
               <LocaleSwitcher />
               <ThemeToggle />
             </div>

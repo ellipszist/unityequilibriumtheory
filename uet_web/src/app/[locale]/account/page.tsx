@@ -384,7 +384,7 @@ export default function AccountDashboard() {
         </Link>
         <nav className="ml-8 flex items-center gap-1 text-xs">
           {([
-            { key: "overview", label: "Overview" },
+            { key: "overview", label: "Profile" },
             { key: "wallet", label: "Wallet" },
             { key: "mining", label: "Mining" },
           ] as const).map((tab) => (
