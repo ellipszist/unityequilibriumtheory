@@ -1,11 +1,19 @@
 import uvicorn
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional, Dict, Any
 from .executive_router import ExecutiveRouter
 from .semantic_engine import UETSemanticEngine
 
 app = FastAPI(title="UET Semantic Engine API")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 engine = UETSemanticEngine()
 router = ExecutiveRouter(engine)
 

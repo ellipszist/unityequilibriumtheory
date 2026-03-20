@@ -10,6 +10,8 @@ interface Message {
   timestamp: string;
 }
 
+const AGENT_URL = process.env.NEXT_PUBLIC_AGENT_URL || 'http://localhost:8001';
+
 interface ChatPanelProps {
   activeSources: any[];
   setIsComputing: (state: boolean) => void;
@@ -73,7 +75,7 @@ export default function ChatPanel({ activeSources, setIsComputing, setMiningStat
       const context = activeSources.map(s => s.content).join('\n\n');
       
       const token = localStorage.getItem('access_token');
-      const response = await fetch('http://localhost:8001/ingest', {
+      const response = await fetch(`${AGENT_URL}/ingest`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -140,7 +142,7 @@ export default function ChatPanel({ activeSources, setIsComputing, setMiningStat
 
       // Call Python Semantic Engine directly (bypassing Rust for local dev)
       const token = localStorage.getItem('access_token');
-      const response = await fetch('http://localhost:8001/chat', {
+      const response = await fetch(`${AGENT_URL}/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -167,7 +169,7 @@ export default function ChatPanel({ activeSources, setIsComputing, setMiningStat
 
       let debugSession: DebugSessionResponse | null = null;
       if (data.session_id) {
-        const debugResponse = await fetch(`http://localhost:8001/debug/session/${data.session_id}`);
+        const debugResponse = await fetch(`${AGENT_URL}/debug/session/${data.session_id}`);
         if (debugResponse.ok) {
           debugSession = await debugResponse.json();
         }
