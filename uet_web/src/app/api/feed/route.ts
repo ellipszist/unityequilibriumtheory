@@ -40,14 +40,15 @@ export async function GET(request: Request) {
           select: {
             id: true,
             email: true,
-            name: true,
-            image: true,
+            displayName: true,
+            avatarUrl: true,
+            institution: true,
             reputation: true,
           } as any,
         },
         tags: true,
         _count: {
-          select: { comments: true } as any,
+          select: { comments: true, votes: true } as any,
         },
       },
     })
