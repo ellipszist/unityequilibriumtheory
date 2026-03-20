@@ -1,8 +1,11 @@
 import os
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import requests
 from dotenv import load_dotenv
+
+load_dotenv(Path(__file__).parent / ".env")
 
 
 class UETResponseComposer:
@@ -14,7 +17,6 @@ class UETResponseComposer:
         recent_episodes: Optional[List[Dict[str, Any]]] = None,
         procedure_hint: str = "",
     ) -> str:
-        load_dotenv()
         api_key = os.getenv("OPENROUTER_API_KEY", "")
 
         if not equilibrium_data["equilibrium_found"]:
