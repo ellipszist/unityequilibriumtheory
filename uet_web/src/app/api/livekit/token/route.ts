@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { AccessToken } from 'livekit-server-sdk'
 
 export async function POST(request: Request) {
   try {
@@ -14,30 +15,25 @@ export async function POST(request: Request) {
     const apiKey = process.env.LIVEKIT_API_KEY || 'devkey'
     const apiSecret = process.env.LIVEKIT_API_SECRET || 'devsecret'
 
-    // Manual JWT token creation for LiveKit
-    // In production, use: import { AccessToken } from 'livekit-server-sdk'
-    // For now, create a simple token structure
-    const header = btoa(JSON.stringify({ alg: 'HS256', typ: 'JWT' }))
-    const now = Math.floor(Date.now() / 1000)
-    const payload = btoa(JSON.stringify({
-      iss: apiKey,
-      sub: userId || participantName,
+    const at = new AccessToken(apiKey, apiSecret, {
+      identity: userId || participantName,
       name: participantName,
-      iat: now,
-      exp: now + 3600, // 1 hour
-      video: {
-        room: roomName,
-        roomJoin: true,
-        canPublish: true,
-        canSubscribe: true,
-      },
-    }))
+      ttl: '1h',
+    })
 
-    // Note: This is a simplified token for development.
-    // In production, install livekit-server-sdk and use AccessToken class.
-    const token = `${header}.${payload}.dev-signature`
+    at.addGrant({
+      room: roomName,
+      roomJoin: true,
+      canPublish: true,
+      canSubscribe: true,
+    })
 
-    return NextResponse.json({ token, serverUrl: process.env.NEXT_PUBLIC_LIVEKIT_URL || 'ws://localhost:7880' })
+    const token = await at.toJwt()
+
+    return NextResponse.json({
+      token,
+      serverUrl: process.env.NEXT_PUBLIC_LIVEKIT_URL || 'ws://localhost:7880',
+    })
   } catch (error) {
     console.error('Error generating LiveKit token:', error)
     return NextResponse.json({ error: 'Failed to generate token' }, { status: 500 })
