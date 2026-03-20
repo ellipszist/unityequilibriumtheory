@@ -61,7 +61,8 @@ class UETResponseComposer:
                     "Content-Type": "application/json"
                 },
                 json={
-                    "model": "qwen/qwen-2.5-7b-instruct",
+                    "model": "z-ai/glm-4.7-flash",
+                    "max_tokens": 2000,
                     "messages": [
                         {
                             "role": "system",
@@ -76,7 +77,8 @@ class UETResponseComposer:
             )
 
             res_json = response.json()
-            llm_text = res_json["choices"][0]["message"]["content"]
+            msg = res_json["choices"][0]["message"]
+            llm_text = msg.get("content") or msg.get("reasoning", "")
 
             return f"{llm_text}\n\n---\n*⚡ คำนวณผ่าน UET Engine (Resonance: {score:.4f} | Work: {work:.4f} Ω)*"
         except Exception as e:
