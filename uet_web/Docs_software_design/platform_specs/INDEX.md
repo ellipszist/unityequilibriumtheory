@@ -1,0 +1,62 @@
+# UET v5.0 — Platform Specification Index
+
+Welcome to the Unity Mega-Platform v5.0 Specification Directory. These documents define the Architecture of Trust, the Economic Constitution, and the six core Towers of intelligence.
+
+## 🏛️ Foundations
+- [00__MASTER_BLUEPRINT_v5.0_FINAL.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/uet_history/software_design/platform_specs/00__MASTER_BLUEPRINT_v5.0_FINAL.md)
+- [01__SYSTEM_CONTRACT_v5.0_CONSTITUTION.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/uet_history/software_design/platform_specs/01__SYSTEM_CONTRACT_v5.0_CONSTITUTION.md)
+- [02__DATA_SCHEMA_v5.0_UNIFIED.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/uet_history/software_design/platform_specs/02__DATA_SCHEMA_v5.0_UNIFIED.md)
+
+## 📡 The 6 Towers (Core Engines)
+- [03__AGENT_ENGINE_v5.0_SPEC.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/uet_history/software_design/platform_specs/03__AGENT_ENGINE_v5.0_SPEC.md)
+- [04__RAG_ENGINE_v5.0_SPEC.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/uet_history/software_design/platform_specs/04__RAG_ENGINE_v5.0_SPEC.md)
+- [05__FLOW_AND_EVENT_v5.0_SPINE.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/uet_history/software_design/platform_specs/05__FLOW_AND_EVENT_v5.0_SPINE.md)
+- [06__MODEL_ROUTING_v5.0_OPTIMIZER.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/uet_history/software_design/platform_specs/06__MODEL_ROUTING_v5.0_OPTIMIZER.md)
+- [07__KNOWLEDGE_SYNC_v5.0_SPEC.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/uet_history/software_design/platform_specs/07__KNOWLEDGE_SYNC_v5.0_SPEC.md)
+
+## 🛡️ Governance & 💹 Economics
+- [08__PLATFORM_GOVERNANCE_v5.0_ROLES.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/uet_history/software_design/platform_specs/08__PLATFORM_GOVERNANCE_v5.0_ROLES.md)
+- [09__PLATFORM_ENERGY_UNITS.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/uet_history/software_design/platform_specs/09__PLATFORM_ENERGY_UNITS.md)
+- [10__SYSTEM_COORDINATION_v5.0_RULES.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/uet_history/software_design/platform_specs/10__SYSTEM_COORDINATION_v5.0_RULES.md)
+- [11__SLA_AND_VERIFICATION_v5.0_STABILITY.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/uet_history/software_design/platform_specs/11__SLA_AND_VERIFICATION_v5.0_STABILITY.md)
+- [12__MATHNICRY_ECONOMIC_CONSTITUTION.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/uet_history/software_design/platform_specs/12__MATHNICRY_ECONOMIC_CONSTITUTION.md)
+
+## 🌐 Global Infrastructure
+- [13__DECENTRALIZED_INFRA_v5.0_DEN.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/uet_history/software_design/platform_specs/13__DECENTRALIZED_INFRA_v5.0_DEN.md)
+- [14__UNITY_LEDGER_POUW_POE_v5.0_SPEC.md](file:///c:/Users/santa/Desktop/uet_harness/uet_history/software_design/platform_specs/14__UNITY_LEDGER_POUW_POE_v5.0_SPEC.md)
+- [15__ACADEMIC_SOCIAL_PLATFORM_v5.0_SPEC.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/uet_history/software_design/platform_specs/15__ACADEMIC_SOCIAL_PLATFORM_v5.0_SPEC.md)
+
+## 🔐 Security and Rotation
+- [17__QUANTUM_RESISTANT_SECURITY_STANDARD_v5.0.md](file:///c:/Users/santa/Desktop/uet_harness/uet_history/software_design/platform_specs/17__QUANTUM_RESISTANT_SECURITY_STANDARD_v5.0.md)
+- [18__TASK_PORTFOLIO_AND_ROTATION_v5.0.md](file:///c:/Users/santa/Desktop/uet_harness/uet_history/software_design/platform_specs/18__TASK_PORTFOLIO_AND_ROTATION_v5.0.md)
+
+## 🏛️ Governance
+- [19__DECENTRALIZED_GOVERNANCE_v5.0.md](file:///c:/Users/santa/Desktop/uet_harness/uet_history/software_design/platform_specs/19__DECENTRALIZED_GOVERNANCE_v5.0.md)
+
+## 🔮 Oracle Infrastructure
+- [20__ORACLE_INFRASTRUCTURE_v5.0.md](file:///c:/Users/santa/Desktop/uet_harness/uet_history/software_design/platform_specs/20__ORACLE_INFRASTRUCTURE_v5.0.md)
+
+## 💰 Economic Policy
+- [21__ECONOMIC_POLICY_v5.0.md](file:///c:/Users/santa/Desktop/uet_harness/uet_history/software_design/platform_specs/21__ECONOMIC_POLICY_v5.0.md)
+
+## 📊 Market Infrastructure
+- [22__MARKET_INFRASTRUCTURE_v5.0.md](file:///c:/Users/santa/Desktop/uet_harness/uet_history/software_design/platform_specs/22__MARKET_INFRASTRUCTURE_v5.0.md)
+
+## 🧭 Current Architecture Addenda
+- [23__LATEST_PLATFORM_FLOW_v1.md](file:///c:/Users/santa/Desktop/uet_harness/uet_web/docs/software_design/platform_specs/23__LATEST_PLATFORM_FLOW_v1.md)
+- [24__AI_AGENT_MEMORY_ARCHITECTURE_v1.md](file:///c:/Users/santa/Desktop/uet_harness/uet_web/docs/software_design/platform_specs/24__AI_AGENT_MEMORY_ARCHITECTURE_v1.md)
+- [25__WORKCHAT_AND_LIBRECHAT_BOUNDARY_v1.md](file:///c:/Users/santa/Desktop/uet_harness/uet_web/docs/software_design/platform_specs/25__WORKCHAT_AND_LIBRECHAT_BOUNDARY_v1.md)
+- [26__IMPLEMENTATION_GAP_MATRIX_v1.md](file:///c:/Users/santa/Desktop/uet_harness/uet_web/docs/software_design/platform_specs/26__IMPLEMENTATION_GAP_MATRIX_v1.md)
+- [27__PHASED_EXECUTION_PLAN_v1.md](file:///c:/Users/santa/Desktop/uet_harness/uet_web/docs/software_design/platform_specs/27__PHASED_EXECUTION_PLAN_v1.md)
+
+
+## 🔧 Open-Source Integration Layer (New — 2026-03-20)
+- [28__OPEN_SOURCE_STACK_SELECTION_v1.md](./28__OPEN_SOURCE_STACK_SELECTION_v1.md)
+- [29__SOCIAL_FEED_AND_PROFILES_SPEC_v1.md](./29__SOCIAL_FEED_AND_PROFILES_SPEC_v1.md)
+- [30__REALTIME_CHAT_AND_MESSAGING_SPEC_v1.md](./30__REALTIME_CHAT_AND_MESSAGING_SPEC_v1.md)
+- [31__WORKSPACE_AND_COLLABORATION_SPEC_v1.md](./31__WORKSPACE_AND_COLLABORATION_SPEC_v1.md)
+- [32__VIDEO_AND_VOICE_SPEC_v1.md](./32__VIDEO_AND_VOICE_SPEC_v1.md)
+- [33__CREDIT_AND_SUBSCRIPTION_SPEC_v1.md](./33__CREDIT_AND_SUBSCRIPTION_SPEC_v1.md)
+- [34__INTEGRATION_ARCHITECTURE_v1.md](./34__INTEGRATION_ARCHITECTURE_v1.md)
+---
+**Status Map**: [DOCUMENTATION_SYNTHESIS_MAP.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/uet_history/software_design/platform_specs/DOCUMENTATION_SYNTHESIS_MAP.md)

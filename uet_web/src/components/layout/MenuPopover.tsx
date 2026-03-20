@@ -14,7 +14,6 @@ const MENU_SECTIONS = [
     title: 'Platform',
     items: [
       { icon: Newspaper, label: 'News', desc: 'Latest UET research updates', href: '/news', color: 'text-blue-500', bg: 'bg-blue-500/10' },
-      { icon: FlaskConical, label: 'Topics', desc: 'Browse research topics', href: '/topics', color: 'text-purple-500', bg: 'bg-purple-500/10' },
       { icon: FolderKanban, label: 'Projects', desc: 'Collaborative research workspaces', href: '/workspaces', color: 'text-orange-500', bg: 'bg-orange-500/10' },
       { icon: Users, label: 'Community', desc: 'Connect with researchers', href: '/feed', color: 'text-green-500', bg: 'bg-green-500/10' },
       { icon: MessageSquare, label: 'Messages', desc: 'Channels and direct messages', href: '/messages', color: 'text-sky-500', bg: 'bg-sky-500/10' },
@@ -111,7 +110,7 @@ export default function MenuPopover() {
       </button>
 
       {open && (
-        <div className="absolute left-0 top-full mt-2 w-[340px] rounded-2xl border border-border bg-card shadow-2xl z-50 overflow-hidden">
+        <div className="absolute right-0 top-full mt-2 w-[340px] rounded-2xl border border-border bg-card shadow-2xl z-50 overflow-hidden">
           {/* Header */}
           <div className="p-3 border-b border-border">
             <h3 className="text-lg font-bold px-1 mb-2">Menu</h3>
