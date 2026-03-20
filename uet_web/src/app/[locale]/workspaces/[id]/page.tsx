@@ -7,6 +7,7 @@ import { Hash, FileText, LayoutGrid, Users, Settings, ArrowLeft, Plus, Phone, Gl
 import { LocaleSwitcher } from '@/components/locale-switcher';
 import { ThemeToggle } from '@/components/theme-toggle';
 import EmbeddedChat from '@/components/chat/EmbeddedChat';
+import VideoCall from '@/components/video/VideoCall';
 
 type Tab = 'channels' | 'documents' | 'tasks' | 'members' | 'settings';
 
@@ -54,6 +55,18 @@ export default function WorkspaceDetailPage() {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<Tab>('channels');
   const [activeChannel, setActiveChannel] = useState<string | null>(null);
+  const [activeVoice, setActiveVoice] = useState<string | null>(null);
+  const [currentUserName, setCurrentUserName] = useState('User');
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('user');
+      if (stored) {
+        const u = JSON.parse(stored);
+        setCurrentUserName(u.display_name || u.email?.split('@')[0] || 'User');
+      }
+    } catch {}
+  }, []);
 
   useEffect(() => {
     if (!wsId) return;
@@ -155,8 +168,14 @@ export default function WorkspaceDetailPage() {
                 </button>
               ))}
               <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground mt-4 mb-2 px-3">Voice Channels</p>
-              <button className="w-full flex items-center gap-2 px-3 py-1.5 rounded-md text-xs text-muted-foreground hover:text-foreground hover:bg-muted">
+              <button
+                onClick={() => { setActiveVoice(activeVoice === 'general' ? null : 'general'); setActiveChannel(null); }}
+                className={`w-full flex items-center gap-2 px-3 py-1.5 rounded-md text-xs transition-colors ${
+                  activeVoice === 'general' ? 'bg-green-500/10 text-green-600' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                }`}
+              >
                 <Phone size={13} /> General Voice
+                {activeVoice === 'general' && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />}
               </button>
             </div>
           )}
@@ -166,7 +185,13 @@ export default function WorkspaceDetailPage() {
         <main className="flex-1 flex flex-col overflow-hidden">
           {/* Channels tab */}
           {activeTab === 'channels' && (
-            activeChannel ? (
+            activeVoice ? (
+              <VideoCall
+                roomName={`ws-${wsId}-voice-${activeVoice}`}
+                participantName={currentUserName}
+                className="flex-1"
+              />
+            ) : activeChannel ? (
               <EmbeddedChat channel={`ws-${wsId}-${activeChannel}`} className="flex-1 rounded-none border-0" />
             ) : (
               <div className="flex-1 flex items-center justify-center text-muted-foreground">

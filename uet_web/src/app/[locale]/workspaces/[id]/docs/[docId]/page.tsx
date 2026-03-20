@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Users, Save } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { CollaborativeEditor } from '@/components/editor/CollaborativeEditor';
 
 interface DocData {
   id: string;
@@ -87,31 +88,9 @@ export default function DocumentEditorPage() {
       {/* Editor area */}
       <div className="flex-1 overflow-auto">
         <div className="max-w-4xl mx-auto py-8 px-6">
-          {/* Info banner */}
-          <div className="mb-6 p-4 rounded-xl bg-primary/5 border border-primary/20 text-sm">
-            <p className="font-medium text-primary mb-1">Collaborative Document Editor</p>
-            <p className="text-xs text-muted-foreground">
-              This document will use <strong>Tiptap + Yjs (Hocuspocus)</strong> for real-time collaborative editing.
-              Multiple users can edit simultaneously with cursor presence.
-              Connect Hocuspocus server to <code className="bg-muted px-1 rounded">ws://localhost:1234</code> with doc ID: <code className="bg-muted px-1 rounded">{doc.yjsDocId}</code>
-            </p>
-          </div>
-
-          {/* Placeholder editor (will be replaced with TiptapEditor + Collaboration extension) */}
-          <textarea
-            value={content}
-            onChange={e => setContent(e.target.value)}
-            placeholder="Start writing your document here...
-
-This is a placeholder editor. In production, this will be replaced with:
-- TiptapEditor with @tiptap/extension-collaboration
-- Yjs CRDT for conflict-free real-time sync
-- CollaborationCursor for seeing other users' cursors
-- LaTeX support via @tiptap/extension-mathematics
-- Code blocks with syntax highlighting
-
-The Hocuspocus WebSocket server will persist document state to PostgreSQL."
-            className="w-full min-h-[60vh] p-6 rounded-xl border border-border bg-card text-sm leading-relaxed outline-none focus:border-primary/30 resize-none font-mono"
+          <CollaborativeEditor
+            documentId={doc.yjsDocId}
+            serverUrl={process.env.NEXT_PUBLIC_HOCUSPOCUS_URL || 'ws://localhost:1234'}
           />
         </div>
       </div>
