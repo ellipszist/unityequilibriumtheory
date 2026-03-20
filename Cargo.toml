@@ -5,7 +5,11 @@ members = [
     "uet_security",
     "uet_chain",
     "uet_miner",
-    "uet_api"
+    "uet_api",
+    "uet_under_development/uet_economic",
+    "uet_under_development/uet_governance",
+    "uet_under_development/uet_market",
+    "uet_under_development/uet_oracle",
 ]
 resolver = "2"
 
