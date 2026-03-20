@@ -58,6 +58,9 @@ export default function Home() {
             UET
           </div>
           <div className="flex items-center gap-4 text-sm font-medium text-black/60 dark:text-white/60">
+            <Link href={`/${locale}/feed`} className="hover:text-black dark:hover:text-white transition-colors">
+              Feed
+            </Link>
             <Link href={`/${locale}/docs`} className="hover:text-black dark:hover:text-white transition-colors">
               {t('readDocs')}
             </Link>
@@ -65,8 +68,8 @@ export default function Home() {
               <Sparkles className="w-4 h-4 text-purple-500" />
               Workchat Studio
             </Link>
-            <Link href="/topics" className="hover:text-black dark:hover:text-white transition-colors">
-              News
+            <Link href={`/${locale}/topics`} className="hover:text-black dark:hover:text-white transition-colors">
+              Topics
             </Link>
             <Link
               href="https://github.com/unityequilibrium/UnityEquilibriumTheory"

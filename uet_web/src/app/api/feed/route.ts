@@ -18,11 +18,11 @@ export async function GET(request: Request) {
     }
 
     if (mode === 'following' && userId) {
-      const following = await prisma.follow.findMany({
+      const following = await (prisma as any).follow.findMany({
         where: { followerId: userId },
         select: { followingId: true },
       })
-      where.authorId = { in: following.map(f => f.followingId) }
+      where.authorId = { in: following.map((f: any) => f.followingId) }
     }
 
     const orderBy: any =
@@ -40,15 +40,14 @@ export async function GET(request: Request) {
           select: {
             id: true,
             email: true,
-            displayName: true,
-            avatarUrl: true,
-            institution: true,
+            name: true,
+            image: true,
             reputation: true,
-          },
+          } as any,
         },
         tags: true,
         _count: {
-          select: { comments: true, votes: true },
+          select: { comments: true } as any,
         },
       },
     })
