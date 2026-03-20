@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, ArrowBigUp, ArrowBigDown, MessageSquare, BadgeCheck, Clock, Send } from 'lucide-react';
-import { LocaleSwitcher } from '@/components/locale-switcher';
-import { ThemeToggle } from '@/components/theme-toggle';
+import AppShell from '@/components/layout/AppShell';
 
 interface PostDetail {
   id: string;
@@ -113,20 +112,8 @@ export default function PostDetailPage() {
   const initials = authorName[0]?.toUpperCase() || 'U';
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground text-sm">
-      <header className="sticky top-0 z-50 flex items-center justify-between h-14 px-6 border-b border-border bg-background/80 backdrop-blur-md">
-        <div className="flex items-center gap-4">
-          <Link href={`/${locale}/feed`} className="p-1.5 rounded-lg hover:bg-muted transition-colors">
-            <ArrowLeft size={18} />
-          </Link>
-          <span className="font-semibold truncate max-w-xs">{post.title}</span>
-        </div>
-        <div className="flex items-center gap-3">
-          <LocaleSwitcher />
-          <ThemeToggle />
-        </div>
-      </header>
-
+    <AppShell>
+      <div className="h-full overflow-y-auto">
       <div className="max-w-2xl mx-auto w-full py-8 px-4">
         {/* Author */}
         <div className="flex items-center gap-3 mb-5">
@@ -241,6 +228,7 @@ export default function PostDetailPage() {
           </div>
         )}
       </div>
-    </div>
+      </div>
+    </AppShell>
   );
 }

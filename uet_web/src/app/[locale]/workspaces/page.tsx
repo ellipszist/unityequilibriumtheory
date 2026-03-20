@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { Plus, Users, Lock, Globe, Search } from 'lucide-react';
-import { LocaleSwitcher } from '@/components/locale-switcher';
-import { ThemeToggle } from '@/components/theme-toggle';
+import AppShell from '@/components/layout/AppShell';
 
 interface WorkspaceData {
   id: string;
@@ -37,28 +36,8 @@ export default function WorkspacesPage() {
   );
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground text-sm">
-      {/* Header */}
-      <header className="sticky top-0 z-50 flex items-center justify-between h-14 px-6 border-b border-border bg-background/80 backdrop-blur-md">
-        <div className="flex items-center gap-6">
-          <Link href="/" className="flex items-center gap-2 font-bold text-base hover:opacity-80 transition-opacity">
-            <img src="/logo.png" alt="UET Logo" className="w-6 h-6 object-contain" />
-            <span className="hidden sm:inline">UET Platform</span>
-          </Link>
-          <nav className="hidden md:flex items-center gap-6 text-xs text-muted-foreground font-medium">
-            <Link href={`/${locale}/feed`} className="hover:text-foreground transition-colors">Feed</Link>
-            <Link href={`/${locale}/messages`} className="hover:text-foreground transition-colors">Messages</Link>
-            <Link href={`/${locale}/workspaces`} className="text-primary font-semibold">Workspaces</Link>
-            <Link href={`/${locale}/chat`} className="hover:text-foreground transition-colors">Workchat</Link>
-            <Link href={`/${locale}/account`} className="hover:text-foreground transition-colors">Account</Link>
-          </nav>
-        </div>
-        <div className="flex items-center gap-3">
-          <LocaleSwitcher />
-          <ThemeToggle />
-        </div>
-      </header>
-
+    <AppShell>
+      <div className="h-full overflow-y-auto">
       <div className="max-w-4xl mx-auto w-full py-8 px-4">
         {/* Title + Create */}
         <div className="flex items-center justify-between mb-6">
@@ -145,6 +124,7 @@ export default function WorkspacesPage() {
           </div>
         )}
       </div>
-    </div>
+      </div>
+    </AppShell>
   );
 }

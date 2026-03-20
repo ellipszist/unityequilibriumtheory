@@ -4,8 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { useParams, useSearchParams } from 'next/navigation';
 import { Search as SearchIcon, FileText, User, Hash, Clock } from 'lucide-react';
-import { LocaleSwitcher } from '@/components/locale-switcher';
-import { ThemeToggle } from '@/components/theme-toggle';
+import AppShell from '@/components/layout/AppShell';
 
 type SearchType = 'all' | 'posts' | 'users';
 
@@ -42,25 +41,8 @@ export default function SearchPage() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground text-sm">
-      <header className="sticky top-0 z-50 flex items-center justify-between h-14 px-6 border-b border-border bg-background/80 backdrop-blur-md">
-        <div className="flex items-center gap-6">
-          <Link href="/" className="flex items-center gap-2 font-bold text-base">
-            <img src="/logo.png" alt="UET" className="w-6 h-6 object-contain" />
-            <span className="hidden sm:inline">UET</span>
-          </Link>
-          <nav className="hidden md:flex items-center gap-6 text-xs text-muted-foreground font-medium">
-            <Link href={`/${locale}/feed`} className="hover:text-foreground">Feed</Link>
-            <Link href={`/${locale}/messages`} className="hover:text-foreground">Messages</Link>
-            <Link href={`/${locale}/search`} className="text-primary font-semibold">Search</Link>
-          </nav>
-        </div>
-        <div className="flex items-center gap-3">
-          <LocaleSwitcher />
-          <ThemeToggle />
-        </div>
-      </header>
-
+    <AppShell>
+      <div className="h-full overflow-y-auto">
       <div className="max-w-2xl mx-auto w-full py-8 px-4">
         {/* Search input */}
         <div className="relative mb-6">
@@ -179,6 +161,7 @@ export default function SearchPage() {
           </div>
         )}
       </div>
-    </div>
+      </div>
+    </AppShell>
   );
 }
