@@ -59,7 +59,10 @@ Thumbs.db
 # Rust build artifacts
 target/
 uet_core/target/
-Cargo.lock
+
+# Compiled binaries (distribute via GitHub Releases)
+uet_miner/uet_miner.exe
+uet_miner/uet_miner_linux
 
 # ML model cache
 uet_api/.fastembed_cache/

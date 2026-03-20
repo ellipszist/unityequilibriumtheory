@@ -1,0 +1,7 @@
+# Fix GitHub language statistics
+# Mark research notebooks/docs as non-code so linguist shows real code ratio
+research_uet/** linguist-documentation
+uet_history/** linguist-documentation
+
+# Mark generated/vendored files
+*.lock linguist-generated
