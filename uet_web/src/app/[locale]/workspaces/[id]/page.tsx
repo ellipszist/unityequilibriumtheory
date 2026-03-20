@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { Hash, FileText, LayoutGrid, Users, Settings, ArrowLeft, Plus, Phone, Globe, Lock } from 'lucide-react';
-import { LocaleSwitcher } from '@/components/locale-switcher';
-import { ThemeToggle } from '@/components/theme-toggle';
+import AppShell from '@/components/layout/AppShell';
+import SidebarLayout from '@/components/layout/SidebarLayout';
 import EmbeddedChat from '@/components/chat/EmbeddedChat';
 import VideoCall from '@/components/video/VideoCall';
 
@@ -103,35 +103,8 @@ export default function WorkspaceDetailPage() {
 
   const taskColumns = ['TODO', 'IN_PROGRESS', 'IN_REVIEW', 'DONE'];
 
-  return (
-    <div className="flex flex-col h-screen bg-background text-foreground text-sm">
-      {/* Header */}
-      <header className="shrink-0 flex items-center justify-between h-14 px-6 border-b border-border bg-background/80 backdrop-blur-md">
-        <div className="flex items-center gap-4">
-          <Link href={`/${locale}/workspaces`} className="p-1.5 rounded-lg hover:bg-muted transition-colors">
-            <ArrowLeft size={18} />
-          </Link>
-          <div className="flex items-center gap-2.5">
-            {ws.avatarUrl ? (
-              <img src={ws.avatarUrl} alt={ws.name} className="w-7 h-7 rounded-lg object-cover" />
-            ) : (
-              <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">
-                {ws.name[0]?.toUpperCase()}
-              </div>
-            )}
-            <h1 className="font-semibold">{ws.name}</h1>
-            {ws.isPublic ? <Globe size={12} className="text-muted-foreground" /> : <Lock size={12} className="text-muted-foreground" />}
-          </div>
-        </div>
-        <div className="flex items-center gap-3">
-          <LocaleSwitcher />
-          <ThemeToggle />
-        </div>
-      </header>
-
-      <div className="flex flex-1 overflow-hidden">
-        {/* Sidebar */}
-        <aside className="w-56 shrink-0 border-r border-border bg-muted/20 flex flex-col">
+  const sidebarContent = (
+    <div className="flex flex-col h-full">
           {/* Tabs */}
           <div className="p-3 space-y-0.5">
             {tabs.map(tab => (
@@ -179,10 +152,13 @@ export default function WorkspaceDetailPage() {
               </button>
             </div>
           )}
-        </aside>
+    </div>
+  );
 
-        {/* Main content */}
-        <main className="flex-1 flex flex-col overflow-hidden">
+  return (
+    <AppShell>
+      <SidebarLayout sidebar={sidebarContent} sidebarWidth={220}>
+        <div className="h-full flex flex-col overflow-hidden">
           {/* Channels tab */}
           {activeTab === 'channels' && (
             activeVoice ? (
@@ -344,8 +320,8 @@ export default function WorkspaceDetailPage() {
               </div>
             </div>
           )}
-        </main>
-      </div>
-    </div>
+        </div>
+      </SidebarLayout>
+    </AppShell>
   );
 }
