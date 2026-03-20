@@ -9,7 +9,7 @@ ENV DATABASE_URL=${DATABASE_URL}
 COPY uet_web/package*.json ./
 
 # Install dependencies
-RUN npm ci
+RUN npm ci --legacy-peer-deps
 
 # Copy source
 COPY uet_web ./
