@@ -61,6 +61,9 @@ export default function Home() {
             <Link href={`/${locale}/feed`} className="hover:text-black dark:hover:text-white transition-colors">
               Feed
             </Link>
+            <Link href={`/${locale}/messages`} className="hover:text-black dark:hover:text-white transition-colors">
+              Messages
+            </Link>
             <Link href={`/${locale}/docs`} className="hover:text-black dark:hover:text-white transition-colors">
               {t('readDocs')}
             </Link>

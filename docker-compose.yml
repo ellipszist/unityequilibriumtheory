@@ -70,11 +70,59 @@ services:
       - NODE_ENV=production
       - NEXT_PUBLIC_AGENT_URL=http://uet_agents:8001
       - NEXT_PUBLIC_API_URL=http://uet_api:3001
+      - NEXT_PUBLIC_ROCKETCHAT_URL=http://localhost:3200
+      - NEXT_PUBLIC_LIVEKIT_URL=ws://localhost:7880
       - DATABASE_URL=postgres://postgres:postgres@postgres:5432/uetlab
       - PORT=3000
     ports:
       - "3005:3000"
     command: ["node", "server.js"]
 
+  # === The Voice (Rocket.Chat — Real-time Chat) ===
+  mongo:
+    image: mongo:6
+    container_name: uet_mongo
+    volumes:
+      - mongo_data:/data/db
+    command: mongod --oplogSize 128 --replSet rs0
+    healthcheck:
+      test: echo "try { rs.status() } catch (err) { rs.initiate({_id:'rs0',members:[{_id:0,host:'mongo:27017'}]}) }" | mongosh --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+
+  rocketchat:
+    image: registry.rocket.chat/rocketchat/rocket.chat:latest
+    container_name: uet_rocketchat
+    restart: unless-stopped
+    depends_on:
+      mongo:
+        condition: service_healthy
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/rocketchat?replicaSet=rs0
+      - MONGO_OPLOG_URL=mongodb://mongo:27017/local?replicaSet=rs0
+      - ROOT_URL=http://localhost:3200
+      - PORT=3000
+      - DEPLOY_METHOD=docker
+      - OVERWRITE_SETTING_Show_Setup_Wizard=completed
+      - ADMIN_USERNAME=${RC_ADMIN_USERNAME:-admin}
+      - ADMIN_PASS=${RC_ADMIN_PASS:-admin123}
+      - ADMIN_EMAIL=${RC_ADMIN_EMAIL:-admin@uet-platform.com}
+    ports:
+      - "3200:3000"
+
+  # === The Eyes (LiveKit — Video/Voice) ===
+  livekit:
+    image: livekit/livekit-server:latest
+    container_name: uet_livekit
+    ports:
+      - "7880:7880"
+      - "7881:7881"
+    environment:
+      - LIVEKIT_KEYS=${LIVEKIT_API_KEY:-devkey}: ${LIVEKIT_API_SECRET:-devsecret}
+    command: --dev --bind 0.0.0.0
+
 volumes:
   postgres_data:
+  mongo_data:
