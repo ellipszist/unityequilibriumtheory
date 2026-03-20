@@ -108,26 +108,30 @@ class UETSemanticEngine:
         self,
         prompt: str,
         search_space: List[Dict[str, Any]],
+        top_k: int = 3,
     ) -> Dict[str, Any]:
         prompt_tokens = set(self.tokenize(prompt.lower()))
 
-        best_chunk = None
-        best_score = 0.0
-
+        scored = []
         for chunk in search_space:
             chunk_tokens = set(chunk["tokens"]) if isinstance(chunk["tokens"], list) else chunk["tokens"]
 
             overlap = len(prompt_tokens & chunk_tokens)
             if overlap > 0:
                 score = overlap / (math.log(chunk["vector_magnitude"] + 1) + 1)
-                if score > best_score:
-                    best_score = score
-                    best_chunk = chunk
+                scored.append((score, chunk))
+
+        scored.sort(key=lambda x: x[0], reverse=True)
+        top_chunks = scored[:top_k]
+
+        best_score = top_chunks[0][0] if top_chunks else 0.0
+        best_chunk = top_chunks[0][1] if top_chunks else None
 
         work_done = len(search_space) * len(prompt_tokens) * 0.001
 
         return {
             "best_chunk": best_chunk,
+            "top_chunks": [c for _, c in top_chunks],
             "resonance_score": best_score,
             "equilibrium_found": best_score > 0.05,
             "work_computed": work_done

@@ -22,8 +22,11 @@ class UETResponseComposer:
         if not equilibrium_data["equilibrium_found"]:
             return "ไม่พบข้อมูลที่เสถียรพอในระบบ (Entropy สูงเกินไป) กรุณาเพิ่มข้อมูล Source เพื่อ 'เทรน' AI ก่อนทำการวิเคราะห์"
 
-        chunk = equilibrium_data["best_chunk"]
-        source_text = chunk["text"]
+        top_chunks = equilibrium_data.get("top_chunks", [])
+        if not top_chunks:
+            chunk = equilibrium_data["best_chunk"]
+            top_chunks = [chunk] if chunk else []
+        source_text = "\n\n---\n\n".join(c["text"] for c in top_chunks)
         work = equilibrium_data["work_computed"]
         score = equilibrium_data["resonance_score"]
 
