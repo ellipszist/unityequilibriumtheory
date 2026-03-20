@@ -3,9 +3,11 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import { useParams, useSearchParams } from 'next/navigation';
-import { PenSquare, TrendingUp, Clock, Users, Sparkles } from 'lucide-react';
-import { LocaleSwitcher } from '@/components/locale-switcher';
-import { ThemeToggle } from '@/components/theme-toggle';
+import { PenSquare, TrendingUp, Clock, Users, User, MessageCircle } from 'lucide-react';
+import AppShell from '@/components/layout/AppShell';
+import ThreePanelLayout from '@/components/layout/ThreePanelLayout';
+import ProfilePanel from '@/components/feed/ProfilePanel';
+import ChatFriendsPanel from '@/components/feed/ChatFriendsPanel';
 import FeedCard from '@/components/feed/FeedCard';
 
 type FeedMode = 'latest' | 'trending' | 'following';
@@ -101,30 +103,17 @@ export default function FeedPage() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground text-sm">
-      {/* Header */}
-      <header className="sticky top-0 z-50 flex items-center justify-between h-14 px-6 border-b border-border bg-background/80 backdrop-blur-md">
-        <div className="flex items-center gap-6">
-          <Link href="/" className="flex items-center gap-2 font-bold text-base hover:opacity-80 transition-opacity">
-            <img src="/logo.png" alt="UET Logo" className="w-6 h-6 object-contain" />
-            <span className="hidden sm:inline">UET Platform</span>
-          </Link>
-          <nav className="hidden md:flex items-center gap-6 text-xs text-muted-foreground font-medium">
-            <Link href={`/${locale}/docs`} className="hover:text-foreground transition-colors">Docs</Link>
-            <Link href={`/${locale}/feed`} className="text-primary font-semibold">Feed</Link>
-            <Link href={`/${locale}/chat`} className="hover:text-foreground transition-colors flex items-center gap-1">
-              <Sparkles className="w-3.5 h-3.5" /> Workchat
-            </Link>
-            <Link href={`/${locale}/topics`} className="hover:text-foreground transition-colors">Topics</Link>
-            <Link href={`/${locale}/account`} className="hover:text-foreground transition-colors">Account</Link>
-          </nav>
-        </div>
-        <div className="flex items-center gap-3">
-          <LocaleSwitcher />
-          <ThemeToggle />
-        </div>
-      </header>
-
+    <AppShell>
+      <ThreePanelLayout
+        left={<ProfilePanel />}
+        right={<ChatFriendsPanel />}
+        leftTitle="Profile"
+        rightTitle="Chat"
+        leftIcon={<User size={18} />}
+        rightIcon={<MessageCircle size={18} />}
+        leftDefaultWidth={260}
+        rightDefaultWidth={280}
+        center={
       <div className="max-w-2xl mx-auto w-full py-6 px-4">
         {/* Top bar: mode tabs + create button */}
         <div className="flex items-center justify-between mb-6">
@@ -191,6 +180,8 @@ export default function FeedPage() {
           {hasMore && <div ref={observerRef} className="h-4" />}
         </div>
       </div>
-    </div>
+        }
+      />
+    </AppShell>
   );
 }
