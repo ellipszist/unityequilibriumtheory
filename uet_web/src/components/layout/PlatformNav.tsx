@@ -2,9 +2,10 @@
 
 import Link from 'next/link';
 import { useParams, usePathname } from 'next/navigation';
-import { Sparkles, Search, Bell } from 'lucide-react';
+import { Sparkles, Search } from 'lucide-react';
 import { LocaleSwitcher } from '@/components/locale-switcher';
 import { ThemeToggle } from '@/components/theme-toggle';
+import NotificationBell from '@/components/layout/NotificationBell';
 import { useState, useEffect } from 'react';
 
 const NAV_ITEMS = [
@@ -72,9 +73,7 @@ export default function PlatformNav() {
         >
           <Search size={16} />
         </Link>
-        <button className="p-2 rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground transition-colors relative">
-          <Bell size={16} />
-        </button>
+        <NotificationBell />
         <LocaleSwitcher />
         <ThemeToggle />
         {userId ? (
