@@ -1,5 +1,7 @@
 # UET v5.0 — Decentralized Governance Standard
 
+> **Related:** [[08__PLATFORM_GOVERNANCE_v5.0_ROLES]] · [[20__ORACLE_INFRASTRUCTURE_v5.0]] · [[21__ECONOMIC_POLICY_v5.0]] · [[14__UNITY_LEDGER_POUW_POE_v5.0_SPEC]]
+
 ## 1. Vision: Community-Driven Economic Policy
 
 UET governance enables decentralized decision-making for economic policy changes, ensuring that the community controls the evolution of the economic system while maintaining security and stability.

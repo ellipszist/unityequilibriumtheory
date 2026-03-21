@@ -1,5 +1,8 @@
 # UET v5.0 — System Coordination & Interaction Specification
 
+> **Related:** [[05__FLOW_AND_EVENT_v5.0_SPINE]] · [[08__PLATFORM_GOVERNANCE_v5.0_ROLES]] · [[12__MATHNICRY_ECONOMIC_CONSTITUTION]] · [[34__INTEGRATION_ARCHITECTURE_v1]]
+> ⚠️ **Overlap:** §7 "Negotiation Bonus" duplicated in [[12__MATHNICRY_ECONOMIC_CONSTITUTION]] §5.
+
 ## 1. Overview
 System Coordination defines the "Traffic Rules" for how UI Panels, API Services, and Backend Engines interact. It prevents "State Collision" and ensures Knowledge Integrity across the platform.
 

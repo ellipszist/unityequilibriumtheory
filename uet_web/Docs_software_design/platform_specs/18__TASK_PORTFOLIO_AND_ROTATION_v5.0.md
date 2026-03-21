@@ -1,5 +1,7 @@
 # UET v5.0 — Task Portfolio and Rotation Policy
 
+> **Related:** [[14__UNITY_LEDGER_POUW_POE_v5.0_SPEC]] · [[12__MATHNICRY_ECONOMIC_CONSTITUTION]] · [[21__ECONOMIC_POLICY_v5.0]] · [[19__DECENTRALIZED_GOVERNANCE_v5.0]]
+
 This policy defines how PoUW/PoE task families are introduced, monitored, rotated, or retired to reduce systemic risk from future mathematical shortcuts or exploit discoveries.
 
 ## 1. Why Portfolio Rotation Exists

@@ -1,5 +1,7 @@
 # UET v5.0 — Real-time Chat & Messaging Spec v1
 
+> **Related:** [[28__OPEN_SOURCE_STACK_SELECTION_v1]] · [[31__WORKSPACE_AND_COLLABORATION_SPEC_v1]] · [[32__VIDEO_AND_VOICE_SPEC_v1]] · [[34__INTEGRATION_ARCHITECTURE_v1]]
+
 ## 1. Vision
 Person-to-person and group messaging for academic collaboration, powered by Rocket.Chat as the communication backbone with deep integration into the UET platform.
 

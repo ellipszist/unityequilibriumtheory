@@ -1,5 +1,7 @@
 # 🔍 UET RAG Engine (v5.0 — THE AXIOMATIC RETRIEVER)
 
+> **Related:** [[03__AGENT_ENGINE_v5.0_SPEC]] · [[07__KNOWLEDGE_SYNC_v5.0_SPEC]] · [[02__DATA_SCHEMA_v5.0_UNIFIED]] · [[05__FLOW_AND_EVENT_v5.0_SPINE]] · [[24__AI_AGENT_MEMORY_ARCHITECTURE_v1]]
+
 The RAG Engine v5.0 is the "Evidence Filter" of the Unity Mega-Platform. It transcends simple vector search by providing a multi-layered, version-aware retrieval pipeline that guarantees high-fidelity context for Agent reasoning.
 
 ---

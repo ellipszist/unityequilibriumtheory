@@ -46,18 +46,21 @@ export default function Home() {
           </div>
           {/* Center nav links */}
           <div className="flex items-center gap-6 text-sm font-medium text-black/60 dark:text-white/60">
-            <Link href={`/${locale}/feed`} className="hover:text-black dark:hover:text-white transition-colors">
-              Feed
-            </Link>
-            <Link href={`/${locale}/workspaces`} className="hover:text-black dark:hover:text-white transition-colors">
-              Projects
-            </Link>
-            <Link href={`/${locale}/chat`} className="hover:text-black dark:hover:text-white transition-colors flex items-center gap-1">
-              <Sparkles className="w-4 h-4 text-purple-500" />
-              Workchat
-            </Link>
             <Link href={`/${locale}/news`} className="hover:text-black dark:hover:text-white transition-colors">
               News
+            </Link>
+            <Link href={`/${locale}/workchat`} className="hover:text-black dark:hover:text-white transition-colors flex items-center gap-1">
+              <Sparkles className="w-4 h-4 text-purple-500" />
+              WorkChat
+            </Link>
+            <Link href={`/${locale}/community`} className="hover:text-black dark:hover:text-white transition-colors">
+              Community
+            </Link>
+            <Link href={`/${locale}/project`} className="hover:text-black dark:hover:text-white transition-colors">
+              Project
+            </Link>
+            <Link href={`/${locale}/economy`} className="hover:text-black dark:hover:text-white transition-colors">
+              Economy
             </Link>
           </div>
 
@@ -90,13 +93,13 @@ export default function Home() {
 
           <div className="flex items-center gap-4 mt-8">
             <Link
-              href={`/${locale}/feed`}
+              href={`/${locale}/community`}
               className="flex items-center gap-2 px-6 py-2.5 rounded-lg bg-[#0d7a5f] hover:bg-[#0b644d] text-white font-semibold text-sm transition-colors"
             >
               Get Started
             </Link>
             <Link
-              href={`/${locale}/docs`}
+              href={`/${locale}/manual`}
               className="flex items-center gap-2 px-6 py-2.5 rounded-lg border border-black/20 dark:border-white/20 hover:bg-black/10 dark:hover:bg-white/10 text-sm transition-colors"
             >
               <BookOpen size={16} /> {t('readDocs')}
@@ -148,8 +151,8 @@ export default function Home() {
       <footer className="relative z-10 border-t border-black/10 dark:border-white/10 py-6 px-6 flex items-center justify-between text-xs text-black/30 dark:text-white/30">
         <span>© 2026 UET Project · MIT License</span>
         <div className="flex gap-4">
-          <Link href="/docs" className="hover:text-black/60 dark:hover:text-white/60 transition-colors">Docs</Link>
-          <Link href="/account" className="hover:text-black/60 dark:hover:text-white/60 transition-colors">Dashboard</Link>
+          <Link href={`/${locale}/manual`} className="hover:text-black/60 dark:hover:text-white/60 transition-colors">Manual</Link>
+          <Link href={`/${locale}/economy/account`} className="hover:text-black/60 dark:hover:text-white/60 transition-colors">Dashboard</Link>
           <Link href="https://github.com/unityequilibrium/UnityEquilibriumTheory" target="_blank" className="hover:text-black/60 dark:hover:text-white/60 transition-colors">GitHub</Link>
         </div>
       </footer>

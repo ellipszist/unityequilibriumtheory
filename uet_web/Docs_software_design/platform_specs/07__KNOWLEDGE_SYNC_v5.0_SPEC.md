@@ -1,5 +1,7 @@
 # 🔄 UET Knowledge Sync (v5.0 — THE AXIOMATIC REGISTRY)
 
+> **Related:** [[04__RAG_ENGINE_v5.0_SPEC]] · [[02__DATA_SCHEMA_v5.0_UNIFIED]] · [[05__FLOW_AND_EVENT_v5.0_SPINE]] · [[13__DECENTRALIZED_INFRA_v5.0_DEN]] · [[24__AI_AGENT_MEMORY_ARCHITECTURE_v1]]
+
 The Knowledge Sync (KS) Engine v5.0 is the "Truth Harmonizer" of the Unity Mega-Platform. It serves as the bridge between raw data, the high-performance Rust core, and the Agent's reasoning context, ensuring 100% version integrity.
 
 ---

@@ -23,7 +23,7 @@ export default function ProfilePanel() {
   return (
     <div className="p-4 space-y-4">
       {/* Profile card */}
-      <Link href={`/${locale}/account`} className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-colors">
+      <Link href={`/${locale}/economy/account`} className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-colors">
         <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-emerald-600 flex items-center justify-center text-white font-bold text-sm shrink-0">
           {initials}
         </div>
@@ -52,10 +52,10 @@ export default function ProfilePanel() {
       {/* Quick links */}
       <div className="space-y-0.5">
         <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 px-1">Quick Links</h3>
-        <Link href={`/${locale}/workspaces`} className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm hover:bg-muted/50 transition-colors text-muted-foreground hover:text-foreground">
+        <Link href={`/${locale}/project`} className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm hover:bg-muted/50 transition-colors text-muted-foreground hover:text-foreground">
           <Settings size={16} /> Projects
         </Link>
-        <Link href={`/${locale}/account/billing`} className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm hover:bg-muted/50 transition-colors text-muted-foreground hover:text-foreground">
+        <Link href={`/${locale}/economy/account/billing`} className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm hover:bg-muted/50 transition-colors text-muted-foreground hover:text-foreground">
           <CreditCard size={16} /> Credits & Billing
         </Link>
       </div>

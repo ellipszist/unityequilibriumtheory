@@ -1,5 +1,7 @@
 # UET v5.0 — Video & Voice Communication Spec v1
 
+> **Related:** [[31__WORKSPACE_AND_COLLABORATION_SPEC_v1]] · [[30__REALTIME_CHAT_AND_MESSAGING_SPEC_v1]] · [[28__OPEN_SOURCE_STACK_SELECTION_v1]] · [[34__INTEGRATION_ARCHITECTURE_v1]]
+
 ## 1. Vision
 Real-time video calls, voice channels, and screen sharing for research collaboration — powered by LiveKit, integrated with Rocket.Chat and UET Workspaces.
 

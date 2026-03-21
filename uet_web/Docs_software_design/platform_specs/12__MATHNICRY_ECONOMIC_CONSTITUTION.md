@@ -1,5 +1,7 @@
 # UET v5.0 — Mathnicry Economic Constitution
 
+> **Related:** [[14__UNITY_LEDGER_POUW_POE_v5.0_SPEC]] · [[17__QUANTUM_RESISTANT_SECURITY_STANDARD_v5.0]] · [[09__PLATFORM_ENERGY_UNITS]] · [[21__ECONOMIC_POLICY_v5.0]] · [[18__TASK_PORTFOLIO_AND_ROTATION_v5.0]] · [[22__MARKET_INFRASTRUCTURE_v5.0]]
+
 ## 1. The First Law of UET Economics
 "Value is never created from void, only transformed from Energy."
 The UET economy follows the **First Law of Thermodynamics**. Electrical energy consumed by CPU cycles for scientific calculation is transformed into **Axiomatic Knowledge**, which serves as the physical backing for the **UET Coin**.
@@ -32,37 +34,42 @@ To prevent the "Easy Production" problem, UET Coins are backed by a multi-layere
 2.  **Land (30%)**: Real-world territory managed via the UET Land Reform contracts.
 3.  **Hard Assets (20%)**: Bitcoin, Gold, and verified technological patents.
 
-## 4. Socio-Economic Equity (The 50/50 Model)
+## 4. The Non-Profit Organization (NPO) Funding Ecosystem
+UET operates strictly as a Non-Profit Organization to ensure absolute independence from corporate or venture capital (VC) influence. The economy must remain autonomous.
+- **100% Donation-Driven:** Users (Citizens, Researchers, Academics) fund the ecosystem directly through voluntary usage donations. There are no advertisements or hidden data sales.
+- **Fiat Donation Gateway:** To bridge the real world to UET, the platform integrates direct fiat on-ramps (e.g., Stripe, PayPal, MoonPay). Fiat donations are mathematically converted and injected into the ecosystem as Energy Units ($\Omega$), empowering the user's account capacity.
+
+## 5. Socio-Economic Equity (The 50/50 Model)
 To ensure global stability and shared responsibility, equity is distributed as follows:
 - **State Ownership (50%)**: Managed by the global governors for resource maintenance and the 1st Law cycle.
 - **Citizen Ownership (50%)**: Distributed to every human.
 - **Liquidity Restriction**: Citizens can trade up to **25%** of their total equity. The remaining **25%** must be held as "Shared Responsibility" to maintain their status as active participants in the global ecosystem.
 
-## 5. The Negotiation (Equilibrium) Bonus
+## 6. The Negotiation (Equilibrium) Bonus
 Traditional trade is zero-sum. UET rewards **Equilibrium**.
 - **Direct Trade**: Standard transaction at set price.
 - **Negotiated Trade**: If parties use the AI Agent to negotiate a price that optimizes both surpluses, the system grants a **Negotiation Bonus** derived from the mining reserve.
 - **Social Impact**: This incentivizes human interaction and socio-economic harmony.
 
-## 6. Global Land Reform
+## 7. Global Land Reform
 UET ends land speculation by shifting to a **State-Lease Model**.
 - **Ownership**: All land title is held by the Collective State (backed by UET Coin).
 - **Leasing**: Citizens receive "Lease Rights" for life, paid for or subsidized by their 50% dividend.
 - **Conversion**: Private land owners can exit to the UET system in exchange for UET Coins and guaranteed lifetime lease rights.
 
-## 7. The Thermodynamic Loop
+## 8. The Thermodynamic Loop
 1.  **Burn**: CPU consumes Electricity.
 2.  **Work**: `uet_core` solves physics/math.
 3.  **Coin**: Work units minted as UET Coin.
 4.  **Re-invest**: 50% of State coin used to maintain energy/resource infrastructure.
 5.  **Repeat**: Loop closes, preventing energy loss from the system.
 
-## 8. Portfolio Rotation and Anti-Inflation Guard
+## 9. Portfolio Rotation and Anti-Inflation Guard
 - UET runs a portfolio of task families (not a single family forever).
 - If a family becomes too easy due to algorithmic shortcuts, issuance weight is reduced or family is retired.
 - Epoch issuance caps and task-family concentration limits are used to prevent inflation from one dominant family.
 
-## 9. Spec Boundaries
+## 10. Spec Boundaries
 - Economic policy and allocation live in this document.
 - Canonical ledger/proof objects are defined in `14__UNITY_LEDGER_POUW_POE_v5.0_SPEC.md`.
 - Cryptographic policy is defined in `17__QUANTUM_RESISTANT_SECURITY_STANDARD_v5.0.md`.

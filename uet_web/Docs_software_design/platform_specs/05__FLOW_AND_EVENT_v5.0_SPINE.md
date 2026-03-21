@@ -1,5 +1,7 @@
 # 🔄 UET Flow & Event Spine (v5.0 — THE SYSTEM NERVOUS SYSTEM)
 
+> **Related:** [[01__SYSTEM_CONTRACT_v5.0_CONSTITUTION]] · [[03__AGENT_ENGINE_v5.0_SPEC]] · [[10__SYSTEM_COORDINATION_v5.0_RULES]] · [[11__SLA_AND_VERIFICATION_v5.0_STABILITY]] · [[23__LATEST_PLATFORM_FLOW_v1]]
+
 The Flow & Event Spine is the integration layer that guarantees the **Unity Mega-Platform** operates as a single, coherent mathematical entity. It combines **Flow Control (The Gatekeeper)** and the **Event Bus (The Communicator)** into a unified orchestration spine.
 
 ---
@@ -11,7 +13,7 @@ Flow Control governs every request before it reaches the reasoning or data layer
 1.  **INPUT LAYER**: Semantic/syntax sanitization and intent classification.
 2.  **CONTEXT LAYER**: KB-version stability check (Block if Knowledge Sync is active).
 3.  **PERMISSION LAYER**: Validation against the **Permission Matrix** (Axiomatic Trust).
-4.  **SAFETY LAYER**: Loop detection and "Halucination Guard" (Reflection check).
+4.  **SAFETY LAYER**: Loop detection and "Hallucination Guard" (Reflection check).
 
 ### **1.2 System Governor States**
 - 🟢 **READY**: Normal operation.

@@ -1,5 +1,7 @@
 # 🏗️ UET Unified Data Schema (v5.0 — THE AXIOMATIC DATA MODEL)
 
+> **Related:** [[00__MASTER_BLUEPRINT_v5.0_FINAL]] · [[04__RAG_ENGINE_v5.0_SPEC]] · [[07__KNOWLEDGE_SYNC_v5.0_SPEC]] · [[05__FLOW_AND_EVENT_v5.0_SPINE]]
+
 This schema defines the **Universal Data Substrate** for the Unity Mega-Platform, ensuring seamless state synchronization between the Rust core, Python agents, and the Postgres storage layer.
 
 ---

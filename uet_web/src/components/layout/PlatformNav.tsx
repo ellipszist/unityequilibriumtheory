@@ -9,11 +9,11 @@ import NotificationBell from '@/components/layout/NotificationBell';
 import { useState, useEffect } from 'react';
 
 const NAV_ITEMS = [
-  { href: '/feed', label: 'Feed' },
-  { href: '/messages', label: 'Messages' },
-  { href: '/workspaces', label: 'Workspaces' },
-  { href: '/docs', label: 'Docs' },
-  { href: '/chat', label: 'Workchat', icon: Sparkles },
+  { href: '/news', label: 'News' },
+  { href: '/workchat', label: 'WorkChat', icon: Sparkles },
+  { href: '/community', label: 'Community' },
+  { href: '/project', label: 'Project' },
+  { href: '/economy', label: 'Economy' },
 ];
 
 export default function PlatformNav() {

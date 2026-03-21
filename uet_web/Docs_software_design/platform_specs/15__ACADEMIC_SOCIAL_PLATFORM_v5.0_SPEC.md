@@ -1,5 +1,7 @@
 # UET v5.0 — Academic Collaboration & Social Platform
 
+> **Related:** [[13__DECENTRALIZED_INFRA_v5.0_DEN]] · [[29__SOCIAL_FEED_AND_PROFILES_SPEC_v1]] · [[16__SCHOOL_REFORM_COUNCIL_MODEL_v5.0]] · [[10__SYSTEM_COORDINATION_v5.0_RULES]]
+
 ## 1. Vision: The "Academic Discord" for Global Research
 The Academic Social Platform is the user-facing interface for the Decentralized Educational Node (DEN) network. It transforms the platform into a real-time collaborative environment where research data is the secondary currency of interaction.
 

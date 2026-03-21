@@ -1,5 +1,7 @@
 # UET v5.0 — Unity Ledger PoUW/PoE Specification
 
+> **Related:** [[12__MATHNICRY_ECONOMIC_CONSTITUTION]] · [[17__QUANTUM_RESISTANT_SECURITY_STANDARD_v5.0]] · [[18__TASK_PORTFOLIO_AND_ROTATION_v5.0]] · [[11__SLA_AND_VERIFICATION_v5.0_STABILITY]] · [[19__DECENTRALIZED_GOVERNANCE_v5.0]]
+
 This document defines the canonical ledger model for Proof of Useful Work (PoUW) and Proof of Equilibrium (PoE), including task formats, proof objects, commit rules, and anti-cheat controls.
 
 ## 1. Scope and Goals

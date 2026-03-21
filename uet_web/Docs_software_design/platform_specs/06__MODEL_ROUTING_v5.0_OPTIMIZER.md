@@ -1,5 +1,7 @@
 # 🎯 UET Model Routing (v5.0 — THE EXECUTION OPTIMIZER)
 
+> **Related:** [[03__AGENT_ENGINE_v5.0_SPEC]] · [[05__FLOW_AND_EVENT_v5.0_SPINE]] · [[07__KNOWLEDGE_SYNC_v5.0_SPEC]] · [[25__WORKCHAT_AND_LIBRECHAT_BOUNDARY_v1]]
+
 The Model Routing Engine v5.0 is the "Allocational Brain" of the Unity Mega-Platform. It dynamically directs every task to the most effective AI model based on complexity, cost, and safety requirements, ensuring hardware-agnostic intelligence.
 
 ---

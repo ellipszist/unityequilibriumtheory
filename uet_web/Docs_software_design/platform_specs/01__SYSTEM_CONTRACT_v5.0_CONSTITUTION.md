@@ -1,5 +1,7 @@
 # 📜 Unity v5.0 System Constitution (The Axiomatic Contract)
 
+> **Related:** [[00__MASTER_BLUEPRINT_v5.0_FINAL]] · [[05__FLOW_AND_EVENT_v5.0_SPINE]] · [[08__PLATFORM_GOVERNANCE_v5.0_ROLES]] · [[03__AGENT_ENGINE_v5.0_SPEC]]
+
 This document establishes the **Architecture of Trust** and defining the core logic governing all agents and sub-systems within the Unity Mega-Platform.
 
 ---

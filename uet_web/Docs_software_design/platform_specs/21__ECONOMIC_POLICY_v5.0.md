@@ -1,5 +1,7 @@
 # UET v5.0 — Economic Policy Standard
 
+> **Related:** [[12__MATHNICRY_ECONOMIC_CONSTITUTION]] · [[19__DECENTRALIZED_GOVERNANCE_v5.0]] · [[20__ORACLE_INFRASTRUCTURE_v5.0]] · [[18__TASK_PORTFOLIO_AND_ROTATION_v5.0]] · [[22__MARKET_INFRASTRUCTURE_v5.0]]
+
 ## 1. Vision: Adaptive Economic Policy
 
 UET's economic policy is adaptive and data-driven, automatically adjusting difficulty, issuance, and portfolio to maintain stability and prevent inflation.

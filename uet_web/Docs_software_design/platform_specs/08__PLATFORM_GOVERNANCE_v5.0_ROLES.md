@@ -1,5 +1,7 @@
 # UET v5.0 — Platform Governance & Roles Specification
 
+> **Related:** [[01__SYSTEM_CONTRACT_v5.0_CONSTITUTION]] · [[19__DECENTRALIZED_GOVERNANCE_v5.0]] · [[31__WORKSPACE_AND_COLLABORATION_SPEC_v1]] · [[10__SYSTEM_COORDINATION_v5.0_RULES]]
+
 ## 1. Overview
 Platform Governance defines the hierarchy of human and agent actors within the Unity Mega-Platform. It ensures the "Architecture of Trust" by strictly enforcing boundaries between research data, personal workspaces, and global infrastructure.
 

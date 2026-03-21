@@ -1,5 +1,7 @@
 # UET v5.0 — Implementation Gap Matrix v1
 
+> **Related:** [[23__LATEST_PLATFORM_FLOW_v1]] · [[27__PHASED_EXECUTION_PLAN_v1]] · [[24__AI_AGENT_MEMORY_ARCHITECTURE_v1]]
+
 This matrix compares the current codebase with the target v5.0 platform specifications so that implementation can proceed in a controlled and phased manner.
 
 ---

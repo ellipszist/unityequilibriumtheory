@@ -1,5 +1,7 @@
 # UET v5.0 — Phased Execution Plan v1
 
+> **Related:** [[26__IMPLEMENTATION_GAP_MATRIX_v1]] · [[23__LATEST_PLATFORM_FLOW_v1]] · [[34__INTEGRATION_ARCHITECTURE_v1]]
+
 This execution plan stages the next implementation work so the platform can evolve from the current prototype into a clearer v5.0-aligned architecture without unnecessary rework.
 
 ---

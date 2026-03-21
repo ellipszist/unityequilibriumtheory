@@ -3,7 +3,7 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
 import { useParams, usePathname } from 'next/navigation';
-import { Sparkles, Home, Newspaper, FolderKanban, Search } from 'lucide-react';
+import { Sparkles, Home, Newspaper, FolderKanban, Wallet } from 'lucide-react';
 import MenuPopover from '@/components/layout/MenuPopover';
 import MessengerPopover from '@/components/chat/MessengerPopover';
 import NotificationBell from '@/components/layout/NotificationBell';
@@ -11,10 +11,11 @@ import ProfilePopover from '@/components/layout/ProfilePopover';
 import { useChatContext } from '@/components/chat/ChatProvider';
 
 const NAV_LINKS = [
-  { href: '/feed', label: 'Feed', icon: Home },
-  { href: '/workspaces', label: 'Projects', icon: FolderKanban },
-  { href: '/chat', label: 'Workchat', icon: Sparkles },
   { href: '/news', label: 'News', icon: Newspaper },
+  { href: '/workchat', label: 'WorkChat', icon: Sparkles },
+  { href: '/community', label: 'Community', icon: Home },
+  { href: '/project', label: 'Project', icon: FolderKanban },
+  { href: '/economy', label: 'Economy', icon: Wallet },
 ];
 
 interface AppShellProps {
@@ -69,13 +70,6 @@ export default function AppShell({ children, hideNav = false }: AppShellProps) {
         {/* Right: FB-style action icons */}
         <div className="flex items-center gap-1.5 shrink-0">
           <MenuPopover />
-          <Link
-            href={`/${locale}/search`}
-            className="w-9 h-9 rounded-full bg-muted/50 hover:bg-muted flex items-center justify-center transition-colors"
-            title="Search"
-          >
-            <Search size={16} className="text-muted-foreground" />
-          </Link>
           <MessengerPopover onOpenChat={(contact) => openChat(contact)} />
           <NotificationBell />
           <ProfilePopover />

@@ -1,5 +1,7 @@
 # UET v5.0 — Social Feed & Profiles Spec v1
 
+> **Related:** [[15__ACADEMIC_SOCIAL_PLATFORM_v5.0_SPEC]] · [[35__UX_UI_DESIGN_STANDARD_v1]] · [[28__OPEN_SOURCE_STACK_SELECTION_v1]] · [[34__INTEGRATION_ARCHITECTURE_v1]]
+
 ## 1. Vision
 An academic social feed where researchers share findings, discuss theories, and build reputation through verified contributions — not engagement farming.
 

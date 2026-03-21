@@ -1,5 +1,7 @@
 # UET v5.0 — Workchat and LibreChat Boundary v1
 
+> **Related:** [[03__AGENT_ENGINE_v5.0_SPEC]] · [[28__OPEN_SOURCE_STACK_SELECTION_v1]] · [[34__INTEGRATION_ARCHITECTURE_v1]] · [[06__MODEL_ROUTING_v5.0_OPTIMIZER]]
+
 This document defines the recommended boundary between the current UET Workchat experience, a possible LibreChat adoption path, and the long-term UET intelligence backend.
 
 ---

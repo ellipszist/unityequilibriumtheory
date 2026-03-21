@@ -1,5 +1,7 @@
 # UET v5.0 — Latest Platform Flow v1
 
+> **Related:** [[03__AGENT_ENGINE_v5.0_SPEC]] · [[04__RAG_ENGINE_v5.0_SPEC]] · [[05__FLOW_AND_EVENT_v5.0_SPINE]] · [[06__MODEL_ROUTING_v5.0_OPTIMIZER]] · [[26__IMPLEMENTATION_GAP_MATRIX_v1]]
+
 This document shows the latest end-to-end platform flow in a human-readable form, bridging the current implementation with the target v5.0 architecture.
 
 ---

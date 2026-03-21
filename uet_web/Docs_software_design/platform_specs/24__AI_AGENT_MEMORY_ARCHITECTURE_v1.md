@@ -1,5 +1,7 @@
 # UET v5.0 — AI Agent Memory Architecture v1
 
+> **Related:** [[03__AGENT_ENGINE_v5.0_SPEC]] · [[04__RAG_ENGINE_v5.0_SPEC]] · [[07__KNOWLEDGE_SYNC_v5.0_SPEC]] · [[01__SYSTEM_CONTRACT_v5.0_CONSTITUTION]] · [[10__SYSTEM_COORDINATION_v5.0_RULES]]
+
 This document defines the practical memory architecture for UET agents by combining the v5.0 platform specs with a cognitively inspired separation of memory responsibilities.
 
 ---

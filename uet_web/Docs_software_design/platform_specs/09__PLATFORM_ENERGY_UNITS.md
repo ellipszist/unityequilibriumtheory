@@ -1,5 +1,8 @@
 # UET v5.0 — Platform Energy & Service Units (AEU)
 
+> **Related:** [[12__MATHNICRY_ECONOMIC_CONSTITUTION]] · [[33__CREDIT_AND_SUBSCRIPTION_SPEC_v1]] · [[14__UNITY_LEDGER_POUW_POE_v5.0_SPEC]] · [[21__ECONOMIC_POLICY_v5.0]]
+> ⚠️ **Overlap:** AEU concept maps to Doc 33's "Credits". See [[33__CREDIT_AND_SUBSCRIPTION_SPEC_v1]].
+
 ## 1. Overview
 While UET Coins are global assets, **Axiomatic Energy Units (AEU)** (formerly Credits) are internal platform tokens used specifically to quantify and pay for **Service Intensity**.
 

@@ -1,5 +1,7 @@
 # UET v5.0 — Workspace & Collaboration Spec v1
 
+> **Related:** [[30__REALTIME_CHAT_AND_MESSAGING_SPEC_v1]] · [[32__VIDEO_AND_VOICE_SPEC_v1]] · [[28__OPEN_SOURCE_STACK_SELECTION_v1]] · [[08__PLATFORM_GOVERNANCE_v5.0_ROLES]] · [[34__INTEGRATION_ARCHITECTURE_v1]]
+
 ## 1. Vision
 Discord-like workspaces for research teams — channels, roles, shared documents, task boards, and AI assistants — built on Rocket.Chat channels + Tiptap collaborative editing.
 

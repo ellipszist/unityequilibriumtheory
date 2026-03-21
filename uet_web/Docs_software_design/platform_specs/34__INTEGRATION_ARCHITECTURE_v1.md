@@ -1,5 +1,7 @@
 # UET v5.0 — Integration Architecture v1
 
+> **Related:** [[28__OPEN_SOURCE_STACK_SELECTION_v1]] · [[30__REALTIME_CHAT_AND_MESSAGING_SPEC_v1]] · [[31__WORKSPACE_AND_COLLABORATION_SPEC_v1]] · [[32__VIDEO_AND_VOICE_SPEC_v1]] · [[33__CREDIT_AND_SUBSCRIPTION_SPEC_v1]] · [[27__PHASED_EXECUTION_PLAN_v1]]
+
 ## 1. Purpose
 This document defines how all open-source services (Rocket.Chat, LiveKit, Hocuspocus, LibreChat) integrate with the existing UET backend (Rust API, Python Agent, Next.js, PostgreSQL) into a unified platform.
 

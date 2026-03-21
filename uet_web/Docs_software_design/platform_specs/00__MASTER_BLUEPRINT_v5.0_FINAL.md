@@ -1,5 +1,7 @@
 # 🌌 UET Master Blueprint (v5.0 — THE UNIVERSAL CALCULATOR)
 
+> **Related:** [[01__SYSTEM_CONTRACT_v5.0_CONSTITUTION]] · [[02__DATA_SCHEMA_v5.0_UNIFIED]] · [[14__UNITY_LEDGER_POUW_POE_v5.0_SPEC]] · [[17__QUANTUM_RESISTANT_SECURITY_STANDARD_v5.0]] · [[18__TASK_PORTFOLIO_AND_ROTATION_v5.0]] · [[23__LATEST_PLATFORM_FLOW_v1]]
+
 ## 🎯 Global Mission
 To establish the **Unity Mega-Platform** as the world's most performant and reliable **Universal Physics Calculator**. By leveraging a high-performance Rust core (`uet_core`) and universal connectivity (MCP), we provide the mathematical substrate for the next generation of scientific AI.
 

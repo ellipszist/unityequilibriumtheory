@@ -26,27 +26,28 @@ model User {
   updatedAt    DateTime @updatedAt
 
   // Profile fields
-  displayName  String?
-  bio          String?  @db.Text
-  avatarUrl    String?
-  institution  String?
-  website      String?
+  displayName String?
+  bio         String? @db.Text
+  avatarUrl   String?
+  institution String?
+  website     String?
 
   // Relations
-  wallet           Wallet?
-  posts            Post[]
-  comments         Comment[]
-  ownedProjects    Project[]          @relation("ProjectOwner")
-  tasksAssigned    Task[]             @relation("TaskAssignee")
-  computeLogs      ComputeLog[]
-  followers        Follow[]           @relation("Following")
-  following        Follow[]           @relation("Followers")
-  media            Media[]
-  ownedWorkspaces  Workspace[]        @relation("WorkspaceOwner")
-  workspaces       WorkspaceMember[]
-  documents        Document[]
-  creditBalance    CreditBalance?
-  subscription     Subscription?
+  wallet          Wallet?
+  posts           Post[]
+  comments        Comment[]
+  ownedProjects   Project[]         @relation("ProjectOwner")
+  tasksAssigned   Task[]            @relation("TaskAssignee")
+  computeLogs     ComputeLog[]
+  followers       Follow[]          @relation("Following")
+  following       Follow[]          @relation("Followers")
+  media           Media[]
+  ownedWorkspaces Workspace[]       @relation("WorkspaceOwner")
+  workspaces      WorkspaceMember[]
+  documents       Document[]
+  creditBalance   CreditBalance?
+  subscription    Subscription?
+  chatMessages    ChatMessage[]
 }
 
 // ==========================================
@@ -99,14 +100,14 @@ enum TxStatus {
 // ==========================================
 
 model Post {
-  id        String   @id @default(uuid())
-  authorId  String
-  title     String
-  content   String   @db.Text // Supports Markdown & LaTeX
-  upvotes   Int      @default(0)
-  isVerified Boolean @default(false) // PoUW verified insight
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         String   @id @default(uuid())
+  authorId   String
+  title      String
+  content    String   @db.Text // Supports Markdown & LaTeX
+  upvotes    Int      @default(0)
+  isVerified Boolean  @default(false) // PoUW verified insight
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 
   author   User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
   comments Comment[]
@@ -147,9 +148,20 @@ model Project {
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
 
-  owner     User       @relation("ProjectOwner", fields: [ownerId], references: [id])
-  workspace Workspace? @relation(fields: [workspaceId], references: [id])
+  owner     User           @relation("ProjectOwner", fields: [ownerId], references: [id])
+  workspace Workspace?     @relation(fields: [workspaceId], references: [id])
   tasks     Task[]
+  wallet    ProjectWallet?
+}
+
+model ProjectWallet {
+  id        String   @id @default(uuid())
+  projectId String   @unique
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  address   String   @unique // Uet-Cash blockchain address
+  balance   Float    @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Task {
@@ -215,10 +227,10 @@ model Follow {
 }
 
 model Vote {
-  id     String   @id @default(uuid())
-  postId String
-  userId String
-  value  Int      // +1 or -1
+  id        String   @id @default(uuid())
+  postId    String
+  userId    String
+  value     Int // +1 or -1
   createdAt DateTime @default(now())
 
   post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
@@ -292,7 +304,7 @@ model Document {
   workspaceId String
   title       String
   yjsDocId    String   @unique
-  content     Bytes?   // Yjs binary state
+  content     Bytes? // Yjs binary state
   createdById String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
@@ -312,7 +324,7 @@ model CreditBalance {
   lifetime  Int      @default(0)
   updatedAt DateTime @updatedAt
 
-  user         User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user         User                @relation(fields: [userId], references: [id], onDelete: Cascade)
   transactions CreditTransaction[]
 }
 
@@ -364,4 +376,38 @@ enum SubStatus {
   PAST_DUE
   CANCELED
   TRIALING
+}
+
+// ==========================================
+// 9. CHAT & MESSAGING
+// ==========================================
+
+model ChatChannel {
+  id          String      @id @default(uuid())
+  name        String
+  type        ChannelType
+  projectId   String? // Only if type is TOPIC
+  description String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  messages ChatMessage[]
+}
+
+model ChatMessage {
+  id        String   @id @default(uuid())
+  channelId String
+  authorId  String
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  channel ChatChannel @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  author  User        @relation(fields: [authorId], references: [id], onDelete: Cascade)
+}
+
+enum ChannelType {
+  COMMUNITY
+  TOPIC
+  DIRECT_MESSAGE
 }

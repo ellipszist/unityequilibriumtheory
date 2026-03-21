@@ -1,5 +1,8 @@
 # UET v5.0 — Credit & Subscription System Spec v1
 
+> **Related:** [[09__PLATFORM_ENERGY_UNITS]] · [[12__MATHNICRY_ECONOMIC_CONSTITUTION]] · [[28__OPEN_SOURCE_STACK_SELECTION_v1]] · [[34__INTEGRATION_ARCHITECTURE_v1]]
+> ⚠️ **Overlap:** "Credits" maps to Doc 09's "AEU" concept.
+
 ## 1. Vision
 A credit-based system for AI usage metering + Stripe subscriptions for platform access. Credits are the internal currency for consuming AI services. UET Coins can be exchanged for credits but are NOT the same thing.
 

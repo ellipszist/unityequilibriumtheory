@@ -1,5 +1,7 @@
 # UET v5.0 — School Reform & Council Model
 
+> **Related:** [[13__DECENTRALIZED_INFRA_v5.0_DEN]] · [[15__ACADEMIC_SOCIAL_PLATFORM_v5.0_SPEC]] · [[09__PLATFORM_ENERGY_UNITS]]
+
 ## 1. Vision: The Holistic School Renovation
 Schools are transformed into multi-disciplinary hubs that support both traditional and modern fields (Graphics, Coding, Production, Marketing, Printing). The goal is to create a symbiotic relationship between students, their community, and the global UET network.
 

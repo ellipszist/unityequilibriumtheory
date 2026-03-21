@@ -1,5 +1,7 @@
 # UET v5.0 — Quantum-Resistant Security Standard
 
+> **Related:** [[14__UNITY_LEDGER_POUW_POE_v5.0_SPEC]] · [[12__MATHNICRY_ECONOMIC_CONSTITUTION]] · [[13__DECENTRALIZED_INFRA_v5.0_DEN]] · [[11__SLA_AND_VERIFICATION_v5.0_STABILITY]]
+
 This standard defines cryptographic policy for UET nodes, ledger objects, and inter-node transport with crypto-agility for future algorithm migration.
 
 ## 1. Security Objectives

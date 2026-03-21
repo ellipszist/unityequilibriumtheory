@@ -1,5 +1,7 @@
 # UET v5.0 — Oracle Infrastructure Standard
 
+> **Related:** [[19__DECENTRALIZED_GOVERNANCE_v5.0]] · [[17__QUANTUM_RESISTANT_SECURITY_STANDARD_v5.0]] · [[14__UNITY_LEDGER_POUW_POE_v5.0_SPEC]] · [[12__MATHNICRY_ECONOMIC_CONSTITUTION]]
+
 ## 1. Vision: Verifiable Real-World Data
 
 UET's economic model requires verification of real-world data (energy, land, assets) to maintain asset backing. Oracle infrastructure provides decentralized, reputation-based verification of this data.

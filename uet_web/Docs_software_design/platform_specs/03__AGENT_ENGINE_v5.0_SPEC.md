@@ -1,5 +1,7 @@
 # 🧠 UET Agent Engine (v5.0 — THE REASONING CORE)
 
+> **Related:** [[04__RAG_ENGINE_v5.0_SPEC]] · [[05__FLOW_AND_EVENT_v5.0_SPINE]] · [[06__MODEL_ROUTING_v5.0_OPTIMIZER]] · [[24__AI_AGENT_MEMORY_ARCHITECTURE_v1]] · [[01__SYSTEM_CONTRACT_v5.0_CONSTITUTION]] · [[23__LATEST_PLATFORM_FLOW_v1]]
+
 The Agent Engine v5.0 is the "Central Brain" of the Unity Mega-Platform, responsible for interpreting evidence, executing complex reasoning, and orchestrating multi-agent collaboration with absolute determinism.
 
 ---

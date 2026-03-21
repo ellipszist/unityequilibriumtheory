@@ -1,5 +1,7 @@
 # UET v5.0 — Market Infrastructure Standard
 
+> **Related:** [[21__ECONOMIC_POLICY_v5.0]] · [[19__DECENTRALIZED_GOVERNANCE_v5.0]] · [[14__UNITY_LEDGER_POUW_POE_v5.0_SPEC]] · [[12__MATHNICRY_ECONOMIC_CONSTITUTION]]
+
 ## 1. Vision: Decentralized Trading
 
 UET Market provides decentralized trading infrastructure for UET Coin, enabling liquidity provision and price discovery without centralized exchanges.

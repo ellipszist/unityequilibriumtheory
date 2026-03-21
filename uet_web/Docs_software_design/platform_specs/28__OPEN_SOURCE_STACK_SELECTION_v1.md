@@ -1,5 +1,7 @@
 Phase# UET v5.0 — Open-Source Stack Selection v1
 
+> **Related:** [[25__WORKCHAT_AND_LIBRECHAT_BOUNDARY_v1]] · [[29__SOCIAL_FEED_AND_PROFILES_SPEC_v1]] · [[30__REALTIME_CHAT_AND_MESSAGING_SPEC_v1]] · [[31__WORKSPACE_AND_COLLABORATION_SPEC_v1]] · [[32__VIDEO_AND_VOICE_SPEC_v1]] · [[33__CREDIT_AND_SUBSCRIPTION_SPEC_v1]] · [[34__INTEGRATION_ARCHITECTURE_v1]]
+
 ## 1. Purpose
 This document evaluates and selects open-source projects for each major platform feature area, providing a unified technology stack that minimizes custom development while maximizing feature completeness.
 

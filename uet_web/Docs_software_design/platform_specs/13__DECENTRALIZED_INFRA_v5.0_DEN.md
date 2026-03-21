@@ -1,5 +1,7 @@
 # UET v5.0 — Decentralized Educational Node (DEN) Infrastructure
 
+> **Related:** [[07__KNOWLEDGE_SYNC_v5.0_SPEC]] · [[12__MATHNICRY_ECONOMIC_CONSTITUTION]] · [[14__UNITY_LEDGER_POUW_POE_v5.0_SPEC]] · [[17__QUANTUM_RESISTANT_SECURITY_STANDARD_v5.0]] · [[15__ACADEMIC_SOCIAL_PLATFORM_v5.0_SPEC]] · [[16__SCHOOL_REFORM_COUNCIL_MODEL_v5.0]]
+
 ## 1. Vision: The Global Infrastructure of Knowledge
 The DEN system transforms the global educational landscape into a massive, decentralized server network. Universities and schools host local "Axiomatic Nodes" that perform Proof of Useful Work (PoUW), providing both local compute resources for students and global processing power for the UET Mathnicry.
 
