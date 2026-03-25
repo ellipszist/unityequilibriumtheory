@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import Link from 'next/link';
 import { useParams, usePathname } from 'next/navigation';
 import { Sparkles, Home, Newspaper, FolderKanban, Wallet } from 'lucide-react';
@@ -8,6 +8,7 @@ import MenuPopover from '@/components/layout/MenuPopover';
 import MessengerPopover from '@/components/chat/MessengerPopover';
 import NotificationBell from '@/components/layout/NotificationBell';
 import ProfilePopover from '@/components/layout/ProfilePopover';
+import ChatHistorySidebar from '@/components/chat/ChatHistorySidebar';
 import { useChatContext } from '@/components/chat/ChatProvider';
 
 const NAV_LINKS = [
@@ -28,6 +29,7 @@ export default function AppShell({ children, hideNav = false }: AppShellProps) {
   const pathname = usePathname();
   const locale = (params?.locale as string) || 'en';
   const { openChat } = useChatContext();
+  const [chatHistoryOpen, setChatHistoryOpen] = useState(false);
 
   function isActive(href: string) {
     return pathname?.includes(href);
@@ -39,11 +41,17 @@ export default function AppShell({ children, hideNav = false }: AppShellProps) {
     <div className="flex flex-col h-screen bg-background text-foreground">
       {/* Universal Navbar */}
       <nav className="shrink-0 h-14 flex items-center justify-between px-4 border-b border-border bg-background/80 backdrop-blur-md z-50">
-        {/* Left: Logo */}
-        <Link href={`/${locale}`} className="flex items-center gap-2 font-bold text-base hover:opacity-80 transition-opacity shrink-0">
+        {/* Left: Logo → toggles Chat History sidebar */}
+        <button
+          onClick={() => setChatHistoryOpen(v => !v)}
+          className={`flex items-center gap-2 font-bold text-base transition-opacity shrink-0 rounded-lg px-2 py-1 ${
+            chatHistoryOpen ? 'opacity-100 bg-primary/10 text-primary' : 'hover:opacity-80'
+          }`}
+          title="Chat History"
+        >
           <img src="/logo.png" alt="UET" className="w-7 h-7 object-contain" />
           <span className="hidden sm:inline text-sm">UET</span>
-        </Link>
+        </button>
 
         {/* Center: Nav links */}
         <div className="hidden md:flex items-center gap-1 mx-4">
@@ -76,10 +84,16 @@ export default function AppShell({ children, hideNav = false }: AppShellProps) {
         </div>
       </nav>
 
-      {/* Page content */}
-      <div className="flex-1 overflow-hidden">
+      {/* Page content — shifts left when chat history open */}
+      <div className={`flex-1 overflow-hidden transition-[margin] duration-200 ${chatHistoryOpen ? 'mr-72' : 'mr-0'}`}>
         {children}
       </div>
+
+      {/* Chat History Sidebar (right, persistent across all pages) */}
+      <ChatHistorySidebar
+        open={chatHistoryOpen}
+        onClose={() => setChatHistoryOpen(false)}
+      />
 
       {/* Mobile bottom nav */}
       <div className="md:hidden shrink-0 flex border-t border-border bg-card">

@@ -112,6 +112,24 @@ services:
     ports:
       - "3200:3000"
 
+  # === The Mind UI (LobeChat — AI Chat Frontend) ===
+  lobe_chat:
+    image: lobehub/lobe-chat:latest
+    container_name: uet_lobechat
+    restart: unless-stopped
+    depends_on:
+      - uet_agents
+    environment:
+      - ENABLED_CSP=0
+      - OPENAI_API_KEY=uet-local-key
+      - OPENAI_PROXY_URL=http://uet_agents:8001/v1
+      - OPENAI_MODEL_LIST=uet-agent,uet-agent-fast,glm-4.7-flash
+      - ACCESS_CODE=${LOBECHAT_ACCESS_CODE:-uet2025}
+      - DEFAULT_AGENT_CONFIG=model=uet-agent
+      - SSRF_ALLOW_PRIVATE_IP_ADDRESS=1
+    ports:
+      - "3100:3210"
+
   # === The Eyes (LiveKit — Video/Voice) ===
   livekit:
     image: livekit/livekit-server:latest
