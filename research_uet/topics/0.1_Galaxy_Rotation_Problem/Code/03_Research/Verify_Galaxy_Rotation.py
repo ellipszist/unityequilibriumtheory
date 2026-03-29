@@ -54,10 +54,13 @@ def run_verification():
         )
         engine = UETGalaxyEngine(gp)
 
-        # 3. Optimize Coupling (Find best Gamma)
-        best_gamma, chi2 = engine.optimize_coupling(
-            radii=obs["radii"], v_obs=obs["v_obs"], v_err=obs["v_err"]
-        )
+        # 3. Evaluate First-Principles Accuracy (No Curve Fitting)
+        best_gamma = engine.params.gamma  # Use strict UET derivation
+        if hasattr(engine.params, "gamma_UET"): # Check fallback names
+             best_gamma = engine.params.gamma_UET
+             
+        v_preds = np.array([engine.compute_velocity_at_radius(r) for r in obs["radii"]])
+        chi2 = np.sum(((obs["v_obs"] - v_preds) / obs["v_err"])**2)
 
         # DEBUG: Print Curve Analysis
         print(f"    [DEBUG] Curve Analysis for Gamma={best_gamma:.3f}:")

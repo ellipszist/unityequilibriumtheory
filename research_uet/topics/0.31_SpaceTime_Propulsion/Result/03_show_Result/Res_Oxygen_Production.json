@@ -1,0 +1,44 @@
+{
+    "metadata": {
+        "timestamp": "2026-03-29T11:16:46.987820",
+        "topic": "0.31_SpaceTime_Propulsion",
+        "category": "03_Research"
+    },
+    "production_scaling": [
+        {
+            "segments": 1,
+            "total_km": 1000.0,
+            "o2_units_hr": 1575.0,
+            "net_carbon_balance_hr": -48425.0,
+            "sustainability_status": "Negative"
+        },
+        {
+            "segments": 10,
+            "total_km": 10000.0,
+            "o2_units_hr": 15750.0,
+            "net_carbon_balance_hr": -34250.0,
+            "sustainability_status": "Negative"
+        },
+        {
+            "segments": 50,
+            "total_km": 50000.0,
+            "o2_units_hr": 78750.0,
+            "net_carbon_balance_hr": 28750.0,
+            "sustainability_status": "Positive"
+        },
+        {
+            "segments": 100,
+            "total_km": 100000.0,
+            "o2_units_hr": 157500.0,
+            "net_carbon_balance_hr": 107500.0,
+            "sustainability_status": "Positive"
+        },
+        {
+            "segments": 500,
+            "total_km": 500000.0,
+            "o2_units_hr": 787500.0,
+            "net_carbon_balance_hr": 737500.0,
+            "sustainability_status": "Positive"
+        }
+    ]
+}

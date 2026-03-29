@@ -95,6 +95,10 @@ def analyze_market_equilibrium(df, name):
         print("💀 INTEGRITY KILL SWITCH ACTIVE: Result Invalidated.")
         sys.exit(1)
 
+    min_price = np.min(prices)
+    max_price = np.max(prices)
+    mean_return = np.mean(returns)
+
     return {
         "name": name,
         "n_days": len(prices),

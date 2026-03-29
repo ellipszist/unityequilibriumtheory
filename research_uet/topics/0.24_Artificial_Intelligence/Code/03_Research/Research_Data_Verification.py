@@ -68,8 +68,13 @@ class DataVerificationSolver(UETBaseSolver):
         """Step 1: Ingest Matter (Text)"""
         print(f"\n📂 STEP 1: INGESTING KNOWLEDGE BASE...")
         if not self.data_path.exists():
-            print(f"❌ Critical Error: Foundation Data not found at {self.data_path}")
-            self.entropy = 5.0  # Max Chaos
+            print(f"❌ Error: Data not found. Using Mock Knowledge Base for Diagnostics.")
+            self.knowledge_base = [
+                "แมว วิ่ง ความรู้",
+                "Information is physical in UET.",
+                "Equilibrium seeks the lowest entropy state."
+            ]
+            self.entropy = 5.0
             return
 
         try:

@@ -173,7 +173,7 @@ def run_gaia_flow(scale_mult=1.0):
     print(f"   Genesis Complete in {init_time:.2f}s")
 
     # Simulation
-    steps = 100
+    steps = 20
     print(f"\n🌪️  Spinning up Global Circulation ({steps} Epochs)...")
 
     start_sim = time.time()

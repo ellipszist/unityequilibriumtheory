@@ -26,14 +26,10 @@ class UETQubitEngine:
     """
 
     def __init__(self, uet_params: Optional[UETParameters] = None, **kwargs):
-        # 1. Natural Calibration: Calibration (0.9) found kappa=1.40
+        # 1. First-Principles Calibration (v4.0 Rigor)
+        # Replaces hardcoded IBM Manila (1.40) with universal Quantum Scale derivation
         if uet_params is None:
-            self.params = UETParameters(
-                kappa=1.40,
-                beta=1.0,
-                scale="qubit_hardware",
-                origin="IBM Manila Calibration (arXiv:2306.09578)",
-            )
+            self.params = UETParameters(scale="quantum_hardware")
         else:
             self.params = uet_params
 

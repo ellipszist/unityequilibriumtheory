@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 from research_uet.core.uet_parameters import get_params, K_B
-from research_uet.core.uet_glass_box import UETPathManager
+from research_uet.core.uet_glass_box import UETPathManager, UETMetricLogger
 
 
 class PerovskiteLARPSimulator:
@@ -101,7 +101,7 @@ if __name__ == "__main__":
     import json
 
     logger = UETMetricLogger("Perovskite_LARP", topic_id="0.28", category="log")
-    res_dir = logger.get_result_dir(pillar="03_Research")
+    res_dir = logger.run_dir
     with open(res_dir / "synthesis_log.json", "w") as f:
         json.dump(results, f, indent=4)
     print(f"\n💾 RESULTS SAVED: {res_dir}/synthesis_log.json")

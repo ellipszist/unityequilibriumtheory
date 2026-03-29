@@ -19,7 +19,6 @@ from pathlib import Path
 from research_uet.core.uet_glass_box import UETPathManager
 from research_uet.core.uet_master_equation import (
 UETParameters,
-SIGMA_CRIT,
 strategic_boost,
 potential_V,
 KAPPA_BEKENSTEIN,

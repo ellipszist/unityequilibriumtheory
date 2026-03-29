@@ -25,7 +25,6 @@ while _root.name != "research_uet" and _root.parent != _root:
 sys.path.insert(0, str(_root.parent))
 from research_uet.core.uet_master_equation import (
     UETParameters,
-    SIGMA_CRIT,
     strategic_boost,
     potential_V,
     KAPPA_BEKENSTEIN,

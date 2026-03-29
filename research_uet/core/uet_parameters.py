@@ -47,6 +47,8 @@ C_KM_S = C / 1000.0  # Speed of light [km/s]
 G_GALACTIC = 4.301e-6  # kpc (km/s)² / M_sun (Standardized UET Value)
 RHO_COSMIC = 2.9e-16  # kg/m^3 (UET Vacuum Density - Pioneer/Fluid Frame)
 H0 = 67.4  # km/s/Mpc (Planck 2018 - Global Baseline)
+A0_COSMIC = 1.2e-10  # m/s² (Baseline Milgrom/MOND acceleration)
+TAU_MEM_VACUUM = 0.01  # s (Vacuum memory relaxation time)
 
 # --- UET BRIDGE CONSTANTS ---
 FLUID_MOBILITY_BRIDGE = 1750.0  # Derived Informational-Physical Bridge for Topic 0.10
@@ -171,6 +173,10 @@ def derive_parameters_first_principles(
         temperature=temperature,
         scale=f"{scale:.2e}m",
         origin="First-Principles (Landauer)",
+        # Default Bridge Values (Neutral)
+        phi_loss=0.05,
+        mu_gravity=0.0,
+        sigma_interaction=1.0,
     )
 
 # =============================================================================
@@ -185,8 +191,8 @@ class UETParameters:
     Matches the requirements of the UET Master Equation (All 12 Axioms).
     """
 
-    kappa: float  # Gradient penalty (A3)
-    beta: float  # Coupling constant (A2)
+    kappa: float = 0.1  # Gradient penalty (A3)
+    beta: float = 0.05  # Coupling constant (A2)
     alpha: float = 1.0  # Equilibrium stiffness (A1)
     gamma: float = 0.025  # Nonlinear stability (A1)
     C0: float = 1.0  # Vacuum Expectation Value (A1)
@@ -194,10 +200,20 @@ class UETParameters:
     W_N: float = 0.05  # Natural Will (A5)
     lambda_coherence: float = 0.01  # Layer coherence (A10)
 
+    # === Hardened Field Dynamics (Audit Fixes) ===
+    kappa_I: float = 0.1  # Informational Inertia (A2 Propagator mass)
+    tau_mem: float = 0.01  # Space-Memory relaxation time (A3)
+
+    # === Structural & Loss Bridge (Audit Fixes) ===
+    phi_loss: float = 0.05  # Informational dissipation (Loss factor)
+    mu_gravity: float = 0.0  # Metric coupling (Gravity bridge)
+    sigma_interaction: float = 1.0  # Cross-domain scaling ratio
+
     # === Astrophysical Constants (A7: Pattern Recurrence) ===
     RHO_UNITY: float = 5e7  # M_sun / kpc^3 (Pivot density)
     RATIO_0: float = 8.5  # Universal Halo Ratio pivot
     GAMMA_UET: float = 0.48  # Thermodynamic scaling index
+    SIGMA_CRIT: float = 1.37e9  # M_sun/kpc² (Derived from Λ)
 
     # === Context ===
     temperature: float = 293.15  # Kelvin
@@ -208,7 +224,7 @@ class UETParameters:
         """Standard detections for sabotaged parameters."""
         if INTEGRITY_KILL_SWITCH:
             # We must use object.__setattr__ because the dataclass is frozen
-            for field_name in ["kappa", "beta", "alpha", "gamma", "C0"]:
+            for field_name in ["kappa", "beta", "alpha", "gamma", "C0", "kappa_I"]:
                 object.__setattr__(self, field_name, 0.0)
 
 
@@ -382,34 +398,37 @@ def get_params(
     scale: str = "electroweak",
 ) -> UETParameters:
     """
-    Get UET parameters for a given scale.
-
-    Args:
-        scale: One of "planck", "electroweak", "nuclear", "astrophysical",
-               "macroscopic", "fluid_low_re", "fluid_high_re",
-               or a topic number like "0.5"
-
-    Returns:
-        UETParameters object with kappa, beta, scale, origin
-
-    Example:
-        >>> params = get_params("electroweak")
-        >>> print(params.kappa, params.beta)
-        0.5 1.0
-
-        >>> params = get_params("0.1")  # Galaxy rotation topic
-        >>> print(params.kappa)
-        0.1
+    Get UET parameters derived from first-principles (v4.0 Healing).
+    This function automatically maps legacy scale names to physical domains.
     """
-    # Check if it's a topic number
+    # 1. Map legacy strings to physical domains
+    mapping = {
+        "planck": "quantum",
+        "electroweak": "quantum",
+        "nuclear": "nuclear_binding",
+        "astrophysical": "galactic",
+        "macroscopic": "fluid",
+        "0.1": "galactic",
+        "0.3": "galactic",
+        "0.5": "nuclear_binding",
+        "0.9": "quantum"
+    }
+    
+    # 2. Resolve domain
+    domain = mapping.get(scale, scale)
     if scale in _TOPIC_SCALE_MAP:
-        scale = _TOPIC_SCALE_MAP[scale]
+        domain = mapping.get(_TOPIC_SCALE_MAP[scale], _TOPIC_SCALE_MAP[scale])
 
-    if scale not in _SCALE_PARAMS:
-        available = list(_SCALE_PARAMS.keys())
-        raise ValueError(f"Unknown scale: {scale}. Available: {available}")
-
-    return _SCALE_PARAMS[scale]
+    # 3. Derive Axiomatic Parameters (A1-A12)
+    try:
+        # We use get_params_first_principles which uses Landauer/Bekenstein logic
+        params = get_params_first_principles(domain)
+        return params
+    except ValueError:
+        # Fallback for truly unknown scales
+        if scale in _SCALE_PARAMS:
+            return _SCALE_PARAMS[scale]
+        raise
 
 
 def get_kappa_beta(scale: str = "electroweak") -> tuple[float, float]:

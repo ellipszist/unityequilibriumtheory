@@ -268,7 +268,7 @@ class PowerDynamicsEngine(UETBaseSolver):
 
             # Type D: Axiom 5 (Natural Will) -> Local Extraction (Increases local C)
             if a.agent_type == "D":
-                rate = a.boldness * self.nature_health * 0.05 * avg_c
+                rate = a.boldness * self.nature_health * self.params.W_N * avg_c
                 self.C[0, i] += rate
                 self.nature_health -= rate * 1e-6
 
@@ -279,13 +279,17 @@ class PowerDynamicsEngine(UETBaseSolver):
                     neighbor = (i + side) % self.nx
                     if self.C[0, i] > self.C[0, neighbor]:
                         diff = self.C[0, i] - self.C[0, neighbor]
-                        transfer = diff * a.boldness * 0.25  # Aggressive leveling
+                        transfer = diff * a.boldness * self.params.kappa  # Aggressive leveling
                         self.C[0, i] -= transfer
                         self.C[0, neighbor] += transfer
 
         # 2. Physics Core Step
-        self.C += self.params.gamma_J * 0.0001  # Innovation small flux
-        self.C = self.engine.step(self.C, dt=self.dt, dx=self.dx, I=self.I)
+        self.C += self.params.gamma_J * self.params.W_N  # Innovation small flux governed by UET
+        res = self.engine.step(self.C, dt=self.dt, dx=self.dx, I=self.I)
+        if isinstance(res, tuple):
+            self.C, self.I = res
+        else:
+            self.C = res
         self.C = np.clip(self.C, 0.001, 100.0)
 
         # 3. Nature Health Update
@@ -294,7 +298,8 @@ class PowerDynamicsEngine(UETBaseSolver):
             self.nature_health -= (
                 np.sum(grad_x**2) * 2e-7
             )  # Lowered penalty for tuned proof
-            self.nature_health = np.clip(self.nature_health, 0.0, 1.0)
+        
+        self.nature_health = np.clip(self.nature_health, 0.0, 1.0)
 
         # 4. Finalization
         self.sync_from_field()

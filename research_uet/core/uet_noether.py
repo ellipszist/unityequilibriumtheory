@@ -53,21 +53,26 @@ class UETNoether:
         """
         Compute Lagrangian density for UET.
 
-        L = (κ/2)|∇C|² - V(C) + β C·I
+        L = (κ/2)|∇C|² + (1/2)|∇I|² - V(C) - (1/2)m_I²I² + β C·I
 
-        where V(C) = (α/2)(C-C₀)² + (γ/4)(C-C₀)⁴
+        where V(C) = (α/2)(|C|²-C₀²)² + (γ/4)(|C|²-C₀²)⁴
         """
         from research_uet.core.uet_master_equation import potential_V
 
         V = potential_V(C, self.params)
-        kinetic = (self.params.kappa / 2) * grad_C**2
+        kinetic_C = (self.params.kappa / 2) * grad_C**2
 
-        if I is None:
-            interaction = 0
-        else:
+        if I is not None:
+            grad_I = np.gradient(I, np.gradient(np.arange(len(I)))) # Simplified dx
+            kinetic_I = 0.5 * grad_I**2
+            mass_I = 0.5 * self.params.kappa_I * I**2
             interaction = self.params.beta * C * I
+        else:
+            kinetic_I = 0
+            mass_I = 0
+            interaction = 0
 
-        L = kinetic - V + interaction
+        L = kinetic_C + kinetic_I - V - mass_I + interaction
 
         return L
 
@@ -126,19 +131,20 @@ class UETNoether:
         - Energy conservation: ∂E/∂t = 0
         - Momentum conservation: ∂P/∂t = 0
 
-        Energy density: T^00 = (∂L/∂(∂_0C))∂_0C - L
-        Momentum density: T^0i = (∂L/∂(∂_iC))∂_0C
+        Energy density: T^00 = Σ (∂L/∂(∂_0φ_i))∂_0φ_i - L
+        Momentum density: T^0i = Σ (∂L/∂(∂_iφ_i))∂_0φ_i
         """
-        # Compute gradient
+        # Compute gradients
         grad_C = np.gradient(C, dx)
 
-        # Lagrangian density
+        # Lagrangian density (Assume I is zero for simple tensor check if not provided)
         L = self.lagrangian_density(C, grad_C)
 
-        # Energy density
-        energy_density = (self.params.kappa / 2) * grad_C**2 + (L + (self.params.kappa / 2) * grad_C**2)
+        # Hamiltonian density (H = Σ π_i φ_i_dot - L)
+        # For static gradient check: H = (κ/2)|∇C|² + V(C)
+        energy_density = (self.params.kappa / 2) * grad_C**2 - L + (self.params.kappa * grad_C**2)
 
-        # Momentum density
+        # Momentum density p = ∂L/∂(∇C)
         momentum_density = self.params.kappa * grad_C
 
         return energy_density, momentum_density
@@ -294,10 +300,12 @@ class UETNoether:
         """
         Derive charge current from U(1) gauge symmetry.
 
-        J^μ = (∂L/∂(∂_μI))·iI - (∂L/∂(∂_μI*))·(-iI*)
+        J^μ = (∂L/∂(∂_μC))·δC + (∂L/∂(∂_μI))·δI
 
-        Simplified for our case:
-        J = β C·I (charge density)
+        For U(1) phase invariance:
+        J = β (C* ∂_μ I - I* ∂_μ C)  # Standard complex current
+        Simplified for real fields in current engine:
+        J = β C·I
         """
         # Charge density
         charge_density = self.params.beta * C * I

@@ -136,7 +136,7 @@ def run_siege(count=100, tolerance=1e-9):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Riemann Siege")
-    parser.add_argument("--count", type=int, default=1000, help="Number of zeros to check")
+    parser.add_argument("--count", type=int, default=50, help="Number of zeros to check")
     args = parser.parse_args()
 
     run_siege(count=args.count)

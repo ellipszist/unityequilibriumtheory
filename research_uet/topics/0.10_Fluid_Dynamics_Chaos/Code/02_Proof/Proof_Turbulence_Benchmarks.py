@@ -110,7 +110,11 @@ def run_benchmarks():
     t0 = time.time()
     for _ in range(steps):
         # UET avoids the Pressure Poisson solver entirely
-        C = solver.step(C, dt=0.001, dx=1.0 / N, I=I)
+        res = solver.step(C, dt=0.001, dx=1.0 / N, I=I)
+        if isinstance(res, tuple):
+            C, I = res
+        else:
+            C = res
     t_uet = time.time() - t0
     print(f"         UET Runtime: {t_uet:.4f}s")
 
@@ -128,7 +132,11 @@ def run_benchmarks():
 
     try:
         for _ in range(50):
-            C_stress = solver.step(C_stress, dt=0.001, dx=1.0 / N, I=I)
+            res = solver.step(C_stress, dt=0.001, dx=1.0 / N, I=I)
+            if isinstance(res, tuple):
+                C_stress, I = res
+            else:
+                C_stress = res
 
         is_stable = np.isfinite(C_stress).all()
         status = "✅ STABLE (No blow-up)" if is_stable else "❌ UNSTABLE"

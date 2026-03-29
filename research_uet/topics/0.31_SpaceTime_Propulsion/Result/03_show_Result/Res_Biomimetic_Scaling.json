@@ -1,0 +1,69 @@
+{
+    "metadata": {
+        "timestamp": "2026-03-29T11:16:46.406466",
+        "topic": "0.31_SpaceTime_Propulsion",
+        "category": "03_Research"
+    },
+    "scaling_test": [
+        {
+            "angle_degrees": 0.0,
+            "efficiency_smooth": 1.0,
+            "efficiency_whale": 1.0,
+            "gain_pct": 0.0
+        },
+        {
+            "angle_degrees": 3.3333333333333335,
+            "efficiency_smooth": 0.9983081582712682,
+            "efficiency_whale": 1.0070298826078397,
+            "gain_pct": 0.8736505120497506
+        },
+        {
+            "angle_degrees": 6.666666666666667,
+            "efficiency_smooth": 0.993238357741943,
+            "efficiency_whale": 1.0106522948607275,
+            "gain_pct": 1.7532485513722884
+        },
+        {
+            "angle_degrees": 10.0,
+            "efficiency_smooth": 0.984807753012208,
+            "efficiency_whale": 1.0108549796622475,
+            "gain_pct": 2.644904710626972
+        },
+        {
+            "angle_degrees": 13.333333333333334,
+            "efficiency_smooth": 0.9730448705798238,
+            "efficiency_whale": 1.0076372511911897,
+            "gain_pct": 3.555065306572436
+        },
+        {
+            "angle_degrees": 16.666666666666668,
+            "efficiency_smooth": 0.1915979024630978,
+            "efficiency_whale": 1.0010099972221524,
+            "gain_pct": 422.45352603218055
+        },
+        {
+            "angle_degrees": 20.0,
+            "efficiency_smooth": 0.1879385241571817,
+            "efficiency_whale": 0.9909956422847588,
+            "gain_pct": 427.2977675699652
+        },
+        {
+            "angle_degrees": 23.333333333333336,
+            "efficiency_smooth": 0.18364322137605482,
+            "efficiency_whale": 0.9776280717861475,
+            "gain_pct": 432.35184204496863
+        },
+        {
+            "angle_degrees": 26.666666666666668,
+            "efficiency_smooth": 0.17872652806468248,
+            "efficiency_whale": 0.24604640509475179,
+            "gain_pct": 37.66641570170588
+        },
+        {
+            "angle_degrees": 30.0,
+            "efficiency_smooth": 0.17320508075688776,
+            "efficiency_whale": 0.24820508075688774,
+            "gain_pct": 43.30127018922192
+        }
+    ]
+}

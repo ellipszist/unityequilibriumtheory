@@ -138,6 +138,7 @@ class UETBaseSolver(ABC):
                     "beta": self.params.beta,
                     "alpha": self.params.alpha,
                     "C0": self.params.C0,
+                    "phi_loss": self.params.phi_loss,
                 }
             )
         except Exception as e:
@@ -175,12 +176,28 @@ class UETBaseSolver(ABC):
         Subclasses can provide extra metrics via `get_extra_metrics()`.
         """
         # Calculate Gradients for Omega
-        if self.nx > 1 and self.ny > 1:
-            grad_y, grad_x = np.gradient(self.C, self.dy, self.dx)
-            grad_sq = grad_x**2 + grad_y**2
-        else:
-            # 0D / Scalar Simulation (e.g. Hubble)
-            grad_sq = np.zeros_like(self.C)
+        # Robust check: Need at least 2 elements in the dimension to calculate gradient
+        # self.C is (ny, nx)
+        grad_sq = np.zeros_like(self.C)
+        if self.C.ndim == 2:
+            if self.ny > 1 and self.nx > 1:
+                grad_y, grad_x = np.gradient(self.C, self.dy, self.dx)
+                grad_sq = grad_x**2 + grad_y**2
+            elif self.nx > 1:
+                # 1D Horizontal in 2D shape (1, nx)
+                grad_x = np.gradient(self.C[0, :], self.dx)
+                grad_sq[0, :] = grad_x**2
+            elif self.ny > 1:
+                # 1D Vertical in 2D shape (ny, 1)
+                grad_y = np.gradient(self.C[:, 0], self.dy)
+                grad_sq[:, 0] = grad_y**2
+        elif self.C.ndim == 1:
+            if self.nx > 1:
+                grad_x = np.gradient(self.C, self.dx)
+                grad_sq = grad_x**2
+            elif self.ny > 1:
+                grad_y = np.gradient(self.C, self.dy)
+                grad_sq = grad_y**2
 
         # Calculate Base Energies (Hamiltonian Components)
         # Potential: V(C) ~ 0.5 * alpha * (C - C0)^2

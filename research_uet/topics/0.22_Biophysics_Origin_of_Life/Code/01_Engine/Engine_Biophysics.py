@@ -184,7 +184,12 @@ class UETBiophysicsEngine(UETBaseSolver):
 
         for _ in range(steps):
             # One step of UET Dynamics
-            C = self.engine.step(C, dt=self.dt, dx=self.dx, I=I)
+            res = self.engine.step(C, dt=self.dt, dx=self.dx, I=I)
+            if isinstance(res, tuple):
+                C = res[0]
+            else:
+                C = res
+            
             coherence_history.append(float(np.mean(C)))
             omega_history.append(self.engine.compute_omega(C, dx=self.dx, I=I))
 

@@ -118,7 +118,7 @@ def run_torus_verification():
     plt.legend()
     plt.grid(True, alpha=0.1)
 
-    out_file = res_dir / "Torus_Consistency.png"
+    out_file = result_dir / "Torus_Consistency.png"
     plt.savefig(out_file)
     print(f"📊 PLOT SAVED: {out_file}")
 
