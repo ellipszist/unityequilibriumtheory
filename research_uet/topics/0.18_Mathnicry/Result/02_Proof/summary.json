@@ -1,9 +1,9 @@
 {
   "run_id": "02_Proof",
-  "simulation": "Quantum_Integrity_Audit",
+  "simulation": "Quantum_Engine_Audit",
   "status": "COMPLETED",
-  "timestamp": "Thu Feb 12 11:30:15 2026",
-  "duration_seconds": 0.005456447601318359,
+  "timestamp": "Sat Apr  4 01:47:31 2026",
+  "duration_seconds": 0.0036001205444335938,
   "total_steps": 20,
   "metadata": {},
   "final_state": {

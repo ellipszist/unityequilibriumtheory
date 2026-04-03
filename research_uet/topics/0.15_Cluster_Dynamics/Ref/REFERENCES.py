@@ -16,6 +16,8 @@ REFERENCES = {
         "Zwicky_1933": "Fritz Zwicky - Die Rotverschiebung (Discovery of Dark Matter)",
         "BulletCluster_2006": "Clowe et al. - Direct Empirical Proof of Dark Matter",
         "Bahcall_1988": "Neta Bahcall - Large-Scale Structure Review",
+        "JWST_CEERS_2023": "Finkelstein et al. - CEERS Program (z > 10 Galaxies) DOI: 10.17909/z7p0-8481",
+        "JWST_GLASS_2022": "Treu et al. - GLASS-JWST ERS (z > 10 Galaxies) DOI: 10.17909/kw3c-n857",
     },
 }
 

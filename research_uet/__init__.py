@@ -18,8 +18,22 @@ from pathlib import Path
 # Version
 __version__ = "0.8.7"
 
-# exposes the package root for all sub-modules
-ROOT_PATH = Path(__file__).parent.parent.resolve()
+# Exposes the package root for all sub-modules
+def _find_uet_root():
+    """Robustly find the project root (the directory containing research_uet)."""
+    # Start from where this file is
+    p = Path(__file__).resolve()
+    # Go up until we find a directory containing 'research_uet' and 'uet_core' OR hit root
+    # We check for 'research_uet' precisely to ensure we hit the physical workspace
+    for parent in [p.parent, p.parent.parent, p.parent.parent.parent, p.parent.parent.parent.parent]:
+        if (parent / "research_uet").exists() and not (parent / "site-packages").exists():
+            return parent
+    # Fallback to CWD if it looks correct
+    if (Path.cwd() / "research_uet").exists():
+        return Path.cwd().resolve()
+    return p.parent.parent # Last resort
+
+ROOT_PATH = _find_uet_root()
 
 
 def _import_from_path(name, relative_path):

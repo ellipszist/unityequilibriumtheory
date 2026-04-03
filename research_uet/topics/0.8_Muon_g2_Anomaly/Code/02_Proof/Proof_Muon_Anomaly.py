@@ -61,7 +61,7 @@ def prove_muon():
 
         params = MockParams()
 
-    solver = UETMuonG2Solver(uet_params=params)
+    solver = UETMuonG2Solver(params=params)
     result = solver.solve()
     print(f"  Experimental Anomaly (Delta_a): {result.delta_a:.2e}")
     print(f"  Residual Tension with UET: {result.sigma_deviation:.2f} sigma")

@@ -56,10 +56,15 @@ class UETBiophysicsEngine(UETBaseSolver):
     """
 
     def __init__(self, name="UET_Biophysics"):
-        # Pure Unity Parameters
-        params = UETParameters(kappa=1.0, beta=1.0, alpha=1.0, gamma=0.025, C0=0.0)
+        # Axiomatic Parameter Retrieval
+        if not hasattr(self, "params") or self.params is None:
+            from research_uet.core.uet_parameters import get_params
+            params = get_params("0.22")
+        else:
+            params = self.params
+
         super().__init__(
-            nx=128,  # Increased for real signal mapping
+            nx=128,  # Resolution for neural signal mapping
             ny=1,
             lx=12.8,
             dt=0.001,
@@ -151,11 +156,12 @@ class UETBiophysicsEngine(UETBaseSolver):
         """
         # Initial 'Primordial Soup' (Random)
         C = np.random.rand(self.nx)
-        omega_start = np.sum(np.diff(C) ** 2)
+        # Physics Core: Compute Omega using engine for consistency
+        omega_start = self.engine.compute_omega(C)
 
         # 'Life' emerges when C creates a stable pattern (e.g. alternating/smooth).
         C_life = np.sin(np.linspace(0, 2 * np.pi, self.nx))
-        omega_life = np.sum(np.diff(C_life) ** 2)
+        omega_life = self.engine.compute_omega(C_life)
 
         # Kill Switch Check
         check = self.params.beta / self.params.beta
@@ -183,10 +189,12 @@ class UETBiophysicsEngine(UETBaseSolver):
         omega_history = []
 
         for _ in range(steps):
-            # One step of UET Dynamics
+            # One step of UET Dynamics - Unpack (C, I, V) robustly
             res = self.engine.step(C, dt=self.dt, dx=self.dx, I=I)
-            if isinstance(res, tuple):
+            if isinstance(res, (tuple, list)):
                 C = res[0]
+                I = res[1] if len(res) > 1 else I
+                # V = res[2] if len(res) > 2 else 0.0
             else:
                 C = res
             

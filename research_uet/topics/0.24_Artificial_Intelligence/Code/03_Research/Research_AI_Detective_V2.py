@@ -25,7 +25,7 @@ from typing import Dict, Any
 from research_uet.core.uet_base_solver import UETBaseSolver
 from research_uet.core.uet_data_orchestrator import orchestrator
 from research_uet.core.uet_parameters import get_params
-from research_uet.core.scientific_validation import ScientificValidator
+from research_uet.core.test.scientific_validation import ScientificValidator
 
 
 

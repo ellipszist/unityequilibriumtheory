@@ -1,0 +1,35 @@
+{
+  "run_id": "1775236411_ICN_High_Fidelity_Growth",
+  "simulation": "ICN_High_Fidelity_Growth",
+  "status": "COMPLETED",
+  "timestamp": "Sat Apr  4 00:13:31 2026",
+  "duration_seconds": 1.2517457008361816,
+  "total_steps": 2000,
+  "metadata": {
+    "nx": 64,
+    "ny": 128,
+    "dt": 0.01,
+    "kappa": 0.01,
+    "beta": 5.0,
+    "alpha": 0.1,
+    "C0": 0.1,
+    "phi_loss": 0.05
+  },
+  "final_state": {
+    "step": 1900,
+    "time": 19.010000000000172,
+    "omega": 0.2963649815298084,
+    "kinetic": 0.0,
+    "potential": 0.0018735426336092308,
+    "entropy": 0.0,
+    "gradient_norm": 0.0,
+    "max_density": 1.084901278670587,
+    "min_density": 0.1,
+    "is_stable": true,
+    "gradient_energy": 0.0576968031087281,
+    "entropy_interaction": 0.2367946357874711,
+    "fidelity": 0.9999999999958507,
+    "defect_rate": 0.06690982266380745,
+    "total_mass": 1259.6085895952378
+  }
+}

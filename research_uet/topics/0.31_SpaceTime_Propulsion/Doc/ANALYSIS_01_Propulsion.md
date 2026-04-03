@@ -33,7 +33,11 @@ graph LR
     style Gradient fill:#fce4ec,stroke:#880e4f
 ```
 
-### 2.3 Mathematical Foundation
+### 2.3 Mathematical Foundation (Omega-Field Coupling)
+*   **Singularity Creation:** $E_{inject} = \frac{M c^2}{\kappa_{\Omega}}$
+    - $\kappa_{\Omega} \approx 10^{12}$ (UET Coupling Constant): Amplifies input energy to reach Schwarzchild density.
+*   **Stability Equation:** $\frac{\partial \Phi}{\partial t} + \nabla \cdot (\kappa_{\Omega} \mathbf{J}_{inf}) = 0$
+    - Ensures the information boundary (Horizon) remains stable during ship acceleration.
 *   **Momentum Gain:** $\Delta V = \int \nabla \Phi dt$
 *   **UET Connection:** Axiom 5 (Singularity & Horizon). We are manipulating the information boundary of space-time.
 

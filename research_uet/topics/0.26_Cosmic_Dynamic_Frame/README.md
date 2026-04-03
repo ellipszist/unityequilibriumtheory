@@ -61,8 +61,8 @@ These require *three different patches* (Halo, WIMP, Unruh radiation).
 ### The Solution: The Dynamic Frame (Topic 0.26)
 UET posits a single cause: **Space is a Dynamic Information Fluid**.
 - **Rotation**: The galaxy drags the fluid, creating a "viscous lock" that boosts velocity ($V_{drag}$).
-- **Bullet Cluster**: The collision creates a **Hydrodynamic Wake**. The "Dark Matter" offset is just the *turbulence* (Entropy Wake) trailing the baryonic mass, causing lensing delay.
-- **Pioneer**: The drag ($a_0$) is exactly the fluid resistance calculated in `Research_Pioneer_Drag.py`.
+- **Bullet Cluster**: The collision creates a **Hydrodynamic Wake**.
+- **Systemic Survival (New):** Gravity and Cosmic Grouping are **Anti-Entropy Survival Strategies**. Celestial bodies group together to "partition" kinetic energy and maintain structural integrity ($C$) against the universal acceleration to $c$.
 
 ### Zero Curve Fitting Law
 We use the **Pioneer Acceleration** ($a_0 \approx 8.74 \times 10^{-10} m/s^2$) as a **Measured Constant** to derive the Galaxy Rotation curves. No free parameters are tuned for individual galaxies.
@@ -94,6 +94,7 @@ python Code/03_Research/Research_Unified_Cosmic_Theory.py
 | :--- | :--- |
 | [`Code/03_Research/Research_Unified_Cosmic_Theory.py`](./Code/03_Research/Research_Unified_Cosmic_Theory.py) | Main validation script using Fluid Drag. |
 | [`Code/03_Research/Research_Pioneer_Drag.py`](./Code/03_Research/Research_Pioneer_Drag.py) | Calculates the fundamental drag coefficient. |
+| [`Code/03_Research/0.26_Proof_Systemic_Persistence.py`](./Code/03_Research/0.26_Proof_Systemic_Persistence.py) | Survival via Kinetic Partitioning proof. |
 | [`Code/03_Research/Proof_Toroidal_Cycle.py`](./Code/03_Research/Proof_Toroidal_Cycle.py) | Geometrical proof of the dynamic frame. |
 
 ---

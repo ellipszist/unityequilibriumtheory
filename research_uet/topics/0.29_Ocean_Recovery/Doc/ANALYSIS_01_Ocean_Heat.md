@@ -83,10 +83,14 @@ graph LR
 ### 5.1 Why it works? (ทำไมถึงสำเร็จ?)
 The Atmospheric Window (8-13 μm) is a natural "heat sink" that bypasses the greenhouse effect. By tuning Graphene to emit specifically in this band, we create a passive cooling system that requires no energy input.
 
-### 5.2 Limitation (ข้อจำกัด)
-*   **Coverage Area:** Requires large surface area to impact global ocean heat
-*   **Deployment Logistics:** Manufacturing and deploying membranes at scale
-*   **Environmental Impact:** Need to ensure Graphene doesn't harm marine ecosystems
+### 5.4 Deployment Geometry (ตำแหน่งและการวางตัว)
+- **High-Impact Zones:**
+  - **Equatorial Pacific:** To mitigate El Niño oscillations.
+  - **Coral Triangle:** Localized cooling to prevent coral bleaching (Global Hub 0.28 supply).
+  - **Arctic/Antarctic Margins:** To slow ice-shelf melting.
+- **Micro-Lattice Structure:** 
+  - Membranes deployed in "Cloud-Mimic" hexagonal lattices to allow nutrient upwelling while reflecting 90% of incident solar thermal in the IR-band.
+  - **Anchoring:** Using "Bio-Anchors" (Topic 0.30 Mycelial structures) to ensure zero plastic waste into the ocean.
 
 ### 5.3 Connection to "Value" (เชื่อมโยงกับเรื่องคุณค่า)
 *   **Does this reduce $\Omega$?** Yes - Reduces information entropy in ocean systems by restoring thermal equilibrium

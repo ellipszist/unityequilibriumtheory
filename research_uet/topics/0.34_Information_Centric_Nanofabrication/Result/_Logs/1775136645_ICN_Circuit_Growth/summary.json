@@ -1,0 +1,35 @@
+{
+  "run_id": "1775136645_ICN_Circuit_Growth",
+  "simulation": "ICN_Circuit_Growth",
+  "status": "COMPLETED",
+  "timestamp": "Thu Apr  2 20:30:45 2026",
+  "duration_seconds": 0.7068564891815186,
+  "total_steps": 1000,
+  "metadata": {
+    "nx": 64,
+    "ny": 128,
+    "dt": 0.01,
+    "kappa": 0.05,
+    "beta": 2.0,
+    "alpha": 1.0,
+    "C0": 0.1,
+    "phi_loss": 0.05
+  },
+  "final_state": {
+    "step": 900,
+    "time": 9.009999999999852,
+    "omega": 75.31389177311435,
+    "kinetic": 0.0,
+    "potential": 0.8645684157249758,
+    "entropy": 0.0,
+    "gradient_norm": 0.0,
+    "max_density": 2.0,
+    "min_density": 0.0,
+    "is_stable": true,
+    "gradient_energy": 52.22800101823891,
+    "entropy_interaction": 22.22132233915046,
+    "fidelity": 0.5007680491550818,
+    "defect_rate": 0.0,
+    "total_mass": 7824.1557028016
+  }
+}

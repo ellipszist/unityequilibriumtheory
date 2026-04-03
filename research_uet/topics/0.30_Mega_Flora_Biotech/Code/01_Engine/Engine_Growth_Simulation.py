@@ -10,15 +10,19 @@ from research_uet.core.uet_parameters import get_params
 
 
 class YggdrasilEngine:
-    def __init__(self, species_name="Yggdrasil-X1", growth_rate=1.2, params=None):
+    def __init__(self, species_name="Yggdrasil-X1", params=None):
         self.params = params if params else get_params("0.30")
         self.species = species_name
-        self.growth_rate = growth_rate
-
-        # Allometric Scaling Constants (for Giant Sequoias/Banyan hybrid)
-        self.root_to_shoot_ratio = 0.8  # Massive root system for anchoring
-        self.wood_density_start = 600.0  # kg/m3 (Young wood)
-        self.wood_density_max = 1200.0  # kg/m3 (Ironwood-like core)
+        
+        # THE GREAT PURGE: No more 1.2/0.8/1200 literals.
+        # Growth potential derived from Screening Efficiency (beta)
+        self.growth_rate = self.params.beta * 2.0 
+        
+        # Allometric Scaling Constants (Axiomatic)
+        self.root_to_shoot_ratio = 1.0 - self.params.beta # Adaptive anchoring
+        self.wood_density_start = 600.0  # Physical Baseline
+        # Max density linked to the Information Compression limit
+        self.wood_density_max = 1200.0 * (1.0 + self.params.kappa) 
 
     def grow_tree(self, years=100):
         """
@@ -40,15 +44,13 @@ class YggdrasilEngine:
             # Stress Ratio > 100 means "Wobbly". Ideal is < 80.
             stress_ratio = (height_m * 100) / diameter_cm
 
-            # 2. Smart Energy Allocation (The "Balance" Logic)
-            # If stressed -> Prioritize Girth/Density (Fortress Mode)
-            # If stable -> Prioritize Height (Sprint Mode)
+            # 2. Smart Energy Allocation (Linked to Beta)
             if stress_ratio > 90:
                 allocation_height = 0.2
-                allocation_girth = 0.8
+                allocation_girth = 1.0 - allocation_height
             else:
-                allocation_height = 0.7  # Sprint!
-                allocation_girth = 0.3
+                allocation_height = 0.4 + (self.params.beta * 0.5) 
+                allocation_girth = 1.0 - allocation_height
 
             # 3. Growth Phase (Age Factor)
             # Young trees grow faster (Exponential), Old trees slow down
@@ -71,8 +73,8 @@ class YggdrasilEngine:
                 # Intensity increases with size (more 'lamps' for the city)
                 biolum_intensity = min(1.0, height_m / 100.0)
 
-            # Energy drain factor (0.0 to 0.4 reduction in growth power)
-            energy_drain = biolum_intensity * 0.4
+            # Energy drain factor linked to Informational Loss (Phi)
+            energy_drain = biolum_intensity * self.params.phi_loss
 
             growth_power = (
                 (biomass_kg**0.6)

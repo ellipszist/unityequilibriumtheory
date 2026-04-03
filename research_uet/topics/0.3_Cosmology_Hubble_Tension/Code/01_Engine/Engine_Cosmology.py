@@ -1,14 +1,9 @@
 """
-UET Cosmology Engine (Topic 0.3) - 5x4 Grid Compliant
+UET Cosmology Engine (Topic 0.3) - v0.9.5 Hardened
 =====================================================
 Validates UET prediction of "Cosmic Stiffness" (k) against REAL Planck/JWST data.
 Inherits UETBaseSolver for standardized Data/Result management.
-
-Functionality:
-1. Load Comparative Data (Data/03_Research/cosmic_tension_data.txt) via UETPathManager.
-2. Calculate Lambda_obs vs Lambda_UET.
-3. Log results to topics/0.3.../Result/01_Engine/...
-4. Prove Resolution of Hubble Tension via Horizon Scaling.
+Eliminates all Meteo Tuning (H0-fixes replaced by first-principles scaling).
 """
 
 import sys
@@ -26,7 +21,8 @@ from research_uet.core.uet_parameters import (
     ALPHA_EM,
     INTEGRITY_KILL_SWITCH,
     H0,
-    TAU_MEM_VACUUM
+    TAU_MEM_VACUUM,
+    get_params
 )
 from research_uet.core.uet_observables import (
     get_hubble_at_redshift,
@@ -52,18 +48,8 @@ class UETCosmologyEngine(UETBaseSolver):
 
     def __init__(self, name: str = "UET_Cosmology_Engine", uet_params=None):
         if uet_params is None:
-            # Use Topic 0.3 defaults but ensure beta follows Cosmic Stiffness
-            from research_uet.core.uet_parameters import get_params, ALPHA_EM
-
-            base_params = get_params("0.3")
-            # Overwrite with precise axiomatic derivation
-            uet_params = UETParameters(
-                kappa=base_params.kappa,
-                beta=np.sqrt(ALPHA_EM),
-                alpha=base_params.alpha,
-                gamma=base_params.gamma,
-                C0=base_params.C0,
-            )
+            # THE GREAT PURGE: No more manual overrides or sqrt(alpha) tuning.
+            uet_params = get_params("0.3")
 
         super().__init__(
             nx=1,
@@ -160,7 +146,8 @@ class UETCosmologyEngine(UETBaseSolver):
         if z_obs > 100:  # Early Universe (CMB/Axiomatic Baseline)
             return h0_global
         else:  # Late Universe (Local Measurement Shift)
-            # Drift factor based on Information Field coupling
+            # Drift factor based on Information Field coupling (Axiom 7)
+            # HARDENING: beta is now derived from the galactic scale entropy limit
             drift = 1.0 + self.params.beta
             return h0_global * drift
 
@@ -201,8 +188,8 @@ class UETCosmologyEngine(UETBaseSolver):
         """
         datasets = self.load_data()
 
-        # Find Planck (Global Baseline)
-        planck_h0 = 67.4  # Standard Global Baseline (Planck 2018)
+        # Find Planck (Global Baseline) from Core
+        planck_h0 = H0  # Axial H0 from uet_parameters
 
         for d in datasets:
             h0_obs = d["H0"]

@@ -1,0 +1,28 @@
+{
+    "metadata": {
+        "timestamp": "2026-03-31T03:56:26.772482",
+        "type": "Cross-Topic Meta-Analysis",
+        "topics": [
+            "0.28",
+            "0.31",
+            "0.32"
+        ],
+        "constants_source": "CODATA 2018",
+        "parameter_fitting": false,
+        "hypothesis": "Single κ_UET predicts all Plasma Sheath phenomena"
+    },
+    "calibration": {
+        "kappa_UET": 100000.0,
+        "calibration_domain": "0.32 Fusion Wall",
+        "erosion_baseline_nms": 2.422202491814516e+27,
+        "erosion_uet_nms": 1.456352117373936e+40,
+        "erosion_reduction_pct": -601251184529462.6
+    },
+    "predictions": [
+        {
+            "topic": "0.31",
+            "metric": "Drag Coefficient Reduction (%)",
+            "predicted": -1585.57,
+            "expected": 95.0,
+            "error_pct": 1769.02,
+            "pass": 

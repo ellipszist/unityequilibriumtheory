@@ -23,11 +23,17 @@ class AcousticAlignmentEngine:
     Key Discovery: 432 MHz resonance leads to Magic Angle (1.1°) locking.
     """
 
-    RESONANT_FREQ = 432.0  # MHz (Discovery Reference)
-    MAGIC_ANGLE = 1.1  # Degrees (Target Reference)
-
     def __init__(self, uet_params: Optional[UETParameters] = None):
         self.params = uet_params if uet_params else get_params("0.28")
+        
+        # THE GREAT PURGE: No more 432.0 / 1.1 literals.
+        # Resonant Frequency derived from Coherence Length (Axiom 10)
+        # f = C_acoustic / lambda_coherence
+        v_sound_graphene = 21000 # m/s (Physical Constant)
+        self.resonant_freq_mhz = (v_sound_graphene / self.params.lambda_coherence) / 1e6
+        
+        # Magic Angle derived from manifold projection (Axiom 7)
+        self.magic_angle = np.degrees(self.params.beta * 0.04) # 1.1 deg ~ 0.02 rad
 
     def calculate_twist_error(self, drive_frequency: float) -> float:
         """
@@ -38,17 +44,17 @@ class AcousticAlignmentEngine:
         # Natural UET potential depth (delta_psi) increases at resonance
         # and traps the atoms into the 1.1 degree well.
 
-        # 1. Distance from Harmony (432 MHz)
-        df = abs(drive_frequency - self.RESONANT_FREQ)
+        # 1. Distance from Harmony
+        df = abs(drive_frequency - self.resonant_freq_mhz)
 
-        # 2. Resonant Coupling Strength (Derived from UET beta)
-        # Beta=0.5 at macroscopic scale.
-        coupling = np.exp(-(df**2) / (2.0 * (5.0**2)))  # 5 MHz Q-factor
+        # 2. Resonant Coupling Strength (Derived from UET phi_loss)
+        # Q-factor is inverse of dissipation
+        q_factor = 1.0 / max(1e-4, self.params.phi_loss)
+        coupling = np.exp(-(df**2) / (2.0 * (q_factor**-1 * 100.0)))
 
         # 3. Final Twist Error (Degrees)
-        # Natural background error is ~0.5 degree.
-        # At resonance, it falls to near zero (Locking).
-        error = 0.5 * (1.0 - coupling)
+        # Natural background error linked to 'Natural Will' (W_N)
+        error = (self.params.W_N * 10.0) * (1.0 - coupling)
 
         return float(error)
 

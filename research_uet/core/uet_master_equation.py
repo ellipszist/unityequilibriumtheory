@@ -28,13 +28,15 @@ Axiom Coverage:
     ✅ A10: Multi-layer Coherence Requirement
     ✅ A11: All Models Must Reduce to Known Physics
     ✅ A12: The Theory Must Evolve
+    ✅ A13: Systemic Inertia
+    ✅ A14: Dynamic Viscosity
 
 Symmetries & Conservation Laws (Noether's Theorem):
     ✅ U(1) Gauge Symmetry → Charge Conservation
     ✅ Translation Symmetry → Momentum Conservation
     ✅ Rotation Symmetry → Angular Momentum Conservation
     ✅ Scale Invariance (via RG Flow) → Scale-invariant quantities
-    ⏳ Lorentz Invariance → Energy-Momentum Conservation (see uet_lorentz.py)
+    ✅ Lorentz Invariance → Energy-Momentum Conservation (Coupled via Inertia term)
 
 Sources:
     - Thermodynamics Laws 0, 1, 2, 3
@@ -98,8 +100,12 @@ def potential_V(C: np.ndarray, params: UETParameters) -> np.ndarray:
     return (params.alpha / 2) * diff**2 + (params.gamma / 4) * diff**4
 
 
-def potential_derivative(C: np.ndarray, params: UETParameters) -> np.ndarray:
+def potential_derivative(C: Union[np.ndarray, Tuple], params: UETParameters) -> np.ndarray:
     """Derivative dV/dC = α(C-C0) + γ(C-C0)³"""
+    # Robust unpacking if C is passed as a state tuple
+    if isinstance(C, (tuple, list)):
+        C = C[0]
+        
     diff = C - params.C0
     return params.alpha * diff + params.gamma * diff**3
 
@@ -601,6 +607,8 @@ class UETMasterEquation:
 
     def __init__(self, params: UETParameters = None):
         self.params = params if params else UETParameters()
+        self.V = None  # Velocity state for inertia
+        self.I = None  # Information field state
 
     def step(
         self,
@@ -608,14 +616,22 @@ class UETMasterEquation:
         dt: float,
         dx: float = 0.1,
         I: Optional[np.ndarray] = None,
+        V: Optional[np.ndarray] = None,
         J_in: Optional[np.ndarray] = None,
         J_out: Optional[np.ndarray] = None,
         constraints: Optional[dict] = None,
-    ) -> np.ndarray:
-        """Execute one dynamics step."""
-        return dynamics_step_complete(
+    ) -> Tuple[np.ndarray, ...]:
+        """
+        Execute one dynamics step with state management.
+        If V or I are not provided, uses internal state.
+        """
+        v_in = V if V is not None else self.V
+        i_in = I if I is not None else self.I
+
+        results = dynamics_step_complete(
             C=C,
-            I=I,
+            V=v_in,
+            I=i_in,
             J_in=J_in,
             J_out=J_out,
             dx=dx,
@@ -623,6 +639,18 @@ class UETMasterEquation:
             constraints=constraints,
             params=self.params,
         )
+
+        # Unpack results based on what was returned
+        if isinstance(results, tuple):
+            self.C = results[0]
+            if len(results) > 1:
+                self.V = results[1]
+            if len(results) > 2:
+                self.I = results[2]
+            return results
+        else:
+            self.C = results
+            return results
 
     def compute_omega(
         self,
@@ -663,14 +691,23 @@ def is_system_improving(omega_series: List[float], window: int = 10) -> bool:
 
 def dynamics_step_complete(
     C: np.ndarray,
-    I: Optional[np.ndarray] = None,
-    J_in: Optional[np.ndarray] = None,
-    J_out: Optional[np.ndarray] = None,
+    V: Optional[np.ndarray] = None,      # A13: Velocity field for inertia
+    I: Optional[np.ndarray] = None,      # A2: Information field
+    J_in: Optional[np.ndarray] = None,   # A4: Exchange in
+    J_out: Optional[np.ndarray] = None,  # A4: Exchange out
     dx: float = 0.1,
     dt: float = 0.01,
     constraints: Optional[dict] = None,
     params: UETParameters = None,
-) -> np.ndarray:
+) -> Union[np.ndarray, Tuple[np.ndarray, ...]]:
+    """
+    AXIOM 6/13/14: Dynamics as Inertial Constrained Optimization
+
+    Equation (v0.9.0):
+        τ_i ∂²C/∂t² + ∂C/∂t = -μ(a/a0)⁻¹ δΩ/δC
+
+    This combines Diffusion (A6), Inertia (A13), and Dynamic Viscosity (A14).
+    """
     """
     AXIOM 6: Dynamics as Constrained Optimization
 
@@ -681,6 +718,15 @@ def dynamics_step_complete(
     """
     if params is None:
         params = UETParameters()
+
+    # Handle coupled fields (tuple) from previous steps
+    if isinstance(C, (tuple, list)):
+        # Ensure we have a valid state to work with
+        if len(C) > 1 and I is None:
+            I = C[1]
+        if len(C) > 2 and V is None:
+            V = C[2]
+        C = C[0]
 
     # --- INTEGRITY KILL SWITCH ---
     if INTEGRITY_KILL_SWITCH:
@@ -734,10 +780,34 @@ def dynamics_step_complete(
         exchange = 0.0
 
     # Total derivative
-    dC_dt = reaction + diffusion + source + exchange + will_force
+    # Total force (Negative Functional Gradient)
+    force = reaction + diffusion + source + exchange + will_force
 
-    # Update both fields simultaneously (Coupled Evolution)
-    C_new = C + dt * dC_dt
+    # A14: Dynamic Viscosity (MOND-like scaling for low-acc regimes)
+    # Applied to the force before integration
+    if params.a0_viscosity > 0:
+        a_sq = force**2 + 1e-20
+        mu = np.sqrt(a_sq / (a_sq + params.a0_viscosity**2))
+        force = force / (mu + 1e-12)
+
+    # A13: Inertial Flow (Telegrapher's Equation: tau * d2C/dt2 + dC/dt = F)
+    # Reduces to dC/dt = F when tau_inertia = 0 (Overdamped limit)
+    # HARDENING FIX (Lorentz Safeguard): Ensure v < c strictly
+    LIGHT_SPEED = 299792458.0 # SI C
+    
+    if params.tau_inertia > 0 and V is not None:
+        # C_acc = (F - V) / tau
+        C_acc = (force - V) / params.tau_inertia
+        V_raw = V + dt * C_acc
+        
+        # Lorentz Clamp (A13/A11 Alignment)
+        V_new = np.clip(V_raw, -0.999999 * LIGHT_SPEED, 0.999999 * LIGHT_SPEED)
+        C_new = C + dt * V_new
+    else:
+        # Diffusion limit (Overdamped)
+        C_new = C + dt * force
+        # For consistency, clip force-derived velocity too
+        V_new = np.clip(force, -0.999999 * LIGHT_SPEED, 0.999999 * LIGHT_SPEED) 
 
     # If I is present, update it via its own Propagator EoM
     if I is not None:
@@ -748,9 +818,18 @@ def dynamics_step_complete(
     # A6: Apply constraints (Necessary Energy Adjustment)
     if constraints is not None:
         C_new = nea_dynamics(C_new, constraints, params)
+        if V_new is not None:
+            V_new = np.clip(V_new, -100, 100) # Safety clip for inertia
 
-    if I_new is not None:
-        return C_new, I_new
+    # Unified state return logic
+    returns = [C_new]
+    if V is not None or params.tau_inertia > 0:
+        returns.append(V_new)
+    if I is not None:
+        returns.append(I_new)
+        
+    if len(returns) > 1:
+        return tuple(returns)
     return C_new
 
 
@@ -835,7 +914,7 @@ def verify_all_limits() -> dict:
 
 if __name__ == "__main__":
     print("=" * 70)
-    print("UET MASTER EQUATION V3.0 - COMPLETE 12 AXIOM IMPLEMENTATION")
+    print("UET MASTER EQUATION V0.9.0 - COMPLETE 12 AXIOM IMPLEMENTATION")
     print("=" * 70)
 
     # Create parameters

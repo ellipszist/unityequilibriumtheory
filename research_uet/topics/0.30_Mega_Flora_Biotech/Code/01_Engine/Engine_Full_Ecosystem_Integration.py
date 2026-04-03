@@ -4,6 +4,7 @@ import os
 # Import sibling modules
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
+from research_uet.core.uet_parameters import get_params
 from Engine_Growth_Simulation import YggdrasilEngine
 
 try:
@@ -18,8 +19,13 @@ class YggdrasilEcoAdapter(YggdrasilEngine):
     Wraps the YggdrasilEngine to work as a 'BioEntity' in the Mycelial Network.
     """
 
-    def __init__(self, species_name="Yggdrasil-Eco", growth_rate=1.2):
-        super().__init__(species_name, growth_rate)
+    def __init__(self, species_name="Yggdrasil-Eco", growth_rate=1.2, params=None):
+        # Resolve parameters correctly instead of passing growth_rate as params
+        actual_params = params if params else get_params("0.30")
+        super().__init__(species_name=species_name, params=actual_params)
+        
+        # Override growth_rate after proper initialization
+        self.growth_rate = growth_rate
 
         # Adaptation for MycelialNetwork
         self.type = "TREE"

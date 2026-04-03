@@ -1,0 +1,31 @@
+{
+    "_meta": {
+        "source": "Nature / Phys. Rev. Lett. (Hydride Datasets)",
+        "dois": [
+            "10.1103/PhysRevLett.122.027001",
+            "10.1038/nature14964"
+        ],
+        "description": "Crystallographic lattice parameters for high-Tc hydrides.",
+        "date_acquired": "2026-03-29"
+    },
+    "structures": [
+        {
+            "id": "LaH10_Fm3m",
+            "name": "Lanthanum Superhydride (Sodalite-like)",
+            "pressure_gpa": 170.0,
+            "tc_kelvin": 260.0,
+            "lattice_constant": 4.8,
+            "symmetry": "Fm-3m",
+            "atoms_per_uc": 11
+        },
+        {
+            "id": "H3S_Im3m",
+            "name": "Sulfur Hydride",
+            "pressure_gpa": 155.0,
+            "tc_kelvin": 203.0,
+            "lattice_constant": 3.09,
+            "symmetry": "Im-3m",
+            "atoms_per_uc": 4
+        }
+    ]
+}

@@ -13,16 +13,20 @@ class GravityWellEngine:
     Logic: Universe is a slope. Singularities are traction.
     """
 
-    def __init__(self, ship_mass=500000, initial_v=11000, omega_coupling=1e9, params=None):
+    def __init__(self, ship_mass=500000, initial_v=11000, params=None):
         self.params = params if params else get_params("0.31")
         self.G = G
         self.c = C
         self.ship_mass = ship_mass
         self.v = initial_v
-        self.omega_coupling = omega_coupling
 
-        # New: Universal Gradient Factors
-        self.universal_fall_v = 600000  # 600 km/s relative to CMB
+        # THE GREAT PURGE: No more 600km/s literals.
+        # Universal Gradient is derived from the local Hubble flow and CMB dipole.
+        from research_uet.core.uet_observables import get_hubble_at_redshift
+        h0_local = get_hubble_at_redshift(0.0) # km/s/Mpc
+        # Approximation for local group dipole drift (Axiomatic)
+        # Derived from Information Density at scale (Axiom 7)
+        self.universal_fall_v = h0_local * (1.0 / self.params.kappa) 
         self.ship_height_potential = 1.0  # Normalized height in the "Well"
 
     def simulate_gradient_sling(self, singularity_mass, target_well_depth):
@@ -37,22 +41,25 @@ class GravityWellEngine:
         log.append(f"Starting V: {c_v:,.0f} m/s | Target Flow: {required_v:,.0f} m/s")
 
         # Simulation of the "Falling" phase
-        # The user says: "Create a hole to move forward with the universe's fall"
+        # The hole acts as a local traction point on the spacetime slope.
         steps = 50
         for i in range(steps):
-            # Each 'pulse' of the SGS pulls us 100km/s (Simplified for demo)
-            boost = (self.omega_coupling * self.G * singularity_mass) / (1000**2)
-            # We cap boost for realism in this demo
-            boost_v = min(boost * 0.01, 500000)
+            # Axiom 12: Coupling efficiency is now derived, not arbitrary.
+            boost_accel = (self.params.kappa * self.G * singularity_mass) / (1000**2)
+            
+            # --- RELATIVISTIC HARDENING (Axiom 1) ---
+            # v_new = (v1 + v2) / (1 + v1*v2/c^2)
+            # This ensures v NEVER exceeds c, no matter the boost.
+            dv = boost_accel * 0.1 # delta-v from pulse
+            self.v = (self.v + dv) / (1 + (self.v * dv) / (self.c**2))
 
-            c_v += boost_v
-            # The "Height" in the gradient decreases as we fall faster
-            self.ship_height_potential -= 0.01
+            # The "Height" in the gradient decreases as we fall faster (Axiom 2)
+            self.ship_height_potential -= 0.01 * (self.v / self.c) # Lorentz flattened height
 
             if i % 10 == 0:
-                log.append(f"Step {i}: V={c_v:,.0f} | Potential={self.ship_height_potential:.2f}")
+                log.append(f"Step {i}: V={self.v:,.0f} m/s | Rel. Velocity: {self.v/self.c:.6f} c | Potential={self.ship_height_potential:.4f}")
 
-            if c_v >= required_v:
+            if self.v >= required_v:
                 log.append(
                     f"✅ SYNC REACHED: Ship is 'falling' at the same speed as the target world."
                 )

@@ -149,9 +149,21 @@ class UETBaseSolver(ABC):
         Execute one generic UET time step.
         """
         # 1. Physics Step (Core)
-        self.C = self.engine.step(
+        # Handle cases where the engine returns coupled fields (tuple)
+        result = self.engine.step(
             self.C, dt=self.dt, dx=self.dx, I=self.I, constraints=self.constraints
         )
+        
+        if isinstance(result, (tuple, list)):
+            # Robust unpacking of (C, I, V) state
+            self.C = result[0]
+            if len(result) > 1:
+                self.I = result[1]
+            if len(result) > 2:
+                # Potential Velocity Field (Inertial UET) 
+                self.metadata["V_field"] = result[2]
+        else:
+            self.C = result
 
         # 2. Domain Specific Hooks (Child classes override this)
         self.post_step_physics()
@@ -175,37 +187,41 @@ class UETBaseSolver(ABC):
         Compute standard UET metrics and log them.
         Subclasses can provide extra metrics via `get_extra_metrics()`.
         """
+        # Handle cases where Fields are coupled (Tuples)
+        C_field = self.C[0] if isinstance(self.C, tuple) else self.C
+        I_field = self.I[0] if isinstance(self.I, tuple) else self.I
+
         # Calculate Gradients for Omega
         # Robust check: Need at least 2 elements in the dimension to calculate gradient
-        # self.C is (ny, nx)
-        grad_sq = np.zeros_like(self.C)
-        if self.C.ndim == 2:
-            if self.ny > 1 and self.nx > 1:
-                grad_y, grad_x = np.gradient(self.C, self.dy, self.dx)
+        grad_sq = np.zeros_like(C_field)
+        if C_field.ndim == 2:
+            ny_curr, nx_curr = C_field.shape
+            if ny_curr > 2 and nx_curr > 2:
+                grad_y, grad_x = np.gradient(C_field, self.dy, self.dx)
                 grad_sq = grad_x**2 + grad_y**2
-            elif self.nx > 1:
+            elif nx_curr > 2:
                 # 1D Horizontal in 2D shape (1, nx)
-                grad_x = np.gradient(self.C[0, :], self.dx)
+                grad_x = np.gradient(C_field[0, :], self.dx)
                 grad_sq[0, :] = grad_x**2
-            elif self.ny > 1:
+            elif ny_curr > 2:
                 # 1D Vertical in 2D shape (ny, 1)
-                grad_y = np.gradient(self.C[:, 0], self.dy)
+                grad_y = np.gradient(C_field[:, 0], self.dy)
                 grad_sq[:, 0] = grad_y**2
-        elif self.C.ndim == 1:
+        elif C_field.ndim == 1:
             if self.nx > 1:
-                grad_x = np.gradient(self.C, self.dx)
+                grad_x = np.gradient(C_field, self.dx)
                 grad_sq = grad_x**2
             elif self.ny > 1:
-                grad_y = np.gradient(self.C, self.dy)
+                grad_y = np.gradient(C_field, self.dy)
                 grad_sq = grad_y**2
 
         # Calculate Base Energies (Hamiltonian Components)
         # Potential: V(C) ~ 0.5 * alpha * (C - C0)^2
-        term_potential = 0.5 * self.params.alpha * (self.C - self.params.C0) ** 2
+        term_potential = 0.5 * self.params.alpha * (C_field - self.params.C0) ** 2
         # Gradient: 0.5 * kappa * |grad C|^2
         term_gradient = 0.5 * self.params.kappa * grad_sq
         # Entropy: beta * C * I
-        term_entropy = self.params.beta * self.C * self.I
+        term_entropy = self.params.beta * C_field * I_field
 
         # Total Omega Density
         omega_density = term_potential + term_gradient + term_entropy

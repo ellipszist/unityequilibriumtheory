@@ -28,6 +28,24 @@ REFERENCE_DB = {
         "relevance": "Supports UET hypothesis that 'Field Assistance' (Sound/Resonance) beats random thermal growth.",
         "status": "VERIFIED",
     },
+    "REF_004": {
+        "title": "Drozdov et al. - Conventional superconductivity at 203 kelvin at high pressures in the sulfur hydride system",
+        "journal": "Nature",
+        "year": 2015,
+        "doi": "10.1038/nature14964",
+        "key_finding": "Discovered record-breaking SC at 203K in H3S under 155 GPa pressure.",
+        "relevance": "Benchmark for high-pressure BCS-like superconductivity to be surpassed by UET fractal lattice design.",
+        "status": "VERIFIED",
+    },
+    "REF_005": {
+        "title": "Somayazulu et al. - Evidence for Superconductivity above 260 K in Lanthanum Superhydride System",
+        "journal": "Physical Review Letters",
+        "year": 2019,
+        "doi": "10.1103/PhysRevLett.122.027001",
+        "key_finding": "Confirmed superconductivity at 260K in LaH10 at 170 GPa.",
+        "relevance": "Identifies the LaH10 'sodalite' lattice structure as a critical I-field information carrier.",
+        "status": "VERIFIED",
+    },
 }
 
 

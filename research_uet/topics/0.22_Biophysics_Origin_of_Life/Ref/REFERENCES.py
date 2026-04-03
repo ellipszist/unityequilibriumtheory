@@ -17,7 +17,8 @@ REFERENCES = {
         "England_2013": "J. England - Statistical physics of self-replication",
         "Lane_2010": "Lane & Martin - Energetics of genome complexity",
         "Friston_2010": "K. Friston - The Free Energy Principle",
-        "Kauffman_1995": "S. Kauffman - Self-Organization laws"
+        "Kauffman_1995": "S. Kauffman - Self-Organization laws",
+        "Miller_1953": "S. Miller - Production of amino acids under primitive earth conditions",
     },
 }
 

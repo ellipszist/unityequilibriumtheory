@@ -17,11 +17,10 @@ from pathlib import Path
 # --- ROBUST PATH FINDER ---
 
 
-from research_uet.core.uet_master_equation import omega_functional_complete
-
-# Base Solver Import
+# Base Solver & Parameter Imports
 try:
     from research_uet.core.uet_base_solver import UETBaseSolver
+    from research_uet.core.uet_parameters import get_params
 except ImportError:
     import sys
     from pathlib import Path
@@ -41,11 +40,16 @@ class LifeEngine(UETBaseSolver):
     Simulates a living system as an Information Processing Agent.
     """
 
-    def __init__(self):
-        super().__init__(name="Origin_of_Life_Entropy")
-        self.entropy_internal = 1.0  # Normalized Entropy
-        self.information_intake = 0.1  # Rate of Negentropy intake (Food/Sunlight)
-        self.decay_rate = 0.05  # Natural thermodynamic decay (2nd Law)
+    def __init__(self, params=None):
+        # Axiomatic Scale: Biophysics
+        super().__init__(name="Origin_of_Life_Entropy", topic="0.22_Biophysics", pillar="01_Engine", params=params)
+        
+        # Axiomatic Initialization
+        self.entropy_internal = 1.0  # Normalized Baseline
+        # Information Intake linked to Screening Beta (Axiom 2)
+        self.information_intake = self.params.beta / self.params.I_max
+        # Decay rate linked to Informational Loss (Phi - Axiom 1)
+        self.decay_rate = self.params.phi_loss / self.params.I_max
 
     def step(self, t):
         """
@@ -58,9 +62,11 @@ class LifeEngine(UETBaseSolver):
         # "It feeds on negative entropy" - Schrödinger
         self.entropy_internal -= self.information_intake
 
-        # Clamp minimum entropy (Quantum Limit)
-        if self.entropy_internal < 0.1:
-            self.entropy_internal = 0.1
+        # --- QUANTUM HARDENING (Landauer's Limit) ---
+        # Minimum entropy is bounded by the Information Scale
+        min_entropy = max(0.01, (1.0 - self.params.kappa))
+        if self.entropy_internal < min_entropy:
+            self.entropy_internal = min_entropy
 
         return self.entropy_internal
 

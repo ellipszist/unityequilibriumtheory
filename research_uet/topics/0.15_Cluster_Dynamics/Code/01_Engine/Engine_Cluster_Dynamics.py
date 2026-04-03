@@ -99,13 +99,16 @@ class UETClusterSolver(UETBaseSolver):
         Halo Density = kappa * |grad C|^2 / (C + epsilon)
         Regularization applied to prevent vacuum explosion.
         """
+        # Handle coupled fields (tuple) from UETMasterEquation
+        C_field = self.C[0] if isinstance(self.C, tuple) else self.C
+
         # 2D Gradient (ny, nx)
-        grads = np.gradient(self.C, self.dy, self.dx)
+        grads = np.gradient(C_field, self.dy, self.dx)
         dy, dx = grads
 
         grad_sq = dy**2 + dx**2
         # Use soft min to prevent division by zero-ish
-        return self.params.kappa * grad_sq / (self.C + 1e-6)
+        return self.params.kappa * grad_sq / (C_field + 1e-6)
 
     def step(self, step_idx: int = 0):
         """

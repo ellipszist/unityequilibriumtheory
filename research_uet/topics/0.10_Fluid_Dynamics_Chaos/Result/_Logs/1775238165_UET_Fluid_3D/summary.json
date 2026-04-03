@@ -1,0 +1,19 @@
+{
+  "run_id": "1775238165_UET_Fluid_3D",
+  "simulation": "UET_Fluid_3D",
+  "status": "FAILED",
+  "timestamp": "Sat Apr  4 00:42:45 2026",
+  "duration_seconds": 0.013652563095092773,
+  "total_steps": 0,
+  "metadata": {
+    "nx": 16,
+    "ny": 16,
+    "dt": 0.001,
+    "kappa": 0.1,
+    "beta": 1.0,
+    "alpha": 2.0,
+    "C0": 1.0,
+    "phi_loss": 0.05
+  },
+  "final_state": null
+}

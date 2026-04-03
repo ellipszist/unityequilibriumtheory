@@ -43,7 +43,7 @@ def simulate_magic_angle_trap(angle_degrees):
     engine = AcousticAlignmentEngine()
 
     # Calculate proximity to the 1.1 degree lock
-    df = abs(angle_degrees - engine.MAGIC_ANGLE)
+    df = abs(angle_degrees - engine.magic_angle)
 
     # At 1.1 degrees precisely, the alignment is stabilized by resonance
     # The Trap Strength is inversely proportional to the twist error

@@ -15,6 +15,9 @@ Code/
   02_Proof/
     Proof_Acoustic_Guidance.py  # Force vs Thermal Noise calculation
     Proof_Factory_Retrofit.py   # ROE/ROI of existing plant upgrade
+  03_Research/
+    Download_Superconductor_Lattice.py    # Standard lattice data acquisition
+    Research_RoomTemp_Fractal_Lattice.py # Room-Temp Coherence Analyzer (UET)
   04_Competitor/
     Competitor_Random_CVD.py    # Standard "Grain Boundary" Simulator
 ```
@@ -42,8 +45,10 @@ python research_uet/topics/0.28_Material_Synthesis/Code/02_Proof/Proof_Factory_R
 | Proof_Acoustic_Guidance.py | Force Ratio > 3 | PASS |
 | Proof_Factory_Retrofit.py | ROI < 2 Years | PASS |
 | Competitor_Random_CVD.py | Defect Gen | PASS |
+| Download_Superconductor_Lattice.py | 1/1 | PASS |
+| Research_RoomTemp_Fractal_Lattice.py | 1/1 | PASS |
 
-**Total: 5/5 PASSED**
+**Total: 7/7 PASSED**
 
 ## Data Sources (with DOIs)
 

@@ -43,8 +43,12 @@ class UETMassGapEngine(UETBaseSolver):
     UET Yang-Mills Mass Gap Solver.
     """
 
-    def __init__(self, name="UET_Mass_Gap_Engine"):
-        params = UETParameters(kappa=0.5, beta=1.0, alpha=-0.1, gamma=0.5, C0=1.0)
+    def __init__(self, params: Optional[UETParameters] = None, name="UET_Mass_Gap_Engine"):
+        # THE GREAT PURGE: No more literals. Use topic-based derivation.
+        if params is None:
+            from research_uet.core.uet_parameters import get_params
+            params = get_params("0.21")
+
         super().__init__(
             nx=100,
             ny=1,
@@ -91,17 +95,14 @@ class UETMassGapEngine(UETBaseSolver):
 
 
 def yang_mills_vacuum_energy():
-    """Demonstrate non-zero vacuum energy."""
+    """Demonstrate non-zero vacuum energy using axiomatic parameters."""
+    from research_uet.core.uet_parameters import get_params
+    params = get_params("0.21")
     C_zero = np.zeros(100)
     dx = 0.1
-    params = UETParameters(kappa=0.5, beta=1.0, alpha=-0.1, gamma=0.5, C0=1.0)
     omega_zero = omega_functional_complete(C_zero, dx=dx, params=params)
 
-    C_min = np.sqrt(abs(params.alpha) / params.gamma) * np.ones(100)
-    # Corrected C_min for potential V(C) = alpha/2 (C-C0)^2 + gamma/4 (C-C0)^4
-    # Wait, in Master Equation V(C) is around C-C0.
-    # If C0=1, and alpha=-0.1, V has min at (C-C0)^2 = |alpha|/gamma
-    # C_min = C0 + sqrt(|alpha|/gamma)
+    # C_min_physical = C0 + sqrt(|alpha|/gamma)
     C_min_physical = params.C0 + np.sqrt(abs(params.alpha) / params.gamma) * np.ones(100)
     omega_min = omega_functional_complete(C_min_physical, dx=dx, params=params)
 

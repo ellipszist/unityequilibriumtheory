@@ -25,16 +25,27 @@ class UETPathManager:
     def get_root() -> Path:
         if UETPathManager._ROOT:
             return UETPathManager._ROOT
+        
+        # 1. Check current working directory (Priority for Source Code)
+        cwd = Path.cwd()
+        if (cwd / "research_uet").exists():
+            UETPathManager._ROOT = cwd / "research_uet"
+            return UETPathManager._ROOT
+            
+        # 2. Check parent directories of CWD
+        for parent in cwd.parents:
+            if (parent / "research_uet").exists():
+                UETPathManager._ROOT = parent / "research_uet"
+                return UETPathManager._ROOT
+
+        # 3. Fallback to __file__ resolution (for installed pkgs)
         current = Path(__file__).resolve()
         for _ in range(6):
-            if (current / "research_uet" / "core").exists():
-                UETPathManager._ROOT = current / "research_uet"
+            if (current / "core").exists() and current.name == "research_uet":
+                UETPathManager._ROOT = current
                 return UETPathManager._ROOT
             current = current.parent
-        fallback = Path(__file__).resolve().parent.parent
-        if fallback.name == "research_uet":
-            UETPathManager._ROOT = fallback
-            return fallback
+            
         raise FileNotFoundError("Could not find 'research_uet' root directory.")
 
     TOPIC_MAP = {
@@ -69,6 +80,7 @@ class UETPathManager:
         "0.29": "0.29_Ocean_Recovery",
         "0.30": "0.30_Mega_Flora_Biotech",
         "0.31": "0.31_SpaceTime_Propulsion",
+        "0.34": "0.34_Information_Centric_Nanofabrication",
     }
 
     @staticmethod

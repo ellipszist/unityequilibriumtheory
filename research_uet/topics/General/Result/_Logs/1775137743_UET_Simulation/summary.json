@@ -1,0 +1,32 @@
+{
+  "run_id": "1775137743_UET_Simulation",
+  "simulation": "UET_Simulation",
+  "status": "FAILED",
+  "timestamp": "Thu Apr  2 20:49:03 2026",
+  "duration_seconds": 0.9351780414581299,
+  "total_steps": 1000,
+  "metadata": {
+    "nx": 64,
+    "ny": 64,
+    "dt": 0.01,
+    "kappa": 0.1,
+    "beta": 0.1,
+    "alpha": 0.0,
+    "C0": 1.0,
+    "phi_loss": 0.05
+  },
+  "final_state": {
+    "step": 900,
+    "time": 9.009999999999852,
+    "omega": NaN,
+    "kinetic": 0.0,
+    "potential": NaN,
+    "entropy": 0.0,
+    "gradient_norm": 0.0,
+    "max_density": NaN,
+    "min_density": NaN,
+    "is_stable": false,
+    "gradient_energy": NaN,
+    "entropy_interaction": NaN
+  }
+}

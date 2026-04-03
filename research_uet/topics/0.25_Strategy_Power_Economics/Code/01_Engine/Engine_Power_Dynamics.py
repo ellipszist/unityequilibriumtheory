@@ -20,7 +20,7 @@ from pathlib import Path
 try:
     from research_uet.core.uet_base_solver import UETBaseSolver
     from research_uet.core.uet_master_equation import UETParameters
-    from research_uet.core.uet_parameters import INTEGRITY_KILL_SWITCH
+    from research_uet.core.uet_parameters import INTEGRITY_KILL_SWITCH, get_params
     from research_uet.core.uet_data_orchestrator import orchestrator
     from research_uet.core.scientific_validation import ScientificValidator
 except ImportError as e:
@@ -93,10 +93,9 @@ class PowerDynamicsEngine(UETBaseSolver):
         if params is None:
             try:
                 from research_uet.core.uet_parameters import get_params
-
-                params = get_params("macroscopic")
+                params = get_params("0.25")
             except:
-                params = None
+                params = UETParameters(domain="social")
 
         super().__init__(
             nx=nx,
@@ -108,17 +107,21 @@ class PowerDynamicsEngine(UETBaseSolver):
             pillar="01_Engine",
             stable_path=True,
         )
+        self.agents = [] # Field Registry
+        self.history = [] # State History
         # Support for explicit logger passing (Legacy API compatibility)
         if logger:
             self.logger = logger
 
-        # 2. Strategic Elements
-        self.agents: List[StrategicAgent] = []
-        self.history: List[float] = []
-        self.total_global_land = 1_000_000.0
+        # 2. Strategic Elements (Axiomatic Scaling)
+        # Use Information Capacity proxy (reciprocal of phi_loss) as the base for 'Physical Area'
+        # Nominal: 1.0 / 0.05 = 20.0 units
+        capacity = 1.0 / (self.params.phi_loss + 1e-12)
+        self.total_global_land = capacity * self.params.kappa
         self.nature_health = 1.0
         self.land_lease_fund = 0.0
-        self.water_pools = {"blue": 1.0e6, "gray": 0.0, "black": 0.0}
+        # Water linked to total informatic volume and coupling (beta)
+        self.water_pools = {"blue": capacity * self.params.beta, "gray": 0.0, "black": 0.0}
         self.global_water_productivity = 0.0
 
         # 3. Data Integration
@@ -241,7 +244,9 @@ class PowerDynamicsEngine(UETBaseSolver):
         self.sync_to_field()
         rent = np.sum(self.C) * lease_rate
         self.C *= 1 - lease_rate
-        self.nature_health = min(1.0, self.nature_health + (rent / 10000.0))
+        # Restoration linked to Informational Capacity (Axiom 10)
+        restoration_scale = self.params.I_max * 10000.0 
+        self.nature_health = min(1.0, self.nature_health + (rent / restoration_scale))
         self.sync_from_field()
         return rent
 
@@ -270,7 +275,9 @@ class PowerDynamicsEngine(UETBaseSolver):
             if a.agent_type == "D":
                 rate = a.boldness * self.nature_health * self.params.W_N * avg_c
                 self.C[0, i] += rate
-                self.nature_health -= rate * 1e-6
+                # Environmental degradation linked to Informational Loss (phi)
+                # Scaled by phi_loss / I_max to keep it in macroscopic bounds
+                self.nature_health -= rate * (self.params.phi_loss / self.params.I_max)
 
             # Type C: Axiom 10 (Coherence) -> Potential Leveling
             elif a.agent_type == "C":
@@ -284,20 +291,30 @@ class PowerDynamicsEngine(UETBaseSolver):
                         self.C[0, neighbor] += transfer
 
         # 2. Physics Core Step
-        self.C += self.params.gamma_J * self.params.W_N  # Innovation small flux governed by UET
+        phi_loss = self.params.phi_loss
+        self.C += self.params.gamma_J * phi_loss 
         res = self.engine.step(self.C, dt=self.dt, dx=self.dx, I=self.I)
         if isinstance(res, tuple):
-            self.C, self.I = res
+            if len(res) == 3:
+                self.C, self.I, _ = res
+            elif len(res) == 2:
+                self.C, self.I = res
         else:
             self.C = res
         self.C = np.clip(self.C, 0.001, 100.0)
 
         # 3. Nature Health Update
         if self.nx > 1:
-            grad_x = np.gradient(self.C[0], self.dx)
-            self.nature_health -= (
-                np.sum(grad_x**2) * 2e-7
-            )  # Lowered penalty for tuned proof
+            # Calculate gradient for entropy penalty (Axiom 1)
+            grad_x = np.gradient(self.C[0, :], self.dx)
+            # Entropy penalty linked to Informational Loss (phi)
+            # AXIO-REPAIR v0.9.5: Use capacity proxy for decay scaling
+            capacity = 1.0 / (self.params.phi_loss + 1e-12)
+            dOmega = (
+                np.sum(grad_x**2) * (self.params.phi_loss / (capacity + 1e-12))
+                * (self.params.beta / self.params.kappa)
+            )
+            self.nature_health -= dOmega
         
         self.nature_health = np.clip(self.nature_health, 0.0, 1.0)
 

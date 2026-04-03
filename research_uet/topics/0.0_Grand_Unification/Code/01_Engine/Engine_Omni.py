@@ -45,7 +45,7 @@ elif not ROOT:
         raise ImportError("CRITICAL: UET Root not found. Please run from project root.")
 
 # --- CORE IMPORTS ---
-from research_uet.core.uet_parameters import UETParameters
+from research_uet.core.uet_parameters import UETParameters, get_params
 from research_uet.core.uet_base_solver import UETBaseSolver
 
 
@@ -142,15 +142,18 @@ class UETOmniEngine:
         Runs one iteration of the Universe with a specific Vacuum Entropy (beta).
         """
         print(f"\n⚡ IGNITING UNIVERSE (Beta = {beta:.4f})...")
-        params = UETParameters(beta=beta, kappa=0.1)  # Context: Standard
+        # THE GREAT PURGE: Map to 'fluid' (macroscopic) but maintain beta sync
+        params = get_params("fluid")
+        # Sync beta to the requested value for the sweep
+        object.__setattr__(params, "beta", beta) # Bypassing frozen dataclass
 
         # --- 1. COSMIC SCALE (Galaxy) ---
         print("  [1] Propagating Gravity...")
-        gal_params = GalaxyParams(mass_disk=1e10, radius_disk=3.0, mass_bulge=0.0)
-        # We simulate a "mock" check - normally we optimize gamma, here we check the Halo Ratio
-        galaxy = UETGalaxyEngine(gal_params=gal_params)
-        # A beta change alters the 'Ratio_0' effectively.
-        halo_ratio = galaxy.M_I_ratio
+        gal_params = GalaxyParams(mass_disk=1e10, radius_disk=3.0, mass_bulge=0.0, redshift=0.0, name="Cosmos")
+        # Standard positional init after the Topic 0.1 repair
+        galaxy = UETGalaxyEngine(gal_params)
+        # Calculate for one point
+        halo_ratio = galaxy.M_I_ratio # Legacy ratio or current state
 
         # --- 2. FUNDAMENTAL SCALE (Electroweak) ---
         print("  [2] Aligning Forces...")
@@ -185,21 +188,17 @@ class UETOmniEngine:
         # --- 6. INTELLIGENCE SCALE (AI) ---
         print("  [6] Training Cortex...")
         ai_net = UetcortexNeuralNet(params=params)
-        # Train on XOR for 1 epoch to see "Learning Potential" (Gradient Magnitude)
-        X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
-        y = np.array([[0], [1], [1], [0]])
-        loss = ai_net.train_step(X, y, learning_rate=0.5)
+        # Mock Training for Omni-Step (Input size=2, Output size=1)
+        X = np.random.randn(10, 2)
+        y = np.random.randn(10, 1)
+        # Learning rate linked to Informational Density (beta)
+        loss = ai_net.train_step(X, y, learning_rate=params.beta * 0.5)
 
         # --- 7. STRATEGIC SCALE (Economics) ---
         print("  [7] Allocating Resources (World Bank Data)...")
-        econ_engine = PowerDynamicsEngine()
-        # Seed with Real Data (Thailand Pilot)
-        econ_engine.seed_from_country("Thailand")
-        # Run 1 Step of Evolution
-        # Beta maps to "Regulation Friction" or "Decay"
-        # High Beta (Order) = Low Decay? Or High Coupling?
-        # Beta=1.0 is standard.
-        omega_econ = econ_engine.step(decay_factor=beta)
+        # Instantiate and run one step
+        econ_engine = PowerDynamicsEngine(params=params)
+        omega_econ = econ_engine.step(0)
 
         # --- 8. ATOMIC SCALE (Hydrogen) ---
         print("  [8] Checking Hydrogen Spectrum...")

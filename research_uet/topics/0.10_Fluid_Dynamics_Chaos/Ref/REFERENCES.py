@@ -16,6 +16,7 @@ REFERENCES = {
         "Kolmogorov_1941": "A. N. Kolmogorov - K41 Turbulence Theory",
         "Lorenz_1963": "Edward Lorenz - Chaos Theory (Deterministic Nonperiodic Flow)",
         "Stokes_1845": "G. G. Stokes - Internal Friction of Fluids (NS Foundation)",
+        "Heki_2011": "K. Heki - Ionospheric electron density anomalies before the 2011 Tohoku-Oki earthquake",
     },
 }
 
