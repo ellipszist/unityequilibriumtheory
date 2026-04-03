@@ -38,7 +38,7 @@ We categorize our research into **3 Impact Zones**:
 | [0.1](0.1_Galaxy_Rotation_Problem/) | **Galaxy Rotation** | Dark Matter | Vacuum Pressure ($\beta C I$) | ✅ |
 | [0.26](0.26_Cosmic_Dynamic_Frame/) | **Cosmic Dynamic Frame** | Dark Matter Mechanism | Dynamic Viscosity ($a_0$) | ✅ |
 | [0.2](0.2_Black_Hole_Physics/) | **Black Holes** | Singularity | $\kappa |\nabla C|^2$ (Horizon) | ✅ |
-| [0.3](0.3_Cosmology_Hubble_Tension/) | **Cosmology** | Hubble Tension | $\lambda$-coherence (Time) | ✅ |
+| [0.3](0.3_Cosmology_Hubble_Tension/) | **Cosmology** | Hubble Tension | Axial β-scaling (Scaling resolution) | ✅ |
 | [0.12](0.12_Vacuum_Energy_Casimir/) | **Vacuum Energy** | Cosmological Const | Boundary Information Term | ✅ |
 | [0.19](0.19_Gravity_GR/) | **General Relativity** | Incompatible w/ QM | Gravity = Entropy Pressure | ✅ |
 | [0.5](0.5_Nuclear_Binding_Hadrons/) | **Nuclear/Hadrons** | Binding Energy | Soliton Stability | ✅ |
@@ -55,9 +55,9 @@ We categorize our research into **3 Impact Zones**:
 
 | ID | Topic Name | The Mystery | UET Insight | Status |
 |:---|:-----------|:------------|:------------|:-------|
-| [0.22](0.22_Biophysics_Origin_of_Life/) | **Origin of Life** | Entropy vs Life | Life is a Negentropy Engine | ✅ |
+| [0.22](0.22_Biophysics_Origin_of_Life/) | **Origin of Life** | Entropy vs Life | Origin of Life (Ω-minimization) | ✅ |
 | [0.24](0.24_Artificial_Intelligence/) | **AI & Mind** | Consciousness | Resonance of $C$-Field | ✅ |
-| [0.25](0.25_Strategy_Power_Economics/) | **Economics** | Market Crashes | Information Avalanches | ✅ |
+| [0.25](0.25_Strategy_Power_Economics/) | **Economics** | Market Crashes | Axiomatic Gini Equilibrium | ✅ |
 | [0.4](0.4_Superconductivity_Superfluids/) | **Superconductivity** | Resistance | Phase-Lock Mechanism | ✅ |
 | [0.9](0.9_Quantum_Nonlocality/) | **Quantum Bell** | Entanglement | Non-local Potential Reservoir | ✅ |
 | [0.11](0.11_Phase_Transitions/) | **Phase Transitions** | Critical Points | Spinodal Info Saturation | ✅ |
@@ -68,7 +68,9 @@ We categorize our research into **3 Impact Zones**:
 | [0.29](0.29_Ocean_Recovery/) | **Ocean Recovery** | Ocean Acidification | Graphene Ocean Shield | ✅ |
 | [0.30](0.30_Mega_Flora_Biotech/) | **Mega Flora Biotech** | Agricultural Yield | Acoustic Nutrient Delivery | ✅ |
 | [0.31](0.31_SpaceTime_Propulsion/) | **SpaceTime Propulsion** | Interstellar Travel | Relativistic Slingshot | ✅ |
-| [0.32](0.32_Micro_Nuclear_Fusion/) | **Micro Nuclear Fusion** | High Energy / Low Input | Graphene-Perovskite UET Resonance | ✅ |
+| [0.32](0.32_Micro_Nuclear_Fusion/) | **Micro Nuclear Fusion** | High Energy / Low Input | Graphene UET Resonance | ✅ |
+| [0.33](0.33_High_Energy_Density_Battery_Materials/) | **Battery Tech** | Energy Density | Axiom 10 Density Derivation | ✅ |
+| [0.34](0.34_Information_Centric_Nanofabrication/) | **Nanofabrication** | Scalability | Info-Guided Self-Assembly | ✅ |
 
 ---
 
@@ -104,12 +106,17 @@ To ensure scientific rigor, every topic must earn 3 badges:
 
 To verify any topic (e.g., Galaxy Rotation), use the **Runners**:
 
-### 1. Run a Single Topic
+### 1. Run Total System Diagnostics (Recommended)
+```bash
+python run_diagnostics.py
+```
+
+### 2. Run a Single Topic
 ```bash
 python research_uet/scripts/Runners/run_topic_tests.py 0.1
 ```
 
-### 2. Run the "Big 5" Anomalies
+### 3. Run the "Big 5" Anomalies
 ```bash
 python research_uet/scripts/run_physics_anomalies.py
 ```
@@ -120,4 +127,5 @@ python research_uet/scripts/Reporting/collect_paper_figures.py
 ```
 
 ---
-*Last Updated: 2026-01-27 (v0.9.0)*
+---
+*Last Updated: 2026-04-03 (v0.9.5 - Hardened Hardcore Edition)*
