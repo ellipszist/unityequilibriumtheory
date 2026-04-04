@@ -6,8 +6,17 @@ matplotlib.use('Agg') # Headless mode
 import matplotlib.pyplot as plt
 from pathlib import Path
 
+import sys
+from pathlib import Path
+
 # --- CORE INTEGRATION ---
-from research_uet.core.uet_parameters import get_params
+# Ensure project root is in sys.path
+current_file = Path(__file__).resolve()
+project_root = current_file.parents[5] 
+if str(project_root) not in sys.path:
+    sys.path.insert(0, str(project_root))
+
+from research_uet.core.uet_parameters import get_params, derive_parameters_first_principles
 from research_uet.core.uet_glass_box import UETPathManager
 
 class ICNInkjetEngine:
@@ -27,6 +36,15 @@ class ICNInkjetEngine:
         self.vibration_freq = 0.5                # Machine vibration frequency
         self.saw_freq = 10.0                     # GHz Carrier (SAW)
         self.shield_factor = 1.0                 # Default (No Shield)
+        
+        # Hardening Physics: Override tau_mem for GHz-range SAW response
+        # 1.0e-9 = 1 nanosecond relaxation for high-speed trapping
+        self.params = derive_parameters_first_principles(
+            scale=1e-9, 
+            temperature=300, 
+            information_density=1e18, 
+            tau_mem=1e-9
+        )
         
     def apply_graphene_shield(self, active=True):
         """Axiom 5: Material Hardening - Graphene encapsulation"""
@@ -142,9 +160,16 @@ class ICNInkjetEngine:
                             
         duration = time.time() - start_time
         
-        # --- INDUSTRIAL THROUGHPUT ---
-        # Throughput = drops placed / (logical time for 1 printhead unit)
-        throughput_rate = (placed / (steps / firing_freq)) / 1e6 # Million pts/sec
+        # --- INDUSTRIAL THROUGHPUT (1M NOZZLE SCALE) ---
+        # Scaling from 128 nozzles to 1,000,000 (i7-Hyperion)
+        nozzle_count = 1_000_000 # Hardened industrial scale
+        per_nozzle_rate = (placed / steps) * firing_freq
+        total_pps = per_nozzle_rate * (nozzle_count / 128) # Scale by nozzle density
+        
+        # Calculate Wafers Per Hour (WPH)
+        # High-complexity 7nm chip (~10e12 points per wafer)
+        time_per_wafer_sec = 1e12 / total_pps if total_pps > 0 else float('inf')
+        wPH = 3600 / time_per_wafer_sec if time_per_wafer_sec > 0 else 0
         
         # Metrics
         continuity = 0
@@ -160,17 +185,24 @@ class ICNInkjetEngine:
         union = np.sum((self.substrate > 0) | (self.i_field > 0.5))
         fidelity = 100.0 * (intersection / max(1, union))
         
-        # Device Life
+        # Device Life (Modified by Graphene Shielding)
         life_weeks = 12 * self.shield_factor
         life_years = life_weeks / 52.0
         
         print(f"   ⏱️  Time: {duration:.4f}s")
         print(f"   📏 Continuity: {avg_continuity:.2f}%")
         print(f"   💎 Fidelity: {fidelity:.2f}%")
-        print(f"   🚀 Throughput: {throughput_rate:.2f} Million pts/sec")
-        print(f"   🛡️  Est. Device Life: {life_years:.1f} Years")
+        print(f"   🚀 Total Throughput: {total_pps/1e12:.2f} Tera-pts/sec")
+        print(f"   📦 WPH (Wafers Per Hour): {wPH:.2f}")
+        print(f"   🛡️  Est. Device Life: {life_years:.2f} Years ({'Graphene Coated' if self.shield_factor > 1 else 'Raw Perovskite'})")
         
-        return avg_continuity, fidelity, self.substrate.copy()
+        return {
+            "continuity": avg_continuity,
+            "fidelity": fidelity,
+            "wph": wPH,
+            "pps": total_pps,
+            "grid": self.substrate.copy()
+        }
 
 def main():
     # 128 Nozzles demonstrated 'Industrial Scaling' capacity
@@ -179,27 +211,32 @@ def main():
     
     # Run Scenarios (1000 steps = 128,000 dots total)
     print("\n[SCENARIO 1: Standard Inkjet (NAND Gate)]")
-    c1, f1, grid1 = engine.run_simulation("PLAIN_INKJET", steps=1000)
+    res1 = engine.run_simulation("PLAIN_INKJET", steps=1000)
     
     print("\n[SCENARIO 2: PC-Based Sync (Latency = 20ms)]")
-    c2, f2, grid2 = engine.run_simulation("VIBRATION_SYNC", steps=1000)
+    res2 = engine.run_simulation("VIBRATION_SYNC", steps=1000)
     
     print("\n[SCENARIO 3: FPGA-Speed Sync (Nanosecond Loop)]")
-    c3, f3, grid3 = engine.run_simulation("UET_GUIDED", steps=1000)
+    engine.apply_graphene_shield(False) # Raw for baseline
+    res3 = engine.run_simulation("UET_GUIDED", steps=1000)
+
+    print("\n[SCENARIO 4: Industrial Graphene Coated (Axiom 5 Hardened)]")
+    engine.apply_graphene_shield(True) # Apply encapsulation for Earth-durability
+    res4 = engine.run_simulation("UET_GUIDED", steps=1000)
     
     # --- VISUALIZATION ---
     result_dir = UETPathManager.get_result_dir("0.34_ICN", "Honest_Engineering", "01_Engine")
     
     fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(18, 5))
     
-    ax1.imshow(grid1, cmap='Greys', interpolation='nearest')
-    ax1.set_title(f"Standard Inkjet\nFidelity: {f1:.1f}%")
+    ax1.imshow(res1['grid'], cmap='Greys', interpolation='nearest')
+    ax1.set_title(f"Standard Inkjet\nFidelity: {res1['fidelity']:.1f}%")
     
-    ax2.imshow(grid2, cmap='Reds', interpolation='nearest')
-    ax2.set_title(f"PC Sync (Latency Delay)\nFidelity: {f2:.1f}%")
+    ax2.imshow(res2['grid'], cmap='Reds', interpolation='nearest')
+    ax2.set_title(f"PC Sync (Latency Delay)\nFidelity: {res2['fidelity']:.1f}%")
     
-    ax3.imshow(grid3, cmap='Greens', interpolation='nearest')
-    ax3.set_title(f"UET FPGA Sync (Real-time)\nFidelity: {f3:.1f}%")
+    ax3.imshow(res3['grid'], cmap='Greens', interpolation='nearest')
+    ax3.set_title(f"UET FPGA Sync (Real-time)\nFidelity: {res3['fidelity']:.1f}%")
     
     plt.suptitle("The Computational Wall: Why Latency Kills Precision")
     

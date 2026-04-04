@@ -66,11 +66,14 @@ We categorize our research into **3 Impact Zones**:
 | [0.27](0.27_Cold_Light_Hologram/) | **Cold Light (Hologram)** | Stopping Light (Entropy) | Geometric Resonance Lock | ✅ |
 | [0.28](0.28_Material_Synthesis/) | **Material Synthesis** | Graphene Defects | Acoustic Guidance Field | ✅ |
 | [0.29](0.29_Ocean_Recovery/) | **Ocean Recovery** | Ocean Acidification | Graphene Ocean Shield | ✅ |
-| [0.30](0.30_Mega_Flora_Biotech/) | **Mega Flora Biotech** | Agricultural Yield | Acoustic Nutrient Delivery | ✅ |
-| [0.31](0.31_SpaceTime_Propulsion/) | **SpaceTime Propulsion** | Interstellar Travel | Relativistic Slingshot | ✅ |
+| [0.30](0.30_Mega_Flora_Biotech/) | **Mega Flora Biotech** | Agricultural Yield | Acoustic Nutrient & O2 Bio-Rings | ✅ |
+| [0.31](0.31_SpaceTime_Propulsion/) | **Propulsion & Logistics** | Interstellar Travel | **Hardened** UTN & Geodesic Surfing | ✅ |
 | [0.32](0.32_Micro_Nuclear_Fusion/) | **Micro Nuclear Fusion** | High Energy / Low Input | Graphene UET Resonance | ✅ |
 | [0.33](0.33_High_Energy_Density_Battery_Materials/) | **Battery Tech** | Energy Density | Axiom 10 Density Derivation | ✅ |
 | [0.34](0.34_Information_Centric_Nanofabrication/) | **Nanofabrication** | Scalability | Info-Guided Self-Assembly | ✅ |
+| [0.35](0.35_ICN_Digital_Automation/) | **ICN Software/AI** | 1M Nozzle Sync | Axiom 5 AI Fidelity Optimizer | 🟢 |
+| [0.36](0.36_Orbital_Manufacturing/) | **UET Integrated Shipyard** | Heavy Construction | Hulls, Pylons & Ice Canisters | 🟢 |
+| [0.37](0.37_Quantum_Photovoltaics_Solar_Paint/) | **Solar Paint** | Photon Harvest | Perovskite-Graphene Hybrid | 🟢 |
 
 ---
 
@@ -128,4 +131,4 @@ python research_uet/scripts/Reporting/collect_paper_figures.py
 
 ---
 ---
-*Last Updated: 2026-04-03 (v0.9.5 - Hardened Hardcore Edition)*
+*Last Updated: 2026-04-04 (v0.9.6 - Industrial Space expansion)*

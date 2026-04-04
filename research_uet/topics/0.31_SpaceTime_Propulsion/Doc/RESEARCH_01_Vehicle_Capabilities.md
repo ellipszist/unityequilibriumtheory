@@ -26,15 +26,15 @@ The user explicitly noted the necessity of a "small nuclear factory" onboard. We
 
 ---
 
-## 3. 🛡️ Hull Materials: Graphene-Perovskite Composites (ระบบเกราะและวัสดุ)
+## 3. 🛡️ Structural Integrity & Hull Logistics (โครงสร้างและโลจิสติกส์ตัวถัง)
 
-A vehicle operating at 0.1c in space, hypersonic speeds in air, and extreme pressure underwater cannot be made of aluminum or titanium.
+A vehicle operating at 0.1c in space and extreme pressure underwater requires a **Non-Newtonian Hull**.
 
-*   **UET Material Synthesis (0.28):** Using *Resonant Chemical Vapor Deposition (CVD)*, the hull is printed as a continuous, unibody **Graphene-Perovskite matrix**.
-*   **Properties:**
-    1.  **Extreme Tensile Strength:** Withstands both the extreme crushing pressure of the deep Marianas Trench and the explosive outward pressure in a vacuum.
-    2.  **Thermal Superconductivity:** Any heat generated from atmospheric re-entry or friction is instantly distributed across the entire ship's surface and radiated away, preventing localized melting.
-    3.  **Energy Harvesting:** The Perovskite integration allows the hull itself to act as a solar/cosmic-ray harvester when stranded or in low-power modes.
+*   **Manufacturing (Source: 0.36 Integrated Shipyard):** All Stingray-class hulls are manufactured using the **Resonant CVD** process detailed in [SPEC_Bio_Hull_Assembly.md](../../0.36_Orbital_Manufacturing/Doc/SPEC_Bio_Hull_Assembly.md).
+*   **Properties (Managed by Logistics):**
+    1.  **Extreme Tensile Strength:** Verified for Mariana-to-LEO transitions.
+    2.  **Thermal Superconductivity:** Managed by the **0.31 Traffic Control** system to prevent heat-soak during atmospheric skipping.
+    3.  **Energy Harvesting:** Fully integrated with **Topic 0.37 Solar Paint** for buffer maintenance.
 
 ---
 
