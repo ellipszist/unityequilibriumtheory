@@ -1,5 +1,18 @@
 # ⚛️ 0.20 Atomic Physics
 
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.20: Atomic Physics",
+  "description": "Deriving the Rydberg Formula and Atomic Energy Levels as Information Channel Capacities.",
+  "about": "Atomic Physics, Rydberg Formula, Information Channels, Standing Waves, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET derives the Rydberg Formula and energy levels as 'Information Channel Capacities'. Electron orbitals are modeled as standing waves of Information Resonance, matching experiment with 6.4 ppm accuracy. / UET คำนวณสูตรของริดเบิร์กและระดับพลังงานอะตอมในฐานะ 'ขีดความสามารถของช่องสัญญาณข้อมูล' โดยมองว่าออร์บิทัลของอิเล็กตรอนคือคลื่นนิ่งของการกำทอนข้อมูลที่แม่นยำสูง
+
 ![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Info_Resonance-blueviolet)
 ![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)

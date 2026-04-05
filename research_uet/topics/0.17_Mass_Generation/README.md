@@ -1,5 +1,18 @@
 # ⚖️ 0.17 Mass Generation
 
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.17: Mass Generation",
+  "description": "Defining Mass as 'Information Drag' and deriving the Lepton Mass Hierarchy and Koide Relation.",
+  "about": "Mass Generation, Higgs Mechanism, Information Drag, Koide Relation, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET defines mass as informational inertia or 'drag'. This geometric approach derives the lepton mass hierarchy and the exact Koide Relation ($Q=2/3$), resolving the Standard Model hierarchy problem. / UET นิยาม 'มวล' ว่าคือแรงต้านเชิงข้อมูล (Drag) วิธีการเชิงเรขาคณิตนี้สรุปความสัมพันธ์ของลำดับมวลเลปตอนและพิสูจน์ค่า Koide Relation (2/3) ได้โดยไม่ต้องพึ่งพาค่าคงที่ Higgs แบบสุ่ม
+
 ![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Information_Drag-blueviolet)
 ![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)

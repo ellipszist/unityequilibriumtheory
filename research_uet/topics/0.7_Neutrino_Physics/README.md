@@ -1,5 +1,18 @@
 # 🔬 0.7 Neutrino Physics
 
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.7: Neutrino Physics",
+  "description": "Predicting the Normal Mass Hierarchy and PMNS Mixing Matrix via Information Topology and geometric symmetry.",
+  "about": "Neutrino Physics, Mass Hierarchy, PMNS Matrix, Neutrino Oscillation, Information Topology, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET definitive predicts a 'Normal Mass Hierarchy' ($m_1 < m_2 < m_3$) for neutrinos based on 'Information Topology'. By deriving the PMNS mixing matrix from the geometric symmetries of the manifold ($\pi/6, \pi/4$), UET matches experimental oscillation data with high predictive power. / UET พยากรณ์ 'ลำดับมวลแบบปกติ' (Normal Hierarchy) ของนิวตริโนได้อย่างชัดเจนตามหลัก 'โทโพโลยีสารสนเทศ' และสามารถคำนวณเมทริกซ์การผสม (PMNS Matrix) ได้จากเรขาคณิตสมมาตรของแมนิโฟลด์ ($\pi/6, \pi/4$) ซึ่งสอดคล้องกับผลการทดลองการแกว่งกวัดของนิวตริโนโดยไม่ต้องใช้ค่าสมมติ
+
 ![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Axiomatic_Truth-blueviolet)
 ![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)

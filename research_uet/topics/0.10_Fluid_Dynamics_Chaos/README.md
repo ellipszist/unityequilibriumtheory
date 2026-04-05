@@ -1,5 +1,18 @@
 # 🌊 0.10 Fluid Dynamics & Chaos
 
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.10: Fluid Dynamics & Chaos",
+  "description": "800x faster fluid simulation via Energy Minimization on the Information Manifold.",
+  "about": "Fluid Dynamics, Chaos, Navier-Stokes, Information Manifold, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET transforms fluid dynamics into an energy minimization problem, matching Navier-Stokes with 800x speedup and guaranteed stability. Chaos emerges from informational fluctuations. / UET เปลี่ยนพลศาสตร์ของไหลเป็นปัญหาการหาค่าพลังงานต่ำสุด ให้ผลแม่นยำเท่า Navier-Stokes แต่เร็วกว่า 800 เท่าและมีความเสถียรสูงสุด
+
 ![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Triple_Green-00aa00)
 ![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)

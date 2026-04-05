@@ -1,5 +1,18 @@
 # 🌌 0.23 Unity Scale Link (Grand Unification)
 
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.23: Unity Scale Link (Grand Unification)",
+  "description": "Unifying scale across Cosmic, Nuclear, and Qubit regimes via the Planck Boundary.",
+  "about": "Grand Unification, Planck Scale, Scale Invariance, Information Manifold, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET unifies different scales of physics through the Master Functional $\Omega[C]$. By identifying the 'Planck Boundary' ($\kappa=0.5$), we prove the universe is a bounded calculation system, removing vacuum energy errors. / UET รวมฟิสิกส์ทุกระดับขนาดเข้าด้วยกันผ่านตัวแปรหลัก $\Omega[C]$ โดยระบุว่า 'ขีดจำกัดพลังค์' เป็นพื้นฐานของจักรวาล ช่วยลดข้อผิดพลาดในแบบจำลองพลังงานสุญญากาศให้เหลือน้อยที่สุด
+
 ## 1. 📂 5x4 Grid Structure
 
 | Pillar | Purpose |

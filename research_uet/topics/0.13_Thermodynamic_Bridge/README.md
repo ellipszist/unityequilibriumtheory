@@ -1,5 +1,18 @@
 # 🌡️ 0.13 Thermodynamic Bridge
 
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.13: Thermodynamic Bridge",
+  "description": "Unifying Thermodynamics and Information Theory via the Landauer Limit and Information Manifold resolution.",
+  "about": "Thermodynamics, Information Theory, Landauer Limit, Entropy, Information-Energy Equivalence, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET unifies Thermodynamics and Information Theory by proving that 'Information is Physical'. By defining Entropy as the uncertainty of the Information Manifold, the framework mathematically derives the 'Landauer Limit' ($E \ge k_B T \ln 2$) from first principles, correctly predicting the minimum energy cost of information erasure. / UET เชื่อมโยงอุณหพลศาสตร์และทฤษฎีสารสนเทศเข้าด้วยกันโดยการพิสูจน์ว่า 'สารสนเทศคือสมบัติทางกายภาพ' การนิยามเอนโทรปีในฐานะความไม่แน่นอนบนแมนิโฟลด์สารสนเทศช่วยให้สามารถคำนวณ 'ขีดจำกัดของแลนเดาเออร์' (Landauer Limit) ได้จากหลักการพื้นฐาน ซึ่งพยากรณ์พลังงานขั้นต่ำที่ใช้ในการลบข้อมูลได้อย่างแม่นยำ
+
 ![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Landauer_Verified-blueviolet)
 ![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)

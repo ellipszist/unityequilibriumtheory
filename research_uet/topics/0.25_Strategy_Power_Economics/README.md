@@ -1,4 +1,17 @@
-# 🏛️ 0.25 Strategic Expansion & Economic Power
+# 🛡️ 0.25 Strategic Expansion & Economic Power
+
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.25: Strategic Expansion & Economic Power",
+  "description": "Explaining social and economic stability through the lens of Social Manifolds and Type C stabilizers.",
+  "about": "Social Dynamics, Game Theory, Economic Stability, Type C Agents, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET models power and economics as concentrations of tension in a social manifold. We identify 'Type C' agents (high boldness, low selfishness) as physical stabilizers that resolve zero-sum games and reduce systemic inequality ($\Omega$). / UET มองอำนาจและเศรษฐกิจเป็นความตึงเครียดของระนาบสังคม โดยระบุว่า 'ตัวแทนกลุ่ม C' (กล้าหาญแต่ไม่เห็นแก่ตัว) คือกลไกฟิสิกส์ที่ช่วยสร้างสมดุลและลดความเหลื่อมล้ำในระบบได้อย่างยั่งยืน
 
 ![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Extreme_Simplicity-blueviolet)

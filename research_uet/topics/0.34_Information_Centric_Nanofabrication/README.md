@@ -1,9 +1,17 @@
-# 🔬 0.34 Information-Centric Nanofabrication (ICN)
+# 🧪 0.34 Information-Centric Nanofabrication (ICN)
+
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.34: Information-Centric Nanofabrication (ICN)",
+  "description": "Replacing high-energy EUV lithography with low-entropy atomic deposition to 'grow' logic circuits directly.",
+  "about": "Nanofabrication, ICN, EUV Lithography, Atomic Deposition, Graphene, Perovskite, UET"
+}
+-->
 
 > [!NOTE]
-> **AI-Digest (EN)**: Information-Centric Nanofabrication (ICN) is a UET-based manufacturing paradigm that replaces high-energy EUV lithography with low-entropy atomic deposition. By utilizing the $\beta C \cdot I$ coupling term, ICN "grows" logic circuits directly from precursor materials at 40x lower cost and 160x faster iteration speeds.
->
-> **AI-Digest (TH)**: Information-Centric Nanofabrication (ICN) คือกระบวนการผลิตระดับนาโนตามหลัก UET ที่เปลี่ยนจากระบบ Lithography พลังงานสูง (EUV) มาเป็นการสะสมอะตอมแบบเอนโทรปีต่ำ โดยใช้แรงดึงดูดของฟิลด์ข้อมูล ($\beta C \cdot I$) เพื่อ "ปลูก" วงจรโดยตรงจากสารตั้งต้น ช่วยลดต้นทุนลง 40 เท่าและผลิตเร็วกว่าเดิม 160 เท่า
+> **AI-Digest**: Information-Centric Nanofabrication (ICN) is a UET-based manufacturing paradigm that replaces high-energy EUV lithography with low-entropy atomic deposition. By utilizing the $\beta C \cdot I$ coupling term, ICN 'grows' logic circuits directly from precursor materials, bypassing 400M USD equipment costs while achieving 160x faster iteration. / ICN พลิกโฉมการผลิตชิประดับนาโนโดยเปลี่ยนจากแสง EUV พลังงานสูงมาใช้การจัดเรียงอะตอมผ่านสนามข้อมูล ทำให้สามารถ 'ปลูก' วงจรได้โดยตรง ลดต้นทุนเครื่องจักรได้มหาศาลและเร่งรอบการวิจัยให้เร็วขึ้น 160 เท่า
 
 ![Status](https://img.shields.io/badge/Status-Research_Initiated-orange)
 ![Standard](https://img.shields.io/badge/Standard-5x4_Scientific_Grid-blue)

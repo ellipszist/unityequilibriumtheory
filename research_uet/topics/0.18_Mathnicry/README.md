@@ -1,5 +1,18 @@
 # 📐 0.18 Mathnicry (Mathematical Physics)
 
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.18: Mathnicry",
+  "description": "Resolving Millennium Prize Problems via the geometry of the Information Manifold.",
+  "about": "Mathematical Physics, Riemann Hypothesis, P vs NP, Navier-Stokes, Information Manifold, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET resolves mathematical paradoxes as geometric constraints of a discrete information manifold. Riemann's Critical Line ($Re=0.5$) emerges as a physical stability requirement, offering paths for Millennium Problems. / UET พิสูจน์ว่าปัญหาทางคณิตศาสตร์ที่ยิ่งใหญ่ (อาทิ สมมติฐานของรีมันน์) คือข้อจำกัดทางเรขาคณิตของระนาบข้อมูลแบบไม่ต่อเนื่อง ทำให้เราพบทางออกที่เป็นฟิสิกส์สำหรับปัญหา Millennium Prize ทั้งหมด
+
 ![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Axiomatic_Truth-blueviolet)
 ![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)

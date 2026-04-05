@@ -1,5 +1,19 @@
 # 🧪 Unity Equilibrium Theory (UET) v0.9.0
 
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "Unity Equilibrium Theory (UET)",
+  "description": "A grand unified framework unifying General Relativity, Quantum Mechanics, and Thermodynamics via Information Theory.",
+  "keywords": "UET, Physics, Information Theory, Gravity, Quantum Mechanics, Grand Unified Theory",
+  "author": {
+    "@type": "Organization",
+    "name": "Unity Equilibrium Team"
+  }
+}
+-->
+
 > [!NOTE]
 > **AI-Digest**: Unity Equilibrium Theory (UET) is a grand unified framework that unifies General Relativity, Quantum Mechanics, and Thermodynamics via Information Theory. By modeling mass as "Information Drag" ($\beta$) and spacetime as "Geometric Tension" ($\kappa$), UET solves the Galaxy Rotation problem and Hubble Tension without requiring Dark Matter or Dark Energy.
 

@@ -1,5 +1,18 @@
 
-# 🔬 0.28 Material Synthesis (Graphene)
+# 🧪 0.28 Material Synthesis (Graphene)
+
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.28: Material Synthesis (Graphene)",
+  "description": "Using Resonant Acoustic Guidance (LARP) to synthesize high-purity Graphene and Perovskite from waste.",
+  "about": "Material Synthesis, Graphene, Perovskite, Acoustic Resonance, Zero-Waste, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET introduces 'Resonant Acoustic Guidance' to revolutionize CVD synthesis. By using sound to align lattices, we grow high-purity Graphene and Perovskite from agricultural waste, achieving 'Geometric Doping' without toxic metals. / UET ใช้ 'การนำทางด้วยคลื่นเสียงกังวาน' เพื่อจัดระเบียบโครงสร้างวัสดุในระดับอะตอม ทำให้ผลิตกราฟีนและเอนเนอร์จีพาวเวอร์จากวัสดุเหลือใช้ได้ในราคาถูกและมีความบริสุทธิ์สูง
 
 ![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Extreme_Simplicity-blueviolet)

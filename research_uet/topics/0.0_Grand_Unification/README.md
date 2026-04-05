@@ -1,5 +1,18 @@
 # 🌌 0.0 Grand Unification (Theory of Everything)
 
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.0: Grand Unification (Theory of Everything)",
+  "description": "Unifying classical, quantum, and cosmological physics under a single Information-Geometric framework.",
+  "about": "Grand Unified Theory, Information Physics, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET unifies General Relativity and Quantum Mechanics by treating Information as the fundamental manifold. Gravity is modeled as thermodynamic pressure from Information Fields, eliminating singularities. / UET รวมฟิสิกส์คลาสสิกและควอนตัมเข้าด้วยกันโดยมองว่า 'ข้อมูล' คือพื้นฐานความจริง ลดทอนแรงโน้มถ่วงให้เป็นแรงดันทางอุณหภูมิพลศาสตร์ของข้อมูล
+
 ![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Master_Equation-blueviolet)
 ![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)

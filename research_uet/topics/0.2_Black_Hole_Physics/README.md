@@ -1,5 +1,18 @@
 # 🔬 0.2 Black Hole Physics
 
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.2: Black Hole Physics",
+  "description": "Explaining Information Saturation and Singularity Resolution via UET Axiom 4.",
+  "about": "Black Holes, Event Horizon, Singularity Resolution, Information Saturation, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET resolves the Black Hole singularity by introducing an 'Information Saturation Limit' (Axiom 4). As matter collapses, the information density reaches a fundamental limit (1 bit per Planck Area), creating a repulsive pressure that results in a stable, finite core. / UET แก้ไขปัญหาภาวะเอกฐาน (Singularity) ในหลุมดำโดยการใช้ 'ขีดจำกัดความอิ่มตัวของสารสนเทศ' (ตาม Axiom 4) เมื่อมวลสารยุบตัวจนถึงขีดจำกัดความหนาแน่นสูงสุด จะเกิดแรงต้านที่ทำให้แกนกลางยังคงมีขนาดที่จำกัดและเสถียร
+
 ![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Information_Saturation-blueviolet)
 ![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)

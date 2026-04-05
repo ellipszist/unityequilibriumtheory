@@ -1,5 +1,18 @@
 # ⚛️ 0.11 Phase Transitions
 
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.11: Phase Transitions",
+  "description": "Explaining Spontaneous Symmetry Breaking and Phase Transitions as shifts in Informational Resolution.",
+  "about": "Phase Transitions, Symmetry Breaking, Thermodynamics, Order Parameter, Information Manifold, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET treats Phase Transitions as 'Informational Resolution' shifts. Spontaneous Symmetry Breaking is modeled as a topological transition in the Information Manifold's potential well ($\Omega$). Using a Spectral Cahn-Hilliard Solver, the framework demonstrates how structured orders emerge from noise according to first-principles information minimization. / UET มองว่าการเปลี่ยนสถานะ (Phase Transition) คือการเปลี่ยนแปลง 'ความละเอียดของสารสนเทศ' โดยการสมมาตรที่แตกสลายเอง (Symmetry Breaking) ถูกจำลองเป็นการข้ามผ่านขุมพลังงานศักย์ในแมนิโฟลด์สารสนเทศ การใช้ตัวแก้สมการ Spectral Cahn-Hilliard ช่วยพิสูจน์ว่าโครงสร้างที่เป็นระเบียบเกิดขึ้นมาจากสัญญาณรบกวนได้ตามหลักการลดพลังงานสารสนเทศให้ต่ำที่สุด
+
 ![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Symmetry_Breaking-blueviolet)
 ![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)

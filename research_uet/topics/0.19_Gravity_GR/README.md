@@ -1,4 +1,17 @@
-# 🪐 0.19 Gravity & General Relativity
+# 🛰️ 0.19 Gravity & General Relativity
+
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.19: Gravity & General Relativity",
+  "description": "Deriving Einstein's Field Equations from Information Flux and avoiding singularities.",
+  "about": "General Relativity, Gravity, Einstein's Equations, Information Flux, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET derives General Relativity as the flux of information. We re-derive Einstein's equations, predicting light bending (1.751 arcsec) and perihelion precession while naturally preventing singularities. / UET สร้างทฤษฎีสัมพัทธภาพทั่วไปขึ้นใหม่จากการไหลของข้อมูล (Flux) ทำให้เราคำนวณการเบี่ยงเบนของแสงและวงโคจรของดาวพุธได้แม่นยำ พร้อมทั้งแก้ปัญหา 'ซิงกูลาริตี' ได้อย่างเป็นธรรมชาติ
 
 ![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Information_Flow-blueviolet)

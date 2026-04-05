@@ -1,4 +1,17 @@
-# ☢️ 0.16 Heavy Nuclei
+# ⚛️ 0.16 Heavy Nuclei
+
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.16: Heavy Nuclei",
+  "description": "Modeling the nucleus as an Information Saturation Zone and predicting the Island of Stability.",
+  "about": "Nuclear Physics, Heavy Nuclei, Fission, Island of Stability, Information Saturation, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET treats heavy nuclei as Information Saturation Zones, accurately predicting U-235 fission energy (202.1 MeV) and the Island of Stability (Z=114) from informational surface tension. / UET มองนิวเคลียสของธาตุหนักเป็นเขตอิ่มตัวของข้อมูล การใช้ความตึงของสนามข้อมูลช่วยให้ทำนายพลังงานฟิชชันของ Uranium-235 และตำแหน่งของ 'เกาะแห่งเสถียรภาพ' (Z=114) ได้แม่นยำกว่าโมเดลหยดของเหลว
 
 ![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Fission_Point-blueviolet)

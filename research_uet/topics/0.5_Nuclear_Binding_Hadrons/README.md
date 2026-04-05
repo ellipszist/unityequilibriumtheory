@@ -1,4 +1,17 @@
-# 🔬 0.5 Nuclear Binding & Hadrons
+# 🌌 0.5 Nuclear Binding & Hadrons
+
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.5: Nuclear Binding & Hadrons",
+  "description": "Unifying Nuclear Binding Energy and the Strong Force via Information Tension.",
+  "about": "Nuclear Physics, Binding Energy, Strong Force, Hadrons, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET derives Nuclear Binding Energy by modeling the strong force as high-gradient Information Tension ($\kappa$). It accurately predicts the MeV-per-nucleon curve for stable isotopes without arbitrary coupling constants. / UET คำนวณพลังงานยึดเหนี่ยวรังสีโดยมองว่าแรงนิวเคลียร์อย่างเข้มคือความตึงเครียดข้อมูลระดับสูง ทำให้ทำนายค่าพลังงานยึดเหนี่ยวในนิวเคลียสได้แม่นยำอย่างเป็นธรรมชาติ
 
 ![Status](https://img.shields.io/badge/Status-98%25_PASS-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Geometric_Overlaps-blueviolet)

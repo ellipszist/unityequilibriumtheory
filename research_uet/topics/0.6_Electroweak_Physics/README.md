@@ -1,5 +1,18 @@
 # 🔬 0.6 Electroweak Physics
 
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.6: Electroweak Physics",
+  "description": "Deriving the Fermi Constant (G_F) and Neutron Lifetime purely from Information Saturation and geometric symmetry.",
+  "about": "Electroweak Force, Fermi Constant, Neutron Lifetime, Symmetry Breaking, Information Saturation, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET derives fundamental electroweak parameters, such as the Fermi Constant ($G_F$) and Neutron Lifetime, from first-principles 'Information Saturation'. By modeling weak interactions as geometric consequences of the UET lattice, the framework achieves high-precision matches with experimental data without arbitrary curve-fitting. / UET คำนวณค่าคงที่พื้นฐานของอันตรกิริยาอย่างอ่อน เช่น ค่าคงที่เฟอร์มี ($G_F$) และอายุขัยของนิวตรอน จากหลักการ 'ความอิ่มตัวของสารสนเทศ' โดยตรง การจำลองแรงอ่อนในฐานะผลลัพธ์ทางเรขาคณิตของโครงสร้าง UET ทำให้ได้ผลลัพธ์ที่แม่นยำสูงโดยไม่ต้องใช้การปรับแต่งค่าพารามิเตอร์ตามอำเภอใจ
+
 ![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Extreme_Simplicity-blueviolet)
 ![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)

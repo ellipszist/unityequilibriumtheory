@@ -1,4 +1,17 @@
-# 🔬 0.3 Cosmology & Hubble Tension
+# 🔭 0.3 Cosmology & Hubble Tension
+
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.3: Cosmology & Hubble Tension",
+  "description": "Resolving the Hubble Tension discrepancy through the Information Propagator term in the UET Metric Solver.",
+  "about": "Cosmology, Hubble Tension, Dark Energy, Expansion Rate, Metric Evolution, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET solves the $5\sigma$ 'Hubble Tension' by introducing an 'Information Propagator' term into the Friedmann equations. This models the Hubble rate as a dynamic function of information density, reconciling early-universe (CMB) and late-universe (SNe) observations. / UET แก้ปัญหาความขัดแย้งของค่าฮับเบิล (Hubble Tension) โดยการเพิ่มพจน์ 'ตัวส่งผ่านสารสนเทศ' (Information Propagator) เข้าไปในสมการฟรีดแมน ซึ่งช่วยอธิบายระดับการขยายตัวของเอกภพที่เปลี่ยนไปตามความหนาแน่นของข้อมูล ทำให้การคำนวณจากเอกภพยุคแรกและยุคปัจจุบันสอดคล้องกัน
 
 ![Status](https://img.shields.io/badge/Status-90%25_PASS-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Information_Evolution-blueviolet)

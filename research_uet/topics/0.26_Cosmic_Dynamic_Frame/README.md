@@ -1,4 +1,17 @@
-# 🔬 0.26 Cosmic Dynamic Frame
+# 🌌 0.26 Cosmic Dynamic Frame
+
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.26: Cosmic Dynamic Frame",
+  "description": "Redefining space as a viscous information fluid to explain Dark Matter and the Pioneer Anomaly.",
+  "about": "Cosmic Fluid, Dark Matter, Pioneer Anomaly, Bullet Cluster, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET defines space as a viscous information fluid. What we call 'Dark Matter' is the drag from this fluid, explaining galaxy rotation and the Bullet Cluster Offset without extra parameters. / UET นิยามอวกาศว่าเป็นของไหลข้อมูลที่มีความหนืด ทำให้อธิบายปรากฏการณ์ 'สสารมืด' ได้ผ่านแรงหน่วงของของไหล ซึ่งแก้ปัญหากราฟการหมุนของกาแล็กซีได้โดยไม่ต้องเพิ่มพารามิเตอร์จำลอง
 
 ![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Extreme_Simplicity-blueviolet)

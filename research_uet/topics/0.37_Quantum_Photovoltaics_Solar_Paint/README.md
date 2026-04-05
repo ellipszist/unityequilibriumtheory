@@ -1,5 +1,18 @@
 # ☀️ Topic 0.37: Quantum Photovoltaics & Solar Paint
 
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.37: Quantum Photovoltaics & Solar Paint",
+  "description": "Sprayable energy-harvesting coatings using hybrid Perovskite-Graphene matrices for multi-megawatt structural power.",
+  "about": "Photovoltaics, Solar Paint, Perovskite, Graphene, Energy Harvesting, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: Topic 0.37 enables universal energy harvesting via 'Solar Paint'. By utilizing hybrid Perovskite-Graphene matrices, any structural surface (hulls, stations, terrestrial buildings) can become a multi-megawatt energy harvester, powering the 'Universal Transit Network' and 'Orbital Foundries'. / Topic 0.37 พลิกโฉมการผลิตพลังงานด้วย 'สีแสงอาทิตย์' (Solar Paint) ซึ่งใช้วัสดุผสมกราฟีน-เพอรอฟสไกต์ที่สามารถพ่นทับลงบนพื้นผิวโครงสร้างใดๆ เพื่อเปลี่ยนวัตถุนั้นให้เป็นแหล่งผลิตพลังงานได้โดยตรง (Multi-megawatt energy harvester) 
+
 ## 📖 Introduction
 This topic focuses on the development of high-efficiency, sprayable energy-harvesting coatings (Solar Paint) using Perovskite-Graphene hybrid matrices. This technology enables any structural surface (orbital foundries, ship hulls, planetary bases) to become a multi-megawatt energy harvester.
 

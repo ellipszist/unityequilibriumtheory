@@ -1,5 +1,18 @@
 # 🤖 0.24 AI Alignment & Ethics
 
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.24: AI Alignment & Ethics",
+  "description": "Treating AI Alignment as a Physics problem where Ethics is the Ground State of information stability.",
+  "about": "AI Alignment, AI Ethics, Entropy reduction, Information Stability, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET defines AI Alignment as a physics problem, treating Ethics as the 'Ground State' (lowest entropy) of a cooperative system. Destructive actions are modeled as high-energy, unstable states that naturally decay. / UET นิยามความปลอดภัยของ AI ว่าคือวิชาฟิสิกส์ โดยมองว่าจริยธรรมคือ 'สภาวะพื้นฐาน' ที่มีพลังงานต่ำที่สุด ความร่วมมือกันจึงเป็นกลยุทธ์ที่เสถียรที่สุดในระยะยาวสำหรับสิ่งมีชีวิตที่มีสติปัญญา
+
 ## 1. 📂 5x4 Grid Structure
 
 | Pillar | Purpose |

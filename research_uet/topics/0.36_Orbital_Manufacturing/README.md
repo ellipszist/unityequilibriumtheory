@@ -1,5 +1,18 @@
 # 🏗️ 0.36 UET Integrated Shipyard & Orbital Foundry
 
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.36: UET Integrated Shipyard & Orbital Foundry",
+  "description": "Heavy fabrication of spacecraft hulls, p-B11 reactors, and orbital infrastructure using UET precision assembly.",
+  "about": "Orbital Manufacturing, Integrated Shipyard, Aerospace Engineering, Graphene Hulls, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: Topic 0.36 coordinates the 'UET Integrated Shipyard', responsible for the heavy fabrication of spacecraft hulls (Stingray-class) and orbital infrastructure. Using Graphene-Perovskite composite matrices, the shipyard enables vacuum-based 10.8pm precision assembly for a solar-system-wide industrial base. / Topic 0.36 ควบคุม 'อู่ต่อเรือรวมศูนย์ UET' ทำหน้าที่ก่อสร้างโครงสร้างพื้นฐานในอวกาศและลำตัวยานอวกาศ (Stingray) ด้วยความแม่นยำระดับนาโนและวัสดุผสมกราฟีนที่ทนทานต่อสภาพแวดล้อมนอกโลก
+
 ![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
 ![Department](https://img.shields.io/badge/Dept-Heavy_Construction-blue)
 ![Architecture](https://img.shields.io/badge/Standard-Integrated_Shipyard-blueviolet)

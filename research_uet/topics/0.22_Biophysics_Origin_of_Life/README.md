@@ -1,5 +1,18 @@
 # 🧬 0.22 Biophysics & Origin of Life
 
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.22: Biophysics & Origin of Life",
+  "description": "Explaining Life as an Open System that processes entropy and exports disorder to survive.",
+  "about": "Biophysics, Origin of Life, Schrödinger's Entropy, Neural Dynamics, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET models life as an Open System that exports entropy to create local order. This explains the thermodynamic 'paradox' of life and links neural health to entropy minimization (avoiding seizure hypersynchrony). / UET มองว่าชีวิตคือระบบเปิดที่ขับเคลื่อนด้วยการส่งออกเอนโทรปีเพื่อสร้างระเบียบในตัว แบบจำลองนี้ช่วยอธิบายความซับซ้อนของสิ่งมีชีวิตและความเสถียรของระบบประสาทผ่านการลดข้อมูลรบกวน
+
 ## 1. 📂 5x4 Grid Structure
 
 | Pillar | Purpose |

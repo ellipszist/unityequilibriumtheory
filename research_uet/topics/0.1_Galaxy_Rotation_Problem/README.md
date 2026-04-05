@@ -1,4 +1,17 @@
-# 🔬 0.1 Galaxy Rotation Problem
+# 🌌 0.1 Galaxy Rotation Problem
+
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.1: Galaxy Rotation Problem",
+  "description": "Solving the Galaxy Rotation Problem without Dark Matter.",
+  "about": "Galaxy Rotation, Dark Matter, a0, Information Drag"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET solves the Galaxy Rotation problem by modeling gravity as informational drag. The $a_0$ constant emerges from Cosmic Dynamic Frame (Topic 0.26), removing the need for Dark Matter. / UET แก้ปัญหาอัตราการหมุนเวียนของกาแล็กซีด้วยการมองแรงโน้มถ่วงเป็น 'แรงหน่วงข้อมูล' ส่งผลให้ค่า $a_0$ เกิดขึ้นจริงโดยไม่ต้องพึ่งพาสสารมืด
 
 ![Status](https://img.shields.io/badge/Status-90.1%25_Accuracy-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Extreme_Simplicity-blueviolet)

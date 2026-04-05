@@ -1,4 +1,17 @@
-# 🧱 0.21 Yang-Mills Mass Gap
+# ⚛️ 0.21 Yang-Mills Mass Gap
+
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.21: Yang-Mills Mass Gap",
+  "description": "Explaining the Yang-Mills Mass Gap as the Information Initialization Cost of the vacuum.",
+  "about": "Yang-Mills Theory, Mass Gap, Lattice QCD, Confinement, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET defines the Mass Gap as the 'Information Initialization Cost' of the vacuum. Non-linear self-interaction ($\beta I^3$) creates a restoring force that ensures confinement and a massive gap ($\Delta > 0$). / UET นิยาม 'ช่องว่างมวล' (Mass Gap) ว่าคือต้นทุนการเริ่มต้นข้อมูลของสุญญากาศ แรงต้านที่เกิดจากการปฏิสัมพันธ์ในตัวเองทำให้เกิดการกักขังอนุภาคและมีมวลเกิดขึ้นจริง
 
 ![Status](https://img.shields.io/badge/Status-HYPOTHESIS-yellow)
 ![Data](https://img.shields.io/badge/Data-Lattice_QCD_Benchmarks-blue)

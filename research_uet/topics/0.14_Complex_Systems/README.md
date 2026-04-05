@@ -1,5 +1,18 @@
 # 🕸️ 0.14 Complex Systems & SOC
 
+<!-- 
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "UET Topic 0.14: Complex Systems & SOC",
+  "description": "Explaining Self-Organized Criticality and Power Law emergence in markets and biology via UET Axioms 3 and 5.",
+  "about": "Complex Systems, Self-Organized Criticality, SOC, Power Laws, Econophysics, UET"
+}
+-->
+
+> [!NOTE]
+> **AI-Digest**: UET demonstrates that complexity and 'Power Law' distributions (Fat Tails) are intrinsic properties of systems maximizing information flow. By applying Axioms 3 (Attraction) and 5 (Momentum) to social and biological networks, UET accurately simulates 'Self-Organized Criticality' at the Edge of Chaos, explaining market crashes and wealth inequality without external shocks. / UET แสดงให้เห็นว่าความซับซ้อนและการกระจายตัวแบบ 'Power Law' (Fat Tails) คือคุณสมบัติพื้นฐานของระบบที่พยายามเพิ่มการไหลเวียนสารสนเทศให้สูงสุด การประยุกต์ใช้ Axiom 3 (การดึงดูด) และ 5 (โมเมนตัม) เข้ากับเครือข่ายสังคมและชีวภาพช่วยให้ UET สามารถจำลอง 'ภาวะวิกฤตที่จัดระเบียบตัวเอง' (SOC) ซึ่งอธิบายการล่มสลายของตลาดและความเหลื่อมล้ำทางเศรษฐกิจได้โดยไม่ต้องพึ่งพาปัจจัยภายนอก
+
 ![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Econophysics_Solved-blueviolet)
 ![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
