@@ -1,13 +1,27 @@
 title: Unity Equilibrium Theory (UET)
 description: A grand unified framework unifying General Relativity, Quantum Mechanics, and Thermodynamics via Information Theory.
+url: "https://unityequilibrium.github.io"
+baseurl: "/UnityEquilibriumTheory"
+
+# Theme Configuration
 remote_theme: pages-themes/minimal@v0.2.0
 plugins:
-- jekyll-remote-theme
-- jext-sitemap
-
-google_site_verification: "" # User to add their verification ID here
+  - jekyll-remote-theme
+  - jekyll-sitemap
+  - jekyll-seo-tag
 
 # SEO Metadata
 author: Unity Equilibrium Team
-keywords: Physics, Information Theory, Gravity, Quantum Mechanics, UET
-lang: en-US
+email: unityequilibrium@gmail.com
+twitter_username: unity_equil
+github_username: unityequilibrium
+google_site_verification: "" 
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+exclude:
+  - .venv
+  - .git
+  - .github
+  - node_modules

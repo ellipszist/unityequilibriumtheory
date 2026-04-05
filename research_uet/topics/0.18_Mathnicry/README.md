@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.18: Mathnicry"
+description: "Research module for Mathnicry within the Unity Equilibrium Theory framework."
+---
+
 # 📐 0.18 Mathnicry (Mathematical Physics)
 
 <!-- 

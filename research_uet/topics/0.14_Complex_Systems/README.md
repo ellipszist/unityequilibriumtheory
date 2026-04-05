@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.14: Complex Systems"
+description: "Research module for Complex Systems within the Unity Equilibrium Theory framework."
+---
+
 # 🕸️ 0.14 Complex Systems & SOC
 
 <!-- 

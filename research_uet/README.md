@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: home
 title: "Unity Equilibrium Theory (UET) Research Hub"
 description: "Master directory for 38 fundamental physics and engineering research topics unified by Information Theory."
 author: "Unity Equilibrium Team"

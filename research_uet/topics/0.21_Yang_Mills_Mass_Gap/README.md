@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.21: Yang Mills Mass Gap"
+description: "Research module for Yang Mills Mass Gap within the Unity Equilibrium Theory framework."
+---
+
 # ⚛️ 0.21 Yang-Mills Mass Gap
 
 <!-- 

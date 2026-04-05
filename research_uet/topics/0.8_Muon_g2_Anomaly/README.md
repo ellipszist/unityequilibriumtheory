@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.8: Muon g2 Anomaly"
+description: "Research module for Muon g2 Anomaly within the Unity Equilibrium Theory framework."
+---
+
 # 🔬 0.8 Muon g-2 Anomaly
 
 <!-- 

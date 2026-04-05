@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.31: SpaceTime Propulsion"
+description: "Research module for SpaceTime Propulsion within the Unity Equilibrium Theory framework."
+---
+
 # 🚀 0.31 SpaceTime Propulsion & Logistics Network
 
 <!-- 

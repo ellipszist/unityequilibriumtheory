@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.6: Electroweak Physics"
+description: "Research module for Electroweak Physics within the Unity Equilibrium Theory framework."
+---
+
 # 🔬 0.6 Electroweak Physics
 
 <!-- 

@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.37: Quantum Photovoltaics Solar Paint"
+description: "Research module for Quantum Photovoltaics Solar Paint within the Unity Equilibrium Theory framework."
+---
+
 # ☀️ Topic 0.37: Quantum Photovoltaics & Solar Paint
 
 <!-- 

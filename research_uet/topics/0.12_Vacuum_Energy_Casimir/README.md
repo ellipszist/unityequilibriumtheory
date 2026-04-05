@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.12: Vacuum Energy Casimir"
+description: "Research module for Vacuum Energy Casimir within the Unity Equilibrium Theory framework."
+---
+
 # 🌌 0.12 Vacuum Energy & Casimir Effect
 
 <!-- 

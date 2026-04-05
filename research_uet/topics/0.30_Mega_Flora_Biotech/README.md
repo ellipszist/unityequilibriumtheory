@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.30: Mega Flora Biotech"
+description: "Research module for Mega Flora Biotech within the Unity Equilibrium Theory framework."
+---
+
 # 🌿 0.30 Mega Flora Biotech
 
 <!-- 

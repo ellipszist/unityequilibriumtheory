@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.28: Material Synthesis"
+description: "Research module for Material Synthesis within the Unity Equilibrium Theory framework."
+---
+
 
 # 🧪 0.28 Material Synthesis (Graphene)
 

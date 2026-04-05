@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.17: Mass Generation"
+description: "Research module for Mass Generation within the Unity Equilibrium Theory framework."
+---
+
 # ⚖️ 0.17 Mass Generation
 
 <!-- 

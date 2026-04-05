@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.9: Quantum Nonlocality"
+description: "Research module for Quantum Nonlocality within the Unity Equilibrium Theory framework."
+---
+
 # 🔬 0.9 Quantum Nonlocality
 
 <!-- 

@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.13: Thermodynamic Bridge"
+description: "Research module for Thermodynamic Bridge within the Unity Equilibrium Theory framework."
+---
+
 # 🌡️ 0.13 Thermodynamic Bridge
 
 <!-- 

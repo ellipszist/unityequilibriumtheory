@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.29: Ocean Recovery"
+description: "Research module for Ocean Recovery within the Unity Equilibrium Theory framework."
+---
+
 # 🌊 0.29 Ocean Recovery
 
 <!-- 

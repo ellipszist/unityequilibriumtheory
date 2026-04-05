@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.1: Galaxy Rotation Problem"
+description: "Research module for Galaxy Rotation Problem within the Unity Equilibrium Theory framework."
+---
+
 # 🌌 0.1 Galaxy Rotation Problem
 
 <!-- 

@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.19: Gravity GR"
+description: "Research module for Gravity GR within the Unity Equilibrium Theory framework."
+---
+
 # 🛰️ 0.19 Gravity & General Relativity
 
 <!-- 

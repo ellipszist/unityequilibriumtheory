@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.2: Black Hole Physics"
+description: "Research module for Black Hole Physics within the Unity Equilibrium Theory framework."
+---
+
 # 🔬 0.2 Black Hole Physics
 
 <!-- 

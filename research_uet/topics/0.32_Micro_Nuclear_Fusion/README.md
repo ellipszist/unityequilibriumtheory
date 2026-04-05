@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.32: Micro Nuclear Fusion"
+description: "Research module for Micro Nuclear Fusion within the Unity Equilibrium Theory framework."
+---
+
 # ⚛️ 0.32 Micro-Nuclear Fusion
 
 <!-- 

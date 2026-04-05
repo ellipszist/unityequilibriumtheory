@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.15: Cluster Dynamics"
+description: "Research module for Cluster Dynamics within the Unity Equilibrium Theory framework."
+---
+
 # 🌌 0.15 Cluster Dynamics
 
 <!-- 

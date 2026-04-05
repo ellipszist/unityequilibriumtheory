@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.34: Information Centric Nanofabrication"
+description: "Research module for Information Centric Nanofabrication within the Unity Equilibrium Theory framework."
+---
+
 # 🧪 0.34 Information-Centric Nanofabrication (ICN)
 
 <!-- 

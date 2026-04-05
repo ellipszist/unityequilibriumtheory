@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.35: ICN Digital Automation"
+description: "Research module for ICN Digital Automation within the Unity Equilibrium Theory framework."
+---
+
 # 🔍 Topic 0.35: ICN Digital Automation & AI "Brain"
 
 <!-- 

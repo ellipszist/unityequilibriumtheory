@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.20: Atomic Physics"
+description: "Research module for Atomic Physics within the Unity Equilibrium Theory framework."
+---
+
 # ⚛️ 0.20 Atomic Physics
 
 <!-- 

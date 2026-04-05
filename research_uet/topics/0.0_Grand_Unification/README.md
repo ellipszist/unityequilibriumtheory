@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.0: Grand Unification"
+description: "Research module for Grand Unification within the Unity Equilibrium Theory framework."
+---
+
 # 🌌 0.0 Grand Unification (Theory of Everything)
 
 <!-- 

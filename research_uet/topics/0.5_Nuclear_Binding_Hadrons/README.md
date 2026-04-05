@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.5: Nuclear Binding Hadrons"
+description: "Research module for Nuclear Binding Hadrons within the Unity Equilibrium Theory framework."
+---
+
 # 🌌 0.5 Nuclear Binding & Hadrons
 
 <!-- 

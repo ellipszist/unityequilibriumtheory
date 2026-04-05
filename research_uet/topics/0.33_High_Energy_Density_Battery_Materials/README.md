@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.33: High Energy Density Battery Materials"
+description: "Research module for High Energy Density Battery Materials within the Unity Equilibrium Theory framework."
+---
+
 # 🔋 0.33 High Energy Density Battery Materials
 
 <!-- 

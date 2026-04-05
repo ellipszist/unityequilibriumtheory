@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.25: Strategy Power Economics"
+description: "Research module for Strategy Power Economics within the Unity Equilibrium Theory framework."
+---
+
 # 🛡️ 0.25 Strategic Expansion & Economic Power
 
 <!-- 

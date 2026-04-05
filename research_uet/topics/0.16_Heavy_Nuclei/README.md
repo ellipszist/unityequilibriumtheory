@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.16: Heavy Nuclei"
+description: "Research module for Heavy Nuclei within the Unity Equilibrium Theory framework."
+---
+
 # ⚛️ 0.16 Heavy Nuclei
 
 <!-- 

@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.22: Biophysics Origin of Life"
+description: "Research module for Biophysics Origin of Life within the Unity Equilibrium Theory framework."
+---
+
 # 🧬 0.22 Biophysics & Origin of Life
 
 <!-- 

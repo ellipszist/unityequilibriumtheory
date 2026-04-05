@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.26: Cosmic Dynamic Frame"
+description: "Research module for Cosmic Dynamic Frame within the Unity Equilibrium Theory framework."
+---
+
 # 🌌 0.26 Cosmic Dynamic Frame
 
 <!-- 

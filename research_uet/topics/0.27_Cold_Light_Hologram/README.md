@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.27: Cold Light Hologram"
+description: "Research module for Cold Light Hologram within the Unity Equilibrium Theory framework."
+---
+
 # 🔦 0.27 Cold Light Hologram
 
 <!-- 

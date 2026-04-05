@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.23: Unity Scale Link"
+description: "Research module for Unity Scale Link within the Unity Equilibrium Theory framework."
+---
+
 # 🌌 0.23 Unity Scale Link (Grand Unification)
 
 <!-- 

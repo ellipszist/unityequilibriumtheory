@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.4: Superconductivity Superfluids"
+description: "Research module for Superconductivity Superfluids within the Unity Equilibrium Theory framework."
+---
+
 # 💠 0.4 Superconductivity & Superfluids
 
 <!-- 

@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.7: Neutrino Physics"
+description: "Research module for Neutrino Physics within the Unity Equilibrium Theory framework."
+---
+
 # 🔬 0.7 Neutrino Physics
 
 <!-- 

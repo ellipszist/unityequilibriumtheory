@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.10: Fluid Dynamics Chaos"
+description: "Research module for Fluid Dynamics Chaos within the Unity Equilibrium Theory framework."
+---
+
 # 🌊 0.10 Fluid Dynamics & Chaos
 
 <!-- 

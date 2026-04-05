@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.11: Phase Transitions"
+description: "Research module for Phase Transitions within the Unity Equilibrium Theory framework."
+---
+
 # ⚛️ 0.11 Phase Transitions
 
 <!-- 

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: article
 title: "UET Topic 0.3: Cosmology & Hubble Tension"
 description: "Solving the Hubble Tension via Information Propagator interaction and SpaceTime Viscosity (eta_0)."
 author: "Unity Equilibrium Team"

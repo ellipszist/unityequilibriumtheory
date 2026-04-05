@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.36: Orbital Manufacturing"
+description: "Research module for Orbital Manufacturing within the Unity Equilibrium Theory framework."
+---
+
 # 🏗️ 0.36 UET Integrated Shipyard & Orbital Foundry
 
 <!-- 

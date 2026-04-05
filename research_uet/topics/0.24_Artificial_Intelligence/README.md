@@ -1,3 +1,9 @@
+---
+layout: article
+title: "UET Topic 0.24: Artificial Intelligence"
+description: "Research module for Artificial Intelligence within the Unity Equilibrium Theory framework."
+---
+
 # 🤖 0.24 AI Alignment & Ethics
 
 <!-- 
