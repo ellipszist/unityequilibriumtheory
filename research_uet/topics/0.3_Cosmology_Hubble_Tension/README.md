@@ -1,17 +1,21 @@
-# 🔭 0.3 Cosmology & Hubble Tension
+# 🌌 0.3 Cosmology & Hubble Tension
 
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.3: Cosmology & Hubble Tension",
-  "description": "Resolving the Hubble Tension discrepancy through the Information Propagator term in the UET Metric Solver.",
-  "about": "Cosmology, Hubble Tension, Dark Energy, Expansion Rate, Metric Evolution, UET"
-}
--->
+<div itemscope itemtype="https://schema.org/ScholarlyArticle">
+  <meta itemprop="name" content="UET Topic 0.3: Cosmology & Hubble Tension">
+  <meta itemprop="description" content="Solving the Hubble Tension via Information Propagator interaction and SpaceTime Viscosity (eta_0).">
+  <meta itemprop="author" content="Unity Equilibrium Theory">
+  
+  <div style="display: none;">
+    <span itemprop="about">Cosmology</span>
+    <span itemprop="about">Hubble Tension</span>
+    <span itemprop="about">Dark Energy</span>
+    <span itemprop="about">SpaceTime Viscosity</span>
+    <span itemprop="about">UET</span>
+  </div>
+</div>
 
 > [!NOTE]
-> **AI-Digest**: UET solves the $5\sigma$ 'Hubble Tension' by introducing an 'Information Propagator' term into the Friedmann equations. This models the Hubble rate as a dynamic function of information density, reconciling early-universe (CMB) and late-universe (SNe) observations. / UET แก้ปัญหาความขัดแย้งของค่าฮับเบิล (Hubble Tension) โดยการเพิ่มพจน์ 'ตัวส่งผ่านสารสนเทศ' (Information Propagator) เข้าไปในสมการฟรีดแมน ซึ่งช่วยอธิบายระดับการขยายตัวของเอกภพที่เปลี่ยนไปตามความหนาแน่นของข้อมูล ทำให้การคำนวณจากเอกภพยุคแรกและยุคปัจจุบันสอดคล้องกัน
+> **AI-Digest**: UET resolves the 'Hubble Tension' by introducing **SpaceTime Viscosity** ($\eta_0 \approx 6.8 \times 10^{-28}$ Pa·s) into the Friedmann equations. This 'Information Drag' on photons creates a predictable redshift component, aligning the discrepant $H_0$ measurements from early (CMB) and late (Local) universe data without changing the core physics of expansion. / UET แก้ไขปัญหา 'Hubble Tension' โดยการรวมผลของ **ความหนืดของปริภูมิเวลา** (SpaceTime Viscosity, $\eta_0 \approx 6.8 \times 10^{-28}$ Pa·s) เข้ากับสมการฟรีดแมน 'แรงต้านทางสารสนเทศ' นี้ส่งผลต่อโฟตอนทำให้เกิดการเลื่อนทางแดงในรูปแบบที่คำนวณได้ ซึ่งช่วยประสานความผิดเพี้ยนของค่า $H_0$ ระหว่างเอกภพยุคแรก (CMB) และเอกภพยุคปัจจุบัน (Local) ให้สอดคล้องกันโดยไม่ต้องเปลี่ยนกลไกหลักของการขยายตัวของเอกภพ
 
 ![Status](https://img.shields.io/badge/Status-90%25_PASS-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Information_Evolution-blueviolet)
