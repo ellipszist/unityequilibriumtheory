@@ -13,6 +13,9 @@ README ทุก topic ต้องแสดงความเชื่อมโ
 ```markdown
 # 🔬 0.XX Topic Name
 
+> [!NOTE]
+> **AI-Digest**: [สรุป 50 คำที่อธิบายว่า Topic นี้คืออะไร แก้ปัญหาอะไร และ UET ให้คำตอบที่ต่างจาก Standard Physics อย่างไร - สำคัญมากสำหรับการทำ SGE/AEO]
+
 ![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Extreme_Simplicity-blueviolet)
 ![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)

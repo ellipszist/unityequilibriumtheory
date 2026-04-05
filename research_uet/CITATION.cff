@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- name: "Unity Equilibrium Theory Research Team"
+title: "Unity Equilibrium Theory (UET) v0.9.0: A Grand Unified Framework"
+version: 0.9.0
+date-released: 2026-04-05
+url: "https://github.com/unityequilibrium/UnityEquilibriumTheory"
+keywords:
+  - "General Relativity"
+  - "Quantum Mechanics"
+  - "Information Theory"
+  - "Grand Unified Theory"
+  - "Dark Matter Solution"
+repository-code: "https://github.com/unityequilibrium/UnityEquilibriumTheory"
+abstract: >
+  UET unifies classical and quantum physics by treating entropy and information as the fundamental coupling mechanism ($\beta$) between energy and spacetime geometry.
