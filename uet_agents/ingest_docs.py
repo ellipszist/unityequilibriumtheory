@@ -13,8 +13,8 @@ from pathlib import Path
 
 # Docs directories to ingest (relative to repo root)
 DOCS_DIRS = [
-    "research_uet/Docs",
-    "research_uet/Doc",
+    "docs/Docs",
+    "docs/Doc",
 ]
 
 EXTENSIONS = {".md", ".txt", ".rst"}

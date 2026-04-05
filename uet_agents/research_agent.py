@@ -1,7 +1,7 @@
 from typing import Optional, List
 from .base_agent import BaseAgent
-from research_uet.knowledge_base.omega_search import OmegaSearch
-from research_uet.knowledge_base.api_client import OpenRouterClient
+from docs.knowledge_base.omega_search import OmegaSearch
+from docs.knowledge_base.api_client import OpenRouterClient
 
 
 class ResearchAgent(BaseAgent):

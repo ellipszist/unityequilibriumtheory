@@ -1,6 +1,6 @@
 from typing import List, Dict, Optional, Any
 import logging
-from research_uet.knowledge_base.api_client import OpenRouterClient, CostTracker
+from docs.knowledge_base.api_client import OpenRouterClient, CostTracker
 
 
 class BaseAgent:

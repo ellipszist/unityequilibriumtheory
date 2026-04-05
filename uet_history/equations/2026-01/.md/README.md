@@ -2,7 +2,7 @@
 
 > **"One Equation to Rule Them All."**
 
-This folder (`research_uet/`) contains the **Core Physics Logic** that powers all 25 research topics.
+This folder (`docs/`) contains the **Core Physics Logic** that powers all 25 research topics.
 
 At the heart of everything is the **UET Master Equation** (sometimes referred to as the Unified Framework or Dyer-Derivative form).
 
@@ -42,32 +42,32 @@ The universe runs a global optimization loop (Lyapunov Stability):
 
 ## 📂 System Architecture (Directory Map)
 
-Navigation guide for the `research_uet/` ecosystem:
+Navigation guide for the `docs/` ecosystem:
 
 ### 1. The Engine (`/core`)
-*   **Path**: [`research_uet/core/`](./core/)
+*   **Path**: [`docs/core/`](./core/)
 *   **Purpose**: Contains the **Source Code** of the Master Equation.
 *   **Key File**: `uet_master_equation.py` (The Python implementation of $\Omega$).
 *   **Role**: All 25 research topics import logic from here. If you change this, you change the universe.
 
 ### 2. The Evidence (`/topics`)
-*   **Path**: [`research_uet/topics/`](./topics/)
+*   **Path**: [`docs/topics/`](./topics/)
 *   **Purpose**: The **25 Research Domains** (Galaxy Rotation, AI, Economics, etc.).
 *   **Structure**: Each folder contains `Code/` (Proof), `Doc/` (Analysis), and `Result/` (Logs).
 *   **Style Guide**: See [`how to README.md`](./topics/Work/how%20to%20README.md) for the "Platinum Standard" layout.
 
 ### 3. The Documentation (`/docs`)
-*   **Path**: [`research_uet/docs/`](./docs/)
+*   **Path**: [`docs/docs/`](./docs/)
 *   **Purpose**: Detailed technical manuals, API references, and theoretical backgrounders.
 *   **Use Case**: For developers wanting to fork or extend the framework.
 
 ### 4. The Paper (`/paper`)
-*   **Path**: [`research_uet/paper/`](./paper/)
+*   **Path**: [`docs/paper/`](./paper/)
 *   **Purpose**: The LaTeX source for the academic publication.
 *   **Goal**: Generates the final PDF for submission (e.g., arXiv).
 
 ### 5. The Tools (`/scripts`)
-*   **Path**: [`research_uet/scripts/`](./scripts/)
+*   **Path**: [`docs/scripts/`](./scripts/)
 *   **Purpose**: Utility scripts for global tasks.
 *   **Examples**:
     *   `audit_documentation_coverage.py`: Checks for missing docs.
@@ -78,7 +78,7 @@ Navigation guide for the `research_uet/` ecosystem:
 To run a simulation using the Master Equation:
 
 ```python
-from research_uet.core.uet_master_equation import UETMasterEquation
+from docs.core.uet_master_equation import UETMasterEquation
 import numpy as np
 
 # 1. Initialize Engine

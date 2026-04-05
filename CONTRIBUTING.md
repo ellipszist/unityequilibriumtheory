@@ -91,7 +91,7 @@ Every Topic must follow this EXACT folder structure:
 ### 1. Robust Path Finding (`UETPathManager`)
 **NEVER** use hardcoded paths (e.g., `C:/Users/...`). Use the Glass Box Path Manager:
 ```python
-from research_uet.core.uet_glass_box import UETPathManager
+from docs.core.uet_glass_box import UETPathManager
 
 # Correct way to save a result
 result_dir = UETPathManager.get_result_dir("0.1", "Experiment_Name")

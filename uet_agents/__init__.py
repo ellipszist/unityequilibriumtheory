@@ -10,7 +10,7 @@ from .memory_store import (
     ProceduralMemoryStore,
 )
 
-# Components that depend on research_uet.knowledge_base (optional)
+# Components that depend on docs.knowledge_base (optional)
 try:
     from .base_agent import BaseAgent
     from .research_agent import ResearchAgent

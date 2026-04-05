@@ -660,7 +660,7 @@ Historical modules identified in 2026 archives, containing advanced experimental
 
 1. **YOU DO NOT HAVE ACCESS TO ALL DATA**
    - Archive folder: `(search Only) ทองข้อมูลดี/` = **3.96 GB** (68 files, 23 folders)
-   - Current project: `research_uet/` = **116 MB** (880 files, 531 folders)
+   - Current project: `docs/` = **116 MB** (880 files, 531 folders)
    - You cannot access external Git history
    - Your context window is limited
 
@@ -691,7 +691,7 @@ Historical modules identified in 2026 archives, containing advanced experimental
 | Folder | Size | Files | Folders | Description |
 |:-------|-----:|------:|--------:|:------------|
 | `(search Only) ทองข้อมูลดี/` | **3.96 GB** | 68 | 23 | Archive: compressed ZIPs of old test runs |
-| `research_uet/` | **116 MB** | 880 | 531 | Current curated codebase |
+| `docs/` | **116 MB** | 880 | 531 | Current curated codebase |
 
 ### Script Statistics
 
@@ -826,7 +826,7 @@ Historical modules identified in 2026 archives, containing advanced experimental
 ### How to Verify
 
 1. **ดูข้อมูลเก่า**: `(search Only) ทองข้อมูลดี/`
-2. **รัน tests**: `python research_uet/topics/run_all_tests.py`
+2. **รัน tests**: `python docs/topics/run_all_tests.py`
 3. **ท้าทาย**: เอา concept ไปให้ AI อื่นสร้างสมการ — ถ้าถูกก็ต้องได้ผลเหมือนกัน
 
 ---
@@ -1034,7 +1034,7 @@ $$\Omega[C,I] = \int \left[ V(C) + \frac{\kappa}{2}|\nabla C|^2 + \beta C I \rig
 ## 📁 File Structure
 
 ```
-research_uet/Doc/
+docs/Doc/
 ├── 📚 DOC_INDEX.md          ← You are here
 │
 ├── 📖 Learning
@@ -3064,7 +3064,7 @@ $$
 ## 📁 Structure
 
 ```text
-research_uet/
+docs/
 ├── 📊 topics/                    # 20 Verified Physics Domains
 │   └── run_all_tests.py          # MASTER VALIDATION SCRIPT
 ├── ⚙️ core/                      # Mathematical Engine (The Solver)
@@ -3083,7 +3083,7 @@ research_uet/
 
 ```bash
 # Run the Master Verification Suite (70 Scripts)
-python research_uet/topics/run_full_verification.py
+python docs/topics/run_full_verification.py
 
 # Expected Output:
 # [PASS] 70/70 Tests Passed
@@ -3135,7 +3135,7 @@ python research_uet/topics/run_full_verification.py
 Add this to the top of every test file:
 
 ```python
-from research_uet.core.reproducibility import lock_all_seeds
+from docs.core.reproducibility import lock_all_seeds
 lock_all_seeds(42)  # UET standard seed
 ```
 
@@ -3159,7 +3159,7 @@ Key packages:
 ### Verification Command
 ```bash
 pip install -r requirements_frozen.txt
-python -c "from research_uet.core.reproducibility import get_environment_info; print(get_environment_info())"
+python -c "from docs.core.reproducibility import get_environment_info; print(get_environment_info())"
 ```
 
 ---
@@ -3179,7 +3179,7 @@ UET_SEED = 42
 
 ### Usage in Tests
 ```python
-from research_uet.core.reproducibility import lock_all_seeds, hash_dataset
+from docs.core.reproducibility import lock_all_seeds, hash_dataset
 
 # Lock at start
 lock_all_seeds(42)
@@ -3197,7 +3197,7 @@ print(f"Dataset hash: {data_hash}")  # Should match expected
 Every dataset should have a verified hash:
 
 ```python
-from research_uet.core.reproducibility import hash_file
+from docs.core.reproducibility import hash_file
 
 # Verify data file
 expected_hash = "a1b2c3d4e5f67890..."
@@ -3212,7 +3212,7 @@ assert actual_hash == expected_hash, "Data corruption detected!"
 Generate audit trails for test runs:
 
 ```python
-from research_uet.core.reproducibility import generate_artifact, save_artifact
+from docs.core.reproducibility import generate_artifact, save_artifact
 
 results = {"rmse": 0.082, "r_squared": 0.97}
 artifact = generate_artifact(
@@ -4862,7 +4862,7 @@ This document outlines the architectural logic behind the reorganization of the 
 ## 1. The Directory Tree (Visual Map)
 
 ```text
-research_uet/
+docs/
 ├── uet_4d_engine.py           <-- THE UNIVERSAL ENGINE (Solvers)
 │                                  (Shared by Galaxies, Neutrinos, Brain, etc.)
 ├── neutrino_research/         <-- SUB-PROJECT 1: Neutrinos
@@ -4894,7 +4894,7 @@ They need the Universal Engine from the root.
 *   *The Fix:* We point 2 levels up.
     ```python
     import sys
-    # Point to research_uet root
+    # Point to docs root
     sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
     from uet_4d_engine import UET4DSolver
     ```
@@ -5418,7 +5418,7 @@ We didn't change the Hardware. We just showed that the "Ghosts" (Dark Matter, En
 # 📄 UET_REORGANIZATION_PLAN.md
 
 # 🏗️ UET Research Renovation Plan
-**Objective:** Clean up `research_uet` to be a world-class research repository.
+**Objective:** Clean up `docs` to be a world-class research repository.
 
 ## 1. Current Status (The Mess)
 *   **Root:** Mixed files (Papers + Code + READMEs).
@@ -5428,7 +5428,7 @@ We didn't change the Hardware. We just showed that the "Ghosts" (Dark Matter, En
 ## 2. Proposed Structure (The Clean Future)
 
 ```text
-research_uet/
+docs/
 ├── ⚙️ engine/                 <-- THE HEART (Code Only)
 │   └── uet_4d_engine.py      (Moves here from root)
 │
@@ -6200,7 +6200,7 @@ All validation tests in the `lab/` directory were run against high-fidelity exte
 | | **NIST Standards** | Josephson Junction frequencies | Validated quantum tunneling equations standard. |
 
 ### 2.2 The "Harness" Architecture
-The `research_uet` harness was built to be reproducible:
+The `docs` harness was built to be reproducible:
 1.  **Ingest:** Load raw CSV/JSON data from `data/references/`.
 2.  **Process:** Apply UET equations in Python (`lab/` scripts).
 3.  **Validate:** Compare UET predictions vs. Experimental Data within a tolerance threshold.

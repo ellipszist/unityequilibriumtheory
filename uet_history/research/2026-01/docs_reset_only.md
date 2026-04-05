@@ -215,7 +215,7 @@ Storms on Earth die when the heat runs out. Galaxies are storms in the cosmic fl
 ## 🧮 Code Usage
 
 ```python
-from research_uet.core.kappa_scale import get_kappa
+from docs.core.kappa_scale import get_kappa
 
 # By name
 kappa = get_kappa("nuclear")   # 0.57
@@ -702,7 +702,7 @@ See: [`kappa_scale.py`](./kappa_scale.py) and [`SCALE_EQUATION.md`](./SCALE_EQUA
 
 ```python
 # Import from central location
-from research_uet.core.uet_parameters import get_params
+from docs.core.uet_parameters import get_params
 
 # Get parameters for a specific scale
 params = get_params(scale="electroweak")
@@ -799,7 +799,7 @@ if error > 10:
 ## 🧮 Implementation
 
 ```python
-from research_uet.core.kappa_scale import get_kappa
+from docs.core.kappa_scale import get_kappa
 
 # By name
 kappa = get_kappa("nuclear")  # Returns 0.57
@@ -5215,11 +5215,11 @@ UET ไม่ได้มองว่าแรงโน้มถ่วงส่�
 
 ### 1. The Scarcity Principle (Axiom 8) -> [Galaxy Level]
 ในระดับกาแล็กซี ความหนาแน่นของ Baryon กำหนดประสิทธิภาพการ Coupling ของสนาม Ω (Variable Gamma) ยิ่งเบาบางลง อวกาศยิ่งตอบสนองแรงขึ้นเพื่อประคองโครงสร้าง
-> **Link:** [ANALYSIS_COMBINED (Galaxy)](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.1_Galaxy_Rotation_Problem/Doc/ANALYSIS_COMBINED.md)
+> **Link:** [ANALYSIS_COMBINED (Galaxy)](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.1_Galaxy_Rotation_Problem/Doc/ANALYSIS_COMBINED.md)
 
 ### 2. The Persistence Principle (Axiom 9) -> [Cluster Level]
 ในระดับกระจุกกาแล็กซี ความเร็วและพลังงานที่มหาศาลทำให้ "ข้อมูล" ของแรงโน้มถ่วงถูกบันทึกค้างไว้ในเนื้ออวกาศ เกิดเป็นความหน่วง (Lag) ที่เห็นชัดเจนในการชนกัน
-> **Link:** [ANALYSIS_COMBINED (Cluster)](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.15_Cluster_Dynamics/Doc/ANALYSIS_COMBINED.md)
+> **Link:** [ANALYSIS_COMBINED (Cluster)](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.15_Cluster_Dynamics/Doc/ANALYSIS_COMBINED.md)
 
 ---
 
@@ -5453,7 +5453,7 @@ graph TD
     *   `engine = UETGalaxyEngine(..., pillar="03_Research")`
 
 2.  **How is the Folder Created?**
-    *   **Level 1 (Topic):** [UETPathManager](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/core/uet_glass_box.py#27-95) finds `topics/0.1_Galaxy...` automatically.
+    *   **Level 1 (Topic):** [UETPathManager](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/core/uet_glass_box.py#27-95) finds `topics/0.1_Galaxy...` automatically.
     *   **Level 2 (Result Root):** Enters `/Result`.
     *   **Level 3 (Pillar):** Uses the `pillar` argument (e.g., `03_Research`). **This is where the split happens.**
     *   **Level 4 (RunID):** Creates a unique folder `[Timestamp]_[ExperimentName]`.
@@ -5483,7 +5483,7 @@ This ensures that Engine tests stay in `01_Engine`, and Research outputs stay in
 Add this to the top of every test file:
 
 ```python
-from research_uet.core.reproducibility import lock_all_seeds
+from docs.core.reproducibility import lock_all_seeds
 lock_all_seeds(42)  # UET standard seed
 ```
 
@@ -5507,7 +5507,7 @@ Key packages:
 ### Verification Command
 ```bash
 pip install -r requirements_frozen.txt
-python -c "from research_uet.core.reproducibility import get_environment_info; print(get_environment_info())"
+python -c "from docs.core.reproducibility import get_environment_info; print(get_environment_info())"
 ```
 
 ---
@@ -5527,7 +5527,7 @@ UET_SEED = 42
 
 ### Usage in Tests
 ```python
-from research_uet.core.reproducibility import lock_all_seeds, hash_dataset
+from docs.core.reproducibility import lock_all_seeds, hash_dataset
 
 # Lock at start
 lock_all_seeds(42)
@@ -5545,7 +5545,7 @@ print(f"Dataset hash: {data_hash}")  # Should match expected
 Every dataset should have a verified hash:
 
 ```python
-from research_uet.core.reproducibility import hash_file
+from docs.core.reproducibility import hash_file
 
 # Verify data file
 expected_hash = "a1b2c3d4e5f67890..."
@@ -5560,7 +5560,7 @@ assert actual_hash == expected_hash, "Data corruption detected!"
 Generate audit trails for test runs:
 
 ```python
-from research_uet.core.reproducibility import generate_artifact, save_artifact
+from docs.core.reproducibility import generate_artifact, save_artifact
 
 results = {"rmse": 0.082, "r_squared": 0.97}
 artifact = generate_artifact(
@@ -6461,7 +6461,7 @@ graph LR
 
 ### 2.1 The "Fitting" Clarification
 *   **Zero Curve Fitting Law:** ผู้พัฒนาเคารพกฎนี้จริง โดยไม่มีการจูน Parameter ให้เข้ากับ *แต่ละกาแล็กซี* (Individual Fitting)
-*   **Calibration vs Fitting:** การใช้ **Alpha-Law** ($\gamma \approx 0.45 + \dots$) ใน [Engine_Galaxy_V3.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.1_Galaxy_Rotation_Problem/Code/01_Engine/Engine_Galaxy_V3.py) ซึ่งมาจาก `Research_Alpha_Learning` ถือเป็นการ **"Calibration"** (สอบเทียบ) เครื่องมือกับข้อมูลจริง เหมือนที่เราสอบเทียบค่าคงที่ในทฤษฎี MOND ให้ตรงกับธรรมชาติ
+*   **Calibration vs Fitting:** การใช้ **Alpha-Law** ($\gamma \approx 0.45 + \dots$) ใน [Engine_Galaxy_V3.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.1_Galaxy_Rotation_Problem/Code/01_Engine/Engine_Galaxy_V3.py) ซึ่งมาจาก `Research_Alpha_Learning` ถือเป็นการ **"Calibration"** (สอบเทียบ) เครื่องมือกับข้อมูลจริง เหมือนที่เราสอบเทียบค่าคงที่ในทฤษฎี MOND ให้ตรงกับธรรมชาติ
 *   **Honesty:** โค้ดระบุที่มาของตัวเลขชัดเจน และ `AUTHOR_REFLECTION.md` แสดงความซื่อสัตย์สูงมากโดยยอมรับ limitation ของตนเองและ AI
 
 ### 2.2 The "Missing Bridge" Explained
@@ -6915,7 +6915,7 @@ UET ไม่ได้พยายามจะเถียงว่าใคร�
 
 1. **YOU DO NOT HAVE ACCESS TO ALL DATA**
    - Archive folder: `(search Only) ทองข้อมูลดี/` = **3.96 GB** (68 files, 23 folders)
-   - Current project: `research_uet/` = **116 MB** (880 files, 531 folders)
+   - Current project: `docs/` = **116 MB** (880 files, 531 folders)
    - You cannot access external Git history
    - Your context window is limited
 
@@ -6946,7 +6946,7 @@ UET ไม่ได้พยายามจะเถียงว่าใคร�
 | Folder | Size | Files | Folders | Description |
 |:-------|-----:|------:|--------:|:------------|
 | `(search Only) ทองข้อมูลดี/` | **3.96 GB** | 68 | 23 | Archive: compressed ZIPs of old test runs |
-| `research_uet/` | **116 MB** | 880 | 531 | Current curated codebase |
+| `docs/` | **116 MB** | 880 | 531 | Current curated codebase |
 
 ### Script Statistics
 
@@ -7081,7 +7081,7 @@ UET ไม่ได้พยายามจะเถียงว่าใคร�
 ### How to Verify
 
 1. **ดูข้อมูลเก่า**: `(search Only) ทองข้อมูลดี/`
-2. **รัน tests**: `python research_uet/topics/run_all_tests.py`
+2. **รัน tests**: `python docs/topics/run_all_tests.py`
 3. **ท้าทาย**: เอา concept ไปให้ AI อื่นสร้างสมการ — ถ้าถูกก็ต้องได้ผลเหมือนกัน
 
 ---
@@ -7289,7 +7289,7 @@ $$\Omega[C,I] = \int \left[ V(C) + \frac{\kappa}{2}|\nabla C|^2 + \beta C I \rig
 ## 📁 File Structure
 
 ```
-research_uet/Doc/
+docs/Doc/
 ├── 📚 DOC_INDEX.md          ← You are here
 │
 ├── 📖 Learning
@@ -7333,139 +7333,139 @@ research_uet/Doc/
 **Kill Switch**: ENABLED (UET_KILL_ENGINE=TRUE)
 
 ## 🚨 Shadow Math Survivors (MUST FIX)
-- [ ] research_uet/topics\0.10_Fluid_Dynamics_Chaos\Code\02_Proof\Proof_Turbulence_Benchmarks.py
-- [ ] research_uet/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_FluidStatics_Buoyancy.py
-- [ ] research_uet/topics\0.1_Galaxy_Rotation_Problem\Code\03_Research\Research_Galaxy_Rotation.py
-- [ ] research_uet/topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_Seizure_Prediction.py
-- [ ] research_uet/topics\0.3_Cosmology_Hubble_Tension\Code\03_Research\Research_Hubble_Comparison.py
-- [ ] research_uet/topics\0.4_Superconductivity_Superfluids\Code\03_Research\Research_Quantum_Phenomena.py
-- [ ] research_uet/topics\0.5_Nuclear_Binding_Hadrons\Code\03_Research\Research_QCD_Running.py
-- [ ] research_uet/topics\0.5_Nuclear_Binding_Hadrons\Code\03_Research\Research_Strong_Force.py
-- [ ] research_uet/topics\0.6_Electroweak_Physics\Code\03_Research\Research_Beta_Minus.py
-- [ ] research_uet/topics\0.6_Electroweak_Physics\Code\03_Research\Research_W_Mass_Anomaly_Exp.py
-- [ ] research_uet/topics\0.9_Quantum_Nonlocality\Code\03_Research\Research_Bell_Test.py
+- [ ] docs/topics\0.10_Fluid_Dynamics_Chaos\Code\02_Proof\Proof_Turbulence_Benchmarks.py
+- [ ] docs/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_FluidStatics_Buoyancy.py
+- [ ] docs/topics\0.1_Galaxy_Rotation_Problem\Code\03_Research\Research_Galaxy_Rotation.py
+- [ ] docs/topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_Seizure_Prediction.py
+- [ ] docs/topics\0.3_Cosmology_Hubble_Tension\Code\03_Research\Research_Hubble_Comparison.py
+- [ ] docs/topics\0.4_Superconductivity_Superfluids\Code\03_Research\Research_Quantum_Phenomena.py
+- [ ] docs/topics\0.5_Nuclear_Binding_Hadrons\Code\03_Research\Research_QCD_Running.py
+- [ ] docs/topics\0.5_Nuclear_Binding_Hadrons\Code\03_Research\Research_Strong_Force.py
+- [ ] docs/topics\0.6_Electroweak_Physics\Code\03_Research\Research_Beta_Minus.py
+- [ ] docs/topics\0.6_Electroweak_Physics\Code\03_Research\Research_W_Mass_Anomaly_Exp.py
+- [ ] docs/topics\0.9_Quantum_Nonlocality\Code\03_Research\Research_Bell_Test.py
 
 ## ✅ Integrity Verified (Safe)
-- [x] research_uet/topics\0.10_Fluid_Dynamics_Chaos\Code\02_Proof\Proof_3D_Performance.py
-- [x] research_uet/topics\0.10_Fluid_Dynamics_Chaos\Code\02_Proof\Proof_Smoothness_3D.py
-- [x] research_uet/topics\0.10_Fluid_Dynamics_Chaos\Code\02_Proof\Proof_UltraScale_3D.py
-- [x] research_uet/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_3D_Comparison.py
-- [x] research_uet/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_3D_Turbulence_Limits.py
-- [x] research_uet/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_Brownian.py
-- [x] research_uet/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_Calibration_Sweep.py
-- [x] research_uet/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_Dashboard_Tool.py
-- [x] research_uet/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_Inertial_Fluid.py
-- [x] research_uet/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_Inertial_Runner.py
-- [x] research_uet/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_Legacy_Accuracy.py
-- [x] research_uet/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_Legacy_Comparison.py
-- [x] research_uet/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_Legacy_Runner.py
-- [x] research_uet/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_Legacy_Visualizer.py
-- [x] research_uet/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_Realtime_Fluid.py
-- [x] research_uet/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_TurbulenceStress_Test.py
-- [x] research_uet/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_VortexWake_Test.py
-- [x] research_uet/topics\0.11_Phase_Transitions\Code\02_Proof\Proof_Order_Parameter.py
-- [x] research_uet/topics\0.12_Vacuum_Energy_Casimir\Code\02_Proof\Proof_Casimir_Force.py
-- [x] research_uet/topics\0.12_Vacuum_Energy_Casimir\Code\03_Research\Research_Casimir.py
-- [x] research_uet/topics\0.12_Vacuum_Energy_Casimir\Code\03_Research\Research_Cosmological_Constant.py
-- [x] research_uet/topics\0.13_Thermodynamic_Bridge\Code\02_Proof\Proof_Entropy_Max.py
-- [x] research_uet/topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py
-- [x] research_uet/topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Real_Data_Validation.py
-- [x] research_uet/topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Thermodynamic_Bridge.py
-- [x] research_uet/topics\0.14_Complex_Systems\Code\02_Proof\Proof_Power_Law.py
-- [x] research_uet/topics\0.14_Complex_Systems\Code\03_Research\Research_Biology_HRV.py
-- [x] research_uet/topics\0.14_Complex_Systems\Code\03_Research\Research_Brain.py
-- [x] research_uet/topics\0.14_Complex_Systems\Code\03_Research\Research_Climate.py
-- [x] research_uet/topics\0.14_Complex_Systems\Code\03_Research\Research_Complex_Systems.py
-- [x] research_uet/topics\0.14_Complex_Systems\Code\03_Research\Research_Economic_Health.py
-- [x] research_uet/topics\0.14_Complex_Systems\Code\03_Research\Research_Economy.py
-- [x] research_uet/topics\0.14_Complex_Systems\Code\03_Research\Research_Global_Economy.py
-- [x] research_uet/topics\0.14_Complex_Systems\Code\03_Research\Research_Inequality.py
-- [x] research_uet/topics\0.14_Complex_Systems\Code\03_Research\Research_Ledgers.py
-- [x] research_uet/topics\0.14_Complex_Systems\Code\03_Research\Research_Social.py
-- [x] research_uet/topics\0.14_Complex_Systems\Code\03_Research\Research_Validation.py
-- [x] research_uet/topics\0.15_Cluster_Dynamics\Code\02_Proof\Proof_Virial_Mass.py
-- [x] research_uet/topics\0.15_Cluster_Dynamics\Code\03_Research\Research_BulletCluster_Offset.py
-- [x] research_uet/topics\0.15_Cluster_Dynamics\Code\03_Research\Research_Cluster_Formation.py
-- [x] research_uet/topics\0.15_Cluster_Dynamics\Code\03_Research\Research_Cluster_Virial.py
-- [x] research_uet/topics\0.15_Cluster_Dynamics\Code\03_Research\Research_Stability_Experiment.py
-- [x] research_uet/topics\0.16_Heavy_Nuclei\Code\02_Proof\Proof_Stability_Valley.py
-- [x] research_uet/topics\0.16_Heavy_Nuclei\Code\03_Research\Research_Heavy_Binding.py
-- [x] research_uet/topics\0.16_Heavy_Nuclei\Code\03_Research\Research_Heavy_Nuclei.py
-- [x] research_uet/topics\0.17_Mass_Generation\Code\02_Proof\Proof_Lepton_Mass.py
-- [x] research_uet/topics\0.17_Mass_Generation\Code\03_Research\Research_Mass_Mechanism.py
-- [x] research_uet/topics\0.18_Neutrino_Mixing\Code\02_Proof\Proof_PMNS_Matrix.py
-- [x] research_uet/topics\0.18_Neutrino_Mixing\Code\03_Research\Research_Oscillation_4D.py
-- [x] research_uet/topics\0.19_Gravity_GR\Code\02_Proof\Proof_Equivalence_Principle.py
-- [x] research_uet/topics\0.19_Gravity_GR\Code\03_Research\Research_G_Constant.py
-- [x] research_uet/topics\0.1_Galaxy_Rotation_Problem\Code\02_Proof\Proof_Unity_Density_Law.py
-- [x] research_uet/topics\0.1_Galaxy_Rotation_Problem\Code\03_Research\Research_Alpha_Learning.py
-- [x] research_uet/topics\0.1_Galaxy_Rotation_Problem\Code\03_Research\Research_Dwarf_Galaxies.py
-- [x] research_uet/topics\0.1_Galaxy_Rotation_Problem\Code\03_Research\Research_Residual_Analysis.py
-- [x] research_uet/topics\0.20_Atomic_Physics\Code\02_Proof\Proof_Hydrogen_Spectrum.py
-- [x] research_uet/topics\0.20_Atomic_Physics\Code\03_Research\Research_Atomic_ThreeBody.py
-- [x] research_uet/topics\0.20_Atomic_Physics\Code\03_Research\Research_Multi_Electron.py
-- [x] research_uet/topics\0.21_Yang_Mills_Mass_Gap\Code\02_Proof\Proof_Mass_Gap.py
-- [x] research_uet/topics\0.21_Yang_Mills_Mass_Gap\Code\03_Research\Research_Mass_Gap.py
-- [x] research_uet/topics\0.21_Yang_Mills_Mass_Gap\Code\03_Research\Research_Mass_Gap_Sweep.py
-- [x] research_uet/topics\0.22_Biophysics_Origin_of_Life\Code\02_Proof\Proof_Neural_Complexity.py
-- [x] research_uet/topics\0.22_Biophysics_Origin_of_Life\Code\02_Proof\Proof_Neural_Dynamics.py
-- [x] research_uet/topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_Biomarker_Identification.py
-- [x] research_uet/topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_Cancer_Cell_Chaos.py
-- [x] research_uet/topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_Clinical_Strategy_Comparison.py
-- [x] research_uet/topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_DNA_Entropy.py
-- [x] research_uet/topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_HighFidelity_Tissue_Grid.py
-- [x] research_uet/topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_Personalized_Threshold.py
-- [x] research_uet/topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_TCGA_Entropy_Map.py
-- [x] research_uet/topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_TCell_Immunity.py
-- [x] research_uet/topics\0.23_Unity_Scale_Link\Code\02_Proof\Proof_Kappa_Unity.py
-- [x] research_uet/topics\0.23_Unity_Scale_Link\Code\03_Research\Research_Cross_Domain.py
-- [x] research_uet/topics\0.24_Artificial_Intelligence\Code\02_Proof\Proof_AI_Efficiency.py
-- [x] research_uet/topics\0.24_Artificial_Intelligence\Code\02_Proof\Proof_Latent_Space.py
-- [x] research_uet/topics\0.24_Artificial_Intelligence\Code\03_Research\Research_AI_Detective.py
-- [x] research_uet/topics\0.24_Artificial_Intelligence\Code\03_Research\Research_AI_Scaling.py
-- [x] research_uet/topics\0.24_Artificial_Intelligence\Code\03_Research\Research_NanoGPT_UET.py
-- [x] research_uet/topics\0.24_Artificial_Intelligence\Code\03_Research\Research_SimpleLM_UET.py
-- [x] research_uet/topics\0.24_Artificial_Intelligence\Code\03_Research\Research_UET_Optimizer.py
-- [x] research_uet/topics\0.2_Black_Hole_Physics\Code\02_Proof\Proof_Singularity_Resolution.py
-- [x] research_uet/topics\0.2_Black_Hole_Physics\Code\03_Research\Research_CCBH_Analysis.py
-- [x] research_uet/topics\0.2_Black_Hole_Physics\Code\03_Research\Research_EHT_Validation.py
-- [x] research_uet/topics\0.2_Black_Hole_Physics\Code\03_Research\Research_GW_Validation.py
-- [x] research_uet/topics\0.2_Black_Hole_Physics\Code\03_Research\Research_Singularity_Sweep.py
-- [x] research_uet/topics\0.3_Cosmology_Hubble_Tension\Code\02_Proof\Proof_Hubble_Resolution.py
-- [x] research_uet/topics\0.3_Cosmology_Hubble_Tension\Code\03_Research\Research_CMB_Analysis.py
-- [x] research_uet/topics\0.3_Cosmology_Hubble_Tension\Code\03_Research\Research_Dark_Energy.py
-- [x] research_uet/topics\0.3_Cosmology_Hubble_Tension\Code\03_Research\Research_highz_galaxies.py
-- [x] research_uet/topics\0.4_Superconductivity_Superfluids\Code\03_Research\Research_Plasma.py
-- [x] research_uet/topics\0.4_Superconductivity_Superfluids\Code\03_Research\Research_Superconductivity.py
-- [x] research_uet/topics\0.4_Superconductivity_Superfluids\Code\03_Research\Research_Superfluids.py
-- [x] research_uet/topics\0.5_Nuclear_Binding_Hadrons\Code\02_Proof\Proof_Color_Confinement.py
-- [x] research_uet/topics\0.5_Nuclear_Binding_Hadrons\Code\03_Research\Research_Nuclear_Binding.py
-- [x] research_uet/topics\0.5_Nuclear_Binding_Hadrons\Code\03_Research\Research_Proton_Radius.py
-- [x] research_uet/topics\0.5_Nuclear_Binding_Hadrons\Code\03_Research\Research_Quark_Masses.py
-- [x] research_uet/topics\0.6_Electroweak_Physics\Code\02_Proof\Proof_WZ_Ratio.py
-- [x] research_uet/topics\0.6_Electroweak_Physics\Code\03_Research\Research_Alpha_Decay.py
-- [x] research_uet/topics\0.6_Electroweak_Physics\Code\03_Research\Research_Beta_Plus.py
-- [x] research_uet/topics\0.6_Electroweak_Physics\Code\03_Research\Research_Electroweak.py
-- [x] research_uet/topics\0.6_Electroweak_Physics\Code\03_Research\Research_Higgs_Mechanism.py
-- [x] research_uet/topics\0.6_Electroweak_Physics\Code\03_Research\Research_Neutron_Decay.py
-- [x] research_uet/topics\0.6_Electroweak_Physics\Code\03_Research\Research_Sin2_Theta_W_Running.py
-- [x] research_uet/topics\0.6_Electroweak_Physics\Code\03_Research\Research_W_Mass_Anomaly.py
-- [x] research_uet/topics\0.7_Neutrino_Physics\Code\02_Proof\Proof_PMNS_Angles.py
-- [x] research_uet/topics\0.7_Neutrino_Physics\Code\03_Research\Research_Ft_Values.py
-- [x] research_uet/topics\0.7_Neutrino_Physics\Code\03_Research\Research_Neutrino.py
-- [x] research_uet/topics\0.7_Neutrino_Physics\Code\03_Research\Research_Neutrino_Extended.py
-- [x] research_uet/topics\0.7_Neutrino_Physics\Code\03_Research\Research_Neutrino_Vis.py
-- [x] research_uet/topics\0.7_Neutrino_Physics\Code\03_Research\Research_PMNS_Mixing.py
-- [x] research_uet/topics\0.7_Neutrino_Physics\Code\03_Research\Research_Thermo_Galaxy.py
-- [x] research_uet/topics\0.8_Muon_g2_Anomaly\Code\02_Proof\Proof_Muon_Anomaly.py
-- [x] research_uet/topics\0.8_Muon_g2_Anomaly\Code\03_Research\Research_Muon_Anomaly.py
-- [x] research_uet/topics\0.9_Quantum_Nonlocality\Code\02_Proof\Proof_Bell_Violation.py
-- [x] research_uet/topics\0.9_Quantum_Nonlocality\Code\03_Research\Research_Bell_Inequality.py
-- [x] research_uet/topics\0.9_Quantum_Nonlocality\Code\03_Research\Research_DNA_Tunneling_Decay.py
-- [x] research_uet/topics\0.9_Quantum_Nonlocality\Code\03_Research\Research_Double_Slit.py
-- [x] research_uet/topics\0.9_Quantum_Nonlocality\Code\03_Research\Research_Quantum_Mechanics.py
-- [x] research_uet/topics\0.9_Quantum_Nonlocality\Code\03_Research\Research_Quantum_Tunneling.py
-- [x] research_uet/topics\0.9_Quantum_Nonlocality\Code\03_Research\Research_Qubit_Mechanics.py
+- [x] docs/topics\0.10_Fluid_Dynamics_Chaos\Code\02_Proof\Proof_3D_Performance.py
+- [x] docs/topics\0.10_Fluid_Dynamics_Chaos\Code\02_Proof\Proof_Smoothness_3D.py
+- [x] docs/topics\0.10_Fluid_Dynamics_Chaos\Code\02_Proof\Proof_UltraScale_3D.py
+- [x] docs/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_3D_Comparison.py
+- [x] docs/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_3D_Turbulence_Limits.py
+- [x] docs/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_Brownian.py
+- [x] docs/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_Calibration_Sweep.py
+- [x] docs/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_Dashboard_Tool.py
+- [x] docs/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_Inertial_Fluid.py
+- [x] docs/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_Inertial_Runner.py
+- [x] docs/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_Legacy_Accuracy.py
+- [x] docs/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_Legacy_Comparison.py
+- [x] docs/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_Legacy_Runner.py
+- [x] docs/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_Legacy_Visualizer.py
+- [x] docs/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_Realtime_Fluid.py
+- [x] docs/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_TurbulenceStress_Test.py
+- [x] docs/topics\0.10_Fluid_Dynamics_Chaos\Code\03_Research\Research_VortexWake_Test.py
+- [x] docs/topics\0.11_Phase_Transitions\Code\02_Proof\Proof_Order_Parameter.py
+- [x] docs/topics\0.12_Vacuum_Energy_Casimir\Code\02_Proof\Proof_Casimir_Force.py
+- [x] docs/topics\0.12_Vacuum_Energy_Casimir\Code\03_Research\Research_Casimir.py
+- [x] docs/topics\0.12_Vacuum_Energy_Casimir\Code\03_Research\Research_Cosmological_Constant.py
+- [x] docs/topics\0.13_Thermodynamic_Bridge\Code\02_Proof\Proof_Entropy_Max.py
+- [x] docs/topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py
+- [x] docs/topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Real_Data_Validation.py
+- [x] docs/topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Thermodynamic_Bridge.py
+- [x] docs/topics\0.14_Complex_Systems\Code\02_Proof\Proof_Power_Law.py
+- [x] docs/topics\0.14_Complex_Systems\Code\03_Research\Research_Biology_HRV.py
+- [x] docs/topics\0.14_Complex_Systems\Code\03_Research\Research_Brain.py
+- [x] docs/topics\0.14_Complex_Systems\Code\03_Research\Research_Climate.py
+- [x] docs/topics\0.14_Complex_Systems\Code\03_Research\Research_Complex_Systems.py
+- [x] docs/topics\0.14_Complex_Systems\Code\03_Research\Research_Economic_Health.py
+- [x] docs/topics\0.14_Complex_Systems\Code\03_Research\Research_Economy.py
+- [x] docs/topics\0.14_Complex_Systems\Code\03_Research\Research_Global_Economy.py
+- [x] docs/topics\0.14_Complex_Systems\Code\03_Research\Research_Inequality.py
+- [x] docs/topics\0.14_Complex_Systems\Code\03_Research\Research_Ledgers.py
+- [x] docs/topics\0.14_Complex_Systems\Code\03_Research\Research_Social.py
+- [x] docs/topics\0.14_Complex_Systems\Code\03_Research\Research_Validation.py
+- [x] docs/topics\0.15_Cluster_Dynamics\Code\02_Proof\Proof_Virial_Mass.py
+- [x] docs/topics\0.15_Cluster_Dynamics\Code\03_Research\Research_BulletCluster_Offset.py
+- [x] docs/topics\0.15_Cluster_Dynamics\Code\03_Research\Research_Cluster_Formation.py
+- [x] docs/topics\0.15_Cluster_Dynamics\Code\03_Research\Research_Cluster_Virial.py
+- [x] docs/topics\0.15_Cluster_Dynamics\Code\03_Research\Research_Stability_Experiment.py
+- [x] docs/topics\0.16_Heavy_Nuclei\Code\02_Proof\Proof_Stability_Valley.py
+- [x] docs/topics\0.16_Heavy_Nuclei\Code\03_Research\Research_Heavy_Binding.py
+- [x] docs/topics\0.16_Heavy_Nuclei\Code\03_Research\Research_Heavy_Nuclei.py
+- [x] docs/topics\0.17_Mass_Generation\Code\02_Proof\Proof_Lepton_Mass.py
+- [x] docs/topics\0.17_Mass_Generation\Code\03_Research\Research_Mass_Mechanism.py
+- [x] docs/topics\0.18_Neutrino_Mixing\Code\02_Proof\Proof_PMNS_Matrix.py
+- [x] docs/topics\0.18_Neutrino_Mixing\Code\03_Research\Research_Oscillation_4D.py
+- [x] docs/topics\0.19_Gravity_GR\Code\02_Proof\Proof_Equivalence_Principle.py
+- [x] docs/topics\0.19_Gravity_GR\Code\03_Research\Research_G_Constant.py
+- [x] docs/topics\0.1_Galaxy_Rotation_Problem\Code\02_Proof\Proof_Unity_Density_Law.py
+- [x] docs/topics\0.1_Galaxy_Rotation_Problem\Code\03_Research\Research_Alpha_Learning.py
+- [x] docs/topics\0.1_Galaxy_Rotation_Problem\Code\03_Research\Research_Dwarf_Galaxies.py
+- [x] docs/topics\0.1_Galaxy_Rotation_Problem\Code\03_Research\Research_Residual_Analysis.py
+- [x] docs/topics\0.20_Atomic_Physics\Code\02_Proof\Proof_Hydrogen_Spectrum.py
+- [x] docs/topics\0.20_Atomic_Physics\Code\03_Research\Research_Atomic_ThreeBody.py
+- [x] docs/topics\0.20_Atomic_Physics\Code\03_Research\Research_Multi_Electron.py
+- [x] docs/topics\0.21_Yang_Mills_Mass_Gap\Code\02_Proof\Proof_Mass_Gap.py
+- [x] docs/topics\0.21_Yang_Mills_Mass_Gap\Code\03_Research\Research_Mass_Gap.py
+- [x] docs/topics\0.21_Yang_Mills_Mass_Gap\Code\03_Research\Research_Mass_Gap_Sweep.py
+- [x] docs/topics\0.22_Biophysics_Origin_of_Life\Code\02_Proof\Proof_Neural_Complexity.py
+- [x] docs/topics\0.22_Biophysics_Origin_of_Life\Code\02_Proof\Proof_Neural_Dynamics.py
+- [x] docs/topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_Biomarker_Identification.py
+- [x] docs/topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_Cancer_Cell_Chaos.py
+- [x] docs/topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_Clinical_Strategy_Comparison.py
+- [x] docs/topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_DNA_Entropy.py
+- [x] docs/topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_HighFidelity_Tissue_Grid.py
+- [x] docs/topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_Personalized_Threshold.py
+- [x] docs/topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_TCGA_Entropy_Map.py
+- [x] docs/topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_TCell_Immunity.py
+- [x] docs/topics\0.23_Unity_Scale_Link\Code\02_Proof\Proof_Kappa_Unity.py
+- [x] docs/topics\0.23_Unity_Scale_Link\Code\03_Research\Research_Cross_Domain.py
+- [x] docs/topics\0.24_Artificial_Intelligence\Code\02_Proof\Proof_AI_Efficiency.py
+- [x] docs/topics\0.24_Artificial_Intelligence\Code\02_Proof\Proof_Latent_Space.py
+- [x] docs/topics\0.24_Artificial_Intelligence\Code\03_Research\Research_AI_Detective.py
+- [x] docs/topics\0.24_Artificial_Intelligence\Code\03_Research\Research_AI_Scaling.py
+- [x] docs/topics\0.24_Artificial_Intelligence\Code\03_Research\Research_NanoGPT_UET.py
+- [x] docs/topics\0.24_Artificial_Intelligence\Code\03_Research\Research_SimpleLM_UET.py
+- [x] docs/topics\0.24_Artificial_Intelligence\Code\03_Research\Research_UET_Optimizer.py
+- [x] docs/topics\0.2_Black_Hole_Physics\Code\02_Proof\Proof_Singularity_Resolution.py
+- [x] docs/topics\0.2_Black_Hole_Physics\Code\03_Research\Research_CCBH_Analysis.py
+- [x] docs/topics\0.2_Black_Hole_Physics\Code\03_Research\Research_EHT_Validation.py
+- [x] docs/topics\0.2_Black_Hole_Physics\Code\03_Research\Research_GW_Validation.py
+- [x] docs/topics\0.2_Black_Hole_Physics\Code\03_Research\Research_Singularity_Sweep.py
+- [x] docs/topics\0.3_Cosmology_Hubble_Tension\Code\02_Proof\Proof_Hubble_Resolution.py
+- [x] docs/topics\0.3_Cosmology_Hubble_Tension\Code\03_Research\Research_CMB_Analysis.py
+- [x] docs/topics\0.3_Cosmology_Hubble_Tension\Code\03_Research\Research_Dark_Energy.py
+- [x] docs/topics\0.3_Cosmology_Hubble_Tension\Code\03_Research\Research_highz_galaxies.py
+- [x] docs/topics\0.4_Superconductivity_Superfluids\Code\03_Research\Research_Plasma.py
+- [x] docs/topics\0.4_Superconductivity_Superfluids\Code\03_Research\Research_Superconductivity.py
+- [x] docs/topics\0.4_Superconductivity_Superfluids\Code\03_Research\Research_Superfluids.py
+- [x] docs/topics\0.5_Nuclear_Binding_Hadrons\Code\02_Proof\Proof_Color_Confinement.py
+- [x] docs/topics\0.5_Nuclear_Binding_Hadrons\Code\03_Research\Research_Nuclear_Binding.py
+- [x] docs/topics\0.5_Nuclear_Binding_Hadrons\Code\03_Research\Research_Proton_Radius.py
+- [x] docs/topics\0.5_Nuclear_Binding_Hadrons\Code\03_Research\Research_Quark_Masses.py
+- [x] docs/topics\0.6_Electroweak_Physics\Code\02_Proof\Proof_WZ_Ratio.py
+- [x] docs/topics\0.6_Electroweak_Physics\Code\03_Research\Research_Alpha_Decay.py
+- [x] docs/topics\0.6_Electroweak_Physics\Code\03_Research\Research_Beta_Plus.py
+- [x] docs/topics\0.6_Electroweak_Physics\Code\03_Research\Research_Electroweak.py
+- [x] docs/topics\0.6_Electroweak_Physics\Code\03_Research\Research_Higgs_Mechanism.py
+- [x] docs/topics\0.6_Electroweak_Physics\Code\03_Research\Research_Neutron_Decay.py
+- [x] docs/topics\0.6_Electroweak_Physics\Code\03_Research\Research_Sin2_Theta_W_Running.py
+- [x] docs/topics\0.6_Electroweak_Physics\Code\03_Research\Research_W_Mass_Anomaly.py
+- [x] docs/topics\0.7_Neutrino_Physics\Code\02_Proof\Proof_PMNS_Angles.py
+- [x] docs/topics\0.7_Neutrino_Physics\Code\03_Research\Research_Ft_Values.py
+- [x] docs/topics\0.7_Neutrino_Physics\Code\03_Research\Research_Neutrino.py
+- [x] docs/topics\0.7_Neutrino_Physics\Code\03_Research\Research_Neutrino_Extended.py
+- [x] docs/topics\0.7_Neutrino_Physics\Code\03_Research\Research_Neutrino_Vis.py
+- [x] docs/topics\0.7_Neutrino_Physics\Code\03_Research\Research_PMNS_Mixing.py
+- [x] docs/topics\0.7_Neutrino_Physics\Code\03_Research\Research_Thermo_Galaxy.py
+- [x] docs/topics\0.8_Muon_g2_Anomaly\Code\02_Proof\Proof_Muon_Anomaly.py
+- [x] docs/topics\0.8_Muon_g2_Anomaly\Code\03_Research\Research_Muon_Anomaly.py
+- [x] docs/topics\0.9_Quantum_Nonlocality\Code\02_Proof\Proof_Bell_Violation.py
+- [x] docs/topics\0.9_Quantum_Nonlocality\Code\03_Research\Research_Bell_Inequality.py
+- [x] docs/topics\0.9_Quantum_Nonlocality\Code\03_Research\Research_DNA_Tunneling_Decay.py
+- [x] docs/topics\0.9_Quantum_Nonlocality\Code\03_Research\Research_Double_Slit.py
+- [x] docs/topics\0.9_Quantum_Nonlocality\Code\03_Research\Research_Quantum_Mechanics.py
+- [x] docs/topics\0.9_Quantum_Nonlocality\Code\03_Research\Research_Quantum_Tunneling.py
+- [x] docs/topics\0.9_Quantum_Nonlocality\Code\03_Research\Research_Qubit_Mechanics.py
 
 
 ---
@@ -7501,7 +7501,7 @@ All validation tests in the `lab/` directory were run against high-fidelity exte
 | | **NIST Standards** | Josephson Junction frequencies | Validated quantum tunneling equations standard. |
 
 ### 2.2 The "Harness" Architecture
-The `research_uet` harness was built to be reproducible:
+The `docs` harness was built to be reproducible:
 1.  **Ingest:** Load raw CSV/JSON data from `data/references/`.
 2.  **Process:** Apply UET equations in Python (`lab/` scripts).
 3.  **Validate:** Compare UET predictions vs. Experimental Data within a tolerance threshold.
@@ -8351,7 +8351,7 @@ When the system is 100% finished (which we are close to), your workflow is simpl
 1.  **You write/edit a script:** Focus ONLY on physics (e.g., `dOmega = ...`).
 2.  **You run the script:** `python Research_Quantum.py`
 3.  **The System takes over:**
-    *   **Auto-Locate:** Finds `research_uet` root automatically.
+    *   **Auto-Locate:** Finds `docs` root automatically.
     *   **Auto-Path:** Creates `topics/0.9_Quantum.../Result/01_Engine/[Timestamp]_RunName/`.
     *   **Auto-Log:** Saves `config.json`, `timeseries.csv`, and `summary.json`.
     *   **Validation:** Checks for crashes/instability automatically.
@@ -8360,7 +8360,7 @@ When the system is 100% finished (which we are close to), your workflow is simpl
 This is what the repository *should* look like (and now does for major topics):
 
 ```
-research_uet/
+docs/
 ├── core/                   # The Brain (Solver, Logger, Parameters)
 └── topics/
     ├── 0.9_Quantum_Nonlocality/

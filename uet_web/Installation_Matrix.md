@@ -32,7 +32,7 @@ pip install .
 ```
 
 **What you get:**
-- Access to the `research_uet` namespace.
+- Access to the `docs` namespace.
 - Core Solvers: `uet.core`
 - Hero APIs: `uet.fluid` (2D/3D), `uet.math` (Riemann), `uet.complexity`
 
@@ -69,11 +69,11 @@ pip install seaborn
 **Execution Example:**
 To verify the Galaxy Rotation problem without dark matter:
 ```bash
-python research_uet/topics/0.1_Galaxy_Rotation_Problem/Code/03_Research/Research_Galaxy_Rotation.py
+python docs/topics/0.1_Galaxy_Rotation_Problem/Code/03_Research/Research_Galaxy_Rotation.py
 ```
 
 **Notes:**
-- Topic data is already included in `research_uet/topics/[Topic_ID]/Data/`.
+- Topic data is already included in `docs/topics/[Topic_ID]/Data/`.
 - Generated plots will appear in the `Result/` folder of that topic.
 
 ---
@@ -95,7 +95,7 @@ cd UnityEquilibriumTheory
 pip install -e .
 
 # Run the master test runner
-python research_uet/topics/run_all_tests.py
+python docs/topics/run_all_tests.py
 ```
 
 **⚠️ Important Caveats for Full Suite:**

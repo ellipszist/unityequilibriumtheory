@@ -3,7 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 
 // Point to the new Docs folder outside the web project
-const docsDirectory = path.join(process.cwd(), '../research_uet/Docs');
+const docsDirectory = path.join(process.cwd(), '../docs/Docs');
 
 export type DocMetadata = {
   title: string;

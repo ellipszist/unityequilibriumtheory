@@ -3,7 +3,7 @@
 สำหรับใช้กับ UET Rust Bitcoin Miner
 
 ```
-wsl -d Ubuntu -- bash -c "cd /mnt/c/Users/santa/Desktop/lad/Lab_uet_harness_v0.9.0/research_uet/topics/0.18_Mathnicry/rust_miner && ./target/release/uet_miner"
+wsl -d Ubuntu -- bash -c "cd /mnt/c/Users/santa/Desktop/lad/Lab_uet_harness_v0.9.0/docs/topics/0.18_Mathnicry/rust_miner && ./target/release/uet_miner"
 ```
 
 ---

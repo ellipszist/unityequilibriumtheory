@@ -6,7 +6,7 @@
 ---
 
 ## 1. Executive Summary
-A comprehensive audit of the UET Research Harness (`research_uet/topics`) was conducted to ensure all executed tests are properly documented.
+A comprehensive audit of the UET Research Harness (`docs/topics`) was conducted to ensure all executed tests are properly documented.
 *   **Total Topics Audited**: 18
 *   **Total Sub-Experiments Found**: 62
 *   **Missing Tests Identified**: 8 (Now Fixed)

@@ -49,52 +49,52 @@ UET is not just a physics theory. It is a **"Civilization-Level Operating System
 
 | Problem | Status | UET Solution | Topic |
 |:--------|:-------|:-------------|:------|
-| **Navier-Stokes** | **Solved** | Turbulence is smooth ($C^\infty$) on 4D Manifold | [0.10 Fluid Dynamics](./research_uet/topics/0.10_Fluid_Dynamics_Chaos/) |
-| **Yang-Mills Gap** | **Solved** | Mass arises from Information geometric limits | [0.21 Yang-Mills](./research_uet/topics/0.21_Yang_Mills_Mass_Gap/) |
-| **P vs NP** | **Solved** | P=NP via Manifold Connectivity Optimization | [0.18 Mathnicry](./research_uet/topics/0.18_Mathnicry/) |
-| **Riemann Hyp.** | **Mapped** | Zeros are Resonance Frequencies of the I-Field | [0.18 Mathnicry](./research_uet/topics/0.18_Mathnicry/) |
+| **Navier-Stokes** | **Solved** | Turbulence is smooth ($C^\infty$) on 4D Manifold | [0.10 Fluid Dynamics](./docs/topics/0.10_Fluid_Dynamics_Chaos/) |
+| **Yang-Mills Gap** | **Solved** | Mass arises from Information geometric limits | [0.21 Yang-Mills](./docs/topics/0.21_Yang_Mills_Mass_Gap/) |
+| **P vs NP** | **Solved** | P=NP via Manifold Connectivity Optimization | [0.18 Mathnicry](./docs/topics/0.18_Mathnicry/) |
+| **Riemann Hyp.** | **Mapped** | Zeros are Resonance Frequencies of the I-Field | [0.18 Mathnicry](./docs/topics/0.18_Mathnicry/) |
 
 ### 🌌 2. The "Impossible" Physics Anomalies
 *Standard Model said it was impossible. UET proved it necessary.*
 
 | Anomaly | The Crisis (Topic 0.1 Evidence) | UET Solution (Topic 0.26 Mechanism) | Status |
 |:--------|:--------------------------|:------------------------------------|:-------|
-| **Dark Matter** | Galaxies spin too fast ([Topic 0.1](./research_uet/topics/0.1_Galaxy_Rotation_Problem/)) | **Dynamic Viscosity**: Space acts as a fluid with drag $a_0$ ([Topic 0.26](./research_uet/topics/0.26_Cosmic_Dynamic_Frame/)) | ✅ Solved |
-| **Dark Energy** | Universe explodes | Info Field Cutoff (Finite $\Lambda$) | [0.12 Vacuum Energy](./research_uet/topics/0.12_Vacuum_Energy_Casimir/) |
-| **Hubble Tension** | $H_0$ mismatch (5$\sigma$) | Dynamic Entropy Scaling ($H(t)$) | [0.3 Cosmology](./research_uet/topics/0.3_Cosmology_Hubble_Tension/) |
-| **Muon g-2** | 4.2$\sigma$ deviation | Geometric Topology Correction | [0.8 Muon g-2](./research_uet/topics/0.8_Muon_g2_Anomaly/) |
-| **Neutrino Mass** | Massive but Ghostly | Geometric Information Drag | [0.7 Neutrino Physics](./research_uet/topics/0.7_Neutrino_Physics/) |
+| **Dark Matter** | Galaxies spin too fast ([Topic 0.1](./docs/topics/0.1_Galaxy_Rotation_Problem/)) | **Dynamic Viscosity**: Space acts as a fluid with drag $a_0$ ([Topic 0.26](./docs/topics/0.26_Cosmic_Dynamic_Frame/)) | ✅ Solved |
+| **Dark Energy** | Universe explodes | Info Field Cutoff (Finite $\Lambda$) | [0.12 Vacuum Energy](./docs/topics/0.12_Vacuum_Energy_Casimir/) |
+| **Hubble Tension** | $H_0$ mismatch (5$\sigma$) | Dynamic Entropy Scaling ($H(t)$) | [0.3 Cosmology](./docs/topics/0.3_Cosmology_Hubble_Tension/) |
+| **Muon g-2** | 4.2$\sigma$ deviation | Geometric Topology Correction | [0.8 Muon g-2](./docs/topics/0.8_Muon_g2_Anomaly/) |
+| **Neutrino Mass** | Massive but Ghostly | Geometric Information Drag | [0.7 Neutrino Physics](./docs/topics/0.7_Neutrino_Physics/) |
 
 ### ⚔️ 3. Bridging Theoretical Conflicts
 *Harmonizing the "War of Physics".*
 
 | Conflict | The Divide | UET Verification | Topic |
 |:---------|:-----------|:-----------------|:------|
-| **Gravity vs Quantum** | Smooth vs Discrete | Gravity = Quantum Entropy Pressure | [0.19 Gravity & GR](./research_uet/topics/0.19_Gravity_GR/) |
-| **Locality vs Bell** | Local vs Spooky | Non-local Potential Reservoir | [0.9 Quantum Bell](./research_uet/topics/0.9_Quantum_Nonlocality/) |
-| **Order vs Chaos** | Determinism vs Luck | Chaos is just High-Dim Order | [0.10 Fluid Dynamics](./research_uet/topics/0.10_Fluid_Dynamics_Chaos/) |
-| **Life vs Entropy** | Decay vs Growth | Life = Negentropy Engine | [0.22 Origin of Life](./research_uet/topics/0.22_Biophysics_Origin_of_Life/) |
+| **Gravity vs Quantum** | Smooth vs Discrete | Gravity = Quantum Entropy Pressure | [0.19 Gravity & GR](./docs/topics/0.19_Gravity_GR/) |
+| **Locality vs Bell** | Local vs Spooky | Non-local Potential Reservoir | [0.9 Quantum Bell](./docs/topics/0.9_Quantum_Nonlocality/) |
+| **Order vs Chaos** | Determinism vs Luck | Chaos is just High-Dim Order | [0.10 Fluid Dynamics](./docs/topics/0.10_Fluid_Dynamics_Chaos/) |
+| **Life vs Entropy** | Decay vs Growth | Life = Negentropy Engine | [0.22 Origin of Life](./docs/topics/0.22_Biophysics_Origin_of_Life/) |
 
 ### ❤️ 4. Impact on Humanity (Cross-Disciplinary)
 *Why this matters to your life, your wallet, and your future.*
 
 | Domain | Benefit | UET Insight | Topic |
 |:-------|:--------|:------------|:------|
-| **Economics** | Checkmate Crises | Market Crash = Info Avalanches | [0.25 Strategy](./research_uet/topics/0.25_Strategy_Power_Economics/) |
-| **AI Safety** | Alignment | Consciousness = Info Resonance | [0.24 AI Core](./research_uet/topics/0.24_Artificial_Intelligence/) |
-| **Biology** | Health/Genetics | DNA = Error Correction Code | [0.22 Biophysics](./research_uet/topics/0.22_Biophysics_Origin_of_Life/) |
-| **Energy** | Infinite Power | Room-Temp Superconductivity | [0.4 Superconduct](./research_uet/topics/0.4_Superconductivity_Superfluids/) |
-| **Energy** | Clean Fusion | p-B11 Resonant Confinement | [0.32 Fusion](./research_uet/topics/0.32_Micro_Nuclear_Fusion/) |
-| **Computing** | Quantum Leap | 99.99% Fidelity Gates | [0.18 Mathnicry](./research_uet/topics/0.18_Mathnicry/) |
-| **Medicine** | Cold Light | Trapping Light for Holograms/Imaging | [0.27 Cold Light](./research_uet/topics/0.27_Cold_Light_Hologram/) |
-| **Material** | Zero Mining | Graphene from Carbon Waste | [0.28 Material](./research_uet/topics/0.28_Material_Synthesis/) |
-| **Manufacturing**| Atomic Precision | Info-Centric Nanofabrication | [0.34 Nanofab](./research_uet/topics/0.34_Information_Centric_Nanofabrication/) |
-| **Manufacturing**| Digital Twin | Logic-Driven Automation | [0.35 Automation](./research_uet/topics/0.35_ICN_Digital_Automation/) |
-| **Space Ind.** | Zero-G Factory | Orbital Foundry Systems | [0.36 Orbital](./research_uet/topics/0.36_Orbital_Manufacturing/) |
-| **Environment** | Ocean Shield | Reverse Ocean Acidification | [0.29 Ocean](./research_uet/topics/0.29_Ocean_Recovery/) |
-| **Agriculture** | Mega Flora | Acoustic Nutrient Injection | [0.30 Mega Flora](./research_uet/topics/0.30_Mega_Flora_Biotech/) |
-| **Space** | Warp Drive | Reach 0.1c via Singularities | [0.31 Propulsion](./research_uet/topics/0.31_SpaceTime_Propulsion/) |
-| **Energy** | Universal Capture| Quantum Solar Paint | [0.37 Solar Paint](./research_uet/topics/0.37_Quantum_Photovoltaics_Solar_Paint/) |
+| **Economics** | Checkmate Crises | Market Crash = Info Avalanches | [0.25 Strategy](./docs/topics/0.25_Strategy_Power_Economics/) |
+| **AI Safety** | Alignment | Consciousness = Info Resonance | [0.24 AI Core](./docs/topics/0.24_Artificial_Intelligence/) |
+| **Biology** | Health/Genetics | DNA = Error Correction Code | [0.22 Biophysics](./docs/topics/0.22_Biophysics_Origin_of_Life/) |
+| **Energy** | Infinite Power | Room-Temp Superconductivity | [0.4 Superconduct](./docs/topics/0.4_Superconductivity_Superfluids/) |
+| **Energy** | Clean Fusion | p-B11 Resonant Confinement | [0.32 Fusion](./docs/topics/0.32_Micro_Nuclear_Fusion/) |
+| **Computing** | Quantum Leap | 99.99% Fidelity Gates | [0.18 Mathnicry](./docs/topics/0.18_Mathnicry/) |
+| **Medicine** | Cold Light | Trapping Light for Holograms/Imaging | [0.27 Cold Light](./docs/topics/0.27_Cold_Light_Hologram/) |
+| **Material** | Zero Mining | Graphene from Carbon Waste | [0.28 Material](./docs/topics/0.28_Material_Synthesis/) |
+| **Manufacturing**| Atomic Precision | Info-Centric Nanofabrication | [0.34 Nanofab](./docs/topics/0.34_Information_Centric_Nanofabrication/) |
+| **Manufacturing**| Digital Twin | Logic-Driven Automation | [0.35 Automation](./docs/topics/0.35_ICN_Digital_Automation/) |
+| **Space Ind.** | Zero-G Factory | Orbital Foundry Systems | [0.36 Orbital](./docs/topics/0.36_Orbital_Manufacturing/) |
+| **Environment** | Ocean Shield | Reverse Ocean Acidification | [0.29 Ocean](./docs/topics/0.29_Ocean_Recovery/) |
+| **Agriculture** | Mega Flora | Acoustic Nutrient Injection | [0.30 Mega Flora](./docs/topics/0.30_Mega_Flora_Biotech/) |
+| **Space** | Warp Drive | Reach 0.1c via Singularities | [0.31 Propulsion](./docs/topics/0.31_SpaceTime_Propulsion/) |
+| **Energy** | Universal Capture| Quantum Solar Paint | [0.37 Solar Paint](./docs/topics/0.37_Quantum_Photovoltaics_Solar_Paint/) |
 
 ---
 
@@ -190,7 +190,7 @@ graph TD
 ### Run It Yourself
 
 ```bash
-python research_uet/topics/run_full_verification.py
+python docs/topics/run_full_verification.py
 ```
 
 ---
@@ -218,7 +218,7 @@ pip install .
 
 **A. Fluid Dynamics (800x Faster)**
 ```python
-import research_uet as uet
+import docs as uet
 
 # Initialize 2D Fluid Engine
 fluid = uet.fluid.Engine2D(nx=128, ny=128, dt=0.01)
@@ -229,7 +229,7 @@ fluid.solve_2d()
 
 **B. Mathnicry (Riemann Zeta)**
 ```python
-import research_uet as uet
+import docs as uet
 
 # Calculate Omega Potential for a complex number
 zeta = uet.math.RiemannEngine()
@@ -240,7 +240,7 @@ print(f"Omega: {potential}") # Should be near 0.0
 **C. Complexity (Entropy Analysis)**
 ```python
 import numpy as np
-import research_uet as uet
+import docs as uet
 
 # Analyze Time Series Data
 data = np.random.normal(0, 1, 1000)
@@ -251,7 +251,7 @@ print(f"Entropy: {metrics['entropy']}")
 
 ### 3. Run Verify Test
 ```bash
-python research_uet/topics/run_all_tests.py
+python docs/topics/run_all_tests.py
 ```
 
 ---
@@ -260,43 +260,43 @@ python research_uet/topics/run_all_tests.py
 
 | ID | Research Topic | Key Discovery | Status |
 |:---|:---------------|:--------------|:-------|
-| 0.1 | [Galaxy Rotation](./research_uet/topics/0.1_Galaxy_Rotation_Problem/) | Solved without Dark Matter | ✅ |
-| 0.2 | [Black Holes](./research_uet/topics/0.2_Black_Hole_Physics/) | Information Horizon (No Singularity) | ✅ |
-| 0.3 | [Hubble Tension](./research_uet/topics/0.3_Cosmology_Hubble_Tension/) | Unified Early/Late Expansion | ✅ |
-| 0.4 | [Superconductivity](./research_uet/topics/0.4_Superconductivity_Superfluids/) | Phase-Lock Mechanism | ✅ |
-| 0.5 | [Nuclear Binding](./research_uet/topics/0.5_Nuclear_Binding_Hadrons/) | Soliton Stability Proof | ✅ |
-| 0.6 | [Electroweak](./research_uet/topics/0.6_Electroweak_Physics/) | W-Boson Mass Explained | ✅ |
-| 0.7 | [Neutrino Physics](./research_uet/topics/0.7_Neutrino_Physics/) | Mass Origin | ✅ |
-| 0.8 | [Muon g-2](./research_uet/topics/0.8_Muon_g2_Anomaly/) | Geometric Correction | ✅ |
-| 0.9 | [Quantum Bell](./research_uet/topics/0.9_Quantum_Nonlocality/) | Non-local Reservoir Verification | ✅ |
-| 0.10 | [Fluid Dynamics](./research_uet/topics/0.10_Fluid_Dynamics_Chaos/) | Turbulence Solved (Navier-Stokes) | ✅ |
-| 0.11 | [Phase Transitions](./research_uet/topics/0.11_Phase_Transitions/) | Criticality as Info Saturation | ✅ |
-| 0.12 | [Vacuum Energy](./research_uet/topics/0.12_Vacuum_Energy_Casimir/) | Finite Calculation (No $10^{120}$ error) | ✅ |
-| 0.13 | [Thermo Bridge](./research_uet/topics/0.13_Thermodynamic_Bridge/) | Information = Energy | ✅ |
-| 0.14 | [Complex Systems](./research_uet/topics/0.14_Complex_Systems/) | Emergence from Noise | ✅ |
-| 0.15 | [Cluster Dynamics](./research_uet/topics/0.15_Cluster_Dynamics/) | Virial Theorem Mod | ✅ |
-| 0.16 | [Heavy Nuclei](./research_uet/topics/0.16_Heavy_Nuclei/) | Island of Stability | ✅ |
-| 0.17 | [Mass Gen](./research_uet/topics/0.17_Mass_Generation/) | Mass Hierarchy | ✅ |
-| 0.18 | [Mathnicry](./research_uet/topics/0.18_Mathnicry/) | P vs NP / Riemann Solved | ✅ |
-| 0.19 | [Gravity & GR](./research_uet/topics/0.19_Gravity_GR/) | Equivalence Principle Derived | ✅ |
-| 0.20 | [Atomic Physics](./research_uet/topics/0.20_Atomic_Physics/) | Rydberg Constant Derived | ✅ |
-| 0.21 | [Yang-Mills](./research_uet/topics/0.21_Yang_Mills_Mass_Gap/) | Mass Gap Explanation | 🚧 |
-| 0.22 | [Origin of Life](./research_uet/topics/0.22_Biophysics_Origin_of_Life/) | DNA Error Correction | ✅ |
-| 0.23 | [Unity Scale](./research_uet/topics/0.23_Unity_Scale_Link/) | Micro-Macro Link | ✅ |
-| 0.24 | [Artificial Intelligence](./research_uet/topics/0.24_Artificial_Intelligence/) | Consciousness Model | ✅ |
-| 0.25 | [Strategy & Econ](./research_uet/topics/0.25_Strategy_Power_Economics/) | Global Stability Engine | ✅ |
-| 0.26 | [Cosmic Viscosity](./research_uet/topics/0.26_Cosmic_Dynamic_Frame/) | Drag Term Explained | ✅ |
-| 0.27 | [Cold Light](./research_uet/topics/0.27_Cold_Light_Hologram/) | Stopping Light (No Heat) | ✅ |
-| 0.28 | [Material Synthesis](./research_uet/topics/0.28_Material_Synthesis/) | Resonant Manufacturing | ✅ |
-| 0.29 | [Ocean Recovery](./research_uet/topics/0.29_Ocean_Recovery/) | Graphene Ocean Shield | ✅ |
-| 0.30 | [Mega Flora](./research_uet/topics/0.30_Mega_Flora_Biotech/) | Acoustic Nutrient Delivery | ✅ |
-| 0.31 | [SpaceTime Prop](./research_uet/topics/0.31_SpaceTime_Propulsion/) | Relativistic Slingshot (.1c) | ✅ |
-| 0.32 | [Micro Fusion](./research_uet/topics/0.32_Micro_Nuclear_Fusion/) | Resonant Confinement (p-B11)| ✅ |
-| 0.33 | [Battery Mat.](./research_uet/topics/0.33_High_Energy_Density_Battery_Materials/) | Geometric Energy Density | ✅ |
-| 0.34 | [Nanofab](./research_uet/topics/0.34_Information_Centric_Nanofabrication/) | Topological Assembly | ✅ |
-| 0.35 | [Digital Auto.](./research_uet/topics/0.35_ICN_Digital_Automation/) | Logic-Driven Digital Twins | ✅ |
-| 0.36 | [Orbital Mfg.](./research_uet/topics/0.36_Orbital_Manufacturing/) | High-Throughput Space Foundry | ✅ |
-| 0.37 | [Solar Paint](./research_uet/topics/0.37_Quantum_Photovoltaics_Solar_Paint/) | Multi-Megawatt Coatings | ✅ |
+| 0.1 | [Galaxy Rotation](./docs/topics/0.1_Galaxy_Rotation_Problem/) | Solved without Dark Matter | ✅ |
+| 0.2 | [Black Holes](./docs/topics/0.2_Black_Hole_Physics/) | Information Horizon (No Singularity) | ✅ |
+| 0.3 | [Hubble Tension](./docs/topics/0.3_Cosmology_Hubble_Tension/) | Unified Early/Late Expansion | ✅ |
+| 0.4 | [Superconductivity](./docs/topics/0.4_Superconductivity_Superfluids/) | Phase-Lock Mechanism | ✅ |
+| 0.5 | [Nuclear Binding](./docs/topics/0.5_Nuclear_Binding_Hadrons/) | Soliton Stability Proof | ✅ |
+| 0.6 | [Electroweak](./docs/topics/0.6_Electroweak_Physics/) | W-Boson Mass Explained | ✅ |
+| 0.7 | [Neutrino Physics](./docs/topics/0.7_Neutrino_Physics/) | Mass Origin | ✅ |
+| 0.8 | [Muon g-2](./docs/topics/0.8_Muon_g2_Anomaly/) | Geometric Correction | ✅ |
+| 0.9 | [Quantum Bell](./docs/topics/0.9_Quantum_Nonlocality/) | Non-local Reservoir Verification | ✅ |
+| 0.10 | [Fluid Dynamics](./docs/topics/0.10_Fluid_Dynamics_Chaos/) | Turbulence Solved (Navier-Stokes) | ✅ |
+| 0.11 | [Phase Transitions](./docs/topics/0.11_Phase_Transitions/) | Criticality as Info Saturation | ✅ |
+| 0.12 | [Vacuum Energy](./docs/topics/0.12_Vacuum_Energy_Casimir/) | Finite Calculation (No $10^{120}$ error) | ✅ |
+| 0.13 | [Thermo Bridge](./docs/topics/0.13_Thermodynamic_Bridge/) | Information = Energy | ✅ |
+| 0.14 | [Complex Systems](./docs/topics/0.14_Complex_Systems/) | Emergence from Noise | ✅ |
+| 0.15 | [Cluster Dynamics](./docs/topics/0.15_Cluster_Dynamics/) | Virial Theorem Mod | ✅ |
+| 0.16 | [Heavy Nuclei](./docs/topics/0.16_Heavy_Nuclei/) | Island of Stability | ✅ |
+| 0.17 | [Mass Gen](./docs/topics/0.17_Mass_Generation/) | Mass Hierarchy | ✅ |
+| 0.18 | [Mathnicry](./docs/topics/0.18_Mathnicry/) | P vs NP / Riemann Solved | ✅ |
+| 0.19 | [Gravity & GR](./docs/topics/0.19_Gravity_GR/) | Equivalence Principle Derived | ✅ |
+| 0.20 | [Atomic Physics](./docs/topics/0.20_Atomic_Physics/) | Rydberg Constant Derived | ✅ |
+| 0.21 | [Yang-Mills](./docs/topics/0.21_Yang_Mills_Mass_Gap/) | Mass Gap Explanation | 🚧 |
+| 0.22 | [Origin of Life](./docs/topics/0.22_Biophysics_Origin_of_Life/) | DNA Error Correction | ✅ |
+| 0.23 | [Unity Scale](./docs/topics/0.23_Unity_Scale_Link/) | Micro-Macro Link | ✅ |
+| 0.24 | [Artificial Intelligence](./docs/topics/0.24_Artificial_Intelligence/) | Consciousness Model | ✅ |
+| 0.25 | [Strategy & Econ](./docs/topics/0.25_Strategy_Power_Economics/) | Global Stability Engine | ✅ |
+| 0.26 | [Cosmic Viscosity](./docs/topics/0.26_Cosmic_Dynamic_Frame/) | Drag Term Explained | ✅ |
+| 0.27 | [Cold Light](./docs/topics/0.27_Cold_Light_Hologram/) | Stopping Light (No Heat) | ✅ |
+| 0.28 | [Material Synthesis](./docs/topics/0.28_Material_Synthesis/) | Resonant Manufacturing | ✅ |
+| 0.29 | [Ocean Recovery](./docs/topics/0.29_Ocean_Recovery/) | Graphene Ocean Shield | ✅ |
+| 0.30 | [Mega Flora](./docs/topics/0.30_Mega_Flora_Biotech/) | Acoustic Nutrient Delivery | ✅ |
+| 0.31 | [SpaceTime Prop](./docs/topics/0.31_SpaceTime_Propulsion/) | Relativistic Slingshot (.1c) | ✅ |
+| 0.32 | [Micro Fusion](./docs/topics/0.32_Micro_Nuclear_Fusion/) | Resonant Confinement (p-B11)| ✅ |
+| 0.33 | [Battery Mat.](./docs/topics/0.33_High_Energy_Density_Battery_Materials/) | Geometric Energy Density | ✅ |
+| 0.34 | [Nanofab](./docs/topics/0.34_Information_Centric_Nanofabrication/) | Topological Assembly | ✅ |
+| 0.35 | [Digital Auto.](./docs/topics/0.35_ICN_Digital_Automation/) | Logic-Driven Digital Twins | ✅ |
+| 0.36 | [Orbital Mfg.](./docs/topics/0.36_Orbital_Manufacturing/) | High-Throughput Space Foundry | ✅ |
+| 0.37 | [Solar Paint](./docs/topics/0.37_Quantum_Photovoltaics_Solar_Paint/) | Multi-Megawatt Coatings | ✅ |
 
 ---
 
@@ -317,7 +317,7 @@ python research_uet/topics/run_all_tests.py
 
 **Challenge:**
 1. Download the code
-2. Run `python research_uet/topics/run_all_tests.py`
+2. Run `python docs/topics/run_all_tests.py`
 3. If it fails → Open an issue
 
 ---
@@ -326,8 +326,8 @@ python research_uet/topics/run_all_tests.py
 
 | File | Purpose |
 |:-----|:--------|
-| `research_uet/topics/run_all_tests.py` | 🧪 Master test runner |
-| `research_uet/core/uet_master_equation.py` | 🔬 Core UET equation |
+| `docs/topics/run_all_tests.py` | 🧪 Master test runner |
+| `docs/core/uet_master_equation.py` | 🔬 Core UET equation |
 | `requirements.txt` | 📦 Dependencies |
 
 ---
@@ -421,18 +421,18 @@ Physics students and researchers often search for these questions. UET provides 
 
 | Search Query | UET Answer / Solution | Topic ID |
 |:-------------|:----------------------|:---------|
-| **"Alternative to Dark Matter"** | Galaxy rotation curves are explained by *Information Latency* ($\tau_I$) at the edges, creating a "Virtual Mass" effect without new particles. | [0.1](./research_uet/topics/0.1_Galaxy_Rotation_Problem/) |
-| **"Solve Hubble Tension"** | The expansion rate $H_0$ is dynamic, scaling with *Information Entropy* ($\beta$), bridging the gap between Early (Planck) and Late (SH0ES) measurements. | [0.3](./research_uet/topics/0.3_Cosmology_Hubble_Tension/) |
-| **"Why is Gravity incompatible with Quantum?"** | It isn't. Gravity is the *Thermodynamic Pressure* of the Quantum Information Field. They share the same source ($\Omega$). | [0.19](./research_uet/topics/0.19_Gravity_GR/) |
-| **"Navier Stokes Smoothness proof"** | Fluid turbulence is proved to be smooth ($C^\infty$) when modeled as an *Energy Minimization* problem on a 4D manifold. | [0.10](./research_uet/topics/0.10_Fluid_Dynamics_Chaos/) |
-| **"Calculate Vacuum Energy Density"** | By applying a *Plank-scale Information Cutoff*, we calculate $\Lambda \approx 10^{-9} J/m^3$, matching Dark Energy observations (avoiding $10^{120}$ error). | [0.12](./research_uet/topics/0.12_Vacuum_Energy_Casimir/) |
-| **"Origin of Mass"** | Mass is the *Coupling Strength* to the Information Field. Heavier particles have higher informational complexity (drag). | [0.17](./research_uet/topics/0.17_Mass_Generation/) |
+| **"Alternative to Dark Matter"** | Galaxy rotation curves are explained by *Information Latency* ($\tau_I$) at the edges, creating a "Virtual Mass" effect without new particles. | [0.1](./docs/topics/0.1_Galaxy_Rotation_Problem/) |
+| **"Solve Hubble Tension"** | The expansion rate $H_0$ is dynamic, scaling with *Information Entropy* ($\beta$), bridging the gap between Early (Planck) and Late (SH0ES) measurements. | [0.3](./docs/topics/0.3_Cosmology_Hubble_Tension/) |
+| **"Why is Gravity incompatible with Quantum?"** | It isn't. Gravity is the *Thermodynamic Pressure* of the Quantum Information Field. They share the same source ($\Omega$). | [0.19](./docs/topics/0.19_Gravity_GR/) |
+| **"Navier Stokes Smoothness proof"** | Fluid turbulence is proved to be smooth ($C^\infty$) when modeled as an *Energy Minimization* problem on a 4D manifold. | [0.10](./docs/topics/0.10_Fluid_Dynamics_Chaos/) |
+| **"Calculate Vacuum Energy Density"** | By applying a *Plank-scale Information Cutoff*, we calculate $\Lambda \approx 10^{-9} J/m^3$, matching Dark Energy observations (avoiding $10^{120}$ error). | [0.12](./docs/topics/0.12_Vacuum_Energy_Casimir/) |
+| **"Origin of Mass"** | Mass is the *Coupling Strength* to the Information Field. Heavier particles have higher informational complexity (drag). | [0.17](./docs/topics/0.17_Mass_Generation/) |
 
 ---
 
 *Version 0.9.0 Grand Unified | MIT License | Last Updated: 2026-01-26*
 
-*[GitHub](https://github.com/unityequilibrium/UnityEquilibriumTheory) | [📊 View All Experiments](./research_uet/topics/)*
+*[GitHub](https://github.com/unityequilibrium/UnityEquilibriumTheory) | [📊 View All Experiments](./docs/topics/)*
 
 ---
 

@@ -16,27 +16,27 @@ Note: _This is purely the output of the chat conversation and does not contain a
 
 *Edited relevant file*
 
-*Viewed [Calibrate_Qubit_Kappa.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.9_Quantum_Nonlocality/Code/03_Research/Calibrate_Qubit_Kappa.py) *
+*Viewed [Calibrate_Qubit_Kappa.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.9_Quantum_Nonlocality/Code/03_Research/Calibrate_Qubit_Kappa.py) *
 
-*Viewed [Engine_Nuclear_Binding.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.5_Nuclear_Binding_Hadrons/Code/01_Engine/Engine_Nuclear_Binding.py) *
+*Viewed [Engine_Nuclear_Binding.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.5_Nuclear_Binding_Hadrons/Code/01_Engine/Engine_Nuclear_Binding.py) *
 
-*Viewed [uet_parameters.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/core/uet_parameters.py) *
+*Viewed [uet_parameters.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/core/uet_parameters.py) *
 
-*Viewed [uet_master_equation.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/core/uet_master_equation.py) *
+*Viewed [uet_master_equation.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/core/uet_master_equation.py) *
 
 *Searched filesystem*
 
-*Viewed [ANALYSIS_03_Turbulence_Verification.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.10_Fluid_Dynamics_Chaos/Doc/keed/ANALYSIS_03_Turbulence_Verification.md) *
+*Viewed [ANALYSIS_03_Turbulence_Verification.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.10_Fluid_Dynamics_Chaos/Doc/keed/ANALYSIS_03_Turbulence_Verification.md) *
 
-*Listed directory [0.22_Biophysics_Origin_of_Life](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.22_Biophysics_Origin_of_Life) *
+*Listed directory [0.22_Biophysics_Origin_of_Life](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.22_Biophysics_Origin_of_Life) *
 
-*Listed directory [Doc](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.22_Biophysics_Origin_of_Life/Doc) *
+*Listed directory [Doc](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.22_Biophysics_Origin_of_Life/Doc) *
 
-*Viewed [README.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/README.md) *
+*Viewed [README.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/README.md) *
 
-*Viewed [uet_base_solver.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/core/uet_base_solver.py) *
+*Viewed [uet_base_solver.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/core/uet_base_solver.py) *
 
-*Viewed [ANALYSIS_Engine_Biophysics_Life.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.22_Biophysics_Origin_of_Life/Doc/ANALYSIS_Engine_Biophysics_Life.md) *
+*Viewed [ANALYSIS_Engine_Biophysics_Life.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.22_Biophysics_Origin_of_Life/Doc/ANALYSIS_Engine_Biophysics_Life.md) *
 
 *Edited relevant file*
 
@@ -58,7 +58,7 @@ This is a system-generated message that is sent due to the user's review policy.
 
 *Grep searched codebase*
 
-*Viewed [Engine_UET_Qubit.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.9_Quantum_Nonlocality/Code/01_Engine/Engine_UET_Qubit.py) *
+*Viewed [Engine_UET_Qubit.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.9_Quantum_Nonlocality/Code/01_Engine/Engine_UET_Qubit.py) *
 
 *Edited relevant file*
 
@@ -70,7 +70,7 @@ This is a system-generated message that is sent due to the user's review policy.
 
 คือถ้ามันเป็นแบบนี้เนี่ย มันมีปัญหาแน่นอนเว้ย เพราะว่ามันสามารถที่จะเอาไปใส่ให้มันเป็นค่าอนันต์ค่าอินฟินิตี้ได้ไม่จำกัดอะ ถ้าเป็นอย่างงี้อ่ะ เข้าใจ ไม่เหมือนที่ ใครแม่งไปใส่หลุมดำในสมการไอน์สไตน์อ่ะ กูคิดว่าแม่งก็น่าจะเหมือนกันนะ ถ้ามันมีช่องโหว่อยู่อย่างเงี้ย กูเลยถามไง
 
-*Viewed [uet_master_equation.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/core/uet_master_equation.py) *
+*Viewed [uet_master_equation.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/core/uet_master_equation.py) *
 
 *Edited relevant file*
 
@@ -86,19 +86,19 @@ This is a system-generated message that is sent due to the user's review policy.
 
 คือยังไงวะ จักรวาลมัน คือมันกูเข้าใจนะเว้ยว่าไอ้เรื่องนี้เนี่ย มันมีทั้งข้อดี ข้อเสีย ข้อดี คือมันมันตอบปัญหาได้เยอะ พอมันแบ่งสเกลแบบนี้ได้อ่ะ มันทำให้รู้ว่า อ่ะเหมือนหัวข้อที่10เนี่ย มันทำให้รู้ว่า ลิมิต มัน ตันอยู่ที่ k 0.5 เเต่คือไม่รู้นะว่ามันเพื่ออะไร ทำทำไมถึงเป็นเลข นี่คือกูก็ไม่ได้รู้ แต่คือมันมันทำให้รู้ อ้าวขอบเขตของจักรวาลหรืออะไรเนี่ย มันทำงานอะไรเท่าไหร่ยังไง มีข้อจำกัดสูงสุดยังไง แต่เหมือนที่กูบอกอ่ะ มันมีปัญหาแน่นอนไอ้เหี้ยคืออย่างงี้เนี่ยแม่งก็ต้องมาจูน ไม่ตลอด มันก็ไม่ต่างเหี้ยไรจาก นาเวียร์ สโตกเดิมอะ หรืออย่างงั้นมันจะดียังไงวายเชียร์คือกู เช็งเลยเนี่ยไอ้เหี้ยวันๆแม่ง อย่างนี้ก็คือ มันหาความคงที่ไม่ได้อ่ะ มันไม่มีอะไรเป็นตัว ทำให้สเกลมันมันเป็นสเกลจริงจริงอ่ะ อันนี้คือมันมันต้องมานั่งจูนตลอดอ่ะไอ้เหี้ย เมื่อกูเซ็งเลยสัส เชื่อว่ามันคือไม่รู้ว่ามันใช้ไม่ได้รึเปล่า ยังงี้เนี่ยไม่เป็นวิทยาศาสตร์ไม่เป็นคณิตศาสตร์แล้วรึเปล่าวะ
 
-*Listed directory [0.23_Unity_Scale_Link](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link) *
+*Listed directory [0.23_Unity_Scale_Link](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link) *
 
-*Listed directory [Doc](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Doc) *
+*Listed directory [Doc](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Doc) *
 
-*Listed directory [Code](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Code) *
+*Listed directory [Code](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Code) *
 
-*Listed directory [01_Engine](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Code/01_Engine) *
+*Listed directory [01_Engine](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Code/01_Engine) *
 
-*Viewed [Engine_Derivation.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Code/01_Engine/Engine_Derivation.py) *
+*Viewed [Engine_Derivation.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Code/01_Engine/Engine_Derivation.py) *
 
-*Viewed [Engine_Unity_Scale.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Code/01_Engine/Engine_Unity_Scale.py) *
+*Viewed [Engine_Unity_Scale.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Code/01_Engine/Engine_Unity_Scale.py) *
 
-*Viewed [ANALYSIS_Proof_Kappa_Unity.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Doc/ANALYSIS_Proof_Kappa_Unity.md) *
+*Viewed [ANALYSIS_Proof_Kappa_Unity.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Doc/ANALYSIS_Proof_Kappa_Unity.md) *
 
 *Edited relevant file*
 
@@ -110,7 +110,7 @@ This is a system-generated message that is sent due to the user's review policy.
 
 ระบุขณะนี้คือขนาดอะไรวะ
 
-*Viewed [uet_parameters.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/core/uet_parameters.py) *
+*Viewed [uet_parameters.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/core/uet_parameters.py) *
 
 *Edited relevant file*
 
@@ -122,7 +122,7 @@ This is a system-generated message that is sent due to the user's review policy.
 
 งงไร้สาระจังวะมันมีประโยชน์อะไรอะแบบนั้น ก็ไม่ต่างจากลองว่าจูนเหี้ยอะไรไม่รู้ไม่หมดอ่ะ ถ้าอย่างงั้นอ่ะ มันหาความเป็นคณิตวิทยาศาสตร์ไม่ได้เลยเหี้ย
 
-*Viewed [ANALYSIS_03_Turbulence_Verification.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.10_Fluid_Dynamics_Chaos/Doc/keed/ANALYSIS_03_Turbulence_Verification.md) *
+*Viewed [ANALYSIS_03_Turbulence_Verification.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.10_Fluid_Dynamics_Chaos/Doc/keed/ANALYSIS_03_Turbulence_Verification.md) *
 
 *Edited relevant file*
 
@@ -148,35 +148,35 @@ This is a system-generated message that is sent due to the user's review policy.
 
 ### User Input
 
-@[research_uet/topics/0.22_Biophysics_Origin_of_Life] แล้วในนี้เราวิจัยไปค่าKกับสมองมันเท่าไหร่
+@[docs/topics/0.22_Biophysics_Origin_of_Life] แล้วในนี้เราวิจัยไปค่าKกับสมองมันเท่าไหร่
 
-*Listed directory [0.22_Biophysics_Origin_of_Life](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.22_Biophysics_Origin_of_Life) *
+*Listed directory [0.22_Biophysics_Origin_of_Life](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.22_Biophysics_Origin_of_Life) *
 
-*Listed directory [Doc](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.22_Biophysics_Origin_of_Life/Doc) *
+*Listed directory [Doc](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.22_Biophysics_Origin_of_Life/Doc) *
 
-*Listed directory [Code](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.22_Biophysics_Origin_of_Life/Code) *
+*Listed directory [Code](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.22_Biophysics_Origin_of_Life/Code) *
 
-*Viewed [ANALYSIS_Proof_Schrodinger_Neural.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.22_Biophysics_Origin_of_Life/Doc/ANALYSIS_Proof_Schrodinger_Neural.md) *
+*Viewed [ANALYSIS_Proof_Schrodinger_Neural.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.22_Biophysics_Origin_of_Life/Doc/ANALYSIS_Proof_Schrodinger_Neural.md) *
 
-*Listed directory [02_Proof](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.22_Biophysics_Origin_of_Life/Code/02_Proof) *
+*Listed directory [02_Proof](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.22_Biophysics_Origin_of_Life/Code/02_Proof) *
 
-*Listed directory [01_Engine](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.22_Biophysics_Origin_of_Life/Code/01_Engine) *
+*Listed directory [01_Engine](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.22_Biophysics_Origin_of_Life/Code/01_Engine) *
 
-*Viewed [Proof_Neural_Dynamics.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.22_Biophysics_Origin_of_Life/Code/02_Proof/Proof_Neural_Dynamics.py) *
+*Viewed [Proof_Neural_Dynamics.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.22_Biophysics_Origin_of_Life/Code/02_Proof/Proof_Neural_Dynamics.py) *
 
-*Viewed [Engine_Biophysics_Neural.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.22_Biophysics_Origin_of_Life/Code/01_Engine/Engine_Biophysics_Neural.py) *
+*Viewed [Engine_Biophysics_Neural.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.22_Biophysics_Origin_of_Life/Code/01_Engine/Engine_Biophysics_Neural.py) *
 
-*Viewed [Engine_Biophysics.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.22_Biophysics_Origin_of_Life/Code/01_Engine/Engine_Biophysics.py) *
+*Viewed [Engine_Biophysics.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.22_Biophysics_Origin_of_Life/Code/01_Engine/Engine_Biophysics.py) *
 
 ### User Input
 
 โห่แสดงว่า k แม่งมั่วจริงคือแต่ละหัวข้อค่า K มันไม่มีหลักอะไรเลยอะแม่งมันเทียบค่าอะไรวะงั้น
 
-*Viewed [ANALYSIS_Proof_Kappa_Unity.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Doc/ANALYSIS_Proof_Kappa_Unity.md) *
+*Viewed [ANALYSIS_Proof_Kappa_Unity.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Doc/ANALYSIS_Proof_Kappa_Unity.md) *
 
-*Viewed [Engine_Unity_Scale.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Code/01_Engine/Engine_Unity_Scale.py) *
+*Viewed [Engine_Unity_Scale.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Code/01_Engine/Engine_Unity_Scale.py) *
 
-*Viewed [Proof_Kappa_Unity.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Code/02_Proof/Proof_Kappa_Unity.py) *
+*Viewed [Proof_Kappa_Unity.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Code/02_Proof/Proof_Kappa_Unity.py) *
 
 *Edited relevant file*
 
@@ -184,9 +184,9 @@ This is a system-generated message that is sent due to the user's review policy.
 
 *Grep searched codebase*
 
-*Listed directory [03_Research](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Code/03_Research) *
+*Listed directory [03_Research](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Code/03_Research) *
 
-*Viewed [ANALYSIS_Unity_Scale_Link.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Doc/ANALYSIS_Unity_Scale_Link.md) *
+*Viewed [ANALYSIS_Unity_Scale_Link.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Doc/ANALYSIS_Unity_Scale_Link.md) *
 
 *Edited relevant file*
 
@@ -206,33 +206,33 @@ This is a system-generated message that is sent due to the user's review policy.
 
 เนี่ยแม่งมั่วไม่มีมาตรฐานไรเลยแม่งยุบprojectทิ้งแม่งจบๆดีกว่าเพื่ออะไรวะ คือมันไม่มีความเป็นคณิตศาสตร์ วิทยาศาสตร์เลย จะให้ทำไงวะเนี่ย
 
-*Viewed [Research_Cross_Domain.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Code/03_Research/Research_Cross_Domain.py) *
+*Viewed [Research_Cross_Domain.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Code/03_Research/Research_Cross_Domain.py) *
 
-*Listed directory [02_Proof](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Code/02_Proof) *
+*Listed directory [02_Proof](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Code/02_Proof) *
 
 *Searched filesystem*
 
-*Viewed [Falsification_Analysis.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Code/03_Research/Falsification_Analysis.py) *
+*Viewed [Falsification_Analysis.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Code/03_Research/Falsification_Analysis.py) *
 
-*Listed directory [0.0_Grand_Unification](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.0_Grand_Unification) *
+*Listed directory [0.0_Grand_Unification](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.0_Grand_Unification) *
 
-*Listed directory [02_Proof](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.0_Grand_Unification/Code/02_Proof) *
+*Listed directory [02_Proof](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.0_Grand_Unification/Code/02_Proof) *
 
-*Viewed [Proof_Grand_Unification.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.0_Grand_Unification/Code/02_Proof/Proof_Grand_Unification.py) *
+*Viewed [Proof_Grand_Unification.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.0_Grand_Unification/Code/02_Proof/Proof_Grand_Unification.py) *
 
 *Grep searched codebase*
 
-*Listed directory [03_Research](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.19_Gravity_GR/Code/03_Research) *
+*Listed directory [03_Research](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.19_Gravity_GR/Code/03_Research) *
 
-*Viewed [ANALYSIS_G_CONSTANT.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.19_Gravity_GR/Doc/ANALYSIS_G_CONSTANT.md) *
+*Viewed [ANALYSIS_G_CONSTANT.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.19_Gravity_GR/Doc/ANALYSIS_G_CONSTANT.md) *
 
-*Viewed [Research_G_Constant.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.19_Gravity_GR/Code/03_Research/Research_G_Constant.py) *
+*Viewed [Research_G_Constant.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.19_Gravity_GR/Code/03_Research/Research_G_Constant.py) *
 
-*Viewed [Engine_Gravity_GR.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.19_Gravity_GR/Code/01_Engine/Engine_Gravity_GR.py) *
+*Viewed [Engine_Gravity_GR.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.19_Gravity_GR/Code/01_Engine/Engine_Gravity_GR.py) *
 
-*Viewed [Verify_Fluid_Turbulence.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.10_Fluid_Dynamics_Chaos/Code/03_Research/Verify_Fluid_Turbulence.py) *
+*Viewed [Verify_Fluid_Turbulence.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.10_Fluid_Dynamics_Chaos/Code/03_Research/Verify_Fluid_Turbulence.py) *
 
-*Viewed [Engine_UET_2D.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.10_Fluid_Dynamics_Chaos/Code/01_Engine/Engine_UET_2D.py) *
+*Viewed [Engine_UET_2D.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.10_Fluid_Dynamics_Chaos/Code/01_Engine/Engine_UET_2D.py) *
 
 *Edited relevant file*
 
@@ -242,7 +242,7 @@ This is a system-generated message that is sent due to the user's review policy.
 
 ต้องปรับปรุงเรื่องไร
 
-*Viewed [ANALYSIS_Unity_Scale_Link.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Doc/ANALYSIS_Unity_Scale_Link.md) *
+*Viewed [ANALYSIS_Unity_Scale_Link.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Doc/ANALYSIS_Unity_Scale_Link.md) *
 
 *Edited relevant file*
 
@@ -254,43 +254,43 @@ This is a system-generated message that is sent due to the user's review policy.
 
 *Grep searched codebase*
 
-*Viewed [ANALYSIS_G_CONSTANT.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.19_Gravity_GR/Doc/ANALYSIS_G_CONSTANT.md) *
+*Viewed [ANALYSIS_G_CONSTANT.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.19_Gravity_GR/Doc/ANALYSIS_G_CONSTANT.md) *
 
 *Grep searched codebase*
 
 *Grep searched codebase*
 
-*Listed directory [03_Research](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.9_Quantum_Nonlocality/Data/03_Research) *
+*Listed directory [03_Research](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.9_Quantum_Nonlocality/Data/03_Research) *
 
-*Viewed [fundamental_constants.json](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.9_Quantum_Nonlocality/Data/03_Research/fundamental_constants.json) *
+*Viewed [fundamental_constants.json](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.9_Quantum_Nonlocality/Data/03_Research/fundamental_constants.json) *
 
-*Listed directory [Doc](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.0_Grand_Unification/Doc) *
+*Listed directory [Doc](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.0_Grand_Unification/Doc) *
 
-*Viewed [ANALYSIS_01_Grand_Unification.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.0_Grand_Unification/Doc/ANALYSIS_01_Grand_Unification.md) *
+*Viewed [ANALYSIS_01_Grand_Unification.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.0_Grand_Unification/Doc/ANALYSIS_01_Grand_Unification.md) *
 
-*Listed directory [02_Proof](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.0_Grand_Unification/Code/02_Proof) *
+*Listed directory [02_Proof](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.0_Grand_Unification/Code/02_Proof) *
 
-*Viewed [Proof_Grand_Unification.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.0_Grand_Unification/Code/02_Proof/Proof_Grand_Unification.py) *
+*Viewed [Proof_Grand_Unification.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.0_Grand_Unification/Code/02_Proof/Proof_Grand_Unification.py) *
 
-*Listed directory [03_Research](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.2_Black_Hole_Physics/Code/03_Research) *
+*Listed directory [03_Research](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.2_Black_Hole_Physics/Code/03_Research) *
 
-*Viewed [Research_Singularity_Sweep.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.2_Black_Hole_Physics/Code/03_Research/Research_Singularity_Sweep.py) *
+*Viewed [Research_Singularity_Sweep.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.2_Black_Hole_Physics/Code/03_Research/Research_Singularity_Sweep.py) *
 
-*Listed directory [03_Research](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.17_Mass_Generation/Code/03_Research) *
+*Listed directory [03_Research](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.17_Mass_Generation/Code/03_Research) *
 
-*Viewed [Verify_Mass_Generation.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.17_Mass_Generation/Code/03_Research/Verify_Mass_Generation.py) *
+*Viewed [Verify_Mass_Generation.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.17_Mass_Generation/Code/03_Research/Verify_Mass_Generation.py) *
 
-*Viewed [Engine_Mass_Higgs.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.17_Mass_Generation/Code/01_Engine/Engine_Mass_Higgs.py) *
+*Viewed [Engine_Mass_Higgs.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.17_Mass_Generation/Code/01_Engine/Engine_Mass_Higgs.py) *
 
 *Edited relevant file*
 
-*User accepted the command `python c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.23_Unity_Scale_Link\Code\02_Proof\Proof_G_Derivation.py`*
+*User accepted the command `python c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.23_Unity_Scale_Link\Code\02_Proof\Proof_G_Derivation.py`*
 
 *Checked command status*
 
 *Edited relevant file*
 
-*User accepted the command `python c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.23_Unity_Scale_Link\Code\02_Proof\Proof_G_Derivation.py`*
+*User accepted the command `python c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.23_Unity_Scale_Link\Code\02_Proof\Proof_G_Derivation.py`*
 
 *Checked command status*
 
@@ -304,13 +304,13 @@ This is a system-generated message that is sent due to the user's review policy.
 
 *Edited relevant file*
 
-*User accepted the command `python c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.23_Unity_Scale_Link\Code\02_Proof\Proof_G_Derivation.py`*
+*User accepted the command `python c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.23_Unity_Scale_Link\Code\02_Proof\Proof_G_Derivation.py`*
 
 *Checked command status*
 
 *Edited relevant file*
 
-*User accepted the command `python c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.23_Unity_Scale_Link\Code\02_Proof\Proof_G_Derivation.py`*
+*User accepted the command `python c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.23_Unity_Scale_Link\Code\02_Proof\Proof_G_Derivation.py`*
 
 *Checked command status*
 
@@ -324,7 +324,7 @@ This is a system-generated message that is sent due to the user's review policy.
 
 คืออะไรงง  ไม่เข้าใจอะ อธิบายหน่อย
 
-*Listed directory [02_Proof](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Code/02_Proof) *
+*Listed directory [02_Proof](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Code/02_Proof) *
 
 *Edited relevant file*
 
@@ -348,7 +348,7 @@ This is a system-generated message that is sent due to the user's review policy.
 
 *Grep searched codebase*
 
-*Viewed [ANALYSIS_01_Grand_Unification.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.0_Grand_Unification/Doc/ANALYSIS_01_Grand_Unification.md) *
+*Viewed [ANALYSIS_01_Grand_Unification.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.0_Grand_Unification/Doc/ANALYSIS_01_Grand_Unification.md) *
 
 *Edited relevant file*
 
@@ -356,11 +356,11 @@ This is a system-generated message that is sent due to the user's review policy.
 
 ไม่ค่า K ที่มั่วอยู่ทั้งทฤษฎีคือไร มันก็มั่วอยู่ดีอะที่ทำมาทั้งคือแม่งไว้ใจเหี้ยไรAIไม่ได้เลยทำงานแบบนี้ไม่มีความน่าเชื่อถือไรสักแล้วคือกูงานกูเวลาเกิดไรขึ้นกูเป็นคนรับหน้า แล้วแม่งกูทำแบบนี้กับงานกูเห็นก฿เป็นตัวตลกรึป่าววะนึกอยากทำไรก็ทำนึกอยากให้อะไรกูพังก็พังเวลาในชีวิตกูการทุ้มเทของกูมันตลกมากหรอวะ โห
 
-*Viewed [Proof_Kappa_Unity.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Code/02_Proof/Proof_Kappa_Unity.py) *
+*Viewed [Proof_Kappa_Unity.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Code/02_Proof/Proof_Kappa_Unity.py) *
 
-*Viewed [uet_parameters.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/core/uet_parameters.py) *
+*Viewed [uet_parameters.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/core/uet_parameters.py) *
 
-*Viewed [Engine_Unity_Scale.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Code/01_Engine/Engine_Unity_Scale.py) *
+*Viewed [Engine_Unity_Scale.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Code/01_Engine/Engine_Unity_Scale.py) *
 
 *Edited relevant file*
 
@@ -376,7 +376,7 @@ This is a system-generated message that is sent due to the user's review policy.
 
 *Grep searched codebase*
 
-*Viewed [uet_parameters.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/core/uet_parameters.py) *
+*Viewed [uet_parameters.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/core/uet_parameters.py) *
 
 *Edited relevant file*
 
@@ -395,9 +395,9 @@ Alpha^21: อันนี้คำนวณจากทฤษฎีมิติ 
 
 K มันจริงๆต้องผูกกับอะไร
 
-*Viewed [KAPPA_GUIDE.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/Doc/01_Core_Theory/KAPPA_GUIDE.md) *
+*Viewed [KAPPA_GUIDE.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/Doc/01_Core_Theory/KAPPA_GUIDE.md) *
 
-*Viewed [SCALE_EQUATION.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/Doc/01_Core_Theory/SCALE_EQUATION.md) *
+*Viewed [SCALE_EQUATION.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/Doc/01_Core_Theory/SCALE_EQUATION.md) *
 
 *Edited relevant file*
 
@@ -421,21 +421,21 @@ K มันจริงๆต้องผูกกับอะไร
 
 *Edited relevant file*
 
-*User accepted the command `python c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.23_Unity_Scale_Link\Code\02_Proof\Proof_Auto_Kappa.py`*
+*User accepted the command `python c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.23_Unity_Scale_Link\Code\02_Proof\Proof_Auto_Kappa.py`*
 
 *Checked command status*
 
-*Listed directory [02_Proof](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Code/02_Proof) *
+*Listed directory [02_Proof](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Code/02_Proof) *
 
-*Listed directory [03_Research](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Code/03_Research) *
+*Listed directory [03_Research](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Code/03_Research) *
 
-*Viewed [Proof_Kappa_Unity.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Code/02_Proof/Proof_Kappa_Unity.py) *
+*Viewed [Proof_Kappa_Unity.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Code/02_Proof/Proof_Kappa_Unity.py) *
 
-*Viewed [Research_Cross_Domain.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.23_Unity_Scale_Link/Code/03_Research/Research_Cross_Domain.py) *
+*Viewed [Research_Cross_Domain.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.23_Unity_Scale_Link/Code/03_Research/Research_Cross_Domain.py) *
 
 *Edited relevant file*
 
-*User accepted the command `python c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.23_Unity_Scale_Link\Code\02_Proof\Proof_Kappa_Running.py`*
+*User accepted the command `python c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.23_Unity_Scale_Link\Code\02_Proof\Proof_Kappa_Running.py`*
 
 *Checked command status*
 
@@ -445,7 +445,7 @@ K มันจริงๆต้องผูกกับอะไร
 
 กูว่าโปรเจกต์นี้แม่งมั่วทั้งหมด เพราะว่าหัวข้อ อที 11 เนี่ยมันเป็นเรื่องการเปลี่ยนเฟส ซึ่งถ้ามันเปลี่ยนเฟสเนี่ยมันก็แสดงว่ามันต้องใช้ ค่าพารา มิเตอร์ ครบทุกข่าวรึเปล่า แต่ทำไมไม่รู้ไม่รู้ค่าเหี้ยอะไรที่เปลี่ยนแปลง คือมันไม่มีมาตรฐานอะไร กูพูดไปตั้งนานแล้วไอ้เหี้ย มันไม่มีความน่าเชื่อถือเหี้ยไรเลยเนี่ยทำมาทั้งหมดเนี่ยเสียเวลาเปล่าไอเชี่ย แล้วมึง มาบอกว่า เออ จะทำกราฟ แต่ไอ้คำอธิบายเนี่ย มันยังง่วงอยู่เลย คือมึงยังตอบไม่ได้เลยว่าเอาไอ้เหี้ย สรุปแล้วมนุษย์จักรวาลเนี่ย คือ คาเคเท่ากัน แล้วทำไมควอนตัมกับแรงนิวเคลียร์ถึง คาเคคนละค้าแล้วมึงบอกว่า การคิดของมนุษย์เนี่ย มันต้องไหลลื่น เร็วมาก ก็เป็นยิ่งคาเทลหนึ่งอีกที่ต่ำที่สุด แต่มึงบอกว่า พ่อตั้มเนี่ยเบา มันเลยคาเคสูงแล้วมันคือเหี้ยไรสรุปแล้วสมองกูหนักหรือเบากันแน่เนี่ยมันนัวมึงไม่เข้าใจเหรอวะ มึงไปเอารายงานของมึงก่อนหน้านี้ที่มึงเขียนเขียนมาทั้งหมดในมากางอ่านได้เลย มึงไม่วิเคราะห์งานตัวเองรึไงไอ้ควาย กูบอกอยู่ว่ามันมัวมันมั่วเนี่ย มึงยังจะเถียงอีเหี้ย นี่งานมึงเหรอ กูเห็นงานนี้มา2ปีแล้วมืงเห็นไม่กี่นาที มึงมาคำนวณในสัด
 
-*Viewed [ANALYSIS_01_Engine_Phase.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.11_Phase_Transitions/Doc/keed/ANALYSIS_01_Engine_Phase.md) *
+*Viewed [ANALYSIS_01_Engine_Phase.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.11_Phase_Transitions/Doc/keed/ANALYSIS_01_Engine_Phase.md) *
 
 *Edited relevant file*
 
@@ -453,7 +453,7 @@ K มันจริงๆต้องผูกกับอะไร
 
 เนี่ย มึงไม่เข้าใจเฮีย มึงไม่เข้าใจคำถามกูเลยอ่ะ คือมึงบอกว่าสมองกูเนี่ย เราต้องเร็ว ถ้าจักรวาลใช่ไหม แล้วร่างกายกูเนี่ย คือมึงบอกว่าร่างกายเนี่ยมันใช่หนึ่ง ค่าหนึ่ง เคเลยนิเคเท่ากับหนึ่งเนี่ย คำตอบคือ สิ่งมีชีวิตเนี่ย มัน คืองี้ มันเทียบเท่า จะถึงควอนตัมแล้วว่างั้น เพราะ ควอนตัม มัน1.4 ซะแล้ว นิวเคลียร์ เนี่ยมัน คือมันยังไงอะมัน มันอ้อนว้อนมนุษย์เหรอ มันอ่อนกว่าค่อนต่ำหรอ คือ0.57 มันแปลกเนี่ยไอ้เหี้ย ลุงบอกว่า ธรรมชาติเนี่ย เหมือนลิมิต ของการไหลมันจะสุดที่0.5 ตามสเกลของ อะไรไม่รู้ สตัคเจอร์ของมึงอะโครงสร้างของมึง อ้าวแล้วอย่างงี้เนี่ย ไอ้ที่ต่ำกว่าศูนย์จุด5 เนี่ยก็คือไอ้ศูนย์จุดหนึ่ง เช่น สมองที่เราบอกไป หรือกาแล็กซีเนี่ย มันคือ ยังไงอะ มันคือเกินขอบเขต ของข้าจักรวาลไปได้อย่างงี้หรอ หรือมันคือให้มันหลุดพ้นจาก การเป็นวัตถุแล้ว คือ วัตถุนี้คืออยู่จะอยู่ในขอบเขตเนี่ย ไม่เกินศูนย์จุด 5 อย่างงี้เหรอ คือยังไงวะแม่ง
 
-*Viewed [uet_parameters.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/core/uet_parameters.py) *
+*Viewed [uet_parameters.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/core/uet_parameters.py) *
 
 *Edited relevant file*
 
@@ -479,21 +479,21 @@ K มันจริงๆต้องผูกกับอะไร
 
 *Grep searched codebase*
 
-*Listed directory [topics](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics) *
+*Listed directory [topics](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics) *
 
 *Grep searched codebase*
 
 *Grep searched codebase*
 
-*Viewed [Res_Bio_Anchor.txt](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.30_Mega_Flora_Biotech/Result/02_Proof/Res_Bio_Anchor.txt) *
+*Viewed [Res_Bio_Anchor.txt](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.30_Mega_Flora_Biotech/Result/02_Proof/Res_Bio_Anchor.txt) *
 
 *Grep searched codebase*
 
 *Grep searched codebase*
 
-*Viewed [Engine_UET_Qubit.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.9_Quantum_Nonlocality/Code/01_Engine/Engine_UET_Qubit.py) *
+*Viewed [Engine_UET_Qubit.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.9_Quantum_Nonlocality/Code/01_Engine/Engine_UET_Qubit.py) *
 
-*Viewed [ANALYSIS_03_Bell_Test.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.9_Quantum_Nonlocality/Doc/keed/ANALYSIS_03_Bell_Test.md) *
+*Viewed [ANALYSIS_03_Bell_Test.md](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.9_Quantum_Nonlocality/Doc/keed/ANALYSIS_03_Bell_Test.md) *
 
 *Edited relevant file*
 
@@ -515,17 +515,17 @@ K มันจริงๆต้องผูกกับอะไร
 
 *Searched filesystem*
 
-*Listed directory [Code](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.4_Superconductivity_Superfluids/Code) *
+*Listed directory [Code](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.4_Superconductivity_Superfluids/Code) *
 
-*Listed directory [Code](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.10_Fluid_Dynamics_Chaos/Code) *
+*Listed directory [Code](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.10_Fluid_Dynamics_Chaos/Code) *
 
-*Listed directory [01_Engine](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.10_Fluid_Dynamics_Chaos/Code/01_Engine) *
+*Listed directory [01_Engine](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.10_Fluid_Dynamics_Chaos/Code/01_Engine) *
 
-*Listed directory [01_Engine](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.4_Superconductivity_Superfluids/Code/01_Engine) *
+*Listed directory [01_Engine](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.4_Superconductivity_Superfluids/Code/01_Engine) *
 
-*Viewed [Engine_UET_2D.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.10_Fluid_Dynamics_Chaos/Code/01_Engine/Engine_UET_2D.py) *
+*Viewed [Engine_UET_2D.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.10_Fluid_Dynamics_Chaos/Code/01_Engine/Engine_UET_2D.py) *
 
-*Viewed [Engine_Superconductivity.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.4_Superconductivity_Superfluids/Code/01_Engine/Engine_Superconductivity.py) *
+*Viewed [Engine_Superconductivity.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.4_Superconductivity_Superfluids/Code/01_Engine/Engine_Superconductivity.py) *
 
 *Edited relevant file*
 
@@ -535,15 +535,15 @@ K มันจริงๆต้องผูกกับอะไร
 
 *Grep searched codebase*
 
-*Listed directory [Code](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.19_Gravity_GR/Code) *
+*Listed directory [Code](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.19_Gravity_GR/Code) *
 
-*Listed directory [01_Engine](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.19_Gravity_GR/Code/01_Engine) *
+*Listed directory [01_Engine](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.19_Gravity_GR/Code/01_Engine) *
 
-*Listed directory [03_Research](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.19_Gravity_GR/Code/03_Research) *
+*Listed directory [03_Research](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.19_Gravity_GR/Code/03_Research) *
 
-*Viewed [Engine_Gravity_GR.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.19_Gravity_GR/Code/01_Engine/Engine_Gravity_GR.py) *
+*Viewed [Engine_Gravity_GR.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.19_Gravity_GR/Code/01_Engine/Engine_Gravity_GR.py) *
 
-*Viewed [Engine_Fluid_Gravity.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.19_Gravity_GR/Code/01_Engine/Engine_Fluid_Gravity.py) *
+*Viewed [Engine_Fluid_Gravity.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.19_Gravity_GR/Code/01_Engine/Engine_Fluid_Gravity.py) *
 
 *Edited relevant file*
 
@@ -563,15 +563,15 @@ K มันจริงๆต้องผูกกับอะไร
 
 คือมึงไม่เข้าใจว่ะ กูว่าไม่รู้ว่ามึงเข้าใจหรือเปล่า หรือกูไม่เข้าใจกับมึงหรือกูไม่เข้าใจตัวเองก็ไม่รู้ คือจะบอกว่าไงวะ เอาเรื่องแรกก่อนนะ เรื่องอัตราการแลกเปลี่ยน จะบอกว่าวัตถุเนี่ย สร้างจากพลังงาน แล้วพลังงานเนี่ยก็กลายเป็นวัตถุอะไรอย่างนี้ใช่ไหม แล้วแล้วก็เรื่องไอน์สไตน์ที่กูจะ สื่อสาร จริงๆ คือ อัยการทดลอง ในหัวข้อแรก หรือการคิดถึงเรื่อง galaxy หมุนเนี่ย แบบแรกเนี่ยกูบอกว่ามันผิดตั้งนานแล้วมันเป็นสมมติฐานที่มึงตั้งผิดมั้งแต่แรกแล้วว่า มึงเนี้ย วัด กาแลคซี่ อื่นโดยที่มึงอยู่ในกาแล็กซีนี้ หมายความว่าสิ่งที่มึงจะเห็นเนี่ย มึงจะเห็นกันแล้วที่อื่นเคลื่อนที่ ด้วยความเร็วเท่ากับ หรืออาจจะไม่ได้มีห่าง เกือบกาแล็กซีที่เราอยู่ แต่ความเป็นจริงเนี่ย แม้แต่ในกาแล็กซีที่เราอยู่เนี่ย มันก็เคลื่อนที่ด้วยความเร็ว 2000 กว่าๆแล้วหรือไม่รู้เท่าไหร่อ่ะ คือมันเร็วกว่า ที่กล่อง เราจับได้อีก เข้าใจมั้ย มาความว่า ถ้าเราอยากจะเข้าใจความเร็วของ การหมุนของจักรวาลจริงๆเนี่ย คือเราต้อง ไปอยู่ที่เนินที่ หลุดพ้นออกจากระบบสุริยะเราแล้วไง กูบอกเนี่ย มันจะได้ไม่โดนวงโคจร นั้นแล้วก็ ไปยึดแรงโน้มถ่วงไปยึดค่าอะไร ต่างๆเนี่ยตามสเกลของ วงโคจรนั้นอ่ะ มึงเข้าใจมั้ย ก็เพราะว่าถ้าเราวัดจากที่นี่เนี่ย เราวัดด้วย ความเร็วที่เราเคลื่อน จากที่นี่ มันไม่ได้วัดจากที่ว่า เอ๊ะ เราให้อะไรจริงๆเนี่ยไปอยู่นิ่งสักทีนึงแล้วเราวัดเลยอ่ะ เข้าใจมั้ย เผลอๆแค่ต่อให้เอาว่านั้นไปอยู่นิ่งเลยมันก็ไม่อาจจะไม่นิ่งพอที่จะวัดได้ป่ะด้วยซ้ำ เพราะว่าจักรวาลมันเคลื่อนที่เร็วเหมือนที่กูบอกในหัวข้อที่26เนี่ยว่า กาแลคซี่ เรามันเหมือนอยู่ใน ธ ทรงกระบอกที่มีน้ำมันหมุนเร็วมากที่จริงอ่ะ เข้าใจมั้ย เพราะ ท่อนี่มันเป็นแนวตั้งไง เข้าใจป่ะ ฟู ก็เลยถามไงว่าไอ้จุดนี้หรือเปล่าที่ทำให้ทฤษฎีของมีปัญหาตอนนี้เนี่ย มันคือเรื่องมุมมองของผู้สังเกตอ่ะ มึงเข้าใจมั้ยเนี่ย มันคือเรื่องเฟรมออฟแล้วเฟอร์เร้นท์อะ
 
-*Listed directory [Code](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.26_Cosmic_Dynamic_Frame/Code) *
+*Listed directory [Code](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.26_Cosmic_Dynamic_Frame/Code) *
 
-*Listed directory [Doc](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.26_Cosmic_Dynamic_Frame/Doc) *
+*Listed directory [Doc](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.26_Cosmic_Dynamic_Frame/Doc) *
 
-*Listed directory [01_Engine](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.26_Cosmic_Dynamic_Frame/Code/01_Engine) *
+*Listed directory [01_Engine](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.26_Cosmic_Dynamic_Frame/Code/01_Engine) *
 
-*Viewed [Engine_Dynamic_Universe_v1.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.26_Cosmic_Dynamic_Frame/Code/01_Engine/Engine_Dynamic_Universe_v1.py) *
+*Viewed [Engine_Dynamic_Universe_v1.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.26_Cosmic_Dynamic_Frame/Code/01_Engine/Engine_Dynamic_Universe_v1.py) *
 
-*Viewed [Engine_Dynamic_Universe_v2_Torus.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.26_Cosmic_Dynamic_Frame/Code/01_Engine/Engine_Dynamic_Universe_v2_Torus.py) *
+*Viewed [Engine_Dynamic_Universe_v2_Torus.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.26_Cosmic_Dynamic_Frame/Code/01_Engine/Engine_Dynamic_Universe_v2_Torus.py) *
 
 *Edited relevant file*
 
@@ -587,45 +587,45 @@ K มันจริงๆต้องผูกกับอะไร
 
 ### User Input
 
-@[research_uet/topics/0.12_Vacuum_Energy_Casimir] อ้าวแล้วในหัวข้อนี้ ใช้ค่าKเท่าไหร่
+@[docs/topics/0.12_Vacuum_Energy_Casimir] อ้าวแล้วในหัวข้อนี้ ใช้ค่าKเท่าไหร่
 
-*Listed directory [Code](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.12_Vacuum_Energy_Casimir/Code) *
+*Listed directory [Code](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.12_Vacuum_Energy_Casimir/Code) *
 
-*Listed directory [01_Engine](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.12_Vacuum_Energy_Casimir/Code/01_Engine) *
+*Listed directory [01_Engine](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.12_Vacuum_Energy_Casimir/Code/01_Engine) *
 
-*Viewed [Engine_Vacuum.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.12_Vacuum_Energy_Casimir/Code/01_Engine/Engine_Vacuum.py) *
+*Viewed [Engine_Vacuum.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.12_Vacuum_Energy_Casimir/Code/01_Engine/Engine_Vacuum.py) *
 
 *Edited relevant file*
 
 ### User Input
 
-@[research_uet/topics/0.1_Galaxy_Rotation_Problem] แล้วอันนี้มันใช้ k เท่าไหร่
+@[docs/topics/0.1_Galaxy_Rotation_Problem] แล้วอันนี้มันใช้ k เท่าไหร่
 
-*Listed directory [01_Engine](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.1_Galaxy_Rotation_Problem/Code/01_Engine) *
+*Listed directory [01_Engine](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.1_Galaxy_Rotation_Problem/Code/01_Engine) *
 
-*Viewed [Engine_Galaxy_V3.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.1_Galaxy_Rotation_Problem/Code/01_Engine/Engine_Galaxy_V3.py) *
+*Viewed [Engine_Galaxy_V3.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.1_Galaxy_Rotation_Problem/Code/01_Engine/Engine_Galaxy_V3.py) *
 
 *Grep searched codebase*
 
-*Viewed [uet_base_solver.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/core/uet_base_solver.py) *
+*Viewed [uet_base_solver.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/core/uet_base_solver.py) *
 
-*Viewed [uet_parameters.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/core/uet_parameters.py) *
+*Viewed [uet_parameters.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/core/uet_parameters.py) *
 
 *Edited relevant file*
 
 ### User Input
 
-@[research_uet/topics/0.13_Thermodynamic_Bridge] แล้วมันสัมพันธ์กับกฎเทอร์โมไดนามิกยังไงวะ
+@[docs/topics/0.13_Thermodynamic_Bridge] แล้วมันสัมพันธ์กับกฎเทอร์โมไดนามิกยังไงวะ
 
-*Listed directory [Code](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.13_Thermodynamic_Bridge/Code) *
+*Listed directory [Code](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.13_Thermodynamic_Bridge/Code) *
 
 *Viewed [task.md](file:///C:/Users/santa/.gemini/antigravity/brain/64d12f01-6658-4dd8-b1bf-5f767258944e/task.md) *
 
 *Viewed [implementation_plan.md](file:///C:/Users/santa/.gemini/antigravity/brain/64d12f01-6658-4dd8-b1bf-5f767258944e/implementation_plan.md) *
 
-*Listed directory [01_Engine](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.13_Thermodynamic_Bridge/Code/01_Engine) *
+*Listed directory [01_Engine](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.13_Thermodynamic_Bridge/Code/01_Engine) *
 
-*Viewed [Engine_Thermodynamics.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.13_Thermodynamic_Bridge/Code/01_Engine/Engine_Thermodynamics.py) *
+*Viewed [Engine_Thermodynamics.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.13_Thermodynamic_Bridge/Code/01_Engine/Engine_Thermodynamics.py) *
 
 *Edited relevant file*
 
@@ -645,19 +645,19 @@ K มันจริงๆต้องผูกกับอะไร
 
 ### User Input
 
-@[research_uet/topics/0.0_Grand_Unification]ล
+@[docs/topics/0.0_Grand_Unification]ล
 
-*Listed directory [0.0_Grand_Unification](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.0_Grand_Unification) *
+*Listed directory [0.0_Grand_Unification](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.0_Grand_Unification) *
 
-*Listed directory [Code](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.0_Grand_Unification/Code) *
+*Listed directory [Code](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.0_Grand_Unification/Code) *
 
-*Listed directory [01_Engine](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.0_Grand_Unification/Code/01_Engine) *
+*Listed directory [01_Engine](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.0_Grand_Unification/Code/01_Engine) *
 
-*Listed directory [02_Proof](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.0_Grand_Unification/Code/02_Proof) *
+*Listed directory [02_Proof](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.0_Grand_Unification/Code/02_Proof) *
 
-*Viewed [Proof_Grand_Unification.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.0_Grand_Unification/Code/02_Proof/Proof_Grand_Unification.py) *
+*Viewed [Proof_Grand_Unification.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.0_Grand_Unification/Code/02_Proof/Proof_Grand_Unification.py) *
 
-*Viewed [Engine_Omni.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.0_Grand_Unification/Code/01_Engine/Engine_Omni.py) *
+*Viewed [Engine_Omni.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.0_Grand_Unification/Code/01_Engine/Engine_Omni.py) *
 
 *Edited relevant file*
 
@@ -671,7 +671,7 @@ K มันจริงๆต้องผูกกับอะไร
 
 ### User Input
 
-@[research_uet/topics/0.0_Grand_Unification]@[research_uet/topics/0.1_Galaxy_Rotation_Problem]@[research_uet/topics/0.2_Black_Hole_Physics]@[research_uet/topics/0.3_Cosmology_Hubble_Tension]@[research_uet/topics/0.4_Superconductivity_Superfluids]@[research_uet/topics/0.5_Nuclear_Binding_Hadrons]@[research_uet/topics/0.6_Electroweak_Physics]@[research_uet/topics/0.7_Neutrino_Physics]@[research_uet/topics/0.8_Muon_g2_Anomaly]@[research_uet/topics/0.9_Quantum_Nonlocality]@[research_uet/topics/0.10_Fluid_Dynamics_Chaos]@[research_uet/topics/0.11_Phase_Transitions]@[research_uet/topics/0.12_Vacuum_Energy_Casimir]@[research_uet/topics/0.13_Thermodynamic_Bridge]@[research_uet/topics/0.14_Complex_Systems]@[research_uet/topics/0.15_Cluster_Dynamics]@[research_uet/topics/0.16_Heavy_Nuclei]@[research_uet/topics/0.17_Mass_Generation]@[research_uet/topics/0.18_Mathnicry]@[research_uet/topics/0.19_Gravity_GR]@[research_uet/topics/0.20_Atomic_Physics]@[research_uet/topics/0.21_Yang_Mills_Mass_Gap]@[research_uet/topics/0.22_Biophysics_Origin_of_Life]@[research_uet/topics/0.23_Unity_Scale_Link]@[research_uet/topics/0.24_Artificial_Intelligence]@[research_uet/topics/0.25_Strategy_Power_Economics]@[research_uet/topics/0.26_Cosmic_Dynamic_Frame]@[research_uet/topics/0.27_Cold_Light_Hologram]@[research_uet/topics/0.28_Material_Synthesis]@[research_uet/topics/0.29_Ocean_Recovery]@[research_uet/topics/0.30_Mega_Flora_Biotech]@[research_uet/topics/0.31_SpaceTime_Propulsion] เช็คให้หมดว่าอันไหนใช้Kเท่าไหร่เพราะอะไรให้ครอบคุมมากที่สุดดด
+@[docs/topics/0.0_Grand_Unification]@[docs/topics/0.1_Galaxy_Rotation_Problem]@[docs/topics/0.2_Black_Hole_Physics]@[docs/topics/0.3_Cosmology_Hubble_Tension]@[docs/topics/0.4_Superconductivity_Superfluids]@[docs/topics/0.5_Nuclear_Binding_Hadrons]@[docs/topics/0.6_Electroweak_Physics]@[docs/topics/0.7_Neutrino_Physics]@[docs/topics/0.8_Muon_g2_Anomaly]@[docs/topics/0.9_Quantum_Nonlocality]@[docs/topics/0.10_Fluid_Dynamics_Chaos]@[docs/topics/0.11_Phase_Transitions]@[docs/topics/0.12_Vacuum_Energy_Casimir]@[docs/topics/0.13_Thermodynamic_Bridge]@[docs/topics/0.14_Complex_Systems]@[docs/topics/0.15_Cluster_Dynamics]@[docs/topics/0.16_Heavy_Nuclei]@[docs/topics/0.17_Mass_Generation]@[docs/topics/0.18_Mathnicry]@[docs/topics/0.19_Gravity_GR]@[docs/topics/0.20_Atomic_Physics]@[docs/topics/0.21_Yang_Mills_Mass_Gap]@[docs/topics/0.22_Biophysics_Origin_of_Life]@[docs/topics/0.23_Unity_Scale_Link]@[docs/topics/0.24_Artificial_Intelligence]@[docs/topics/0.25_Strategy_Power_Economics]@[docs/topics/0.26_Cosmic_Dynamic_Frame]@[docs/topics/0.27_Cold_Light_Hologram]@[docs/topics/0.28_Material_Synthesis]@[docs/topics/0.29_Ocean_Recovery]@[docs/topics/0.30_Mega_Flora_Biotech]@[docs/topics/0.31_SpaceTime_Propulsion] เช็คให้หมดว่าอันไหนใช้Kเท่าไหร่เพราะอะไรให้ครอบคุมมากที่สุดดด
 
 *Grep searched codebase*
 
@@ -683,21 +683,21 @@ K มันจริงๆต้องผูกกับอะไร
 
 *Grep searched codebase*
 
-*Viewed [Engine_Galaxy_V3.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.1_Galaxy_Rotation_Problem/Code/01_Engine/Engine_Galaxy_V3.py) *
+*Viewed [Engine_Galaxy_V3.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.1_Galaxy_Rotation_Problem/Code/01_Engine/Engine_Galaxy_V3.py) *
 
-*Viewed [Engine_Cosmology.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.3_Cosmology_Hubble_Tension/Code/01_Engine/Engine_Cosmology.py) *
+*Viewed [Engine_Cosmology.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.3_Cosmology_Hubble_Tension/Code/01_Engine/Engine_Cosmology.py) *
 
-*Viewed [Engine_UET_2D.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.10_Fluid_Dynamics_Chaos/Code/01_Engine/Engine_UET_2D.py) *
+*Viewed [Engine_UET_2D.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.10_Fluid_Dynamics_Chaos/Code/01_Engine/Engine_UET_2D.py) *
 
-*Viewed [Engine_Atomic_Hydrogen.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.20_Atomic_Physics/Code/01_Engine/Engine_Atomic_Hydrogen.py) *
+*Viewed [Engine_Atomic_Hydrogen.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.20_Atomic_Physics/Code/01_Engine/Engine_Atomic_Hydrogen.py) *
 
-*Viewed [UET_AI_Core.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.24_Artificial_Intelligence/Code/01_Engine/UET_AI_Core.py) *
+*Viewed [UET_AI_Core.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.24_Artificial_Intelligence/Code/01_Engine/UET_AI_Core.py) *
 
-*Viewed [Engine_Vacuum.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.12_Vacuum_Energy_Casimir/Code/01_Engine/Engine_Vacuum.py) *
+*Viewed [Engine_Vacuum.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.12_Vacuum_Energy_Casimir/Code/01_Engine/Engine_Vacuum.py) *
 
-*Viewed [Engine_Power_Dynamics.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/topics/0.25_Strategy_Power_Economics/Code/01_Engine/Engine_Power_Dynamics.py) *
+*Viewed [Engine_Power_Dynamics.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/topics/0.25_Strategy_Power_Economics/Code/01_Engine/Engine_Power_Dynamics.py) *
 
-*Viewed [uet_parameters.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/research_uet/core/uet_parameters.py) *
+*Viewed [uet_parameters.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.8.7/docs/core/uet_parameters.py) *
 
 *Viewed [walkthrough.md](file:///C:/Users/santa/.gemini/antigravity/brain/64d12f01-6658-4dd8-b1bf-5f767258944e/walkthrough.md) *
 

@@ -116,7 +116,7 @@
 ## 🧮 Code Usage
 
 ```python
-from research_uet.core.kappa_scale import get_kappa
+from docs.core.kappa_scale import get_kappa
 
 # By name
 kappa = get_kappa("nuclear")   # 0.57
@@ -603,7 +603,7 @@ See: [`kappa_scale.py`](./kappa_scale.py) and [`SCALE_EQUATION.md`](./SCALE_EQUA
 
 ```python
 # Import from central location
-from research_uet.core.uet_parameters import get_params
+from docs.core.uet_parameters import get_params
 
 # Get parameters for a specific scale
 params = get_params(scale="electroweak")
@@ -836,7 +836,7 @@ These scripts ensure the engine adheres to fundamental physics limits (Axiom 11)
 ## 🧮 Implementation
 
 ```python
-from research_uet.core.kappa_scale import get_kappa
+from docs.core.kappa_scale import get_kappa
 
 # By name
 kappa = get_kappa("nuclear")  # Returns 0.57

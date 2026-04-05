@@ -6,11 +6,11 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(PROJECT_ROOT))
 
-from research_uet.knowledge_base.config import CONFIG
-from research_uet.knowledge_base.api_client import OpenRouterClient, CostTracker
-from research_uet.knowledge_base.vector_store import VectorStore
-from research_uet.knowledge_base.tensorizer import UetTensorizer
-from research_uet.knowledge_base.omega_search import OmegaSearch
+from docs.knowledge_base.config import CONFIG
+from docs.knowledge_base.api_client import OpenRouterClient, CostTracker
+from docs.knowledge_base.vector_store import VectorStore
+from docs.knowledge_base.tensorizer import UetTensorizer
+from docs.knowledge_base.omega_search import OmegaSearch
 from uet_agents.base_agent import BaseAgent
 from uet_agents.research_agent import ResearchAgent
 from uet_agents.marketing_agent import MarketingAgent

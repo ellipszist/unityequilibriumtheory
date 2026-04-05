@@ -603,7 +603,7 @@ ERROR: test_advection_movement (__main__.TestMatrixFluid.test_advection_movement
 Test that Mass moves with Flux (Convection).
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.10_Fluid_Dynamics_Chaos\Code\poiseuille\test_00_basic_advection.py", line 70, in test_advection_movement
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.10_Fluid_Dynamics_Chaos\Code\poiseuille\test_00_basic_advection.py", line 70, in test_advection_movement
     print("\u274c No Advection (Mass is stationary/diffusing only)")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -955,7 +955,7 @@ Turbulence is the efficient processing of Information Entropy. The Kolmogorov sc
 ### brownian
 
 **Error**: Traceback (most recent call last):
-  File "C:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.10_Fluid_Dynamics_Chaos\Code\brownian\test_04_brownian_entropy.py", line 47, in <module>
+  File "C:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.10_Fluid_Dynamics_Chaos\Code\brownian\test_04_brownian_entropy.py", line 47, in <module>
     from brownian_data import (
     ...<4 lines>...
     )
@@ -965,25 +965,25 @@ ModuleNotFoundError: No module named 'brownian_data'
 ### poiseuille
 
 **Error**: Traceback (most recent call last):
-  File "C:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.10_Fluid_Dynamics_Chaos\Code\poiseuille\test_01_poiseuille_pipe.py", line 14, in <module>
-    from research_uet.core.uet_matrix_engine import UniverseState, MatrixEvolution
-ModuleNotFoundError: No module named 'research_uet'
+  File "C:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.10_Fluid_Dynamics_Chaos\Code\poiseuille\test_01_poiseuille_pipe.py", line 14, in <module>
+    from docs.core.uet_matrix_engine import UniverseState, MatrixEvolution
+ModuleNotFoundError: No module named 'docs'
 
 
 ### three_body
 
 **Error**: Traceback (most recent call last):
-  File "C:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.10_Fluid_Dynamics_Chaos\Code\three_body\test_07_three_body_chaos.py", line 13, in <module>
-    from research_uet.core.uet_matrix_engine import UniverseState, MatrixEvolution
-ModuleNotFoundError: No module named 'research_uet'
+  File "C:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.10_Fluid_Dynamics_Chaos\Code\three_body\test_07_three_body_chaos.py", line 13, in <module>
+    from docs.core.uet_matrix_engine import UniverseState, MatrixEvolution
+ModuleNotFoundError: No module named 'docs'
 
 
 ### turbulence
 
 **Error**: Traceback (most recent call last):
-  File "C:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.10_Fluid_Dynamics_Chaos\Code\turbulence\test_03_turbulence_stress.py", line 11, in <module>
-    from research_uet.core.uet_matrix_engine import UniverseState, MatrixEvolution
-ModuleNotFoundError: No module named 'research_uet'
+  File "C:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.10_Fluid_Dynamics_Chaos\Code\turbulence\test_03_turbulence_stress.py", line 11, in <module>
+    from docs.core.uet_matrix_engine import UniverseState, MatrixEvolution
+ModuleNotFoundError: No module named 'docs'
 
 
 
@@ -1081,9 +1081,9 @@ Running test_05_phase_demixing.py...
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.11_Phase_Transitions\Code\phase_separation\test_05_phase_demixing.py", line 169, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.11_Phase_Transitions\Code\phase_separation\test_05_phase_demixing.py", line 169, in <module>
     success = run_test()
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.11_Phase_Transitions\Code\phase_separation\test_05_phase_demixing.py", line 65, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.11_Phase_Transitions\Code\phase_separation\test_05_phase_demixing.py", line 65, in run_test
     print("\U0001f52c PHASE SEPARATION TEST (Calibrated with Al-Zn Data)")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -1611,7 +1611,7 @@ Energy and Information are interchangeable ($E \leftrightarrow I$).
 The following tests were executed to validate the UET solution:
 
 ```text
-ta\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.13_Thermodynamic_Bridge\Code\landauer\test_real_data_validation.py", line 250, in run_all_real_data_tests
+ta\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.13_Thermodynamic_Bridge\Code\landauer\test_real_data_validation.py", line 250, in run_all_real_data_tests
     print("\U0001f321\ufe0f UET THERMODYNAMIC BRIDGE: REAL DATA VALIDATION")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -1632,9 +1632,9 @@ The Foundation of Unity Equilibrium Theory
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.13_Thermodynamic_Bridge\Code\landauer\test_thermodynamic_bridge.py", line 157, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.13_Thermodynamic_Bridge\Code\landauer\test_thermodynamic_bridge.py", line 157, in <module>
     success = run_test()
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.13_Thermodynamic_Bridge\Code\landauer\test_thermodynamic_bridge.py", line 77, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.13_Thermodynamic_Bridge\Code\landauer\test_thermodynamic_bridge.py", line 77, in run_test
     print("\n[1] LANDAUER PRINCIPLE (\u03b2 term origin)")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -2033,9 +2033,9 @@ Running test_07_inequality.py...
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.14_Complex_Systems\Code\inequality\test_07_inequality.py", line 249, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.14_Complex_Systems\Code\inequality\test_07_inequality.py", line 249, in <module>
     result = run_test()
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.14_Complex_Systems\Code\inequality\test_07_inequality.py", line 95, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.14_Complex_Systems\Code\inequality\test_07_inequality.py", line 95, in run_test
     print("\U0001f4ca UET TEST 07: Economic Health Index")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -2423,9 +2423,9 @@ Total clusters: 10
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.15_Cluster_Dynamics\Code\cluster_virial\test_cluster_virial.py", line 204, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.15_Cluster_Dynamics\Code\cluster_virial\test_cluster_virial.py", line 204, in <module>
     success = run_test()
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.15_Cluster_Dynamics\Code\cluster_virial\test_cluster_virial.py", line 125, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.15_Cluster_Dynamics\Code\cluster_virial\test_cluster_virial.py", line 125, in run_test
     print(
     ~~~~~^
         f"| {c['name']:<12} | {M_v:>10.1f} | {M_l:>8.2f} | {M_uet:>10.1f} | {ratio:>6.1f}x {status} |"
@@ -2608,9 +2608,9 @@ Total nuclei: 10 (all A > 100)
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.16_Heavy_Nuclei\Code\heavy_binding\test_heavy_binding.py", line 174, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.16_Heavy_Nuclei\Code\heavy_binding\test_heavy_binding.py", line 174, in <module>
     success = run_test()
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.16_Heavy_Nuclei\Code\heavy_binding\test_heavy_binding.py", line 135, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.16_Heavy_Nuclei\Code\heavy_binding\test_heavy_binding.py", line 135, in run_test
     print(
     ~~~~~^
         f"| {n['name']:<10} | {BE_exp:>10.1f} | {BE_soliton:>10.1f} | {BE_uet_ld:>10.1f} | {err_uet_ld:>6.2f}% {status}|"
@@ -2787,9 +2787,9 @@ Data: PDG 2024 (DOI: 10.1093/ptep/ptac097)
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.17_Mass_Generation\Code\lepton_mass\test_lepton_mass.py", line 147, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.17_Mass_Generation\Code\lepton_mass\test_lepton_mass.py", line 147, in <module>
     success = run_test()
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.17_Mass_Generation\Code\lepton_mass\test_lepton_mass.py", line 106, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.17_Mass_Generation\Code\lepton_mass\test_lepton_mass.py", line 106, in run_test
     print(f"| {'Lepton':<10} | {'Mass (MeV)':<15} | {'\u03bb_Yukawa':<12} |")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -2977,9 +2977,9 @@ Unitarity: PASS
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.18_Neutrino_Mixing\Code\mixing_angles\test_pmns_full.py", line 170, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.18_Neutrino_Mixing\Code\mixing_angles\test_pmns_full.py", line 170, in <module>
     success = run_test()
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.18_Neutrino_Mixing\Code\mixing_angles\test_pmns_full.py", line 141, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.18_Neutrino_Mixing\Code\mixing_angles\test_pmns_full.py", line 141, in run_test
     print(
     ~~~~~^
         """
@@ -3204,10 +3204,10 @@ The following tests were executed to validate the UET solution:
 
 ```text
 l last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.1_Galaxy_Rotation_Problem\Code\galaxy_rotation_175\test_compact_correction.py", line 170, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.1_Galaxy_Rotation_Problem\Code\galaxy_rotation_175\test_compact_correction.py", line 170, in <module>
     run_test()
     ~~~~~~~~^^
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.1_Galaxy_Rotation_Problem\Code\galaxy_rotation_175\test_compact_correction.py", line 155, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.1_Galaxy_Rotation_Problem\Code\galaxy_rotation_175\test_compact_correction.py", line 155, in run_test
     print(f"{name:<10} {v_obs:<8.1f} {v_old:<8.1f} {v_new:<8.1f} {err_new:<8.1f} {status}")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -3853,7 +3853,7 @@ The "Dark Matter Halo" is simply the thermal signature of the Galaxy's hard driv
 ### galaxy_rotation_175
 
 **Error**: Traceback (most recent call last):
-  File "C:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.1_Galaxy_Rotation_Problem\Code\galaxy_rotation_175\test_little_things.py", line 41, in <module>
+  File "C:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.1_Galaxy_Rotation_Problem\Code\galaxy_rotation_175\test_little_things.py", line 41, in <module>
     from little_things_data import (
     ...<7 lines>...
     )
@@ -3883,7 +3883,7 @@ ModuleNotFoundError: No module named 'little_things_data'
 ### galaxy_rotation_175
 
 **Error**: Traceback (most recent call last):
-  File "C:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.1_Galaxy_Rotation_Problem\Code\galaxy_rotation_175\test_little_things.py", line 41, in <module>
+  File "C:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.1_Galaxy_Rotation_Problem\Code\galaxy_rotation_175\test_little_things.py", line 41, in <module>
     from little_things_data import (
     ...<7 lines>...
     )
@@ -3913,11 +3913,11 @@ ModuleNotFoundError: No module named 'little_things_data'
 ### galaxy_rotation_175
 
 **Error**: Traceback (most recent call last):
-  File "C:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.1_Galaxy_Rotation_Problem\Code\galaxy_rotation_175\test_little_things.py", line 41, in <module>
+  File "C:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.1_Galaxy_Rotation_Problem\Code\galaxy_rotation_175\test_little_things.py", line 41, in <module>
     from little_things_data import (
     ...<7 lines>...
     )
-ImportError: cannot import name 'SURVEY_INFO' from 'little_things_data' (C:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.1_Galaxy_Rotation_Problem\Code\galaxy_rotation_175\little_things_data.py)
+ImportError: cannot import name 'SURVEY_INFO' from 'little_things_data' (C:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.1_Galaxy_Rotation_Problem\Code\galaxy_rotation_175\little_things_data.py)
 
 
 
@@ -4032,9 +4032,9 @@ Data: Event Horizon Telescope (M87*, Sgr A*)
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.2_Black_Hole_Physics\Code\black_holes_eht\test_black_holes.py", line 140, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.2_Black_Hole_Physics\Code\black_holes_eht\test_black_holes.py", line 140, in <module>
     success = run_test()
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.2_Black_Hole_Physics\Code\black_holes_eht\test_black_holes.py", line 85, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.2_Black_Hole_Physics\Code\black_holes_eht\test_black_holes.py", line 85, in run_test
     print(f"  Mass:     {M_m87:.1e} M\u2609")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -4547,10 +4547,10 @@ Running test_real_cosmology.py...
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.3_Cosmology_Hubble_Tension\Code\hubble_tension\test_real_cosmology.py", line 132, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.3_Cosmology_Hubble_Tension\Code\hubble_tension\test_real_cosmology.py", line 132, in <module>
     run_test()
     ~~~~~~~~^^
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.3_Cosmology_Hubble_Tension\Code\hubble_tension\test_real_cosmology.py", line 66, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.3_Cosmology_Hubble_Tension\Code\hubble_tension\test_real_cosmology.py", line 66, in run_test
     print("\U0001f30c UET COSMIC HISTORY: COMPARATIVE ANALYSIS (JWST vs HST vs PLANCK)")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -6244,7 +6244,7 @@ The following tests were executed to validate the UET solution:
 \topics\0.6_Electroweak_Physics\Code\wz_ratio\test_real_alpha_decay.py", line 135, in <module>
     run_test()
     ~~~~~~~~^^
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.6_Electroweak_Physics\Code\wz_ratio\test_real_alpha_decay.py", line 89, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.6_Electroweak_Physics\Code\wz_ratio\test_real_alpha_decay.py", line 89, in run_test
     print(f"\u274c Error: Real data file not found at {data_path}")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -6263,10 +6263,10 @@ UET W BOSON MASS VALIDATION
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.6_Electroweak_Physics\Code\wz_ratio\test_w_mass_anomaly.py", line 244, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.6_Electroweak_Physics\Code\wz_ratio\test_w_mass_anomaly.py", line 244, in <module>
     run_all_tests()
     ~~~~~~~~~~~~~^^
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.6_Electroweak_Physics\Code\wz_ratio\test_w_mass_anomaly.py", line 201, in run_all_tests
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.6_Electroweak_Physics\Code\wz_ratio\test_w_mass_anomaly.py", line 201, in run_all_tests
     print("The CDF Anomaly: 7\u03c3 Tension!")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -7044,9 +7044,9 @@ Data: Fermilab 2023
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.8_Muon_g2_Anomaly\Code\muon_g2\test_muon_g2.py", line 111, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.8_Muon_g2_Anomaly\Code\muon_g2\test_muon_g2.py", line 111, in <module>
     success = run_test()
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.8_Muon_g2_Anomaly\Code\muon_g2\test_muon_g2.py", line 77, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.8_Muon_g2_Anomaly\Code\muon_g2\test_muon_g2.py", line 77, in run_test
     print(f"  UET \u0394a_\u03bc:         {delta_uet:.1e}")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -7289,13 +7289,13 @@ UET Prediction: S = 2.8284
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.9_Quantum_Nonlocality\Code\double_slit\test_quantum_mechanics.py", line 288, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.9_Quantum_Nonlocality\Code\double_slit\test_quantum_mechanics.py", line 288, in <module>
     run_all_tests()
     ~~~~~~~~~~~~~^^
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.9_Quantum_Nonlocality\Code\double_slit\test_quantum_mechanics.py", line 256, in run_all_tests
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.9_Quantum_Nonlocality\Code\double_slit\test_quantum_mechanics.py", line 256, in run_all_tests
     pass1, err1 = test_bell_inequality()
                   ~~~~~~~~~~~~~~~~~~~~^^
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.9_Quantum_Nonlocality\Code\double_slit\test_quantum_mechanics.py", line 127, in test_bell_inequality
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.9_Quantum_Nonlocality\Code\double_slit\test_quantum_mechanics.py", line 127, in test_bell_inequality
     print(f"  (With \u03b2 = 1.0, full entanglement)")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -7794,7 +7794,7 @@ Lab_uet_harness_v0.8.7/
 │   ├── pycache/               ← __pycache__ ทั้งหมด
 │   └── pytest/                ← pytest cache
 ├── .gitignore                 ← ignore .cache/
-└── research_uet/              ← สะอาด ไม่มี __pycache__
+└── docs/              ← สะอาด ไม่มี __pycache__
 ```
 
 ---
@@ -7822,7 +7822,7 @@ python $args
 
 ## ✅ ผลลัพธ์
 
-- `research_uet/` จะไม่มี `__pycache__` อีกต่อไป
+- `docs/` จะไม่มี `__pycache__` อีกต่อไป
 - Cache ทั้งหมดไป `.cache/pycache/`
 - Git ignore `.cache/` folder
 
@@ -7844,7 +7844,7 @@ python $args
 ---
 
 ## 1. Executive Summary
-A comprehensive audit of the UET Research Harness (`research_uet/topics`) was conducted to ensure all executed tests are properly documented.
+A comprehensive audit of the UET Research Harness (`docs/topics`) was conducted to ensure all executed tests are properly documented.
 *   **Total Topics Audited**: 18
 *   **Total Sub-Experiments Found**: 62
 *   **Missing Tests Identified**: 8 (Now Fixed)
@@ -8091,7 +8091,7 @@ But UET's OWN parameters (κ, β, γ) must remain FREE.
 
 ## Sign-Off
 
-All tests in `research_uet/lab/` must comply with this policy.
+All tests in `docs/lab/` must comply with this policy.
 
 Date: 2026-01-03
 Version: 0.8.7
@@ -8198,7 +8198,7 @@ Version: 0.8.7
 ## 📁 Structure
 
 ```text
-research_uet/
+docs/
 ├── 📐 core/              # Theory foundations
 ├── 🔬 lab/               # Tests & experiments
 │   ├── 01_particle_physics/   # Strong, Weak, Standard Model
@@ -8314,7 +8314,7 @@ XX_category/
 ```python
 # data/01_particle/__init__.py
 # This provides backward compatibility
-from research_uet.data.old_01_particle_physics import *
+from docs.data.old_01_particle_physics import *
 ```
 
 ### Phase 3: 🔄 Rename Incrementally
@@ -8341,7 +8341,7 @@ from research_uet.data.old_01_particle_physics import *
 
 ```powershell
 # ลบ __pycache__ ทั้งหมด (regenerated เมื่อ run)
-Get-ChildItem -Path "research_uet" -Recurse -Directory -Filter "__pycache__" | Remove-Item -Recurse -Force
+Get-ChildItem -Path "docs" -Recurse -Directory -Filter "__pycache__" | Remove-Item -Recurse -Force
 ```
 
 ---

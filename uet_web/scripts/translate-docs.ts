@@ -19,7 +19,7 @@ if (!apiKey) {
 const openai = new OpenAI({ apiKey });
 
 // Target docs directory
-const DOCS_DIR = path.join(__dirname, '../../research_uet/Docs');
+const DOCS_DIR = path.join(__dirname, '../../docs/Docs');
 
 // Target locales to translate to
 const TARGET_LOCALES = ['th', 'zh'];

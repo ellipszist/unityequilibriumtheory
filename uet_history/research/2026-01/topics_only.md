@@ -557,7 +557,7 @@ $$สูตร UET ที่ใช้$$
 ### Run Tests
 
 \`\`\`bash
-cd research_uet/topics/0.XX_Topic_Name
+cd docs/topics/0.XX_Topic_Name
 
 # Download data
 python Data/download_data.py
@@ -1243,7 +1243,7 @@ pip install numpy matplotlib plotly
 ### Run All Tests
 
 ```bash
-cd research_uet/topics/0.10_Fluid_Dynamics_Chaos
+cd docs/topics/0.10_Fluid_Dynamics_Chaos
 
 # Speed comparison
 python Code/baseline/compare_ns_uet.py
@@ -2227,7 +2227,7 @@ ERROR: test_advection_movement (__main__.TestMatrixFluid.test_advection_movement
 Test that Mass moves with Flux (Convection).
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.10_Fluid_Dynamics_Chaos\Code\poiseuille\test_00_basic_advection.py", line 70, in test_advection_movement
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.10_Fluid_Dynamics_Chaos\Code\poiseuille\test_00_basic_advection.py", line 70, in test_advection_movement
     print("\u274c No Advection (Mass is stationary/diffusing only)")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -2891,7 +2891,7 @@ graph LR
 ## 🚀 Quick Start
 
 ```bash
-cd research_uet/topics/0.11_Phase_Transitions/Code/bec
+cd docs/topics/0.11_Phase_Transitions/Code/bec
 python test_bec.py
 ```
 
@@ -2969,9 +2969,9 @@ Running test_05_phase_demixing.py...
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.11_Phase_Transitions\Code\phase_separation\test_05_phase_demixing.py", line 169, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.11_Phase_Transitions\Code\phase_separation\test_05_phase_demixing.py", line 169, in <module>
     success = run_test()
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.11_Phase_Transitions\Code\phase_separation\test_05_phase_demixing.py", line 65, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.11_Phase_Transitions\Code\phase_separation\test_05_phase_demixing.py", line 65, in run_test
     print("\U0001f52c PHASE SEPARATION TEST (Calibrated with Al-Zn Data)")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -3221,7 +3221,7 @@ $$F = -\frac{d\Omega}{dd} = -\kappa \frac{\partial}{\partial d}\int|\nabla C|^2 
 ## 🚀 Quick Start
 
 ```bash
-cd research_uet/topics/0.12_Vacuum_Energy_Casimir/Code/casimir_effect
+cd docs/topics/0.12_Vacuum_Energy_Casimir/Code/casimir_effect
 python test_casimir.py
 ```
 
@@ -3748,7 +3748,7 @@ G = 6.67430e-11       # Gravitational constant (m³/kg/s²)
 ### Run Full Thermodynamic Bridge Test
 
 ```bash
-cd research_uet/topics/0.13_Thermodynamic_Bridge/Code/landauer
+cd docs/topics/0.13_Thermodynamic_Bridge/Code/landauer
 python test_landauer_bridge.py
 ```
 
@@ -3908,7 +3908,7 @@ Energy and Information are interchangeable ($E \leftrightarrow I$).
 The following tests were executed to validate the UET solution:
 
 ```text
-ta\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.13_Thermodynamic_Bridge\Code\landauer\test_real_data_validation.py", line 250, in run_all_real_data_tests
+ta\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.13_Thermodynamic_Bridge\Code\landauer\test_real_data_validation.py", line 250, in run_all_real_data_tests
     print("\U0001f321\ufe0f UET THERMODYNAMIC BRIDGE: REAL DATA VALIDATION")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -3929,9 +3929,9 @@ The Foundation of Unity Equilibrium Theory
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.13_Thermodynamic_Bridge\Code\landauer\test_thermodynamic_bridge.py", line 157, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.13_Thermodynamic_Bridge\Code\landauer\test_thermodynamic_bridge.py", line 157, in <module>
     success = run_test()
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.13_Thermodynamic_Bridge\Code\landauer\test_thermodynamic_bridge.py", line 77, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.13_Thermodynamic_Bridge\Code\landauer\test_thermodynamic_bridge.py", line 77, in run_test
     print("\n[1] LANDAUER PRINCIPLE (\u03b2 term origin)")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -4253,7 +4253,7 @@ $$\Omega = V(C) + \kappa|\nabla C|^2 + \beta C \cdot I + \gamma_J(J_{in} - J_{ou
 ## 🚀 Quick Start
 
 ```bash
-cd research_uet/topics/0.14_Complex_Systems/Code
+cd docs/topics/0.14_Complex_Systems/Code
 python test_complex_systems.py
 ```
 
@@ -4394,9 +4394,9 @@ Running test_07_inequality.py...
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.14_Complex_Systems\Code\inequality\test_07_inequality.py", line 249, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.14_Complex_Systems\Code\inequality\test_07_inequality.py", line 249, in <module>
     result = run_test()
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.14_Complex_Systems\Code\inequality\test_07_inequality.py", line 95, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.14_Complex_Systems\Code\inequality\test_07_inequality.py", line 95, in run_test
     print("\U0001f4ca UET TEST 07: Economic Health Index")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -4802,7 +4802,7 @@ The "missing mass" at cluster scale = **I-field contribution from shared informa
 ## 🚀 Quick Start
 
 ```bash
-cd research_uet/topics/0.15_Cluster_Dynamics
+cd docs/topics/0.15_Cluster_Dynamics
 python Data/download_data.py
 python Code/cluster_virial/test_cluster_virial.py
 ```
@@ -4879,9 +4879,9 @@ Total clusters: 10
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.15_Cluster_Dynamics\Code\cluster_virial\test_cluster_virial.py", line 204, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.15_Cluster_Dynamics\Code\cluster_virial\test_cluster_virial.py", line 204, in <module>
     success = run_test()
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.15_Cluster_Dynamics\Code\cluster_virial\test_cluster_virial.py", line 125, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.15_Cluster_Dynamics\Code\cluster_virial\test_cluster_virial.py", line 125, in run_test
     print(
     ~~~~~^
         f"| {c['name']:<12} | {M_v:>10.1f} | {M_l:>8.2f} | {M_uet:>10.1f} | {ratio:>6.1f}x {status} |"
@@ -5148,7 +5148,7 @@ Information field equilibrium within nuclear volume determines binding.
 ## 🚀 Quick Start
 
 ```bash
-cd research_uet/topics/0.16_Heavy_Nuclei
+cd docs/topics/0.16_Heavy_Nuclei
 python Data/download_data.py
 python Code/heavy_binding/test_heavy_binding.py
 ```
@@ -5225,9 +5225,9 @@ Total nuclei: 10 (all A > 100)
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.16_Heavy_Nuclei\Code\heavy_binding\test_heavy_binding.py", line 174, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.16_Heavy_Nuclei\Code\heavy_binding\test_heavy_binding.py", line 174, in <module>
     success = run_test()
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.16_Heavy_Nuclei\Code\heavy_binding\test_heavy_binding.py", line 135, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.16_Heavy_Nuclei\Code\heavy_binding\test_heavy_binding.py", line 135, in run_test
     print(
     ~~~~~^
         f"| {n['name']:<10} | {BE_exp:>10.1f} | {BE_soliton:>10.1f} | {BE_uet_ld:>10.1f} | {err_uet_ld:>6.2f}% {status}|"
@@ -5487,7 +5487,7 @@ $$Q = \frac{0.511 + 105.66 + 1776.86}{(\sqrt{0.511} + \sqrt{105.66} + \sqrt{1776
 ## 🚀 Quick Start
 
 ```bash
-cd research_uet/topics/0.17_Mass_Generation
+cd docs/topics/0.17_Mass_Generation
 python Data/download_data.py
 python Code/lepton_mass/test_lepton_mass.py
 ```
@@ -5560,9 +5560,9 @@ Data: PDG 2024 (DOI: 10.1093/ptep/ptac097)
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.17_Mass_Generation\Code\lepton_mass\test_lepton_mass.py", line 147, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.17_Mass_Generation\Code\lepton_mass\test_lepton_mass.py", line 147, in <module>
     success = run_test()
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.17_Mass_Generation\Code\lepton_mass\test_lepton_mass.py", line 106, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.17_Mass_Generation\Code\lepton_mass\test_lepton_mass.py", line 106, in run_test
     print(f"| {'Lepton':<10} | {'Mass (MeV)':<15} | {'\u03bb_Yukawa':<12} |")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -5789,7 +5789,7 @@ Full 4D simulation of wave-packet propagation.
 
 ```bash
 # Run the Full 4D Oscillation Simulation
-python research_uet/topics/0.18_Neutrino_Mixing/Code/experiments/neutrino_oscillation_4d.py
+python docs/topics/0.18_Neutrino_Mixing/Code/experiments/neutrino_oscillation_4d.py
 
 # Expected Output:
 # 🌌 4D NEUTRINO OSCILLATION SIMULATION
@@ -5874,9 +5874,9 @@ Unitarity: PASS
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.18_Neutrino_Mixing\Code\mixing_angles\test_pmns_full.py", line 170, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.18_Neutrino_Mixing\Code\mixing_angles\test_pmns_full.py", line 170, in <module>
     success = run_test()
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.18_Neutrino_Mixing\Code\mixing_angles\test_pmns_full.py", line 141, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.18_Neutrino_Mixing\Code\mixing_angles\test_pmns_full.py", line 141, in run_test
     print(
     ~~~~~^
         """
@@ -6249,7 +6249,7 @@ Where $\tau_I$ = information latency (processing delay in I-field)
 ### Run Tests
 
 ```bash
-cd research_uet/topics/0.19_Gravity_GR
+cd docs/topics/0.19_Gravity_GR
 
 # Download data
 python Data/download_data.py
@@ -6689,7 +6689,7 @@ Previously, simulations required manual tuning of the learning rate. We have res
 ### Run Full 175-Galaxy Test
 
 ```bash
-cd research_uet/topics/0.1_Galaxy_Rotation_Problem/Code/galaxy_rotation_175
+cd docs/topics/0.1_Galaxy_Rotation_Problem/Code/galaxy_rotation_175
 python test_175_galaxies.py
 ```
 
@@ -6777,7 +6777,7 @@ OVERALL SUMMARY: 175 Galaxies
 This module uses the **UET V3.0 Master Equation** from `core/uet_master_equation.py`:
 
 ```python
-from research_uet.core.uet_master_equation import (
+from docs.core.uet_master_equation import (
     SIGMA_CRIT,           # Critical surface density (Holographic Bound)
     strategic_boost,      # Game Theory correction (Axiom 8)
     UETParameters,        # Parameter container (12 Axioms)
@@ -7064,10 +7064,10 @@ The following tests were executed to validate the UET solution:
 
 ```text
 l last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.1_Galaxy_Rotation_Problem\Code\galaxy_rotation_175\test_compact_correction.py", line 170, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.1_Galaxy_Rotation_Problem\Code\galaxy_rotation_175\test_compact_correction.py", line 170, in <module>
     run_test()
     ~~~~~~~~^^
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.1_Galaxy_Rotation_Problem\Code\galaxy_rotation_175\test_compact_correction.py", line 155, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.1_Galaxy_Rotation_Problem\Code\galaxy_rotation_175\test_compact_correction.py", line 155, in run_test
     print(f"{name:<10} {v_obs:<8.1f} {v_old:<8.1f} {v_new:<8.1f} {err_new:<8.1f} {status}")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -7914,7 +7914,7 @@ Where:
 ### Run Tests
 
 ```bash
-cd research_uet/topics/0.20_Atomic_Physics
+cd docs/topics/0.20_Atomic_Physics
 
 # Download data
 python Data/download_data.py
@@ -8475,7 +8475,7 @@ V(φ) = (φ² - 1)² / 4  (bistable potential)
 ### Run Tests
 
 ```bash
-cd research_uet/topics/0.22_Neural_Dynamics
+cd docs/topics/0.22_Neural_Dynamics
 
 # Run neural dynamics test
 python Code/neural_eeg/test_neural_dynamics.py
@@ -9275,7 +9275,7 @@ M_sun = 1.989e30  # Solar mass (kg)
 ### Run Black Hole Test
 
 ```bash
-cd research_uet/topics/0.2_Black_Hole_Physics/Code/black_holes_eht
+cd docs/topics/0.2_Black_Hole_Physics/Code/black_holes_eht
 python test_black_holes.py
 ```
 
@@ -9450,9 +9450,9 @@ Data: Event Horizon Telescope (M87*, Sgr A*)
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.2_Black_Hole_Physics\Code\black_holes_eht\test_black_holes.py", line 140, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.2_Black_Hole_Physics\Code\black_holes_eht\test_black_holes.py", line 140, in <module>
     success = run_test()
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.2_Black_Hole_Physics\Code\black_holes_eht\test_black_holes.py", line 85, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.2_Black_Hole_Physics\Code\black_holes_eht\test_black_holes.py", line 85, in run_test
     print(f"  Mass:     {M_m87:.1e} M\u2609")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -10127,7 +10127,7 @@ $$w = \frac{P}{\rho} \approx -1 \quad \text{(cosmological constant-like)}$$
 ### Run Hubble Tension Test
 
 ```bash
-cd research_uet/topics/0.3_Cosmology_Hubble_Tension/Code/hubble_tension
+cd docs/topics/0.3_Cosmology_Hubble_Tension/Code/hubble_tension
 python test_hubble_tension.py
 ```
 
@@ -10287,10 +10287,10 @@ Running test_real_cosmology.py...
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.3_Cosmology_Hubble_Tension\Code\hubble_tension\test_real_cosmology.py", line 132, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.3_Cosmology_Hubble_Tension\Code\hubble_tension\test_real_cosmology.py", line 132, in <module>
     run_test()
     ~~~~~~~~^^
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.3_Cosmology_Hubble_Tension\Code\hubble_tension\test_real_cosmology.py", line 66, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.3_Cosmology_Hubble_Tension\Code\hubble_tension\test_real_cosmology.py", line 66, in run_test
     print("\U0001f30c UET COSMIC HISTORY: COMPARATIVE ANALYSIS (JWST vs HST vs PLANCK)")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -10878,7 +10878,7 @@ if lambda_eff > 1.0:
 ### Run Superconductivity Test
 
 ```bash
-cd research_uet/topics/0.4_Superconductivity_Superfluids/Code/superconductivity_tc
+cd docs/topics/0.4_Superconductivity_Superfluids/Code/superconductivity_tc
 python test_superconductivity.py
 ```
 
@@ -11558,7 +11558,7 @@ BE += beta_nuc * math.log(A) / A
 ## 🚀 Quick Start
 
 ```bash
-cd research_uet/topics/0.5_Nuclear_Binding_Hadrons/Code/nuclear_binding_250
+cd docs/topics/0.5_Nuclear_Binding_Hadrons/Code/nuclear_binding_250
 python test_nuclear_binding.py
 ```
 
@@ -12176,7 +12176,7 @@ $$M_H = \sqrt{2 \times 0.129} \times 246.22 = 125.1 \text{ GeV}$$
 ## 🚀 Quick Start
 
 ```bash
-cd research_uet/topics/0.6_Electroweak_Physics/Code/wz_ratio
+cd docs/topics/0.6_Electroweak_Physics/Code/wz_ratio
 python test_electroweak.py
 ```
 
@@ -12235,7 +12235,7 @@ The following tests were executed to validate the UET solution:
 \topics\0.6_Electroweak_Physics\Code\wz_ratio\test_real_alpha_decay.py", line 135, in <module>
     run_test()
     ~~~~~~~~^^
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.6_Electroweak_Physics\Code\wz_ratio\test_real_alpha_decay.py", line 89, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.6_Electroweak_Physics\Code\wz_ratio\test_real_alpha_decay.py", line 89, in run_test
     print(f"\u274c Error: Real data file not found at {data_path}")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -12254,10 +12254,10 @@ UET W BOSON MASS VALIDATION
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.6_Electroweak_Physics\Code\wz_ratio\test_w_mass_anomaly.py", line 244, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.6_Electroweak_Physics\Code\wz_ratio\test_w_mass_anomaly.py", line 244, in <module>
     run_all_tests()
     ~~~~~~~~~~~~~^^
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.6_Electroweak_Physics\Code\wz_ratio\test_w_mass_anomaly.py", line 201, in run_all_tests
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.6_Electroweak_Physics\Code\wz_ratio\test_w_mass_anomaly.py", line 201, in run_all_tests
     print("The CDF Anomaly: 7\u03c3 Tension!")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -12847,7 +12847,7 @@ def uet_pmns_prediction(kappa=0.5, beta=1.0):
 ## 🚀 Quick Start
 
 ```bash
-cd research_uet/topics/0.7_Neutrino_Physics/Code/pmns_mixing
+cd docs/topics/0.7_Neutrino_Physics/Code/pmns_mixing
 python test_pmns_mixing.py
 ```
 
@@ -13556,7 +13556,7 @@ fundamental information-energy coupling of UET.
 ### Run g-2 Anomaly Test
 
 ```bash
-cd research_uet/topics/0.8_Muon_g2_Anomaly/Code/muon_g2
+cd docs/topics/0.8_Muon_g2_Anomaly/Code/muon_g2
 python test_muon_g2.py
 ```
 
@@ -13717,9 +13717,9 @@ Data: Fermilab 2023
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.8_Muon_g2_Anomaly\Code\muon_g2\test_muon_g2.py", line 111, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.8_Muon_g2_Anomaly\Code\muon_g2\test_muon_g2.py", line 111, in <module>
     success = run_test()
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.8_Muon_g2_Anomaly\Code\muon_g2\test_muon_g2.py", line 77, in run_test
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.8_Muon_g2_Anomaly\Code\muon_g2\test_muon_g2.py", line 77, in run_test
     print(f"  UET \u0394a_\u03bc:         {delta_uet:.1e}")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
@@ -14125,7 +14125,7 @@ $$S_{UET} = S_{QM}$$
 ### Run Bell Inequality Test
 
 ```bash
-cd research_uet/topics/0.9_Quantum_Nonlocality/Code/bell_inequality
+cd docs/topics/0.9_Quantum_Nonlocality/Code/bell_inequality
 python test_bell_inequality.py
 ```
 
@@ -14158,7 +14158,7 @@ Model Comparison:
 ### Run Double Slit Test
 
 ```bash
-cd research_uet/topics/0.9_Quantum_Nonlocality/Code/double_slit
+cd docs/topics/0.9_Quantum_Nonlocality/Code/double_slit
 python test_double_slit.py
 ```
 
@@ -14319,13 +14319,13 @@ UET Prediction: S = 2.8284
 
 STDERR:
 Traceback (most recent call last):
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.9_Quantum_Nonlocality\Code\double_slit\test_quantum_mechanics.py", line 288, in <module>
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.9_Quantum_Nonlocality\Code\double_slit\test_quantum_mechanics.py", line 288, in <module>
     run_all_tests()
     ~~~~~~~~~~~~~^^
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.9_Quantum_Nonlocality\Code\double_slit\test_quantum_mechanics.py", line 256, in run_all_tests
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.9_Quantum_Nonlocality\Code\double_slit\test_quantum_mechanics.py", line 256, in run_all_tests
     pass1, err1 = test_bell_inequality()
                   ~~~~~~~~~~~~~~~~~~~~^^
-  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\research_uet\topics\0.9_Quantum_Nonlocality\Code\double_slit\test_quantum_mechanics.py", line 127, in test_bell_inequality
+  File "c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.8.7\docs\topics\0.9_Quantum_Nonlocality\Code\double_slit\test_quantum_mechanics.py", line 127, in test_bell_inequality
     print(f"  (With \u03b2 = 1.0, full entanglement)")
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\santa\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode

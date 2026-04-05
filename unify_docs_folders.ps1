@@ -1,4 +1,4 @@
-$root = "research_uet/topics"
+$root = "docs/topics"
 Get-ChildItem -Path $root -Directory | ForEach-Object {
     $topicPath = $_.FullName
     $docsPath = Join-Path $topicPath "Docs"
