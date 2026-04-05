@@ -50,7 +50,7 @@ Repository = "https://github.com/unityequilibrium/Equation-UET-v0.9.0.git"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["research_uet*"]
+include = ["docs*"]
 namespaces = false
 
 [tool.black]

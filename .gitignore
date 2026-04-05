@@ -16,6 +16,8 @@ runs_*/
 *.fit
 *.fit.gz
 *.csv
+!docs/topics/**/*.csv
+!docs/core/**/*.csv
 timeseries*.csv
 research_uet/zip/
 /research_uet/lab/outputs/
