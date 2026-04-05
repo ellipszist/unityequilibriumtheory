@@ -116,17 +116,17 @@ python run_diagnostics.py
 
 ### 2. Run a Single Topic
 ```bash
-python research_uet/scripts/Runners/run_topic_tests.py 0.1
+python docs/scripts/Runners/run_topic_tests.py 0.1
 ```
 
 ### 3. Run the "Big 5" Anomalies
 ```bash
-python research_uet/scripts/run_physics_anomalies.py
+python docs/scripts/run_physics_anomalies.py
 ```
 
 ### 3. Generate Paper Figures
 ```bash
-python research_uet/scripts/Reporting/collect_paper_figures.py
+python docs/scripts/Reporting/collect_paper_figures.py
 ```
 
 ---

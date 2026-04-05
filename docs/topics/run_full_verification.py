@@ -40,7 +40,7 @@ PRIORITY_TOPICS = [
 
 def find_test_scripts(root_dir):
     test_scripts = []
-    topics_dir = os.path.join(root_dir, "research_uet", "topics")
+    topics_dir = os.path.join(root_dir, "docs", "topics")
 
     if not os.path.exists(topics_dir):
         print(f"❌ Critical Error: Topics directory not found at {topics_dir}")
@@ -95,13 +95,13 @@ def run_script(path):
         env["PYTHONIOENCODING"] = "utf-8"
 
         # Robust PYTHONPATH injection (borrowed from run_solution.py)
-        # Adds project root, research_uet, and lab folders to ensure all imports work
+        # Adds project root, docs, and lab folders to ensure all imports work
         lab_path = os.path.join(project_root, "lab")
-        research_uet_path = os.path.join(project_root, "research_uet")
+        docs_path = os.path.join(project_root, "docs")
 
         extra_paths = [
             project_root,
-            research_uet_path,
+            docs_path,
             lab_path,
             # Add specific lab subdirectories often used in imports
             os.path.join(lab_path, "01_galaxy_dynamics"),

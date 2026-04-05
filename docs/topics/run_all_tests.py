@@ -102,11 +102,11 @@ def run_test(test_path):
         # Inject standard paths
         project_root = TOPICS.parent.parent
         lab_path = project_root / "lab"
-        research_uet = project_root / "research_uet"
+        docs = project_root / "docs"
 
         extra_paths = [
             str(project_root),
-            str(research_uet),
+            str(docs),
             str(lab_path),
             str(lab_path / "01_galaxy_dynamics"),
             str(lab_path / "02_gravitational"),
