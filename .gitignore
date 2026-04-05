@@ -79,3 +79,12 @@ node_modules/
 .obsidian/
 /uet_history/
 /uet_knowledge_state.json
+
+# Local Cache and States
+uet_knowledge_state.json
+uet_miner/target/
+uet_miner/*.exe
+uet_miner/*_linux
+uet_web/.next/
+uet_web/node_modules/
+uet_web/.env
