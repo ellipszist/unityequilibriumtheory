@@ -3,7 +3,15 @@ import json
 import re
 
 def audit_aeo():
-    base_dir = "topics"
+    # Fix: Get absolute path relative to script location
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    # The script is in research_uet/scripts/verify/, so topics is at ../../../topics
+    base_dir = os.path.abspath(os.path.join(script_dir, "..", "..", "topics"))
+    
+    if not os.path.exists(base_dir):
+        print(f"❌ Error: Cannot find topics directory at {base_dir}")
+        return
+
     report = []
     
     # Get all topic directories
@@ -20,8 +28,11 @@ def audit_aeo():
             with open(readme_path, "r", encoding="utf-8") as f:
                 content = f.read()
                 
-                # Check for Schema.org JSON-LD (in HTML comments)
-                if '"@context": "https://schema.org"' in content:
+                # Check for Schema.org (JSON-LD or Microdata)
+                has_json_ld = '"@context": "https://schema.org"' in content
+                has_microdata = 'itemtype="https://schema.org/' in content or 'itemtype="http://schema.org/' in content
+                
+                if has_json_ld or has_microdata:
                     status["schema"] = "✅ VALID"
                 
                 # Check for AI-Digest (EN/TH)
@@ -43,7 +54,10 @@ def audit_aeo():
         print(f"{r['topic']:<45} | {r['schema']:<12} | {r['digest']:<12}")
 
     passed_count = sum(1 for r in report if r["pass"])
-    print(f"\nSummary: {passed_count}/{len(topics)} topics passed ({(passed_count/len(topics))*100:.1f}%)")
+    if len(topics) > 0:
+        print(f"\nSummary: {passed_count}/{len(topics)} topics passed ({(passed_count/len(topics))*100:.1f}%)")
+    else:
+        print("\nSummary: No topics found to audit.")
 
 if __name__ == "__main__":
     audit_aeo()

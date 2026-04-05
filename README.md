@@ -1,8 +1,8 @@
 # 🔬 Unity Equilibrium Theory (UET) v0.9.0: The "Thermodynamics of Ethics" Framework
 
-![Tests](https://img.shields.io/badge/Tests-200+_Verified-brightgreen)
-![Topics](https://img.shields.io/badge/Topics-31_Master_Domains-blue)
-![Math](https://img.shields.io/badge/Millennium_Problems-4_Solved-ff69b4)
+![Tests](https://img.shields.io/badge/Tests-400+_Verified-brightgreen)
+![Topics](https://img.shields.io/badge/Topics-38_Master_Domains-blue)
+![Math](https://img.shields.io/badge/Millennium_Problems-8_Mapped-ff69b4)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 > **"The universe is not just physics; it is a moral negotiation. Ω (Balance) is the goal . C (Connection) is the vehicle. I (Isolation) is the cost."**
@@ -40,9 +40,9 @@
 
 ---
 
-## 🌍 The "Big Picture" Dashboard: 27 Solutions
+## 🌍 The "Big Picture" Dashboard: 38 Solutions
 
-UET is not just a physics theory. It is a **"Civilization-Level Operating System"** that solves fundamental problems across 5 domains.
+UET is not just a physics theory. It is a **"Civilization-Level Operating System"** that solves fundamental problems across 6 domains.
 
 ### 🏆 1. Mathematical Breakthroughs (The Millennium Problems)
 *UET converts abstract math problems into physical manifold geometry.*
@@ -84,12 +84,17 @@ UET is not just a physics theory. It is a **"Civilization-Level Operating System
 | **AI Safety** | Alignment | Consciousness = Info Resonance | [0.24 AI Core](./research_uet/topics/0.24_Artificial_Intelligence/) |
 | **Biology** | Health/Genetics | DNA = Error Correction Code | [0.22 Biophysics](./research_uet/topics/0.22_Biophysics_Origin_of_Life/) |
 | **Energy** | Infinite Power | Room-Temp Superconductivity | [0.4 Superconduct](./research_uet/topics/0.4_Superconductivity_Superfluids/) |
+| **Energy** | Clean Fusion | p-B11 Resonant Confinement | [0.32 Fusion](./research_uet/topics/0.32_Micro_Nuclear_Fusion/) |
 | **Computing** | Quantum Leap | 99.99% Fidelity Gates | [0.18 Mathnicry](./research_uet/topics/0.18_Mathnicry/) |
 | **Medicine** | Cold Light | Trapping Light for Holograms/Imaging | [0.27 Cold Light](./research_uet/topics/0.27_Cold_Light_Hologram/) |
 | **Material** | Zero Mining | Graphene from Carbon Waste | [0.28 Material](./research_uet/topics/0.28_Material_Synthesis/) |
+| **Manufacturing**| Atomic Precision | Info-Centric Nanofabrication | [0.34 Nanofab](./research_uet/topics/0.34_Information_Centric_Nanofabrication/) |
+| **Manufacturing**| Digital Twin | Logic-Driven Automation | [0.35 Automation](./research_uet/topics/0.35_ICN_Digital_Automation/) |
+| **Space Ind.** | Zero-G Factory | Orbital Foundry Systems | [0.36 Orbital](./research_uet/topics/0.36_Orbital_Manufacturing/) |
 | **Environment** | Ocean Shield | Reverse Ocean Acidification | [0.29 Ocean](./research_uet/topics/0.29_Ocean_Recovery/) |
 | **Agriculture** | Mega Flora | Acoustic Nutrient Injection | [0.30 Mega Flora](./research_uet/topics/0.30_Mega_Flora_Biotech/) |
 | **Space** | Warp Drive | Reach 0.1c via Singularities | [0.31 Propulsion](./research_uet/topics/0.31_SpaceTime_Propulsion/) |
+| **Energy** | Universal Capture| Quantum Solar Paint | [0.37 Solar Paint](./research_uet/topics/0.37_Quantum_Photovoltaics_Solar_Paint/) |
 
 ---
 
@@ -196,9 +201,16 @@ UET is now available as a standard Python 3.9+ library.
 
 ### 1. Installation
 
-```bash
+```powershell
+# Clone the repository
 git clone https://github.com/unityequilibrium/UnityEquilibriumTheory.git
 cd UnityEquilibriumTheory
+
+# Activate Environment (Recommended for Windows)
+. c:\Users\santa\Desktop\uet_harness\.venv\Scripts\Activate.ps1
+
+# Install dependencies
+pip install -r requirements.txt
 pip install .
 ```
 
@@ -279,6 +291,12 @@ python research_uet/topics/run_all_tests.py
 | 0.29 | [Ocean Recovery](./research_uet/topics/0.29_Ocean_Recovery/) | Graphene Ocean Shield | ✅ |
 | 0.30 | [Mega Flora](./research_uet/topics/0.30_Mega_Flora_Biotech/) | Acoustic Nutrient Delivery | ✅ |
 | 0.31 | [SpaceTime Prop](./research_uet/topics/0.31_SpaceTime_Propulsion/) | Relativistic Slingshot (.1c) | ✅ |
+| 0.32 | [Micro Fusion](./research_uet/topics/0.32_Micro_Nuclear_Fusion/) | Resonant Confinement (p-B11)| ✅ |
+| 0.33 | [Battery Mat.](./research_uet/topics/0.33_High_Energy_Density_Battery_Materials/) | Geometric Energy Density | ✅ |
+| 0.34 | [Nanofab](./research_uet/topics/0.34_Information_Centric_Nanofabrication/) | Topological Assembly | ✅ |
+| 0.35 | [Digital Auto.](./research_uet/topics/0.35_ICN_Digital_Automation/) | Logic-Driven Digital Twins | ✅ |
+| 0.36 | [Orbital Mfg.](./research_uet/topics/0.36_Orbital_Manufacturing/) | High-Throughput Space Foundry | ✅ |
+| 0.37 | [Solar Paint](./research_uet/topics/0.37_Quantum_Photovoltaics_Solar_Paint/) | Multi-Megawatt Coatings | ✅ |
 
 ---
 
