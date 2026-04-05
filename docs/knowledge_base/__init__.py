@@ -15,7 +15,7 @@ Usage:
     from docs.knowledge_base import VectorStore, UetTensorizer, OmegaSearch
 """
 
-__version__ = "0.8.7"
+__version__ = "0.9.0"
 
 # Lazy imports to avoid loading everything on package import
 __all__ = [

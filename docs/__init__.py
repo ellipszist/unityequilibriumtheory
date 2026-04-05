@@ -16,7 +16,7 @@ import importlib.util
 from pathlib import Path
 
 # Version
-__version__ = "0.8.7"
+__version__ = "0.9.0"
 
 # Exposes the package root for all sub-modules
 def _find_uet_root():

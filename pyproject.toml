@@ -45,8 +45,8 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/unityequilibrium/Equation-UET-v0.9.0"
-Repository = "https://github.com/unityequilibrium/Equation-UET-v0.9.0.git"
+Homepage = "https://github.com/unityequilibrium/UnityEquilibriumTheory"
+Repository = "https://github.com/unityequilibrium/UnityEquilibriumTheory.git"
 
 [tool.setuptools.packages.find]
 where = ["."]

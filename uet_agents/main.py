@@ -19,7 +19,7 @@ from uet_agents.orchestrator import OrchestratorAgent
 
 def main():
     print("=" * 60)
-    print("  UET MULTI-AGENT SYSTEM (v0.8.7)")
+    print("  UET MULTI-AGENT SYSTEM (v0.9.0)")
     print("  Initializing components...")
     print("=" * 60)
 

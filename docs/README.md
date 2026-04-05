@@ -108,7 +108,7 @@ Navigation guide for the `docs/` ecosystem:
 
 ### 2. The Evidence (`/topics`)
 *   **Path**: [`docs/topics/`](./topics/)
-*   **Purpose**: The **31 Research Domains** (Galaxy Rotation, AI, Economics, etc.).
+*   **Purpose**: The **38 Research Domains** (Galaxy Rotation, AI, Economics, etc.).
 *   **Architecture**: Follows the [Platinum Standard](./topics/Work/how%20to%20README.md).
 
 ### 3. The Documentation (`/docs`)

@@ -40,6 +40,44 @@
 
 ---
 
+## 📁 Project Structure
+
+> **Important:** All research code, engines, and data live inside `docs/` — this folder serves dual purpose as both the **GitHub Pages source** and the **main research codebase**.
+
+```
+uet_harness/
+├── docs/                          ← 🔬 Research Portal (GitHub Pages + Python Package)
+│   ├── __init__.py                ← Python package entry: `import docs as uet`
+│   ├── _config.yml                ← Jekyll config for GitHub Pages
+│   ├── core/                      ← UET Master Equation & core solvers
+│   ├── topics/                    ← 📚 All 38 research topics (engines, proofs, data)
+│   │   ├── 0.0_Grand_Unification/ ← Omni Engine (imports all sub-engines)
+│   │   ├── 0.1_Galaxy_Rotation/   ← Each topic follows the same structure:
+│   │   │   ├── Code/01_Engine/    │     Engine (solver)
+│   │   │   ├── Code/02_Proof/     │     Mathematical proofs
+│   │   │   ├── Code/03_Research/  │     Experiments & validation
+│   │   │   ├── Data/              │     Reference datasets
+│   │   │   ├── Result/            │     Output figures & logs
+│   │   │   ├── Doc/               │     Documentation & papers
+│   │   │   └── README.md          │     Topic overview
+│   │   └── ...                    ← Topics 0.2 through 0.37
+│   ├── knowledge_base/            ← Vector store & tensorizer
+│   ├── scripts/                   ← Runners, audits, data tools
+│   └── Docs/                      ← Framework standards & guides
+├── uet_core/                      ← 🦀 Rust: UET Master Equation solver
+├── uet_miner/                     ← 🦀 Rust: Proof-of-Useful-Work miner
+├── uet_security/                  ← 🦀 Rust: Quantum-resistant crypto
+├── uet_agents/                    ← 🤖 AI agent framework
+├── uet_api/                       ← 🌐 REST API server
+├── uet_web/                       ← 💻 Next.js web frontend
+├── uet_platform/                  ← 🏗️ Platform orchestration
+└── requirements.txt               ← Python dependencies
+```
+
+> **Note:** The `docs/` folder was previously named `research_uet/`. All internal paths have been updated. If you find outdated references, please open an issue.
+
+---
+
 ## 🌍 The "Big Picture" Dashboard: 38 Solutions
 
 UET is not just a physics theory. It is a **"Civilization-Level Operating System"** that solves fundamental problems across 6 domains.
