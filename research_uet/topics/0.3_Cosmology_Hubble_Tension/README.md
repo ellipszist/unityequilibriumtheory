@@ -1,17 +1,17 @@
+---
+layout: default
+title: "UET Topic 0.3: Cosmology & Hubble Tension"
+description: "Solving the Hubble Tension via Information Propagator interaction and SpaceTime Viscosity (eta_0)."
+author: "Unity Equilibrium Team"
+keywords: "Cosmology, Hubble Tension, SpaceTime Viscosity, UET"
+---
+
 # 🌌 0.3 Cosmology & Hubble Tension
 
 <div itemscope itemtype="https://schema.org/ScholarlyArticle">
   <meta itemprop="name" content="UET Topic 0.3: Cosmology & Hubble Tension">
   <meta itemprop="description" content="Solving the Hubble Tension via Information Propagator interaction and SpaceTime Viscosity (eta_0).">
   <meta itemprop="author" content="Unity Equilibrium Theory">
-  
-  <div style="display: none;">
-    <span itemprop="about">Cosmology</span>
-    <span itemprop="about">Hubble Tension</span>
-    <span itemprop="about">Dark Energy</span>
-    <span itemprop="about">SpaceTime Viscosity</span>
-    <span itemprop="about">UET</span>
-  </div>
 </div>
 
 > [!NOTE]
