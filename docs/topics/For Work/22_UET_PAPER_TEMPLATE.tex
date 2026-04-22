@@ -1,0 +1,137 @@
+\documentclass[11pt,a4paper,oneside]{article}
+
+% --- Core Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{enumitem}
+
+% --- Document Layout ---
+\geometry{
+    a4paper,
+    total={170mm,257mm},
+    left=20mm,
+    top=20mm,
+}
+
+% --- Custom Colors & Links ---
+\definecolor{uetgreen}{HTML}{2D5A27}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=uetgreen,
+    filecolor=magenta,
+    urlcolor=uetgreen,
+    citecolor=uetgreen,
+}
+
+% --- Title Information ---
+\title{\textbf{Universal Equilibrium Theory: [Topic Title]}}
+\author{Unity Equilibrium Group \\ \small \href{https://github.com/unityequilibrium}{github.com/unityequilibrium}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\textbf{Problem:} [State the bounded scientific or technical question.] \\
+\textbf{Method:} [State the model, derivation, or benchmark method used.] \\
+\textbf{Result:} [State the main measurable outcome conservatively.] \\
+\textbf{Scope:} [State whether the evidence is internal benchmark, external replication, or another bounded class.]
+\end{abstract}
+
+\section{Introduction}
+State the specific problem, why it matters, and how this paper is scoped. Keep the framing
+focused on one topic-scale question rather than the whole repository ambition.
+
+\section{Theoretical Framework}
+Present the exact model, derivation, or conceptual framework used for this topic.
+\begin{equation}
+    \Omega(C) = \alpha(C^2 - C0^2)^2 + \beta C + \kappa (\nabla C)^2
+\end{equation}
+State assumptions explicitly and avoid stronger wording than the evidence supports.
+
+\subsection{Conceptual Logic Map}
+Use a figure only if it clarifies the method or evidence flow.
+
+\begin{figure}[h]
+    \centering
+    % \includegraphics[width=0.8\textwidth]{../Result/01_Showcase/Social_Proof.png}
+    \fbox{
+        \begin{minipage}{0.8\textwidth}
+            \centering
+            \vspace{2cm}
+            [INSERT METHOD OR EVIDENCE FLOW DIAGRAM HERE] \\
+            \textit{(Problem $\rightarrow$ Method $\rightarrow$ Evidence)}
+            \vspace{2cm}
+        \end{minipage}
+    }
+    \caption{Conceptual architecture for [Topic Area].}
+\end{figure}
+
+\section{Data Integrity and Sources}
+\textbf{Primary data source:} [Name]. \\
+\textbf{Reference ID:} [DOI / Publication URL]. \\
+\textbf{Preprocessing note:} [How the local working copy relates to the upstream source.]
+
+\section{Methodology}
+Describe the workflow so another reviewer can understand the code, data, metrics, and
+thresholds used.
+\begin{itemize}
+    \item \textbf{Engine or method path:} [Engine Name or script]
+    \item \textbf{Verification path:} [Proof or benchmark script]
+    \item \textbf{Scale or regime:} [Planck / Macroscopic / Astrophysical / Other]
+    \item \textbf{Fitting or calibration used:} [Yes/No, with note]
+\end{itemize}
+
+\section{Results}
+Present results with explicit metrics, baselines, and uncertainty-aware interpretation.
+\begin{table}[h!]
+  \centering
+  \caption{Comparison between the studied approach and baseline.}
+  \begin{tabular}{@{}lll@{}}
+    \toprule
+    Metric & Baseline & This work \\ \midrule
+    Primary metric & [Value] & [Value] \\
+    Threshold status & [Value] & [Pass/Fail with condition] \\
+    Notes & [Context] & [Context] \\ \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Discussion}
+Explain what the result means, what alternative explanations remain, and what still limits
+interpretation.
+
+\section{Limitations}
+State what is still speculative, internally bounded, fitted, or not yet externally
+replicated.
+
+\section{Conclusion}
+Summarize the bounded contribution and avoid claiming more than the paper actually supports.
+
+\section*{Open Source and Reproducibility}
+The code, data manifests, and verification scripts are available at: \\
+\url{https://github.com/unityequilibrium/Lab_uet_harness}
+
+\section*{Reproducibility Notes}
+\begin{itemize}
+    \item Repository version: [version]
+    \item Verification command: [command]
+    \item Artifact path: [Result/artifacts/...json]
+\end{itemize}
+
+\bibliographystyle{plain}
+\section*{Key Academic References}
+\begin{enumerate}
+    \item [Author Name], \textit{[Title]}, DOI: [10.xxxx/xxx]
+    \item [Benchmark or comparison source]
+\end{enumerate}
+
+\end{document}
