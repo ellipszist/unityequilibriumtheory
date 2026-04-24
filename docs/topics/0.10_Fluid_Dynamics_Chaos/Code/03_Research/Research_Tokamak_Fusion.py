@@ -10,6 +10,25 @@ In UET, the magnetic flux function (psi) maps to the Unity Potential (C).
 We test if UET can maintain a stable "D-Shape" plasma (ITER-like) without ELM instability.
 """
 
+import sys
+from pathlib import Path
+
+# --- ROBUST UET BOOTSTRAP ---
+def _bootstrap():
+    curr = Path(__file__).resolve()
+    for parent in [curr] + list(curr.parents):
+        if (parent / "docs").exists() and (parent / "docs" / "core").exists():
+            if str(parent) not in sys.path:
+                sys.path.insert(0, str(parent))
+            return parent
+    return None
+
+ROOT = _bootstrap()
+if not ROOT:
+    print("CRITICAL: UET docs root not found!")
+    sys.exit(1)
+
+
 
 from docs import ROOT_PATH
 from pathlib import Path

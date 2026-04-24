@@ -15,6 +15,25 @@ Scale: quantum (v0.9.5 Hardened)
 Standard: Core-compliant (uses get_params)
 """
 
+import sys
+from pathlib import Path
+
+# --- ROBUST UET BOOTSTRAP ---
+def _bootstrap():
+    curr = Path(__file__).resolve()
+    for parent in [curr] + list(curr.parents):
+        if (parent / "docs").exists() and (parent / "docs" / "core").exists():
+            if str(parent) not in sys.path:
+                sys.path.insert(0, str(parent))
+            return parent
+    return None
+
+ROOT = _bootstrap()
+if not ROOT:
+    print("CRITICAL: UET docs root not found!")
+    sys.exit(1)
+
+
 import numpy as np
 import sys
 from pathlib import Path
@@ -248,17 +267,26 @@ class UETNeutrinoSolver(UETBaseSolver):
         [UPGRADE] Predict absolute neutrino mass scale M_nu.
         Mechanism: Type-I See-Saw analog with Information Scale M_I.
         m_nu = v^2 / M_I
+
+        Unit policy:
+        - v_ew is treated in GeV
+        - M_I must therefore also be expressed in GeV
+        - the final result is converted to eV
+
+        The legacy implementation mixed SI-kilogram Planck mass from the
+        shared core with an electroweak scale written in GeV, and also
+        applied an extra 1e-6 bridge factor. That broke dimensional
+        consistency and inflated the predicted mass catastrophically.
         """
         if INTEGRITY_KILL_SWITCH:
             return float("nan")
 
-        # Information Scale derived from Unification (Axiom 12)
-        # Ratio of Planck Mass to EW scale via Fine Structure constant
-        # M_I = M_planck * alpha_EM
-        M_I = M_PLANCK * ALPHA_EM_MZ * 1e-6 # GeV range
-        
-        v_ew_gev = 246.22 
-        return (v_ew_gev**2) / M_I
+        planck_mass_gev = 1.22089e19
+        M_I_gev = planck_mass_gev * ALPHA_EM_MZ
+
+        v_ew_gev = 246.22
+        m_nu_gev = (v_ew_gev**2) / M_I_gev
+        return m_nu_gev * 1e9
 
 
 # =============================================================================

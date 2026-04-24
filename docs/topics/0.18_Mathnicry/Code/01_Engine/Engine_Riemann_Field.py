@@ -5,6 +5,25 @@ A Manifold Engine for Complex Potential Analysis.
 Maps the Riemann Zeta Function to UET Equilibrium Sinks.
 """
 
+import sys
+from pathlib import Path
+
+# --- ROBUST UET BOOTSTRAP ---
+def _bootstrap():
+    curr = Path(__file__).resolve()
+    for parent in [curr] + list(curr.parents):
+        if (parent / "docs").exists() and (parent / "docs" / "core").exists():
+            if str(parent) not in sys.path:
+                sys.path.insert(0, str(parent))
+            return parent
+    return None
+
+ROOT = _bootstrap()
+if not ROOT:
+    print("CRITICAL: UET docs root not found!")
+    sys.exit(1)
+
+
 import numpy as np
 import math
 

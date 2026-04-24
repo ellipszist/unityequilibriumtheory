@@ -1,0 +1,13 @@
+{
+    "Natural_Sompong": {
+        "rigidity_pa": 1200000000.0,
+        "strength_to_weight": 0.7999999999999999,
+        "alignment_factor": 1.0
+    },
+    "UET_Guided_Sompong": {
+        "rigidity_pa": 3750000000.0,
+        "strength_to_weight": 2.5,
+        "alignment_factor": 3.125
+    },
+    "Improvement_Multiplier": 3.1250000000000004
+}

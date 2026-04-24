@@ -1,126 +1,70 @@
 ---
 layout: article
-title: "UET Topic 0.21: Yang Mills Mass Gap"
-description: "Research module for Yang Mills Mass Gap within the Unity Equilibrium Theory framework."
+title: "UET Topic 0.21: Yang-Mills Mass Gap"
+description: "Structured documentation for the Yang-Mills mass-gap topic in the UET repository."
 ---
 
-# ⚛️ 0.21 Yang-Mills Mass Gap
+# 0.21 Yang-Mills Mass Gap
 
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.21: Yang-Mills Mass Gap",
-  "description": "Explaining the Yang-Mills Mass Gap as the Information Initialization Cost of the vacuum.",
-  "about": "Yang-Mills Theory, Mass Gap, Lattice QCD, Confinement, UET"
-}
--->
+## Problem
 
-> [!NOTE]
-> **AI-Digest**: UET defines the Mass Gap as the 'Information Initialization Cost' of the vacuum. Non-linear self-interaction ($\beta I^3$) creates a restoring force that ensures confinement and a massive gap ($\Delta > 0$). / UET นิยาม 'ช่องว่างมวล' (Mass Gap) ว่าคือต้นทุนการเริ่มต้นข้อมูลของสุญญากาศ แรงต้านที่เกิดจากการปฏิสัมพันธ์ในตัวเองทำให้เกิดการกักขังอนุภาคและมีมวลเกิดขึ้นจริง
+This topic studies whether UET-inspired mass-gap mechanisms can reproduce selected
+repository benchmark behavior related to confinement and glueball-mass scales.
 
-![Status](https://img.shields.io/badge/Status-HYPOTHESIS-yellow)
-![Data](https://img.shields.io/badge/Data-Lattice_QCD_Benchmarks-blue)
-![DOI](https://img.shields.io/badge/DOI-10.1103%2FPhysRevD.100.034503-orange)
+## Assumptions and scope
 
-> **"Mass Gap" คือ "Information Initialization Cost" ของ Vacuum**  
-> **พิสูจน์ $\Delta > 0$ ผ่าน Discrete Information Quanta**
+- Scope: internal exploratory modeling and benchmark comparison against cited lattice-QCD
+  references
+- Out of scope: claiming the Clay Millennium Problem is solved
 
-### 🔬 Research Keywords
-`Yang-Mills Theory`, `Mass Gap Problem`, `Lattice QCD`, `Information Field Theory`, `Quantum Chromodynamics`, `Clay Millennium Problem`
+## Data sources
 
----
+- Topic-local lattice working copy:
+  - `Data/03_Research/lattice_qcd_spectrum.json`
+- Reference citation:
+  - Morningstar and Peardon in [docs/references.bib](/C:/Users/santa/Desktop/uet_harness/docs/references.bib:1)
 
-## 1. 📂 5x4 Grid Structure
+## Method summary
 
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | Analysis of Mass Gap and Confinement Proof. |
-| **Ref/** | Lattice QCD Benchmarks. |
-| **Data/** | Gauge field configuration logs. |
-| **Code/** | Logic levels: 01_Engine (Mass Gap), 02_Proof (Confinement). |
-| **Result/** | Energy spectrum and glueball mass plots. |
+- Engine: `Code/01_Engine/Engine_Mass_Gap.py`
+- Proof script: `Code/02_Proof/Proof_Mass_Gap.py`
+- Research comparison: `Code/03_Research/Research_Mass_Gap.py`
 
----
+Supporting standard files:
 
----
+- [METHOD.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.21_Yang_Mills_Mass_Gap/METHOD.md:1)
+- [DATA_MANIFEST.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.21_Yang_Mills_Mass_Gap/DATA_MANIFEST.md:1)
+- [VERIFICATION_SPEC.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.21_Yang_Mills_Mass_Gap/VERIFICATION_SPEC.md:1)
+- [BASELINE_COMPARISON.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.21_Yang_Mills_Mass_Gap/BASELINE_COMPARISON.md:1)
+- [LIMITATIONS.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.21_Yang_Mills_Mass_Gap/LIMITATIONS.md:1)
 
-## 📖 Overview
+## Parameters and fitting status
 
-**Yang-Mills Theory** describes the Strong Nuclear Force. The problem is proving that its particles (Gluons) have mass.
+- `Research_Mass_Gap.py` performs a best-fit style sweep over `alpha`
+- Public documentation must therefore classify this topic as a calibration-oriented internal
+  benchmark, not as a proof of `Delta > 0` for general Yang-Mills theory
 
-| Aspect | Description |
-|:-------|:------------|
-| **Question** | Why is the Strong Force short-range (Massive)? |
-| **Standard Model** | Mass Gap is an experimental fact, but not proven mathematically |
-| **UET Solution** | Information Surface Tension (Non-Abelian Binding) |
+## Metrics and thresholds
 
----
+- Current topic script reports a best-fit mass prediction and relative error against the
+  selected lattice reference
+- No repository-wide theorem-level threshold is recognized in this standards pass
 
-## 🎯 The Problem
+## Baselines
 
-### Millenium Prize (Clay Institute)
+- Selected lattice-QCD glueball mass values act as the current benchmark reference
 
-> "Prove that for any compact simple gauge group G, a non-trivial quantum Yang-Mills theory exists on $\mathbb{R}^4$ and has a mass gap $\Delta > 0$."
+## Limitations and open risks
 
-| Issue | Description |
-|:------|:------------|
-| **Scale Invariance** | Classical equations have no scale $\to$ Massless? |
-| **Confinement** | We never see free quarks/gluons |
-| **Non-Linearity** | Self-interaction makes math incredibly hard |
+- The topic uses a calibration sweep and should say so plainly
+- Internal match to selected benchmark values does not establish a general mathematical proof
+- The local dataset package is topic-scoped rather than a full external replication kit
 
----
+## Reproducibility
 
-## ✅ UET Solution
+- Verification command: `python docs/topics/0.21_Yang_Mills_Mass_Gap/Code/03_Research/Research_Mass_Gap.py`
+- Artifact contract: see [VERIFICATION_SPEC.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.21_Yang_Mills_Mass_Gap/VERIFICATION_SPEC.md:1)
 
-### Core Insight
+## Current readiness status
 
-The **Cubic Interaction Term** ($\beta I^3$) acts as a restoring force (Effective Potential $V \sim I^4$).
-
-$$ E(R) \approx \frac{A}{R} + B R^3 $$
-
-This function has a minimum at $R > 0$, meaning the wave packet cannot disperse. It is **Confined**. Energy at this minimum is the **Mass**.
-
----
-
-## 📊 Test Results
-
-### Summary
-
-| Test | Data Source | Result | Status |
-|:-----|:------------|:------:|:------:|
-| Mass Gap Existence | Simulation | Δm ≈ 0.45 GeV | ✅ PASS |
-| Confinement | Proof | Radius is Finite | ✅ PASS |
-| Broken Symmetry | Theory | $\beta > 0$ confirmed | ✅ PASS |
-
----
-
-## 2. ⚡ Quick Start
-
-```powershell
-cd c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.9.0
-
-# 1. Mass Gap Engine
-python docs/topics/0.21_Yang_Mills_Mass_Gap/Code/01_Engine/Engine_Mass_Gap.py
-
-# 2. Confinement Proof
-python docs/topics/0.21_Yang_Mills_Mass_Gap/Code/02_Proof/Proof_Mass_Gap.py
-
-# 3. Research Sweep
-python docs/topics/0.21_Yang_Mills_Mass_Gap/Code/03_Research/Research_Mass_Gap.py
-```
-
----
-
-## 📁 Files in This Module
-
-| Path | Content |
-|:-----|:--------|
-| `Code/01_Engine/` | Vacuum Energy Simulation |
-| `Code/02_Proof/` | Mathematical Proof of Minimum Energy |
-| `Doc/` | 3 Analysis Files (Thai) + English Ref |
-| `Data/` | Simulation Logs |
-
----
-
-[← Atomic Physics](../0.20_Atomic_Physics/README.md) | [→ Biophysics](../0.22_Biophysics_Origin_of_Life/README.md)
+`Structured`

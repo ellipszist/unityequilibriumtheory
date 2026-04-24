@@ -1,0 +1,19 @@
+{
+  "run_id": "1776706835_ICN_Hardened_SAW",
+  "simulation": "ICN_Hardened_SAW",
+  "status": "FAILED",
+  "timestamp": "Tue Apr 21 00:40:35 2026",
+  "duration_seconds": 0.5864622592926025,
+  "total_steps": 0,
+  "metadata": {
+    "nx": 64,
+    "ny": 128,
+    "dt": 0.01,
+    "kappa": 2.870978885078724e-39,
+    "beta": 2.870978885078724e-21,
+    "alpha": 1.0,
+    "C0": 1.0,
+    "phi_loss": 0.05
+  },
+  "final_state": null
+}

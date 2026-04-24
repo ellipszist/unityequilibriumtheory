@@ -14,51 +14,36 @@ Standard: Glass Box (metrics logged).
 import sys
 from pathlib import Path
 
-# --- ROBUST PATH FINDER (5x4 Grid Standard) ---
-_root = Path(__file__).resolve().parent
-while _root.name != 'docs' and _root.parent != _root:
-    _root = _root.parent
-if _root.name == 'docs':
-    sys.path.insert(0, str(_root.parent))
-    from docs import ROOT_PATH
-    root_path = ROOT_PATH
-else:
-    print("CRITICAL: Root path not found.")
+# --- ROBUST UET BOOTSTRAP ---
+def _bootstrap():
+    curr = Path(__file__).resolve()
+    for parent in [curr] + list(curr.parents):
+        if (parent / "docs").exists() and (parent / "docs" / "core").exists():
+            if str(parent) not in sys.path:
+                sys.path.insert(0, str(parent))
+            return parent
+    return None
+
+ROOT = _bootstrap()
+if not ROOT:
+    print("CRITICAL: UET docs root not found!")
     sys.exit(1)
 
 try:
-    import importlib.util
-
-    # Import Engine
-    engine_path = (
-        root_path
-        / "docs"
-        / "topics"
-        / "0.3_Cosmology_Hubble_Tension"
-        / "Code"
-        / "01_Engine"
-        / "Engine_Cosmology.py"
-    )
-    spec = importlib.util.spec_from_file_location("Engine_Cosmology", str(engine_path))
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    UETCosmologyEngine = mod.UETCosmologyEngine
-    H0_PLANCK = mod.H0_PLANCK
-    H0_SHOES = mod.H0_SHOES
+    # Use standardized folder mapping
+    topic_path = ROOT / "docs" / "topics" / "0.3_Cosmology_Hubble_Tension"
+    engine_dir = topic_path / "Code" / "01_Engine"
+    if str(engine_dir) not in sys.path:
+        sys.path.insert(0, str(engine_dir))
+        
+    from Engine_Cosmology import UETCosmologyEngine, H0_PLANCK, H0_SHOES
+    from docs.core.uet_glass_box import UETPathManager
 except Exception as e:
-    print(f"CRITICAL ERROR: Could not import Cosmology Engine: {e}")
+    print(f"CRITICAL ERROR: Could not setup Cosmology environment: {e}")
     sys.exit(1)
-
-from docs.core.uet_glass_box import UETPathManager
 
 import csv
 import os
-
-
-# Standardized UET Root Path
-from docs import ROOT_PATH
-
-root_path = ROOT_PATH
 
 
 def run_experiment():

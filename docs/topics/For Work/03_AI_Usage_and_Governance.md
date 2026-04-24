@@ -38,6 +38,7 @@ flowchart TD
 | reorganize folders and templates | yes | recommended |
 | summarize approved facts | yes | yes before promotion |
 | classify claim strength | yes, as draft | yes |
+| draft formula registry entries | yes, as draft | yes |
 | raise readiness status | no, not alone | mandatory |
 | invent supporting evidence | no | not allowed |
 
@@ -94,6 +95,21 @@ AI must not merge:
 When AI writes or rewrites topic documentation, it must make assumptions visible rather than
 smuggling them into prose.
 
+### Rule 6: AI must not write science by dictation alone
+
+If a human says what a formula or mechanism is supposed to mean, AI may:
+
+- transcribe it as a hypothesis
+- place it in a formula-audit queue
+- draft variable and unit placeholders
+
+AI may not:
+
+- upgrade it into a proved derivation
+- hide missing unit logic
+- fill missing physical steps with smooth prose
+- convert a desired result into a formula just because it sounds plausible
+
 ## Approved AI workflow
 
 1. Human defines the scope of work.
@@ -109,6 +125,9 @@ smuggling them into prose.
 - claims that one equation explains many unrelated domains at once
 - removal of limitation sections
 - references to results that are not tied to a script or artifact
+- formulas with constants that have no origin label
+- unit conversions that are not written down explicitly
+- prose that sounds like a derivation but names no variables or dimensions
 
 ## One-line principle
 
@@ -128,6 +147,7 @@ truth.
 - AI repeats stale counts or statuses from older docs
 - AI makes weak connections sound mathematically inevitable
 - humans accept polished wording without checking the underlying script or artifact
+- AI writes the formula the user seems to want instead of the formula the repo can justify
 
 ## Checklist
 
@@ -136,3 +156,4 @@ truth.
 - [ ] any status wording was reviewed by a human
 - [ ] uncertainty and limitations were preserved
 - [ ] no AI-generated sentence outruns the supporting artifact or derivation
+- [ ] no AI-generated formula outruns its stated origin, units, or proof status

@@ -1,102 +1,75 @@
 ---
 layout: article
 title: "UET Topic 0.17: Mass Generation"
-description: "Research module for Mass Generation within the Unity Equilibrium Theory framework."
+description: "Conservative overview for the mass-generation topic in the UET repository."
 ---
 
-# ⚖️ 0.17 Mass Generation
+# 0.17 Mass Generation
 
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.17: Mass Generation",
-  "description": "Defining Mass as 'Information Drag' and deriving the Lepton Mass Hierarchy and Koide Relation.",
-  "about": "Mass Generation, Higgs Mechanism, Information Drag, Koide Relation, UET"
-}
--->
+## Problem
 
-> [!NOTE]
-> **AI-Digest**: UET defines mass as informational inertia or 'drag'. This geometric approach derives the lepton mass hierarchy and the exact Koide Relation ($Q=2/3$), resolving the Standard Model hierarchy problem. / UET นิยาม 'มวล' ว่าคือแรงต้านเชิงข้อมูล (Drag) วิธีการเชิงเรขาคณิตนี้สรุปความสัมพันธ์ของลำดับมวลเลปตอนและพิสูจน์ค่า Koide Relation (2/3) ได้โดยไม่ต้องพึ่งพาค่าคงที่ Higgs แบบสุ่ม
+This topic studies whether UET-inspired information-drag or geometric-coupling ideas can
+reproduce selected lepton-mass hierarchy patterns and related benchmark ratios.
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Information_Drag-blueviolet)
-![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
-![Scientific_Rigor](https://img.shields.io/badge/Rigor-Koide_Solved-orange)
+## Current status
 
-> **"Mass is 'Informational Inertia'. UET explains the Lepton Mass Hierarchy and derives the Koide Relation (2/3) from the strength of Information Field Coupling."**
+- Metadata status: `Draft`
+- Audit tier: `B`
+- Data status: `real source referenced`
+- Claim posture: internal mass-model investigation, not a settled replacement for the Higgs mechanism
 
----
+## What currently exists
 
-## 1. 📂 5x4 Grid Structure
+- Engine, proof, and research scripts for mass-generation and lepton-mass tests
+- Topic-local data files including `Data/PDG_Leptons.csv` and
+  `Data/03_Research/pdg_2024_leptons.json`
+- Internal figures and analysis notes in `Doc/` and `Result/`
 
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | Analysis of Mass Mechanism and Koide Formula. |
-| **Ref/** | PDG 2024 (Lepon Masses). |
-| **Data/** | Electron, Muon, Tau mass values. |
-| **Code/** | Logic levels: 01_Engine (Mass Solver), 02_Proof (Koide). |
-| **Result/** | Mass Hierarchy Plots, Koide Ratio Verification. |
+## What this topic does not currently establish
 
----
+- It does not establish a full derivation of particle masses across the Standard Model.
+- It does not establish a theorem-level proof of the Koide relation from first principles.
+- It does not yet include the root standards package required for a structured topic.
+- Numerical matches on selected masses or ratios should therefore be treated as internal
+  benchmark behavior, not definitive proof of a new mass-generation law.
 
-## 🔗 Theory Connection
+## Data and evidence notes
 
-```mermaid
-graph LR
-    subgraph SM["Standard Model"]
-        Higgs["Higgs Field"]
-        Yukawa["Yukawa Couplings (9 params)"]
-        Hierarchy["Mass Hierarchy Problem"]
-    end
-    
-    subgraph UET["✅ UET Solution"]
-        InfoField["Information Field"]
-        Drag["Information Drag (Inertia)"]
-        Geo["Geometric Coupling"]
-    end
-    
-    Higgs --> Yukawa
-    Yukawa --> Hierarchy
-    
-    InfoField --> Drag
-    Drag --> Geo
-    Geo -->|"Explains"| Hierarchy
-    
-    style UET fill:#d4edda,stroke:#28a745
-```
+- The audit classifies the data posture as `real source referenced`, which is stronger than a
+  placeholder workflow but still below manifest-backed audit grade.
+- This topic still needs `DATA_MANIFEST.md` to tie PDG inputs to exact local files,
+  preprocessing steps, and benchmark roles.
 
----
+## Verification notes
 
-## 🎯 Problem & Solution
-- **The Problem:** The Standard Model has 9 arbitrary "Yukawa Coupling" numbers to define particle masses. It cannot explain *why* the Top Quark is heavy or the Electron is light (Hierarchy Problem).
-- **The Solution:** UET defines Mass as **"Information Drag"**. Particles are patterns in the Information Field. Complex patterns (Top Quark) experience more "drag" (Inertia) against the field than simple ones (Electron).
-- **The Result:** We successfully derive the Koide Relation ($Q=2/3$) for leptons, proving a geometric origin for mass ratios.
+- Candidate scripts:
+  - `Code/01_Engine/Engine_Mass_Higgs.py`
+  - `Code/02_Proof/Proof_Lepton_Mass.py`
+  - `Code/03_Research/Verify_Mass_Generation.py`
+- The topic still needs a root `VERIFICATION_SPEC.md` that defines which script is normative,
+  which metric matters, what baseline is used, and where artifacts must be saved.
 
----
+## Reproducibility
 
-## 📊 Test Results
-
-| Category | Test | Result | Status |
-| :--- | :--- | :--- | :--- |
-| **01_Engine** | Top Quark | **172.5 GeV** | ✅ PASS |
-| **01_Engine** | Electron | **0.511 MeV** | ✅ PASS |
-| **02_Proof** | Koide Formula | **Exact 2/3** | ✅ PASS |
-| **03_Research** | Mass Hierarchy | **Log-Linear** | ✅ PASS |
-
----
-
-## 2. ⚡ Quick Start
+Current exploratory commands:
 
 ```powershell
 python docs/topics/0.17_Mass_Generation/Code/01_Engine/Engine_Mass_Higgs.py
+python docs/topics/0.17_Mass_Generation/Code/03_Research/Verify_Mass_Generation.py
 ```
 
-## 📁 Key Files
+These commands are useful for internal inspection, but they are not yet an audit-grade
+verification workflow.
 
-- [Engine_Mass_Higgs.py](./Code/01_Engine/Engine_Mass_Higgs.py): The Mass Solver.
-- [ANALYSIS_Engine_Mass_Higgs.md](./Doc/ANALYSIS_Engine_Mass_Higgs.md): Detailed Drag Theory.
-- [Proof_Lepton_Mass.py](./Code/02_Proof/Proof_Lepton_Mass.py): Koide Proof.
+## Next remediation steps
 
----
-*Generated by UET Research Assistant - Paper-Ready Version*
+1. Create `METHOD.md` with explicit symbol definitions, assumptions, proof target, and
+   excluded cases.
+2. Create `DATA_MANIFEST.md` for the PDG and related comparison datasets.
+3. Create `VERIFICATION_SPEC.md` with metric, threshold, baseline, and artifact path.
+4. Add `LIMITATIONS.md` that separates selected ratio matching from any broader claim about
+   electroweak symmetry breaking or the full mass hierarchy problem.
+
+## Current readiness status
+
+`Draft`

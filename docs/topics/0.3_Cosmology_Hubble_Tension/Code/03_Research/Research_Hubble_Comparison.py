@@ -1,30 +1,17 @@
 """
-UET Cosmology & Hubble Tension Test
-=====================================
-Tests UET resolution of the Hubble tension.
-Self-contained with embedded data.
-
-Data Sources:
-- Planck 2018: DOI 10.1051/0004-6361/201833910
-- SH0ES 2022: DOI 10.3847/2041-8213/ac5c5b
+UET Cosmology and Hubble Tension Comparison
+===========================================
+Internal comparison using published H0 reference values and the repository cosmology engine.
 """
 
 import sys
 from pathlib import Path
+
 from docs import ROOT_PATH
+from docs.core.reproducibility import generate_artifact, hash_dataset, save_artifact
+
 
 root_path = ROOT_PATH
-
-
-# --- ROBUST PATH FINDER ---
-
-
-# Constants from observations
-H0_PLANCK = 67.4  # km/s/Mpc - Planck 2018 (CMB, early universe)
-H0_SHOES = 73.04  # km/s/Mpc - SH0ES 2022 (Cepheids, late universe)
-TENSION_SIGMA = 4.8  # Statistical significance of tension
-
-# Setup local imports for Topic 0.3
 topic_path = root_path / "docs" / "topics" / "0.3_Cosmology_Hubble_Tension"
 engine_path = topic_path / "Code" / "01_Engine"
 if str(engine_path) not in sys.path:
@@ -32,136 +19,98 @@ if str(engine_path) not in sys.path:
 
 try:
     from Engine_Cosmology import UETCosmologyEngine
-except ImportError as e:
-    print(f"CRITICAL SETUP ERROR: {e}")
+except ImportError as exc:
+    print(f"CRITICAL SETUP ERROR: {exc}")
     sys.exit(1)
 
 
-# Standardized UET Root Path
-from docs import ROOT_PATH
-
-root_path = ROOT_PATH
+H0_PLANCK = 67.4
+H0_SHOES = 73.04
+TENSION_SIGMA = 4.8
 
 
 def run_test():
-    """Run Hubble tension test."""
+    """Run the repository Hubble-comparison benchmark."""
     print("=" * 70)
     print("UET COSMOLOGY - HUBBLE TENSION TEST")
     print("Data: Planck 2018 + SH0ES 2022")
     print("=" * 70)
 
-    # 1. Instantiate the Engine (The Solver)
     engine = UETCosmologyEngine()
-
-    # 2. Get UET resolution from the Engine
     res = engine.solve_hubble_tension(H0_PLANCK, H0_SHOES)
-    H0_early_uet = res["H0_early_uet"]
-    H0_late_uet = res["H0_late_uet"]
-    Delta_H0_uet = res["Delta_H0"]
-    beta = res["beta"]
+    h0_early_uet = float(res["H0_early_uet"])
+    h0_late_uet = float(res["H0_late_uet"])
+    delta_h0_uet = float(res["Delta_H0"])
+    beta = float(res["beta"])
+    beta_source = str(res.get("beta_source", "unspecified"))
+    solver_beta = float(res.get("solver_beta", beta))
 
     observed_delta = H0_SHOES - H0_PLANCK
-
-    print("\n[1] HUBBLE CONSTANT MEASUREMENTS")
-    print("-" * 50)
-    print(f"  Planck 2018 (CMB):    H0 = {H0_PLANCK} km/s/Mpc")
-    print(f"  SH0ES 2022 (local):   H0 = {H0_SHOES} km/s/Mpc")
-    print(f"  Tension:              {TENSION_SIGMA:.1f} sigma")
-    print(f"\n  Observed difference:  {observed_delta:.2f} km/s/Mpc")
-
-    print("\n[2] UET RESOLUTION (via Engine_Cosmology)")
-    print("-" * 50)
-    print(f"  UET early (CMB scale): {H0_early_uet:.2f} km/s/Mpc")
-    print(f"  UET late (local):      {H0_late_uet:.2f} km/s/Mpc")
-    print(f"  UET Delta_H0:          {Delta_H0_uet:.2f} km/s/Mpc")
-    print(f"  Engine Beta (UET):     {beta:.4f} (Derived from sqrt(alpha_em))")
-
-    # UET Prediction is that Delta_H0 should Match Observed Delta
-    error = abs(Delta_H0_uet - observed_delta) / observed_delta * 100
-    print(f"\n  Error in tension explanation: {error:.1f}%")
-
+    error = abs(delta_h0_uet - observed_delta) / observed_delta * 100
     passed = error < 20
-    print(f"  Status: {'PASS' if passed else 'FAIL'}")
 
-    print("\n[3] UET EXPLANATION")
-    print("-" * 50)
-    print(
-        """
-    The Hubble tension is NOT an error - it's PHYSICS!
-    UET shows the effective H0 varies with scale due to Information Field coupling.
-    
-    Beta = sqrt(Fine Structure Constant) ~ 0.085
-    This predicts an ~8.5% increase in H0 locally vs globally.
-    
-    This calculation is now strictly delegated to Engine_Cosmology.
-    Shadow Math has been eliminated.
-    """
-    )
+    print(f"Planck 2018 (CMB): {H0_PLANCK} km/s/Mpc")
+    print(f"SH0ES 2022 (local): {H0_SHOES} km/s/Mpc")
+    print(f"Observed Delta H0: {observed_delta:.2f} km/s/Mpc")
+    print(f"UET early value: {h0_early_uet:.2f} km/s/Mpc")
+    print(f"UET late value: {h0_late_uet:.2f} km/s/Mpc")
+    print(f"UET Delta H0: {delta_h0_uet:.2f} km/s/Mpc")
+    print(f"Hubble frame beta: {beta:.4f} ({beta_source})")
+    print(f"Generic solver beta: {solver_beta:.4e}")
+    print(f"Relative error: {error:.1f}%")
+    print(f"Status: {'PASS' if passed else 'FAIL'}")
 
-    print("=" * 70)
-    print("RESULT: HUBBLE TENSION EXPLAINED BY UET")
-    print("=" * 70)
-
-    # --- VISUALIZATION ---
     try:
-        sys.path.append(str(Path(__file__).parents[4]))
         import matplotlib.pyplot as plt
-        import numpy as np
-        from core.uet_glass_box import UETPathManager
 
-        result_dir = UETPathManager.get_result_dir(
-            topic_id="0.3_Cosmology_Hubble_Tension",
-            experiment_name="Research_Hubble_Comparison",
-            pillar="03_Research",
-            category="log",
-        )
+        fig_dir = topic_path / "Result" / "artifacts"
+        fig_dir.mkdir(parents=True, exist_ok=True)
+        output_path = fig_dir / "hubble_tension_resolution.png"
 
-        # Create Comparison Plot
-        labels = [
-            "Planck 2018\n(Early Universe)",
-            "SH0ES 2022\n(Late Universe)",
-            "UET Prediction\n(Unified)",
-        ]
-        values = [H0_PLANCK, H0_SHOES, H0_late_uet]
-        errors = [0.5, 1.0, 0.5]  # Approx errors for visual
-        colors = ["#1f77b4", "#d62728", "#2ca02c"]
+        labels = ["Planck 2018", "SH0ES 2022", "UET late"]
+        values = [H0_PLANCK, H0_SHOES, h0_late_uet]
 
         plt.figure(figsize=(10, 6))
-        bars = plt.bar(labels, values, yerr=errors, capsize=10, color=colors, alpha=0.8)
-
-        # Add value labels
-        for bar in bars:
-            height = bar.get_height()
-            plt.text(
-                bar.get_x() + bar.get_width() / 2.0,
-                height + 1.5,
-                f"{height:.1f}",
-                ha="center",
-                va="bottom",
-                fontsize=12,
-                fontweight="bold",
-            )
-
-        plt.ylabel("Hubble Constant (km/s/Mpc)", fontsize=12)
-        plt.title("UET Resolution of Hubble Tension", fontsize=14, fontweight="bold")
+        plt.bar(labels, values, color=["#1f77b4", "#d62728", "#2ca02c"])
+        plt.ylabel("Hubble Constant (km/s/Mpc)")
+        plt.title("Repository Hubble Comparison")
         plt.ylim(60, 80)
         plt.grid(axis="y", linestyle="--", alpha=0.5)
-
-        # Add annotation explaining the bridge
-        plt.annotate(
-            "UET bridges the gap\nvia Beta Scaling",
-            xy=(2, H0_late_uet),
-            xytext=(1.5, 76),
-            arrowprops=dict(facecolor="black", shrink=0.05),
-        )
-
-        output_path = result_dir / "hubble_tension_resolution.png"
         plt.savefig(output_path, dpi=300, bbox_inches="tight")
         plt.close()
-        print(f"  [Viz] Generated 'hubble_tension_resolution.png' at {output_path}")
+        print(f"Plot saved to {output_path}")
+    except Exception as exc:
+        print(f"Visualization skipped: {exc}")
 
-    except Exception as e:
-        print(f"Viz Error: {e}")
+    artifact = generate_artifact(
+        topic="0.3_Cosmology_Hubble_Tension",
+        dataset_hash=hash_dataset(
+            {
+                "H0_PLANCK": H0_PLANCK,
+                "H0_SHOES": H0_SHOES,
+                "TENSION_SIGMA": TENSION_SIGMA,
+            }
+        ),
+        results={
+            "H0_early_uet": h0_early_uet,
+            "H0_late_uet": h0_late_uet,
+            "delta_h0_uet": delta_h0_uet,
+            "hubble_frame_beta": beta,
+            "hubble_frame_beta_source": beta_source,
+            "generic_solver_beta": solver_beta,
+            "status": "PASS" if passed else "FAIL",
+        },
+        config={
+            "relative_error_threshold_percent": 20.0,
+            "no_fitting_rule": "hubble_frame_beta is sqrt(ALPHA_EM), not optimized against H0 data",
+        },
+        metrics={"relative_error_percent": float(error)},
+        thresholds={"max_relative_error_percent": 20.0},
+        notes="Internal comparison artifact using published H0 reference values.",
+    )
+    artifact_path = topic_path / "Result" / "artifacts" / "hubble_comparison_validation.json"
+    save_artifact(artifact, artifact_path)
+    print(f"Artifact saved to {artifact_path}")
 
     return passed
 

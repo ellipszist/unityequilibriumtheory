@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.20_Atomic_Physics",
+  "timestamp_utc": "2026-04-23T02:39:18.024413+00:00",
+  "repo_root": "C:\\Users\\santa\\Desktop\\uet_harness",
+  "python_executable": "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+  "verification_spec": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.20_Atomic_Physics\\VERIFICATION_SPEC.md",
+  "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.20_Atomic_Physics\\Result\\artifacts\\0_20_atomic_physics_verification.json",
+  "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_20_atomic_physics_run_contract.json",
+  "command": "python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Atomic_ThreeBody.py",
+  "input_hashes": [
+    {
+      "path": "Data/03_Research/codata_2018_atomic.json",
+      "status": "present",
+      "sha256": "31c982eedd02900d8fb05c1b925d56fb3733ddae877ec304becff6465b9dbf31",
+      "bytes": "1582"
+    },
+    {
+      "path": "Data/03_Research/download_data.py",
+      "status": "present",
+      "sha256": "c12cbe85556f5eaedc0dfa703b6ab5dad0c16e6b71a8a3ed12fe9580d57c9a19",
+      "bytes": "6466"
+    },
+    {
+      "path": "Data/03_Research/download_references.py",
+      "status": "present",
+      "sha256": "6c502427cc1f9bfd7263726e8f8bfc252045378ab0ffad1802d2304e285675ee",
+      "bytes": "6756"
+    },
+    {
+      "path": "Data/03_Research/hydrogen_spectra_data.json",
+      "status": "present",
+      "sha256": "cd3554bd19ef3f47b2469bc88d81e97497eda4b93b6f144b43ab2043c5fd0845",
+      "bytes": "688"
+    }
+  ],
+  "timeout_seconds": 30,
+  "resolved_command": [
+    "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+    "docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Atomic_ThreeBody.py"
+  ],
+  "environment_overrides": {
+    "PYTHONIOENCODING": "utf-8",
+    "PYTHONUTF8": "1",
+    "PYTHONPATH_PREFIX": "C:\\Users\\santa\\Desktop\\uet_harness"
+  },
+  "status": "ran",
+  "exit_code": 0,
+  "passed_run_contract": true,
+  "duration_seconds": 1.075,
+  "stdout_tail": "\ud83d\udd0d UET Glass Box: Logging (Streaming) to 'C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.20_Atomic_Physics\\Result\\_Logs\\1776911958_UET_Hydrogen_Solver'\n============================================================\nUET CHAOS: THREE BODY PROBLEM\n============================================================\n\u2705 Result: PASS (Atomic Dynamics and Chaos depend on Engine coupling)\n",
+  "stderr_tail": "",
+  "declared_scientific_artifact_exists": true,
+  "declared_scientific_artifact_sha256": "1795a03358ffdd0cbaed69d2c7e235c3c74c4445b780bd2c097b07706dca9fbe",
+  "declared_scientific_artifact_bytes": 2442
+}

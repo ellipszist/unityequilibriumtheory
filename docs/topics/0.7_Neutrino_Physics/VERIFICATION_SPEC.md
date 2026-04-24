@@ -1,0 +1,31 @@
+# Verification Spec
+
+- Primary command:
+  - `python docs/topics/0.7_Neutrino_Physics/Code/03_Research/Research_NuFit_6_0_Comparison.py`
+- Provenance guard command:
+  - `python docs/scripts/data/validate_nufit_v60_provenance.py`
+- Inputs:
+  - `docs/data/external/particle_physics/nufit/official/nufit_v60_parameters_extracted.json`
+  - `docs/data/external/particle_physics/nufit/official/nufit_v60_provenance_validation.json`
+  - `docs/data/external/particle_physics/katrin/katrin_latest_results_2025.json`
+  - `Code/01_Engine/Engine_Mixing_Neutrino.py`
+  - `Code/01_Engine/Engine_Neutrino.py`
+- Baseline:
+  - Official NuFIT 6.0 parameter-table benchmark for normal ordering, checked in both the `without SK-atm` and `with SK-atm` variants.
+  - Official KATRIN 2025 direct neutrino-mass upper limit.
+  - Checked-transcription provenance guard for the local NuFIT JSON layer.
+- Reported metrics:
+  - whether geometric angle outputs lie within official 3sigma ranges
+  - whether runtime mass-splitting parameters lie within official 3sigma ranges
+  - whether the current absolute neutrino-mass engine path stays below the official KATRIN upper limit
+  - provenance status of the current NuFIT checked-transcription layer
+- Fixed threshold:
+  - all geometric angles must lie within at least one official 3sigma range
+  - all runtime mass-splitting parameters must lie within at least one official 3sigma range
+  - the current predicted absolute neutrino-mass scale must stay below the official KATRIN upper limit
+  - `nufit_v60_provenance_validation.json` must report `schema_validation_status = PASS`
+- Artifact target:
+  - `Result/artifacts/nufit_6_0_validation.json`
+- Interpretation:
+  - A pass means current UET angle outputs and runtime neutrino parameter package are compatible with the official NuFIT 6.0 benchmark ranges, the current absolute-mass engine path does not exceed the official KATRIN limit, and the checked-transcription benchmark layer passes provenance validation.
+  - It does not yet certify a first-principles derivation of the full neutrino sector, because the mass splittings are still benchmark-fed at runtime and the NuFIT table is not yet machine-parsed from the PDF.

@@ -1,27 +1,24 @@
 cff-version: 1.2.0
-message: "If you use this software or theory in your research, please cite it as follows."
-title: "Unity Equilibrium Theory (UET): A Unified Information-Based Framework for Physics"
+message: "If you use this repository, please cite the current release metadata below."
+title: "Unity Equilibrium Theory (UET): Research Repository and Documentation Framework"
 authors:
   - name: "UET Research Team"
     affiliation: "Unity Equilibrium Lab"
-version: 0.8.7
-doi: 10.5281/zenodo.uet.0.8.7
-date-released: 2026-01-26
-url: "https://github.com/unityequilibrium/Equation-UET-v0.8.7"
+version: 0.9.0
+date-released: 2026-04-22
+url: "https://github.com/unityequilibrium/UnityEquilibriumTheory"
+repository-code: "https://github.com/unityequilibrium/UnityEquilibriumTheory"
 keywords:
   - "Unified Field Theory"
-  - "Dark Matter Alternative"
-  - "Quantum Gravity"
+  - "Research Infrastructure"
+  - "Physics Simulation"
   - "Information Theory"
-  - "Navier-Stokes"
-  - "General Relativity"
-  - "Thermodynamics"
-  - "Hubble Tension"
-  - "Neutrino Mass"
-  - "Python Simulation"
-abstract: >
-  UET (Unity Equilibrium Theory) is a novel physics framework that models the universe
-  as an information processing system governed by a single equilibrium equation (Ω = C · I).
-  This repository contains 127+ Python simulations verifying the theory across 21 domains,
-  including Galaxy Rotation Curves, Quantum Entanglement, and Fluid Dynamics.
+  - "Reproducibility"
+  - "Documentation Standards"
 license: MIT
+abstract: >
+  Unity Equilibrium Theory (UET) is a research repository that combines theory notes,
+  numerical experiments, and documentation across multiple physics and engineering
+  topics. This citation entry describes the repository release and its documentation
+  framework; individual scientific claims should be evaluated topic by topic using the
+  associated methods, data, and verification records.

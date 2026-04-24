@@ -1,0 +1,29 @@
+﻿# Verification Spec
+
+- Primary command:
+  - `python docs/topics/0.6_Electroweak_Physics/Code/03_Research/Research_Electroweak_PDG_Comparison.py`
+  - `python docs/topics/0.6_Electroweak_Physics/Code/03_Research/Research_Electroweak_Expanded_Benchmark.py`
+- Inputs:
+  - `docs/data/external/particle_physics/pdg/electroweak_reference_package.json`
+  - `docs/data/external/particle_physics/pdg/electroweak_benchmark_package.json`
+  - `Code/01_Engine/Engine_Electroweak.py`
+- Baseline:
+  - PDG 2025 summary-table observables for W, Z, and Higgs masses.
+  - Structured checked electroweak reference for `sin²θW` and `G_F` until a direct upstream mapping is added for those observables.
+  - Checked local neutron-lifetime benchmark as an explicit secondary gate.
+  - Running-angle compiled points remain diagnostic-only, not pass/fail gates.
+- Reported metrics:
+  - relative error on `sin²θW`, `m_W`, `m_H`, and `G_F`
+  - relative error on neutron lifetime
+  - running-angle diagnostic average error
+- Fixed threshold:
+  - `sin²θW < 2%`
+  - `m_W < 2%`
+  - `m_H < 2%`
+  - `G_F < 0.5%`
+  - `neutron lifetime < 2%`
+- Artifact target:
+  - `Result/artifacts/electroweak_pdg_validation.json`
+  - `Result/artifacts/electroweak_expanded_benchmark.json`
+- Interpretation:
+  - Treat output as a provenance-aware electroweak comparison against PDG 2025 plus an explicit checked-local neutron-lifetime layer. It still does not certify a full gauge-theory derivation or a complete Standard-Model replacement.

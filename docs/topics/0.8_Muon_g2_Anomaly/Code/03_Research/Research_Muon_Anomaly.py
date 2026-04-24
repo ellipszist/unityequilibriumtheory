@@ -5,6 +5,25 @@ Topic: 0.8 Muon g-2 Anomaly
 Goal: Verify UET explanation for the muon magnetic moment anomaly against Fermilab 2023 data.
 """
 
+import sys
+from pathlib import Path
+
+# --- ROBUST UET BOOTSTRAP ---
+def _bootstrap():
+    curr = Path(__file__).resolve()
+    for parent in [curr] + list(curr.parents):
+        if (parent / "docs").exists() and (parent / "docs" / "core").exists():
+            if str(parent) not in sys.path:
+                sys.path.insert(0, str(parent))
+            return parent
+    return None
+
+ROOT = _bootstrap()
+if not ROOT:
+    print("CRITICAL: UET docs root not found!")
+    sys.exit(1)
+
+
 from docs import ROOT_PATH
 from pathlib import Path
 
@@ -25,6 +44,13 @@ except Exception as e:
     sys.exit(1)
 
 
+engine_path = root_path / "docs" / "topics" / "0.8_Muon_g2_Anomaly" / "Code" / "01_Engine"
+if str(engine_path) not in sys.path:
+    sys.path.insert(0, str(engine_path))
+
+from Engine_Muon_G2 import UETMuonG2Solver
+
+
 def load_g2_data():
     """Load Fermilab g-2 data."""
     # Robust data loading
@@ -40,11 +66,10 @@ def load_g2_data():
 
 def uet_muon_anomaly():
     """
-    UET explanation for muon g-2 anomaly.
-    UET predicts: Delta a_mu ~ 2.51 x 10^-9
-    Source: Information Coupling to Vacuum (alpha/2pi * kappa_mu).
+    UET explanation for muon g-2 anomaly from the live engine.
     """
-    return 2.51e-9
+    solver = UETMuonG2Solver()
+    return solver.calculate_uet_correction()
 
 
 def run_research():

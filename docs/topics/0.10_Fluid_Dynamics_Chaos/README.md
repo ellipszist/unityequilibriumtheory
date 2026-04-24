@@ -1,116 +1,72 @@
 ---
 layout: article
-title: "UET Topic 0.10: Fluid Dynamics Chaos"
-description: "Research module for Fluid Dynamics Chaos within the Unity Equilibrium Theory framework."
+title: "UET Topic 0.10: Fluid Dynamics and Chaos"
+description: "Structured documentation for the fluid-dynamics topic in the UET repository."
 ---
 
-# 🌊 0.10 Fluid Dynamics & Chaos
+# 0.10 Fluid Dynamics and Chaos
 
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.10: Fluid Dynamics & Chaos",
-  "description": "800x faster fluid simulation via Energy Minimization on the Information Manifold.",
-  "about": "Fluid Dynamics, Chaos, Navier-Stokes, Information Manifold, UET"
-}
--->
+## Problem
 
-> [!NOTE]
-> **AI-Digest**: UET transforms fluid dynamics into an energy minimization problem, matching Navier-Stokes with 800x speedup and guaranteed stability. Chaos emerges from informational fluctuations. / UET เปลี่ยนพลศาสตร์ของไหลเป็นปัญหาการหาค่าพลังงานต่ำสุด ให้ผลแม่นยำเท่า Navier-Stokes แต่เร็วกว่า 800 เท่าและมีความเสถียรสูงสุด
+This topic studies whether UET-based fluid solvers can provide useful internal benchmark
+behavior relative to repository Navier-Stokes comparators and canonical fluid references.
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Triple_Green-00aa00)
-![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
-![Scientific_Rigor](https://img.shields.io/badge/Rigor-816x_Speedup-orange)
+## Assumptions and scope
 
-> **"UET transforms Fluid Dynamics from a momentum-based problem (Navier-Stokes) to an Energy Minimization problem (Gradient Descent) on the Information Manifold, achieving 800x speedups and guaranteed stability."**
+- Scope: internal speed, stability, and benchmark comparisons
+- Out of scope: claiming the Navier-Stokes Millennium Problem is resolved
+- Current topic materials mix solver engineering claims, mathematical interpretation, and
+  benchmark comparisons; public summaries must keep those categories separate
 
----
+## Data sources
 
-## 1. 📂 5x4 Grid Structure
+- Canonical reference citation: Reynolds 1883 in [docs/references.bib](/C:/Users/santa/Desktop/uet_harness/docs/references.bib:1)
+- Topic benchmark configs and result folders under `Data/` and `Result/`
 
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | Analysis of Engine speedup and Accuracy verification. |
-| **Ref/** | Navier-Stokes (1822), Kolmogorov (1941) Turbulence. |
-| **Data/** | Comparison configs (Low/High Re) and NIST Fluid Props. |
-| **Code/** | **The Fluid Engine**: 2D/3D Gradient Descent Solvers. |
-| **Result/** | Flow Dashboards, Speed Benchmarks (800x), Poiseuille Plots. |
+## Method summary
 
----
+- 2D solver: `Code/01_Engine/Engine_UET_2D.py`
+- 3D solver: `Code/01_Engine/Engine_UET_3D.py`
+- Benchmark proof script: `Code/02_Proof/Proof_Turbulence_Benchmarks.py`
+- Additional research scripts under `Code/03_Research/`
 
-## 🔗 Theory Connection
+Supporting standard files:
 
-```mermaid
-graph TB
-    subgraph Standard["🔬 Standard Physics"]
-        NS["Navier-Stokes Eq"]
-        NonLinear["u.grad(u) Non-linearity"]
-        Cost["High Cost O(N^3)"]
-        Blowup["Instability (NaN)"]
-    end
-    
-    subgraph UET["✅ UET Solution"]
-        Master["Master Equation"]
-        Energy["Energy Minimization"]
-        Linear["Gradient Descent O(N)"]
-        Stable["Guaranteed Stability"]
-    end
-    
-    NS --> NonLinear
-    NonLinear --> Cost
-    NonLinear --> Blowup
-    
-    Master --> Energy
-    Energy --> Linear
-    Linear --> Stable
-    
-    style UET fill:#d4edda,stroke:#28a745
-```
+- [METHOD.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.10_Fluid_Dynamics_Chaos/METHOD.md:1)
+- [DATA_MANIFEST.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.10_Fluid_Dynamics_Chaos/DATA_MANIFEST.md:1)
+- [VERIFICATION_SPEC.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.10_Fluid_Dynamics_Chaos/VERIFICATION_SPEC.md:1)
+- [BASELINE_COMPARISON.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.10_Fluid_Dynamics_Chaos/BASELINE_COMPARISON.md:1)
+- [LIMITATIONS.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.10_Fluid_Dynamics_Chaos/LIMITATIONS.md:1)
 
----
+## Parameters and fitting status
 
-## 🎯 Proactive Development
+- Current topic wording should describe speed and stability as internal benchmark outputs
+- Public summaries should not claim guaranteed smoothness or a solved Millennium Problem
+  unless a separate proof package is documented and independently reviewed
 
-- **The Goal:** Solve the Navier-Stokes Millennium Problem (Existence & Smoothness).
-- **The Upgrade:** We replaced momentum conservation with **Information Conservation**.
-- **The Insight:** Fluids flow not because they are "pushed," but because they are minimizing their Information Potential ($\Omega$). This guarantees smooth solutions ($C^\infty$) for all time $t$.
+## Metrics and thresholds
 
----
+- Internal metrics currently include runtime speedup and stability checks
+- `Proof_Turbulence_Benchmarks.py` uses an internal benchmark target of speedup greater
+  than `2.0x` together with finite stress-test output
 
-## 📊 Triple-Green Results
+## Baselines
 
-| Category | Component | Key Result | Status |
-| :--- | :--- | :--- | :--- |
-| **01_Engine** | Speedup | **816x Faster** | ✅ PERFECT |
-| **01_Engine** | 3D Scaling | **Stable at $64^3$** | ✅ PERFECT |
-| **03_Research** | Accuracy | **99.97% Match** | ✅ PASS |
-| **04_Competitor** | Navier-Stokes | **Unstable / Blowup** | ❌ FAILED |
+- Comparator model: simplified Navier-Stokes solver in the benchmark proof script
+- Supporting references: classical fluid-dynamics literature listed in repository citations
 
----
+## Limitations and open risks
 
-## 2. ⚡ Quick Start
+- Benchmark comparator is simplified and should be described honestly as such
+- Internal speedups are implementation-specific and environment-sensitive
+- Topic claims about theorem-level consequences remain far stronger than the current
+  repository benchmark evidence
 
-```python
-import docs as uet
+## Reproducibility
 
-# [1] Initialize the 800x Faster Engine
-fluid = uet.fluid.Engine2D(nx=128, ny=128, dt=0.01)
+- Verification command: `python docs/topics/0.10_Fluid_Dynamics_Chaos/Code/02_Proof/Proof_Turbulence_Benchmarks.py`
+- Artifact contract: see [VERIFICATION_SPEC.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.10_Fluid_Dynamics_Chaos/VERIFICATION_SPEC.md:1)
 
-# [2] Run Simulation (See the result in /Result folder)
-fluid.solve_2d()
+## Current readiness status
 
-# [3] Advanced: Get Critical Reynolds Number
-re_c, note = fluid.predict_critical_reynolds()
-print(f"Turbulence Barrier: {re_c}")
-```
-
-## 📁 Key Files
-
-- [Engine_UET_2D.py](./Code/01_Engine/Engine_UET_2D.py): The 2D Flash Solver.
-- [Engine_UET_3D.py](./Code/01_Engine/Engine_UET_3D.py): The 3D Vectorized Solver.
-- [ANALYSIS_01_Engine_Fluid.md](./Doc/ANALYSIS_01_Engine_Fluid.md): Detailed 800x Speedup Analysis.
-
----
-*Generated by UET Research Assistant - Fluid Dynamics Division*
+`Structured`

@@ -43,6 +43,7 @@ flowchart TD
 | run commands | repo-root relative commands that matter |
 | input dependencies | data, refs, core modules |
 | outputs | figures, artifacts, logs |
+| formula registry | core equations, variable names, units, and status |
 | caveats | exploratory, fitted, unstable, benchmark-only notes |
 
 ## Required sections
@@ -91,6 +92,27 @@ Do not document folders that do not exist just because they are part of an ideal
 - whether code is benchmark, derivation, calibration, or visualization
 - whether it is expected to produce reproducible artifacts
 
+### 7. Formula and unit registry
+
+For any important scientific script, document:
+
+- the main formula or calculation path
+- the variables it uses
+- units for dimensional variables
+- conversion steps when units change
+- whether each relation is `derived`, `heuristic`, `source-locked constant`, or `open`
+
+Example registry fields:
+
+| Formula element | What to record |
+| :-- | :-- |
+| `m_W = M_Z * sqrt(1 - sin2_theta_W)` | relation type, variables, units |
+| `bridge_factor = 1.18` | why it exists, whether derived or heuristic |
+| `m_W = 80379.0` | source, units, and whether it is benchmark input |
+
+If the topic has more than one important scientific relation, prefer a dedicated
+`FORMULA_AUDIT.md` at the topic root and link to it from `Code/README.md`.
+
 ## Naming convention
 
 - `Engine_*.py` for solver or model engines
@@ -105,6 +127,8 @@ Do not document folders that do not exist just because they are part of an ideal
 - If a script is calibration-aware, say so.
 - If a script writes directly to result folders, document that behavior.
 - If a script is not currently stable, do not mark it as verification.
+- If a script contains heuristic bridges or anchored constants, label them.
+- If a script relies on unit conversion, document the conversion explicitly.
 
 ## What not to do
 
@@ -148,4 +172,5 @@ Document expected outputs beside the commands, such as:
 - [ ] directory map matches the real folder contents
 - [ ] runnable commands are listed for important scripts
 - [ ] inputs and outputs are named explicitly
+- [ ] core formulas and unit handling are documented
 - [ ] caveats and reproducibility expectations are honest

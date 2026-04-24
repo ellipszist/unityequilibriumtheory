@@ -1,33 +1,41 @@
 """
-UET Tier 2 Benchmark: Speed & Stability
-=======================================
-Head-to-head comparison between Navier-Stokes (NS) and UET.
-Focus: Speedup and Stability at high Reynolds numbers.
-
-Metrics:
-1. Runtime (Speedup)
-2. Stability (Max velocity boundedness)
-3. Qualitative Comparison (Lid-Driven Cavity)
+UET Tier 2 Benchmark: Speed and Stability
+=========================================
+Head-to-head internal comparison between a simplified Navier-Stokes baseline and the UET
+solver. This script is intended for repository benchmark hygiene, not theorem-level claims.
 """
 
-import sys
 import os
+import sys
 import time
-import numpy as np
 from pathlib import Path
+from statistics import median
+
 import matplotlib.pyplot as plt
+import numpy as np
 
-# Ensure standard imports
-current_dir = os.path.dirname(os.path.abspath(__file__))
-repo_root = str(Path(current_dir).parents[4])
-if repo_root not in sys.path:
-    sys.path.insert(0, repo_root)
 
+def _bootstrap():
+    curr = Path(__file__).resolve()
+    for parent in [curr] + list(curr.parents):
+        if (parent / "docs").exists() and (parent / "docs" / "core").exists():
+            if str(parent) not in sys.path:
+                sys.path.insert(0, str(parent))
+            return parent
+    return None
+
+
+ROOT = _bootstrap()
+if not ROOT:
+    print("CRITICAL: UET docs root not found!")
+    sys.exit(1)
+
+from docs.core.reproducibility import generate_artifact, hash_dataset, save_artifact
 from docs.core.uet_master_equation import UETMasterEquation, UETParameters
 
 
 class SimplifiedNSSolver:
-    """A minimal, vectorized Navier-Stokes solver for benchmarking."""
+    """A minimal vectorized Navier-Stokes-style baseline for benchmarking."""
 
     def __init__(self, nx=32, ny=32, dt=0.001, nu=0.01):
         self.nx, self.ny = nx, ny
@@ -39,12 +47,9 @@ class SimplifiedNSSolver:
         self.p = np.zeros((ny + 2, nx + 2))
 
     def step(self):
-        # 1. Intermediate Velocity (Diffusion + Convection)
         un = self.u[1:-1, 1:-1]
         vn = self.v[1:-1, 1:-1]
 
-        # Simplified diffusion-only step for speed benchmark logic
-        # (Standard NS spends 80% of time in Pressure Poisson)
         self.u[1:-1, 1:-1] = un + self.dt * (
             self.nu
             * (
@@ -52,7 +57,6 @@ class SimplifiedNSSolver:
                 + (self.u[2:, 1:-1] - 2 * un + self.u[:-2, 1:-1]) / self.dy**2
             )
         )
-
         self.v[1:-1, 1:-1] = vn + self.dt * (
             self.nu
             * (
@@ -61,8 +65,6 @@ class SimplifiedNSSolver:
             )
         )
 
-        # 2. Pressure Poisson (The Bottleneck)
-        # We simulate 20 iterations of SOR to represent the typical NS overhead
         for _ in range(20):
             self.p[1:-1, 1:-1] = 0.25 * (
                 self.p[1:-1, 2:]
@@ -71,93 +73,80 @@ class SimplifiedNSSolver:
                 + self.p[:-2, 1:-1]
             )
 
-        # 3. Update (Projection)
-        self.u[1:-1, 1:-1] -= (
-            self.dt * (self.p[1:-1, 2:] - self.p[1:-1, 1:-1]) / self.dx
-        )
-        self.v[1:-1, 1:-1] -= (
-            self.dt * (self.p[2:, 1:-1] - self.p[1:-1, 1:-1]) / self.dy
-        )
+        self.u[1:-1, 1:-1] -= self.dt * (self.p[1:-1, 2:] - self.p[1:-1, 1:-1]) / self.dx
+        self.v[1:-1, 1:-1] -= self.dt * (self.p[2:, 1:-1] - self.p[1:-1, 1:-1]) / self.dy
 
 
 def run_benchmarks():
     print("=" * 60)
-    print("🌊 UET TIER 2: SPEED & STABILITY BENCHMARK")
+    print("UET TIER 2: SPEED AND STABILITY BENCHMARK")
     print("=" * 60)
 
-    # Grid Size (Increased to 128 to demonstrate UET scaling advantage)
-    N = 128
+    grid_size = 128
     steps = 100
-    print(f"   Grid: {N}x{N}, Steps: {steps}")
+    trials = 5
 
-    # --- 1. Navier-Stokes Benchmark ---
-    print("\n   [1/2] Running Navier-Stokes Baseline...")
-    ns = SimplifiedNSSolver(nx=N, ny=N, dt=0.001)
+    def time_ns_once():
+        ns = SimplifiedNSSolver(nx=grid_size, ny=grid_size, dt=0.001)
+        t0 = time.perf_counter()
+        for _ in range(steps):
+            ns.step()
+        return time.perf_counter() - t0
 
-    t0 = time.time()
-    for _ in range(steps):
-        ns.step()
-    t_ns = time.time() - t0
-    print(f"         NS Runtime: {t_ns:.4f}s")
-
-    # --- 2. UET Benchmark ---
-    print("\n   [2/2] Running UET Master Equation...")
     params = UETParameters(kappa=0.01, beta=1.0, alpha=0.0, gamma=0.0, W_N=0.0)
-    solver = UETMasterEquation(params)
-    C = np.zeros((N, N))
-    I = np.zeros((N, N))
 
-    t0 = time.time()
-    for _ in range(steps):
-        # UET avoids the Pressure Poisson solver entirely
-        res = solver.step(C, dt=0.001, dx=1.0 / N, I=I)
-        if isinstance(res, tuple):
-            if len(res) == 3:
-                C, I, _ = res
+    def time_uet_once():
+        solver = UETMasterEquation(params)
+        c_field = np.zeros((grid_size, grid_size))
+        i_field = np.zeros((grid_size, grid_size))
+        t0 = time.perf_counter()
+        for _ in range(steps):
+            result = solver.step(c_field, dt=0.001, dx=1.0 / grid_size, I=i_field)
+            if isinstance(result, tuple):
+                if len(result) == 3:
+                    c_field, i_field, _ = result
+                else:
+                    c_field, i_field = result
             else:
-                C, I = res
-        else:
-            C = res
-    t_uet = time.time() - t0
-    print(f"         UET Runtime: {t_uet:.4f}s")
+                c_field = result
+        return time.perf_counter() - t0
 
-    # --- Summary ---
+    # Warm-up removes first-call import/allocation jitter without changing the threshold.
+    time_ns_once()
+    time_uet_once()
+    ns_trials = [time_ns_once() for _ in range(trials)]
+    uet_trials = [time_uet_once() for _ in range(trials)]
+    t_ns = median(ns_trials)
+    t_uet = median(uet_trials)
+
     speedup = t_ns / t_uet
-    print("-" * 60)
-    print(f"   SPEEDUP: {speedup:.1f}x FASTER")
-    print("-" * 60)
 
-    # --- 3. Stability Test (High Reynolds) ---
-    print("\n   STABILITY TEST (High Gradient Stress)")
-    # We apply a massive density spike to see if UET blows up
-    C_stress = np.zeros((N, N))
-    C_stress[N // 2, N // 2] = 1e6
-
+    solver = UETMasterEquation(params)
+    c_stress = np.zeros((grid_size, grid_size))
+    i_field = np.zeros((grid_size, grid_size))
+    c_stress[grid_size // 2, grid_size // 2] = 1e6
     try:
         for _ in range(50):
-            res = solver.step(C_stress, dt=0.001, dx=1.0 / N, I=I)
-            if isinstance(res, tuple):
-                if len(res) == 3:
-                    C_stress, I, _ = res
+            result = solver.step(c_stress, dt=0.001, dx=1.0 / grid_size, I=i_field)
+            if isinstance(result, tuple):
+                if len(result) == 3:
+                    c_stress, i_field, _ = result
                 else:
-                    C_stress, I = res
+                    c_stress, i_field = result
             else:
-                C_stress = res
-
-        is_stable = np.isfinite(C_stress).all()
-        status = "✅ STABLE (No blow-up)" if is_stable else "❌ UNSTABLE"
-        print(f"   UET Status: {status}")
-    except Exception as e:
-        print(f"   UET Status: ❌ CRASHED ({e})")
+                c_stress = result
+        is_stable = bool(np.isfinite(c_stress).all())
+    except Exception:
         is_stable = False
 
-    # --- Visualization ---
+    print(f"NS Runtime: {t_ns:.4f}s")
+    print(f"UET Runtime: {t_uet:.4f}s")
+    print(f"Speedup: {speedup:.1f}x")
+    print(f"Stable: {is_stable}")
+
     fig_dir = Path(__file__).resolve().parents[2] / "Result" / "02_Proof"
     fig_dir.mkdir(parents=True, exist_ok=True)
-
     plt.figure(figsize=(10, 5))
-
-    # Speed Chart
     plt.subplot(1, 2, 1)
     plt.bar(["Navier-Stokes", "UET"], [t_ns, t_uet], color=["gray", "red"])
     plt.yscale("log")
@@ -165,24 +154,35 @@ def run_benchmarks():
     plt.title("Speed Comparison")
     plt.grid(True, axis="y", alpha=0.3)
 
-    # Stability Visual
     plt.subplot(1, 2, 2)
-    plt.imshow(C_stress, cmap="hot")
-    plt.title(f"Stability stress test\n(Peak bound: {np.max(C_stress):.2e})")
+    plt.imshow(c_stress, cmap="hot")
+    plt.title(f"Stability stress test\n(Peak bound: {np.max(c_stress):.2e})")
     plt.colorbar(label="Field Intensity")
-
     plt.tight_layout()
     plt.savefig(fig_dir / "benchmarks_tier2.png")
-    print(f"\n   ✅ Results saved to: {fig_dir / 'benchmarks_tier2.png'}")
+    plt.close()
 
-    # Final Result
-    # Benchmark target: 2.0x speedup (Hardened Axiomatic Engine)
-    if speedup > 2.0 and is_stable:
-        print("\n   RESULT: PASS (UET is Faster and Stable)")
-        return True
-    else:
-        print("\n   RESULT: FAIL (UET failed speed or stability targets)")
-        return False
+    artifact = generate_artifact(
+        topic="0.10_Fluid_Dynamics_Chaos",
+        dataset_hash=hash_dataset({"grid_size": grid_size, "steps": steps, "trials": trials}),
+        results={
+            "navier_stokes_runtime_seconds": float(t_ns),
+            "uet_runtime_seconds": float(t_uet),
+            "navier_stokes_runtime_trials_seconds": [float(v) for v in ns_trials],
+            "uet_runtime_trials_seconds": [float(v) for v in uet_trials],
+            "speedup": float(speedup),
+            "stable": is_stable,
+        },
+        config={"grid_size": grid_size, "steps": steps, "trials": trials, "timing_statistic": "median"},
+        metrics={"speedup": float(speedup), "stable": is_stable},
+        thresholds={"min_speedup": 2.0, "requires_stability": True},
+        notes="Internal benchmark artifact using the repository comparator script.",
+    )
+    artifact_path = Path(__file__).resolve().parents[2] / "Result" / "artifacts" / "fluid_benchmark_validation.json"
+    save_artifact(artifact, artifact_path)
+    print(f"Artifact saved to {artifact_path}")
+
+    return speedup > 2.0 and is_stable
 
 
 if __name__ == "__main__":

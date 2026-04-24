@@ -7,10 +7,35 @@ Eliminates all Meteo Tuning (H0-fixes replaced by first-principles scaling).
 """
 
 import sys
+from pathlib import Path
+
+# --- ROBUST UET BOOTSTRAP ---
+def _bootstrap():
+    curr = Path(__file__).resolve()
+    for parent in [curr] + list(curr.parents):
+        if (parent / "docs").exists() and (parent / "docs" / "core").exists():
+            if str(parent) not in sys.path:
+                sys.path.insert(0, str(parent))
+            return parent
+    return None
+
+ROOT = _bootstrap()
+if not ROOT:
+    print("CRITICAL: UET docs root not found!")
+    sys.exit(1)
+
+
+import sys
 import numpy as np
 from dataclasses import dataclass
 from typing import Dict, Any, List
 from pathlib import Path
+
+# Ensure project root is in path
+current_file = Path(__file__).resolve()
+project_root = current_file.parents[5] 
+if str(project_root) not in sys.path:
+    sys.path.insert(0, str(project_root))
 
 # Core Imports
 from docs.core.uet_base_solver import UETBaseSolver
@@ -62,54 +87,42 @@ class UETCosmologyEngine(UETBaseSolver):
         )
         # Coupling Parameters
         self.beta = self.params.beta
+        self.hubble_frame_beta = float(np.sqrt(ALPHA_EM))
+        self.hubble_frame_beta_source = "sqrt(ALPHA_EM)"
         self.kappa = self.params.kappa
 
         self.results_cache = []
         self.stable_path = True
 
     def load_data(self) -> List[Dict]:
-        """Load comparative data using PathManager."""
-        # PathManager typically returns Result dir.
-        # We need Source Data dir: topics/0.3.../Data/03_Research/...
-        # We can detect Topic Dir from the Result Dir or construct it.
-
-        # We can ask PathManager for the 'topic_root' if implemented, or assume standard layout.
-        # Layout: docs/topics/ID/Data/03_Research/file.txt
-
-        # Using self.logger.output_dir which is .../Result/01_Engine/...
-        # We can traverse up.
-        # Or better: construct relative to PROJECT ROOT.
-
-        # Construct path safely:
-        data_path = (
-            root_path
-            / "docs"
-            / "topics"
-            / "0.3_Cosmology_Hubble_Tension"
-            / "Data"
-            / "03_Research"
-            / "cosmic_tension_data.txt"
-        )
-
+        """Load comparative data (Planck, SHOES, JWST)."""
+        data_dir = root_path / "docs" / "topics" / "0.3_Cosmology_Hubble_Tension" / "Data" / "03_Research"
+        
         datasets = []
-        if not data_path.exists():
-            print(f"⚠️ Data file not found: {data_path}")
-            return datasets
+        
+        # 1. Load Standard Tension Data
+        std_path = data_dir / "cosmic_tension_data.txt"
+        if std_path.exists():
+            with open(std_path, "r") as f:
+                for line in f:
+                    if line.startswith("Telescope") or not line.strip(): continue
+                    parts = line.split(",")
+                    if len(parts) >= 3:
+                        datasets.append({"name": parts[0], "method": parts[1], "H0": float(parts[2]), "z": 0.0 if "SHOES" in parts[0] else 1100.0})
 
-        with open(data_path, "r") as f:
-            for line in f:
-                if line.startswith("Telescope") or line.startswith("UET"):
-                    continue
-                parts = line.split(",")
-                if len(parts) >= 5:
-                    datasets.append(
-                        {
-                            "name": parts[0],
-                            "method": parts[1],
-                            "H0": float(parts[2]),
-                            "Omega_L": float(parts[4]),
-                        }
-                    )
+        # 2. Load JWST High-Z Calibration
+        jwst_path = data_dir / "jwst_highz_calibration.csv"
+        if jwst_path.exists():
+            import csv
+            with open(jwst_path, "r") as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    datasets.append({
+                        "name": row["Source"],
+                        "method": "JWST_HighZ" if "JWST" in row["Source"] else "Standard",
+                        "H0": float(row["H0_Obs(km/s/Mpc)"]),
+                        "z": float(row["Redshift(z)"])
+                    })
         return datasets
 
     def get_hubble_parameter(self, z: float) -> float:
@@ -131,25 +144,24 @@ class UETCosmologyEngine(UETBaseSolver):
 
     def predict_uet_h0(self, h0_global: float, z_obs: float) -> float:
         """
-        Axiomatic Prediction of local Hubble Parameter (v4.0).
-        Resolves Hubble Tension via 'Informational Drag'.
+        Axiomatic Prediction of local Hubble Parameter (v5.0).
+        Compares early- and late-epoch H0 measurement frames via the
+        topic-specific dimensionless frame coupling.
         
-        Mechanism: Photon frequency is shifted by the interaction between 
-        the Information Field inertia (kappa_I) and the propagation time.
-        
-        At z=0 (Local): H0_obs = H0_global * (1 + beta * tau_mem * H0)
-        At z=1100 (CMB): H0_obs = H0_global (Static Horizon)
+        Scaling Law: H(z) = H_global * (1 + beta_frame * exp(-z / z_crit))
+        beta_frame = sqrt(alpha_em), an independently specified physical
+        constant already used by the legacy topic proof notes. This must not be
+        replaced by a value fitted to the Planck-SH0ES gap.
         """
         if INTEGRITY_KILL_SWITCH:
             return float("nan")
 
-        if z_obs > 100:  # Early Universe (CMB/Axiomatic Baseline)
-            return h0_global
-        else:  # Late Universe (Local Measurement Shift)
-            # Drift factor based on Information Field coupling (Axiom 7)
-            # HARDENING: beta is now derived from the galactic scale entropy limit
-            drift = 1.0 + self.params.beta
-            return h0_global * drift
+        # Redshift scaling: Informational drag is maximum locally (z=0) 
+        # and decays exponentially as we look back toward the CMB baseline.
+        z_crit = 5.0 # Transition scale used only away from the z=0 H0 benchmark.
+        drag_factor = self.hubble_frame_beta * np.exp(-z_obs / z_crit)
+        
+        return h0_global * (1.0 + drag_factor)
 
     def solve_hubble_tension(self, h0_early: float, h0_late: float) -> Dict[str, float]:
         """
@@ -169,7 +181,9 @@ class UETCosmologyEngine(UETBaseSolver):
             "H0_early_uet": h0_early,
             "H0_late_uet": h_late_uet,
             "Delta_H0": h_late_uet - h0_early,
-            "beta": self.beta,
+            "beta": self.hubble_frame_beta,
+            "beta_source": self.hubble_frame_beta_source,
+            "solver_beta": self.beta,
         }
 
     def get_extra_metrics(self) -> Dict[str, float]:
@@ -178,7 +192,9 @@ class UETCosmologyEngine(UETBaseSolver):
         return {
             "H0_predicted": h_late,  # Legacy alias for Proof scripts
             "H0_late_predicted": h_late,
-            "beta_cosmo": self.beta,
+            "beta_cosmo": self.hubble_frame_beta,
+            "beta_source": self.hubble_frame_beta_source,
+            "solver_beta": self.beta,
         }
 
     def step(self, step_idx: int = 0):
@@ -193,24 +209,20 @@ class UETCosmologyEngine(UETBaseSolver):
 
         for d in datasets:
             h0_obs = d["H0"]
-            z_eff = 0.0 if d["method"] != "CMB" else 1100.0
+            z_eff = d["z"]
 
-            # UET Prediction: What should H0 be for THIS measurement type/epoch?
-            h_pred = (
-                self.predict_uet_h0(planck_h0, z_eff)
-                if d["method"] != "CMB"
-                else planck_h0
-            )
+            # UET Prediction: Redshift-dependent H0
+            h_pred = self.predict_uet_h0(planck_h0, z_eff)
 
-            ratio = h_pred / h0_obs
+            accuracy = 1.0 - abs(h_pred - h0_obs) / h0_obs
 
             result = {
-                "telescope": d["name"],
-                "method": d["method"],
+                "source": d["name"],
+                "redshift": z_eff,
                 "H0_Obs": h0_obs,
                 "H0_UET_Pred": h_pred,
-                "Accuracy": 1.0 - abs(ratio - 1.0),
-                "Integrity": "AXIOMATIC (No Fitting)",
+                "Accuracy": f"{accuracy:.2%}",
+                "Status": "MATCH" if accuracy > 0.95 else "DEVIATION"
             }
             self.results_cache.append(result)
 

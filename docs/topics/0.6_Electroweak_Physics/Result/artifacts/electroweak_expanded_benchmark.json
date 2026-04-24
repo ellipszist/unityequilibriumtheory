@@ -1,0 +1,117 @@
+{
+  "config": {
+    "benchmark_package": "docs\\data\\external\\particle_physics\\pdg\\electroweak_benchmark_package.json",
+    "engine_path": "docs\\topics\\0.6_Electroweak_Physics\\Code\\01_Engine\\Engine_Electroweak.py",
+    "interpretation": "Only the core observables plus neutron lifetime act as benchmark gates; running-angle points remain diagnostic-only because they are compiled local benchmarks."
+  },
+  "dataset_hash": "9457185950c1c279f004411aaaa7f6dd44274fa97467e5ddab724b7c29792642",
+  "environment": {
+    "implementation": "CPython",
+    "matplotlib_version": "3.10.8",
+    "numpy_version": "2.4.0",
+    "pandas_version": "2.3.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.14.2",
+    "scipy_version": "1.16.3",
+    "tensorflow_version": null,
+    "torch_version": "2.10.0+cpu"
+  },
+  "metrics": {
+    "max_core_relative_error_percent": 0.5280923409635676,
+    "neutron_lifetime_relative_error_percent": 0.11441130646643204,
+    "running_angle_average_error_percent": 2.602550916481116
+  },
+  "notes": "Expanded electroweak benchmark separates source-linked core gates from checked-local diagnostic layers.",
+  "results": {
+    "core_comparisons": {
+      "G_F_GeV_minus_2": {
+        "observed": 1.1663788e-05,
+        "predicted": 1.1663753915279728e-05,
+        "relative_error_percent": 0.00029222685007925214
+      },
+      "m_H_GeV": {
+        "observed": 125.1995304097179,
+        "predicted": 125.26291974386938,
+        "relative_error_percent": 0.05063064848888634
+      },
+      "m_W_GeV": {
+        "observed": 80.377,
+        "predicted": 79.95253521910371,
+        "relative_error_percent": 0.5280923409635676
+      },
+      "neutron_lifetime_s": {
+        "observed": 878.4,
+        "predicted": 879.4049889160011,
+        "relative_error_percent": 0.11441130646643204
+      },
+      "sin2_theta_W": {
+        "observed": 0.23121,
+        "predicted": 0.23123623027028434,
+        "relative_error_percent": 0.011344781923073683
+      }
+    },
+    "core_gates": {
+      "G_F_GeV_minus_2": true,
+      "m_H_GeV": true,
+      "m_W_GeV": true,
+      "neutron_lifetime_s": true,
+      "sin2_theta_W": true
+    },
+    "running_angle_average_error_percent": 2.602550916481116,
+    "running_angle_diagnostic": [
+      {
+        "Q_GeV": 0.0024,
+        "label": "APV_Cs",
+        "observed": 0.23867,
+        "predicted": 0.24949617716594333,
+        "provenance_status": "checked_local_compilation",
+        "relative_error_percent": 4.536044398518178
+      },
+      {
+        "Q_GeV": 0.16,
+        "label": "Qweak",
+        "observed": 0.2313,
+        "predicted": 0.2422135735830187,
+        "provenance_status": "checked_local_compilation",
+        "relative_error_percent": 4.718362984443882
+      },
+      {
+        "Q_GeV": 30.0,
+        "label": "DIS",
+        "observed": 0.232,
+        "predicted": 0.2331378085316635,
+        "provenance_status": "checked_local_compilation",
+        "relative_error_percent": 0.4904347119239143
+      },
+      {
+        "Q_GeV": 91.18,
+        "label": "Z_pole",
+        "observed": 0.23121,
+        "predicted": 0.2312101445319235,
+        "provenance_status": "checked_local_compilation",
+        "relative_error_percent": 6.25111039802405e-05
+      },
+      {
+        "Q_GeV": 8000.0,
+        "label": "LHC_high_Q",
+        "observed": 0.231,
+        "predicted": 0.22345126655447992,
+        "provenance_status": "checked_local_compilation",
+        "relative_error_percent": 3.2678499764156252
+      }
+    ],
+    "running_angle_diagnostic_status": "diagnostic_only",
+    "status": "PASS"
+  },
+  "seed": 42,
+  "thresholds": {
+    "G_F_max_relative_error_percent": 0.5,
+    "m_H_max_relative_error_percent": 2.0,
+    "m_W_max_relative_error_percent": 2.0,
+    "neutron_lifetime_max_relative_error_percent": 2.0,
+    "sin2_theta_W_max_relative_error_percent": 2.0
+  },
+  "timestamp_utc": "2026-04-24T04:41:35.527004+00:00",
+  "topic": "0.6_Electroweak_Physics",
+  "uet_version": "0.9.0"
+}

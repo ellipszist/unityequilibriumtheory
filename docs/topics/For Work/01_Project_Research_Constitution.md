@@ -37,6 +37,8 @@ flowchart TD
 | :-- | :-- |
 | What kind of statement is this? | hypothesis, model, benchmark, replication, or peer-reviewed result |
 | What supports it? | local derivation, script, data, artifact, or external publication |
+| What kind of formula is it? | identity, derived relation, heuristic bridge, fitted relation, or open ansatz |
+| Are the units and variable meanings explicit? | yes, before promotion |
 | What is forbidden? | hidden fitting, inflated certainty, merged layers |
 | Who can promote it? | human reviewer, not AI alone |
 
@@ -102,6 +104,36 @@ No public topic is allowed to exist without explicit answers to these questions:
 - What threshold defines pass or fail?
 - What baseline is being compared against?
 - What limitations remain?
+- Which formulas are first-principles, and which are still heuristic?
+- Which variables are dimensionless, and which carry units?
+- Which constants are source-locked physical constants, and which are topic-level bridges?
+
+## 4A. Formula discipline
+
+Every important formula must declare:
+
+- formula text or code path
+- variable definitions
+- unit for each dimensional variable
+- whether the relation is exact identity, derived, heuristic, fitted, or open
+- whether the formula is used for gating, diagnosis, or narrative interpretation
+
+Forbidden formula behavior:
+
+- inserting a number only because it makes the benchmark pass
+- mixing units without an explicit conversion step
+- promoting a bridge constant as if it were a proved physical constant
+- calling a heuristic expression `derived from first principles` without a derivation trail
+
+Required formula labels:
+
+- `Identity`
+- `Derived relation`
+- `Source-locked physical constant`
+- `Checked local benchmark constant`
+- `Heuristic bridge`
+- `Calibration-dependent relation`
+- `Open derivation target`
 
 ## 5. Separation of layers
 
@@ -142,6 +174,7 @@ AI may not:
 - decide that evidence is stronger than it is
 - silently change status labels upward
 - convert analogy into proof language
+- convert dictated intent into a scientific formula without showing the derivation status
 
 Any upward status change requires explicit human judgment.
 
@@ -192,11 +225,15 @@ The project is not improving merely because:
 - treating a fitted match as a prediction
 - letting one impressive topic drag the whole repo wording upward
 - allowing AI to silently harden uncertainty into confidence
+- treating bridge constants as if they were proved first-principles constants
+- leaving units implicit inside scripts and then reading numerical agreement as physical proof
 
 ## Checklist
 
 - [ ] the statement is placed in the correct truth layer
 - [ ] the evidence source is named explicitly
+- [ ] formula origin and proof status are named explicitly
+- [ ] units and variable meanings are stated where needed
 - [ ] status wording does not exceed the support level
 - [ ] limitations and failure states remain visible
 - [ ] canonical metadata is used where relevant

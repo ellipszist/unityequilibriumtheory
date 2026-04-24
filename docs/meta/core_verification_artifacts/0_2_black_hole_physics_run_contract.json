@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.2_Black_Hole_Physics",
+  "timestamp_utc": "2026-04-23T02:38:30.505615+00:00",
+  "repo_root": "C:\\Users\\santa\\Desktop\\uet_harness",
+  "python_executable": "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+  "verification_spec": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.2_Black_Hole_Physics\\VERIFICATION_SPEC.md",
+  "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.2_Black_Hole_Physics\\Result\\artifacts\\0_2_black_hole_physics_verification.json",
+  "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_2_black_hole_physics_run_contract.json",
+  "command": "python docs/topics/0.2_Black_Hole_Physics/Code/03_Research/Research_CCBH_Analysis.py",
+  "input_hashes": [
+    {
+      "path": "Data/03_Research/black_hole_data.json",
+      "status": "present",
+      "sha256": "5a785571d04ce4c09758ca5d8ef925423c472e62c5e9487db4575f6bf50af85b",
+      "bytes": "1053"
+    },
+    {
+      "path": "Data/03_Research/black_hole_metadata.json",
+      "status": "present",
+      "sha256": "26adc5c3ed778a65a92218f6d5e4bd0389920f9e6b1205a2a03e4ccc1fb484cb",
+      "bytes": "946"
+    },
+    {
+      "path": "Data/03_Research/plasma_records.json",
+      "status": "present",
+      "sha256": "f1a00b3a1d2e5b8774096b5dc224e73943fadabe8a8615230c9610f75d3f619b",
+      "bytes": "693"
+    },
+    {
+      "path": "Data/BlackHole_Catalog.csv",
+      "status": "present",
+      "sha256": "14be7b52ed4376613f7bf6a162c602f07ed35fe7d3292ff0394e6c3fb7600573",
+      "bytes": "307"
+    }
+  ],
+  "timeout_seconds": 30,
+  "resolved_command": [
+    "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+    "docs/topics/0.2_Black_Hole_Physics/Code/03_Research/Research_CCBH_Analysis.py"
+  ],
+  "environment_overrides": {
+    "PYTHONIOENCODING": "utf-8",
+    "PYTHONUTF8": "1",
+    "PYTHONPATH_PREFIX": "C:\\Users\\santa\\Desktop\\uet_harness"
+  },
+  "status": "ran",
+  "exit_code": 0,
+  "passed_run_contract": true,
+  "duration_seconds": 4.241,
+  "stdout_tail": "\u2705 Loaded Engine via importlib\n\ud83d\udd0d UET Glass Box: Logging (Streaming) to 'C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.2_Black_Hole_Physics\\Result\\_Logs\\1776911912_BlackHole_Solver'\n\u2705 Derived k_ccbh = 3.0 from Engine (Axiom 2)\n\u274c File not found: C:\\Users\\santa\\Desktop\\uet_harness\\(search Only) \u0e17\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e14\u0e35\\v0.9.0+\\data\\02_astrophysics\\black_holes\\shen2011_recovered.fits\n\u274c FAILED: Could not load Shen catalog.\n",
+  "stderr_tail": "",
+  "declared_scientific_artifact_exists": true,
+  "declared_scientific_artifact_sha256": "215dbeabd0dabc179bcb5d32b6ca0e4b05c86c03fab0891fbbb76bffc0d8c034",
+  "declared_scientific_artifact_bytes": 2554
+}

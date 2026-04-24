@@ -1,0 +1,19 @@
+{
+  "run_id": "1776706860_UET_Fusion_Engine",
+  "simulation": "UET_Fusion_Engine",
+  "status": "FAILED",
+  "timestamp": "Tue Apr 21 00:41:00 2026",
+  "duration_seconds": 0.005079746246337891,
+  "total_steps": 0,
+  "metadata": {
+    "nx": 1,
+    "ny": 1,
+    "dt": 1e-06,
+    "kappa": 9.569929616929081e-32,
+    "beta": 0.0854245,
+    "alpha": 1.0,
+    "C0": 1.0,
+    "phi_loss": 0.05
+  },
+  "final_state": null
+}

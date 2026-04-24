@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.9_Quantum_Nonlocality",
+  "timestamp_utc": "2026-04-23T01:30:56.533524+00:00",
+  "repo_root": "C:\\Users\\santa\\Desktop\\uet_harness",
+  "python_executable": "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+  "verification_spec": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.9_Quantum_Nonlocality\\VERIFICATION_SPEC.md",
+  "artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.9_Quantum_Nonlocality\\Result\\artifacts\\0_9_quantum_nonlocality_verification.json",
+  "command": "python docs/topics/0.9_Quantum_Nonlocality/Code/03_Research/Research_Bell_Inequality.py",
+  "input_hashes": [
+    {
+      "path": "Data/03_Research/bell_inequality_data.json",
+      "status": "present",
+      "sha256": "8eadfad7a4251821da64ff7aeaeb23163c1563664477036b93e6a8c38cbc5ad6",
+      "bytes": "456"
+    },
+    {
+      "path": "Data/03_Research/bell_test_2015.json",
+      "status": "present",
+      "sha256": "7b0088a3e30c039fd7d605c6a7182c3d1589ca1367f6b58adda4d00fdee3acc6",
+      "bytes": "264"
+    },
+    {
+      "path": "Data/03_Research/bell_test_data.py",
+      "status": "present",
+      "sha256": "09b55c088ffa86e965488d1e0140655a0a34d076cfdde6a5703d442edd1a404c",
+      "bytes": "8703"
+    },
+    {
+      "path": "Data/03_Research/double_slit_c60.json",
+      "status": "present",
+      "sha256": "85c8a35119206b56dff16d327336ce5c525e70460babe6f4f5a4be1f73916d48",
+      "bytes": "445"
+    }
+  ],
+  "timeout_seconds": 20,
+  "resolved_command": [
+    "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+    "docs/topics/0.9_Quantum_Nonlocality/Code/03_Research/Research_Bell_Inequality.py"
+  ],
+  "environment_overrides": {
+    "PYTHONIOENCODING": "utf-8",
+    "PYTHONUTF8": "1",
+    "PYTHONPATH_PREFIX": "C:\\Users\\santa\\Desktop\\uet_harness"
+  },
+  "status": "ran",
+  "exit_code": 0,
+  "passed_run_contract": true,
+  "duration_seconds": 1.021,
+  "stdout_tail": "============================================================\nTEST: UET Non-Locality Verification (Hensen 2015)\n============================================================\nExperimental Setup: Loophole-free Bell inequality violation\nSource: Hensen et al. 2015, Nature 526, 682\n\nMeasured CHSH Parameter (S):\n  Exp (Hensen 2015): 2.420\n  Classical Bound:   2.000\n  Quantum Max:       2.828\n\n\u2705 PASS: Violation of Local Realism Observed (S > 2).\n\u2705 PASS: Consistent with Tsirelson Bound.\n",
+  "stderr_tail": ""
+}

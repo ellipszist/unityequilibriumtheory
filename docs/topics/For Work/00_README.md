@@ -34,7 +34,7 @@ flowchart TD
     C --> H["04 Claim Rubric"]
     D --> I["02 Workflow and Lifecycle"]
     D --> J["10 Topic Architecture 5x4"]
-    D --> K["11-14 Operational Standards"]
+    D --> K["11-17 Operational Standards"]
     E --> L["14 Result Standard"]
     E --> M["15 Paper Standard"]
     E --> N["22 Paper Template"]
@@ -56,8 +56,10 @@ flowchart TD
 4. [12_Data_Standard.md](./12_Data_Standard.md)
 5. [13_Reference_Standard.md](./13_Reference_Standard.md)
 6. [14_Result_Standard.md](./14_Result_Standard.md)
-7. [20_TEMPLATE_README.md](./20_TEMPLATE_README.md)
-8. [21_TEMPLATE_ANALYSIS.md](./21_TEMPLATE_ANALYSIS.md)
+7. [17_Formula_Audit_Standard.md](./17_Formula_Audit_Standard.md)
+8. [20_TEMPLATE_README.md](./20_TEMPLATE_README.md)
+9. [21_TEMPLATE_ANALYSIS.md](./21_TEMPLATE_ANALYSIS.md)
+10. [23_TEMPLATE_FORMULA_AUDIT.md](./23_TEMPLATE_FORMULA_AUDIT.md)
 
 ### If you are fixing credibility or integrity issues
 
@@ -65,7 +67,8 @@ flowchart TD
 2. [03_AI_Usage_and_Governance.md](./03_AI_Usage_and_Governance.md)
 3. [04_Claim_and_Evidence_Rubric.md](./04_Claim_and_Evidence_Rubric.md)
 4. [02_Project_Workflow_and_Lifecycle.md](./02_Project_Workflow_and_Lifecycle.md)
-5. Relevant operational standard in `10-16`
+5. [17_Formula_Audit_Standard.md](./17_Formula_Audit_Standard.md)
+6. Relevant operational standard in `10-17`
 
 ### If you are preparing a paper
 
@@ -89,9 +92,11 @@ flowchart TD
 | `14_Result_Standard.md` | artifact and figure discipline | you are saving outputs or verification artifacts |
 | `15_Paper_Standard.md` | manuscript readiness rules | repo work is being converted into a paper |
 | `16_Cinematic_Viz_Standard.md` | showcase visualization rules | creating presentation or social demo assets |
+| `17_Formula_Audit_Standard.md` | formula, unit, and proof-status control | formulas or constants need provenance and unit review |
 | `20_TEMPLATE_README.md` | topic README template | starting or normalizing a topic root README |
 | `21_TEMPLATE_ANALYSIS.md` | analysis note template | creating structured technical analysis notes |
 | `22_UET_PAPER_TEMPLATE.tex` | manuscript starter | building a paper draft from a mature topic |
+| `23_TEMPLATE_FORMULA_AUDIT.md` | formula registry starter | starting a dedicated formula-audit file |
 
 ## Quick decision matrix
 
@@ -103,13 +108,16 @@ flowchart TD
 | dataset source is unclear | `12_Data_Standard.md` | `04_Claim_and_Evidence_Rubric.md` |
 | references are decorative instead of useful | `13_Reference_Standard.md` | `15_Paper_Standard.md` |
 | paper draft feels like marketing | `15_Paper_Standard.md` | `04_Claim_and_Evidence_Rubric.md` |
+| formula exists but provenance is unclear | `17_Formula_Audit_Standard.md` | `11_Code_README_Standard.md` |
+| units or variable meanings are unclear | `17_Formula_Audit_Standard.md` | `02_Project_Workflow_and_Lifecycle.md` |
+| AI wrote smooth prose without derivation support | `03_AI_Usage_and_Governance.md` | `04_Claim_and_Evidence_Rubric.md` |
 
 ## Naming pattern
 
 | Range | Meaning |
 | :-- | :-- |
 | `00-04` | governance and master rules |
-| `10-16` | operational standards by work pillar |
+| `10-17` | operational standards by work pillar |
 | `20+` | templates and production assets |
 
 ## Compatibility map
@@ -128,9 +136,11 @@ flowchart TD
 | `how to Result Standard.md` | `14_Result_Standard.md` |
 | `how to paper.md` | `15_Paper_Standard.md` |
 | `how to Cinematic Viz.md` | `16_Cinematic_Viz_Standard.md` |
+| `how to Formula Audit.md` | `17_Formula_Audit_Standard.md` |
 | `TEMPLATE_README.md` | `20_TEMPLATE_README.md` |
 | `TEMPLATE_ANALYSIS.md` | `21_TEMPLATE_ANALYSIS.md` |
 | `UET_PAPER_TEMPLATE.tex` | `22_UET_PAPER_TEMPLATE.tex` |
+| `TEMPLATE_FORMULA_AUDIT.md` | `23_TEMPLATE_FORMULA_AUDIT.md` |
 
 ## Key rules
 
@@ -139,6 +149,8 @@ flowchart TD
 - Internal benchmarks must stay labeled as internal benchmarks.
 - Every practical workflow should point to commands, inputs, and outputs.
 - Every standards page should be easy to scan, not just correct in prose.
+- Every important formula must declare origin, units, and proof status.
+- Repository prose must not be promoted from dictation alone; it must be tied to a derivation, script, artifact, or source record.
 
 ## Common failure modes
 

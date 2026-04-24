@@ -28,6 +28,7 @@ flowchart LR
 | baseline | comparator or published reference |
 | artifact | result JSON or other reproducibility output |
 | readiness | archived, draft, structured, reproducible internally, academic-ready |
+| formula status | derived, heuristic bridge, source-locked constant, open |
 
 ## Problem
 
@@ -51,6 +52,17 @@ flowchart LR
 - Proof: `[path]`
 - Research script: `[path]`
 - Comparator: `[path]`
+
+## Formula and unit registry
+
+| Item | Value |
+| :-- | :-- |
+| Core relation | [formula or code path] |
+| Variable definitions | [list] |
+| Unit system | [SI / MeV / GeV / mixed with explicit conversions] |
+| Source-locked constants | [list] |
+| Heuristic bridges | [list or none] |
+| Proof status | [identity / derived / heuristic / open] |
 
 ## Parameters and fitting status
 
@@ -95,5 +107,6 @@ Choose one:
 - [ ] problem and scope are bounded
 - [ ] assumptions and exclusions are explicit
 - [ ] data and baseline are named
+- [ ] formulas, units, and proof status are named
 - [ ] metrics and thresholds are defined
 - [ ] limitations and readiness are honest

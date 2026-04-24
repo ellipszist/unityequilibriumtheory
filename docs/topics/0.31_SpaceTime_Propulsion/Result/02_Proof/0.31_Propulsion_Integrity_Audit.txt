@@ -1,5 +1,5 @@
 UET TOPIC 0.31: PROPULSION RELIABILITY AUDIT
-Generated: 2026-04-04 01:51:06
+Generated: 2026-04-23 02:15:59
 ============================================================
 
 🚀 [START] TOPIC 0.31 AUTHORITATIVE PROPULSION AUDIT
@@ -7,17 +7,17 @@ Axiomatized Core: v0.9.0 (A13/A14 Enabled)
 ------------------------------------------------------------
 
 [PHASE 1] Relativistic Acceleration (0.1c Scaling)
-Stage 01: V = 2,663 m/s | 0.00% c
-Stage 05: V = 6,135 m/s | 0.00% c
-Stage 10: V = 7,566 m/s | 0.00% c
-Stage 15: V = 7,566 m/s | 0.00% c
-Stage 20: V = 7,566 m/s | 0.00% c
-Stage 25: V = 7,566 m/s | 0.00% c
-Stage 30: V = 7,566 m/s | 0.00% c
+Stage 01: V = 2,668 m/s | 0.00% c
+Stage 05: V = 6,175 m/s | 0.00% c
+Stage 10: V = 7,623 m/s | 0.00% c
+Stage 15: V = 7,623 m/s | 0.00% c
+Stage 20: V = 7,623 m/s | 0.00% c
+Stage 25: V = 7,623 m/s | 0.00% c
+Stage 30: V = 7,623 m/s | 0.00% c
 
 [PHASE 2] Spacetime Inertial Carryover Analysis
-Sling Release Velocity: 7,566 m/s
-T+0.0s: Velocity = 6,886 m/s
+Sling Release Velocity: 7,623 m/s
+T+0.0s: Velocity = 6,848 m/s
 T+2.0s: Velocity = 299,792,158 m/s
 T+4.0s: Velocity = 299,792,158 m/s
 T+6.0s: Velocity = 299,792,158 m/s
@@ -25,8 +25,8 @@ T+8.0s: Velocity = 299,792,158 m/s
 T+10.0s: Velocity = 299,792,158 m/s
 
 [PHASE 3] Propulsion Integrity Verdict
-Net Velocity Gain: -3,434 m/s
-Post-Sling Velocity Decay (10s): -3962003.73%
+Net Velocity Gain: -3,377 m/s
+Post-Sling Velocity Decay (10s): -3932464.86%
 Final Integrity Status: FAIL
 ------------------------------------------------------------
 🚀 [FINISH] 0.31 AUTHORITATIVE AUDIT COMPLETE

@@ -1,103 +1,78 @@
 ---
 layout: article
 title: "UET Topic 0.5: Nuclear Binding Hadrons"
-description: "Research module for Nuclear Binding Hadrons within the Unity Equilibrium Theory framework."
+description: "Conservative overview for the nuclear-binding and hadron topic in the UET repository."
 ---
 
-# 🌌 0.5 Nuclear Binding & Hadrons
+# 0.5 Nuclear Binding Hadrons
 
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.5: Nuclear Binding & Hadrons",
-  "description": "Unifying Nuclear Binding Energy and the Strong Force via Information Tension.",
-  "about": "Nuclear Physics, Binding Energy, Strong Force, Hadrons, UET"
-}
--->
+## Problem
 
-> [!NOTE]
-> **AI-Digest**: UET derives Nuclear Binding Energy by modeling the strong force as high-gradient Information Tension ($\kappa$). It accurately predicts the MeV-per-nucleon curve for stable isotopes without arbitrary coupling constants. / UET คำนวณพลังงานยึดเหนี่ยวรังสีโดยมองว่าแรงนิวเคลียร์อย่างเข้มคือความตึงเครียดข้อมูลระดับสูง ทำให้ทำนายค่าพลังงานยึดเหนี่ยวในนิวเคลียสได้แม่นยำอย่างเป็นธรรมชาติ
+This topic explores whether UET-style geometric or information-overlap models can reproduce
+selected nuclear-binding, hadron-mass, proton-radius, and strong-force benchmark behavior.
 
-![Status](https://img.shields.io/badge/Status-98%25_PASS-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Geometric_Overlaps-blueviolet)
-![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
-![Scientific_Rigor](https://img.shields.io/badge/Rigor-Yukawa_Integration-orange)
+## Current status
 
-> **"UET redefines the Strong Force as 'Geometric Information Overlap' (Axiom 3). By integrating the Yukawa Potential, we achieve 4.34% average error in Binding Energy predictions across 83 isotopes."**
+- Metadata status: `Draft`
+- Audit tier: `B`
+- Data status: `manual or placeholder`
+- Claim posture: internal research workflow only, not a solved strong-force theory
 
----
+## What currently exists
 
-## 1. 📂 5x4 Grid Structure
+- Engine scripts for binding-energy, light-nuclei, hadron, and QCD-bridge experiments
+- Research scripts for binding-energy comparison, proton radius, quark masses, and related checks
+- Topic-local data files including `Data/03_Research/Data_AME2020_Binding.json` and
+  `Data/03_Research/Data_PDG_Quarks_2024.json`
+- Competitor and visualization folders that support internal comparisons and plotting
 
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | Analysis Reports on Binding Energy and QCD Bridge. |
-| **Ref/** | AME2020 (Binding Energies) and PDG 2024 (Particle Data). |
-| **Data/** | Isotope mass and radius datasets. |
-| **Code/** | Logic levels: 01_Engine (Binding Solver + Yukawa), 02_Proof (Confinement). |
-| **Result/** | Plots showing Binding Energy per Nucleon curve. |
+## What this topic does not currently establish
 
----
+- It does not establish a general derivation of QCD from first principles.
+- It does not establish a theorem-level proof of confinement.
+- It does not yet provide a standards-grade data manifest, verification contract, or
+  limitations package at the topic root.
+- Any reported match to selected isotopes or radii should therefore be treated as an internal
+  benchmark result rather than external confirmation.
 
-## 🔗 Theory Connection
+## Data and evidence notes
 
-```mermaid
-graph TB
-    subgraph Standard["🔬 Standard Nuclear Physics"]
-        Liquid["Liquid Drop Model"]
-        Parameters["❌ 5-7 Tuned Parameters"]
-        Deuteron["Simple Models Fail Light Nuclei"]
-    end
-    
-    subgraph UET["✅ UET Solution"]
-        Overlap["Geometric Information Overlap"]
-        Yukawa["✅ Yukawa Potential Integration"]
-        Unified["Unified Binding Equation"]
-    end
-    
-    Liquid --> Parameters
-    Parameters -->|"UET Replaces with"| Overlap
-    Overlap --> Unified
-    Yukawa --> Unified
-    
-    style UET fill:#d4edda,stroke:#28a745
-```
+- The topic appears to use real-source-inspired files, but the audit still classifies the data
+  workflow as `manual or placeholder`.
+- Before stronger wording is justified, this topic needs a root-level `DATA_MANIFEST.md`
+  that identifies source URL or DOI, local file used, preprocessing, and benchmark linkage.
 
----
+## Verification notes
 
-## 🎯 Problem & Solution
+- Candidate scripts:
+  - `Code/01_Engine/Engine_Nuclear_Binding.py`
+  - `Code/01_Engine/Engine_Light_Nuclei.py`
+  - `Code/03_Research/Research_Nuclear_Binding.py`
+  - `Code/03_Research/Research_Proton_Radius.py`
+- The repository does not yet expose a topic-level `VERIFICATION_SPEC.md` with command,
+  metric, threshold, baseline, and artifact path.
 
-- **The Problem:** The standard Liquid Drop Model requires 5-7 parameters tuned to specific ranges of the periodic table. It often struggles with very light nuclei or the exact range of the force.
-- **The Solution:** UET models nucleons as Information Fields. The binding energy comes from the **Overlap** of these fields (reducing total entropy). We upgraded the engine to include the **Yukawa Potential** ($e^{-mr}/r$), providing the correct range behavior for the Strong Force.
-- **Integrity Check:**
-    - **Success:** 99% pass rate across 83 isotopes.
-    - **Resolved:** Deuteron (H-2) previously had high error, but the new **Light Nuclei Solver** (Geometric Overlap) reduced error to **0.4%**.
+## Reproducibility
 
----
-
-## 📊 Test Results
-
-| Category | Test | Result | Status |
-| :--- | :--- | :--- | :--- |
-| **01_Engine** | Binding Energy | **4.34% Avg Error** | ✅ PASS |
-| **01_Engine** | Light Nuclei | **Deuteron Solved (0.4%)** | ✅ PASS |
-| **03_Research** | Proton Radius | 0.841 fm (Perfect Match) | ✅ PASS |
-| **03_Research** | Confinement | Linear Potential Confirmed | ✅ PASS |
-
----
-
-## 2. ⚡ Quick Start
+Current exploratory commands:
 
 ```powershell
 python docs/topics/0.5_Nuclear_Binding_Hadrons/Code/01_Engine/Engine_Nuclear_Binding.py
+python docs/topics/0.5_Nuclear_Binding_Hadrons/Code/03_Research/Research_Nuclear_Binding.py
 ```
 
-## 📁 Key Files
+These commands are useful for internal inspection, but they are not yet an audit-grade
+verification workflow.
 
-- [Engine_Nuclear_Binding.py](./Code/01_Engine/Engine_Nuclear_Binding.py): Upgraded solver with Yukawa term.
-- [ANALYSIS_Nuclear_Engines.md](./Doc/ANALYSIS_Nuclear_Engines.md): Detailed report on the geometric overlap method.
-- [Code/README.md](./Code/README.md): Full script documentation.
+## Next remediation steps
 
----
-*Generated by UET Research Assistant - Integrity First Version*
+1. Create `DATA_MANIFEST.md` for AME2020, PDG, proton-radius, and QCD-related inputs.
+2. Create `VERIFICATION_SPEC.md` that defines the primary benchmark, metric, baseline, and
+   output artifact path.
+3. Add `METHOD.md` that separates heuristic mechanism claims from any proof-oriented claims.
+4. Add `LIMITATIONS.md` that states scope limits for confinement, light nuclei, and selected
+   benchmark fits.
+
+## Current readiness status
+
+`Draft`

@@ -34,8 +34,8 @@ flowchart LR
 | State | Minimum docs | Evidence expectation | Typical blocker |
 | :-- | :-- | :-- | :-- |
 | `Hypothesis note` | note or sketch | idea only | no stable benchmark |
-| `Draft` | README and assumptions | partial structure | missing manifests or baselines |
-| `Structured` | root standards set | auditable internal package | scripts or artifacts still weak |
+| `Draft` | README and assumptions | partial structure | missing manifests, baselines, or formula registry |
+| `Structured` | root standards set | auditable internal package | scripts, artifacts, or formula provenance still weak |
 | `Reproducible internally` | docs plus stable artifacts | rerunnable internal benchmark | external scrutiny not ready |
 | `Academic-ready` | mature methods package | bounded claims and explicit limits | paper framing still needed |
 
@@ -84,6 +84,8 @@ Minimum output:
 - `VERIFICATION_SPEC.md`
 - `BASELINE_COMPARISON.md`
 - `LIMITATIONS.md`
+- `FORMULA_AUDIT.md` or equivalent dedicated registry
+- unit and variable definition section or equivalent
 
 ### 4. Reproducible internally
 
@@ -117,12 +119,13 @@ Minimum output:
 
 1. Start with problem definition.
 2. Declare assumptions before writing triumph language.
-3. Collect references and dataset provenance.
-4. Build or refactor code.
-5. Define metric and threshold before celebrating outcome.
-6. Compare against a baseline.
-7. Write limitations before writing summaries.
-8. Only then update public-facing wording.
+3. Declare formulas, units, and variable meanings before writing high-confidence prose.
+4. Collect references and dataset provenance.
+5. Build or refactor code.
+6. Define metric and threshold before celebrating outcome.
+7. Compare against a baseline.
+8. Write limitations before writing summaries.
+9. Only then update public-facing wording.
 
 ## Promotion rules
 
@@ -140,6 +143,8 @@ It may move down if:
 - Is this a derivation, a fit, or a prediction?
 - Is the dataset local and documented?
 - Is the baseline explicit?
+- Are the variables and units explicit?
+- Which constants come from source-locked physics, and which are bridges or heuristics?
 - Does the README say more than the verification spec supports?
 - Would a skeptical reviewer know what to attack first?
 
@@ -158,11 +163,14 @@ If the answer to the last question is "no", the topic is probably still too vagu
 - marking a topic reproducible without stable commands and artifacts
 - treating folder creation alone as scientific progress
 - hiding demotion when a script no longer runs or provenance breaks
+- calling a topic structured even though formulas still have no origin or unit table
+- promoting dictated equations into methods without a formula-audit pass
 
 ## Checklist
 
 - [ ] current readiness label matches actual artifacts
 - [ ] required root files exist for the stage claimed
+- [ ] formulas, units, and variable meanings are explicit enough for review
 - [ ] metric, threshold, and baseline are explicit before promotion
 - [ ] public wording was updated only after evidence review
 - [ ] next blocker for promotion is named clearly

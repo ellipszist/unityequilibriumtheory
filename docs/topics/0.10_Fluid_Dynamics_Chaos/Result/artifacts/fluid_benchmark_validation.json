@@ -1,0 +1,53 @@
+{
+  "config": {
+    "grid_size": 128,
+    "steps": 100,
+    "timing_statistic": "median",
+    "trials": 5
+  },
+  "dataset_hash": "fd43cc9d09d2d797d372a7f7bc2fd42d55369852c56e8671090f6a80fa591519",
+  "environment": {
+    "implementation": "CPython",
+    "matplotlib_version": "3.10.8",
+    "numpy_version": "2.4.0",
+    "pandas_version": "2.3.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.14.2",
+    "scipy_version": "1.16.3",
+    "tensorflow_version": null,
+    "torch_version": "2.10.0+cpu"
+  },
+  "metrics": {
+    "speedup": 2.8434954925050993,
+    "stable": true
+  },
+  "notes": "Internal benchmark artifact using the repository comparator script.",
+  "results": {
+    "navier_stokes_runtime_seconds": 0.12398009997559711,
+    "navier_stokes_runtime_trials_seconds": [
+      0.12554919999092817,
+      0.12398009997559711,
+      0.1264221000019461,
+      0.12360779999289662,
+      0.12107500003185123
+    ],
+    "speedup": 2.8434954925050993,
+    "stable": true,
+    "uet_runtime_seconds": 0.043601299985311925,
+    "uet_runtime_trials_seconds": [
+      0.043601299985311925,
+      0.054442400054540485,
+      0.04657980002230033,
+      0.04278900002827868,
+      0.043551100010517985
+    ]
+  },
+  "seed": 42,
+  "thresholds": {
+    "min_speedup": 2.0,
+    "requires_stability": true
+  },
+  "timestamp_utc": "2026-04-23T02:38:52.077552+00:00",
+  "topic": "0.10_Fluid_Dynamics_Chaos",
+  "uet_version": "0.9.0"
+}

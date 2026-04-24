@@ -51,7 +51,7 @@ Sources:
 
 import numpy as np
 from dataclasses import dataclass, field
-from typing import Tuple, Optional, List
+from typing import Tuple, Optional, List, Union, Any
 from scipy.constants import k as k_B, c, G, hbar
 from docs.core.uet_parameters import INTEGRITY_KILL_SWITCH
 
@@ -230,7 +230,7 @@ def compute_in_ex_balance(J_in: np.ndarray, J_out: np.ndarray) -> float:
 
 
 # =============================================================================
-# AXIOM 5: NATURAL WILL (Existence Persistence Drive)
+# AXIOM 5: [AXIOMATIC HYPOTHESIS] NATURAL WILL
 # =============================================================================
 
 
@@ -282,7 +282,7 @@ def nea_dynamics(C: np.ndarray, constraints: dict, params: UETParameters) -> np.
 
 
 # =============================================================================
-# AXIOM 8: DYNAMIC GAME - ENERGY COMPETITION
+# AXIOM 8: [AXIOMATIC HYPOTHESIS] DYNAMIC GAME - ENERGY COMPETITION
 # =============================================================================
 
 
@@ -311,6 +311,7 @@ def strategic_boost(density: float, scale: float = 1.0, params: UETParameters = 
     base_scalar = (params.beta * 30.0) if params.beta > 0 else 1.5
 
     # Base Adaptation Pressure (Evolutionary Pressure)
+    # [HEURISTIC]: base_scalar values (1.5, 30.0) are unverified pivots.
     beta_base = base_scalar * density_ratio
 
     # Strategic Payoff Gradient (∇Π_game) for high-conflict
@@ -730,7 +731,14 @@ def dynamics_step_complete(
 
     # --- INTEGRITY KILL SWITCH ---
     if INTEGRITY_KILL_SWITCH:
-        return np.zeros_like(C) + np.nan  # Kill all dynamics
+        # Maintain return signature for coupled fields
+        nan_field = np.zeros_like(C) + np.nan
+        if V is not None and I is not None:
+            return (nan_field, nan_field, nan_field)
+        elif I is not None:
+            return (nan_field, nan_field)
+        else:
+            return nan_field
 
     # Reaction term: -V'(C)
     reaction = -potential_derivative(C, params)

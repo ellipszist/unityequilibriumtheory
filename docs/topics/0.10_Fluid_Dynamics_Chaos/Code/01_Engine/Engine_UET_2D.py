@@ -13,6 +13,25 @@ Compliance:
 - Logs parameters to Research/Engine Pillar
 """
 
+import sys
+from pathlib import Path
+
+# --- ROBUST UET BOOTSTRAP ---
+def _bootstrap():
+    curr = Path(__file__).resolve()
+    for parent in [curr] + list(curr.parents):
+        if (parent / "docs").exists() and (parent / "docs" / "core").exists():
+            if str(parent) not in sys.path:
+                sys.path.insert(0, str(parent))
+            return parent
+    return None
+
+ROOT = _bootstrap()
+if not ROOT:
+    print("CRITICAL: UET docs root not found!")
+    sys.exit(1)
+
+
 import numpy as np
 import sys
 from dataclasses import dataclass
@@ -249,28 +268,14 @@ class UETFluidSolver(UETBaseSolver):
         # UET: Turbulence is Helical Symmetry Breaking.
         # Transition occurs when the "Twist" (2*pi radians) accumulates over the full rotational frame (360 deg).
         # Re_c_topology = 360 * (2 * pi) = 2261.95
-
-        # We assume beta standardizes the information flux.
-        GEOMETRIC_FACTOR = 360.0 * (2 * np.pi) * self.params.beta
-
-        # Determine Re_c based on this factor
-        # Since Re is dimensionless, this FACTOR IS the Critical Reynolds Number for calibration.
-        Re_c = GEOMETRIC_FACTOR
-        # Re = U*L / nu.
-        # nu = kappa.
-        # So Re_c should depend on kappa.
-
-        # Let's use the Topological Stability limit:
-        # Re_c is a property of the GEOMETRY, not the FLUID.
-        # But UET connects them.
-        # Let's say Re_c is the threshold.
-
-        # Revised UET Formula:
-        # Re_c = 2300 * (Stability_Index)
+        
+        # The critical threshold scales with the coupling constant beta.
+        # Stronger coupling (higher beta) delays turbulence onset in the info manifold.
+        Re_c = (360.0 * 2.0 * np.pi) * self.params.beta
 
         return (
-            2300.0,
-            "Derived from Topological Stability of Cylinder Flow (Transition Point)",
+            float(Re_c),
+            f"Axiomatically derived from Topological Stability (Beta={self.params.beta:.4f})",
         )
 
     # --- PHYSICAL UTILITY EXTENSION ---

@@ -1,104 +1,78 @@
 ---
 layout: article
 title: "UET Topic 0.1: Galaxy Rotation Problem"
-description: "Research module for Galaxy Rotation Problem within the Unity Equilibrium Theory framework."
+description: "Structured documentation for the galaxy-rotation topic in the UET repository."
 ---
 
-# 🌌 0.1 Galaxy Rotation Problem
+# 0.1 Galaxy Rotation Problem
 
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.1: Galaxy Rotation Problem",
-  "description": "Solving the Galaxy Rotation Problem without Dark Matter.",
-  "about": "Galaxy Rotation, Dark Matter, a0, Information Drag"
-}
--->
+## Problem
 
-> [!NOTE]
-> **AI-Digest**: UET solves the Galaxy Rotation problem by modeling gravity as informational drag. The $a_0$ constant emerges from Cosmic Dynamic Frame (Topic 0.26), removing the need for Dark Matter. / UET แก้ปัญหาอัตราการหมุนเวียนของกาแล็กซีด้วยการมองแรงโน้มถ่วงเป็น 'แรงหน่วงข้อมูล' ส่งผลให้ค่า $a_0$ เกิดขึ้นจริงโดยไม่ต้องพึ่งพาสสารมืด
+This topic studies whether UET-style galaxy dynamics can reproduce selected observed
+rotation-curve behavior using baryonic inputs and repository-stored benchmark data.
 
-![Status](https://img.shields.io/badge/Status-90.1%25_Accuracy-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Extreme_Simplicity-blueviolet)
-![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
-![Scientific_Rigor](https://img.shields.io/badge/Rigor-Zero_Curve_Fitting-orange)
+## Assumptions and scope
 
-> **"UET replaces Dark Matter with an Information Field ($\Omega$) that naturally emerges from baryon density, achieving 90% accuracy without per-galaxy parameter tuning."**
+- Scope: internal numerical comparison against repository copies of galaxy-rotation data
+- Out of scope: external confirmation that dark matter is unnecessary in all galaxy classes
+- Scope includes both first-principles-style experiments and scripts that perform
+  calibration-oriented comparisons
 
----
+## Data sources
 
-> [!IMPORTANT]
-> **Deep Dive Available:** This topic covers the *Observational Proof* (The "What").
-> To understand the *Underlying Mechanism* (The "Why" - Fluid Dynamics, Bullet Cluster, and Cosmic Drag), see **[Topic 0.26 Cosmic Dynamic Frame](../0.26_Cosmic_Dynamic_Frame/README.md)**.
+- Local dataset: `Data/03_Research/sparc_data.json`
+- Secondary local dataset: `Data/03_Research/little_things_data.json`
+- Reference citation: SPARC 2016 in [docs/references.bib](/C:/Users/santa/Desktop/uet_harness/docs/references.bib:1)
+- Current repository JSON package contains `154` records in `sparc_data.json`; this should
+  not be described as the full upstream SPARC release without a fresh provenance pass
 
----
+## Method summary
 
-## 1. 📂 5x4 Grid Structure
+- Engine: `Code/01_Engine/Engine_Galaxy_V3.py`
+- Proof layer: `Code/02_Proof/Proof_Unity_Density_Law.py`
+- Research comparison: `Code/03_Research/Research_Galaxy_Rotation.py`
+- Verification-oriented script: `Code/03_Research/Verify_Galaxy_Rotation.py`
 
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | Standardized analysis reports following ANALYSIS_TEMPLATE.nd. |
-| **Ref/** | SPARC and LITTLE THINGS dataset references and DOIs. |
-| **Data/** | Observational rotation data in JSON/CSV format. |
-| **Code/** | Logic levels: 01_Engine, 02_Proof, 03_Research, 04_Competitor. |
-| **Result/** | Golden Results mirrors the Code folder (Plots and Logs). |
+Supporting standard files:
 
----
+- [METHOD.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.1_Galaxy_Rotation_Problem/METHOD.md:1)
+- [DATA_MANIFEST.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.1_Galaxy_Rotation_Problem/DATA_MANIFEST.md:1)
+- [VERIFICATION_SPEC.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.1_Galaxy_Rotation_Problem/VERIFICATION_SPEC.md:1)
+- [BASELINE_COMPARISON.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.1_Galaxy_Rotation_Problem/BASELINE_COMPARISON.md:1)
+- [LIMITATIONS.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.1_Galaxy_Rotation_Problem/LIMITATIONS.md:1)
 
-## 🔗 Theory Connection
+## Parameters and fitting status
 
-```mermaid
-graph TB
-    subgraph Standard["🔬 Standard Physics"]
-        Old["Newtonian Dynamics"]
-        Limit["Keplerian Fall-off (V drops at large R)"]
-    end
-    
-    subgraph UET["✅ UET Solution"]
-        Reformulation["Information Field Coupling (Alpha-Law)"]
-        Result["Flat Rotation Curves (Asymptotic Velocity)"]
-    end
-    
-    Old --> Limit
-    Limit -->|"UET bridges via"| Reformulation
-    Reformulation --> Result
-    
-    style UET fill:#d4edda,stroke:#28a745
-```
+- Public repository wording should not call this topic `zero curve fitting`
+- `Research_Galaxy_Rotation.py` reports internal comparison metrics from baryonic inputs
+- `Verify_Galaxy_Rotation.py` explicitly discusses best-fit or selected coupling behavior
+- Repository documentation therefore treats this topic as a mix of derived assumptions and
+  calibration-oriented internal experiments
 
----
+## Metrics and thresholds
 
-## 🎯 Problem & Solution
+- Primary internal metric in `Research_Galaxy_Rotation.py`: mean absolute percentage error
+- Topic-level pass threshold currently documented in script logic: `< 15%` error
+- README-level status should be interpreted as internal benchmark status only
 
-- **The Problem:** Standard physics cannot explain why galaxies rotate as fast as they do without inventing non-baryonic "Dark Matter" that must be tuned for every individual galaxy.
-- **The Solution:** UET **Axiom 3** proves that low mass density triggers an information field potential. By using the **Alpha-Law (v3.3)**, we dampen the field in extremely sparse regions to prevent over-prediction, allowing a single universal equation to govern all 154 galaxies in the SPARC database.
-- **Zero Curve Fitting Law:** No parameters (like Halo Mass or M/L ratios) were fitted to individual rotation curves. All inputs are strictly baryonic.
+## Baselines
 
----
+- Comparator model files exist under `Code/04_Competitor/`
+- Baseline expectation is not "all dark-matter models fail"; instead, repository users
+  should compare UET outputs against documented competitor implementations and report the
+  metric definitions used
 
-## 📊 Test Results
+## Limitations and open risks
 
-| Category | Test | Result | Status |
-| :--- | :--- | :--- | :--- |
-| **01_Engine** | Core Solver | Global Error 9.90% | ✅ PASS |
-| **02_Proof** | Analytic Proof | Symbolic Flat Curve | ✅ PASS |
-| **03_Research** | Real-world Sync | 72.1% Strict Pass Rate | ✅ PASS |
-| **04_Competitor** | Standard Baseline | Predictability Victory | ✅ PASS |
+- Dataset provenance needs a stricter normalization pass
+- Fitting versus prediction boundaries must remain explicit
+- Current repository scripts do not constitute external replication
 
----
+## Reproducibility
 
-## 2. ⚡ Quick Start
+- Verification command: `python docs/topics/0.1_Galaxy_Rotation_Problem/Code/03_Research/Research_Galaxy_Rotation.py`
+- Artifact contract: see [VERIFICATION_SPEC.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.1_Galaxy_Rotation_Problem/VERIFICATION_SPEC.md:1)
 
-```powershell
-python docs/topics/0.1_Galaxy_Rotation_Problem/Code/03_Research/Research_Galaxy_Rotation.py
-```
+## Current readiness status
 
-## 📁 Key Files
-
-- [Engine_Galaxy_V3.py](./Code/01_Engine/Engine_Galaxy_V3.py): Axiomatic solver (v3.3).
-- [ANALYSIS_01_Engine.md](./Doc/ANALYSIS_01_Engine.md): Detailed technical report.
-- [Code/README.md](./Code/README.md): Full script documentation.
-
----
-*Generated by UET Research Assistant - Paper-Ready Version*
+`Structured`

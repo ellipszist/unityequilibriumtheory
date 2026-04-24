@@ -1,102 +1,85 @@
 ---
 layout: article
 title: "UET Topic 0.6: Electroweak Physics"
-description: "Research module for Electroweak Physics within the Unity Equilibrium Theory framework."
+description: "Conservative overview for the electroweak topic in the UET repository."
 ---
 
-# 🔬 0.6 Electroweak Physics
+# 0.6 Electroweak Physics
 
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.6: Electroweak Physics",
-  "description": "Deriving the Fermi Constant (G_F) and Neutron Lifetime purely from Information Saturation and geometric symmetry.",
-  "about": "Electroweak Force, Fermi Constant, Neutron Lifetime, Symmetry Breaking, Information Saturation, UET"
-}
--->
+## Problem
 
-> [!NOTE]
-> **AI-Digest**: UET derives fundamental electroweak parameters, such as the Fermi Constant ($G_F$) and Neutron Lifetime, from first-principles 'Information Saturation'. By modeling weak interactions as geometric consequences of the UET lattice, the framework achieves high-precision matches with experimental data without arbitrary curve-fitting. / UET คำนวณค่าคงที่พื้นฐานของอันตรกิริยาอย่างอ่อน เช่น ค่าคงที่เฟอร์มี ($G_F$) และอายุขัยของนิวตรอน จากหลักการ 'ความอิ่มตัวของสารสนเทศ' โดยตรง การจำลองแรงอ่อนในฐานะผลลัพธ์ทางเรขาคณิตของโครงสร้าง UET ทำให้ได้ผลลัพธ์ที่แม่นยำสูงโดยไม่ต้องใช้การปรับแต่งค่าพารามิเตอร์ตามอำเภอใจ
+This topic studies whether a UET electroweak engine can reproduce selected electroweak
+observables and related weak-decay scales under a controlled benchmark workflow.
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Extreme_Simplicity-blueviolet)
-![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
-![Scientific_Rigor](https://img.shields.io/badge/Rigor-Zero_Curve_Fitting-orange)
+## Current status
 
-> **"UET derives the Fermi Constant ($G_F = 1.166 \times 10^{-5}$ GeV) and Neutron Lifetime ($879.4$ s) purely from Information Saturation, proving Weak interactions are geometric consequences."**
+- Metadata status: `Structured`
+- Audit tier: `A`
+- Data status: `real source referenced`
+- Claim posture: internal electroweak benchmark package, not a complete proof of the
+  electroweak sector
 
----
+## What currently exists
 
-## 1. 📂 5x4 Grid Structure
+- A PDG-linked verifier for `sin2(theta_W)`, `m_W`, `m_H`, and `G_F`
+- A structured electroweak reference package and a separate mapping audit for the
+  weak-mixing-angle observable
+- An expanded benchmark package that adds a checked-local neutron-lifetime gate and keeps
+  running-angle points in a diagnostic-only layer
+- A dedicated `FORMULA_AUDIT.md` that labels derived relations, checked-local layers,
+  source-locked constants, and heuristic bridges explicitly
+- Engine, proof, research, competitor, and visualization scripts for electroweak work
 
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | Analysis of weak force geometry and decay mechanisms. |
-| **Ref/** | PDG 2024, CDF II, and bottle/beam neutron data. |
-| **Data/** | Embedded experimental data for particle masses and decays. |
-| **Code/** | Logic levels: 01_Engine (Lifetime), 03_Research (Higgs, W/Z). |
-| **Result/** | Verified plots of Higgs potential and Running $\sin^2\theta_W$. |
+## What this topic currently establishes
 
----
+- The current PDG-linked package passes for `sin2(theta_W)`, `m_W`, `m_H`, and `G_F`
+  within the thresholds defined in `VERIFICATION_SPEC.md`
+- The expanded benchmark also passes the current neutron-lifetime gate
+- The current repository workflow can reproduce these benchmark results through audit-grade
+  scripts and saved artifacts
 
-## 🔗 Theory Connection
+## What this topic does not currently establish
 
-```mermaid
-graph TB
-    subgraph Standard["🔬 Standard Physics"]
-        Old["Standard Model"]
-        Limit["Arbitrary Parameters (G_F, sin^2 theta)"]
-    end
-    
-    subgraph UET["✅ UET Solution"]
-        Reformulation["Information Saturation"]
-        Result["Geometric Derivations (No Fitting)"]
-    end
-    
-    Old --> Limit
-    Limit -->|"UET bridges via"| Reformulation
-    Reformulation --> Result
-    
-    style UET fill:#d4edda,stroke:#28a745
-```
+- It does not establish a full gauge-theory derivation or a full Standard Model replacement
+- It does not establish that every electroweak observable is source-locked to an upstream
+  benchmark package
+- It does not yet provide a direct upstream PDG SQLite mapping for the weak-mixing-angle
+  observable
+- It does not justify promoting the current running-angle layer beyond diagnostic status
 
----
+## Data and evidence notes
 
-## 🎯 Problem & Solution
+- Core masses are source-locked through PDG 2025 SQLite
+- `sin2(theta_W)` and `G_F` still rely on a structured checked-local electroweak reference
+  layer
+- A dedicated mapping audit records that no direct weak-mixing-angle match was located in
+  the current PDG SQLite workflow
+- The neutron-lifetime gate is currently a checked-local benchmark, not a newly
+  source-locked external package
 
-- **The Problem:** The Standard Model inputs the Fermi Constant ($G_F$) and Weinberg Angle ($\theta_W$) as measured free parameters without explaining *why* they have those values.
-- **The Solution:** UET derives $G_F$ from the vacuum expectation value ($v$) defined by Information Capacity limits, and $\theta_W$ from the $\pi/6$ geometry of the UET lattice.
-- **Zero Curve Fitting Law:** We predict the Neutron Lifetime (879.4s) within 0.09% of the UCN world average without fitting any decay rates.
+## Verification notes
 
----
+- Core verifier:
+  - `Code/03_Research/Research_Electroweak_PDG_Comparison.py`
+- Expanded verifier:
+  - `Code/03_Research/Research_Electroweak_Expanded_Benchmark.py`
+- Key artifacts:
+- `Result/artifacts/electroweak_pdg_validation.json`
+- `Result/artifacts/electroweak_expanded_benchmark.json`
+- `FORMULA_AUDIT.md`
 
-## 📊 Test Results
+## Reproducibility
 
-| Category | Test | Result | Status |
-| :--- | :--- | :--- | :--- |
-| **01_Engine** | Neutron Lifetime | 879.40 s (0.09% Err) | ✅ PASS |
-| **01_Engine** | Fermi Constant | 1.166e-5 (Exact) | ✅ PASS |
-| **02_Proof** | W/Z Mass Ratio | 0.876 (vs 0.881) | ✅ PASS |
-| **03_Research** | Higgs Mass | 123.11 GeV (1.7% Err) | ✅ PASS |
-| **03_Research** | Alpha Decay | 97.6% Correlation | ✅ PASS |
-| **03_Research** | Beta Decay (ft) | 0.16% Spread (Universal) | ✅ PASS |
-| **03_Research** | Running Angle | Matches Z-pole | ✅ PASS |
-| **03_Research** | W Mass Anomaly | 79.95 GeV (vs 80.37) | ✅ PASS |
-
----
-
-## 2. ⚡ Quick Start
+Current audit-grade commands:
 
 ```powershell
-python docs/topics/0.6_Electroweak_Physics/Code/01_Engine/Engine_Electroweak.py
+python docs/topics/0.6_Electroweak_Physics/Code/03_Research/Research_Electroweak_PDG_Comparison.py
+python docs/topics/0.6_Electroweak_Physics/Code/03_Research/Research_Electroweak_Expanded_Benchmark.py
 ```
 
-## 📁 Key Files
+These commands test the current benchmark package. They do not by themselves establish full
+electroweak closure.
 
-- [Engine_Electroweak.py](./Code/01_Engine/Engine_Electroweak.py): Derivation of G_F.
-- [ANALYSIS_Engine_Electroweak.md](./Doc/ANALYSIS_Engine_Electroweak.md): Technical breakdown of symmetry breaking.
-- [Research_Electroweak.py](./Code/03_Research/Research_Electroweak.py): Full suite validation.
+## Current readiness status
 
----
-*Generated by UET Research Assistant - Paper-Ready Version*
+`Structured`

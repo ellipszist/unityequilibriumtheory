@@ -14,6 +14,25 @@ Standardization Compliance:
 """
 
 import sys
+from pathlib import Path
+
+# --- ROBUST UET BOOTSTRAP ---
+def _bootstrap():
+    curr = Path(__file__).resolve()
+    for parent in [curr] + list(curr.parents):
+        if (parent / "docs").exists() and (parent / "docs" / "core").exists():
+            if str(parent) not in sys.path:
+                sys.path.insert(0, str(parent))
+            return parent
+    return None
+
+ROOT = _bootstrap()
+if not ROOT:
+    print("CRITICAL: UET docs root not found!")
+    sys.exit(1)
+
+
+import sys
 import numpy as np
 from pathlib import Path
 from typing import Dict, Any
@@ -25,7 +44,10 @@ from typing import Dict, Any
 from docs.core.uet_base_solver import UETBaseSolver
 from docs.core.uet_data_orchestrator import orchestrator
 from docs.core.uet_parameters import get_params
-from docs.core.test.scientific_validation import ScientificValidator
+from docs.core.scientific_validation import ScientificValidator
+from docs import ROOT_PATH
+
+root_path = ROOT_PATH
 
 
 
@@ -75,14 +97,6 @@ try:
 except Exception as e:
     print(f"⚠️ Physics Engine Warning: Import Logic Failed: {e}")
     UETGalaxyEngine = None
-
-
-
-
-# Standardized UET Root Path
-from docs import ROOT_PATH
-root_path = ROOT_PATH
-
 class AIDetectiveSolver(UETBaseSolver):
     """
     The 'Reasoning Engine' that solves physics problems by minimizing Information Entropy.

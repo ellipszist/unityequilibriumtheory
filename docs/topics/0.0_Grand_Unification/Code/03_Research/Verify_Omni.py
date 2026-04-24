@@ -10,19 +10,34 @@ Target:
 """
 
 import sys
+import numpy as np
 from pathlib import Path
 
-# Path Fix
-current_path = Path(__file__).resolve()
-# Go up to 'docs' parent
-root_path = current_path.parents[5]
-sys.path.append(str(root_path))
+# --- ROBUST UET BOOTSTRAP ---
+def _bootstrap():
+    curr = Path(__file__).resolve()
+    for parent in [curr] + list(curr.parents):
+        if (parent / "docs").exists() and (parent / "docs" / "core").exists():
+            if str(parent) not in sys.path:
+                sys.path.insert(0, str(parent))
+            return parent
+    return None
 
-# Local Import
-engine_dir = current_path.parents[1] / "01_Engine"
-sys.path.append(str(engine_dir))
+ROOT = _bootstrap()
+if not ROOT:
+    print("CRITICAL: UET docs root not found!")
+    sys.exit(1)
 
-from Engine_Omni import UETOmniEngine
+# Local Import setup for Topic 0.0
+engine_dir = ROOT / "docs" / "topics" / "0.0_Grand_Unification" / "Code" / "01_Engine"
+if str(engine_dir) not in sys.path:
+    sys.path.insert(0, str(engine_dir))
+
+try:
+    from Engine_Omni import UETOmniEngine
+except ImportError as e:
+    print(f"CRITICAL ERROR: Could not import Omni-Engine: {e}")
+    sys.exit(1)
 
 
 def run_verification():

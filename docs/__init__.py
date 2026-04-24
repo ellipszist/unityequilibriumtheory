@@ -10,30 +10,42 @@ Exposes "Hero Features" for easy access:
 - uet.core: Core Physics Master Equation
 """
 
-import sys
+import json
 import os
 import importlib.util
+import sys
 from pathlib import Path
-
-# Version
-__version__ = "0.9.0"
 
 # Exposes the package root for all sub-modules
 def _find_uet_root():
     """Robustly find the project root (the directory containing docs)."""
-    # Start from where this file is
     p = Path(__file__).resolve()
-    # Go up until we find a directory containing 'docs' and 'uet_core' OR hit root
-    # We check for 'docs' precisely to ensure we hit the physical workspace
-    for parent in [p.parent, p.parent.parent, p.parent.parent.parent, p.parent.parent.parent.parent]:
+    # Go up from docs/__init__.py (1 level to docs, 2 levels to project root)
+    for parent in [p.parent.parent] + list(p.parents):
         if (parent / "docs").exists() and not (parent / "site-packages").exists():
             return parent
-    # Fallback to CWD if it looks correct
-    if (Path.cwd() / "docs").exists():
-        return Path.cwd().resolve()
-    return p.parent.parent # Last resort
+    return p.parent.parent 
 
 ROOT_PATH = _find_uet_root()
+if str(ROOT_PATH) not in sys.path:
+    sys.path.insert(0, str(ROOT_PATH))
+
+
+def _load_release_manifest():
+    """Load canonical repository metadata when available."""
+    metadata_path = ROOT_PATH / "docs" / "meta" / "release_manifest.json"
+    if not metadata_path.exists():
+        return {}
+
+    try:
+        return json.loads(metadata_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+RELEASE_MANIFEST = _load_release_manifest()
+__version__ = RELEASE_MANIFEST.get("release", {}).get("version", "0.9.0")
+CANONICAL_METADATA_PATH = ROOT_PATH / "docs" / "meta" / "release_manifest.json"
 
 
 def _import_from_path(name, relative_path):
@@ -63,7 +75,7 @@ def _import_from_path(name, relative_path):
 
 # 1. Core Physics
 try:
-    from docs.core import uet_master_equation as core
+    from . import core
 except ImportError:
     core = None
 

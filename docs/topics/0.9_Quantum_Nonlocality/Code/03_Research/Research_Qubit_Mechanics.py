@@ -29,20 +29,24 @@ import importlib.util
 matplotlib.use("Agg")  # Force headless mode to prevent CRASH
 import matplotlib.pyplot as plt
 
-# --- ROBUST PATH FINDER (5x4 Grid Standard) ---
-current_path = Path(__file__).resolve()
-ROOT = None
-for parent in [current_path] + list(current_path.parents):
-    if (parent / "docs").exists():
-        ROOT = parent
-        break
+import sys
+from pathlib import Path
 
-if ROOT:
-    if str(ROOT) not in sys.path:
-        sys.path.insert(0, str(ROOT))
-else:
-    print("CRITICAL: docs root not found!")
+# --- ROBUST UET BOOTSTRAP ---
+def _bootstrap():
+    curr = Path(__file__).resolve()
+    for parent in [curr] + list(curr.parents):
+        if (parent / "docs").exists() and (parent / "docs" / "core").exists():
+            if str(parent) not in sys.path:
+                sys.path.insert(0, str(parent))
+            return parent
+    return None
+
+ROOT = _bootstrap()
+if not ROOT:
+    print("CRITICAL: UET docs root not found!")
     sys.exit(1)
+
 
 from docs.core.uet_parameters import UETParameters
 

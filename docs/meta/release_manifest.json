@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "project": {
+    "name": "Unity Equilibrium Theory",
+    "short_name": "UET",
+    "repository_url": "https://github.com/unityequilibrium/UnityEquilibriumTheory",
+    "license": "MIT"
+  },
+  "release": {
+    "version": "0.9.0",
+    "date": "2026-04-22",
+    "citation_file": "CITATION.cff",
+    "docs_citation_file": "docs/CITATION.cff"
+  },
+  "counts": {
+    "topic_directories_total": 41,
+    "numbered_topic_directories": 39,
+    "supporting_topic_workspaces": 2,
+    "automated_test_files": 14,
+    "verification_scripts": 8,
+    "bibliography_entries": 23
+  },
+  "definitions": {
+    "topic_directory": "Any first-level directory under docs/topics.",
+    "numbered_topic_directory": "A docs/topics directory whose name begins with a numbered research identifier such as 0.1 or 0.21.",
+    "supporting_topic_workspace": "A docs/topics directory used for staging or shared support work rather than a numbered research claim.",
+    "verification_script": "A topic-level script whose filename begins with Verify_ and is intended to produce reproducible evidence artifacts.",
+    "automated_test_file": "A repository Python test file whose filename begins with test_.",
+    "release": "A repository snapshot whose metadata must align across README, docs landing pages, package metadata, and citation files.",
+    "golden_result": "A checked-in output or artifact selected as the canonical internal reference for a documented run."
+  },
+  "readiness_statuses": [
+    "Archived",
+    "Draft",
+    "Structured",
+    "Reproducible internally",
+    "Academic-ready"
+  ],
+  "claim_language": {
+    "preferred": [
+      "Hypothesis",
+      "Derived",
+      "Fitted to existing data",
+      "Out-of-sample tested",
+      "Reproduced internally",
+      "Externally replicated",
+      "Peer-reviewed"
+    ],
+    "restricted_without_explicit_evidence": [
+      "Solved",
+      "Verified",
+      "Platinum Standard",
+      "Production Grade",
+      "One Equation to Rule Them All"
+    ]
+  }
+}

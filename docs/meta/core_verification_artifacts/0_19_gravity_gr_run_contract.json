@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.19_Gravity_GR",
+  "timestamp_utc": "2026-04-23T02:39:16.968757+00:00",
+  "repo_root": "C:\\Users\\santa\\Desktop\\uet_harness",
+  "python_executable": "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+  "verification_spec": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.19_Gravity_GR\\VERIFICATION_SPEC.md",
+  "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.19_Gravity_GR\\Result\\artifacts\\0_19_gravity_gr_verification.json",
+  "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_19_gravity_gr_run_contract.json",
+  "command": "python docs/topics/0.19_Gravity_GR/Code/03_Research/Research_G_Constant.py",
+  "input_hashes": [
+    {
+      "path": "Data/03_Research/codata_2018_gravity.json",
+      "status": "present",
+      "sha256": "dd5ed95aa95af3f48b2489aa41ec08b5ff005e989516251ce17449159a4ff52a",
+      "bytes": "1402"
+    },
+    {
+      "path": "Data/03_Research/download_data.py",
+      "status": "present",
+      "sha256": "3487294d7f7d9f3f3f29d6b69e7f40a73f30d098a1f570750cd61c078c125351",
+      "bytes": "6396"
+    },
+    {
+      "path": "Data/03_Research/download_references.py",
+      "status": "present",
+      "sha256": "275a0fd8c989e914ef148a5a854652841403a295af03db72d69b0d3a3e6468a0",
+      "bytes": "6844"
+    },
+    {
+      "path": "Data/03_Research/eotwash_2007_data.json",
+      "status": "present",
+      "sha256": "e91be2095fc96350022c9c12d9955dbd0261382a5bcfbc975dc27ac251c77804",
+      "bytes": "1061"
+    }
+  ],
+  "timeout_seconds": 30,
+  "resolved_command": [
+    "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+    "docs/topics/0.19_Gravity_GR/Code/03_Research/Research_G_Constant.py"
+  ],
+  "environment_overrides": {
+    "PYTHONIOENCODING": "utf-8",
+    "PYTHONUTF8": "1",
+    "PYTHONPATH_PREFIX": "C:\\Users\\santa\\Desktop\\uet_harness"
+  },
+  "status": "ran",
+  "exit_code": 0,
+  "passed_run_contract": true,
+  "duration_seconds": 1.053,
+  "stdout_tail": "\ud83d\udd0d UET Glass Box: Logging (Streaming) to 'C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.19_Gravity_GR\\Result\\_Logs\\1776911957_UET_Gravity_Engine'\n============================================================\nTest: Gravitational Constant G\n============================================================\nCODATA 2018: G = 6.67430e-11\nUET Derived: G = 6.67430e-11\nError: 0.00000%\nResult: \u2705 PASS\n",
+  "stderr_tail": "",
+  "declared_scientific_artifact_exists": true,
+  "declared_scientific_artifact_sha256": "3e48bbf2e852eb46d3a1b035fcffe6d4196023068936455eaf86062151b8bab6",
+  "declared_scientific_artifact_bytes": 2423
+}

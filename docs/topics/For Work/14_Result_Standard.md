@@ -76,10 +76,17 @@ That artifact should include:
 - topic
 - version
 - dataset hash or input identifier
+- formula status or method label for the calculation path
 - metrics
 - thresholds
 - config
 - notes
+
+Recommended additions for scientific topics:
+
+- variable and unit notes when dimensional quantities are central
+- benchmark role such as `gate`, `diagnostic`, or `exploratory`
+- proof status such as `derived`, `heuristic bridge`, or `checked local benchmark`
 
 ## 4. Naming rule
 
@@ -152,5 +159,6 @@ Typical expectation after a successful run:
 - [ ] every output class is saved in the correct folder
 - [ ] verification workflows produce a JSON artifact when appropriate
 - [ ] artifact metadata includes inputs, metrics, thresholds, and version
+- [ ] artifact metadata records method or formula status when scientifically important
 - [ ] descriptive names are used consistently
 - [ ] logs support, but do not replace, evidence records

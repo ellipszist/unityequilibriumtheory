@@ -1,0 +1,218 @@
+[
+  {
+    "topic": "0.0_Grand_Unification",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_0_grand_unification_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.0_Grand_Unification\\Result\\artifacts\\0_0_grand_unification_verification.json"
+  },
+  {
+    "topic": "0.1_Galaxy_Rotation_Problem",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_1_galaxy_rotation_problem_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.1_Galaxy_Rotation_Problem\\Result\\artifacts\\galaxy_rotation_validation.json"
+  },
+  {
+    "topic": "0.2_Black_Hole_Physics",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_2_black_hole_physics_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.2_Black_Hole_Physics\\Result\\artifacts\\0_2_black_hole_physics_verification.json"
+  },
+  {
+    "topic": "0.3_Cosmology_Hubble_Tension",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_3_cosmology_hubble_tension_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.3_Cosmology_Hubble_Tension\\Result\\artifacts\\hubble_comparison_validation.json"
+  },
+  {
+    "topic": "0.4_Superconductivity_Superfluids",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_4_superconductivity_superfluids_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.4_Superconductivity_Superfluids\\Result\\artifacts\\0_4_superconductivity_superfluids_verification.json"
+  },
+  {
+    "topic": "0.5_Nuclear_Binding_Hadrons",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_5_nuclear_binding_hadrons_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.5_Nuclear_Binding_Hadrons\\Result\\artifacts\\0_5_nuclear_binding_hadrons_verification.json"
+  },
+  {
+    "topic": "0.6_Electroweak_Physics",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_6_electroweak_physics_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.6_Electroweak_Physics\\Result\\artifacts\\0_6_electroweak_physics_verification.json"
+  },
+  {
+    "topic": "0.7_Neutrino_Physics",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_7_neutrino_physics_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.7_Neutrino_Physics\\Result\\artifacts\\0_7_neutrino_physics_verification.json"
+  },
+  {
+    "topic": "0.8_Muon_g2_Anomaly",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_8_muon_g2_anomaly_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.8_Muon_g2_Anomaly\\Result\\artifacts\\0_8_muon_g2_anomaly_verification.json"
+  },
+  {
+    "topic": "0.9_Quantum_Nonlocality",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_9_quantum_nonlocality_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.9_Quantum_Nonlocality\\Result\\artifacts\\0_9_quantum_nonlocality_verification.json"
+  },
+  {
+    "topic": "0.10_Fluid_Dynamics_Chaos",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_10_fluid_dynamics_chaos_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.10_Fluid_Dynamics_Chaos\\Result\\artifacts\\fluid_benchmark_validation.json"
+  },
+  {
+    "topic": "0.11_Phase_Transitions",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_11_phase_transitions_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.11_Phase_Transitions\\Result\\artifacts\\0_11_phase_transitions_verification.json"
+  },
+  {
+    "topic": "0.12_Vacuum_Energy_Casimir",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_12_vacuum_energy_casimir_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.12_Vacuum_Energy_Casimir\\Result\\artifacts\\0_12_vacuum_energy_casimir_verification.json"
+  },
+  {
+    "topic": "0.13_Thermodynamic_Bridge",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_13_thermodynamic_bridge_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.13_Thermodynamic_Bridge\\Result\\artifacts\\0_13_thermodynamic_bridge_verification.json"
+  },
+  {
+    "topic": "0.14_Complex_Systems",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_14_complex_systems_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.14_Complex_Systems\\Result\\artifacts\\0_14_complex_systems_verification.json"
+  },
+  {
+    "topic": "0.15_Cluster_Dynamics",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_15_cluster_dynamics_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.15_Cluster_Dynamics\\Result\\artifacts\\0_15_cluster_dynamics_verification.json"
+  },
+  {
+    "topic": "0.16_Heavy_Nuclei",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_16_heavy_nuclei_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.16_Heavy_Nuclei\\Result\\artifacts\\0_16_heavy_nuclei_verification.json"
+  },
+  {
+    "topic": "0.17_Mass_Generation",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_17_mass_generation_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.17_Mass_Generation\\Result\\artifacts\\0_17_mass_generation_verification.json"
+  },
+  {
+    "topic": "0.18_Mathnicry",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_18_mathnicry_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.18_Mathnicry\\Result\\artifacts\\0_18_mathnicry_verification.json"
+  },
+  {
+    "topic": "0.19_Gravity_GR",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_19_gravity_gr_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.19_Gravity_GR\\Result\\artifacts\\0_19_gravity_gr_verification.json"
+  },
+  {
+    "topic": "0.20_Atomic_Physics",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_20_atomic_physics_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.20_Atomic_Physics\\Result\\artifacts\\0_20_atomic_physics_verification.json"
+  },
+  {
+    "topic": "0.21_Yang_Mills_Mass_Gap",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_21_yang_mills_mass_gap_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.21_Yang_Mills_Mass_Gap\\Result\\artifacts\\mass_gap_validation.json"
+  },
+  {
+    "topic": "0.22_Biophysics_Origin_of_Life",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_22_biophysics_origin_of_life_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.22_Biophysics_Origin_of_Life\\Result\\artifacts\\0_22_biophysics_origin_of_life_verification.json"
+  },
+  {
+    "topic": "0.23_Unity_Scale_Link",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_23_unity_scale_link_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.23_Unity_Scale_Link\\Result\\artifacts\\0_23_unity_scale_link_verification.json"
+  },
+  {
+    "topic": "0.24_Artificial_Intelligence",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_24_artificial_intelligence_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.24_Artificial_Intelligence\\Result\\artifacts\\0_24_artificial_intelligence_verification.json"
+  },
+  {
+    "topic": "0.25_Strategy_Power_Economics",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_25_strategy_power_economics_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Result\\artifacts\\0_25_strategy_power_economics_verification.json"
+  },
+  {
+    "topic": "0.26_Cosmic_Dynamic_Frame",
+    "status": "ran",
+    "exit_code": 0,
+    "passed_run_contract": true,
+    "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_26_cosmic_dynamic_frame_run_contract.json",
+    "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.26_Cosmic_Dynamic_Frame\\Result\\artifacts\\0_26_cosmic_dynamic_frame_verification.json"
+  }
+]

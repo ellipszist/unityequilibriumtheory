@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.23_Unity_Scale_Link",
+  "timestamp_utc": "2026-04-23T02:39:25.074447+00:00",
+  "repo_root": "C:\\Users\\santa\\Desktop\\uet_harness",
+  "python_executable": "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+  "verification_spec": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.23_Unity_Scale_Link\\VERIFICATION_SPEC.md",
+  "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.23_Unity_Scale_Link\\Result\\artifacts\\0_23_unity_scale_link_verification.json",
+  "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_23_unity_scale_link_run_contract.json",
+  "command": "python docs/topics/0.23_Unity_Scale_Link/Code/03_Research/Research_Cross_Domain.py",
+  "input_hashes": [
+    {
+      "path": "Data/03_Research/create_unified_data.py",
+      "status": "present",
+      "sha256": "ca3c1dc5c3dddf480ac9ac1e9b7975ec282b1f36a08f98bb522c0d2fb61b0453",
+      "bytes": "8326"
+    },
+    {
+      "path": "Data/03_Research/economy/Bitcoin_yahoo_real.csv",
+      "status": "present",
+      "sha256": "62a93ec47ffe98f7908a8c8b29ba9fa5a070fa611bb3cde5ae22bfb23ff9617a",
+      "bytes": "323807"
+    },
+    {
+      "path": "Data/03_Research/economy/DowJones_yahoo_real.csv",
+      "status": "present",
+      "sha256": "016a7d02ea0e1138dddfad55bb09e8fa7d4f82cb36bfa0714b339a69499f8821",
+      "bytes": "308549"
+    },
+    {
+      "path": "Data/03_Research/economy/EUR_USD_yahoo_real.csv",
+      "status": "present",
+      "sha256": "473ee245a576a83d9f21473951081dda961fdbf609d440dfa77658291dd3a1a0",
+      "bytes": "347907"
+    }
+  ],
+  "timeout_seconds": 30,
+  "resolved_command": [
+    "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+    "docs/topics/0.23_Unity_Scale_Link/Code/03_Research/Research_Cross_Domain.py"
+  ],
+  "environment_overrides": {
+    "PYTHONIOENCODING": "utf-8",
+    "PYTHONUTF8": "1",
+    "PYTHONPATH_PREFIX": "C:\\Users\\santa\\Desktop\\uet_harness"
+  },
+  "status": "ran",
+  "exit_code": 0,
+  "passed_run_contract": true,
+  "duration_seconds": 1.949,
+  "stdout_tail": "\ud83d\udd0d UET Glass Box: Logging (Streaming) to 'C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.23_Unity_Scale_Link\\Result\\_Logs\\1776911966_UET_Unity_Scale_Engine'\n======================================================================\n\ud83d\udd2c RESEARCH: Cross-Domain Prediction\n    Phase C - Transfer Learning Test\n======================================================================\n\n======================================================================\nPREMISE: If UET is truly a Unity theory, \u03ba from ONE domain\nshould predict behavior in OTHER domains.\n======================================================================\n\n[TEST 1] GALAXY \u2192 NEURAL TRANSFER\n--------------------------------------------------\n  NOTE: We use \u03ba=0.1 (Galactic) here.\n  (Qubits use \u03ba=1.40 due to higher density/noise floor)\n--------------------------------------------------\n  Using \u03ba=0.1, \u03b2=0.05 (from SPARC)\n\n  \u03a9(normal) = 25.344 \u00b1 2.562\n  \u03a9(seizure) = 2.810 \u00b1 0.000\n\n  t-statistic = 38.35\n  p-value = 5.48e-32\n\n  \u2705 PASS: Galaxy \u03ba correctly predicts seizure = LOW \u03a9\n\n[TEST 2] ECONOMY \u2194 NEURAL CORRELATION\n--------------------------------------------------\n  Loaded 3773 SP500 data points\n\n  \u03a9(high volatility) = 1.280 \u00b1 0.440\n  \u03a9(low volatility) = 1.326 \u00b1 0.539\n\n  Economy: High volatility \u2192 LOW \u03a9\n  This MATCHES neural pattern!\n\n[TEST 3] SINGLE \u03ba ACROSS REGIMES\n--------------------------------------------------\n  Using ONLY \u03ba=0.1, \u03b2=0.05\n\n  \u03a9 Values (all with \u03ba=0.1):\n  ------------------------------\n  galaxy         : \u03a9 = 0.6132\n  neural_normal  : \u03a9 = 30.2735\n  neural_seizure : \u03a9 = 2.8097\n  economy        : \u03a9 = 2.0154\n\n  \u2705 Neural: Seizure < Normal (correct)\n\n  Tests passed: 1/1\n\n======================================================================\nRESEARCH SUMMARY\n======================================================================\n\n  Tests passed: 3/3\n\n  \u2705 ALL TESTS PASSED\n     UET demonstrates cross-domain predictive power!\n\n    KEY INSIGHT:\n    \n    Galaxy-calibrated \u03ba=0.1 can predict:\n    - Neural seizure states (correct!)\n    - Economy volatility patterns\n    \n    This is evidence for Unity across scales,\n    even if \u03ba values differ at different scales.\n    \n======================================================================\nRESEARCH RESULT: COMPLETE\n======================================================================\n",
+  "stderr_tail": "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Lib\\site-packages\\scipy\\stats\\_axis_nan_policy.py:579: RuntimeWarning: Precision loss occurred in moment calculation due to catastrophic cancellation. This occurs when the data are nearly identical. Results may be unreliable.\n  res = hypotest_fun_out(*samples, **kwds)\n",
+  "declared_scientific_artifact_exists": true,
+  "declared_scientific_artifact_sha256": "d6e67898aabbf297dd888e1b98ecd2f6eea56187fd6e2232fa577f351ee26d49",
+  "declared_scientific_artifact_bytes": 4992
+}

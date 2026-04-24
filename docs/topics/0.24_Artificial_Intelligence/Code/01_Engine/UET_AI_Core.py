@@ -12,8 +12,28 @@ Loss = MSE + (beta * Entropy)
 """
 
 import sys
+from pathlib import Path
+
+# --- ROBUST UET BOOTSTRAP ---
+def _bootstrap():
+    curr = Path(__file__).resolve()
+    for parent in [curr] + list(curr.parents):
+        if (parent / "docs").exists() and (parent / "docs" / "core").exists():
+            if str(parent) not in sys.path:
+                sys.path.insert(0, str(parent))
+            return parent
+    return None
+
+ROOT = _bootstrap()
+if not ROOT:
+    print("CRITICAL: UET docs root not found!")
+    sys.exit(1)
+
+
+import sys
 import numpy as np
 from pathlib import Path
+from typing import Dict, Any
 
 # --- ROBUST PATH FINDER ---
 current_path = Path(__file__).resolve()
@@ -27,7 +47,7 @@ if ROOT and str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from docs.core.uet_base_solver import UETBaseSolver
-from docs.core.uet_parameters import UETParameters
+from docs.core.uet_parameters import UETParameters, get_params
 
 
 try:
@@ -53,7 +73,8 @@ class UetcortexNeuralNet(UETBaseSolver):
         output_size=1,
     ):
         if params is None:
-            params = UETParameters(kappa=1.0, beta=0.01)
+            # Axiomatic Step: Retrieve parameters from the global universe registry
+            params = get_params("0.24")
         super().__init__(
             nx=1,
             ny=1,
@@ -93,11 +114,37 @@ class UetcortexNeuralNet(UETBaseSolver):
         self.a2 = self.sigmoid(self.z2)
         return self.a2
 
-    def train_step(self, X, y, learning_rate=0.1):
-        """Standardized Backprop for legacy support."""
+    def calculate_entropy(self, X):
+        """
+        Measures the Shannon Entropy of the internal activation manifold (a1).
+        H = -sum(p * log(p)) as a proxy for 'Thought Disorder'.
+        """
+        # Linear transform for probability space
+        probs = np.abs(self.a1) / np.sum(np.abs(self.a1))
+        probs = np.clip(probs, 1e-10, 1.0)
+        entropy = -np.sum(probs * np.log2(probs))
+        return entropy
+
+    def get_axiomatic_learning_rate(self, entropy):
+        """
+        UET Principle: Learning rate scales with Information Pressure (Beta)
+        and inverse of Entropy (Disorder).
+        """
+        # Higher beta (Energy) = faster crystallization of info
+        # Higher entropy (Chaos) = slower learning to prevent hallucination
+        alpha = self.params.beta * self.params.kappa
+        return alpha / (1.0 + entropy)
+
+    def train_step(self, X, y):
+        """Axiomatic Training Step."""
         # Forward
         y_pred = self.forward(X)
         m = X.shape[0]
+
+        # Calculate Entropy & Axiomatic LR
+        entropy = self.calculate_entropy(X)
+        lr = self.get_axiomatic_learning_rate(entropy)
+
         # Backprop (MSE + Sigmoid derivative)
         error = y_pred - y
         delta2 = (error / m) * (y_pred * (1 - y_pred))
@@ -106,8 +153,8 @@ class UetcortexNeuralNet(UETBaseSolver):
         delta1 = np.dot(delta2, self.W2.T) * self.a1 * (1 - self.a1)
         dW1 = np.dot(X.T, delta1)
         # Update
-        self.W1 -= learning_rate * dW1
-        self.W2 -= learning_rate * dW2
+        self.W1 -= lr * dW1
+        self.W2 -= lr * dW2
 
         current_loss = float(np.mean((y_pred - y) ** 2))
         self.loss_history.append(current_loss)

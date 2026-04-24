@@ -1,0 +1,32 @@
+# Verification Spec
+
+- Primary command:
+  - `python docs/topics/0.5_Nuclear_Binding_Hadrons/Code/03_Research/Research_Nuclear_Binding_SourceLocked.py`
+- Diagnostic command:
+  - `python docs/topics/0.5_Nuclear_Binding_Hadrons/Code/03_Research/Research_Nuclear_Binding_FullTable_Diagnostic.py`
+- Inputs:
+  - `docs/data/external/particle_physics/ame2020/mass_1.mas20`
+  - `Data/03_Research/Data_AME2020_Binding_FullParsed.json`
+  - `Data/03_Research/Data_AME2020_Binding_RawSubset.json`
+  - `Data/03_Research/Data_AME2020_Benchmark_Manifest.json`
+  - `Data/03_Research/Data_Proton_Radius.json`
+  - `Code/01_Engine/Engine_Nuclear_Binding.py`
+- Baseline:
+  - Raw-table-derived AME2020 subset for selected nuclei plus PRad/CODATA proton-radius benchmarks.
+- Reported metrics:
+  - binding-energy-per-nucleon residuals for the extracted subset
+  - proton-radius residual
+  - parsed-table coverage count
+  - validation-subset count
+  - excluded light-nucleus diagnostic cases
+  - mean/median/max error distribution for the validation subset
+- Fixed threshold:
+  - heavy nuclei (`A >= 16`) must stay below `15%` relative error
+  - proton radius must stay below `5%` relative error
+- Artifact target:
+  - `Result/artifacts/nuclear_binding_source_locked_validation.json`
+  - `Result/artifacts/nuclear_binding_full_table_diagnostic.json`
+- Interpretation:
+  - A pass means the current engine is numerically compatible with the raw-derived AME2020 subset for heavy nuclei and with the proton-radius benchmark.
+  - The diagnostic artifact summarizes table-wide behavior across the parsed AME2020 rows and should be used to describe broad performance honestly, especially the heavy-vs-light split.
+  - It now certifies that table-wide AME2020 parsing is present, but it does not yet certify that the engine passes the full parsed AME table or a complete first-principles derivation of hadronic and nuclear structure.

@@ -1,0 +1,191 @@
+{
+  "config": {
+    "katrin_source_locked_reference": "docs\\data\\external\\particle_physics\\katrin\\katrin_latest_results_2025.json",
+    "note": "NuFIT 6.0 values are maintained as a checked-transcription JSON guarded by source hashes and schema validation; the KATRIN limit is extracted from the official 2025 KATRIN results page.",
+    "nufit_provenance_reference": "docs\\data\\external\\particle_physics\\nufit\\official\\nufit_v60_provenance_validation.json",
+    "source_locked_reference": "docs\\data\\external\\particle_physics\\nufit\\official\\nufit_v60_parameters_extracted.json"
+  },
+  "dataset_hash": "869ade4fcd858f15f068abf5cfd53f19d80db15b0e638f445b97feeebba4d195",
+  "environment": {
+    "implementation": "CPython",
+    "matplotlib_version": "3.10.8",
+    "numpy_version": "2.4.0",
+    "pandas_version": "2.3.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.14.2",
+    "scipy_version": "1.16.3",
+    "tensorflow_version": null,
+    "torch_version": "2.10.0+cpu"
+  },
+  "metrics": {
+    "geometric_angles_all_within_any_3sigma": true,
+    "katrin_limit_eV_c2": 0.45,
+    "nufit_schema_validation_status": "PASS",
+    "predicted_mass_eV": 0.0006402620830947914,
+    "runtime_splittings_all_within_any_3sigma": true
+  },
+  "notes": "This test distinguishes UET geometric angle outputs from runtime benchmark-fed mass splittings. It also checks the direct absolute-mass engine path against the official 2025 KATRIN limit. A pass here does not certify a first-principles derivation of the full neutrino sector.",
+  "results": {
+    "absolute_mass_scale": {
+      "katrin_limit_eV_c2": 0.45,
+      "passes": true,
+      "predicted_mass_eV": 0.0006402620830947914
+    },
+    "comparisons": [
+      {
+        "label": "ic19_without_sk_atm",
+        "results": {
+          "delta_m21_sq_1e5_eV2": {
+            "best_fit": 7.49,
+            "distance_from_best_fit": 0.07000000000000028,
+            "mode": "runtime_benchmark_param",
+            "predicted": 7.42,
+            "range_3sigma": [
+              6.92,
+              8.05
+            ],
+            "within_3sigma": true
+          },
+          "delta_m3l_sq_1e3_eV2": {
+            "best_fit": 2.534,
+            "distance_from_best_fit": 0.019000000000000128,
+            "mode": "runtime_benchmark_param",
+            "predicted": 2.5149999999999997,
+            "range_3sigma": [
+              2.463,
+              2.606
+            ],
+            "within_3sigma": true
+          },
+          "theta12_deg": {
+            "best_fit": 33.68,
+            "distance_from_best_fit": 0.2700000000000031,
+            "mode": "geometric_uet",
+            "predicted": 33.41,
+            "range_3sigma": [
+              31.63,
+              35.95
+            ],
+            "within_3sigma": true
+          },
+          "theta13_deg": {
+            "best_fit": 8.52,
+            "distance_from_best_fit": 0.019999999999999574,
+            "mode": "geometric_uet",
+            "predicted": 8.54,
+            "range_3sigma": [
+              8.18,
+              8.87
+            ],
+            "within_3sigma": true
+          },
+          "theta23_deg": {
+            "best_fit": 48.5,
+            "distance_from_best_fit": 0.5,
+            "mode": "geometric_uet",
+            "predicted": 49.0,
+            "range_3sigma": [
+              41.0,
+              50.5
+            ],
+            "within_3sigma": true
+          }
+        }
+      },
+      {
+        "label": "ic24_with_sk_atm",
+        "results": {
+          "delta_m21_sq_1e5_eV2": {
+            "best_fit": 7.49,
+            "distance_from_best_fit": 0.07000000000000028,
+            "mode": "runtime_benchmark_param",
+            "predicted": 7.42,
+            "range_3sigma": [
+              6.92,
+              8.05
+            ],
+            "within_3sigma": true
+          },
+          "delta_m3l_sq_1e3_eV2": {
+            "best_fit": 2.513,
+            "distance_from_best_fit": 0.0019999999999997797,
+            "mode": "runtime_benchmark_param",
+            "predicted": 2.5149999999999997,
+            "range_3sigma": [
+              2.451,
+              2.578
+            ],
+            "within_3sigma": true
+          },
+          "theta12_deg": {
+            "best_fit": 33.68,
+            "distance_from_best_fit": 0.2700000000000031,
+            "mode": "geometric_uet",
+            "predicted": 33.41,
+            "range_3sigma": [
+              31.63,
+              35.95
+            ],
+            "within_3sigma": true
+          },
+          "theta13_deg": {
+            "best_fit": 8.56,
+            "distance_from_best_fit": 0.02000000000000135,
+            "mode": "geometric_uet",
+            "predicted": 8.54,
+            "range_3sigma": [
+              8.19,
+              8.89
+            ],
+            "within_3sigma": true
+          },
+          "theta23_deg": {
+            "best_fit": 43.3,
+            "distance_from_best_fit": 5.700000000000003,
+            "mode": "geometric_uet",
+            "predicted": 49.0,
+            "range_3sigma": [
+              41.3,
+              49.9
+            ],
+            "within_3sigma": true
+          }
+        }
+      }
+    ],
+    "geometric_angles": {
+      "theta12_deg": 33.41,
+      "theta13_deg": 8.54,
+      "theta23_deg": 49.0
+    },
+    "geometric_pass": true,
+    "katrin_pass": true,
+    "nufit_provenance": {
+      "manual_review_required": true,
+      "note": "The repository currently validates the checked-transcription JSON against schema and locked-source hashes. A true machine PDF parser requires an explicit dependency.",
+      "problems": [],
+      "schema_validation_status": "PASS",
+      "source_json": "docs\\data\\external\\particle_physics\\nufit\\official\\nufit_v60_parameters_extracted.json",
+      "source_json_hash": "7dbd97cad2a4d71f0cae8de84d7ddf1cf0764a44149e0be634f54f413f659301",
+      "source_pdf": "docs\\data\\external\\particle_physics\\nufit\\official\\v60.tbl-parameters.pdf",
+      "source_pdf_hash": "d39bb902b607bb27d4271646aefb48d073005eb4c764d536e50b1bab9238c658",
+      "transcription_status": "checked transcription"
+    },
+    "provenance_pass": true,
+    "runtime_benchmark_params": {
+      "dm21_sq": 7.42e-05,
+      "dm31_sq": 0.002515
+    },
+    "splitting_pass": true,
+    "status": "PASS"
+  },
+  "seed": 42,
+  "thresholds": {
+    "geometric_angles_within_any_3sigma": true,
+    "predicted_mass_less_than_katrin_limit": true,
+    "runtime_splittings_within_any_3sigma": true
+  },
+  "timestamp_utc": "2026-04-24T04:41:39.188280+00:00",
+  "topic": "0.7_Neutrino_Physics",
+  "uet_version": "0.9.0"
+}

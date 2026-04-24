@@ -49,6 +49,8 @@ flowchart TD
 | local path | tells what was actually used |
 | preprocessing note | explains transformations |
 | topics used | shows where the dependency matters |
+| unit system | prevents silent dimensional mistakes |
+| benchmark role | says whether the data is a gate, diagnostic, or exploratory input |
 
 ## 1. Data structure
 
@@ -73,6 +75,8 @@ Every structured topic must have a `DATA_MANIFEST.md` or equivalent that records
 - local path
 - preprocessing note
 - topic(s) that use the dataset
+- unit system or unit convention if the data is dimensional
+- benchmark role for each important input
 
 ## 3. File formats
 
@@ -97,6 +101,17 @@ verified.
 
 Where possible, verification workflows should compute a dataset hash for the local input used
 in the run artifact.
+
+## 5A. Unit discipline for data
+
+If a dataset contains dimensional values, the manifest must say:
+
+- the source unit
+- the runtime unit used in code
+- the conversion step if they differ
+
+Do not assume a reviewer can infer whether a column is `kg`, `GeV`, `MeV`, `m/s`, or
+dimensionless from the filename alone.
 
 ## 6. Anti-patterns
 
@@ -150,4 +165,5 @@ Expected result:
 - [ ] local path and original file name are captured
 - [ ] preprocessing note exists where transformations occurred
 - [ ] dataset identity is linked to scripts or artifacts
+- [ ] unit system and benchmark role are explicit for important inputs
 - [ ] file naming is descriptive and stable

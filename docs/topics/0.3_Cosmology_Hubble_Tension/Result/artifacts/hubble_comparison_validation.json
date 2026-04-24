@@ -1,0 +1,38 @@
+{
+  "config": {
+    "no_fitting_rule": "hubble_frame_beta is sqrt(ALPHA_EM), not optimized against H0 data",
+    "relative_error_threshold_percent": 20.0
+  },
+  "dataset_hash": "f68ab1b3a05ada9363a066f4db425bed0f3fd5cceb0ee0df1aa263d7d8df1f71",
+  "environment": {
+    "implementation": "CPython",
+    "matplotlib_version": "3.10.8",
+    "numpy_version": "2.4.0",
+    "pandas_version": "2.3.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.14.2",
+    "scipy_version": "1.16.3",
+    "tensorflow_version": null,
+    "torch_version": "2.10.0+cpu"
+  },
+  "metrics": {
+    "relative_error_percent": 2.0853583129566178
+  },
+  "notes": "Internal comparison artifact using published H0 reference values.",
+  "results": {
+    "H0_early_uet": 67.4,
+    "H0_late_uet": 73.15761420885076,
+    "delta_h0_uet": 5.757614208850754,
+    "generic_solver_beta": 0.025838809965708517,
+    "hubble_frame_beta": 0.08542454315802288,
+    "hubble_frame_beta_source": "sqrt(ALPHA_EM)",
+    "status": "PASS"
+  },
+  "seed": 42,
+  "thresholds": {
+    "max_relative_error_percent": 20.0
+  },
+  "timestamp_utc": "2026-04-23T02:38:36.580288+00:00",
+  "topic": "0.3_Cosmology_Hubble_Tension",
+  "uet_version": "0.9.0"
+}

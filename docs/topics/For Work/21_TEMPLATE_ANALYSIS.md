@@ -31,6 +31,7 @@ flowchart TD
 | :-- | :-- |
 | scope | exact file or topic under review |
 | evidence layer | what level of support exists |
+| formula status | derived, heuristic, source-locked constant, open |
 | validation | inputs, metrics, thresholds, baseline |
 | risk | limitation or skeptical attack point |
 | next action | most useful immediate improvement |
@@ -53,6 +54,8 @@ flowchart TD
 - Main workflow:
 - Critical variables:
 - Important dependencies:
+- Unit system:
+- Formula status:
 
 ## 4. Validation
 
@@ -72,6 +75,8 @@ flowchart TD
 - What would a skeptical reviewer attack first?
 - What evidence is still missing?
 - What wording must stay conservative?
+- Which constants are still bridges or anchors rather than derived quantities?
+- Are there any hidden unit conversions or dimension mismatches?
 
 ## 7. Next step
 
@@ -81,6 +86,7 @@ flowchart TD
 
 - [ ] scope and role are named clearly
 - [ ] theory and implementation summary stay separate
+- [ ] formula status and unit handling are stated
 - [ ] validation fields are filled in
 - [ ] limitations are concrete
 - [ ] next step is specific and useful

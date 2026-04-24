@@ -1,0 +1,11 @@
+{
+  "manual_review_required": true,
+  "note": "The repository currently validates the checked-transcription JSON against schema and locked-source hashes. A true machine PDF parser requires an explicit dependency.",
+  "problems": [],
+  "schema_validation_status": "PASS",
+  "source_json": "docs\\data\\external\\particle_physics\\nufit\\official\\nufit_v60_parameters_extracted.json",
+  "source_json_hash": "7dbd97cad2a4d71f0cae8de84d7ddf1cf0764a44149e0be634f54f413f659301",
+  "source_pdf": "docs\\data\\external\\particle_physics\\nufit\\official\\v60.tbl-parameters.pdf",
+  "source_pdf_hash": "d39bb902b607bb27d4271646aefb48d073005eb4c764d536e50b1bab9238c658",
+  "transcription_status": "checked transcription"
+}

@@ -107,9 +107,10 @@ class UETBaseSolver(ABC):
 
         # 4. Logger (The Glass Box)
         self.logger = None
-        self._setup_logger(name, topic, pillar, log_dir)
+        category = kwargs.get("category", "log")
+        self._setup_logger(name, topic, pillar, log_dir, category)
 
-    def _setup_logger(self, name: str, topic: str, pillar: str, output_dir: str):
+    def _setup_logger(self, name: str, topic: str, pillar: str, output_dir: str, category: str = "log"):
         """Initialize the Glass Box Logger."""
         try:
             # Connect to Central Path Manager
@@ -125,7 +126,8 @@ class UETBaseSolver(ABC):
                 )
 
             self.logger = UETMetricLogger(
-                name, output_dir=str(target_path), flat_mode=self.stable_path
+                name, output_dir=str(target_path), flat_mode=self.stable_path,
+                topic_id=topic, category=category
             )
 
             # Log Metadata immediately

@@ -1,21 +1,21 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
+message: "If you use the docs package or research hub, please cite the aligned repository metadata below."
+title: "Unity Equilibrium Theory (UET) Research Hub"
 authors:
-- name: "Unity Equilibrium Theory Research Team"
-title: "Unity Equilibrium Theory (UET) v0.9.0: A Grand Unified Framework"
+  - name: "UET Research Team"
+    affiliation: "Unity Equilibrium Lab"
 version: 0.9.0
-date-released: 2026-04-05
+date-released: 2026-04-22
 url: "https://github.com/unityequilibrium/UnityEquilibriumTheory"
+repository-code: "https://github.com/unityequilibrium/UnityEquilibriumTheory"
 keywords:
   - "UET"
-  - "Information Drag"
-  - "Geometric Tension"
-  - "General Relativity"
-  - "Quantum Mechanics"
+  - "Research Hub"
+  - "Scientific Documentation"
+  - "Verification"
   - "Information Theory"
-  - "Grand Unified Theory"
-  - "Dark Matter Solution"
-repository-code: "https://github.com/unityequilibrium/UnityEquilibriumTheory"
-license: "CC-BY-4.0"
+license: MIT
 abstract: >
-  UET unifies classical and quantum physics by treating entropy and information as the fundamental coupling mechanism ($\beta$) between energy and spacetime geometry. By modeling mass as Information Drag, UET provides a predictive solution to the Galaxy Rotation and Hubble Tension anomalies without requiring Dark Matter or Dark Energy.
+  The UET research hub packages the repository's documentation, topic modules, and
+  supporting standards. It should be cited as repository infrastructure rather than as
+  independent validation of every scientific claim contained in the project.

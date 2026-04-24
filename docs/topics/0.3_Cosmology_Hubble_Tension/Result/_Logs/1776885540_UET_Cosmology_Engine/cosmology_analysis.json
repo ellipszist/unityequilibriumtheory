@@ -1,0 +1,90 @@
+[
+  {
+    "source": "Planck2018",
+    "redshift": 1100.0,
+    "H0_Obs": 67.4,
+    "H0_UET_Pred": 67.4,
+    "Accuracy": "100.00%",
+    "Status": "MATCH"
+  },
+  {
+    "source": "HST_Riess2022",
+    "redshift": 1100.0,
+    "H0_Obs": 73.0,
+    "H0_UET_Pred": 67.4,
+    "Accuracy": "92.33%",
+    "Status": "DEVIATION"
+  },
+  {
+    "source": "JWST2024",
+    "redshift": 1100.0,
+    "H0_Obs": 72.5,
+    "H0_UET_Pred": 67.4,
+    "Accuracy": "92.97%",
+    "Status": "DEVIATION"
+  },
+  {
+    "source": "SDSS_BAO",
+    "redshift": 1100.0,
+    "H0_Obs": 67.8,
+    "H0_UET_Pred": 67.4,
+    "Accuracy": "99.41%",
+    "Status": "MATCH"
+  },
+  {
+    "source": "DES2022",
+    "redshift": 1100.0,
+    "H0_Obs": 68.1,
+    "H0_UET_Pred": 67.4,
+    "Accuracy": "98.97%",
+    "Status": "MATCH"
+  },
+  {
+    "source": "PLANCK_2018",
+    "redshift": 1100.0,
+    "H0_Obs": 67.4,
+    "H0_UET_Pred": 67.4,
+    "Accuracy": "100.00%",
+    "Status": "MATCH"
+  },
+  {
+    "source": "SHOES_2022",
+    "redshift": 0.01,
+    "H0_Obs": 73.04,
+    "H0_UET_Pred": 69.13805620085608,
+    "Accuracy": "94.66%",
+    "Status": "DEVIATION"
+  },
+  {
+    "source": "JWST_CEERS",
+    "redshift": 8.5,
+    "H0_Obs": 69.2,
+    "H0_UET_Pred": 67.71814989568968,
+    "Accuracy": "97.86%",
+    "Status": "MATCH"
+  },
+  {
+    "source": "JWST_GLASS",
+    "redshift": 12.1,
+    "H0_Obs": 68.4,
+    "H0_UET_Pred": 67.55486017946038,
+    "Accuracy": "98.76%",
+    "Status": "MATCH"
+  },
+  {
+    "source": "JWST_JADES",
+    "redshift": 13.2,
+    "H0_Obs": 68.1,
+    "H0_UET_Pred": 67.5242782050728,
+    "Accuracy": "99.15%",
+    "Status": "MATCH"
+  },
+  {
+    "source": "UET_PREDICTION",
+    "redshift": 0.0,
+    "H0_Obs": 73.1,
+    "H0_UET_Pred": 69.14153579168877,
+    "Accuracy": "94.58%",
+    "Status": "DEVIATION"
+  }
+]

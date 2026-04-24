@@ -1,0 +1,13 @@
+{
+    "Vitrification": {
+        "TDP": 0.994375,
+        "Standard": 8.75651076269652e-27
+    },
+    "Impact": {
+        "Chitin": 225.0,
+        "Steel": 125.0
+    },
+    "Compression": {
+        "Safety_Factor": 0.9
+    }
+}

@@ -1,109 +1,80 @@
 ---
 layout: article
-title: "UET Topic 0.8: Muon g2 Anomaly"
-description: "Research module for Muon g2 Anomaly within the Unity Equilibrium Theory framework."
+title: "UET Topic 0.8: Muon g-2 Anomaly"
+description: "Conservative overview for the muon g-2 topic in the UET repository."
 ---
 
-# 🔬 0.8 Muon g-2 Anomaly
+# 0.8 Muon g-2 Anomaly
 
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.8: Muon g-2 Anomaly",
-  "description": "Explaining the Muon magnetic moment discrepancy as a result of Geometric Information Coupling drag.",
-  "about": "Muon g-2 Anomaly, Particle Physics, Information Field Drag, Geometric Coupling, UET"
-}
--->
+## Problem
 
-> [!NOTE]
-> **AI-Digest**: UET resolves the famous 'Muon g-2 anomaly' by identifying the missing magnetic moment as friction from the Information Field. By implementing 'Geometric Information Coupling', the framework predicts a correction ($\Delta a_\mu$) that matches Fermilab results within 0.2 sigma, outperforming the Standard Model baseline. / UET แก้ไขความผิดปกติของค่า g-2 ในมิวออน โดยระบุว่าส่วนต่างของโมเมนต์แม่เหล็กที่หายไปนั้นคือ 'แรงต้าน' จากสนามสารสนเทศ การคำนวณผ่านพจน์ 'Geometric Information Coupling' ช่วยให้พยากรณ์ค่าความคลาดเคลื่อนได้อย่างแม่นยำในระดับ 0.2 ซิกมา ซึ่งเหนือกว่าโมเดลมาตรฐาน (Standard Model)
+This topic studies whether a UET-inspired correction term can numerically track selected
+published muon magnetic-moment discrepancy packages under a controlled benchmark workflow.
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Triple_Green-00aa00)
-![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
-![Scientific_Rigor](https://img.shields.io/badge/Rigor-Anomaly_Solved-orange)
+## Current status
 
-> **"UET resolves the 5.1 sigma Muon g-2 Anomaly by accounting for the Vacuum Information Coupling, predicting the exact missing value ($2.60 \times 10^{-9}$) without new particles."**
+- Metadata status: `Structured`
+- Audit tier: `A`
+- Data status: `manifested real dataset`
+- Claim posture: internal anomaly-model benchmark, not a confirmed resolution of the muon
+  g-2 problem
 
----
+## What currently exists
 
-## 1. 📂 5x4 Grid Structure
+- A source-locked 2025 experimental result
+- A source-locked 2025 theory comparator
+- A live-engine verifier tied to `Engine_Muon_G2.py`
+- A sensitivity artifact that separates the canonical 2025 benchmark from historical local
+  theory-package baselines
+- A baseline package that records canonical and historical comparator sets explicitly
+- A dedicated `FORMULA_AUDIT.md` that labels benchmark inputs, source-locked quantities,
+  and open bridge terms
 
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | 1:1 Analysis Reports for all 4 scripts. |
-| **Ref/** | Fermilab 2023, arXiv:2308.06230. |
-| **Data/** | Experimental averages and SM predictions. |
-| **Code/** | **Anomaly Engine** implementing geometric correction. |
-| **Result/** | Comparison plots showing 0.2sigma agreement. |
+## What this topic currently establishes
 
----
+- The live engine passes the current source-locked 2025 benchmark at about `0.42 sigma`
+- The workflow now separates canonical verification from stale legacy references
+- The topic has root-level standards files for data, method, verification, baseline, and
+  limitations
 
-## 🔗 Theory Connection
+## What this topic does not currently establish
 
-```mermaid
-graph TB
-    subgraph Standard["🔬 Standard Physics"]
-        SM["Standard Model"]
-        Exp["Fermilab Experiment"]
-        Anomaly["❌ 5.1σ Tension"]
-    end
-    
-    subgraph UET["✅ UET Solution"]
-        Mass["Mass Coupling (m_μ²)"]
-        Vac["Vacuum Polarization"]
-        Sol["✅ UET Correction"]
-    end
-    
-    SM --> Anomaly
-    Exp --> Anomaly
-    
-    Mass --> Vac
-    Vac --> Sol
-    Sol -->|"Fills Gap"| Anomaly
-    
-    style UET fill:#d4edda,stroke:#28a745
-```
+- It does not establish that the Standard Model discrepancy is solved
+- It does not rule out alternative explanations or new-physics interpretations
+- It does not yet cover a broad enough set of external alternate-theory packages
+- It does not yet establish downstream consistency across related particle topics
 
----
+## Data and evidence notes
 
-## 🎯 Proactive Development
+- The canonical verification baseline is `source_locked_2025_derived`
+- The baseline package keeps historical local theory baselines separate from the canonical
+  2025 path
+- The historical `2.51e-9` reference is retained only as diagnostic metadata
 
-- **The Goal:** Explain the famous Muon g-2 anomaly.
-- **The Upgrade:** We implemented the **Geometric Information Coupling** term: $\Delta a_\mu \sim (m_\mu/M_{EW})^2$.
-- **The Result:**
-    - **Anomaly:** $2.49 \times 10^{-9}$ (Missing magnetic moment).
-    - **UET Prediction:** $2.60 \times 10^{-9}$ (Predicted Information Field drag).
-    - **Conclusion:** The "Anomaly" is just the friction of the Information Field on heavier particles.
+## Verification notes
 
----
+- Primary verifier:
+  - `Code/03_Research/Research_Muon_Anomaly_2025.py`
+- Sensitivity layer:
+  - `Code/03_Research/Research_Muon_Sensitivity_2025.py`
+- Key artifacts:
+  - `Result/artifacts/muon_g2_2025_validation.json`
+- `Result/artifacts/muon_g2_2025_sensitivity.json`
+- `Result/artifacts/muon_g2_benchmark_shift.json`
+- `FORMULA_AUDIT.md`
 
-## 📊 Triple-Green Results
+## Reproducibility
 
-| Category | Component | Key Result | Status |
-| :--- | :--- | :--- | :--- |
-| **01_Engine** | UET Correction | **2.60e-9** | ✅ PERFECT |
-| **02_Proof** | Mass Scaling | **m_μ²** | ✅ PROVEN |
-| **03_Research** | Fermilab Match | **0.2 sigma** | 🏆 WIN |
-| **04_Competitor** | SM Baseline | **5.1 sigma** | ❌ FAIL |
-
----
-
-## 2. ⚡ Quick Start
+Current audit-grade commands:
 
 ```powershell
-# See the Resolution
-python docs/topics/0.8_Muon_g2_Anomaly/Code/01_Engine/Engine_Muon_G2.py
-
-# Verify the Match
-python docs/topics/0.8_Muon_g2_Anomaly/Code/03_Research/Research_Muon_Anomaly.py
+python docs/topics/0.8_Muon_g2_Anomaly/Code/03_Research/Research_Muon_Anomaly_2025.py
+python docs/topics/0.8_Muon_g2_Anomaly/Code/03_Research/Research_Muon_Sensitivity_2025.py
 ```
 
-## 📁 Key Files
+These commands test the current benchmark package. They do not by themselves establish an
+anomaly-level scientific closure.
 
-- [Engine_Muon_G2.py](./Code/01_Engine/Engine_Muon_G2.py): **The Code that Solved it**.
-- [ANALYSIS_01_Engine_Muon.md](./Doc/ANALYSIS_01_Engine_Muon.md): Detailed report.
+## Current readiness status
 
----
-*Generated by UET Research Assistant - Anomaly Version*
+`Structured`

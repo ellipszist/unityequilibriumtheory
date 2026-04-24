@@ -1,0 +1,13 @@
+{
+  "data": {
+    "confidence_note": "Upper limit reported on the official KATRIN results page.",
+    "mass_limit_eV_c2": 0.45,
+    "mass_limit_kg": 8e-37,
+    "year": 2025
+  },
+  "extraction_note": "Value extracted from the local source-locked KATRIN HTML page.",
+  "local_source_file": "docs\\data\\external\\particle_physics\\katrin\\katrin_latest_results_2025.html",
+  "publication_reference": "Science, published 10 April 2025",
+  "source": "KATRIN official latest-results page",
+  "source_url": "https://www.katrin.kit.edu/1271.php"
+}

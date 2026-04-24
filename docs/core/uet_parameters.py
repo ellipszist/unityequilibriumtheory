@@ -18,6 +18,7 @@ import os
 import math
 from dataclasses import dataclass
 from typing import Literal, Optional
+import numpy as np
 
 # =============================================================================
 # GLOBAL INTEGRITY KILL SWITCH (The Truth Auditor)
@@ -60,10 +61,11 @@ H0 = 67.4  # km/s/Mpc (Planck 2018 - Global Baseline)
 A0_COSMIC = 1.2e-10  # m/s² (Baseline Milgrom/MOND acceleration)
 TAU_MEM_VACUUM = 0.01  # s (Vacuum memory relaxation time)
 
-# --- UET BRIDGE CONSTANTS ---
-FLUID_MOBILITY_BRIDGE = 1750.0  # Derived Informational-Physical Bridge for Topic 0.10
+# --- [UNVERIFIED: HEURISTIC] UET BRIDGE CONSTANTS ---
+# These are placeholders used to bridge informational-physical gaps in simulations.
+FLUID_MOBILITY_BRIDGE = 1750.0  # Placeholder Bridge for Topic 0.10
 TAU_INERTIA = 0.05  # s (Systemic Inertia relaxation time)
-A0_VISCOSITY = 1.2e-10  # m/s² (MOND-like acceleration pivot for dynamic viscosity)
+A0_VISCOSITY = 1.2e-10  # m/s² (MOND-like acceleration pivot)
 
 # Derived Planck units
 L_PLANCK = (HBAR * G / C**3) ** 0.5  # Planck length
@@ -96,30 +98,65 @@ def calculate_beta_landauer(temperature: float = 293.15) -> float:
         - Landauer (1961): Irreversibility and heat generation
         - Bérut et al. (2012): Experimental verification (DOI: 10.1103/PhysRevLett.109.180601)
     """
-    return K_B * temperature * LANDAUER_CONSTANT
+    # Normalize to 'Unity Basis' (1.0 = Landauer limit at critical density)
+    # [STABILIZATION]: Under high temperatures (e.g. Electroweak), 
+    # we implement a logarithmic saturation to keep beta (coupling) physically bounded.
+    # Unity Principle: Information cost saturates as it approaches vacuum capacity.
+    raw_energy = (K_B * temperature * LANDAUER_CONSTANT) * 1e21
+    
+    if raw_energy > 0.5:
+        # Logarithmic saturation for coupling sustainability
+        return 0.5 * (1 + np.log10(2 * raw_energy))
+    
+    return raw_energy
+
+
+def calculate_dynamic_kappa(scale: float) -> float:
+    """
+    Calculate κ dynamically based on the 'Unity Scale Link' formula.
+    
+    This function implements the Renormalization Group Flow of UET, anchoring
+    κ to axiomatic values at specific scales (Planck, Nuclear, Macro).
+
+    Anchors:
+    - Planck (1e-35m): 0.5 (The Floor)
+    - Nuclear (1e-15m): 0.57 (Confinement Peak)
+    - Atomic (1e-10m): 1.40 (Lattice/Qubit Anomaly)
+    - Macro (> 1.0m): 0.10 (Asymptotic Freedom)
+
+    Args:
+        scale: The physical scale in meters.
+
+    Returns:
+        The calculated κ value for that scale.
+    """
+    log_l = math.log10(max(scale, 1e-35))
+
+    # Piecewise Log-Linear Interpolation for 'The Scale Link'
+    # 1. Planck to Nuclear
+    if log_l <= -15:
+        # Interpolate between -35 (0.5) and -15 (0.57)
+        return 0.5 + (log_l + 35) * (0.57 - 0.5) / 20.0
+    
+    # 2. Nuclear to Atomic (The Peak)
+    elif log_l <= -10:
+        # Interpolate between -15 (0.57) and -10 (1.40)
+        return 0.57 + (log_l + 15) * (1.40 - 0.57) / 5.0
+    
+    # 3. Atomic to Macro
+    elif log_l <= 0:
+        # Interpolate between -10 (1.40) and 0 (0.10)
+        return 1.40 + (log_l + 10) * (0.10 - 1.40) / 10.0
+    
+    # 4. Macro Asymptotic Limit
+    else:
+        return 0.10
 
 
 def calculate_kappa_from_beta(beta: float, information_density: float) -> float:
     """
-    Calculate κ from β and information density (First Principles).
-
+    Calculate κ from β and information density (First Principles definition).
     κ = β / ρ_info
-
-    Where ρ_info is the information density (bits/m³).
-
-    This represents the "information inertia" - how much energy is required
-    to change information content per unit volume.
-
-    Args:
-        beta: Energy per bit (Joules) from calculate_beta_landauer()
-        information_density: Information density (bits/m³)
-
-    Returns:
-        κ (dimensionless gradient penalty coefficient)
-
-    Reference:
-        - UET Topic 0.13: Thermodynamic Bridge validation
-        - Unity Scale Link: Information-Physical coupling
     """
     if information_density <= 0:
         raise ValueError("information_density must be positive")
@@ -140,14 +177,20 @@ def calculate_scaling_ratio(scale_from: float, scale_to: float) -> float:
 
     Returns:
         Scaling factor to multiply parameters by
-
-    Reference:
-        - Topic 0.13: Thermodynamic scaling exponent = 2/3
-        - Unity Scale Link: Scale bridge calculations
     """
     temp_ratio = (scale_to / scale_from) ** (-2.0 / 3.0)
     density_ratio = (scale_from / scale_to) ** 3.0
     return temp_ratio * density_ratio
+
+
+def calculate_information_density(scale: float, temperature: float = 293.15) -> float:
+    """
+    Derive Information Density ρ_info from the Scale Link.
+    ρ_info = β / κ
+    """
+    beta = calculate_beta_landauer(temperature)
+    kappa = calculate_dynamic_kappa(scale)
+    return beta / kappa
 
 
 def derive_parameters_first_principles(
@@ -160,9 +203,10 @@ def derive_parameters_first_principles(
     Derive UET parameters from first principles using Landauer coupling.
     Allows for optional field overrides for specific axiomatic requirements.
     """
-    # Calculate from first principles
-    beta = calculate_beta_landauer(temperature)
-    kappa = calculate_kappa_from_beta(beta, information_density)
+    # 1. Calculation from Scale Link (Structural Unity - A2/A3)
+    # We default to the dynamic scale-link unless kappa is explicitly overridden.
+    kappa = overrides.get("kappa", calculate_dynamic_kappa(scale))
+    beta = overrides.get("beta", calculate_beta_landauer(temperature))
 
     # Base dictionary
     data = {
@@ -176,15 +220,15 @@ def derive_parameters_first_principles(
     }
     
     # Resolving Thermodynamic vs Field Coupling Beta
-    # If scale > 1e15 (Galactic/Cosmo) or scale < 1e-12 (Quantum), use standard Axial Beta
-    if scale > 1e15 or scale < 1e-12:
-        data["beta"] = 0.0854245 # Standard UET Field Coupling (beta ~ sqrt(alpha_em))
+    # [AXIOMATIC PURGE]: Legacy scale-dependent beta overrides removed.
+    # All coupling parameters are now derived solely from Landauer Principle
+    # and the Dynamic Scale Link.
     
-    # Apply Overrides
+    # Apply Overrides (Final Pass)
     data.update(overrides)
 
-    # Construct parameters
-    return UETParameters(**data)
+    # Construct parameters with Dynamic Flag set to True
+    return UETParameters(dynamic=True, **data)
 
 # =============================================================================
 # UET SCALE-DEPENDENT PARAMETERS
@@ -206,6 +250,8 @@ class UETParameters:
     gamma_J: float = 0.1  # Exchange rate (A4)
     W_N: float = 0.05  # Natural Will (A5)
     lambda_coherence: float = 0.01  # Layer coherence (A10)
+    
+    dynamic: bool = False # Tracking Axiomatic Origins
 
     # === Hardened Field Dynamics (Audit Fixes) ===
     kappa_I: float = 0.1  # Informational Inertia (A2 Propagator mass)
@@ -233,9 +279,14 @@ class UETParameters:
     def __post_init__(self):
         """Standard detections for sabotaged parameters."""
         if INTEGRITY_KILL_SWITCH:
-            # We must use object.__setattr__ because the dataclass is frozen
-            for field_name in ["kappa", "beta", "alpha", "gamma", "C0", "kappa_I"]:
-                object.__setattr__(self, field_name, 0.0)
+            # TOTAL BLACKOUT: Kill all 12+ axiomatic parameters
+            kill_list = [
+                "kappa", "beta", "alpha", "gamma", "C0", "kappa_I",
+                "lambda_coherence", "gamma_J", "W_N", "tau_inertia", "a0_viscosity"
+            ]
+            for field_name in kill_list:
+                if hasattr(self, field_name):
+                    object.__setattr__(self, field_name, 0.0)
 
 
 # =============================================================================
@@ -246,8 +297,14 @@ _DOMAIN_PRESETS = {
     "quantum": {
         "scale": 1e-9,  # meters (nanometer)
         "temperature": 4.2,  # K (liquid helium)
+        "info_density": 1e16,  # bits/m³ (Qubit density)
+        "description": "Quantum systems (nanoscale/cryogenic)",
+    },
+    "electroweak": {
+        "scale": 1.1e-18,  # meters (MZ interaction length)
+        "temperature": 1.05e15,  # K (EW symmetry breaking temperature)
         "info_density": 1e15,  # bits/m³
-        "description": "Quantum systems (nanoscale)",
+        "description": "Electroweak scale (high-energy)",
     },
     "nuclear_binding": {
         "scale": 1e-15,  # meters (femtometer)
@@ -272,6 +329,12 @@ _DOMAIN_PRESETS = {
         "temperature": 310,  # K (body temperature)
         "info_density": 1e16,  # bits/m³
         "description": "Biological systems (cellular)",
+    },
+    "ai_cortex": {
+        "scale": 1e-9,  # meters (transistor/synapse scale)
+        "temperature": 300,  # K (standard operating temp)
+        "info_density": 1e20,  # bits/m³ (high-density logic)
+        "description": "AI & Cognitive Systems (Information processing)",
     },
 }
 
@@ -298,31 +361,41 @@ def get_params_first_principles(domain_name: str) -> UETParameters:
         raise ValueError(f"Unknown domain: {domain_name}. Available: {available}")
 # Mapping: Topic -> Physical Domain (Mandatory Centralized Logic)
 _TOPIC_DOMAIN_MAP = {
+    # --- Particle Pillar (0.5-0.9) ---
+    # --- Cosmic & Macro (0.1, 0.10, 0.3) ---
     "0.1": "galactic",
-    "0.2": "quantum", # Black Hole Singularity is Quantum-scaled
     "0.3": "galactic",
-    "0.4": "quantum", # Superconductivity
+    "0.10": "fluid",
+    "0.31": "fluid", # Propulsion
+    
+    # --- Particle & Quantum (0.5-0.9, 0.17-0.21) ---
     "0.5": "nuclear_binding",
-    "0.6": "quantum", # Electroweak
+    "0.6": "electroweak", # Electroweak (High Energy)
     "0.7": "quantum", # Neutrino
     "0.8": "quantum", # Muon g-2
     "0.9": "quantum", # Nonlocality
-    "0.10": "fluid",
-    "0.11": "fluid", # Phase transitions
-    "0.13": "fluid", # Thermodynamic bridge
-    "0.15": "galactic", # Clusters
-    "0.16": "nuclear_binding",
-    "0.21": "nuclear_binding", # Yang-Mills Mass Gap (QCD foundation)
-    "0.22": "biological",
-    "0.24": "fluid", # AI Logic
-    "0.25": "fluid", # Economics
-    "0.26": "galactic",
-    "0.28": "fluid", # Materials
-    "0.30": "biological", # Mega Flora
-    "0.31": "galactic",
+    "0.17": "electroweak", # Mass Generation (Strong interaction link)
+    "0.18": "quantum", # Information/Entanglement
+    "0.20": "quantum", # Atomic Physics
+    "0.21": "nuclear_binding", # Yang-Mills (QCD)
+    "0.24": "ai_cortex", # AI (Axiomatic logic)
+    "0.25": "fluid", # Strategy/Economics
     "0.32": "nuclear_binding", # Fusion
-    "0.33": "fluid", # Battery Tech (Nanoscale)
-    "0.34": "fluid", # Nanofab
+    
+    "General": "fluid",
+}
+
+# Mapping: Topic -> Characteristic Scale (Meters)
+_TOPIC_SCALE_REGISTRY = {
+    "0.1": 1e21,    # Galaxy
+    "0.5": 1e-15,   # Nuclear (Binding)
+    "0.6": 1.1e-18, # Electroweak (MZ)
+    "0.7": 1e-35,   # Neutrino (Planck limit pivot)
+    "0.8": 1e-12,   # Muon (Magnetic Scale)
+    "0.9": 1e-10,   # Nonlocality (Atomic link)
+    "0.17": 1e-18,  # Particle Mass
+    "0.20": 0.5e-10, # Atomic (Bohr)
+    "0.32": 1e-15,   # Fusion (Effective Barrier)
 }
 
 def get_params(topic_id_or_domain: str = "fluid", **overrides) -> UETParameters:
@@ -341,8 +414,12 @@ def get_params(topic_id_or_domain: str = "fluid", **overrides) -> UETParameters:
 
     # 3. Derive Axiomatic Parameters (A1-A12) via Landauer Principle
     preset = _DOMAIN_PRESETS[domain]
+    # Default scale from Topic Registry or Domain Preset
+    # Use topic_id_or_domain to lookup the specific scale if it's a topic ID
+    topic_scale = _TOPIC_SCALE_REGISTRY.get(topic_id_or_domain, preset["scale"])
+    
     return derive_parameters_first_principles(
-        scale=preset["scale"],
+        scale=topic_scale,
         temperature=preset["temperature"],
         information_density=preset["info_density"],
         **overrides

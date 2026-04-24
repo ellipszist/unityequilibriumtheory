@@ -1,0 +1,98 @@
+{
+  "core_observables": {
+    "fermi_constant": {
+      "display": "1.1663788e-05",
+      "error_negative": 6e-12,
+      "error_positive": 6e-12,
+      "provenance_status": "checked_local_reference",
+      "unit": "GeV^-2",
+      "value": 1.1663788e-05
+    },
+    "m_H": {
+      "display": "125.20+-0.11",
+      "error_negative": 0.1148838236816068,
+      "error_positive": 0.1148838236816068,
+      "provenance_status": "source_locked_pdg_sqlite",
+      "unit": "GeV",
+      "value": 125.1995304097179
+    },
+    "m_W": {
+      "display": "80.3692+-0.0133",
+      "error_negative": 0.012,
+      "error_positive": 0.012,
+      "provenance_status": "source_locked_pdg_sqlite",
+      "unit": "GeV",
+      "value": 80.377
+    },
+    "m_Z": {
+      "display": "91.1880+-0.0020",
+      "error_negative": 0.002013761937203607,
+      "error_positive": 0.002013761937203607,
+      "provenance_status": "source_locked_pdg_sqlite",
+      "unit": "GeV",
+      "value": 91.18797809193725
+    },
+    "sin2_theta_W_effective": {
+      "display": "0.23121+-4e-05",
+      "error_negative": 4e-05,
+      "error_positive": 4e-05,
+      "provenance_status": "checked_local_reference",
+      "source_note": "Direct weak-mixing-angle observable was not located in the current PDG SQLite workflow; this remains a checked local electroweak reference until a direct upstream mapping is added.",
+      "unit": "dimensionless",
+      "value": 0.23121
+    }
+  },
+  "neutron_decay_benchmark": {
+    "best_lifetime_s": 878.4,
+    "best_lifetime_uncertainty_s": 0.5,
+    "fermi_constant_GeV2": 1.1663787e-05,
+    "fermi_constant_uncertainty_GeV2": 6e-12,
+    "g_A": 1.2756,
+    "source_file": "docs\\topics\\0.6_Electroweak_Physics\\Data\\03_Research\\neutron_decay_data.py",
+    "status": "checked_local_compilation",
+    "v_ud": 0.97373
+  },
+  "reference_package": "docs\\data\\external\\particle_physics\\pdg\\electroweak_reference_package.json",
+  "running_angle_diagnostic": {
+    "points": [
+      {
+        "Q_GeV": 0.0024,
+        "label": "APV_Cs",
+        "provenance_status": "checked_local_compilation",
+        "sin2_theta_W": 0.23867,
+        "uncertainty": 0.00016
+      },
+      {
+        "Q_GeV": 0.16,
+        "label": "Qweak",
+        "provenance_status": "checked_local_compilation",
+        "sin2_theta_W": 0.2313,
+        "uncertainty": 0.001
+      },
+      {
+        "Q_GeV": 30.0,
+        "label": "DIS",
+        "provenance_status": "checked_local_compilation",
+        "sin2_theta_W": 0.232,
+        "uncertainty": 0.001
+      },
+      {
+        "Q_GeV": 91.18,
+        "label": "Z_pole",
+        "provenance_status": "checked_local_compilation",
+        "sin2_theta_W": 0.23121,
+        "uncertainty": 4e-05
+      },
+      {
+        "Q_GeV": 8000.0,
+        "label": "LHC_high_Q",
+        "provenance_status": "checked_local_compilation",
+        "sin2_theta_W": 0.231,
+        "uncertainty": 0.001
+      }
+    ],
+    "source": "compiled local benchmark points embedded in legacy topic research script",
+    "status": "diagnostic_only"
+  },
+  "source_package": "topic_0.6 electroweak benchmark package"
+}

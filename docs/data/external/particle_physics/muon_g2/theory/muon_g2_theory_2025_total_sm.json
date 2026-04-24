@@ -1,0 +1,16 @@
+{
+  "data": {
+    "a_mu_sm_total": {
+      "uncertainty": 6.199999999999999e-10,
+      "value": 0.00116592033
+    },
+    "delta_a_mu_exp_minus_sm": {
+      "uncertainty": 6.3e-10,
+      "value": 3.8e-10
+    }
+  },
+  "publication_reference": "Physics Reports 1143 (2025) 1-158 / arXiv:2505.21476",
+  "source": "Muon g-2 Theory Initiative White Paper 2025",
+  "source_file": "docs\\data\\external\\particle_physics\\muon_g2\\theory\\muon_g2_theory_white_paper_2025.html",
+  "source_url": "https://muon-gm2-theory.illinois.edu/white-paper-25/"
+}

@@ -1,0 +1,57 @@
+{
+  "baselines": [
+    {
+      "a_mu_exp": 0.001165920705,
+      "a_mu_sm": 0.00116592033,
+      "combined_uncertainty": 6.369277824055094e-10,
+      "delta_a_mu": 3.75000000019457e-10,
+      "experimental_uncertainty": 1.458663772087317e-10,
+      "label": "source_locked_2025_derived",
+      "provenance_status": "source_locked",
+      "sm_uncertainty": 6.199999999999999e-10,
+      "source": "docs\\data\\external\\particle_physics\\muon_g2\\theory\\muon_g2_theory_2025_total_sm.json"
+    },
+    {
+      "combined_uncertainty": 6.3e-10,
+      "delta_a_mu": 3.8e-10,
+      "label": "source_locked_2025_published",
+      "provenance_status": "source_locked",
+      "source": "docs\\data\\external\\particle_physics\\muon_g2\\theory\\muon_g2_theory_2025_total_sm.json"
+    },
+    {
+      "a_mu_exp": 0.00116592059,
+      "a_mu_sm": 0.0011659181,
+      "combined_uncertainty": 4.830113870293329e-10,
+      "delta_a_mu": 2.490000000025111e-09,
+      "experimental_uncertainty": 2.2e-10,
+      "label": "local_2023_data_driven",
+      "provenance_status": "historical_local_reference",
+      "sm_uncertainty": 4.3e-10,
+      "source": "docs\\topics\\0.8_Muon_g2_Anomaly\\Data\\03_Research\\fermilab_g2_2023.json"
+    },
+    {
+      "a_mu_exp": 0.001165920705,
+      "a_mu_sm": 0.00116591954,
+      "combined_uncertainty": 5.616903061296322e-10,
+      "delta_a_mu": 1.1649999998985389e-09,
+      "experimental_uncertainty": 1.14e-10,
+      "label": "local_2021_lattice_qcd",
+      "provenance_status": "historical_local_reference",
+      "sm_uncertainty": 5.5e-10,
+      "source": "docs\\topics\\0.8_Muon_g2_Anomaly\\Data\\03_Research\\muon_g2_data.py"
+    },
+    {
+      "a_mu_exp": 0.001165920705,
+      "a_mu_sm": 0.0011659195,
+      "combined_uncertainty": 4.1592787836354516e-10,
+      "delta_a_mu": 1.2049999999555472e-09,
+      "experimental_uncertainty": 1.14e-10,
+      "label": "local_2025_theory_initiative_snapshot",
+      "provenance_status": "historical_local_reference",
+      "sm_uncertainty": 4e-10,
+      "source": "docs\\topics\\0.8_Muon_g2_Anomaly\\Data\\03_Research\\muon_g2_data.py"
+    }
+  ],
+  "canonical_verification_baseline": "source_locked_2025_derived",
+  "source_package": "topic_0.8 muon g-2 baseline package"
+}

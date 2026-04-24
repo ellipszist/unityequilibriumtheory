@@ -79,6 +79,7 @@ graph TB
 - **Goal 3: Geometric Doping.** Using UET's Axiom 3 (Information Trap) to create "virtual doping" in chips, eliminating the need for heavy metal dopants.
  and projection capabilities.
 - **Zero-Mining Law:** High-purity Perovskite is "grown" from simple chemical precursors (Mahidol Style), not mined, using Acoustic Resonance to align the lattice.
+- **High-Yield Bio-Feedstock:** Integration of **Project Sompong & Project Hardwood (Topic 0.30)** allows for diversified Graphene synthesis. Soft-lignin from *Tetrameles nudiflora* is optimized for flexible sensors, while hard-lignin from *Xylia xylocarpa* is used for high-strength structural graphene sheets.
 
 ---
 

@@ -7,25 +7,23 @@ Topic: 0.6 - Electroweak Physics
 import sys
 from pathlib import Path
 
-# --- PATH SETUP (Must be FIRST) ---
-import sys
-from pathlib import Path
 
-current_path = Path(__file__).resolve()
-ROOT = None
-for parent in [current_path] + list(current_path.parents):
-    if (parent / "docs").exists():
-        ROOT = parent
-        break
+def _bootstrap():
+    curr = Path(__file__).resolve()
+    for parent in [curr] + list(curr.parents):
+        if (parent / "docs").exists() and (parent / "docs" / "core").exists():
+            if str(parent) not in sys.path:
+                sys.path.insert(0, str(parent))
+            return parent
+    return None
 
-if ROOT:
-    if str(ROOT) not in sys.path:
-        sys.path.insert(0, str(ROOT))
-else:
-    print("CRITICAL: docs root not found!")
+
+ROOT = _bootstrap()
+if not ROOT:
+    print("CRITICAL: UET docs root not found!")
     sys.exit(1)
 
-# Engine Import (Dynamic)
+
 try:
     import importlib.util
 
@@ -42,44 +40,35 @@ try:
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     UETElectroweakSolver = getattr(module, "UETElectroweakSolver")
-except Exception as e:
-    print(f"Error loading Engine: {e}")
+except Exception as exc:
+    print(f"Error loading Engine: {exc}")
     sys.exit(1)
+
+
+from docs.core.uet_parameters import get_params
 
 
 def prove_electroweak():
     print("=" * 60)
-    print("📜 UET PROOF: ELECTROWEAK UNIFICATION")
+    print("UET PROOF: ELECTROWEAK UNIFICATION")
     print("=" * 60)
-    # Explicit Parameter Injection
-    try:
-        from docs.core.uet_master_equation import UETParameters
 
-        params = UETParameters(kappa=0.5, beta=1.0)
-    except:
-
-        class MockParams:
-            def __init__(self):
-                self.kappa = 0.5
-                self.beta = 1.0
-                self.alpha = 1.0
-
-        params = MockParams()
-
+    params = get_params("0.6")
     solver = UETElectroweakSolver(params=params)
     result = solver.solve()
-    print(f"  Weinberg Angle (sin^2 theta_W): {result.sin2_theta_W:.4f}")
+
+    print(f"  Runtime kappa:                 {params.kappa:.6f}")
+    print(f"  Runtime beta:                  {params.beta:.6f}")
+    print(f"  Weinberg Angle (sin^2 theta):  {result.sin2_theta_W:.4f}")
     print(f"  Higgs Mass (Axiomatic):        {result.m_Higgs_predicted:.2f} GeV")
 
-    # Tolerances:
-    # Weinberg angle: within 20% (Running vs Geometric)
-    # Higgs: 123 GeV vs 125 GeV is acceptable (1.6% error)
     if 0.18 < result.sin2_theta_W < 0.25 and 120.0 < result.m_Higgs_predicted < 130.0:
-        print("  ✅ PASS: Electroweak parameters derived from geometry.")
-    else:
-        print("  ❌ FAIL: Parameter divergence.")
-    return True
+        print("  PASS: Runtime electroweak outputs stay within proof-window bounds.")
+        return True
+
+    print("  FAIL: Runtime electroweak outputs diverge from proof-window bounds.")
+    return False
 
 
 if __name__ == "__main__":
-    prove_electroweak()
+    sys.exit(0 if prove_electroweak() else 1)

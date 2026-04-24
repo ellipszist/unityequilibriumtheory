@@ -1,101 +1,76 @@
 ---
 layout: article
-title: "UET Topic 0.3: Cosmology & Hubble Tension"
-description: "Solving the Hubble Tension via Information Propagator interaction and SpaceTime Viscosity (eta_0)."
-author: "Unity Equilibrium Team"
-keywords: "Cosmology, Hubble Tension, SpaceTime Viscosity, UET"
+title: "UET Topic 0.3: Cosmology and Hubble Tension"
+description: "Structured documentation for the cosmology and Hubble-tension topic in the UET repository."
 ---
 
-# 🌌 0.3 Cosmology & Hubble Tension
+# 0.3 Cosmology and Hubble Tension
 
-<div itemscope itemtype="https://schema.org/ScholarlyArticle">
-  <meta itemprop="name" content="UET Topic 0.3: Cosmology & Hubble Tension">
-  <meta itemprop="description" content="Solving the Hubble Tension via Information Propagator interaction and SpaceTime Viscosity (eta_0).">
-  <meta itemprop="author" content="Unity Equilibrium Theory">
-</div>
+## Problem
 
-> [!NOTE]
-> **AI-Digest**: UET resolves the 'Hubble Tension' by introducing **SpaceTime Viscosity** ($\eta_0 \approx 6.8 \times 10^{-28}$ Pa·s) into the Friedmann equations. This 'Information Drag' on photons creates a predictable redshift component, aligning the discrepant $H_0$ measurements from early (CMB) and late (Local) universe data without changing the core physics of expansion. / UET แก้ไขปัญหา 'Hubble Tension' โดยการรวมผลของ **ความหนืดของปริภูมิเวลา** (SpaceTime Viscosity, $\eta_0 \approx 6.8 \times 10^{-28}$ Pa·s) เข้ากับสมการฟรีดแมน 'แรงต้านทางสารสนเทศ' นี้ส่งผลต่อโฟตอนทำให้เกิดการเลื่อนทางแดงในรูปแบบที่คำนวณได้ ซึ่งช่วยประสานความผิดเพี้ยนของค่า $H_0$ ระหว่างเอกภพยุคแรก (CMB) และเอกภพยุคปัจจุบัน (Local) ให้สอดคล้องกันโดยไม่ต้องเปลี่ยนกลไกหลักของการขยายตัวของเอกภพ
+This topic studies whether UET-style cosmology components can reproduce the observed gap
+between early- and late-universe Hubble-constant measurements under the repository's
+internal assumptions.
 
-![Status](https://img.shields.io/badge/Status-90%25_PASS-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Information_Evolution-blueviolet)
-![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
-![Scientific_Rigor](https://img.shields.io/badge/Rigor-Metric_Evolution-orange)
+## Assumptions and scope
 
-> **"UET resolves the $5\sigma$ Hubble Tension by treating the Hubble 'Constant' as a function of Information Density, naturally predicting the $H_0$ discrepancy between Planck (Early) and SH0ES (Late) data without ad-hoc fields."**
+- Scope: internal comparison against published H0 reference values and topic-specific scripts
+- Out of scope: claiming that the Hubble tension is universally resolved
+- The topic includes both a proposed mechanism and explicit negative results for parts of the
+  wider cosmology problem space
 
----
+## Data sources
 
-## 1. 📂 5x4 Grid Structure
+- Published value references:
+  - Planck 2018
+  - SH0ES 2022
+- Local topic data and experiments:
+  - `Data/03_Research/`
+  - `Data/03_Research/jwst_highz_calibration.csv` where applicable
 
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | Analysis Reports on Hubble Tension and Dark Energy. |
-| **Ref/** | Planck 2018 (CMB) and SH0ES 2022 (Supernovae) data. |
-| **Data/** | Redshift-Distance scaling observations. |
-| **Code/** | Logic levels: 01_Engine (Metric Solver), 02_Proof (Friedmann), 03_Research (Tension). |
-| **Result/** | Plots showing the smooth H(z) transition and Lambda error logs. |
+## Method summary
 
----
+- Engine: `Code/01_Engine/Engine_Cosmology.py`
+- Comparison script: `Code/03_Research/Research_Hubble_Comparison.py`
+- Supporting research scripts: `Research_CMB_Analysis.py`, `Research_Dark_Energy.py`, `Research_highz_galaxies.py`
 
-## 🔗 Theory Connection
+Supporting standard files:
 
-```mermaid
-graph TB
-    subgraph Standard["🔬 Standard Cosmology (ΛCDM)"]
-        CMB["Early Universe (CMB) H0 ~ 67"]
-        Late["Late Universe (SNe) H0 ~ 73"]
-        Tension["❌ Hubble Tension (Mismatch)"]
-    end
-    
-    subgraph UET["✅ UET Solution"]
-        InfoProp["Information Propagator Term"]
-        DynamicH["Dynamic Hubble Scaling"]
-        Resolution["Unified H(z) Evolution"]
-    end
-    
-    CMB --> Tension
-    Late --> Tension
-    Tension -->|"UET Axiom 1 (Info Cons.)"| InfoProp
-    InfoProp --> DynamicH
-    DynamicH --> Resolution
-    
-    style UET fill:#d4edda,stroke:#28a745
-```
+- [METHOD.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.3_Cosmology_Hubble_Tension/METHOD.md:1)
+- [DATA_MANIFEST.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.3_Cosmology_Hubble_Tension/DATA_MANIFEST.md:1)
+- [VERIFICATION_SPEC.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.3_Cosmology_Hubble_Tension/VERIFICATION_SPEC.md:1)
+- [BASELINE_COMPARISON.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.3_Cosmology_Hubble_Tension/BASELINE_COMPARISON.md:1)
+- [LIMITATIONS.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.3_Cosmology_Hubble_Tension/LIMITATIONS.md:1)
 
----
+## Parameters and fitting status
 
-## 🎯 Problem & Solution
+- Topic scripts rely on repository assumptions about information-coupling behavior
+- Public wording should describe this topic as a proposed mechanism with internal benchmark
+  comparisons, not as a settled resolution of the Hubble-tension literature
 
-- **The Problem:** The universe appears to expand at different rates depending on when you look ($67.4$ km/s/Mpc vs $73.0$ km/s/Mpc). Standard ΛCDM cannot reconcile this $5\sigma$ discrepancy.
-- **The Solution:** UET **Axiom 1 (Conservation of Information)** implies that as the universe expands and matter density drops, the Information Field pressure changes. Including this $\Omega_{Info}(z)$ term in the Friedmann equation naturally bridges the gap.
-- **Vacuum Energy Integrity:** While we solved the Hubble Tension, we honestly report a **FAILURE** to solve the full Vacuum Catastrophe ($10^{122}$ gap) in `ANALYSIS_Research_Dark_Energy.md`.
+## Metrics and thresholds
 
----
+- `Research_Hubble_Comparison.py` compares the observed H0 gap against the engine-derived
+  gap and currently reports an internal pass when percentage error is below `20%`
+- The topic also documents at least one explicit failure mode for the vacuum-energy problem;
+  this failure must remain visible in topic summaries
 
-## 📊 Test Results
+## Baselines
 
-| Category | Test | Result | Status |
-| :--- | :--- | :--- | :--- |
-| **01_Engine** | Friedmann Evolution | Smooth Transition | ✅ PASS |
-| **02_Proof** | Scale Factor Physics | Matches LCDM Expansion | ✅ PASS |
-| **03_Research** | Hubble Tension Check | H0(Early)=67.4, H0(Late)=73.0 | ✅ PASS |
-| **03_Research** | Dark Energy | Lambda Mismatch ($10^{122}$) | ❌ FAIL |
-| **04_Competitor** | Standard ΛCDM | Tension Remains | ✅ PASS |
+- Primary baseline: published Planck and SH0ES reference values
+- Comparator model: LCDM framing as described in topic docs
 
----
+## Limitations and open risks
 
-## 2. ⚡ Quick Start
+- Published-value comparison is not the same as a full cosmology pipeline replication
+- The topic does not yet ship a normalized raw-data package for the full observational stack
+- Hubble-tension and dark-energy claims must not be collapsed into one status line
 
-```powershell
-python docs/topics/0.3_Cosmology_Hubble_Tension/Code/03_Research/Research_Hubble_Comparison.py
-```
+## Reproducibility
 
-## 📁 Key Files
+- Verification command: `python docs/topics/0.3_Cosmology_Hubble_Tension/Code/03_Research/Research_Hubble_Comparison.py`
+- Artifact contract: see [VERIFICATION_SPEC.md](/C:/Users/santa/Desktop/uet_harness/docs/topics/0.3_Cosmology_Hubble_Tension/VERIFICATION_SPEC.md:1)
 
-- [Engine_Cosmology.py](./Code/01_Engine/Engine_Cosmology.py): The Unified Metric Solver.
-- [ANALYSIS_Engine_Cosmology.md](./Doc/ANALYSIS_Engine_Cosmology.md): Technical breakdown of the Information Term.
-- [ANALYSIS_Research_Dark_Energy.md](./Doc/ANALYSIS_Research_Dark_Energy.md): Honest failure report.
+## Current readiness status
 
----
-*Generated by UET Research Assistant - Paper-Ready Version*
+`Structured`

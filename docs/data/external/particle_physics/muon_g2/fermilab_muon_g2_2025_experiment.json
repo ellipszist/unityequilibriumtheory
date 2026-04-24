@@ -1,0 +1,13 @@
+{
+  "data": {
+    "a_mu_exp": 0.001165920705,
+    "combined_error": 1.458663772087317e-10,
+    "stat_error": 1.14e-10,
+    "syst_error": 9.1e-11
+  },
+  "note": "This file records the experimental measurement only. Standard-Model comparison values must be tracked separately.",
+  "precision_ppb": 127,
+  "published_date": "2025-06-03",
+  "source": "DOE/Fermilab Muon g-2 final 2025 press release mirror",
+  "source_file": "docs\\data\\external\\particle_physics\\muon_g2\\doe_muon_g2_2025_press_release.html"
+}

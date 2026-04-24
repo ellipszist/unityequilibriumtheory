@@ -1,0 +1,32 @@
+{
+  "config": {
+    "alpha_sweep_points": 50,
+    "scale_gev": 3.0
+  },
+  "dataset_hash": "cc2c2597761df4baa6cdede0f483480e976d644ce9931f23c6f306a9b8d0d6cc",
+  "environment": {
+    "implementation": "CPython",
+    "matplotlib_version": "3.10.8",
+    "numpy_version": "2.4.0",
+    "pandas_version": "2.3.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.14.2",
+    "scipy_version": "1.16.3",
+    "tensorflow_version": null,
+    "torch_version": "2.10.0+cpu"
+  },
+  "metrics": {
+    "relative_error_percent": 2.047647267251257
+  },
+  "notes": "Calibration-aware internal benchmark artifact against selected lattice data.",
+  "results": {
+    "best_alpha": -0.10999999999999999,
+    "best_prediction_mev": 1407.1247279470288,
+    "reference_mass_mev": 1436.54
+  },
+  "seed": 42,
+  "thresholds": {},
+  "timestamp_utc": "2026-04-23T02:39:21.255939+00:00",
+  "topic": "0.21_Yang_Mills_Mass_Gap",
+  "uet_version": "0.9.0"
+}

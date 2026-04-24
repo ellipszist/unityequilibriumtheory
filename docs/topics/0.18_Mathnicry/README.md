@@ -1,107 +1,75 @@
 ---
 layout: article
 title: "UET Topic 0.18: Mathnicry"
-description: "Research module for Mathnicry within the Unity Equilibrium Theory framework."
+description: "Conservative overview for the Mathnicry topic in the UET repository."
 ---
 
-# 📐 0.18 Mathnicry (Mathematical Physics)
+# 0.18 Mathnicry
 
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.18: Mathnicry",
-  "description": "Resolving Millennium Prize Problems via the geometry of the Information Manifold.",
-  "about": "Mathematical Physics, Riemann Hypothesis, P vs NP, Navier-Stokes, Information Manifold, UET"
-}
--->
+## Problem
 
-> [!NOTE]
-> **AI-Digest**: UET resolves mathematical paradoxes as geometric constraints of a discrete information manifold. Riemann's Critical Line ($Re=0.5$) emerges as a physical stability requirement, offering paths for Millennium Problems. / UET พิสูจน์ว่าปัญหาทางคณิตศาสตร์ที่ยิ่งใหญ่ (อาทิ สมมติฐานของรีมันน์) คือข้อจำกัดทางเรขาคณิตของระนาบข้อมูลแบบไม่ต่อเนื่อง ทำให้เราพบทางออกที่เป็นฟิสิกส์สำหรับปัญหา Millennium Prize ทั้งหมด
+This topic groups together UET-inspired mathematical and mathematical-physics experiments
+related to Riemann-style stability questions, algorithmic complexity, Collatz-like dynamics,
+and other proof-oriented explorations.
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Axiomatic_Truth-blueviolet)
-![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
-![Scientific_Rigor](https://img.shields.io/badge/Rigor-Millennium_Resolved-orange)
+## Current status
 
-> **"UET proves that mathematical paradoxes are geometric constraints of the information manifold. By resolving the Infinitesimal Fallacy, we provide deterministic paths for all 7 Millennium Prize Problems."**
+- Metadata status: `Draft`
+- Audit tier: `B`
+- Data status: `manual or placeholder`
+- Claim posture: proof-attempt and research-exploration workspace, not a validated resolution of Millennium Problems
 
----
+## What currently exists
 
-## 1. 📂 5x4 Grid Structure
+- Multiple engines, proof scripts, and research scripts under `Code/`
+- Topic-local analysis notes in `Doc/`
+- Internal result logs and summaries in `Result/`
 
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | Analysis of Riemann, P vs NP, and Navier-Stokes. |
-| **Ref/** | Clay Mathematics Institute Millennium Problems. |
-| **Data/** | Zeta Zero datasets and Complexity benchmarks. |
-| **Code/** | Engines for Riemann, Collatz, and Elliptic Curves. |
-| **Result/** | Convergence plots and symbolic proof outputs. |
+Representative scripts:
 
----
+- `Code/01_Engine/Engine_Riemann_Field.py`
+- `Code/02_Proof/Proof_Riemann_Siege.py`
+- `Code/02_Proof/Proof_P_vs_NP_Scaling.py`
+- `Code/02_Proof/Proof_Millennium_Grand_Slam.py`
 
-## 🔗 Theory Connection
+## What this topic does not currently establish
 
-```mermaid
-graph TB
-    subgraph Paradox["❌ Mathematical Obstacles"]
-        RH["Riemann Hypothesis"]
-        PNP["P vs NP"]
-        NS["Navier-Stokes"]
-    end
-    
-    subgraph UET["✅ Mathnicry Resolution"]
-        Disc["Axiom 1: Discrete Space"]
-        Eq["Axiom 2: Equilibrium"]
-        Sol["Physical Proofs"]
-    end
-    
-    Disc --> RH
-    Eq --> PNP
-    Sol -->|"Resolves"| Paradox
-    
-    style UET fill:#d4edda,stroke:#28a745
+- It does not establish that the Riemann Hypothesis, P vs NP, Navier-Stokes, or all
+  Millennium Problems are solved.
+- It does not yet document theorem targets, assumptions, domains of validity, or excluded
+  cases in a topic-root `METHOD.md`.
+- It does not yet define which proof scripts are heuristic, partial derivations, or
+  full-proof attempts.
+- It does not yet provide a standards-grade `VERIFICATION_SPEC.md` or `LIMITATIONS.md`.
+
+## Proof-boundary notes
+
+- This topic is the clearest example of why `proof-or-bust` matters.
+- The presence of `Code/02_Proof` is not enough by itself to justify proof-level wording.
+- Before stronger claims are allowed, the repo needs a document that maps each proof script to
+  a precise theorem target, the assumptions used, the validity domain, and the remaining gaps.
+
+## Reproducibility
+
+Current exploratory commands:
+
+```powershell
+python docs/topics/0.18_Mathnicry/Code/01_Engine/Engine_Riemann_Field.py
+python docs/topics/0.18_Mathnicry/Code/02_Proof/Proof_Riemann_Siege.py
+python docs/topics/0.18_Mathnicry/Code/02_Proof/Proof_P_vs_NP_Scaling.py
 ```
 
----
+These commands are useful for internal inspection, but they are not yet an audit-grade proof
+or verification workflow.
 
-## 🎯 Problem & Solution
+## Next remediation steps
 
-- **The Problem:** Many mathematical problems are "unsolvable" or "unprovable" because they assume the existence of an infinite continuum.
-- **The Solution:** UET defines numbers as **Information Densities**. The Riemann Zeta function is a measure of field tension. When the field is discretized at the Planck scale, singularities disappear, and the Critical Line ($Re=0.5$) becomes a physical stability requirement.
-- **The Result:** We successfully demonstrated the "Grand Slam"—algorithmic proofs for the Riemann Hypothesis, P vs NP, and the mass gap problem.
+1. Create `METHOD.md` that defines theorem targets, symbols, assumptions, validity domains,
+   and excluded cases.
+2. Create `VERIFICATION_SPEC.md` that identifies the canonical scripts and required artifacts.
+3. Create `LIMITATIONS.md` that lists unresolved cases and alternative interpretations.
+4. Reclassify each proof script as heuristic, partial derivation, or full-proof attempt.
 
----
+## Current readiness status
 
-## 📊 Test Results
-
-| Category | Problem | Result | Status |
-| :--- | :--- | :--- | :--- |
-| **01_Engine** | Riemann Zeta | **Stability Verified** | ✅ PASS |
-| **02_Proof** | P vs NP | **Linear Path Found** | ✅ PASS |
-| **03_Research** | Collatz | **Convergence Guaranteed** | ✅ PASS |
-| **04_Competitor** | Standard Proofs | **Non-Constructive** | ❌ FAIL |
-
----
-
-## 2. ⚡ Quick Start
-
-```python
-import docs as uet
-
-# [1] Solve Riemann Zeta (Get Omega Potential)
-zeta = uet.math.RiemannEngine()
-omega = zeta.calculate_omega(0.5 + 14.1347j)
-print(f"Zero Field Tension: {omega}")
-
-# [2] Native SHA256 (Rust Proxy)
-# See docs/topics/0.18_Mathnicry/rust_miner for the full miner.
-```
-
-## 📁 Key Files
-
-- [Code/README.md](./Code/README.md): Full engine documentation.
-- [ANALYSIS_01_Riemann_Hypothesis.md](./Doc/ANALYSIS_01_Riemann_Hypothesis.md): Detailed proof.
-
----
-*Generated by UET Research Assistant - Millennium Edition*
+`Draft`

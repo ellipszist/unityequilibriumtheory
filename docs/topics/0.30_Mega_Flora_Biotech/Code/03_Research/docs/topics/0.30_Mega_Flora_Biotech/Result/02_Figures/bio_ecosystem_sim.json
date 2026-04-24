@@ -1,0 +1,12 @@
+{
+    "Geotechnical": {
+        "Sompong": 4.032258064516129,
+        "Pyinkado": 0.3142857142857143,
+        "Sompong_Advantage": 12.82991202346041
+    },
+    "Structural": {
+        "Padauk": 55.14705882352941,
+        "Pyinkado": 52.083333333333336,
+        "Pyinkado_Advantage": 0.9444444444444444
+    }
+}
