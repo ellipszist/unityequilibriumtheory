@@ -1,0 +1,138 @@
+{
+  "generated_by": "docs/scripts/data/fetch_external_particle_data.py",
+  "policy": "Downloaded file plus hash is source-locked, not automatically benchmark-ready.",
+  "records": [
+    {
+      "attempted_urls": [
+        "https://pdg.lbl.gov/2025/api/pdg-2025-v0.2.2.sqlite"
+      ],
+      "benchmark_ready": true,
+      "bytes": 24526848,
+      "dataset_id": "pdg_2025_sqlite",
+      "duration_seconds": 21.016,
+      "error": null,
+      "expected_min_bytes": 1000000,
+      "fallback_urls": [],
+      "local_path": "docs\\data\\external\\particle_physics\\pdg\\pdg-2025-v0.2.2.sqlite",
+      "local_relpath": "pdg/pdg-2025-v0.2.2.sqlite",
+      "notes": "Machine-readable PDG database for particle properties and Standard Model constants.",
+      "sha256": "3de494ba22d7229eda9ba3047660b345fd82d3eea0e10747b7119bb4c2947196",
+      "source_name": "Particle Data Group API SQLite database 2025",
+      "source_type": "sqlite",
+      "status": "downloaded",
+      "topic": "0.5-0.8",
+      "url": "https://pdg.lbl.gov/2025/api/pdg-2025-v0.2.2.sqlite"
+    },
+    {
+      "attempted_urls": [
+        "https://pdg.lbl.gov/2025/api/pdgall-2025-v0.2.2.sqlite"
+      ],
+      "benchmark_ready": true,
+      "bytes": 63967232,
+      "dataset_id": "pdgall_2025_sqlite",
+      "duration_seconds": 60.962,
+      "error": null,
+      "expected_min_bytes": 1000000,
+      "fallback_urls": [],
+      "local_path": "docs\\data\\external\\particle_physics\\pdg\\pdgall-2025-v0.2.2.sqlite",
+      "local_relpath": "pdg/pdgall-2025-v0.2.2.sqlite",
+      "notes": "Machine-readable PDG database including historical Summary Table values.",
+      "sha256": "0126ff52a0a8de8d683d56ee9eb10f7366f5f3b9df7ae4a25e2c269026d8566d",
+      "source_name": "Particle Data Group API SQLite database 2025 with historical summary data",
+      "source_type": "sqlite",
+      "status": "downloaded",
+      "topic": "0.5-0.8",
+      "url": "https://pdg.lbl.gov/2025/api/pdgall-2025-v0.2.2.sqlite"
+    },
+    {
+      "attempted_urls": [
+        "https://www-nds.iaea.org/amdc/ame2020/mass_1.mas20",
+        "http://amdc.impcas.ac.cn/ame2020/mass_1.mas20",
+        "https://people.physics.anu.edu.au/~ecs103/chart/mass_1.mas20"
+      ],
+      "benchmark_ready": false,
+      "bytes": 0,
+      "dataset_id": "ame2020_mass_1",
+      "duration_seconds": 23.128,
+      "error": "HTTP Error 404: Not Found",
+      "expected_min_bytes": 100000,
+      "fallback_urls": [
+        "http://amdc.impcas.ac.cn/ame2020/mass_1.mas20",
+        "https://people.physics.anu.edu.au/~ecs103/chart/mass_1.mas20"
+      ],
+      "local_path": "docs\\data\\external\\particle_physics\\ame2020\\mass_1.mas20",
+      "local_relpath": "ame2020/mass_1.mas20",
+      "notes": "Raw AME mass table. Requires parser and binding-energy extraction before benchmark use.",
+      "sha256": null,
+      "source_name": "AME2020 atomic mass table",
+      "source_type": "fixed_width_text",
+      "status": "failed",
+      "topic": "0.5",
+      "url": "https://www-nds.iaea.org/amdc/ame2020/mass_1.mas20"
+    },
+    {
+      "attempted_urls": [
+        "https://link.springer.com/content/pdf/10.1007/JHEP12(2024)216.pdf"
+      ],
+      "benchmark_ready": false,
+      "bytes": 1670680,
+      "dataset_id": "nufit_6_0_article_pdf",
+      "duration_seconds": 4.095,
+      "error": null,
+      "expected_min_bytes": 100000,
+      "fallback_urls": [],
+      "local_path": "docs\\data\\external\\particle_physics\\nufit\\NuFIT_6_0_JHEP12_2024_216.pdf",
+      "local_relpath": "nufit/NuFIT_6_0_JHEP12_2024_216.pdf",
+      "notes": "Open-access paper source. Numeric tables must be extracted or replaced by official table files if available.",
+      "sha256": "83ac293411cf83964fb04d484b7b7e2efe1f385c13c006936c577b53f1cd0683",
+      "source_name": "NuFIT 6.0 JHEP article PDF",
+      "source_type": "pdf",
+      "status": "downloaded",
+      "topic": "0.7",
+      "url": "https://link.springer.com/content/pdf/10.1007/JHEP12(2024)216.pdf"
+    },
+    {
+      "attempted_urls": [
+        "https://news.fnal.gov/2025/06/muon-g-2-most-precise-measurement-of-muon-magnetic-anomaly/"
+      ],
+      "benchmark_ready": false,
+      "bytes": 100809,
+      "dataset_id": "fermilab_muon_g2_2025_press_release",
+      "duration_seconds": 4.895,
+      "error": null,
+      "expected_min_bytes": 10000,
+      "fallback_urls": [],
+      "local_path": "docs\\data\\external\\particle_physics\\muon_g2\\fermilab_muon_g2_2025_press_release.html",
+      "local_relpath": "muon_g2/fermilab_muon_g2_2025_press_release.html",
+      "notes": "Official final-result source document. Needs publication/table extraction for numerical benchmark update.",
+      "sha256": "6577fe14bae688a1d531f58aa4faa9d53e4632a4199ae098861772b259b575a9",
+      "source_name": "Fermilab Muon g-2 final 2025 press release",
+      "source_type": "html",
+      "status": "downloaded",
+      "topic": "0.8",
+      "url": "https://news.fnal.gov/2025/06/muon-g-2-most-precise-measurement-of-muon-magnetic-anomaly/"
+    },
+    {
+      "attempted_urls": [
+        "https://www.energy.gov/science/articles/muon-g-2-announces-most-precise-measurement-magnetic-anomaly-muon-0"
+      ],
+      "benchmark_ready": false,
+      "bytes": 126504,
+      "dataset_id": "doe_muon_g2_2025_press_release",
+      "duration_seconds": 1.778,
+      "error": null,
+      "expected_min_bytes": 10000,
+      "fallback_urls": [],
+      "local_path": "docs\\data\\external\\particle_physics\\muon_g2\\doe_muon_g2_2025_press_release.html",
+      "local_relpath": "muon_g2/doe_muon_g2_2025_press_release.html",
+      "notes": "DOE mirror of Fermilab final-result release, useful as redundant provenance.",
+      "sha256": "bccc16372170d54dad98464173782eab4aba9c9c25367aebf95f081533baad77",
+      "source_name": "DOE Muon g-2 final 2025 press release mirror",
+      "source_type": "html",
+      "status": "downloaded",
+      "topic": "0.8",
+      "url": "https://www.energy.gov/science/articles/muon-g-2-announces-most-precise-measurement-magnetic-anomaly-muon-0"
+    }
+  ],
+  "schema_version": "1.0"
+}

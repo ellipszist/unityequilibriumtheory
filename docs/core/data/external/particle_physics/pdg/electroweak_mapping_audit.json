@@ -1,0 +1,44 @@
+{
+  "source": "docs\\data\\external\\particle_physics\\pdg\\pdg-2025-v0.2.2.sqlite",
+  "observable": "effective weak-mixing angle / sin^2(theta_W)",
+  "direct_mapping_found": false,
+  "queries": {
+    "pdgid_description": [],
+    "pdgitem_name": [
+      [
+        2398,
+        "Theta()+"
+      ],
+      [
+        2297,
+        "Theta()++"
+      ],
+      [
+        2618,
+        "Theta(1540)"
+      ],
+      [
+        2617,
+        "Theta(1540) Thetabar(1540) --> K0S p K- nbar + c.c."
+      ],
+      [
+        2397,
+        "Theta(1540)+"
+      ],
+      [
+        2296,
+        "Theta(1710)++"
+      ],
+      [
+        2403,
+        "Theta_c"
+      ],
+      [
+        2619,
+        "Thetabar(1540)"
+      ]
+    ],
+    "pdgdata_comment": []
+  },
+  "conclusion": "No direct weak-mixing-angle mapping was located in the current PDG SQLite workflow."
+}
