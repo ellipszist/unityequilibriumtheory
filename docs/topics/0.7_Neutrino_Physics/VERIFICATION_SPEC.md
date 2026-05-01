@@ -2,6 +2,8 @@
 
 - Primary command:
   - `python docs/topics/0.7_Neutrino_Physics/Code/03_Research/Research_NuFit_6_0_Comparison.py`
+- Windows console environment:
+  - Set `PYTHONIOENCODING=utf-8` and `PYTHONUTF8=1` before running the primary command if the console uses a legacy code page. Without this, the logger can fail while printing Unicode status characters before the scientific checks run.
 - Provenance guard command:
   - `python docs/scripts/data/validate_nufit_v60_provenance.py`
 - Inputs:
@@ -15,17 +17,20 @@
   - Official KATRIN 2025 direct neutrino-mass upper limit.
   - Checked-transcription provenance guard for the local NuFIT JSON layer.
 - Reported metrics:
-  - whether geometric angle outputs lie within official 3sigma ranges
+  - whether live `Engine_Neutrino.py` angle outputs lie within official 3sigma ranges
   - whether runtime mass-splitting parameters lie within official 3sigma ranges
   - whether the current absolute neutrino-mass engine path stays below the official KATRIN upper limit
   - provenance status of the current NuFIT checked-transcription layer
+  - dependency impact when the live angle bridge is only benchmark-gated
 - Fixed threshold:
-  - all geometric angles must lie within at least one official 3sigma range
+  - all live engine angles must lie within at least one official 3sigma range
   - all runtime mass-splitting parameters must lie within at least one official 3sigma range
   - the current predicted absolute neutrino-mass scale must stay below the official KATRIN upper limit
   - `nufit_v60_provenance_validation.json` must report `schema_validation_status = PASS`
 - Artifact target:
   - `Result/artifacts/nufit_6_0_validation.json`
 - Interpretation:
-  - A pass means current UET angle outputs and runtime neutrino parameter package are compatible with the official NuFIT 6.0 benchmark ranges, the current absolute-mass engine path does not exceed the official KATRIN limit, and the checked-transcription benchmark layer passes provenance validation.
-  - It does not yet certify a first-principles derivation of the full neutrino sector, because the mass splittings are still benchmark-fed at runtime and the NuFIT table is not yet machine-parsed from the PDF.
+  - A pass means current live engine angle outputs, runtime neutrino parameter package, and absolute-mass branch satisfy the declared NuFIT/KATRIN benchmark gates.
+  - A fail is scientifically useful: it means at least one live engine output does not clear the source-locked benchmark threshold and the topic must stay in hardening status rather than being described as solved.
+  - It does not certify a first-principles derivation of the full neutrino sector, because the mass splittings are still benchmark-fed at runtime and the NuFIT table is not yet machine-parsed from the PDF.
+  - Downstream topics may use a pass artifact only as benchmark compatibility, not as evidence for a stronger core-theory claim until the angle bridge and mass splittings are derived rather than benchmark-gated.

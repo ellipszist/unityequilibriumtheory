@@ -1,106 +1,83 @@
 ---
 layout: article
 title: "UET Topic 0.11: Phase Transitions"
-description: "Research module for Phase Transitions within the Unity Equilibrium Theory framework."
+description: "Critical-exponent benchmark and normalized phase-transition dynamics in the UET framework."
 ---
 
-# ⚛️ 0.11 Phase Transitions
-
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.11: Phase Transitions",
-  "description": "Explaining Spontaneous Symmetry Breaking and Phase Transitions as shifts in Informational Resolution.",
-  "about": "Phase Transitions, Symmetry Breaking, Thermodynamics, Order Parameter, Information Manifold, UET"
-}
--->
+# 0.11 Phase Transitions
 
 > [!NOTE]
-> **AI-Digest**: UET treats Phase Transitions as 'Informational Resolution' shifts. Spontaneous Symmetry Breaking is modeled as a topological transition in the Information Manifold's potential well ($\Omega$). Using a Spectral Cahn-Hilliard Solver, the framework demonstrates how structured orders emerge from noise according to first-principles information minimization. / UET มองว่าการเปลี่ยนสถานะ (Phase Transition) คือการเปลี่ยนแปลง 'ความละเอียดของสารสนเทศ' โดยการสมมาตรที่แตกสลายเอง (Symmetry Breaking) ถูกจำลองเป็นการข้ามผ่านขุมพลังงานศักย์ในแมนิโฟลด์สารสนเทศ การใช้ตัวแก้สมการ Spectral Cahn-Hilliard ช่วยพิสูจน์ว่าโครงสร้างที่เป็นระเบียบเกิดขึ้นมาจากสัญญาณรบกวนได้ตามหลักการลดพลังงานสารสนเทศให้ต่ำที่สุด
+> **AI-Digest**: This topic currently supports an internal benchmark for the 3D
+> Ising/liquid-gas beta critical exponent and contains normalized spectral Cahn-Hilliard
+> phase-separation simulations. It does not yet establish a full renormalization-group
+> derivation or universal phase-transition theory.
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Symmetry_Breaking-blueviolet)
+![Status](https://img.shields.io/badge/Status-Hardening_Gate-yellow)
+![Standard](https://img.shields.io/badge/Standard-Critical_Exponent_Benchmark-blue)
 ![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
-![Scientific_Rigor](https://img.shields.io/badge/Rigor-Order_Emergence-orange)
+![Scientific_Rigor](https://img.shields.io/badge/Rigor-Formula_Audited-orange)
 
-> **"UET reveals that Phase Transitions are not just statistical accidents, but Spontaneous Symmetry Breaking events driven by the Information Manifold's potential well ($\Omega$), aligning perfectly with Landauer's Principle."**
+## Current Claim Boundary
 
----
+The primary verifier compares the current UET beta-exponent projection against a topic-local
+3D Ising/liquid-gas benchmark. The Cahn-Hilliard solver and order-parameter proof scripts are
+mechanism diagnostics until their nondimensional units, seeds, morphology metrics, and material
+baselines are locked.
 
-## 1. 📂 5x4 Grid Structure
-
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | Analysis of Spinodal Decomposition and Symmetry Breaking. |
-| **Ref/** | Cahn-Hilliard (1958), Ginzburg-Landau (1950). |
-| **Data/** | Al-Zn Alloy Phase Separation Data (Calibrated). |
-| **Code/** | Logic levels: 01_Engine (Spectral Cahn-Hilliard), 02_Proof (Order). |
-| **Result/** | Domain Pattern Viz, Order Parameter Growth Plots. |
-
----
-
-## 🔗 Theory Connection
+## Conceptual Diagram
 
 ```mermaid
-graph TB
-    subgraph Standard["🔥 Classic Thermodynamics"]
-        Energy["Free Energy (F)"]
-        Entropy["Entropy (S)"]
-        Temp["Temperature (T)"]
-        Min["Minimize F = U - TS"]
-    end
-    
-    subgraph UET["🧊 UET Dynamics"]
-        Info["Unified Potential (Ω)"]
-        Grad["Information Viscosity (κ)"]
-        Well["Double-Well Potential (V)"]
-        Break["Symmetry Breaking"]
-    end
-    
-    Energy --> Min
-    Temp --> Min
-    
-    Info --> Well
-    Well --> Break
-    Grad --> Break
-    
-    style UET fill:#d4edda,stroke:#28a745
+flowchart LR
+    A["critical_exponents.json"] --> B["beta_exp and beta_theory"]
+    C["UET beta projection"] --> D["relative beta error"]
+    B --> D
+    D --> E["primary artifact"]
+    F["Cahn-Hilliard engine"] --> G["order and domain diagnostics"]
+    G --> H["future morphology gate"]
+    I["NIST critical points"] --> J["future material-data gate"]
 ```
 
----
+## Evidence Matrix
 
-## 🎯 Problem & Solution
+| Layer | Current status | Evidence / artifact | Claim allowed |
+| :-- | :-- | :-- | :-- |
+| Beta critical exponent | Primary internal benchmark | `Result/artifacts/0_11_phase_transitions_verification.json` | selected exponent compatibility |
+| Cahn-Hilliard dynamics | Normalized model exists | `Engine_Phase.py`, `FORMULA_AUDIT.md` | mechanism simulation |
+| Order parameter proof | Simulation diagnostic | `Proof_Order_Parameter.py` | internal order-emergence check |
+| NIST critical points | Working-copy data only | `Data/NIST_Critical_Points.csv` | future provenance/data gate |
+| Universal phase-transition theory | Not closed | limitations and formula audit | do not claim full proof |
 
-- **The Problem:** Classic thermodynamics uses statistical averages to describe phase transitions (like water freezing) but often requires specific equations of state for each material.
-- **The Solution:** UET treats matter states as **"Informational Resolutions"**. A phase transition is a topological shift in the Information Manifold (Symmetry Breaking) when the information density crosses a critical threshold ($T_c$).
-- **The Insight:** We successfully simulated Al-Zn alloy separation using a **Spectral Cahn-Hilliard Solver**, proving that "structure emerges from noise" via information minimization.
+## 5x4 Grid Structure
 
----
+| Pillar | Purpose |
+| :-- | :-- |
+| `Doc/` | analysis notes for symmetry breaking, phase separation, and critical behavior |
+| `Ref/` | critical exponent, Cahn-Hilliard, Ginzburg-Landau, and thermodynamic references |
+| `Data/` | topic-local critical exponent and critical-point working copies |
+| `Code/` | engine, proof, research, competitor, and visualization scripts |
+| `Result/` | artifacts, plots, and run logs |
 
-## 📊 Test Results
-
-| Category | Test | Result | Status |
-| :--- | :--- | :--- | :--- |
-| **01_Engine** | Spectral Solver | **Stable & Accurate** | ✅ PASS |
-| **02_Proof** | Symmetry Breaking | **Order > 0.7** | ✅ PASS |
-| **03_Research** | Al-Zn Separation | **Superior to Fick** | ✅ PASS |
-| **03_Research** | Latent Heat | Matches Lambda-point | ✅ PASS |
-| **04_Competitor** | Standard Solver | **Validated** | ✅ PASS |
-
----
-
-## 2. ⚡ Quick Start
+## Quick Start
 
 ```powershell
-python docs/topics/0.11_Phase_Transitions/Code/01_Engine/Engine_Phase.py
+cd C:\Users\santa\Desktop\uet_harness
+python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exponents.py
 ```
 
-## 📁 Key Files
+## Key Files
 
-- [Engine_Phase.py](./Code/01_Engine/Engine_Phase.py): The 64x64 Spectral Solver.
-- [ANALYSIS_Engine_Phase.md](./Doc/ANALYSIS_Engine_Phase.md): Physics derivation.
-- [Research_Validation.py](./Code/03_Research/test_05_phase_demixing.py): Calibrated validation.
+- `FORMULA_AUDIT.md`: formula, unit, constant, proof-status, and failure-mode registry.
+- `VERIFICATION_SPEC.md`: primary command, metrics, thresholds, and artifact interpretation.
+- `DATA_MANIFEST.md`: current data roles and provenance gaps.
+- `METHOD.md`: topic method scope and dependency policy.
+- `LIMITATIONS.md`: blockers that prevent stronger claims.
 
----
-*Generated by UET Research Assistant - Paper-Ready Version*
+## Current Limitations
+
+- The primary benchmark currently tests beta only, not the full critical-exponent set.
+- The Cahn-Hilliard solver is normalized and not yet calibrated to a material dataset.
+- Order-parameter thresholds are internal diagnostics.
+- Upstream provenance for critical-exponent and critical-point tables still needs a stronger
+  external data cache.
+
+*Status note: internal critical-exponent benchmark and formula-audit hardening gate.*

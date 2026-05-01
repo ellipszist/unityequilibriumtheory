@@ -1,0 +1,31 @@
+# Formula Audit: 0.11 Phase Transitions
+
+## Scope
+
+This registry covers the current phase-transition calculation paths: spectral
+Cahn-Hilliard evolution, chemical potential, free-energy/order-parameter diagnostics, BEC
+critical temperature, 3D Ising critical-exponent comparison, and competitor/test solvers. It
+separates standard benchmark relations from UET heuristic projection claims and numerical
+demonstrations.
+
+## Formula Registry
+
+| formula_id | relation | code surface | variables and units | constant_origin | proof_status | verification_role | failure_mode | next_hardening_step |
+| :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
+| `PT-CH-EVOLUTION` | `dC/dt = M nabla^2(delta F/delta C)` | `Engine_Phase.step` | `C` dimensionless concentration/order field; `M` mobility proxy; `dt` simulation time step; grid units normalized | `checked_local_reference` Cahn-Hilliard form | `checked local numerical relation` | engine diagnostic | Numerical stability depends on grid, `dt`, `kappa`, and noise; visual domains are not a physical proof by themselves. | Add convergence sweep over grid size, seed, `dt`, and `kappa`. |
+| `PT-FREE-ENERGY` | `F[C] = int [alpha/2 C^2 + gamma/4 C^4 + kappa/2 |grad C|^2] dV` | `Engine_Phase.compute_chemical_potential` comments and implementation | `alpha`, `gamma`, `kappa` dimensionless in normalized solver; `C` dimensionless | `topic_derived_relation` / Cahn-Hilliard benchmark structure | `heuristic bridge` | diagnostic | Solver uses normalized parameters, so physical material energy units are not established. | Document nondimensionalization and map to a material dataset if making physical claims. |
+| `PT-CHEM-POTENTIAL` | `mu = alpha C + gamma C^3 - kappa nabla^2 C` | `Engine_Phase.compute_chemical_potential` | `mu` normalized potential; `C` dimensionless; `nabla^2` normalized grid operator | `checked_local_reference` | `checked local numerical relation` | engine diagnostic | Sign or FFT convention errors alter phase separation. | Add unit tests comparing FFT Laplacian to finite-difference reference. |
+| `PT-SPECTRAL-UPDATE` | `C_new_hat = (C_hat - dt M k^2 NL_hat + noise_hat)/(1 + dt M kappa k^4)` | `Engine_Phase.step` | Fourier amplitudes dimensionless; `k` normalized wave number | `topic_derived_relation` from semi-implicit CH update | `checked local numerical relation` | engine diagnostic | Incorrect implicit denominator can create artificial stability or growth. | Record seed, initial condition, and spectral diagnostics in artifact. |
+| `PT-ORDER-PARAMETER` | `order = mean(abs(C))` | `Engine_Phase.get_extra_metrics`; `Proof_Order_Parameter.py` | dimensionless order proxy | `topic_derived_relation` | `diagnostic proxy` | proof/test diagnostic | Threshold such as `order > 0.7` is simulation-specific, not universal phase-transition proof. | Calibrate threshold against known demixing simulations or mark as internal-only. |
+| `PT-DOMAIN-COUNT` | zero-crossing count over sign of `C` | `Engine_Phase._count_domains` | count dimensionless | `topic_derived_relation` | `diagnostic proxy` | visualization/diagnostic | Sensitive to noise and grid resolution; not a robust domain morphology metric. | Replace or supplement with structure factor / correlation length. |
+| `PT-BEC-TC` | `Tc = (hbar omega/k_B) * (N/zeta(3))^(1/3)` | `Engine_Phase.compute_bec_tc` | `omega` rad/s; `N` count; output K | `source_locked_physics_constant` plus standard trapped-BEC relation | `checked local benchmark relation` | diagnostic only | Not used by primary phase-transition gate; cannot support broad transition claims. | Add explicit BEC verifier if this becomes claim-bearing. |
+| `PT-BETA-UET` | `beta_UET ~= 1/D_eff`; current data uses `0.333` | `Research_Critical_Exponents.py`; `critical_exponents.json` | `beta` dimensionless critical exponent | `heuristic_bridge` | `heuristic bridge with internal benchmark pass` | primary verifier gate | A close beta match does not derive `gamma`, `nu`, scaling relations, or full RG universality. | Extend verifier to `gamma`, `nu`, and scaling laws; source-lock benchmark references. |
+| `PT-BETA-ERROR` | `relative_error = abs(beta_UET - beta_exp)/beta_exp * 100` | `Research_Critical_Exponents.py` | percent | `topic_derived_relation` | `identity` | primary verifier metric | If only beta is tested, README must not claim full phase-transition theory closure. | Keep claim to selected 3D Ising/liquid-gas beta exponent until broader gates exist. |
+
+## Current Formula Boundary
+
+- The strongest current result is a selected beta-exponent internal benchmark.
+- Spectral Cahn-Hilliard simulation demonstrates a normalized mechanism but is not yet mapped
+  to physical material units.
+- Order emergence and symmetry-breaking language must remain model/diagnostic wording unless
+  backed by broader exponent, morphology, and material-data gates.

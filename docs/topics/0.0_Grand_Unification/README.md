@@ -1,101 +1,69 @@
 ---
 layout: article
 title: "UET Topic 0.0: Grand Unification"
-description: "Research module for Grand Unification within the Unity Equilibrium Theory framework."
+description: "Integration index and cross-topic dashboard for core UET research topics."
 ---
 
-# 🌌 0.0 Grand Unification (Theory of Everything)
+# 0.0 Grand Unification
 
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.0: Grand Unification (Theory of Everything)",
-  "description": "Unifying classical, quantum, and cosmological physics under a single Information-Geometric framework.",
-  "about": "Grand Unified Theory, Information Physics, UET"
-}
--->
+Topic status: core foundation and integration index.
 
-> [!NOTE]
-> **AI-Digest**: UET unifies General Relativity and Quantum Mechanics by treating Information as the fundamental manifold. Gravity is modeled as thermodynamic pressure from Information Fields, eliminating singularities. / UET รวมฟิสิกส์คลาสสิกและควอนตัมเข้าด้วยกันโดยมองว่า 'ข้อมูล' คือพื้นฐานความจริง ลดทอนแรงโน้มถ่วงให้เป็นแรงดันทางอุณหภูมิพลศาสตร์ของข้อมูล
+This topic coordinates selected component engines from core topics and records an integration dashboard. It is not a master proof layer. Any claim made here inherits the data, formula, verifier, and limitation status of the subordinate topics it calls.
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Master_Equation-blueviolet)
-![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
-![Scientific_Rigor](https://img.shields.io/badge/Rigor-Universal_Constants-orange)
+## Current Claim Class
 
-> **"Unifying Classical, Quantum, and Cosmological physics under a single Information-Geometric framework."
+- Claim class: internal integration/run-contract check.
+- Current verifier: `Code/03_Research/Verify_Omni.py`.
+- Current artifact: `Result/artifacts/0_0_grand_unification_verification.json`.
+- Data posture: integration artifact dependency manifest; metrics and evidence status are delegated from subordinate topics.
 
----
+## Evidence Boundary
 
-## 1. 📂 5x4 Grid Structure
+The repository can currently support conservative statements such as:
 
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | The core UET Axioms and philosophical derivation. |
-| **Ref/** | Einstein, Schrödinger, and modern unification papers. |
-| **Data/** | Unified Metric logs from across the 31 topics. |
-| **Code/** | `Engine_Grand_Unification.py` (The Master Solver). |
-| **Result/** | Proof that the "Simple Truth" Master Balance holds at all scales. |
+- The Omni verifier runs selected component engines and records their metrics.
+- The dashboard can compare beta sensitivity for selected branches and record subordinate artifact PASS/WARN/FAIL status.
+- Integration output is useful for dependency mapping and limitation inheritance.
 
----
+The current evidence package does not establish a Theory of Everything, a proof of GR/QM unification, a derivation of all universal constants, or closure of still-open subordinate-topic blockers.
 
-## 🔗 Theory Connection
+## Component Scope
 
-```mermaid
-graph TB
-    subgraph Standard["🔬 Standard Physics"]
-        GR["General Relativity"]
-        QM["Quantum Mechanics"]
-        Conflict["❌ Incompatible (Singularities)"]
-    end
-    
-    subgraph UET["✅ UET Solution"]
-        Info["Information Field"]
-        Master["Master Equation"]
-        Unified["Unified Framework"]
-    end
-    
-    GR --> Conflict
-    QM --> Conflict
-    
-    Info --> Master
-    Master --> Unified
-    
-    style UET fill:#d4edda,stroke:#28a745
-```
+Current verifier calls selected branches from:
 
----
+- `0.1_Galaxy_Rotation_Problem`
+- `0.6_Electroweak_Physics`
+- `0.10_Fluid_Dynamics_Chaos`
+- `0.17_Mass_Generation`
+- `0.18_Mathnicry`
+- `0.20_Atomic_Physics`
+- `0.24_Artificial_Intelligence`
+- `0.25_Strategy_Power_Economics`
 
-## 🎯 Problem & Solution
+Each component metric must be interpreted through that topic's own `DATA_MANIFEST.md`, `FORMULA_AUDIT.md`, `VERIFICATION_SPEC.md`, and `LIMITATIONS.md`.
 
-- **The Problem:** General Relativity and Quantum Mechanics are fundamentally incompatible. GR predicts singularities (infinite density), while QM requires discrete states. The "Theory of Everything" remains elusive.
-- **The Solution:** UET **Axiom 1** establishes Information as the fundamental constituent. By treating space-time as an **Information Manifold**, we naturally bridge the gap: Gravity is the thermodynamic pressure of information, while quantum effects are information fluctuations.
-- **Zero Curve Fitting Law:** All universal constants ($G, c, h, k_B$) are derived from the Information Capacity limits, not fitted to experiment.
+## Core Files
 
----
+- `FORMULA_AUDIT.md`: integration formula/dependency registry.
+- `DATA_MANIFEST.md`: data posture and dependency-source boundary.
+- `VERIFICATION_SPEC.md`: primary verifier command and artifact contract.
+- `METHOD.md`: integration method and excluded cases.
+- `LIMITATIONS.md`: limitation inheritance policy.
+- `Code/03_Research/Verify_Omni.py`: primary integration verifier.
 
-## 📊 Test Results
+## Verification
 
-| Category | Test | Result | Status |
-| :--- | :--- | :--- | :--- |
-| **01_Engine** | Master Solver | All 31 Topics Converge | ✅ PASS |
-| **02_Proof** | Axiom Consistency | No Contradictions Found | ✅ PASS |
-| **03_Research** | Cross-Scale Unity | Galaxy ≈ Brain Patterns | ✅ PASS |
-| **04_Competitor** | Standard Physics | GR+QM Incompatible | ❌ FAIL |
+Primary command:
 
----
-
-## 2. ⚡ Quick Start
 ```powershell
-# Run the Master Balance check
-python docs/topics/0.0_Grand_Unification/Code/03_Research/Research_Grand_Unification.py
+$env:PYTHONIOENCODING='utf-8'; $env:PYTHONUTF8='1'; .\.venv\Scripts\python.exe docs\topics\0.0_Grand_Unification\Code\03_Research\Verify_Omni.py
 ```
 
-## � Key Files
+A pass means selected component engines ran and the current integration gates were recorded. It does not upgrade subordinate branches beyond their own evidence class.
 
-- [Engine_Grand_Unification.py](./Code/03_Research/Research_Grand_Unification.py): The Master Solver
-- [Code/README.md](./Code/README.md): Full script documentation
+## Next Hardening Tasks
 
----
-*Generated by UET Research Assistant - Master Framework Version*
+1. Expand the dependency manifest to all core topics `0.1-0.26`, not just the engines currently loaded.
+2. Map every dashboard metric to subordinate formula IDs and artifact IDs.
+3. Add a paper-readiness gate that blocks theory-level claims when any dependency is `WARN`, `FAIL`, bootstrap/open, or source-incomplete.
+4. Keep paper-facing claims scoped to integration behavior unless every dependency has source-backed data, formula audit, runnable verifier, and limitations aligned.

@@ -30,6 +30,33 @@ observables and related weak-decay scales under a controlled benchmark workflow.
   source-locked constants, and heuristic bridges explicitly
 - Engine, proof, research, competitor, and visualization scripts for electroweak work
 
+## Conceptual Diagram
+
+```mermaid
+flowchart LR
+    A["PDG 2025 SQLite"] --> B["electroweak reference package"]
+    C["checked-local electroweak reference"] --> B
+    D["mapping audit"] --> B
+    B --> E["core PDG verifier"]
+    B --> F["expanded benchmark package"]
+    G["neutron checked-local layer"] --> F
+    F --> H["expanded verifier"]
+    E --> I["PASS artifacts with hashes"]
+    H --> I
+    J["running-angle points"] --> K["diagnostic only"]
+```
+
+## Evidence Matrix
+
+| Layer | Current status | Evidence / artifact | Claim allowed |
+| :-- | :-- | :-- | :-- |
+| W/Z/H masses | Source-locked through PDG SQLite | `electroweak_pdg_validation.json` input hashes | selected mass-scale benchmark |
+| Effective weak-mixing angle | Checked-local; direct SQLite mapping not found | `electroweak_mapping_audit.json` | benchmark comparison with provenance caveat |
+| Fermi constant | Checked-local reference package | `FORMULA_AUDIT.md`, artifact comparisons | unit-consistent benchmark |
+| Neutron lifetime | Checked-local expanded gate | `electroweak_expanded_benchmark.json` | secondary benchmark only |
+| Running-angle points | Diagnostic-only | expanded artifact diagnostic section | no pass/fail claim |
+| Gauge-theory derivation | Not closed | `LIMITATIONS.md`, `FORMULA_AUDIT.md` | not a full electroweak proof |
+
 ## What this topic currently establishes
 
 - The current PDG-linked package passes for `sin2(theta_W)`, `m_W`, `m_H`, and `G_F`
@@ -66,6 +93,7 @@ observables and related weak-decay scales under a controlled benchmark workflow.
 - Key artifacts:
 - `Result/artifacts/electroweak_pdg_validation.json`
 - `Result/artifacts/electroweak_expanded_benchmark.json`
+- `Data/03_Research/source_lock_manifest.json`
 - `FORMULA_AUDIT.md`
 
 ## Reproducibility

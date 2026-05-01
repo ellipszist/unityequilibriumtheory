@@ -1,19 +1,36 @@
 ﻿# Verification Spec
 
 - Primary command:
-  - `python docs/topics/0.13_Thermodynamic_Bridge/Code/03_Research/Research_Landauer.py`
+  - `.venv\Scripts\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
 - Inputs:
   - `Data/03_Research/__init__.py`
   - `Data/03_Research/berut_2012.json`
   - `Data/03_Research/cattaneo_data.json`
   - `Data/03_Research/experimental_data.py`
+  - `Data/03_Research/landauer_source_lock.json`
+  - `docs/data/external/thermodynamics/landauer/berut_2012/source_record.json`
+  - `docs/data/external/constants/codata/si_2019_exact_constants.json`
 - Baseline:
-  - Berut-style, Cattaneo-style, and topic-local thermodynamic data files.
+  - Landauer exact-constant identity at 300 K.
+  - Jun-style measured erasure cost must remain above the Landauer lower bound.
+  - Bekenstein, Unruh, and Hawking relations are formula-consistency checks only.
+  - Cattaneo synthetic heat-flux data is not part of the primary acceptance gate.
 - Reported metrics:
-  - relative error on dissipation or entropy-linked observables and consistency of bridge trends
+  - `landauer_engine_vs_codata_relative_error`
+  - `jun_2014_ratio_to_landauer_lower_bound`
+  - `unruh_temperature_earth_g_K`
+  - `hawking_temperature_solar_mass_K`
+  - `bekenstein_hawking_entropy_solar_mass_planck_units`
+  - input file SHA-256 identities and optional plot artifact status
 - Fixed threshold:
-  - Working threshold for this standards pass: the primary script must run without error, use the stated input package, and write a summary artifact under Result/artifacts/. A stronger numeric acceptance threshold must be frozen in a later BASELINE_COMPARISON.md pass.
+  - `landauer_engine_vs_codata_relative_error <= 1e-12`
+  - `jun_2014_ratio_to_landauer_lower_bound >= 1.0`
+  - all three primary tests must return true
+  - optional plot artifacts should render; plot failure downgrades artifact status to `WARN`
+  - topic-derived Berut numeric rows keep this topic from claim class `A/B` until raw/supplemental table provenance is archived
 - Artifact target:
   - Result/artifacts/0_13_thermodynamic_bridge_verification.json
 - Interpretation:
-  - Treat output as an internal benchmark artifact only. Do not upgrade claim language to 'solved', 'verified', or 'exact' until a topic-specific baseline-comparison pass is complete.
+  - Treat `PASS` as formula/lower-bound consistency only.
+  - Treat `WARN` as scientifically usable for hardening but not paper-ready; the present WARN is expected while Berut numeric values remain topic-derived summaries.
+  - Do not upgrade claim language to "solved", "verified UET", or "exact bridge" until source-locked external data, uncertainty propagation, and cross-topic dependency proof are complete.

@@ -6,6 +6,9 @@ Topic: 0.12 - Vacuum Energy
 
 import sys
 from pathlib import Path
+from datetime import datetime, timezone
+from hashlib import sha256
+import platform
 
 # --- ROBUST UET BOOTSTRAP ---
 def _bootstrap():
@@ -64,6 +67,8 @@ import numpy as np
 
 
 # Standardized UET Root Path
+TOPIC_DIR = root_path / "docs" / "topics" / "0.12_Vacuum_Energy_Casimir"
+ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_12_vacuum_energy_casimir_verification.json"
 
 def load_casimir_data():
     """Load Mohideen & Roy 1998 Data."""
@@ -89,9 +94,22 @@ def load_casimir_data():
     for path in candidates:
         if path.exists():
             with open(path, "r") as f:
-                return json.load(f)
+                return json.load(f), path
 
     raise FileNotFoundError("Data not found (checked standard locations)")
+
+
+def file_sha256(path):
+    digest = sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def write_artifact(artifact):
+    ARTIFACT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    ARTIFACT_PATH.write_text(json.dumps(artifact, indent=2, sort_keys=True), encoding="utf-8")
 
 
 def run_test():
@@ -102,10 +120,20 @@ def run_test():
     print("=" * 70)
 
     try:
-        data = load_casimir_data()
+        data, data_path = load_casimir_data()
     except FileNotFoundError as e:
-        print(f"SKIPPING: {e}")
-        return True
+        artifact = {
+            "schema_version": "1.1",
+            "topic": "0.12_Vacuum_Energy_Casimir",
+            "status": "FAIL",
+            "claim_class": "E - blocked, missing primary dataset",
+            "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+            "command": "python docs/topics/0.12_Vacuum_Energy_Casimir/Code/03_Research/Research_Casimir.py",
+            "failure_reason": str(e),
+        }
+        write_artifact(artifact)
+        print(f"FAIL: {e}")
+        return False
 
     measurements = data["measurements"]
     separations = [m["d_nm"] for m in measurements]
@@ -118,16 +146,35 @@ def run_test():
     print("|:----------------|:-----------|:-----------|:------|")
 
     results = []
+    rows = []
     for d, F_exp in zip(separations, forces_exp):
         F_uet = engine.calculate_physical_casimir_force(d, radius_um=200.0)
         error = abs(abs(F_uet) - F_exp) / F_exp * 100 if F_exp > 0 else 0
         print(f"| {d:15} | {F_exp:10.4f} | {F_uet:10.4f} | {error:5.1f}% |")
         results.append(error)
+        rows.append(
+            {
+                "separation_nm": d,
+                "experimental_force_nN": F_exp,
+                "model_force_nN": F_uet,
+                "absolute_model_force_nN": abs(F_uet),
+                "relative_error_percent": error,
+            }
+        )
 
     avg_error = sum(results) / len(results)
+    max_error = max(results)
+    threshold = {
+        "average_relative_error_percent_max": 10.0,
+        "max_relative_error_percent_max": 15.0,
+    }
 
     print(f"\nAverage Error: {avg_error:.1f}%")
-    passed = avg_error < 70
+    print(f"Max Error: {max_error:.1f}%")
+    passed = (
+        avg_error <= threshold["average_relative_error_percent_max"]
+        and max_error <= threshold["max_relative_error_percent_max"]
+    )
     status = "PASS" if passed else "FAIL"
     print(f"\n{status} - UET Casimir Validation")
 
@@ -166,6 +213,48 @@ def run_test():
 
     except Exception as e:
         print(f"⚠️ Could not generate plot: {e}")
+
+    artifact = {
+        "schema_version": "1.1",
+        "topic": "0.12_Vacuum_Energy_Casimir",
+        "status": status,
+        "claim_class": "C - source-backed internal benchmark for Casimir force only",
+        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "command": "python docs/topics/0.12_Vacuum_Energy_Casimir/Code/03_Research/Research_Casimir.py",
+        "environment": {
+            "python": sys.version.split()[0],
+            "platform": platform.platform(),
+        },
+        "inputs": [
+            {
+                "path": str(data_path.relative_to(root_path)).replace("\\", "/"),
+                "sha256": file_sha256(data_path),
+                "source": data.get("paper", "Mohideen & Roy, PRL 81, 4549 (1998)"),
+                "geometry": data.get("geometry", "sphere-plate"),
+                "material": data.get("material", "gold"),
+                "sphere_radius_um_dataset": data.get("sphere_radius_um"),
+                "sphere_radius_um_model": 200.0,
+            }
+        ],
+        "formula_ids": [
+            "VAC-SPHERE-PFA",
+            "VAC-FINITE-CONDUCTIVITY",
+        ],
+        "threshold": threshold,
+        "metrics": {
+            "average_relative_error_percent": avg_error,
+            "max_relative_error_percent": max_error,
+            "point_count": len(rows),
+        },
+        "results": rows,
+        "limitations": [
+            "This artifact validates the topic-local sphere-plate Casimir benchmark only.",
+            "It does not validate the dark-energy anchor or solve the cosmological-constant problem.",
+            "The engine uses a clipped finite-conductivity correction and a 200 um model radius against a 196 um dataset radius.",
+        ],
+    }
+    write_artifact(artifact)
+    print(f"Artifact written: {ARTIFACT_PATH}")
 
     return passed
 

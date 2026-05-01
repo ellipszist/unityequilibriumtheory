@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_source_record",
+  "source_role": "SI exact constants used by thermodynamic bridge checks",
+  "source_label": "2019 SI / CODATA exact defining constants",
+  "primary_reference_url": "https://physics.nist.gov/constants",
+  "checked_date": "2026-04-30",
+  "constants": {
+    "k_B": {
+      "name": "Boltzmann constant",
+      "value": 1.380649e-23,
+      "unit": "J K^-1",
+      "status": "exact SI defining constant"
+    },
+    "e": {
+      "name": "elementary charge",
+      "value": 1.602176634e-19,
+      "unit": "C",
+      "status": "exact SI defining constant"
+    },
+    "h": {
+      "name": "Planck constant",
+      "value": 6.62607015e-34,
+      "unit": "J s",
+      "status": "exact SI defining constant"
+    },
+    "c": {
+      "name": "speed of light in vacuum",
+      "value": 299792458.0,
+      "unit": "m s^-1",
+      "status": "exact SI defining constant"
+    }
+  },
+  "unit_convention": "SI",
+  "benchmark_role": "constant provenance for Landauer, Bekenstein, Unruh, and Hawking formula checks",
+  "limitations": [
+    "This record pins exact constants used in the repository; it is not a complete CODATA table.",
+    "Measured constants such as G and hbar-derived combinations still require their own uncertainty-aware provenance records if used as acceptance gates."
+  ]
+}

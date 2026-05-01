@@ -1,128 +1,119 @@
 ---
 layout: article
 title: "UET Topic 0.7: Neutrino Physics"
-description: "Research module for Neutrino Physics within the Unity Equilibrium Theory framework."
+description: "Source-locked benchmark checks for UET-style neutrino angle, mass-splitting, and absolute-mass paths."
 ---
 
-# 🔬 0.7 Neutrino Physics
-
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.7: Neutrino Physics",
-  "description": "Predicting the Normal Mass Hierarchy and PMNS Mixing Matrix via Information Topology and geometric symmetry.",
-  "about": "Neutrino Physics, Mass Hierarchy, PMNS Matrix, Neutrino Oscillation, Information Topology, UET"
-}
--->
+# 0.7 Neutrino Physics
 
 > [!NOTE]
-> **AI-Digest**: UET definitive predicts a 'Normal Mass Hierarchy' ($m_1 < m_2 < m_3$) for neutrinos based on 'Information Topology'. By deriving the PMNS mixing matrix from the geometric symmetries of the manifold ($\pi/6, \pi/4$), UET matches experimental oscillation data with high predictive power. / UET พยากรณ์ 'ลำดับมวลแบบปกติ' (Normal Hierarchy) ของนิวตริโนได้อย่างชัดเจนตามหลัก 'โทโพโลยีสารสนเทศ' และสามารถคำนวณเมทริกซ์การผสม (PMNS Matrix) ได้จากเรขาคณิตสมมาตรของแมนิโฟลด์ ($\pi/6, \pi/4$) ซึ่งสอดคล้องกับผลการทดลองการแกว่งกวัดของนิวตริโนโดยไม่ต้องใช้ค่าสมมติ
+> **AI-Digest**: This topic checks live UET neutrino engine angle outputs, runtime mass-splitting parameters, and an absolute-mass branch against source-locked NuFIT 6.0 and KATRIN 2025 benchmarks. The current verification is a hardening gate, not a proof claim.
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Axiomatic_Truth-blueviolet)
+![Status](https://img.shields.io/badge/Status-Hardening_Gate-yellow)
+![Standard](https://img.shields.io/badge/Standard-Source_Locked_Benchmark-blue)
 ![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
-![Scientific_Rigor](https://img.shields.io/badge/Rigor-Hierarchy_Solved-orange)
+![Scientific_Rigor](https://img.shields.io/badge/Rigor-Benchmark_Compatible-orange)
 
-> **"UET derives the PMNS Matrix from geometry ($\theta_{12} \approx 30^\circ, \theta_{23} \approx 45^\circ$) and definitively predicts a Normal Mass Hierarchy for Neutrinos based on Information Topology."**
+## Current Claim Boundary
 
----
+The verifier now tests live `Engine_Neutrino.py` angle outputs instead of a separate
+benchmark-compatible angle snapshot. The current engine revision passes the declared NuFIT 6.0
+angle gate, but this is still a benchmark-compatibility result rather than a closed
+first-principles neutrino-sector derivation.
 
-## 📋 Table of Contents
-
-1. [Overview](#-overview)
-2. [📄 Analysis: Hierarchy Proof (Engine)](Doc/ANALYSIS_HIERARCHY_PROOF.md)
-3. [📄 Analysis: Mixing Engine (Oscillation)](Doc/ANALYSIS_MIXING_ENGINE.md)
-4. [📄 Analysis: PMNS Research (Data)](Doc/ANALYSIS_OSCILLATION_RESEARCH.md)
-5. [The Problem](#-the-problem)
-6. [UET Solution](#-uet-solution)
-7. [Results](#-test-results)
-8. [Quick Start](#-quick-start)
-9. [Files](#-files-in-this-module)
-
----
-
-## 1. 📂 5x4 Grid Structure
-
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | Analysis of mass hierarchy and mixing (Thai Language). |
-| **Ref/** | NuFIT 5.2, PDG 2024, T2K, NOvA Data. |
-| **Data/** | Oscillation parameters and mass splittings. |
-| **Code/** | Engine (Hierarchy + Oscillation) and Research (PMNS). |
-| **Result/** | Verified hierarchy plots and mixing angle derivations. |
-
----
-
-## 🔗 Theory Connection
+## Conceptual Diagram
 
 ```mermaid
-graph TB
-    subgraph Standard["🔬 Standard Physics"]
-        SM["Standard Model"]
-        Osc["Neutrino Oscillation"]
-        Unknown["Mass Hierarchy Unknown"]
-    end
-    
-    subgraph UET["✅ UET Solution"]
-        Geo["Geometric Symmetry (pi/6, pi/4)"]
-        Topo["Topological Winding (+1)"]
-        Normal["✅ Normal Hierarchy"]
-    end
-    
-    SM --> Osc
-    Osc --> Unknown
-    
-    Geo --> Osc
-    Topo --> Normal
-    Normal -->|"Solves"| Unknown
-    
-    style UET fill:#d4edda,stroke:#28a745
+flowchart LR
+    A["NuFIT 6.0 official table"] --> B["checked transcription + source-hash guard"]
+    C["KATRIN 2025 official result"] --> D["absolute-mass upper-limit gate"]
+    E["Engine_Neutrino.pmns_angles_geometric"] --> F["live angle gate"]
+    G["Engine_Mixing_Neutrino.NUFIT_PARAMS"] --> H["runtime splitting gate"]
+    B --> F
+    B --> H
+    D --> I["topic artifact: nufit_6_0_validation.json"]
+    F --> I
+    H --> I
+    I --> J["Dependency warning for cross-topic theory claims"]
 ```
 
----
+## Topic Matrix
 
-## 🎯 Problem & Solution
+| Field | Current status |
+| :-- | :-- |
+| Claim class | Internal benchmark compatibility check |
+| Readiness | Structured, with source-locked benchmark data |
+| Primary verifier | `Code/03_Research/Research_NuFit_6_0_Comparison.py` |
+| Main external sources | NuFIT 6.0 official parameter table; KATRIN 2025 official result |
+| Main blocker | Angle bridge derivation and runtime mass-splitting derivation are not closed |
 
-- **The Problem:** The Standard Model has no mechanism for neutrino mass, and the ordering of neutrino masses (Normal vs Inverted) remains one of the biggest open questions in physics.
-- **The Solution:** UET defines neutrinos as "pure information windings." Since the Information Field coupling $\beta > 0$ for a stable vacuum, the topology dictates a **Normal Hierarchy** ($m_1 < m_2 < m_3$).
-- **Zero Curve Fitting Law:** We derived the mixing angles $\theta_{12} \approx 30^\circ$ and $\theta_{23} \approx 45^\circ$ purely from geometric symmetries, matching experiment within ~10% without fitting.
+## 5x4 Grid Structure
 
----
+| Pillar | Purpose |
+| :-- | :-- |
+| `Doc/` | Analysis notes for hierarchy, mixing, and oscillation checks |
+| `Ref/` | Reference material for NuFIT, PDG-style values, and experimental context |
+| `Data/` | Topic-local legacy snapshots; primary source-locked data now lives in `docs/data/external/...` |
+| `Code/` | Engine, proof-oriented, and research comparison scripts |
+| `Result/` | Verification artifacts and generated outputs |
 
-## 📊 Test Results
+## Problem And Method
 
-| Category | Test | Result | Status |
-| :--- | :--- | :--- | :--- |
-| **01_Engine** | Mass Hierarchy | **NORMAL (Topological)** | 🏆 WIN |
-| **01_Engine** | Solar Angle $\theta_{12}$ | 30.0° (vs 33.4°) | ✅ PASS |
-| **01_Engine** | Atmos Angle $\theta_{23}$ | 45.0° (vs 49.2°) | ✅ PASS |
-| **01_Engine** | Reactor Angle $\theta_{13}$ | 9.2° (vs 8.6°) | ✅ PASS |
-| **03_Research** | CP Phase $\delta_{CP}$ | 195° (Matches T2K) | ✅ PASS |
+- The Standard Model does not explain neutrino mass origin, and mass ordering remains a live
+  experimental/theoretical question.
+- This topic tests whether live UET engine geometric angle rules and a see-saw-style
+  absolute-mass branch remain compatible with official NuFIT 6.0 and KATRIN 2025 benchmarks.
+- The verifier separates geometric angle outputs from benchmark-fed runtime mass splittings.
+  Compatibility is not the same thing as a complete first-principles derivation.
 
-**Total: All Systems PASS** (Strong Predictive Power)
+## Current Verification Results
 
----
+| Layer | Test | Current result | Interpretation |
+| :-- | :-- | :-- | :-- |
+| Data | NuFIT checked transcription | PASS | Source hashes and schema guard are present |
+| Data | KATRIN 2025 extracted JSON | PASS | Official result is locally locked |
+| Live engine angles | NuFIT 6.0 3sigma ranges | PASS | Revised live bridge gives `theta12 = 35.264 deg`, `theta13 = 8.693 deg`, and `theta23 = 45.000 deg` |
+| Runtime splittings | NuFIT 6.0 3sigma ranges | PASS | Values are benchmark-fed, not derived from first principles |
+| Absolute mass branch | KATRIN 2025 upper limit | PASS | See-saw-style branch is below the official limit |
+| Derivation status | Full neutrino sector | HARDENING TARGET | Formula audit labels key paths as heuristic/benchmark-fed |
 
-## 2. ⚡ Quick Start
+## Dependency Matrix
+
+| Dependency role | Upstream / downstream topic | Current effect |
+| :-- | :-- | :-- |
+| Particle benchmark source | `docs/data/external/particle_physics/nufit/official/...` | Supplies source-locked angle and mass-splitting gates. |
+| Absolute-mass bound | `docs/data/external/particle_physics/katrin/...` | Bounds the see-saw-style branch but does not close mass-generation theory. |
+| Core mass mechanism | `0.17_Mass_Generation` | May cite the PASS artifact only as benchmark compatibility; it still inherits the mass-origin derivation gap. |
+| Unity scale bridge | `0.23_Unity_Scale_Link` | May use the NuFIT/KATRIN artifact as a constraint package, not as independent support for unification. |
+| Grand integration index | `0.0_Grand_Unification` | Should index the neutrino bridge as benchmark-gated until the angle and mass-splitting derivations are closed. |
+
+## Quick Start
 
 ```powershell
-cd c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.9.0
+cd C:\Users\santa\Desktop\uet_harness
 
-# 1. Hierarchy Proof
-python docs/topics/0.7_Neutrino_Physics/Code/01_Engine/Engine_Neutrino.py
+# Source-locked NuFIT/KATRIN validation
+python docs/topics/0.7_Neutrino_Physics/Code/03_Research/Research_NuFit_6_0_Comparison.py
 
-# 2. Oscillation Simulation
-python docs/topics/0.7_Neutrino_Physics/Code/01_Engine/Engine_Mixing_Neutrino.py
-
-# 3. Data Validation
-python docs/topics/0.7_Neutrino_Physics/Code/03_Research/Research_PMNS_Mixing.py
+# Provenance guard for the NuFIT checked-transcription layer
+python docs/scripts/Data/validate_nufit_v60_provenance.py
 ```
 
-## 📁 Key Files
+## Key Files
 
-- [Code/README.md](./Code/README.md): Full script list.
-- [ANALYSIS_HIERARCHY_PROOF.md](./Doc/ANALYSIS_HIERARCHY_PROOF.md): Derivation of Mass Hierarchy.
+- `METHOD.md`: method scope, assumptions, and unit policy.
+- `DATA_MANIFEST.md`: external source paths and local data status.
+- `VERIFICATION_SPEC.md`: primary command, inputs, metrics, thresholds, and artifact target.
+- `LIMITATIONS.md`: current scientific limits and remaining derivation gaps.
+- `FORMULA_AUDIT.md`: formula, unit, provenance, and proof-status registry.
 
----
-*Generated by UET Research Assistant - Triple-Green Standard*
+## Current Limitations
+
+- NuFIT values are maintained as checked transcription, not machine-parsed directly from the
+  official PDF table.
+- Runtime mass splittings are still benchmark-fed.
+- The absolute-mass path is a compact see-saw-style construction, not a complete neutrino mass
+  generation theory.
+- Internal verifier success does not by itself establish external replication or formal proof.
+
+*Status note: source-locked hardening gate; not an external proof claim.*

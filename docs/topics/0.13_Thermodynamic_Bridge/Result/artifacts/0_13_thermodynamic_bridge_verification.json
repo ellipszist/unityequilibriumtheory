@@ -1,52 +1,98 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "topic": "0.13_Thermodynamic_Bridge",
-  "timestamp_utc": "2026-04-23T01:31:08.098681+00:00",
-  "repo_root": "C:\\Users\\santa\\Desktop\\uet_harness",
-  "python_executable": "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
-  "verification_spec": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.13_Thermodynamic_Bridge\\VERIFICATION_SPEC.md",
-  "artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.13_Thermodynamic_Bridge\\Result\\artifacts\\0_13_thermodynamic_bridge_verification.json",
-  "command": "python docs/topics/0.13_Thermodynamic_Bridge/Code/03_Research/Research_Landauer.py",
-  "input_hashes": [
+  "command": ".venv\\Scripts\\python.exe docs\\topics\\0.13_Thermodynamic_Bridge\\Code\\03_Research\\Research_Landauer.py",
+  "timestamp_utc": "2026-04-30T13:39:57.832579+00:00",
+  "status": "WARN",
+  "claim_class": "C",
+  "inputs": [
     {
-      "path": "Data/03_Research/__init__.py",
-      "status": "present",
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/__init__.py",
       "sha256": "814f2a4f940ffae9d721f3dba46fb6c16d15a856819844b1531bbc9b50befe62",
-      "bytes": "37"
+      "size_bytes": 37
     },
     {
-      "path": "Data/03_Research/berut_2012.json",
-      "status": "present",
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/berut_2012.json",
       "sha256": "1126550d8217fc0c6c20efafb57153356268302f8772ac15ae52546f8aea4879",
-      "bytes": "284"
+      "size_bytes": 284
     },
     {
-      "path": "Data/03_Research/cattaneo_data.json",
-      "status": "present",
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/cattaneo_data.json",
       "sha256": "69e4ce956633d1081b12ce6b83474c566093f37b6276177b2dd630024f7eaa89",
-      "bytes": "1356"
+      "size_bytes": 1356
     },
     {
-      "path": "Data/03_Research/experimental_data.py",
-      "status": "present",
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/experimental_data.py",
       "sha256": "a100b6b2b462a1f1940c9e17f0e3d72a3c672f1a11626b5e7bb95e045e9159d1",
-      "bytes": "10305"
+      "size_bytes": 10305
+    },
+    {
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/landauer_source_lock.json",
+      "sha256": "2d5c6a16e86cdc105a6f6153ff0d1d19f213bbef681d25363eb094a668f0c1e7",
+      "size_bytes": 2046
+    },
+    {
+      "path": "docs/data/external/thermodynamics/landauer/berut_2012/source_record.json",
+      "sha256": "28278da1ac8616c915c4c931140c80866f5a76aa47883680bd5abdaa04f11ce8",
+      "size_bytes": 1733
+    },
+    {
+      "path": "docs/data/external/constants/codata/si_2019_exact_constants.json",
+      "sha256": "dcced6d840f4f4fbcea90128061ab7a528be04e1b37917893dbf4a28934b3560",
+      "size_bytes": 1346
     }
   ],
-  "timeout_seconds": 20,
-  "resolved_command": [
-    "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
-    "docs/topics/0.13_Thermodynamic_Bridge/Code/03_Research/Research_Landauer.py"
-  ],
-  "environment_overrides": {
-    "PYTHONIOENCODING": "utf-8",
-    "PYTHONUTF8": "1",
-    "PYTHONPATH_PREFIX": "C:\\Users\\santa\\Desktop\\uet_harness"
+  "metrics": {
+    "landauer_300K_engine_J": 2.870978885078724e-21,
+    "landauer_300K_codata_J": 2.870978885078724e-21,
+    "landauer_engine_vs_codata_relative_error": 0.0,
+    "jun_2014_observed_eV": 0.028,
+    "landauer_300K_engine_eV": 0.0179192407638041,
+    "jun_2014_ratio_to_landauer_lower_bound": 1.5625662029475318,
+    "unruh_temperature_earth_g_K": 3.973913252290326e-20,
+    "hawking_temperature_solar_mass_K": 6.168429712630829e-08,
+    "bekenstein_hawking_entropy_solar_mass_planck_units": 1.0495141304015702e+77
   },
-  "status": "ran",
-  "exit_code": 0,
-  "passed_run_contract": true,
-  "duration_seconds": 6.86,
-  "stdout_tail": "\ud83d\udd0d UET Glass Box: Logging (Streaming) to 'C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.13_Thermodynamic_Bridge\\Result\\_Logs\\1776907869_UET_Thermo_Bridge'\n\n======================================================================\n[THERMO] UET THERMODYNAMIC BRIDGE VALIDATION\n   Connecting Information <-> Entropy <-> Energy <-> Spacetime\n======================================================================\n============================================================\nTEST 1: Landauer Limit (E = kT ln(2))\n============================================================\n\nTemperature          E (Joules)      E (eV)      \n--------------------------------------------------\nRoom Temperature (300K)       2.871e-21       0.017921\nLiquid Helium (4.2K)       4.019e-23       0.000251\nCryogenic (1K)       9.570e-24       0.000060\nCMB Temperature (2.725K)       2.608e-23       0.000163\n\n[DATA] Experimental Verification (Nature 2012):\n   Landauer Prediction: 0.017921 eV\n   Experimental (2016): 0.028 eV (44% above limit)\n   [OK] Landauer limit CONFIRMED as lower bound\n\n============================================================\nTEST 2: Bekenstein Bound (S_max = 2*pi*k*R*E/(hbar*c))\n============================================================\n\nSystem               S_max (bits)        \n---------------------------------------------\nHuman Brain          2.867e+26\nHard Drive (1TB)     1.434e+27\nEarth                1.005e+75\nSolar Mass BH        1.538e+77\n\n[DATA] Black Hole Entropy (Bekenstein-Hawking):\n   Solar mass BH entropy: 1.050e+77 Planck units\n   [OK] Confirms Area Law: S ~ R^2\n\n============================================================\nTEST 3: Jacobson Thermodynamic Gravity\n============================================================\n\n[EARTH] Unruh temperature at Earth surface (a=9.8 m/s^2):\n   T = 3.974e-20 K (extremely cold!)\n\n[BH] Hawking Temperature for Black Holes:\n   Solar Mass: T = 6.168e-08 K\n   Sagittarius A*: T = 1.542e-14 K\n   M87*: T = 9.490e-18 K\n\n[OK] Jacobson's insight: delta_Q = TdS -> Einstein equations\n   This means gravity emerges from thermodynamic equilibrium!\n\n======================================================================\n[DATA] SUMMARY\n======================================================================\n   Landauer Limit: [OK] PASS\n   Bekenstein Bound: [OK] PASS\n   Jacobson Temperature: [OK] PASS\n\nTotal: 3/3 tests passed\n* THERMODYNAMIC BRIDGE VALIDATED *\n  [Plot Error]: Could not save landauer/landauer_viz.png. Error: [Errno 2] No such file or directory: 'C:\\\\Users\\\\santa\\\\Desktop\\\\uet_harness\\\\docs\\\\topics\\\\0.13_Thermodynamic_Bridge\\\\Result\\\\_Logs\\\\1776907869_Research_Landauer\\\\landauer\\\\landauer_viz.png'\n  [Plot Error]: Could not save bekenstein/bekenstein_viz.png. Error: [Errno 2] No such file or directory: 'C:\\\\Users\\\\santa\\\\Desktop\\\\uet_harness\\\\docs\\\\topics\\\\0.13_Thermodynamic_Bridge\\\\Result\\\\_Logs\\\\1776907869_Research_Landauer\\\\bekenstein\\\\bekenstein_viz.png'\n  [Plot Error]: Could not save jacobson/jacobson_viz.png. Error: [Errno 2] No such file or directory: 'C:\\\\Users\\\\santa\\\\Desktop\\\\uet_harness\\\\docs\\\\topics\\\\0.13_Thermodynamic_Bridge\\\\Result\\\\_Logs\\\\1776907869_Research_Landauer\\\\jacobson\\\\jacobson_viz.png'\n\n[Viz] Generated 3 bridge visualizations.\n",
-  "stderr_tail": ""
+  "thresholds": {
+    "landauer_engine_vs_codata_relative_error_max": 1e-12,
+    "jun_2014_observed_to_landauer_lower_bound_min": 1.0,
+    "required_test_pass_count": 3,
+    "required_plot_artifacts": 3
+  },
+  "test_results": [
+    {
+      "name": "Landauer Limit",
+      "passed": true
+    },
+    {
+      "name": "Bekenstein Bound",
+      "passed": true
+    },
+    {
+      "name": "Jacobson Temperature",
+      "passed": true
+    }
+  ],
+  "plot_artifacts": [
+    {
+      "name": "landauer_limit_curve",
+      "path": "Result\\_Logs\\1777556392_Research_Landauer\\landauer\\landauer_viz.png",
+      "saved": true
+    },
+    {
+      "name": "bekenstein_hawking_entropy_curve",
+      "path": "Result\\_Logs\\1777556392_Research_Landauer\\bekenstein\\bekenstein_viz.png",
+      "saved": true
+    },
+    {
+      "name": "unruh_temperature_curve",
+      "path": "Result\\_Logs\\1777556392_Research_Landauer\\jacobson\\jacobson_viz.png",
+      "saved": true
+    }
+  ],
+  "warnings": [
+    "Berut/CODATA source records and source-lock hashes are pinned, but Berut numeric rows remain topic-derived summaries rather than raw archived tables.",
+    "Bekenstein/Jacobson checks are formula-consistency checks, not independent tests of UET dynamics."
+  ],
+  "interpretation": "The Landauer relation is anchored to exact SI constants and topic-local literature summary values. The verifier currently supports formula-consistency and lower-bound checks; the UET-specific thermodynamic bridge still requires source-normalized data, uncertainty propagation, and dependency proof."
 }

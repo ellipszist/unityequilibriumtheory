@@ -23,6 +23,7 @@ This topic studies whether current UET-inspired nuclear binding and hadron-scale
 ## Variable framing
 
 - Primary modeled quantities: binding energy per nucleon, hadron mass, confinement-scale terms, overlap parameters, and proton-radius observables.
+- Formula registry: see `FORMULA_AUDIT.md` for the current distinction between source-backed heavy-nucleus binding gates, diagnostic light-nuclei formulas, benchmark-anchor proton-radius behavior, and open hadron/QCD bridge paths.
 
 ## Assumptions
 
@@ -43,3 +44,4 @@ This topic studies whether current UET-inspired nuclear binding and hadron-scale
 - The current engine still uses fixed semi-empirical coefficients and an additive UET correction, so the topic should not be described as fully parameter-free.
 - The stricter verifier is now less dependent on embedded lists, but it still uses a curated subset rather than a full-table pass/fail gate.
 - The full-table diagnostic layer is useful for scientific honesty because it exposes where the engine degrades outside the curated validation subset, especially for lighter nuclei.
+- Hadron-mass, QCD-running, and confinement-proof scripts are diagnostic/open until their embedded constants are source-locked and their pass/fail behavior is made artifact-backed.

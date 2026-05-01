@@ -1,24 +1,39 @@
 ﻿# Data Manifest
 
-Current data reality status: "manual or placeholder"
+Current data reality status: "real source referenced with topic-derived working copies"
 
-External-source audit status: `embedded/local thermodynamics snapshots`.
+External-source audit status: `Berut/CODATA source records pinned; raw experimental table archive still open`.
 
 Priority remediation:
 
-- Source-lock Berut 2012 experimental Landauer-principle data or supplementary values.
-- Add NIST/CODATA constants used by the thermodynamic bridge with version/date and uncertainty.
+- Archive or machine-transcribe Berut 2012 experimental Landauer-principle raw/supplementary values.
+- Extend the CODATA/NIST constants record beyond exact SI constants if measured constants become acceptance gates.
 - Separate historical theoretical references from experimental datasets used in verification.
 - See `docs/meta/core_data_external_source_audit.md` for the cross-topic data-hardening plan.
 
-| Item | Local path | Source | Provenance status |
-|:--|:--|:--|:--|
-| __init__.py | `Data/03_Research/__init__.py` | Topic-local working copy or generated benchmark input | Manual, placeholder, or partially scripted data handling is still present. |
-| berut_2012.json | `Data/03_Research/berut_2012.json` | Information-thermodynamics working copy | Manual, placeholder, or partially scripted data handling is still present. |
-| cattaneo_data.json | `Data/03_Research/cattaneo_data.json` | Information-thermodynamics working copy | Manual, placeholder, or partially scripted data handling is still present. |
-| experimental_data.py | `Data/03_Research/experimental_data.py` | Topic-local working copy or generated benchmark input | Manual, placeholder, or partially scripted data handling is still present. |
+| Item | Local path | Source | Unit convention | SHA-256 | Benchmark role | Provenance status |
+|:--|:--|:--|:--|:--|:--|:--|
+| package marker | `Data/03_Research/__init__.py` | Topic-local package marker | n/a | `814f2a4f940ffae9d721f3dba46fb6c16d15a856819844b1531bbc9b50befe62` | Allows import of topic data package | Local infrastructure file. |
+| Landauer working copy | `Data/03_Research/berut_2012.json` | Berut et al. 2012 Nature, DOI `10.1038/nature10872`; manually copied summary values | `T_K` kelvin; `kT_ln2_J` joule; measured heat joule | `1126550d8217fc0c6c20efafb57153356268302f8772ac15ae52546f8aea4879` | Lower-bound consistency check for `E_min = k_B T ln 2` | Source-labeled, but not an archival raw/supplement copy. |
+| Landauer source record | `docs/data/external/thermodynamics/landauer/berut_2012/source_record.json` | Nature article page and DOI `10.1038/nature10872` checked on 2026-04-30 | source metadata; heat units declared as J or kT in topic-derived data | `28278da1ac8616c915c4c931140c80866f5a76aa47883680bd5abdaa04f11ce8` | Upstream provenance anchor for Landauer lower-bound benchmark | External source record present; raw/supplemental experimental table not stored. |
+| SI exact constants record | `docs/data/external/constants/codata/si_2019_exact_constants.json` | NIST/CODATA exact SI defining constants record; primary reference URL `https://physics.nist.gov/constants` | SI; `k_B` J K^-1, `e` C, `h` J s, `c` m s^-1 | `dcced6d840f4f4fbcea90128061ab7a528be04e1b37917893dbf4a28934b3560` | Constant provenance for Landauer and related formula checks | External source record present; not a full CODATA table. |
+| Landauer source-lock package | `Data/03_Research/landauer_source_lock.json` | Topic-derived package linking Berut and CODATA records to local working copies | SI; local rows declare kT/eV/solar-mass exceptions where used | `2d5c6a16e86cdc105a6f6153ff0d1d19f213bbef681d25363eb094a668f0c1e7` | Connects verifier inputs to upstream source records | Improves provenance but does not replace raw data archive; explicitly retains WARN until raw/supplement extraction exists. |
+| Cattaneo synthetic benchmark | `Data/03_Research/cattaneo_data.json` | Synthetic Cattaneo-Vernotte heat-flux benchmark created in topic | `time_ps` ps; `heat_flux` proxy W/m^2-like value; `gradient` proxy K/m | `69e4ce956633d1081b12ce6b83474c566093f37b6276177b2dd630024f7eaa89` | Hysteresis/lag simulation demo | Synthetic/proxy, not external evidence. |
+| Experimental-data module | `Data/03_Research/experimental_data.py` | Manual literature summary for Berut/Jun/Peterson, LIGO/Virgo, EHT, Josephson/SI constants | SI constants; black-hole masses in solar mass/kg; entropy in Planck units | `a100b6b2b462a1f1940c9e17f0e3d72a3c672f1a11626b5e7bb95e045e9159d1` | Formula-consistency and external-literature sanity checks | Source-labeled code module; values need raw-source lock and uncertainty trace. |
+| Primary verifier | `Code/03_Research/Research_Landauer.py` | Topic verifier using the source-lock package and formula checks | SI inputs; emits J, eV, K, Planck-unit entropy | `38d33aa81c11b2c38c3aeb0960607d5d826b89e332874a87515601ba0e5fdcc4` | Writes machine-readable artifact and warning state | Code artifact, not a data source; listed here so manifest hashes match current verification input. |
+
+## External Source Targets
+
+| Source target | Required storage path | Current status |
+|:--|:--|:--|
+| Berut et al. 2012 Landauer data/supplement | `docs/data/external/thermodynamics/landauer/berut_2012/` | Source record stored; raw external file or machine-transcribed table still open. |
+| Jun et al. 2014 nanomagnetic bit erasure | `docs/data/external/thermodynamics/landauer/jun_2014/` | DOI recorded in data module; raw external file not yet stored. |
+| Peterson et al. 2018 quantum Landauer | `docs/data/external/thermodynamics/landauer/peterson_2018/` | DOI recorded in data module; raw external file not yet stored. |
+| LIGO/Virgo event masses used for area theorem checks | `docs/data/external/gravity/ligo_black_hole_mergers/` | Manual summary only; mass uncertainty propagation open. |
+| EHT black-hole mass observations | `docs/data/external/gravity/eht_black_hole_masses/` | Manual summary only; mass uncertainty propagation open. |
+| CODATA/NIST constants | `docs/data/external/constants/codata/` | Exact SI constants source record stored; measured-constant uncertainty record still open. |
 
 Repository note:
 
 - This manifest was created during the repo standards pass and should be tightened further in a later provenance-normalization wave.
-- Until upstream URLs, DOIs, preprocessing notes, and hashes are frozen, treat the dataset package as an internal working copy rather than an archival release.
+- Until raw/supplementary tables and measured-constant uncertainty records are frozen, treat the dataset package as a source-referenced internal benchmark rather than an archival release.

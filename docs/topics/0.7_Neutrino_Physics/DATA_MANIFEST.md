@@ -24,9 +24,18 @@ Priority remediation:
 | Legacy PMNS snapshot | `Data/03_Research/pmns_2024.json` | Topic-local working copy | Legacy internal snapshot |
 | KATRIN mass limit snapshot | `Data/03_Research/katrin_mass.json` | Topic-local working copy | Legacy internal snapshot |
 
+## Unit and benchmark roles
+
+| Dataset | Unit convention | Benchmark role |
+| :-- | :-- | :-- |
+| NuFIT 6.0 parameter table | angles in degrees; mass splittings in eV^2 with verifier-scaled reporting fields | Gate for angle compatibility and runtime mass-splitting compatibility |
+| KATRIN 2025 latest result | direct mass upper limit in eV/c^2 | Gate for the absolute neutrino-mass branch |
+| Legacy topic-local snapshots | mixed legacy conventions; inspect before reuse | Historical/internal reference only, not the authoritative source layer |
+
 Repository note:
 
 - The NuFIT benchmark is now tied to an official upstream artifact.
 - The current repository standard for NuFIT is `checked transcription + source-hash/schema validation`, not an unguarded manual table copy.
 - The direct KATRIN mass-limit benchmark is now tied to an official upstream artifact.
 - The extracted JSON should still be rechecked if an automated PDF table parser is added later.
+- Verification should prefer the shared external source files over legacy topic-local snapshots.

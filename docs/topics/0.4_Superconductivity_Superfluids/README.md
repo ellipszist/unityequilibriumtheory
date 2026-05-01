@@ -1,100 +1,87 @@
 ---
 layout: article
-title: "UET Topic 0.4: Superconductivity Superfluids"
-description: "Research module for Superconductivity Superfluids within the Unity Equilibrium Theory framework."
+title: "UET Topic 0.4: Superconductivity and Superfluids"
+description: "Internal superconductivity, superfluid, and plasma benchmark diagnostics with formula-audited model boundaries."
 ---
 
-# 💠 0.4 Superconductivity & Superfluids
-
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.4: Superconductivity & Superfluids",
-  "description": "Explaining Coherent Flow and High-Tc states as Information Field Smoothing with Relativistic Z-Corrections.",
-  "about": "Superconductivity, Superfluids, Phase Transition, Coherent Flow, Relativistic Correction, UET"
-}
--->
+# 0.4 Superconductivity and Superfluids
 
 > [!NOTE]
-> **AI-Digest**: UET explains Superconductivity as 'Information Field Smoothing' (Axiom 3). By integrating 'Relativistic Z-Corrections' into the lattice solver, the framework accurately predicts critical temperatures ($T_c$) for heavy elements and High-Tc materials without empirical curve-fitting. / UET อธิบายปรากฏการณ์ตัวนำยวดยิ่งว่าเกิดจากการ 'ทำให้แมนิโฟลด์สารสนเทศราบเรียบ' (ตาม Axiom 3) โดยการเพิ่มการคำนวณทางสัมพัทธภาพ (Z-Corrections) เข้าไปในตัวแก้สมการแลตทิซ ทำให้สามารถพยากรณ์อุณหภูมิวิกฤต ($T_c$) ของวัสดุต่างๆ ได้อย่างแม่นยำโดยไม่ต้องใช้ค่าคงที่สมมติ
+> **AI-Digest**: This topic currently contains McMillan/Allen-Dynes benchmark code, UET
+> coherence-correction hypotheses, Cooper-pair symbolic notes, helium/superfluid diagnostics,
+> and plasma scaling utilities. The current primary verifier is a raw McMillan baseline check
+> and does not establish high-Tc prediction or a universal superconductivity theory.
 
-![Status](https://img.shields.io/badge/Status-90%25_PASS-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Coherent_Flow-blueviolet)
+![Status](https://img.shields.io/badge/Status-Hardening_Gate-yellow)
+![Standard](https://img.shields.io/badge/Standard-Formula_Audited-blue)
 ![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
-![Scientific_Rigor](https://img.shields.io/badge/Rigor-Relativistic_Correction-orange)
+![Scientific_Rigor](https://img.shields.io/badge/Rigor-Internal_Benchmark-orange)
 
-> **"UET explains Superconductivity as 'Information Field Smoothing' (Axiom 3), achieving accurate critical temperature ($T_c$) predictions for both Type I and High-Tc materials by integrating relativistic corrections."**
+## Current Claim Boundary
 
----
+The current runnable gate is an internal benchmark over curated superconducting material
+data. Raw McMillan formula performance is recorded as a diagnostic baseline; calibrated
+or heuristic UET corrections must not be described as first-principles predictions until
+their input provenance, out-of-sample tests, and acceptance thresholds are locked.
 
-## 1. 📂 5x4 Grid Structure
-
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | Analysis Reports detailing the Phase Transition mechanism. |
-| **Ref/** | Critical Temperature data (McMillan 1968, High-Tc papers). |
-| **Data/** | Material lattice parameters and Z-values. |
-| **Code/** | Logic levels: 01_Engine (Lattice Solver), 02_Proof (Cooper), 03_Research (Plasma). |
-| **Result/** | Plots showing Resistance drop and High-Tc matches. |
-
----
-
-## 🔗 Theory Connection
+## Conceptual Diagram
 
 ```mermaid
-graph TB
-    subgraph Standard["🔬 Standard Physics (BCS)"]
-        Phonon["Electron-Phonon Coupling"]
-        Limit["❌ Fails for High-Tc / Heavy Elements"]
-    end
-    
-    subgraph UET["✅ UET Solution"]
-        Manifold["Smooth Information Manifold"]
-        Z_Corr["✅ Relativistic Z-Correction"]
-        Universal["Universal Conductivity"]
-    end
-    
-    Phonon --> Limit
-    Limit -->|"UET Upgrades via"| Manifold
-    Manifold --> Universal
-    Z_Corr --> Universal
-    
-    style UET fill:#d4edda,stroke:#28a745
+flowchart LR
+    A["material data working copies"] --> B["McMillan baseline"]
+    B --> H["inverse-McMillan lambda audit"]
+    A --> C["Allen-Dynes engine"]
+    D["symmetry and mass descriptors"] --> E["UET coherence heuristic"]
+    F["atomic number Z"] --> G["relativistic correction heuristic"]
+    E --> C
+    G --> C
+    B --> H["primary artifact"]
+    C --> I["future engine benchmark gate"]
+    J["Cooper symbolic proof"] --> K["conditional BCS note"]
 ```
 
----
+## Evidence Matrix
 
-## 🎯 Problem & Solution
+| Layer | Current status | Evidence / artifact | Claim allowed |
+| :-- | :-- | :-- | :-- |
+| Raw McMillan baseline | Primary current verifier; artifact status remains `FAIL` | `Result/artifacts/0_4_superconductivity_superfluids_verification.json` | internal baseline diagnostic and blocker |
+| Inverse-McMillan audit | New failure-localization diagnostic; 9/10 rows currently over-drive `lambda_ep` relative to observed `Tc` | `parameter_mismatch_audit` in artifact | data-normalization priority, not prediction evidence |
+| Allen-Dynes engine | Model exists | `Engine_Superconductivity.py`, `FORMULA_AUDIT.md` | model formulation, not final proof |
+| UET coherence / Z correction | Heuristic bridge | formula audit entries `SC-UET-COHERENCE`, `SC-REL-Z` | hypothesis / model component |
+| Cooper pairing proof | Conditional symbolic note | `Proof_Cooper_Pairing.py` | BCS-style conditional relation |
+| High-Tc and hydrides | Not primary-gated here | data files and research scripts only | future hardening target |
 
-- **The Problem:** Standard BCS theory relies on phonon vibrations and fails to explain high-temperature superconductors or the behavior of heavy elements (like Pb, Hg) where relativistic effects matter.
-- **The Solution:** UET views superconductivity as a phase transition where the Information Field becomes smooth (Coherent). By adding a **Relativistic Correction** $(1 + 1.5(Z/137)^2)$ to the engine, we accurately models the $T_c$ of heavy elements.
-- **Zero Curve Fitting Law:** No material-specific "fudge factors" were used; physics is derived from atomic number (Z) and lattice geometry.
+## 5x4 Grid Structure
 
----
+| Pillar | Purpose |
+| :-- | :-- |
+| `Doc/` | phase-transition and superconductivity analysis notes |
+| `Ref/` | McMillan, Allen-Dynes, high-Tc, hydride, and superfluid references |
+| `Data/` | topic-local material and benchmark working copies |
+| `Code/` | engine, proof, research, competitor, and visualization scripts |
+| `Result/` | artifacts, plots, and run logs |
 
-## 📊 Test Results
-
-| Category | Test | Result | Status |
-| :--- | :--- | :--- | :--- |
-| **01_Engine** | Heavy Elements (Pb, Hg) | Error < 10% | ✅ PASS |
-| **01_Engine** | High-Tc Materials | Trend Captured | ✅ PASS |
-| **02_Proof** | Cooper Pairing | Binding Energy < 0 | ✅ PASS |
-| **03_Research** | Plasma Behavior | Coherence Modes verified | ✅ PASS |
-
----
-
-## 2. ⚡ Quick Start
+## Quick Start
 
 ```powershell
-python docs/topics/0.4_Superconductivity_Superfluids/Code/01_Engine/Engine_Superconductivity.py
+cd C:\Users\santa\Desktop\uet_harness
+python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment_Superconductor_Data.py
 ```
 
-## 📁 Key Files
+## Key Files
 
-- [Engine_Superconductivity.py](./Code/01_Engine/Engine_Superconductivity.py): The upgraded High-Tc Solver.
-- [ANALYSIS_Engine_Superconductivity.md](./Doc/ANALYSIS_Engine_Superconductivity.md): Technical breakdown of the core logic.
-- [Code/README.md](./Code/README.md): Script documentation.
+- `FORMULA_AUDIT.md`: formula, unit, constant, proof-status, and failure-mode registry.
+- `VERIFICATION_SPEC.md`: primary command, metrics, thresholds, and artifact interpretation.
+- `DATA_MANIFEST.md`: current dataset roles, hashes, and provenance gaps.
+- `METHOD.md`: topic method scope and dependency policy.
+- `LIMITATIONS.md`: blockers that prevent stronger claims.
 
----
-*Generated by UET Research Assistant - Paper-Ready Version*
+## Current Limitations
+
+- Many material inputs are topic-local working copies rather than normalized upstream archives.
+- Raw McMillan error is currently high and must be reported honestly.
+- The inverse-McMillan audit points the next cleanup at row-level `lambda_ep`, `Theta_D_K`, and material-specific phonon-scale provenance.
+- UET coherence and relativistic correction terms are heuristic/calibration-sensitive.
+- High-Tc and hydride claims need separate source-backed gates before promotion.
+
+*Status note: internal benchmark and formula-audit hardening gate.*

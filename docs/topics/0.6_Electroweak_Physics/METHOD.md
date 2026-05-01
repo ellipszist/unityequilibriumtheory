@@ -27,6 +27,7 @@ This topic studies whether UET-inspired electroweak relationships can reproduce 
 - The topic uses effective comparison scripts against selected electroweak tables rather than a full gauge-theory derivation.
 - The primary real-data verification now compares engine outputs against source-locked PDG 2025 summary-table values from the local PDG SQLite database.
 - The current effective weak-mixing-angle reference is still taken from the topic electroweak snapshot, with an explicit note in the verification artifact, until a direct PDG table mapping is added for that observable.
+- The topic now has a source-lock manifest that both primary verifier artifacts hash, so provenance changes become visible in reruns.
 
 ## Domain of validity
 

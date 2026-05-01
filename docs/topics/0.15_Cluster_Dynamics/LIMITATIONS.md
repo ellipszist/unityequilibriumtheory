@@ -1,6 +1,10 @@
-﻿# Limitations
+# Limitations
 
-- The root baseline comparison is present, but numeric acceptance boundaries are still provisional until a saved artifact is generated and reviewed.
-- Current data posture is "real source referenced", which is below a fully normalized archival dataset package.
-- The topic has visible source data, but the verification contract still needs to be narrowed to one canonical benchmark path.
-- Internal script execution does not by itself establish external replication, theorem-level proof, or broad physical closure.
+- The primary Bullet Cluster verifier is qualitative and dimensionless; it does not predict the observed kpc offsets.
+- The expected honest artifact status is `WARN`, not `PASS`, until dimensional calibration and numeric thresholds exist.
+- The gas/halo drag constants are heuristic toy parameters and can produce separation by construction.
+- The virial acceleration bridge uses `a0 = 0.8e-10 m/s^2`; this is a heuristic/benchmark anchor until provenance and multi-cluster sensitivity are documented.
+- The information-halo grid engine uses model-unit density fields and should not be interpreted as physical lensing mass without unit mapping.
+- Local source-labeled datasets exist, but DOI/URL capture and transcription audit are not complete for every working copy.
+- This topic does not currently solve the Bullet Cluster, the cluster virial discrepancy, or the general dark-matter problem.
+- Downstream core topics must inherit these limitations before using `0.15` as support for broader theory claims.

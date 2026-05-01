@@ -1,52 +1,312 @@
 {
-  "schema_version": "1.0",
-  "topic": "0.4_Superconductivity_Superfluids",
-  "timestamp_utc": "2026-04-23T01:30:48.986857+00:00",
-  "repo_root": "C:\\Users\\santa\\Desktop\\uet_harness",
-  "python_executable": "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
-  "verification_spec": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.4_Superconductivity_Superfluids\\VERIFICATION_SPEC.md",
-  "artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.4_Superconductivity_Superfluids\\Result\\artifacts\\0_4_superconductivity_superfluids_verification.json",
+  "blocker_class": "model-baseline failure",
+  "claim_class": "model-baseline blocker",
   "command": "python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment_Superconductor_Data.py",
-  "input_hashes": [
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.14.2"
+  },
+  "failure_analysis": {
+    "failed_material_count": 9,
+    "interpretation": "This is evidence that the current raw parameter package is not an accepted prediction gate; it is not evidence against every UET superconductivity mechanism.",
+    "model_gate_status": "FAIL",
+    "primary_failure_reason": "Raw McMillan benchmark exceeds the fixed average and per-material 20 percent error gates.",
+    "worst_materials": [
+      {
+        "name": "Vanadium (V)",
+        "relative_error_percent": 156.93515224496207,
+        "source": "MIT Junior Lab",
+        "type": "Type-II"
+      },
+      {
+        "name": "Aluminum (Al)",
+        "relative_error_percent": 86.55242288064956,
+        "source": "McMillan 1968",
+        "type": "Type-I"
+      },
+      {
+        "name": "Mercury (Hg)",
+        "relative_error_percent": 73.61477118183707,
+        "source": "Onnes 1911 / Kittel",
+        "type": "Type-I"
+      },
+      {
+        "name": "Tin (Sn)",
+        "relative_error_percent": 65.53626864429087,
+        "source": "Kittel",
+        "type": "Type-I"
+      },
+      {
+        "name": "Niobium (Nb)",
+        "relative_error_percent": 65.32366701043355,
+        "source": "Kittel / MIT",
+        "type": "Type-II"
+      }
+    ]
+  },
+  "inputs": [
     {
-      "path": "Data/03_Research/__init__.py",
-      "status": "present",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "bytes": "0"
-    },
-    {
-      "path": "Data/03_Research/calibrated_superconductors.json",
-      "status": "present",
-      "sha256": "4a4983f35d07c4c37cd8fced2a982912ee7f116f3f64ef8a987ec831b7ccbb41",
-      "bytes": "1882"
-    },
-    {
-      "path": "Data/03_Research/casimir_data.py",
-      "status": "present",
-      "sha256": "e2788cbc195eeffb5557c33f9472ad0efc5355395215d329c2b04a21ed9c705b",
-      "bytes": "1830"
-    },
-    {
-      "path": "Data/03_Research/casimir_force_data.json",
-      "status": "present",
-      "sha256": "a1c78c81994c2a832e07b41f173bd401a4903786716f513ef251df6362ab0944",
-      "bytes": "1186"
+      "data_class": "topic-local working copy generated from in-script rows",
+      "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\real_superconductor_data.json",
+      "role": "raw McMillan superconductivity benchmark working copy",
+      "sha256": "96861226b45409f72943c648fe67e492b6c53855e7359ea607da0539eb6e2b45"
     }
   ],
-  "timeout_seconds": 20,
-  "resolved_command": [
-    "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
-    "docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment_Superconductor_Data.py"
+  "limitations": [
+    "This is a raw McMillan baseline check, not a UET first-principles prediction.",
+    "Several lambda_ep and mu_star values are literature/curated working-copy inputs.",
+    "High-Tc cuprates with non-BCS mechanisms are skipped by this baseline.",
+    "The source-lock manifest records formula and dataset provenance targets, but raw NIMS MDR files are not yet mirrored."
   ],
-  "environment_overrides": {
-    "PYTHONIOENCODING": "utf-8",
-    "PYTHONUTF8": "1",
-    "PYTHONPATH_PREFIX": "C:\\Users\\santa\\Desktop\\uet_harness"
+  "metrics": {
+    "average_relative_error_percent": 62.41493526953724,
+    "materials_tested": 10,
+    "materials_within_20_percent": 1
   },
-  "status": "ran",
-  "exit_code": 0,
-  "passed_run_contract": true,
-  "duration_seconds": 0.261,
-  "stdout_tail": "\u2705 Saved: docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\real_superconductor_data.json\n   12 superconductors\n\n======================================================================\n\ud83d\udd2c McMillan Equation Test (Real Data)\n======================================================================\nAluminum (Al)        | Tc_obs=  1.18K | Tc_McM=  2.19K | \u03bb=0.43 | Err= 86.6% \u26a0\ufe0f\nMercury (Hg)         | Tc_obs=  4.15K | Tc_McM=  7.21K | \u03bb=1.60 | Err= 73.6% \u26a0\ufe0f\nLead (Pb)            | Tc_obs=  7.19K | Tc_McM=  9.63K | \u03bb=1.55 | Err= 34.0% \u26a0\ufe0f\nVanadium (V)         | Tc_obs=  5.36K | Tc_McM= 13.77K | \u03bb=0.80 | Err=156.9% \u26a0\ufe0f\nNiobium (Nb)         | Tc_obs=  9.25K | Tc_McM= 15.29K | \u03bb=1.04 | Err= 65.3% \u26a0\ufe0f\nTin (Sn)             | Tc_obs=  3.72K | Tc_McM=  6.16K | \u03bb=0.72 | Err= 65.5% \u26a0\ufe0f\nIndium (In)          | Tc_obs=  3.41K | Tc_McM=  4.45K | \u03bb=0.81 | Err= 30.6% \u26a0\ufe0f\nNb3Sn                | Tc_obs= 18.30K | Tc_McM= 28.61K | \u03bb=1.80 | Err= 56.3% \u26a0\ufe0f\nNb3Ge                | Tc_obs= 23.20K | Tc_McM= 34.53K | \u03bb=2.10 | Err= 48.8% \u26a0\ufe0f\nMgB2                 | Tc_obs= 39.00K | Tc_McM= 36.49K | \u03bb=0.87 | Err=  6.4% \u2705\n----------------------------------------------------------------------\nAverage Error: 62.4%\n",
-  "stderr_tail": ""
+  "model_gate_status": "FAIL",
+  "next_model_hardening_tasks": [
+    "Use the inverse-McMillan lambda audit to identify which row-level lambda_ep/Theta_D inputs need upstream normalization.",
+    "Normalize row-level material inputs against upstream records or explicit literature tables.",
+    "Add a separate Allen-Dynes/UET engine verifier with calibrated-input labels and held-out materials.",
+    "Replace broad pass/fail claims in code docs with artifact-linked model-gate status."
+  ],
+  "parameter_mismatch_audit": {
+    "diagnostic": "inverse McMillan lambda audit",
+    "interpretation": "Holding theta_D and mu_star fixed, lambda_required_for_observed_tc is the coupling needed to reproduce observed Tc. Large deltas identify row-level parameter mismatch or missing Allen-Dynes/material-specific physics.",
+    "lambda_overestimated_count": 9,
+    "lambda_underestimated_count": 1,
+    "largest_lambda_mismatches": [
+      {
+        "lambda_delta_vs_required": 0.7369896875370556,
+        "lambda_ep": 2.1,
+        "lambda_required_for_observed_tc": 1.3630103124629445,
+        "name": "Nb3Ge",
+        "relative_error_percent": 48.83848988201212
+      },
+      {
+        "lambda_delta_vs_required": 0.604762037030101,
+        "lambda_ep": 1.8,
+        "lambda_required_for_observed_tc": 1.195237962969899,
+        "name": "Nb3Sn",
+        "relative_error_percent": 56.317125564989745
+      },
+      {
+        "lambda_delta_vs_required": 0.5999310333668366,
+        "lambda_ep": 1.6,
+        "lambda_required_for_observed_tc": 1.0000689666331635,
+        "name": "Mercury (Hg)",
+        "relative_error_percent": 73.61477118183707
+      },
+      {
+        "lambda_delta_vs_required": 0.35024734752009956,
+        "lambda_ep": 1.55,
+        "lambda_required_for_observed_tc": 1.1997526524799005,
+        "name": "Lead (Pb)",
+        "relative_error_percent": 33.975223995527934
+      },
+      {
+        "lambda_delta_vs_required": 0.24125976064824095,
+        "lambda_ep": 1.04,
+        "lambda_required_for_observed_tc": 0.7987402393517591,
+        "name": "Niobium (Nb)",
+        "relative_error_percent": 65.32366701043355
+      }
+    ],
+    "rows_with_inverse_solution": 10
+  },
+  "results": [
+    {
+      "Tc_mcmillan_K": 2.1919909688476324,
+      "Tc_observed_K": 1.175,
+      "lambda_delta_vs_required": 0.04564689097833724,
+      "lambda_ep": 0.43,
+      "lambda_ratio_vs_required": 1.1187629029319612,
+      "lambda_required_for_observed_tc": 0.38435310902166275,
+      "mu_star": 0.1,
+      "name": "Aluminum (Al)",
+      "relative_error_percent": 86.55242288064956,
+      "source": "McMillan 1968",
+      "type": "Type-I",
+      "within_20_percent": false
+    },
+    {
+      "Tc_mcmillan_K": 7.205013004046239,
+      "Tc_observed_K": 4.15,
+      "lambda_delta_vs_required": 0.5999310333668366,
+      "lambda_ep": 1.6,
+      "lambda_ratio_vs_required": 1.5998896609966482,
+      "lambda_required_for_observed_tc": 1.0000689666331635,
+      "mu_star": 0.1,
+      "name": "Mercury (Hg)",
+      "relative_error_percent": 73.61477118183707,
+      "source": "Onnes 1911 / Kittel",
+      "type": "Type-I",
+      "within_20_percent": false
+    },
+    {
+      "Tc_mcmillan_K": 9.632818605278459,
+      "Tc_observed_K": 7.19,
+      "lambda_delta_vs_required": 0.35024734752009956,
+      "lambda_ep": 1.55,
+      "lambda_ratio_vs_required": 1.2919329636789174,
+      "lambda_required_for_observed_tc": 1.1997526524799005,
+      "mu_star": 0.12,
+      "name": "Lead (Pb)",
+      "relative_error_percent": 33.975223995527934,
+      "source": "MIT Junior Lab",
+      "type": "Type-I",
+      "within_20_percent": false
+    },
+    {
+      "Tc_mcmillan_K": 13.771724160329969,
+      "Tc_observed_K": 5.36,
+      "lambda_delta_vs_required": 0.23202374338696763,
+      "lambda_ep": 0.8,
+      "lambda_ratio_vs_required": 1.4085095823733484,
+      "lambda_required_for_observed_tc": 0.5679762566130324,
+      "mu_star": 0.11,
+      "name": "Vanadium (V)",
+      "relative_error_percent": 156.93515224496207,
+      "source": "MIT Junior Lab",
+      "type": "Type-II",
+      "within_20_percent": false
+    },
+    {
+      "Tc_mcmillan_K": 15.292439198465104,
+      "Tc_observed_K": 9.25,
+      "lambda_delta_vs_required": 0.24125976064824095,
+      "lambda_ep": 1.04,
+      "lambda_ratio_vs_required": 1.3020503397250178,
+      "lambda_required_for_observed_tc": 0.7987402393517591,
+      "mu_star": 0.12,
+      "name": "Niobium (Nb)",
+      "relative_error_percent": 65.32366701043355,
+      "source": "Kittel / MIT",
+      "type": "Type-II",
+      "within_20_percent": false
+    },
+    {
+      "Tc_mcmillan_K": 6.157949193567621,
+      "Tc_observed_K": 3.72,
+      "lambda_delta_vs_required": 0.12345264910096776,
+      "lambda_ep": 0.72,
+      "lambda_ratio_vs_required": 1.206945264135223,
+      "lambda_required_for_observed_tc": 0.5965473508990322,
+      "mu_star": 0.1,
+      "name": "Tin (Sn)",
+      "relative_error_percent": 65.53626864429087,
+      "source": "Kittel",
+      "type": "Type-I",
+      "within_20_percent": false
+    },
+    {
+      "Tc_mcmillan_K": 4.454269518925831,
+      "Tc_observed_K": 3.41,
+      "lambda_delta_vs_required": 0.09341934713208744,
+      "lambda_ep": 0.81,
+      "lambda_ratio_vs_required": 1.1303682240906208,
+      "lambda_required_for_observed_tc": 0.7165806528679126,
+      "mu_star": 0.1,
+      "name": "Indium (In)",
+      "relative_error_percent": 30.623739557942258,
+      "source": "Kittel",
+      "type": "Type-I",
+      "within_20_percent": false
+    },
+    {
+      "Tc_mcmillan_K": 28.606033978393125,
+      "Tc_observed_K": 18.3,
+      "lambda_delta_vs_required": 0.604762037030101,
+      "lambda_ep": 1.8,
+      "lambda_ratio_vs_required": 1.5059762622728303,
+      "lambda_required_for_observed_tc": 1.195237962969899,
+      "mu_star": 0.13,
+      "name": "Nb3Sn",
+      "relative_error_percent": 56.317125564989745,
+      "source": "Matthias 1954",
+      "type": "A15",
+      "within_20_percent": false
+    },
+    {
+      "Tc_mcmillan_K": 34.53052965262681,
+      "Tc_observed_K": 23.2,
+      "lambda_delta_vs_required": 0.7369896875370556,
+      "lambda_ep": 2.1,
+      "lambda_ratio_vs_required": 1.5407073452036644,
+      "lambda_required_for_observed_tc": 1.3630103124629445,
+      "mu_star": 0.13,
+      "name": "Nb3Ge",
+      "relative_error_percent": 48.83848988201212,
+      "source": "Gavaler 1973",
+      "type": "A15",
+      "within_20_percent": false
+    },
+    {
+      "Tc_mcmillan_K": 36.491328224236405,
+      "Tc_observed_K": 39.0,
+      "lambda_delta_vs_required": -0.03294220453624008,
+      "lambda_ep": 0.87,
+      "lambda_ratio_vs_required": 0.9635168182739232,
+      "lambda_required_for_observed_tc": 0.9029422045362401,
+      "mu_star": 0.1,
+      "name": "MgB2",
+      "relative_error_percent": 6.432491732727168,
+      "source": "Nagamatsu 2001 Nature",
+      "type": "Two-Gap",
+      "within_20_percent": true
+    }
+  ],
+  "run_status": "PASS",
+  "schema_version": "1.2",
+  "source_lock": {
+    "derived_inputs": [
+      {
+        "benchmark_role": "primary raw McMillan model-gate input",
+        "local_path": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/real_superconductor_data.json",
+        "preprocessing": "Generated from the in-script SUPERCONDUCTOR_DATA working-copy table; not a raw upstream table.",
+        "source_record": "docs/data/external/condensed_matter/superconductivity/mcmillan_1968/source_record.json",
+        "unit_system": "Tc_K and Theta_D_K in Kelvin; lambda_ep and mu_star dimensionless."
+      },
+      {
+        "benchmark_role": "future Allen-Dynes/UET engine gate input",
+        "local_path": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/comprehensive_superconductor_data.json",
+        "preprocessing": "Topic-local Allen-Dynes/UET candidate package with material descriptors; not yet row-normalized to upstream records.",
+        "source_record": "docs/data/external/condensed_matter/superconductivity/allen_dynes_1975/source_record.json",
+        "unit_system": "Tc_exp_K and omega_log_K in Kelvin-equivalent units; couplings dimensionless."
+      },
+      {
+        "benchmark_role": "calibration diagnostic only; cannot support no-fit prediction claims",
+        "local_path": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/calibrated_superconductors.json",
+        "preprocessing": "Inverse-McMillan calibration table generated from target Tc values.",
+        "source_record": "docs/data/external/condensed_matter/superconductivity/mcmillan_1968/source_record.json",
+        "unit_system": "Tc_K and Theta_D_K in Kelvin; lambda_calibrated and mu_star dimensionless."
+      }
+    ],
+    "external_source_records": [
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/mcmillan_1968/source_record.json",
+        "sha256": "2c50db09f5a65659a9f81a8af658a08a58fee918943a4b830c9c53949a278ece",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/allen_dynes_1975/source_record.json",
+        "sha256": "999f61a80f6341549f7105d5ffb0fde9d7468665fbd0294a0ded293e952c0425",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/nims_supercon/source_record.json",
+        "sha256": "e6a84ef50271e8f220f0e44d1bab5438e31d557b3a3a25f18837bfddd9334b3a",
+        "status": "present"
+      }
+    ],
+    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\source_lock_manifest.json",
+    "sha256": "4a8ac53e7a15ffddb7bc988388edb7a7f7b513dc83a30b17c332e67c1d9f1a49"
+  },
+  "status": "FAIL",
+  "thresholds": {
+    "average_relative_error_percent_max": 20.0,
+    "per_material_relative_error_percent_max": 20.0
+  },
+  "timestamp_utc": "2026-04-30T14:13:25.794265+00:00",
+  "topic": "0.4_Superconductivity_Superfluids"
 }

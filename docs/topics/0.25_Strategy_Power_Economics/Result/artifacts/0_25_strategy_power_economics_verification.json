@@ -1,52 +1,165 @@
 {
-  "schema_version": "1.0",
-  "topic": "0.25_Strategy_Power_Economics",
-  "timestamp_utc": "2026-04-23T01:31:36.229134+00:00",
-  "repo_root": "C:\\Users\\santa\\Desktop\\uet_harness",
-  "python_executable": "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
-  "verification_spec": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\VERIFICATION_SPEC.md",
-  "artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Result\\artifacts\\0_25_strategy_power_economics_verification.json",
-  "command": "python docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_8_Billion_Resonance.py",
-  "input_hashes": [
+  "blockers": [
+    "daily_economic_snapshot.json has no upstream URL/DOI; source is a local gateway label.",
+    "Global_Economy_2024.json names World Bank/IMF references but does not record a URL/DOI."
+  ],
+  "checks": {
+    "economy_has_source_url": false,
+    "gini_range_ok": true,
+    "market_rows_ok": true,
+    "snapshot_has_source_url": false
+  },
+  "claim_class": "C - internal economic data integrity and market diagnostics benchmark",
+  "command": "python docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_Economic_Data_Audit.py",
+  "correlations": {
+    "gold_bitcoin_return_corr": 0.03596135526571553,
+    "sp500_bitcoin_return_corr": -0.014692765476653786,
+    "sp500_gold_return_corr": 0.04084774540343317
+  },
+  "economy_metrics": {
+    "economy_count": 6,
+    "gdp_ppp_total_usd": 251920000000000.0,
+    "gini_max": 63.0,
+    "gini_min": 27.7,
+    "path": "docs/topics/0.25_Strategy_Power_Economics/Data/Global_Economy_2024.json",
+    "population_total": 9988700000.0,
+    "sha256": "a3dd47fd7dadb6ce2ba6f4b634788a6dc782ea70b4f63d8222689c50eb8ba9d7",
+    "source": "UET Economic Audit 2026 (World Bank/IMF Ref)",
+    "world_total": {
+      "GDP_PPP_USD": 185000000000000.0,
+      "Gini": 62.0,
+      "Note": "Earth System Limit",
+      "Population": 8100000000.0
+    }
+  },
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.2"
+  },
+  "formula_ids": [
+    "EC25-LOG-RETURN",
+    "EC25-ANNUALIZED-VOLATILITY",
+    "EC25-RETURN-CORRELATION",
+    "EC25-GINI-SANITY"
+  ],
+  "generated_at_utc": "2026-04-30T06:41:46.583379+00:00",
+  "inputs": [
     {
-      "path": "Data/03_Research/Bitcoin_yahoo_real.csv",
-      "status": "present",
-      "sha256": "62a93ec47ffe98f7908a8c8b29ba9fa5a070fa611bb3cde5ae22bfb23ff9617a",
-      "bytes": "323807"
+      "first_date": "2010-01-04",
+      "last_date": "2024-12-30",
+      "name": "SP500",
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/SP500_yahoo_real.csv",
+      "row_count": 3773,
+      "sha256": "bc85614da6993c0edcf87ceb5bfd623003bad18b7b78f9b010bd8582a6252eeb"
     },
     {
-      "path": "Data/03_Research/daily_economic_snapshot.json",
-      "status": "present",
-      "sha256": "759bb4453906a92a47912ae390ac2af4bca75b26e8e669cbf7fd7725256687dd",
-      "bytes": "729"
+      "first_date": "2010-01-04",
+      "last_date": "2024-12-30",
+      "name": "Gold",
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/Gold_yahoo_real.csv",
+      "row_count": 3770,
+      "sha256": "c558881407ce03cdf4dda12e57d972f620447d37be9750e953224502f3b940ba"
     },
     {
-      "path": "Data/03_Research/Gold_yahoo_real.csv",
-      "status": "present",
-      "sha256": "c558881407ce03cdf4dda12e57d972f620447d37be9750e953224502f3b940ba",
-      "bytes": "294015"
+      "first_date": "2014-09-17",
+      "last_date": "2024-12-30",
+      "name": "Bitcoin",
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/Bitcoin_yahoo_real.csv",
+      "row_count": 3758,
+      "sha256": "62a93ec47ffe98f7908a8c8b29ba9fa5a070fa611bb3cde5ae22bfb23ff9617a"
     },
     {
-      "path": "Data/03_Research/SP500_yahoo_real.csv",
-      "status": "present",
-      "sha256": "bc85614da6993c0edcf87ceb5bfd623003bad18b7b78f9b010bd8582a6252eeb",
-      "bytes": "342186"
+      "name": "Global_Economy_2024",
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Data/Global_Economy_2024.json",
+      "sha256": "a3dd47fd7dadb6ce2ba6f4b634788a6dc782ea70b4f63d8222689c50eb8ba9d7",
+      "source": "UET Economic Audit 2026 (World Bank/IMF Ref)"
+    },
+    {
+      "name": "daily_economic_snapshot",
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/daily_economic_snapshot.json",
+      "sha256": "ce4d154ba89126fc3c7cc7e2e453efb3a9cc7086319365f664dc63d18dae5d26",
+      "source": "UET_FINANCIAL_GATEWAY",
+      "timestamp": "2026-04-28"
     }
   ],
-  "timeout_seconds": 20,
-  "resolved_command": [
-    "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
-    "docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_8_Billion_Resonance.py"
+  "limitations": [
+    "This artifact validates local data integrity and descriptive market/economy diagnostics only.",
+    "It does not prove strategic superiority, social stabilization, Nash-equilibrium improvement, or policy causality.",
+    "Upstream provenance for the economy and daily snapshot data remains below archival standard."
   ],
-  "environment_overrides": {
-    "PYTHONIOENCODING": "utf-8",
-    "PYTHONUTF8": "1",
-    "PYTHONPATH_PREFIX": "C:\\Users\\santa\\Desktop\\uet_harness"
+  "market_metrics": [
+    {
+      "annualized_volatility": 0.17284584207189194,
+      "first_close": 1132.989990234375,
+      "first_date": "2010-01-04",
+      "last_close": 5906.93994140625,
+      "last_date": "2024-12-30",
+      "name": "SP500",
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/SP500_yahoo_real.csv",
+      "row_count": 3773,
+      "sha256": "bc85614da6993c0edcf87ceb5bfd623003bad18b7b78f9b010bd8582a6252eeb",
+      "total_return": 4.213585285236559
+    },
+    {
+      "annualized_volatility": 0.15986322610340403,
+      "first_close": 1117.699951171875,
+      "first_date": "2010-01-04",
+      "last_close": 2606.10009765625,
+      "last_date": "2024-12-30",
+      "name": "Gold",
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/Gold_yahoo_real.csv",
+      "row_count": 3770,
+      "sha256": "c558881407ce03cdf4dda12e57d972f620447d37be9750e953224502f3b940ba",
+      "total_return": 1.3316634262387073
+    },
+    {
+      "annualized_volatility": 0.5787338783689693,
+      "first_close": 457.3340148925781,
+      "first_date": "2014-09-17",
+      "last_close": 92643.2109375,
+      "last_date": "2024-12-30",
+      "name": "Bitcoin",
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/Bitcoin_yahoo_real.csv",
+      "row_count": 3758,
+      "sha256": "62a93ec47ffe98f7908a8c8b29ba9fa5a070fa611bb3cde5ae22bfb23ff9617a",
+      "total_return": 201.57231677652643
+    }
+  ],
+  "schema_version": "1.1",
+  "snapshot": {
+    "indicators": {
+      "GDP_GROWTH_REALTIME": {
+        "significance": "Expansion Rate",
+        "unit": "Percent",
+        "value": 2.5
+      },
+      "GOLD_PRICE": {
+        "significance": "Global Stability Standard",
+        "unit": "USD/oz",
+        "value": 2088.33
+      },
+      "SET_INDEX": {
+        "significance": "Local Market Entropy",
+        "unit": "Points",
+        "value": 1366.89
+      },
+      "USD_THB": {
+        "significance": "Fluid Exchange Friction",
+        "unit": "THB",
+        "value": 35.68
+      }
+    },
+    "source": "UET_FINANCIAL_GATEWAY",
+    "status": "LIVE",
+    "timestamp": "2026-04-28"
   },
-  "status": "ran",
-  "exit_code": 0,
-  "passed_run_contract": true,
-  "duration_seconds": 1.268,
-  "stdout_tail": "\ud83c\udf0d UET 8.1 Billion Population Resonance Simulation\n\n\ud83d\udd34 Scenario A: Default Manifold (Pure Predator/Prey)\n\ud83d\udd0d UET Glass Box: Logging (Streaming) to 'C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Result\\_Logs\\1776907897_UET_Strategy_Core'\n   Final Omega: 30488017321.96\n\n\ud83d\udfe2 Scenario B: Enriched Manifold (8 Historical Stabilizers)\n\ud83d\udd0d UET Glass Box: Logging (Streaming) to 'C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Result\\_Logs\\1776907897_UET_Strategy_Core'\n   Final Omega: 30990837227.96\n\n==================================================\n\ud83d\udcca RESONANCE AUDIT RESULTS:\n   Wave Dissolution of Inequality: 0.0%\n   Stabilizer Efficiency: 1 Stabilizer Node balances 405 Million people.\n==================================================\n",
-  "stderr_tail": ""
+  "status": "WARN",
+  "threshold": {
+    "gini_range_max": 100.0,
+    "gini_range_min": 0.0,
+    "min_rows_per_market_series": 2500,
+    "require_economy_source_url_or_doi": true,
+    "require_snapshot_source_url": true
+  },
+  "topic": "0.25_Strategy_Power_Economics"
 }

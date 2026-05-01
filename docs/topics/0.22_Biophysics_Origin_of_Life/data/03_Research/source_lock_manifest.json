@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "data_class": "topic-derived source-lock package",
+  "topic": "0.22_Biophysics_Origin_of_Life",
+  "purpose": "Bind local EEG/biomedical working copies and synthetic verifier roles to explicit external source records.",
+  "external_source_records": [
+    "docs/data/external/biophysics/eeg/chb_mit/source_record.json",
+    "docs/data/external/biophysics/eeg/bonn/source_record.json",
+    "docs/data/external/biophysics/omics/tcga/source_record.json"
+  ],
+  "derived_inputs": [
+    {
+      "local_path": "docs/topics/0.22_Biophysics_Origin_of_Life/data/03_Research/chb_mit_reference.json",
+      "source_record": "docs/data/external/biophysics/eeg/chb_mit/source_record.json",
+      "preprocessing": "Source-labeled summary only; no raw EDF window is included.",
+      "unit_system": "Hz for sampling rate; seconds for seizure windows where declared",
+      "benchmark_role": "future EEG provenance context"
+    },
+    {
+      "local_path": "docs/topics/0.22_Biophysics_Origin_of_Life/data/03_Research/seizure_phase_data.json",
+      "source_record": "docs/data/external/biophysics/eeg/chb_mit/source_record.json",
+      "preprocessing": "Derived seizure-phase summary; raw record/window identity still open.",
+      "unit_system": "dimensionless band-power fractions and synchrony proxies",
+      "benchmark_role": "discussion reference, not primary verifier input"
+    },
+    {
+      "local_path": "docs/topics/0.22_Biophysics_Origin_of_Life/data/Bonn_EEG/Z.txt",
+      "source_record": "docs/data/external/biophysics/eeg/bonn/source_record.json",
+      "preprocessing": "Topic-local text sample normalized by engine scripts at runtime.",
+      "unit_system": "amplitude samples by index",
+      "benchmark_role": "future neural-Omega verifier input"
+    },
+    {
+      "local_path": "docs/topics/0.22_Biophysics_Origin_of_Life/data/Bonn_EEG/S.txt",
+      "source_record": "docs/data/external/biophysics/eeg/bonn/source_record.json",
+      "preprocessing": "Topic-local text sample normalized by engine scripts at runtime.",
+      "unit_system": "amplitude samples by index",
+      "benchmark_role": "future neural-Omega verifier input"
+    }
+  ],
+  "synthetic_verifier_role": {
+    "script": "docs/topics/0.22_Biophysics_Origin_of_Life/Code/03_Research/Research_Biomarker_Identification.py",
+    "role": "seeded positive-control code-path check",
+    "not_evidence_for": [
+      "clinical biomarkers",
+      "TCGA cancer validation",
+      "EEG seizure prediction",
+      "origin-of-life mechanism"
+    ]
+  },
+  "claim_boundary": "This package improves provenance from placeholder to source-referenced working copies, while keeping the primary verifier synthetic and claim class D."
+}

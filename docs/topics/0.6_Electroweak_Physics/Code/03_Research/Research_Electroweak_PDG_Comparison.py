@@ -35,13 +35,14 @@ if not ROOT:
     sys.exit(1)
 
 from docs import ROOT_PATH
-from docs.core.reproducibility import generate_artifact, hash_dataset, save_artifact
+from docs.core.reproducibility import generate_artifact, hash_dataset, hash_file, save_artifact
 
 
 root_path = ROOT_PATH
 topic_path = root_path / "docs" / "topics" / "0.6_Electroweak_Physics"
 engine_path = topic_path / "Code" / "01_Engine"
 reference_package_json = root_path / "docs" / "data" / "external" / "particle_physics" / "pdg" / "electroweak_reference_package.json"
+source_lock_json = topic_path / "Data" / "03_Research" / "source_lock_manifest.json"
 if str(engine_path) not in sys.path:
     sys.path.insert(0, str(engine_path))
 
@@ -55,6 +56,21 @@ def load_reference_package() -> dict:
     if not reference_package_json.exists():
         raise FileNotFoundError(f"Electroweak reference package not found: {reference_package_json}")
     return json.loads(reference_package_json.read_text(encoding="utf-8"))
+
+
+def load_source_lock() -> dict:
+    if not source_lock_json.exists():
+        return {"external_source_records": [], "derived_inputs": [], "status": "MISSING"}
+    return json.loads(source_lock_json.read_text(encoding="utf-8"))
+
+
+def path_hash_record(path_string: str) -> dict:
+    path = root_path / path_string
+    return {
+        "path": path_string,
+        "sha256": hash_file(path) if path.exists() and path.is_file() else None,
+        "status": "present" if path.exists() else "missing",
+    }
 
 
 def relative_error_percent(predicted: float, observed: float) -> float:
@@ -83,6 +99,7 @@ def run_test() -> bool:
 
     reference_package = load_reference_package()
     pdg = reference_package["references"]
+    source_lock = load_source_lock()
     solver = UETElectroweakSolver()
     result = solver.solve()
 
@@ -171,6 +188,7 @@ def run_test() -> bool:
             "source_locked_reference": str(reference_package_json.relative_to(root_path)),
             "pdg_sqlite_source": reference_package["pdg_sqlite_source"],
             "checked_local_reference_source": reference_package["checked_local_reference_source"],
+            "source_lock_manifest": str(source_lock_json.relative_to(root_path)),
             "sin2_theta_reference_note": pdg["sin2_theta_W_effective"]["source_note"],
             "rule": "real-data comparison against PDG 2025 summary-table observables where available",
         },
@@ -189,6 +207,18 @@ def run_test() -> bool:
         },
         notes="Real-data electroweak comparison using a structured source-locked PDG reference package plus explicit checked-local note for observables not yet directly mapped from the SQLite workflow.",
     )
+    artifact["input_hashes"] = {
+        "source_lock_manifest": hash_file(source_lock_json) if source_lock_json.exists() else None,
+        "reference_package": hash_file(reference_package_json),
+        "source_records": [
+            path_hash_record(path) for path in source_lock.get("external_source_records", [])
+        ],
+    }
+    artifact["source_lock"] = {
+        "path": str(source_lock_json.relative_to(root_path)),
+        "derived_inputs": source_lock.get("derived_inputs", []),
+        "claim_boundary": source_lock.get("claim_boundary"),
+    }
     artifact_path = topic_path / "Result" / "artifacts" / "electroweak_pdg_validation.json"
     save_artifact(artifact, artifact_path)
     print(f"\nArtifact saved to {artifact_path}")

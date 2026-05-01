@@ -17,6 +17,8 @@ Method boundary:
   This is separate from the generic Landauer-derived solver beta used by other engine terms.
 - The physical interpretation being tested is frame/epoch dependence: Planck/CMB probes an
   early-universe/global frame, while SH0ES probes a late-universe/local distance-ladder frame.
+- The source-lock manifest binds Planck 2018, SH0ES 2022, and the fine-structure constant
+  record to the primary artifact hashes.
 
 Derivation boundary:
 
@@ -26,3 +28,12 @@ Derivation boundary:
 - A full cosmology proof would still need to derive the redshift transition function,
   validate against BAO/SN/CMB likelihoods, and show that the same coupling does not break
   standard constraints outside the H0 benchmark.
+
+## Next hardening steps
+
+1. Replace scalar H0-only validation with an uncertainty-aware likelihood or release-level
+   data package.
+2. Derive or externally constrain the `sqrt(alpha_em)` frame-coupling bridge.
+3. Source-lock and test the redshift transition scale `z_crit = 5.0`.
+4. Keep dark-energy/vacuum-energy results in a separate gate so H0 PASS does not mask that
+   open problem.

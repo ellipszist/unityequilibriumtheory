@@ -15,11 +15,15 @@
 
 ## Acceptance boundary
 
-- This file does not certify a final pass/fail result.
-- Until the benchmark is rerun with a saved artifact, comparison language must remain internal benchmark comparison.
-- A future hardening pass must record the exact numeric threshold, generated artifact, timestamp, environment, and dataset hash.
+- Current saved artifact: `Result/artifacts/0_4_superconductivity_superfluids_verification.json`.
+- Current run status: `PASS`.
+- Current raw McMillan model gate: `FAIL`.
+- Current average relative error: about `62.4%`.
+- Current pass count: `1 / 10` materials within the fixed 20 percent per-material gate.
+- The artifact records dataset hash, source-lock manifest hash, source-record hashes, timestamp, environment, thresholds, and failure analysis.
 
 ## Claim boundary
 
 - This baseline comparison can support only conservative wording such as matched selected benchmarks or internal comparison workflow.
 - It does not support wording such as solved, verified, exact, unified, or production grade.
+- The current failure signal should drive the next model-hardening task: source-normalized rows and a separate Allen-Dynes/UET held-out verifier.

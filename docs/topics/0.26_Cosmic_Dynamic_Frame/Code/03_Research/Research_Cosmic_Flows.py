@@ -1,15 +1,23 @@
 """
 UET Cosmic Flow Research
 ========================
-Topic: 0.26 - Cosmic Dynamic Frame
-Data: Laniakea Supercluster (Tully et al. 2014)
-Goal: Visualize the Flow Field from Dipole Repeller to Shapley Attractor.
+Topic: 0.26 Cosmic Dynamic Frame
+
+Primary verifier: load the topic-local Laniakea landmark working copy, render a
+3D flow-map artifact, and write a machine-readable provenance/status artifact.
+This is a visualization/provenance gate, not a cosmological model proof.
 """
 
+import hashlib
+import json
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
-# --- ROBUST UET BOOTSTRAP ---
+import matplotlib.pyplot as plt
+import numpy as np
+
+
 def _bootstrap():
     curr = Path(__file__).resolve()
     for parent in [curr] + list(curr.parents):
@@ -19,87 +27,106 @@ def _bootstrap():
             return parent
     return None
 
+
 ROOT = _bootstrap()
 if not ROOT:
     print("CRITICAL: UET docs root not found!")
     sys.exit(1)
 
+from docs.core.uet_glass_box import UETPathManager
 
-import sys
-import json
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-from pathlib import Path
 
-# --- PATH SETUP ---
-current_path = Path(__file__).resolve()
-ROOT = None
-for parent in [current_path] + list(current_path.parents):
-    if (parent / "docs").exists():
-        ROOT = parent
-        break
+TOPIC_DIR = ROOT / "docs" / "topics" / "0.26_Cosmic_Dynamic_Frame"
+ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_26_cosmic_dynamic_frame_verification.json"
+DATA_INPUTS = [
+    TOPIC_DIR / "Data" / "03_Research" / "Laniakea_Flows.json",
+    TOPIC_DIR / "Data" / "03_Research" / "source_lock_manifest.json",
+    TOPIC_DIR / "Data" / "Cosmicflows_3_Subset.csv",
+    TOPIC_DIR / "Data" / "Download_Cosmic_Data.py",
+    TOPIC_DIR / "Data" / "Pioneer_Anomaly_Data.csv",
+    ROOT / "docs" / "data" / "external" / "cosmology" / "laniakea" / "tully_2014" / "source_record.json",
+    ROOT / "docs" / "data" / "external" / "cosmology" / "cosmicflows" / "cosmicflows3" / "source_record.json",
+    ROOT / "docs" / "data" / "external" / "spacecraft" / "pioneer_anomaly" / "anderson_2002" / "source_record.json",
+]
 
-if ROOT and str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
 
-try:
-    from docs.core.uet_glass_box import UETPathManager, UETMetricLogger
-except Exception as e:
-    print(f"CRITICAL SETUP ERROR: {e}")
-    sys.exit(1)
+def _sha256(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def _input_identity():
+    items = []
+    for path in DATA_INPUTS:
+        rel = path.relative_to(ROOT).as_posix()
+        if path.exists():
+            items.append({"path": rel, "sha256": _sha256(path), "size_bytes": path.stat().st_size})
+        else:
+            items.append({"path": rel, "missing": True})
+    return items
 
 
 def load_flows():
-    path = (
-        ROOT
-        / "docs"
-        / "topics"
-        / "0.26_Cosmic_Dynamic_Frame"
-        / "Data"
-        / "03_Research"
-        / "Laniakea_Flows.json"
-    )
+    path = TOPIC_DIR / "Data" / "03_Research" / "Laniakea_Flows.json"
     if not path.exists():
         raise FileNotFoundError(f"Missing Data: {path}")
+    return json.loads(path.read_text(encoding="utf-8"))
 
-    with open(path, "r") as f:
-        return json.load(f)
+
+def _write_artifact(metrics, figure_path):
+    inputs = _input_identity()
+    missing = [item["path"] for item in inputs if item.get("missing")]
+    status = "WARN" if figure_path and not missing else "FAIL"
+    artifact = {
+        "schema_version": "1.1",
+        "topic": "0.26_Cosmic_Dynamic_Frame",
+        "command": ".venv\\Scripts\\python.exe docs\\topics\\0.26_Cosmic_Dynamic_Frame\\Code\\03_Research\\Research_Cosmic_Flows.py",
+        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+        "status": status,
+        "claim_class": "D",
+        "inputs": inputs,
+        "metrics": metrics,
+        "figure_artifact": str(figure_path.relative_to(TOPIC_DIR)) if figure_path else None,
+        "warnings": [
+            "Laniakea/Cosmicflows/Pioneer source records are pinned, but raw tables, frame metadata, and preprocessing are not archived.",
+            "This verifier checks data loading and flow-map generation, not a cosmological model fit.",
+            "Cosmicflows/Pioneer files are hashed for provenance but are not used by this primary visualization gate.",
+        ],
+        "interpretation": (
+            "The artifact supports an exploratory dynamic-frame visualization. It does not establish "
+            "dark-matter replacement, toroidal cosmology, or Pioneer-drag physics."
+        ),
+    }
+    if missing:
+        artifact["warnings"].append(f"Missing declared inputs: {missing}")
+    ARTIFACT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    ARTIFACT_PATH.write_text(json.dumps(artifact, indent=2), encoding="utf-8")
+    print(f"\n[Artifact] Verification artifact written: {ARTIFACT_PATH}")
+    print(f"[Artifact] Status: {status}")
+    return artifact
 
 
 def run_viz():
     print("=" * 60)
     print("UET COSMIC FLOW VISUALIZATION")
-    print("Data: Laniakea (Tully 2014)")
+    print("Data: Laniakea topic-local working copy")
     print("=" * 60)
 
-    # 1. Setup Showcase Output
     output_dir = UETPathManager.get_result_dir(
         topic_id="0.26", experiment_name="Laniakea_Flow", category="showcase"
     )
-    logger = UETMetricLogger("Laniakea_Flow", topic_id="0.26", category="showcase")
 
-    # 2. Load Data
     data = load_flows()
     landmarks = data["landmarks"]
+    names = [item["name"] for item in landmarks]
+    coords = np.array([item["coords"] for item in landmarks])
+    types = [item["type"] for item in landmarks]
 
-    # Extract Coordinates
-    names = []
-    coords = []
-    types = []
-
-    for l in landmarks:
-        names.append(l["name"])
-        coords.append(l["coords"])
-        types.append(l["type"])
-
-    coords = np.array(coords)  # Shape (N, 3)
-
-    # 3. Visualization
     fig = plt.figure(figsize=(12, 10))
     ax = fig.add_subplot(111, projection="3d")
-
-    # Plot Points
     colors = {
         "Observer": "blue",
         "Attractor": "red",
@@ -109,66 +136,41 @@ def run_viz():
         "Local Hub": "orange",
     }
 
-    for i in range(len(names)):
-        c = colors.get(types[i], "gray")
-        s = 200 if "Attractor" in types[i] else 100
-        ax.scatter(
-            coords[i, 0],
-            coords[i, 1],
-            coords[i, 2],
-            c=c,
-            s=s,
-            label=types[i] if types[i] not in plt.gca().get_legend_handles_labels()[1] else "",
-        )
-        ax.text(coords[i, 0], coords[i, 1], coords[i, 2] + 5, names[i], fontsize=9)
+    used_labels = set()
+    for name, coord, kind in zip(names, coords, types):
+        label = kind if kind not in used_labels else ""
+        used_labels.add(kind)
+        ax.scatter(coord[0], coord[1], coord[2], c=colors.get(kind, "gray"), s=160, label=label)
+        ax.text(coord[0], coord[1], coord[2] + 5, name, fontsize=9)
 
-    # Plot Streamlines (Schematic)
-    # Flow from Repeller -> Milky Way -> Great Attractor -> Shapley
-    # We construct a Bezier-like path or simple lines
-
-    # Find Indices
-    try:
-        idx_repeller = names.index("Dipole Repeller")
-        idx_mw = names.index("Milky Way (Local Group)")
-        idx_ga = names.index("Great Attractor (Norma)")
-        idx_shapley = names.index("Shapley Concentration")
-
-        path_indices = [idx_repeller, idx_mw, idx_ga, idx_shapley]
-        path_coords = coords[path_indices]
-
-        ax.plot(
-            path_coords[:, 0], path_coords[:, 1], path_coords[:, 2], "k--", linewidth=1, alpha=0.5
-        )
-
-        # Add Arrows
-        for j in range(len(path_coords) - 1):
-            start = path_coords[j]
-            end = path_coords[j + 1]
-            # Quiver takes (x,y,z, u,v,w)
-            # ax.quiver(start[0], start[1], start[2], end[0]-start[0], end[1]-start[1], end[2]-start[2], length=0.2, color='gray')
-            # Actually simple plot is cleaner for schematic
-            pass
-
-    except ValueError:
-        pass
+    flow_names = ["Dipole Repeller", "Milky Way (Local Group)", "Great Attractor (Norma)", "Shapley Concentration"]
+    has_flow_path = all(name in names for name in flow_names)
+    if has_flow_path:
+        path_coords = coords[[names.index(name) for name in flow_names]]
+        ax.plot(path_coords[:, 0], path_coords[:, 1], path_coords[:, 2], "k--", linewidth=1, alpha=0.5)
 
     ax.set_xlabel("SGX (Mpc)")
     ax.set_ylabel("SGY (Mpc)")
     ax.set_zlabel("SGZ (Mpc)")
-    ax.set_title("Laniakea Supercluster: Cosmic Flow Field (UET Dynamic Frame)")
-
-    # Legend deduplication
-    handles, labels = plt.gca().get_legend_handles_labels()
-    by_label = dict(zip(labels, handles))
-    ax.legend(by_label.values(), by_label.keys())
+    ax.set_title("Laniakea Supercluster: Topic-Local Cosmic Flow Map")
+    ax.legend()
 
     save_path = output_dir / "Laniakea_Flow_Map.png"
     plt.savefig(save_path, dpi=300)
-    print(f"📸 Showcase Image Saved: {save_path}")
+    plt.close()
+    print(f"Showcase image saved: {save_path}")
 
-    print("✅ Result: SUCCESS (Flow Field Mapped)")
-    return True
+    metrics = {
+        "landmark_count": int(len(landmarks)),
+        "coordinate_frame": "supergalactic Mpc",
+        "landmark_types": sorted(set(types)),
+        "velocity_magnitudes_km_s": [item["velocity_mag"] for item in landmarks if "velocity_mag" in item],
+        "has_flow_path": bool(has_flow_path),
+    }
+    artifact = _write_artifact(metrics, save_path if save_path.exists() else None)
+    print("Result: flow-field map generated as exploratory visualization.")
+    return artifact["status"] != "FAIL"
 
 
 if __name__ == "__main__":
-    run_viz()
+    raise SystemExit(0 if run_viz() else 1)

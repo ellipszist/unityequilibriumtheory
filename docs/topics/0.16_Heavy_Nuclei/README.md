@@ -1,103 +1,66 @@
 ---
 layout: article
 title: "UET Topic 0.16: Heavy Nuclei"
-description: "Research module for Heavy Nuclei within the Unity Equilibrium Theory framework."
+description: "Heavy-nuclei binding and fission diagnostics within the Unity Equilibrium Theory framework."
 ---
 
-# ⚛️ 0.16 Heavy Nuclei
-
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.16: Heavy Nuclei",
-  "description": "Modeling the nucleus as an Information Saturation Zone and predicting the Island of Stability.",
-  "about": "Nuclear Physics, Heavy Nuclei, Fission, Island of Stability, Information Saturation, UET"
-}
--->
+# 0.16 Heavy Nuclei
 
 > [!NOTE]
-> **AI-Digest**: UET treats heavy nuclei as Information Saturation Zones, accurately predicting U-235 fission energy (202.1 MeV) and the Island of Stability (Z=114) from informational surface tension. / UET มองนิวเคลียสของธาตุหนักเป็นเขตอิ่มตัวของข้อมูล การใช้ความตึงของสนามข้อมูลช่วยให้ทำนายพลังงานฟิชชันของ Uranium-235 และตำแหน่งของ 'เกาะแห่งเสถียรภาพ' (Z=114) ได้แม่นยำกว่าโมเดลหยดของเหลว
+> **AI-Digest**: This topic currently tests a UET interpretation of liquid-drop / SEMF-like heavy-nuclei terms. The primary verifier is a fission sanity check: it confirms an exothermic U-235 bridge calculation and checks U-235 binding against an AME2020 working copy, but it does not yet validate source-locked Ba/Kr fragment masses or island-of-stability claims.
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Fission_Point-blueviolet)
-![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
-![Scientific_Rigor](https://img.shields.io/badge/Rigor-Island_of_Stability-orange)
+![Status](https://img.shields.io/badge/Status-Fission%20Diagnostic-yellow)
+![Claim_Class](https://img.shields.io/badge/Claim%20Class-C%2FD%20Boundary-orange)
+![Verifier](https://img.shields.io/badge/Verifier-WARN%20Expected-yellow)
 
-> **"UET models Heavy Nuclei as 'Information Drops' with surface tension. Fission occurs when the Information Field saturation exceeds the binding capacity, predicting the Island of Stability without semi-empirical fitting."**
+## Research Role
 
----
+Topic `0.16` is the heavy-nuclei bridge between nuclear binding systematics, fission energetics, and UET information-saturation language. Its near-term scientific role is to make the binding formulas, coefficients, isotope data, and fission diagnostics auditable before any stronger claim about superheavy stability or first-principles nuclear structure is made.
 
-## 1. 📂 5x4 Grid Structure
-
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | Analysis of Fission and Stability Valley. |
-| **Ref/** | AME2020 (Atomic Mass Evaluation). |
-| **Data/** | Heavy element mass excess and half-lives. |
-| **Code/** | Logic levels: 01_Engine (Fission Solver), 02_Proof (Stability). |
-| **Result/** | Fission Yield Curve, Stability Valley Plots. |
-
----
-
-## 🔗 Theory Connection
+## Conceptual Map
 
 ```mermaid
-graph TB
-    subgraph Standard["Standard Nuclear Physics"]
-        Liquid["Liquid Drop Model"]
-        Fission["Empirical Fission"]
-        Magic["Magic Numbers (Shell)"]
-    end
-    
-    subgraph UET["✅ UET Solution"]
-        InfoDrop["Info Surface Tension"]
-        Saturation["Field Saturation"]
-        FissionU["Deterministic Fission"]
-    end
-    
-    Liquid --> Fission
-    Magic --> Fission
-    
-    InfoDrop --> Saturation
-    Saturation --> FissionU
-    FissionU -->|"Explains"| Magic
-    
-    style UET fill:#d4edda,stroke:#28a745
+flowchart LR
+    ame["AME2020 working copies"] --> u235["U-235 binding checkpoint"]
+    semf["SEMF / liquid-drop coefficients"] --> bridge["UET interpretation bridge"]
+    bridge --> fragments["Ba-141 / Kr-92 bridge estimates"]
+    u235 --> verifier["Research_Fission.py artifact"]
+    fragments --> verifier
+    verifier --> warn["WARN: exothermic sanity check, missing fragment provenance"]
+
+    stability["Stability valley / island claims"] --> open["Open: no primary artifact yet"]
+    open --> deps["Inherited limitation for 0.0 / 0.5 / 0.17 / 0.23"]
 ```
 
----
+## Evidence and Status Matrix
 
-## 🎯 Problem & Solution
+| Layer | Current status | Evidence path | Claim allowed now | Blocker |
+| :-- | :-- | :-- | :-- | :-- |
+| Data | Real AME2020 source labels and local working copies | `Data/03_Research/ame2020_heavy_nuclei.json`, `Data/03_Research/ame2020_heavy/ame2020_heavy.json`, `Data/AME2020_mass.txt` | U-235 and selected heavy-nuclei checkpoints can be traced to local files. | Fragment rows for the primary fission Q-value are not source-locked in the verifier. |
+| Formula | Reviewed registry | `FORMULA_AUDIT.md` | SEMF terms and UET bridge interpretation are mapped to code and units. | Current UET bridge equals SEMF, so it is not independent first-principles prediction. |
+| Verification | Runnable artifact with honest WARN | `Code/03_Research/Research_Fission.py` | Supports internal fission sanity-check wording. | Needs AME/NUBASE fragment masses and evaluated fission-energy baseline for PASS. |
+| Claims | Bounded to diagnostic benchmark | this README, `METHOD.md`, `LIMITATIONS.md` | May discuss heavy-nuclei bridge diagnostics. | Cannot claim exact U-235 fission energy, island prediction, or full nuclear-stability theory. |
+| Dependencies | Important nuclear bridge | `0.5`, `0.17`, `0.21`, `0.23`, `0.0` | May inform cross-topic nuclear/system-scale maps with limitations. | Downstream claims must inherit SEMF-bridge and fragment-provenance limits. |
 
-- **The Problem:** The Liquid Drop Model uses 5-7 fitted parameters and struggles to predict the exact "fission point" or the existence of super-heavy stable elements (Island of Stability).
-- **The Solution:** UET treats the nucleus as an **Information Saturation Zone**. "Surface Tension" is effectively the Information Field trying to minimize its surface area (Axiom 3). Fission is a topological break when the tension snaps.
-- **The Result:** We accurately predict the binding energy of Uranium-235 and the location of the Island of Stability (Z=114) using informational geometry.
-
----
-
-## 📊 Test Results
-
-| Category | Test | Result | Status |
-| :--- | :--- | :--- | :--- |
-| **01_Engine** | U-235 Fission | **202.1 MeV** | ✅ PASS |
-| **02_Proof** | Stability Valley | **Matches Lead (Pb-208)** | ✅ PASS |
-| **03_Research** | Island | **Z=114 Confirmed** | ✅ PASS |
-| **03_Research** | Binding Energy | **Matches AME2020** | ✅ PASS |
-
----
-
-## 2. ⚡ Quick Start
+## Primary Verification
 
 ```powershell
-python docs/topics/0.16_Heavy_Nuclei/Code/01_Engine/Engine_Fission_Solver.py
+python docs/topics/0.16_Heavy_Nuclei/Code/03_Research/Research_Fission.py
 ```
 
-## 📁 Key Files
+Expected artifact:
 
-- [Engine_Fission_Solver.py](./Code/01_Engine/Engine_Fission_Solver.py): The Physics Engine.
-- [ANALYSIS_Heavy_Nuclei_Engines.md](./Doc/ANALYSIS_Heavy_Nuclei_Engines.md): Detailed Fission analysis.
-- [Research_Heavy_Binding.py](./Code/03_Research/Research_Heavy_Binding.py): AME2020 Validation.
+- `Result/artifacts/0_16_heavy_nuclei_verification.json`
 
----
-*Generated by UET Research Assistant - Paper-Ready Version*
+Current expected status is `WARN`: exothermic sanity and U-235 checkpoint pass, but fragment provenance is incomplete.
+
+## Key Files
+
+- `FORMULA_AUDIT.md`: formula registry, coefficients, units, proof status, and failure modes.
+- `DATA_MANIFEST.md`: AME2020 working-copy provenance and benchmark roles.
+- `VERIFICATION_SPEC.md`: primary command, thresholds, artifact contract.
+- `METHOD.md`: evidence lanes and dependency policy.
+- `LIMITATIONS.md`: boundaries for fission, binding, and stability claims.
+- `Code/01_Engine/Engine_Heavy_Nuclei.py`: SEMF and UET bridge implementation.
+- `Code/03_Research/Research_Fission.py`: primary diagnostic verifier.
+- `Code/03_Research/Research_Heavy_Binding.py`: secondary AME heavy-nuclei comparison lane.

@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_source_metadata_for_local_snapshots",
+  "topic": "0.23_Unity_Scale_Link",
+  "purpose": "Record provenance metadata for Yahoo-style finance snapshots used by the unity scale-link verifier.",
+  "source_provider": "Yahoo Finance style OHLCV download",
+  "provider_url": "https://finance.yahoo.com/",
+  "local_snapshot_status": "topic-local CSVs exist; original query logs and retrieval timestamp are not available",
+  "checked_date": "2026-04-30",
+  "column_convention": {
+    "header_rows": "First three rows are yfinance-style Price/Ticker/Date header rows.",
+    "data_rows": "Data begin on row 4.",
+    "columns": [
+      "Date",
+      "Close",
+      "High",
+      "Low",
+      "Open",
+      "Volume"
+    ],
+    "units": "Date in ISO yyyy-mm-dd; prices in source market quote units; volume in source-reported share/contract units where applicable."
+  },
+  "snapshots": [
+    {
+      "ticker": "BTC-USD",
+      "local_path": "docs/topics/0.23_Unity_Scale_Link/data/03_Research/economy/Bitcoin_yahoo_real.csv",
+      "date_start": "2014-09-17",
+      "date_end": "2024-12-30",
+      "rows": 3758,
+      "sha256": "62a93ec47ffe98f7908a8c8b29ba9fa5a070fa611bb3cde5ae22bfb23ff9617a",
+      "benchmark_role": "finance volatility/noise comparison"
+    },
+    {
+      "ticker": "^DJI",
+      "local_path": "docs/topics/0.23_Unity_Scale_Link/data/03_Research/economy/DowJones_yahoo_real.csv",
+      "date_start": "2010-01-04",
+      "date_end": "2024-12-30",
+      "rows": 3773,
+      "sha256": "016a7d02ea0e1138dddfad55bb09e8fa7d4f82cb36bfa0714b339a69499f8821",
+      "benchmark_role": "finance volatility/noise comparison"
+    },
+    {
+      "ticker": "EURUSD=X",
+      "local_path": "docs/topics/0.23_Unity_Scale_Link/data/03_Research/economy/EUR_USD_yahoo_real.csv",
+      "date_start": "2010-01-01",
+      "date_end": "2024-12-30",
+      "rows": 3907,
+      "sha256": "473ee245a576a83d9f21473951081dda961fdbf609d440dfa77658291dd3a1a0",
+      "benchmark_role": "finance volatility/noise comparison"
+    },
+    {
+      "ticker": "^GSPC",
+      "local_path": "docs/topics/0.23_Unity_Scale_Link/data/03_Research/economy/SP500_yahoo_real.csv",
+      "date_start": "2010-01-04",
+      "date_end": "2024-12-30",
+      "rows": 3773,
+      "sha256": "bc85614da6993c0edcf87ceb5bfd623003bad18b7b78f9b010bd8582a6252eeb",
+      "benchmark_role": "primary verifier economy volatility input"
+    }
+  ],
+  "limitations": [
+    "This manifest records local snapshot identity; it is not a fresh upstream download.",
+    "Original query parameters, retrieval timestamp, adjustment policy, and upstream response hashes are missing.",
+    "Finance rows can support internal diagnostics only until reproducible retrieval metadata is added."
+  ]
+}

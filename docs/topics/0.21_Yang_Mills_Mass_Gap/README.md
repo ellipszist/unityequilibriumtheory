@@ -15,12 +15,28 @@ repository benchmark behavior related to confinement and glueball-mass scales.
 
 - Scope: internal exploratory modeling and benchmark comparison against cited lattice-QCD
   references
-- Out of scope: claiming the Clay Millennium Problem is solved
+- Out of scope: presenting a general Clay Millennium Problem proof from this benchmark alone
+
+## Concept Map
+
+```mermaid
+flowchart TD
+  A["Morningstar-Peardon glueball reference"] --> B["Topic working copy: lattice_qcd_spectrum.json"]
+  B --> C["Unit conversion: r0 units to MeV"]
+  C --> D["UET curvature-gap engine"]
+  D --> E["Alpha sweep calibration"]
+  E --> F["mass_gap_validation.json"]
+  F --> G["Claim class: benchmark calibration, not general proof"]
+```
 
 ## Data sources
 
 - Topic-local lattice working copy:
-  - `Data/03_Research/lattice_qcd_spectrum.json`
+  - `data/03_Research/lattice_qcd_spectrum.json`
+- External source record:
+  - `docs/data/external/particle_physics/glueball/morningstar_peardon_1999/source_record.json`
+- Source-lock manifest:
+  - `data/03_Research/source_lock_manifest.json`
 - Reference citation:
   - Morningstar and Peardon in [docs/references.bib](/C:/Users/santa/Desktop/uet_harness/docs/references.bib:1)
 
@@ -48,11 +64,23 @@ Supporting standard files:
 
 - Current topic script reports a best-fit mass prediction and relative error against the
   selected lattice reference
-- No repository-wide theorem-level threshold is recognized in this standards pass
+- The artifact status is `PASS` only when the selected scalar-glueball residual stays inside
+  the reference-row uncertainty; otherwise it records `WARN`
+- No repository-wide mathematical-completeness threshold is recognized in this standards pass
 
 ## Baselines
 
 - Selected lattice-QCD glueball mass values act as the current benchmark reference
+
+## Evidence Matrix
+
+| Layer | Current evidence | Status | Next hardening target |
+|:--|:--|:--|:--|
+| Data | Lattice-QCD working copy plus DOI source record and source-lock manifest | Source-backed working copy | Replace curated topic JSON with a reproducible upstream extraction table |
+| Formula | Curvature-gap, scale conversion, lattice conversion, sweep, and error formulas are registered | Structured | Separate fitted scale choices from candidate theory constants |
+| Verification | `Research_Mass_Gap.py` writes artifact hashes, threshold rule, residual, and status | Runnable | Promote from one-state scalar benchmark to multi-state spectrum validation |
+| Claim | Calibration-aware benchmark against selected glueball mass | Bounded | Add independent lattice rows before stronger physics wording |
+| Dependency | Feeds confinement/mass-generation discussions in the core map | Open | Mark downstream topics as inheriting the calibration limitation |
 
 ## Limitations and open risks
 

@@ -1,19 +1,31 @@
 ﻿# Verification Spec
 
 - Primary command:
-  - `python docs/topics/0.26_Cosmic_Dynamic_Frame/Code/03_Research/Research_Cosmic_Flows.py`
+  - `.venv\Scripts\python.exe docs\topics\0.26_Cosmic_Dynamic_Frame\Code\03_Research\Research_Cosmic_Flows.py`
 - Inputs:
   - `Data/03_Research/Laniakea_Flows.json`
+  - `Data/03_Research/source_lock_manifest.json`
   - `Data/Cosmicflows_3_Subset.csv`
   - `Data/Download_Cosmic_Data.py`
   - `Data/Pioneer_Anomaly_Data.csv`
+  - `docs/data/external/cosmology/laniakea/tully_2014/source_record.json`
+  - `docs/data/external/cosmology/cosmicflows/cosmicflows3/source_record.json`
+  - `docs/data/external/spacecraft/pioneer_anomaly/anderson_2002/source_record.json`
 - Baseline:
-  - Cosmicflows-3 subset, Pioneer anomaly files, and topic-local research scripts.
+  - Topic-local Laniakea landmark working copy tied to a pinned Laniakea source record for primary visualization.
+  - Cosmicflows and Pioneer files are hashed for provenance but are not used as numeric acceptance gates by the primary verifier.
 - Reported metrics:
-  - residuals on flow or anomaly observables and internal comparison diagnostics
+  - landmark count
+  - coordinate frame
+  - landmark types
+  - available velocity magnitudes
+  - flow-path completeness
+  - input file SHA-256 identities
 - Fixed threshold:
-  - Working threshold for this standards pass: the primary script must run without error, use the stated input package, and write a summary artifact under Result/artifacts/. A stronger numeric acceptance threshold must be frozen in a later BASELINE_COMPARISON.md pass.
+  - primary script must load the Laniakea working copy, render `Laniakea_Flow_Map.png`, and write a schema 1.1 artifact.
+  - successful visualization produces `WARN`, not `PASS`, until raw Cosmicflows/Laniakea tables, observer-frame metadata, preprocessing, and numeric residual gates are added.
 - Artifact target:
   - Result/artifacts/0_26_cosmic_dynamic_frame_verification.json
 - Interpretation:
-  - Treat output as an internal benchmark artifact only. Do not upgrade claim language to 'solved', 'verified', or 'exact' until a topic-specific baseline-comparison pass is complete.
+  - Treat output as an exploratory visualization/provenance artifact only.
+  - Do not use this verifier to claim dark-matter replacement, toroidal cosmology, Pioneer-drag physics, or a full dynamic-cosmos model fit.

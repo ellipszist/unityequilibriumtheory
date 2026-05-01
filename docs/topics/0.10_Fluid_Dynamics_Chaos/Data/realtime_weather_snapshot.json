@@ -1,26 +1,26 @@
 {
-    "timestamp": "2026-04-23T02:08:00.570712",
+    "timestamp": "2026-04-28T21:02:59.709207",
     "source": "UET_METEOROLOGY_GATEWAY",
     "conditions": {
         "WIND_SPEED": {
-            "value": 92.55,
+            "value": 33.36,
             "unit": "km/h",
             "significance": "Inflow Velocity"
         },
         "PRESSURE": {
-            "value": 995.84,
+            "value": 983.08,
             "unit": "hPa",
             "significance": "Fluid Density Base"
         },
         "TEMPERATURE": {
-            "value": 25.88,
+            "value": -8.69,
             "unit": "C",
             "significance": "Viscosity Modifier"
         }
     },
     "derived_physics": {
-        "estimated_reynolds": "1.74e+07",
-        "turbulence_intensity": "HIGH"
+        "estimated_reynolds": "6.26e+06",
+        "turbulence_intensity": "LOW"
     },
     "status": "LIVE"
 }

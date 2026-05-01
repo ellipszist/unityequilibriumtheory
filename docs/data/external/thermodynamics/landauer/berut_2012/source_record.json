@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_source_record",
+  "source_role": "Landauer experimental benchmark provenance anchor",
+  "title": "Experimental verification of Landauer's principle linking information and thermodynamics",
+  "authors": [
+    "Antoine Berut",
+    "Artak Arakelyan",
+    "Artyom Petrosyan",
+    "Sergio Ciliberto",
+    "Raoul Dillenschneider",
+    "Eric Lutz"
+  ],
+  "journal": "Nature",
+  "volume": "483",
+  "pages": "187-189",
+  "published_online": "2012-03-07",
+  "doi": "10.1038/nature10872",
+  "publisher_url": "https://www.nature.com/articles/nature10872",
+  "doi_url": "https://doi.org/10.1038/nature10872",
+  "local_raw_file_status": "not_stored",
+  "local_raw_file_reason": "Publisher article/supplement was not downloaded during this standards pass; topic uses checked summary values only.",
+  "verified_from": [
+    {
+      "label": "Nature article page",
+      "url": "https://www.nature.com/articles/nature10872",
+      "checked_date": "2026-04-30",
+      "verified_fields": [
+        "title",
+        "authors",
+        "journal",
+        "volume",
+        "pages",
+        "published_online",
+        "doi"
+      ]
+    }
+  ],
+  "unit_convention": {
+    "temperature": "K",
+    "heat": "J or kT as explicitly declared by topic-local derived data",
+    "landauer_formula": "E_min = k_B T ln 2 per bit"
+  },
+  "benchmark_role": "source provenance for topic-local Landauer lower-bound consistency checks",
+  "limitations": [
+    "This is a source record, not a raw experimental table.",
+    "Numeric measurements in docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research remain checked topic-derived summaries until raw/supplemental tables are archived or machine-transcribed."
+  ]
+}

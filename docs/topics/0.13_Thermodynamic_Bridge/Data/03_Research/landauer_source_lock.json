@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "data_class": "topic-derived provenance package",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "purpose": "Bind the Landauer benchmark working copy to external source records, explicit units, and verifier inputs.",
+  "external_source_records": [
+    "docs/data/external/thermodynamics/landauer/berut_2012/source_record.json",
+    "docs/data/external/constants/codata/si_2019_exact_constants.json"
+  ],
+  "derived_inputs": [
+    {
+      "local_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/berut_2012.json",
+      "source_record": "docs/data/external/thermodynamics/landauer/berut_2012/source_record.json",
+      "preprocessing": "Checked topic-local summary values for 300 K Landauer lower-bound comparison; not a raw table.",
+      "unit_system": "SI with heat optionally reported in kT for literature-summary rows",
+      "benchmark_role": "lower-bound consistency input",
+      "paper_readiness": "not paper-ready until raw or supplemental numeric extraction is archived"
+    },
+    {
+      "local_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/experimental_data.py",
+      "source_record": "mixed literature summary; see DATA_MANIFEST.md",
+      "preprocessing": "Python module of manually curated literature constants and summary observations.",
+      "unit_system": "SI unless a row declares eV, kT, solar mass, or Planck units",
+      "benchmark_role": "formula-consistency and diagnostic checks",
+      "paper_readiness": "diagnostic only until each external row has a source record and uncertainty path"
+    }
+  ],
+  "verifier_artifact": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/0_13_thermodynamic_bridge_verification.json",
+  "status_rule": "WARN is retained while topic-derived numeric summaries remain the acceptance input; PASS can only represent formula/lower-bound consistency.",
+  "claim_boundary": "This source-lock package improves provenance but does not promote the UET-specific thermodynamic bridge beyond internal benchmark/formula consistency."
+}

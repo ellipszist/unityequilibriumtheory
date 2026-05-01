@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "data_class": "topic-derived provenance package",
+  "topic": "0.3_Cosmology_Hubble_Tension",
+  "purpose": "Bind the scalar Hubble-tension verifier inputs and Hubble-frame beta constant to explicit source records.",
+  "external_source_records": [
+    "docs/data/external/cosmology/hubble_tension/planck_2018/source_record.json",
+    "docs/data/external/cosmology/hubble_tension/shoes_2022/source_record.json",
+    "docs/data/external/constants/codata/fine_structure/source_record.json"
+  ],
+  "derived_inputs": [
+    {
+      "local_path": "embedded in docs/topics/0.3_Cosmology_Hubble_Tension/Code/03_Research/Research_Hubble_Comparison.py",
+      "source_record": "docs/data/external/cosmology/hubble_tension/planck_2018/source_record.json",
+      "preprocessing": "Rounded Planck H0 scalar value is used as the early/CMB frame input.",
+      "unit_system": "km s^-1 Mpc^-1",
+      "benchmark_role": "early-frame H0 baseline"
+    },
+    {
+      "local_path": "embedded in docs/topics/0.3_Cosmology_Hubble_Tension/Code/03_Research/Research_Hubble_Comparison.py",
+      "source_record": "docs/data/external/cosmology/hubble_tension/shoes_2022/source_record.json",
+      "preprocessing": "Published SH0ES H0 scalar value is used as the local/late frame target.",
+      "unit_system": "km s^-1 Mpc^-1",
+      "benchmark_role": "late-frame H0 comparator"
+    },
+    {
+      "local_path": "docs/core/uet_parameters.py::ALPHA_EM",
+      "source_record": "docs/data/external/constants/codata/fine_structure/source_record.json",
+      "preprocessing": "The verifier uses beta_frame = sqrt(ALPHA_EM), not a fitted beta.",
+      "unit_system": "dimensionless",
+      "benchmark_role": "no-fit bridge constant"
+    }
+  ],
+  "claim_boundary": "This package supports an internal scalar H0-gap benchmark. It does not constitute full Planck/SH0ES likelihood replication or a universal Hubble-tension resolution."
+}

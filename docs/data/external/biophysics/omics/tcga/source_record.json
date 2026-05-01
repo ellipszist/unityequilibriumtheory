@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_source_record",
+  "source_role": "TCGA/GDC omics provenance target",
+  "title": "The Cancer Genome Atlas / NCI Genomic Data Commons",
+  "provider": "National Cancer Institute Genomic Data Commons",
+  "portal_url": "https://portal.gdc.cancer.gov/",
+  "local_raw_file_status": "not_stored",
+  "local_raw_file_reason": "No real TCGA-derived expression matrix is archived for topic 0.22; current TCGA-labeled scripts use mock/synthetic matrices.",
+  "unit_convention": {
+    "expression": "must declare assay and normalization, such as counts, FPKM, TPM, or transformed units",
+    "sample": "case/sample identifiers must be recorded if real data are added"
+  },
+  "benchmark_role": "future source target for cancer/omics entropy verifier",
+  "limitations": [
+    "This record is only a target/provenance anchor.",
+    "No TCGA biomedical claim is supported until a specific cohort, files, hashes, preprocessing, and baseline statistics are recorded."
+  ]
+}

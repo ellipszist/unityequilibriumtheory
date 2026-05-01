@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_source_record",
+  "source_role": "Bonn-style EEG local sample provenance target",
+  "title": "Bonn EEG seizure/healthy sample source record",
+  "canonical_reference": "Andrzejak et al. 2001 epileptic seizure EEG time-series benchmark",
+  "known_reference_doi": "10.1103/PhysRevE.64.061907",
+  "known_reference_url": "https://doi.org/10.1103/PhysRevE.64.061907",
+  "local_raw_file_status": "topic_local_text_only",
+  "local_raw_file_reason": "Repository contains Z.txt and S.txt samples, but upstream package URL, license, exact subset identity, and retrieval metadata are not locked.",
+  "unit_convention": {
+    "signal": "amplitude sample values; runtime normalization is performed by topic scripts",
+    "time": "sample index unless source sampling rate is added"
+  },
+  "benchmark_role": "source provenance target for future Bonn EEG neural-Omega verifier",
+  "limitations": [
+    "This is not yet a complete source lock.",
+    "Add official package URL/license, subset identity, sampling rate, and raw hashes before using Bonn samples as external EEG evidence."
+  ]
+}

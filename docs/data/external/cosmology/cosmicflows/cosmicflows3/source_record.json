@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_source_record",
+  "source_role": "Cosmicflows-3 provenance anchor for dynamic-frame flow context",
+  "title": "Cosmicflows-3",
+  "authors": [
+    "R. Brent Tully",
+    "Helene M. Courtois",
+    "Jenny G. Sorce"
+  ],
+  "journal": "The Astronomical Journal",
+  "volume": "152",
+  "article": "50",
+  "published_year": 2016,
+  "doi": "10.3847/0004-6256/152/2/50",
+  "doi_url": "https://doi.org/10.3847/0004-6256/152/2/50",
+  "local_raw_file_status": "not_stored",
+  "local_raw_file_reason": "Raw catalog was not archived during this standards pass; topic currently uses a local subset/working copy.",
+  "unit_convention": {
+    "distance": "Mpc where used",
+    "velocity": "km/s where used",
+    "frame": "must be declared per derived table; do not assume CMB or supergalactic frame implicitly"
+  },
+  "benchmark_role": "source provenance target for future numeric flow residual gates",
+  "limitations": [
+    "This record pins the paper/source identity only.",
+    "It does not certify the topic-local Cosmicflows_3_Subset.csv as a faithful raw extraction."
+  ]
+}

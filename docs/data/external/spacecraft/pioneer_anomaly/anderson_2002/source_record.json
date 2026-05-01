@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_source_record",
+  "source_role": "Pioneer anomaly provenance anchor",
+  "title": "Study of the anomalous acceleration of Pioneer 10 and 11",
+  "authors": [
+    "John D. Anderson",
+    "Philip A. Laing",
+    "Eunice L. Lau",
+    "Anthony S. Liu",
+    "Michael Martin Nieto",
+    "Slava G. Turyshev"
+  ],
+  "journal": "Physical Review D",
+  "volume": "65",
+  "article": "082004",
+  "published": "2002-04-11",
+  "doi": "10.1103/PhysRevD.65.082004",
+  "publisher_url": "https://journals.aps.org/prd/abstract/10.1103/PhysRevD.65.082004",
+  "doi_url": "https://doi.org/10.1103/PhysRevD.65.082004",
+  "local_raw_file_status": "not_stored",
+  "local_raw_file_reason": "Topic currently uses a small local Pioneer working CSV; full telemetry/residual tables and thermal-recoil competitor model are not archived.",
+  "unit_convention": {
+    "acceleration": "m s^-2",
+    "velocity": "m s^-1 where spacecraft dynamics are modeled",
+    "time": "mission dates or seconds as declared by derived data"
+  },
+  "benchmark_role": "source provenance target for Pioneer-anomaly diagnostic only",
+  "limitations": [
+    "This record does not support a new-physics claim by itself.",
+    "Modern thermal-recoil explanations and competitor baselines must be included before any dynamic-frame Pioneer claim is upgraded."
+  ]
+}

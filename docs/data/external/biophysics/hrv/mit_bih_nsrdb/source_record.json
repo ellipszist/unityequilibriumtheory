@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_source_record",
+  "source_role": "MIT-BIH Normal Sinus Rhythm Database provenance anchor for HRV verifier",
+  "title": "MIT-BIH Normal Sinus Rhythm Database",
+  "provider": "PhysioNet",
+  "version": "1.0.0",
+  "dataset_url": "https://physionet.org/content/nsrdb/1.0.0/",
+  "legacy_url": "https://archive.physionet.org/physiobank/database/nsrdb/",
+  "standard_physionet_citation": {
+    "title": "PhysioBank, PhysioToolkit, and PhysioNet: Components of a New Research Resource for Complex Physiologic Signals",
+    "journal": "Circulation",
+    "volume": "101",
+    "issue": "23",
+    "pages": "e215-e220",
+    "published": "2000-06-13"
+  },
+  "record_ids_used_by_topic": [
+    "16265",
+    "16272",
+    "16273",
+    "16420",
+    "16483"
+  ],
+  "local_raw_file_status": "derived_rr_csv_only",
+  "local_raw_file_reason": "Repository stores RR interval CSV derivatives, not original .dat/.hea/.atr records or an extraction log.",
+  "unit_convention": {
+    "rr_interval": "seconds after numeric coercion and verifier filter 0.3 < rr < 2.0",
+    "derived_metrics": "SDNN/RMSSD in seconds internally; artifact reports average values in ms"
+  },
+  "benchmark_role": "source provenance target for internal HRV run-contract verifier",
+  "limitations": [
+    "This source record pins database identity and record IDs only.",
+    "Original PhysioNet files, exact downloader command, extraction tool/version, and RR conversion script are not archived yet.",
+    "Current artifact supports HRV metric run-contract behavior, not clinical classification."
+  ]
+}

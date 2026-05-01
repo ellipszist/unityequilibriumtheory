@@ -32,6 +32,8 @@ if not ROOT:
 
 import sys
 import json
+import hashlib
+from datetime import datetime, timezone
 import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
@@ -58,6 +60,75 @@ def load_data():
     file_path = current_path.parents[2] / "Data" / "03_Research" / "higgs_coupling_data.json"
     with open(file_path, "r") as f:
         return json.load(f)
+
+
+def _sha256(path):
+    digest = hashlib.sha256()
+    with open(path, "rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _input_hashes():
+    topic_dir = current_path.parents[2]
+    inputs = [
+        topic_dir / "Data" / "03_Research" / "higgs_coupling_data.json",
+        topic_dir / "Data" / "03_Research" / "higgs_mass_combined.json",
+        topic_dir / "Data" / "03_Research" / "lepton_data.json",
+        topic_dir / "Data" / "03_Research" / "pdg_2024_leptons.json",
+    ]
+    records = []
+    for path in inputs:
+        record = {
+            "path": str(path.relative_to(topic_dir)).replace("\\", "/"),
+            "loaded_by_primary_script": path.name == "higgs_coupling_data.json",
+        }
+        if path.exists():
+            record.update(
+                {
+                    "status": "present",
+                    "bytes": path.stat().st_size,
+                    "sha256": _sha256(path),
+                }
+            )
+        else:
+            record["status"] = "missing"
+        records.append(record)
+    return records
+
+
+def write_verification_artifact(result):
+    topic_dir = current_path.parents[2]
+    artifact_path = topic_dir / "Result" / "artifacts" / "0_17_mass_generation_verification.json"
+    artifact_path.parent.mkdir(parents=True, exist_ok=True)
+    artifact = {
+        "schema_version": "1.1",
+        "topic": "0.17_Mass_Generation",
+        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+        "command": "python docs/topics/0.17_Mass_Generation/Code/03_Research/Research_Higgs_Coupling.py",
+        "status": result["status"],
+        "passed_run_contract": result["status"] in {"PASS", "WARN"},
+        "input_hashes": _input_hashes(),
+        "metrics": {
+            "particle_count": result["particle_count"],
+            "average_abs_kappa_deviation": result["average_abs_kappa_deviation"],
+            "max_abs_kappa_deviation": result["max_abs_kappa_deviation"],
+        },
+        "thresholds": {
+            "average_abs_kappa_deviation_max": 0.2,
+            "run_without_error": True,
+            "artifact_written": True,
+        },
+        "interpretation": (
+            "Internal Higgs-coupling consistency artifact against a topic-local "
+            "SM-normalized kappa dataset. This does not prove a new mass-generation "
+            "mechanism or replace the Higgs mechanism."
+        ),
+        "results": result,
+    }
+    artifact_path.write_text(json.dumps(artifact, indent=2), encoding="utf-8")
+    print(f"   Artifact Saved: {artifact_path}")
 
 
 def run_coupling_analysis():
@@ -160,18 +231,41 @@ def run_coupling_analysis():
     print(f"📸 Showcase Image Saved: {save_path}")
 
     # Check Average Deviation
-    avg_dev = np.mean(np.abs(kappas - 1.0))
+    deviations = np.abs(kappas - 1.0)
+    avg_dev = float(np.mean(deviations))
+    max_dev = float(np.max(deviations))
     print(f"   Average Deviation from SM/UET: {avg_dev:.3f}")
+
+    result = {
+        "status": "PASS" if avg_dev < 0.2 else "WARN",
+        "particle_count": len(names),
+        "average_abs_kappa_deviation": avg_dev,
+        "max_abs_kappa_deviation": max_dev,
+        "baseline": "SM-normalized kappa = 1.0",
+        "particles": [
+            {
+                "name": names[i],
+                "mass_GeV": float(masses[i]),
+                "kappa_observed": float(kappas[i]),
+                "uncertainty": float(uncertainties[i]),
+                "abs_kappa_deviation": float(deviations[i]),
+            }
+            for i in range(len(names))
+        ],
+        "figure_path": str(save_path),
+    }
+    write_verification_artifact(result)
 
     if avg_dev < 0.2:
         print(
             "✅ PASS: Mass Generation is consistent with Linear Information Density (Higgs Field)."
         )
-        return True
+        return result
     else:
         print("⚠️ WARNING: Significant Deviation detected.")
-        return True
+        return result
 
 
 if __name__ == "__main__":
-    run_coupling_analysis()
+    result = run_coupling_analysis()
+    sys.exit(0 if result["status"] in {"PASS", "WARN"} else 1)

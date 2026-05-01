@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_source_record",
+  "source_role": "upstream superconducting-material database provenance target",
+  "source_label": "NIMS SuperCon data on Materials Data Repository",
+  "primary_reference_url": "https://dice.nims.go.jp/news/2022/12/20221216-en.html",
+  "doi": "10.48505/nims.3739",
+  "publisher": "National Institute for Materials Science",
+  "published_date": "2022-12-16",
+  "checked_date": "2026-04-30",
+  "unit_convention": "material records include critical temperature Tc; row-level units must be checked after raw dataset ingestion",
+  "benchmark_role": "future source-normalized material-table target for superconductivity benchmarks",
+  "repository_use": [
+    "docs/topics/0.4_Superconductivity_Superfluids/DATA_MANIFEST.md",
+    "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/source_lock_manifest.json"
+  ],
+  "limitations": [
+    "Raw MDR files are not yet mirrored in this repository.",
+    "The current topic verifier does not consume the NIMS MDR dataset directly."
+  ]
+}

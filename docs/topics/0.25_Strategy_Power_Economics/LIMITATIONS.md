@@ -1,6 +1,16 @@
-﻿# Limitations
+# Limitations
 
-- The root baseline comparison is present, but numeric acceptance boundaries are still provisional until a saved artifact is generated and reviewed.
-- Current data posture is "real source referenced", which is below a fully normalized archival dataset package.
-- The topic should stay framed as an exploratory benchmark package because socio-economic causality is not closed by internal scripts alone.
-- Internal script execution does not by itself establish external replication, theorem-level proof, or broad physical closure.
+- Current evidence supports only internal data integrity and descriptive market
+  diagnostics.
+- Upstream provenance remains incomplete for the World Bank/IMF economy baseline,
+  Yahoo-style market CSVs, and daily economic snapshot.
+- The old 8-billion resonance artifact was only a run-contract artifact and did
+  not provide a valid PASS for inequality reduction.
+- Market returns, volatility, and correlations are descriptive statistics, not
+  causal proof of a UET economic law.
+- Social-manifold terms such as Type C stabilizers, world lease, leverage wave,
+  and Omega reduction remain heuristic until calibrated and verifier-gated.
+- No current artifact proves superiority over Nash equilibrium or any real-world
+  policy prescription.
+- Strong paper-facing claims require exact input source, formula ID, artifact
+  status, uncertainty, and a clear limitation statement.

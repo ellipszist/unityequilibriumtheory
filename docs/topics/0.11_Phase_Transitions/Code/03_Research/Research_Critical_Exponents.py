@@ -35,6 +35,9 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
+import platform
+from datetime import datetime, timezone
+from hashlib import sha256
 
 # --- ROBUST PATH FINDER ---
 current_path = Path(__file__).resolve()
@@ -57,14 +60,65 @@ elif not project_root:
 from docs.core.uet_glass_box import UETPathManager, UETMetricLogger
 
 
+TOPIC_DIR = project_root / "docs" / "topics" / "0.11_Phase_Transitions"
+DATA_FILE = TOPIC_DIR / "Data" / "03_Research" / "critical_exponents.json"
+ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_11_phase_transitions_verification.json"
+
+
 def load_critical_data():
     """Load Critical Exponents data."""
-    # Hardcoded relative path
-    data_file = current_path.parents[2] / "Data" / "03_Research" / "critical_exponents.json"
-    if not data_file.exists():
+    if not DATA_FILE.exists():
         return None
-    with open(data_file, encoding="utf-8") as f:
+    with open(DATA_FILE, encoding="utf-8") as f:
         return json.load(f)
+
+
+def hash_file(path: Path) -> str:
+    return sha256(path.read_bytes()).hexdigest()
+
+
+def write_artifact(error_percent: float, beta_values: dict, save_path: Path) -> None:
+    status = "PASS" if error_percent <= 5.0 else "FAIL"
+    artifact = {
+        "schema_version": "1.1",
+        "topic": "0.11_Phase_Transitions",
+        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+        "command": "python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exponents.py",
+        "status": status,
+        "claim_class": "C internal benchmark" if status == "PASS" else "model-baseline blocker",
+        "inputs": [
+            {
+                "path": str(DATA_FILE.relative_to(TOPIC_DIR)),
+                "sha256": hash_file(DATA_FILE),
+                "role": "3D Ising/liquid-gas beta exponent working-copy benchmark",
+            }
+        ],
+        "thresholds": {"beta_relative_error_percent_max": 5.0},
+        "metrics": {
+            "beta_relative_error_percent": error_percent,
+            "beta_uet": beta_values["uet"],
+            "beta_experimental_fluids": beta_values["experimental"],
+            "beta_3d_ising_theory": beta_values["ising"],
+            "beta_mean_field": beta_values["mean_field"],
+        },
+        "results": {
+            "plot_path": str(save_path.relative_to(TOPIC_DIR)),
+            "interpretation": "selected beta critical-exponent compatibility only",
+        },
+        "limitations": [
+            "Only beta is tested in the current primary gate.",
+            "Gamma, nu, scaling relations, morphology, and material critical-point datasets are not yet gated.",
+            "The UET beta relation is a heuristic projection until broader exponent and derivation checks are added.",
+        ],
+        "environment": {
+            "python_version": sys.version.split()[0],
+            "platform": platform.platform(),
+            "numpy_version": np.__version__,
+        },
+    }
+    ARTIFACT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    ARTIFACT_PATH.write_text(json.dumps(artifact, indent=2, sort_keys=True), encoding="utf-8")
+    print(f"Artifact saved to {ARTIFACT_PATH}")
 
 
 def run_critical_analysis():
@@ -124,6 +178,16 @@ def run_critical_analysis():
     save_path = result_dir / "Critical_Exponents_Validation.png"
     plt.savefig(save_path, dpi=300)
     print(f"📸 Showcase Image Saved: {save_path}")
+    write_artifact(
+        float(error),
+        {
+            "uet": float(beta_uet),
+            "experimental": float(beta_exp),
+            "ising": float(beta_ising),
+            "mean_field": float(beta_mean),
+        },
+        save_path,
+    )
 
     if error < 5.0:
         print("✅ PASS: UET captures non-classical critical behavior (Beta ~ 1/3).")
@@ -134,4 +198,4 @@ def run_critical_analysis():
 
 
 if __name__ == "__main__":
-    run_critical_analysis()
+    sys.exit(0 if run_critical_analysis() else 1)

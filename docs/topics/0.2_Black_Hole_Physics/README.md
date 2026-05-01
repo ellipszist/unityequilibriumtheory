@@ -1,98 +1,95 @@
 ---
 layout: article
 title: "UET Topic 0.2: Black Hole Physics"
-description: "Research module for Black Hole Physics within the Unity Equilibrium Theory framework."
+description: "Internal EHT shadow benchmark and heuristic black-hole saturation diagnostics in the UET framework."
 ---
 
-# 🔬 0.2 Black Hole Physics
-
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.2: Black Hole Physics",
-  "description": "Explaining Information Saturation and Singularity Resolution via UET Axiom 4.",
-  "about": "Black Holes, Event Horizon, Singularity Resolution, Information Saturation, UET"
-}
--->
+# 0.2 Black Hole Physics
 
 > [!NOTE]
-> **AI-Digest**: UET resolves the Black Hole singularity by introducing an 'Information Saturation Limit' (Axiom 4). As matter collapses, the information density reaches a fundamental limit (1 bit per Planck Area), creating a repulsive pressure that results in a stable, finite core. / UET แก้ไขปัญหาภาวะเอกฐาน (Singularity) ในหลุมดำโดยการใช้ 'ขีดจำกัดความอิ่มตัวของสารสนเทศ' (ตาม Axiom 4) เมื่อมวลสารยุบตัวจนถึงขีดจำกัดความหนาแน่นสูงสุด จะเกิดแรงต้านที่ทำให้แกนกลางยังคงมีขนาดที่จำกัดและเสถียร
+> **AI-Digest**: This topic currently supports an internal EHT shadow-size benchmark and
+> documents heuristic UET saturation-core diagnostics. It does not yet establish a complete
+> singularity-resolution proof, GR replacement, or CCBH cosmological-coupling result.
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Information_Saturation-blueviolet)
+![Status](https://img.shields.io/badge/Status-Hardening_Gate-yellow)
+![Standard](https://img.shields.io/badge/Standard-EHT_Internal_Benchmark-blue)
 ![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
-![Scientific_Rigor](https://img.shields.io/badge/Rigor-Singularity_Free-orange)
+![Scientific_Rigor](https://img.shields.io/badge/Rigor-Formula_Audited-orange)
 
-> **"UET resolves the Einstein Singularity by introducing an Information Saturation Limit ($\rho_{crit}$), creating a stable, finite core consistent with the Holographic Principle and EHT observations of M87*."**
+## Current Claim Boundary
 
----
+The primary verifier checks whether the current engine reproduces selected EHT angular
+shadow sizes for M87* and Sgr A* using the topic-local working-copy data package. The
+saturation-core mechanism and CCBH mass-growth path remain hardening targets until their
+scale choices, upstream data, and acceptance thresholds are fully locked.
 
-## 1. 📂 5x4 Grid Structure
-
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | Detailed Analysis Reports (e.g., Saturation Mechanics). |
-| **Ref/** | Event Horizon Telescope (EHT) papers and LIGO data. |
-| **Data/** | M87* and Sagittarius A* Shadow Radius observations. |
-| **Code/** | Logic levels: 01_Engine (Solver), 02_Proof (Metric), 03_Research (EHT). |
-| **Result/** | Verification plots showing Singularity Resolution and Photon Spheres. |
-
----
-
-## 🔗 Theory Connection
+## Conceptual Diagram
 
 ```mermaid
-graph TB
-    subgraph Standard["🔬 Standard Physics (GR)"]
-        Gravity["Infinite Collapse"]
-        Singularity["⚠️ Singularity (Infinite Density)"]
-    end
-    
-    subgraph UET["✅ UET Solution"]
-        Saturation["Information Saturation Limit"]
-        StableCore["Stable Finite Core (Fuzzball-like)"]
-    end
-    
-    Gravity --> Singularity
-    Singularity -->|"Axiom 4 (Max Info Density)"| Saturation
-    Saturation --> StableCore
-    
-    style UET fill:#d4edda,stroke:#28a745
+flowchart LR
+    A["EHT working-copy data"] --> B["mass and distance inputs"]
+    C["GR constants from docs.core"] --> D["Schwarzschild radius"]
+    D --> E["shadow diameter: 5.2 Rs"]
+    B --> D
+    E --> F["angular size in microarcseconds"]
+    F --> G["2 sigma EHT benchmark gate"]
+    H["UET saturation potential"] --> I["diagnostic core-radius path"]
+    J["CCBH Shen/Kormendy path"] --> K["blocked until upstream data is archived"]
 ```
 
----
+## Evidence Matrix
 
-## 🎯 Problem & Solution
+| Layer | Current status | Evidence / artifact | Claim allowed |
+| :-- | :-- | :-- | :-- |
+| EHT shadow-size comparison | Primary internal benchmark | `Result/artifacts/0_2_black_hole_physics_verification.json` | selected internal benchmark only |
+| GR radius/entropy/temperature formulas | Formula-audited comparator identities | `FORMULA_AUDIT.md` | standard comparator calculations |
+| Saturation-core mechanism | Heuristic numerical diagnostic | `Engine_BlackHole.solve_internal_structure` | proposed mechanism / diagnostic |
+| CCBH cosmological coupling | Data-blocked secondary path | `Research_CCBH_Analysis.py` currently needs upstream files outside repo | blocked research path |
+| Singularity-resolution claim | Not closed | limitations and formula audit | do not state as proved |
 
-- **The Problem:** General Relativity predicts that the core of a Black Hole collapses to a mathematical point of infinite density (Singularity), where the laws of physics break down.
-- **The Solution:** UET **Axiom 4** establishes a fundamental limit on Information Density (1 bit per Planck Area). When matter collapses to this limit, the Information Field "saturates," generating a repulsive pressure that halts the collapse, resulting in a dense but finite core.
-- **Zero Curve Fitting Law:** The critical density is derived purely from Planck constants ($c, G, \hbar$), not tuned to fit observation.
+## 5x4 Grid Structure
 
----
+| Pillar | Purpose |
+| :-- | :-- |
+| `Doc/` | analysis notes for black-hole saturation and related mechanisms |
+| `Ref/` | EHT, GR, LIGO, and CCBH reference material |
+| `Data/` | topic-local working-copy EHT and black-hole catalog inputs |
+| `Code/` | engine, proof, research, competitor, and visualization scripts |
+| `Result/` | benchmark artifacts, plots, and run logs |
 
-## 📊 Test Results
+## Problem And Method
 
-| Category | Test | Result | Status |
-| :--- | :--- | :--- | :--- |
-| **01_Engine** | Core Solver | Finite Density at r=0 | ✅ PASS |
-| **02_Proof** | Schwarzschild Metric | Matches GR at r > Rs | ✅ PASS |
-| **03_Research** | M87* Comparison | Shadow Radius within 1% | ✅ PASS |
-| **04_Competitor** | Singularity Check | No Infinity Found | ✅ PASS |
+- The physics target is the black-hole horizon/shadow benchmark plus a proposed UET
+  information-saturation mechanism for avoiding divergent core behavior.
+- The current verifier uses the EHT shadow-size data path because the relevant local inputs
+  are available inside the repository.
+- The CCBH path is scientifically important but cannot serve as the primary gate until the
+  Shen/Kormendy upstream datasets are stored and hashed under `docs/data/external/...`.
 
----
-
-## 2. ⚡ Quick Start
+## Quick Start
 
 ```powershell
-python docs/topics/0.2_Black_Hole_Physics/Code/03_Research/Research_EHT_M87.py
+cd C:\Users\santa\Desktop\uet_harness
+python docs/topics/0.2_Black_Hole_Physics/Code/03_Research/Research_EHT_Validation.py
 ```
 
-## 📁 Key Files
+## Key Files
 
-- [Engine_BlackHole.py](./Code/01_Engine/Engine_BlackHole.py): Singularity-free solver.
-- [ANALYSIS_Engine_BlackHole.md](./Doc/ANALYSIS_Engine_BlackHole.md): Technical analysis of saturation mechanics.
-- [Code/README.md](./Code/README.md): Full script documentation.
+- `FORMULA_AUDIT.md`: formula, unit, constant, proof-status, and failure-mode registry.
+- `VERIFICATION_SPEC.md`: primary command, thresholds, artifact, and interpretation.
+- `DATA_MANIFEST.md`: current data posture and provenance gaps.
+- `METHOD.md`: topic method scope and dependency policy.
+- `LIMITATIONS.md`: blockers that prevent stronger claims.
 
----
-*Generated by UET Research Assistant - Paper-Ready Version*
+## Current Limitations
+
+- The EHT data package is still a topic-local working copy, not a fully normalized archival
+  upstream source package.
+- The shadow benchmark uses a compact `5.2 R_s` relation rather than full image-domain
+  ray-tracing.
+- The UET core-stabilization path uses rescaled numerical diagnostics and still needs a
+  physically locked saturation scale.
+- The CCBH analysis needs real upstream data archived in the repo before it can support
+  claim upgrades.
+
+*Status note: internal benchmark and formula-audit hardening gate.*

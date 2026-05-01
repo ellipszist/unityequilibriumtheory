@@ -151,6 +151,8 @@ flowchart TD
 - Every standards page should be easy to scan, not just correct in prose.
 - Every important formula must declare origin, units, and proof status.
 - Repository prose must not be promoted from dictation alone; it must be tied to a derivation, script, artifact, or source record.
+- Every topic README must include at least one conceptual diagram and one evidence/status matrix so later readers can understand the theory role, data path, formula status, verifier role, and limitations without reading the whole folder first.
+- Scientific hardening should strengthen the research argument by exposing dependencies, mechanisms, tests, and blockers; it must not collapse the topic into only defensive wording.
 
 ## Common failure modes
 
@@ -159,6 +161,7 @@ flowchart TD
 - commands are missing from practical guides, so reruns stop being easy
 - diagrams disappear during cleanup, so the docs become harder to navigate
 - AI rewrites prose upward without an evidence-based status review
+- AI rewrites prose downward without adding diagrams, formula maps, verifier links, or clearer theory structure
 
 ## Checklist
 
@@ -167,3 +170,4 @@ flowchart TD
 - [ ] every main standard links to the correct renamed files
 - [ ] practical guides contain commands only where they help real execution
 - [ ] diagrams and tables exist to support fast scanning
+- [ ] topic README templates require a conceptual diagram and evidence/status matrix

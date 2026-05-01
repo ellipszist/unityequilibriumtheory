@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_source_record",
+  "source_role": "SU(3) pure-gauge glueball spectrum benchmark reference",
+  "source_label": "Morningstar and Peardon, The glueball spectrum from an anisotropic lattice study",
+  "primary_reference_url": "https://journals.aps.org/prd/abstract/10.1103/PhysRevD.60.034509",
+  "doi": "10.1103/PhysRevD.60.034509",
+  "publication": "Physical Review D 60, 034509",
+  "published_date": "1999-07-07",
+  "checked_date": "2026-04-30",
+  "benchmark_role": "published lattice-QCD reference for selected glueball mass scales",
+  "unit_convention": "dimensionless M*r0 values in the paper; topic-local copy converts to MeV using r0=0.5 fm and hbar*c=197.327 MeV fm",
+  "repository_use": [
+    "docs/topics/0.21_Yang_Mills_Mass_Gap/Data/03_Research/lattice_qcd_spectrum.json",
+    "docs/topics/0.21_Yang_Mills_Mass_Gap/Code/03_Research/Research_Mass_Gap.py"
+  ],
+  "limitations": [
+    "This source record pins the publication and benchmark role; the topic-local JSON is a curated working copy, not a raw extracted table.",
+    "The scalar glueball match is a calibration-aware benchmark and does not prove the Clay Yang-Mills mass-gap problem."
+  ]
+}

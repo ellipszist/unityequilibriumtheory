@@ -20,6 +20,7 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 ## Variable framing
 
 - Primary modeled quantities: critical temperature, order parameter, critical exponents, and transition-scale quantities
+- Formula registry: see `FORMULA_AUDIT.md` for the distinction between selected exponent benchmarks, normalized Cahn-Hilliard dynamics, order-parameter diagnostics, and future material-data gates.
 
 ## Assumptions
 
@@ -36,3 +37,11 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 ## Parameter sensitivity note
 
 - Critical exponents and fit settings remain dependent on the chosen benchmark subset.
+- The current primary verifier is deliberately narrow: it checks only the beta critical exponent for a 3D Ising/liquid-gas benchmark.
+- Cahn-Hilliard simulations should be treated as normalized mechanism diagnostics until seed, grid, morphology, and material-unit gates are added.
+
+## Dependency policy
+
+- `0.4_Superconductivity_Superfluids` may reuse this topic's transition language only as a mechanism analogy until material-specific gates exist.
+- `0.13_Thermodynamic_Bridge` may reference critical behavior only with the selected-exponent limitation.
+- `0.0_Grand_Unification` should index this topic as a selected benchmark plus normalized mechanism model, not a full universality proof.

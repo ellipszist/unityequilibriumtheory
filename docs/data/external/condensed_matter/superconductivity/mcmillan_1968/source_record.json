@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_source_record",
+  "source_role": "McMillan transition-temperature benchmark formula and literature context",
+  "source_label": "W. L. McMillan, Transition Temperature of Strong-Coupled Superconductors",
+  "primary_reference_url": "https://journals.aps.org/pr/abstract/10.1103/PhysRev.167.331",
+  "doi": "10.1103/PhysRev.167.331",
+  "publisher": "American Physical Society",
+  "publication": "Physical Review 167, 331-344",
+  "published_date": "1968-03-10",
+  "checked_date": "2026-04-30",
+  "unit_convention": "Kelvin for transition and phonon-temperature proxies; dimensionless electron-phonon and Coulomb coupling constants",
+  "benchmark_role": "source for the McMillan-style benchmark relation used as the current raw baseline gate",
+  "repository_use": [
+    "docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment_Superconductor_Data.py",
+    "docs/topics/0.4_Superconductivity_Superfluids/FORMULA_AUDIT.md"
+  ],
+  "limitations": [
+    "This source record pins the formula reference; it is not a machine-extracted table of material parameters.",
+    "Topic-local coupling values remain working-copy inputs until each material row is source-normalized."
+  ]
+}

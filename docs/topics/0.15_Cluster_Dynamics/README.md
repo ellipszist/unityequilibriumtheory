@@ -1,76 +1,66 @@
 ---
 layout: article
 title: "UET Topic 0.15: Cluster Dynamics"
-description: "Research module for Cluster Dynamics within the Unity Equilibrium Theory framework."
+description: "Cluster virial and Bullet Cluster diagnostic work within the Unity Equilibrium Theory framework."
 ---
 
-# 🌌 0.15 Cluster Dynamics
-
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.15: Cluster Dynamics",
-  "description": "Explaining Galaxy Cluster 'Dark Matter' as Information Gravity and resolving the Virial Mass discrepancy.",
-  "about": "Galaxy Clusters, Dark Matter, Virial Theorem, Information Gravity, UET"
-}
--->
+# 0.15 Cluster Dynamics
 
 > [!NOTE]
-> **AI-Digest**: UET resolves the galaxy cluster missing mass problem by modeling 'Dark Matter' as Information Gravity. Our modified Virial Theorem predicts Coma Cluster velocities and Bullet Cluster lensing without invisible particles. / UET แก้ปัญหา 'สสารมืด' ในกระจุกกาแล็กซีด้วยการมองแรงโน้มถ่วงเป็นความหนาแน่นข้อมูล ทำให้ทำนายอัตราเร็วและการเบี่ยงเบนของแสงในกระจุกกาแล็กซี Coma และ Bullet ได้โดยไม่ต้องพึ่งพาสสารมืด
+> **AI-Digest**: This topic studies whether UET-style information-gravity terms can organize selected galaxy-cluster missing-mass and offset diagnostics. The current primary verifier is a Bullet Cluster qualitative diagnostic: it reads a source-labeled offset dataset and checks only separation direction, not calibrated kpc magnitude.
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Dark_Matter_Free-blueviolet)
-![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
-![Scientific_Rigor](https://img.shields.io/badge/Rigor-Virial_Solution-orange)
+![Status](https://img.shields.io/badge/Status-Diagnostic%20Benchmark-yellow)
+![Claim_Class](https://img.shields.io/badge/Claim%20Class-D%20Qualitative-orange)
+![Verifier](https://img.shields.io/badge/Verifier-WARN%20Expected-yellow)
 
-> **"UET proves that 'Dark Matter' in Galaxy Clusters is actually 'Information Gravity'—a natural consequence of high Information Density at large scales—resolving the Virial Mass discrepancy without invisible particles."**
+## Research Role
 
----
+Topic `0.15` sits between galaxy-scale dynamics and cosmological structure. Its core research value is not a finished dark-matter replacement; it is a controlled place to test whether cluster-scale virial discrepancies, lensing/X-ray offsets, and information-field terms can be connected with explicit data, formulas, and artifacts.
 
-## 1. 📂 5x4 Grid Structure
-
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | Analysis of Virial Theorem and Missing Mass. |
-| **Ref/** | Zwicky (1933), Clowe (2006) - Bullet Cluster. |
-| **Data/** | Coma Cluster Parameters and Bullet Cluster Offsets. |
-| **Code/** | Logic levels: 01_Engine (Many-Body Solver), 02_Proof (Virial). |
-| **Result/** | Velocity Dispersion plots, Lensing Offsets. |
-
----
-
-## 🔗 Theory Connection
+## Conceptual Map
 
 ```mermaid
-graph TB
-    subgraph Standard["Standard Model (CDM)"]
-        Mass["Visible Mass"]
-        DM["Dark Matter (85%)"]
-        Gravity["Newtonian Gravity"]
-        V["Velocity (Observed)"]
-    end
-    
-    subgraph UET["✅ UET Solution"]
-        MassU["Visible Mass Only"]
-        Info["Info Pressure (Axiom 3)"]
-        Mod["Modified Virial Law"]
-        VU["Velocity (Observed)"]
-    end
-    
-    Mass --> Gravity
-    DM --> Gravity
-    Gravity --> V
-    
-    MassU --> Info
-    Info --> Mod
-    Mod --> VU
-    
-    style UET fill:#d4edda,stroke:#28a745
+flowchart LR
+    virial["Cluster virial data"] --> mass["Virial mass comparator"]
+    mass --> bridge["UET acceleration / information-halo bridge"]
+    bridge --> open["Open: multi-cluster calibrated prediction"]
+
+    bullet["Bullet Cluster coordinate working copy"] --> offset["Observed lensing/X-ray offsets in kpc"]
+    offset --> toy["1D gas/halo drag toy model"]
+    toy --> artifact["0_15 artifact: qualitative WARN"]
+
+    artifact --> deps["Dependency limitation for 0.0 / 0.23 / 0.26"]
 ```
 
----
+## Evidence and Status Matrix
 
-## 🎯 Problem & Solution
+| Layer | Current status | Evidence path | Claim allowed now | Blocker |
+| :-- | :-- | :-- | :-- | :-- |
+| Data | Real source referenced, mixed working copies | `Data/Bullet_Cluster_Coordinates.json`, `Data/03_Research/*.json` | Bullet Cluster and cluster-virial source labels are available locally. | Some files still need upstream URL/DOI normalization and transcription notes. |
+| Formula | Reviewed registry | `FORMULA_AUDIT.md` | Main virial, acceleration, Fisher-halo, and toy-drag formulas are mapped to code. | Several bridge constants remain heuristic or model-unit only. |
+| Verification | Runnable diagnostic artifact | `Code/03_Research/Research_BulletCluster_Offset.py` | Checks qualitative separation-sign agreement and records dataset hash. | Does not predict kpc offset magnitude or lensing mass map. |
+| Claims | Bounded to diagnostic cluster benchmark | this README, `METHOD.md`, `LIMITATIONS.md` | Supports exploratory cluster-dynamics diagnostics. | Cannot claim closed missing-mass theory or dark-matter-free proof. |
+| Dependencies | Important but limited | `0.0`, `0.1`, `0.3`, `0.23`, `0.26` | May inform cross-topic structure only with inherited limitations. | Any downstream theory claim must wait for calibrated artifacts. |
 
-*Generated by UET Research Assistant - Paper-Ready Version*
+## Primary Verification
+
+```powershell
+python docs/topics/0.15_Cluster_Dynamics/Code/03_Research/Research_BulletCluster_Offset.py
+```
+
+Expected artifact:
+
+- `Result/artifacts/0_15_cluster_dynamics_verification.json`
+
+Current expected status is `WARN`, because the model can show qualitative separation but has no dimensional calibration to the observed kpc offsets.
+
+## Key Files
+
+- `FORMULA_AUDIT.md`: formula registry, units, proof status, and bridge limitations.
+- `DATA_MANIFEST.md`: source labels, local paths, hashes, and benchmark roles.
+- `VERIFICATION_SPEC.md`: primary command, artifact contract, and current acceptance boundary.
+- `METHOD.md`: modeling lanes and dependency policy.
+- `LIMITATIONS.md`: explicit boundaries on cluster and dark-matter claims.
+- `Code/01_Engine/cluster_solver.py`: virial and acceleration-bridge calculations.
+- `Code/01_Engine/Engine_Cluster_Dynamics.py`: grid information-halo engine.
+- `Code/03_Research/Research_BulletCluster_Offset.py`: primary diagnostic verifier.

@@ -27,12 +27,13 @@ if not ROOT:
 
 
 from docs import ROOT_PATH
-from docs.core.reproducibility import generate_artifact, hash_dataset, save_artifact
+from docs.core.reproducibility import generate_artifact, hash_dataset, hash_file, save_artifact
 
 
 root_path = ROOT_PATH
 topic_path = root_path / "docs" / "topics" / "0.6_Electroweak_Physics"
 benchmark_package_json = root_path / "docs" / "data" / "external" / "particle_physics" / "pdg" / "electroweak_benchmark_package.json"
+source_lock_json = topic_path / "Data" / "03_Research" / "source_lock_manifest.json"
 engine_path = topic_path / "Code" / "01_Engine"
 if str(engine_path) not in sys.path:
     sys.path.insert(0, str(engine_path))
@@ -42,6 +43,15 @@ from Engine_Electroweak import M_Z_GEV, UETElectroweakSolver
 
 def load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def path_hash_record(path_string: str) -> dict:
+    path = root_path / path_string
+    return {
+        "path": path_string,
+        "sha256": hash_file(path) if path.exists() and path.is_file() else None,
+        "status": "present" if path.exists() else "missing",
+    }
 
 
 def relative_error_percent(predicted: float, observed: float) -> float:
@@ -72,6 +82,7 @@ def to_builtin(value):
 
 def main() -> int:
     benchmark = load_json(benchmark_package_json)
+    source_lock = load_json(source_lock_json) if source_lock_json.exists() else {"external_source_records": [], "derived_inputs": []}
     solver = UETElectroweakSolver()
     result = solver.solve()
     core = benchmark["core_observables"]
@@ -155,6 +166,7 @@ def main() -> int:
         ),
         config={
             "benchmark_package": str(benchmark_package_json.relative_to(root_path)),
+            "source_lock_manifest": str(source_lock_json.relative_to(root_path)),
             "engine_path": str((topic_path / "Code" / "01_Engine" / "Engine_Electroweak.py").relative_to(root_path)),
             "interpretation": "Only the core observables plus neutron lifetime act as benchmark gates; running-angle points remain diagnostic-only because they are compiled local benchmarks.",
         },
@@ -172,6 +184,18 @@ def main() -> int:
         },
         notes="Expanded electroweak benchmark separates source-linked core gates from checked-local diagnostic layers.",
     )
+    artifact["input_hashes"] = {
+        "source_lock_manifest": hash_file(source_lock_json) if source_lock_json.exists() else None,
+        "benchmark_package": hash_file(benchmark_package_json),
+        "source_records": [
+            path_hash_record(path) for path in source_lock.get("external_source_records", [])
+        ],
+    }
+    artifact["source_lock"] = {
+        "path": str(source_lock_json.relative_to(root_path)),
+        "derived_inputs": source_lock.get("derived_inputs", []),
+        "claim_boundary": source_lock.get("claim_boundary"),
+    }
     artifact_path = topic_path / "Result" / "artifacts" / "electroweak_expanded_benchmark.json"
     save_artifact(artifact, artifact_path)
 

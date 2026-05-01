@@ -64,6 +64,29 @@ Data/
   04_Competitor/
 ```
 
+### Shared external cache exception
+
+The topic mirror structure is the default, not an absolute rule.
+
+If multiple topics depend on the same large upstream source, the repository may keep a
+shared cache under a repo-level path such as:
+
+```text
+docs/data/external/<domain>/
+```
+
+Use this shared path only when it improves provenance and avoids duplicating the same
+upstream file across many topics.
+
+When this exception is used, every dependent topic must still record:
+
+- the exact shared local path
+- the upstream DOI or URL
+- whether the file is a raw source, extracted table, benchmark package, or internal working copy
+- which topic scripts and artifacts depend on it
+
+Do not create an unlabeled repo-level cache that topics use implicitly.
+
 ## 2. Required provenance fields
 
 Every structured topic must have a `DATA_MANIFEST.md` or equivalent that records:
@@ -93,6 +116,7 @@ If the repository uses a working copy, say:
 - `internal working copy`
 - `normalized repository copy`
 - `topic-local package`
+- `shared repository copy`
 
 Do not silently imply the local file is the complete upstream source if that has not been
 verified.
@@ -156,6 +180,7 @@ Expected result:
 
 - local convenience copy is presented as if it were the upstream original
 - datasets are scattered with no manifest or preprocessing note
+- repo-level shared cache exists but no topic explains why it depends on that path
 - naming like `final_final_use_this.csv` makes provenance impossible to track
 - artifact records omit which concrete input was actually used
 

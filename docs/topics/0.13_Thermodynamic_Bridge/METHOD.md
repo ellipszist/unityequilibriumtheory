@@ -17,13 +17,39 @@ This topic studies whether UET can connect entropy, information cost, and dissip
 - `Code/03_Research/Research_Landauer.py`
 - `Code/03_Research/Research_NonEquilibrium_Validation.py`
 
+## Mechanism map
+
+```mermaid
+flowchart LR
+  I["Information erasure"] --> L["Landauer lower bound<br/>E_min = k_B T ln 2"]
+  L --> B["UET beta coupling<br/>energy-information bridge"]
+  S["Microstate entropy proxy"] --> Z["Equilibrium trend<br/>E_A/N_A ~= E_B/N_B"]
+  B --> G["Thermodynamic gravity links<br/>Bekenstein / Unruh / Hawking"]
+  G --> D["0.0 integration index"]
+  B --> U["0.23 Unity Scale Link<br/>scale-bridge dependency"]
+```
+
+## Evidence matrix
+
+| Layer | Current implementation | Evidence class | Use in theory |
+|:--|:--|:--|:--|
+| Landauer identity | Exact-constant calculation in engine and verifier | `C` | Supports information-energy lower-bound bridge. |
+| Entropy/equilibrium proxy | Stirling entropy proxy and stochastic contact engine | `D/C` | Useful model sandbox; needs seeded ensemble acceptance. |
+| Bekenstein/Unruh/Hawking links | Formula-consistency checks against standard identities | `D/C` | Context for thermodynamic gravity bridge; not independent UET validation. |
+| Cattaneo heat-flux benchmark | Synthetic hysteresis dataset and Euler relaxation update | `D` | Demonstrates expected lag behavior only. |
+| Vacuum entropy sink | Topic-local heuristic simulation | `E/D` | Hypothesis sandbox; cannot support core claims yet. |
+
 ## Variable framing
 
 - Primary modeled quantities: entropy, dissipated work, information cost, relaxation terms, and bridge coefficients
+- Physical-unit formulas use SI constants where available (`k_B`, `hbar`, `c`, `G`, `e`, `h`).
+- Engine entropy/equilibrium quantities are dimensionless proxies unless an explicit physical scale is introduced.
 
 ## Assumptions
 
 - The topic currently uses selected dissipation and information-thermodynamics benchmarks rather than a universal derivation.
+- Landauer measurements are treated as lower-bound consistency checks, not exact predictions of total dissipated heat.
+- Bekenstein, Unruh, and Hawking formulas are established theoretical identities used as bridge constraints, not as standalone proof of UET.
 
 ## Domain of validity
 
@@ -32,7 +58,18 @@ This topic studies whether UET can connect entropy, information cost, and dissip
 ## Excluded cases
 
 - A universal proof across all thermodynamic regimes or all coarse-graining choices.
+- Direct experimental measurement of Hawking/Unruh temperatures in the regimes shown by the verifier.
+- Physical proof that the proposed vacuum entropy sink exists.
 
 ## Parameter sensitivity note
 
 - Reported behavior depends on coarse-graining choices and selected bridge coefficients.
+- Synthetic non-equilibrium behavior depends on `tau`, `k_cond`, and the hand-built Cattaneo benchmark.
+
+## Dependency layer
+
+| Dependency | Direction | Status |
+|:--|:--|:--|
+| `0.0_Grand_Unification` | receives this topic as a bridge constraint | Integration-only until this topic's external data and formula audit are source-locked. |
+| `0.23_Unity_Scale_Link` | depends on this topic for information-energy scale logic | Must inherit `0.13` limitations where scale links rely on Landauer/Bekenstein bridge claims. |
+| `0.26_Cosmic_Dynamic_Frame` | may reference thermodynamic frame language | Cannot use synthetic/vacuum-sink sections as empirical support. |

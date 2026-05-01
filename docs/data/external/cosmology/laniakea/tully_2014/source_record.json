@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_source_record",
+  "source_role": "Laniakea supercluster provenance anchor",
+  "title": "The Laniakea supercluster of galaxies",
+  "authors": [
+    "R. Brent Tully",
+    "Helene Courtois",
+    "Yehuda Hoffman",
+    "Daniel Pomarede"
+  ],
+  "journal": "Nature",
+  "volume": "513",
+  "pages": "71-73",
+  "published_online": "2014-09-03",
+  "doi": "10.1038/nature13674",
+  "publisher_url": "https://www.nature.com/articles/nature13674",
+  "doi_url": "https://doi.org/10.1038/nature13674",
+  "local_raw_file_status": "not_stored",
+  "local_raw_file_reason": "Topic currently stores a small landmark working copy, not the raw peculiar-velocity reconstruction.",
+  "unit_convention": {
+    "coordinate_frame": "supergalactic coordinates when used by topic-local visualization",
+    "distance": "Mpc",
+    "velocity": "km/s"
+  },
+  "benchmark_role": "source provenance target for Laniakea flow-map visualization and future flow residual checks",
+  "limitations": [
+    "This is a source record, not a raw Cosmicflows/Laniakea data table.",
+    "Topic-local landmark coordinates must remain visualization inputs until raw table, frame convention, and preprocessing are locked."
+  ]
+}

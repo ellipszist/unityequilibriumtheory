@@ -24,10 +24,40 @@ This topic studies whether UET-inspired biophysical complexity models can organi
 ## Variable framing
 
 - Primary modeled quantities: complexity proxies, biomarker-like features, neural-dynamics measures, and coupling terms
+- `Omega`, stability, coherence, complexity, and diversity values are normalized proxy scores unless a source-specific unit contract is stated.
+- Biomedical labels such as seizure, biomarker, cancer, and TCGA must be mapped to a concrete data source before they are used as evidence.
+
+## Mechanism map
+
+```mermaid
+flowchart LR
+  T13["0.13 Thermodynamic Bridge"] --> H["Homeostasis / entropy ledger"]
+  EEG["EEG reference data"] --> N["Neural synchrony / Omega checks"]
+  SYN["Synthetic gene matrix"] --> B["Biomarker stability diagnostic"]
+  OMI["Future real omics"] --> C["Cancer / TCGA entropy map"]
+  CHEM["Future prebiotic chemistry"] --> P["Protocell / origin-of-life sandbox"]
+  H --> TOPIC["0.22 biophysical complexity umbrella"]
+  N --> TOPIC
+  B --> TOPIC
+  C --> TOPIC
+  P --> TOPIC
+```
+
+## Evidence matrix
+
+| Layer | Current implementation | Evidence class | Use in theory |
+|:--|:--|:--|:--|
+| Homeostasis/negative entropy | Normalized entropy proxy with information-intake and decay terms | `D/A` | Conceptual bridge to `0.13`; needs environment entropy ledger. |
+| EEG/seizure | CHB-MIT metadata plus Bonn-style local text samples; some scripts still synthetic | `D/C` | Neural complexity sandbox until raw windows/preprocessing are source-locked. |
+| Biomarker | Seeded synthetic expression matrix with known positive controls | `D` | Code-path diagnostic only. |
+| Cancer/TCGA | Mock expression matrices in scripts | `D` | Figure/metric sandbox only. |
+| Protein/protocell | HP/proxy simulations | `D/A` | Exploratory biophysical mechanism tests. |
 
 ## Assumptions
 
 - The current data package is heterogeneous and appears to use biological and neural proxies as exploratory stand-ins.
+- The primary verifier currently validates only a seeded synthetic biomarker diagnostic.
+- EEG, origin-of-life, cancer, and protein-folding claims need separate artifacts before they can be promoted.
 
 ## Domain of validity
 
@@ -36,7 +66,11 @@ This topic studies whether UET-inspired biophysical complexity models can organi
 ## Excluded cases
 
 - A full origin-of-life mechanism or a complete validated biochemical theory.
+- Clinical biomarker validation.
+- Real EEG seizure classification or prediction.
+- Real TCGA/omics validation.
 
 ## Parameter sensitivity note
 
 - Proxy choice and preprocessing strongly affect interpretation in the current package.
+- Any topic using `0.22` as support must inherit the synthetic/local-data limitations until source-locked sub-verifiers exist.

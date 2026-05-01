@@ -1,20 +1,9 @@
 """
-UET Thermodynamic Bridge: Landauer Limit Test (V3.0)
-=====================================================
-Validates that information erasure has physical energy cost.
+UET Thermodynamic Bridge: Landauer and Thermodynamic Identity Checks.
 
-Physics:
-    E_min = k_B * T * ln(2) per bit (Landauer 1961)
-
-Experimental Verification:
-    - Nature 2012 (Berut et al.): Confirmed within margin
-    - Nature Physics 2018: Extended to quantum systems
-
-This test validates UET's claim that the beta*C*I term has thermodynamic basis.
-
-Uses UET V3.0 Master Equation:
-    Omega = V(C) + kappa|grad(C)|^2 + beta*C*I
-    Where beta = k_B * T * ln(2) (Landauer coupling)
+This verifier anchors the topic to source-backed Landauer lower-bound behavior
+and formula-consistency checks for Bekenstein/Unruh/Hawking relations. It does
+not by itself validate the full UET beta*C*I bridge as a first-principles law.
 """
 
 import sys
@@ -38,6 +27,9 @@ if not ROOT:
 
 import numpy as np
 import sys
+import json
+import hashlib
+from datetime import datetime, timezone
 
 
 import os
@@ -52,6 +44,127 @@ import importlib.util
 
 
 from docs.core.uet_glass_box import UETPathManager
+
+
+TOPIC_DIR = ROOT / "docs" / "topics" / "0.13_Thermodynamic_Bridge"
+ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_13_thermodynamic_bridge_verification.json"
+DATA_INPUTS = [
+    TOPIC_DIR / "Data" / "03_Research" / "__init__.py",
+    TOPIC_DIR / "Data" / "03_Research" / "berut_2012.json",
+    TOPIC_DIR / "Data" / "03_Research" / "cattaneo_data.json",
+    TOPIC_DIR / "Data" / "03_Research" / "experimental_data.py",
+    TOPIC_DIR / "Data" / "03_Research" / "landauer_source_lock.json",
+    ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "berut_2012" / "source_record.json",
+    ROOT / "docs" / "data" / "external" / "constants" / "codata" / "si_2019_exact_constants.json",
+]
+
+
+def _sha256(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def _input_identity():
+    items = []
+    for path in DATA_INPUTS:
+        rel = path.relative_to(ROOT).as_posix()
+        if path.exists():
+            items.append(
+                {
+                    "path": rel,
+                    "sha256": _sha256(path),
+                    "size_bytes": path.stat().st_size,
+                }
+            )
+        else:
+            items.append({"path": rel, "missing": True})
+    return items
+
+
+def _audit_metrics():
+    k_B = 1.380649e-23
+    electron_charge = 1.602176634e-19
+    T_room = 300.0
+    engine_landauer_j = landauer_energy(T_room)
+    codata_landauer_j = k_B * T_room * np.log(2)
+    engine_vs_codata_rel_error = abs(engine_landauer_j - codata_landauer_j) / codata_landauer_j
+
+    jun_observed_eV = 0.028
+    landauer_eV = engine_landauer_j / electron_charge
+    jun_ratio_to_lower_bound = jun_observed_eV / landauer_eV
+
+    g_earth = 9.8
+    earth_unruh_k = unruh_temperature(g_earth)
+
+    M_sun = 1.989e30
+    solar_hawking_k = surface_gravity_temperature(M_sun)
+    solar_entropy_planck = bekenstein_bound_black_hole(M_sun)
+
+    return {
+        "landauer_300K_engine_J": engine_landauer_j,
+        "landauer_300K_codata_J": codata_landauer_j,
+        "landauer_engine_vs_codata_relative_error": engine_vs_codata_rel_error,
+        "jun_2014_observed_eV": jun_observed_eV,
+        "landauer_300K_engine_eV": landauer_eV,
+        "jun_2014_ratio_to_landauer_lower_bound": jun_ratio_to_lower_bound,
+        "unruh_temperature_earth_g_K": earth_unruh_k,
+        "hawking_temperature_solar_mass_K": solar_hawking_k,
+        "bekenstein_hawking_entropy_solar_mass_planck_units": solar_entropy_planck,
+    }
+
+
+def _write_verification_artifact(test_results, plot_paths, metrics):
+    test_pass = all(item["passed"] for item in test_results)
+    plot_pass = all(item["saved"] for item in plot_paths)
+    formula_pass = metrics["landauer_engine_vs_codata_relative_error"] < 1e-12
+    lower_bound_pass = metrics["jun_2014_ratio_to_landauer_lower_bound"] >= 1.0
+
+    warnings = []
+    if not plot_pass:
+        warnings.append("One or more optional visualization files failed to render.")
+    warnings.append(
+        "Berut/CODATA source records and source-lock hashes are pinned, but Berut numeric rows remain topic-derived summaries rather than raw archived tables."
+    )
+    warnings.append(
+        "Bekenstein/Jacobson checks are formula-consistency checks, not independent tests of UET dynamics."
+    )
+
+    status = "PASS" if test_pass and plot_pass and formula_pass and lower_bound_pass and not warnings else "WARN"
+    if not (test_pass and formula_pass and lower_bound_pass):
+        status = "FAIL"
+
+    artifact = {
+        "schema_version": "1.1",
+        "topic": "0.13_Thermodynamic_Bridge",
+        "command": ".venv\\Scripts\\python.exe docs\\topics\\0.13_Thermodynamic_Bridge\\Code\\03_Research\\Research_Landauer.py",
+        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+        "status": status,
+        "claim_class": "C",
+        "inputs": _input_identity(),
+        "metrics": metrics,
+        "thresholds": {
+            "landauer_engine_vs_codata_relative_error_max": 1e-12,
+            "jun_2014_observed_to_landauer_lower_bound_min": 1.0,
+            "required_test_pass_count": len(test_results),
+            "required_plot_artifacts": len(plot_paths),
+        },
+        "test_results": test_results,
+        "plot_artifacts": plot_paths,
+        "warnings": warnings,
+        "interpretation": (
+            "The Landauer relation is anchored to exact SI constants and topic-local literature summary values. "
+            "The verifier currently supports formula-consistency and lower-bound checks; the UET-specific "
+            "thermodynamic bridge still requires source-normalized data, uncertainty propagation, and dependency proof."
+        ),
+    }
+    ARTIFACT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    ARTIFACT_PATH.write_text(json.dumps(artifact, indent=2), encoding="utf-8")
+    print(f"\n[Artifact] Verification artifact written: {ARTIFACT_PATH}")
+    print(f"[Artifact] Status: {status}")
+    return artifact
 
 # Initialize Engine for calculations
 try:
@@ -94,7 +207,7 @@ def landauer_energy(T: float, bits: float = 1.0) -> float:
 
 def landauer_energy_eV(T: float, bits: float = 1.0) -> float:
     """Same as landauer_energy but returns eV."""
-    eV_to_J = 1.602e-19
+    eV_to_J = 1.602176634e-19
     return landauer_energy(T, bits) / eV_to_J
 
 
@@ -214,16 +327,16 @@ def test_landauer_limit():
         E_eV = landauer_energy_eV(T)
         print(f"{name} ({T}K){'':<6} {E_J:.3e}       {E_eV:.6f}")
 
-    # Experimental comparison (Nature 2012)
-    print("\n[DATA] Experimental Verification (Nature 2012):")
+    # Source-backed lower-bound comparison. The numeric row is still topic-derived.
+    print("\n[DATA] Lower-Bound Benchmark Summary:")
     T_exp = 300  # Room temperature
     E_landauer = landauer_energy_eV(T_exp)
-    E_observed = 0.028  # eV (approximate, 44% above limit in 2016 experiment)
+    E_observed = 0.028  # eV topic-derived literature summary; see DATA_MANIFEST
 
     error = abs(E_observed - E_landauer) / E_landauer * 100
     print(f"   Landauer Prediction: {E_landauer:.6f} eV")
-    print(f"   Experimental (2016): {E_observed:.3f} eV (44% above limit)")
-    print(f"   [OK] Landauer limit CONFIRMED as lower bound")
+    print(f"   Observed benchmark summary: {E_observed:.3f} eV")
+    print("   [OK] Observed summary remains above the Landauer lower bound")
 
     return True
 
@@ -286,8 +399,8 @@ def test_jacobson_temperature():
         T_hawk = surface_gravity_temperature(M)
         print(f"   {name}: T = {T_hawk:.3e} K")
 
-    print("\n[OK] Jacobson's insight: delta_Q = TdS -> Einstein equations")
-    print("   This means gravity emerges from thermodynamic equilibrium!")
+    print("\n[OK] Jacobson bridge constraint: delta_Q = T dS is consistent with thermodynamic-gravity literature")
+    print("   Interpretation: formula-consistency context, not an independent UET gravity proof.")
 
     return True
 
@@ -316,9 +429,10 @@ def run_all_tests():
     print(f"\nTotal: {passed}/{len(results)} tests passed")
 
     if passed == len(results):
-        print("* THERMODYNAMIC BRIDGE VALIDATED *")
+        print("* THERMODYNAMIC BRIDGE FORMULA CHECKS PASSED *")
 
     # --- VISUALIZATION ---
+    plot_paths = []
     try:
         from docs.core import uet_viz
 
@@ -350,7 +464,7 @@ def run_all_tests():
                 x=[300],
                 y=[0.028],
                 mode="markers",
-                name="Exp (2016)",
+                name="Observed erasure benchmark",
                 marker=dict(color="blue", size=10),
             )
         )
@@ -360,7 +474,14 @@ def run_all_tests():
             xaxis_title="Temperature (K)",
             yaxis_title="Erasure Cost (eV)",
         )
-        uet_viz.save_plot(fig1, "landauer/landauer_viz.png", result_dir)
+        saved = uet_viz.save_plot(fig1, "landauer/landauer_viz.png", result_dir)
+        plot_paths.append(
+            {
+                "name": "landauer_limit_curve",
+                "path": str(saved.relative_to(TOPIC_DIR)) if saved else None,
+                "saved": saved is not None,
+            }
+        )
 
         # 2. Bekenstein: Entropy vs Mass (Black Hole)
         M_sun = 1.989e30  # Define for viz
@@ -385,7 +506,14 @@ def run_all_tests():
             xaxis_type="log",
             yaxis_type="log",
         )
-        uet_viz.save_plot(fig2, "bekenstein/bekenstein_viz.png", result_dir)
+        saved = uet_viz.save_plot(fig2, "bekenstein/bekenstein_viz.png", result_dir)
+        plot_paths.append(
+            {
+                "name": "bekenstein_hawking_entropy_curve",
+                "path": str(saved.relative_to(TOPIC_DIR)) if saved else None,
+                "saved": saved is not None,
+            }
+        )
 
         # 3. Jacobson: T_unruh vs Acceleration
         fig3 = uet_viz.go.Figure()
@@ -409,14 +537,26 @@ def run_all_tests():
             xaxis_type="log",
             yaxis_type="log",
         )
-        uet_viz.save_plot(fig3, "jacobson/jacobson_viz.png", result_dir)
+        saved = uet_viz.save_plot(fig3, "jacobson/jacobson_viz.png", result_dir)
+        plot_paths.append(
+            {
+                "name": "unruh_temperature_curve",
+                "path": str(saved.relative_to(TOPIC_DIR)) if saved else None,
+                "saved": saved is not None,
+            }
+        )
 
         print("\n[Viz] Generated 3 bridge visualizations.")
 
     except Exception as e:
         print(f"Viz Error: {e}")
+        plot_paths.append({"name": "visualization_block", "path": None, "saved": False, "error": str(e)})
 
-    return passed == len(results)
+    test_results = [
+        {"name": name, "passed": bool(result)} for name, result in results
+    ]
+    artifact = _write_verification_artifact(test_results, plot_paths, _audit_metrics())
+    return artifact["status"] != "FAIL"
 
 
 if __name__ == "__main__":

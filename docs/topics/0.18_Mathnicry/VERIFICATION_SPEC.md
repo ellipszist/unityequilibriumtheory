@@ -2,15 +2,33 @@
 
 - Primary command:
   - `python docs/topics/0.18_Mathnicry/Code/03_Research/Research_BSD_Elliptic_Unity.py`
+  - Windows repo venv command used for audit runs:
+    - `$env:PYTHONIOENCODING='utf-8'; $env:PYTHONUTF8='1'; .\.venv\Scripts\python.exe docs\topics\0.18_Mathnicry\Code\03_Research\Research_BSD_Elliptic_Unity.py`
 - Inputs:
   - `Data/Download_Quantum_Data.py`
 - Baseline:
-  - Classical theorem statements, topic-local proof scripts, and internal diagnostic outputs.
+  - Internal surrogate BSD demonstration using `Engine_Elliptic_Resonance.py`.
 - Reported metrics:
-  - consistency checks, bounded-domain counterexample searches, and script-reported scaling or stability diagnostics
+  - curve count
+  - surrogate rank indicator for each declared curve role
+  - `Omega(s=1)` for each surrogate curve
+  - rank-indicator mismatch count
+  - input/helper file hashes
 - Fixed threshold:
-  - Working threshold for this standards pass: the primary script must run without error, use the stated input package, and write a summary artifact under Result/artifacts/. A stronger numeric acceptance threshold must be frozen in a later BASELINE_COMPARISON.md pass.
+  - Working threshold for this standards pass: the primary script must run without error and write a summary artifact under `Result/artifacts/`.
+  - Artifact status should be `WARN` when surrogate rank indicators contradict the script's declared curve roles.
+  - This is a run-contract threshold only; it is not a theorem acceptance boundary.
 - Artifact target:
   - Result/artifacts/0_18_mathnicry_verification.json
+- Latest primary artifact identity:
+  - Status: `WARN`
+  - Timestamp: `2026-04-29T10:43:54.701203+00:00`
+  - Schema: `1.1`
+  - Curve count: `2`
+  - Rank-indicator mismatches: `1`
+- Regeneration note:
+  - `Code/03_Research/Research_BSD_Elliptic_Unity.py` emits `WARN` when the surrogate rank indicator contradicts the declared curve role.
 - Interpretation:
-  - Treat output as an internal benchmark artifact only. Do not upgrade claim language to 'solved', 'verified', or 'exact' until a topic-specific baseline-comparison pass is complete.
+  - Treat output as an internal surrogate artifact only. Do not upgrade claim language to theorem-level, proof-level, solved, verified, or exact.
+  - The current BSD branch does not compute actual elliptic-curve rank or L-function order of vanishing.
+  - The UTF-8 environment variables are required on this Windows shell because logger/status output uses Unicode glyphs.

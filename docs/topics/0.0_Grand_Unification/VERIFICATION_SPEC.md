@@ -2,15 +2,39 @@
 
 - Primary command:
   - `python docs/topics/0.0_Grand_Unification/Code/03_Research/Verify_Omni.py`
+  - Windows repo venv command used for audit runs:
+    - `$env:PYTHONIOENCODING='utf-8'; $env:PYTHONUTF8='1'; .\.venv\Scripts\python.exe docs\topics\0.0_Grand_Unification\Code\03_Research\Verify_Omni.py`
 - Inputs:
-  - No canonical topic-local dataset is currently locked.
+  - `Data/03_Research/integration_dependency_manifest.json`
+  - subordinate artifact paths listed in that manifest
 - Baseline:
-  - Cross-topic consistency against the current repository inventory and cited subordinate benchmarks.
+  - Cross-topic consistency against the current repository inventory, cited subordinate benchmarks, and subordinate artifact PASS/WARN/FAIL statuses.
 - Reported metrics:
-  - symbolic consistency diagnostics, script-completion checks, and explicit mismatch logging
+  - selected component metrics for beta `1.0` and `0.1`
+  - Weinberg angle, tau mass, Bell-state entropy, critical Reynolds value, atomic H-alpha error, and other dashboard metrics
+  - subordinate artifact status, claim class, timestamp, hash, and missing-artifact count
+  - inherited limitation notes
 - Fixed threshold:
-  - Working threshold for this standards pass: the primary script must run without error, use the stated input package, and write a summary artifact under Result/artifacts/. A stronger numeric acceptance threshold must be frozen in a later BASELINE_COMPARISON.md pass.
+  - Working threshold for this standards pass: the primary script must run without error and write a summary artifact under `Result/artifacts/`.
+  - Component gates currently checked directly by the script:
+    - `abs(weinberg_angle - 0.2312) <= 0.001`
+    - `abs(tau_mass_MeV - 1776.9) <= 1.0`
+    - `abs(entanglement_entropy - 1.0) <= 0.001`
+  - This is an integration threshold, not a theory-closure threshold.
+  - Any missing or `FAIL` subordinate artifact makes `0.0` fail the dependency gate.
+  - Any `WARN` subordinate artifact keeps `0.0` at `WARN` even if the selected numeric gates pass.
 - Artifact target:
   - Result/artifacts/0_0_grand_unification_verification.json
+- Latest primary artifact identity:
+  - Status: `WARN`
+  - Timestamp: `2026-04-29T10:47:43.936207+00:00`
+  - Schema: `1.1`
+  - beta `1.0` Weinberg angle: `0.24737627046625538`
+  - beta `1.0` tau mass: `1776.994275018774 MeV`
+  - beta `1.0` entanglement entropy: `1.0`
+  - Warning reason: Weinberg angle gate misses `0.2312` by more than `0.001`.
 - Interpretation:
-  - Treat output as an internal benchmark artifact only. Do not upgrade claim language to 'solved', 'verified', or 'exact' until a topic-specific baseline-comparison pass is complete.
+  - Treat output as an internal integration artifact only.
+  - A pass means selected component engines ran, selected dashboard gates were recorded, and all declared subordinate artifacts were present and `PASS`.
+  - It does not prove grand unification and does not override subordinate topic limitations.
+  - The UTF-8 environment variables are required on this Windows shell because subordinate loggers may emit Unicode glyphs.

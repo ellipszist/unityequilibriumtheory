@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_source_record",
+  "source_role": "CHB-MIT scalp EEG provenance anchor",
+  "title": "CHB-MIT Scalp EEG Database",
+  "author": "John Guttag",
+  "publisher": "PhysioNet",
+  "version": "1.0.0",
+  "published": "2010-06-09",
+  "doi": "10.13026/C2K01R",
+  "doi_url": "https://doi.org/10.13026/C2K01R",
+  "dataset_url": "https://physionet.org/content/chbmit/1.0.0/",
+  "license": "Open Data Commons Attribution License v1.0",
+  "local_raw_file_status": "not_stored",
+  "local_raw_file_reason": "Raw EDF records are not archived in this repository; topic currently stores summaries and derived reference features.",
+  "unit_convention": {
+    "sampling_rate": "Hz",
+    "time": "seconds",
+    "signal": "EEG channel amplitudes as EDF source units, if raw records are later archived"
+  },
+  "benchmark_role": "source provenance target for future real EEG seizure-window verifier",
+  "limitations": [
+    "This source record does not certify the topic-local summaries as raw CHB-MIT windows.",
+    "Patient/record identifiers, exact windows, preprocessing, and raw EDF hashes must be added before EEG claims are upgraded."
+  ]
+}

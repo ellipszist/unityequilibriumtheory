@@ -1,81 +1,78 @@
-# Topic 0.4: Superconductivity & Superfluids - Code
+# Topic 0.4 Code: Superconductivity and Superfluids
 
-Validates UET against the Critical Temperature ($T_c$) of superconductors and superfluid phase transitions.
-- **Cooper Pairing** -> $\nabla C$ minimization (Phase Lock)
-- **Zero Viscosity** -> Entropy $S \to 0$ (Axiom 5)
+This code folder contains the current superconductivity/superfluid engines, proof notes,
+research scripts, and competitor utilities. The active hardening target is not "make every
+script pass"; it is to turn superconductivity claims into source-locked, formula-audited,
+and artifact-backed model gates.
 
-## 5x4 Structure
+## Execution Map
 
-```
-Code/
-  01_Engine/
-    Engine_Superconductivity.py   # Upgrade V3.3: Relativistic Z-Scaling (Pb Error: 6.4%)
-  02_Proof/
-    Proof_Cooper_Pairing.py       # Analytical derivation of binding energy
-  03_Research/
-    Experiment_Superconductor_Data.py # Material database
-    Research_Superconductivity.py     # Calibrated Tc Prediction
-    Research_Plasma.py                # Collective behavior validation
-    Research_Quantum_Phenomena.py     # Josephson Junction simulation
-    Research_Superfluids.py           # Helium-4 Lambda point analysis
-  04_Competitor/
-    Competitor_Standard_Model_Super.py # BCS Theory Benchmark
-    super_solver.py                    # Gap equation solver utility
+```mermaid
+flowchart TD
+    A["Experiment_Superconductor_Data.py"] --> B["real_superconductor_data.json"]
+    B --> C["McMillan raw baseline artifact"]
+    D["Engine_Superconductivity.py"] --> E["Allen-Dynes/UET candidate predictions"]
+    F["comprehensive_superconductor_data.json"] --> E
+    G["source_lock_manifest.json"] --> C
+    G --> E
+    H["Proof_Cooper_Pairing.py"] --> I["conditional BCS-style proof note"]
 ```
 
-## 🚀 Run Commands
+## Primary Command
 
 ```powershell
-# Navigate to project root
-cd c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.9.0
+python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment_Superconductor_Data.py
+```
 
-# [1] Core Engine Logic (Upgraded V3.3)
+Artifact:
+
+- `docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/0_4_superconductivity_superfluids_verification.json`
+
+Current verified result:
+
+| Layer | Script | Current artifact status | Scientific role |
+| :-- | :-- | :-- | :-- |
+| Raw McMillan baseline | `Code/03_Research/Experiment_Superconductor_Data.py` | `run_status=PASS`, `model_gate_status=FAIL` | blocker analysis for current raw parameter package |
+| Allen-Dynes/UET candidate engine | `Code/01_Engine/Engine_Superconductivity.py` | no primary gate artifact yet | next verifier target |
+| Cooper-pair symbolic proof | `Code/02_Proof/Proof_Cooper_Pairing.py` | proof note only | conditional BCS-style relation, not universal material proof |
+| Superfluid/plasma scripts | `Code/03_Research/*` | diagnostic scripts | separate future gates if they become claim-bearing |
+
+## Current Failure Signal
+
+The current primary artifact records:
+
+- average relative error: `62.4%`
+- materials tested: `10`
+- materials within 20 percent: `1`
+- model gate: `FAIL`
+- worst current row: Vanadium, `156.9%` relative error
+
+This is useful. It says the raw McMillan working-copy package is not a strong prediction
+gate yet. The next research work is to improve row-level source provenance, separate
+calibrated inputs from predictive inputs, and create a held-out Allen-Dynes/UET verifier.
+
+## Run Commands
+
+```powershell
 python docs/topics/0.4_Superconductivity_Superfluids/Code/01_Engine/Engine_Superconductivity.py
-
-# [2] Mathematical Proof
 python docs/topics/0.4_Superconductivity_Superfluids/Code/02_Proof/Proof_Cooper_Pairing.py
-
-# [3] Calibrated Research
+python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment_Superconductor_Data.py
 python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Research_Superconductivity.py
-
-# [4] Other Phenomena
-python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Research_Plasma.py
-python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Research_Quantum_Phenomena.py
 python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Research_Superfluids.py
-
-# [5] Competitor Benchmark
+python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Research_Plasma.py
 python docs/topics/0.4_Superconductivity_Superfluids/Code/04_Competitor/Competitor_Standard_Model_Super.py
 ```
 
-## 📊 Test Results
+## Hardening Queue
 
-| Script | Test Focus | Result | Status |
-|--------|------------|--------|--------|
-| Engine_Superconductivity.py | Heavy Elements (Pb) | **6.4% Error (Was 37%)** | ✅ PASS |
-| Engine_Superconductivity.py | Heavy Elements (Hg) | **8.5% Error (Was 47%)** | ✅ PASS |
-| Proof_Cooper_Pairing.py | Binding Energy | Negative Delta E | ✅ PASS |
-| Research_Superfluids.py | Viscosity | Zero at T < T_lambda | ✅ PASS |
-| Competitor_Standard_Model_Super.py | BCS Baseline | High Accuracy | ✅ PASS |
+| Priority | Task | Why it matters |
+| --: | :-- | :-- |
+| 1 | Normalize row-level material inputs against upstream records or explicit literature tables | current errors may reflect mixed `Theta_D`, `omega_log`, `lambda`, and `mu_star` provenance |
+| 2 | Add Allen-Dynes/UET verifier with calibrated-input labels | distinguishes physical model improvement from inverse fitting |
+| 3 | Add held-out material split | prevents selected-material tuning from becoming a prediction claim |
+| 4 | Split SI circulation from display-scaled vortex output | prevents unit confusion in superfluid diagnostics |
 
-**Total: 5/5 PASS (Engine Upgraded)**
+## Claim Boundary
 
-## Engine/Proof Analysis
-
-### Current Status
-Uses `Engine_Superconductivity.py` V3.3 with **Relativistic Corrections**.
-Successfully predicts Isotope Effect and Heavy Fermion coupling boost.
-
-### Recommendation
-- **Engine needed?** Yes. Now robust across periodic table (s/p blocks).
-- **Proof needed?** Yes. Derivation of phase locking is solid.
-
-## 🧬 Key Physics
-
-```
-Tc ~ <theta_D> * exp(-1/lambda_eff)
-Lambda_eff = Lambda * (1 + 1.5 * (Z/137)^2)
-```
-
-## ASCII Note
-
-All Unicode replaced with ASCII for Windows compatibility.
+Do not use this folder to claim robust prediction, proof of universal superconductivity, or
+high-Tc solution until the primary artifact and formula audit support that level of wording.

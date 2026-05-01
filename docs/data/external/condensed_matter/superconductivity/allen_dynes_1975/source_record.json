@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_source_record",
+  "source_role": "Allen-Dynes transition-temperature correction formula context",
+  "source_label": "P. B. Allen and R. C. Dynes, Transition temperature of strong-coupled superconductors reanalyzed",
+  "primary_reference_url": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.12.905",
+  "doi": "10.1103/PhysRevB.12.905",
+  "publisher": "American Physical Society",
+  "publication": "Physical Review B 12, 905",
+  "published_date": "1975-08-01",
+  "checked_date": "2026-04-30",
+  "unit_convention": "omega_log in Kelvin-equivalent temperature units; lambda, mu_star, f1, and f2 dimensionless",
+  "benchmark_role": "source for Allen-Dynes engine candidate formulas; not the current primary verifier gate",
+  "repository_use": [
+    "docs/topics/0.4_Superconductivity_Superfluids/Code/01_Engine/Engine_Superconductivity.py",
+    "docs/topics/0.4_Superconductivity_Superfluids/FORMULA_AUDIT.md"
+  ],
+  "limitations": [
+    "This source record pins the formula reference only.",
+    "The topic's UET coherence and relativistic-Z corrections are not part of the Allen-Dynes source and must remain separate heuristic bridge entries."
+  ]
+}

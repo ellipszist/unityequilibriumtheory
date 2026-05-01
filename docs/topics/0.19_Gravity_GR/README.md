@@ -1,91 +1,66 @@
 ---
 layout: article
 title: "UET Topic 0.19: Gravity GR"
-description: "Research module for Gravity GR within the Unity Equilibrium Theory framework."
+description: "Gravity constant, weak-field formula, and GR-bridge diagnostics within the Unity Equilibrium Theory framework."
 ---
 
-# 🛰️ 0.19 Gravity & General Relativity
-
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.19: Gravity & General Relativity",
-  "description": "Deriving Einstein's Field Equations from Information Flux and avoiding singularities.",
-  "about": "General Relativity, Gravity, Einstein's Equations, Information Flux, UET"
-}
--->
+# 0.19 Gravity & General Relativity
 
 > [!NOTE]
-> **AI-Digest**: UET derives General Relativity as the flux of information. We re-derive Einstein's equations, predicting light bending (1.751 arcsec) and perihelion precession while naturally preventing singularities. / UET สร้างทฤษฎีสัมพัทธภาพทั่วไปขึ้นใหม่จากการไหลของข้อมูล (Flux) ทำให้เราคำนวณการเบี่ยงเบนของแสงและวงโคจรของดาวพุธได้แม่นยำ พร้อมทั้งแก้ปัญหา 'ซิงกูลาริตี' ได้อย่างเป็นธรรมชาติ
+> **AI-Digest**: This topic currently has a CODATA gravitational-constant checkpoint and a reviewed weak-field formula registry. The primary artifact verifies that the engine constant package matches the local CODATA working copy; it does not yet derive Einstein's equations, validate light bending/perihelion precession, or solve singularities.
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Information_Flow-blueviolet)
-![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
-![Scientific_Rigor](https://img.shields.io/badge/Rigor-Einstein_Bridge-orange)
+![Status](https://img.shields.io/badge/Status-Constant%20Checkpoint-blue)
+![Claim_Class](https://img.shields.io/badge/Claim%20Class-C%20Internal%20Checkpoint-yellow)
+![Verifier](https://img.shields.io/badge/Verifier-Artifact%20Required-blue)
 
-> **"Gravity is the flux of Information. UET derives the Equivalence Principle and Einstein's Field Equations directly from the geometry of the Information Manifold."**
+## Research Role
 
----
+Topic `0.19` is the gravity/GR bridge layer. Its immediate role is to keep constants, weak-field formulas, equivalence-principle diagnostics, and short-range gravity datasets auditable before any stronger theoretical claim is made. It is important for `0.0`, `0.2`, `0.3`, `0.21`, `0.23`, and `0.26`, but those topics must inherit its current limitations.
 
-## 1. 📂 5x4 Grid Structure
-
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | Analysis of Gravity Engine and Equivalence Principle. |
-| **Ref/** | Eöt-Wash (2008), MICROSCOPE (2022) - Equivalence Tests. |
-| **Data/** | G Constant (CODATA), Solar System Ephemerides. |
-| **Code/** | Logic levels: 01_Engine (Metric Solver), 02_Proof (Equivalence). |
-| **Result/** | Light Bending, Perihelion Precession, G-Constant. |
-
----
-
-## 🔗 Theory Connection
+## Conceptual Map
 
 ```mermaid
-graph TD
-    Mass["Massive Object"] -- Creates --> InfoDensity["High Information Density"]
-    InfoDensity -- Causes --> Curvature["Field Manifold Curvature"]
-    Curvature -- Affects --> Light["Light Path (Bending)"]
-    Curvature -- Affects --> Time["Time Dilation"]
-    
-    style Mass fill:#e1f5fe,stroke:#01579b
-    style Curvature fill:#fff3e0,stroke:#e65100
-    style InfoDensity fill:#e8f5e9,stroke:#1b5e20
+flowchart LR
+    codata["CODATA 2018 working copy"] --> constants["G, c, hbar constant package"]
+    constants --> planck["Planck unit definitions"]
+    constants --> verifier["Research_G_Constant.py artifact"]
+    verifier --> claim["Claim Class C: constant checkpoint"]
+
+    weak["Weak-field formulas"] --> demo["Engine demos: g, r_s, n(r)"]
+    eq["Equivalence eta script"] --> open["Open: not experimental validation"]
+    short["Eot-Wash / MICROSCOPE data"] --> future["Future artifacts"]
+    open --> deps["Inherited limitation for downstream topics"]
+    future --> deps
 ```
 
----
+## Evidence and Status Matrix
 
-## 🎯 Problem & Solution
+| Layer | Current status | Evidence path | Claim allowed now | Blocker |
+| :-- | :-- | :-- | :-- | :-- |
+| Data | CODATA/Eot-Wash/MICROSCOPE working copies with source labels | `Data/03_Research/*.json` | Local constants and comparator datasets are inspectable. | Some source URLs/licenses and extraction notes still need normalization. |
+| Formula | Reviewed registry | `FORMULA_AUDIT.md` | Constant package, Planck definitions, Newtonian/Schwarzschild diagnostics, eta, and Yukawa comparator are mapped. | Several theoretical bridges remain diagnostics or open lanes. |
+| Verification | Runnable primary artifact | `Code/03_Research/Research_G_Constant.py` | Confirms engine `G` matches CODATA working copy under declared threshold. | This is a copied/source-constant checkpoint, not a derivation. |
+| Claims | Bounded to internal checkpoint | this README, `METHOD.md`, `LIMITATIONS.md` | May state that the engine constant package is internally consistent with CODATA. | Cannot claim GR derivation, light-bending validation, or singularity avoidance. |
+| Dependencies | High-impact core bridge | `0.0`, `0.2`, `0.3`, `0.21`, `0.23`, `0.26` | Downstream topics may cite constants/weak-field formulas with limitations. | Strong GR/cosmology claims need future artifacts. |
 
-- **The Problem:** General Relativity describes *how* space curves but not *why*. It also fails at the center of black holes (Singularities) and fundamentally clashes with Quantum Mechanics.
-- **The Solution:** UET proposes that Space-Time is an **Information Manifold**. "Mass" is simply a knot of high information density. Gravity is the **Information Flux** flowing towards these knots to equalize entropy (Axiom 3).
-- **The Result:** We re-derive Einstein's equations ($G_{\mu\nu} = 8\pi T_{\mu\nu}$) from information theory, predict the exact bending of light (1.75 arcsec), and naturally prevent singularities via the Information Saturation limit.
-
----
-
-## 📊 Test Results
-
-| Category | Test | Result | Status |
-| :--- | :--- | :--- | :--- |
-| **01_Engine** | Light Bending | **1.751 arcsec** | ✅ PASS |
-| **01_Engine** | Mercury Perihelion | **43.1 arcsec** | ✅ PASS |
-| **02_Proof** | Equivalence (η) | **Zero (Derived)** | ✅ PASS |
-| **03_Research** | G Constant | Matches CODATA | ✅ PASS |
-
----
-
-## 2. ⚡ Quick Start
+## Primary Verification
 
 ```powershell
-python docs/topics/0.19_Gravity_GR/Code/01_Engine/Engine_Gravity_GR.py
+python docs/topics/0.19_Gravity_GR/Code/03_Research/Research_G_Constant.py
 ```
 
-## 📁 Key Files
+Expected artifact:
 
-- [Engine_Gravity_GR.py](./Code/01_Engine/Engine_Gravity_GR.py): Relativistic Metric Solver.
-- [ANALYSIS_Engine_Gravity_GR.md](./Doc/ANALYSIS_Engine_Gravity_GR.md): Derivation of GR from Info.
-- [test_equivalence_principle.py](./Code/equivalence/test_equivalence_principle.py): Eöt-Wash validation.
+- `Result/artifacts/0_19_gravity_gr_verification.json`
 
----
-*Generated by UET Research Assistant - Paper-Ready Version*
+The artifact records dataset hash, CODATA DOI, formula IDs, threshold, engine `G`, and Planck-unit metrics.
+
+## Key Files
+
+- `FORMULA_AUDIT.md`: formula registry, units, constants, proof status, and failure modes.
+- `DATA_MANIFEST.md`: CODATA, Eot-Wash, and MICROSCOPE working-copy provenance.
+- `VERIFICATION_SPEC.md`: primary command, threshold, and artifact contract.
+- `METHOD.md`: evidence lanes and dependency policy.
+- `LIMITATIONS.md`: boundaries for GR, equivalence, and singularity claims.
+- `Code/01_Engine/Engine_Gravity_GR.py`: constant package and weak-field calculations.
+- `Code/03_Research/Research_G_Constant.py`: primary verifier.

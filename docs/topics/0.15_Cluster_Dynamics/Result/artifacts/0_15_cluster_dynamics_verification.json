@@ -1,52 +1,70 @@
 {
-  "schema_version": "1.0",
-  "topic": "0.15_Cluster_Dynamics",
-  "timestamp_utc": "2026-04-23T01:31:18.880760+00:00",
-  "repo_root": "C:\\Users\\santa\\Desktop\\uet_harness",
-  "python_executable": "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
-  "verification_spec": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.15_Cluster_Dynamics\\VERIFICATION_SPEC.md",
-  "artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.15_Cluster_Dynamics\\Result\\artifacts\\0_15_cluster_dynamics_verification.json",
+  "claim_class": "D - qualitative diagnostic only",
   "command": "python docs/topics/0.15_Cluster_Dynamics/Code/03_Research/Research_BulletCluster_Offset.py",
-  "input_hashes": [
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.2"
+  },
+  "failure_reason": "Qualitative separation sign matches, but the toy model is not dimensionally calibrated to kpc offsets.",
+  "formula_ids": [
+    "CL15-DRAG-TOY",
+    "CL15-OFFSET-SIGN-GATE"
+  ],
+  "generated_at_utc": "2026-04-29T16:46:26.492032+00:00",
+  "inputs": [
     {
-      "path": "Data/03_Research/chandra_clusters_2006.json",
-      "status": "present",
-      "sha256": "ad44e3ae7784ca713744ad91da9d787d471a57f79f3a96f3c28cc2efd6152185",
-      "bytes": "876"
-    },
-    {
-      "path": "Data/03_Research/cluster_virial_1998.json",
-      "status": "present",
-      "sha256": "b3c04cbf34d5bbf817834dc0aff74cd086fdaac1f9e8929c7f7441fe84810c51",
-      "bytes": "1224"
-    },
-    {
-      "path": "Data/03_Research/cluster_virial_data.json",
-      "status": "present",
-      "sha256": "9efd2f926270a4e940eef30385580877647da90dc84d68b47f1540af457df060",
-      "bytes": "617"
-    },
-    {
-      "path": "Data/03_Research/download_data.py",
-      "status": "present",
-      "sha256": "5a43ddd449ea2f7f908ee5f808009b87b833539c020b771621bb06ddf8862b46",
-      "bytes": "3664"
+      "path": "docs/topics/0.15_Cluster_Dynamics/Data/Bullet_Cluster_Coordinates.json",
+      "sha256": "c67b5177d6175602faab916f4375804c8dd348021cd2cca04cea324a087b785e",
+      "source": "Clowe et al. 2006 (ApJ 648:L109-L113)",
+      "system": "1E 0657-558 (Bullet Cluster)",
+      "unit_system": "1 arcsec = 4.415 kpc"
     }
   ],
-  "timeout_seconds": 20,
-  "resolved_command": [
-    "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
-    "docs/topics/0.15_Cluster_Dynamics/Code/03_Research/Research_BulletCluster_Offset.py"
+  "limitations": [
+    "The current collision model is one-dimensional and dimensionless.",
+    "The artifact supports only a qualitative separation-sign diagnostic.",
+    "It does not predict the observed 480 kpc or 120 kpc offsets.",
+    "It does not establish a dark-matter-free cluster theory."
   ],
-  "environment_overrides": {
-    "PYTHONIOENCODING": "utf-8",
-    "PYTHONUTF8": "1",
-    "PYTHONPATH_PREFIX": "C:\\Users\\santa\\Desktop\\uet_harness"
+  "metrics": {
+    "dimensional_calibration_present": false,
+    "model_offset_model_units": 20.000025131774805,
+    "observed_offsets_kpc": {
+      "main_cluster": 480,
+      "sub_cluster_bullet": 120
+    },
+    "offset_sign_match": true
   },
-  "status": "ran",
-  "exit_code": 0,
-  "passed_run_contract": true,
-  "duration_seconds": 0.237,
-  "stdout_tail": "============================================================\n\ud83d\udd2d UET RESEARCH: BULLET CLUSTER OFFSET\n============================================================\nSimulating Collision (t=0 to 30.0)...\nFinal Positions:\n  Gas (Visible X-ray): -0.00\n  Halo (Lensing Mass): 20.00\n  Offset: 20.00 units\n  \u2705 PASS: Halo separated from Gas (Matches Bullet Cluster data).\n  Interpretation: Info Field flows without hydro-drag.\n",
-  "stderr_tail": ""
+  "model": {
+    "drag_gas": 0.05,
+    "drag_halo": 0.0,
+    "dt": 0.1,
+    "offset_model_units": 20.000025131774805,
+    "steps": 300,
+    "x_gas_final_model_units": -2.513177480789206e-05,
+    "x_halo_final_model_units": 19.999999999999996
+  },
+  "observations": [
+    {
+      "component": "main_cluster",
+      "lensing_peak_label": "Potential Well (Dark Matter/UET \u03a9-Field)",
+      "observed_separation_positive": true,
+      "offset_kpc": 480,
+      "xray_peak_label": "Baryonic Gas (Plasma)"
+    },
+    {
+      "component": "sub_cluster_bullet",
+      "lensing_peak_label": "Potential Well (Bullet)",
+      "observed_separation_positive": true,
+      "offset_kpc": 120,
+      "xray_peak_label": "Bow Shock (Gas)"
+    }
+  ],
+  "schema_version": "1.1",
+  "status": "WARN",
+  "threshold": {
+    "dimensional_kpc_calibration_required_for_PASS": true,
+    "qualitative_offset_sign_match_required": true
+  },
+  "topic": "0.15_Cluster_Dynamics"
 }

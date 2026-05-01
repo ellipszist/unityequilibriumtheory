@@ -1,19 +1,43 @@
-﻿# Verification Spec
+# Verification Spec
 
-- Primary command:
-  - `python docs/topics/0.24_Artificial_Intelligence/Code/03_Research/Research_AI_Detective_V2.py`
-- Inputs:
-  - `Data/00_Foundation/foundation_basics.txt`
-  - `Data/03_Research/deepseek_moe_data.json`
-  - `Data/03_Research/scaling_laws.json`
-  - `Data/03_Research/tiny_shakespeare.txt`
-- Baseline:
-  - GPT-style scaling-law files and topic-local AI model metadata.
-- Reported metrics:
-  - scaling residuals, efficiency comparisons, and script-reported benchmark diagnostics
-- Fixed threshold:
-  - Working threshold for this standards pass: the primary script must run without error, use the stated input package, and write a summary artifact under Result/artifacts/. A stronger numeric acceptance threshold must be frozen in a later BASELINE_COMPARISON.md pass.
-- Artifact target:
-  - Result/artifacts/0_24_artificial_intelligence_verification.json
-- Interpretation:
-  - Treat output as an internal benchmark artifact only. Do not upgrade claim language to 'solved', 'verified', or 'exact' until a topic-specific baseline-comparison pass is complete.
+## Primary command
+
+```powershell
+python docs/topics/0.24_Artificial_Intelligence/Code/03_Research/Research_AI_Scaling_Audit.py
+```
+
+## Inputs
+
+| Input | Role |
+| :-- | :-- |
+| `Data/03_Research/scaling_laws.json` | reference scaling exponents and critical scales |
+| `Data/GPT3_Scaling_Laws.csv` | small topic-local table for an independent log-log exponent fit |
+| `Data/03_Research/deepseek_moe_data.json` | dense/MoE architecture metadata for sparsity diagnostics |
+
+## Metrics
+
+| Metric | Meaning | Current threshold |
+| :-- | :-- | :-- |
+| `csv_alpha_delta` | absolute gap between CSV-fitted `alpha_fit` and stored `alpha_N` | `<= 0.20` provisional |
+| `min_moe_active_fraction < min_dense_active_fraction` | sparse active-parameter check | required |
+| `alpha_kappa_relative_delta` | gap between `alpha_N` and current `kappa_macro=0.1` proxy | `<= 0.25` for PASS; otherwise WARN |
+
+## Artifact target
+
+`Result/artifacts/0_24_artificial_intelligence_verification.json`
+
+The artifact must include `status`, command, environment, formula IDs, input
+hashes, thresholds, metrics, per-model sparsity rows, blockers, and limitations.
+
+## Interpretation
+
+- `PASS`: local scaling table, sparsity check, and UET proxy check all clear the
+  provisional thresholds.
+- `WARN`: at least one scientific blocker remains, but the verifier ran and
+  produced an inspectable artifact.
+- `FAIL`: verifier cannot parse required inputs or a required check is structurally
+  impossible to compute.
+
+Current claims must remain limited to an internal scaling/sparsity benchmark. This
+verifier does not prove AI alignment, ethics, consciousness, or universal
+intelligence dynamics.

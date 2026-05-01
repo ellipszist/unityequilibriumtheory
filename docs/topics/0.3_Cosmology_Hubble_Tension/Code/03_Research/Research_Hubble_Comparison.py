@@ -5,10 +5,23 @@ Internal comparison using published H0 reference values and the repository cosmo
 """
 
 import sys
+import json
 from pathlib import Path
 
+def _bootstrap_root() -> Path:
+    current = Path(__file__).resolve()
+    for parent in [current.parent] + list(current.parents):
+        if (parent / "docs" / "__init__.py").exists() and (parent / "docs" / "core").exists():
+            if str(parent) not in sys.path:
+                sys.path.insert(0, str(parent))
+            return parent
+    raise RuntimeError("Could not locate repository root containing docs package.")
+
+
+_bootstrap_root()
+
 from docs import ROOT_PATH
-from docs.core.reproducibility import generate_artifact, hash_dataset, save_artifact
+from docs.core.reproducibility import generate_artifact, hash_dataset, hash_file, save_artifact
 
 
 root_path = ROOT_PATH
@@ -25,8 +38,36 @@ except ImportError as exc:
 
 
 H0_PLANCK = 67.4
+H0_PLANCK_UNCERTAINTY = 0.5
 H0_SHOES = 73.04
+H0_SHOES_UNCERTAINTY = 1.04
 TENSION_SIGMA = 4.8
+SOURCE_LOCK_PATH = topic_path / "Data" / "03_Research" / "source_lock_manifest.json"
+
+
+def load_source_lock() -> dict:
+    if not SOURCE_LOCK_PATH.exists():
+        return {
+            "status": "MISSING",
+            "path": str(SOURCE_LOCK_PATH),
+            "external_source_records": [],
+            "derived_inputs": [],
+        }
+    return json.loads(SOURCE_LOCK_PATH.read_text(encoding="utf-8"))
+
+
+def source_record_hashes(source_lock: dict) -> list[dict]:
+    hashes = []
+    for record_path in source_lock.get("external_source_records", []):
+        path = root_path / record_path
+        hashes.append(
+            {
+                "path": record_path,
+                "sha256": hash_file(path) if path.exists() else None,
+                "status": "present" if path.exists() else "missing",
+            }
+        )
+    return hashes
 
 
 def run_test():
@@ -46,8 +87,10 @@ def run_test():
     solver_beta = float(res.get("solver_beta", beta))
 
     observed_delta = H0_SHOES - H0_PLANCK
+    observed_delta_uncertainty = (H0_PLANCK_UNCERTAINTY**2 + H0_SHOES_UNCERTAINTY**2) ** 0.5
     error = abs(delta_h0_uet - observed_delta) / observed_delta * 100
     passed = error < 20
+    source_lock = load_source_lock()
 
     print(f"Planck 2018 (CMB): {H0_PLANCK} km/s/Mpc")
     print(f"SH0ES 2022 (local): {H0_SHOES} km/s/Mpc")
@@ -87,14 +130,24 @@ def run_test():
         dataset_hash=hash_dataset(
             {
                 "H0_PLANCK": H0_PLANCK,
+                "H0_PLANCK_UNCERTAINTY": H0_PLANCK_UNCERTAINTY,
                 "H0_SHOES": H0_SHOES,
+                "H0_SHOES_UNCERTAINTY": H0_SHOES_UNCERTAINTY,
                 "TENSION_SIGMA": TENSION_SIGMA,
+                "source_lock_sha256": hash_file(SOURCE_LOCK_PATH) if SOURCE_LOCK_PATH.exists() else None,
             }
         ),
         results={
             "H0_early_uet": h0_early_uet,
             "H0_late_uet": h0_late_uet,
+            "H0_planck_reference": H0_PLANCK,
+            "H0_planck_uncertainty": H0_PLANCK_UNCERTAINTY,
+            "H0_shoes_reference": H0_SHOES,
+            "H0_shoes_uncertainty": H0_SHOES_UNCERTAINTY,
+            "observed_delta_h0": observed_delta,
+            "observed_delta_h0_uncertainty": observed_delta_uncertainty,
             "delta_h0_uet": delta_h0_uet,
+            "delta_residual": delta_h0_uet - observed_delta,
             "hubble_frame_beta": beta,
             "hubble_frame_beta_source": beta_source,
             "generic_solver_beta": solver_beta,
@@ -103,10 +156,23 @@ def run_test():
         config={
             "relative_error_threshold_percent": 20.0,
             "no_fitting_rule": "hubble_frame_beta is sqrt(ALPHA_EM), not optimized against H0 data",
+            "source_lock_path": str(SOURCE_LOCK_PATH.relative_to(root_path)),
         },
         metrics={"relative_error_percent": float(error)},
         thresholds={"max_relative_error_percent": 20.0},
-        notes="Internal comparison artifact using published H0 reference values.",
+        notes="Internal scalar H0-gap comparison artifact using published H0 reference values and source-lock records.",
+    )
+    artifact["input_hashes"] = {
+        "source_lock_manifest": hash_file(SOURCE_LOCK_PATH) if SOURCE_LOCK_PATH.exists() else None,
+        "source_records": source_record_hashes(source_lock),
+    }
+    artifact["source_lock"] = {
+        "path": str(SOURCE_LOCK_PATH.relative_to(root_path)),
+        "derived_inputs": source_lock.get("derived_inputs", []),
+    }
+    artifact["claim_boundary"] = (
+        "PASS means the scalar z=0 H0-gap benchmark is inside the fixed 20 percent gate; "
+        "it is not a full Planck/SH0ES likelihood replication or a universal cosmology resolution."
     )
     artifact_path = topic_path / "Result" / "artifacts" / "hubble_comparison_validation.json"
     save_artifact(artifact, artifact_path)

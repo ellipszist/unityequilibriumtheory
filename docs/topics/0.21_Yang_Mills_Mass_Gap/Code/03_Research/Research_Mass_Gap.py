@@ -28,11 +28,13 @@ if not ROOT:
     print("CRITICAL: UET docs root not found!")
     sys.exit(1)
 
-from docs.core.reproducibility import generate_artifact, hash_dataset, save_artifact
+from docs.core.reproducibility import generate_artifact, hash_dataset, hash_file, save_artifact
 
 
 script_path = Path(__file__).resolve()
 project_root = script_path.parents[5]
+topic_dir = script_path.parents[2]
+source_lock_path = topic_dir / "data" / "03_Research" / "source_lock_manifest.json"
 if str(project_root) not in sys.path:
     sys.path.insert(0, str(project_root))
 
@@ -51,12 +53,27 @@ except Exception as exc:
 
 def load_lattice_data():
     """Load lattice working-copy data from JSON."""
-    data_path = script_path.parents[2] / "Data" / "03_Research" / "lattice_qcd_spectrum.json"
+    data_path = script_path.parents[2] / "data" / "03_Research" / "lattice_qcd_spectrum.json"
     if not data_path.exists():
         raise FileNotFoundError(f"Missing lattice data: {data_path}")
 
     with data_path.open("r", encoding="utf-8") as handle:
         return json.load(handle)
+
+
+def load_source_lock() -> dict:
+    if not source_lock_path.exists():
+        return {"external_source_records": [], "derived_inputs": [], "status": "MISSING"}
+    return json.loads(source_lock_path.read_text(encoding="utf-8"))
+
+
+def path_hash_record(path_string: str) -> dict:
+    path = project_root / path_string
+    return {
+        "path": path_string,
+        "sha256": hash_file(path) if path.exists() and path.is_file() else None,
+        "status": "present" if path.exists() else "missing",
+    }
 
 
 def run_validation():
@@ -65,6 +82,7 @@ def run_validation():
     print("=" * 60)
 
     json_data = load_lattice_data()
+    source_lock = load_source_lock()
     lattice_states = json_data["states"]
     scalar_glueball = next(state for state in lattice_states if "Scalar" in state["state"])
     mass_mev = float(scalar_glueball["mass_mev"])
@@ -87,6 +105,9 @@ def run_validation():
     best_alpha = float(alphas[best_idx])
     best_prediction = float(uet_masses[best_idx])
     error = abs(best_prediction - mass_mev) / mass_mev * 100
+    uncertainty_mev = float(scalar_glueball["uncertainty"]) * float(json_data["metadata"]["hc_mev_fm"]) / float(json_data["metadata"]["r0_physical_value_fm"])
+    residual_mev = best_prediction - mass_mev
+    status = "PASS" if error <= uncertainty_percent else "WARN"
 
     print(f"Lattice scalar mass: {mass_mev:.2f} MeV")
     print(f"Best-fit alpha: {best_alpha:.3f}")
@@ -133,22 +154,53 @@ def run_validation():
 
     artifact = generate_artifact(
         topic="0.21_Yang_Mills_Mass_Gap",
-        dataset_hash=hash_dataset(json_data),
+        dataset_hash=hash_dataset({
+            "lattice_data": json_data,
+            "source_lock_sha256": hash_file(source_lock_path) if source_lock_path.exists() else None,
+        }),
         results={
+            "status": status,
             "best_alpha": best_alpha,
             "best_prediction_mev": best_prediction,
             "reference_mass_mev": mass_mev,
+            "residual_mev": residual_mev,
+            "reference_uncertainty_mev": uncertainty_mev,
+            "reference_uncertainty_percent": uncertainty_percent,
+            "calibration_mode": "alpha sweep best-fit",
         },
-        config={"scale_gev": float(scale_gev), "alpha_sweep_points": int(len(alphas))},
+        config={
+            "scale_gev": float(scale_gev),
+            "alpha_sweep_points": int(len(alphas)),
+            "alpha_min": float(alphas[0]),
+            "alpha_max": float(alphas[-1]),
+            "gamma": 0.5,
+            "source_lock_manifest": str(source_lock_path.relative_to(project_root)),
+        },
         metrics={"relative_error_percent": float(error)},
-        thresholds={},
-        notes="Calibration-aware internal benchmark artifact against selected lattice data.",
+        thresholds={
+            "reference_uncertainty_percent": float(uncertainty_percent),
+            "status_rule": "PASS only if residual is within selected lattice-row uncertainty; otherwise WARN unless the run fails.",
+        },
+        notes="Calibration-aware internal benchmark artifact against selected lattice data; WARN is expected when best-fit residual exceeds the selected lattice-row uncertainty.",
     )
-    artifact_path = script_path.parents[2] / "Result" / "artifacts" / "mass_gap_validation.json"
+    artifact["input_hashes"] = {
+        "source_lock_manifest": hash_file(source_lock_path) if source_lock_path.exists() else None,
+        "lattice_working_copy": hash_file(topic_dir / "data" / "03_Research" / "lattice_qcd_spectrum.json"),
+        "benchmark_script": hash_file(script_path),
+        "engine": hash_file(script_path.parents[1] / "01_Engine" / "Engine_Mass_Gap.py"),
+        "source_records": [
+            path_hash_record(path) for path in source_lock.get("external_source_records", [])
+        ],
+    }
+    artifact["claim_boundary"] = (
+        "WARN/PASS status applies only to a calibration-aware scalar glueball benchmark. "
+        "It is not a proof of the Clay Yang-Mills mass-gap problem."
+    )
+    artifact_path = topic_dir / "Result" / "artifacts" / "mass_gap_validation.json"
     save_artifact(artifact, artifact_path)
     print(f"Artifact saved to {artifact_path}")
 
-    return True
+    return status in {"PASS", "WARN"}
 
 
 if __name__ == "__main__":

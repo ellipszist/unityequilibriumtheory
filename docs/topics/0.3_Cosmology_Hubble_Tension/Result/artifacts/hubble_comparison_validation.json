@@ -1,9 +1,11 @@
 {
+  "claim_boundary": "PASS means the scalar z=0 H0-gap benchmark is inside the fixed 20 percent gate; it is not a full Planck/SH0ES likelihood replication or a universal cosmology resolution.",
   "config": {
     "no_fitting_rule": "hubble_frame_beta is sqrt(ALPHA_EM), not optimized against H0 data",
-    "relative_error_threshold_percent": 20.0
+    "relative_error_threshold_percent": 20.0,
+    "source_lock_path": "docs\\topics\\0.3_Cosmology_Hubble_Tension\\Data\\03_Research\\source_lock_manifest.json"
   },
-  "dataset_hash": "f68ab1b3a05ada9363a066f4db425bed0f3fd5cceb0ee0df1aa263d7d8df1f71",
+  "dataset_hash": "e0ba6b861695407dd2e8b25acb4a17718b691d3eb2196e454805f3881e5d08e4",
   "environment": {
     "implementation": "CPython",
     "matplotlib_version": "3.10.8",
@@ -15,24 +17,77 @@
     "tensorflow_version": null,
     "torch_version": "2.10.0+cpu"
   },
+  "input_hashes": {
+    "source_lock_manifest": "134cf5b7e584a2764ce8409636dc7c582676bdba16723a7632a32a8736fc891a",
+    "source_records": [
+      {
+        "path": "docs/data/external/cosmology/hubble_tension/planck_2018/source_record.json",
+        "sha256": "501576dcff9ce7d421b417461800166d952e65f56de2500b53e14bc24f53721e",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/cosmology/hubble_tension/shoes_2022/source_record.json",
+        "sha256": "4bec055ed73b8b3ee6830c0908520148b6d6c40829fb6d7073111b328782d047",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/constants/codata/fine_structure/source_record.json",
+        "sha256": "880b37d2214778a624ada9c35c581c357e753cf3d6bf33ade03d62525063f8bd",
+        "status": "present"
+      }
+    ]
+  },
   "metrics": {
     "relative_error_percent": 2.0853583129566178
   },
-  "notes": "Internal comparison artifact using published H0 reference values.",
+  "notes": "Internal scalar H0-gap comparison artifact using published H0 reference values and source-lock records.",
   "results": {
     "H0_early_uet": 67.4,
     "H0_late_uet": 73.15761420885076,
+    "H0_planck_reference": 67.4,
+    "H0_planck_uncertainty": 0.5,
+    "H0_shoes_reference": 73.04,
+    "H0_shoes_uncertainty": 1.04,
     "delta_h0_uet": 5.757614208850754,
+    "delta_residual": 0.11761420885075324,
     "generic_solver_beta": 0.025838809965708517,
     "hubble_frame_beta": 0.08542454315802288,
     "hubble_frame_beta_source": "sqrt(ALPHA_EM)",
+    "observed_delta_h0": 5.640000000000001,
+    "observed_delta_h0_uncertainty": 1.1539497389401325,
     "status": "PASS"
   },
   "seed": 42,
+  "source_lock": {
+    "derived_inputs": [
+      {
+        "benchmark_role": "early-frame H0 baseline",
+        "local_path": "embedded in docs/topics/0.3_Cosmology_Hubble_Tension/Code/03_Research/Research_Hubble_Comparison.py",
+        "preprocessing": "Rounded Planck H0 scalar value is used as the early/CMB frame input.",
+        "source_record": "docs/data/external/cosmology/hubble_tension/planck_2018/source_record.json",
+        "unit_system": "km s^-1 Mpc^-1"
+      },
+      {
+        "benchmark_role": "late-frame H0 comparator",
+        "local_path": "embedded in docs/topics/0.3_Cosmology_Hubble_Tension/Code/03_Research/Research_Hubble_Comparison.py",
+        "preprocessing": "Published SH0ES H0 scalar value is used as the local/late frame target.",
+        "source_record": "docs/data/external/cosmology/hubble_tension/shoes_2022/source_record.json",
+        "unit_system": "km s^-1 Mpc^-1"
+      },
+      {
+        "benchmark_role": "no-fit bridge constant",
+        "local_path": "docs/core/uet_parameters.py::ALPHA_EM",
+        "preprocessing": "The verifier uses beta_frame = sqrt(ALPHA_EM), not a fitted beta.",
+        "source_record": "docs/data/external/constants/codata/fine_structure/source_record.json",
+        "unit_system": "dimensionless"
+      }
+    ],
+    "path": "docs\\topics\\0.3_Cosmology_Hubble_Tension\\Data\\03_Research\\source_lock_manifest.json"
+  },
   "thresholds": {
     "max_relative_error_percent": 20.0
   },
-  "timestamp_utc": "2026-04-23T02:38:36.580288+00:00",
+  "timestamp_utc": "2026-04-30T13:14:02.642166+00:00",
   "topic": "0.3_Cosmology_Hubble_Tension",
   "uet_version": "0.9.0"
 }

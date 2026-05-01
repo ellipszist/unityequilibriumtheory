@@ -20,6 +20,19 @@ flowchart LR
     D --> E["Limitations and readiness"]
 ```
 
+## Theory role diagram
+
+Every topic README must include a topic-specific conceptual diagram. Replace this generic
+diagram with the actual physical, mathematical, or computational role of the topic.
+
+```mermaid
+flowchart TD
+    A["Upstream assumptions / constants"] --> B["Core mechanism or equation"]
+    B --> C["Verifier / artifact"]
+    C --> D["Supported claim class"]
+    B --> E["Limitations / open bridge"]
+```
+
 ## Topic matrix
 
 | Field | Fill with |
@@ -29,6 +42,19 @@ flowchart LR
 | artifact | result JSON or other reproducibility output |
 | readiness | archived, draft, structured, reproducible internally, academic-ready |
 | formula status | derived, heuristic bridge, source-locked constant, open |
+
+## Evidence and dependency matrix
+
+Every topic README must include a compact matrix that tells a later reader what makes the
+topic strong and what still blocks it.
+
+| Layer | Current status | Evidence path | Main blocker |
+| :-- | :-- | :-- | :-- |
+| Data | [source-backed / local / placeholder] | `[DATA_MANIFEST.md]` | [missing source/hash/unit/etc.] |
+| Formula | [derived / heuristic / open] | `[FORMULA_AUDIT.md]` | [unit/proof/constant gap] |
+| Verification | [PASS/WARN/FAIL/absent] | `[VERIFICATION_SPEC.md]`, `[Result/artifacts/...]` | [missing threshold/artifact/etc.] |
+| Claim | [A/B/C/D/E] | `[README.md]`, `[METHOD.md]` | [overclaim/open bridge] |
+| Dependency | [upstream/downstream topics] | [topic IDs or map] | [unverified dependency] |
 
 ## Problem
 
@@ -105,6 +131,8 @@ Choose one:
 ## Checklist
 
 - [ ] problem and scope are bounded
+- [ ] README has a topic-specific conceptual diagram
+- [ ] README has an evidence/status matrix
 - [ ] assumptions and exclusions are explicit
 - [ ] data and baseline are named
 - [ ] formulas, units, and proof status are named

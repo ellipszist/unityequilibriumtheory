@@ -15,13 +15,16 @@ def save_plot(fig, filename, result_dir):
         filename += ".png"
 
     path = Path(result_dir) / filename
+    path.parent.mkdir(parents=True, exist_ok=True)
 
     try:
         # Use Kaleido for static image
         fig.write_image(str(path), scale=2)  # scale=2 for higher res
         print(f"  [Plot Saved]: {path}")
+        return path
     except Exception as e:
         print(f"  [Plot Error]: Could not save {filename}. Error: {e}")
+        return None
 
 
 def plot_galaxy_curve(r_kpc, v_obs, v_bar, v_uet, title, output_dir):

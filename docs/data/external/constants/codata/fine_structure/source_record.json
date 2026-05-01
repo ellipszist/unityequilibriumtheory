@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_source_record",
+  "source_role": "fine-structure constant provenance for Hubble-frame beta bridge",
+  "source_label": "NIST/CODATA inverse fine-structure constant",
+  "primary_reference_url": "https://physics.nist.gov/cgi-bin/cuu/Value?eqalphinv=",
+  "source_summary_url": "https://www.physics.nist.gov/cuu/Constants/alpha.html",
+  "checked_date": "2026-04-30",
+  "value_used": {
+    "inverse_alpha": 137.035999,
+    "alpha": 0.007297352573756914,
+    "sqrt_alpha": 0.08542454315802288,
+    "unit": "dimensionless",
+    "repository_constant": "docs/core/uet_parameters.py::ALPHA_EM"
+  },
+  "benchmark_role": "constant provenance for beta_frame = sqrt(alpha_em)",
+  "repository_use": [
+    "docs/core/uet_parameters.py",
+    "docs/topics/0.3_Cosmology_Hubble_Tension/Code/01_Engine/Engine_Cosmology.py",
+    "docs/topics/0.3_Cosmology_Hubble_Tension/Code/03_Research/Research_Hubble_Comparison.py"
+  ],
+  "limitations": [
+    "The current repository constant is truncated relative to the latest CODATA inverse-alpha value.",
+    "Using sqrt(alpha_em) as a cosmological frame coupling remains a topic-specific theoretical bridge, not a CODATA result."
+  ]
+}

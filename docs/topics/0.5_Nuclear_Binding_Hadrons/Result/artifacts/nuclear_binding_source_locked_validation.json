@@ -184,7 +184,7 @@
     "heavy_nucleus_binding_error_percent_max": 15.0,
     "proton_radius_relative_error_percent_max": 5.0
   },
-  "timestamp_utc": "2026-04-24T04:41:28.602703+00:00",
+  "timestamp_utc": "2026-04-28T14:24:53.499356+00:00",
   "topic": "0.5_Nuclear_Binding_Hadrons",
   "uet_version": "0.9.0"
 }

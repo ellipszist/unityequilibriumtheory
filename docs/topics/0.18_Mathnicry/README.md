@@ -1,75 +1,55 @@
 ---
 layout: article
 title: "UET Topic 0.18: Mathnicry"
-description: "Conservative overview for the Mathnicry topic in the UET repository."
+description: "Evidence-bounded overview for mathematical proof-attempt and symbolic experiment branches in the UET repository."
 ---
 
 # 0.18 Mathnicry
 
-## Problem
+Topic status: core research, draft.
 
-This topic groups together UET-inspired mathematical and mathematical-physics experiments
-related to Riemann-style stability questions, algorithmic complexity, Collatz-like dynamics,
-and other proof-oriented explorations.
+This topic groups UET-inspired mathematical and mathematical-physics experiments related to Riemann-style stability, BSD-style elliptic-curve surrogates, quantum-search scaling, Collatz dynamics, SHA-256/search demos, and proof-boundary dashboards.
 
-## Current status
+## Current Claim Class
 
-- Metadata status: `Draft`
-- Audit tier: `B`
-- Data status: `manual or placeholder`
-- Claim posture: proof-attempt and research-exploration workspace, not a validated resolution of Millennium Problems
+- Claim class: internal run-contract support for a surrogate BSD demonstration.
+- Current artifact: `Result/artifacts/0_18_mathnicry_verification.json`.
+- Current verifier: `Code/03_Research/Research_BSD_Elliptic_Unity.py`.
+- Data posture: manual/placeholder; no theorem branch is source-backed enough for proof-level claims.
 
-## What currently exists
+## Evidence Boundary
 
-- Multiple engines, proof scripts, and research scripts under `Code/`
-- Topic-local analysis notes in `Doc/`
-- Internal result logs and summaries in `Result/`
+The repository can currently support conservative statements such as:
 
-Representative scripts:
+- The primary BSD script runs and writes a machine-readable artifact.
+- Several branches implement symbolic or numerical diagnostics for theorem-inspired questions.
+- The formula registry identifies which branches are heuristic, diagnostic, or open.
 
-- `Code/01_Engine/Engine_Riemann_Field.py`
-- `Code/02_Proof/Proof_Riemann_Siege.py`
-- `Code/02_Proof/Proof_P_vs_NP_Scaling.py`
-- `Code/02_Proof/Proof_Millennium_Grand_Slam.py`
+The current evidence package does not establish the Riemann Hypothesis, BSD conjecture, P vs NP, Collatz conjecture, Hodge conjecture, Navier-Stokes regularity, Yang-Mills mass gap, or any other Millennium-problem closure.
 
-## What this topic does not currently establish
+## Core Files
 
-- It does not establish that the Riemann Hypothesis, P vs NP, Navier-Stokes, or all
-  Millennium Problems are solved.
-- It does not yet document theorem targets, assumptions, domains of validity, or excluded
-  cases in a topic-root `METHOD.md`.
-- It does not yet define which proof scripts are heuristic, partial derivations, or
-  full-proof attempts.
-- It does not yet provide a standards-grade `VERIFICATION_SPEC.md` or `LIMITATIONS.md`.
+- `FORMULA_AUDIT.md`: proof-boundary registry for BSD, Riemann, P-vs-NP/Grover, quantum logic, Collatz, SHA-256/search, Hodge/topography, and grand-slam aggregation.
+- `DATA_MANIFEST.md`: current manual/placeholder data posture.
+- `VERIFICATION_SPEC.md`: primary verifier command and artifact contract.
+- `METHOD.md`: branch method boundary and excluded cases.
+- `LIMITATIONS.md`: theorem-boundary limitations.
+- `Code/03_Research/Research_BSD_Elliptic_Unity.py`: current primary verifier.
 
-## Proof-boundary notes
+## Verification
 
-- This topic is the clearest example of why `proof-or-bust` matters.
-- The presence of `Code/02_Proof` is not enough by itself to justify proof-level wording.
-- Before stronger claims are allowed, the repo needs a document that maps each proof script to
-  a precise theorem target, the assumptions used, the validity domain, and the remaining gaps.
-
-## Reproducibility
-
-Current exploratory commands:
+Primary command:
 
 ```powershell
-python docs/topics/0.18_Mathnicry/Code/01_Engine/Engine_Riemann_Field.py
-python docs/topics/0.18_Mathnicry/Code/02_Proof/Proof_Riemann_Siege.py
-python docs/topics/0.18_Mathnicry/Code/02_Proof/Proof_P_vs_NP_Scaling.py
+$env:PYTHONIOENCODING='utf-8'; $env:PYTHONUTF8='1'; .\.venv\Scripts\python.exe docs\topics\0.18_Mathnicry\Code\03_Research\Research_BSD_Elliptic_Unity.py
 ```
 
-These commands are useful for internal inspection, but they are not yet an audit-grade proof
-or verification workflow.
+A pass means the current BSD surrogate demonstration ran and wrote an artifact. It does not mean BSD, Riemann, P vs NP, Collatz, or any other theorem has been proved.
 
-## Next remediation steps
+## Next Hardening Tasks
 
-1. Create `METHOD.md` that defines theorem targets, symbols, assumptions, validity domains,
-   and excluded cases.
-2. Create `VERIFICATION_SPEC.md` that identifies the canonical scripts and required artifacts.
-3. Create `LIMITATIONS.md` that lists unresolved cases and alternative interpretations.
-4. Reclassify each proof script as heuristic, partial derivation, or full-proof attempt.
-
-## Current readiness status
-
-`Draft`
+1. For every `Proof_*` script, add a proof-boundary record: theorem target, assumptions, domain searched, result class, blocker, and artifact path.
+2. Replace surrogate BSD rank logic with actual elliptic-curve/L-function data or rename the branch as visualization only.
+3. Reframe Grover/P-vs-NP scripts as quantum-search scaling unless a formal reduction and complexity proof exists.
+4. Add deterministic tests for the quantum engine: norm preservation, Hadamard, CNOT, Bell state, entropy, and known expected outputs.
+5. Fix Collatz dead code and add bounded-search artifacts with explicit search limits and counterexample handling.

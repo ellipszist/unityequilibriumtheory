@@ -1,19 +1,47 @@
-﻿# Verification Spec
+# Verification Spec
 
-- Primary command:
-  - `python docs/topics/0.15_Cluster_Dynamics/Code/03_Research/Research_BulletCluster_Offset.py`
-- Inputs:
-  - `Data/03_Research/chandra_clusters_2006.json`
-  - `Data/03_Research/cluster_virial_1998.json`
-  - `Data/03_Research/cluster_virial_data.json`
-  - `Data/03_Research/download_data.py`
-- Baseline:
-  - Bullet Cluster coordinates, Chandra working files, and cited cluster references.
-- Reported metrics:
-  - mass residuals, offset mismatch, and script-reported cluster-fit diagnostics
-- Fixed threshold:
-  - Working threshold for this standards pass: the primary script must run without error, use the stated input package, and write a summary artifact under Result/artifacts/. A stronger numeric acceptance threshold must be frozen in a later BASELINE_COMPARISON.md pass.
-- Artifact target:
-  - Result/artifacts/0_15_cluster_dynamics_verification.json
-- Interpretation:
-  - Treat output as an internal benchmark artifact only. Do not upgrade claim language to 'solved', 'verified', or 'exact' until a topic-specific baseline-comparison pass is complete.
+## Primary Command
+
+```powershell
+python docs/topics/0.15_Cluster_Dynamics/Code/03_Research/Research_BulletCluster_Offset.py
+```
+
+## Inputs
+
+| Input | Role | Required identity |
+| :-- | :-- | :-- |
+| `Data/Bullet_Cluster_Coordinates.json` | Primary Bullet Cluster offset working copy | SHA256 recorded in artifact |
+| `Code/03_Research/Research_BulletCluster_Offset.py` | One-dimensional toy diagnostic verifier | Formula IDs `CL15-DRAG-TOY`, `CL15-OFFSET-SIGN-GATE` |
+
+## Metrics
+
+- Observed lensing/X-ray offsets in kpc for main cluster and sub-cluster components.
+- Toy model final gas/halo separation in model units.
+- Qualitative sign match: observed offsets positive and model offset positive.
+- Dimensional calibration flag.
+
+## Current Acceptance Boundary
+
+| Status | Meaning |
+| :-- | :-- |
+| `WARN` | Qualitative separation sign matches, but model lacks kpc calibration. This is the expected current honest status. |
+| `FAIL` | The toy model fails even the separation-sign diagnostic or the input dataset is missing. |
+| `PASS` | Reserved for a future kpc-calibrated model with numeric magnitude thresholds against the observed offsets. |
+
+## Artifact Target
+
+- `Result/artifacts/0_15_cluster_dynamics_verification.json`
+
+The artifact must record:
+
+- status and claim class
+- command and timestamp
+- dataset path and SHA256
+- source label, system name, and unit convention
+- formula IDs
+- observed kpc offsets, model-unit offset, qualitative sign match, and dimensional calibration flag
+- limitations and failure reason
+
+## Interpretation
+
+The current verifier supports only Claim Class D qualitative diagnostic language. It does not support "solved dark matter", "resolves the virial discrepancy", "predicts Bullet Cluster lensing", or a general cluster-scale replacement for dark matter.

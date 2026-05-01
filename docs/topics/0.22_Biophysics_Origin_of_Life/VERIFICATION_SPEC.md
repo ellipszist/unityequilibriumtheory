@@ -1,19 +1,33 @@
 ﻿# Verification Spec
 
 - Primary command:
-  - `python docs/topics/0.22_Biophysics_Origin_of_Life/Code/03_Research/Research_Biomarker_Identification.py`
+  - `.venv\Scripts\python.exe docs\topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_Biomarker_Identification.py`
 - Inputs:
-  - `Data/03_Research/03_Research/chb_mit_reference.json`
-  - `Data/03_Research/03_Research/chb01_summary.txt`
-  - `Data/03_Research/03_Research/seizure_phase_data.json`
-  - `Data/03_Research/chb_mit_reference.json`
+  - `data/03_Research/chb_mit_reference.json`
+  - `data/03_Research/source_lock_manifest.json`
+  - `data/03_Research/chb01_summary.txt`
+  - `data/03_Research/seizure_phase_data.json`
+  - `data/Bonn_EEG/Z.txt`
+  - `data/Bonn_EEG/S.txt`
+  - `docs/data/external/biophysics/eeg/chb_mit/source_record.json`
+  - `docs/data/external/biophysics/eeg/bonn/source_record.json`
+  - `docs/data/external/biophysics/omics/tcga/source_record.json`
 - Baseline:
-  - Topic-local evidence assets, downloaded files, and cited biological references.
+  - Seeded synthetic biomarker positive-control matrix.
+  - Source-labeled EEG/TCGA records and local EEG summaries are hashed as provenance context but are not used by the primary biomarker verifier.
 - Reported metrics:
-  - complexity-score consistency, classification diagnostics, or residual mismatch on selected proxy benchmarks
+  - synthetic gene count and sample count
+  - stability threshold
+  - random seed
+  - identified synthetic biomarker candidates with variance and stability
+  - input file SHA-256 identities
 - Fixed threshold:
-  - Working threshold for this standards pass: the primary script must run without error, use the stated input package, and write a summary artifact under Result/artifacts/. A stronger numeric acceptance threshold must be frozen in a later BASELINE_COMPARISON.md pass.
+  - `stability < 0.5` flags a candidate in the synthetic diagnostic.
+  - expected synthetic positive controls: `GENE_007`, `GENE_023`.
+  - because the primary data are synthetic, successful execution produces `WARN`, not `PASS`.
+  - raw EEG/omics data are required before any verifier in this topic can support claim class above `D/C`.
 - Artifact target:
   - Result/artifacts/0_22_biophysics_origin_of_life_verification.json
 - Interpretation:
-  - Treat output as an internal benchmark artifact only. Do not upgrade claim language to 'solved', 'verified', or 'exact' until a topic-specific baseline-comparison pass is complete.
+  - Treat output as a diagnostic code-path check only.
+  - Do not use this verifier as clinical biomarker validation, EEG seizure validation, TCGA validation, or origin-of-life proof.

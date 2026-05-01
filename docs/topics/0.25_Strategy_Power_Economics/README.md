@@ -1,100 +1,91 @@
 ---
 layout: article
 title: "UET Topic 0.25: Strategy Power Economics"
-description: "Research module for Strategy Power Economics within the Unity Equilibrium Theory framework."
+description: "Economic data integrity, market diagnostics, and exploratory social-power models in the UET framework."
 ---
 
-# 🛡️ 0.25 Strategic Expansion & Economic Power
-
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.25: Strategic Expansion & Economic Power",
-  "description": "Explaining social and economic stability through the lens of Social Manifolds and Type C stabilizers.",
-  "about": "Social Dynamics, Game Theory, Economic Stability, Type C Agents, UET"
-}
--->
+# 0.25 Strategy Power Economics
 
 > [!NOTE]
-> **AI-Digest**: UET models power and economics as concentrations of tension in a social manifold. We identify 'Type C' agents (high boldness, low selfishness) as physical stabilizers that resolve zero-sum games and reduce systemic inequality ($\Omega$). / UET มองอำนาจและเศรษฐกิจเป็นความตึงเครียดของระนาบสังคม โดยระบุว่า 'ตัวแทนกลุ่ม C' (กล้าหาญแต่ไม่เห็นแก่ตัว) คือกลไกฟิสิกส์ที่ช่วยสร้างสมดุลและลดความเหลื่อมล้ำในระบบได้อย่างยั่งยืน
+> **AI-Digest**: This topic currently supports an internal economic-data and
+> market-diagnostics benchmark. It checks local market time series, Gini/GDP
+> working-copy sanity, and provenance blockers. Strategic stabilizer, world-lease,
+> social-manifold, and game-theory claims remain model proposals until calibrated
+> against source-locked data and verifier-gated.
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Extreme_Simplicity-blueviolet)
-![Architecture](https://img.shields.io/badge/Architecture-5x4_Strategic_Grid-blue)
-![Scientific_Rigor](https://img.shields.io/badge/Rigor-Social_Manifolds-orange)
+![Status](https://img.shields.io/badge/Status-Hardening_Gate-yellow)
+![Claim_Class](https://img.shields.io/badge/Claim_Class-C_Internal_Diagnostics-blue)
+![Verifier](https://img.shields.io/badge/Verifier-Economic_Data_Audit-blue)
+![Rigor](https://img.shields.io/badge/Rigor-Formula_Audited-orange)
 
-> **"Power is not owned; it is a temporary concentration of tension. To stabilize the world, one must not fight the wave, but become the resonance."**
+## Current Claim Boundary
 
----
+The accepted evidence for this topic is limited to descriptive diagnostics from
+topic-local market and economy working copies. The power-engine scenarios can be
+used as exploratory models, but they do not yet prove policy causality, strategic
+superiority, game-theory improvement, or real-world social stabilization.
 
-## 1. 📂 5x4 Grid Structure
-
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | Theoretical expansion of Social Manifolds and Strategic Leverage. |
-| **Ref/** | Legacy v0.9.0 `power_dynamics` logs and Game Theory pivots. |
-| **Data/** | Historical inequality simulations and 'Whale' resource logs. |
-| **Code/** | Agent-Based Unity Engine and Leverage Research scripts. |
-| **Result/** | Verified stability reports (Omega reduction logs). |
-
----
-
-## 🔗 Theory Connection
+## Conceptual Diagram
 
 ```mermaid
-graph TB
-    subgraph Chaotic["📉 Chaotic Power Struggles"]
-        D["Predator (Type D): Extra/Irregular"]
-        A_Old["Prey (Type A): Normal/Regular"]
-        Limit["High Inequality (Omega) & System Collapse"]
-    end
-    
-    subgraph UET["✅ Unity Strategic Equilibrium"]
-        C["Stabilizer (Type C): Normal/Irregular"]
-        Reformulation["Resonance-based Redistribution & Leverage"]
-        Result["Low Inequality (Omega) & Sustained Stability"]
-    end
-    
-    D --> Limit
-    A_Old --> Limit
-    Limit -->|"UET introduces"| C
-    C --> Reformulation
-    Reformulation --> Result
-    
-    style UET fill:#d4edda,stroke:#28a745
+flowchart LR
+    A["Yahoo-style market CSVs"] --> B["close prices"]
+    B --> C["log returns"]
+    C --> D["volatility and correlations"]
+    E["Global_Economy_2024.json"] --> F["population, GDP PPP, Gini"]
+    F --> G["Gini unit sanity"]
+    H["daily_economic_snapshot.json"] --> I["local indicator context"]
+    D --> J["verification artifact"]
+    G --> J
+    I --> J
+    J --> K["Claim Class C boundary"]
+    L["power engine / stabilizer scripts"] --> M["future calibrated verifier lane"]
 ```
 
----
+## Evidence Matrix
 
-## 🎯 Problem & Solution
+| Layer | Current status | Evidence / artifact | Claim allowed |
+| :-- | :-- | :-- | :-- |
+| Market time series | Runnable diagnostic | `Research_Economic_Data_Audit.py` and artifact | descriptive returns/volatility/correlation |
+| Economy baseline | Source-referenced working copy | `Global_Economy_2024.json` | Gini/GDP/population sanity |
+| Daily snapshot | Local gateway snapshot | `daily_economic_snapshot.json` | local context only |
+| Social power engine | Heuristic model | `Engine_Power_Dynamics.py`, formula audit | simulation proposal |
+| 8-billion resonance | Old run-contract only | previous artifact now treated as insufficient | no stability claim |
+| Policy/game-theory claims | Not verifier-gated | limitations | no superiority or causality claim |
 
-- **The Problem:** Modern power structures (Economic/Political) are trapped in **Zero-Sum Games**. High-resource selfish agents (Predators) naturally distort the manifold, leading to extreme inequality ($\Omega$) and systemic instability.
-- **The Solution:** UET identifies **Type C Agents** (Normal Power, High Boldness, Low Selfishness) as the physical stabilizers of the manifold. By using the **Wave of Influence**, these agents can "dissolve" concentrated tension and return the system to equilibrium.
-- **The Leverage Metaphor:** Proves that 'Boldness' is a higher-order strategic asset than 'Resource Mass'.
+## 5x4 Grid Structure
 
----
+| Pillar | Purpose |
+| :-- | :-- |
+| `Doc/` | strategy, social manifold, policy, and economics notes |
+| `Ref/` | references and historical stabilizer metadata |
+| `Data/` | market CSVs, global economy working copy, and daily snapshot |
+| `Code/` | engine, proof, research, and scenario scripts |
+| `Result/` | artifacts, figures, logs, and summary outputs |
 
-## 📊 Strategic Results (Triple-Green)
+## Quick Start
 
-| Category | Test | Result | Status |
-| :--- | :--- | :--- | :--- |
-| **01_Engine** | ABM Resonance | 100-Agent Manifold Pulse | ✅ PASS |
-| **02_Proof** | Social Stability | 4x Lower Omega (C vs D) | ✅ PASS |
-| **03_Research** | Leverage Wave | Whale Reclaimed (10 -> 0.1) | ✅ PASS |
-| **04_Competitor** | Game Theory | Better than Nash Equilibrium | ✅ PASS |
-
----
-
-## 2. ⚡ Quick Start
 ```powershell
-# Run the Social Stability Comparison
-python docs/topics/0.25_Strategy_Power_Economics/Code/02_Proof/Proof_Social_Stability.py
+cd C:\Users\santa\Desktop\uet_harness
+python docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_Economic_Data_Audit.py
 ```
+
+## Key Files
+
+- `FORMULA_AUDIT.md`: reviewed formulas, units, proof status, and failure modes.
+- `VERIFICATION_SPEC.md`: primary command, thresholds, and artifact contract.
+- `DATA_MANIFEST.md`: data provenance, unit conventions, and benchmark roles.
+- `METHOD.md`: accepted evidence lanes and dependency policy.
+- `LIMITATIONS.md`: blockers for stronger strategy/economics claims.
+
+## Current Limitations
+
+- Upstream provenance for the local market and economy files is not archival yet.
+- Descriptive market diagnostics are not causal economic laws.
+- Social stabilizer and policy simulations are not calibrated to real policy data.
+- No current artifact supports old green-check strategic superiority wording or
+  real-world stabilization claims.
 
 ---
 
-## 📁 Key Files
-- [Engine_Power_Dynamics.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.9.0/docs/topics/0.25_Strategy_Power_Economics/Code/01_Engine/Engine_Power_Dynamics.py) - Social Field Engine.
-- [Research_Leverage_Wave.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.9.0/docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_Leverage_Wave.py) - Power shift tactical.
-- [Proof_Social_Stability.py](file:///c:/Users/santa/Desktop/lad/Lab_uet_harness_v0.9.0/docs/topics/0.25_Strategy_Power_Economics/Code/02_Proof/Proof_Social_Stability.py) - Inequality verification.
+[Previous: Artificial Intelligence](../0.24_Artificial_Intelligence/README.md) | [Back to Topics](../README.md)

@@ -1,7 +1,7 @@
 """
 Engine: UET Neutrino Solver
 ===========================
-Central solver for neutrino physics using UET framework.
+Central exploratory solver for neutrino physics using the UET framework.
 
 Implements:
 - PMNS matrix prediction from π/6, π/4 geometry
@@ -138,15 +138,15 @@ class UETNeutrinoSolver(UETBaseSolver):
 
     def determine_hierarchy(self) -> str:
         """
-        [UPGRADE] Determine Neutrino Mass Hierarchy from Information Topology.
+        Determine a diagnostic neutrino mass-hierarchy label.
 
         Logic:
         - Normal Hierarchy (NH): m1 < m2 < m3 (Winding Number +1)
         - Inverted Hierarchy (IH): m3 < m1 < m2 (Winding Number -1)
 
-        UET Prediction:
-        The Information Field prefers positive winding (stability).
-        Therefore, UET strongly predicts NORMAL HIERARCHY.
+        Current model policy:
+        the beta sign is treated as a topology proxy. This is not a
+        computed Chern or winding-number derivation.
         """
         # In a full topological solver, we would compute the Chern number.
         # Here, we use the sign of the coupling beta as a proxy for winding.
@@ -167,22 +167,21 @@ class UETNeutrinoSolver(UETBaseSolver):
         if INTEGRITY_KILL_SWITCH:
             return float("nan"), float("nan"), float("nan"), float("nan")
 
-        # θ₁₂: Hexagonal symmetry from 3 generations
-        theta_12 = np.degrees(np.pi / 6)  # 30°
+        # θ₁₂: tri-generation democratic amplitude baseline.
+        theta_12 = np.degrees(np.arcsin(1.0 / np.sqrt(3.0)))
 
         # θ₂₃: Democratic mixing between νμ and ντ
         theta_23 = np.degrees(np.pi / 4)  # 45°
 
-        # θ₁₃: [UPGRADE] Refined via UET Geometric Leakage
-        # Mechanism: theta_13 scales with theta_C (Cabibbo) suppressed by kappa.
-        # theta_C is the derived mixing angle from the information grid (Axiom 7).
-        # We use a theoretical approximation for theta_C based on the information metric.
+        # θ₁₃: Cabibbo leakage across two active channels in a three-generation manifold.
+        # theta_C is a calibration pivot in the current rule set, not a closed
+        # first-principles output. The NuFIT verifier must catch any mismatch.
         theta_C = 13.04  # Standard experimental calibration pivot
-        theta_13 = self.kappa * theta_C * np.sqrt(2) 
+        theta_13 = theta_C * (2.0 / 3.0)
 
         # δ_CP: C-I field asymmetry (Axiom 9)
         # delta = 180 + (Phase_Lag)
-        # Phase_Lag is derived from the coupling product (kappa * beta) 
+        # Phase_Lag is modeled from the coupling product (kappa * beta)
         # scaled by the generation count (3).
         delta_CP = 180.0 + (self.kappa * self.beta * 100.0 * 0.3) 
 
@@ -237,7 +236,7 @@ class UETNeutrinoSolver(UETBaseSolver):
         """
         Run complete neutrino calculation.
 
-        Returns NeutrinoResult with all predictions.
+        Returns NeutrinoResult with the current model outputs.
         """
         theta_12, theta_23, theta_13, delta_CP = self.pmns_angles_geometric()
         U = self.calculate_pmns_matrix(theta_12, theta_23, theta_13, delta_CP)
@@ -345,7 +344,7 @@ def main():
     print("\n[6] MASS HIERARCHY PREDICTION")
     print("-" * 50)
     print(f"  UET Prediction: {result.hierarchy} HIERARCHY")
-    print("  (Derived from Information Field Winding Number +1)")
+    print("  (beta-sign proxy; not yet a computed topological invariant)")
 
     print("\n" + "=" * 70)
     print("SUMMARY")

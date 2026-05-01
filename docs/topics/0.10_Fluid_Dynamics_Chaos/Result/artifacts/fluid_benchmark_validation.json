@@ -1,11 +1,14 @@
 {
+  "claim_boundary": "PASS means the UET implementation beat the embedded simplified comparator under this grid/timing/stability gate. It does not establish external CFD accuracy or a Navier-Stokes theorem result.",
   "config": {
+    "comparator": "SimplifiedNSSolver embedded in Proof_Turbulence_Benchmarks.py",
     "grid_size": 128,
+    "source_lock_manifest": "docs\\topics\\0.10_Fluid_Dynamics_Chaos\\Data\\03_Research\\source_lock_manifest.json",
     "steps": 100,
     "timing_statistic": "median",
     "trials": 5
   },
-  "dataset_hash": "fd43cc9d09d2d797d372a7f7bc2fd42d55369852c56e8671090f6a80fa591519",
+  "dataset_hash": "1ecf2e22e12ff872ade639ec103c6f495c106b128e45637af6f7a67671260ac6",
   "environment": {
     "implementation": "CPython",
     "matplotlib_version": "3.10.8",
@@ -17,29 +20,35 @@
     "tensorflow_version": null,
     "torch_version": "2.10.0+cpu"
   },
+  "input_hashes": {
+    "benchmark_script": "4c5c011214563102e55fc7f7a7e5bf726612c4c888eaa54560ff93933f5b047c",
+    "source_lock_manifest": "d65719d433e75fe2dd99ae9d37fcc9aedb7a3070dccaa1bbea54d103657ea17b",
+    "uet_master_equation": "a9a691acfc135ae07a70ef2e8cf655bc3505a57006b189d8102c2a6f7a42185c"
+  },
   "metrics": {
-    "speedup": 2.8434954925050993,
+    "speedup": 2.780448442389931,
     "stable": true
   },
-  "notes": "Internal benchmark artifact using the repository comparator script.",
+  "notes": "Internal implementation benchmark artifact using the repository comparator script; not an external CFD validation result.",
   "results": {
-    "navier_stokes_runtime_seconds": 0.12398009997559711,
+    "navier_stokes_runtime_seconds": 0.12662190000992268,
     "navier_stokes_runtime_trials_seconds": [
-      0.12554919999092817,
-      0.12398009997559711,
-      0.1264221000019461,
-      0.12360779999289662,
-      0.12107500003185123
+      0.12541370000690222,
+      0.12725220003630966,
+      0.12662190000992268,
+      0.1298481000121683,
+      0.12515139998868108
     ],
-    "speedup": 2.8434954925050993,
+    "speedup": 2.780448442389931,
     "stable": true,
-    "uet_runtime_seconds": 0.043601299985311925,
+    "status": "PASS",
+    "uet_runtime_seconds": 0.0455400999635458,
     "uet_runtime_trials_seconds": [
-      0.043601299985311925,
-      0.054442400054540485,
-      0.04657980002230033,
-      0.04278900002827868,
-      0.043551100010517985
+      0.04619210003875196,
+      0.04659200005698949,
+      0.04332179995253682,
+      0.0455400999635458,
+      0.04326229996513575
     ]
   },
   "seed": 42,
@@ -47,7 +56,7 @@
     "min_speedup": 2.0,
     "requires_stability": true
   },
-  "timestamp_utc": "2026-04-23T02:38:52.077552+00:00",
+  "timestamp_utc": "2026-04-30T13:28:17.191203+00:00",
   "topic": "0.10_Fluid_Dynamics_Chaos",
   "uet_version": "0.9.0"
 }

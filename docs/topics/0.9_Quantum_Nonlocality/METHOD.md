@@ -1,40 +1,50 @@
-﻿# Method
+# Method
 
-## Problem target
+## Problem Target
 
-This topic studies whether UET-inspired correlation models can reproduce selected Bell-type and nonlocality benchmarks.
+This topic tests the quantum-nonlocality evidence lane through a concrete CHSH
+benchmark first. UET explanatory mechanisms are kept separate from the benchmark
+until a derivation artifact maps them to standard quantum correlations.
 
-## Core components
+## Evidence Lanes
 
-### Engine components
-- `Code/01_Engine/Engine_Quantum.py`
-- `Code/01_Engine/Engine_Quantum_LC_Unity.py`
-- `Code/01_Engine/Engine_UET_Qubit.py`
+| Lane | Files | Current role |
+| :-- | :-- | :-- |
+| CHSH/Bell benchmark | `bell_test_2015.json`, `Research_CHSH_Verification.py` | primary verifier lane |
+| Tsirelson bound consistency | `2*sqrt(2)` check in verifier | benchmark anchor |
+| Singlet/QM comparator | `Research_Bell_Test.py`, `Competitor_QM_Baseline.py` | secondary comparator/visualization |
+| UET topological filament | README, analysis docs, engine concepts | heuristic bridge |
+| Qubit mechanics/T1 | `Research_Qubit_Mechanics.py` and data files | future verifier lane |
+| Double slit/tunneling | double-slit and tunneling scripts | separate quantum benchmark lanes |
 
-### Proof-oriented components
-- `Code/02_Proof/Proof_Bell_Violation.py`
+## Variables
 
-### Research and comparison components
-- `Code/03_Research/Calibrate_Qubit_Kappa.py`
-- `Code/03_Research/Research_Bell_Inequality.py`
-- `Code/03_Research/Research_Bell_Test.py`
+| Symbol | Meaning | Unit |
+| :-- | :-- | :-- |
+| `E(a,b)` | correlation between measurement settings | dimensionless |
+| `S` | CHSH parameter | dimensionless |
+| `S_error` | reported uncertainty for `S` | dimensionless |
+| `p` | p-value for local-realist violation | dimensionless |
+| `2*sqrt(2)` | Tsirelson benchmark | dimensionless |
+| `theta` | measurement angle in comparator scripts | radians or degrees as declared |
 
-## Variable framing
+## Procedure
 
-- Primary modeled quantities: correlation coefficients, Bell parameters, setting-dependent terms, and coupling corrections
+1. Load the Hensen 2015 working copy and summary file.
+2. Check that `S > 2` and that the lower 1-sigma bound still clears `2`.
+3. Check that p-value is below `0.05`.
+4. Check that the recorded quantum maximum is within rounding tolerance of
+   `2*sqrt(2)`.
+5. Record input hashes, DOI/source identity, metrics, checks, blockers, and
+   limitations in the artifact.
 
-## Assumptions
+## Domain of Validity
 
-- The current package behaves like a simulation and comparison environment for selected Bell-test style datasets.
+The current method validates a source-referenced CHSH benchmark. It does not
+derive UET's topological explanation or reproduce raw experimental event-count
+analysis.
 
-## Domain of validity
+## Dependency Policy
 
-- Selected Bell-inequality and nonlocality benchmarks represented in topic-local files.
-
-## Excluded cases
-
-- A definitive foundational resolution of quantum mechanics or all loophole-free nonlocality questions.
-
-## Parameter sensitivity note
-
-- Calibration and measurement-setting choices affect the interpretation of the current scripts.
+Any topic that uses `0.9` as evidence may cite only the CHSH benchmark unless it
+also cites a future derivation artifact for the UET topological bridge.

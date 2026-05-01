@@ -45,7 +45,7 @@
   "thresholds": {
     "max_compatibility_z_score": 2.0
   },
-  "timestamp_utc": "2026-04-24T03:46:41.943248+00:00",
+  "timestamp_utc": "2026-04-28T14:27:10.847939+00:00",
   "topic": "0.8_Muon_g2_Anomaly",
   "uet_version": "0.9.0"
 }

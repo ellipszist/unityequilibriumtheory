@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_source_record",
+  "source_role": "late-universe H0 benchmark reference",
+  "source_label": "Riess et al. 2022 SH0ES local H0 measurement",
+  "primary_reference_url": "https://ui.adsabs.harvard.edu/abs/2022ApJ...934L...7R/abstract",
+  "doi": "10.3847/2041-8213/ac5c5b",
+  "publication": "The Astrophysical Journal Letters 934, L7",
+  "published_date": "2022-07-22",
+  "checked_date": "2026-04-30",
+  "value_used": {
+    "H0": 73.04,
+    "uncertainty": 1.04,
+    "unit": "km s^-1 Mpc^-1",
+    "context": "Cepheid-SN Ia SH0ES baseline local Hubble constant used by current topic script"
+  },
+  "benchmark_role": "late/local H0 reference in the Hubble-tension verifier",
+  "repository_use": [
+    "docs/topics/0.3_Cosmology_Hubble_Tension/Code/03_Research/Research_Hubble_Comparison.py",
+    "docs/topics/0.3_Cosmology_Hubble_Tension/Data/03_Research/source_lock_manifest.json"
+  ],
+  "limitations": [
+    "This source record pins the scalar H0 value used by the topic verifier; it is not the full SH0ES distance-ladder data release.",
+    "Systematics and covariance are not propagated by the current repository verifier."
+  ]
+}

@@ -1,52 +1,73 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "topic": "0.26_Cosmic_Dynamic_Frame",
-  "timestamp_utc": "2026-04-23T01:31:37.498472+00:00",
-  "repo_root": "C:\\Users\\santa\\Desktop\\uet_harness",
-  "python_executable": "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
-  "verification_spec": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.26_Cosmic_Dynamic_Frame\\VERIFICATION_SPEC.md",
-  "artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.26_Cosmic_Dynamic_Frame\\Result\\artifacts\\0_26_cosmic_dynamic_frame_verification.json",
-  "command": "python docs/topics/0.26_Cosmic_Dynamic_Frame/Code/03_Research/Research_Cosmic_Flows.py",
-  "input_hashes": [
+  "command": ".venv\\Scripts\\python.exe docs\\topics\\0.26_Cosmic_Dynamic_Frame\\Code\\03_Research\\Research_Cosmic_Flows.py",
+  "timestamp_utc": "2026-04-30T07:29:36.482807+00:00",
+  "status": "WARN",
+  "claim_class": "D",
+  "inputs": [
     {
-      "path": "Data/03_Research/Laniakea_Flows.json",
-      "status": "present",
+      "path": "docs/topics/0.26_Cosmic_Dynamic_Frame/Data/03_Research/Laniakea_Flows.json",
       "sha256": "d706e14d9fa50725e4afc164da517693cc2f15dfbfeef9f2c0a90a78ee66c862",
-      "bytes": "1345"
+      "size_bytes": 1345
     },
     {
-      "path": "Data/Cosmicflows_3_Subset.csv",
-      "status": "present",
+      "path": "docs/topics/0.26_Cosmic_Dynamic_Frame/Data/03_Research/source_lock_manifest.json",
+      "sha256": "eb6c07a3cc54ca8d6de672f63f8bcbb4d4a0c0fafb0139ef0bba7b7986478816",
+      "size_bytes": 2072
+    },
+    {
+      "path": "docs/topics/0.26_Cosmic_Dynamic_Frame/Data/Cosmicflows_3_Subset.csv",
       "sha256": "dfa7ed92f2490c3cdc035a97fc24706de831c7e59b88c5820eb09bd68d9f669f",
-      "bytes": "4131"
+      "size_bytes": 4131
     },
     {
-      "path": "Data/Download_Cosmic_Data.py",
-      "status": "present",
+      "path": "docs/topics/0.26_Cosmic_Dynamic_Frame/Data/Download_Cosmic_Data.py",
       "sha256": "6ce5e95c3ebce442b6b128412e2feea17edae213f8e577c7f84d5899e1c86fd6",
-      "bytes": "2238"
+      "size_bytes": 2238
     },
     {
-      "path": "Data/Pioneer_Anomaly_Data.csv",
-      "status": "present",
+      "path": "docs/topics/0.26_Cosmic_Dynamic_Frame/Data/Pioneer_Anomaly_Data.csv",
       "sha256": "f0a050dac03333b471d27214251e36f11d63684d48a555235e61e7eed471bb25",
-      "bytes": "307"
+      "size_bytes": 307
+    },
+    {
+      "path": "docs/data/external/cosmology/laniakea/tully_2014/source_record.json",
+      "sha256": "880397cf02e92fd472b434a1e9f8d2bee6a0ac09d03c40daf90ebf5bb6c40eec",
+      "size_bytes": 1232
+    },
+    {
+      "path": "docs/data/external/cosmology/cosmicflows/cosmicflows3/source_record.json",
+      "sha256": "72c130a7c003dc69e01d82adb8ba1d9e3a4aa6426caf585f0fd5b64a2af70b17",
+      "size_bytes": 1119
+    },
+    {
+      "path": "docs/data/external/spacecraft/pioneer_anomaly/anderson_2002/source_record.json",
+      "sha256": "aa71373b211ffb9e1f36e72bc16cdae00f6917d4b2b17a6364bc0d3e921c612f",
+      "size_bytes": 1361
     }
   ],
-  "timeout_seconds": 20,
-  "resolved_command": [
-    "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
-    "docs/topics/0.26_Cosmic_Dynamic_Frame/Code/03_Research/Research_Cosmic_Flows.py"
-  ],
-  "environment_overrides": {
-    "PYTHONIOENCODING": "utf-8",
-    "PYTHONUTF8": "1",
-    "PYTHONPATH_PREFIX": "C:\\Users\\santa\\Desktop\\uet_harness"
+  "metrics": {
+    "landmark_count": 6,
+    "coordinate_frame": "supergalactic Mpc",
+    "landmark_types": [
+      "Attractor",
+      "Filament",
+      "Local Hub",
+      "Major Attractor",
+      "Observer",
+      "Repeller (Void)"
+    ],
+    "velocity_magnitudes_km_s": [
+      631
+    ],
+    "has_flow_path": true
   },
-  "status": "ran",
-  "exit_code": 0,
-  "passed_run_contract": true,
-  "duration_seconds": 2.387,
-  "stdout_tail": "============================================================\nUET COSMIC FLOW VISUALIZATION\nData: Laniakea (Tully 2014)\n============================================================\n\ud83d\udd0d UET Glass Box: Logging (Streaming) to 'C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.26_Cosmic_Dynamic_Frame\\Result\\01_Showcase'\n\ud83d\udcf8 Showcase Image Saved: C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.26_Cosmic_Dynamic_Frame\\Result\\01_Showcase\\Laniakea_Flow_Map.png\n\u2705 Result: SUCCESS (Flow Field Mapped)\n",
-  "stderr_tail": ""
+  "figure_artifact": "Result\\01_Showcase\\Laniakea_Flow_Map.png",
+  "warnings": [
+    "Laniakea/Cosmicflows/Pioneer source records are pinned, but raw tables, frame metadata, and preprocessing are not archived.",
+    "This verifier checks data loading and flow-map generation, not a cosmological model fit.",
+    "Cosmicflows/Pioneer files are hashed for provenance but are not used by this primary visualization gate."
+  ],
+  "interpretation": "The artifact supports an exploratory dynamic-frame visualization. It does not establish dark-matter replacement, toroidal cosmology, or Pioneer-drag physics."
 }

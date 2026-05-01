@@ -1,111 +1,67 @@
 ---
 layout: article
 title: "UET Topic 0.14: Complex Systems"
-description: "Research module for Complex Systems within the Unity Equilibrium Theory framework."
+description: "Research module for complex-systems diagnostics within the Unity Equilibrium Theory framework."
 ---
 
-# 🕸️ 0.14 Complex Systems & SOC
+# 0.14 Complex Systems
 
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.14: Complex Systems & SOC",
-  "description": "Explaining Self-Organized Criticality and Power Law emergence in markets and biology via UET Axioms 3 and 5.",
-  "about": "Complex Systems, Self-Organized Criticality, SOC, Power Laws, Econophysics, UET"
-}
--->
+Topic status: core research, evidence-bounded.
 
-> [!NOTE]
-> **AI-Digest**: UET demonstrates that complexity and 'Power Law' distributions (Fat Tails) are intrinsic properties of systems maximizing information flow. By applying Axioms 3 (Attraction) and 5 (Momentum) to social and biological networks, UET accurately simulates 'Self-Organized Criticality' at the Edge of Chaos, explaining market crashes and wealth inequality without external shocks. / UET แสดงให้เห็นว่าความซับซ้อนและการกระจายตัวแบบ 'Power Law' (Fat Tails) คือคุณสมบัติพื้นฐานของระบบที่พยายามเพิ่มการไหลเวียนสารสนเทศให้สูงสุด การประยุกต์ใช้ Axiom 3 (การดึงดูด) และ 5 (โมเมนตัม) เข้ากับเครือข่ายสังคมและชีวภาพช่วยให้ UET สามารถจำลอง 'ภาวะวิกฤตที่จัดระเบียบตัวเอง' (SOC) ซึ่งอธิบายการล่มสลายของตลาดและความเหลื่อมล้ำทางเศรษฐกิจได้โดยไม่ต้องพึ่งพาปัจจัยภายนอก
+This topic studies whether UET-style complexity metrics can organize selected complex-system examples. The current audit-backed verifier is the HRV branch using topic-local PhysioNet-derived RR interval files. SOC, econophysics, climate, inequality, and social-network material remain research branches until each has a source-backed dataset, baseline, threshold, and artifact-producing verifier.
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Econophysics_Solved-blueviolet)
-![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
-![Scientific_Rigor](https://img.shields.io/badge/Rigor-Power_Law_Emergence-orange)
+## Current Claim Class
 
-> **"UET demonstrates that Complexity and 'Fat Tail' distributions are not random anomalies, but the signature of a system maximizing its Information Flow at the Edge of Chaos (Self-Organized Criticality)."**
+- Claim class: internal benchmark/run-contract support for the HRV verifier.
+- Current artifact: `Result/artifacts/0_14_complex_systems_verification.json`.
+- Current verifier: `Code/03_Research/Research_Biology_HRV.py`.
+- Current data posture: source-referenced derived RR files; original PhysioNet records and extraction/preprocessing still need archival normalization.
 
----
+## Evidence Boundary
 
-## 1. 📂 5x4 Grid Structure
+The repository can currently support conservative statements such as:
+
+- The HRV verifier runs on source-referenced derived RR interval files and records SDNN, RMSSD, Poincare-style metrics, and an internal equilibrium score.
+- The SOC and econophysics engines implement simulation formulas that can be hardened into future verifier gates.
+- Cross-domain claims require separate artifacts before they can support theory-level conclusions.
+
+The current evidence package does not establish a universal causal law for all complex systems, a market-crash predictor, a clinical HRV classifier, or a climate/inequality proof.
+
+## 5x4 Grid Structure
 
 | Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | Analysis of Power Laws, Econophysics, and Criticality. |
-| **Ref/** | Bak-Tang-Wiesenfeld (1987), Mandelbrot, Pareto. |
-| **Data/** | Economic Market Data, Biological Heart Rates, Climate Specs. |
-| **Code/** | Logic levels: 01_Engine (SOC Sandpile), 03_Research (Econ). |
-| **Result/** | Avalanche distributions, Hurst exponents, Gini curves. |
+| :-- | :-- |
+| `Doc/` | Topic notes and domain-branch analysis. |
+| `Ref/` | Reference collection for complex systems, networks, HRV, climate, and econophysics. |
+| `Data/` | Topic-local HRV, economy, climate, inequality, social, and validation working files. |
+| `Code/` | Engines, proof-oriented scripts, research scripts, and comparator scripts. |
+| `Result/` | Verification artifact, logs, summaries, and visualizations. |
 
----
+## Core Files
 
-## 🔗 Theory Connection
+- `FORMULA_AUDIT.md`: reviewed formula registry and open bridges.
+- `DATA_MANIFEST.md`: current data posture and provenance gaps.
+- `VERIFICATION_SPEC.md`: primary verifier command and artifact contract.
+- `METHOD.md`: topic method boundary.
+- `LIMITATIONS.md`: known scientific and audit limitations.
+- `Code/01_Engine/Engine_Complexity.py`: SOC, HRV, Hurst, and stability metrics.
+- `Code/01_Engine/Engine_Econophysics.py`: market simulation branch.
+- `Code/03_Research/Research_Biology_HRV.py`: current primary verifier script.
 
-```mermaid
-graph TD
-    subgraph Micro["🐜 Micro Interactions"]
-        Rule["Local Rule (Threshold)"]
-        Neighbor["Grid Topology"]
-    end
-    
-    subgraph Emergence["🌪️ Macro Emergence"]
-        Avalanche["Avalanches"]
-        PowerLaw["Power Law (1/f)"]
-        Critical["Critical State"]
-    end
-    
-    Rule -->|"Accumulation"| Neighbor
-    Neighbor -->|"Cascade"| Avalanche
-    Avalanche -->|"Statistics"| PowerLaw
-    PowerLaw -->|"Definition"| Critical
-    
-    style Emergence fill:#ffeeba,stroke:#ffc107
-    style Micro fill:#e2e3f5,stroke:#6f42c1
+## Verification
+
+Primary command:
+
+```powershell
+$env:PYTHONIOENCODING='utf-8'; $env:PYTHONUTF8='1'; .\.venv\Scripts\python.exe docs\topics\0.14_Complex_Systems\Code\03_Research\Research_Biology_HRV.py
 ```
 
----
+The audit wrapper records the current run contract in `Result/artifacts/0_14_complex_systems_verification.json`. A pass means the HRV script ran against the declared local files and produced the expected internal metrics. It does not certify the broader cross-domain branches.
 
-## 🎯 Problem & Solution
+## Next Hardening Tasks
 
-- **The Problem:** Traditional "Efficient Market" models assume Gaussian (Bell Curve) distributions, vastly underestimating the risk of crashes (Black Swans) and ignoring the connected nature of agents.
-- **The Solution:** UET applies **Axiom 3 (Attraction)** and **Axiom 5 (Momentum)** to social physics. Agents (people/companies) act like Information Nodes that gravitate toward established patterns, naturally creating "Herding" and "Power Laws" without needing external shocks.
-- **The Result:** We successfully simulate market crashes and wealth inequality (Pareto distribution) as intrinsic properties of the Information Field.
-
----
-
-## 📊 Test Results
-
-| Category | Test | Result | Status |
-| :--- | :--- | :--- | :--- |
-| **01_Engine** | SOC Solver | **Scale Invariance** | ✅ PASS |
-| **02_Proof** | Power Law | **Emergent 1/f** | ✅ PASS |
-| **03_Research** | Biology (HRV) | **Healthy = Critical** | ✅ PASS |
-| **03_Research** | Econophysics | **Matches Fat Tails** | ✅ PASS |
-| **04_Competitor** | Standard Gaussian | **Underestimates Risk** | ❌ FAIL |
-
----
-
-## 2. ⚡ Quick Start
-
-```python
-import docs as uet
-import numpy as np
-
-# [1] Analyze Time Series Entropy
-data = np.random.normal(0, 1, 1000)
-complexity = uet.complexity.ComplexityEngine()
-metrics = complexity.compute_complexity_metrics(data)
-
-print(f"System Entropy: {metrics['entropy']}")
-print(f"Equilibrium Score: {metrics['equilibrium_score']}")
-```
-
-## 📁 Key Files
-
-- [Engine_Complexity.py](./Code/01_Engine/Engine_Complexity.py): The Self-Organized Criticality Solver.
-- [ANALYSIS_Complex_Engines_Econophysics.md](./Doc/ANALYSIS_Complex_Engines_Econophysics.md): Detailed explanation of Market Physics.
-- [Research_Complex_Systems.py](./Code/03_Research/Research_Complex_Systems.py): Cross-disciplinary validation.
-
----
-*Generated by UET Research Assistant - Paper-Ready Version*
+1. Archive original PhysioNet files and exact extraction/preprocessing scripts for the MIT-BIH NSRDB-derived RR files.
+2. Add a dedicated SOC verifier with seeded avalanche statistics, exponent fit, goodness-of-fit threshold, and artifact output.
+3. Add market/econ verifier using declared tickers/date ranges and a baseline such as Gaussian/GBM or historical volatility clustering.
+4. Split climate, inequality, and social claims into separate artifacts before allowing them to feed core theory claims.
+5. Replace qualitative PASS scripts with thresholded tests that can honestly fail.

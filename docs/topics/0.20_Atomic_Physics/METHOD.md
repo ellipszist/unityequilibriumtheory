@@ -1,38 +1,57 @@
-﻿# Method
+# Method
 
-## Problem target
+## Problem Target
 
-This topic studies whether UET-style atomic models can reproduce selected spectral and multi-electron atomic benchmarks.
+This topic tests whether the atomic layer can reproduce selected hydrogen spectral benchmarks with explicit source data, constants, formulas, residuals, and artifact thresholds.
 
-## Core components
+## Evidence Lanes
 
-### Engine components
-- `Code/01_Engine/Engine_Atomic_Hydrogen.py`
+| Lane | Code/data path | Current status |
+| :-- | :-- | :-- |
+| Hydrogen Rydberg spectrum | `Research_Rydberg_Validation.py`, NIST/CODATA data | primary artifact, Claim Class C |
+| Engine Balmer demo | `Engine_Atomic_Hydrogen.py` | secondary/demo; local rounded constant |
+| Hydrogen level energies | `hydrogen_spectra_data.json`, `Proof_Hydrogen_Spectrum.py` | secondary lane; needs artifact |
+| Three-body coupling smoke test | `Research_Atomic_ThreeBody.py` | code-health check, not physics validation |
+| Multi-electron comparisons | `Research_Multi_Electron.py` | open lane |
 
-### Proof-oriented components
-- `Code/02_Proof/Proof_Hydrogen_Spectrum.py`
+## Variable Framing
 
-### Research and comparison components
-- `Code/03_Research/Research_Atomic_ThreeBody.py`
-- `Code/03_Research/Research_Multi_Electron.py`
-- `Code/03_Research/Research_Rydberg_Validation.py`
+| Variable | Meaning | Unit convention | Current role |
+| :-- | :-- | :-- | :-- |
+| `n_upper`, `n_lower` | transition quantum numbers | dimensionless integers | Rydberg term |
+| `lambda` | wavelength | nm in data, m in formula inversion | primary spectral metric |
+| `R_H` | Rydberg constant for hydrogen | m^-1 | CODATA benchmark constant |
+| `R_infinity` | infinite-mass Rydberg constant | m^-1 | recorded context constant |
+| `E_n` | hydrogen level energy | eV | secondary level lane |
+| `ppm` | relative residual | dimensionless parts per million | primary threshold metric |
 
-## Variable framing
+## Primary Verification Method
 
-- Primary modeled quantities: energy levels, spectral-line positions, orbital-scale terms, and correction parameters
+1. Load NIST hydrogen spectrum working copy.
+2. Load CODATA atomic constants working copy.
+3. Parse Balmer and Lyman transitions.
+4. Compute predicted vacuum wavelength using `R_H`.
+5. Compute per-line residuals and fitted slope through origin.
+6. Write artifact with hashes, thresholds, metrics, and limitations.
 
 ## Assumptions
 
-- The current package is an internal atomic benchmark environment for selected hydrogen, helium, and related data.
+- Vacuum wavelengths are used for the primary metric.
+- `R_H` is source-locked from CODATA; this verifier does not derive it.
+- Local NIST rows may be rounded or curated and need transcription precision notes before ppm-level public claims.
 
-## Domain of validity
+## Domain of Validity
 
-- Selected atomic spectra and multi-electron comparisons represented in topic-local NIST-style files.
+- Selected hydrogen Balmer and Lyman lines in the topic-local NIST working copy.
+- Claim Class C internal benchmark only.
 
-## Excluded cases
+## Excluded Cases
 
-- A full QED derivation or universal many-body closure for all atoms.
+- First-principles UET derivation of `R_H`.
+- Fine structure, Lamb shift, hyperfine structure.
+- Helium or many-electron atomic spectra.
+- Full QED validation.
 
-## Parameter sensitivity note
+## Dependency Policy
 
-- Approximation choices beyond simple atoms remain important in the current scripts.
+- `0.6_Electroweak_Physics`, `0.17_Mass_Generation`, `0.21_Yang_Mills_Mass_Gap`, `0.23_Unity_Scale_Link`, and `0.0_Grand_Unification` may cite this topic only as a hydrogen Rydberg benchmark unless future artifacts extend the scope.

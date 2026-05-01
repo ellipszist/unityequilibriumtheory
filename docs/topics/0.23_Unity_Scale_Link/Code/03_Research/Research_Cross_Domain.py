@@ -1,18 +1,19 @@
 """
-Research: Cross-Domain Prediction Test
-========================================
+Research: Cross-Domain Structural Scale-Link Check
+==================================================
 Topic: 0.23_Unity_Scale_Link
 Folder: 03_Research
 
 Phase C of the Unity Framework
 
-The ULTIMATE test: Can UET trained on one domain
-predict behavior in a COMPLETELY DIFFERENT domain?
+This verifier tests whether the same implemented Omega form can run across
+normalized domain examples while keeping synthetic and source-backed evidence
+separate.
 
 Tests:
-1. Galaxy → Neural transfer
-2. Economy volatility vs Neural seizure
-3. Parameter-free prediction with κ=0.1
+1. Galaxy-style kappa on synthetic neural fields
+2. Local finance volatility versus synthetic neural interpretation
+3. Fixed-parameter diagnostic with kappa=0.1
 """
 
 import sys
@@ -36,9 +37,11 @@ if not ROOT:
 
 import sys
 import json
+import hashlib
 import numpy as np
 from pathlib import Path
 from scipy import stats
+from datetime import datetime, timezone
 
 # --- PATH SETUP (Must be FIRST) ---
 # --- PATH SETUP (Must be FIRST) ---
@@ -47,7 +50,7 @@ from docs import ROOT_PATH
 ROOT = ROOT_PATH
 
 TOPIC_DIR = ROOT / "docs" / "topics" / "0.23_Unity_Scale_Link"
-DATA_DIR = TOPIC_DIR / "Data" / "03_Research"
+DATA_DIR = TOPIC_DIR / "data" / "03_Research"
 
 # Engine Import (Dynamic to bypass 0.23 folder literal restriction)
 try:
@@ -67,7 +70,97 @@ engine = UETUnityScaleEngine()
 
 # Data directories
 TOPIC_DIR = Path(__file__).resolve().parent.parent.parent
-DATA_DIR = TOPIC_DIR / "Data" / "03_Research"
+DATA_DIR = TOPIC_DIR / "data" / "03_Research"
+if not DATA_DIR.exists():
+    DATA_DIR = TOPIC_DIR / "Data" / "03_Research"
+
+ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_23_unity_scale_link_verification.json"
+DATA_INPUTS = [
+    DATA_DIR / "create_unified_data.py",
+    DATA_DIR / "source_lock_manifest.json",
+    DATA_DIR / "economy" / "Bitcoin_yahoo_real.csv",
+    DATA_DIR / "economy" / "DowJones_yahoo_real.csv",
+    DATA_DIR / "economy" / "EUR_USD_yahoo_real.csv",
+    DATA_DIR / "economy" / "SP500_yahoo_real.csv",
+    ROOT / "docs" / "data" / "external" / "finance" / "yahoo_snapshots" / "0_23_unity_scale_link" / "source_manifest.json",
+    ROOT / "docs" / "topics" / "0.13_Thermodynamic_Bridge" / "Result" / "artifacts" / "0_13_thermodynamic_bridge_verification.json",
+    ROOT / "docs" / "topics" / "0.7_Neutrino_Physics" / "Result" / "artifacts" / "nufit_6_0_validation.json",
+]
+TEST_METRICS = {}
+
+
+def _sha256(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def _input_identity():
+    items = []
+    for path in DATA_INPUTS:
+        try:
+            rel = path.relative_to(ROOT).as_posix()
+        except ValueError:
+            rel = str(path)
+        if path.exists():
+            items.append(
+                {
+                    "path": rel,
+                    "sha256": _sha256(path),
+                    "size_bytes": path.stat().st_size,
+                }
+            )
+        else:
+            items.append({"path": rel, "missing": True})
+    return items
+
+
+def _write_verification_artifact(results):
+    passed = sum(1 for v in results.values() if v is True)
+    total = sum(1 for v in results.values() if v is not None)
+    missing_inputs = [item["path"] for item in _input_identity() if item.get("missing")]
+
+    warnings = [
+        "Finance snapshots now have local source metadata and hashes, but original Yahoo query logs/retrieval timestamps remain unavailable.",
+        "Neural and galaxy fields are synthetic generator outputs, so cross-domain success is a model-shape result, not external replication.",
+        "This topic depends on 0.13 Landauer/thermodynamic bridge limits and inherits its WARN/raw-table limitations.",
+    ]
+    if missing_inputs:
+        warnings.append(f"Missing declared inputs: {missing_inputs}")
+    if TEST_METRICS.get("galaxy_neural", {}).get("omega_seizure_std", 1.0) < 1e-12:
+        warnings.append(
+            "Synthetic seizure generator has near-zero variance; t-test significance is diagnostic only."
+        )
+
+    status = "WARN" if passed > 0 and not missing_inputs else "FAIL"
+    artifact = {
+        "schema_version": "1.1",
+        "topic": "0.23_Unity_Scale_Link",
+        "command": ".venv\\Scripts\\python.exe docs\\topics\\0.23_Unity_Scale_Link\\Code\\03_Research\\Research_Cross_Domain.py",
+        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+        "status": status,
+        "claim_class": "D",
+        "inputs": _input_identity(),
+        "metrics": TEST_METRICS,
+        "thresholds": {
+            "minimum_true_tests_for_nonfail": 1,
+            "galaxy_neural_p_value_max": 0.001,
+            "requires_external_source_lock_for_claim_class_above_C": True,
+        },
+        "test_results": {k: ("SKIP" if v is None else bool(v)) for k, v in results.items()},
+        "warnings": warnings,
+        "interpretation": (
+            "The run supports an exploratory structural scale-link check. It does not establish "
+            "parameter unity, external prediction, or a proof of grand unification."
+        ),
+    }
+    ARTIFACT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    ARTIFACT_PATH.write_text(json.dumps(artifact, indent=2), encoding="utf-8")
+    print(f"\n[Artifact] Verification artifact written: {ARTIFACT_PATH}")
+    print(f"[Artifact] Status: {status}")
+    return artifact
 
 
 # =============================================================================
@@ -76,7 +169,7 @@ DATA_DIR = TOPIC_DIR / "Data" / "03_Research"
 
 
 def load_economy_data():
-    """Load S&P 500 data for volatility analysis."""
+    """Load the local S&P 500 snapshot for volatility diagnostics."""
     sp500_path = DATA_DIR / "economy" / "SP500_yahoo_real.csv"
 
     if not sp500_path.exists():
@@ -151,16 +244,16 @@ def test_galaxy_neural_transfer():
     Using κ=0.1 from SPARC galaxies,
     test if Ω distinguishes normal from seizure EEG.
     """
-    print("\n[TEST 1] GALAXY → NEURAL TRANSFER")
+    print("\n[TEST 1] GALAXY-STYLE KAPPA ON SYNTHETIC NEURAL FIELDS")
     print("-" * 50)
-    print("  NOTE: We use κ=0.1 (Galactic) here.")
-    print("  (Qubits use κ=1.40 due to higher density/noise floor)")
+    print("  NOTE: We use kappa=0.1 as a structural diagnostic parameter.")
+    print("  Interpretation: generated field diagnostic only.")
     print("-" * 50)
 
     # Use galaxy-calibrated parameters
     kappa_galaxy = 0.1
     beta_galaxy = 0.05
-    print(f"  Using κ={kappa_galaxy}, β={beta_galaxy} (from SPARC)")
+    print(f"  Using kappa={kappa_galaxy}, beta={beta_galaxy}")
 
     # Generate neural data
     n_trials = 20
@@ -185,12 +278,24 @@ def test_galaxy_neural_transfer():
 
     print(f"\n  t-statistic = {t_stat:.2f}")
     print(f"  p-value = {p_value:.2e}")
+    TEST_METRICS["galaxy_neural"] = {
+        "omega_normal_mean": float(np.mean(omega_normal)),
+        "omega_normal_std": float(np.std(omega_normal)),
+        "omega_seizure_mean": float(np.mean(omega_seizure)),
+        "omega_seizure_std": float(np.std(omega_seizure)),
+        "t_statistic": float(t_stat),
+        "p_value": float(p_value),
+        "n_trials": n_trials,
+        "kappa": kappa_galaxy,
+        "beta": beta_galaxy,
+        "data_role": "synthetic neural fields from engine generator",
+    }
 
     if p_value < 0.001 and np.mean(omega_seizure) < np.mean(omega_normal):
-        print("\n  ✅ PASS: Galaxy κ correctly predicts seizure = LOW Ω")
+        print("\n  PASS: synthetic seizure field has lower Omega than synthetic normal field")
         return True
     else:
-        print("\n  ❌ FAIL: Could not distinguish states")
+        print("\n  FAIL: synthetic fields did not separate under this diagnostic")
         return False
 
 
@@ -255,6 +360,18 @@ def test_economy_neural_correlation():
 
     print(f"\n  Ω(high volatility) = {np.mean(omega_high):.3f} ± {np.std(omega_high):.3f}")
     print(f"  Ω(low volatility) = {np.mean(omega_low):.3f} ± {np.std(omega_low):.3f}")
+    TEST_METRICS["economy_neural"] = {
+        "sp500_points": int(len(sp500)),
+        "omega_high_vol_mean": float(np.mean(omega_high)),
+        "omega_high_vol_std": float(np.std(omega_high)),
+        "omega_low_vol_mean": float(np.mean(omega_low)),
+        "omega_low_vol_std": float(np.std(omega_low)),
+        "high_vol_samples": int(len(omega_high)),
+        "low_vol_samples": int(len(omega_low)),
+        "kappa": kappa,
+        "beta": beta,
+        "data_role": "local SP500 snapshot compared to synthetic neural interpretation",
+    }
 
     # Compare with neural pattern
     # Neural: seizure (hypersync) → LOW Ω
@@ -270,18 +387,18 @@ def test_economy_neural_correlation():
         print("     Economy: High vol = High gradient = High Ω")
     else:
         print("\n  Economy: High volatility → LOW Ω")
-        print("  This MATCHES neural pattern!")
+        print("  This has the same ordering as the synthetic neural diagnostic.")
 
     return True
 
 
-def test_parameter_free_prediction():
+def test_fixed_parameter_diagnostic():
     """
-    Test 3: Use SINGLE κ=0.1 across ALL domains.
+    Test 3: use fixed kappa=0.1 across selected normalized examples.
 
     The strictest test: Can ONE value work everywhere?
     """
-    print("\n[TEST 3] SINGLE κ ACROSS REGIMES")
+    print("\n[TEST 3] FIXED KAPPA DIAGNOSTIC ACROSS SELECTED EXAMPLES")
     print("-" * 50)
 
     kappa_unity = 0.1
@@ -320,12 +437,18 @@ def test_parameter_free_prediction():
 
     # Neural prediction
     if omega_neural_s < omega_neural_n:
-        print("\n  ✅ Neural: Seizure < Normal (correct)")
+        print("\n  Synthetic neural ordering: seizure < normal")
         tests_passed += 1
     else:
-        print("\n  ❌ Neural: Prediction incorrect")
+        print("\n  Synthetic neural ordering did not match the diagnostic expectation")
 
     print(f"\n  Tests passed: {tests_passed}/1")
+    TEST_METRICS["universal_kappa"] = {
+        "kappa": kappa_unity,
+        "beta": beta_unity,
+        "omega_values": {k: float(v) for k, v in results.items()},
+        "passed_neural_ordering": bool(omega_neural_s < omega_neural_n),
+    }
 
     return tests_passed > 0
 
@@ -340,15 +463,16 @@ def run_cross_domain_research():
     Run all cross-domain prediction tests.
     """
     print("=" * 70)
-    print("🔬 RESEARCH: Cross-Domain Prediction")
-    print("    Phase C - Transfer Learning Test")
+    print("RESEARCH: Cross-Domain Structural Scale-Link Check")
+    print("    Exploratory verifier with explicit source-lock limitations")
     print("=" * 70)
 
     print("\n" + "=" * 70)
-    print("PREMISE: If UET is truly a Unity theory, κ from ONE domain")
-    print("should predict behavior in OTHER domains.")
+    print("PREMISE: the same Omega implementation should be auditable across")
+    print("selected normalized examples without promoting parameter unity.")
     print("=" * 70)
 
+    np.random.seed(23023)
     results = {}
 
     # Test 1: Galaxy → Neural
@@ -358,7 +482,7 @@ def run_cross_domain_research():
     results["economy_neural"] = test_economy_neural_correlation()
 
     # Test 3: Universal κ
-    results["universal_kappa"] = test_parameter_free_prediction()
+    results["universal_kappa"] = test_fixed_parameter_diagnostic()
 
     # Summary
     print("\n" + "=" * 70)
@@ -371,33 +495,34 @@ def run_cross_domain_research():
     print(f"\n  Tests passed: {passed}/{total}")
 
     if passed == total:
-        print("\n  ✅ ALL TESTS PASSED")
-        print("     UET demonstrates cross-domain predictive power!")
+        print("\n  ALL EXPLORATORY CHECKS RAN")
+        print("     Current evidence supports a structural scale-link hypothesis.")
     elif passed > 0:
         print("\n  ⚠️ PARTIAL SUCCESS")
-        print("     Some cross-domain predictions work.")
+        print("     Some structural diagnostics matched their expected ordering.")
     else:
         print("\n  ❌ TESTS FAILED")
-        print("     Cross-domain prediction needs work.")
+        print("     Structural diagnostics need model/data hardening.")
 
     print(
         """
-    KEY INSIGHT:
+    KEY DIAGNOSTIC:
     
-    Galaxy-calibrated κ=0.1 can predict:
-    - Neural seizure states (correct!)
-    - Economy volatility patterns
+    Fixed kappa=0.1 produces the expected ordering for:
+    - synthetic neural fields
+    - local finance volatility diagnostics
     
-    This is evidence for Unity across scales,
-    even if κ values differ at different scales.
+    This is exploratory evidence for reusable structure across selected scales,
+    while parameter unity and external prediction remain open.
     """
     )
 
     print("=" * 70)
-    print("RESEARCH RESULT: COMPLETE")
+    print("RESEARCH RESULT: ARTIFACT WRITTEN")
     print("=" * 70)
 
-    return passed > 0
+    artifact = _write_verification_artifact(results)
+    return artifact["status"] != "FAIL"
 
 
 if __name__ == "__main__":

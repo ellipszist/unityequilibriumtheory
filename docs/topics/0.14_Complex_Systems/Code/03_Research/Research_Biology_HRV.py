@@ -41,6 +41,9 @@ import numpy as np
 import os
 import glob
 import math
+import json
+import hashlib
+from datetime import datetime, timezone
 from docs.core.uet_glass_box import UETPathManager
 
 
@@ -64,6 +67,9 @@ TOPIC_DIR = (
 )
 DATA_PATH = TOPIC_DIR / "Data"
 DATA_DIR = str(DATA_PATH)
+ARTIFACT_PATH = (
+    TOPIC_DIR / "Result" / "artifacts" / "0_14_complex_systems_verification.json"
+)
 
 
 # Standardized UET Root Path
@@ -96,6 +102,114 @@ def load_hrv_data():
                     print(f"   [WARN] Could not load {filename}: {e}")
 
     return datasets
+
+
+def _to_jsonable(value):
+    """Convert numpy/scalar values to stable JSON primitives."""
+    if isinstance(value, dict):
+        return {str(k): _to_jsonable(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [_to_jsonable(v) for v in value]
+    if isinstance(value, tuple):
+        return [_to_jsonable(v) for v in value]
+    if isinstance(value, np.ndarray):
+        return value.tolist()
+    if isinstance(value, np.generic):
+        return value.item()
+    return value
+
+
+def _sha256(path):
+    digest = hashlib.sha256()
+    with open(path, "rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _hrv_input_hashes():
+    bio_dir = TOPIC_DIR / "Data" / "03_Research" / "biology_hrv"
+    inputs = []
+    extra_inputs = [
+        bio_dir / "source_lock_manifest.json",
+        root_path
+        / "docs"
+        / "data"
+        / "external"
+        / "biophysics"
+        / "hrv"
+        / "mit_bih_nsrdb"
+        / "source_record.json",
+    ]
+    for path in extra_inputs:
+        try:
+            rel = path.relative_to(root_path)
+        except ValueError:
+            rel = path
+        if path.exists():
+            inputs.append(
+                {
+                    "path": str(rel).replace("\\", "/"),
+                    "bytes": path.stat().st_size,
+                    "sha256": _sha256(path),
+                    "loaded_by_primary_script": False,
+                    "provenance_role": "source_lock",
+                }
+            )
+        else:
+            inputs.append(
+                {
+                    "path": str(rel).replace("\\", "/"),
+                    "missing": True,
+                    "provenance_role": "source_lock",
+                }
+            )
+    if not bio_dir.exists():
+        return inputs
+    for path in sorted(bio_dir.glob("*.csv")):
+        inputs.append(
+            {
+                "path": str(path.relative_to(TOPIC_DIR)).replace("\\", "/"),
+                "bytes": path.stat().st_size,
+                "sha256": _sha256(path),
+                "loaded_by_primary_script": path.name.startswith("physionet_")
+                and path.name.endswith("_rr.csv"),
+            }
+        )
+    return inputs
+
+
+def write_verification_artifact(result):
+    """Write the primary verifier artifact required by VERIFICATION_SPEC.md."""
+    ARTIFACT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    artifact = {
+        "schema_version": "1.1",
+        "topic": "0.14_Complex_Systems",
+        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+        "command": "python docs/topics/0.14_Complex_Systems/Code/03_Research/Research_Biology_HRV.py",
+        "status": result.get("status", "FAIL"),
+        "passed_run_contract": result.get("status") in {"PASS", "WARN"},
+        "input_hashes": _hrv_input_hashes(),
+        "metrics": {
+            "avg_sdnn_ms": result.get("avg_sdnn_ms"),
+            "avg_rmssd_ms": result.get("avg_rmssd_ms"),
+            "avg_equilibrium": result.get("avg_equilibrium"),
+            "subjects": result.get("subjects", 0),
+        },
+        "thresholds": {
+            "run_without_error": True,
+            "artifact_written": True,
+            "working_sdnn_pass_range_ms": [30, 200],
+            "working_equilibrium_min_for_strong_pass": 0.5,
+        },
+        "interpretation": (
+            "Source-referenced derived-RR HRV run-contract artifact only; this does not validate "
+            "clinical classification, SOC, econophysics, climate, inequality, or social-network branches."
+        ),
+        "results": _to_jsonable(result),
+    }
+    ARTIFACT_PATH.write_text(json.dumps(artifact, indent=2), encoding="utf-8")
+    print(f"  [Artifact] Saved {ARTIFACT_PATH}")
 
 
 def calculate_hrv_metrics(rr_intervals):
@@ -141,7 +255,9 @@ def run_test():
 
     if not datasets:
         print("[FAIL] No HRV data found!")
-        return {"status": "FAIL", "error": "No data"}
+        result = {"status": "FAIL", "error": "No data"}
+        write_verification_artifact(result)
+        return result
 
     print(f"\nAnalyzing {len(datasets)} subjects...\n")
 
@@ -161,7 +277,9 @@ def run_test():
 
     if not results:
         print("[FAIL] Could not calculate metrics")
-        return {"status": "FAIL", "error": "Calculation failed"}
+        result = {"status": "FAIL", "error": "Calculation failed"}
+        write_verification_artifact(result)
+        return result
 
     # Summary
     avg_eq = np.mean([r["equilibrium_score"] for r in results])
@@ -253,7 +371,7 @@ def run_test():
     except Exception as e:
         print(f"Viz Error: {e}")
 
-    return {
+    result = {
         "status": status,
         "avg_sdnn_ms": avg_sdnn,
         "avg_rmssd_ms": avg_rmssd,
@@ -261,6 +379,8 @@ def run_test():
         "subjects": len(results),
         "results": results,
     }
+    write_verification_artifact(result)
+    return result
 
 
 if __name__ == "__main__":

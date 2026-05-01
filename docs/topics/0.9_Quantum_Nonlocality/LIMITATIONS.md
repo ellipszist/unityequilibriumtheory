@@ -1,6 +1,14 @@
-﻿# Limitations
+# Limitations
 
-- The root baseline comparison is present, but numeric acceptance boundaries are still provisional until a saved artifact is generated and reviewed.
-- Current data posture is "embedded local only", which is below a fully normalized archival dataset package.
-- Local repository copies exist, but they are not yet packaged as a standards-grade evidence contract.
-- Internal script execution does not by itself establish external replication, theorem-level proof, or broad physical closure.
+- Current evidence supports only an internal CHSH/Bell benchmark based on
+  source-referenced local working copies.
+- The benchmark checks Bell violation and Tsirelson-bound consistency; it does
+  not prove the UET topological-filament mechanism.
+- Raw experimental event counts and full statistical reconstruction are not
+  included in the topic data package.
+- The stored Hensen 2015 working copy has a DOI, but secondary Bell/qubit files
+  still need fuller upstream provenance.
+- Qubit T1, double-slit, tunneling, and LC-unity scripts are separate lanes and
+  cannot be used as evidence for the CHSH claim without their own artifacts.
+- Wording such as exact derivation, solved nonlocality, or proof of information
+  topology must wait for a dedicated derivation/proof artifact.

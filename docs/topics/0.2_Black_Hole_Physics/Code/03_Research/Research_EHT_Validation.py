@@ -47,6 +47,9 @@ M_sun = M_SUN
 import json
 import math
 import numpy as np
+import platform
+from datetime import datetime, timezone
+from hashlib import sha256
 
 
 def load_eht_data():
@@ -57,6 +60,10 @@ def load_eht_data():
     # Transform list to dict for easy access
     data = {item["name"]: item for item in raw_data["supermassive"]}
     return data
+
+
+def hash_file(path: Path) -> str:
+    return sha256(path.read_bytes()).hexdigest()
 
 
 # --- DELEGATE MATH TO ENGINE ---
@@ -93,6 +100,7 @@ def run_test():
 
     data = load_eht_data()
     results = []
+    artifact_rows = []
 
     # Initialize Engine
     if "UETBlackHoleSolver" not in globals():
@@ -137,6 +145,18 @@ def run_test():
 
     passed = abs(theta_uet - theta_obs) <= 2 * theta_err  # 2σ
     results.append(("M87* Shadow", error, passed))
+    artifact_rows.append(
+        {
+            "target": "M87*",
+            "mass_solar": M_m87,
+            "distance_m": d_m87,
+            "observed_shadow_uas": theta_obs,
+            "observed_error_uas": theta_err,
+            "predicted_shadow_uas": theta_uet,
+            "relative_error_percent": error,
+            "within_2sigma": bool(passed),
+        }
+    )
     print(f"  {'✅ PASS' if passed else '❌ FAIL'}")
 
     # Test 2: Sgr A* Shadow
@@ -163,6 +183,18 @@ def run_test():
 
     passed_sgra = abs(theta_uet_sgra - theta_obs_sgra) <= 2 * theta_err_sgra
     results.append(("Sgr A* Shadow", error_sgra, passed_sgra))
+    artifact_rows.append(
+        {
+            "target": "Sgr A*",
+            "mass_solar": M_sgra,
+            "distance_m": d_sgra,
+            "observed_shadow_uas": theta_obs_sgra,
+            "observed_error_uas": theta_err_sgra,
+            "predicted_shadow_uas": theta_uet_sgra,
+            "relative_error_percent": error_sgra,
+            "within_2sigma": bool(passed_sgra),
+        }
+    )
     print(f"  {'✅ PASS' if passed_sgra else '❌ FAIL'}")
 
     # Summary
@@ -179,6 +211,45 @@ def run_test():
 
     print(f"\nResult: {passed_count}/{total} PASSED")
     print("=" * 60)
+
+    artifact = {
+        "schema_version": "1.1",
+        "topic": "0.2_Black_Hole_Physics",
+        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+        "command": "python docs/topics/0.2_Black_Hole_Physics/Code/03_Research/Research_EHT_Validation.py",
+        "status": "PASS" if passed_count == total else "FAIL",
+        "claim_class": "C internal benchmark",
+        "inputs": [
+            {
+                "path": str((DATA_PATH / "03_Research" / "black_hole_data.json").relative_to(TOPIC_DIR)),
+                "sha256": hash_file(DATA_PATH / "03_Research" / "black_hole_data.json"),
+                "role": "EHT shadow benchmark working copy",
+            }
+        ],
+        "thresholds": {
+            "per_target": "abs(predicted_shadow_uas - observed_shadow_uas) <= 2 * observed_error_uas"
+        },
+        "metrics": {
+            "passed_targets": passed_count,
+            "total_targets": total,
+            "all_targets_within_2sigma": passed_count == total,
+        },
+        "results": artifact_rows,
+        "limitations": [
+            "Uses compact GR shadow diameter approximation D_shadow = 5.2 Rs.",
+            "Topic-local EHT data package is a working copy, not a fully normalized upstream archive.",
+            "This artifact does not prove singularity resolution or a GR replacement.",
+        ],
+        "environment": {
+            "python_version": sys.version.split()[0],
+            "platform": platform.platform(),
+            "numpy_version": np.__version__,
+        },
+    }
+    artifact_path = TOPIC_DIR / "Result" / "artifacts" / "0_2_black_hole_physics_verification.json"
+    artifact_path.parent.mkdir(parents=True, exist_ok=True)
+    artifact_path.write_text(json.dumps(artifact, indent=2, sort_keys=True), encoding="utf-8")
+    print(f"Artifact saved to {artifact_path}")
 
     # --- VISUALIZATION ---
     # Delegated to Code/05_Visualization/Vis_BlackHole_Signature.py

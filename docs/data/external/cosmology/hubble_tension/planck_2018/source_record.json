@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_source_record",
+  "source_role": "early-universe H0 benchmark reference",
+  "source_label": "Planck 2018 results VI: Cosmological parameters",
+  "primary_reference_url": "https://www.aanda.org/articles/aa/full_html/2020/09/aa33910-18/aa33910-18.html",
+  "doi": "10.1051/0004-6361/201833910",
+  "publication": "Astronomy & Astrophysics 641, A6",
+  "published_date": "2020-09-11",
+  "checked_date": "2026-04-30",
+  "value_used": {
+    "H0": 67.4,
+    "uncertainty": 0.5,
+    "unit": "km s^-1 Mpc^-1",
+    "context": "base Lambda-CDM Planck CMB-inferred Hubble constant, rounded as used by current topic script"
+  },
+  "benchmark_role": "early/CMB H0 reference in the Hubble-tension verifier",
+  "repository_use": [
+    "docs/topics/0.3_Cosmology_Hubble_Tension/Code/03_Research/Research_Hubble_Comparison.py",
+    "docs/topics/0.3_Cosmology_Hubble_Tension/Data/03_Research/source_lock_manifest.json"
+  ],
+  "limitations": [
+    "This source record pins the summary value used by the topic verifier; it is not the full Planck likelihood chain.",
+    "Full cosmology validation requires likelihood-level CMB, BAO, SN, and systematic treatment beyond this scalar H0 benchmark."
+  ]
+}

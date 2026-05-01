@@ -26,11 +26,11 @@
     - [Summary](#summary)
     - [What We Validated](#what-we-validated)
     - [Run It Yourself](#run-it-yourself)
-  - [🚀 8. Quick Start (Python Library)](#-8-quick-start-python-library)
+  - [🚀 8. Quick Start (Research Workspace)](#-8-quick-start-research-workspace)
     - [1. Installation](#1-installation)
     - [2. Usage Examples](#2-usage-examples)
     - [3. Run Verify Test](#3-run-verify-test)
-  - [📚 9. Complete Topic Index (31 Domains)](#-9-complete-topic-index-31-domains)
+  - [📚 9. Complete Topic Index (38+ Domains)](#-9-complete-topic-index-38-domains)
   - [🔍 10. Methodology](#-10-methodology)
     - [Human + AI Collaboration](#human--ai-collaboration)
     - [Transparency](#transparency)
@@ -64,23 +64,25 @@ uet_harness/
 │   ├── knowledge_base/            ← Vector store & tensorizer
 │   ├── scripts/                   ← Runners, audits, data tools
 │   └── Docs/                      ← Framework standards & guides
-├── uet_core/                      ← 🦀 Rust: UET Master Equation solver
-├── uet_miner/                     ← 🦀 Rust: Proof-of-Useful-Work miner
-├── uet_security/                  ← 🦀 Rust: Quantum-resistant crypto
-├── uet_agents/                    ← 🤖 AI agent framework
-├── uet_api/                       ← 🌐 REST API server
-├── uet_web/                       ← 💻 Next.js web frontend
-├── uet_platform/                  ← 🏗️ Platform orchestration
-└── requirements.txt               ← Python dependencies
+├── uet_history/                   ← Historical notes and prior UET writing archive
+├── .github/                       ← Repository automation and GitHub metadata
+├── CITATION.cff                   ← Citation metadata
+├── CONTRIBUTING.md                ← Contribution notes
+├── LICENSE                        ← MIT license
+└── README.md                      ← Project overview
 ```
 
 > **Note:** The `docs/` folder was previously named `research_uet/`. All internal paths have been updated. If you find outdated references, please open an issue.
+
+> **Current Repository Scope:** This repository is now kept as the main UET research corpus. Earlier platform/service prototypes such as `uet_core`, `uet_miner`, `uet_security`, `uet_agents`, `uet_api`, and `uet_platform` are not active root folders here anymore; they were archived outside this research repo so the theory, evidence, documentation, and reproducible research work stay clear. The design intent is preserved below as roadmap/prototype context rather than a claim that the full platform or mining network is live.
 
 ---
 
 ## 🌍 The "Big Picture" Dashboard: 38 Solutions
 
 UET is not just a physics theory. It is a **"Civilization-Level Operating System"** that solves fundamental problems across 6 domains.
+
+> **Research Status Note:** The dashboard keeps the original UET vision and claim map intact, but readers should treat the items as research claims, proposed mechanisms, prototype validations, or roadmap targets unless a specific script, dataset, or report in `docs/` is cited and independently reproduced.
 
 ### 🏆 1. Mathematical Breakthroughs (The Millennium Problems)
 *UET converts abstract math problems into physical manifold geometry.*
@@ -233,9 +235,9 @@ python docs/topics/run_full_verification.py
 
 ---
 
-## 🚀 8. Quick Start (Python Library)
+## 🚀 8. Quick Start (Research Workspace)
 
-UET is now available as a standard Python 3.9+ library.
+UET is organized as a Python-accessible research workspace under `docs/`. The repository is not currently packaged as a root-level installable platform package; use the scripts and modules inside `docs/` as the active research entry points.
 
 ### 1. Installation
 
@@ -247,9 +249,8 @@ cd UnityEquilibriumTheory
 # Activate Environment (Recommended for Windows)
 . c:\Users\santa\Desktop\uet_harness\.venv\Scripts\Activate.ps1
 
-# Install dependencies
-pip install -r requirements.txt
-pip install .
+# Install research/data ingest dependencies when needed
+pip install -r docs/requirements_ingest.txt
 ```
 
 ### 2. Usage Examples
@@ -294,7 +295,7 @@ python docs/topics/run_all_tests.py
 
 ---
 
-## 📚 9. Complete Topic Index (27 Domains)
+## 📚 9. Complete Topic Index (38+ Domains)
 
 | ID | Research Topic | Key Discovery | Status |
 |:---|:---------------|:--------------|:-------|
@@ -366,58 +367,58 @@ python docs/topics/run_all_tests.py
 |:-----|:--------|
 | `docs/topics/run_all_tests.py` | 🧪 Master test runner |
 | `docs/core/uet_master_equation.py` | 🔬 Core UET equation |
-| `requirements.txt` | 📦 Dependencies |
+| `docs/requirements_ingest.txt` | 📦 Research/data ingest dependencies |
 
 ---
 
 ## 💰 Uet-Cash Mining System
 
-**Status:** ✅ Core + Security Complete | 🚧 Governance/Oracle/Economic/Market: WIP
+**Status:** 🧭 Concept + archived prototype direction | 🚧 Not an active live network
 
-Uet-Cash is a proof-of-useful-work (PoUW) cryptocurrency where mining = solving UET equations.
+Uet-Cash is a proof-of-useful-work (PoUW) cryptocurrency concept where mining = solving or verifying useful UET equations. The section below preserves the original architecture intent and prototype notes, but the current research repository does not ship an active miner, token, chain, wallet, or production reward network. Earlier Rust/service experiments were moved out of the root repository and should be treated as archived prototype material until a separate implementation repo, security review, and economic/governance design are created.
 
 ### Architecture
 
 ```
-uet_core (Rust) → UET Master Equation Solver
+uet_core (Rust, archived prototype) → UET Master Equation Solver
         ↓
-uet_miner (Rust) → Mining Algorithm with Nonce Search
+uet_miner (Rust, archived prototype) → Mining Algorithm with Nonce Search
         ↓
-uet_security (Rust) → Quantum-Resistant Signatures & Hashing
+uet_security (Rust, archived prototype) → Quantum-Resistant Signatures & Hashing
         ↓
-Uet-Cash Blocks → Proof Verification → Uet-Cash Rewards
+Uet-Cash Blocks → Proof Verification → Uet-Cash Rewards (future network design)
 ```
 
 ### Components
 
 | Component | Status | Description |
 |:----------|:-------|:------------|
-| **uet_core** | ✅ Complete | UET Master Equation in Rust (7-term functional) |
-| **uet_miner** | ✅ Complete | Mining algorithm with nonce search and proof verification |
-| **uet_security** | ✅ Complete | Quantum-resistant signatures (Dilithium), SHA3/BLAKE3 hashing |
-| **uet_governance** | 🚧 WIP | Governance system (voting, proposals) - deferred |
-| **uet_oracle** | 🚧 WIP | Oracle infrastructure (verification) - deferred |
-| **uet_economic** | 🚧 WIP | Economic policies (issuance, difficulty) - deferred |
-| **uet_market** | 🚧 WIP | Market infrastructure (AMM, price discovery) - deferred |
+| **uet_core** | Archived prototype | UET Master Equation in Rust (7-term functional) |
+| **uet_miner** | Archived prototype | Mining algorithm concept with nonce search and proof verification |
+| **uet_security** | Archived prototype | Quantum-resistant signature/hash design direction |
+| **uet_governance** | Future design | Governance system (voting, proposals) - deferred |
+| **uet_oracle** | Future design | Oracle infrastructure (verification) - deferred |
+| **uet_economic** | Future design | Economic policies (issuance, difficulty) - deferred |
+| **uet_market** | Future design | Market infrastructure (AMM, price discovery) - deferred |
 
 ### Security Features
 
 **Quantum-Resistant Cryptography**
-- ✅ Dilithium PQ signatures for block/tx/proof signing
-- ✅ SHA3/BLAKE3 hashing (quantum-resistant)
-- ✅ Signature metadata (schema_version, sig_alg, hash_alg, key_id)
+- Target: Dilithium PQ signatures for block/tx/proof signing
+- Target: SHA3/BLAKE3 hashing (quantum-resistant design direction)
+- Target: Signature metadata (schema_version, sig_alg, hash_alg, key_id)
 
 **Block Security**
-- ✅ Header signature verification
-- ✅ Merkle roots (tx_merkle_root, proof_root)
-- ✅ State root verification
-- ✅ Full block validation rules
+- Target: Header signature verification
+- Target: Merkle roots (tx_merkle_root, proof_root)
+- Target: State root verification
+- Target: Full block validation rules
 
 **Anti-Cheat Controls**
-- ✅ Replay protection (task_id + node_id + nonce uniqueness)
-- ✅ Fraud proofs (challenge invalid proofs)
-- ✅ Epoch-based nonce reset
-- ✅ Result stealing resistance (signature bound to node_id)
+- Target: Replay protection (task_id + node_id + nonce uniqueness)
+- Target: Fraud proofs (challenge invalid proofs)
+- Target: Epoch-based nonce reset
+- Target: Result stealing resistance (signature bound to node_id)
 
 ### How Mining Works
 
@@ -426,11 +427,13 @@ Uet-Cash Blocks → Proof Verification → Uet-Cash Rewards
 3. **Create Proof**: Generate proof with signature and metadata
 4. **Verify Difficulty**: Check if result hash has required leading zeros
 5. **Submit Proof**: Send proof (result_hash, nonce, verification_artifact, signature) to network
-6. **Get Reward**: Receive Uet-Cash for valid proof
+6. **Get Reward**: Future network design would issue Uet-Cash for valid proof; this is not live in the current research repo.
 
 ### Example
 
 ```rust
+// Historical prototype sketch. The active research repo does not currently
+// include these Rust crates at the repository root.
 use uet_miner::{MiningTask, TaskFamily, UetCashMiner};
 use uet_security::{CryptoSuite, MockSigner, SignatureAlgorithm};
 

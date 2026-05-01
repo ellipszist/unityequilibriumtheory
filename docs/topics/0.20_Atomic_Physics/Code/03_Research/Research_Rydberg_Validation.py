@@ -1,21 +1,25 @@
 """
 UET Rydberg Formula Validation
 ==============================
-Topic: 0.20 Atomic Physics
-Goal: Validate that simple geometric integer constraints (Information Shells) reproduce the Hydrogen Spectrum.
-Data: NIST Atomic Spectra Database 2023.
+Topic 0.20 diagnostic verifier.
 
-Hypothesis:
-Energy levels are quantized geometric stability islands in the Information Field.
-E_n = -R_H * (1/n^2)
-This implies the frequency of transition is:
-f = R_H * c * (1/n1^2 - 1/n2^2)
+This verifier checks a standard Rydberg-series relation against the topic-local
+NIST hydrogen spectrum working copy and CODATA R_H value. It supports an internal
+hydrogen-spectrum benchmark only; it does not derive the Rydberg formula from UET
+first principles or validate many-electron atomic physics.
 """
 
+import json
+import platform
+import re
 import sys
+from datetime import datetime, timezone
+from hashlib import sha256
 from pathlib import Path
 
-# --- ROBUST UET BOOTSTRAP ---
+import numpy as np
+
+
 def _bootstrap():
     curr = Path(__file__).resolve()
     for parent in [curr] + list(curr.parents):
@@ -25,154 +29,171 @@ def _bootstrap():
             return parent
     return None
 
+
 ROOT = _bootstrap()
-if not ROOT:
-    print("CRITICAL: UET docs root not found!")
+if ROOT is None:
+    print("CRITICAL: UET docs root not found")
     sys.exit(1)
 
-
-import sys
-import json
-import numpy as np
-import matplotlib.pyplot as plt
-from pathlib import Path
-
-# --- ROBUST PATH FINDER ---
-current_path = Path(__file__).resolve()
-project_root = None
-for parent in [current_path] + list(current_path.parents):
-    if (parent / "docs").exists():
-        project_root = parent
-        break
-
-if project_root and str(project_root) not in sys.path:
-    sys.path.insert(0, str(project_root))
-
-try:
-    from docs.core.uet_glass_box import UETPathManager, UETMetricLogger
-except Exception as e:
-    print(f"CRITICAL SETUP ERROR: {e}")
-    sys.exit(1)
+TOPIC_DIR = ROOT / "docs" / "topics" / "0.20_Atomic_Physics"
+SPECTRUM_PATH = TOPIC_DIR / "Data" / "03_Research" / "nist_hydrogen_spectrum.json"
+CODATA_PATH = TOPIC_DIR / "Data" / "03_Research" / "codata_2018_atomic.json"
+ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_20_atomic_physics_verification.json"
 
 
-def load_spectrum_data():
-    """Load NIST Hydrogen data."""
-    # Hardcoded relative path
-    data_file = current_path.parents[2] / "Data" / "03_Research" / "nist_hydrogen_spectrum.json"
-    if not data_file.exists():
-        return None
-    with open(data_file, encoding="utf-8") as f:
+def file_sha256(path):
+    digest = sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def load_json(path):
+    with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
+
+
+def parse_transition(text):
+    values = [int(token) for token in re.findall(r"\d+", text)]
+    if len(values) != 2:
+        raise ValueError(f"Cannot parse transition: {text}")
+    return values[0], values[1]
+
+
+def collect_lines(spectrum):
+    rows = []
+    for series_name in ("balmer_series", "lyman_series"):
+        for line in spectrum[series_name]["lines"]:
+            n_upper, n_lower = parse_transition(line["transition"])
+            rows.append(
+                {
+                    "series": series_name.replace("_series", ""),
+                    "name": line["name"],
+                    "n_upper": n_upper,
+                    "n_lower": n_lower,
+                    "wavelength_vacuum_nm": line["wavelength_vacuum_nm"],
+                }
+            )
+    return rows
+
+
+def write_artifact(artifact):
+    ARTIFACT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    ARTIFACT_PATH.write_text(json.dumps(artifact, indent=2, sort_keys=True), encoding="utf-8")
 
 
 def run_rydberg_analysis():
     print("=" * 60)
-    print("⚛️ UET ATOMIC PHYSICS: RYDBERG VALIDATION")
-    print("Data: NIST Atomic Spectra Database")
+    print("UET ATOMIC PHYSICS: RYDBERG VALIDATION")
+    print("Data: NIST hydrogen spectrum + CODATA R_H")
     print("=" * 60)
 
-    data = load_spectrum_data()
-    if not data:
-        return False
+    spectrum = load_json(SPECTRUM_PATH)
+    codata = load_json(CODATA_PATH)
+    r_h = codata["constants"]["R_H"]["value"]
+    r_infinity = codata["constants"]["R_infinity"]["value"]
 
-    # Extract Transitions
-    # We want to plot: Inverse Wavelength (1/lambda) vs (1/n_f^2 - 1/n_i^2)
-    # Slope should be R_H (approx 1.097e7 m^-1)
-
-    x_vals = []  # (1/nf^2 - 1/ni^2)
-    y_vals = []  # 1/lambda (m^-1)
-    labels = []
-
-    # Process Balmer (nf=2)
-    print("\n[1] Balmer Series (Visible, nf=2)")
-    for line in data["balmer_series"]["lines"]:
-        n_f = 2
-        # Parse transition, e.g. "3 -> 2"
-        trans_str = line["transition"]
-        n_i = int(trans_str.split("→")[0].strip())
-
-        term = (1.0 / n_f**2) - (1.0 / n_i**2)
-        lam_nm = line["wavelength_vacuum_nm"]
-        inv_lam = 1.0 / (lam_nm * 1e-9)  # m^-1
-
+    results = []
+    x_vals = []
+    y_vals = []
+    for row in collect_lines(spectrum):
+        term = (1.0 / row["n_lower"] ** 2) - (1.0 / row["n_upper"] ** 2)
+        predicted_nm = 1e9 / (r_h * term)
+        observed_nm = row["wavelength_vacuum_nm"]
+        error_ppm = abs(predicted_nm - observed_nm) / observed_nm * 1e6
+        inv_lam = 1.0 / (observed_nm * 1e-9)
         x_vals.append(term)
         y_vals.append(inv_lam)
-        labels.append(line["name"])
-
-        print(f"  {line['name']} (n={n_i}->{n_f}): Term={term:.4f}, 1/lam={inv_lam:.3e} m^-1")
-
-    # Process Lyman (nf=1)
-    print("\n[2] Lyman Series (UV, nf=1)")
-    for line in data["lyman_series"]["lines"]:
-        n_f = 1
-        trans_str = line["transition"]
-        n_i = int(trans_str.split("→")[0].strip())
-
-        term = (1.0 / n_f**2) - (1.0 / n_i**2)
-        lam_nm = line["wavelength_vacuum_nm"]
-        inv_lam = 1.0 / (lam_nm * 1e-9)
-
-        x_vals.append(term)
-        y_vals.append(inv_lam)
-        labels.append(line["name"])
-
-        print(f"  {line['name']} (n={n_i}->{n_f}): Term={term:.4f}, 1/lam={inv_lam:.3e} m^-1")
-
-    # Linear Fit
-    # y = m*x
-    x_arr = np.array(x_vals)
-    y_arr = np.array(y_vals)
-
-    # Force intercept to 0? Or Polyfit degree 1
-    slope, intercept = np.polyfit(x_arr, y_arr, 1)
-
-    R_H_exp = 10973731.568160  # m^-1 (CODATA)
-
-    print("\n[3] RESULT")
-    print(f"  Calculated Rydberg Constant (Slope): {slope:.4e} m^-1")
-    print(f"  CODATA Value:                        {R_H_exp:.4e} m^-1")
-    error = abs(slope - R_H_exp) / R_H_exp * 100
-    print(f"  Error: {error:.4f}%")
-
-    # --- VISUALIZATION ---
-    result_dir = UETPathManager.get_result_dir(
-        "0.20_Atomic_Physics", "Rydberg_Validation", category="showcase"
-    )
-    logger = UETMetricLogger("Rydberg", topic_id="0.20", category="showcase")
-
-    plt.figure(figsize=(10, 6))
-
-    plt.plot(x_arr, y_arr, "ro", label="NIST Data Points")
-    plt.plot(x_arr, slope * x_arr + intercept, "b-", label=f"Rydberg Fit (Slope={slope:.3e})")
-
-    plt.xlabel(r"Geometric Term $(\frac{1}{n_f^2} - \frac{1}{n_i^2})$")
-    plt.ylabel(r"Inverse Wavelength $1/\lambda$ ($m^{-1}$)")
-    plt.title("Hydrogen Spectrum: UET Geometric Quantization")
-    plt.grid(True, alpha=0.3)
-    plt.legend()
-
-    # Annotate points
-    for i, txt in enumerate(labels):
-        plt.annotate(
-            txt,
-            (x_arr[i], y_arr[i]),
-            xytext=(0, 10),
-            textcoords="offset points",
-            ha="center",
-            fontsize=8,
+        results.append(
+            {
+                **row,
+                "geometric_term": term,
+                "predicted_wavelength_nm": predicted_nm,
+                "wavelength_error_ppm": error_ppm,
+            }
+        )
+        print(
+            f"  {row['name']}: observed={observed_nm:.4f} nm, "
+            f"R_H prediction={predicted_nm:.4f} nm, error={error_ppm:.2f} ppm"
         )
 
-    save_path = result_dir / "Rydberg_Validation.png"
-    plt.savefig(save_path, dpi=300)
-    print(f"📸 Showcase Image Saved: {save_path}")
+    x_arr = np.array(x_vals)
+    y_arr = np.array(y_vals)
+    slope_origin = float(np.dot(x_arr, y_arr) / np.dot(x_arr, x_arr))
+    slope_error_ppm = abs(slope_origin - r_h) / r_h * 1e6
+    avg_error_ppm = float(np.mean([row["wavelength_error_ppm"] for row in results]))
+    max_error_ppm = float(np.max([row["wavelength_error_ppm"] for row in results]))
+    threshold = {
+        "average_wavelength_error_ppm_max": 100.0,
+        "max_wavelength_error_ppm_max": 250.0,
+        "slope_error_ppm_max": 250.0,
+    }
+    status = (
+        "PASS"
+        if avg_error_ppm <= threshold["average_wavelength_error_ppm_max"]
+        and max_error_ppm <= threshold["max_wavelength_error_ppm_max"]
+        and slope_error_ppm <= threshold["slope_error_ppm_max"]
+        else "FAIL"
+    )
 
-    if error < 0.1:
-        print("✅ PASS: Hydrogen Spectrum confirms Integer Geometric Shells.")
-        return True
-    else:
-        print("⚠️ LOOSE PASS: Validated but slope slightly off (likely precision/isotope).")
-        return True
+    artifact = {
+        "schema_version": "1.1",
+        "topic": "0.20_Atomic_Physics",
+        "status": status,
+        "claim_class": "C - source-backed internal hydrogen spectrum benchmark",
+        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "command": "python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validation.py",
+        "environment": {
+            "python": sys.version.split()[0],
+            "platform": platform.platform(),
+        },
+        "inputs": [
+            {
+                "path": str(SPECTRUM_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(SPECTRUM_PATH),
+                "source": spectrum.get("source"),
+                "doi": spectrum.get("publication", {}).get("doi"),
+                "url": spectrum.get("publication", {}).get("url"),
+            },
+            {
+                "path": str(CODATA_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(CODATA_PATH),
+                "source": codata.get("source"),
+                "doi": codata.get("publication", {}).get("doi"),
+            },
+        ],
+        "formula_ids": [
+            "AT20-RYDBERG-WAVELENGTH",
+            "AT20-RH-CODATA-CHECKPOINT",
+            "AT20-SPECTRUM-RESIDUAL",
+        ],
+        "threshold": threshold,
+        "metrics": {
+            "R_H_codata_m_inverse": r_h,
+            "R_infinity_codata_m_inverse": r_infinity,
+            "fitted_slope_through_origin_m_inverse": slope_origin,
+            "slope_error_ppm": slope_error_ppm,
+            "average_wavelength_error_ppm": avg_error_ppm,
+            "max_wavelength_error_ppm": max_error_ppm,
+            "line_count": len(results),
+        },
+        "results": results,
+        "limitations": [
+            "This validates the standard Rydberg relation against the topic-local hydrogen spectrum working copy.",
+            "It does not derive the Rydberg relation from UET first principles.",
+            "It does not validate fine structure, Lamb shift, helium, or many-electron atoms.",
+        ],
+    }
+    write_artifact(artifact)
+    print(f"Average wavelength error: {avg_error_ppm:.2f} ppm")
+    print(f"Max wavelength error: {max_error_ppm:.2f} ppm")
+    print(f"Slope error: {slope_error_ppm:.2f} ppm")
+    print(f"Artifact status: {status}")
+    print(f"Artifact written: {ARTIFACT_PATH}")
+    return status == "PASS"
 
 
 if __name__ == "__main__":
-    run_rydberg_analysis()
+    success = run_rydberg_analysis()
+    sys.exit(0 if success else 1)

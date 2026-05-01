@@ -1,104 +1,64 @@
 ---
 layout: article
 title: "UET Topic 0.12: Vacuum Energy Casimir"
-description: "Research module for Vacuum Energy Casimir within the Unity Equilibrium Theory framework."
+description: "Casimir benchmark and vacuum-energy bridge boundary for the Unity Equilibrium Theory framework."
 ---
 
-# 🌌 0.12 Vacuum Energy & Casimir Effect
-
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.12: Vacuum Energy & Casimir Effect",
-  "description": "Calculating finite Vacuum Energy Density and Casimir Force without renormalization, matching Dark Energy observations.",
-  "about": "Vacuum Energy, Casimir Effect, Dark Energy, Zero-Point Energy, Renormalization, UET"
-}
--->
+# 0.12 Vacuum Energy & Casimir Effect
 
 > [!NOTE]
-> **AI-Digest**: UET calculates a finite 'Vacuum Energy Density' ($\sim 10^{-9} J/m^3$) by defining the vacuum as the fundamental resolution limit of the Information Field. This approach resolves the 'Vacuum Catastrophe' by yielding a value that matches observed Dark Energy without the need for mathematical renormalization tricks or infinite cancellations. / UET คำนวณ 'ความหนาแน่นพลังงานสุญญากาศ' ให้ได้ค่าจำกัด ($\sim 10^{-9} J/m^3$) โดยกำหนดให้สุญญากาศคือขีดจำกัดความละเอียดต่ำสุดของสนามสารสนเทศ วิธีการนี้ช่วยแก้ปัญหาความคลาดเคลื่อนมหาศาลของพลังงานสุญญากาศ (Vacuum Catastrophe) และได้ค่าที่สอดคล้องกับพลังงานมืด (Dark Energy) ที่สังเกตได้จริงโดยไม่ต้องใช้เทคนิคการตัดค่าอนันต์ทางคณิตศาสตร์
+> **AI-Digest**: This topic currently has a source-backed internal benchmark for the Casimir force using a Mohideen/Roy sphere-plate working dataset. The vacuum-energy and dark-energy interpretation remains an open bridge: it is important to the theory, but it is not validated by the Casimir artifact alone.
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Information_Mesh-blueviolet)
-![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
-![Scientific_Rigor](https://img.shields.io/badge/Rigor-Finite_Calculation-orange)
+![Status](https://img.shields.io/badge/Status-Structured%20Benchmark-blue)
+![Claim_Class](https://img.shields.io/badge/Claim%20Class-C%20Casimir%20Benchmark-yellow)
+![Verifier](https://img.shields.io/badge/Verifier-Artifact%20Required-blue)
 
-> **"Standard QFT predicts infinite vacuum energy ($10^{120}$ error). UET proves the vacuum is a discretized Information Mesh, yielding a finite, calculable energy density that matches the Cosmological Constant ($\Lambda$)."**
+## Research Role
 
----
+Topic `0.12` is the vacuum/Casimir benchmark layer. Its immediate scientific job is to test whether the implemented engine reproduces a measured force-versus-distance Casimir curve with declared geometry, units, constants, and error thresholds. Its larger role in UET is to define a possible bridge from vacuum boundary effects toward vacuum-energy structure, but that bridge is not yet a cosmology proof.
 
-## 1. 📂 5x4 Grid Structure
-
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | Analysis of 4D Vacuum Structure and Cosmological Constant. |
-| **Ref/** | Mohideen & Roy (1998), Lamoreaux (1997). |
-| **Data/** | Experimental Casimir Force Measurements (JSON). |
-| **Code/** | Logic levels: 01_Engine (4D Cutoff Solver), 03_Research (Casimir). |
-| **Result/** | Force vs Distance Plots, Dark Energy prediction. |
-
----
-
-## 🔗 Theory Connection
+## Conceptual Map
 
 ```mermaid
-graph TB
-    subgraph QFT["⚛️ Standard QFT"]
-        VP["Virtual Particles"]
-        Inf["Infinite Energy (Div)"]
-        Match["Matches Casimir"]
-    end
-    
-    subgraph UET["🔮 UET Vacuum"]
-        Info["Information Lattice (4D)"]
-        Cut["Natural Planck Cutoff"]
-        Res["Residual Energy (Dark Energy)"]
-        Force["Information Pressure"]
-    end
-    
-    VP --> Match
-    Info --> Force
-    Force --> Match
-    Info --> Cut
-    Cut --> Res
-    
-    style UET fill:#d4edda,stroke:#28a745
+flowchart LR
+    data["Mohideen/Roy sphere-plate data"] --> units["Unit normalization: nm, pN, um"]
+    units --> pfa["Sphere-plate PFA formula"]
+    pfa --> corr["Gold finite-conductivity correction"]
+    corr --> verifier["Research_Casimir.py artifact"]
+    verifier --> claim["Claim Class C: Casimir benchmark"]
+
+    anchor["Dark-energy density anchor"] --> open["Open bridge: not validated by Casimir artifact"]
+    open --> deps["Inherited limitation for 0.0 / 0.13 / 0.23 / 0.26"]
 ```
 
----
+## Evidence and Status Matrix
 
-## 🎯 Problem & Solution
+| Layer | Current status | Evidence path | Claim allowed now | Blocker |
+| :-- | :-- | :-- | :-- | :-- |
+| Data | Real source referenced, topic-local working copy | `Data/03_Research/mohideen_1998_casimir.json` | The benchmark uses a declared Mohideen/Roy-style sphere-plate dataset. | Upstream archival URL/DOI and transcription audit still need freezing. |
+| Formula | Reviewed registry | `FORMULA_AUDIT.md` | PFA Casimir and finite-conductivity formulas are mapped to code and units. | Parallel-plate pressure function is still named as force; dark-energy anchor is not derived. |
+| Verification | Runnable primary artifact | `Code/03_Research/Research_Casimir.py` | Casimir force agreement can be judged by average and max relative error thresholds. | Needs radius/material sensitivity runs and independent baseline comparison. |
+| Claims | Bounded to Casimir benchmark | this README, `METHOD.md`, `LIMITATIONS.md` | Supports internal benchmark claims only. | Does not solve the vacuum catastrophe or establish dark energy. |
+| Dependencies | Limited downstream use | `0.0`, `0.13`, `0.23`, `0.26` | Downstream topics may cite Casimir benchmark behavior. | Downstream topics must inherit dark-energy bridge limitations. |
 
-- **The Problem:** The "Vacuum Catastrophe" is the worst prediction in physics history. Quantum Field Theory says empty space should weigh $10^{120}$ times more than it does, or else the universe would have collapsed instantly.
-- **The Solution:** UET rejects the "Continuous Space" assumption. By modeling space as an **Information Mesh** with a Planck-scale resolution limit (Axiom 1), we naturally cut off the high-energy modes.
-- **The Result:** We calculate a finite Vacuum Energy Density ($\sim 10^{-9} J/m^3$) that matches the observed Dark Energy value without renormalization tricks.
-
----
-
-## 📊 Test Results
-
-| Category | Test | Result | Status |
-| :--- | :--- | :--- | :--- |
-| **01_Engine** | Vacuum Solver | **Finite Density** | ✅ PASS |
-| **02_Proof** | Force Scaling | **Exact 1/d^4** | ✅ PASS |
-| **03_Research** | Mohideen Data | **1.6% Error** | ✅ PASS |
-| **03_Research** | Dark Energy | Matches $\Lambda$ | ✅ PASS |
-| **04_Competitor** | Standard QED | Infinite/Unstable | ❌ FAIL |
-
----
-
-## 2. ⚡ Quick Start
+## Primary Verification
 
 ```powershell
-python docs/topics/0.12_Vacuum_Energy_Casimir/Code/01_Engine/Engine_Vacuum.py
+python docs/topics/0.12_Vacuum_Energy_Casimir/Code/03_Research/Research_Casimir.py
 ```
 
-## 📁 Key Files
+Expected artifact:
 
-- [Engine_Vacuum.py](./Code/01_Engine/Engine_Vacuum.py): The 4D Logic Engine.
-- [ANALYSIS_Engine_Vacuum.md](./Doc/ANALYSIS_Engine_Vacuum.md): Physics derivation.
-- [casimir_test.py](./Code/03_Research/casimir_test.py): Experimental validation.
+- `Result/artifacts/0_12_vacuum_energy_casimir_verification.json`
 
----
-*Generated by UET Research Assistant - Paper-Ready Version*
+The verifier must record PASS/FAIL, dataset hash, geometry, model radius, formula IDs, thresholds, and per-point residuals.
+
+## Key Files
+
+- `FORMULA_AUDIT.md`: formula registry, units, proof status, failure modes.
+- `DATA_MANIFEST.md`: dataset provenance, local paths, hashes, benchmark roles.
+- `VERIFICATION_SPEC.md`: primary command, thresholds, artifact contract.
+- `METHOD.md`: modeling assumptions and dependency policy.
+- `LIMITATIONS.md`: explicit boundaries for vacuum-energy and cosmology claims.
+- `Code/01_Engine/Engine_Vacuum.py`: current engine implementation.
+- `Code/03_Research/Research_Casimir.py`: primary benchmark verifier.

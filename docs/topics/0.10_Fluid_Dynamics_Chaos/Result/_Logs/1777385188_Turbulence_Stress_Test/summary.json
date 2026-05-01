@@ -1,0 +1,16 @@
+{
+  "run_id": "1777385188_Turbulence_Stress_Test",
+  "simulation": "Turbulence_Stress_Test",
+  "status": "FAILED",
+  "timestamp": "Tue Apr 28 21:06:28 2026",
+  "duration_seconds": 7.003795146942139,
+  "total_steps": 0,
+  "metadata": {
+    "fluid": "Air",
+    "viscosity": 1.825e-05,
+    "v_in": 50.0,
+    "grid_size": 50,
+    "optimization": "VectorizedMatrix"
+  },
+  "final_state": null
+}

@@ -14,9 +14,34 @@ behavior relative to repository Navier-Stokes comparators and canonical fluid re
 ## Assumptions and scope
 
 - Scope: internal speed, stability, and benchmark comparisons
-- Out of scope: claiming the Navier-Stokes Millennium Problem is resolved
+- Out of scope: claiming closure of the Navier-Stokes Millennium problem
 - Current topic materials mix solver engineering claims, mathematical interpretation, and
   benchmark comparisons; public summaries must keep those categories separate
+
+## Conceptual Diagram
+
+```mermaid
+flowchart LR
+    A["embedded grid config"] --> B["simplified NS comparator"]
+    A --> C["UET master-equation step"]
+    B --> D["runtime trials"]
+    C --> D
+    C --> E["stress field finite check"]
+    D --> F["speedup gate"]
+    E --> F
+    G["external CFD datasets"] --> H["future validation gate"]
+    I["theorem assumptions"] --> J["future proof package"]
+```
+
+## Evidence Matrix
+
+| Layer | Current status | Evidence / artifact | Claim allowed |
+| :-- | :-- | :-- | :-- |
+| Embedded speed benchmark | Runnable internal gate | `Result/artifacts/fluid_benchmark_validation.json` | implementation speed comparison |
+| Stress finite-output check | Runnable internal gate | same artifact | stress-test diagnostic |
+| UET fluid formulas | Formula-audited | `FORMULA_AUDIT.md` | model/component description |
+| External CFD validation | Not yet packaged | `DATA_MANIFEST.md` | future validation target |
+| Millennium proof target | Not part of current gate | `LIMITATIONS.md` | no mathematical-proof claim |
 
 ## Data sources
 
@@ -41,7 +66,7 @@ Supporting standard files:
 ## Parameters and fitting status
 
 - Current topic wording should describe speed and stability as internal benchmark outputs
-- Public summaries should not claim guaranteed smoothness or a solved Millennium Problem
+- Public summaries should not claim global smoothness or Millennium-problem closure
   unless a separate proof package is documented and independently reviewed
 
 ## Metrics and thresholds
@@ -59,7 +84,7 @@ Supporting standard files:
 
 - Benchmark comparator is simplified and should be described honestly as such
 - Internal speedups are implementation-specific and environment-sensitive
-- Topic claims about theorem-level consequences remain far stronger than the current
+- Topic claims about proof-level consequences remain far stronger than the current
   repository benchmark evidence
 
 ## Reproducibility

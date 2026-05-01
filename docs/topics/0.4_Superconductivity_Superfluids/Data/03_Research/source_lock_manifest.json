@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "data_class": "topic-derived provenance package",
+  "topic": "0.4_Superconductivity_Superfluids",
+  "purpose": "Bind the current superconductivity benchmark working copies to external formula and dataset provenance records.",
+  "external_source_records": [
+    "docs/data/external/condensed_matter/superconductivity/mcmillan_1968/source_record.json",
+    "docs/data/external/condensed_matter/superconductivity/allen_dynes_1975/source_record.json",
+    "docs/data/external/condensed_matter/superconductivity/nims_supercon/source_record.json"
+  ],
+  "derived_inputs": [
+    {
+      "local_path": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/real_superconductor_data.json",
+      "source_record": "docs/data/external/condensed_matter/superconductivity/mcmillan_1968/source_record.json",
+      "preprocessing": "Generated from the in-script SUPERCONDUCTOR_DATA working-copy table; not a raw upstream table.",
+      "unit_system": "Tc_K and Theta_D_K in Kelvin; lambda_ep and mu_star dimensionless.",
+      "benchmark_role": "primary raw McMillan model-gate input"
+    },
+    {
+      "local_path": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/comprehensive_superconductor_data.json",
+      "source_record": "docs/data/external/condensed_matter/superconductivity/allen_dynes_1975/source_record.json",
+      "preprocessing": "Topic-local Allen-Dynes/UET candidate package with material descriptors; not yet row-normalized to upstream records.",
+      "unit_system": "Tc_exp_K and omega_log_K in Kelvin-equivalent units; couplings dimensionless.",
+      "benchmark_role": "future Allen-Dynes/UET engine gate input"
+    },
+    {
+      "local_path": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/calibrated_superconductors.json",
+      "source_record": "docs/data/external/condensed_matter/superconductivity/mcmillan_1968/source_record.json",
+      "preprocessing": "Inverse-McMillan calibration table generated from target Tc values.",
+      "unit_system": "Tc_K and Theta_D_K in Kelvin; lambda_calibrated and mu_star dimensionless.",
+      "benchmark_role": "calibration diagnostic only; cannot support no-fit prediction claims"
+    }
+  ],
+  "claim_boundary": "This source-lock package improves provenance, but the current raw McMillan verifier still records a model-gate failure and does not promote UET superconductivity claims."
+}

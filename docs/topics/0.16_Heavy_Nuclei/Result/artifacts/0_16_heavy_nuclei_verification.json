@@ -1,52 +1,62 @@
 {
-  "schema_version": "1.0",
-  "topic": "0.16_Heavy_Nuclei",
-  "timestamp_utc": "2026-04-23T01:31:19.118484+00:00",
-  "repo_root": "C:\\Users\\santa\\Desktop\\uet_harness",
-  "python_executable": "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
-  "verification_spec": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.16_Heavy_Nuclei\\VERIFICATION_SPEC.md",
-  "artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.16_Heavy_Nuclei\\Result\\artifacts\\0_16_heavy_nuclei_verification.json",
+  "claim_class": "C/D boundary - internal fission sanity check with missing fragment provenance",
   "command": "python docs/topics/0.16_Heavy_Nuclei/Code/03_Research/Research_Fission.py",
-  "input_hashes": [
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.2"
+  },
+  "failure_reason": "Exothermic range and U-235 binding checkpoint pass, but Ba-141/Kr-92 fragment AME masses are not used by this verifier.",
+  "formula_ids": [
+    "HN16-SEMF-BINDING",
+    "HN16-UET-SEMF-BRIDGE",
+    "HN16-FISSION-Q-SANITY"
+  ],
+  "generated_at_utc": "2026-04-29T17:32:38.695757+00:00",
+  "inputs": [
     {
-      "path": "Data/03_Research/ame2020_heavy/ame2020_heavy.json",
-      "status": "present",
-      "sha256": "800c51294e437685be52968520a50afaa8f3530bdea16acecd6950300d39fc65",
-      "bytes": "1105"
-    },
-    {
-      "path": "Data/03_Research/ame2020_heavy_nuclei.json",
-      "status": "present",
+      "doi": "10.1088/1674-1137/abddaf",
+      "path": "docs/topics/0.16_Heavy_Nuclei/Data/03_Research/ame2020_heavy_nuclei.json",
       "sha256": "85dfd3fd091ee779379a3525f0ff552afecb7605c556601876c3a9b37717b693",
-      "bytes": "1579"
-    },
-    {
-      "path": "Data/03_Research/download_data.py",
-      "status": "present",
-      "sha256": "8488808cc7463cb42fc303553dbd7ce0cf908eca6be18cdf5929c24d36789f2c",
-      "bytes": "3130"
-    },
-    {
-      "path": "Data/AME2020_mass.txt",
-      "status": "present",
-      "sha256": "f8667f840c16f1503c9269138395b5d24fe6b7325b62985e02f80bc3c16210c7",
-      "bytes": "479833"
+      "source": "AME2020 heavy-nuclei working copy"
     }
   ],
-  "timeout_seconds": 20,
-  "resolved_command": [
-    "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
-    "docs/topics/0.16_Heavy_Nuclei/Code/03_Research/Research_Fission.py"
+  "limitations": [
+    "The verifier uses SEMF/UET-bridge fragment binding estimates, not source-locked AME fragment masses.",
+    "The result supports an internal fission sanity check only.",
+    "It does not validate the Island of Stability or a first-principles heavy-nuclei theory."
   ],
-  "environment_overrides": {
-    "PYTHONIOENCODING": "utf-8",
-    "PYTHONUTF8": "1",
-    "PYTHONPATH_PREFIX": "C:\\Users\\santa\\Desktop\\uet_harness"
+  "metrics": {
+    "energy_release_mev": 165.86690321875176,
+    "exothermic_gate": true,
+    "fragment_ame_present": false,
+    "fragments": [
+      {
+        "A": 141,
+        "Z": 56,
+        "binding_energy_mev": 1176.4441373264835
+      },
+      {
+        "A": 92,
+        "Z": 36,
+        "binding_energy_mev": 785.9215397759252
+      }
+    ],
+    "parent": {
+      "A": 235,
+      "Z": 92,
+      "binding_energy_mev": 1796.4987738836571
+    },
+    "u235_ame_binding_mev": 1783.871,
+    "u235_binding_error_percent": 0.707886045776686,
+    "u235_binding_gate": true
   },
-  "status": "ran",
-  "exit_code": 0,
-  "passed_run_contract": true,
-  "duration_seconds": 1.03,
-  "stdout_tail": "============================================================\n\u2622\ufe0f  UET RESEARCH: NUCLEAR FISSION (U-235)\n============================================================\n\ud83d\udd0d UET Glass Box: Logging (Streaming) to 'C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.16_Heavy_Nuclei\\Result\\_Logs\\1776907880_UET_Heavy_Nuclei'\n  Parent (U-235) BE:      1796.5 MeV\n  Products (Ba+Kr) BE:    1962.4 MeV\n------------------------------\n  Energy Released:        165.9 MeV\n\n  \u2705 PASS: Fission is Exothermic (Matches Physics)\n",
-  "stderr_tail": ""
+  "schema_version": "1.1",
+  "status": "WARN",
+  "threshold": {
+    "energy_release_mev_max": 250.0,
+    "energy_release_mev_min": 100.0,
+    "fragment_ame_required_for_pass": true,
+    "u235_binding_error_percent_max": 2.0
+  },
+  "topic": "0.16_Heavy_Nuclei"
 }

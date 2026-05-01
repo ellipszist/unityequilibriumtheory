@@ -1,94 +1,59 @@
-# Topic 0.3: Cosmology & Hubble Tension - Code
+# Topic 0.3 Code: Cosmology and Hubble Tension
 
-Validates UET against the Hubble Tension (4.9σ), Dark Energy (Lambda), and CMB measurements.
-- **Hubble Tension** -> beta term (running constant $\beta \approx \sqrt{\alpha}$)
-- **Dark Energy** -> Axiom 8 (Vacuum linkage)
-- **Structure Formation** -> kappa term (information gradient)
+This folder contains the current scalar H0 comparison workflow, the cosmology engine,
+supporting cosmology scripts, and visualization utilities. The primary verified result is a
+source-locked scalar z=0 Hubble-gap benchmark, not a full cosmological likelihood pipeline.
 
-## 5x4 Structure
+## Execution Map
 
-```
-Code/
-  01_Engine/
-    Engine_Cosmology.py           # Main Solver: Scale-dependent H0 (Beta=0.0854)
-  02_Proof/
-    Proof_Hubble_Resolution.py    # Analytical derivation of H0 difference
-  03_Research/
-    Research_CMB_Analysis.py      # Planck 2018 Data Validation (Flatness)
-    Research_Hubble_Comparison.py # Planck vs SH0ES comparison (2.1% Error)
-    Research_Dark_Energy.py       # Equation of State w ~ -1 & Lambda Gap
-    Research_highz_galaxies.py    # Early universe rotation boost prediction
-    download_cosmo_data.py        # Utility: Downloader for Planck/SNe
-    run_cosmo_experiment.py       # Integration Test Suite
-  04_Competitor/
-    Competitor_Comparison_BAO.py  # Standard Model BAO deviations
+```mermaid
+flowchart TD
+    A["Planck 2018 source record"] --> D["source_lock_manifest.json"]
+    B["SH0ES 2022 source record"] --> D
+    C["NIST/CODATA alpha source record"] --> D
+    D --> E["Research_Hubble_Comparison.py"]
+    F["Engine_Cosmology.py"] --> E
+    E --> G["hubble_comparison_validation.json"]
+    H["Research_Dark_Energy.py"] --> I["separate diagnostic gap"]
+    J["CMB / high-z / BAO scripts"] --> K["future verifier targets"]
 ```
 
-## 🚀 Run Commands
+## Primary Command
 
 ```powershell
-# Navigate to project root
-cd c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.9.0
-
-# [1] Core Engine Logic (The Fix)
-python docs/topics/0.3_Cosmology_Hubble_Tension/Code/01_Engine/Engine_Cosmology.py
-
-# [2] Mathematical Proof
-python docs/topics/0.3_Cosmology_Hubble_Tension/Code/02_Proof/Proof_Hubble_Resolution.py
-
-# [3] Hubble Tension Research (2.1% Match)
 python docs/topics/0.3_Cosmology_Hubble_Tension/Code/03_Research/Research_Hubble_Comparison.py
+```
 
-# [4] Dark Energy & Lambda Analysis (Gap Identified)
+Primary artifact:
+
+- `docs/topics/0.3_Cosmology_Hubble_Tension/Result/artifacts/hubble_comparison_validation.json`
+
+## Verified Status Matrix
+
+| Layer | Script | Current status | Scientific role |
+| :-- | :-- | :-- | :-- |
+| Scalar H0-gap benchmark | `Research_Hubble_Comparison.py` | `PASS`, about `2.085%` relative error | source-locked internal benchmark |
+| Hubble-frame beta | `Engine_Cosmology.py` | recorded as `sqrt(ALPHA_EM)` | no-fit bridge input, derivation still open |
+| Redshift transition law | `Engine_Cosmology.py` | formula present, not separately gated | high-z hardening target |
+| Dark-energy/vacuum gap | `Research_Dark_Energy.py` | diagnostic failure remains separate | not solved by H0 benchmark |
+| CMB/high-z/BAO scripts | `Code/03_Research`, `Code/04_Competitor` | scripts exist | need separate artifacts before claim upgrade |
+
+## Additional Commands
+
+```powershell
+python docs/topics/0.3_Cosmology_Hubble_Tension/Code/01_Engine/Engine_Cosmology.py
+python docs/topics/0.3_Cosmology_Hubble_Tension/Code/02_Proof/Proof_Hubble_Resolution.py
 python docs/topics/0.3_Cosmology_Hubble_Tension/Code/03_Research/Research_Dark_Energy.py
-
-# [5] CMB Power Spectrum Validation
 python docs/topics/0.3_Cosmology_Hubble_Tension/Code/03_Research/Research_CMB_Analysis.py
-
-# [6] High-Z Galaxy Predictions
 python docs/topics/0.3_Cosmology_Hubble_Tension/Code/03_Research/Research_highz_galaxies.py
-
-# [7] Competitor Comparison (BAO)
 python docs/topics/0.3_Cosmology_Hubble_Tension/Code/04_Competitor/Competitor_Comparison_BAO.py
 ```
 
-## 📊 Test Results
+## Claim Boundary
 
-| Script | Test Focus | Result | Status |
-|--------|------------|--------|--------|
-| Engine_Cosmology.py | H0 Tension | Explains 5.76 km/s/Mpc gap | ✅ PASS |
-| Proof_Hubble_Resolution.py | Derivation | Analytical Match | ✅ PASS |
-| Research_Hubble_Comparison.py | H0 Data | 2.1% Error vs Obs | ✅ PASS |
-| Research_Dark_Energy.py | Lambda | 10^122 Discrepancy | ❌ FAIL |
-| Research_CMB_Analysis.py | Geometry | Flat Universe (Ok=0) | ✅ PASS |
-| Research_highz_galaxies.py | Prediction | High-V at High-Z | ✅ PASS |
-| Competitor_Comparison_BAO.py | Standard Model | 5.99% Deviation | ✅ PASS |
+The current artifact supports: the implemented scalar H0-gap rule reproduces the
+Planck-to-SH0ES gap within the repository's fixed internal threshold using a non-fitted
+`sqrt(alpha_em)` bridge.
 
-**Total: 6/7 PASS (1 Fail on Lambda Problem)**
-
-## Data Sources (with DOIs)
-
-- **Planck Collaboration (2018)** Cosmological Parameters - DOI: 10.1051/0004-6361/201833910
-- **Riess et al. (2022)** A Comprehensive Measurement of H0 (SH0ES) - DOI: 10.3847/2041-8213/ac5c5b
-- **Brout et al. (2022)** Pantheon+ Supernova Analysis - DOI: 10.3847/1538-4357/ac8e04
-
-## Engine/Proof Analysis
-
-### Current Status
-Uses `Engine_Cosmology.py` with `Beta = sqrt(alpha_em) = 0.0854`.
-This implies the Hubble Constant $H_0$ scales with information density, creating a natural difference between early (CMB) and late (Local) measurements.
-
-### Recommendation
-- **Engine needed?** Yes. Standard $\Lambda$CDM has no mechanism to vary $H_0$ by scale.
-- **Proof needed?** Yes. Derivation of the $\beta$ factor is critical.
-
-## 🧬 Key Physics
-
-```
-H0_local = H0_cmb * (1 + beta)
-Beta = sqrt(alpha_fine_structure) ~ 0.085
-```
-
-## ASCII Note
-
-All Unicode replaced with ASCII for Windows compatibility.
+It does not support: a universal resolution of the Hubble tension, a full replacement for
+Lambda-CDM inference, or closure of the dark-energy/vacuum-energy problem.

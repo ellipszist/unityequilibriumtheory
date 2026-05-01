@@ -63,12 +63,25 @@ def load_provenance() -> dict:
     return json.loads(provenance_json.read_text(encoding="utf-8"))
 
 
-def uet_geometric_angles() -> dict:
-    return {"theta12_deg": 33.41, "theta23_deg": 49.0, "theta13_deg": 8.54}
+def uet_geometric_angles(solver: UETNeutrinoSolver) -> dict:
+    """Return the current engine angle outputs.
+
+    Earlier versions of this verifier used a benchmark-compatible local angle package.
+    That made the benchmark pass less meaningful because it was not testing the engine
+    path declared in the topic docs. The verifier now checks the live engine output.
+    """
+    theta12, theta23, theta13, delta_cp = solver.pmns_angles_geometric()
+    return {
+        "theta12_deg": float(theta12),
+        "theta23_deg": float(theta23),
+        "theta13_deg": float(theta13),
+        "delta_cp_deg": float(delta_cp),
+        "source": "Engine_Neutrino.UETNeutrinoSolver.pmns_angles_geometric",
+    }
 
 
 def in_range(value: float, lower: float, upper: float) -> bool:
-    return lower <= value <= upper
+    return bool(lower <= value <= upper)
 
 
 def compare_to_variant(label: str, variant: dict, geometric: dict, runtime: dict) -> dict:
@@ -112,10 +125,10 @@ def run_test() -> bool:
     dataset = load_nufit()
     provenance = load_provenance()
     katrin = load_katrin()
-    geometric = uet_geometric_angles()
     solver = UETNeutrinoMixingSolver()
     runtime = solver.NUFIT_PARAMS
     mass_solver = UETNeutrinoSolver()
+    geometric = uet_geometric_angles(mass_solver)
     predicted_mass_eV = mass_solver.predict_neutrino_mass()
     katrin_limit_eV = katrin["data"]["mass_limit_eV_c2"]
 
@@ -174,11 +187,16 @@ def run_test() -> bool:
         for key in ("delta_m21_sq_1e5_eV2", "delta_m3l_sq_1e3_eV2")
     )
     overall = geometric_pass and splitting_pass and katrin_pass and provenance_pass
+    failed_angles = [
+        key
+        for key in ("theta12_deg", "theta23_deg", "theta13_deg")
+        if not any(comparison["results"][key]["within_3sigma"] for comparison in comparisons)
+    ]
 
     print("\n[5] INTERPRETATION")
     print("-" * 72)
     print(
-        "Angles are checked as UET geometric outputs against official NuFIT 6.0 ranges.\n"
+        "Angles are checked as live UET engine outputs against official NuFIT 6.0 ranges.\n"
         "Mass splittings are checked separately as runtime benchmark-fed parameters, not yet as\n"
         "first-principles derivations. The direct KATRIN mass-limit check is stricter: it probes\n"
         "the absolute mass-scale engine path rather than the oscillation benchmark layer."
@@ -194,6 +212,7 @@ def run_test() -> bool:
                 "theta12": geometric["theta12_deg"],
                 "theta23": geometric["theta23_deg"],
                 "theta13": geometric["theta13_deg"],
+                "angle_source": geometric["source"],
                 "dm21_sq": runtime["dm21_sq"],
                 "dm31_sq": runtime["dm31_sq"],
                 "katrin_limit_eV": katrin_limit_eV,
@@ -202,6 +221,7 @@ def run_test() -> bool:
         ),
         results={
             "status": "PASS" if overall else "FAIL",
+            "claim_class": "C internal benchmark gate" if overall else "model-hardening blocker",
             "geometric_angles": geometric,
             "runtime_benchmark_params": {"dm21_sq": runtime["dm21_sq"], "dm31_sq": runtime["dm31_sq"]},
             "absolute_mass_scale": {
@@ -215,29 +235,44 @@ def run_test() -> bool:
             "splitting_pass": splitting_pass,
             "katrin_pass": katrin_pass,
             "provenance_pass": provenance_pass,
+            "failure_analysis": {
+                "failed_live_angle_gates": failed_angles,
+                "model_action": (
+                    "revise or derive the live geometric angle path before using this topic "
+                    "as support for mass-generation or unity-scale claims"
+                )
+                if failed_angles
+                else "no live angle failure in this run",
+                "downstream_dependency_policy": {
+                    "0.17_Mass_Generation": "inherits angle-gate blocker until the live model passes NuFIT ranges",
+                    "0.23_Unity_Scale_Link": "may cite this artifact as a constraint, not as positive unification evidence",
+                    "0.0_Grand_Unification": "must list this as an integration limitation while status is FAIL",
+                },
+            },
         },
         config={
             "source_locked_reference": str(external_json.relative_to(root_path)),
             "nufit_provenance_reference": str(provenance_json.relative_to(root_path)),
             "katrin_source_locked_reference": str(katrin_json.relative_to(root_path)),
-            "note": "NuFIT 6.0 values are maintained as a checked-transcription JSON guarded by source hashes and schema validation; the KATRIN limit is extracted from the official 2025 KATRIN results page.",
+            "note": "NuFIT 6.0 values are maintained as a checked-transcription JSON guarded by source hashes and schema validation; the KATRIN limit is extracted from the official 2025 KATRIN results page; angle checks use live Engine_Neutrino outputs.",
         },
         metrics={
-            "geometric_angles_all_within_any_3sigma": geometric_pass,
+            "engine_angles_all_within_any_3sigma": geometric_pass,
+            "engine_angle_fail_count": len(failed_angles),
             "runtime_splittings_all_within_any_3sigma": splitting_pass,
             "predicted_mass_eV": predicted_mass_eV,
             "katrin_limit_eV_c2": katrin_limit_eV,
             "nufit_schema_validation_status": provenance.get("schema_validation_status"),
         },
         thresholds={
-            "geometric_angles_within_any_3sigma": True,
+            "engine_angles_within_any_3sigma": True,
             "runtime_splittings_within_any_3sigma": True,
             "predicted_mass_less_than_katrin_limit": True,
         },
         notes=(
-            "This test distinguishes UET geometric angle outputs from runtime benchmark-fed mass splittings. "
+            "This test distinguishes live UET engine angle outputs from runtime benchmark-fed mass splittings. "
             "It also checks the direct absolute-mass engine path against the official 2025 KATRIN limit. "
-            "A pass here does not certify a first-principles derivation of the full neutrino sector."
+            "A fail constrains downstream core-theory claims until the live geometric angle path is repaired."
         ),
     )
     artifact_path = topic_dir / "Result" / "artifacts" / "nufit_6_0_validation.json"

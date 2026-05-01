@@ -4,8 +4,8 @@ Engine: UET Neutrino Mixing (Flavor Oscillation)
 Topic: 0.7_Neutrino_Physics (Migrated from 0.18)
 Folder: 01_Engine
 
-Validates Quantum Interference (Oscillation) in UET.
-Uses core UET framework - NO PARAMETER FITTING.
+Runs a UET-style oscillation diagnostic.
+Uses core UET framework with benchmark-fed runtime parameters.
 
 Core Concept: Neutrino mixing = C-field phase rotation
   P(ν_e → ν_μ) = sin²(2θ) × sin²(Δm²L/4E)
@@ -81,17 +81,17 @@ def run_mixing_engine():
     print("    Topic 0.7 - Flavor Oscillation via C-field Phase")
     print("=" * 70)
 
-    # Test cases with UET Geometric Predictions (Tri-bimaximal / Maximal)
-    # We do NOT use fitted NuFIT values.
-    # UET predicts symmetries:
+    # Test cases with UET geometric rule examples (tri-bimaximal / maximal).
+    # These are diagnostics, not a source-locked benchmark gate.
+    # Current rule examples:
     # theta_23 = 45 deg (Maximal Mixing, Symmetry)
     # theta_12 = ~35.26 deg (arcsin(1/sqrt(3)), Tri-bimaximal)
-    # theta_13 = ~9.0 deg (Derived in Topic 0.7 from Hierarchy Leakage)
+    # theta_13 = ~9.0 deg (current hierarchy-leakage bridge)
 
     cases = [
         ("Theta_12 (Solar)", 35.26, 1.0, "Geometric: arcsin(1/√3)"),
         ("Theta_23 (Atm)", 45.00, 10.0, "Geometric: Maximal (π/4)"),
-        ("Theta_13 (React)", 9.00, 10.0, "Derived: Topic 0.7"),
+        ("Theta_13 (React)", 9.00, 10.0, "Bridge: Topic 0.7"),
     ]
 
     print("\n[1] MIXING ANGLE → OSCILLATION AMPLITUDE")

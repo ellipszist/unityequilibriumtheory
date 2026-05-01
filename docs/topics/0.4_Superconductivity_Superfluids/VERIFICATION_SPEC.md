@@ -3,17 +3,31 @@
 - Primary command:
   - `python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment_Superconductor_Data.py`
 - Inputs:
-  - `Data/03_Research/__init__.py`
-  - `Data/03_Research/calibrated_superconductors.json`
-  - `Data/03_Research/casimir_data.py`
-  - `Data/03_Research/casimir_force_data.json`
+  - `Data/03_Research/real_superconductor_data.json`
+  - generated from the in-script `SUPERCONDUCTOR_DATA` working-copy table
 - Baseline:
-  - Supercon working files, calibrated superconducting datasets, and cited material references.
+  - Raw McMillan critical-temperature baseline over conventional superconductors with published/curated `Theta_D`, `lambda_ep`, and `mu_star` inputs.
 - Reported metrics:
-  - relative error on transition-temperature or materials-response benchmarks
+  - per-material McMillan `Tc` prediction
+  - per-material relative error against working-copy observed `Tc`
+  - average relative error
+  - count of materials within 20 percent
+  - source-lock manifest hash and external source-record hashes
+  - failure analysis with worst materials and model-gate reason
+  - inverse-McMillan `lambda_required_for_observed_tc`, `lambda_delta_vs_required`, and `lambda_ratio_vs_required`
 - Fixed threshold:
-  - Working threshold for this standards pass: the primary script must run without error, use the stated input package, and write a summary artifact under Result/artifacts/. A stronger numeric acceptance threshold must be frozen in a later BASELINE_COMPARISON.md pass.
+  - average relative error must be <= 20 percent
+  - every material in the raw McMillan subset should be <= 20 percent for a PASS
+  - a FAIL is a model/baseline blocker and must not be hidden by run-contract success
 - Artifact target:
   - Result/artifacts/0_4_superconductivity_superfluids_verification.json
+- Current artifact interpretation:
+  - `run_status=PASS`: the verifier executed and wrote the artifact.
+  - `model_gate_status=FAIL`: the raw McMillan parameter package fails the stated scientific gate.
+  - Latest observed average relative error is about 62.4 percent with 1 of 10 rows within 20 percent.
+  - The inverse-McMillan diagnostic currently shows 9 of 10 inverse-solvable rows have declared `lambda_ep` above the coupling required to reproduce observed `Tc` under the same `Theta_D_K` and `mu_star`.
 - Interpretation:
-  - Treat output as an internal benchmark artifact only. Do not upgrade claim language to 'solved', 'verified', or 'exact' until a topic-specific baseline-comparison pass is complete.
+  - Treat output as an internal baseline diagnostic only.
+  - The current primary verifier does not test high-Tc cuprates or prove UET coherence corrections.
+  - Calibrated datasets must be kept separate from raw benchmark claims.
+  - The inverse audit is diagnostic only; it cannot be cited as a no-fit prediction.

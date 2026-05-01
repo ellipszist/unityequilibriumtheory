@@ -1,52 +1,123 @@
 {
-  "schema_version": "1.0",
-  "topic": "0.20_Atomic_Physics",
-  "timestamp_utc": "2026-04-23T01:31:25.041410+00:00",
-  "repo_root": "C:\\Users\\santa\\Desktop\\uet_harness",
-  "python_executable": "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
-  "verification_spec": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.20_Atomic_Physics\\VERIFICATION_SPEC.md",
-  "artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.20_Atomic_Physics\\Result\\artifacts\\0_20_atomic_physics_verification.json",
-  "command": "python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Atomic_ThreeBody.py",
-  "input_hashes": [
+  "claim_class": "C - source-backed internal hydrogen spectrum benchmark",
+  "command": "python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validation.py",
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.2"
+  },
+  "formula_ids": [
+    "AT20-RYDBERG-WAVELENGTH",
+    "AT20-RH-CODATA-CHECKPOINT",
+    "AT20-SPECTRUM-RESIDUAL"
+  ],
+  "generated_at_utc": "2026-04-29T18:51:06.871098+00:00",
+  "inputs": [
     {
-      "path": "Data/03_Research/codata_2018_atomic.json",
-      "status": "present",
+      "doi": "10.18434/T4W30F",
+      "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/nist_hydrogen_spectrum.json",
+      "sha256": "f355dd9aa2ffb65eb53e1e5140fa48580fc760e67c596a41a38cfb9a0210a4e8",
+      "source": "NIST Atomic Spectra Database",
+      "url": "https://physics.nist.gov/asd"
+    },
+    {
+      "doi": "10.1063/5.0064853",
+      "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/codata_2018_atomic.json",
       "sha256": "31c982eedd02900d8fb05c1b925d56fb3733ddae877ec304becff6465b9dbf31",
-      "bytes": "1582"
-    },
-    {
-      "path": "Data/03_Research/download_data.py",
-      "status": "present",
-      "sha256": "c12cbe85556f5eaedc0dfa703b6ab5dad0c16e6b71a8a3ed12fe9580d57c9a19",
-      "bytes": "6466"
-    },
-    {
-      "path": "Data/03_Research/download_references.py",
-      "status": "present",
-      "sha256": "6c502427cc1f9bfd7263726e8f8bfc252045378ab0ffad1802d2304e285675ee",
-      "bytes": "6756"
-    },
-    {
-      "path": "Data/03_Research/hydrogen_spectra_data.json",
-      "status": "present",
-      "sha256": "cd3554bd19ef3f47b2469bc88d81e97497eda4b93b6f144b43ab2043c5fd0845",
-      "bytes": "688"
+      "source": "CODATA 2018 Recommended Values"
     }
   ],
-  "timeout_seconds": 20,
-  "resolved_command": [
-    "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
-    "docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Atomic_ThreeBody.py"
+  "limitations": [
+    "This validates the standard Rydberg relation against the topic-local hydrogen spectrum working copy.",
+    "It does not derive the Rydberg relation from UET first principles.",
+    "It does not validate fine structure, Lamb shift, helium, or many-electron atoms."
   ],
-  "environment_overrides": {
-    "PYTHONIOENCODING": "utf-8",
-    "PYTHONUTF8": "1",
-    "PYTHONPATH_PREFIX": "C:\\Users\\santa\\Desktop\\uet_harness"
+  "metrics": {
+    "R_H_codata_m_inverse": 10967758.3406,
+    "R_infinity_codata_m_inverse": 10973731.56816,
+    "average_wavelength_error_ppm": 7.504133013735595,
+    "fitted_slope_through_origin_m_inverse": 10967845.50226957,
+    "line_count": 7,
+    "max_wavelength_error_ppm": 12.500832386280821,
+    "slope_error_ppm": 7.947081514956296
   },
-  "status": "ran",
-  "exit_code": 0,
-  "passed_run_contract": true,
-  "duration_seconds": 1.025,
-  "stdout_tail": "\ud83d\udd0d UET Glass Box: Logging (Streaming) to 'C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.20_Atomic_Physics\\Result\\_Logs\\1776907885_UET_Hydrogen_Solver'\n============================================================\nUET CHAOS: THREE BODY PROBLEM\n============================================================\n\u2705 Result: PASS (Atomic Dynamics and Chaos depend on Engine coupling)\n",
-  "stderr_tail": ""
+  "results": [
+    {
+      "geometric_term": 0.1388888888888889,
+      "n_lower": 2,
+      "n_upper": 3,
+      "name": "H-alpha",
+      "predicted_wavelength_nm": 656.4696063139295,
+      "series": "balmer",
+      "wavelength_error_ppm": 12.500832386280821,
+      "wavelength_vacuum_nm": 656.4614
+    },
+    {
+      "geometric_term": 0.1875,
+      "n_lower": 2,
+      "n_upper": 4,
+      "name": "H-beta",
+      "predicted_wavelength_nm": 486.2737824547626,
+      "series": "balmer",
+      "wavelength_error_ppm": 3.4599039562449447,
+      "wavelength_vacuum_nm": 486.2721
+    },
+    {
+      "geometric_term": 0.21,
+      "n_lower": 2,
+      "n_upper": 5,
+      "name": "H-gamma",
+      "predicted_wavelength_nm": 434.17302004889524,
+      "series": "balmer",
+      "wavelength_error_ppm": 8.798525771173505,
+      "wavelength_vacuum_nm": 434.1692
+    },
+    {
+      "geometric_term": 0.2222222222222222,
+      "n_lower": 2,
+      "n_upper": 6,
+      "name": "H-delta",
+      "predicted_wavelength_nm": 410.29350394620604,
+      "series": "balmer",
+      "wavelength_error_ppm": 0.7215653610451961,
+      "wavelength_vacuum_nm": 410.2938
+    },
+    {
+      "geometric_term": 0.22959183673469388,
+      "n_lower": 2,
+      "n_upper": 7,
+      "name": "H-epsilon",
+      "predicted_wavelength_nm": 397.1235890047229,
+      "series": "balmer",
+      "wavelength_error_ppm": 9.541213313654188,
+      "wavelength_vacuum_nm": 397.1198
+    },
+    {
+      "geometric_term": 0.75,
+      "n_lower": 1,
+      "n_upper": 2,
+      "name": "Lyman-alpha",
+      "predicted_wavelength_nm": 121.56844561369066,
+      "series": "lyman",
+      "wavelength_error_ppm": 11.891497615825797,
+      "wavelength_vacuum_nm": 121.567
+    },
+    {
+      "geometric_term": 0.8888888888888888,
+      "n_lower": 1,
+      "n_upper": 3,
+      "name": "Lyman-beta",
+      "predicted_wavelength_nm": 102.57337598655151,
+      "series": "lyman",
+      "wavelength_error_ppm": 5.615392691924708,
+      "wavelength_vacuum_nm": 102.5728
+    }
+  ],
+  "schema_version": "1.1",
+  "status": "PASS",
+  "threshold": {
+    "average_wavelength_error_ppm_max": 100.0,
+    "max_wavelength_error_ppm_max": 250.0,
+    "slope_error_ppm_max": 250.0
+  },
+  "topic": "0.20_Atomic_Physics"
 }

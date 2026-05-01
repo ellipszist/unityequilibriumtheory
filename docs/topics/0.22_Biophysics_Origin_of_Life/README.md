@@ -1,106 +1,98 @@
 ---
 layout: article
 title: "UET Topic 0.22: Biophysics Origin of Life"
-description: "Research module for Biophysics Origin of Life within the Unity Equilibrium Theory framework."
+description: "Research module for biophysical complexity, neural entropy, and origin-of-life proxy tests within UET."
 ---
 
-# 🧬 0.22 Biophysics & Origin of Life
-
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.22: Biophysics & Origin of Life",
-  "description": "Explaining Life as an Open System that processes entropy and exports disorder to survive.",
-  "about": "Biophysics, Origin of Life, Schrödinger's Entropy, Neural Dynamics, UET"
-}
--->
+# 0.22 Biophysics & Origin of Life
 
 > [!NOTE]
-> **AI-Digest**: UET models life as an Open System that exports entropy to create local order. This explains the thermodynamic 'paradox' of life and links neural health to entropy minimization (avoiding seizure hypersynchrony). / UET มองว่าชีวิตคือระบบเปิดที่ขับเคลื่อนด้วยการส่งออกเอนโทรปีเพื่อสร้างระเบียบในตัว แบบจำลองนี้ช่วยอธิบายความซับซ้อนของสิ่งมีชีวิตและความเสถียรของระบบประสาทผ่านการลดข้อมูลรบกวน
+> **AI-Digest**: This topic is a biophysical-complexity umbrella. It studies how UET-style entropy, coherence, and information-flow proxies might organize living-system, neural, biomarker, cancer, protein-folding, and protocell simulations. Current support is exploratory: the primary verifier is a seeded synthetic biomarker diagnostic, while EEG and origin-of-life evidence need separate source-locked gates.
 
-## 1. 📂 5x4 Grid Structure
+![Status](https://img.shields.io/badge/Status-WARN_Synthetic_Verifier-yellow)
+![Standard](https://img.shields.io/badge/Standard-Formula_Audited-blue)
+![Claim_Class](https://img.shields.io/badge/Claim-D_Exploratory-orange)
+
+---
+
+## 1. 5x4 Grid Structure
 
 | Pillar | Purpose |
 | :--- | :--- |
-| **Doc/** | Analysis of Homeostasis and Entropy Resistance. |
-| **Ref/** | Schrödinger (What is Life?), Prigogine (Dissipative Systems). |
-| **Data/** | Neural signal logs and metabolic rates. |
-| **Code/** | Logic levels: 01_Engine (Life Entropy), 02_Proof (Homeostasis). |
-| **Result/** | Phase plots and entropy reduction curves. |
+| **Doc/** | Analysis of biophysical complexity, neural dynamics, entropy, and origin-of-life hypotheses. |
+| **Ref/** | Schrodinger, Prigogine, EEG, cancer/omics, protein-folding, and prebiotic references. |
+| **data/** | Source-labeled EEG summaries, Bonn-style local EEG text files, and working research inputs. |
+| **Code/** | Engine, proof, research, competitor, and visualization scripts. |
+| **Result/** | Machine-readable verifier artifact and generated figures/logs. |
 
 ---
 
----
+## Theory Role Diagram
 
-## 📖 Overview
-
-**Biophysics** applied UET principles to Living Systems.
-**Core Question:** How does Matter become Mind? How does Chaos become Order?
-
-| Aspect | Description |
-|:-------|:------------|
-| **Schrödinger's Question** | How does life resist the 2nd Law of Thermodynamics? |
-| **UET Answer** | Life consumes Information (Negative Entropy) to maintain structure. |
-
----
-
-## 🎯 The Problem
-
-### The Thermodynamic Paradox
-The Second Law states that $dS_{total} \ge 0$ (Disorder increases).
-Life is highly ordered ($dS_{life} < 0$).
-Is Life breaking the laws of physics?
-
----
-
-## ✅ UET Solution
-
-### Core Insight
-Life is an **Open System**.
-$$ dS_{total} = dS_{life} + dS_{env} \ge 0 $$
-Life creates local order ($S \downarrow$) by exporting massive amounts of disorder (Heat) to the environment ($S \uparrow\uparrow$).
-**Seizure** acts as a counter-example: When the brain creates *too much* order (Hypersynchrony), it fails to function.
-
----
-
-## 📊 Test Results
-
-### Summary
-
-| Test | Phenomenon | Result | Status |
-|:-----|:-----------|:------:|:------:|
-| Engine Simulation | Homeostasis | Stable Low S | ✅ PASS |
-| Thermodynamic Proof | Heat Dissipation | Valid ($dS_{tot} > 0$) | ✅ PASS |
-| Neural Model | Seizure Hypersynchrony | Correlation Confirmed | ✅ PASS |
-
----
-
-## 2. ⚡ Quick Start
-
-```powershell
-cd c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.9.0
-
-# 1. Life Engine (Entropy Simulation)
-python docs/topics/0.22_Biophysics_Origin_of_Life/Code/01_Engine/Engine_Life_Entropy.py
-
-# 2. Proof of Life
-python docs/topics/0.22_Biophysics_Origin_of_Life/Code/02_Proof/Proof_Schrodinger_Life.py
-
-# 3. Neural Research (Seizures)
-python docs/topics/0.22_Biophysics_Origin_of_Life/Code/03_Research/Research_Neural_Seizure.py
+```mermaid
+flowchart LR
+  T13["0.13 Thermodynamic Bridge"] --> ENT["Entropy / information-flow ledger"]
+  ENT --> LIFE["Life/homeostasis proxy"]
+  EEG["EEG references"] --> NEURAL["Neural synchrony checks"]
+  SYN["Seeded synthetic gene matrix"] --> BIO["Biomarker diagnostic"]
+  OMI["Future real omics"] --> CANCER["Cancer / TCGA entropy map"]
+  CHEM["Future prebiotic chemistry"] --> PROTO["Protocell emergence"]
+  LIFE --> TOPIC["0.22 Biophysical complexity"]
+  NEURAL --> TOPIC
+  BIO --> TOPIC
+  CANCER --> TOPIC
+  PROTO --> TOPIC
 ```
 
 ---
 
-## 📁 Files in This Module
+## Evidence And Dependency Matrix
 
-| Path | Content |
-|:-----|:--------|
-| `Code/01_Engine/` | Schrödinger's Entropy Simulation |
-| `Code/03_Research/` | Neural Seizure Dynamics |
-| `Doc/` | 3 Analysis Files (Thai Language) |
+| Layer | Current status | Evidence path | What strengthens the theory next |
+| :-- | :-- | :-- | :-- |
+| Homeostasis/origin-of-life | Entropy and Omega proxy simulations | `METHOD.md`, `FORMULA_AUDIT.md` | Add environment entropy ledger and real/prebiotic reaction data. |
+| EEG/neural dynamics | CHB-MIT/Bonn source records and local summaries exist, but primary verifier does not classify raw EEG | `DATA_MANIFEST.md`, `data/03_Research/source_lock_manifest.json` | Archive raw windows, preprocessing, exact record IDs, and classifier metrics. |
+| Biomarker | Seeded synthetic positive-control diagnostic | `Research_Biomarker_Identification.py`, verifier artifact | Replace synthetic matrix with real omics data and baseline statistics. |
+| Cancer/TCGA | TCGA/GDC source target exists, but current scripts include mock matrices | `FORMULA_AUDIT.md`, `LIMITATIONS.md`, `docs/data/external/biophysics/omics/tcga/source_record.json` | Add real TCGA-derived matrix, cohort, preprocessing, hashes, and baseline statistics. |
+| Protein/protocell | HP/proxy simulations | `FORMULA_AUDIT.md` | Add known benchmark optima, source data, deterministic artifacts. |
+| Dependency | Thermodynamic language depends on `0.13` | `METHOD.md`, `LIMITATIONS.md` | Inherit `0.13` source-lock limitations until closed. |
 
 ---
 
-[← Yang-Mills Mass Gap](../0.21_Yang_Mills_Mass_Gap/README.md) | [→ Unity Link](../0.23_Unity_Link_Lagrangian/README.md)
+## Current Research Claim
+
+- **Supported now:** a runnable internal diagnostic for synthetic biomarker stability, plus mapped formulas and data provenance gaps.
+- **Not established yet:** origin-of-life mechanism, clinical biomarkers, external seizure prediction, real TCGA cancer entropy validation, or protein-folding superiority.
+- **Main value:** `0.22` should become a set of separated biophysical sub-gates, not one blended biomedical claim.
+
+---
+
+## Test Results
+
+| Test | Question | Current result | Status |
+| :-- | :-- | :-- | :-- |
+| Synthetic biomarker | Can seeded high-variance controls be flagged by stability score? | Artifact-producing verifier | WARN |
+| EEG/seizure | Can UET classify real seizure windows? | Not primary-gated yet | OPEN |
+| Origin of life | Can entropy accounting support local order in an open system? | Proxy simulation only | OPEN |
+| Cancer/TCGA | Can real omics show coherence collapse? | Mock matrix currently | OPEN |
+| Protein/protocell | Can benchmark optima be reached reproducibly? | Sandbox scripts | OPEN |
+
+---
+
+## Quick Start
+
+```powershell
+.venv\Scripts\python.exe docs\topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_Biomarker_Identification.py
+```
+
+## Key Files
+
+- [FORMULA_AUDIT.md](./FORMULA_AUDIT.md): formula registry with units, proof status, verifier role, and failure modes.
+- [DATA_MANIFEST.md](./DATA_MANIFEST.md): EEG/source references, synthetic verifier role, local hashes, and source-lock targets.
+- [VERIFICATION_SPEC.md](./VERIFICATION_SPEC.md): primary verifier command, thresholds, artifact target, and interpretation.
+- [METHOD.md](./METHOD.md): method map, evidence matrix, and dependency notes.
+- [LIMITATIONS.md](./LIMITATIONS.md): current claim boundaries and blockers.
+
+---
+
+*Core hardening status: formula-audited, synthetic verifier artifact enabled, biomedical source records pinned, raw biomedical data gates still open.*

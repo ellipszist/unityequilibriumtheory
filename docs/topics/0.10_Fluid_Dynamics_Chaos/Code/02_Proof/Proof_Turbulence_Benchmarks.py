@@ -30,8 +30,12 @@ if not ROOT:
     print("CRITICAL: UET docs root not found!")
     sys.exit(1)
 
-from docs.core.reproducibility import generate_artifact, hash_dataset, save_artifact
+from docs.core.reproducibility import generate_artifact, hash_dataset, hash_file, save_artifact
 from docs.core.uet_master_equation import UETMasterEquation, UETParameters
+
+
+TOPIC_DIR = Path(__file__).resolve().parents[2]
+SOURCE_LOCK_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_lock_manifest.json"
 
 
 class SimplifiedNSSolver:
@@ -162,10 +166,17 @@ def run_benchmarks():
     plt.savefig(fig_dir / "benchmarks_tier2.png")
     plt.close()
 
+    passed = speedup > 2.0 and is_stable
     artifact = generate_artifact(
         topic="0.10_Fluid_Dynamics_Chaos",
-        dataset_hash=hash_dataset({"grid_size": grid_size, "steps": steps, "trials": trials}),
+        dataset_hash=hash_dataset({
+            "grid_size": grid_size,
+            "steps": steps,
+            "trials": trials,
+            "source_lock_sha256": hash_file(SOURCE_LOCK_PATH) if SOURCE_LOCK_PATH.exists() else None,
+        }),
         results={
+            "status": "PASS" if passed else "FAIL",
             "navier_stokes_runtime_seconds": float(t_ns),
             "uet_runtime_seconds": float(t_uet),
             "navier_stokes_runtime_trials_seconds": [float(v) for v in ns_trials],
@@ -173,16 +184,33 @@ def run_benchmarks():
             "speedup": float(speedup),
             "stable": is_stable,
         },
-        config={"grid_size": grid_size, "steps": steps, "trials": trials, "timing_statistic": "median"},
+        config={
+            "grid_size": grid_size,
+            "steps": steps,
+            "trials": trials,
+            "timing_statistic": "median",
+            "source_lock_manifest": str(SOURCE_LOCK_PATH.relative_to(ROOT)),
+            "comparator": "SimplifiedNSSolver embedded in Proof_Turbulence_Benchmarks.py",
+        },
         metrics={"speedup": float(speedup), "stable": is_stable},
         thresholds={"min_speedup": 2.0, "requires_stability": True},
-        notes="Internal benchmark artifact using the repository comparator script.",
+        notes="Internal implementation benchmark artifact using the repository comparator script; not an external CFD validation result.",
+    )
+    artifact["input_hashes"] = {
+        "source_lock_manifest": hash_file(SOURCE_LOCK_PATH) if SOURCE_LOCK_PATH.exists() else None,
+        "benchmark_script": hash_file(Path(__file__).resolve()),
+        "uet_master_equation": hash_file(ROOT / "docs" / "core" / "uet_master_equation.py"),
+    }
+    artifact["claim_boundary"] = (
+        "PASS means the UET implementation beat the embedded simplified comparator under this "
+        "grid/timing/stability gate. It does not establish external CFD accuracy or a "
+        "Navier-Stokes theorem result."
     )
     artifact_path = Path(__file__).resolve().parents[2] / "Result" / "artifacts" / "fluid_benchmark_validation.json"
     save_artifact(artifact, artifact_path)
     print(f"Artifact saved to {artifact_path}")
 
-    return speedup > 2.0 and is_stable
+    return passed
 
 
 if __name__ == "__main__":

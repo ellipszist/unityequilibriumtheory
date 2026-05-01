@@ -6,6 +6,7 @@
 - Inputs:
   - `docs/data/external/particle_physics/pdg/electroweak_reference_package.json`
   - `docs/data/external/particle_physics/pdg/electroweak_benchmark_package.json`
+  - `Data/03_Research/source_lock_manifest.json`
   - `Code/01_Engine/Engine_Electroweak.py`
 - Baseline:
   - PDG 2025 summary-table observables for W, Z, and Higgs masses.
@@ -16,6 +17,7 @@
   - relative error on `sin²θW`, `m_W`, `m_H`, and `G_F`
   - relative error on neutron lifetime
   - running-angle diagnostic average error
+  - source-lock manifest hash and package/source hashes
 - Fixed threshold:
   - `sin²θW < 2%`
   - `m_W < 2%`
@@ -27,3 +29,4 @@
   - `Result/artifacts/electroweak_expanded_benchmark.json`
 - Interpretation:
   - Treat output as a provenance-aware electroweak comparison against PDG 2025 plus an explicit checked-local neutron-lifetime layer. It still does not certify a full gauge-theory derivation or a complete Standard-Model replacement.
+  - Latest rerun recorded PASS for both primary artifacts and preserved the running-angle layer as diagnostic-only.

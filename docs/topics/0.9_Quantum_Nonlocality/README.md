@@ -1,104 +1,89 @@
 ---
 layout: article
 title: "UET Topic 0.9: Quantum Nonlocality"
-description: "Research module for Quantum Nonlocality within the Unity Equilibrium Theory framework."
+description: "CHSH/Bell benchmark and exploratory UET topology bridge for quantum nonlocality."
 ---
 
-# 🔬 0.9 Quantum Nonlocality
-
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.9: Quantum Nonlocality",
-  "description": "Explaining Quantum Entanglement as a shared topological connection in the Information Manifold, deriving the Tsirelson Bound.",
-  "about": "Quantum Nonlocality, Entanglement, Bell's Inequality, Tsirelson Bound, Information Topology, UET"
-}
--->
+# 0.9 Quantum Nonlocality
 
 > [!NOTE]
-> **AI-Digest**: UET resolves 'Quantum Nonlocality' by defining entanglement as a shared 'Information Filament' (Topology) within the 4D manifold. By treating entangled particles as topologically connected (zero distance in information space), UET derives the exact Tsirelson Bound ($2\sqrt{2}$) for Bell violations without 'spooky action'. / UET อธิบาย 'ความไม่จำเพาะเจาะจงทางควอนตัม' (Nonlocality) โดยกำหนดให้การพัวพันคือ 'เส้นใยสารสนเทศ' (Information Filament) ที่ใช้ร่วมกันในเชิงโทโพโลยี การมองว่าอนุภาคที่พัวพันกันนั้นเชื่อมต่อกันโดยตรงในปริภูมิสารสนเทศทำให้ UET สามารถคำนวณค่าขีดจำกัดซีเรลสัน ($2\sqrt{2}$) ได้อย่างแม่นยำโดยไม่ต้องพึ่งพา "อิทธิพลที่น่ากลัวจากระยะไกล"
+> **AI-Digest**: This topic currently supports a source-referenced internal
+> CHSH/Bell benchmark using the Hensen et al. 2015 working copy. It verifies that
+> the recorded Bell parameter violates the local-realist bound and is consistent
+> with the Tsirelson benchmark. UET's topological-filament explanation remains a
+> model bridge until a derivation artifact maps it to the standard quantum
+> correlations.
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Topological_Link-blueviolet)
-![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
-![Scientific_Rigor](https://img.shields.io/badge/Rigor-Tsirelson_Bound-orange)
+![Status](https://img.shields.io/badge/Status-CHSH_Benchmark-yellow)
+![Claim_Class](https://img.shields.io/badge/Claim_Class-C_Internal_Benchmark-blue)
+![Verifier](https://img.shields.io/badge/Verifier-CHSH_Bell_Audit-blue)
+![Rigor](https://img.shields.io/badge/Rigor-Formula_Audited-orange)
 
-> **"UET proves that Quantum Entanglement is not 'Spooky Action at a Distance', but a shared topological connection (Information Filament) in the Information Manifold, yielding the exact Tsirelson Bound ($2\sqrt{2}$)."**
+## Current Claim Boundary
 
----
+The accepted evidence is a CHSH benchmark: `S = 2.42 +/- 0.20`, local-realist
+bound `S <= 2`, p-value `0.039`, and Tsirelson benchmark `2*sqrt(2)`. This
+supports an internal Bell-violation benchmark, not a completed derivation of UET
+information topology.
 
-## 1. 📂 5x4 Grid Structure
-
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | Analysis Reports on Entanglement and Bell Violation. |
-| **Ref/** | Bell (1964), Aspect (1982), Tsirelson (1980). |
-| **Data/** | CHSH Correlation limits and Qubit T1 Specs. |
-| **Code/** | Logic levels: 01_Engine (Tensor Solver), 02_Proof (Bell), 03_Research (CHSH). |
-| **Result/** | Bell Test Simulations & Qubit Relaxation Plots. |
-
----
-
-## 🔗 Theory Connection
+## Conceptual Diagram
 
 ```mermaid
-graph TB
-    subgraph Standard["🔬 Standard Physics"]
-        QM["Quantum Mechanics"]
-        Local["Local Realism"]
-        Bell["Bell's Inequality (S ≤ 2)"]
-    end
-    
-    subgraph UET["✅ UET Solution"]
-        Topo["Topological Information Link"]
-        Hyper["4D Hypercube Geometry"]
-        Bound["✅ Tsirelson Bound (2√2)"]
-    end
-    
-    QM --> Bell
-    Local --> Bell
-    
-    Topo --> Hyper
-    Hyper --> Bound
-    Bound -->|"Explains Violation"| Bell
-    
-    style UET fill:#d4edda,stroke:#28a745
+flowchart LR
+    A["bell_test_2015.json"] --> B["S, S_error, p-value"]
+    C["Bell/CHSH theorem"] --> D["local bound S <= 2"]
+    E["standard QM theorem"] --> F["Tsirelson 2*sqrt(2)"]
+    B --> G["CHSH verifier artifact"]
+    D --> G
+    F --> G
+    G --> H["Claim Class C benchmark"]
+    I["UET topological filament"] --> J["future derivation bridge"]
+    J -. "not yet primary evidence" .-> H
 ```
 
----
+## Evidence Matrix
 
-## 🎯 Problem & Solution
+| Layer | Current status | Evidence / artifact | Claim allowed |
+| :-- | :-- | :-- | :-- |
+| Hensen 2015 CHSH | Source-referenced working copy | `bell_test_2015.json`, DOI `10.1038/nature15759` | Bell benchmark input |
+| Bell violation gate | Runnable verifier | `Result/artifacts/0_9_quantum_nonlocality_verification.json` | internal CHSH violation check |
+| Tsirelson bound | Standard benchmark anchor | `FORMULA_AUDIT.md`, verifier metric | consistency with quantum bound |
+| Raw event analysis | Missing | limitations | not reconstructed |
+| UET topology bridge | Heuristic model | method/formula audit | proposal, not established mechanism |
+| Qubit/double-slit/tunneling | Separate lanes | secondary scripts/data | no support for CHSH claim yet |
 
-- **The Problem:** Local Realism implies Bell's Inequality ($S \le 2$), but Quantum Mechanics experimentally violates this ($S \approx 2.82$). "Spooky Action" defies Relativity.
-- **The Solution:** UET proposes **Axiom 2 (Equilibrium)**: Entangled particles share an "Information Filament" (Topology). The distance between them in Information Space is zero.
-- **Visual:** Imagine two points on a 2D piece of paper. Fold the paper so they touch. They are far in 2D (Space), but touching in 3D (Information Manifold).
-- **Result:** We derive the Tsirelson Bound ($2\sqrt{2}$) as the geometric limit of correlations in this higher-dimensional manifold.
+## 5x4 Grid Structure
 
----
+| Pillar | Purpose |
+| :-- | :-- |
+| `Doc/` | analysis notes for entanglement, Bell tests, and topology models |
+| `Ref/` | Bell, Aspect, Tsirelson, Hensen, and related references |
+| `Data/` | local CHSH, qubit, double-slit, and tunneling working copies |
+| `Code/` | quantum engines, derivation scripts, research verifiers, and comparators |
+| `Result/` | artifacts, figures, and run logs |
 
-## 📊 Test Results
-
-| Category | Test | Result | Status |
-| :--- | :--- | :--- | :--- |
-| **01_Engine** | Tsirelson Bound | **2.828 (Exact)** | ✅ PASS |
-| **03_Research** | Bell Test | **Violation Confirmed** | ✅ PASS |
-| **03_Research** | Qubit T1 | **Decay Observed** | ✅ PASS |
-| **04_Competitor** | Standard QM | **S = 2.828** | ✅ MATCH |
-
----
-
-## 2. ⚡ Quick Start
+## Quick Start
 
 ```powershell
-python docs/topics/0.9_Quantum_Nonlocality/Code/03_Research/Research_Bell_Test.py
+cd C:\Users\santa\Desktop\uet_harness
+python docs/topics/0.9_Quantum_Nonlocality/Code/03_Research/Research_CHSH_Verification.py
 ```
 
-## 📁 Key Files
+## Key Files
 
-- [Engine_Quantum.py](./Code/01_Engine/Engine_Quantum.py): Tensor-based Entanglement Solver.
-- [ANALYSIS_Engine_Quantum.md](./Doc/ANALYSIS_Engine_Quantum.md): Technical details on the topological link.
-- [Code/README.md](./Code/README.md): Full validation suite.
+- `FORMULA_AUDIT.md`: formula registry for CHSH, Bell bound, Tsirelson bound, and open UET bridge.
+- `VERIFICATION_SPEC.md`: primary command, thresholds, and artifact contract.
+- `DATA_MANIFEST.md`: data sources, DOI status, hashes, and provenance gaps.
+- `METHOD.md`: evidence lanes and dependency policy.
+- `LIMITATIONS.md`: blockers for stronger nonlocality/topology claims.
+
+## Current Limitations
+
+- Raw event-count reconstruction from the experiment is not included.
+- UET topological-filament explanation is not yet derived into the CHSH formula.
+- Qubit, tunneling, double-slit, and LC-unity claims need separate verifier artifacts.
+- Strong wording that presents UET topology as a completed derivation is not supported yet.
 
 ---
-*Generated by UET Research Assistant - Paper-Ready Version*
+
+[Previous: Muon g-2](../0.8_Muon_g2_Anomaly/README.md) | [Back to Topics](../README.md)

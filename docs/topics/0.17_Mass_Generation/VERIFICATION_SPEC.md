@@ -2,18 +2,34 @@
 
 - Primary command:
   - `python docs/topics/0.17_Mass_Generation/Code/03_Research/Research_Higgs_Coupling.py`
+  - Windows repo venv command used for audit runs:
+    - `$env:PYTHONIOENCODING='utf-8'; $env:PYTHONUTF8='1'; .\.venv\Scripts\python.exe docs\topics\0.17_Mass_Generation\Code\03_Research\Research_Higgs_Coupling.py`
 - Inputs:
   - `Data/03_Research/download_data.py`
   - `Data/03_Research/higgs_coupling_data.json`
   - `Data/03_Research/higgs_mass_combined.json`
   - `Data/03_Research/lepton_data.json`
 - Baseline:
-  - PDG-derived topic files and topic-local verification scripts.
+  - Standard Model normalized coupling modifier baseline `kappa = 1.0` for the local Higgs-coupling dataset.
 - Reported metrics:
-  - mass residuals, ratio mismatch, and script-reported hierarchy diagnostics
+  - particle count
+  - average absolute `kappa` deviation from `1.0`
+  - maximum absolute `kappa` deviation from `1.0`
+  - input file hashes
 - Fixed threshold:
-  - Working threshold for this standards pass: the primary script must run without error, use the stated input package, and write a summary artifact under Result/artifacts/. A stronger numeric acceptance threshold must be frozen in a later BASELINE_COMPARISON.md pass.
+  - Working threshold for this standards pass: the primary script must run without error, write a summary artifact under `Result/artifacts/`, and keep average absolute `kappa` deviation below `0.2`.
+  - This is a repository working threshold, not a published physics acceptance boundary.
 - Artifact target:
   - Result/artifacts/0_17_mass_generation_verification.json
+- Latest primary artifact identity:
+  - Status: `PASS`
+  - Timestamp: `2026-04-28T14:26:26.891147+00:00`
+  - Schema: `1.1`
+  - Particle count: `6`
+  - Average absolute `kappa` deviation: `0.040000000000000036`
+  - Maximum absolute `kappa` deviation: `0.10000000000000009`
 - Interpretation:
-  - Treat output as an internal benchmark artifact only. Do not upgrade claim language to 'solved', 'verified', or 'exact' until a topic-specific baseline-comparison pass is complete.
+  - Treat output as an internal Higgs-coupling consistency artifact only.
+  - The verifier checks a topic-local SM-normalized `kappa` dataset; it does not prove a new mass-generation mechanism or replace the Higgs mechanism.
+  - Koide/tau and Planck-exponential branches require separate verifier artifacts before supporting claims.
+  - The UTF-8 environment variables are required on this Windows shell because logger/status output uses Unicode glyphs.

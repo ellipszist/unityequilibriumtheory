@@ -2,8 +2,12 @@
 
 - Primary command:
   - `python docs/topics/0.5_Nuclear_Binding_Hadrons/Code/03_Research/Research_Nuclear_Binding_SourceLocked.py`
+  - Windows repo venv command used for audit runs:
+    - `$env:PYTHONIOENCODING='utf-8'; $env:PYTHONUTF8='1'; .\.venv\Scripts\python.exe docs\topics\0.5_Nuclear_Binding_Hadrons\Code\03_Research\Research_Nuclear_Binding_SourceLocked.py`
 - Diagnostic command:
   - `python docs/topics/0.5_Nuclear_Binding_Hadrons/Code/03_Research/Research_Nuclear_Binding_FullTable_Diagnostic.py`
+  - Windows repo venv command used for audit runs:
+    - `$env:PYTHONIOENCODING='utf-8'; $env:PYTHONUTF8='1'; .\.venv\Scripts\python.exe docs\topics\0.5_Nuclear_Binding_Hadrons\Code\03_Research\Research_Nuclear_Binding_FullTable_Diagnostic.py`
 - Inputs:
   - `docs/data/external/particle_physics/ame2020/mass_1.mas20`
   - `Data/03_Research/Data_AME2020_Binding_FullParsed.json`
@@ -26,6 +30,10 @@
 - Artifact target:
   - `Result/artifacts/nuclear_binding_source_locked_validation.json`
   - `Result/artifacts/nuclear_binding_full_table_diagnostic.json`
+- Latest audit-run artifact identity:
+  - Source-locked verifier: `PASS`, dataset hash `a822071ab7769934cdae9a12da598d8dd48d7bcf7e09a53364be28e991b14689`, timestamp `2026-04-28T14:12:54.216457+00:00`.
+  - Full-table diagnostic: `DIAGNOSTIC`, dataset hash `5513ae294bc68c16b7c6649a28dcd088c2901d87a17c1d8895c912b993451f2e`, timestamp `2026-04-28T14:13:12.509370+00:00`.
+  - The UTF-8 environment variables are required on this Windows shell because the logger emits Unicode status glyphs; without them the verifier can fail before artifact review with a console encoding error.
 - Interpretation:
   - A pass means the current engine is numerically compatible with the raw-derived AME2020 subset for heavy nuclei and with the proton-radius benchmark.
   - The diagnostic artifact summarizes table-wide behavior across the parsed AME2020 rows and should be used to describe broad performance honestly, especially the heavy-vs-light split.
