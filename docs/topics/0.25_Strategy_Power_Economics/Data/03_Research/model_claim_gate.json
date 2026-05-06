@@ -1,0 +1,43 @@
+{
+  "claim_boundary": "This gate cannot raise claim strength above descriptive diagnostics without new verifier-backed evidence.",
+  "lanes": [
+    {
+      "allowed_usage_now": "Descriptive returns, volatility, and correlations from local working copies.",
+      "blocker_to_stronger_claim": "Need source-locked upstream download metadata and comparator baselines.",
+      "lane": "Market time-series diagnostics",
+      "status": "accepted_descriptive_only"
+    },
+    {
+      "allowed_usage_now": "Population, GDP PPP, and Gini range sanity from the local working copy.",
+      "blocker_to_stronger_claim": "Need source-locked macro tables and exact extraction lineage.",
+      "lane": "Economy baseline sanity",
+      "status": "accepted_descriptive_only"
+    },
+    {
+      "allowed_usage_now": "Local context only.",
+      "blocker_to_stronger_claim": "Need upstream API/source record, timestamp basis, and indicator lineage.",
+      "lane": "Daily snapshot context",
+      "status": "blocked_for_strong_claims"
+    },
+    {
+      "allowed_usage_now": "Heuristic simulation proposal only.",
+      "blocker_to_stronger_claim": "Need seeded deterministic verifier, calibration target, and real-world benchmark linkage.",
+      "lane": "Social power engine and 8-billion resonance scripts",
+      "status": "blocked_for_strong_claims"
+    },
+    {
+      "allowed_usage_now": "No superiority or causality claim.",
+      "blocker_to_stronger_claim": "Need counterfactual baseline, policy outcome data, uncertainty, and explicit causal design.",
+      "lane": "Policy and strategic-superiority claims",
+      "status": "blocked_for_strong_claims"
+    }
+  ],
+  "purpose": "Claim gate for diagnostic, simulation, and policy lanes inside the topic.",
+  "schema_version": "1.0",
+  "summary": {
+    "accepted_now": 2,
+    "blocked_for_strong_claims": 3,
+    "lanes_total": 5
+  },
+  "topic": "0.25_Strategy_Power_Economics"
+}

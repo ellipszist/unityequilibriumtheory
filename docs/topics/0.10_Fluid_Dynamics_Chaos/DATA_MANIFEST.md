@@ -7,6 +7,14 @@
 | Benchmark outputs | Topic-local files under `Result/` | Repository-generated | Internal results only |
 | Source-lock manifest | `Data/03_Research/source_lock_manifest.json` | Topic-derived provenance package | Hashed by primary verifier |
 
+## Workflow Gate Files
+
+| File | Role | Current status |
+| :-- | :-- | :-- |
+| `source_evidence_intake_stub.json` | provenance intake across internal benchmark, external CFD, and theorem branches | created by primary verifier |
+| `source_evidence_readiness_matrix.json` | tracks review-readiness by branch | internal benchmark ready; external/theorem branches blocked |
+| `branch_claim_gate.json` | lane-by-lane claim ceiling | 2 accepted internal branches, 3 blocked branches |
+
 External-source audit status: `internal benchmark package`.
 
 Priority remediation:

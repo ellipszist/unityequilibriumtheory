@@ -31,6 +31,10 @@ ROOT = bootstrap_repo()
 TOPIC = ROOT / "docs" / "topics" / "0.24_Artificial_Intelligence"
 DATA = TOPIC / "Data"
 ARTIFACT = TOPIC / "Result" / "artifacts" / "0_24_artificial_intelligence_verification.json"
+SOURCE_EVIDENCE_INTAKE = DATA / "03_Research" / "source_evidence_intake_stub.json"
+SOURCE_EVIDENCE_READINESS = DATA / "03_Research" / "source_evidence_readiness_matrix.json"
+MODEL_CLAIM_GATE = DATA / "03_Research" / "model_claim_gate.json"
+SOURCE_LOCK_MANIFEST = DATA / "03_Research" / "source_lock_manifest.json"
 
 
 def sha256(path: Path) -> str:
@@ -44,6 +48,19 @@ def sha256(path: Path) -> str:
 def load_json(path: Path) -> dict:
     with path.open("r", encoding="utf-8") as handle:
         return json.load(handle)
+
+
+def write_json(path: Path, payload: dict) -> dict:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
+    return payload
+
+
+def find_source_target(source_lock: dict, suffix: str) -> dict:
+    for item in source_lock.get("source_targets", []):
+        if item.get("local_path", "").endswith(suffix):
+            return item
+    return {}
 
 
 def fit_power_exponent(points: list[tuple[float, float]]) -> dict:
@@ -94,6 +111,242 @@ def model_sparsity_table(moe_data: dict) -> list[dict]:
     return rows
 
 
+def build_source_evidence_intake_stub() -> dict:
+    scaling = load_json(DATA / "03_Research" / "scaling_laws.json")
+    moe_data = load_json(DATA / "03_Research" / "deepseek_moe_data.json")
+    source_lock = load_json(SOURCE_LOCK_MANIFEST) if SOURCE_LOCK_MANIFEST.exists() else {}
+    scaling_lock = find_source_target(source_lock, "Data/03_Research/scaling_laws.json")
+    csv_lock = find_source_target(source_lock, "Data/GPT3_Scaling_Laws.csv")
+    moe_lock = find_source_target(source_lock, "Data/03_Research/deepseek_moe_data.json")
+
+    payload = {
+        "schema_version": "1.0",
+        "topic": "0.24_Artificial_Intelligence",
+        "purpose": "Structured intake stub for upstream AI scaling and model-metadata evidence before data rewrites or stronger claims.",
+        "instructions": [
+            "Attach upstream URL, DOI, or arXiv identifier, local archive path, retrieval date, and extraction note before changing a working-copy dataset.",
+            "Separate public metadata, estimated values, and proprietary assumptions explicitly.",
+            "Do not treat this file as evidence by itself; it is an intake and tracking layer."
+        ],
+        "source_targets": [
+            {
+                "name": "Scaling-law source package",
+                "priority": "immediate",
+                "status": "partial",
+                "evidence_fields": [
+                    {
+                        "field": "doi_or_arxiv_or_url",
+                        "status": "pending",
+                        "value": "",
+                    },
+                    {
+                        "field": "local_path",
+                        "status": "complete",
+                        "value": "docs/topics/0.24_Artificial_Intelligence/Data/03_Research/scaling_laws.json; docs/topics/0.24_Artificial_Intelligence/Data/03_Research/source_lock_manifest.json",
+                    },
+                    {
+                        "field": "table_or_equation_identifier",
+                        "status": "complete",
+                        "value": "L(N) ~ (N_c / N)^alpha_N; L(D) ~ (D_c / D)^alpha_D; L(C) ~ (C_c / C)^alpha_C",
+                    },
+                    {
+                        "field": "retrieval_date",
+                        "status": "pending",
+                        "value": "",
+                    },
+                    {
+                        "field": "unit_basis",
+                        "status": "complete",
+                        "value": scaling_lock.get("unit_system", "dimensionless exponents; parameters count; tokens count; PF-days"),
+                    },
+                    {
+                        "field": "extraction_note",
+                        "status": "complete",
+                        "value": scaling_lock.get("source_note", scaling.get("source", "")),
+                    },
+                ],
+            },
+            {
+                "name": "GPT-style scaling table provenance package",
+                "priority": "high",
+                "status": "partial",
+                "evidence_fields": [
+                    {
+                        "field": "upstream_url_or_derivation_note",
+                        "status": "complete",
+                        "value": "Topic-local GPT-style working table used for a secondary log-log fit; not yet pinned to an upstream archival table.",
+                    },
+                    {
+                        "field": "local_path",
+                        "status": "complete",
+                        "value": "docs/topics/0.24_Artificial_Intelligence/Data/GPT3_Scaling_Laws.csv",
+                    },
+                    {
+                        "field": "row_origin_or_table_identifier",
+                        "status": "complete",
+                        "value": "5-row parameter/test-loss/FLOPs table embedded in GPT3_Scaling_Laws.csv",
+                    },
+                    {
+                        "field": "retrieval_or_construction_date",
+                        "status": "pending",
+                        "value": "",
+                    },
+                    {
+                        "field": "unit_basis",
+                        "status": "complete",
+                        "value": csv_lock.get("unit_system", "parameters; test loss; FLOPs"),
+                    },
+                    {
+                        "field": "extraction_note",
+                        "status": "complete",
+                        "value": csv_lock.get("source_note", "Small topic-local table used only for internal alpha-fit consistency."),
+                    },
+                ],
+            },
+            {
+                "name": "Model architecture metadata package",
+                "priority": "high",
+                "status": "partial",
+                "evidence_fields": [
+                    {
+                        "field": "public_model_cards_or_urls",
+                        "status": "pending",
+                        "value": "",
+                    },
+                    {
+                        "field": "local_path",
+                        "status": "complete",
+                        "value": "docs/topics/0.24_Artificial_Intelligence/Data/03_Research/deepseek_moe_data.json; docs/topics/0.24_Artificial_Intelligence/Data/03_Research/source_lock_manifest.json",
+                    },
+                    {
+                        "field": "estimated_value_flags",
+                        "status": "complete",
+                        "value": "Estimated/proprietary row present: GPT-4-Turbo; public rows: Llama-3-70B, Llama-3-405B, DeepSeek-V3, Mixtral-8x7B",
+                    },
+                    {
+                        "field": "retrieval_date",
+                        "status": "pending",
+                        "value": "",
+                    },
+                    {
+                        "field": "unit_basis",
+                        "status": "complete",
+                        "value": moe_lock.get("unit_system", "total and active parameters; context window tokens; training tokens"),
+                    },
+                    {
+                        "field": "extraction_note",
+                        "status": "complete",
+                        "value": moe_lock.get("source_note", moe_data.get("source", "")),
+                    },
+                ],
+            },
+        ],
+        "claim_boundary": (
+            "This intake stub is for source evidence capture only. Filling it does not by itself justify "
+            "AI-law, alignment, ethics, or consciousness claim upgrades."
+        ),
+        "source_lock_dependencies": [target.get("local_path") for target in source_lock.get("source_targets", [])],
+    }
+    return write_json(SOURCE_EVIDENCE_INTAKE, payload)
+
+
+def build_source_evidence_readiness_matrix(intake_stub: dict) -> dict:
+    rows = []
+    ready = 0
+    blocked = 0
+    for target in intake_stub["source_targets"]:
+        pending_fields = [field["field"] for field in target["evidence_fields"] if field.get("status") != "complete"]
+        fields_total = len(target["evidence_fields"])
+        fields_complete = fields_total - len(pending_fields)
+        row_ready = not pending_fields
+        if row_ready:
+            ready += 1
+        else:
+            blocked += 1
+        rows.append(
+            {
+                "name": target["name"],
+                "priority": target["priority"],
+                "fields_total": fields_total,
+                "fields_complete": fields_complete,
+                "fields_pending": len(pending_fields),
+                "pending_fields": pending_fields,
+                "target_status": target.get("status", "pending"),
+                "ready_for_source_review": row_ready,
+                "blocking_reason": "" if row_ready else "One or more required evidence fields are still pending.",
+            }
+        )
+    payload = {
+        "schema_version": "1.0",
+        "topic": "0.24_Artificial_Intelligence",
+        "purpose": "Readiness matrix for AI scaling and model-metadata evidence before data edits or claim upgrades.",
+        "summary": {
+            "source_targets_total": len(rows),
+            "targets_ready_for_source_review": ready,
+            "targets_blocked_by_pending_evidence": blocked,
+        },
+        "readiness_rows": rows,
+        "claim_boundary": (
+            "This matrix is a workflow gate only. A target marked ready still requires actual source review before "
+            "working-copy or claim changes."
+        ),
+    }
+    return write_json(SOURCE_EVIDENCE_READINESS, payload)
+
+
+def build_model_claim_gate() -> dict:
+    payload = {
+        "schema_version": "1.0",
+        "topic": "0.24_Artificial_Intelligence",
+        "purpose": "Claim gate for benchmark, heuristic, and exploratory AI lanes inside the topic.",
+        "summary": {
+            "lanes_total": 6,
+            "accepted_now": 2,
+            "blocked_for_strong_claims": 4,
+        },
+        "lanes": [
+            {
+                "lane": "Scaling-law benchmark",
+                "status": "accepted_descriptive_only",
+                "allowed_usage_now": "Internal exponent consistency benchmark from topic-local tables.",
+                "blocker_to_stronger_claim": "Need source-locked scaling tables, extraction lineage, and broader benchmark replication."
+            },
+            {
+                "lane": "Sparse architecture diagnostic",
+                "status": "accepted_descriptive_only",
+                "allowed_usage_now": "Active-parameter fraction comparison only.",
+                "blocker_to_stronger_claim": "Need separated public versus estimated metadata and performance-normalized baselines."
+            },
+            {
+                "lane": "alpha_N to kappa constant bridge",
+                "status": "blocked_for_strong_claims",
+                "allowed_usage_now": "Heuristic comparison only.",
+                "blocker_to_stronger_claim": "Need a derived bridge or a verifier-backed proxy that clears the stated threshold."
+            },
+            {
+                "lane": "Entropy-learning engine",
+                "status": "blocked_for_strong_claims",
+                "allowed_usage_now": "Implemented but not benchmark-validated.",
+                "blocker_to_stronger_claim": "Need optimizer benchmark, seeds, baselines, and acceptance thresholds."
+            },
+            {
+                "lane": "AI detective or cross-topic reasoning scripts",
+                "status": "blocked_for_strong_claims",
+                "allowed_usage_now": "Exploratory cross-topic tooling only.",
+                "blocker_to_stronger_claim": "Need explicit dependency artifact and isolation from 0.1 galaxy-data credibility."
+            },
+            {
+                "lane": "Alignment, ethics, consciousness, developmental AI",
+                "status": "blocked_for_strong_claims",
+                "allowed_usage_now": "Exploratory only.",
+                "blocker_to_stronger_claim": "Need separate source-backed verifiers and claim-specific benchmarks."
+            },
+        ],
+        "claim_boundary": "This gate cannot raise claim strength above the current internal scaling/sparsity benchmark evidence.",
+    }
+    return write_json(MODEL_CLAIM_GATE, payload)
+
+
 def main() -> int:
     scaling_path = DATA / "03_Research" / "scaling_laws.json"
     moe_path = DATA / "03_Research" / "deepseek_moe_data.json"
@@ -102,6 +355,9 @@ def main() -> int:
     scaling = load_json(scaling_path)
     moe_data = load_json(moe_path)
     csv_fit = fit_power_exponent(read_gpt3_csv(gpt3_path))
+    source_evidence_intake = build_source_evidence_intake_stub()
+    source_evidence_readiness = build_source_evidence_readiness_matrix(source_evidence_intake)
+    model_claim_gate = build_model_claim_gate()
 
     alpha_n = float(scaling["constants"]["alpha_N"])
     alpha_c = float(scaling["constants"]["alpha_C"])
@@ -170,6 +426,11 @@ def main() -> int:
                 "source": "topic-local GPT-3 scaling-law working table",
                 "sha256": sha256(gpt3_path),
             },
+            {
+                "path": str(SOURCE_LOCK_MANIFEST.relative_to(ROOT)).replace("\\", "/"),
+                "source": "topic-derived AI source-lock manifest",
+                "sha256": sha256(SOURCE_LOCK_MANIFEST),
+            },
         ],
         "threshold": thresholds,
         "metrics": {
@@ -191,6 +452,24 @@ def main() -> int:
             "alpha_kappa_ok": alpha_kappa_ok,
         },
         "blockers": blockers,
+        "source_evidence_intake_stub": {
+            "path": str(SOURCE_EVIDENCE_INTAKE.relative_to(ROOT)).replace("\\", "/"),
+            "sha256": sha256(SOURCE_EVIDENCE_INTAKE),
+            "source_targets": [item["name"] for item in source_evidence_intake["source_targets"]],
+            "claim_boundary": "This intake stub is for source evidence capture only. It does not authorize data or claim upgrades by itself.",
+        },
+        "source_evidence_readiness_matrix": {
+            "path": str(SOURCE_EVIDENCE_READINESS.relative_to(ROOT)).replace("\\", "/"),
+            "sha256": sha256(SOURCE_EVIDENCE_READINESS),
+            "summary": source_evidence_readiness["summary"],
+            "claim_boundary": "This readiness matrix is a workflow gate only. It tracks whether source evidence is still pending.",
+        },
+        "model_claim_gate": {
+            "path": str(MODEL_CLAIM_GATE.relative_to(ROOT)).replace("\\", "/"),
+            "sha256": sha256(MODEL_CLAIM_GATE),
+            "summary": model_claim_gate["summary"],
+            "claim_boundary": "This gate records diagnostic versus exploratory claim ceilings only. It cannot upgrade the topic beyond the current benchmark evidence.",
+        },
         "limitations": [
             "This artifact audits topic-local scaling and architecture metadata only.",
             "It does not prove AI alignment, ethics as a physical law, consciousness, or universal intelligence dynamics.",

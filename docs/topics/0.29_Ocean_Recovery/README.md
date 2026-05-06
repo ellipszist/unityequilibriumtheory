@@ -1,107 +1,30 @@
 ---
 layout: article
 title: "UET Topic 0.29: Ocean Recovery"
-description: "Research module for Ocean Recovery within the Unity Equilibrium Theory framework."
+description: "Micro-climate Thermal Shields for marine ecosystem stabilization."
 ---
 
-# 🌊 0.29 Ocean Recovery
+# 🌊 0.29 Ocean Recovery (Micro-climate Thermal Shields)
 
-<!-- 
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "name": "UET Topic 0.29: Ocean Recovery",
-  "description": "Using DIY Graphene-based technologies for microplastic filtration and ocean cooling.",
-  "about": "Ocean Recovery, Graphene Shield, Microplastic Remediation, Radiative Cooling, UET"
-}
--->
+> **"Targeted Protection for Vulnerable Waters."**
 
-> [!NOTE]
-> **AI-Digest**: UET proposes the 'Ocean Shield'—a low-cost remediation system using Graphene derived from carbon waste. We demonstrate 99% microplastic filtration efficiency and ~12°C temperature reduction via passive radiative cooling. / UET นำเสนอ 'เกราะป้องกันมหาสมุทร' (Ocean Shield) ซึ่งเป็นระบบฟื้นฟูราคาประหยัดจากขยะคาร์บอน ช่วยกรองไมโครพลาสติกได้ 99% และลดอุณหภูมิน้ำได้ด้วยการแผ่รังสีความร้อนแบบพาสซีฟ
+## 🎯 Problem & Grounded Solution
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Graphene_Shield-blueviolet)
-![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
-![Scientific_Rigor](https://img.shields.io/badge/Rigor-DIY_Tech-orange)
-
-> **"Transforming 'Carbon Waste' on land into 'Ocean Shield' for the sea."
-
----
-
-## 1. 📂 5x4 Grid Structure
-
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | Analysis of Ocean Heat, Microplastic Remediation, and Energy Tech. |
-| **Ref/** | 2025 Ocean Heat Content data and Radiative Cooling research. |
-| **Data/** | Microplastic concentration and Blue Energy potential datasets. |
-| **Code/** | Cleanup simulators, Radiative Cooling, Blue Energy calculations. |
-| **Result/** | Temperature reduction plots and cleanup efficiency charts. |
-
----
+- **The Problem:** Ocean warming causes coral bleaching. Previous concepts aimed to cool the entire ocean by 12°C, which is thermodynamically impossible without a planetary-scale heat sink.
+- **The Grounded Solution:** **Localized Micro-climate Thermal Shields**. UET deploys floating, modular Graphene-foam nets over highly vulnerable areas (like specific coral reefs). These nets provide targeted shade, filter microplastics, and utilize **Passive Radiative Cooling** to vent heat into the upper atmosphere, reducing the *local* water temperature by 1-2°C—just enough to prevent bleaching.
 
 ## 🔗 Theory Connection
-
 ```mermaid
 graph TB
-    subgraph Standard["🔬 Standard Solutions"]
-    Old["High Cost / Industrial Only"]
-    Limit["Not Scalable / Expensive"]
+    subgraph Fiction["❌ Thermodynamic Impossibility"]
+        Global["Cool Entire Ocean 12°C"] --> Violate["Requires Impossible Energy"]
     end
-    
-    subgraph UET["✅ UET Solution"]
-    Graphene["Graphene from Waste"]
-    DIY["DIY Technology"]
-    Shield["Ocean Shield"]
+    subgraph UET["✅ UET Scientific Pathway"]
+        Net["Graphene Radiative Nets"] --> Local["Shade & Radiate Heat"]
+        Local --> Stabilize["Stabilize Target Reef (1-2°C Drop)"]
     end
-    
-    Old --> Limit
-    
-    Graphene --> DIY
-    DIY --> Shield
-    
-    style UET fill:#d4edda,stroke:#28a745
 ```
 
----
-
-## 🎯 Problem & Solution
-
-- **The Problem:** Ocean acidification and microplastic pollution are accelerating. Standard solutions are expensive, industrial-only, and not scalable to global needs.
-- **The Solution:** UET proposes **Graphene from Carbon Waste** to create an "Ocean Shield." By using acoustic resonance and perovskite materials, we achieve 100x cost reduction.
-- **Zero Curve Fitting Law:** All materials are derived from waste streams (agricultural carbon), not mined or synthesized from scratch.
-
----
-
-## 📊 Test Results
-
-| Category | Test | Result | Status |
-| :--- | :--- | :--- | :--- |
-| **01_Engine** | Microplastic Cleanup | 99% Filtration Efficiency | ✅ PASS |
-| **02_Proof** | Radiative Cooling | ~12°C Temperature Drop | ✅ PASS |
-| **03_Research** | Blue Energy | 1,000 W/m² Potential | ✅ PASS |
-| **04_Competitor** | Standard Tech | 100x More Expensive | ❌ FAIL |
-
----
-
-## 2. ⚡ Quick Start
-
-```powershell
-# Run Microplastic Cleanup Simulation
-python docs/topics/0.29_Ocean_Recovery/Code/03_Research/Research_Microplastic_Cleanup.py
-
-# Run Radiative Cooling Simulation
-python docs/topics/0.29_Ocean_Recovery/Code/03_Research/Research_Radiative_Cooling_Sim.py
-
-# Run Blue Energy Potential Calculation
-python docs/topics/0.29_Ocean_Recovery/Code/03_Research/Research_Blue_Energy_Potential.py
-```
-
-## � Key Files
-
-- [Research_Microplastic_Cleanup.py](./Code/03_Research/Research_Microplastic_Cleanup.py): Cleanup simulator
-- [Research_Radiative_Cooling_Sim.py](./Code/03_Research/Research_Radiative_Cooling_Sim.py): Temperature reduction
-- [Research_Blue_Energy_Potential.py](./Code/03_Research/Research_Blue_Energy_Potential.py): Energy calculation
-
----
-*Generated by UET Research Assistant - Ocean Restoration Version*
+## 📊 Evaluation Focus (LIMITATIONS)
+- **Ecological Impact:** Ensuring the nets do not block essential sunlight for phytoplankton.
+- **Material Degradation:** Saltwater corrosion and bio-fouling of the graphene mesh over time.

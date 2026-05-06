@@ -1,94 +1,129 @@
+"""
+UET Bio-Synthetic Integration Engine (Topic 0.38)
+================================================
+Axiomatic simulation of Accelerated Biomineralization for self-healing infrastructure.
+Models Hydroxyapatite crystallization accelerated by acoustic frequencies and metabolic repair.
+"""
+
+import sys
+from pathlib import Path
 import numpy as np
-import json
-import os
 
-class BioGrowthEngine:
+# --- ROBUST UET BOOTSTRAP ---
+def _bootstrap():
+    curr = Path(__file__).resolve()
+    for parent in [curr] + list(curr.parents):
+        if (parent / "docs").exists() and (parent / "docs" / "core").exists():
+            if str(parent) not in sys.path:
+                sys.path.insert(0, str(parent))
+            return parent
+    return None
+
+ROOT = _bootstrap()
+if not ROOT:
+    print("CRITICAL: UET docs root not found!")
+    sys.exit(1)
+
+from docs.core.uet_base_solver import UETBaseSolver
+from docs.core.uet_parameters import UETParameters, get_params, INTEGRITY_KILL_SWITCH
+
+class UETBioSyntheticEngine(UETBaseSolver):
     """
-    Simulation of Bio-Synthetic Material integrity over time.
-    Compares Closed-System (Metal) vs Open-System (Bone) dynamics.
+    Simulates Bio-Synthetic Material integrity over time.
+    Compares Closed-System (Metal) decay vs Open-System (Acoustic Bone) growth/repair.
     """
-    
-    def __init__(self):
-        # Time parameters (Years)
-        self.time_span = 50
-        self.steps = 500
-        self.t = np.linspace(0, self.time_span, self.steps)
-        
-    def simulate_legacy_decay(self, initial_integrity=1.0, decay_rate=0.03):
-        """
-        Closed System Model: Entropy always increases, integrity decreases.
-        S(t) = S0 * e^(-kt)
-        """
-        # Linear + Exponential decay (Fatigue + Corrosion)
-        decay = initial_integrity * np.exp(-decay_rate * self.t)
-        return decay
 
-    def simulate_bio_growth(self, initial_integrity=0.1, max_integrity=1.0, metabolic_rate=0.15):
-        """
-        Open System Model: Metabolic Energy maintains order.
-        Logistic growth + homeostatic repair.
-        """
-        # Integrity climbs to a stable plateau and stays there via repair
-        # Logistic Differential Equation: dI/dt = r*I*(1 - I/K)
-        # Simplified closed-form for step-wise simulation
-        integrity = []
-        current_i = initial_integrity
+    def __init__(self, params=None, name="UET_Bio_Synthetic"):
+        if params is None:
+            params = get_params("0.38")
+            
+        super().__init__(
+            nx=1, ny=1, dt=1.0, # 1 Year per step for macroscopic structural simulation
+            params=params, name=name,
+            topic="0.38_Bio_Synthetic_Integration", pillar="01_Engine"
+        )
         
-        for _ in self.t:
-            # Growth/Repair term
-            growth = metabolic_rate * current_i * (1 - current_i / max_integrity)
-            # Natural wear term (Entropy)
-            wear = 0.02 * current_i
-            
-            current_i += (growth - wear)
-            integrity.append(current_i)
-            
-        return np.array(integrity)
+        # System constraints
+        self.max_integrity = 1.0
+        self.metal_decay_rate = 0.03 # 3% structural fatigue per year
+        self.wear_rate = 0.02        # 2% entropy/wear per year on the hybrid hull
+        
+        # Acoustic / Biomineralization constraints
+        self.acoustic_power = 50.0   # 50 W applied locally for crystallization
+        self.nutrient_flux = 1.0     # Normalized nutrient supply rate
+        
+        # State
+        self.metal_integrity = 1.0   # Starts perfect, decays
+        self.bone_integrity = 0.1    # Starts as a scaffold, grows to 1.0
+        
+        self.results_history = []
 
-    def run_simulation(self):
-        print("UET Research: Topic 0.38 - Bio-Synthetic Growth Engine")
-        print("=" * 60)
+    def calculate_acoustic_crystallization(self, current_integrity: float) -> float:
+        """
+        Acoustically driven crystallization of Hydroxyapatite.
+        Growth Rate = k * Nutrient_Flux * Acoustic_Power * (1 - Integrity/Max)
+        """
+        # UET Information transfer constant
+        k_growth = 0.005 * self.params.beta
         
-        # 1. Legacy Metal Chassis (Dead Material)
-        metal_integrity = self.simulate_legacy_decay()
+        # Logistic growth curve bounded by available space/nutrients
+        space_remaining = max(0.0, self.max_integrity - current_integrity)
+        growth = k_growth * self.nutrient_flux * self.acoustic_power * space_remaining
         
-        # 2. Bio-Synthetic Bone Chassis (Living Material)
-        bone_integrity = self.simulate_bio_growth()
-        
-        # Calculate Reliability at T=30 years
-        idx_30 = int(30 / self.time_span * self.steps)
-        metal_30 = metal_integrity[idx_30]
-        bone_30 = bone_integrity[idx_30]
-        
-        print(f"\n[INTEGRITY REPORT @ YEAR 30]")
-        print(f"Legacy Metal Chassis: {metal_30:.2%} (Needs Replacement)")
-        print(f"Bio-Synthetic Bone  : {bone_30:.2%} (Self-Maintained)")
-        
-        results = {
-            "time_years": list(self.t),
-            "metal_chassis": list(metal_integrity),
-            "bone_chassis": list(bone_integrity),
-            "summary": {
-                "year_30_metal": metal_30,
-                "year_30_bone": bone_30,
-                "advantage_multiplier": bone_30 / metal_30
-            }
-        }
-        
-        # Verification Logic
-        if results["summary"]["advantage_multiplier"] > 2.0:
-            print(f"\nPASS: Bio-Synthetic structural advantage confirmed (>2x life).")
-        else:
-            print("\nFAIL: Metabolic repair rates insufficient.")
+        return float(growth)
 
-        # Save results
-        output_dir = "docs/topics/0.38_Bio_Synthetic_Integration/Result"
-        os.makedirs(output_dir, exist_ok=True)
-        with open(os.path.join(output_dir, "bio_growth_comparison.json"), "w") as f:
-            json.dump(results, f, indent=4)
-            
-        return results
+    def step(self, step_idx: int = 0):
+        if INTEGRITY_KILL_SWITCH:
+            self.results_history.append({"metal": np.nan, "bone": np.nan})
+            return
+
+        # 1. Closed-System Metal Decay (Entropy)
+        self.metal_integrity *= np.exp(-self.metal_decay_rate * self.dt)
+        
+        # 2. Open-System Bio-Bone Repair (Metabolism)
+        growth = self.calculate_acoustic_crystallization(self.bone_integrity) * self.dt
+        wear = self.wear_rate * self.bone_integrity * self.dt
+        
+        self.bone_integrity += (growth - wear)
+        self.bone_integrity = min(self.bone_integrity, self.max_integrity)
+        
+        self.results_history.append({
+            "year": step_idx,
+            "metal_integrity": self.metal_integrity,
+            "bone_integrity": self.bone_integrity
+        })
+        
+        if (step_idx + 1) % 10 == 0:
+            print(f"   [BIO-SYNTHETIC] Year {step_idx+1} | Metal: {self.metal_integrity:.1%} | Bone Hull: {self.bone_integrity:.1%}")
+
+    def save_results(self):
+        import json
+        from pathlib import Path
+        Path(self.logger.run_dir).mkdir(parents=True, exist_ok=True)
+        out_path = Path(self.logger.run_dir) / "bio_growth_comparison.json"
+        with open(out_path, "w") as f:
+            json.dump(self.results_history, f, indent=2)
+        return str(out_path)
 
 if __name__ == "__main__":
-    engine = BioGrowthEngine()
-    engine.run_simulation()
+    print(f"\n🚀 UET BIO-SYNTHETIC INTEGRATION: Simulating 50 Years...")
+    engine = UETBioSyntheticEngine()
+    engine.run(steps=50, verbose=True) # Run for 50 Years
+    path = engine.save_results()
+    
+    # Extract year 30 results for benchmark
+    try:
+        metal_30 = engine.results_history[29]["metal_integrity"]
+        bone_30 = engine.results_history[29]["bone_integrity"]
+        adv = bone_30 / metal_30
+        print(f"\n[INTEGRITY REPORT @ YEAR 30]")
+        print(f"Legacy Metal Chassis: {metal_30:.1%} (Needs Replacement)")
+        print(f"Bio-Synthetic Bone  : {bone_30:.1%} (Self-Maintained)")
+        if adv > 2.0:
+            print(f"✅ PASS: Bio-Synthetic structural advantage confirmed (>2x life).")
+        else:
+            print(f"❌ FAIL: Metabolic repair rates insufficient.")
+    except Exception as e:
+        print("Error evaluating benchmark:", e)
+        
+    print(f"✅ Result Saved: {path}\n")

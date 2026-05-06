@@ -6,6 +6,10 @@
 - The scaling-law and model metadata tables are topic-local working copies; they
   still need upstream URL/DOI/arXiv, retrieval date, preprocessing notes, and
   source separation for estimated values.
+- Provenance is now partially normalized but still incomplete: the scaling-law package is missing DOI/arXiv/URL and retrieval date, the GPT-style table is missing its construction date, and the architecture package is missing public model-card URLs and retrieval date.
+- `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`,
+  `source_lock_manifest.json`, and `model_claim_gate.json` are workflow controls only. They do not count as
+  upstream evidence, derivation, or validation of AI-law claims.
 - MoE active-parameter fraction is an architecture diagnostic, not a complete
   efficiency, quality, safety, or alignment metric.
 - `Research_AI_Detective_V2.py` uses galaxy data from `0.1` and cannot be treated

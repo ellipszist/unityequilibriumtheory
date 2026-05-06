@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.17_Mass_Generation",
+  "purpose": "Readiness matrix for branch-specific source evidence before data edits or claim upgrades.",
+  "summary": {
+    "source_targets_total": 4,
+    "targets_ready_for_source_review": 2,
+    "targets_blocked_by_pending_evidence": 2
+  },
+  "readiness_rows": [
+    {
+      "name": "Higgs coupling table source package",
+      "priority": "immediate",
+      "fields_total": 6,
+      "fields_complete": 5,
+      "fields_pending": 1,
+      "pending_fields": [
+        "doi_or_url"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "One or more required evidence fields are still pending."
+    },
+    {
+      "name": "Combined Higgs mass reference package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 6,
+      "fields_pending": 0,
+      "pending_fields": [],
+      "ready_for_source_review": true,
+      "blocking_reason": ""
+    },
+    {
+      "name": "Normative lepton mass dataset choice",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 6,
+      "fields_pending": 0,
+      "pending_fields": [],
+      "ready_for_source_review": true,
+      "blocking_reason": ""
+    },
+    {
+      "name": "Planck exponential ansatz parameter provenance",
+      "priority": "medium",
+      "fields_total": 6,
+      "fields_complete": 0,
+      "fields_pending": 6,
+      "pending_fields": [
+        "parameter_reference",
+        "local_path",
+        "ansatz_version_or_script",
+        "mass_scale_definition",
+        "unit_basis",
+        "derivation_or_fit_note"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "One or more required evidence fields are still pending."
+    }
+  ],
+  "claim_boundary": "This matrix is a workflow gate only. A target marked ready still requires actual source review before working-copy or claim changes."
+}

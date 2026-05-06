@@ -1,4 +1,14 @@
 {
+  "branch_claim_gate": {
+    "claim_boundary": "This gate cannot raise the topic above the current internal scalar H0 benchmark package.",
+    "path": "Data/03_Research/branch_claim_gate.json",
+    "sha256": "aca84103197e88c769a31a34ad556039503b22d4abe0e6bf214f65c7919e49d3",
+    "summary": {
+      "accepted_now": 2,
+      "blocked_for_strong_claims": 3,
+      "branches_total": 5
+    }
+  },
   "claim_boundary": "PASS means the scalar z=0 H0-gap benchmark is inside the fixed 20 percent gate; it is not a full Planck/SH0ES likelihood replication or a universal cosmology resolution.",
   "config": {
     "no_fitting_rule": "hubble_frame_beta is sqrt(ALPHA_EM), not optimized against H0 data",
@@ -37,8 +47,18 @@
       }
     ]
   },
+  "interpretation": "This artifact supports a source-backed scalar H0 benchmark and an accepted no-fit frame-coupling bridge with a derivation gap. It does not validate high-z, dark-energy, or full cosmology likelihood claims.",
+  "limitations": [
+    "The current pass is a scalar published-value benchmark, not a full cosmology pipeline replication.",
+    "The sqrt(alpha_em) bridge remains a no-fit hypothesis rather than a closed derivation.",
+    "High-z and dark-energy branches remain separate blocked lanes.",
+    "Full cosmology resolution claims remain unsupported by the current evidence package."
+  ],
   "metrics": {
-    "relative_error_percent": 2.0853583129566178
+    "accepted_claim_branches": 2,
+    "relative_error_percent": 2.0853583129566178,
+    "source_targets_blocked": 4,
+    "source_targets_ready_for_review": 1
   },
   "notes": "Internal scalar H0-gap comparison artifact using published H0 reference values and source-lock records.",
   "results": {
@@ -48,6 +68,11 @@
     "H0_planck_uncertainty": 0.5,
     "H0_shoes_reference": 73.04,
     "H0_shoes_uncertainty": 1.04,
+    "branch_claim_gate_summary": {
+      "accepted_now": 2,
+      "blocked_for_strong_claims": 3,
+      "branches_total": 5
+    },
     "delta_h0_uet": 5.757614208850754,
     "delta_residual": 0.11761420885075324,
     "generic_solver_beta": 0.025838809965708517,
@@ -55,9 +80,36 @@
     "hubble_frame_beta_source": "sqrt(ALPHA_EM)",
     "observed_delta_h0": 5.640000000000001,
     "observed_delta_h0_uncertainty": 1.1539497389401325,
+    "source_evidence_readiness_summary": {
+      "source_targets_total": 5,
+      "targets_blocked_by_pending_evidence": 4,
+      "targets_ready_for_source_review": 1
+    },
     "status": "PASS"
   },
   "seed": 42,
+  "source_evidence_intake_stub": {
+    "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself resolve the Hubble tension or full cosmology pipeline.",
+    "path": "Data/03_Research/source_evidence_intake_stub.json",
+    "sha256": "8c5552bd0bdf7f8f777b8477b53127a15cb275674b1db42cc2684efd62ff366d",
+    "source_targets": [
+      "Planck-SH0ES scalar H0 benchmark package",
+      "Fine-structure bridge constant package",
+      "Redshift transition and high-z package",
+      "Dark-energy or vacuum-energy branch package",
+      "Full cosmology likelihood package"
+    ]
+  },
+  "source_evidence_readiness_matrix": {
+    "claim_boundary": "A ready row has enough provenance structure for source review. It does not itself upgrade a claim.",
+    "path": "Data/03_Research/source_evidence_readiness_matrix.json",
+    "sha256": "81a7082a8d62c033de6be2c4d99def36ac6354ebc5b3da9d683154fe62627105",
+    "summary": {
+      "source_targets_total": 5,
+      "targets_blocked_by_pending_evidence": 4,
+      "targets_ready_for_source_review": 1
+    }
+  },
   "source_lock": {
     "derived_inputs": [
       {
@@ -87,7 +139,7 @@
   "thresholds": {
     "max_relative_error_percent": 20.0
   },
-  "timestamp_utc": "2026-04-30T13:14:02.642166+00:00",
+  "timestamp_utc": "2026-05-05T16:35:19.234490+00:00",
   "topic": "0.3_Cosmology_Hubble_Tension",
   "uet_version": "0.9.0"
 }

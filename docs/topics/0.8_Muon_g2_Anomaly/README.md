@@ -46,6 +46,8 @@ flowchart LR
 | Compatibility gate | Current benchmark artifact | `Result/artifacts/muon_g2_2025_validation.json` | source-locked internal benchmark |
 | Sensitivity layer | Diagnostic artifact | `Result/artifacts/muon_g2_2025_sensitivity.json` | comparator sensitivity only |
 | Legacy 2023/2.51e-9 references | Historical diagnostics | `muon_g2_benchmark_shift.json` | not canonical evidence |
+| Source evidence workflow | Structured provenance gate | `Data/03_Research/source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json` | source-review queue |
+| Branch claim gate | Structured claim ceiling | `Data/03_Research/branch_claim_gate.json` | benchmark-only claim control |
 | Bridge derivation | Open | `FORMULA_AUDIT.md`, `LIMITATIONS.md` | no anomaly closure claim |
 
 ## What currently exists
@@ -63,6 +65,7 @@ flowchart LR
 
 - The live engine passes the current source-locked 2025 benchmark at about `0.42 sigma`
 - The workflow now separates canonical verification from stale legacy references
+- The topic now separates accepted benchmark branches from blocked anomaly-closure branches
 - The topic has root-level standards files for data, method, verification, baseline, and
   limitations
 
@@ -72,6 +75,7 @@ flowchart LR
 - It does not rule out alternative explanations or new-physics interpretations
 - It does not yet cover a broad enough set of external alternate-theory packages
 - It does not yet establish downstream consistency across related particle topics
+- It does not upgrade the live engine benchmark into a first-principles anomaly derivation
 
 ## Data and evidence notes
 
@@ -79,6 +83,7 @@ flowchart LR
 - The baseline package keeps historical local theory baselines separate from the canonical
   2025 path
 - The historical `2.51e-9` reference is retained only as diagnostic metadata
+- Topic-level source-evidence and branch-claim gates cap the topic at benchmark-compatibility status
 
 ## Verification notes
 
@@ -87,9 +92,12 @@ flowchart LR
 - Sensitivity layer:
   - `Code/03_Research/Research_Muon_Sensitivity_2025.py`
 - Key artifacts:
-  - `Result/artifacts/muon_g2_2025_validation.json`
+- `Result/artifacts/muon_g2_2025_validation.json`
 - `Result/artifacts/muon_g2_2025_sensitivity.json`
 - `Result/artifacts/muon_g2_benchmark_shift.json`
+- `Data/03_Research/source_evidence_intake_stub.json`
+- `Data/03_Research/source_evidence_readiness_matrix.json`
+- `Data/03_Research/branch_claim_gate.json`
 - `FORMULA_AUDIT.md`
 
 ## Reproducibility

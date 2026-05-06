@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.8_Muon_g2_Anomaly",
+  "purpose": "Source evidence intake before upgrading claims across the muon g-2 benchmark, sensitivity, and downstream particle-physics branches.",
+  "source_targets": [
+    {
+      "name": "2025 experiment package",
+      "priority": "immediate",
+      "status_hint": "source_backed_ready",
+      "evidence_entries": [
+        "official_source_html_path",
+        "extracted_json_path",
+        "observable_scope",
+        "unit_basis",
+        "uncertainty_field",
+        "benchmark_role"
+      ]
+    },
+    {
+      "name": "2025 theory comparator package",
+      "priority": "immediate",
+      "status_hint": "source_backed_ready",
+      "evidence_entries": [
+        "official_source_html_path",
+        "extracted_json_path",
+        "observable_scope",
+        "unit_basis",
+        "uncertainty_field",
+        "benchmark_role"
+      ]
+    },
+    {
+      "name": "Structured baseline package",
+      "priority": "high",
+      "status_hint": "source_backed_ready_with_local_diagnostic_lanes",
+      "evidence_entries": [
+        "baseline_package_path",
+        "canonical_baseline_label",
+        "historical_local_labels",
+        "provenance_status_fields",
+        "diagnostic_boundary_note",
+        "upgrade_requirement"
+      ]
+    },
+    {
+      "name": "Live engine anomaly derivation package",
+      "priority": "high",
+      "status_hint": "accepted_benchmark_gate_with_derivation_gap",
+      "evidence_entries": [
+        "engine_source_path",
+        "formula_registry_entry",
+        "parameter_origin_note",
+        "observable_scope",
+        "derivation_gap_note",
+        "upgrade_requirement"
+      ]
+    },
+    {
+      "name": "Alternate-theory and downstream particle-consistency package",
+      "priority": "medium",
+      "status_hint": "blocked_expansion_branch",
+      "evidence_entries": [
+        "alternate_theory_inputs",
+        "held_out_comparator_package",
+        "downstream_topic_dependency_map",
+        "claim_boundary_note",
+        "artifact_paths",
+        "upgrade_requirement"
+      ]
+    }
+  ],
+  "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself resolve the muon g-2 anomaly."
+}

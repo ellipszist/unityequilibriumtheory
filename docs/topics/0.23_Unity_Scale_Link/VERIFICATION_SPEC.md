@@ -5,12 +5,15 @@
 - Inputs:
   - `data/03_Research/create_unified_data.py`
   - `data/03_Research/source_lock_manifest.json`
+  - `data/03_Research/scale_dependency_manifest.json`
   - `data/03_Research/economy/Bitcoin_yahoo_real.csv`
   - `data/03_Research/economy/DowJones_yahoo_real.csv`
   - `data/03_Research/economy/EUR_USD_yahoo_real.csv`
   - `data/03_Research/economy/SP500_yahoo_real.csv`
   - `docs/data/external/finance/yahoo_snapshots/0_23_unity_scale_link/source_manifest.json`
   - `docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/0_13_thermodynamic_bridge_verification.json`
+  - `docs/topics/0.5_Nuclear_Binding_Hadrons/Result/artifacts/0_5_nuclear_binding_hadrons_verification.json`
+  - `docs/topics/0.6_Electroweak_Physics/Result/artifacts/0_6_electroweak_physics_verification.json`
   - `docs/topics/0.7_Neutrino_Physics/Result/artifacts/nufit_6_0_validation.json`
 - Baseline:
   - Synthetic galaxy/neural engine fields with fixed random seed.
@@ -18,9 +21,10 @@
   - Topic-local scale/calibration files for follow-up provenance work.
 - Reported metrics:
   - `galaxy_neural` Omega means/std, t-statistic, p-value, sample count
-  - `economy_neural` local SP500 count and high/low-volatility Omega means/std
+  - `economy_neural` local SP500 count, high/low-volatility Omega means/std, and whether the ordering matches the synthetic neural diagnostic
   - `universal_kappa` Omega ordering under fixed `kappa=0.1`, `beta=0.05`
   - input file SHA-256 identities
+  - dependency manifest snapshot embedded into the artifact
 - Fixed threshold:
   - at least one primary test must return true for non-FAIL artifact status
   - `galaxy_neural_p_value <= 0.001` is recorded as a diagnostic threshold
@@ -30,4 +34,5 @@
 - Interpretation:
   - Treat output as exploratory structural scale-link evidence only.
   - A `WARN` is expected until finance retrieval can be reproduced and synthetic neural/galaxy tests are replaced or separated from external evidence.
+  - A test no longer counts as `true` merely because it ran; directional agreement now matters for the economy diagnostic.
   - Do not use this verifier to claim grand unification, external prediction, or universal fixed parameters.

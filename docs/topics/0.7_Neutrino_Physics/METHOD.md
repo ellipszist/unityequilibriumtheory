@@ -18,6 +18,9 @@ This topic studies whether current UET-style neutrino structure can reproduce se
 - `Code/03_Research/Research_Neutrino.py`
 - `Code/03_Research/Research_Neutrino_Extended.py`
 - `Code/03_Research/Research_NuFit_6_0_Comparison.py`
+- `Data/03_Research/source_evidence_intake_stub.json`
+- `Data/03_Research/source_evidence_readiness_matrix.json`
+- `Data/03_Research/branch_claim_gate.json`
 
 ## Variable framing
 
@@ -30,6 +33,7 @@ This topic studies whether current UET-style neutrino structure can reproduce se
 - The direct absolute-mass benchmark should come from the official KATRIN 2025 latest-results page.
 - Geometric angle outputs are treated separately from runtime benchmark-fed mass splittings.
 - The absolute-mass branch uses a see-saw-style relation `m_nu = v^2 / M_I`, so the electroweak scale `v` and the heavy information scale `M_I` must be expressed in the same unit system before converting the final result to eV.
+- Branch-specific workflow gates keep NuFIT/KATRIN benchmark compatibility separate from hierarchy-proxy and full-sector theory claims.
 
 ## Domain of validity
 
@@ -49,6 +53,6 @@ This topic studies whether current UET-style neutrino structure can reproduce se
 
 ## Cross-topic dependency policy
 
-- `0.17_Mass_Generation` can use the KATRIN-compatible mass-scale branch only as a bounded model component until the angle gate is repaired.
+- `0.17_Mass_Generation` can use the KATRIN-compatible mass-scale branch only as a bounded model component and still inherits the neutrino derivation gap.
 - `0.23_Unity_Scale_Link` can use the `0.7` verifier as a constraint on cross-domain linking, not as positive evidence for a unity-scale proof.
-- `0.0_Grand_Unification` should index the current FAIL artifact and inherit the neutrino-angle limitation in any integration claim.
+- `0.0_Grand_Unification` should index the current benchmark-compatibility artifact and inherit the neutrino derivation limitations in any integration claim.

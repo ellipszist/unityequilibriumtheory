@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.6_Electroweak_Physics",
+  "purpose": "Source evidence intake before claim upgrades across the electroweak benchmark branches.",
+  "source_targets": [
+    {
+      "name": "PDG 2025 core electroweak mass package",
+      "priority": "immediate",
+      "status_hint": "source_backed_ready",
+      "evidence_entries": [
+        "sqlite_source_path",
+        "reference_package_path",
+        "mapping_audit_path",
+        "unit_basis",
+        "benchmark_role",
+        "extraction_note"
+      ]
+    },
+    {
+      "name": "Weak-mixing-angle and Fermi checked-local package",
+      "priority": "high",
+      "status_hint": "accepted_with_provenance_caveat",
+      "evidence_entries": [
+        "checked_local_reference_path",
+        "mapping_audit_status",
+        "observable_scope",
+        "unit_basis",
+        "claim_boundary_note",
+        "upgrade_requirement"
+      ]
+    },
+    {
+      "name": "Neutron lifetime benchmark package",
+      "priority": "high",
+      "status_hint": "checked_local_secondary_gate",
+      "evidence_entries": [
+        "benchmark_source_path",
+        "status_note",
+        "observable_scope",
+        "unit_basis",
+        "comparison_role",
+        "upgrade_requirement"
+      ]
+    },
+    {
+      "name": "Running-angle diagnostic package",
+      "priority": "medium",
+      "status_hint": "diagnostic_only_checked_local",
+      "evidence_entries": [
+        "compiled_points_source",
+        "status_note",
+        "q_range_note",
+        "unit_basis",
+        "diagnostic_role",
+        "upgrade_requirement"
+      ]
+    },
+    {
+      "name": "Gauge-theory derivation or proof package",
+      "priority": "medium",
+      "status_hint": "not_closed",
+      "evidence_entries": [
+        "proof_script_path",
+        "derivation_scope",
+        "artifact_path",
+        "status_rule",
+        "benchmark_identity",
+        "limitation_note"
+      ]
+    }
+  ],
+  "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself prove electroweak closure."
+}

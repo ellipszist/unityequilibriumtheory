@@ -7,3 +7,4 @@
 - Eot-Wash short-range gravity data exists locally, but no primary artifact currently tests UET parameter values against the exclusion curve.
 - This topic does not currently validate light bending, perihelion precession, Einstein field equations, singularity avoidance, or quantum-gravity closure.
 - Downstream core topics must inherit these limitations before citing `0.19` for broad GR or cosmology claims.
+- Topic-level source-evidence and branch-claim gates now make that boundary explicit: accepted evidence stops at the CODATA constant checkpoint and derived Planck-unit branch, not GR closure.

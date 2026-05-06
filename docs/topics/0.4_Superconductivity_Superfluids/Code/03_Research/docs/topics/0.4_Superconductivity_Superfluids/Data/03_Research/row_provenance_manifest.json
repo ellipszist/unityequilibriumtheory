@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.4_Superconductivity_Superfluids",
+  "purpose": "Row-level provenance and drift tracker for the raw McMillan gate table.",
+  "raw_gate_input_hash": "96861226b45409f72943c648fe67e492b6c53855e7359ea607da0539eb6e2b45",
+  "comprehensive_input_hash": null,
+  "tested_rows": [
+    {
+      "name": "Aluminum (Al)",
+      "type": "Type-I",
+      "source": "McMillan 1968",
+      "lambda_ep": 0.43,
+      "mu_star": 0.1,
+      "relative_error_percent": 86.55242288064956,
+      "source_status": "working_copy_cited_row"
+    },
+    {
+      "name": "Mercury (Hg)",
+      "type": "Type-I",
+      "source": "Onnes 1911 / Kittel",
+      "lambda_ep": 1.6,
+      "mu_star": 0.1,
+      "relative_error_percent": 73.61477118183707,
+      "source_status": "working_copy_cited_row"
+    },
+    {
+      "name": "Lead (Pb)",
+      "type": "Type-I",
+      "source": "MIT Junior Lab",
+      "lambda_ep": 1.55,
+      "mu_star": 0.12,
+      "relative_error_percent": 33.975223995527934,
+      "source_status": "working_copy_cited_row"
+    },
+    {
+      "name": "Vanadium (V)",
+      "type": "Type-II",
+      "source": "MIT Junior Lab",
+      "lambda_ep": 0.8,
+      "mu_star": 0.11,
+      "relative_error_percent": 156.93515224496207,
+      "source_status": "working_copy_cited_row"
+    },
+    {
+      "name": "Niobium (Nb)",
+      "type": "Type-II",
+      "source": "Kittel / MIT",
+      "lambda_ep": 1.04,
+      "mu_star": 0.12,
+      "relative_error_percent": 65.32366701043355,
+      "source_status": "working_copy_cited_row"
+    },
+    {
+      "name": "Tin (Sn)",
+      "type": "Type-I",
+      "source": "Kittel",
+      "lambda_ep": 0.72,
+      "mu_star": 0.1,
+      "relative_error_percent": 65.53626864429087,
+      "source_status": "working_copy_cited_row"
+    },
+    {
+      "name": "Indium (In)",
+      "type": "Type-I",
+      "source": "Kittel",
+      "lambda_ep": 0.81,
+      "mu_star": 0.1,
+      "relative_error_percent": 30.623739557942258,
+      "source_status": "working_copy_cited_row"
+    },
+    {
+      "name": "Nb3Sn",
+      "type": "A15",
+      "source": "Matthias 1954",
+      "lambda_ep": 1.8,
+      "mu_star": 0.13,
+      "relative_error_percent": 56.317125564989745,
+      "source_status": "working_copy_cited_row"
+    },
+    {
+      "name": "Nb3Ge",
+      "type": "A15",
+      "source": "Gavaler 1973",
+      "lambda_ep": 2.1,
+      "mu_star": 0.13,
+      "relative_error_percent": 48.83848988201212,
+      "source_status": "working_copy_cited_row"
+    },
+    {
+      "name": "MgB2",
+      "type": "Two-Gap",
+      "source": "Nagamatsu 2001 Nature",
+      "lambda_ep": 0.87,
+      "mu_star": 0.1,
+      "relative_error_percent": 6.432491732727168,
+      "source_status": "working_copy_cited_row"
+    }
+  ],
+  "skipped_rows": [
+    {
+      "name": "YBCO (YBa2Cu3O7)",
+      "type": "High-Tc Cuprate",
+      "reason": "missing lambda_ep or non-BCS row for raw McMillan baseline",
+      "source": "Wu 1987 PRL"
+    },
+    {
+      "name": "BSCCO-2223",
+      "type": "High-Tc Cuprate",
+      "reason": "missing lambda_ep or non-BCS row for raw McMillan baseline",
+      "source": "Maeda 1988"
+    }
+  ],
+  "cross_dataset_comparison": {
+    "status": "missing_comprehensive_dataset",
+    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\comprehensive_superconductor_data.json",
+    "matched_rows": [],
+    "priority_rows": []
+  },
+  "cross_package_lambda_substitution_audit": {
+    "status": "missing_comprehensive_dataset",
+    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\comprehensive_superconductor_data.json"
+  },
+  "claim_boundary": "This manifest improves row-level auditability but does not certify that any material row is normalized to an upstream authoritative table."
+}

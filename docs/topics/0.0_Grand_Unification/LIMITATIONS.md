@@ -9,3 +9,4 @@
 - A clean `0.0` run cannot promote a subordinate topic that is heuristic, benchmark-fed, warning, or failing.
 - The symbolic master-equation sketch does not close units or prove equivalence to General Relativity, quantum mechanics, or mass generation by itself.
 - Beta sensitivity runs are diagnostic integration behavior, not evidence that all scales are governed by one verified parameter.
+- Topic-level source-evidence and branch-claim gates now make that boundary explicit: accepted evidence stops at integration run-contract and dependency governance, not grand-unification closure.

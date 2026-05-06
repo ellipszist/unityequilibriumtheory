@@ -39,6 +39,8 @@ flowchart LR
 | Data | NIST/CODATA source-labeled working copies | `Data/03_Research/nist_hydrogen_spectrum.json`, `codata_2018_atomic.json` | Hydrogen line and constant inputs are inspectable with hashes. | Wavelength precision and source-transcription notes still need normalization. |
 | Formula | Reviewed registry | `FORMULA_AUDIT.md` | Rydberg relation, `R_H` checkpoint, and residual metrics are mapped to code. | UET derivation of `R_H` is not artifact-backed. |
 | Verification | Runnable primary artifact | `Code/03_Research/Research_Rydberg_Validation.py` | Supports hydrogen-spectrum internal benchmark claims. | Many-electron and QED effects are outside the verifier. |
+| Source evidence workflow | Structured provenance gate | `Data/03_Research/source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json` | source-review queue | Level-energy, precision, and many-electron packages still need dedicated artifacts. |
+| Branch claim gate | Structured claim ceiling | `Data/03_Research/branch_claim_gate.json` | benchmark-only claim control | Hydrogen benchmark does not promote full atomic-theory claims. |
 | Claims | Bounded to hydrogen benchmark | this README, `METHOD.md`, `LIMITATIONS.md` | May state that selected hydrogen lines match the standard Rydberg relation within declared thresholds. | Cannot claim full atomic theory or first-principles UET derivation. |
 | Dependencies | Atomic constants/levels bridge | `0.6`, `0.17`, `0.21`, `0.23`, `0.0` | Downstream topics may cite the hydrogen benchmark with limitations. | Stronger claims need fine-structure/many-electron artifacts. |
 
@@ -61,5 +63,8 @@ The artifact records dataset hashes, NIST/CODATA source IDs, line residuals, fit
 - `VERIFICATION_SPEC.md`: primary command, thresholds, and artifact contract.
 - `METHOD.md`: evidence lanes and dependency policy.
 - `LIMITATIONS.md`: boundaries for derivation, QED, helium, and many-electron claims.
+- `Data/03_Research/source_evidence_intake_stub.json`: provenance intake for hydrogen and future atomic lanes.
+- `Data/03_Research/source_evidence_readiness_matrix.json`: readiness gate for source review.
+- `Data/03_Research/branch_claim_gate.json`: branch-level claim ceiling.
 - `Code/01_Engine/Engine_Atomic_Hydrogen.py`: hydrogen engine and local Rydberg formula.
 - `Code/03_Research/Research_Rydberg_Validation.py`: primary verifier.

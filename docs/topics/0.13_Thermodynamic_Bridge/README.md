@@ -79,9 +79,9 @@ graph LR
 | Layer | Current status | Evidence path | What strengthens the theory next |
 | :-- | :-- | :-- | :-- |
 | Core mechanism | Information-erasure energy bridge via Landauer-style relation | `METHOD.md`, `FORMULA_AUDIT.md` | Map each thermodynamic term to units, constants, and verifier roles. |
-| Data | Berut/CODATA source records plus topic-local working copies with hashes | `DATA_MANIFEST.md`, `docs/data/external/thermodynamics/landauer/berut_2012/source_record.json`, `docs/data/external/constants/codata/si_2019_exact_constants.json` | Archive raw/supplemental Berut numeric tables and add uncertainty-aware preprocessing notes. |
+| Data | Berut/CODATA source records plus topic-local working copies with hashes | `DATA_MANIFEST.md`, `docs/data/external/thermodynamics/landauer/berut_2012/source_record.json`, `docs/data/external/constants/codata/si_2019_exact_constants.json`, `Data/03_Research/source_evidence_intake_stub.json` | Archive raw/supplemental Berut numeric tables and add uncertainty-aware preprocessing notes. |
 | Formula | Reviewed formula audit maps Landauer, entropy proxy, Bekenstein, Unruh, Hawking, Cattaneo, and vacuum-sink formulas | `FORMULA_AUDIT.md` | Add uncertainty propagation, audit duplicate helper constants, and separate identity checks from UET-specific bridge claims. |
-| Verification | Primary script writes structured artifact with metrics, thresholds, hashes, and warning reasons | `VERIFICATION_SPEC.md`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json` | Promote from `WARN` only after external source-lock and cross-topic proof dependencies are closed. |
+| Verification | Primary script writes structured artifact with metrics, thresholds, hashes, warning reasons, and source-evidence readiness | `VERIFICATION_SPEC.md`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`, `Data/03_Research/source_evidence_readiness_matrix.json` | Promote from `WARN` only after external source-lock and cross-topic proof dependencies are closed. |
 | Theory dependency | Feeds UET's information-energy and entropy interpretation | `0.0_Grand_Unification`, `0.23_Unity_Scale_Link`, `0.26_Cosmic_Dynamic_Frame` | Define exactly which claims inherit this bridge and which remain open. |
 | Limitation | Strong conceptual importance, incomplete provenance normalization | `LIMITATIONS.md` | Separate theoretical identity, experimental lower-bound benchmark, synthetic benchmark, and heuristic extension. |
 
@@ -119,7 +119,9 @@ graph LR
 - [DATA_MANIFEST.md](./DATA_MANIFEST.md): data provenance, local hashes, benchmark roles, and external source-lock targets.
 - [VERIFICATION_SPEC.md](./VERIFICATION_SPEC.md): primary command, thresholds, artifact path, and interpretation rules.
 - [Research_Landauer.py](./Code/03_Research/Research_Landauer.py): primary verifier for Landauer/Bekenstein/Jacobson formula checks.
+- [source_evidence_intake_stub.json](./Data/03_Research/source_evidence_intake_stub.json): structured intake sheet for missing external-source evidence before any claim or data upgrade.
+- [source_evidence_readiness_matrix.json](./Data/03_Research/source_evidence_readiness_matrix.json): readiness gate showing which source targets are still blocked by missing evidence fields.
 
 ---
 
-*Core hardening status: formula-audited, verifier-artifact enabled, source records pinned, raw-table source-lock still open.*
+*Core hardening status: formula-audited, verifier-artifact enabled, source records pinned, source-evidence intake/readiness enabled, raw-table source-lock still open.*

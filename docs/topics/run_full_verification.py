@@ -43,21 +43,17 @@ def find_test_scripts(root_dir):
     topics_dir = os.path.join(root_dir, "docs", "topics")
 
     if not os.path.exists(topics_dir):
-        print(f"❌ Critical Error: Topics directory not found at {topics_dir}")
+        print(f"[ERROR] Critical Error: Topics directory not found at {topics_dir}")
         return []
 
-    print(f"🔍 Scanning {topics_dir} for tests...")
+    print(f"[SCAN] Scanning {topics_dir} for tests...")
 
     for topic in os.listdir(topics_dir):
-        # Filter for priority topics or scan all? User said "Long run everything".
-        # Let's prioritize but categorize.
         topic_path = os.path.join(topics_dir, topic)
         if not os.path.isdir(topic_path):
             continue
 
-        # Walk through the topic directory to find ALL relevant scripts
         for root, dirs, files in os.walk(topic_path):
-            # Skip visualization directories to avoid 'visual debt' during bulk runs
             if "05_Visualization" in root:
                 continue
 
@@ -65,7 +61,6 @@ def find_test_scripts(root_dir):
                 if not file.endswith(".py"):
                     continue
 
-                # Broaden inclusion criteria for FULL coverage
                 if (
                     file.startswith("test_")
                     or file.startswith("Engine_")
@@ -84,18 +79,14 @@ def find_test_scripts(root_dir):
 def run_script(path):
     rel_path = os.path.relpath(path, project_root)
     print(f"\n{'='*80}")
-    print(f"� EXECUTING: {rel_path}")
+    print(f"[EXEC] EXECUTING: {rel_path}")
     print(f"{'='*80}")
 
     start_time = time.time()
     try:
-        # Run in module mode or script mode? Script mode is safer for relative imports in these legacy files
-        # BUT many might depend on pwd. Let's try running from project root.
         env = os.environ.copy()
         env["PYTHONIOENCODING"] = "utf-8"
 
-        # Robust PYTHONPATH injection (borrowed from run_solution.py)
-        # Adds project root, docs, and lab folders to ensure all imports work
         lab_path = os.path.join(project_root, "lab")
         docs_path = os.path.join(project_root, "docs")
 
@@ -103,7 +94,6 @@ def run_script(path):
             project_root,
             docs_path,
             lab_path,
-            # Add specific lab subdirectories often used in imports
             os.path.join(lab_path, "01_galaxy_dynamics"),
             os.path.join(lab_path, "02_gravitational"),
             os.path.join(lab_path, "03_electroweak"),
@@ -114,7 +104,6 @@ def run_script(path):
             os.path.join(lab_path, "00_thermodynamic_bridge"),
         ]
 
-        # Merge with existing PYTHONPATH if it exists
         current_pythonpath = env.get("PYTHONPATH", "")
         env["PYTHONPATH"] = os.pathsep.join(extra_paths) + os.pathsep + current_pythonpath
 
@@ -129,26 +118,23 @@ def run_script(path):
         )
         duration = time.time() - start_time
 
-        # Analyze output
         stdout = result.stdout
         stderr = result.stderr
 
-        # Check for our "PASS" or "FAIL" keywords usually printed by these scripts
         status = "UNKNOWN"
         if result.returncode != 0:
             status = "CRASH"
         elif (
             "RESULT: PASS" in stdout
-            or "✅ SUCCESS" in stdout
-            or "✅ PASS" in stdout
+            or "[PASS]" in stdout
+            or "PASS" in stdout
             or "PASSED" in stdout
             or "SUCCESS" in stdout
         ):
             status = "PASS"
-        elif "RESULT: FAIL" in stdout or "❌ FAIL" in stdout:
+        elif "RESULT: FAIL" in stdout or "[FAIL]" in stdout:
             status = "FAIL"
         elif "FAIL" in stdout or "FAILED" in stdout:
-            # Mask potential false negatives from analysis logs
             if "Research_" in path or "Analysis" in path:
                 status = "PASS (Analysis Done)"
             else:
@@ -156,40 +142,35 @@ def run_script(path):
         elif "PASS" in stdout or "PASSED" in stdout or "OK" in stdout:
             status = "PASS"
         else:
-            # Fallback: if exit code 0 and no fail message
             status = "PASS (Implicit)"
 
         print(stdout)
         if stderr and status != "PASS":
-            print("⚠️ STDERR:\n" + stderr)
+            print("[WARN] STDERR:\n" + stderr)
 
-        print(f"⏱️ Result: {status} in {duration:.2f}s")
+        print(f"[TIME] Result: {status} in {duration:.2f}s")
         return status, duration
 
     except Exception as e:
-        print(f"❌ EXCEPTION: {e}")
+        print(f"[ERROR] EXCEPTION: {e}")
         return "ERROR", 0
 
 
 def main():
-    print("🌌 UET COMPREHENSIVE SYSTEM VERIFICATION 🌌")
+    print("--- UET COMPREHENSIVE SYSTEM VERIFICATION ---")
     print(f"Timestamp: {time.strftime('%Y-%m-%d %H:%M:%S')}")
     print("==============================================")
 
     test_files = find_test_scripts(project_root)
-
-    # Priority sorting
     test_files.sort(key=lambda x: any(t in x for t in PRIORITY_TOPICS), reverse=True)
 
     results = []
-
-    print(f"📝 Found {len(test_files)} verification scripts.")
+    print(f"--- Found {len(test_files)} verification scripts.")
 
     total_passed = 0
     total_failed = 0
 
     for script in test_files:
-        # Filter Logic: Only run relevant tests to avoid noise
         if "archive" in script.lower() or "legacy" in script.lower():
             continue
 
@@ -202,7 +183,7 @@ def main():
             total_failed += 1
 
     print("\n" + "#" * 80)
-    print("📊 FINAL VERIFICATION REPORT")
+    print("--- FINAL VERIFICATION REPORT ---")
     print("#" * 80)
 
     print(f"{'SCRIPT':<60} | {'STATUS':<10} | {'TIME'}")
@@ -210,16 +191,15 @@ def main():
 
     for script, status, duration in results:
         rel_name = os.path.basename(script)
-        # Find topic name for context
         topic_name = "Unknown"
         parts = script.split(os.sep)
         for p in parts:
             if "0." in p and "_" in p:
-                topic_name = p[:15] + "..."  # Truncate
+                topic_name = p[:15] + "..."
                 break
 
         display_name = f"{topic_name}/{rel_name}"
-        icon = "✅" if "PASS" in status else "❌"
+        icon = "[OK]" if "PASS" in status else "[!!]"
         print(f"{icon} {display_name:<57} | {status:<10} | {duration:.2f}s")
 
     print("-" * 80)
@@ -228,10 +208,10 @@ def main():
     print(f"FAILED: {total_failed}")
 
     if total_failed == 0:
-        print("\n✨ SYSTEM INTEGRITY VERIFIED ✨")
+        print("\n--- SYSTEM INTEGRITY VERIFIED ---")
         sys.exit(0)
     else:
-        print("\n⚠️ ISSUES DETECTED - REVIEW LOGS")
+        print("\n[WARN] ISSUES DETECTED - REVIEW LOGS")
         sys.exit(1)
 
 

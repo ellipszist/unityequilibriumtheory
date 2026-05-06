@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "topic": "0.14_Complex_Systems",
-  "timestamp_utc": "2026-04-30T07:56:56.066495+00:00",
+  "timestamp_utc": "2026-05-06T15:23:23.696552+00:00",
   "command": "python docs/topics/0.14_Complex_Systems/Code/03_Research/Research_Biology_HRV.py",
   "status": "PASS",
   "passed_run_contract": true,
@@ -57,6 +57,38 @@
       "loaded_by_primary_script": true
     }
   ],
+  "source_evidence_intake_stub": {
+    "path": "Data/03_Research/source_evidence_intake_stub.json",
+    "sha256": "499053407c153b975ae842e4276672aa259acad916f651d48868ffd190bcaec3",
+    "source_targets": [
+      "HRV raw PhysioNet package and extraction workflow",
+      "SOC avalanche benchmark package",
+      "Econophysics market benchmark package",
+      "Climate and inequality branch package",
+      "Social-network or ledger branch package"
+    ],
+    "claim_boundary": "This intake stub is for source evidence capture only. It does not authorize data or claim upgrades by itself."
+  },
+  "source_evidence_readiness_matrix": {
+    "path": "Data/03_Research/source_evidence_readiness_matrix.json",
+    "sha256": "6b89db073fd381faca8a129e69cf4d70a9662f8811b2b5e0305a968737164578",
+    "summary": {
+      "source_targets_total": 5,
+      "targets_ready_for_source_review": 0,
+      "targets_blocked_by_pending_evidence": 5
+    },
+    "claim_boundary": "This readiness matrix is a workflow gate only. It tracks whether source evidence is still pending."
+  },
+  "branch_claim_gate": {
+    "path": "Data/03_Research/branch_claim_gate.json",
+    "sha256": "03c27ca8190e2adc5717bd4b9683eb12c52a36452f618117fe777352482bdfe6",
+    "summary": {
+      "branches_total": 6,
+      "accepted_now": 1,
+      "blocked_for_strong_claims": 5
+    },
+    "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current HRV run-contract evidence."
+  },
   "metrics": {
     "avg_sdnn_ms": 136.33580596854574,
     "avg_rmssd_ms": 51.44503905096715,

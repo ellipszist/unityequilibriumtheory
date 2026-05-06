@@ -75,6 +75,7 @@ flowchart LR
 | Live engine angles | NuFIT 6.0 3sigma ranges | PASS | Revised live bridge gives `theta12 = 35.264 deg`, `theta13 = 8.693 deg`, and `theta23 = 45.000 deg` |
 | Runtime splittings | NuFIT 6.0 3sigma ranges | PASS | Values are benchmark-fed, not derived from first principles |
 | Absolute mass branch | KATRIN 2025 upper limit | PASS | See-saw-style branch is below the official limit |
+| Workflow gates | Source evidence + branch claim files | ACTIVE | Distinguishes accepted benchmark branches from blocked theory branches |
 | Derivation status | Full neutrino sector | HARDENING TARGET | Formula audit labels key paths as heuristic/benchmark-fed |
 
 ## Dependency Matrix
@@ -106,6 +107,8 @@ python docs/scripts/Data/validate_nufit_v60_provenance.py
 - `VERIFICATION_SPEC.md`: primary command, inputs, metrics, thresholds, and artifact target.
 - `LIMITATIONS.md`: current scientific limits and remaining derivation gaps.
 - `FORMULA_AUDIT.md`: formula, unit, provenance, and proof-status registry.
+- `Data/03_Research/source_evidence_intake_stub.json`: provenance intake queue for neutrino branches.
+- `Data/03_Research/branch_claim_gate.json`: lane-by-lane claim ceiling for angles, splittings, absolute mass, and hierarchy.
 
 ## Current Limitations
 
@@ -114,6 +117,7 @@ python docs/scripts/Data/validate_nufit_v60_provenance.py
 - Runtime mass splittings are still benchmark-fed.
 - The absolute-mass path is a compact see-saw-style construction, not a complete neutrino mass
   generation theory.
+- The hierarchy selector and full-sector closure claims remain blocked by the branch claim gate.
 - Internal verifier success does not by itself establish external replication or formal proof.
 
 *Status note: source-locked hardening gate; not an external proof claim.*

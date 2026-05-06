@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "purpose": "Readiness matrix for external-source evidence before provenance or claim upgrades.",
+  "summary": {
+    "source_targets_total": 6,
+    "targets_ready_for_source_review": 0,
+    "targets_blocked_by_pending_evidence": 6
+  },
+  "readiness_rows": [
+    {
+      "name": "Berut 2012 raw or supplementary numeric table",
+      "priority": "immediate",
+      "fields_total": 6,
+      "fields_complete": 0,
+      "fields_pending": 6,
+      "pending_fields": [
+        "doi_or_url",
+        "local_path",
+        "original_file_name",
+        "row_identifier_or_table_label",
+        "unit_basis",
+        "extraction_note"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "One or more required evidence fields are still pending."
+    },
+    {
+      "name": "Jun 2014 nanomagnetic erasure benchmark source",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 0,
+      "fields_pending": 6,
+      "pending_fields": [
+        "doi_or_url",
+        "local_path",
+        "original_file_name",
+        "reported_energy_value",
+        "unit_basis",
+        "extraction_note"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "One or more required evidence fields are still pending."
+    },
+    {
+      "name": "Peterson 2018 quantum Landauer benchmark source",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 0,
+      "fields_pending": 6,
+      "pending_fields": [
+        "doi_or_url",
+        "local_path",
+        "original_file_name",
+        "reported_energy_value",
+        "unit_basis",
+        "extraction_note"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "One or more required evidence fields are still pending."
+    },
+    {
+      "name": "LIGO/Virgo mass uncertainty source package",
+      "priority": "medium",
+      "fields_total": 6,
+      "fields_complete": 0,
+      "fields_pending": 6,
+      "pending_fields": [
+        "doi_or_url",
+        "local_path",
+        "event_identifier",
+        "mass_value_and_uncertainty",
+        "unit_basis",
+        "extraction_note"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "One or more required evidence fields are still pending."
+    },
+    {
+      "name": "EHT black-hole mass source package",
+      "priority": "medium",
+      "fields_total": 6,
+      "fields_complete": 0,
+      "fields_pending": 6,
+      "pending_fields": [
+        "doi_or_url",
+        "local_path",
+        "object_identifier",
+        "mass_value_and_uncertainty",
+        "unit_basis",
+        "extraction_note"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "One or more required evidence fields are still pending."
+    },
+    {
+      "name": "Measured-constant uncertainty record beyond exact SI constants",
+      "priority": "medium",
+      "fields_total": 6,
+      "fields_complete": 0,
+      "fields_pending": 6,
+      "pending_fields": [
+        "doi_or_url",
+        "local_path",
+        "constant_identifier",
+        "value_and_uncertainty",
+        "unit_basis",
+        "extraction_note"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "One or more required evidence fields are still pending."
+    }
+  ],
+  "claim_boundary": "This matrix is an evidence-readiness gate only. A target marked ready still requires actual source review before data or claim changes."
+}

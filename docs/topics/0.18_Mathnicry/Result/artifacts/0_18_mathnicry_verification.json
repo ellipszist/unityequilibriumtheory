@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "topic": "0.18_Mathnicry",
-  "timestamp_utc": "2026-04-29T10:43:54.701203+00:00",
+  "timestamp_utc": "2026-05-05T13:07:48.115147+00:00",
   "command": "python docs/topics/0.18_Mathnicry/Code/03_Research/Research_BSD_Elliptic_Unity.py",
   "status": "WARN",
   "passed_run_contract": true,
@@ -15,6 +15,38 @@
       "sha256": "e4b82c0ea5093ff2d0042f3cada4f4074ade15399a01b5d6241b0b6f6108e07a"
     }
   ],
+  "source_evidence_intake_stub": {
+    "path": "Data/source_evidence_intake_stub.json",
+    "sha256": "05dd0fbb8264466c227f9c4fe0d451dad7ca6780b0e7125486d3e9a3349150e6",
+    "source_targets": [
+      "BSD elliptic-curve benchmark package",
+      "Riemann zero reference package",
+      "Grover or P-vs-NP benchmark package",
+      "Collatz bounded-search manifest",
+      "Quantum-engine deterministic fixture package"
+    ],
+    "claim_boundary": "This intake stub is for source evidence capture only. It does not authorize data or claim upgrades by itself."
+  },
+  "source_evidence_readiness_matrix": {
+    "path": "Data/source_evidence_readiness_matrix.json",
+    "sha256": "3384cb4f574defac4d7d03a4b61161cd8c5d48da144e52e84be07002a3c2a3eb",
+    "summary": {
+      "source_targets_total": 5,
+      "targets_ready_for_source_review": 0,
+      "targets_blocked_by_pending_evidence": 5
+    },
+    "claim_boundary": "This readiness matrix is a workflow gate only. It tracks whether source evidence is still pending."
+  },
+  "branch_claim_gate": {
+    "path": "Data/branch_claim_gate.json",
+    "sha256": "2c4915963e4da54d7665b1ddf9ca6d18b0db712a47419741c505d2fd4c76fa5d",
+    "summary": {
+      "branches_total": 6,
+      "accepted_now": 1,
+      "blocked_for_strong_claims": 5
+    },
+    "claim_boundary": "This gate records theorem-branch claim ceilings only. It cannot upgrade the topic beyond the current run-contract evidence."
+  },
   "metrics": {
     "curve_count": 2,
     "rank_indicator_mismatches": 1

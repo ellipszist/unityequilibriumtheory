@@ -19,8 +19,8 @@ hadron/QCD scripts.
 | `T05-LIGHT-007` | deuteron: `(hbar_c*kappa)^2/(2*mu)`; triton/He3/He4 use overlap, Coulomb, and saturation factors | `Code/01_Engine/Engine_Light_Nuclei.py` | `hbar_c` MeV*fm; `kappa` 1/fm; `mu` MeV; binding MeV; factors dimensionless | `checked_local_reference` for constants; `heuristic_bridge` for overlap/saturation terms | `heuristic bridge` | diagnostic-only for light nuclei | Uses empirical-looking constants (`0.232`, `0.95`, `0.762`, `1.3`, `1.16`) and should not be merged into heavy-nucleus pass claims. | Source-lock constants or classify as fitted/heuristic; connect to separate verifier if retained. |
 | `T05-HADRON-008` | meson/baryon mass as sum of constituent masses with constituent shift `DELTA_M_UET = 330*beta` | `Code/01_Engine/Engine_Hadron_Model.py` | quark masses MeV; hadron mass MeV; `beta` dimensionless | `source_locked_benchmark_input` for PDG current masses; `heuristic_bridge` for constituent shift and strangeness factor | `heuristic bridge` | diagnostic-only | Constituent shift can act as hidden benchmark anchor; embedded PDG snapshots are not a source-locked data layer. | Move PDG/FLAG inputs to external/source-backed data package or demote to legacy diagnostic. |
 | `T05-GMOR-009` | `m_pi = sqrt(abs(-(m_u+m_d)*condensate/F_pi^2))` | `Code/01_Engine/Engine_Hadron_Model.py` | `m_u`, `m_d`, `F_pi`, `sigma_qq` MeV; condensate MeV^3; result MeV | `checked_local_reference` from PDG/lattice-QCD-style constants | `checked local` | diagnostic-only | Constants are embedded and not yet tied to local source files/hashes. | Source-lock PDG/FLAG values or move this row to checked external benchmark status. |
-| `T05-QCD-010` | `alpha_s(Q) = 1/(b0*ln(Q^2/Lambda^2))`; UET variants multiply or alter `Lambda` | `Code/01_Engine/Engine_QCD_Bridge.py` | `Q`, `Lambda` GeV; `alpha_s` dimensionless; `n_f` active flavors | `source_locked_benchmark_input` for PDG-like data; `heuristic_bridge` for UET corrections | `open` | diagnostic-only | `alpha_s_uet_v2` currently treats a float as a dict (`QCD_PARAMS[...]["value"]`), so that branch is not reliable. | Fix the data shape bug, source-lock PDG alpha_s inputs, and define whether this is baseline QCD or a UET correction. |
-| `T05-CONF-011` | proof script checks `0.9 < proton_mass_gev < 1.01` after hadron engine step | `Code/02_Proof/Proof_Color_Confinement.py` | proton mass GeV from diagnostic hadron model | `heuristic_bridge` | `open` | diagnostic-only | Script returns `True` regardless of pass/fail print path, so it cannot certify confinement. | Make proof command return real pass/fail and label as diagnostic until derivation exists. |
+| `T05-QCD-010` | `alpha_s(Q) = 1/(b0*ln(Q^2/Lambda^2))`; UET variants multiply or alter `Lambda` | `Code/01_Engine/Engine_QCD_Bridge.py` | `Q`, `Lambda` GeV; `alpha_s` dimensionless; `n_f` active flavors | `source_locked_benchmark_input` for PDG-like data; `heuristic_bridge` for UET corrections | `diagnostic blocked` | diagnostic-only | `alpha_s_uet_v2` currently treats a float as a dict (`QCD_PARAMS[...]["value"]`), so that branch is not reliable. | Fix the data shape bug, source-lock PDG alpha_s inputs, and define whether this is baseline QCD or a UET correction. |
+| `T05-CONF-011` | proof script checks `0.9 < proton_mass_gev < 1.01` after hadron engine step | `Code/02_Proof/Proof_Color_Confinement.py` | proton mass GeV from diagnostic hadron model | `heuristic_bridge` | `diagnostic blocked` | diagnostic-only | Script returns `True` regardless of pass/fail print path, so it cannot certify confinement. | Make proof command return real pass/fail and label as diagnostic until derivation exists. |
 
 ## Unit and Data Discipline
 
@@ -34,8 +34,8 @@ hadron/QCD scripts.
 - Primary nuclear-binding gate: `checked local` for selected heavy nuclei.
 - Light nuclei: `heuristic bridge` / diagnostic.
 - Proton radius: benchmark anchor, not independent prediction.
-- Hadron and QCD bridge: diagnostic/open until source-backed data and verifier contracts are added.
-- Confinement proof script: open; current return behavior is not a proof gate.
+- Hadron and QCD bridge: diagnostic-blocked until source-backed data and verifier contracts are added.
+- Confinement proof script: diagnostic-blocked; current return behavior is not a proof gate.
 
 ## Next Hardening Steps
 

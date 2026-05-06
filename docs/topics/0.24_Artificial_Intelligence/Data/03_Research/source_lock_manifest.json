@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "data_class": "topic-derived source-lock package",
+  "topic": "0.24_Artificial_Intelligence",
+  "purpose": "Bind topic-local AI scaling and architecture working copies to explicit source classes, unit conventions, and claim boundaries.",
+  "source_targets": [
+    {
+      "local_path": "docs/topics/0.24_Artificial_Intelligence/Data/03_Research/scaling_laws.json",
+      "source_class": "source-referenced working copy",
+      "source_note": "Kaplan et al. scaling-law constants transcribed into a topic-local JSON package.",
+      "unit_system": "dimensionless exponents; parameters count; tokens count; PF-days",
+      "benchmark_role": "primary scaling-law reference for the internal audit verifier"
+    },
+    {
+      "local_path": "docs/topics/0.24_Artificial_Intelligence/Data/GPT3_Scaling_Laws.csv",
+      "source_class": "topic-local working table",
+      "source_note": "Small GPT-style scaling table used only for an internal log-log alpha fit diagnostic.",
+      "unit_system": "parameters; test loss; FLOPs",
+      "benchmark_role": "secondary CSV consistency diagnostic"
+    },
+    {
+      "local_path": "docs/topics/0.24_Artificial_Intelligence/Data/03_Research/deepseek_moe_data.json",
+      "source_class": "mixed public and estimated model metadata package",
+      "source_note": "Dense and MoE metadata package with a mixture of public model facts and estimated/proprietary rows.",
+      "unit_system": "total and active parameters; context window tokens; training tokens",
+      "benchmark_role": "sparse-vs-dense active-fraction diagnostic"
+    }
+  ],
+  "model_metadata_flags": {
+    "public_rows": [
+      "Llama-3-70B",
+      "Llama-3-405B",
+      "DeepSeek-V3",
+      "Mixtral-8x7B"
+    ],
+    "estimated_or_proprietary_rows": [
+      "GPT-4-Turbo"
+    ]
+  },
+  "claim_boundary": "This source-lock manifest improves provenance discipline for the internal benchmark package only. It does not convert the topic into a source-backed external evaluation."
+}

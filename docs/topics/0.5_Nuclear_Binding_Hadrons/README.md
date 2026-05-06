@@ -24,6 +24,7 @@ selected nuclear-binding, hadron-mass, proton-radius, and strong-force benchmark
 - Research scripts for binding-energy comparison, proton radius, quark masses, and related checks
 - Topic-local data files including `Data/03_Research/Data_AME2020_Binding.json` and
   `Data/03_Research/Data_PDG_Quarks_2024.json`
+- Workflow gate files for source evidence and branch claim ceilings under `Data/03_Research/`
 - Competitor and visualization folders that support internal comparisons and plotting
 - Root standards docs for method, data manifest, baseline, verification, limitations, and
   formula audit
@@ -45,6 +46,8 @@ selected nuclear-binding, hadron-mass, proton-radius, and strong-force benchmark
 - Proton-radius data is a source-backed local JSON benchmark.
 - PDG quark masses and some hadron/QCD constants remain legacy/local snapshots and are not yet
   source-locked at the same standard.
+- Branch claim gates now separate heavy-nucleus binding and proton-radius benchmark use from
+  light nuclei, hadron mass, QCD running, and confinement branches.
 
 ## Verification notes
 
@@ -56,6 +59,10 @@ selected nuclear-binding, hadron-mass, proton-radius, and strong-force benchmark
   - `Result/artifacts/nuclear_binding_source_locked_validation.json`
 - Current diagnostic artifact:
   - `Result/artifacts/nuclear_binding_full_table_diagnostic.json`
+- Workflow artifacts:
+  - `Data/03_Research/source_evidence_intake_stub.json`
+  - `Data/03_Research/source_evidence_readiness_matrix.json`
+  - `Data/03_Research/branch_claim_gate.json`
 
 ## Reproducibility
 
@@ -73,10 +80,11 @@ for broad AME2020 table behavior and must not be described as a full-table pass.
 
 1. Split SEMF baseline and UET correction metrics in the primary artifact.
 2. Source-lock SEMF coefficients and embedded hadron/QCD constants.
-3. Fix the `alpha_s_uet_v2` data-shape bug before using that QCD branch in any verifier.
-4. Make the confinement proof script return real pass/fail status instead of printing a result
+3. Upgrade the PDG quark-mass working copy into a source-locked upstream package.
+4. Fix the `alpha_s_uet_v2` data-shape bug before using that QCD branch in any verifier.
+5. Make the confinement proof script return real pass/fail status instead of printing a result
    and returning `True`.
-5. Keep light nuclei outside the heavy-nucleus pass claim unless a dedicated light-nuclei
+6. Keep light nuclei outside the heavy-nucleus pass claim unless a dedicated light-nuclei
    verifier is added.
 
 ## Current readiness status

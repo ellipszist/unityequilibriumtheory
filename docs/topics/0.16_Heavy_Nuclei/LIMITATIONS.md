@@ -7,3 +7,4 @@
 - `Data/AME2020_mass.txt` exists locally, but the engine parser still uses curated fallback checkpoints; this must not be presented as a fully parsed AME2020 pipeline.
 - Secondary heavy-binding plots and pass rates are not primary evidence until they write machine-readable artifact rows.
 - Downstream core topics must inherit these limitations before using `0.16` as nuclear evidence.
+- Topic-level source-evidence and branch-claim gates now make that boundary explicit: accepted evidence stops at the U-235 checkpoint and exothermic sanity branch, not heavy-nuclei theory closure.

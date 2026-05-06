@@ -17,6 +17,10 @@
   - Current script uses an internal pass threshold of `< 20%` relative error
 - Artifact target:
   - `Result/artifacts/hubble_comparison_validation.json`
+- Required workflow gates:
+  - `Data/03_Research/source_evidence_intake_stub.json`
+  - `Data/03_Research/source_evidence_readiness_matrix.json`
+  - `Data/03_Research/branch_claim_gate.json`
 - Latest rerun:
   - artifact status: `PASS`
   - relative error: about `2.085%`

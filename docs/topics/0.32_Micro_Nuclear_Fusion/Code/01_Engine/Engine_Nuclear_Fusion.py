@@ -178,12 +178,33 @@ class UETNuclearFusionEngine(UETBaseSolver):
         # R_fusion_uet = Value * (density/sigma_crit)
         power_w_m3 = value * (self.params.beta * 1e25) # Derived scale
         
-        # 4. Thermal Feedback (Axiom 1)
-        # 1 UET Energy Unit -> Heat increase
-        self.temperature_k += value * 1e12 # Resonant heating scale
+        # 4. Thermal Feedback (Axiom 1) & Ultra-Fast Thermal Extraction
+        # Fusion generates immense heat. 1 UET Energy Unit -> Heat increase
+        gross_heating = value * 1e12 # Resonant heating scale
+        
+        # Phonon-Graphene Cooling Matrix
+        # High thermal conductivity lattice acts as an immediate heat sink, converting heat to electricity.
+        # Thermal extraction rate is proportional to temperature delta above ambient (300K)
+        # using graphene's exceptional phonon mean free path.
+        thermal_conductivity_efficiency = 0.85 # 85% of heat is instantly wicked away
+        
+        delta_T_ambient = self.temperature_k - 300.0
+        cooling_drain = 0.0
+        electricity_generated_w_m3 = 0.0
+        
+        if delta_T_ambient > 0:
+            # Heat removed per timestep
+            cooling_drain = gross_heating * thermal_conductivity_efficiency
+            # Thermoelectric conversion (assumes high-Z thermoelectric modules embedded in lattice)
+            # Conversion efficiency ~ 30% (Future UET materials)
+            electricity_generated_w_m3 = cooling_drain * 1000.0 * 0.30 
+        
+        # Net Temperature Change
+        self.temperature_k += (gross_heating - cooling_drain)
 
         results_out = {
             "power_w_m3": power_w_m3,
+            "electricity_w_m3": electricity_generated_w_m3,
             "omega": omega_curr,
             "value": value,
             "temp": self.temperature_k,

@@ -11,6 +11,26 @@ description: "Structured documentation for the galaxy-rotation topic in the UET 
 This topic studies whether UET-style galaxy dynamics can reproduce selected observed
 rotation-curve behavior using baryonic inputs and repository-stored benchmark data.
 
+```mermaid
+flowchart TD
+    A["Repository working-copy galaxy rows"] --> B["Normalize baryonic inputs"]
+    B --> C["UET galaxy engine"]
+    C --> D["Predict v(r_obs)"]
+    A --> E["Observed v_obs at recorded radius"]
+    D --> F["Absolute percent error"]
+    E --> F
+    F --> G["Artifact: PASS / WARN / FAIL"]
+```
+
+## Status matrix
+
+| Layer | Current status | What it means now | Next hardening target |
+| :-- | :-- | :-- | :-- |
+| Data | Working-copy real-data package | Repository has real galaxy rows, but they are not yet source-locked as a full upstream SPARC archive | Add upstream file identity, row semantics, and preprocessing notes |
+| Formula | Structured with heuristic bridges | Core engine relations are now mapped, but several bridge factors remain heuristic | Derive or sensitivity-test `RHO_UNITY`, `GAMMA_UET`, `11.7`, and `0.075` |
+| Verification | Runnable summary-row benchmark | Verifier measures one-point-per-galaxy error over the checked-in working copy | Upgrade to curve-level verification and competitor baselines |
+| Claims | Internal benchmark only | Topic can claim repository benchmark status, not full no-dark-matter proof | Tie stronger claims to curve-level artifacts and source-locked data |
+
 ## Assumptions and scope
 
 - Scope: internal numerical comparison against repository copies of galaxy-rotation data
@@ -25,6 +45,8 @@ rotation-curve behavior using baryonic inputs and repository-stored benchmark da
 - Reference citation: SPARC 2016 in [docs/references.bib](/C:/Users/santa/Desktop/uet_harness/docs/references.bib:1)
 - Current repository JSON package contains `154` records in `sparc_data.json`; this should
   not be described as the full upstream SPARC release without a fresh provenance pass
+- Current topic verifier uses these records as summary rows with one benchmark
+  radius and one observed velocity per processed galaxy
 
 ## Method summary
 
@@ -53,6 +75,7 @@ Supporting standard files:
 
 - Primary internal metric in `Research_Galaxy_Rotation.py`: mean absolute percentage error
 - Topic-level pass threshold currently documented in script logic: `< 15%` error
+- `WARN` means the script produced valid comparisons but missed the current average-error gate
 - README-level status should be interpreted as internal benchmark status only
 
 ## Baselines

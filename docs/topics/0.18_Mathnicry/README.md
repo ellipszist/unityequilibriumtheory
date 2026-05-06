@@ -24,6 +24,7 @@ The repository can currently support conservative statements such as:
 - The primary BSD script runs and writes a machine-readable artifact.
 - Several branches implement symbolic or numerical diagnostics for theorem-inspired questions.
 - The formula registry identifies which branches are heuristic, diagnostic, or open.
+- Source-evidence and branch-claim gates now separate run-contract support from stronger theorem-style claims.
 
 The current evidence package does not establish the Riemann Hypothesis, BSD conjecture, P vs NP, Collatz conjecture, Hodge conjecture, Navier-Stokes regularity, Yang-Mills mass gap, or any other Millennium-problem closure.
 
@@ -35,6 +36,9 @@ The current evidence package does not establish the Riemann Hypothesis, BSD conj
 - `METHOD.md`: branch method boundary and excluded cases.
 - `LIMITATIONS.md`: theorem-boundary limitations.
 - `Code/03_Research/Research_BSD_Elliptic_Unity.py`: current primary verifier.
+- `Data/source_evidence_intake_stub.json`: structured landing zone for missing theorem-branch benchmark evidence.
+- `Data/source_evidence_readiness_matrix.json`: workflow gate for which theorem-branch evidence packages are still blocked by missing fields.
+- `Data/branch_claim_gate.json`: separated claim ceilings for BSD, Riemann, Grover/P-vs-NP, Collatz, quantum-engine, and topology branches.
 
 ## Verification
 

@@ -6,7 +6,8 @@
   "external_source_records": [
     "docs/data/external/condensed_matter/superconductivity/mcmillan_1968/source_record.json",
     "docs/data/external/condensed_matter/superconductivity/allen_dynes_1975/source_record.json",
-    "docs/data/external/condensed_matter/superconductivity/nims_supercon/source_record.json"
+    "docs/data/external/condensed_matter/superconductivity/nims_supercon/source_record.json",
+    "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/source_target_manifest.json"
   ],
   "derived_inputs": [
     {

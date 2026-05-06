@@ -1,4 +1,14 @@
 {
+  "branch_claim_gate": {
+    "claim_boundary": "This gate cannot raise the topic above the current selected electroweak benchmark package.",
+    "path": "Data/03_Research/branch_claim_gate.json",
+    "sha256": "17de302455c6cea7edaa3ab9a8d443b4271cebc066573f6aabb43c25123e7615",
+    "summary": {
+      "accepted_now": 3,
+      "blocked_for_strong_claims": 3,
+      "branches_total": 6
+    }
+  },
   "config": {
     "checked_local_reference_source": "docs\\topics\\0.6_Electroweak_Physics\\Data\\03_Research\\pdg_electroweak_2024.json",
     "pdg_sqlite_source": "docs\\data\\external\\particle_physics\\pdg\\pdg-2025-v0.2.2.sqlite",
@@ -55,16 +65,31 @@
       }
     ]
   },
+  "interpretation": "This artifact supports selected electroweak benchmark agreement only. Core masses are source-backed, weak-angle and Fermi layers remain accepted with provenance caveats, and broader theory-closure claims remain blocked.",
+  "limitations": [
+    "The current artifact certifies selected benchmark agreement, not full electroweak closure.",
+    "Weak-mixing-angle and Fermi entries still depend on a checked-local layer for direct comparison.",
+    "Running-angle points remain diagnostic-only and are not benchmark gates.",
+    "Gauge-theory derivation and Standard Model replacement claims remain blocked."
+  ],
   "metrics": {
     "G_F_relative_error_percent": 0.00029222685007925214,
+    "accepted_claim_branches": 3,
     "m_H_relative_error_percent": 0.05063064848888634,
     "m_W_relative_error_percent": 0.5280923409635676,
     "max_relative_error_percent": 0.5280923409635676,
-    "sin2_theta_W_relative_error_percent": 0.011344781923073683
+    "sin2_theta_W_relative_error_percent": 0.011344781923073683,
+    "source_targets_blocked": 4,
+    "source_targets_ready_for_review": 1
   },
   "notes": "Real-data electroweak comparison using a structured source-locked PDG reference package plus explicit checked-local note for observables not yet directly mapped from the SQLite workflow.",
   "results": {
     "audit": "AXIOMATIC",
+    "branch_claim_gate_summary": {
+      "accepted_now": 3,
+      "blocked_for_strong_claims": 3,
+      "branches_total": 6
+    },
     "comparisons": {
       "G_F_GeV_minus_2": {
         "observed": 1.1663788e-05,
@@ -99,10 +124,37 @@
       "m_W_GeV": true,
       "sin2_theta_W": true
     },
+    "source_evidence_readiness_summary": {
+      "source_targets_total": 5,
+      "targets_blocked_by_pending_evidence": 4,
+      "targets_ready_for_source_review": 1
+    },
     "status": "PASS",
     "theta_W_deg": 28.74225708570621
   },
   "seed": 42,
+  "source_evidence_intake_stub": {
+    "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself prove electroweak closure.",
+    "path": "Data/03_Research/source_evidence_intake_stub.json",
+    "sha256": "9368ec1e1f441944088f0fd49dce033f4e18c1d5456666534b7feb43c6e03d82",
+    "source_targets": [
+      "PDG 2025 core electroweak mass package",
+      "Weak-mixing-angle and Fermi checked-local package",
+      "Neutron lifetime benchmark package",
+      "Running-angle diagnostic package",
+      "Gauge-theory derivation or proof package"
+    ]
+  },
+  "source_evidence_readiness_matrix": {
+    "claim_boundary": "A ready row has enough provenance structure for source review. It does not itself upgrade a claim.",
+    "path": "Data/03_Research/source_evidence_readiness_matrix.json",
+    "sha256": "c6bb8f4f9960ec14b60ee54b4579c42b8f77663228ca745f5fd69549844fae88",
+    "summary": {
+      "source_targets_total": 5,
+      "targets_blocked_by_pending_evidence": 4,
+      "targets_ready_for_source_review": 1
+    }
+  },
   "source_lock": {
     "claim_boundary": "This package supports provenance-aware selected electroweak benchmark gates. It does not prove full electroweak gauge-theory closure or replace a complete Standard Model fit.",
     "derived_inputs": [
@@ -136,7 +188,7 @@
     "m_W_max_relative_error_percent": 2.0,
     "sin2_theta_W_max_relative_error_percent": 2.0
   },
-  "timestamp_utc": "2026-04-30T13:19:49.312183+00:00",
+  "timestamp_utc": "2026-05-05T15:27:07.998711+00:00",
   "topic": "0.6_Electroweak_Physics",
   "uet_version": "0.9.0"
 }

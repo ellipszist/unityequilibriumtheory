@@ -1,0 +1,25 @@
+{
+  "source_package": "topic_0.9_bell_inequality_summary_reference_package",
+  "provenance_status": "source_referenced_extracted_package",
+  "upstream_citation": "Hensen et al. 2015, Nature 526, 682-686",
+  "title": "Bell inequality summary working reference package",
+  "doi": "10.1038/nature15759",
+  "url": null,
+  "local_topic_source": "docs/topics/0.9_Quantum_Nonlocality/Data/03_Research/bell_inequality_data.json",
+  "retrieval_or_packaging_date": "2026-05-06",
+  "result_identifier": "secondary Bell summary package",
+  "unit_basis": {
+    "CHSH_measured": "dimensionless",
+    "classical_bound": "dimensionless",
+    "quantum_max": "dimensionless",
+    "p_value": "dimensionless probability"
+  },
+  "extraction_note": "Copied from the topic-local Bell summary working file. This is a secondary summary, not an independent raw-source package.",
+  "values": {
+    "CHSH_measured": 2.42,
+    "classical_bound": 2.0,
+    "quantum_max": 2.828,
+    "p_value": 0.039
+  },
+  "claim_boundary": "This extracted package is a supporting summary only. It does not replace raw Bell-event provenance."
+}

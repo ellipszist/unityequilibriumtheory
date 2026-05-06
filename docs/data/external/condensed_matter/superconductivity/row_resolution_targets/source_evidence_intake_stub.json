@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_source_evidence_intake_stub",
+  "source_role": "landing zone for raw row-level superconductivity evidence before topic-local patch review",
+  "source_label": "Superconductivity row-resolution external evidence intake",
+  "checked_date": "2026-05-07",
+  "materials": [
+    {
+      "material": "Vanadium (V)",
+      "priority": "immediate",
+      "expected_source_family": "MIT Junior Lab citation chain or compatible literature row",
+      "archive_entries": [
+        {
+          "field": "Tc_observed",
+          "source_title_or_doi": null,
+          "table_or_figure_identifier": null,
+          "row_locator": null,
+          "archived_raw_path": null,
+          "extracted_value": null,
+          "unit_basis": null,
+          "status": "pending_archive"
+        },
+        {
+          "field": "Theta_D_K",
+          "source_title_or_doi": null,
+          "table_or_figure_identifier": null,
+          "row_locator": null,
+          "archived_raw_path": null,
+          "extracted_value": null,
+          "unit_basis": null,
+          "status": "pending_archive"
+        },
+        {
+          "field": "lambda_ep",
+          "source_title_or_doi": null,
+          "table_or_figure_identifier": null,
+          "row_locator": null,
+          "archived_raw_path": null,
+          "extracted_value": null,
+          "unit_basis": null,
+          "status": "pending_archive"
+        },
+        {
+          "field": "mu_star",
+          "source_title_or_doi": null,
+          "table_or_figure_identifier": null,
+          "row_locator": null,
+          "archived_raw_path": null,
+          "extracted_value": null,
+          "unit_basis": null,
+          "status": "pending_archive"
+        }
+      ]
+    },
+    {
+      "material": "Nb3Sn",
+      "priority": "high",
+      "expected_source_family": "Matthias 1954 citation chain or compatible A15 literature row",
+      "archive_entries": [
+        {
+          "field": "Tc_observed",
+          "source_title_or_doi": null,
+          "table_or_figure_identifier": null,
+          "row_locator": null,
+          "archived_raw_path": null,
+          "extracted_value": null,
+          "unit_basis": null,
+          "status": "pending_archive"
+        },
+        {
+          "field": "Theta_D_K_or_omega_log_K",
+          "source_title_or_doi": null,
+          "table_or_figure_identifier": null,
+          "row_locator": null,
+          "archived_raw_path": null,
+          "extracted_value": null,
+          "unit_basis": null,
+          "status": "pending_archive"
+        },
+        {
+          "field": "lambda_ep",
+          "source_title_or_doi": null,
+          "table_or_figure_identifier": null,
+          "row_locator": null,
+          "archived_raw_path": null,
+          "extracted_value": null,
+          "unit_basis": null,
+          "status": "pending_archive"
+        },
+        {
+          "field": "mu_star",
+          "source_title_or_doi": null,
+          "table_or_figure_identifier": null,
+          "row_locator": null,
+          "archived_raw_path": null,
+          "extracted_value": null,
+          "unit_basis": null,
+          "status": "pending_archive"
+        }
+      ]
+    },
+    {
+      "material": "Nb3Ge",
+      "priority": "high",
+      "expected_source_family": "Gavaler 1973 citation chain or compatible A15 literature row",
+      "archive_entries": [
+        {
+          "field": "Tc_observed",
+          "source_title_or_doi": null,
+          "table_or_figure_identifier": null,
+          "row_locator": null,
+          "archived_raw_path": null,
+          "extracted_value": null,
+          "unit_basis": null,
+          "status": "pending_archive"
+        },
+        {
+          "field": "Theta_D_K_or_omega_log_K",
+          "source_title_or_doi": null,
+          "table_or_figure_identifier": null,
+          "row_locator": null,
+          "archived_raw_path": null,
+          "extracted_value": null,
+          "unit_basis": null,
+          "status": "pending_archive"
+        },
+        {
+          "field": "lambda_ep",
+          "source_title_or_doi": null,
+          "table_or_figure_identifier": null,
+          "row_locator": null,
+          "archived_raw_path": null,
+          "extracted_value": null,
+          "unit_basis": null,
+          "status": "pending_archive"
+        },
+        {
+          "field": "mu_star",
+          "source_title_or_doi": null,
+          "table_or_figure_identifier": null,
+          "row_locator": null,
+          "archived_raw_path": null,
+          "extracted_value": null,
+          "unit_basis": null,
+          "status": "pending_archive"
+        }
+      ]
+    }
+  ],
+  "claim_boundary": "This intake stub is for external raw evidence archiving only. Filling it does not authorize topic-local row edits."
+}

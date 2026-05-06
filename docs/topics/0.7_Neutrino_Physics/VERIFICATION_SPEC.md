@@ -29,6 +29,10 @@
   - `nufit_v60_provenance_validation.json` must report `schema_validation_status = PASS`
 - Artifact target:
   - `Result/artifacts/nufit_6_0_validation.json`
+- Required workflow gates:
+  - `Data/03_Research/source_evidence_intake_stub.json`
+  - `Data/03_Research/source_evidence_readiness_matrix.json`
+  - `Data/03_Research/branch_claim_gate.json`
 - Interpretation:
   - A pass means current live engine angle outputs, runtime neutrino parameter package, and absolute-mass branch satisfy the declared NuFIT/KATRIN benchmark gates.
   - A fail is scientifically useful: it means at least one live engine output does not clear the source-locked benchmark threshold and the topic must stay in hardening status rather than being described as solved.

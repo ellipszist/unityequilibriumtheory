@@ -2,7 +2,7 @@
   "schema_version": "1.1",
   "topic": "0.22_Biophysics_Origin_of_Life",
   "command": ".venv\\Scripts\\python.exe docs\\topics\\0.22_Biophysics_Origin_of_Life\\Code\\03_Research\\Research_Biomarker_Identification.py",
-  "timestamp_utc": "2026-04-30T07:44:25.005930+00:00",
+  "timestamp_utc": "2026-05-06T15:27:18.713702+00:00",
   "status": "WARN",
   "claim_class": "D",
   "inputs": [
@@ -52,6 +52,38 @@
       "size_bytes": 1011
     }
   ],
+  "source_evidence_intake_stub": {
+    "path": "docs/topics/0.22_Biophysics_Origin_of_Life/data/03_Research/source_evidence_intake_stub.json",
+    "sha256": "219f9a556b5289c3c2aeecf6fc3c62da004ff368c434f0bb49736b5e0e874ecd",
+    "source_targets": [
+      "CHB-MIT raw EDF and seizure-window package",
+      "Bonn EEG source package and license",
+      "TCGA or real omics matrix package",
+      "HP protein-folding benchmark package",
+      "Prebiotic or protocell chemistry evidence package"
+    ],
+    "claim_boundary": "This intake stub is for source evidence capture only. It does not authorize data or claim upgrades by itself."
+  },
+  "source_evidence_readiness_matrix": {
+    "path": "docs/topics/0.22_Biophysics_Origin_of_Life/data/03_Research/source_evidence_readiness_matrix.json",
+    "sha256": "ba7c615810f43787466234eb433c92dd81ca6547e053cf09b3d6ef121a05c568",
+    "summary": {
+      "source_targets_total": 5,
+      "targets_ready_for_source_review": 1,
+      "targets_blocked_by_pending_evidence": 4
+    },
+    "claim_boundary": "This readiness matrix is a workflow gate only. It tracks whether source evidence is still pending."
+  },
+  "subclaim_gate": {
+    "path": "docs/topics/0.22_Biophysics_Origin_of_Life/data/03_Research/subclaim_gate.json",
+    "sha256": "b15355ffd4d85c77b8d832f7489e5087ee2793695216da2ccf7e1e399120861b",
+    "summary": {
+      "lanes_total": 6,
+      "accepted_now": 1,
+      "blocked_for_strong_claims": 5
+    },
+    "claim_boundary": "This gate records separate biomedical claim ceilings only. It cannot upgrade the topic beyond the current synthetic diagnostic."
+  },
   "metrics": {
     "synthetic_gene_count": 50,
     "synthetic_sample_count": 100,

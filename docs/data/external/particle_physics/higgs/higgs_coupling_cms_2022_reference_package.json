@@ -1,0 +1,65 @@
+{
+  "source_package": "topic_0.17_higgs_coupling_reference_package",
+  "provenance_status": "source_referenced_extracted_package",
+  "upstream_citation": "CMS Collaboration, Nature 607, 60-68 (2022)",
+  "title": "A portrait of the Higgs boson by the CMS experiment ten years after the discovery",
+  "doi": null,
+  "url": null,
+  "local_topic_source": "docs/topics/0.17_Mass_Generation/Data/03_Research/higgs_coupling_data.json",
+  "retrieval_or_packaging_date": "2026-05-06",
+  "table_identifier": "Reduced coupling modifiers (kappa) versus particle mass working benchmark package",
+  "unit_basis": {
+    "mass_GeV": "GeV",
+    "coupling_kappa_observed": "dimensionless",
+    "uncertainty": "dimensionless"
+  },
+  "extraction_note": "Copied from the topic-local normalized JSON working benchmark. Raw CMS table or figure extraction is not yet archived in the repo, so this package remains extracted/source-referenced rather than raw-upstream locked.",
+  "values": {
+    "vacuum_expectation_value_v_GeV": 246.22,
+    "particles": [
+      {
+        "name": "Muon",
+        "type": "Fermion",
+        "mass_GeV": 0.1057,
+        "coupling_kappa_observed": 1.1,
+        "uncertainty": 0.4
+      },
+      {
+        "name": "Tau",
+        "type": "Fermion",
+        "mass_GeV": 1.777,
+        "coupling_kappa_observed": 1.01,
+        "uncertainty": 0.2
+      },
+      {
+        "name": "b-quark",
+        "type": "Fermion",
+        "mass_GeV": 4.18,
+        "coupling_kappa_observed": 0.95,
+        "uncertainty": 0.2
+      },
+      {
+        "name": "W-boson",
+        "type": "Vector",
+        "mass_GeV": 80.379,
+        "coupling_kappa_observed": 1.05,
+        "uncertainty": 0.08
+      },
+      {
+        "name": "Z-boson",
+        "type": "Vector",
+        "mass_GeV": 91.1876,
+        "coupling_kappa_observed": 0.99,
+        "uncertainty": 0.08
+      },
+      {
+        "name": "Top-quark",
+        "type": "Fermion",
+        "mass_GeV": 172.76,
+        "coupling_kappa_observed": 1.02,
+        "uncertainty": 0.15
+      }
+    ]
+  },
+  "claim_boundary": "This extracted package supports the topic-local Higgs-coupling benchmark only. It is not a raw upstream archive and does not justify mechanism-level claims."
+}

@@ -1,4 +1,14 @@
 {
+  "branch_claim_gate": {
+    "claim_boundary": "This gate cannot raise the topic above the current selected electroweak benchmark package.",
+    "path": "Data/03_Research/branch_claim_gate.json",
+    "sha256": "17de302455c6cea7edaa3ab9a8d443b4271cebc066573f6aabb43c25123e7615",
+    "summary": {
+      "accepted_now": 3,
+      "blocked_for_strong_claims": 3,
+      "branches_total": 6
+    }
+  },
   "config": {
     "benchmark_package": "docs\\data\\external\\particle_physics\\pdg\\electroweak_benchmark_package.json",
     "engine_path": "docs\\topics\\0.6_Electroweak_Physics\\Code\\01_Engine\\Engine_Electroweak.py",
@@ -53,13 +63,28 @@
       }
     ]
   },
+  "interpretation": "This expanded artifact supports the selected core electroweak benchmark package and a secondary neutron benchmark. Running-angle points remain diagnostic-only, and broader electroweak-theory replacement claims remain blocked.",
+  "limitations": [
+    "The current expanded artifact does not certify a full electroweak derivation.",
+    "Weak-mixing-angle and neutron layers still include checked-local provenance constraints.",
+    "Running-angle points remain diagnostic-only compiled benchmarks.",
+    "Standard Model replacement claims remain unsupported by the current evidence package."
+  ],
   "metrics": {
+    "accepted_claim_branches": 3,
     "max_core_relative_error_percent": 0.5280923409635676,
     "neutron_lifetime_relative_error_percent": 0.11441130646643204,
-    "running_angle_average_error_percent": 2.602550916481116
+    "running_angle_average_error_percent": 2.602550916481116,
+    "source_targets_blocked": 4,
+    "source_targets_ready_for_review": 1
   },
   "notes": "Expanded electroweak benchmark separates source-linked core gates from checked-local diagnostic layers.",
   "results": {
+    "branch_claim_gate_summary": {
+      "accepted_now": 3,
+      "blocked_for_strong_claims": 3,
+      "branches_total": 6
+    },
     "core_comparisons": {
       "G_F_GeV_minus_2": {
         "observed": 1.1663788e-05,
@@ -138,9 +163,36 @@
       }
     ],
     "running_angle_diagnostic_status": "diagnostic_only",
+    "source_evidence_readiness_summary": {
+      "source_targets_total": 5,
+      "targets_blocked_by_pending_evidence": 4,
+      "targets_ready_for_source_review": 1
+    },
     "status": "PASS"
   },
   "seed": 42,
+  "source_evidence_intake_stub": {
+    "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself prove electroweak closure.",
+    "path": "Data/03_Research/source_evidence_intake_stub.json",
+    "sha256": "9368ec1e1f441944088f0fd49dce033f4e18c1d5456666534b7feb43c6e03d82",
+    "source_targets": [
+      "PDG 2025 core electroweak mass package",
+      "Weak-mixing-angle and Fermi checked-local package",
+      "Neutron lifetime benchmark package",
+      "Running-angle diagnostic package",
+      "Gauge-theory derivation or proof package"
+    ]
+  },
+  "source_evidence_readiness_matrix": {
+    "claim_boundary": "A ready row has enough provenance structure for source review. It does not itself upgrade a claim.",
+    "path": "Data/03_Research/source_evidence_readiness_matrix.json",
+    "sha256": "c6bb8f4f9960ec14b60ee54b4579c42b8f77663228ca745f5fd69549844fae88",
+    "summary": {
+      "source_targets_total": 5,
+      "targets_blocked_by_pending_evidence": 4,
+      "targets_ready_for_source_review": 1
+    }
+  },
   "source_lock": {
     "claim_boundary": "This package supports provenance-aware selected electroweak benchmark gates. It does not prove full electroweak gauge-theory closure or replace a complete Standard Model fit.",
     "derived_inputs": [
@@ -175,7 +227,7 @@
     "neutron_lifetime_max_relative_error_percent": 2.0,
     "sin2_theta_W_max_relative_error_percent": 2.0
   },
-  "timestamp_utc": "2026-04-30T13:19:48.545030+00:00",
+  "timestamp_utc": "2026-05-05T15:27:07.710393+00:00",
   "topic": "0.6_Electroweak_Physics",
   "uet_version": "0.9.0"
 }

@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.10_Fluid_Dynamics_Chaos",
+  "purpose": "Readiness matrix for source-evidence review across fluid benchmark and theorem branches.",
+  "summary": {
+    "source_targets_total": 5,
+    "targets_ready_for_source_review": 1,
+    "targets_blocked_by_pending_evidence": 4
+  },
+  "readiness_rows": [
+    {
+      "name": "Embedded speed and stability benchmark package",
+      "priority": "immediate",
+      "fields_total": 6,
+      "fields_complete": 6,
+      "fields_pending": 0,
+      "pending_fields": [],
+      "ready_for_source_review": true,
+      "blocking_reason": null
+    },
+    {
+      "name": "UET master-equation implementation package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 4,
+      "fields_pending": 2,
+      "pending_fields": [
+        "regression_requirement",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The implementation package is hash-tracked, but it still needs formula-level regression discipline before stronger promotion."
+    },
+    {
+      "name": "External CFD validation dataset package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 0,
+      "fields_pending": 6,
+      "pending_fields": [
+        "dataset_identity",
+        "upstream_source",
+        "local_path",
+        "case_definition",
+        "unit_basis",
+        "artifact_path"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "No external CFD validation dataset is currently packaged for this topic."
+    },
+    {
+      "name": "Physical Reynolds-number validation package",
+      "priority": "medium",
+      "fields_total": 6,
+      "fields_complete": 0,
+      "fields_pending": 6,
+      "pending_fields": [
+        "fluid_property_source",
+        "boundary_condition_package",
+        "reynolds_case_definition",
+        "unit_basis",
+        "artifact_path",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The current gate uses dimensionless internal fields rather than physical Reynolds-number validation cases."
+    },
+    {
+      "name": "Navier-Stokes theorem or proof package",
+      "priority": "medium",
+      "fields_total": 6,
+      "fields_complete": 1,
+      "fields_pending": 5,
+      "pending_fields": [
+        "assumption_registry",
+        "artifact_path",
+        "status_rule",
+        "theorem_scope",
+        "limitation_note"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The current benchmark script is not an audit-grade theorem or Millennium-proof package."
+    }
+  ],
+  "claim_boundary": "A ready row has enough provenance structure for source review. It does not itself upgrade a claim."
+}

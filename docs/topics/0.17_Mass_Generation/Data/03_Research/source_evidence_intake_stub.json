@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.17_Mass_Generation",
+  "purpose": "Structured intake stub for Higgs and lepton-branch source evidence before data rewrites or stronger mass-generation claims.",
+  "instructions": [
+    "Attach upstream DOI or URL, local archive path, table identifier, and extraction note before changing a working-copy dataset.",
+    "Record the normative dataset choice explicitly when more than one lepton file exists.",
+    "Do not treat this file as evidence by itself; it is an intake and tracking layer."
+  ],
+  "source_targets": [
+    {
+      "name": "Higgs coupling table source package",
+      "priority": "immediate",
+      "status": "partial",
+      "evidence_fields": [
+        {
+          "field": "doi_or_url",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "local_path",
+          "status": "complete",
+          "value": "docs/data/external/particle_physics/higgs/higgs_coupling_cms_2022_reference_package.json"
+        },
+        {
+          "field": "table_or_figure_identifier",
+          "status": "complete",
+          "value": "Reduced coupling modifiers (kappa) versus particle mass working benchmark package"
+        },
+        {
+          "field": "retrieval_date",
+          "status": "complete",
+          "value": "2026-05-06"
+        },
+        {
+          "field": "unit_basis",
+          "status": "complete",
+          "value": "{\"mass_GeV\": \"GeV\", \"coupling_kappa_observed\": \"dimensionless\", \"uncertainty\": \"dimensionless\"}"
+        },
+        {
+          "field": "extraction_note",
+          "status": "complete",
+          "value": "Copied from the topic-local normalized JSON working benchmark. Raw CMS table or figure extraction is not yet archived in the repo, so this package remains extracted/source-referenced rather than raw-upstream locked."
+        }
+      ]
+    },
+    {
+      "name": "Combined Higgs mass reference package",
+      "priority": "high",
+      "status": "complete",
+      "evidence_fields": [
+        {
+          "field": "doi_or_url",
+          "status": "complete",
+          "value": "10.1103/PhysRevLett.114.191803"
+        },
+        {
+          "field": "local_path",
+          "status": "complete",
+          "value": "docs/data/external/particle_physics/higgs/higgs_mass_combined_atlas_cms_2015_reference_package.json"
+        },
+        {
+          "field": "table_or_result_identifier",
+          "status": "complete",
+          "value": "combined Higgs boson mass checkpoint package"
+        },
+        {
+          "field": "retrieval_date",
+          "status": "complete",
+          "value": "2026-05-06"
+        },
+        {
+          "field": "unit_basis",
+          "status": "complete",
+          "value": "{\"mass_GeV\": \"GeV\", \"uncertainty_GeV\": \"GeV\", \"width_MeV\": \"MeV\", \"width_uncertainty_MeV\": \"MeV\"}"
+        },
+        {
+          "field": "extraction_note",
+          "status": "complete",
+          "value": "Copied from the topic-local normalized JSON working reference. Raw publication table extraction is not yet archived in the repo."
+        }
+      ]
+    },
+    {
+      "name": "Normative lepton mass dataset choice",
+      "priority": "high",
+      "status": "complete",
+      "evidence_fields": [
+        {
+          "field": "normative_file_name",
+          "status": "complete",
+          "value": "pdg_2024_leptons.json"
+        },
+        {
+          "field": "doi_or_url",
+          "status": "complete",
+          "value": "10.1093/ptep/ptac097"
+        },
+        {
+          "field": "local_path",
+          "status": "complete",
+          "value": "docs/data/external/particle_physics/pdg/pdg_2024_leptons_reference_package.json"
+        },
+        {
+          "field": "source_year_or_release",
+          "status": "complete",
+          "value": "2024"
+        },
+        {
+          "field": "unit_basis",
+          "status": "complete",
+          "value": "{\"mass_MeV\": \"MeV\", \"mass_kg\": \"kg\", \"lifetime_us\": \"microseconds\", \"lifetime_fs\": \"femtoseconds\"}"
+        },
+        {
+          "field": "extraction_note",
+          "status": "complete",
+          "value": "Copied from the topic-local normalized JSON working reference. Raw PDG table extract or machine-readable table path is not yet archived under this topic."
+        }
+      ]
+    },
+    {
+      "name": "Planck exponential ansatz parameter provenance",
+      "priority": "medium",
+      "status": "pending",
+      "evidence_fields": [
+        {
+          "field": "parameter_reference",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "local_path",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "ansatz_version_or_script",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "mass_scale_definition",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "unit_basis",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "derivation_or_fit_note",
+          "status": "pending",
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "claim_boundary": "This intake stub is for source evidence capture only. Filling it does not by itself justify Higgs-replacement, Koide-proof, or first-principles mass-generation claims."
+}

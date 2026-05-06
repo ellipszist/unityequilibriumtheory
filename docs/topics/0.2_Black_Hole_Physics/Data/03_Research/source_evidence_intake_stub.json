@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.2_Black_Hole_Physics",
+  "purpose": "Source evidence intake before upgrading claims across EHT, GW, saturation-core, and CCBH black-hole branches.",
+  "source_targets": [
+    {
+      "name": "EHT shadow benchmark package",
+      "priority": "immediate",
+      "status_hint": "working_copy_benchmark_with_real_source_labels",
+      "evidence_entries": [
+        "working_copy_json_path",
+        "upstream_publication_package",
+        "observable_scope",
+        "unit_basis",
+        "hash_lock",
+        "benchmark_role"
+      ]
+    },
+    {
+      "name": "Image-domain and ray-tracing package",
+      "priority": "high",
+      "status_hint": "shadow_size_only_open",
+      "evidence_entries": [
+        "image_domain_dataset",
+        "ray_tracing_artifact",
+        "geometry_scope",
+        "unit_basis",
+        "comparison_metric",
+        "upgrade_requirement"
+      ]
+    },
+    {
+      "name": "Saturation-core mechanism package",
+      "priority": "high",
+      "status_hint": "heuristic_core_scale_open",
+      "evidence_entries": [
+        "core_scale_policy",
+        "internal_structure_artifact",
+        "observable_scope",
+        "unit_basis",
+        "failure_mode_note",
+        "upgrade_requirement"
+      ]
+    },
+    {
+      "name": "Gravitational-wave and ringdown package",
+      "priority": "high",
+      "status_hint": "secondary_lane_not_yet_primary_gated",
+      "evidence_entries": [
+        "gw_dataset_paths",
+        "artifact_path",
+        "observable_scope",
+        "unit_basis",
+        "threshold_policy",
+        "upgrade_requirement"
+      ]
+    },
+    {
+      "name": "CCBH cosmological coupling package",
+      "priority": "medium",
+      "status_hint": "blocked_external_data_branch",
+      "evidence_entries": [
+        "shen_dataset_path",
+        "kormendy_dataset_path",
+        "external_cache_path",
+        "preprocessing_note",
+        "artifact_path",
+        "upgrade_requirement"
+      ]
+    }
+  ],
+  "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself validate singularity resolution, GR replacement, or CCBH cosmological coupling."
+}

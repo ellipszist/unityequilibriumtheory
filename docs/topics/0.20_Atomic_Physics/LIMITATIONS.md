@@ -8,3 +8,4 @@
 - The three-body script is a coupling smoke test and does not validate atomic three-body physics.
 - Fine structure, Lamb shift, hyperfine structure, helium, and many-electron atoms are outside the current artifact.
 - Downstream core topics must inherit these limitations before using `0.20` as atomic evidence.
+- Topic-level source-evidence and branch-claim gates now make that boundary explicit: accepted evidence stops at the hydrogen Rydberg benchmark and constant-consistency branch, not full atomic-theory closure.

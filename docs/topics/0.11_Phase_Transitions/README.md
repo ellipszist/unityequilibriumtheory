@@ -45,6 +45,8 @@ flowchart LR
 | Cahn-Hilliard dynamics | Normalized model exists | `Engine_Phase.py`, `FORMULA_AUDIT.md` | mechanism simulation |
 | Order parameter proof | Simulation diagnostic | `Proof_Order_Parameter.py` | internal order-emergence check |
 | NIST critical points | Working-copy data only | `Data/NIST_Critical_Points.csv` | future provenance/data gate |
+| Source evidence workflow | Structured provenance gate | `Data/03_Research/source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json` | source-review queue |
+| Branch claim gate | Structured claim ceiling | `Data/03_Research/branch_claim_gate.json` | selected-branch claim control |
 | Universal phase-transition theory | Not closed | limitations and formula audit | do not claim full proof |
 
 ## 5x4 Grid Structure
@@ -79,5 +81,6 @@ python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exp
 - Order-parameter thresholds are internal diagnostics.
 - Upstream provenance for critical-exponent and critical-point tables still needs a stronger
   external data cache.
+- Topic-level source-evidence and branch-claim gates cap the topic at selected-benchmark and mechanism-diagnostic status.
 
 *Status note: internal critical-exponent benchmark and formula-audit hardening gate.*

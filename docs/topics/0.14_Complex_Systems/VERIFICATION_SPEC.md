@@ -13,6 +13,10 @@
   - `Data/03_Research/biology_hrv/physionet_16420_rr.csv`
   - `Data/03_Research/biology_hrv/physionet_16483_rr.csv`
   - `docs/data/external/biophysics/hrv/mit_bih_nsrdb/source_record.json`
+- Generated workflow artifacts:
+  - `Data/03_Research/source_evidence_intake_stub.json`
+  - `Data/03_Research/source_evidence_readiness_matrix.json`
+  - `Data/03_Research/branch_claim_gate.json`
 - Baseline:
   - Source-referenced MIT-BIH Normal Sinus Rhythm Database RR interval working files. Original PhysioNet records and extraction method are not yet frozen.
 - Reported metrics:
@@ -31,5 +35,7 @@
   - Average equilibrium score: `0.7617326983320816`
 - Interpretation:
   - Treat output as a source-referenced derived-RR HRV benchmark artifact only. Do not upgrade claim language to broad complex-systems, market, climate, inequality, or SOC proof wording until each branch has a topic-specific baseline-comparison pass and verifier artifact.
+  - Treat source-evidence and branch-claim gate outputs as workflow controls, not as branch validation.
+  - The HRV readiness row may be partially completed from `source_record.json` and `biology_hrv/source_lock_manifest.json`, but a raw-file archive and exact extraction command are still missing.
   - The script dynamically loads all files matching `physionet_*_rr.csv`; therefore manifest/spec entries must stay synchronized with the directory contents.
   - The UTF-8 environment variables are required on this Windows shell because the logger emits Unicode status glyphs.

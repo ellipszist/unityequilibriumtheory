@@ -22,6 +22,14 @@ Priority remediation:
 | PDG quark masses snapshot | `Data/03_Research/Data_PDG_Quarks_2024.json` | PDG 2024 working copy | Legacy local snapshot |
 | Raw AME downloader | `Data/03_Research/download_ame_masses.py` | AMDC/IAEA mirrors | Acquisition helper, not yet source-locked result |
 
+## Workflow Gate Files
+
+| File | Role | Current status |
+| :-- | :-- | :-- |
+| `source_evidence_intake_stub.json` | provenance intake across nuclear, hadron, QCD, and confinement lanes | created by primary verifier |
+| `source_evidence_readiness_matrix.json` | tracks which source packages are review-ready | AME2020 and proton radius ready; PDG/QCD/confinement still blocked |
+| `branch_claim_gate.json` | lane-by-lane claim ceiling | heavy binding and proton-radius anchor accepted; 4 branches blocked |
+
 Repository note:
 
 - Topic `0.5` is no longer limited to an embedded list in the primary verifier.

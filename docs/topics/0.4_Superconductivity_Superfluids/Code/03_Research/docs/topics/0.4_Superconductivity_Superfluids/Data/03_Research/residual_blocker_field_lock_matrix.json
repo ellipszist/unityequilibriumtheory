@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.4_Superconductivity_Superfluids",
+  "purpose": "Field-level lock matrix for residual superconductivity blocker rows.",
+  "summary": {
+    "rows_total": 0,
+    "rows_requiring_external_row": 0,
+    "rows_with_proxy_choice_open": 0,
+    "rows_with_internal_consensus_lambda_only": 0
+  },
+  "matrix_rows": [],
+  "claim_boundary": "This matrix is a field-level workflow aid. It tracks what is still unlocked in each residual row, but it does not certify any field as upstream-verified."
+}

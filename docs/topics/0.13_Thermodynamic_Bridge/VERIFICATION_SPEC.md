@@ -10,6 +10,9 @@
   - `Data/03_Research/landauer_source_lock.json`
   - `docs/data/external/thermodynamics/landauer/berut_2012/source_record.json`
   - `docs/data/external/constants/codata/si_2019_exact_constants.json`
+- Generated workflow artifacts:
+  - `Data/03_Research/source_evidence_intake_stub.json`
+  - `Data/03_Research/source_evidence_readiness_matrix.json`
 - Baseline:
   - Landauer exact-constant identity at 300 K.
   - Jun-style measured erasure cost must remain above the Landauer lower bound.
@@ -32,5 +35,5 @@
   - Result/artifacts/0_13_thermodynamic_bridge_verification.json
 - Interpretation:
   - Treat `PASS` as formula/lower-bound consistency only.
-  - Treat `WARN` as scientifically usable for hardening but not paper-ready; the present WARN is expected while Berut numeric values remain topic-derived summaries.
+  - Treat `WARN` as scientifically usable for hardening but not paper-ready; the present WARN is expected while Berut numeric values remain topic-derived summaries and the source-evidence readiness gate remains open.
   - Do not upgrade claim language to "solved", "verified UET", or "exact bridge" until source-locked external data, uncertainty propagation, and cross-topic dependency proof are complete.

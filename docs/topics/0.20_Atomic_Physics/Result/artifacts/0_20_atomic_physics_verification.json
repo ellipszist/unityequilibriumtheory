@@ -1,4 +1,14 @@
 {
+  "branch_claim_gate": {
+    "claim_boundary": "This gate keeps the topic at hydrogen benchmark status, not full atomic-theory closure.",
+    "path": "Data/03_Research/branch_claim_gate.json",
+    "sha256": "28586569daec2f3ac19312cda3ff661d9a39247a598759ec5ca2a24e71b5a19a",
+    "summary": {
+      "accepted_now": 2,
+      "blocked_for_strong_claims": 4,
+      "branches_total": 6
+    }
+  },
   "claim_class": "C - source-backed internal hydrogen spectrum benchmark",
   "command": "python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validation.py",
   "environment": {
@@ -10,7 +20,7 @@
     "AT20-RH-CODATA-CHECKPOINT",
     "AT20-SPECTRUM-RESIDUAL"
   ],
-  "generated_at_utc": "2026-04-29T18:51:06.871098+00:00",
+  "generated_at_utc": "2026-05-05T19:03:50.079742+00:00",
   "inputs": [
     {
       "doi": "10.18434/T4W30F",
@@ -26,6 +36,7 @@
       "source": "CODATA 2018 Recommended Values"
     }
   ],
+  "interpretation": "This artifact supports a hydrogen Rydberg benchmark branch and a bounded atomic-constant consistency branch. It does not validate full atomic theory, fine structure, or many-electron physics.",
   "limitations": [
     "This validates the standard Rydberg relation against the topic-local hydrogen spectrum working copy.",
     "It does not derive the Rydberg relation from UET first principles.",
@@ -34,11 +45,14 @@
   "metrics": {
     "R_H_codata_m_inverse": 10967758.3406,
     "R_infinity_codata_m_inverse": 10973731.56816,
+    "accepted_claim_branches": 2,
     "average_wavelength_error_ppm": 7.504133013735595,
     "fitted_slope_through_origin_m_inverse": 10967845.50226957,
     "line_count": 7,
     "max_wavelength_error_ppm": 12.500832386280821,
-    "slope_error_ppm": 7.947081514956296
+    "slope_error_ppm": 7.947081514956296,
+    "source_targets_blocked": 3,
+    "source_targets_ready_for_review": 2
   },
   "results": [
     {
@@ -113,6 +127,28 @@
     }
   ],
   "schema_version": "1.1",
+  "source_evidence_intake_stub": {
+    "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself validate full atomic theory.",
+    "path": "Data/03_Research/source_evidence_intake_stub.json",
+    "sha256": "5e6993fdb4864c5c4a87e80393201db795b597f1498fc949acbc1e35a155213f",
+    "source_targets": [
+      "NIST hydrogen spectrum package",
+      "CODATA atomic constants package",
+      "Hydrogen level-energy package",
+      "Fine-structure and Lamb-shift package",
+      "Helium and many-electron package"
+    ]
+  },
+  "source_evidence_readiness_matrix": {
+    "claim_boundary": "A ready row has enough provenance structure for source review. It does not by itself upgrade atomic-theory claims.",
+    "path": "Data/03_Research/source_evidence_readiness_matrix.json",
+    "sha256": "564dc580316d1c27dcb7548e442465a47804f13651cf6059b3796f00f578f618",
+    "summary": {
+      "source_targets_total": 5,
+      "targets_blocked_by_pending_evidence": 3,
+      "targets_ready_for_source_review": 2
+    }
+  },
   "status": "PASS",
   "threshold": {
     "average_wavelength_error_ppm_max": 100.0,

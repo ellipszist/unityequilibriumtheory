@@ -42,10 +42,9 @@ class YggdrasilEngine:
         # Max density linked to the Information Compression limit
         self.wood_density_max = 1200.0 * (1.0 + self.params.kappa) 
 
-    def grow_tree(self, years=100):
+    def grow_tree(self, years=100, acoustic_intensity_w_m2=5000.0, acoustic_frequency_hz=40000):
         """
-        Simulate the lifecycle of the Mega-Flora.
-        Returns a timeline of stats.
+        Simulate the lifecycle of the Mega-Flora under UET Acoustic Stimulation.
         """
         timeline = []
 
@@ -54,15 +53,18 @@ class YggdrasilEngine:
         diameter_cm = 1.0
         biomass_kg = 0.1
         current_density = self.wood_density_start
-        root_depth_m = 0.3  # Initial root depth
+        root_depth_m = 0.3  
+
+        # Sonophoresis Constants
+        # Cavitation threshold in plant cell tissue (approximate, W/m^2)
+        cavitation_threshold = 2000.0 
+        base_permeability = 1.0
 
         for year in range(1, years + 1):
-            # 1. Calculate Structural Stress (Thigmomorphogenesis)
-            # Higher height/thin trunk = High Stress.
-            # Stress Ratio > 100 means "Wobbly". Ideal is < 80.
+            # 1. Structural Stress
             stress_ratio = (height_m * 100) / diameter_cm
 
-            # 2. Smart Energy Allocation (Linked to Beta)
+            # 2. Smart Energy Allocation
             if stress_ratio > 90:
                 allocation_height = 0.2
                 allocation_girth = 1.0 - allocation_height
@@ -70,46 +72,45 @@ class YggdrasilEngine:
                 allocation_height = 0.4 + (self.params.beta * 0.5) 
                 allocation_girth = 1.0 - allocation_height
 
-            # 3. Growth Phase (Age Factor)
-            # Young trees grow faster (Exponential), Old trees slow down
-            age_factor = 1.0
-            if year < 15:
-                age_factor = 1.6  # Genetic Sprint Boost (+60%)
-            elif year > 50:
-                age_factor = 0.5  # Senior slowdown
+            # 3. Sonophoresis & Epigenetic Permeability
+            # If acoustic intensity exceeds cavitation threshold, transient pores open in cell walls.
+            if acoustic_intensity_w_m2 > cavitation_threshold:
+                # Permeability increases logarithmically with excess intensity
+                # Epigenetic trigger locks cells into 'active division' phase
+                acoustic_permeability = base_permeability + math.log10(acoustic_intensity_w_m2 / cavitation_threshold)
+            else:
+                acoustic_permeability = base_permeability
 
-            # 4. Execute Growth
-            # Base growth unit (depends on leaves/biomass)
-            # Tapering Logic: Height growth slows down as it gets taller (Hydraulic tension)
+            # 4. Execute Growth (Nutrient Uptake)
+            # Hydraulic tension limits maximum height
             h_tension_drag = max(0.1, 1.0 - (height_m / 250.0))
 
-            # --- UET BALANCING: Bioluminescent Energy Drain ---
-            # Using bioluminescence as a 'Safety Valve' to prevent over-growth.
-            # Lighting up the city at night drains ATP/Sugars.
+            # Base growth is determined by surface area for absorption (~mass^0.66) 
+            # Multiplied by cell permeability
+            base_nutrient_uptake = (biomass_kg ** 0.66)
+            
+            # Bioluminescent Energy Drain (Safety Valve)
             biolum_intensity = 0.0
             if year > 5:
-                # Intensity increases with size (more 'lamps' for the city)
                 biolum_intensity = min(1.0, height_m / 100.0)
-
-            # Energy drain factor linked to Informational Loss (Phi)
             energy_drain = biolum_intensity * self.params.phi_loss
 
+            # Growth power represents available building material (carbon/nutrients)
             growth_power = (
-                (biomass_kg**0.6)
+                base_nutrient_uptake
                 * self.growth_rate
-                * age_factor
+                * acoustic_permeability
                 * h_tension_drag
                 * (1.0 - energy_drain)
             )
 
             # Apply Allocation
-            # As height increases, allocation_height naturally decreases to favor stability
             if height_m > 30.0:
-                allocation_height *= 0.7  # Organic slowdown
-                allocation_girth *= 1.3  # Focus on foundation
+                allocation_height *= 0.7  
+                allocation_girth *= 1.3  
 
-            delta_h = (growth_power * allocation_height) * 0.5  # Height is hard
-            delta_d = (growth_power * allocation_girth) * 0.2  # Girth is slow
+            delta_h = (growth_power * allocation_height) * 0.5  
+            delta_d = (growth_power * allocation_girth) * 0.2
 
             height_m += delta_h
             diameter_cm += delta_d

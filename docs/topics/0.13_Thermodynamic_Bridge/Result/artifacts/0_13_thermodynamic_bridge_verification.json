@@ -2,7 +2,7 @@
   "schema_version": "1.1",
   "topic": "0.13_Thermodynamic_Bridge",
   "command": ".venv\\Scripts\\python.exe docs\\topics\\0.13_Thermodynamic_Bridge\\Code\\03_Research\\Research_Landauer.py",
-  "timestamp_utc": "2026-04-30T13:39:57.832579+00:00",
+  "timestamp_utc": "2026-05-04T15:20:51.172708+00:00",
   "status": "WARN",
   "claim_class": "C",
   "inputs": [
@@ -76,20 +76,43 @@
   "plot_artifacts": [
     {
       "name": "landauer_limit_curve",
-      "path": "Result\\_Logs\\1777556392_Research_Landauer\\landauer\\landauer_viz.png",
+      "path": "Result\\_Logs\\1777908045_Research_Landauer\\landauer\\landauer_viz.png",
       "saved": true
     },
     {
       "name": "bekenstein_hawking_entropy_curve",
-      "path": "Result\\_Logs\\1777556392_Research_Landauer\\bekenstein\\bekenstein_viz.png",
+      "path": "Result\\_Logs\\1777908045_Research_Landauer\\bekenstein\\bekenstein_viz.png",
       "saved": true
     },
     {
       "name": "unruh_temperature_curve",
-      "path": "Result\\_Logs\\1777556392_Research_Landauer\\jacobson\\jacobson_viz.png",
+      "path": "Result\\_Logs\\1777908045_Research_Landauer\\jacobson\\jacobson_viz.png",
       "saved": true
     }
   ],
+  "source_evidence_intake_stub": {
+    "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/source_evidence_intake_stub.json",
+    "sha256": "39067a37283e9dbb8f845c05bb0fa66a0296ab8fa94dd2bc426d750337f1d9d4",
+    "source_targets": [
+      "Berut 2012 raw or supplementary numeric table",
+      "Jun 2014 nanomagnetic erasure benchmark source",
+      "Peterson 2018 quantum Landauer benchmark source",
+      "LIGO/Virgo mass uncertainty source package",
+      "EHT black-hole mass source package",
+      "Measured-constant uncertainty record beyond exact SI constants"
+    ],
+    "claim_boundary": "This intake stub is for source evidence capture only. It does not authorize data or claim upgrades by itself."
+  },
+  "source_evidence_readiness_matrix": {
+    "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/source_evidence_readiness_matrix.json",
+    "sha256": "2b721f64da986fea36a8c29a6b0fdbd7be5da281503ce50d1cdf749b7642add3",
+    "summary": {
+      "source_targets_total": 6,
+      "targets_ready_for_source_review": 0,
+      "targets_blocked_by_pending_evidence": 6
+    },
+    "claim_boundary": "This readiness matrix is a workflow gate only. It tracks whether source evidence is still pending."
+  },
   "warnings": [
     "Berut/CODATA source records and source-lock hashes are pinned, but Berut numeric rows remain topic-derived summaries rather than raw archived tables.",
     "Bekenstein/Jacobson checks are formula-consistency checks, not independent tests of UET dynamics."

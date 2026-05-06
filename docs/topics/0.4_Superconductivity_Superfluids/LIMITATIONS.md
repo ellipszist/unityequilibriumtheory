@@ -5,8 +5,35 @@
 - The topic still needs a clear separation between phenomenological fit behavior and stronger microscopic claims.
 - The raw McMillan baseline currently has high residuals and should be treated as a model/baseline blocker, not a successful UET prediction.
 - The inverse-McMillan diagnostic indicates the current working-copy `lambda_ep` values are systematically high relative to the values needed to reproduce observed `Tc` with the declared `Theta_D_K` and `mu_star` inputs.
+- Because the verifier is limited to the conventional subset with declared `lambda_ep`, the FAIL applies to the raw McMillan gate over that subset; high-Tc cuprates are currently excluded rather than silently counted.
 - Calibrated `lambda` values and heuristic coherence/Z corrections must not be described as no-fit predictions.
 - High-Tc cuprates and hydrides require separate source-backed verifiers before any claim upgrade.
 - Internal script execution does not by itself establish external replication, formal proof, or broad physical closure.
 - Source records for McMillan 1968, Allen-Dynes 1975, and NIMS SuperCon now exist, but raw NIMS MDR data is not yet mirrored or consumed by the verifier.
 - Until row-level electron-phonon coupling, phonon temperature/log-frequency, and Coulomb pseudopotential provenance is source-normalized, the FAIL should be interpreted as a parameter-package/model-gate blocker.
+- Drift between the raw McMillan gate table and the broader topic package can now be measured, but it is still an internal consistency check rather than upstream row certification.
+- Even if the substitution audit improves some rows, that only shows package drift sensitivity under fixed `Theta_D_K`; it does not validate the substituted package as authoritative.
+- The normalization queue is only a repair-order tool. A row stays non-authoritative until its values are tied to explicit upstream rows or literature tables.
+- The status ledger improves work control, but it still depends on internal diagnostics until upstream row identities are actually attached.
+- An internal-consensus candidate is still not a source-backed row. It only means two local diagnostics roughly agree.
+- A provisional normalized sensitivity pass may reduce error substantially, but that still does not convert the underlying row substitutions into verified benchmark data.
+- Even the residual-blocker map after provisional substitutions is still an internal control artifact; the remaining rows are hypotheses about where to check next, not settled source corrections.
+- The row dossiers improve handoff quality, but they still point to source checks that have not yet been completed.
+- The field-lock matrix makes unresolved fields explicit, but it still reflects internal workflow state rather than upstream certification.
+- The proxy-sensitivity comparison can rank proxy choices internally, but it does not by itself prove whether Debye temperature or log-phonon frequency is the correct source-backed field for a row.
+- The Vanadium packet shortens the path to the next source check, but it still depends on internal diagnostics until row-level evidence is attached.
+- The A15 packet shortens handoff for `Nb3Sn` and `Nb3Ge`, but both rows still remain unresolved until explicit upstream or literature row evidence is attached.
+- The Vanadium patch preview improves implementation readiness, but it is still a hypothetical edit until the row evidence confirms the values.
+- The A15 blocked patch preview is intentionally non-actionable; it exists to prevent premature edits while the critical fields are still unresolved.
+- The intake stub improves evidence capture discipline, but it still depends on a later human or scripted review step to confirm the evidence is sufficient.
+- The intake stub now carries useful working-copy context for `Vanadium`, `Nb3Sn`, and `Nb3Ge`, but those prefilled entries are still internal handoff state rather than accepted source evidence.
+- The readiness matrix now separates `fields_with_working_context` from `fields_complete`, but it still cannot judge whether the evidence quality is scientifically adequate by itself.
+- The execution queue improves sequencing for the next evidence pass, but it still depends on later source review and does not reduce the raw McMillan FAIL by itself.
+- The source-review packets improve evidence attachment discipline, but they are still empty review templates until real table rows or literature values are entered and checked.
+- The decision gate improves review discipline, but it still begins in a fully blocked state until real source evidence is attached and judged compatible field by field.
+- The new external row-resolution target manifest pins what must be collected next, but it is still only an acquisition target list until raw rows or literature tables are actually archived under `docs/data/external/...`.
+- The new external intake and readiness files improve archive discipline, but they still start empty and do not reduce the raw McMillan FAIL until real row evidence is actually mirrored or transcribed.
+- The new external acquisition queue and topic handoff gate improve process control, but they are still workflow scaffolding until real archived evidence exists for at least the Vanadium row.
+- The new per-material external dossiers improve row-level archive discipline, but they still do not reduce the FAIL until real source files or transcriptions are attached.
+- The new local-anchor manifest reduces search thrash inside the repo, but it still does not count as external evidence and cannot unlock patch review by itself.
+- The topic-level source-evidence and branch-claim gates now make the same point at a higher layer: the raw baseline FAIL can support blocker analysis, but it cannot be stretched into row-normalized prediction claims, Allen-Dynes/UET success claims, or universal-superconductivity claims.

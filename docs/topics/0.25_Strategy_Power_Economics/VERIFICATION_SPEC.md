@@ -15,6 +15,20 @@ python docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_Econo
 | `Data/03_Research/Bitcoin_yahoo_real.csv` | Bitcoin market time-series working copy |
 | `Data/Global_Economy_2024.json` | population, GDP PPP, and Gini working copy |
 | `Data/03_Research/daily_economic_snapshot.json` | local daily indicator snapshot |
+| `Data/03_Research/source_lock_manifest.json` | binds market/economy/snapshot working copies to explicit provenance classes |
+
+## Generated workflow artifacts
+
+- `Data/03_Research/source_lock_manifest.json`
+- `Data/03_Research/source_evidence_intake_stub.json`
+- `Data/03_Research/source_evidence_readiness_matrix.json`
+- `Data/03_Research/model_claim_gate.json`
+
+## Current readiness snapshot
+
+- SP500/Gold/Bitcoin metadata packages: each `5/6` complete; blocked only by missing retrieval date
+- Global economy baseline package: `4/6` complete; blocked by missing upstream URL/DOI and retrieval date
+- Daily snapshot feed: `5/6` complete; blocked by missing upstream URL/API
 
 ## Metrics
 

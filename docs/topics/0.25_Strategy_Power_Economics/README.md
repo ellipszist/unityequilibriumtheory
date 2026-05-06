@@ -49,7 +49,8 @@ flowchart LR
 | Market time series | Runnable diagnostic | `Research_Economic_Data_Audit.py` and artifact | descriptive returns/volatility/correlation |
 | Economy baseline | Source-referenced working copy | `Global_Economy_2024.json` | Gini/GDP/population sanity |
 | Daily snapshot | Local gateway snapshot | `daily_economic_snapshot.json` | local context only |
-| Social power engine | Heuristic model | `Engine_Power_Dynamics.py`, formula audit | simulation proposal |
+| Source evidence | Intake + readiness workflow gate; all five targets now mapped as partial | `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `Data/03_Research/source_lock_manifest.json` | no claim upgrade by itself |
+| Social power engine | Heuristic model | `Engine_Power_Dynamics.py`, formula audit, `Data/03_Research/model_claim_gate.json` | simulation proposal |
 | 8-billion resonance | Old run-contract only | previous artifact now treated as insufficient | no stability claim |
 | Policy/game-theory claims | Not verifier-gated | limitations | no superiority or causality claim |
 
@@ -77,6 +78,9 @@ python docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_Econo
 - `DATA_MANIFEST.md`: data provenance, unit conventions, and benchmark roles.
 - `METHOD.md`: accepted evidence lanes and dependency policy.
 - `LIMITATIONS.md`: blockers for stronger strategy/economics claims.
+- `Data/03_Research/source_evidence_intake_stub.json`: structured landing zone for missing market/economy/snapshot source metadata.
+- `Data/03_Research/source_evidence_readiness_matrix.json`: workflow gate for which data sources are still blocked by missing evidence fields.
+- `Data/03_Research/model_claim_gate.json`: accepted-versus-blocked claim lanes for diagnostics, simulations, and policy claims.
 
 ## Current Limitations
 
@@ -85,6 +89,13 @@ python docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_Econo
 - Social stabilizer and policy simulations are not calibrated to real policy data.
 - No current artifact supports old green-check strategic superiority wording or
   real-world stabilization claims.
+
+## Provenance Snapshot
+
+- SP500, Gold, Bitcoin: each `5/6` fields complete; only `retrieval_date` remains open
+- Global economy baseline: `4/6` complete; still missing upstream `URL/DOI` and `retrieval_date`
+- Daily economic snapshot: `5/6` complete; still missing explicit `upstream_url_or_api`
+- `source_lock_manifest.json` now binds the working-copy market/economy/snapshot package to explicit source classes and unit conventions
 
 ---
 

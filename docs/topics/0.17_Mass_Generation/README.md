@@ -15,7 +15,7 @@ This topic studies selected particle-mass and Higgs-coupling benchmarks. The cur
 - Claim class: internal benchmark/run-contract support for Higgs coupling consistency.
 - Current artifact: `Result/artifacts/0_17_mass_generation_verification.json`.
 - Current verifier: `Code/03_Research/Research_Higgs_Coupling.py`.
-- Data posture: source-referenced local working copies, not raw-source archived.
+- Data posture: source-referenced working copies plus extracted external provenance packages; still not raw-source archived.
 
 ## Evidence Boundary
 
@@ -27,6 +27,8 @@ The repository can currently support conservative statements such as:
 
 The current evidence package does not establish a first-principles mass-generation mechanism, a replacement for the Higgs mechanism, a complete Standard Model mass hierarchy derivation, or a formal proof of Koide from UET.
 
+The topic now includes workflow gates that separate Higgs run-contract evidence from Koide, tau, and Planck-ansatz branches, so later wording cannot quietly outrun the current benchmark.
+
 ## Core Files
 
 - `FORMULA_AUDIT.md`: reviewed registry for Higgs coupling, Koide, tau prediction, Planck exponential ansatz, and mass ratios.
@@ -35,6 +37,10 @@ The current evidence package does not establish a first-principles mass-generati
 - `METHOD.md`: method boundary and excluded cases.
 - `LIMITATIONS.md`: scientific and verification limitations.
 - `Code/03_Research/Research_Higgs_Coupling.py`: current primary verifier.
+- `Data/03_Research/source_lock_manifest.json`: normative provenance map for Higgs and lepton benchmark inputs.
+- `Data/03_Research/source_evidence_intake_stub.json`: structured landing zone for missing Higgs/lepton source evidence.
+- `Data/03_Research/source_evidence_readiness_matrix.json`: workflow gate for which source packages are still blocked by missing evidence fields.
+- `Data/03_Research/branch_claim_gate.json`: separated claim ceilings for Higgs, Koide/tau, Planck-ansatz, hierarchy, and mechanism branches.
 
 ## Verification
 

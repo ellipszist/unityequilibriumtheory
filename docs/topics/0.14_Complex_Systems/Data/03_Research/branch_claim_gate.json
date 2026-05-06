@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.14_Complex_Systems",
+  "purpose": "Claim gate for separate complex-systems branches inside the topic.",
+  "summary": {
+    "branches_total": 6,
+    "accepted_now": 1,
+    "blocked_for_strong_claims": 5
+  },
+  "branches": [
+    {
+      "branch": "HRV derived-RR benchmark",
+      "status": "accepted_run_contract_only",
+      "allowed_usage_now": "Source-referenced HRV metrics benchmark only.",
+      "blocker_to_stronger_claim": "Need raw PhysioNet files, extraction workflow, and frozen numeric acceptance thresholds."
+    },
+    {
+      "branch": "SOC branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Simulation or formula sandbox only.",
+      "blocker_to_stronger_claim": "Need seeded avalanche benchmark, exponent fit, and artifact-producing verifier."
+    },
+    {
+      "branch": "Econophysics branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Local market sandbox only.",
+      "blocker_to_stronger_claim": "Need source-locked market data, baseline model, and thresholded artifact."
+    },
+    {
+      "branch": "Climate branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Exploratory local series only.",
+      "blocker_to_stronger_claim": "Need source identity, baseline comparison, and dedicated verifier artifact."
+    },
+    {
+      "branch": "Inequality and social branches",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Exploratory local working files only.",
+      "blocker_to_stronger_claim": "Need source-locked data, unit contracts, and branch-specific artifacts."
+    },
+    {
+      "branch": "Cross-domain universal complexity claims",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Conceptual framing only.",
+      "blocker_to_stronger_claim": "Need separate verifier gates for each branch before any universal theory claim."
+    }
+  ],
+  "claim_boundary": "This gate cannot raise claim strength above the current HRV run-contract evidence."
+}

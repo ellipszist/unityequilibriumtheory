@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.9_Quantum_Nonlocality",
+  "policy": "These records pin extracted/source-referenced Bell benchmark packages. They are not raw event-count archives unless explicitly marked otherwise.",
+  "records": [
+    {
+      "dataset_id": "hensen_2015_chsh_reference_package",
+      "local_path": "docs/data/external/quantum_nonlocality/hensen_2015_chsh_reference_package.json",
+      "source_name": "Hensen 2015 CHSH benchmark reference package",
+      "source_type": "json_reference_package",
+      "benchmark_ready": true,
+      "status": "packaged",
+      "doi": "10.1038/nature15759",
+      "url": null,
+      "notes": "Extracted/source-referenced CHSH benchmark package copied from topic-local working data; raw event counts not yet archived."
+    },
+    {
+      "dataset_id": "bell_inequality_summary_reference_package",
+      "local_path": "docs/data/external/quantum_nonlocality/bell_inequality_summary_reference_package.json",
+      "source_name": "Bell inequality secondary summary reference package",
+      "source_type": "json_reference_package",
+      "benchmark_ready": true,
+      "status": "packaged",
+      "doi": "10.1038/nature15759",
+      "url": null,
+      "notes": "Extracted/source-referenced secondary summary copied from the topic-local working file."
+    }
+  ]
+}

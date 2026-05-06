@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.20_Atomic_Physics",
+  "purpose": "Source evidence intake before upgrading claims across hydrogen, level-energy, and many-electron atomic branches.",
+  "source_targets": [
+    {
+      "name": "NIST hydrogen spectrum package",
+      "priority": "immediate",
+      "status_hint": "source_backed_working_copy",
+      "evidence_entries": [
+        "working_copy_json_path",
+        "doi_or_url",
+        "transition_scope",
+        "unit_basis",
+        "hash_lock",
+        "benchmark_role"
+      ]
+    },
+    {
+      "name": "CODATA atomic constants package",
+      "priority": "immediate",
+      "status_hint": "source_backed_working_copy",
+      "evidence_entries": [
+        "working_copy_json_path",
+        "doi",
+        "constant_scope",
+        "unit_basis",
+        "hash_lock",
+        "benchmark_role"
+      ]
+    },
+    {
+      "name": "Hydrogen level-energy package",
+      "priority": "high",
+      "status_hint": "secondary_lane_not_yet_primary_gated",
+      "evidence_entries": [
+        "level_data_path",
+        "upstream_source_package",
+        "artifact_path",
+        "observable_scope",
+        "unit_basis",
+        "upgrade_requirement"
+      ]
+    },
+    {
+      "name": "Fine-structure and Lamb-shift package",
+      "priority": "high",
+      "status_hint": "blocked_precision_branch",
+      "evidence_entries": [
+        "fine_structure_dataset",
+        "lamb_shift_dataset",
+        "comparison_artifact",
+        "observable_scope",
+        "unit_basis",
+        "upgrade_requirement"
+      ]
+    },
+    {
+      "name": "Helium and many-electron package",
+      "priority": "medium",
+      "status_hint": "blocked_theory_branch",
+      "evidence_entries": [
+        "helium_dataset",
+        "many_electron_dataset",
+        "artifact_paths",
+        "observable_scope",
+        "cross_topic_dependency_map",
+        "upgrade_requirement"
+      ]
+    }
+  ],
+  "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself validate full atomic theory."
+}

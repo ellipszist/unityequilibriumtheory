@@ -25,6 +25,7 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 ## Assumptions
 
 - The topic is currently a phenomenological comparison package tied to selected critical-point datasets.
+- The primary verifier also writes `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json` so selected beta compatibility stays separate from wider universality claims.
 
 ## Domain of validity
 

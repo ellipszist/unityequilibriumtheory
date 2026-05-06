@@ -47,13 +47,14 @@ flowchart LR
 | Shared functional form | One Omega engine evaluates normalized fields | `C/D` | Structural reuse hypothesis. |
 | Parameter unity | Falsification scripts show fixed `kappa` breaks across regimes | `D` | Prevents overclaiming fixed constants. |
 | Kappa running | Hand-selected scale points and plot | `D` | Hypothesis map only. |
-| Cross-domain transfer | Synthetic neural/galaxy generator plus local SP500 snapshot | `D` | Exploratory pattern check. |
+| Cross-domain transfer | Synthetic neural/galaxy generator plus local SP500 snapshot, now with explicit directional checks | `D` | Exploratory pattern check with honest mismatch reporting. |
 | Thermodynamic dependency | Inherits `0.13` Landauer/Bekenstein bridge limits | `C/D` | Claim class cannot exceed upstream bridge status. |
 
 ## Assumptions
 
 - The topic currently stitches heterogeneous datasets into exploratory cross-domain scaling tests.
 - The current primary verifier uses synthetic neural/galaxy fields and embedded local finance snapshots.
+- The verifier now embeds a dependency manifest so cross-scale claims can be traced back to `0.13`, `0.5`, `0.6`, and `0.7` artifact identities.
 - Strong claims require source-locked upstream topic artifacts for each scale calibration.
 
 ## Domain of validity

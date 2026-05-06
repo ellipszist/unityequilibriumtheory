@@ -1,12 +1,23 @@
 {
+  "branch_claim_gate": {
+    "claim_boundary": "This gate cannot raise the topic above the current heavy-nucleus subset benchmark plus proton-radius anchor compatibility.",
+    "path": "Data/03_Research/branch_claim_gate.json",
+    "sha256": "4bf358362486332e1beceef21a46705fdd8c005dd219f6d50f10ca8507b01006",
+    "summary": {
+      "accepted_now": 2,
+      "blocked_for_strong_claims": 4,
+      "branches_total": 6
+    }
+  },
   "config": {
     "benchmark_manifest": "docs\\topics\\0.5_Nuclear_Binding_Hadrons\\Data\\03_Research\\Data_AME2020_Benchmark_Manifest.json",
     "binding_reference": "docs\\topics\\0.5_Nuclear_Binding_Hadrons\\Data\\03_Research\\Data_AME2020_Binding_RawSubset.json",
     "full_table_reference": "docs\\topics\\0.5_Nuclear_Binding_Hadrons\\Data\\03_Research\\Data_AME2020_Binding_FullParsed.json",
     "note": "AME2020 input now has a table-wide parsed layer. The current pass/fail gate still uses a selected validation subset plus coverage metrics.",
+    "pdg_quarks_reference": "docs\\topics\\0.5_Nuclear_Binding_Hadrons\\Data\\03_Research\\Data_PDG_Quarks_2024.json",
     "proton_radius_reference": "docs\\topics\\0.5_Nuclear_Binding_Hadrons\\Data\\03_Research\\Data_Proton_Radius.json"
   },
-  "dataset_hash": "a822071ab7769934cdae9a12da598d8dd48d7bcf7e09a53364be28e991b14689",
+  "dataset_hash": "d6f5d045222d0eca354ecf22d1b9b9bf1df24c49c31f46ccde7ed4a368555287",
   "environment": {
     "implementation": "CPython",
     "matplotlib_version": "3.10.8",
@@ -18,7 +29,15 @@
     "tensorflow_version": null,
     "torch_version": "2.10.0+cpu"
   },
+  "interpretation": "This artifact supports a source-backed heavy-nucleus subset benchmark and a proton-radius anchor-compatibility check. It does not validate light nuclei, hadron masses, QCD running, or confinement claims as audit-grade passes.",
+  "limitations": [
+    "The strict pass/fail gate applies only to selected heavy nuclei plus proton-radius compatibility.",
+    "Light nuclei remain diagnostic and can fail badly outside the liquid-drop validation regime.",
+    "The proton-radius path is still benchmark-anchor behavior, not an independent prediction.",
+    "Hadron-mass, QCD-running, and confinement-proof branches remain blocked for strong claims."
+  ],
   "metrics": {
+    "accepted_claim_branches": 2,
     "excluded_count": 3,
     "heavy_nuclei_all_pass": true,
     "max_error_percent": 122.13510751489672,
@@ -26,9 +45,11 @@
     "median_error_percent": 1.7694307073689635,
     "parsed_table_count": 3558,
     "proton_radius_relative_error_percent": 1.203369434416367,
+    "source_targets_blocked": 3,
+    "source_targets_ready_for_review": 2,
     "validation_subset_count": 7
   },
-  "notes": "This verifier reads a raw-derived AME2020 subset plus source-backed proton-radius data.",
+  "notes": "This verifier reads a raw-derived AME2020 subset plus source-backed proton-radius data, and now records source-evidence and branch-claim workflow gates.",
   "results": {
     "binding_comparisons": {
       "C12": {
@@ -95,6 +116,11 @@
         "relative_error_percent": 0.7946902677333372
       }
     },
+    "branch_claim_gate_summary": {
+      "accepted_now": 2,
+      "blocked_for_strong_claims": 4,
+      "branches_total": 6
+    },
     "coverage": {
       "excluded_light_cases": [
         "C12",
@@ -140,6 +166,11 @@
       "predicted_fm": 0.841,
       "relative_error_percent": 1.203369434416367
     },
+    "source_evidence_readiness_summary": {
+      "source_targets_total": 5,
+      "targets_blocked_by_pending_evidence": 3,
+      "targets_ready_for_source_review": 2
+    },
     "status": "PASS",
     "worst_cases": [
       {
@@ -180,11 +211,33 @@
     ]
   },
   "seed": 42,
+  "source_evidence_intake_stub": {
+    "claim_boundary": "This intake stub organizes provenance work only. It does not authorize stronger strong-force or hadron claims by itself.",
+    "path": "Data/03_Research/source_evidence_intake_stub.json",
+    "sha256": "8b205ee07d10168e8d3c09da9c308053e18b4548d6f65ddf0b183aef2cc116da",
+    "source_targets": [
+      "AME2020 raw table and validation subset package",
+      "Proton radius benchmark package",
+      "PDG quark-mass source package",
+      "QCD running benchmark package",
+      "Confinement proof gate package"
+    ]
+  },
+  "source_evidence_readiness_matrix": {
+    "claim_boundary": "A ready row means the topic has enough local provenance structure for source review. It does not itself upgrade a claim.",
+    "path": "Data/03_Research/source_evidence_readiness_matrix.json",
+    "sha256": "14ad0f1c613d64759316c9e02c2a336d321d8fbba8982fe9a4624c160b78c17d",
+    "summary": {
+      "source_targets_total": 5,
+      "targets_blocked_by_pending_evidence": 3,
+      "targets_ready_for_source_review": 2
+    }
+  },
   "thresholds": {
     "heavy_nucleus_binding_error_percent_max": 15.0,
     "proton_radius_relative_error_percent_max": 5.0
   },
-  "timestamp_utc": "2026-04-28T14:24:53.499356+00:00",
+  "timestamp_utc": "2026-05-05T15:21:09.404826+00:00",
   "topic": "0.5_Nuclear_Binding_Hadrons",
   "uet_version": "0.9.0"
 }

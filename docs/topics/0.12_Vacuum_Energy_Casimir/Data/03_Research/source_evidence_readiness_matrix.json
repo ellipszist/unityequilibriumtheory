@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.12_Vacuum_Energy_Casimir",
+  "purpose": "Readiness matrix for source-evidence review across Casimir benchmark and vacuum-energy bridge branches.",
+  "summary": {
+    "source_targets_total": 5,
+    "targets_ready_for_source_review": 0,
+    "targets_blocked_by_pending_evidence": 5
+  },
+  "readiness_rows": [
+    {
+      "name": "Mohideen/Roy primary benchmark package",
+      "priority": "immediate",
+      "fields_total": 6,
+      "fields_complete": 4,
+      "fields_pending": 2,
+      "pending_fields": [
+        "upstream_url_or_doi",
+        "transcription_note"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The primary benchmark is a topic-local working copy with a real source label, but the upstream archival pointer and transcription audit are not yet frozen."
+    },
+    {
+      "name": "Geometry and radius sensitivity package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 2,
+      "fields_pending": 4,
+      "pending_fields": [
+        "model_radius_policy",
+        "sensitivity_artifact_path",
+        "geometry_scope",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The current verifier uses a 200 um model radius against a 196 um dataset radius without a dedicated sensitivity artifact."
+    },
+    {
+      "name": "Finite-conductivity correction package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 3,
+      "fields_pending": 3,
+      "pending_fields": [
+        "material_parameter_source",
+        "sensitivity_artifact_path",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The finite-conductivity correction remains heuristic and clipped, without an independent sensitivity package."
+    },
+    {
+      "name": "Secondary Casimir dataset package",
+      "priority": "medium",
+      "fields_total": 6,
+      "fields_complete": 1,
+      "fields_pending": 5,
+      "pending_fields": [
+        "upstream_source_package",
+        "normalization_note",
+        "artifact_path",
+        "claim_boundary_note",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "Secondary Casimir datasets exist only as local working copies and are not yet primary-gated."
+    },
+    {
+      "name": "Vacuum-energy and cosmology bridge package",
+      "priority": "medium",
+      "fields_total": 6,
+      "fields_complete": 0,
+      "fields_pending": 6,
+      "pending_fields": [
+        "dark_energy_anchor_source",
+        "cosmology_dataset_package",
+        "bridge_derivation_note",
+        "downstream_dependency_map",
+        "artifact_path",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The dark-energy anchor is not derived from the Casimir benchmark and there is no cosmology bridge artifact yet."
+    }
+  ],
+  "claim_boundary": "A ready row has enough provenance structure for source review. It does not by itself upgrade vacuum-energy claims."
+}

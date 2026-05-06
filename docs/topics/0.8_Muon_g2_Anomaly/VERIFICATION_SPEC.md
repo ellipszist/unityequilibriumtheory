@@ -24,7 +24,11 @@
 - Artifact target:
   - `Result/artifacts/muon_g2_2025_validation.json`
   - `Result/artifacts/muon_g2_2025_sensitivity.json`
+  - `Data/03_Research/source_evidence_intake_stub.json`
+  - `Data/03_Research/source_evidence_readiness_matrix.json`
+  - `Data/03_Research/branch_claim_gate.json`
 - Interpretation:
   - A pass means the live `Engine_Muon_G2.py` anomaly term is numerically compatible with the 2025 source-locked experiment-theory gap.
   - A fail means the live engine term no longer matches the current benchmark package closely enough.
   - The legacy `2.51e-9` value may appear in diagnostic reports, but it is not the canonical theory output for this verifier.
+  - Topic-level source-evidence and branch-claim gates limit this verifier to benchmark-compatibility and diagnostic claims unless stronger derivation and comparator packages are added.

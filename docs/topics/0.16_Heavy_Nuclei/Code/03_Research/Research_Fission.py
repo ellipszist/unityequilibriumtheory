@@ -37,6 +37,9 @@ if root_path is None:
 TOPIC_DIR = root_path / "docs" / "topics" / "0.16_Heavy_Nuclei"
 AME_HEAVY_PATH = TOPIC_DIR / "Data" / "03_Research" / "ame2020_heavy_nuclei.json"
 ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_16_heavy_nuclei_verification.json"
+SOURCE_EVIDENCE_INTAKE_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_intake_stub.json"
+SOURCE_EVIDENCE_READINESS_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_readiness_matrix.json"
+BRANCH_CLAIM_GATE_PATH = TOPIC_DIR / "Data" / "03_Research" / "branch_claim_gate.json"
 
 
 def load_engine():
@@ -76,6 +79,232 @@ def write_artifact(artifact):
     ARTIFACT_PATH.write_text(json.dumps(artifact, indent=2, sort_keys=True), encoding="utf-8")
 
 
+def write_json(path: Path, payload: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+def build_source_evidence_intake_stub() -> dict:
+    return {
+        "schema_version": "1.0",
+        "topic": "0.16_Heavy_Nuclei",
+        "purpose": "Source evidence intake before upgrading claims across heavy-nuclei binding, fission, and stability branches.",
+        "source_targets": [
+            {
+                "name": "AME2020 U-235 checkpoint package",
+                "priority": "immediate",
+                "status_hint": "source_labeled_working_copy",
+                "evidence_entries": [
+                    "working_copy_json_path",
+                    "doi_or_upstream_archive",
+                    "observable_scope",
+                    "unit_basis",
+                    "hash_lock",
+                    "benchmark_role",
+                ],
+            },
+            {
+                "name": "Source-locked fragment mass package",
+                "priority": "high",
+                "status_hint": "missing_primary_fragment_lock",
+                "evidence_entries": [
+                    "ba141_source_row",
+                    "kr92_source_row",
+                    "fragment_mass_or_binding_fields",
+                    "unit_basis",
+                    "artifact_path",
+                    "upgrade_requirement",
+                ],
+            },
+            {
+                "name": "Evaluated fission energy baseline package",
+                "priority": "high",
+                "status_hint": "missing_q_value_baseline",
+                "evidence_entries": [
+                    "evaluated_q_value_source",
+                    "uncertainty_field",
+                    "comparison_artifact",
+                    "observable_scope",
+                    "unit_basis",
+                    "upgrade_requirement",
+                ],
+            },
+            {
+                "name": "Heavy-binding subset benchmark package",
+                "priority": "high",
+                "status_hint": "secondary_lane_not_yet_primary_gated",
+                "evidence_entries": [
+                    "subset_dataset_path",
+                    "upstream_source_package",
+                    "artifact_rows",
+                    "unit_basis",
+                    "threshold_policy",
+                    "upgrade_requirement",
+                ],
+            },
+            {
+                "name": "Stability valley and island-of-stability package",
+                "priority": "medium",
+                "status_hint": "blocked_theory_branch",
+                "evidence_entries": [
+                    "shell_correction_package",
+                    "decay_or_half_life_data",
+                    "stability_artifact",
+                    "cross_topic_dependency_map",
+                    "observable_scope",
+                    "upgrade_requirement",
+                ],
+            },
+        ],
+        "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself validate a first-principles heavy-nuclei theory.",
+    }
+
+
+def build_source_evidence_readiness_matrix() -> dict:
+    rows = [
+        {
+            "name": "AME2020 U-235 checkpoint package",
+            "priority": "immediate",
+            "fields_total": 6,
+            "fields_complete": 5,
+            "fields_pending": 1,
+            "pending_fields": ["upstream_archive_freeze"],
+            "ready_for_source_review": True,
+            "blocking_reason": None,
+        },
+        {
+            "name": "Source-locked fragment mass package",
+            "priority": "high",
+            "fields_total": 6,
+            "fields_complete": 0,
+            "fields_pending": 6,
+            "pending_fields": [
+                "ba141_source_row",
+                "kr92_source_row",
+                "fragment_mass_or_binding_fields",
+                "unit_basis",
+                "artifact_path",
+                "upgrade_requirement",
+            ],
+            "ready_for_source_review": False,
+            "blocking_reason": "Ba-141 and Kr-92 fragment masses are not source-locked in the current verifier.",
+        },
+        {
+            "name": "Evaluated fission energy baseline package",
+            "priority": "high",
+            "fields_total": 6,
+            "fields_complete": 0,
+            "fields_pending": 6,
+            "pending_fields": [
+                "evaluated_q_value_source",
+                "uncertainty_field",
+                "comparison_artifact",
+                "observable_scope",
+                "unit_basis",
+                "upgrade_requirement",
+            ],
+            "ready_for_source_review": False,
+            "blocking_reason": "The current verifier has no evaluated fission Q-value baseline beyond an exothermic sanity range.",
+        },
+        {
+            "name": "Heavy-binding subset benchmark package",
+            "priority": "high",
+            "fields_total": 6,
+            "fields_complete": 3,
+            "fields_pending": 3,
+            "pending_fields": [
+                "artifact_rows",
+                "threshold_policy",
+                "upgrade_requirement",
+            ],
+            "ready_for_source_review": False,
+            "blocking_reason": "The heavy-binding subset exists as a secondary lane but is not yet promoted into primary artifact rows.",
+        },
+        {
+            "name": "Stability valley and island-of-stability package",
+            "priority": "medium",
+            "fields_total": 6,
+            "fields_complete": 0,
+            "fields_pending": 6,
+            "pending_fields": [
+                "shell_correction_package",
+                "decay_or_half_life_data",
+                "stability_artifact",
+                "cross_topic_dependency_map",
+                "observable_scope",
+                "upgrade_requirement",
+            ],
+            "ready_for_source_review": False,
+            "blocking_reason": "There is no source-backed stability or half-life package for island-of-stability claims.",
+        },
+    ]
+    ready_count = sum(1 for row in rows if row["ready_for_source_review"])
+    return {
+        "schema_version": "1.0",
+        "topic": "0.16_Heavy_Nuclei",
+        "purpose": "Readiness matrix for source-evidence review across heavy-nuclei binding and fission branches.",
+        "summary": {
+            "source_targets_total": len(rows),
+            "targets_ready_for_source_review": ready_count,
+            "targets_blocked_by_pending_evidence": len(rows) - ready_count,
+        },
+        "readiness_rows": rows,
+        "claim_boundary": "A ready row has enough provenance structure for source review. It does not by itself upgrade heavy-nuclei or stability claims.",
+    }
+
+
+def build_branch_claim_gate() -> dict:
+    return {
+        "schema_version": "1.0",
+        "topic": "0.16_Heavy_Nuclei",
+        "purpose": "Claim gate for separate heavy-nuclei branches inside the topic.",
+        "summary": {
+            "branches_total": 6,
+            "accepted_now": 2,
+            "blocked_for_strong_claims": 4,
+        },
+        "branches": [
+            {
+                "branch": "U-235 binding checkpoint branch",
+                "status": "accepted_source_backed_checkpoint_branch",
+                "allowed_usage_now": "Accepted U-235 binding checkpoint branch against the AME2020 working copy.",
+                "blocker_to_stronger_claim": "Need broader isotope coverage and independent derivation before promoting beyond a checkpoint branch.",
+            },
+            {
+                "branch": "Exothermic fission sanity branch",
+                "status": "accepted_sanity_diagnostic_branch",
+                "allowed_usage_now": "Accepted exothermic sanity-check branch for bridge-derived fission energetics only.",
+                "blocker_to_stronger_claim": "Need source-locked fragment masses and evaluated Q-value baselines before claiming calibrated fission prediction.",
+            },
+            {
+                "branch": "Fragment-mass prediction branch",
+                "status": "blocked_for_strong_claims",
+                "allowed_usage_now": "Not supported by current evidence.",
+                "blocker_to_stronger_claim": "Need source-locked Ba-141 and Kr-92 fragment rows in the primary verifier.",
+            },
+            {
+                "branch": "Evaluated fission-energy branch",
+                "status": "blocked_for_strong_claims",
+                "allowed_usage_now": "Not supported by current evidence.",
+                "blocker_to_stronger_claim": "Need an evaluated fission-energy baseline with uncertainty-aware thresholds.",
+            },
+            {
+                "branch": "Heavy-binding generalization branch",
+                "status": "blocked_for_strong_claims",
+                "allowed_usage_now": "Secondary comparison only.",
+                "blocker_to_stronger_claim": "Need dedicated artifact rows and threshold policy for the heavy-binding subset lane.",
+            },
+            {
+                "branch": "Island-of-stability and full heavy-nuclei theory claims",
+                "status": "blocked_for_strong_claims",
+                "allowed_usage_now": "Not supported by current evidence.",
+                "blocker_to_stronger_claim": "Need shell corrections, decay data, and stability artifacts beyond the current SEMF/UET bridge.",
+            },
+        ],
+        "claim_boundary": "This gate keeps the topic at heavy-nuclei checkpoint and sanity-diagnostic status, not first-principles nuclear closure.",
+    }
+
+
 def run_fission_sim():
     print("=" * 60)
     print("UET RESEARCH: NUCLEAR FISSION DIAGNOSTIC (U-235)")
@@ -83,6 +312,12 @@ def run_fission_sim():
 
     engine_cls = load_engine()
     engine = engine_cls()
+    source_evidence_intake_stub = build_source_evidence_intake_stub()
+    source_evidence_readiness_matrix = build_source_evidence_readiness_matrix()
+    branch_claim_gate = build_branch_claim_gate()
+    write_json(SOURCE_EVIDENCE_INTAKE_PATH, source_evidence_intake_stub)
+    write_json(SOURCE_EVIDENCE_READINESS_PATH, source_evidence_readiness_matrix)
+    write_json(BRANCH_CLAIM_GATE_PATH, branch_claim_gate)
 
     z_parent, a_parent = 92, 235
     z_frag1, a_frag1 = 56, 141
@@ -161,6 +396,9 @@ def run_fission_sim():
             "exothermic_gate": exothermic_gate,
             "u235_binding_gate": u235_gate,
             "fragment_ame_present": fragment_ame_present,
+            "source_targets_ready_for_review": source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
+            "source_targets_blocked": source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
+            "accepted_claim_branches": branch_claim_gate["summary"]["accepted_now"],
         },
         "failure_reason": failure_reason,
         "limitations": [
@@ -169,6 +407,28 @@ def run_fission_sim():
             "It does not validate the Island of Stability or a first-principles heavy-nuclei theory.",
         ],
     }
+    artifact["source_evidence_intake_stub"] = {
+        "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
+        "sha256": sha256(json.dumps(source_evidence_intake_stub, sort_keys=True).encode("utf-8")).hexdigest(),
+        "source_targets": [row["name"] for row in source_evidence_intake_stub["source_targets"]],
+        "claim_boundary": source_evidence_intake_stub["claim_boundary"],
+    }
+    artifact["source_evidence_readiness_matrix"] = {
+        "path": str(SOURCE_EVIDENCE_READINESS_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
+        "sha256": sha256(json.dumps(source_evidence_readiness_matrix, sort_keys=True).encode("utf-8")).hexdigest(),
+        "summary": source_evidence_readiness_matrix["summary"],
+        "claim_boundary": source_evidence_readiness_matrix["claim_boundary"],
+    }
+    artifact["branch_claim_gate"] = {
+        "path": str(BRANCH_CLAIM_GATE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
+        "sha256": sha256(json.dumps(branch_claim_gate, sort_keys=True).encode("utf-8")).hexdigest(),
+        "summary": branch_claim_gate["summary"],
+        "claim_boundary": branch_claim_gate["claim_boundary"],
+    }
+    artifact["interpretation"] = (
+        "This artifact supports a U-235 checkpoint branch and a bounded exothermic fission sanity branch. "
+        "It does not validate source-locked fragment energetics or heavy-nuclei stability theory."
+    )
     write_artifact(artifact)
     print(f"  Artifact written: {ARTIFACT_PATH}")
     return status in {"PASS", "WARN"}

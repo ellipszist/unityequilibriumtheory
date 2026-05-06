@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.4_Superconductivity_Superfluids",
+  "purpose": "Actionable row-normalization queue derived from the current McMillan FAIL artifact.",
+  "generated_from": {
+    "artifact_path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Result\\artifacts\\0_4_superconductivity_superfluids_verification.json",
+    "row_provenance_manifest_path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\row_provenance_manifest.json",
+    "raw_gate_input_hash": "96861226b45409f72943c648fe67e492b6c53855e7359ea607da0539eb6e2b45",
+    "comprehensive_input_hash": null
+  },
+  "summary": {
+    "rows_in_queue": 0,
+    "immediate_rows": 0,
+    "high_rows": 0,
+    "medium_rows": 0
+  },
+  "queue_rows": [],
+  "claim_boundary": "This queue prioritizes row normalization work. It does not by itself upgrade the scientific claim status of the topic."
+}

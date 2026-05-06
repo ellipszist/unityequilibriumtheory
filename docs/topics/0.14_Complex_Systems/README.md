@@ -27,6 +27,8 @@ The repository can currently support conservative statements such as:
 
 The current evidence package does not establish a universal causal law for all complex systems, a market-crash predictor, a clinical HRV classifier, or a climate/inequality proof.
 
+The topic now includes workflow gates that separate source-evidence intake from branch-level claim ceilings, so the broad title cannot quietly outrun the HRV-centered evidence package.
+
 ## 5x4 Grid Structure
 
 | Pillar | Purpose |
@@ -47,6 +49,10 @@ The current evidence package does not establish a universal causal law for all c
 - `Code/01_Engine/Engine_Complexity.py`: SOC, HRV, Hurst, and stability metrics.
 - `Code/01_Engine/Engine_Econophysics.py`: market simulation branch.
 - `Code/03_Research/Research_Biology_HRV.py`: current primary verifier script.
+- `Data/03_Research/source_evidence_intake_stub.json`: structured landing zone for missing HRV, SOC, market, climate, inequality, and social source evidence.
+- `Data/03_Research/source_evidence_readiness_matrix.json`: workflow gate for which branch source packages are still blocked by missing evidence fields.
+- `Data/03_Research/branch_claim_gate.json`: separated claim ceilings for HRV, SOC, econophysics, climate, inequality/social, and universal-complexity branches.
+- `Data/03_Research/biology_hrv/source_lock_manifest.json`: provenance map tying the HRV RR working files to PhysioNet record IDs and runtime filter assumptions.
 
 ## Verification
 

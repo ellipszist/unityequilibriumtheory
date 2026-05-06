@@ -10,6 +10,7 @@ Normative files for this release:
 - [verification_contract.md](./verification_contract.md)
 - [release_checklist.md](./release_checklist.md)
 - [UET_Framework_v1.0.md](./UET_Framework_v1.0.md)
+- [incubator_workflow_standard.md](./incubator_workflow_standard.md)
 
 Scope of these standards:
 

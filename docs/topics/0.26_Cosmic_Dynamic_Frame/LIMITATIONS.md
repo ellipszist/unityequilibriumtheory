@@ -2,6 +2,8 @@
 
 - Current data posture is source-referenced local working copies, not a fully normalized archival dataset package.
 - Laniakea, Cosmicflows-3, and Pioneer source records are pinned under `docs/data/external/...`, but raw tables, observer-frame metadata, preprocessing scripts, and upstream hashes are still open.
+- Provenance is now partially normalized rather than blank: Laniakea and Pioneer anomaly lanes are each missing only `original_file_name`, Cosmicflows still lacks `original_file_name` plus `subset_selection_rule`, and the thermal-recoil competitor lane is still fully absent.
+- `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `dependency_claim_gate.json` are workflow controls only. They do not count as raw evidence, source review, or successful residual validation.
 - The primary verifier is a visualization/provenance gate. It does not test a cosmological model fit, dark-matter replacement, Bullet Cluster wake model, or Pioneer-drag physics.
 - The galaxy-rotation branch must inherit the data, baseline, and uncertainty limits of `0.1_Galaxy_Rotation_Problem`; it cannot bootstrap stronger credibility from this topic alone.
 - The Pioneer branch lacks a thermal-recoil competitor baseline and full telemetry/residual source package.

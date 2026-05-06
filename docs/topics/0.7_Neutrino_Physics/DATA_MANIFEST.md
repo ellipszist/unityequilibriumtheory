@@ -24,6 +24,14 @@ Priority remediation:
 | Legacy PMNS snapshot | `Data/03_Research/pmns_2024.json` | Topic-local working copy | Legacy internal snapshot |
 | KATRIN mass limit snapshot | `Data/03_Research/katrin_mass.json` | Topic-local working copy | Legacy internal snapshot |
 
+## Workflow Gate Files
+
+| File | Role | Current status |
+| :-- | :-- | :-- |
+| `source_evidence_intake_stub.json` | provenance intake across neutrino branches | created by primary verifier |
+| `source_evidence_readiness_matrix.json` | tracks review-readiness by branch | NuFIT and KATRIN ready; derivation-heavy branches still blocked |
+| `branch_claim_gate.json` | lane-by-lane claim ceiling | 4 accepted benchmark branches, 2 blocked theory branches |
+
 ## Unit and benchmark roles
 
 | Dataset | Unit convention | Benchmark role |

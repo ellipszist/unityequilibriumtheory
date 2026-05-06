@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.18_Mathnicry",
+  "purpose": "Claim gate for theorem-inspired branches inside the topic.",
+  "summary": {
+    "branches_total": 6,
+    "accepted_now": 1,
+    "blocked_for_strong_claims": 5
+  },
+  "branches": [
+    {
+      "branch": "BSD surrogate demonstration",
+      "status": "accepted_run_contract_only",
+      "allowed_usage_now": "Internal surrogate artifact only.",
+      "blocker_to_stronger_claim": "Need real elliptic-curve rank or L-function benchmark data and non-surrogate computations."
+    },
+    {
+      "branch": "Riemann-style zero checks",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Library-driven numerical check only.",
+      "blocker_to_stronger_claim": "Need explicit zero table, precision manifest, and search-boundary statement."
+    },
+    {
+      "branch": "Grover or P-vs-NP scaling",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Quantum-search scaling sandbox only.",
+      "blocker_to_stronger_claim": "Need formal reductions, benchmark suite, and complexity-proof boundary."
+    },
+    {
+      "branch": "Collatz branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Bounded or heuristic exploration only.",
+      "blocker_to_stronger_claim": "Need bounded-search artifact, cleaned code path, and counterexample policy."
+    },
+    {
+      "branch": "Quantum engine integrity branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Engine sandbox only.",
+      "blocker_to_stronger_claim": "Need deterministic gate/state fixtures and acceptance tests."
+    },
+    {
+      "branch": "Hodge or other topology-style branches",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Symbolic or visual sandbox only.",
+      "blocker_to_stronger_claim": "Need theorem target, benchmark object class, and proof-boundary artifact."
+    }
+  ],
+  "claim_boundary": "This gate cannot raise claim strength above the current internal BSD surrogate run-contract evidence."
+}

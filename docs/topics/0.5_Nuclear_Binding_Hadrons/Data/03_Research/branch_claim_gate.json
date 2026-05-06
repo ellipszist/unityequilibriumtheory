@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.5_Nuclear_Binding_Hadrons",
+  "purpose": "Claim gate for separate nuclear, hadron, and QCD branches inside the topic.",
+  "summary": {
+    "branches_total": 6,
+    "accepted_now": 2,
+    "blocked_for_strong_claims": 4
+  },
+  "branches": [
+    {
+      "branch": "Heavy-nucleus binding subset branch",
+      "status": "accepted_run_contract_only",
+      "allowed_usage_now": "Source-backed heavy-nucleus subset benchmark for A >= 16 only.",
+      "blocker_to_stronger_claim": "Need clearer SEMF-versus-UET decomposition and broader validation before promoting to a general nuclear-binding claim."
+    },
+    {
+      "branch": "Proton radius benchmark branch",
+      "status": "accepted_benchmark_anchor_only",
+      "allowed_usage_now": "Benchmark-anchor compatibility check only.",
+      "blocker_to_stronger_claim": "Need a derived radius relation rather than an anchor-like returned value."
+    },
+    {
+      "branch": "Light nuclei branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Diagnostic/excluded lane only.",
+      "blocker_to_stronger_claim": "Need a dedicated light-nuclei verifier and source-backed treatment of empirical constants."
+    },
+    {
+      "branch": "Hadron mass branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Diagnostic hadron-model lane only.",
+      "blocker_to_stronger_claim": "Need source-locked quark/hadron inputs and a dedicated verifier artifact."
+    },
+    {
+      "branch": "QCD running branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Open diagnostic branch only.",
+      "blocker_to_stronger_claim": "Need source-backed QCD benchmarks and a fix for the alpha_s_uet_v2 data-shape bug."
+    },
+    {
+      "branch": "Confinement proof branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Not audit-grade at present.",
+      "blocker_to_stronger_claim": "Need a real pass/fail proof gate and a defensible derivation benchmark."
+    }
+  ],
+  "claim_boundary": "This gate cannot raise the topic above the current heavy-nucleus subset benchmark plus proton-radius anchor compatibility."
+}

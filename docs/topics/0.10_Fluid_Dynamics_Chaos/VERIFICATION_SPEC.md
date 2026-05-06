@@ -17,6 +17,10 @@
   - finite stress-test output
 - Artifact target:
   - `Result/artifacts/fluid_benchmark_validation.json`
+- Required workflow gates:
+  - `Data/03_Research/source_evidence_intake_stub.json`
+  - `Data/03_Research/source_evidence_readiness_matrix.json`
+  - `Data/03_Research/branch_claim_gate.json`
 - Interpretation:
   - `PASS` means the implementation beat the embedded simplified comparator under this
     declared configuration and finite-output stress gate.

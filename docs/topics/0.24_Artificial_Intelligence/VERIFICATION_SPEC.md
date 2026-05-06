@@ -13,6 +13,20 @@ python docs/topics/0.24_Artificial_Intelligence/Code/03_Research/Research_AI_Sca
 | `Data/03_Research/scaling_laws.json` | reference scaling exponents and critical scales |
 | `Data/GPT3_Scaling_Laws.csv` | small topic-local table for an independent log-log exponent fit |
 | `Data/03_Research/deepseek_moe_data.json` | dense/MoE architecture metadata for sparsity diagnostics |
+| `Data/03_Research/source_lock_manifest.json` | binds benchmark lanes to explicit working-copy source classes and unit conventions |
+
+## Generated workflow artifacts
+
+- `Data/03_Research/source_lock_manifest.json`
+- `Data/03_Research/source_evidence_intake_stub.json`
+- `Data/03_Research/source_evidence_readiness_matrix.json`
+- `Data/03_Research/model_claim_gate.json`
+
+## Current readiness snapshot
+
+- Scaling-law source package: `4/6` complete; missing DOI/arXiv/URL and retrieval date
+- GPT-style scaling table package: `5/6` complete; missing construction/retrieval date
+- Model architecture metadata package: `4/6` complete; missing public model-card URLs and retrieval date
 
 ## Metrics
 

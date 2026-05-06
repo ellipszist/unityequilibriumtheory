@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.23_Unity_Scale_Link",
+  "purpose": "Record which upstream core-topic artifacts and local calibration assumptions feed the current scale-link verifier.",
+  "dependency_chain": [
+    {
+      "topic": "0.13_Thermodynamic_Bridge",
+      "artifact": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/0_13_thermodynamic_bridge_verification.json",
+      "role": "Constrains beta and information-energy interpretation.",
+      "status_inheritance": "0.23 cannot outrank 0.13 while this dependency remains WARN.",
+      "claim_class_ceiling": "C/D"
+    },
+    {
+      "topic": "0.5_Nuclear_Binding_Hadrons",
+      "artifact": "docs/topics/0.5_Nuclear_Binding_Hadrons/Result/artifacts/0_5_nuclear_binding_hadrons_verification.json",
+      "role": "Provides nuclear-scale calibration context for kappa-running discussion and fixed-parameter falsification narrative.",
+      "status_inheritance": "Open formula-audit entries or calibration uncertainty in 0.5 propagate into 0.23 running-kappa claims.",
+      "claim_class_ceiling": "D"
+    },
+    {
+      "topic": "0.6_Electroweak_Physics",
+      "artifact": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/0_6_electroweak_physics_verification.json",
+      "role": "Provides electroweak-scale calibration context for beta discontinuity and cross-scale mismatch statements.",
+      "status_inheritance": "0.23 electroweak mismatch wording must stay consistent with 0.6 artifact scope.",
+      "claim_class_ceiling": "C/D"
+    },
+    {
+      "topic": "0.7_Neutrino_Physics",
+      "artifact": "docs/topics/0.7_Neutrino_Physics/Result/artifacts/nufit_6_0_validation.json",
+      "role": "Example of a source-locked core benchmark used as a dependency-policy comparator.",
+      "status_inheritance": "PASS benchmark gate does not by itself validate the scale-link mechanism.",
+      "claim_class_ceiling": "C"
+    }
+  ],
+  "local_assumptions": [
+    {
+      "name": "synthetic neural field generator",
+      "source": "Code/01_Engine/Engine_Unity_Scale.py",
+      "role": "Model-shape diagnostic only",
+      "status": "simulation_only"
+    },
+    {
+      "name": "synthetic galaxy field generator",
+      "source": "Code/01_Engine/Engine_Unity_Scale.py",
+      "role": "Model-shape diagnostic only",
+      "status": "simulation_only"
+    },
+    {
+      "name": "Yahoo-style finance CSV snapshots",
+      "source": "docs/data/external/finance/yahoo_snapshots/0_23_unity_scale_link/source_manifest.json",
+      "role": "Local source-referenced volatility comparison",
+      "status": "source_referenced_local_snapshot"
+    }
+  ],
+  "claim_boundary": "This manifest increases traceability but does not upgrade 0.23 beyond exploratory structural scale-link evidence."
+}

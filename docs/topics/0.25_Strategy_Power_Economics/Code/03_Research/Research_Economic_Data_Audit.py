@@ -27,6 +27,10 @@ ROOT = bootstrap_repo()
 TOPIC = ROOT / "docs" / "topics" / "0.25_Strategy_Power_Economics"
 DATA = TOPIC / "Data"
 ARTIFACT = TOPIC / "Result" / "artifacts" / "0_25_strategy_power_economics_verification.json"
+SOURCE_EVIDENCE_INTAKE = DATA / "03_Research" / "source_evidence_intake_stub.json"
+SOURCE_EVIDENCE_READINESS = DATA / "03_Research" / "source_evidence_readiness_matrix.json"
+MODEL_CLAIM_GATE = DATA / "03_Research" / "model_claim_gate.json"
+SOURCE_LOCK_MANIFEST = DATA / "03_Research" / "source_lock_manifest.json"
 
 
 def sha256(path: Path) -> str:
@@ -40,6 +44,19 @@ def sha256(path: Path) -> str:
 def load_json(path: Path) -> dict:
     with path.open("r", encoding="utf-8") as handle:
         return json.load(handle)
+
+
+def write_json(path: Path, payload: dict) -> dict:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
+    return payload
+
+
+def find_source_target(source_lock: dict, suffix: str) -> dict:
+    for item in source_lock.get("source_targets", []):
+        if item.get("local_path", "").endswith(suffix):
+            return item
+    return {}
 
 
 def load_yahoo_close(path: Path) -> list[dict]:
@@ -121,6 +138,193 @@ def economy_metrics(path: Path) -> dict:
     }
 
 
+def build_source_evidence_intake_stub() -> dict:
+    source_lock = load_json(SOURCE_LOCK_MANIFEST) if SOURCE_LOCK_MANIFEST.exists() else {}
+    shared_yahoo = source_lock.get("shared_external_reference", {})
+    sp500_lock = find_source_target(source_lock, "Data/03_Research/SP500_yahoo_real.csv")
+    gold_lock = find_source_target(source_lock, "Data/03_Research/Gold_yahoo_real.csv")
+    bitcoin_lock = find_source_target(source_lock, "Data/03_Research/Bitcoin_yahoo_real.csv")
+    economy_lock = find_source_target(source_lock, "Data/Global_Economy_2024.json")
+    snapshot_lock = find_source_target(source_lock, "Data/03_Research/daily_economic_snapshot.json")
+
+    provider_url = "https://finance.yahoo.com/"
+
+    payload = {
+        "schema_version": "1.0",
+        "topic": "0.25_Strategy_Power_Economics",
+        "purpose": "Structured intake stub for external-source evidence before economic data rewrites or stronger strategy/policy claims.",
+        "instructions": [
+            "Attach upstream URL or DOI, local archive path, retrieval date, and extraction note before changing a working-copy dataset.",
+            "Record unit convention and symbol or ticker identity for each market or macroeconomic source.",
+            "Do not treat this file as the evidence itself; it is an intake and tracking layer."
+        ],
+        "source_targets": [
+            {
+                "name": "SP500 Yahoo-style market download metadata",
+                "priority": "immediate",
+                "status": "partial",
+                "evidence_fields": [
+                    {"field": "ticker_or_symbol", "status": "complete", "value": sp500_lock.get("ticker", "^GSPC")},
+                    {"field": "upstream_url_or_query", "status": "complete", "value": provider_url},
+                    {"field": "local_path", "status": "complete", "value": sp500_lock.get("local_path", "")},
+                    {"field": "retrieval_date", "status": "pending", "value": ""},
+                    {"field": "unit_basis", "status": "complete", "value": sp500_lock.get("unit_system", "")},
+                    {"field": "extraction_note", "status": "complete", "value": sp500_lock.get("source_note", "")},
+                ],
+            },
+            {
+                "name": "Gold Yahoo-style market download metadata",
+                "priority": "immediate",
+                "status": "partial",
+                "evidence_fields": [
+                    {"field": "ticker_or_symbol", "status": "complete", "value": gold_lock.get("ticker", "GC=F")},
+                    {"field": "upstream_url_or_query", "status": "complete", "value": provider_url},
+                    {"field": "local_path", "status": "complete", "value": gold_lock.get("local_path", "")},
+                    {"field": "retrieval_date", "status": "pending", "value": ""},
+                    {"field": "unit_basis", "status": "complete", "value": gold_lock.get("unit_system", "")},
+                    {"field": "extraction_note", "status": "complete", "value": gold_lock.get("source_note", "")},
+                ],
+            },
+            {
+                "name": "Bitcoin Yahoo-style market download metadata",
+                "priority": "immediate",
+                "status": "partial",
+                "evidence_fields": [
+                    {"field": "ticker_or_symbol", "status": "complete", "value": bitcoin_lock.get("ticker", "BTC-USD")},
+                    {"field": "upstream_url_or_query", "status": "complete", "value": provider_url},
+                    {"field": "local_path", "status": "complete", "value": bitcoin_lock.get("local_path", "")},
+                    {"field": "retrieval_date", "status": "pending", "value": ""},
+                    {"field": "unit_basis", "status": "complete", "value": bitcoin_lock.get("unit_system", "")},
+                    {"field": "extraction_note", "status": "complete", "value": bitcoin_lock.get("source_note", "")},
+                ],
+            },
+            {
+                "name": "Global economy baseline source package",
+                "priority": "high",
+                "status": "partial",
+                "evidence_fields": [
+                    {"field": "world_bank_or_imf_url_or_doi", "status": "pending", "value": ""},
+                    {"field": "local_path", "status": "complete", "value": economy_lock.get("local_path", "")},
+                    {"field": "table_identifier", "status": "complete", "value": "Economies.World_Total, USA, China, Thailand, Norway, South_Africa"},
+                    {"field": "retrieval_date", "status": "pending", "value": ""},
+                    {"field": "unit_basis", "status": "complete", "value": economy_lock.get("unit_system", "")},
+                    {"field": "extraction_note", "status": "complete", "value": economy_lock.get("source_note", "")},
+                ],
+            },
+            {
+                "name": "Daily economic snapshot upstream feed",
+                "priority": "high",
+                "status": "partial",
+                "evidence_fields": [
+                    {"field": "upstream_url_or_api", "status": "pending", "value": ""},
+                    {"field": "local_path", "status": "complete", "value": snapshot_lock.get("local_path", "")},
+                    {"field": "snapshot_timestamp_basis", "status": "complete", "value": "topic-local date stamp in daily_economic_snapshot.json"},
+                    {"field": "indicator_mapping", "status": "complete", "value": "SET_INDEX points; GOLD_PRICE USD/oz; USD_THB THB; GDP_GROWTH_REALTIME percent"},
+                    {"field": "unit_basis", "status": "complete", "value": snapshot_lock.get("unit_system", "")},
+                    {"field": "extraction_note", "status": "complete", "value": snapshot_lock.get("source_note", "")},
+                ],
+            },
+        ],
+        "claim_boundary": (
+            "This intake stub is for source evidence capture only. Filling it does not by itself justify "
+            "strategic-superiority, policy-causality, or social-stabilization claim upgrades."
+        ),
+        "source_lock_dependencies": [target.get("local_path") for target in source_lock.get("source_targets", [])] + ([shared_yahoo.get("local_path")] if shared_yahoo.get("local_path") else []),
+    }
+    return write_json(SOURCE_EVIDENCE_INTAKE, payload)
+
+
+def build_source_evidence_readiness_matrix(intake_stub: dict) -> dict:
+    rows = []
+    ready = 0
+    blocked = 0
+    for target in intake_stub["source_targets"]:
+        pending_fields = [field["field"] for field in target["evidence_fields"] if field.get("status") != "complete"]
+        fields_total = len(target["evidence_fields"])
+        fields_complete = fields_total - len(pending_fields)
+        row_ready = not pending_fields
+        if row_ready:
+            ready += 1
+        else:
+            blocked += 1
+        rows.append(
+            {
+                "name": target["name"],
+                "priority": target["priority"],
+                "fields_total": fields_total,
+                "fields_complete": fields_complete,
+                "fields_pending": len(pending_fields),
+                "pending_fields": pending_fields,
+                "target_status": target.get("status", "pending"),
+                "ready_for_source_review": row_ready,
+                "blocking_reason": "" if row_ready else "One or more required evidence fields are still pending.",
+            }
+        )
+    payload = {
+        "schema_version": "1.0",
+        "topic": "0.25_Strategy_Power_Economics",
+        "purpose": "Readiness matrix for economic source evidence before data edits or claim upgrades.",
+        "summary": {
+            "source_targets_total": len(rows),
+            "targets_ready_for_source_review": ready,
+            "targets_blocked_by_pending_evidence": blocked,
+        },
+        "readiness_rows": rows,
+        "claim_boundary": (
+            "This matrix is a workflow gate only. A target marked ready still requires actual source review before "
+            "working-copy or claim changes."
+        ),
+    }
+    return write_json(SOURCE_EVIDENCE_READINESS, payload)
+
+
+def build_model_claim_gate() -> dict:
+    payload = {
+        "schema_version": "1.0",
+        "topic": "0.25_Strategy_Power_Economics",
+        "purpose": "Claim gate for diagnostic, simulation, and policy lanes inside the topic.",
+        "summary": {
+            "lanes_total": 5,
+            "accepted_now": 2,
+            "blocked_for_strong_claims": 3,
+        },
+        "lanes": [
+            {
+                "lane": "Market time-series diagnostics",
+                "status": "accepted_descriptive_only",
+                "allowed_usage_now": "Descriptive returns, volatility, and correlations from local working copies.",
+                "blocker_to_stronger_claim": "Need source-locked upstream download metadata and comparator baselines."
+            },
+            {
+                "lane": "Economy baseline sanity",
+                "status": "accepted_descriptive_only",
+                "allowed_usage_now": "Population, GDP PPP, and Gini range sanity from the local working copy.",
+                "blocker_to_stronger_claim": "Need source-locked macro tables and exact extraction lineage."
+            },
+            {
+                "lane": "Daily snapshot context",
+                "status": "blocked_for_strong_claims",
+                "allowed_usage_now": "Local context only.",
+                "blocker_to_stronger_claim": "Need upstream API/source record, timestamp basis, and indicator lineage."
+            },
+            {
+                "lane": "Social power engine and 8-billion resonance scripts",
+                "status": "blocked_for_strong_claims",
+                "allowed_usage_now": "Heuristic simulation proposal only.",
+                "blocker_to_stronger_claim": "Need seeded deterministic verifier, calibration target, and real-world benchmark linkage."
+            },
+            {
+                "lane": "Policy and strategic-superiority claims",
+                "status": "blocked_for_strong_claims",
+                "allowed_usage_now": "No superiority or causality claim.",
+                "blocker_to_stronger_claim": "Need counterfactual baseline, policy outcome data, uncertainty, and explicit causal design."
+            },
+        ],
+        "claim_boundary": "This gate cannot raise claim strength above descriptive diagnostics without new verifier-backed evidence.",
+    }
+    return write_json(MODEL_CLAIM_GATE, payload)
+
+
 def main() -> int:
     series = [
         series_metrics("SP500", DATA / "03_Research" / "SP500_yahoo_real.csv"),
@@ -130,6 +334,9 @@ def main() -> int:
     economy = economy_metrics(DATA / "Global_Economy_2024.json")
     snapshot_path = DATA / "03_Research" / "daily_economic_snapshot.json"
     snapshot = load_json(snapshot_path)
+    source_evidence_intake = build_source_evidence_intake_stub()
+    source_evidence_readiness = build_source_evidence_readiness_matrix(source_evidence_intake)
+    model_claim_gate = build_model_claim_gate()
 
     sp500 = next(item for item in series if item["name"] == "SP500")
     gold = next(item for item in series if item["name"] == "Gold")
@@ -209,10 +416,34 @@ def main() -> int:
                 "source": snapshot.get("source", "unspecified"),
                 "timestamp": snapshot.get("timestamp"),
             },
+            {
+                "name": "source_lock_manifest",
+                "path": str(SOURCE_LOCK_MANIFEST.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": sha256(SOURCE_LOCK_MANIFEST),
+                "source": "topic-derived economic source-lock manifest",
+            },
         ],
         "threshold": thresholds,
         "checks": checks,
         "blockers": blockers,
+        "source_evidence_intake_stub": {
+            "path": str(SOURCE_EVIDENCE_INTAKE.relative_to(ROOT)).replace("\\", "/"),
+            "sha256": sha256(SOURCE_EVIDENCE_INTAKE),
+            "source_targets": [item["name"] for item in source_evidence_intake["source_targets"]],
+            "claim_boundary": "This intake stub is for source evidence capture only. It does not authorize data or claim upgrades by itself.",
+        },
+        "source_evidence_readiness_matrix": {
+            "path": str(SOURCE_EVIDENCE_READINESS.relative_to(ROOT)).replace("\\", "/"),
+            "sha256": sha256(SOURCE_EVIDENCE_READINESS),
+            "summary": source_evidence_readiness["summary"],
+            "claim_boundary": "This readiness matrix is a workflow gate only. It tracks whether source evidence is still pending.",
+        },
+        "model_claim_gate": {
+            "path": str(MODEL_CLAIM_GATE.relative_to(ROOT)).replace("\\", "/"),
+            "sha256": sha256(MODEL_CLAIM_GATE),
+            "summary": model_claim_gate["summary"],
+            "claim_boundary": "This gate records diagnostic versus simulation claim ceilings only. It cannot upgrade the topic beyond descriptive evidence.",
+        },
         "market_metrics": series,
         "economy_metrics": economy,
         "correlations": correlations,

@@ -11,6 +11,15 @@
   - `docs/data/external/cosmology/laniakea/tully_2014/source_record.json`
   - `docs/data/external/cosmology/cosmicflows/cosmicflows3/source_record.json`
   - `docs/data/external/spacecraft/pioneer_anomaly/anderson_2002/source_record.json`
+- Generated workflow artifacts:
+  - `Data/03_Research/source_evidence_intake_stub.json`
+  - `Data/03_Research/source_evidence_readiness_matrix.json`
+  - `Data/03_Research/dependency_claim_gate.json`
+- Current readiness snapshot:
+  - Laniakea package: `5/6` complete; missing `original_file_name`
+  - Cosmicflows-3 subset package: `4/6` complete; missing `original_file_name` and `subset_selection_rule`
+  - Pioneer anomaly package: `5/6` complete; missing `original_file_name`
+  - Pioneer thermal-recoil competitor baseline: `0/6` complete
 - Baseline:
   - Topic-local Laniakea landmark working copy tied to a pinned Laniakea source record for primary visualization.
   - Cosmicflows and Pioneer files are hashed for provenance but are not used as numeric acceptance gates by the primary verifier.
@@ -28,4 +37,5 @@
   - Result/artifacts/0_26_cosmic_dynamic_frame_verification.json
 - Interpretation:
   - Treat output as an exploratory visualization/provenance artifact only.
+  - Treat source-evidence and dependency gate outputs as workflow controls, not as empirical validation.
   - Do not use this verifier to claim dark-matter replacement, toroidal cosmology, Pioneer-drag physics, or a full dynamic-cosmos model fit.

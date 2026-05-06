@@ -29,6 +29,9 @@ python docs/topics/0.12_Vacuum_Energy_Casimir/Code/03_Research/Research_Casimir.
 ## Artifact Target
 
 - `Result/artifacts/0_12_vacuum_energy_casimir_verification.json`
+- `Data/03_Research/source_evidence_intake_stub.json`
+- `Data/03_Research/source_evidence_readiness_matrix.json`
+- `Data/03_Research/branch_claim_gate.json`
 
 The artifact must record:
 
@@ -42,3 +45,4 @@ The artifact must record:
 ## Interpretation
 
 A PASS supports a Claim Class C internal benchmark for the sphere-plate Casimir force only. It does not validate `VAC-DARK-ENERGY-ANCHOR`, solve the cosmological-constant problem, or prove a Planck-scale vacuum cutoff.
+Topic-level source-evidence and branch-claim gates further limit this topic to benchmark and mechanism-diagnostic usage unless stronger bridge evidence is added.

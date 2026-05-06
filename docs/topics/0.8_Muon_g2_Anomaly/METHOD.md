@@ -15,6 +15,7 @@ This topic studies whether a UET-style correction term can numerically track the
 ### Research and comparison components
 - `Code/03_Research/Research_Muon_Anomaly.py`
 - `Code/03_Research/Research_Muon_Anomaly_2025.py`
+- `Code/03_Research/Research_Muon_Sensitivity_2025.py`
 
 ## Variable framing
 
@@ -23,6 +24,7 @@ This topic studies whether a UET-style correction term can numerically track the
 ## Assumptions
 
 - The primary benchmark package should now come from the source-locked 2025 experimental result and the source-locked Muon g-2 Theory Initiative 2025 total Standard-Model comparator.
+- The primary verifier also writes `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json` so benchmark compatibility stays separate from anomaly-closure ambitions.
 
 ## Domain of validity
 

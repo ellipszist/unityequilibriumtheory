@@ -29,6 +29,7 @@ This topic tests the implemented vacuum/Casimir engine against a measured sphere
 3. Evaluate the sphere-plate PFA formula plus finite-conductivity correction.
 4. Compute per-point relative error, average relative error, and maximum relative error.
 5. Write a schema `1.1` artifact with dataset hash, thresholds, metrics, and limitations.
+6. Write `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json` so Casimir benchmark compatibility stays separate from vacuum-energy bridge claims.
 
 ## Assumptions
 

@@ -66,26 +66,67 @@ class UETBatteryEngine(UETBaseSolver):
         E = self.E0_V - (R_GAS * temp_k / (1 * F_FARADAY)) * np.log(Q)
         return float(E)
 
-    def calculate_kinetic_limit(self, overpotential: float) -> float:
+    def calculate_kinetic_symmetry(self, c_rate: float, is_ald_coated: bool = True) -> Dict[str, float]:
         """
-        Butler-Volmer kinetics linked to UET Coherence.
-        j = j0 * sinh(alpha * n * F * eta / RT)
+        Calculates the Kinetic Symmetry between Anode (Silicon) and Cathode (High-Ni).
+        If the anode cannot absorb Li+ as fast as the cathode emits it, Li plating occurs.
         """
-        # Exchange current density (j0) is linked toInformational Loss (phi)
-        # Low phi (high quality crystal) = Low resistance = High j0
-        j0 = (1.0 / max(1e-4, self.params.phi_loss)) * 0.01 
+        # Base Exchange Current Densities (j0 in mA/cm2)
+        j0_cathode = 2.5 # High-Ni is fast
+        j0_anode_raw = 1.0 # Si/C composite is slower
         
-        # Reduced Butler-Volmer
-        f_const = F_FARADAY / (R_GAS * 298.15)
-        current = j0 * 2 * np.sinh(0.5 * f_const * overpotential)
-        return float(current)
+        # ALD SEI Layer Properties
+        # ALD creates a thin, highly conductive, uniform SEI.
+        # Traditional SEI is thick, resistive, and fractures.
+        if is_ald_coated:
+            sei_thickness_nm = 5.0
+            sei_conductivity = 1e-4 # S/cm (Engineered fast-ion conductor)
+            sei_fracture_rate = 0.01 # 1% degradation per 100 cycles
+        else:
+            sei_thickness_nm = 50.0
+            sei_conductivity = 1e-6 # S/cm (Organic/inorganic mush)
+            sei_fracture_rate = 0.15 # 15% degradation (Si expansion shatters it)
+            
+        # Resistance of SEI = d / sigma
+        # Note: units simplified for simulation scaling
+        r_sei = sei_thickness_nm / (sei_conductivity * 1e7) 
+        
+        # Effective Anode Kinetics (Suppressed by SEI resistance)
+        # J_eff = j0 / (1 + j0 * R_sei)
+        j0_anode_eff = j0_anode_raw / (1.0 + j0_anode_raw * r_sei)
+        
+        # Symmetry Ratio: Ideal is 1.0. < 1.0 means Anode is the bottleneck.
+        symmetry_ratio = j0_anode_eff / j0_cathode
+        
+        # Plating Risk Overpotential
+        # If running at high C-rate and symmetry is low, Li piles up on Anode.
+        applied_current = c_rate * 3.0 # mA/cm2 approx
+        overpotential_anode = applied_current * r_sei
+        
+        plating_risk = False
+        if overpotential_anode > 0.05 and symmetry_ratio < 0.8:
+            plating_risk = True # Li+ plates as metal instead of intercalating
+            
+        return {
+            "symmetry_ratio": symmetry_ratio,
+            "r_sei": r_sei,
+            "overpotential": overpotential_anode,
+            "li_plating_risk": plating_risk,
+            "degradation_rate": sei_fracture_rate * applied_current
+        }
 
-    def get_real_capacity(self, c_rate: float) -> float:
+    def get_real_capacity(self, cycles: int, is_ald_coated: bool = True) -> float:
         """
-        Axiom 7: Pattern Recurrence.
-        Practical capacity scales with the Screening Parameter (beta).
-        High beta = Better ion screening = more effective storage.
+        Capacity retention over cycles based on SEI stability.
+        Silicon expands 300%, cracking non-ALD SEI, consuming active Li+ to rebuild it.
         """
-        # Peukert's law effect linked to beta
-        efficiency = self.params.beta * np.exp(-c_rate * (1.0 - self.params.beta))
-        return self.capacity_theoretical * efficiency
+        kinetics = self.calculate_kinetic_symmetry(c_rate=1.0, is_ald_coated=is_ald_coated)
+        
+        # Active Lithium Loss per cycle
+        # Every time the SEI fractures, it permanently consumes Li+ to reform
+        li_loss_per_cycle = kinetics["degradation_rate"] * 0.02 
+        
+        retention = 1.0 - (li_loss_per_cycle * cycles)
+        retention = max(0.1, retention) # Minimum 10% capacity
+        
+        return self.capacity_theoretical * retention

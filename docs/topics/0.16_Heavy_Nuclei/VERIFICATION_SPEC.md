@@ -33,6 +33,9 @@ python docs/topics/0.16_Heavy_Nuclei/Code/03_Research/Research_Fission.py
 ## Artifact Target
 
 - `Result/artifacts/0_16_heavy_nuclei_verification.json`
+- `Data/03_Research/source_evidence_intake_stub.json`
+- `Data/03_Research/source_evidence_readiness_matrix.json`
+- `Data/03_Research/branch_claim_gate.json`
 
 The artifact must record:
 
@@ -44,3 +47,4 @@ The artifact must record:
 ## Interpretation
 
 The current artifact supports only an internal fission sanity-check claim. It does not validate the evaluated U-235 fission Q-value, the island of stability, or a first-principles UET nuclear binding theory.
+Topic-level source-evidence and branch-claim gates further limit this topic to checkpoint and sanity-diagnostic usage unless fragment and stability evidence is added.

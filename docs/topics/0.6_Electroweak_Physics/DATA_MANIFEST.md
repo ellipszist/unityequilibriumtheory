@@ -25,6 +25,14 @@ Priority remediation:
 | Legacy electroweak CSV snapshot | `Data/Electroweak_LEP.csv` | Topic-local working copy | Legacy local snapshot |
 | Legacy downloader | `Data/Download_Electroweak.py` | Topic-local helper | Legacy acquisition helper |
 
+## Workflow Gate Files
+
+| File | Role | Current status |
+| :-- | :-- | :-- |
+| `source_evidence_intake_stub.json` | provenance intake queue across electroweak branches | created by both primary verifiers |
+| `source_evidence_readiness_matrix.json` | tracks review-readiness by branch | PDG core ready; other lanes still caveated or blocked |
+| `branch_claim_gate.json` | lane-by-lane claim ceiling | 3 accepted benchmark branches, 3 blocked theory branches |
+
 Repository note:
 
 - Topic `0.6` now reads a structured electroweak reference package rather than carrying the weak-mixing-angle note inline in the verifier.

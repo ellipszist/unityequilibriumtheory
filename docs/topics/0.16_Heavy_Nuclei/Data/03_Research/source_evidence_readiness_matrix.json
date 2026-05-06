@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.16_Heavy_Nuclei",
+  "purpose": "Readiness matrix for source-evidence review across heavy-nuclei binding and fission branches.",
+  "summary": {
+    "source_targets_total": 5,
+    "targets_ready_for_source_review": 1,
+    "targets_blocked_by_pending_evidence": 4
+  },
+  "readiness_rows": [
+    {
+      "name": "AME2020 U-235 checkpoint package",
+      "priority": "immediate",
+      "fields_total": 6,
+      "fields_complete": 5,
+      "fields_pending": 1,
+      "pending_fields": [
+        "upstream_archive_freeze"
+      ],
+      "ready_for_source_review": true,
+      "blocking_reason": null
+    },
+    {
+      "name": "Source-locked fragment mass package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 0,
+      "fields_pending": 6,
+      "pending_fields": [
+        "ba141_source_row",
+        "kr92_source_row",
+        "fragment_mass_or_binding_fields",
+        "unit_basis",
+        "artifact_path",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "Ba-141 and Kr-92 fragment masses are not source-locked in the current verifier."
+    },
+    {
+      "name": "Evaluated fission energy baseline package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 0,
+      "fields_pending": 6,
+      "pending_fields": [
+        "evaluated_q_value_source",
+        "uncertainty_field",
+        "comparison_artifact",
+        "observable_scope",
+        "unit_basis",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The current verifier has no evaluated fission Q-value baseline beyond an exothermic sanity range."
+    },
+    {
+      "name": "Heavy-binding subset benchmark package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 3,
+      "fields_pending": 3,
+      "pending_fields": [
+        "artifact_rows",
+        "threshold_policy",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The heavy-binding subset exists as a secondary lane but is not yet promoted into primary artifact rows."
+    },
+    {
+      "name": "Stability valley and island-of-stability package",
+      "priority": "medium",
+      "fields_total": 6,
+      "fields_complete": 0,
+      "fields_pending": 6,
+      "pending_fields": [
+        "shell_correction_package",
+        "decay_or_half_life_data",
+        "stability_artifact",
+        "cross_topic_dependency_map",
+        "observable_scope",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "There is no source-backed stability or half-life package for island-of-stability claims."
+    }
+  ],
+  "claim_boundary": "A ready row has enough provenance structure for source review. It does not by itself upgrade heavy-nuclei or stability claims."
+}

@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.15_Cluster_Dynamics",
+  "purpose": "Readiness matrix for source-evidence review across cluster-dynamics benchmark and theory branches.",
+  "summary": {
+    "source_targets_total": 5,
+    "targets_ready_for_source_review": 0,
+    "targets_blocked_by_pending_evidence": 5
+  },
+  "readiness_rows": [
+    {
+      "name": "Bullet Cluster offset benchmark package",
+      "priority": "immediate",
+      "fields_total": 6,
+      "fields_complete": 4,
+      "fields_pending": 2,
+      "pending_fields": [
+        "upstream_url_or_doi",
+        "transcription_note"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The Bullet Cluster working copy has a real source label, but archival pointer and transcription audit are not yet frozen."
+    },
+    {
+      "name": "Bullet Cluster dimensional calibration package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 1,
+      "fields_pending": 5,
+      "pending_fields": [
+        "ra_dec_to_kpc_method",
+        "offset_magnitude_gate",
+        "calibration_artifact_path",
+        "geometry_scope",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The current verifier checks only separation sign and has no calibrated kpc magnitude model."
+    },
+    {
+      "name": "Virial and mass-temperature benchmark package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 3,
+      "fields_pending": 3,
+      "pending_fields": [
+        "upstream_source_package",
+        "artifact_paths",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "Secondary virial and mass-temperature datasets exist but are not yet primary-gated with dedicated artifacts."
+    },
+    {
+      "name": "Information-halo grid engine package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 2,
+      "fields_pending": 4,
+      "pending_fields": [
+        "unit_mapping_note",
+        "lensing_comparison_artifact",
+        "grid_parameter_policy",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The information-halo engine remains a model-unit diagnostic without physical lensing calibration."
+    },
+    {
+      "name": "Cluster dark-matter replacement package",
+      "priority": "medium",
+      "fields_total": 6,
+      "fields_complete": 0,
+      "fields_pending": 6,
+      "pending_fields": [
+        "multi_cluster_held_out_suite",
+        "lensing_map_comparison",
+        "virial_bridge_sensitivity",
+        "cross_topic_dependency_map",
+        "artifact_path",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "There is no held-out multi-cluster package or lensing-map comparison that would support a dark-matter replacement claim."
+    }
+  ],
+  "claim_boundary": "A ready row has enough provenance structure for source review. It does not by itself upgrade cluster or dark-matter claims."
+}

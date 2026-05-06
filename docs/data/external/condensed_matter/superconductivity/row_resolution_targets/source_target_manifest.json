@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_source_target_manifest",
+  "source_role": "row-level evidence acquisition targets for unresolved superconductivity benchmark rows",
+  "source_label": "Superconductivity row-resolution external target manifest",
+  "checked_date": "2026-05-06",
+  "benchmark_role": "pins the next external-source acquisition targets for Vanadium, Nb3Sn, and Nb3Ge before any working-copy row patch",
+  "repository_use": [
+    "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/source_lock_manifest.json",
+    "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/row_evidence_execution_queue.json",
+    "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/row_evidence_source_review_packets.json",
+    "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/row_evidence_decision_gate.json",
+    "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/source_evidence_intake_stub.json",
+    "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/source_evidence_readiness_matrix.json",
+    "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/external_acquisition_queue.json",
+    "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/topic_handoff_gate.json",
+    "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium/archive_dossier.json",
+    "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn/archive_dossier.json",
+    "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3ge/archive_dossier.json",
+    "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/candidate_local_source_anchors.json"
+  ],
+  "targets": [
+    {
+      "material": "Vanadium (V)",
+      "priority": "immediate",
+      "expected_source_family": "MIT Junior Lab citation chain or compatible literature row",
+      "current_working_copy_label": "MIT Junior Lab",
+      "required_fields": [
+        "Tc_observed",
+        "Theta_D_K",
+        "lambda_ep",
+        "mu_star"
+      ],
+      "required_decisions": [
+        "lock one Tc row identity",
+        "confirm Theta_D_K as active phonon proxy or replace with explicit alternative",
+        "confirm lambda_ep uses the same proxy convention",
+        "declare whether mu_star remains a working convention"
+      ],
+      "archive_status": "not_yet_archived_in_repo"
+    },
+    {
+      "material": "Nb3Sn",
+      "priority": "high",
+      "expected_source_family": "Matthias 1954 citation chain or compatible A15 literature row",
+      "current_working_copy_label": "Matthias 1954",
+      "required_fields": [
+        "Tc_observed",
+        "Theta_D_K_or_omega_log_K",
+        "lambda_ep",
+        "mu_star"
+      ],
+      "required_decisions": [
+        "lock one Tc row identity",
+        "select source-backed phonon proxy convention",
+        "confirm lambda_ep under the same convention",
+        "declare whether mu_star is row-specific or family-level"
+      ],
+      "archive_status": "not_yet_archived_in_repo"
+    },
+    {
+      "material": "Nb3Ge",
+      "priority": "high",
+      "expected_source_family": "Gavaler 1973 citation chain or compatible A15 literature row",
+      "current_working_copy_label": "Gavaler 1973",
+      "required_fields": [
+        "Tc_observed",
+        "Theta_D_K_or_omega_log_K",
+        "lambda_ep",
+        "mu_star"
+      ],
+      "required_decisions": [
+        "lock one Tc row identity",
+        "select source-backed phonon proxy convention",
+        "confirm lambda_ep under the same convention",
+        "declare whether mu_star is row-specific or family-level"
+      ],
+      "archive_status": "not_yet_archived_in_repo"
+    }
+  ],
+  "limitations": [
+    "This manifest pins acquisition targets only; it is not an archived raw dataset.",
+    "No row in this manifest is source-complete until a real table, figure, or literature row is mirrored or transcribed with locator and units."
+  ]
+}

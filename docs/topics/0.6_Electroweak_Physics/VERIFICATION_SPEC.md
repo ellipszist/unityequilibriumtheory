@@ -27,6 +27,11 @@
 - Artifact target:
   - `Result/artifacts/electroweak_pdg_validation.json`
   - `Result/artifacts/electroweak_expanded_benchmark.json`
+- Required workflow gates:
+  - `Data/03_Research/source_evidence_intake_stub.json`
+  - `Data/03_Research/source_evidence_readiness_matrix.json`
+  - `Data/03_Research/branch_claim_gate.json`
 - Interpretation:
   - Treat output as a provenance-aware electroweak comparison against PDG 2025 plus an explicit checked-local neutron-lifetime layer. It still does not certify a full gauge-theory derivation or a complete Standard-Model replacement.
   - Latest rerun recorded PASS for both primary artifacts and preserved the running-angle layer as diagnostic-only.
+  - The workflow gates must preserve the distinction between accepted source-backed mass benchmarks, accepted-with-caveat weak-angle and Fermi checks, accepted secondary neutron checks, and blocked theory-closure branches.

@@ -4,6 +4,10 @@
   diagnostics.
 - Upstream provenance remains incomplete for the World Bank/IMF economy baseline,
   Yahoo-style market CSVs, and daily economic snapshot.
+- Provenance is now partially normalized rather than blank: each market lane is blocked only by missing retrieval date, the economy baseline still lacks upstream URL/DOI plus retrieval date, and the daily snapshot still lacks an upstream URL/API description.
+- `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`,
+  `source_lock_manifest.json`, and `model_claim_gate.json` are workflow controls only. They do not count as
+  upstream evidence, causal identification, or policy validation.
 - The old 8-billion resonance artifact was only a run-contract artifact and did
   not provide a valid PASS for inequality reduction.
 - Market returns, volatility, and correlations are descriptive statistics, not

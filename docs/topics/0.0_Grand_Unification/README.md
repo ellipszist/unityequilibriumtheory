@@ -16,6 +16,7 @@ This topic coordinates selected component engines from core topics and records a
 - Current verifier: `Code/03_Research/Verify_Omni.py`.
 - Current artifact: `Result/artifacts/0_0_grand_unification_verification.json`.
 - Data posture: integration artifact dependency manifest; metrics and evidence status are delegated from subordinate topics.
+- Governance workflow: `Data/03_Research/source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json`.
 
 ## Evidence Boundary
 
@@ -24,6 +25,7 @@ The repository can currently support conservative statements such as:
 - The Omni verifier runs selected component engines and records their metrics.
 - The dashboard can compare beta sensitivity for selected branches and record subordinate artifact PASS/WARN/FAIL status.
 - Integration output is useful for dependency mapping and limitation inheritance.
+- Integration governance now normalizes subordinate artifact status and claim-class capture before theory-facing interpretation.
 
 The current evidence package does not establish a Theory of Everything, a proof of GR/QM unification, a derivation of all universal constants, or closure of still-open subordinate-topic blockers.
 
@@ -49,6 +51,9 @@ Each component metric must be interpreted through that topic's own `DATA_MANIFES
 - `VERIFICATION_SPEC.md`: primary verifier command and artifact contract.
 - `METHOD.md`: integration method and excluded cases.
 - `LIMITATIONS.md`: limitation inheritance policy.
+- `Data/03_Research/source_evidence_intake_stub.json`: dependency-governance intake.
+- `Data/03_Research/source_evidence_readiness_matrix.json`: readiness gate for integration evidence.
+- `Data/03_Research/branch_claim_gate.json`: branch-level claim ceiling for integration versus closure claims.
 - `Code/03_Research/Verify_Omni.py`: primary integration verifier.
 
 ## Verification

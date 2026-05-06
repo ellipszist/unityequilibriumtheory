@@ -22,7 +22,11 @@
   - the script must write a machine-readable artifact under `Result/artifacts/`
 - Artifact target:
   - Result/artifacts/0_2_black_hole_physics_verification.json
+  - Data/03_Research/source_evidence_intake_stub.json
+  - Data/03_Research/source_evidence_readiness_matrix.json
+  - Data/03_Research/branch_claim_gate.json
 - Interpretation:
   - Treat output as an internal EHT shadow benchmark artifact only.
   - The primary gate does not prove singularity resolution or a replacement for GR.
   - The CCBH path is not a primary verifier until Shen/Kormendy upstream data is stored under `docs/data/external/...` with hashes and preprocessing notes.
+  - Topic-level source-evidence and branch-claim gates further limit this topic to EHT benchmark and comparator usage unless stronger black-hole artifacts are added.

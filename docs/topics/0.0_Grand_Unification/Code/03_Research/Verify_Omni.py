@@ -33,6 +33,9 @@ if not ROOT:
 TOPIC_DIR = ROOT / "docs" / "topics" / "0.0_Grand_Unification"
 ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_0_grand_unification_verification.json"
 DEPENDENCY_MANIFEST_PATH = TOPIC_DIR / "Data" / "03_Research" / "integration_dependency_manifest.json"
+SOURCE_EVIDENCE_INTAKE_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_intake_stub.json"
+SOURCE_EVIDENCE_READINESS_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_readiness_matrix.json"
+BRANCH_CLAIM_GATE_PATH = TOPIC_DIR / "Data" / "03_Research" / "branch_claim_gate.json"
 
 engine_dir = TOPIC_DIR / "Code" / "01_Engine"
 if str(engine_dir) not in sys.path:
@@ -76,6 +79,285 @@ def _read_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _write_json(path: Path, payload: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+def _normalize_status(artifact: dict) -> str:
+    status_map = {
+        "PASS": "PASS",
+        "WARN": "WARN",
+        "WARNING": "WARN",
+        "FAIL": "FAIL",
+        "FAILED": "FAIL",
+        "ERROR": "FAIL",
+        "RAN": "WARN",
+        "COMPLETED": "WARN",
+    }
+    candidates = [
+        artifact.get("status"),
+        artifact.get("results", {}).get("status") if isinstance(artifact.get("results"), dict) else None,
+        artifact.get("run_status"),
+    ]
+    for value in candidates:
+        if isinstance(value, str) and value.strip():
+            normalized = value.strip().upper()
+            return status_map.get(normalized, normalized)
+    if artifact.get("passed_run_contract") is True:
+        return "PASS"
+    return "UNKNOWN"
+
+
+def _normalize_claim_class(artifact: dict):
+    candidates = [
+        artifact.get("claim_class"),
+        artifact.get("results", {}).get("claim_class") if isinstance(artifact.get("results"), dict) else None,
+    ]
+    for value in candidates:
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+    claim_boundary = artifact.get("claim_boundary")
+    if isinstance(claim_boundary, str) and claim_boundary.strip():
+        if "run-contract" in claim_boundary.lower():
+            return "D - run-contract only"
+        if "internal benchmark" in claim_boundary.lower():
+            return "C - internal benchmark"
+    return None
+
+
+def _normalize_timestamp(artifact: dict):
+    candidates = [
+        artifact.get("timestamp_utc"),
+        artifact.get("generated_at_utc"),
+        artifact.get("timestamp"),
+    ]
+    for value in candidates:
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+    return None
+
+
+def _build_source_evidence_intake_stub() -> dict:
+    return {
+        "schema_version": "1.0",
+        "topic": "0.0_Grand_Unification",
+        "purpose": "Source evidence intake before upgrading claims across the integration manifest and dependency-governance branches.",
+        "source_targets": [
+            {
+                "name": "Integration dependency manifest package",
+                "priority": "immediate",
+                "status_hint": "manifest_present_but_partial_scope",
+                "evidence_entries": [
+                    "manifest_path",
+                    "dependency_scope_note",
+                    "metric_bridge_map",
+                    "claim_boundary_note",
+                    "hash_lock",
+                    "upgrade_requirement",
+                ],
+            },
+            {
+                "name": "Subordinate artifact identity package",
+                "priority": "immediate",
+                "status_hint": "mixed_subordinate_statuses",
+                "evidence_entries": [
+                    "artifact_paths",
+                    "status_normalization_rule",
+                    "claim_class_capture",
+                    "timestamp_capture",
+                    "hash_lock",
+                    "upgrade_requirement",
+                ],
+            },
+            {
+                "name": "Core-topic coverage expansion package",
+                "priority": "high",
+                "status_hint": "partial_core_scope_only",
+                "evidence_entries": [
+                    "missing_core_topics_list",
+                    "expanded_manifest_path",
+                    "dependency_policy",
+                    "metric_bridge_map",
+                    "artifact_inventory",
+                    "upgrade_requirement",
+                ],
+            },
+            {
+                "name": "Paper-readiness gate package",
+                "priority": "high",
+                "status_hint": "not_yet_closed",
+                "evidence_entries": [
+                    "warn_fail_block_rule",
+                    "source_incomplete_block_rule",
+                    "open_formula_block_rule",
+                    "derived_claim_class_rule",
+                    "artifact_path",
+                    "upgrade_requirement",
+                ],
+            },
+            {
+                "name": "Grand-unification closure package",
+                "priority": "medium",
+                "status_hint": "blocked_theory_branch",
+                "evidence_entries": [
+                    "all_core_topics_manifested_and_verified",
+                    "dependency_closure_artifact",
+                    "cross_topic_formula_map",
+                    "unit_consistency_proof",
+                    "artifact_path",
+                    "upgrade_requirement",
+                ],
+            },
+        ],
+        "claim_boundary": "This intake stub organizes dependency-governance work only. It does not itself prove grand unification.",
+    }
+
+
+def _build_source_evidence_readiness_matrix(dependency_artifacts: list[dict]) -> dict:
+    warn_or_unknown = [
+        item for item in dependency_artifacts if item.get("status") in {"WARN", "UNKNOWN", "MISSING"}
+    ]
+    rows = [
+        {
+            "name": "Integration dependency manifest package",
+            "priority": "immediate",
+            "fields_total": 6,
+            "fields_complete": 5,
+            "fields_pending": 1,
+            "pending_fields": ["full_core_scope_0_1_to_0_26"],
+            "ready_for_source_review": True,
+            "blocking_reason": None,
+        },
+        {
+            "name": "Subordinate artifact identity package",
+            "priority": "immediate",
+            "fields_total": 6,
+            "fields_complete": 5,
+            "fields_pending": 1,
+            "pending_fields": ["all_dependencies_pass"],
+            "ready_for_source_review": True,
+            "blocking_reason": None,
+        },
+        {
+            "name": "Core-topic coverage expansion package",
+            "priority": "high",
+            "fields_total": 6,
+            "fields_complete": 2,
+            "fields_pending": 4,
+            "pending_fields": [
+                "missing_core_topics_list",
+                "expanded_manifest_path",
+                "artifact_inventory",
+                "upgrade_requirement",
+            ],
+            "ready_for_source_review": False,
+            "blocking_reason": "The current manifest covers only selected dependencies, not the full `0.1-0.26` core scope.",
+        },
+        {
+            "name": "Paper-readiness gate package",
+            "priority": "high",
+            "fields_total": 6,
+            "fields_complete": 3,
+            "fields_pending": 3,
+            "pending_fields": [
+                "source_incomplete_block_rule",
+                "open_formula_block_rule",
+                "derived_claim_class_rule",
+            ],
+            "ready_for_source_review": False,
+            "blocking_reason": "Dependency governance exists, but the integration topic still lacks a complete paper-readiness closure gate.",
+        },
+        {
+            "name": "Grand-unification closure package",
+            "priority": "medium",
+            "fields_total": 6,
+            "fields_complete": 0,
+            "fields_pending": 6,
+            "pending_fields": [
+                "all_core_topics_manifested_and_verified",
+                "dependency_closure_artifact",
+                "cross_topic_formula_map",
+                "unit_consistency_proof",
+                "artifact_path",
+                "upgrade_requirement",
+            ],
+            "ready_for_source_review": False,
+            "blocking_reason": "The repo still has subordinate WARN/UNKNOWN dependencies and one FAIL artifact outside the selected manifest path.",
+        },
+    ]
+    ready_count = sum(1 for row in rows if row["ready_for_source_review"])
+    return {
+        "schema_version": "1.0",
+        "topic": "0.0_Grand_Unification",
+        "purpose": "Readiness matrix for source-evidence review across integration and closure branches.",
+        "summary": {
+            "source_targets_total": len(rows),
+            "targets_ready_for_source_review": ready_count,
+            "targets_blocked_by_pending_evidence": len(rows) - ready_count,
+            "dependencies_warn_or_unknown": len(warn_or_unknown),
+        },
+        "readiness_rows": rows,
+        "claim_boundary": "A ready row has enough provenance structure for source review. It does not by itself upgrade unification claims.",
+    }
+
+
+def _build_branch_claim_gate(dependency_artifacts: list[dict]) -> dict:
+    warn_count = sum(1 for item in dependency_artifacts if item.get("status") == "WARN")
+    unknown_count = sum(1 for item in dependency_artifacts if item.get("status") in {"UNKNOWN", "MISSING"})
+    return {
+        "schema_version": "1.0",
+        "topic": "0.0_Grand_Unification",
+        "purpose": "Claim gate for separate integration and closure branches inside the topic.",
+        "summary": {
+            "branches_total": 6,
+            "accepted_now": 2,
+            "blocked_for_strong_claims": 4,
+            "dependency_warn_count": warn_count,
+            "dependency_unknown_count": unknown_count,
+        },
+        "branches": [
+            {
+                "branch": "Integration run-contract branch",
+                "status": "accepted_integration_branch",
+                "allowed_usage_now": "Accepted branch for selected-engine orchestration and dashboard execution.",
+                "blocker_to_stronger_claim": "Running the dashboard does not elevate subordinate evidence classes.",
+            },
+            {
+                "branch": "Dependency-status dashboard branch",
+                "status": "accepted_governance_branch",
+                "allowed_usage_now": "Accepted branch for recording subordinate artifact identity, status, claim class, and limitation inheritance.",
+                "blocker_to_stronger_claim": "Dependency governance does not close the underlying scientific gaps.",
+            },
+            {
+                "branch": "Full core-topic integration branch",
+                "status": "blocked_for_strong_claims",
+                "allowed_usage_now": "Partial selected-core integration only.",
+                "blocker_to_stronger_claim": "Need manifest coverage across all intended core topics and bridges.",
+            },
+            {
+                "branch": "Paper-readiness branch",
+                "status": "blocked_for_strong_claims",
+                "allowed_usage_now": "Not supported by current evidence.",
+                "blocker_to_stronger_claim": "Need every dependency aligned on data, formulas, verifier, and limitations with no unresolved closure blockers.",
+            },
+            {
+                "branch": "Unified-parameter closure branch",
+                "status": "blocked_for_strong_claims",
+                "allowed_usage_now": "Not supported by current evidence.",
+                "blocker_to_stronger_claim": "Need cross-topic formula and unit closure beyond the current dashboard metrics.",
+            },
+            {
+                "branch": "Grand-unification theory claims",
+                "status": "blocked_for_strong_claims",
+                "allowed_usage_now": "Not supported by current evidence.",
+                "blocker_to_stronger_claim": "Subordinate WARN/UNKNOWN blockers and out-of-scope core failures prevent theory-level promotion.",
+            },
+        ],
+        "claim_boundary": "This gate keeps the topic at integration-index and governance status, not grand-unification closure.",
+    }
+
+
 def _dependency_inputs():
     inputs = []
     dependencies = []
@@ -110,12 +392,15 @@ def _dependency_inputs():
         }
         if artifact_path.exists():
             artifact = _read_json(artifact_path)
+            normalized_status = _normalize_status(artifact)
+            normalized_claim_class = _normalize_claim_class(artifact)
+            normalized_timestamp = _normalize_timestamp(artifact)
             record.update(
                 {
-                    "status": artifact.get("status", "UNKNOWN"),
-                    "claim_class": artifact.get("claim_class"),
+                    "status": normalized_status,
+                    "claim_class": normalized_claim_class,
                     "schema_version": artifact.get("schema_version"),
-                    "timestamp_utc": artifact.get("timestamp_utc"),
+                    "timestamp_utc": normalized_timestamp,
                     "sha256": _sha256(artifact_path),
                     "bytes": artifact_path.stat().st_size,
                 }
@@ -126,7 +411,7 @@ def _dependency_inputs():
                     "bytes": artifact_path.stat().st_size,
                     "sha256": record["sha256"],
                     "provenance_role": "subordinate_artifact",
-                    "status": record["status"],
+                    "status": normalized_status,
                 }
             )
         else:
@@ -169,6 +454,32 @@ def write_verification_artifact(result):
         ),
         "results": result,
     }
+    artifact["source_evidence_intake_stub"] = {
+        "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
+        "sha256": hashlib.sha256(
+            json.dumps(result["source_evidence_intake_stub_payload"], sort_keys=True).encode("utf-8")
+        ).hexdigest(),
+        "source_targets": [
+            row["name"] for row in result["source_evidence_intake_stub_payload"]["source_targets"]
+        ],
+        "claim_boundary": result["source_evidence_intake_stub_payload"]["claim_boundary"],
+    }
+    artifact["source_evidence_readiness_matrix"] = {
+        "path": str(SOURCE_EVIDENCE_READINESS_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
+        "sha256": hashlib.sha256(
+            json.dumps(result["source_evidence_readiness_matrix_payload"], sort_keys=True).encode("utf-8")
+        ).hexdigest(),
+        "summary": result["source_evidence_readiness_matrix_payload"]["summary"],
+        "claim_boundary": result["source_evidence_readiness_matrix_payload"]["claim_boundary"],
+    }
+    artifact["branch_claim_gate"] = {
+        "path": str(BRANCH_CLAIM_GATE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
+        "sha256": hashlib.sha256(
+            json.dumps(result["branch_claim_gate_payload"], sort_keys=True).encode("utf-8")
+        ).hexdigest(),
+        "summary": result["branch_claim_gate_payload"]["summary"],
+        "claim_boundary": result["branch_claim_gate_payload"]["claim_boundary"],
+    }
     ARTIFACT_PATH.write_text(json.dumps(artifact, indent=2), encoding="utf-8")
     print(f"Artifact saved: {ARTIFACT_PATH}")
 
@@ -205,6 +516,12 @@ def run_verification():
     )
 
     input_hashes, dependency_artifacts = _dependency_inputs()
+    source_evidence_intake_stub = _build_source_evidence_intake_stub()
+    source_evidence_readiness_matrix = _build_source_evidence_readiness_matrix(dependency_artifacts)
+    branch_claim_gate = _build_branch_claim_gate(dependency_artifacts)
+    _write_json(SOURCE_EVIDENCE_INTAKE_PATH, source_evidence_intake_stub)
+    _write_json(SOURCE_EVIDENCE_READINESS_PATH, source_evidence_readiness_matrix)
+    _write_json(BRANCH_CLAIM_GATE_PATH, branch_claim_gate)
     dependency_statuses = [item.get("status") for item in dependency_artifacts]
     missing_dependencies = [item for item in dependency_artifacts if item.get("missing")]
     dependency_failures = [item for item in dependency_artifacts if item.get("status") == "FAIL"]
@@ -246,6 +563,9 @@ def run_verification():
             "reynolds_shift_beta_1_0_to_0_1": float(
                 state_chaos.reynolds_critical - state_std.reynolds_critical
             ),
+            "source_targets_ready_for_review": source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
+            "source_targets_blocked": source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
+            "accepted_claim_branches": branch_claim_gate["summary"]["accepted_now"],
         },
         "dependency_summary": {
             "statuses": dependency_statuses,
@@ -259,6 +579,9 @@ def run_verification():
             "This integration check owns an artifact-dependency manifest, not raw scientific data.",
             "Component outputs may use benchmark-fed or heuristic branches documented in their own topics.",
         ],
+        "source_evidence_intake_stub_payload": source_evidence_intake_stub,
+        "source_evidence_readiness_matrix_payload": source_evidence_readiness_matrix,
+        "branch_claim_gate_payload": branch_claim_gate,
     }
     write_verification_artifact(result)
     print("\nFINAL STATUS: OMNI-ENGINE INTEGRATION CHECK COMPLETE")

@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.20_Atomic_Physics",
+  "purpose": "Claim gate for separate atomic-physics branches inside the topic.",
+  "summary": {
+    "branches_total": 6,
+    "accepted_now": 2,
+    "blocked_for_strong_claims": 4
+  },
+  "branches": [
+    {
+      "branch": "Hydrogen Rydberg benchmark branch",
+      "status": "accepted_source_backed_benchmark_branch",
+      "allowed_usage_now": "Accepted hydrogen-spectrum benchmark branch using the standard Rydberg relation with source-backed NIST/CODATA working copies.",
+      "blocker_to_stronger_claim": "Need a first-principles derivation before promoting beyond a benchmark branch."
+    },
+    {
+      "branch": "Hydrogen constant-consistency branch",
+      "status": "accepted_constant_checkpoint_branch",
+      "allowed_usage_now": "Accepted atomic-constant consistency branch for `R_H` and related hydrogen residual checks.",
+      "blocker_to_stronger_claim": "Constant consistency does not independently validate atomic theory or UET derivation."
+    },
+    {
+      "branch": "Hydrogen level-energy branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Secondary lane only.",
+      "blocker_to_stronger_claim": "Need a dedicated level-energy artifact with threshold policy."
+    },
+    {
+      "branch": "Fine-structure and Lamb-shift branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Not supported by current evidence.",
+      "blocker_to_stronger_claim": "Need source-backed precision datasets and dedicated residual artifacts."
+    },
+    {
+      "branch": "Helium and many-electron branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Not supported by current evidence.",
+      "blocker_to_stronger_claim": "Need dedicated helium and many-electron datasets plus artifacts."
+    },
+    {
+      "branch": "First-principles UET atomic theory claims",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Not supported by current evidence.",
+      "blocker_to_stronger_claim": "Need derivation and validation beyond the standard hydrogen Rydberg benchmark."
+    }
+  ],
+  "claim_boundary": "This gate keeps the topic at hydrogen benchmark status, not full atomic-theory closure."
+}

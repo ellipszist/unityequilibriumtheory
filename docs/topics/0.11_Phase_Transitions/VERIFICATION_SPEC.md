@@ -16,6 +16,10 @@
   - the script must write a machine-readable artifact under `Result/artifacts/`
 - Artifact target:
   - Result/artifacts/0_11_phase_transitions_verification.json
+  - Data/03_Research/source_evidence_intake_stub.json
+  - Data/03_Research/source_evidence_readiness_matrix.json
+  - Data/03_Research/branch_claim_gate.json
 - Interpretation:
   - Treat output as an internal selected-exponent benchmark only.
   - A pass does not prove the full phase-transition theory, because `gamma`, `nu`, scaling relations, morphology, and material critical-point datasets are not yet primary gates.
+  - Topic-level source-evidence and branch-claim gates further limit the topic to selected-benchmark and mechanism-diagnostic usage unless stronger provenance and derivation packages are added.

@@ -49,8 +49,9 @@ flowchart LR
 | Scaling-law constants | Source-referenced working copy | `Data/03_Research/scaling_laws.json` | benchmark input |
 | Local exponent fit | Runnable diagnostic | `Research_AI_Scaling_Audit.py` | internal consistency check |
 | MoE sparsity | Runnable diagnostic | `deepseek_moe_data.json`, verifier artifact | active-parameter comparison |
+| Source evidence | Intake + readiness workflow gate; all three targets now mapped as partial instead of blank | `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `Data/03_Research/source_lock_manifest.json` | no claim upgrade by itself |
 | `alpha_N` to UET `kappa` bridge | Heuristic/open | artifact blocker when mismatch is too large | no constant-identification claim |
-| Entropy-learning engine | Implemented but not benchmark-validated | `UET_AI_Core.py`, `FORMULA_AUDIT.md` | future optimizer benchmark |
+| Entropy-learning engine | Implemented but not benchmark-validated | `UET_AI_Core.py`, `FORMULA_AUDIT.md`, `Data/03_Research/model_claim_gate.json` | future optimizer benchmark |
 | Alignment/ethics/consciousness | Exploratory | limitations and future scripts | no physical-law claim |
 
 ## 5x4 Grid Structure
@@ -77,6 +78,9 @@ python docs/topics/0.24_Artificial_Intelligence/Code/03_Research/Research_AI_Sca
 - `DATA_MANIFEST.md`: data provenance, unit conventions, hashes, and benchmark roles.
 - `METHOD.md`: method scope, evidence lanes, variables, and dependency policy.
 - `LIMITATIONS.md`: blockers that prevent stronger AI/alignment claims.
+- `Data/03_Research/source_evidence_intake_stub.json`: structured landing zone for missing scaling/model-metadata source records.
+- `Data/03_Research/source_evidence_readiness_matrix.json`: workflow gate for which source packages are still blocked by missing evidence fields.
+- `Data/03_Research/model_claim_gate.json`: accepted-versus-blocked claim lanes for benchmarks, heuristics, and exploratory scripts.
 
 ## Current Limitations
 
@@ -87,6 +91,13 @@ python docs/topics/0.24_Artificial_Intelligence/Code/03_Research/Research_AI_Sca
   alignment.
 - Ethics, alignment, consciousness, and developmental-AI claims remain future
   lanes until separately verified.
+
+## Provenance Snapshot
+
+- Scaling-law source package: `4/6` fields complete; still missing DOI/arXiv/URL and retrieval date
+- GPT-style scaling table: `5/6` fields complete; still missing construction/retrieval date
+- Model architecture metadata: `4/6` fields complete; still missing public model-card URLs and retrieval date
+- `source_lock_manifest.json` now binds the three working-copy benchmark lanes to explicit data classes and unit conventions
 
 ---
 

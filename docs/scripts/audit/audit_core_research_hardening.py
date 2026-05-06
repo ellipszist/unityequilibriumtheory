@@ -31,15 +31,13 @@ CORE_REQUIRED = [
 ]
 
 OVERCLAIM_PATTERNS = [
-    "100% PASS",
-    "Axiomatic Truth",
-    "definitive",
-    "definitively",
-    "solved",
-    "Solved",
-    "All Systems PASS",
-    "proof complete",
-    "theorem-level",
+    ("100% PASS", re.compile(r"\b100%\s+PASS\b")),
+    ("Axiomatic Truth", re.compile(r"\bAxiomatic Truth\b", re.IGNORECASE)),
+    ("definitive", re.compile(r"\bdefinitive(?:ly)?\b", re.IGNORECASE)),
+    ("solved", re.compile(r"\bsolved\b", re.IGNORECASE)),
+    ("All Systems PASS", re.compile(r"\bAll Systems PASS\b", re.IGNORECASE)),
+    ("proof complete", re.compile(r"\bproof complete\b", re.IGNORECASE)),
+    ("theorem-level", re.compile(r"\btheorem-level\b", re.IGNORECASE)),
 ]
 
 DATA_RISK_ORDER = {
@@ -130,7 +128,7 @@ def overclaim_hits(readme_path: Path) -> list[str]:
     if not readme_path.exists():
         return []
     text = readme_path.read_text(encoding="utf-8", errors="replace")
-    return [pattern for pattern in OVERCLAIM_PATTERNS if pattern in text]
+    return [label for label, pattern in OVERCLAIM_PATTERNS if pattern.search(text)]
 
 
 def formula_audit_status(topic_dir: Path) -> str:

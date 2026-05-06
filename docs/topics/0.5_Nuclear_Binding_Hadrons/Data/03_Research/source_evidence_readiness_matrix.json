@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.5_Nuclear_Binding_Hadrons",
+  "purpose": "Readiness matrix for source-evidence review across nuclear binding, hadron, and QCD lanes.",
+  "summary": {
+    "source_targets_total": 5,
+    "targets_ready_for_source_review": 2,
+    "targets_blocked_by_pending_evidence": 3
+  },
+  "readiness_rows": [
+    {
+      "name": "AME2020 raw table and validation subset package",
+      "priority": "immediate",
+      "fields_total": 6,
+      "fields_complete": 6,
+      "fields_pending": 0,
+      "pending_fields": [],
+      "ready_for_source_review": true,
+      "blocking_reason": null
+    },
+    {
+      "name": "Proton radius benchmark package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 6,
+      "fields_pending": 0,
+      "pending_fields": [],
+      "ready_for_source_review": true,
+      "blocking_reason": null
+    },
+    {
+      "name": "PDG quark-mass source package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 1,
+      "fields_pending": 5,
+      "pending_fields": [
+        "doi_or_url",
+        "local_path",
+        "table_or_review_identifier",
+        "retrieval_date",
+        "extraction_note"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "Working-copy source label exists, but the PDG package is not yet source-locked to an upstream record in this topic."
+    },
+    {
+      "name": "QCD running benchmark package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 1,
+      "fields_pending": 5,
+      "pending_fields": [
+        "local_path",
+        "source_reference",
+        "unit_basis",
+        "parameter_note",
+        "bug_status_note"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The QCD branch still has unresolved source-lock work and an open alpha_s_uet_v2 data-shape bug."
+    },
+    {
+      "name": "Confinement proof gate package",
+      "priority": "medium",
+      "fields_total": 6,
+      "fields_complete": 2,
+      "fields_pending": 4,
+      "pending_fields": [
+        "benchmark_identity",
+        "status_rule",
+        "artifact_path",
+        "limitation_note"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The proof script still returns True instead of enforcing an audit-grade pass/fail contract."
+    }
+  ],
+  "claim_boundary": "A ready row means the topic has enough local provenance structure for source review. It does not itself upgrade a claim."
+}

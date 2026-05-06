@@ -1,12 +1,16 @@
 # Data Manifest
 
-| Item | Local path | Source | Provenance status |
-|:--|:--|:--|:--|
-| SPARC working copy | `Data/03_Research/sparc_data.json` | SPARC 2016 | Internal repository copy; provenance normalization in progress |
-| LITTLE THINGS working copy | `Data/03_Research/little_things_data.json` | LITTLE THINGS dwarf-galaxy data | Internal repository copy; upstream citation packaging still needs cleanup |
-| Topic bibliography | `Data/03_Research/references.bib` | Topic-local references | Supplementary only |
+| Item | Local path | Source | Provenance status | Unit convention | Benchmark role |
+| :-- | :-- | :-- | :-- | :-- | :-- |
+| SPARC working copy summary rows | `Data/03_Research/sparc_data.json` | SPARC-related repository working copy | `checked_local_reference`; upstream archival packaging still incomplete | `R_kpc` in kpc, `v_obs` in km/s, `M_disk_Msun` in solar masses, `R_disk_kpc` in kpc | primary verifier input for summary-row benchmark |
+| LITTLE THINGS working copy summary rows | `Data/03_Research/little_things_data.json` | LITTLE THINGS-related repository working copy | `checked_local_reference`; source-lock cleanup still needed | `R_kpc` in kpc, `v_obs` in km/s, gas masses in solar masses | secondary benchmark/reference package |
+| Topic bibliography | `Data/03_Research/references.bib` | topic-local references | supplementary only | n/a | citation support |
 
-Repository note:
+Repository facts:
 
-- The current `sparc_data.json` file contains 154 records in the checked-in repository.
-- Use repository counts as checked-in facts rather than assuming upstream catalog counts.
+- The current `sparc_data.json` checked into this repository contains `154` rows.
+- The current verifier uses these rows as one-point-per-galaxy benchmark inputs,
+  not as full radial curve arrays.
+- Until upstream files, identifiers, and preprocessing are source-locked, this
+  dataset must be described as a repository working copy rather than a fresh
+  upstream archival mirror.

@@ -2,10 +2,10 @@
   "schema_version": "2.1",
   "generated_date": "2026-04-23",
   "scope": {
-    "numbered_topics": 41,
+    "numbered_topics": 42,
     "support_workspaces": 2,
     "core_research_topics": 27,
-    "future_concept_topics": 14
+    "future_concept_topics": 15
   },
   "scope_policy": {
     "core_research_range": "0.0 through 0.26",
@@ -314,7 +314,7 @@
       "mathematical_rigor_score": 2,
       "physical_rigor_score": 1,
       "claim_integrity_score": 3,
-      "recommended_next_action": "Source-lock the Higgs coupling table and add separate Koide/tau verifier artifacts before any mass-generation claim upgrade."
+      "recommended_next_action": "Close the remaining Higgs-coupling DOI/raw-table gap, keep `pdg_2024_leptons.json` as the normative lepton reference, and add separate Koide/tau plus Planck-ansatz provenance artifacts before any mass-generation claim upgrade."
     },
     {
       "name": "0.18_Mathnicry",
@@ -323,13 +323,13 @@
       "status": "Draft",
       "audit_tier": "B",
       "structure_score": 3,
-      "data_reality_score": 2,
-      "data_reality_status": "real source referenced",
+      "data_reality_score": 1,
+      "data_reality_status": "manual or placeholder",
       "verification_score": 2,
       "mathematical_rigor_score": 2,
       "physical_rigor_score": 2,
       "claim_integrity_score": 3,
-      "recommended_next_action": "Archive raw Cosmicflows/Laniakea/Pioneer tables, add observer-frame metadata and numeric residual gates, and compare dynamic-frame claims against galaxy/Pioneer baselines before any claim upgrade."
+      "recommended_next_action": "Archive source-backed elliptic-curve/L-function tables, zero-table precision manifests, bounded-search fixtures, and deterministic quantum-gate tests before upgrading beyond the current BSD surrogate run-contract branch."
     },
     {
       "name": "0.19_Gravity_GR",
@@ -630,6 +630,21 @@
       "physical_rigor_score": 1,
       "claim_integrity_score": 3,
       "recommended_next_action": "Keep this topic explicitly exploratory until real datasets, standards docs, and verification outputs exist."
+    },
+    {
+      "name": "0.37_Quantum_Photovoltaics",
+      "kind": "numbered_topic",
+      "scope_class": "future_concept",
+      "status": "Draft",
+      "audit_tier": "D",
+      "structure_score": 1,
+      "data_reality_score": 0,
+      "data_reality_status": "no data path",
+      "verification_score": 0,
+      "mathematical_rigor_score": 0,
+      "physical_rigor_score": 1,
+      "claim_integrity_score": 1,
+      "recommended_next_action": "Keep this future topic explicitly exploratory until it either merges with the solar-paint branch or receives a full standards package."
     },
     {
       "name": "0.38_Bio_Synthetic_Integration",

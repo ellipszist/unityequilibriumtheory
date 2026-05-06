@@ -7,3 +7,4 @@
 - The CCBH analysis currently depends on Shen/Kormendy source files outside the repository and must remain a blocked secondary path until those upstream files are archived under `docs/data/external/...`.
 - Any agreement here should be treated as exploratory black-hole benchmarking, not formal closure.
 - Internal script execution does not by itself establish external replication, formal proof, or broad physical closure.
+- Topic-level source-evidence and branch-claim gates now make that boundary explicit: accepted evidence stops at the EHT shadow benchmark and black-hole geometry comparator, not singularity-resolution or GR-replacement claims.

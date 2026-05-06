@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.3_Cosmology_Hubble_Tension",
+  "purpose": "Readiness matrix for source-evidence review across cosmology benchmark and theory branches.",
+  "summary": {
+    "source_targets_total": 5,
+    "targets_ready_for_source_review": 1,
+    "targets_blocked_by_pending_evidence": 4
+  },
+  "readiness_rows": [
+    {
+      "name": "Planck-SH0ES scalar H0 benchmark package",
+      "priority": "immediate",
+      "fields_total": 6,
+      "fields_complete": 6,
+      "fields_pending": 0,
+      "pending_fields": [],
+      "ready_for_source_review": true,
+      "blocking_reason": null
+    },
+    {
+      "name": "Fine-structure bridge constant package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 4,
+      "fields_pending": 2,
+      "pending_fields": [
+        "independent_derivation",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The constant is source-backed, but the sqrt(alpha_em) bridge still lacks an external derivation or constraint package."
+    },
+    {
+      "name": "Redshift transition and high-z package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 2,
+      "fields_pending": 4,
+      "pending_fields": [
+        "source_provenance_note",
+        "z_crit_source_lock",
+        "diagnostic_role",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The high-z layer is still a local diagnostic package and the redshift-transition scale is not yet source-locked."
+    },
+    {
+      "name": "Dark-energy or vacuum-energy branch package",
+      "priority": "medium",
+      "fields_total": 6,
+      "fields_complete": 2,
+      "fields_pending": 4,
+      "pending_fields": [
+        "failure_artifact_note",
+        "status_rule",
+        "benchmark_requirement",
+        "limitation_note"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The dark-energy branch is still an open-problem lane and must stay separate from the scalar H0 benchmark."
+    },
+    {
+      "name": "Full cosmology likelihood package",
+      "priority": "medium",
+      "fields_total": 6,
+      "fields_complete": 0,
+      "fields_pending": 6,
+      "pending_fields": [
+        "planck_chain_or_release_data",
+        "shoes_covariance_package",
+        "bao_sn_inputs",
+        "likelihood_code_path",
+        "artifact_path",
+        "limitation_note"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "A full observational likelihood package is not implemented in this topic."
+    }
+  ],
+  "claim_boundary": "A ready row has enough provenance structure for source review. It does not itself upgrade a claim."
+}

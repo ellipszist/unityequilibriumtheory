@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.20_Atomic_Physics",
+  "purpose": "Readiness matrix for source-evidence review across atomic benchmark and theory branches.",
+  "summary": {
+    "source_targets_total": 5,
+    "targets_ready_for_source_review": 2,
+    "targets_blocked_by_pending_evidence": 3
+  },
+  "readiness_rows": [
+    {
+      "name": "NIST hydrogen spectrum package",
+      "priority": "immediate",
+      "fields_total": 6,
+      "fields_complete": 5,
+      "fields_pending": 1,
+      "pending_fields": [
+        "transcription_precision_audit"
+      ],
+      "ready_for_source_review": true,
+      "blocking_reason": null
+    },
+    {
+      "name": "CODATA atomic constants package",
+      "priority": "immediate",
+      "fields_total": 6,
+      "fields_complete": 6,
+      "fields_pending": 0,
+      "pending_fields": [],
+      "ready_for_source_review": true,
+      "blocking_reason": null
+    },
+    {
+      "name": "Hydrogen level-energy package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 2,
+      "fields_pending": 4,
+      "pending_fields": [
+        "upstream_source_package",
+        "artifact_path",
+        "observable_scope",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "Hydrogen level data exists, but there is no primary artifact for the level-energy lane yet."
+    },
+    {
+      "name": "Fine-structure and Lamb-shift package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 0,
+      "fields_pending": 6,
+      "pending_fields": [
+        "fine_structure_dataset",
+        "lamb_shift_dataset",
+        "comparison_artifact",
+        "observable_scope",
+        "unit_basis",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The current topic has no fine-structure or Lamb-shift artifact."
+    },
+    {
+      "name": "Helium and many-electron package",
+      "priority": "medium",
+      "fields_total": 6,
+      "fields_complete": 1,
+      "fields_pending": 5,
+      "pending_fields": [
+        "helium_dataset",
+        "many_electron_dataset",
+        "artifact_paths",
+        "cross_topic_dependency_map",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "Helium and many-electron lanes remain excluded from the current hydrogen-only benchmark."
+    }
+  ],
+  "claim_boundary": "A ready row has enough provenance structure for source review. It does not by itself upgrade atomic-theory claims."
+}

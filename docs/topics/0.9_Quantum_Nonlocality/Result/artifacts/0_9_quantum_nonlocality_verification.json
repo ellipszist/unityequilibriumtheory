@@ -1,64 +1,111 @@
 {
-  "blockers": [],
-  "checks": {
-    "lower_1sigma_exceeds_local_bound": true,
-    "p_value_ok": true,
-    "s_value_exceeds_local_bound": true,
-    "source_has_doi": true,
-    "tsirelson_reference_ok": true
-  },
-  "claim_class": "C - source-referenced internal CHSH benchmark",
+  "schema_version": "1.2",
+  "topic": "0.9_Quantum_Nonlocality",
+  "status": "PASS",
+  "generated_at_utc": "2026-05-06T13:20:15.126154+00:00",
   "command": "python docs/topics/0.9_Quantum_Nonlocality/Code/03_Research/Research_CHSH_Verification.py",
   "environment": {
-    "platform": "Windows-11-10.0.26200-SP0",
-    "python": "3.14.2"
+    "python": "3.14.2",
+    "platform": "Windows-11-10.0.26200-SP0"
   },
+  "claim_class": "C - source-referenced internal CHSH benchmark",
   "formula_ids": [
     "QN09-CHSH-PARAMETER",
     "QN09-LOCAL-REALIST-BOUND",
     "QN09-TSIRELSON-BOUND",
     "QN09-PVALUE-GATE"
   ],
-  "generated_at_utc": "2026-04-30T06:51:42.619786+00:00",
   "inputs": [
     {
-      "doi": "10.1038/nature15759",
       "name": "bell_test_2015",
       "path": "docs/topics/0.9_Quantum_Nonlocality/Data/03_Research/bell_test_2015.json",
-      "sha256": "7b0088a3e30c039fd7d605c6a7182c3d1589ca1367f6b58adda4d00fdee3acc6",
-      "source": "Hensen et al. 2015 - Loophole-free Bell Test"
+      "source": "Hensen et al. 2015 - Loophole-free Bell Test",
+      "doi": "10.1038/nature15759",
+      "sha256": "7b0088a3e30c039fd7d605c6a7182c3d1589ca1367f6b58adda4d00fdee3acc6"
     },
     {
       "name": "bell_inequality_data",
       "path": "docs/topics/0.9_Quantum_Nonlocality/Data/03_Research/bell_inequality_data.json",
-      "sha256": "8eadfad7a4251821da64ff7aeaeb23163c1563664477036b93e6a8c38cbc5ad6",
-      "source": "Hensen et al. 2015, Nature 526, 682"
+      "source": "Hensen et al. 2015, Nature 526, 682",
+      "sha256": "8eadfad7a4251821da64ff7aeaeb23163c1563664477036b93e6a8c38cbc5ad6"
+    },
+    {
+      "name": "source_lock_manifest",
+      "path": "docs/topics/0.9_Quantum_Nonlocality/Data/03_Research/source_lock_manifest.json",
+      "sha256": "d7f9125980a8d2c42ab2e577e537bf9e3026b61b52e5d0b816fbb2965b6585c9"
+    },
+    {
+      "name": "hensen_2015_reference_package",
+      "path": "docs/data/external/quantum_nonlocality/hensen_2015_chsh_reference_package.json",
+      "sha256": "41be562511866d612548712d20b1c726fb3b00fd8bb18ee3f4696af8068a0eb2"
+    },
+    {
+      "name": "bell_summary_reference_package",
+      "path": "docs/data/external/quantum_nonlocality/bell_inequality_summary_reference_package.json",
+      "sha256": "4e6217c13bbe631a77ccc9cf6a1ae5f09648f511e469ba7e2bbc7df598883ba3"
     }
   ],
-  "limitations": [
-    "This artifact verifies a source-referenced CHSH benchmark and Tsirelson-bound consistency.",
-    "It does not derive the UET topological-filament explanation from first principles.",
-    "It does not reproduce raw event-count analysis from the Hensen et al. experiment.",
-    "Double-slit, tunneling, qubit T1, and LC-unity scripts are outside this primary verifier."
-  ],
+  "source_evidence_intake_stub": {
+    "path": "Data/03_Research/source_evidence_intake_stub.json",
+    "sha256": "5fb9115c20596c11e9be3526627a3c0eb1ee9b6666d3e636c12f3725c940e738",
+    "source_targets": [
+      "Hensen 2015 CHSH benchmark package",
+      "Raw Bell event-count or supplementary package",
+      "Secondary Bell summary file provenance",
+      "Qubit or adjacent quantum-lane source package"
+    ],
+    "claim_boundary": "This intake stub is for provenance capture only. It does not authorize upgrades to UET nonlocality or adjacent quantum-lane claims."
+  },
+  "source_evidence_readiness_matrix": {
+    "path": "Data/03_Research/source_evidence_readiness_matrix.json",
+    "sha256": "d293187a9f649511db611abb62d8acef270dc6e5f5023802e2d47f05d272249a",
+    "summary": {
+      "source_targets_total": 4,
+      "targets_ready_for_source_review": 2,
+      "targets_blocked_by_pending_evidence": 2
+    },
+    "claim_boundary": "A target marked ready still requires real source review. This gate does not itself upgrade a claim."
+  },
+  "branch_claim_gate": {
+    "path": "Data/03_Research/branch_claim_gate.json",
+    "sha256": "96e703a6fd676ea92954a95128783f18faac5d9585c2f5fb1b9f44a2ac1c71db",
+    "summary": {
+      "branches_total": 5,
+      "accepted_now": 1,
+      "blocked_for_strong_claims": 4
+    },
+    "claim_boundary": "This gate cannot raise the topic beyond the current CHSH run-contract evidence."
+  },
+  "threshold": {
+    "s_value_must_exceed_local_bound": 2.0,
+    "lower_1sigma_must_exceed_local_bound": 2.0,
+    "p_value_max": 0.05,
+    "tsirelson_rounding_error_max": 0.001
+  },
+  "checks": {
+    "s_value_exceeds_local_bound": true,
+    "lower_1sigma_exceeds_local_bound": true,
+    "p_value_ok": true,
+    "tsirelson_reference_ok": true,
+    "source_has_doi": true
+  },
+  "blockers": [],
   "metrics": {
-    "S_error": 0.2,
     "S_value": 2.42,
+    "S_error": 0.2,
     "local_realist_bound": 2.0,
-    "lower_1sigma": 2.2199999999999998,
     "margin_over_local_bound": 0.41999999999999993,
+    "lower_1sigma": 2.2199999999999998,
     "p_value": 0.039,
     "qm_max_recorded": 2.828,
     "tsirelson_exact": 2.8284271247461903,
     "tsirelson_rounding_gap": 0.0004271247461904437
   },
-  "schema_version": "1.1",
-  "status": "PASS",
-  "threshold": {
-    "lower_1sigma_must_exceed_local_bound": 2.0,
-    "p_value_max": 0.05,
-    "s_value_must_exceed_local_bound": 2.0,
-    "tsirelson_rounding_error_max": 0.001
-  },
-  "topic": "0.9_Quantum_Nonlocality"
+  "interpretation": "Source-referenced internal CHSH benchmark only. This does not derive UET topology or replace the standard nonlocality framework.",
+  "limitations": [
+    "This artifact verifies a source-referenced CHSH benchmark and Tsirelson-bound consistency.",
+    "It does not derive the UET topological-filament explanation from first principles.",
+    "It does not reproduce raw event-count analysis from the Hensen et al. experiment.",
+    "Qubit, tunneling, double-slit, and LC-unity scripts are outside this primary verifier."
+  ]
 }

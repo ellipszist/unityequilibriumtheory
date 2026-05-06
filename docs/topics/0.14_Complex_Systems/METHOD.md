@@ -27,6 +27,17 @@ The reviewed formula registry is `FORMULA_AUDIT.md`.
 - Primary modeled quantities: scaling exponents, network-style complexity measures, dynamical features, and coupling terms
 - Current verifier-backed quantities: RR interval summary statistics, SDNN, RMSSD, Poincare-style `sd1/sd2`, and a local equilibrium score.
 
+## Evidence matrix
+
+| Branch | Current implementation | Evidence class | Use in theory |
+|:--|:--|:--|:--|
+| HRV branch | Source-referenced derived-RR benchmark with artifact | `C/B` | Primary verifier lane only. |
+| SOC branch | Engine/formula sandbox | `D` | Simulation lane only. |
+| Econophysics branch | Local market simulation scripts | `D` | Exploratory branch only. |
+| Climate branch | Local series branch without verifier gate | `D` | Exploratory branch only. |
+| Inequality/social branches | Local working files without verifier artifacts | `D` | Exploratory branch only. |
+| Source / claim workflow | Intake, readiness, and branch-claim gates | `Workflow gate` | Prevents broad cross-domain claims from outrunning branch evidence. |
+
 ## Assumptions
 
 - The topic uses heterogeneous local case studies rather than one uniform benchmark family.
@@ -45,3 +56,10 @@ The reviewed formula registry is `FORMULA_AUDIT.md`.
 ## Parameter sensitivity note
 
 - Normalization choices and dataset stitching strongly affect current cross-domain interpretations.
+
+## Claim Workflow
+
+1. Run `Research_Biology_HRV.py` to regenerate the artifact and workflow files.
+2. Fill `Data/03_Research/source_evidence_intake_stub.json` only with real branch-specific source evidence.
+3. Use `Data/03_Research/source_evidence_readiness_matrix.json` as the provenance gate before changing working-copy data or claim class.
+4. Check `Data/03_Research/branch_claim_gate.json` before treating SOC, econophysics, climate, inequality, or social branches as evidence.

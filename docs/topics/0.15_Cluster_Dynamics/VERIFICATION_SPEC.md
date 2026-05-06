@@ -31,6 +31,9 @@ python docs/topics/0.15_Cluster_Dynamics/Code/03_Research/Research_BulletCluster
 ## Artifact Target
 
 - `Result/artifacts/0_15_cluster_dynamics_verification.json`
+- `Data/03_Research/source_evidence_intake_stub.json`
+- `Data/03_Research/source_evidence_readiness_matrix.json`
+- `Data/03_Research/branch_claim_gate.json`
 
 The artifact must record:
 
@@ -45,3 +48,4 @@ The artifact must record:
 ## Interpretation
 
 The current verifier supports only Claim Class D qualitative diagnostic language. It does not support "solved dark matter", "resolves the virial discrepancy", "predicts Bullet Cluster lensing", or a general cluster-scale replacement for dark matter.
+Topic-level source-evidence and branch-claim gates further limit this topic to qualitative and mechanism-diagnostic usage unless calibrated multi-cluster evidence is added.

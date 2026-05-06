@@ -8,13 +8,13 @@
   "environment": {
     "implementation": "CPython",
     "matplotlib_version": "3.10.8",
-    "numpy_version": "2.4.0",
+    "numpy_version": "2.3.5",
     "pandas_version": "2.3.3",
     "platform": "Windows-11-10.0.26200-SP0",
     "python_version": "3.14.2",
     "scipy_version": "1.16.3",
     "tensorflow_version": null,
-    "torch_version": "2.10.0+cpu"
+    "torch_version": null
   },
   "metrics": {
     "derived_delta_2025_times_1e9": 0.375000000019457,
@@ -45,7 +45,7 @@
   "thresholds": {
     "max_compatibility_z_score": 2.0
   },
-  "timestamp_utc": "2026-04-28T14:27:10.847939+00:00",
+  "timestamp_utc": "2026-05-04T15:24:14.123374+00:00",
   "topic": "0.8_Muon_g2_Anomaly",
   "uet_version": "0.9.0"
 }

@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.7_Neutrino_Physics",
+  "purpose": "Claim gate for separate neutrino branches inside the topic.",
+  "summary": {
+    "branches_total": 6,
+    "accepted_now": 4,
+    "blocked_for_strong_claims": 2
+  },
+  "branches": [
+    {
+      "branch": "NuFIT benchmark data branch",
+      "status": "accepted_source_backed_benchmark",
+      "allowed_usage_now": "Source-backed NuFIT 6.0 compatibility benchmark with checked-transcription guard.",
+      "blocker_to_stronger_claim": "Need machine parsing or independent double-entry if this benchmark is promoted further."
+    },
+    {
+      "branch": "Live angle bridge branch",
+      "status": "accepted_benchmark_gate_with_derivation_gap",
+      "allowed_usage_now": "Accepted live-angle benchmark compatibility branch.",
+      "blocker_to_stronger_claim": "Need a derivation from UET field equations rather than a benchmark-gated heuristic bridge."
+    },
+    {
+      "branch": "Runtime mass-splitting branch",
+      "status": "accepted_benchmark_fed_runtime_branch",
+      "allowed_usage_now": "Accepted compatibility check for benchmark-fed runtime splittings only.",
+      "blocker_to_stronger_claim": "Need first-principles mass-splitting outputs rather than benchmark-fed runtime parameters."
+    },
+    {
+      "branch": "Absolute-mass KATRIN branch",
+      "status": "accepted_bounded_model_branch",
+      "allowed_usage_now": "Accepted bounded compatibility branch under the official KATRIN limit.",
+      "blocker_to_stronger_claim": "Need a fuller neutrino-mass derivation beyond the compact see-saw-style construction."
+    },
+    {
+      "branch": "Hierarchy proxy branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Diagnostic proxy only.",
+      "blocker_to_stronger_claim": "Need a real topological invariant or comparable derived hierarchy selector."
+    },
+    {
+      "branch": "Full neutrino-sector proof claims",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Not supported by current evidence.",
+      "blocker_to_stronger_claim": "Need closure of angle, splitting, hierarchy, and mass-generation derivations together."
+    }
+  ],
+  "claim_boundary": "This gate cannot raise the topic above the current neutrino benchmark-compatibility package."
+}

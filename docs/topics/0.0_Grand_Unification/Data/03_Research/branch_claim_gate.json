@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.0_Grand_Unification",
+  "purpose": "Claim gate for separate integration and closure branches inside the topic.",
+  "summary": {
+    "branches_total": 6,
+    "accepted_now": 2,
+    "blocked_for_strong_claims": 4,
+    "dependency_warn_count": 4,
+    "dependency_unknown_count": 0
+  },
+  "branches": [
+    {
+      "branch": "Integration run-contract branch",
+      "status": "accepted_integration_branch",
+      "allowed_usage_now": "Accepted branch for selected-engine orchestration and dashboard execution.",
+      "blocker_to_stronger_claim": "Running the dashboard does not elevate subordinate evidence classes."
+    },
+    {
+      "branch": "Dependency-status dashboard branch",
+      "status": "accepted_governance_branch",
+      "allowed_usage_now": "Accepted branch for recording subordinate artifact identity, status, claim class, and limitation inheritance.",
+      "blocker_to_stronger_claim": "Dependency governance does not close the underlying scientific gaps."
+    },
+    {
+      "branch": "Full core-topic integration branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Partial selected-core integration only.",
+      "blocker_to_stronger_claim": "Need manifest coverage across all intended core topics and bridges."
+    },
+    {
+      "branch": "Paper-readiness branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Not supported by current evidence.",
+      "blocker_to_stronger_claim": "Need every dependency aligned on data, formulas, verifier, and limitations with no unresolved closure blockers."
+    },
+    {
+      "branch": "Unified-parameter closure branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Not supported by current evidence.",
+      "blocker_to_stronger_claim": "Need cross-topic formula and unit closure beyond the current dashboard metrics."
+    },
+    {
+      "branch": "Grand-unification theory claims",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Not supported by current evidence.",
+      "blocker_to_stronger_claim": "Subordinate WARN/UNKNOWN blockers and out-of-scope core failures prevent theory-level promotion."
+    }
+  ],
+  "claim_boundary": "This gate keeps the topic at integration-index and governance status, not grand-unification closure."
+}

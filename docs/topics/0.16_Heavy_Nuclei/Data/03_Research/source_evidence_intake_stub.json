@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.16_Heavy_Nuclei",
+  "purpose": "Source evidence intake before upgrading claims across heavy-nuclei binding, fission, and stability branches.",
+  "source_targets": [
+    {
+      "name": "AME2020 U-235 checkpoint package",
+      "priority": "immediate",
+      "status_hint": "source_labeled_working_copy",
+      "evidence_entries": [
+        "working_copy_json_path",
+        "doi_or_upstream_archive",
+        "observable_scope",
+        "unit_basis",
+        "hash_lock",
+        "benchmark_role"
+      ]
+    },
+    {
+      "name": "Source-locked fragment mass package",
+      "priority": "high",
+      "status_hint": "missing_primary_fragment_lock",
+      "evidence_entries": [
+        "ba141_source_row",
+        "kr92_source_row",
+        "fragment_mass_or_binding_fields",
+        "unit_basis",
+        "artifact_path",
+        "upgrade_requirement"
+      ]
+    },
+    {
+      "name": "Evaluated fission energy baseline package",
+      "priority": "high",
+      "status_hint": "missing_q_value_baseline",
+      "evidence_entries": [
+        "evaluated_q_value_source",
+        "uncertainty_field",
+        "comparison_artifact",
+        "observable_scope",
+        "unit_basis",
+        "upgrade_requirement"
+      ]
+    },
+    {
+      "name": "Heavy-binding subset benchmark package",
+      "priority": "high",
+      "status_hint": "secondary_lane_not_yet_primary_gated",
+      "evidence_entries": [
+        "subset_dataset_path",
+        "upstream_source_package",
+        "artifact_rows",
+        "unit_basis",
+        "threshold_policy",
+        "upgrade_requirement"
+      ]
+    },
+    {
+      "name": "Stability valley and island-of-stability package",
+      "priority": "medium",
+      "status_hint": "blocked_theory_branch",
+      "evidence_entries": [
+        "shell_correction_package",
+        "decay_or_half_life_data",
+        "stability_artifact",
+        "cross_topic_dependency_map",
+        "observable_scope",
+        "upgrade_requirement"
+      ]
+    }
+  ],
+  "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself validate a first-principles heavy-nuclei theory."
+}

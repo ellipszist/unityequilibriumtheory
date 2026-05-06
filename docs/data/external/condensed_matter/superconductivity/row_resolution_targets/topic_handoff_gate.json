@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_to_topic_handoff_gate",
+  "source_role": "gate for handing archived row evidence back into topic-local compatibility review",
+  "source_label": "Superconductivity row-resolution topic handoff gate",
+  "checked_date": "2026-05-07",
+  "summary": {
+    "materials_total": 3,
+    "materials_ready_for_topic_handoff": 0,
+    "materials_blocked_by_missing_archive_or_locator": 3
+  },
+  "materials": [
+    {
+      "material": "Vanadium (V)",
+      "required_handoff_checks": [
+        "archived_raw_path present for each required field",
+        "row locator present for each required field",
+        "unit basis present for each required field",
+        "Tc and phonon proxy can be traced to one compatible source family"
+      ],
+      "handoff_status": "blocked_pending_archive",
+      "ready_for_topic_review_packet": false
+    },
+    {
+      "material": "Nb3Sn",
+      "required_handoff_checks": [
+        "archived_raw_path present for each required field",
+        "row locator present for each required field",
+        "unit basis present for each required field",
+        "phonon proxy convention identified before lambda_ep review"
+      ],
+      "handoff_status": "blocked_pending_archive",
+      "ready_for_topic_review_packet": false
+    },
+    {
+      "material": "Nb3Ge",
+      "required_handoff_checks": [
+        "archived_raw_path present for each required field",
+        "row locator present for each required field",
+        "unit basis present for each required field",
+        "phonon proxy convention identified before lambda_ep review"
+      ],
+      "handoff_status": "blocked_pending_archive",
+      "ready_for_topic_review_packet": false
+    }
+  ],
+  "claim_boundary": "This handoff gate controls when external archive work can enter topic-local review. It does not approve a patch by itself."
+}

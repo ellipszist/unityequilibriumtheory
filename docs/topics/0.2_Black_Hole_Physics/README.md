@@ -45,6 +45,8 @@ flowchart LR
 | GR radius/entropy/temperature formulas | Formula-audited comparator identities | `FORMULA_AUDIT.md` | standard comparator calculations |
 | Saturation-core mechanism | Heuristic numerical diagnostic | `Engine_BlackHole.solve_internal_structure` | proposed mechanism / diagnostic |
 | CCBH cosmological coupling | Data-blocked secondary path | `Research_CCBH_Analysis.py` currently needs upstream files outside repo | blocked research path |
+| Source evidence workflow | Structured provenance gate | `Data/03_Research/source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json` | source-review queue |
+| Branch claim gate | Structured claim ceiling | `Data/03_Research/branch_claim_gate.json` | benchmark-only claim control |
 | Singularity-resolution claim | Not closed | limitations and formula audit | do not state as proved |
 
 ## 5x4 Grid Structure
@@ -80,6 +82,9 @@ python docs/topics/0.2_Black_Hole_Physics/Code/03_Research/Research_EHT_Validati
 - `DATA_MANIFEST.md`: current data posture and provenance gaps.
 - `METHOD.md`: topic method scope and dependency policy.
 - `LIMITATIONS.md`: blockers that prevent stronger claims.
+- `Data/03_Research/source_evidence_intake_stub.json`: provenance intake for EHT, GW, and CCBH lanes.
+- `Data/03_Research/source_evidence_readiness_matrix.json`: readiness gate for source review.
+- `Data/03_Research/branch_claim_gate.json`: branch-level claim ceiling.
 
 ## Current Limitations
 

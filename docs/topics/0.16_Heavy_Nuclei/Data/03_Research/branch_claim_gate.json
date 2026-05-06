@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.16_Heavy_Nuclei",
+  "purpose": "Claim gate for separate heavy-nuclei branches inside the topic.",
+  "summary": {
+    "branches_total": 6,
+    "accepted_now": 2,
+    "blocked_for_strong_claims": 4
+  },
+  "branches": [
+    {
+      "branch": "U-235 binding checkpoint branch",
+      "status": "accepted_source_backed_checkpoint_branch",
+      "allowed_usage_now": "Accepted U-235 binding checkpoint branch against the AME2020 working copy.",
+      "blocker_to_stronger_claim": "Need broader isotope coverage and independent derivation before promoting beyond a checkpoint branch."
+    },
+    {
+      "branch": "Exothermic fission sanity branch",
+      "status": "accepted_sanity_diagnostic_branch",
+      "allowed_usage_now": "Accepted exothermic sanity-check branch for bridge-derived fission energetics only.",
+      "blocker_to_stronger_claim": "Need source-locked fragment masses and evaluated Q-value baselines before claiming calibrated fission prediction."
+    },
+    {
+      "branch": "Fragment-mass prediction branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Not supported by current evidence.",
+      "blocker_to_stronger_claim": "Need source-locked Ba-141 and Kr-92 fragment rows in the primary verifier."
+    },
+    {
+      "branch": "Evaluated fission-energy branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Not supported by current evidence.",
+      "blocker_to_stronger_claim": "Need an evaluated fission-energy baseline with uncertainty-aware thresholds."
+    },
+    {
+      "branch": "Heavy-binding generalization branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Secondary comparison only.",
+      "blocker_to_stronger_claim": "Need dedicated artifact rows and threshold policy for the heavy-binding subset lane."
+    },
+    {
+      "branch": "Island-of-stability and full heavy-nuclei theory claims",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Not supported by current evidence.",
+      "blocker_to_stronger_claim": "Need shell corrections, decay data, and stability artifacts beyond the current SEMF/UET bridge."
+    }
+  ],
+  "claim_boundary": "This gate keeps the topic at heavy-nuclei checkpoint and sanity-diagnostic status, not first-principles nuclear closure."
+}

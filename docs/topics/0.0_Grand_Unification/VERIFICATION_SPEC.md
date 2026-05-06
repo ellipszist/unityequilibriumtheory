@@ -25,6 +25,9 @@
   - Any `WARN` subordinate artifact keeps `0.0` at `WARN` even if the selected numeric gates pass.
 - Artifact target:
   - Result/artifacts/0_0_grand_unification_verification.json
+  - Data/03_Research/source_evidence_intake_stub.json
+  - Data/03_Research/source_evidence_readiness_matrix.json
+  - Data/03_Research/branch_claim_gate.json
 - Latest primary artifact identity:
   - Status: `WARN`
   - Timestamp: `2026-04-29T10:47:43.936207+00:00`
@@ -38,3 +41,4 @@
   - A pass means selected component engines ran, selected dashboard gates were recorded, and all declared subordinate artifacts were present and `PASS`.
   - It does not prove grand unification and does not override subordinate topic limitations.
   - The UTF-8 environment variables are required on this Windows shell because subordinate loggers may emit Unicode glyphs.
+  - Topic-level source-evidence and branch-claim gates further limit this topic to integration-index and dependency-governance usage unless full-core closure exists.

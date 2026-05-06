@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "material": "Vanadium (V)",
+  "source_class": "external_material_archive_dossier",
+  "priority": "immediate",
+  "expected_source_family": "MIT Junior Lab citation chain or compatible literature row",
+  "archive_targets": [
+    {
+      "field": "Tc_observed",
+      "required_artifacts": [
+        "raw_source_file",
+        "table_or_figure_identifier",
+        "row_locator",
+        "unit_basis",
+        "transcription_note"
+      ],
+      "status": "pending_archive"
+    },
+    {
+      "field": "Theta_D_K",
+      "required_artifacts": [
+        "raw_source_file",
+        "table_or_figure_identifier",
+        "row_locator",
+        "unit_basis",
+        "proxy_convention_note"
+      ],
+      "status": "pending_archive"
+    },
+    {
+      "field": "lambda_ep",
+      "required_artifacts": [
+        "raw_source_file",
+        "table_or_figure_identifier",
+        "row_locator",
+        "unit_basis",
+        "proxy_compatibility_note"
+      ],
+      "status": "pending_archive"
+    },
+    {
+      "field": "mu_star",
+      "required_artifacts": [
+        "raw_source_file_or_family_convention_note",
+        "table_or_figure_identifier",
+        "row_locator_or_convention_scope",
+        "unit_basis",
+        "transcription_note"
+      ],
+      "status": "pending_archive"
+    }
+  ],
+  "handoff_goal": "Produce one archive package that can answer Tc identity, active proxy convention, lambda compatibility, and mu_star convention for topic-local review.",
+  "claim_boundary": "This dossier is an archive-work checklist only and does not certify any row value."
+}

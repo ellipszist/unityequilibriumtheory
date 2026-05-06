@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.10_Fluid_Dynamics_Chaos",
+  "purpose": "Source evidence intake before claim upgrades across internal benchmark, external CFD, and theorem branches.",
+  "source_targets": [
+    {
+      "name": "Embedded speed and stability benchmark package",
+      "priority": "immediate",
+      "status_hint": "internal_benchmark_ready",
+      "evidence_entries": [
+        "benchmark_script_path",
+        "source_lock_manifest_path",
+        "grid_and_step_config",
+        "timing_statistic",
+        "unit_basis",
+        "claim_boundary_note"
+      ]
+    },
+    {
+      "name": "UET master-equation implementation package",
+      "priority": "high",
+      "status_hint": "internal_formula_package",
+      "evidence_entries": [
+        "master_equation_path",
+        "engine_surface_path",
+        "hash_recording_note",
+        "unit_basis",
+        "regression_requirement",
+        "upgrade_requirement"
+      ]
+    },
+    {
+      "name": "External CFD validation dataset package",
+      "priority": "high",
+      "status_hint": "missing_external_validation",
+      "evidence_entries": [
+        "dataset_identity",
+        "upstream_source",
+        "local_path",
+        "case_definition",
+        "unit_basis",
+        "artifact_path"
+      ]
+    },
+    {
+      "name": "Physical Reynolds-number validation package",
+      "priority": "medium",
+      "status_hint": "missing_physical_unit_gate",
+      "evidence_entries": [
+        "fluid_property_source",
+        "boundary_condition_package",
+        "reynolds_case_definition",
+        "unit_basis",
+        "artifact_path",
+        "upgrade_requirement"
+      ]
+    },
+    {
+      "name": "Navier-Stokes theorem or proof package",
+      "priority": "medium",
+      "status_hint": "not_a_theorem_package",
+      "evidence_entries": [
+        "proof_script_path",
+        "assumption_registry",
+        "artifact_path",
+        "status_rule",
+        "theorem_scope",
+        "limitation_note"
+      ]
+    }
+  ],
+  "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself validate CFD accuracy or theorem-level Navier-Stokes claims."
+}

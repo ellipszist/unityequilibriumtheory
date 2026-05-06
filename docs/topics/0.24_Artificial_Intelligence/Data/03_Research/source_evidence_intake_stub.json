@@ -1,0 +1,129 @@
+{
+  "claim_boundary": "This intake stub is for source evidence capture only. Filling it does not by itself justify AI-law, alignment, ethics, or consciousness claim upgrades.",
+  "instructions": [
+    "Attach upstream URL, DOI, or arXiv identifier, local archive path, retrieval date, and extraction note before changing a working-copy dataset.",
+    "Separate public metadata, estimated values, and proprietary assumptions explicitly.",
+    "Do not treat this file as evidence by itself; it is an intake and tracking layer."
+  ],
+  "purpose": "Structured intake stub for upstream AI scaling and model-metadata evidence before data rewrites or stronger claims.",
+  "schema_version": "1.0",
+  "source_lock_dependencies": [
+    "docs/topics/0.24_Artificial_Intelligence/Data/03_Research/scaling_laws.json",
+    "docs/topics/0.24_Artificial_Intelligence/Data/GPT3_Scaling_Laws.csv",
+    "docs/topics/0.24_Artificial_Intelligence/Data/03_Research/deepseek_moe_data.json"
+  ],
+  "source_targets": [
+    {
+      "evidence_fields": [
+        {
+          "field": "doi_or_arxiv_or_url",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "local_path",
+          "status": "complete",
+          "value": "docs/topics/0.24_Artificial_Intelligence/Data/03_Research/scaling_laws.json; docs/topics/0.24_Artificial_Intelligence/Data/03_Research/source_lock_manifest.json"
+        },
+        {
+          "field": "table_or_equation_identifier",
+          "status": "complete",
+          "value": "L(N) ~ (N_c / N)^alpha_N; L(D) ~ (D_c / D)^alpha_D; L(C) ~ (C_c / C)^alpha_C"
+        },
+        {
+          "field": "retrieval_date",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "unit_basis",
+          "status": "complete",
+          "value": "dimensionless exponents; parameters count; tokens count; PF-days"
+        },
+        {
+          "field": "extraction_note",
+          "status": "complete",
+          "value": "Kaplan et al. scaling-law constants transcribed into a topic-local JSON package."
+        }
+      ],
+      "name": "Scaling-law source package",
+      "priority": "immediate",
+      "status": "partial"
+    },
+    {
+      "evidence_fields": [
+        {
+          "field": "upstream_url_or_derivation_note",
+          "status": "complete",
+          "value": "Topic-local GPT-style working table used for a secondary log-log fit; not yet pinned to an upstream archival table."
+        },
+        {
+          "field": "local_path",
+          "status": "complete",
+          "value": "docs/topics/0.24_Artificial_Intelligence/Data/GPT3_Scaling_Laws.csv"
+        },
+        {
+          "field": "row_origin_or_table_identifier",
+          "status": "complete",
+          "value": "5-row parameter/test-loss/FLOPs table embedded in GPT3_Scaling_Laws.csv"
+        },
+        {
+          "field": "retrieval_or_construction_date",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "unit_basis",
+          "status": "complete",
+          "value": "parameters; test loss; FLOPs"
+        },
+        {
+          "field": "extraction_note",
+          "status": "complete",
+          "value": "Small GPT-style scaling table used only for an internal log-log alpha fit diagnostic."
+        }
+      ],
+      "name": "GPT-style scaling table provenance package",
+      "priority": "high",
+      "status": "partial"
+    },
+    {
+      "evidence_fields": [
+        {
+          "field": "public_model_cards_or_urls",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "local_path",
+          "status": "complete",
+          "value": "docs/topics/0.24_Artificial_Intelligence/Data/03_Research/deepseek_moe_data.json; docs/topics/0.24_Artificial_Intelligence/Data/03_Research/source_lock_manifest.json"
+        },
+        {
+          "field": "estimated_value_flags",
+          "status": "complete",
+          "value": "Estimated/proprietary row present: GPT-4-Turbo; public rows: Llama-3-70B, Llama-3-405B, DeepSeek-V3, Mixtral-8x7B"
+        },
+        {
+          "field": "retrieval_date",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "unit_basis",
+          "status": "complete",
+          "value": "total and active parameters; context window tokens; training tokens"
+        },
+        {
+          "field": "extraction_note",
+          "status": "complete",
+          "value": "Dense and MoE metadata package with a mixture of public model facts and estimated/proprietary rows."
+        }
+      ],
+      "name": "Model architecture metadata package",
+      "priority": "high",
+      "status": "partial"
+    }
+  ],
+  "topic": "0.24_Artificial_Intelligence"
+}

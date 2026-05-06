@@ -32,6 +32,7 @@ This topic tests whether UET information-saturation language can be mapped onto 
 4. Compute Ba-141 and Kr-92 fragment binding energies from the same bridge.
 5. Check whether bridge fission energy is exothermic and within `[100, 250] MeV`.
 6. Write artifact status `WARN` when these checks pass but source-locked fragment masses are absent.
+7. Write `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json` so the checkpoint and sanity lanes stay separate from stability claims.
 
 ## Assumptions
 

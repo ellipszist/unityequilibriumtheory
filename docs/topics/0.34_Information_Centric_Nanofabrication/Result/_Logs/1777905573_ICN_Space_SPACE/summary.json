@@ -1,0 +1,19 @@
+{
+  "run_id": "1777905573_ICN_Space_SPACE",
+  "simulation": "ICN_Space_SPACE",
+  "status": "FAILED",
+  "timestamp": "Mon May  4 21:39:33 2026",
+  "duration_seconds": 0.08270716667175293,
+  "total_steps": 0,
+  "metadata": {
+    "nx": 64,
+    "ny": 128,
+    "dt": 0.01,
+    "kappa": 0.4900000000000001,
+    "beta": 0.8795299970535078,
+    "alpha": 1.0,
+    "C0": 1.0,
+    "phi_loss": 0.05
+  },
+  "final_state": null
+}

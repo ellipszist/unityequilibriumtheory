@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.6_Electroweak_Physics",
+  "purpose": "Readiness matrix for source-evidence review across electroweak benchmark branches.",
+  "summary": {
+    "source_targets_total": 5,
+    "targets_ready_for_source_review": 1,
+    "targets_blocked_by_pending_evidence": 4
+  },
+  "readiness_rows": [
+    {
+      "name": "PDG 2025 core electroweak mass package",
+      "priority": "immediate",
+      "fields_total": 6,
+      "fields_complete": 6,
+      "fields_pending": 0,
+      "pending_fields": [],
+      "ready_for_source_review": true,
+      "blocking_reason": null
+    },
+    {
+      "name": "Weak-mixing-angle and Fermi checked-local package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 4,
+      "fields_pending": 2,
+      "pending_fields": [
+        "direct_upstream_mapping",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The checked-local layer is organized and auditable, but direct upstream weak-angle mapping is still missing."
+    },
+    {
+      "name": "Neutron lifetime benchmark package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 4,
+      "fields_pending": 2,
+      "pending_fields": [
+        "external_source_lock",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The neutron lane is a checked-local benchmark gate, not yet a source-locked external package."
+    },
+    {
+      "name": "Running-angle diagnostic package",
+      "priority": "medium",
+      "fields_total": 6,
+      "fields_complete": 3,
+      "fields_pending": 3,
+      "pending_fields": [
+        "external_source_lock",
+        "pass_fail_rule",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "Compiled running-angle points remain diagnostic-only and are not ready for benchmark-promotion review."
+    },
+    {
+      "name": "Gauge-theory derivation or proof package",
+      "priority": "medium",
+      "fields_total": 6,
+      "fields_complete": 1,
+      "fields_pending": 5,
+      "pending_fields": [
+        "derivation_scope",
+        "artifact_path",
+        "status_rule",
+        "benchmark_identity",
+        "limitation_note"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "No audit-grade derivation or proof package currently closes the electroweak theory branch."
+    }
+  ],
+  "claim_boundary": "A ready row has enough provenance structure for source review. It does not itself upgrade a claim."
+}

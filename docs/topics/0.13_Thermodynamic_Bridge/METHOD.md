@@ -38,6 +38,7 @@ flowchart LR
 | Bekenstein/Unruh/Hawking links | Formula-consistency checks against standard identities | `D/C` | Context for thermodynamic gravity bridge; not independent UET validation. |
 | Cattaneo heat-flux benchmark | Synthetic hysteresis dataset and Euler relaxation update | `D` | Demonstrates expected lag behavior only. |
 | Vacuum entropy sink | Topic-local heuristic simulation | `E/D` | Hypothesis sandbox; cannot support core claims yet. |
+| Source-evidence gate | Intake stub plus readiness matrix for unresolved upstream files and uncertainty packages | `Workflow gate` | Blocks claim/data upgrades until missing external evidence is explicitly attached. |
 
 ## Variable framing
 
@@ -73,3 +74,10 @@ flowchart LR
 | `0.0_Grand_Unification` | receives this topic as a bridge constraint | Integration-only until this topic's external data and formula audit are source-locked. |
 | `0.23_Unity_Scale_Link` | depends on this topic for information-energy scale logic | Must inherit `0.13` limitations where scale links rely on Landauer/Bekenstein bridge claims. |
 | `0.26_Cosmic_Dynamic_Frame` | may reference thermodynamic frame language | Cannot use synthetic/vacuum-sink sections as empirical support. |
+
+## Provenance hardening workflow
+
+1. Run `Research_Landauer.py` to regenerate the verifier artifact and source-evidence workflow files.
+2. Fill `Data/03_Research/source_evidence_intake_stub.json` only with real DOI/URL/local-path/row evidence.
+3. Use `Data/03_Research/source_evidence_readiness_matrix.json` as the gate before changing claim class or rewriting working-copy data.
+4. Promote wording only when formula audit, source evidence, verifier artifact, and dependency limitations agree.

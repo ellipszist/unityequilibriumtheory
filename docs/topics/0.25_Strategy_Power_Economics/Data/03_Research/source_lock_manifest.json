@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "data_class": "topic-derived source-lock package",
+  "topic": "0.25_Strategy_Power_Economics",
+  "purpose": "Bind topic-local market, macroeconomy, and snapshot working copies to explicit provenance classes, unit conventions, and claim boundaries.",
+  "source_targets": [
+    {
+      "local_path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/SP500_yahoo_real.csv",
+      "source_class": "yahoo-style topic-local market snapshot",
+      "source_note": "Yahoo-style OHLCV CSV with yfinance-like header rows; original query log and retrieval timestamp are not archived.",
+      "unit_system": "Date in ISO yyyy-mm-dd; close/open/high/low in index points; volume in source-reported units",
+      "benchmark_role": "primary equity market diagnostic input",
+      "ticker": "^GSPC"
+    },
+    {
+      "local_path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/Gold_yahoo_real.csv",
+      "source_class": "yahoo-style topic-local market snapshot",
+      "source_note": "Yahoo-style OHLCV CSV with yfinance-like header rows; original query log and retrieval timestamp are not archived.",
+      "unit_system": "Date in ISO yyyy-mm-dd; price fields in USD/oz futures quote units; volume in source-reported contract units",
+      "benchmark_role": "commodity stability diagnostic input",
+      "ticker": "GC=F"
+    },
+    {
+      "local_path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/Bitcoin_yahoo_real.csv",
+      "source_class": "yahoo-style topic-local market snapshot",
+      "source_note": "Yahoo-style OHLCV CSV with yfinance-like header rows; original query log and retrieval timestamp are not archived.",
+      "unit_system": "Date in ISO yyyy-mm-dd; price fields in USD; volume in source-reported units",
+      "benchmark_role": "crypto volatility diagnostic input",
+      "ticker": "BTC-USD"
+    },
+    {
+      "local_path": "docs/topics/0.25_Strategy_Power_Economics/Data/Global_Economy_2024.json",
+      "source_class": "local world-bank-imf referenced working copy",
+      "source_note": "Topic-local macroeconomic table with named World Bank/IMF references but no locked upstream table URL or DOI.",
+      "unit_system": "Population count; GDP PPP in USD; Gini in 0-100 scale",
+      "benchmark_role": "economy baseline sanity input"
+    },
+    {
+      "local_path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/daily_economic_snapshot.json",
+      "source_class": "local gateway snapshot",
+      "source_note": "Topic-local mixed-indicator snapshot labeled UET_FINANCIAL_GATEWAY without upstream API metadata.",
+      "unit_system": "mixed per indicator: points, USD/oz, THB, percent",
+      "benchmark_role": "daily context snapshot"
+    }
+  ],
+  "shared_external_reference": {
+    "local_path": "docs/data/external/finance/yahoo_snapshots/0_23_unity_scale_link/source_manifest.json",
+    "role": "provider-level Yahoo-style snapshot metadata reused as a provenance anchor for header format and unit conventions only",
+    "limitations": [
+      "This shared manifest does not prove that 0.25 market CSVs came from the same exact retrieval event.",
+      "Per-file query parameters and retrieval timestamps for 0.25 are still missing."
+    ]
+  },
+  "claim_boundary": "This source-lock manifest improves provenance discipline for descriptive market and macroeconomic diagnostics only. It does not make the topic archival or policy-claim ready."
+}

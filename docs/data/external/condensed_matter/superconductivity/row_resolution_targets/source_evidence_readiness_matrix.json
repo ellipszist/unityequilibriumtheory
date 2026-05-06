@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_source_evidence_readiness_matrix",
+  "source_role": "archive-readiness gate for unresolved superconductivity row evidence",
+  "source_label": "Superconductivity row-resolution external evidence readiness",
+  "checked_date": "2026-05-07",
+  "summary": {
+    "materials_total": 3,
+    "materials_with_archived_rows_ready": 0,
+    "materials_blocked_by_missing_archive": 3
+  },
+  "materials": [
+    {
+      "material": "Vanadium (V)",
+      "priority": "immediate",
+      "fields_total": 4,
+      "fields_archived": 0,
+      "fields_pending_archive": 4,
+      "ready_for_topic_review_handoff": false
+    },
+    {
+      "material": "Nb3Sn",
+      "priority": "high",
+      "fields_total": 4,
+      "fields_archived": 0,
+      "fields_pending_archive": 4,
+      "ready_for_topic_review_handoff": false
+    },
+    {
+      "material": "Nb3Ge",
+      "priority": "high",
+      "fields_total": 4,
+      "fields_archived": 0,
+      "fields_pending_archive": 4,
+      "ready_for_topic_review_handoff": false
+    }
+  ],
+  "claim_boundary": "This readiness matrix is for external archiving only. A material marked ready still needs topic-level compatibility review before any row patch."
+}

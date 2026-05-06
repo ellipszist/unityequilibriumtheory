@@ -33,6 +33,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 4. Compute predicted vacuum wavelength using `R_H`.
 5. Compute per-line residuals and fitted slope through origin.
 6. Write artifact with hashes, thresholds, metrics, and limitations.
+7. Write `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json` so the hydrogen benchmark stays separate from broader atomic-theory claims.
 
 ## Assumptions
 

@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.22_Biophysics_Origin_of_Life",
+  "purpose": "Readiness matrix for biomedical source evidence before data edits or claim upgrades.",
+  "summary": {
+    "source_targets_total": 5,
+    "targets_ready_for_source_review": 1,
+    "targets_blocked_by_pending_evidence": 4
+  },
+  "readiness_rows": [
+    {
+      "name": "CHB-MIT raw EDF and seizure-window package",
+      "priority": "immediate",
+      "fields_total": 6,
+      "fields_complete": 6,
+      "fields_pending": 0,
+      "pending_fields": [],
+      "target_status": "partial",
+      "ready_for_source_review": true,
+      "blocking_reason": ""
+    },
+    {
+      "name": "Bonn EEG source package and license",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 4,
+      "fields_pending": 2,
+      "pending_fields": [
+        "license_or_usage_terms",
+        "unit_basis_and_sampling_rate"
+      ],
+      "target_status": "partial",
+      "ready_for_source_review": false,
+      "blocking_reason": "One or more required evidence fields are still pending."
+    },
+    {
+      "name": "TCGA or real omics matrix package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 3,
+      "fields_pending": 3,
+      "pending_fields": [
+        "cohort_or_assay_identifier",
+        "expression_unit_basis",
+        "sample_and_feature_filter_note"
+      ],
+      "target_status": "partial",
+      "ready_for_source_review": false,
+      "blocking_reason": "One or more required evidence fields are still pending."
+    },
+    {
+      "name": "HP protein-folding benchmark package",
+      "priority": "medium",
+      "fields_total": 6,
+      "fields_complete": 0,
+      "fields_pending": 6,
+      "pending_fields": [
+        "doi_or_url",
+        "local_path",
+        "sequence_or_benchmark_identifier",
+        "known_optimum_or_baseline",
+        "unit_basis",
+        "preprocessing_or_extraction_note"
+      ],
+      "target_status": "pending",
+      "ready_for_source_review": false,
+      "blocking_reason": "One or more required evidence fields are still pending."
+    },
+    {
+      "name": "Prebiotic or protocell chemistry evidence package",
+      "priority": "medium",
+      "fields_total": 6,
+      "fields_complete": 0,
+      "fields_pending": 6,
+      "pending_fields": [
+        "doi_or_url",
+        "local_path",
+        "reaction_network_or_experiment_identifier",
+        "yield_or_concentration_unit_basis",
+        "environment_or_boundary_condition_note",
+        "preprocessing_or_extraction_note"
+      ],
+      "target_status": "pending",
+      "ready_for_source_review": false,
+      "blocking_reason": "One or more required evidence fields are still pending."
+    }
+  ],
+  "claim_boundary": "This matrix is a workflow gate only. A target marked ready still requires actual source review before working-copy or claim changes."
+}

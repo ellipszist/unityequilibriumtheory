@@ -46,3 +46,4 @@ The reviewed integration formula registry is `FORMULA_AUDIT.md`.
 
 - This topic inherits assumptions and calibration choices from subordinate topics and should not be described as parameter-free.
 - The integration artifact must eventually read subordinate artifact statuses before being treated as a reliable dependency gate.
+- The primary verifier now writes `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json` so integration behavior stays separate from unification closure claims.

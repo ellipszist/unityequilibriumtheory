@@ -12,6 +12,15 @@
   - `docs/data/external/biophysics/eeg/chb_mit/source_record.json`
   - `docs/data/external/biophysics/eeg/bonn/source_record.json`
   - `docs/data/external/biophysics/omics/tcga/source_record.json`
+- Generated workflow artifacts:
+  - `data/03_Research/source_evidence_intake_stub.json`
+  - `data/03_Research/source_evidence_readiness_matrix.json`
+  - `data/03_Research/subclaim_gate.json`
+- Current readiness snapshot after rerun:
+  - CHB-MIT row: `6/6` fields complete, ready for source review of the current summary-based package
+  - Bonn row: `4/6` complete, blocked by license and source sampling-rate metadata
+  - TCGA row: `3/6` complete, blocked by cohort/assay identity and feature-filter metadata
+  - HP protein and prebiotic rows: `0/6` complete
 - Baseline:
   - Seeded synthetic biomarker positive-control matrix.
   - Source-labeled EEG/TCGA records and local EEG summaries are hashed as provenance context but are not used by the primary biomarker verifier.
@@ -30,4 +39,6 @@
   - Result/artifacts/0_22_biophysics_origin_of_life_verification.json
 - Interpretation:
   - Treat output as a diagnostic code-path check only.
+  - Treat source-evidence and subclaim-gate outputs as workflow controls, not as biomedical validation.
+  - A readiness row marked ready means the current working-copy evidence package is ready for human source review, not that the lane is claim-ready or raw-biomedical complete.
   - Do not use this verifier as clinical biomarker validation, EEG seizure validation, TCGA validation, or origin-of-life proof.

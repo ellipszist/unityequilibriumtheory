@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.4_Superconductivity_Superfluids",
+  "purpose": "Claim gate for separate superconductivity benchmark and theory branches inside the topic.",
+  "summary": {
+    "branches_total": 6,
+    "accepted_now": 1,
+    "blocked_for_strong_claims": 5
+  },
+  "branches": [
+    {
+      "branch": "Raw McMillan baseline branch",
+      "status": "accepted_failure_diagnostic_only",
+      "allowed_usage_now": "Internal baseline diagnostic and blocker decomposition only.",
+      "blocker_to_stronger_claim": "Need row-level source normalization and a passing or better-bounded benchmark package before promotion."
+    },
+    {
+      "branch": "Row-normalized conventional superconductors branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "In-progress source-normalization workflow only.",
+      "blocker_to_stronger_claim": "Need completed row evidence, normalized inputs, and rerun benchmark results."
+    },
+    {
+      "branch": "Allen-Dynes or comprehensive engine branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Model formulation and future benchmark path only.",
+      "blocker_to_stronger_claim": "Need source-backed row package and held-out validation artifact."
+    },
+    {
+      "branch": "UET coherence or relativistic correction branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Heuristic bridge only.",
+      "blocker_to_stronger_claim": "Need parameter-origin clarity and out-of-sample validation."
+    },
+    {
+      "branch": "High-Tc and hydride branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Future hardening target only.",
+      "blocker_to_stronger_claim": "Need separate source-backed gates and mechanism-appropriate benchmarks."
+    },
+    {
+      "branch": "Universal superconductivity theory claims",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Not supported by the current evidence package.",
+      "blocker_to_stronger_claim": "Need successful source-backed validation across conventional and non-BCS regimes plus theory closure."
+    }
+  ],
+  "claim_boundary": "This gate cannot raise the topic above the current baseline-diagnostic status while the raw McMillan artifact remains FAIL."
+}

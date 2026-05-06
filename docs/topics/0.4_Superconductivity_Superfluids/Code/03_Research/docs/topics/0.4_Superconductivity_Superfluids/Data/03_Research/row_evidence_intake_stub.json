@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.4_Superconductivity_Superfluids",
+  "purpose": "Structured intake stub for future row-level evidence before any working-copy edits are applied.",
+  "instructions": [
+    "Fill one evidence entry per material row and per source artifact.",
+    "Do not overwrite working-copy values from this file directly.",
+    "Attach source path, source type, field-level value, unit basis, and extraction note first.",
+    "Only after evidence review should a row patch preview be promoted into an actual data edit."
+  ],
+  "materials": [
+    {
+      "name": "Vanadium (V)",
+      "source_priority": "borderline_source_lock_required",
+      "recommended_starting_point": "Check the Tc row identity and Theta_D_K-backed lambda_ep citation first.",
+      "evidence_entries": [
+        {
+          "field": "Tc_observed",
+          "status": "pending",
+          "source_type": "",
+          "source_path_or_doi": "",
+          "original_row_identifier": "",
+          "extracted_value": null,
+          "unit_basis": "",
+          "extraction_note": ""
+        },
+        {
+          "field": "Theta_D_K",
+          "status": "pending",
+          "source_type": "",
+          "source_path_or_doi": "",
+          "original_row_identifier": "",
+          "extracted_value": null,
+          "unit_basis": "K",
+          "extraction_note": ""
+        },
+        {
+          "field": "lambda_ep",
+          "status": "pending",
+          "source_type": "",
+          "source_path_or_doi": "",
+          "original_row_identifier": "",
+          "extracted_value": null,
+          "unit_basis": "dimensionless",
+          "extraction_note": ""
+        },
+        {
+          "field": "mu_star",
+          "status": "pending",
+          "source_type": "",
+          "source_path_or_doi": "",
+          "original_row_identifier": "",
+          "extracted_value": null,
+          "unit_basis": "dimensionless",
+          "extraction_note": ""
+        }
+      ]
+    },
+    {
+      "name": "Nb3Sn",
+      "source_priority": "external_resolution_required",
+      "recommended_starting_point": "Resolve Tc row identity and phonon proxy convention before any parameter patching.",
+      "evidence_entries": [
+        {
+          "field": "Tc_observed",
+          "status": "pending",
+          "source_type": "",
+          "source_path_or_doi": "",
+          "original_row_identifier": "",
+          "extracted_value": null,
+          "unit_basis": "",
+          "extraction_note": ""
+        },
+        {
+          "field": "Theta_D_K_or_omega_log_K",
+          "status": "pending",
+          "source_type": "",
+          "source_path_or_doi": "",
+          "original_row_identifier": "",
+          "extracted_value": null,
+          "unit_basis": "K",
+          "extraction_note": ""
+        },
+        {
+          "field": "lambda_ep",
+          "status": "pending",
+          "source_type": "",
+          "source_path_or_doi": "",
+          "original_row_identifier": "",
+          "extracted_value": null,
+          "unit_basis": "dimensionless",
+          "extraction_note": ""
+        },
+        {
+          "field": "mu_star",
+          "status": "pending",
+          "source_type": "",
+          "source_path_or_doi": "",
+          "original_row_identifier": "",
+          "extracted_value": null,
+          "unit_basis": "dimensionless",
+          "extraction_note": ""
+        }
+      ]
+    },
+    {
+      "name": "Nb3Ge",
+      "source_priority": "external_resolution_required",
+      "recommended_starting_point": "Resolve Tc row identity and phonon proxy convention before any parameter patching.",
+      "evidence_entries": [
+        {
+          "field": "Tc_observed",
+          "status": "pending",
+          "source_type": "",
+          "source_path_or_doi": "",
+          "original_row_identifier": "",
+          "extracted_value": null,
+          "unit_basis": "",
+          "extraction_note": ""
+        },
+        {
+          "field": "Theta_D_K_or_omega_log_K",
+          "status": "pending",
+          "source_type": "",
+          "source_path_or_doi": "",
+          "original_row_identifier": "",
+          "extracted_value": null,
+          "unit_basis": "K",
+          "extraction_note": ""
+        },
+        {
+          "field": "lambda_ep",
+          "status": "pending",
+          "source_type": "",
+          "source_path_or_doi": "",
+          "original_row_identifier": "",
+          "extracted_value": null,
+          "unit_basis": "dimensionless",
+          "extraction_note": ""
+        },
+        {
+          "field": "mu_star",
+          "status": "pending",
+          "source_type": "",
+          "source_path_or_doi": "",
+          "original_row_identifier": "",
+          "extracted_value": null,
+          "unit_basis": "dimensionless",
+          "extraction_note": ""
+        }
+      ]
+    }
+  ],
+  "claim_boundary": "This intake file is for evidence collection only. Filling it does not by itself authorize a row edit or claim upgrade."
+}

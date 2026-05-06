@@ -6,6 +6,9 @@
   not prove the UET topological-filament mechanism.
 - Raw experimental event counts and full statistical reconstruction are not
   included in the topic data package.
+- Source-evidence readiness is still pending for the Hensen benchmark package,
+  raw-event or supplement package, secondary Bell summary provenance, and
+  adjacent qubit-lane provenance.
 - The stored Hensen 2015 working copy has a DOI, but secondary Bell/qubit files
   still need fuller upstream provenance.
 - Qubit T1, double-slit, tunneling, and LC-unity scripts are separate lanes and

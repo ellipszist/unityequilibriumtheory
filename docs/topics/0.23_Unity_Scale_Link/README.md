@@ -51,8 +51,8 @@ flowchart LR
 | Core mechanism | Same Omega implementation can evaluate normalized fields | `Code/01_Engine/Engine_Unity_Scale.py`, `FORMULA_AUDIT.md` | Define dimensional contracts so normalized comparisons do not erase physical scale. |
 | Data | Source-referenced local finance snapshots plus synthetic galaxy/neural fields | `DATA_MANIFEST.md`, `data/03_Research/source_lock_manifest.json`, `docs/data/external/finance/yahoo_snapshots/0_23_unity_scale_link/source_manifest.json` | Add reproducible Yahoo query logs/retrieval timestamps and replace synthetic neural fields with real EEG. |
 | Formula | Reviewed formula audit now separates Omega form, normalization, kappa-running, falsification, and cross-domain tests | `FORMULA_AUDIT.md` | Link each calibration to upstream topic artifact and uncertainty. |
-| Verification | Primary verifier writes structured artifact with test metrics and warning reasons | `VERIFICATION_SPEC.md`, `Result/artifacts/0_23_unity_scale_link_verification.json` | Add real external EEG/finance/cosmology source packages and fixed thresholds. |
-| Dependency | Inherits `0.13` bridge limitations and calibration status from `0.5`/`0.6` | `METHOD.md`, `LIMITATIONS.md` | A dependent claim cannot exceed the weakest required source topic. |
+| Verification | Primary verifier writes structured artifact with directional test outcomes, not merely run success | `VERIFICATION_SPEC.md`, `Result/artifacts/0_23_unity_scale_link_verification.json` | Add real external EEG/finance/cosmology source packages and fixed thresholds. |
+| Dependency | Inherits `0.13` bridge limitations and calibration status from `0.5`/`0.6`, now with an explicit dependency manifest | `METHOD.md`, `LIMITATIONS.md`, `data/03_Research/scale_dependency_manifest.json` | A dependent claim cannot exceed the weakest required source topic. |
 
 ---
 
@@ -72,7 +72,7 @@ flowchart LR
 | Fixed parameter unity | Does one `kappa` work everywhere? | Falsification says no | PASS as blocker |
 | Scale-dependent kappa | Do selected points suggest a running pattern? | Hand-selected exploratory curve | WARN |
 | Cross-domain transfer | Does galaxy-like `kappa` separate generated neural states? | Synthetic check passes | WARN |
-| Finance comparison | Does local SP500 snapshot produce comparable Omega diagnostics? | Source-metadata manifest plus local snapshot | WARN |
+| Finance comparison | Does local SP500 snapshot follow the same ordering as the synthetic neural diagnostic? | Must be checked explicitly; mismatch is allowed and recorded | WARN |
 
 ---
 

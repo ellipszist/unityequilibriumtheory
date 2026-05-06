@@ -33,6 +33,9 @@ python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validat
 ## Artifact Target
 
 - `Result/artifacts/0_20_atomic_physics_verification.json`
+- `Data/03_Research/source_evidence_intake_stub.json`
+- `Data/03_Research/source_evidence_readiness_matrix.json`
+- `Data/03_Research/branch_claim_gate.json`
 
 The artifact must record:
 
@@ -45,3 +48,4 @@ The artifact must record:
 ## Interpretation
 
 A PASS supports only a Claim Class C internal hydrogen-spectrum benchmark using the standard Rydberg relation. It does not derive `R_H` from UET first principles and does not validate fine structure, Lamb shift, helium, or many-electron atoms.
+Topic-level source-evidence and branch-claim gates further limit this topic to hydrogen-benchmark usage unless dedicated atomic artifacts are added.

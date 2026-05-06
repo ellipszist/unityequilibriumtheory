@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.10_Fluid_Dynamics_Chaos",
+  "purpose": "Claim gate for separate fluid benchmark and theorem branches inside the topic.",
+  "summary": {
+    "branches_total": 5,
+    "accepted_now": 2,
+    "blocked_for_strong_claims": 3
+  },
+  "branches": [
+    {
+      "branch": "Embedded speed benchmark branch",
+      "status": "accepted_internal_benchmark",
+      "allowed_usage_now": "Internal implementation speed comparison against the embedded simplified comparator.",
+      "blocker_to_stronger_claim": "Need external CFD baselines and broader hardware/configuration checks before promotion beyond internal benchmark status."
+    },
+    {
+      "branch": "Stress stability diagnostic branch",
+      "status": "accepted_internal_diagnostic",
+      "allowed_usage_now": "Finite-output stress diagnostic only.",
+      "blocker_to_stronger_claim": "Need norm-growth and broader stability evidence before stronger claims."
+    },
+    {
+      "branch": "External CFD validation branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Not yet supported by packaged data.",
+      "blocker_to_stronger_claim": "Need source-backed external CFD/turbulence validation cases and artifact-backed comparisons."
+    },
+    {
+      "branch": "Physical fluid and Reynolds-number branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Not yet a primary gate.",
+      "blocker_to_stronger_claim": "Need physical-unit fluid-property cases with declared Reynolds-number validation workflows."
+    },
+    {
+      "branch": "Navier-Stokes theorem or Millennium-proof claims",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Not supported by current evidence.",
+      "blocker_to_stronger_claim": "Need a separate proof package with explicit theorem assumptions and audit-grade status rules."
+    }
+  ],
+  "claim_boundary": "This gate cannot raise the topic above the current internal speed/stability benchmark package."
+}

@@ -4,6 +4,7 @@
 - Heavy nuclei pass the current gate, but light nuclei are still intentionally excluded from the strict liquid-drop validation regime.
 - The full-table diagnostic layer is expected to show much weaker performance for lighter nuclei, so the topic should not be described as uniformly accurate across the whole AME2020 parsed table.
 - The engine uses fixed semi-empirical coefficients plus a UET correction term, so this topic should not yet be presented as fully parameter-free.
+- Only the heavy-nucleus subset branch and proton-radius benchmark-anchor branch are currently accepted by the branch claim gate.
 - PDG quark-mass and hadron-mass layers are still partly legacy local snapshots and should be upgraded separately.
 - The proton-radius path currently returns a benchmark-anchor value and should not be described as an independent radius prediction.
 - The QCD bridge contains diagnostic/open branches, including a data-shape bug in `alpha_s_uet_v2`, and should not support public QCD-running claims until hardened.

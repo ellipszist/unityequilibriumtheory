@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.0_Grand_Unification",
+  "purpose": "Readiness matrix for source-evidence review across integration and closure branches.",
+  "summary": {
+    "source_targets_total": 5,
+    "targets_ready_for_source_review": 2,
+    "targets_blocked_by_pending_evidence": 3,
+    "dependencies_warn_or_unknown": 4
+  },
+  "readiness_rows": [
+    {
+      "name": "Integration dependency manifest package",
+      "priority": "immediate",
+      "fields_total": 6,
+      "fields_complete": 5,
+      "fields_pending": 1,
+      "pending_fields": [
+        "full_core_scope_0_1_to_0_26"
+      ],
+      "ready_for_source_review": true,
+      "blocking_reason": null
+    },
+    {
+      "name": "Subordinate artifact identity package",
+      "priority": "immediate",
+      "fields_total": 6,
+      "fields_complete": 5,
+      "fields_pending": 1,
+      "pending_fields": [
+        "all_dependencies_pass"
+      ],
+      "ready_for_source_review": true,
+      "blocking_reason": null
+    },
+    {
+      "name": "Core-topic coverage expansion package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 2,
+      "fields_pending": 4,
+      "pending_fields": [
+        "missing_core_topics_list",
+        "expanded_manifest_path",
+        "artifact_inventory",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The current manifest covers only selected dependencies, not the full `0.1-0.26` core scope."
+    },
+    {
+      "name": "Paper-readiness gate package",
+      "priority": "high",
+      "fields_total": 6,
+      "fields_complete": 3,
+      "fields_pending": 3,
+      "pending_fields": [
+        "source_incomplete_block_rule",
+        "open_formula_block_rule",
+        "derived_claim_class_rule"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "Dependency governance exists, but the integration topic still lacks a complete paper-readiness closure gate."
+    },
+    {
+      "name": "Grand-unification closure package",
+      "priority": "medium",
+      "fields_total": 6,
+      "fields_complete": 0,
+      "fields_pending": 6,
+      "pending_fields": [
+        "all_core_topics_manifested_and_verified",
+        "dependency_closure_artifact",
+        "cross_topic_formula_map",
+        "unit_consistency_proof",
+        "artifact_path",
+        "upgrade_requirement"
+      ],
+      "ready_for_source_review": false,
+      "blocking_reason": "The repo still has subordinate WARN/UNKNOWN dependencies and one FAIL artifact outside the selected manifest path."
+    }
+  ],
+  "claim_boundary": "A ready row has enough provenance structure for source review. It does not by itself upgrade unification claims."
+}

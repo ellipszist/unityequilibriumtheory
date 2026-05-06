@@ -14,7 +14,7 @@
     {
       "topic": "0.6_Electroweak_Physics",
       "role": "Weinberg-angle metric dependency",
-      "artifact": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/0_6_electroweak_physics_verification.json",
+      "artifact": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/electroweak_pdg_validation.json",
       "metric_bridge": "weinberg_angle"
     },
     {

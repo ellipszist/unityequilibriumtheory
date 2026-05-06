@@ -1,4 +1,14 @@
 {
+  "branch_claim_gate": {
+    "claim_boundary": "This gate keeps the topic at selected-benchmark and mechanism-diagnostic status, not universal theory closure.",
+    "path": "Data/03_Research/branch_claim_gate.json",
+    "sha256": "66de252cd345ace7933a6ebd0ebb0ad0f1c0c93beab68aec0577bc7114b6aa84",
+    "summary": {
+      "accepted_now": 2,
+      "blocked_for_strong_claims": 4,
+      "branches_total": 6
+    }
+  },
   "claim_class": "C internal benchmark",
   "command": "python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exponents.py",
   "environment": {
@@ -13,27 +23,63 @@
       "sha256": "bf752ae2426bc69ab47b7f3696cfd15e19b74b66a0d61ffa55a928f9a263e91c"
     }
   ],
+  "interpretation": "This artifact supports a selected beta benchmark branch and a normalized mechanism-diagnostic branch. It does not prove a universal phase-transition theory.",
   "limitations": [
     "Only beta is tested in the current primary gate.",
     "Gamma, nu, scaling relations, morphology, and material critical-point datasets are not yet gated.",
     "The UET beta relation is a heuristic projection until broader exponent and derivation checks are added."
   ],
   "metrics": {
+    "accepted_claim_branches": 2,
     "beta_3d_ising_theory": 0.3265,
     "beta_experimental_fluids": 0.325,
     "beta_mean_field": 0.5,
     "beta_relative_error_percent": 2.4615384615384635,
-    "beta_uet": 0.333
+    "beta_uet": 0.333,
+    "source_targets_blocked": 5,
+    "source_targets_ready_for_review": 0
   },
   "results": {
+    "branch_claim_gate_summary": {
+      "accepted_now": 2,
+      "blocked_for_strong_claims": 4,
+      "branches_total": 6
+    },
     "interpretation": "selected beta critical-exponent compatibility only",
-    "plot_path": "Result\\01_Showcase\\Critical_Exponents_Validation.png"
+    "plot_path": "Result\\01_Showcase\\Critical_Exponents_Validation.png",
+    "source_evidence_readiness_summary": {
+      "source_targets_total": 5,
+      "targets_blocked_by_pending_evidence": 5,
+      "targets_ready_for_source_review": 0
+    }
   },
   "schema_version": "1.1",
+  "source_evidence_intake_stub": {
+    "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself prove a universal phase-transition theory.",
+    "path": "Data/03_Research/source_evidence_intake_stub.json",
+    "sha256": "5b2f08d358e46a135086d70827dccd60fc9ecb12ed61ca17b73eac19ccf6b6ee",
+    "source_targets": [
+      "Critical exponent benchmark package",
+      "Critical-point material table package",
+      "Cahn-Hilliard morphology package",
+      "Order-parameter proof package",
+      "Universality and renormalization-group closure package"
+    ]
+  },
+  "source_evidence_readiness_matrix": {
+    "claim_boundary": "A ready row has enough provenance structure for source review. It does not by itself upgrade universality claims.",
+    "path": "Data/03_Research/source_evidence_readiness_matrix.json",
+    "sha256": "a0093b43bfa79c0b55511f46dd4dea3fdef0e477caf0cd4c38801ec7670e34a4",
+    "summary": {
+      "source_targets_total": 5,
+      "targets_blocked_by_pending_evidence": 5,
+      "targets_ready_for_source_review": 0
+    }
+  },
   "status": "PASS",
   "thresholds": {
     "beta_relative_error_percent_max": 5.0
   },
-  "timestamp_utc": "2026-04-29T16:16:42.385300+00:00",
+  "timestamp_utc": "2026-05-05T17:30:15.311324+00:00",
   "topic": "0.11_Phase_Transitions"
 }

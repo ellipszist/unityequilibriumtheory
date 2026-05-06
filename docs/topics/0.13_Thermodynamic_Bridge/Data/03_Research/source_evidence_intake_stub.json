@@ -1,0 +1,235 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "purpose": "Structured intake stub for external-source evidence before claim upgrades or data rewrites.",
+  "instructions": [
+    "Fill one source entry per unresolved upstream dataset or uncertainty record.",
+    "Record DOI or URL, local path, file identity, unit basis, and extraction note before using the source in a verifier change.",
+    "Do not treat this file as the evidence itself; it is an intake and tracking layer."
+  ],
+  "source_targets": [
+    {
+      "name": "Berut 2012 raw or supplementary numeric table",
+      "priority": "immediate",
+      "status": "pending",
+      "evidence_fields": [
+        {
+          "field": "doi_or_url",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "local_path",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "original_file_name",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "row_identifier_or_table_label",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "unit_basis",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "extraction_note",
+          "status": "pending",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "name": "Jun 2014 nanomagnetic erasure benchmark source",
+      "priority": "high",
+      "status": "pending",
+      "evidence_fields": [
+        {
+          "field": "doi_or_url",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "local_path",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "original_file_name",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "reported_energy_value",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "unit_basis",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "extraction_note",
+          "status": "pending",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "name": "Peterson 2018 quantum Landauer benchmark source",
+      "priority": "high",
+      "status": "pending",
+      "evidence_fields": [
+        {
+          "field": "doi_or_url",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "local_path",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "original_file_name",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "reported_energy_value",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "unit_basis",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "extraction_note",
+          "status": "pending",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "name": "LIGO/Virgo mass uncertainty source package",
+      "priority": "medium",
+      "status": "pending",
+      "evidence_fields": [
+        {
+          "field": "doi_or_url",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "local_path",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "event_identifier",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "mass_value_and_uncertainty",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "unit_basis",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "extraction_note",
+          "status": "pending",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "name": "EHT black-hole mass source package",
+      "priority": "medium",
+      "status": "pending",
+      "evidence_fields": [
+        {
+          "field": "doi_or_url",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "local_path",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "object_identifier",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "mass_value_and_uncertainty",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "unit_basis",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "extraction_note",
+          "status": "pending",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "name": "Measured-constant uncertainty record beyond exact SI constants",
+      "priority": "medium",
+      "status": "pending",
+      "evidence_fields": [
+        {
+          "field": "doi_or_url",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "local_path",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "constant_identifier",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "value_and_uncertainty",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "unit_basis",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "extraction_note",
+          "status": "pending",
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "claim_boundary": "This intake stub is for source evidence capture only. Filling it does not by itself justify upgrading the thermodynamic bridge claim class."
+}

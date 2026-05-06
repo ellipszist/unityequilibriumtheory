@@ -70,6 +70,9 @@ DATA_DIR = str(DATA_PATH)
 ARTIFACT_PATH = (
     TOPIC_DIR / "Result" / "artifacts" / "0_14_complex_systems_verification.json"
 )
+SOURCE_EVIDENCE_INTAKE_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_intake_stub.json"
+SOURCE_EVIDENCE_READINESS_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_readiness_matrix.json"
+BRANCH_CLAIM_GATE_PATH = TOPIC_DIR / "Data" / "03_Research" / "branch_claim_gate.json"
 
 
 # Standardized UET Root Path
@@ -179,9 +182,239 @@ def _hrv_input_hashes():
     return inputs
 
 
+def _write_json(path, payload):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    return payload
+
+
+def _load_json_if_exists(path):
+    if not path.exists():
+        return None
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _field(field, status, value):
+    return {"field": field, "status": status, "value": value}
+
+
+def _build_source_evidence_intake_stub():
+    source_record_path = root_path / "docs" / "data" / "external" / "biophysics" / "hrv" / "mit_bih_nsrdb" / "source_record.json"
+    source_record = _load_json_if_exists(source_record_path)
+    source_lock_path = TOPIC_DIR / "Data" / "03_Research" / "biology_hrv" / "source_lock_manifest.json"
+    source_lock = _load_json_if_exists(source_lock_path)
+    record_ids = source_record.get("record_ids_used_by_topic", []) if source_record else []
+    runtime_filter = (
+        source_lock.get("preprocessing_contract", {}).get("runtime_filter", "")
+        if source_lock
+        else ""
+    )
+    runtime_unit = (
+        source_lock.get("preprocessing_contract", {}).get("runtime_unit", "")
+        if source_lock
+        else ""
+    )
+    hrv_ready = bool(source_record and source_lock and record_ids)
+    payload = {
+        "schema_version": "1.0",
+        "topic": "0.14_Complex_Systems",
+        "purpose": "Structured intake stub for branch-specific source evidence before data rewrites or stronger complex-systems claims.",
+        "instructions": [
+            "Attach upstream DOI or URL, local archive path, branch identifier, and preprocessing note before changing a working-copy dataset.",
+            "Record unit convention, record IDs, and baseline role separately for each branch.",
+            "Do not treat this file as evidence by itself; it is an intake and tracking layer."
+        ],
+        "source_targets": [
+            {
+                "name": "HRV raw PhysioNet package and extraction workflow",
+                "priority": "immediate",
+                "status": "partial" if hrv_ready else "pending",
+                "evidence_fields": [
+                    _field(
+                        "doi_or_url",
+                        "complete" if source_record and source_record.get("dataset_url") else "pending",
+                        source_record.get("dataset_url", "") if source_record else "",
+                    ),
+                    _field(
+                        "local_path",
+                        "complete" if source_record_path.exists() else "pending",
+                        str(source_record_path.relative_to(root_path)).replace("\\", "/") if source_record_path.exists() else "",
+                    ),
+                    _field(
+                        "record_id_manifest",
+                        "complete" if record_ids else "pending",
+                        ",".join(record_ids),
+                    ),
+                    _field("extraction_command_or_script", "pending", ""),
+                    _field(
+                        "unit_basis_and_filter_contract",
+                        "complete" if runtime_filter or runtime_unit else "pending",
+                        f"{runtime_unit}; filter={runtime_filter}" if (runtime_filter or runtime_unit) else "",
+                    ),
+                    _field(
+                        "preprocessing_note",
+                        "complete" if source_lock else "pending",
+                        source_lock.get("preprocessing_contract", {}).get("raw_source_status", "") if source_lock else "",
+                    ),
+                ],
+            },
+            {
+                "name": "SOC avalanche benchmark package",
+                "priority": "high",
+                "status": "pending",
+                "evidence_fields": [
+                    {"field": "source_reference", "status": "pending", "value": ""},
+                    {"field": "local_path", "status": "pending", "value": ""},
+                    {"field": "avalanche_dataset_or_simulation_identifier", "status": "pending", "value": ""},
+                    {"field": "exponent_baseline_reference", "status": "pending", "value": ""},
+                    {"field": "unit_basis", "status": "pending", "value": ""},
+                    {"field": "preprocessing_note", "status": "pending", "value": ""},
+                ],
+            },
+            {
+                "name": "Econophysics market benchmark package",
+                "priority": "high",
+                "status": "pending",
+                "evidence_fields": [
+                    {"field": "ticker_or_market_source_reference", "status": "pending", "value": ""},
+                    {"field": "local_path", "status": "pending", "value": ""},
+                    {"field": "date_range_or_series_identifier", "status": "pending", "value": ""},
+                    {"field": "baseline_model_reference", "status": "pending", "value": ""},
+                    {"field": "unit_basis", "status": "pending", "value": ""},
+                    {"field": "preprocessing_note", "status": "pending", "value": ""},
+                ],
+            },
+            {
+                "name": "Climate and inequality branch package",
+                "priority": "medium",
+                "status": "pending",
+                "evidence_fields": [
+                    {"field": "source_reference", "status": "pending", "value": ""},
+                    {"field": "local_path", "status": "pending", "value": ""},
+                    {"field": "series_or_indicator_identifier", "status": "pending", "value": ""},
+                    {"field": "unit_basis", "status": "pending", "value": ""},
+                    {"field": "baseline_or_comparator_reference", "status": "pending", "value": ""},
+                    {"field": "preprocessing_note", "status": "pending", "value": ""},
+                ],
+            },
+            {
+                "name": "Social-network or ledger branch package",
+                "priority": "medium",
+                "status": "pending",
+                "evidence_fields": [
+                    {"field": "source_reference", "status": "pending", "value": ""},
+                    {"field": "local_path", "status": "pending", "value": ""},
+                    {"field": "graph_or_ledger_identifier", "status": "pending", "value": ""},
+                    {"field": "unit_basis", "status": "pending", "value": ""},
+                    {"field": "baseline_or_comparator_reference", "status": "pending", "value": ""},
+                    {"field": "preprocessing_note", "status": "pending", "value": ""},
+                ],
+            },
+        ],
+        "claim_boundary": "This intake stub is for source evidence capture only. Filling it does not by itself justify broad complex-systems, clinical, market, climate, or social claims.",
+    }
+    return _write_json(SOURCE_EVIDENCE_INTAKE_PATH, payload)
+
+
+def _build_source_evidence_readiness_matrix(intake_stub):
+    rows = []
+    ready = 0
+    blocked = 0
+    for target in intake_stub["source_targets"]:
+        pending_fields = [field["field"] for field in target["evidence_fields"] if field.get("status") != "complete"]
+        fields_total = len(target["evidence_fields"])
+        fields_complete = fields_total - len(pending_fields)
+        row_ready = not pending_fields
+        if row_ready:
+            ready += 1
+        else:
+            blocked += 1
+        rows.append(
+            {
+                "name": target["name"],
+                "priority": target["priority"],
+                "fields_total": fields_total,
+                "fields_complete": fields_complete,
+                "fields_pending": len(pending_fields),
+                "pending_fields": pending_fields,
+                "ready_for_source_review": row_ready,
+                "blocking_reason": "" if row_ready else "One or more required evidence fields are still pending.",
+            }
+        )
+    payload = {
+        "schema_version": "1.0",
+        "topic": "0.14_Complex_Systems",
+        "purpose": "Readiness matrix for branch-specific source evidence before data edits or claim upgrades.",
+        "summary": {
+            "source_targets_total": len(rows),
+            "targets_ready_for_source_review": ready,
+            "targets_blocked_by_pending_evidence": blocked,
+        },
+        "readiness_rows": rows,
+        "claim_boundary": "This matrix is a workflow gate only. A target marked ready still requires actual source review before working-copy or claim changes.",
+    }
+    return _write_json(SOURCE_EVIDENCE_READINESS_PATH, payload)
+
+
+def _build_branch_claim_gate():
+    payload = {
+        "schema_version": "1.0",
+        "topic": "0.14_Complex_Systems",
+        "purpose": "Claim gate for separate complex-systems branches inside the topic.",
+        "summary": {
+            "branches_total": 6,
+            "accepted_now": 1,
+            "blocked_for_strong_claims": 5,
+        },
+        "branches": [
+            {
+                "branch": "HRV derived-RR benchmark",
+                "status": "accepted_run_contract_only",
+                "allowed_usage_now": "Source-referenced HRV metrics benchmark only.",
+                "blocker_to_stronger_claim": "Need raw PhysioNet files, extraction workflow, and frozen numeric acceptance thresholds."
+            },
+            {
+                "branch": "SOC branch",
+                "status": "blocked_for_strong_claims",
+                "allowed_usage_now": "Simulation or formula sandbox only.",
+                "blocker_to_stronger_claim": "Need seeded avalanche benchmark, exponent fit, and artifact-producing verifier."
+            },
+            {
+                "branch": "Econophysics branch",
+                "status": "blocked_for_strong_claims",
+                "allowed_usage_now": "Local market sandbox only.",
+                "blocker_to_stronger_claim": "Need source-locked market data, baseline model, and thresholded artifact."
+            },
+            {
+                "branch": "Climate branch",
+                "status": "blocked_for_strong_claims",
+                "allowed_usage_now": "Exploratory local series only.",
+                "blocker_to_stronger_claim": "Need source identity, baseline comparison, and dedicated verifier artifact."
+            },
+            {
+                "branch": "Inequality and social branches",
+                "status": "blocked_for_strong_claims",
+                "allowed_usage_now": "Exploratory local working files only.",
+                "blocker_to_stronger_claim": "Need source-locked data, unit contracts, and branch-specific artifacts."
+            },
+            {
+                "branch": "Cross-domain universal complexity claims",
+                "status": "blocked_for_strong_claims",
+                "allowed_usage_now": "Conceptual framing only.",
+                "blocker_to_stronger_claim": "Need separate verifier gates for each branch before any universal theory claim."
+            },
+        ],
+        "claim_boundary": "This gate cannot raise claim strength above the current HRV run-contract evidence.",
+    }
+    return _write_json(BRANCH_CLAIM_GATE_PATH, payload)
+
+
 def write_verification_artifact(result):
     """Write the primary verifier artifact required by VERIFICATION_SPEC.md."""
     ARTIFACT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    source_evidence_intake_stub = _build_source_evidence_intake_stub()
+    source_evidence_readiness_matrix = _build_source_evidence_readiness_matrix(source_evidence_intake_stub)
+    branch_claim_gate = _build_branch_claim_gate()
     artifact = {
         "schema_version": "1.1",
         "topic": "0.14_Complex_Systems",
@@ -190,6 +423,24 @@ def write_verification_artifact(result):
         "status": result.get("status", "FAIL"),
         "passed_run_contract": result.get("status") in {"PASS", "WARN"},
         "input_hashes": _hrv_input_hashes(),
+        "source_evidence_intake_stub": {
+            "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
+            "sha256": _sha256(SOURCE_EVIDENCE_INTAKE_PATH),
+            "source_targets": [item["name"] for item in source_evidence_intake_stub["source_targets"]],
+            "claim_boundary": "This intake stub is for source evidence capture only. It does not authorize data or claim upgrades by itself.",
+        },
+        "source_evidence_readiness_matrix": {
+            "path": str(SOURCE_EVIDENCE_READINESS_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
+            "sha256": _sha256(SOURCE_EVIDENCE_READINESS_PATH),
+            "summary": source_evidence_readiness_matrix["summary"],
+            "claim_boundary": "This readiness matrix is a workflow gate only. It tracks whether source evidence is still pending.",
+        },
+        "branch_claim_gate": {
+            "path": str(BRANCH_CLAIM_GATE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
+            "sha256": _sha256(BRANCH_CLAIM_GATE_PATH),
+            "summary": branch_claim_gate["summary"],
+            "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current HRV run-contract evidence.",
+        },
         "metrics": {
             "avg_sdnn_ms": result.get("avg_sdnn_ms"),
             "avg_rmssd_ms": result.get("avg_rmssd_ms"),

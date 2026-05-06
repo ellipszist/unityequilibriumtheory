@@ -48,6 +48,8 @@ from docs.core.uet_glass_box import UETPathManager
 
 TOPIC_DIR = ROOT / "docs" / "topics" / "0.13_Thermodynamic_Bridge"
 ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_13_thermodynamic_bridge_verification.json"
+SOURCE_EVIDENCE_INTAKE_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_intake_stub.json"
+SOURCE_EVIDENCE_READINESS_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_readiness_matrix.json"
 DATA_INPUTS = [
     TOPIC_DIR / "Data" / "03_Research" / "__init__.py",
     TOPIC_DIR / "Data" / "03_Research" / "berut_2012.json",
@@ -116,6 +118,152 @@ def _audit_metrics():
     }
 
 
+def _build_source_evidence_intake_stub():
+    stub = {
+        "schema_version": "1.0",
+        "topic": "0.13_Thermodynamic_Bridge",
+        "purpose": "Structured intake stub for external-source evidence before claim upgrades or data rewrites.",
+        "instructions": [
+            "Fill one source entry per unresolved upstream dataset or uncertainty record.",
+            "Record DOI or URL, local path, file identity, unit basis, and extraction note before using the source in a verifier change.",
+            "Do not treat this file as the evidence itself; it is an intake and tracking layer.",
+        ],
+        "source_targets": [
+            {
+                "name": "Berut 2012 raw or supplementary numeric table",
+                "priority": "immediate",
+                "status": "pending",
+                "evidence_fields": [
+                    {"field": "doi_or_url", "status": "pending", "value": ""},
+                    {"field": "local_path", "status": "pending", "value": ""},
+                    {"field": "original_file_name", "status": "pending", "value": ""},
+                    {"field": "row_identifier_or_table_label", "status": "pending", "value": ""},
+                    {"field": "unit_basis", "status": "pending", "value": ""},
+                    {"field": "extraction_note", "status": "pending", "value": ""},
+                ],
+            },
+            {
+                "name": "Jun 2014 nanomagnetic erasure benchmark source",
+                "priority": "high",
+                "status": "pending",
+                "evidence_fields": [
+                    {"field": "doi_or_url", "status": "pending", "value": ""},
+                    {"field": "local_path", "status": "pending", "value": ""},
+                    {"field": "original_file_name", "status": "pending", "value": ""},
+                    {"field": "reported_energy_value", "status": "pending", "value": ""},
+                    {"field": "unit_basis", "status": "pending", "value": ""},
+                    {"field": "extraction_note", "status": "pending", "value": ""},
+                ],
+            },
+            {
+                "name": "Peterson 2018 quantum Landauer benchmark source",
+                "priority": "high",
+                "status": "pending",
+                "evidence_fields": [
+                    {"field": "doi_or_url", "status": "pending", "value": ""},
+                    {"field": "local_path", "status": "pending", "value": ""},
+                    {"field": "original_file_name", "status": "pending", "value": ""},
+                    {"field": "reported_energy_value", "status": "pending", "value": ""},
+                    {"field": "unit_basis", "status": "pending", "value": ""},
+                    {"field": "extraction_note", "status": "pending", "value": ""},
+                ],
+            },
+            {
+                "name": "LIGO/Virgo mass uncertainty source package",
+                "priority": "medium",
+                "status": "pending",
+                "evidence_fields": [
+                    {"field": "doi_or_url", "status": "pending", "value": ""},
+                    {"field": "local_path", "status": "pending", "value": ""},
+                    {"field": "event_identifier", "status": "pending", "value": ""},
+                    {"field": "mass_value_and_uncertainty", "status": "pending", "value": ""},
+                    {"field": "unit_basis", "status": "pending", "value": ""},
+                    {"field": "extraction_note", "status": "pending", "value": ""},
+                ],
+            },
+            {
+                "name": "EHT black-hole mass source package",
+                "priority": "medium",
+                "status": "pending",
+                "evidence_fields": [
+                    {"field": "doi_or_url", "status": "pending", "value": ""},
+                    {"field": "local_path", "status": "pending", "value": ""},
+                    {"field": "object_identifier", "status": "pending", "value": ""},
+                    {"field": "mass_value_and_uncertainty", "status": "pending", "value": ""},
+                    {"field": "unit_basis", "status": "pending", "value": ""},
+                    {"field": "extraction_note", "status": "pending", "value": ""},
+                ],
+            },
+            {
+                "name": "Measured-constant uncertainty record beyond exact SI constants",
+                "priority": "medium",
+                "status": "pending",
+                "evidence_fields": [
+                    {"field": "doi_or_url", "status": "pending", "value": ""},
+                    {"field": "local_path", "status": "pending", "value": ""},
+                    {"field": "constant_identifier", "status": "pending", "value": ""},
+                    {"field": "value_and_uncertainty", "status": "pending", "value": ""},
+                    {"field": "unit_basis", "status": "pending", "value": ""},
+                    {"field": "extraction_note", "status": "pending", "value": ""},
+                ],
+            },
+        ],
+        "claim_boundary": (
+            "This intake stub is for source evidence capture only. Filling it does not by itself justify "
+            "upgrading the thermodynamic bridge claim class."
+        ),
+    }
+    SOURCE_EVIDENCE_INTAKE_PATH.write_text(json.dumps(stub, indent=2), encoding="utf-8")
+    return stub
+
+
+def _build_source_evidence_readiness_matrix(intake_stub: dict):
+    readiness_rows = []
+    for target in intake_stub.get("source_targets", []):
+        pending = [field["field"] for field in target["evidence_fields"] if field.get("status") != "complete"]
+        ready = len(pending) == 0
+        readiness_rows.append(
+            {
+                "name": target["name"],
+                "priority": target["priority"],
+                "fields_total": len(target["evidence_fields"]),
+                "fields_complete": sum(
+                    1 for field in target["evidence_fields"] if field.get("status") == "complete"
+                ),
+                "fields_pending": len(pending),
+                "pending_fields": pending,
+                "ready_for_source_review": ready,
+                "blocking_reason": (
+                    None
+                    if ready
+                    else "One or more required evidence fields are still pending."
+                ),
+            }
+        )
+
+    matrix = {
+        "schema_version": "1.0",
+        "topic": "0.13_Thermodynamic_Bridge",
+        "purpose": "Readiness matrix for external-source evidence before provenance or claim upgrades.",
+        "summary": {
+            "source_targets_total": len(readiness_rows),
+            "targets_ready_for_source_review": sum(
+                1 for row in readiness_rows if row["ready_for_source_review"]
+            ),
+            "targets_blocked_by_pending_evidence": sum(
+                1 for row in readiness_rows if not row["ready_for_source_review"]
+            ),
+        },
+        "readiness_rows": readiness_rows,
+        "claim_boundary": (
+            "This matrix is an evidence-readiness gate only. A target marked ready still requires "
+            "actual source review before data or claim changes."
+        ),
+    }
+    SOURCE_EVIDENCE_READINESS_PATH.write_text(json.dumps(matrix, indent=2), encoding="utf-8")
+    return matrix
+
+
 def _write_verification_artifact(test_results, plot_paths, metrics):
     test_pass = all(item["passed"] for item in test_results)
     plot_pass = all(item["saved"] for item in plot_paths)
@@ -136,6 +284,11 @@ def _write_verification_artifact(test_results, plot_paths, metrics):
     if not (test_pass and formula_pass and lower_bound_pass):
         status = "FAIL"
 
+    source_evidence_intake_stub = _build_source_evidence_intake_stub()
+    source_evidence_readiness_matrix = _build_source_evidence_readiness_matrix(
+        source_evidence_intake_stub
+    )
+
     artifact = {
         "schema_version": "1.1",
         "topic": "0.13_Thermodynamic_Bridge",
@@ -153,6 +306,24 @@ def _write_verification_artifact(test_results, plot_paths, metrics):
         },
         "test_results": test_results,
         "plot_artifacts": plot_paths,
+        "source_evidence_intake_stub": {
+            "path": SOURCE_EVIDENCE_INTAKE_PATH.relative_to(ROOT).as_posix(),
+            "sha256": _sha256(SOURCE_EVIDENCE_INTAKE_PATH),
+            "source_targets": [item["name"] for item in source_evidence_intake_stub["source_targets"]],
+            "claim_boundary": (
+                "This intake stub is for source evidence capture only. "
+                "It does not authorize data or claim upgrades by itself."
+            ),
+        },
+        "source_evidence_readiness_matrix": {
+            "path": SOURCE_EVIDENCE_READINESS_PATH.relative_to(ROOT).as_posix(),
+            "sha256": _sha256(SOURCE_EVIDENCE_READINESS_PATH),
+            "summary": source_evidence_readiness_matrix["summary"],
+            "claim_boundary": (
+                "This readiness matrix is a workflow gate only. "
+                "It tracks whether source evidence is still pending."
+            ),
+        },
         "warnings": warnings,
         "interpretation": (
             "The Landauer relation is anchored to exact SI constants and topic-local literature summary values. "

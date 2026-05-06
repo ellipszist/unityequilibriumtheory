@@ -4,10 +4,10 @@
     "Test": "Bell_State_Fidelity",
     "Samples": 1000,
     "Counts": {
-        "(0, 0)": 494,
+        "(0, 0)": 504,
         "(0, 1)": 0,
         "(1, 0)": 0,
-        "(1, 1)": 506
+        "(1, 1)": 496
     },
     "Fidelity": 1.0,
     "Status": "PASS"

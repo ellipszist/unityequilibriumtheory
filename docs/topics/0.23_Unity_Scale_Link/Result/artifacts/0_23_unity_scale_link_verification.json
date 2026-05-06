@@ -1,8 +1,8 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "topic": "0.23_Unity_Scale_Link",
   "command": ".venv\\Scripts\\python.exe docs\\topics\\0.23_Unity_Scale_Link\\Code\\03_Research\\Research_Cross_Domain.py",
-  "timestamp_utc": "2026-04-30T13:45:33.806393+00:00",
+  "timestamp_utc": "2026-05-04T15:22:33.593174+00:00",
   "status": "WARN",
   "claim_class": "D",
   "inputs": [
@@ -15,6 +15,11 @@
       "path": "docs/topics/0.23_Unity_Scale_Link/data/03_Research/source_lock_manifest.json",
       "sha256": "c909161011c3cef45433542753e50bf6e6c216c914e9a07fd41122310e29fe4c",
       "size_bytes": 1969
+    },
+    {
+      "path": "docs/topics/0.23_Unity_Scale_Link/data/03_Research/scale_dependency_manifest.json",
+      "sha256": "d0d1b1fc4efa18d2f3b3469e90d3380d2d0993fb55f85826812db63cca8e4938",
+      "size_bytes": 2757
     },
     {
       "path": "docs/topics/0.23_Unity_Scale_Link/data/03_Research/economy/Bitcoin_yahoo_real.csv",
@@ -43,13 +48,23 @@
     },
     {
       "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/0_13_thermodynamic_bridge_verification.json",
-      "sha256": "36710d40c43b5a7d730159180d17704f77cb222455d43526c3696004e3ce5aa3",
-      "size_bytes": 3983
+      "sha256": "22c78eb08656459735d3782d2dafe0507a78609d15ba1a2469d184dec37ca805",
+      "size_bytes": 5237
+    },
+    {
+      "path": "docs/topics/0.5_Nuclear_Binding_Hadrons/Result/artifacts/0_5_nuclear_binding_hadrons_verification.json",
+      "sha256": "fbb29c6f4574476edc3f22af409dc22fd043fc5a87e1110f5556670d28b10797",
+      "size_bytes": 5029
+    },
+    {
+      "path": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/0_6_electroweak_physics_verification.json",
+      "sha256": "1284decd7f42292ea896c422cff730b6dfdffbe2cbe46e89cc558170356e9d33",
+      "size_bytes": 2569
     },
     {
       "path": "docs/topics/0.7_Neutrino_Physics/Result/artifacts/nufit_6_0_validation.json",
-      "sha256": "0c6a3a45e5bd3583ca535c73ee705de8b0d29df9d5ab934b7705ccc0a88c2e3d",
-      "size_bytes": 7609
+      "sha256": "9cb201e54d244b38a16733dc333c7efb7e40f08e3ef0e96b9e89190bf01e79da",
+      "size_bytes": 7601
     }
   ],
   "metrics": {
@@ -75,6 +90,8 @@
       "low_vol_samples": 50,
       "kappa": 0.1,
       "beta": 0.05,
+      "omega_difference_high_minus_low": -0.04617171789936236,
+      "same_ordering_as_synthetic_neural": true,
       "data_role": "local SP500 snapshot compared to synthetic neural interpretation"
     },
     "universal_kappa": {
@@ -98,6 +115,62 @@
     "galaxy_neural": true,
     "economy_neural": true,
     "universal_kappa": true
+  },
+  "dependency_manifest": {
+    "schema_version": "1.0",
+    "topic": "0.23_Unity_Scale_Link",
+    "purpose": "Record which upstream core-topic artifacts and local calibration assumptions feed the current scale-link verifier.",
+    "dependency_chain": [
+      {
+        "topic": "0.13_Thermodynamic_Bridge",
+        "artifact": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/0_13_thermodynamic_bridge_verification.json",
+        "role": "Constrains beta and information-energy interpretation.",
+        "status_inheritance": "0.23 cannot outrank 0.13 while this dependency remains WARN.",
+        "claim_class_ceiling": "C/D"
+      },
+      {
+        "topic": "0.5_Nuclear_Binding_Hadrons",
+        "artifact": "docs/topics/0.5_Nuclear_Binding_Hadrons/Result/artifacts/0_5_nuclear_binding_hadrons_verification.json",
+        "role": "Provides nuclear-scale calibration context for kappa-running discussion and fixed-parameter falsification narrative.",
+        "status_inheritance": "Open formula-audit entries or calibration uncertainty in 0.5 propagate into 0.23 running-kappa claims.",
+        "claim_class_ceiling": "D"
+      },
+      {
+        "topic": "0.6_Electroweak_Physics",
+        "artifact": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/0_6_electroweak_physics_verification.json",
+        "role": "Provides electroweak-scale calibration context for beta discontinuity and cross-scale mismatch statements.",
+        "status_inheritance": "0.23 electroweak mismatch wording must stay consistent with 0.6 artifact scope.",
+        "claim_class_ceiling": "C/D"
+      },
+      {
+        "topic": "0.7_Neutrino_Physics",
+        "artifact": "docs/topics/0.7_Neutrino_Physics/Result/artifacts/nufit_6_0_validation.json",
+        "role": "Example of a source-locked core benchmark used as a dependency-policy comparator.",
+        "status_inheritance": "PASS benchmark gate does not by itself validate the scale-link mechanism.",
+        "claim_class_ceiling": "C"
+      }
+    ],
+    "local_assumptions": [
+      {
+        "name": "synthetic neural field generator",
+        "source": "Code/01_Engine/Engine_Unity_Scale.py",
+        "role": "Model-shape diagnostic only",
+        "status": "simulation_only"
+      },
+      {
+        "name": "synthetic galaxy field generator",
+        "source": "Code/01_Engine/Engine_Unity_Scale.py",
+        "role": "Model-shape diagnostic only",
+        "status": "simulation_only"
+      },
+      {
+        "name": "Yahoo-style finance CSV snapshots",
+        "source": "docs/data/external/finance/yahoo_snapshots/0_23_unity_scale_link/source_manifest.json",
+        "role": "Local source-referenced volatility comparison",
+        "status": "source_referenced_local_snapshot"
+      }
+    ],
+    "claim_boundary": "This manifest increases traceability but does not upgrade 0.23 beyond exploratory structural scale-link evidence."
   },
   "warnings": [
     "Finance snapshots now have local source metadata and hashes, but original Yahoo query logs/retrieval timestamps remain unavailable.",

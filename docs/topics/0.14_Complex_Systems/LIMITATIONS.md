@@ -6,6 +6,7 @@
 - Internal script execution does not by itself establish external replication, theorem-level proof, or broad physical closure.
 - The current primary artifact supports an HRV run-contract/internal metric check only; it does not validate SOC, econophysics, climate, inequality, or social-network branches.
 - HRV files are mapped to MIT-BIH Normal Sinus Rhythm Database record IDs and source metadata, but original PhysioNet files, extraction commands, and preprocessing scripts are not yet frozen.
+- `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, and `Data/03_Research/branch_claim_gate.json` are workflow controls only. They do not count as branch validation or universal complex-systems evidence.
 - `Engine_Complexity.get_extra_metrics()` still reports `power_law_exponent: 0.0`; SOC avalanche statistics therefore are not yet an exponent-verified claim.
 - Econophysics return dynamics use local scale constants (`50`, `0.5`, `10000`, `0.90`, `0.10`) that are not source-locked or independently calibrated.
 - Qualitative scripts that print PASS for framework matches must not be treated as audit-grade evidence until they write machine-readable artifacts with thresholds and failure reasons.

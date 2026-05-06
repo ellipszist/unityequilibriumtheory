@@ -2,7 +2,7 @@
   "schema_version": "1.1",
   "topic": "0.26_Cosmic_Dynamic_Frame",
   "command": ".venv\\Scripts\\python.exe docs\\topics\\0.26_Cosmic_Dynamic_Frame\\Code\\03_Research\\Research_Cosmic_Flows.py",
-  "timestamp_utc": "2026-04-30T07:29:36.482807+00:00",
+  "timestamp_utc": "2026-05-06T15:43:30.880747+00:00",
   "status": "WARN",
   "claim_class": "D",
   "inputs": [
@@ -64,6 +64,37 @@
     "has_flow_path": true
   },
   "figure_artifact": "Result\\01_Showcase\\Laniakea_Flow_Map.png",
+  "source_evidence_intake_stub": {
+    "path": "docs\\topics\\0.26_Cosmic_Dynamic_Frame\\Data\\03_Research\\source_evidence_intake_stub.json",
+    "sha256": "8594d023b18bb0fdd26d425a10326dc69abb67fb1a1ea40d320e12f7ab80362b",
+    "source_targets": [
+      "Laniakea raw or reconstruction table package",
+      "Cosmicflows-3 subset extraction package",
+      "Pioneer anomaly residual or telemetry package",
+      "Pioneer thermal-recoil competitor baseline"
+    ],
+    "claim_boundary": "This intake stub is for source evidence capture only. It does not authorize data or claim upgrades by itself."
+  },
+  "source_evidence_readiness_matrix": {
+    "path": "docs\\topics\\0.26_Cosmic_Dynamic_Frame\\Data\\03_Research\\source_evidence_readiness_matrix.json",
+    "sha256": "a073f82add1281ebae0d789f90690a9024b106046b7fb51d05477ef11f607fd1",
+    "summary": {
+      "source_targets_total": 4,
+      "targets_ready_for_source_review": 0,
+      "targets_blocked_by_pending_evidence": 4
+    },
+    "claim_boundary": "This readiness matrix is a workflow gate only. It tracks whether source evidence is still pending."
+  },
+  "dependency_claim_gate": {
+    "path": "docs\\topics\\0.26_Cosmic_Dynamic_Frame\\Data\\03_Research\\dependency_claim_gate.json",
+    "sha256": "13fa161b9bc834f410e3b8135d674cdb8280b72d5133f9f00046d03bf0e41309",
+    "summary": {
+      "dependencies_total": 3,
+      "dependencies_with_warn_status": 3,
+      "dependencies_with_pass_status": 0
+    },
+    "claim_boundary": "This dependency gate records inherited claim limits only. It cannot upgrade the dynamic-frame claim class."
+  },
   "warnings": [
     "Laniakea/Cosmicflows/Pioneer source records are pinned, but raw tables, frame metadata, and preprocessing are not archived.",
     "This verifier checks data loading and flow-map generation, not a cosmological model fit.",

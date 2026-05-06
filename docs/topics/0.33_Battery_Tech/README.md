@@ -1,27 +1,20 @@
+---
+layout: article
+title: "UET Topic 0.33: Battery Tech"
+description: "Exploratory future-concept placeholder for battery technology work."
+---
+
 # 0.33 Battery Tech
+
+This folder is currently an exploratory future-concept placeholder only.
 
 ## Current status
 
 - Scope class: `future_concept`
+- Status: `Draft`
 - Audit tier: `D`
-- Readiness: `Draft`
-- Theory-core role: none in the current `0.0-0.26` credibility phase
+- Claim boundary: no scientific, engineering, or product-performance claim is supported from this folder yet
 
-## Scope note
+## Current limitation
 
-This directory currently contains future-facing battery-technology material and is not part
-of the theory-core evidence package. It also shares the `0.33` numeric prefix with
-`0.33_High_Energy_Density_Battery_Materials`, so a later cleanup pass should either merge,
-rename, or clearly separate the two directories.
-
-## Evidence boundary
-
-- No topic-root standards package is currently present.
-- No canonical dataset path is locked.
-- No verification command or artifact contract is locked.
-- Do not cite this topic as evidence for UET theory-core credibility.
-
-## Next action
-
-Keep this topic explicitly exploratory until it is merged, renamed, or promoted through the
-same standards gate used for other topics.
+This topic does not yet have a standards package, source-backed data, formula audit, or runnable verifier. It must not be used as evidence for core theory claims.

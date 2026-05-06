@@ -1,0 +1,198 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.14_Complex_Systems",
+  "purpose": "Structured intake stub for branch-specific source evidence before data rewrites or stronger complex-systems claims.",
+  "instructions": [
+    "Attach upstream DOI or URL, local archive path, branch identifier, and preprocessing note before changing a working-copy dataset.",
+    "Record unit convention, record IDs, and baseline role separately for each branch.",
+    "Do not treat this file as evidence by itself; it is an intake and tracking layer."
+  ],
+  "source_targets": [
+    {
+      "name": "HRV raw PhysioNet package and extraction workflow",
+      "priority": "immediate",
+      "status": "partial",
+      "evidence_fields": [
+        {
+          "field": "doi_or_url",
+          "status": "complete",
+          "value": "https://physionet.org/content/nsrdb/1.0.0/"
+        },
+        {
+          "field": "local_path",
+          "status": "complete",
+          "value": "docs/data/external/biophysics/hrv/mit_bih_nsrdb/source_record.json"
+        },
+        {
+          "field": "record_id_manifest",
+          "status": "complete",
+          "value": "16265,16272,16273,16420,16483"
+        },
+        {
+          "field": "extraction_command_or_script",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "unit_basis_and_filter_contract",
+          "status": "complete",
+          "value": "seconds; filter=pd.to_numeric(first_column, errors='coerce'), drop NaN, keep 0.3 < rr < 2.0"
+        },
+        {
+          "field": "preprocessing_note",
+          "status": "complete",
+          "value": "original PhysioNet .dat/.hea/.atr files and extraction logs are not archived"
+        }
+      ]
+    },
+    {
+      "name": "SOC avalanche benchmark package",
+      "priority": "high",
+      "status": "pending",
+      "evidence_fields": [
+        {
+          "field": "source_reference",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "local_path",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "avalanche_dataset_or_simulation_identifier",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "exponent_baseline_reference",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "unit_basis",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "preprocessing_note",
+          "status": "pending",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "name": "Econophysics market benchmark package",
+      "priority": "high",
+      "status": "pending",
+      "evidence_fields": [
+        {
+          "field": "ticker_or_market_source_reference",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "local_path",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "date_range_or_series_identifier",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "baseline_model_reference",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "unit_basis",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "preprocessing_note",
+          "status": "pending",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "name": "Climate and inequality branch package",
+      "priority": "medium",
+      "status": "pending",
+      "evidence_fields": [
+        {
+          "field": "source_reference",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "local_path",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "series_or_indicator_identifier",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "unit_basis",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "baseline_or_comparator_reference",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "preprocessing_note",
+          "status": "pending",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "name": "Social-network or ledger branch package",
+      "priority": "medium",
+      "status": "pending",
+      "evidence_fields": [
+        {
+          "field": "source_reference",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "local_path",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "graph_or_ledger_identifier",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "unit_basis",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "baseline_or_comparator_reference",
+          "status": "pending",
+          "value": ""
+        },
+        {
+          "field": "preprocessing_note",
+          "status": "pending",
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "claim_boundary": "This intake stub is for source evidence capture only. Filling it does not by itself justify broad complex-systems, clinical, market, climate, or social claims."
+}

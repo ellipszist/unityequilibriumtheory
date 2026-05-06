@@ -38,6 +38,8 @@ flowchart LR
 | Data | Real source referenced, topic-local working copy | `Data/03_Research/mohideen_1998_casimir.json` | The benchmark uses a declared Mohideen/Roy-style sphere-plate dataset. | Upstream archival URL/DOI and transcription audit still need freezing. |
 | Formula | Reviewed registry | `FORMULA_AUDIT.md` | PFA Casimir and finite-conductivity formulas are mapped to code and units. | Parallel-plate pressure function is still named as force; dark-energy anchor is not derived. |
 | Verification | Runnable primary artifact | `Code/03_Research/Research_Casimir.py` | Casimir force agreement can be judged by average and max relative error thresholds. | Needs radius/material sensitivity runs and independent baseline comparison. |
+| Source evidence workflow | Structured provenance gate | `Data/03_Research/source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json` | source-review queue | Upstream archival pointers, sensitivity packages, and cosmology bridge evidence are still missing. |
+| Branch claim gate | Structured claim ceiling | `Data/03_Research/branch_claim_gate.json` | benchmark-only claim control | Casimir benchmark does not promote vacuum-energy closure claims. |
 | Claims | Bounded to Casimir benchmark | this README, `METHOD.md`, `LIMITATIONS.md` | Supports internal benchmark claims only. | Does not solve the vacuum catastrophe or establish dark energy. |
 | Dependencies | Limited downstream use | `0.0`, `0.13`, `0.23`, `0.26` | Downstream topics may cite Casimir benchmark behavior. | Downstream topics must inherit dark-energy bridge limitations. |
 
@@ -60,5 +62,8 @@ The verifier must record PASS/FAIL, dataset hash, geometry, model radius, formul
 - `VERIFICATION_SPEC.md`: primary command, thresholds, artifact contract.
 - `METHOD.md`: modeling assumptions and dependency policy.
 - `LIMITATIONS.md`: explicit boundaries for vacuum-energy and cosmology claims.
+- `Data/03_Research/source_evidence_intake_stub.json`: provenance intake for benchmark and bridge upgrades.
+- `Data/03_Research/source_evidence_readiness_matrix.json`: readiness gate for source review.
+- `Data/03_Research/branch_claim_gate.json`: branch-level claim ceiling.
 - `Code/01_Engine/Engine_Vacuum.py`: current engine implementation.
 - `Code/03_Research/Research_Casimir.py`: primary benchmark verifier.

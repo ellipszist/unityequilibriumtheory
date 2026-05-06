@@ -16,6 +16,7 @@
 - A stale hardcoded anomaly constant can still create an artificial failure against the 2025 package, so workflow discipline matters here: the benchmark must read the live engine, not a disconnected topic-local reference number.
 - The current UET anomaly term remains a compact closed-form engine output and is not yet re-derived from a fuller hadronic or electroweak coupling package.
 - The current sensitivity layer now separates `legacy_2023`, published/derived `2025`, and `null-gap` baselines, and the baseline package adds historical local theory packages, but it still does not cover the full space of external alternate theory packages or downstream consistency with related particle topics.
+- Topic-level source-evidence and branch-claim gates now make that boundary explicit: accepted evidence stops at source-backed benchmark compatibility and workflow governance, not anomaly closure.
 
 ## Interpretation rule
 

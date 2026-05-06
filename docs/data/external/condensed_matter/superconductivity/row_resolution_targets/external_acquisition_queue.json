@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_acquisition_queue",
+  "source_role": "sequencing queue for raw superconductivity row archiving",
+  "source_label": "Superconductivity row-resolution external acquisition queue",
+  "checked_date": "2026-05-07",
+  "summary": {
+    "materials_total": 3,
+    "top_priority_material": "Vanadium (V)",
+    "materials_ready_for_archive_handoff": 0
+  },
+  "queue_rows": [
+    {
+      "material": "Vanadium (V)",
+      "priority": "immediate",
+      "expected_source_family": "MIT Junior Lab citation chain or compatible literature row",
+      "first_archive_targets": [
+        "Tc_observed",
+        "Theta_D_K"
+      ],
+      "next_archive_action": "Archive one source row that identifies Tc and the active phonon proxy convention together if possible.",
+      "claim_boundary": "This queue sequences raw archive work only."
+    },
+    {
+      "material": "Nb3Ge",
+      "priority": "high",
+      "expected_source_family": "Gavaler 1973 citation chain or compatible A15 literature row",
+      "first_archive_targets": [
+        "Tc_observed",
+        "Theta_D_K_or_omega_log_K"
+      ],
+      "next_archive_action": "Archive one A15 row that fixes Tc identity and phonon proxy convention before coupling parameters are reviewed.",
+      "claim_boundary": "This queue sequences raw archive work only."
+    },
+    {
+      "material": "Nb3Sn",
+      "priority": "high",
+      "expected_source_family": "Matthias 1954 citation chain or compatible A15 literature row",
+      "first_archive_targets": [
+        "Tc_observed",
+        "Theta_D_K_or_omega_log_K"
+      ],
+      "next_archive_action": "Archive one A15 row that fixes Tc identity and phonon proxy convention before coupling parameters are reviewed.",
+      "claim_boundary": "This queue sequences raw archive work only."
+    }
+  ],
+  "claim_boundary": "This file orders external archiving only. It does not certify source quality or approve topic-local edits."
+}

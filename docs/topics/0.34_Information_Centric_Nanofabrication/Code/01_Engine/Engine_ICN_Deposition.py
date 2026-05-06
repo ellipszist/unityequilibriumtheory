@@ -79,24 +79,50 @@ class ICNEngine(UETBaseSolver):
         """
         I = SAW Potential (Input Actuator).
         C = Matter Concentration (Result).
+        Models Massive Parallelism: Superposition of acoustic fields from a nozzle array.
         """
-        self.I = np.ones((self.ny, self.nx)) # High pressure everywhere (Repulsive)
-        cx, cy = self.nx // 2, self.ny // 2
-        r = self.nx // 4
+        self.I = np.ones((self.ny, self.nx)) # High pressure baseline (Repulsive)
         
-        # Draw the target 'S' as pressure wells (nodes)
+        # Virtual Nozzle Array (Simulating a local cluster of the million-nozzle array)
+        num_nozzles_x = 4
+        num_nozzles_y = 8
+        nozzle_spacing_x = self.nx // num_nozzles_x
+        nozzle_spacing_y = self.ny // num_nozzles_y
+        
+        target_nodes = []
+        
+        # Construct target logic gate ('S' shape approximation) using nozzle activation
+        for ny in range(num_nozzles_y):
+            for nx in range(num_nozzles_x):
+                # Simulated pattern data loaded into the array
+                cx = nx * nozzle_spacing_x + nozzle_spacing_x // 2
+                cy = ny * nozzle_spacing_y + nozzle_spacing_y // 2
+                
+                # Activate specific nozzles to form the pattern
+                if (ny == 1 or ny == 4 or ny == 7) and (0 < nx < 3):
+                    target_nodes.append((cx, cy))
+                elif ny == 2 and nx == 1:
+                    target_nodes.append((cx, cy))
+                elif ny == 5 and nx == 2:
+                    target_nodes.append((cx, cy))
+                    
+        # Harmonic Field Superposition
+        # Nodes are created by constructive/destructive interference of acoustic fields
+        lambda_saw = 5.0 # Wavelength scale
+        
         for y in range(self.ny):
             for x in range(self.nx):
-                is_node = False
-                if (x - cx)**2 + (y - (cy - r//2))**2 < (r//2)**2:
-                    if x > cx: is_node = True
-                if (x - cx)**2 + (y - (cy + r//2))**2 < (r//2)**2:
-                    if x < cx: is_node = True
-                if abs(x - cx) < 2 and abs(y - cy) < r:
-                    is_node = True
+                potential = 1.0
+                for (cx, cy) in target_nodes:
+                    dist = np.sqrt((x - cx)**2 + (y - cy)**2)
+                    # Bessel-like acoustic interference + Gaussian envelope
+                    field_strength = np.cos(2 * np.pi * dist / lambda_saw) * np.exp(-dist**2 / 100.0)
+                    
+                    # Ideal synchronization (Harmonic resonance) lowers the potential to 0
+                    if field_strength > 0.5:
+                        potential -= 0.5 * (1.0 - self.noise_level)
                 
-                if is_node:
-                    self.I[y, x] = 0.0 # Pressure Node (Trap)
+                self.I[y, x] = max(0.0, potential) # Clamp to 0 (Node)
 
         # Precompute gradients for speed
         self.grad_I_y, self.grad_I_x = np.gradient(self.I, self.dx)

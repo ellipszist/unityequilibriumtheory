@@ -3,6 +3,8 @@
 - Solver component: `Code/01_Engine/Engine_Cosmology.py`
 - Comparison workflow: `Code/03_Research/Research_Hubble_Comparison.py`
 - Supporting analysis: CMB, dark-energy, and high-z scripts under `Code/03_Research/`
+- Workflow gates: `Data/03_Research/source_evidence_intake_stub.json`,
+  `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json`
 
 Method boundary:
 
@@ -19,6 +21,8 @@ Method boundary:
   early-universe/global frame, while SH0ES probes a late-universe/local distance-ladder frame.
 - The source-lock manifest binds Planck 2018, SH0ES 2022, and the fine-structure constant
   record to the primary artifact hashes.
+- Branch-specific workflow gates keep the scalar H0 benchmark separate from high-z,
+  dark-energy, and full-likelihood claims.
 
 Derivation boundary:
 

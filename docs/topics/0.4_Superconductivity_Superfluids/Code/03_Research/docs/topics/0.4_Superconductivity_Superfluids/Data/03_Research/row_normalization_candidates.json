@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.4_Superconductivity_Superfluids",
+  "purpose": "Internal candidate pack for row-level normalization decisions before external row checks are completed.",
+  "summary": {
+    "rows_total": 0,
+    "internal_consensus_candidates": 0,
+    "rows_needing_external_resolution": 0,
+    "rows_with_insufficient_internal_overlap": 0
+  },
+  "candidate_rows": [],
+  "claim_boundary": "This file is an internal triage layer. It helps prioritize which rows may have a stable local candidate, but it does not replace external source normalization."
+}

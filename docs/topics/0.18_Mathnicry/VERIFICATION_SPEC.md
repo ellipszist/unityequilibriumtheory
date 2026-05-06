@@ -6,6 +6,10 @@
     - `$env:PYTHONIOENCODING='utf-8'; $env:PYTHONUTF8='1'; .\.venv\Scripts\python.exe docs\topics\0.18_Mathnicry\Code\03_Research\Research_BSD_Elliptic_Unity.py`
 - Inputs:
   - `Data/Download_Quantum_Data.py`
+- Generated workflow artifacts:
+  - `Data/source_evidence_intake_stub.json`
+  - `Data/source_evidence_readiness_matrix.json`
+  - `Data/branch_claim_gate.json`
 - Baseline:
   - Internal surrogate BSD demonstration using `Engine_Elliptic_Resonance.py`.
 - Reported metrics:
@@ -30,5 +34,6 @@
   - `Code/03_Research/Research_BSD_Elliptic_Unity.py` emits `WARN` when the surrogate rank indicator contradicts the declared curve role.
 - Interpretation:
   - Treat output as an internal surrogate artifact only. Do not upgrade claim language to theorem-level, proof-level, solved, verified, or exact.
+  - Treat source-evidence and branch-claim gate outputs as workflow controls, not as theorem evidence.
   - The current BSD branch does not compute actual elliptic-curve rank or L-function order of vanishing.
   - The UTF-8 environment variables are required on this Windows shell because logger/status output uses Unicode glyphs.

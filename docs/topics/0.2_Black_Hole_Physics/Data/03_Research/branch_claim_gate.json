@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.2_Black_Hole_Physics",
+  "purpose": "Claim gate for separate black-hole branches inside the topic.",
+  "summary": {
+    "branches_total": 6,
+    "accepted_now": 2,
+    "blocked_for_strong_claims": 4
+  },
+  "branches": [
+    {
+      "branch": "EHT shadow-size benchmark branch",
+      "status": "accepted_internal_benchmark_branch",
+      "allowed_usage_now": "Accepted EHT shadow-size benchmark branch for M87* and Sgr A* under the compact shadow-size approximation.",
+      "blocker_to_stronger_claim": "Need image-domain or ray-tracing validation before promoting beyond a size benchmark."
+    },
+    {
+      "branch": "Black-hole constant-and-geometry branch",
+      "status": "accepted_gr_comparator_branch",
+      "allowed_usage_now": "Accepted comparator branch for Schwarzschild-radius and GR-style shadow geometry bookkeeping.",
+      "blocker_to_stronger_claim": "Comparator geometry does not validate a UET replacement for GR."
+    },
+    {
+      "branch": "Saturation-core singularity-resolution branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Heuristic diagnostic only.",
+      "blocker_to_stronger_claim": "Need a locked physical core scale and a source-backed internal-structure artifact."
+    },
+    {
+      "branch": "Gravitational-wave and ringdown branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Secondary lane only.",
+      "blocker_to_stronger_claim": "Need dedicated GW/ringdown artifacts with thresholds and source packages."
+    },
+    {
+      "branch": "CCBH cosmological coupling branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Not supported by current evidence.",
+      "blocker_to_stronger_claim": "Need archived Shen/Kormendy upstream data plus a runnable artifact in the repo."
+    },
+    {
+      "branch": "GR replacement or singularity-resolution claims",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Not supported by current evidence.",
+      "blocker_to_stronger_claim": "Need stronger theoretical closure and source-backed artifacts beyond the current EHT shadow benchmark."
+    }
+  ],
+  "claim_boundary": "This gate keeps the topic at EHT benchmark and comparator status, not black-hole theory closure."
+}
