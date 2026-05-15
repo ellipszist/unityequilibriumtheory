@@ -1743,6 +1743,13 @@
         "unit_system": "Tc_exp_K and omega_log_K in Kelvin-equivalent units; couplings dimensionless."
       },
       {
+        "benchmark_role": "separate Allen-Dynes smoke-test verifier input; does not replace raw McMillan gate",
+        "local_path": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/allen_dynes_source_labeled_inputs.json",
+        "preprocessing": "Separate smoke-test input table using same-source PhysRevB.27.1568 Nb3Sn Table II/Table V captures; strict gate eligibility is blocked until archive policy is accepted.",
+        "source_record": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/allen_dynes_verifier_branch_design_packet_20260515.json",
+        "unit_system": "Tc_K, omega_log_K, and omega2_sqrt_K in Kelvin; lambda_ep and mu_star dimensionless."
+      },
+      {
         "benchmark_role": "calibration diagnostic only; cannot support no-fit prediction claims",
         "local_path": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/calibrated_superconductors.json",
         "preprocessing": "Inverse-McMillan calibration table generated from target Tc values.",
@@ -1768,12 +1775,497 @@
       },
       {
         "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/source_target_manifest.json",
-        "sha256": "29a22f6c6f5fa4afd2b3756742bfbc40207a72c8b5a6b806353143af382e5404",
+        "sha256": "51c4721f7e2961ad72bcd5d1f0aead98cbf0177c019d56d61659d205a5abf034",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/local_archive_scan_report.json",
+        "sha256": "5898324f2852d1dec1b95f8252d19852f0103b8e4a14190bb3e0c3070e5e55d8",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/field_coverage_assessment.json",
+        "sha256": "88989e6ac3a855349df1efa6c8b09a81ffa0f5dae1184efbda929133150ca931",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/field_source_gap_matrix.json",
+        "sha256": "a75e429829df82ae73b81528fabfe84fcc807b3693fb5ca2f72330292fed3957",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/supplemental_source_candidates.json",
+        "sha256": "fdaf6a053e71739910bfd956b93c75c569082cfe98df3d08a6b9103eaa2e8f18",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/supplemental_source_selection_matrix.json",
+        "sha256": "fc72adb01addae2c6718fd948e4c6a0c8deede114ad5cb5efe1f6080ad52b7ab",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/a15_field_extraction_plan.json",
+        "sha256": "131ba7875eb057302b0ae74b2f690ad07a67c2b38149757cebadc314dafa5e2f",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/a15_tc_capture_stub.json",
+        "sha256": "056146e1b4874baff24136785bce7f3ac5450b3d1453fbba5295d09eb46a6032",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/a15_tc_capture_manifest.json",
+        "sha256": "2405b34b4e843d3747931e2aa9ef6ab0e68e80afc2bb61dc6ea10c79cda1b5a8",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/a15_phonon_capture_stub.json",
+        "sha256": "d349a530a86d99afbbb2cf4c3389e6387e6ebbe45918add551efcbd09972098d",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/a15_lambda_capture_stub.json",
+        "sha256": "0986b8960aa529539d2d41f5b4f47bd6a772ea22a8b29997f51415a206116d00",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/a15_support_capture_manifest.json",
+        "sha256": "361edfdafcae56a80dcf3a4f882d3494fae0ff37d7f6fb64f21ee80101291f50",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/a15_numeric_row_value_gap_report.json",
+        "sha256": "62e387bdf0e8fea274bd9b6e7cd3bb08b21f224ea9d3f110d86b82e73408f5a2",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/a15_web_numeric_extraction_blocker_report.json",
+        "sha256": "a72be4394905a1904e086e7653332648f06328328beacd7bcde700c0271b7e38",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/a15_secondary_numeric_hint_report.json",
+        "sha256": "63168d7c56d6f1bdbaa804844593548204fbd6cdb434478f9c9141a45fa15ee0",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_fulltext_numeric_acquisition_packet.json",
+        "sha256": "949b907d1cf7b1bd705d0a0bc404829ccf7e71d8c3d9b0f18e695e6e3dff7d7c",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_compatibility_review_packet.json",
+        "sha256": "7961cdd417cb8adb124b6867d470e66beddabed72a8a8bd8e98e514dd41d18ad",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_primary_numeric_capture_requirement_packet.json",
+        "sha256": "fde03d5079650fc432416fe9740e6276e8f5d195cd44e95ffeec9a1032048d5d",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_phonon_first_numeric_execution_packet.json",
+        "sha256": "b341f8c21a16e86b19cd0eea980b6474351cd2503514a5f9bd24cb4676debdfb",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_phonon_critical_blocker_packet.json",
+        "sha256": "854f5dd5fc2565aa7f40dcb9f1ee5ba53373dbacf76d5ad4fd388d48966641e0",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_phonon_capture_acceptance_gate.json",
+        "sha256": "769b5619827b2c7532113c68675cbaa2d20bf1d92b65f779826321f0be1c94c7",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_phonon_live_capture_attempt_template.json",
+        "sha256": "00ef4f22afb4a04de85ddd788ea7c3b6567701f22d35827528347cc5d8967f7c",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_phonon_live_capture_bundle.json",
+        "sha256": "2bb051f6f7b3c78d5f106911e65ee6d89b658f648f3675b2b68f6359adb7a904",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_phonon_live_capture_readiness_snapshot.json",
+        "sha256": "92ec63a3da7f0b882878a050c4b03b7e348f9bb9c160639d999f377c55d2bedd",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_phonon_live_capture_session_checklist.json",
+        "sha256": "29260eacb78321f07aa5e7d6c0da904cb78a5a52c210437ccced5a89b3e02de9",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_phonon_live_capture_session_log.json",
+        "sha256": "fd8c99acb4e11e405cc12ab2273bd1c75d90ffb20428bd264350b861e3da3101",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_phonon_attempt_2_strategy_packet.json",
+        "sha256": "fe196de96e6f141497600200b5b4d94ca3c5f27c206d55930c31ec6c57740806",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_phonon_attempt_2_session_packet.json",
+        "sha256": "717f645930f8717e657925cd4b4b6b69e80c3dd51024d5f9dfd38b9344497b73",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_phonon_attempt_2_session_checklist.json",
+        "sha256": "a410ebdcff2a54c33b7f80013d7bff8a3ebe32276deabff5d34a970b8517578c",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_phonon_canonical_pdf_access_hint.json",
+        "sha256": "86df5824f0932fe72e744e6165292c340e53f110375541ded2ecfc77be00d2e4",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn/phonon_numeric_capture_record.json",
+        "sha256": "4030b54a44a686e5b9962ac52febb5801f824e0cb6ba1dd969666d47db20b242",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_phonon_repo_archive_policy_review.json",
+        "sha256": "b480fd8fd493455b9de07f1170c9f9220feeb6eb262b953820ceb53681c0adc1",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_non_mirrored_citation_acceptance_criteria.json",
+        "sha256": "7e10511554bcd85d4cf28de2585cc5101d9ec22ec9d1d20351a7d1e2d3a7b711",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_non_mirrored_citation_policy_decision_stub.json",
+        "sha256": "69d1488a7c6389a7d5477b90fe0f3221a1399024c45830384b9a70802f28bcc7",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_phonon_review_handoff_snapshot_20260513.json",
+        "sha256": "0a49642f38cf389bc9c2ed652680674bae3b30aad8a1e66fee4eb16de0bc8b18",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_sample_choice_review.json",
+        "sha256": "db59c4385c3ac627906110b10960ea5eb91b3c19af900066c3b520cec51115f0",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_phonon_lambda_sensitivity_review.json",
+        "sha256": "4367dfc04288552515a863c4d6cafa4a56cbb46e6f991f2ed135981eb79d20cc",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_phonon_single_field_patch_impact_preview.json",
+        "sha256": "f9ce9dc18c4a3c43452c1c89a037fe3e7b3179ae8062969f8a149cc65de36020",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_lambda_compatibility_gap_review.json",
+        "sha256": "d372f9c3464c5b7867814cb0587dbaca253471505bfb26da50e954948349585c",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_lambda_row_level_evidence_target_20260513.json",
+        "sha256": "43cdc2556c51858767a25877bd9a8fca5977b6c002ff387ff4b50a9e0a344ea4",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_lambda_acquisition_readiness_snapshot_20260513.json",
+        "sha256": "81fe9278f167ef85038cdff7284bb02e05df10a3edf4471c9f22bd362af2b2fe",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_lambda_acquisition_attempt_log_20260513.json",
+        "sha256": "96b9ea073b489bc4357ab123deb29b70cbf0fdd3dcd298cf112d4d17bdd2f128",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_lambda_attempt_2_mirror_search_report_20260513.json",
+        "sha256": "ed93d00bdb4335a247338aca95d92cf32ca5acf439e2f7c8f4402584972faa14",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_lambda_attempt_3_alternate_source_scan_20260513.json",
+        "sha256": "4ca4d6c2a83aea242f508e2753133030a6ae53183dd30c655f8b9b2f71fb067a",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_lambda_attempt_4_aps_tunneling_fulltext_capture_20260513.json",
+        "sha256": "de8df51fcbee3ce003a7247b4aa38637d2bc175b651181a3ed17dffbdf56ecc1",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_source_split_compatibility_policy_review_20260513.json",
+        "sha256": "8a2e518e9f4b79309585dc0c13a914c52447cfb561a0e1a5fddec136858facfa",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_tunneling_lambda_non_mirrored_citation_acceptance_criteria_20260513.json",
+        "sha256": "f8e2610039cc4d5707f4c1c13dcd8c9b12e8b364e92e923b8b2f74b908331e7e",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_tunneling_lambda_non_mirrored_citation_policy_decision_stub_20260513.json",
+        "sha256": "63380742845a13a6e314913403df9fcf51804bce212549ac07199da66c2581c6",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_tunneling_mu_star_compatibility_preview_20260513.json",
+        "sha256": "9d7c1fae78d8a3b9f8b1c00e27e672d3f2b10b21d51790d467d1d23017e7f139",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_lambda_attempt_5_prb_table_v_same_source_capture_20260514.json",
+        "sha256": "1c825474e7b8b301f7986638cfc9f5e1cd046ef8da90af83396e01006b6f38f7",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_same_source_lambda_patch_impact_preview_20260514.json",
+        "sha256": "1cb7025f7dfe6c9197a488d30fbf8e7dd599a11418583f4ab0691925a6fc8d6f",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_allen_dynes_same_source_harness_preview_20260515.json",
+        "sha256": "ded5741c6df32bc00763bcd798c4a982f973eb00b43e912ec5a34bccfc74c179",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/allen_dynes_verifier_branch_design_packet_20260515.json",
+        "sha256": "3a71eda116f6c197f32fda521f16e99c1e39aead1a0355f53d5a91706caad51c",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_physrevb_27_1568_unified_non_mirrored_policy_request_20260515.json",
+        "sha256": "3c68a844bceb95348cee48dfd724b863b1b58213d195347ecd1038933a936b4f",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_allen_dynes_policy_release_preview_20260515.json",
+        "sha256": "cf57824a52fdd06fb81627c756640d3bfa685af86e3a1f558f9d0c0b5c225390",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_allen_dynes_policy_transition_checklist_20260515.json",
+        "sha256": "35f6207d315a4408f9e316fed18583bb0449520c483cf26c78ddfa5ceb03bb1e",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn/lambda_numeric_capture_record.json",
+        "sha256": "cddceb961de4e2b8b46879d157eb93f8c0a459b187b612d68e80f5614787cb7d",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_lambda_first_numeric_execution_packet.json",
+        "sha256": "8c0d1f0a8440ed799822ae7dcbde128b9ad7dba4ae4895b8381092aa9de655f4",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3ge_fulltext_numeric_acquisition_packet.json",
+        "sha256": "58b19b41699db7db913026382dbf09df1fba0b8e85c91b1378e5ce0a78f9e032",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3ge_compatibility_review_packet.json",
+        "sha256": "10bd106416ad568d84e81b4c6a2c84742e534784d7b4e4c98eac2b76ffa8d0a7",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3ge_primary_numeric_capture_requirement_packet.json",
+        "sha256": "7c05d829bf248e4bfc52697692b8093b286fbedc1ec2e4b53e0967e1f19e0e08",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3ge_phonon_first_numeric_execution_packet.json",
+        "sha256": "7989221ce20b7674915563285accf51b1c92ca64689e80d3c6e0880596b7d86f",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3ge/phonon_numeric_capture_record.json",
+        "sha256": "f07cae5200900fb4c98af8e18e313b1725787b31f8a30b7831cabf3680571c80",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3ge/lambda_numeric_capture_record.json",
+        "sha256": "ee9fc33985490dbc0eade90d490d8db176d7fac2384765cd14d0a717c51d013b",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3ge_lambda_first_numeric_execution_packet.json",
+        "sha256": "5648a9b6487c5d2bf2f4367e90046e63d99d4ce5497d40b3fffc894d1e80e27a",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/a15_primary_numeric_capture_contract_summary.json",
+        "sha256": "2a29f702101f4a3c81309d9be6a177581d32ec867994e1290f4e3dc79e7a9092",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/a15_numeric_capture_shell_summary.json",
+        "sha256": "9d6c2bd367b9c516f672eae52ea454813d6fbe9f5a9250b53786728b67b541d5",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/a15_numeric_execution_packet_summary.json",
+        "sha256": "cbe9f25b6bdf8e19b6b42af22eeea42681ebd29bdbb6105606e8c37d000b59b5",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/a15_numeric_execution_order_summary.json",
+        "sha256": "38e4e2b13d10c3e3f7e3fddf9971d8890b108973faff084ea061d1d4688d1d66",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/a15_lambda_abstract_numeric_review_packet.json",
+        "sha256": "229891d3903ecc98154e5acd92c11a72f1b62a39b289f9a53dd98142ced2eb83",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/a15_first_live_capture_target_packet.json",
+        "sha256": "296768b42fc224e06290c75b287ca275f387bd1a177bb9fbdd48ce82fff87dc0",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/local_pdf_numeric_extraction_blocker_report.json",
+        "sha256": "993f7ecba526985d4c3eaa63f520d48233717eda29bddc60df48816009c86731",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/remote_a15_access_path_report.json",
+        "sha256": "0d5ced07aa6f540b327b8caec145f1674f8f8a3ce4df777d21c9d43e6b168d9a",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/remote_a15_fulltext_capture_blocker_report.json",
+        "sha256": "48e8489c642d346a211e6ef01f3e667618fd412946163bff7cb46e1c03a56ef4",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/remote_a15_search_expansion_report.json",
+        "sha256": "3e7b804056ae409f58edb22cb43d4733ae7f37b491a0b1c6b980930a796392fd",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/a15_adjacent_phonon_context_report.json",
+        "sha256": "0f9f531be3740735b1677e7b6a8bd5f5583a5f6b82d241639440940e6657eceb",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/a15_primary_host_lambda_numeric_capture_report.json",
+        "sha256": "c1dc2efb42962c5dd12b3262bf64d4c633a347645c87b138c28eff3d6246bb36",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/a15_patch_review_block_decision.json",
+        "sha256": "bacd857e6923be3bc86ba692cbfa7a479a31597658aa394b0b31eec45fdf24ce",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/a15_fulltext_table_target_map.json",
+        "sha256": "3f90f9330d061d773a73229eb787e8379563eb9a7f4d1bbe7be2861ac7a315a0",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_raw_page_capture_checklist.json",
+        "sha256": "683d4cb454ee7da08040373764cad5554513d0197dabf40dfc93bc41ce3cb7a3",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3ge_raw_page_capture_checklist.json",
+        "sha256": "c3285bc4d7d5d9c122bde99f5b130a0cf18f967a6ad73766054bdd1cec81ba17",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_fulltext_numeric_acquisition_packet.json",
+        "sha256": "7938fe5e713618cea7cd5266b782fe28d9e49409c7641c9be8121d4bedc21c89",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_raw_page_capture_checklist.json",
+        "sha256": "1fc2239e841f7d8690d09f0fc5e6f188e6b73adba857f515cba2597658997e2c",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_citation_integrity_report.json",
+        "sha256": "5e5710438025f75e2e4e44f5198b4bc433167572bcc486fc9d70c764fb4db519",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/residual_extraction_dashboard.json",
+        "sha256": "74691da1fd415d2068182030cf5b2c365fa6a40c528319ebf38e07034029cbd6",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium/source_record.json",
+        "sha256": "1bcdec4cde6ec13deac6b9234ea5b6759a77ebce2467a56659afe6cb1e60ba1a",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium/tc_text_capture_record.json",
+        "sha256": "2368d79e649280157be67ee7b789751dddcaa178b7f6325a04e2e55094577085",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium/theta_text_capture_record.json",
+        "sha256": "ff4fece942417a2e36fa7e2eff163a870a3b84725cf2dc8683583f77b7d1f619",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium/lambda_text_capture_record.json",
+        "sha256": "8fb595ec8e3b233356e46923b39ece157c928e10de20512752ce04f02ac638de",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium/mu_star_hint_record.json",
+        "sha256": "dff0e7ebf7372b1c13f9e4116bf36887b9fa5f3186bde26a7f0c87366f209f57",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium/vanadium_numeric_hint_summary.json",
+        "sha256": "98e6e16a776ba879ac987573674cd108a64381176ac3a14edf0763b57619c560",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium/lambda_numeric_capture_record.json",
+        "sha256": "82684e267bec419e0209b59c66e1a5a4463b66032cb3aa321200d890f648af6d",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium/mu_star_numeric_capture_record.json",
+        "sha256": "2ea06dee21cf9ef5c6e7ed19b757b316901afbaafd41e9a7b80a433b3f2028d8",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_compatibility_review_packet.json",
+        "sha256": "1c7781179f79610c6d4d65471ea1b71cb3f476ac049f48173a05c87376c7643b",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_patch_block_decision.json",
+        "sha256": "9b7ed5e1d937e435e232e7e0b4122b20e3f3016ffec1be40b57b6c7aba98933f",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_primary_capture_requirement_packet.json",
+        "sha256": "bf81699f3a12578727dd4ee118798a058fbb3fbe7a112fbb7be238fb88442ae0",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn/source_record.json",
+        "sha256": "ca74e3f1bbd931aaf8ecc9acb025753455c2f810ed3aae5e1343e2ad3e278d69",
+        "status": "present"
+      },
+      {
+        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3ge/source_record.json",
+        "sha256": "b935be4206c776d986a17b34667eb059bc43d2796eaf1bda4c6b02b0de06e67a",
         "status": "present"
       }
     ],
     "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\source_lock_manifest.json",
-    "sha256": "df958fc7d7ad45b6f12d603ae4c38cc317fd23a89111c16e56d32c1ae3a9c9c1"
+    "sha256": "1e0a80255b293fb3cb6eeed90857511ecd17514e0e3406d60cb1e0b5dce957bc"
   },
   "source_summary": [
     {
@@ -1838,7 +2330,7 @@
     "average_relative_error_percent_max": 20.0,
     "per_material_relative_error_percent_max": 20.0
   },
-  "timestamp_utc": "2026-05-06T16:49:19.313314+00:00",
+  "timestamp_utc": "2026-05-15T15:44:01.965543+00:00",
   "topic": "0.4_Superconductivity_Superfluids",
   "type_summary": [
     {

@@ -1,0 +1,193 @@
+{
+  "command": "python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment_Allen_Dynes_Data.py",
+  "diagnostic_all_rows_summary": {
+    "average_relative_error_percent": 2.0689059911914702,
+    "row_count": 2,
+    "rows_within_20_percent": 2
+  },
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.14.2"
+  },
+  "inputs": {
+    "design_packet": {
+      "branch_contract": {
+        "must_not_change_existing_artifact_meaning": "docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/0_4_superconductivity_superfluids_verification.json remains the raw McMillan baseline artifact.",
+        "must_not_replace": "docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment_Superconductor_Data.py",
+        "new_artifact_target_recommendation": "docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/0_4_superconductivity_superfluids_allen_dynes_verification.json",
+        "new_code_target_recommendation": "docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment_Allen_Dynes_Data.py",
+        "status_until_implemented": "design_only_not_executed"
+      },
+      "path": "docs\\data\\external\\condensed_matter\\superconductivity\\row_resolution_targets\\allen_dynes_verifier_branch_design_packet_20260515.json",
+      "sha256": "3a71eda116f6c197f32fda521f16e99c1e39aead1a0355f53d5a91706caad51c"
+    },
+    "input_table": {
+      "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\allen_dynes_source_labeled_inputs.json",
+      "sha256": "6cb2831a5aaf58c450f4ad3b3f1fef666442a4f9a79190c7cefe7e82cb059734"
+    },
+    "policy_release_preview": {
+      "claim_boundary": "This file previews the effect of a policy decision. It does not make the decision and does not change any verifier gate by itself.",
+      "path": "docs\\data\\external\\condensed_matter\\superconductivity\\row_resolution_targets\\nb3sn_allen_dynes_policy_release_preview_20260515.json",
+      "sha256": "cf57824a52fdd06fb81627c756640d3bfa685af86e3a1f558f9d0c0b5c225390",
+      "would_be_branch_model_gate_status": "PASS_FOR_NB3SN_SMOKE_TEST_ONLY"
+    },
+    "policy_request": {
+      "decision_state": "not_accepted_pending_reviewer_or_project_policy",
+      "path": "docs\\data\\external\\condensed_matter\\superconductivity\\row_resolution_targets\\nb3sn_physrevb_27_1568_unified_non_mirrored_policy_request_20260515.json",
+      "sha256": "3c68a844bceb95348cee48dfd724b863b1b58213d195347ecd1038933a936b4f"
+    }
+  },
+  "interpretation": "This artifact is a separate Allen-Dynes smoke test. The diagnostic rows fit Nb3Sn well, but no row enters the strict gate until archive/non-mirrored citation policy is accepted. The policy release preview is non-executing and does not change the current blocked gate. Strict eligibility is resolved from row release conditions and policy decision state.",
+  "limitations": [
+    "This artifact does not replace the raw McMillan baseline artifact.",
+    "The current smoke test covers only Nb3Sn same-source rows.",
+    "Strict gate status is blocked because archive policy remains pending.",
+    "No calibrated, inverse-fit, or heuristic UET rows are counted in the strict lane."
+  ],
+  "model_gate_status": "BLOCKED_PENDING_SOURCE_POLICY",
+  "next_actions": [
+    "Resolve non-mirrored citation policy for PhysRevB.27.1568.",
+    "Add additional source-labeled rows only after omega_log, omega2, lambda_ep, and mu_star evidence is captured.",
+    "Keep raw McMillan and Allen-Dynes branch artifacts side by side in documentation."
+  ],
+  "results": [
+    {
+      "archive_policy_state": "session_local_pdf_only_pending_non_mirrored_policy_decision",
+      "declared_strict_gate_eligible": false,
+      "effective_strict_gate_eligible": false,
+      "f1": 1.1016656643861975,
+      "f2": 1.0510038503206696,
+      "input_label": "source_locked_same_source_family",
+      "lambda_ep": 1.78,
+      "material": "Nb3Sn",
+      "mu_star": 0.13,
+      "omega2_sqrt_K": 177,
+      "omega_log_K": 127,
+      "per_row_gate_status": "PASS",
+      "predicted_tc_K": 17.981167779782506,
+      "relative_error_percent": 1.742252569494505,
+      "sample_label": "Nb3Sn I",
+      "signed_error_K": -0.31883222021749447,
+      "source_record_hashes": {
+        "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn/lambda_numeric_capture_record.json": "cddceb961de4e2b8b46879d157eb93f8c0a459b187b612d68e80f5614787cb7d",
+        "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn/phonon_numeric_capture_record.json": "4030b54a44a686e5b9962ac52febb5801f824e0cb6ba1dd969666d47db20b242"
+      },
+      "source_record_paths": [
+        "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn/phonon_numeric_capture_record.json",
+        "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn/lambda_numeric_capture_record.json"
+      ],
+      "sqrt_omega2_over_omega_log": 1.3937007874015748,
+      "strict_gate_exclusion_reason": "PhysRevB.27.1568 PDF remains session-local and non-mirrored citation policy is not accepted.",
+      "strict_gate_release_state": {
+        "accepted": false,
+        "accepted_decision_values": [
+          "accepted_for_this_source_package_only",
+          "accepted_for_topic_handoff_and_allen_dynes_strict_gate"
+        ],
+        "decision_field": "policy_decision_request.decision_state",
+        "decision_state": "not_accepted_pending_reviewer_or_project_policy",
+        "has_release_condition": true,
+        "policy_request_path": "docs\\data\\external\\condensed_matter\\superconductivity\\row_resolution_targets\\nb3sn_physrevb_27_1568_unified_non_mirrored_policy_request_20260515.json",
+        "policy_request_sha256": "3c68a844bceb95348cee48dfd724b863b1b58213d195347ecd1038933a936b4f"
+      },
+      "table_tc_K": 17.97,
+      "tc_observed_K": 18.3,
+      "tc_observed_basis": "current working row"
+    },
+    {
+      "archive_policy_state": "session_local_pdf_only_pending_non_mirrored_policy_decision",
+      "declared_strict_gate_eligible": false,
+      "effective_strict_gate_eligible": false,
+      "f1": 1.1047946453294204,
+      "f2": 1.0549202359189496,
+      "input_label": "source_locked_same_source_family",
+      "lambda_ep": 1.82,
+      "material": "Nb3Sn",
+      "mu_star": 0.13,
+      "omega2_sqrt_K": 175,
+      "omega_log_K": 123,
+      "per_row_gate_status": "PASS",
+      "predicted_tc_K": 17.861612627441417,
+      "relative_error_percent": 2.395559412888435,
+      "sample_label": "Nb3Sn II",
+      "signed_error_K": -0.4383873725585836,
+      "source_record_hashes": {
+        "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn/lambda_numeric_capture_record.json": "cddceb961de4e2b8b46879d157eb93f8c0a459b187b612d68e80f5614787cb7d",
+        "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn/phonon_numeric_capture_record.json": "4030b54a44a686e5b9962ac52febb5801f824e0cb6ba1dd969666d47db20b242"
+      },
+      "source_record_paths": [
+        "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn/phonon_numeric_capture_record.json",
+        "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn/lambda_numeric_capture_record.json"
+      ],
+      "sqrt_omega2_over_omega_log": 1.4227642276422765,
+      "strict_gate_exclusion_reason": "Sibling row retained for comparison until sample choice and archive policy are resolved.",
+      "strict_gate_release_state": {
+        "accepted": false,
+        "accepted_decision_values": [
+          "accepted_for_this_source_package_only",
+          "accepted_for_topic_handoff_and_allen_dynes_strict_gate"
+        ],
+        "decision_field": "policy_decision_request.decision_state",
+        "decision_state": "not_accepted_pending_reviewer_or_project_policy",
+        "has_release_condition": true,
+        "policy_request_path": "docs\\data\\external\\condensed_matter\\superconductivity\\row_resolution_targets\\nb3sn_physrevb_27_1568_unified_non_mirrored_policy_request_20260515.json",
+        "policy_request_sha256": "3c68a844bceb95348cee48dfd724b863b1b58213d195347ecd1038933a936b4f"
+      },
+      "table_tc_K": 17.93,
+      "tc_observed_K": 18.3,
+      "tc_observed_basis": "current working row sibling comparison"
+    }
+  ],
+  "rows_excluded_from_strict_gate": [
+    {
+      "archive_policy_state": "session_local_pdf_only_pending_non_mirrored_policy_decision",
+      "material": "Nb3Sn",
+      "reason": "PhysRevB.27.1568 PDF remains session-local and non-mirrored citation policy is not accepted.",
+      "release_state": {
+        "accepted": false,
+        "accepted_decision_values": [
+          "accepted_for_this_source_package_only",
+          "accepted_for_topic_handoff_and_allen_dynes_strict_gate"
+        ],
+        "decision_field": "policy_decision_request.decision_state",
+        "decision_state": "not_accepted_pending_reviewer_or_project_policy",
+        "has_release_condition": true,
+        "policy_request_path": "docs\\data\\external\\condensed_matter\\superconductivity\\row_resolution_targets\\nb3sn_physrevb_27_1568_unified_non_mirrored_policy_request_20260515.json",
+        "policy_request_sha256": "3c68a844bceb95348cee48dfd724b863b1b58213d195347ecd1038933a936b4f"
+      },
+      "sample_label": "Nb3Sn I"
+    },
+    {
+      "archive_policy_state": "session_local_pdf_only_pending_non_mirrored_policy_decision",
+      "material": "Nb3Sn",
+      "reason": "Sibling row retained for comparison until sample choice and archive policy are resolved.",
+      "release_state": {
+        "accepted": false,
+        "accepted_decision_values": [
+          "accepted_for_this_source_package_only",
+          "accepted_for_topic_handoff_and_allen_dynes_strict_gate"
+        ],
+        "decision_field": "policy_decision_request.decision_state",
+        "decision_state": "not_accepted_pending_reviewer_or_project_policy",
+        "has_release_condition": true,
+        "policy_request_path": "docs\\data\\external\\condensed_matter\\superconductivity\\row_resolution_targets\\nb3sn_physrevb_27_1568_unified_non_mirrored_policy_request_20260515.json",
+        "policy_request_sha256": "3c68a844bceb95348cee48dfd724b863b1b58213d195347ecd1038933a936b4f"
+      },
+      "sample_label": "Nb3Sn II"
+    }
+  ],
+  "run_status": "PASS",
+  "schema_version": "1.0",
+  "strict_source_locked_summary": {
+    "average_relative_error_percent": null,
+    "row_count": 0,
+    "rows_within_20_percent": 0
+  },
+  "thresholds": {
+    "strict_average_relative_error_percent": 20.0,
+    "strict_per_row_relative_error_percent": 20.0
+  },
+  "timestamp_utc": "2026-05-15T15:44:01.419893+00:00",
+  "topic": "0.4_Superconductivity_Superfluids",
+  "verifier_branch": "Allen-Dynes source-labeled smoke test"
+}

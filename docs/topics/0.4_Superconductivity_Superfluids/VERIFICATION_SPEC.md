@@ -2,6 +2,16 @@
 
 - Primary command:
   - `python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment_Superconductor_Data.py`
+- Proposed separate Allen-Dynes branch:
+  - design packet: `docs/data/external/condensed_matter/superconductivity/row_resolution_targets/allen_dynes_verifier_branch_design_packet_20260515.json`
+  - command: `python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment_Allen_Dynes_Data.py`
+  - artifact: `docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/0_4_superconductivity_superfluids_allen_dynes_verification.json`
+  - input table: `docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/allen_dynes_source_labeled_inputs.json`
+  - current status: smoke-test verifier implemented; artifact currently reports `model_gate_status=BLOCKED_PENDING_SOURCE_POLICY`
+  - dry-run command: `python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment_Allen_Dynes_Policy_Dry_Run.py`
+  - dry-run artifact: `docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/0_4_superconductivity_superfluids_allen_dynes_policy_dry_run.json`
+  - interpretation: diagnostic rows may fit, but the strict branch gate is blocked until source archive/non-mirrored policy is accepted; this branch must not replace the raw McMillan artifact or mutate its gate meaning
+  - strict eligibility is policy-aware: rows in `allen_dynes_source_labeled_inputs.json` carry release conditions pointing to the policy request, and the verifier resolves effective strict eligibility from the current decision state at runtime
 - Inputs:
   - `Data/03_Research/real_superconductor_data.json`
   - generated from the in-script `SUPERCONDUCTOR_DATA` working-copy table
@@ -37,6 +47,13 @@
   - generated row evidence execution queue showing which source packets and evidence fields should be collected first for each blocker row
   - generated row evidence source-review packets showing the exact attachment template for the next real source pass
   - generated row evidence decision gate showing which compatibility questions must be cleared before patch review can begin
+- Allen-Dynes branch design:
+  - the current Nb3Sn same-source preview now has a separate smoke-test verifier and artifact-backed script
+  - strict Allen-Dynes rows must carry source labels and archive-policy status; calibrated, inverse-fit, and heuristic UET rows may only enter diagnostic lanes
+  - the first smoke-test artifact reports diagnostic all-row average error around 2.07 percent for Nb3Sn I/II, but no row is counted in the strict source-locked gate yet
+  - the unified PhysRevB.27.1568 non-mirrored policy request consolidates the remaining archive decision; accepting that request would unblock strict-gate eligibility for the Nb3Sn smoke-test rows, not the raw McMillan gate
+  - the policy release preview records the counterfactual strict-gate result if that request is accepted; it is non-executing and must not be cited as the current model gate
+  - the dry-run artifact executes that counterfactual in memory without editing the policy request; it is a transition test, not the current model gate
 - Fixed threshold:
   - average relative error must be <= 20 percent
   - every material in the raw McMillan subset should be <= 20 percent for a PASS
@@ -82,9 +99,30 @@
   - The topic-level source-evidence and branch-claim gates cap what this topic can claim while the raw McMillan artifact remains FAIL.
   - The source-lock manifest now also hashes an external row-resolution target manifest so the next raw-source acquisition pass is pinned in `docs/data/external/...` rather than remaining only in topic-local workflow files.
   - The external row-resolution target folder now also contains an archive-intake stub and archive-readiness matrix. These are still workflow scaffolding only, but they move residual-row evidence collection into the external-data layer explicitly.
+  - Those external intake rows are now partially prefilled from real source records. This narrows the remaining archive work to locators, raw paths, and extracted values rather than bibliographic discovery.
   - The external row-resolution target folder now also contains an acquisition queue and a topic handoff gate, so raw-row archiving and topic-local review are separated by an explicit checkpoint.
   - The same external row-resolution folder now also contains one dossier per residual blocker row so archive requirements are explicit before any handoff.
   - The same folder also records local repo anchors separately from external evidence so citation hints can be reused without overstating their evidentiary value.
+  - The same folder now also includes pinned source records for `Vanadium`, `Nb3Sn`, and `Nb3Ge`, so residual-row acquisition starts from explicit publication anchors.
+  - The same folder now also includes `local_archive_scan_report.json`, which records that the current repo scan found no exact local raw-PDF or exact reference-file match for the three residual rows.
+  - The same folder now also includes `field_coverage_assessment.json`, which records that the current anchors are not field-complete and mainly support `Tc` scope rather than full phonon/coupling coverage.
+  - The same folder now also includes `field_source_gap_matrix.json`, which turns that scope result into a field-level acquisition rule so supplemental-source requirements are explicit before archive work begins.
+  - The same folder now also includes `supplemental_source_candidates.json`, which pins candidate follow-up source families for the non-`Tc` residual-row fields.
+  - The same folder now also includes `supplemental_source_selection_matrix.json`, which recommends the first source family to inspect for each unresolved residual-row field.
+- The same folder now also includes `a15_field_extraction_plan.json`, which converts those selections into a concrete field-by-field archive order for `Nb3Sn` and `Nb3Ge`.
+- The same folder now also includes `a15_tc_capture_stub.json`, which turns the first A15 extraction step into a direct capture form for `Tc_observed`.
+- The same folder now also includes `a15_phonon_capture_stub.json`, which turns the second A15 extraction step into a direct capture form for the phonon-proxy field.
+- The same folder now also includes `a15_web_numeric_extraction_blocker_report.json`, which records that the current web-accessible abstract and record layer is still insufficient for row-specific A15 numeric extraction.
+- The same folder now also includes `a15_secondary_numeric_hint_report.json`, which holds weak secondary A15 numeric clues that can guide the next full-text pass without authorizing any row edit.
+- The same folder now also includes `nb3sn_fulltext_numeric_acquisition_packet.json`, which packages the first dedicated A15 full-text numeric extraction pass around the strongest current shortcut candidate.
+- The same folder now also includes `nb3ge_fulltext_numeric_acquisition_packet.json`, which packages the parallel A15 full-text numeric extraction pass around the weaker current shortcut candidate.
+- The same folder now also includes `a15_fulltext_table_target_map.json`, which narrows those A15 passes to the most likely full-text tables or sections that should contain the needed numeric fields.
+- The same folder now also includes `nb3sn_raw_page_capture_checklist.json`, which turns the first A15 full-text pass into a direct page-capture worksheet.
+- The same folder now also includes `nb3ge_raw_page_capture_checklist.json`, which turns the second A15 full-text pass into the matching page-capture worksheet.
+- The same folder now also includes `vanadium_fulltext_numeric_acquisition_packet.json`, which packages the top-priority elemental full-text pass and keeps the citation-integrity gate explicit.
+- The same folder now also includes `vanadium_raw_page_capture_checklist.json`, which turns that guarded elemental pass into a direct page-capture worksheet.
+- The same folder now also includes `vanadium_citation_integrity_report.json`, which records the current bibliographic weighting of the competing Vanadium page claims while keeping the gate open until a raw page is archived.
+- The same folder now also includes `residual_extraction_dashboard.json`, which consolidates the three unresolved rows into one extraction-control view.
 - Interpretation:
   - Treat output as an internal baseline diagnostic only.
   - The current primary verifier does not test high-Tc cuprates or prove UET coherence corrections.
