@@ -6,10 +6,10 @@
   "purpose": "Define the exact transition steps for moving the Allen-Dynes Nb3Sn smoke-test rows from policy-blocked diagnostic rows to strict-gate rows if a reviewer accepts the PhysRevB.27.1568 non-mirrored citation route.",
   "current_state": {
     "policy_request": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_physrevb_27_1568_unified_non_mirrored_policy_request_20260515.json",
-    "current_decision_state": "not_accepted_pending_reviewer_or_project_policy",
+    "current_decision_state": "accepted_for_topic_handoff_and_allen_dynes_strict_gate",
     "allen_dynes_artifact": "docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/0_4_superconductivity_superfluids_allen_dynes_verification.json",
-    "current_allen_dynes_model_gate_status": "BLOCKED_PENDING_SOURCE_POLICY",
-    "current_strict_rows_counted": 0,
+    "current_allen_dynes_model_gate_status": "PASS",
+    "current_strict_rows_counted": 2,
     "current_diagnostic_average_relative_error_percent": 2.0689059911914702
   },
   "allowed_acceptance_values": [
@@ -66,5 +66,5 @@
     "Do not count calibrated, inverse-fit, or heuristic UET rows in the strict gate.",
     "Do not modify the raw McMillan gate meaning or thresholds."
   ],
-  "claim_boundary": "This checklist is procedural only. It does not accept the policy route and does not change any verifier status by itself."
+  "claim_boundary": "This checklist records the accepted transition for the PhysRevB.27.1568 non-mirrored citation route. It does not turn the two-row smoke test into a topic-level PASS and does not approve unrelated source packages."
 }

@@ -63,9 +63,9 @@
       "not automatic benchmark patch approval",
       "not a general approval for unrelated APS PDFs"
     ],
-    "decision_state": "not_accepted_pending_reviewer_or_project_policy",
-    "reviewer_or_policy_authority": null,
-    "decision_date": null
+    "decision_state": "accepted_for_topic_handoff_and_allen_dynes_strict_gate",
+    "reviewer_or_policy_authority": "Codex project policy decision at user request",
+    "decision_date": "2026-05-15"
   },
   "effect_if_accepted": {
     "allen_dynes_strict_gate_rows_unblocked": [
@@ -76,11 +76,11 @@
     "benchmark_patch_effect": "none by itself; patch/rewrite still requires harness and sample-choice approval",
     "claim_upgrade_effect": "none by itself; diagnostic fit is not a topic-level prediction claim"
   },
-  "effect_while_pending": {
+  "effect_before_acceptance": {
     "allen_dynes_smoke_test_model_gate_status": "BLOCKED_PENDING_SOURCE_POLICY",
     "strict_rows_counted": 0,
     "diagnostic_rows_allowed": true,
     "raw_mcmillan_model_gate_status": "FAIL"
   },
-  "claim_boundary": "This request packet does not approve the non-mirrored citation route. It only consolidates the fields a reviewer or project policy authority would need to make that decision."
+  "claim_boundary": "This request packet accepts the non-mirrored citation route only for the PhysRevB.27.1568 Nb3Sn source package and the Allen-Dynes strict smoke-test gate. It does not approve unrelated APS PDFs, benchmark row patches, or topic-level PASS claims."
 }

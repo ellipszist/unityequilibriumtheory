@@ -198,6 +198,49 @@ def gate_status(strict_rows, excluded_rows):
     return "PASS" if all_rows_pass and average_pass else "FAIL"
 
 
+def interpret_status(status):
+    if status == "BLOCKED_PENDING_SOURCE_POLICY":
+        return {
+            "interpretation": (
+                "This artifact is a separate Allen-Dynes smoke test. The diagnostic rows "
+                "fit Nb3Sn well, but no row enters the strict gate until archive/non-mirrored "
+                "citation policy is accepted. The policy release preview is non-executing "
+                "and does not change the current blocked gate. Strict eligibility is resolved "
+                "from row release conditions and policy decision state."
+            ),
+            "limitations": [
+                "This artifact does not replace the raw McMillan baseline artifact.",
+                "The current smoke test covers only Nb3Sn same-source rows.",
+                "Strict gate status is blocked because archive policy remains pending.",
+                "No calibrated, inverse-fit, or heuristic UET rows are counted in the strict lane.",
+            ],
+            "next_actions": [
+                "Resolve non-mirrored citation policy for PhysRevB.27.1568.",
+                "Add additional source-labeled rows only after omega_log, omega2, lambda_ep, and mu_star evidence is captured.",
+                "Keep raw McMillan and Allen-Dynes branch artifacts side by side in documentation.",
+            ],
+        }
+    return {
+        "interpretation": (
+            "This artifact is a separate Allen-Dynes smoke test. The Nb3Sn same-source rows "
+            "enter the strict gate because the PhysRevB.27.1568 non-mirrored citation route "
+            "has been accepted for this source package and branch gate. This is not a "
+            "topic-level PASS and does not replace the raw McMillan baseline artifact."
+        ),
+        "limitations": [
+            "This artifact does not replace the raw McMillan baseline artifact.",
+            "The current strict gate covers only the Nb3Sn same-source smoke-test rows.",
+            "The accepted policy scope is limited to PhysRevB.27.1568 and this Allen-Dynes branch gate.",
+            "No calibrated, inverse-fit, or heuristic UET rows are counted in the strict lane.",
+        ],
+        "next_actions": [
+            "Add additional source-labeled rows only after omega_log, omega2, lambda_ep, and mu_star evidence is captured.",
+            "Keep raw McMillan and Allen-Dynes branch artifacts side by side in documentation.",
+            "Do not upgrade the full superconductivity topic claim until broader source-locked coverage exists.",
+        ],
+    }
+
+
 def write_artifact():
     input_table = load_json(INPUT_PATH)
     design_packet = load_json(DESIGN_PACKET_PATH)
@@ -207,6 +250,7 @@ def write_artifact():
     strict_summary = summarize(strict_rows)
     diagnostic_summary = summarize(rows)
     status = gate_status(strict_rows, excluded_rows)
+    status_text = interpret_status(status)
 
     artifact = {
         "schema_version": "1.0",
@@ -251,24 +295,9 @@ def write_artifact():
         "diagnostic_all_rows_summary": diagnostic_summary,
         "rows_excluded_from_strict_gate": excluded_rows,
         "results": rows,
-        "interpretation": (
-            "This artifact is a separate Allen-Dynes smoke test. The diagnostic rows "
-            "fit Nb3Sn well, but no row enters the strict gate until archive/non-mirrored "
-            "citation policy is accepted. The policy release preview is non-executing "
-            "and does not change the current blocked gate. Strict eligibility is resolved "
-            "from row release conditions and policy decision state."
-        ),
-        "limitations": [
-            "This artifact does not replace the raw McMillan baseline artifact.",
-            "The current smoke test covers only Nb3Sn same-source rows.",
-            "Strict gate status is blocked because archive policy remains pending.",
-            "No calibrated, inverse-fit, or heuristic UET rows are counted in the strict lane.",
-        ],
-        "next_actions": [
-            "Resolve non-mirrored citation policy for PhysRevB.27.1568.",
-            "Add additional source-labeled rows only after omega_log, omega2, lambda_ep, and mu_star evidence is captured.",
-            "Keep raw McMillan and Allen-Dynes branch artifacts side by side in documentation.",
-        ],
+        "interpretation": status_text["interpretation"],
+        "limitations": status_text["limitations"],
+        "next_actions": status_text["next_actions"],
         "environment": {
             "python_version": sys.version.split()[0],
             "platform": platform.platform(),

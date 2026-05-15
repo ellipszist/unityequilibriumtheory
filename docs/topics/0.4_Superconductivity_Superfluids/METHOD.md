@@ -90,9 +90,9 @@ This topic studies whether UET-style condensate and pairing ideas can reproduce 
 - It now also carries `residual_extraction_dashboard.json`, which consolidates the unresolved-row state into one handoff surface for the next extraction pass.
 - The verifier also writes topic-level `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json`, which separate the raw baseline FAIL from normalization workflow, Allen-Dynes/UET branches, and high-Tc future lanes.
 - The Allen-Dynes/UET engine must be promoted through a separate verifier that reports per-material residuals and labels calibrated inputs before it can support stronger claims.
-- The new Allen-Dynes verifier branch smoke-test implements that promotion path as a separate script and artifact with source-labeled strict and diagnostic lanes. Its diagnostic Nb3Sn rows average about 2.07 percent error, but it currently keeps the strict gate blocked because archive policy is pending, and it does not change the raw McMillan gate.
-- The smoke-test verifier now resolves effective strict eligibility from policy release conditions in the input table, so a future accepted policy decision can unblock strict rows without changing the verifier logic.
-- A separate policy dry-run verifier tests that transition path in memory. It can confirm the expected post-acceptance branch status without editing the policy request or changing the current gate.
+- The new Allen-Dynes verifier branch smoke-test implements that promotion path as a separate script and artifact with source-labeled strict and diagnostic lanes. After the PhysRevB.27.1568 policy acceptance, its Nb3Sn strict rows average about 2.07 percent error and the branch gate reports `PASS`, while the raw McMillan gate remains unchanged.
+- The smoke-test verifier resolves effective strict eligibility from policy release conditions in the input table, so the accepted policy decision unblocks strict rows without changing the row values or hand-toggling strict eligibility.
+- A separate policy dry-run verifier remains as a transition guardrail. It confirms the accepted-policy branch behavior without replacing the current verifier artifact.
 - The source-lock layer now pins McMillan 1968, Allen-Dynes 1975, and NIMS SuperCon provenance records, but this is not the same as row-level upstream normalization.
 
 ## Dependency policy

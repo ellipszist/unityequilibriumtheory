@@ -7,10 +7,10 @@
   - command: `python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment_Allen_Dynes_Data.py`
   - artifact: `docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/0_4_superconductivity_superfluids_allen_dynes_verification.json`
   - input table: `docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/allen_dynes_source_labeled_inputs.json`
-  - current status: smoke-test verifier implemented; artifact currently reports `model_gate_status=BLOCKED_PENDING_SOURCE_POLICY`
+  - current status: smoke-test verifier implemented; artifact currently reports `model_gate_status=PASS` for the two-row Nb3Sn Allen-Dynes branch gate
   - dry-run command: `python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment_Allen_Dynes_Policy_Dry_Run.py`
   - dry-run artifact: `docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/0_4_superconductivity_superfluids_allen_dynes_policy_dry_run.json`
-  - interpretation: diagnostic rows may fit, but the strict branch gate is blocked until source archive/non-mirrored policy is accepted; this branch must not replace the raw McMillan artifact or mutate its gate meaning
+  - interpretation: source-locked Nb3Sn rows pass the separate Allen-Dynes branch gate after the PhysRevB.27.1568 non-mirrored citation policy acceptance; this branch must not replace the raw McMillan artifact or mutate its gate meaning
   - strict eligibility is policy-aware: rows in `allen_dynes_source_labeled_inputs.json` carry release conditions pointing to the policy request, and the verifier resolves effective strict eligibility from the current decision state at runtime
 - Inputs:
   - `Data/03_Research/real_superconductor_data.json`

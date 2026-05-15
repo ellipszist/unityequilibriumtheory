@@ -2040,7 +2040,7 @@
       },
       {
         "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_physrevb_27_1568_unified_non_mirrored_policy_request_20260515.json",
-        "sha256": "3c68a844bceb95348cee48dfd724b863b1b58213d195347ecd1038933a936b4f",
+        "sha256": "b669e1d372b5a72ed21400a21b0757e08344956f473fa055f18f1e570a72d1d3",
         "status": "present"
       },
       {
@@ -2050,7 +2050,7 @@
       },
       {
         "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn_allen_dynes_policy_transition_checklist_20260515.json",
-        "sha256": "35f6207d315a4408f9e316fed18583bb0449520c483cf26c78ddfa5ceb03bb1e",
+        "sha256": "af09712d7f1c62ac7e336aa5ea61a01e9cc6a7c52cd3ef89a07884aa493fe9a2",
         "status": "present"
       },
       {
@@ -2330,7 +2330,7 @@
     "average_relative_error_percent_max": 20.0,
     "per_material_relative_error_percent_max": 20.0
   },
-  "timestamp_utc": "2026-05-15T15:44:01.965543+00:00",
+  "timestamp_utc": "2026-05-15T16:20:16.831203+00:00",
   "topic": "0.4_Superconductivity_Superfluids",
   "type_summary": [
     {

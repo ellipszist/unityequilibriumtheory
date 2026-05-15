@@ -19,7 +19,7 @@
         "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn/phonon_numeric_capture_record.json",
         "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn/lambda_numeric_capture_record.json"
       ],
-      "archive_policy_state": "session_local_pdf_only_pending_non_mirrored_policy_decision",
+      "archive_policy_state": "session_local_pdf_non_mirrored_citation_accepted_for_allen_dynes_branch",
       "input_label": "source_locked_same_source_family",
       "strict_gate_eligible": false,
       "strict_gate_release_condition": {
@@ -29,9 +29,9 @@
           "accepted_for_this_source_package_only",
           "accepted_for_topic_handoff_and_allen_dynes_strict_gate"
         ],
-        "current_decision_state": "not_accepted_pending_reviewer_or_project_policy"
+        "current_decision_state": "accepted_for_topic_handoff_and_allen_dynes_strict_gate"
       },
-      "strict_gate_exclusion_reason": "PhysRevB.27.1568 PDF remains session-local and non-mirrored citation policy is not accepted.",
+      "strict_gate_exclusion_reason": "Only applies if the policy request is no longer accepted; current decision releases this row for the Allen-Dynes strict branch gate.",
       "notes": "Primary smoke-test row because Nb3Sn I has same-source Table II omega moments and Table V lambda."
     },
     {
@@ -48,7 +48,7 @@
         "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn/phonon_numeric_capture_record.json",
         "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/nb3sn/lambda_numeric_capture_record.json"
       ],
-      "archive_policy_state": "session_local_pdf_only_pending_non_mirrored_policy_decision",
+      "archive_policy_state": "session_local_pdf_non_mirrored_citation_accepted_for_allen_dynes_branch",
       "input_label": "source_locked_same_source_family",
       "strict_gate_eligible": false,
       "strict_gate_release_condition": {
@@ -58,9 +58,9 @@
           "accepted_for_this_source_package_only",
           "accepted_for_topic_handoff_and_allen_dynes_strict_gate"
         ],
-        "current_decision_state": "not_accepted_pending_reviewer_or_project_policy"
+        "current_decision_state": "accepted_for_topic_handoff_and_allen_dynes_strict_gate"
       },
-      "strict_gate_exclusion_reason": "Sibling row retained for comparison until sample choice and archive policy are resolved.",
+      "strict_gate_exclusion_reason": "Only applies if the policy request is no longer accepted; current decision releases this sibling row for the Allen-Dynes strict branch gate.",
       "notes": "Sibling comparison row from the same PhysRevB.27.1568 tables."
     }
   ],
