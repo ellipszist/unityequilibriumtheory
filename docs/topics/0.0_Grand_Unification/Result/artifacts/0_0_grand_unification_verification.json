@@ -1,21 +1,21 @@
 {
   "schema_version": "1.2",
   "topic": "0.0_Grand_Unification",
-  "timestamp_utc": "2026-05-16T23:06:15.401089+00:00",
+  "timestamp_utc": "2026-05-16T23:10:48.764716+00:00",
   "command": "python docs/topics/0.0_Grand_Unification/Code/03_Research/Verify_Omni.py",
   "status": "WARN",
   "passed_run_contract": true,
   "input_hashes": [
     {
       "path": "docs/topics/0.0_Grand_Unification/Data/03_Research/integration_dependency_manifest.json",
-      "bytes": 10651,
-      "sha256": "ea7c07986e9966527220811df9cdd2f0228c2559b3d38abad841d0e6b8111c0a",
+      "bytes": 10796,
+      "sha256": "b00f40f608621db260501190cb10880f3e38e35a3f8e3b02a9d2a216a716f91c",
       "provenance_role": "integration_dependency_manifest"
     },
     {
       "path": "docs/topics/0.1_Galaxy_Rotation_Problem/Result/artifacts/galaxy_rotation_validation.json",
-      "bytes": 42906,
-      "sha256": "9ac0b9c0ef26cfc680b727d2ee0fa43c777ebadb0e31fc5890aae599840a178d",
+      "bytes": 44833,
+      "sha256": "6837467daf7e755f96a1b63354cea0f52fdbe3a53c6123bcb3f101ce18ea1cb6",
       "provenance_role": "subordinate_artifact",
       "status": "WARN"
     },
@@ -204,10 +204,26 @@
       "status": "WARN",
       "claim_class": "C - internal benchmark",
       "schema_version": null,
-      "timestamp_utc": "2026-05-04T15:21:56.193617+00:00",
-      "claim_gates": [],
-      "sha256": "9ac0b9c0ef26cfc680b727d2ee0fa43c777ebadb0e31fc5890aae599840a178d",
-      "bytes": 42906
+      "timestamp_utc": "2026-05-16T23:10:12.379599+00:00",
+      "claim_gates": [
+        {
+          "gate": "galaxy_model_gate",
+          "status": "BLOCKED",
+          "run_contract_status": "PASS",
+          "summary_row_model_status": "FAIL",
+          "source_lock_status": "OPEN",
+          "baseline_comparison_status": "OPEN",
+          "blocked_claims": [
+            "dark-matter replacement",
+            "full SPARC replication",
+            "galaxy-rotation theory closure",
+            "out-of-sample prediction"
+          ],
+          "claim_boundary": "This gate lets the verifier run and residual model evidence diverge. A runnable artifact does not imply galaxy-model acceptance."
+        }
+      ],
+      "sha256": "6837467daf7e755f96a1b63354cea0f52fdbe3a53c6123bcb3f101ce18ea1cb6",
+      "bytes": 44833
     },
     {
       "topic": "0.2_Black_Hole_Physics",
@@ -602,7 +618,7 @@
     "status": "BLOCKED",
     "rule": "Any FAIL, WARN, UNKNOWN, missing artifact, source-incomplete, formula-open, or synthetic-only dependency blocks theory-level claims.",
     "dependency_count": 26,
-    "blocked_dependency_count": 21,
+    "blocked_dependency_count": 22,
     "blockers": [
       {
         "topic": "0.1_Galaxy_Rotation_Problem",
@@ -610,6 +626,22 @@
         "status": "WARN",
         "claim_class": "C - internal benchmark",
         "blocker": "Dependency is not clean PASS, so theory-level closure is blocked."
+      },
+      {
+        "topic": "0.1_Galaxy_Rotation_Problem",
+        "artifact": "docs/topics/0.1_Galaxy_Rotation_Problem/Result/artifacts/galaxy_rotation_validation.json",
+        "status": "WARN",
+        "claim_class": "C - internal benchmark",
+        "gate": "galaxy_model_gate",
+        "gate_status": "BLOCKED",
+        "blocked_exports": [],
+        "blocked_claims": [
+          "dark-matter replacement",
+          "full SPARC replication",
+          "galaxy-rotation theory closure",
+          "out-of-sample prediction"
+        ],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
       },
       {
         "topic": "0.4_Superconductivity_Superfluids",
@@ -826,14 +858,14 @@
     "input_hashes": [
       {
         "path": "docs/topics/0.0_Grand_Unification/Data/03_Research/integration_dependency_manifest.json",
-        "bytes": 10651,
-        "sha256": "ea7c07986e9966527220811df9cdd2f0228c2559b3d38abad841d0e6b8111c0a",
+        "bytes": 10796,
+        "sha256": "b00f40f608621db260501190cb10880f3e38e35a3f8e3b02a9d2a216a716f91c",
         "provenance_role": "integration_dependency_manifest"
       },
       {
         "path": "docs/topics/0.1_Galaxy_Rotation_Problem/Result/artifacts/galaxy_rotation_validation.json",
-        "bytes": 42906,
-        "sha256": "9ac0b9c0ef26cfc680b727d2ee0fa43c777ebadb0e31fc5890aae599840a178d",
+        "bytes": 44833,
+        "sha256": "6837467daf7e755f96a1b63354cea0f52fdbe3a53c6123bcb3f101ce18ea1cb6",
         "provenance_role": "subordinate_artifact",
         "status": "WARN"
       },
@@ -1022,10 +1054,26 @@
         "status": "WARN",
         "claim_class": "C - internal benchmark",
         "schema_version": null,
-        "timestamp_utc": "2026-05-04T15:21:56.193617+00:00",
-        "claim_gates": [],
-        "sha256": "9ac0b9c0ef26cfc680b727d2ee0fa43c777ebadb0e31fc5890aae599840a178d",
-        "bytes": 42906
+        "timestamp_utc": "2026-05-16T23:10:12.379599+00:00",
+        "claim_gates": [
+          {
+            "gate": "galaxy_model_gate",
+            "status": "BLOCKED",
+            "run_contract_status": "PASS",
+            "summary_row_model_status": "FAIL",
+            "source_lock_status": "OPEN",
+            "baseline_comparison_status": "OPEN",
+            "blocked_claims": [
+              "dark-matter replacement",
+              "full SPARC replication",
+              "galaxy-rotation theory closure",
+              "out-of-sample prediction"
+            ],
+            "claim_boundary": "This gate lets the verifier run and residual model evidence diverge. A runnable artifact does not imply galaxy-model acceptance."
+          }
+        ],
+        "sha256": "6837467daf7e755f96a1b63354cea0f52fdbe3a53c6123bcb3f101ce18ea1cb6",
+        "bytes": 44833
       },
       {
         "topic": "0.2_Black_Hole_Physics",
@@ -1435,7 +1483,7 @@
           "reynolds_critical": 2261.946710584651,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 0.47161294201873244,
+          "ai_initial_loss": 1.2925065458458056,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
@@ -1460,7 +1508,7 @@
           "reynolds_critical": 226.19467105846513,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 0.5716786026543769,
+          "ai_initial_loss": 0.8647384292149554,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
@@ -1737,7 +1785,7 @@
       "status": "BLOCKED",
       "rule": "Any FAIL, WARN, UNKNOWN, missing artifact, source-incomplete, formula-open, or synthetic-only dependency blocks theory-level claims.",
       "dependency_count": 26,
-      "blocked_dependency_count": 21,
+      "blocked_dependency_count": 22,
       "blockers": [
         {
           "topic": "0.1_Galaxy_Rotation_Problem",
@@ -1745,6 +1793,22 @@
           "status": "WARN",
           "claim_class": "C - internal benchmark",
           "blocker": "Dependency is not clean PASS, so theory-level closure is blocked."
+        },
+        {
+          "topic": "0.1_Galaxy_Rotation_Problem",
+          "artifact": "docs/topics/0.1_Galaxy_Rotation_Problem/Result/artifacts/galaxy_rotation_validation.json",
+          "status": "WARN",
+          "claim_class": "C - internal benchmark",
+          "gate": "galaxy_model_gate",
+          "gate_status": "BLOCKED",
+          "blocked_exports": [],
+          "blocked_claims": [
+            "dark-matter replacement",
+            "full SPARC replication",
+            "galaxy-rotation theory closure",
+            "out-of-sample prediction"
+          ],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
         },
         {
           "topic": "0.4_Superconductivity_Superfluids",

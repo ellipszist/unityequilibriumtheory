@@ -11,6 +11,9 @@ Repository facts:
 - The current `sparc_data.json` checked into this repository contains `154` rows.
 - The current verifier uses these rows as one-point-per-galaxy benchmark inputs,
   not as full radial curve arrays.
+- The `galaxy_model_gate` emitted by the verifier treats these rows as an internal
+  summary-row benchmark and blocks full SPARC or dark-matter replacement claims while
+  source-lock, baseline, and residual gates remain open.
 - Until upstream files, identifiers, and preprocessing are source-locked, this
   dataset must be described as a repository working copy rather than a fresh
   upstream archival mirror.

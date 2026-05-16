@@ -8,6 +8,56 @@
     "platform": "Windows-11-10.0.26200-SP0",
     "python_version": "3.14.2"
   },
+  "galaxy_model_gate": {
+    "baseline_comparison_gate": {
+      "required_comparators": [
+        "same-row MOND or dark-matter baseline artifact",
+        "metric-equivalent competitor run",
+        "documented threshold for comparative success"
+      ],
+      "status": "OPEN"
+    },
+    "claim_boundary": "This gate lets the verifier run and residual model evidence diverge. A runnable artifact does not imply galaxy-model acceptance.",
+    "purpose": "Separate verifier run-contract status from galaxy-model residual evidence.",
+    "replacement_claim_gate": {
+      "blocked_claims": [
+        "dark-matter replacement",
+        "full SPARC replication",
+        "galaxy-rotation theory closure",
+        "out-of-sample prediction"
+      ],
+      "status": "BLOCKED"
+    },
+    "run_contract_gate": {
+      "claim_class": "C - internal summary-row benchmark execution",
+      "processed_entries": 154,
+      "skipped_entries": 0,
+      "status": "PASS"
+    },
+    "schema_version": "1.0",
+    "source_lock_gate": {
+      "required_inputs": [
+        "upstream SPARC file identity",
+        "row semantics and radius convention",
+        "full radial curve arrays or declared one-point benchmark scope",
+        "preprocessing script and source hash manifest"
+      ],
+      "status": "OPEN"
+    },
+    "summary_row_model_gate": {
+      "average_error_percent": 61.418416186784235,
+      "claim_class": "model-residual blocker",
+      "does_not_support": "A full SPARC curve replication, dark-matter replacement, or galaxy-dynamics closure claim.",
+      "pass_rate_percent": 0.0,
+      "status": "FAIL",
+      "supports": "Only a summary-row internal residual benchmark over the repository working copy.",
+      "thresholds": {
+        "average_error_percent_max": 15.0,
+        "pass_rate_percent_min": 1.0
+      }
+    },
+    "topic": "0.1_Galaxy_Rotation_Problem"
+  },
   "input_hashes": {
     "sparc_working_copy": "f5cd415d6226bc837af9ffe00ca07709d81a16f5548b8c07bd4e9eec0ddf38a2"
   },
@@ -1416,7 +1466,7 @@
   "thresholds": {
     "max_average_error_percent": 15.0
   },
-  "timestamp_utc": "2026-05-04T15:21:56.193617+00:00",
+  "timestamp_utc": "2026-05-16T23:10:12.379599+00:00",
   "topic": "0.1_Galaxy_Rotation_Problem",
   "uet_version": "0.9.0"
 }

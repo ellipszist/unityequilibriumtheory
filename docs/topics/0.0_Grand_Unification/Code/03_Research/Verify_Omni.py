@@ -196,6 +196,22 @@ def _extract_claim_gate_summary(artifact: dict) -> list[dict]:
             }
         )
 
+    galaxy_model_gate = artifact.get("galaxy_model_gate")
+    if isinstance(galaxy_model_gate, dict):
+        replacement_gate = galaxy_model_gate.get("replacement_claim_gate", {})
+        summaries.append(
+            {
+                "gate": "galaxy_model_gate",
+                "status": replacement_gate.get("status"),
+                "run_contract_status": galaxy_model_gate.get("run_contract_gate", {}).get("status"),
+                "summary_row_model_status": galaxy_model_gate.get("summary_row_model_gate", {}).get("status"),
+                "source_lock_status": galaxy_model_gate.get("source_lock_gate", {}).get("status"),
+                "baseline_comparison_status": galaxy_model_gate.get("baseline_comparison_gate", {}).get("status"),
+                "blocked_claims": replacement_gate.get("blocked_claims", []),
+                "claim_boundary": galaxy_model_gate.get("claim_boundary"),
+            }
+        )
+
     subordinate_paper_gate = artifact.get("paper_readiness_gate")
     if isinstance(subordinate_paper_gate, dict):
         summaries.append(

@@ -29,7 +29,7 @@ flowchart TD
 | Data | Working-copy real-data package | Repository has real galaxy rows, but they are not yet source-locked as a full upstream SPARC archive | Add upstream file identity, row semantics, and preprocessing notes |
 | Formula | Structured with heuristic bridges | Core engine relations are now mapped, but several bridge factors remain heuristic | Derive or sensitivity-test `RHO_UNITY`, `GAMMA_UET`, `11.7`, and `0.075` |
 | Verification | Runnable summary-row benchmark | Verifier measures one-point-per-galaxy error over the checked-in working copy | Upgrade to curve-level verification and competitor baselines |
-| Claims | Internal benchmark only | Topic can claim repository benchmark status, not full no-dark-matter proof | Tie stronger claims to curve-level artifacts and source-locked data |
+| Claims | Internal benchmark only with model-residual blocker | Topic can claim repository run-contract status, but the current summary-row model gate fails the 15% residual threshold | Tie stronger claims to curve-level artifacts, source-locked data, and competitor baselines |
 
 ## Assumptions and scope
 
@@ -76,6 +76,7 @@ Supporting standard files:
 - Primary internal metric in `Research_Galaxy_Rotation.py`: mean absolute percentage error
 - Topic-level pass threshold currently documented in script logic: `< 15%` error
 - `WARN` means the script produced valid comparisons but missed the current average-error gate
+- The artifact's `galaxy_model_gate` separates runnable verifier status from model acceptance; current summary-row residuals block dark-matter replacement or galaxy-closure wording.
 - README-level status should be interpreted as internal benchmark status only
 
 ## Baselines

@@ -66,6 +66,64 @@ def normalize_entry(entry):
     }
 
 
+def build_galaxy_model_gate(avg_error=None, pass_rate=None, processed_entries=0, skipped_entries=0):
+    has_metric = avg_error is not None and pass_rate is not None and processed_entries > 0
+    model_pass = bool(has_metric and avg_error < 15.0 and pass_rate > 0.0)
+    return {
+        "schema_version": "1.0",
+        "topic": "0.1_Galaxy_Rotation_Problem",
+        "purpose": "Separate verifier run-contract status from galaxy-model residual evidence.",
+        "run_contract_gate": {
+            "status": "PASS" if processed_entries > 0 else "FAIL",
+            "processed_entries": processed_entries,
+            "skipped_entries": skipped_entries,
+            "claim_class": "C - internal summary-row benchmark execution",
+        },
+        "summary_row_model_gate": {
+            "status": "PASS" if model_pass else "FAIL",
+            "average_error_percent": avg_error,
+            "pass_rate_percent": pass_rate,
+            "thresholds": {
+                "average_error_percent_max": 15.0,
+                "pass_rate_percent_min": 1.0,
+            },
+            "claim_class": "model-residual blocker",
+            "supports": "Only a summary-row internal residual benchmark over the repository working copy.",
+            "does_not_support": "A full SPARC curve replication, dark-matter replacement, or galaxy-dynamics closure claim.",
+        },
+        "source_lock_gate": {
+            "status": "OPEN",
+            "required_inputs": [
+                "upstream SPARC file identity",
+                "row semantics and radius convention",
+                "full radial curve arrays or declared one-point benchmark scope",
+                "preprocessing script and source hash manifest",
+            ],
+        },
+        "baseline_comparison_gate": {
+            "status": "OPEN",
+            "required_comparators": [
+                "same-row MOND or dark-matter baseline artifact",
+                "metric-equivalent competitor run",
+                "documented threshold for comparative success",
+            ],
+        },
+        "replacement_claim_gate": {
+            "status": "BLOCKED",
+            "blocked_claims": [
+                "dark-matter replacement",
+                "full SPARC replication",
+                "galaxy-rotation theory closure",
+                "out-of-sample prediction",
+            ],
+        },
+        "claim_boundary": (
+            "This gate lets the verifier run and residual model evidence diverge. "
+            "A runnable artifact does not imply galaxy-model acceptance."
+        ),
+    }
+
+
 def run_validation():
     """Execute the full validation sweep."""
     print("Starting UET galaxy rotation validation...")
@@ -142,6 +200,10 @@ def run_validation():
         artifact["claim_boundary"] = (
             "No scientific acceptance result is available when the verifier produces no valid comparisons."
         )
+        artifact["galaxy_model_gate"] = build_galaxy_model_gate(
+            processed_entries=0,
+            skipped_entries=len(skipped),
+        )
         artifact_path = topic_path / "Result" / "artifacts" / "galaxy_rotation_validation.json"
         save_artifact(artifact, artifact_path)
         print("No valid comparisons were produced.")
@@ -188,6 +250,12 @@ def run_validation():
     artifact["claim_boundary"] = (
         "This artifact measures a summary-row internal benchmark over the repository working copy; "
         "it is not a full upstream SPARC curve replication."
+    )
+    artifact["galaxy_model_gate"] = build_galaxy_model_gate(
+        avg_error=avg_error,
+        pass_rate=pass_rate,
+        processed_entries=len(results),
+        skipped_entries=len(skipped),
     )
     artifact_path = topic_path / "Result" / "artifacts" / "galaxy_rotation_validation.json"
     save_artifact(artifact, artifact_path)

@@ -26,9 +26,11 @@
   - processed row count and skipped row count
   - average error percent and pass rate percent when valid comparisons exist
   - per-galaxy result rows
+  - `galaxy_model_gate` with run-contract, summary-row residual, source-lock, baseline-comparison, and replacement-claim gates
   - claim boundary describing the benchmark as an internal summary-row test
 - Interpretation:
   - Treat this verifier as an internal benchmark over the repository working copy.
+  - Treat `galaxy_model_gate.summary_row_model_gate.status == FAIL` as a model-residual blocker even when the artifact-level run contract is `WARN`.
   - Do not describe it as full upstream SPARC curve replication.
   - Stronger galaxy-dynamics claims require source-locked curve arrays and
     comparator baseline artifacts.
