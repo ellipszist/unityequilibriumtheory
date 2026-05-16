@@ -122,12 +122,12 @@
     {
       "name": "Pioneer thermal-recoil competitor baseline",
       "priority": "high",
-      "status": "pending",
+      "status": "source_record_only",
       "evidence_fields": [
         {
           "field": "doi_or_url",
-          "status": "pending",
-          "value": ""
+          "status": "complete",
+          "value": "https://doi.org/10.1103/PhysRevLett.108.241101"
         },
         {
           "field": "local_path",
@@ -161,6 +161,7 @@
   "source_lock_dependencies": [
     "docs/data/external/cosmology/laniakea/tully_2014/source_record.json",
     "docs/data/external/cosmology/cosmicflows/cosmicflows3/source_record.json",
-    "docs/data/external/spacecraft/pioneer_anomaly/anderson_2002/source_record.json"
+    "docs/data/external/spacecraft/pioneer_anomaly/anderson_2002/source_record.json",
+    "docs/data/external/spacecraft/pioneer_anomaly/turyshev_2012_thermal_recoil/source_record.json"
   ]
 }

@@ -50,6 +50,7 @@ DATA_INPUTS = [
     ROOT / "docs" / "data" / "external" / "cosmology" / "laniakea" / "tully_2014" / "source_record.json",
     ROOT / "docs" / "data" / "external" / "cosmology" / "cosmicflows" / "cosmicflows3" / "source_record.json",
     ROOT / "docs" / "data" / "external" / "spacecraft" / "pioneer_anomaly" / "anderson_2002" / "source_record.json",
+    ROOT / "docs" / "data" / "external" / "spacecraft" / "pioneer_anomaly" / "turyshev_2012_thermal_recoil" / "source_record.json",
 ]
 
 
@@ -103,6 +104,7 @@ def _build_source_evidence_intake_stub():
     laniakea_source = _load_json_if_exists(ROOT / "docs" / "data" / "external" / "cosmology" / "laniakea" / "tully_2014" / "source_record.json")
     cosmicflows_source = _load_json_if_exists(ROOT / "docs" / "data" / "external" / "cosmology" / "cosmicflows" / "cosmicflows3" / "source_record.json")
     pioneer_source = _load_json_if_exists(ROOT / "docs" / "data" / "external" / "spacecraft" / "pioneer_anomaly" / "anderson_2002" / "source_record.json")
+    thermal_recoil_source = _load_json_if_exists(ROOT / "docs" / "data" / "external" / "spacecraft" / "pioneer_anomaly" / "turyshev_2012_thermal_recoil" / "source_record.json")
     laniakea_lock = _find_source_target(source_lock, "Data/03_Research/Laniakea_Flows.json")
     cosmicflows_lock = _find_source_target(source_lock, "Data/Cosmicflows_3_Subset.csv")
     pioneer_lock = _find_source_target(source_lock, "Data/Pioneer_Anomaly_Data.csv")
@@ -159,9 +161,9 @@ def _build_source_evidence_intake_stub():
             {
                 "name": "Pioneer thermal-recoil competitor baseline",
                 "priority": "high",
-                "status": "pending",
+                "status": "source_record_only",
                 "evidence_fields": [
-                    {"field": "doi_or_url", "status": "pending", "value": ""},
+                    {"field": "doi_or_url", "status": "complete" if thermal_recoil_source else "pending", "value": thermal_recoil_source.get("doi_url", "")},
                     {"field": "local_path", "status": "pending", "value": ""},
                     {"field": "baseline_model_identifier", "status": "pending", "value": ""},
                     {"field": "reported_acceleration_or_heat_budget", "status": "pending", "value": ""},
@@ -274,15 +276,57 @@ def _build_dependency_claim_gate():
     return _write_json(DEPENDENCY_CLAIM_GATE_PATH, payload)
 
 
+def _build_numeric_residual_gate(metrics, source_evidence_readiness_matrix):
+    return {
+        "schema_version": "1.0",
+        "purpose": "Separate visualization/provenance success from future numeric dynamic-frame model evidence.",
+        "visualization_gate": {
+            "status": "PASS" if metrics.get("flow_count", 0) > 0 and metrics.get("has_flow_path") else "FAIL",
+            "metric_keys": ["flow_count", "attractor_count", "has_flow_path"],
+            "claim_class": "C - internal visualization/provenance artifact",
+        },
+        "numeric_flow_residual_gate": {
+            "status": "OPEN",
+            "required_inputs": [
+                "raw Cosmicflows table or declared subset extraction",
+                "observer-frame and distance-calibration metadata",
+                "baseline cosmology/flow comparator",
+                "fixed residual metric and threshold",
+            ],
+            "claim_class_when_closed": "C - internal numeric benchmark at most",
+        },
+        "pioneer_competitor_gate": {
+            "status": "OPEN",
+            "required_inputs": [
+                "Anderson-style anomaly residual table",
+                "Turyshev thermal-recoil model source package",
+                "thermal recoil residual comparator",
+                "shared acceleration units and uncertainty bands",
+            ],
+        },
+        "source_evidence_summary": source_evidence_readiness_matrix.get("summary", {}),
+        "replacement_claim_gate": {
+            "status": "BLOCKED",
+            "blocked_claims": [
+                "dark-matter replacement",
+                "validated dynamic-frame cosmology",
+                "Pioneer anomaly explanation by UET drag",
+                "toroidal cosmology observable closure",
+            ],
+        },
+    }
+
+
 def _write_artifact(metrics, figure_path):
     inputs = _input_identity()
     source_evidence_intake_stub = _build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = _build_source_evidence_readiness_matrix(source_evidence_intake_stub)
     dependency_claim_gate = _build_dependency_claim_gate()
+    numeric_residual_gate = _build_numeric_residual_gate(metrics, source_evidence_readiness_matrix)
     missing = [item["path"] for item in inputs if item.get("missing")]
     status = "WARN" if figure_path and not missing else "FAIL"
     artifact = {
-        "schema_version": "1.1",
+        "schema_version": "1.2",
         "topic": "0.26_Cosmic_Dynamic_Frame",
         "command": ".venv\\Scripts\\python.exe docs\\topics\\0.26_Cosmic_Dynamic_Frame\\Code\\03_Research\\Research_Cosmic_Flows.py",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
@@ -290,6 +334,7 @@ def _write_artifact(metrics, figure_path):
         "claim_class": "D",
         "inputs": inputs,
         "metrics": metrics,
+        "numeric_residual_gate": numeric_residual_gate,
         "figure_artifact": str(figure_path.relative_to(TOPIC_DIR)) if figure_path else None,
         "source_evidence_intake_stub": {
             "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(ROOT)).replace("/", "\\"),
@@ -313,6 +358,7 @@ def _write_artifact(metrics, figure_path):
             "Laniakea/Cosmicflows/Pioneer source records are pinned, but raw tables, frame metadata, and preprocessing are not archived.",
             "This verifier checks data loading and flow-map generation, not a cosmological model fit.",
             "Cosmicflows/Pioneer files are hashed for provenance but are not used by this primary visualization gate.",
+            "Thermal-recoil competitor source metadata is tracked, but no numeric competitor residual gate is closed yet.",
         ],
         "interpretation": (
             "The artifact supports an exploratory dynamic-frame visualization. It does not establish "

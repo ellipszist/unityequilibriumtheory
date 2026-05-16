@@ -59,6 +59,7 @@ flowchart LR
 ## Current Research Claim
 
 - **Supported now:** UET has a reusable computational form for normalized fields, and fixed parameter unity is explicitly falsified by the topic's own diagnostics.
+- **New governance gate:** the verifier records `scale_claim_gate`, which treats fixed-parameter failure as a useful constraint and keeps synthetic neural/galaxy branches simulation-only until real source packages exist.
 - **Not established yet:** full theory-wide integration, a universal fixed `kappa`, vacuum-energy closure, or held-out external cross-domain prediction.
 - **Main value:** `0.23` should serve as a scale-dependency map that shows where UET can reuse structure, where parameters must run, and which upstream topic artifacts each claim inherits.
 
@@ -92,4 +93,4 @@ flowchart LR
 
 ---
 
-*Core hardening status: formula-audited, verifier-artifact enabled, finance source metadata pinned, reproducible retrieval and real EEG source-lock still open.*
+*Core hardening status: formula-audited, verifier-artifact enabled, finance source metadata pinned, `scale_claim_gate` enabled, reproducible retrieval and real EEG source-lock still open.*

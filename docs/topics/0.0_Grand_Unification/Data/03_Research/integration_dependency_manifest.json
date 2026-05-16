@@ -1,58 +1,41 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "data_class": "integration_dependency_manifest",
   "topic": "0.0_Grand_Unification",
-  "purpose": "Define the delegated artifact data path used by the 0.0 integration verifier.",
-  "policy": "0.0 owns no raw scientific dataset. It reads subordinate artifact identities and inherits their PASS/WARN/FAIL status and limitations.",
+  "purpose": "Define the delegated artifact path and claim-inheritance gate used by the 0.0 integration verifier.",
+  "policy": "0.0 owns no raw scientific dataset. It reads subordinate artifact identities and inherits their PASS/WARN/FAIL status, claim classes, formula limits, data status, and limitations.",
+  "core_scope": {
+    "covered_range": "0.1 through 0.26",
+    "coverage_status": "full_core_dependency_inventory",
+    "paper_readiness_rule": "Any FAIL, WARN, UNKNOWN, source-incomplete, formula-open, or synthetic-only dependency blocks theory-level closure wording."
+  },
   "dependencies": [
-    {
-      "topic": "0.1_Galaxy_Rotation_Problem",
-      "role": "galaxy/halo metric dependency",
-      "artifact": "docs/topics/0.1_Galaxy_Rotation_Problem/Result/artifacts/galaxy_rotation_validation.json",
-      "metric_bridge": "galaxy_halo_ratio"
-    },
-    {
-      "topic": "0.6_Electroweak_Physics",
-      "role": "Weinberg-angle metric dependency",
-      "artifact": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/electroweak_pdg_validation.json",
-      "metric_bridge": "weinberg_angle"
-    },
-    {
-      "topic": "0.10_Fluid_Dynamics_Chaos",
-      "role": "critical Reynolds metric dependency",
-      "artifact": "docs/topics/0.10_Fluid_Dynamics_Chaos/Result/artifacts/fluid_benchmark_validation.json",
-      "metric_bridge": "reynolds_critical"
-    },
-    {
-      "topic": "0.17_Mass_Generation",
-      "role": "tau-mass metric dependency",
-      "artifact": "docs/topics/0.17_Mass_Generation/Result/artifacts/0_17_mass_generation_verification.json",
-      "metric_bridge": "tau_mass_MeV"
-    },
-    {
-      "topic": "0.18_Mathnicry",
-      "role": "quantum entropy metric dependency",
-      "artifact": "docs/topics/0.18_Mathnicry/Result/artifacts/0_18_mathnicry_verification.json",
-      "metric_bridge": "entanglement_entropy"
-    },
-    {
-      "topic": "0.20_Atomic_Physics",
-      "role": "atomic H-alpha/Rydberg metric dependency",
-      "artifact": "docs/topics/0.20_Atomic_Physics/Result/artifacts/0_20_atomic_physics_verification.json",
-      "metric_bridge": "atomic_h_alpha_error_percent"
-    },
-    {
-      "topic": "0.24_Artificial_Intelligence",
-      "role": "AI scaling/sparsity metric dependency",
-      "artifact": "docs/topics/0.24_Artificial_Intelligence/Result/artifacts/0_24_artificial_intelligence_verification.json",
-      "metric_bridge": "ai_initial_loss"
-    },
-    {
-      "topic": "0.25_Strategy_Power_Economics",
-      "role": "economic omega metric dependency",
-      "artifact": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_strategy_power_economics_verification.json",
-      "metric_bridge": "economic_omega"
-    }
+    {"topic": "0.1_Galaxy_Rotation_Problem", "role": "galaxy/halo metric dependency", "artifact": "docs/topics/0.1_Galaxy_Rotation_Problem/Result/artifacts/galaxy_rotation_validation.json", "metric_bridge": "galaxy_halo_ratio", "formula_bridge": ["0.1 FORMULA_AUDIT"], "claim_inheritance": "inherits SPARC/internal benchmark limits"},
+    {"topic": "0.2_Black_Hole_Physics", "role": "black-hole physics dependency", "artifact": "docs/topics/0.2_Black_Hole_Physics/Result/artifacts/0_2_black_hole_physics_verification.json", "metric_bridge": "black_hole_gate", "formula_bridge": ["0.2 FORMULA_AUDIT"], "claim_inheritance": "formula/data limits remain topic-local"},
+    {"topic": "0.3_Cosmology_Hubble_Tension", "role": "Hubble/cosmology dependency", "artifact": "docs/topics/0.3_Cosmology_Hubble_Tension/Result/artifacts/hubble_comparison_validation.json", "metric_bridge": "hubble_gate", "formula_bridge": ["0.3 FORMULA_AUDIT"], "claim_inheritance": "cannot outrank current Hubble threshold status"},
+    {"topic": "0.4_Superconductivity_Superfluids", "role": "superconductivity model dependency", "artifact": "docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/0_4_superconductivity_superfluids_verification.json", "metric_bridge": "superconductivity_model_gate", "formula_bridge": ["0.4 FORMULA_AUDIT"], "claim_inheritance": "FAIL/WARN model gate blocks material or energy closure claims"},
+    {"topic": "0.5_Nuclear_Binding_Hadrons", "role": "nuclear-scale calibration dependency", "artifact": "docs/topics/0.5_Nuclear_Binding_Hadrons/Result/artifacts/0_5_nuclear_binding_hadrons_verification.json", "metric_bridge": "nuclear_binding_gate", "formula_bridge": ["0.5 FORMULA_AUDIT"], "claim_inheritance": "SEMF/provenance limits propagate into scale-link calibration claims"},
+    {"topic": "0.6_Electroweak_Physics", "role": "Weinberg-angle metric dependency", "artifact": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/0_6_electroweak_physics_verification.json", "metric_bridge": "weinberg_angle", "formula_bridge": ["0.6 FORMULA_AUDIT"], "claim_inheritance": "electroweak bridge remains selected benchmark scope"},
+    {"topic": "0.7_Neutrino_Physics", "role": "neutrino benchmark dependency", "artifact": "docs/topics/0.7_Neutrino_Physics/Result/artifacts/0_7_neutrino_physics_verification.json", "metric_bridge": "neutrino_gate", "formula_bridge": ["0.7 FORMULA_AUDIT"], "claim_inheritance": "mass-splitting source locks do not validate broader unification"},
+    {"topic": "0.8_Muon_g2_Anomaly", "role": "muon g-2 benchmark dependency", "artifact": "docs/topics/0.8_Muon_g2_Anomaly/Result/artifacts/0_8_muon_g2_anomaly_verification.json", "metric_bridge": "muon_g2_gate", "formula_bridge": ["0.8 FORMULA_AUDIT"], "claim_inheritance": "source-locked internal benchmark does not close alternate-theory comparison"},
+    {"topic": "0.9_Quantum_Nonlocality", "role": "quantum/nonlocality dependency", "artifact": "docs/topics/0.9_Quantum_Nonlocality/Result/artifacts/0_9_quantum_nonlocality_verification.json", "metric_bridge": "nonlocality_gate", "formula_bridge": ["0.9 FORMULA_AUDIT"], "claim_inheritance": "CHSH/source-reference scope remains bounded"},
+    {"topic": "0.10_Fluid_Dynamics_Chaos", "role": "critical Reynolds metric dependency", "artifact": "docs/topics/0.10_Fluid_Dynamics_Chaos/Result/artifacts/fluid_benchmark_validation.json", "metric_bridge": "reynolds_critical", "formula_bridge": ["0.10 FORMULA_AUDIT"], "claim_inheritance": "requires repeated-run stability before stronger closure"},
+    {"topic": "0.11_Phase_Transitions", "role": "phase-transition dependency", "artifact": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_phase_transitions_verification.json", "metric_bridge": "phase_transition_gate", "formula_bridge": ["0.11 FORMULA_AUDIT"], "claim_inheritance": "critical exponent branch remains bounded by source tables"},
+    {"topic": "0.12_Vacuum_Energy_Casimir", "role": "vacuum/Casimir dependency", "artifact": "docs/topics/0.12_Vacuum_Energy_Casimir/Result/artifacts/0_12_vacuum_energy_casimir_verification.json", "metric_bridge": "vacuum_energy_gate", "formula_bridge": ["0.12 FORMULA_AUDIT"], "claim_inheritance": "Casimir/vacuum bridge does not authorize dark-energy closure"},
+    {"topic": "0.13_Thermodynamic_Bridge", "role": "information-energy bridge dependency", "artifact": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/0_13_thermodynamic_bridge_verification.json", "metric_bridge": "thermodynamic_bridge_gate", "formula_bridge": ["T13-001", "T13-004", "T13-006", "T13-011"], "claim_inheritance": "WARN/source-lock-open blocks theory-level information-energy closure"},
+    {"topic": "0.14_Complex_Systems", "role": "complex-systems dependency", "artifact": "docs/topics/0.14_Complex_Systems/Result/artifacts/0_14_complex_systems_verification.json", "metric_bridge": "complex_systems_gate", "formula_bridge": ["0.14 FORMULA_AUDIT"], "claim_inheritance": "multi-branch diagnostics remain source/provenance limited"},
+    {"topic": "0.15_Cluster_Dynamics", "role": "cluster dynamics dependency", "artifact": "docs/topics/0.15_Cluster_Dynamics/Result/artifacts/0_15_cluster_dynamics_verification.json", "metric_bridge": "cluster_dynamics_gate", "formula_bridge": ["0.15 FORMULA_AUDIT"], "claim_inheritance": "requires calibrated offset/lensing benchmark before dark-sector claims"},
+    {"topic": "0.16_Heavy_Nuclei", "role": "heavy-nuclei dependency", "artifact": "docs/topics/0.16_Heavy_Nuclei/Result/artifacts/0_16_heavy_nuclei_verification.json", "metric_bridge": "heavy_nuclei_gate", "formula_bridge": ["0.16 FORMULA_AUDIT"], "claim_inheritance": "fragment-mass and fission threshold source locks remain blockers"},
+    {"topic": "0.17_Mass_Generation", "role": "tau-mass metric dependency", "artifact": "docs/topics/0.17_Mass_Generation/Result/artifacts/0_17_mass_generation_verification.json", "metric_bridge": "tau_mass_MeV", "formula_bridge": ["0.17 FORMULA_AUDIT"], "claim_inheritance": "mass-generation wording inherits Higgs/Koide provenance gaps"},
+    {"topic": "0.18_Mathnicry", "role": "quantum entropy metric dependency", "artifact": "docs/topics/0.18_Mathnicry/Result/artifacts/0_18_mathnicry_verification.json", "metric_bridge": "entanglement_entropy", "formula_bridge": ["0.18 FORMULA_AUDIT"], "claim_inheritance": "proof-heavy branches remain bounded-search/surrogate scope"},
+    {"topic": "0.19_Gravity_GR", "role": "gravity/GR dependency", "artifact": "docs/topics/0.19_Gravity_GR/Result/artifacts/0_19_gravity_gr_verification.json", "metric_bridge": "gravity_gate", "formula_bridge": ["0.19 FORMULA_AUDIT"], "claim_inheritance": "CODATA/GR checks do not prove UET gravity dynamics"},
+    {"topic": "0.20_Atomic_Physics", "role": "atomic H-alpha/Rydberg metric dependency", "artifact": "docs/topics/0.20_Atomic_Physics/Result/artifacts/0_20_atomic_physics_verification.json", "metric_bridge": "atomic_h_alpha_error_percent", "formula_bridge": ["0.20 FORMULA_AUDIT"], "claim_inheritance": "hydrogen benchmark does not close many-electron or UET-derived R_H claims"},
+    {"topic": "0.21_Yang_Mills_Mass_Gap", "role": "math-facing mass-gap dependency", "artifact": "docs/topics/0.21_Yang_Mills_Mass_Gap/Result/artifacts/mass_gap_validation.json", "metric_bridge": "mass_gap_gate", "formula_bridge": ["0.21 FORMULA_AUDIT"], "claim_inheritance": "structured math benchmark still needs conservative public wording"},
+    {"topic": "0.22_Biophysics_Origin_of_Life", "role": "biophysics dependency", "artifact": "docs/topics/0.22_Biophysics_Origin_of_Life/Result/artifacts/0_22_biophysics_origin_of_life_verification.json", "metric_bridge": "biophysics_gate", "formula_bridge": ["0.22 FORMULA_AUDIT"], "claim_inheritance": "synthetic/source-referenced diagnostics do not authorize biological closure"},
+    {"topic": "0.23_Unity_Scale_Link", "role": "scale-link dependency gate", "artifact": "docs/topics/0.23_Unity_Scale_Link/Result/artifacts/0_23_unity_scale_link_verification.json", "metric_bridge": "scale_link_gate", "formula_bridge": ["0.23 FORMULA_AUDIT"], "claim_inheritance": "exploratory/synthetic branches block unity wording"},
+    {"topic": "0.24_Artificial_Intelligence", "role": "AI scaling/sparsity metric dependency", "artifact": "docs/topics/0.24_Artificial_Intelligence/Result/artifacts/0_24_artificial_intelligence_verification.json", "metric_bridge": "ai_initial_loss", "formula_bridge": ["0.24 FORMULA_AUDIT"], "claim_inheritance": "internal scaling benchmark does not validate consciousness/alignment claims"},
+    {"topic": "0.25_Strategy_Power_Economics", "role": "economic omega metric dependency", "artifact": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_strategy_power_economics_verification.json", "metric_bridge": "economic_omega", "formula_bridge": ["0.25 FORMULA_AUDIT"], "claim_inheritance": "economic diagnostics remain source/provenance limited"},
+    {"topic": "0.26_Cosmic_Dynamic_Frame", "role": "dynamic-frame mechanism dependency", "artifact": "docs/topics/0.26_Cosmic_Dynamic_Frame/Result/artifacts/0_26_cosmic_dynamic_frame_verification.json", "metric_bridge": "cosmic_dynamic_frame_gate", "formula_bridge": ["0.26 FORMULA_AUDIT"], "claim_inheritance": "visualization/provenance gate cannot support cosmology replacement claims"}
   ],
   "claim_boundary": "The integration verifier can only report orchestration and inherited evidence status. It cannot promote any dependency beyond its own artifact, formula audit, data manifest, and limitations."
 }

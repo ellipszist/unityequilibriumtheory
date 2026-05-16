@@ -144,6 +144,56 @@ def _load_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _build_scale_claim_gate(results, dependency_manifest, missing_inputs):
+    dependency_chain = []
+    if dependency_manifest:
+        dependency_chain = dependency_manifest.get("dependency_chain", [])
+
+    return {
+        "schema_version": "1.0",
+        "purpose": "Prevent scale-link and unity wording from outrunning source and dependency evidence.",
+        "dependency_topics": [
+            {
+                "topic": item.get("topic"),
+                "artifact": item.get("artifact"),
+                "role": item.get("role"),
+                "claim_class_ceiling": item.get("claim_class_ceiling"),
+                "status_inheritance": item.get("status_inheritance"),
+            }
+            for item in dependency_chain
+        ],
+        "source_retrieval_log_status": {
+            "finance_yahoo_snapshots": "source_manifest_present_but_original_query_logs_missing",
+            "real_eeg_branch": "not_present",
+            "synthetic_neural_branch": "simulation_only",
+        },
+        "fixed_parameter_falsification": {
+            "status": "CONSTRAINT",
+            "test_key": "universal_kappa",
+            "current_result": results.get("universal_kappa"),
+            "interpretation": (
+                "A failed or unstable fixed-kappa branch is a useful blocker. It constrains the theory "
+                "against universal fixed-parameter wording instead of counting as evidence for unity."
+            ),
+        },
+        "branch_claim_policy": {
+            "shared_omega_form": "model-shape diagnostic",
+            "fixed_parameter_unity": "blocked unless held-out source-backed domains pass with one parameter contract",
+            "scale_dependent_kappa": "hypothesis until upstream topic artifacts and uncertainties are mapped",
+            "cross_domain_transfer": "simulation-only where synthetic neural or generated galaxy fields are used",
+        },
+        "paper_readiness": {
+            "status": "BLOCKED",
+            "blocking_conditions": [
+                "missing declared inputs" if missing_inputs else "no missing declared inputs",
+                "finance retrieval logs are absent",
+                "real EEG source package is absent",
+                "0.13 thermodynamic bridge remains a WARN dependency",
+            ],
+        },
+    }
+
+
 def _write_verification_artifact(results):
     passed = sum(1 for value in results.values() if value is True)
     input_identity = _input_identity()
@@ -165,10 +215,11 @@ def _write_verification_artifact(results):
         warnings.append(
             "Economy volatility ordering does not match the synthetic neural diagnostic under the fixed kappa benchmark."
         )
+    scale_claim_gate = _build_scale_claim_gate(results, dependency_manifest, missing_inputs)
 
     status = "WARN" if passed > 0 and not missing_inputs else "FAIL"
     artifact = {
-        "schema_version": "1.2",
+        "schema_version": "1.3",
         "topic": "0.23_Unity_Scale_Link",
         "command": ".venv\\Scripts\\python.exe docs\\topics\\0.23_Unity_Scale_Link\\Code\\03_Research\\Research_Cross_Domain.py",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
@@ -183,6 +234,24 @@ def _write_verification_artifact(results):
         },
         "test_results": {key: ("SKIP" if value is None else bool(value)) for key, value in results.items()},
         "dependency_manifest": dependency_manifest,
+        "scale_claim_gate": scale_claim_gate,
+        "evidence_lanes": {
+            "source_backed_finance_snapshot": {
+                "status": "WARN",
+                "claim_class": "C - local source-referenced benchmark",
+                "blocker": "Original Yahoo query logs and retrieval timestamps are not archived.",
+            },
+            "synthetic_neural_transfer": {
+                "status": "SIMULATION_ONLY",
+                "claim_class": "A/B - model-shape diagnostic",
+                "blocker": "Replace or supplement with real EEG source package before external cross-domain claims.",
+            },
+            "fixed_universal_kappa": {
+                "status": "CONSTRAINT",
+                "claim_class": "negative/limiting evidence",
+                "blocker": "One fixed parameter cannot be promoted as universal without held-out, source-backed domain passes.",
+            },
+        },
         "warnings": warnings,
         "interpretation": (
             "The run supports an exploratory structural scale-link check. It does not establish "

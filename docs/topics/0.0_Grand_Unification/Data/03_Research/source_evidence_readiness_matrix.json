@@ -4,9 +4,9 @@
   "purpose": "Readiness matrix for source-evidence review across integration and closure branches.",
   "summary": {
     "source_targets_total": 5,
-    "targets_ready_for_source_review": 2,
-    "targets_blocked_by_pending_evidence": 3,
-    "dependencies_warn_or_unknown": 4
+    "targets_ready_for_source_review": 3,
+    "targets_blocked_by_pending_evidence": 2,
+    "dependencies_warn_or_unknown": 15
   },
   "readiness_rows": [
     {
@@ -37,16 +37,13 @@
       "name": "Core-topic coverage expansion package",
       "priority": "high",
       "fields_total": 6,
-      "fields_complete": 2,
-      "fields_pending": 4,
+      "fields_complete": 5,
+      "fields_pending": 1,
       "pending_fields": [
-        "missing_core_topics_list",
-        "expanded_manifest_path",
-        "artifact_inventory",
-        "upgrade_requirement"
+        "all_dependencies_pass_without_warn_or_unknown"
       ],
-      "ready_for_source_review": false,
-      "blocking_reason": "The current manifest covers only selected dependencies, not the full `0.1-0.26` core scope."
+      "ready_for_source_review": true,
+      "blocking_reason": null
     },
     {
       "name": "Paper-readiness gate package",

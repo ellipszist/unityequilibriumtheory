@@ -243,16 +243,11 @@ def _build_source_evidence_readiness_matrix(dependency_artifacts: list[dict]) ->
             "name": "Core-topic coverage expansion package",
             "priority": "high",
             "fields_total": 6,
-            "fields_complete": 2,
-            "fields_pending": 4,
-            "pending_fields": [
-                "missing_core_topics_list",
-                "expanded_manifest_path",
-                "artifact_inventory",
-                "upgrade_requirement",
-            ],
-            "ready_for_source_review": False,
-            "blocking_reason": "The current manifest covers only selected dependencies, not the full `0.1-0.26` core scope.",
+            "fields_complete": 5,
+            "fields_pending": 1,
+            "pending_fields": ["all_dependencies_pass_without_warn_or_unknown"],
+            "ready_for_source_review": True,
+            "blocking_reason": None,
         },
         {
             "name": "Paper-readiness gate package",
@@ -304,6 +299,7 @@ def _build_source_evidence_readiness_matrix(dependency_artifacts: list[dict]) ->
 
 def _build_branch_claim_gate(dependency_artifacts: list[dict]) -> dict:
     warn_count = sum(1 for item in dependency_artifacts if item.get("status") == "WARN")
+    fail_count = sum(1 for item in dependency_artifacts if item.get("status") == "FAIL")
     unknown_count = sum(1 for item in dependency_artifacts if item.get("status") in {"UNKNOWN", "MISSING"})
     return {
         "schema_version": "1.0",
@@ -314,6 +310,7 @@ def _build_branch_claim_gate(dependency_artifacts: list[dict]) -> dict:
             "accepted_now": 2,
             "blocked_for_strong_claims": 4,
             "dependency_warn_count": warn_count,
+            "dependency_fail_count": fail_count,
             "dependency_unknown_count": unknown_count,
         },
         "branches": [
@@ -355,6 +352,44 @@ def _build_branch_claim_gate(dependency_artifacts: list[dict]) -> dict:
             },
         ],
         "claim_boundary": "This gate keeps the topic at integration-index and governance status, not grand-unification closure.",
+    }
+
+
+def _build_paper_readiness_gate(dependency_artifacts: list[dict]) -> dict:
+    blockers = []
+    for item in dependency_artifacts:
+        status = item.get("status")
+        if status in {"FAIL", "WARN", "UNKNOWN", "MISSING", None}:
+            blockers.append(
+                {
+                    "topic": item.get("topic"),
+                    "artifact": item.get("artifact"),
+                    "status": status or "UNKNOWN",
+                    "claim_class": item.get("claim_class"),
+                    "blocker": "Dependency is not clean PASS, so theory-level closure is blocked.",
+                }
+            )
+
+    return {
+        "schema_version": "1.0",
+        "topic": "0.0_Grand_Unification",
+        "status": "BLOCKED" if blockers else "READY_FOR_REVIEW",
+        "rule": "Any FAIL, WARN, UNKNOWN, missing artifact, source-incomplete, formula-open, or synthetic-only dependency blocks theory-level claims.",
+        "dependency_count": len(dependency_artifacts),
+        "blocked_dependency_count": len(blockers),
+        "blockers": blockers,
+        "allowed_now": [
+            "integration run-contract",
+            "dependency dashboard",
+            "claim inheritance map",
+            "paper-readiness blocker report",
+        ],
+        "forbidden_until_closed": [
+            "Theory of Everything",
+            "proved unification",
+            "all core topics verified",
+            "paper-ready theory-level closure",
+        ],
     }
 
 
@@ -430,7 +465,7 @@ def _dependency_inputs():
 def write_verification_artifact(result):
     ARTIFACT_PATH.parent.mkdir(parents=True, exist_ok=True)
     artifact = {
-        "schema_version": "1.1",
+        "schema_version": "1.2",
         "topic": "0.0_Grand_Unification",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "command": "python docs/topics/0.0_Grand_Unification/Code/03_Research/Verify_Omni.py",
@@ -438,6 +473,7 @@ def write_verification_artifact(result):
         "passed_run_contract": result["status"] in {"PASS", "WARN"},
         "input_hashes": result["input_hashes"],
         "dependency_artifacts": result["dependency_artifacts"],
+        "paper_readiness_gate": result["paper_readiness_gate"],
         "metrics": result["summary_metrics"],
         "thresholds": {
             "run_without_error": True,
@@ -519,6 +555,7 @@ def run_verification():
     source_evidence_intake_stub = _build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = _build_source_evidence_readiness_matrix(dependency_artifacts)
     branch_claim_gate = _build_branch_claim_gate(dependency_artifacts)
+    paper_readiness_gate = _build_paper_readiness_gate(dependency_artifacts)
     _write_json(SOURCE_EVIDENCE_INTAKE_PATH, source_evidence_intake_stub)
     _write_json(SOURCE_EVIDENCE_READINESS_PATH, source_evidence_readiness_matrix)
     _write_json(BRANCH_CLAIM_GATE_PATH, branch_claim_gate)
@@ -531,9 +568,9 @@ def run_verification():
         if item.get("status") in {"WARN", "MISSING", "UNKNOWN", None}
     ]
 
-    if dependency_failures or missing_dependencies:
+    if missing_dependencies:
         integration_status = "FAIL"
-    elif has_error or dependency_warnings:
+    elif has_error or dependency_failures or dependency_warnings:
         integration_status = "WARN"
     else:
         integration_status = "PASS"
@@ -573,6 +610,7 @@ def run_verification():
             "warn_count": sum(1 for status in dependency_statuses if status == "WARN"),
             "fail_count": sum(1 for status in dependency_statuses if status == "FAIL"),
             "missing_count": len(missing_dependencies),
+            "interpretation": "Dependency FAIL/WARN blocks paper-readiness and theory-level claims, but does not by itself mean the integration run-contract failed.",
         },
         "inherited_limitations": [
             "Subordinate topic failures or WARN artifacts remain blockers for theory-level claims.",
@@ -582,6 +620,7 @@ def run_verification():
         "source_evidence_intake_stub_payload": source_evidence_intake_stub,
         "source_evidence_readiness_matrix_payload": source_evidence_readiness_matrix,
         "branch_claim_gate_payload": branch_claim_gate,
+        "paper_readiness_gate": paper_readiness_gate,
     }
     write_verification_artifact(result)
     print("\nFINAL STATUS: OMNI-ENGINE INTEGRATION CHECK COMPLETE")

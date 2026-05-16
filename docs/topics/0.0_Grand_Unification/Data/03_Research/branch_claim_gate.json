@@ -6,7 +6,8 @@
     "branches_total": 6,
     "accepted_now": 2,
     "blocked_for_strong_claims": 4,
-    "dependency_warn_count": 4,
+    "dependency_warn_count": 15,
+    "dependency_fail_count": 1,
     "dependency_unknown_count": 0
   },
   "branches": [

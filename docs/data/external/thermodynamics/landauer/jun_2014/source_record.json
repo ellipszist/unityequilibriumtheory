@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "source_id": "jun_2014_nanomechanical_landauer",
+  "title": "High-Precision Test of Landauer's Principle in a Feedback Trap",
+  "authors": [
+    "Yonggun Jun",
+    "Momčilo Gavrilov",
+    "John Bechhoefer"
+  ],
+  "publication": "Physical Review Letters 113, 190601 (2014)",
+  "doi": "10.1103/PhysRevLett.113.190601",
+  "doi_url": "https://doi.org/10.1103/PhysRevLett.113.190601",
+  "source_role": "Landauer lower-bound benchmark source",
+  "unit_convention": {
+    "temperature": "K",
+    "energy": "J, eV, or kBT as reported by source; runtime conversion must be explicit"
+  },
+  "local_archive_status": "source record only; raw numeric table or machine transcription not archived",
+  "claim_boundary": "This record anchors the source identity only. It does not close 0.13 source-lock or uncertainty propagation.",
+  "next_hardening_step": "Archive or transcribe row-level energy/uncertainty values and map them to Landauer lower-bound ratios."
+}

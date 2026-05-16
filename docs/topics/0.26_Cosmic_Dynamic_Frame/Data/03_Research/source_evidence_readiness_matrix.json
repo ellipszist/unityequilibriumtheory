@@ -52,17 +52,16 @@
       "name": "Pioneer thermal-recoil competitor baseline",
       "priority": "high",
       "fields_total": 6,
-      "fields_complete": 0,
-      "fields_pending": 6,
+      "fields_complete": 1,
+      "fields_pending": 5,
       "pending_fields": [
-        "doi_or_url",
         "local_path",
         "baseline_model_identifier",
         "reported_acceleration_or_heat_budget",
         "unit_basis",
         "extraction_note"
       ],
-      "target_status": "pending",
+      "target_status": "source_record_only",
       "ready_for_source_review": false,
       "blocking_reason": "One or more required evidence fields are still pending."
     }

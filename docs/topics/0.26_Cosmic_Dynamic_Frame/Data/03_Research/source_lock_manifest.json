@@ -6,7 +6,8 @@
   "external_source_records": [
     "docs/data/external/cosmology/laniakea/tully_2014/source_record.json",
     "docs/data/external/cosmology/cosmicflows/cosmicflows3/source_record.json",
-    "docs/data/external/spacecraft/pioneer_anomaly/anderson_2002/source_record.json"
+    "docs/data/external/spacecraft/pioneer_anomaly/anderson_2002/source_record.json",
+    "docs/data/external/spacecraft/pioneer_anomaly/turyshev_2012_thermal_recoil/source_record.json"
   ],
   "derived_inputs": [
     {
@@ -29,6 +30,13 @@
       "preprocessing": "Small anomaly working table; thermal-recoil competitor baseline absent.",
       "unit_system": "SI acceleration/time conventions as declared by CSV",
       "benchmark_role": "diagnostic only"
+    },
+    {
+      "local_path": "",
+      "source_record": "docs/data/external/spacecraft/pioneer_anomaly/turyshev_2012_thermal_recoil/source_record.json",
+      "preprocessing": "Competitor source identity is pinned, but no numeric thermal-recoil residual package is archived yet.",
+      "unit_system": "acceleration in m s^-2 and source-specific thermal model terms after future extraction",
+      "benchmark_role": "future competitor baseline"
     }
   ],
   "claim_boundary": "This package upgrades provenance from placeholder to source-referenced working copies, but it does not validate dark-matter replacement, Pioneer-drag physics, or toroidal cosmology."

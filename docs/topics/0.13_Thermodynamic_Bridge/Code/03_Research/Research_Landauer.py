@@ -57,6 +57,8 @@ DATA_INPUTS = [
     TOPIC_DIR / "Data" / "03_Research" / "experimental_data.py",
     TOPIC_DIR / "Data" / "03_Research" / "landauer_source_lock.json",
     ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "berut_2012" / "source_record.json",
+    ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "jun_2014" / "source_record.json",
+    ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "peterson_2018" / "source_record.json",
     ROOT / "docs" / "data" / "external" / "constants" / "codata" / "si_2019_exact_constants.json",
 ]
 
@@ -264,6 +266,88 @@ def _build_source_evidence_readiness_matrix(intake_stub: dict):
     return matrix
 
 
+def _build_evidence_lanes(test_results, metrics, readiness_matrix):
+    source_targets_ready = readiness_matrix["summary"]["targets_ready_for_source_review"]
+    source_targets_total = readiness_matrix["summary"]["source_targets_total"]
+    primary_tests_pass = all(item["passed"] for item in test_results)
+    landauer_identity_pass = (
+        metrics["landauer_engine_vs_codata_relative_error"] <= 1e-12
+        and metrics["jun_2014_ratio_to_landauer_lower_bound"] >= 1.0
+    )
+
+    return {
+        "landauer_lower_bound": {
+            "status": "PASS" if landauer_identity_pass else "FAIL",
+            "claim_class": "C - internal lower-bound benchmark",
+            "formula_ids": ["T13-004", "T13-005"],
+            "evidence_role": "gate",
+            "supports": "Exact-constant Landauer calculation and selected source-referenced measurements above the lower bound.",
+            "does_not_support": "A complete UET thermodynamic bridge or first-principles information-field dynamics.",
+            "source_lock_status": {
+                "ready_targets": source_targets_ready,
+                "total_targets": source_targets_total,
+                "raw_numeric_tables_archived": False,
+            },
+        },
+        "bekenstein_hawking_formula_consistency": {
+            "status": "PASS" if primary_tests_pass else "FAIL",
+            "claim_class": "B/C - formula consistency only",
+            "formula_ids": ["T13-006", "T13-007", "T13-008", "T13-009"],
+            "evidence_role": "diagnostic",
+            "supports": "Standard thermodynamic/gravity identity calculations with source-declared constants.",
+            "does_not_support": "Independent empirical validation of UET dynamics.",
+        },
+        "synthetic_cattaneo_demo": {
+            "status": "OPEN",
+            "claim_class": "A/B - simulation-only model shape",
+            "formula_ids": ["T13-010"],
+            "evidence_role": "exploratory",
+            "supports": "Non-equilibrium lag/hysteresis sandbox only.",
+            "does_not_support": "External heat-transport validation until a real dataset and threshold are added.",
+        },
+        "uet_bridge_hypothesis": {
+            "status": "BLOCKED",
+            "claim_class": "A - hypothesis / B - model component",
+            "formula_ids": ["T13-001", "T13-002", "T13-003", "T13-011"],
+            "evidence_role": "claim ceiling",
+            "supports": "Structured mechanism target and dependency map.",
+            "does_not_support": "Solved, verified, exact, or theory-confirmed wording.",
+            "blockers": [
+                "Raw or supplemental Landauer numeric tables are not archived.",
+                "Uncertainty propagation is not yet applied to measured heat and black-hole mass inputs.",
+                "UET-specific field variables are not yet derived from the standard thermodynamic identities.",
+            ],
+        },
+    }
+
+
+def _build_uncertainty_preprocessing_plan():
+    return {
+        "schema_version": "1.0",
+        "purpose": "Define the next preprocessing step before 0.13 can move beyond WARN/source-lock-open.",
+        "required_fields": [
+            "source_row_id",
+            "reported_value",
+            "reported_uncertainty",
+            "source_unit",
+            "runtime_unit",
+            "conversion_formula",
+            "lower_bound_value",
+            "ratio_to_lower_bound",
+            "uncertainty_propagation_note",
+        ],
+        "target_sources": [
+            "Berut 2012 raw or supplementary numeric table",
+            "Jun 2014 feedback-trap erasure benchmark",
+            "Peterson 2018 quantum Landauer benchmark",
+            "LIGO/Virgo black-hole mass uncertainty package",
+            "EHT black-hole mass uncertainty package",
+        ],
+        "current_status": "planned_not_closed",
+        "claim_boundary": "This plan does not upgrade the topic; it defines the evidence needed for source-normalized multi-row validation.",
+    }
+
+
 def _write_verification_artifact(test_results, plot_paths, metrics):
     test_pass = all(item["passed"] for item in test_results)
     plot_pass = all(item["saved"] for item in plot_paths)
@@ -288,9 +372,11 @@ def _write_verification_artifact(test_results, plot_paths, metrics):
     source_evidence_readiness_matrix = _build_source_evidence_readiness_matrix(
         source_evidence_intake_stub
     )
+    evidence_lanes = _build_evidence_lanes(test_results, metrics, source_evidence_readiness_matrix)
+    uncertainty_preprocessing_plan = _build_uncertainty_preprocessing_plan()
 
     artifact = {
-        "schema_version": "1.1",
+        "schema_version": "1.2",
         "topic": "0.13_Thermodynamic_Bridge",
         "command": ".venv\\Scripts\\python.exe docs\\topics\\0.13_Thermodynamic_Bridge\\Code\\03_Research\\Research_Landauer.py",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
@@ -298,6 +384,8 @@ def _write_verification_artifact(test_results, plot_paths, metrics):
         "claim_class": "C",
         "inputs": _input_identity(),
         "metrics": metrics,
+        "evidence_lanes": evidence_lanes,
+        "uncertainty_preprocessing_plan": uncertainty_preprocessing_plan,
         "thresholds": {
             "landauer_engine_vs_codata_relative_error_max": 1e-12,
             "jun_2014_observed_to_landauer_lower_bound_min": 1.0,
@@ -323,6 +411,26 @@ def _write_verification_artifact(test_results, plot_paths, metrics):
                 "This readiness matrix is a workflow gate only. "
                 "It tracks whether source evidence is still pending."
             ),
+        },
+        "paper_readiness_gate": {
+            "status": "BLOCKED",
+            "blocking_conditions": [
+                "source_evidence_readiness_matrix.targets_ready_for_source_review < source_targets_total",
+                "uet_bridge_hypothesis lane remains BLOCKED",
+                "uncertainty_preprocessing_plan.current_status != complete",
+            ],
+            "allowed_public_wording": [
+                "formula-consistency check",
+                "lower-bound consistency",
+                "source-referenced internal benchmark",
+                "UET bridge hypothesis",
+            ],
+            "forbidden_public_wording": [
+                "solved",
+                "verified UET bridge",
+                "exact thermodynamic bridge",
+                "external validation",
+            ],
         },
         "warnings": warnings,
         "interpretation": (

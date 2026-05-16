@@ -57,7 +57,7 @@ flowchart LR
 | Laniakea flow map | Can the topic-local landmark package load and render? | Figure artifact written | WARN |
 | Source identity | Are Laniakea/Cosmicflows/Pioneer source records pinned? | Source records and hashes present | WARN |
 | Cosmicflows numeric gate | Are raw flow residuals tested? | Not yet | OPEN |
-| Pioneer branch | Is a thermal-recoil competitor included? | Not yet | OPEN |
+| Pioneer branch | Is a thermal-recoil competitor included? | Source record added; numeric residual package still absent | OPEN |
 | Dark-matter replacement | Is a full model comparison established? | Not yet | OPEN |
 | Toroidal cosmology | Is there an observable gate? | Not yet | OPEN |
 
@@ -88,7 +88,7 @@ flowchart LR
 - `Data/03_Research/source_evidence_readiness_matrix.json`: workflow gate showing which source packages are still blocked by missing evidence fields.
 - `Data/03_Research/dependency_claim_gate.json`: inherited-claim gate for `0.1`, `0.23`, and `0.0`.
 
-*Core hardening status: source records pinned, verifier-artifact enabled, source-evidence and dependency gates enabled, raw flow tables and model residual gates still open.*
+*Core hardening status: source records pinned, verifier-artifact enabled, source-evidence, dependency, and numeric-residual gates enabled, raw flow tables and model residual gates still open.*
 
 Current provenance snapshot:
 

@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "source_id": "peterson_2018_quantum_landauer_unresolved",
+  "title": "Peterson 2018 quantum Landauer branch - source identity unresolved",
+  "authors": [],
+  "publication": "Unresolved source anchor; local topic data names Peterson et al. (2018) but the exact upstream paper/table still requires review",
+  "doi": "",
+  "doi_url": "",
+  "candidate_sources": [
+    {
+      "title": "Experimental demonstration of information to energy conversion in a quantum system at the Landauer limit",
+      "doi": "10.1098/rspa.2015.0813",
+      "note": "Peterson-led quantum Landauer candidate, but publication year differs from the local topic note."
+    },
+    {
+      "title": "Direct entropy measurement in a mesoscopic quantum system",
+      "doi": "10.1038/s41567-018-0250-5",
+      "note": "2018 Nature Physics entropy-measurement source; not automatically equivalent to the local Peterson quantum-Landauer branch."
+    }
+  ],
+  "source_role": "quantum Landauer benchmark source-resolution target",
+  "unit_convention": {
+    "temperature": "source-specific effective temperature",
+    "energy": "source-reported quantum thermodynamic work/heat convention; runtime conversion must be explicit"
+  },
+  "local_archive_status": "source record only; raw numeric table or machine transcription not archived",
+  "claim_boundary": "This record intentionally does not close the Peterson branch. It documents a source-identity conflict that must be resolved before this branch can be used as a verification gate.",
+  "next_hardening_step": "Resolve the exact Peterson source identity used by the topic-local data module, then archive row-level numeric values and uncertainty notes."
+}

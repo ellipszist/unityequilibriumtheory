@@ -1,8 +1,8 @@
 {
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "topic": "0.23_Unity_Scale_Link",
   "command": ".venv\\Scripts\\python.exe docs\\topics\\0.23_Unity_Scale_Link\\Code\\03_Research\\Research_Cross_Domain.py",
-  "timestamp_utc": "2026-05-04T15:22:33.593174+00:00",
+  "timestamp_utc": "2026-05-16T18:23:05.340806+00:00",
   "status": "WARN",
   "claim_class": "D",
   "inputs": [
@@ -63,8 +63,8 @@
     },
     {
       "path": "docs/topics/0.7_Neutrino_Physics/Result/artifacts/nufit_6_0_validation.json",
-      "sha256": "9cb201e54d244b38a16733dc333c7efb7e40f08e3ef0e96b9e89190bf01e79da",
-      "size_bytes": 7601
+      "sha256": "1482e9c54f283826473f76a9db0fcfcefa0143061bd0ec8d1be89e2c14aa70a4",
+      "size_bytes": 10265
     }
   ],
   "metrics": {
@@ -171,6 +171,83 @@
       }
     ],
     "claim_boundary": "This manifest increases traceability but does not upgrade 0.23 beyond exploratory structural scale-link evidence."
+  },
+  "scale_claim_gate": {
+    "schema_version": "1.0",
+    "purpose": "Prevent scale-link and unity wording from outrunning source and dependency evidence.",
+    "dependency_topics": [
+      {
+        "topic": "0.13_Thermodynamic_Bridge",
+        "artifact": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/0_13_thermodynamic_bridge_verification.json",
+        "role": "Constrains beta and information-energy interpretation.",
+        "claim_class_ceiling": "C/D",
+        "status_inheritance": "0.23 cannot outrank 0.13 while this dependency remains WARN."
+      },
+      {
+        "topic": "0.5_Nuclear_Binding_Hadrons",
+        "artifact": "docs/topics/0.5_Nuclear_Binding_Hadrons/Result/artifacts/0_5_nuclear_binding_hadrons_verification.json",
+        "role": "Provides nuclear-scale calibration context for kappa-running discussion and fixed-parameter falsification narrative.",
+        "claim_class_ceiling": "D",
+        "status_inheritance": "Open formula-audit entries or calibration uncertainty in 0.5 propagate into 0.23 running-kappa claims."
+      },
+      {
+        "topic": "0.6_Electroweak_Physics",
+        "artifact": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/0_6_electroweak_physics_verification.json",
+        "role": "Provides electroweak-scale calibration context for beta discontinuity and cross-scale mismatch statements.",
+        "claim_class_ceiling": "C/D",
+        "status_inheritance": "0.23 electroweak mismatch wording must stay consistent with 0.6 artifact scope."
+      },
+      {
+        "topic": "0.7_Neutrino_Physics",
+        "artifact": "docs/topics/0.7_Neutrino_Physics/Result/artifacts/nufit_6_0_validation.json",
+        "role": "Example of a source-locked core benchmark used as a dependency-policy comparator.",
+        "claim_class_ceiling": "C",
+        "status_inheritance": "PASS benchmark gate does not by itself validate the scale-link mechanism."
+      }
+    ],
+    "source_retrieval_log_status": {
+      "finance_yahoo_snapshots": "source_manifest_present_but_original_query_logs_missing",
+      "real_eeg_branch": "not_present",
+      "synthetic_neural_branch": "simulation_only"
+    },
+    "fixed_parameter_falsification": {
+      "status": "CONSTRAINT",
+      "test_key": "universal_kappa",
+      "current_result": true,
+      "interpretation": "A failed or unstable fixed-kappa branch is a useful blocker. It constrains the theory against universal fixed-parameter wording instead of counting as evidence for unity."
+    },
+    "branch_claim_policy": {
+      "shared_omega_form": "model-shape diagnostic",
+      "fixed_parameter_unity": "blocked unless held-out source-backed domains pass with one parameter contract",
+      "scale_dependent_kappa": "hypothesis until upstream topic artifacts and uncertainties are mapped",
+      "cross_domain_transfer": "simulation-only where synthetic neural or generated galaxy fields are used"
+    },
+    "paper_readiness": {
+      "status": "BLOCKED",
+      "blocking_conditions": [
+        "no missing declared inputs",
+        "finance retrieval logs are absent",
+        "real EEG source package is absent",
+        "0.13 thermodynamic bridge remains a WARN dependency"
+      ]
+    }
+  },
+  "evidence_lanes": {
+    "source_backed_finance_snapshot": {
+      "status": "WARN",
+      "claim_class": "C - local source-referenced benchmark",
+      "blocker": "Original Yahoo query logs and retrieval timestamps are not archived."
+    },
+    "synthetic_neural_transfer": {
+      "status": "SIMULATION_ONLY",
+      "claim_class": "A/B - model-shape diagnostic",
+      "blocker": "Replace or supplement with real EEG source package before external cross-domain claims."
+    },
+    "fixed_universal_kappa": {
+      "status": "CONSTRAINT",
+      "claim_class": "negative/limiting evidence",
+      "blocker": "One fixed parameter cannot be promoted as universal without held-out, source-backed domain passes."
+    }
   },
   "warnings": [
     "Finance snapshots now have local source metadata and hashes, but original Yahoo query logs/retrieval timestamps remain unavailable.",

@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "source_id": "turyshev_2012_thermal_recoil",
+  "title": "Support for the Thermal Origin of the Pioneer Anomaly",
+  "authors": [
+    "Slava G. Turyshev",
+    "Viktor T. Toth",
+    "Gary Kinsella",
+    "Siu-Chun Lee",
+    "Shing M. Lok",
+    "Jordan Ellis"
+  ],
+  "publication": "Physical Review Letters 108, 241101 (2012)",
+  "doi": "10.1103/PhysRevLett.108.241101",
+  "doi_url": "https://doi.org/10.1103/PhysRevLett.108.241101",
+  "source_role": "thermal-recoil competitor baseline for Pioneer anomaly claims",
+  "unit_convention": {
+    "acceleration": "m s^-2",
+    "heat_budget": "spacecraft thermal model terms; raw table capture still open"
+  },
+  "local_archive_status": "source record only; raw numeric tables/model outputs not archived",
+  "claim_boundary": "This source record identifies the required competitor baseline. It does not provide a row-usable numeric residual package by itself.",
+  "next_hardening_step": "Archive or transcribe the thermal recoil acceleration/model outputs and compare against the topic-local Pioneer anomaly residual table with shared units and uncertainty bands."
+}

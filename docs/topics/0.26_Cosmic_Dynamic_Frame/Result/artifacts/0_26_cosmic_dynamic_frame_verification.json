@@ -1,8 +1,8 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "topic": "0.26_Cosmic_Dynamic_Frame",
   "command": ".venv\\Scripts\\python.exe docs\\topics\\0.26_Cosmic_Dynamic_Frame\\Code\\03_Research\\Research_Cosmic_Flows.py",
-  "timestamp_utc": "2026-05-06T15:43:30.880747+00:00",
+  "timestamp_utc": "2026-05-16T18:25:57.877256+00:00",
   "status": "WARN",
   "claim_class": "D",
   "inputs": [
@@ -13,8 +13,8 @@
     },
     {
       "path": "docs/topics/0.26_Cosmic_Dynamic_Frame/Data/03_Research/source_lock_manifest.json",
-      "sha256": "eb6c07a3cc54ca8d6de672f63f8bcbb4d4a0c0fafb0139ef0bba7b7986478816",
-      "size_bytes": 2072
+      "sha256": "7ce9a7d8935415d70c991e6c2a852b691b50801ecb7f50d1f4c59499d4a59b9d",
+      "size_bytes": 2622
     },
     {
       "path": "docs/topics/0.26_Cosmic_Dynamic_Frame/Data/Cosmicflows_3_Subset.csv",
@@ -45,6 +45,11 @@
       "path": "docs/data/external/spacecraft/pioneer_anomaly/anderson_2002/source_record.json",
       "sha256": "aa71373b211ffb9e1f36e72bc16cdae00f6917d4b2b17a6364bc0d3e921c612f",
       "size_bytes": 1361
+    },
+    {
+      "path": "docs/data/external/spacecraft/pioneer_anomaly/turyshev_2012_thermal_recoil/source_record.json",
+      "sha256": "8ec35ee9ebfa1cb900c65837d099b2689dd41d8034152a295d009616ebe5445d",
+      "size_bytes": 1138
     }
   ],
   "metrics": {
@@ -63,10 +68,56 @@
     ],
     "has_flow_path": true
   },
+  "numeric_residual_gate": {
+    "schema_version": "1.0",
+    "purpose": "Separate visualization/provenance success from future numeric dynamic-frame model evidence.",
+    "visualization_gate": {
+      "status": "FAIL",
+      "metric_keys": [
+        "flow_count",
+        "attractor_count",
+        "has_flow_path"
+      ],
+      "claim_class": "C - internal visualization/provenance artifact"
+    },
+    "numeric_flow_residual_gate": {
+      "status": "OPEN",
+      "required_inputs": [
+        "raw Cosmicflows table or declared subset extraction",
+        "observer-frame and distance-calibration metadata",
+        "baseline cosmology/flow comparator",
+        "fixed residual metric and threshold"
+      ],
+      "claim_class_when_closed": "C - internal numeric benchmark at most"
+    },
+    "pioneer_competitor_gate": {
+      "status": "OPEN",
+      "required_inputs": [
+        "Anderson-style anomaly residual table",
+        "Turyshev thermal-recoil model source package",
+        "thermal recoil residual comparator",
+        "shared acceleration units and uncertainty bands"
+      ]
+    },
+    "source_evidence_summary": {
+      "source_targets_total": 4,
+      "targets_ready_for_source_review": 0,
+      "targets_blocked_by_pending_evidence": 4
+    },
+    "replacement_claim_gate": {
+      "status": "BLOCKED",
+      "blocked_claims": [
+        "dark-matter replacement",
+        "validated dynamic-frame cosmology",
+        "Pioneer anomaly explanation by UET drag",
+        "toroidal cosmology observable closure"
+      ]
+    }
+  },
   "figure_artifact": "Result\\01_Showcase\\Laniakea_Flow_Map.png",
   "source_evidence_intake_stub": {
     "path": "docs\\topics\\0.26_Cosmic_Dynamic_Frame\\Data\\03_Research\\source_evidence_intake_stub.json",
-    "sha256": "8594d023b18bb0fdd26d425a10326dc69abb67fb1a1ea40d320e12f7ab80362b",
+    "sha256": "98427fcf260fdaca73fc6224b3a6abeaa2d5981c1067841c655e990459037e3d",
     "source_targets": [
       "Laniakea raw or reconstruction table package",
       "Cosmicflows-3 subset extraction package",
@@ -77,7 +128,7 @@
   },
   "source_evidence_readiness_matrix": {
     "path": "docs\\topics\\0.26_Cosmic_Dynamic_Frame\\Data\\03_Research\\source_evidence_readiness_matrix.json",
-    "sha256": "a073f82add1281ebae0d789f90690a9024b106046b7fb51d05477ef11f607fd1",
+    "sha256": "575efc62d29bc0b135fc763625e2adb966daa521d074da1dc29ad6abe6006ef5",
     "summary": {
       "source_targets_total": 4,
       "targets_ready_for_source_review": 0,
@@ -98,7 +149,8 @@
   "warnings": [
     "Laniakea/Cosmicflows/Pioneer source records are pinned, but raw tables, frame metadata, and preprocessing are not archived.",
     "This verifier checks data loading and flow-map generation, not a cosmological model fit.",
-    "Cosmicflows/Pioneer files are hashed for provenance but are not used by this primary visualization gate."
+    "Cosmicflows/Pioneer files are hashed for provenance but are not used by this primary visualization gate.",
+    "Thermal-recoil competitor source metadata is tracked, but no numeric competitor residual gate is closed yet."
   ],
   "interpretation": "The artifact supports an exploratory dynamic-frame visualization. It does not establish dark-matter replacement, toroidal cosmology, or Pioneer-drag physics."
 }
