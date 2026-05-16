@@ -6,12 +6,12 @@ The Incubator workflow is designed to capture, structure, and refine ideas, real
 ## Scope
 - Ideas relating to macro-systems (e.g., policy, economics, governance).
 - Applied infrastructure (e.g., logistics, smart cities, disaster response).
-- Geological or terrestrial systems management.
+- High-rise buildings, urban living resilience, and geological or terrestrial systems management.
 
 ## Directory Structure
 All ideas must be placed within `docs/incubator/` categorized by domain:
 - `01_policy_and_strategy/`
-- `02_disaster_and_geology/`
+- `02_urban_resilience_and_geology/`
 - `03_logistics_and_infra/`
 
 ## Proposal Format

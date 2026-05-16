@@ -8,8 +8,9 @@ The Unity Equilibrium Theory (UET) aims to address systemic balances across scal
 
 ## Structure
 - **`01_policy_and_strategy/`**: For governance, economics, and national/global policy ideas.
-- **`02_disaster_and_geology/`**: For disaster response, geological considerations, and entropy management in natural disasters.
+- **`02_urban_resilience_and_geology/`**: For high-rise buildings, urban living resilience, geological considerations (subsidence, seismic safety), and high-density entropy management.
 - **`03_logistics_and_infra/`**: For supply chain optimization, emergency resource routing, and structural ideas.
+- **`04_industry_and_production/`**: For smart industrial zones, green manufacturing, resource recovery, and clean energy systems.
 
 ## How to Propose an Idea
 1. Copy the `_template_proposal.md` file.
