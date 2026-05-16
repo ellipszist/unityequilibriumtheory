@@ -6,7 +6,7 @@
     "source_targets_total": 5,
     "targets_ready_for_source_review": 3,
     "targets_blocked_by_pending_evidence": 2,
-    "dependencies_warn_or_unknown": 15
+    "dependencies_warn_or_unknown": 14
   },
   "readiness_rows": [
     {

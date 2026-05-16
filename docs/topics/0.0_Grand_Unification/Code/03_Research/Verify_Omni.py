@@ -212,6 +212,20 @@ def _extract_claim_gate_summary(artifact: dict) -> list[dict]:
             }
         )
 
+    branch_claim_gate = artifact.get("branch_claim_gate")
+    if isinstance(branch_claim_gate, dict):
+        summary = branch_claim_gate.get("summary", {})
+        blocked_count = summary.get("blocked_for_strong_claims")
+        summaries.append(
+            {
+                "gate": "branch_claim_gate",
+                "status": "BLOCKED" if blocked_count else "READY_FOR_REVIEW",
+                "accepted_now": summary.get("accepted_now"),
+                "blocked_for_strong_claims": blocked_count,
+                "claim_boundary": branch_claim_gate.get("claim_boundary"),
+            }
+        )
+
     subordinate_paper_gate = artifact.get("paper_readiness_gate")
     if isinstance(subordinate_paper_gate, dict):
         summaries.append(
@@ -462,6 +476,7 @@ def _build_paper_readiness_gate(dependency_artifacts: list[dict]) -> dict:
                 gate_status not in {None, "PASS", "READY_FOR_REVIEW", "FOUNDATION_PASS"}
                 or bool(gate.get("blocked_exports"))
                 or bool(gate.get("blocked_dependency_count"))
+                or bool(gate.get("blocked_for_strong_claims"))
             )
             if gate_blocked:
                 blockers.append(

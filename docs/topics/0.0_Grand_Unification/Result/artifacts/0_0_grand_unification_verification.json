@@ -1,15 +1,15 @@
 {
   "schema_version": "1.2",
   "topic": "0.0_Grand_Unification",
-  "timestamp_utc": "2026-05-16T23:10:48.764716+00:00",
+  "timestamp_utc": "2026-05-16T23:14:49.109901+00:00",
   "command": "python docs/topics/0.0_Grand_Unification/Code/03_Research/Verify_Omni.py",
   "status": "WARN",
   "passed_run_contract": true,
   "input_hashes": [
     {
       "path": "docs/topics/0.0_Grand_Unification/Data/03_Research/integration_dependency_manifest.json",
-      "bytes": 10796,
-      "sha256": "b00f40f608621db260501190cb10880f3e38e35a3f8e3b02a9d2a216a716f91c",
+      "bytes": 10905,
+      "sha256": "1920acd581e2aaf514ce67c731ef476b1c19e8d0b770aaad707e1b8e56eda88a",
       "provenance_role": "integration_dependency_manifest"
     },
     {
@@ -48,11 +48,11 @@
       "status": "WARN"
     },
     {
-      "path": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/0_6_electroweak_physics_verification.json",
-      "bytes": 2569,
-      "sha256": "1284decd7f42292ea896c422cff730b6dfdffbe2cbe46e89cc558170356e9d33",
+      "path": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/electroweak_expanded_benchmark.json",
+      "bytes": 10275,
+      "sha256": "8e473012dd7d5ba93e89be2480adab20dea8ea41579decfd86b1ea6d8392d27c",
       "provenance_role": "subordinate_artifact",
-      "status": "WARN"
+      "status": "PASS"
     },
     {
       "path": "docs/topics/0.7_Neutrino_Physics/Result/artifacts/0_7_neutrino_physics_verification.json",
@@ -234,7 +234,15 @@
       "claim_class": "C internal benchmark",
       "schema_version": "1.1",
       "timestamp_utc": "2026-05-05T19:35:09.396680+00:00",
-      "claim_gates": [],
+      "claim_gates": [
+        {
+          "gate": "branch_claim_gate",
+          "status": "BLOCKED",
+          "accepted_now": 2,
+          "blocked_for_strong_claims": 4,
+          "claim_boundary": "This gate keeps the topic at EHT benchmark and comparator status, not black-hole theory closure."
+        }
+      ],
       "sha256": "70aa4467f9852c72251515af4523b96038ca0fcc4efbc7cd559c42918dfe250c",
       "bytes": 3710
     },
@@ -247,7 +255,15 @@
       "claim_class": null,
       "schema_version": null,
       "timestamp_utc": "2026-05-05T16:35:19.234490+00:00",
-      "claim_gates": [],
+      "claim_gates": [
+        {
+          "gate": "branch_claim_gate",
+          "status": "BLOCKED",
+          "accepted_now": 2,
+          "blocked_for_strong_claims": 3,
+          "claim_boundary": "This gate cannot raise the topic above the current internal scalar H0 benchmark package."
+        }
+      ],
       "sha256": "b374190a26291c2608c6dc2a619d07ef50eb28fea4c5a8716dea6ff73039fe46",
       "bytes": 6706
     },
@@ -260,7 +276,15 @@
       "claim_class": "model-baseline blocker",
       "schema_version": "1.3",
       "timestamp_utc": "2026-05-16T22:07:03.543910+00:00",
-      "claim_gates": [],
+      "claim_gates": [
+        {
+          "gate": "branch_claim_gate",
+          "status": "BLOCKED",
+          "accepted_now": 2,
+          "blocked_for_strong_claims": 4,
+          "claim_boundary": "This gate cannot raise the topic above the current baseline-diagnostic status while the raw McMillan artifact remains FAIL."
+        }
+      ],
       "sha256": "9e31baebeaa2fa710b5fb1b5f26e6ead9ac28c408cccfa122c307424b8946539",
       "bytes": 120183
     },
@@ -281,14 +305,22 @@
       "topic": "0.6_Electroweak_Physics",
       "role": "Weinberg-angle metric dependency",
       "metric_bridge": "weinberg_angle",
-      "artifact": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/0_6_electroweak_physics_verification.json",
-      "status": "WARN",
+      "artifact": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/electroweak_expanded_benchmark.json",
+      "status": "PASS",
       "claim_class": null,
-      "schema_version": "1.0",
-      "timestamp_utc": "2026-04-23T01:30:51.380969+00:00",
-      "claim_gates": [],
-      "sha256": "1284decd7f42292ea896c422cff730b6dfdffbe2cbe46e89cc558170356e9d33",
-      "bytes": 2569
+      "schema_version": null,
+      "timestamp_utc": "2026-05-05T15:27:07.710393+00:00",
+      "claim_gates": [
+        {
+          "gate": "branch_claim_gate",
+          "status": "BLOCKED",
+          "accepted_now": 3,
+          "blocked_for_strong_claims": 3,
+          "claim_boundary": "This gate cannot raise the topic above the current selected electroweak benchmark package."
+        }
+      ],
+      "sha256": "8e473012dd7d5ba93e89be2480adab20dea8ea41579decfd86b1ea6d8392d27c",
+      "bytes": 10275
     },
     {
       "topic": "0.7_Neutrino_Physics",
@@ -325,7 +357,15 @@
       "claim_class": "C - source-referenced internal CHSH benchmark",
       "schema_version": "1.2",
       "timestamp_utc": "2026-05-06T13:20:15.126154+00:00",
-      "claim_gates": [],
+      "claim_gates": [
+        {
+          "gate": "branch_claim_gate",
+          "status": "BLOCKED",
+          "accepted_now": 1,
+          "blocked_for_strong_claims": 4,
+          "claim_boundary": "This gate cannot raise the topic beyond the current CHSH run-contract evidence."
+        }
+      ],
       "sha256": "3e46561008f89d629edd5be0d8ab7092fcd7d4787e591eb45c50507fb98daf3b",
       "bytes": 4689
     },
@@ -338,7 +378,15 @@
       "claim_class": null,
       "schema_version": null,
       "timestamp_utc": "2026-05-05T16:56:32.703440+00:00",
-      "claim_gates": [],
+      "claim_gates": [
+        {
+          "gate": "branch_claim_gate",
+          "status": "BLOCKED",
+          "accepted_now": 2,
+          "blocked_for_strong_claims": 3,
+          "claim_boundary": "This gate cannot raise the topic above the current internal speed/stability benchmark package."
+        }
+      ],
       "sha256": "83b55cf0c1ff7184d706b175e7ff249665383d2f191b679b677ecede9718f51a",
       "bytes": 4834
     },
@@ -351,7 +399,15 @@
       "claim_class": "C internal benchmark",
       "schema_version": "1.1",
       "timestamp_utc": "2026-05-05T17:30:15.311324+00:00",
-      "claim_gates": [],
+      "claim_gates": [
+        {
+          "gate": "branch_claim_gate",
+          "status": "BLOCKED",
+          "accepted_now": 2,
+          "blocked_for_strong_claims": 4,
+          "claim_boundary": "This gate keeps the topic at selected-benchmark and mechanism-diagnostic status, not universal theory closure."
+        }
+      ],
       "sha256": "2b4a3e9e506ae8a3bcdd62635cec63667097957367aef8344c801c96dcdda60c",
       "bytes": 3581
     },
@@ -364,7 +420,15 @@
       "claim_class": "C - source-backed internal benchmark for Casimir force only",
       "schema_version": "1.1",
       "timestamp_utc": "2026-05-05T17:58:33.462963+00:00",
-      "claim_gates": [],
+      "claim_gates": [
+        {
+          "gate": "branch_claim_gate",
+          "status": "BLOCKED",
+          "accepted_now": 2,
+          "blocked_for_strong_claims": 4,
+          "claim_boundary": "This gate keeps the topic at Casimir benchmark and mechanism-diagnostic status, not vacuum-energy closure."
+        }
+      ],
       "sha256": "11124ac4f5eef35cf05a0d3ac325ec4ff9ecbf261474b317c18939027d71056d",
       "bytes": 6309
     },
@@ -408,7 +472,15 @@
       "claim_class": null,
       "schema_version": "1.1",
       "timestamp_utc": "2026-05-06T15:23:23.696552+00:00",
-      "claim_gates": [],
+      "claim_gates": [
+        {
+          "gate": "branch_claim_gate",
+          "status": "BLOCKED",
+          "accepted_now": 1,
+          "blocked_for_strong_claims": 5,
+          "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current HRV run-contract evidence."
+        }
+      ],
       "sha256": "859aecb67f5c026a4dab8a144806336a3e098d000775908375935b83ebde4806",
       "bytes": 6625
     },
@@ -421,7 +493,15 @@
       "claim_class": "D - qualitative diagnostic only",
       "schema_version": "1.1",
       "timestamp_utc": "2026-05-05T18:01:37.654578+00:00",
-      "claim_gates": [],
+      "claim_gates": [
+        {
+          "gate": "branch_claim_gate",
+          "status": "BLOCKED",
+          "accepted_now": 2,
+          "blocked_for_strong_claims": 4,
+          "claim_boundary": "This gate keeps the topic at qualitative cluster-diagnostic status, not dark-matter replacement closure."
+        }
+      ],
       "sha256": "6e134627c470b8694f0f26d335d491f268ff9e296862453d92bb543e4343b476",
       "bytes": 4307
     },
@@ -434,7 +514,15 @@
       "claim_class": "C/D boundary - internal fission sanity check with missing fragment provenance",
       "schema_version": "1.1",
       "timestamp_utc": "2026-05-05T18:07:11.055465+00:00",
-      "claim_gates": [],
+      "claim_gates": [
+        {
+          "gate": "branch_claim_gate",
+          "status": "BLOCKED",
+          "accepted_now": 2,
+          "blocked_for_strong_claims": 4,
+          "claim_boundary": "This gate keeps the topic at heavy-nuclei checkpoint and sanity-diagnostic status, not first-principles nuclear closure."
+        }
+      ],
       "sha256": "3972f28ae8050c0c584a72e6567f42f5ea0602a2614ffdcc4944684c0de8da3d",
       "bytes": 3973
     },
@@ -447,7 +535,15 @@
       "claim_class": null,
       "schema_version": "1.1",
       "timestamp_utc": "2026-05-05T20:48:08.349155+00:00",
-      "claim_gates": [],
+      "claim_gates": [
+        {
+          "gate": "branch_claim_gate",
+          "status": "BLOCKED",
+          "accepted_now": 1,
+          "blocked_for_strong_claims": 4,
+          "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current Higgs-coupling run-contract evidence."
+        }
+      ],
       "sha256": "7009df3756fd12baaf37c6eee5feedddd4a6d3f2bec63224c0d9d81f95b4200b",
       "bytes": 5966
     },
@@ -475,6 +571,13 @@
             "T18_EXPORT_QUANTUM_ENGINE_THEOREM"
           ],
           "claim_boundary": "0.18 can currently export only surrogate/run-contract evidence. All theorem-level exports are blocked."
+        },
+        {
+          "gate": "branch_claim_gate",
+          "status": "BLOCKED",
+          "accepted_now": 1,
+          "blocked_for_strong_claims": 5,
+          "claim_boundary": "This gate records theorem-branch claim ceilings only. It cannot upgrade the topic beyond the current run-contract evidence."
         }
       ],
       "sha256": "580766e66f2694bc8f9e06125912f662d5b98d87f5981d5836cf5dde7190ccfa",
@@ -489,7 +592,15 @@
       "claim_class": "C - source-constant internal checkpoint only",
       "schema_version": "1.1",
       "timestamp_utc": "2026-05-05T18:11:03.607091+00:00",
-      "claim_gates": [],
+      "claim_gates": [
+        {
+          "gate": "branch_claim_gate",
+          "status": "BLOCKED",
+          "accepted_now": 2,
+          "blocked_for_strong_claims": 4,
+          "claim_boundary": "This gate keeps the topic at source-constant checkpoint status, not general-relativity closure."
+        }
+      ],
       "sha256": "302948fbf877623e81ddb5e2adf4f69a313bffb3a55555a67a571d732b26f067",
       "bytes": 3300
     },
@@ -502,7 +613,15 @@
       "claim_class": "C - source-backed internal hydrogen spectrum benchmark",
       "schema_version": "1.1",
       "timestamp_utc": "2026-05-05T19:03:50.079742+00:00",
-      "claim_gates": [],
+      "claim_gates": [
+        {
+          "gate": "branch_claim_gate",
+          "status": "BLOCKED",
+          "accepted_now": 2,
+          "blocked_for_strong_claims": 4,
+          "claim_boundary": "This gate keeps the topic at hydrogen benchmark status, not full atomic-theory closure."
+        }
+      ],
       "sha256": "63ceb238e0072542791e34de23676721323c4bd28ebbdf97ec059ea077811796",
       "bytes": 5849
     },
@@ -618,7 +737,7 @@
     "status": "BLOCKED",
     "rule": "Any FAIL, WARN, UNKNOWN, missing artifact, source-incomplete, formula-open, or synthetic-only dependency blocks theory-level claims.",
     "dependency_count": 26,
-    "blocked_dependency_count": 22,
+    "blocked_dependency_count": 36,
     "blockers": [
       {
         "topic": "0.1_Galaxy_Rotation_Problem",
@@ -644,11 +763,44 @@
         "blocker": "Subordinate claim gate blocks theory-level inheritance."
       },
       {
+        "topic": "0.2_Black_Hole_Physics",
+        "artifact": "docs/topics/0.2_Black_Hole_Physics/Result/artifacts/0_2_black_hole_physics_verification.json",
+        "status": "PASS",
+        "claim_class": "C internal benchmark",
+        "gate": "branch_claim_gate",
+        "gate_status": "BLOCKED",
+        "blocked_exports": [],
+        "blocked_claims": [],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
+      },
+      {
+        "topic": "0.3_Cosmology_Hubble_Tension",
+        "artifact": "docs/topics/0.3_Cosmology_Hubble_Tension/Result/artifacts/hubble_comparison_validation.json",
+        "status": "PASS",
+        "claim_class": null,
+        "gate": "branch_claim_gate",
+        "gate_status": "BLOCKED",
+        "blocked_exports": [],
+        "blocked_claims": [],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
+      },
+      {
         "topic": "0.4_Superconductivity_Superfluids",
         "artifact": "docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/0_4_superconductivity_superfluids_verification.json",
         "status": "FAIL",
         "claim_class": "model-baseline blocker",
         "blocker": "Dependency is not clean PASS, so theory-level closure is blocked."
+      },
+      {
+        "topic": "0.4_Superconductivity_Superfluids",
+        "artifact": "docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/0_4_superconductivity_superfluids_verification.json",
+        "status": "FAIL",
+        "claim_class": "model-baseline blocker",
+        "gate": "branch_claim_gate",
+        "gate_status": "BLOCKED",
+        "blocked_exports": [],
+        "blocked_claims": [],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
       },
       {
         "topic": "0.5_Nuclear_Binding_Hadrons",
@@ -659,10 +811,14 @@
       },
       {
         "topic": "0.6_Electroweak_Physics",
-        "artifact": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/0_6_electroweak_physics_verification.json",
-        "status": "WARN",
+        "artifact": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/electroweak_expanded_benchmark.json",
+        "status": "PASS",
         "claim_class": null,
-        "blocker": "Dependency is not clean PASS, so theory-level closure is blocked."
+        "gate": "branch_claim_gate",
+        "gate_status": "BLOCKED",
+        "blocked_exports": [],
+        "blocked_claims": [],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
       },
       {
         "topic": "0.7_Neutrino_Physics",
@@ -677,6 +833,50 @@
         "status": "WARN",
         "claim_class": null,
         "blocker": "Dependency is not clean PASS, so theory-level closure is blocked."
+      },
+      {
+        "topic": "0.9_Quantum_Nonlocality",
+        "artifact": "docs/topics/0.9_Quantum_Nonlocality/Result/artifacts/0_9_quantum_nonlocality_verification.json",
+        "status": "PASS",
+        "claim_class": "C - source-referenced internal CHSH benchmark",
+        "gate": "branch_claim_gate",
+        "gate_status": "BLOCKED",
+        "blocked_exports": [],
+        "blocked_claims": [],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
+      },
+      {
+        "topic": "0.10_Fluid_Dynamics_Chaos",
+        "artifact": "docs/topics/0.10_Fluid_Dynamics_Chaos/Result/artifacts/fluid_benchmark_validation.json",
+        "status": "PASS",
+        "claim_class": null,
+        "gate": "branch_claim_gate",
+        "gate_status": "BLOCKED",
+        "blocked_exports": [],
+        "blocked_claims": [],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
+      },
+      {
+        "topic": "0.11_Phase_Transitions",
+        "artifact": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_phase_transitions_verification.json",
+        "status": "PASS",
+        "claim_class": "C internal benchmark",
+        "gate": "branch_claim_gate",
+        "gate_status": "BLOCKED",
+        "blocked_exports": [],
+        "blocked_claims": [],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
+      },
+      {
+        "topic": "0.12_Vacuum_Energy_Casimir",
+        "artifact": "docs/topics/0.12_Vacuum_Energy_Casimir/Result/artifacts/0_12_vacuum_energy_casimir_verification.json",
+        "status": "PASS",
+        "claim_class": "C - source-backed internal benchmark for Casimir force only",
+        "gate": "branch_claim_gate",
+        "gate_status": "BLOCKED",
+        "blocked_exports": [],
+        "blocked_claims": [],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
       },
       {
         "topic": "0.13_Thermodynamic_Bridge",
@@ -712,6 +912,17 @@
         "blocker": "Subordinate claim gate blocks theory-level inheritance."
       },
       {
+        "topic": "0.14_Complex_Systems",
+        "artifact": "docs/topics/0.14_Complex_Systems/Result/artifacts/0_14_complex_systems_verification.json",
+        "status": "PASS",
+        "claim_class": null,
+        "gate": "branch_claim_gate",
+        "gate_status": "BLOCKED",
+        "blocked_exports": [],
+        "blocked_claims": [],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
+      },
+      {
         "topic": "0.15_Cluster_Dynamics",
         "artifact": "docs/topics/0.15_Cluster_Dynamics/Result/artifacts/0_15_cluster_dynamics_verification.json",
         "status": "WARN",
@@ -719,11 +930,44 @@
         "blocker": "Dependency is not clean PASS, so theory-level closure is blocked."
       },
       {
+        "topic": "0.15_Cluster_Dynamics",
+        "artifact": "docs/topics/0.15_Cluster_Dynamics/Result/artifacts/0_15_cluster_dynamics_verification.json",
+        "status": "WARN",
+        "claim_class": "D - qualitative diagnostic only",
+        "gate": "branch_claim_gate",
+        "gate_status": "BLOCKED",
+        "blocked_exports": [],
+        "blocked_claims": [],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
+      },
+      {
         "topic": "0.16_Heavy_Nuclei",
         "artifact": "docs/topics/0.16_Heavy_Nuclei/Result/artifacts/0_16_heavy_nuclei_verification.json",
         "status": "WARN",
         "claim_class": "C/D boundary - internal fission sanity check with missing fragment provenance",
         "blocker": "Dependency is not clean PASS, so theory-level closure is blocked."
+      },
+      {
+        "topic": "0.16_Heavy_Nuclei",
+        "artifact": "docs/topics/0.16_Heavy_Nuclei/Result/artifacts/0_16_heavy_nuclei_verification.json",
+        "status": "WARN",
+        "claim_class": "C/D boundary - internal fission sanity check with missing fragment provenance",
+        "gate": "branch_claim_gate",
+        "gate_status": "BLOCKED",
+        "blocked_exports": [],
+        "blocked_claims": [],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
+      },
+      {
+        "topic": "0.17_Mass_Generation",
+        "artifact": "docs/topics/0.17_Mass_Generation/Result/artifacts/0_17_mass_generation_verification.json",
+        "status": "PASS",
+        "claim_class": null,
+        "gate": "branch_claim_gate",
+        "gate_status": "BLOCKED",
+        "blocked_exports": [],
+        "blocked_claims": [],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
       },
       {
         "topic": "0.18_Mathnicry",
@@ -746,6 +990,39 @@
           "T18_EXPORT_COLLATZ_PROOF",
           "T18_EXPORT_QUANTUM_ENGINE_THEOREM"
         ],
+        "blocked_claims": [],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
+      },
+      {
+        "topic": "0.18_Mathnicry",
+        "artifact": "docs/topics/0.18_Mathnicry/Result/artifacts/0_18_mathnicry_verification.json",
+        "status": "WARN",
+        "claim_class": null,
+        "gate": "branch_claim_gate",
+        "gate_status": "BLOCKED",
+        "blocked_exports": [],
+        "blocked_claims": [],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
+      },
+      {
+        "topic": "0.19_Gravity_GR",
+        "artifact": "docs/topics/0.19_Gravity_GR/Result/artifacts/0_19_gravity_gr_verification.json",
+        "status": "PASS",
+        "claim_class": "C - source-constant internal checkpoint only",
+        "gate": "branch_claim_gate",
+        "gate_status": "BLOCKED",
+        "blocked_exports": [],
+        "blocked_claims": [],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
+      },
+      {
+        "topic": "0.20_Atomic_Physics",
+        "artifact": "docs/topics/0.20_Atomic_Physics/Result/artifacts/0_20_atomic_physics_verification.json",
+        "status": "PASS",
+        "claim_class": "C - source-backed internal hydrogen spectrum benchmark",
+        "gate": "branch_claim_gate",
+        "gate_status": "BLOCKED",
+        "blocked_exports": [],
         "blocked_claims": [],
         "blocker": "Subordinate claim gate blocks theory-level inheritance."
       },
@@ -858,8 +1135,8 @@
     "input_hashes": [
       {
         "path": "docs/topics/0.0_Grand_Unification/Data/03_Research/integration_dependency_manifest.json",
-        "bytes": 10796,
-        "sha256": "b00f40f608621db260501190cb10880f3e38e35a3f8e3b02a9d2a216a716f91c",
+        "bytes": 10905,
+        "sha256": "1920acd581e2aaf514ce67c731ef476b1c19e8d0b770aaad707e1b8e56eda88a",
         "provenance_role": "integration_dependency_manifest"
       },
       {
@@ -898,11 +1175,11 @@
         "status": "WARN"
       },
       {
-        "path": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/0_6_electroweak_physics_verification.json",
-        "bytes": 2569,
-        "sha256": "1284decd7f42292ea896c422cff730b6dfdffbe2cbe46e89cc558170356e9d33",
+        "path": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/electroweak_expanded_benchmark.json",
+        "bytes": 10275,
+        "sha256": "8e473012dd7d5ba93e89be2480adab20dea8ea41579decfd86b1ea6d8392d27c",
         "provenance_role": "subordinate_artifact",
-        "status": "WARN"
+        "status": "PASS"
       },
       {
         "path": "docs/topics/0.7_Neutrino_Physics/Result/artifacts/0_7_neutrino_physics_verification.json",
@@ -1084,7 +1361,15 @@
         "claim_class": "C internal benchmark",
         "schema_version": "1.1",
         "timestamp_utc": "2026-05-05T19:35:09.396680+00:00",
-        "claim_gates": [],
+        "claim_gates": [
+          {
+            "gate": "branch_claim_gate",
+            "status": "BLOCKED",
+            "accepted_now": 2,
+            "blocked_for_strong_claims": 4,
+            "claim_boundary": "This gate keeps the topic at EHT benchmark and comparator status, not black-hole theory closure."
+          }
+        ],
         "sha256": "70aa4467f9852c72251515af4523b96038ca0fcc4efbc7cd559c42918dfe250c",
         "bytes": 3710
       },
@@ -1097,7 +1382,15 @@
         "claim_class": null,
         "schema_version": null,
         "timestamp_utc": "2026-05-05T16:35:19.234490+00:00",
-        "claim_gates": [],
+        "claim_gates": [
+          {
+            "gate": "branch_claim_gate",
+            "status": "BLOCKED",
+            "accepted_now": 2,
+            "blocked_for_strong_claims": 3,
+            "claim_boundary": "This gate cannot raise the topic above the current internal scalar H0 benchmark package."
+          }
+        ],
         "sha256": "b374190a26291c2608c6dc2a619d07ef50eb28fea4c5a8716dea6ff73039fe46",
         "bytes": 6706
       },
@@ -1110,7 +1403,15 @@
         "claim_class": "model-baseline blocker",
         "schema_version": "1.3",
         "timestamp_utc": "2026-05-16T22:07:03.543910+00:00",
-        "claim_gates": [],
+        "claim_gates": [
+          {
+            "gate": "branch_claim_gate",
+            "status": "BLOCKED",
+            "accepted_now": 2,
+            "blocked_for_strong_claims": 4,
+            "claim_boundary": "This gate cannot raise the topic above the current baseline-diagnostic status while the raw McMillan artifact remains FAIL."
+          }
+        ],
         "sha256": "9e31baebeaa2fa710b5fb1b5f26e6ead9ac28c408cccfa122c307424b8946539",
         "bytes": 120183
       },
@@ -1131,14 +1432,22 @@
         "topic": "0.6_Electroweak_Physics",
         "role": "Weinberg-angle metric dependency",
         "metric_bridge": "weinberg_angle",
-        "artifact": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/0_6_electroweak_physics_verification.json",
-        "status": "WARN",
+        "artifact": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/electroweak_expanded_benchmark.json",
+        "status": "PASS",
         "claim_class": null,
-        "schema_version": "1.0",
-        "timestamp_utc": "2026-04-23T01:30:51.380969+00:00",
-        "claim_gates": [],
-        "sha256": "1284decd7f42292ea896c422cff730b6dfdffbe2cbe46e89cc558170356e9d33",
-        "bytes": 2569
+        "schema_version": null,
+        "timestamp_utc": "2026-05-05T15:27:07.710393+00:00",
+        "claim_gates": [
+          {
+            "gate": "branch_claim_gate",
+            "status": "BLOCKED",
+            "accepted_now": 3,
+            "blocked_for_strong_claims": 3,
+            "claim_boundary": "This gate cannot raise the topic above the current selected electroweak benchmark package."
+          }
+        ],
+        "sha256": "8e473012dd7d5ba93e89be2480adab20dea8ea41579decfd86b1ea6d8392d27c",
+        "bytes": 10275
       },
       {
         "topic": "0.7_Neutrino_Physics",
@@ -1175,7 +1484,15 @@
         "claim_class": "C - source-referenced internal CHSH benchmark",
         "schema_version": "1.2",
         "timestamp_utc": "2026-05-06T13:20:15.126154+00:00",
-        "claim_gates": [],
+        "claim_gates": [
+          {
+            "gate": "branch_claim_gate",
+            "status": "BLOCKED",
+            "accepted_now": 1,
+            "blocked_for_strong_claims": 4,
+            "claim_boundary": "This gate cannot raise the topic beyond the current CHSH run-contract evidence."
+          }
+        ],
         "sha256": "3e46561008f89d629edd5be0d8ab7092fcd7d4787e591eb45c50507fb98daf3b",
         "bytes": 4689
       },
@@ -1188,7 +1505,15 @@
         "claim_class": null,
         "schema_version": null,
         "timestamp_utc": "2026-05-05T16:56:32.703440+00:00",
-        "claim_gates": [],
+        "claim_gates": [
+          {
+            "gate": "branch_claim_gate",
+            "status": "BLOCKED",
+            "accepted_now": 2,
+            "blocked_for_strong_claims": 3,
+            "claim_boundary": "This gate cannot raise the topic above the current internal speed/stability benchmark package."
+          }
+        ],
         "sha256": "83b55cf0c1ff7184d706b175e7ff249665383d2f191b679b677ecede9718f51a",
         "bytes": 4834
       },
@@ -1201,7 +1526,15 @@
         "claim_class": "C internal benchmark",
         "schema_version": "1.1",
         "timestamp_utc": "2026-05-05T17:30:15.311324+00:00",
-        "claim_gates": [],
+        "claim_gates": [
+          {
+            "gate": "branch_claim_gate",
+            "status": "BLOCKED",
+            "accepted_now": 2,
+            "blocked_for_strong_claims": 4,
+            "claim_boundary": "This gate keeps the topic at selected-benchmark and mechanism-diagnostic status, not universal theory closure."
+          }
+        ],
         "sha256": "2b4a3e9e506ae8a3bcdd62635cec63667097957367aef8344c801c96dcdda60c",
         "bytes": 3581
       },
@@ -1214,7 +1547,15 @@
         "claim_class": "C - source-backed internal benchmark for Casimir force only",
         "schema_version": "1.1",
         "timestamp_utc": "2026-05-05T17:58:33.462963+00:00",
-        "claim_gates": [],
+        "claim_gates": [
+          {
+            "gate": "branch_claim_gate",
+            "status": "BLOCKED",
+            "accepted_now": 2,
+            "blocked_for_strong_claims": 4,
+            "claim_boundary": "This gate keeps the topic at Casimir benchmark and mechanism-diagnostic status, not vacuum-energy closure."
+          }
+        ],
         "sha256": "11124ac4f5eef35cf05a0d3ac325ec4ff9ecbf261474b317c18939027d71056d",
         "bytes": 6309
       },
@@ -1258,7 +1599,15 @@
         "claim_class": null,
         "schema_version": "1.1",
         "timestamp_utc": "2026-05-06T15:23:23.696552+00:00",
-        "claim_gates": [],
+        "claim_gates": [
+          {
+            "gate": "branch_claim_gate",
+            "status": "BLOCKED",
+            "accepted_now": 1,
+            "blocked_for_strong_claims": 5,
+            "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current HRV run-contract evidence."
+          }
+        ],
         "sha256": "859aecb67f5c026a4dab8a144806336a3e098d000775908375935b83ebde4806",
         "bytes": 6625
       },
@@ -1271,7 +1620,15 @@
         "claim_class": "D - qualitative diagnostic only",
         "schema_version": "1.1",
         "timestamp_utc": "2026-05-05T18:01:37.654578+00:00",
-        "claim_gates": [],
+        "claim_gates": [
+          {
+            "gate": "branch_claim_gate",
+            "status": "BLOCKED",
+            "accepted_now": 2,
+            "blocked_for_strong_claims": 4,
+            "claim_boundary": "This gate keeps the topic at qualitative cluster-diagnostic status, not dark-matter replacement closure."
+          }
+        ],
         "sha256": "6e134627c470b8694f0f26d335d491f268ff9e296862453d92bb543e4343b476",
         "bytes": 4307
       },
@@ -1284,7 +1641,15 @@
         "claim_class": "C/D boundary - internal fission sanity check with missing fragment provenance",
         "schema_version": "1.1",
         "timestamp_utc": "2026-05-05T18:07:11.055465+00:00",
-        "claim_gates": [],
+        "claim_gates": [
+          {
+            "gate": "branch_claim_gate",
+            "status": "BLOCKED",
+            "accepted_now": 2,
+            "blocked_for_strong_claims": 4,
+            "claim_boundary": "This gate keeps the topic at heavy-nuclei checkpoint and sanity-diagnostic status, not first-principles nuclear closure."
+          }
+        ],
         "sha256": "3972f28ae8050c0c584a72e6567f42f5ea0602a2614ffdcc4944684c0de8da3d",
         "bytes": 3973
       },
@@ -1297,7 +1662,15 @@
         "claim_class": null,
         "schema_version": "1.1",
         "timestamp_utc": "2026-05-05T20:48:08.349155+00:00",
-        "claim_gates": [],
+        "claim_gates": [
+          {
+            "gate": "branch_claim_gate",
+            "status": "BLOCKED",
+            "accepted_now": 1,
+            "blocked_for_strong_claims": 4,
+            "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current Higgs-coupling run-contract evidence."
+          }
+        ],
         "sha256": "7009df3756fd12baaf37c6eee5feedddd4a6d3f2bec63224c0d9d81f95b4200b",
         "bytes": 5966
       },
@@ -1325,6 +1698,13 @@
               "T18_EXPORT_QUANTUM_ENGINE_THEOREM"
             ],
             "claim_boundary": "0.18 can currently export only surrogate/run-contract evidence. All theorem-level exports are blocked."
+          },
+          {
+            "gate": "branch_claim_gate",
+            "status": "BLOCKED",
+            "accepted_now": 1,
+            "blocked_for_strong_claims": 5,
+            "claim_boundary": "This gate records theorem-branch claim ceilings only. It cannot upgrade the topic beyond the current run-contract evidence."
           }
         ],
         "sha256": "580766e66f2694bc8f9e06125912f662d5b98d87f5981d5836cf5dde7190ccfa",
@@ -1339,7 +1719,15 @@
         "claim_class": "C - source-constant internal checkpoint only",
         "schema_version": "1.1",
         "timestamp_utc": "2026-05-05T18:11:03.607091+00:00",
-        "claim_gates": [],
+        "claim_gates": [
+          {
+            "gate": "branch_claim_gate",
+            "status": "BLOCKED",
+            "accepted_now": 2,
+            "blocked_for_strong_claims": 4,
+            "claim_boundary": "This gate keeps the topic at source-constant checkpoint status, not general-relativity closure."
+          }
+        ],
         "sha256": "302948fbf877623e81ddb5e2adf4f69a313bffb3a55555a67a571d732b26f067",
         "bytes": 3300
       },
@@ -1352,7 +1740,15 @@
         "claim_class": "C - source-backed internal hydrogen spectrum benchmark",
         "schema_version": "1.1",
         "timestamp_utc": "2026-05-05T19:03:50.079742+00:00",
-        "claim_gates": [],
+        "claim_gates": [
+          {
+            "gate": "branch_claim_gate",
+            "status": "BLOCKED",
+            "accepted_now": 2,
+            "blocked_for_strong_claims": 4,
+            "claim_boundary": "This gate keeps the topic at hydrogen benchmark status, not full atomic-theory closure."
+          }
+        ],
         "sha256": "63ceb238e0072542791e34de23676721323c4bd28ebbdf97ec059ea077811796",
         "bytes": 5849
       },
@@ -1483,7 +1879,7 @@
           "reynolds_critical": 2261.946710584651,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 1.2925065458458056,
+          "ai_initial_loss": 2.2612807590912025,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
@@ -1508,7 +1904,7 @@
           "reynolds_critical": 226.19467105846513,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 0.8647384292149554,
+          "ai_initial_loss": 0.7906168517618608,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
@@ -1540,7 +1936,7 @@
         "PASS",
         "FAIL",
         "WARN",
-        "WARN",
+        "PASS",
         "WARN",
         "WARN",
         "PASS",
@@ -1562,8 +1958,8 @@
         "WARN",
         "WARN"
       ],
-      "pass_count": 10,
-      "warn_count": 15,
+      "pass_count": 11,
+      "warn_count": 14,
       "fail_count": 1,
       "missing_count": 0,
       "interpretation": "Dependency FAIL/WARN blocks paper-readiness and theory-level claims, but does not by itself mean the integration run-contract failed."
@@ -1654,7 +2050,7 @@
         "source_targets_total": 5,
         "targets_ready_for_source_review": 3,
         "targets_blocked_by_pending_evidence": 2,
-        "dependencies_warn_or_unknown": 15
+        "dependencies_warn_or_unknown": 14
       },
       "readiness_rows": [
         {
@@ -1735,7 +2131,7 @@
         "branches_total": 6,
         "accepted_now": 2,
         "blocked_for_strong_claims": 4,
-        "dependency_warn_count": 15,
+        "dependency_warn_count": 14,
         "dependency_fail_count": 1,
         "dependency_unknown_count": 0
       },
@@ -1785,7 +2181,7 @@
       "status": "BLOCKED",
       "rule": "Any FAIL, WARN, UNKNOWN, missing artifact, source-incomplete, formula-open, or synthetic-only dependency blocks theory-level claims.",
       "dependency_count": 26,
-      "blocked_dependency_count": 22,
+      "blocked_dependency_count": 36,
       "blockers": [
         {
           "topic": "0.1_Galaxy_Rotation_Problem",
@@ -1811,11 +2207,44 @@
           "blocker": "Subordinate claim gate blocks theory-level inheritance."
         },
         {
+          "topic": "0.2_Black_Hole_Physics",
+          "artifact": "docs/topics/0.2_Black_Hole_Physics/Result/artifacts/0_2_black_hole_physics_verification.json",
+          "status": "PASS",
+          "claim_class": "C internal benchmark",
+          "gate": "branch_claim_gate",
+          "gate_status": "BLOCKED",
+          "blocked_exports": [],
+          "blocked_claims": [],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
+        },
+        {
+          "topic": "0.3_Cosmology_Hubble_Tension",
+          "artifact": "docs/topics/0.3_Cosmology_Hubble_Tension/Result/artifacts/hubble_comparison_validation.json",
+          "status": "PASS",
+          "claim_class": null,
+          "gate": "branch_claim_gate",
+          "gate_status": "BLOCKED",
+          "blocked_exports": [],
+          "blocked_claims": [],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
+        },
+        {
           "topic": "0.4_Superconductivity_Superfluids",
           "artifact": "docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/0_4_superconductivity_superfluids_verification.json",
           "status": "FAIL",
           "claim_class": "model-baseline blocker",
           "blocker": "Dependency is not clean PASS, so theory-level closure is blocked."
+        },
+        {
+          "topic": "0.4_Superconductivity_Superfluids",
+          "artifact": "docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/0_4_superconductivity_superfluids_verification.json",
+          "status": "FAIL",
+          "claim_class": "model-baseline blocker",
+          "gate": "branch_claim_gate",
+          "gate_status": "BLOCKED",
+          "blocked_exports": [],
+          "blocked_claims": [],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
         },
         {
           "topic": "0.5_Nuclear_Binding_Hadrons",
@@ -1826,10 +2255,14 @@
         },
         {
           "topic": "0.6_Electroweak_Physics",
-          "artifact": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/0_6_electroweak_physics_verification.json",
-          "status": "WARN",
+          "artifact": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/electroweak_expanded_benchmark.json",
+          "status": "PASS",
           "claim_class": null,
-          "blocker": "Dependency is not clean PASS, so theory-level closure is blocked."
+          "gate": "branch_claim_gate",
+          "gate_status": "BLOCKED",
+          "blocked_exports": [],
+          "blocked_claims": [],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
         },
         {
           "topic": "0.7_Neutrino_Physics",
@@ -1844,6 +2277,50 @@
           "status": "WARN",
           "claim_class": null,
           "blocker": "Dependency is not clean PASS, so theory-level closure is blocked."
+        },
+        {
+          "topic": "0.9_Quantum_Nonlocality",
+          "artifact": "docs/topics/0.9_Quantum_Nonlocality/Result/artifacts/0_9_quantum_nonlocality_verification.json",
+          "status": "PASS",
+          "claim_class": "C - source-referenced internal CHSH benchmark",
+          "gate": "branch_claim_gate",
+          "gate_status": "BLOCKED",
+          "blocked_exports": [],
+          "blocked_claims": [],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
+        },
+        {
+          "topic": "0.10_Fluid_Dynamics_Chaos",
+          "artifact": "docs/topics/0.10_Fluid_Dynamics_Chaos/Result/artifacts/fluid_benchmark_validation.json",
+          "status": "PASS",
+          "claim_class": null,
+          "gate": "branch_claim_gate",
+          "gate_status": "BLOCKED",
+          "blocked_exports": [],
+          "blocked_claims": [],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
+        },
+        {
+          "topic": "0.11_Phase_Transitions",
+          "artifact": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_phase_transitions_verification.json",
+          "status": "PASS",
+          "claim_class": "C internal benchmark",
+          "gate": "branch_claim_gate",
+          "gate_status": "BLOCKED",
+          "blocked_exports": [],
+          "blocked_claims": [],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
+        },
+        {
+          "topic": "0.12_Vacuum_Energy_Casimir",
+          "artifact": "docs/topics/0.12_Vacuum_Energy_Casimir/Result/artifacts/0_12_vacuum_energy_casimir_verification.json",
+          "status": "PASS",
+          "claim_class": "C - source-backed internal benchmark for Casimir force only",
+          "gate": "branch_claim_gate",
+          "gate_status": "BLOCKED",
+          "blocked_exports": [],
+          "blocked_claims": [],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
         },
         {
           "topic": "0.13_Thermodynamic_Bridge",
@@ -1879,6 +2356,17 @@
           "blocker": "Subordinate claim gate blocks theory-level inheritance."
         },
         {
+          "topic": "0.14_Complex_Systems",
+          "artifact": "docs/topics/0.14_Complex_Systems/Result/artifacts/0_14_complex_systems_verification.json",
+          "status": "PASS",
+          "claim_class": null,
+          "gate": "branch_claim_gate",
+          "gate_status": "BLOCKED",
+          "blocked_exports": [],
+          "blocked_claims": [],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
+        },
+        {
           "topic": "0.15_Cluster_Dynamics",
           "artifact": "docs/topics/0.15_Cluster_Dynamics/Result/artifacts/0_15_cluster_dynamics_verification.json",
           "status": "WARN",
@@ -1886,11 +2374,44 @@
           "blocker": "Dependency is not clean PASS, so theory-level closure is blocked."
         },
         {
+          "topic": "0.15_Cluster_Dynamics",
+          "artifact": "docs/topics/0.15_Cluster_Dynamics/Result/artifacts/0_15_cluster_dynamics_verification.json",
+          "status": "WARN",
+          "claim_class": "D - qualitative diagnostic only",
+          "gate": "branch_claim_gate",
+          "gate_status": "BLOCKED",
+          "blocked_exports": [],
+          "blocked_claims": [],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
+        },
+        {
           "topic": "0.16_Heavy_Nuclei",
           "artifact": "docs/topics/0.16_Heavy_Nuclei/Result/artifacts/0_16_heavy_nuclei_verification.json",
           "status": "WARN",
           "claim_class": "C/D boundary - internal fission sanity check with missing fragment provenance",
           "blocker": "Dependency is not clean PASS, so theory-level closure is blocked."
+        },
+        {
+          "topic": "0.16_Heavy_Nuclei",
+          "artifact": "docs/topics/0.16_Heavy_Nuclei/Result/artifacts/0_16_heavy_nuclei_verification.json",
+          "status": "WARN",
+          "claim_class": "C/D boundary - internal fission sanity check with missing fragment provenance",
+          "gate": "branch_claim_gate",
+          "gate_status": "BLOCKED",
+          "blocked_exports": [],
+          "blocked_claims": [],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
+        },
+        {
+          "topic": "0.17_Mass_Generation",
+          "artifact": "docs/topics/0.17_Mass_Generation/Result/artifacts/0_17_mass_generation_verification.json",
+          "status": "PASS",
+          "claim_class": null,
+          "gate": "branch_claim_gate",
+          "gate_status": "BLOCKED",
+          "blocked_exports": [],
+          "blocked_claims": [],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
         },
         {
           "topic": "0.18_Mathnicry",
@@ -1913,6 +2434,39 @@
             "T18_EXPORT_COLLATZ_PROOF",
             "T18_EXPORT_QUANTUM_ENGINE_THEOREM"
           ],
+          "blocked_claims": [],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
+        },
+        {
+          "topic": "0.18_Mathnicry",
+          "artifact": "docs/topics/0.18_Mathnicry/Result/artifacts/0_18_mathnicry_verification.json",
+          "status": "WARN",
+          "claim_class": null,
+          "gate": "branch_claim_gate",
+          "gate_status": "BLOCKED",
+          "blocked_exports": [],
+          "blocked_claims": [],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
+        },
+        {
+          "topic": "0.19_Gravity_GR",
+          "artifact": "docs/topics/0.19_Gravity_GR/Result/artifacts/0_19_gravity_gr_verification.json",
+          "status": "PASS",
+          "claim_class": "C - source-constant internal checkpoint only",
+          "gate": "branch_claim_gate",
+          "gate_status": "BLOCKED",
+          "blocked_exports": [],
+          "blocked_claims": [],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
+        },
+        {
+          "topic": "0.20_Atomic_Physics",
+          "artifact": "docs/topics/0.20_Atomic_Physics/Result/artifacts/0_20_atomic_physics_verification.json",
+          "status": "PASS",
+          "claim_class": "C - source-backed internal hydrogen spectrum benchmark",
+          "gate": "branch_claim_gate",
+          "gate_status": "BLOCKED",
+          "blocked_exports": [],
           "blocked_claims": [],
           "blocker": "Subordinate claim gate blocks theory-level inheritance."
         },
@@ -2018,23 +2572,23 @@
   },
   "source_evidence_readiness_matrix": {
     "path": "Data/03_Research/source_evidence_readiness_matrix.json",
-    "sha256": "3ee9a3d21bd94bd620cb4cdd4f68adf41e06f29fc79034bc41840f8470fa438f",
+    "sha256": "deaf8aed45092f2ca0470b404ab90914966329db5626de253484035c394d1d02",
     "summary": {
       "source_targets_total": 5,
       "targets_ready_for_source_review": 3,
       "targets_blocked_by_pending_evidence": 2,
-      "dependencies_warn_or_unknown": 15
+      "dependencies_warn_or_unknown": 14
     },
     "claim_boundary": "A ready row has enough provenance structure for source review. It does not by itself upgrade unification claims."
   },
   "branch_claim_gate": {
     "path": "Data/03_Research/branch_claim_gate.json",
-    "sha256": "b21813c694ec4387005f1dba1dfd414956a17f88ab9e6b0328ea750be6761130",
+    "sha256": "00c35e348bd153f33654dbf70f7c8b2c1c59393211f9e23f996906ea6ed98c27",
     "summary": {
       "branches_total": 6,
       "accepted_now": 2,
       "blocked_for_strong_claims": 4,
-      "dependency_warn_count": 15,
+      "dependency_warn_count": 14,
       "dependency_fail_count": 1,
       "dependency_unknown_count": 0
     },
