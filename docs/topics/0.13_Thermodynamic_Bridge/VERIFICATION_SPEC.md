@@ -13,6 +13,7 @@
 - Generated workflow artifacts:
   - `Data/03_Research/source_evidence_intake_stub.json`
   - `Data/03_Research/source_evidence_readiness_matrix.json`
+  - `Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json`
 - Baseline:
   - Landauer exact-constant identity at 300 K.
   - Jun-style measured erasure cost must remain above the Landauer lower bound.
@@ -25,15 +26,18 @@
   - `hawking_temperature_solar_mass_K`
   - `bekenstein_hawking_entropy_solar_mass_planck_units`
   - input file SHA-256 identities and optional plot artifact status
+  - foundation claim gate status, accepted exports, blocked exports, and Tier-A promotion blockers
 - Fixed threshold:
   - `landauer_engine_vs_codata_relative_error <= 1e-12`
   - `jun_2014_ratio_to_landauer_lower_bound >= 1.0`
   - all three primary tests must return true
   - optional plot artifacts should render; plot failure downgrades artifact status to `WARN`
   - topic-derived Berut numeric rows keep this topic from claim class `A/B` until raw/supplemental table provenance is archived
+  - `thermodynamic_bridge_foundation_claim_gate.status` must become `FOUNDATION_PASS` before dependent topics may use `0.13` for theory-level bridge claims
 - Artifact target:
   - Result/artifacts/0_13_thermodynamic_bridge_verification.json
 - Interpretation:
   - Treat `PASS` as formula/lower-bound consistency only.
   - Treat `WARN` as scientifically usable for hardening but not paper-ready; the present WARN is expected while Berut numeric values remain topic-derived summaries and the source-evidence readiness gate remains open.
+  - Treat the foundation claim gate as the dependency export contract: `0.23` and `0.0` may inherit lower-bound/formula-consistency constraints, but must block UET bridge proof language while the gate remains `FOUNDATION_WARN`.
   - Do not upgrade claim language to "solved", "verified UET", or "exact bridge" until source-locked external data, uncertainty propagation, and cross-topic dependency proof are complete.

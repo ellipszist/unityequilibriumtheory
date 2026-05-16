@@ -50,6 +50,7 @@ TOPIC_DIR = ROOT / "docs" / "topics" / "0.13_Thermodynamic_Bridge"
 ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_13_thermodynamic_bridge_verification.json"
 SOURCE_EVIDENCE_INTAKE_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_intake_stub.json"
 SOURCE_EVIDENCE_READINESS_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_readiness_matrix.json"
+FOUNDATION_CLAIM_GATE_PATH = TOPIC_DIR / "Data" / "03_Research" / "thermodynamic_bridge_foundation_claim_gate.json"
 DATA_INPUTS = [
     TOPIC_DIR / "Data" / "03_Research" / "__init__.py",
     TOPIC_DIR / "Data" / "03_Research" / "berut_2012.json",
@@ -348,6 +349,114 @@ def _build_uncertainty_preprocessing_plan():
     }
 
 
+def _build_foundation_claim_gate(metrics, readiness_matrix, evidence_lanes):
+    source_summary = readiness_matrix["summary"]
+    lower_bound_pass = evidence_lanes["landauer_lower_bound"]["status"] == "PASS"
+    formula_pass = evidence_lanes["bekenstein_hawking_formula_consistency"]["status"] == "PASS"
+    source_ready = (
+        source_summary["targets_ready_for_source_review"]
+        == source_summary["source_targets_total"]
+    )
+    bridge_unblocked = evidence_lanes["uet_bridge_hypothesis"]["status"] != "BLOCKED"
+
+    gate = {
+        "schema_version": "1.0",
+        "topic": "0.13_Thermodynamic_Bridge",
+        "purpose": "Machine-readable claim gate for using 0.13 as a UET theory foundation.",
+        "foundation_role": "core information-entropy-energy constraint layer",
+        "status": "FOUNDATION_WARN",
+        "claim_ceiling": "C - formula/lower-bound consistency only",
+        "accepted_foundation_exports": [
+            {
+                "export_id": "T13_EXPORT_LANDAUER_LOWER_BOUND",
+                "status": "PASS" if lower_bound_pass else "FAIL",
+                "claim_class": "C",
+                "allowed_usage": "May constrain UET information-erasure energy language as a lower-bound relation.",
+                "metric": "jun_2014_ratio_to_landauer_lower_bound",
+                "value": metrics["jun_2014_ratio_to_landauer_lower_bound"],
+                "blocker_to_stronger_usage": "Raw row-level Landauer measurements and uncertainty propagation are still open.",
+            },
+            {
+                "export_id": "T13_EXPORT_STANDARD_THERMO_GRAVITY_IDENTITIES",
+                "status": "PASS" if formula_pass else "FAIL",
+                "claim_class": "C",
+                "allowed_usage": "May cite Bekenstein, Unruh, and Hawking relations as standard formula constraints.",
+                "metric": "bekenstein_unruh_hawking_formula_consistency",
+                "value": "formula_consistency_only",
+                "blocker_to_stronger_usage": "These identities do not derive UET field variables by themselves.",
+            },
+        ],
+        "blocked_foundation_exports": [
+            {
+                "export_id": "T13_EXPORT_UET_BRIDGE_PROOF",
+                "status": "BLOCKED" if not bridge_unblocked else "OPEN",
+                "claim_class": "A/B blocked",
+                "forbidden_usage": "Do not cite 0.13 as proof that UET derives information, entropy, and energy from first principles.",
+                "blockers": evidence_lanes["uet_bridge_hypothesis"]["blockers"],
+            },
+            {
+                "export_id": "T13_EXPORT_SOURCE_NORMALIZED_LANDAUER_DATASET",
+                "status": "BLOCKED" if not source_ready else "READY_FOR_REVIEW",
+                "claim_class": "B blocked",
+                "forbidden_usage": "Do not cite the Landauer benchmark package as a fully source-normalized dataset.",
+                "blockers": [
+                    row["name"]
+                    for row in readiness_matrix["readiness_rows"]
+                    if not row["ready_for_source_review"]
+                ],
+            },
+            {
+                "export_id": "T13_EXPORT_CATTANEO_EXTERNAL_VALIDATION",
+                "status": "SIMULATION_ONLY",
+                "claim_class": "D",
+                "forbidden_usage": "Do not use the Cattaneo branch as external heat-transport validation.",
+                "blockers": [
+                    "Current Cattaneo data is synthetic/proxy.",
+                    "No real dataset, fixed-parameter threshold, or source package is attached.",
+                ],
+            },
+        ],
+        "dependency_exports": {
+            "0.23_Unity_Scale_Link": {
+                "may_inherit": [
+                    "T13_EXPORT_LANDAUER_LOWER_BOUND",
+                    "T13_EXPORT_STANDARD_THERMO_GRAVITY_IDENTITIES",
+                ],
+                "must_not_inherit": [
+                    "T13_EXPORT_UET_BRIDGE_PROOF",
+                    "T13_EXPORT_SOURCE_NORMALIZED_LANDAUER_DATASET",
+                    "T13_EXPORT_CATTANEO_EXTERNAL_VALIDATION",
+                ],
+            },
+            "0.0_Grand_Unification": {
+                "may_inherit": [
+                    "lower-bound/formula-consistency status",
+                    "source-evidence blocker map",
+                ],
+                "must_block_theory_level_claim_if": [
+                    "0.13 artifact status is WARN/FAIL",
+                    "source evidence readiness has pending targets",
+                    "UET bridge hypothesis lane remains BLOCKED",
+                    "uncertainty preprocessing is not complete",
+                ],
+            },
+        },
+        "tier_decision": {
+            "current": "Do not promote to Tier A",
+            "reason": "The topic is foundational, but source-normalized data, uncertainty propagation, and UET-specific derivation are not closed.",
+            "promotion_requirements": [
+                "Raw or machine-transcribed Berut/Jun/Peterson row-level values with source locators.",
+                "Uncertainty propagation for Landauer heat values and black-hole mass inputs.",
+                "A derivation map from UET information-field variables to the standard thermodynamic identities.",
+                "Verifier artifact showing no blocked source-evidence or hypothesis lanes.",
+            ],
+        },
+        "claim_boundary": "0.13 is a priority foundation topic, but only its lower-bound and standard-formula lanes are currently usable by dependent theory topics.",
+    }
+    FOUNDATION_CLAIM_GATE_PATH.write_text(json.dumps(gate, indent=2), encoding="utf-8")
+    return gate
+
+
 def _write_verification_artifact(test_results, plot_paths, metrics):
     test_pass = all(item["passed"] for item in test_results)
     plot_pass = all(item["saved"] for item in plot_paths)
@@ -374,9 +483,12 @@ def _write_verification_artifact(test_results, plot_paths, metrics):
     )
     evidence_lanes = _build_evidence_lanes(test_results, metrics, source_evidence_readiness_matrix)
     uncertainty_preprocessing_plan = _build_uncertainty_preprocessing_plan()
+    foundation_claim_gate = _build_foundation_claim_gate(
+        metrics, source_evidence_readiness_matrix, evidence_lanes
+    )
 
     artifact = {
-        "schema_version": "1.2",
+        "schema_version": "1.3",
         "topic": "0.13_Thermodynamic_Bridge",
         "command": ".venv\\Scripts\\python.exe docs\\topics\\0.13_Thermodynamic_Bridge\\Code\\03_Research\\Research_Landauer.py",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
@@ -386,6 +498,24 @@ def _write_verification_artifact(test_results, plot_paths, metrics):
         "metrics": metrics,
         "evidence_lanes": evidence_lanes,
         "uncertainty_preprocessing_plan": uncertainty_preprocessing_plan,
+        "foundation_claim_gate": {
+            "path": FOUNDATION_CLAIM_GATE_PATH.relative_to(ROOT).as_posix(),
+            "sha256": _sha256(FOUNDATION_CLAIM_GATE_PATH),
+            "status": foundation_claim_gate["status"],
+            "claim_ceiling": foundation_claim_gate["claim_ceiling"],
+            "accepted_foundation_exports": [
+                item["export_id"]
+                for item in foundation_claim_gate["accepted_foundation_exports"]
+                if item["status"] == "PASS"
+            ],
+            "blocked_foundation_exports": [
+                item["export_id"]
+                for item in foundation_claim_gate["blocked_foundation_exports"]
+                if item["status"] != "PASS"
+            ],
+            "tier_decision": foundation_claim_gate["tier_decision"],
+            "claim_boundary": foundation_claim_gate["claim_boundary"],
+        },
         "thresholds": {
             "landauer_engine_vs_codata_relative_error_max": 1e-12,
             "jun_2014_observed_to_landauer_lower_bound_min": 1.0,
@@ -418,6 +548,7 @@ def _write_verification_artifact(test_results, plot_paths, metrics):
                 "source_evidence_readiness_matrix.targets_ready_for_source_review < source_targets_total",
                 "uet_bridge_hypothesis lane remains BLOCKED",
                 "uncertainty_preprocessing_plan.current_status != complete",
+                "foundation_claim_gate.status != FOUNDATION_PASS",
             ],
             "allowed_public_wording": [
                 "formula-consistency check",

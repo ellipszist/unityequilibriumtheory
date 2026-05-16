@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "purpose": "Machine-readable claim gate for using 0.13 as a UET theory foundation.",
+  "foundation_role": "core information-entropy-energy constraint layer",
+  "status": "FOUNDATION_WARN",
+  "claim_ceiling": "C - formula/lower-bound consistency only",
+  "accepted_foundation_exports": [
+    {
+      "export_id": "T13_EXPORT_LANDAUER_LOWER_BOUND",
+      "status": "PASS",
+      "claim_class": "C",
+      "allowed_usage": "May constrain UET information-erasure energy language as a lower-bound relation.",
+      "metric": "jun_2014_ratio_to_landauer_lower_bound",
+      "value": 1.5625662029475318,
+      "blocker_to_stronger_usage": "Raw row-level Landauer measurements and uncertainty propagation are still open."
+    },
+    {
+      "export_id": "T13_EXPORT_STANDARD_THERMO_GRAVITY_IDENTITIES",
+      "status": "PASS",
+      "claim_class": "C",
+      "allowed_usage": "May cite Bekenstein, Unruh, and Hawking relations as standard formula constraints.",
+      "metric": "bekenstein_unruh_hawking_formula_consistency",
+      "value": "formula_consistency_only",
+      "blocker_to_stronger_usage": "These identities do not derive UET field variables by themselves."
+    }
+  ],
+  "blocked_foundation_exports": [
+    {
+      "export_id": "T13_EXPORT_UET_BRIDGE_PROOF",
+      "status": "BLOCKED",
+      "claim_class": "A/B blocked",
+      "forbidden_usage": "Do not cite 0.13 as proof that UET derives information, entropy, and energy from first principles.",
+      "blockers": [
+        "Raw or supplemental Landauer numeric tables are not archived.",
+        "Uncertainty propagation is not yet applied to measured heat and black-hole mass inputs.",
+        "UET-specific field variables are not yet derived from the standard thermodynamic identities."
+      ]
+    },
+    {
+      "export_id": "T13_EXPORT_SOURCE_NORMALIZED_LANDAUER_DATASET",
+      "status": "BLOCKED",
+      "claim_class": "B blocked",
+      "forbidden_usage": "Do not cite the Landauer benchmark package as a fully source-normalized dataset.",
+      "blockers": [
+        "Berut 2012 raw or supplementary numeric table",
+        "Jun 2014 nanomagnetic erasure benchmark source",
+        "Peterson 2018 quantum Landauer benchmark source",
+        "LIGO/Virgo mass uncertainty source package",
+        "EHT black-hole mass source package",
+        "Measured-constant uncertainty record beyond exact SI constants"
+      ]
+    },
+    {
+      "export_id": "T13_EXPORT_CATTANEO_EXTERNAL_VALIDATION",
+      "status": "SIMULATION_ONLY",
+      "claim_class": "D",
+      "forbidden_usage": "Do not use the Cattaneo branch as external heat-transport validation.",
+      "blockers": [
+        "Current Cattaneo data is synthetic/proxy.",
+        "No real dataset, fixed-parameter threshold, or source package is attached."
+      ]
+    }
+  ],
+  "dependency_exports": {
+    "0.23_Unity_Scale_Link": {
+      "may_inherit": [
+        "T13_EXPORT_LANDAUER_LOWER_BOUND",
+        "T13_EXPORT_STANDARD_THERMO_GRAVITY_IDENTITIES"
+      ],
+      "must_not_inherit": [
+        "T13_EXPORT_UET_BRIDGE_PROOF",
+        "T13_EXPORT_SOURCE_NORMALIZED_LANDAUER_DATASET",
+        "T13_EXPORT_CATTANEO_EXTERNAL_VALIDATION"
+      ]
+    },
+    "0.0_Grand_Unification": {
+      "may_inherit": [
+        "lower-bound/formula-consistency status",
+        "source-evidence blocker map"
+      ],
+      "must_block_theory_level_claim_if": [
+        "0.13 artifact status is WARN/FAIL",
+        "source evidence readiness has pending targets",
+        "UET bridge hypothesis lane remains BLOCKED",
+        "uncertainty preprocessing is not complete"
+      ]
+    }
+  },
+  "tier_decision": {
+    "current": "Do not promote to Tier A",
+    "reason": "The topic is foundational, but source-normalized data, uncertainty propagation, and UET-specific derivation are not closed.",
+    "promotion_requirements": [
+      "Raw or machine-transcribed Berut/Jun/Peterson row-level values with source locators.",
+      "Uncertainty propagation for Landauer heat values and black-hole mass inputs.",
+      "A derivation map from UET information-field variables to the standard thermodynamic identities.",
+      "Verifier artifact showing no blocked source-evidence or hypothesis lanes."
+    ]
+  },
+  "claim_boundary": "0.13 is a priority foundation topic, but only its lower-bound and standard-formula lanes are currently usable by dependent theory topics."
+}

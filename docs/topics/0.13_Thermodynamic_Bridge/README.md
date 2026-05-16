@@ -82,7 +82,7 @@ graph LR
 | Data | Berut/CODATA source records plus topic-local working copies with hashes | `DATA_MANIFEST.md`, `docs/data/external/thermodynamics/landauer/berut_2012/source_record.json`, `docs/data/external/constants/codata/si_2019_exact_constants.json`, `Data/03_Research/source_evidence_intake_stub.json` | Archive raw/supplemental Berut numeric tables and add uncertainty-aware preprocessing notes. |
 | Formula | Reviewed formula audit maps Landauer, entropy proxy, Bekenstein, Unruh, Hawking, Cattaneo, and vacuum-sink formulas | `FORMULA_AUDIT.md` | Add uncertainty propagation, audit duplicate helper constants, and separate identity checks from UET-specific bridge claims. |
 | Verification | Primary script writes structured artifact with metrics, thresholds, hashes, warning reasons, and source-evidence readiness | `VERIFICATION_SPEC.md`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`, `Data/03_Research/source_evidence_readiness_matrix.json` | Promote from `WARN` only after external source-lock and cross-topic proof dependencies are closed. |
-| Theory dependency | Feeds UET's information-energy and entropy interpretation | `0.0_Grand_Unification`, `0.23_Unity_Scale_Link`, `0.26_Cosmic_Dynamic_Frame` | Define exactly which claims inherit this bridge and which remain open. |
+| Theory dependency | Feeds UET's information-energy and entropy interpretation | `Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json`, `0.0_Grand_Unification`, `0.23_Unity_Scale_Link`, `0.26_Cosmic_Dynamic_Frame` | Dependent topics may inherit only lower-bound/formula-consistency lanes until the UET bridge proof and source-normalized data gates close. |
 | Limitation | Strong conceptual importance, incomplete provenance normalization | `LIMITATIONS.md` | Separate theoretical identity, experimental lower-bound benchmark, synthetic benchmark, and heuristic extension. |
 
 ---
@@ -121,7 +121,8 @@ graph LR
 - [Research_Landauer.py](./Code/03_Research/Research_Landauer.py): primary verifier for Landauer/Bekenstein/Jacobson formula checks.
 - [source_evidence_intake_stub.json](./Data/03_Research/source_evidence_intake_stub.json): structured intake sheet for missing external-source evidence before any claim or data upgrade.
 - [source_evidence_readiness_matrix.json](./Data/03_Research/source_evidence_readiness_matrix.json): readiness gate showing which source targets are still blocked by missing evidence fields.
+- [thermodynamic_bridge_foundation_claim_gate.json](./Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json): verifier-generated gate showing what dependent topics may inherit from `0.13` and what remains blocked.
 
 ---
 
-*Core hardening status: formula-audited, verifier-artifact enabled, source records pinned, source-evidence intake/readiness enabled, raw-table source-lock still open.*
+*Core hardening status: formula-audited, verifier-artifact enabled, source records pinned, source-evidence intake/readiness enabled, foundation claim gate enabled, raw-table source-lock still open.*
