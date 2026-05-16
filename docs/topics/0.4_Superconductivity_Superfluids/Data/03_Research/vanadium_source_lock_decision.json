@@ -23,22 +23,36 @@
     "mu_star_alternative_capture": 0.15,
     "mu_star_alternative_uncertainty": 0.03
   },
+  "primary_page_capture": {
+    "path": "docs\\data\\external\\condensed_matter\\superconductivity\\row_resolution_targets\\vanadium_primary_page_capture_record_20260516.json",
+    "sha256": "524fffa9d4ebccc860097927460259836938ae3603cd4489e2362997591cb439",
+    "status": "closed_for_page_identity_and_tc_theta_values",
+    "fields_closed_by_this_record": [
+      "Tc_observed",
+      "Theta_D_K_or_proxy_context",
+      "bibliographic_identity"
+    ],
+    "fields_not_closed_by_this_record": [
+      "lambda_ep",
+      "mu_star"
+    ]
+  },
   "field_decisions": [
     {
       "field": "Tc_observed",
-      "compatibility_status": "nearby_but_not_matched",
+      "compatibility_status": "primary_confirmed_but_conflicts_with_working_row",
       "working_value": 5.36,
       "external_value": 5.03,
       "alternative_external_value": null,
-      "review_note": "The captured Tc is in the same low-temperature regime but does not numerically match the current working row. Page-confirmed primary capture is still required before any replacement decision."
+      "review_note": "The primary APS harvest PDF confirms Tc = 5.03 K. This conflicts with the current working row value 5.36 K, so the row cannot be called source-locked until a full coherent row patch is reviewed."
     },
     {
       "field": "Theta_D_K",
-      "compatibility_status": "material_difference_not_explained",
+      "compatibility_status": "primary_confirmed_but_conflicts_with_working_row",
       "working_value": 380.0,
       "external_value": 338.0,
       "alternative_external_value": null,
-      "review_note": "The captured Theta value differs materially from the working row. This blocks any proxy-lock or patch decision until the primary source page is confirmed and the row context is checked."
+      "review_note": "The primary APS harvest PDF confirms the normal-state fit value Theta = 338 +/- 5 K. This differs materially from the working row value 380 K and must be reviewed as part of a coherent row patch."
     },
     {
       "field": "lambda_ep",
@@ -59,15 +73,14 @@
   ],
   "source_lock_blockers": {
     "pending_archive_fields": [
-      "Tc_observed",
-      "Theta_D_K",
       "lambda_ep",
       "mu_star"
     ],
-    "fields_requiring_primary_page_confirmation": [
+    "fields_primary_page_confirmed": [
       "Tc_observed",
       "Theta_D_K"
     ],
+    "fields_requiring_primary_page_confirmation": [],
     "fields_requiring_convention_review": [
       "lambda_ep",
       "mu_star"
@@ -79,13 +92,14 @@
       "The older preview assumes lambda_ep = 0.6 under fixed Theta_D_K = 380 and mu_star = 0.11.",
       "Open-fulltext Vanadium captures now report lambda = 0.91 and mu_star values near 0.173 or 0.15 +- 0.03.",
       "The external captures do not directly support the older internal lambda-only patch preview.",
-      "Tc and Theta_D still lack page-confirmed primary capture, so row identity and proxy context are not locked."
+      "Tc and Theta_D are now primary-page confirmed as 5.03 K and Theta=338 +/- 5 K, but those values conflict with the current working row and do not rescue the older lambda-only preview.",
+      "lambda_ep and mu_star still require convention review before any coherent Vanadium row patch can be applied."
     ]
   },
   "primary_capture_requirements": {
     "target": {
       "source_title_or_doi": "10.1103/PhysRev.102.656",
-      "required_outcome": "page-confirmed primary capture for Tc and Theta-related row context"
+      "required_outcome": "satisfied by APS harvest PDF primary-page capture for Tc and Theta-related row context"
     },
     "required_elements": [
       {
@@ -118,7 +132,7 @@
         "failure_if_missing": "proxy_convention_locked remains false"
       }
     ],
-    "success_condition": "The packet succeeds only when a future capture can page-confirm the Vanadium primary source and close the Tc and Theta identity gap."
+    "success_condition": "Satisfied for bibliographic identity, Tc_observed, and Theta_D_K_or_proxy_context by docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_primary_page_capture_record_20260516.json."
   },
   "safe_interim_policy": {
     "keep_working_row_unchanged": true,
@@ -131,24 +145,29 @@
       "sha256": "56fb07a55e1301cd54fd68ca37a819d9ad43858f5ee72ef17827cd3d1acc85c5",
       "status": "present"
     },
+    "primary_page_capture_record": {
+      "path": "docs\\data\\external\\condensed_matter\\superconductivity\\row_resolution_targets\\vanadium_primary_page_capture_record_20260516.json",
+      "sha256": "524fffa9d4ebccc860097927460259836938ae3603cd4489e2362997591cb439",
+      "status": "present"
+    },
     "primary_capture_requirement_packet": {
       "path": "docs\\data\\external\\condensed_matter\\superconductivity\\row_resolution_targets\\vanadium_primary_capture_requirement_packet.json",
-      "sha256": "3d31fc8cb0ef54f231150a98b275d69a690290947f5475cc9a6ad23b9309e23a",
+      "sha256": "4ff17c408e565744d60c0f019ef00077dec13f4ac97aba603ae8421faa9d635c",
       "status": "present"
     },
     "patch_block_decision": {
       "path": "docs\\data\\external\\condensed_matter\\superconductivity\\row_resolution_targets\\vanadium_patch_block_decision.json",
-      "sha256": "6426e0cdc1787715ec2c900aa5dba6aae52f722be356315ce8563120ff00b237",
+      "sha256": "9de15cc18227082ac43763fd6256dce9208842cce030380f2c94bf22f234ddba",
       "status": "present"
     },
     "compatibility_review_packet": {
       "path": "docs\\data\\external\\condensed_matter\\superconductivity\\row_resolution_targets\\vanadium_compatibility_review_packet.json",
-      "sha256": "857d3d657bcec8e02529274ac80dcd2f158741a423bc4637195fd54941d5c48f",
+      "sha256": "1b188b5d893bfc9978b43245fe8018f6f76f1c3cb416da71cfc69f0d04b86bf9",
       "status": "present"
     },
     "citation_integrity_report": {
       "path": "docs\\data\\external\\condensed_matter\\superconductivity\\row_resolution_targets\\vanadium_citation_integrity_report.json",
-      "sha256": "3b4d6ef53f49762743076761b2c71c7299e9a285e4c86df8b9626e16b9779030",
+      "sha256": "e10c73257ec9fb976bf2713641b9f77739eda13a2e0e4d2ac3d76b027eddd8dc",
       "status": "present"
     },
     "archive_dossier": {
@@ -158,12 +177,12 @@
     },
     "tc_text_capture_record": {
       "path": "docs\\data\\external\\condensed_matter\\superconductivity\\row_resolution_targets\\vanadium\\tc_text_capture_record.json",
-      "sha256": "915dbda30e78a9dcbd0792bc2b30c78140a7cb39e1364433682b188a9ed692e6",
+      "sha256": "6e5d0ae2664d4708a44919937843e3f6775cf0f6f2b5312ec4fdb1d0029edb4c",
       "status": "present"
     },
     "theta_text_capture_record": {
       "path": "docs\\data\\external\\condensed_matter\\superconductivity\\row_resolution_targets\\vanadium\\theta_text_capture_record.json",
-      "sha256": "71755a2ec16b0e43bb44f4081dfbc14a0e9d1bba25cc5cca23853ca02d3e3758",
+      "sha256": "ef136e48f3fc7473116605345530cd454cc4198e0774fc48e59449e3903cf9c6",
       "status": "present"
     },
     "lambda_numeric_capture_record": {
@@ -177,5 +196,5 @@
       "status": "present"
     }
   },
-  "claim_boundary": "This decision records why Vanadium cannot be patched yet. It does not authorize any working-row edit and does not reduce the raw McMillan FAIL."
+  "claim_boundary": "This decision records why Vanadium cannot be patched yet. Primary Tc and Theta/proxy context are now confirmed, but lambda_ep and mu_star remain convention-conflicted. It does not authorize any working-row edit and does not reduce the raw McMillan FAIL."
 }

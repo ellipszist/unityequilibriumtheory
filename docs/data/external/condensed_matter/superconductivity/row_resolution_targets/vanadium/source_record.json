@@ -9,11 +9,11 @@
   "publisher": "American Physical Society",
   "publication": "Physical Review 102(3), 656-661",
   "published_date": "1956-05-01",
-  "checked_date": "2026-05-07",
+  "checked_date": "2026-05-16",
   "unit_convention": "Critical temperature and Debye-temperature-style values are expected in Kelvin; row-level proxy, coupling, and unit details still require direct archival capture.",
   "benchmark_role": "publication anchor for locking the Vanadium row before any topic-local patch review",
-  "field_coverage_note": "Current publication anchor is only title-scope-compatible for Tc and does not yet demonstrate Theta_D_K, lambda_ep, or mu_star coverage.",
-  "citation_integrity_note": "MIT OCW reference text reports Phys. Rev. 102(3) (May 1956) with pages 43-48, while APS issue listing places the article at pages 656-661. Direct page confirmation is still required during archival capture.",
+  "field_coverage_note": "APS harvest PDF primary-page capture now confirms Tc=5.03 K and a normal-state Debye-temperature-style fit value Theta=338+/-5 K. lambda_ep and mu_star coverage still require separate convention review.",
+  "citation_integrity_note": "MIT OCW reference text reports Phys. Rev. 102(3) (May 1956) with pages 43-48, while APS issue listing places the article at pages 656-661. APS harvest PDF text extraction now supports the 656-661 page identity for this DOI.",
   "repository_use": [
     "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium/archive_dossier.json",
     "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/candidate_local_source_anchors.json",
@@ -21,7 +21,7 @@
   ],
   "limitations": [
     "This record pins the publication anchor only; it is not yet a row-level transcription.",
-    "The current citation chain contains a page-range discrepancy between MIT OCW reference text and APS issue listing.",
-    "The actual row values, locators, and proxy-specific field mapping still need to be archived in the repo before topic-local patch review."
+    "The old MIT OCW page-range discrepancy remains documented, but the primary DOI-routed PDF now supports the APS 656-661 page identity.",
+    "Tc and Theta/proxy context are primary-page confirmed, but lambda_ep and mu_star are still not source-locked for topic-local patch review."
   ]
 }

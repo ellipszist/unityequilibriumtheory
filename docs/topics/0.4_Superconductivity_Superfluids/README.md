@@ -58,7 +58,8 @@ flowchart LR
 | Vanadium source-lock packet | Focused action packet for the remaining borderline row with preferred proxy, candidate coupling, and source-lock checklist | `Data/03_Research/vanadium_source_lock_packet.json` | single-row execution workflow only |
 | A15 external-resolution packet | Focused action packet for `Nb3Sn` and `Nb3Ge` with shared external-resolution requirements | `Data/03_Research/a15_external_resolution_packet.json` | pairwise execution workflow only |
 | Vanadium candidate patch preview | Shows the exact working-copy change that would be made if the next source check confirms the row | `Data/03_Research/vanadium_candidate_patch_preview.json` | patch-preview workflow only |
-| Vanadium source-lock decision | Formal decision record for the current wave; the older lambda-only preview is blocked and the working row stays unchanged | `Data/03_Research/vanadium_source_lock_decision.json` | `PATCH_BLOCKED`; blocker record only |
+| Vanadium primary page capture | APS harvest PDF confirms article identity, `Tc=5.03 K`, and normal-state `Theta=338±5 K` without mirroring the PDF into the repo | `docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_primary_page_capture_record_20260516.json` | primary Tc/Theta evidence only |
+| Vanadium source-lock decision | Formal decision record for the current wave; Tc/Theta are primary-confirmed, but the older lambda-only preview remains blocked and the working row stays unchanged | `Data/03_Research/vanadium_source_lock_decision.json` | `PATCH_BLOCKED`; lambda/mu convention blocker |
 | A15 candidate patch preview | Shows why `Nb3Sn` and `Nb3Ge` are still not patchable without external row evidence | `Data/03_Research/a15_candidate_patch_preview.json` | blocked patch-preview workflow only |
 | Row evidence intake stub | Structured intake sheet for incoming row-level evidence before any working-copy edit is allowed | `Data/03_Research/row_evidence_intake_stub.json` | evidence-capture workflow only |
 | Row evidence readiness matrix | Shows which rows still have pending evidence fields before patch review is allowed | `Data/03_Research/row_evidence_readiness_matrix.json` | evidence-gate workflow only |
@@ -108,7 +109,7 @@ python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment
 - `Data/03_Research/vanadium_source_lock_packet.json`: focused packet for moving `Vanadium (V)` from borderline blocker to source-lock-ready row.
 - `Data/03_Research/a15_external_resolution_packet.json`: focused packet for moving `Nb3Sn` and `Nb3Ge` from unresolved A15 blockers into explicit row-resolution work.
 - `Data/03_Research/vanadium_candidate_patch_preview.json`: preview of the exact `Vanadium` row edit to apply if row evidence confirms the current internal candidate.
-- `Data/03_Research/vanadium_source_lock_decision.json`: current source-lock decision for `Vanadium`; the row is `PATCH_BLOCKED` and remains unchanged until primary page confirmation plus compatibility review clears.
+- `Data/03_Research/vanadium_source_lock_decision.json`: current source-lock decision for `Vanadium`; the row is `PATCH_BLOCKED` and remains unchanged because `lambda_ep` and `mu_star` still need convention review after the primary Tc/Theta capture.
 - `Data/03_Research/a15_candidate_patch_preview.json`: blocked preview showing exactly why the A15 pair still cannot be edited honestly.
 - `Data/03_Research/row_evidence_intake_stub.json`: structured place to record future row evidence for `Vanadium`, `Nb3Sn`, and `Nb3Ge` before any patch is applied.
 - `Data/03_Research/row_evidence_readiness_matrix.json`: quick gate showing whether each blocker row still has pending evidence before patch review can begin.

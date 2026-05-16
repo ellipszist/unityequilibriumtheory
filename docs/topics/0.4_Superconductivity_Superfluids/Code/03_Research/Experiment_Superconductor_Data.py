@@ -66,6 +66,8 @@ ROW_TARGET_DIR = Path(
 VANADIUM_SOURCE_LOCK_DECISION_PATH = DATA_DIR / "vanadium_source_lock_decision.json"
 VANADIUM_EXTERNAL_PACKET_PATHS = {
     "raw_page_capture_checklist": ROW_TARGET_DIR / "vanadium_raw_page_capture_checklist.json",
+    "primary_page_capture_record": ROW_TARGET_DIR
+    / "vanadium_primary_page_capture_record_20260516.json",
     "primary_capture_requirement_packet": ROW_TARGET_DIR
     / "vanadium_primary_capture_requirement_packet.json",
     "patch_block_decision": ROW_TARGET_DIR / "vanadium_patch_block_decision.json",
@@ -2344,18 +2346,32 @@ def build_vanadium_source_lock_decision(rows: list[dict]) -> dict:
     }
     patch_decision = loaded_packets.get("patch_block_decision") or {}
     compatibility_packet = loaded_packets.get("compatibility_review_packet") or {}
+    primary_page_capture = loaded_packets.get("primary_page_capture_record") or {}
     primary_packet = loaded_packets.get("primary_capture_requirement_packet") or {}
     archive_dossier = loaded_packets.get("archive_dossier") or {}
     raw_row = next((row for row in rows if row.get("name") == "Vanadium (V)"), {})
 
     archive_targets = archive_dossier.get("archive_targets", [])
+    fields_closed_by_primary_capture = set(
+        primary_page_capture.get("source_lock_effect", {}).get(
+            "fields_closed_by_this_record", []
+        )
+    )
     pending_archive_fields = [
         target.get("field")
         for target in archive_targets
         if target.get("status") != "complete"
+        and target.get("field") not in fields_closed_by_primary_capture
+        and not (
+            target.get("field") == "Theta_D_K"
+            and "Theta_D_K_or_proxy_context" in fields_closed_by_primary_capture
+        )
     ]
     compatibility_summary = compatibility_packet.get("compatibility_summary", {})
     field_review = compatibility_packet.get("field_review", [])
+    fields_primary_page_confirmed = compatibility_summary.get(
+        "fields_primary_page_confirmed", []
+    )
     patch_blocked = patch_decision.get("current_decision") == "blocked_do_not_apply_preview"
     if patch_blocked:
         source_lock_state = "PATCH_BLOCKED"
@@ -2383,6 +2399,19 @@ def build_vanadium_source_lock_decision(rows: list[dict]) -> dict:
         "external_capture_reference": compatibility_packet.get(
             "external_capture_reference", {}
         ),
+        "primary_page_capture": {
+            "path": str(VANADIUM_EXTERNAL_PACKET_PATHS["primary_page_capture_record"]),
+            "sha256": hash_file(
+                VANADIUM_EXTERNAL_PACKET_PATHS["primary_page_capture_record"]
+            ),
+            "status": primary_page_capture.get(
+                "source_lock_effect", {}
+            ).get("citation_integrity_gate"),
+            "fields_closed_by_this_record": sorted(fields_closed_by_primary_capture),
+            "fields_not_closed_by_this_record": primary_page_capture.get(
+                "source_lock_effect", {}
+            ).get("fields_not_closed_by_this_record", []),
+        },
         "field_decisions": [
             {
                 "field": item.get("field"),
@@ -2396,6 +2425,7 @@ def build_vanadium_source_lock_decision(rows: list[dict]) -> dict:
         ],
         "source_lock_blockers": {
             "pending_archive_fields": pending_archive_fields,
+            "fields_primary_page_confirmed": fields_primary_page_confirmed,
             "fields_requiring_primary_page_confirmation": compatibility_summary.get(
                 "fields_requiring_primary_page_confirmation", []
             ),
@@ -2428,8 +2458,10 @@ def build_vanadium_source_lock_decision(rows: list[dict]) -> dict:
             for name, path in VANADIUM_EXTERNAL_PACKET_PATHS.items()
         },
         "claim_boundary": (
-            "This decision records why Vanadium cannot be patched yet. It does not "
-            "authorize any working-row edit and does not reduce the raw McMillan FAIL."
+            "This decision records why Vanadium cannot be patched yet. Primary Tc "
+            "and Theta/proxy context are now confirmed, but lambda_ep and mu_star "
+            "remain convention-conflicted. It does not authorize any working-row "
+            "edit and does not reduce the raw McMillan FAIL."
         ),
     }
     VANADIUM_SOURCE_LOCK_DECISION_PATH.write_text(
@@ -2540,7 +2572,11 @@ def build_evidence_lanes(
             },
             "row_evidence_readiness_summary": row_evidence_readiness_matrix["summary"],
             "row_evidence_decision_summary": row_evidence_decision_gate["summary"],
-            "next_priority": "Vanadium primary page confirmation, then Nb3Ge source-lock pass.",
+            "next_priority": "Vanadium lambda_ep and mu_star convention review, then Nb3Ge source-lock pass.",
+            "next_priority_after_wave_2": (
+                "Vanadium lambda_ep/mu_star convention review; do not patch "
+                "Tc/Theta alone without a coherent row package."
+            ),
             "claim_boundary": (
                 "This lane can authorize future review work only. No row patch is "
                 "allowed until the decision gate changes from blocked to eligible."

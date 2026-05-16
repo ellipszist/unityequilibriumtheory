@@ -43,6 +43,7 @@
   - generated focused A15 external-resolution packet for `Nb3Sn` and `Nb3Ge`
   - generated Vanadium patch preview that shows the exact row edit to apply if source confirmation arrives
   - generated Vanadium source-lock decision that records whether the row is `PATCH_ALLOWED`, `PATCH_BLOCKED`, or `MORE_SOURCE_REQUIRED`
+  - external Vanadium primary page capture record that closes `Tc_observed` and `Theta_D_K_or_proxy_context` without mirroring the APS PDF into the repository
   - generated A15 blocked patch preview that shows why no honest row edit can yet be proposed for the pair
   - generated row evidence intake stub for capturing future source rows before patching
   - generated row evidence readiness matrix showing whether intake is complete enough for patch review, plus how many fields already have working-copy context
@@ -64,6 +65,7 @@
   - Result/artifacts/0_4_superconductivity_superfluids_verification.json
 - Required workflow gates:
   - `Data/03_Research/vanadium_source_lock_decision.json`
+  - `docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_primary_page_capture_record_20260516.json`
   - `Data/03_Research/source_evidence_intake_stub.json`
   - `Data/03_Research/source_evidence_readiness_matrix.json`
   - `Data/03_Research/branch_claim_gate.json`
@@ -91,7 +93,7 @@
   - The Vanadium packet is a convenience condensation of the current workflow state. It should be used to execute the next row check, not to claim the row is already normalized.
   - The A15 packet is likewise a workflow condensation only. It should guide the next external row-resolution pass, not be cited as proof that either A15 row is fixed.
   - The Vanadium patch preview is still conditional. It is useful for implementation readiness, but it cannot be applied without evidence that the cited row supports the previewed values.
-  - The Vanadium source-lock decision is currently expected to report `PATCH_BLOCKED` because the external compatibility packet conflicts with both the working row and the older lambda-only preview, while primary `Tc` and `Theta_D` page confirmation remains open.
+  - The Vanadium source-lock decision is currently expected to report `PATCH_BLOCKED` because primary `Tc` and `Theta_D` are now page-confirmed but conflict with the current working row, while `lambda_ep` and `mu_star` still require convention review.
   - The A15 blocked patch preview should be read as a stop sign, not a recommendation. It documents why an edit would be premature.
   - The intake stub is evidence capture only. Filling it is not equivalent to source review completion.
   - The intake stub now pre-fills `working_copy_context_present` and `proxy_unresolved` entries when internal packets already narrow the row state. This is handoff context only, not source completion.

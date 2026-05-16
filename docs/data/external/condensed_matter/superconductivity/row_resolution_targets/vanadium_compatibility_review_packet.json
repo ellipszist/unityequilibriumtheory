@@ -3,7 +3,7 @@
   "source_class": "external_compatibility_review_packet",
   "source_role": "compatibility review packet for the unresolved Vanadium benchmark row",
   "material": "Vanadium (V)",
-  "checked_date": "2026-05-11",
+  "checked_date": "2026-05-16",
   "working_row_reference": {
     "tc_observed_K": 5.36,
     "theta_D_K": 380.0,
@@ -22,17 +22,17 @@
   "field_review": [
     {
       "field": "Tc_observed",
-      "compatibility_status": "nearby_but_not_matched",
+      "compatibility_status": "primary_confirmed_but_conflicts_with_working_row",
       "working_value": 5.36,
       "external_value": 5.03,
-      "review_note": "The captured Tc is in the same low-temperature regime but does not numerically match the current working row. Page-confirmed primary capture is still required before any replacement decision."
+      "review_note": "The primary APS harvest PDF confirms Tc = 5.03 K. This conflicts with the current working row value 5.36 K, so the row cannot be called source-locked until a full coherent row patch is reviewed."
     },
     {
       "field": "Theta_D_K",
-      "compatibility_status": "material_difference_not_explained",
+      "compatibility_status": "primary_confirmed_but_conflicts_with_working_row",
       "working_value": 380.0,
       "external_value": 338.0,
-      "review_note": "The captured Theta value differs materially from the working row. This blocks any proxy-lock or patch decision until the primary source page is confirmed and the row context is checked."
+      "review_note": "The primary APS harvest PDF confirms the normal-state fit value Theta = 338 +/- 5 K. This differs materially from the working row value 380 K and must be reviewed as part of a coherent row patch."
     },
     {
       "field": "lambda_ep",
@@ -51,18 +51,19 @@
     }
   ],
   "compatibility_summary": {
-    "fields_consistent_enough_for_patch": [],
-    "fields_requiring_primary_page_confirmation": [
+    "fields_primary_page_confirmed": [
       "Tc_observed",
       "Theta_D_K"
     ],
+    "fields_consistent_enough_for_patch": [],
+    "fields_requiring_primary_page_confirmation": [],
     "fields_requiring_convention_review": [
       "lambda_ep",
       "mu_star"
     ]
   },
   "next_decisions": [
-    "Confirm the primary Vanadium page span and capture the exact Tc and Theta statements from the article itself.",
+    "Use the primary-page-confirmed Tc=5.03 K and Theta=338+/-5 K values as the active evidence for any future Vanadium row patch review.",
     "Decide whether the open-fulltext Eliashberg lambda and mu-star values are compatible with the benchmark row's intended convention.",
     "Do not apply the older internal lambda=0.6 patch preview unless a source family clearly supports it."
   ],

@@ -3,11 +3,11 @@
   "source_class": "external_primary_capture_requirement_packet",
   "source_role": "explicit requirement packet for what the first primary Vanadium page capture must contain",
   "material": "Vanadium (V)",
-  "checked_date": "2026-05-11",
+  "checked_date": "2026-05-16",
   "purpose": "Turn the current Vanadium blocker into one primary-capture checklist that is specific enough for a later raw-page extraction pass.",
   "primary_source_target": {
     "source_title_or_doi": "10.1103/PhysRev.102.656",
-    "required_outcome": "page-confirmed primary capture for Tc and Theta-related row context"
+    "required_outcome": "satisfied by APS harvest PDF primary-page capture for Tc and Theta-related row context"
   },
   "required_primary_capture_elements": [
     {
@@ -50,6 +50,7 @@
       "followup_need": "compare the open-fulltext mu-star captures against the now page-confirmed Vanadium row context and decide whether the benchmark row may keep mu* = 0.11"
     }
   ],
-  "success_condition": "The packet succeeds only when a future capture can page-confirm the Vanadium primary source and close the Tc and Theta identity gap.",
-  "claim_boundary": "This packet defines capture requirements only. It does not certify any value and does not authorize a patch."
+  "success_condition": "Satisfied for bibliographic identity, Tc_observed, and Theta_D_K_or_proxy_context by docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_primary_page_capture_record_20260516.json.",
+  "remaining_blocker_after_success": "lambda_ep and mu_star still require convention review before the Vanadium row can enter coherent patch review.",
+  "claim_boundary": "This packet now records that the primary capture requirement has been satisfied for Tc and Theta/proxy context only. It does not certify lambda_ep or mu_star and does not authorize a patch."
 }
