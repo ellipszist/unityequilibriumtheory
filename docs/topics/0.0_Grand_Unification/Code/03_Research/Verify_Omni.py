@@ -169,6 +169,21 @@ def _extract_claim_gate_summary(artifact: dict) -> list[dict]:
             }
         )
 
+    numeric_residual_gate = artifact.get("numeric_residual_gate")
+    if isinstance(numeric_residual_gate, dict):
+        replacement_gate = numeric_residual_gate.get("replacement_claim_gate", {})
+        summaries.append(
+            {
+                "gate": "numeric_residual_gate",
+                "status": replacement_gate.get("status"),
+                "visualization_status": numeric_residual_gate.get("visualization_gate", {}).get("status"),
+                "numeric_flow_residual_status": numeric_residual_gate.get("numeric_flow_residual_gate", {}).get("status"),
+                "baseline_comparison_status": numeric_residual_gate.get("baseline_comparison_gate", {}).get("status"),
+                "blocked_claims": replacement_gate.get("blocked_claims", []),
+                "claim_boundary": "Visualization/provenance does not close numeric residual or replacement-claim gates.",
+            }
+        )
+
     subordinate_paper_gate = artifact.get("paper_readiness_gate")
     if isinstance(subordinate_paper_gate, dict):
         summaries.append(
@@ -430,6 +445,7 @@ def _build_paper_readiness_gate(dependency_artifacts: list[dict]) -> dict:
                         "gate": gate.get("gate"),
                         "gate_status": gate_status,
                         "blocked_exports": gate.get("blocked_exports", []),
+                        "blocked_claims": gate.get("blocked_claims", []),
                         "blocker": "Subordinate claim gate blocks theory-level inheritance.",
                     }
                 )

@@ -56,7 +56,8 @@ flowchart LR
 | :-- | :-- | :-- | :-- |
 | Laniakea flow map | Can the topic-local landmark package load and render? | Figure artifact written | WARN |
 | Source identity | Are Laniakea/Cosmicflows/Pioneer source records pinned? | Source records and hashes present | WARN |
-| Cosmicflows numeric gate | Are raw flow residuals tested? | Not yet | OPEN |
+| Cosmicflows numeric gate | Are raw flow residuals tested? | Not yet; visualization/provenance is separated from numeric residual evidence | OPEN |
+| Baseline comparison | Is there a named comparator and residual threshold? | Not yet | OPEN |
 | Pioneer branch | Is a thermal-recoil competitor included? | Source record added; numeric residual package still absent | OPEN |
 | Dark-matter replacement | Is a full model comparison established? | Not yet | OPEN |
 | Toroidal cosmology | Is there an observable gate? | Not yet | OPEN |

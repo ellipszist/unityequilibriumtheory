@@ -30,12 +30,15 @@
   - available velocity magnitudes
   - flow-path completeness
   - input file SHA-256 identities
+  - visualization gate status, numeric residual gate status, baseline comparison gate status, and replacement-claim blockers
 - Fixed threshold:
-  - primary script must load the Laniakea working copy, render `Laniakea_Flow_Map.png`, and write a schema 1.1 artifact.
+  - primary script must load the Laniakea working copy, render `Laniakea_Flow_Map.png`, and write a schema 1.2 artifact.
+  - visualization gate checks `landmark_count`, `landmark_types`, and `has_flow_path`; it does not satisfy the numeric residual gate.
   - successful visualization produces `WARN`, not `PASS`, until raw Cosmicflows/Laniakea tables, observer-frame metadata, preprocessing, and numeric residual gates are added.
 - Artifact target:
   - Result/artifacts/0_26_cosmic_dynamic_frame_verification.json
 - Interpretation:
   - Treat output as an exploratory visualization/provenance artifact only.
+  - Treat `numeric_flow_residual_gate` and `baseline_comparison_gate` as the controllers for any dynamic-frame theory claim.
   - Treat source-evidence and dependency gate outputs as workflow controls, not as empirical validation.
   - Do not use this verifier to claim dark-matter replacement, toroidal cosmology, Pioneer-drag physics, or a full dynamic-cosmos model fit.

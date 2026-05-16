@@ -277,16 +277,25 @@ def _build_dependency_claim_gate():
 
 
 def _build_numeric_residual_gate(metrics, source_evidence_readiness_matrix):
+    landmark_types = set(metrics.get("landmark_types", []))
+    visualization_ready = (
+        metrics.get("landmark_count", 0) > 0
+        and metrics.get("has_flow_path") is True
+        and bool(landmark_types.intersection({"Attractor", "Major Attractor"}))
+    )
     return {
         "schema_version": "1.0",
         "purpose": "Separate visualization/provenance success from future numeric dynamic-frame model evidence.",
         "visualization_gate": {
-            "status": "PASS" if metrics.get("flow_count", 0) > 0 and metrics.get("has_flow_path") else "FAIL",
-            "metric_keys": ["flow_count", "attractor_count", "has_flow_path"],
+            "status": "PASS" if visualization_ready else "FAIL",
+            "metric_keys": ["landmark_count", "landmark_types", "has_flow_path"],
             "claim_class": "C - internal visualization/provenance artifact",
+            "supports": "The topic-local Laniakea landmark package loads and renders a traceable flow-map figure.",
+            "does_not_support": "A numeric cosmology fit, residual reduction, or dark-sector replacement claim.",
         },
         "numeric_flow_residual_gate": {
             "status": "OPEN",
+            "controller_role": "blocks theory-level dynamic-frame claims",
             "required_inputs": [
                 "raw Cosmicflows table or declared subset extraction",
                 "observer-frame and distance-calibration metadata",
@@ -294,6 +303,15 @@ def _build_numeric_residual_gate(metrics, source_evidence_readiness_matrix):
                 "fixed residual metric and threshold",
             ],
             "claim_class_when_closed": "C - internal numeric benchmark at most",
+        },
+        "baseline_comparison_gate": {
+            "status": "OPEN",
+            "required_comparators": [
+                "standard peculiar-velocity reconstruction baseline",
+                "galaxy-rotation/dark-matter baseline when claiming galaxy-scale replacement",
+                "thermal-recoil baseline when claiming Pioneer anomaly relevance",
+            ],
+            "claim_boundary": "No replacement claim is allowed until a named baseline and residual threshold are present.",
         },
         "pioneer_competitor_gate": {
             "status": "OPEN",
@@ -307,6 +325,7 @@ def _build_numeric_residual_gate(metrics, source_evidence_readiness_matrix):
         "source_evidence_summary": source_evidence_readiness_matrix.get("summary", {}),
         "replacement_claim_gate": {
             "status": "BLOCKED",
+            "blocking_controller": "numeric_flow_residual_gate.status != CLOSED_PASS or baseline_comparison_gate.status != CLOSED_PASS",
             "blocked_claims": [
                 "dark-matter replacement",
                 "validated dynamic-frame cosmology",
@@ -335,6 +354,11 @@ def _write_artifact(metrics, figure_path):
         "inputs": inputs,
         "metrics": metrics,
         "numeric_residual_gate": numeric_residual_gate,
+        "gate_controller": {
+            "topic_status_basis": "visualization/provenance can produce WARN when inputs and figure are present",
+            "theory_claim_basis": "numeric residual and baseline comparison gates must close before any dynamic-frame replacement claim",
+            "current_theory_claim_status": "BLOCKED",
+        },
         "figure_artifact": str(figure_path.relative_to(TOPIC_DIR)) if figure_path else None,
         "source_evidence_intake_stub": {
             "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(ROOT)).replace("/", "\\"),
