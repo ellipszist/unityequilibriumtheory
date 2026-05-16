@@ -24,7 +24,7 @@ The repository can currently support conservative statements such as:
 - The primary BSD script runs and writes a machine-readable artifact.
 - Several branches implement symbolic or numerical diagnostics for theorem-inspired questions.
 - The formula registry identifies which branches are heuristic, diagnostic, or open.
-- Source-evidence and branch-claim gates now separate run-contract support from stronger theorem-style claims.
+- Source-evidence and branch-claim gates now separate run-contract support from stronger formal-theorem claims.
 
 The current evidence package does not establish the Riemann Hypothesis, BSD conjecture, P vs NP, Collatz conjecture, Hodge conjecture, Navier-Stokes regularity, Yang-Mills mass gap, or any other Millennium-problem closure.
 
@@ -39,7 +39,7 @@ The current evidence package does not establish the Riemann Hypothesis, BSD conj
 - `Data/source_evidence_intake_stub.json`: structured landing zone for missing theorem-branch benchmark evidence.
 - `Data/source_evidence_readiness_matrix.json`: workflow gate for which theorem-branch evidence packages are still blocked by missing fields.
 - `Data/branch_claim_gate.json`: separated claim ceilings for BSD, Riemann, Grover/P-vs-NP, Collatz, quantum-engine, and topology branches.
-- `Data/theorem_boundary_gate.json`: verifier-generated export gate that allows only surrogate run-contract evidence and blocks theorem-level exports.
+- `Data/theorem_boundary_gate.json`: verifier-generated export gate that allows only surrogate run-contract evidence and blocks formal-theorem exports.
 
 ## Verification
 
@@ -51,7 +51,7 @@ $env:PYTHONIOENCODING='utf-8'; $env:PYTHONUTF8='1'; .\.venv\Scripts\python.exe d
 
 A pass means the current BSD surrogate demonstration ran and wrote an artifact. It does not mean BSD, Riemann, P vs NP, Collatz, or any other theorem has been proved.
 
-The verifier now emits `theorem_boundary_gate`, which dependent topics may use to inherit only `T18_EXPORT_BSD_SURROGATE_RUN_CONTRACT`. All theorem-level exports remain blocked until real benchmark data, formal assumptions, proof status, and failure modes are attached.
+The verifier now emits `theorem_boundary_gate`, which dependent topics may use to inherit only `T18_EXPORT_BSD_SURROGATE_RUN_CONTRACT`. All formal-theorem exports remain blocked until real benchmark data, formal assumptions, proof status, and failure modes are attached.
 
 ## Next Hardening Tasks
 
