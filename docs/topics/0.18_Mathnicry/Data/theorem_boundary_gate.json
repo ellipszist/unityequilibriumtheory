@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.18_Mathnicry",
+  "purpose": "Machine-readable theorem-boundary gate for proof-inspired branches.",
+  "status": "THEOREM_CLAIMS_BLOCKED",
+  "accepted_now": [
+    {
+      "export_id": "T18_EXPORT_BSD_SURROGATE_RUN_CONTRACT",
+      "status": "WARN",
+      "claim_class": "D - surrogate run-contract only",
+      "allowed_usage": "May cite that the BSD surrogate script ran and reported its mismatch count.",
+      "blocker_to_stronger_usage": "The engine uses a local parity heuristic, not actual rank or L-function order of vanishing."
+    }
+  ],
+  "blocked_theorem_exports": [
+    {
+      "export_id": "T18_EXPORT_BSD_PROOF",
+      "status": "BLOCKED",
+      "forbidden_usage": "Do not cite this branch as proof of BSD or as a computed BSD verification.",
+      "blockers": [
+        "No source-backed elliptic-curve rank table is attached.",
+        "No L-function values or order-of-vanishing computation is performed.",
+        "Current surrogate rank indicator mismatches at least one narrated curve role."
+      ]
+    },
+    {
+      "export_id": "T18_EXPORT_RIEMANN_PROOF",
+      "status": "BLOCKED",
+      "forbidden_usage": "Do not cite library zero checks as proof of the Riemann Hypothesis.",
+      "blockers": [
+        "No explicit zero table, precision manifest, or off-critical-line exclusion proof is attached."
+      ]
+    },
+    {
+      "export_id": "T18_EXPORT_P_VS_NP_PROOF",
+      "status": "BLOCKED",
+      "forbidden_usage": "Do not cite Grover/search demos as P-vs-NP resolution.",
+      "blockers": [
+        "No formal reduction, NP-complete benchmark suite, or complexity proof boundary is attached."
+      ]
+    },
+    {
+      "export_id": "T18_EXPORT_COLLATZ_PROOF",
+      "status": "BLOCKED",
+      "forbidden_usage": "Do not cite bounded Collatz scripts as proof of the conjecture.",
+      "blockers": [
+        "No bounded-search manifest, range declaration, or counterexample policy is attached."
+      ]
+    },
+    {
+      "export_id": "T18_EXPORT_QUANTUM_ENGINE_THEOREM",
+      "status": "BLOCKED",
+      "forbidden_usage": "Do not use quantum-engine demos as theorem-level evidence.",
+      "blockers": [
+        "Deterministic fixtures for norm preservation, gates, Bell states, and entropy are still missing."
+      ]
+    }
+  ],
+  "source_evidence_summary": {
+    "source_targets_total": 5,
+    "targets_ready_for_source_review": 0,
+    "targets_blocked_by_pending_evidence": 5
+  },
+  "branch_summary": {
+    "branches_total": 6,
+    "accepted_now": 1,
+    "blocked_for_strong_claims": 5
+  },
+  "blocked_branch_names": [
+    "Riemann-style zero checks",
+    "Grover or P-vs-NP scaling",
+    "Collatz branch",
+    "Quantum engine integrity branch",
+    "Hodge or other topology-style branches"
+  ],
+  "claim_boundary": "0.18 can currently export only surrogate/run-contract evidence. All theorem-level exports are blocked."
+}

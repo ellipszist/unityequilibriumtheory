@@ -184,6 +184,18 @@ def _extract_claim_gate_summary(artifact: dict) -> list[dict]:
             }
         )
 
+    theorem_boundary_gate = artifact.get("theorem_boundary_gate")
+    if isinstance(theorem_boundary_gate, dict):
+        summaries.append(
+            {
+                "gate": "theorem_boundary_gate",
+                "status": theorem_boundary_gate.get("status"),
+                "accepted_exports": theorem_boundary_gate.get("accepted_exports", []),
+                "blocked_exports": theorem_boundary_gate.get("blocked_theorem_exports", []),
+                "claim_boundary": theorem_boundary_gate.get("claim_boundary"),
+            }
+        )
+
     subordinate_paper_gate = artifact.get("paper_readiness_gate")
     if isinstance(subordinate_paper_gate, dict):
         summaries.append(

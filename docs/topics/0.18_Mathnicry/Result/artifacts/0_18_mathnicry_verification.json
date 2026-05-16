@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "topic": "0.18_Mathnicry",
-  "timestamp_utc": "2026-05-05T13:07:48.115147+00:00",
+  "timestamp_utc": "2026-05-16T23:05:51.964254+00:00",
   "command": "python docs/topics/0.18_Mathnicry/Code/03_Research/Research_BSD_Elliptic_Unity.py",
   "status": "WARN",
   "passed_run_contract": true,
@@ -46,6 +46,22 @@
       "blocked_for_strong_claims": 5
     },
     "claim_boundary": "This gate records theorem-branch claim ceilings only. It cannot upgrade the topic beyond the current run-contract evidence."
+  },
+  "theorem_boundary_gate": {
+    "path": "Data/theorem_boundary_gate.json",
+    "sha256": "68e03331927324027e0f1c3fc4fc1ac621ce4bbaad18b17eb49eb4f146155b79",
+    "status": "THEOREM_CLAIMS_BLOCKED",
+    "accepted_exports": [
+      "T18_EXPORT_BSD_SURROGATE_RUN_CONTRACT"
+    ],
+    "blocked_theorem_exports": [
+      "T18_EXPORT_BSD_PROOF",
+      "T18_EXPORT_RIEMANN_PROOF",
+      "T18_EXPORT_P_VS_NP_PROOF",
+      "T18_EXPORT_COLLATZ_PROOF",
+      "T18_EXPORT_QUANTUM_ENGINE_THEOREM"
+    ],
+    "claim_boundary": "0.18 can currently export only surrogate/run-contract evidence. All theorem-level exports are blocked."
   },
   "metrics": {
     "curve_count": 2,

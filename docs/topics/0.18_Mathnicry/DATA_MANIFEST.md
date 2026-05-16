@@ -12,6 +12,7 @@ The current primary verifier is a surrogate mathematical demonstration and does 
 | `source_evidence_intake_stub.json` | `Data/source_evidence_intake_stub.json` | generated | generated | Topic-generated theorem-branch evidence intake sheet | Workflow control only; not source evidence by itself. | Mixed; each target declares its own expected convention. | Landing zone before data rewrites or claim upgrades. |
 | `source_evidence_readiness_matrix.json` | `Data/source_evidence_readiness_matrix.json` | generated | generated | Topic-generated readiness gate derived from the intake stub | Workflow control only; records completeness, not theorem validation. | Not applicable. | Tracks which theorem branches still lack benchmark evidence fields. |
 | `branch_claim_gate.json` | `Data/branch_claim_gate.json` | generated | generated | Topic-generated claim gate for theorem-inspired branches | Workflow control only; cannot raise claim strength beyond the current run contract. | Not applicable. | Separates BSD, Riemann, Grover/P-vs-NP, Collatz, quantum, and topology claim ceilings. |
+| `theorem_boundary_gate.json` | `Data/theorem_boundary_gate.json` | generated | generated | Topic-generated theorem export gate | Workflow control only; records which theorem-style exports are blocked. | Not applicable. | Allows only surrogate BSD run-contract export while blocking BSD/Riemann/P-vs-NP/Collatz/quantum theorem claims. |
 
 ## Missing Provenance for Theorem Branches
 

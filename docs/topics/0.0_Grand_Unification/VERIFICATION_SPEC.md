@@ -13,7 +13,7 @@
   - selected component metrics for beta `1.0` and `0.1`
   - Weinberg angle, tau mass, Bell-state entropy, critical Reynolds value, atomic H-alpha error, and other dashboard metrics
   - subordinate artifact status, claim class, timestamp, hash, and missing-artifact count
-  - subordinate claim-gate summaries where artifacts expose `foundation_claim_gate`, `scale_claim_gate`, `numeric_residual_gate`, or `paper_readiness_gate`
+  - subordinate claim-gate summaries where artifacts expose `foundation_claim_gate`, `scale_claim_gate`, `numeric_residual_gate`, `theorem_boundary_gate`, or `paper_readiness_gate`
   - inherited limitation notes
 - Fixed threshold:
   - Working threshold for this standards pass: the primary script must run without error and write a summary artifact under `Result/artifacts/`.

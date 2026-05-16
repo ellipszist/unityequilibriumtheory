@@ -24,6 +24,7 @@ ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_18_mathnicry_verificatio
 SOURCE_EVIDENCE_INTAKE_PATH = TOPIC_DIR / "Data" / "source_evidence_intake_stub.json"
 SOURCE_EVIDENCE_READINESS_PATH = TOPIC_DIR / "Data" / "source_evidence_readiness_matrix.json"
 BRANCH_CLAIM_GATE_PATH = TOPIC_DIR / "Data" / "branch_claim_gate.json"
+THEOREM_BOUNDARY_GATE_PATH = TOPIC_DIR / "Data" / "theorem_boundary_gate.json"
 
 
 def _sha256(path):
@@ -235,13 +236,80 @@ def _build_branch_claim_gate():
     return _write_json(BRANCH_CLAIM_GATE_PATH, payload)
 
 
+def _build_theorem_boundary_gate(result, source_evidence_readiness_matrix, branch_claim_gate):
+    blocked_branches = [
+        item for item in branch_claim_gate["branches"] if item["status"] != "accepted_run_contract_only"
+    ]
+    payload = {
+        "schema_version": "1.0",
+        "topic": "0.18_Mathnicry",
+        "purpose": "Machine-readable theorem-boundary gate for proof-inspired branches.",
+        "status": "THEOREM_CLAIMS_BLOCKED",
+        "accepted_now": [
+            {
+                "export_id": "T18_EXPORT_BSD_SURROGATE_RUN_CONTRACT",
+                "status": "WARN" if result["rank_indicator_mismatches"] else "PASS",
+                "claim_class": "D - surrogate run-contract only",
+                "allowed_usage": "May cite that the BSD surrogate script ran and reported its mismatch count.",
+                "blocker_to_stronger_usage": "The engine uses a local parity heuristic, not actual rank or L-function order of vanishing.",
+            }
+        ],
+        "blocked_theorem_exports": [
+            {
+                "export_id": "T18_EXPORT_BSD_PROOF",
+                "status": "BLOCKED",
+                "forbidden_usage": "Do not cite this branch as proof of BSD or as a computed BSD verification.",
+                "blockers": [
+                    "No source-backed elliptic-curve rank table is attached.",
+                    "No L-function values or order-of-vanishing computation is performed.",
+                    "Current surrogate rank indicator mismatches at least one narrated curve role."
+                    if result["rank_indicator_mismatches"]
+                    else "Current run still uses a surrogate rank rule.",
+                ],
+            },
+            {
+                "export_id": "T18_EXPORT_RIEMANN_PROOF",
+                "status": "BLOCKED",
+                "forbidden_usage": "Do not cite library zero checks as proof of the Riemann Hypothesis.",
+                "blockers": ["No explicit zero table, precision manifest, or off-critical-line exclusion proof is attached."],
+            },
+            {
+                "export_id": "T18_EXPORT_P_VS_NP_PROOF",
+                "status": "BLOCKED",
+                "forbidden_usage": "Do not cite Grover/search demos as P-vs-NP resolution.",
+                "blockers": ["No formal reduction, NP-complete benchmark suite, or complexity proof boundary is attached."],
+            },
+            {
+                "export_id": "T18_EXPORT_COLLATZ_PROOF",
+                "status": "BLOCKED",
+                "forbidden_usage": "Do not cite bounded Collatz scripts as proof of the conjecture.",
+                "blockers": ["No bounded-search manifest, range declaration, or counterexample policy is attached."],
+            },
+            {
+                "export_id": "T18_EXPORT_QUANTUM_ENGINE_THEOREM",
+                "status": "BLOCKED",
+                "forbidden_usage": "Do not use quantum-engine demos as theorem-level evidence.",
+                "blockers": ["Deterministic fixtures for norm preservation, gates, Bell states, and entropy are still missing."],
+            },
+        ],
+        "source_evidence_summary": source_evidence_readiness_matrix["summary"],
+        "branch_summary": branch_claim_gate["summary"],
+        "blocked_branch_names": [item["branch"] for item in blocked_branches],
+        "claim_boundary": "0.18 can currently export only surrogate/run-contract evidence. All theorem-level exports are blocked.",
+    }
+    return _write_json(THEOREM_BOUNDARY_GATE_PATH, payload)
+
+
 def write_verification_artifact(result):
     ARTIFACT_PATH.parent.mkdir(parents=True, exist_ok=True)
     source_evidence_intake_stub = _build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = _build_source_evidence_readiness_matrix(source_evidence_intake_stub)
     branch_claim_gate = _build_branch_claim_gate()
+    theorem_boundary_gate = _build_theorem_boundary_gate(
+        result, source_evidence_readiness_matrix, branch_claim_gate
+    )
     artifact = {
-        "schema_version": "1.1",
+        "schema_version": "1.2",
         "topic": "0.18_Mathnicry",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "command": "python docs/topics/0.18_Mathnicry/Code/03_Research/Research_BSD_Elliptic_Unity.py",
@@ -265,6 +333,16 @@ def write_verification_artifact(result):
             "sha256": _sha256(BRANCH_CLAIM_GATE_PATH),
             "summary": branch_claim_gate["summary"],
             "claim_boundary": "This gate records theorem-branch claim ceilings only. It cannot upgrade the topic beyond the current run-contract evidence.",
+        },
+        "theorem_boundary_gate": {
+            "path": str(THEOREM_BOUNDARY_GATE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
+            "sha256": _sha256(THEOREM_BOUNDARY_GATE_PATH),
+            "status": theorem_boundary_gate["status"],
+            "accepted_exports": [item["export_id"] for item in theorem_boundary_gate["accepted_now"]],
+            "blocked_theorem_exports": [
+                item["export_id"] for item in theorem_boundary_gate["blocked_theorem_exports"]
+            ],
+            "claim_boundary": theorem_boundary_gate["claim_boundary"],
         },
         "metrics": {
             "curve_count": len(result["curves"]),
