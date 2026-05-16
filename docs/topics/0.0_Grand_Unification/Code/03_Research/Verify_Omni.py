@@ -138,6 +138,50 @@ def _normalize_timestamp(artifact: dict):
     return None
 
 
+def _extract_claim_gate_summary(artifact: dict) -> list[dict]:
+    summaries = []
+    foundation_gate = artifact.get("foundation_claim_gate")
+    if isinstance(foundation_gate, dict):
+        summaries.append(
+            {
+                "gate": "foundation_claim_gate",
+                "status": foundation_gate.get("status"),
+                "claim_ceiling": foundation_gate.get("claim_ceiling"),
+                "blocked_exports": foundation_gate.get("blocked_foundation_exports", []),
+                "claim_boundary": foundation_gate.get("claim_boundary"),
+            }
+        )
+
+    scale_gate = artifact.get("scale_claim_gate")
+    if isinstance(scale_gate, dict):
+        thermo_gate = scale_gate.get("thermodynamic_foundation_gate")
+        summaries.append(
+            {
+                "gate": "scale_claim_gate",
+                "status": scale_gate.get("paper_readiness", {}).get("status"),
+                "thermodynamic_foundation_status": (
+                    thermo_gate.get("status") if isinstance(thermo_gate, dict) else None
+                ),
+                "blocked_exports": (
+                    thermo_gate.get("blocked_exports", []) if isinstance(thermo_gate, dict) else []
+                ),
+                "claim_boundary": "Scale-link branch remains exploratory unless source, EEG, and inherited 0.13 gates close.",
+            }
+        )
+
+    subordinate_paper_gate = artifact.get("paper_readiness_gate")
+    if isinstance(subordinate_paper_gate, dict):
+        summaries.append(
+            {
+                "gate": "paper_readiness_gate",
+                "status": subordinate_paper_gate.get("status"),
+                "blocked_dependency_count": subordinate_paper_gate.get("blocked_dependency_count"),
+                "claim_boundary": "Subordinate paper-readiness gate is inherited by 0.0.",
+            }
+        )
+    return summaries
+
+
 def _build_source_evidence_intake_stub() -> dict:
     return {
         "schema_version": "1.0",
@@ -369,6 +413,26 @@ def _build_paper_readiness_gate(dependency_artifacts: list[dict]) -> dict:
                     "blocker": "Dependency is not clean PASS, so theory-level closure is blocked.",
                 }
             )
+        for gate in item.get("claim_gates", []):
+            gate_status = gate.get("status")
+            gate_blocked = (
+                gate_status not in {None, "PASS", "READY_FOR_REVIEW", "FOUNDATION_PASS"}
+                or bool(gate.get("blocked_exports"))
+                or bool(gate.get("blocked_dependency_count"))
+            )
+            if gate_blocked:
+                blockers.append(
+                    {
+                        "topic": item.get("topic"),
+                        "artifact": item.get("artifact"),
+                        "status": status or "UNKNOWN",
+                        "claim_class": item.get("claim_class"),
+                        "gate": gate.get("gate"),
+                        "gate_status": gate_status,
+                        "blocked_exports": gate.get("blocked_exports", []),
+                        "blocker": "Subordinate claim gate blocks theory-level inheritance.",
+                    }
+                )
 
     return {
         "schema_version": "1.0",
@@ -436,6 +500,7 @@ def _dependency_inputs():
                     "claim_class": normalized_claim_class,
                     "schema_version": artifact.get("schema_version"),
                     "timestamp_utc": normalized_timestamp,
+                    "claim_gates": _extract_claim_gate_summary(artifact),
                     "sha256": _sha256(artifact_path),
                     "bytes": artifact_path.stat().st_size,
                 }
