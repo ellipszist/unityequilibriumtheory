@@ -31,6 +31,7 @@ BRANCH_CLAIM_GATE_PATH = DATA / "branch_claim_gate.json"
 SOURCE_LOCK_MANIFEST_PATH = DATA / "source_lock_manifest.json"
 HENSEN_REFERENCE_PATH = ROOT / "docs" / "data" / "external" / "quantum_nonlocality" / "hensen_2015_chsh_reference_package.json"
 SUMMARY_REFERENCE_PATH = ROOT / "docs" / "data" / "external" / "quantum_nonlocality" / "bell_inequality_summary_reference_package.json"
+HENSEN_PDF_PATH = TOPIC / "Ref" / "PDF_Downloads" / "Quantum_Hensen2015_Bell.pdf"
 
 
 def sha256(path: Path) -> str:
@@ -75,6 +76,8 @@ def build_source_evidence_intake_stub() -> dict:
                 "status": "complete" if hensen_package else "pending",
                 "evidence_entries": [
                     field("doi_or_url", "complete" if hensen_package and hensen_package.get("doi") else "pending", hensen_package.get("doi", "") if hensen_package else ""),
+                    field("article_pdf_local_path", "complete" if HENSEN_PDF_PATH.exists() else "pending", str(HENSEN_PDF_PATH.relative_to(ROOT)).replace("\\", "/") if HENSEN_PDF_PATH.exists() else ""),
+                    field("article_pdf_sha256", "complete" if HENSEN_PDF_PATH.exists() else "pending", sha256(HENSEN_PDF_PATH) if HENSEN_PDF_PATH.exists() else ""),
                     field("local_path", "complete" if hensen_package else "pending", str(HENSEN_REFERENCE_PATH.relative_to(ROOT)).replace("\\", "/") if hensen_package else ""),
                     field("table_or_result_identifier", "complete" if hensen_package else "pending", hensen_package.get("result_identifier", "") if hensen_package else ""),
                     field("retrieval_date", "complete" if hensen_package else "pending", hensen_package.get("retrieval_or_packaging_date", "") if hensen_package else ""),
@@ -297,6 +300,13 @@ def main() -> int:
                 "name": "hensen_2015_reference_package",
                 "path": str(HENSEN_REFERENCE_PATH.relative_to(ROOT)).replace("\\", "/"),
                 "sha256": sha256(HENSEN_REFERENCE_PATH),
+            },
+            {
+                "name": "hensen_2015_article_pdf_archive",
+                "path": str(HENSEN_PDF_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": sha256(HENSEN_PDF_PATH),
+                "source": "Hensen et al. 2015, Nature 526, 682-686",
+                "doi": "10.1038/nature15759",
             },
             {
                 "name": "bell_summary_reference_package",

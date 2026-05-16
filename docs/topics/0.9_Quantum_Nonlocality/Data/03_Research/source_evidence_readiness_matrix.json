@@ -11,8 +11,8 @@
     {
       "name": "Hensen 2015 CHSH benchmark package",
       "priority": "immediate",
-      "fields_total": 6,
-      "fields_complete": 6,
+      "fields_total": 8,
+      "fields_complete": 8,
       "fields_pending": 0,
       "pending_fields": [],
       "ready_for_source_review": true,

@@ -8,6 +8,8 @@
       "name": "Hensen 2015 CHSH working benchmark",
       "topic_local_path": "docs/topics/0.9_Quantum_Nonlocality/Data/03_Research/bell_test_2015.json",
       "external_reference_path": "docs/data/external/quantum_nonlocality/hensen_2015_chsh_reference_package.json",
+      "article_pdf_archive_path": "docs/topics/0.9_Quantum_Nonlocality/Ref/PDF_Downloads/Quantum_Hensen2015_Bell.pdf",
+      "article_pdf_sha256": "c4acd5fca880cdc64fd3273f6d80e0c7d3055954b4522f1aa89111891f212d06",
       "provenance_status": "source_referenced_extracted_package",
       "benchmark_role": "primary verifier input",
       "unit_system": "dimensionless CHSH summary metrics"
