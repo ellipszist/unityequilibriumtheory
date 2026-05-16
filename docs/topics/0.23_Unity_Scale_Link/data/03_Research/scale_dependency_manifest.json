@@ -6,8 +6,18 @@
     {
       "topic": "0.13_Thermodynamic_Bridge",
       "artifact": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/0_13_thermodynamic_bridge_verification.json",
+      "foundation_claim_gate": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json",
       "role": "Constrains beta and information-energy interpretation.",
-      "status_inheritance": "0.23 cannot outrank 0.13 while this dependency remains WARN.",
+      "status_inheritance": "0.23 may inherit only accepted 0.13 foundation exports; it cannot outrank 0.13 while this dependency remains WARN.",
+      "allowed_inheritance": [
+        "T13_EXPORT_LANDAUER_LOWER_BOUND",
+        "T13_EXPORT_STANDARD_THERMO_GRAVITY_IDENTITIES"
+      ],
+      "blocked_inheritance": [
+        "T13_EXPORT_UET_BRIDGE_PROOF",
+        "T13_EXPORT_SOURCE_NORMALIZED_LANDAUER_DATASET",
+        "T13_EXPORT_CATTANEO_EXTERNAL_VALIDATION"
+      ],
       "claim_class_ceiling": "C/D"
     },
     {

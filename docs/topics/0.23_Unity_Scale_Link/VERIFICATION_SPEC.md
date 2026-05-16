@@ -12,6 +12,7 @@
   - `data/03_Research/economy/SP500_yahoo_real.csv`
   - `docs/data/external/finance/yahoo_snapshots/0_23_unity_scale_link/source_manifest.json`
   - `docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/0_13_thermodynamic_bridge_verification.json`
+  - `docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json`
   - `docs/topics/0.5_Nuclear_Binding_Hadrons/Result/artifacts/0_5_nuclear_binding_hadrons_verification.json`
   - `docs/topics/0.6_Electroweak_Physics/Result/artifacts/0_6_electroweak_physics_verification.json`
   - `docs/topics/0.7_Neutrino_Physics/Result/artifacts/nufit_6_0_validation.json`
@@ -25,14 +26,17 @@
   - `universal_kappa` Omega ordering under fixed `kappa=0.1`, `beta=0.05`
   - input file SHA-256 identities
   - dependency manifest snapshot embedded into the artifact
+  - inherited `0.13` foundation gate status, accepted exports, blocked exports, and claim ceiling
 - Fixed threshold:
   - at least one primary test must return true for non-FAIL artifact status
   - `galaxy_neural_p_value <= 0.001` is recorded as a diagnostic threshold
   - source-referenced local finance snapshots plus synthetic galaxy/neural fields keep artifact status at `WARN` and claim class at `D`
+  - any blocked `0.13` foundation export blocks theory-level information-energy scale claims
 - Artifact target:
   - Result/artifacts/0_23_unity_scale_link_verification.json
 - Interpretation:
   - Treat output as exploratory structural scale-link evidence only.
   - A `WARN` is expected until finance retrieval can be reproduced and synthetic neural/galaxy tests are replaced or separated from external evidence.
   - A test no longer counts as `true` merely because it ran; directional agreement now matters for the economy diagnostic.
+  - Treat `0.13` inheritance as export-specific: lower-bound/formula-consistency exports may be used as constraints, but blocked UET bridge/source-normalized/Cattaneo exports must not be used as support.
   - Do not use this verifier to claim grand unification, external prediction, or universal fixed parameters.

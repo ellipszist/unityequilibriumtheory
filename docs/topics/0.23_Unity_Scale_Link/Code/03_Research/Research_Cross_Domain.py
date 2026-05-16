@@ -62,6 +62,15 @@ engine = UETUnityScaleEngine()
 
 ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_23_unity_scale_link_verification.json"
 DEPENDENCY_MANIFEST_PATH = DATA_DIR / "scale_dependency_manifest.json"
+T13_FOUNDATION_CLAIM_GATE_PATH = (
+    ROOT
+    / "docs"
+    / "topics"
+    / "0.13_Thermodynamic_Bridge"
+    / "Data"
+    / "03_Research"
+    / "thermodynamic_bridge_foundation_claim_gate.json"
+)
 DATA_INPUTS = [
     DATA_DIR / "create_unified_data.py",
     DATA_DIR / "source_lock_manifest.json",
@@ -85,6 +94,7 @@ DATA_INPUTS = [
     / "Result"
     / "artifacts"
     / "0_13_thermodynamic_bridge_verification.json",
+    T13_FOUNDATION_CLAIM_GATE_PATH,
     ROOT
     / "docs"
     / "topics"
@@ -144,14 +154,47 @@ def _load_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def _build_scale_claim_gate(results, dependency_manifest, missing_inputs):
+def _build_scale_claim_gate(results, dependency_manifest, thermodynamic_gate, missing_inputs):
     dependency_chain = []
     if dependency_manifest:
         dependency_chain = dependency_manifest.get("dependency_chain", [])
 
+    thermodynamic_gate_summary = {
+        "status": "MISSING",
+        "claim_ceiling": "unknown",
+        "accepted_exports": [],
+        "blocked_exports": ["T13_FOUNDATION_GATE_MISSING"],
+        "inheritance_rule": "Block information-energy scale claims until the 0.13 foundation claim gate is available.",
+    }
+    if thermodynamic_gate:
+        thermodynamic_gate_summary = {
+            "status": thermodynamic_gate.get("status"),
+            "claim_ceiling": thermodynamic_gate.get("claim_ceiling"),
+            "accepted_exports": [
+                item.get("export_id")
+                for item in thermodynamic_gate.get("accepted_foundation_exports", [])
+                if item.get("status") == "PASS"
+            ],
+            "blocked_exports": [
+                item.get("export_id")
+                for item in thermodynamic_gate.get("blocked_foundation_exports", [])
+                if item.get("status") != "PASS"
+            ],
+            "inheritance_rule": (
+                "0.23 may inherit only accepted 0.13 lower-bound/formula-consistency exports. "
+                "It must not inherit blocked UET-bridge proof, source-normalized dataset, or external Cattaneo validation exports."
+            ),
+        }
+
+    thermodynamic_bridge_blocked = (
+        thermodynamic_gate_summary["status"] != "FOUNDATION_PASS"
+        or bool(thermodynamic_gate_summary["blocked_exports"])
+    )
+
     return {
         "schema_version": "1.0",
         "purpose": "Prevent scale-link and unity wording from outrunning source and dependency evidence.",
+        "thermodynamic_foundation_gate": thermodynamic_gate_summary,
         "dependency_topics": [
             {
                 "topic": item.get("topic"),
@@ -181,6 +224,10 @@ def _build_scale_claim_gate(results, dependency_manifest, missing_inputs):
             "fixed_parameter_unity": "blocked unless held-out source-backed domains pass with one parameter contract",
             "scale_dependent_kappa": "hypothesis until upstream topic artifacts and uncertainties are mapped",
             "cross_domain_transfer": "simulation-only where synthetic neural or generated galaxy fields are used",
+            "information_energy_bridge": (
+                "may use accepted 0.13 lower-bound/formula-consistency exports as constraints only; "
+                "must not claim UET bridge proof while the 0.13 foundation gate is WARN or BLOCKED"
+            ),
         },
         "paper_readiness": {
             "status": "BLOCKED",
@@ -188,7 +235,11 @@ def _build_scale_claim_gate(results, dependency_manifest, missing_inputs):
                 "missing declared inputs" if missing_inputs else "no missing declared inputs",
                 "finance retrieval logs are absent",
                 "real EEG source package is absent",
-                "0.13 thermodynamic bridge remains a WARN dependency",
+                (
+                    "0.13 thermodynamic foundation gate blocks theory-level inheritance"
+                    if thermodynamic_bridge_blocked
+                    else "0.13 thermodynamic foundation gate passed"
+                ),
             ],
         },
     }
@@ -199,12 +250,19 @@ def _write_verification_artifact(results):
     input_identity = _input_identity()
     missing_inputs = [item["path"] for item in input_identity if item.get("missing")]
     dependency_manifest = _load_json(DEPENDENCY_MANIFEST_PATH)
+    thermodynamic_gate = _load_json(T13_FOUNDATION_CLAIM_GATE_PATH)
 
     warnings = [
         "Finance snapshots now have local source metadata and hashes, but original Yahoo query logs/retrieval timestamps remain unavailable.",
         "Neural and galaxy fields are synthetic generator outputs, so cross-domain success is a model-shape result, not external replication.",
         "This topic depends on 0.13 Landauer/thermodynamic bridge limits and inherits its WARN/raw-table limitations.",
     ]
+    if thermodynamic_gate:
+        warnings.append(
+            "0.23 inherits only the accepted lower-bound/formula-consistency exports from the 0.13 foundation claim gate."
+        )
+    else:
+        warnings.append("0.13 foundation claim gate is missing; information-energy scale claims are blocked.")
     if missing_inputs:
         warnings.append(f"Missing declared inputs: {missing_inputs}")
     if TEST_METRICS.get("galaxy_neural", {}).get("omega_seizure_std", 1.0) < 1e-12:
@@ -215,7 +273,7 @@ def _write_verification_artifact(results):
         warnings.append(
             "Economy volatility ordering does not match the synthetic neural diagnostic under the fixed kappa benchmark."
         )
-    scale_claim_gate = _build_scale_claim_gate(results, dependency_manifest, missing_inputs)
+    scale_claim_gate = _build_scale_claim_gate(results, dependency_manifest, thermodynamic_gate, missing_inputs)
 
     status = "WARN" if passed > 0 and not missing_inputs else "FAIL"
     artifact = {
@@ -235,6 +293,15 @@ def _write_verification_artifact(results):
         "test_results": {key: ("SKIP" if value is None else bool(value)) for key, value in results.items()},
         "dependency_manifest": dependency_manifest,
         "scale_claim_gate": scale_claim_gate,
+        "thermodynamic_foundation_claim_gate": {
+            "path": T13_FOUNDATION_CLAIM_GATE_PATH.relative_to(ROOT).as_posix(),
+            "sha256": _sha256(T13_FOUNDATION_CLAIM_GATE_PATH)
+            if T13_FOUNDATION_CLAIM_GATE_PATH.exists()
+            else None,
+            "status": thermodynamic_gate.get("status") if thermodynamic_gate else "MISSING",
+            "claim_ceiling": thermodynamic_gate.get("claim_ceiling") if thermodynamic_gate else "unknown",
+            "claim_boundary": thermodynamic_gate.get("claim_boundary") if thermodynamic_gate else "missing gate",
+        },
         "evidence_lanes": {
             "source_backed_finance_snapshot": {
                 "status": "WARN",
