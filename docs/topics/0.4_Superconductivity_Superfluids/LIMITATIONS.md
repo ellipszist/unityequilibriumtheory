@@ -144,7 +144,9 @@
 - Even with open-fulltext numeric captures for `lambda_ep` and `mu_star`, the Vanadium row still cannot enter patch review until those captures pass compatibility review and `Tc` plus `Theta_D` are page-confirmed from a primary capture.
 - The new Vanadium compatibility packet now makes one blocker sharper: the captured `lambda` and `mu_star` values do not automatically support either the current working row or the older internal lambda-only patch preview.
 - The new Vanadium patch-block decision now turns that blocker into an explicit workflow stop: the older lambda-only preview is not safe to execute under the current evidence state.
+- The new Vanadium source-lock decision makes this stop machine-readable as `PATCH_BLOCKED`; the working row is intentionally unchanged until primary page confirmation and compatibility review clear together.
 - The new Vanadium primary-capture requirement packet makes the final raw-source blocker more precise, but the row still remains blocked until someone actually satisfies that capture contract from the primary source.
 - The new residual extraction dashboard improves coordination only; it does not itself archive evidence or reduce the raw McMillan FAIL.
 - `Vanadium` still has an extra citation-integrity wrinkle: the current MIT OCW chain and APS bibliographic listing disagree on the page range, so direct page confirmation is still required before treating the row as stable.
 - The topic-level source-evidence and branch-claim gates now make the same point at a higher layer: the raw baseline FAIL can support blocker analysis, but it cannot be stretched into row-normalized prediction claims, Allen-Dynes/UET success claims, or universal-superconductivity claims.
+- The primary artifact now exposes `evidence_lanes`, but lane separation does not make the topic Tier A: the Allen-Dynes Nb3Sn branch can pass as a two-row smoke test while the raw McMillan topic gate remains `FAIL`.

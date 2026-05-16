@@ -54,6 +54,34 @@ ROW_EVIDENCE_DECISION_GATE_PATH = DATA_DIR / "row_evidence_decision_gate.json"
 TOPIC_SOURCE_EVIDENCE_INTAKE_PATH = DATA_DIR / "source_evidence_intake_stub.json"
 TOPIC_SOURCE_EVIDENCE_READINESS_PATH = DATA_DIR / "source_evidence_readiness_matrix.json"
 TOPIC_BRANCH_CLAIM_GATE_PATH = DATA_DIR / "branch_claim_gate.json"
+ALLEN_DYNES_ARTIFACT_PATH = (
+    TOPIC_DIR
+    / "Result"
+    / "artifacts"
+    / "0_4_superconductivity_superfluids_allen_dynes_verification.json"
+)
+ROW_TARGET_DIR = Path(
+    "docs/data/external/condensed_matter/superconductivity/row_resolution_targets"
+)
+VANADIUM_SOURCE_LOCK_DECISION_PATH = DATA_DIR / "vanadium_source_lock_decision.json"
+VANADIUM_EXTERNAL_PACKET_PATHS = {
+    "raw_page_capture_checklist": ROW_TARGET_DIR / "vanadium_raw_page_capture_checklist.json",
+    "primary_capture_requirement_packet": ROW_TARGET_DIR
+    / "vanadium_primary_capture_requirement_packet.json",
+    "patch_block_decision": ROW_TARGET_DIR / "vanadium_patch_block_decision.json",
+    "compatibility_review_packet": ROW_TARGET_DIR
+    / "vanadium_compatibility_review_packet.json",
+    "citation_integrity_report": ROW_TARGET_DIR / "vanadium_citation_integrity_report.json",
+    "archive_dossier": ROW_TARGET_DIR / "vanadium" / "archive_dossier.json",
+    "tc_text_capture_record": ROW_TARGET_DIR / "vanadium" / "tc_text_capture_record.json",
+    "theta_text_capture_record": ROW_TARGET_DIR / "vanadium" / "theta_text_capture_record.json",
+    "lambda_numeric_capture_record": ROW_TARGET_DIR
+    / "vanadium"
+    / "lambda_numeric_capture_record.json",
+    "mu_star_numeric_capture_record": ROW_TARGET_DIR
+    / "vanadium"
+    / "mu_star_numeric_capture_record.json",
+}
 
 # Real experimental data from literature
 # Sources: Kittel (Solid State Physics), Nature reviews, Physical Review Letters
@@ -2229,14 +2257,27 @@ def build_topic_source_evidence_readiness_matrix() -> dict:
 
 
 def build_topic_branch_claim_gate() -> dict:
+    allen_dynes_artifact = load_json(ALLEN_DYNES_ARTIFACT_PATH)
+    allen_dynes_status = (
+        allen_dynes_artifact.get("model_gate_status")
+        if allen_dynes_artifact
+        else "artifact_missing"
+    )
+    allen_dynes_strict_summary = (
+        allen_dynes_artifact.get("strict_source_locked_summary", {})
+        if allen_dynes_artifact
+        else {}
+    )
     gate = {
         "schema_version": "1.0",
         "topic": "0.4_Superconductivity_Superfluids",
         "purpose": "Claim gate for separate superconductivity benchmark and theory branches inside the topic.",
         "summary": {
             "branches_total": 6,
-            "accepted_now": 1,
-            "blocked_for_strong_claims": 5,
+            "accepted_now": 2 if allen_dynes_status == "PASS" else 1,
+            "blocked_for_strong_claims": 4 if allen_dynes_status == "PASS" else 5,
+            "raw_mcmillan_topic_gate": "controls_topic_level_status",
+            "allen_dynes_branch_gate": allen_dynes_status,
         },
         "branches": [
             {
@@ -2252,10 +2293,21 @@ def build_topic_branch_claim_gate() -> dict:
                 "blocker_to_stronger_claim": "Need completed row evidence, normalized inputs, and rerun benchmark results.",
             },
             {
-                "branch": "Allen-Dynes or comprehensive engine branch",
-                "status": "blocked_for_strong_claims",
-                "allowed_usage_now": "Model formulation and future benchmark path only.",
-                "blocker_to_stronger_claim": "Need source-backed row package and held-out validation artifact.",
+                "branch": "Allen-Dynes Nb3Sn smoke-test branch",
+                "status": (
+                    "accepted_branch_smoke_test_only"
+                    if allen_dynes_status == "PASS"
+                    else "blocked_pending_branch_artifact"
+                ),
+                "artifact_path": str(ALLEN_DYNES_ARTIFACT_PATH),
+                "artifact_sha256": hash_file(ALLEN_DYNES_ARTIFACT_PATH),
+                "strict_source_locked_summary": allen_dynes_strict_summary,
+                "allowed_usage_now": (
+                    "Separate Nb3Sn Allen-Dynes smoke-test branch only; not topic-level PASS."
+                    if allen_dynes_status == "PASS"
+                    else "Model formulation and future benchmark path only."
+                ),
+                "blocker_to_stronger_claim": "Need broader source-locked coverage and held-out rows before any topic-level upgrade.",
             },
             {
                 "branch": "UET coherence or relativistic correction branch",
@@ -2283,6 +2335,218 @@ def build_topic_branch_claim_gate() -> dict:
     }
     TOPIC_BRANCH_CLAIM_GATE_PATH.write_text(json.dumps(gate, indent=2), encoding="utf-8")
     return gate
+
+
+def build_vanadium_source_lock_decision(rows: list[dict]) -> dict:
+    loaded_packets = {
+        name: load_json(path)
+        for name, path in VANADIUM_EXTERNAL_PACKET_PATHS.items()
+    }
+    patch_decision = loaded_packets.get("patch_block_decision") or {}
+    compatibility_packet = loaded_packets.get("compatibility_review_packet") or {}
+    primary_packet = loaded_packets.get("primary_capture_requirement_packet") or {}
+    archive_dossier = loaded_packets.get("archive_dossier") or {}
+    raw_row = next((row for row in rows if row.get("name") == "Vanadium (V)"), {})
+
+    archive_targets = archive_dossier.get("archive_targets", [])
+    pending_archive_fields = [
+        target.get("field")
+        for target in archive_targets
+        if target.get("status") != "complete"
+    ]
+    compatibility_summary = compatibility_packet.get("compatibility_summary", {})
+    field_review = compatibility_packet.get("field_review", [])
+    patch_blocked = patch_decision.get("current_decision") == "blocked_do_not_apply_preview"
+    if patch_blocked:
+        source_lock_state = "PATCH_BLOCKED"
+    elif pending_archive_fields:
+        source_lock_state = "MORE_SOURCE_REQUIRED"
+    else:
+        source_lock_state = "PATCH_ALLOWED"
+
+    decision = {
+        "schema_version": "1.0",
+        "topic": "0.4_Superconductivity_Superfluids",
+        "material": "Vanadium (V)",
+        "purpose": "Machine-readable Vanadium source-lock decision for the raw McMillan gate.",
+        "decision": source_lock_state,
+        "working_row_mutated": False,
+        "raw_mcmillan_row_status": "unchanged_due_to_source_lock_blocker",
+        "current_working_row": {
+            "Tc_observed_K": raw_row.get("Tc_observed_K"),
+            "Theta_D_K": raw_row.get("Theta_D_K"),
+            "lambda_ep": raw_row.get("lambda_ep"),
+            "mu_star": raw_row.get("mu_star"),
+            "relative_error_percent": raw_row.get("relative_error_percent"),
+            "source": raw_row.get("source"),
+        },
+        "external_capture_reference": compatibility_packet.get(
+            "external_capture_reference", {}
+        ),
+        "field_decisions": [
+            {
+                "field": item.get("field"),
+                "compatibility_status": item.get("compatibility_status"),
+                "working_value": item.get("working_value"),
+                "external_value": item.get("external_value"),
+                "alternative_external_value": item.get("alternative_external_value"),
+                "review_note": item.get("review_note"),
+            }
+            for item in field_review
+        ],
+        "source_lock_blockers": {
+            "pending_archive_fields": pending_archive_fields,
+            "fields_requiring_primary_page_confirmation": compatibility_summary.get(
+                "fields_requiring_primary_page_confirmation", []
+            ),
+            "fields_requiring_convention_review": compatibility_summary.get(
+                "fields_requiring_convention_review", []
+            ),
+            "blocked_preview_fields": patch_decision.get("blocked_preview_fields", []),
+            "why_blocked": patch_decision.get("why_blocked", []),
+        },
+        "primary_capture_requirements": {
+            "target": primary_packet.get("primary_source_target", {}),
+            "required_elements": primary_packet.get(
+                "required_primary_capture_elements", []
+            ),
+            "success_condition": primary_packet.get("success_condition"),
+        },
+        "safe_interim_policy": patch_decision.get(
+            "safe_interim_policy",
+            {
+                "keep_working_row_unchanged": True,
+                "allow_patch_preview_for_execution": False,
+            },
+        ),
+        "packet_inputs": {
+            name: {
+                "path": str(path),
+                "sha256": hash_file(path),
+                "status": "present" if path.exists() else "missing",
+            }
+            for name, path in VANADIUM_EXTERNAL_PACKET_PATHS.items()
+        },
+        "claim_boundary": (
+            "This decision records why Vanadium cannot be patched yet. It does not "
+            "authorize any working-row edit and does not reduce the raw McMillan FAIL."
+        ),
+    }
+    VANADIUM_SOURCE_LOCK_DECISION_PATH.write_text(
+        json.dumps(decision, indent=2), encoding="utf-8"
+    )
+    return decision
+
+
+def build_evidence_lanes(
+    *,
+    status: str,
+    avg_err: float,
+    rows: list[dict],
+    skipped_rows: list[dict],
+    failure_analysis: dict,
+    provisional_normalized_table: dict,
+    provisional_evaluation: dict,
+    row_evidence_readiness_matrix: dict,
+    row_evidence_decision_gate: dict,
+    vanadium_source_lock_decision: dict,
+) -> dict:
+    allen_dynes_artifact = load_json(ALLEN_DYNES_ARTIFACT_PATH)
+    raw_failed_rows = [row for row in rows if not row["within_20_percent"]]
+    return {
+        "schema_version": "1.0",
+        "raw_mcmillan_gate": {
+            "lane_role": "primary topic gate",
+            "model_gate_status": status,
+            "claim_class": (
+                "internal baseline diagnostic"
+                if status == "PASS"
+                else "model-baseline blocker"
+            ),
+            "thresholds": {
+                "average_relative_error_percent_max": 20.0,
+                "per_material_relative_error_percent_max": 20.0,
+            },
+            "metrics": {
+                "average_relative_error_percent": avg_err,
+                "materials_tested": len(rows),
+                "materials_within_20_percent": sum(
+                    1 for row in rows if row["within_20_percent"]
+                ),
+                "failed_material_count": len(raw_failed_rows),
+                "materials_skipped_from_raw_mcmillan_gate": len(skipped_rows),
+            },
+            "worst_materials": failure_analysis["worst_materials"],
+            "blocker_reason": failure_analysis["primary_failure_reason"],
+            "claim_boundary": (
+                "This lane controls the topic-level benchmark status. It remains FAIL "
+                "until the fixed average and per-material gates are met without hiding rows."
+            ),
+        },
+        "provisional_normalized_sensitivity": {
+            "lane_role": "internal sensitivity only",
+            "model_gate_status": "NON_GATING",
+            "metrics": {
+                "average_relative_error_percent": provisional_evaluation[
+                    "average_relative_error_percent"
+                ],
+                "materials_tested": provisional_evaluation["materials_tested"],
+                "materials_within_20_percent": provisional_evaluation[
+                    "materials_within_20_percent"
+                ],
+                "rows": len(provisional_normalized_table["rows"]),
+            },
+            "claim_class": "sensitivity analysis only",
+            "claim_boundary": (
+                "This lane can identify row-package drift, but it cannot replace or "
+                "override the raw McMillan gate because its substitutions are not "
+                "fully source-backed."
+            ),
+        },
+        "allen_dynes_nb3sn_smoke_test": {
+            "lane_role": "separate branch gate",
+            "artifact_path": str(ALLEN_DYNES_ARTIFACT_PATH),
+            "artifact_sha256": hash_file(ALLEN_DYNES_ARTIFACT_PATH),
+            "model_gate_status": (
+                allen_dynes_artifact.get("model_gate_status")
+                if allen_dynes_artifact
+                else "MISSING_ARTIFACT"
+            ),
+            "strict_source_locked_summary": (
+                allen_dynes_artifact.get("strict_source_locked_summary", {})
+                if allen_dynes_artifact
+                else {}
+            ),
+            "claim_class": "source-labeled branch smoke test",
+            "claim_boundary": (
+                "This PASS, when present, is limited to the Nb3Sn Allen-Dynes "
+                "smoke-test rows. It does not change the raw McMillan artifact or "
+                "promote the full superconductivity topic."
+            ),
+        },
+        "row_resolution_handoff": {
+            "lane_role": "source-lock and patch-review control",
+            "model_gate_status": "NON_GATING",
+            "vanadium_decision": {
+                "path": str(VANADIUM_SOURCE_LOCK_DECISION_PATH),
+                "sha256": hash_file(VANADIUM_SOURCE_LOCK_DECISION_PATH),
+                "decision": vanadium_source_lock_decision["decision"],
+                "working_row_mutated": vanadium_source_lock_decision[
+                    "working_row_mutated"
+                ],
+                "source_lock_blockers": vanadium_source_lock_decision[
+                    "source_lock_blockers"
+                ],
+            },
+            "row_evidence_readiness_summary": row_evidence_readiness_matrix["summary"],
+            "row_evidence_decision_summary": row_evidence_decision_gate["summary"],
+            "next_priority": "Vanadium primary page confirmation, then Nb3Ge source-lock pass.",
+            "claim_boundary": (
+                "This lane can authorize future review work only. No row patch is "
+                "allowed until the decision gate changes from blocked to eligible."
+            ),
+        },
+    }
 
 
 def write_artifact(output_path: Path, avg_err: float, rows: list[dict], skipped_rows: list[dict]) -> None:
@@ -2347,9 +2611,22 @@ def write_artifact(output_path: Path, avg_err: float, rows: list[dict], skipped_
     row_evidence_decision_gate = build_row_evidence_decision_gate(
         row_evidence_source_review_packets
     )
+    vanadium_source_lock_decision = build_vanadium_source_lock_decision(rows)
     status = failure_analysis["model_gate_status"]
+    evidence_lanes = build_evidence_lanes(
+        status=status,
+        avg_err=avg_err,
+        rows=rows,
+        skipped_rows=skipped_rows,
+        failure_analysis=failure_analysis,
+        provisional_normalized_table=provisional_normalized_table,
+        provisional_evaluation=provisional_evaluation,
+        row_evidence_readiness_matrix=row_evidence_readiness_matrix,
+        row_evidence_decision_gate=row_evidence_decision_gate,
+        vanadium_source_lock_decision=vanadium_source_lock_decision,
+    )
     artifact = {
-        "schema_version": "1.2",
+        "schema_version": "1.3",
         "topic": "0.4_Superconductivity_Superfluids",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "command": "python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment_Superconductor_Data.py",
@@ -2408,6 +2685,20 @@ def write_artifact(output_path: Path, avg_err: float, rows: list[dict], skipped_
             "source_targets_ready_for_review": topic_source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
             "source_targets_blocked": topic_source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
             "accepted_claim_branches": topic_branch_claim_gate["summary"]["accepted_now"],
+        },
+        "evidence_lanes": evidence_lanes,
+        "vanadium_source_lock_decision": {
+            "path": str(VANADIUM_SOURCE_LOCK_DECISION_PATH),
+            "sha256": hash_file(VANADIUM_SOURCE_LOCK_DECISION_PATH),
+            "decision": vanadium_source_lock_decision["decision"],
+            "working_row_mutated": vanadium_source_lock_decision["working_row_mutated"],
+            "raw_mcmillan_row_status": vanadium_source_lock_decision[
+                "raw_mcmillan_row_status"
+            ],
+            "source_lock_blockers": vanadium_source_lock_decision[
+                "source_lock_blockers"
+            ],
+            "claim_boundary": vanadium_source_lock_decision["claim_boundary"],
         },
         "failure_analysis": failure_analysis,
         "parameter_mismatch_audit": parameter_mismatch_summary(rows),

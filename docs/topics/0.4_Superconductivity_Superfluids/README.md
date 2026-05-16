@@ -44,6 +44,7 @@ flowchart LR
 
 | Layer | Current status | Evidence / artifact | Claim allowed |
 | :-- | :-- | :-- | :-- |
+| Evidence lanes | Primary artifact now separates raw gate, provisional sensitivity, Allen-Dynes smoke test, and row-resolution handoff | `evidence_lanes` in `Result/artifacts/0_4_superconductivity_superfluids_verification.json` | machine-readable lane status only |
 | Raw McMillan baseline | Primary current verifier; artifact status remains `FAIL` | `Result/artifacts/0_4_superconductivity_superfluids_verification.json` | internal baseline diagnostic and blocker |
 | Inverse-McMillan audit | New failure-localization diagnostic; 9/10 rows currently over-drive `lambda_ep` relative to observed `Tc` | `parameter_mismatch_audit` in artifact | data-normalization priority, not prediction evidence |
 | Row normalization queue | Actionable per-material repair order generated from drift plus substitution sensitivity | `Data/03_Research/row_normalization_queue.json` | work queue only; not scientific evidence |
@@ -57,6 +58,7 @@ flowchart LR
 | Vanadium source-lock packet | Focused action packet for the remaining borderline row with preferred proxy, candidate coupling, and source-lock checklist | `Data/03_Research/vanadium_source_lock_packet.json` | single-row execution workflow only |
 | A15 external-resolution packet | Focused action packet for `Nb3Sn` and `Nb3Ge` with shared external-resolution requirements | `Data/03_Research/a15_external_resolution_packet.json` | pairwise execution workflow only |
 | Vanadium candidate patch preview | Shows the exact working-copy change that would be made if the next source check confirms the row | `Data/03_Research/vanadium_candidate_patch_preview.json` | patch-preview workflow only |
+| Vanadium source-lock decision | Formal decision record for the current wave; the older lambda-only preview is blocked and the working row stays unchanged | `Data/03_Research/vanadium_source_lock_decision.json` | `PATCH_BLOCKED`; blocker record only |
 | A15 candidate patch preview | Shows why `Nb3Sn` and `Nb3Ge` are still not patchable without external row evidence | `Data/03_Research/a15_candidate_patch_preview.json` | blocked patch-preview workflow only |
 | Row evidence intake stub | Structured intake sheet for incoming row-level evidence before any working-copy edit is allowed | `Data/03_Research/row_evidence_intake_stub.json` | evidence-capture workflow only |
 | Row evidence readiness matrix | Shows which rows still have pending evidence fields before patch review is allowed | `Data/03_Research/row_evidence_readiness_matrix.json` | evidence-gate workflow only |
@@ -65,6 +67,7 @@ flowchart LR
 | Row evidence decision gate | Review-control checklist for deciding whether attached evidence is strong enough to enter patch review | `Data/03_Research/row_evidence_decision_gate.json` | patch-review gating only |
 | Topic source-evidence workflow | Topic-level provenance intake and readiness gate | `Data/03_Research/source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json` | branch-hardening workflow only |
 | Topic branch claim gate | Topic-level claim ceiling by branch | `Data/03_Research/branch_claim_gate.json` | keeps baseline FAIL from inflating stronger claims |
+| Allen-Dynes Nb3Sn smoke-test branch | Separate source-labeled branch currently reports `PASS` for two Nb3Sn rows | `Result/artifacts/0_4_superconductivity_superfluids_allen_dynes_verification.json` | branch smoke test only; not topic-level PASS |
 | Allen-Dynes engine | Model exists | `Engine_Superconductivity.py`, `FORMULA_AUDIT.md` | model formulation, not final proof |
 | UET coherence / Z correction | Heuristic bridge | formula audit entries `SC-UET-COHERENCE`, `SC-REL-Z` | hypothesis / model component |
 | Cooper pairing proof | Conditional symbolic note | `Proof_Cooper_Pairing.py` | BCS-style conditional relation |
@@ -105,6 +108,7 @@ python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment
 - `Data/03_Research/vanadium_source_lock_packet.json`: focused packet for moving `Vanadium (V)` from borderline blocker to source-lock-ready row.
 - `Data/03_Research/a15_external_resolution_packet.json`: focused packet for moving `Nb3Sn` and `Nb3Ge` from unresolved A15 blockers into explicit row-resolution work.
 - `Data/03_Research/vanadium_candidate_patch_preview.json`: preview of the exact `Vanadium` row edit to apply if row evidence confirms the current internal candidate.
+- `Data/03_Research/vanadium_source_lock_decision.json`: current source-lock decision for `Vanadium`; the row is `PATCH_BLOCKED` and remains unchanged until primary page confirmation plus compatibility review clears.
 - `Data/03_Research/a15_candidate_patch_preview.json`: blocked preview showing exactly why the A15 pair still cannot be edited honestly.
 - `Data/03_Research/row_evidence_intake_stub.json`: structured place to record future row evidence for `Vanadium`, `Nb3Sn`, and `Nb3Ge` before any patch is applied.
 - `Data/03_Research/row_evidence_readiness_matrix.json`: quick gate showing whether each blocker row still has pending evidence before patch review can begin.

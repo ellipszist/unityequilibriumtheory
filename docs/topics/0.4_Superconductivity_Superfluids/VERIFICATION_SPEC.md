@@ -18,6 +18,7 @@
 - Baseline:
   - Raw McMillan critical-temperature baseline over conventional superconductors with published/curated `Theta_D`, `lambda_ep`, and `mu_star` inputs.
 - Reported metrics:
+  - evidence-lane contract separating raw McMillan, provisional sensitivity, Allen-Dynes smoke test, and row-resolution handoff
   - per-material McMillan `Tc` prediction
   - per-material relative error against working-copy observed `Tc`
   - per-material signed error to show overprediction or underprediction bias
@@ -41,6 +42,7 @@
   - generated focused Vanadium source-lock packet for the current borderline row
   - generated focused A15 external-resolution packet for `Nb3Sn` and `Nb3Ge`
   - generated Vanadium patch preview that shows the exact row edit to apply if source confirmation arrives
+  - generated Vanadium source-lock decision that records whether the row is `PATCH_ALLOWED`, `PATCH_BLOCKED`, or `MORE_SOURCE_REQUIRED`
   - generated A15 blocked patch preview that shows why no honest row edit can yet be proposed for the pair
   - generated row evidence intake stub for capturing future source rows before patching
   - generated row evidence readiness matrix showing whether intake is complete enough for patch review, plus how many fields already have working-copy context
@@ -61,6 +63,7 @@
 - Artifact target:
   - Result/artifacts/0_4_superconductivity_superfluids_verification.json
 - Required workflow gates:
+  - `Data/03_Research/vanadium_source_lock_decision.json`
   - `Data/03_Research/source_evidence_intake_stub.json`
   - `Data/03_Research/source_evidence_readiness_matrix.json`
   - `Data/03_Research/branch_claim_gate.json`
@@ -88,6 +91,7 @@
   - The Vanadium packet is a convenience condensation of the current workflow state. It should be used to execute the next row check, not to claim the row is already normalized.
   - The A15 packet is likewise a workflow condensation only. It should guide the next external row-resolution pass, not be cited as proof that either A15 row is fixed.
   - The Vanadium patch preview is still conditional. It is useful for implementation readiness, but it cannot be applied without evidence that the cited row supports the previewed values.
+  - The Vanadium source-lock decision is currently expected to report `PATCH_BLOCKED` because the external compatibility packet conflicts with both the working row and the older lambda-only preview, while primary `Tc` and `Theta_D` page confirmation remains open.
   - The A15 blocked patch preview should be read as a stop sign, not a recommendation. It documents why an edit would be premature.
   - The intake stub is evidence capture only. Filling it is not equivalent to source review completion.
   - The intake stub now pre-fills `working_copy_context_present` and `proxy_unresolved` entries when internal packets already narrow the row state. This is handoff context only, not source completion.
@@ -125,6 +129,8 @@
 - The same folder now also includes `residual_extraction_dashboard.json`, which consolidates the three unresolved rows into one extraction-control view.
 - Interpretation:
   - Treat output as an internal baseline diagnostic only.
+  - Treat `evidence_lanes.raw_mcmillan_gate` as the topic-level status controller.
+  - Treat `evidence_lanes.allen_dynes_nb3sn_smoke_test` as a separate branch; a branch PASS must not override raw McMillan `FAIL`.
   - The current primary verifier does not test high-Tc cuprates or prove UET coherence corrections.
   - Calibrated datasets must be kept separate from raw benchmark claims.
   - The inverse audit is diagnostic only; it cannot be cited as a no-fit prediction.
