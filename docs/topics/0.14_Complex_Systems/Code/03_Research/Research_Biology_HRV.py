@@ -409,12 +409,42 @@ def _build_branch_claim_gate():
     return _write_json(BRANCH_CLAIM_GATE_PATH, payload)
 
 
+def _build_hrv_provenance_gate():
+    source_record_path = root_path / "docs" / "data" / "external" / "biophysics" / "hrv" / "mit_bih_nsrdb" / "source_record.json"
+    source_lock_path = TOPIC_DIR / "Data" / "03_Research" / "biology_hrv" / "source_lock_manifest.json"
+    source_record = _load_json_if_exists(source_record_path) or {}
+    source_lock = _load_json_if_exists(source_lock_path) or {}
+    derived_inputs = source_lock.get("derived_inputs", [])
+    source_records = source_lock.get("preprocessing_contract", {}).get("source_records", [])
+    source_identity_ready = bool(source_record.get("dataset_url") and source_record.get("record_ids_used_by_topic"))
+    derived_hashes_ready = bool(derived_inputs) and all(item.get("sha256") and item.get("local_path") for item in derived_inputs)
+    extraction_workflow_ready = bool(source_lock.get("preprocessing_contract", {}).get("extraction_command_or_script"))
+    raw_archive_ready = source_record.get("local_raw_file_status") == "raw_files_archived"
+    blockers = []
+    if not raw_archive_ready:
+        blockers.append("Original PhysioNet .dat/.hea/.atr files are not archived in the repository.")
+    if not extraction_workflow_ready:
+        blockers.append("Exact RR extraction command/script and tool version are not archived.")
+    return {
+        "gate": "hrv_provenance_gate",
+        "status": "DERIVED_SOURCE_WARN" if blockers else "SOURCE_LOCK_PASS",
+        "source_identity_status": "PASS" if source_identity_ready else "OPEN",
+        "derived_rr_hash_status": "PASS" if derived_hashes_ready else "OPEN",
+        "raw_archive_status": "PASS" if raw_archive_ready else "OPEN",
+        "extraction_workflow_status": "PASS" if extraction_workflow_ready else "OPEN",
+        "record_ids": source_records or source_record.get("record_ids_used_by_topic", []),
+        "blockers": blockers,
+        "claim_boundary": "HRV may be treated as source-referenced derived RR evidence only. Raw-source archival or clinical/classification claims remain blocked.",
+    }
+
+
 def write_verification_artifact(result):
     """Write the primary verifier artifact required by VERIFICATION_SPEC.md."""
     ARTIFACT_PATH.parent.mkdir(parents=True, exist_ok=True)
     source_evidence_intake_stub = _build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = _build_source_evidence_readiness_matrix(source_evidence_intake_stub)
     branch_claim_gate = _build_branch_claim_gate()
+    hrv_provenance_gate = _build_hrv_provenance_gate()
     artifact = {
         "schema_version": "1.1",
         "topic": "0.14_Complex_Systems",
@@ -441,6 +471,7 @@ def write_verification_artifact(result):
             "summary": branch_claim_gate["summary"],
             "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current HRV run-contract evidence.",
         },
+        "hrv_provenance_gate": hrv_provenance_gate,
         "metrics": {
             "avg_sdnn_ms": result.get("avg_sdnn_ms"),
             "avg_rmssd_ms": result.get("avg_rmssd_ms"),

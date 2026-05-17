@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "topic": "0.14_Complex_Systems",
-  "timestamp_utc": "2026-05-06T15:23:23.696552+00:00",
+  "timestamp_utc": "2026-05-17T17:04:05.876991+00:00",
   "command": "python docs/topics/0.14_Complex_Systems/Code/03_Research/Research_Biology_HRV.py",
   "status": "PASS",
   "passed_run_contract": true,
@@ -88,6 +88,26 @@
       "blocked_for_strong_claims": 5
     },
     "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current HRV run-contract evidence."
+  },
+  "hrv_provenance_gate": {
+    "gate": "hrv_provenance_gate",
+    "status": "DERIVED_SOURCE_WARN",
+    "source_identity_status": "PASS",
+    "derived_rr_hash_status": "PASS",
+    "raw_archive_status": "OPEN",
+    "extraction_workflow_status": "OPEN",
+    "record_ids": [
+      "16265",
+      "16272",
+      "16273",
+      "16420",
+      "16483"
+    ],
+    "blockers": [
+      "Original PhysioNet .dat/.hea/.atr files are not archived in the repository.",
+      "Exact RR extraction command/script and tool version are not archived."
+    ],
+    "claim_boundary": "HRV may be treated as source-referenced derived RR evidence only. Raw-source archival or clinical/classification claims remain blocked."
   },
   "metrics": {
     "avg_sdnn_ms": 136.33580596854574,

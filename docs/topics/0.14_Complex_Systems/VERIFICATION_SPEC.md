@@ -17,6 +17,7 @@
   - `Data/03_Research/source_evidence_intake_stub.json`
   - `Data/03_Research/source_evidence_readiness_matrix.json`
   - `Data/03_Research/branch_claim_gate.json`
+  - embedded `hrv_provenance_gate` in `Result/artifacts/0_14_complex_systems_verification.json`
 - Baseline:
   - Source-referenced MIT-BIH Normal Sinus Rhythm Database RR interval working files. Original PhysioNet records and extraction method are not yet frozen.
 - Reported metrics:
@@ -35,6 +36,7 @@
   - Average equilibrium score: `0.7617326983320816`
 - Interpretation:
   - Treat output as a source-referenced derived-RR HRV benchmark artifact only. Do not upgrade claim language to broad complex-systems, market, climate, inequality, or SOC proof wording until each branch has a topic-specific baseline-comparison pass and verifier artifact.
+  - Treat `hrv_provenance_gate.status == DERIVED_SOURCE_WARN` as the current source-lock ceiling: source identity and derived RR hashes are present, but raw PhysioNet records and exact extraction workflow remain open.
   - Treat source-evidence and branch-claim gate outputs as workflow controls, not as branch validation.
   - The HRV readiness row may be partially completed from `source_record.json` and `biology_hrv/source_lock_manifest.json`, but a raw-file archive and exact extraction command are still missing.
   - The script dynamically loads all files matching `physionet_*_rr.csv`; therefore manifest/spec entries must stay synchronized with the directory contents.
