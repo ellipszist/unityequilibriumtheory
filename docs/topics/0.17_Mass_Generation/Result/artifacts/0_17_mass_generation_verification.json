@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "topic": "0.17_Mass_Generation",
-  "timestamp_utc": "2026-05-05T20:48:08.349155+00:00",
+  "timestamp_utc": "2026-05-17T16:57:45.461243+00:00",
   "command": "python docs/topics/0.17_Mass_Generation/Code/03_Research/Research_Higgs_Coupling.py",
   "status": "PASS",
   "passed_run_contract": true,
@@ -10,8 +10,8 @@
       "path": "Data/03_Research/higgs_coupling_data.json",
       "loaded_by_primary_script": true,
       "status": "present",
-      "bytes": 1543,
-      "sha256": "3c19ef8264ce55638216dc39e726ac018d94c5c3794c964971197371853c12f5"
+      "bytes": 1648,
+      "sha256": "4f5e512e7e62d27ffe03d32f7874fe2c4a50d04535a42c9110678ce565590b9c"
     },
     {
       "path": "Data/03_Research/higgs_mass_combined.json",
@@ -38,15 +38,15 @@
       "path": "Data/03_Research/source_lock_manifest.json",
       "loaded_by_primary_script": false,
       "status": "present",
-      "bytes": 2278,
-      "sha256": "22b4d2e1121273cd5d94bc86805080e264f3fdabd2268f8bc6b5f097307ee0b8"
+      "bytes": 2388,
+      "sha256": "8437155bc8cb83020099fe0a50dab3f39b6cd6b7a2de13464ce021c7aee609b5"
     },
     {
       "path": "docs/data/external/particle_physics/higgs/higgs_coupling_cms_2022_reference_package.json",
       "loaded_by_primary_script": false,
       "status": "present",
-      "bytes": 2217,
-      "sha256": "a70a2c06804ce95760a117ffaaecbc54eba8f5a82e3ea6a10f4576be9dbdaabe"
+      "bytes": 2289,
+      "sha256": "9db34a19496a54814361bc60020373c1e85623ee2775b0bb80313b2487557003"
     },
     {
       "path": "docs/data/external/particle_physics/higgs/higgs_mass_combined_atlas_cms_2015_reference_package.json",
@@ -65,7 +65,7 @@
   ],
   "source_evidence_intake_stub": {
     "path": "Data/03_Research/source_evidence_intake_stub.json",
-    "sha256": "35667b9ae3990cac2556d0b35152cdfc06cd154cb6a04a978da55072dba28eba",
+    "sha256": "414d3a57c3c43f8b865e113f216e718dab7e16aa5df3470cdcb65b246b16b920",
     "source_targets": [
       "Higgs coupling table source package",
       "Combined Higgs mass reference package",
@@ -76,11 +76,11 @@
   },
   "source_evidence_readiness_matrix": {
     "path": "Data/03_Research/source_evidence_readiness_matrix.json",
-    "sha256": "4ba7a4355ece97773d01941e6c74271e5149881c8274bebca6205e0c18ae3448",
+    "sha256": "933d34fc2f697b73e124592e44650ccacc003ddee967055a97ace453405eb601",
     "summary": {
       "source_targets_total": 4,
-      "targets_ready_for_source_review": 2,
-      "targets_blocked_by_pending_evidence": 2
+      "targets_ready_for_source_review": 3,
+      "targets_blocked_by_pending_evidence": 1
     },
     "claim_boundary": "This readiness matrix is a workflow gate only. It tracks whether source evidence is still pending."
   },

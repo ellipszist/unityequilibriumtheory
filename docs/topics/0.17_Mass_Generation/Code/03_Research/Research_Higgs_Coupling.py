@@ -113,13 +113,14 @@ def _build_source_target_status():
     coupling_package = _load_json_if_exists(HIGGS_COUPLING_REFERENCE_PATH)
     higgs_mass_package = _load_json_if_exists(HIGGS_MASS_REFERENCE_PATH)
     lepton_package = _load_json_if_exists(PDG_LEPTON_REFERENCE_PATH)
+    coupling_source_id = coupling_package.get("doi") or coupling_package.get("url", "") if coupling_package else ""
     return [
         {
             "name": "Higgs coupling table source package",
             "priority": "immediate",
             "status": "partial" if coupling_package else "pending",
             "evidence_fields": [
-                _field("doi_or_url", "pending", ""),
+                _field("doi_or_url", "complete" if coupling_source_id else "pending", coupling_source_id),
                 _field(
                     "local_path",
                     "complete" if coupling_package else "pending",

@@ -11,9 +11,9 @@
       "benchmark_ready": true,
       "status": "packaged",
       "upstream_citation": "CMS Collaboration, Nature 607, 60-68 (2022)",
-      "doi": null,
-      "url": null,
-      "notes": "Extracted/source-referenced package copied from topic-local normalized benchmark data; raw upstream table not yet archived."
+      "doi": "10.1038/s41586-022-04892-x",
+      "url": "https://www.nature.com/articles/s41586-022-04892-x",
+      "notes": "Extracted/source-referenced package copied from topic-local normalized benchmark data; DOI and article URL are source-locked, but raw upstream table or figure extraction is not yet archived."
     },
     {
       "dataset_id": "atlas_cms_higgs_mass_2015_reference_package",

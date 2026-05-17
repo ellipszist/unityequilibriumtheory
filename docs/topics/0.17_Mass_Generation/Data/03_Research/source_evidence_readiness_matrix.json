@@ -4,21 +4,19 @@
   "purpose": "Readiness matrix for branch-specific source evidence before data edits or claim upgrades.",
   "summary": {
     "source_targets_total": 4,
-    "targets_ready_for_source_review": 2,
-    "targets_blocked_by_pending_evidence": 2
+    "targets_ready_for_source_review": 3,
+    "targets_blocked_by_pending_evidence": 1
   },
   "readiness_rows": [
     {
       "name": "Higgs coupling table source package",
       "priority": "immediate",
       "fields_total": 6,
-      "fields_complete": 5,
-      "fields_pending": 1,
-      "pending_fields": [
-        "doi_or_url"
-      ],
-      "ready_for_source_review": false,
-      "blocking_reason": "One or more required evidence fields are still pending."
+      "fields_complete": 6,
+      "fields_pending": 0,
+      "pending_fields": [],
+      "ready_for_source_review": true,
+      "blocking_reason": ""
     },
     {
       "name": "Combined Higgs mass reference package",

@@ -15,8 +15,8 @@
       "evidence_fields": [
         {
           "field": "doi_or_url",
-          "status": "pending",
-          "value": ""
+          "status": "complete",
+          "value": "10.1038/s41586-022-04892-x"
         },
         {
           "field": "local_path",
