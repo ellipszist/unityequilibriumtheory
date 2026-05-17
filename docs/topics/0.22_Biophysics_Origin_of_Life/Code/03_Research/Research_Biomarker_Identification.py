@@ -356,12 +356,37 @@ def _build_subclaim_gate():
     return _write_json(SUBCLAIM_GATE_PATH, payload)
 
 
+def _build_synthetic_diagnostic_gate(results, threshold, missing_inputs):
+    expected_controls = {"GENE_007", "GENE_023"}
+    found_controls = {item.get("gene") for item in results}
+    expected_controls_found = expected_controls.issubset(found_controls)
+    return {
+        "gate": "synthetic_biomarker_diagnostic_gate",
+        "status": "SYNTHETIC_DIAGNOSTIC_WARN",
+        "diagnostic_run_contract": "PASS" if results and expected_controls_found and not missing_inputs else "FAIL",
+        "source_data_class": "synthetic_seeded_positive_control",
+        "random_seed": 22022,
+        "stability_threshold": threshold,
+        "expected_controls": sorted(expected_controls),
+        "found_controls": sorted(found_controls),
+        "blocked_claim_classes": [
+            "clinical biomarker validation",
+            "TCGA or real omics validation",
+            "EEG seizure prediction",
+            "origin-of-life mechanism",
+            "protein-folding benchmark superiority",
+        ],
+        "claim_boundary": "This gate can pass only the seeded synthetic diagnostic run contract. Topic-level biomedical and origin-of-life claims remain WARN/open until real source-backed lanes have verifier artifacts.",
+    }
+
+
 def _write_artifact(results, threshold, seed):
     inputs = _input_identity()
     source_evidence_intake_stub = _build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = _build_source_evidence_readiness_matrix(source_evidence_intake_stub)
     subclaim_gate = _build_subclaim_gate()
     missing_inputs = [item["path"] for item in inputs if item.get("missing")]
+    synthetic_diagnostic_gate = _build_synthetic_diagnostic_gate(results, threshold, missing_inputs)
     status = "WARN" if results and not missing_inputs else "FAIL"
 
     artifact = {
@@ -390,6 +415,7 @@ def _write_artifact(results, threshold, seed):
             "summary": subclaim_gate["summary"],
             "claim_boundary": "This gate records separate biomedical claim ceilings only. It cannot upgrade the topic beyond the current synthetic diagnostic.",
         },
+        "synthetic_diagnostic_gate": synthetic_diagnostic_gate,
         "metrics": {
             "synthetic_gene_count": 50,
             "synthetic_sample_count": 100,

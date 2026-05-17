@@ -16,6 +16,7 @@
   - `data/03_Research/source_evidence_intake_stub.json`
   - `data/03_Research/source_evidence_readiness_matrix.json`
   - `data/03_Research/subclaim_gate.json`
+  - embedded `synthetic_diagnostic_gate` in `Result/artifacts/0_22_biophysics_origin_of_life_verification.json`
 - Current readiness snapshot after rerun:
   - CHB-MIT row: `6/6` fields complete, ready for source review of the current summary-based package
   - Bonn row: `4/6` complete, blocked by license and source sampling-rate metadata
@@ -39,6 +40,7 @@
   - Result/artifacts/0_22_biophysics_origin_of_life_verification.json
 - Interpretation:
   - Treat output as a diagnostic code-path check only.
+  - Treat `synthetic_diagnostic_gate.diagnostic_run_contract == PASS` as a synthetic positive-control result only; the gate status remains `SYNTHETIC_DIAGNOSTIC_WARN` because the source data class is not external biomedical evidence.
   - Treat source-evidence and subclaim-gate outputs as workflow controls, not as biomedical validation.
   - A readiness row marked ready means the current working-copy evidence package is ready for human source review, not that the lane is claim-ready or raw-biomedical complete.
   - Do not use this verifier as clinical biomarker validation, EEG seizure validation, TCGA validation, or origin-of-life proof.

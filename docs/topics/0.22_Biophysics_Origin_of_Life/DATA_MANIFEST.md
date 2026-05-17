@@ -26,6 +26,7 @@ Priority remediation:
 | Source evidence intake stub | `data/03_Research/source_evidence_intake_stub.json` | topic-generated intake sheet for unresolved EEG/omics/protein/prebiotic source metadata | mixed; each target declares its own expected unit basis | workflow landing zone before data rewrites or claim upgrades | Workflow control only; not evidence by itself. |
 | Source evidence readiness matrix | `data/03_Research/source_evidence_readiness_matrix.json` | topic-generated readiness gate derived from the intake stub | n/a | tracks completeness of biomedical provenance capture | Current summary: 1 target ready for source review (CHB-MIT), 4 still blocked. Workflow control only; records completeness, not scientific validation. |
 | Subclaim gate | `data/03_Research/subclaim_gate.json` | topic-generated claim gate for separate biomedical and origin-of-life lanes | n/a | controls allowed claim class per sub-lane | Workflow control only; cannot raise claim strength beyond the current synthetic diagnostic. |
+| Synthetic diagnostic gate | embedded in `Result/artifacts/0_22_biophysics_origin_of_life_verification.json` | verifier-generated gate for seeded synthetic positive controls | n/a | separates synthetic run-contract behavior from biomedical/origin-of-life claims | Can pass only the synthetic diagnostic run contract; topic-level status remains WARN until real source-backed verifier lanes exist. |
 
 ## Path Cleanup Note
 
