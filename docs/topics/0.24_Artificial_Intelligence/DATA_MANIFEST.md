@@ -10,7 +10,7 @@ source URLs/DOIs, retrieval dates, preprocessing notes, and hashes are normalize
 
 | Dataset | Local path | Source | Unit convention | Benchmark role | Provenance status |
 | :-- | :-- | :-- | :-- | :-- | :-- |
-| Scaling-law constants | `Data/03_Research/scaling_laws.json` | Kaplan et al., "Scaling Laws for Neural Language Models" working copy | dimensionless exponents; parameters, tokens, PF-days | primary scaling-law reference | source named; upstream URL/DOI and extraction notes still needed |
+| Scaling-law constants | `Data/03_Research/scaling_laws.json` | Kaplan et al., "Scaling Laws for Neural Language Models", arXiv `2001.08361`, URL `https://arxiv.org/abs/2001.08361` | dimensionless exponents; parameters, tokens, PF-days | primary scaling-law reference | arXiv source and retrieval date pinned; exact table/equation extraction still needs review |
 | GPT-3 scaling table | `Data/GPT3_Scaling_Laws.csv` | topic-local GPT-style scaling table | parameters, test loss, FLOPs | independent log-log fit diagnostic | working copy; table provenance not archival |
 | Model architecture metadata | `Data/03_Research/deepseek_moe_data.json` | topic-local model metadata package | total/active parameters, context window, tokens | sparse-vs-dense active-fraction diagnostic | mixed: some entries are public-model metadata, some estimated/proprietary |
 | Source-lock manifest | `Data/03_Research/source_lock_manifest.json` | topic-derived source-lock package for scaling, CSV fit, and model metadata lanes | inherits per-target unit conventions | binds working-copy data classes and claim boundary | present; improves provenance discipline but does not create upstream archival status by itself |
@@ -32,7 +32,7 @@ The primary verifier records SHA-256 hashes for all primary inputs in
 
 ## Next Provenance Work
 
-- Add upstream DOI/arXiv/URL and retrieval date for the scaling-law source package.
+- Review exact table/equation extraction for the scaling-law source package.
 - Add construction date or upstream table lineage for `GPT3_Scaling_Laws.csv`.
 - Add public model-card URLs and retrieval date for the architecture metadata package.
 - Split public, estimated, and proprietary model metadata into separate tables.
@@ -43,6 +43,6 @@ The primary verifier records SHA-256 hashes for all primary inputs in
 
 ## Current Readiness Snapshot
 
-- Scaling-law source package: `4/6` fields complete; missing DOI/arXiv/URL and retrieval date
+- Scaling-law source package: `6/6` fields complete for source review; exact extraction review is still required before claim upgrades
 - GPT-style scaling table provenance package: `5/6` fields complete; missing construction/retrieval date
 - Model architecture metadata package: `4/6` fields complete; missing public model-card URLs and retrieval date

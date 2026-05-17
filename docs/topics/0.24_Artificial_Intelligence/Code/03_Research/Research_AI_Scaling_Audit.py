@@ -136,8 +136,8 @@ def build_source_evidence_intake_stub() -> dict:
                 "evidence_fields": [
                     {
                         "field": "doi_or_arxiv_or_url",
-                        "status": "pending",
-                        "value": "",
+                        "status": "complete" if scaling_lock.get("arxiv_id") or scaling_lock.get("url") or scaling.get("arxiv_id") or scaling.get("url") else "pending",
+                        "value": scaling_lock.get("arxiv_id") or scaling_lock.get("url") or scaling.get("arxiv_id") or scaling.get("url", ""),
                     },
                     {
                         "field": "local_path",
@@ -151,8 +151,8 @@ def build_source_evidence_intake_stub() -> dict:
                     },
                     {
                         "field": "retrieval_date",
-                        "status": "pending",
-                        "value": "",
+                        "status": "complete" if scaling_lock.get("retrieval_date") or scaling.get("retrieval_date") else "pending",
+                        "value": scaling_lock.get("retrieval_date") or scaling.get("retrieval_date", ""),
                     },
                     {
                         "field": "unit_basis",

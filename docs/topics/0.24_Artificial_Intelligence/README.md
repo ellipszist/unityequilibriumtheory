@@ -94,7 +94,7 @@ python docs/topics/0.24_Artificial_Intelligence/Code/03_Research/Research_AI_Sca
 
 ## Provenance Snapshot
 
-- Scaling-law source package: `4/6` fields complete; still missing DOI/arXiv/URL and retrieval date
+- Scaling-law source package: `6/6` fields complete for source review; exact extraction review is still required before claim upgrades
 - GPT-style scaling table: `5/6` fields complete; still missing construction/retrieval date
 - Model architecture metadata: `4/6` fields complete; still missing public model-card URLs and retrieval date
 - `source_lock_manifest.json` now binds the three working-copy benchmark lanes to explicit data classes and unit conventions

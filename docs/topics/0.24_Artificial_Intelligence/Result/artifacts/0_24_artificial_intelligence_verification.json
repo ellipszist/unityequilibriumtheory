@@ -19,11 +19,11 @@
     "AI24-MOE-SPARSITY",
     "AI24-CSV-ALPHA-FIT"
   ],
-  "generated_at_utc": "2026-05-06T15:31:26.141762+00:00",
+  "generated_at_utc": "2026-05-17T17:10:15.430910+00:00",
   "inputs": [
     {
       "path": "docs/topics/0.24_Artificial_Intelligence/Data/03_Research/scaling_laws.json",
-      "sha256": "ef2edb18b37f3e385411e12499d78a9ed854102abfec5a15dd96e79c64bb6d42",
+      "sha256": "d4e4163bf6d4a92371abcd05aa86510efaa982c875d2dd94fe43153839ade63c",
       "source": "Kaplan et al., Scaling Laws for Neural Language Models (2020)"
     },
     {
@@ -38,7 +38,7 @@
     },
     {
       "path": "docs/topics/0.24_Artificial_Intelligence/Data/03_Research/source_lock_manifest.json",
-      "sha256": "da8e24943664e0f20da7e963d8f3f70919338d2678230f9cefe771494e44206d",
+      "sha256": "31a4937681ae4cc3708997a3c27821f198e49cf699172ce4289a16b0edb47ef9",
       "source": "topic-derived AI source-lock manifest"
     }
   ],
@@ -130,7 +130,7 @@
   "source_evidence_intake_stub": {
     "claim_boundary": "This intake stub is for source evidence capture only. It does not authorize data or claim upgrades by itself.",
     "path": "docs/topics/0.24_Artificial_Intelligence/Data/03_Research/source_evidence_intake_stub.json",
-    "sha256": "08ad0278ec0af5f64223ff69b08c0599206ebe8749b70cd50e50412521d94652",
+    "sha256": "ea52c439a2685c9ca30f1844342c637c1661ce8ecc653d2416dc0b5e989080b3",
     "source_targets": [
       "Scaling-law source package",
       "GPT-style scaling table provenance package",
@@ -140,11 +140,11 @@
   "source_evidence_readiness_matrix": {
     "claim_boundary": "This readiness matrix is a workflow gate only. It tracks whether source evidence is still pending.",
     "path": "docs/topics/0.24_Artificial_Intelligence/Data/03_Research/source_evidence_readiness_matrix.json",
-    "sha256": "f3584a0d6bccd1d205a9228e556a4c771f14aebf043dd05f0c950832589ba061",
+    "sha256": "20fdcd27b16d9793b3ec4beb9f2f07bfd9a6227f22b618e2fa4fbe5f8535bd80",
     "summary": {
       "source_targets_total": 3,
-      "targets_blocked_by_pending_evidence": 3,
-      "targets_ready_for_source_review": 0
+      "targets_blocked_by_pending_evidence": 2,
+      "targets_ready_for_source_review": 1
     }
   },
   "status": "WARN",

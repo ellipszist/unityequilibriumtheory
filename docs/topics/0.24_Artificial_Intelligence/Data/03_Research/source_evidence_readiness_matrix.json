@@ -3,17 +3,14 @@
   "purpose": "Readiness matrix for AI scaling and model-metadata evidence before data edits or claim upgrades.",
   "readiness_rows": [
     {
-      "blocking_reason": "One or more required evidence fields are still pending.",
-      "fields_complete": 4,
-      "fields_pending": 2,
+      "blocking_reason": "",
+      "fields_complete": 6,
+      "fields_pending": 0,
       "fields_total": 6,
       "name": "Scaling-law source package",
-      "pending_fields": [
-        "doi_or_arxiv_or_url",
-        "retrieval_date"
-      ],
+      "pending_fields": [],
       "priority": "immediate",
-      "ready_for_source_review": false,
+      "ready_for_source_review": true,
       "target_status": "partial"
     },
     {
@@ -47,8 +44,8 @@
   "schema_version": "1.0",
   "summary": {
     "source_targets_total": 3,
-    "targets_blocked_by_pending_evidence": 3,
-    "targets_ready_for_source_review": 0
+    "targets_blocked_by_pending_evidence": 2,
+    "targets_ready_for_source_review": 1
   },
   "topic": "0.24_Artificial_Intelligence"
 }

@@ -8,6 +8,9 @@
       "local_path": "docs/topics/0.24_Artificial_Intelligence/Data/03_Research/scaling_laws.json",
       "source_class": "source-referenced working copy",
       "source_note": "Kaplan et al. scaling-law constants transcribed into a topic-local JSON package.",
+      "arxiv_id": "2001.08361",
+      "url": "https://arxiv.org/abs/2001.08361",
+      "retrieval_date": "2026-05-18",
       "unit_system": "dimensionless exponents; parameters count; tokens count; PF-days",
       "benchmark_role": "primary scaling-law reference for the internal audit verifier"
     },

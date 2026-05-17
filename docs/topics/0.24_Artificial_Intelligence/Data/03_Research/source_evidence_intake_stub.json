@@ -17,8 +17,8 @@
       "evidence_fields": [
         {
           "field": "doi_or_arxiv_or_url",
-          "status": "pending",
-          "value": ""
+          "status": "complete",
+          "value": "2001.08361"
         },
         {
           "field": "local_path",
@@ -32,8 +32,8 @@
         },
         {
           "field": "retrieval_date",
-          "status": "pending",
-          "value": ""
+          "status": "complete",
+          "value": "2026-05-18"
         },
         {
           "field": "unit_basis",

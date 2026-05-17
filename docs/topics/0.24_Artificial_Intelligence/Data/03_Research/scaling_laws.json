@@ -1,5 +1,8 @@
 {
     "source": "Kaplan et al., Scaling Laws for Neural Language Models (2020)",
+    "arxiv_id": "2001.08361",
+    "url": "https://arxiv.org/abs/2001.08361",
+    "retrieval_date": "2026-05-18",
     "description": "Power-law scaling of Test Loss (L) vs Compute (C), Data (D), and Parameters (N).",
     "relationships": {
         "L_N": "L(N) ~ (N_c / N)^alpha_N",
