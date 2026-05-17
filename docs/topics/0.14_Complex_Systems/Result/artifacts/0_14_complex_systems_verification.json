@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "topic": "0.14_Complex_Systems",
-  "timestamp_utc": "2026-05-17T17:04:05.876991+00:00",
+  "timestamp_utc": "2026-05-17T17:31:17.643291+00:00",
   "command": "python docs/topics/0.14_Complex_Systems/Code/03_Research/Research_Biology_HRV.py",
   "status": "PASS",
   "passed_run_contract": true,
@@ -108,6 +108,68 @@
       "Exact RR extraction command/script and tool version are not archived."
     ],
     "claim_boundary": "HRV may be treated as source-referenced derived RR evidence only. Raw-source archival or clinical/classification claims remain blocked."
+  },
+  "complexity_claim_gate": {
+    "schema_version": "1.0",
+    "topic": "0.14_Complex_Systems",
+    "purpose": "Machine-readable claim boundary for complex-systems exports.",
+    "controller_status": "HRV_RUN_CONTRACT_ONLY",
+    "allowed_exports_now": [
+      {
+        "export": "hrv_derived_rr_run_contract",
+        "status": "PASS",
+        "claim_class": "C - internal derived-RR benchmark/run-contract",
+        "basis": "Primary verifier loads source-referenced derived RR files, computes HRV metrics, and writes an artifact."
+      },
+      {
+        "export": "hrv_source_identity_reference",
+        "status": "DERIVED_SOURCE_WARN",
+        "claim_class": "C/D - source-referenced derived working-copy provenance",
+        "basis": "PhysioNet source identity and derived RR hashes are present, but raw archive and extraction workflow remain open."
+      }
+    ],
+    "blocked_exports": [
+      {
+        "export": "clinical_hrv_classifier",
+        "status": "BLOCKED",
+        "blocker": "No clinical labels, diagnostic baseline, validation split, or raw extraction package is closed."
+      },
+      {
+        "export": "soc_avalanche_or_power_law_claim",
+        "status": "BLOCKED",
+        "blocker": "No seeded avalanche benchmark, exponent fit, goodness-of-fit threshold, or artifact-producing verifier is closed."
+      },
+      {
+        "export": "econophysics_market_prediction_claim",
+        "status": "BLOCKED",
+        "blocker": "No source-locked market dataset, date range, baseline model, or thresholded verifier is closed."
+      },
+      {
+        "export": "climate_inequality_social_system_claim",
+        "status": "BLOCKED",
+        "blocker": "Those branches remain heterogeneous working files without branch-specific source locks and verifier artifacts."
+      },
+      {
+        "export": "universal_complexity_law",
+        "status": "BLOCKED",
+        "blocker": "Only the HRV branch has a current primary run-contract artifact; cross-domain branches cannot inherit HRV PASS."
+      }
+    ],
+    "gate_inputs": {
+      "hrv_status": "PASS",
+      "hrv_provenance_status": "DERIVED_SOURCE_WARN",
+      "source_evidence_summary": {
+        "source_targets_total": 5,
+        "targets_ready_for_source_review": 0,
+        "targets_blocked_by_pending_evidence": 5
+      },
+      "branch_summary": {
+        "branches_total": 6,
+        "accepted_now": 1,
+        "blocked_for_strong_claims": 5
+      }
+    },
+    "promotion_rule": "Broader complex-systems claims require a closed source/provenance gate, branch-specific baseline comparison, thresholded verifier artifact, and explicit limitation text for each branch."
   },
   "metrics": {
     "avg_sdnn_ms": 136.33580596854574,

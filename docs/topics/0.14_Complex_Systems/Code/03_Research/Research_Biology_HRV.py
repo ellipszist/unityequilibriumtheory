@@ -438,6 +438,69 @@ def _build_hrv_provenance_gate():
     }
 
 
+def _build_complexity_claim_gate(result, hrv_provenance_gate, source_evidence_readiness_matrix, branch_claim_gate):
+    hrv_status = result.get("status", "FAIL")
+    source_summary = source_evidence_readiness_matrix.get("summary", {})
+    branch_summary = branch_claim_gate.get("summary", {})
+    return {
+        "schema_version": "1.0",
+        "topic": "0.14_Complex_Systems",
+        "purpose": "Machine-readable claim boundary for complex-systems exports.",
+        "controller_status": "HRV_RUN_CONTRACT_ONLY",
+        "allowed_exports_now": [
+            {
+                "export": "hrv_derived_rr_run_contract",
+                "status": hrv_status,
+                "claim_class": "C - internal derived-RR benchmark/run-contract",
+                "basis": "Primary verifier loads source-referenced derived RR files, computes HRV metrics, and writes an artifact.",
+            },
+            {
+                "export": "hrv_source_identity_reference",
+                "status": hrv_provenance_gate.get("status", "OPEN"),
+                "claim_class": "C/D - source-referenced derived working-copy provenance",
+                "basis": "PhysioNet source identity and derived RR hashes are present, but raw archive and extraction workflow remain open.",
+            },
+        ],
+        "blocked_exports": [
+            {
+                "export": "clinical_hrv_classifier",
+                "status": "BLOCKED",
+                "blocker": "No clinical labels, diagnostic baseline, validation split, or raw extraction package is closed.",
+            },
+            {
+                "export": "soc_avalanche_or_power_law_claim",
+                "status": "BLOCKED",
+                "blocker": "No seeded avalanche benchmark, exponent fit, goodness-of-fit threshold, or artifact-producing verifier is closed.",
+            },
+            {
+                "export": "econophysics_market_prediction_claim",
+                "status": "BLOCKED",
+                "blocker": "No source-locked market dataset, date range, baseline model, or thresholded verifier is closed.",
+            },
+            {
+                "export": "climate_inequality_social_system_claim",
+                "status": "BLOCKED",
+                "blocker": "Those branches remain heterogeneous working files without branch-specific source locks and verifier artifacts.",
+            },
+            {
+                "export": "universal_complexity_law",
+                "status": "BLOCKED",
+                "blocker": "Only the HRV branch has a current primary run-contract artifact; cross-domain branches cannot inherit HRV PASS.",
+            },
+        ],
+        "gate_inputs": {
+            "hrv_status": hrv_status,
+            "hrv_provenance_status": hrv_provenance_gate.get("status"),
+            "source_evidence_summary": source_summary,
+            "branch_summary": branch_summary,
+        },
+        "promotion_rule": (
+            "Broader complex-systems claims require a closed source/provenance gate, branch-specific baseline comparison, "
+            "thresholded verifier artifact, and explicit limitation text for each branch."
+        ),
+    }
+
+
 def write_verification_artifact(result):
     """Write the primary verifier artifact required by VERIFICATION_SPEC.md."""
     ARTIFACT_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -445,6 +508,12 @@ def write_verification_artifact(result):
     source_evidence_readiness_matrix = _build_source_evidence_readiness_matrix(source_evidence_intake_stub)
     branch_claim_gate = _build_branch_claim_gate()
     hrv_provenance_gate = _build_hrv_provenance_gate()
+    complexity_claim_gate = _build_complexity_claim_gate(
+        result,
+        hrv_provenance_gate,
+        source_evidence_readiness_matrix,
+        branch_claim_gate,
+    )
     artifact = {
         "schema_version": "1.1",
         "topic": "0.14_Complex_Systems",
@@ -472,6 +541,7 @@ def write_verification_artifact(result):
             "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current HRV run-contract evidence.",
         },
         "hrv_provenance_gate": hrv_provenance_gate,
+        "complexity_claim_gate": complexity_claim_gate,
         "metrics": {
             "avg_sdnn_ms": result.get("avg_sdnn_ms"),
             "avg_rmssd_ms": result.get("avg_rmssd_ms"),

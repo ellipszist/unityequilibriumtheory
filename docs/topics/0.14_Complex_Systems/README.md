@@ -53,6 +53,7 @@ The topic now includes workflow gates that separate source-evidence intake from 
 - `Data/03_Research/source_evidence_readiness_matrix.json`: workflow gate for which branch source packages are still blocked by missing evidence fields.
 - `Data/03_Research/branch_claim_gate.json`: separated claim ceilings for HRV, SOC, econophysics, climate, inequality/social, and universal-complexity branches.
 - `Data/03_Research/biology_hrv/source_lock_manifest.json`: provenance map tying the HRV RR working files to PhysioNet record IDs and runtime filter assumptions.
+- `Result/artifacts/0_14_complex_systems_verification.json`: embeds `hrv_provenance_gate` and `complexity_claim_gate` so HRV run-contract evidence cannot silently promote non-HRV branches.
 
 ## Verification
 
@@ -63,6 +64,8 @@ $env:PYTHONIOENCODING='utf-8'; $env:PYTHONUTF8='1'; .\.venv\Scripts\python.exe d
 ```
 
 The audit wrapper records the current run contract in `Result/artifacts/0_14_complex_systems_verification.json`. A pass means the HRV script ran against the declared local files and produced the expected internal metrics. It does not certify the broader cross-domain branches.
+
+The embedded `complexity_claim_gate` keeps current exports at `HRV_RUN_CONTRACT_ONLY`; broader branch claims need their own source locks, baselines, thresholds, and verifier artifacts.
 
 ## Next Hardening Tasks
 
