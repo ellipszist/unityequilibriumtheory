@@ -48,6 +48,7 @@ flowchart LR
 | Hensen 2015 CHSH | Source-referenced working copy | `bell_test_2015.json`, DOI `10.1038/nature15759` | Bell benchmark input |
 | CHSH source lock | Topic provenance map + external packages | `Data/03_Research/source_lock_manifest.json`, `docs/data/external/quantum_nonlocality/...` | normative benchmark provenance |
 | Bell violation gate | Runnable verifier | `Result/artifacts/0_9_quantum_nonlocality_verification.json` | internal CHSH violation check |
+| CHSH evidence gate | Embedded artifact gate | `chsh_evidence_gate` | PASS is limited to summary benchmark; raw reconstruction and UET mechanism remain blocked |
 | Source evidence workflow | Intake + readiness gate | `Data/03_Research/source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json` | provenance queue only |
 | Branch claim control | Claim gate | `Data/03_Research/branch_claim_gate.json` | caps claim strength by lane |
 | Tsirelson bound | Standard benchmark anchor | `FORMULA_AUDIT.md`, verifier metric | consistency with quantum bound |

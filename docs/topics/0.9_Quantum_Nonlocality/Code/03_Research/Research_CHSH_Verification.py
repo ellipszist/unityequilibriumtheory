@@ -208,6 +208,50 @@ def build_branch_claim_gate() -> dict:
     }
 
 
+def build_chsh_evidence_gate(checks: dict, source_evidence_readiness_matrix: dict) -> dict:
+    raw_rows = [
+        row
+        for row in source_evidence_readiness_matrix.get("readiness_rows", [])
+        if row["name"] == "Raw Bell event-count or supplementary package"
+    ]
+    raw_row = raw_rows[0] if raw_rows else {}
+    summary_pass = all(checks.values())
+    return {
+        "schema_version": "1.0",
+        "topic": "0.9_Quantum_Nonlocality",
+        "purpose": "Separate CHSH summary benchmark success from raw-event reconstruction and UET mechanism claims.",
+        "controller_status": "SUMMARY_BENCHMARK_PASS_RAW_RECONSTRUCTION_OPEN"
+        if summary_pass
+        else "SUMMARY_BENCHMARK_WARN",
+        "summary_benchmark_gate": {
+            "status": "PASS" if summary_pass else "WARN",
+            "claim_class": "C - source-referenced internal CHSH benchmark",
+            "supports": "The recorded Hensen 2015 CHSH summary clears the local-realist, p-value, DOI, and Tsirelson consistency checks.",
+            "does_not_support": "Raw event-count reconstruction, detector-event audit, or UET mechanism derivation.",
+        },
+        "raw_event_reconstruction_gate": {
+            "status": "OPEN",
+            "claim_class_when_closed": "C - reconstructed experimental benchmark at most",
+            "pending_fields": raw_row.get("pending_fields", []),
+            "blocker": "Raw Bell event counts or supplementary-table package is not locally archived and reconstructed.",
+        },
+        "uet_mechanism_gate": {
+            "status": "BLOCKED",
+            "blocked_claims": [
+                "derived UET nonlocality mechanism",
+                "topological-filament explanation of CHSH correlations",
+                "replacement of standard quantum nonlocality framework",
+                "qubit/double-slit/tunneling inheritance from CHSH alone",
+            ],
+            "blocker": "No first-principles UET derivation maps the bridge to standard CHSH correlations with a dedicated verifier artifact.",
+        },
+        "promotion_rule": (
+            "The PASS artifact may export only the CHSH summary benchmark. Raw reconstruction and UET-mechanism claims require "
+            "separate closed gates and cannot inherit PASS from the summary benchmark."
+        ),
+    }
+
+
 def main() -> int:
     hensen_path = DATA / "bell_test_2015.json"
     summary_path = DATA / "bell_inequality_data.json"
@@ -259,6 +303,7 @@ def main() -> int:
         blockers.append("Primary Bell-test working copy does not record a DOI.")
 
     status = "PASS" if all(checks.values()) else "WARN"
+    chsh_evidence_gate = build_chsh_evidence_gate(checks, source_evidence_readiness_matrix)
 
     artifact = {
         "schema_version": "1.2",
@@ -332,6 +377,7 @@ def main() -> int:
             "summary": branch_claim_gate["summary"],
             "claim_boundary": branch_claim_gate["claim_boundary"],
         },
+        "chsh_evidence_gate": chsh_evidence_gate,
         "threshold": thresholds,
         "checks": checks,
         "blockers": blockers,

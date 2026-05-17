@@ -2,7 +2,7 @@
   "schema_version": "1.2",
   "topic": "0.9_Quantum_Nonlocality",
   "status": "PASS",
-  "generated_at_utc": "2026-05-16T23:22:09.462868+00:00",
+  "generated_at_utc": "2026-05-17T17:28:39.330187+00:00",
   "command": "python docs/topics/0.9_Quantum_Nonlocality/Code/03_Research/Research_CHSH_Verification.py",
   "environment": {
     "python": "3.14.2",
@@ -82,6 +82,42 @@
       "blocked_for_strong_claims": 4
     },
     "claim_boundary": "This gate cannot raise the topic beyond the current CHSH run-contract evidence."
+  },
+  "chsh_evidence_gate": {
+    "schema_version": "1.0",
+    "topic": "0.9_Quantum_Nonlocality",
+    "purpose": "Separate CHSH summary benchmark success from raw-event reconstruction and UET mechanism claims.",
+    "controller_status": "SUMMARY_BENCHMARK_PASS_RAW_RECONSTRUCTION_OPEN",
+    "summary_benchmark_gate": {
+      "status": "PASS",
+      "claim_class": "C - source-referenced internal CHSH benchmark",
+      "supports": "The recorded Hensen 2015 CHSH summary clears the local-realist, p-value, DOI, and Tsirelson consistency checks.",
+      "does_not_support": "Raw event-count reconstruction, detector-event audit, or UET mechanism derivation."
+    },
+    "raw_event_reconstruction_gate": {
+      "status": "OPEN",
+      "claim_class_when_closed": "C - reconstructed experimental benchmark at most",
+      "pending_fields": [
+        "doi_or_url",
+        "local_path",
+        "supplement_or_table_identifier",
+        "retrieval_date",
+        "license_or_access_note",
+        "extraction_note"
+      ],
+      "blocker": "Raw Bell event counts or supplementary-table package is not locally archived and reconstructed."
+    },
+    "uet_mechanism_gate": {
+      "status": "BLOCKED",
+      "blocked_claims": [
+        "derived UET nonlocality mechanism",
+        "topological-filament explanation of CHSH correlations",
+        "replacement of standard quantum nonlocality framework",
+        "qubit/double-slit/tunneling inheritance from CHSH alone"
+      ],
+      "blocker": "No first-principles UET derivation maps the bridge to standard CHSH correlations with a dedicated verifier artifact."
+    },
+    "promotion_rule": "The PASS artifact may export only the CHSH summary benchmark. Raw reconstruction and UET-mechanism claims require separate closed gates and cannot inherit PASS from the summary benchmark."
   },
   "threshold": {
     "s_value_must_exceed_local_bound": 2.0,

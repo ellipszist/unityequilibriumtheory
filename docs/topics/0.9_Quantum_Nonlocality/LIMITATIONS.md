@@ -6,6 +6,8 @@
   not prove the UET topological-filament mechanism.
 - Raw experimental event counts and full statistical reconstruction are not
   included in the topic data package.
+- `chsh_evidence_gate` can pass the recorded CHSH summary benchmark while still
+  leaving raw-event reconstruction `OPEN` and UET mechanism claims `BLOCKED`.
 - Source-evidence readiness is still pending for the Hensen benchmark package,
   raw-event or supplement package, secondary Bell summary provenance, and
   adjacent qubit-lane provenance.

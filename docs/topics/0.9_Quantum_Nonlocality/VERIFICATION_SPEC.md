@@ -32,7 +32,9 @@ python docs/topics/0.9_Quantum_Nonlocality/Code/03_Research/Research_CHSH_Verifi
 
 The artifact must include command, environment, input hashes, DOI/source fields,
 formula IDs, thresholds, checks, metrics, blockers, limitations, and the
-workflow-gate summaries below.
+workflow-gate summaries below. It must also include `chsh_evidence_gate`, which
+separates the passing CHSH summary benchmark from open raw-event reconstruction
+and blocked UET-mechanism claims.
 
 ## Required workflow gates
 
@@ -49,6 +51,13 @@ evidence is still missing and which adjacent branches remain blocked.
 
 - `PASS`: the source-referenced CHSH benchmark violates the local-realist bound,
   clears the p-value gate, and is consistent with the Tsirelson benchmark.
+- `chsh_evidence_gate.summary_benchmark_gate.status == PASS` means only the
+  recorded CHSH summary benchmark passed the local checks.
+- `chsh_evidence_gate.raw_event_reconstruction_gate.status == OPEN` means the
+  verifier has not reconstructed the experiment from raw event counts.
+- `chsh_evidence_gate.uet_mechanism_gate.status == BLOCKED` means topology,
+  mechanism-replacement, qubit, double-slit, tunneling, and LC-unity claims
+  cannot inherit PASS from the CHSH summary benchmark.
 - The extracted external packages are provenance anchors only; they do not mean
   raw Bell event counts are archived yet.
 - `WARN`: benchmark is computable but a provenance/statistical/rounding gate is

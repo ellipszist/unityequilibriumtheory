@@ -39,6 +39,16 @@ The verifier also records the local Hensen article PDF archive hash. This closes
 article-level provenance for the benchmark citation, but it does not close the
 raw Bell event-count blocker.
 
+The artifact now embeds `chsh_evidence_gate`, which keeps the passing CHSH
+summary benchmark separate from raw-event reconstruction and UET-mechanism
+claims:
+
+- `summary_benchmark_gate`: may pass for the recorded CHSH summary values.
+- `raw_event_reconstruction_gate`: remains `OPEN` until event counts or
+  supplementary tables are archived and reconstructed.
+- `uet_mechanism_gate`: remains `BLOCKED` until a separate derivation and
+  verifier connect the UET bridge to standard CHSH correlations.
+
 ## Workflow Gate Files
 
 | File | Role | Current status |
