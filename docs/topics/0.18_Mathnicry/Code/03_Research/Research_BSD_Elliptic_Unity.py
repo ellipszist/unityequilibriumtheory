@@ -36,23 +36,42 @@ def _sha256(path):
 
 
 def _input_hashes():
-    path = TOPIC_DIR / "Data" / "Download_Quantum_Data.py"
-    record = {
-        "path": str(path.relative_to(TOPIC_DIR)).replace("\\", "/"),
-        "loaded_by_primary_script": False,
-        "role": "declared placeholder/manual data helper in VERIFICATION_SPEC.md",
-    }
-    if path.exists():
-        record.update(
-            {
-                "status": "present",
-                "bytes": path.stat().st_size,
-                "sha256": _sha256(path),
-            }
-        )
-    else:
-        record["status"] = "missing"
-    return [record]
+    inputs = [
+        (
+            TOPIC_DIR / "Data" / "Download_Quantum_Data.py",
+            False,
+            "declared placeholder/manual data helper in VERIFICATION_SPEC.md",
+        ),
+        (
+            TOPIC_DIR / "Code" / "01_Engine" / "Engine_Elliptic_Resonance.py",
+            True,
+            "primary surrogate engine; contains local parity rank indicator behavior",
+        ),
+        (
+            current_path,
+            True,
+            "primary verifier; declares the two local surrogate curve fixtures",
+        ),
+    ]
+    records = []
+    for path, loaded_by_primary_script, role in inputs:
+        record = {
+            "path": str(path.relative_to(TOPIC_DIR)).replace("\\", "/"),
+            "loaded_by_primary_script": loaded_by_primary_script,
+            "role": role,
+        }
+        if path.exists():
+            record.update(
+                {
+                    "status": "present",
+                    "bytes": path.stat().st_size,
+                    "sha256": _sha256(path),
+                }
+            )
+        else:
+            record["status"] = "missing"
+        records.append(record)
+    return records
 
 
 def _write_json(path, payload):
@@ -300,6 +319,37 @@ def _build_theorem_boundary_gate(result, source_evidence_readiness_matrix, branc
     return _write_json(THEOREM_BOUNDARY_GATE_PATH, payload)
 
 
+def _build_surrogate_run_contract_gate(result):
+    engine_path = TOPIC_DIR / "Code" / "01_Engine" / "Engine_Elliptic_Resonance.py"
+    verifier_path = current_path
+    mismatches = result["rank_indicator_mismatches"]
+    return {
+        "gate": "surrogate_run_contract_gate",
+        "status": "SURROGATE_WARN" if mismatches else "SURROGATE_PASS",
+        "claim_class": "D - local surrogate fixture only",
+        "surrogate_fixtures": [
+            {
+                "label": item["label"],
+                "equation": item["equation"],
+                "declared_rank_role": item["declared_rank_role"],
+                "surrogate_rank_indicator": item["surrogate_rank_indicator"],
+            }
+            for item in result["curves"]
+        ],
+        "engine_hash": _sha256(engine_path) if engine_path.exists() else None,
+        "verifier_hash": _sha256(verifier_path) if verifier_path.exists() else None,
+        "mismatch_count": mismatches,
+        "run_contract": "The verifier must run, write an artifact, and report local parity-heuristic mismatch count for the two declared curve fixtures.",
+        "blocked_claim_classes": [
+            "BSD proof",
+            "elliptic-curve rank computation",
+            "L-function order-of-vanishing computation",
+            "theorem proof export",
+        ],
+        "claim_boundary": "This gate validates only the local surrogate code path. It does not validate BSD mathematics or external theorem evidence.",
+    }
+
+
 def write_verification_artifact(result):
     ARTIFACT_PATH.parent.mkdir(parents=True, exist_ok=True)
     source_evidence_intake_stub = _build_source_evidence_intake_stub()
@@ -308,6 +358,7 @@ def write_verification_artifact(result):
     theorem_boundary_gate = _build_theorem_boundary_gate(
         result, source_evidence_readiness_matrix, branch_claim_gate
     )
+    surrogate_run_contract_gate = _build_surrogate_run_contract_gate(result)
     artifact = {
         "schema_version": "1.2",
         "topic": "0.18_Mathnicry",
@@ -344,6 +395,7 @@ def write_verification_artifact(result):
             ],
             "claim_boundary": theorem_boundary_gate["claim_boundary"],
         },
+        "surrogate_run_contract_gate": surrogate_run_contract_gate,
         "metrics": {
             "curve_count": len(result["curves"]),
             "rank_indicator_mismatches": result["rank_indicator_mismatches"],

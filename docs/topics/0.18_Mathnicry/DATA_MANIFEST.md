@@ -9,10 +9,22 @@ The current primary verifier is a surrogate mathematical demonstration and does 
 | Item | Local path | Bytes | SHA256 | Source | Provenance status | Unit convention | Benchmark role |
 | :-- | :-- | --: | :-- | :-- | :-- | :-- | :-- |
 | `Download_Quantum_Data.py` | `Data/Download_Quantum_Data.py` | 3759 | `e4b82c0ea5093ff2d0042f3cada4f4074ade15399a01b5d6241b0b6f6108e07a` | Topic-local quantum/math helper script | Manual/placeholder; not an upstream dataset and not loaded by the current BSD verifier. | Not applicable; script/helper file. | Declared placeholder input in the current verification spec. |
+| `Engine_Elliptic_Resonance.py` | `Code/01_Engine/Engine_Elliptic_Resonance.py` | generated | generated | Topic-local surrogate engine | Local code dependency; not mathematical source data. | Dimensionless local surrogate potential and parity rank indicator. | Loaded by the primary verifier; controls current BSD surrogate behavior. |
+| `Research_BSD_Elliptic_Unity.py` | `Code/03_Research/Research_BSD_Elliptic_Unity.py` | generated | generated | Topic-local verifier and fixture declaration | Local code dependency; not mathematical source data. | Two local curve fixtures with declared narrative roles. | Primary run-contract artifact generator. |
 | `source_evidence_intake_stub.json` | `Data/source_evidence_intake_stub.json` | generated | generated | Topic-generated theorem-branch evidence intake sheet | Workflow control only; not source evidence by itself. | Mixed; each target declares its own expected convention. | Landing zone before data rewrites or claim upgrades. |
 | `source_evidence_readiness_matrix.json` | `Data/source_evidence_readiness_matrix.json` | generated | generated | Topic-generated readiness gate derived from the intake stub | Workflow control only; records completeness, not theorem validation. | Not applicable. | Tracks which theorem branches still lack benchmark evidence fields. |
 | `branch_claim_gate.json` | `Data/branch_claim_gate.json` | generated | generated | Topic-generated claim gate for theorem-inspired branches | Workflow control only; cannot raise claim strength beyond the current run contract. | Not applicable. | Separates BSD, Riemann, Grover/P-vs-NP, Collatz, quantum, and topology claim ceilings. |
 | `theorem_boundary_gate.json` | `Data/theorem_boundary_gate.json` | generated | generated | Topic-generated theorem export gate | Workflow control only; records which theorem-style exports are blocked. | Not applicable. | Allows only surrogate BSD run-contract export while blocking BSD/Riemann/P-vs-NP/Collatz/quantum theorem claims. |
+| `surrogate_run_contract_gate` | embedded in `Result/artifacts/0_18_mathnicry_verification.json` | generated | generated | Verifier-generated gate for local BSD surrogate fixtures | Workflow/code-path gate only; not theorem evidence. | Dimensionless local surrogate output and mismatch count. | Separates local surrogate execution from blocked BSD/L-function/formal-proof claims. |
+
+## Current Surrogate Fixture Package
+
+The current BSD lane is a local fixture package, not an external theorem dataset:
+
+| Fixture | Curve | Declared role | Current surrogate basis | Claim boundary |
+| :-- | :-- | :-- | :-- | :-- |
+| Curve A | `y^2 = x^3 + x + 1` | rank-0 narrative candidate | local parity rule `(a+b)%2` plus surrogate `Omega(s)` | diagnostic only; not an elliptic-curve rank computation |
+| Curve B | `y^2 = x^3 + 2x + 4` | rank-1+ narrative candidate | local parity rule `(a+b)%2` plus surrogate `Omega(s)` | diagnostic only; not an L-function order-of-vanishing computation |
 
 ## Missing Provenance for Theorem Branches
 

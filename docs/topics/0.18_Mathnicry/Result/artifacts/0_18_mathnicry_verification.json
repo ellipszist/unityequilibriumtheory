@@ -1,7 +1,7 @@
 {
   "schema_version": "1.2",
   "topic": "0.18_Mathnicry",
-  "timestamp_utc": "2026-05-16T23:05:51.964254+00:00",
+  "timestamp_utc": "2026-05-17T17:18:32.055998+00:00",
   "command": "python docs/topics/0.18_Mathnicry/Code/03_Research/Research_BSD_Elliptic_Unity.py",
   "status": "WARN",
   "passed_run_contract": true,
@@ -13,6 +13,22 @@
       "status": "present",
       "bytes": 3759,
       "sha256": "e4b82c0ea5093ff2d0042f3cada4f4074ade15399a01b5d6241b0b6f6108e07a"
+    },
+    {
+      "path": "Code/01_Engine/Engine_Elliptic_Resonance.py",
+      "loaded_by_primary_script": true,
+      "role": "primary surrogate engine; contains local parity rank indicator behavior",
+      "status": "present",
+      "bytes": 3153,
+      "sha256": "7d4191f5457e5e2a40db7e0c86e8d83a0935f4525f53384d8defa24c5f180f6c"
+    },
+    {
+      "path": "Code/03_Research/Research_BSD_Elliptic_Unity.py",
+      "loaded_by_primary_script": true,
+      "role": "primary verifier; declares the two local surrogate curve fixtures",
+      "status": "present",
+      "bytes": 22677,
+      "sha256": "827976ca2dd9bcea4a5895ef50642dbe50e0b5d694131d3341105deda0c0874d"
     }
   ],
   "source_evidence_intake_stub": {
@@ -62,6 +78,36 @@
       "T18_EXPORT_QUANTUM_ENGINE_THEOREM"
     ],
     "claim_boundary": "0.18 can currently export only surrogate/run-contract evidence. All theorem-level exports are blocked."
+  },
+  "surrogate_run_contract_gate": {
+    "gate": "surrogate_run_contract_gate",
+    "status": "SURROGATE_WARN",
+    "claim_class": "D - local surrogate fixture only",
+    "surrogate_fixtures": [
+      {
+        "label": "Curve A",
+        "equation": "y^2 = x^3 + x + 1",
+        "declared_rank_role": "Rank 0 candidate in script narration",
+        "surrogate_rank_indicator": 1
+      },
+      {
+        "label": "Curve B",
+        "equation": "y^2 = x^3 + 2x + 4",
+        "declared_rank_role": "Rank 1+ candidate in script narration",
+        "surrogate_rank_indicator": 1
+      }
+    ],
+    "engine_hash": "7d4191f5457e5e2a40db7e0c86e8d83a0935f4525f53384d8defa24c5f180f6c",
+    "verifier_hash": "827976ca2dd9bcea4a5895ef50642dbe50e0b5d694131d3341105deda0c0874d",
+    "mismatch_count": 1,
+    "run_contract": "The verifier must run, write an artifact, and report local parity-heuristic mismatch count for the two declared curve fixtures.",
+    "blocked_claim_classes": [
+      "BSD proof",
+      "elliptic-curve rank computation",
+      "L-function order-of-vanishing computation",
+      "theorem proof export"
+    ],
+    "claim_boundary": "This gate validates only the local surrogate code path. It does not validate BSD mathematics or external theorem evidence."
   },
   "metrics": {
     "curve_count": 2,
