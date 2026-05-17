@@ -336,12 +336,85 @@ def _build_numeric_residual_gate(metrics, source_evidence_readiness_matrix):
     }
 
 
+def _build_dynamic_frame_claim_gate(numeric_residual_gate, source_evidence_readiness_matrix, dependency_claim_gate):
+    readiness_summary = source_evidence_readiness_matrix.get("summary", {})
+    dependency_summary = dependency_claim_gate.get("summary", {})
+    source_ready = (
+        readiness_summary.get("source_targets_total", 0) > 0
+        and readiness_summary.get("targets_blocked_by_pending_evidence", 0) == 0
+    )
+    numeric_ready = (
+        numeric_residual_gate.get("numeric_flow_residual_gate", {}).get("status") == "CLOSED_PASS"
+        and numeric_residual_gate.get("baseline_comparison_gate", {}).get("status") == "CLOSED_PASS"
+    )
+    upstream_clean = dependency_summary.get("dependencies_with_warn_status", 0) == 0
+    visualization_status = numeric_residual_gate.get("visualization_gate", {}).get("status", "FAIL")
+    return {
+        "schema_version": "1.0",
+        "purpose": "Machine-readable claim boundary for dynamic-frame exports.",
+        "controller_status": "BLOCKED",
+        "allowed_exports_now": [
+            {
+                "export": "laniakea_visualization_provenance",
+                "status": visualization_status,
+                "claim_class": "C - internal visualization/provenance artifact",
+                "basis": "topic-local landmark package loads, hashes, and renders a flow-map figure",
+            },
+            {
+                "export": "dynamic_frame_mechanism_candidate",
+                "status": "WARN",
+                "claim_class": "D - exploratory hypothesis",
+                "basis": "source records and dependency notes exist, but numeric residual and baseline gates are open",
+            },
+        ],
+        "blocked_exports": [
+            {
+                "export": "validated_dynamic_frame_model",
+                "status": "BLOCKED",
+                "blocker": "numeric_flow_residual_gate and baseline_comparison_gate are open",
+            },
+            {
+                "export": "dark_matter_or_cosmology_replacement",
+                "status": "BLOCKED",
+                "blocker": "no multi-dataset baseline comparison or residual threshold is closed",
+            },
+            {
+                "export": "pioneer_anomaly_explanation",
+                "status": "BLOCKED",
+                "blocker": "thermal-recoil competitor and raw telemetry/residual package are not closed",
+            },
+            {
+                "export": "strong_inherited_unity_claim",
+                "status": "BLOCKED",
+                "blocker": "linked upstream dependencies still include WARN/open gates",
+            },
+        ],
+        "gate_inputs": {
+            "source_evidence_ready": source_ready,
+            "numeric_residual_ready": numeric_ready,
+            "upstream_dependencies_clean": upstream_clean,
+            "visualization_gate_status": visualization_status,
+            "source_evidence_summary": readiness_summary,
+            "dependency_summary": dependency_summary,
+        },
+        "promotion_rule": (
+            "Theory-level dynamic-frame claims require source evidence ready, numeric residual gate CLOSED_PASS, "
+            "baseline comparison gate CLOSED_PASS, and no unresolved upstream WARN inherited as proof."
+        ),
+    }
+
+
 def _write_artifact(metrics, figure_path):
     inputs = _input_identity()
     source_evidence_intake_stub = _build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = _build_source_evidence_readiness_matrix(source_evidence_intake_stub)
     dependency_claim_gate = _build_dependency_claim_gate()
     numeric_residual_gate = _build_numeric_residual_gate(metrics, source_evidence_readiness_matrix)
+    dynamic_frame_claim_gate = _build_dynamic_frame_claim_gate(
+        numeric_residual_gate,
+        source_evidence_readiness_matrix,
+        dependency_claim_gate,
+    )
     missing = [item["path"] for item in inputs if item.get("missing")]
     status = "WARN" if figure_path and not missing else "FAIL"
     artifact = {
@@ -354,9 +427,10 @@ def _write_artifact(metrics, figure_path):
         "inputs": inputs,
         "metrics": metrics,
         "numeric_residual_gate": numeric_residual_gate,
+        "dynamic_frame_claim_gate": dynamic_frame_claim_gate,
         "gate_controller": {
             "topic_status_basis": "visualization/provenance can produce WARN when inputs and figure are present",
-            "theory_claim_basis": "numeric residual and baseline comparison gates must close before any dynamic-frame replacement claim",
+            "theory_claim_basis": "dynamic_frame_claim_gate, numeric residual, and baseline comparison gates must close before any dynamic-frame replacement claim",
             "current_theory_claim_status": "BLOCKED",
         },
         "figure_artifact": str(figure_path.relative_to(TOPIC_DIR)) if figure_path else None,
