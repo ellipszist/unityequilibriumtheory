@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.18_Mathnicry",
+  "purpose": "Machine-readable data-posture gate for theorem-inspired branches.",
+  "data_reality_status": "manual_or_placeholder",
+  "controller_status": "SURROGATE_ONLY",
+  "primary_verifier_input_class": "local_code_fixture_package",
+  "loaded_input_count": 2,
+  "declared_placeholder_input_count": 1,
+  "missing_input_count": 0,
+  "loaded_inputs": [
+    {
+      "path": "Code/01_Engine/Engine_Elliptic_Resonance.py",
+      "bytes": 3153,
+      "sha256": "7d4191f5457e5e2a40db7e0c86e8d83a0935f4525f53384d8defa24c5f180f6c",
+      "role": "primary surrogate engine; contains local parity rank indicator behavior"
+    },
+    {
+      "path": "Code/03_Research/Research_BSD_Elliptic_Unity.py",
+      "bytes": 26161,
+      "sha256": "2dee4d20e8a190ead6ef9ad4a6cbb9e78b746c7ac518406c3950dd33821ae427",
+      "role": "primary verifier; declares the two local surrogate curve fixtures"
+    }
+  ],
+  "declared_placeholder_inputs": [
+    {
+      "path": "Data/Download_Quantum_Data.py",
+      "status": "present",
+      "bytes": 3759,
+      "sha256": "e4b82c0ea5093ff2d0042f3cada4f4074ade15399a01b5d6241b0b6f6108e07a",
+      "role": "declared placeholder/manual data helper in VERIFICATION_SPEC.md"
+    }
+  ],
+  "source_evidence_summary": {
+    "source_targets_total": 5,
+    "targets_ready_for_source_review": 0,
+    "targets_blocked_by_pending_evidence": 5
+  },
+  "benchmark_role": "run-contract and local surrogate fixture only",
+  "unit_or_convention_note": "Local BSD surrogate outputs are dimensionless; curve coefficients are integer fixture values. No elliptic-curve rank table, L-function value table, or theorem-source convention is attached.",
+  "promotion_blockers": [
+    "No source-backed elliptic-curve rank or L-function benchmark package is ready.",
+    "All theorem-branch source targets remain blocked by pending evidence fields.",
+    "Primary verifier consumes local code fixtures rather than an external theorem dataset."
+  ],
+  "claim_boundary": "This gate allows only local surrogate/run-contract evidence. It blocks proof-level, theorem-level, and external-validation wording until source-backed benchmark packages and proof-boundary artifacts exist."
+}

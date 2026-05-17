@@ -11,6 +11,7 @@
   - `Data/source_evidence_readiness_matrix.json`
   - `Data/branch_claim_gate.json`
   - `Data/theorem_boundary_gate.json`
+  - `Data/data_posture_gate.json`
   - embedded `surrogate_run_contract_gate` in `Result/artifacts/0_18_mathnicry_verification.json`
 - Baseline:
   - Internal surrogate BSD demonstration using `Engine_Elliptic_Resonance.py`.
@@ -21,12 +22,14 @@
   - rank-indicator mismatch count
   - input/helper file hashes
   - theorem-boundary status, accepted surrogate export, blocked theorem exports
+  - data-posture controller status and primary verifier input class
 - Fixed threshold:
   - Working threshold for this standards pass: the primary script must run without error and write a summary artifact under `Result/artifacts/`.
   - Artifact status should be `WARN` when surrogate rank indicators contradict the script's declared curve roles.
   - This is a run-contract threshold only; it is not a theorem acceptance boundary.
   - `surrogate_run_contract_gate.status` may be `SURROGATE_PASS` or `SURROGATE_WARN`; both remain local-code-path evidence only.
   - `theorem_boundary_gate.status` must remain `THEOREM_CLAIMS_BLOCKED` until source-backed theorem benchmarks and proof-boundary artifacts are present.
+  - `data_posture_gate.controller_status` must remain `SURROGATE_ONLY` while the primary verifier consumes only local code fixtures and placeholder/manual inputs.
 - Artifact target:
   - Result/artifacts/0_18_mathnicry_verification.json
 - Latest primary artifact identity:
@@ -41,6 +44,7 @@
   - Treat output as an internal surrogate artifact only. Do not upgrade claim language to theorem-level, proof-level, solved, verified, or exact.
   - Treat source-evidence and branch-claim gate outputs as workflow controls, not as theorem evidence.
   - Treat `theorem_boundary_gate` as the inheritance contract for `0.0`: only surrogate run-contract evidence may be inherited.
+  - Treat `data_posture_gate` as the data-reality contract: current artifacts are local fixture evidence, not theorem-source evidence.
   - Treat `surrogate_run_contract_gate` as a fixture/code-path gate, not as theorem evidence or external validation.
   - The current BSD branch does not compute actual elliptic-curve rank or L-function order of vanishing.
   - The UTF-8 environment variables are required on this Windows shell because logger/status output uses Unicode glyphs.

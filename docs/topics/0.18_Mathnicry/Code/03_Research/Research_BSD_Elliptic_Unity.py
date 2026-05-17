@@ -25,6 +25,7 @@ SOURCE_EVIDENCE_INTAKE_PATH = TOPIC_DIR / "Data" / "source_evidence_intake_stub.
 SOURCE_EVIDENCE_READINESS_PATH = TOPIC_DIR / "Data" / "source_evidence_readiness_matrix.json"
 BRANCH_CLAIM_GATE_PATH = TOPIC_DIR / "Data" / "branch_claim_gate.json"
 THEOREM_BOUNDARY_GATE_PATH = TOPIC_DIR / "Data" / "theorem_boundary_gate.json"
+DATA_POSTURE_GATE_PATH = TOPIC_DIR / "Data" / "data_posture_gate.json"
 
 
 def _sha256(path):
@@ -319,6 +320,61 @@ def _build_theorem_boundary_gate(result, source_evidence_readiness_matrix, branc
     return _write_json(THEOREM_BOUNDARY_GATE_PATH, payload)
 
 
+def _build_data_posture_gate(input_hashes, source_evidence_readiness_matrix):
+    loaded_inputs = [item for item in input_hashes if item.get("loaded_by_primary_script")]
+    placeholder_inputs = [item for item in input_hashes if not item.get("loaded_by_primary_script")]
+    missing_inputs = [item for item in input_hashes if item.get("status") == "missing"]
+    source_summary = source_evidence_readiness_matrix["summary"]
+    return _write_json(
+        DATA_POSTURE_GATE_PATH,
+        {
+            "schema_version": "1.0",
+            "topic": "0.18_Mathnicry",
+            "purpose": "Machine-readable data-posture gate for theorem-inspired branches.",
+            "data_reality_status": "manual_or_placeholder",
+            "controller_status": "SURROGATE_ONLY",
+            "primary_verifier_input_class": "local_code_fixture_package",
+            "loaded_input_count": len(loaded_inputs),
+            "declared_placeholder_input_count": len(placeholder_inputs),
+            "missing_input_count": len(missing_inputs),
+            "loaded_inputs": [
+                {
+                    "path": item["path"],
+                    "bytes": item.get("bytes"),
+                    "sha256": item.get("sha256"),
+                    "role": item["role"],
+                }
+                for item in loaded_inputs
+            ],
+            "declared_placeholder_inputs": [
+                {
+                    "path": item["path"],
+                    "status": item.get("status"),
+                    "bytes": item.get("bytes"),
+                    "sha256": item.get("sha256"),
+                    "role": item["role"],
+                }
+                for item in placeholder_inputs
+            ],
+            "source_evidence_summary": source_summary,
+            "benchmark_role": "run-contract and local surrogate fixture only",
+            "unit_or_convention_note": (
+                "Local BSD surrogate outputs are dimensionless; curve coefficients are integer fixture values. "
+                "No elliptic-curve rank table, L-function value table, or theorem-source convention is attached."
+            ),
+            "promotion_blockers": [
+                "No source-backed elliptic-curve rank or L-function benchmark package is ready.",
+                "All theorem-branch source targets remain blocked by pending evidence fields.",
+                "Primary verifier consumes local code fixtures rather than an external theorem dataset.",
+            ],
+            "claim_boundary": (
+                "This gate allows only local surrogate/run-contract evidence. It blocks proof-level, theorem-level, "
+                "and external-validation wording until source-backed benchmark packages and proof-boundary artifacts exist."
+            ),
+        },
+    )
+
+
 def _build_surrogate_run_contract_gate(result):
     engine_path = TOPIC_DIR / "Code" / "01_Engine" / "Engine_Elliptic_Resonance.py"
     verifier_path = current_path
@@ -352,12 +408,14 @@ def _build_surrogate_run_contract_gate(result):
 
 def write_verification_artifact(result):
     ARTIFACT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    input_hashes = _input_hashes()
     source_evidence_intake_stub = _build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = _build_source_evidence_readiness_matrix(source_evidence_intake_stub)
     branch_claim_gate = _build_branch_claim_gate()
     theorem_boundary_gate = _build_theorem_boundary_gate(
         result, source_evidence_readiness_matrix, branch_claim_gate
     )
+    data_posture_gate = _build_data_posture_gate(input_hashes, source_evidence_readiness_matrix)
     surrogate_run_contract_gate = _build_surrogate_run_contract_gate(result)
     artifact = {
         "schema_version": "1.2",
@@ -366,7 +424,7 @@ def write_verification_artifact(result):
         "command": "python docs/topics/0.18_Mathnicry/Code/03_Research/Research_BSD_Elliptic_Unity.py",
         "status": result["status"],
         "passed_run_contract": result["status"] in {"PASS", "WARN"},
-        "input_hashes": _input_hashes(),
+        "input_hashes": input_hashes,
         "source_evidence_intake_stub": {
             "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
             "sha256": _sha256(SOURCE_EVIDENCE_INTAKE_PATH),
@@ -394,6 +452,14 @@ def write_verification_artifact(result):
                 item["export_id"] for item in theorem_boundary_gate["blocked_theorem_exports"]
             ],
             "claim_boundary": theorem_boundary_gate["claim_boundary"],
+        },
+        "data_posture_gate": {
+            "path": str(DATA_POSTURE_GATE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
+            "sha256": _sha256(DATA_POSTURE_GATE_PATH),
+            "controller_status": data_posture_gate["controller_status"],
+            "data_reality_status": data_posture_gate["data_reality_status"],
+            "primary_verifier_input_class": data_posture_gate["primary_verifier_input_class"],
+            "claim_boundary": data_posture_gate["claim_boundary"],
         },
         "surrogate_run_contract_gate": surrogate_run_contract_gate,
         "metrics": {

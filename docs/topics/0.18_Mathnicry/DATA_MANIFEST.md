@@ -15,7 +15,24 @@ The current primary verifier is a surrogate mathematical demonstration and does 
 | `source_evidence_readiness_matrix.json` | `Data/source_evidence_readiness_matrix.json` | generated | generated | Topic-generated readiness gate derived from the intake stub | Workflow control only; records completeness, not theorem validation. | Not applicable. | Tracks which theorem branches still lack benchmark evidence fields. |
 | `branch_claim_gate.json` | `Data/branch_claim_gate.json` | generated | generated | Topic-generated claim gate for theorem-inspired branches | Workflow control only; cannot raise claim strength beyond the current run contract. | Not applicable. | Separates BSD, Riemann, Grover/P-vs-NP, Collatz, quantum, and topology claim ceilings. |
 | `theorem_boundary_gate.json` | `Data/theorem_boundary_gate.json` | generated | generated | Topic-generated theorem export gate | Workflow control only; records which theorem-style exports are blocked. | Not applicable. | Allows only surrogate BSD run-contract export while blocking BSD/Riemann/P-vs-NP/Collatz/quantum theorem claims. |
+| `data_posture_gate.json` | `Data/data_posture_gate.json` | generated | generated | Topic-generated data-posture gate for theorem-inspired branches | Workflow control only; states that the current primary verifier is `SURROGATE_ONLY`. | Dimensionless local surrogate outputs; integer curve fixture coefficients. | Blocks proof/theorem/external-validation wording until source-backed theorem benchmark packages exist. |
 | `surrogate_run_contract_gate` | embedded in `Result/artifacts/0_18_mathnicry_verification.json` | generated | generated | Verifier-generated gate for local BSD surrogate fixtures | Workflow/code-path gate only; not theorem evidence. | Dimensionless local surrogate output and mismatch count. | Separates local surrogate execution from blocked BSD/L-function/formal-proof claims. |
+
+## Data Posture Gate
+
+The primary verifier emits `Data/data_posture_gate.json` and embeds its identity in
+`Result/artifacts/0_18_mathnicry_verification.json`.
+
+Current controller status:
+
+- `data_reality_status`: `manual_or_placeholder`
+- `controller_status`: `SURROGATE_ONLY`
+- `primary_verifier_input_class`: `local_code_fixture_package`
+
+This is intentional, not a hidden failure. The gate preserves a narrow export:
+the local BSD-style surrogate script ran and reported its mismatch count. It
+blocks theorem-level, proof-level, and external-validation wording until a real
+benchmark/source package exists.
 
 ## Current Surrogate Fixture Package
 

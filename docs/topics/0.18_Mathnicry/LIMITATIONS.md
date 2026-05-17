@@ -7,6 +7,7 @@
 - The current BSD verifier uses a surrogate rank rule `(a+b)%2`, not actual elliptic-curve rank or L-function computation.
 - `Data/source_evidence_intake_stub.json`, `Data/source_evidence_readiness_matrix.json`, and `Data/branch_claim_gate.json` are workflow controls only. They do not count as theorem evidence or proof closure.
 - `Data/theorem_boundary_gate.json` is also a workflow/export control. It can block theorem-level inheritance, but it is not proof evidence by itself.
+- `Data/data_posture_gate.json` is the data-reality controller. Its current `SURROGATE_ONLY` status means the primary verifier is allowed only as a local fixture/run-contract artifact.
 - Riemann scripts that evaluate `mpmath.zetazero(n)` check library-provided zeros; they do not search for or exclude off-critical-line zeros.
 - Grover/P-vs-NP scaling scripts demonstrate quantum-search behavior and do not imply NP-complete problems are polynomial-time solvable.
 - Collatz scripts are bounded/heuristic and include code hygiene issues such as unreachable logic after a `return` in `Engine_Collatz_Field.py`.
@@ -17,6 +18,7 @@
 | Claim area | Allowed wording now | Blocker to stronger wording |
 | :-- | :-- | :-- |
 | BSD branch | surrogate run-contract artifact | source-backed rank/L-function data and non-surrogate computation |
+| Data posture | `SURROGATE_ONLY` local fixture package | source-backed theorem benchmark package with local archive, convention notes, and proof-boundary artifact |
 | Riemann branch | numerical/library zero sandbox | zero table, precision manifest, and off-line exclusion proof |
 | Grover/P-vs-NP | quantum-search scaling sandbox | formal reduction and complexity proof boundary |
 | Collatz | bounded/heuristic exploration | search manifest, range, counterexample policy, and proof argument |

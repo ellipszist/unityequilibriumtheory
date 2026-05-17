@@ -40,6 +40,7 @@ The current evidence package does not establish the Riemann Hypothesis, BSD conj
 - `Data/source_evidence_readiness_matrix.json`: workflow gate for which theorem-branch evidence packages are still blocked by missing fields.
 - `Data/branch_claim_gate.json`: separated claim ceilings for BSD, Riemann, Grover/P-vs-NP, Collatz, quantum-engine, and topology branches.
 - `Data/theorem_boundary_gate.json`: verifier-generated export gate that allows only surrogate run-contract evidence and blocks formal-theorem exports.
+- `Data/data_posture_gate.json`: verifier-generated data-reality gate that keeps the current primary artifact in `SURROGATE_ONLY` status.
 
 ## Verification
 
@@ -52,6 +53,8 @@ $env:PYTHONIOENCODING='utf-8'; $env:PYTHONUTF8='1'; .\.venv\Scripts\python.exe d
 A pass means the current BSD surrogate demonstration ran and wrote an artifact. It does not mean BSD, Riemann, P vs NP, Collatz, or any other theorem has been proved.
 
 The verifier now emits `theorem_boundary_gate`, which dependent topics may use to inherit only `T18_EXPORT_BSD_SURROGATE_RUN_CONTRACT`. All formal-theorem exports remain blocked until real benchmark data, formal assumptions, proof status, and failure modes are attached.
+
+It also emits `data_posture_gate`, which states that the current primary verifier consumes a local code fixture package rather than an external theorem dataset. This gate is allowed to support only local run-contract language.
 
 ## Next Hardening Tasks
 
