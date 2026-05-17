@@ -325,6 +325,36 @@ def build_model_claim_gate() -> dict:
     return write_json(MODEL_CLAIM_GATE, payload)
 
 
+def build_descriptive_diagnostic_gate(checks: dict, blockers: list[str], source_readiness: dict) -> dict:
+    diagnostic_checks = {
+        "market_rows_ok": checks.get("market_rows_ok", False),
+        "gini_range_ok": checks.get("gini_range_ok", False),
+    }
+    provenance_checks = {
+        "snapshot_has_source_url": checks.get("snapshot_has_source_url", False),
+        "economy_has_source_url": checks.get("economy_has_source_url", False),
+    }
+    diagnostic_pass = all(diagnostic_checks.values())
+    provenance_pass = all(provenance_checks.values()) and source_readiness["summary"]["targets_blocked_by_pending_evidence"] == 0
+    return {
+        "gate": "descriptive_economic_diagnostic_gate",
+        "status": "DESCRIPTIVE_WARN" if diagnostic_pass and not provenance_pass else ("PASS" if diagnostic_pass else "FAIL"),
+        "diagnostic_run_contract": "PASS" if diagnostic_pass else "FAIL",
+        "provenance_gate": "PASS" if provenance_pass else "OPEN",
+        "diagnostic_checks": diagnostic_checks,
+        "provenance_checks": provenance_checks,
+        "blockers": blockers,
+        "blocked_claim_classes": [
+            "policy causality",
+            "strategic superiority",
+            "social stabilization",
+            "market prediction",
+            "game-theory improvement claim",
+        ],
+        "claim_boundary": "This gate can pass only descriptive market/economy diagnostics. Policy, prediction, and strategic claims remain blocked until upstream provenance, baselines, and causal design are present.",
+    }
+
+
 def main() -> int:
     series = [
         series_metrics("SP500", DATA / "03_Research" / "SP500_yahoo_real.csv"),
@@ -377,6 +407,7 @@ def main() -> int:
         blockers.append("Global_Economy_2024.json names World Bank/IMF references but does not record a URL/DOI.")
 
     status = "PASS" if all(checks.values()) else "WARN"
+    descriptive_diagnostic_gate = build_descriptive_diagnostic_gate(checks, blockers, source_evidence_readiness)
 
     for item in series:
         item.pop("returns", None)
@@ -444,6 +475,7 @@ def main() -> int:
             "summary": model_claim_gate["summary"],
             "claim_boundary": "This gate records diagnostic versus simulation claim ceilings only. It cannot upgrade the topic beyond descriptive evidence.",
         },
+        "descriptive_diagnostic_gate": descriptive_diagnostic_gate,
         "market_metrics": series,
         "economy_metrics": economy,
         "correlations": correlations,

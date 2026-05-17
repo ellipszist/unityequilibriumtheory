@@ -16,6 +16,32 @@
     "sp500_bitcoin_return_corr": -0.014692765476653786,
     "sp500_gold_return_corr": 0.04084774540343317
   },
+  "descriptive_diagnostic_gate": {
+    "blocked_claim_classes": [
+      "policy causality",
+      "strategic superiority",
+      "social stabilization",
+      "market prediction",
+      "game-theory improvement claim"
+    ],
+    "blockers": [
+      "daily_economic_snapshot.json has no upstream URL/DOI; source is a local gateway label.",
+      "Global_Economy_2024.json names World Bank/IMF references but does not record a URL/DOI."
+    ],
+    "claim_boundary": "This gate can pass only descriptive market/economy diagnostics. Policy, prediction, and strategic claims remain blocked until upstream provenance, baselines, and causal design are present.",
+    "diagnostic_checks": {
+      "gini_range_ok": true,
+      "market_rows_ok": true
+    },
+    "diagnostic_run_contract": "PASS",
+    "gate": "descriptive_economic_diagnostic_gate",
+    "provenance_checks": {
+      "economy_has_source_url": false,
+      "snapshot_has_source_url": false
+    },
+    "provenance_gate": "OPEN",
+    "status": "DESCRIPTIVE_WARN"
+  },
   "economy_metrics": {
     "economy_count": 6,
     "gdp_ppp_total_usd": 251920000000000.0,
@@ -42,7 +68,7 @@
     "EC25-RETURN-CORRELATION",
     "EC25-GINI-SANITY"
   ],
-  "generated_at_utc": "2026-05-06T15:35:44.423870+00:00",
+  "generated_at_utc": "2026-05-17T17:12:39.614501+00:00",
   "inputs": [
     {
       "first_date": "2010-01-04",

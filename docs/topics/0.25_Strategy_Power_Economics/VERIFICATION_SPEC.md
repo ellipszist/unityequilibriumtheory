@@ -23,6 +23,7 @@ python docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_Econo
 - `Data/03_Research/source_evidence_intake_stub.json`
 - `Data/03_Research/source_evidence_readiness_matrix.json`
 - `Data/03_Research/model_claim_gate.json`
+- embedded `descriptive_diagnostic_gate` in `Result/artifacts/0_25_strategy_power_economics_verification.json`
 
 ## Current readiness snapshot
 
@@ -58,3 +59,9 @@ limitations.
 
 This verifier does not test strategic superiority, Nash-equilibrium improvement,
 policy causality, or global social stabilization.
+
+`descriptive_diagnostic_gate.diagnostic_run_contract == PASS` means only that
+the market row-count and Gini sanity diagnostics passed. If
+`descriptive_diagnostic_gate.status == DESCRIPTIVE_WARN`, policy, prediction,
+and strategic-superiority claims remain blocked by provenance and causal-design
+gaps.

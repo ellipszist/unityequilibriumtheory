@@ -19,6 +19,7 @@ claims.
 | Source evidence intake stub | `Data/03_Research/source_evidence_intake_stub.json` | topic-generated intake sheet for unresolved market/economy/snapshot source metadata | mixed; each target declares its own expected unit basis | landing zone before data rewrites or claim upgrades | workflow control only; not evidence by itself |
 | Source evidence readiness matrix | `Data/03_Research/source_evidence_readiness_matrix.json` | topic-generated readiness gate derived from the intake stub | n/a | tracks completeness of provenance capture | all five targets are now mapped as `partial`; remaining blockers are specific metadata gaps rather than blank placeholders |
 | Model claim gate | `Data/03_Research/model_claim_gate.json` | topic-generated claim gate for diagnostic versus simulation lanes | n/a | controls allowed claim class per lane | workflow control only; cannot raise claim strength beyond descriptive diagnostics |
+| Descriptive diagnostic gate | embedded in `Result/artifacts/0_25_strategy_power_economics_verification.json` | verifier-generated gate for market/economy diagnostics | n/a | separates row-count/Gini sanity from policy or prediction claims | Can pass only descriptive diagnostics; policy, prediction, and strategic claims remain blocked until provenance and causal baselines exist. |
 
 ## Hash Policy
 
