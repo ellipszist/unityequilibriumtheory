@@ -4,7 +4,8 @@
   "purpose": "Claim gate for separate cosmology branches inside the topic.",
   "summary": {
     "branches_total": 5,
-    "accepted_now": 2,
+    "accepted_now": 1,
+    "provisional_or_diagnostic": 1,
     "blocked_for_strong_claims": 3
   },
   "branches": [
@@ -16,8 +17,8 @@
     },
     {
       "branch": "Frame-coupling bridge branch",
-      "status": "accepted_with_derivation_gap",
-      "allowed_usage_now": "Accepted no-fit coupling hypothesis for the current scalar benchmark.",
+      "status": "provisional_no_fit_bridge_with_derivation_gap",
+      "allowed_usage_now": "Diagnostic no-fit coupling lane for the current scalar benchmark.",
       "blocker_to_stronger_claim": "Need derivation or independent external constraint for beta_frame = sqrt(alpha_em)."
     },
     {

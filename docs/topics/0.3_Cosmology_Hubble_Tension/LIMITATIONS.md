@@ -5,7 +5,7 @@
 - The dark-energy problem retains documented failure cases inside the topic.
 - Internal agreement with selected H0 references does not establish broad cosmological
   adequacy.
-- The branch claim gate now accepts only the scalar H0 benchmark branch and the no-fit frame-coupling bridge branch; high-z, dark-energy, and full-likelihood claims remain blocked.
+- The branch claim gate now accepts only the scalar H0 benchmark branch. The no-fit frame-coupling bridge is diagnostic/provisional until its derivation and independent constraint package are closed; high-z, dark-energy, and full-likelihood claims remain blocked.
 - The generic Landauer-derived solver beta is not the same quantity as the Hubble-frame
   coupling. Using the generic beta for the H0 frame comparison fails the benchmark.
 - The current H0 benchmark uses `sqrt(alpha_em)` as a no-fitting frame coupling. This still

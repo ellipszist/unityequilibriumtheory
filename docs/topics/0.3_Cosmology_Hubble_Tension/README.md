@@ -39,7 +39,7 @@ flowchart LR
 | Layer | Current status | Evidence / artifact | Claim allowed |
 | :-- | :-- | :-- | :-- |
 | Planck-SH0ES scalar gap | Source-locked and rerunnable | `Result/artifacts/hubble_comparison_validation.json` | internal scalar benchmark |
-| Hubble-frame beta | Non-fitted bridge | `FORMULA_AUDIT.md`, source-lock manifest | topic coupling hypothesis |
+| Hubble-frame beta | Non-fitted bridge with derivation gap | `FORMULA_AUDIT.md`, source-lock manifest | diagnostic coupling lane only |
 | Workflow gates | Source evidence + branch claim files | `Data/03_Research/source_evidence_*`, `branch_claim_gate.json` | controls branch promotion |
 | Redshift transition law | Formula present, not fully gated | `Engine_Cosmology.py` | model component only |
 | Dark energy / Lambda gap | Separate documented blocker | `LIMITATIONS.md`, research scripts | open problem |
@@ -86,8 +86,8 @@ Supporting standard files:
 - Latest rerun records about `2.085%` relative error with source-lock hashes in the artifact
 - The topic also documents at least one explicit failure mode for the vacuum-energy problem;
   this failure must remain visible in topic summaries
-- Branch gates now separate accepted scalar H0 work from blocked high-z, dark-energy, and
-  full-likelihood claims
+- Branch gates now separate the accepted scalar H0 benchmark from the diagnostic beta bridge
+  and blocked high-z, dark-energy, and full-likelihood claims
 
 ## Baselines
 

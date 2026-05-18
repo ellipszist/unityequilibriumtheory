@@ -2,11 +2,12 @@
   "branch_claim_gate": {
     "claim_boundary": "This gate cannot raise the topic above the current internal scalar H0 benchmark package.",
     "path": "Data/03_Research/branch_claim_gate.json",
-    "sha256": "aca84103197e88c769a31a34ad556039503b22d4abe0e6bf214f65c7919e49d3",
+    "sha256": "0ef1b364dc6b07d9a97a312a418e538033b91919b113d8ad43b0729d11175af9",
     "summary": {
-      "accepted_now": 2,
+      "accepted_now": 1,
       "blocked_for_strong_claims": 3,
-      "branches_total": 5
+      "branches_total": 5,
+      "provisional_or_diagnostic": 1
     }
   },
   "claim_boundary": "PASS means the scalar z=0 H0-gap benchmark is inside the fixed 20 percent gate; it is not a full Planck/SH0ES likelihood replication or a universal cosmology resolution.",
@@ -26,6 +27,62 @@
     "scipy_version": "1.16.3",
     "tensorflow_version": null,
     "torch_version": "2.10.0+cpu"
+  },
+  "hubble_claim_scope_gate": {
+    "blocked_exports": [
+      "Hubble tension resolved",
+      "validated full cosmology model",
+      "dark-energy replacement",
+      "high-z prediction confirmed",
+      "derived beta_frame relation"
+    ],
+    "bridge_derivation_gate": {
+      "claim_class": "D - exploratory mechanism hypothesis",
+      "controller_role": "blocks promotion of beta_frame = sqrt(alpha_em) from diagnostic bridge to derived cosmology relation",
+      "required_evidence": [
+        "derivation with units and assumptions",
+        "independent external constraint or baseline comparison",
+        "uncertainty-aware propagation through the H0 benchmark"
+      ],
+      "status": "OPEN"
+    },
+    "controller_status": "WARN",
+    "full_likelihood_gate": {
+      "controller_role": "blocks resolved-Hubble-tension or full-cosmology claims",
+      "required_inputs": [
+        "Planck release-level likelihood or chain package",
+        "SH0ES covariance or release-level likelihood package",
+        "BAO/SN consistency package",
+        "fixed model-vs-baseline threshold"
+      ],
+      "status": "OPEN"
+    },
+    "gate_inputs": {
+      "branch_claim_summary": {
+        "accepted_now": 1,
+        "blocked_for_strong_claims": 3,
+        "branches_total": 5,
+        "provisional_or_diagnostic": 1
+      },
+      "source_evidence_summary": {
+        "source_targets_total": 5,
+        "targets_blocked_by_pending_evidence": 4,
+        "targets_ready_for_source_review": 1
+      }
+    },
+    "promotion_rule": "Only the scalar published-value benchmark can pass in this artifact. Stronger cosmology claims require a closed bridge derivation gate and a full likelihood/baseline gate.",
+    "purpose": "Machine-readable controller separating scalar benchmark PASS from unresolved cosmology claims.",
+    "scalar_benchmark_gate": {
+      "claim_class": "C - internal scalar published-value benchmark",
+      "does_not_support": "A Planck/SH0ES likelihood replication, high-z prediction, dark-energy model, or universal cosmology resolution.",
+      "metric": "relative_error_percent",
+      "status": "PASS",
+      "supports": "The fixed no-fit scalar H0 comparison lands inside the repository threshold.",
+      "threshold": 20.0,
+      "value": 2.0853583129566178
+    },
+    "schema_version": "1.0",
+    "topic": "0.3_Cosmology_Hubble_Tension"
   },
   "input_hashes": {
     "source_lock_manifest": "134cf5b7e584a2764ce8409636dc7c582676bdba16723a7632a32a8736fc891a",
@@ -47,7 +104,7 @@
       }
     ]
   },
-  "interpretation": "This artifact supports a source-backed scalar H0 benchmark and an accepted no-fit frame-coupling bridge with a derivation gap. It does not validate high-z, dark-energy, or full cosmology likelihood claims.",
+  "interpretation": "This artifact supports a source-backed scalar H0 benchmark and a diagnostic no-fit frame-coupling bridge with a derivation gap. It does not validate high-z, dark-energy, or full cosmology likelihood claims.",
   "limitations": [
     "The current pass is a scalar published-value benchmark, not a full cosmology pipeline replication.",
     "The sqrt(alpha_em) bridge remains a no-fit hypothesis rather than a closed derivation.",
@@ -55,7 +112,8 @@
     "Full cosmology resolution claims remain unsupported by the current evidence package."
   ],
   "metrics": {
-    "accepted_claim_branches": 2,
+    "accepted_claim_branches": 1,
+    "provisional_or_diagnostic_branches": 1,
     "relative_error_percent": 2.0853583129566178,
     "source_targets_blocked": 4,
     "source_targets_ready_for_review": 1
@@ -69,13 +127,15 @@
     "H0_shoes_reference": 73.04,
     "H0_shoes_uncertainty": 1.04,
     "branch_claim_gate_summary": {
-      "accepted_now": 2,
+      "accepted_now": 1,
       "blocked_for_strong_claims": 3,
-      "branches_total": 5
+      "branches_total": 5,
+      "provisional_or_diagnostic": 1
     },
     "delta_h0_uet": 5.757614208850754,
     "delta_residual": 0.11761420885075324,
     "generic_solver_beta": 0.025838809965708517,
+    "hubble_claim_scope_status": "WARN",
     "hubble_frame_beta": 0.08542454315802288,
     "hubble_frame_beta_source": "sqrt(ALPHA_EM)",
     "observed_delta_h0": 5.640000000000001,
@@ -139,7 +199,7 @@
   "thresholds": {
     "max_relative_error_percent": 20.0
   },
-  "timestamp_utc": "2026-05-05T16:35:19.234490+00:00",
+  "timestamp_utc": "2026-05-18T14:05:26.349778+00:00",
   "topic": "0.3_Cosmology_Hubble_Tension",
   "uet_version": "0.9.0"
 }

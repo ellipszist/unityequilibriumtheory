@@ -14,7 +14,7 @@
 | :-- | :-- | :-- |
 | `source_evidence_intake_stub.json` | provenance intake across scalar H0, bridge, high-z, and dark-energy branches | created by primary verifier |
 | `source_evidence_readiness_matrix.json` | tracks branch review-readiness | scalar H0 ready; bridge/high-z/dark-energy/full-likelihood still blocked |
-| `branch_claim_gate.json` | lane-by-lane claim ceiling | 2 accepted branches, 3 blocked branches |
+| `branch_claim_gate.json` | lane-by-lane claim ceiling | 1 accepted branch, 1 diagnostic/provisional branch, 3 blocked branches |
 
 ## Unit and benchmark roles
 

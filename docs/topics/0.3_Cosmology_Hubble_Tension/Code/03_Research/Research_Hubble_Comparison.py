@@ -249,7 +249,8 @@ def build_branch_claim_gate() -> dict:
         "purpose": "Claim gate for separate cosmology branches inside the topic.",
         "summary": {
             "branches_total": 5,
-            "accepted_now": 2,
+            "accepted_now": 1,
+            "provisional_or_diagnostic": 1,
             "blocked_for_strong_claims": 3,
         },
         "branches": [
@@ -261,8 +262,8 @@ def build_branch_claim_gate() -> dict:
             },
             {
                 "branch": "Frame-coupling bridge branch",
-                "status": "accepted_with_derivation_gap",
-                "allowed_usage_now": "Accepted no-fit coupling hypothesis for the current scalar benchmark.",
+                "status": "provisional_no_fit_bridge_with_derivation_gap",
+                "allowed_usage_now": "Diagnostic no-fit coupling lane for the current scalar benchmark.",
                 "blocker_to_stronger_claim": "Need derivation or independent external constraint for beta_frame = sqrt(alpha_em).",
             },
             {
@@ -285,6 +286,61 @@ def build_branch_claim_gate() -> dict:
             },
         ],
         "claim_boundary": "This gate cannot raise the topic above the current internal scalar H0 benchmark package.",
+    }
+
+
+def build_hubble_claim_scope_gate(error: float, passed: bool, source_evidence_readiness_matrix: dict, branch_claim_gate: dict) -> dict:
+    readiness_summary = source_evidence_readiness_matrix["summary"]
+    branch_summary = branch_claim_gate["summary"]
+    return {
+        "schema_version": "1.0",
+        "topic": "0.3_Cosmology_Hubble_Tension",
+        "purpose": "Machine-readable controller separating scalar benchmark PASS from unresolved cosmology claims.",
+        "controller_status": "WARN" if passed else "FAIL",
+        "scalar_benchmark_gate": {
+            "status": "PASS" if passed else "FAIL",
+            "claim_class": "C - internal scalar published-value benchmark",
+            "metric": "relative_error_percent",
+            "value": float(error),
+            "threshold": 20.0,
+            "supports": "The fixed no-fit scalar H0 comparison lands inside the repository threshold.",
+            "does_not_support": "A Planck/SH0ES likelihood replication, high-z prediction, dark-energy model, or universal cosmology resolution.",
+        },
+        "bridge_derivation_gate": {
+            "status": "OPEN",
+            "claim_class": "D - exploratory mechanism hypothesis",
+            "controller_role": "blocks promotion of beta_frame = sqrt(alpha_em) from diagnostic bridge to derived cosmology relation",
+            "required_evidence": [
+                "derivation with units and assumptions",
+                "independent external constraint or baseline comparison",
+                "uncertainty-aware propagation through the H0 benchmark",
+            ],
+        },
+        "full_likelihood_gate": {
+            "status": "OPEN",
+            "controller_role": "blocks resolved-Hubble-tension or full-cosmology claims",
+            "required_inputs": [
+                "Planck release-level likelihood or chain package",
+                "SH0ES covariance or release-level likelihood package",
+                "BAO/SN consistency package",
+                "fixed model-vs-baseline threshold",
+            ],
+        },
+        "blocked_exports": [
+            "Hubble tension resolved",
+            "validated full cosmology model",
+            "dark-energy replacement",
+            "high-z prediction confirmed",
+            "derived beta_frame relation",
+        ],
+        "gate_inputs": {
+            "source_evidence_summary": readiness_summary,
+            "branch_claim_summary": branch_summary,
+        },
+        "promotion_rule": (
+            "Only the scalar published-value benchmark can pass in this artifact. Stronger cosmology claims require "
+            "a closed bridge derivation gate and a full likelihood/baseline gate."
+        ),
     }
 
 
@@ -312,6 +368,7 @@ def run_test():
     source_evidence_intake_stub = build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = build_source_evidence_readiness_matrix()
     branch_claim_gate = build_branch_claim_gate()
+    hubble_claim_scope_gate = build_hubble_claim_scope_gate(error, passed, source_evidence_readiness_matrix, branch_claim_gate)
     write_json(SOURCE_EVIDENCE_INTAKE_PATH, source_evidence_intake_stub)
     write_json(SOURCE_EVIDENCE_READINESS_PATH, source_evidence_readiness_matrix)
     write_json(BRANCH_CLAIM_GATE_PATH, branch_claim_gate)
@@ -378,6 +435,7 @@ def run_test():
             "status": "PASS" if passed else "FAIL",
             "source_evidence_readiness_summary": source_evidence_readiness_matrix["summary"],
             "branch_claim_gate_summary": branch_claim_gate["summary"],
+            "hubble_claim_scope_status": hubble_claim_scope_gate["controller_status"],
         },
         config={
             "relative_error_threshold_percent": 20.0,
@@ -385,11 +443,12 @@ def run_test():
             "source_lock_path": str(SOURCE_LOCK_PATH.relative_to(root_path)),
         },
         metrics={
-            "relative_error_percent": float(error),
-            "source_targets_ready_for_review": source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
-            "source_targets_blocked": source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
-            "accepted_claim_branches": branch_claim_gate["summary"]["accepted_now"],
-        },
+        "relative_error_percent": float(error),
+        "source_targets_ready_for_review": source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
+        "source_targets_blocked": source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
+        "accepted_claim_branches": branch_claim_gate["summary"]["accepted_now"],
+        "provisional_or_diagnostic_branches": branch_claim_gate["summary"]["provisional_or_diagnostic"],
+    },
         thresholds={"max_relative_error_percent": 20.0},
         notes="Internal scalar H0-gap comparison artifact using published H0 reference values and source-lock records.",
     )
@@ -419,8 +478,9 @@ def run_test():
         "summary": branch_claim_gate["summary"],
         "claim_boundary": branch_claim_gate["claim_boundary"],
     }
+    artifact["hubble_claim_scope_gate"] = hubble_claim_scope_gate
     artifact["interpretation"] = (
-        "This artifact supports a source-backed scalar H0 benchmark and an accepted no-fit frame-coupling bridge with a derivation gap. "
+        "This artifact supports a source-backed scalar H0 benchmark and a diagnostic no-fit frame-coupling bridge with a derivation gap. "
         "It does not validate high-z, dark-energy, or full cosmology likelihood claims."
     )
     artifact["limitations"] = [
