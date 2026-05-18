@@ -48,6 +48,7 @@ flowchart LR
 | Legacy 2023/2.51e-9 references | Historical diagnostics | `muon_g2_benchmark_shift.json` | not canonical evidence |
 | Source evidence workflow | Structured provenance gate | `Data/03_Research/source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json` | source-review queue |
 | Branch claim gate | Structured claim ceiling | `Data/03_Research/branch_claim_gate.json` | benchmark-only claim control |
+| Artifact claim scope | Machine-readable export gate | `muon_g2_claim_scope_gate` in `muon_g2_2025_validation.json` | blocks anomaly-closure exports |
 | Bridge derivation | Open | `FORMULA_AUDIT.md`, `LIMITATIONS.md` | no anomaly closure claim |
 
 ## What currently exists

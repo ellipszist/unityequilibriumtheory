@@ -34,6 +34,7 @@
   ],
   "metrics": {
     "accepted_claim_branches": 3,
+    "claim_scope_controller_status": "WARN",
     "delta_a_mu_derived_times_1e9": 0.375000000019457,
     "engine_delta_times_1e9": 0.10456923670529253,
     "engine_z_score_2025": 0.42458622591845235,
@@ -43,6 +44,73 @@
     "source_targets_blocked": 2,
     "source_targets_ready_for_review": 3,
     "z_score": 0.42458622591845235
+  },
+  "muon_g2_claim_scope_gate": {
+    "alternate_theory_gate": {
+      "controller_role": "blocks exclusion or preference claims versus other theory packages",
+      "required_evidence": [
+        "held-out alternate-theory comparator suite",
+        "predeclared comparison metric",
+        "sensitivity analysis that distinguishes benchmark shift from model preference"
+      ],
+      "status": "BLOCKED"
+    },
+    "anomaly_status_gate": {
+      "controller_role": "blocks treating compatibility with the current small 2025 gap as a solved anomaly claim",
+      "derived_significance_sigma": 0.588763766283173,
+      "status": "BENCHMARK_ONLY"
+    },
+    "benchmark_compatibility_gate": {
+      "claim_class": "C - source-locked internal benchmark compatibility",
+      "does_not_support": "Anomaly closure, alternate-theory exclusion, first-principles derivation, or downstream particle-sector support.",
+      "metric": "engine_z_score_2025",
+      "status": "PASS",
+      "supports": "The live engine anomaly term is numerically compatible with the source-locked 2025 experiment-theory gap.",
+      "threshold": 2.0,
+      "value": 0.42458622591845235
+    },
+    "blocked_exports": [
+      "muon g-2 anomaly resolved",
+      "Standard Model discrepancy closed",
+      "alternate explanations ruled out",
+      "new physics mechanism established",
+      "downstream particle-theory support"
+    ],
+    "controller_status": "WARN",
+    "derivation_gate": {
+      "controller_role": "blocks promotion from benchmark-compatible engine term to first-principles explanation",
+      "required_evidence": [
+        "derivation tying the engine term to hadronic and electroweak structure",
+        "parameter-origin audit beyond benchmark compatibility",
+        "uncertainty-aware propagation from source inputs to engine term"
+      ],
+      "status": "OPEN"
+    },
+    "downstream_particle_support_gate": {
+      "controller_role": "blocks using this artifact as broad support for electroweak, hadronic, mass-generation, or unification claims",
+      "required_evidence": [
+        "cross-topic dependency map",
+        "consistency gates with electroweak, hadronic, and mass-generation topics",
+        "integration artifact that preserves all branch blockers"
+      ],
+      "status": "BLOCKED"
+    },
+    "gate_inputs": {
+      "branch_claim_summary": {
+        "accepted_now": 3,
+        "blocked_for_strong_claims": 3,
+        "branches_total": 6
+      },
+      "source_evidence_summary": {
+        "source_targets_total": 5,
+        "targets_blocked_by_pending_evidence": 2,
+        "targets_ready_for_source_review": 3
+      }
+    },
+    "promotion_rule": "Only source-locked 2025 benchmark compatibility can pass in this artifact. Stronger anomaly-resolution claims require closed derivation, alternate-theory, and downstream-consistency gates.",
+    "purpose": "Machine-readable controller separating 2025 benchmark compatibility from anomaly-resolution claims.",
+    "schema_version": "1.0",
+    "topic": "0.8_Muon_g2_Anomaly"
   },
   "notes": "Both the experimental and theory comparator inputs are now source-locked to 2025 references. The UET comparator is taken from Engine_Muon_G2 rather than a topic-local hardcoded anomaly constant.",
   "results": {
@@ -66,6 +134,7 @@
     "engine_z_score_2025": 0.42458622591845235,
     "legacy_reference_delta": 2.51e-09,
     "legacy_reference_z_score_2025": 3.3520283758343954,
+    "muon_g2_claim_scope_status": "WARN",
     "significance_sigma_derived": 0.588763766283173,
     "source_evidence_readiness_summary": {
       "source_targets_total": 5,
@@ -101,7 +170,7 @@
   "thresholds": {
     "max_compatibility_z_score": 2.0
   },
-  "timestamp_utc": "2026-05-05T17:22:55.531300+00:00",
+  "timestamp_utc": "2026-05-18T14:27:20.983878+00:00",
   "topic": "0.8_Muon_g2_Anomaly",
   "uet_version": "0.9.0"
 }

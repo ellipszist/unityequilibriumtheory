@@ -270,6 +270,77 @@ def build_branch_claim_gate() -> dict:
     }
 
 
+def build_muon_g2_claim_scope_gate(
+    passes: bool,
+    z_score: float,
+    sigma: float,
+    source_evidence_readiness_matrix: dict,
+    branch_claim_gate: dict,
+) -> dict:
+    return {
+        "schema_version": "1.0",
+        "topic": "0.8_Muon_g2_Anomaly",
+        "purpose": "Machine-readable controller separating 2025 benchmark compatibility from anomaly-resolution claims.",
+        "controller_status": "WARN" if passes else "FAIL",
+        "benchmark_compatibility_gate": {
+            "status": "PASS" if passes else "FAIL",
+            "claim_class": "C - source-locked internal benchmark compatibility",
+            "metric": "engine_z_score_2025",
+            "value": z_score,
+            "threshold": 2.0,
+            "supports": "The live engine anomaly term is numerically compatible with the source-locked 2025 experiment-theory gap.",
+            "does_not_support": "Anomaly closure, alternate-theory exclusion, first-principles derivation, or downstream particle-sector support.",
+        },
+        "anomaly_status_gate": {
+            "status": "BENCHMARK_ONLY",
+            "derived_significance_sigma": sigma,
+            "controller_role": "blocks treating compatibility with the current small 2025 gap as a solved anomaly claim",
+        },
+        "derivation_gate": {
+            "status": "OPEN",
+            "controller_role": "blocks promotion from benchmark-compatible engine term to first-principles explanation",
+            "required_evidence": [
+                "derivation tying the engine term to hadronic and electroweak structure",
+                "parameter-origin audit beyond benchmark compatibility",
+                "uncertainty-aware propagation from source inputs to engine term",
+            ],
+        },
+        "alternate_theory_gate": {
+            "status": "BLOCKED",
+            "controller_role": "blocks exclusion or preference claims versus other theory packages",
+            "required_evidence": [
+                "held-out alternate-theory comparator suite",
+                "predeclared comparison metric",
+                "sensitivity analysis that distinguishes benchmark shift from model preference",
+            ],
+        },
+        "downstream_particle_support_gate": {
+            "status": "BLOCKED",
+            "controller_role": "blocks using this artifact as broad support for electroweak, hadronic, mass-generation, or unification claims",
+            "required_evidence": [
+                "cross-topic dependency map",
+                "consistency gates with electroweak, hadronic, and mass-generation topics",
+                "integration artifact that preserves all branch blockers",
+            ],
+        },
+        "blocked_exports": [
+            "muon g-2 anomaly resolved",
+            "Standard Model discrepancy closed",
+            "alternate explanations ruled out",
+            "new physics mechanism established",
+            "downstream particle-theory support",
+        ],
+        "gate_inputs": {
+            "source_evidence_summary": source_evidence_readiness_matrix["summary"],
+            "branch_claim_summary": branch_claim_gate["summary"],
+        },
+        "promotion_rule": (
+            "Only source-locked 2025 benchmark compatibility can pass in this artifact. Stronger anomaly-resolution "
+            "claims require closed derivation, alternate-theory, and downstream-consistency gates."
+        ),
+    }
+
+
 def run_research() -> bool:
     print("=" * 60)
     print("UET MUON g-2 ANOMALY RESEARCH")
@@ -311,6 +382,13 @@ def run_research() -> bool:
     print(f"Compatibility z-score:            {z_score:.2f} sigma")
 
     passes = z_score < 2.0
+    muon_g2_claim_scope_gate = build_muon_g2_claim_scope_gate(
+        passes,
+        z_score,
+        sigma,
+        source_evidence_readiness_matrix,
+        branch_claim_gate,
+    )
     print("PASS" if passes else "FAIL")
 
     artifact = generate_artifact(
@@ -339,6 +417,7 @@ def run_research() -> bool:
             "z_score": z_score,
             "source_evidence_readiness_summary": source_evidence_readiness_matrix["summary"],
             "branch_claim_gate_summary": branch_claim_gate["summary"],
+            "muon_g2_claim_scope_status": muon_g2_claim_scope_gate["controller_status"],
             "baseline_package_summary": {
                 "path": str(baseline_package_json.relative_to(root_path)),
                 "canonical_verification_baseline": baseline_package["canonical_verification_baseline"],
@@ -361,6 +440,7 @@ def run_research() -> bool:
             "source_targets_ready_for_review": source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
             "source_targets_blocked": source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
             "accepted_claim_branches": branch_claim_gate["summary"]["accepted_now"],
+            "claim_scope_controller_status": muon_g2_claim_scope_gate["controller_status"],
         },
         thresholds={"max_compatibility_z_score": 2.0},
         notes=(
@@ -386,6 +466,7 @@ def run_research() -> bool:
         "summary": branch_claim_gate["summary"],
         "claim_boundary": branch_claim_gate["claim_boundary"],
     }
+    artifact["muon_g2_claim_scope_gate"] = muon_g2_claim_scope_gate
     artifact["interpretation"] = (
         "This artifact supports a source-backed 2025 benchmark-compatibility claim and related sensitivity diagnostics. "
         "It does not resolve the muon g-2 anomaly or exclude alternate theory packages."
