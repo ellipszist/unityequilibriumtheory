@@ -305,6 +305,97 @@ def build_branch_claim_gate() -> dict:
     }
 
 
+def build_phase_transition_claim_scope_gate(
+    status: str,
+    error_percent: float,
+    source_evidence_readiness_matrix: dict,
+    branch_claim_gate: dict,
+) -> dict:
+    controller_status = "WARN" if status == "PASS" else "FAIL"
+    return {
+        "schema_version": "1.0",
+        "topic": "0.11_Phase_Transitions",
+        "controller_status": controller_status,
+        "controller_reason": (
+            "The selected beta benchmark passed, but topic-level export remains warning-gated because "
+            "source readiness is incomplete and full exponent/scaling/RG branches are blocked."
+            if status == "PASS"
+            else "The selected beta benchmark did not meet the declared relative-error threshold."
+        ),
+        "claim_class": "C_selected_exponent_benchmark_only",
+        "allowed_claims_now": [
+            {
+                "claim": "The current UET beta projection is compatible with the topic-local 3D Ising/liquid-gas beta benchmark under the declared threshold.",
+                "status": status,
+                "artifact_role": "primary selected beta benchmark",
+                "metric": "beta_relative_error_percent",
+                "metric_value": error_percent,
+                "threshold": "<= 5.0",
+                "source_evidence_readiness": "working_copy_not_source_locked",
+            },
+            {
+                "claim": "The Cahn-Hilliard branch can be cited as a normalized mechanism diagnostic.",
+                "status": "DIAGNOSTIC_ONLY",
+                "artifact_role": "supporting simulation branch",
+                "formula_role": "normalized mechanism illustration, not material calibration",
+                "source_evidence_readiness": "pending_seed_unit_morphology_gate",
+            },
+        ],
+        "blocked_claims": [
+            {
+                "claim": "UET proves a universal phase-transition theory.",
+                "status": "BLOCKED",
+                "blocking_reason": "No renormalization-group closure package or cross-topic dependency proof is available.",
+                "next_evidence_required": [
+                    "renormalization-group derivation package",
+                    "cross-topic dependency map",
+                    "independent review status",
+                ],
+            },
+            {
+                "claim": "UET explains the full critical-exponent set and scaling relations.",
+                "status": "BLOCKED",
+                "blocking_reason": "The primary gate tests beta only; gamma, nu, and scaling relations are not gated.",
+                "next_evidence_required": [
+                    "full exponent-set benchmark",
+                    "scaling-relation checks",
+                    "held-out material suite",
+                ],
+            },
+            {
+                "claim": "UET is validated against source-locked material critical-point data.",
+                "status": "BLOCKED",
+                "blocking_reason": "Critical-point and exponent data remain topic-local working copies without normalized external archives.",
+                "next_evidence_required": [
+                    "external source archive",
+                    "preprocessing record",
+                    "hash-locked material table",
+                ],
+            },
+        ],
+        "blocked_export_phrases": [
+            "universal phase-transition theory proved",
+            "renormalization-group closure established",
+            "full critical-exponent set validated",
+            "material critical points validated",
+            "phase transitions solved",
+        ],
+        "source_evidence_summary": source_evidence_readiness_matrix["summary"],
+        "branch_claim_gate_summary": branch_claim_gate["summary"],
+        "machine_readable_next_blockers": [
+            "critical_exponent_sources_not_archived",
+            "full_exponent_set_missing",
+            "scaling_relation_checks_missing",
+            "rg_closure_package_missing",
+            "material_critical_point_gate_missing",
+        ],
+        "claim_boundary": (
+            "A PASS artifact supports selected beta-exponent compatibility only. It does not prove "
+            "universal phase-transition theory, full exponent/scaling closure, or material critical-point validation."
+        ),
+    }
+
+
 def write_artifact(error_percent: float, beta_values: dict, save_path: Path) -> None:
     status = "PASS" if error_percent <= 5.0 else "FAIL"
     source_evidence_intake_stub = build_source_evidence_intake_stub()
@@ -313,6 +404,12 @@ def write_artifact(error_percent: float, beta_values: dict, save_path: Path) -> 
     write_json(SOURCE_EVIDENCE_INTAKE_PATH, source_evidence_intake_stub)
     write_json(SOURCE_EVIDENCE_READINESS_PATH, source_evidence_readiness_matrix)
     write_json(BRANCH_CLAIM_GATE_PATH, branch_claim_gate)
+    phase_transition_claim_scope_gate = build_phase_transition_claim_scope_gate(
+        status,
+        error_percent,
+        source_evidence_readiness_matrix,
+        branch_claim_gate,
+    )
     artifact = {
         "schema_version": "1.1",
         "topic": "0.11_Phase_Transitions",
@@ -337,12 +434,14 @@ def write_artifact(error_percent: float, beta_values: dict, save_path: Path) -> 
             "source_targets_ready_for_review": source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
             "source_targets_blocked": source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
             "accepted_claim_branches": branch_claim_gate["summary"]["accepted_now"],
+            "blocked_claim_exports": len(phase_transition_claim_scope_gate["blocked_export_phrases"]),
         },
         "results": {
             "plot_path": str(save_path.relative_to(TOPIC_DIR)),
             "interpretation": "selected beta critical-exponent compatibility only",
             "source_evidence_readiness_summary": source_evidence_readiness_matrix["summary"],
             "branch_claim_gate_summary": branch_claim_gate["summary"],
+            "phase_transition_claim_scope_gate_status": phase_transition_claim_scope_gate["controller_status"],
         },
         "limitations": [
             "Only beta is tested in the current primary gate.",
@@ -373,6 +472,7 @@ def write_artifact(error_percent: float, beta_values: dict, save_path: Path) -> 
         "summary": branch_claim_gate["summary"],
         "claim_boundary": branch_claim_gate["claim_boundary"],
     }
+    artifact["phase_transition_claim_scope_gate"] = phase_transition_claim_scope_gate
     artifact["interpretation"] = (
         "This artifact supports a selected beta benchmark branch and a normalized mechanism-diagnostic branch. "
         "It does not prove a universal phase-transition theory."

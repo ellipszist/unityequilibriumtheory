@@ -47,6 +47,7 @@ flowchart LR
 | NIST critical points | Working-copy data only | `Data/NIST_Critical_Points.csv` | future provenance/data gate |
 | Source evidence workflow | Structured provenance gate | `Data/03_Research/source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json` | source-review queue |
 | Branch claim gate | Structured claim ceiling | `Data/03_Research/branch_claim_gate.json` | selected-branch claim control |
+| Claim-scope gate | Artifact export controller | `phase_transition_claim_scope_gate` in artifact | blocks universality/RG overclaim |
 | Universal phase-transition theory | Not closed | limitations and formula audit | do not claim full proof |
 
 ## 5x4 Grid Structure
@@ -82,5 +83,8 @@ python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exp
 - Upstream provenance for critical-exponent and critical-point tables still needs a stronger
   external data cache.
 - Topic-level source-evidence and branch-claim gates cap the topic at selected-benchmark and mechanism-diagnostic status.
+- The artifact-level `phase_transition_claim_scope_gate` must stay `WARN` even when the beta
+  benchmark passes, until full exponent/scaling checks, material critical-point gates, and
+  renormalization-group closure are source-backed.
 
 *Status note: internal critical-exponent benchmark and formula-audit hardening gate.*

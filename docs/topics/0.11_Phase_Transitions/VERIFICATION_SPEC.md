@@ -11,6 +11,7 @@
   - experimental fluid beta benchmark
   - 3D Ising theoretical beta benchmark
   - relative beta error in percent
+  - machine-readable `phase_transition_claim_scope_gate.controller_status`
 - Fixed threshold:
   - beta relative error against the experimental fluid benchmark must be <= 5 percent
   - the script must write a machine-readable artifact under `Result/artifacts/`
@@ -23,3 +24,6 @@
   - Treat output as an internal selected-exponent benchmark only.
   - A pass does not prove the full phase-transition theory, because `gamma`, `nu`, scaling relations, morphology, and material critical-point datasets are not yet primary gates.
   - Topic-level source-evidence and branch-claim gates further limit the topic to selected-benchmark and mechanism-diagnostic usage unless stronger provenance and derivation packages are added.
+  - `phase_transition_claim_scope_gate.controller_status == WARN` is expected when the
+    selected beta benchmark passes while source archives, full exponent/scaling gates, and
+    renormalization-group closure remain open.
