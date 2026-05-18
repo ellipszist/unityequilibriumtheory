@@ -305,6 +305,102 @@ def build_branch_claim_gate() -> dict:
     }
 
 
+def build_heavy_nuclei_claim_scope_gate(
+    status: str,
+    energy_released: float,
+    u235_error_percent: float | None,
+    fragment_ame_present: bool,
+    source_evidence_readiness_matrix: dict,
+    branch_claim_gate: dict,
+) -> dict:
+    return {
+        "schema_version": "1.0",
+        "topic": "0.16_Heavy_Nuclei",
+        "controller_status": status,
+        "controller_reason": (
+            "The U-235 checkpoint and exothermic fission sanity gates pass, but export remains WARN because "
+            "Ba-141/Kr-92 fragment masses and evaluated fission-energy baselines are not source-locked."
+            if status == "WARN"
+            else "The fission sanity check failed the energy-release or U-235 binding checkpoint gate."
+        ),
+        "claim_class": "C_D_boundary_fission_sanity_only",
+        "allowed_claims_now": [
+            {
+                "claim": "The SEMF/UET bridge matches the U-235 AME2020 working-copy binding checkpoint within the declared tolerance.",
+                "status": "WARN" if u235_error_percent is not None else "FAIL",
+                "artifact_role": "source-backed U-235 checkpoint",
+                "metric": "u235_binding_error_percent",
+                "metric_value": u235_error_percent,
+                "threshold": "<= 2.0",
+                "source_evidence_readiness": "u235_checkpoint_ready_for_review",
+            },
+            {
+                "claim": "The bridge-derived U-235 fission channel is exothermic in the declared sanity range.",
+                "status": status,
+                "artifact_role": "internal fission sanity diagnostic",
+                "metric": "energy_release_mev",
+                "metric_value": energy_released,
+                "threshold": "100.0 < Q < 250.0",
+                "source_evidence_readiness": "fragment_masses_not_source_locked",
+            },
+        ],
+        "blocked_claims": [
+            {
+                "claim": "UET validates the evaluated U-235 fission Q-value.",
+                "status": "BLOCKED",
+                "blocking_reason": "The verifier uses bridge-derived Ba-141/Kr-92 fragment binding estimates rather than source-locked fragment masses.",
+                "next_evidence_required": [
+                    "source-locked Ba-141 fragment row",
+                    "source-locked Kr-92 fragment row",
+                    "evaluated fission-energy baseline with uncertainties",
+                ],
+            },
+            {
+                "claim": "UET validates heavy-nuclei binding across a general isotope subset.",
+                "status": "BLOCKED",
+                "blocking_reason": "Secondary heavy-binding plots are not promoted into primary artifact rows with thresholds.",
+                "next_evidence_required": [
+                    "primary heavy-binding artifact rows",
+                    "threshold policy",
+                    "source-normalized isotope suite",
+                ],
+            },
+            {
+                "claim": "UET predicts the island of stability or full heavy-nuclei theory.",
+                "status": "BLOCKED",
+                "blocking_reason": "No source-backed shell-correction, half-life, decay-channel, or superheavy stability artifact is available.",
+                "next_evidence_required": [
+                    "shell-correction model audit",
+                    "decay and half-life source package",
+                    "superheavy stability benchmark artifact",
+                ],
+            },
+        ],
+        "blocked_export_phrases": [
+            "U-235 fission Q-value validated",
+            "fragment masses predicted",
+            "heavy-nuclei theory proven",
+            "island of stability predicted",
+            "first-principles nuclear closure",
+        ],
+        "source_evidence_summary": source_evidence_readiness_matrix["summary"],
+        "branch_claim_gate_summary": branch_claim_gate["summary"],
+        "fragment_ame_present": fragment_ame_present,
+        "machine_readable_next_blockers": [
+            "ba141_fragment_mass_source_lock_missing",
+            "kr92_fragment_mass_source_lock_missing",
+            "evaluated_fission_q_baseline_missing",
+            "heavy_binding_primary_artifact_rows_missing",
+            "island_stability_artifact_missing",
+        ],
+        "claim_boundary": (
+            "A WARN artifact supports only the U-235 binding checkpoint and exothermic fission sanity diagnostic. "
+            "It does not validate evaluated fission energetics, fragment masses, broad heavy-binding systematics, "
+            "island-of-stability claims, or first-principles nuclear closure."
+        ),
+    }
+
+
 def run_fission_sim():
     print("=" * 60)
     print("UET RESEARCH: NUCLEAR FISSION DIAGNOSTIC (U-235)")
@@ -358,6 +454,14 @@ def run_fission_sim():
     print(f"  Products bridge BE:     {total_be_products:.1f} MeV")
     print(f"  Energy released:        {energy_released:.1f} MeV")
     print(f"  Artifact status:        {status}")
+    heavy_nuclei_claim_scope_gate = build_heavy_nuclei_claim_scope_gate(
+        status,
+        energy_released,
+        u235_error_percent,
+        fragment_ame_present,
+        source_evidence_readiness_matrix,
+        branch_claim_gate,
+    )
 
     artifact = {
         "schema_version": "1.1",
@@ -399,6 +503,7 @@ def run_fission_sim():
             "source_targets_ready_for_review": source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
             "source_targets_blocked": source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
             "accepted_claim_branches": branch_claim_gate["summary"]["accepted_now"],
+            "blocked_claim_exports": len(heavy_nuclei_claim_scope_gate["blocked_export_phrases"]),
         },
         "failure_reason": failure_reason,
         "limitations": [
@@ -425,6 +530,7 @@ def run_fission_sim():
         "summary": branch_claim_gate["summary"],
         "claim_boundary": branch_claim_gate["claim_boundary"],
     }
+    artifact["heavy_nuclei_claim_scope_gate"] = heavy_nuclei_claim_scope_gate
     artifact["interpretation"] = (
         "This artifact supports a U-235 checkpoint branch and a bounded exothermic fission sanity branch. "
         "It does not validate source-locked fragment energetics or heavy-nuclei stability theory."

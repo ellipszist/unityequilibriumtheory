@@ -41,6 +41,7 @@ flowchart LR
 | Verification | Runnable artifact with honest WARN | `Code/03_Research/Research_Fission.py` | Supports internal fission sanity-check wording. | Needs AME/NUBASE fragment masses and evaluated fission-energy baseline for PASS. |
 | Source evidence workflow | Structured provenance gate | `Data/03_Research/source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json` | source-review queue | Fragment lock, Q-value baseline, and stability evidence are still missing. |
 | Branch claim gate | Structured claim ceiling | `Data/03_Research/branch_claim_gate.json` | checkpoint-and-sanity claim control | U-235 checkpoint does not promote stability or full fission-theory claims. |
+| Claim-scope gate | Artifact export controller | `heavy_nuclei_claim_scope_gate` in artifact | blocks fission/stability overclaim | Current `WARN` remains diagnostic until fragment masses and evaluated Q baselines are source-locked. |
 | Claims | Bounded to diagnostic benchmark | this README, `METHOD.md`, `LIMITATIONS.md` | May discuss heavy-nuclei bridge diagnostics. | Cannot claim exact U-235 fission energy, island prediction, or full nuclear-stability theory. |
 | Dependencies | Important nuclear bridge | `0.5`, `0.17`, `0.21`, `0.23`, `0.0` | May inform cross-topic nuclear/system-scale maps with limitations. | Downstream claims must inherit SEMF-bridge and fragment-provenance limits. |
 
@@ -55,6 +56,7 @@ Expected artifact:
 - `Result/artifacts/0_16_heavy_nuclei_verification.json`
 
 Current expected status is `WARN`: exothermic sanity and U-235 checkpoint pass, but fragment provenance is incomplete.
+The artifact-level `heavy_nuclei_claim_scope_gate` must block evaluated fission Q-value, fragment-mass prediction, broad heavy-binding, island-of-stability, and first-principles nuclear-closure claims.
 
 ## Key Files
 

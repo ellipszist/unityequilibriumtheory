@@ -8,3 +8,7 @@
 - Secondary heavy-binding plots and pass rates are not primary evidence until they write machine-readable artifact rows.
 - Downstream core topics must inherit these limitations before using `0.16` as nuclear evidence.
 - Topic-level source-evidence and branch-claim gates now make that boundary explicit: accepted evidence stops at the U-235 checkpoint and exothermic sanity branch, not heavy-nuclei theory closure.
+- The artifact-level `heavy_nuclei_claim_scope_gate` is the export controller: current
+  `WARN` evidence cannot be cited as evaluated fission Q-value validation, fragment-mass
+  prediction, broad heavy-binding validation, island-of-stability prediction, or
+  first-principles nuclear closure.
