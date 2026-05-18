@@ -41,9 +41,11 @@ The artifact must record:
 - dataset path, SHA256, source, and DOI
 - formula IDs
 - threshold and metrics
+- machine-readable `gravity_claim_scope_gate.controller_status`
 - limitations
 
 ## Interpretation
 
 A PASS supports only a Claim Class C internal source-constant checkpoint. It does not derive `G`, validate general relativity, prove the equivalence principle, predict light bending/perihelion precession, or resolve singularities.
 Topic-level source-evidence and branch-claim gates further limit this topic to constants and derived-unit checkpoint usage unless dedicated GR artifacts are added.
+`gravity_claim_scope_gate.controller_status == WARN` is expected when the CODATA checkpoint passes while G derivation, weak-field validation, MICROSCOPE eta comparison, Eot-Wash comparison, Einstein-equation, singularity, and quantum-gravity branches remain open.

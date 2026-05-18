@@ -21,7 +21,92 @@
     "GR19-PLANCK-UNITS",
     "GR19-G-CHECKPOINT"
   ],
-  "generated_at_utc": "2026-05-05T18:11:03.607091+00:00",
+  "generated_at_utc": "2026-05-18T14:48:54.945421+00:00",
+  "gravity_claim_scope_gate": {
+    "allowed_claims_now": [
+      {
+        "artifact_role": "source-constant checkpoint",
+        "claim": "The engine constant package matches the local CODATA G working copy under the declared threshold.",
+        "metric": "relative_error_percent",
+        "metric_value": 0.0,
+        "source_evidence_readiness": "codata_checkpoint_ready_for_review",
+        "status": "PASS",
+        "threshold": 0.0022
+      },
+      {
+        "artifact_role": "derived constant branch",
+        "claim": "Planck units are internally derived from the engine constants.",
+        "formula_role": "standard definitions, not independent gravity validation",
+        "source_evidence_readiness": "inherits_constant_checkpoint",
+        "status": "DEFINITION_ONLY"
+      }
+    ],
+    "blocked_claims": [
+      {
+        "blocking_reason": "The current verifier compares a copied/source constant against CODATA; it is not a derivation artifact.",
+        "claim": "UET derives G from first principles.",
+        "next_evidence_required": [
+          "derivation package",
+          "formula audit for independent G relation",
+          "uncertainty and dimensional analysis"
+        ],
+        "status": "BLOCKED"
+      },
+      {
+        "blocking_reason": "No Einstein-equation, classical-test, or metric-solution artifact is primary-gated.",
+        "claim": "UET validates general relativity or Einstein field equations.",
+        "next_evidence_required": [
+          "light-bending artifact",
+          "perihelion-precession artifact",
+          "metric/EFE derivation or comparison package"
+        ],
+        "status": "BLOCKED"
+      },
+      {
+        "blocking_reason": "MICROSCOPE, Eot-Wash, singularity, and quantum-gravity branches lack primary artifacts.",
+        "claim": "UET validates equivalence principle, short-range gravity, singularity avoidance, or quantum-gravity closure.",
+        "next_evidence_required": [
+          "MICROSCOPE eta comparison artifact",
+          "Eot-Wash exclusion-curve artifact",
+          "singularity and quantum-gravity benchmark package"
+        ],
+        "status": "BLOCKED"
+      }
+    ],
+    "blocked_export_phrases": [
+      "G derived from first principles",
+      "general relativity validated",
+      "Einstein equations derived",
+      "equivalence principle proved",
+      "singularities resolved",
+      "quantum gravity closed"
+    ],
+    "branch_claim_gate_summary": {
+      "accepted_now": 2,
+      "blocked_for_strong_claims": 4,
+      "branches_total": 6
+    },
+    "claim_boundary": "A PASS artifact supports only the CODATA constant checkpoint and derived Planck-unit definitions. It does not derive G, validate GR, prove equivalence, test short-range gravity, resolve singularities, or close quantum gravity.",
+    "claim_class": "C_source_constant_checkpoint_only",
+    "controller_reason": "The CODATA G checkpoint passed, but export remains warning-gated because weak-field, equivalence-principle, short-range, Einstein-equation, and singularity artifacts are missing.",
+    "controller_status": "WARN",
+    "machine_readable_next_blockers": [
+      "g_derivation_artifact_missing",
+      "light_bending_artifact_missing",
+      "perihelion_precession_artifact_missing",
+      "microscope_eta_comparison_missing",
+      "eotwash_short_range_artifact_missing",
+      "einstein_equation_closure_missing",
+      "singularity_artifact_missing"
+    ],
+    "schema_version": "1.0",
+    "source_evidence_summary": {
+      "source_targets_total": 5,
+      "targets_blocked_by_pending_evidence": 4,
+      "targets_ready_for_source_review": 1
+    },
+    "topic": "0.19_Gravity_GR"
+  },
   "inputs": [
     {
       "doi": "10.1103/RevModPhys.93.025010",
@@ -40,6 +125,7 @@
     "G_codata": 6.6743e-11,
     "G_engine": 6.6743e-11,
     "accepted_claim_branches": 2,
+    "blocked_claim_exports": 6,
     "planck_length_m": 1.61625502392855e-35,
     "planck_mass_kg": 2.176434342051127e-08,
     "planck_time_s": 5.391246446661944e-44,

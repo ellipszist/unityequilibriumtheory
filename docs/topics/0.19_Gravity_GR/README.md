@@ -42,6 +42,7 @@ flowchart LR
 | Verification | Runnable primary artifact | `Code/03_Research/Research_G_Constant.py` | Confirms engine `G` matches CODATA working copy under declared threshold. | This is a copied/source-constant checkpoint, not a derivation. |
 | Source evidence workflow | Structured provenance gate | `Data/03_Research/source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json` | source-review queue | Weak-field, equivalence, and short-range packages still need dedicated artifacts. |
 | Branch claim gate | Structured claim ceiling | `Data/03_Research/branch_claim_gate.json` | checkpoint-only claim control | Constant checkpoint does not promote GR closure claims. |
+| Claim-scope gate | Artifact export controller | `gravity_claim_scope_gate` in artifact | blocks GR/quantum-gravity overclaim | Constant PASS remains topic-level `WARN` until physical GR tests and derivation artifacts exist. |
 | Claims | Bounded to internal checkpoint | this README, `METHOD.md`, `LIMITATIONS.md` | May state that the engine constant package is internally consistent with CODATA. | Cannot claim GR derivation, light-bending validation, or singularity avoidance. |
 | Dependencies | High-impact core bridge | `0.0`, `0.2`, `0.3`, `0.21`, `0.23`, `0.26` | Downstream topics may cite constants/weak-field formulas with limitations. | Strong GR/cosmology claims need future artifacts. |
 
@@ -56,6 +57,7 @@ Expected artifact:
 - `Result/artifacts/0_19_gravity_gr_verification.json`
 
 The artifact records dataset hash, CODATA DOI, formula IDs, threshold, engine `G`, and Planck-unit metrics.
+It must also record `gravity_claim_scope_gate`, which allows only the constant checkpoint and derived-unit claims while blocking G derivation, GR validation, equivalence-principle proof, short-range gravity, singularity, and quantum-gravity claims.
 
 ## Key Files
 

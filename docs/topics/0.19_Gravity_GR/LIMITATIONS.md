@@ -8,3 +8,6 @@
 - This topic does not currently validate light bending, perihelion precession, Einstein field equations, singularity avoidance, or quantum-gravity closure.
 - Downstream core topics must inherit these limitations before citing `0.19` for broad GR or cosmology claims.
 - Topic-level source-evidence and branch-claim gates now make that boundary explicit: accepted evidence stops at the CODATA constant checkpoint and derived Planck-unit branch, not GR closure.
+- The artifact-level `gravity_claim_scope_gate` is the export controller: constant PASS
+  cannot be cited as first-principles G derivation, GR validation, equivalence-principle
+  proof, short-range gravity validation, singularity resolution, or quantum-gravity closure.

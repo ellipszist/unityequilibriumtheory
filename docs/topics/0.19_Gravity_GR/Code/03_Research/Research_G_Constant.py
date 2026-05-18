@@ -291,6 +291,102 @@ def build_branch_claim_gate() -> dict:
     }
 
 
+def build_gravity_claim_scope_gate(
+    status: str,
+    error_percent: float | None,
+    threshold_percent: float,
+    source_evidence_readiness_matrix: dict,
+    branch_claim_gate: dict,
+) -> dict:
+    controller_status = "WARN" if status == "PASS" else "FAIL"
+    return {
+        "schema_version": "1.0",
+        "topic": "0.19_Gravity_GR",
+        "controller_status": controller_status,
+        "controller_reason": (
+            "The CODATA G checkpoint passed, but export remains warning-gated because weak-field, "
+            "equivalence-principle, short-range, Einstein-equation, and singularity artifacts are missing."
+            if status == "PASS"
+            else "The CODATA G checkpoint failed the declared relative-error threshold."
+        ),
+        "claim_class": "C_source_constant_checkpoint_only",
+        "allowed_claims_now": [
+            {
+                "claim": "The engine constant package matches the local CODATA G working copy under the declared threshold.",
+                "status": status,
+                "artifact_role": "source-constant checkpoint",
+                "metric": "relative_error_percent",
+                "metric_value": error_percent,
+                "threshold": threshold_percent,
+                "source_evidence_readiness": "codata_checkpoint_ready_for_review",
+            },
+            {
+                "claim": "Planck units are internally derived from the engine constants.",
+                "status": "DEFINITION_ONLY" if status == "PASS" else "BLOCKED",
+                "artifact_role": "derived constant branch",
+                "formula_role": "standard definitions, not independent gravity validation",
+                "source_evidence_readiness": "inherits_constant_checkpoint",
+            },
+        ],
+        "blocked_claims": [
+            {
+                "claim": "UET derives G from first principles.",
+                "status": "BLOCKED",
+                "blocking_reason": "The current verifier compares a copied/source constant against CODATA; it is not a derivation artifact.",
+                "next_evidence_required": [
+                    "derivation package",
+                    "formula audit for independent G relation",
+                    "uncertainty and dimensional analysis",
+                ],
+            },
+            {
+                "claim": "UET validates general relativity or Einstein field equations.",
+                "status": "BLOCKED",
+                "blocking_reason": "No Einstein-equation, classical-test, or metric-solution artifact is primary-gated.",
+                "next_evidence_required": [
+                    "light-bending artifact",
+                    "perihelion-precession artifact",
+                    "metric/EFE derivation or comparison package",
+                ],
+            },
+            {
+                "claim": "UET validates equivalence principle, short-range gravity, singularity avoidance, or quantum-gravity closure.",
+                "status": "BLOCKED",
+                "blocking_reason": "MICROSCOPE, Eot-Wash, singularity, and quantum-gravity branches lack primary artifacts.",
+                "next_evidence_required": [
+                    "MICROSCOPE eta comparison artifact",
+                    "Eot-Wash exclusion-curve artifact",
+                    "singularity and quantum-gravity benchmark package",
+                ],
+            },
+        ],
+        "blocked_export_phrases": [
+            "G derived from first principles",
+            "general relativity validated",
+            "Einstein equations derived",
+            "equivalence principle proved",
+            "singularities resolved",
+            "quantum gravity closed",
+        ],
+        "source_evidence_summary": source_evidence_readiness_matrix["summary"],
+        "branch_claim_gate_summary": branch_claim_gate["summary"],
+        "machine_readable_next_blockers": [
+            "g_derivation_artifact_missing",
+            "light_bending_artifact_missing",
+            "perihelion_precession_artifact_missing",
+            "microscope_eta_comparison_missing",
+            "eotwash_short_range_artifact_missing",
+            "einstein_equation_closure_missing",
+            "singularity_artifact_missing",
+        ],
+        "claim_boundary": (
+            "A PASS artifact supports only the CODATA constant checkpoint and derived Planck-unit definitions. "
+            "It does not derive G, validate GR, prove equivalence, test short-range gravity, resolve singularities, "
+            "or close quantum gravity."
+        ),
+    }
+
+
 def test_gravitational_constant():
     print("=" * 60)
     print("Test: Gravitational Constant G")
@@ -325,6 +421,13 @@ def test_gravitational_constant():
     print(f"Engine value: G = {g_engine:.5e}")
     print(f"Error: {error_percent:.8f}%")
     print(f"Artifact status: {status}")
+    gravity_claim_scope_gate = build_gravity_claim_scope_gate(
+        status,
+        error_percent,
+        threshold_percent,
+        source_evidence_readiness_matrix,
+        branch_claim_gate,
+    )
 
     artifact = {
         "schema_version": "1.1",
@@ -364,6 +467,7 @@ def test_gravitational_constant():
             "source_targets_ready_for_review": source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
             "source_targets_blocked": source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
             "accepted_claim_branches": branch_claim_gate["summary"]["accepted_now"],
+            "blocked_claim_exports": len(gravity_claim_scope_gate["blocked_export_phrases"]),
         },
         "failure_reason": failure_reason,
         "limitations": [
@@ -390,6 +494,7 @@ def test_gravitational_constant():
         "summary": branch_claim_gate["summary"],
         "claim_boundary": branch_claim_gate["claim_boundary"],
     }
+    artifact["gravity_claim_scope_gate"] = gravity_claim_scope_gate
     artifact["interpretation"] = (
         "This artifact supports a source-constant checkpoint branch and a Planck-unit definition branch. "
         "It does not validate weak-field tests, the equivalence principle, or general relativity as a whole."
