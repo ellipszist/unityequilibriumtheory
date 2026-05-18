@@ -347,14 +347,75 @@ def _build_branch_claim_gate():
     return _write_json(BRANCH_CLAIM_GATE_PATH, payload)
 
 
+def _build_mass_generation_claim_scope_gate(result, source_evidence_readiness_matrix, branch_claim_gate):
+    readiness_summary = source_evidence_readiness_matrix["summary"]
+    branch_summary = branch_claim_gate["summary"]
+    benchmark_pass = result["status"] == "PASS"
+    return {
+        "schema_version": "1.0",
+        "topic": "0.17_Mass_Generation",
+        "purpose": "Machine-readable controller separating Higgs coupling benchmark PASS from mass-generation mechanism claims.",
+        "controller_status": "WARN" if benchmark_pass else result["status"],
+        "higgs_coupling_benchmark_gate": {
+            "status": "PASS" if benchmark_pass else "WARN",
+            "claim_class": "C - internal SM-normalized Higgs coupling consistency benchmark",
+            "metric": "average_abs_kappa_deviation",
+            "value": result["average_abs_kappa_deviation"],
+            "threshold": 0.2,
+            "supports": "The topic-local Higgs coupling working copy stays within the repository average-deviation threshold.",
+            "does_not_support": "A first-principles mass-generation mechanism, Higgs replacement, complete hierarchy derivation, or Koide proof.",
+        },
+        "uncertainty_aware_fit_gate": {
+            "status": "OPEN",
+            "controller_role": "blocks promotion from average-deviation smoke test to physics-strength Higgs coupling validation",
+            "required_evidence": [
+                "source-to-row mapping for the upstream Higgs coupling table",
+                "uncertainty-aware pulls or chi-square metric",
+                "fixed acceptance threshold declared before rerun",
+                "baseline comparison against the Standard Model expectation with uncertainty bands",
+            ],
+        },
+        "mechanism_claim_gate": {
+            "status": "BLOCKED",
+            "controller_role": "blocks mass-generation mechanism, Higgs replacement, and hierarchy claims",
+            "required_evidence": [
+                "first-principles derivation with units and assumptions",
+                "independent predictive benchmark beyond the local kappa smoke test",
+                "separate verifier lanes for Koide/tau and hierarchy branches",
+                "external source package or raw archive for each promoted dataset",
+            ],
+        },
+        "blocked_exports": [
+            "new mass-generation mechanism validated",
+            "Higgs mechanism replaced",
+            "Standard Model mass hierarchy derived",
+            "Koide relation proved from UET",
+            "Planck exponential ansatz validated",
+        ],
+        "gate_inputs": {
+            "source_evidence_summary": readiness_summary,
+            "branch_claim_summary": branch_summary,
+        },
+        "promotion_rule": (
+            "Only the Higgs coupling consistency benchmark can pass in this artifact. Stronger mass-generation claims "
+            "require an uncertainty-aware Higgs gate plus separate mechanism and branch verifier gates."
+        ),
+    }
+
+
 def write_verification_artifact(result):
     artifact_path = TOPIC_DIR / "Result" / "artifacts" / "0_17_mass_generation_verification.json"
     artifact_path.parent.mkdir(parents=True, exist_ok=True)
     source_evidence_intake_stub = _build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = _build_source_evidence_readiness_matrix(source_evidence_intake_stub)
     branch_claim_gate = _build_branch_claim_gate()
+    mass_generation_claim_scope_gate = _build_mass_generation_claim_scope_gate(
+        result,
+        source_evidence_readiness_matrix,
+        branch_claim_gate,
+    )
     artifact = {
-        "schema_version": "1.1",
+        "schema_version": "1.2",
         "topic": "0.17_Mass_Generation",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "command": "python docs/topics/0.17_Mass_Generation/Code/03_Research/Research_Higgs_Coupling.py",
@@ -379,10 +440,12 @@ def write_verification_artifact(result):
             "summary": branch_claim_gate["summary"],
             "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current Higgs-coupling run-contract evidence.",
         },
+        "mass_generation_claim_scope_gate": mass_generation_claim_scope_gate,
         "metrics": {
             "particle_count": result["particle_count"],
             "average_abs_kappa_deviation": result["average_abs_kappa_deviation"],
             "max_abs_kappa_deviation": result["max_abs_kappa_deviation"],
+            "claim_scope_controller_status": mass_generation_claim_scope_gate["controller_status"],
         },
         "thresholds": {
             "average_abs_kappa_deviation_max": 0.2,

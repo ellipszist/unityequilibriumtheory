@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "topic": "0.17_Mass_Generation",
-  "timestamp_utc": "2026-05-17T16:57:45.461243+00:00",
+  "timestamp_utc": "2026-05-18T14:12:04.275729+00:00",
   "command": "python docs/topics/0.17_Mass_Generation/Code/03_Research/Research_Higgs_Coupling.py",
   "status": "PASS",
   "passed_run_contract": true,
@@ -94,10 +94,66 @@
     },
     "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current Higgs-coupling run-contract evidence."
   },
+  "mass_generation_claim_scope_gate": {
+    "schema_version": "1.0",
+    "topic": "0.17_Mass_Generation",
+    "purpose": "Machine-readable controller separating Higgs coupling benchmark PASS from mass-generation mechanism claims.",
+    "controller_status": "WARN",
+    "higgs_coupling_benchmark_gate": {
+      "status": "PASS",
+      "claim_class": "C - internal SM-normalized Higgs coupling consistency benchmark",
+      "metric": "average_abs_kappa_deviation",
+      "value": 0.040000000000000036,
+      "threshold": 0.2,
+      "supports": "The topic-local Higgs coupling working copy stays within the repository average-deviation threshold.",
+      "does_not_support": "A first-principles mass-generation mechanism, Higgs replacement, complete hierarchy derivation, or Koide proof."
+    },
+    "uncertainty_aware_fit_gate": {
+      "status": "OPEN",
+      "controller_role": "blocks promotion from average-deviation smoke test to physics-strength Higgs coupling validation",
+      "required_evidence": [
+        "source-to-row mapping for the upstream Higgs coupling table",
+        "uncertainty-aware pulls or chi-square metric",
+        "fixed acceptance threshold declared before rerun",
+        "baseline comparison against the Standard Model expectation with uncertainty bands"
+      ]
+    },
+    "mechanism_claim_gate": {
+      "status": "BLOCKED",
+      "controller_role": "blocks mass-generation mechanism, Higgs replacement, and hierarchy claims",
+      "required_evidence": [
+        "first-principles derivation with units and assumptions",
+        "independent predictive benchmark beyond the local kappa smoke test",
+        "separate verifier lanes for Koide/tau and hierarchy branches",
+        "external source package or raw archive for each promoted dataset"
+      ]
+    },
+    "blocked_exports": [
+      "new mass-generation mechanism validated",
+      "Higgs mechanism replaced",
+      "Standard Model mass hierarchy derived",
+      "Koide relation proved from UET",
+      "Planck exponential ansatz validated"
+    ],
+    "gate_inputs": {
+      "source_evidence_summary": {
+        "source_targets_total": 4,
+        "targets_ready_for_source_review": 3,
+        "targets_blocked_by_pending_evidence": 1
+      },
+      "branch_claim_summary": {
+        "branches_total": 5,
+        "accepted_now": 1,
+        "blocked_for_strong_claims": 4
+      }
+    },
+    "promotion_rule": "Only the Higgs coupling consistency benchmark can pass in this artifact. Stronger mass-generation claims require an uncertainty-aware Higgs gate plus separate mechanism and branch verifier gates."
+  },
   "metrics": {
     "particle_count": 6,
     "average_abs_kappa_deviation": 0.040000000000000036,
-    "max_abs_kappa_deviation": 0.10000000000000009
+    "max_abs_kappa_deviation": 0.10000000000000009,
+    "claim_scope_controller_status": "WARN"
   },
   "thresholds": {
     "average_abs_kappa_deviation_max": 0.2,

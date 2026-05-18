@@ -28,6 +28,7 @@ The repository can currently support conservative statements such as:
 The current evidence package does not establish a first-principles mass-generation mechanism, a replacement for the Higgs mechanism, a complete Standard Model mass hierarchy derivation, or a formal proof of Koide from UET.
 
 The topic now includes workflow gates that separate Higgs run-contract evidence from Koide, tau, and Planck-ansatz branches, so later wording cannot quietly outrun the current benchmark.
+The artifact also carries a `mass_generation_claim_scope_gate`: the Higgs-coupling benchmark may pass, while mechanism, replacement, hierarchy, Koide-proof, and Planck-ansatz exports remain blocked until separate gates exist.
 
 ## Core Files
 
