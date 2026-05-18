@@ -10,6 +10,87 @@
     }
   },
   "claim_class": "D - qualitative diagnostic only",
+  "cluster_claim_scope_gate": {
+    "allowed_claims_now": [
+      {
+        "artifact_role": "qualitative sign diagnostic",
+        "claim": "The toy model reproduces the qualitative gas/halo separation direction for the local Bullet Cluster working copy.",
+        "metric": "offset_sign_match",
+        "metric_value": true,
+        "source_evidence_readiness": "working_copy_not_fully_archived",
+        "status": "WARN"
+      },
+      {
+        "artifact_role": "mechanism diagnostic branch",
+        "claim": "Cluster-scale information-field behavior may be discussed as a bounded mechanism diagnostic.",
+        "formula_role": "dimensionless toy drag, not calibrated kpc dynamics",
+        "source_evidence_readiness": "pending_dimensional_calibration",
+        "status": "DIAGNOSTIC_ONLY"
+      }
+    ],
+    "blocked_claims": [
+      {
+        "blocking_reason": "The current model-unit offset is not calibrated to the observed 480 kpc and 120 kpc offsets.",
+        "claim": "UET predicts the Bullet Cluster kpc offsets.",
+        "next_evidence_required": [
+          "kpc calibration artifact",
+          "numeric magnitude thresholds",
+          "uncertainty-aware observed-offset package"
+        ],
+        "status": "BLOCKED"
+      },
+      {
+        "blocking_reason": "No held-out multi-cluster suite or lensing-map comparison supports a replacement claim.",
+        "claim": "UET replaces dark matter at cluster scale.",
+        "next_evidence_required": [
+          "held-out multi-cluster benchmark",
+          "lensing-map comparison artifact",
+          "virial and mass-temperature source-locked artifacts"
+        ],
+        "status": "BLOCKED"
+      },
+      {
+        "blocking_reason": "JWST formation scripts are not the primary artifact and are not source-gated here.",
+        "claim": "UET resolves JWST early galaxy or cluster formation tensions.",
+        "next_evidence_required": [
+          "source-locked JWST candidate package",
+          "LCDM baseline definition",
+          "formation-rate uncertainty artifact"
+        ],
+        "status": "BLOCKED"
+      }
+    ],
+    "blocked_export_phrases": [
+      "Bullet Cluster solved",
+      "dark matter replaced",
+      "cluster virial discrepancy resolved",
+      "lensing mass map predicted",
+      "JWST age problem resolved"
+    ],
+    "branch_claim_gate_summary": {
+      "accepted_now": 2,
+      "blocked_for_strong_claims": 4,
+      "branches_total": 6
+    },
+    "claim_boundary": "A WARN artifact supports only qualitative Bullet Cluster separation-sign diagnostics and bounded mechanism discussion. It does not predict kpc offsets, replace dark matter, resolve virial discrepancies, or validate JWST formation claims.",
+    "claim_class": "D_qualitative_cluster_diagnostic_only",
+    "controller_reason": "The qualitative Bullet Cluster separation sign matches, but export remains WARN because the model has no kpc calibration, lensing-map comparison, or held-out multi-cluster gate.",
+    "controller_status": "WARN",
+    "machine_readable_next_blockers": [
+      "bullet_cluster_kpc_calibration_missing",
+      "lensing_map_comparison_missing",
+      "held_out_multi_cluster_suite_missing",
+      "virial_artifacts_not_primary_gated",
+      "jwst_formation_claim_not_primary_gated"
+    ],
+    "schema_version": "1.0",
+    "source_evidence_summary": {
+      "source_targets_total": 5,
+      "targets_blocked_by_pending_evidence": 5,
+      "targets_ready_for_source_review": 0
+    },
+    "topic": "0.15_Cluster_Dynamics"
+  },
   "command": "python docs/topics/0.15_Cluster_Dynamics/Code/03_Research/Research_BulletCluster_Offset.py",
   "environment": {
     "platform": "Windows-11-10.0.26200-SP0",
@@ -20,7 +101,7 @@
     "CL15-DRAG-TOY",
     "CL15-OFFSET-SIGN-GATE"
   ],
-  "generated_at_utc": "2026-05-05T18:01:37.654578+00:00",
+  "generated_at_utc": "2026-05-18T14:41:52.231588+00:00",
   "inputs": [
     {
       "path": "docs/topics/0.15_Cluster_Dynamics/Data/Bullet_Cluster_Coordinates.json",
@@ -39,6 +120,7 @@
   ],
   "metrics": {
     "accepted_claim_branches": 2,
+    "blocked_claim_exports": 5,
     "dimensional_calibration_present": false,
     "model_offset_model_units": 20.000025131774805,
     "observed_offsets_kpc": {

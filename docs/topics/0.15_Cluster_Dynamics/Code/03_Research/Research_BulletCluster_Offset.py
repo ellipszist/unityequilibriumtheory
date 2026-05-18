@@ -326,6 +326,100 @@ def build_branch_claim_gate() -> dict:
     }
 
 
+def build_cluster_claim_scope_gate(
+    status: str,
+    model: dict,
+    observations: list[dict],
+    source_evidence_readiness_matrix: dict,
+    branch_claim_gate: dict,
+) -> dict:
+    sign_match = model["offset_model_units"] > 0 and all(
+        row["observed_separation_positive"] for row in observations
+    )
+    return {
+        "schema_version": "1.0",
+        "topic": "0.15_Cluster_Dynamics",
+        "controller_status": status,
+        "controller_reason": (
+            "The qualitative Bullet Cluster separation sign matches, but export remains WARN because "
+            "the model has no kpc calibration, lensing-map comparison, or held-out multi-cluster gate."
+            if status == "WARN"
+            else "The qualitative Bullet Cluster separation-sign gate failed."
+        ),
+        "claim_class": "D_qualitative_cluster_diagnostic_only",
+        "allowed_claims_now": [
+            {
+                "claim": "The toy model reproduces the qualitative gas/halo separation direction for the local Bullet Cluster working copy.",
+                "status": "WARN" if sign_match else "FAIL",
+                "artifact_role": "qualitative sign diagnostic",
+                "metric": "offset_sign_match",
+                "metric_value": sign_match,
+                "source_evidence_readiness": "working_copy_not_fully_archived",
+            },
+            {
+                "claim": "Cluster-scale information-field behavior may be discussed as a bounded mechanism diagnostic.",
+                "status": "DIAGNOSTIC_ONLY",
+                "artifact_role": "mechanism diagnostic branch",
+                "formula_role": "dimensionless toy drag, not calibrated kpc dynamics",
+                "source_evidence_readiness": "pending_dimensional_calibration",
+            },
+        ],
+        "blocked_claims": [
+            {
+                "claim": "UET predicts the Bullet Cluster kpc offsets.",
+                "status": "BLOCKED",
+                "blocking_reason": "The current model-unit offset is not calibrated to the observed 480 kpc and 120 kpc offsets.",
+                "next_evidence_required": [
+                    "kpc calibration artifact",
+                    "numeric magnitude thresholds",
+                    "uncertainty-aware observed-offset package",
+                ],
+            },
+            {
+                "claim": "UET replaces dark matter at cluster scale.",
+                "status": "BLOCKED",
+                "blocking_reason": "No held-out multi-cluster suite or lensing-map comparison supports a replacement claim.",
+                "next_evidence_required": [
+                    "held-out multi-cluster benchmark",
+                    "lensing-map comparison artifact",
+                    "virial and mass-temperature source-locked artifacts",
+                ],
+            },
+            {
+                "claim": "UET resolves JWST early galaxy or cluster formation tensions.",
+                "status": "BLOCKED",
+                "blocking_reason": "JWST formation scripts are not the primary artifact and are not source-gated here.",
+                "next_evidence_required": [
+                    "source-locked JWST candidate package",
+                    "LCDM baseline definition",
+                    "formation-rate uncertainty artifact",
+                ],
+            },
+        ],
+        "blocked_export_phrases": [
+            "Bullet Cluster solved",
+            "dark matter replaced",
+            "cluster virial discrepancy resolved",
+            "lensing mass map predicted",
+            "JWST age problem resolved",
+        ],
+        "source_evidence_summary": source_evidence_readiness_matrix["summary"],
+        "branch_claim_gate_summary": branch_claim_gate["summary"],
+        "machine_readable_next_blockers": [
+            "bullet_cluster_kpc_calibration_missing",
+            "lensing_map_comparison_missing",
+            "held_out_multi_cluster_suite_missing",
+            "virial_artifacts_not_primary_gated",
+            "jwst_formation_claim_not_primary_gated",
+        ],
+        "claim_boundary": (
+            "A WARN artifact supports only qualitative Bullet Cluster separation-sign diagnostics and bounded "
+            "mechanism discussion. It does not predict kpc offsets, replace dark matter, resolve virial "
+            "discrepancies, or validate JWST formation claims."
+        ),
+    }
+
+
 def main():
     print("=" * 60)
     print("UET RESEARCH: BULLET CLUSTER OFFSET DIAGNOSTIC")
@@ -359,6 +453,13 @@ def main():
         print(f"Observed {row['component']} offset: {row['offset_kpc']} kpc")
     print(f"Model offset: {model['offset_model_units']:.2f} model units")
     print(f"Artifact status: {status}")
+    cluster_claim_scope_gate = build_cluster_claim_scope_gate(
+        status,
+        model,
+        observations,
+        source_evidence_readiness_matrix,
+        branch_claim_gate,
+    )
 
     artifact = {
         "schema_version": "1.1",
@@ -398,6 +499,7 @@ def main():
             "source_targets_ready_for_review": source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
             "source_targets_blocked": source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
             "accepted_claim_branches": branch_claim_gate["summary"]["accepted_now"],
+            "blocked_claim_exports": len(cluster_claim_scope_gate["blocked_export_phrases"]),
         },
         "model": model,
         "observations": observations,
@@ -427,6 +529,7 @@ def main():
         "summary": branch_claim_gate["summary"],
         "claim_boundary": branch_claim_gate["claim_boundary"],
     }
+    artifact["cluster_claim_scope_gate"] = cluster_claim_scope_gate
     artifact["interpretation"] = (
         "This artifact supports a qualitative Bullet Cluster sign-match branch and a bounded cluster mechanism-diagnostic branch. "
         "It does not validate cluster-scale dark-matter replacement."

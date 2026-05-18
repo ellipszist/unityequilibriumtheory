@@ -9,3 +9,6 @@
 - This topic does not currently solve the Bullet Cluster, the cluster virial discrepancy, or the general dark-matter problem.
 - Downstream core topics must inherit these limitations before using `0.15` as support for broader theory claims.
 - Topic-level source-evidence and branch-claim gates now make that boundary explicit: accepted evidence stops at the qualitative Bullet Cluster branch and bounded mechanism diagnostics, not cluster-theory closure.
+- The artifact-level `cluster_claim_scope_gate` is the export controller: current `WARN`
+  evidence cannot be cited as Bullet Cluster solution, dark-matter replacement, virial
+  closure, lensing-map prediction, or JWST formation resolution.

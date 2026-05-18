@@ -43,9 +43,11 @@ The artifact must record:
 - source label, system name, and unit convention
 - formula IDs
 - observed kpc offsets, model-unit offset, qualitative sign match, and dimensional calibration flag
+- machine-readable `cluster_claim_scope_gate.controller_status`
 - limitations and failure reason
 
 ## Interpretation
 
 The current verifier supports only Claim Class D qualitative diagnostic language. It does not support "solved dark matter", "resolves the virial discrepancy", "predicts Bullet Cluster lensing", or a general cluster-scale replacement for dark matter.
 Topic-level source-evidence and branch-claim gates further limit this topic to qualitative and mechanism-diagnostic usage unless calibrated multi-cluster evidence is added.
+`cluster_claim_scope_gate.controller_status == WARN` is expected when the sign diagnostic matches but kpc calibration, lensing maps, held-out multi-cluster evidence, and JWST formation gates remain open.
