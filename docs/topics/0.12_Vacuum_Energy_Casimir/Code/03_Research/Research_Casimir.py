@@ -341,6 +341,104 @@ def build_branch_claim_gate() -> dict:
     }
 
 
+def build_vacuum_claim_scope_gate(
+    status: str,
+    avg_error: float,
+    max_error: float,
+    source_evidence_readiness_matrix: dict,
+    branch_claim_gate: dict,
+) -> dict:
+    controller_status = "WARN" if status == "PASS" else "FAIL"
+    return {
+        "schema_version": "1.0",
+        "topic": "0.12_Vacuum_Energy_Casimir",
+        "controller_status": controller_status,
+        "controller_reason": (
+            "The Casimir benchmark passed, but topic-level export remains warning-gated because "
+            "source readiness, geometry sensitivity, secondary datasets, and cosmology bridge evidence are incomplete."
+            if status == "PASS"
+            else "The Casimir benchmark did not meet the declared average/max residual thresholds."
+        ),
+        "claim_class": "C_casimir_benchmark_only",
+        "allowed_claims_now": [
+            {
+                "claim": "The current model matches the topic-local Mohideen/Roy sphere-plate Casimir working dataset under the declared residual thresholds.",
+                "status": status,
+                "artifact_role": "primary Casimir benchmark gate",
+                "metrics": {
+                    "average_relative_error_percent": avg_error,
+                    "max_relative_error_percent": max_error,
+                },
+                "thresholds": {
+                    "average_relative_error_percent_max": 10.0,
+                    "max_relative_error_percent_max": 15.0,
+                },
+                "source_evidence_readiness": "working_copy_not_fully_archived",
+            },
+            {
+                "claim": "The boundary-force mechanism branch can be cited as a bounded diagnostic for vacuum-boundary behavior.",
+                "status": "DIAGNOSTIC_ONLY",
+                "artifact_role": "supporting mechanism branch",
+                "formula_role": "sphere-plate PFA plus clipped finite-conductivity correction",
+                "source_evidence_readiness": "pending_geometry_material_sensitivity",
+            },
+        ],
+        "blocked_claims": [
+            {
+                "claim": "The Casimir benchmark validates a vacuum-energy or dark-energy bridge.",
+                "status": "BLOCKED",
+                "blocking_reason": "No bridge derivation or cosmology-grade dataset artifact connects the Casimir residuals to dark energy.",
+                "next_evidence_required": [
+                    "vacuum-energy bridge derivation",
+                    "cosmology-grade dataset",
+                    "baseline comparison artifact",
+                ],
+            },
+            {
+                "claim": "UET solves the cosmological-constant problem.",
+                "status": "BLOCKED",
+                "blocking_reason": "The observed-like dark-energy anchor is not derived from the Casimir benchmark.",
+                "next_evidence_required": [
+                    "dedicated cosmology artifact",
+                    "cross-topic dependency closure",
+                    "uncertainty and baseline gates",
+                ],
+            },
+            {
+                "claim": "The current Casimir fit is geometry-general or material-general.",
+                "status": "BLOCKED",
+                "blocking_reason": "The primary gate uses one topic-local sphere-plate dataset with a tracked radius mismatch and clipped correction.",
+                "next_evidence_required": [
+                    "radius sensitivity artifact",
+                    "material sensitivity artifact",
+                    "source-locked secondary datasets",
+                ],
+            },
+        ],
+        "blocked_export_phrases": [
+            "dark energy validated",
+            "vacuum-energy bridge proven",
+            "cosmological-constant problem solved",
+            "Planck-scale vacuum cutoff proved",
+            "geometry-general Casimir solver validated",
+        ],
+        "source_evidence_summary": source_evidence_readiness_matrix["summary"],
+        "branch_claim_gate_summary": branch_claim_gate["summary"],
+        "machine_readable_next_blockers": [
+            "mohideen_roy_source_archive_incomplete",
+            "geometry_radius_sensitivity_missing",
+            "finite_conductivity_sensitivity_missing",
+            "secondary_casimir_dataset_gate_missing",
+            "vacuum_energy_cosmology_bridge_missing",
+        ],
+        "claim_boundary": (
+            "A PASS artifact supports the declared sphere-plate Casimir benchmark only. It does not validate "
+            "dark energy, solve the cosmological-constant problem, prove a Planck-scale cutoff, or generalize "
+            "the solver across geometries/materials."
+        ),
+    }
+
+
 def run_test():
     engine = UETVacuumEngine()
     print("=" * 70)
@@ -412,6 +510,13 @@ def run_test():
         and max_error <= threshold["max_relative_error_percent_max"]
     )
     status = "PASS" if passed else "FAIL"
+    vacuum_claim_scope_gate = build_vacuum_claim_scope_gate(
+        status,
+        avg_error,
+        max_error,
+        source_evidence_readiness_matrix,
+        branch_claim_gate,
+    )
     print(f"\n{status} - UET Casimir Validation")
 
     # --- PLOTTING FOR SHOWCASE ---
@@ -484,6 +589,7 @@ def run_test():
             "source_targets_ready_for_review": source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
             "source_targets_blocked": source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
             "accepted_claim_branches": branch_claim_gate["summary"]["accepted_now"],
+            "blocked_claim_exports": len(vacuum_claim_scope_gate["blocked_export_phrases"]),
         },
         "results": rows,
         "limitations": [
@@ -510,6 +616,7 @@ def run_test():
         "summary": branch_claim_gate["summary"],
         "claim_boundary": branch_claim_gate["claim_boundary"],
     }
+    artifact["vacuum_claim_scope_gate"] = vacuum_claim_scope_gate
     artifact["interpretation"] = (
         "This artifact supports a Casimir benchmark branch and a bounded boundary-force mechanism branch. "
         "It does not validate a vacuum-energy bridge or solve the cosmological-constant problem."

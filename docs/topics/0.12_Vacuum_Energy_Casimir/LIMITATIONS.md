@@ -9,3 +9,6 @@
 - Algebraic outputs such as `w=-1` and `Omega_total=1` are diagnostics unless a cosmological dataset and baseline comparison are added.
 - Downstream topics must inherit these limitations when using `0.12` as part of the core theory map.
 - Topic-level source-evidence and branch-claim gates now make that boundary explicit: accepted evidence stops at the Casimir benchmark and bounded mechanism branch, not vacuum-energy closure.
+- The artifact-level `vacuum_claim_scope_gate` is the export controller: Casimir benchmark
+  PASS remains topic-level `WARN` until upstream archive capture, geometry/radius
+  sensitivity, secondary datasets, and a cosmology bridge artifact are available.

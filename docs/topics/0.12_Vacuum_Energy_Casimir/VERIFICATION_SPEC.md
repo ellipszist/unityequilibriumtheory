@@ -41,8 +41,10 @@ The artifact must record:
 - source label, geometry, material, dataset radius, and model radius.
 - formula IDs used by the verifier.
 - thresholds, metrics, per-point rows, and limitations.
+- machine-readable `vacuum_claim_scope_gate.controller_status`.
 
 ## Interpretation
 
 A PASS supports a Claim Class C internal benchmark for the sphere-plate Casimir force only. It does not validate `VAC-DARK-ENERGY-ANCHOR`, solve the cosmological-constant problem, or prove a Planck-scale vacuum cutoff.
 Topic-level source-evidence and branch-claim gates further limit this topic to benchmark and mechanism-diagnostic usage unless stronger bridge evidence is added.
+`vacuum_claim_scope_gate.controller_status == WARN` is expected when the Casimir benchmark passes while upstream archive capture, geometry/radius sensitivity, secondary datasets, and cosmology bridge artifacts remain open.
