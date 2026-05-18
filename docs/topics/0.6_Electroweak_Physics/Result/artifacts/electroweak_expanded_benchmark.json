@@ -16,6 +16,77 @@
     "source_lock_manifest": "docs\\topics\\0.6_Electroweak_Physics\\Data\\03_Research\\source_lock_manifest.json"
   },
   "dataset_hash": "9457185950c1c279f004411aaaa7f6dd44274fa97467e5ddab724b7c29792642",
+  "electroweak_claim_scope_gate": {
+    "blocked_exports": [
+      "full electroweak-sector closure",
+      "Standard Model replacement",
+      "gauge-theory derivation proved",
+      "running weak-angle prediction validated",
+      "all electroweak observables source-locked and passed"
+    ],
+    "controller_status": "WARN",
+    "gate_inputs": {
+      "branch_claim_summary": {
+        "accepted_now": 3,
+        "blocked_for_strong_claims": 3,
+        "branches_total": 6
+      },
+      "source_evidence_summary": {
+        "source_targets_total": 5,
+        "targets_blocked_by_pending_evidence": 4,
+        "targets_ready_for_source_review": 1
+      }
+    },
+    "promotion_rule": "Only selected benchmark agreement can pass in this artifact. Theory-closure, running-angle, and Standard Model replacement claims require separate closed source, residual, and derivation gates.",
+    "provenance_caveat_gate": {
+      "controller_role": "blocks manuscript-grade promotion of checked-local weak-angle, Fermi, and neutron lanes",
+      "required_evidence": [
+        "direct upstream weak-mixing-angle mapping",
+        "direct external source lock for the neutron lifetime lane",
+        "uncertainty-aware observable mapping for all promoted checked-local entries"
+      ],
+      "status": "OPEN"
+    },
+    "purpose": "Machine-readable controller separating selected electroweak benchmark PASS from theory-closure claims.",
+    "running_angle_gate": {
+      "controller_role": "blocks running-angle pass/fail or prediction claims",
+      "metric": "running_angle_average_error_percent",
+      "required_evidence": [
+        "source-backed running-angle data package",
+        "predeclared pass/fail threshold",
+        "documented q-range and observable conventions"
+      ],
+      "status": "DIAGNOSTIC_ONLY",
+      "value": 2.602550916481116
+    },
+    "schema_version": "1.0",
+    "selected_benchmark_gate": {
+      "claim_class": "C - internal selected electroweak benchmark package",
+      "does_not_support": "A full electroweak derivation, Standard Model replacement, source-locked running-angle law, or all-observable electroweak fit.",
+      "metric": "max_core_relative_error_percent",
+      "status": "PASS",
+      "supports": "The selected core electroweak observables and checked-local neutron lifetime gate pass current repository thresholds.",
+      "thresholds": {
+        "G_F_GeV_minus_2": 0.5,
+        "m_H_GeV": 2.0,
+        "m_W_GeV": 2.0,
+        "neutron_lifetime_s": 2.0,
+        "sin2_theta_W": 2.0
+      },
+      "value": 0.5280923409635676
+    },
+    "theory_closure_gate": {
+      "controller_role": "blocks gauge-theory derivation and Standard Model replacement exports",
+      "required_evidence": [
+        "audit-grade derivation/proof artifact",
+        "broader electroweak observable coverage",
+        "baseline comparison against Standard Model fits",
+        "source-ready data packages for all promoted branches"
+      ],
+      "status": "BLOCKED"
+    },
+    "topic": "0.6_Electroweak_Physics"
+  },
   "environment": {
     "implementation": "CPython",
     "matplotlib_version": "3.10.8",
@@ -72,6 +143,7 @@
   ],
   "metrics": {
     "accepted_claim_branches": 3,
+    "claim_scope_controller_status": "WARN",
     "max_core_relative_error_percent": 0.5280923409635676,
     "neutron_lifetime_relative_error_percent": 0.11441130646643204,
     "running_angle_average_error_percent": 2.602550916481116,
@@ -119,6 +191,7 @@
       "neutron_lifetime_s": true,
       "sin2_theta_W": true
     },
+    "electroweak_claim_scope_status": "WARN",
     "running_angle_average_error_percent": 2.602550916481116,
     "running_angle_diagnostic": [
       {
@@ -227,7 +300,7 @@
     "neutron_lifetime_max_relative_error_percent": 2.0,
     "sin2_theta_W_max_relative_error_percent": 2.0
   },
-  "timestamp_utc": "2026-05-05T15:27:07.710393+00:00",
+  "timestamp_utc": "2026-05-18T14:19:12.803212+00:00",
   "topic": "0.6_Electroweak_Physics",
   "uet_version": "0.9.0"
 }

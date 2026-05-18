@@ -68,6 +68,9 @@ flowchart LR
   scripts and saved artifacts
 - Branch gates now separate source-backed mass benchmarks, checked-local weak-angle/Fermi
   benchmarks, secondary neutron checks, and blocked theory-closure claims
+- The expanded artifact carries `electroweak_claim_scope_gate`, which allows selected
+  benchmark agreement while keeping running-angle, gauge-derivation, all-observable, and
+  Standard Model replacement exports blocked.
 
 ## What this topic does not currently establish
 

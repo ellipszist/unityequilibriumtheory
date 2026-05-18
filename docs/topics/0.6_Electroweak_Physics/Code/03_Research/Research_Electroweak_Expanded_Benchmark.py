@@ -300,6 +300,82 @@ def build_branch_claim_gate() -> dict:
     }
 
 
+def build_electroweak_claim_scope_gate(
+    passed: bool,
+    core_comparisons: dict,
+    running_average_error: float,
+    source_evidence_readiness_matrix: dict,
+    branch_claim_gate: dict,
+) -> dict:
+    max_core_error = max(v["relative_error_percent"] for v in core_comparisons.values())
+    return {
+        "schema_version": "1.0",
+        "topic": "0.6_Electroweak_Physics",
+        "purpose": "Machine-readable controller separating selected electroweak benchmark PASS from theory-closure claims.",
+        "controller_status": "WARN" if passed else "FAIL",
+        "selected_benchmark_gate": {
+            "status": "PASS" if passed else "FAIL",
+            "claim_class": "C - internal selected electroweak benchmark package",
+            "metric": "max_core_relative_error_percent",
+            "value": max_core_error,
+            "thresholds": {
+                "sin2_theta_W": 2.0,
+                "m_W_GeV": 2.0,
+                "m_H_GeV": 2.0,
+                "G_F_GeV_minus_2": 0.5,
+                "neutron_lifetime_s": 2.0,
+            },
+            "supports": "The selected core electroweak observables and checked-local neutron lifetime gate pass current repository thresholds.",
+            "does_not_support": "A full electroweak derivation, Standard Model replacement, source-locked running-angle law, or all-observable electroweak fit.",
+        },
+        "provenance_caveat_gate": {
+            "status": "OPEN",
+            "controller_role": "blocks manuscript-grade promotion of checked-local weak-angle, Fermi, and neutron lanes",
+            "required_evidence": [
+                "direct upstream weak-mixing-angle mapping",
+                "direct external source lock for the neutron lifetime lane",
+                "uncertainty-aware observable mapping for all promoted checked-local entries",
+            ],
+        },
+        "running_angle_gate": {
+            "status": "DIAGNOSTIC_ONLY",
+            "metric": "running_angle_average_error_percent",
+            "value": running_average_error,
+            "controller_role": "blocks running-angle pass/fail or prediction claims",
+            "required_evidence": [
+                "source-backed running-angle data package",
+                "predeclared pass/fail threshold",
+                "documented q-range and observable conventions",
+            ],
+        },
+        "theory_closure_gate": {
+            "status": "BLOCKED",
+            "controller_role": "blocks gauge-theory derivation and Standard Model replacement exports",
+            "required_evidence": [
+                "audit-grade derivation/proof artifact",
+                "broader electroweak observable coverage",
+                "baseline comparison against Standard Model fits",
+                "source-ready data packages for all promoted branches",
+            ],
+        },
+        "blocked_exports": [
+            "full electroweak-sector closure",
+            "Standard Model replacement",
+            "gauge-theory derivation proved",
+            "running weak-angle prediction validated",
+            "all electroweak observables source-locked and passed",
+        ],
+        "gate_inputs": {
+            "source_evidence_summary": source_evidence_readiness_matrix["summary"],
+            "branch_claim_summary": branch_claim_gate["summary"],
+        },
+        "promotion_rule": (
+            "Only selected benchmark agreement can pass in this artifact. Theory-closure, running-angle, and "
+            "Standard Model replacement claims require separate closed source, residual, and derivation gates."
+        ),
+    }
+
+
 def main() -> int:
     benchmark = load_json(benchmark_package_json)
     source_lock = load_json(source_lock_json) if source_lock_json.exists() else {"external_source_records": [], "derived_inputs": []}
@@ -367,6 +443,13 @@ def main() -> int:
         "neutron_lifetime_s": core_comparisons["neutron_lifetime_s"]["relative_error_percent"] < 2.0,
     }
     passed = all(gates.values())
+    electroweak_claim_scope_gate = build_electroweak_claim_scope_gate(
+        passed,
+        core_comparisons,
+        running_average_error,
+        source_evidence_readiness_matrix,
+        branch_claim_gate,
+    )
 
     artifact = generate_artifact(
         topic="0.6_Electroweak_Physics",
@@ -390,6 +473,7 @@ def main() -> int:
                 "running_angle_average_error_percent": running_average_error,
                 "source_evidence_readiness_summary": source_evidence_readiness_matrix["summary"],
                 "branch_claim_gate_summary": branch_claim_gate["summary"],
+                "electroweak_claim_scope_status": electroweak_claim_scope_gate["controller_status"],
             }
         ),
         config={
@@ -405,6 +489,7 @@ def main() -> int:
             "source_targets_ready_for_review": source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
             "source_targets_blocked": source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
             "accepted_claim_branches": branch_claim_gate["summary"]["accepted_now"],
+            "claim_scope_controller_status": electroweak_claim_scope_gate["controller_status"],
         },
         thresholds={
             "sin2_theta_W_max_relative_error_percent": 2.0,
@@ -445,6 +530,7 @@ def main() -> int:
         "summary": branch_claim_gate["summary"],
         "claim_boundary": branch_claim_gate["claim_boundary"],
     }
+    artifact["electroweak_claim_scope_gate"] = electroweak_claim_scope_gate
     artifact["interpretation"] = (
         "This expanded artifact supports the selected core electroweak benchmark package and a secondary neutron benchmark. "
         "Running-angle points remain diagnostic-only, and broader electroweak-theory replacement claims remain blocked."
