@@ -30,8 +30,86 @@
     "tensorflow_version": null,
     "torch_version": "2.10.0+cpu"
   },
+  "fluid_claim_scope_gate": {
+    "allowed_claims_now": [
+      {
+        "artifact_role": "primary internal benchmark gate",
+        "claim": "The current UET implementation passes the repository internal speed/stability benchmark against the embedded simplified comparator.",
+        "formula_role": "uses existing UET master-equation implementation; does not audit external CFD equations",
+        "source_evidence_readiness": "ready_for_internal_review",
+        "status": "PASS"
+      },
+      {
+        "artifact_role": "finite-output diagnostic",
+        "claim": "The stress-field run produced finite values under the declared synthetic stress diagnostic.",
+        "formula_role": "diagnostic stability check, not a global regularity proof",
+        "source_evidence_readiness": "ready_for_internal_review",
+        "status": "PASS"
+      }
+    ],
+    "blocked_claims": [
+      {
+        "blocking_reason": "No source-backed external CFD/turbulence validation dataset is packaged as a primary gate.",
+        "claim": "UET is externally validated as a CFD or turbulence solver.",
+        "next_evidence_required": [
+          "dataset identity and upstream source",
+          "case definition and unit basis",
+          "artifact-backed baseline comparison"
+        ],
+        "status": "BLOCKED"
+      },
+      {
+        "blocking_reason": "The current benchmark uses dimensionless internal fields rather than physical fluid-property cases.",
+        "claim": "UET establishes physical Reynolds-number fluid validation.",
+        "next_evidence_required": [
+          "fluid-property sources",
+          "boundary-condition package",
+          "declared Reynolds-number validation workflow"
+        ],
+        "status": "BLOCKED"
+      },
+      {
+        "blocking_reason": "The current script is a benchmark artifact, not an audit-grade theorem package.",
+        "claim": "UET solves or proves Navier-Stokes/Millennium-level regularity claims.",
+        "next_evidence_required": [
+          "assumption registry",
+          "formal theorem statement",
+          "proof artifact with independent review status"
+        ],
+        "status": "BLOCKED"
+      }
+    ],
+    "blocked_export_phrases": [
+      "Navier-Stokes Millennium problem solved",
+      "global smoothness proved",
+      "external CFD validated",
+      "turbulence closure established",
+      "production CFD replacement"
+    ],
+    "branch_claim_gate_summary": {
+      "accepted_now": 2,
+      "blocked_for_strong_claims": 3,
+      "branches_total": 5
+    },
+    "claim_boundary": "A PASS artifact supports only the declared internal implementation benchmark and finite-output diagnostic. External CFD, physical fluid validation, turbulence closure, and theorem-level claims remain blocked.",
+    "claim_class": "C_internal_benchmark_only",
+    "controller_reason": "The internal benchmark passed, but topic-level export remains warning-gated because external CFD validation, physical Reynolds-number cases, and theorem claims are not packaged.",
+    "controller_status": "WARN",
+    "machine_readable_next_blockers": [
+      "external_cfd_validation_dataset_missing",
+      "physical_reynolds_number_gate_missing",
+      "navier_stokes_theorem_package_missing"
+    ],
+    "schema_version": "1.0",
+    "source_evidence_summary": {
+      "source_targets_total": 5,
+      "targets_blocked_by_pending_evidence": 4,
+      "targets_ready_for_source_review": 1
+    },
+    "topic": "0.10_Fluid_Dynamics_Chaos"
+  },
   "input_hashes": {
-    "benchmark_script": "5807ba1bf59a40e3f52d2e51f9f142dfa4e1805bf6e4489d587158e0e42002bc",
+    "benchmark_script": "d530e4149fa5bbf042a92a080d81240a30d453931890c1831c0430b68600070c",
     "source_lock_manifest": "d65719d433e75fe2dd99ae9d37fcc9aedb7a3070dccaa1bbea54d103657ea17b",
     "uet_master_equation": "a9a691acfc135ae07a70ef2e8cf655bc3505a57006b189d8102c2a6f7a42185c"
   },
@@ -44,9 +122,10 @@
   ],
   "metrics": {
     "accepted_claim_branches": 2,
+    "blocked_claim_exports": 5,
     "source_targets_blocked": 4,
     "source_targets_ready_for_review": 1,
-    "speedup": 2.924644353469001,
+    "speedup": 3.0924841945716723,
     "stable": true
   },
   "notes": "Internal implementation benchmark artifact using the repository comparator script; not an external CFD validation result.",
@@ -56,29 +135,30 @@
       "blocked_for_strong_claims": 3,
       "branches_total": 5
     },
-    "navier_stokes_runtime_seconds": 0.1167907000053674,
+    "fluid_claim_scope_gate_status": "WARN",
+    "navier_stokes_runtime_seconds": 0.12536899999986417,
     "navier_stokes_runtime_trials_seconds": [
-      0.11756959999911487,
-      0.12300379993394017,
-      0.11413399991579354,
-      0.1167907000053674,
-      0.11283580004237592
+      0.12568450000026132,
+      0.11861170000020138,
+      0.12250279999989289,
+      0.12647980000019743,
+      0.12536899999986417
     ],
     "source_evidence_readiness_summary": {
       "source_targets_total": 5,
       "targets_blocked_by_pending_evidence": 4,
       "targets_ready_for_source_review": 1
     },
-    "speedup": 2.924644353469001,
+    "speedup": 3.0924841945716723,
     "stable": true,
     "status": "PASS",
-    "uet_runtime_seconds": 0.03993329987861216,
+    "uet_runtime_seconds": 0.04053990000011254,
     "uet_runtime_trials_seconds": [
-      0.03970239986665547,
-      0.04013900016434491,
-      0.03993329987861216,
-      0.038401300087571144,
-      0.04020599997602403
+      0.04230730000017502,
+      0.03948450000007142,
+      0.040118599999914295,
+      0.041466399999990244,
+      0.04053990000011254
     ]
   },
   "seed": 42,
@@ -108,7 +188,7 @@
     "min_speedup": 2.0,
     "requires_stability": true
   },
-  "timestamp_utc": "2026-05-05T16:56:32.703440+00:00",
+  "timestamp_utc": "2026-05-18T14:32:25.975395+00:00",
   "topic": "0.10_Fluid_Dynamics_Chaos",
   "uet_version": "0.9.0"
 }

@@ -11,6 +11,7 @@
   - Relative speedup
   - Stability under stress test
   - machine-readable `results.status`
+  - machine-readable `fluid_claim_scope_gate.controller_status`
   - source-lock, benchmark-script, and core-equation hashes
 - Current threshold:
   - `speedup > 2.0`
@@ -25,3 +26,8 @@
   - `PASS` means the implementation beat the embedded simplified comparator under this
     declared configuration and finite-output stress gate.
   - It does not establish external CFD validation or theorem-level Navier-Stokes results.
+  - `fluid_claim_scope_gate.controller_status == WARN` is expected when the internal gate
+    passes but external CFD validation, physical Reynolds-number validation, and proof
+    branches remain unpackaged.
+  - Blocked export phrases include external CFD validation, turbulence closure, production
+    CFD replacement, and Navier-Stokes/Millennium proof wording.

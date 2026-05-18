@@ -302,6 +302,92 @@ def build_branch_claim_gate() -> dict:
     }
 
 
+def build_fluid_claim_scope_gate(passed: bool, source_evidence_readiness_matrix: dict, branch_claim_gate: dict) -> dict:
+    readiness_summary = source_evidence_readiness_matrix["summary"]
+    branch_summary = branch_claim_gate["summary"]
+    internal_status = "PASS" if passed else "FAIL"
+    controller_status = "WARN" if passed else "FAIL"
+    return {
+        "schema_version": "1.0",
+        "topic": "0.10_Fluid_Dynamics_Chaos",
+        "controller_status": controller_status,
+        "controller_reason": (
+            "The internal benchmark passed, but topic-level export remains warning-gated because "
+            "external CFD validation, physical Reynolds-number cases, and theorem claims are not packaged."
+            if passed
+            else "The internal benchmark gate did not meet the declared speed/stability threshold."
+        ),
+        "claim_class": "C_internal_benchmark_only",
+        "allowed_claims_now": [
+            {
+                "claim": "The current UET implementation passes the repository internal speed/stability benchmark against the embedded simplified comparator.",
+                "status": internal_status,
+                "artifact_role": "primary internal benchmark gate",
+                "formula_role": "uses existing UET master-equation implementation; does not audit external CFD equations",
+                "source_evidence_readiness": "ready_for_internal_review",
+            },
+            {
+                "claim": "The stress-field run produced finite values under the declared synthetic stress diagnostic.",
+                "status": internal_status,
+                "artifact_role": "finite-output diagnostic",
+                "formula_role": "diagnostic stability check, not a global regularity proof",
+                "source_evidence_readiness": "ready_for_internal_review",
+            },
+        ],
+        "blocked_claims": [
+            {
+                "claim": "UET is externally validated as a CFD or turbulence solver.",
+                "status": "BLOCKED",
+                "blocking_reason": "No source-backed external CFD/turbulence validation dataset is packaged as a primary gate.",
+                "next_evidence_required": [
+                    "dataset identity and upstream source",
+                    "case definition and unit basis",
+                    "artifact-backed baseline comparison",
+                ],
+            },
+            {
+                "claim": "UET establishes physical Reynolds-number fluid validation.",
+                "status": "BLOCKED",
+                "blocking_reason": "The current benchmark uses dimensionless internal fields rather than physical fluid-property cases.",
+                "next_evidence_required": [
+                    "fluid-property sources",
+                    "boundary-condition package",
+                    "declared Reynolds-number validation workflow",
+                ],
+            },
+            {
+                "claim": "UET solves or proves Navier-Stokes/Millennium-level regularity claims.",
+                "status": "BLOCKED",
+                "blocking_reason": "The current script is a benchmark artifact, not an audit-grade theorem package.",
+                "next_evidence_required": [
+                    "assumption registry",
+                    "formal theorem statement",
+                    "proof artifact with independent review status",
+                ],
+            },
+        ],
+        "blocked_export_phrases": [
+            "Navier-Stokes Millennium problem solved",
+            "global smoothness proved",
+            "external CFD validated",
+            "turbulence closure established",
+            "production CFD replacement",
+        ],
+        "source_evidence_summary": readiness_summary,
+        "branch_claim_gate_summary": branch_summary,
+        "machine_readable_next_blockers": [
+            "external_cfd_validation_dataset_missing",
+            "physical_reynolds_number_gate_missing",
+            "navier_stokes_theorem_package_missing",
+        ],
+        "claim_boundary": (
+            "A PASS artifact supports only the declared internal implementation benchmark and finite-output "
+            "diagnostic. External CFD, physical fluid validation, turbulence closure, and theorem-level claims "
+            "remain blocked."
+        ),
+    }
+
+
 def run_benchmarks():
     print("=" * 60)
     print("UET TIER 2: SPEED AND STABILITY BENCHMARK")
@@ -374,6 +460,12 @@ def run_benchmarks():
     print(f"UET Runtime: {t_uet:.4f}s")
     print(f"Speedup: {speedup:.1f}x")
     print(f"Stable: {is_stable}")
+    passed = speedup > 2.0 and is_stable
+    fluid_claim_scope_gate = build_fluid_claim_scope_gate(
+        passed,
+        source_evidence_readiness_matrix,
+        branch_claim_gate,
+    )
 
     fig_dir = Path(__file__).resolve().parents[2] / "Result" / "02_Proof"
     fig_dir.mkdir(parents=True, exist_ok=True)
@@ -393,7 +485,6 @@ def run_benchmarks():
     plt.savefig(fig_dir / "benchmarks_tier2.png")
     plt.close()
 
-    passed = speedup > 2.0 and is_stable
     artifact = generate_artifact(
         topic="0.10_Fluid_Dynamics_Chaos",
         dataset_hash=hash_dataset({
@@ -412,6 +503,7 @@ def run_benchmarks():
             "stable": is_stable,
             "source_evidence_readiness_summary": source_evidence_readiness_matrix["summary"],
             "branch_claim_gate_summary": branch_claim_gate["summary"],
+            "fluid_claim_scope_gate_status": fluid_claim_scope_gate["controller_status"],
         },
         config={
             "grid_size": grid_size,
@@ -427,6 +519,7 @@ def run_benchmarks():
             "source_targets_ready_for_review": source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
             "source_targets_blocked": source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
             "accepted_claim_branches": branch_claim_gate["summary"]["accepted_now"],
+            "blocked_claim_exports": len(fluid_claim_scope_gate["blocked_export_phrases"]),
         },
         thresholds={"min_speedup": 2.0, "requires_stability": True},
         notes="Internal implementation benchmark artifact using the repository comparator script; not an external CFD validation result.",
@@ -459,6 +552,7 @@ def run_benchmarks():
         "summary": branch_claim_gate["summary"],
         "claim_boundary": branch_claim_gate["claim_boundary"],
     }
+    artifact["fluid_claim_scope_gate"] = fluid_claim_scope_gate
     artifact["interpretation"] = (
         "This artifact supports an internal implementation speed benchmark and a finite-output stress diagnostic. "
         "It does not validate external CFD accuracy or theorem-level Navier-Stokes claims."
