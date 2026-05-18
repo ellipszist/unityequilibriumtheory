@@ -5,6 +5,7 @@
 - The current verifier now checks live engine angles. The present tri-generation/Cabibbo-leakage bridge passes the NuFIT 6.0 angle gate, but it remains a benchmark-gated heuristic until derived from the UET field equations.
 - The direct KATRIN mass-limit benchmark is now source-locked and the present absolute-mass branch passes it, but that branch is still a compact see-saw-style construction rather than a full neutrino-sector derivation.
 - The branch claim gate now accepts benchmark compatibility for NuFIT data, live angles, runtime splittings, and the bounded KATRIN branch, but it still blocks hierarchy-proxy and full-sector proof claims.
+- `neutrino_claim_scope_gate` allows only NuFIT/KATRIN benchmark compatibility exports and blocks mass-origin, PMNS-proof, hierarchy, full-sector, and unification-strength exports.
 - The repaired mass-scale branch depends on dimensional consistency between the electroweak scale and the heavy information scale. Passing KATRIN after the unit fix removes a physics error, but it does not by itself prove the deeper UET interpretation of neutrino mass generation.
 - The hierarchy selector currently uses a beta-sign proxy, not a computed topological invariant; it must remain diagnostic wording until a real winding/Chern-number derivation exists.
 - Internal script execution does not by itself establish external replication, formal proof, or broad physical closure.

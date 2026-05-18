@@ -332,6 +332,76 @@ def build_branch_claim_gate() -> dict:
     }
 
 
+def build_neutrino_claim_scope_gate(
+    overall: bool,
+    geometric_pass: bool,
+    splitting_pass: bool,
+    katrin_pass: bool,
+    provenance_pass: bool,
+    source_evidence_readiness_matrix: dict,
+    branch_claim_gate: dict,
+) -> dict:
+    return {
+        "schema_version": "1.0",
+        "topic": "0.7_Neutrino_Physics",
+        "purpose": "Machine-readable controller separating NuFIT/KATRIN benchmark PASS from full neutrino-sector claims.",
+        "controller_status": "WARN" if overall else "FAIL",
+        "benchmark_compatibility_gate": {
+            "status": "PASS" if overall else "FAIL",
+            "claim_class": "C - internal source-backed benchmark compatibility package",
+            "component_status": {
+                "live_angle_gate": "PASS" if geometric_pass else "FAIL",
+                "runtime_splitting_gate": "PASS" if splitting_pass else "FAIL",
+                "absolute_mass_katrin_gate": "PASS" if katrin_pass else "FAIL",
+                "nufit_provenance_guard": "PASS" if provenance_pass else "FAIL",
+            },
+            "supports": "The current live angle, benchmark-fed splitting, and absolute-mass branches satisfy the declared NuFIT/KATRIN gates.",
+            "does_not_support": "A first-principles neutrino mass origin, hierarchy selector, PMNS derivation, or full neutrino-sector proof.",
+        },
+        "derivation_gate": {
+            "status": "OPEN",
+            "controller_role": "blocks promotion from benchmark compatibility to derived neutrino-sector theory",
+            "required_evidence": [
+                "field-equation derivation for live PMNS angle bridge",
+                "first-principles mass-splitting outputs rather than benchmark-fed runtime parameters",
+                "uncertainty-aware propagation across angle, splitting, and absolute-mass lanes",
+            ],
+        },
+        "hierarchy_gate": {
+            "status": "BLOCKED",
+            "controller_role": "blocks hierarchy and full-sector closure exports",
+            "required_evidence": [
+                "topological invariant or comparable derived hierarchy selector",
+                "dedicated verifier artifact for hierarchy claims",
+                "source-backed baseline comparison for hierarchy alternatives",
+            ],
+        },
+        "source_pipeline_gate": {
+            "status": "PARTIAL",
+            "controller_role": "blocks stronger source-readiness claims for the NuFIT layer",
+            "required_evidence": [
+                "machine parse or independent double-entry of NuFIT official table",
+                "explicit review trail for checked transcription changes",
+            ],
+        },
+        "blocked_exports": [
+            "neutrino mass origin derived",
+            "full PMNS matrix proved from UET",
+            "mass hierarchy resolved",
+            "full neutrino-sector closure",
+            "unification evidence beyond benchmark constraint",
+        ],
+        "gate_inputs": {
+            "source_evidence_summary": source_evidence_readiness_matrix["summary"],
+            "branch_claim_summary": branch_claim_gate["summary"],
+        },
+        "promotion_rule": (
+            "Only NuFIT/KATRIN benchmark compatibility can pass in this artifact. Stronger neutrino-sector claims "
+            "require closed derivation, hierarchy, and source-pipeline gates."
+        ),
+    }
+
+
 def run_test() -> bool:
     print("=" * 72)
     print("UET NEUTRINO PHYSICS TEST - NUFIT 6.0")
@@ -409,6 +479,15 @@ def run_test() -> bool:
         for key in ("delta_m21_sq_1e5_eV2", "delta_m3l_sq_1e3_eV2")
     )
     overall = geometric_pass and splitting_pass and katrin_pass and provenance_pass
+    neutrino_claim_scope_gate = build_neutrino_claim_scope_gate(
+        overall,
+        geometric_pass,
+        splitting_pass,
+        katrin_pass,
+        provenance_pass,
+        source_evidence_readiness_matrix,
+        branch_claim_gate,
+    )
     failed_angles = [
         key
         for key in ("theta12_deg", "theta23_deg", "theta13_deg")
@@ -459,6 +538,7 @@ def run_test() -> bool:
             "provenance_pass": provenance_pass,
             "source_evidence_readiness_summary": source_evidence_readiness_matrix["summary"],
             "branch_claim_gate_summary": branch_claim_gate["summary"],
+            "neutrino_claim_scope_status": neutrino_claim_scope_gate["controller_status"],
             "failure_analysis": {
                 "failed_live_angle_gates": failed_angles,
                 "model_action": (
@@ -490,6 +570,7 @@ def run_test() -> bool:
             "source_targets_ready_for_review": source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
             "source_targets_blocked": source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
             "accepted_claim_branches": branch_claim_gate["summary"]["accepted_now"],
+            "claim_scope_controller_status": neutrino_claim_scope_gate["controller_status"],
         },
         thresholds={
             "engine_angles_within_any_3sigma": True,
@@ -520,6 +601,7 @@ def run_test() -> bool:
         "summary": branch_claim_gate["summary"],
         "claim_boundary": branch_claim_gate["claim_boundary"],
     }
+    artifact["neutrino_claim_scope_gate"] = neutrino_claim_scope_gate
     artifact["interpretation"] = (
         "This artifact supports benchmark compatibility for source-backed NuFIT and KATRIN constraints, "
         "with accepted-but-caveated angle, splitting, and absolute-mass branches. It does not prove the full neutrino sector."

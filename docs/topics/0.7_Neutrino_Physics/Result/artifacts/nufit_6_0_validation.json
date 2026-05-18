@@ -36,6 +36,7 @@
   ],
   "metrics": {
     "accepted_claim_branches": 4,
+    "claim_scope_controller_status": "WARN",
     "engine_angle_fail_count": 0,
     "engine_angles_all_within_any_3sigma": true,
     "katrin_limit_eV_c2": 0.45,
@@ -44,6 +45,70 @@
     "runtime_splittings_all_within_any_3sigma": true,
     "source_targets_blocked": 3,
     "source_targets_ready_for_review": 2
+  },
+  "neutrino_claim_scope_gate": {
+    "benchmark_compatibility_gate": {
+      "claim_class": "C - internal source-backed benchmark compatibility package",
+      "component_status": {
+        "absolute_mass_katrin_gate": "PASS",
+        "live_angle_gate": "PASS",
+        "nufit_provenance_guard": "PASS",
+        "runtime_splitting_gate": "PASS"
+      },
+      "does_not_support": "A first-principles neutrino mass origin, hierarchy selector, PMNS derivation, or full neutrino-sector proof.",
+      "status": "PASS",
+      "supports": "The current live angle, benchmark-fed splitting, and absolute-mass branches satisfy the declared NuFIT/KATRIN gates."
+    },
+    "blocked_exports": [
+      "neutrino mass origin derived",
+      "full PMNS matrix proved from UET",
+      "mass hierarchy resolved",
+      "full neutrino-sector closure",
+      "unification evidence beyond benchmark constraint"
+    ],
+    "controller_status": "WARN",
+    "derivation_gate": {
+      "controller_role": "blocks promotion from benchmark compatibility to derived neutrino-sector theory",
+      "required_evidence": [
+        "field-equation derivation for live PMNS angle bridge",
+        "first-principles mass-splitting outputs rather than benchmark-fed runtime parameters",
+        "uncertainty-aware propagation across angle, splitting, and absolute-mass lanes"
+      ],
+      "status": "OPEN"
+    },
+    "gate_inputs": {
+      "branch_claim_summary": {
+        "accepted_now": 4,
+        "blocked_for_strong_claims": 2,
+        "branches_total": 6
+      },
+      "source_evidence_summary": {
+        "source_targets_total": 5,
+        "targets_blocked_by_pending_evidence": 3,
+        "targets_ready_for_source_review": 2
+      }
+    },
+    "hierarchy_gate": {
+      "controller_role": "blocks hierarchy and full-sector closure exports",
+      "required_evidence": [
+        "topological invariant or comparable derived hierarchy selector",
+        "dedicated verifier artifact for hierarchy claims",
+        "source-backed baseline comparison for hierarchy alternatives"
+      ],
+      "status": "BLOCKED"
+    },
+    "promotion_rule": "Only NuFIT/KATRIN benchmark compatibility can pass in this artifact. Stronger neutrino-sector claims require closed derivation, hierarchy, and source-pipeline gates.",
+    "purpose": "Machine-readable controller separating NuFIT/KATRIN benchmark PASS from full neutrino-sector claims.",
+    "schema_version": "1.0",
+    "source_pipeline_gate": {
+      "controller_role": "blocks stronger source-readiness claims for the NuFIT layer",
+      "required_evidence": [
+        "machine parse or independent double-entry of NuFIT official table",
+        "explicit review trail for checked transcription changes"
+      ],
+      "status": "PARTIAL"
+    },
+    "topic": "0.7_Neutrino_Physics"
   },
   "notes": "This test distinguishes live UET engine angle outputs from runtime benchmark-fed mass splittings. It also checks the direct absolute-mass engine path against the official 2025 KATRIN limit. A fail constrains downstream core-theory claims until the live geometric angle path is repaired.",
   "results": {
@@ -198,6 +263,7 @@
     },
     "geometric_pass": true,
     "katrin_pass": true,
+    "neutrino_claim_scope_status": "WARN",
     "nufit_provenance": {
       "manual_review_required": true,
       "note": "The repository currently validates the checked-transcription JSON against schema and locked-source hashes. A true machine PDF parser requires an explicit dependency.",
@@ -250,7 +316,7 @@
     "predicted_mass_less_than_katrin_limit": true,
     "runtime_splittings_within_any_3sigma": true
   },
-  "timestamp_utc": "2026-05-05T15:36:36.719770+00:00",
+  "timestamp_utc": "2026-05-18T14:22:36.657359+00:00",
   "topic": "0.7_Neutrino_Physics",
   "uet_version": "0.9.0"
 }

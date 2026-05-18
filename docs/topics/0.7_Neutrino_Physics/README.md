@@ -76,6 +76,7 @@ flowchart LR
 | Runtime splittings | NuFIT 6.0 3sigma ranges | PASS | Values are benchmark-fed, not derived from first principles |
 | Absolute mass branch | KATRIN 2025 upper limit | PASS | See-saw-style branch is below the official limit |
 | Workflow gates | Source evidence + branch claim files | ACTIVE | Distinguishes accepted benchmark branches from blocked theory branches |
+| Artifact claim scope | `neutrino_claim_scope_gate` | ACTIVE | Exports benchmark compatibility only; blocks mass-origin, hierarchy, PMNS-proof, and full-sector claims |
 | Derivation status | Full neutrino sector | HARDENING TARGET | Formula audit labels key paths as heuristic/benchmark-fed |
 
 ## Dependency Matrix
