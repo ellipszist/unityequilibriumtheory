@@ -34,12 +34,14 @@
   - `Data/03_Research/source_evidence_intake_stub.json`
   - `Data/03_Research/source_evidence_readiness_matrix.json`
   - `Data/03_Research/branch_claim_gate.json`
+  - embedded `nuclear_claim_scope_gate` in `Result/artifacts/nuclear_binding_source_locked_validation.json`
 - Latest audit-run artifact identity:
   - Source-locked verifier: `PASS`, dataset hash `a822071ab7769934cdae9a12da598d8dd48d7bcf7e09a53364be28e991b14689`, timestamp `2026-04-28T14:12:54.216457+00:00`.
   - Full-table diagnostic: `DIAGNOSTIC`, dataset hash `5513ae294bc68c16b7c6649a28dcd088c2901d87a17c1d8895c912b993451f2e`, timestamp `2026-04-28T14:13:12.509370+00:00`.
   - The UTF-8 environment variables are required on this Windows shell because the logger emits Unicode status glyphs; without them the verifier can fail before artifact review with a console encoding error.
 - Interpretation:
   - A pass means the current engine is numerically compatible with the raw-derived AME2020 subset for heavy nuclei and with the proton-radius benchmark.
+  - Treat `nuclear_claim_scope_gate` as the artifact-level controller for what the PASS may export to integration topics.
   - It does not automatically certify light nuclei, hadron masses, QCD running, or confinement branches.
   - The diagnostic artifact summarizes table-wide behavior across the parsed AME2020 rows and should be used to describe broad performance honestly, especially the heavy-vs-light split.
   - It now certifies that table-wide AME2020 parsing is present, but it does not yet certify that the engine passes the full parsed AME table or a complete first-principles derivation of hadronic and nuclear structure.

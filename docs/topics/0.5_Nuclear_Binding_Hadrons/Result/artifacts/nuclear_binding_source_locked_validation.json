@@ -38,6 +38,7 @@
   ],
   "metrics": {
     "accepted_claim_branches": 2,
+    "claim_scope_controller_status": "WARN",
     "excluded_count": 3,
     "heavy_nuclei_all_pass": true,
     "max_error_percent": 122.13510751489672,
@@ -50,6 +51,77 @@
     "validation_subset_count": 7
   },
   "notes": "This verifier reads a raw-derived AME2020 subset plus source-backed proton-radius data, and now records source-evidence and branch-claim workflow gates.",
+  "nuclear_claim_scope_gate": {
+    "blocked_exports": [
+      "full AME2020 nuclear-binding pass",
+      "light-nuclei validation",
+      "general QCD derivation",
+      "hadron mass model validation",
+      "formal confinement proof",
+      "complete strong-force theory"
+    ],
+    "controller_status": "WARN",
+    "full_table_gate": {
+      "controller_role": "blocks broad AME2020-table pass claims",
+      "required_evidence": [
+        "fixed full-table acceptance threshold",
+        "heavy/light split metrics treated as separate gates",
+        "SEMF baseline versus UET-correction decomposition",
+        "uncertainty and data-quality policy for all parsed rows"
+      ],
+      "status": "DIAGNOSTIC_ONLY"
+    },
+    "gate_inputs": {
+      "branch_claim_summary": {
+        "accepted_now": 2,
+        "blocked_for_strong_claims": 4,
+        "branches_total": 6
+      },
+      "source_evidence_summary": {
+        "source_targets_total": 5,
+        "targets_blocked_by_pending_evidence": 3,
+        "targets_ready_for_source_review": 2
+      }
+    },
+    "heavy_subset_gate": {
+      "claim_class": "C - internal source-backed selected-subset benchmark",
+      "does_not_support": "A full AME2020-table pass, a light-nuclei model, QCD running, hadron masses, or confinement proof.",
+      "metric": "heavy_max_error_percent",
+      "status": "PASS",
+      "supports": "The selected heavy-nucleus AME2020 subset satisfies the repository threshold.",
+      "threshold": 15.0,
+      "value": 2.9977453397002396
+    },
+    "light_nuclei_gate": {
+      "controller_role": "blocks using heavy-nucleus PASS as a light-nuclei claim",
+      "excluded_cases": [
+        "C12",
+        "H2",
+        "He4"
+      ],
+      "status": "EXCLUDED_FROM_PASS"
+    },
+    "promotion_rule": "Only the selected heavy-nucleus subset and proton-radius anchor compatibility can pass here. Full-table, light-nuclei, QCD, hadron, and confinement claims require separate closed gates.",
+    "proton_radius_anchor_gate": {
+      "claim_class": "C - benchmark-anchor compatibility check",
+      "does_not_support": "An independently derived proton-radius prediction.",
+      "status": "PASS",
+      "supports": "The current engine output is compatible with the proton-radius benchmark threshold."
+    },
+    "purpose": "Machine-readable controller separating strict selected-subset PASS from broader nuclear, hadron, QCD, and confinement claims.",
+    "qcd_hadron_confinement_gate": {
+      "controller_role": "blocks QCD running, hadron mass, and confinement exports",
+      "required_evidence": [
+        "source-locked quark and hadron inputs",
+        "fixed QCD-running benchmark with data-shape bug resolved",
+        "dedicated hadron-mass verifier artifact",
+        "audit-grade confinement proof pass/fail contract"
+      ],
+      "status": "BLOCKED"
+    },
+    "schema_version": "1.0",
+    "topic": "0.5_Nuclear_Binding_Hadrons"
+  },
   "results": {
     "binding_comparisons": {
       "C12": {
@@ -160,6 +232,7 @@
       "median_error_percent": 1.7694307073689635
     },
     "heavy_nuclei_all_pass": true,
+    "nuclear_claim_scope_status": "WARN",
     "proton_radius": {
       "observed_fm": 0.831,
       "passes": true,
@@ -237,7 +310,7 @@
     "heavy_nucleus_binding_error_percent_max": 15.0,
     "proton_radius_relative_error_percent_max": 5.0
   },
-  "timestamp_utc": "2026-05-05T15:21:09.404826+00:00",
+  "timestamp_utc": "2026-05-18T14:14:54.930959+00:00",
   "topic": "0.5_Nuclear_Binding_Hadrons",
   "uet_version": "0.9.0"
 }

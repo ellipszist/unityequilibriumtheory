@@ -48,6 +48,9 @@ selected nuclear-binding, hadron-mass, proton-radius, and strong-force benchmark
   source-locked at the same standard.
 - Branch claim gates now separate heavy-nucleus binding and proton-radius benchmark use from
   light nuclei, hadron mass, QCD running, and confinement branches.
+- The strict artifact now carries `nuclear_claim_scope_gate`, which lets the heavy-nucleus
+  selected-subset and proton-radius anchor checks pass while blocking full-table, light-nuclei,
+  QCD, hadron-mass, confinement, and complete strong-force exports.
 
 ## Verification notes
 

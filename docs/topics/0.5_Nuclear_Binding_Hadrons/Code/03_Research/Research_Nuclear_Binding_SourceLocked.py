@@ -278,6 +278,77 @@ def build_branch_claim_gate() -> dict:
     }
 
 
+def build_nuclear_claim_scope_gate(
+    overall: bool,
+    error_distribution: dict,
+    source_evidence_readiness_matrix: dict,
+    branch_claim_gate: dict,
+    light_excluded: list[str],
+) -> dict:
+    return {
+        "schema_version": "1.0",
+        "topic": "0.5_Nuclear_Binding_Hadrons",
+        "purpose": "Machine-readable controller separating strict selected-subset PASS from broader nuclear, hadron, QCD, and confinement claims.",
+        "controller_status": "WARN" if overall else "FAIL",
+        "heavy_subset_gate": {
+            "status": "PASS" if overall else "FAIL",
+            "claim_class": "C - internal source-backed selected-subset benchmark",
+            "metric": "heavy_max_error_percent",
+            "value": error_distribution["heavy_max_error_percent"],
+            "threshold": 15.0,
+            "supports": "The selected heavy-nucleus AME2020 subset satisfies the repository threshold.",
+            "does_not_support": "A full AME2020-table pass, a light-nuclei model, QCD running, hadron masses, or confinement proof.",
+        },
+        "proton_radius_anchor_gate": {
+            "status": "PASS" if overall else "FAIL",
+            "claim_class": "C - benchmark-anchor compatibility check",
+            "supports": "The current engine output is compatible with the proton-radius benchmark threshold.",
+            "does_not_support": "An independently derived proton-radius prediction.",
+        },
+        "full_table_gate": {
+            "status": "DIAGNOSTIC_ONLY",
+            "controller_role": "blocks broad AME2020-table pass claims",
+            "required_evidence": [
+                "fixed full-table acceptance threshold",
+                "heavy/light split metrics treated as separate gates",
+                "SEMF baseline versus UET-correction decomposition",
+                "uncertainty and data-quality policy for all parsed rows",
+            ],
+        },
+        "light_nuclei_gate": {
+            "status": "EXCLUDED_FROM_PASS",
+            "excluded_cases": light_excluded,
+            "controller_role": "blocks using heavy-nucleus PASS as a light-nuclei claim",
+        },
+        "qcd_hadron_confinement_gate": {
+            "status": "BLOCKED",
+            "controller_role": "blocks QCD running, hadron mass, and confinement exports",
+            "required_evidence": [
+                "source-locked quark and hadron inputs",
+                "fixed QCD-running benchmark with data-shape bug resolved",
+                "dedicated hadron-mass verifier artifact",
+                "audit-grade confinement proof pass/fail contract",
+            ],
+        },
+        "blocked_exports": [
+            "full AME2020 nuclear-binding pass",
+            "light-nuclei validation",
+            "general QCD derivation",
+            "hadron mass model validation",
+            "formal confinement proof",
+            "complete strong-force theory",
+        ],
+        "gate_inputs": {
+            "source_evidence_summary": source_evidence_readiness_matrix["summary"],
+            "branch_claim_summary": branch_claim_gate["summary"],
+        },
+        "promotion_rule": (
+            "Only the selected heavy-nucleus subset and proton-radius anchor compatibility can pass here. "
+            "Full-table, light-nuclei, QCD, hadron, and confinement claims require separate closed gates."
+        ),
+    }
+
+
 def run_test() -> bool:
     print("=" * 72)
     print("UET NUCLEAR BINDING TEST - SOURCE-BACKED AME2020")
@@ -359,6 +430,13 @@ def run_test() -> bool:
         "heavy_median_error_percent": statistics.median(heavy_errors) if heavy_errors else None,
         "heavy_max_error_percent": max(heavy_errors) if heavy_errors else None,
     }
+    nuclear_claim_scope_gate = build_nuclear_claim_scope_gate(
+        overall,
+        error_distribution,
+        source_evidence_readiness_matrix,
+        branch_claim_gate,
+        light_excluded,
+    )
     worst_cases = sorted(
         [
             {
@@ -415,6 +493,7 @@ def run_test() -> bool:
             "heavy_nuclei_all_pass": heavy_pass,
             "source_evidence_readiness_summary": source_evidence_readiness_matrix["summary"],
             "branch_claim_gate_summary": branch_claim_gate["summary"],
+            "nuclear_claim_scope_status": nuclear_claim_scope_gate["controller_status"],
         },
         config={
             "binding_reference": str(AME_JSON.relative_to(root_path)),
@@ -436,6 +515,7 @@ def run_test() -> bool:
             "source_targets_ready_for_review": source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
             "source_targets_blocked": source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
             "accepted_claim_branches": branch_claim_gate["summary"]["accepted_now"],
+            "claim_scope_controller_status": nuclear_claim_scope_gate["controller_status"],
         },
         thresholds={
             "heavy_nucleus_binding_error_percent_max": 15.0,
@@ -461,6 +541,7 @@ def run_test() -> bool:
         "summary": branch_claim_gate["summary"],
         "claim_boundary": branch_claim_gate["claim_boundary"],
     }
+    artifact["nuclear_claim_scope_gate"] = nuclear_claim_scope_gate
     artifact["interpretation"] = (
         "This artifact supports a source-backed heavy-nucleus subset benchmark and a proton-radius "
         "anchor-compatibility check. It does not validate light nuclei, hadron masses, QCD running, "
