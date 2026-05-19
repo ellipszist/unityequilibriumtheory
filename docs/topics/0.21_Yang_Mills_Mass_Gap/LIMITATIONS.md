@@ -11,3 +11,6 @@
   independent parsing notes.
 - The diagnostic proof script is a repository sanity check and should not be cited as a
   complete constructive proof of Yang-Mills existence and mass gap.
+- The artifact-level `yang_mills_claim_scope_gate` is the export controller: scalar
+  benchmark PASS/WARN cannot be cited as Clay-problem proof, confinement proof, full
+  glueball-spectrum validation, or fixed-theory-constant evidence.
