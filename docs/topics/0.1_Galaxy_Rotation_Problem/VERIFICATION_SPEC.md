@@ -27,6 +27,7 @@
   - average error percent and pass rate percent when valid comparisons exist
   - per-galaxy result rows
   - `galaxy_model_gate` with run-contract, summary-row residual, source-lock, baseline-comparison, and replacement-claim gates
+  - machine-readable `galaxy_claim_scope_gate.controller_status`
   - claim boundary describing the benchmark as an internal summary-row test
 - Interpretation:
   - Treat this verifier as an internal benchmark over the repository working copy.
@@ -34,3 +35,4 @@
   - Do not describe it as full upstream SPARC curve replication.
   - Stronger galaxy-dynamics claims require source-locked curve arrays and
     comparator baseline artifacts.
+  - `galaxy_claim_scope_gate.controller_status` must block replacement or closure exports when the residual gate fails or source-lock/baseline gates remain open.

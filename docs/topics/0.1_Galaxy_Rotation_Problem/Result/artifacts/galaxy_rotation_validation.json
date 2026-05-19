@@ -8,6 +8,88 @@
     "platform": "Windows-11-10.0.26200-SP0",
     "python_version": "3.14.2"
   },
+  "galaxy_claim_scope_gate": {
+    "allowed_claims_now": [
+      {
+        "artifact_role": "run-contract benchmark",
+        "claim": "The repository summary-row verifier ran over the checked-in galaxy working copy.",
+        "metrics": {
+          "average_error_percent": 61.418416186784235,
+          "pass_rate_percent": 0.0
+        },
+        "source_evidence_readiness": "working_copy_not_full_sparc_archive",
+        "status": "PASS"
+      },
+      {
+        "artifact_role": "summary-row model gate",
+        "claim": "The current model may be discussed only as an internal summary-row residual experiment.",
+        "formula_role": "heuristic bridge terms and scaling anchors still open",
+        "source_evidence_readiness": "pending_row_semantics_and_curve_arrays",
+        "status": "BLOCKED_BY_RESIDUAL"
+      }
+    ],
+    "blocked_claims": [
+      {
+        "blocking_reason": "Comparator baseline artifacts, lensing evidence, uncertainty handling, and out-of-sample tests are missing.",
+        "claim": "UET replaces dark matter for galaxy rotation curves.",
+        "next_evidence_required": [
+          "same-row MOND/dark-matter comparator artifact",
+          "uncertainty-aware metric definition",
+          "out-of-sample validation suite"
+        ],
+        "status": "BLOCKED"
+      },
+      {
+        "blocking_reason": "The current verifier uses one summary radius and velocity per galaxy, not full radial curve arrays.",
+        "claim": "UET replicates the full upstream SPARC rotation-curve archive.",
+        "next_evidence_required": [
+          "upstream SPARC file identity",
+          "full radial curve arrays",
+          "preprocessing manifest with hashes"
+        ],
+        "status": "BLOCKED"
+      },
+      {
+        "blocking_reason": "Heuristic bridge constants and radius semantics remain open.",
+        "claim": "UET closes galaxy-dynamics theory.",
+        "next_evidence_required": [
+          "derivation or sensitivity audit for bridge constants",
+          "source-locked radius convention",
+          "cross-galaxy and morphology-stratified baselines"
+        ],
+        "status": "BLOCKED"
+      }
+    ],
+    "blocked_export_phrases": [
+      "dark matter replaced",
+      "full SPARC replication",
+      "galaxy rotation problem solved",
+      "zero curve fitting",
+      "out-of-sample prediction validated",
+      "galaxy dynamics closed"
+    ],
+    "claim_boundary": "A runnable artifact supports only an internal summary-row benchmark over the repository working copy. It does not support dark-matter replacement, full SPARC replication, zero-fit claims, out-of-sample prediction, or galaxy-dynamics closure.",
+    "claim_class": "C_summary_row_internal_benchmark_only",
+    "controller_reason": "The verifier ran, but export remains blocked because the summary-row model gate fails or stronger source-lock/baseline gates are open.",
+    "controller_status": "FAIL",
+    "galaxy_model_gate_summary": {
+      "baseline_comparison_status": "OPEN",
+      "replacement_claim_status": "BLOCKED",
+      "run_contract_status": "PASS",
+      "source_lock_status": "OPEN",
+      "summary_row_model_status": "FAIL"
+    },
+    "machine_readable_next_blockers": [
+      "summary_row_model_gate_not_passed",
+      "source_lock_manifest_missing",
+      "row_semantics_radius_convention_open",
+      "competitor_baseline_artifact_missing",
+      "heuristic_bridge_sensitivity_missing",
+      "out_of_sample_validation_missing"
+    ],
+    "schema_version": "1.0",
+    "topic": "0.1_Galaxy_Rotation_Problem"
+  },
   "galaxy_model_gate": {
     "baseline_comparison_gate": {
       "required_comparators": [
@@ -1466,7 +1548,7 @@
   "thresholds": {
     "max_average_error_percent": 15.0
   },
-  "timestamp_utc": "2026-05-16T23:10:12.379599+00:00",
+  "timestamp_utc": "2026-05-19T13:45:06.153711+00:00",
   "topic": "0.1_Galaxy_Rotation_Problem",
   "uet_version": "0.9.0"
 }

@@ -13,6 +13,7 @@
 - Internal pass rates do not establish out-of-sample performance, nor do they
   replace comparator baseline evaluation against MOND or dark-matter models.
 - The artifact-level `WARN` means the verifier ran; it does not mean the model passed. The current `galaxy_model_gate` must keep dark-matter replacement and galaxy-closure claims blocked while the summary-row residual gate fails.
+- The artifact-level `galaxy_claim_scope_gate` is the export controller for integration topics; it must remain blocking while full-curve SPARC source-lock, competitor baselines, uncertainty handling, and out-of-sample checks are open.
 - No fresh external replication package is documented in this hardening pass.
 
 ## Current Claim Boundary

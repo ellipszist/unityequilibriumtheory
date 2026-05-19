@@ -124,6 +124,103 @@ def build_galaxy_model_gate(avg_error=None, pass_rate=None, processed_entries=0,
     }
 
 
+def build_galaxy_claim_scope_gate(status, galaxy_model_gate, avg_error=None, pass_rate=None):
+    model_status = galaxy_model_gate["summary_row_model_gate"]["status"]
+    controller_status = "WARN" if status in {"PASS", "WARN"} else "FAIL"
+    if model_status != "PASS":
+        controller_status = "FAIL"
+    return {
+        "schema_version": "1.0",
+        "topic": "0.1_Galaxy_Rotation_Problem",
+        "controller_status": controller_status,
+        "controller_reason": (
+            "The verifier ran, but export remains blocked because the summary-row model gate fails or stronger source-lock/baseline gates are open."
+            if controller_status == "FAIL"
+            else "The summary-row benchmark passed, but export remains warning-gated because full-curve SPARC, source-lock, baseline, and out-of-sample gates are open."
+        ),
+        "claim_class": "C_summary_row_internal_benchmark_only",
+        "allowed_claims_now": [
+            {
+                "claim": "The repository summary-row verifier ran over the checked-in galaxy working copy.",
+                "status": galaxy_model_gate["run_contract_gate"]["status"],
+                "artifact_role": "run-contract benchmark",
+                "metrics": {
+                    "average_error_percent": avg_error,
+                    "pass_rate_percent": pass_rate,
+                },
+                "source_evidence_readiness": "working_copy_not_full_sparc_archive",
+            },
+            {
+                "claim": "The current model may be discussed only as an internal summary-row residual experiment.",
+                "status": "DIAGNOSTIC_ONLY" if model_status == "PASS" else "BLOCKED_BY_RESIDUAL",
+                "artifact_role": "summary-row model gate",
+                "formula_role": "heuristic bridge terms and scaling anchors still open",
+                "source_evidence_readiness": "pending_row_semantics_and_curve_arrays",
+            },
+        ],
+        "blocked_claims": [
+            {
+                "claim": "UET replaces dark matter for galaxy rotation curves.",
+                "status": "BLOCKED",
+                "blocking_reason": "Comparator baseline artifacts, lensing evidence, uncertainty handling, and out-of-sample tests are missing.",
+                "next_evidence_required": [
+                    "same-row MOND/dark-matter comparator artifact",
+                    "uncertainty-aware metric definition",
+                    "out-of-sample validation suite",
+                ],
+            },
+            {
+                "claim": "UET replicates the full upstream SPARC rotation-curve archive.",
+                "status": "BLOCKED",
+                "blocking_reason": "The current verifier uses one summary radius and velocity per galaxy, not full radial curve arrays.",
+                "next_evidence_required": [
+                    "upstream SPARC file identity",
+                    "full radial curve arrays",
+                    "preprocessing manifest with hashes",
+                ],
+            },
+            {
+                "claim": "UET closes galaxy-dynamics theory.",
+                "status": "BLOCKED",
+                "blocking_reason": "Heuristic bridge constants and radius semantics remain open.",
+                "next_evidence_required": [
+                    "derivation or sensitivity audit for bridge constants",
+                    "source-locked radius convention",
+                    "cross-galaxy and morphology-stratified baselines",
+                ],
+            },
+        ],
+        "blocked_export_phrases": [
+            "dark matter replaced",
+            "full SPARC replication",
+            "galaxy rotation problem solved",
+            "zero curve fitting",
+            "out-of-sample prediction validated",
+            "galaxy dynamics closed",
+        ],
+        "machine_readable_next_blockers": [
+            "summary_row_model_gate_not_passed" if model_status != "PASS" else "full_curve_sparc_archive_missing",
+            "source_lock_manifest_missing",
+            "row_semantics_radius_convention_open",
+            "competitor_baseline_artifact_missing",
+            "heuristic_bridge_sensitivity_missing",
+            "out_of_sample_validation_missing",
+        ],
+        "galaxy_model_gate_summary": {
+            "run_contract_status": galaxy_model_gate["run_contract_gate"]["status"],
+            "summary_row_model_status": model_status,
+            "source_lock_status": galaxy_model_gate["source_lock_gate"]["status"],
+            "baseline_comparison_status": galaxy_model_gate["baseline_comparison_gate"]["status"],
+            "replacement_claim_status": galaxy_model_gate["replacement_claim_gate"]["status"],
+        },
+        "claim_boundary": (
+            "A runnable artifact supports only an internal summary-row benchmark over the repository working copy. "
+            "It does not support dark-matter replacement, full SPARC replication, zero-fit claims, "
+            "out-of-sample prediction, or galaxy-dynamics closure."
+        ),
+    }
+
+
 def run_validation():
     """Execute the full validation sweep."""
     print("Starting UET galaxy rotation validation...")
@@ -204,6 +301,10 @@ def run_validation():
             processed_entries=0,
             skipped_entries=len(skipped),
         )
+        artifact["galaxy_claim_scope_gate"] = build_galaxy_claim_scope_gate(
+            "FAIL",
+            artifact["galaxy_model_gate"],
+        )
         artifact_path = topic_path / "Result" / "artifacts" / "galaxy_rotation_validation.json"
         save_artifact(artifact, artifact_path)
         print("No valid comparisons were produced.")
@@ -256,6 +357,12 @@ def run_validation():
         pass_rate=pass_rate,
         processed_entries=len(results),
         skipped_entries=len(skipped),
+    )
+    artifact["galaxy_claim_scope_gate"] = build_galaxy_claim_scope_gate(
+        status,
+        artifact["galaxy_model_gate"],
+        avg_error=avg_error,
+        pass_rate=pass_rate,
     )
     artifact_path = topic_path / "Result" / "artifacts" / "galaxy_rotation_validation.json"
     save_artifact(artifact, artifact_path)
