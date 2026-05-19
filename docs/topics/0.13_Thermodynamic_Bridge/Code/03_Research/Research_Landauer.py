@@ -457,6 +457,109 @@ def _build_foundation_claim_gate(metrics, readiness_matrix, evidence_lanes):
     return gate
 
 
+def _build_thermodynamic_claim_scope_gate(status, evidence_lanes, readiness_matrix, foundation_claim_gate):
+    lower_bound_status = evidence_lanes["landauer_lower_bound"]["status"]
+    formula_status = evidence_lanes["bekenstein_hawking_formula_consistency"]["status"]
+    bridge_status = evidence_lanes["uet_bridge_hypothesis"]["status"]
+    source_summary = readiness_matrix["summary"]
+    source_ready = (
+        source_summary["targets_ready_for_source_review"]
+        == source_summary["source_targets_total"]
+    )
+    controller_status = "WARN"
+    if status == "FAIL" or lower_bound_status != "PASS" or formula_status != "PASS":
+        controller_status = "FAIL"
+
+    return {
+        "schema_version": "1.0",
+        "topic": "0.13_Thermodynamic_Bridge",
+        "controller_status": controller_status,
+        "controller_reason": (
+            "Formula and lower-bound lanes are usable, but UET bridge export remains blocked by source, uncertainty, and derivation gates."
+            if controller_status == "WARN"
+            else "One or more formula/lower-bound controller lanes failed; dependent topics must not inherit 0.13 claims."
+        ),
+        "claim_class": "C_formula_lower_bound_only",
+        "allowed_claims_now": [
+            {
+                "claim": "Landauer lower-bound consistency may constrain information-erasure energy wording.",
+                "status": lower_bound_status,
+                "artifact_role": "lower-bound gate",
+                "source_evidence_readiness": "source_referenced_not_raw_table_archived",
+            },
+            {
+                "claim": "Bekenstein, Unruh, and Hawking relations may be cited as standard formula-consistency constraints.",
+                "status": formula_status,
+                "artifact_role": "standard-formula diagnostic",
+                "source_evidence_readiness": "formula_identity_not_uet_dynamics_proof",
+            },
+        ],
+        "blocked_claims": [
+            {
+                "claim": "0.13 proves the UET information-entropy-energy bridge.",
+                "status": "BLOCKED" if bridge_status == "BLOCKED" else "OPEN",
+                "blocking_reason": "The UET-specific bridge lane is still a hypothesis lane, not a closed derivation.",
+                "next_evidence_required": evidence_lanes["uet_bridge_hypothesis"].get("blockers", []),
+            },
+            {
+                "claim": "The Landauer benchmark package is fully source-normalized.",
+                "status": "BLOCKED" if not source_ready else "READY_FOR_REVIEW",
+                "blocking_reason": "Source-evidence readiness targets remain pending.",
+                "next_evidence_required": [
+                    row["name"]
+                    for row in readiness_matrix["readiness_rows"]
+                    if not row["ready_for_source_review"]
+                ],
+            },
+            {
+                "claim": "The synthetic Cattaneo branch is external heat-transport validation.",
+                "status": "BLOCKED",
+                "blocking_reason": "The current Cattaneo lane is simulation-only.",
+                "next_evidence_required": [
+                    "real heat-transport dataset",
+                    "fixed-parameter threshold",
+                    "source package with hashes",
+                ],
+            },
+        ],
+        "blocked_export_phrases": [
+            "thermodynamic bridge proved",
+            "verified UET bridge",
+            "exact information energy equivalence",
+            "external thermodynamic validation",
+            "entropy energy unification solved",
+            "Tier A foundation complete",
+        ],
+        "machine_readable_next_blockers": [
+            "raw_landauer_numeric_tables_not_archived",
+            "landauer_uncertainty_propagation_missing",
+            "uet_bridge_derivation_open",
+            "synthetic_cattaneo_not_external_validation",
+            "foundation_claim_gate_not_passed",
+        ],
+        "foundation_gate_summary": {
+            "status": foundation_claim_gate["status"],
+            "claim_ceiling": foundation_claim_gate["claim_ceiling"],
+            "accepted_exports": [
+                item["export_id"]
+                for item in foundation_claim_gate["accepted_foundation_exports"]
+                if item["status"] == "PASS"
+            ],
+            "blocked_exports": [
+                item["export_id"]
+                for item in foundation_claim_gate["blocked_foundation_exports"]
+                if item["status"] != "PASS"
+            ],
+        },
+        "dependency_export_policy": foundation_claim_gate["dependency_exports"],
+        "claim_boundary": (
+            "0.13 may be used as a lower-bound and standard-formula constraint layer. "
+            "It must not be exported as proof of the UET bridge, source-normalized Landauer validation, "
+            "or external heat-transport validation until the blocked lanes close."
+        ),
+    }
+
+
 def _write_verification_artifact(test_results, plot_paths, metrics):
     test_pass = all(item["passed"] for item in test_results)
     plot_pass = all(item["saved"] for item in plot_paths)
@@ -486,6 +589,12 @@ def _write_verification_artifact(test_results, plot_paths, metrics):
     foundation_claim_gate = _build_foundation_claim_gate(
         metrics, source_evidence_readiness_matrix, evidence_lanes
     )
+    thermodynamic_claim_scope_gate = _build_thermodynamic_claim_scope_gate(
+        status,
+        evidence_lanes,
+        source_evidence_readiness_matrix,
+        foundation_claim_gate,
+    )
 
     artifact = {
         "schema_version": "1.3",
@@ -498,6 +607,7 @@ def _write_verification_artifact(test_results, plot_paths, metrics):
         "metrics": metrics,
         "evidence_lanes": evidence_lanes,
         "uncertainty_preprocessing_plan": uncertainty_preprocessing_plan,
+        "thermodynamic_claim_scope_gate": thermodynamic_claim_scope_gate,
         "foundation_claim_gate": {
             "path": FOUNDATION_CLAIM_GATE_PATH.relative_to(ROOT).as_posix(),
             "sha256": _sha256(FOUNDATION_CLAIM_GATE_PATH),

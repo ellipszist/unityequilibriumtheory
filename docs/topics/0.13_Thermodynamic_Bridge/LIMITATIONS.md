@@ -6,6 +6,7 @@
 - The data package still contains manual literature summaries, so the topic cannot yet claim fully standardized data provenance.
 - `source_evidence_intake_stub.json` and `source_evidence_readiness_matrix.json` are process controls, not evidence by themselves; an empty or pending-ready gate cannot be cited as provenance closure.
 - `thermodynamic_bridge_foundation_claim_gate.json` is a claim-inheritance control. It can allow dependent topics to inherit lower-bound/formula-consistency lanes, but it cannot upgrade the UET-specific bridge while source and derivation blockers remain open.
+- `thermodynamic_claim_scope_gate` is the artifact export controller. It may allow lower-bound and standard-formula language, but it must block UET bridge proof, exact-bridge, source-normalized validation, and Tier-A-complete wording while the current blockers remain open.
 - `Research_Landauer.py` verifies exact-constant consistency and lower-bound behavior; it does not prove the complete UET bridge mechanism.
 - Bekenstein, Unruh, Hawking, and Josephson formulas are established physics/metrology identities. They constrain the bridge but do not independently validate UET dynamics.
 - The Cattaneo benchmark is synthetic and fitted; it is useful for model-shape checking but cannot be cited as external experimental evidence.

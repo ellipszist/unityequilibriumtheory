@@ -2,7 +2,7 @@
   "schema_version": "1.3",
   "topic": "0.13_Thermodynamic_Bridge",
   "command": ".venv\\Scripts\\python.exe docs\\topics\\0.13_Thermodynamic_Bridge\\Code\\03_Research\\Research_Landauer.py",
-  "timestamp_utc": "2026-05-16T22:15:11.766371+00:00",
+  "timestamp_utc": "2026-05-19T13:48:29.120784+00:00",
   "status": "WARN",
   "claim_class": "C",
   "inputs": [
@@ -146,6 +146,116 @@
     "current_status": "planned_not_closed",
     "claim_boundary": "This plan does not upgrade the topic; it defines the evidence needed for source-normalized multi-row validation."
   },
+  "thermodynamic_claim_scope_gate": {
+    "schema_version": "1.0",
+    "topic": "0.13_Thermodynamic_Bridge",
+    "controller_status": "WARN",
+    "controller_reason": "Formula and lower-bound lanes are usable, but UET bridge export remains blocked by source, uncertainty, and derivation gates.",
+    "claim_class": "C_formula_lower_bound_only",
+    "allowed_claims_now": [
+      {
+        "claim": "Landauer lower-bound consistency may constrain information-erasure energy wording.",
+        "status": "PASS",
+        "artifact_role": "lower-bound gate",
+        "source_evidence_readiness": "source_referenced_not_raw_table_archived"
+      },
+      {
+        "claim": "Bekenstein, Unruh, and Hawking relations may be cited as standard formula-consistency constraints.",
+        "status": "PASS",
+        "artifact_role": "standard-formula diagnostic",
+        "source_evidence_readiness": "formula_identity_not_uet_dynamics_proof"
+      }
+    ],
+    "blocked_claims": [
+      {
+        "claim": "0.13 proves the UET information-entropy-energy bridge.",
+        "status": "BLOCKED",
+        "blocking_reason": "The UET-specific bridge lane is still a hypothesis lane, not a closed derivation.",
+        "next_evidence_required": [
+          "Raw or supplemental Landauer numeric tables are not archived.",
+          "Uncertainty propagation is not yet applied to measured heat and black-hole mass inputs.",
+          "UET-specific field variables are not yet derived from the standard thermodynamic identities."
+        ]
+      },
+      {
+        "claim": "The Landauer benchmark package is fully source-normalized.",
+        "status": "BLOCKED",
+        "blocking_reason": "Source-evidence readiness targets remain pending.",
+        "next_evidence_required": [
+          "Berut 2012 raw or supplementary numeric table",
+          "Jun 2014 nanomagnetic erasure benchmark source",
+          "Peterson 2018 quantum Landauer benchmark source",
+          "LIGO/Virgo mass uncertainty source package",
+          "EHT black-hole mass source package",
+          "Measured-constant uncertainty record beyond exact SI constants"
+        ]
+      },
+      {
+        "claim": "The synthetic Cattaneo branch is external heat-transport validation.",
+        "status": "BLOCKED",
+        "blocking_reason": "The current Cattaneo lane is simulation-only.",
+        "next_evidence_required": [
+          "real heat-transport dataset",
+          "fixed-parameter threshold",
+          "source package with hashes"
+        ]
+      }
+    ],
+    "blocked_export_phrases": [
+      "thermodynamic bridge proved",
+      "verified UET bridge",
+      "exact information energy equivalence",
+      "external thermodynamic validation",
+      "entropy energy unification solved",
+      "Tier A foundation complete"
+    ],
+    "machine_readable_next_blockers": [
+      "raw_landauer_numeric_tables_not_archived",
+      "landauer_uncertainty_propagation_missing",
+      "uet_bridge_derivation_open",
+      "synthetic_cattaneo_not_external_validation",
+      "foundation_claim_gate_not_passed"
+    ],
+    "foundation_gate_summary": {
+      "status": "FOUNDATION_WARN",
+      "claim_ceiling": "C - formula/lower-bound consistency only",
+      "accepted_exports": [
+        "T13_EXPORT_LANDAUER_LOWER_BOUND",
+        "T13_EXPORT_STANDARD_THERMO_GRAVITY_IDENTITIES"
+      ],
+      "blocked_exports": [
+        "T13_EXPORT_UET_BRIDGE_PROOF",
+        "T13_EXPORT_SOURCE_NORMALIZED_LANDAUER_DATASET",
+        "T13_EXPORT_CATTANEO_EXTERNAL_VALIDATION"
+      ]
+    },
+    "dependency_export_policy": {
+      "0.23_Unity_Scale_Link": {
+        "may_inherit": [
+          "T13_EXPORT_LANDAUER_LOWER_BOUND",
+          "T13_EXPORT_STANDARD_THERMO_GRAVITY_IDENTITIES"
+        ],
+        "must_not_inherit": [
+          "T13_EXPORT_UET_BRIDGE_PROOF",
+          "T13_EXPORT_SOURCE_NORMALIZED_LANDAUER_DATASET",
+          "T13_EXPORT_CATTANEO_EXTERNAL_VALIDATION"
+        ]
+      },
+      "0.0_Grand_Unification": {
+        "may_inherit": [
+          "lower-bound/formula-consistency status",
+          "source-evidence blocker map"
+        ],
+        "must_block_theory_level_claim_if": [
+          "0.13 artifact status is WARN/FAIL",
+          "source evidence readiness has pending targets",
+          "UET bridge hypothesis lane remains BLOCKED",
+          "uncertainty preprocessing is not complete"
+        ]
+      }
+    },
+    "claim_boundary": "0.13 may be used as a lower-bound and standard-formula constraint layer. It must not be exported as proof of the UET bridge, source-normalized Landauer validation, or external heat-transport validation until the blocked lanes close."
+  },
   "foundation_claim_gate": {
     "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json",
     "sha256": "73eb764b987bb00fae3c418e6a67720e22ad64465766d639646e76c535b550b7",
@@ -195,17 +305,17 @@
   "plot_artifacts": [
     {
       "name": "landauer_limit_curve",
-      "path": "Result\\_Logs\\1778969704_Research_Landauer\\landauer\\landauer_viz.png",
+      "path": "Result\\_Logs\\1779198501_Research_Landauer\\landauer\\landauer_viz.png",
       "saved": true
     },
     {
       "name": "bekenstein_hawking_entropy_curve",
-      "path": "Result\\_Logs\\1778969704_Research_Landauer\\bekenstein\\bekenstein_viz.png",
+      "path": "Result\\_Logs\\1779198501_Research_Landauer\\bekenstein\\bekenstein_viz.png",
       "saved": true
     },
     {
       "name": "unruh_temperature_curve",
-      "path": "Result\\_Logs\\1778969704_Research_Landauer\\jacobson\\jacobson_viz.png",
+      "path": "Result\\_Logs\\1779198501_Research_Landauer\\jacobson\\jacobson_viz.png",
       "saved": true
     }
   ],
