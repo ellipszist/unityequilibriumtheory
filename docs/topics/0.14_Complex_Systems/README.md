@@ -65,7 +65,7 @@ $env:PYTHONIOENCODING='utf-8'; $env:PYTHONUTF8='1'; .\.venv\Scripts\python.exe d
 
 The audit wrapper records the current run contract in `Result/artifacts/0_14_complex_systems_verification.json`. A pass means the HRV script ran against the declared local files and produced the expected internal metrics. It does not certify the broader cross-domain branches.
 
-The embedded `complexity_claim_gate` keeps current exports at `HRV_RUN_CONTRACT_ONLY`; broader branch claims need their own source locks, baselines, thresholds, and verifier artifacts.
+The embedded `complexity_claim_gate.controller_status` keeps current exports at `HRV_RUN_CONTRACT_ONLY`; broader branch claims and universal-complexity phrases need their own source locks, baselines, thresholds, and verifier artifacts.
 
 ## Next Hardening Tasks
 

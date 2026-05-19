@@ -447,6 +447,11 @@ def _build_complexity_claim_gate(result, hrv_provenance_gate, source_evidence_re
         "topic": "0.14_Complex_Systems",
         "purpose": "Machine-readable claim boundary for complex-systems exports.",
         "controller_status": "HRV_RUN_CONTRACT_ONLY",
+        "controller_reason": (
+            "The current primary evidence is an HRV derived-RR run-contract artifact; clinical, SOC, market, climate, "
+            "inequality, social, and universal-complexity claims remain blocked until branch-specific evidence closes."
+        ),
+        "claim_class": "C_HRV_internal_benchmark_only",
         "allowed_exports_now": [
             {
                 "export": "hrv_derived_rr_run_contract",
@@ -487,6 +492,24 @@ def _build_complexity_claim_gate(result, hrv_provenance_gate, source_evidence_re
                 "status": "BLOCKED",
                 "blocker": "Only the HRV branch has a current primary run-contract artifact; cross-domain branches cannot inherit HRV PASS.",
             },
+        ],
+        "blocked_export_phrases": [
+            "universal complexity law",
+            "clinical HRV classifier validated",
+            "market crash predictor",
+            "SOC power law verified",
+            "climate system proof",
+            "inequality dynamics solved",
+            "all complex systems unified",
+        ],
+        "machine_readable_next_blockers": [
+            "raw_physionet_archive_missing",
+            "hrv_extraction_workflow_missing",
+            "clinical_label_baseline_missing",
+            "soc_avalanche_artifact_missing",
+            "econophysics_source_locked_baseline_missing",
+            "climate_inequality_social_branch_artifacts_missing",
+            "universal_complexity_claim_blocked",
         ],
         "gate_inputs": {
             "hrv_status": hrv_status,

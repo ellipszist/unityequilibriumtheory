@@ -210,6 +210,23 @@ def _extract_claim_gate_summary(artifact: dict) -> list[dict]:
             }
         )
 
+    complexity_claim_gate = artifact.get("complexity_claim_gate")
+    if isinstance(complexity_claim_gate, dict):
+        summaries.append(
+            {
+                "gate": "complexity_claim_gate",
+                "status": complexity_claim_gate.get("controller_status"),
+                "claim_class": complexity_claim_gate.get("claim_class"),
+                "blocked_exports": [
+                    item.get("export")
+                    for item in complexity_claim_gate.get("blocked_exports", [])
+                ],
+                "blocked_export_phrases": complexity_claim_gate.get("blocked_export_phrases", []),
+                "next_blockers": complexity_claim_gate.get("machine_readable_next_blockers", []),
+                "claim_boundary": complexity_claim_gate.get("promotion_rule"),
+            }
+        )
+
     numeric_residual_gate = artifact.get("numeric_residual_gate")
     if isinstance(numeric_residual_gate, dict):
         replacement_gate = numeric_residual_gate.get("replacement_claim_gate", {})
