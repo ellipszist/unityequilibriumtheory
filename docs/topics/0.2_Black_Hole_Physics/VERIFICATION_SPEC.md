@@ -17,6 +17,7 @@
   - per-target relative error
   - whether each target lies within the declared `2 sigma` observational tolerance
   - input dataset hash and target list
+  - machine-readable `black_hole_claim_scope_gate.controller_status`
 - Fixed threshold:
   - each EHT target must satisfy `abs(predicted_uas - observed_uas) <= 2 * observed_error_uas`
   - the script must write a machine-readable artifact under `Result/artifacts/`
@@ -30,3 +31,4 @@
   - The primary gate does not prove singularity resolution or a replacement for GR.
   - The CCBH path is not a primary verifier until Shen/Kormendy upstream data is stored under `docs/data/external/...` with hashes and preprocessing notes.
   - Topic-level source-evidence and branch-claim gates further limit this topic to EHT benchmark and comparator usage unless stronger black-hole artifacts are added.
+  - `black_hole_claim_scope_gate.controller_status == WARN` is expected when the EHT size benchmark passes while image-domain/ray-tracing, physical core-scale, GW/ringdown, CCBH, singularity, and GR-replacement branches remain open.

@@ -8,3 +8,7 @@
 - Any agreement here should be treated as exploratory black-hole benchmarking, not formal closure.
 - Internal script execution does not by itself establish external replication, formal proof, or broad physical closure.
 - Topic-level source-evidence and branch-claim gates now make that boundary explicit: accepted evidence stops at the EHT shadow benchmark and black-hole geometry comparator, not singularity-resolution or GR-replacement claims.
+- The artifact-level `black_hole_claim_scope_gate` is the export controller: EHT size
+  benchmark PASS cannot be cited as singularity resolution, GR replacement, image-domain
+  EHT validation, GW/ringdown validation, CCBH cosmological coupling, or black-hole
+  information closure.

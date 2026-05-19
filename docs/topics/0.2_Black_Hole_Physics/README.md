@@ -47,6 +47,7 @@ flowchart LR
 | CCBH cosmological coupling | Data-blocked secondary path | `Research_CCBH_Analysis.py` currently needs upstream files outside repo | blocked research path |
 | Source evidence workflow | Structured provenance gate | `Data/03_Research/source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json` | source-review queue |
 | Branch claim gate | Structured claim ceiling | `Data/03_Research/branch_claim_gate.json` | benchmark-only claim control |
+| Claim-scope gate | Artifact export controller | `black_hole_claim_scope_gate` in artifact | blocks singularity/GR/CCBH overclaim |
 | Singularity-resolution claim | Not closed | limitations and formula audit | do not state as proved |
 
 ## 5x4 Grid Structure
@@ -96,5 +97,8 @@ python docs/topics/0.2_Black_Hole_Physics/Code/03_Research/Research_EHT_Validati
   physically locked saturation scale.
 - The CCBH analysis needs real upstream data archived in the repo before it can support
   claim upgrades.
+- The artifact-level `black_hole_claim_scope_gate` must block singularity-resolution,
+  GR-replacement, image-domain EHT, GW/ringdown, CCBH, and black-hole-information claims
+  until those branches have separate source-backed artifacts.
 
 *Status note: internal benchmark and formula-audit hardening gate.*

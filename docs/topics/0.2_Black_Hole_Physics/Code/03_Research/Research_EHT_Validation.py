@@ -298,6 +298,103 @@ def build_branch_claim_gate() -> dict:
     }
 
 
+def build_black_hole_claim_scope_gate(
+    status: str,
+    artifact_rows: list[dict],
+    source_evidence_readiness_matrix: dict,
+    branch_claim_gate: dict,
+) -> dict:
+    controller_status = "WARN" if status == "PASS" else "FAIL"
+    max_relative_error = max(row["relative_error_percent"] for row in artifact_rows)
+    return {
+        "schema_version": "1.0",
+        "topic": "0.2_Black_Hole_Physics",
+        "controller_status": controller_status,
+        "controller_reason": (
+            "The compact EHT shadow-size benchmark passed, but export remains warning-gated because "
+            "image-domain/ray-tracing, physical core-scale, GW/ringdown, CCBH, singularity, and GR-replacement branches are not primary-gated."
+            if status == "PASS"
+            else "One or more EHT shadow targets failed the declared 2-sigma benchmark gate."
+        ),
+        "claim_class": "C_eht_shadow_benchmark_only",
+        "allowed_claims_now": [
+            {
+                "claim": "The compact 5.2 Rs shadow-size approximation matches the selected M87* and Sgr A* working-copy targets within the declared 2-sigma gates.",
+                "status": status,
+                "artifact_role": "primary EHT shadow-size benchmark",
+                "metrics": {
+                    "target_count": len(artifact_rows),
+                    "max_relative_error_percent": max_relative_error,
+                    "all_targets_within_2sigma": status == "PASS",
+                },
+                "source_evidence_readiness": "topic_working_copy_not_full_archive",
+            },
+            {
+                "claim": "Schwarzschild radius and GR-style shadow geometry may be cited as comparator bookkeeping.",
+                "status": "COMPARATOR_ONLY" if status == "PASS" else "BLOCKED",
+                "artifact_role": "black-hole geometry comparator",
+                "formula_role": "compact GR shadow approximation, not UET replacement dynamics",
+                "source_evidence_readiness": "inherits_eht_working_copy",
+            },
+        ],
+        "blocked_claims": [
+            {
+                "claim": "UET proves black-hole singularity resolution.",
+                "status": "BLOCKED",
+                "blocking_reason": "The saturation-core path is heuristic and lacks a locked physical core scale plus source-backed internal-structure artifact.",
+                "next_evidence_required": [
+                    "physical core-scale definition",
+                    "internal-structure artifact",
+                    "independent mathematical or numerical stability review",
+                ],
+            },
+            {
+                "claim": "UET replaces GR for black holes or validates full black-hole imaging.",
+                "status": "BLOCKED",
+                "blocking_reason": "The primary gate is a compact angular-size benchmark, not image-domain ray tracing or a GR replacement test.",
+                "next_evidence_required": [
+                    "ray-tracing artifact",
+                    "image-domain EHT comparison",
+                    "metric/baseline comparison against GR",
+                ],
+            },
+            {
+                "claim": "UET validates GW/ringdown or CCBH cosmological coupling.",
+                "status": "BLOCKED",
+                "blocking_reason": "GW/ringdown and CCBH branches lack archived upstream data, thresholds, and primary verifier artifacts.",
+                "next_evidence_required": [
+                    "GW/ringdown source package and thresholds",
+                    "archived Shen/Kormendy upstream files",
+                    "runnable CCBH artifact in the repository",
+                ],
+            },
+        ],
+        "blocked_export_phrases": [
+            "black-hole singularity resolved",
+            "GR replacement validated",
+            "EHT image-domain validation",
+            "ringdown validated",
+            "CCBH cosmological coupling proven",
+            "black-hole information problem solved",
+        ],
+        "source_evidence_summary": source_evidence_readiness_matrix["summary"],
+        "branch_claim_gate_summary": branch_claim_gate["summary"],
+        "machine_readable_next_blockers": [
+            "eht_ray_tracing_artifact_missing",
+            "physical_core_scale_missing",
+            "internal_structure_artifact_missing",
+            "gw_ringdown_artifact_missing",
+            "ccbh_upstream_archive_missing",
+            "gr_replacement_theory_gate_missing",
+        ],
+        "claim_boundary": (
+            "A PASS artifact supports only selected EHT shadow-size benchmarking and comparator geometry. "
+            "It does not prove singularity resolution, replace GR, validate image-domain EHT data, validate "
+            "GW/ringdown physics, prove CCBH coupling, or solve black-hole information problems."
+        ),
+    }
+
+
 # --- DELEGATE MATH TO ENGINE ---
 # Local math removed: schwarzschild_radius, shadow_radius, angular_size_uas
 
@@ -449,13 +546,20 @@ def run_test():
 
     print(f"\nResult: {passed_count}/{total} PASSED")
     print("=" * 60)
+    artifact_status = "PASS" if passed_count == total else "FAIL"
+    black_hole_claim_scope_gate = build_black_hole_claim_scope_gate(
+        artifact_status,
+        artifact_rows,
+        source_evidence_readiness_matrix,
+        branch_claim_gate,
+    )
 
     artifact = {
         "schema_version": "1.1",
         "topic": "0.2_Black_Hole_Physics",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "command": "python docs/topics/0.2_Black_Hole_Physics/Code/03_Research/Research_EHT_Validation.py",
-        "status": "PASS" if passed_count == total else "FAIL",
+        "status": artifact_status,
         "claim_class": "C internal benchmark",
         "inputs": [
             {
@@ -474,6 +578,7 @@ def run_test():
             "source_targets_ready_for_review": source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
             "source_targets_blocked": source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
             "accepted_claim_branches": branch_claim_gate["summary"]["accepted_now"],
+            "blocked_claim_exports": len(black_hole_claim_scope_gate["blocked_export_phrases"]),
         },
         "results": artifact_rows,
         "limitations": [
@@ -505,6 +610,7 @@ def run_test():
         "summary": branch_claim_gate["summary"],
         "claim_boundary": branch_claim_gate["claim_boundary"],
     }
+    artifact["black_hole_claim_scope_gate"] = black_hole_claim_scope_gate
     artifact["interpretation"] = (
         "This artifact supports an EHT shadow-size benchmark branch and a bounded black-hole geometry comparator branch. "
         "It does not validate singularity resolution, GR replacement, or CCBH cosmological coupling."
