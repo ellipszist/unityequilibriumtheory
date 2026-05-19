@@ -23,6 +23,7 @@ formula-open, or synthetic-only dependencies.
 - Data posture: integration artifact dependency manifest; metrics and evidence status are delegated from subordinate topics.
 - Governance workflow: `Data/03_Research/source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json`.
 - Paper-readiness workflow: `paper_readiness_gate` inside the verifier artifact blocks theory-level closure until every core dependency is cleanly supported.
+- Claim-scope workflow: `integration_claim_scope_gate` inside the verifier artifact blocks master-proof, Tier-A promotion, and theory-closure wording while subordinate statuses or claim gates remain blocked.
 
 ## Evidence Boundary
 
@@ -60,6 +61,7 @@ Each component metric must be interpreted through that topic's own `DATA_MANIFES
 - `Data/03_Research/source_evidence_intake_stub.json`: dependency-governance intake.
 - `Data/03_Research/source_evidence_readiness_matrix.json`: readiness gate for integration evidence.
 - `Data/03_Research/branch_claim_gate.json`: branch-level claim ceiling for integration versus closure claims.
+- `integration_claim_scope_gate` in the verification artifact: topic-level export controller for allowed integration/governance claims and blocked grand-unification claims.
 - `Code/03_Research/Verify_Omni.py`: primary integration verifier.
 
 ## Verification

@@ -140,6 +140,23 @@ def _normalize_timestamp(artifact: dict):
 
 def _extract_claim_gate_summary(artifact: dict) -> list[dict]:
     summaries = []
+    thermodynamic_claim_scope_gate = artifact.get("thermodynamic_claim_scope_gate")
+    if isinstance(thermodynamic_claim_scope_gate, dict):
+        summaries.append(
+            {
+                "gate": "thermodynamic_claim_scope_gate",
+                "status": thermodynamic_claim_scope_gate.get("controller_status"),
+                "claim_class": thermodynamic_claim_scope_gate.get("claim_class"),
+                "blocked_claims": [
+                    item.get("claim")
+                    for item in thermodynamic_claim_scope_gate.get("blocked_claims", [])
+                ],
+                "blocked_export_phrases": thermodynamic_claim_scope_gate.get("blocked_export_phrases", []),
+                "next_blockers": thermodynamic_claim_scope_gate.get("machine_readable_next_blockers", []),
+                "claim_boundary": thermodynamic_claim_scope_gate.get("claim_boundary"),
+            }
+        )
+
     foundation_gate = artifact.get("foundation_claim_gate")
     if isinstance(foundation_gate, dict):
         summaries.append(
@@ -158,14 +175,38 @@ def _extract_claim_gate_summary(artifact: dict) -> list[dict]:
         summaries.append(
             {
                 "gate": "scale_claim_gate",
-                "status": scale_gate.get("paper_readiness", {}).get("status"),
+                "status": scale_gate.get("controller_status") or scale_gate.get("paper_readiness", {}).get("status"),
+                "claim_class": scale_gate.get("claim_class"),
                 "thermodynamic_foundation_status": (
                     thermo_gate.get("status") if isinstance(thermo_gate, dict) else None
                 ),
                 "blocked_exports": (
                     thermo_gate.get("blocked_exports", []) if isinstance(thermo_gate, dict) else []
                 ),
+                "blocked_claims": [
+                    item.get("claim")
+                    for item in scale_gate.get("blocked_claims", [])
+                ],
+                "blocked_export_phrases": scale_gate.get("blocked_export_phrases", []),
+                "next_blockers": scale_gate.get("machine_readable_next_blockers", []),
                 "claim_boundary": "Scale-link branch remains exploratory unless source, EEG, and inherited 0.13 gates close.",
+            }
+        )
+
+    dynamic_frame_claim_gate = artifact.get("dynamic_frame_claim_gate")
+    if isinstance(dynamic_frame_claim_gate, dict):
+        summaries.append(
+            {
+                "gate": "dynamic_frame_claim_gate",
+                "status": dynamic_frame_claim_gate.get("controller_status"),
+                "claim_class": dynamic_frame_claim_gate.get("claim_class"),
+                "blocked_exports": [
+                    item.get("export")
+                    for item in dynamic_frame_claim_gate.get("blocked_exports", [])
+                ],
+                "blocked_export_phrases": dynamic_frame_claim_gate.get("blocked_export_phrases", []),
+                "next_blockers": dynamic_frame_claim_gate.get("machine_readable_next_blockers", []),
+                "claim_boundary": dynamic_frame_claim_gate.get("promotion_rule"),
             }
         )
 
@@ -209,6 +250,23 @@ def _extract_claim_gate_summary(artifact: dict) -> list[dict]:
                 "baseline_comparison_status": galaxy_model_gate.get("baseline_comparison_gate", {}).get("status"),
                 "blocked_claims": replacement_gate.get("blocked_claims", []),
                 "claim_boundary": galaxy_model_gate.get("claim_boundary"),
+            }
+        )
+
+    galaxy_claim_scope_gate = artifact.get("galaxy_claim_scope_gate")
+    if isinstance(galaxy_claim_scope_gate, dict):
+        summaries.append(
+            {
+                "gate": "galaxy_claim_scope_gate",
+                "status": galaxy_claim_scope_gate.get("controller_status"),
+                "claim_class": galaxy_claim_scope_gate.get("claim_class"),
+                "blocked_claims": [
+                    item.get("claim")
+                    for item in galaxy_claim_scope_gate.get("blocked_claims", [])
+                ],
+                "blocked_export_phrases": galaxy_claim_scope_gate.get("blocked_export_phrases", []),
+                "next_blockers": galaxy_claim_scope_gate.get("machine_readable_next_blockers", []),
+                "claim_boundary": galaxy_claim_scope_gate.get("claim_boundary"),
             }
         )
 
@@ -516,6 +574,119 @@ def _build_paper_readiness_gate(dependency_artifacts: list[dict]) -> dict:
     }
 
 
+def _build_integration_claim_scope_gate(dependency_artifacts: list[dict], paper_readiness_gate: dict) -> dict:
+    fail_topics = [
+        item.get("topic")
+        for item in dependency_artifacts
+        if item.get("status") == "FAIL"
+    ]
+    warn_topics = [
+        item.get("topic")
+        for item in dependency_artifacts
+        if item.get("status") == "WARN"
+    ]
+    blocked_gate_topics = []
+    blocked_gate_names = []
+    for item in dependency_artifacts:
+        for gate in item.get("claim_gates", []):
+            gate_status = gate.get("status")
+            blocked = (
+                gate_status not in {None, "PASS", "READY_FOR_REVIEW", "FOUNDATION_PASS"}
+                or bool(gate.get("blocked_exports"))
+                or bool(gate.get("blocked_claims"))
+                or bool(gate.get("blocked_export_phrases"))
+                or bool(gate.get("blocked_for_strong_claims"))
+            )
+            if blocked:
+                blocked_gate_topics.append(item.get("topic"))
+                blocked_gate_names.append(gate.get("gate"))
+
+    return {
+        "schema_version": "1.0",
+        "topic": "0.0_Grand_Unification",
+        "controller_status": "BLOCKED" if paper_readiness_gate.get("status") != "READY_FOR_REVIEW" else "READY_FOR_REVIEW",
+        "controller_reason": (
+            "0.0 may export integration and dependency-governance claims only; theory-level closure is blocked by subordinate status and claim gates."
+            if paper_readiness_gate.get("status") != "READY_FOR_REVIEW"
+            else "All declared dependencies are ready for review; theory-level wording still requires human source/formula review."
+        ),
+        "claim_class": "D_integration_governance_only",
+        "allowed_claims_now": [
+            {
+                "claim": "The Omni verifier ran selected component engines and wrote an integration artifact.",
+                "status": "PASS",
+                "artifact_role": "integration run-contract",
+            },
+            {
+                "claim": "0.0 records subordinate artifact identity, status, claim class, and claim-gate blockers.",
+                "status": "PASS",
+                "artifact_role": "dependency-governance dashboard",
+            },
+            {
+                "claim": "0.0 can report paper-readiness blockers inherited from core topics.",
+                "status": "PASS",
+                "artifact_role": "blocker report",
+            },
+        ],
+        "blocked_claims": [
+            {
+                "claim": "UET grand unification is proved.",
+                "status": "BLOCKED",
+                "blocking_reason": "Subordinate WARN/FAIL artifacts and blocked claim gates remain present.",
+                "next_evidence_required": [
+                    "all declared dependencies clean PASS or review-ready",
+                    "no subordinate blocked claim gates",
+                    "source, formula, verifier, and limitation closure across core topics",
+                ],
+            },
+            {
+                "claim": "0.0 upgrades subordinate topics to Tier A.",
+                "status": "BLOCKED",
+                "blocking_reason": "Integration status cannot promote subordinate data, formula, or artifact readiness.",
+                "next_evidence_required": [
+                    "topic-local source evidence",
+                    "topic-local formula audit closure",
+                    "topic-local verifier artifact with closed claim gate",
+                ],
+            },
+            {
+                "claim": "0.0 is paper-ready theory-level closure.",
+                "status": "BLOCKED",
+                "blocking_reason": "The paper-readiness gate is blocked.",
+                "next_evidence_required": paper_readiness_gate.get("forbidden_until_closed", []),
+            },
+        ],
+        "blocked_export_phrases": [
+            "Theory of Everything",
+            "proved grand unification",
+            "all core topics verified",
+            "paper-ready theory-level closure",
+            "subordinate blockers resolved by integration",
+            "master proof",
+        ],
+        "dependency_status_summary": {
+            "dependencies_total": len(dependency_artifacts),
+            "fail_topics": fail_topics,
+            "warn_topics": warn_topics,
+            "blocked_claim_gate_topics": sorted(set(topic for topic in blocked_gate_topics if topic)),
+            "blocked_claim_gate_names": sorted(set(name for name in blocked_gate_names if name)),
+            "paper_readiness_blocked_dependency_count": paper_readiness_gate.get("blocked_dependency_count"),
+        },
+        "machine_readable_next_blockers": [
+            "subordinate_fail_artifact_present" if fail_topics else "no_subordinate_fail_artifact",
+            "subordinate_warn_artifacts_present" if warn_topics else "no_subordinate_warn_artifacts",
+            "subordinate_claim_gates_block_theory_exports" if blocked_gate_topics else "no_subordinate_blocked_claim_gates",
+            "source_evidence_closure_missing",
+            "formula_and_units_closure_missing",
+            "paper_readiness_gate_blocked",
+        ],
+        "claim_boundary": (
+            "0.0 is an integration/governance layer. It may report selected component runs and inherited blockers, "
+            "but it cannot prove grand unification or upgrade any subordinate topic beyond its own evidence."
+        ),
+    }
+
+
 def _dependency_inputs():
     inputs = []
     dependencies = []
@@ -597,6 +768,7 @@ def write_verification_artifact(result):
         "passed_run_contract": result["status"] in {"PASS", "WARN"},
         "input_hashes": result["input_hashes"],
         "dependency_artifacts": result["dependency_artifacts"],
+        "integration_claim_scope_gate": result["integration_claim_scope_gate"],
         "paper_readiness_gate": result["paper_readiness_gate"],
         "metrics": result["summary_metrics"],
         "thresholds": {
@@ -680,6 +852,10 @@ def run_verification():
     source_evidence_readiness_matrix = _build_source_evidence_readiness_matrix(dependency_artifacts)
     branch_claim_gate = _build_branch_claim_gate(dependency_artifacts)
     paper_readiness_gate = _build_paper_readiness_gate(dependency_artifacts)
+    integration_claim_scope_gate = _build_integration_claim_scope_gate(
+        dependency_artifacts,
+        paper_readiness_gate,
+    )
     _write_json(SOURCE_EVIDENCE_INTAKE_PATH, source_evidence_intake_stub)
     _write_json(SOURCE_EVIDENCE_READINESS_PATH, source_evidence_readiness_matrix)
     _write_json(BRANCH_CLAIM_GATE_PATH, branch_claim_gate)
@@ -745,6 +921,7 @@ def run_verification():
         "source_evidence_readiness_matrix_payload": source_evidence_readiness_matrix,
         "branch_claim_gate_payload": branch_claim_gate,
         "paper_readiness_gate": paper_readiness_gate,
+        "integration_claim_scope_gate": integration_claim_scope_gate,
     }
     write_verification_artifact(result)
     print("\nFINAL STATUS: OMNI-ENGINE INTEGRATION CHECK COMPLETE")

@@ -13,7 +13,8 @@
   - selected component metrics for beta `1.0` and `0.1`
   - Weinberg angle, tau mass, Bell-state entropy, critical Reynolds value, atomic H-alpha error, and other dashboard metrics
   - subordinate artifact status, claim class, timestamp, hash, and missing-artifact count
-  - subordinate claim-gate summaries where artifacts expose `galaxy_model_gate`, `branch_claim_gate`, `foundation_claim_gate`, `scale_claim_gate`, `numeric_residual_gate`, `theorem_boundary_gate`, or `paper_readiness_gate`
+  - subordinate claim-gate summaries where artifacts expose `galaxy_model_gate`, `galaxy_claim_scope_gate`, `branch_claim_gate`, `foundation_claim_gate`, `thermodynamic_claim_scope_gate`, `scale_claim_gate`, `dynamic_frame_claim_gate`, `numeric_residual_gate`, `theorem_boundary_gate`, or `paper_readiness_gate`
+  - `integration_claim_scope_gate.controller_status`, blocked export phrases, dependency status summary, and machine-readable next blockers
   - inherited limitation notes
 - Fixed threshold:
   - Working threshold for this standards pass: the primary script must run without error and write a summary artifact under `Result/artifacts/`.
@@ -25,6 +26,7 @@
   - Any missing or `FAIL` subordinate artifact makes `0.0` fail the dependency gate.
   - Any `WARN` subordinate artifact keeps `0.0` at `WARN` even if the selected numeric gates pass.
   - Any subordinate blocked claim gate keeps theory-level closure blocked even if the integration run-contract completes.
+  - `integration_claim_scope_gate.controller_status` must remain `BLOCKED` while any subordinate artifact is `WARN`/`FAIL` or any subordinate claim gate blocks strong exports.
 - Artifact target:
   - Result/artifacts/0_0_grand_unification_verification.json
   - Data/03_Research/source_evidence_intake_stub.json
@@ -43,5 +45,6 @@
   - A pass means selected component engines ran, selected dashboard gates were recorded, and all declared subordinate artifacts were present and `PASS`.
   - It does not prove grand unification and does not override subordinate topic limitations.
   - Nested claim gates from `0.13` and `0.23` are inherited as blockers, not converted into proof.
+  - Treat `integration_claim_scope_gate` as the artifact export controller for 0.0 itself.
   - The UTF-8 environment variables are required on this Windows shell because subordinate loggers may emit Unicode glyphs.
   - Topic-level source-evidence and branch-claim gates further limit this topic to integration-index and dependency-governance usage unless full-core closure exists.
