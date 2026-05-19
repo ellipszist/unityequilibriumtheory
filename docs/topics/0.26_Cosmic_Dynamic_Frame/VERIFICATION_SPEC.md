@@ -32,10 +32,12 @@
   - input file SHA-256 identities
   - visualization gate status, numeric residual gate status, baseline comparison gate status, and replacement-claim blockers
   - dynamic-frame claim gate with allowed visualization exports and blocked theory/replacement exports
+  - machine-readable `dynamic_frame_claim_gate.controller_status`, claim class, blocked export phrases, and next blockers
 - Fixed threshold:
   - primary script must load the Laniakea working copy, render `Laniakea_Flow_Map.png`, and write a schema 1.2 artifact.
   - visualization gate checks `landmark_count`, `landmark_types`, and `has_flow_path`; it does not satisfy the numeric residual gate.
   - dynamic-frame claim gate remains `BLOCKED` unless source evidence, numeric residual, baseline comparison, and inherited dependency gates are all closed.
+  - blocked export phrases must include dark-matter replacement, dynamic-frame cosmology validation, Pioneer explanation, and toroidal-cosmology closure wording while those gates remain open.
   - successful visualization produces `WARN`, not `PASS`, until raw Cosmicflows/Laniakea tables, observer-frame metadata, preprocessing, and numeric residual gates are added.
 - Artifact target:
   - Result/artifacts/0_26_cosmic_dynamic_frame_verification.json

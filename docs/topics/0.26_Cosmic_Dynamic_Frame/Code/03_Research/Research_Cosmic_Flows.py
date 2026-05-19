@@ -353,6 +353,11 @@ def _build_dynamic_frame_claim_gate(numeric_residual_gate, source_evidence_readi
         "schema_version": "1.0",
         "purpose": "Machine-readable claim boundary for dynamic-frame exports.",
         "controller_status": "BLOCKED",
+        "controller_reason": (
+            "Visualization/provenance exports are allowed, but dynamic-frame theory, replacement, Pioneer, "
+            "and inherited-unity claims are blocked until source, residual, baseline, and dependency gates close."
+        ),
+        "claim_class": "D_exploratory_mechanism_candidate",
         "allowed_exports_now": [
             {
                 "export": "laniakea_visualization_provenance",
@@ -388,6 +393,22 @@ def _build_dynamic_frame_claim_gate(numeric_residual_gate, source_evidence_readi
                 "status": "BLOCKED",
                 "blocker": "linked upstream dependencies still include WARN/open gates",
             },
+        ],
+        "blocked_export_phrases": [
+            "dark matter replacement",
+            "validated dynamic-frame cosmology",
+            "Pioneer anomaly explained by UET",
+            "toroidal cosmology solved",
+            "cosmic flow model fit validated",
+            "dynamic frame proves unity",
+        ],
+        "machine_readable_next_blockers": [
+            "raw_laniakea_or_cosmicflows_tables_missing",
+            "observer_frame_metadata_incomplete",
+            "numeric_flow_residual_gate_open",
+            "baseline_comparison_gate_open",
+            "pioneer_thermal_recoil_competitor_open",
+            "upstream_dependency_warn_inherited",
         ],
         "gate_inputs": {
             "source_evidence_ready": source_ready,

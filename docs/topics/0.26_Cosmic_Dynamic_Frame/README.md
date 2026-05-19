@@ -88,6 +88,7 @@ flowchart LR
 - `Data/03_Research/source_evidence_intake_stub.json`: intake sheet for unresolved upstream raw tables, frame metadata, and Pioneer baseline evidence.
 - `Data/03_Research/source_evidence_readiness_matrix.json`: workflow gate showing which source packages are still blocked by missing evidence fields.
 - `Data/03_Research/dependency_claim_gate.json`: inherited-claim gate for `0.1`, `0.23`, and `0.0`.
+- `dynamic_frame_claim_gate` in the verification artifact: export controller for allowed visualization/provenance claims, blocked replacement claims, blocked export phrases, and next residual/source/dependency blockers.
 
 *Core hardening status: source records pinned, verifier-artifact enabled, source-evidence, dependency, and numeric-residual gates enabled, raw flow tables and model residual gates still open.*
 

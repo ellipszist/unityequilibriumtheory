@@ -4,7 +4,7 @@
 - Laniakea, Cosmicflows-3, and Pioneer source records are pinned under `docs/data/external/...`, but raw tables, observer-frame metadata, preprocessing scripts, and upstream hashes are still open.
 - Provenance is now partially normalized rather than blank: Laniakea and Pioneer anomaly lanes are each missing only `original_file_name`, Cosmicflows still lacks `original_file_name` plus `subset_selection_rule`, and the thermal-recoil competitor lane is still fully absent.
 - `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `dependency_claim_gate.json` are workflow controls only. They do not count as raw evidence, source review, or successful residual validation.
-- `dynamic_frame_claim_gate` is a claim-scope controller. It can allow the visualization/provenance export while still blocking theory-level, replacement, Pioneer-explanation, and inherited-unity exports.
+- `dynamic_frame_claim_gate` is a claim-scope controller. It can allow the visualization/provenance export while still blocking theory-level, replacement, Pioneer-explanation, inherited-unity exports, and their blocked export phrases.
 - The primary verifier is a visualization/provenance gate. It does not test a cosmological model fit, dark-matter replacement, Bullet Cluster wake model, or Pioneer-drag physics.
 - The visualization gate can pass only for loading/rendering the topic-local landmark package. Numeric residual and baseline-comparison gates remain the controllers for dynamic-frame theory claims.
 - The galaxy-rotation branch must inherit the data, baseline, and uncertainty limits of `0.1_Galaxy_Rotation_Problem`; it cannot bootstrap stronger credibility from this topic alone.
