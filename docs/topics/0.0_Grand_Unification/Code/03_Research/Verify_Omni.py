@@ -230,9 +230,13 @@ def _extract_claim_gate_summary(artifact: dict) -> list[dict]:
         summaries.append(
             {
                 "gate": "theorem_boundary_gate",
-                "status": theorem_boundary_gate.get("status"),
+                "status": theorem_boundary_gate.get("controller_status") or theorem_boundary_gate.get("status"),
+                "theorem_status": theorem_boundary_gate.get("status"),
+                "claim_class": theorem_boundary_gate.get("claim_class"),
                 "accepted_exports": theorem_boundary_gate.get("accepted_exports", []),
                 "blocked_exports": theorem_boundary_gate.get("blocked_theorem_exports", []),
+                "blocked_export_phrases": theorem_boundary_gate.get("blocked_export_phrases", []),
+                "next_blockers": theorem_boundary_gate.get("machine_readable_next_blockers", []),
                 "claim_boundary": theorem_boundary_gate.get("claim_boundary"),
             }
         )

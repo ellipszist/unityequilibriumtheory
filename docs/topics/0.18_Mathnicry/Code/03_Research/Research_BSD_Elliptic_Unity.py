@@ -265,6 +265,12 @@ def _build_theorem_boundary_gate(result, source_evidence_readiness_matrix, branc
         "topic": "0.18_Mathnicry",
         "purpose": "Machine-readable theorem-boundary gate for proof-inspired branches.",
         "status": "THEOREM_CLAIMS_BLOCKED",
+        "controller_status": "BLOCKED",
+        "controller_reason": (
+            "Only the local BSD surrogate run-contract export is allowed; every formal theorem export is blocked "
+            "by missing theorem-source data, proof assumptions, and proof-boundary artifacts."
+        ),
+        "claim_class": "D_surrogate_run_contract_only",
         "accepted_now": [
             {
                 "export_id": "T18_EXPORT_BSD_SURROGATE_RUN_CONTRACT",
@@ -315,6 +321,23 @@ def _build_theorem_boundary_gate(result, source_evidence_readiness_matrix, branc
         "source_evidence_summary": source_evidence_readiness_matrix["summary"],
         "branch_summary": branch_claim_gate["summary"],
         "blocked_branch_names": [item["branch"] for item in blocked_branches],
+        "blocked_export_phrases": [
+            "BSD proved",
+            "Riemann Hypothesis proved",
+            "P vs NP solved",
+            "Collatz proved",
+            "Hodge conjecture proved",
+            "theorem-level proof",
+            "formal proof verified",
+        ],
+        "machine_readable_next_blockers": [
+            "bsd_rank_l_function_source_package_missing",
+            "riemann_precision_and_off_line_exclusion_missing",
+            "p_vs_np_formal_reduction_missing",
+            "collatz_bounded_search_manifest_missing",
+            "quantum_engine_deterministic_fixtures_missing",
+            "all_theorem_source_targets_pending",
+        ],
         "claim_boundary": "0.18 can currently export only surrogate/run-contract evidence. All theorem-level exports are blocked.",
     }
     return _write_json(THEOREM_BOUNDARY_GATE_PATH, payload)
@@ -447,10 +470,14 @@ def write_verification_artifact(result):
             "path": str(THEOREM_BOUNDARY_GATE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
             "sha256": _sha256(THEOREM_BOUNDARY_GATE_PATH),
             "status": theorem_boundary_gate["status"],
+            "controller_status": theorem_boundary_gate["controller_status"],
+            "claim_class": theorem_boundary_gate["claim_class"],
             "accepted_exports": [item["export_id"] for item in theorem_boundary_gate["accepted_now"]],
             "blocked_theorem_exports": [
                 item["export_id"] for item in theorem_boundary_gate["blocked_theorem_exports"]
             ],
+            "blocked_export_phrases": theorem_boundary_gate["blocked_export_phrases"],
+            "machine_readable_next_blockers": theorem_boundary_gate["machine_readable_next_blockers"],
             "claim_boundary": theorem_boundary_gate["claim_boundary"],
         },
         "data_posture_gate": {

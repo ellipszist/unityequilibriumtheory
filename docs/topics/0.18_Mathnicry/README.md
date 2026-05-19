@@ -52,7 +52,7 @@ $env:PYTHONIOENCODING='utf-8'; $env:PYTHONUTF8='1'; .\.venv\Scripts\python.exe d
 
 A pass means the current BSD surrogate demonstration ran and wrote an artifact. It does not mean BSD, Riemann, P vs NP, Collatz, or any other theorem has been proved.
 
-The verifier now emits `theorem_boundary_gate`, which dependent topics may use to inherit only `T18_EXPORT_BSD_SURROGATE_RUN_CONTRACT`. All formal-theorem exports remain blocked until real benchmark data, formal assumptions, proof status, and failure modes are attached.
+The verifier now emits `theorem_boundary_gate.controller_status`, which dependent topics may use to inherit only `T18_EXPORT_BSD_SURROGATE_RUN_CONTRACT`. All formal-theorem exports and theorem-proof phrases remain blocked until real benchmark data, formal assumptions, proof status, and failure modes are attached.
 
 It also emits `data_posture_gate`, which states that the current primary verifier consumes a local code fixture package rather than an external theorem dataset. This gate is allowed to support only local run-contract language.
 

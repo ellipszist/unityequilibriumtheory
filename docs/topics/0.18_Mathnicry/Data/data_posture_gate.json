@@ -17,8 +17,8 @@
     },
     {
       "path": "Code/03_Research/Research_BSD_Elliptic_Unity.py",
-      "bytes": 26161,
-      "sha256": "2dee4d20e8a190ead6ef9ad4a6cbb9e78b746c7ac518406c3950dd33821ae427",
+      "bytes": 27517,
+      "sha256": "9b0ae12a348b7f338862a41f819f2feb3521d9ff37146ebee3a257d30d61ef3a",
       "role": "primary verifier; declares the two local surrogate curve fixtures"
     }
   ],

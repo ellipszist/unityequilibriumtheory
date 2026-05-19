@@ -3,6 +3,9 @@
   "topic": "0.18_Mathnicry",
   "purpose": "Machine-readable theorem-boundary gate for proof-inspired branches.",
   "status": "THEOREM_CLAIMS_BLOCKED",
+  "controller_status": "BLOCKED",
+  "controller_reason": "Only the local BSD surrogate run-contract export is allowed; every formal theorem export is blocked by missing theorem-source data, proof assumptions, and proof-boundary artifacts.",
+  "claim_class": "D_surrogate_run_contract_only",
   "accepted_now": [
     {
       "export_id": "T18_EXPORT_BSD_SURROGATE_RUN_CONTRACT",
@@ -72,6 +75,23 @@
     "Collatz branch",
     "Quantum engine integrity branch",
     "Hodge or other topology-style branches"
+  ],
+  "blocked_export_phrases": [
+    "BSD proved",
+    "Riemann Hypothesis proved",
+    "P vs NP solved",
+    "Collatz proved",
+    "Hodge conjecture proved",
+    "theorem-level proof",
+    "formal proof verified"
+  ],
+  "machine_readable_next_blockers": [
+    "bsd_rank_l_function_source_package_missing",
+    "riemann_precision_and_off_line_exclusion_missing",
+    "p_vs_np_formal_reduction_missing",
+    "collatz_bounded_search_manifest_missing",
+    "quantum_engine_deterministic_fixtures_missing",
+    "all_theorem_source_targets_pending"
   ],
   "claim_boundary": "0.18 can currently export only surrogate/run-contract evidence. All theorem-level exports are blocked."
 }

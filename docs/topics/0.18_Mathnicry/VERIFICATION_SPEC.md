@@ -22,6 +22,7 @@
   - rank-indicator mismatch count
   - input/helper file hashes
   - theorem-boundary status, accepted surrogate export, blocked theorem exports
+  - theorem-boundary `controller_status`, blocked theorem-proof phrases, and machine-readable next blockers
   - data-posture controller status and primary verifier input class
 - Fixed threshold:
   - Working threshold for this standards pass: the primary script must run without error and write a summary artifact under `Result/artifacts/`.
@@ -29,6 +30,7 @@
   - This is a run-contract threshold only; it is not a theorem acceptance boundary.
   - `surrogate_run_contract_gate.status` may be `SURROGATE_PASS` or `SURROGATE_WARN`; both remain local-code-path evidence only.
   - `theorem_boundary_gate.status` must remain `THEOREM_CLAIMS_BLOCKED` until source-backed theorem benchmarks and proof-boundary artifacts are present.
+  - `theorem_boundary_gate.controller_status` must remain `BLOCKED` while any formal theorem export is blocked.
   - `data_posture_gate.controller_status` must remain `SURROGATE_ONLY` while the primary verifier consumes only local code fixtures and placeholder/manual inputs.
 - Artifact target:
   - Result/artifacts/0_18_mathnicry_verification.json

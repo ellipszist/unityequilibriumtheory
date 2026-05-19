@@ -1,7 +1,7 @@
 {
   "schema_version": "1.2",
   "topic": "0.0_Grand_Unification",
-  "timestamp_utc": "2026-05-19T14:34:56.963288+00:00",
+  "timestamp_utc": "2026-05-19T14:39:57.245516+00:00",
   "command": "python docs/topics/0.0_Grand_Unification/Code/03_Research/Verify_Omni.py",
   "status": "WARN",
   "passed_run_contract": true,
@@ -133,8 +133,8 @@
     },
     {
       "path": "docs/topics/0.18_Mathnicry/Result/artifacts/0_18_mathnicry_verification.json",
-      "bytes": 6394,
-      "sha256": "8efdc04503eb48aba07bb7fafdc458083b3ab8a13f5e0cdcd475c93c4db14128",
+      "bytes": 7081,
+      "sha256": "dcbc1fd86bd2a057d7b26b706fcfedc8a12e4a29b9ccb18bc631d6ff0ff0bec9",
       "provenance_role": "subordinate_artifact",
       "status": "WARN"
     },
@@ -608,11 +608,13 @@
       "status": "WARN",
       "claim_class": null,
       "schema_version": "1.2",
-      "timestamp_utc": "2026-05-17T17:25:40.798736+00:00",
+      "timestamp_utc": "2026-05-19T14:38:12.202975+00:00",
       "claim_gates": [
         {
           "gate": "theorem_boundary_gate",
-          "status": "THEOREM_CLAIMS_BLOCKED",
+          "status": "BLOCKED",
+          "theorem_status": "THEOREM_CLAIMS_BLOCKED",
+          "claim_class": "D_surrogate_run_contract_only",
           "accepted_exports": [
             "T18_EXPORT_BSD_SURROGATE_RUN_CONTRACT"
           ],
@@ -622,6 +624,23 @@
             "T18_EXPORT_P_VS_NP_PROOF",
             "T18_EXPORT_COLLATZ_PROOF",
             "T18_EXPORT_QUANTUM_ENGINE_THEOREM"
+          ],
+          "blocked_export_phrases": [
+            "BSD proved",
+            "Riemann Hypothesis proved",
+            "P vs NP solved",
+            "Collatz proved",
+            "Hodge conjecture proved",
+            "theorem-level proof",
+            "formal proof verified"
+          ],
+          "next_blockers": [
+            "bsd_rank_l_function_source_package_missing",
+            "riemann_precision_and_off_line_exclusion_missing",
+            "p_vs_np_formal_reduction_missing",
+            "collatz_bounded_search_manifest_missing",
+            "quantum_engine_deterministic_fixtures_missing",
+            "all_theorem_source_targets_pending"
           ],
           "claim_boundary": "0.18 can currently export only surrogate/run-contract evidence. All theorem-level exports are blocked."
         },
@@ -633,8 +652,8 @@
           "claim_boundary": "This gate records theorem-branch claim ceilings only. It cannot upgrade the topic beyond the current run-contract evidence."
         }
       ],
-      "sha256": "8efdc04503eb48aba07bb7fafdc458083b3ab8a13f5e0cdcd475c93c4db14128",
-      "bytes": 6394
+      "sha256": "dcbc1fd86bd2a057d7b26b706fcfedc8a12e4a29b9ccb18bc631d6ff0ff0bec9",
+      "bytes": 7081
     },
     {
       "topic": "0.19_Gravity_GR",
@@ -1246,7 +1265,7 @@
         "status": "WARN",
         "claim_class": null,
         "gate": "theorem_boundary_gate",
-        "gate_status": "THEOREM_CLAIMS_BLOCKED",
+        "gate_status": "BLOCKED",
         "blocked_exports": [
           "T18_EXPORT_BSD_PROOF",
           "T18_EXPORT_RIEMANN_PROOF",
@@ -1545,8 +1564,8 @@
       },
       {
         "path": "docs/topics/0.18_Mathnicry/Result/artifacts/0_18_mathnicry_verification.json",
-        "bytes": 6394,
-        "sha256": "8efdc04503eb48aba07bb7fafdc458083b3ab8a13f5e0cdcd475c93c4db14128",
+        "bytes": 7081,
+        "sha256": "dcbc1fd86bd2a057d7b26b706fcfedc8a12e4a29b9ccb18bc631d6ff0ff0bec9",
         "provenance_role": "subordinate_artifact",
         "status": "WARN"
       },
@@ -2020,11 +2039,13 @@
         "status": "WARN",
         "claim_class": null,
         "schema_version": "1.2",
-        "timestamp_utc": "2026-05-17T17:25:40.798736+00:00",
+        "timestamp_utc": "2026-05-19T14:38:12.202975+00:00",
         "claim_gates": [
           {
             "gate": "theorem_boundary_gate",
-            "status": "THEOREM_CLAIMS_BLOCKED",
+            "status": "BLOCKED",
+            "theorem_status": "THEOREM_CLAIMS_BLOCKED",
+            "claim_class": "D_surrogate_run_contract_only",
             "accepted_exports": [
               "T18_EXPORT_BSD_SURROGATE_RUN_CONTRACT"
             ],
@@ -2034,6 +2055,23 @@
               "T18_EXPORT_P_VS_NP_PROOF",
               "T18_EXPORT_COLLATZ_PROOF",
               "T18_EXPORT_QUANTUM_ENGINE_THEOREM"
+            ],
+            "blocked_export_phrases": [
+              "BSD proved",
+              "Riemann Hypothesis proved",
+              "P vs NP solved",
+              "Collatz proved",
+              "Hodge conjecture proved",
+              "theorem-level proof",
+              "formal proof verified"
+            ],
+            "next_blockers": [
+              "bsd_rank_l_function_source_package_missing",
+              "riemann_precision_and_off_line_exclusion_missing",
+              "p_vs_np_formal_reduction_missing",
+              "collatz_bounded_search_manifest_missing",
+              "quantum_engine_deterministic_fixtures_missing",
+              "all_theorem_source_targets_pending"
             ],
             "claim_boundary": "0.18 can currently export only surrogate/run-contract evidence. All theorem-level exports are blocked."
           },
@@ -2045,8 +2083,8 @@
             "claim_boundary": "This gate records theorem-branch claim ceilings only. It cannot upgrade the topic beyond the current run-contract evidence."
           }
         ],
-        "sha256": "8efdc04503eb48aba07bb7fafdc458083b3ab8a13f5e0cdcd475c93c4db14128",
-        "bytes": 6394
+        "sha256": "dcbc1fd86bd2a057d7b26b706fcfedc8a12e4a29b9ccb18bc631d6ff0ff0bec9",
+        "bytes": 7081
       },
       {
         "topic": "0.19_Gravity_GR",
@@ -2268,7 +2306,7 @@
           "reynolds_critical": 2261.946710584651,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 1.578066953637246,
+          "ai_initial_loss": 0.6281489309411438,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
@@ -2293,7 +2331,7 @@
           "reynolds_critical": 226.19467105846513,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 0.721591739303375,
+          "ai_initial_loss": 1.4647469534109856,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
@@ -2845,7 +2883,7 @@
           "status": "WARN",
           "claim_class": null,
           "gate": "theorem_boundary_gate",
-          "gate_status": "THEOREM_CLAIMS_BLOCKED",
+          "gate_status": "BLOCKED",
           "blocked_exports": [
             "T18_EXPORT_BSD_PROOF",
             "T18_EXPORT_RIEMANN_PROOF",
