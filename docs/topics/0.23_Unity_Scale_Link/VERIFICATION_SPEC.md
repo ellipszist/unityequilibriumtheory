@@ -27,16 +27,19 @@
   - input file SHA-256 identities
   - dependency manifest snapshot embedded into the artifact
   - inherited `0.13` foundation gate status, accepted exports, blocked exports, and claim ceiling
+  - machine-readable `scale_claim_gate.controller_status`, allowed claims, blocked claims, blocked export phrases, and next blockers
 - Fixed threshold:
   - at least one primary test must return true for non-FAIL artifact status
   - `galaxy_neural_p_value <= 0.001` is recorded as a diagnostic threshold
   - source-referenced local finance snapshots plus synthetic galaxy/neural fields keep artifact status at `WARN` and claim class at `D`
   - any blocked `0.13` foundation export blocks theory-level information-energy scale claims
+  - `scale_claim_gate.controller_status` must remain `WARN` or `FAIL` while fixed universal kappa, external prediction, source-lock, and dependency-proof gates remain open
 - Artifact target:
   - Result/artifacts/0_23_unity_scale_link_verification.json
 - Interpretation:
   - Treat output as exploratory structural scale-link evidence only.
   - A `WARN` is expected until finance retrieval can be reproduced and synthetic neural/galaxy tests are replaced or separated from external evidence.
   - A test no longer counts as `true` merely because it ran; directional agreement now matters for the economy diagnostic.
+  - Treat `scale_claim_gate` as the artifact export controller for integration topics and dashboards.
   - Treat `0.13` inheritance as export-specific: lower-bound/formula-consistency exports may be used as constraints, but blocked UET bridge/source-normalized/Cattaneo exports must not be used as support.
   - Do not use this verifier to claim grand unification, external prediction, or universal fixed parameters.

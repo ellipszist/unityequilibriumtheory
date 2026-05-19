@@ -59,7 +59,7 @@ flowchart LR
 ## Current Research Claim
 
 - **Supported now:** UET has a reusable computational form for normalized fields, and fixed parameter unity is explicitly falsified by the topic's own diagnostics.
-- **New governance gate:** the verifier records `scale_claim_gate`, which treats fixed-parameter failure as a useful constraint and keeps synthetic neural/galaxy branches simulation-only until real source packages exist.
+- **New governance gate:** the verifier records `scale_claim_gate.controller_status`, which treats fixed-parameter failure as a useful constraint and keeps synthetic neural/galaxy branches simulation-only until real source packages exist.
 - **0.13 inheritance rule:** `0.23` may use `T13_EXPORT_LANDAUER_LOWER_BOUND` and `T13_EXPORT_STANDARD_THERMO_GRAVITY_IDENTITIES` as constraints, but must not inherit `T13_EXPORT_UET_BRIDGE_PROOF`, source-normalized Landauer dataset closure, or Cattaneo external validation while those exports remain blocked.
 - **Not established yet:** full theory-wide integration, a universal fixed `kappa`, vacuum-energy closure, or held-out external cross-domain prediction.
 - **Main value:** `0.23` should serve as a scale-dependency map that shows where UET can reuse structure, where parameters must run, and which upstream topic artifacts each claim inherits.
@@ -91,6 +91,7 @@ flowchart LR
 - [VERIFICATION_SPEC.md](./VERIFICATION_SPEC.md): primary verifier command, metrics, thresholds, and artifact path.
 - [METHOD.md](./METHOD.md): method, dependency layer, and domain-of-validity statement.
 - [LIMITATIONS.md](./LIMITATIONS.md): claim boundary and blockers before paper-facing use.
+- `scale_claim_gate` in the verification artifact: export controller for allowed exploratory claims, blocked unity/prediction claims, blocked export phrases, and dependency inheritance blockers.
 
 ---
 

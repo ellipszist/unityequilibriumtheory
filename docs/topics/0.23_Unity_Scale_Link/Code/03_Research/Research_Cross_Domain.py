@@ -190,10 +190,20 @@ def _build_scale_claim_gate(results, dependency_manifest, thermodynamic_gate, mi
         thermodynamic_gate_summary["status"] != "FOUNDATION_PASS"
         or bool(thermodynamic_gate_summary["blocked_exports"])
     )
+    controller_status = "WARN"
+    if missing_inputs:
+        controller_status = "FAIL"
 
     return {
         "schema_version": "1.0",
         "purpose": "Prevent scale-link and unity wording from outrunning source and dependency evidence.",
+        "controller_status": controller_status,
+        "controller_reason": (
+            "Scale-link diagnostics can be used as exploratory structure, but unity, prediction, and theory-level exports remain blocked."
+            if controller_status == "WARN"
+            else "Declared inputs are missing, so scale-link exports must be blocked until the verifier input contract is restored."
+        ),
+        "claim_class": "D_exploratory_structural_scale_link",
         "thermodynamic_foundation_gate": thermodynamic_gate_summary,
         "dependency_topics": [
             {
@@ -229,6 +239,80 @@ def _build_scale_claim_gate(results, dependency_manifest, thermodynamic_gate, mi
                 "must not claim UET bridge proof while the 0.13 foundation gate is WARN or BLOCKED"
             ),
         },
+        "allowed_claims_now": [
+            {
+                "claim": "The verifier ran exploratory Omega diagnostics over declared local inputs.",
+                "status": "PASS" if any(value is True for value in results.values()) else "FAIL",
+                "artifact_role": "run-contract and exploratory structural diagnostic",
+                "source_evidence_readiness": "mixed_local_snapshot_and_simulation",
+            },
+            {
+                "claim": "Fixed universal kappa is constrained by the current diagnostics.",
+                "status": "CONSTRAINT",
+                "artifact_role": "negative/limiting evidence",
+                "interpretation": "A fixed-parameter mismatch is a useful blocker, not a hidden failure to smooth away.",
+            },
+            {
+                "claim": "0.13 accepted lower-bound/formula exports may be inherited as constraints only.",
+                "status": "PASS" if thermodynamic_gate_summary["accepted_exports"] else "BLOCKED",
+                "artifact_role": "dependency inheritance rule",
+                "source_evidence_readiness": "inherits_0_13_foundation_warn_ceiling",
+            },
+        ],
+        "blocked_claims": [
+            {
+                "claim": "0.23 proves unity across domains.",
+                "status": "BLOCKED",
+                "blocking_reason": "The artifact combines synthetic branches, local snapshots, and open dependency gates.",
+                "next_evidence_required": [
+                    "source-locked external domain packages",
+                    "held-out validation thresholds",
+                    "dependency artifacts with closed claim gates",
+                ],
+            },
+            {
+                "claim": "One fixed kappa works universally.",
+                "status": "BLOCKED",
+                "blocking_reason": "The fixed-parameter branch is treated as a falsification/constraint lane.",
+                "next_evidence_required": [
+                    "explicit parameter contract",
+                    "held-out cross-domain passes under that contract",
+                    "uncertainty-aware calibration table",
+                ],
+            },
+            {
+                "claim": "The synthetic neural/galaxy transfer is external prediction.",
+                "status": "BLOCKED",
+                "blocking_reason": "Synthetic generator branches are simulation-only.",
+                "next_evidence_required": [
+                    "real EEG or comparable neural source package",
+                    "upstream galaxy/source package with row semantics",
+                    "pre-registered directional threshold",
+                ],
+            },
+            {
+                "claim": "0.23 inherits UET bridge proof from 0.13.",
+                "status": "BLOCKED" if thermodynamic_bridge_blocked else "OPEN",
+                "blocking_reason": "0.13 currently exports only lower-bound/formula-consistency constraints.",
+                "next_evidence_required": thermodynamic_gate_summary["blocked_exports"],
+            },
+        ],
+        "blocked_export_phrases": [
+            "unity across all scales proved",
+            "universal fixed kappa",
+            "external cross-domain prediction validated",
+            "grand unification demonstrated",
+            "UET bridge proof inherited",
+            "scale law solved",
+        ],
+        "machine_readable_next_blockers": [
+            "finance_query_logs_missing",
+            "real_eeg_source_package_missing",
+            "synthetic_neural_branch_simulation_only",
+            "fixed_universal_kappa_blocked",
+            "thermodynamic_foundation_gate_not_passed",
+            "held_out_cross_domain_validation_missing",
+        ],
         "paper_readiness": {
             "status": "BLOCKED",
             "blocking_conditions": [
