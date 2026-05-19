@@ -44,8 +44,10 @@ The artifact must record:
 - dataset paths, hashes, source labels, DOI/URL
 - formula IDs
 - thresholds, metrics, per-line residuals, and limitations
+- machine-readable `atomic_claim_scope_gate.controller_status`
 
 ## Interpretation
 
 A PASS supports only a Claim Class C internal hydrogen-spectrum benchmark using the standard Rydberg relation. It does not derive `R_H` from UET first principles and does not validate fine structure, Lamb shift, helium, or many-electron atoms.
 Topic-level source-evidence and branch-claim gates further limit this topic to hydrogen-benchmark usage unless dedicated atomic artifacts are added.
+`atomic_claim_scope_gate.controller_status == WARN` is expected when the hydrogen benchmark passes while Rydberg derivation, level-energy, fine-structure, Lamb-shift, helium, and many-electron branches remain open.

@@ -1,4 +1,89 @@
 {
+  "atomic_claim_scope_gate": {
+    "allowed_claims_now": [
+      {
+        "artifact_role": "primary hydrogen spectrum benchmark",
+        "claim": "Selected hydrogen wavelengths match the standard Rydberg relation under the declared residual thresholds.",
+        "metrics": {
+          "average_wavelength_error_ppm": 7.504133013735595,
+          "max_wavelength_error_ppm": 12.500832386280821,
+          "slope_error_ppm": 7.947081514956296
+        },
+        "source_evidence_readiness": "nist_codata_working_copy_ready_for_review",
+        "status": "PASS"
+      },
+      {
+        "artifact_role": "atomic constant consistency branch",
+        "claim": "The CODATA R_H constant is used consistently in the benchmark.",
+        "formula_role": "standard Rydberg relation, not UET first-principles derivation",
+        "source_evidence_readiness": "codata_checkpoint_ready_for_review",
+        "status": "CHECKPOINT_ONLY"
+      }
+    ],
+    "blocked_claims": [
+      {
+        "blocking_reason": "The verifier uses the standard Rydberg relation with CODATA R_H; it is not a derivation artifact.",
+        "claim": "UET derives the Rydberg relation or R_H from first principles.",
+        "next_evidence_required": [
+          "first-principles derivation package",
+          "formula audit for UET-specific R_H relation",
+          "independent validation artifact"
+        ],
+        "status": "BLOCKED"
+      },
+      {
+        "blocking_reason": "No source-backed precision datasets or residual artifacts for QED-scale effects are primary-gated.",
+        "claim": "UET validates fine structure, Lamb shift, hyperfine structure, or QED corrections.",
+        "next_evidence_required": [
+          "fine-structure dataset",
+          "Lamb-shift dataset",
+          "hyperfine/QED correction artifact"
+        ],
+        "status": "BLOCKED"
+      },
+      {
+        "blocking_reason": "Helium and many-electron scripts are not primary source-gated benchmark artifacts.",
+        "claim": "UET validates helium, many-electron atoms, or general atomic theory.",
+        "next_evidence_required": [
+          "helium source package",
+          "many-electron benchmark suite",
+          "uncertainty-aware residual thresholds"
+        ],
+        "status": "BLOCKED"
+      }
+    ],
+    "blocked_export_phrases": [
+      "Rydberg constant derived from first principles",
+      "atomic theory solved",
+      "QED corrections validated",
+      "Lamb shift explained",
+      "helium validated",
+      "many-electron atoms solved"
+    ],
+    "branch_claim_gate_summary": {
+      "accepted_now": 2,
+      "blocked_for_strong_claims": 4,
+      "branches_total": 6
+    },
+    "claim_boundary": "A PASS artifact supports only selected hydrogen Rydberg benchmark behavior with NIST/CODATA working copies. It does not derive R_H, validate QED corrections, validate helium or many-electron atoms, or close atomic theory.",
+    "claim_class": "C_hydrogen_rydberg_benchmark_only",
+    "controller_reason": "The hydrogen Rydberg benchmark passed, but export remains warning-gated because level-energy, fine-structure, Lamb-shift, helium, many-electron, and first-principles derivation branches are missing.",
+    "controller_status": "WARN",
+    "machine_readable_next_blockers": [
+      "rydberg_derivation_artifact_missing",
+      "hydrogen_level_energy_artifact_missing",
+      "fine_structure_artifact_missing",
+      "lamb_shift_artifact_missing",
+      "helium_many_electron_artifact_missing"
+    ],
+    "schema_version": "1.0",
+    "source_evidence_summary": {
+      "source_targets_total": 5,
+      "targets_blocked_by_pending_evidence": 3,
+      "targets_ready_for_source_review": 2
+    },
+    "topic": "0.20_Atomic_Physics"
+  },
   "branch_claim_gate": {
     "claim_boundary": "This gate keeps the topic at hydrogen benchmark status, not full atomic-theory closure.",
     "path": "Data/03_Research/branch_claim_gate.json",
@@ -20,7 +105,7 @@
     "AT20-RH-CODATA-CHECKPOINT",
     "AT20-SPECTRUM-RESIDUAL"
   ],
-  "generated_at_utc": "2026-05-05T19:03:50.079742+00:00",
+  "generated_at_utc": "2026-05-19T13:27:50.842754+00:00",
   "inputs": [
     {
       "doi": "10.18434/T4W30F",
@@ -47,6 +132,7 @@
     "R_infinity_codata_m_inverse": 10973731.56816,
     "accepted_claim_branches": 2,
     "average_wavelength_error_ppm": 7.504133013735595,
+    "blocked_claim_exports": 6,
     "fitted_slope_through_origin_m_inverse": 10967845.50226957,
     "line_count": 7,
     "max_wavelength_error_ppm": 12.500832386280821,

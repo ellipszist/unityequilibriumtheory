@@ -9,3 +9,6 @@
 - Fine structure, Lamb shift, hyperfine structure, helium, and many-electron atoms are outside the current artifact.
 - Downstream core topics must inherit these limitations before using `0.20` as atomic evidence.
 - Topic-level source-evidence and branch-claim gates now make that boundary explicit: accepted evidence stops at the hydrogen Rydberg benchmark and constant-consistency branch, not full atomic-theory closure.
+- The artifact-level `atomic_claim_scope_gate` is the export controller: hydrogen benchmark
+  PASS cannot be cited as first-principles Rydberg derivation, QED correction validation,
+  Lamb-shift explanation, helium validation, many-electron solution, or full atomic-theory closure.

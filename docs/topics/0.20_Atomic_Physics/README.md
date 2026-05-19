@@ -41,6 +41,7 @@ flowchart LR
 | Verification | Runnable primary artifact | `Code/03_Research/Research_Rydberg_Validation.py` | Supports hydrogen-spectrum internal benchmark claims. | Many-electron and QED effects are outside the verifier. |
 | Source evidence workflow | Structured provenance gate | `Data/03_Research/source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json` | source-review queue | Level-energy, precision, and many-electron packages still need dedicated artifacts. |
 | Branch claim gate | Structured claim ceiling | `Data/03_Research/branch_claim_gate.json` | benchmark-only claim control | Hydrogen benchmark does not promote full atomic-theory claims. |
+| Claim-scope gate | Artifact export controller | `atomic_claim_scope_gate` in artifact | blocks derivation/QED/many-electron overclaim | Hydrogen PASS remains topic-level `WARN` until precision and derivation branches are primary-gated. |
 | Claims | Bounded to hydrogen benchmark | this README, `METHOD.md`, `LIMITATIONS.md` | May state that selected hydrogen lines match the standard Rydberg relation within declared thresholds. | Cannot claim full atomic theory or first-principles UET derivation. |
 | Dependencies | Atomic constants/levels bridge | `0.6`, `0.17`, `0.21`, `0.23`, `0.0` | Downstream topics may cite the hydrogen benchmark with limitations. | Stronger claims need fine-structure/many-electron artifacts. |
 
@@ -55,6 +56,7 @@ Expected artifact:
 - `Result/artifacts/0_20_atomic_physics_verification.json`
 
 The artifact records dataset hashes, NIST/CODATA source IDs, line residuals, fitted slope, thresholds, and limitations.
+It must also record `atomic_claim_scope_gate`, which allows only hydrogen Rydberg benchmark language and blocks Rydberg derivation, QED correction, helium, many-electron, and full atomic-theory claims.
 
 ## Key Files
 

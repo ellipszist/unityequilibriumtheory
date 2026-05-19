@@ -305,6 +305,103 @@ def build_branch_claim_gate() -> dict:
     }
 
 
+def build_atomic_claim_scope_gate(
+    status: str,
+    avg_error_ppm: float,
+    max_error_ppm: float,
+    slope_error_ppm: float,
+    source_evidence_readiness_matrix: dict,
+    branch_claim_gate: dict,
+) -> dict:
+    controller_status = "WARN" if status == "PASS" else "FAIL"
+    return {
+        "schema_version": "1.0",
+        "topic": "0.20_Atomic_Physics",
+        "controller_status": controller_status,
+        "controller_reason": (
+            "The hydrogen Rydberg benchmark passed, but export remains warning-gated because level-energy, "
+            "fine-structure, Lamb-shift, helium, many-electron, and first-principles derivation branches are missing."
+            if status == "PASS"
+            else "The hydrogen Rydberg benchmark failed the declared residual thresholds."
+        ),
+        "claim_class": "C_hydrogen_rydberg_benchmark_only",
+        "allowed_claims_now": [
+            {
+                "claim": "Selected hydrogen wavelengths match the standard Rydberg relation under the declared residual thresholds.",
+                "status": status,
+                "artifact_role": "primary hydrogen spectrum benchmark",
+                "metrics": {
+                    "average_wavelength_error_ppm": avg_error_ppm,
+                    "max_wavelength_error_ppm": max_error_ppm,
+                    "slope_error_ppm": slope_error_ppm,
+                },
+                "source_evidence_readiness": "nist_codata_working_copy_ready_for_review",
+            },
+            {
+                "claim": "The CODATA R_H constant is used consistently in the benchmark.",
+                "status": "CHECKPOINT_ONLY" if status == "PASS" else "BLOCKED",
+                "artifact_role": "atomic constant consistency branch",
+                "formula_role": "standard Rydberg relation, not UET first-principles derivation",
+                "source_evidence_readiness": "codata_checkpoint_ready_for_review",
+            },
+        ],
+        "blocked_claims": [
+            {
+                "claim": "UET derives the Rydberg relation or R_H from first principles.",
+                "status": "BLOCKED",
+                "blocking_reason": "The verifier uses the standard Rydberg relation with CODATA R_H; it is not a derivation artifact.",
+                "next_evidence_required": [
+                    "first-principles derivation package",
+                    "formula audit for UET-specific R_H relation",
+                    "independent validation artifact",
+                ],
+            },
+            {
+                "claim": "UET validates fine structure, Lamb shift, hyperfine structure, or QED corrections.",
+                "status": "BLOCKED",
+                "blocking_reason": "No source-backed precision datasets or residual artifacts for QED-scale effects are primary-gated.",
+                "next_evidence_required": [
+                    "fine-structure dataset",
+                    "Lamb-shift dataset",
+                    "hyperfine/QED correction artifact",
+                ],
+            },
+            {
+                "claim": "UET validates helium, many-electron atoms, or general atomic theory.",
+                "status": "BLOCKED",
+                "blocking_reason": "Helium and many-electron scripts are not primary source-gated benchmark artifacts.",
+                "next_evidence_required": [
+                    "helium source package",
+                    "many-electron benchmark suite",
+                    "uncertainty-aware residual thresholds",
+                ],
+            },
+        ],
+        "blocked_export_phrases": [
+            "Rydberg constant derived from first principles",
+            "atomic theory solved",
+            "QED corrections validated",
+            "Lamb shift explained",
+            "helium validated",
+            "many-electron atoms solved",
+        ],
+        "source_evidence_summary": source_evidence_readiness_matrix["summary"],
+        "branch_claim_gate_summary": branch_claim_gate["summary"],
+        "machine_readable_next_blockers": [
+            "rydberg_derivation_artifact_missing",
+            "hydrogen_level_energy_artifact_missing",
+            "fine_structure_artifact_missing",
+            "lamb_shift_artifact_missing",
+            "helium_many_electron_artifact_missing",
+        ],
+        "claim_boundary": (
+            "A PASS artifact supports only selected hydrogen Rydberg benchmark behavior with NIST/CODATA "
+            "working copies. It does not derive R_H, validate QED corrections, validate helium or many-electron "
+            "atoms, or close atomic theory."
+        ),
+    }
+
+
 def run_rydberg_analysis():
     print("=" * 60)
     print("UET ATOMIC PHYSICS: RYDBERG VALIDATION")
@@ -364,6 +461,14 @@ def run_rydberg_analysis():
         and slope_error_ppm <= threshold["slope_error_ppm_max"]
         else "FAIL"
     )
+    atomic_claim_scope_gate = build_atomic_claim_scope_gate(
+        status,
+        avg_error_ppm,
+        max_error_ppm,
+        slope_error_ppm,
+        source_evidence_readiness_matrix,
+        branch_claim_gate,
+    )
 
     artifact = {
         "schema_version": "1.1",
@@ -408,6 +513,7 @@ def run_rydberg_analysis():
             "source_targets_ready_for_review": source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
             "source_targets_blocked": source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
             "accepted_claim_branches": branch_claim_gate["summary"]["accepted_now"],
+            "blocked_claim_exports": len(atomic_claim_scope_gate["blocked_export_phrases"]),
         },
         "results": results,
         "limitations": [
@@ -434,6 +540,7 @@ def run_rydberg_analysis():
         "summary": branch_claim_gate["summary"],
         "claim_boundary": branch_claim_gate["claim_boundary"],
     }
+    artifact["atomic_claim_scope_gate"] = atomic_claim_scope_gate
     artifact["interpretation"] = (
         "This artifact supports a hydrogen Rydberg benchmark branch and a bounded atomic-constant consistency branch. "
         "It does not validate full atomic theory, fine structure, or many-electron physics."
