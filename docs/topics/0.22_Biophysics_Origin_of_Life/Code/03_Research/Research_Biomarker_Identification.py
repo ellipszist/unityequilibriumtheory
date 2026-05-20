@@ -380,6 +380,109 @@ def _build_synthetic_diagnostic_gate(results, threshold, missing_inputs):
     }
 
 
+def _build_biophysics_claim_scope_gate(
+    status,
+    source_evidence_readiness_matrix,
+    subclaim_gate,
+    synthetic_diagnostic_gate,
+):
+    source_summary = source_evidence_readiness_matrix.get("summary", {})
+    subclaim_summary = subclaim_gate.get("summary", {})
+    return {
+        "schema_version": "1.0",
+        "topic": "0.22_Biophysics_Origin_of_Life",
+        "controller_status": "SYNTHETIC_DIAGNOSTIC_ONLY",
+        "controller_reason": (
+            "The primary verifier is a seeded synthetic biomarker diagnostic. It can support only code-path and positive-control wording; "
+            "origin-of-life, clinical, EEG, TCGA, protein, and thermodynamic-bridge claims remain blocked."
+        ),
+        "claim_class": "D_synthetic_diagnostic_only",
+        "allowed_claims_now": [
+            {
+                "claim": "The seeded synthetic biomarker verifier ran and found the declared positive controls.",
+                "status": synthetic_diagnostic_gate.get("diagnostic_run_contract"),
+                "artifact_role": "synthetic positive-control run-contract",
+                "source_evidence_readiness": "synthetic_not_external_biomedical_evidence",
+            },
+            {
+                "claim": "Source records and readiness rows map biomedical evidence gaps for future gates.",
+                "status": "WORKFLOW_ONLY",
+                "artifact_role": "source-evidence governance",
+                "source_evidence_readiness": source_summary,
+            },
+        ],
+        "blocked_claims": [
+            {
+                "claim": "UET explains the origin of life.",
+                "status": "BLOCKED",
+                "blocking_reason": "No source-backed prebiotic chemistry or reaction-network entropy ledger is closed.",
+                "next_evidence_required": [
+                    "real prebiotic reaction dataset",
+                    "environment entropy ledger",
+                    "fixed threshold and baseline artifact",
+                ],
+            },
+            {
+                "claim": "UET validates clinical biomarkers or TCGA cancer entropy.",
+                "status": "BLOCKED",
+                "blocking_reason": "The primary matrix is synthetic and TCGA remains without a real cohort/assay matrix.",
+                "next_evidence_required": [
+                    "real omics matrix",
+                    "cohort and assay identity",
+                    "clinical/statistical baseline",
+                ],
+            },
+            {
+                "claim": "UET validates EEG seizure prediction.",
+                "status": "BLOCKED",
+                "blocking_reason": "EEG files are provenance context only; raw windows and held-out classifier metrics are not gated.",
+                "next_evidence_required": [
+                    "raw EEG windows",
+                    "preprocessing manifest",
+                    "held-out classifier artifact",
+                ],
+            },
+            {
+                "claim": "UET outperforms protein-folding or protocell benchmarks.",
+                "status": "BLOCKED",
+                "blocking_reason": "Protein/protocell branches remain sandbox simulations without benchmark optima or source packages.",
+                "next_evidence_required": [
+                    "known benchmark optimum",
+                    "deterministic search artifact",
+                    "source-backed sequence or chemistry package",
+                ],
+            },
+        ],
+        "blocked_export_phrases": [
+            "origin of life solved",
+            "clinical biomarker validated",
+            "TCGA validation",
+            "EEG seizure prediction validated",
+            "protein folding superiority",
+            "protocell emergence proven",
+            "biophysical theory closure",
+        ],
+        "machine_readable_next_blockers": [
+            "primary_verifier_synthetic_only",
+            "real_omics_matrix_missing",
+            "raw_eeg_windows_missing",
+            "prebiotic_reaction_dataset_missing",
+            "protein_benchmark_optimum_missing",
+            "thermodynamic_bridge_dependency_not_closed",
+        ],
+        "gate_inputs": {
+            "topic_status": status,
+            "source_evidence_summary": source_summary,
+            "subclaim_summary": subclaim_summary,
+            "synthetic_diagnostic_status": synthetic_diagnostic_gate.get("status"),
+        },
+        "claim_boundary": (
+            "0.22 currently exports only a synthetic biomarker diagnostic run-contract and source-governance map. "
+            "It must not export origin-of-life, clinical, EEG, TCGA, protein-folding, or theory-closure claims."
+        ),
+    }
+
+
 def _write_artifact(results, threshold, seed):
     inputs = _input_identity()
     source_evidence_intake_stub = _build_source_evidence_intake_stub()
@@ -388,6 +491,12 @@ def _write_artifact(results, threshold, seed):
     missing_inputs = [item["path"] for item in inputs if item.get("missing")]
     synthetic_diagnostic_gate = _build_synthetic_diagnostic_gate(results, threshold, missing_inputs)
     status = "WARN" if results and not missing_inputs else "FAIL"
+    biophysics_claim_scope_gate = _build_biophysics_claim_scope_gate(
+        status,
+        source_evidence_readiness_matrix,
+        subclaim_gate,
+        synthetic_diagnostic_gate,
+    )
 
     artifact = {
         "schema_version": "1.1",
@@ -416,6 +525,7 @@ def _write_artifact(results, threshold, seed):
             "claim_boundary": "This gate records separate biomedical claim ceilings only. It cannot upgrade the topic beyond the current synthetic diagnostic.",
         },
         "synthetic_diagnostic_gate": synthetic_diagnostic_gate,
+        "biophysics_claim_scope_gate": biophysics_claim_scope_gate,
         "metrics": {
             "synthetic_gene_count": 50,
             "synthetic_sample_count": 100,

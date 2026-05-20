@@ -227,6 +227,23 @@ def _extract_claim_gate_summary(artifact: dict) -> list[dict]:
             }
         )
 
+    biophysics_claim_scope_gate = artifact.get("biophysics_claim_scope_gate")
+    if isinstance(biophysics_claim_scope_gate, dict):
+        summaries.append(
+            {
+                "gate": "biophysics_claim_scope_gate",
+                "status": biophysics_claim_scope_gate.get("controller_status"),
+                "claim_class": biophysics_claim_scope_gate.get("claim_class"),
+                "blocked_claims": [
+                    item.get("claim")
+                    for item in biophysics_claim_scope_gate.get("blocked_claims", [])
+                ],
+                "blocked_export_phrases": biophysics_claim_scope_gate.get("blocked_export_phrases", []),
+                "next_blockers": biophysics_claim_scope_gate.get("machine_readable_next_blockers", []),
+                "claim_boundary": biophysics_claim_scope_gate.get("claim_boundary"),
+            }
+        )
+
     numeric_residual_gate = artifact.get("numeric_residual_gate")
     if isinstance(numeric_residual_gate, dict):
         replacement_gate = numeric_residual_gate.get("replacement_claim_gate", {})

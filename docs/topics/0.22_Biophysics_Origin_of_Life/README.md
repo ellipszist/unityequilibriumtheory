@@ -96,6 +96,7 @@ flowchart LR
 - [source_evidence_intake_stub.json](./data/03_Research/source_evidence_intake_stub.json): structured landing zone for missing EEG, omics, protein, and prebiotic source evidence.
 - [source_evidence_readiness_matrix.json](./data/03_Research/source_evidence_readiness_matrix.json): workflow gate for which biomedical source packages are still blocked by missing evidence fields.
 - [subclaim_gate.json](./data/03_Research/subclaim_gate.json): separated claim ceilings for biomarker, seizure, cancer, origin-of-life, protein, and cross-topic thermodynamic lanes.
+- `biophysics_claim_scope_gate` in the verification artifact: export controller that allows only synthetic diagnostic/source-governance wording and blocks origin-of-life, clinical, EEG, TCGA, protein, and theory-closure claims.
 
 ---
 
