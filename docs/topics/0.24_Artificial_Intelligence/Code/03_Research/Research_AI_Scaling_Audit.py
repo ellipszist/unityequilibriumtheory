@@ -347,6 +347,107 @@ def build_model_claim_gate() -> dict:
     return write_json(MODEL_CLAIM_GATE, payload)
 
 
+def build_ai_claim_scope_gate(
+    status: str,
+    checks: dict,
+    blockers: list[str],
+    source_evidence_readiness: dict,
+    model_claim_gate: dict,
+) -> dict:
+    source_summary = source_evidence_readiness.get("summary", {})
+    model_summary = model_claim_gate.get("summary", {})
+    return {
+        "schema_version": "1.0",
+        "topic": "0.24_Artificial_Intelligence",
+        "controller_status": "SCALING_SPARSITY_BENCHMARK_ONLY",
+        "controller_reason": (
+            "The artifact supports only internal scaling-law and sparse-architecture diagnostics. "
+            "Alignment, ethics, consciousness, universal intelligence, and kappa-law claims remain blocked."
+        ),
+        "claim_class": "C_internal_scaling_sparsity_benchmark",
+        "allowed_claims_now": [
+            {
+                "claim": "The topic-local scaling and sparsity verifier ran and wrote an artifact.",
+                "status": status,
+                "artifact_role": "internal benchmark/run-contract",
+                "source_evidence_readiness": "working_copy_source_referenced_not_full_archive",
+            },
+            {
+                "claim": "MoE active-parameter fraction is lower than dense active fraction in the topic-local table.",
+                "status": "PASS" if checks.get("moe_sparsity_ok") else "BLOCKED",
+                "artifact_role": "architecture diagnostic",
+                "source_evidence_readiness": "metadata_requires_source_normalization",
+            },
+            {
+                "claim": "CSV scaling exponent is internally consistent with the stored alpha_N threshold.",
+                "status": "PASS" if checks.get("csv_alpha_ok") else "BLOCKED",
+                "artifact_role": "scaling diagnostic",
+                "source_evidence_readiness": "topic_local_table_requires_lineage_review",
+            },
+        ],
+        "blocked_claims": [
+            {
+                "claim": "UET derives a universal AI scaling law or alpha-kappa identity.",
+                "status": "BLOCKED",
+                "blocking_reason": "The alpha_N to kappa_macro bridge remains a heuristic and currently misses the provisional threshold.",
+                "next_evidence_required": [
+                    "derived alpha-kappa bridge",
+                    "source-locked scaling corpus",
+                    "threshold-clearing verifier artifact",
+                ],
+            },
+            {
+                "claim": "MoE sparsity validates intelligence, efficiency, safety, or alignment.",
+                "status": "BLOCKED",
+                "blocking_reason": "Active-parameter fraction is not a performance, safety, or alignment benchmark.",
+                "next_evidence_required": [
+                    "performance-normalized baseline",
+                    "public/estimated metadata separation",
+                    "task-level evaluation artifact",
+                ],
+            },
+            {
+                "claim": "UET proves AI alignment, ethics as physical law, consciousness, or developmental AI.",
+                "status": "BLOCKED",
+                "blocking_reason": "Those lanes have no source-backed verifier artifacts or claim-specific benchmarks.",
+                "next_evidence_required": [
+                    "alignment benchmark",
+                    "ethics/decision criterion artifact",
+                    "consciousness claim boundary and external evidence",
+                ],
+            },
+        ],
+        "blocked_export_phrases": [
+            "AI alignment proved",
+            "ethics as physical law verified",
+            "machine consciousness validated",
+            "universal intelligence law",
+            "alpha equals kappa derived",
+            "MoE proves efficient intelligence",
+            "developmental AI solved",
+        ],
+        "machine_readable_next_blockers": [
+            "alpha_kappa_bridge_heuristic_open",
+            "scaling_source_archive_incomplete",
+            "model_metadata_source_normalization_incomplete",
+            "moe_sparsity_not_alignment_metric",
+            "alignment_ethics_consciousness_verifiers_missing",
+            "cross_topic_ai_detective_dependency_not_isolated",
+        ],
+        "gate_inputs": {
+            "topic_status": status,
+            "checks": checks,
+            "blockers": blockers,
+            "source_evidence_summary": source_summary,
+            "model_claim_summary": model_summary,
+        },
+        "claim_boundary": (
+            "0.24 may export only internal scaling/sparsity benchmark language. It must not export alignment, ethics, "
+            "consciousness, universal-intelligence, alpha-kappa-law, or MoE-performance claims until separate gates close."
+        ),
+    }
+
+
 def main() -> int:
     scaling_path = DATA / "03_Research" / "scaling_laws.json"
     moe_path = DATA / "03_Research" / "deepseek_moe_data.json"
@@ -392,6 +493,18 @@ def main() -> int:
         blockers.append("Topic-local GPT3 CSV fit does not reproduce the stored alpha_N within the provisional threshold.")
     if not moe_sparsity_ok:
         blockers.append("MoE active-parameter fraction is not below the dense-model active fraction in the topic-local table.")
+    checks = {
+        "csv_alpha_ok": csv_alpha_ok,
+        "moe_sparsity_ok": moe_sparsity_ok,
+        "alpha_kappa_ok": alpha_kappa_ok,
+    }
+    ai_claim_scope_gate = build_ai_claim_scope_gate(
+        status,
+        checks,
+        blockers,
+        source_evidence_readiness,
+        model_claim_gate,
+    )
 
     artifact = {
         "schema_version": "1.1",
@@ -446,12 +559,9 @@ def main() -> int:
             "min_moe_active_fraction": min_moe_fraction,
         },
         "model_sparsity": sparsity_rows,
-        "checks": {
-            "csv_alpha_ok": csv_alpha_ok,
-            "moe_sparsity_ok": moe_sparsity_ok,
-            "alpha_kappa_ok": alpha_kappa_ok,
-        },
+        "checks": checks,
         "blockers": blockers,
+        "ai_claim_scope_gate": ai_claim_scope_gate,
         "source_evidence_intake_stub": {
             "path": str(SOURCE_EVIDENCE_INTAKE.relative_to(ROOT)).replace("\\", "/"),
             "sha256": sha256(SOURCE_EVIDENCE_INTAKE),

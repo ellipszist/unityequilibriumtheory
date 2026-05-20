@@ -10,6 +10,7 @@
 - `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`,
   `source_lock_manifest.json`, and `model_claim_gate.json` are workflow controls only. They do not count as
   upstream evidence, derivation, or validation of AI-law claims.
+- `ai_claim_scope_gate` is the artifact export controller. It allows only internal scaling/sparsity benchmark wording and blocks alignment, ethics, consciousness, universal-intelligence, alpha-kappa-law, and MoE-performance phrases while current blockers remain open.
 - MoE active-parameter fraction is an architecture diagnostic, not a complete
   efficiency, quality, safety, or alignment metric.
 - `Research_AI_Detective_V2.py` uses galaxy data from `0.1` and cannot be treated

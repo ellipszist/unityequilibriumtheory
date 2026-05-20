@@ -1,4 +1,102 @@
 {
+  "ai_claim_scope_gate": {
+    "allowed_claims_now": [
+      {
+        "artifact_role": "internal benchmark/run-contract",
+        "claim": "The topic-local scaling and sparsity verifier ran and wrote an artifact.",
+        "source_evidence_readiness": "working_copy_source_referenced_not_full_archive",
+        "status": "WARN"
+      },
+      {
+        "artifact_role": "architecture diagnostic",
+        "claim": "MoE active-parameter fraction is lower than dense active fraction in the topic-local table.",
+        "source_evidence_readiness": "metadata_requires_source_normalization",
+        "status": "PASS"
+      },
+      {
+        "artifact_role": "scaling diagnostic",
+        "claim": "CSV scaling exponent is internally consistent with the stored alpha_N threshold.",
+        "source_evidence_readiness": "topic_local_table_requires_lineage_review",
+        "status": "PASS"
+      }
+    ],
+    "blocked_claims": [
+      {
+        "blocking_reason": "The alpha_N to kappa_macro bridge remains a heuristic and currently misses the provisional threshold.",
+        "claim": "UET derives a universal AI scaling law or alpha-kappa identity.",
+        "next_evidence_required": [
+          "derived alpha-kappa bridge",
+          "source-locked scaling corpus",
+          "threshold-clearing verifier artifact"
+        ],
+        "status": "BLOCKED"
+      },
+      {
+        "blocking_reason": "Active-parameter fraction is not a performance, safety, or alignment benchmark.",
+        "claim": "MoE sparsity validates intelligence, efficiency, safety, or alignment.",
+        "next_evidence_required": [
+          "performance-normalized baseline",
+          "public/estimated metadata separation",
+          "task-level evaluation artifact"
+        ],
+        "status": "BLOCKED"
+      },
+      {
+        "blocking_reason": "Those lanes have no source-backed verifier artifacts or claim-specific benchmarks.",
+        "claim": "UET proves AI alignment, ethics as physical law, consciousness, or developmental AI.",
+        "next_evidence_required": [
+          "alignment benchmark",
+          "ethics/decision criterion artifact",
+          "consciousness claim boundary and external evidence"
+        ],
+        "status": "BLOCKED"
+      }
+    ],
+    "blocked_export_phrases": [
+      "AI alignment proved",
+      "ethics as physical law verified",
+      "machine consciousness validated",
+      "universal intelligence law",
+      "alpha equals kappa derived",
+      "MoE proves efficient intelligence",
+      "developmental AI solved"
+    ],
+    "claim_boundary": "0.24 may export only internal scaling/sparsity benchmark language. It must not export alignment, ethics, consciousness, universal-intelligence, alpha-kappa-law, or MoE-performance claims until separate gates close.",
+    "claim_class": "C_internal_scaling_sparsity_benchmark",
+    "controller_reason": "The artifact supports only internal scaling-law and sparse-architecture diagnostics. Alignment, ethics, consciousness, universal intelligence, and kappa-law claims remain blocked.",
+    "controller_status": "SCALING_SPARSITY_BENCHMARK_ONLY",
+    "gate_inputs": {
+      "blockers": [
+        "Kaplan alpha_N is not numerically close enough to the current kappa_macro=0.1 proxy to support a UET constant-identification claim."
+      ],
+      "checks": {
+        "alpha_kappa_ok": false,
+        "csv_alpha_ok": true,
+        "moe_sparsity_ok": true
+      },
+      "model_claim_summary": {
+        "accepted_now": 2,
+        "blocked_for_strong_claims": 4,
+        "lanes_total": 6
+      },
+      "source_evidence_summary": {
+        "source_targets_total": 3,
+        "targets_blocked_by_pending_evidence": 2,
+        "targets_ready_for_source_review": 1
+      },
+      "topic_status": "WARN"
+    },
+    "machine_readable_next_blockers": [
+      "alpha_kappa_bridge_heuristic_open",
+      "scaling_source_archive_incomplete",
+      "model_metadata_source_normalization_incomplete",
+      "moe_sparsity_not_alignment_metric",
+      "alignment_ethics_consciousness_verifiers_missing",
+      "cross_topic_ai_detective_dependency_not_isolated"
+    ],
+    "schema_version": "1.0",
+    "topic": "0.24_Artificial_Intelligence"
+  },
   "blockers": [
     "Kaplan alpha_N is not numerically close enough to the current kappa_macro=0.1 proxy to support a UET constant-identification claim."
   ],
@@ -19,7 +117,7 @@
     "AI24-MOE-SPARSITY",
     "AI24-CSV-ALPHA-FIT"
   ],
-  "generated_at_utc": "2026-05-17T17:10:15.430910+00:00",
+  "generated_at_utc": "2026-05-20T12:15:18.915925+00:00",
   "inputs": [
     {
       "path": "docs/topics/0.24_Artificial_Intelligence/Data/03_Research/scaling_laws.json",

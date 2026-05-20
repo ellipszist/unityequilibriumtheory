@@ -81,6 +81,7 @@ python docs/topics/0.24_Artificial_Intelligence/Code/03_Research/Research_AI_Sca
 - `Data/03_Research/source_evidence_intake_stub.json`: structured landing zone for missing scaling/model-metadata source records.
 - `Data/03_Research/source_evidence_readiness_matrix.json`: workflow gate for which source packages are still blocked by missing evidence fields.
 - `Data/03_Research/model_claim_gate.json`: accepted-versus-blocked claim lanes for benchmarks, heuristics, and exploratory scripts.
+- `ai_claim_scope_gate` in the verification artifact: export controller that allows only internal scaling/sparsity benchmark wording and blocks alignment, ethics, consciousness, universal-intelligence, alpha-kappa-law, and MoE-performance claims.
 
 ## Current Limitations
 
