@@ -225,6 +225,23 @@ def _extract_claim_gate_summary(artifact: dict) -> list[dict]:
             }
         )
 
+    cluster_claim_scope_gate = artifact.get("cluster_claim_scope_gate")
+    if isinstance(cluster_claim_scope_gate, dict):
+        summaries.append(
+            {
+                "gate": "cluster_claim_scope_gate",
+                "status": cluster_claim_scope_gate.get("controller_status"),
+                "claim_class": cluster_claim_scope_gate.get("claim_class"),
+                "blocked_claims": [
+                    item.get("claim")
+                    for item in cluster_claim_scope_gate.get("blocked_claims", [])
+                ],
+                "blocked_export_phrases": cluster_claim_scope_gate.get("blocked_export_phrases", []),
+                "next_blockers": cluster_claim_scope_gate.get("machine_readable_next_blockers", []),
+                "claim_boundary": cluster_claim_scope_gate.get("claim_boundary"),
+            }
+        )
+
     complexity_claim_gate = artifact.get("complexity_claim_gate")
     if isinstance(complexity_claim_gate, dict):
         summaries.append(

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.2",
   "topic": "0.0_Grand_Unification",
-  "timestamp_utc": "2026-05-21T22:20:35.101154+00:00",
+  "timestamp_utc": "2026-05-21T22:24:18.435313+00:00",
   "command": "python docs/topics/0.0_Grand_Unification/Code/03_Research/Verify_Omni.py",
   "status": "WARN",
   "passed_run_contract": true,
@@ -113,7 +113,7 @@
     {
       "path": "docs/topics/0.15_Cluster_Dynamics/Result/artifacts/0_15_cluster_dynamics_verification.json",
       "bytes": 7943,
-      "sha256": "93addcc1be3d2763cfbb206563914e6f7dd5c9313367e8d95a204f1a49130d1a",
+      "sha256": "666612b776f909fe720e56647fa6be79bb34ebbbc130e24bf7a957a242f13990",
       "provenance_role": "subordinate_artifact",
       "status": "WARN"
     },
@@ -661,8 +661,33 @@
       "status": "WARN",
       "claim_class": "D - qualitative diagnostic only",
       "schema_version": "1.1",
-      "timestamp_utc": "2026-05-18T14:41:52.231588+00:00",
+      "timestamp_utc": "2026-05-21T22:24:05.757707+00:00",
       "claim_gates": [
+        {
+          "gate": "cluster_claim_scope_gate",
+          "status": "WARN",
+          "claim_class": "D_qualitative_cluster_diagnostic_only",
+          "blocked_claims": [
+            "UET predicts the Bullet Cluster kpc offsets.",
+            "UET replaces dark matter at cluster scale.",
+            "UET resolves JWST early galaxy or cluster formation tensions."
+          ],
+          "blocked_export_phrases": [
+            "Bullet Cluster solved",
+            "dark matter replaced",
+            "cluster virial discrepancy resolved",
+            "lensing mass map predicted",
+            "JWST age problem resolved"
+          ],
+          "next_blockers": [
+            "bullet_cluster_kpc_calibration_missing",
+            "lensing_map_comparison_missing",
+            "held_out_multi_cluster_suite_missing",
+            "virial_artifacts_not_primary_gated",
+            "jwst_formation_claim_not_primary_gated"
+          ],
+          "claim_boundary": "A WARN artifact supports only qualitative Bullet Cluster separation-sign diagnostics and bounded mechanism discussion. It does not predict kpc offsets, replace dark matter, resolve virial discrepancies, or validate JWST formation claims."
+        },
         {
           "gate": "branch_claim_gate",
           "status": "BLOCKED",
@@ -671,7 +696,7 @@
           "claim_boundary": "This gate keeps the topic at qualitative cluster-diagnostic status, not dark-matter replacement closure."
         }
       ],
-      "sha256": "93addcc1be3d2763cfbb206563914e6f7dd5c9313367e8d95a204f1a49130d1a",
+      "sha256": "666612b776f909fe720e56647fa6be79bb34ebbbc130e24bf7a957a242f13990",
       "bytes": 7943
     },
     {
@@ -1229,6 +1254,7 @@
         "biophysics_claim_scope_gate",
         "branch_claim_gate",
         "chsh_claim_scope_gate",
+        "cluster_claim_scope_gate",
         "complexity_claim_gate",
         "data_posture_gate",
         "dynamic_frame_claim_gate",
@@ -1245,7 +1271,7 @@
         "theorem_boundary_gate",
         "thermodynamic_claim_scope_gate"
       ],
-      "paper_readiness_blocked_dependency_count": 48
+      "paper_readiness_blocked_dependency_count": 49
     },
     "machine_readable_next_blockers": [
       "subordinate_fail_artifact_present",
@@ -1263,7 +1289,7 @@
     "status": "BLOCKED",
     "rule": "Any FAIL, WARN, UNKNOWN, missing artifact, source-incomplete, formula-open, or synthetic-only dependency blocks theory-level claims.",
     "dependency_count": 26,
-    "blocked_dependency_count": 48,
+    "blocked_dependency_count": 49,
     "blockers": [
       {
         "topic": "0.1_Galaxy_Rotation_Problem",
@@ -1545,6 +1571,21 @@
         "status": "WARN",
         "claim_class": "D - qualitative diagnostic only",
         "blocker": "Dependency is not clean PASS, so theory-level closure is blocked."
+      },
+      {
+        "topic": "0.15_Cluster_Dynamics",
+        "artifact": "docs/topics/0.15_Cluster_Dynamics/Result/artifacts/0_15_cluster_dynamics_verification.json",
+        "status": "WARN",
+        "claim_class": "D - qualitative diagnostic only",
+        "gate": "cluster_claim_scope_gate",
+        "gate_status": "WARN",
+        "blocked_exports": [],
+        "blocked_claims": [
+          "UET predicts the Bullet Cluster kpc offsets.",
+          "UET replaces dark matter at cluster scale.",
+          "UET resolves JWST early galaxy or cluster formation tensions."
+        ],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
       },
       {
         "topic": "0.15_Cluster_Dynamics",
@@ -1953,7 +1994,7 @@
       {
         "path": "docs/topics/0.15_Cluster_Dynamics/Result/artifacts/0_15_cluster_dynamics_verification.json",
         "bytes": 7943,
-        "sha256": "93addcc1be3d2763cfbb206563914e6f7dd5c9313367e8d95a204f1a49130d1a",
+        "sha256": "666612b776f909fe720e56647fa6be79bb34ebbbc130e24bf7a957a242f13990",
         "provenance_role": "subordinate_artifact",
         "status": "WARN"
       },
@@ -2501,8 +2542,33 @@
         "status": "WARN",
         "claim_class": "D - qualitative diagnostic only",
         "schema_version": "1.1",
-        "timestamp_utc": "2026-05-18T14:41:52.231588+00:00",
+        "timestamp_utc": "2026-05-21T22:24:05.757707+00:00",
         "claim_gates": [
+          {
+            "gate": "cluster_claim_scope_gate",
+            "status": "WARN",
+            "claim_class": "D_qualitative_cluster_diagnostic_only",
+            "blocked_claims": [
+              "UET predicts the Bullet Cluster kpc offsets.",
+              "UET replaces dark matter at cluster scale.",
+              "UET resolves JWST early galaxy or cluster formation tensions."
+            ],
+            "blocked_export_phrases": [
+              "Bullet Cluster solved",
+              "dark matter replaced",
+              "cluster virial discrepancy resolved",
+              "lensing mass map predicted",
+              "JWST age problem resolved"
+            ],
+            "next_blockers": [
+              "bullet_cluster_kpc_calibration_missing",
+              "lensing_map_comparison_missing",
+              "held_out_multi_cluster_suite_missing",
+              "virial_artifacts_not_primary_gated",
+              "jwst_formation_claim_not_primary_gated"
+            ],
+            "claim_boundary": "A WARN artifact supports only qualitative Bullet Cluster separation-sign diagnostics and bounded mechanism discussion. It does not predict kpc offsets, replace dark matter, resolve virial discrepancies, or validate JWST formation claims."
+          },
           {
             "gate": "branch_claim_gate",
             "status": "BLOCKED",
@@ -2511,7 +2577,7 @@
             "claim_boundary": "This gate keeps the topic at qualitative cluster-diagnostic status, not dark-matter replacement closure."
           }
         ],
-        "sha256": "93addcc1be3d2763cfbb206563914e6f7dd5c9313367e8d95a204f1a49130d1a",
+        "sha256": "666612b776f909fe720e56647fa6be79bb34ebbbc130e24bf7a957a242f13990",
         "bytes": 7943
       },
       {
@@ -2976,7 +3042,7 @@
           "reynolds_critical": 2261.946710584651,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 1.0945939267759157,
+          "ai_initial_loss": 1.4087291627124414,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
@@ -3001,7 +3067,7 @@
           "reynolds_critical": 226.19467105846513,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 1.8923846689991026,
+          "ai_initial_loss": 1.4874467496944213,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
@@ -3278,7 +3344,7 @@
       "status": "BLOCKED",
       "rule": "Any FAIL, WARN, UNKNOWN, missing artifact, source-incomplete, formula-open, or synthetic-only dependency blocks theory-level claims.",
       "dependency_count": 26,
-      "blocked_dependency_count": 48,
+      "blocked_dependency_count": 49,
       "blockers": [
         {
           "topic": "0.1_Galaxy_Rotation_Problem",
@@ -3560,6 +3626,21 @@
           "status": "WARN",
           "claim_class": "D - qualitative diagnostic only",
           "blocker": "Dependency is not clean PASS, so theory-level closure is blocked."
+        },
+        {
+          "topic": "0.15_Cluster_Dynamics",
+          "artifact": "docs/topics/0.15_Cluster_Dynamics/Result/artifacts/0_15_cluster_dynamics_verification.json",
+          "status": "WARN",
+          "claim_class": "D - qualitative diagnostic only",
+          "gate": "cluster_claim_scope_gate",
+          "gate_status": "WARN",
+          "blocked_exports": [],
+          "blocked_claims": [
+            "UET predicts the Bullet Cluster kpc offsets.",
+            "UET replaces dark matter at cluster scale.",
+            "UET resolves JWST early galaxy or cluster formation tensions."
+          ],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
         },
         {
           "topic": "0.15_Cluster_Dynamics",
@@ -3955,6 +4036,7 @@
           "biophysics_claim_scope_gate",
           "branch_claim_gate",
           "chsh_claim_scope_gate",
+          "cluster_claim_scope_gate",
           "complexity_claim_gate",
           "data_posture_gate",
           "dynamic_frame_claim_gate",
@@ -3971,7 +4053,7 @@
           "theorem_boundary_gate",
           "thermodynamic_claim_scope_gate"
         ],
-        "paper_readiness_blocked_dependency_count": 48
+        "paper_readiness_blocked_dependency_count": 49
       },
       "machine_readable_next_blockers": [
         "subordinate_fail_artifact_present",
