@@ -1,6 +1,17 @@
 # Topic 0.18: Quantum Computing & Circuits - Results
 
-This directory contains the verified outputs of the Phase 10 simulation scripts. All data here mirrors the `Code/` structure and provides the physical evidence for UET Quantum Accuracy.
+> [!WARNING]
+> **Result claim boundary:** This directory contains legacy simulation outputs
+> and topic-local surrogate artifacts. It is not theorem evidence, external
+> quantum validation, proof-level mathematics, or a P-vs-NP/Riemann/Collatz/BSD
+> solution. Current allowed claims are controlled by `README.md`,
+> `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `DATA_MANIFEST.md`, and
+> `Result/artifacts/0_18_mathnicry_verification.json`.
+
+This directory contains generated outputs from earlier simulation scripts. The
+files mirror parts of the `Code/` structure and can support only internal
+diagnostic or run-contract review unless a current verifier artifact explicitly
+raises the claim class.
 
 ---
 
@@ -9,8 +20,8 @@ This directory contains the verified outputs of the Phase 10 simulation scripts.
 | Sub-directory | Content | Verification |
 | :--- | :--- | :--- |
 | **01_Engine/** | Manifold Resonance Profiles | Energy Stability Checks |
-| **02_Proof/** | Fidelity & Entanglement Stats | 100% Bell State Match |
-| **03_Research/** | Complexity Scaling (P vs NP) | O(sqrt(N)) Quadratic Proof |
+| **02_Proof/** | Fidelity & Entanglement Stats | Legacy internal diagnostic |
+| **03_Research/** | Complexity Scaling (P vs NP) | Legacy internal diagnostic |
 | **04_Competitor/** | Performance Benchmarks | Speedup vs Classical |
 
 ---
@@ -23,7 +34,7 @@ This directory contains the verified outputs of the Phase 10 simulation scripts.
 
 ### [03_Research] Scaling & Complexity (P=NP)
 - **File:** [03_Research_P_vs_NP_Scaling.json](./03_Research/03_Research_P_vs_NP_Scaling.json)
-- **Insight:** Analysis from 4 to 131,072 states confirms quadratic search advantage. Search time scales with $\sqrt{N}$ as predicted by Unity Field Dynamics.
+- **Insight:** Legacy internal scaling output from 4 to 131,072 states. This is not a P-vs-NP proof or external complexity-theory validation.
 
 ---
 
