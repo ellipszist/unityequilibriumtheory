@@ -34,7 +34,9 @@ The artifact must include command, environment, input hashes, DOI/source fields,
 formula IDs, thresholds, checks, metrics, blockers, limitations, and the
 workflow-gate summaries below. It must also include `chsh_evidence_gate`, which
 separates the passing CHSH summary benchmark from open raw-event reconstruction
-and blocked UET-mechanism claims.
+and blocked UET-mechanism claims. It must also include `chsh_claim_scope_gate`
+with blocked export phrases and machine-readable next blockers for integration
+and paper-facing summaries.
 
 ## Required workflow gates
 
@@ -58,6 +60,10 @@ evidence is still missing and which adjacent branches remain blocked.
 - `chsh_evidence_gate.uet_mechanism_gate.status == BLOCKED` means topology,
   mechanism-replacement, qubit, double-slit, tunneling, and LC-unity claims
   cannot inherit PASS from the CHSH summary benchmark.
+- `chsh_claim_scope_gate.controller_status == CHSH_SUMMARY_ONLY_RAW_AND_MECHANISM_BLOCKED`
+  is the export controller for `0.0`: it allows only the source-referenced CHSH
+  summary benchmark and blocks raw reconstruction, UET mechanism derivation,
+  replacement-theory wording, and adjacent quantum-lane inheritance.
 - The extracted external packages are provenance anchors only; they do not mean
   raw Bell event counts are archived yet.
 - `WARN`: benchmark is computable but a provenance/statistical/rounding gate is

@@ -83,6 +83,7 @@ python docs/topics/0.9_Quantum_Nonlocality/Code/03_Research/Research_CHSH_Verifi
 - `Data/03_Research/source_evidence_intake_stub.json`: provenance intake queue for Bell and adjacent quantum lanes.
 - `Data/03_Research/source_lock_manifest.json`: normative provenance map for the CHSH branch inputs.
 - `Data/03_Research/branch_claim_gate.json`: lane-by-lane claim ceiling for CHSH, topology, qubit, and tunneling branches.
+- `chsh_claim_scope_gate` in the verification artifact: export controller that keeps CHSH summary PASS separate from raw-event reconstruction, UET mechanism, replacement-theory, and adjacent quantum-lane claims.
 
 ## Current Limitations
 

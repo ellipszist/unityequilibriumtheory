@@ -1,7 +1,7 @@
 {
   "schema_version": "1.2",
   "topic": "0.0_Grand_Unification",
-  "timestamp_utc": "2026-05-21T13:41:21.450180+00:00",
+  "timestamp_utc": "2026-05-21T18:52:49.978279+00:00",
   "command": "python docs/topics/0.0_Grand_Unification/Code/03_Research/Verify_Omni.py",
   "status": "WARN",
   "passed_run_contract": true,
@@ -70,8 +70,8 @@
     },
     {
       "path": "docs/topics/0.9_Quantum_Nonlocality/Result/artifacts/0_9_quantum_nonlocality_verification.json",
-      "bytes": 6900,
-      "sha256": "dcb9758a7ca8f1c64d253355ca49b47ffdd9eb20cd1453894f2497f75038e52d",
+      "bytes": 9992,
+      "sha256": "9b0a0a4faf4841f1f9238b3e24c770eb5c3922fe3722c09fc8af52cfeec0e0d3",
       "provenance_role": "subordinate_artifact",
       "status": "PASS"
     },
@@ -382,9 +382,41 @@
       "artifact": "docs/topics/0.9_Quantum_Nonlocality/Result/artifacts/0_9_quantum_nonlocality_verification.json",
       "status": "PASS",
       "claim_class": "C - source-referenced internal CHSH benchmark",
-      "schema_version": "1.2",
-      "timestamp_utc": "2026-05-17T17:28:39.330187+00:00",
+      "schema_version": "1.3",
+      "timestamp_utc": "2026-05-21T18:52:29.860555+00:00",
       "claim_gates": [
+        {
+          "gate": "chsh_claim_scope_gate",
+          "status": "CHSH_SUMMARY_ONLY_RAW_AND_MECHANISM_BLOCKED",
+          "claim_class": "C_internal_chsh_summary_benchmark",
+          "blocked_claims": [
+            "Raw Bell event counts have been reconstructed locally.",
+            "UET derives the CHSH correlations from first principles.",
+            "UET replaces the standard quantum nonlocality framework.",
+            "Qubit, double-slit, tunneling, or LC-unity lanes inherit PASS from CHSH."
+          ],
+          "blocked_export_phrases": [
+            "UET proves nonlocality",
+            "nonlocality solved",
+            "topological filament derivation verified",
+            "standard quantum framework replaced",
+            "raw Bell counts reconstructed",
+            "qubit claims inherit CHSH PASS",
+            "double-slit explained by CHSH",
+            "tunneling validated by CHSH",
+            "LC unity quantum mechanism proved"
+          ],
+          "next_blockers": [
+            "raw_bell_event_count_package_missing",
+            "raw_event_reconstruction_verifier_missing",
+            "uet_chsh_derivation_artifact_missing",
+            "replacement_theory_baseline_comparison_missing",
+            "adjacent_quantum_lane_source_packages_missing",
+            "adjacent_quantum_lane_verifiers_missing",
+            "source_targets_still_blocked"
+          ],
+          "claim_boundary": "0.9 may export only a source-referenced internal CHSH summary benchmark. It must not be used as raw experimental reconstruction, UET mechanism derivation, replacement-theory evidence, or evidence for adjacent quantum lanes until separate gates close."
+        },
         {
           "gate": "branch_claim_gate",
           "status": "BLOCKED",
@@ -393,8 +425,8 @@
           "claim_boundary": "This gate cannot raise the topic beyond the current CHSH run-contract evidence."
         }
       ],
-      "sha256": "dcb9758a7ca8f1c64d253355ca49b47ffdd9eb20cd1453894f2497f75038e52d",
-      "bytes": 6900
+      "sha256": "9b0a0a4faf4841f1f9238b3e24c770eb5c3922fe3722c09fc8af52cfeec0e0d3",
+      "bytes": 9992
     },
     {
       "topic": "0.10_Fluid_Dynamics_Chaos",
@@ -1111,6 +1143,7 @@
         "ai_claim_scope_gate",
         "biophysics_claim_scope_gate",
         "branch_claim_gate",
+        "chsh_claim_scope_gate",
         "complexity_claim_gate",
         "data_posture_gate",
         "dynamic_frame_claim_gate",
@@ -1124,7 +1157,7 @@
         "theorem_boundary_gate",
         "thermodynamic_claim_scope_gate"
       ],
-      "paper_readiness_blocked_dependency_count": 44
+      "paper_readiness_blocked_dependency_count": 45
     },
     "machine_readable_next_blockers": [
       "subordinate_fail_artifact_present",
@@ -1142,7 +1175,7 @@
     "status": "BLOCKED",
     "rule": "Any FAIL, WARN, UNKNOWN, missing artifact, source-incomplete, formula-open, or synthetic-only dependency blocks theory-level claims.",
     "dependency_count": 26,
-    "blocked_dependency_count": 44,
+    "blocked_dependency_count": 45,
     "blockers": [
       {
         "topic": "0.1_Galaxy_Rotation_Problem",
@@ -1253,6 +1286,22 @@
         "status": "WARN",
         "claim_class": null,
         "blocker": "Dependency is not clean PASS, so theory-level closure is blocked."
+      },
+      {
+        "topic": "0.9_Quantum_Nonlocality",
+        "artifact": "docs/topics/0.9_Quantum_Nonlocality/Result/artifacts/0_9_quantum_nonlocality_verification.json",
+        "status": "PASS",
+        "claim_class": "C - source-referenced internal CHSH benchmark",
+        "gate": "chsh_claim_scope_gate",
+        "gate_status": "CHSH_SUMMARY_ONLY_RAW_AND_MECHANISM_BLOCKED",
+        "blocked_exports": [],
+        "blocked_claims": [
+          "Raw Bell event counts have been reconstructed locally.",
+          "UET derives the CHSH correlations from first principles.",
+          "UET replaces the standard quantum nonlocality framework.",
+          "Qubit, double-slit, tunneling, or LC-unity lanes inherit PASS from CHSH."
+        ],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
       },
       {
         "topic": "0.9_Quantum_Nonlocality",
@@ -1728,8 +1777,8 @@
       },
       {
         "path": "docs/topics/0.9_Quantum_Nonlocality/Result/artifacts/0_9_quantum_nonlocality_verification.json",
-        "bytes": 6900,
-        "sha256": "dcb9758a7ca8f1c64d253355ca49b47ffdd9eb20cd1453894f2497f75038e52d",
+        "bytes": 9992,
+        "sha256": "9b0a0a4faf4841f1f9238b3e24c770eb5c3922fe3722c09fc8af52cfeec0e0d3",
         "provenance_role": "subordinate_artifact",
         "status": "PASS"
       },
@@ -2040,9 +2089,41 @@
         "artifact": "docs/topics/0.9_Quantum_Nonlocality/Result/artifacts/0_9_quantum_nonlocality_verification.json",
         "status": "PASS",
         "claim_class": "C - source-referenced internal CHSH benchmark",
-        "schema_version": "1.2",
-        "timestamp_utc": "2026-05-17T17:28:39.330187+00:00",
+        "schema_version": "1.3",
+        "timestamp_utc": "2026-05-21T18:52:29.860555+00:00",
         "claim_gates": [
+          {
+            "gate": "chsh_claim_scope_gate",
+            "status": "CHSH_SUMMARY_ONLY_RAW_AND_MECHANISM_BLOCKED",
+            "claim_class": "C_internal_chsh_summary_benchmark",
+            "blocked_claims": [
+              "Raw Bell event counts have been reconstructed locally.",
+              "UET derives the CHSH correlations from first principles.",
+              "UET replaces the standard quantum nonlocality framework.",
+              "Qubit, double-slit, tunneling, or LC-unity lanes inherit PASS from CHSH."
+            ],
+            "blocked_export_phrases": [
+              "UET proves nonlocality",
+              "nonlocality solved",
+              "topological filament derivation verified",
+              "standard quantum framework replaced",
+              "raw Bell counts reconstructed",
+              "qubit claims inherit CHSH PASS",
+              "double-slit explained by CHSH",
+              "tunneling validated by CHSH",
+              "LC unity quantum mechanism proved"
+            ],
+            "next_blockers": [
+              "raw_bell_event_count_package_missing",
+              "raw_event_reconstruction_verifier_missing",
+              "uet_chsh_derivation_artifact_missing",
+              "replacement_theory_baseline_comparison_missing",
+              "adjacent_quantum_lane_source_packages_missing",
+              "adjacent_quantum_lane_verifiers_missing",
+              "source_targets_still_blocked"
+            ],
+            "claim_boundary": "0.9 may export only a source-referenced internal CHSH summary benchmark. It must not be used as raw experimental reconstruction, UET mechanism derivation, replacement-theory evidence, or evidence for adjacent quantum lanes until separate gates close."
+          },
           {
             "gate": "branch_claim_gate",
             "status": "BLOCKED",
@@ -2051,8 +2132,8 @@
             "claim_boundary": "This gate cannot raise the topic beyond the current CHSH run-contract evidence."
           }
         ],
-        "sha256": "dcb9758a7ca8f1c64d253355ca49b47ffdd9eb20cd1453894f2497f75038e52d",
-        "bytes": 6900
+        "sha256": "9b0a0a4faf4841f1f9238b3e24c770eb5c3922fe3722c09fc8af52cfeec0e0d3",
+        "bytes": 9992
       },
       {
         "topic": "0.10_Fluid_Dynamics_Chaos",
@@ -2677,7 +2758,7 @@
           "reynolds_critical": 2261.946710584651,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 0.6128947427072677,
+          "ai_initial_loss": 1.2970324284492398,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
@@ -2702,7 +2783,7 @@
           "reynolds_critical": 226.19467105846513,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 1.7622133034647167,
+          "ai_initial_loss": 1.3576963300831342,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
@@ -2979,7 +3060,7 @@
       "status": "BLOCKED",
       "rule": "Any FAIL, WARN, UNKNOWN, missing artifact, source-incomplete, formula-open, or synthetic-only dependency blocks theory-level claims.",
       "dependency_count": 26,
-      "blocked_dependency_count": 44,
+      "blocked_dependency_count": 45,
       "blockers": [
         {
           "topic": "0.1_Galaxy_Rotation_Problem",
@@ -3090,6 +3171,22 @@
           "status": "WARN",
           "claim_class": null,
           "blocker": "Dependency is not clean PASS, so theory-level closure is blocked."
+        },
+        {
+          "topic": "0.9_Quantum_Nonlocality",
+          "artifact": "docs/topics/0.9_Quantum_Nonlocality/Result/artifacts/0_9_quantum_nonlocality_verification.json",
+          "status": "PASS",
+          "claim_class": "C - source-referenced internal CHSH benchmark",
+          "gate": "chsh_claim_scope_gate",
+          "gate_status": "CHSH_SUMMARY_ONLY_RAW_AND_MECHANISM_BLOCKED",
+          "blocked_exports": [],
+          "blocked_claims": [
+            "Raw Bell event counts have been reconstructed locally.",
+            "UET derives the CHSH correlations from first principles.",
+            "UET replaces the standard quantum nonlocality framework.",
+            "Qubit, double-slit, tunneling, or LC-unity lanes inherit PASS from CHSH."
+          ],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
         },
         {
           "topic": "0.9_Quantum_Nonlocality",
@@ -3594,6 +3691,7 @@
           "ai_claim_scope_gate",
           "biophysics_claim_scope_gate",
           "branch_claim_gate",
+          "chsh_claim_scope_gate",
           "complexity_claim_gate",
           "data_posture_gate",
           "dynamic_frame_claim_gate",
@@ -3607,7 +3705,7 @@
           "theorem_boundary_gate",
           "thermodynamic_claim_scope_gate"
         ],
-        "paper_readiness_blocked_dependency_count": 44
+        "paper_readiness_blocked_dependency_count": 45
       },
       "machine_readable_next_blockers": [
         "subordinate_fail_artifact_present",

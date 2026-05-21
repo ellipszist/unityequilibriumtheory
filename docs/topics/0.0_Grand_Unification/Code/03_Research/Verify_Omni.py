@@ -323,6 +323,23 @@ def _extract_claim_gate_summary(artifact: dict) -> list[dict]:
             }
         )
 
+    chsh_claim_scope_gate = artifact.get("chsh_claim_scope_gate")
+    if isinstance(chsh_claim_scope_gate, dict):
+        summaries.append(
+            {
+                "gate": "chsh_claim_scope_gate",
+                "status": chsh_claim_scope_gate.get("controller_status"),
+                "claim_class": chsh_claim_scope_gate.get("claim_class"),
+                "blocked_claims": [
+                    item.get("claim")
+                    for item in chsh_claim_scope_gate.get("blocked_claims", [])
+                ],
+                "blocked_export_phrases": chsh_claim_scope_gate.get("blocked_export_phrases", []),
+                "next_blockers": chsh_claim_scope_gate.get("machine_readable_next_blockers", []),
+                "claim_boundary": chsh_claim_scope_gate.get("claim_boundary"),
+            }
+        )
+
     galaxy_model_gate = artifact.get("galaxy_model_gate")
     if isinstance(galaxy_model_gate, dict):
         replacement_gate = galaxy_model_gate.get("replacement_claim_gate", {})

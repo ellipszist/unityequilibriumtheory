@@ -252,6 +252,84 @@ def build_chsh_evidence_gate(checks: dict, source_evidence_readiness_matrix: dic
     }
 
 
+def build_chsh_claim_scope_gate(chsh_evidence_gate: dict, source_evidence_readiness_matrix: dict, checks: dict) -> dict:
+    raw_gate = chsh_evidence_gate.get("raw_event_reconstruction_gate", {})
+    mechanism_gate = chsh_evidence_gate.get("uet_mechanism_gate", {})
+    source_summary = source_evidence_readiness_matrix.get("summary", {})
+    summary_pass = all(checks.values())
+    return {
+        "gate": "chsh_claim_scope_gate",
+        "controller_status": "CHSH_SUMMARY_ONLY_RAW_AND_MECHANISM_BLOCKED",
+        "controller_reason": (
+            "The CHSH summary benchmark passes, but raw event-count reconstruction and UET mechanism derivation "
+            "remain open or blocked."
+        ),
+        "claim_class": "C_internal_chsh_summary_benchmark",
+        "allowed_claims_now": [
+            {
+                "claim": "The recorded Hensen 2015 CHSH summary violates the local-realist bound under the topic checks.",
+                "condition": "all CHSH summary checks pass",
+                "status": "allowed" if summary_pass else "blocked",
+            },
+            {
+                "claim": "The stored quantum benchmark is consistent with the rounded Tsirelson value.",
+                "condition": "tsirelson_reference_ok is true",
+                "status": "allowed" if checks.get("tsirelson_reference_ok") else "blocked",
+            },
+        ],
+        "blocked_claims": [
+            {
+                "claim": "Raw Bell event counts have been reconstructed locally.",
+                "blocker": raw_gate.get("blocker", "Raw event reconstruction package is not closed."),
+            },
+            {
+                "claim": "UET derives the CHSH correlations from first principles.",
+                "blocker": mechanism_gate.get("blocker", "UET mechanism derivation gate is blocked."),
+            },
+            {
+                "claim": "UET replaces the standard quantum nonlocality framework.",
+                "blocker": "Current evidence is a benchmark consistency check, not a replacement-theory comparison.",
+            },
+            {
+                "claim": "Qubit, double-slit, tunneling, or LC-unity lanes inherit PASS from CHSH.",
+                "blocker": "Adjacent quantum lanes require separate source packages, formulas, and verifier artifacts.",
+            },
+        ],
+        "blocked_export_phrases": [
+            "UET proves nonlocality",
+            "nonlocality solved",
+            "topological filament derivation verified",
+            "standard quantum framework replaced",
+            "raw Bell counts reconstructed",
+            "qubit claims inherit CHSH PASS",
+            "double-slit explained by CHSH",
+            "tunneling validated by CHSH",
+            "LC unity quantum mechanism proved",
+        ],
+        "machine_readable_next_blockers": [
+            "raw_bell_event_count_package_missing",
+            "raw_event_reconstruction_verifier_missing",
+            "uet_chsh_derivation_artifact_missing",
+            "replacement_theory_baseline_comparison_missing",
+            "adjacent_quantum_lane_source_packages_missing",
+            "adjacent_quantum_lane_verifiers_missing",
+            "source_targets_still_blocked" if source_summary.get("targets_blocked_by_pending_evidence") else "source_targets_ready_for_review",
+        ],
+        "gate_inputs": {
+            "chsh_evidence_controller_status": chsh_evidence_gate.get("controller_status"),
+            "summary_benchmark_status": chsh_evidence_gate.get("summary_benchmark_gate", {}).get("status"),
+            "raw_event_reconstruction_status": raw_gate.get("status"),
+            "uet_mechanism_status": mechanism_gate.get("status"),
+            "source_targets_blocked": source_summary.get("targets_blocked_by_pending_evidence"),
+        },
+        "claim_boundary": (
+            "0.9 may export only a source-referenced internal CHSH summary benchmark. It must not be used as "
+            "raw experimental reconstruction, UET mechanism derivation, replacement-theory evidence, or evidence "
+            "for adjacent quantum lanes until separate gates close."
+        ),
+    }
+
+
 def main() -> int:
     hensen_path = DATA / "bell_test_2015.json"
     summary_path = DATA / "bell_inequality_data.json"
@@ -304,9 +382,14 @@ def main() -> int:
 
     status = "PASS" if all(checks.values()) else "WARN"
     chsh_evidence_gate = build_chsh_evidence_gate(checks, source_evidence_readiness_matrix)
+    chsh_claim_scope_gate = build_chsh_claim_scope_gate(
+        chsh_evidence_gate,
+        source_evidence_readiness_matrix,
+        checks,
+    )
 
     artifact = {
-        "schema_version": "1.2",
+        "schema_version": "1.3",
         "topic": "0.9_Quantum_Nonlocality",
         "status": status,
         "generated_at_utc": datetime.now(UTC).isoformat(),
@@ -378,6 +461,7 @@ def main() -> int:
             "claim_boundary": branch_claim_gate["claim_boundary"],
         },
         "chsh_evidence_gate": chsh_evidence_gate,
+        "chsh_claim_scope_gate": chsh_claim_scope_gate,
         "threshold": thresholds,
         "checks": checks,
         "blockers": blockers,
