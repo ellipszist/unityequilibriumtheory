@@ -434,6 +434,28 @@ def _build_hrv_provenance_gate():
         "extraction_workflow_status": "PASS" if extraction_workflow_ready else "OPEN",
         "record_ids": source_records or source_record.get("record_ids_used_by_topic", []),
         "blockers": blockers,
+        "blocked_export_phrases": [
+            "raw PhysioNet archive complete",
+            "HRV extraction workflow frozen",
+            "clinical HRV classifier validated",
+            "HRV raw-source replication complete",
+            "HRV preprocessing fully source locked",
+        ],
+        "machine_readable_next_blockers": [
+            "raw_physionet_dat_hea_atr_archive_missing",
+            "rr_extraction_command_missing",
+            "rr_extraction_tool_version_missing",
+            "preprocessing_filter_script_missing",
+            "clinical_label_validation_missing",
+        ],
+        "source_package_required_fields": [
+            "raw_record_local_archive_paths",
+            "record_ids",
+            "extraction_command",
+            "tool_name_and_version",
+            "preprocessing_filter_rule",
+            "derived_rr_hashes",
+        ],
         "claim_boundary": "HRV may be treated as source-referenced derived RR evidence only. Raw-source archival or clinical/classification claims remain blocked.",
     }
 
@@ -521,6 +543,10 @@ def _build_complexity_claim_gate(result, hrv_provenance_gate, source_evidence_re
             "Broader complex-systems claims require a closed source/provenance gate, branch-specific baseline comparison, "
             "thresholded verifier artifact, and explicit limitation text for each branch."
         ),
+        "claim_boundary": (
+            "0.14 may export only HRV derived-RR run-contract evidence. It must not be cited as a clinical classifier, "
+            "SOC power-law result, market predictor, climate/inequality/social-system proof, or universal complexity law."
+        ),
     }
 
 
@@ -538,7 +564,7 @@ def write_verification_artifact(result):
         branch_claim_gate,
     )
     artifact = {
-        "schema_version": "1.1",
+        "schema_version": "1.2",
         "topic": "0.14_Complex_Systems",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "command": "python docs/topics/0.14_Complex_Systems/Code/03_Research/Research_Biology_HRV.py",

@@ -67,6 +67,8 @@ The audit wrapper records the current run contract in `Result/artifacts/0_14_com
 
 The embedded `complexity_claim_gate.controller_status` keeps current exports at `HRV_RUN_CONTRACT_ONLY`; broader branch claims and universal-complexity phrases need their own source locks, baselines, thresholds, and verifier artifacts.
 
+The embedded `hrv_provenance_gate` is the raw-source controller. It keeps the HRV lane at source-referenced derived-RR evidence until original PhysioNet records, exact extraction commands, tool versions, and preprocessing scripts are archived.
+
 ## Next Hardening Tasks
 
 1. Archive original PhysioNet files and exact extraction/preprocessing scripts for the MIT-BIH NSRDB-derived RR files.

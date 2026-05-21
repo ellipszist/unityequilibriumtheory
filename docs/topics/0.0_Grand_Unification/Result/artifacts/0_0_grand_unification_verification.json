@@ -1,7 +1,7 @@
 {
   "schema_version": "1.2",
   "topic": "0.0_Grand_Unification",
-  "timestamp_utc": "2026-05-21T18:52:49.978279+00:00",
+  "timestamp_utc": "2026-05-21T22:13:04.076202+00:00",
   "command": "python docs/topics/0.0_Grand_Unification/Code/03_Research/Verify_Omni.py",
   "status": "WARN",
   "passed_run_contract": true,
@@ -105,8 +105,8 @@
     },
     {
       "path": "docs/topics/0.14_Complex_Systems/Result/artifacts/0_14_complex_systems_verification.json",
-      "bytes": 11027,
-      "sha256": "26d8f56d37b2885b9bbdaceaf01353a70273dc10b81b8c37bb149a44394d0a93",
+      "bytes": 12038,
+      "sha256": "0cab6dde5bc6d36e9f2f86aa831faa8a889c0da1b929e6cf6a2d89649f004c45",
       "provenance_role": "subordinate_artifact",
       "status": "PASS"
     },
@@ -555,8 +555,8 @@
       "artifact": "docs/topics/0.14_Complex_Systems/Result/artifacts/0_14_complex_systems_verification.json",
       "status": "PASS",
       "claim_class": null,
-      "schema_version": "1.1",
-      "timestamp_utc": "2026-05-19T14:42:41.665404+00:00",
+      "schema_version": "1.2",
+      "timestamp_utc": "2026-05-21T22:12:25.402993+00:00",
       "claim_gates": [
         {
           "gate": "complexity_claim_gate",
@@ -590,6 +590,27 @@
           "claim_boundary": "Broader complex-systems claims require a closed source/provenance gate, branch-specific baseline comparison, thresholded verifier artifact, and explicit limitation text for each branch."
         },
         {
+          "gate": "hrv_provenance_gate",
+          "status": "DERIVED_SOURCE_WARN",
+          "raw_archive_status": "OPEN",
+          "extraction_workflow_status": "OPEN",
+          "blocked_export_phrases": [
+            "raw PhysioNet archive complete",
+            "HRV extraction workflow frozen",
+            "clinical HRV classifier validated",
+            "HRV raw-source replication complete",
+            "HRV preprocessing fully source locked"
+          ],
+          "next_blockers": [
+            "raw_physionet_dat_hea_atr_archive_missing",
+            "rr_extraction_command_missing",
+            "rr_extraction_tool_version_missing",
+            "preprocessing_filter_script_missing",
+            "clinical_label_validation_missing"
+          ],
+          "claim_boundary": "HRV may be treated as source-referenced derived RR evidence only. Raw-source archival or clinical/classification claims remain blocked."
+        },
+        {
           "gate": "branch_claim_gate",
           "status": "BLOCKED",
           "accepted_now": 1,
@@ -597,8 +618,8 @@
           "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current HRV run-contract evidence."
         }
       ],
-      "sha256": "26d8f56d37b2885b9bbdaceaf01353a70273dc10b81b8c37bb149a44394d0a93",
-      "bytes": 11027
+      "sha256": "0cab6dde5bc6d36e9f2f86aa831faa8a889c0da1b929e6cf6a2d89649f004c45",
+      "bytes": 12038
     },
     {
       "topic": "0.15_Cluster_Dynamics",
@@ -1151,13 +1172,14 @@
         "foundation_claim_gate",
         "galaxy_claim_scope_gate",
         "galaxy_model_gate",
+        "hrv_provenance_gate",
         "numeric_residual_gate",
         "paper_readiness_gate",
         "scale_claim_gate",
         "theorem_boundary_gate",
         "thermodynamic_claim_scope_gate"
       ],
-      "paper_readiness_blocked_dependency_count": 45
+      "paper_readiness_blocked_dependency_count": 46
     },
     "machine_readable_next_blockers": [
       "subordinate_fail_artifact_present",
@@ -1175,7 +1197,7 @@
     "status": "BLOCKED",
     "rule": "Any FAIL, WARN, UNKNOWN, missing artifact, source-incomplete, formula-open, or synthetic-only dependency blocks theory-level claims.",
     "dependency_count": 26,
-    "blocked_dependency_count": 45,
+    "blocked_dependency_count": 46,
     "blockers": [
       {
         "topic": "0.1_Galaxy_Rotation_Problem",
@@ -1409,6 +1431,17 @@
           "climate_inequality_social_system_claim",
           "universal_complexity_law"
         ],
+        "blocked_claims": [],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
+      },
+      {
+        "topic": "0.14_Complex_Systems",
+        "artifact": "docs/topics/0.14_Complex_Systems/Result/artifacts/0_14_complex_systems_verification.json",
+        "status": "PASS",
+        "claim_class": null,
+        "gate": "hrv_provenance_gate",
+        "gate_status": "DERIVED_SOURCE_WARN",
+        "blocked_exports": [],
         "blocked_claims": [],
         "blocker": "Subordinate claim gate blocks theory-level inheritance."
       },
@@ -1812,8 +1845,8 @@
       },
       {
         "path": "docs/topics/0.14_Complex_Systems/Result/artifacts/0_14_complex_systems_verification.json",
-        "bytes": 11027,
-        "sha256": "26d8f56d37b2885b9bbdaceaf01353a70273dc10b81b8c37bb149a44394d0a93",
+        "bytes": 12038,
+        "sha256": "0cab6dde5bc6d36e9f2f86aa831faa8a889c0da1b929e6cf6a2d89649f004c45",
         "provenance_role": "subordinate_artifact",
         "status": "PASS"
       },
@@ -2262,8 +2295,8 @@
         "artifact": "docs/topics/0.14_Complex_Systems/Result/artifacts/0_14_complex_systems_verification.json",
         "status": "PASS",
         "claim_class": null,
-        "schema_version": "1.1",
-        "timestamp_utc": "2026-05-19T14:42:41.665404+00:00",
+        "schema_version": "1.2",
+        "timestamp_utc": "2026-05-21T22:12:25.402993+00:00",
         "claim_gates": [
           {
             "gate": "complexity_claim_gate",
@@ -2297,6 +2330,27 @@
             "claim_boundary": "Broader complex-systems claims require a closed source/provenance gate, branch-specific baseline comparison, thresholded verifier artifact, and explicit limitation text for each branch."
           },
           {
+            "gate": "hrv_provenance_gate",
+            "status": "DERIVED_SOURCE_WARN",
+            "raw_archive_status": "OPEN",
+            "extraction_workflow_status": "OPEN",
+            "blocked_export_phrases": [
+              "raw PhysioNet archive complete",
+              "HRV extraction workflow frozen",
+              "clinical HRV classifier validated",
+              "HRV raw-source replication complete",
+              "HRV preprocessing fully source locked"
+            ],
+            "next_blockers": [
+              "raw_physionet_dat_hea_atr_archive_missing",
+              "rr_extraction_command_missing",
+              "rr_extraction_tool_version_missing",
+              "preprocessing_filter_script_missing",
+              "clinical_label_validation_missing"
+            ],
+            "claim_boundary": "HRV may be treated as source-referenced derived RR evidence only. Raw-source archival or clinical/classification claims remain blocked."
+          },
+          {
             "gate": "branch_claim_gate",
             "status": "BLOCKED",
             "accepted_now": 1,
@@ -2304,8 +2358,8 @@
             "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current HRV run-contract evidence."
           }
         ],
-        "sha256": "26d8f56d37b2885b9bbdaceaf01353a70273dc10b81b8c37bb149a44394d0a93",
-        "bytes": 11027
+        "sha256": "0cab6dde5bc6d36e9f2f86aa831faa8a889c0da1b929e6cf6a2d89649f004c45",
+        "bytes": 12038
       },
       {
         "topic": "0.15_Cluster_Dynamics",
@@ -2758,7 +2812,7 @@
           "reynolds_critical": 2261.946710584651,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 1.2970324284492398,
+          "ai_initial_loss": 0.973579006388636,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
@@ -2783,7 +2837,7 @@
           "reynolds_critical": 226.19467105846513,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 1.3576963300831342,
+          "ai_initial_loss": 0.8056447616801238,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
@@ -3060,7 +3114,7 @@
       "status": "BLOCKED",
       "rule": "Any FAIL, WARN, UNKNOWN, missing artifact, source-incomplete, formula-open, or synthetic-only dependency blocks theory-level claims.",
       "dependency_count": 26,
-      "blocked_dependency_count": 45,
+      "blocked_dependency_count": 46,
       "blockers": [
         {
           "topic": "0.1_Galaxy_Rotation_Problem",
@@ -3294,6 +3348,17 @@
             "climate_inequality_social_system_claim",
             "universal_complexity_law"
           ],
+          "blocked_claims": [],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
+        },
+        {
+          "topic": "0.14_Complex_Systems",
+          "artifact": "docs/topics/0.14_Complex_Systems/Result/artifacts/0_14_complex_systems_verification.json",
+          "status": "PASS",
+          "claim_class": null,
+          "gate": "hrv_provenance_gate",
+          "gate_status": "DERIVED_SOURCE_WARN",
+          "blocked_exports": [],
           "blocked_claims": [],
           "blocker": "Subordinate claim gate blocks theory-level inheritance."
         },
@@ -3699,13 +3764,14 @@
           "foundation_claim_gate",
           "galaxy_claim_scope_gate",
           "galaxy_model_gate",
+          "hrv_provenance_gate",
           "numeric_residual_gate",
           "paper_readiness_gate",
           "scale_claim_gate",
           "theorem_boundary_gate",
           "thermodynamic_claim_scope_gate"
         ],
-        "paper_readiness_blocked_dependency_count": 45
+        "paper_readiness_blocked_dependency_count": 46
       },
       "machine_readable_next_blockers": [
         "subordinate_fail_artifact_present",

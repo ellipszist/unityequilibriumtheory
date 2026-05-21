@@ -227,6 +227,20 @@ def _extract_claim_gate_summary(artifact: dict) -> list[dict]:
             }
         )
 
+    hrv_provenance_gate = artifact.get("hrv_provenance_gate")
+    if isinstance(hrv_provenance_gate, dict):
+        summaries.append(
+            {
+                "gate": "hrv_provenance_gate",
+                "status": hrv_provenance_gate.get("status"),
+                "raw_archive_status": hrv_provenance_gate.get("raw_archive_status"),
+                "extraction_workflow_status": hrv_provenance_gate.get("extraction_workflow_status"),
+                "blocked_export_phrases": hrv_provenance_gate.get("blocked_export_phrases", []),
+                "next_blockers": hrv_provenance_gate.get("machine_readable_next_blockers", []),
+                "claim_boundary": hrv_provenance_gate.get("claim_boundary"),
+            }
+        )
+
     biophysics_claim_scope_gate = artifact.get("biophysics_claim_scope_gate")
     if isinstance(biophysics_claim_scope_gate, dict):
         summaries.append(
