@@ -81,6 +81,7 @@ python docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_Econo
 - `Data/03_Research/source_evidence_intake_stub.json`: structured landing zone for missing market/economy/snapshot source metadata.
 - `Data/03_Research/source_evidence_readiness_matrix.json`: workflow gate for which data sources are still blocked by missing evidence fields.
 - `Data/03_Research/model_claim_gate.json`: accepted-versus-blocked claim lanes for diagnostics, simulations, and policy claims.
+- `economics_claim_scope_gate` in the verification artifact: export controller that blocks policy, market-prediction, and strategic-superiority claims from integration summaries.
 
 ## Current Limitations
 

@@ -42,6 +42,87 @@
     "provenance_gate": "OPEN",
     "status": "DESCRIPTIVE_WARN"
   },
+  "economics_claim_scope_gate": {
+    "allowed_claims_now": [
+      {
+        "claim": "Local market series row-count and close-price parsing diagnostics ran.",
+        "condition": "market_rows_ok is true",
+        "status": "allowed"
+      },
+      {
+        "claim": "Local Gini values satisfy the declared 0-100 unit sanity check.",
+        "condition": "gini_range_ok is true",
+        "status": "allowed"
+      },
+      {
+        "claim": "Return volatility and correlation metrics are descriptive statistics over local working copies.",
+        "condition": "artifact status is PASS or WARN",
+        "status": "allowed"
+      }
+    ],
+    "blocked_claims": [
+      {
+        "blocker": "No out-of-sample forecast protocol, baseline comparison, or uncertainty calibration is present.",
+        "claim": "UET predicts future market prices or macroeconomic outcomes."
+      },
+      {
+        "blocker": "Simulation lanes are heuristic and lack calibrated game-theory comparators.",
+        "claim": "The social power engine proves strategic superiority or Nash-equilibrium improvement."
+      },
+      {
+        "blocker": "No causal identification design, policy-outcome dataset, or intervention baseline is verifier-gated.",
+        "claim": "The topic validates real-world policy causality or social stabilization."
+      },
+      {
+        "blocker": "Upstream URL/API, retrieval date, and table lineage remain incomplete for at least one input lane.",
+        "claim": "Local gateway/economy working copies are archival macroeconomic evidence."
+      }
+    ],
+    "blocked_export_phrases": [
+      "UET predicts markets",
+      "strategic superiority proved",
+      "Nash equilibrium improved",
+      "policy causality verified",
+      "social stabilization achieved",
+      "8-billion resonance validated",
+      "world lease model proven",
+      "economic law confirmed"
+    ],
+    "claim_boundary": "0.25 may be cited as an internal economic-data diagnostic and provenance-hardening topic only. It must not be exported as a market predictor, policy engine, or validated strategy framework until source locks, forecast baselines, causal design, and calibrated simulation comparators are present.",
+    "claim_class": "C_internal_economic_data_diagnostic",
+    "controller_reason": "The artifact supports internal market/economy data diagnostics only. Policy, prediction, social-stabilization, and strategic-superiority exports remain blocked.",
+    "controller_status": "DESCRIPTIVE_DIAGNOSTIC_ONLY",
+    "gate": "economics_claim_scope_gate",
+    "gate_inputs": {
+      "artifact_status": "WARN",
+      "blockers": [
+        "daily_economic_snapshot.json has no upstream URL/DOI; source is a local gateway label.",
+        "Global_Economy_2024.json names World Bank/IMF references but does not record a URL/DOI."
+      ],
+      "checks": {
+        "economy_has_source_url": false,
+        "gini_range_ok": true,
+        "market_rows_ok": true,
+        "snapshot_has_source_url": false
+      },
+      "descriptive_gate_status": "DESCRIPTIVE_WARN",
+      "descriptive_provenance_gate": "OPEN",
+      "model_gate_summary": {
+        "accepted_now": 2,
+        "blocked_for_strong_claims": 3,
+        "lanes_total": 5
+      },
+      "source_targets_blocked": 5
+    },
+    "machine_readable_next_blockers": [
+      "market_retrieval_dates_missing",
+      "global_economy_upstream_url_or_doi_missing",
+      "daily_snapshot_upstream_url_or_api_missing",
+      "forecast_baseline_protocol_missing",
+      "causal_policy_design_missing",
+      "social_power_engine_calibration_missing"
+    ]
+  },
   "economy_metrics": {
     "economy_count": 6,
     "gdp_ppp_total_usd": 251920000000000.0,
@@ -68,7 +149,7 @@
     "EC25-RETURN-CORRELATION",
     "EC25-GINI-SANITY"
   ],
-  "generated_at_utc": "2026-05-17T17:12:39.614501+00:00",
+  "generated_at_utc": "2026-05-21T11:59:34.808021+00:00",
   "inputs": [
     {
       "first_date": "2010-01-04",
@@ -167,7 +248,7 @@
       "lanes_total": 5
     }
   },
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "snapshot": {
     "indicators": {
       "GDP_GROWTH_REALTIME": {

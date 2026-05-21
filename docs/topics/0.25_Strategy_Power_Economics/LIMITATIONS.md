@@ -8,6 +8,10 @@
 - `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`,
   `source_lock_manifest.json`, and `model_claim_gate.json` are workflow controls only. They do not count as
   upstream evidence, causal identification, or policy validation.
+- `economics_claim_scope_gate` is the current export controller: it allows only
+  internal descriptive market/economy diagnostics and blocks market prediction,
+  strategic-superiority, policy-causality, Nash-equilibrium, and
+  social-stabilization claims.
 - The old 8-billion resonance artifact was only a run-contract artifact and did
   not provide a valid PASS for inequality reduction.
 - Market returns, volatility, and correlations are descriptive statistics, not

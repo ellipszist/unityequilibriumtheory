@@ -355,6 +355,92 @@ def build_descriptive_diagnostic_gate(checks: dict, blockers: list[str], source_
     }
 
 
+def build_economics_claim_scope_gate(
+    status: str,
+    checks: dict,
+    blockers: list[str],
+    source_readiness: dict,
+    model_claim_gate: dict,
+    descriptive_diagnostic_gate: dict,
+) -> dict:
+    return {
+        "gate": "economics_claim_scope_gate",
+        "controller_status": "DESCRIPTIVE_DIAGNOSTIC_ONLY",
+        "controller_reason": (
+            "The artifact supports internal market/economy data diagnostics only. "
+            "Policy, prediction, social-stabilization, and strategic-superiority exports remain blocked."
+        ),
+        "claim_class": "C_internal_economic_data_diagnostic",
+        "allowed_claims_now": [
+            {
+                "claim": "Local market series row-count and close-price parsing diagnostics ran.",
+                "condition": "market_rows_ok is true",
+                "status": "allowed" if checks.get("market_rows_ok") else "blocked",
+            },
+            {
+                "claim": "Local Gini values satisfy the declared 0-100 unit sanity check.",
+                "condition": "gini_range_ok is true",
+                "status": "allowed" if checks.get("gini_range_ok") else "blocked",
+            },
+            {
+                "claim": "Return volatility and correlation metrics are descriptive statistics over local working copies.",
+                "condition": "artifact status is PASS or WARN",
+                "status": "allowed" if status in {"PASS", "WARN"} else "blocked",
+            },
+        ],
+        "blocked_claims": [
+            {
+                "claim": "UET predicts future market prices or macroeconomic outcomes.",
+                "blocker": "No out-of-sample forecast protocol, baseline comparison, or uncertainty calibration is present.",
+            },
+            {
+                "claim": "The social power engine proves strategic superiority or Nash-equilibrium improvement.",
+                "blocker": "Simulation lanes are heuristic and lack calibrated game-theory comparators.",
+            },
+            {
+                "claim": "The topic validates real-world policy causality or social stabilization.",
+                "blocker": "No causal identification design, policy-outcome dataset, or intervention baseline is verifier-gated.",
+            },
+            {
+                "claim": "Local gateway/economy working copies are archival macroeconomic evidence.",
+                "blocker": "Upstream URL/API, retrieval date, and table lineage remain incomplete for at least one input lane.",
+            },
+        ],
+        "blocked_export_phrases": [
+            "UET predicts markets",
+            "strategic superiority proved",
+            "Nash equilibrium improved",
+            "policy causality verified",
+            "social stabilization achieved",
+            "8-billion resonance validated",
+            "world lease model proven",
+            "economic law confirmed",
+        ],
+        "machine_readable_next_blockers": [
+            "market_retrieval_dates_missing",
+            "global_economy_upstream_url_or_doi_missing",
+            "daily_snapshot_upstream_url_or_api_missing",
+            "forecast_baseline_protocol_missing",
+            "causal_policy_design_missing",
+            "social_power_engine_calibration_missing",
+        ],
+        "gate_inputs": {
+            "artifact_status": status,
+            "checks": checks,
+            "blockers": blockers,
+            "source_targets_blocked": source_readiness["summary"]["targets_blocked_by_pending_evidence"],
+            "model_gate_summary": model_claim_gate.get("summary", {}),
+            "descriptive_gate_status": descriptive_diagnostic_gate.get("status"),
+            "descriptive_provenance_gate": descriptive_diagnostic_gate.get("provenance_gate"),
+        },
+        "claim_boundary": (
+            "0.25 may be cited as an internal economic-data diagnostic and provenance-hardening topic only. "
+            "It must not be exported as a market predictor, policy engine, or validated strategy framework until "
+            "source locks, forecast baselines, causal design, and calibrated simulation comparators are present."
+        ),
+    }
+
+
 def main() -> int:
     series = [
         series_metrics("SP500", DATA / "03_Research" / "SP500_yahoo_real.csv"),
@@ -408,12 +494,20 @@ def main() -> int:
 
     status = "PASS" if all(checks.values()) else "WARN"
     descriptive_diagnostic_gate = build_descriptive_diagnostic_gate(checks, blockers, source_evidence_readiness)
+    economics_claim_scope_gate = build_economics_claim_scope_gate(
+        status,
+        checks,
+        blockers,
+        source_evidence_readiness,
+        model_claim_gate,
+        descriptive_diagnostic_gate,
+    )
 
     for item in series:
         item.pop("returns", None)
 
     artifact = {
-        "schema_version": "1.1",
+        "schema_version": "1.2",
         "topic": "0.25_Strategy_Power_Economics",
         "status": status,
         "generated_at_utc": datetime.now(UTC).isoformat(),
@@ -476,6 +570,7 @@ def main() -> int:
             "claim_boundary": "This gate records diagnostic versus simulation claim ceilings only. It cannot upgrade the topic beyond descriptive evidence.",
         },
         "descriptive_diagnostic_gate": descriptive_diagnostic_gate,
+        "economics_claim_scope_gate": economics_claim_scope_gate,
         "market_metrics": series,
         "economy_metrics": economy,
         "correlations": correlations,

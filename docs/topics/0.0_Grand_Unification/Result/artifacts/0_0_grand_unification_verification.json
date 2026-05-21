@@ -1,7 +1,7 @@
 {
   "schema_version": "1.2",
   "topic": "0.0_Grand_Unification",
-  "timestamp_utc": "2026-05-20T12:17:06.035908+00:00",
+  "timestamp_utc": "2026-05-21T12:00:05.107517+00:00",
   "command": "python docs/topics/0.0_Grand_Unification/Code/03_Research/Verify_Omni.py",
   "status": "WARN",
   "passed_run_contract": true,
@@ -182,8 +182,8 @@
     },
     {
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_strategy_power_economics_verification.json",
-      "bytes": 9072,
-      "sha256": "ab703d038b800bfc7f0fe3bfa4d622e41826d3d815855a067998b001896f80de",
+      "bytes": 12755,
+      "sha256": "bc5a5d48655d99851cf92468dbb2f21a58c09a5bbe64a7ae1e8d46a6b97cc1f6",
       "provenance_role": "subordinate_artifact",
       "status": "WARN"
     },
@@ -881,11 +881,42 @@
       "artifact": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_strategy_power_economics_verification.json",
       "status": "WARN",
       "claim_class": "C - internal economic data integrity and market diagnostics benchmark",
-      "schema_version": "1.1",
-      "timestamp_utc": "2026-05-17T17:12:39.614501+00:00",
-      "claim_gates": [],
-      "sha256": "ab703d038b800bfc7f0fe3bfa4d622e41826d3d815855a067998b001896f80de",
-      "bytes": 9072
+      "schema_version": "1.2",
+      "timestamp_utc": "2026-05-21T11:59:34.808021+00:00",
+      "claim_gates": [
+        {
+          "gate": "economics_claim_scope_gate",
+          "status": "DESCRIPTIVE_DIAGNOSTIC_ONLY",
+          "claim_class": "C_internal_economic_data_diagnostic",
+          "blocked_claims": [
+            "UET predicts future market prices or macroeconomic outcomes.",
+            "The social power engine proves strategic superiority or Nash-equilibrium improvement.",
+            "The topic validates real-world policy causality or social stabilization.",
+            "Local gateway/economy working copies are archival macroeconomic evidence."
+          ],
+          "blocked_export_phrases": [
+            "UET predicts markets",
+            "strategic superiority proved",
+            "Nash equilibrium improved",
+            "policy causality verified",
+            "social stabilization achieved",
+            "8-billion resonance validated",
+            "world lease model proven",
+            "economic law confirmed"
+          ],
+          "next_blockers": [
+            "market_retrieval_dates_missing",
+            "global_economy_upstream_url_or_doi_missing",
+            "daily_snapshot_upstream_url_or_api_missing",
+            "forecast_baseline_protocol_missing",
+            "causal_policy_design_missing",
+            "social_power_engine_calibration_missing"
+          ],
+          "claim_boundary": "0.25 may be cited as an internal economic-data diagnostic and provenance-hardening topic only. It must not be exported as a market predictor, policy engine, or validated strategy framework until source locks, forecast baselines, causal design, and calibrated simulation comparators are present."
+        }
+      ],
+      "sha256": "bc5a5d48655d99851cf92468dbb2f21a58c09a5bbe64a7ae1e8d46a6b97cc1f6",
+      "bytes": 12755
     },
     {
       "topic": "0.26_Cosmic_Dynamic_Frame",
@@ -1045,6 +1076,7 @@
         "0.22_Biophysics_Origin_of_Life",
         "0.23_Unity_Scale_Link",
         "0.24_Artificial_Intelligence",
+        "0.25_Strategy_Power_Economics",
         "0.26_Cosmic_Dynamic_Frame",
         "0.2_Black_Hole_Physics",
         "0.3_Cosmology_Hubble_Tension",
@@ -1058,6 +1090,7 @@
         "branch_claim_gate",
         "complexity_claim_gate",
         "dynamic_frame_claim_gate",
+        "economics_claim_scope_gate",
         "foundation_claim_gate",
         "galaxy_claim_scope_gate",
         "galaxy_model_gate",
@@ -1067,7 +1100,7 @@
         "theorem_boundary_gate",
         "thermodynamic_claim_scope_gate"
       ],
-      "paper_readiness_blocked_dependency_count": 42
+      "paper_readiness_blocked_dependency_count": 43
     },
     "machine_readable_next_blockers": [
       "subordinate_fail_artifact_present",
@@ -1085,7 +1118,7 @@
     "status": "BLOCKED",
     "rule": "Any FAIL, WARN, UNKNOWN, missing artifact, source-incomplete, formula-open, or synthetic-only dependency blocks theory-level claims.",
     "dependency_count": 26,
-    "blocked_dependency_count": 42,
+    "blocked_dependency_count": 43,
     "blockers": [
       {
         "topic": "0.1_Galaxy_Rotation_Problem",
@@ -1508,6 +1541,22 @@
         "blocker": "Dependency is not clean PASS, so theory-level closure is blocked."
       },
       {
+        "topic": "0.25_Strategy_Power_Economics",
+        "artifact": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_strategy_power_economics_verification.json",
+        "status": "WARN",
+        "claim_class": "C - internal economic data integrity and market diagnostics benchmark",
+        "gate": "economics_claim_scope_gate",
+        "gate_status": "DESCRIPTIVE_DIAGNOSTIC_ONLY",
+        "blocked_exports": [],
+        "blocked_claims": [
+          "UET predicts future market prices or macroeconomic outcomes.",
+          "The social power engine proves strategic superiority or Nash-equilibrium improvement.",
+          "The topic validates real-world policy causality or social stabilization.",
+          "Local gateway/economy working copies are archival macroeconomic evidence."
+        ],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
+      },
+      {
         "topic": "0.26_Cosmic_Dynamic_Frame",
         "artifact": "docs/topics/0.26_Cosmic_Dynamic_Frame/Result/artifacts/0_26_cosmic_dynamic_frame_verification.json",
         "status": "WARN",
@@ -1756,8 +1805,8 @@
       },
       {
         "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_strategy_power_economics_verification.json",
-        "bytes": 9072,
-        "sha256": "ab703d038b800bfc7f0fe3bfa4d622e41826d3d815855a067998b001896f80de",
+        "bytes": 12755,
+        "sha256": "bc5a5d48655d99851cf92468dbb2f21a58c09a5bbe64a7ae1e8d46a6b97cc1f6",
         "provenance_role": "subordinate_artifact",
         "status": "WARN"
       },
@@ -2455,11 +2504,42 @@
         "artifact": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_strategy_power_economics_verification.json",
         "status": "WARN",
         "claim_class": "C - internal economic data integrity and market diagnostics benchmark",
-        "schema_version": "1.1",
-        "timestamp_utc": "2026-05-17T17:12:39.614501+00:00",
-        "claim_gates": [],
-        "sha256": "ab703d038b800bfc7f0fe3bfa4d622e41826d3d815855a067998b001896f80de",
-        "bytes": 9072
+        "schema_version": "1.2",
+        "timestamp_utc": "2026-05-21T11:59:34.808021+00:00",
+        "claim_gates": [
+          {
+            "gate": "economics_claim_scope_gate",
+            "status": "DESCRIPTIVE_DIAGNOSTIC_ONLY",
+            "claim_class": "C_internal_economic_data_diagnostic",
+            "blocked_claims": [
+              "UET predicts future market prices or macroeconomic outcomes.",
+              "The social power engine proves strategic superiority or Nash-equilibrium improvement.",
+              "The topic validates real-world policy causality or social stabilization.",
+              "Local gateway/economy working copies are archival macroeconomic evidence."
+            ],
+            "blocked_export_phrases": [
+              "UET predicts markets",
+              "strategic superiority proved",
+              "Nash equilibrium improved",
+              "policy causality verified",
+              "social stabilization achieved",
+              "8-billion resonance validated",
+              "world lease model proven",
+              "economic law confirmed"
+            ],
+            "next_blockers": [
+              "market_retrieval_dates_missing",
+              "global_economy_upstream_url_or_doi_missing",
+              "daily_snapshot_upstream_url_or_api_missing",
+              "forecast_baseline_protocol_missing",
+              "causal_policy_design_missing",
+              "social_power_engine_calibration_missing"
+            ],
+            "claim_boundary": "0.25 may be cited as an internal economic-data diagnostic and provenance-hardening topic only. It must not be exported as a market predictor, policy engine, or validated strategy framework until source locks, forecast baselines, causal design, and calibrated simulation comparators are present."
+          }
+        ],
+        "sha256": "bc5a5d48655d99851cf92468dbb2f21a58c09a5bbe64a7ae1e8d46a6b97cc1f6",
+        "bytes": 12755
       },
       {
         "topic": "0.26_Cosmic_Dynamic_Frame",
@@ -2539,7 +2619,7 @@
           "reynolds_critical": 2261.946710584651,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 1.3254810297502542,
+          "ai_initial_loss": 0.9503150681467062,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
@@ -2564,7 +2644,7 @@
           "reynolds_critical": 226.19467105846513,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 1.0706642037049239,
+          "ai_initial_loss": 1.0016525715409732,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
@@ -2841,7 +2921,7 @@
       "status": "BLOCKED",
       "rule": "Any FAIL, WARN, UNKNOWN, missing artifact, source-incomplete, formula-open, or synthetic-only dependency blocks theory-level claims.",
       "dependency_count": 26,
-      "blocked_dependency_count": 42,
+      "blocked_dependency_count": 43,
       "blockers": [
         {
           "topic": "0.1_Galaxy_Rotation_Problem",
@@ -3264,6 +3344,22 @@
           "blocker": "Dependency is not clean PASS, so theory-level closure is blocked."
         },
         {
+          "topic": "0.25_Strategy_Power_Economics",
+          "artifact": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_strategy_power_economics_verification.json",
+          "status": "WARN",
+          "claim_class": "C - internal economic data integrity and market diagnostics benchmark",
+          "gate": "economics_claim_scope_gate",
+          "gate_status": "DESCRIPTIVE_DIAGNOSTIC_ONLY",
+          "blocked_exports": [],
+          "blocked_claims": [
+            "UET predicts future market prices or macroeconomic outcomes.",
+            "The social power engine proves strategic superiority or Nash-equilibrium improvement.",
+            "The topic validates real-world policy causality or social stabilization.",
+            "Local gateway/economy working copies are archival macroeconomic evidence."
+          ],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
+        },
+        {
           "topic": "0.26_Cosmic_Dynamic_Frame",
           "artifact": "docs/topics/0.26_Cosmic_Dynamic_Frame/Result/artifacts/0_26_cosmic_dynamic_frame_verification.json",
           "status": "WARN",
@@ -3417,6 +3513,7 @@
           "0.22_Biophysics_Origin_of_Life",
           "0.23_Unity_Scale_Link",
           "0.24_Artificial_Intelligence",
+          "0.25_Strategy_Power_Economics",
           "0.26_Cosmic_Dynamic_Frame",
           "0.2_Black_Hole_Physics",
           "0.3_Cosmology_Hubble_Tension",
@@ -3430,6 +3527,7 @@
           "branch_claim_gate",
           "complexity_claim_gate",
           "dynamic_frame_claim_gate",
+          "economics_claim_scope_gate",
           "foundation_claim_gate",
           "galaxy_claim_scope_gate",
           "galaxy_model_gate",
@@ -3439,7 +3537,7 @@
           "theorem_boundary_gate",
           "thermodynamic_claim_scope_gate"
         ],
-        "paper_readiness_blocked_dependency_count": 42
+        "paper_readiness_blocked_dependency_count": 43
       },
       "machine_readable_next_blockers": [
         "subordinate_fail_artifact_present",

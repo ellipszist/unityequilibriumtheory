@@ -24,6 +24,7 @@ python docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_Econo
 - `Data/03_Research/source_evidence_readiness_matrix.json`
 - `Data/03_Research/model_claim_gate.json`
 - embedded `descriptive_diagnostic_gate` in `Result/artifacts/0_25_strategy_power_economics_verification.json`
+- embedded `economics_claim_scope_gate` in `Result/artifacts/0_25_strategy_power_economics_verification.json`
 
 ## Current readiness snapshot
 
@@ -47,7 +48,10 @@ python docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_Econo
 
 The artifact must include `status`, command, environment, formula IDs, input
 hashes, market metrics, economy metrics, thresholds, checks, blockers, and
-limitations.
+limitations. It must also include `economics_claim_scope_gate.controller_status`,
+blocked export phrases, and machine-readable next blockers so integration
+summaries cannot promote descriptive diagnostics into policy or market-prediction
+claims.
 
 ## Interpretation
 
@@ -65,3 +69,10 @@ the market row-count and Gini sanity diagnostics passed. If
 `descriptive_diagnostic_gate.status == DESCRIPTIVE_WARN`, policy, prediction,
 and strategic-superiority claims remain blocked by provenance and causal-design
 gaps.
+
+`economics_claim_scope_gate.controller_status == DESCRIPTIVE_DIAGNOSTIC_ONLY`
+is the export controller for `0.0` and paper-facing summaries. It may allow
+descriptive market/economy diagnostics, but it blocks market prediction,
+strategic-superiority, Nash-equilibrium, policy-causality, and
+social-stabilization claims until source locks, baselines, causal design, and
+calibrated simulation comparators exist.

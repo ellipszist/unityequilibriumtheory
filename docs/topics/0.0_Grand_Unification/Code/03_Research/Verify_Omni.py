@@ -261,6 +261,23 @@ def _extract_claim_gate_summary(artifact: dict) -> list[dict]:
             }
         )
 
+    economics_claim_scope_gate = artifact.get("economics_claim_scope_gate")
+    if isinstance(economics_claim_scope_gate, dict):
+        summaries.append(
+            {
+                "gate": "economics_claim_scope_gate",
+                "status": economics_claim_scope_gate.get("controller_status"),
+                "claim_class": economics_claim_scope_gate.get("claim_class"),
+                "blocked_claims": [
+                    item.get("claim")
+                    for item in economics_claim_scope_gate.get("blocked_claims", [])
+                ],
+                "blocked_export_phrases": economics_claim_scope_gate.get("blocked_export_phrases", []),
+                "next_blockers": economics_claim_scope_gate.get("machine_readable_next_blockers", []),
+                "claim_boundary": economics_claim_scope_gate.get("claim_boundary"),
+            }
+        )
+
     numeric_residual_gate = artifact.get("numeric_residual_gate")
     if isinstance(numeric_residual_gate, dict):
         replacement_gate = numeric_residual_gate.get("replacement_claim_gate", {})
