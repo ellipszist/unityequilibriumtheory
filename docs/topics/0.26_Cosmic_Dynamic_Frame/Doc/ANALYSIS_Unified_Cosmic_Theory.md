@@ -1,4 +1,12 @@
 # 🔬 ANALYSIS: 0.26 The Dynamic Universe (Unified Theory)
+> [!WARNING]
+> **Legacy claim boundary:** This file is a concept/hypothesis note from an
+> earlier drafting pass. It is not the topic status authority and must not be
+> used to claim dark-matter replacement, validated dynamic-frame cosmology,
+> Pioneer anomaly explanation, toroidal cosmology closure, or cosmic-fluid
+> proof. Current allowed claims are controlled by `README.md`, `LIMITATIONS.md`,
+> `VERIFICATION_SPEC.md`, and
+> `Result/artifacts/0_26_cosmic_dynamic_frame_verification.json`.
 
 > **File/Script:** `Code/03_Research/Research_Unified_Cosmic_Theory.py`
 > **Role:** Unity Equilibrium Theory (UET)

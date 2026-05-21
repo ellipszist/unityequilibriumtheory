@@ -1,4 +1,12 @@
 # 🏁 Conclusion: The Paradox of Scale & The Philosophy of Resistance
+> [!WARNING]
+> **Legacy claim boundary:** This file is a concept/hypothesis note from an
+> earlier drafting pass. It is not the topic status authority and must not be
+> used to claim dark-matter replacement, validated dynamic-frame cosmology,
+> Pioneer anomaly explanation, toroidal cosmology closure, or cosmic-fluid
+> proof. Current allowed claims are controlled by `README.md`, `LIMITATIONS.md`,
+> `VERIFICATION_SPEC.md`, and
+> `Result/artifacts/0_26_cosmic_dynamic_frame_verification.json`.
 
 ## 1. วิทยาศาสตร์: สิ่งที่เราค้นพบ (Scientific Discovery)
 เราได้สร้าง **"Engine V1.3"** และพิสูจน์แล้วว่า:
