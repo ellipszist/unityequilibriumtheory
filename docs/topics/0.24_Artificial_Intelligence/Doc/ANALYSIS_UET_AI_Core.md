@@ -1,4 +1,11 @@
 # 🔬 ANALYSIS: UET AI Engines (เอนจินปัญญาประดิษฐ์ UET)
+> [!WARNING]
+> **Legacy claim boundary:** This file is a concept note from an earlier
+> drafting pass. It is not the topic status authority and must not be used to
+> claim AGI, optimizer superiority, universal intelligence, or validated AI
+> guardrails. Current allowed claims are controlled by `README.md`,
+> `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, and
+> `Result/artifacts/0_24_artificial_intelligence_verification.json`.
 
 > **Files:** `UET_AI_Core.py`, `Engine_AI_Entropy.py`, `Research_UET_Optimizer.py`
 > **Role:** Engine (AI & Cognitive Solver)

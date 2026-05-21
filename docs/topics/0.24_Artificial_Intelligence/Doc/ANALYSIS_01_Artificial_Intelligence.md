@@ -1,4 +1,12 @@
 # 🔬 ANALYSIS: Artificial Intelligence (Thermodynamics of Thought)
+> [!WARNING]
+> **Legacy claim boundary:** This file is a concept note from an earlier
+> drafting pass. It is not the topic status authority and must not be used to
+> claim AI alignment, ethics as physical law, hallucination prediction,
+> consciousness, AGI, or universal intelligence dynamics. Current allowed
+> claims are controlled by `README.md`, `LIMITATIONS.md`,
+> `VERIFICATION_SPEC.md`, and
+> `Result/artifacts/0_24_artificial_intelligence_verification.json`.
 
 > **File/Script:** `docs/topics/0.24_Artificial_Intelligence/Code/01_Engine/Engine_AI_Entropy.py`
 > **Role:** Application Verification (Axiom 2)
