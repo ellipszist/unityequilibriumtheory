@@ -24,6 +24,7 @@
   - theorem-boundary status, accepted surrogate export, blocked theorem exports
   - theorem-boundary `controller_status`, blocked theorem-proof phrases, and machine-readable next blockers
   - data-posture controller status and primary verifier input class
+  - data-posture blocked export phrases, required source-package fields, and machine-readable next blockers
 - Fixed threshold:
   - Working threshold for this standards pass: the primary script must run without error and write a summary artifact under `Result/artifacts/`.
   - Artifact status should be `WARN` when surrogate rank indicators contradict the script's declared curve roles.
@@ -32,6 +33,7 @@
   - `theorem_boundary_gate.status` must remain `THEOREM_CLAIMS_BLOCKED` until source-backed theorem benchmarks and proof-boundary artifacts are present.
   - `theorem_boundary_gate.controller_status` must remain `BLOCKED` while any formal theorem export is blocked.
   - `data_posture_gate.controller_status` must remain `SURROGATE_ONLY` while the primary verifier consumes only local code fixtures and placeholder/manual inputs.
+  - `data_posture_gate.blocked_export_phrases` and `machine_readable_next_blockers` must remain populated while every theorem benchmark source target is pending.
 - Artifact target:
   - Result/artifacts/0_18_mathnicry_verification.json
 - Latest primary artifact identity:
@@ -47,6 +49,7 @@
   - Treat source-evidence and branch-claim gate outputs as workflow controls, not as theorem evidence.
   - Treat `theorem_boundary_gate` as the inheritance contract for `0.0`: only surrogate run-contract evidence may be inherited.
   - Treat `data_posture_gate` as the data-reality contract: current artifacts are local fixture evidence, not theorem-source evidence.
+  - Treat `data_posture_gate` as an integration export controller for source-backed theorem benchmark wording.
   - Treat `surrogate_run_contract_gate` as a fixture/code-path gate, not as theorem evidence or external validation.
   - The current BSD branch does not compute actual elliptic-curve rank or L-function order of vanishing.
   - The UTF-8 environment variables are required on this Windows shell because logger/status output uses Unicode glyphs.

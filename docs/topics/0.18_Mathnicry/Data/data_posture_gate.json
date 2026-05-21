@@ -17,8 +17,8 @@
     },
     {
       "path": "Code/03_Research/Research_BSD_Elliptic_Unity.py",
-      "bytes": 27517,
-      "sha256": "9b0ae12a348b7f338862a41f819f2feb3521d9ff37146ebee3a257d30d61ef3a",
+      "bytes": 28863,
+      "sha256": "93adaa987620e8418b4fefd14fa626f51e9261620966254be9abe51c4c2ca12c",
       "role": "primary verifier; declares the two local surrogate curve fixtures"
     }
   ],
@@ -42,6 +42,30 @@
     "No source-backed elliptic-curve rank or L-function benchmark package is ready.",
     "All theorem-branch source targets remain blocked by pending evidence fields.",
     "Primary verifier consumes local code fixtures rather than an external theorem dataset."
+  ],
+  "blocked_export_phrases": [
+    "source-backed theorem benchmark",
+    "external theorem validation",
+    "BSD data verified",
+    "L-function benchmark passed",
+    "real elliptic-curve rank computation",
+    "proof dataset complete"
+  ],
+  "machine_readable_next_blockers": [
+    "bsd_benchmark_source_package_missing",
+    "riemann_zero_source_package_missing",
+    "grover_complexity_benchmark_missing",
+    "collatz_bounded_search_manifest_missing",
+    "quantum_engine_fixture_package_missing",
+    "primary_verifier_uses_local_code_fixtures_only"
+  ],
+  "source_package_required_fields": [
+    "url_or_dataset_reference",
+    "local_archive_path",
+    "theorem_target_or_benchmark_domain",
+    "unit_or_convention_note",
+    "extraction_note",
+    "proof_boundary_status"
   ],
   "claim_boundary": "This gate allows only local surrogate/run-contract evidence. It blocks proof-level, theorem-level, and external-validation wording until source-backed benchmark packages and proof-boundary artifacts exist."
 }

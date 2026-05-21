@@ -390,6 +390,30 @@ def _build_data_posture_gate(input_hashes, source_evidence_readiness_matrix):
                 "All theorem-branch source targets remain blocked by pending evidence fields.",
                 "Primary verifier consumes local code fixtures rather than an external theorem dataset.",
             ],
+            "blocked_export_phrases": [
+                "source-backed theorem benchmark",
+                "external theorem validation",
+                "BSD data verified",
+                "L-function benchmark passed",
+                "real elliptic-curve rank computation",
+                "proof dataset complete",
+            ],
+            "machine_readable_next_blockers": [
+                "bsd_benchmark_source_package_missing",
+                "riemann_zero_source_package_missing",
+                "grover_complexity_benchmark_missing",
+                "collatz_bounded_search_manifest_missing",
+                "quantum_engine_fixture_package_missing",
+                "primary_verifier_uses_local_code_fixtures_only",
+            ],
+            "source_package_required_fields": [
+                "url_or_dataset_reference",
+                "local_archive_path",
+                "theorem_target_or_benchmark_domain",
+                "unit_or_convention_note",
+                "extraction_note",
+                "proof_boundary_status",
+            ],
             "claim_boundary": (
                 "This gate allows only local surrogate/run-contract evidence. It blocks proof-level, theorem-level, "
                 "and external-validation wording until source-backed benchmark packages and proof-boundary artifacts exist."
@@ -441,7 +465,7 @@ def write_verification_artifact(result):
     data_posture_gate = _build_data_posture_gate(input_hashes, source_evidence_readiness_matrix)
     surrogate_run_contract_gate = _build_surrogate_run_contract_gate(result)
     artifact = {
-        "schema_version": "1.2",
+        "schema_version": "1.3",
         "topic": "0.18_Mathnicry",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "command": "python docs/topics/0.18_Mathnicry/Code/03_Research/Research_BSD_Elliptic_Unity.py",
@@ -486,6 +510,9 @@ def write_verification_artifact(result):
             "controller_status": data_posture_gate["controller_status"],
             "data_reality_status": data_posture_gate["data_reality_status"],
             "primary_verifier_input_class": data_posture_gate["primary_verifier_input_class"],
+            "blocked_export_phrases": data_posture_gate["blocked_export_phrases"],
+            "machine_readable_next_blockers": data_posture_gate["machine_readable_next_blockers"],
+            "source_package_required_fields": data_posture_gate["source_package_required_fields"],
             "claim_boundary": data_posture_gate["claim_boundary"],
         },
         "surrogate_run_contract_gate": surrogate_run_contract_gate,

@@ -8,6 +8,10 @@
 - `Data/source_evidence_intake_stub.json`, `Data/source_evidence_readiness_matrix.json`, and `Data/branch_claim_gate.json` are workflow controls only. They do not count as theorem evidence or proof closure.
 - `Data/theorem_boundary_gate.json` is also a workflow/export control. Its controller must block theorem-level inheritance and theorem-proof phrases, but it is not proof evidence by itself.
 - `Data/data_posture_gate.json` is the data-reality controller. Its current `SURROGATE_ONLY` status means the primary verifier is allowed only as a local fixture/run-contract artifact.
+- `Data/data_posture_gate.json` also blocks source-backed theorem benchmark,
+  external validation, BSD data verification, L-function benchmark,
+  elliptic-curve rank-computation, and proof-dataset-complete wording until
+  required source-package fields and proof-boundary records are attached.
 - Riemann scripts that evaluate `mpmath.zetazero(n)` check library-provided zeros; they do not search for or exclude off-critical-line zeros.
 - Grover/P-vs-NP scaling scripts demonstrate quantum-search behavior and do not imply NP-complete problems are polynomial-time solvable.
 - Collatz scripts are bounded/heuristic and include code hygiene issues such as unreachable logic after a `return` in `Engine_Collatz_Field.py`.

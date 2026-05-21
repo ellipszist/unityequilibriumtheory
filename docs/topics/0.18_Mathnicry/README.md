@@ -56,6 +56,11 @@ The verifier now emits `theorem_boundary_gate.controller_status`, which dependen
 
 It also emits `data_posture_gate`, which states that the current primary verifier consumes a local code fixture package rather than an external theorem dataset. This gate is allowed to support only local run-contract language.
 
+`data_posture_gate` is also an integration export controller. It blocks
+source-backed theorem benchmark, external validation, BSD data verification,
+L-function benchmark, real elliptic-curve rank computation, and proof-dataset
+completion wording until source packages and proof-boundary records are present.
+
 ## Next Hardening Tasks
 
 1. For every `Proof_*` script, add a proof-boundary record: theorem target, assumptions, domain searched, result class, blocker, and artifact path.

@@ -309,6 +309,20 @@ def _extract_claim_gate_summary(artifact: dict) -> list[dict]:
             }
         )
 
+    data_posture_gate = artifact.get("data_posture_gate")
+    if isinstance(data_posture_gate, dict):
+        summaries.append(
+            {
+                "gate": "data_posture_gate",
+                "status": data_posture_gate.get("controller_status"),
+                "data_reality_status": data_posture_gate.get("data_reality_status"),
+                "primary_verifier_input_class": data_posture_gate.get("primary_verifier_input_class"),
+                "blocked_export_phrases": data_posture_gate.get("blocked_export_phrases", []),
+                "next_blockers": data_posture_gate.get("machine_readable_next_blockers", []),
+                "claim_boundary": data_posture_gate.get("claim_boundary"),
+            }
+        )
+
     galaxy_model_gate = artifact.get("galaxy_model_gate")
     if isinstance(galaxy_model_gate, dict):
         replacement_gate = galaxy_model_gate.get("replacement_claim_gate", {})
