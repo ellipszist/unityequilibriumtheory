@@ -193,6 +193,21 @@ def _extract_claim_gate_summary(artifact: dict) -> list[dict]:
             }
         )
 
+    hubble_claim_scope_gate = artifact.get("hubble_claim_scope_gate")
+    if isinstance(hubble_claim_scope_gate, dict):
+        summaries.append(
+            {
+                "gate": "hubble_claim_scope_gate",
+                "status": hubble_claim_scope_gate.get("controller_status"),
+                "claim_class": hubble_claim_scope_gate.get("claim_class"),
+                "blocked_exports": hubble_claim_scope_gate.get("blocked_exports", []),
+                "blocked_export_phrases": hubble_claim_scope_gate.get("blocked_export_phrases", []),
+                "next_blockers": hubble_claim_scope_gate.get("machine_readable_next_blockers", []),
+                "claim_boundary": hubble_claim_scope_gate.get("claim_boundary")
+                or hubble_claim_scope_gate.get("promotion_rule"),
+            }
+        )
+
     dynamic_frame_claim_gate = artifact.get("dynamic_frame_claim_gate")
     if isinstance(dynamic_frame_claim_gate, dict):
         summaries.append(

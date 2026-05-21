@@ -29,6 +29,16 @@
     "torch_version": "2.10.0+cpu"
   },
   "hubble_claim_scope_gate": {
+    "blocked_export_phrases": [
+      "Hubble tension resolved",
+      "full cosmology model validated",
+      "Planck SH0ES likelihood replicated",
+      "BAO SN CMB consistency validated",
+      "dark energy replaced",
+      "high-z prediction confirmed",
+      "beta_frame derived",
+      "cosmology solved"
+    ],
     "blocked_exports": [
       "Hubble tension resolved",
       "validated full cosmology model",
@@ -46,7 +56,10 @@
       ],
       "status": "OPEN"
     },
-    "controller_status": "WARN",
+    "claim_boundary": "0.3 may export only an internal scalar Planck-SH0ES H0-gap benchmark. It must not be used as a resolved-Hubble-tension, full-cosmology, dark-energy, high-z prediction, or derived beta-frame claim until dedicated derivation, likelihood, and branch gates close.",
+    "claim_class": "C_internal_scalar_h0_published_value_benchmark",
+    "controller_reason": "The scalar published-value H0 gap benchmark may pass, but bridge derivation, full-likelihood, high-z, and dark-energy claims remain open.",
+    "controller_status": "SCALAR_H0_BENCHMARK_ONLY",
     "full_likelihood_gate": {
       "controller_role": "blocks resolved-Hubble-tension or full-cosmology claims",
       "required_inputs": [
@@ -70,6 +83,15 @@
         "targets_ready_for_source_review": 1
       }
     },
+    "machine_readable_next_blockers": [
+      "bridge_derivation_with_units_missing",
+      "full_planck_shoes_likelihood_pipeline_missing",
+      "bao_sn_cmb_consistency_package_missing",
+      "high_z_transition_verifier_missing",
+      "dark_energy_branch_artifact_missing",
+      "uncertainty_propagation_gate_missing",
+      "source_targets_still_blocked"
+    ],
     "promotion_rule": "Only the scalar published-value benchmark can pass in this artifact. Stronger cosmology claims require a closed bridge derivation gate and a full likelihood/baseline gate.",
     "purpose": "Machine-readable controller separating scalar benchmark PASS from unresolved cosmology claims.",
     "scalar_benchmark_gate": {
@@ -135,7 +157,7 @@
     "delta_h0_uet": 5.757614208850754,
     "delta_residual": 0.11761420885075324,
     "generic_solver_beta": 0.025838809965708517,
-    "hubble_claim_scope_status": "WARN",
+    "hubble_claim_scope_status": "SCALAR_H0_BENCHMARK_ONLY",
     "hubble_frame_beta": 0.08542454315802288,
     "hubble_frame_beta_source": "sqrt(ALPHA_EM)",
     "observed_delta_h0": 5.640000000000001,
@@ -199,7 +221,7 @@
   "thresholds": {
     "max_relative_error_percent": 20.0
   },
-  "timestamp_utc": "2026-05-18T14:05:26.349778+00:00",
+  "timestamp_utc": "2026-05-21T22:19:54.659941+00:00",
   "topic": "0.3_Cosmology_Hubble_Tension",
   "uet_version": "0.9.0"
 }

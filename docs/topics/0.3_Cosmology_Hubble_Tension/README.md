@@ -88,6 +88,8 @@ Supporting standard files:
   this failure must remain visible in topic summaries
 - Branch gates now separate the accepted scalar H0 benchmark from the diagnostic beta bridge
   and blocked high-z, dark-energy, and full-likelihood claims
+- `hubble_claim_scope_gate.controller_status == SCALAR_H0_BENCHMARK_ONLY` is the export
+  ceiling for integration summaries.
 
 ## Baselines
 

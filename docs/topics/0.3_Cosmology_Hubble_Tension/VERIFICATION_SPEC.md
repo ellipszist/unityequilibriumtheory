@@ -22,6 +22,7 @@
   - `Data/03_Research/source_evidence_readiness_matrix.json`
   - `Data/03_Research/branch_claim_gate.json`
   - embedded `hubble_claim_scope_gate` in `Result/artifacts/hubble_comparison_validation.json`
+  - `hubble_claim_scope_gate.controller_status`, blocked export phrases, and machine-readable next blockers
 - Latest rerun:
   - artifact status: `PASS`
   - relative error: about `2.085%`
@@ -33,4 +34,7 @@
     is `sqrt(alpha_em)` from the central constants module
   - A PASS applies only to the scalar published-value H0 benchmark. The beta bridge remains
     an open derivation gate.
+  - `hubble_claim_scope_gate.controller_status == SCALAR_H0_BENCHMARK_ONLY` means
+    resolved-Hubble-tension, full-likelihood, high-z, dark-energy, and derived beta-frame
+    wording remain blocked.
   - A PASS does not close BAO/SN/CMB likelihood consistency, high-z behavior, or dark energy.

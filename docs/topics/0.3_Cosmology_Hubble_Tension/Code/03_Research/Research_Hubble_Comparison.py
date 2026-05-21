@@ -296,7 +296,12 @@ def build_hubble_claim_scope_gate(error: float, passed: bool, source_evidence_re
         "schema_version": "1.0",
         "topic": "0.3_Cosmology_Hubble_Tension",
         "purpose": "Machine-readable controller separating scalar benchmark PASS from unresolved cosmology claims.",
-        "controller_status": "WARN" if passed else "FAIL",
+        "controller_status": "SCALAR_H0_BENCHMARK_ONLY" if passed else "SCALAR_H0_BENCHMARK_FAIL",
+        "controller_reason": (
+            "The scalar published-value H0 gap benchmark may pass, but bridge derivation, "
+            "full-likelihood, high-z, and dark-energy claims remain open."
+        ),
+        "claim_class": "C_internal_scalar_h0_published_value_benchmark",
         "scalar_benchmark_gate": {
             "status": "PASS" if passed else "FAIL",
             "claim_class": "C - internal scalar published-value benchmark",
@@ -333,6 +338,25 @@ def build_hubble_claim_scope_gate(error: float, passed: bool, source_evidence_re
             "high-z prediction confirmed",
             "derived beta_frame relation",
         ],
+        "blocked_export_phrases": [
+            "Hubble tension resolved",
+            "full cosmology model validated",
+            "Planck SH0ES likelihood replicated",
+            "BAO SN CMB consistency validated",
+            "dark energy replaced",
+            "high-z prediction confirmed",
+            "beta_frame derived",
+            "cosmology solved",
+        ],
+        "machine_readable_next_blockers": [
+            "bridge_derivation_with_units_missing",
+            "full_planck_shoes_likelihood_pipeline_missing",
+            "bao_sn_cmb_consistency_package_missing",
+            "high_z_transition_verifier_missing",
+            "dark_energy_branch_artifact_missing",
+            "uncertainty_propagation_gate_missing",
+            "source_targets_still_blocked" if readiness_summary.get("targets_blocked_by_pending_evidence") else "source_targets_ready_for_review",
+        ],
         "gate_inputs": {
             "source_evidence_summary": readiness_summary,
             "branch_claim_summary": branch_summary,
@@ -340,6 +364,11 @@ def build_hubble_claim_scope_gate(error: float, passed: bool, source_evidence_re
         "promotion_rule": (
             "Only the scalar published-value benchmark can pass in this artifact. Stronger cosmology claims require "
             "a closed bridge derivation gate and a full likelihood/baseline gate."
+        ),
+        "claim_boundary": (
+            "0.3 may export only an internal scalar Planck-SH0ES H0-gap benchmark. It must not be used as a "
+            "resolved-Hubble-tension, full-cosmology, dark-energy, high-z prediction, or derived beta-frame claim "
+            "until dedicated derivation, likelihood, and branch gates close."
         ),
     }
 

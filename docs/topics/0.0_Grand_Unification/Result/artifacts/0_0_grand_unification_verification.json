@@ -1,7 +1,7 @@
 {
   "schema_version": "1.2",
   "topic": "0.0_Grand_Unification",
-  "timestamp_utc": "2026-05-21T22:16:19.833153+00:00",
+  "timestamp_utc": "2026-05-21T22:20:35.101154+00:00",
   "command": "python docs/topics/0.0_Grand_Unification/Code/03_Research/Verify_Omni.py",
   "status": "WARN",
   "passed_run_contract": true,
@@ -28,8 +28,8 @@
     },
     {
       "path": "docs/topics/0.3_Cosmology_Hubble_Tension/Result/artifacts/hubble_comparison_validation.json",
-      "bytes": 9297,
-      "sha256": "901b42fb6726ff09f78882b4ef5c61039780043f838e1c5a1c834be2b6ed6e09",
+      "bytes": 10565,
+      "sha256": "ca1f745177994dfb3561e337a38efda1275808b19bedd52509575457ae7ba27a",
       "provenance_role": "subordinate_artifact",
       "status": "PASS"
     },
@@ -281,8 +281,40 @@
       "status": "PASS",
       "claim_class": null,
       "schema_version": null,
-      "timestamp_utc": "2026-05-18T14:05:26.349778+00:00",
+      "timestamp_utc": "2026-05-21T22:19:54.659941+00:00",
       "claim_gates": [
+        {
+          "gate": "hubble_claim_scope_gate",
+          "status": "SCALAR_H0_BENCHMARK_ONLY",
+          "claim_class": "C_internal_scalar_h0_published_value_benchmark",
+          "blocked_exports": [
+            "Hubble tension resolved",
+            "validated full cosmology model",
+            "dark-energy replacement",
+            "high-z prediction confirmed",
+            "derived beta_frame relation"
+          ],
+          "blocked_export_phrases": [
+            "Hubble tension resolved",
+            "full cosmology model validated",
+            "Planck SH0ES likelihood replicated",
+            "BAO SN CMB consistency validated",
+            "dark energy replaced",
+            "high-z prediction confirmed",
+            "beta_frame derived",
+            "cosmology solved"
+          ],
+          "next_blockers": [
+            "bridge_derivation_with_units_missing",
+            "full_planck_shoes_likelihood_pipeline_missing",
+            "bao_sn_cmb_consistency_package_missing",
+            "high_z_transition_verifier_missing",
+            "dark_energy_branch_artifact_missing",
+            "uncertainty_propagation_gate_missing",
+            "source_targets_still_blocked"
+          ],
+          "claim_boundary": "0.3 may export only an internal scalar Planck-SH0ES H0-gap benchmark. It must not be used as a resolved-Hubble-tension, full-cosmology, dark-energy, high-z prediction, or derived beta-frame claim until dedicated derivation, likelihood, and branch gates close."
+        },
         {
           "gate": "branch_claim_gate",
           "status": "BLOCKED",
@@ -291,8 +323,8 @@
           "claim_boundary": "This gate cannot raise the topic above the current internal scalar H0 benchmark package."
         }
       ],
-      "sha256": "901b42fb6726ff09f78882b4ef5c61039780043f838e1c5a1c834be2b6ed6e09",
-      "bytes": 9297
+      "sha256": "ca1f745177994dfb3561e337a38efda1275808b19bedd52509575457ae7ba27a",
+      "bytes": 10565
     },
     {
       "topic": "0.4_Superconductivity_Superfluids",
@@ -1205,6 +1237,7 @@
         "galaxy_claim_scope_gate",
         "galaxy_model_gate",
         "hrv_provenance_gate",
+        "hubble_claim_scope_gate",
         "mass_generation_claim_scope_gate",
         "numeric_residual_gate",
         "paper_readiness_gate",
@@ -1212,7 +1245,7 @@
         "theorem_boundary_gate",
         "thermodynamic_claim_scope_gate"
       ],
-      "paper_readiness_blocked_dependency_count": 47
+      "paper_readiness_blocked_dependency_count": 48
     },
     "machine_readable_next_blockers": [
       "subordinate_fail_artifact_present",
@@ -1230,7 +1263,7 @@
     "status": "BLOCKED",
     "rule": "Any FAIL, WARN, UNKNOWN, missing artifact, source-incomplete, formula-open, or synthetic-only dependency blocks theory-level claims.",
     "dependency_count": 26,
-    "blocked_dependency_count": 47,
+    "blocked_dependency_count": 48,
     "blockers": [
       {
         "topic": "0.1_Galaxy_Rotation_Problem",
@@ -1278,6 +1311,23 @@
         "gate": "branch_claim_gate",
         "gate_status": "BLOCKED",
         "blocked_exports": [],
+        "blocked_claims": [],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
+      },
+      {
+        "topic": "0.3_Cosmology_Hubble_Tension",
+        "artifact": "docs/topics/0.3_Cosmology_Hubble_Tension/Result/artifacts/hubble_comparison_validation.json",
+        "status": "PASS",
+        "claim_class": null,
+        "gate": "hubble_claim_scope_gate",
+        "gate_status": "SCALAR_H0_BENCHMARK_ONLY",
+        "blocked_exports": [
+          "Hubble tension resolved",
+          "validated full cosmology model",
+          "dark-energy replacement",
+          "high-z prediction confirmed",
+          "derived beta_frame relation"
+        ],
         "blocked_claims": [],
         "blocker": "Subordinate claim gate blocks theory-level inheritance."
       },
@@ -1818,8 +1868,8 @@
       },
       {
         "path": "docs/topics/0.3_Cosmology_Hubble_Tension/Result/artifacts/hubble_comparison_validation.json",
-        "bytes": 9297,
-        "sha256": "901b42fb6726ff09f78882b4ef5c61039780043f838e1c5a1c834be2b6ed6e09",
+        "bytes": 10565,
+        "sha256": "ca1f745177994dfb3561e337a38efda1275808b19bedd52509575457ae7ba27a",
         "provenance_role": "subordinate_artifact",
         "status": "PASS"
       },
@@ -2071,8 +2121,40 @@
         "status": "PASS",
         "claim_class": null,
         "schema_version": null,
-        "timestamp_utc": "2026-05-18T14:05:26.349778+00:00",
+        "timestamp_utc": "2026-05-21T22:19:54.659941+00:00",
         "claim_gates": [
+          {
+            "gate": "hubble_claim_scope_gate",
+            "status": "SCALAR_H0_BENCHMARK_ONLY",
+            "claim_class": "C_internal_scalar_h0_published_value_benchmark",
+            "blocked_exports": [
+              "Hubble tension resolved",
+              "validated full cosmology model",
+              "dark-energy replacement",
+              "high-z prediction confirmed",
+              "derived beta_frame relation"
+            ],
+            "blocked_export_phrases": [
+              "Hubble tension resolved",
+              "full cosmology model validated",
+              "Planck SH0ES likelihood replicated",
+              "BAO SN CMB consistency validated",
+              "dark energy replaced",
+              "high-z prediction confirmed",
+              "beta_frame derived",
+              "cosmology solved"
+            ],
+            "next_blockers": [
+              "bridge_derivation_with_units_missing",
+              "full_planck_shoes_likelihood_pipeline_missing",
+              "bao_sn_cmb_consistency_package_missing",
+              "high_z_transition_verifier_missing",
+              "dark_energy_branch_artifact_missing",
+              "uncertainty_propagation_gate_missing",
+              "source_targets_still_blocked"
+            ],
+            "claim_boundary": "0.3 may export only an internal scalar Planck-SH0ES H0-gap benchmark. It must not be used as a resolved-Hubble-tension, full-cosmology, dark-energy, high-z prediction, or derived beta-frame claim until dedicated derivation, likelihood, and branch gates close."
+          },
           {
             "gate": "branch_claim_gate",
             "status": "BLOCKED",
@@ -2081,8 +2163,8 @@
             "claim_boundary": "This gate cannot raise the topic above the current internal scalar H0 benchmark package."
           }
         ],
-        "sha256": "901b42fb6726ff09f78882b4ef5c61039780043f838e1c5a1c834be2b6ed6e09",
-        "bytes": 9297
+        "sha256": "ca1f745177994dfb3561e337a38efda1275808b19bedd52509575457ae7ba27a",
+        "bytes": 10565
       },
       {
         "topic": "0.4_Superconductivity_Superfluids",
@@ -2894,7 +2976,7 @@
           "reynolds_critical": 2261.946710584651,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 0.7611044292886768,
+          "ai_initial_loss": 1.0945939267759157,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
@@ -2919,7 +3001,7 @@
           "reynolds_critical": 226.19467105846513,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 2.9389303596942797,
+          "ai_initial_loss": 1.8923846689991026,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
@@ -3196,7 +3278,7 @@
       "status": "BLOCKED",
       "rule": "Any FAIL, WARN, UNKNOWN, missing artifact, source-incomplete, formula-open, or synthetic-only dependency blocks theory-level claims.",
       "dependency_count": 26,
-      "blocked_dependency_count": 47,
+      "blocked_dependency_count": 48,
       "blockers": [
         {
           "topic": "0.1_Galaxy_Rotation_Problem",
@@ -3244,6 +3326,23 @@
           "gate": "branch_claim_gate",
           "gate_status": "BLOCKED",
           "blocked_exports": [],
+          "blocked_claims": [],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
+        },
+        {
+          "topic": "0.3_Cosmology_Hubble_Tension",
+          "artifact": "docs/topics/0.3_Cosmology_Hubble_Tension/Result/artifacts/hubble_comparison_validation.json",
+          "status": "PASS",
+          "claim_class": null,
+          "gate": "hubble_claim_scope_gate",
+          "gate_status": "SCALAR_H0_BENCHMARK_ONLY",
+          "blocked_exports": [
+            "Hubble tension resolved",
+            "validated full cosmology model",
+            "dark-energy replacement",
+            "high-z prediction confirmed",
+            "derived beta_frame relation"
+          ],
           "blocked_claims": [],
           "blocker": "Subordinate claim gate blocks theory-level inheritance."
         },
@@ -3864,6 +3963,7 @@
           "galaxy_claim_scope_gate",
           "galaxy_model_gate",
           "hrv_provenance_gate",
+          "hubble_claim_scope_gate",
           "mass_generation_claim_scope_gate",
           "numeric_residual_gate",
           "paper_readiness_gate",
@@ -3871,7 +3971,7 @@
           "theorem_boundary_gate",
           "thermodynamic_claim_scope_gate"
         ],
-        "paper_readiness_blocked_dependency_count": 47
+        "paper_readiness_blocked_dependency_count": 48
       },
       "machine_readable_next_blockers": [
         "subordinate_fail_artifact_present",
