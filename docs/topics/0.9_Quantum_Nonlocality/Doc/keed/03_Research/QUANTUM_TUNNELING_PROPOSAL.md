@@ -1,4 +1,13 @@
 # 👻 Research Proposal: Quantum Tunneling (Josephson Junction)
+> [!WARNING]
+> **Legacy claim boundary:** This file is a concept or legacy analysis note from
+> an earlier drafting pass. It is not the topic status authority and must not be
+> used to claim UET proves nonlocality, derives CHSH from first principles,
+> reconstructs raw Bell event counts, replaces standard quantum theory, or
+> transfers CHSH PASS to qubit/double-slit/tunneling lanes. Current allowed
+> claims are controlled by `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`,
+> `DATA_MANIFEST.md`, and
+> `Result/artifacts/0_9_quantum_nonlocality_verification.json`.
 
 ## 1. Objective
 To demonstrate that UET's **Information Diffusion** mechanism naturally gives rise to **Quantum Tunneling**, linking Superconductivity (Topic 0.4) with Nonlocality (Topic 0.9).

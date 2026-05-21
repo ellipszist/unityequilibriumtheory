@@ -1,4 +1,5 @@
 {
+  "claim_boundary": "Legacy internal show-result summary only. Current allowed claims are controlled by Result/artifacts/0_9_quantum_nonlocality_verification.json; this file does not prove UET nonlocality, reconstruct raw Bell counts, or validate adjacent quantum lanes.",
   "run_id": "1769133380_Research_Quantum_Mechanics",
   "simulation": "Quantum_Nonlocality",
   "status": "COMPLETED",
