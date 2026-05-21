@@ -1,4 +1,13 @@
 # 🔬 ANALYSIS: Mass Generation (The Origin of Weight)
+> [!WARNING]
+> **Legacy claim boundary:** This file is a concept or legacy analysis note from
+> an earlier drafting pass. It is not the topic status authority and must not be
+> used to claim a first-principles mass-generation mechanism, Higgs replacement,
+> solved hierarchy problem, exact particle-mass prediction, Koide/tau proof, or
+> Standard Model replacement. Current allowed claims are controlled by
+> `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`,
+> `DATA_MANIFEST.md`, and
+> `Result/artifacts/0_17_mass_generation_verification.json`.
 
 > **File/Script:** `docs/topics/0.17_Mass_Generation/Code/03_Research/Research_Mass_Generation.py`
 > **Role:** Mid-Scale Verification (Axiom 1)

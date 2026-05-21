@@ -1,4 +1,13 @@
 # 🔬 ANALYSIS: กลไกกำเนิดมวล (Mass Generation Engine)
+> [!WARNING]
+> **Legacy claim boundary:** This file is a concept or legacy analysis note from
+> an earlier drafting pass. It is not the topic status authority and must not be
+> used to claim a first-principles mass-generation mechanism, Higgs replacement,
+> solved hierarchy problem, exact particle-mass prediction, Koide/tau proof, or
+> Standard Model replacement. Current allowed claims are controlled by
+> `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`,
+> `DATA_MANIFEST.md`, and
+> `Result/artifacts/0_17_mass_generation_verification.json`.
 
 > **ไฟล์/สคริปต์:** `Code/01_Engine/Engine_Mass_Higgs.py`
 > **หน้าที่:** Engine (กลไกหลัก)

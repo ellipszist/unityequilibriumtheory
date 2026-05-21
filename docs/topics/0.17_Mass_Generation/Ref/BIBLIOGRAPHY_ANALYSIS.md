@@ -1,4 +1,12 @@
 # 📚 UET Mass Generation: Bibliography & Analysis
+> [!WARNING]
+> **Legacy claim boundary:** This file is a bibliography analysis note, not the
+> topic status authority. It must not be used to claim Yang-Mills mass-gap
+> solution, Higgs replacement, first-principles mass-generation validation, or
+> Standard Model replacement. Current allowed claims are controlled by
+> `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`,
+> `DATA_MANIFEST.md`, and
+> `Result/artifacts/0_17_mass_generation_verification.json`.
 > "Mass is not a property of the particle, but the resistance of the Unity Manifold to acceleration."
 
 This document analyzes the scientific precedents for UET's "Mass Generation" mechanism. We connect our findings to the Higgs Mechanism and the Yang-Mills Mass Gap.
