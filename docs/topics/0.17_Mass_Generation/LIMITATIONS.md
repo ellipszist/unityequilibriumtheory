@@ -7,7 +7,7 @@
 - The current primary verifier tests Higgs coupling consistency against a Standard Model normalized `kappa = 1` baseline; it does not prove a UET-specific mass-generation mechanism.
 - `higgs_coupling_data.json` is still a normalized local copy; the new external Higgs reference package is extracted/source-referenced, not a raw upstream table archive.
 - `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, and `Data/03_Research/branch_claim_gate.json` are workflow controls only. They do not count as branch validation or mechanism proof.
-- `mass_generation_claim_scope_gate` allows the Higgs-coupling benchmark export while blocking mechanism, replacement, hierarchy, Koide-proof, and Planck-ansatz exports.
+- `mass_generation_claim_scope_gate` keeps the export ceiling at `HIGGS_KAPPA_BENCHMARK_ONLY`: mechanism, Higgs replacement, hierarchy, Koide/tau proof, all-particle-mass, and Planck-ansatz wording remain blocked.
 - Koide/tau calculations impose an empirical relation as a constraint; they are not currently independent first-principles predictions.
 - Multiple lepton data files exist with different source-year labels; `pdg_2024_leptons.json` is now the declared normative reference, while `lepton_data.json` remains legacy until a branch-specific verifier replaces it.
 - The Planck exponential mass ansatz uses a hardcoded Planck mass scale and lacks a verified parameter derivation path.

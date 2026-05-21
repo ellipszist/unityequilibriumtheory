@@ -241,6 +241,21 @@ def _extract_claim_gate_summary(artifact: dict) -> list[dict]:
             }
         )
 
+    mass_generation_claim_scope_gate = artifact.get("mass_generation_claim_scope_gate")
+    if isinstance(mass_generation_claim_scope_gate, dict):
+        summaries.append(
+            {
+                "gate": "mass_generation_claim_scope_gate",
+                "status": mass_generation_claim_scope_gate.get("controller_status"),
+                "claim_class": mass_generation_claim_scope_gate.get("claim_class"),
+                "blocked_exports": mass_generation_claim_scope_gate.get("blocked_exports", []),
+                "blocked_export_phrases": mass_generation_claim_scope_gate.get("blocked_export_phrases", []),
+                "next_blockers": mass_generation_claim_scope_gate.get("machine_readable_next_blockers", []),
+                "claim_boundary": mass_generation_claim_scope_gate.get("claim_boundary")
+                or mass_generation_claim_scope_gate.get("promotion_rule"),
+            }
+        )
+
     biophysics_claim_scope_gate = artifact.get("biophysics_claim_scope_gate")
     if isinstance(biophysics_claim_scope_gate, dict):
         summaries.append(

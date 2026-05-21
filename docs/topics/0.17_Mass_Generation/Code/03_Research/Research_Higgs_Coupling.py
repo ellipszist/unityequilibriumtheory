@@ -355,7 +355,12 @@ def _build_mass_generation_claim_scope_gate(result, source_evidence_readiness_ma
         "schema_version": "1.0",
         "topic": "0.17_Mass_Generation",
         "purpose": "Machine-readable controller separating Higgs coupling benchmark PASS from mass-generation mechanism claims.",
-        "controller_status": "WARN" if benchmark_pass else result["status"],
+        "controller_status": "HIGGS_KAPPA_BENCHMARK_ONLY",
+        "controller_reason": (
+            "The Higgs-coupling smoke benchmark may pass, but uncertainty-aware Higgs validation, mechanism, "
+            "hierarchy, Koide/tau, and Planck-ansatz exports remain blocked."
+        ),
+        "claim_class": "C_internal_higgs_kappa_consistency_benchmark",
         "higgs_coupling_benchmark_gate": {
             "status": "PASS" if benchmark_pass else "WARN",
             "claim_class": "C - internal SM-normalized Higgs coupling consistency benchmark",
@@ -392,6 +397,25 @@ def _build_mass_generation_claim_scope_gate(result, source_evidence_readiness_ma
             "Koide relation proved from UET",
             "Planck exponential ansatz validated",
         ],
+        "blocked_export_phrases": [
+            "new mass-generation mechanism validated",
+            "Higgs mechanism replaced",
+            "mass hierarchy derived",
+            "Koide relation proved",
+            "tau mass predicted from first principles",
+            "Planck exponential ansatz validated",
+            "UET explains all particle masses",
+            "Higgs sector solved",
+        ],
+        "machine_readable_next_blockers": [
+            "uncertainty_aware_higgs_fit_missing",
+            "source_to_row_mapping_incomplete",
+            "raw_higgs_table_archive_missing",
+            "mass_generation_mechanism_derivation_missing",
+            "koide_tau_verifier_missing",
+            "planck_ansatz_parameter_derivation_missing",
+            "mass_hierarchy_benchmark_missing",
+        ],
         "gate_inputs": {
             "source_evidence_summary": readiness_summary,
             "branch_claim_summary": branch_summary,
@@ -399,6 +423,11 @@ def _build_mass_generation_claim_scope_gate(result, source_evidence_readiness_ma
         "promotion_rule": (
             "Only the Higgs coupling consistency benchmark can pass in this artifact. Stronger mass-generation claims "
             "require an uncertainty-aware Higgs gate plus separate mechanism and branch verifier gates."
+        ),
+        "claim_boundary": (
+            "0.17 may export only an internal SM-normalized Higgs kappa consistency benchmark. It must not be used "
+            "as a new mass-generation mechanism, Higgs replacement, mass-hierarchy derivation, Koide/tau proof, "
+            "or Planck-ansatz validation until separate source-locked and uncertainty-aware gates exist."
         ),
     }
 
@@ -415,7 +444,7 @@ def write_verification_artifact(result):
         branch_claim_gate,
     )
     artifact = {
-        "schema_version": "1.2",
+        "schema_version": "1.3",
         "topic": "0.17_Mass_Generation",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "command": "python docs/topics/0.17_Mass_Generation/Code/03_Research/Research_Higgs_Coupling.py",

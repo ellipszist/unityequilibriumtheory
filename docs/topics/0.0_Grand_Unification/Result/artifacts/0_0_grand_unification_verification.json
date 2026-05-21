@@ -1,7 +1,7 @@
 {
   "schema_version": "1.2",
   "topic": "0.0_Grand_Unification",
-  "timestamp_utc": "2026-05-21T22:13:04.076202+00:00",
+  "timestamp_utc": "2026-05-21T22:16:19.833153+00:00",
   "command": "python docs/topics/0.0_Grand_Unification/Code/03_Research/Verify_Omni.py",
   "status": "WARN",
   "passed_run_contract": true,
@@ -126,8 +126,8 @@
     },
     {
       "path": "docs/topics/0.17_Mass_Generation/Result/artifacts/0_17_mass_generation_verification.json",
-      "bytes": 8670,
-      "sha256": "eb9738f80d0423bdd0fcaa4461c9d823290410184a3760e0c6b5d67beeb0c00f",
+      "bytes": 10017,
+      "sha256": "311197708c64819018466b0cae8dfee62527cd7eea74209e99107870131b3bd4",
       "provenance_role": "subordinate_artifact",
       "status": "PASS"
     },
@@ -670,9 +670,41 @@
       "artifact": "docs/topics/0.17_Mass_Generation/Result/artifacts/0_17_mass_generation_verification.json",
       "status": "PASS",
       "claim_class": null,
-      "schema_version": "1.2",
-      "timestamp_utc": "2026-05-18T14:12:04.275729+00:00",
+      "schema_version": "1.3",
+      "timestamp_utc": "2026-05-21T22:16:06.496328+00:00",
       "claim_gates": [
+        {
+          "gate": "mass_generation_claim_scope_gate",
+          "status": "HIGGS_KAPPA_BENCHMARK_ONLY",
+          "claim_class": "C_internal_higgs_kappa_consistency_benchmark",
+          "blocked_exports": [
+            "new mass-generation mechanism validated",
+            "Higgs mechanism replaced",
+            "Standard Model mass hierarchy derived",
+            "Koide relation proved from UET",
+            "Planck exponential ansatz validated"
+          ],
+          "blocked_export_phrases": [
+            "new mass-generation mechanism validated",
+            "Higgs mechanism replaced",
+            "mass hierarchy derived",
+            "Koide relation proved",
+            "tau mass predicted from first principles",
+            "Planck exponential ansatz validated",
+            "UET explains all particle masses",
+            "Higgs sector solved"
+          ],
+          "next_blockers": [
+            "uncertainty_aware_higgs_fit_missing",
+            "source_to_row_mapping_incomplete",
+            "raw_higgs_table_archive_missing",
+            "mass_generation_mechanism_derivation_missing",
+            "koide_tau_verifier_missing",
+            "planck_ansatz_parameter_derivation_missing",
+            "mass_hierarchy_benchmark_missing"
+          ],
+          "claim_boundary": "0.17 may export only an internal SM-normalized Higgs kappa consistency benchmark. It must not be used as a new mass-generation mechanism, Higgs replacement, mass-hierarchy derivation, Koide/tau proof, or Planck-ansatz validation until separate source-locked and uncertainty-aware gates exist."
+        },
         {
           "gate": "branch_claim_gate",
           "status": "BLOCKED",
@@ -681,8 +713,8 @@
           "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current Higgs-coupling run-contract evidence."
         }
       ],
-      "sha256": "eb9738f80d0423bdd0fcaa4461c9d823290410184a3760e0c6b5d67beeb0c00f",
-      "bytes": 8670
+      "sha256": "311197708c64819018466b0cae8dfee62527cd7eea74209e99107870131b3bd4",
+      "bytes": 10017
     },
     {
       "topic": "0.18_Mathnicry",
@@ -1173,13 +1205,14 @@
         "galaxy_claim_scope_gate",
         "galaxy_model_gate",
         "hrv_provenance_gate",
+        "mass_generation_claim_scope_gate",
         "numeric_residual_gate",
         "paper_readiness_gate",
         "scale_claim_gate",
         "theorem_boundary_gate",
         "thermodynamic_claim_scope_gate"
       ],
-      "paper_readiness_blocked_dependency_count": 46
+      "paper_readiness_blocked_dependency_count": 47
     },
     "machine_readable_next_blockers": [
       "subordinate_fail_artifact_present",
@@ -1197,7 +1230,7 @@
     "status": "BLOCKED",
     "rule": "Any FAIL, WARN, UNKNOWN, missing artifact, source-incomplete, formula-open, or synthetic-only dependency blocks theory-level claims.",
     "dependency_count": 26,
-    "blocked_dependency_count": 46,
+    "blocked_dependency_count": 47,
     "blockers": [
       {
         "topic": "0.1_Galaxy_Rotation_Problem",
@@ -1489,6 +1522,23 @@
         "gate": "branch_claim_gate",
         "gate_status": "BLOCKED",
         "blocked_exports": [],
+        "blocked_claims": [],
+        "blocker": "Subordinate claim gate blocks theory-level inheritance."
+      },
+      {
+        "topic": "0.17_Mass_Generation",
+        "artifact": "docs/topics/0.17_Mass_Generation/Result/artifacts/0_17_mass_generation_verification.json",
+        "status": "PASS",
+        "claim_class": null,
+        "gate": "mass_generation_claim_scope_gate",
+        "gate_status": "HIGGS_KAPPA_BENCHMARK_ONLY",
+        "blocked_exports": [
+          "new mass-generation mechanism validated",
+          "Higgs mechanism replaced",
+          "Standard Model mass hierarchy derived",
+          "Koide relation proved from UET",
+          "Planck exponential ansatz validated"
+        ],
         "blocked_claims": [],
         "blocker": "Subordinate claim gate blocks theory-level inheritance."
       },
@@ -1866,8 +1916,8 @@
       },
       {
         "path": "docs/topics/0.17_Mass_Generation/Result/artifacts/0_17_mass_generation_verification.json",
-        "bytes": 8670,
-        "sha256": "eb9738f80d0423bdd0fcaa4461c9d823290410184a3760e0c6b5d67beeb0c00f",
+        "bytes": 10017,
+        "sha256": "311197708c64819018466b0cae8dfee62527cd7eea74209e99107870131b3bd4",
         "provenance_role": "subordinate_artifact",
         "status": "PASS"
       },
@@ -2410,9 +2460,41 @@
         "artifact": "docs/topics/0.17_Mass_Generation/Result/artifacts/0_17_mass_generation_verification.json",
         "status": "PASS",
         "claim_class": null,
-        "schema_version": "1.2",
-        "timestamp_utc": "2026-05-18T14:12:04.275729+00:00",
+        "schema_version": "1.3",
+        "timestamp_utc": "2026-05-21T22:16:06.496328+00:00",
         "claim_gates": [
+          {
+            "gate": "mass_generation_claim_scope_gate",
+            "status": "HIGGS_KAPPA_BENCHMARK_ONLY",
+            "claim_class": "C_internal_higgs_kappa_consistency_benchmark",
+            "blocked_exports": [
+              "new mass-generation mechanism validated",
+              "Higgs mechanism replaced",
+              "Standard Model mass hierarchy derived",
+              "Koide relation proved from UET",
+              "Planck exponential ansatz validated"
+            ],
+            "blocked_export_phrases": [
+              "new mass-generation mechanism validated",
+              "Higgs mechanism replaced",
+              "mass hierarchy derived",
+              "Koide relation proved",
+              "tau mass predicted from first principles",
+              "Planck exponential ansatz validated",
+              "UET explains all particle masses",
+              "Higgs sector solved"
+            ],
+            "next_blockers": [
+              "uncertainty_aware_higgs_fit_missing",
+              "source_to_row_mapping_incomplete",
+              "raw_higgs_table_archive_missing",
+              "mass_generation_mechanism_derivation_missing",
+              "koide_tau_verifier_missing",
+              "planck_ansatz_parameter_derivation_missing",
+              "mass_hierarchy_benchmark_missing"
+            ],
+            "claim_boundary": "0.17 may export only an internal SM-normalized Higgs kappa consistency benchmark. It must not be used as a new mass-generation mechanism, Higgs replacement, mass-hierarchy derivation, Koide/tau proof, or Planck-ansatz validation until separate source-locked and uncertainty-aware gates exist."
+          },
           {
             "gate": "branch_claim_gate",
             "status": "BLOCKED",
@@ -2421,8 +2503,8 @@
             "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current Higgs-coupling run-contract evidence."
           }
         ],
-        "sha256": "eb9738f80d0423bdd0fcaa4461c9d823290410184a3760e0c6b5d67beeb0c00f",
-        "bytes": 8670
+        "sha256": "311197708c64819018466b0cae8dfee62527cd7eea74209e99107870131b3bd4",
+        "bytes": 10017
       },
       {
         "topic": "0.18_Mathnicry",
@@ -2812,7 +2894,7 @@
           "reynolds_critical": 2261.946710584651,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 0.973579006388636,
+          "ai_initial_loss": 0.7611044292886768,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
@@ -2837,7 +2919,7 @@
           "reynolds_critical": 226.19467105846513,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 0.8056447616801238,
+          "ai_initial_loss": 2.9389303596942797,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
@@ -3114,7 +3196,7 @@
       "status": "BLOCKED",
       "rule": "Any FAIL, WARN, UNKNOWN, missing artifact, source-incomplete, formula-open, or synthetic-only dependency blocks theory-level claims.",
       "dependency_count": 26,
-      "blocked_dependency_count": 46,
+      "blocked_dependency_count": 47,
       "blockers": [
         {
           "topic": "0.1_Galaxy_Rotation_Problem",
@@ -3406,6 +3488,23 @@
           "gate": "branch_claim_gate",
           "gate_status": "BLOCKED",
           "blocked_exports": [],
+          "blocked_claims": [],
+          "blocker": "Subordinate claim gate blocks theory-level inheritance."
+        },
+        {
+          "topic": "0.17_Mass_Generation",
+          "artifact": "docs/topics/0.17_Mass_Generation/Result/artifacts/0_17_mass_generation_verification.json",
+          "status": "PASS",
+          "claim_class": null,
+          "gate": "mass_generation_claim_scope_gate",
+          "gate_status": "HIGGS_KAPPA_BENCHMARK_ONLY",
+          "blocked_exports": [
+            "new mass-generation mechanism validated",
+            "Higgs mechanism replaced",
+            "Standard Model mass hierarchy derived",
+            "Koide relation proved from UET",
+            "Planck exponential ansatz validated"
+          ],
           "blocked_claims": [],
           "blocker": "Subordinate claim gate blocks theory-level inheritance."
         },
@@ -3765,13 +3864,14 @@
           "galaxy_claim_scope_gate",
           "galaxy_model_gate",
           "hrv_provenance_gate",
+          "mass_generation_claim_scope_gate",
           "numeric_residual_gate",
           "paper_readiness_gate",
           "scale_claim_gate",
           "theorem_boundary_gate",
           "thermodynamic_claim_scope_gate"
         ],
-        "paper_readiness_blocked_dependency_count": 46
+        "paper_readiness_blocked_dependency_count": 47
       },
       "machine_readable_next_blockers": [
         "subordinate_fail_artifact_present",
