@@ -1,4 +1,12 @@
 # 📚 UET Biophysics: Bibliography & Analysis
+> [!WARNING]
+> **Legacy claim boundary:** This file is a bibliography analysis note, not the
+> topic status authority. It must not be used to claim origin-of-life proof,
+> clinical biomarker validation, EEG seizure prediction, protein-folding
+> superiority, neural proof, or biophysical theory closure. Current allowed
+> claims are controlled by `README.md`, `LIMITATIONS.md`,
+> `VERIFICATION_SPEC.md`, `DATA_MANIFEST.md`, and
+> `Result/artifacts/0_22_biophysics_origin_of_life_verification.json`.
 > "Life is not a violation of the laws of physics; it is the most complex expression of them."
 
 This document analyzes the scientific precedents for UET's "Biophysics & Origin of Life" model. We connect our findings to the thermodynamic, informational, and energetic requirements of living systems.
