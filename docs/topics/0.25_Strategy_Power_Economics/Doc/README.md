@@ -1,4 +1,14 @@
 # 🏛️ 0.25 Strategic Expansion & Economic Power
+> [!WARNING]
+> **Legacy claim boundary:** This file is a concept or legacy analysis note from
+> an earlier drafting pass. It is not the topic status authority and must not be
+> used to claim market prediction, policy causality, strategic superiority,
+> Nash-equilibrium improvement, social stabilization, historical-collapse proof,
+> geopolitical forecasting, 8-billion resonance validation, world-lease proof,
+> or economic-law confirmation. Current allowed claims are controlled by
+> `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`,
+> `DATA_MANIFEST.md`, and
+> `Result/artifacts/0_25_strategy_power_economics_verification.json`.
 
 ![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
 ![Standard](https://img.shields.io/badge/Standard-Extreme_Simplicity-blueviolet)
