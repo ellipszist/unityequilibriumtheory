@@ -1,5 +1,14 @@
 # 🔬 ANALYSIS: 0.19 Fluid Gravity (General Relativity)
 
+> [!WARNING]
+> **Legacy claim boundary:** This file is a concept, bibliography note, or legacy analysis note from an earlier drafting pass.
+> It is not the topic status authority and must not be used to claim first-principles G derivation,
+> General Relativity validation, Einstein-equation derivation, equivalence-principle proof,
+> light-bending/perihelion validation, short-range gravity validation, singularity resolution,
+> antigravity, dark-energy replacement, or quantum-gravity closure. Current allowed claims are controlled by
+> `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and
+> `Result/artifacts/0_19_gravity_gr_verification.json`: CODATA constant checkpoint and derived-unit consistency only.
+
 > **File/Script:** `Code/01_Engine/Engine_Fluid_Gravity.py`
 > **Role:** Theory Unification
 > **Status:** 🟢 FINAL
