@@ -1,5 +1,13 @@
 # 🔬 ANALYSIS: AI & Intelligence Proofs (การพิสูจน์ตรรกะระดับปัญญา)
 
+> [!WARNING]
+> **Legacy claim boundary:** This file is a concept, project map, bibliography note, or legacy analysis note from an earlier drafting pass.
+> It is not the topic status authority and must not be used to claim AI alignment proof, ethics as a physical law,
+> consciousness, AGI, universal intelligence dynamics, optimizer superiority, alpha-kappa law, MoE performance proof,
+> or validated developmental-AI behavior. Current allowed claims are controlled by `README.md`, `LIMITATIONS.md`,
+> `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and `Result/artifacts/0_24_artificial_intelligence_verification.json`:
+> internal scaling/sparsity benchmark wording only.
+
 > **Files:** `Proof_AI_Efficiency.py`, `Proof_Latent_Space.py`
 > **Role:** Proof (Mathematical Validator)
 > **Status:** 🟢 REVIEWED

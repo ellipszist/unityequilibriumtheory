@@ -1,5 +1,13 @@
 # 🧠 ANALYSIS: 0.24 AI Scaling Laws (ปัญญาประดิษฐ์)
 
+> [!WARNING]
+> **Legacy claim boundary:** This file is a concept, project map, bibliography note, or legacy analysis note from an earlier drafting pass.
+> It is not the topic status authority and must not be used to claim AI alignment proof, ethics as a physical law,
+> consciousness, AGI, universal intelligence dynamics, optimizer superiority, alpha-kappa law, MoE performance proof,
+> or validated developmental-AI behavior. Current allowed claims are controlled by `README.md`, `LIMITATIONS.md`,
+> `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and `Result/artifacts/0_24_artificial_intelligence_verification.json`:
+> internal scaling/sparsity benchmark wording only.
+
 > **สถานะ:** ✅ Proven (Scaling Law Match)
 > **Engine:** `Research_AI_Scaling.py`, `Research_UET_Optimizer.py`
 > **Concept:** Information Entropy (ความฉลาดคือสถานะของพลังงาน)
