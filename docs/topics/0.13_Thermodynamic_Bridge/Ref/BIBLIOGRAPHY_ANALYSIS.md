@@ -1,4 +1,11 @@
 # 📚 UET Thermodynamic Bridge: Bibliography & Analysis
+
+> [!WARNING]
+> **Legacy claim boundary:** This file is a concept, paper draft, bibliography note, or legacy analysis note from an earlier drafting pass.
+> It is not the topic status authority and must not be used to claim UET bridge proof, exact information-energy bridge,
+> source-normalized Landauer validation, external heat-transport validation, Tier-A completion, or a theorem-level thermodynamic proof.
+> Current allowed claims are controlled by `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and
+> `Result/artifacts/0_13_thermodynamic_bridge_verification.json`: Landauer lower-bound and standard formula-consistency lanes only.
 > "Entropy is not disorder; it is the scale of the Unity Field's information."
 
 This document analyzes the scientific precedents for UET's "Thermodynamic Bridge". We connect our findings to Boltzmann's entropy, Clausius's second law, and Landauer's principle of information thermodynamics.
