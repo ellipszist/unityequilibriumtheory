@@ -1,5 +1,13 @@
 # 🔬 ANALYSIS: บทพิสูจน์สูตรริดเบิร์ก (Proof of Rydberg Formula)
 
+> [!WARNING]
+> **Legacy claim boundary:** This file is a concept, bibliography note, evidence note, or legacy analysis note from an earlier drafting pass.
+> It is not the topic status authority and must not be used to claim first-principles Rydberg derivation,
+> QED/fine-structure validation, Lamb-shift explanation, helium validation, many-electron solution,
+> quantum-theory closure, or full atomic-theory proof. Current allowed claims are controlled by
+> `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and
+> `Result/artifacts/0_20_atomic_physics_verification.json`: selected hydrogen Rydberg benchmark only.
+
 > **ไฟล์/สคริปต์:** `Code/02_Proof/Proof_Hydrogen_Spectrum.py`
 > **หน้าที่:** Proof (พิสูจน์ที่มาสมการ)
 > **สถานะ:** 🟢 สมบูรณ์
