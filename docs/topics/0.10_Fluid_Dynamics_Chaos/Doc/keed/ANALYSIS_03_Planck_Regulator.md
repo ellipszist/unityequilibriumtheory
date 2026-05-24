@@ -1,3 +1,5 @@
+> [!WARNING]
+> **Legacy claim boundary:** This file is a legacy analysis, paper draft, research note, or bibliography note, not the topic status authority. It must not be used to claim Navier-Stokes/Millennium proof, global regularity or smoothness proof, turbulence closure, production CFD replacement, universal fluid-engine superiority, external CFD validation, or theorem-level physical closure. Current allowed claims are controlled by `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and `Result/artifacts/fluid_benchmark_validation.json`: internal speed benchmark and finite-output stress diagnostic only.
 # 🔬 ANALYSIS: 0.10 The Planck Regulator (Singularity Prevention)
 
 > **File/Script:** `docs/topics/0.10_Fluid_Dynamics_Chaos/Code/03_Research/Research_NS_Planck_Regulator.py`
