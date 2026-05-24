@@ -1,5 +1,13 @@
 # After: UET W/Z Mass Ratio & Anomaly
 
+> [!WARNING]
+> **Legacy claim boundary:** This file is a concept, analysis, or legacy note from an earlier drafting pass.
+> It is not the topic status authority and must not be used to claim a full electroweak proof,
+> gauge-theory derivation, all-observable electroweak fit, Standard Model replacement,
+> running-angle proof, or superiority over QFT/SM. Current allowed claims are controlled by
+> `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and
+> `Result/artifacts/electroweak_expanded_benchmark.json`: selected benchmark agreement only.
+
 ## 1. Problem Definition: The CDF Anomaly
 The Standard Model predicts the W-boson mass ($M_W$) based on the Z-mass ($M_Z$) and the Weinberg angle ($\theta_W$).
 - **Prediction**: $M_W = M_Z \cos \theta_W$.

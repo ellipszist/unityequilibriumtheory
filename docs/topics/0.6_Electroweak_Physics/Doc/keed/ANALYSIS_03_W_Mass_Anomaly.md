@@ -1,5 +1,13 @@
 # 🔬 ANALYSIS: 0.6 Electroweak Physics (W Mass Anomaly)
 
+> [!WARNING]
+> **Legacy claim boundary:** This file is a concept, analysis, or legacy note from an earlier drafting pass.
+> It is not the topic status authority and must not be used to claim a full electroweak proof,
+> gauge-theory derivation, all-observable electroweak fit, Standard Model replacement,
+> running-angle proof, or superiority over QFT/SM. Current allowed claims are controlled by
+> `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and
+> `Result/artifacts/electroweak_expanded_benchmark.json`: selected benchmark agreement only.
+
 > **File/Script:** `docs/topics/0.6_Electroweak_Physics/Code/03_Research/Research_W_Mass_Anomaly_Exp.py`
 > **Role:** Research (Conflict Resolution)
 > **Status:** ⚠️ CDF II SUPPORTED
