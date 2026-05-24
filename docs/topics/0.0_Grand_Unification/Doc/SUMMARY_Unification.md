@@ -1,5 +1,13 @@
 # UET Grand Unification: The "One Force" Theory
 
+> [!WARNING]
+> **Legacy claim boundary:** This file is a concept, summary, or legacy analysis note from an earlier drafting pass.
+> It is not the topic status authority and must not be used to claim Theory of Everything closure,
+> GR/QM unification proof, master proof, Millennium-problem solution, derivation of all constants,
+> Tier-A promotion, or proof transfer from subordinate topics. Current allowed claims are controlled by
+> `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and
+> `Result/artifacts/0_0_grand_unification_verification.json`: integration/governance run-contract only.
+
 ## 1. The Core Concept
 Current physics treats forces as separate entities:
 *   **Gravity:** Curvature of Spacetime (GR)
