@@ -1,5 +1,13 @@
 # After: UET Phase Transition: Bose-Einstein Condensation
 
+> [!WARNING]
+> **Legacy claim boundary:** This file is a concept, paper draft, bibliography note, or legacy analysis note from an earlier drafting pass.
+> It is not the topic status authority and must not be used to claim universal phase-transition theory,
+> renormalization-group derivation, full critical-exponent closure, material critical-point validation,
+> morphology validation, or theorem-level order-parameter proof. Current allowed claims are controlled by
+> `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and
+> `Result/artifacts/0_11_phase_transitions_verification.json`: selected beta-exponent benchmark and normalized mechanism diagnostics only.
+
 ## 1. Problem Definition: The Quantum State of Matter
 Bose-Einstein Condensation (BEC) occurs when bosons occupy a single quantum ground state at low temperatures.
 - **Critical Temperature**: $T_c = \frac{\hbar \omega}{k_B} (\frac{N}{\zeta(3)})^{1/3}$.
