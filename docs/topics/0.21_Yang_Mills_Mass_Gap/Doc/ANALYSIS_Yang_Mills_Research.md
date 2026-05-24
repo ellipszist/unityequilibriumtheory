@@ -1,4 +1,13 @@
 # 🔬 ANALYSIS: Yang-Mills Research (งานวิจัยเจาะลึกมวลแกป)
+> [!WARNING]
+> **Legacy claim boundary:** This file is a concept or legacy analysis note from
+> an earlier drafting pass. It is not the topic status authority and must not be
+> used to claim the Clay Yang-Mills problem is solved, mass gap proven,
+> confinement proven, full glueball spectrum validated, alpha fixed by theory,
+> Millennium problem supported, or a constructive mathematical proof. Current
+> allowed claims are controlled by `README.md`, `LIMITATIONS.md`,
+> `VERIFICATION_SPEC.md`, `DATA_MANIFEST.md`, and
+> `Result/artifacts/mass_gap_validation.json`.
 
 > **Files:** `Research_Mass_Gap.py`, `Research_Mass_Gap_Sweep.py`
 > **Role:** Research (Field Optimization)
