@@ -1,5 +1,13 @@
 # 📉 Limitation: The Semi-Empirical Reality
 
+> [!WARNING]
+> **Legacy claim boundary:** This file is a concept, paper draft, bibliography note, or legacy analysis note from an earlier drafting pass.
+> It is not the topic status authority and must not be used to claim QCD derivation, confinement proof,
+> full AME2020-table pass, hadron-mass validation, light-nuclei closure, independent proton-radius prediction,
+> complete strong-force theory, or Millennium-style closure. Current allowed claims are controlled by
+> `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and
+> `Result/artifacts/nuclear_binding_source_locked_validation.json`: selected heavy-nucleus subset and proton-radius benchmark-anchor checks only.
+
 ## The Problem
 Calculating Nuclear Binding Energy explicitly from the UET Master Equation ($\Omega$) requires simulating the interaction of every quark and gluon in a non-perturbative regime. This is equivalent to "Lattice QCD" and is computationally impossible on a standard machine.
 
