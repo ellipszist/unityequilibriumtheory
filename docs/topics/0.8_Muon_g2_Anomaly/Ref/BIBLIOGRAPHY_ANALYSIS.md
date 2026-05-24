@@ -1,4 +1,12 @@
 # 📚 UET Muon g-2 Anomaly: Bibliography & Analysis
+> [!WARNING]
+> **Legacy claim boundary:** This file is a bibliography analysis note, not the
+> topic status authority. It must not be used to claim muon g-2 anomaly
+> resolution, Standard Model discrepancy closure, alternate-theory exclusion,
+> new-physics mechanism establishment, parameter-free validation, or downstream
+> particle-theory support. Current allowed claims are controlled by `README.md`,
+> `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `DATA_MANIFEST.md`, and
+> `Result/artifacts/muon_g2_2025_validation.json`.
 > "The anomaly is not a new particle, but a geometric resonance."
 
 This document analyzes the scientific precedents for UET's explanation of the Muon g-2 anomaly. We connect our findings to the standard measurements from Fermilab and Brookhaven.
