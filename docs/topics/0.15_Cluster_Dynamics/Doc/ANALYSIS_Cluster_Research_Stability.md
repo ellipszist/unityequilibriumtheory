@@ -1,3 +1,5 @@
+> [!WARNING]
+> **Legacy claim boundary:** This file is a legacy analysis, paper draft, research note, or bibliography note, not the topic status authority. It must not be used to claim Bullet Cluster solution, dark-matter replacement, virial-discrepancy closure, lensing-map prediction, calibrated cluster-scale gravity, JWST formation resolution, or general missing-mass theory proof. Current allowed claims are controlled by `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and `Result/artifacts/0_15_cluster_dynamics_verification.json`: qualitative Bullet Cluster separation-sign diagnostic and bounded mechanism exploration only.
 # 🔬 ANALYSIS: Cluster Research & Stability (งานวิจัยกระจุกกาแล็กซีและความเสถียร)
 
 > **Files:** `Research_BulletCluster_Offset.py`, `Research_Cluster_Formation.py`, `Research_Cluster_Virial.py`, `Research_Stability_Experiment.py`
