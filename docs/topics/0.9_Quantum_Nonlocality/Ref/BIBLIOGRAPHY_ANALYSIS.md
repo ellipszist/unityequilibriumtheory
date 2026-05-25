@@ -1,3 +1,5 @@
+> [!WARNING]
+> **Legacy claim boundary:** This file is a legacy bibliography note, not the topic status authority. It must not be used to claim UET proves nonlocality, derives CHSH from first principles, reconstructs raw Bell event counts, replaces standard quantum theory, validates a non-local hidden-variable mechanism, or transfers CHSH PASS to qubit/double-slit/tunneling lanes. Current allowed claims are controlled by `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and `Result/artifacts/0_9_quantum_nonlocality_verification.json`: source-referenced CHSH summary benchmark only.
 # 📚 UET Quantum Nonlocality: Bibliography & Analysis
 > "There is no 'over there' in the Unity Field; everything is 'here'."
 
