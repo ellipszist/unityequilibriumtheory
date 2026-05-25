@@ -1,3 +1,5 @@
+> [!WARNING]
+> **Legacy claim boundary:** This file is a legacy analysis, directory note, or bibliography note, not the topic status authority. It must not be used to claim theorem proof, Millennium Problem resolution, P-vs-NP/Riemann/Collatz/BSD closure, external quantum validation, real elliptic-curve rank verification, L-function benchmark closure, or formal proof verification. Current allowed claims are controlled by `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and `Result/artifacts/0_18_mathnicry_verification.json`: local surrogate BSD run-contract evidence only.
 # 📚 UET Quantum Computing: Bibliography & Analysis
 > "A Quantum Circuit is a conductor of the Unity Manifold's phase coherence."
 
