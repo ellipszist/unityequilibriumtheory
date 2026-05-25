@@ -15,29 +15,46 @@
       "source_record": "docs/data/external/cosmology/laniakea/tully_2014/source_record.json",
       "preprocessing": "Small landmark working copy for visualization; not raw peculiar-velocity reconstruction.",
       "unit_system": "supergalactic Mpc and km/s where present",
-      "benchmark_role": "visualization/provenance gate"
+      "local_sha256": "d706e14d9fa50725e4afc164da517693cc2f15dfbfeef9f2c0a90a78ee66c862",
+      "observer_frame_metadata": "supergalactic coordinate landmark working copy; original reconstruction frame and raw flow-field extraction still open",
+      "benchmark_role": "visualization/provenance gate",
+      "source_readiness": "blocked by missing original file name/raw reconstruction package"
     },
     {
       "local_path": "docs/topics/0.26_Cosmic_Dynamic_Frame/Data/Cosmicflows_3_Subset.csv",
       "source_record": "docs/data/external/cosmology/cosmicflows/cosmicflows3/source_record.json",
       "preprocessing": "Topic-local subset/working copy; raw catalog extraction not verified.",
       "unit_system": "mixed cosmic-flow fields; frame and calibration require per-column audit",
-      "benchmark_role": "future numeric residual gate input"
+      "local_sha256": "dfa7ed92f2490c3cdc035a97fc24706de831c7e59b88c5820eb09bd68d9f669f",
+      "observer_frame_metadata": "frame, velocity convention, distance calibration, redshift correction, and subset-selection rule still require audit",
+      "benchmark_role": "future numeric residual gate input",
+      "source_readiness": "blocked by missing original file name and subset-selection rule"
     },
     {
       "local_path": "docs/topics/0.26_Cosmic_Dynamic_Frame/Data/Pioneer_Anomaly_Data.csv",
       "source_record": "docs/data/external/spacecraft/pioneer_anomaly/anderson_2002/source_record.json",
       "preprocessing": "Small anomaly working table; thermal-recoil competitor baseline absent.",
       "unit_system": "SI acceleration/time conventions as declared by CSV",
-      "benchmark_role": "diagnostic only"
+      "local_sha256": "f0a050dac03333b471d27214251e36f11d63684d48a555235e61e7eed471bb25",
+      "observer_frame_metadata": "spacecraft residual/anomaly working table; telemetry and force-model provenance still open",
+      "benchmark_role": "diagnostic only",
+      "source_readiness": "blocked by missing original file name and missing competitor residual comparison"
     },
     {
       "local_path": "",
       "source_record": "docs/data/external/spacecraft/pioneer_anomaly/turyshev_2012_thermal_recoil/source_record.json",
       "preprocessing": "Competitor source identity is pinned, but no numeric thermal-recoil residual package is archived yet.",
       "unit_system": "acceleration in m s^-2 and source-specific thermal model terms after future extraction",
-      "benchmark_role": "future competitor baseline"
+      "local_sha256": "",
+      "observer_frame_metadata": "not applicable until a numeric competitor table is archived",
+      "benchmark_role": "future competitor baseline",
+      "source_readiness": "source-record-only; blocked by missing local numeric package, baseline model identifier, units, and extraction note"
     }
   ],
-  "claim_boundary": "This package upgrades provenance from placeholder to source-referenced working copies, but it does not validate dark-matter replacement, Pioneer-drag physics, or toroidal cosmology."
+  "claim_boundary": "This package upgrades provenance from placeholder to source-referenced working copies, but it does not validate dark-matter replacement, Pioneer-drag physics, or toroidal cosmology.",
+  "manifest_limitations": [
+    "Hashes identify local working copies and source records only.",
+    "The visualization lane is separable from numeric residual and baseline-comparison gates.",
+    "No dark-sector, Pioneer, or cosmology-replacement claim is allowed while raw tables, observer-frame metadata, residual thresholds, and competitor baselines remain open."
+  ]
 }
