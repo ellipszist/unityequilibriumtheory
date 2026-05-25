@@ -117,7 +117,7 @@
     "AI24-MOE-SPARSITY",
     "AI24-CSV-ALPHA-FIT"
   ],
-  "generated_at_utc": "2026-05-20T12:15:18.915925+00:00",
+  "generated_at_utc": "2026-05-25T12:39:47.569895+00:00",
   "inputs": [
     {
       "path": "docs/topics/0.24_Artificial_Intelligence/Data/03_Research/scaling_laws.json",
@@ -136,7 +136,7 @@
     },
     {
       "path": "docs/topics/0.24_Artificial_Intelligence/Data/03_Research/source_lock_manifest.json",
-      "sha256": "31a4937681ae4cc3708997a3c27821f198e49cf699172ce4289a16b0edb47ef9",
+      "sha256": "2cb594b50adf52f4e720c9ef7bf62a369d159d915eabc8af08e639f6cad5cb38",
       "source": "topic-derived AI source-lock manifest"
     }
   ],
