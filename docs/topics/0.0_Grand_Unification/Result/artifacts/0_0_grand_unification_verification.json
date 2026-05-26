@@ -1,7 +1,7 @@
 {
   "schema_version": "1.2",
   "topic": "0.0_Grand_Unification",
-  "timestamp_utc": "2026-05-21T22:24:18.435313+00:00",
+  "timestamp_utc": "2026-05-25T13:37:40.553426+00:00",
   "command": "python docs/topics/0.0_Grand_Unification/Code/03_Research/Verify_Omni.py",
   "status": "WARN",
   "passed_run_contract": true,
@@ -71,7 +71,7 @@
     {
       "path": "docs/topics/0.9_Quantum_Nonlocality/Result/artifacts/0_9_quantum_nonlocality_verification.json",
       "bytes": 9992,
-      "sha256": "9b0a0a4faf4841f1f9238b3e24c770eb5c3922fe3722c09fc8af52cfeec0e0d3",
+      "sha256": "29916601279d6c6a03bb6b829707d00e580781fae517ee918333bc6b12a12f68",
       "provenance_role": "subordinate_artifact",
       "status": "PASS"
     },
@@ -99,42 +99,42 @@
     {
       "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/0_13_thermodynamic_bridge_verification.json",
       "bytes": 15825,
-      "sha256": "f7e49a6a728e344ab861ceecab97ea0a51adec4a864d14d1ac8fe36badbe6c8a",
+      "sha256": "e2e6e7744317658c6012132c5d788f004fb505aed52c7bd63e2973f62dc32c01",
       "provenance_role": "subordinate_artifact",
       "status": "WARN"
     },
     {
       "path": "docs/topics/0.14_Complex_Systems/Result/artifacts/0_14_complex_systems_verification.json",
       "bytes": 12038,
-      "sha256": "0cab6dde5bc6d36e9f2f86aa831faa8a889c0da1b929e6cf6a2d89649f004c45",
+      "sha256": "b8c42275db881afed7acaf4ebf05635dbb32daf34b2a98c66780722a4fddbba3",
       "provenance_role": "subordinate_artifact",
       "status": "PASS"
     },
     {
       "path": "docs/topics/0.15_Cluster_Dynamics/Result/artifacts/0_15_cluster_dynamics_verification.json",
       "bytes": 7943,
-      "sha256": "666612b776f909fe720e56647fa6be79bb34ebbbc130e24bf7a957a242f13990",
+      "sha256": "a1229e315b1f2b496494b5f3a825e1f1b53f03e5286047172c57aadb0c2ea2f9",
       "provenance_role": "subordinate_artifact",
       "status": "WARN"
     },
     {
       "path": "docs/topics/0.16_Heavy_Nuclei/Result/artifacts/0_16_heavy_nuclei_verification.json",
       "bytes": 7883,
-      "sha256": "6af293e5ce148e9717d713de4d5c9bedf285176d82d3415bb93a09b43b63e255",
+      "sha256": "9a649fd4799c5d9dab475761ba48c544a231c60b230a347dd2b842169fc09c3c",
       "provenance_role": "subordinate_artifact",
       "status": "WARN"
     },
     {
       "path": "docs/topics/0.17_Mass_Generation/Result/artifacts/0_17_mass_generation_verification.json",
       "bytes": 10017,
-      "sha256": "311197708c64819018466b0cae8dfee62527cd7eea74209e99107870131b3bd4",
+      "sha256": "cf7faf19d4fbae75c2b0fb0404945c52ccf6e8408d095d19a215b668f1fa9013",
       "provenance_role": "subordinate_artifact",
       "status": "PASS"
     },
     {
       "path": "docs/topics/0.18_Mathnicry/Result/artifacts/0_18_mathnicry_verification.json",
       "bytes": 7939,
-      "sha256": "f1d70fe5d663262f6a72e5fe3523cecfe540d22376afacae785c8e71a5f9258d",
+      "sha256": "a451a2d2b166553bcd9ae1eeceeaebfdf0c8cbaff81d25506fc54ca3323bbfab",
       "provenance_role": "subordinate_artifact",
       "status": "WARN"
     },
@@ -155,42 +155,42 @@
     {
       "path": "docs/topics/0.21_Yang_Mills_Mass_Gap/Result/artifacts/mass_gap_validation.json",
       "bytes": 6087,
-      "sha256": "cc61dd8dde551faa64b744e635bcdf02f5cd74e9b42c29fb5be48b689bd3cd2d",
+      "sha256": "2368df3a43ce41499a621246d13aeb7b6e880ed07accdeb873217b2cbb068900",
       "provenance_role": "subordinate_artifact",
       "status": "WARN"
     },
     {
       "path": "docs/topics/0.22_Biophysics_Origin_of_Life/Result/artifacts/0_22_biophysics_origin_of_life_verification.json",
       "bytes": 10254,
-      "sha256": "839e89f67b92264296e2374eb4d3322cfb38263a67fb97c944082952ad088c76",
+      "sha256": "f4dd4ea584af943bc41ab1027d02ac18106b3da928b324333042c9ce3ad13628",
       "provenance_role": "subordinate_artifact",
       "status": "WARN"
     },
     {
       "path": "docs/topics/0.23_Unity_Scale_Link/Result/artifacts/0_23_unity_scale_link_verification.json",
       "bytes": 18232,
-      "sha256": "080d789fc06a3a8c2862f97caa006ecd766ba5ade09807e285ddc9f9c2851e3a",
+      "sha256": "2e8708c24a239453b779a01744ebb7ceafcb22f37580e8405609ef7ad5a86468",
       "provenance_role": "subordinate_artifact",
       "status": "WARN"
     },
     {
       "path": "docs/topics/0.24_Artificial_Intelligence/Result/artifacts/0_24_artificial_intelligence_verification.json",
       "bytes": 10481,
-      "sha256": "ad643eb71092e9733aa1f6ae8c9a286bec11f443930086b6dfc79300f925fde0",
+      "sha256": "77549e963081405c2ade0c5813cbd5eb1021d6d6726e3856252ae66fcf197592",
       "provenance_role": "subordinate_artifact",
       "status": "WARN"
     },
     {
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_strategy_power_economics_verification.json",
       "bytes": 12755,
-      "sha256": "bc5a5d48655d99851cf92468dbb2f21a58c09a5bbe64a7ae1e8d46a6b97cc1f6",
+      "sha256": "7bc33046309bb63aa9c1f522918aaeef1831c7c0ea740b5d64bdc2cfa99067ec",
       "provenance_role": "subordinate_artifact",
       "status": "WARN"
     },
     {
       "path": "docs/topics/0.26_Cosmic_Dynamic_Frame/Result/artifacts/0_26_cosmic_dynamic_frame_verification.json",
       "bytes": 10997,
-      "sha256": "8ed83b2616a629ba88f09797f68c94403df00f36ccbc30ff617f2d4be04f8fea",
+      "sha256": "5242d9043683e710d1e648345ef0ba66761ba0b358930a0f4cf0a9de117d90fc",
       "provenance_role": "subordinate_artifact",
       "status": "WARN"
     }
@@ -415,7 +415,7 @@
       "status": "PASS",
       "claim_class": "C - source-referenced internal CHSH benchmark",
       "schema_version": "1.3",
-      "timestamp_utc": "2026-05-21T18:52:29.860555+00:00",
+      "timestamp_utc": "2026-05-25T13:15:08.411422+00:00",
       "claim_gates": [
         {
           "gate": "chsh_claim_scope_gate",
@@ -457,7 +457,7 @@
           "claim_boundary": "This gate cannot raise the topic beyond the current CHSH run-contract evidence."
         }
       ],
-      "sha256": "9b0a0a4faf4841f1f9238b3e24c770eb5c3922fe3722c09fc8af52cfeec0e0d3",
+      "sha256": "29916601279d6c6a03bb6b829707d00e580781fae517ee918333bc6b12a12f68",
       "bytes": 9992
     },
     {
@@ -531,7 +531,7 @@
       "status": "WARN",
       "claim_class": "C",
       "schema_version": "1.3",
-      "timestamp_utc": "2026-05-19T13:48:29.120784+00:00",
+      "timestamp_utc": "2026-05-25T13:22:21.357271+00:00",
       "claim_gates": [
         {
           "gate": "thermodynamic_claim_scope_gate",
@@ -577,7 +577,7 @@
           "claim_boundary": "Subordinate paper-readiness gate is inherited by 0.0."
         }
       ],
-      "sha256": "f7e49a6a728e344ab861ceecab97ea0a51adec4a864d14d1ac8fe36badbe6c8a",
+      "sha256": "e2e6e7744317658c6012132c5d788f004fb505aed52c7bd63e2973f62dc32c01",
       "bytes": 15825
     },
     {
@@ -588,7 +588,7 @@
       "status": "PASS",
       "claim_class": null,
       "schema_version": "1.2",
-      "timestamp_utc": "2026-05-21T22:12:25.402993+00:00",
+      "timestamp_utc": "2026-05-25T13:12:47.746658+00:00",
       "claim_gates": [
         {
           "gate": "complexity_claim_gate",
@@ -650,7 +650,7 @@
           "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current HRV run-contract evidence."
         }
       ],
-      "sha256": "0cab6dde5bc6d36e9f2f86aa831faa8a889c0da1b929e6cf6a2d89649f004c45",
+      "sha256": "b8c42275db881afed7acaf4ebf05635dbb32daf34b2a98c66780722a4fddbba3",
       "bytes": 12038
     },
     {
@@ -661,7 +661,7 @@
       "status": "WARN",
       "claim_class": "D - qualitative diagnostic only",
       "schema_version": "1.1",
-      "timestamp_utc": "2026-05-21T22:24:05.757707+00:00",
+      "timestamp_utc": "2026-05-25T13:28:45.491121+00:00",
       "claim_gates": [
         {
           "gate": "cluster_claim_scope_gate",
@@ -696,7 +696,7 @@
           "claim_boundary": "This gate keeps the topic at qualitative cluster-diagnostic status, not dark-matter replacement closure."
         }
       ],
-      "sha256": "666612b776f909fe720e56647fa6be79bb34ebbbc130e24bf7a957a242f13990",
+      "sha256": "a1229e315b1f2b496494b5f3a825e1f1b53f03e5286047172c57aadb0c2ea2f9",
       "bytes": 7943
     },
     {
@@ -707,7 +707,7 @@
       "status": "WARN",
       "claim_class": "C/D boundary - internal fission sanity check with missing fragment provenance",
       "schema_version": "1.1",
-      "timestamp_utc": "2026-05-18T14:44:49.381126+00:00",
+      "timestamp_utc": "2026-05-25T13:31:07.859942+00:00",
       "claim_gates": [
         {
           "gate": "branch_claim_gate",
@@ -717,7 +717,7 @@
           "claim_boundary": "This gate keeps the topic at heavy-nuclei checkpoint and sanity-diagnostic status, not first-principles nuclear closure."
         }
       ],
-      "sha256": "6af293e5ce148e9717d713de4d5c9bedf285176d82d3415bb93a09b43b63e255",
+      "sha256": "9a649fd4799c5d9dab475761ba48c544a231c60b230a347dd2b842169fc09c3c",
       "bytes": 7883
     },
     {
@@ -728,7 +728,7 @@
       "status": "PASS",
       "claim_class": null,
       "schema_version": "1.3",
-      "timestamp_utc": "2026-05-21T22:16:06.496328+00:00",
+      "timestamp_utc": "2026-05-25T13:10:36.849373+00:00",
       "claim_gates": [
         {
           "gate": "mass_generation_claim_scope_gate",
@@ -770,7 +770,7 @@
           "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current Higgs-coupling run-contract evidence."
         }
       ],
-      "sha256": "311197708c64819018466b0cae8dfee62527cd7eea74209e99107870131b3bd4",
+      "sha256": "cf7faf19d4fbae75c2b0fb0404945c52ccf6e8408d095d19a215b668f1fa9013",
       "bytes": 10017
     },
     {
@@ -781,7 +781,7 @@
       "status": "WARN",
       "claim_class": null,
       "schema_version": "1.3",
-      "timestamp_utc": "2026-05-21T13:40:45.288416+00:00",
+      "timestamp_utc": "2026-05-25T13:08:11.378616+00:00",
       "claim_gates": [
         {
           "gate": "theorem_boundary_gate",
@@ -848,7 +848,7 @@
           "claim_boundary": "This gate records theorem-branch claim ceilings only. It cannot upgrade the topic beyond the current run-contract evidence."
         }
       ],
-      "sha256": "f1d70fe5d663262f6a72e5fe3523cecfe540d22376afacae785c8e71a5f9258d",
+      "sha256": "a451a2d2b166553bcd9ae1eeceeaebfdf0c8cbaff81d25506fc54ca3323bbfab",
       "bytes": 7939
     },
     {
@@ -901,9 +901,9 @@
       "status": "WARN",
       "claim_class": null,
       "schema_version": null,
-      "timestamp_utc": "2026-05-19T13:30:37.695294+00:00",
+      "timestamp_utc": "2026-05-25T13:34:37.822379+00:00",
       "claim_gates": [],
-      "sha256": "cc61dd8dde551faa64b744e635bcdf02f5cd74e9b42c29fb5be48b689bd3cd2d",
+      "sha256": "2368df3a43ce41499a621246d13aeb7b6e880ed07accdeb873217b2cbb068900",
       "bytes": 6087
     },
     {
@@ -914,7 +914,7 @@
       "status": "WARN",
       "claim_class": "D",
       "schema_version": "1.1",
-      "timestamp_utc": "2026-05-20T12:09:21.146023+00:00",
+      "timestamp_utc": "2026-05-25T13:19:51.991486+00:00",
       "claim_gates": [
         {
           "gate": "biophysics_claim_scope_gate",
@@ -946,7 +946,7 @@
           "claim_boundary": "0.22 currently exports only a synthetic biomarker diagnostic run-contract and source-governance map. It must not export origin-of-life, clinical, EEG, TCGA, protein-folding, or theory-closure claims."
         }
       ],
-      "sha256": "839e89f67b92264296e2374eb4d3322cfb38263a67fb97c944082952ad088c76",
+      "sha256": "f4dd4ea584af943bc41ab1027d02ac18106b3da928b324333042c9ce3ad13628",
       "bytes": 10254
     },
     {
@@ -957,7 +957,7 @@
       "status": "WARN",
       "claim_class": "D",
       "schema_version": "1.3",
-      "timestamp_utc": "2026-05-19T13:51:20.021019+00:00",
+      "timestamp_utc": "2026-05-25T13:25:31.149117+00:00",
       "claim_gates": [
         {
           "gate": "scale_claim_gate",
@@ -994,7 +994,7 @@
           "claim_boundary": "Scale-link branch remains exploratory unless source, EEG, and inherited 0.13 gates close."
         }
       ],
-      "sha256": "080d789fc06a3a8c2862f97caa006ecd766ba5ade09807e285ddc9f9c2851e3a",
+      "sha256": "2e8708c24a239453b779a01744ebb7ceafcb22f37580e8405609ef7ad5a86468",
       "bytes": 18232
     },
     {
@@ -1005,7 +1005,7 @@
       "status": "WARN",
       "claim_class": "C - internal scaling and sparsity benchmark",
       "schema_version": "1.1",
-      "timestamp_utc": "2026-05-20T12:15:18.915925+00:00",
+      "timestamp_utc": "2026-05-25T12:39:47.569895+00:00",
       "claim_gates": [
         {
           "gate": "ai_claim_scope_gate",
@@ -1036,7 +1036,7 @@
           "claim_boundary": "0.24 may export only internal scaling/sparsity benchmark language. It must not export alignment, ethics, consciousness, universal-intelligence, alpha-kappa-law, or MoE-performance claims until separate gates close."
         }
       ],
-      "sha256": "ad643eb71092e9733aa1f6ae8c9a286bec11f443930086b6dfc79300f925fde0",
+      "sha256": "77549e963081405c2ade0c5813cbd5eb1021d6d6726e3856252ae66fcf197592",
       "bytes": 10481
     },
     {
@@ -1047,7 +1047,7 @@
       "status": "WARN",
       "claim_class": "C - internal economic data integrity and market diagnostics benchmark",
       "schema_version": "1.2",
-      "timestamp_utc": "2026-05-21T11:59:34.808021+00:00",
+      "timestamp_utc": "2026-05-25T13:17:20.255706+00:00",
       "claim_gates": [
         {
           "gate": "economics_claim_scope_gate",
@@ -1080,7 +1080,7 @@
           "claim_boundary": "0.25 may be cited as an internal economic-data diagnostic and provenance-hardening topic only. It must not be exported as a market predictor, policy engine, or validated strategy framework until source locks, forecast baselines, causal design, and calibrated simulation comparators are present."
         }
       ],
-      "sha256": "bc5a5d48655d99851cf92468dbb2f21a58c09a5bbe64a7ae1e8d46a6b97cc1f6",
+      "sha256": "7bc33046309bb63aa9c1f522918aaeef1831c7c0ea740b5d64bdc2cfa99067ec",
       "bytes": 12755
     },
     {
@@ -1091,7 +1091,7 @@
       "status": "WARN",
       "claim_class": "D",
       "schema_version": "1.2",
-      "timestamp_utc": "2026-05-19T13:53:51.689140+00:00",
+      "timestamp_utc": "2026-05-25T12:45:04.218402+00:00",
       "claim_gates": [
         {
           "gate": "dynamic_frame_claim_gate",
@@ -1136,7 +1136,7 @@
           "claim_boundary": "Visualization/provenance does not close numeric residual or replacement-claim gates."
         }
       ],
-      "sha256": "8ed83b2616a629ba88f09797f68c94403df00f36ccbc30ff617f2d4be04f8fea",
+      "sha256": "5242d9043683e710d1e648345ef0ba66761ba0b358930a0f4cf0a9de117d90fc",
       "bytes": 10997
     }
   ],
@@ -1952,7 +1952,7 @@
       {
         "path": "docs/topics/0.9_Quantum_Nonlocality/Result/artifacts/0_9_quantum_nonlocality_verification.json",
         "bytes": 9992,
-        "sha256": "9b0a0a4faf4841f1f9238b3e24c770eb5c3922fe3722c09fc8af52cfeec0e0d3",
+        "sha256": "29916601279d6c6a03bb6b829707d00e580781fae517ee918333bc6b12a12f68",
         "provenance_role": "subordinate_artifact",
         "status": "PASS"
       },
@@ -1980,42 +1980,42 @@
       {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/0_13_thermodynamic_bridge_verification.json",
         "bytes": 15825,
-        "sha256": "f7e49a6a728e344ab861ceecab97ea0a51adec4a864d14d1ac8fe36badbe6c8a",
+        "sha256": "e2e6e7744317658c6012132c5d788f004fb505aed52c7bd63e2973f62dc32c01",
         "provenance_role": "subordinate_artifact",
         "status": "WARN"
       },
       {
         "path": "docs/topics/0.14_Complex_Systems/Result/artifacts/0_14_complex_systems_verification.json",
         "bytes": 12038,
-        "sha256": "0cab6dde5bc6d36e9f2f86aa831faa8a889c0da1b929e6cf6a2d89649f004c45",
+        "sha256": "b8c42275db881afed7acaf4ebf05635dbb32daf34b2a98c66780722a4fddbba3",
         "provenance_role": "subordinate_artifact",
         "status": "PASS"
       },
       {
         "path": "docs/topics/0.15_Cluster_Dynamics/Result/artifacts/0_15_cluster_dynamics_verification.json",
         "bytes": 7943,
-        "sha256": "666612b776f909fe720e56647fa6be79bb34ebbbc130e24bf7a957a242f13990",
+        "sha256": "a1229e315b1f2b496494b5f3a825e1f1b53f03e5286047172c57aadb0c2ea2f9",
         "provenance_role": "subordinate_artifact",
         "status": "WARN"
       },
       {
         "path": "docs/topics/0.16_Heavy_Nuclei/Result/artifacts/0_16_heavy_nuclei_verification.json",
         "bytes": 7883,
-        "sha256": "6af293e5ce148e9717d713de4d5c9bedf285176d82d3415bb93a09b43b63e255",
+        "sha256": "9a649fd4799c5d9dab475761ba48c544a231c60b230a347dd2b842169fc09c3c",
         "provenance_role": "subordinate_artifact",
         "status": "WARN"
       },
       {
         "path": "docs/topics/0.17_Mass_Generation/Result/artifacts/0_17_mass_generation_verification.json",
         "bytes": 10017,
-        "sha256": "311197708c64819018466b0cae8dfee62527cd7eea74209e99107870131b3bd4",
+        "sha256": "cf7faf19d4fbae75c2b0fb0404945c52ccf6e8408d095d19a215b668f1fa9013",
         "provenance_role": "subordinate_artifact",
         "status": "PASS"
       },
       {
         "path": "docs/topics/0.18_Mathnicry/Result/artifacts/0_18_mathnicry_verification.json",
         "bytes": 7939,
-        "sha256": "f1d70fe5d663262f6a72e5fe3523cecfe540d22376afacae785c8e71a5f9258d",
+        "sha256": "a451a2d2b166553bcd9ae1eeceeaebfdf0c8cbaff81d25506fc54ca3323bbfab",
         "provenance_role": "subordinate_artifact",
         "status": "WARN"
       },
@@ -2036,42 +2036,42 @@
       {
         "path": "docs/topics/0.21_Yang_Mills_Mass_Gap/Result/artifacts/mass_gap_validation.json",
         "bytes": 6087,
-        "sha256": "cc61dd8dde551faa64b744e635bcdf02f5cd74e9b42c29fb5be48b689bd3cd2d",
+        "sha256": "2368df3a43ce41499a621246d13aeb7b6e880ed07accdeb873217b2cbb068900",
         "provenance_role": "subordinate_artifact",
         "status": "WARN"
       },
       {
         "path": "docs/topics/0.22_Biophysics_Origin_of_Life/Result/artifacts/0_22_biophysics_origin_of_life_verification.json",
         "bytes": 10254,
-        "sha256": "839e89f67b92264296e2374eb4d3322cfb38263a67fb97c944082952ad088c76",
+        "sha256": "f4dd4ea584af943bc41ab1027d02ac18106b3da928b324333042c9ce3ad13628",
         "provenance_role": "subordinate_artifact",
         "status": "WARN"
       },
       {
         "path": "docs/topics/0.23_Unity_Scale_Link/Result/artifacts/0_23_unity_scale_link_verification.json",
         "bytes": 18232,
-        "sha256": "080d789fc06a3a8c2862f97caa006ecd766ba5ade09807e285ddc9f9c2851e3a",
+        "sha256": "2e8708c24a239453b779a01744ebb7ceafcb22f37580e8405609ef7ad5a86468",
         "provenance_role": "subordinate_artifact",
         "status": "WARN"
       },
       {
         "path": "docs/topics/0.24_Artificial_Intelligence/Result/artifacts/0_24_artificial_intelligence_verification.json",
         "bytes": 10481,
-        "sha256": "ad643eb71092e9733aa1f6ae8c9a286bec11f443930086b6dfc79300f925fde0",
+        "sha256": "77549e963081405c2ade0c5813cbd5eb1021d6d6726e3856252ae66fcf197592",
         "provenance_role": "subordinate_artifact",
         "status": "WARN"
       },
       {
         "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_strategy_power_economics_verification.json",
         "bytes": 12755,
-        "sha256": "bc5a5d48655d99851cf92468dbb2f21a58c09a5bbe64a7ae1e8d46a6b97cc1f6",
+        "sha256": "7bc33046309bb63aa9c1f522918aaeef1831c7c0ea740b5d64bdc2cfa99067ec",
         "provenance_role": "subordinate_artifact",
         "status": "WARN"
       },
       {
         "path": "docs/topics/0.26_Cosmic_Dynamic_Frame/Result/artifacts/0_26_cosmic_dynamic_frame_verification.json",
         "bytes": 10997,
-        "sha256": "8ed83b2616a629ba88f09797f68c94403df00f36ccbc30ff617f2d4be04f8fea",
+        "sha256": "5242d9043683e710d1e648345ef0ba66761ba0b358930a0f4cf0a9de117d90fc",
         "provenance_role": "subordinate_artifact",
         "status": "WARN"
       }
@@ -2296,7 +2296,7 @@
         "status": "PASS",
         "claim_class": "C - source-referenced internal CHSH benchmark",
         "schema_version": "1.3",
-        "timestamp_utc": "2026-05-21T18:52:29.860555+00:00",
+        "timestamp_utc": "2026-05-25T13:15:08.411422+00:00",
         "claim_gates": [
           {
             "gate": "chsh_claim_scope_gate",
@@ -2338,7 +2338,7 @@
             "claim_boundary": "This gate cannot raise the topic beyond the current CHSH run-contract evidence."
           }
         ],
-        "sha256": "9b0a0a4faf4841f1f9238b3e24c770eb5c3922fe3722c09fc8af52cfeec0e0d3",
+        "sha256": "29916601279d6c6a03bb6b829707d00e580781fae517ee918333bc6b12a12f68",
         "bytes": 9992
       },
       {
@@ -2412,7 +2412,7 @@
         "status": "WARN",
         "claim_class": "C",
         "schema_version": "1.3",
-        "timestamp_utc": "2026-05-19T13:48:29.120784+00:00",
+        "timestamp_utc": "2026-05-25T13:22:21.357271+00:00",
         "claim_gates": [
           {
             "gate": "thermodynamic_claim_scope_gate",
@@ -2458,7 +2458,7 @@
             "claim_boundary": "Subordinate paper-readiness gate is inherited by 0.0."
           }
         ],
-        "sha256": "f7e49a6a728e344ab861ceecab97ea0a51adec4a864d14d1ac8fe36badbe6c8a",
+        "sha256": "e2e6e7744317658c6012132c5d788f004fb505aed52c7bd63e2973f62dc32c01",
         "bytes": 15825
       },
       {
@@ -2469,7 +2469,7 @@
         "status": "PASS",
         "claim_class": null,
         "schema_version": "1.2",
-        "timestamp_utc": "2026-05-21T22:12:25.402993+00:00",
+        "timestamp_utc": "2026-05-25T13:12:47.746658+00:00",
         "claim_gates": [
           {
             "gate": "complexity_claim_gate",
@@ -2531,7 +2531,7 @@
             "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current HRV run-contract evidence."
           }
         ],
-        "sha256": "0cab6dde5bc6d36e9f2f86aa831faa8a889c0da1b929e6cf6a2d89649f004c45",
+        "sha256": "b8c42275db881afed7acaf4ebf05635dbb32daf34b2a98c66780722a4fddbba3",
         "bytes": 12038
       },
       {
@@ -2542,7 +2542,7 @@
         "status": "WARN",
         "claim_class": "D - qualitative diagnostic only",
         "schema_version": "1.1",
-        "timestamp_utc": "2026-05-21T22:24:05.757707+00:00",
+        "timestamp_utc": "2026-05-25T13:28:45.491121+00:00",
         "claim_gates": [
           {
             "gate": "cluster_claim_scope_gate",
@@ -2577,7 +2577,7 @@
             "claim_boundary": "This gate keeps the topic at qualitative cluster-diagnostic status, not dark-matter replacement closure."
           }
         ],
-        "sha256": "666612b776f909fe720e56647fa6be79bb34ebbbc130e24bf7a957a242f13990",
+        "sha256": "a1229e315b1f2b496494b5f3a825e1f1b53f03e5286047172c57aadb0c2ea2f9",
         "bytes": 7943
       },
       {
@@ -2588,7 +2588,7 @@
         "status": "WARN",
         "claim_class": "C/D boundary - internal fission sanity check with missing fragment provenance",
         "schema_version": "1.1",
-        "timestamp_utc": "2026-05-18T14:44:49.381126+00:00",
+        "timestamp_utc": "2026-05-25T13:31:07.859942+00:00",
         "claim_gates": [
           {
             "gate": "branch_claim_gate",
@@ -2598,7 +2598,7 @@
             "claim_boundary": "This gate keeps the topic at heavy-nuclei checkpoint and sanity-diagnostic status, not first-principles nuclear closure."
           }
         ],
-        "sha256": "6af293e5ce148e9717d713de4d5c9bedf285176d82d3415bb93a09b43b63e255",
+        "sha256": "9a649fd4799c5d9dab475761ba48c544a231c60b230a347dd2b842169fc09c3c",
         "bytes": 7883
       },
       {
@@ -2609,7 +2609,7 @@
         "status": "PASS",
         "claim_class": null,
         "schema_version": "1.3",
-        "timestamp_utc": "2026-05-21T22:16:06.496328+00:00",
+        "timestamp_utc": "2026-05-25T13:10:36.849373+00:00",
         "claim_gates": [
           {
             "gate": "mass_generation_claim_scope_gate",
@@ -2651,7 +2651,7 @@
             "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current Higgs-coupling run-contract evidence."
           }
         ],
-        "sha256": "311197708c64819018466b0cae8dfee62527cd7eea74209e99107870131b3bd4",
+        "sha256": "cf7faf19d4fbae75c2b0fb0404945c52ccf6e8408d095d19a215b668f1fa9013",
         "bytes": 10017
       },
       {
@@ -2662,7 +2662,7 @@
         "status": "WARN",
         "claim_class": null,
         "schema_version": "1.3",
-        "timestamp_utc": "2026-05-21T13:40:45.288416+00:00",
+        "timestamp_utc": "2026-05-25T13:08:11.378616+00:00",
         "claim_gates": [
           {
             "gate": "theorem_boundary_gate",
@@ -2729,7 +2729,7 @@
             "claim_boundary": "This gate records theorem-branch claim ceilings only. It cannot upgrade the topic beyond the current run-contract evidence."
           }
         ],
-        "sha256": "f1d70fe5d663262f6a72e5fe3523cecfe540d22376afacae785c8e71a5f9258d",
+        "sha256": "a451a2d2b166553bcd9ae1eeceeaebfdf0c8cbaff81d25506fc54ca3323bbfab",
         "bytes": 7939
       },
       {
@@ -2782,9 +2782,9 @@
         "status": "WARN",
         "claim_class": null,
         "schema_version": null,
-        "timestamp_utc": "2026-05-19T13:30:37.695294+00:00",
+        "timestamp_utc": "2026-05-25T13:34:37.822379+00:00",
         "claim_gates": [],
-        "sha256": "cc61dd8dde551faa64b744e635bcdf02f5cd74e9b42c29fb5be48b689bd3cd2d",
+        "sha256": "2368df3a43ce41499a621246d13aeb7b6e880ed07accdeb873217b2cbb068900",
         "bytes": 6087
       },
       {
@@ -2795,7 +2795,7 @@
         "status": "WARN",
         "claim_class": "D",
         "schema_version": "1.1",
-        "timestamp_utc": "2026-05-20T12:09:21.146023+00:00",
+        "timestamp_utc": "2026-05-25T13:19:51.991486+00:00",
         "claim_gates": [
           {
             "gate": "biophysics_claim_scope_gate",
@@ -2827,7 +2827,7 @@
             "claim_boundary": "0.22 currently exports only a synthetic biomarker diagnostic run-contract and source-governance map. It must not export origin-of-life, clinical, EEG, TCGA, protein-folding, or theory-closure claims."
           }
         ],
-        "sha256": "839e89f67b92264296e2374eb4d3322cfb38263a67fb97c944082952ad088c76",
+        "sha256": "f4dd4ea584af943bc41ab1027d02ac18106b3da928b324333042c9ce3ad13628",
         "bytes": 10254
       },
       {
@@ -2838,7 +2838,7 @@
         "status": "WARN",
         "claim_class": "D",
         "schema_version": "1.3",
-        "timestamp_utc": "2026-05-19T13:51:20.021019+00:00",
+        "timestamp_utc": "2026-05-25T13:25:31.149117+00:00",
         "claim_gates": [
           {
             "gate": "scale_claim_gate",
@@ -2875,7 +2875,7 @@
             "claim_boundary": "Scale-link branch remains exploratory unless source, EEG, and inherited 0.13 gates close."
           }
         ],
-        "sha256": "080d789fc06a3a8c2862f97caa006ecd766ba5ade09807e285ddc9f9c2851e3a",
+        "sha256": "2e8708c24a239453b779a01744ebb7ceafcb22f37580e8405609ef7ad5a86468",
         "bytes": 18232
       },
       {
@@ -2886,7 +2886,7 @@
         "status": "WARN",
         "claim_class": "C - internal scaling and sparsity benchmark",
         "schema_version": "1.1",
-        "timestamp_utc": "2026-05-20T12:15:18.915925+00:00",
+        "timestamp_utc": "2026-05-25T12:39:47.569895+00:00",
         "claim_gates": [
           {
             "gate": "ai_claim_scope_gate",
@@ -2917,7 +2917,7 @@
             "claim_boundary": "0.24 may export only internal scaling/sparsity benchmark language. It must not export alignment, ethics, consciousness, universal-intelligence, alpha-kappa-law, or MoE-performance claims until separate gates close."
           }
         ],
-        "sha256": "ad643eb71092e9733aa1f6ae8c9a286bec11f443930086b6dfc79300f925fde0",
+        "sha256": "77549e963081405c2ade0c5813cbd5eb1021d6d6726e3856252ae66fcf197592",
         "bytes": 10481
       },
       {
@@ -2928,7 +2928,7 @@
         "status": "WARN",
         "claim_class": "C - internal economic data integrity and market diagnostics benchmark",
         "schema_version": "1.2",
-        "timestamp_utc": "2026-05-21T11:59:34.808021+00:00",
+        "timestamp_utc": "2026-05-25T13:17:20.255706+00:00",
         "claim_gates": [
           {
             "gate": "economics_claim_scope_gate",
@@ -2961,7 +2961,7 @@
             "claim_boundary": "0.25 may be cited as an internal economic-data diagnostic and provenance-hardening topic only. It must not be exported as a market predictor, policy engine, or validated strategy framework until source locks, forecast baselines, causal design, and calibrated simulation comparators are present."
           }
         ],
-        "sha256": "bc5a5d48655d99851cf92468dbb2f21a58c09a5bbe64a7ae1e8d46a6b97cc1f6",
+        "sha256": "7bc33046309bb63aa9c1f522918aaeef1831c7c0ea740b5d64bdc2cfa99067ec",
         "bytes": 12755
       },
       {
@@ -2972,7 +2972,7 @@
         "status": "WARN",
         "claim_class": "D",
         "schema_version": "1.2",
-        "timestamp_utc": "2026-05-19T13:53:51.689140+00:00",
+        "timestamp_utc": "2026-05-25T12:45:04.218402+00:00",
         "claim_gates": [
           {
             "gate": "dynamic_frame_claim_gate",
@@ -3017,7 +3017,7 @@
             "claim_boundary": "Visualization/provenance does not close numeric residual or replacement-claim gates."
           }
         ],
-        "sha256": "8ed83b2616a629ba88f09797f68c94403df00f36ccbc30ff617f2d4be04f8fea",
+        "sha256": "5242d9043683e710d1e648345ef0ba66761ba0b358930a0f4cf0a9de117d90fc",
         "bytes": 10997
       }
     ],
@@ -3042,7 +3042,7 @@
           "reynolds_critical": 2261.946710584651,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 1.4087291627124414,
+          "ai_initial_loss": 1.3691594807286414,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
@@ -3067,7 +3067,7 @@
           "reynolds_critical": 226.19467105846513,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 1.4874467496944213,
+          "ai_initial_loss": 1.4605836649320119,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
