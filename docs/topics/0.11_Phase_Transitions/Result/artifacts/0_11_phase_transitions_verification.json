@@ -164,6 +164,6 @@
   "thresholds": {
     "beta_relative_error_percent_max": 5.0
   },
-  "timestamp_utc": "2026-05-18T14:35:33.971728+00:00",
+  "timestamp_utc": "2026-05-26T12:35:38.614887+00:00",
   "topic": "0.11_Phase_Transitions"
 }
