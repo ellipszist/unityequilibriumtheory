@@ -16,10 +16,10 @@
 
 ### 2. นโยบายความมั่นคงทางอาหาร สิ่งแวดล้อม และพลังงาน (Food, Environment, & Energy Security)
 *   **[นโยบายปฏิรูปราคาโปรตีน การโซนนิ่งเกษตรกรรม และการเลี้ยงสาหร่ายจิ๋วเพื่อความมั่นคงทางอาหารและพลังงาน](file:///c:/Users/santa/Desktop/uet_harness/docs/incubator/01_policy_and_strategy/national_protein_reform_agriculture.md)** (`national_protein_reform_agriculture.md`): นโยบายการแก้ปัญหาสาธารณสุขโรคอ้วนและเบาหวานโดยเพิ่มโควตาการอุดหนุนราคาเนื้อสัตว์ปศุสัตว์ การปฏิรูปโซนนิ่งการเกษตร และการประยุกต์ใช้สาหร่ายจิ๋วบำบัดน้ำเสียฟาร์มเพื่อสกัดไบโอดีเซล
+*   **[นโยบายบริหารจัดการลุ่มน้ำทะเลสาบสงขลาแบบสามน้ำ และอุตสาหกรรมอาหารอวกาศ](file:///c:/Users/santa/Desktop/uet_harness/docs/incubator/01_policy_and_strategy/songkhla_lagoon_water_and_spacefood.md)** (`songkhla_lagoon_water_and_spacefood.md`): นโยบายการบริหารจัดการคุณภาพน้ำในลุ่มน้ำทะเลสาบสงขลาด้วยระบบตรวจจับอัจฉริยะ พร้อมการเชื่อมโยงผลผลิตการเกษตรและผลิตภัณฑ์ท้องถิ่นเข้าสู่อุตสาหกรรมอาหารอวกาศ (Space Food)
 
 ### 3. ยุทธศาสตร์โครงสร้างพื้นฐานและการขนส่งมหาภาค (Infrastructure & Macro-Logistics)
 *   **[ยุทธศาสตร์การออกแบบเส้นทางการขนส่งสองทิศทางและโครงข่ายความมั่นคงทางชลศาสตร์แห่งชาติ](file:///c:/Users/santa/Desktop/uet_harness/docs/incubator/01_policy_and_strategy/inter_regional_logistics_disaster_backbone.md)** (`inter_regional_logistics_disaster_backbone.md`): แผนวิเคราะห์ระบบกระจายสินค้าและเส้นทางบรรเทาภัยพิบัติทางน้ำข้ามภูมิภาคเพื่อค้ำจุนเสถียรภาพโลจิสติกส์ของประเทศ
-*   **[ยุทธศาสตร์การพัฒนาท่าอวกาศยานสงขลาลากูนเพื่อความมั่นคงทางเทคโนโลยี](file:///c:/Users/santa/Desktop/uet_harness/docs/incubator/01_policy_and_strategy/songkhla_lagoon_spaceport.md)** (`songkhla_lagoon_spaceport.md`): ข้อเสนอการจัดตั้งสถานีปล่อยยานอวกาศเชิงพาณิชย์ในพื้นที่ภาคใต้ของไทยเพื่อดึงดูดเทคโนโลยีวัสดุศาสตร์ชั้นสูง
 *   **[แนวทางการพัฒนาอาคารเมืองความยืดหยุ่นสูงและการวางโครงสร้างสิ่งแวดล้อมเมือง](file:///c:/Users/santa/Desktop/uet_harness/docs/incubator/01_policy_and_strategy/modern_building_urban_resilience.md)** (`modern_building_urban_resilience.md`): แนวทางการออกแบบและคุมมาตรฐานสิ่งก่อสร้างเพื่อรองรับภัยพิบัติแผ่นดินไหว การทรุดตัวของชั้นดิน และการจัดสรรระบบนิเวศแนวตั้ง
 
 ### 4. นโยบายต่างประเทศและการทูตเชิงพันธมิตร (Foreign Policy & Alliances)

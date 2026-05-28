@@ -11,6 +11,7 @@ The Unity Equilibrium Theory (UET) aims to address systemic balances across scal
 - **`02_urban_resilience_and_geology/`**: For high-rise buildings, urban living resilience, geological considerations (subsidence, seismic safety), and high-density entropy management.
 - **`03_logistics_and_infra/`**: For supply chain optimization, emergency resource routing, and structural ideas.
 - **`04_industry_and_production/`**: For smart industrial zones, green manufacturing, resource recovery, and clean energy systems.
+- **`05_spaceport_and_rocket/`**: For aerospace infrastructure, launchpad geophysics, coastal rocket logistics, and bio-acoustic environmental buffers.
 
 ## How to Propose an Idea
 1. Copy the `_template_proposal.md` file.
