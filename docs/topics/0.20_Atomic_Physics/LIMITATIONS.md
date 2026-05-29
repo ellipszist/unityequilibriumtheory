@@ -5,6 +5,7 @@
 - The formula bridge manifest records Bohr/de Broglie/Rydberg inheritance and UET dependency roles, but it is not itself a proof that UET derives the atomic spectrum.
 - `0.13` can currently be used only as energy/information accounting context for atomic transitions; it does not derive `h`, `R_H`, or the transition operator in this topic.
 - `0.6` and `0.17` can currently be used only as dependency context for `alpha`, charge-sector constants, and electron mass; they do not close the atomic Hamiltonian here.
+- Hydrogen level-energy rows support only rounded `n`-level benchmark language. Direct ASD per-level precision, fine-structure splitting, Lamb shift, hyperfine structure, and QED level corrections remain outside this gate.
 - Hydrogen-like ion rows now support only a provisional selected He+/Li2+ reduced-mass benchmark. Li III still needs direct primary ASD capture, and the gate does not validate broad hydrogen-like ion coverage.
 - The selected He+/Li2+ ion rows use representative source wavelengths/blends; they do not resolve or validate fine-structure components.
 - Local spectral rows may be rounded or curated; source-table transcription precision should be audited before public ppm claims.

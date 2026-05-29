@@ -7,7 +7,7 @@ description: "Hydrogen spectrum benchmark and atomic-model diagnostics within th
 # 0.20 Atomic Physics
 
 > [!NOTE]
-> **AI-Digest**: This topic currently has a source-backed hydrogen Rydberg benchmark using a NIST hydrogen spectrum working copy and CODATA `R_H`. It also has an explicit Bohr/de Broglie/Rydberg formula-bridge manifest that maps inherited standard atomic physics to UET dependencies (`0.13`, `0.6`, `0.17`, `0.23`) without upgrading those dependencies into a first-principles UET derivation. The current artifact now adds a provisional selected hydrogen-like ion reduced-mass benchmark for He+ and Li2+; fine structure, Lamb shift, neutral helium, many-electron atoms, broad hydrogen-like ion coverage, and UET-derived `R_H` remain blocked.
+> **AI-Digest**: This topic currently has a source-backed hydrogen Rydberg benchmark using a NIST hydrogen spectrum working copy and CODATA `R_H`. It also has an explicit Bohr/de Broglie/Rydberg formula-bridge manifest that maps inherited standard atomic physics to UET dependencies (`0.13`, `0.6`, `0.17`, `0.23`) without upgrading those dependencies into a first-principles UET derivation. The current artifact now adds a rounded hydrogen n-level energy benchmark and a provisional selected hydrogen-like ion reduced-mass benchmark for He+ and Li2+; fine structure, Lamb shift, neutral helium, many-electron atoms, broad hydrogen-like ion coverage, and UET-derived `R_H` remain blocked.
 
 ![Status](https://img.shields.io/badge/Status-Hydrogen%20Benchmark-blue)
 ![Claim_Class](https://img.shields.io/badge/Claim%20Class-C%20Internal%20Benchmark-yellow)
@@ -42,8 +42,9 @@ flowchart LR
 | Data | NIST/CODATA source-labeled working copies | `Data/03_Research/nist_hydrogen_spectrum.json`, `codata_2018_atomic.json` | Hydrogen line and constant inputs are inspectable with hashes. | Wavelength precision and source-transcription notes still need normalization. |
 | Formula | Reviewed registry plus bridge manifest | `FORMULA_AUDIT.md`, `Data/03_Research/atomic_formula_bridge_manifest.json` | Photon transition, de Broglie standing wave, Bohr energy, Rydberg relation, and dependency roles are mapped. | UET derivation of `h`, `alpha`, `R_H`, transition operators, or the atomic Hamiltonian is not artifact-backed. |
 | Verification | Runnable primary artifact | `Code/03_Research/Research_Rydberg_Validation.py` | Supports hydrogen-spectrum internal benchmark claims. | Many-electron and QED effects are outside the verifier. |
-| Source evidence workflow | Structured provenance gate | `Data/03_Research/source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json` | source-review queue | Level-energy, direct Li III ASD capture, precision, and many-electron packages still need dedicated artifacts. |
+| Source evidence workflow | Structured provenance gate | `Data/03_Research/source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json` | source-review queue | Direct hydrogen level-table precision, direct Li III ASD capture, precision, and many-electron packages still need dedicated artifacts. |
 | Branch claim gate | Structured claim ceiling | `Data/03_Research/branch_claim_gate.json` | benchmark-only claim control plus formula-bridge manifest branch | Hydrogen benchmark and bridge manifest do not promote full atomic-theory claims. |
+| Hydrogen level energies | Rounded source-referenced benchmark | `Data/03_Research/hydrogen_spectra_data.json`, `hydrogen_level_energy_benchmark` in artifact | Selected `n=1..8` level rows pass ionization-energy anchored thresholds (`avg ~69 ppm`, `max ~118 ppm`). | Direct ASD per-level transcription precision and fine/QED splitting remain open. |
 | Hydrogen-like ions | Provisional reduced-mass benchmark | `Data/03_Research/hydrogen_like_ion_spectrum.json`, `hydrogen_like_checkpoint` in artifact | Selected He+ and Li2+ rows pass reduced-mass hydrogenic thresholds (`avg ~76 ppm`, `max ~97 ppm`). | Li III still needs direct primary ASD capture; broad ion suite and fine-structure component policy remain open. |
 | Claim-scope gate | Artifact export controller | `atomic_claim_scope_gate` in artifact | blocks derivation/QED/many-electron overclaim | Hydrogen PASS remains topic-level `WARN` until precision and derivation branches are primary-gated. |
 | Claims | Bounded to hydrogen benchmark | this README, `METHOD.md`, `LIMITATIONS.md` | May state that selected hydrogen lines match the standard Rydberg relation within declared thresholds. | Cannot claim full atomic theory or first-principles UET derivation. |
@@ -59,8 +60,8 @@ Expected artifact:
 
 - `Result/artifacts/0_20_atomic_physics_verification.json`
 
-The artifact records dataset hashes, NIST/CODATA source IDs, line residuals, fitted slope, thresholds, formula-bridge manifest metadata, selected hydrogen-like ion benchmark rows, and limitations.
-It must also record `atomic_claim_scope_gate`, which allows only hydrogen Rydberg benchmark, formula-bridge-manifest, and provisional selected He+/Li2+ reduced-mass benchmark language while blocking Rydberg derivation, broad hydrogen-like ion validation, QED correction, neutral helium, many-electron, and full atomic-theory claims.
+The artifact records dataset hashes, NIST/CODATA source IDs, line residuals, fitted slope, level-energy residuals, thresholds, formula-bridge manifest metadata, selected hydrogen-like ion benchmark rows, and limitations.
+It must also record `atomic_claim_scope_gate`, which allows only hydrogen Rydberg benchmark, rounded hydrogen level-energy benchmark, formula-bridge-manifest, and provisional selected He+/Li2+ reduced-mass benchmark language while blocking Rydberg derivation, broad hydrogen-like ion validation, QED correction, neutral helium, many-electron, and full atomic-theory claims.
 
 ## Key Files
 

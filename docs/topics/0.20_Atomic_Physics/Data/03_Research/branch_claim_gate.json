@@ -4,8 +4,8 @@
   "purpose": "Claim gate for separate atomic-physics branches inside the topic.",
   "summary": {
     "branches_total": 8,
-    "accepted_now": 4,
-    "blocked_for_strong_claims": 4
+    "accepted_now": 5,
+    "blocked_for_strong_claims": 3
   },
   "branches": [
     {
@@ -28,9 +28,9 @@
     },
     {
       "branch": "Hydrogen level-energy branch",
-      "status": "blocked_for_strong_claims",
-      "allowed_usage_now": "Secondary lane only.",
-      "blocker_to_stronger_claim": "Need a dedicated level-energy artifact with threshold policy."
+      "status": "accepted_rounded_level_energy_benchmark_branch",
+      "allowed_usage_now": "Selected rounded hydrogen n-level energies may be cited as a source-referenced benchmark when the artifact gate passes.",
+      "blocker_to_stronger_claim": "Need direct ASD per-level transcription precision, uncertainty propagation, and fine-structure/Lamb-shift separation before precision level claims."
     },
     {
       "branch": "Hydrogen-like ion branch",

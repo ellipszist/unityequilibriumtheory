@@ -32,7 +32,7 @@
     {
       "name": "Hydrogen level-energy package",
       "priority": "high",
-      "status_hint": "secondary_lane_not_yet_primary_gated",
+      "status_hint": "source_referenced_rounded_level_energy_rows",
       "evidence_entries": [
         "level_data_path",
         "upstream_source_package",

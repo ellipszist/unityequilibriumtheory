@@ -27,6 +27,17 @@
         "status": "MANIFEST_ONLY"
       },
       {
+        "artifact_role": "hydrogen level-energy benchmark",
+        "claim": "Selected rounded hydrogen n-level energies match the ionization-energy anchored Bohr relation under declared thresholds.",
+        "metrics": {
+          "average_energy_error_ppm": 68.93802115979179,
+          "level_count": 8,
+          "max_energy_error_ppm": 117.64705882364706
+        },
+        "source_evidence_readiness": "rounded_level_source_review_ready_with_direct_ASD_precision_pending",
+        "status": "PASS"
+      },
+      {
         "artifact_role": "hydrogen-like ion reduced-mass benchmark",
         "claim": "Selected He+ and Li2+ one-electron ion wavelengths match the reduced-mass hydrogenic relation under provisional thresholds.",
         "metrics": {
@@ -93,17 +104,17 @@
       "many-electron atoms solved"
     ],
     "branch_claim_gate_summary": {
-      "accepted_now": 4,
-      "blocked_for_strong_claims": 4,
+      "accepted_now": 5,
+      "blocked_for_strong_claims": 3,
       "branches_total": 8
     },
     "claim_boundary": "A PASS artifact supports only selected hydrogen Rydberg benchmark behavior with NIST/CODATA working copies plus provisional selected He+/Li2+ reduced-mass benchmark rows. It does not derive R_H, validate QED corrections, validate neutral helium or many-electron atoms, or close atomic theory.",
     "claim_class": "C_hydrogen_rydberg_benchmark_only",
-    "controller_reason": "The hydrogen Rydberg benchmark passed and selected hydrogen-like ion rows are provisionally gated, but export remains warning-gated because level-energy, direct Li III ASD capture, broader ion coverage, fine-structure, Lamb-shift, neutral helium, many-electron, and first-principles derivation branches are missing.",
+    "controller_reason": "The hydrogen Rydberg benchmark, rounded hydrogen level-energy benchmark, and selected hydrogen-like ion rows are gated, but export remains warning-gated because direct level-table precision, direct Li III ASD capture, broader ion coverage, fine-structure, Lamb-shift, neutral helium, many-electron, and first-principles derivation branches are missing.",
     "controller_status": "WARN",
     "machine_readable_next_blockers": [
       "rydberg_derivation_artifact_missing",
-      "hydrogen_level_energy_artifact_missing",
+      "direct_hydrogen_level_table_precision_missing",
       "direct_li_iii_asd_capture_missing",
       "general_hydrogen_like_ion_suite_missing",
       "fine_structure_artifact_missing",
@@ -113,8 +124,8 @@
     "schema_version": "1.0",
     "source_evidence_summary": {
       "source_targets_total": 6,
-      "targets_blocked_by_pending_evidence": 3,
-      "targets_ready_for_source_review": 3
+      "targets_blocked_by_pending_evidence": 2,
+      "targets_ready_for_source_review": 4
     },
     "topic": "0.20_Atomic_Physics"
   },
@@ -133,10 +144,10 @@
   "branch_claim_gate": {
     "claim_boundary": "This gate keeps the topic at hydrogen benchmark status, not full atomic-theory closure.",
     "path": "Data/03_Research/branch_claim_gate.json",
-    "sha256": "d1307480ac9dc3dbcf31b18676453c25252de76903294f51bbec95e48f70852f",
+    "sha256": "ec92ec7b581df4bd9e291fcc5ccf28aade6b13eb11ec741ff1779c5eebe78053",
     "summary": {
-      "accepted_now": 4,
-      "blocked_for_strong_claims": 4,
+      "accepted_now": 5,
+      "blocked_for_strong_claims": 3,
       "branches_total": 8
     }
   },
@@ -150,13 +161,102 @@
     "AT20-PHOTON-TRANSITION",
     "AT20-DEBROGLIE-STANDING-WAVE",
     "AT20-BOHR-HYDROGEN-ENERGY",
+    "AT20-HYDROGEN-LEVEL-ENERGY-BENCHMARK",
     "AT20-RYDBERG-WAVELENGTH",
     "AT20-RH-CODATA-CHECKPOINT",
     "AT20-SPECTRUM-RESIDUAL",
     "AT20-HYDROGENIC-Z2-CHECKPOINT",
     "AT20-UET-ATOMIC-BRIDGE-GATE"
   ],
-  "generated_at_utc": "2026-05-29T13:45:59.020164+00:00",
+  "generated_at_utc": "2026-05-29T13:51:46.243241+00:00",
+  "hydrogen_level_energy_benchmark": {
+    "claim_class": "C_source_referenced_rounded_hydrogen_level_benchmark",
+    "formula": "E_n = -E_ionization / n^2",
+    "limitations": [
+      "This is a rounded n-level benchmark anchored to NIST hydrogen ionization energy.",
+      "It does not validate fine-structure, Lamb-shift, hyperfine, or QED level splitting.",
+      "It does not derive the hydrogen energy formula from UET first principles.",
+      "Direct ASD per-level transcription precision remains pending."
+    ],
+    "metrics": {
+      "average_energy_error_ppm": 68.93802115979179,
+      "level_count": 8,
+      "max_energy_error_ppm": 117.64705882364706
+    },
+    "results": [
+      {
+        "energy_error_ppm": 0.0,
+        "level": "1s",
+        "n": 1,
+        "observed_energy_eV": -13.5984,
+        "predicted_energy_eV_from_ionization_anchor": -13.5984
+      },
+      {
+        "energy_error_ppm": 0.0,
+        "level": "2s",
+        "n": 2,
+        "observed_energy_eV": -3.3996,
+        "predicted_energy_eV_from_ionization_anchor": -3.3996
+      },
+      {
+        "energy_error_ppm": 44.12089124199823,
+        "level": "3s",
+        "n": 3,
+        "observed_energy_eV": -1.511,
+        "predicted_energy_eV_from_ionization_anchor": -1.5109333333333332
+      },
+      {
+        "energy_error_ppm": 117.64705882351646,
+        "level": "4s",
+        "n": 4,
+        "observed_energy_eV": -0.85,
+        "predicted_energy_eV_from_ionization_anchor": -0.8499
+      },
+      {
+        "energy_error_ppm": 117.64705882364706,
+        "level": "5s",
+        "n": 5,
+        "observed_energy_eV": -0.544,
+        "predicted_energy_eV_from_ionization_anchor": -0.543936
+      },
+      {
+        "energy_error_ppm": 88.25346394845026,
+        "level": "6s",
+        "n": 6,
+        "observed_energy_eV": -0.3777,
+        "predicted_energy_eV_from_ionization_anchor": -0.3777333333333333
+      },
+      {
+        "energy_error_ppm": 66.18863761720583,
+        "level": "7s",
+        "n": 7,
+        "observed_energy_eV": -0.2775,
+        "predicted_energy_eV_from_ionization_anchor": -0.2775183673469388
+      },
+      {
+        "energy_error_ppm": 117.64705882351646,
+        "level": "8s",
+        "n": 8,
+        "observed_energy_eV": -0.2125,
+        "predicted_energy_eV_from_ionization_anchor": -0.212475
+      }
+    ],
+    "role": "hydrogen_rounded_level_energy_benchmark",
+    "schema_version": "1.0",
+    "source_anchor": {
+      "name": "Hydrogen ionization energy",
+      "source": "NIST Cross Section Atom Information / Atomic Data for Hydrogen",
+      "source_status": "primary_nist_ionization_energy_anchor",
+      "url": "https://physics.nist.gov/cgi-bin/Ionization/atom.php?element=H",
+      "value_eV": 13.5984
+    },
+    "status": "PASS",
+    "threshold": {
+      "average_energy_error_ppm_max": 150.0,
+      "max_energy_error_ppm_max": 250.0,
+      "source_policy": "Rounded local n-level rows are checked against the NIST H ionization-energy anchor of 13.5984 eV; direct per-level ASD precision capture remains pending."
+    }
+  },
   "hydrogen_like_checkpoint": {
     "claim_class": "C_provisional_selected_hydrogen_like_ion_benchmark",
     "formula": "R_Z = R_infinity Z^2 / (1 + m_e / M_nucleus); 1/lambda = R_Z (1/n_lower^2 - 1/n_upper^2)",
@@ -231,6 +331,12 @@
       "source": "CODATA 2018 Recommended Values"
     },
     {
+      "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/hydrogen_spectra_data.json",
+      "sha256": "cd3554bd19ef3f47b2469bc88d81e97497eda4b93b6f144b43ab2043c5fd0845",
+      "source": "Local rounded hydrogen n-level working copy anchored to NIST H ionization energy.",
+      "source_status": "source_referenced_local_level_rows"
+    },
+    {
       "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/hydrogen_like_ion_spectrum.json",
       "sha256": "a80872ec987970f0d12d84dcafce44074817649895117ffc3c9f6eb76ee2636f",
       "source": "Source-referenced one-electron ion spectral rows for a hydrogen-like ion benchmark gate.",
@@ -240,30 +346,34 @@
       ]
     }
   ],
-  "interpretation": "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, and a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark. It does not validate full atomic theory, fine structure, broad hydrogen-like ion coverage, neutral helium, or many-electron physics.",
+  "interpretation": "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, a rounded hydrogen n-level energy benchmark, and a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark. It does not validate full atomic theory, fine structure, broad hydrogen-like ion coverage, neutral helium, or many-electron physics.",
   "limitations": [
     "This validates the standard Rydberg relation against the topic-local hydrogen spectrum working copy.",
     "It does not derive the Rydberg relation from UET first principles.",
     "The Bohr/de Broglie/Rydberg bridge is now explicit, but it remains inherited standard physics unless a UET derivation artifact is added.",
+    "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
     "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark until direct Li III ASD capture and broader ion coverage are added.",
     "It does not validate fine structure, Lamb shift, helium, or many-electron atoms."
   ],
   "metrics": {
     "R_H_codata_m_inverse": 10967758.3406,
     "R_infinity_codata_m_inverse": 10973731.56816,
-    "accepted_claim_branches": 4,
+    "accepted_claim_branches": 5,
     "average_wavelength_error_ppm": 7.504133013735595,
     "blocked_claim_exports": 7,
     "fitted_slope_through_origin_m_inverse": 10967845.50226957,
     "formula_bridge_steps": 6,
+    "hydrogen_level_avg_error_ppm": 68.93802115979179,
+    "hydrogen_level_count": 8,
+    "hydrogen_level_max_error_ppm": 117.64705882364706,
     "hydrogen_like_avg_error_ppm": 76.32002589027381,
     "hydrogen_like_checkpoint_predictions": 2,
     "hydrogen_like_max_error_ppm": 96.9208106356392,
     "line_count": 7,
     "max_wavelength_error_ppm": 12.500832386280821,
     "slope_error_ppm": 7.947081514956296,
-    "source_targets_blocked": 3,
-    "source_targets_ready_for_review": 3
+    "source_targets_blocked": 2,
+    "source_targets_ready_for_review": 4
   },
   "results": [
     {
@@ -341,7 +451,7 @@
   "source_evidence_intake_stub": {
     "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself validate full atomic theory.",
     "path": "Data/03_Research/source_evidence_intake_stub.json",
-    "sha256": "4be2d8921bdac95021f16acb6ce04dbdf15d93838219a61bdfc85fcde5b711d0",
+    "sha256": "d1f89ccd70dae8fe3679383d3625e4c211521f1fd67ee3d8783e662eb73960e4",
     "source_targets": [
       "NIST hydrogen spectrum package",
       "CODATA atomic constants package",
@@ -354,11 +464,11 @@
   "source_evidence_readiness_matrix": {
     "claim_boundary": "A ready row has enough provenance structure for source review. It does not by itself upgrade atomic-theory claims.",
     "path": "Data/03_Research/source_evidence_readiness_matrix.json",
-    "sha256": "6d2945503a9a1dd4f9164cdf78ca084006ff0bfe3fb39f6e43d13b681afebcdf",
+    "sha256": "7432dd171a7cbabbc4f64ff20fd79af37322882c7bfb11c222ab857da951eee0",
     "summary": {
       "source_targets_total": 6,
-      "targets_blocked_by_pending_evidence": 3,
-      "targets_ready_for_source_review": 3
+      "targets_blocked_by_pending_evidence": 2,
+      "targets_ready_for_source_review": 4
     }
   },
   "status": "PASS",

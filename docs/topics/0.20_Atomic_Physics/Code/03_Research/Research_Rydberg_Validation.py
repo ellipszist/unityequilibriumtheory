@@ -38,6 +38,7 @@ if ROOT is None:
 TOPIC_DIR = ROOT / "docs" / "topics" / "0.20_Atomic_Physics"
 SPECTRUM_PATH = TOPIC_DIR / "Data" / "03_Research" / "nist_hydrogen_spectrum.json"
 CODATA_PATH = TOPIC_DIR / "Data" / "03_Research" / "codata_2018_atomic.json"
+HYDROGEN_LEVEL_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_spectra_data.json"
 HYDROGEN_LIKE_ION_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_like_ion_spectrum.json"
 ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_20_atomic_physics_verification.json"
 SOURCE_EVIDENCE_INTAKE_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_intake_stub.json"
@@ -128,7 +129,7 @@ def build_source_evidence_intake_stub() -> dict:
             {
                 "name": "Hydrogen level-energy package",
                 "priority": "high",
-                "status_hint": "secondary_lane_not_yet_primary_gated",
+                "status_hint": "source_referenced_rounded_level_energy_rows",
                 "evidence_entries": [
                     "level_data_path",
                     "upstream_source_package",
@@ -208,16 +209,11 @@ def build_source_evidence_readiness_matrix() -> dict:
             "name": "Hydrogen level-energy package",
             "priority": "high",
             "fields_total": 6,
-            "fields_complete": 2,
-            "fields_pending": 4,
-            "pending_fields": [
-                "upstream_source_package",
-                "artifact_path",
-                "observable_scope",
-                "upgrade_requirement",
-            ],
-            "ready_for_source_review": False,
-            "blocking_reason": "Hydrogen level data exists, but there is no primary artifact for the level-energy lane yet.",
+            "fields_complete": 5,
+            "fields_pending": 1,
+            "pending_fields": ["direct_level_table_transcription_precision"],
+            "ready_for_source_review": True,
+            "blocking_reason": "Ready for rounded-level source review: uses a local level table and NIST ionization-energy anchor, but still needs direct per-level ASD transcription precision.",
         },
         {
             "name": "Hydrogen-like ion package",
@@ -287,8 +283,8 @@ def build_branch_claim_gate() -> dict:
         "purpose": "Claim gate for separate atomic-physics branches inside the topic.",
         "summary": {
             "branches_total": 8,
-            "accepted_now": 4,
-            "blocked_for_strong_claims": 4,
+            "accepted_now": 5,
+            "blocked_for_strong_claims": 3,
         },
         "branches": [
             {
@@ -311,9 +307,9 @@ def build_branch_claim_gate() -> dict:
             },
             {
                 "branch": "Hydrogen level-energy branch",
-                "status": "blocked_for_strong_claims",
-                "allowed_usage_now": "Secondary lane only.",
-                "blocker_to_stronger_claim": "Need a dedicated level-energy artifact with threshold policy.",
+                "status": "accepted_rounded_level_energy_benchmark_branch",
+                "allowed_usage_now": "Selected rounded hydrogen n-level energies may be cited as a source-referenced benchmark when the artifact gate passes.",
+                "blocker_to_stronger_claim": "Need direct ASD per-level transcription precision, uncertainty propagation, and fine-structure/Lamb-shift separation before precision level claims.",
             },
             {
                 "branch": "Hydrogen-like ion branch",
@@ -502,11 +498,71 @@ def build_hydrogen_like_checkpoint(codata: dict, ion_data: dict) -> dict:
     }
 
 
+def build_hydrogen_level_energy_benchmark(level_rows: list[dict]) -> dict:
+    ionization_energy_ev = 13.5984
+    results = []
+    for row in level_rows:
+        n = int(row["n"])
+        observed_ev = float(row["Energy_eV"])
+        predicted_ev = -ionization_energy_ev / (n * n)
+        error_ppm = abs(predicted_ev - observed_ev) / abs(observed_ev) * 1e6
+        results.append(
+            {
+                "n": n,
+                "level": row["Level"],
+                "observed_energy_eV": observed_ev,
+                "predicted_energy_eV_from_ionization_anchor": predicted_ev,
+                "energy_error_ppm": error_ppm,
+            }
+        )
+    threshold = {
+        "average_energy_error_ppm_max": 150.0,
+        "max_energy_error_ppm_max": 250.0,
+        "source_policy": "Rounded local n-level rows are checked against the NIST H ionization-energy anchor of 13.5984 eV; direct per-level ASD precision capture remains pending.",
+    }
+    avg_error_ppm = float(np.mean([row["energy_error_ppm"] for row in results]))
+    max_error_ppm = float(np.max([row["energy_error_ppm"] for row in results]))
+    status = (
+        "PASS"
+        if avg_error_ppm <= threshold["average_energy_error_ppm_max"]
+        and max_error_ppm <= threshold["max_energy_error_ppm_max"]
+        else "FAIL"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "hydrogen_rounded_level_energy_benchmark",
+        "status": status,
+        "claim_class": "C_source_referenced_rounded_hydrogen_level_benchmark",
+        "formula": "E_n = -E_ionization / n^2",
+        "source_anchor": {
+            "name": "Hydrogen ionization energy",
+            "value_eV": ionization_energy_ev,
+            "source": "NIST Cross Section Atom Information / Atomic Data for Hydrogen",
+            "url": "https://physics.nist.gov/cgi-bin/Ionization/atom.php?element=H",
+            "source_status": "primary_nist_ionization_energy_anchor",
+        },
+        "threshold": threshold,
+        "metrics": {
+            "level_count": len(results),
+            "average_energy_error_ppm": avg_error_ppm,
+            "max_energy_error_ppm": max_error_ppm,
+        },
+        "limitations": [
+            "This is a rounded n-level benchmark anchored to NIST hydrogen ionization energy.",
+            "It does not validate fine-structure, Lamb-shift, hyperfine, or QED level splitting.",
+            "It does not derive the hydrogen energy formula from UET first principles.",
+            "Direct ASD per-level transcription precision remains pending.",
+        ],
+        "results": results,
+    }
+
+
 def build_atomic_claim_scope_gate(
     status: str,
     avg_error_ppm: float,
     max_error_ppm: float,
     slope_error_ppm: float,
+    hydrogen_level_energy_benchmark: dict,
     hydrogen_like_checkpoint: dict,
     source_evidence_readiness_matrix: dict,
     branch_claim_gate: dict,
@@ -517,8 +573,8 @@ def build_atomic_claim_scope_gate(
         "topic": "0.20_Atomic_Physics",
         "controller_status": controller_status,
         "controller_reason": (
-            "The hydrogen Rydberg benchmark passed and selected hydrogen-like ion rows are provisionally gated, "
-            "but export remains warning-gated because level-energy, direct Li III ASD capture, broader ion coverage, "
+            "The hydrogen Rydberg benchmark, rounded hydrogen level-energy benchmark, and selected hydrogen-like ion rows are gated, "
+            "but export remains warning-gated because direct level-table precision, direct Li III ASD capture, broader ion coverage, "
             "fine-structure, Lamb-shift, neutral helium, many-electron, and first-principles derivation branches are missing."
             if status == "PASS"
             else "The hydrogen Rydberg benchmark failed the declared residual thresholds."
@@ -549,6 +605,13 @@ def build_atomic_claim_scope_gate(
                 "artifact_role": "formula dependency bridge",
                 "formula_role": "claim-boundary map, not a new empirical validation",
                 "source_evidence_readiness": "local_manifest_ready_for_review",
+            },
+            {
+                "claim": "Selected rounded hydrogen n-level energies match the ionization-energy anchored Bohr relation under declared thresholds.",
+                "status": hydrogen_level_energy_benchmark["status"],
+                "artifact_role": "hydrogen level-energy benchmark",
+                "metrics": hydrogen_level_energy_benchmark["metrics"],
+                "source_evidence_readiness": "rounded_level_source_review_ready_with_direct_ASD_precision_pending",
             },
             {
                 "claim": "Selected He+ and Li2+ one-electron ion wavelengths match the reduced-mass hydrogenic relation under provisional thresholds.",
@@ -614,7 +677,7 @@ def build_atomic_claim_scope_gate(
         "branch_claim_gate_summary": branch_claim_gate["summary"],
         "machine_readable_next_blockers": [
             "rydberg_derivation_artifact_missing",
-            "hydrogen_level_energy_artifact_missing",
+            "direct_hydrogen_level_table_precision_missing",
             "direct_li_iii_asd_capture_missing",
             "general_hydrogen_like_ion_suite_missing",
             "fine_structure_artifact_missing",
@@ -637,6 +700,7 @@ def run_rydberg_analysis():
 
     spectrum = load_json(SPECTRUM_PATH)
     codata = load_json(CODATA_PATH)
+    hydrogen_level_rows = load_json(HYDROGEN_LEVEL_PATH)
     ion_data = load_json(HYDROGEN_LIKE_ION_PATH)
     source_evidence_intake_stub = build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = build_source_evidence_readiness_matrix()
@@ -691,12 +755,14 @@ def run_rydberg_analysis():
         and slope_error_ppm <= threshold["slope_error_ppm_max"]
         else "FAIL"
     )
+    hydrogen_level_energy_benchmark = build_hydrogen_level_energy_benchmark(hydrogen_level_rows)
     hydrogen_like_checkpoint = build_hydrogen_like_checkpoint(codata, ion_data)
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
         avg_error_ppm,
         max_error_ppm,
         slope_error_ppm,
+        hydrogen_level_energy_benchmark,
         hydrogen_like_checkpoint,
         source_evidence_readiness_matrix,
         branch_claim_gate,
@@ -728,6 +794,12 @@ def run_rydberg_analysis():
                 "doi": codata.get("publication", {}).get("doi"),
             },
             {
+                "path": str(HYDROGEN_LEVEL_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(HYDROGEN_LEVEL_PATH),
+                "source": "Local rounded hydrogen n-level working copy anchored to NIST H ionization energy.",
+                "source_status": "source_referenced_local_level_rows",
+            },
+            {
                 "path": str(HYDROGEN_LIKE_ION_PATH.relative_to(ROOT)).replace("\\", "/"),
                 "sha256": file_sha256(HYDROGEN_LIKE_ION_PATH),
                 "source": ion_data.get("purpose"),
@@ -738,6 +810,7 @@ def run_rydberg_analysis():
             "AT20-PHOTON-TRANSITION",
             "AT20-DEBROGLIE-STANDING-WAVE",
             "AT20-BOHR-HYDROGEN-ENERGY",
+            "AT20-HYDROGEN-LEVEL-ENERGY-BENCHMARK",
             "AT20-RYDBERG-WAVELENGTH",
             "AT20-RH-CODATA-CHECKPOINT",
             "AT20-SPECTRUM-RESIDUAL",
@@ -758,6 +831,9 @@ def run_rydberg_analysis():
             "accepted_claim_branches": branch_claim_gate["summary"]["accepted_now"],
             "blocked_claim_exports": len(atomic_claim_scope_gate["blocked_export_phrases"]),
             "formula_bridge_steps": len(atomic_formula_bridge_manifest["dependency_chain"]),
+            "hydrogen_level_count": hydrogen_level_energy_benchmark["metrics"]["level_count"],
+            "hydrogen_level_avg_error_ppm": hydrogen_level_energy_benchmark["metrics"]["average_energy_error_ppm"],
+            "hydrogen_level_max_error_ppm": hydrogen_level_energy_benchmark["metrics"]["max_energy_error_ppm"],
             "hydrogen_like_checkpoint_predictions": len(hydrogen_like_checkpoint["predictions"]),
             "hydrogen_like_avg_error_ppm": hydrogen_like_checkpoint["metrics"]["average_wavelength_error_ppm"],
             "hydrogen_like_max_error_ppm": hydrogen_like_checkpoint["metrics"]["max_wavelength_error_ppm"],
@@ -767,6 +843,7 @@ def run_rydberg_analysis():
             "This validates the standard Rydberg relation against the topic-local hydrogen spectrum working copy.",
             "It does not derive the Rydberg relation from UET first principles.",
             "The Bohr/de Broglie/Rydberg bridge is now explicit, but it remains inherited standard physics unless a UET derivation artifact is added.",
+            "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
             "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark until direct Li III ASD capture and broader ion coverage are added.",
             "It does not validate fine structure, Lamb shift, helium, or many-electron atoms.",
         ],
@@ -778,6 +855,7 @@ def run_rydberg_analysis():
         "cross_topic_dependencies": [row["topic"] for row in atomic_formula_bridge_manifest["cross_topic_dependencies"]],
         "claim_boundary": atomic_formula_bridge_manifest["claim_boundary"],
     }
+    artifact["hydrogen_level_energy_benchmark"] = hydrogen_level_energy_benchmark
     artifact["hydrogen_like_checkpoint"] = hydrogen_like_checkpoint
     artifact["source_evidence_intake_stub"] = {
         "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
@@ -801,6 +879,7 @@ def run_rydberg_analysis():
     artifact["interpretation"] = (
         "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, "
         "an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, "
+        "a rounded hydrogen n-level energy benchmark, "
         "and a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark. It does not validate full atomic theory, "
         "fine structure, broad hydrogen-like ion coverage, neutral helium, or many-electron physics."
     )
