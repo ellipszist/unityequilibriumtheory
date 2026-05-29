@@ -9,6 +9,9 @@
 > controlled by `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`,
 > `DATA_MANIFEST.md`, and
 > `Result/artifacts/hubble_comparison_validation.json`.
+>
+> **Current controller:** BAO/SN/CMB consistency closure is blocked until a dedicated
+> source-locked artifact and fixed threshold exist.
 
 > **File/Script:** `docs/topics/0.3_Cosmology_Hubble_Tension/Code/04_Competitor/Competitor_Comparison_BAO.py`
 > **Role:** Competitor (Standard Ruler Comparison)

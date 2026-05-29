@@ -9,6 +9,9 @@
 > controlled by `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`,
 > `DATA_MANIFEST.md`, and
 > `Result/artifacts/hubble_comparison_validation.json`.
+>
+> **Current controller:** the comparison can be cited only as a scalar published-value
+> benchmark; full resolution and derived mechanism claims remain blocked.
 
 > **File/Script:** `docs/topics/0.3_Cosmology_Hubble_Tension/Code/03_Research/Research_Hubble_Comparison.py`
 > **Role:** Research (Cross-Dataset Validation)

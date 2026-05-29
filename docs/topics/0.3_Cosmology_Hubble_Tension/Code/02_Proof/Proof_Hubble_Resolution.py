@@ -1,19 +1,29 @@
 """
-UET Proof: Hubble Tension Resolution
-====================================
+UET scalar H0 benchmark check.
+
 Topic: 0.3 - Cosmology / Hubble Tension
+
+This legacy proof entry point is retained as a quick engine smoke check. It does
+not establish a full Hubble-tension resolution or full cosmology validation.
 """
 
-# --- ROBUST PATH FINDER ---
 from pathlib import Path
 import sys
-import os
-from docs import ROOT_PATH
 
-root_path = ROOT_PATH
+def _bootstrap():
+    curr = Path(__file__).resolve()
+    for parent in [curr] + list(curr.parents):
+        if (parent / "docs").exists() and (parent / "docs" / "core").exists():
+            if str(parent) not in sys.path:
+                sys.path.insert(0, str(parent))
+            return parent
+    return None
 
 
-# Setup local imports for Topic 0.3
+root_path = _bootstrap()
+if not root_path:
+    print("CRITICAL: UET docs root not found!")
+    sys.exit(1)
 topic_path = root_path / "docs" / "topics" / "0.3_Cosmology_Hubble_Tension"
 engine_path = topic_path / "Code" / "01_Engine"
 if str(engine_path) not in sys.path:
@@ -26,32 +36,26 @@ except ImportError as e:
     sys.exit(1)
 
 
-# Standardized UET Root Path
-
-
 def prove_hubble_resolution():
     print("=" * 60)
-    print("📜 UET PROOF: HUBBLE TENSION RESOLUTION")
+    print("UET SCALAR H0 BENCHMARK CHECK")
     print("=" * 60)
 
-    # 1. Instantiate Core Engine
     engine = UETCosmologyEngine()
-
-    # 2. Execute Audit
     engine.step()
 
-    # 3. Verify Metrics
     metrics = engine.get_extra_metrics()
     h0_pred = metrics.get("H0_predicted", 0.0)
 
     print(f"  UET Hubble Parameter H0: {h0_pred:.2f}")
 
     if 72 < h0_pred < 74:
-        print("  ✅ PASS: Hubble Tension resolved by Information Expansion.")
+        print("  PASS: scalar H0 benchmark is inside the legacy expected range.")
+        print("  Claim boundary: this is not a full Hubble-tension resolution.")
         return True
-    else:
-        print(f"  ❌ FAIL: Predicted H0 ({h0_pred:.2f}) out of expected range (72-74).")
-        return False
+
+    print(f"  FAIL: Predicted H0 ({h0_pred:.2f}) out of expected range (72-74).")
+    return False
 
 
 if __name__ == "__main__":

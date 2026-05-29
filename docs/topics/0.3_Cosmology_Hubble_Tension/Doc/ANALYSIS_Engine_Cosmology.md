@@ -9,6 +9,9 @@
 > controlled by `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`,
 > `DATA_MANIFEST.md`, and
 > `Result/artifacts/hubble_comparison_validation.json`.
+>
+> **Current controller:** engine output is a scalar benchmark component only; it does not
+> prove a cosmological mechanism by itself.
 
 > **File/Script:** `docs/topics/0.3_Cosmology_Hubble_Tension/Code/01_Engine/Engine_Cosmology.py`
 > **Role:** Engine (Cosmic Evolution Solver)
