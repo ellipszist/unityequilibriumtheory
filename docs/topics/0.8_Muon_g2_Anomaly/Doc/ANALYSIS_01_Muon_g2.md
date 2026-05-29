@@ -9,6 +9,10 @@
 > Current allowed claims are controlled by `README.md`, `LIMITATIONS.md`,
 > `VERIFICATION_SPEC.md`, `DATA_MANIFEST.md`, and
 > `Result/artifacts/muon_g2_2025_validation.json`.
+>
+> **Current controller:** `muon_g2_claim_scope_gate.controller_status == WARN`. The legacy
+> narrative below is not canonical evidence; the current artifact supports only source-locked
+> 2025 benchmark compatibility and blocks anomaly-resolution exports.
 
 > **File/Script:** `docs/topics/0.8_Muon_g2_Anomaly/Code/01_Engine/Engine_Muon_G2.py`
 > **Role:** Mid-Scale Verification (Axiom 3)
