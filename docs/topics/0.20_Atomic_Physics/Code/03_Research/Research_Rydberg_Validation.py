@@ -42,6 +42,7 @@ ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_20_atomic_physics_verifi
 SOURCE_EVIDENCE_INTAKE_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_intake_stub.json"
 SOURCE_EVIDENCE_READINESS_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_readiness_matrix.json"
 BRANCH_CLAIM_GATE_PATH = TOPIC_DIR / "Data" / "03_Research" / "branch_claim_gate.json"
+ATOMIC_FORMULA_BRIDGE_PATH = TOPIC_DIR / "Data" / "03_Research" / "atomic_formula_bridge_manifest.json"
 
 
 def file_sha256(path):
@@ -137,6 +138,19 @@ def build_source_evidence_intake_stub() -> dict:
                 ],
             },
             {
+                "name": "Hydrogen-like ion package",
+                "priority": "high",
+                "status_hint": "theory_extension_checkpoint_without_source_lines",
+                "evidence_entries": [
+                    "ion_line_dataset",
+                    "reduced_mass_convention",
+                    "nuclear_mass_source",
+                    "artifact_path",
+                    "observable_scope",
+                    "upgrade_requirement",
+                ],
+            },
+            {
                 "name": "Fine-structure and Lamb-shift package",
                 "priority": "high",
                 "status_hint": "blocked_precision_branch",
@@ -205,6 +219,21 @@ def build_source_evidence_readiness_matrix() -> dict:
             "blocking_reason": "Hydrogen level data exists, but there is no primary artifact for the level-energy lane yet.",
         },
         {
+            "name": "Hydrogen-like ion package",
+            "priority": "high",
+            "fields_total": 6,
+            "fields_complete": 2,
+            "fields_pending": 4,
+            "pending_fields": [
+                "source_line_dataset",
+                "nuclear_mass_source",
+                "uncertainty_policy",
+                "artifact_path",
+            ],
+            "ready_for_source_review": False,
+            "blocking_reason": "Hydrogen-like ion formulas can be computed, but no source-backed He+/Li2+ spectral-line artifact is primary-gated yet.",
+        },
+        {
             "name": "Fine-structure and Lamb-shift package",
             "priority": "high",
             "fields_total": 6,
@@ -259,9 +288,9 @@ def build_branch_claim_gate() -> dict:
         "topic": "0.20_Atomic_Physics",
         "purpose": "Claim gate for separate atomic-physics branches inside the topic.",
         "summary": {
-            "branches_total": 6,
-            "accepted_now": 2,
-            "blocked_for_strong_claims": 4,
+            "branches_total": 8,
+            "accepted_now": 3,
+            "blocked_for_strong_claims": 5,
         },
         "branches": [
             {
@@ -277,10 +306,22 @@ def build_branch_claim_gate() -> dict:
                 "blocker_to_stronger_claim": "Constant consistency does not independently validate atomic theory or UET derivation.",
             },
             {
+                "branch": "Bohr/de Broglie/Rydberg formula bridge branch",
+                "status": "accepted_formula_bridge_manifest_branch",
+                "allowed_usage_now": "Accepted as an explicit inheritance map from standard atomic theory into the UET topic, with no first-principles UET derivation claim.",
+                "blocker_to_stronger_claim": "Need a UET-specific derivation artifact that derives alpha, R_H, and transition operators without treating inherited formulas as proof.",
+            },
+            {
                 "branch": "Hydrogen level-energy branch",
                 "status": "blocked_for_strong_claims",
                 "allowed_usage_now": "Secondary lane only.",
                 "blocker_to_stronger_claim": "Need a dedicated level-energy artifact with threshold policy.",
+            },
+            {
+                "branch": "Hydrogen-like ion branch",
+                "status": "blocked_for_strong_claims",
+                "allowed_usage_now": "Theory-extension checkpoint only; can list predicted one-electron ion lines but cannot validate them without source-backed spectra.",
+                "blocker_to_stronger_claim": "Need source-backed He+/Li2+ line data, reduced-mass conventions, nuclear masses, uncertainty policy, and residual thresholds.",
             },
             {
                 "branch": "Fine-structure and Lamb-shift branch",
@@ -302,6 +343,127 @@ def build_branch_claim_gate() -> dict:
             },
         ],
         "claim_boundary": "This gate keeps the topic at hydrogen benchmark status, not full atomic-theory closure.",
+    }
+
+
+def build_atomic_formula_bridge_manifest() -> dict:
+    return {
+        "schema_version": "1.0",
+        "topic": "0.20_Atomic_Physics",
+        "purpose": "Formula dependency map showing how inherited standard atomic equations connect to UET foundation topics without upgrading them into first-principles derivations.",
+        "dependency_chain": [
+            {
+                "step_id": "AT20-BRIDGE-01",
+                "relation": "Delta E = h nu = h c / lambda",
+                "source_role": "inherited standard photon-energy relation",
+                "uet_role": "0.13 may motivate an information-energy accounting interpretation, but does not currently derive h or transition operators.",
+                "status": "accepted_standard_relation",
+                "claim_ceiling": "photon transition bookkeeping only",
+            },
+            {
+                "step_id": "AT20-BRIDGE-02",
+                "relation": "lambda_de_broglie = h / p",
+                "source_role": "inherited de Broglie relation",
+                "uet_role": "candidate standing-wave bridge for orbital quantization; not independently derived from UET in this artifact.",
+                "status": "accepted_standard_relation",
+                "claim_ceiling": "standard-theory inheritance",
+            },
+            {
+                "step_id": "AT20-BRIDGE-03",
+                "relation": "2 pi r = n lambda_de_broglie; m v r = n hbar",
+                "source_role": "Bohr quantization condition",
+                "uet_role": "candidate geometric resonance interpretation only.",
+                "status": "accepted_standard_relation",
+                "claim_ceiling": "Bohr-level explanatory bridge, not many-electron theory",
+            },
+            {
+                "step_id": "AT20-BRIDGE-04",
+                "relation": "E_n = - mu c^2 alpha^2 Z^2 / (2 n^2)",
+                "source_role": "hydrogenic energy relation with reduced mass",
+                "uet_role": "depends on 0.6 alpha/electroweak constants and 0.17 electron-mass context, but those topics do not yet derive the atomic Hamiltonian here.",
+                "status": "dependency_mapped_open_derivation",
+                "claim_ceiling": "hydrogenic formula bridge only",
+            },
+            {
+                "step_id": "AT20-BRIDGE-05",
+                "relation": "1/lambda = R_H (1/n_lower^2 - 1/n_upper^2)",
+                "source_role": "standard Rydberg wavelength relation",
+                "uet_role": "primary verifier uses this as the benchmark formula; UET-specific R_H derivation remains blocked.",
+                "status": "source_backed_benchmark_formula",
+                "claim_ceiling": "selected hydrogen spectrum benchmark",
+            },
+            {
+                "step_id": "AT20-BRIDGE-06",
+                "relation": "many-electron Hamiltonian = one-electron terms + electron-electron repulsion + exchange/correlation + relativistic/QED corrections",
+                "source_role": "standard many-electron problem framing",
+                "uet_role": "open target for future UET atomic engine; no validated UET many-electron operator exists in this topic yet.",
+                "status": "blocked_theory_extension",
+                "claim_ceiling": "cannot validate helium, periodic elements, or general atomic spectra",
+            },
+        ],
+        "cross_topic_dependencies": [
+            {
+                "topic": "0.13_Thermodynamic_Bridge",
+                "usable_now": "energy/information accounting context only",
+                "not_yet_usable_as": "derivation of h, R_H, or spectral transition operators",
+            },
+            {
+                "topic": "0.6_Electroweak_Physics",
+                "usable_now": "source/context for alpha and charge-sector constants",
+                "not_yet_usable_as": "closed electroweak derivation of atomic spectra",
+            },
+            {
+                "topic": "0.17_Mass_Generation",
+                "usable_now": "electron-mass dependency context",
+                "not_yet_usable_as": "validated derivation of reduced-mass atomic levels",
+            },
+            {
+                "topic": "0.23_Unity_Scale_Link",
+                "usable_now": "dependency/scale gate",
+                "not_yet_usable_as": "unity proof from atomic agreement",
+            },
+        ],
+        "claim_boundary": "This manifest makes the bridge explicit: inherited Bohr/de Broglie/Rydberg formulas are allowed as standard-theory foundations, while UET derivation and many-electron closure remain blocked until separate artifacts exist.",
+    }
+
+
+def build_hydrogen_like_checkpoint(codata: dict) -> dict:
+    r_h = codata["constants"]["R_H"]["value"]
+    transitions = [
+        {"name": "Lyman-alpha", "n_upper": 2, "n_lower": 1},
+        {"name": "Balmer-alpha", "n_upper": 3, "n_lower": 2},
+    ]
+    ions = [
+        {"ion": "H", "Z": 1, "evidence_status": "validated_by_primary_hydrogen_rows_for_selected_lines"},
+        {"ion": "He+", "Z": 2, "evidence_status": "prediction_only_no_source_line_artifact"},
+        {"ion": "Li2+", "Z": 3, "evidence_status": "prediction_only_no_source_line_artifact"},
+    ]
+    predictions = []
+    for ion in ions:
+        for transition in transitions:
+            term = (1.0 / transition["n_lower"] ** 2) - (1.0 / transition["n_upper"] ** 2)
+            wavelength_nm = 1e9 / (r_h * ion["Z"] ** 2 * term)
+            predictions.append(
+                {
+                    **transition,
+                    "ion": ion["ion"],
+                    "Z": ion["Z"],
+                    "predicted_wavelength_nm_using_RH_Z2_scaling": wavelength_nm,
+                    "evidence_status": ion["evidence_status"],
+                }
+            )
+    return {
+        "schema_version": "1.0",
+        "role": "hydrogen_like_formula_checkpoint",
+        "status": "CHECKPOINT_ONLY",
+        "formula": "1/lambda ~= R_H Z^2 (1/n_lower^2 - 1/n_upper^2)",
+        "limitations": [
+            "Uses simple Z^2 hydrogenic scaling with hydrogen R_H as a checkpoint.",
+            "Does not apply reduced-mass corrections for each nucleus.",
+            "Does not compare He+ or Li2+ against source-backed spectral-line data.",
+            "Cannot validate helium neutral atoms or many-electron elements.",
+        ],
+        "predictions": predictions,
     }
 
 
@@ -344,6 +506,13 @@ def build_atomic_claim_scope_gate(
                 "formula_role": "standard Rydberg relation, not UET first-principles derivation",
                 "source_evidence_readiness": "codata_checkpoint_ready_for_review",
             },
+            {
+                "claim": "The topic now has an explicit formula bridge separating inherited Bohr/de Broglie/Rydberg physics from unproven UET derivation.",
+                "status": "MANIFEST_ONLY",
+                "artifact_role": "formula dependency bridge",
+                "formula_role": "claim-boundary map, not a new empirical validation",
+                "source_evidence_readiness": "local_manifest_ready_for_review",
+            },
         ],
         "blocked_claims": [
             {
@@ -354,6 +523,16 @@ def build_atomic_claim_scope_gate(
                     "first-principles derivation package",
                     "formula audit for UET-specific R_H relation",
                     "independent validation artifact",
+                ],
+            },
+            {
+                "claim": "UET validates hydrogen-like ions such as He+ and Li2+.",
+                "status": "BLOCKED",
+                "blocking_reason": "The verifier can compute hydrogenic Z^2 checkpoint predictions, but no He+/Li2+ source-line package or reduced-mass uncertainty policy is primary-gated.",
+                "next_evidence_required": [
+                    "hydrogen-like ion spectral-line source package",
+                    "nuclear mass and reduced-mass convention",
+                    "residual artifact with thresholds",
                 ],
             },
             {
@@ -379,6 +558,7 @@ def build_atomic_claim_scope_gate(
         ],
         "blocked_export_phrases": [
             "Rydberg constant derived from first principles",
+            "hydrogen-like ions validated",
             "atomic theory solved",
             "QED corrections validated",
             "Lamb shift explained",
@@ -390,6 +570,7 @@ def build_atomic_claim_scope_gate(
         "machine_readable_next_blockers": [
             "rydberg_derivation_artifact_missing",
             "hydrogen_level_energy_artifact_missing",
+            "hydrogen_like_ion_source_artifact_missing",
             "fine_structure_artifact_missing",
             "lamb_shift_artifact_missing",
             "helium_many_electron_artifact_missing",
@@ -413,9 +594,11 @@ def run_rydberg_analysis():
     source_evidence_intake_stub = build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = build_source_evidence_readiness_matrix()
     branch_claim_gate = build_branch_claim_gate()
+    atomic_formula_bridge_manifest = build_atomic_formula_bridge_manifest()
     write_json(SOURCE_EVIDENCE_INTAKE_PATH, source_evidence_intake_stub)
     write_json(SOURCE_EVIDENCE_READINESS_PATH, source_evidence_readiness_matrix)
     write_json(BRANCH_CLAIM_GATE_PATH, branch_claim_gate)
+    write_json(ATOMIC_FORMULA_BRIDGE_PATH, atomic_formula_bridge_manifest)
     r_h = codata["constants"]["R_H"]["value"]
     r_infinity = codata["constants"]["R_infinity"]["value"]
 
@@ -469,9 +652,10 @@ def run_rydberg_analysis():
         source_evidence_readiness_matrix,
         branch_claim_gate,
     )
+    hydrogen_like_checkpoint = build_hydrogen_like_checkpoint(codata)
 
     artifact = {
-        "schema_version": "1.1",
+        "schema_version": "1.2",
         "topic": "0.20_Atomic_Physics",
         "status": status,
         "claim_class": "C - source-backed internal hydrogen spectrum benchmark",
@@ -497,9 +681,14 @@ def run_rydberg_analysis():
             },
         ],
         "formula_ids": [
+            "AT20-PHOTON-TRANSITION",
+            "AT20-DEBROGLIE-STANDING-WAVE",
+            "AT20-BOHR-HYDROGEN-ENERGY",
             "AT20-RYDBERG-WAVELENGTH",
             "AT20-RH-CODATA-CHECKPOINT",
             "AT20-SPECTRUM-RESIDUAL",
+            "AT20-HYDROGENIC-Z2-CHECKPOINT",
+            "AT20-UET-ATOMIC-BRIDGE-GATE",
         ],
         "threshold": threshold,
         "metrics": {
@@ -514,14 +703,26 @@ def run_rydberg_analysis():
             "source_targets_blocked": source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
             "accepted_claim_branches": branch_claim_gate["summary"]["accepted_now"],
             "blocked_claim_exports": len(atomic_claim_scope_gate["blocked_export_phrases"]),
+            "formula_bridge_steps": len(atomic_formula_bridge_manifest["dependency_chain"]),
+            "hydrogen_like_checkpoint_predictions": len(hydrogen_like_checkpoint["predictions"]),
         },
         "results": results,
         "limitations": [
             "This validates the standard Rydberg relation against the topic-local hydrogen spectrum working copy.",
             "It does not derive the Rydberg relation from UET first principles.",
+            "The Bohr/de Broglie/Rydberg bridge is now explicit, but it remains inherited standard physics unless a UET derivation artifact is added.",
+            "Hydrogen-like ion rows are checkpoint predictions only until source-backed ion spectra are added.",
             "It does not validate fine structure, Lamb shift, helium, or many-electron atoms.",
         ],
     }
+    artifact["atomic_formula_bridge_manifest"] = {
+        "path": str(ATOMIC_FORMULA_BRIDGE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
+        "sha256": sha256(json.dumps(atomic_formula_bridge_manifest, sort_keys=True).encode("utf-8")).hexdigest(),
+        "dependency_steps": len(atomic_formula_bridge_manifest["dependency_chain"]),
+        "cross_topic_dependencies": [row["topic"] for row in atomic_formula_bridge_manifest["cross_topic_dependencies"]],
+        "claim_boundary": atomic_formula_bridge_manifest["claim_boundary"],
+    }
+    artifact["hydrogen_like_checkpoint"] = hydrogen_like_checkpoint
     artifact["source_evidence_intake_stub"] = {
         "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
         "sha256": sha256(json.dumps(source_evidence_intake_stub, sort_keys=True).encode("utf-8")).hexdigest(),
@@ -542,8 +743,9 @@ def run_rydberg_analysis():
     }
     artifact["atomic_claim_scope_gate"] = atomic_claim_scope_gate
     artifact["interpretation"] = (
-        "This artifact supports a hydrogen Rydberg benchmark branch and a bounded atomic-constant consistency branch. "
-        "It does not validate full atomic theory, fine structure, or many-electron physics."
+        "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, "
+        "and an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies. "
+        "It does not validate full atomic theory, fine structure, hydrogen-like ions, or many-electron physics."
     )
     write_artifact(artifact)
     print(f"Average wavelength error: {avg_error_ppm:.2f} ppm")

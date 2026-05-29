@@ -3,9 +3,9 @@
   "topic": "0.20_Atomic_Physics",
   "purpose": "Claim gate for separate atomic-physics branches inside the topic.",
   "summary": {
-    "branches_total": 6,
-    "accepted_now": 2,
-    "blocked_for_strong_claims": 4
+    "branches_total": 8,
+    "accepted_now": 3,
+    "blocked_for_strong_claims": 5
   },
   "branches": [
     {
@@ -21,10 +21,22 @@
       "blocker_to_stronger_claim": "Constant consistency does not independently validate atomic theory or UET derivation."
     },
     {
+      "branch": "Bohr/de Broglie/Rydberg formula bridge branch",
+      "status": "accepted_formula_bridge_manifest_branch",
+      "allowed_usage_now": "Accepted as an explicit inheritance map from standard atomic theory into the UET topic, with no first-principles UET derivation claim.",
+      "blocker_to_stronger_claim": "Need a UET-specific derivation artifact that derives alpha, R_H, and transition operators without treating inherited formulas as proof."
+    },
+    {
       "branch": "Hydrogen level-energy branch",
       "status": "blocked_for_strong_claims",
       "allowed_usage_now": "Secondary lane only.",
       "blocker_to_stronger_claim": "Need a dedicated level-energy artifact with threshold policy."
+    },
+    {
+      "branch": "Hydrogen-like ion branch",
+      "status": "blocked_for_strong_claims",
+      "allowed_usage_now": "Theory-extension checkpoint only; can list predicted one-electron ion lines but cannot validate them without source-backed spectra.",
+      "blocker_to_stronger_claim": "Need source-backed He+/Li2+ line data, reduced-mass conventions, nuclear masses, uncertainty policy, and residual thresholds."
     },
     {
       "branch": "Fine-structure and Lamb-shift branch",

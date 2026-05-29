@@ -43,6 +43,19 @@
       ]
     },
     {
+      "name": "Hydrogen-like ion package",
+      "priority": "high",
+      "status_hint": "theory_extension_checkpoint_without_source_lines",
+      "evidence_entries": [
+        "ion_line_dataset",
+        "reduced_mass_convention",
+        "nuclear_mass_source",
+        "artifact_path",
+        "observable_scope",
+        "upgrade_requirement"
+      ]
+    },
+    {
       "name": "Fine-structure and Lamb-shift package",
       "priority": "high",
       "status_hint": "blocked_precision_branch",

@@ -18,6 +18,13 @@
         "formula_role": "standard Rydberg relation, not UET first-principles derivation",
         "source_evidence_readiness": "codata_checkpoint_ready_for_review",
         "status": "CHECKPOINT_ONLY"
+      },
+      {
+        "artifact_role": "formula dependency bridge",
+        "claim": "The topic now has an explicit formula bridge separating inherited Bohr/de Broglie/Rydberg physics from unproven UET derivation.",
+        "formula_role": "claim-boundary map, not a new empirical validation",
+        "source_evidence_readiness": "local_manifest_ready_for_review",
+        "status": "MANIFEST_ONLY"
       }
     ],
     "blocked_claims": [
@@ -28,6 +35,16 @@
           "first-principles derivation package",
           "formula audit for UET-specific R_H relation",
           "independent validation artifact"
+        ],
+        "status": "BLOCKED"
+      },
+      {
+        "blocking_reason": "The verifier can compute hydrogenic Z^2 checkpoint predictions, but no He+/Li2+ source-line package or reduced-mass uncertainty policy is primary-gated.",
+        "claim": "UET validates hydrogen-like ions such as He+ and Li2+.",
+        "next_evidence_required": [
+          "hydrogen-like ion spectral-line source package",
+          "nuclear mass and reduced-mass convention",
+          "residual artifact with thresholds"
         ],
         "status": "BLOCKED"
       },
@@ -54,6 +71,7 @@
     ],
     "blocked_export_phrases": [
       "Rydberg constant derived from first principles",
+      "hydrogen-like ions validated",
       "atomic theory solved",
       "QED corrections validated",
       "Lamb shift explained",
@@ -61,9 +79,9 @@
       "many-electron atoms solved"
     ],
     "branch_claim_gate_summary": {
-      "accepted_now": 2,
-      "blocked_for_strong_claims": 4,
-      "branches_total": 6
+      "accepted_now": 3,
+      "blocked_for_strong_claims": 5,
+      "branches_total": 8
     },
     "claim_boundary": "A PASS artifact supports only selected hydrogen Rydberg benchmark behavior with NIST/CODATA working copies. It does not derive R_H, validate QED corrections, validate helium or many-electron atoms, or close atomic theory.",
     "claim_class": "C_hydrogen_rydberg_benchmark_only",
@@ -72,26 +90,39 @@
     "machine_readable_next_blockers": [
       "rydberg_derivation_artifact_missing",
       "hydrogen_level_energy_artifact_missing",
+      "hydrogen_like_ion_source_artifact_missing",
       "fine_structure_artifact_missing",
       "lamb_shift_artifact_missing",
       "helium_many_electron_artifact_missing"
     ],
     "schema_version": "1.0",
     "source_evidence_summary": {
-      "source_targets_total": 5,
-      "targets_blocked_by_pending_evidence": 3,
+      "source_targets_total": 6,
+      "targets_blocked_by_pending_evidence": 4,
       "targets_ready_for_source_review": 2
     },
     "topic": "0.20_Atomic_Physics"
   },
+  "atomic_formula_bridge_manifest": {
+    "claim_boundary": "This manifest makes the bridge explicit: inherited Bohr/de Broglie/Rydberg formulas are allowed as standard-theory foundations, while UET derivation and many-electron closure remain blocked until separate artifacts exist.",
+    "cross_topic_dependencies": [
+      "0.13_Thermodynamic_Bridge",
+      "0.6_Electroweak_Physics",
+      "0.17_Mass_Generation",
+      "0.23_Unity_Scale_Link"
+    ],
+    "dependency_steps": 6,
+    "path": "Data/03_Research/atomic_formula_bridge_manifest.json",
+    "sha256": "738e3164659be22d8723eb2f08151d2ec8acbbb8742826d07367a706c59b0358"
+  },
   "branch_claim_gate": {
     "claim_boundary": "This gate keeps the topic at hydrogen benchmark status, not full atomic-theory closure.",
     "path": "Data/03_Research/branch_claim_gate.json",
-    "sha256": "28586569daec2f3ac19312cda3ff661d9a39247a598759ec5ca2a24e71b5a19a",
+    "sha256": "2164f20156242eb82c834804a21f0b55bdeb921eae6ce49b5b171ce38cded6f2",
     "summary": {
-      "accepted_now": 2,
-      "blocked_for_strong_claims": 4,
-      "branches_total": 6
+      "accepted_now": 3,
+      "blocked_for_strong_claims": 5,
+      "branches_total": 8
     }
   },
   "claim_class": "C - source-backed internal hydrogen spectrum benchmark",
@@ -101,11 +132,84 @@
     "python": "3.14.2"
   },
   "formula_ids": [
+    "AT20-PHOTON-TRANSITION",
+    "AT20-DEBROGLIE-STANDING-WAVE",
+    "AT20-BOHR-HYDROGEN-ENERGY",
     "AT20-RYDBERG-WAVELENGTH",
     "AT20-RH-CODATA-CHECKPOINT",
-    "AT20-SPECTRUM-RESIDUAL"
+    "AT20-SPECTRUM-RESIDUAL",
+    "AT20-HYDROGENIC-Z2-CHECKPOINT",
+    "AT20-UET-ATOMIC-BRIDGE-GATE"
   ],
-  "generated_at_utc": "2026-05-26T12:41:18.703403+00:00",
+  "generated_at_utc": "2026-05-29T13:12:39.998253+00:00",
+  "hydrogen_like_checkpoint": {
+    "formula": "1/lambda ~= R_H Z^2 (1/n_lower^2 - 1/n_upper^2)",
+    "limitations": [
+      "Uses simple Z^2 hydrogenic scaling with hydrogen R_H as a checkpoint.",
+      "Does not apply reduced-mass corrections for each nucleus.",
+      "Does not compare He+ or Li2+ against source-backed spectral-line data.",
+      "Cannot validate helium neutral atoms or many-electron elements."
+    ],
+    "predictions": [
+      {
+        "Z": 1,
+        "evidence_status": "validated_by_primary_hydrogen_rows_for_selected_lines",
+        "ion": "H",
+        "n_lower": 1,
+        "n_upper": 2,
+        "name": "Lyman-alpha",
+        "predicted_wavelength_nm_using_RH_Z2_scaling": 121.56844561369066
+      },
+      {
+        "Z": 1,
+        "evidence_status": "validated_by_primary_hydrogen_rows_for_selected_lines",
+        "ion": "H",
+        "n_lower": 2,
+        "n_upper": 3,
+        "name": "Balmer-alpha",
+        "predicted_wavelength_nm_using_RH_Z2_scaling": 656.4696063139295
+      },
+      {
+        "Z": 2,
+        "evidence_status": "prediction_only_no_source_line_artifact",
+        "ion": "He+",
+        "n_lower": 1,
+        "n_upper": 2,
+        "name": "Lyman-alpha",
+        "predicted_wavelength_nm_using_RH_Z2_scaling": 30.392111403422664
+      },
+      {
+        "Z": 2,
+        "evidence_status": "prediction_only_no_source_line_artifact",
+        "ion": "He+",
+        "n_lower": 2,
+        "n_upper": 3,
+        "name": "Balmer-alpha",
+        "predicted_wavelength_nm_using_RH_Z2_scaling": 164.11740157848237
+      },
+      {
+        "Z": 3,
+        "evidence_status": "prediction_only_no_source_line_artifact",
+        "ion": "Li2+",
+        "n_lower": 1,
+        "n_upper": 2,
+        "name": "Lyman-alpha",
+        "predicted_wavelength_nm_using_RH_Z2_scaling": 13.507605068187852
+      },
+      {
+        "Z": 3,
+        "evidence_status": "prediction_only_no_source_line_artifact",
+        "ion": "Li2+",
+        "n_lower": 2,
+        "n_upper": 3,
+        "name": "Balmer-alpha",
+        "predicted_wavelength_nm_using_RH_Z2_scaling": 72.9410673682144
+      }
+    ],
+    "role": "hydrogen_like_formula_checkpoint",
+    "schema_version": "1.0",
+    "status": "CHECKPOINT_ONLY"
+  },
   "inputs": [
     {
       "doi": "10.18434/T4W30F",
@@ -121,23 +225,27 @@
       "source": "CODATA 2018 Recommended Values"
     }
   ],
-  "interpretation": "This artifact supports a hydrogen Rydberg benchmark branch and a bounded atomic-constant consistency branch. It does not validate full atomic theory, fine structure, or many-electron physics.",
+  "interpretation": "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, and an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies. It does not validate full atomic theory, fine structure, hydrogen-like ions, or many-electron physics.",
   "limitations": [
     "This validates the standard Rydberg relation against the topic-local hydrogen spectrum working copy.",
     "It does not derive the Rydberg relation from UET first principles.",
+    "The Bohr/de Broglie/Rydberg bridge is now explicit, but it remains inherited standard physics unless a UET derivation artifact is added.",
+    "Hydrogen-like ion rows are checkpoint predictions only until source-backed ion spectra are added.",
     "It does not validate fine structure, Lamb shift, helium, or many-electron atoms."
   ],
   "metrics": {
     "R_H_codata_m_inverse": 10967758.3406,
     "R_infinity_codata_m_inverse": 10973731.56816,
-    "accepted_claim_branches": 2,
+    "accepted_claim_branches": 3,
     "average_wavelength_error_ppm": 7.504133013735595,
-    "blocked_claim_exports": 6,
+    "blocked_claim_exports": 7,
     "fitted_slope_through_origin_m_inverse": 10967845.50226957,
+    "formula_bridge_steps": 6,
+    "hydrogen_like_checkpoint_predictions": 6,
     "line_count": 7,
     "max_wavelength_error_ppm": 12.500832386280821,
     "slope_error_ppm": 7.947081514956296,
-    "source_targets_blocked": 3,
+    "source_targets_blocked": 4,
     "source_targets_ready_for_review": 2
   },
   "results": [
@@ -212,15 +320,16 @@
       "wavelength_vacuum_nm": 102.5728
     }
   ],
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "source_evidence_intake_stub": {
     "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself validate full atomic theory.",
     "path": "Data/03_Research/source_evidence_intake_stub.json",
-    "sha256": "5e6993fdb4864c5c4a87e80393201db795b597f1498fc949acbc1e35a155213f",
+    "sha256": "b6ee3fcb8301627350f3f5988f0bdb5f6215eff38063e873881bf800bb02a352",
     "source_targets": [
       "NIST hydrogen spectrum package",
       "CODATA atomic constants package",
       "Hydrogen level-energy package",
+      "Hydrogen-like ion package",
       "Fine-structure and Lamb-shift package",
       "Helium and many-electron package"
     ]
@@ -228,10 +337,10 @@
   "source_evidence_readiness_matrix": {
     "claim_boundary": "A ready row has enough provenance structure for source review. It does not by itself upgrade atomic-theory claims.",
     "path": "Data/03_Research/source_evidence_readiness_matrix.json",
-    "sha256": "564dc580316d1c27dcb7548e442465a47804f13651cf6059b3796f00f578f618",
+    "sha256": "86c4f908f41d3420a27f4b08bc0df02f92ae2deb8eceef0716573a72024f829d",
     "summary": {
-      "source_targets_total": 5,
-      "targets_blocked_by_pending_evidence": 3,
+      "source_targets_total": 6,
+      "targets_blocked_by_pending_evidence": 4,
       "targets_ready_for_source_review": 2
     }
   },
