@@ -1,93 +1,92 @@
 # Topic 0.2: Black Hole Physics - Code
 
-Validates UET against Black Hole Singularity resolution, Cosmological Coupling (k), and Observational Consistency.
-- **Singularity Resolution** -> kappa term (grad C interaction)
-- **Cosmological Coupling** -> Axiom 8 (Vacuum linkage)
-- **Entropy-Gravity Link** -> beta term (Information potential)
+This folder contains black-hole engine, proof, research, competitor, and visualization
+scripts. The current primary verifier is an internal EHT shadow-size benchmark. It does not
+prove singularity resolution, replace GR, validate EHT images, validate ringdown physics,
+or prove CCBH cosmological coupling.
 
 ## 5x4 Structure
 
-```
+```text
 Code/
   01_Engine/
-    Engine_BlackHole.py           # Main Core-4 Solver (Singularity resolution)
+    Engine_BlackHole.py              # Saturation-core diagnostic engine
   02_Proof/
-    Proof_Singularity_Resolution.py  # Potential minimum symbolic verification
+    Proof_Singularity_Resolution.py  # Potential-minimum diagnostic check
   03_Research/
-    Research_CCBH_Analysis.py     # Quasar population k-measurement (50,000 sources)
-    Research_GW_Validation.py     # GW150914 Entropy-Energy relation analysis
-    Research_EHT_Validation.py    # M87*/Sgr A* Shadow diameter consistency
-    Research_Singularity_Sweep.py # Mass-range stability for resolved cores
+    Research_EHT_Validation.py       # Primary selected EHT shadow-size benchmark
+    Research_CCBH_Analysis.py        # Blocked until upstream data are archived
+    Research_GW_Validation.py        # Diagnostic branch; not primary-gated
+    Research_Singularity_Sweep.py    # Heuristic saturation-core sweep
   04_Competitor/
-    Competitor_GR_Benchmark.py    # Standard Schwarzschild/Hawking GR baseline
+    Competitor_GR_Benchmark.py       # GR comparator bookkeeping
 ```
 
-## 🚀 Run Commands
+## Run Commands
 
 ```powershell
-# Navigate to project root
-cd c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.9.0
+cd c:\Users\santa\Desktop\uet_harness
 
-# [1] Core Engine Logic
-python docs/topics/0.2_Black_Hole_Physics/Code/01_Engine/Engine_BlackHole.py
-
-# [2] Mathematical Proof
-python docs/topics/0.2_Black_Hole_Physics/Code/02_Proof/Proof_Singularity_Resolution.py
-
-# [3] Observational Research (Quasars)
-python docs/topics/0.2_Black_Hole_Physics/Code/03_Research/Research_CCBH_Analysis.py
-
-# [4] Observational Research (Event Horizon Telescope)
 python docs/topics/0.2_Black_Hole_Physics/Code/03_Research/Research_EHT_Validation.py
-
-# [5] Event Validation (LIGO Gravitational Waves)
+python docs/topics/0.2_Black_Hole_Physics/Code/01_Engine/Engine_BlackHole.py
+python docs/topics/0.2_Black_Hole_Physics/Code/02_Proof/Proof_Singularity_Resolution.py
+python docs/topics/0.2_Black_Hole_Physics/Code/03_Research/Research_CCBH_Analysis.py
 python docs/topics/0.2_Black_Hole_Physics/Code/03_Research/Research_GW_Validation.py
-
-# [6] Theoretical Stress Test
 python docs/topics/0.2_Black_Hole_Physics/Code/03_Research/Research_Singularity_Sweep.py
-
-# [7] Competitor Benchmark
 python docs/topics/0.2_Black_Hole_Physics/Code/04_Competitor/Competitor_GR_Benchmark.py
 ```
 
-## 📊 Test Results
+## Current Verification Status
 
-| Script | Tests | Result | Status |
-|--------|-------|--------|--------|
-| Engine_BlackHole.py | Internal | Stable Core Found | ✅ PASS |
-| Proof_Singularity_Resolution.py | 1/1 | Infinite Collapse Prevented | ✅ PASS |
-| Research_CCBH_Analysis.py | 50,000 | k = -2.07 (Bias Detected) | ⚠️ WARN |
-| Research_EHT_Validation.py | 2/2 | 5.2*Rs Consistency | ✅ PASS |
-| Research_GW_Validation.py | 1/1 | 0.27% Deviation | ✅ PASS |
-| Research_Singularity_Sweep.py | 3/3 | All Masses Resolved | ✅ PASS |
-| Competitor_GR_Benchmark.py | Baseline | standard GR output | ✅ PASS |
+Current authority: `../Result/artifacts/0_2_black_hole_physics_verification.json` and
+`../VERIFICATION_SPEC.md`.
 
-**Total: 6/7 PASS**
+| Lane | Evidence | Current status | Claim boundary |
+|:--|:--|:--|:--|
+| EHT shadow-size benchmark | M87* and Sgr A* compact `5.2 R_s` comparison | `PASS` | Selected internal benchmark only |
+| Comparator geometry | Schwarzschild radius and GR shadow approximation | `COMPARATOR_ONLY` | Bookkeeping, not UET replacement dynamics |
+| Claim-scope controller | `black_hole_claim_scope_gate` | `WARN` | Export remains warning-gated |
+| Source evidence | topic-local working copy | `OPEN` / blocked | Not a full normalized upstream archive |
+| Saturation-core / singularity branch | heuristic engine and sweep diagnostics | `BLOCKED` for proof claims | physical core scale and artifact gate missing |
+| GW/ringdown and CCBH branches | scripts exist | `BLOCKED` for strong claims | upstream archives, thresholds, and primary artifacts missing |
 
-## Data Sources (with DOIs)
+## Data Sources
 
-- **Shen et al. (2011)** Quasar Masses in SDSS DR7 - DOI: 10.1088/0067-0049/194/2/45
-- **Farrah et al. (2023)** Observational Evidence for Cosmological Coupling - DOI: 10.3847/2041-8213/acb704
-- **Abbott et al. (2016)** GW150914: Observation of Gravitational Waves - DOI: 10.1103/PhysRevLett.116.061102
-- **Event Horizon Telescope Collab (2019/2022)** M87* / Sgr A* Results - DOI: 10.3847/2041-8213/ab0e85
+- EHT M87* / Sgr A* working-copy data in `../Data/03_Research/`
+- Shen et al. 2011 and Farrah et al. 2023 are relevant to CCBH work, but the CCBH branch
+  is blocked until upstream files are archived and hashed under `docs/data/external/...`.
+- GW150914/LIGO references are diagnostic context only until a source-backed ringdown
+  verifier and thresholds exist.
 
-## Engine/Proof Analysis
+## Engine / Proof Analysis
 
-### Current Status
-Uses `Engine_BlackHole.py` (Axiom 8) with `k_pure = 3.0`.
-Supports "Information Repulsion" at r < 1.0e-4 Rs.
+The saturation-core engine and potential-minimum proof are useful for mechanism
+development, but they do not override the artifact-level claim gate. The current artifact
+allows selected EHT shadow-size benchmark claims and GR-style comparator bookkeeping only.
 
-### Recommendation
-- **Engine needed?** Yes. Without the beta-term, the model collapses to a 1/r singularity.
-- **Proof needed?** Yes. Specifically `Proof_Singularity_Resolution` to verify the potential minimum exists.
+## Claim Boundary
 
-## 🧬 Key Physics
+Allowed now:
 
+- selected internal EHT shadow-size benchmark within the declared 2-sigma gate
+- compact GR shadow geometry as comparator bookkeeping
+- heuristic saturation-core diagnostics as proposed mechanism work
+
+Blocked now:
+
+- black-hole singularity resolved
+- GR replacement validated
+- EHT image-domain validation
+- ringdown validated
+- CCBH cosmological coupling proven
+- black-hole information problem solved
+
+## Key Physics
+
+```text
+Potential: V(r) = -GM/r + (beta * GM * R_core) / r^2
+Shadow comparator: D_shadow = 5.2 R_s
+Entropy law: E_rad = (ln 2 / pi) * T_H * Delta_S
 ```
-Potential: V(r) = -GM/r (Gravity) + (beta*GM*R_core)/r^2 (Info)
-Entropy Law: E_rad = (ln 2 / pi) * T_H * Delta_S
-```
 
-## ASCII Note
-
-All Unicode replaced with ASCII for Windows compatibility.
+See `../FORMULA_AUDIT.md` for formula roles, proof status, and failure modes.
