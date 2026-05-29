@@ -162,3 +162,23 @@ graph TD
 - กรมโยธาธิการและผังเมือง กระทรวงมหาดไทย, *กฎกระทรวงและระเบียบระยะถอยร่นความสูงอาคาร และระยะแนวถนน*
 - Singapore Building and Construction Authority (BCA), *Green Mark Certification Standards for Vertical Greening and Sustainable Skylines*.
 - *UET Structural Mechanics Hardening Report - Topic 0.38 Integration with Dynamic Structural Stress Relaxation Schemes.*
+
+---
+
+## 7. ยุทธศาสตร์ที่เชื่อมโยง: การฟื้นฟูอาคารร้างชานเมืองและฟาร์มนกนางแอ่น (Cross-Strategy: Suburban Revitalization & Swiftlet Agroforestry)
+
+แนวคิด "อาคารภูเขาจำลอง" ในเขตเมืองหลวงมีหลักการเดียวกับการบริหารจัดการพื้นที่ในเขตชานเมืองและพื้นที่รกร้าง — คือการ **"เปลี่ยนโครงสร้างที่ตายแล้วให้เป็นระบบที่มีชีวิต"** ยุทธศาสตร์ที่เชื่อมโยงกันมีดังนี้:
+
+### 7.1 ฟาร์มนกนางแอ่นในอาคารร้างชานเมือง (Swiftlet Farming in Vacant Suburban Buildings)
+*   อาคารร้างในเขตปริมณฑล (สมุทรปราการ, นนทบุรี, ปทุมธานี) สามารถปรับใช้หลักการเดียวกับ **"Cascading Moss Wall"** โดยปลูกต้นไม้ร่มเงาและพืชผู้ผลิตแมลงล้อมรอบ เพื่อสร้างสภาพแวดล้อมที่เหมาะกับนกนางแอ่น
+*   หลักการควบคุมความชื้นจากกำแพงมอสชีวภาพในส่วนที่ 2.2 สามารถนำมาใช้เป็นระบบควบคุมความชื้น (Humidity Buffer) ภายในอาคารฟาร์มนกโดยตรง ลดต้นทุนพลังงานในการรักษาสภาวะที่เหมาะสมสำหรับการทำรัง
+*   รายละเอียดเพิ่มเติมอยู่ใน **[04_industry_and_production/thailand_resource_industry_map.md (หัวข้อ 2.6.5)](file:///c:/Users/santa/Desktop/uet_harness/docs/incubator/04_industry_and_production/thailand_resource_industry_map.md)**
+
+### 7.2 วนเกษตรรอบอาคาร (Agroforestry Buffer Around Swiftlet Farms)
+*   การปลูกพืชตระกูลวนเกษตร (ต้นไม้ยืนต้น + พืชคลุมดิน) รอบอาคารฟาร์มนกจะสร้างระบบนิเวศน์ที่เอื้อต่อการผลิตแมลง (Insect Prey Habitat) เป็นอาหารธรรมชาติของนก
+*   ระบบนิเวศน์นี้ทำหน้าที่เป็น **"กำแพงกรองความร้อน" (Thermal Buffer)** เช่นเดียวกับผนังมอสของอาคารภูเขาจำลอง ลดเอนโทรปีความร้อนในระบบ
+*   แนวทางนี้เชื่อมโยงกับ **[04_industry_and_production/thailand_resource_industry_map.md (หัวข้อ 2.6.1)](file:///c:/Users/santa/Desktop/uet_harness/docs/incubator/04_industry_and_production/thailand_resource_industry_map.md)** เรื่อง Swiftlet Agroforestry Integration ในภาคเหนือ
+
+### 7.3 หลักการ UET ที่เชื่อมโยง (UET Principle Connection)
+> **หลักการ Negentropy ร่วม:** ทั้งอาคารภูเขาจำลองและฟาร์มนกนางแอ่นในวนเกษตรต่างทำหน้าที่ลดเอนโทรปีในพื้นที่ตนเอง ($dS_{\text{urban}} < 0$ และ $dS_{\text{suburban}} < 0$) โดยแปลงทรัพยากรที่ "ตาย" (อาคารคอนกรีตร้อนระอุ, ที่ดินร้าง) ให้เป็นระบบที่ "มีชีวิต" และสร้างมูลค่าเชิงเศรษฐกิจอย่างยั่งยืน — เป็นตัวอย่างของ **Systemic Attractor State** ตามกรอบ UET
+
