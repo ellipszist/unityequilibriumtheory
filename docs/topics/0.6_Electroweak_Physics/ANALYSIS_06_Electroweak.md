@@ -1,47 +1,72 @@
 # UET Analysis: Electroweak Physics (Topic 0.6)
 
+> [!WARNING]
+> **Legacy claim boundary:** This file is a legacy analysis note, not the topic status
+> authority. It must not be used to claim full electroweak-sector closure, Standard Model
+> replacement, proved gauge-theory derivation, validated running weak-angle prediction, or
+> all-observable electroweak fit. Current allowed claims are controlled by `README.md`,
+> `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and
+> `Result/artifacts/electroweak_expanded_benchmark.json`: selected benchmark agreement with
+> `electroweak_claim_scope_gate.controller_status == WARN`.
+
 **Date:** 2026-02-02
-**Status:** ✅ VERIFIED
-**Pass Rate:** 100% (8/8 Key Metrics)
+**Status:** Legacy analysis note; current controller is `WARN`
+**Pass Rate:** Historical note only; use current verifier artifacts for benchmark gates
 
 ## 1. Executive Summary
 
-This analysis validates the Unity Equilibrium Theory (UET) application to **Electroweak Unification**. Unlike the Standard Model, which requires the experimental measurement of independent parameters (Fermi Constant $G_F$, Weinberg Angle $\theta_W$, Higgs Mass $m_H$), UET derives these values as **geometric consequences of Information Manifold saturation**.
+This file records an earlier electroweak benchmark interpretation. The current artifact
+supports selected benchmark agreement only; it does not validate electroweak unification or
+prove that the benchmark quantities are geometric consequences of UET.
 
-**Key Results:**
-- **Fermi Constant:** Derived exactly ($1.166 \times 10^{-5}$ GeV) from the Vacuum Expectation Value.
-- **Neutron Lifetime:** Predicted **879.40s** (0.09% error vs World Average).
-- **Weinberg Angle:** Derived from $\pi/6$ geometry ($\sin^2 \theta_W \approx 0.231$).
+Current artifact-supported reading:
+
+- **Fermi Constant:** checked against the current benchmark package.
+- **Neutron Lifetime:** checked-local expanded benchmark gate.
+- **Weinberg Angle:** benchmark comparison with provenance caveat; direct upstream mapping
+  remains open.
+- **Running-angle behavior:** diagnostic-only until source, convention, and threshold gates
+  close.
 
 ## 2. Theoretical Framework
 
-### 2.1 The Geometric Origin of Weak Force
-UET posits that the Weak Force is not a fundamental force but a **Geometric Leakage** caused by the dimensionality mismatch between the 3D spatial manifold (Sphere) and the 1D time manifold (Line).
+### 2.1 The Geometric Origin Of Weak Force
 
-- **Symmetry Breaking:** Occurs when the Information Density exceeds the channel capacity of the 3D manifold ($Z=3$).
-- **Use of $\pi/6$:** The mixing angle $\theta_W$ corresponds to the projection angle of a hyper-tetrahedron, leading to $\theta_W \approx 30^\circ$.
+UET proposes geometric interpretations for weak-sector quantities. In the current repository
+state, those interpretations remain theory-development claims unless they are backed by a
+dedicated derivation or proof artifact.
 
-### 2.2 The Neutron Puzzle
-The Neutron Lifetime has been a longstanding puzzle (Beam vs Bottle discrepancy). UET resolves this by defining the decay as a precise **Information Saturation Event**. The decay rate is fixed by the channel capacity of the Vacuum Field ($G_F$).
+### 2.2 The Neutron-Lifetime Lane
 
-$$ \tau_n \propto \frac{1}{G_F^2 |V_{ud}|^2} $$
+The neutron-lifetime lane is currently a checked-local benchmark. It should not be described
+as resolving the beam/bottle discrepancy or proving an information-saturation mechanism.
 
-Because UET derives $G_F$ geometrically, the lifetime is a prediction, not a fit.
+```text
+tau_n proportional to 1 / (G_F^2 |V_ud|^2)
+```
+
+The current gate checks benchmark compatibility. A geometric derivation of `G_F` remains a
+theory-closure task, not a closed artifact result.
 
 ## 3. Verification Results
 
-Tested using `Engine_Electroweak.py` V4.0.
+Use `Result/artifacts/electroweak_expanded_benchmark.json` as the current authority.
 
-| Parameter | Standard Model | UET Prediction | Error | Status |
-|:----------|:---------------|:---------------|:------|:-------|
-| **Fermi Constant ($G_F$)** | $1.16637 \times 10^{-5}$ | $1.16637 \times 10^{-5}$ | **0.00%** | ✅ PASS |
-| **Weinberg Angle ($\sin^2 \theta_W$)** | $0.23121$ | $0.23122$ | **0.004%** | ✅ PASS |
-| **Neutron Lifetime** | $879.4 \pm 0.6$ s | $879.40$ s | **0.00%** | ✅ PASS |
-| **W Boson Mass** | $80.379$ GeV | $79.95$ GeV | $0.5\%$ | ✅ PASS |
-| **Higgs Mass** | $125.25$ GeV | $123.11$ GeV | $1.7\%$ | ✅ PASS |
+| Lane | Current status | Claim boundary |
+|:--|:--|:--|
+| Selected core electroweak benchmarks | `PASS` | selected benchmark agreement only |
+| Neutron lifetime | `PASS` | checked-local benchmark gate |
+| Running weak-angle points | `DIAGNOSTIC_ONLY` | no pass/fail or prediction claim |
+| Provenance caveats | `OPEN` | weak-angle, Fermi, and neutron lanes need stronger source mapping before manuscript-grade promotion |
+| Theory closure | `BLOCKED` | no full electroweak proof or Standard Model replacement |
 
 ## 4. Scientific Integrity Note
-The derivation of $G_F$ uses the target Vacuum Expectation Value ($v = 246.22$ GeV) to demonstrate internal consistency. In a purely axiomatic derivation (future work), $v$ itself arises from the Planck Scale Manifold Compactification ratio.
+
+The current benchmark agreement is useful, but it does not by itself derive the vacuum
+expectation value, prove gauge theory from UET, or validate every electroweak observable.
 
 ## 5. Conclusion
-Topic 0.6 confirms that Electroweak parameters are **not arbitrary**. They are fixed geometric constants of the Information Manifold. The precise prediction of the Neutron Lifetime serves as a "Smoking Gun" for the validity of the UET geometry.
+
+Current controller: Topic 0.6 supports selected electroweak benchmark agreement and a
+checked-local neutron-lifetime gate. It does not confirm electroweak-sector closure,
+Standard Model replacement, or a smoking-gun proof for UET geometry.
