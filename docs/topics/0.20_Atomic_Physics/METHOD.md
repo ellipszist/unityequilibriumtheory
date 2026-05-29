@@ -10,7 +10,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 | :-- | :-- | :-- |
 | Hydrogen Rydberg spectrum | `Research_Rydberg_Validation.py`, NIST/CODATA data | primary artifact, Claim Class C |
 | Atomic formula bridge | `atomic_formula_bridge_manifest.json`, artifact `atomic_formula_bridge_manifest` | explicit standard-formula and UET dependency map; manifest only |
-| Hydrogen-like ions | artifact `hydrogen_like_checkpoint` | checkpoint predictions only; no source-backed ion validation |
+| Hydrogen-like ions | `hydrogen_like_ion_spectrum.json`, artifact `hydrogen_like_checkpoint` | provisional selected He+/Li2+ reduced-mass benchmark |
 | Engine Balmer demo | `Engine_Atomic_Hydrogen.py` | secondary/demo; local rounded constant |
 | Hydrogen level energies | `hydrogen_spectra_data.json`, `Proof_Hydrogen_Spectrum.py` | secondary lane; needs artifact |
 | Three-body coupling smoke test | `Research_Atomic_ThreeBody.py` | code-health check, not physics validation |
@@ -36,7 +36,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 4. Compute predicted vacuum wavelength using `R_H`.
 5. Compute per-line residuals and fitted slope through origin.
 6. Write `atomic_formula_bridge_manifest.json` to make the inherited Bohr/de Broglie/Rydberg chain and UET dependency roles explicit.
-7. Emit hydrogen-like `Z^2` checkpoint predictions for H, He+, and Li2+ while marking non-hydrogen rows as prediction-only.
+7. Load source-referenced He+ and Li2+ rows, apply reduced-mass hydrogenic scaling, and compute residuals under provisional thresholds.
 8. Write artifact with hashes, thresholds, metrics, formula bridge metadata, checkpoint predictions, and limitations.
 9. Write `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json` so the hydrogen benchmark stays separate from broader atomic-theory claims.
 
@@ -46,18 +46,19 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 - `R_H` is source-locked from CODATA; this verifier does not derive it.
 - Local NIST rows may be rounded or curated and need transcription precision notes before ppm-level public claims.
 - Bohr/de Broglie/Rydberg formulas are inherited standard physics unless a separate UET derivation artifact proves otherwise.
-- Hydrogen-like ion predictions use simple `Z^2` scaling as a checkpoint and omit ion-specific reduced-mass corrections until a source-backed ion artifact is added.
+- Hydrogen-like ion predictions use reduced-mass scaling for the selected He+ and Li2+ rows. Li III remains provisional because direct ASD row capture is still pending.
 
 ## Domain of Validity
 
 - Selected hydrogen Balmer and Lyman lines in the topic-local NIST working copy.
 - Claim Class C internal benchmark only.
 - Formula bridge manifest language that explains dependency roles without claiming derivation.
+- Provisional selected He+/Li2+ one-electron ion residuals under the reduced-mass hydrogenic benchmark gate.
 
 ## Excluded Cases
 
 - First-principles UET derivation of `R_H`.
-- Source-backed validation of He+, Li2+, or other hydrogen-like ions.
+- Broad source-backed validation of hydrogen-like ions beyond the selected provisional He+/Li2+ rows.
 - Fine structure, Lamb shift, hyperfine structure.
 - Helium or many-electron atomic spectra.
 - Full QED validation.

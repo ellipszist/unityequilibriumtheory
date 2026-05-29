@@ -38,6 +38,7 @@ if ROOT is None:
 TOPIC_DIR = ROOT / "docs" / "topics" / "0.20_Atomic_Physics"
 SPECTRUM_PATH = TOPIC_DIR / "Data" / "03_Research" / "nist_hydrogen_spectrum.json"
 CODATA_PATH = TOPIC_DIR / "Data" / "03_Research" / "codata_2018_atomic.json"
+HYDROGEN_LIKE_ION_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_like_ion_spectrum.json"
 ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_20_atomic_physics_verification.json"
 SOURCE_EVIDENCE_INTAKE_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_intake_stub.json"
 SOURCE_EVIDENCE_READINESS_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_readiness_matrix.json"
@@ -140,7 +141,7 @@ def build_source_evidence_intake_stub() -> dict:
             {
                 "name": "Hydrogen-like ion package",
                 "priority": "high",
-                "status_hint": "theory_extension_checkpoint_without_source_lines",
+                "status_hint": "source_referenced_one_electron_ion_rows",
                 "evidence_entries": [
                     "ion_line_dataset",
                     "reduced_mass_convention",
@@ -222,16 +223,13 @@ def build_source_evidence_readiness_matrix() -> dict:
             "name": "Hydrogen-like ion package",
             "priority": "high",
             "fields_total": 6,
-            "fields_complete": 2,
-            "fields_pending": 4,
+            "fields_complete": 5,
+            "fields_pending": 1,
             "pending_fields": [
-                "source_line_dataset",
-                "nuclear_mass_source",
-                "uncertainty_policy",
-                "artifact_path",
+                "direct_primary_ASD_row_for_Li_III",
             ],
-            "ready_for_source_review": False,
-            "blocking_reason": "Hydrogen-like ion formulas can be computed, but no source-backed He+/Li2+ spectral-line artifact is primary-gated yet.",
+            "ready_for_source_review": True,
+            "blocking_reason": "Ready for provisional source review: He II is a direct NIST handbook row, while Li III is currently a secondary paper row citing NIST and still needs direct ASD capture.",
         },
         {
             "name": "Fine-structure and Lamb-shift package",
@@ -289,8 +287,8 @@ def build_branch_claim_gate() -> dict:
         "purpose": "Claim gate for separate atomic-physics branches inside the topic.",
         "summary": {
             "branches_total": 8,
-            "accepted_now": 3,
-            "blocked_for_strong_claims": 5,
+            "accepted_now": 4,
+            "blocked_for_strong_claims": 4,
         },
         "branches": [
             {
@@ -319,9 +317,9 @@ def build_branch_claim_gate() -> dict:
             },
             {
                 "branch": "Hydrogen-like ion branch",
-                "status": "blocked_for_strong_claims",
-                "allowed_usage_now": "Theory-extension checkpoint only; can list predicted one-electron ion lines but cannot validate them without source-backed spectra.",
-                "blocker_to_stronger_claim": "Need source-backed He+/Li2+ line data, reduced-mass conventions, nuclear masses, uncertainty policy, and residual thresholds.",
+                "status": "accepted_provisional_source_referenced_benchmark_branch",
+                "allowed_usage_now": "Selected He+ and Li2+ one-electron ion rows may be cited as a provisional reduced-mass hydrogenic benchmark when the artifact gate passes.",
+                "blocker_to_stronger_claim": "Need direct primary ASD capture for Li III, source precision normalization, fine-structure component policy, and more ions before claiming general hydrogen-like ion validation.",
             },
             {
                 "branch": "Fine-structure and Lamb-shift branch",
@@ -427,40 +425,77 @@ def build_atomic_formula_bridge_manifest() -> dict:
     }
 
 
-def build_hydrogen_like_checkpoint(codata: dict) -> dict:
-    r_h = codata["constants"]["R_H"]["value"]
-    transitions = [
-        {"name": "Lyman-alpha", "n_upper": 2, "n_lower": 1},
-        {"name": "Balmer-alpha", "n_upper": 3, "n_lower": 2},
-    ]
-    ions = [
-        {"ion": "H", "Z": 1, "evidence_status": "validated_by_primary_hydrogen_rows_for_selected_lines"},
-        {"ion": "He+", "Z": 2, "evidence_status": "prediction_only_no_source_line_artifact"},
-        {"ion": "Li2+", "Z": 3, "evidence_status": "prediction_only_no_source_line_artifact"},
-    ]
+def _nucleus_mass_kg(row: dict, codata: dict, ion_data: dict) -> float:
+    constants = codata["constants"]
+    if row["isotope_or_nucleus"] == "alpha_particle":
+        return ion_data["mass_convention"]["alpha_particle_mass_kg"]["value"]
+    if row["isotope_or_nucleus"] == "Li-7_approx":
+        u_kg = ion_data["mass_convention"]["atomic_mass_constant_kg"]["value"]
+        li7_u = ion_data["mass_convention"]["lithium_7_relative_atomic_mass_u"]["value"]
+        return li7_u * u_kg - 3.0 * constants["m_e"]["value"]
+    raise ValueError(f"Unsupported nucleus convention: {row['isotope_or_nucleus']}")
+
+
+def build_hydrogen_like_checkpoint(codata: dict, ion_data: dict) -> dict:
+    r_infinity = codata["constants"]["R_infinity"]["value"]
+    electron_mass = codata["constants"]["m_e"]["value"]
     predictions = []
-    for ion in ions:
-        for transition in transitions:
-            term = (1.0 / transition["n_lower"] ** 2) - (1.0 / transition["n_upper"] ** 2)
-            wavelength_nm = 1e9 / (r_h * ion["Z"] ** 2 * term)
-            predictions.append(
-                {
-                    **transition,
-                    "ion": ion["ion"],
-                    "Z": ion["Z"],
-                    "predicted_wavelength_nm_using_RH_Z2_scaling": wavelength_nm,
-                    "evidence_status": ion["evidence_status"],
-                }
-            )
+    for row in ion_data["lines"]:
+        term = (1.0 / row["n_lower"] ** 2) - (1.0 / row["n_upper"] ** 2)
+        nucleus_mass = _nucleus_mass_kg(row, codata, ion_data)
+        r_z = r_infinity * row["Z"] ** 2 / (1.0 + electron_mass / nucleus_mass)
+        predicted_nm = 1e9 / (r_z * term)
+        observed_nm = row["observed_wavelength_nm"]
+        error_ppm = abs(predicted_nm - observed_nm) / observed_nm * 1e6
+        predictions.append(
+            {
+                "ion": row["ion"],
+                "spectrum_label": row["spectrum_label"],
+                "Z": row["Z"],
+                "name": row["name"],
+                "transition": row["transition"],
+                "n_upper": row["n_upper"],
+                "n_lower": row["n_lower"],
+                "observed_wavelength_nm": observed_nm,
+                "predicted_wavelength_nm_reduced_mass": predicted_nm,
+                "wavelength_error_ppm": error_ppm,
+                "source_status": row["source_status"],
+                "source": row["source"],
+                "source_locator": row["source_locator"],
+                "line_structure_note": row["line_structure_note"],
+            }
+        )
+    threshold = {
+        "average_wavelength_error_ppm_max": 200.0,
+        "max_wavelength_error_ppm_max": 300.0,
+        "source_policy": "He II direct NIST handbook row; Li III secondary paper row citing NIST accepted only as provisional until direct ASD capture.",
+    }
+    avg_error_ppm = float(np.mean([row["wavelength_error_ppm"] for row in predictions]))
+    max_error_ppm = float(np.max([row["wavelength_error_ppm"] for row in predictions]))
+    status = (
+        "PASS"
+        if avg_error_ppm <= threshold["average_wavelength_error_ppm_max"]
+        and max_error_ppm <= threshold["max_wavelength_error_ppm_max"]
+        else "FAIL"
+    )
     return {
         "schema_version": "1.0",
-        "role": "hydrogen_like_formula_checkpoint",
-        "status": "CHECKPOINT_ONLY",
-        "formula": "1/lambda ~= R_H Z^2 (1/n_lower^2 - 1/n_upper^2)",
+        "role": "hydrogen_like_reduced_mass_benchmark",
+        "status": status,
+        "claim_class": "C_provisional_selected_hydrogen_like_ion_benchmark",
+        "formula": "R_Z = R_infinity Z^2 / (1 + m_e / M_nucleus); 1/lambda = R_Z (1/n_lower^2 - 1/n_upper^2)",
+        "threshold": threshold,
+        "metrics": {
+            "line_count": len(predictions),
+            "average_wavelength_error_ppm": avg_error_ppm,
+            "max_wavelength_error_ppm": max_error_ppm,
+            "direct_primary_rows": sum(1 for row in predictions if row["source_status"].startswith("primary")),
+            "secondary_source_rows": sum(1 for row in predictions if row["source_status"].startswith("secondary")),
+        },
         "limitations": [
-            "Uses simple Z^2 hydrogenic scaling with hydrogen R_H as a checkpoint.",
-            "Does not apply reduced-mass corrections for each nucleus.",
-            "Does not compare He+ or Li2+ against source-backed spectral-line data.",
+            "Uses nonrelativistic reduced-mass hydrogenic scaling as a benchmark, not a UET first-principles derivation.",
+            "Li III is source-referenced through a paper row citing NIST and still needs direct ASD capture.",
+            "Fine-structure components are not resolved or fitted; rows are representative source wavelengths/blends.",
             "Cannot validate helium neutral atoms or many-electron elements.",
         ],
         "predictions": predictions,
@@ -472,6 +507,7 @@ def build_atomic_claim_scope_gate(
     avg_error_ppm: float,
     max_error_ppm: float,
     slope_error_ppm: float,
+    hydrogen_like_checkpoint: dict,
     source_evidence_readiness_matrix: dict,
     branch_claim_gate: dict,
 ) -> dict:
@@ -481,8 +517,9 @@ def build_atomic_claim_scope_gate(
         "topic": "0.20_Atomic_Physics",
         "controller_status": controller_status,
         "controller_reason": (
-            "The hydrogen Rydberg benchmark passed, but export remains warning-gated because level-energy, "
-            "fine-structure, Lamb-shift, helium, many-electron, and first-principles derivation branches are missing."
+            "The hydrogen Rydberg benchmark passed and selected hydrogen-like ion rows are provisionally gated, "
+            "but export remains warning-gated because level-energy, direct Li III ASD capture, broader ion coverage, "
+            "fine-structure, Lamb-shift, neutral helium, many-electron, and first-principles derivation branches are missing."
             if status == "PASS"
             else "The hydrogen Rydberg benchmark failed the declared residual thresholds."
         ),
@@ -513,6 +550,13 @@ def build_atomic_claim_scope_gate(
                 "formula_role": "claim-boundary map, not a new empirical validation",
                 "source_evidence_readiness": "local_manifest_ready_for_review",
             },
+            {
+                "claim": "Selected He+ and Li2+ one-electron ion wavelengths match the reduced-mass hydrogenic relation under provisional thresholds.",
+                "status": hydrogen_like_checkpoint["status"],
+                "artifact_role": "hydrogen-like ion reduced-mass benchmark",
+                "metrics": hydrogen_like_checkpoint["metrics"],
+                "source_evidence_readiness": "provisional_source_review_ready_with_direct_Li_III_ASD_capture_pending",
+            },
         ],
         "blocked_claims": [
             {
@@ -526,13 +570,14 @@ def build_atomic_claim_scope_gate(
                 ],
             },
             {
-                "claim": "UET validates hydrogen-like ions such as He+ and Li2+.",
+                "claim": "UET validates all hydrogen-like ions or derives their spectra from first principles.",
                 "status": "BLOCKED",
-                "blocking_reason": "The verifier can compute hydrogenic Z^2 checkpoint predictions, but no He+/Li2+ source-line package or reduced-mass uncertainty policy is primary-gated.",
+                "blocking_reason": "The artifact now supports only selected source-referenced He+/Li2+ reduced-mass benchmark rows; direct Li III ASD capture, broader ion coverage, and UET derivation are still missing.",
                 "next_evidence_required": [
-                    "hydrogen-like ion spectral-line source package",
-                    "nuclear mass and reduced-mass convention",
-                    "residual artifact with thresholds",
+                    "direct Li III ASD row capture",
+                    "broader hydrogen-like ion spectral-line suite",
+                    "fine-structure component policy",
+                    "UET derivation artifact",
                 ],
             },
             {
@@ -558,7 +603,7 @@ def build_atomic_claim_scope_gate(
         ],
         "blocked_export_phrases": [
             "Rydberg constant derived from first principles",
-            "hydrogen-like ions validated",
+            "all hydrogen-like ions validated",
             "atomic theory solved",
             "QED corrections validated",
             "Lamb shift explained",
@@ -570,15 +615,16 @@ def build_atomic_claim_scope_gate(
         "machine_readable_next_blockers": [
             "rydberg_derivation_artifact_missing",
             "hydrogen_level_energy_artifact_missing",
-            "hydrogen_like_ion_source_artifact_missing",
+            "direct_li_iii_asd_capture_missing",
+            "general_hydrogen_like_ion_suite_missing",
             "fine_structure_artifact_missing",
             "lamb_shift_artifact_missing",
             "helium_many_electron_artifact_missing",
         ],
         "claim_boundary": (
             "A PASS artifact supports only selected hydrogen Rydberg benchmark behavior with NIST/CODATA "
-            "working copies. It does not derive R_H, validate QED corrections, validate helium or many-electron "
-            "atoms, or close atomic theory."
+            "working copies plus provisional selected He+/Li2+ reduced-mass benchmark rows. It does not derive R_H, "
+            "validate QED corrections, validate neutral helium or many-electron atoms, or close atomic theory."
         ),
     }
 
@@ -591,6 +637,7 @@ def run_rydberg_analysis():
 
     spectrum = load_json(SPECTRUM_PATH)
     codata = load_json(CODATA_PATH)
+    ion_data = load_json(HYDROGEN_LIKE_ION_PATH)
     source_evidence_intake_stub = build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = build_source_evidence_readiness_matrix()
     branch_claim_gate = build_branch_claim_gate()
@@ -644,15 +691,16 @@ def run_rydberg_analysis():
         and slope_error_ppm <= threshold["slope_error_ppm_max"]
         else "FAIL"
     )
+    hydrogen_like_checkpoint = build_hydrogen_like_checkpoint(codata, ion_data)
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
         avg_error_ppm,
         max_error_ppm,
         slope_error_ppm,
+        hydrogen_like_checkpoint,
         source_evidence_readiness_matrix,
         branch_claim_gate,
     )
-    hydrogen_like_checkpoint = build_hydrogen_like_checkpoint(codata)
 
     artifact = {
         "schema_version": "1.2",
@@ -678,6 +726,12 @@ def run_rydberg_analysis():
                 "sha256": file_sha256(CODATA_PATH),
                 "source": codata.get("source"),
                 "doi": codata.get("publication", {}).get("doi"),
+            },
+            {
+                "path": str(HYDROGEN_LIKE_ION_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(HYDROGEN_LIKE_ION_PATH),
+                "source": ion_data.get("purpose"),
+                "source_rows": [row["source_status"] for row in ion_data["lines"]],
             },
         ],
         "formula_ids": [
@@ -705,13 +759,15 @@ def run_rydberg_analysis():
             "blocked_claim_exports": len(atomic_claim_scope_gate["blocked_export_phrases"]),
             "formula_bridge_steps": len(atomic_formula_bridge_manifest["dependency_chain"]),
             "hydrogen_like_checkpoint_predictions": len(hydrogen_like_checkpoint["predictions"]),
+            "hydrogen_like_avg_error_ppm": hydrogen_like_checkpoint["metrics"]["average_wavelength_error_ppm"],
+            "hydrogen_like_max_error_ppm": hydrogen_like_checkpoint["metrics"]["max_wavelength_error_ppm"],
         },
         "results": results,
         "limitations": [
             "This validates the standard Rydberg relation against the topic-local hydrogen spectrum working copy.",
             "It does not derive the Rydberg relation from UET first principles.",
             "The Bohr/de Broglie/Rydberg bridge is now explicit, but it remains inherited standard physics unless a UET derivation artifact is added.",
-            "Hydrogen-like ion rows are checkpoint predictions only until source-backed ion spectra are added.",
+            "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark until direct Li III ASD capture and broader ion coverage are added.",
             "It does not validate fine structure, Lamb shift, helium, or many-electron atoms.",
         ],
     }
@@ -744,8 +800,9 @@ def run_rydberg_analysis():
     artifact["atomic_claim_scope_gate"] = atomic_claim_scope_gate
     artifact["interpretation"] = (
         "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, "
-        "and an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies. "
-        "It does not validate full atomic theory, fine structure, hydrogen-like ions, or many-electron physics."
+        "an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, "
+        "and a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark. It does not validate full atomic theory, "
+        "fine structure, broad hydrogen-like ion coverage, neutral helium, or many-electron physics."
     )
     write_artifact(artifact)
     print(f"Average wavelength error: {avg_error_ppm:.2f} ppm")

@@ -45,7 +45,7 @@
     {
       "name": "Hydrogen-like ion package",
       "priority": "high",
-      "status_hint": "theory_extension_checkpoint_without_source_lines",
+      "status_hint": "source_referenced_one_electron_ion_rows",
       "evidence_entries": [
         "ion_line_dataset",
         "reduced_mass_convention",

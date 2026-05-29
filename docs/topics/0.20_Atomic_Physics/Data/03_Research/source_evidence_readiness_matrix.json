@@ -4,8 +4,8 @@
   "purpose": "Readiness matrix for source-evidence review across atomic benchmark and theory branches.",
   "summary": {
     "source_targets_total": 6,
-    "targets_ready_for_source_review": 2,
-    "targets_blocked_by_pending_evidence": 4
+    "targets_ready_for_source_review": 3,
+    "targets_blocked_by_pending_evidence": 3
   },
   "readiness_rows": [
     {
@@ -49,16 +49,13 @@
       "name": "Hydrogen-like ion package",
       "priority": "high",
       "fields_total": 6,
-      "fields_complete": 2,
-      "fields_pending": 4,
+      "fields_complete": 5,
+      "fields_pending": 1,
       "pending_fields": [
-        "source_line_dataset",
-        "nuclear_mass_source",
-        "uncertainty_policy",
-        "artifact_path"
+        "direct_primary_ASD_row_for_Li_III"
       ],
-      "ready_for_source_review": false,
-      "blocking_reason": "Hydrogen-like ion formulas can be computed, but no source-backed He+/Li2+ spectral-line artifact is primary-gated yet."
+      "ready_for_source_review": true,
+      "blocking_reason": "Ready for provisional source review: He II is a direct NIST handbook row, while Li III is currently a secondary paper row citing NIST and still needs direct ASD capture."
     },
     {
       "name": "Fine-structure and Lamb-shift package",
