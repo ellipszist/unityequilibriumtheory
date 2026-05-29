@@ -39,11 +39,13 @@ python docs/topics/0.7_Neutrino_Physics/Code/03_Research/Research_NuFit_6_0_Comp
 | :-- | :-- | :-- |
 | `Engine_Neutrino.py` | angle path and absolute mass branch | diagnostic engine, not final proof |
 | `Engine_Mixing_Neutrino.py` | oscillation formula and runtime benchmark params | diagnostic engine, includes benchmark-fed values |
-| `Research_NuFit_6_0_Comparison.py` | NuFIT 6.0/KATRIN 2025 declared verifier | currently FAILS the live engine angle gate |
+| `Research_NuFit_6_0_Comparison.py` | NuFIT 6.0/KATRIN 2025 declared verifier | currently passes benchmark gates with controller `WARN` |
 
 The current verifier is intentionally strict: it reads live angle outputs from
-`Engine_Neutrino.py`. The latest artifact fails the engine-angle gate while preserving passing
-runtime mass-splitting, KATRIN, and provenance checks. See `../FORMULA_AUDIT.md` and
+`Engine_Neutrino.py`. The latest artifact passes the live angle, runtime mass-splitting,
+KATRIN, and provenance gates, but the result is still benchmark compatibility only. The
+mass-splitting branch remains benchmark-fed, the NuFIT layer is a checked transcription, and
+full neutrino-sector derivation claims remain blocked. See `../FORMULA_AUDIT.md` and
 `../LIMITATIONS.md` before using results in public wording.
 
 ## Key Formula
