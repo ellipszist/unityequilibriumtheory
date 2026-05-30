@@ -39,12 +39,17 @@
       },
       {
         "artifact_role": "hydrogen-like ion reduced-mass benchmark",
-        "claim": "Selected He+ and Li2+ one-electron ion wavelengths match the reduced-mass hydrogenic relation under provisional thresholds.",
+        "claim": "Selected He+ and Li2+ one-electron ion wavelengths match the reduced-mass hydrogenic relation under provisional thresholds; C VI is recorded separately as a higher-Z stress test.",
         "metrics": {
           "average_wavelength_error_ppm": 76.32002589027381,
           "direct_primary_rows": 1,
-          "line_count": 2,
+          "extended_stress_test_average_wavelength_error_ppm": 479.45329130802014,
+          "extended_stress_test_line_count": 1,
+          "extended_stress_test_max_wavelength_error_ppm": 479.45329130802014,
+          "line_count": 3,
           "max_wavelength_error_ppm": 96.9208106356392,
+          "nist_reference_compilation_rows": 1,
+          "primary_benchmark_line_count": 2,
           "secondary_source_rows": 1
         },
         "source_evidence_readiness": "provisional_source_review_ready_with_direct_Li_III_ASD_capture_pending",
@@ -138,7 +143,7 @@
         "status": "BLOCKED"
       },
       {
-        "blocking_reason": "The artifact now supports only selected source-referenced He+/Li2+ reduced-mass benchmark rows; direct Li III ASD capture, broader ion coverage, and UET derivation are still missing.",
+        "blocking_reason": "The artifact now supports selected source-referenced He+/Li2+ reduced-mass benchmark rows and records C VI as a higher-Z stress test; direct Li III ASD capture, broader source-locked ion coverage, higher-Z fine/QED policy, and UET derivation are still missing.",
         "claim": "UET validates all hydrogen-like ions or derives their spectra from first principles.",
         "next_evidence_required": [
           "direct Li III ASD row capture",
@@ -253,7 +258,7 @@
     "AT20-HELIUM-MANY-ELECTRON-SOURCE-GATE",
     "AT20-UET-ATOMIC-BRIDGE-GATE"
   ],
-  "generated_at_utc": "2026-05-30T10:10:38.770285+00:00",
+  "generated_at_utc": "2026-05-30T10:17:23.953881+00:00",
   "helium_many_electron_gate": {
     "blocked_usages": [
       "neutral helium spectrum validated",
@@ -415,23 +420,54 @@
   },
   "hydrogen_like_checkpoint": {
     "claim_class": "C_provisional_selected_hydrogen_like_ion_benchmark",
+    "extended_stress_test": {
+      "claim_class": "diagnostic_only_not_general_hydrogen_like_validation",
+      "predictions": [
+        {
+          "Z": 6,
+          "benchmark_lane": "extended_stress_test",
+          "ion": "C5+",
+          "line_structure_note": "Reference row is treated as a representative C VI Lyman-alpha target; this is not a fine-structure/QED validation.",
+          "n_lower": 1,
+          "n_upper": 2,
+          "name": "C VI Lyman-alpha reference wavelength",
+          "observed_wavelength_nm": 3.3736,
+          "predicted_wavelength_nm_reduced_mass": 3.375217483623557,
+          "source": "NIST Reference Wavelengths from Atomic Spectra",
+          "source_locator": "Reference wavelengths table; C VI wavelength 33.7360 A, wavenumber 2964195 cm^-1",
+          "source_status": "nist_reference_wavelength_compilation_row",
+          "spectrum_label": "C VI",
+          "transition": "2 -> 1",
+          "wavelength_error_ppm": 479.45329130802014
+        }
+      ],
+      "status": "STRESS_TEST_RECORDED_FINE_QED_POLICY_OPEN",
+      "threshold_policy": "No PASS threshold is assigned to the higher-Z stress lane until source precision, fine-structure, and QED policy are added."
+    },
     "formula": "R_Z = R_infinity Z^2 / (1 + m_e / M_nucleus); 1/lambda = R_Z (1/n_lower^2 - 1/n_upper^2)",
     "limitations": [
       "Uses nonrelativistic reduced-mass hydrogenic scaling as a benchmark, not a UET first-principles derivation.",
       "Li III is source-referenced through a paper row citing NIST and still needs direct ASD capture.",
+      "C VI is included only as an extended higher-Z stress test; it is not counted in the primary selected-ion PASS/FAIL gate.",
       "Fine-structure components are not resolved or fitted; rows are representative source wavelengths/blends.",
       "Cannot validate helium neutral atoms or many-electron elements."
     ],
     "metrics": {
       "average_wavelength_error_ppm": 76.32002589027381,
       "direct_primary_rows": 1,
-      "line_count": 2,
+      "extended_stress_test_average_wavelength_error_ppm": 479.45329130802014,
+      "extended_stress_test_line_count": 1,
+      "extended_stress_test_max_wavelength_error_ppm": 479.45329130802014,
+      "line_count": 3,
       "max_wavelength_error_ppm": 96.9208106356392,
+      "nist_reference_compilation_rows": 1,
+      "primary_benchmark_line_count": 2,
       "secondary_source_rows": 1
     },
     "predictions": [
       {
         "Z": 2,
+        "benchmark_lane": "primary_selected_benchmark",
         "ion": "He+",
         "line_structure_note": "NIST strong-line table lists nearby He II components at 303.7804 A and 303.7858 A; the current verifier treats this row as a representative fine-structure component, not a QED/fine-structure validation.",
         "n_lower": 1,
@@ -448,6 +484,7 @@
       },
       {
         "Z": 3,
+        "benchmark_lane": "primary_selected_benchmark",
         "ion": "Li2+",
         "line_structure_note": "Table groups 2p 2P fine-structure components into a single observed/NIST wavelength; this is not a fine-structure validation.",
         "n_lower": 1,
@@ -461,6 +498,23 @@
         "spectrum_label": "Li III",
         "transition": "2 -> 1",
         "wavelength_error_ppm": 96.9208106356392
+      },
+      {
+        "Z": 6,
+        "benchmark_lane": "extended_stress_test",
+        "ion": "C5+",
+        "line_structure_note": "Reference row is treated as a representative C VI Lyman-alpha target; this is not a fine-structure/QED validation.",
+        "n_lower": 1,
+        "n_upper": 2,
+        "name": "C VI Lyman-alpha reference wavelength",
+        "observed_wavelength_nm": 3.3736,
+        "predicted_wavelength_nm_reduced_mass": 3.375217483623557,
+        "source": "NIST Reference Wavelengths from Atomic Spectra",
+        "source_locator": "Reference wavelengths table; C VI wavelength 33.7360 A, wavenumber 2964195 cm^-1",
+        "source_status": "nist_reference_wavelength_compilation_row",
+        "spectrum_label": "C VI",
+        "transition": "2 -> 1",
+        "wavelength_error_ppm": 479.45329130802014
       }
     ],
     "role": "hydrogen_like_reduced_mass_benchmark",
@@ -469,7 +523,7 @@
     "threshold": {
       "average_wavelength_error_ppm_max": 200.0,
       "max_wavelength_error_ppm_max": 300.0,
-      "source_policy": "He II direct NIST handbook row; Li III secondary paper row citing NIST accepted only as provisional until direct ASD capture."
+      "source_policy": "Primary selected benchmark currently uses He II direct NIST handbook row and Li III secondary paper row citing NIST. C VI is kept in an extended stress-test lane until higher-Z fine/QED policy is added."
     }
   },
   "hyperfine_21cm_gate": {
@@ -577,11 +631,12 @@
     },
     {
       "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/hydrogen_like_ion_spectrum.json",
-      "sha256": "a80872ec987970f0d12d84dcafce44074817649895117ffc3c9f6eb76ee2636f",
+      "sha256": "122ab65f3ccafe92f9aa5b8234621049a5e2715a16d73ce1241c7892219f5c53",
       "source": "Source-referenced one-electron ion spectral rows for a hydrogen-like ion benchmark gate.",
       "source_rows": [
         "primary_nist_handbook_row",
-        "secondary_paper_citing_nist_row"
+        "secondary_paper_citing_nist_row",
+        "nist_reference_wavelength_compilation_row"
       ]
     },
     {
@@ -638,7 +693,7 @@
       "status": "SOURCE_PACKAGE_READY_MODEL_BLOCKED"
     }
   ],
-  "interpretation": "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark, a precision spectroscopy source gate, and a neutral helium source gate. It does not validate full atomic theory, fine structure, Lamb shift, hyperfine structure, QED corrections, broad hydrogen-like ion coverage, neutral helium residuals, or many-electron physics.",
+  "interpretation": "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark plus C VI stress-test lane, a precision spectroscopy source gate, and a neutral helium source gate. It does not validate full atomic theory, fine structure, Lamb shift, hyperfine structure, QED corrections, broad hydrogen-like ion coverage, neutral helium residuals, or many-electron physics.",
   "lamb_shift_handoff_gate": {
     "claim_boundary": "This package can estimate the empirical Lamb-shift gap in the 1S-2S residual, but it does not validate QED, proton-size corrections, hyperfine structure, or UET first-principles atomic theory.",
     "claim_class": "empirical_lamb_handoff_only_no_qed_validation",
@@ -702,7 +757,7 @@
     "It does not derive the Rydberg relation from UET first principles.",
     "The Bohr/de Broglie/Rydberg bridge is now explicit, but it remains inherited standard physics unless a UET derivation artifact is added.",
     "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
-    "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark until direct Li III ASD capture and broader ion coverage are added.",
+    "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark; C VI is a higher-Z stress test until fine/QED policy and broader ion coverage are added.",
     "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines plus 21 cm source/Fermi gates are diagnostics only and do not validate hyperfine Hamiltonian closure, QED, helium, or many-electron atoms.",
     "Neutral helium rows are source-package targets only and do not validate electron correlation or many-electron spectra."
   ],
@@ -720,7 +775,7 @@
     "hydrogen_level_count": 8,
     "hydrogen_level_max_error_ppm": 117.64705882364706,
     "hydrogen_like_avg_error_ppm": 76.32002589027381,
-    "hydrogen_like_checkpoint_predictions": 2,
+    "hydrogen_like_checkpoint_predictions": 3,
     "hydrogen_like_max_error_ppm": 96.9208106356392,
     "hyperfine_21cm_fermi_baseline_residual_hz": 753776.9764285088,
     "hyperfine_21cm_fermi_baseline_residual_ppm": 530.677220569032,

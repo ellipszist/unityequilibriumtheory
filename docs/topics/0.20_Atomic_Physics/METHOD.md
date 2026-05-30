@@ -10,7 +10,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 | :-- | :-- | :-- |
 | Hydrogen Rydberg spectrum | `Research_Rydberg_Validation.py`, NIST/CODATA data | primary artifact, Claim Class C |
 | Atomic formula bridge | `atomic_formula_bridge_manifest.json`, artifact `atomic_formula_bridge_manifest` | explicit standard-formula and UET dependency map; manifest only |
-| Hydrogen-like ions | `hydrogen_like_ion_spectrum.json`, artifact `hydrogen_like_checkpoint` | provisional selected He+/Li2+ reduced-mass benchmark |
+| Hydrogen-like ions | `hydrogen_like_ion_spectrum.json`, artifact `hydrogen_like_checkpoint` | provisional selected He+/Li2+ reduced-mass benchmark plus C VI higher-Z stress test |
 | Engine Balmer demo | `Engine_Atomic_Hydrogen.py` | secondary/demo; local rounded constant |
 | Hydrogen level energies | `hydrogen_spectra_data.json`, artifact `hydrogen_level_energy_benchmark` | rounded source-referenced n-level benchmark |
 | Precision spectroscopy targets | `hydrogen_precision_spectroscopy_sources.json`, `hydrogen_lamb_shift_correction_sources.json`, `hydrogen_hyperfine_21cm_sources.json`, `hydrogen_hyperfine_fermi_constants.json`, precision artifacts | source package plus nonrelativistic, leading Dirac, empirical Lamb-handoff, 21 cm bookkeeping, and Fermi-contact diagnostics; QED/recoil/proton-size/hyperfine model blocked |
@@ -39,7 +39,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 5. Compute per-line residuals and fitted slope through origin.
 6. Write `atomic_formula_bridge_manifest.json` to make the inherited Bohr/de Broglie/Rydberg chain and UET dependency roles explicit.
 7. Compare rounded hydrogen `n=1..8` level rows against `E_n = -13.5984/n^2` using the NIST ionization-energy anchor.
-8. Load source-referenced He+ and Li2+ rows, apply reduced-mass hydrogenic scaling, and compute residuals under provisional thresholds.
+8. Load source-referenced He+, Li2+, and C VI rows, apply reduced-mass hydrogenic scaling, compute He+/Li2+ under provisional thresholds, and record C VI as a higher-Z stress test.
 9. Load precision spectroscopy targets for 1S-2S, Lamb shift, and 21 cm hyperfine as source-package rows.
 10. Compute the nonrelativistic and leading Dirac 1S-2S baseline residuals as diagnostics, not as full precision correction models.
 11. Apply source-referenced Lamb-shift values as an empirical 1S-2S residual handoff, not as a QED derivation.
@@ -56,7 +56,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 - Local NIST rows may be rounded or curated and need transcription precision notes before ppm-level public claims.
 - Bohr/de Broglie/Rydberg formulas are inherited standard physics unless a separate UET derivation artifact proves otherwise.
 - Hydrogen level-energy rows are rounded and source-referenced through the ionization-energy anchor until direct per-level ASD precision is captured.
-- Hydrogen-like ion predictions use reduced-mass scaling for the selected He+ and Li2+ rows. Li III remains provisional because direct ASD row capture is still pending.
+- Hydrogen-like ion predictions use reduced-mass scaling for the selected He+ and Li2+ rows. Li III remains provisional because direct ASD row capture is still pending. C VI is recorded only as a higher-Z stress-test row until fine/QED policy is added.
 - Precision spectroscopy rows support a source package plus nonrelativistic, leading Dirac, empirical Lamb-handoff 1S-2S residuals, 21 cm source bookkeeping, and Fermi-contact baseline only until QED/recoil/proton-radius/hyperfine models and uncertainty propagation are added.
 - Neutral helium rows are source targets only until a two-electron Hamiltonian, correlation treatment, term mapping, and residual thresholds are added.
 
@@ -66,14 +66,14 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 - Claim Class C internal benchmark only.
 - Formula bridge manifest language that explains dependency roles without claiming derivation.
 - Rounded hydrogen `n=1..8` level-energy benchmark language.
-- Provisional selected He+/Li2+ one-electron ion residuals under the reduced-mass hydrogenic benchmark gate.
+- Provisional selected He+/Li2+ one-electron ion residuals under the reduced-mass hydrogenic benchmark gate, plus C VI stress-test residual language.
 - Precision source-package readiness language for 1S-2S, Lamb shift, and 21 cm hyperfine targets, plus nonrelativistic, leading Dirac, empirical Lamb-handoff, 21 cm source-bookkeeping, and Fermi-contact diagnostic language.
 - Neutral helium source-package readiness language for future many-electron artifacts.
 
 ## Excluded Cases
 
 - First-principles UET derivation of `R_H`.
-- Broad source-backed validation of hydrogen-like ions beyond the selected provisional He+/Li2+ rows.
+- Broad source-backed validation of hydrogen-like ions beyond the selected provisional He+/Li2+ rows and the C VI stress-test lane.
 - Fine structure, Lamb shift, hyperfine structure.
 - QED precision correction residual claims.
 - Helium or many-electron atomic spectra.

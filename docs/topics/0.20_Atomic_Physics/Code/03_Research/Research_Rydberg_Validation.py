@@ -469,6 +469,10 @@ def _nucleus_mass_kg(row: dict, codata: dict, ion_data: dict) -> float:
         u_kg = ion_data["mass_convention"]["atomic_mass_constant_kg"]["value"]
         li7_u = ion_data["mass_convention"]["lithium_7_relative_atomic_mass_u"]["value"]
         return li7_u * u_kg - 3.0 * constants["m_e"]["value"]
+    if row["isotope_or_nucleus"] == "C-12_approx":
+        u_kg = ion_data["mass_convention"]["atomic_mass_constant_kg"]["value"]
+        c12_u = ion_data["mass_convention"]["carbon_12_relative_atomic_mass_u"]["value"]
+        return c12_u * u_kg - 6.0 * constants["m_e"]["value"]
     raise ValueError(f"Unsupported nucleus convention: {row['isotope_or_nucleus']}")
 
 
@@ -492,6 +496,7 @@ def build_hydrogen_like_checkpoint(codata: dict, ion_data: dict) -> dict:
                 "transition": row["transition"],
                 "n_upper": row["n_upper"],
                 "n_lower": row["n_lower"],
+                "benchmark_lane": row.get("benchmark_lane", "primary_selected_benchmark"),
                 "observed_wavelength_nm": observed_nm,
                 "predicted_wavelength_nm_reduced_mass": predicted_nm,
                 "wavelength_error_ppm": error_ppm,
@@ -501,13 +506,29 @@ def build_hydrogen_like_checkpoint(codata: dict, ion_data: dict) -> dict:
                 "line_structure_note": row["line_structure_note"],
             }
         )
+    primary_predictions = [
+        row for row in predictions if row["benchmark_lane"] == "primary_selected_benchmark"
+    ]
+    stress_predictions = [
+        row for row in predictions if row["benchmark_lane"] == "extended_stress_test"
+    ]
     threshold = {
         "average_wavelength_error_ppm_max": 200.0,
         "max_wavelength_error_ppm_max": 300.0,
-        "source_policy": "He II direct NIST handbook row; Li III secondary paper row citing NIST accepted only as provisional until direct ASD capture.",
+        "source_policy": "Primary selected benchmark currently uses He II direct NIST handbook row and Li III secondary paper row citing NIST. C VI is kept in an extended stress-test lane until higher-Z fine/QED policy is added.",
     }
-    avg_error_ppm = float(np.mean([row["wavelength_error_ppm"] for row in predictions]))
-    max_error_ppm = float(np.max([row["wavelength_error_ppm"] for row in predictions]))
+    avg_error_ppm = float(np.mean([row["wavelength_error_ppm"] for row in primary_predictions]))
+    max_error_ppm = float(np.max([row["wavelength_error_ppm"] for row in primary_predictions]))
+    stress_avg_error_ppm = (
+        float(np.mean([row["wavelength_error_ppm"] for row in stress_predictions]))
+        if stress_predictions
+        else None
+    )
+    stress_max_error_ppm = (
+        float(np.max([row["wavelength_error_ppm"] for row in stress_predictions]))
+        if stress_predictions
+        else None
+    )
     status = (
         "PASS"
         if avg_error_ppm <= threshold["average_wavelength_error_ppm_max"]
@@ -523,17 +544,29 @@ def build_hydrogen_like_checkpoint(codata: dict, ion_data: dict) -> dict:
         "threshold": threshold,
         "metrics": {
             "line_count": len(predictions),
+            "primary_benchmark_line_count": len(primary_predictions),
+            "extended_stress_test_line_count": len(stress_predictions),
             "average_wavelength_error_ppm": avg_error_ppm,
             "max_wavelength_error_ppm": max_error_ppm,
+            "extended_stress_test_average_wavelength_error_ppm": stress_avg_error_ppm,
+            "extended_stress_test_max_wavelength_error_ppm": stress_max_error_ppm,
             "direct_primary_rows": sum(1 for row in predictions if row["source_status"].startswith("primary")),
             "secondary_source_rows": sum(1 for row in predictions if row["source_status"].startswith("secondary")),
+            "nist_reference_compilation_rows": sum(1 for row in predictions if row["source_status"].startswith("nist_reference")),
         },
         "limitations": [
             "Uses nonrelativistic reduced-mass hydrogenic scaling as a benchmark, not a UET first-principles derivation.",
             "Li III is source-referenced through a paper row citing NIST and still needs direct ASD capture.",
+            "C VI is included only as an extended higher-Z stress test; it is not counted in the primary selected-ion PASS/FAIL gate.",
             "Fine-structure components are not resolved or fitted; rows are representative source wavelengths/blends.",
             "Cannot validate helium neutral atoms or many-electron elements.",
         ],
+        "extended_stress_test": {
+            "status": "STRESS_TEST_RECORDED_FINE_QED_POLICY_OPEN" if stress_predictions else "NOT_PRESENT",
+            "claim_class": "diagnostic_only_not_general_hydrogen_like_validation",
+            "threshold_policy": "No PASS threshold is assigned to the higher-Z stress lane until source precision, fine-structure, and QED policy are added.",
+            "predictions": stress_predictions,
+        },
         "predictions": predictions,
     }
 
@@ -1009,7 +1042,7 @@ def build_atomic_claim_scope_gate(
                 "source_evidence_readiness": "rounded_level_source_review_ready_with_direct_ASD_precision_pending",
             },
             {
-                "claim": "Selected He+ and Li2+ one-electron ion wavelengths match the reduced-mass hydrogenic relation under provisional thresholds.",
+                "claim": "Selected He+ and Li2+ one-electron ion wavelengths match the reduced-mass hydrogenic relation under provisional thresholds; C VI is recorded separately as a higher-Z stress test.",
                 "status": hydrogen_like_checkpoint["status"],
                 "artifact_role": "hydrogen-like ion reduced-mass benchmark",
                 "metrics": hydrogen_like_checkpoint["metrics"],
@@ -1105,7 +1138,7 @@ def build_atomic_claim_scope_gate(
             {
                 "claim": "UET validates all hydrogen-like ions or derives their spectra from first principles.",
                 "status": "BLOCKED",
-                "blocking_reason": "The artifact now supports only selected source-referenced He+/Li2+ reduced-mass benchmark rows; direct Li III ASD capture, broader ion coverage, and UET derivation are still missing.",
+                "blocking_reason": "The artifact now supports selected source-referenced He+/Li2+ reduced-mass benchmark rows and records C VI as a higher-Z stress test; direct Li III ASD capture, broader source-locked ion coverage, higher-Z fine/QED policy, and UET derivation are still missing.",
                 "next_evidence_required": [
                     "direct Li III ASD row capture",
                     "broader hydrogen-like ion spectral-line suite",
@@ -1398,7 +1431,7 @@ def run_rydberg_analysis():
             "It does not derive the Rydberg relation from UET first principles.",
             "The Bohr/de Broglie/Rydberg bridge is now explicit, but it remains inherited standard physics unless a UET derivation artifact is added.",
             "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
-            "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark until direct Li III ASD capture and broader ion coverage are added.",
+            "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark; C VI is a higher-Z stress test until fine/QED policy and broader ion coverage are added.",
             "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines plus 21 cm source/Fermi gates are diagnostics only and do not validate hyperfine Hamiltonian closure, QED, helium, or many-electron atoms.",
             "Neutral helium rows are source-package targets only and do not validate electron correlation or many-electron spectra.",
         ],
@@ -1441,7 +1474,7 @@ def run_rydberg_analysis():
     artifact["interpretation"] = (
         "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, "
         "an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, "
-        "a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark, "
+        "a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark plus C VI stress-test lane, "
         "a precision spectroscopy source gate, and a neutral helium source gate. It does not validate full atomic theory, "
         "fine structure, Lamb shift, hyperfine structure, QED corrections, broad hydrogen-like ion coverage, "
         "neutral helium residuals, or many-electron physics."
