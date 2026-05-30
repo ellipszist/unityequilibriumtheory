@@ -58,10 +58,11 @@
     {
       "name": "Fine-structure and Lamb-shift package",
       "priority": "high",
-      "status_hint": "blocked_precision_branch",
+      "status_hint": "source_package_ready_model_blocked",
       "evidence_entries": [
         "fine_structure_dataset",
         "lamb_shift_dataset",
+        "hyperfine_dataset",
         "comparison_artifact",
         "observable_scope",
         "unit_basis",

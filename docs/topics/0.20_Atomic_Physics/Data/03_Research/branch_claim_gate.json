@@ -40,9 +40,9 @@
     },
     {
       "branch": "Fine-structure and Lamb-shift branch",
-      "status": "blocked_for_strong_claims",
-      "allowed_usage_now": "Not supported by current evidence.",
-      "blocker_to_stronger_claim": "Need source-backed precision datasets and dedicated residual artifacts."
+      "status": "source_package_ready_model_blocked",
+      "allowed_usage_now": "May cite only as a prepared precision-source package for future fine/Lamb/hyperfine artifacts.",
+      "blocker_to_stronger_claim": "Need Dirac/QED/recoil/proton-radius/hyperfine model, uncertainty propagation, and residual thresholds before precision claims."
     },
     {
       "branch": "Helium and many-electron branch",

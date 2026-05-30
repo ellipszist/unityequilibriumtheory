@@ -40,6 +40,7 @@ SPECTRUM_PATH = TOPIC_DIR / "Data" / "03_Research" / "nist_hydrogen_spectrum.jso
 CODATA_PATH = TOPIC_DIR / "Data" / "03_Research" / "codata_2018_atomic.json"
 HYDROGEN_LEVEL_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_spectra_data.json"
 HYDROGEN_LIKE_ION_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_like_ion_spectrum.json"
+PRECISION_SPECTROSCOPY_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_precision_spectroscopy_sources.json"
 ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_20_atomic_physics_verification.json"
 SOURCE_EVIDENCE_INTAKE_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_intake_stub.json"
 SOURCE_EVIDENCE_READINESS_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_readiness_matrix.json"
@@ -155,10 +156,11 @@ def build_source_evidence_intake_stub() -> dict:
             {
                 "name": "Fine-structure and Lamb-shift package",
                 "priority": "high",
-                "status_hint": "blocked_precision_branch",
+                "status_hint": "source_package_ready_model_blocked",
                 "evidence_entries": [
                     "fine_structure_dataset",
                     "lamb_shift_dataset",
+                    "hyperfine_dataset",
                     "comparison_artifact",
                     "observable_scope",
                     "unit_basis",
@@ -231,18 +233,14 @@ def build_source_evidence_readiness_matrix() -> dict:
             "name": "Fine-structure and Lamb-shift package",
             "priority": "high",
             "fields_total": 6,
-            "fields_complete": 0,
-            "fields_pending": 6,
+            "fields_complete": 4,
+            "fields_pending": 2,
             "pending_fields": [
-                "fine_structure_dataset",
-                "lamb_shift_dataset",
                 "comparison_artifact",
-                "observable_scope",
-                "unit_basis",
-                "upgrade_requirement",
+                "primary_lamb_and_hyperfine_metrology_locators",
             ],
-            "ready_for_source_review": False,
-            "blocking_reason": "The current topic has no fine-structure or Lamb-shift artifact.",
+            "ready_for_source_review": True,
+            "blocking_reason": "Precision targets are source-referenced, but no Dirac/QED/recoil/proton-radius/hyperfine correction model or residual artifact is primary-gated yet.",
         },
         {
             "name": "Helium and many-electron package",
@@ -319,9 +317,9 @@ def build_branch_claim_gate() -> dict:
             },
             {
                 "branch": "Fine-structure and Lamb-shift branch",
-                "status": "blocked_for_strong_claims",
-                "allowed_usage_now": "Not supported by current evidence.",
-                "blocker_to_stronger_claim": "Need source-backed precision datasets and dedicated residual artifacts.",
+                "status": "source_package_ready_model_blocked",
+                "allowed_usage_now": "May cite only as a prepared precision-source package for future fine/Lamb/hyperfine artifacts.",
+                "blocker_to_stronger_claim": "Need Dirac/QED/recoil/proton-radius/hyperfine model, uncertainty propagation, and residual thresholds before precision claims.",
             },
             {
                 "branch": "Helium and many-electron branch",
@@ -557,6 +555,42 @@ def build_hydrogen_level_energy_benchmark(level_rows: list[dict]) -> dict:
     }
 
 
+def build_precision_spectroscopy_gate(precision_sources: dict) -> dict:
+    rows = precision_sources["rows"]
+    status_counts = {}
+    for row in rows:
+        status_counts[row["current_artifact_status"]] = status_counts.get(row["current_artifact_status"], 0) + 1
+    return {
+        "schema_version": "1.0",
+        "role": "hydrogen_precision_spectroscopy_source_gate",
+        "status": "SOURCE_READY_MODEL_BLOCKED",
+        "claim_class": "source_package_only_no_precision_validation",
+        "source_row_count": len(rows),
+        "targets": [
+            {
+                "target_id": row["target_id"],
+                "observable": row["observable"],
+                "value": row["value"],
+                "uncertainty": row.get("uncertainty"),
+                "unit": row["unit"],
+                "source_type": row["source_type"],
+                "current_artifact_status": row["current_artifact_status"],
+                "blocker": row["blocker"],
+            }
+            for row in rows
+        ],
+        "status_counts": status_counts,
+        "required_model_components": precision_sources["required_model_components"],
+        "limitations": [
+            "No precision residual is computed in this gate.",
+            "The package prepares targets for future Dirac/QED/recoil/proton-radius/hyperfine artifacts only.",
+            "Secondary-source rows must be upgraded to primary locators before public precision claims.",
+            "This gate cannot be cited as Lamb-shift, hyperfine, fine-structure, or QED validation.",
+        ],
+        "claim_boundary": precision_sources["claim_boundary"],
+    }
+
+
 def build_atomic_claim_scope_gate(
     status: str,
     avg_error_ppm: float,
@@ -564,6 +598,7 @@ def build_atomic_claim_scope_gate(
     slope_error_ppm: float,
     hydrogen_level_energy_benchmark: dict,
     hydrogen_like_checkpoint: dict,
+    precision_spectroscopy_gate: dict,
     source_evidence_readiness_matrix: dict,
     branch_claim_gate: dict,
 ) -> dict:
@@ -575,7 +610,7 @@ def build_atomic_claim_scope_gate(
         "controller_reason": (
             "The hydrogen Rydberg benchmark, rounded hydrogen level-energy benchmark, and selected hydrogen-like ion rows are gated, "
             "but export remains warning-gated because direct level-table precision, direct Li III ASD capture, broader ion coverage, "
-            "fine-structure, Lamb-shift, neutral helium, many-electron, and first-principles derivation branches are missing."
+            "precision correction models, neutral helium, many-electron, and first-principles derivation branches are missing."
             if status == "PASS"
             else "The hydrogen Rydberg benchmark failed the declared residual thresholds."
         ),
@@ -620,6 +655,16 @@ def build_atomic_claim_scope_gate(
                 "metrics": hydrogen_like_checkpoint["metrics"],
                 "source_evidence_readiness": "provisional_source_review_ready_with_direct_Li_III_ASD_capture_pending",
             },
+            {
+                "claim": "Hydrogen precision spectroscopy targets for 1S-2S, Lamb shift, and 21 cm hyperfine are organized for future artifacts.",
+                "status": precision_spectroscopy_gate["status"],
+                "artifact_role": "precision spectroscopy source gate",
+                "metrics": {
+                    "source_row_count": precision_spectroscopy_gate["source_row_count"],
+                    "required_model_components": len(precision_spectroscopy_gate["required_model_components"]),
+                },
+                "source_evidence_readiness": "source_package_ready_model_blocked",
+            },
         ],
         "blocked_claims": [
             {
@@ -646,11 +691,13 @@ def build_atomic_claim_scope_gate(
             {
                 "claim": "UET validates fine structure, Lamb shift, hyperfine structure, or QED corrections.",
                 "status": "BLOCKED",
-                "blocking_reason": "No source-backed precision datasets or residual artifacts for QED-scale effects are primary-gated.",
+                "blocking_reason": "Precision targets are now source-packaged, but no Dirac/QED/recoil/proton-radius/hyperfine model or residual artifact is primary-gated.",
                 "next_evidence_required": [
-                    "fine-structure dataset",
-                    "Lamb-shift dataset",
-                    "hyperfine/QED correction artifact",
+                    "primary locators for secondary precision rows",
+                    "Dirac fine-structure model",
+                    "QED Lamb-shift model",
+                    "hyperfine Hamiltonian model",
+                    "uncertainty-aware residual artifact",
                 ],
             },
             {
@@ -680,8 +727,8 @@ def build_atomic_claim_scope_gate(
             "direct_hydrogen_level_table_precision_missing",
             "direct_li_iii_asd_capture_missing",
             "general_hydrogen_like_ion_suite_missing",
-            "fine_structure_artifact_missing",
-            "lamb_shift_artifact_missing",
+            "precision_model_artifact_missing",
+            "primary_precision_locators_incomplete",
             "helium_many_electron_artifact_missing",
         ],
         "claim_boundary": (
@@ -702,6 +749,7 @@ def run_rydberg_analysis():
     codata = load_json(CODATA_PATH)
     hydrogen_level_rows = load_json(HYDROGEN_LEVEL_PATH)
     ion_data = load_json(HYDROGEN_LIKE_ION_PATH)
+    precision_sources = load_json(PRECISION_SPECTROSCOPY_PATH)
     source_evidence_intake_stub = build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = build_source_evidence_readiness_matrix()
     branch_claim_gate = build_branch_claim_gate()
@@ -757,6 +805,7 @@ def run_rydberg_analysis():
     )
     hydrogen_level_energy_benchmark = build_hydrogen_level_energy_benchmark(hydrogen_level_rows)
     hydrogen_like_checkpoint = build_hydrogen_like_checkpoint(codata, ion_data)
+    precision_spectroscopy_gate = build_precision_spectroscopy_gate(precision_sources)
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
         avg_error_ppm,
@@ -764,6 +813,7 @@ def run_rydberg_analysis():
         slope_error_ppm,
         hydrogen_level_energy_benchmark,
         hydrogen_like_checkpoint,
+        precision_spectroscopy_gate,
         source_evidence_readiness_matrix,
         branch_claim_gate,
     )
@@ -805,6 +855,13 @@ def run_rydberg_analysis():
                 "source": ion_data.get("purpose"),
                 "source_rows": [row["source_status"] for row in ion_data["lines"]],
             },
+            {
+                "path": str(PRECISION_SPECTROSCOPY_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(PRECISION_SPECTROSCOPY_PATH),
+                "source": precision_sources.get("purpose"),
+                "status": precision_sources.get("status"),
+                "source_rows": [row["target_id"] for row in precision_sources["rows"]],
+            },
         ],
         "formula_ids": [
             "AT20-PHOTON-TRANSITION",
@@ -815,6 +872,7 @@ def run_rydberg_analysis():
             "AT20-RH-CODATA-CHECKPOINT",
             "AT20-SPECTRUM-RESIDUAL",
             "AT20-HYDROGENIC-Z2-CHECKPOINT",
+            "AT20-HYDROGEN-PRECISION-SOURCE-GATE",
             "AT20-UET-ATOMIC-BRIDGE-GATE",
         ],
         "threshold": threshold,
@@ -837,6 +895,8 @@ def run_rydberg_analysis():
             "hydrogen_like_checkpoint_predictions": len(hydrogen_like_checkpoint["predictions"]),
             "hydrogen_like_avg_error_ppm": hydrogen_like_checkpoint["metrics"]["average_wavelength_error_ppm"],
             "hydrogen_like_max_error_ppm": hydrogen_like_checkpoint["metrics"]["max_wavelength_error_ppm"],
+            "precision_source_rows": precision_spectroscopy_gate["source_row_count"],
+            "precision_required_model_components": len(precision_spectroscopy_gate["required_model_components"]),
         },
         "results": results,
         "limitations": [
@@ -845,7 +905,7 @@ def run_rydberg_analysis():
             "The Bohr/de Broglie/Rydberg bridge is now explicit, but it remains inherited standard physics unless a UET derivation artifact is added.",
             "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
             "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark until direct Li III ASD capture and broader ion coverage are added.",
-            "It does not validate fine structure, Lamb shift, helium, or many-electron atoms.",
+            "Precision spectroscopy rows are source-package targets only and do not validate fine structure, Lamb shift, hyperfine structure, QED, helium, or many-electron atoms.",
         ],
     }
     artifact["atomic_formula_bridge_manifest"] = {
@@ -857,6 +917,7 @@ def run_rydberg_analysis():
     }
     artifact["hydrogen_level_energy_benchmark"] = hydrogen_level_energy_benchmark
     artifact["hydrogen_like_checkpoint"] = hydrogen_like_checkpoint
+    artifact["precision_spectroscopy_gate"] = precision_spectroscopy_gate
     artifact["source_evidence_intake_stub"] = {
         "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
         "sha256": sha256(json.dumps(source_evidence_intake_stub, sort_keys=True).encode("utf-8")).hexdigest(),
@@ -879,9 +940,9 @@ def run_rydberg_analysis():
     artifact["interpretation"] = (
         "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, "
         "an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, "
-        "a rounded hydrogen n-level energy benchmark, "
-        "and a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark. It does not validate full atomic theory, "
-        "fine structure, broad hydrogen-like ion coverage, neutral helium, or many-electron physics."
+        "a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark, "
+        "and a precision spectroscopy source gate. It does not validate full atomic theory, fine structure, Lamb shift, "
+        "hyperfine structure, QED corrections, broad hydrogen-like ion coverage, neutral helium, or many-electron physics."
     )
     write_artifact(artifact)
     print(f"Average wavelength error: {avg_error_ppm:.2f} ppm")

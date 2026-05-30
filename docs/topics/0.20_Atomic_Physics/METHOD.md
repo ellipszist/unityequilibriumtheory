@@ -13,6 +13,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 | Hydrogen-like ions | `hydrogen_like_ion_spectrum.json`, artifact `hydrogen_like_checkpoint` | provisional selected He+/Li2+ reduced-mass benchmark |
 | Engine Balmer demo | `Engine_Atomic_Hydrogen.py` | secondary/demo; local rounded constant |
 | Hydrogen level energies | `hydrogen_spectra_data.json`, artifact `hydrogen_level_energy_benchmark` | rounded source-referenced n-level benchmark |
+| Precision spectroscopy targets | `hydrogen_precision_spectroscopy_sources.json`, artifact `precision_spectroscopy_gate` | source package only; model blocked |
 | Three-body coupling smoke test | `Research_Atomic_ThreeBody.py` | code-health check, not physics validation |
 | Multi-electron comparisons | `Research_Multi_Electron.py` | open lane |
 
@@ -38,8 +39,9 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 6. Write `atomic_formula_bridge_manifest.json` to make the inherited Bohr/de Broglie/Rydberg chain and UET dependency roles explicit.
 7. Compare rounded hydrogen `n=1..8` level rows against `E_n = -13.5984/n^2` using the NIST ionization-energy anchor.
 8. Load source-referenced He+ and Li2+ rows, apply reduced-mass hydrogenic scaling, and compute residuals under provisional thresholds.
-9. Write artifact with hashes, thresholds, metrics, formula bridge metadata, level-energy rows, selected ion rows, and limitations.
-10. Write `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json` so the hydrogen benchmark stays separate from broader atomic-theory claims.
+9. Load precision spectroscopy targets for 1S-2S, Lamb shift, and 21 cm hyperfine as source-package rows only.
+10. Write artifact with hashes, thresholds, metrics, formula bridge metadata, level-energy rows, selected ion rows, precision source gate, and limitations.
+11. Write `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json` so the hydrogen benchmark stays separate from broader atomic-theory claims.
 
 ## Assumptions
 
@@ -49,6 +51,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 - Bohr/de Broglie/Rydberg formulas are inherited standard physics unless a separate UET derivation artifact proves otherwise.
 - Hydrogen level-energy rows are rounded and source-referenced through the ionization-energy anchor until direct per-level ASD precision is captured.
 - Hydrogen-like ion predictions use reduced-mass scaling for the selected He+ and Li2+ rows. Li III remains provisional because direct ASD row capture is still pending.
+- Precision spectroscopy rows are source targets only until Dirac/QED/recoil/proton-radius/hyperfine models and uncertainty propagation are added.
 
 ## Domain of Validity
 
@@ -57,12 +60,14 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 - Formula bridge manifest language that explains dependency roles without claiming derivation.
 - Rounded hydrogen `n=1..8` level-energy benchmark language.
 - Provisional selected He+/Li2+ one-electron ion residuals under the reduced-mass hydrogenic benchmark gate.
+- Precision source-package readiness language for 1S-2S, Lamb shift, and 21 cm hyperfine targets.
 
 ## Excluded Cases
 
 - First-principles UET derivation of `R_H`.
 - Broad source-backed validation of hydrogen-like ions beyond the selected provisional He+/Li2+ rows.
 - Fine structure, Lamb shift, hyperfine structure.
+- QED precision correction residual claims.
 - Helium or many-electron atomic spectra.
 - Full QED validation.
 
