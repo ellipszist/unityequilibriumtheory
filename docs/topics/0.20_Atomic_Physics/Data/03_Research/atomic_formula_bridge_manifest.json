@@ -77,6 +77,14 @@
     },
     {
       "step_id": "AT20-BRIDGE-10",
+      "relation": "nu_F = (8/3) alpha^2 c R_infinity (m_e/m_p) g_p",
+      "source_role": "leading Fermi-contact hyperfine baseline",
+      "uet_role": "diagnostic baseline only; UET-specific magnetic-moment, recoil, QED, and proton-structure derivation remains blocked.",
+      "status": "fermi_baseline_computed_open_higher_order_corrections",
+      "claim_ceiling": "21 cm leading hyperfine residual diagnostic"
+    },
+    {
+      "step_id": "AT20-BRIDGE-11",
       "relation": "many-electron Hamiltonian = one-electron terms + electron-electron repulsion + exchange/correlation + relativistic/QED corrections",
       "source_role": "standard many-electron problem framing",
       "uet_role": "open target for future UET atomic engine; no validated UET many-electron operator exists in this topic yet.",

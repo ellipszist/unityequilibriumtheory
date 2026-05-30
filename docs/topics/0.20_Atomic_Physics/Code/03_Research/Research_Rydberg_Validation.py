@@ -43,6 +43,7 @@ HYDROGEN_LIKE_ION_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_like_ion
 PRECISION_SPECTROSCOPY_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_precision_spectroscopy_sources.json"
 HYDROGEN_LAMB_SHIFT_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_lamb_shift_correction_sources.json"
 HYDROGEN_HYPERFINE_21CM_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_hyperfine_21cm_sources.json"
+HYDROGEN_HYPERFINE_FERMI_CONSTANTS_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_hyperfine_fermi_constants.json"
 HELIUM_MANY_ELECTRON_PATH = TOPIC_DIR / "Data" / "03_Research" / "helium_many_electron_sources.json"
 ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_20_atomic_physics_verification.json"
 SOURCE_EVIDENCE_INTAKE_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_intake_stub.json"
@@ -419,6 +420,14 @@ def build_atomic_formula_bridge_manifest() -> dict:
             },
             {
                 "step_id": "AT20-BRIDGE-10",
+                "relation": "nu_F = (8/3) alpha^2 c R_infinity (m_e/m_p) g_p",
+                "source_role": "leading Fermi-contact hyperfine baseline",
+                "uet_role": "diagnostic baseline only; UET-specific magnetic-moment, recoil, QED, and proton-structure derivation remains blocked.",
+                "status": "fermi_baseline_computed_open_higher_order_corrections",
+                "claim_ceiling": "21 cm leading hyperfine residual diagnostic",
+            },
+            {
+                "step_id": "AT20-BRIDGE-11",
                 "relation": "many-electron Hamiltonian = one-electron terms + electron-electron repulsion + exchange/correlation + relativistic/QED corrections",
                 "source_role": "standard many-electron problem framing",
                 "uet_role": "open target for future UET atomic engine; no validated UET many-electron operator exists in this topic yet.",
@@ -851,6 +860,60 @@ def build_hyperfine_21cm_gate(hyperfine_sources: dict, precision_sources: dict) 
     }
 
 
+def build_hyperfine_fermi_baseline_gate(hyperfine_21cm_gate: dict, fermi_constants: dict, codata: dict) -> dict:
+    """Compute the leading Fermi-contact hyperfine baseline."""
+    constants = codata["constants"]
+    alpha = constants["alpha"]["value"]
+    r_infinity = constants["R_infinity"]["value"]
+    electron_mass = constants["m_e"]["value"]
+    proton_mass = constants["m_p"]["value"]
+    proton_g_factor = fermi_constants["constants"]["proton_g_factor"]["value"]
+    predicted_hz = (
+        (8.0 / 3.0)
+        * alpha**2
+        * SPEED_OF_LIGHT_M_PER_S
+        * r_infinity
+        * (electron_mass / proton_mass)
+        * proton_g_factor
+    )
+    observed_hz = hyperfine_21cm_gate["recommended_frequency"]["value_hz"]
+    residual_hz = predicted_hz - observed_hz
+    residual_ppm = abs(residual_hz) / observed_hz * 1e6
+    return {
+        "schema_version": "1.0",
+        "role": "hydrogen_21cm_fermi_contact_baseline_gate",
+        "status": "FERMI_BASELINE_COMPUTED_CORRECTIONS_OPEN",
+        "claim_class": "fermi_contact_baseline_only_no_precision_hyperfine_validation",
+        "formula_id": fermi_constants["formula"]["id"],
+        "formula": fermi_constants["formula"]["expression"],
+        "constants": {
+            "alpha": alpha,
+            "R_infinity_m_inverse": r_infinity,
+            "electron_mass_kg": electron_mass,
+            "proton_mass_kg": proton_mass,
+            "proton_g_factor": proton_g_factor,
+            "speed_of_light_m_per_s": SPEED_OF_LIGHT_M_PER_S,
+        },
+        "prediction": {
+            "fermi_contact_baseline_hz": predicted_hz,
+            "observed_reference_hz": observed_hz,
+            "residual_hz": residual_hz,
+            "absolute_residual_hz": abs(residual_hz),
+            "residual_ppm": residual_ppm,
+        },
+        "required_to_close_hyperfine": [
+            "mass and magnetic-moment convention audit",
+            "reduced-mass/recoil correction",
+            "radiative/QED correction",
+            "finite proton-structure correction",
+            "weak-interaction and higher-order correction policy",
+            "uncertainty propagation and residual threshold",
+        ],
+        "limitations": fermi_constants["formula"]["limitations"],
+        "claim_boundary": fermi_constants["claim_boundary"],
+    }
+
+
 def build_helium_many_electron_gate(helium_sources: dict) -> dict:
     rows = helium_sources["neutral_helium_lines"]
     return {
@@ -894,6 +957,7 @@ def build_atomic_claim_scope_gate(
     precision_dirac_baseline_gate: dict,
     lamb_shift_handoff_gate: dict,
     hyperfine_21cm_gate: dict,
+    hyperfine_fermi_baseline_gate: dict,
     helium_many_electron_gate: dict,
     source_evidence_readiness_matrix: dict,
     branch_claim_gate: dict,
@@ -1006,6 +1070,17 @@ def build_atomic_claim_scope_gate(
                 "source_evidence_readiness": "source_package_ready_model_blocked",
             },
             {
+                "claim": "A leading Fermi-contact baseline for the hydrogen 21 cm hyperfine transition is computed as a residual diagnostic.",
+                "status": hyperfine_fermi_baseline_gate["status"],
+                "artifact_role": "21 cm Fermi-contact baseline gate",
+                "metrics": {
+                    "fermi_contact_baseline_hz": hyperfine_fermi_baseline_gate["prediction"]["fermi_contact_baseline_hz"],
+                    "absolute_residual_hz": hyperfine_fermi_baseline_gate["prediction"]["absolute_residual_hz"],
+                    "residual_ppm": hyperfine_fermi_baseline_gate["prediction"]["residual_ppm"],
+                },
+                "source_evidence_readiness": "source_constants_ready_corrections_open",
+            },
+            {
                 "claim": "Neutral helium visible spectral targets are organized for future many-electron artifacts.",
                 "status": helium_many_electron_gate["status"],
                 "artifact_role": "neutral helium many-electron source gate",
@@ -1041,7 +1116,7 @@ def build_atomic_claim_scope_gate(
             {
                 "claim": "UET validates fine structure, Lamb shift, hyperfine structure, or QED corrections.",
                 "status": "BLOCKED",
-                "blocking_reason": "Precision targets are source-packaged and nonrelativistic, leading Dirac, and empirical Lamb handoff residuals are computed, but no first-principles QED/recoil/proton-radius/hyperfine correction model is primary-gated.",
+                "blocking_reason": "Precision targets are source-packaged; nonrelativistic, leading Dirac, empirical Lamb handoff, 21 cm source bookkeeping, and Fermi-contact baseline residuals are computed, but no first-principles QED/recoil/proton-radius/hyperfine correction model is primary-gated.",
                 "next_evidence_required": [
                     "primary locators for secondary precision rows",
                     "Dirac fine-structure model",
@@ -1103,6 +1178,7 @@ def run_rydberg_analysis():
     precision_sources = load_json(PRECISION_SPECTROSCOPY_PATH)
     lamb_shift_sources = load_json(HYDROGEN_LAMB_SHIFT_PATH)
     hyperfine_21cm_sources = load_json(HYDROGEN_HYPERFINE_21CM_PATH)
+    hyperfine_fermi_constants = load_json(HYDROGEN_HYPERFINE_FERMI_CONSTANTS_PATH)
     helium_sources = load_json(HELIUM_MANY_ELECTRON_PATH)
     source_evidence_intake_stub = build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = build_source_evidence_readiness_matrix()
@@ -1164,6 +1240,9 @@ def run_rydberg_analysis():
     precision_dirac_baseline_gate = build_precision_dirac_baseline_gate(precision_sources, codata)
     lamb_shift_handoff_gate = build_lamb_shift_handoff_gate(lamb_shift_sources, precision_dirac_baseline_gate)
     hyperfine_21cm_gate = build_hyperfine_21cm_gate(hyperfine_21cm_sources, precision_sources)
+    hyperfine_fermi_baseline_gate = build_hyperfine_fermi_baseline_gate(
+        hyperfine_21cm_gate, hyperfine_fermi_constants, codata
+    )
     helium_many_electron_gate = build_helium_many_electron_gate(helium_sources)
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
@@ -1177,6 +1256,7 @@ def run_rydberg_analysis():
         precision_dirac_baseline_gate,
         lamb_shift_handoff_gate,
         hyperfine_21cm_gate,
+        hyperfine_fermi_baseline_gate,
         helium_many_electron_gate,
         source_evidence_readiness_matrix,
         branch_claim_gate,
@@ -1244,6 +1324,13 @@ def run_rydberg_analysis():
                 ],
             },
             {
+                "path": str(HYDROGEN_HYPERFINE_FERMI_CONSTANTS_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(HYDROGEN_HYPERFINE_FERMI_CONSTANTS_PATH),
+                "source": hyperfine_fermi_constants.get("purpose"),
+                "status": hyperfine_fermi_constants.get("status"),
+                "source_rows": ["proton_g_factor"],
+            },
+            {
                 "path": str(HELIUM_MANY_ELECTRON_PATH.relative_to(ROOT)).replace("\\", "/"),
                 "sha256": file_sha256(HELIUM_MANY_ELECTRON_PATH),
                 "source": helium_sources.get("purpose"),
@@ -1265,6 +1352,7 @@ def run_rydberg_analysis():
             "AT20-HYDROGEN-1S2S-DIRAC-BASELINE",
             "AT20-HYDROGEN-1S2S-LAMB-HANDOFF",
             "AT20-HYDROGEN-21CM-HYPERFINE-SOURCE-GATE",
+            "AT20-HYDROGEN-21CM-FERMI-BASELINE",
             "AT20-HELIUM-MANY-ELECTRON-SOURCE-GATE",
             "AT20-UET-ATOMIC-BRIDGE-GATE",
         ],
@@ -1299,6 +1387,8 @@ def run_rydberg_analysis():
             "hyperfine_21cm_reference_hz": hyperfine_21cm_gate["recommended_frequency"]["value_hz"],
             "hyperfine_21cm_wavelength_cm": hyperfine_21cm_gate["derived_bookkeeping"]["wavelength_cm"],
             "hyperfine_21cm_topic_row_delta_hz": hyperfine_21cm_gate["topic_precision_row_delta"]["delta_hz"],
+            "hyperfine_21cm_fermi_baseline_residual_hz": hyperfine_fermi_baseline_gate["prediction"]["absolute_residual_hz"],
+            "hyperfine_21cm_fermi_baseline_residual_ppm": hyperfine_fermi_baseline_gate["prediction"]["residual_ppm"],
             "helium_source_rows": helium_many_electron_gate["source_row_count"],
             "helium_required_model_components": len(helium_many_electron_gate["required_model_components"]),
         },
@@ -1309,7 +1399,7 @@ def run_rydberg_analysis():
             "The Bohr/de Broglie/Rydberg bridge is now explicit, but it remains inherited standard physics unless a UET derivation artifact is added.",
             "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
             "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark until direct Li III ASD capture and broader ion coverage are added.",
-            "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines plus 21 cm source gate are diagnostics only and do not validate hyperfine Hamiltonian structure, QED, helium, or many-electron atoms.",
+            "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines plus 21 cm source/Fermi gates are diagnostics only and do not validate hyperfine Hamiltonian closure, QED, helium, or many-electron atoms.",
             "Neutral helium rows are source-package targets only and do not validate electron correlation or many-electron spectra.",
         ],
     }
@@ -1327,6 +1417,7 @@ def run_rydberg_analysis():
     artifact["precision_dirac_baseline_gate"] = precision_dirac_baseline_gate
     artifact["lamb_shift_handoff_gate"] = lamb_shift_handoff_gate
     artifact["hyperfine_21cm_gate"] = hyperfine_21cm_gate
+    artifact["hyperfine_fermi_baseline_gate"] = hyperfine_fermi_baseline_gate
     artifact["helium_many_electron_gate"] = helium_many_electron_gate
     artifact["source_evidence_intake_stub"] = {
         "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),

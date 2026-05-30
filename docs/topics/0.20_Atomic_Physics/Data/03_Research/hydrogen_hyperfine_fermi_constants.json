@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.20_Atomic_Physics",
+  "purpose": "Constants required for a first-pass Fermi-contact baseline of the neutral hydrogen 21 cm hyperfine transition.",
+  "status": "SOURCE_PACKAGE_READY_BASELINE_ONLY",
+  "constants": {
+    "proton_g_factor": {
+      "value": 5.5856946893,
+      "unit": "dimensionless",
+      "source": "NIST CODATA fundamental constants database",
+      "url": "https://physics.nist.gov/cgi-bin/cuu/Results?search_for=proton",
+      "note": "Listed by NIST/CODATA as proton g factor; value matches CODATA/SciPy constant table snapshots."
+    }
+  },
+  "formula": {
+    "id": "AT20-HYDROGEN-21CM-FERMI-BASELINE",
+    "expression": "nu_F = (8/3) * alpha^2 * c * R_infinity * (m_e/m_p) * g_p",
+    "role": "leading Fermi-contact baseline for hydrogen ground-state hyperfine splitting",
+    "limitations": [
+      "Uses CODATA R_infinity, alpha, electron mass, proton mass, and proton g factor.",
+      "Omits reduced-mass refinements beyond explicit mass ratio, anomalous magnetic moment convention audit, recoil, radiative/QED, weak, and finite-proton-structure corrections.",
+      "Not a UET derivation and not a validated hyperfine Hamiltonian closure."
+    ]
+  },
+  "claim_boundary": "This constants package allows a baseline hyperfine estimate only. It cannot be cited as precision hyperfine validation, QED validation, proton-structure validation, or UET first-principles derivation."
+}
