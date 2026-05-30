@@ -393,6 +393,14 @@ def build_atomic_formula_bridge_manifest() -> dict:
             },
             {
                 "step_id": "AT20-BRIDGE-07",
+                "relation": "E_nj/h = -c R_H/n^2 [1 + alpha^2/n (1/(j+1/2) - 3/(4n))]",
+                "source_role": "leading Dirac/fine-structure baseline for hydrogen levels",
+                "uet_role": "diagnostic gap sizing only; UET-specific alpha/orbital/Hamiltonian derivation and QED terms remain blocked.",
+                "status": "dirac_baseline_computed_open_qed_model",
+                "claim_ceiling": "leading fine-structure residual diagnostic",
+            },
+            {
+                "step_id": "AT20-BRIDGE-08",
                 "relation": "many-electron Hamiltonian = one-electron terms + electron-electron repulsion + exchange/correlation + relativistic/QED corrections",
                 "source_role": "standard many-electron problem framing",
                 "uet_role": "open target for future UET atomic engine; no validated UET many-electron operator exists in this topic yet.",
@@ -650,6 +658,70 @@ def build_precision_baseline_gate(precision_sources: dict, codata: dict) -> dict
     }
 
 
+def _hydrogen_dirac_expansion_level_frequency_hz(n: int, j: float, r_h: float, alpha: float) -> float:
+    correction = (alpha**2 / n) * (1.0 / (j + 0.5) - 3.0 / (4.0 * n))
+    return -SPEED_OF_LIGHT_M_PER_S * r_h / (n**2) * (1.0 + correction)
+
+
+def build_precision_dirac_baseline_gate(precision_sources: dict, codata: dict) -> dict:
+    """Add the leading Dirac/fine-structure level correction for the sourced 1S-2S target."""
+    target = next(row for row in precision_sources["rows"] if row["target_id"] == "H-1S-2S-CENTROID")
+    r_h = codata["constants"]["R_H"]["value"]
+    alpha = codata["constants"]["alpha"]["value"]
+    level_1s_hz = _hydrogen_dirac_expansion_level_frequency_hz(1, 0.5, r_h, alpha)
+    level_2s_hz = _hydrogen_dirac_expansion_level_frequency_hz(2, 0.5, r_h, alpha)
+    predicted_hz = level_2s_hz - level_1s_hz
+    observed_hz = float(target["value"])
+    residual_hz = predicted_hz - observed_hz
+    residual_ppm = abs(residual_hz) / observed_hz * 1e6
+    uncertainty_hz = float(target.get("uncertainty", 0.0))
+    sigma_offset = abs(residual_hz) / uncertainty_hz if uncertainty_hz else None
+    return {
+        "schema_version": "1.0",
+        "role": "hydrogen_precision_dirac_fine_structure_baseline_gate",
+        "status": "DIRAC_BASELINE_COMPUTED_QED_INCOMPLETE",
+        "claim_class": "dirac_baseline_only_no_qed_precision_validation",
+        "formula_id": "AT20-HYDROGEN-1S2S-DIRAC-BASELINE",
+        "target_id": target["target_id"],
+        "formula": "E_nj/h = -c R_H/n^2 * [1 + alpha^2/n * (1/(j+1/2) - 3/(4n))]",
+        "levels": [
+            {"label": "1S1/2", "n": 1, "j": 0.5, "level_frequency_hz": level_1s_hz},
+            {"label": "2S1/2", "n": 2, "j": 0.5, "level_frequency_hz": level_2s_hz},
+        ],
+        "constants": {
+            "speed_of_light_m_per_s": SPEED_OF_LIGHT_M_PER_S,
+            "R_H_m_inverse": r_h,
+            "alpha": alpha,
+        },
+        "observed": {
+            "value_hz": observed_hz,
+            "uncertainty_hz": uncertainty_hz,
+            "source_type": target["source_type"],
+            "doi": target.get("doi"),
+            "url": target.get("url"),
+        },
+        "prediction": {
+            "dirac_fine_structure_baseline_hz": predicted_hz,
+            "residual_hz": residual_hz,
+            "absolute_residual_hz": abs(residual_hz),
+            "residual_ppm": residual_ppm,
+            "sigma_offset_vs_measurement_uncertainty": sigma_offset,
+        },
+        "required_to_close_precision": [
+            "full reduced-mass/recoil convention audit beyond R_H substitution",
+            "radiative/QED Lamb-shift contribution for 1S and 2S",
+            "finite proton-size contribution",
+            "uncertainty propagation and residual threshold",
+            "independent source locators for all precision rows",
+        ],
+        "limitations": [
+            "This computes a leading Dirac/fine-structure expansion baseline for the 1S-2S centroid.",
+            "It intentionally excludes Lamb-shift, radiative/QED, recoil beyond R_H, and finite-proton-size terms.",
+            "This gate cannot be cited as Lamb-shift, hyperfine, QED, or UET first-principles validation.",
+        ],
+    }
+
+
 def build_helium_many_electron_gate(helium_sources: dict) -> dict:
     rows = helium_sources["neutral_helium_lines"]
     return {
@@ -690,6 +762,7 @@ def build_atomic_claim_scope_gate(
     hydrogen_like_checkpoint: dict,
     precision_spectroscopy_gate: dict,
     precision_baseline_gate: dict,
+    precision_dirac_baseline_gate: dict,
     helium_many_electron_gate: dict,
     source_evidence_readiness_matrix: dict,
     branch_claim_gate: dict,
@@ -769,6 +842,17 @@ def build_atomic_claim_scope_gate(
                 "source_evidence_readiness": "source_ready_model_incomplete",
             },
             {
+                "claim": "The leading Dirac/fine-structure baseline for the hydrogen 1S-2S precision target is computed as a residual diagnostic.",
+                "status": precision_dirac_baseline_gate["status"],
+                "artifact_role": "precision Dirac baseline residual gate",
+                "metrics": {
+                    "target_id": precision_dirac_baseline_gate["target_id"],
+                    "absolute_residual_hz": precision_dirac_baseline_gate["prediction"]["absolute_residual_hz"],
+                    "residual_ppm": precision_dirac_baseline_gate["prediction"]["residual_ppm"],
+                },
+                "source_evidence_readiness": "source_ready_qed_model_incomplete",
+            },
+            {
                 "claim": "Neutral helium visible spectral targets are organized for future many-electron artifacts.",
                 "status": helium_many_electron_gate["status"],
                 "artifact_role": "neutral helium many-electron source gate",
@@ -804,7 +888,7 @@ def build_atomic_claim_scope_gate(
             {
                 "claim": "UET validates fine structure, Lamb shift, hyperfine structure, or QED corrections.",
                 "status": "BLOCKED",
-                "blocking_reason": "Precision targets are source-packaged and a nonrelativistic 1S-2S baseline residual is computed, but no Dirac/QED/recoil/proton-radius/hyperfine correction model is primary-gated.",
+                "blocking_reason": "Precision targets are source-packaged and nonrelativistic plus leading Dirac 1S-2S baseline residuals are computed, but no QED/recoil/proton-radius/hyperfine correction model is primary-gated.",
                 "next_evidence_required": [
                     "primary locators for secondary precision rows",
                     "Dirac fine-structure model",
@@ -922,6 +1006,7 @@ def run_rydberg_analysis():
     hydrogen_like_checkpoint = build_hydrogen_like_checkpoint(codata, ion_data)
     precision_spectroscopy_gate = build_precision_spectroscopy_gate(precision_sources)
     precision_baseline_gate = build_precision_baseline_gate(precision_sources, codata)
+    precision_dirac_baseline_gate = build_precision_dirac_baseline_gate(precision_sources, codata)
     helium_many_electron_gate = build_helium_many_electron_gate(helium_sources)
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
@@ -932,6 +1017,7 @@ def run_rydberg_analysis():
         hydrogen_like_checkpoint,
         precision_spectroscopy_gate,
         precision_baseline_gate,
+        precision_dirac_baseline_gate,
         helium_many_electron_gate,
         source_evidence_readiness_matrix,
         branch_claim_gate,
@@ -1000,6 +1086,7 @@ def run_rydberg_analysis():
             "AT20-HYDROGENIC-Z2-CHECKPOINT",
             "AT20-HYDROGEN-PRECISION-SOURCE-GATE",
             "AT20-HYDROGEN-1S2S-RYDBERG-BASELINE",
+            "AT20-HYDROGEN-1S2S-DIRAC-BASELINE",
             "AT20-HELIUM-MANY-ELECTRON-SOURCE-GATE",
             "AT20-UET-ATOMIC-BRIDGE-GATE",
         ],
@@ -1027,6 +1114,8 @@ def run_rydberg_analysis():
             "precision_required_model_components": len(precision_spectroscopy_gate["required_model_components"]),
             "precision_1s2s_baseline_residual_hz": precision_baseline_gate["prediction"]["absolute_residual_hz"],
             "precision_1s2s_baseline_residual_ppm": precision_baseline_gate["prediction"]["residual_ppm"],
+            "precision_1s2s_dirac_baseline_residual_hz": precision_dirac_baseline_gate["prediction"]["absolute_residual_hz"],
+            "precision_1s2s_dirac_baseline_residual_ppm": precision_dirac_baseline_gate["prediction"]["residual_ppm"],
             "helium_source_rows": helium_many_electron_gate["source_row_count"],
             "helium_required_model_components": len(helium_many_electron_gate["required_model_components"]),
         },
@@ -1037,7 +1126,7 @@ def run_rydberg_analysis():
             "The Bohr/de Broglie/Rydberg bridge is now explicit, but it remains inherited standard physics unless a UET derivation artifact is added.",
             "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
             "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark until direct Li III ASD capture and broader ion coverage are added.",
-            "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic baseline is a residual diagnostic only and does not validate fine structure, Lamb shift, hyperfine structure, QED, helium, or many-electron atoms.",
+            "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic and leading Dirac baselines are residual diagnostics only and do not validate Lamb shift, hyperfine structure, QED, helium, or many-electron atoms.",
             "Neutral helium rows are source-package targets only and do not validate electron correlation or many-electron spectra.",
         ],
     }
@@ -1052,6 +1141,7 @@ def run_rydberg_analysis():
     artifact["hydrogen_like_checkpoint"] = hydrogen_like_checkpoint
     artifact["precision_spectroscopy_gate"] = precision_spectroscopy_gate
     artifact["precision_baseline_gate"] = precision_baseline_gate
+    artifact["precision_dirac_baseline_gate"] = precision_dirac_baseline_gate
     artifact["helium_many_electron_gate"] = helium_many_electron_gate
     artifact["source_evidence_intake_stub"] = {
         "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),

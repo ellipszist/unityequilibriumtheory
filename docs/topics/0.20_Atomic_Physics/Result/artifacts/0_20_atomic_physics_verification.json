@@ -72,6 +72,17 @@
         "status": "BASELINE_COMPUTED_MODEL_INCOMPLETE"
       },
       {
+        "artifact_role": "precision Dirac baseline residual gate",
+        "claim": "The leading Dirac/fine-structure baseline for the hydrogen 1S-2S precision target is computed as a residual diagnostic.",
+        "metrics": {
+          "absolute_residual_hz": 7104712447.0,
+          "residual_ppm": 2.880995748527676,
+          "target_id": "H-1S-2S-CENTROID"
+        },
+        "source_evidence_readiness": "source_ready_qed_model_incomplete",
+        "status": "DIRAC_BASELINE_COMPUTED_QED_INCOMPLETE"
+      },
+      {
         "artifact_role": "neutral helium many-electron source gate",
         "claim": "Neutral helium visible spectral targets are organized for future many-electron artifacts.",
         "metrics": {
@@ -105,7 +116,7 @@
         "status": "BLOCKED"
       },
       {
-        "blocking_reason": "Precision targets are source-packaged and a nonrelativistic 1S-2S baseline residual is computed, but no Dirac/QED/recoil/proton-radius/hyperfine correction model is primary-gated.",
+        "blocking_reason": "Precision targets are source-packaged and nonrelativistic plus leading Dirac 1S-2S baseline residuals are computed, but no QED/recoil/proton-radius/hyperfine correction model is primary-gated.",
         "claim": "UET validates fine structure, Lamb shift, hyperfine structure, or QED corrections.",
         "next_evidence_required": [
           "primary locators for secondary precision rows",
@@ -171,9 +182,9 @@
       "0.17_Mass_Generation",
       "0.23_Unity_Scale_Link"
     ],
-    "dependency_steps": 7,
+    "dependency_steps": 8,
     "path": "Data/03_Research/atomic_formula_bridge_manifest.json",
-    "sha256": "a8d1a0def61174bf0fdb03fd172bb51185fd1d948ed0734f142cf40edf72edb6"
+    "sha256": "0271cd7e3201f37498a4a5499d7ab2af98886eefcb0093b4fe2243368b28efc9"
   },
   "branch_claim_gate": {
     "claim_boundary": "This gate keeps the topic at hydrogen benchmark status, not full atomic-theory closure.",
@@ -202,10 +213,11 @@
     "AT20-HYDROGENIC-Z2-CHECKPOINT",
     "AT20-HYDROGEN-PRECISION-SOURCE-GATE",
     "AT20-HYDROGEN-1S2S-RYDBERG-BASELINE",
+    "AT20-HYDROGEN-1S2S-DIRAC-BASELINE",
     "AT20-HELIUM-MANY-ELECTRON-SOURCE-GATE",
     "AT20-UET-ATOMIC-BRIDGE-GATE"
   ],
-  "generated_at_utc": "2026-05-30T09:45:35.047297+00:00",
+  "generated_at_utc": "2026-05-30T09:51:14.214598+00:00",
   "helium_many_electron_gate": {
     "blocked_usages": [
       "neutral helium spectrum validated",
@@ -485,7 +497,7 @@
     "The Bohr/de Broglie/Rydberg bridge is now explicit, but it remains inherited standard physics unless a UET derivation artifact is added.",
     "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
     "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark until direct Li III ASD capture and broader ion coverage are added.",
-    "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic baseline is a residual diagnostic only and does not validate fine structure, Lamb shift, hyperfine structure, QED, helium, or many-electron atoms.",
+    "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic and leading Dirac baselines are residual diagnostics only and do not validate Lamb shift, hyperfine structure, QED, helium, or many-electron atoms.",
     "Neutral helium rows are source-package targets only and do not validate electron correlation or many-electron spectra."
   ],
   "metrics": {
@@ -495,7 +507,7 @@
     "average_wavelength_error_ppm": 7.504133013735595,
     "blocked_claim_exports": 7,
     "fitted_slope_through_origin_m_inverse": 10967845.50226957,
-    "formula_bridge_steps": 7,
+    "formula_bridge_steps": 8,
     "helium_required_model_components": 7,
     "helium_source_rows": 5,
     "hydrogen_level_avg_error_ppm": 68.93802115979179,
@@ -508,6 +520,8 @@
     "max_wavelength_error_ppm": 12.500832386280821,
     "precision_1s2s_baseline_residual_hz": 22989428178.5,
     "precision_1s2s_baseline_residual_ppm": 9.322325898116794,
+    "precision_1s2s_dirac_baseline_residual_hz": 7104712447.0,
+    "precision_1s2s_dirac_baseline_residual_ppm": 2.880995748527676,
     "precision_required_model_components": 6,
     "precision_source_rows": 3,
     "slope_error_ppm": 7.947081514956296,
@@ -552,6 +566,60 @@
     "role": "hydrogen_precision_nonrelativistic_baseline_gate",
     "schema_version": "1.0",
     "status": "BASELINE_COMPUTED_MODEL_INCOMPLETE",
+    "target_id": "H-1S-2S-CENTROID"
+  },
+  "precision_dirac_baseline_gate": {
+    "claim_class": "dirac_baseline_only_no_qed_precision_validation",
+    "constants": {
+      "R_H_m_inverse": 10967758.3406,
+      "alpha": 0.0072973525693,
+      "speed_of_light_m_per_s": 299792458.0
+    },
+    "formula": "E_nj/h = -c R_H/n^2 * [1 + alpha^2/n * (1/(j+1/2) - 3/(4n))]",
+    "formula_id": "AT20-HYDROGEN-1S2S-DIRAC-BASELINE",
+    "levels": [
+      {
+        "j": 0.5,
+        "label": "1S1/2",
+        "level_frequency_hz": -3288095004973930.5,
+        "n": 1
+      },
+      {
+        "j": 0.5,
+        "label": "2S1/2",
+        "level_frequency_hz": -822026487074448.6,
+        "n": 2
+      }
+    ],
+    "limitations": [
+      "This computes a leading Dirac/fine-structure expansion baseline for the 1S-2S centroid.",
+      "It intentionally excludes Lamb-shift, radiative/QED, recoil beyond R_H, and finite-proton-size terms.",
+      "This gate cannot be cited as Lamb-shift, hyperfine, QED, or UET first-principles validation."
+    ],
+    "observed": {
+      "doi": "10.1103/PhysRevLett.107.203001",
+      "source_type": "peer_reviewed_measurement_preprint_record",
+      "uncertainty_hz": 10.0,
+      "url": "https://arxiv.org/abs/1107.3101",
+      "value_hz": 2466061413187035.0
+    },
+    "prediction": {
+      "absolute_residual_hz": 7104712447.0,
+      "dirac_fine_structure_baseline_hz": 2466068517899482.0,
+      "residual_hz": 7104712447.0,
+      "residual_ppm": 2.880995748527676,
+      "sigma_offset_vs_measurement_uncertainty": 710471244.7
+    },
+    "required_to_close_precision": [
+      "full reduced-mass/recoil convention audit beyond R_H substitution",
+      "radiative/QED Lamb-shift contribution for 1S and 2S",
+      "finite proton-size contribution",
+      "uncertainty propagation and residual threshold",
+      "independent source locators for all precision rows"
+    ],
+    "role": "hydrogen_precision_dirac_fine_structure_baseline_gate",
+    "schema_version": "1.0",
+    "status": "DIRAC_BASELINE_COMPUTED_QED_INCOMPLETE",
     "target_id": "H-1S-2S-CENTROID"
   },
   "precision_spectroscopy_gate": {

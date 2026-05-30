@@ -53,6 +53,14 @@
     },
     {
       "step_id": "AT20-BRIDGE-07",
+      "relation": "E_nj/h = -c R_H/n^2 [1 + alpha^2/n (1/(j+1/2) - 3/(4n))]",
+      "source_role": "leading Dirac/fine-structure baseline for hydrogen levels",
+      "uet_role": "diagnostic gap sizing only; UET-specific alpha/orbital/Hamiltonian derivation and QED terms remain blocked.",
+      "status": "dirac_baseline_computed_open_qed_model",
+      "claim_ceiling": "leading fine-structure residual diagnostic"
+    },
+    {
+      "step_id": "AT20-BRIDGE-08",
       "relation": "many-electron Hamiltonian = one-electron terms + electron-electron repulsion + exchange/correlation + relativistic/QED corrections",
       "source_role": "standard many-electron problem framing",
       "uet_role": "open target for future UET atomic engine; no validated UET many-electron operator exists in this topic yet.",
