@@ -41,6 +41,7 @@ CODATA_PATH = TOPIC_DIR / "Data" / "03_Research" / "codata_2018_atomic.json"
 HYDROGEN_LEVEL_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_spectra_data.json"
 HYDROGEN_LIKE_ION_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_like_ion_spectrum.json"
 PRECISION_SPECTROSCOPY_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_precision_spectroscopy_sources.json"
+HYDROGEN_LAMB_SHIFT_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_lamb_shift_correction_sources.json"
 HELIUM_MANY_ELECTRON_PATH = TOPIC_DIR / "Data" / "03_Research" / "helium_many_electron_sources.json"
 ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_20_atomic_physics_verification.json"
 SOURCE_EVIDENCE_INTAKE_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_intake_stub.json"
@@ -401,6 +402,14 @@ def build_atomic_formula_bridge_manifest() -> dict:
             },
             {
                 "step_id": "AT20-BRIDGE-08",
+                "relation": "nu_1S_2S = nu_Dirac + (L_2S - L_1S) + Delta nu_recoil/proton-size/QED-residual",
+                "source_role": "empirical Lamb-shift handoff for precision residual sizing",
+                "uet_role": "source-referenced correction handoff only; UET-specific QED/recoil/proton-size derivation remains blocked.",
+                "status": "empirical_lamb_handoff_computed_open_qed_decomposition",
+                "claim_ceiling": "Lamb source handoff diagnostic, not QED validation",
+            },
+            {
+                "step_id": "AT20-BRIDGE-09",
                 "relation": "many-electron Hamiltonian = one-electron terms + electron-electron repulsion + exchange/correlation + relativistic/QED corrections",
                 "source_role": "standard many-electron problem framing",
                 "uet_role": "open target for future UET atomic engine; no validated UET many-electron operator exists in this topic yet.",
@@ -722,6 +731,65 @@ def build_precision_dirac_baseline_gate(precision_sources: dict, codata: dict) -
     }
 
 
+def build_lamb_shift_handoff_gate(lamb_sources: dict, precision_dirac_baseline_gate: dict) -> dict:
+    """Apply source-referenced Lamb shifts as an empirical handoff, not as a QED derivation."""
+    rows = {row["target_id"]: row for row in lamb_sources["rows"]}
+    lamb_1s_mhz = float(rows["H-1S-LAMB-SHIFT"]["value"])
+    lamb_2s_mhz = float(rows["H-2S-LAMB-SHIFT"]["value"])
+    lamb_1s_unc_mhz = float(rows["H-1S-LAMB-SHIFT"].get("uncertainty", 0.0))
+    lamb_2s_unc_mhz = float(rows["H-2S-LAMB-SHIFT"].get("uncertainty", 0.0))
+    lamb_delta_hz = (lamb_2s_mhz - lamb_1s_mhz) * 1e6
+    lamb_delta_uncertainty_hz = ((lamb_1s_unc_mhz**2 + lamb_2s_unc_mhz**2) ** 0.5) * 1e6
+    observed_hz = precision_dirac_baseline_gate["observed"]["value_hz"]
+    dirac_baseline_hz = precision_dirac_baseline_gate["prediction"]["dirac_fine_structure_baseline_hz"]
+    empirical_handoff_hz = dirac_baseline_hz + lamb_delta_hz
+    residual_hz = empirical_handoff_hz - observed_hz
+    residual_ppm = abs(residual_hz) / observed_hz * 1e6
+    return {
+        "schema_version": "1.0",
+        "role": "hydrogen_lamb_shift_empirical_handoff_gate",
+        "status": "EMPIRICAL_LAMB_HANDOFF_COMPUTED_MODEL_INCOMPLETE",
+        "claim_class": "empirical_lamb_handoff_only_no_qed_validation",
+        "formula_id": "AT20-HYDROGEN-1S2S-LAMB-HANDOFF",
+        "formula": "nu_1S_2S_handoff = nu_Dirac_baseline + (L_2S - L_1S)",
+        "source_status": lamb_sources["status"],
+        "source_rows": [
+            {
+                "target_id": row["target_id"],
+                "observable": row["observable"],
+                "value": row["value"],
+                "uncertainty": row.get("uncertainty"),
+                "unit": row["unit"],
+                "source_type": row["source_type"],
+                "url": row["url"],
+            }
+            for row in lamb_sources["rows"]
+        ],
+        "correction": {
+            "L_1S_MHz": lamb_1s_mhz,
+            "L_2S_MHz": lamb_2s_mhz,
+            "delta_L_2S_minus_1S_Hz": lamb_delta_hz,
+            "delta_uncertainty_hz": lamb_delta_uncertainty_hz,
+        },
+        "prediction": {
+            "dirac_baseline_hz": dirac_baseline_hz,
+            "empirical_lamb_handoff_hz": empirical_handoff_hz,
+            "observed_hz": observed_hz,
+            "residual_hz": residual_hz,
+            "absolute_residual_hz": abs(residual_hz),
+            "residual_ppm": residual_ppm,
+        },
+        "required_to_close_precision": lamb_sources["required_model_components"],
+        "limitations": [
+            "This applies source-referenced Lamb-shift values as an empirical residual-sizing handoff.",
+            "It is not a QED derivation and does not decompose self-energy, vacuum polarization, recoil, or proton-size terms.",
+            "The 2S value uses a 2S-2P Lamb-shift convention and needs a term-convention audit before precision validation.",
+            "This gate cannot be cited as QED, proton-radius, hyperfine, or UET first-principles validation.",
+        ],
+        "claim_boundary": lamb_sources["claim_boundary"],
+    }
+
+
 def build_helium_many_electron_gate(helium_sources: dict) -> dict:
     rows = helium_sources["neutral_helium_lines"]
     return {
@@ -763,6 +831,7 @@ def build_atomic_claim_scope_gate(
     precision_spectroscopy_gate: dict,
     precision_baseline_gate: dict,
     precision_dirac_baseline_gate: dict,
+    lamb_shift_handoff_gate: dict,
     helium_many_electron_gate: dict,
     source_evidence_readiness_matrix: dict,
     branch_claim_gate: dict,
@@ -853,6 +922,17 @@ def build_atomic_claim_scope_gate(
                 "source_evidence_readiness": "source_ready_qed_model_incomplete",
             },
             {
+                "claim": "Source-referenced Lamb-shift values are applied as an empirical 1S-2S residual handoff after the Dirac baseline.",
+                "status": lamb_shift_handoff_gate["status"],
+                "artifact_role": "empirical Lamb-shift handoff gate",
+                "metrics": {
+                    "absolute_residual_hz": lamb_shift_handoff_gate["prediction"]["absolute_residual_hz"],
+                    "residual_ppm": lamb_shift_handoff_gate["prediction"]["residual_ppm"],
+                    "delta_L_2S_minus_1S_Hz": lamb_shift_handoff_gate["correction"]["delta_L_2S_minus_1S_Hz"],
+                },
+                "source_evidence_readiness": "source_package_ready_empirical_handoff_model_blocked",
+            },
+            {
                 "claim": "Neutral helium visible spectral targets are organized for future many-electron artifacts.",
                 "status": helium_many_electron_gate["status"],
                 "artifact_role": "neutral helium many-electron source gate",
@@ -888,7 +968,7 @@ def build_atomic_claim_scope_gate(
             {
                 "claim": "UET validates fine structure, Lamb shift, hyperfine structure, or QED corrections.",
                 "status": "BLOCKED",
-                "blocking_reason": "Precision targets are source-packaged and nonrelativistic plus leading Dirac 1S-2S baseline residuals are computed, but no QED/recoil/proton-radius/hyperfine correction model is primary-gated.",
+                "blocking_reason": "Precision targets are source-packaged and nonrelativistic, leading Dirac, and empirical Lamb handoff residuals are computed, but no first-principles QED/recoil/proton-radius/hyperfine correction model is primary-gated.",
                 "next_evidence_required": [
                     "primary locators for secondary precision rows",
                     "Dirac fine-structure model",
@@ -948,6 +1028,7 @@ def run_rydberg_analysis():
     hydrogen_level_rows = load_json(HYDROGEN_LEVEL_PATH)
     ion_data = load_json(HYDROGEN_LIKE_ION_PATH)
     precision_sources = load_json(PRECISION_SPECTROSCOPY_PATH)
+    lamb_shift_sources = load_json(HYDROGEN_LAMB_SHIFT_PATH)
     helium_sources = load_json(HELIUM_MANY_ELECTRON_PATH)
     source_evidence_intake_stub = build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = build_source_evidence_readiness_matrix()
@@ -1007,6 +1088,7 @@ def run_rydberg_analysis():
     precision_spectroscopy_gate = build_precision_spectroscopy_gate(precision_sources)
     precision_baseline_gate = build_precision_baseline_gate(precision_sources, codata)
     precision_dirac_baseline_gate = build_precision_dirac_baseline_gate(precision_sources, codata)
+    lamb_shift_handoff_gate = build_lamb_shift_handoff_gate(lamb_shift_sources, precision_dirac_baseline_gate)
     helium_many_electron_gate = build_helium_many_electron_gate(helium_sources)
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
@@ -1018,6 +1100,7 @@ def run_rydberg_analysis():
         precision_spectroscopy_gate,
         precision_baseline_gate,
         precision_dirac_baseline_gate,
+        lamb_shift_handoff_gate,
         helium_many_electron_gate,
         source_evidence_readiness_matrix,
         branch_claim_gate,
@@ -1068,6 +1151,13 @@ def run_rydberg_analysis():
                 "source_rows": [row["target_id"] for row in precision_sources["rows"]],
             },
             {
+                "path": str(HYDROGEN_LAMB_SHIFT_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(HYDROGEN_LAMB_SHIFT_PATH),
+                "source": lamb_shift_sources.get("purpose"),
+                "status": lamb_shift_sources.get("status"),
+                "source_rows": [row["target_id"] for row in lamb_shift_sources["rows"]],
+            },
+            {
                 "path": str(HELIUM_MANY_ELECTRON_PATH.relative_to(ROOT)).replace("\\", "/"),
                 "sha256": file_sha256(HELIUM_MANY_ELECTRON_PATH),
                 "source": helium_sources.get("purpose"),
@@ -1087,6 +1177,7 @@ def run_rydberg_analysis():
             "AT20-HYDROGEN-PRECISION-SOURCE-GATE",
             "AT20-HYDROGEN-1S2S-RYDBERG-BASELINE",
             "AT20-HYDROGEN-1S2S-DIRAC-BASELINE",
+            "AT20-HYDROGEN-1S2S-LAMB-HANDOFF",
             "AT20-HELIUM-MANY-ELECTRON-SOURCE-GATE",
             "AT20-UET-ATOMIC-BRIDGE-GATE",
         ],
@@ -1116,6 +1207,8 @@ def run_rydberg_analysis():
             "precision_1s2s_baseline_residual_ppm": precision_baseline_gate["prediction"]["residual_ppm"],
             "precision_1s2s_dirac_baseline_residual_hz": precision_dirac_baseline_gate["prediction"]["absolute_residual_hz"],
             "precision_1s2s_dirac_baseline_residual_ppm": precision_dirac_baseline_gate["prediction"]["residual_ppm"],
+            "precision_1s2s_lamb_handoff_residual_hz": lamb_shift_handoff_gate["prediction"]["absolute_residual_hz"],
+            "precision_1s2s_lamb_handoff_residual_ppm": lamb_shift_handoff_gate["prediction"]["residual_ppm"],
             "helium_source_rows": helium_many_electron_gate["source_row_count"],
             "helium_required_model_components": len(helium_many_electron_gate["required_model_components"]),
         },
@@ -1126,7 +1219,7 @@ def run_rydberg_analysis():
             "The Bohr/de Broglie/Rydberg bridge is now explicit, but it remains inherited standard physics unless a UET derivation artifact is added.",
             "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
             "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark until direct Li III ASD capture and broader ion coverage are added.",
-            "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic and leading Dirac baselines are residual diagnostics only and do not validate Lamb shift, hyperfine structure, QED, helium, or many-electron atoms.",
+            "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines are residual diagnostics only and do not validate hyperfine structure, QED, helium, or many-electron atoms.",
             "Neutral helium rows are source-package targets only and do not validate electron correlation or many-electron spectra.",
         ],
     }
@@ -1142,6 +1235,7 @@ def run_rydberg_analysis():
     artifact["precision_spectroscopy_gate"] = precision_spectroscopy_gate
     artifact["precision_baseline_gate"] = precision_baseline_gate
     artifact["precision_dirac_baseline_gate"] = precision_dirac_baseline_gate
+    artifact["lamb_shift_handoff_gate"] = lamb_shift_handoff_gate
     artifact["helium_many_electron_gate"] = helium_many_electron_gate
     artifact["source_evidence_intake_stub"] = {
         "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),

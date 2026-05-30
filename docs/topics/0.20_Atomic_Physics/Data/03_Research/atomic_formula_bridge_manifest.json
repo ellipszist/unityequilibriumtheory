@@ -61,6 +61,14 @@
     },
     {
       "step_id": "AT20-BRIDGE-08",
+      "relation": "nu_1S_2S = nu_Dirac + (L_2S - L_1S) + Delta nu_recoil/proton-size/QED-residual",
+      "source_role": "empirical Lamb-shift handoff for precision residual sizing",
+      "uet_role": "source-referenced correction handoff only; UET-specific QED/recoil/proton-size derivation remains blocked.",
+      "status": "empirical_lamb_handoff_computed_open_qed_decomposition",
+      "claim_ceiling": "Lamb source handoff diagnostic, not QED validation"
+    },
+    {
+      "step_id": "AT20-BRIDGE-09",
       "relation": "many-electron Hamiltonian = one-electron terms + electron-electron repulsion + exchange/correlation + relativistic/QED corrections",
       "source_role": "standard many-electron problem framing",
       "uet_role": "open target for future UET atomic engine; no validated UET many-electron operator exists in this topic yet.",
