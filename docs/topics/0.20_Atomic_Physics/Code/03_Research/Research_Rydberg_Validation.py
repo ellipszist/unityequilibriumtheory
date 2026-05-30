@@ -41,6 +41,7 @@ CODATA_PATH = TOPIC_DIR / "Data" / "03_Research" / "codata_2018_atomic.json"
 HYDROGEN_LEVEL_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_spectra_data.json"
 HYDROGEN_LIKE_ION_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_like_ion_spectrum.json"
 PRECISION_SPECTROSCOPY_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_precision_spectroscopy_sources.json"
+HELIUM_MANY_ELECTRON_PATH = TOPIC_DIR / "Data" / "03_Research" / "helium_many_electron_sources.json"
 ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_20_atomic_physics_verification.json"
 SOURCE_EVIDENCE_INTAKE_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_intake_stub.json"
 SOURCE_EVIDENCE_READINESS_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_readiness_matrix.json"
@@ -170,7 +171,7 @@ def build_source_evidence_intake_stub() -> dict:
             {
                 "name": "Helium and many-electron package",
                 "priority": "medium",
-                "status_hint": "blocked_theory_branch",
+                "status_hint": "source_package_ready_model_blocked",
                 "evidence_entries": [
                     "helium_dataset",
                     "many_electron_dataset",
@@ -246,17 +247,14 @@ def build_source_evidence_readiness_matrix() -> dict:
             "name": "Helium and many-electron package",
             "priority": "medium",
             "fields_total": 6,
-            "fields_complete": 1,
-            "fields_pending": 5,
+            "fields_complete": 4,
+            "fields_pending": 2,
             "pending_fields": [
-                "helium_dataset",
-                "many_electron_dataset",
                 "artifact_paths",
-                "cross_topic_dependency_map",
-                "upgrade_requirement",
+                "many_electron_model_and_thresholds",
             ],
-            "ready_for_source_review": False,
-            "blocking_reason": "Helium and many-electron lanes remain excluded from the current hydrogen-only benchmark.",
+            "ready_for_source_review": True,
+            "blocking_reason": "Neutral helium source rows are ready for source review, but no two-electron Hamiltonian/correlation model or residual artifact is primary-gated yet.",
         },
     ]
     ready_count = sum(1 for row in rows if row["ready_for_source_review"])
@@ -323,9 +321,9 @@ def build_branch_claim_gate() -> dict:
             },
             {
                 "branch": "Helium and many-electron branch",
-                "status": "blocked_for_strong_claims",
-                "allowed_usage_now": "Not supported by current evidence.",
-                "blocker_to_stronger_claim": "Need dedicated helium and many-electron datasets plus artifacts.",
+                "status": "source_package_ready_model_blocked",
+                "allowed_usage_now": "May cite only as a prepared neutral-helium source package for future many-electron artifacts.",
+                "blocker_to_stronger_claim": "Need a two-electron Hamiltonian/correlation model, term mapping, uncertainty policy, and residual thresholds before helium or many-electron claims.",
             },
             {
                 "branch": "First-principles UET atomic theory claims",
@@ -591,6 +589,37 @@ def build_precision_spectroscopy_gate(precision_sources: dict) -> dict:
     }
 
 
+def build_helium_many_electron_gate(helium_sources: dict) -> dict:
+    rows = helium_sources["neutral_helium_lines"]
+    return {
+        "schema_version": "1.0",
+        "role": "neutral_helium_many_electron_source_gate",
+        "status": "SOURCE_READY_MODEL_BLOCKED",
+        "claim_class": "source_package_only_no_many_electron_validation",
+        "source_row_count": len(rows),
+        "source": helium_sources["source"],
+        "targets": [
+            {
+                "species": row["species"],
+                "wavelength_nm": row["wavelength_nm"],
+                "relative_intensity": row["relative_intensity"],
+                "role": row["role"],
+                "source_status": row["source_status"],
+            }
+            for row in rows
+        ],
+        "required_model_components": helium_sources["required_model_components"],
+        "blocked_usages": helium_sources["blocked_usages"],
+        "limitations": [
+            "No neutral-helium wavelength residual is computed in this gate.",
+            "The package prepares many-electron source targets only.",
+            "A two-electron Hamiltonian, correlation treatment, term mapping, and uncertainty policy are required before validation.",
+            "This gate cannot be cited as neutral-helium, many-electron, or periodic-table spectral validation.",
+        ],
+        "claim_boundary": helium_sources["claim_boundary"],
+    }
+
+
 def build_atomic_claim_scope_gate(
     status: str,
     avg_error_ppm: float,
@@ -599,6 +628,7 @@ def build_atomic_claim_scope_gate(
     hydrogen_level_energy_benchmark: dict,
     hydrogen_like_checkpoint: dict,
     precision_spectroscopy_gate: dict,
+    helium_many_electron_gate: dict,
     source_evidence_readiness_matrix: dict,
     branch_claim_gate: dict,
 ) -> dict:
@@ -610,7 +640,7 @@ def build_atomic_claim_scope_gate(
         "controller_reason": (
             "The hydrogen Rydberg benchmark, rounded hydrogen level-energy benchmark, and selected hydrogen-like ion rows are gated, "
             "but export remains warning-gated because direct level-table precision, direct Li III ASD capture, broader ion coverage, "
-            "precision correction models, neutral helium, many-electron, and first-principles derivation branches are missing."
+            "precision correction models, many-electron residual models, and first-principles derivation branches are missing."
             if status == "PASS"
             else "The hydrogen Rydberg benchmark failed the declared residual thresholds."
         ),
@@ -665,6 +695,16 @@ def build_atomic_claim_scope_gate(
                 },
                 "source_evidence_readiness": "source_package_ready_model_blocked",
             },
+            {
+                "claim": "Neutral helium visible spectral targets are organized for future many-electron artifacts.",
+                "status": helium_many_electron_gate["status"],
+                "artifact_role": "neutral helium many-electron source gate",
+                "metrics": {
+                    "source_row_count": helium_many_electron_gate["source_row_count"],
+                    "required_model_components": len(helium_many_electron_gate["required_model_components"]),
+                },
+                "source_evidence_readiness": "source_package_ready_model_blocked",
+            },
         ],
         "blocked_claims": [
             {
@@ -703,11 +743,12 @@ def build_atomic_claim_scope_gate(
             {
                 "claim": "UET validates helium, many-electron atoms, or general atomic theory.",
                 "status": "BLOCKED",
-                "blocking_reason": "Helium and many-electron scripts are not primary source-gated benchmark artifacts.",
+                "blocking_reason": "Neutral helium source rows are now packaged, but no two-electron Hamiltonian/correlation model or residual artifact is primary-gated.",
                 "next_evidence_required": [
-                    "helium source package",
-                    "many-electron benchmark suite",
+                    "two-electron Hamiltonian/correlation model",
+                    "term/transition mapping",
                     "uncertainty-aware residual thresholds",
+                    "multi-atom benchmark suite",
                 ],
             },
         ],
@@ -729,7 +770,7 @@ def build_atomic_claim_scope_gate(
             "general_hydrogen_like_ion_suite_missing",
             "precision_model_artifact_missing",
             "primary_precision_locators_incomplete",
-            "helium_many_electron_artifact_missing",
+            "helium_many_electron_model_artifact_missing",
         ],
         "claim_boundary": (
             "A PASS artifact supports only selected hydrogen Rydberg benchmark behavior with NIST/CODATA "
@@ -750,6 +791,7 @@ def run_rydberg_analysis():
     hydrogen_level_rows = load_json(HYDROGEN_LEVEL_PATH)
     ion_data = load_json(HYDROGEN_LIKE_ION_PATH)
     precision_sources = load_json(PRECISION_SPECTROSCOPY_PATH)
+    helium_sources = load_json(HELIUM_MANY_ELECTRON_PATH)
     source_evidence_intake_stub = build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = build_source_evidence_readiness_matrix()
     branch_claim_gate = build_branch_claim_gate()
@@ -806,6 +848,7 @@ def run_rydberg_analysis():
     hydrogen_level_energy_benchmark = build_hydrogen_level_energy_benchmark(hydrogen_level_rows)
     hydrogen_like_checkpoint = build_hydrogen_like_checkpoint(codata, ion_data)
     precision_spectroscopy_gate = build_precision_spectroscopy_gate(precision_sources)
+    helium_many_electron_gate = build_helium_many_electron_gate(helium_sources)
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
         avg_error_ppm,
@@ -814,6 +857,7 @@ def run_rydberg_analysis():
         hydrogen_level_energy_benchmark,
         hydrogen_like_checkpoint,
         precision_spectroscopy_gate,
+        helium_many_electron_gate,
         source_evidence_readiness_matrix,
         branch_claim_gate,
     )
@@ -862,6 +906,13 @@ def run_rydberg_analysis():
                 "status": precision_sources.get("status"),
                 "source_rows": [row["target_id"] for row in precision_sources["rows"]],
             },
+            {
+                "path": str(HELIUM_MANY_ELECTRON_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(HELIUM_MANY_ELECTRON_PATH),
+                "source": helium_sources.get("purpose"),
+                "status": helium_sources.get("status"),
+                "source_rows": [row["wavelength_nm"] for row in helium_sources["neutral_helium_lines"]],
+            },
         ],
         "formula_ids": [
             "AT20-PHOTON-TRANSITION",
@@ -873,6 +924,7 @@ def run_rydberg_analysis():
             "AT20-SPECTRUM-RESIDUAL",
             "AT20-HYDROGENIC-Z2-CHECKPOINT",
             "AT20-HYDROGEN-PRECISION-SOURCE-GATE",
+            "AT20-HELIUM-MANY-ELECTRON-SOURCE-GATE",
             "AT20-UET-ATOMIC-BRIDGE-GATE",
         ],
         "threshold": threshold,
@@ -897,6 +949,8 @@ def run_rydberg_analysis():
             "hydrogen_like_max_error_ppm": hydrogen_like_checkpoint["metrics"]["max_wavelength_error_ppm"],
             "precision_source_rows": precision_spectroscopy_gate["source_row_count"],
             "precision_required_model_components": len(precision_spectroscopy_gate["required_model_components"]),
+            "helium_source_rows": helium_many_electron_gate["source_row_count"],
+            "helium_required_model_components": len(helium_many_electron_gate["required_model_components"]),
         },
         "results": results,
         "limitations": [
@@ -906,6 +960,7 @@ def run_rydberg_analysis():
             "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
             "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark until direct Li III ASD capture and broader ion coverage are added.",
             "Precision spectroscopy rows are source-package targets only and do not validate fine structure, Lamb shift, hyperfine structure, QED, helium, or many-electron atoms.",
+            "Neutral helium rows are source-package targets only and do not validate electron correlation or many-electron spectra.",
         ],
     }
     artifact["atomic_formula_bridge_manifest"] = {
@@ -918,6 +973,7 @@ def run_rydberg_analysis():
     artifact["hydrogen_level_energy_benchmark"] = hydrogen_level_energy_benchmark
     artifact["hydrogen_like_checkpoint"] = hydrogen_like_checkpoint
     artifact["precision_spectroscopy_gate"] = precision_spectroscopy_gate
+    artifact["helium_many_electron_gate"] = helium_many_electron_gate
     artifact["source_evidence_intake_stub"] = {
         "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
         "sha256": sha256(json.dumps(source_evidence_intake_stub, sort_keys=True).encode("utf-8")).hexdigest(),
@@ -941,8 +997,9 @@ def run_rydberg_analysis():
         "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, "
         "an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, "
         "a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark, "
-        "and a precision spectroscopy source gate. It does not validate full atomic theory, fine structure, Lamb shift, "
-        "hyperfine structure, QED corrections, broad hydrogen-like ion coverage, neutral helium, or many-electron physics."
+        "a precision spectroscopy source gate, and a neutral helium source gate. It does not validate full atomic theory, "
+        "fine structure, Lamb shift, hyperfine structure, QED corrections, broad hydrogen-like ion coverage, "
+        "neutral helium residuals, or many-electron physics."
     )
     write_artifact(artifact)
     print(f"Average wavelength error: {avg_error_ppm:.2f} ppm")

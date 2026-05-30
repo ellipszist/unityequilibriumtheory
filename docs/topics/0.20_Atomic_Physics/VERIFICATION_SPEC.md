@@ -15,6 +15,7 @@ python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validat
 | `Data/03_Research/hydrogen_spectra_data.json` | Rounded hydrogen n-level working copy | SHA256 and NIST ionization-energy anchor recorded in artifact |
 | `Data/03_Research/hydrogen_like_ion_spectrum.json` | Source-referenced He+ and Li2+ one-electron ion rows | SHA256, source status, and row policy recorded in artifact |
 | `Data/03_Research/hydrogen_precision_spectroscopy_sources.json` | Precision spectroscopy targets for 1S-2S, Lamb shift, and 21 cm hyperfine | SHA256, target IDs, and model-block status recorded in artifact |
+| `Data/03_Research/helium_many_electron_sources.json` | Neutral helium source targets and many-electron model requirements | SHA256, target wavelengths, and model-block status recorded in artifact |
 | `Data/03_Research/atomic_formula_bridge_manifest.json` | Generated bridge manifest for Bohr/de Broglie/Rydberg inheritance and UET dependency roles | SHA256 recorded in artifact after generation |
 
 ## Metrics
@@ -29,6 +30,7 @@ python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validat
 - Count of formula-bridge dependency steps.
 - Hydrogen-like reduced-mass benchmark line count, average error, and maximum error.
 - Precision source row count and required model component count.
+- Neutral helium source row count and required many-electron model component count.
 
 ## Fixed Thresholds
 
@@ -60,11 +62,12 @@ The artifact must record:
 - hydrogen level-energy rows, source anchor, thresholds, residuals, and limitations
 - hydrogen-like reduced-mass benchmark rows, source status, thresholds, residuals, and limitations
 - precision spectroscopy source rows, model blockers, and required model components
+- neutral helium source rows, model blockers, and required many-electron model components
 - thresholds, metrics, per-line residuals, and limitations
 - machine-readable `atomic_claim_scope_gate.controller_status`
 
 ## Interpretation
 
-A PASS supports only a Claim Class C internal hydrogen-spectrum benchmark using the standard Rydberg relation. The formula bridge manifest supports only claim-boundary language about inherited Bohr/de Broglie/Rydberg formulas and dependency roles. The level-energy gate supports only rounded hydrogen n-level benchmark language. The hydrogen-like gate supports only provisional selected He+/Li2+ reduced-mass benchmark language. The precision spectroscopy gate is source-package only and has status `SOURCE_READY_MODEL_BLOCKED`. It does not derive `R_H` from UET first principles and does not validate broad hydrogen-like ion coverage, fine structure, Lamb shift, hyperfine/QED corrections, neutral helium, or many-electron atoms.
+A PASS supports only a Claim Class C internal hydrogen-spectrum benchmark using the standard Rydberg relation. The formula bridge manifest supports only claim-boundary language about inherited Bohr/de Broglie/Rydberg formulas and dependency roles. The level-energy gate supports only rounded hydrogen n-level benchmark language. The hydrogen-like gate supports only provisional selected He+/Li2+ reduced-mass benchmark language. The precision spectroscopy and neutral-helium/many-electron gates are source-package only and have status `SOURCE_READY_MODEL_BLOCKED`. It does not derive `R_H` from UET first principles and does not validate broad hydrogen-like ion coverage, fine structure, Lamb shift, hyperfine/QED corrections, neutral helium residuals, or many-electron atoms.
 Topic-level source-evidence and branch-claim gates further limit this topic to hydrogen-benchmark usage unless dedicated atomic artifacts are added.
-`atomic_claim_scope_gate.controller_status == WARN` is expected when the hydrogen benchmark, rounded level-energy benchmark, provisional selected ion benchmark, and precision source package are present while Rydberg derivation, direct level-table precision, direct Li III ASD capture, broad hydrogen-like ion validation, precision correction models, neutral helium, and many-electron branches remain open.
+`atomic_claim_scope_gate.controller_status == WARN` is expected when the hydrogen benchmark, rounded level-energy benchmark, provisional selected ion benchmark, precision source package, and neutral helium source package are present while Rydberg derivation, direct level-table precision, direct Li III ASD capture, broad hydrogen-like ion validation, precision correction models, and many-electron residual models remain open.

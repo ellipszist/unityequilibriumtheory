@@ -9,11 +9,12 @@
 - Hydrogen-like ion rows now support only a provisional selected He+/Li2+ reduced-mass benchmark. Li III still needs direct primary ASD capture, and the gate does not validate broad hydrogen-like ion coverage.
 - The selected He+/Li2+ ion rows use representative source wavelengths/blends; they do not resolve or validate fine-structure components.
 - Precision spectroscopy rows for 1S-2S, Lamb shift, and 21 cm hyperfine are source-package targets only. No Dirac/QED/recoil/proton-radius/hyperfine residual model is primary-gated yet.
+- Neutral helium rows are source-package targets only. No two-electron Hamiltonian, correlation treatment, term mapping, or many-electron residual model is primary-gated yet.
 - Local spectral rows may be rounded or curated; source-table transcription precision should be audited before public ppm claims.
 - Air wavelengths are present in the data but the primary metric uses vacuum wavelengths only.
 - The engine has a local rounded `R_H = 1.09677e7 m^-1`; ppm-level claims should use the CODATA working copy instead.
 - The three-body script is a coupling smoke test and does not validate atomic three-body physics.
-- Fine structure, Lamb shift, hyperfine structure, helium, and many-electron atoms are outside the current artifact.
+- Fine structure, Lamb shift, hyperfine structure, neutral-helium residual validation, and many-electron atoms are outside the current artifact.
 - Downstream core topics must inherit these limitations before using `0.20` as atomic evidence.
 - Topic-level source-evidence and branch-claim gates now make that boundary explicit: accepted evidence stops at the hydrogen Rydberg benchmark and constant-consistency branch, not full atomic-theory closure.
 - The artifact-level `atomic_claim_scope_gate` is the export controller: hydrogen benchmark

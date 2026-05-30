@@ -72,7 +72,7 @@
     {
       "name": "Helium and many-electron package",
       "priority": "medium",
-      "status_hint": "blocked_theory_branch",
+      "status_hint": "source_package_ready_model_blocked",
       "evidence_entries": [
         "helium_dataset",
         "many_electron_dataset",

@@ -59,6 +59,16 @@
         },
         "source_evidence_readiness": "source_package_ready_model_blocked",
         "status": "SOURCE_READY_MODEL_BLOCKED"
+      },
+      {
+        "artifact_role": "neutral helium many-electron source gate",
+        "claim": "Neutral helium visible spectral targets are organized for future many-electron artifacts.",
+        "metrics": {
+          "required_model_components": 7,
+          "source_row_count": 5
+        },
+        "source_evidence_readiness": "source_package_ready_model_blocked",
+        "status": "SOURCE_READY_MODEL_BLOCKED"
       }
     ],
     "blocked_claims": [
@@ -96,12 +106,13 @@
         "status": "BLOCKED"
       },
       {
-        "blocking_reason": "Helium and many-electron scripts are not primary source-gated benchmark artifacts.",
+        "blocking_reason": "Neutral helium source rows are now packaged, but no two-electron Hamiltonian/correlation model or residual artifact is primary-gated.",
         "claim": "UET validates helium, many-electron atoms, or general atomic theory.",
         "next_evidence_required": [
-          "helium source package",
-          "many-electron benchmark suite",
-          "uncertainty-aware residual thresholds"
+          "two-electron Hamiltonian/correlation model",
+          "term/transition mapping",
+          "uncertainty-aware residual thresholds",
+          "multi-atom benchmark suite"
         ],
         "status": "BLOCKED"
       }
@@ -122,7 +133,7 @@
     },
     "claim_boundary": "A PASS artifact supports only selected hydrogen Rydberg benchmark behavior with NIST/CODATA working copies plus provisional selected He+/Li2+ reduced-mass benchmark rows. It does not derive R_H, validate QED corrections, validate neutral helium or many-electron atoms, or close atomic theory.",
     "claim_class": "C_hydrogen_rydberg_benchmark_only",
-    "controller_reason": "The hydrogen Rydberg benchmark, rounded hydrogen level-energy benchmark, and selected hydrogen-like ion rows are gated, but export remains warning-gated because direct level-table precision, direct Li III ASD capture, broader ion coverage, precision correction models, neutral helium, many-electron, and first-principles derivation branches are missing.",
+    "controller_reason": "The hydrogen Rydberg benchmark, rounded hydrogen level-energy benchmark, and selected hydrogen-like ion rows are gated, but export remains warning-gated because direct level-table precision, direct Li III ASD capture, broader ion coverage, precision correction models, many-electron residual models, and first-principles derivation branches are missing.",
     "controller_status": "WARN",
     "machine_readable_next_blockers": [
       "rydberg_derivation_artifact_missing",
@@ -131,13 +142,13 @@
       "general_hydrogen_like_ion_suite_missing",
       "precision_model_artifact_missing",
       "primary_precision_locators_incomplete",
-      "helium_many_electron_artifact_missing"
+      "helium_many_electron_model_artifact_missing"
     ],
     "schema_version": "1.0",
     "source_evidence_summary": {
       "source_targets_total": 6,
-      "targets_blocked_by_pending_evidence": 1,
-      "targets_ready_for_source_review": 5
+      "targets_blocked_by_pending_evidence": 0,
+      "targets_ready_for_source_review": 6
     },
     "topic": "0.20_Atomic_Physics"
   },
@@ -156,7 +167,7 @@
   "branch_claim_gate": {
     "claim_boundary": "This gate keeps the topic at hydrogen benchmark status, not full atomic-theory closure.",
     "path": "Data/03_Research/branch_claim_gate.json",
-    "sha256": "491a2de7f57eb08c252dc86296eccc86a8a6d50c072d175344b1df3c55586c0b",
+    "sha256": "889e6b8792a96e62180e5fec8b4d60c6505196a69db5823aec8a4856a69eb6a0",
     "summary": {
       "accepted_now": 5,
       "blocked_for_strong_claims": 3,
@@ -179,9 +190,81 @@
     "AT20-SPECTRUM-RESIDUAL",
     "AT20-HYDROGENIC-Z2-CHECKPOINT",
     "AT20-HYDROGEN-PRECISION-SOURCE-GATE",
+    "AT20-HELIUM-MANY-ELECTRON-SOURCE-GATE",
     "AT20-UET-ATOMIC-BRIDGE-GATE"
   ],
-  "generated_at_utc": "2026-05-30T04:50:54.864994+00:00",
+  "generated_at_utc": "2026-05-30T08:47:21.410300+00:00",
+  "helium_many_electron_gate": {
+    "blocked_usages": [
+      "neutral helium spectrum validated",
+      "many-electron atoms solved",
+      "periodic table spectra predicted",
+      "electron-electron interaction derived by UET"
+    ],
+    "claim_boundary": "These rows prepare a neutral-helium source package only. They do not validate helium, many-electron atoms, electron correlation, or UET first-principles atomic theory.",
+    "claim_class": "source_package_only_no_many_electron_validation",
+    "limitations": [
+      "No neutral-helium wavelength residual is computed in this gate.",
+      "The package prepares many-electron source targets only.",
+      "A two-electron Hamiltonian, correlation treatment, term mapping, and uncertainty policy are required before validation.",
+      "This gate cannot be cited as neutral-helium, many-electron, or periodic-table spectral validation."
+    ],
+    "required_model_components": [
+      "two-electron Hamiltonian with electron-electron repulsion",
+      "antisymmetrized spin/spatial wavefunctions",
+      "singlet/triplet term separation",
+      "configuration interaction or comparable correlation treatment",
+      "relativistic fine-structure correction",
+      "radiative/QED correction policy",
+      "uncertainty-aware wavelength residual thresholds"
+    ],
+    "role": "neutral_helium_many_electron_source_gate",
+    "schema_version": "1.0",
+    "source": {
+      "name": "NIST Handbook of Basic Atomic Spectroscopic Data, Strong Lines of Helium",
+      "source_status": "primary_nist_handbook_table",
+      "url": "https://physics.nist.gov/PhysRefData/Handbook/Tables/heliumtable2_a.htm"
+    },
+    "source_row_count": 5,
+    "status": "SOURCE_READY_MODEL_BLOCKED",
+    "targets": [
+      {
+        "relative_intensity": 500,
+        "role": "neutral_helium_visible_near_uv_target",
+        "source_status": "primary_nist_handbook_row",
+        "species": "He I",
+        "wavelength_nm": 388.8648
+      },
+      {
+        "relative_intensity": 200,
+        "role": "neutral_helium_visible_target",
+        "source_status": "primary_nist_handbook_row",
+        "species": "He I",
+        "wavelength_nm": 447.148
+      },
+      {
+        "relative_intensity": 500,
+        "role": "neutral_helium_visible_target",
+        "source_status": "primary_nist_handbook_row",
+        "species": "He I",
+        "wavelength_nm": 587.56148
+      },
+      {
+        "relative_intensity": 200,
+        "role": "neutral_helium_visible_target",
+        "source_status": "primary_nist_handbook_row",
+        "species": "He I",
+        "wavelength_nm": 667.8151
+      },
+      {
+        "relative_intensity": 200,
+        "role": "neutral_helium_visible_near_ir_target",
+        "source_status": "primary_nist_handbook_row",
+        "species": "He I",
+        "wavelength_nm": 706.5177
+      }
+    ]
+  },
   "hydrogen_level_energy_benchmark": {
     "claim_class": "C_source_referenced_rounded_hydrogen_level_benchmark",
     "formula": "E_n = -E_ionization / n^2",
@@ -368,16 +451,30 @@
         "H-21CM-HYPERFINE"
       ],
       "status": "SOURCE_PACKAGE_READY_MODEL_BLOCKED"
+    },
+    {
+      "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/helium_many_electron_sources.json",
+      "sha256": "1c53074cb3d70824505e1d0e2fbd248fe7d519c96b5d50838cb26ab3da117d06",
+      "source": "Source-referenced neutral helium spectral targets and many-electron model requirements for the first non-hydrogenic atomic branch.",
+      "source_rows": [
+        388.8648,
+        447.148,
+        587.56148,
+        667.8151,
+        706.5177
+      ],
+      "status": "SOURCE_PACKAGE_READY_MODEL_BLOCKED"
     }
   ],
-  "interpretation": "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark, and a precision spectroscopy source gate. It does not validate full atomic theory, fine structure, Lamb shift, hyperfine structure, QED corrections, broad hydrogen-like ion coverage, neutral helium, or many-electron physics.",
+  "interpretation": "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark, a precision spectroscopy source gate, and a neutral helium source gate. It does not validate full atomic theory, fine structure, Lamb shift, hyperfine structure, QED corrections, broad hydrogen-like ion coverage, neutral helium residuals, or many-electron physics.",
   "limitations": [
     "This validates the standard Rydberg relation against the topic-local hydrogen spectrum working copy.",
     "It does not derive the Rydberg relation from UET first principles.",
     "The Bohr/de Broglie/Rydberg bridge is now explicit, but it remains inherited standard physics unless a UET derivation artifact is added.",
     "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
     "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark until direct Li III ASD capture and broader ion coverage are added.",
-    "Precision spectroscopy rows are source-package targets only and do not validate fine structure, Lamb shift, hyperfine structure, QED, helium, or many-electron atoms."
+    "Precision spectroscopy rows are source-package targets only and do not validate fine structure, Lamb shift, hyperfine structure, QED, helium, or many-electron atoms.",
+    "Neutral helium rows are source-package targets only and do not validate electron correlation or many-electron spectra."
   ],
   "metrics": {
     "R_H_codata_m_inverse": 10967758.3406,
@@ -387,6 +484,8 @@
     "blocked_claim_exports": 7,
     "fitted_slope_through_origin_m_inverse": 10967845.50226957,
     "formula_bridge_steps": 6,
+    "helium_required_model_components": 7,
+    "helium_source_rows": 5,
     "hydrogen_level_avg_error_ppm": 68.93802115979179,
     "hydrogen_level_count": 8,
     "hydrogen_level_max_error_ppm": 117.64705882364706,
@@ -398,8 +497,8 @@
     "precision_required_model_components": 6,
     "precision_source_rows": 3,
     "slope_error_ppm": 7.947081514956296,
-    "source_targets_blocked": 1,
-    "source_targets_ready_for_review": 5
+    "source_targets_blocked": 0,
+    "source_targets_ready_for_review": 6
   },
   "precision_spectroscopy_gate": {
     "claim_boundary": "This source package only prepares precision targets. It does not validate fine structure, Lamb shift, hyperfine structure, QED corrections, or UET first-principles atomic theory.",
@@ -536,7 +635,7 @@
   "source_evidence_intake_stub": {
     "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself validate full atomic theory.",
     "path": "Data/03_Research/source_evidence_intake_stub.json",
-    "sha256": "ec5b83d7851ee55c783b795ae4600e5e70bcfabe63d5b5ea88e45d6d7c7baf30",
+    "sha256": "c225838d0fc74c83add05fb8d35401c7655aa5b81b56c49dbac9899bd335a3fd",
     "source_targets": [
       "NIST hydrogen spectrum package",
       "CODATA atomic constants package",
@@ -549,11 +648,11 @@
   "source_evidence_readiness_matrix": {
     "claim_boundary": "A ready row has enough provenance structure for source review. It does not by itself upgrade atomic-theory claims.",
     "path": "Data/03_Research/source_evidence_readiness_matrix.json",
-    "sha256": "3d6a564d12f164c35da600586029a3ef6ca31e86296df75224997a3009825a81",
+    "sha256": "3c7c189e51226c43bf0102cbff37c64e0a0240016334f70c4b92c21a20ba08ca",
     "summary": {
       "source_targets_total": 6,
-      "targets_blocked_by_pending_evidence": 1,
-      "targets_ready_for_source_review": 5
+      "targets_blocked_by_pending_evidence": 0,
+      "targets_ready_for_source_review": 6
     }
   },
   "status": "PASS",
