@@ -69,6 +69,14 @@
     },
     {
       "step_id": "AT20-BRIDGE-09",
+      "relation": "lambda_21cm = c / nu_hfs",
+      "source_role": "source-locked neutral hydrogen hyperfine transition bookkeeping",
+      "uet_role": "target for future UET hyperfine Hamiltonian work; no magnetic-moment/QED/proton-structure derivation exists yet.",
+      "status": "source_locked_open_hyperfine_hamiltonian",
+      "claim_ceiling": "21 cm source and unit bookkeeping only"
+    },
+    {
+      "step_id": "AT20-BRIDGE-10",
       "relation": "many-electron Hamiltonian = one-electron terms + electron-electron repulsion + exchange/correlation + relativistic/QED corrections",
       "source_role": "standard many-electron problem framing",
       "uet_role": "open target for future UET atomic engine; no validated UET many-electron operator exists in this topic yet.",

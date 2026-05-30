@@ -94,6 +94,17 @@
         "status": "EMPIRICAL_LAMB_HANDOFF_COMPUTED_MODEL_INCOMPLETE"
       },
       {
+        "artifact_role": "21 cm hyperfine source gate",
+        "claim": "The neutral hydrogen 21 cm hyperfine target is source-locked and converted to wavelength bookkeeping for future hyperfine artifacts.",
+        "metrics": {
+          "recommended_frequency_hz": 1420405751.7680001,
+          "topic_precision_row_delta_hz": -0.7680001258850098,
+          "wavelength_cm": 21.106114054159796
+        },
+        "source_evidence_readiness": "source_package_ready_model_blocked",
+        "status": "SOURCE_READY_MODEL_BLOCKED"
+      },
+      {
         "artifact_role": "neutral helium many-electron source gate",
         "claim": "Neutral helium visible spectral targets are organized for future many-electron artifacts.",
         "metrics": {
@@ -193,9 +204,9 @@
       "0.17_Mass_Generation",
       "0.23_Unity_Scale_Link"
     ],
-    "dependency_steps": 9,
+    "dependency_steps": 10,
     "path": "Data/03_Research/atomic_formula_bridge_manifest.json",
-    "sha256": "39dbbd1fcdd07d4ea6ef06f0b3a66b9929010097e539837858cb7959d8d6ebdc"
+    "sha256": "66a0699361c3d510772a0c7bd27f6148b7dba0ae8a4f1bc89e9bee8af03d7799"
   },
   "branch_claim_gate": {
     "claim_boundary": "This gate keeps the topic at hydrogen benchmark status, not full atomic-theory closure.",
@@ -226,10 +237,11 @@
     "AT20-HYDROGEN-1S2S-RYDBERG-BASELINE",
     "AT20-HYDROGEN-1S2S-DIRAC-BASELINE",
     "AT20-HYDROGEN-1S2S-LAMB-HANDOFF",
+    "AT20-HYDROGEN-21CM-HYPERFINE-SOURCE-GATE",
     "AT20-HELIUM-MANY-ELECTRON-SOURCE-GATE",
     "AT20-UET-ATOMIC-BRIDGE-GATE"
   ],
-  "generated_at_utc": "2026-05-30T09:55:29.843915+00:00",
+  "generated_at_utc": "2026-05-30T10:04:01.599827+00:00",
   "helium_many_electron_gate": {
     "blocked_usages": [
       "neutral helium spectrum validated",
@@ -448,6 +460,52 @@
       "source_policy": "He II direct NIST handbook row; Li III secondary paper row citing NIST accepted only as provisional until direct ASD capture."
     }
   },
+  "hyperfine_21cm_gate": {
+    "claim_boundary": "This package source-locks the 21 cm target and wavelength bookkeeping only. It does not validate the hyperfine Hamiltonian, QED corrections, proton-structure effects, or UET first-principles atomic theory.",
+    "claim_class": "source_locked_hyperfine_target_no_hamiltonian_validation",
+    "derived_bookkeeping": {
+      "wavelength_cm": 21.106114054159796,
+      "wavelength_m": 0.21106114054159797
+    },
+    "formula": "lambda_21cm = c / nu_hfs",
+    "formula_id": "AT20-HYDROGEN-21CM-HYPERFINE-SOURCE-GATE",
+    "limitations": [
+      "This gate source-locks the 21 cm target and computes wavelength bookkeeping only.",
+      "It does not compute the Fermi-contact hyperfine Hamiltonian or magnetic-moment terms.",
+      "It does not validate QED, recoil, finite-proton-structure, or UET first-principles hyperfine corrections."
+    ],
+    "metrology_cross_check": {
+      "delta_vs_recommended_hz": 0.0074999332427978516,
+      "source_type": "nasa_technical_report_record",
+      "uncertainty_hz": 0.0031,
+      "url": "https://ntrs.nasa.gov/citations/19720019899",
+      "value_hz": 1420405751.7755
+    },
+    "recommended_frequency": {
+      "source_type": "nist_critical_compilation_pdf",
+      "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=842564",
+      "value_hz": 1420405751.7680001,
+      "value_mhz": 1420.405751768
+    },
+    "required_to_close_hyperfine": [
+      "Fermi-contact hyperfine Hamiltonian",
+      "electron and proton magnetic moment convention audit",
+      "proton g-factor and mass-ratio source package",
+      "reduced-mass and recoil corrections",
+      "radiative/QED corrections",
+      "finite proton structure contribution",
+      "uncertainty propagation and residual threshold"
+    ],
+    "role": "hydrogen_21cm_hyperfine_source_gate",
+    "schema_version": "1.0",
+    "source_status": "SOURCE_PACKAGE_READY_MODEL_BLOCKED",
+    "status": "SOURCE_READY_MODEL_BLOCKED",
+    "topic_precision_row_delta": {
+      "delta_hz": -0.7680001258850098,
+      "existing_precision_row_hz": 1420405751.0,
+      "recommended_hz": 1420405751.7680001
+    }
+  },
   "inputs": [
     {
       "doi": "10.18434/T4W30F",
@@ -497,6 +555,16 @@
         "H-2S-LAMB-SHIFT"
       ],
       "status": "SOURCE_PACKAGE_READY_EMPIRICAL_HANDOFF_MODEL_BLOCKED"
+    },
+    {
+      "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/hydrogen_hyperfine_21cm_sources.json",
+      "sha256": "0d0e59fa85646d2a3f70b0824befff7cde8faf3776e62d43a7557a95bc1862be",
+      "source": "Source-referenced neutral hydrogen ground-state hyperfine 21 cm transition target for future hyperfine Hamiltonian artifacts.",
+      "source_rows": [
+        "H-21CM-HYPERFINE-REFERENCE",
+        "H-21CM-HYPERFINE-MASER-CLOCK"
+      ],
+      "status": "SOURCE_PACKAGE_READY_MODEL_BLOCKED"
     },
     {
       "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/helium_many_electron_sources.json",
@@ -577,7 +645,7 @@
     "The Bohr/de Broglie/Rydberg bridge is now explicit, but it remains inherited standard physics unless a UET derivation artifact is added.",
     "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
     "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark until direct Li III ASD capture and broader ion coverage are added.",
-    "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines are residual diagnostics only and do not validate hyperfine structure, QED, helium, or many-electron atoms.",
+    "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines plus 21 cm source gate are diagnostics only and do not validate hyperfine Hamiltonian structure, QED, helium, or many-electron atoms.",
     "Neutral helium rows are source-package targets only and do not validate electron correlation or many-electron spectra."
   ],
   "metrics": {
@@ -587,7 +655,7 @@
     "average_wavelength_error_ppm": 7.504133013735595,
     "blocked_claim_exports": 7,
     "fitted_slope_through_origin_m_inverse": 10967845.50226957,
-    "formula_bridge_steps": 9,
+    "formula_bridge_steps": 10,
     "helium_required_model_components": 7,
     "helium_source_rows": 5,
     "hydrogen_level_avg_error_ppm": 68.93802115979179,
@@ -596,6 +664,9 @@
     "hydrogen_like_avg_error_ppm": 76.32002589027381,
     "hydrogen_like_checkpoint_predictions": 2,
     "hydrogen_like_max_error_ppm": 96.9208106356392,
+    "hyperfine_21cm_reference_hz": 1420405751.7680001,
+    "hyperfine_21cm_topic_row_delta_hz": -0.7680001258850098,
+    "hyperfine_21cm_wavelength_cm": 21.106114054159796,
     "line_count": 7,
     "max_wavelength_error_ppm": 12.500832386280821,
     "precision_1s2s_baseline_residual_hz": 22989428178.5,

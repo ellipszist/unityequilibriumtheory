@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.20_Atomic_Physics",
+  "purpose": "Source-referenced neutral hydrogen ground-state hyperfine 21 cm transition target for future hyperfine Hamiltonian artifacts.",
+  "status": "SOURCE_PACKAGE_READY_MODEL_BLOCKED",
+  "recommended_transition": {
+    "target_id": "H-21CM-HYPERFINE-REFERENCE",
+    "observable": "Neutral hydrogen ground-state hyperfine transition frequency",
+    "value": 1420.405751768,
+    "unit": "MHz",
+    "source": "A critical compilation of experimental data on spectral lines and energy levels of hydrogen, deuterium, and tritium",
+    "source_type": "nist_critical_compilation_pdf",
+    "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=842564",
+    "source_note": "Compilation recommends the final value 1420.405751768 MHz for the hydrogen ground-state hyperfine transition.",
+    "model_role": "hyperfine_transition_reference_target",
+    "current_artifact_status": "source_ready_model_blocked"
+  },
+  "metrology_cross_check": {
+    "target_id": "H-21CM-HYPERFINE-MASER-CLOCK",
+    "observable": "Unperturbed atomic hydrogen ground-state hyperfine transition frequency",
+    "value": 1420405751.7755,
+    "uncertainty": 0.0031,
+    "unit": "Hz",
+    "source": "Absolute frequency of an atomic hydrogen maser clock",
+    "source_type": "nasa_technical_report_record",
+    "url": "https://ntrs.nasa.gov/citations/19720019899",
+    "model_role": "metrology_cross_check",
+    "current_artifact_status": "source_ready_model_blocked"
+  },
+  "handoff_rule": {
+    "formula": "lambda_21cm = c / nu_hfs",
+    "unit": "m",
+    "interpretation": "Compute wavelength and source-row deltas only. This is not a hyperfine Hamiltonian calculation."
+  },
+  "required_model_components": [
+    "Fermi-contact hyperfine Hamiltonian",
+    "electron and proton magnetic moment convention audit",
+    "proton g-factor and mass-ratio source package",
+    "reduced-mass and recoil corrections",
+    "radiative/QED corrections",
+    "finite proton structure contribution",
+    "uncertainty propagation and residual threshold"
+  ],
+  "claim_boundary": "This package source-locks the 21 cm target and wavelength bookkeeping only. It does not validate the hyperfine Hamiltonian, QED corrections, proton-structure effects, or UET first-principles atomic theory."
+}
