@@ -45,6 +45,14 @@
     },
     {
       "step_id": "AT20-BRIDGE-06",
+      "relation": "nu_1S_2S = c R_H (1 - 1/4) + Delta nu_precision",
+      "source_role": "standard nonrelativistic 1S-2S baseline plus missing precision corrections",
+      "uet_role": "diagnostic gap sizing only; UET-specific Dirac/QED/recoil/proton-radius correction derivation remains blocked.",
+      "status": "baseline_computed_open_precision_model",
+      "claim_ceiling": "nonrelativistic precision-target residual diagnostic"
+    },
+    {
+      "step_id": "AT20-BRIDGE-07",
       "relation": "many-electron Hamiltonian = one-electron terms + electron-electron repulsion + exchange/correlation + relativistic/QED corrections",
       "source_role": "standard many-electron problem framing",
       "uet_role": "open target for future UET atomic engine; no validated UET many-electron operator exists in this topic yet.",

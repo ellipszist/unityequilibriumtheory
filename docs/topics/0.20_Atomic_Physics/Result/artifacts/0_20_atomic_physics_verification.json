@@ -61,6 +61,17 @@
         "status": "SOURCE_READY_MODEL_BLOCKED"
       },
       {
+        "artifact_role": "precision baseline residual gate",
+        "claim": "The nonrelativistic Rydberg baseline for the hydrogen 1S-2S precision target is computed as a residual diagnostic.",
+        "metrics": {
+          "absolute_residual_hz": 22989428178.5,
+          "residual_ppm": 9.322325898116794,
+          "target_id": "H-1S-2S-CENTROID"
+        },
+        "source_evidence_readiness": "source_ready_model_incomplete",
+        "status": "BASELINE_COMPUTED_MODEL_INCOMPLETE"
+      },
+      {
         "artifact_role": "neutral helium many-electron source gate",
         "claim": "Neutral helium visible spectral targets are organized for future many-electron artifacts.",
         "metrics": {
@@ -94,7 +105,7 @@
         "status": "BLOCKED"
       },
       {
-        "blocking_reason": "Precision targets are now source-packaged, but no Dirac/QED/recoil/proton-radius/hyperfine model or residual artifact is primary-gated.",
+        "blocking_reason": "Precision targets are source-packaged and a nonrelativistic 1S-2S baseline residual is computed, but no Dirac/QED/recoil/proton-radius/hyperfine correction model is primary-gated.",
         "claim": "UET validates fine structure, Lamb shift, hyperfine structure, or QED corrections.",
         "next_evidence_required": [
           "primary locators for secondary precision rows",
@@ -160,9 +171,9 @@
       "0.17_Mass_Generation",
       "0.23_Unity_Scale_Link"
     ],
-    "dependency_steps": 6,
+    "dependency_steps": 7,
     "path": "Data/03_Research/atomic_formula_bridge_manifest.json",
-    "sha256": "738e3164659be22d8723eb2f08151d2ec8acbbb8742826d07367a706c59b0358"
+    "sha256": "a8d1a0def61174bf0fdb03fd172bb51185fd1d948ed0734f142cf40edf72edb6"
   },
   "branch_claim_gate": {
     "claim_boundary": "This gate keeps the topic at hydrogen benchmark status, not full atomic-theory closure.",
@@ -190,10 +201,11 @@
     "AT20-SPECTRUM-RESIDUAL",
     "AT20-HYDROGENIC-Z2-CHECKPOINT",
     "AT20-HYDROGEN-PRECISION-SOURCE-GATE",
+    "AT20-HYDROGEN-1S2S-RYDBERG-BASELINE",
     "AT20-HELIUM-MANY-ELECTRON-SOURCE-GATE",
     "AT20-UET-ATOMIC-BRIDGE-GATE"
   ],
-  "generated_at_utc": "2026-05-30T08:47:21.410300+00:00",
+  "generated_at_utc": "2026-05-30T09:45:35.047297+00:00",
   "helium_many_electron_gate": {
     "blocked_usages": [
       "neutral helium spectrum validated",
@@ -473,7 +485,7 @@
     "The Bohr/de Broglie/Rydberg bridge is now explicit, but it remains inherited standard physics unless a UET derivation artifact is added.",
     "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
     "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark until direct Li III ASD capture and broader ion coverage are added.",
-    "Precision spectroscopy rows are source-package targets only and do not validate fine structure, Lamb shift, hyperfine structure, QED, helium, or many-electron atoms.",
+    "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic baseline is a residual diagnostic only and does not validate fine structure, Lamb shift, hyperfine structure, QED, helium, or many-electron atoms.",
     "Neutral helium rows are source-package targets only and do not validate electron correlation or many-electron spectra."
   ],
   "metrics": {
@@ -483,7 +495,7 @@
     "average_wavelength_error_ppm": 7.504133013735595,
     "blocked_claim_exports": 7,
     "fitted_slope_through_origin_m_inverse": 10967845.50226957,
-    "formula_bridge_steps": 6,
+    "formula_bridge_steps": 7,
     "helium_required_model_components": 7,
     "helium_source_rows": 5,
     "hydrogen_level_avg_error_ppm": 68.93802115979179,
@@ -494,11 +506,53 @@
     "hydrogen_like_max_error_ppm": 96.9208106356392,
     "line_count": 7,
     "max_wavelength_error_ppm": 12.500832386280821,
+    "precision_1s2s_baseline_residual_hz": 22989428178.5,
+    "precision_1s2s_baseline_residual_ppm": 9.322325898116794,
     "precision_required_model_components": 6,
     "precision_source_rows": 3,
     "slope_error_ppm": 7.947081514956296,
     "source_targets_blocked": 0,
     "source_targets_ready_for_review": 6
+  },
+  "precision_baseline_gate": {
+    "claim_class": "nonrelativistic_baseline_only_no_precision_validation",
+    "constants": {
+      "R_H_m_inverse": 10967758.3406,
+      "speed_of_light_m_per_s": 299792458.0
+    },
+    "formula": "nu_1S_2S = c * R_H * (1 - 1/4)",
+    "formula_id": "AT20-HYDROGEN-1S2S-RYDBERG-BASELINE",
+    "limitations": [
+      "This computes only the standard nonrelativistic Rydberg baseline for the 1S-2S centroid.",
+      "The residual is expected to remain open because precision corrections are intentionally excluded.",
+      "This gate cannot be cited as fine-structure, Lamb-shift, hyperfine, QED, or UET first-principles validation."
+    ],
+    "observed": {
+      "doi": "10.1103/PhysRevLett.107.203001",
+      "source_type": "peer_reviewed_measurement_preprint_record",
+      "uncertainty_hz": 10.0,
+      "url": "https://arxiv.org/abs/1107.3101",
+      "value_hz": 2466061413187035.0
+    },
+    "prediction": {
+      "absolute_residual_hz": 22989428178.5,
+      "nonrelativistic_rydberg_baseline_hz": 2466038423758856.5,
+      "residual_hz": -22989428178.5,
+      "residual_ppm": 9.322325898116794,
+      "sigma_offset_vs_measurement_uncertainty": 2298942817.85
+    },
+    "required_to_close_precision": [
+      "Dirac fine-structure expansion for level energies",
+      "reduced-mass and recoil correction convention audit",
+      "radiative/QED Lamb-shift contribution",
+      "finite proton-size contribution",
+      "uncertainty propagation and residual threshold",
+      "independent source locators for all precision rows"
+    ],
+    "role": "hydrogen_precision_nonrelativistic_baseline_gate",
+    "schema_version": "1.0",
+    "status": "BASELINE_COMPUTED_MODEL_INCOMPLETE",
+    "target_id": "H-1S-2S-CENTROID"
   },
   "precision_spectroscopy_gate": {
     "claim_boundary": "This source package only prepares precision targets. It does not validate fine structure, Lamb shift, hyperfine structure, QED corrections, or UET first-principles atomic theory.",
