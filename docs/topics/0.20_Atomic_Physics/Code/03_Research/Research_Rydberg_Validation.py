@@ -1016,6 +1016,8 @@ def build_helium_transition_assignment_gap_gate(helium_sources: dict, helium_ass
                 "upper_j": assignment["upper_j"],
                 "source_locator": assignment["source_locator"],
             }
+            if "component_policy" in assignment:
+                assignment_payload["component_policy"] = assignment["component_policy"]
         else:
             transition_assignment_status = "missing_term_labels_and_upper_lower_states"
             assignment_payload = {
@@ -1149,6 +1151,138 @@ def build_helium_medium_normalization_gate(helium_transition_assignment_gap_gate
     }
 
 
+def _term_multiplicity(term: str) -> str | None:
+    match = re.match(r"(\d+)", term)
+    return match.group(1) if match else None
+
+
+def _term_has_odd_parity(term: str) -> bool:
+    return "*" in term
+
+
+def _e1_selection_status(lower_term: str, lower_j: int, upper_term: str, upper_j: int) -> str:
+    same_spin = _term_multiplicity(lower_term) == _term_multiplicity(upper_term)
+    parity_changes = _term_has_odd_parity(lower_term) != _term_has_odd_parity(upper_term)
+    delta_j = abs(upper_j - lower_j)
+    allowed_delta_j = delta_j <= 1 and not (lower_j == 0 and upper_j == 0)
+    return "E1_ALLOWED_BY_TERM_POLICY" if same_spin and parity_changes and allowed_delta_j else "REVIEW_REQUIRED"
+
+
+def build_helium_line_component_policy_gate(helium_transition_assignment_gap_gate: dict) -> dict:
+    policy_rows = []
+    total_components = 0
+    allowed_components = 0
+    blend_rows = 0
+    for row in helium_transition_assignment_gap_gate["targets"]:
+        assignment = row["assignment"]
+        if "lower_term" not in assignment:
+            policy_rows.append(
+                {
+                    "species": row["species"],
+                    "source_wavelength_nm": row["wavelength_nm"],
+                    "policy_status": "MISSING_ASSIGNMENT",
+                    "component_count": 0,
+                }
+            )
+            continue
+        component_policy = assignment.get("component_policy")
+        if component_policy:
+            components = component_policy["components"]
+            line_structure = component_policy["line_structure"]
+            representative_component_rule = component_policy["representative_component_rule"]
+            blend_rows += 1
+        else:
+            components = [
+                {
+                    "lower_j": assignment["lower_j"],
+                    "upper_j": assignment["upper_j"],
+                    "lower_energy_cm_inverse": assignment["lower_energy_cm_inverse"],
+                    "upper_energy_cm_inverse": assignment["upper_energy_cm_inverse"],
+                    "aki_s_inverse": None,
+                    "ritz_air_wavelength_angstrom": None,
+                }
+            ]
+            line_structure = "single_component_source_row"
+            representative_component_rule = "source row is treated as a single selected component"
+        component_checks = []
+        for component in components:
+            status = _e1_selection_status(
+                assignment["lower_term"],
+                int(component["lower_j"]),
+                assignment["upper_term"],
+                int(component["upper_j"]),
+            )
+            total_components += 1
+            if status == "E1_ALLOWED_BY_TERM_POLICY":
+                allowed_components += 1
+            component_checks.append(
+                {
+                    "lower_j": component["lower_j"],
+                    "upper_j": component["upper_j"],
+                    "delta_j": abs(int(component["upper_j"]) - int(component["lower_j"])),
+                    "selection_status": status,
+                    "aki_s_inverse": component.get("aki_s_inverse"),
+                    "ritz_air_wavelength_angstrom": component.get("ritz_air_wavelength_angstrom"),
+                }
+            )
+        row_status = (
+            "SOURCE_COMPONENT_POLICY_READY"
+            if all(component["selection_status"] == "E1_ALLOWED_BY_TERM_POLICY" for component in component_checks)
+            else "COMPONENT_POLICY_REVIEW_REQUIRED"
+        )
+        policy_rows.append(
+            {
+                "species": row["species"],
+                "source_wavelength_nm": row["wavelength_nm"],
+                "line_structure": line_structure,
+                "representative_component_rule": representative_component_rule,
+                "lower_term": assignment["lower_term"],
+                "upper_term": assignment["upper_term"],
+                "spin_policy": "same_multiplicity_required_for_this_E1_source_policy",
+                "parity_policy": "odd/even parity change required for this E1 source policy",
+                "component_count": len(components),
+                "policy_status": row_status,
+                "component_checks": component_checks,
+                "source_locator": assignment["source_locator"],
+            }
+        )
+    rows_ready = sum(1 for row in policy_rows if row["policy_status"] == "SOURCE_COMPONENT_POLICY_READY")
+    status = (
+        "SOURCE_COMPONENT_POLICY_READY_MODEL_BLOCKED"
+        if rows_ready == helium_transition_assignment_gap_gate["metrics"]["source_row_count"]
+        else "COMPONENT_POLICY_REVIEW_REQUIRED"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "neutral_helium_line_component_policy_gate",
+        "status": status,
+        "claim_class": "source_line_component_policy_only_no_helium_validation",
+        "formula_id": "AT20-HELIUM-LINE-COMPONENT-POLICY-GAP",
+        "selection_rule_policy": "E1 source-policy check: same spin multiplicity, parity change, and Delta J in {0,1} excluding 0->0.",
+        "metrics": {
+            "source_row_count": helium_transition_assignment_gap_gate["metrics"]["source_row_count"],
+            "rows_with_component_policy": rows_ready,
+            "rows_missing_component_policy": helium_transition_assignment_gap_gate["metrics"]["source_row_count"] - rows_ready,
+            "blend_rows": blend_rows,
+            "total_components_checked": total_components,
+            "e1_allowed_components": allowed_components,
+            "component_policy_review_required": total_components - allowed_components,
+        },
+        "targets": policy_rows,
+        "blocked_residual_model_requirements": [
+            "two-electron Hamiltonian/correlation model",
+            "uncertainty propagation and residual thresholds",
+            "resolved line-shape or intensity-weighted blend model for precision residuals",
+        ],
+        "limitations": [
+            "This gate checks source line-component bookkeeping and basic E1 selection-rule consistency only.",
+            "It does not calculate transition amplitudes, oscillator strengths, or helium energy levels from a Hamiltonian.",
+            "Blend policy is sufficient for source bookkeeping, not for precision line-shape validation.",
+        ],
+        "claim_boundary": "This gate supports line-component source policy for selected He I rows only. It does not validate neutral-helium spectral prediction, electron correlation, or UET first-principles atomic theory.",
+    }
+
+
 def build_atomic_claim_scope_gate(
     status: str,
     avg_error_ppm: float,
@@ -1165,6 +1299,7 @@ def build_atomic_claim_scope_gate(
     helium_many_electron_gate: dict,
     helium_transition_assignment_gap_gate: dict,
     helium_medium_normalization_gate: dict,
+    helium_line_component_policy_gate: dict,
     source_evidence_readiness_matrix: dict,
     branch_claim_gate: dict,
 ) -> dict:
@@ -1310,6 +1445,13 @@ def build_atomic_claim_scope_gate(
                 "metrics": helium_medium_normalization_gate["metrics"],
                 "source_evidence_readiness": "source_medium_normalization_ready_model_blocked",
             },
+            {
+                "claim": "Neutral helium line-component and blend policy is source-packaged for selected rows, but residual modeling remains blocker-gated.",
+                "status": helium_line_component_policy_gate["status"],
+                "artifact_role": "neutral helium line-component policy gate",
+                "metrics": helium_line_component_policy_gate["metrics"],
+                "source_evidence_readiness": "source_component_policy_ready_model_blocked",
+            },
         ],
         "blocked_claims": [
             {
@@ -1348,10 +1490,9 @@ def build_atomic_claim_scope_gate(
             {
                 "claim": "UET validates helium, many-electron atoms, or general atomic theory.",
                 "status": "BLOCKED",
-                "blocking_reason": "Neutral helium source rows, photon energies, term assignments, and wavelength-medium normalization are now packaged, but a two-electron Hamiltonian/correlation residual artifact is still missing.",
+                "blocking_reason": "Neutral helium source rows, photon energies, term assignments, wavelength-medium normalization, and line-component/blend policy are now packaged, but a two-electron Hamiltonian/correlation residual artifact is still missing.",
                 "next_evidence_required": [
                     "two-electron Hamiltonian/correlation model",
-                    "term/transition mapping",
                     "uncertainty-aware residual thresholds",
                     "multi-atom benchmark suite",
                 ],
@@ -1471,6 +1612,9 @@ def run_rydberg_analysis():
     helium_medium_normalization_gate = build_helium_medium_normalization_gate(
         helium_transition_assignment_gap_gate
     )
+    helium_line_component_policy_gate = build_helium_line_component_policy_gate(
+        helium_transition_assignment_gap_gate
+    )
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
         avg_error_ppm,
@@ -1487,6 +1631,7 @@ def run_rydberg_analysis():
         helium_many_electron_gate,
         helium_transition_assignment_gap_gate,
         helium_medium_normalization_gate,
+        helium_line_component_policy_gate,
         source_evidence_readiness_matrix,
         branch_claim_gate,
     )
@@ -1592,6 +1737,7 @@ def run_rydberg_analysis():
             "AT20-HELIUM-MANY-ELECTRON-SOURCE-GATE",
             "AT20-HELIUM-PHOTON-ENERGY-GAP",
             "AT20-HELIUM-MEDIUM-NORMALIZATION-GAP",
+            "AT20-HELIUM-LINE-COMPONENT-POLICY-GAP",
             "AT20-UET-ATOMIC-BRIDGE-GATE",
         ],
         "threshold": threshold,
@@ -1637,6 +1783,10 @@ def run_rydberg_analysis():
             "helium_medium_rows_missing_normalization": helium_medium_normalization_gate["metrics"]["rows_missing_normalization"],
             "helium_air_to_vacuum_factor_min": helium_medium_normalization_gate["metrics"]["min_air_to_vacuum_factor"],
             "helium_air_to_vacuum_factor_max": helium_medium_normalization_gate["metrics"]["max_air_to_vacuum_factor"],
+            "helium_component_policy_rows": helium_line_component_policy_gate["metrics"]["rows_with_component_policy"],
+            "helium_blend_rows": helium_line_component_policy_gate["metrics"]["blend_rows"],
+            "helium_components_checked": helium_line_component_policy_gate["metrics"]["total_components_checked"],
+            "helium_e1_allowed_components": helium_line_component_policy_gate["metrics"]["e1_allowed_components"],
         },
         "results": results,
         "limitations": [
@@ -1646,7 +1796,7 @@ def run_rydberg_analysis():
             "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
             "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark; C VI is a higher-Z stress test until fine/QED policy and broader ion coverage are added.",
             "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines plus 21 cm source/Fermi gates are diagnostics only and do not validate hyperfine Hamiltonian closure, QED, helium, or many-electron atoms.",
-            "Neutral helium rows have photon energies, term assignments, and wavelength-medium normalization computed but still do not validate electron correlation or many-electron spectra.",
+            "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, and line-component policy computed but still do not validate electron correlation or many-electron spectra.",
         ],
     }
     artifact["atomic_formula_bridge_manifest"] = {
@@ -1667,6 +1817,7 @@ def run_rydberg_analysis():
     artifact["helium_many_electron_gate"] = helium_many_electron_gate
     artifact["helium_transition_assignment_gap_gate"] = helium_transition_assignment_gap_gate
     artifact["helium_medium_normalization_gate"] = helium_medium_normalization_gate
+    artifact["helium_line_component_policy_gate"] = helium_line_component_policy_gate
     artifact["source_evidence_intake_stub"] = {
         "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
         "sha256": sha256(json.dumps(source_evidence_intake_stub, sort_keys=True).encode("utf-8")).hexdigest(),
@@ -1690,7 +1841,7 @@ def run_rydberg_analysis():
         "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, "
         "an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, "
         "a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark plus C VI stress-test lane, "
-        "a precision spectroscopy source gate, and a neutral helium source/assignment/medium-normalization gate. It does not validate full atomic theory, "
+        "a precision spectroscopy source gate, and a neutral helium source/assignment/medium-normalization/component-policy gate. It does not validate full atomic theory, "
         "fine structure, Lamb shift, hyperfine structure, QED corrections, broad hydrogen-like ion coverage, "
         "neutral helium residuals, or many-electron physics."
     )

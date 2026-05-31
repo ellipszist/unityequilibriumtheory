@@ -42,6 +42,7 @@ python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validat
 - Neutral helium photon-energy range and count of rows missing transition assignments.
 - Neutral helium assigned-row count and remaining missing assignment count.
 - Neutral helium air/vacuum medium-normalized row count, missing-normalization count, and derived factor range.
+- Neutral helium line-component policy row count, blend row count, component count, and E1 source-policy pass count.
 
 ## Fixed Thresholds
 
@@ -79,11 +80,12 @@ The artifact must record:
 - neutral helium source rows, model blockers, and required many-electron model components
 - neutral helium photon-energy rows and transition-assignment blocker status
 - neutral helium wavelength-medium normalization rows and residual-model blocker status
+- neutral helium line-component/blend policy rows and residual-model blocker status
 - thresholds, metrics, per-line residuals, and limitations
 - machine-readable `atomic_claim_scope_gate.controller_status`
 
 ## Interpretation
 
-A PASS supports only a Claim Class C internal hydrogen-spectrum benchmark using the standard Rydberg relation. The formula bridge manifest supports only claim-boundary language about inherited Bohr/de Broglie/Rydberg formulas and dependency roles. The level-energy gate supports only rounded hydrogen n-level benchmark language. The hydrogen-like gate supports only provisional selected He+/Li2+ reduced-mass benchmark language; C VI is a higher-Z stress-test lane and does not count as broad ion validation. The precision spectroscopy and neutral-helium/many-electron gates are source-package only; the 1S-2S baseline gates are nonrelativistic, leading Dirac, and empirical Lamb-handoff residual diagnostics, while the 21 cm gates are source/wavelength bookkeeping and leading Fermi-contact residual diagnostics. Neutral helium photon energies, term assignments, and wavelength-medium normalization are source bookkeeping only; residual modeling remains blocked. It does not derive `R_H` from UET first principles and does not validate broad hydrogen-like ion coverage, first-principles QED, recoil/proton-size corrections, hyperfine Hamiltonian closure, neutral helium residuals, or many-electron atoms.
+A PASS supports only a Claim Class C internal hydrogen-spectrum benchmark using the standard Rydberg relation. The formula bridge manifest supports only claim-boundary language about inherited Bohr/de Broglie/Rydberg formulas and dependency roles. The level-energy gate supports only rounded hydrogen n-level benchmark language. The hydrogen-like gate supports only provisional selected He+/Li2+ reduced-mass benchmark language; C VI is a higher-Z stress-test lane and does not count as broad ion validation. The precision spectroscopy and neutral-helium/many-electron gates are source-package only; the 1S-2S baseline gates are nonrelativistic, leading Dirac, and empirical Lamb-handoff residual diagnostics, while the 21 cm gates are source/wavelength bookkeeping and leading Fermi-contact residual diagnostics. Neutral helium photon energies, term assignments, wavelength-medium normalization, and component policy are source bookkeeping only; residual modeling remains blocked. It does not derive `R_H` from UET first principles and does not validate broad hydrogen-like ion coverage, first-principles QED, recoil/proton-size corrections, hyperfine Hamiltonian closure, neutral helium residuals, or many-electron atoms.
 Topic-level source-evidence and branch-claim gates further limit this topic to hydrogen-benchmark usage unless dedicated atomic artifacts are added.
 `atomic_claim_scope_gate.controller_status == WARN` is expected when the hydrogen benchmark, rounded level-energy benchmark, provisional selected ion benchmark, precision source package, nonrelativistic/Dirac/Lamb-handoff 1S-2S diagnostics, 21 cm source bookkeeping, and neutral helium source package are present while Rydberg derivation, direct level-table precision, direct Li III ASD capture, broad hydrogen-like ion validation, first-principles QED/recoil/proton-size/hyperfine correction models, and many-electron residual models remain open.

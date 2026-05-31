@@ -158,6 +158,21 @@
         },
         "source_evidence_readiness": "source_medium_normalization_ready_model_blocked",
         "status": "SOURCE_MEDIUM_NORMALIZATION_READY_MODEL_BLOCKED"
+      },
+      {
+        "artifact_role": "neutral helium line-component policy gate",
+        "claim": "Neutral helium line-component and blend policy is source-packaged for selected rows, but residual modeling remains blocker-gated.",
+        "metrics": {
+          "blend_rows": 1,
+          "component_policy_review_required": 0,
+          "e1_allowed_components": 10,
+          "rows_missing_component_policy": 0,
+          "rows_with_component_policy": 5,
+          "source_row_count": 5,
+          "total_components_checked": 10
+        },
+        "source_evidence_readiness": "source_component_policy_ready_model_blocked",
+        "status": "SOURCE_COMPONENT_POLICY_READY_MODEL_BLOCKED"
       }
     ],
     "blocked_claims": [
@@ -195,11 +210,10 @@
         "status": "BLOCKED"
       },
       {
-        "blocking_reason": "Neutral helium source rows, photon energies, term assignments, and wavelength-medium normalization are now packaged, but a two-electron Hamiltonian/correlation residual artifact is still missing.",
+        "blocking_reason": "Neutral helium source rows, photon energies, term assignments, wavelength-medium normalization, and line-component/blend policy are now packaged, but a two-electron Hamiltonian/correlation residual artifact is still missing.",
         "claim": "UET validates helium, many-electron atoms, or general atomic theory.",
         "next_evidence_required": [
           "two-electron Hamiltonian/correlation model",
-          "term/transition mapping",
           "uncertainty-aware residual thresholds",
           "multi-atom benchmark suite"
         ],
@@ -287,9 +301,195 @@
     "AT20-HELIUM-MANY-ELECTRON-SOURCE-GATE",
     "AT20-HELIUM-PHOTON-ENERGY-GAP",
     "AT20-HELIUM-MEDIUM-NORMALIZATION-GAP",
+    "AT20-HELIUM-LINE-COMPONENT-POLICY-GAP",
     "AT20-UET-ATOMIC-BRIDGE-GATE"
   ],
-  "generated_at_utc": "2026-05-31T19:40:03.790891+00:00",
+  "generated_at_utc": "2026-05-31T19:44:02.517177+00:00",
+  "helium_line_component_policy_gate": {
+    "blocked_residual_model_requirements": [
+      "two-electron Hamiltonian/correlation model",
+      "uncertainty propagation and residual thresholds",
+      "resolved line-shape or intensity-weighted blend model for precision residuals"
+    ],
+    "claim_boundary": "This gate supports line-component source policy for selected He I rows only. It does not validate neutral-helium spectral prediction, electron correlation, or UET first-principles atomic theory.",
+    "claim_class": "source_line_component_policy_only_no_helium_validation",
+    "formula_id": "AT20-HELIUM-LINE-COMPONENT-POLICY-GAP",
+    "limitations": [
+      "This gate checks source line-component bookkeeping and basic E1 selection-rule consistency only.",
+      "It does not calculate transition amplitudes, oscillator strengths, or helium energy levels from a Hamiltonian.",
+      "Blend policy is sufficient for source bookkeeping, not for precision line-shape validation."
+    ],
+    "metrics": {
+      "blend_rows": 1,
+      "component_policy_review_required": 0,
+      "e1_allowed_components": 10,
+      "rows_missing_component_policy": 0,
+      "rows_with_component_policy": 5,
+      "source_row_count": 5,
+      "total_components_checked": 10
+    },
+    "role": "neutral_helium_line_component_policy_gate",
+    "schema_version": "1.0",
+    "selection_rule_policy": "E1 source-policy check: same spin multiplicity, parity change, and Delta J in {0,1} excluding 0->0.",
+    "status": "SOURCE_COMPONENT_POLICY_READY_MODEL_BLOCKED",
+    "targets": [
+      {
+        "component_checks": [
+          {
+            "aki_s_inverse": null,
+            "delta_j": 1,
+            "lower_j": 1,
+            "ritz_air_wavelength_angstrom": null,
+            "selection_status": "E1_ALLOWED_BY_TERM_POLICY",
+            "upper_j": 2
+          }
+        ],
+        "component_count": 1,
+        "line_structure": "single_component_source_row",
+        "lower_term": "3S",
+        "parity_policy": "odd/even parity change required for this E1 source policy",
+        "policy_status": "SOURCE_COMPONENT_POLICY_READY",
+        "representative_component_rule": "source row is treated as a single selected component",
+        "source_locator": "Persistent Lines of Neutral Helium table; 3888.6489 A component",
+        "source_wavelength_nm": 388.8648,
+        "species": "He I",
+        "spin_policy": "same_multiplicity_required_for_this_E1_source_policy",
+        "upper_term": "3P*"
+      },
+      {
+        "component_checks": [
+          {
+            "aki_s_inverse": 682750.0,
+            "delta_j": 1,
+            "lower_j": 2,
+            "ritz_air_wavelength_angstrom": 4471.470373,
+            "selection_status": "E1_ALLOWED_BY_TERM_POLICY",
+            "upper_j": 1
+          },
+          {
+            "aki_s_inverse": 6144000.0,
+            "delta_j": 0,
+            "lower_j": 2,
+            "ritz_air_wavelength_angstrom": 4471.474077,
+            "selection_status": "E1_ALLOWED_BY_TERM_POLICY",
+            "upper_j": 2
+          },
+          {
+            "aki_s_inverse": 24579000.0,
+            "delta_j": 1,
+            "lower_j": 2,
+            "ritz_air_wavelength_angstrom": 4471.474317,
+            "selection_status": "E1_ALLOWED_BY_TERM_POLICY",
+            "upper_j": 3
+          },
+          {
+            "aki_s_inverse": 10241000.0,
+            "delta_j": 0,
+            "lower_j": 1,
+            "ritz_air_wavelength_angstrom": 4471.485658,
+            "selection_status": "E1_ALLOWED_BY_TERM_POLICY",
+            "upper_j": 1
+          },
+          {
+            "aki_s_inverse": 18432000.0,
+            "delta_j": 1,
+            "lower_j": 1,
+            "ritz_air_wavelength_angstrom": 4471.489362,
+            "selection_status": "E1_ALLOWED_BY_TERM_POLICY",
+            "upper_j": 2
+          },
+          {
+            "aki_s_inverse": 13655000.0,
+            "delta_j": 1,
+            "lower_j": 0,
+            "ritz_air_wavelength_angstrom": 4471.683251,
+            "selection_status": "E1_ALLOWED_BY_TERM_POLICY",
+            "upper_j": 1
+          }
+        ],
+        "component_count": 6,
+        "line_structure": "observed_blend_with_multiple_fine_structure_components",
+        "lower_term": "3P*",
+        "parity_policy": "odd/even parity change required for this E1 source policy",
+        "policy_status": "SOURCE_COMPONENT_POLICY_READY",
+        "representative_component_rule": "use strongest listed Aki component for single-component residual placeholders until a resolved line-shape model exists",
+        "source_locator": "NIST ASD He I line query, wavelength range 4470-4472 A; observed 4471.4802 A blend component; Ritz 4471.474317 A; lower 1s.2p 3P* J=2; upper 1s.4d 3D J=3",
+        "source_wavelength_nm": 447.148,
+        "species": "He I",
+        "spin_policy": "same_multiplicity_required_for_this_E1_source_policy",
+        "upper_term": "3D"
+      },
+      {
+        "component_checks": [
+          {
+            "aki_s_inverse": null,
+            "delta_j": 1,
+            "lower_j": 2,
+            "ritz_air_wavelength_angstrom": null,
+            "selection_status": "E1_ALLOWED_BY_TERM_POLICY",
+            "upper_j": 3
+          }
+        ],
+        "component_count": 1,
+        "line_structure": "single_component_source_row",
+        "lower_term": "3P*",
+        "parity_policy": "odd/even parity change required for this E1 source policy",
+        "policy_status": "SOURCE_COMPONENT_POLICY_READY",
+        "representative_component_rule": "source row is treated as a single selected component",
+        "source_locator": "Persistent Lines of Neutral Helium table; 5875.6148 A component",
+        "source_wavelength_nm": 587.56148,
+        "species": "He I",
+        "spin_policy": "same_multiplicity_required_for_this_E1_source_policy",
+        "upper_term": "3D"
+      },
+      {
+        "component_checks": [
+          {
+            "aki_s_inverse": null,
+            "delta_j": 1,
+            "lower_j": 1,
+            "ritz_air_wavelength_angstrom": null,
+            "selection_status": "E1_ALLOWED_BY_TERM_POLICY",
+            "upper_j": 2
+          }
+        ],
+        "component_count": 1,
+        "line_structure": "single_component_source_row",
+        "lower_term": "1P*",
+        "parity_policy": "odd/even parity change required for this E1 source policy",
+        "policy_status": "SOURCE_COMPONENT_POLICY_READY",
+        "representative_component_rule": "source row is treated as a single selected component",
+        "source_locator": "Persistent Lines of Neutral Helium table; 6678.1517 A component",
+        "source_wavelength_nm": 667.8151,
+        "species": "He I",
+        "spin_policy": "same_multiplicity_required_for_this_E1_source_policy",
+        "upper_term": "1D"
+      },
+      {
+        "component_checks": [
+          {
+            "aki_s_inverse": null,
+            "delta_j": 1,
+            "lower_j": 2,
+            "ritz_air_wavelength_angstrom": null,
+            "selection_status": "E1_ALLOWED_BY_TERM_POLICY",
+            "upper_j": 1
+          }
+        ],
+        "component_count": 1,
+        "line_structure": "single_component_source_row",
+        "lower_term": "3P*",
+        "parity_policy": "odd/even parity change required for this E1 source policy",
+        "policy_status": "SOURCE_COMPONENT_POLICY_READY",
+        "representative_component_rule": "source row is treated as a single selected component",
+        "source_locator": "Persistent Lines of Neutral Helium table; 7065.1771 A component",
+        "source_wavelength_nm": 706.5177,
+        "species": "He I",
+        "spin_policy": "same_multiplicity_required_for_this_E1_source_policy",
+        "upper_term": "3S"
+      }
+    ]
+  },
   "helium_many_electron_gate": {
     "blocked_usages": [
       "neutral helium spectrum validated",
@@ -505,6 +705,79 @@
       },
       {
         "assignment": {
+          "component_policy": {
+            "components": [
+              {
+                "aki_s_inverse": 682750.0,
+                "lower_energy_cm_inverse": 169086.76391031,
+                "lower_j": 2,
+                "observed_air_wavelength_angstrom": 4471.4802,
+                "relative_intensity": "200*",
+                "ritz_air_wavelength_angstrom": 4471.470373,
+                "transition_wavenumber_cm_inverse": 22357.685,
+                "upper_energy_cm_inverse": 191444.49804915,
+                "upper_j": 1
+              },
+              {
+                "aki_s_inverse": 6144000.0,
+                "lower_energy_cm_inverse": 169086.76391031,
+                "lower_j": 2,
+                "observed_air_wavelength_angstrom": 4471.4802,
+                "relative_intensity": "200*",
+                "ritz_air_wavelength_angstrom": 4471.474077,
+                "transition_wavenumber_cm_inverse": 22357.685,
+                "upper_energy_cm_inverse": 191444.47952984,
+                "upper_j": 2
+              },
+              {
+                "aki_s_inverse": 24579000.0,
+                "lower_energy_cm_inverse": 169086.76391031,
+                "lower_j": 2,
+                "observed_air_wavelength_angstrom": 4471.4802,
+                "relative_intensity": "200*",
+                "ritz_air_wavelength_angstrom": 4471.474317,
+                "transition_wavenumber_cm_inverse": 22357.685,
+                "upper_energy_cm_inverse": 191444.47832914,
+                "upper_j": 3
+              },
+              {
+                "aki_s_inverse": 10241000.0,
+                "lower_energy_cm_inverse": 169086.84033581,
+                "lower_j": 1,
+                "observed_air_wavelength_angstrom": 4471.4802,
+                "relative_intensity": "200*",
+                "ritz_air_wavelength_angstrom": 4471.485658,
+                "transition_wavenumber_cm_inverse": 22357.685,
+                "upper_energy_cm_inverse": 191444.49804915,
+                "upper_j": 1
+              },
+              {
+                "aki_s_inverse": 18432000.0,
+                "lower_energy_cm_inverse": 169086.84033581,
+                "lower_j": 1,
+                "observed_air_wavelength_angstrom": 4471.4802,
+                "relative_intensity": "200*",
+                "ritz_air_wavelength_angstrom": 4471.489362,
+                "transition_wavenumber_cm_inverse": 22357.685,
+                "upper_energy_cm_inverse": 191444.47952984,
+                "upper_j": 2
+              },
+              {
+                "aki_s_inverse": 13655000.0,
+                "lower_energy_cm_inverse": 169087.82825101,
+                "lower_j": 0,
+                "observed_air_wavelength_angstrom": null,
+                "relative_intensity": 25,
+                "ritz_air_wavelength_angstrom": 4471.683251,
+                "transition_wavenumber_cm_inverse": 22356.6698,
+                "upper_energy_cm_inverse": 191444.49804915,
+                "upper_j": 1
+              }
+            ],
+            "line_structure": "observed_blend_with_multiple_fine_structure_components",
+            "representative_component_rule": "use strongest listed Aki component for single-component residual placeholders until a resolved line-shape model exists",
+            "representative_component_source": "Aki=2.4579e+07 s^-1 component, lower J=2 to upper J=3"
+          },
           "level_delta_cm_inverse": 22357.71441883,
           "lower_configuration": "1s.2p",
           "lower_energy_cm_inverse": 169086.76391031,
@@ -957,7 +1230,7 @@
     },
     {
       "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/helium_transition_assignments.json",
-      "sha256": "68aa87ac53a0860ce40ebe9e4d7bd9bb44b18056016cd7094623d5bcc0c8a97c",
+      "sha256": "b5ebfa25e37e2ab6d994ffc870ad775068499f048bc60ac78d6315d8550f5e67",
       "source": "Source-locked term assignments for selected neutral helium visible lines from NIST handbook and ASD line records.",
       "source_rows": [
         388.86489,
@@ -969,7 +1242,7 @@
       "status": "SOURCE_ASSIGNMENTS_READY_MODEL_BLOCKED"
     }
   ],
-  "interpretation": "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark plus C VI stress-test lane, a precision spectroscopy source gate, and a neutral helium source/assignment/medium-normalization gate. It does not validate full atomic theory, fine structure, Lamb shift, hyperfine structure, QED corrections, broad hydrogen-like ion coverage, neutral helium residuals, or many-electron physics.",
+  "interpretation": "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark plus C VI stress-test lane, a precision spectroscopy source gate, and a neutral helium source/assignment/medium-normalization/component-policy gate. It does not validate full atomic theory, fine structure, Lamb shift, hyperfine structure, QED corrections, broad hydrogen-like ion coverage, neutral helium residuals, or many-electron physics.",
   "lamb_shift_handoff_gate": {
     "claim_boundary": "This package can estimate the empirical Lamb-shift gap in the 1S-2S residual, but it does not validate QED, proton-size corrections, hyperfine structure, or UET first-principles atomic theory.",
     "claim_class": "empirical_lamb_handoff_only_no_qed_validation",
@@ -1035,7 +1308,7 @@
     "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
     "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark; C VI is a higher-Z stress test until fine/QED policy and broader ion coverage are added.",
     "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines plus 21 cm source/Fermi gates are diagnostics only and do not validate hyperfine Hamiltonian closure, QED, helium, or many-electron atoms.",
-    "Neutral helium rows have photon energies, term assignments, and wavelength-medium normalization computed but still do not validate electron correlation or many-electron spectra."
+    "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, and line-component policy computed but still do not validate electron correlation or many-electron spectra."
   ],
   "metrics": {
     "R_H_codata_m_inverse": 10967758.3406,
@@ -1047,6 +1320,10 @@
     "formula_bridge_steps": 11,
     "helium_air_to_vacuum_factor_max": 1.0002836067629914,
     "helium_air_to_vacuum_factor_min": 1.0002757500925477,
+    "helium_blend_rows": 1,
+    "helium_component_policy_rows": 5,
+    "helium_components_checked": 10,
+    "helium_e1_allowed_components": 10,
     "helium_medium_normalized_rows": 5,
     "helium_medium_rows_missing_normalization": 0,
     "helium_photon_energy_max_ev": 3.1883625981447454,

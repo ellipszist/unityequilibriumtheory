@@ -37,7 +37,80 @@
       "upper_configuration": "1s.4d",
       "upper_term": "3D",
       "upper_j": 3,
-      "source_locator": "NIST ASD He I line query, wavelength range 4470-4472 A; observed 4471.4802 A blend component; Ritz 4471.474317 A; lower 1s.2p 3P* J=2; upper 1s.4d 3D J=3"
+      "source_locator": "NIST ASD He I line query, wavelength range 4470-4472 A; observed 4471.4802 A blend component; Ritz 4471.474317 A; lower 1s.2p 3P* J=2; upper 1s.4d 3D J=3",
+      "component_policy": {
+        "line_structure": "observed_blend_with_multiple_fine_structure_components",
+        "representative_component_rule": "use strongest listed Aki component for single-component residual placeholders until a resolved line-shape model exists",
+        "representative_component_source": "Aki=2.4579e+07 s^-1 component, lower J=2 to upper J=3",
+        "components": [
+          {
+            "observed_air_wavelength_angstrom": 4471.4802,
+            "ritz_air_wavelength_angstrom": 4471.470373,
+            "transition_wavenumber_cm_inverse": 22357.685,
+            "relative_intensity": "200*",
+            "aki_s_inverse": 6.8275e5,
+            "lower_energy_cm_inverse": 169086.76391031,
+            "upper_energy_cm_inverse": 191444.49804915,
+            "lower_j": 2,
+            "upper_j": 1
+          },
+          {
+            "observed_air_wavelength_angstrom": 4471.4802,
+            "ritz_air_wavelength_angstrom": 4471.474077,
+            "transition_wavenumber_cm_inverse": 22357.685,
+            "relative_intensity": "200*",
+            "aki_s_inverse": 6.1440e6,
+            "lower_energy_cm_inverse": 169086.76391031,
+            "upper_energy_cm_inverse": 191444.47952984,
+            "lower_j": 2,
+            "upper_j": 2
+          },
+          {
+            "observed_air_wavelength_angstrom": 4471.4802,
+            "ritz_air_wavelength_angstrom": 4471.474317,
+            "transition_wavenumber_cm_inverse": 22357.685,
+            "relative_intensity": "200*",
+            "aki_s_inverse": 2.4579e7,
+            "lower_energy_cm_inverse": 169086.76391031,
+            "upper_energy_cm_inverse": 191444.47832914,
+            "lower_j": 2,
+            "upper_j": 3
+          },
+          {
+            "observed_air_wavelength_angstrom": 4471.4802,
+            "ritz_air_wavelength_angstrom": 4471.485658,
+            "transition_wavenumber_cm_inverse": 22357.685,
+            "relative_intensity": "200*",
+            "aki_s_inverse": 1.0241e7,
+            "lower_energy_cm_inverse": 169086.84033581,
+            "upper_energy_cm_inverse": 191444.49804915,
+            "lower_j": 1,
+            "upper_j": 1
+          },
+          {
+            "observed_air_wavelength_angstrom": 4471.4802,
+            "ritz_air_wavelength_angstrom": 4471.489362,
+            "transition_wavenumber_cm_inverse": 22357.685,
+            "relative_intensity": "200*",
+            "aki_s_inverse": 1.8432e7,
+            "lower_energy_cm_inverse": 169086.84033581,
+            "upper_energy_cm_inverse": 191444.47952984,
+            "lower_j": 1,
+            "upper_j": 2
+          },
+          {
+            "observed_air_wavelength_angstrom": null,
+            "ritz_air_wavelength_angstrom": 4471.683251,
+            "transition_wavenumber_cm_inverse": 22356.66980,
+            "relative_intensity": 25,
+            "aki_s_inverse": 1.3655e7,
+            "lower_energy_cm_inverse": 169087.82825101,
+            "upper_energy_cm_inverse": 191444.49804915,
+            "lower_j": 0,
+            "upper_j": 1
+          }
+        ]
+      }
     },
     {
       "wavelength_nm": 587.56148,
