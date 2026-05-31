@@ -180,7 +180,8 @@
         "metrics": {
           "independent_baseline_absolute_residual_eV": 29.83037651720001,
           "observed_total_binding_energy_eV": 79.00515453919999,
-          "variational_baseline_absolute_residual_eV": 1.5164804246481225
+          "variational_baseline_absolute_residual_eV": 1.5164804246481225,
+          "variational_gap_to_correlated_reference_eV": 1.5256914608145422
         },
         "source_evidence_readiness": "source_ionization_energy_ready_correlation_model_blocked",
         "status": "BASELINE_RESIDUAL_COMPUTED_CORRELATION_MODEL_BLOCKED"
@@ -317,13 +318,14 @@
     "AT20-HELIUM-VARIATIONAL-ZETA-BASELINE",
     "AT20-UET-ATOMIC-BRIDGE-GATE"
   ],
-  "generated_at_utc": "2026-05-31T19:53:04.224348+00:00",
+  "generated_at_utc": "2026-05-31T19:57:59.562958+00:00",
   "helium_ground_state_baseline_gate": {
     "baselines": [
       {
         "absolute_residual_eV": 29.83037651720001,
         "baseline_id": "independent_hydrogenic_Z2_no_electron_electron_repulsion",
         "formula": "E_bind = 2 * IE2(He II)",
+        "gap_to_correlated_reference_eV": -29.82116548103359,
         "interpretation": "Overbinds because it treats both electrons as independent Z=2 hydrogenic electrons and omits electron-electron repulsion/screening.",
         "predicted_total_binding_eV": 108.8355310564,
         "residual_eV_predicted_minus_observed": 29.83037651720001,
@@ -333,6 +335,7 @@
         "absolute_residual_eV": 1.5164804246481225,
         "baseline_id": "uncorrelated_variational_effective_charge_1s2",
         "formula": "E(zeta) = zeta^2 - 2 Z zeta + (5/8) zeta Hartree; zeta = Z - 5/16",
+        "gap_to_correlated_reference_eV": 1.5256914608145422,
         "interpretation": "Captures a first electron-electron repulsion/screening correction but remains an uncorrelated 1s^2 variational baseline.",
         "predicted_total_binding_eV": 77.48867411455187,
         "predicted_total_energy_hartree": -2.84765625,
@@ -353,6 +356,26 @@
     "constants": {
       "elementary_charge_C_exact": 1.602176634e-19,
       "hartree_energy_eV": 27.211386245988034
+    },
+    "correlated_reference": {
+      "binding_energy_eV_from_codata_hartree": 79.01436557536641,
+      "binding_minus_observed_total_binding_eV": 0.009211036166419717,
+      "claim_role": "external correlated nonrelativistic reference target for sizing the gap between simple baselines and correlated two-electron calculations",
+      "energy_hartree": -2.9037243770341195,
+      "method": "Exponentially correlated Hylleraas-configuration-interaction (E-Hy-CI)",
+      "source": {
+        "doi": "10.1002/qua.26470",
+        "name": "NIST publication page for Sims, Ruiz, and Padhy (2021), Exponentially correlated Hylleraas-configuration-interaction non-relativistic energy of the 1S ground state of the helium atom",
+        "source_status": "nist_publication_page",
+        "url": "https://www.nist.gov/publications/exponentially-correlated-hylleraas-configuration-interaction-non-relativistic-energy-1s"
+      },
+      "state": "neutral helium 1S ground state"
+    },
+    "correlation_gap_summary": {
+      "correlated_reference_minus_observed_eV": 0.009211036166419717,
+      "independent_baseline_gap_to_correlated_reference_eV": -29.82116548103359,
+      "interpretation": "The correlated reference is a nonrelativistic infinite-nuclear-mass target, while the observed ionization-energy anchor includes finite-mass, relativistic, QED, and experimental conventions; the difference is diagnostic only.",
+      "variational_baseline_gap_to_correlated_reference_eV": 1.5256914608145422
     },
     "formula_ids": [
       "AT20-HELIUM-INDEPENDENT-ELECTRON-BASELINE",
@@ -1319,7 +1342,7 @@
     },
     {
       "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/helium_ground_state_energy_sources.json",
-      "sha256": "61a8c81ba77f94d02464f06a15673dc691def05dcef161f96270f0cad88f6941",
+      "sha256": "9363597161c969b2e09ef47d58b0311a429b4c7381e1c61f2c3bf6bf5e63b46f",
       "source": "Source-locked helium ground-state ionization-energy anchors for conservative two-electron baseline residual diagnostics.",
       "source_rows": [
         "first_ionization_energy",
@@ -1410,9 +1433,11 @@
     "helium_component_policy_rows": 5,
     "helium_components_checked": 10,
     "helium_e1_allowed_components": 10,
+    "helium_ground_correlated_reference_minus_observed_eV": 0.009211036166419717,
     "helium_ground_independent_baseline_residual_eV": 29.83037651720001,
     "helium_ground_observed_total_binding_eV": 79.00515453919999,
     "helium_ground_variational_baseline_residual_eV": 1.5164804246481225,
+    "helium_ground_variational_gap_to_correlated_reference_eV": 1.5256914608145422,
     "helium_medium_normalized_rows": 5,
     "helium_medium_rows_missing_normalization": 0,
     "helium_photon_energy_max_ev": 3.1883625981447454,

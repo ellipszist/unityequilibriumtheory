@@ -35,5 +35,18 @@
     "unit": "eV",
     "claim_role": "ground-state residual anchor for two-electron baseline diagnostics"
   },
+  "correlated_reference": {
+    "method": "Exponentially correlated Hylleraas-configuration-interaction (E-Hy-CI)",
+    "state": "neutral helium 1S ground state",
+    "energy_hartree": -2.90372437703411959831,
+    "basis_terms": 10080,
+    "source": {
+      "name": "NIST publication page for Sims, Ruiz, and Padhy (2021), Exponentially correlated Hylleraas-configuration-interaction non-relativistic energy of the 1S ground state of the helium atom",
+      "url": "https://www.nist.gov/publications/exponentially-correlated-hylleraas-configuration-interaction-non-relativistic-energy-1s",
+      "doi": "10.1002/qua.26470",
+      "source_status": "nist_publication_page"
+    },
+    "claim_role": "external correlated nonrelativistic reference target for sizing the gap between simple baselines and correlated two-electron calculations"
+  },
   "claim_boundary": "These source rows support helium ground-state residual diagnostics only. They do not validate a two-electron Hamiltonian, electron correlation, excited-state spectra, transition amplitudes, or UET first-principles atomic theory."
 }

@@ -1303,6 +1303,11 @@ def build_helium_ground_state_baseline_gate(helium_ground_sources: dict, codata:
     variational_binding_ev = -variational_total_energy_hartree * hartree_ev
     variational_residual_ev = variational_binding_ev - observed_total_binding_ev
     variational_residual_percent = variational_residual_ev / observed_total_binding_ev * 100.0
+    correlated_reference = helium_ground_sources["correlated_reference"]
+    correlated_reference_binding_ev = -correlated_reference["energy_hartree"] * hartree_ev
+    correlated_minus_observed_ev = correlated_reference_binding_ev - observed_total_binding_ev
+    variational_gap_to_correlated_ev = correlated_reference_binding_ev - variational_binding_ev
+    independent_gap_to_correlated_ev = correlated_reference_binding_ev - independent_binding_ev
 
     return {
         "schema_version": "1.0",
@@ -1314,6 +1319,15 @@ def build_helium_ground_state_baseline_gate(helium_ground_sources: dict, codata:
             "AT20-HELIUM-VARIATIONAL-ZETA-BASELINE",
         ],
         "source": helium_ground_sources["source"],
+        "correlated_reference": {
+            "method": correlated_reference["method"],
+            "state": correlated_reference["state"],
+            "energy_hartree": correlated_reference["energy_hartree"],
+            "binding_energy_eV_from_codata_hartree": correlated_reference_binding_ev,
+            "binding_minus_observed_total_binding_eV": correlated_minus_observed_ev,
+            "source": correlated_reference["source"],
+            "claim_role": correlated_reference["claim_role"],
+        },
         "observed_anchor": {
             "first_ionization_energy_eV": first_ie["value_eV"],
             "second_ionization_energy_eV": second_ie["value_eV"],
@@ -1333,6 +1347,7 @@ def build_helium_ground_state_baseline_gate(helium_ground_sources: dict, codata:
                 "residual_eV_predicted_minus_observed": independent_residual_ev,
                 "absolute_residual_eV": abs(independent_residual_ev),
                 "residual_percent": independent_residual_percent,
+                "gap_to_correlated_reference_eV": independent_gap_to_correlated_ev,
                 "interpretation": "Overbinds because it treats both electrons as independent Z=2 hydrogenic electrons and omits electron-electron repulsion/screening.",
             },
             {
@@ -1345,9 +1360,16 @@ def build_helium_ground_state_baseline_gate(helium_ground_sources: dict, codata:
                 "residual_eV_predicted_minus_observed": variational_residual_ev,
                 "absolute_residual_eV": abs(variational_residual_ev),
                 "residual_percent": variational_residual_percent,
+                "gap_to_correlated_reference_eV": variational_gap_to_correlated_ev,
                 "interpretation": "Captures a first electron-electron repulsion/screening correction but remains an uncorrelated 1s^2 variational baseline.",
             },
         ],
+        "correlation_gap_summary": {
+            "independent_baseline_gap_to_correlated_reference_eV": independent_gap_to_correlated_ev,
+            "variational_baseline_gap_to_correlated_reference_eV": variational_gap_to_correlated_ev,
+            "correlated_reference_minus_observed_eV": correlated_minus_observed_ev,
+            "interpretation": "The correlated reference is a nonrelativistic infinite-nuclear-mass target, while the observed ionization-energy anchor includes finite-mass, relativistic, QED, and experimental conventions; the difference is diagnostic only.",
+        },
         "blocked_residual_model_requirements": [
             "correlated two-electron wavefunction or configuration-interaction basis",
             "singlet/triplet excited-state Hamiltonian residuals",
@@ -1542,6 +1564,7 @@ def build_atomic_claim_scope_gate(
                     "observed_total_binding_energy_eV": helium_ground_state_baseline_gate["observed_anchor"]["total_binding_energy_eV"],
                     "independent_baseline_absolute_residual_eV": helium_ground_state_baseline_gate["baselines"][0]["absolute_residual_eV"],
                     "variational_baseline_absolute_residual_eV": helium_ground_state_baseline_gate["baselines"][1]["absolute_residual_eV"],
+                    "variational_gap_to_correlated_reference_eV": helium_ground_state_baseline_gate["correlation_gap_summary"]["variational_baseline_gap_to_correlated_reference_eV"],
                 },
                 "source_evidence_readiness": "source_ionization_energy_ready_correlation_model_blocked",
             },
@@ -1897,6 +1920,8 @@ def run_rydberg_analysis():
             "helium_ground_observed_total_binding_eV": helium_ground_state_baseline_gate["observed_anchor"]["total_binding_energy_eV"],
             "helium_ground_independent_baseline_residual_eV": helium_ground_state_baseline_gate["baselines"][0]["absolute_residual_eV"],
             "helium_ground_variational_baseline_residual_eV": helium_ground_state_baseline_gate["baselines"][1]["absolute_residual_eV"],
+            "helium_ground_variational_gap_to_correlated_reference_eV": helium_ground_state_baseline_gate["correlation_gap_summary"]["variational_baseline_gap_to_correlated_reference_eV"],
+            "helium_ground_correlated_reference_minus_observed_eV": helium_ground_state_baseline_gate["correlation_gap_summary"]["correlated_reference_minus_observed_eV"],
         },
         "results": results,
         "limitations": [
