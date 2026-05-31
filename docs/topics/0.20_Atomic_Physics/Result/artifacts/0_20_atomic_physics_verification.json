@@ -185,6 +185,19 @@
         },
         "source_evidence_readiness": "source_ionization_energy_ready_correlation_model_blocked",
         "status": "BASELINE_RESIDUAL_COMPUTED_CORRELATION_MODEL_BLOCKED"
+      },
+      {
+        "artifact_role": "neutral helium excited-state target gate",
+        "claim": "Neutral helium excited-state level targets are prepared from source term energies for future correlated spectral residuals.",
+        "metrics": {
+          "max_air_photon_vs_level_delta_abs_eV": 0.0009039848194940525,
+          "max_excitation_energy_eV": 23.736090184798247,
+          "min_excitation_energy_eV": 19.81961485871314,
+          "transition_target_count": 5,
+          "unique_level_count": 9
+        },
+        "source_evidence_readiness": "source_excited_state_targets_ready_model_blocked",
+        "status": "EXCITED_STATE_TARGETS_READY_MODEL_BLOCKED"
       }
     ],
     "blocked_claims": [
@@ -222,7 +235,7 @@
         "status": "BLOCKED"
       },
       {
-        "blocking_reason": "Neutral helium source rows, photon energies, term assignments, wavelength-medium normalization, line-component/blend policy, and ground-state baseline residual diagnostics are now packaged, but a correlated two-electron Hamiltonian/spectral residual artifact is still missing.",
+        "blocking_reason": "Neutral helium source rows, photon energies, term assignments, wavelength-medium normalization, line-component/blend policy, ground-state baseline residual diagnostics, and excited-state targets are now packaged, but a correlated two-electron Hamiltonian/spectral residual artifact is still missing.",
         "claim": "UET validates helium, many-electron atoms, or general atomic theory.",
         "next_evidence_required": [
           "correlated two-electron Hamiltonian/spectral model",
@@ -316,9 +329,184 @@
     "AT20-HELIUM-LINE-COMPONENT-POLICY-GAP",
     "AT20-HELIUM-INDEPENDENT-ELECTRON-BASELINE",
     "AT20-HELIUM-VARIATIONAL-ZETA-BASELINE",
+    "AT20-HELIUM-EXCITED-STATE-TARGET-GAP",
     "AT20-UET-ATOMIC-BRIDGE-GATE"
   ],
-  "generated_at_utc": "2026-05-31T19:57:59.562958+00:00",
+  "generated_at_utc": "2026-05-31T20:00:45.282490+00:00",
+  "helium_excited_state_target_gate": {
+    "blocked_residual_model_requirements": [
+      "correlated two-electron excited-state Hamiltonian model",
+      "singlet/triplet and configuration-interaction basis policy",
+      "finite-mass, relativistic, and QED correction convention",
+      "uncertainty propagation and residual thresholds"
+    ],
+    "claim_boundary": "This gate supports excited-state target preparation only. It does not validate neutral-helium spectra, transition amplitudes, electron correlation, or UET first-principles atomic theory.",
+    "claim_class": "source_excited_state_targets_only_no_helium_validation",
+    "formula": "E_excitation_eV = E_level_cm^-1 * h c; E_binding_target = E_ground_binding_anchor - E_excitation",
+    "formula_id": "AT20-HELIUM-EXCITED-STATE-TARGET-GAP",
+    "ground_reference_context": {
+      "correlated_reference_binding_energy_eV": 79.01436557536641,
+      "correlated_reference_minus_observed_eV": 0.009211036166419717,
+      "observed_total_binding_energy_eV": 79.00515453919999
+    },
+    "levels": [
+      {
+        "binding_from_correlated_reference_eV": 59.194750716653274,
+        "binding_from_observed_anchor_eV": 59.185539680486855,
+        "configuration": "1s 2s",
+        "excitation_energy_cm_inverse": 159855.9745,
+        "excitation_energy_eV": 19.81961485871314,
+        "j": 1,
+        "term": "3S"
+      },
+      {
+        "binding_from_correlated_reference_eV": 58.050278690965975,
+        "binding_from_observed_anchor_eV": 58.041067654799555,
+        "configuration": "1s.2p",
+        "excitation_energy_cm_inverse": 169086.76391031,
+        "excitation_energy_eV": 20.964086884400437,
+        "j": 2,
+        "term": "3P*"
+      },
+      {
+        "binding_from_correlated_reference_eV": 58.05027835748692,
+        "binding_from_observed_anchor_eV": 58.0410673213205,
+        "configuration": "1s 2p",
+        "excitation_energy_cm_inverse": 169086.7666,
+        "excitation_energy_eV": 20.964087217879495,
+        "j": 2,
+        "term": "3P*"
+      },
+      {
+        "binding_from_correlated_reference_eV": 57.79634255161297,
+        "binding_from_observed_anchor_eV": 57.78713151544655,
+        "configuration": "1s 2p",
+        "excitation_energy_cm_inverse": 171134.897,
+        "excitation_energy_eV": 21.21802302375344,
+        "j": 1,
+        "term": "1P*"
+      },
+      {
+        "binding_from_correlated_reference_eV": 56.29589882564724,
+        "binding_from_observed_anchor_eV": 56.28668778948082,
+        "configuration": "1s 3s",
+        "excitation_energy_cm_inverse": 183236.7918,
+        "excitation_energy_eV": 22.718466749719173,
+        "j": 1,
+        "term": "3S"
+      },
+      {
+        "binding_from_correlated_reference_eV": 56.00729210332802,
+        "binding_from_observed_anchor_eV": 55.9980810671616,
+        "configuration": "1s 3p",
+        "excitation_energy_cm_inverse": 185564.562,
+        "excitation_energy_eV": 23.007073472038392,
+        "j": 2,
+        "term": "3P*"
+      },
+      {
+        "binding_from_correlated_reference_eV": 55.940714535336184,
+        "binding_from_observed_anchor_eV": 55.931503499169764,
+        "configuration": "1s 3d",
+        "excitation_energy_cm_inverse": 186101.5463,
+        "excitation_energy_eV": 23.07365104003023,
+        "j": 3,
+        "term": "3D"
+      },
+      {
+        "binding_from_correlated_reference_eV": 55.940290447385536,
+        "binding_from_observed_anchor_eV": 55.931079411219116,
+        "configuration": "1s 3d",
+        "excitation_energy_cm_inverse": 186104.9668,
+        "excitation_energy_eV": 23.074075127980876,
+        "j": 2,
+        "term": "1D"
+      },
+      {
+        "binding_from_correlated_reference_eV": 55.27827539056817,
+        "binding_from_observed_anchor_eV": 55.26906435440175,
+        "configuration": "1s.4d",
+        "excitation_energy_cm_inverse": 191444.47832914,
+        "excitation_energy_eV": 23.736090184798247,
+        "j": 3,
+        "term": "3D"
+      }
+    ],
+    "limitations": [
+      "This gate prepares source target energies for excited states; it does not predict them.",
+      "Binding targets depend on the selected ground-reference convention.",
+      "Air photon-energy deltas are bookkeeping diagnostics; wavelength-medium-normalized residuals remain separate from model residuals.",
+      "No UET-specific helium Hamiltonian derivation is supplied here."
+    ],
+    "metrics": {
+      "max_air_photon_vs_level_delta_abs_eV": 0.0009039848194940525,
+      "max_excitation_energy_eV": 23.736090184798247,
+      "min_excitation_energy_eV": 19.81961485871314,
+      "transition_target_count": 5,
+      "unique_level_count": 9
+    },
+    "role": "neutral_helium_excited_state_target_gate",
+    "schema_version": "1.0",
+    "source_basis": "NIST term-level energies from selected He I transition assignments plus NIST ionization-energy and E-Hy-CI ground references.",
+    "status": "EXCITED_STATE_TARGETS_READY_MODEL_BLOCKED",
+    "transitions": [
+      {
+        "air_wavelength_photon_energy_eV": 3.1883625981447454,
+        "level_delta_cm_inverse": 25708.587499999994,
+        "level_delta_eV": 3.1874586133252514,
+        "level_delta_minus_air_photon_eV": -0.0009039848194940525,
+        "lower_label": "1s 2s 3S J=1",
+        "source_locator": "Persistent Lines of Neutral Helium table; 3888.6489 A component",
+        "source_wavelength_nm_air": 388.8648,
+        "transition_assignment_status": "assigned_component",
+        "upper_label": "1s 3p 3P* J=2"
+      },
+      {
+        "air_wavelength_photon_energy_eV": 2.7727776576324548,
+        "level_delta_cm_inverse": 22357.71441883,
+        "level_delta_eV": 2.7720033003978095,
+        "level_delta_minus_air_photon_eV": -0.000774357234645251,
+        "lower_label": "1s.2p 3P* J=2",
+        "source_locator": "NIST ASD He I line query, wavelength range 4470-4472 A; observed 4471.4802 A blend component; Ritz 4471.474317 A; lower 1s.2p 3P* J=2; upper 1s.4d 3D J=3",
+        "source_wavelength_nm_air": 447.148,
+        "transition_assignment_status": "assigned_blend_component",
+        "upper_label": "1s.4d 3D J=3"
+      },
+      {
+        "air_wavelength_photon_energy_eV": 2.1101485142542646,
+        "level_delta_cm_inverse": 17014.779699999985,
+        "level_delta_eV": 2.1095638221507347,
+        "level_delta_minus_air_photon_eV": -0.0005846921035299601,
+        "lower_label": "1s 2p 3P* J=2",
+        "source_locator": "Persistent Lines of Neutral Helium table; 5875.6148 A component",
+        "source_wavelength_nm_air": 587.56148,
+        "transition_assignment_status": "assigned_component",
+        "upper_label": "1s 3d 3D J=3"
+      },
+      {
+        "air_wavelength_photon_energy_eV": 1.8565647647904888,
+        "level_delta_cm_inverse": 14970.069799999997,
+        "level_delta_eV": 1.8560521042274387,
+        "level_delta_minus_air_photon_eV": -0.0005126605630501047,
+        "lower_label": "1s 2p 1P* J=1",
+        "source_locator": "Persistent Lines of Neutral Helium table; 6678.1517 A component",
+        "source_wavelength_nm_air": 667.8151,
+        "transition_assignment_status": "assigned_component",
+        "upper_label": "1s 3d 1D J=2"
+      },
+      {
+        "air_wavelength_photon_energy_eV": 1.7548633021579456,
+        "level_delta_cm_inverse": 14150.025200000004,
+        "level_delta_eV": 1.7543795318396775,
+        "level_delta_minus_air_photon_eV": -0.00048377031826807304,
+        "lower_label": "1s 2p 3P* J=2",
+        "source_locator": "Persistent Lines of Neutral Helium table; 7065.1771 A component",
+        "source_wavelength_nm_air": 706.5177,
+        "transition_assignment_status": "assigned_component",
+        "upper_label": "1s 3s 3S J=1"
+      }
+    ]
+  },
   "helium_ground_state_baseline_gate": {
     "baselines": [
       {
@@ -1351,7 +1539,7 @@
       "status": "SOURCE_PACKAGE_READY_MODEL_BLOCKED"
     }
   ],
-  "interpretation": "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark plus C VI stress-test lane, a precision spectroscopy source gate, and a neutral helium source/assignment/medium-normalization/component-policy/ground-baseline gate. It does not validate full atomic theory, fine structure, Lamb shift, hyperfine structure, QED corrections, broad hydrogen-like ion coverage, neutral helium residuals, or many-electron physics.",
+  "interpretation": "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark plus C VI stress-test lane, a precision spectroscopy source gate, and a neutral helium source/assignment/medium-normalization/component-policy/ground-baseline/excited-target gate. It does not validate full atomic theory, fine structure, Lamb shift, hyperfine structure, QED corrections, broad hydrogen-like ion coverage, neutral helium residuals, or many-electron physics.",
   "lamb_shift_handoff_gate": {
     "claim_boundary": "This package can estimate the empirical Lamb-shift gap in the 1S-2S residual, but it does not validate QED, proton-size corrections, hyperfine structure, or UET first-principles atomic theory.",
     "claim_class": "empirical_lamb_handoff_only_no_qed_validation",
@@ -1417,7 +1605,7 @@
     "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
     "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark; C VI is a higher-Z stress test until fine/QED policy and broader ion coverage are added.",
     "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines plus 21 cm source/Fermi gates are diagnostics only and do not validate hyperfine Hamiltonian closure, QED, helium, or many-electron atoms.",
-    "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, line-component policy, and ground-state baseline residuals computed but still do not validate electron correlation or many-electron spectra."
+    "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, line-component policy, ground-state baseline residuals, and excited-state targets computed but still do not validate electron correlation or many-electron spectra."
   ],
   "metrics": {
     "R_H_codata_m_inverse": 10967758.3406,
@@ -1433,6 +1621,9 @@
     "helium_component_policy_rows": 5,
     "helium_components_checked": 10,
     "helium_e1_allowed_components": 10,
+    "helium_excited_state_max_air_photon_vs_level_delta_abs_eV": 0.0009039848194940525,
+    "helium_excited_state_transition_targets": 5,
+    "helium_excited_state_unique_levels": 9,
     "helium_ground_correlated_reference_minus_observed_eV": 0.009211036166419717,
     "helium_ground_independent_baseline_residual_eV": 29.83037651720001,
     "helium_ground_observed_total_binding_eV": 79.00515453919999,
