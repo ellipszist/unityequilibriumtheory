@@ -132,16 +132,17 @@
       },
       {
         "artifact_role": "neutral helium transition-assignment gap gate",
-        "claim": "Neutral helium source wavelengths have photon energies computed, but transition assignments are still blocker-gated.",
+        "claim": "Neutral helium source wavelengths have photon energies computed and partial term assignments source-locked, but residual modeling remains blocker-gated.",
         "metrics": {
           "energy_span_ev": 1.4334992959867998,
           "max_photon_energy_ev": 3.1883625981447454,
           "min_photon_energy_ev": 1.7548633021579456,
-          "rows_missing_transition_assignment": 5,
+          "rows_missing_transition_assignment": 1,
+          "rows_with_transition_assignment": 4,
           "source_row_count": 5
         },
-        "source_evidence_readiness": "source_energies_ready_transition_assignment_blocked",
-        "status": "SOURCE_ENERGIES_COMPUTED_TRANSITION_ASSIGNMENT_BLOCKED"
+        "source_evidence_readiness": "partial_term_assignments_ready_model_blocked",
+        "status": "PARTIAL_TERM_ASSIGNMENTS_READY_MODEL_BLOCKED"
       }
     ],
     "blocked_claims": [
@@ -179,7 +180,7 @@
         "status": "BLOCKED"
       },
       {
-        "blocking_reason": "Neutral helium source rows and photon energies are now packaged, but source term assignments and a two-electron Hamiltonian/correlation residual artifact are still missing.",
+        "blocking_reason": "Neutral helium source rows, photon energies, and partial term assignments are now packaged, but one visible row, wavelength-medium normalization, and a two-electron Hamiltonian/correlation residual artifact are still missing.",
         "claim": "UET validates helium, many-electron atoms, or general atomic theory.",
         "next_evidence_required": [
           "upper/lower term assignments for each He I source row",
@@ -273,7 +274,7 @@
     "AT20-HELIUM-PHOTON-ENERGY-GAP",
     "AT20-UET-ATOMIC-BRIDGE-GATE"
   ],
-  "generated_at_utc": "2026-05-30T10:22:09.128020+00:00",
+  "generated_at_utc": "2026-05-31T14:18:59.549894+00:00",
   "helium_many_electron_gate": {
     "blocked_usages": [
       "neutral helium spectrum validated",
@@ -346,15 +347,19 @@
     ]
   },
   "helium_transition_assignment_gap_gate": {
+    "assignment_source": {
+      "name": "NIST Handbook of Basic Atomic Spectroscopic Data, Persistent Lines of Neutral Helium",
+      "source_status": "primary_nist_handbook_persistent_lines_table",
+      "url": "https://physics.nist.gov/PhysRefData/Handbook/Tables/heliumtable3_a.htm",
+      "wavelength_medium": "air for visible/near-IR rows listed in the handbook"
+    },
     "blocked_residual_model_requirements": [
-      "source term labels for upper and lower states",
-      "singlet/triplet assignment",
-      "configuration labels and parity/J values",
+      "remaining source term labels for unassigned rows",
       "two-electron Hamiltonian/correlation model",
       "transition selection-rule policy",
       "wavelength medium and uncertainty normalization"
     ],
-    "claim_boundary": "This gate only narrows the neutral-helium blocker to missing transition assignments and many-electron model requirements. It cannot be cited as helium-spectrum validation.",
+    "claim_boundary": "These assignments support term-label source readiness only. They do not validate a two-electron Hamiltonian, electron correlation, transition probabilities, or neutral-helium spectral prediction.",
     "claim_class": "photon_energy_source_diagnostic_only_no_helium_validation",
     "constants": {
       "planck_constant_ev_s": 4.135667696e-15,
@@ -364,29 +369,47 @@
     "formula_id": "AT20-HELIUM-PHOTON-ENERGY-GAP",
     "limitations": [
       "This gate computes photon energies from source wavelengths only.",
-      "It cannot compute neutral-helium residuals without upper/lower term assignments.",
+      "It cannot compute neutral-helium residuals until all source rows have term assignments and wavelength medium normalization.",
       "It is not a hydrogenic, two-electron, correlation, fine-structure, QED, or UET validation artifact."
     ],
     "metrics": {
       "energy_span_ev": 1.4334992959867998,
       "max_photon_energy_ev": 3.1883625981447454,
       "min_photon_energy_ev": 1.7548633021579456,
-      "rows_missing_transition_assignment": 5,
+      "rows_missing_transition_assignment": 1,
+      "rows_with_transition_assignment": 4,
       "source_row_count": 5
     },
     "role": "neutral_helium_transition_assignment_gap_gate",
     "schema_version": "1.0",
-    "status": "SOURCE_ENERGIES_COMPUTED_TRANSITION_ASSIGNMENT_BLOCKED",
+    "status": "PARTIAL_TERM_ASSIGNMENTS_READY_MODEL_BLOCKED",
     "targets": [
       {
+        "assignment": {
+          "level_delta_cm_inverse": 25708.587499999994,
+          "lower_configuration": "1s 2s",
+          "lower_energy_cm_inverse": 159855.9745,
+          "lower_j": 1,
+          "lower_term": "3S",
+          "matched_assignment_wavelength_nm": 388.86489,
+          "matching_delta_nm": 0.0,
+          "source_locator": "Persistent Lines of Neutral Helium table; 3888.6489 A component",
+          "upper_configuration": "1s 3p",
+          "upper_energy_cm_inverse": 185564.562,
+          "upper_j": 2,
+          "upper_term": "3P*"
+        },
         "photon_energy_ev": 3.1883625981447454,
         "relative_intensity": 500,
         "source_status": "primary_nist_handbook_row",
         "species": "He I",
-        "transition_assignment_status": "missing_term_labels_and_upper_lower_states",
+        "transition_assignment_status": "assigned_component",
         "wavelength_nm": 388.8648
       },
       {
+        "assignment": {
+          "nearest_assignment_delta_nm": -58.28320000000002
+        },
         "photon_energy_ev": 2.7727776576324548,
         "relative_intensity": 200,
         "source_status": "primary_nist_handbook_row",
@@ -395,27 +418,69 @@
         "wavelength_nm": 447.148
       },
       {
+        "assignment": {
+          "level_delta_cm_inverse": 17014.779699999985,
+          "lower_configuration": "1s 2p",
+          "lower_energy_cm_inverse": 169086.7666,
+          "lower_j": 2,
+          "lower_term": "3P*",
+          "matched_assignment_wavelength_nm": 587.56148,
+          "matching_delta_nm": 0.0,
+          "source_locator": "Persistent Lines of Neutral Helium table; 5875.6148 A component",
+          "upper_configuration": "1s 3d",
+          "upper_energy_cm_inverse": 186101.5463,
+          "upper_j": 3,
+          "upper_term": "3D"
+        },
         "photon_energy_ev": 2.1101485142542646,
         "relative_intensity": 500,
         "source_status": "primary_nist_handbook_row",
         "species": "He I",
-        "transition_assignment_status": "missing_term_labels_and_upper_lower_states",
+        "transition_assignment_status": "assigned_component",
         "wavelength_nm": 587.56148
       },
       {
+        "assignment": {
+          "level_delta_cm_inverse": 14970.069799999997,
+          "lower_configuration": "1s 2p",
+          "lower_energy_cm_inverse": 171134.897,
+          "lower_j": 1,
+          "lower_term": "1P*",
+          "matched_assignment_wavelength_nm": 667.81517,
+          "matching_delta_nm": 0.0,
+          "source_locator": "Persistent Lines of Neutral Helium table; 6678.1517 A component",
+          "upper_configuration": "1s 3d",
+          "upper_energy_cm_inverse": 186104.9668,
+          "upper_j": 2,
+          "upper_term": "1D"
+        },
         "photon_energy_ev": 1.8565647647904888,
         "relative_intensity": 200,
         "source_status": "primary_nist_handbook_row",
         "species": "He I",
-        "transition_assignment_status": "missing_term_labels_and_upper_lower_states",
+        "transition_assignment_status": "assigned_component",
         "wavelength_nm": 667.8151
       },
       {
+        "assignment": {
+          "level_delta_cm_inverse": 14150.025200000004,
+          "lower_configuration": "1s 2p",
+          "lower_energy_cm_inverse": 169086.7666,
+          "lower_j": 2,
+          "lower_term": "3P*",
+          "matched_assignment_wavelength_nm": 706.51771,
+          "matching_delta_nm": 0.0,
+          "source_locator": "Persistent Lines of Neutral Helium table; 7065.1771 A component",
+          "upper_configuration": "1s 3s",
+          "upper_energy_cm_inverse": 183236.7918,
+          "upper_j": 1,
+          "upper_term": "3S"
+        },
         "photon_energy_ev": 1.7548633021579456,
         "relative_intensity": 200,
         "source_status": "primary_nist_handbook_row",
         "species": "He I",
-        "transition_assignment_status": "missing_term_labels_and_upper_lower_states",
+        "transition_assignment_status": "assigned_component",
         "wavelength_nm": 706.5177
       }
     ]
@@ -781,6 +846,18 @@
         706.5177
       ],
       "status": "SOURCE_PACKAGE_READY_MODEL_BLOCKED"
+    },
+    {
+      "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/helium_transition_assignments.json",
+      "sha256": "dd51dbd877eefd30c39de081883ca6230004add9467592580319a26f5b173e5c",
+      "source": "Partial source-locked term assignments for neutral helium visible lines from the NIST persistent-lines table.",
+      "source_rows": [
+        388.86489,
+        587.56148,
+        667.81517,
+        706.51771
+      ],
+      "status": "PARTIAL_SOURCE_PACKAGE_READY_MODEL_BLOCKED"
     }
   ],
   "interpretation": "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark plus C VI stress-test lane, a precision spectroscopy source gate, and a neutral helium source gate. It does not validate full atomic theory, fine structure, Lamb shift, hyperfine structure, QED corrections, broad hydrogen-like ion coverage, neutral helium residuals, or many-electron physics.",
@@ -849,7 +926,7 @@
     "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
     "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark; C VI is a higher-Z stress test until fine/QED policy and broader ion coverage are added.",
     "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines plus 21 cm source/Fermi gates are diagnostics only and do not validate hyperfine Hamiltonian closure, QED, helium, or many-electron atoms.",
-    "Neutral helium rows have photon energies computed but still lack term assignments and do not validate electron correlation or many-electron spectra."
+    "Neutral helium rows have photon energies and partial term assignments computed but still do not validate electron correlation or many-electron spectra."
   ],
   "metrics": {
     "R_H_codata_m_inverse": 10967758.3406,
@@ -862,7 +939,8 @@
     "helium_photon_energy_max_ev": 3.1883625981447454,
     "helium_photon_energy_min_ev": 1.7548633021579456,
     "helium_required_model_components": 7,
-    "helium_rows_missing_transition_assignment": 5,
+    "helium_rows_missing_transition_assignment": 1,
+    "helium_rows_with_transition_assignment": 4,
     "helium_source_rows": 5,
     "hydrogen_level_avg_error_ppm": 68.93802115979179,
     "hydrogen_level_count": 8,

@@ -19,6 +19,7 @@ python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validat
 | `Data/03_Research/hydrogen_hyperfine_21cm_sources.json` | Source-referenced 21 cm hyperfine target and cross-check | SHA256, reference frequency, wavelength bookkeeping, and model-block status recorded in artifact |
 | `Data/03_Research/hydrogen_hyperfine_fermi_constants.json` | Constants for leading Fermi-contact hyperfine baseline | SHA256, proton g factor source, formula role, and claim boundary recorded in artifact |
 | `Data/03_Research/helium_many_electron_sources.json` | Neutral helium source targets and many-electron model requirements | SHA256, target wavelengths, and model-block status recorded in artifact |
+| `Data/03_Research/helium_transition_assignments.json` | Partial NIST persistent-line term assignments for He I source rows | SHA256, assigned row count, missing row count, and source locators recorded in artifact |
 | `Data/03_Research/atomic_formula_bridge_manifest.json` | Generated bridge manifest for Bohr/de Broglie/Rydberg inheritance and UET dependency roles | SHA256 recorded in artifact after generation |
 
 ## Metrics
@@ -39,6 +40,7 @@ python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validat
 - Leading Fermi-contact 21 cm baseline frequency, residual Hz, and residual ppm.
 - Neutral helium source row count and required many-electron model component count.
 - Neutral helium photon-energy range and count of rows missing transition assignments.
+- Neutral helium assigned-row count and remaining missing assignment count.
 
 ## Fixed Thresholds
 

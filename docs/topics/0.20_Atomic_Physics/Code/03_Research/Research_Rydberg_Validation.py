@@ -45,6 +45,7 @@ HYDROGEN_LAMB_SHIFT_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_lamb_s
 HYDROGEN_HYPERFINE_21CM_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_hyperfine_21cm_sources.json"
 HYDROGEN_HYPERFINE_FERMI_CONSTANTS_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_hyperfine_fermi_constants.json"
 HELIUM_MANY_ELECTRON_PATH = TOPIC_DIR / "Data" / "03_Research" / "helium_many_electron_sources.json"
+HELIUM_TRANSITION_ASSIGNMENTS_PATH = TOPIC_DIR / "Data" / "03_Research" / "helium_transition_assignments.json"
 ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_20_atomic_physics_verification.json"
 SOURCE_EVIDENCE_INTAKE_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_intake_stub.json"
 SOURCE_EVIDENCE_READINESS_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_readiness_matrix.json"
@@ -979,13 +980,47 @@ def build_helium_many_electron_gate(helium_sources: dict) -> dict:
     }
 
 
-def build_helium_transition_assignment_gap_gate(helium_sources: dict) -> dict:
+def _nearest_helium_assignment(wavelength_nm: float, assignments: list[dict]) -> tuple[dict | None, float | None]:
+    if not assignments:
+        return None, None
+    nearest = min(assignments, key=lambda row: abs(row["matching_source_target_nm"] - wavelength_nm))
+    delta_nm = nearest["matching_source_target_nm"] - wavelength_nm
+    if abs(delta_nm) <= 0.001:
+        return nearest, delta_nm
+    return None, delta_nm
+
+
+def build_helium_transition_assignment_gap_gate(helium_sources: dict, helium_assignments: dict) -> dict:
     rows = helium_sources["neutral_helium_lines"]
+    assignments = helium_assignments["assignments"]
     target_rows = []
     for row in rows:
         wavelength_nm = float(row["wavelength_nm"])
         frequency_hz = SPEED_OF_LIGHT_M_PER_S / (wavelength_nm * 1e-9)
         photon_energy_ev = PLANCK_EV_S * frequency_hz
+        assignment, assignment_delta_nm = _nearest_helium_assignment(wavelength_nm, assignments)
+        if assignment:
+            level_delta_cm_inverse = assignment["upper_energy_cm_inverse"] - assignment["lower_energy_cm_inverse"]
+            transition_assignment_status = "assigned_component"
+            assignment_payload = {
+                "matched_assignment_wavelength_nm": assignment["wavelength_nm"],
+                "matching_delta_nm": assignment_delta_nm,
+                "lower_energy_cm_inverse": assignment["lower_energy_cm_inverse"],
+                "upper_energy_cm_inverse": assignment["upper_energy_cm_inverse"],
+                "level_delta_cm_inverse": level_delta_cm_inverse,
+                "lower_configuration": assignment["lower_configuration"],
+                "lower_term": assignment["lower_term"],
+                "lower_j": assignment["lower_j"],
+                "upper_configuration": assignment["upper_configuration"],
+                "upper_term": assignment["upper_term"],
+                "upper_j": assignment["upper_j"],
+                "source_locator": assignment["source_locator"],
+            }
+        else:
+            transition_assignment_status = "missing_term_labels_and_upper_lower_states"
+            assignment_payload = {
+                "nearest_assignment_delta_nm": assignment_delta_nm,
+            }
         target_rows.append(
             {
                 "species": row["species"],
@@ -993,17 +1028,21 @@ def build_helium_transition_assignment_gap_gate(helium_sources: dict) -> dict:
                 "relative_intensity": row["relative_intensity"],
                 "photon_energy_ev": photon_energy_ev,
                 "source_status": row["source_status"],
-                "transition_assignment_status": "missing_term_labels_and_upper_lower_states",
+                "transition_assignment_status": transition_assignment_status,
+                "assignment": assignment_payload,
             }
         )
     energies = [row["photon_energy_ev"] for row in target_rows]
+    assigned_count = sum(1 for row in target_rows if row["transition_assignment_status"] == "assigned_component")
+    missing_count = len(target_rows) - assigned_count
     return {
         "schema_version": "1.0",
         "role": "neutral_helium_transition_assignment_gap_gate",
-        "status": "SOURCE_ENERGIES_COMPUTED_TRANSITION_ASSIGNMENT_BLOCKED",
+        "status": "PARTIAL_TERM_ASSIGNMENTS_READY_MODEL_BLOCKED",
         "claim_class": "photon_energy_source_diagnostic_only_no_helium_validation",
         "formula_id": "AT20-HELIUM-PHOTON-ENERGY-GAP",
         "formula": "E_photon = h c / lambda",
+        "assignment_source": helium_assignments["source"],
         "constants": {
             "speed_of_light_m_per_s": SPEED_OF_LIGHT_M_PER_S,
             "planck_constant_ev_s": PLANCK_EV_S,
@@ -1013,23 +1052,22 @@ def build_helium_transition_assignment_gap_gate(helium_sources: dict) -> dict:
             "min_photon_energy_ev": min(energies),
             "max_photon_energy_ev": max(energies),
             "energy_span_ev": max(energies) - min(energies),
-            "rows_missing_transition_assignment": len(target_rows),
+            "rows_with_transition_assignment": assigned_count,
+            "rows_missing_transition_assignment": missing_count,
         },
         "targets": target_rows,
         "blocked_residual_model_requirements": [
-            "source term labels for upper and lower states",
-            "singlet/triplet assignment",
-            "configuration labels and parity/J values",
+            "remaining source term labels for unassigned rows",
             "two-electron Hamiltonian/correlation model",
             "transition selection-rule policy",
             "wavelength medium and uncertainty normalization",
         ],
         "limitations": [
             "This gate computes photon energies from source wavelengths only.",
-            "It cannot compute neutral-helium residuals without upper/lower term assignments.",
+            "It cannot compute neutral-helium residuals until all source rows have term assignments and wavelength medium normalization.",
             "It is not a hydrogenic, two-electron, correlation, fine-structure, QED, or UET validation artifact.",
         ],
-        "claim_boundary": "This gate only narrows the neutral-helium blocker to missing transition assignments and many-electron model requirements. It cannot be cited as helium-spectrum validation.",
+        "claim_boundary": helium_assignments["claim_boundary"],
     }
 
 
@@ -1180,11 +1218,11 @@ def build_atomic_claim_scope_gate(
                 "source_evidence_readiness": "source_package_ready_model_blocked",
             },
             {
-                "claim": "Neutral helium source wavelengths have photon energies computed, but transition assignments are still blocker-gated.",
+                "claim": "Neutral helium source wavelengths have photon energies computed and partial term assignments source-locked, but residual modeling remains blocker-gated.",
                 "status": helium_transition_assignment_gap_gate["status"],
                 "artifact_role": "neutral helium transition-assignment gap gate",
                 "metrics": helium_transition_assignment_gap_gate["metrics"],
-                "source_evidence_readiness": "source_energies_ready_transition_assignment_blocked",
+                "source_evidence_readiness": "partial_term_assignments_ready_model_blocked",
             },
         ],
         "blocked_claims": [
@@ -1224,7 +1262,7 @@ def build_atomic_claim_scope_gate(
             {
                 "claim": "UET validates helium, many-electron atoms, or general atomic theory.",
                 "status": "BLOCKED",
-                "blocking_reason": "Neutral helium source rows and photon energies are now packaged, but source term assignments and a two-electron Hamiltonian/correlation residual artifact are still missing.",
+                "blocking_reason": "Neutral helium source rows, photon energies, and partial term assignments are now packaged, but one visible row, wavelength-medium normalization, and a two-electron Hamiltonian/correlation residual artifact are still missing.",
                 "next_evidence_required": [
                     "upper/lower term assignments for each He I source row",
                     "two-electron Hamiltonian/correlation model",
@@ -1277,6 +1315,7 @@ def run_rydberg_analysis():
     hyperfine_21cm_sources = load_json(HYDROGEN_HYPERFINE_21CM_PATH)
     hyperfine_fermi_constants = load_json(HYDROGEN_HYPERFINE_FERMI_CONSTANTS_PATH)
     helium_sources = load_json(HELIUM_MANY_ELECTRON_PATH)
+    helium_assignments = load_json(HELIUM_TRANSITION_ASSIGNMENTS_PATH)
     source_evidence_intake_stub = build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = build_source_evidence_readiness_matrix()
     branch_claim_gate = build_branch_claim_gate()
@@ -1341,7 +1380,9 @@ def run_rydberg_analysis():
         hyperfine_21cm_gate, hyperfine_fermi_constants, codata
     )
     helium_many_electron_gate = build_helium_many_electron_gate(helium_sources)
-    helium_transition_assignment_gap_gate = build_helium_transition_assignment_gap_gate(helium_sources)
+    helium_transition_assignment_gap_gate = build_helium_transition_assignment_gap_gate(
+        helium_sources, helium_assignments
+    )
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
         avg_error_ppm,
@@ -1436,6 +1477,13 @@ def run_rydberg_analysis():
                 "status": helium_sources.get("status"),
                 "source_rows": [row["wavelength_nm"] for row in helium_sources["neutral_helium_lines"]],
             },
+            {
+                "path": str(HELIUM_TRANSITION_ASSIGNMENTS_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(HELIUM_TRANSITION_ASSIGNMENTS_PATH),
+                "source": helium_assignments.get("purpose"),
+                "status": helium_assignments.get("status"),
+                "source_rows": [row["wavelength_nm"] for row in helium_assignments["assignments"]],
+            },
         ],
         "formula_ids": [
             "AT20-PHOTON-TRANSITION",
@@ -1493,6 +1541,7 @@ def run_rydberg_analysis():
             "helium_required_model_components": len(helium_many_electron_gate["required_model_components"]),
             "helium_photon_energy_min_ev": helium_transition_assignment_gap_gate["metrics"]["min_photon_energy_ev"],
             "helium_photon_energy_max_ev": helium_transition_assignment_gap_gate["metrics"]["max_photon_energy_ev"],
+            "helium_rows_with_transition_assignment": helium_transition_assignment_gap_gate["metrics"]["rows_with_transition_assignment"],
             "helium_rows_missing_transition_assignment": helium_transition_assignment_gap_gate["metrics"]["rows_missing_transition_assignment"],
         },
         "results": results,
@@ -1503,7 +1552,7 @@ def run_rydberg_analysis():
             "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
             "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark; C VI is a higher-Z stress test until fine/QED policy and broader ion coverage are added.",
             "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines plus 21 cm source/Fermi gates are diagnostics only and do not validate hyperfine Hamiltonian closure, QED, helium, or many-electron atoms.",
-            "Neutral helium rows have photon energies computed but still lack term assignments and do not validate electron correlation or many-electron spectra.",
+            "Neutral helium rows have photon energies and partial term assignments computed but still do not validate electron correlation or many-electron spectra.",
         ],
     }
     artifact["atomic_formula_bridge_manifest"] = {

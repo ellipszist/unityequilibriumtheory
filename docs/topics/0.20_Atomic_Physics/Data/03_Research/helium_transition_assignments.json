@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.20_Atomic_Physics",
+  "purpose": "Partial source-locked term assignments for neutral helium visible lines from the NIST persistent-lines table.",
+  "status": "PARTIAL_SOURCE_PACKAGE_READY_MODEL_BLOCKED",
+  "source": {
+    "name": "NIST Handbook of Basic Atomic Spectroscopic Data, Persistent Lines of Neutral Helium",
+    "url": "https://physics.nist.gov/PhysRefData/Handbook/Tables/heliumtable3_a.htm",
+    "source_status": "primary_nist_handbook_persistent_lines_table",
+    "wavelength_medium": "air for visible/near-IR rows listed in the handbook"
+  },
+  "assignments": [
+    {
+      "wavelength_nm": 388.86489,
+      "matching_source_target_nm": 388.8648,
+      "assignment_status": "assigned_component",
+      "lower_energy_cm_inverse": 159855.9745,
+      "lower_configuration": "1s 2s",
+      "lower_term": "3S",
+      "lower_j": 1,
+      "upper_energy_cm_inverse": 185564.5620,
+      "upper_configuration": "1s 3p",
+      "upper_term": "3P*",
+      "upper_j": 2,
+      "source_locator": "Persistent Lines of Neutral Helium table; 3888.6489 A component"
+    },
+    {
+      "wavelength_nm": 587.56148,
+      "matching_source_target_nm": 587.56148,
+      "assignment_status": "assigned_component",
+      "lower_energy_cm_inverse": 169086.7666,
+      "lower_configuration": "1s 2p",
+      "lower_term": "3P*",
+      "lower_j": 2,
+      "upper_energy_cm_inverse": 186101.5463,
+      "upper_configuration": "1s 3d",
+      "upper_term": "3D",
+      "upper_j": 3,
+      "source_locator": "Persistent Lines of Neutral Helium table; 5875.6148 A component"
+    },
+    {
+      "wavelength_nm": 667.81517,
+      "matching_source_target_nm": 667.8151,
+      "assignment_status": "assigned_component",
+      "lower_energy_cm_inverse": 171134.8970,
+      "lower_configuration": "1s 2p",
+      "lower_term": "1P*",
+      "lower_j": 1,
+      "upper_energy_cm_inverse": 186104.9668,
+      "upper_configuration": "1s 3d",
+      "upper_term": "1D",
+      "upper_j": 2,
+      "source_locator": "Persistent Lines of Neutral Helium table; 6678.1517 A component"
+    },
+    {
+      "wavelength_nm": 706.51771,
+      "matching_source_target_nm": 706.5177,
+      "assignment_status": "assigned_component",
+      "lower_energy_cm_inverse": 169086.7666,
+      "lower_configuration": "1s 2p",
+      "lower_term": "3P*",
+      "lower_j": 2,
+      "upper_energy_cm_inverse": 183236.7918,
+      "upper_configuration": "1s 3s",
+      "upper_term": "3S",
+      "upper_j": 1,
+      "source_locator": "Persistent Lines of Neutral Helium table; 7065.1771 A component"
+    }
+  ],
+  "known_missing_assignments": [
+    {
+      "wavelength_nm": 447.148,
+      "reason": "Present in the NIST strong-lines table but not in the selected persistent-lines source package opened for this pass.",
+      "next_action": "Capture an ASD or primary table row with lower/upper configuration, term, J, and level energies."
+    }
+  ],
+  "claim_boundary": "These assignments support term-label source readiness only. They do not validate a two-electron Hamiltonian, electron correlation, transition probabilities, or neutral-helium spectral prediction."
+}
