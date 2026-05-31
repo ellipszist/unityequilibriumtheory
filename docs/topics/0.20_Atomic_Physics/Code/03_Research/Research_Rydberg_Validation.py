@@ -46,6 +46,7 @@ HYDROGEN_HYPERFINE_21CM_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_hy
 HYDROGEN_HYPERFINE_FERMI_CONSTANTS_PATH = TOPIC_DIR / "Data" / "03_Research" / "hydrogen_hyperfine_fermi_constants.json"
 HELIUM_MANY_ELECTRON_PATH = TOPIC_DIR / "Data" / "03_Research" / "helium_many_electron_sources.json"
 HELIUM_TRANSITION_ASSIGNMENTS_PATH = TOPIC_DIR / "Data" / "03_Research" / "helium_transition_assignments.json"
+HELIUM_GROUND_STATE_ENERGY_PATH = TOPIC_DIR / "Data" / "03_Research" / "helium_ground_state_energy_sources.json"
 ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_20_atomic_physics_verification.json"
 SOURCE_EVIDENCE_INTAKE_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_intake_stub.json"
 SOURCE_EVIDENCE_READINESS_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_readiness_matrix.json"
@@ -53,6 +54,7 @@ BRANCH_CLAIM_GATE_PATH = TOPIC_DIR / "Data" / "03_Research" / "branch_claim_gate
 ATOMIC_FORMULA_BRIDGE_PATH = TOPIC_DIR / "Data" / "03_Research" / "atomic_formula_bridge_manifest.json"
 SPEED_OF_LIGHT_M_PER_S = 299_792_458.0
 PLANCK_EV_S = 4.135667696e-15
+ELEMENTARY_CHARGE_C = 1.602176634e-19
 
 
 def file_sha256(path):
@@ -329,7 +331,7 @@ def build_branch_claim_gate() -> dict:
                 "branch": "Helium and many-electron branch",
                 "status": "source_package_ready_model_blocked",
                 "allowed_usage_now": "May cite only as a prepared neutral-helium source package for future many-electron artifacts.",
-                "blocker_to_stronger_claim": "Need a two-electron Hamiltonian/correlation model, line-component/blend policy, uncertainty policy, and residual thresholds before helium or many-electron claims.",
+                "blocker_to_stronger_claim": "Need a correlated two-electron Hamiltonian/spectral model, uncertainty policy, and residual thresholds before helium or many-electron claims.",
             },
             {
                 "branch": "First-principles UET atomic theory claims",
@@ -1283,6 +1285,85 @@ def build_helium_line_component_policy_gate(helium_transition_assignment_gap_gat
     }
 
 
+def build_helium_ground_state_baseline_gate(helium_ground_sources: dict, codata: dict) -> dict:
+    rows_by_quantity = {row["quantity"]: row for row in helium_ground_sources["rows"]}
+    first_ie = rows_by_quantity["first_ionization_energy"]
+    second_ie = rows_by_quantity["second_ionization_energy"]
+    observed_total_binding_ev = first_ie["value_eV"] + second_ie["value_eV"]
+    observed_uncertainty_ev = (first_ie["uncertainty_eV"] ** 2 + second_ie["uncertainty_eV"] ** 2) ** 0.5
+    hartree_ev = codata["constants"]["E_h"]["value"] / ELEMENTARY_CHARGE_C
+
+    independent_binding_ev = 2.0 * second_ie["value_eV"]
+    independent_residual_ev = independent_binding_ev - observed_total_binding_ev
+    independent_residual_percent = independent_residual_ev / observed_total_binding_ev * 100.0
+
+    z = 2.0
+    zeta_opt = z - 5.0 / 16.0
+    variational_total_energy_hartree = zeta_opt**2 - 2.0 * z * zeta_opt + 5.0 * zeta_opt / 8.0
+    variational_binding_ev = -variational_total_energy_hartree * hartree_ev
+    variational_residual_ev = variational_binding_ev - observed_total_binding_ev
+    variational_residual_percent = variational_residual_ev / observed_total_binding_ev * 100.0
+
+    return {
+        "schema_version": "1.0",
+        "role": "neutral_helium_ground_state_two_electron_baseline_gate",
+        "status": "BASELINE_RESIDUAL_COMPUTED_CORRELATION_MODEL_BLOCKED",
+        "claim_class": "diagnostic_two_electron_baseline_only_no_helium_validation",
+        "formula_ids": [
+            "AT20-HELIUM-INDEPENDENT-ELECTRON-BASELINE",
+            "AT20-HELIUM-VARIATIONAL-ZETA-BASELINE",
+        ],
+        "source": helium_ground_sources["source"],
+        "observed_anchor": {
+            "first_ionization_energy_eV": first_ie["value_eV"],
+            "second_ionization_energy_eV": second_ie["value_eV"],
+            "total_binding_energy_eV": observed_total_binding_ev,
+            "total_binding_uncertainty_eV": observed_uncertainty_ev,
+            "source_policy": "Neutral helium total binding is IE1(He I) + IE2(He II) from the NIST ASD ionization-energy query.",
+        },
+        "constants": {
+            "hartree_energy_eV": hartree_ev,
+            "elementary_charge_C_exact": ELEMENTARY_CHARGE_C,
+        },
+        "baselines": [
+            {
+                "baseline_id": "independent_hydrogenic_Z2_no_electron_electron_repulsion",
+                "formula": "E_bind = 2 * IE2(He II)",
+                "predicted_total_binding_eV": independent_binding_ev,
+                "residual_eV_predicted_minus_observed": independent_residual_ev,
+                "absolute_residual_eV": abs(independent_residual_ev),
+                "residual_percent": independent_residual_percent,
+                "interpretation": "Overbinds because it treats both electrons as independent Z=2 hydrogenic electrons and omits electron-electron repulsion/screening.",
+            },
+            {
+                "baseline_id": "uncorrelated_variational_effective_charge_1s2",
+                "formula": "E(zeta) = zeta^2 - 2 Z zeta + (5/8) zeta Hartree; zeta = Z - 5/16",
+                "z": z,
+                "zeta_opt": zeta_opt,
+                "predicted_total_energy_hartree": variational_total_energy_hartree,
+                "predicted_total_binding_eV": variational_binding_ev,
+                "residual_eV_predicted_minus_observed": variational_residual_ev,
+                "absolute_residual_eV": abs(variational_residual_ev),
+                "residual_percent": variational_residual_percent,
+                "interpretation": "Captures a first electron-electron repulsion/screening correction but remains an uncorrelated 1s^2 variational baseline.",
+            },
+        ],
+        "blocked_residual_model_requirements": [
+            "correlated two-electron wavefunction or configuration-interaction basis",
+            "singlet/triplet excited-state Hamiltonian residuals",
+            "relativistic and QED correction policy",
+            "uncertainty propagation and pass/fail thresholds",
+        ],
+        "limitations": [
+            "This is a ground-state baseline diagnostic, not a neutral-helium spectral validation.",
+            "The independent-electron baseline intentionally fails as a missing-interaction diagnostic.",
+            "The variational effective-charge baseline is uncorrelated and cannot predict the visible transition set by itself.",
+            "No UET-specific derivation of the two-electron Hamiltonian is supplied here.",
+        ],
+        "claim_boundary": helium_ground_sources["claim_boundary"],
+    }
+
+
 def build_atomic_claim_scope_gate(
     status: str,
     avg_error_ppm: float,
@@ -1300,6 +1381,7 @@ def build_atomic_claim_scope_gate(
     helium_transition_assignment_gap_gate: dict,
     helium_medium_normalization_gate: dict,
     helium_line_component_policy_gate: dict,
+    helium_ground_state_baseline_gate: dict,
     source_evidence_readiness_matrix: dict,
     branch_claim_gate: dict,
 ) -> dict:
@@ -1452,6 +1534,17 @@ def build_atomic_claim_scope_gate(
                 "metrics": helium_line_component_policy_gate["metrics"],
                 "source_evidence_readiness": "source_component_policy_ready_model_blocked",
             },
+            {
+                "claim": "Neutral helium ground-state total binding is compared against independent-electron and uncorrelated variational two-electron baselines as residual diagnostics.",
+                "status": helium_ground_state_baseline_gate["status"],
+                "artifact_role": "neutral helium ground-state baseline residual gate",
+                "metrics": {
+                    "observed_total_binding_energy_eV": helium_ground_state_baseline_gate["observed_anchor"]["total_binding_energy_eV"],
+                    "independent_baseline_absolute_residual_eV": helium_ground_state_baseline_gate["baselines"][0]["absolute_residual_eV"],
+                    "variational_baseline_absolute_residual_eV": helium_ground_state_baseline_gate["baselines"][1]["absolute_residual_eV"],
+                },
+                "source_evidence_readiness": "source_ionization_energy_ready_correlation_model_blocked",
+            },
         ],
         "blocked_claims": [
             {
@@ -1490,9 +1583,9 @@ def build_atomic_claim_scope_gate(
             {
                 "claim": "UET validates helium, many-electron atoms, or general atomic theory.",
                 "status": "BLOCKED",
-                "blocking_reason": "Neutral helium source rows, photon energies, term assignments, wavelength-medium normalization, and line-component/blend policy are now packaged, but a two-electron Hamiltonian/correlation residual artifact is still missing.",
+                "blocking_reason": "Neutral helium source rows, photon energies, term assignments, wavelength-medium normalization, line-component/blend policy, and ground-state baseline residual diagnostics are now packaged, but a correlated two-electron Hamiltonian/spectral residual artifact is still missing.",
                 "next_evidence_required": [
-                    "two-electron Hamiltonian/correlation model",
+                    "correlated two-electron Hamiltonian/spectral model",
                     "uncertainty-aware residual thresholds",
                     "multi-atom benchmark suite",
                 ],
@@ -1542,6 +1635,7 @@ def run_rydberg_analysis():
     hyperfine_fermi_constants = load_json(HYDROGEN_HYPERFINE_FERMI_CONSTANTS_PATH)
     helium_sources = load_json(HELIUM_MANY_ELECTRON_PATH)
     helium_assignments = load_json(HELIUM_TRANSITION_ASSIGNMENTS_PATH)
+    helium_ground_sources = load_json(HELIUM_GROUND_STATE_ENERGY_PATH)
     source_evidence_intake_stub = build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = build_source_evidence_readiness_matrix()
     branch_claim_gate = build_branch_claim_gate()
@@ -1615,6 +1709,9 @@ def run_rydberg_analysis():
     helium_line_component_policy_gate = build_helium_line_component_policy_gate(
         helium_transition_assignment_gap_gate
     )
+    helium_ground_state_baseline_gate = build_helium_ground_state_baseline_gate(
+        helium_ground_sources, codata
+    )
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
         avg_error_ppm,
@@ -1632,6 +1729,7 @@ def run_rydberg_analysis():
         helium_transition_assignment_gap_gate,
         helium_medium_normalization_gate,
         helium_line_component_policy_gate,
+        helium_ground_state_baseline_gate,
         source_evidence_readiness_matrix,
         branch_claim_gate,
     )
@@ -1718,6 +1816,13 @@ def run_rydberg_analysis():
                 "status": helium_assignments.get("status"),
                 "source_rows": [row["wavelength_nm"] for row in helium_assignments["assignments"]],
             },
+            {
+                "path": str(HELIUM_GROUND_STATE_ENERGY_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(HELIUM_GROUND_STATE_ENERGY_PATH),
+                "source": helium_ground_sources.get("purpose"),
+                "status": helium_ground_sources.get("status"),
+                "source_rows": [row["quantity"] for row in helium_ground_sources["rows"]],
+            },
         ],
         "formula_ids": [
             "AT20-PHOTON-TRANSITION",
@@ -1738,6 +1843,8 @@ def run_rydberg_analysis():
             "AT20-HELIUM-PHOTON-ENERGY-GAP",
             "AT20-HELIUM-MEDIUM-NORMALIZATION-GAP",
             "AT20-HELIUM-LINE-COMPONENT-POLICY-GAP",
+            "AT20-HELIUM-INDEPENDENT-ELECTRON-BASELINE",
+            "AT20-HELIUM-VARIATIONAL-ZETA-BASELINE",
             "AT20-UET-ATOMIC-BRIDGE-GATE",
         ],
         "threshold": threshold,
@@ -1787,6 +1894,9 @@ def run_rydberg_analysis():
             "helium_blend_rows": helium_line_component_policy_gate["metrics"]["blend_rows"],
             "helium_components_checked": helium_line_component_policy_gate["metrics"]["total_components_checked"],
             "helium_e1_allowed_components": helium_line_component_policy_gate["metrics"]["e1_allowed_components"],
+            "helium_ground_observed_total_binding_eV": helium_ground_state_baseline_gate["observed_anchor"]["total_binding_energy_eV"],
+            "helium_ground_independent_baseline_residual_eV": helium_ground_state_baseline_gate["baselines"][0]["absolute_residual_eV"],
+            "helium_ground_variational_baseline_residual_eV": helium_ground_state_baseline_gate["baselines"][1]["absolute_residual_eV"],
         },
         "results": results,
         "limitations": [
@@ -1796,7 +1906,7 @@ def run_rydberg_analysis():
             "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
             "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark; C VI is a higher-Z stress test until fine/QED policy and broader ion coverage are added.",
             "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines plus 21 cm source/Fermi gates are diagnostics only and do not validate hyperfine Hamiltonian closure, QED, helium, or many-electron atoms.",
-            "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, and line-component policy computed but still do not validate electron correlation or many-electron spectra.",
+            "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, line-component policy, and ground-state baseline residuals computed but still do not validate electron correlation or many-electron spectra.",
         ],
     }
     artifact["atomic_formula_bridge_manifest"] = {
@@ -1818,6 +1928,7 @@ def run_rydberg_analysis():
     artifact["helium_transition_assignment_gap_gate"] = helium_transition_assignment_gap_gate
     artifact["helium_medium_normalization_gate"] = helium_medium_normalization_gate
     artifact["helium_line_component_policy_gate"] = helium_line_component_policy_gate
+    artifact["helium_ground_state_baseline_gate"] = helium_ground_state_baseline_gate
     artifact["source_evidence_intake_stub"] = {
         "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
         "sha256": sha256(json.dumps(source_evidence_intake_stub, sort_keys=True).encode("utf-8")).hexdigest(),
@@ -1841,7 +1952,7 @@ def run_rydberg_analysis():
         "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, "
         "an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, "
         "a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark plus C VI stress-test lane, "
-        "a precision spectroscopy source gate, and a neutral helium source/assignment/medium-normalization/component-policy gate. It does not validate full atomic theory, "
+        "a precision spectroscopy source gate, and a neutral helium source/assignment/medium-normalization/component-policy/ground-baseline gate. It does not validate full atomic theory, "
         "fine structure, Lamb shift, hyperfine structure, QED corrections, broad hydrogen-like ion coverage, "
         "neutral helium residuals, or many-electron physics."
     )

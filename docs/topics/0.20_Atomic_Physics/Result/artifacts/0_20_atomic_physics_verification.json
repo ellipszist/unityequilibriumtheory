@@ -173,6 +173,17 @@
         },
         "source_evidence_readiness": "source_component_policy_ready_model_blocked",
         "status": "SOURCE_COMPONENT_POLICY_READY_MODEL_BLOCKED"
+      },
+      {
+        "artifact_role": "neutral helium ground-state baseline residual gate",
+        "claim": "Neutral helium ground-state total binding is compared against independent-electron and uncorrelated variational two-electron baselines as residual diagnostics.",
+        "metrics": {
+          "independent_baseline_absolute_residual_eV": 29.83037651720001,
+          "observed_total_binding_energy_eV": 79.00515453919999,
+          "variational_baseline_absolute_residual_eV": 1.5164804246481225
+        },
+        "source_evidence_readiness": "source_ionization_energy_ready_correlation_model_blocked",
+        "status": "BASELINE_RESIDUAL_COMPUTED_CORRELATION_MODEL_BLOCKED"
       }
     ],
     "blocked_claims": [
@@ -210,10 +221,10 @@
         "status": "BLOCKED"
       },
       {
-        "blocking_reason": "Neutral helium source rows, photon energies, term assignments, wavelength-medium normalization, and line-component/blend policy are now packaged, but a two-electron Hamiltonian/correlation residual artifact is still missing.",
+        "blocking_reason": "Neutral helium source rows, photon energies, term assignments, wavelength-medium normalization, line-component/blend policy, and ground-state baseline residual diagnostics are now packaged, but a correlated two-electron Hamiltonian/spectral residual artifact is still missing.",
         "claim": "UET validates helium, many-electron atoms, or general atomic theory.",
         "next_evidence_required": [
-          "two-electron Hamiltonian/correlation model",
+          "correlated two-electron Hamiltonian/spectral model",
           "uncertainty-aware residual thresholds",
           "multi-atom benchmark suite"
         ],
@@ -270,7 +281,7 @@
   "branch_claim_gate": {
     "claim_boundary": "This gate keeps the topic at hydrogen benchmark status, not full atomic-theory closure.",
     "path": "Data/03_Research/branch_claim_gate.json",
-    "sha256": "0c7d6da2b31a43eabc86b8cbb74560a0a22d9498b33aebd8ad8dbf5afb4e6433",
+    "sha256": "c526d51d8834d9167519350102bec50a106a84f690e30e32ca082d712bc0c0eb",
     "summary": {
       "accepted_now": 5,
       "blocked_for_strong_claims": 3,
@@ -302,9 +313,74 @@
     "AT20-HELIUM-PHOTON-ENERGY-GAP",
     "AT20-HELIUM-MEDIUM-NORMALIZATION-GAP",
     "AT20-HELIUM-LINE-COMPONENT-POLICY-GAP",
+    "AT20-HELIUM-INDEPENDENT-ELECTRON-BASELINE",
+    "AT20-HELIUM-VARIATIONAL-ZETA-BASELINE",
     "AT20-UET-ATOMIC-BRIDGE-GATE"
   ],
-  "generated_at_utc": "2026-05-31T19:44:02.517177+00:00",
+  "generated_at_utc": "2026-05-31T19:53:04.224348+00:00",
+  "helium_ground_state_baseline_gate": {
+    "baselines": [
+      {
+        "absolute_residual_eV": 29.83037651720001,
+        "baseline_id": "independent_hydrogenic_Z2_no_electron_electron_repulsion",
+        "formula": "E_bind = 2 * IE2(He II)",
+        "interpretation": "Overbinds because it treats both electrons as independent Z=2 hydrogenic electrons and omits electron-electron repulsion/screening.",
+        "predicted_total_binding_eV": 108.8355310564,
+        "residual_eV_predicted_minus_observed": 29.83037651720001,
+        "residual_percent": 37.75750669837507
+      },
+      {
+        "absolute_residual_eV": 1.5164804246481225,
+        "baseline_id": "uncorrelated_variational_effective_charge_1s2",
+        "formula": "E(zeta) = zeta^2 - 2 Z zeta + (5/8) zeta Hartree; zeta = Z - 5/16",
+        "interpretation": "Captures a first electron-electron repulsion/screening correction but remains an uncorrelated 1s^2 variational baseline.",
+        "predicted_total_binding_eV": 77.48867411455187,
+        "predicted_total_energy_hartree": -2.84765625,
+        "residual_eV_predicted_minus_observed": -1.5164804246481225,
+        "residual_percent": -1.9194702339271932,
+        "z": 2.0,
+        "zeta_opt": 1.6875
+      }
+    ],
+    "blocked_residual_model_requirements": [
+      "correlated two-electron wavefunction or configuration-interaction basis",
+      "singlet/triplet excited-state Hamiltonian residuals",
+      "relativistic and QED correction policy",
+      "uncertainty propagation and pass/fail thresholds"
+    ],
+    "claim_boundary": "These source rows support helium ground-state residual diagnostics only. They do not validate a two-electron Hamiltonian, electron correlation, excited-state spectra, transition amplitudes, or UET first-principles atomic theory.",
+    "claim_class": "diagnostic_two_electron_baseline_only_no_helium_validation",
+    "constants": {
+      "elementary_charge_C_exact": 1.602176634e-19,
+      "hartree_energy_eV": 27.211386245988034
+    },
+    "formula_ids": [
+      "AT20-HELIUM-INDEPENDENT-ELECTRON-BASELINE",
+      "AT20-HELIUM-VARIATIONAL-ZETA-BASELINE"
+    ],
+    "limitations": [
+      "This is a ground-state baseline diagnostic, not a neutral-helium spectral validation.",
+      "The independent-electron baseline intentionally fails as a missing-interaction diagnostic.",
+      "The variational effective-charge baseline is uncorrelated and cannot predict the visible transition set by itself.",
+      "No UET-specific derivation of the two-electron Hamiltonian is supplied here."
+    ],
+    "observed_anchor": {
+      "first_ionization_energy_eV": 24.587389011,
+      "second_ionization_energy_eV": 54.4177655282,
+      "source_policy": "Neutral helium total binding is IE1(He I) + IE2(He II) from the NIST ASD ionization-energy query.",
+      "total_binding_energy_eV": 79.00515453919999,
+      "total_binding_uncertainty_eV": 2.5019992006393606e-08
+    },
+    "role": "neutral_helium_ground_state_two_electron_baseline_gate",
+    "schema_version": "1.0",
+    "source": {
+      "doi": "10.18434/T4W30F",
+      "name": "NIST Atomic Spectra Database Ionization Energies Data, He all spectra",
+      "source_status": "primary_nist_asd_ionization_energy_query",
+      "url": "https://physics.nist.gov/cgi-bin/ASD/ie.pl?at_num_out=1&biblio=1&e_out=0&el_name_out=1&ion_charge_out=1&spectra=helium&unc_out=1&units=1"
+    },
+    "status": "BASELINE_RESIDUAL_COMPUTED_CORRELATION_MODEL_BLOCKED"
+  },
   "helium_line_component_policy_gate": {
     "blocked_residual_model_requirements": [
       "two-electron Hamiltonian/correlation model",
@@ -1240,9 +1316,19 @@
         706.51771
       ],
       "status": "SOURCE_ASSIGNMENTS_READY_MODEL_BLOCKED"
+    },
+    {
+      "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/helium_ground_state_energy_sources.json",
+      "sha256": "61a8c81ba77f94d02464f06a15673dc691def05dcef161f96270f0cad88f6941",
+      "source": "Source-locked helium ground-state ionization-energy anchors for conservative two-electron baseline residual diagnostics.",
+      "source_rows": [
+        "first_ionization_energy",
+        "second_ionization_energy"
+      ],
+      "status": "SOURCE_PACKAGE_READY_MODEL_BLOCKED"
     }
   ],
-  "interpretation": "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark plus C VI stress-test lane, a precision spectroscopy source gate, and a neutral helium source/assignment/medium-normalization/component-policy gate. It does not validate full atomic theory, fine structure, Lamb shift, hyperfine structure, QED corrections, broad hydrogen-like ion coverage, neutral helium residuals, or many-electron physics.",
+  "interpretation": "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark plus C VI stress-test lane, a precision spectroscopy source gate, and a neutral helium source/assignment/medium-normalization/component-policy/ground-baseline gate. It does not validate full atomic theory, fine structure, Lamb shift, hyperfine structure, QED corrections, broad hydrogen-like ion coverage, neutral helium residuals, or many-electron physics.",
   "lamb_shift_handoff_gate": {
     "claim_boundary": "This package can estimate the empirical Lamb-shift gap in the 1S-2S residual, but it does not validate QED, proton-size corrections, hyperfine structure, or UET first-principles atomic theory.",
     "claim_class": "empirical_lamb_handoff_only_no_qed_validation",
@@ -1308,7 +1394,7 @@
     "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
     "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark; C VI is a higher-Z stress test until fine/QED policy and broader ion coverage are added.",
     "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines plus 21 cm source/Fermi gates are diagnostics only and do not validate hyperfine Hamiltonian closure, QED, helium, or many-electron atoms.",
-    "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, and line-component policy computed but still do not validate electron correlation or many-electron spectra."
+    "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, line-component policy, and ground-state baseline residuals computed but still do not validate electron correlation or many-electron spectra."
   ],
   "metrics": {
     "R_H_codata_m_inverse": 10967758.3406,
@@ -1324,6 +1410,9 @@
     "helium_component_policy_rows": 5,
     "helium_components_checked": 10,
     "helium_e1_allowed_components": 10,
+    "helium_ground_independent_baseline_residual_eV": 29.83037651720001,
+    "helium_ground_observed_total_binding_eV": 79.00515453919999,
+    "helium_ground_variational_baseline_residual_eV": 1.5164804246481225,
     "helium_medium_normalized_rows": 5,
     "helium_medium_rows_missing_normalization": 0,
     "helium_photon_energy_max_ev": 3.1883625981447454,
