@@ -9,7 +9,7 @@
 - Hydrogen-like ion rows now support only a provisional selected He+/Li2+ reduced-mass benchmark plus a C VI higher-Z stress-test lane. Li III still needs direct primary ASD capture, and the gate does not validate broad hydrogen-like ion coverage.
 - The selected He+/Li2+ and C VI ion rows use representative source wavelengths/blends; they do not resolve or validate fine-structure/QED components.
 - Precision spectroscopy rows for 1S-2S, Lamb shift, and 21 cm hyperfine support source-package targets plus nonrelativistic, leading Dirac, empirical Lamb-handoff 1S-2S residual diagnostics, 21 cm wavelength bookkeeping, and a leading Fermi-contact hyperfine baseline only. No first-principles QED/recoil/proton-radius/hyperfine Hamiltonian residual model is primary-gated yet.
-- Neutral helium rows are source-package targets with photon energies and partial NIST term assignments computed only. One source row still lacks an assignment, and the two-electron Hamiltonian, correlation treatment, term mapping, and many-electron residual model are not primary-gated yet.
+- Neutral helium rows are source-package targets with photon energies and NIST term assignments computed only. Wavelength-medium normalization, the two-electron Hamiltonian, correlation treatment, selection-rule policy, and many-electron residual model are not primary-gated yet.
 - Local spectral rows may be rounded or curated; source-table transcription precision should be audited before public ppm claims.
 - Air wavelengths are present in the data but the primary metric uses vacuum wavelengths only.
 - The engine has a local rounded `R_H = 1.09677e7 m^-1`; ppm-level claims should use the CODATA working copy instead.

@@ -1,12 +1,13 @@
 {
   "schema_version": "1.0",
   "topic": "0.20_Atomic_Physics",
-  "purpose": "Partial source-locked term assignments for neutral helium visible lines from the NIST persistent-lines table.",
-  "status": "PARTIAL_SOURCE_PACKAGE_READY_MODEL_BLOCKED",
+  "purpose": "Source-locked term assignments for selected neutral helium visible lines from NIST handbook and ASD line records.",
+  "status": "SOURCE_ASSIGNMENTS_READY_MODEL_BLOCKED",
   "source": {
-    "name": "NIST Handbook of Basic Atomic Spectroscopic Data, Persistent Lines of Neutral Helium",
+    "name": "NIST Handbook of Basic Atomic Spectroscopic Data and NIST Atomic Spectra Database line query",
     "url": "https://physics.nist.gov/PhysRefData/Handbook/Tables/heliumtable3_a.htm",
-    "source_status": "primary_nist_handbook_persistent_lines_table",
+    "secondary_url_for_447_nm_blend": "https://physics.nist.gov/cgi-bin/ASD/lines1.pl?spectra=He%20I&low_w=4470&upp_w=4472&unit=0&submit=Retrieve%20Data&format=1&line_out=0&en_unit=0&output=0&page_size=15&show_obs_wl=1&show_calc_wl=1&show_wn=1&unc_out=1&order_out=0&show_av=2&A_out=0&intens_out=1&allowed_out=1&forbid_out=1&conf_out=1&term_out=1&enrg_out=1&J_out=1&remove_js=1&no_spaces=1",
+    "source_status": "primary_nist_handbook_persistent_lines_table_plus_nist_asd_line_query",
     "wavelength_medium": "air for visible/near-IR rows listed in the handbook"
   },
   "assignments": [
@@ -23,6 +24,20 @@
       "upper_term": "3P*",
       "upper_j": 2,
       "source_locator": "Persistent Lines of Neutral Helium table; 3888.6489 A component"
+    },
+    {
+      "wavelength_nm": 447.14802,
+      "matching_source_target_nm": 447.148,
+      "assignment_status": "assigned_blend_component",
+      "lower_energy_cm_inverse": 169086.76391031,
+      "lower_configuration": "1s.2p",
+      "lower_term": "3P*",
+      "lower_j": 2,
+      "upper_energy_cm_inverse": 191444.47832914,
+      "upper_configuration": "1s.4d",
+      "upper_term": "3D",
+      "upper_j": 3,
+      "source_locator": "NIST ASD He I line query, wavelength range 4470-4472 A; observed 4471.4802 A blend component; Ritz 4471.474317 A; lower 1s.2p 3P* J=2; upper 1s.4d 3D J=3"
     },
     {
       "wavelength_nm": 587.56148,
@@ -67,12 +82,6 @@
       "source_locator": "Persistent Lines of Neutral Helium table; 7065.1771 A component"
     }
   ],
-  "known_missing_assignments": [
-    {
-      "wavelength_nm": 447.148,
-      "reason": "Present in the NIST strong-lines table but not in the selected persistent-lines source package opened for this pass.",
-      "next_action": "Capture an ASD or primary table row with lower/upper configuration, term, J, and level energies."
-    }
-  ],
+  "known_missing_assignments": [],
   "claim_boundary": "These assignments support term-label source readiness only. They do not validate a two-electron Hamiltonian, electron correlation, transition probabilities, or neutral-helium spectral prediction."
 }
