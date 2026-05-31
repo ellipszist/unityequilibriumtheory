@@ -1481,6 +1481,99 @@ def build_helium_excited_state_target_gate(
     }
 
 
+def parse_outer_principal_quantum_number(configuration: str) -> int | None:
+    orbital_tokens = re.findall(r"(\d+)\s*[spdfgh]", configuration.replace(".", " "), flags=re.IGNORECASE)
+    if not orbital_tokens:
+        return None
+    return int(orbital_tokens[-1])
+
+
+def build_helium_excited_hydrogenic_residual_gate(
+    codata: dict,
+    helium_ground_state_baseline_gate: dict,
+    helium_excited_state_target_gate: dict,
+) -> dict:
+    first_ionization_ev = helium_ground_state_baseline_gate["observed_anchor"]["first_ionization_energy_eV"]
+    r_infinity_ev = PLANCK_EV_S * SPEED_OF_LIGHT_M_PER_S * codata["constants"]["R_infinity"]["value"]
+    rows = []
+
+    for level in helium_excited_state_target_gate["levels"]:
+        n_outer = parse_outer_principal_quantum_number(level["configuration"])
+        if n_outer is None:
+            rows.append(
+                {
+                    **level,
+                    "outer_principal_quantum_number": None,
+                    "baseline_status": "SKIPPED_CONFIGURATION_N_NOT_PARSED",
+                }
+            )
+            continue
+
+        observed_outer_binding_ev = first_ionization_ev - level["excitation_energy_eV"]
+        zero_quantum_defect_binding_ev = r_infinity_ev / (n_outer**2)
+        residual_ev = zero_quantum_defect_binding_ev - observed_outer_binding_ev
+        effective_quantum_defect = (
+            n_outer - (r_infinity_ev / observed_outer_binding_ev) ** 0.5
+            if observed_outer_binding_ev > 0.0
+            else None
+        )
+        rows.append(
+            {
+                **level,
+                "outer_principal_quantum_number": n_outer,
+                "observed_outer_binding_to_HeII_limit_eV": observed_outer_binding_ev,
+                "zero_quantum_defect_hydrogenic_binding_eV": zero_quantum_defect_binding_ev,
+                "residual_eV_predicted_minus_observed": residual_ev,
+                "absolute_residual_eV": abs(residual_ev),
+                "effective_quantum_defect_from_source_level": effective_quantum_defect,
+                "baseline_status": "RESIDUAL_COMPUTED_MODEL_INCOMPLETE",
+            }
+        )
+
+    computed_rows = [row for row in rows if row["baseline_status"] == "RESIDUAL_COMPUTED_MODEL_INCOMPLETE"]
+    residuals = [row["absolute_residual_eV"] for row in computed_rows]
+    quantum_defects = [
+        row["effective_quantum_defect_from_source_level"]
+        for row in computed_rows
+        if row["effective_quantum_defect_from_source_level"] is not None
+    ]
+    return {
+        "schema_version": "1.0",
+        "role": "neutral_helium_excited_hydrogenic_residual_gate",
+        "status": "HYDROGENIC_BASELINE_RESIDUAL_COMPUTED_CORRELATION_MODEL_BLOCKED",
+        "claim_class": "diagnostic_single_active_electron_baseline_only_no_helium_validation",
+        "formula_id": "AT20-HELIUM-ZERO-QUANTUM-DEFECT-BASELINE",
+        "formula": "E_bind_pred = h c R_infinity / n^2; E_bind_observed = IE1(He I) - E_excitation",
+        "source_basis": "NIST He I ionization limit plus NIST term-level excitation energies from selected transition assignments.",
+        "metrics": {
+            "computed_level_count": len(computed_rows),
+            "skipped_level_count": len(rows) - len(computed_rows),
+            "average_abs_binding_residual_eV": float(np.mean(residuals)) if residuals else None,
+            "max_abs_binding_residual_eV": max(residuals) if residuals else None,
+            "min_effective_quantum_defect": min(quantum_defects) if quantum_defects else None,
+            "max_effective_quantum_defect": max(quantum_defects) if quantum_defects else None,
+        },
+        "constants": {
+            "R_infinity_m_inverse": codata["constants"]["R_infinity"]["value"],
+            "R_infinity_energy_eV": r_infinity_ev,
+            "first_ionization_energy_eV": first_ionization_ev,
+        },
+        "levels": rows,
+        "blocked_residual_model_requirements": [
+            "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
+            "correlated two-electron excited-state Hamiltonian residuals",
+            "transition-level residual thresholds separated from source wavelength-medium bookkeeping",
+            "uncertainty propagation for term energies and ionization limit",
+        ],
+        "limitations": [
+            "This baseline intentionally omits electron-core penetration, exchange, singlet/triplet splitting, and correlation.",
+            "Large residuals and nonzero quantum defects are constraints for the next model, not evidence that the source targets are wrong.",
+            "This gate still does not validate neutral-helium spectra or UET first-principles atomic theory.",
+        ],
+        "claim_boundary": "This gate supports only a diagnostic zero-quantum-defect residual baseline for selected He I excited levels. It cannot be cited as a helium spectral prediction or many-electron solution.",
+    }
+
+
 def build_atomic_claim_scope_gate(
     status: str,
     avg_error_ppm: float,
@@ -1500,6 +1593,7 @@ def build_atomic_claim_scope_gate(
     helium_line_component_policy_gate: dict,
     helium_ground_state_baseline_gate: dict,
     helium_excited_state_target_gate: dict,
+    helium_excited_hydrogenic_residual_gate: dict,
     source_evidence_readiness_matrix: dict,
     branch_claim_gate: dict,
 ) -> dict:
@@ -1671,6 +1765,13 @@ def build_atomic_claim_scope_gate(
                 "metrics": helium_excited_state_target_gate["metrics"],
                 "source_evidence_readiness": "source_excited_state_targets_ready_model_blocked",
             },
+            {
+                "claim": "A zero-quantum-defect hydrogenic residual baseline is computed for selected neutral-helium excited levels.",
+                "status": helium_excited_hydrogenic_residual_gate["status"],
+                "artifact_role": "neutral helium excited hydrogenic residual gate",
+                "metrics": helium_excited_hydrogenic_residual_gate["metrics"],
+                "source_evidence_readiness": "source_targets_ready_single_active_electron_baseline_model_blocked",
+            },
         ],
         "blocked_claims": [
             {
@@ -1709,9 +1810,10 @@ def build_atomic_claim_scope_gate(
             {
                 "claim": "UET validates helium, many-electron atoms, or general atomic theory.",
                 "status": "BLOCKED",
-                "blocking_reason": "Neutral helium source rows, photon energies, term assignments, wavelength-medium normalization, line-component/blend policy, ground-state baseline residual diagnostics, and excited-state targets are now packaged, but a correlated two-electron Hamiltonian/spectral residual artifact is still missing.",
+                "blocking_reason": "Neutral helium source rows, photon energies, term assignments, wavelength-medium normalization, line-component/blend policy, ground-state baseline residual diagnostics, excited-state targets, and zero-quantum-defect residual baselines are now packaged, but a correlated two-electron Hamiltonian/spectral residual artifact is still missing.",
                 "next_evidence_required": [
                     "correlated two-electron Hamiltonian/spectral model",
+                    "singlet/triplet quantum-defect or configuration-interaction policy",
                     "uncertainty-aware residual thresholds",
                     "multi-atom benchmark suite",
                 ],
@@ -1736,6 +1838,7 @@ def build_atomic_claim_scope_gate(
             "precision_model_artifact_missing",
             "primary_precision_locators_incomplete",
             "helium_many_electron_model_artifact_missing",
+            "helium_quantum_defect_or_ci_policy_missing",
         ],
         "claim_boundary": (
             "A PASS artifact supports only selected hydrogen Rydberg benchmark behavior with NIST/CODATA "
@@ -1841,6 +1944,9 @@ def run_rydberg_analysis():
     helium_excited_state_target_gate = build_helium_excited_state_target_gate(
         helium_transition_assignment_gap_gate, helium_ground_state_baseline_gate
     )
+    helium_excited_hydrogenic_residual_gate = build_helium_excited_hydrogenic_residual_gate(
+        codata, helium_ground_state_baseline_gate, helium_excited_state_target_gate
+    )
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
         avg_error_ppm,
@@ -1860,6 +1966,7 @@ def run_rydberg_analysis():
         helium_line_component_policy_gate,
         helium_ground_state_baseline_gate,
         helium_excited_state_target_gate,
+        helium_excited_hydrogenic_residual_gate,
         source_evidence_readiness_matrix,
         branch_claim_gate,
     )
@@ -1976,6 +2083,7 @@ def run_rydberg_analysis():
             "AT20-HELIUM-INDEPENDENT-ELECTRON-BASELINE",
             "AT20-HELIUM-VARIATIONAL-ZETA-BASELINE",
             "AT20-HELIUM-EXCITED-STATE-TARGET-GAP",
+            "AT20-HELIUM-ZERO-QUANTUM-DEFECT-BASELINE",
             "AT20-UET-ATOMIC-BRIDGE-GATE",
         ],
         "threshold": threshold,
@@ -2033,6 +2141,11 @@ def run_rydberg_analysis():
             "helium_excited_state_unique_levels": helium_excited_state_target_gate["metrics"]["unique_level_count"],
             "helium_excited_state_transition_targets": helium_excited_state_target_gate["metrics"]["transition_target_count"],
             "helium_excited_state_max_air_photon_vs_level_delta_abs_eV": helium_excited_state_target_gate["metrics"]["max_air_photon_vs_level_delta_abs_eV"],
+            "helium_excited_hydrogenic_residual_levels": helium_excited_hydrogenic_residual_gate["metrics"]["computed_level_count"],
+            "helium_excited_hydrogenic_avg_abs_residual_eV": helium_excited_hydrogenic_residual_gate["metrics"]["average_abs_binding_residual_eV"],
+            "helium_excited_hydrogenic_max_abs_residual_eV": helium_excited_hydrogenic_residual_gate["metrics"]["max_abs_binding_residual_eV"],
+            "helium_excited_hydrogenic_quantum_defect_min": helium_excited_hydrogenic_residual_gate["metrics"]["min_effective_quantum_defect"],
+            "helium_excited_hydrogenic_quantum_defect_max": helium_excited_hydrogenic_residual_gate["metrics"]["max_effective_quantum_defect"],
         },
         "results": results,
         "limitations": [
@@ -2042,7 +2155,7 @@ def run_rydberg_analysis():
             "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
             "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark; C VI is a higher-Z stress test until fine/QED policy and broader ion coverage are added.",
             "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines plus 21 cm source/Fermi gates are diagnostics only and do not validate hyperfine Hamiltonian closure, QED, helium, or many-electron atoms.",
-            "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, line-component policy, ground-state baseline residuals, and excited-state targets computed but still do not validate electron correlation or many-electron spectra.",
+            "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, line-component policy, ground-state baseline residuals, excited-state targets, and zero-quantum-defect residual baselines computed but still do not validate electron correlation or many-electron spectra.",
         ],
     }
     artifact["atomic_formula_bridge_manifest"] = {
@@ -2066,6 +2179,7 @@ def run_rydberg_analysis():
     artifact["helium_line_component_policy_gate"] = helium_line_component_policy_gate
     artifact["helium_ground_state_baseline_gate"] = helium_ground_state_baseline_gate
     artifact["helium_excited_state_target_gate"] = helium_excited_state_target_gate
+    artifact["helium_excited_hydrogenic_residual_gate"] = helium_excited_hydrogenic_residual_gate
     artifact["source_evidence_intake_stub"] = {
         "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
         "sha256": sha256(json.dumps(source_evidence_intake_stub, sort_keys=True).encode("utf-8")).hexdigest(),
@@ -2089,7 +2203,7 @@ def run_rydberg_analysis():
         "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, "
         "an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, "
         "a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark plus C VI stress-test lane, "
-        "a precision spectroscopy source gate, and a neutral helium source/assignment/medium-normalization/component-policy/ground-baseline/excited-target gate. It does not validate full atomic theory, "
+        "a precision spectroscopy source gate, and a neutral helium source/assignment/medium-normalization/component-policy/ground-baseline/excited-target/hydrogenic-residual gate. It does not validate full atomic theory, "
         "fine structure, Lamb shift, hyperfine structure, QED corrections, broad hydrogen-like ion coverage, "
         "neutral helium residuals, or many-electron physics."
     )
