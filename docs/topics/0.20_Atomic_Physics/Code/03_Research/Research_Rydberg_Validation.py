@@ -329,7 +329,7 @@ def build_branch_claim_gate() -> dict:
                 "branch": "Helium and many-electron branch",
                 "status": "source_package_ready_model_blocked",
                 "allowed_usage_now": "May cite only as a prepared neutral-helium source package for future many-electron artifacts.",
-                "blocker_to_stronger_claim": "Need a two-electron Hamiltonian/correlation model, term mapping, uncertainty policy, and residual thresholds before helium or many-electron claims.",
+                "blocker_to_stronger_claim": "Need a two-electron Hamiltonian/correlation model, line-component/blend policy, uncertainty policy, and residual thresholds before helium or many-electron claims.",
             },
             {
                 "branch": "First-principles UET atomic theory claims",
@@ -973,7 +973,7 @@ def build_helium_many_electron_gate(helium_sources: dict) -> dict:
         "limitations": [
             "No neutral-helium wavelength residual is computed in this gate.",
             "The package prepares many-electron source targets only.",
-            "A two-electron Hamiltonian, correlation treatment, term mapping, and uncertainty policy are required before validation.",
+            "A two-electron Hamiltonian, correlation treatment, line-component/blend policy, and uncertainty policy are required before validation.",
             "This gate cannot be cited as neutral-helium, many-electron, or periodic-table spectral validation.",
         ],
         "claim_boundary": helium_sources["claim_boundary"],
@@ -1048,7 +1048,7 @@ def build_helium_transition_assignment_gap_gate(helium_sources: dict, helium_ass
     blocked_requirements = [
         "two-electron Hamiltonian/correlation model",
         "transition selection-rule policy",
-        "wavelength medium and uncertainty normalization",
+        "uncertainty propagation and residual thresholds",
     ]
     if missing_count:
         blocked_requirements.insert(0, "remaining source term labels for unassigned rows")
@@ -1077,10 +1077,75 @@ def build_helium_transition_assignment_gap_gate(helium_sources: dict, helium_ass
         "blocked_residual_model_requirements": blocked_requirements,
         "limitations": [
             "This gate computes photon energies from source wavelengths only.",
-            "It cannot compute neutral-helium residuals until wavelength medium normalization and a residual model are present.",
+            "It cannot compute neutral-helium residuals until uncertainty propagation and a residual model are present.",
             "It is not a hydrogenic, two-electron, correlation, fine-structure, QED, or UET validation artifact.",
         ],
         "claim_boundary": helium_assignments["claim_boundary"],
+    }
+
+
+def build_helium_medium_normalization_gate(helium_transition_assignment_gap_gate: dict) -> dict:
+    normalized_rows = []
+    for row in helium_transition_assignment_gap_gate["targets"]:
+        assignment = row["assignment"]
+        if "level_delta_cm_inverse" not in assignment:
+            continue
+        level_delta_cm_inverse = assignment["level_delta_cm_inverse"]
+        source_air_nm = row["wavelength_nm"]
+        vacuum_equivalent_nm = 1.0e7 / level_delta_cm_inverse
+        air_to_vacuum_factor = vacuum_equivalent_nm / source_air_nm
+        air_vacuum_delta_nm = vacuum_equivalent_nm - source_air_nm
+        normalized_rows.append(
+            {
+                "species": row["species"],
+                "source_air_wavelength_nm": source_air_nm,
+                "vacuum_equivalent_wavelength_nm_from_level_delta": vacuum_equivalent_nm,
+                "air_to_vacuum_factor_from_source_and_levels": air_to_vacuum_factor,
+                "air_vacuum_delta_nm": air_vacuum_delta_nm,
+                "level_delta_cm_inverse": level_delta_cm_inverse,
+                "transition_assignment_status": row["transition_assignment_status"],
+                "source_locator": assignment["source_locator"],
+            }
+        )
+    factors = [row["air_to_vacuum_factor_from_source_and_levels"] for row in normalized_rows]
+    deltas = [row["air_vacuum_delta_nm"] for row in normalized_rows]
+    complete = len(normalized_rows) == helium_transition_assignment_gap_gate["metrics"]["source_row_count"]
+    plausible_factors = all(1.00020 <= factor <= 1.00035 for factor in factors)
+    status = (
+        "SOURCE_MEDIUM_NORMALIZATION_READY_MODEL_BLOCKED"
+        if complete and plausible_factors
+        else "MEDIUM_NORMALIZATION_REVIEW_REQUIRED"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "neutral_helium_wavelength_medium_normalization_gate",
+        "status": status,
+        "claim_class": "source_normalization_diagnostic_only_no_helium_validation",
+        "formula_id": "AT20-HELIUM-MEDIUM-NORMALIZATION-GAP",
+        "formula": "lambda_vacuum_nm = 1e7 / DeltaE_cm^-1; source visible wavelengths are treated as air wavelengths",
+        "source_basis": "NIST ASD/handbook visible helium rows list air wavelengths; level-energy differences provide vacuum-equivalent wavenumber bookkeeping.",
+        "metrics": {
+            "source_row_count": helium_transition_assignment_gap_gate["metrics"]["source_row_count"],
+            "normalized_row_count": len(normalized_rows),
+            "rows_missing_normalization": helium_transition_assignment_gap_gate["metrics"]["source_row_count"]
+            - len(normalized_rows),
+            "min_air_to_vacuum_factor": min(factors) if factors else None,
+            "max_air_to_vacuum_factor": max(factors) if factors else None,
+            "min_air_vacuum_delta_nm": min(deltas) if deltas else None,
+            "max_air_vacuum_delta_nm": max(deltas) if deltas else None,
+        },
+        "targets": normalized_rows,
+        "blocked_residual_model_requirements": [
+            "two-electron Hamiltonian/correlation model",
+            "selection-rule and line-component/blend policy",
+            "uncertainty propagation and residual thresholds",
+        ],
+        "limitations": [
+            "This gate normalizes source wavelength medium using source level-energy differences only.",
+            "It does not compute predicted helium energy levels from a Hamiltonian.",
+            "It is not a neutral-helium validation or many-electron validation artifact.",
+        ],
+        "claim_boundary": "This gate supports wavelength-medium bookkeeping for selected He I rows only. It does not validate neutral-helium spectral prediction, electron correlation, or UET first-principles atomic theory.",
     }
 
 
@@ -1099,6 +1164,7 @@ def build_atomic_claim_scope_gate(
     hyperfine_fermi_baseline_gate: dict,
     helium_many_electron_gate: dict,
     helium_transition_assignment_gap_gate: dict,
+    helium_medium_normalization_gate: dict,
     source_evidence_readiness_matrix: dict,
     branch_claim_gate: dict,
 ) -> dict:
@@ -1237,6 +1303,13 @@ def build_atomic_claim_scope_gate(
                 "metrics": helium_transition_assignment_gap_gate["metrics"],
                 "source_evidence_readiness": helium_transition_assignment_gap_gate["source_evidence_readiness"],
             },
+            {
+                "claim": "Neutral helium visible wavelengths have air/vacuum medium normalization computed from source level-energy differences, but residual modeling remains blocker-gated.",
+                "status": helium_medium_normalization_gate["status"],
+                "artifact_role": "neutral helium wavelength-medium normalization gate",
+                "metrics": helium_medium_normalization_gate["metrics"],
+                "source_evidence_readiness": "source_medium_normalization_ready_model_blocked",
+            },
         ],
         "blocked_claims": [
             {
@@ -1275,7 +1348,7 @@ def build_atomic_claim_scope_gate(
             {
                 "claim": "UET validates helium, many-electron atoms, or general atomic theory.",
                 "status": "BLOCKED",
-                "blocking_reason": "Neutral helium source rows, photon energies, and term assignments are now packaged, but wavelength-medium normalization and a two-electron Hamiltonian/correlation residual artifact are still missing.",
+                "blocking_reason": "Neutral helium source rows, photon energies, term assignments, and wavelength-medium normalization are now packaged, but a two-electron Hamiltonian/correlation residual artifact is still missing.",
                 "next_evidence_required": [
                     "two-electron Hamiltonian/correlation model",
                     "term/transition mapping",
@@ -1302,7 +1375,6 @@ def build_atomic_claim_scope_gate(
             "general_hydrogen_like_ion_suite_missing",
             "precision_model_artifact_missing",
             "primary_precision_locators_incomplete",
-            "helium_medium_normalization_missing",
             "helium_many_electron_model_artifact_missing",
         ],
         "claim_boundary": (
@@ -1396,6 +1468,9 @@ def run_rydberg_analysis():
     helium_transition_assignment_gap_gate = build_helium_transition_assignment_gap_gate(
         helium_sources, helium_assignments
     )
+    helium_medium_normalization_gate = build_helium_medium_normalization_gate(
+        helium_transition_assignment_gap_gate
+    )
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
         avg_error_ppm,
@@ -1411,6 +1486,7 @@ def run_rydberg_analysis():
         hyperfine_fermi_baseline_gate,
         helium_many_electron_gate,
         helium_transition_assignment_gap_gate,
+        helium_medium_normalization_gate,
         source_evidence_readiness_matrix,
         branch_claim_gate,
     )
@@ -1515,6 +1591,7 @@ def run_rydberg_analysis():
             "AT20-HYDROGEN-21CM-FERMI-BASELINE",
             "AT20-HELIUM-MANY-ELECTRON-SOURCE-GATE",
             "AT20-HELIUM-PHOTON-ENERGY-GAP",
+            "AT20-HELIUM-MEDIUM-NORMALIZATION-GAP",
             "AT20-UET-ATOMIC-BRIDGE-GATE",
         ],
         "threshold": threshold,
@@ -1556,6 +1633,10 @@ def run_rydberg_analysis():
             "helium_photon_energy_max_ev": helium_transition_assignment_gap_gate["metrics"]["max_photon_energy_ev"],
             "helium_rows_with_transition_assignment": helium_transition_assignment_gap_gate["metrics"]["rows_with_transition_assignment"],
             "helium_rows_missing_transition_assignment": helium_transition_assignment_gap_gate["metrics"]["rows_missing_transition_assignment"],
+            "helium_medium_normalized_rows": helium_medium_normalization_gate["metrics"]["normalized_row_count"],
+            "helium_medium_rows_missing_normalization": helium_medium_normalization_gate["metrics"]["rows_missing_normalization"],
+            "helium_air_to_vacuum_factor_min": helium_medium_normalization_gate["metrics"]["min_air_to_vacuum_factor"],
+            "helium_air_to_vacuum_factor_max": helium_medium_normalization_gate["metrics"]["max_air_to_vacuum_factor"],
         },
         "results": results,
         "limitations": [
@@ -1565,7 +1646,7 @@ def run_rydberg_analysis():
             "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
             "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark; C VI is a higher-Z stress test until fine/QED policy and broader ion coverage are added.",
             "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines plus 21 cm source/Fermi gates are diagnostics only and do not validate hyperfine Hamiltonian closure, QED, helium, or many-electron atoms.",
-            "Neutral helium rows have photon energies and term assignments computed but still do not validate electron correlation or many-electron spectra.",
+            "Neutral helium rows have photon energies, term assignments, and wavelength-medium normalization computed but still do not validate electron correlation or many-electron spectra.",
         ],
     }
     artifact["atomic_formula_bridge_manifest"] = {
@@ -1585,6 +1666,7 @@ def run_rydberg_analysis():
     artifact["hyperfine_fermi_baseline_gate"] = hyperfine_fermi_baseline_gate
     artifact["helium_many_electron_gate"] = helium_many_electron_gate
     artifact["helium_transition_assignment_gap_gate"] = helium_transition_assignment_gap_gate
+    artifact["helium_medium_normalization_gate"] = helium_medium_normalization_gate
     artifact["source_evidence_intake_stub"] = {
         "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
         "sha256": sha256(json.dumps(source_evidence_intake_stub, sort_keys=True).encode("utf-8")).hexdigest(),
@@ -1608,7 +1690,7 @@ def run_rydberg_analysis():
         "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, "
         "an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, "
         "a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark plus C VI stress-test lane, "
-        "a precision spectroscopy source gate, and a neutral helium source/assignment gate. It does not validate full atomic theory, "
+        "a precision spectroscopy source gate, and a neutral helium source/assignment/medium-normalization gate. It does not validate full atomic theory, "
         "fine structure, Lamb shift, hyperfine structure, QED corrections, broad hydrogen-like ion coverage, "
         "neutral helium residuals, or many-electron physics."
     )

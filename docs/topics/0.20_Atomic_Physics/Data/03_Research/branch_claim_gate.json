@@ -48,7 +48,7 @@
       "branch": "Helium and many-electron branch",
       "status": "source_package_ready_model_blocked",
       "allowed_usage_now": "May cite only as a prepared neutral-helium source package for future many-electron artifacts.",
-      "blocker_to_stronger_claim": "Need a two-electron Hamiltonian/correlation model, term mapping, uncertainty policy, and residual thresholds before helium or many-electron claims."
+      "blocker_to_stronger_claim": "Need a two-electron Hamiltonian/correlation model, line-component/blend policy, uncertainty policy, and residual thresholds before helium or many-electron claims."
     },
     {
       "branch": "First-principles UET atomic theory claims",
