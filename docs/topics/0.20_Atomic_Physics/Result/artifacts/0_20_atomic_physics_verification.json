@@ -271,7 +271,7 @@
           "helium_zero_qd_avg_abs_residual_eV": 0.25249149613765204,
           "hydrogen_like_primary_prediction_count": 2,
           "hyperfine_21cm_fermi_residual_ppm": 530.677220569032,
-          "open_or_partial_check_count": 5,
+          "open_or_partial_check_count": 4,
           "precision_1s2s_dirac_residual_ppm": 2.880995748527676,
           "precision_1s2s_lamb_handoff_residual_ppm": 0.004184223857857917
         },
@@ -374,6 +374,94 @@
     "path": "Data/03_Research/atomic_formula_bridge_manifest.json",
     "sha256": "65497346e2f3918f23bfc155d0f02c1c648560b123b6b722bd535ed867cf168f"
   },
+  "atomic_prediction_baseline_comparator_gate": {
+    "blocked_comparators": [
+      "CI/correlated helium spectral residual baseline",
+      "independent external helium wavelength holdout baseline",
+      "higher-Z fine/QED comparator suite",
+      "multi-atom many-electron benchmark comparator table",
+      "UET-derived atomic operator residual lane"
+    ],
+    "claim_boundary": "This gate supports only internal comparator bookkeeping. It does not turn fitted quantum-defect, empirical Lamb-handoff, or Fermi-baseline diagnostics into first-principles predictions.",
+    "claim_class": "internal_comparator_diagnostic_only",
+    "comparators": [
+      {
+        "absolute_improvement_factor": 3.235799949680919,
+        "baseline_model": "nonrelativistic Rydberg 1S-2S",
+        "baseline_residual_ppm": 9.322325898116794,
+        "candidate_model": "leading Dirac fine-structure baseline",
+        "candidate_residual_ppm": 2.880995748527676,
+        "claim_role": "diagnostic baseline comparison only; QED/recoil/proton-size terms remain open",
+        "comparator_id": "hydrogen_1s2s_nonrel_to_dirac",
+        "domain": "hydrogen_precision"
+      },
+      {
+        "absolute_improvement_factor": 688.5376706404472,
+        "baseline_model": "leading Dirac fine-structure baseline",
+        "baseline_residual_ppm": 2.880995748527676,
+        "candidate_model": "empirical Lamb-shift handoff",
+        "candidate_residual_ppm": 0.004184223857857917,
+        "claim_role": "empirical handoff comparison only; not a QED derivation",
+        "comparator_id": "hydrogen_1s2s_dirac_to_lamb_handoff",
+        "domain": "hydrogen_precision"
+      },
+      {
+        "average_residual_improvement_factor": 18.96421200375883,
+        "baseline_avg_abs_residual_eV": 0.25249149613765204,
+        "baseline_max_abs_residual_eV": 1.366350872298137,
+        "baseline_model": "zero-quantum-defect hydrogenic baseline",
+        "candidate_avg_abs_residual_eV": 0.013314104276392109,
+        "candidate_max_abs_residual_eV": 0.04961120944315667,
+        "candidate_model": "same-source-series quantum-defect leave-one-out fit",
+        "claim_role": "source-calibrated diagnostic comparison only; quantum defects are fitted, not derived",
+        "comparator_id": "helium_excited_zero_qd_to_qd_loo",
+        "domain": "neutral_helium_excited_levels"
+      },
+      {
+        "average_residual_improvement_factor": 264.0725898259127,
+        "baseline_avg_abs_residual_eV": 0.25249149613765204,
+        "baseline_max_abs_residual_eV": 1.366350872298137,
+        "baseline_model": "zero-quantum-defect hydrogenic baseline",
+        "candidate_avg_abs_residual_eV": 0.000956144279510814,
+        "candidate_max_abs_residual_eV": 0.0018526170410844145,
+        "candidate_model": "selected-source calibrated quantum-defect model evaluated on same-source-family holdouts",
+        "claim_role": "same-source-family holdout comparison only; not independent external validation",
+        "comparator_id": "helium_excited_zero_qd_to_same_source_holdout",
+        "domain": "neutral_helium_excited_levels"
+      },
+      {
+        "baseline_model": "no CI/correlated wavelength comparator primary-gated",
+        "candidate_avg_abs_residual_angstrom": 0.03271735053414204,
+        "candidate_max_abs_residual_ppm": 80.24697624904677,
+        "candidate_model": "quantum-defect level prediction converted to ground-state holdout wavelengths",
+        "claim_role": "reported as candidate residual only until a CI/correlated or external baseline exists",
+        "comparator_id": "helium_wavelength_holdout_report",
+        "domain": "neutral_helium_wavelengths"
+      },
+      {
+        "baseline_model": "leading Fermi-contact hyperfine baseline",
+        "candidate_model": "none primary-gated",
+        "candidate_residual_ppm": 530.677220569032,
+        "claim_role": "gap-sizing baseline only; no corrected hyperfine Hamiltonian comparator is primary-gated",
+        "comparator_id": "hydrogen_21cm_fermi_baseline_report",
+        "domain": "hydrogen_hyperfine"
+      }
+    ],
+    "formula_id": "AT20-ATOMIC-PREDICTION-BASELINE-COMPARATOR",
+    "metrics": {
+      "comparator_count": 6,
+      "comparators_missing_external_or_ci_baseline": 2,
+      "comparators_with_improvement_factor": 4,
+      "helium_zero_qd_to_qd_loo_average_improvement_factor": 18.96421200375883,
+      "helium_zero_qd_to_same_source_holdout_average_improvement_factor": 264.0725898259127,
+      "hydrogen_1s2s_dirac_to_lamb_handoff_improvement_factor": 688.5376706404472,
+      "hydrogen_1s2s_nonrel_to_dirac_improvement_factor": 3.235799949680919
+    },
+    "purpose": "Make current atomic prediction diagnostics compare against named baselines before any broader predictive claim is exported.",
+    "role": "atomic_prediction_baseline_comparator_gate",
+    "schema_version": "1.0",
+    "status": "INTERNAL_COMPARATOR_TABLE_READY_EXTERNAL_AND_CI_BASELINES_OPEN"
+  },
   "atomic_predictive_model_closure_gate": {
     "blocked_claims": [
       "UET predicts all atomic spectra",
@@ -396,11 +484,11 @@
       },
       {
         "check_id": "AT20-PRED-02",
-        "current_state": "PARTIAL",
+        "current_state": "PASS_INTERNAL",
         "evidence": [
-          "hydrogen-like checkpoint compares reduced-mass hydrogenic predictions",
-          "helium zero-quantum-defect residual baseline sizes the naive hydrogenic miss",
-          "quantum-defect gates show improvement over the zero-quantum-defect helium baseline for selected series"
+          "atomic_prediction_baseline_comparator_gate records named baseline/candidate rows",
+          "6 comparator rows are machine-readable",
+          "helium zero-quantum-defect, quantum-defect, precision Dirac, empirical Lamb-handoff, and Fermi-contact lanes are compared or explicitly reported as missing stronger comparator"
         ],
         "remaining_blocker": "No CI/correlated helium spectral baseline and no multi-atom periodic-table comparator suite are primary-gated.",
         "requirement": "Compare every claimed prediction against a named baseline, not only against zero error."
@@ -450,7 +538,7 @@
       "helium_zero_qd_avg_abs_residual_eV": 0.25249149613765204,
       "hydrogen_like_primary_prediction_count": 2,
       "hyperfine_21cm_fermi_residual_ppm": 530.677220569032,
-      "open_or_partial_check_count": 5,
+      "open_or_partial_check_count": 4,
       "precision_1s2s_dirac_residual_ppm": 2.880995748527676,
       "precision_1s2s_lamb_handoff_residual_ppm": 0.004184223857857917
     },
@@ -508,10 +596,11 @@
     "AT20-HELIUM-QUANTUM-DEFECT-LOO-PREDICTION",
     "AT20-HELIUM-QUANTUM-DEFECT-SOURCE-FAMILY-HOLDOUT",
     "AT20-HELIUM-QUANTUM-DEFECT-HOLDOUT-WAVELENGTH",
+    "AT20-ATOMIC-PREDICTION-BASELINE-COMPARATOR",
     "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
     "AT20-UET-ATOMIC-BRIDGE-GATE"
   ],
-  "generated_at_utc": "2026-06-01T10:15:50.475400+00:00",
+  "generated_at_utc": "2026-06-01T10:21:11.338557+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -2463,8 +2552,10 @@
     "R_H_codata_m_inverse": 10967758.3406,
     "R_infinity_codata_m_inverse": 10973731.56816,
     "accepted_claim_branches": 5,
+    "atomic_prediction_comparator_count": 6,
+    "atomic_prediction_comparators_missing_external_or_ci_baseline": 2,
     "atomic_predictive_closure_fail_open_checks": 2,
-    "atomic_predictive_closure_open_or_partial_checks": 5,
+    "atomic_predictive_closure_open_or_partial_checks": 4,
     "average_wavelength_error_ppm": 7.504133013735595,
     "blocked_claim_exports": 7,
     "fitted_slope_through_origin_m_inverse": 10967845.50226957,

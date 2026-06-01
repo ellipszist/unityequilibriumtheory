@@ -1976,6 +1976,119 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
     }
 
 
+def build_atomic_prediction_baseline_comparator_gate(
+    precision_baseline_gate: dict,
+    precision_dirac_baseline_gate: dict,
+    lamb_shift_handoff_gate: dict,
+    hyperfine_fermi_baseline_gate: dict,
+    helium_excited_hydrogenic_residual_gate: dict,
+    helium_quantum_defect_prediction_gate: dict,
+    helium_quantum_defect_holdout_gate: dict,
+    helium_quantum_defect_wavelength_holdout_gate: dict,
+) -> dict:
+    helium_zero_avg = helium_excited_hydrogenic_residual_gate["metrics"]["average_abs_binding_residual_eV"]
+    helium_loo_avg = helium_quantum_defect_prediction_gate["metrics"]["average_abs_excitation_residual_eV"]
+    helium_holdout_avg = helium_quantum_defect_holdout_gate["metrics"]["average_abs_excitation_residual_eV"]
+    precision_nonrel_ppm = precision_baseline_gate["prediction"]["residual_ppm"]
+    precision_dirac_ppm = precision_dirac_baseline_gate["prediction"]["residual_ppm"]
+    precision_lamb_ppm = lamb_shift_handoff_gate["prediction"]["residual_ppm"]
+    comparator_rows = [
+        {
+            "comparator_id": "hydrogen_1s2s_nonrel_to_dirac",
+            "domain": "hydrogen_precision",
+            "baseline_model": "nonrelativistic Rydberg 1S-2S",
+            "candidate_model": "leading Dirac fine-structure baseline",
+            "baseline_residual_ppm": precision_nonrel_ppm,
+            "candidate_residual_ppm": precision_dirac_ppm,
+            "absolute_improvement_factor": precision_nonrel_ppm / precision_dirac_ppm,
+            "claim_role": "diagnostic baseline comparison only; QED/recoil/proton-size terms remain open",
+        },
+        {
+            "comparator_id": "hydrogen_1s2s_dirac_to_lamb_handoff",
+            "domain": "hydrogen_precision",
+            "baseline_model": "leading Dirac fine-structure baseline",
+            "candidate_model": "empirical Lamb-shift handoff",
+            "baseline_residual_ppm": precision_dirac_ppm,
+            "candidate_residual_ppm": precision_lamb_ppm,
+            "absolute_improvement_factor": precision_dirac_ppm / precision_lamb_ppm,
+            "claim_role": "empirical handoff comparison only; not a QED derivation",
+        },
+        {
+            "comparator_id": "helium_excited_zero_qd_to_qd_loo",
+            "domain": "neutral_helium_excited_levels",
+            "baseline_model": "zero-quantum-defect hydrogenic baseline",
+            "candidate_model": "same-source-series quantum-defect leave-one-out fit",
+            "baseline_avg_abs_residual_eV": helium_zero_avg,
+            "candidate_avg_abs_residual_eV": helium_loo_avg,
+            "average_residual_improvement_factor": helium_zero_avg / helium_loo_avg,
+            "baseline_max_abs_residual_eV": helium_excited_hydrogenic_residual_gate["metrics"]["max_abs_binding_residual_eV"],
+            "candidate_max_abs_residual_eV": helium_quantum_defect_prediction_gate["metrics"]["max_abs_excitation_residual_eV"],
+            "claim_role": "source-calibrated diagnostic comparison only; quantum defects are fitted, not derived",
+        },
+        {
+            "comparator_id": "helium_excited_zero_qd_to_same_source_holdout",
+            "domain": "neutral_helium_excited_levels",
+            "baseline_model": "zero-quantum-defect hydrogenic baseline",
+            "candidate_model": "selected-source calibrated quantum-defect model evaluated on same-source-family holdouts",
+            "baseline_avg_abs_residual_eV": helium_zero_avg,
+            "candidate_avg_abs_residual_eV": helium_holdout_avg,
+            "average_residual_improvement_factor": helium_zero_avg / helium_holdout_avg,
+            "baseline_max_abs_residual_eV": helium_excited_hydrogenic_residual_gate["metrics"]["max_abs_binding_residual_eV"],
+            "candidate_max_abs_residual_eV": helium_quantum_defect_holdout_gate["metrics"]["max_abs_excitation_residual_eV"],
+            "claim_role": "same-source-family holdout comparison only; not independent external validation",
+        },
+        {
+            "comparator_id": "helium_wavelength_holdout_report",
+            "domain": "neutral_helium_wavelengths",
+            "baseline_model": "no CI/correlated wavelength comparator primary-gated",
+            "candidate_model": "quantum-defect level prediction converted to ground-state holdout wavelengths",
+            "candidate_avg_abs_residual_angstrom": helium_quantum_defect_wavelength_holdout_gate["metrics"][
+                "average_abs_wavelength_residual_angstrom"
+            ],
+            "candidate_max_abs_residual_ppm": helium_quantum_defect_wavelength_holdout_gate["metrics"][
+                "max_abs_wavelength_residual_ppm"
+            ],
+            "claim_role": "reported as candidate residual only until a CI/correlated or external baseline exists",
+        },
+        {
+            "comparator_id": "hydrogen_21cm_fermi_baseline_report",
+            "domain": "hydrogen_hyperfine",
+            "baseline_model": "leading Fermi-contact hyperfine baseline",
+            "candidate_model": "none primary-gated",
+            "candidate_residual_ppm": hyperfine_fermi_baseline_gate["prediction"]["residual_ppm"],
+            "claim_role": "gap-sizing baseline only; no corrected hyperfine Hamiltonian comparator is primary-gated",
+        },
+    ]
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_prediction_baseline_comparator_gate",
+        "status": "INTERNAL_COMPARATOR_TABLE_READY_EXTERNAL_AND_CI_BASELINES_OPEN",
+        "claim_class": "internal_comparator_diagnostic_only",
+        "formula_id": "AT20-ATOMIC-PREDICTION-BASELINE-COMPARATOR",
+        "purpose": "Make current atomic prediction diagnostics compare against named baselines before any broader predictive claim is exported.",
+        "comparators": comparator_rows,
+        "metrics": {
+            "comparator_count": len(comparator_rows),
+            "comparators_with_improvement_factor": sum(
+                1 for row in comparator_rows if "absolute_improvement_factor" in row or "average_residual_improvement_factor" in row
+            ),
+            "comparators_missing_external_or_ci_baseline": 2,
+            "helium_zero_qd_to_qd_loo_average_improvement_factor": helium_zero_avg / helium_loo_avg,
+            "helium_zero_qd_to_same_source_holdout_average_improvement_factor": helium_zero_avg / helium_holdout_avg,
+            "hydrogen_1s2s_nonrel_to_dirac_improvement_factor": precision_nonrel_ppm / precision_dirac_ppm,
+            "hydrogen_1s2s_dirac_to_lamb_handoff_improvement_factor": precision_dirac_ppm / precision_lamb_ppm,
+        },
+        "blocked_comparators": [
+            "CI/correlated helium spectral residual baseline",
+            "independent external helium wavelength holdout baseline",
+            "higher-Z fine/QED comparator suite",
+            "multi-atom many-electron benchmark comparator table",
+            "UET-derived atomic operator residual lane",
+        ],
+        "claim_boundary": "This gate supports only internal comparator bookkeeping. It does not turn fitted quantum-defect, empirical Lamb-handoff, or Fermi-baseline diagnostics into first-principles predictions.",
+    }
+
+
 def build_atomic_predictive_model_closure_gate(
     hydrogen_like_checkpoint: dict,
     precision_dirac_baseline_gate: dict,
@@ -1985,6 +2098,7 @@ def build_atomic_predictive_model_closure_gate(
     helium_quantum_defect_prediction_gate: dict,
     helium_quantum_defect_holdout_gate: dict,
     helium_quantum_defect_wavelength_holdout_gate: dict,
+    atomic_prediction_baseline_comparator_gate: dict,
 ) -> dict:
     closure_checks = [
         {
@@ -2001,11 +2115,11 @@ def build_atomic_predictive_model_closure_gate(
         {
             "check_id": "AT20-PRED-02",
             "requirement": "Compare every claimed prediction against a named baseline, not only against zero error.",
-            "current_state": "PARTIAL",
+            "current_state": "PASS_INTERNAL",
             "evidence": [
-                "hydrogen-like checkpoint compares reduced-mass hydrogenic predictions",
-                "helium zero-quantum-defect residual baseline sizes the naive hydrogenic miss",
-                "quantum-defect gates show improvement over the zero-quantum-defect helium baseline for selected series",
+                "atomic_prediction_baseline_comparator_gate records named baseline/candidate rows",
+                f"{atomic_prediction_baseline_comparator_gate['metrics']['comparator_count']} comparator rows are machine-readable",
+                "helium zero-quantum-defect, quantum-defect, precision Dirac, empirical Lamb-handoff, and Fermi-contact lanes are compared or explicitly reported as missing stronger comparator",
             ],
             "remaining_blocker": "No CI/correlated helium spectral baseline and no multi-atom periodic-table comparator suite are primary-gated.",
         },
@@ -2502,6 +2616,16 @@ def run_rydberg_analysis():
         helium_quantum_defect_holdout_gate,
         helium_qd_holdouts,
     )
+    atomic_prediction_baseline_comparator_gate = build_atomic_prediction_baseline_comparator_gate(
+        precision_baseline_gate,
+        precision_dirac_baseline_gate,
+        lamb_shift_handoff_gate,
+        hyperfine_fermi_baseline_gate,
+        helium_excited_hydrogenic_residual_gate,
+        helium_quantum_defect_prediction_gate,
+        helium_quantum_defect_holdout_gate,
+        helium_quantum_defect_wavelength_holdout_gate,
+    )
     atomic_predictive_model_closure_gate = build_atomic_predictive_model_closure_gate(
         hydrogen_like_checkpoint,
         precision_dirac_baseline_gate,
@@ -2511,6 +2635,7 @@ def run_rydberg_analysis():
         helium_quantum_defect_prediction_gate,
         helium_quantum_defect_holdout_gate,
         helium_quantum_defect_wavelength_holdout_gate,
+        atomic_prediction_baseline_comparator_gate,
     )
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
@@ -2663,6 +2788,7 @@ def run_rydberg_analysis():
             "AT20-HELIUM-QUANTUM-DEFECT-LOO-PREDICTION",
             "AT20-HELIUM-QUANTUM-DEFECT-SOURCE-FAMILY-HOLDOUT",
             "AT20-HELIUM-QUANTUM-DEFECT-HOLDOUT-WAVELENGTH",
+            "AT20-ATOMIC-PREDICTION-BASELINE-COMPARATOR",
             "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
             "AT20-UET-ATOMIC-BRIDGE-GATE",
         ],
@@ -2739,6 +2865,10 @@ def run_rydberg_analysis():
             "helium_quantum_defect_wavelength_holdout_max_abs_residual_angstrom": helium_quantum_defect_wavelength_holdout_gate["metrics"]["max_abs_wavelength_residual_angstrom"],
             "helium_quantum_defect_wavelength_holdout_avg_abs_residual_ppm": helium_quantum_defect_wavelength_holdout_gate["metrics"]["average_abs_wavelength_residual_ppm"],
             "helium_quantum_defect_wavelength_holdout_max_abs_residual_ppm": helium_quantum_defect_wavelength_holdout_gate["metrics"]["max_abs_wavelength_residual_ppm"],
+            "atomic_prediction_comparator_count": atomic_prediction_baseline_comparator_gate["metrics"]["comparator_count"],
+            "atomic_prediction_comparators_missing_external_or_ci_baseline": atomic_prediction_baseline_comparator_gate[
+                "metrics"
+            ]["comparators_missing_external_or_ci_baseline"],
             "atomic_predictive_closure_open_or_partial_checks": atomic_predictive_model_closure_gate["metrics"]["open_or_partial_check_count"],
             "atomic_predictive_closure_fail_open_checks": atomic_predictive_model_closure_gate["metrics"]["fail_open_check_count"],
         },
@@ -2778,6 +2908,7 @@ def run_rydberg_analysis():
     artifact["helium_quantum_defect_prediction_gate"] = helium_quantum_defect_prediction_gate
     artifact["helium_quantum_defect_holdout_gate"] = helium_quantum_defect_holdout_gate
     artifact["helium_quantum_defect_wavelength_holdout_gate"] = helium_quantum_defect_wavelength_holdout_gate
+    artifact["atomic_prediction_baseline_comparator_gate"] = atomic_prediction_baseline_comparator_gate
     artifact["atomic_predictive_model_closure_gate"] = atomic_predictive_model_closure_gate
     artifact["source_evidence_intake_stub"] = {
         "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
