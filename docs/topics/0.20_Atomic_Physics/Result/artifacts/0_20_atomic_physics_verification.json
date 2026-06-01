@@ -257,6 +257,26 @@
         },
         "source_evidence_readiness": "same_source_family_wavelength_holdouts_ready_external_validation_and_uncertainty_blocked",
         "status": "SOURCE_FAMILY_HOLDOUT_WAVELENGTH_RESIDUAL_COMPUTED_EXTERNAL_HOLDOUT_BLOCKED"
+      },
+      {
+        "artifact_role": "atomic spectral predictive model closure gate",
+        "claim": "A predictive atomic-spectra closure contract now defines what must pass before claiming broad atomic prediction.",
+        "metrics": {
+          "closure_check_count": 5,
+          "fail_open_check_count": 2,
+          "helium_quantum_defect_holdout_prediction_count": 3,
+          "helium_quantum_defect_loo_prediction_count": 7,
+          "helium_wavelength_holdout_predicted_vacuum_line_count": 2,
+          "helium_wavelength_holdout_prediction_count": 2,
+          "helium_zero_qd_avg_abs_residual_eV": 0.25249149613765204,
+          "hydrogen_like_primary_prediction_count": 2,
+          "hyperfine_21cm_fermi_residual_ppm": 530.677220569032,
+          "open_or_partial_check_count": 5,
+          "precision_1s2s_dirac_residual_ppm": 2.880995748527676,
+          "precision_1s2s_lamb_handoff_residual_ppm": 0.004184223857857917
+        },
+        "source_evidence_readiness": "governance_contract_ready_predictive_claim_blocked",
+        "status": "PREDICTIVE_CLAIM_BLOCKED_REQUIREMENTS_OPEN"
       }
     ],
     "blocked_claims": [
@@ -354,6 +374,98 @@
     "path": "Data/03_Research/atomic_formula_bridge_manifest.json",
     "sha256": "65497346e2f3918f23bfc155d0f02c1c648560b123b6b722bd535ed867cf168f"
   },
+  "atomic_predictive_model_closure_gate": {
+    "blocked_claims": [
+      "UET predicts all atomic spectra",
+      "0.20 validates periodic-table spectra",
+      "helium spectra are solved from first principles",
+      "quantum defects are derived rather than source-calibrated",
+      "precision QED/hyperfine corrections are closed"
+    ],
+    "checks": [
+      {
+        "check_id": "AT20-PRED-01",
+        "current_state": "PARTIAL",
+        "evidence": [
+          "selected He I levels have leave-one-out calibration diagnostics",
+          "additional He I rows are held out from the selected calibration package",
+          "wavelength holdout gate restricts ground-state transitions to avoid lower-level energy leakage"
+        ],
+        "remaining_blocker": "Holdouts are still from the same NIST source family; independent external rows are missing.",
+        "requirement": "Declare calibration rows, holdout rows, and no-leakage split before any spectral prediction claim."
+      },
+      {
+        "check_id": "AT20-PRED-02",
+        "current_state": "PARTIAL",
+        "evidence": [
+          "hydrogen-like checkpoint compares reduced-mass hydrogenic predictions",
+          "helium zero-quantum-defect residual baseline sizes the naive hydrogenic miss",
+          "quantum-defect gates show improvement over the zero-quantum-defect helium baseline for selected series"
+        ],
+        "remaining_blocker": "No CI/correlated helium spectral baseline and no multi-atom periodic-table comparator suite are primary-gated.",
+        "requirement": "Compare every claimed prediction against a named baseline, not only against zero error."
+      },
+      {
+        "check_id": "AT20-PRED-03",
+        "current_state": "FAIL_OPEN",
+        "evidence": [
+          "helium quantum-defect values are fitted from source series",
+          "Dirac and empirical Lamb gates are residual diagnostics, not closed derivations"
+        ],
+        "remaining_blocker": "Need a correlated two-electron/CI Hamiltonian or explicit UET atomic operator that predicts series defects and line positions without fitting them from the tested holdout rows.",
+        "requirement": "Use a generative physics model whose parameters are fixed before the holdout set is evaluated."
+      },
+      {
+        "check_id": "AT20-PRED-04",
+        "current_state": "FAIL_OPEN",
+        "evidence": [
+          "source hashes and residuals are recorded",
+          "precision gates record measurement uncertainty where available"
+        ],
+        "remaining_blocker": "No unified uncertainty propagation is applied to helium level, wavelength, QED, or hyperfine residual gates.",
+        "requirement": "Propagate source and model uncertainty into residual thresholds."
+      },
+      {
+        "check_id": "AT20-PRED-05",
+        "current_state": "PARTIAL",
+        "evidence": [
+          "selected He+ and Li2+ rows pass provisional reduced-mass thresholds",
+          "C VI is recorded as a higher-Z stress lane",
+          "neutral helium source, ground, excited, quantum-defect, and wavelength diagnostics are present"
+        ],
+        "remaining_blocker": "Broad hydrogen-like ion coverage, direct Li III ASD capture, higher-Z fine/QED policy, and a multi-atom many-electron benchmark suite remain missing.",
+        "requirement": "Cover domain expansion from hydrogen to hydrogen-like ions, helium, and multi-electron atoms with separate gates."
+      }
+    ],
+    "claim_boundary": "This gate is a closure contract only. It records what a predictive atomic model must prove and keeps current 0.20 evidence at diagnostic/benchmark status.",
+    "claim_class": "governance_gate_no_new_physics_validation",
+    "formula_id": "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
+    "metrics": {
+      "closure_check_count": 5,
+      "fail_open_check_count": 2,
+      "helium_quantum_defect_holdout_prediction_count": 3,
+      "helium_quantum_defect_loo_prediction_count": 7,
+      "helium_wavelength_holdout_predicted_vacuum_line_count": 2,
+      "helium_wavelength_holdout_prediction_count": 2,
+      "helium_zero_qd_avg_abs_residual_eV": 0.25249149613765204,
+      "hydrogen_like_primary_prediction_count": 2,
+      "hyperfine_21cm_fermi_residual_ppm": 530.677220569032,
+      "open_or_partial_check_count": 5,
+      "precision_1s2s_dirac_residual_ppm": 2.880995748527676,
+      "precision_1s2s_lamb_handoff_residual_ppm": 0.004184223857857917
+    },
+    "promotion_requirements": [
+      "independent external helium holdout rows with source locators and hashes",
+      "uncertainty propagation for level energies, wavelengths, QED corrections, and hyperfine residuals",
+      "CI/correlated two-electron spectral model or explicit UET atomic operator with fixed parameters before holdout evaluation",
+      "baseline comparator table covering zero-quantum-defect, empirical quantum-defect, CI/correlated, and any UET correction lane",
+      "multi-atom benchmark suite split by one-electron ions, two-electron atoms, alkali-like atoms, and heavier many-electron systems"
+    ],
+    "purpose": "Define the minimum artifact requirements before 0.20 can claim predictive atomic spectra beyond bounded diagnostics.",
+    "role": "atomic_spectral_predictive_model_closure_gate",
+    "schema_version": "1.0",
+    "status": "PREDICTIVE_CLAIM_BLOCKED_REQUIREMENTS_OPEN"
+  },
   "branch_claim_gate": {
     "claim_boundary": "This gate keeps the topic at hydrogen benchmark status, not full atomic-theory closure.",
     "path": "Data/03_Research/branch_claim_gate.json",
@@ -396,9 +508,10 @@
     "AT20-HELIUM-QUANTUM-DEFECT-LOO-PREDICTION",
     "AT20-HELIUM-QUANTUM-DEFECT-SOURCE-FAMILY-HOLDOUT",
     "AT20-HELIUM-QUANTUM-DEFECT-HOLDOUT-WAVELENGTH",
+    "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
     "AT20-UET-ATOMIC-BRIDGE-GATE"
   ],
-  "generated_at_utc": "2026-06-01T10:12:30.391257+00:00",
+  "generated_at_utc": "2026-06-01T10:15:50.475400+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -2350,6 +2463,8 @@
     "R_H_codata_m_inverse": 10967758.3406,
     "R_infinity_codata_m_inverse": 10973731.56816,
     "accepted_claim_branches": 5,
+    "atomic_predictive_closure_fail_open_checks": 2,
+    "atomic_predictive_closure_open_or_partial_checks": 5,
     "average_wavelength_error_ppm": 7.504133013735595,
     "blocked_claim_exports": 7,
     "fitted_slope_through_origin_m_inverse": 10967845.50226957,

@@ -1976,6 +1976,113 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
     }
 
 
+def build_atomic_predictive_model_closure_gate(
+    hydrogen_like_checkpoint: dict,
+    precision_dirac_baseline_gate: dict,
+    lamb_shift_handoff_gate: dict,
+    hyperfine_fermi_baseline_gate: dict,
+    helium_excited_hydrogenic_residual_gate: dict,
+    helium_quantum_defect_prediction_gate: dict,
+    helium_quantum_defect_holdout_gate: dict,
+    helium_quantum_defect_wavelength_holdout_gate: dict,
+) -> dict:
+    closure_checks = [
+        {
+            "check_id": "AT20-PRED-01",
+            "requirement": "Declare calibration rows, holdout rows, and no-leakage split before any spectral prediction claim.",
+            "current_state": "PARTIAL",
+            "evidence": [
+                "selected He I levels have leave-one-out calibration diagnostics",
+                "additional He I rows are held out from the selected calibration package",
+                "wavelength holdout gate restricts ground-state transitions to avoid lower-level energy leakage",
+            ],
+            "remaining_blocker": "Holdouts are still from the same NIST source family; independent external rows are missing.",
+        },
+        {
+            "check_id": "AT20-PRED-02",
+            "requirement": "Compare every claimed prediction against a named baseline, not only against zero error.",
+            "current_state": "PARTIAL",
+            "evidence": [
+                "hydrogen-like checkpoint compares reduced-mass hydrogenic predictions",
+                "helium zero-quantum-defect residual baseline sizes the naive hydrogenic miss",
+                "quantum-defect gates show improvement over the zero-quantum-defect helium baseline for selected series",
+            ],
+            "remaining_blocker": "No CI/correlated helium spectral baseline and no multi-atom periodic-table comparator suite are primary-gated.",
+        },
+        {
+            "check_id": "AT20-PRED-03",
+            "requirement": "Use a generative physics model whose parameters are fixed before the holdout set is evaluated.",
+            "current_state": "FAIL_OPEN",
+            "evidence": [
+                "helium quantum-defect values are fitted from source series",
+                "Dirac and empirical Lamb gates are residual diagnostics, not closed derivations",
+            ],
+            "remaining_blocker": "Need a correlated two-electron/CI Hamiltonian or explicit UET atomic operator that predicts series defects and line positions without fitting them from the tested holdout rows.",
+        },
+        {
+            "check_id": "AT20-PRED-04",
+            "requirement": "Propagate source and model uncertainty into residual thresholds.",
+            "current_state": "FAIL_OPEN",
+            "evidence": [
+                "source hashes and residuals are recorded",
+                "precision gates record measurement uncertainty where available",
+            ],
+            "remaining_blocker": "No unified uncertainty propagation is applied to helium level, wavelength, QED, or hyperfine residual gates.",
+        },
+        {
+            "check_id": "AT20-PRED-05",
+            "requirement": "Cover domain expansion from hydrogen to hydrogen-like ions, helium, and multi-electron atoms with separate gates.",
+            "current_state": "PARTIAL",
+            "evidence": [
+                "selected He+ and Li2+ rows pass provisional reduced-mass thresholds",
+                "C VI is recorded as a higher-Z stress lane",
+                "neutral helium source, ground, excited, quantum-defect, and wavelength diagnostics are present",
+            ],
+            "remaining_blocker": "Broad hydrogen-like ion coverage, direct Li III ASD capture, higher-Z fine/QED policy, and a multi-atom many-electron benchmark suite remain missing.",
+        },
+    ]
+    open_count = sum(1 for row in closure_checks if row["current_state"] in {"PARTIAL", "FAIL_OPEN"})
+    fail_open_count = sum(1 for row in closure_checks if row["current_state"] == "FAIL_OPEN")
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_spectral_predictive_model_closure_gate",
+        "status": "PREDICTIVE_CLAIM_BLOCKED_REQUIREMENTS_OPEN",
+        "claim_class": "governance_gate_no_new_physics_validation",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
+        "purpose": "Define the minimum artifact requirements before 0.20 can claim predictive atomic spectra beyond bounded diagnostics.",
+        "checks": closure_checks,
+        "metrics": {
+            "closure_check_count": len(closure_checks),
+            "open_or_partial_check_count": open_count,
+            "fail_open_check_count": fail_open_count,
+            "hydrogen_like_primary_prediction_count": hydrogen_like_checkpoint["metrics"]["primary_benchmark_line_count"],
+            "helium_zero_qd_avg_abs_residual_eV": helium_excited_hydrogenic_residual_gate["metrics"]["average_abs_binding_residual_eV"],
+            "helium_quantum_defect_loo_prediction_count": helium_quantum_defect_prediction_gate["metrics"]["prediction_count"],
+            "helium_quantum_defect_holdout_prediction_count": helium_quantum_defect_holdout_gate["metrics"]["prediction_count"],
+            "helium_wavelength_holdout_prediction_count": helium_quantum_defect_wavelength_holdout_gate["metrics"]["predicted_line_count"],
+            "helium_wavelength_holdout_predicted_vacuum_line_count": helium_quantum_defect_wavelength_holdout_gate["metrics"]["predicted_vacuum_line_count"],
+            "precision_1s2s_dirac_residual_ppm": precision_dirac_baseline_gate["prediction"]["residual_ppm"],
+            "precision_1s2s_lamb_handoff_residual_ppm": lamb_shift_handoff_gate["prediction"]["residual_ppm"],
+            "hyperfine_21cm_fermi_residual_ppm": hyperfine_fermi_baseline_gate["prediction"]["residual_ppm"],
+        },
+        "promotion_requirements": [
+            "independent external helium holdout rows with source locators and hashes",
+            "uncertainty propagation for level energies, wavelengths, QED corrections, and hyperfine residuals",
+            "CI/correlated two-electron spectral model or explicit UET atomic operator with fixed parameters before holdout evaluation",
+            "baseline comparator table covering zero-quantum-defect, empirical quantum-defect, CI/correlated, and any UET correction lane",
+            "multi-atom benchmark suite split by one-electron ions, two-electron atoms, alkali-like atoms, and heavier many-electron systems",
+        ],
+        "blocked_claims": [
+            "UET predicts all atomic spectra",
+            "0.20 validates periodic-table spectra",
+            "helium spectra are solved from first principles",
+            "quantum defects are derived rather than source-calibrated",
+            "precision QED/hyperfine corrections are closed",
+        ],
+        "claim_boundary": "This gate is a closure contract only. It records what a predictive atomic model must prove and keeps current 0.20 evidence at diagnostic/benchmark status.",
+    }
+
+
 def build_atomic_claim_scope_gate(
     status: str,
     avg_error_ppm: float,
@@ -1999,6 +2106,7 @@ def build_atomic_claim_scope_gate(
     helium_quantum_defect_prediction_gate: dict,
     helium_quantum_defect_holdout_gate: dict,
     helium_quantum_defect_wavelength_holdout_gate: dict,
+    atomic_predictive_model_closure_gate: dict,
     source_evidence_readiness_matrix: dict,
     branch_claim_gate: dict,
 ) -> dict:
@@ -2198,6 +2306,13 @@ def build_atomic_claim_scope_gate(
                 "metrics": helium_quantum_defect_wavelength_holdout_gate["metrics"],
                 "source_evidence_readiness": "same_source_family_wavelength_holdouts_ready_external_validation_and_uncertainty_blocked",
             },
+            {
+                "claim": "A predictive atomic-spectra closure contract now defines what must pass before claiming broad atomic prediction.",
+                "status": atomic_predictive_model_closure_gate["status"],
+                "artifact_role": "atomic spectral predictive model closure gate",
+                "metrics": atomic_predictive_model_closure_gate["metrics"],
+                "source_evidence_readiness": "governance_contract_ready_predictive_claim_blocked",
+            },
         ],
         "blocked_claims": [
             {
@@ -2387,6 +2502,16 @@ def run_rydberg_analysis():
         helium_quantum_defect_holdout_gate,
         helium_qd_holdouts,
     )
+    atomic_predictive_model_closure_gate = build_atomic_predictive_model_closure_gate(
+        hydrogen_like_checkpoint,
+        precision_dirac_baseline_gate,
+        lamb_shift_handoff_gate,
+        hyperfine_fermi_baseline_gate,
+        helium_excited_hydrogenic_residual_gate,
+        helium_quantum_defect_prediction_gate,
+        helium_quantum_defect_holdout_gate,
+        helium_quantum_defect_wavelength_holdout_gate,
+    )
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
         avg_error_ppm,
@@ -2410,6 +2535,7 @@ def run_rydberg_analysis():
         helium_quantum_defect_prediction_gate,
         helium_quantum_defect_holdout_gate,
         helium_quantum_defect_wavelength_holdout_gate,
+        atomic_predictive_model_closure_gate,
         source_evidence_readiness_matrix,
         branch_claim_gate,
     )
@@ -2537,6 +2663,7 @@ def run_rydberg_analysis():
             "AT20-HELIUM-QUANTUM-DEFECT-LOO-PREDICTION",
             "AT20-HELIUM-QUANTUM-DEFECT-SOURCE-FAMILY-HOLDOUT",
             "AT20-HELIUM-QUANTUM-DEFECT-HOLDOUT-WAVELENGTH",
+            "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
             "AT20-UET-ATOMIC-BRIDGE-GATE",
         ],
         "threshold": threshold,
@@ -2612,6 +2739,8 @@ def run_rydberg_analysis():
             "helium_quantum_defect_wavelength_holdout_max_abs_residual_angstrom": helium_quantum_defect_wavelength_holdout_gate["metrics"]["max_abs_wavelength_residual_angstrom"],
             "helium_quantum_defect_wavelength_holdout_avg_abs_residual_ppm": helium_quantum_defect_wavelength_holdout_gate["metrics"]["average_abs_wavelength_residual_ppm"],
             "helium_quantum_defect_wavelength_holdout_max_abs_residual_ppm": helium_quantum_defect_wavelength_holdout_gate["metrics"]["max_abs_wavelength_residual_ppm"],
+            "atomic_predictive_closure_open_or_partial_checks": atomic_predictive_model_closure_gate["metrics"]["open_or_partial_check_count"],
+            "atomic_predictive_closure_fail_open_checks": atomic_predictive_model_closure_gate["metrics"]["fail_open_check_count"],
         },
         "results": results,
         "limitations": [
@@ -2649,6 +2778,7 @@ def run_rydberg_analysis():
     artifact["helium_quantum_defect_prediction_gate"] = helium_quantum_defect_prediction_gate
     artifact["helium_quantum_defect_holdout_gate"] = helium_quantum_defect_holdout_gate
     artifact["helium_quantum_defect_wavelength_holdout_gate"] = helium_quantum_defect_wavelength_holdout_gate
+    artifact["atomic_predictive_model_closure_gate"] = atomic_predictive_model_closure_gate
     artifact["source_evidence_intake_stub"] = {
         "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
         "sha256": sha256(json.dumps(source_evidence_intake_stub, sort_keys=True).encode("utf-8")).hexdigest(),

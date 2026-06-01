@@ -15,6 +15,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 | Hydrogen level energies | `hydrogen_spectra_data.json`, artifact `hydrogen_level_energy_benchmark` | rounded source-referenced n-level benchmark |
 | Precision spectroscopy targets | `hydrogen_precision_spectroscopy_sources.json`, `hydrogen_lamb_shift_correction_sources.json`, `hydrogen_hyperfine_21cm_sources.json`, `hydrogen_hyperfine_fermi_constants.json`, precision artifacts | source package plus nonrelativistic, leading Dirac, empirical Lamb-handoff, 21 cm bookkeeping, and Fermi-contact diagnostics; QED/recoil/proton-size/hyperfine model blocked |
 | Neutral helium / many-electron targets | `helium_many_electron_sources.json`, `helium_transition_assignments.json`, `helium_ground_state_energy_sources.json`, `helium_quantum_defect_holdout_sources.json`, artifacts `helium_many_electron_gate`, `helium_transition_assignment_gap_gate`, `helium_medium_normalization_gate`, `helium_line_component_policy_gate`, `helium_ground_state_baseline_gate`, `helium_excited_state_target_gate`, `helium_excited_hydrogenic_residual_gate`, `helium_quantum_defect_prediction_gate`, `helium_quantum_defect_holdout_gate`, `helium_quantum_defect_wavelength_holdout_gate` | source package plus photon-energy, term-assignment, medium-normalization, component-policy, ground-state baseline, excited-state target, zero-quantum-defect residual, limited quantum-defect prediction, same-source-family holdout, and restricted wavelength-holdout diagnostics; model blocked |
+| Predictive closure contract | artifact `atomic_predictive_model_closure_gate` | governance gate only; broad atomic prediction blocked until no-leakage splits, independent holdouts, uncertainty propagation, comparator baselines, and fixed-parameter CI/correlated or UET operators exist |
 | Three-body coupling smoke test | `Research_Atomic_ThreeBody.py` | code-health check, not physics validation |
 | Multi-electron comparisons | `Research_Multi_Electron.py` | open lane |
 
@@ -46,8 +47,9 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 12. Load 21 cm hyperfine source rows and compute frequency-to-wavelength bookkeeping.
 13. Compute the leading Fermi-contact 21 cm baseline as a residual diagnostic, not as a closed hyperfine Hamiltonian.
 14. Load neutral helium source rows, compute photon energies, attach upper/lower term assignments, derive vacuum-equivalent wavelengths from level-energy differences, check source line-component/blend policy, compute ground-state baseline residuals from NIST ionization-energy anchors, prepare excited-state binding targets from term energies, compute a zero-quantum-defect hydrogenic residual baseline, run a limited same-series quantum-defect leave-one-out prediction gate, test additional NIST source-family holdout rows, and predict restricted ground-state holdout wavelengths before any helium claim.
-15. Write artifact with hashes, thresholds, metrics, formula bridge metadata, level-energy rows, selected ion rows, precision source/baseline gates, Dirac baseline gate, Lamb handoff gate, 21 cm source/Fermi gates, neutral helium source/gap/medium/component/ground-baseline/excited-target/hydrogenic-residual/quantum-defect-prediction/holdout/wavelength-holdout gates, and limitations.
-16. Write `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json` so the hydrogen benchmark stays separate from broader atomic-theory claims.
+15. Build an atomic predictive-closure contract that lists the required no-leakage split, baseline comparator, fixed-parameter model, uncertainty, and domain-expansion gates before broad spectral prediction claims.
+16. Write artifact with hashes, thresholds, metrics, formula bridge metadata, level-energy rows, selected ion rows, precision source/baseline gates, Dirac baseline gate, Lamb handoff gate, 21 cm source/Fermi gates, neutral helium source/gap/medium/component/ground-baseline/excited-target/hydrogenic-residual/quantum-defect-prediction/holdout/wavelength-holdout gates, predictive-closure contract, and limitations.
+17. Write `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json` so the hydrogen benchmark stays separate from broader atomic-theory claims.
 
 ## Assumptions
 
@@ -59,6 +61,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 - Hydrogen-like ion predictions use reduced-mass scaling for the selected He+ and Li2+ rows. Li III remains provisional because direct ASD row capture is still pending. C VI is recorded only as a higher-Z stress-test row until fine/QED policy is added.
 - Precision spectroscopy rows support a source package plus nonrelativistic, leading Dirac, empirical Lamb-handoff 1S-2S residuals, 21 cm source bookkeeping, and Fermi-contact baseline only until QED/recoil/proton-radius/hyperfine models and uncertainty propagation are added.
 - Neutral helium rows support source targets, photon-energy bookkeeping, term assignments, medium normalization, source component policy, ground-state baseline residual diagnostics, excited-state target preparation, zero-quantum-defect residual sizing, limited source-calibrated quantum-defect prediction diagnostics, same-source-family holdout diagnostics, and restricted wavelength-holdout diagnostics only until a correlated two-electron Hamiltonian/spectral model, independent holdout source family, uncertainty propagation, standard-air wavelength conversion policy for future holdout rows, resolved line-shape policy for precision use, and residual thresholds are added.
+- The predictive closure contract is a claim-control artifact only. It does not make the current quantum-defect or hydrogenic gates first-principles predictions.
 
 ## Domain of Validity
 
@@ -69,6 +72,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 - Provisional selected He+/Li2+ one-electron ion residuals under the reduced-mass hydrogenic benchmark gate, plus C VI stress-test residual language.
 - Precision source-package readiness language for 1S-2S, Lamb shift, and 21 cm hyperfine targets, plus nonrelativistic, leading Dirac, empirical Lamb-handoff, 21 cm source-bookkeeping, and Fermi-contact diagnostic language.
 - Neutral helium source-package readiness, photon-energy, term-assignment, medium-normalization, component-policy, ground-state baseline, excited-state target, hydrogenic residual, quantum-defect prediction, same-source-family holdout, and wavelength-holdout blocker language for future many-electron artifacts.
+- Predictive closure language that defines the minimum artifact requirements for future atomic-spectrum prediction claims.
 
 ## Excluded Cases
 
