@@ -1825,6 +1825,113 @@ def build_helium_quantum_defect_holdout_gate(
     }
 
 
+def build_helium_quantum_defect_wavelength_holdout_gate(
+    helium_quantum_defect_holdout_gate: dict,
+    helium_qd_holdouts: dict,
+) -> dict:
+    level_predictions = {
+        (
+            row["configuration"],
+            row["term"],
+            row["j"],
+            row["observed_excitation_energy_eV"],
+        ): row
+        for row in helium_quantum_defect_holdout_gate["predictions"]
+    }
+    line_predictions = []
+    skipped = []
+
+    for row in helium_qd_holdouts["holdout_levels"]:
+        if abs(row["lower_energy_cm_inverse"]) > 0.0:
+            skipped.append(
+                {
+                    "holdout_id": row["holdout_id"],
+                    "source_wavelength_angstrom": row["wavelength_angstrom"],
+                    "reason": "lower_level_not_ground_state_to_avoid_holdout_energy_leakage",
+                }
+            )
+            continue
+
+        upper_excitation_eV = row["upper_energy_cm_inverse"] * EV_PER_CM_INVERSE
+        key = (
+            row["upper_configuration"],
+            row["upper_term"],
+            row["upper_j"],
+            upper_excitation_eV,
+        )
+        prediction = level_predictions.get(key)
+        if prediction is None:
+            skipped.append(
+                {
+                    "holdout_id": row["holdout_id"],
+                    "source_wavelength_angstrom": row["wavelength_angstrom"],
+                    "reason": "upper_level_not_predicted_by_holdout_gate",
+                }
+            )
+            continue
+
+        predicted_wavenumber_cm_inverse = prediction["predicted_excitation_energy_eV"] / EV_PER_CM_INVERSE
+        predicted_wavelength_angstrom = 1.0e8 / predicted_wavenumber_cm_inverse
+        observed_wavelength_angstrom = row["wavelength_angstrom"]
+        residual_angstrom = predicted_wavelength_angstrom - observed_wavelength_angstrom
+        residual_ppm = abs(residual_angstrom) / observed_wavelength_angstrom * 1.0e6
+        line_predictions.append(
+            {
+                "holdout_id": row["holdout_id"],
+                "source_wavelength_angstrom": observed_wavelength_angstrom,
+                "predicted_wavelength_angstrom": predicted_wavelength_angstrom,
+                "residual_angstrom_predicted_minus_source": residual_angstrom,
+                "absolute_residual_angstrom": abs(residual_angstrom),
+                "absolute_residual_nm": abs(residual_angstrom) * 0.1,
+                "absolute_residual_ppm": residual_ppm,
+                "predicted_wavenumber_cm_inverse": predicted_wavenumber_cm_inverse,
+                "source_upper_energy_cm_inverse": row["upper_energy_cm_inverse"],
+                "predicted_upper_excitation_energy_eV": prediction["predicted_excitation_energy_eV"],
+                "source_upper_excitation_energy_eV": prediction["observed_excitation_energy_eV"],
+                "upper_configuration": row["upper_configuration"],
+                "upper_term": row["upper_term"],
+                "upper_j": row["upper_j"],
+                "source_locator": row["source_locator"],
+                "medium_policy": "Compares against NIST listed wavelength as a diagnostic; no air/vacuum refractive-index correction is applied.",
+            }
+        )
+
+    residuals_angstrom = [line["absolute_residual_angstrom"] for line in line_predictions]
+    residuals_ppm = [line["absolute_residual_ppm"] for line in line_predictions]
+    return {
+        "schema_version": "1.0",
+        "role": "neutral_helium_quantum_defect_wavelength_holdout_gate",
+        "status": "SOURCE_FAMILY_HOLDOUT_WAVELENGTH_RESIDUAL_COMPUTED_MEDIUM_POLICY_BLOCKED",
+        "claim_class": "same_source_family_wavelength_prediction_diagnostic_only_no_independent_validation",
+        "formula_id": "AT20-HELIUM-QUANTUM-DEFECT-HOLDOUT-WAVELENGTH",
+        "formula": "lambda_pred_A = 1e8 / (E_upper_pred_eV / (h c)); lower level restricted to ground-state holdouts to avoid lower-level leakage.",
+        "source_basis": helium_qd_holdouts["source"],
+        "metrics": {
+            "holdout_line_count": len(helium_qd_holdouts["holdout_levels"]),
+            "predicted_line_count": len(line_predictions),
+            "skipped_line_count": len(skipped),
+            "average_abs_wavelength_residual_angstrom": float(np.mean(residuals_angstrom)) if residuals_angstrom else None,
+            "max_abs_wavelength_residual_angstrom": max(residuals_angstrom) if residuals_angstrom else None,
+            "average_abs_wavelength_residual_ppm": float(np.mean(residuals_ppm)) if residuals_ppm else None,
+            "max_abs_wavelength_residual_ppm": max(residuals_ppm) if residuals_ppm else None,
+        },
+        "predictions": line_predictions,
+        "skipped": skipped,
+        "blocked_residual_model_requirements": [
+            "air/vacuum wavelength-medium correction policy for NIST visible rows",
+            "independent external spectral-line holdout source",
+            "uncertainty propagation from level prediction to wavelength residual",
+            "correlated two-electron or CI model that predicts line positions without fitted quantum defects",
+        ],
+        "limitations": [
+            "Only ground-to-excited holdout lines are predicted to avoid using holdout lower-level energies.",
+            "This gate compares to NIST listed wavelengths without a refractive-index medium correction.",
+            "Same-source-family holdouts are not independent external validation.",
+        ],
+        "claim_boundary": "This gate supports only same-source-family He I wavelength holdout diagnostics. It does not validate helium spectra independently and does not derive line positions from first principles.",
+    }
+
+
 def build_atomic_claim_scope_gate(
     status: str,
     avg_error_ppm: float,
@@ -1847,6 +1954,7 @@ def build_atomic_claim_scope_gate(
     helium_excited_hydrogenic_residual_gate: dict,
     helium_quantum_defect_prediction_gate: dict,
     helium_quantum_defect_holdout_gate: dict,
+    helium_quantum_defect_wavelength_holdout_gate: dict,
     source_evidence_readiness_matrix: dict,
     branch_claim_gate: dict,
 ) -> dict:
@@ -2039,6 +2147,13 @@ def build_atomic_claim_scope_gate(
                 "metrics": helium_quantum_defect_holdout_gate["metrics"],
                 "source_evidence_readiness": "same_source_family_holdouts_ready_independent_external_validation_blocked",
             },
+            {
+                "claim": "Selected same-source-family He I holdout wavelengths are predicted from quantum-defect level predictions.",
+                "status": helium_quantum_defect_wavelength_holdout_gate["status"],
+                "artifact_role": "neutral helium quantum-defect wavelength holdout gate",
+                "metrics": helium_quantum_defect_wavelength_holdout_gate["metrics"],
+                "source_evidence_readiness": "same_source_family_wavelength_holdouts_ready_medium_policy_and_external_validation_blocked",
+            },
         ],
         "blocked_claims": [
             {
@@ -2077,7 +2192,7 @@ def build_atomic_claim_scope_gate(
             {
                 "claim": "UET validates helium, many-electron atoms, or general atomic theory.",
                 "status": "BLOCKED",
-                "blocking_reason": "Neutral helium source rows, photon energies, term assignments, wavelength-medium normalization, line-component/blend policy, ground-state baseline residual diagnostics, excited-state targets, zero-quantum-defect residual baselines, limited source-calibrated quantum-defect predictions, and same-source-family holdout diagnostics are now packaged, but a correlated two-electron Hamiltonian/spectral residual artifact is still missing.",
+                "blocking_reason": "Neutral helium source rows, photon energies, term assignments, wavelength-medium normalization, line-component/blend policy, ground-state baseline residual diagnostics, excited-state targets, zero-quantum-defect residual baselines, limited source-calibrated quantum-defect predictions, same-source-family holdout diagnostics, and selected holdout wavelength predictions are now packaged, but a correlated two-electron Hamiltonian/spectral residual artifact is still missing.",
                 "next_evidence_required": [
                     "correlated two-electron Hamiltonian/spectral model",
                     "singlet/triplet quantum-defect or configuration-interaction policy",
@@ -2224,6 +2339,10 @@ def run_rydberg_analysis():
         helium_quantum_defect_prediction_gate,
         helium_qd_holdouts,
     )
+    helium_quantum_defect_wavelength_holdout_gate = build_helium_quantum_defect_wavelength_holdout_gate(
+        helium_quantum_defect_holdout_gate,
+        helium_qd_holdouts,
+    )
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
         avg_error_ppm,
@@ -2246,6 +2365,7 @@ def run_rydberg_analysis():
         helium_excited_hydrogenic_residual_gate,
         helium_quantum_defect_prediction_gate,
         helium_quantum_defect_holdout_gate,
+        helium_quantum_defect_wavelength_holdout_gate,
         source_evidence_readiness_matrix,
         branch_claim_gate,
     )
@@ -2372,6 +2492,7 @@ def run_rydberg_analysis():
             "AT20-HELIUM-ZERO-QUANTUM-DEFECT-BASELINE",
             "AT20-HELIUM-QUANTUM-DEFECT-LOO-PREDICTION",
             "AT20-HELIUM-QUANTUM-DEFECT-SOURCE-FAMILY-HOLDOUT",
+            "AT20-HELIUM-QUANTUM-DEFECT-HOLDOUT-WAVELENGTH",
             "AT20-UET-ATOMIC-BRIDGE-GATE",
         ],
         "threshold": threshold,
@@ -2441,6 +2562,12 @@ def run_rydberg_analysis():
             "helium_quantum_defect_holdout_skipped_levels": helium_quantum_defect_holdout_gate["metrics"]["skipped_level_count"],
             "helium_quantum_defect_holdout_avg_abs_residual_eV": helium_quantum_defect_holdout_gate["metrics"]["average_abs_excitation_residual_eV"],
             "helium_quantum_defect_holdout_max_abs_residual_eV": helium_quantum_defect_holdout_gate["metrics"]["max_abs_excitation_residual_eV"],
+            "helium_quantum_defect_wavelength_holdout_prediction_count": helium_quantum_defect_wavelength_holdout_gate["metrics"]["predicted_line_count"],
+            "helium_quantum_defect_wavelength_holdout_skipped_lines": helium_quantum_defect_wavelength_holdout_gate["metrics"]["skipped_line_count"],
+            "helium_quantum_defect_wavelength_holdout_avg_abs_residual_angstrom": helium_quantum_defect_wavelength_holdout_gate["metrics"]["average_abs_wavelength_residual_angstrom"],
+            "helium_quantum_defect_wavelength_holdout_max_abs_residual_angstrom": helium_quantum_defect_wavelength_holdout_gate["metrics"]["max_abs_wavelength_residual_angstrom"],
+            "helium_quantum_defect_wavelength_holdout_avg_abs_residual_ppm": helium_quantum_defect_wavelength_holdout_gate["metrics"]["average_abs_wavelength_residual_ppm"],
+            "helium_quantum_defect_wavelength_holdout_max_abs_residual_ppm": helium_quantum_defect_wavelength_holdout_gate["metrics"]["max_abs_wavelength_residual_ppm"],
         },
         "results": results,
         "limitations": [
@@ -2450,7 +2577,7 @@ def run_rydberg_analysis():
             "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
             "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark; C VI is a higher-Z stress test until fine/QED policy and broader ion coverage are added.",
             "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines plus 21 cm source/Fermi gates are diagnostics only and do not validate hyperfine Hamiltonian closure, QED, helium, or many-electron atoms.",
-            "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, line-component policy, ground-state baseline residuals, excited-state targets, zero-quantum-defect residual baselines, limited source-calibrated quantum-defect predictions, and same-source-family holdout diagnostics computed but still do not validate electron correlation or many-electron spectra.",
+            "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, line-component policy, ground-state baseline residuals, excited-state targets, zero-quantum-defect residual baselines, limited source-calibrated quantum-defect predictions, same-source-family holdout diagnostics, and selected holdout wavelength predictions computed but still do not validate electron correlation or many-electron spectra.",
         ],
     }
     artifact["atomic_formula_bridge_manifest"] = {
@@ -2477,6 +2604,7 @@ def run_rydberg_analysis():
     artifact["helium_excited_hydrogenic_residual_gate"] = helium_excited_hydrogenic_residual_gate
     artifact["helium_quantum_defect_prediction_gate"] = helium_quantum_defect_prediction_gate
     artifact["helium_quantum_defect_holdout_gate"] = helium_quantum_defect_holdout_gate
+    artifact["helium_quantum_defect_wavelength_holdout_gate"] = helium_quantum_defect_wavelength_holdout_gate
     artifact["source_evidence_intake_stub"] = {
         "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
         "sha256": sha256(json.dumps(source_evidence_intake_stub, sort_keys=True).encode("utf-8")).hexdigest(),
@@ -2500,7 +2628,7 @@ def run_rydberg_analysis():
         "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, "
         "an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, "
         "a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark plus C VI stress-test lane, "
-        "a precision spectroscopy source gate, and a neutral helium source/assignment/medium-normalization/component-policy/ground-baseline/excited-target/hydrogenic-residual/quantum-defect-prediction/holdout gate. It does not validate full atomic theory, "
+        "a precision spectroscopy source gate, and a neutral helium source/assignment/medium-normalization/component-policy/ground-baseline/excited-target/hydrogenic-residual/quantum-defect-prediction/holdout/wavelength-holdout gate. It does not validate full atomic theory, "
         "fine structure, Lamb shift, hyperfine structure, QED corrections, broad hydrogen-like ion coverage, "
         "neutral helium residuals, or many-electron physics."
     )
