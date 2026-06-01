@@ -212,6 +212,20 @@
         },
         "source_evidence_readiness": "source_targets_ready_single_active_electron_baseline_model_blocked",
         "status": "HYDROGENIC_BASELINE_RESIDUAL_COMPUTED_CORRELATION_MODEL_BLOCKED"
+      },
+      {
+        "artifact_role": "neutral helium quantum-defect prediction gate",
+        "claim": "A source-calibrated quantum-defect model makes limited leave-one-out predictions for selected neutral-helium series.",
+        "metrics": {
+          "average_abs_excitation_residual_eV": 0.013314104276392109,
+          "max_abs_excitation_residual_eV": 0.04961120944315667,
+          "prediction_count": 7,
+          "series_count": 5,
+          "series_with_leave_one_out_predictions": 3,
+          "skipped_level_count": 2
+        },
+        "source_evidence_readiness": "selected_source_levels_ready_calibrated_prediction_model_blocked",
+        "status": "SOURCE_CALIBRATED_QD_LOO_RESIDUAL_COMPUTED_MODEL_BLOCKED"
       }
     ],
     "blocked_claims": [
@@ -249,7 +263,7 @@
         "status": "BLOCKED"
       },
       {
-        "blocking_reason": "Neutral helium source rows, photon energies, term assignments, wavelength-medium normalization, line-component/blend policy, ground-state baseline residual diagnostics, excited-state targets, and zero-quantum-defect residual baselines are now packaged, but a correlated two-electron Hamiltonian/spectral residual artifact is still missing.",
+        "blocking_reason": "Neutral helium source rows, photon energies, term assignments, wavelength-medium normalization, line-component/blend policy, ground-state baseline residual diagnostics, excited-state targets, zero-quantum-defect residual baselines, and limited source-calibrated quantum-defect predictions are now packaged, but a correlated two-electron Hamiltonian/spectral residual artifact is still missing.",
         "claim": "UET validates helium, many-electron atoms, or general atomic theory.",
         "next_evidence_required": [
           "correlated two-electron Hamiltonian/spectral model",
@@ -286,7 +300,8 @@
       "precision_model_artifact_missing",
       "primary_precision_locators_incomplete",
       "helium_many_electron_model_artifact_missing",
-      "helium_quantum_defect_or_ci_policy_missing"
+      "helium_quantum_defect_or_ci_policy_missing",
+      "independent_helium_prediction_holdout_missing"
     ],
     "schema_version": "1.0",
     "source_evidence_summary": {
@@ -347,9 +362,10 @@
     "AT20-HELIUM-VARIATIONAL-ZETA-BASELINE",
     "AT20-HELIUM-EXCITED-STATE-TARGET-GAP",
     "AT20-HELIUM-ZERO-QUANTUM-DEFECT-BASELINE",
+    "AT20-HELIUM-QUANTUM-DEFECT-LOO-PREDICTION",
     "AT20-UET-ATOMIC-BRIDGE-GATE"
   ],
-  "generated_at_utc": "2026-05-31T20:08:44.931687+00:00",
+  "generated_at_utc": "2026-06-01T09:50:18.019587+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -1126,6 +1142,256 @@
       }
     ]
   },
+  "helium_quantum_defect_prediction_gate": {
+    "blocked_residual_model_requirements": [
+      "independent holdout lines not used for quantum-defect calibration",
+      "uncertainty propagation for term energies and ionization limit",
+      "fine-structure/component policy for blended lines",
+      "correlated two-electron or CI model that predicts quantum defects instead of fitting them"
+    ],
+    "claim_boundary": "This gate supports only limited source-calibrated quantum-defect prediction diagnostics for selected He I levels. It cannot be cited as UET deriving helium spectra or solving many-electron atoms.",
+    "claim_class": "source_calibrated_series_prediction_only_no_first_principles_helium_validation",
+    "formula": "E_bind_pred = h c R_infinity / (n - delta_series)^2; delta_series is fitted from same-series source levels at different n.",
+    "formula_id": "AT20-HELIUM-QUANTUM-DEFECT-LOO-PREDICTION",
+    "limitations": [
+      "This is a source-calibrated prediction diagnostic, not a first-principles model.",
+      "Series with only one distinct n cannot be leave-one-out predicted by this gate.",
+      "The gate uses only selected visible-line-linked levels, so it cannot support broad helium validation."
+    ],
+    "metrics": {
+      "average_abs_excitation_residual_eV": 0.013314104276392109,
+      "max_abs_excitation_residual_eV": 0.04961120944315667,
+      "prediction_count": 7,
+      "series_count": 5,
+      "series_with_leave_one_out_predictions": 3,
+      "skipped_level_count": 2
+    },
+    "predictions": [
+      {
+        "absolute_residual_eV": 0.00024160273428464052,
+        "calibrated_quantum_defect": 0.002216066717121823,
+        "configuration": "1s 3d",
+        "j": 3,
+        "observed_excitation_energy_eV": 23.07365104003023,
+        "observed_outer_binding_eV": 1.5137379709697676,
+        "outer_principal_quantum_number": 3,
+        "predicted_excitation_energy_eV": 23.073409437295947,
+        "predicted_outer_binding_eV": 1.513979573704051,
+        "residual_eV_predicted_minus_observed": -0.00024160273428464052,
+        "series_distinct_n": [
+          3,
+          4
+        ],
+        "series_key": "3D",
+        "source_quantum_defect": 0.001976843049760646,
+        "term": "3D",
+        "training_distinct_n": [
+          4
+        ],
+        "training_level_count": 1
+      },
+      {
+        "absolute_residual_eV": 0.00010187271381667529,
+        "calibrated_quantum_defect": 0.001976843049760646,
+        "configuration": "1s.4d",
+        "j": 3,
+        "observed_excitation_energy_eV": 23.736090184798247,
+        "observed_outer_binding_eV": 0.8512988262017522,
+        "outer_principal_quantum_number": 4,
+        "predicted_excitation_energy_eV": 23.736192057512064,
+        "predicted_outer_binding_eV": 0.8511969534879352,
+        "residual_eV_predicted_minus_observed": 0.00010187271381667529,
+        "series_distinct_n": [
+          3,
+          4
+        ],
+        "series_key": "3D",
+        "source_quantum_defect": 0.002216066717121823,
+        "term": "3D",
+        "training_distinct_n": [
+          3
+        ],
+        "training_level_count": 1
+      },
+      {
+        "absolute_residual_eV": 0.013517851909416123,
+        "calibrated_quantum_defect": 0.06580866444547162,
+        "configuration": "1s.2p",
+        "j": 2,
+        "observed_excitation_energy_eV": 20.964086884400437,
+        "observed_outer_binding_eV": 3.6233021265995617,
+        "outer_principal_quantum_number": 2,
+        "predicted_excitation_energy_eV": 20.95056903249102,
+        "predicted_outer_binding_eV": 3.636819978508977,
+        "residual_eV_predicted_minus_observed": -0.013517851909416123,
+        "series_distinct_n": [
+          2,
+          3
+        ],
+        "series_key": "3P",
+        "source_quantum_defect": 0.06220397320436999,
+        "term": "3P*",
+        "training_distinct_n": [
+          3
+        ],
+        "training_level_count": 1
+      },
+      {
+        "absolute_residual_eV": 0.013518185388473825,
+        "calibrated_quantum_defect": 0.06580866444547162,
+        "configuration": "1s 2p",
+        "j": 2,
+        "observed_excitation_energy_eV": 20.964087217879495,
+        "observed_outer_binding_eV": 3.623301793120504,
+        "outer_principal_quantum_number": 2,
+        "predicted_excitation_energy_eV": 20.95056903249102,
+        "predicted_outer_binding_eV": 3.636819978508977,
+        "residual_eV_predicted_minus_observed": -0.013518185388473825,
+        "series_distinct_n": [
+          2,
+          3
+        ],
+        "series_key": "3P",
+        "source_quantum_defect": 0.06220388402957644,
+        "term": "3P*",
+        "training_distinct_n": [
+          3
+        ],
+        "training_level_count": 1
+      },
+      {
+        "absolute_residual_eV": 0.003875779646154598,
+        "calibrated_quantum_defect": 0.062203928616973214,
+        "configuration": "1s 3p",
+        "j": 2,
+        "observed_excitation_energy_eV": 23.007073472038392,
+        "observed_outer_binding_eV": 1.5803155389616066,
+        "outer_principal_quantum_number": 3,
+        "predicted_excitation_energy_eV": 23.010949251684547,
+        "predicted_outer_binding_eV": 1.576439759315451,
+        "residual_eV_predicted_minus_observed": 0.003875779646154598,
+        "series_distinct_n": [
+          2,
+          3
+        ],
+        "series_key": "3P",
+        "source_quantum_defect": 0.06580866444547162,
+        "term": "3P*",
+        "training_distinct_n": [
+          2
+        ],
+        "training_level_count": 2
+      },
+      {
+        "absolute_residual_eV": 0.04961120944315667,
+        "calibrated_quantum_defect": 0.30185853005973273,
+        "configuration": "1s 2s",
+        "j": 1,
+        "observed_excitation_energy_eV": 19.81961485871314,
+        "observed_outer_binding_eV": 4.767774152286858,
+        "outer_principal_quantum_number": 2,
+        "predicted_excitation_energy_eV": 19.869226068156298,
+        "predicted_outer_binding_eV": 4.718162942843702,
+        "residual_eV_predicted_minus_observed": 0.04961120944315667,
+        "series_distinct_n": [
+          2,
+          3
+        ],
+        "series_key": "3S",
+        "source_quantum_defect": 0.3107166633713663,
+        "term": "3S",
+        "training_distinct_n": [
+          3
+        ],
+        "training_level_count": 1
+      },
+      {
+        "absolute_residual_eV": 0.012332228099442233,
+        "calibrated_quantum_defect": 0.3107166633713663,
+        "configuration": "1s 3s",
+        "j": 1,
+        "observed_excitation_energy_eV": 22.718466749719173,
+        "observed_outer_binding_eV": 1.8689222612808258,
+        "outer_principal_quantum_number": 3,
+        "predicted_excitation_energy_eV": 22.70613452161973,
+        "predicted_outer_binding_eV": 1.8812544893802672,
+        "residual_eV_predicted_minus_observed": -0.012332228099442233,
+        "series_distinct_n": [
+          2,
+          3
+        ],
+        "series_key": "3S",
+        "source_quantum_defect": 0.30185853005973273,
+        "term": "3S",
+        "training_distinct_n": [
+          2
+        ],
+        "training_level_count": 1
+      }
+    ],
+    "role": "neutral_helium_quantum_defect_prediction_gate",
+    "schema_version": "1.0",
+    "series_summary": {
+      "1D": {
+        "distinct_n": [
+          3
+        ],
+        "level_count": 1,
+        "mean_source_quantum_defect": 0.0015567925737993704
+      },
+      "1P": {
+        "distinct_n": [
+          2
+        ],
+        "level_count": 1,
+        "mean_source_quantum_defect": -0.009491816105981599
+      },
+      "3D": {
+        "distinct_n": [
+          3,
+          4
+        ],
+        "level_count": 2,
+        "mean_source_quantum_defect": 0.0020964548834412344
+      },
+      "3P": {
+        "distinct_n": [
+          2,
+          3
+        ],
+        "level_count": 3,
+        "mean_source_quantum_defect": 0.06340550722647269
+      },
+      "3S": {
+        "distinct_n": [
+          2,
+          3
+        ],
+        "level_count": 2,
+        "mean_source_quantum_defect": 0.3062875967155495
+      }
+    },
+    "skipped": [
+      {
+        "configuration": "1s 3d",
+        "j": 2,
+        "outer_principal_quantum_number": 3,
+        "reason": "no_same_series_training_level_at_different_n",
+        "series_key": "1D",
+        "term": "1D"
+      },
+      {
+        "configuration": "1s 2p",
+        "j": 1,
+        "outer_principal_quantum_number": 2,
+        "reason": "no_same_series_training_level_at_different_n",
+        "series_key": "1P",
+        "term": "1P*"
+      }
+    ],
+    "source_basis": "Selected NIST He I term levels grouped by spin multiplicity and outer orbital letter.",
+    "status": "SOURCE_CALIBRATED_QD_LOO_RESIDUAL_COMPUTED_MODEL_BLOCKED"
+  },
   "helium_transition_assignment_gap_gate": {
     "assignment_source": {
       "name": "NIST Handbook of Basic Atomic Spectroscopic Data and NIST Atomic Spectra Database line query",
@@ -1736,7 +2002,7 @@
       "status": "SOURCE_PACKAGE_READY_MODEL_BLOCKED"
     }
   ],
-  "interpretation": "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark plus C VI stress-test lane, a precision spectroscopy source gate, and a neutral helium source/assignment/medium-normalization/component-policy/ground-baseline/excited-target/hydrogenic-residual gate. It does not validate full atomic theory, fine structure, Lamb shift, hyperfine structure, QED corrections, broad hydrogen-like ion coverage, neutral helium residuals, or many-electron physics.",
+  "interpretation": "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark plus C VI stress-test lane, a precision spectroscopy source gate, and a neutral helium source/assignment/medium-normalization/component-policy/ground-baseline/excited-target/hydrogenic-residual/quantum-defect-prediction gate. It does not validate full atomic theory, fine structure, Lamb shift, hyperfine structure, QED corrections, broad hydrogen-like ion coverage, neutral helium residuals, or many-electron physics.",
   "lamb_shift_handoff_gate": {
     "claim_boundary": "This package can estimate the empirical Lamb-shift gap in the 1S-2S residual, but it does not validate QED, proton-size corrections, hyperfine structure, or UET first-principles atomic theory.",
     "claim_class": "empirical_lamb_handoff_only_no_qed_validation",
@@ -1802,7 +2068,7 @@
     "Hydrogen level-energy rows support only rounded n-level benchmark language until direct ASD per-level precision is captured.",
     "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark; C VI is a higher-Z stress test until fine/QED policy and broader ion coverage are added.",
     "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines plus 21 cm source/Fermi gates are diagnostics only and do not validate hyperfine Hamiltonian closure, QED, helium, or many-electron atoms.",
-    "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, line-component policy, ground-state baseline residuals, excited-state targets, and zero-quantum-defect residual baselines computed but still do not validate electron correlation or many-electron spectra."
+    "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, line-component policy, ground-state baseline residuals, excited-state targets, zero-quantum-defect residual baselines, and limited source-calibrated quantum-defect predictions computed but still do not validate electron correlation or many-electron spectra."
   ],
   "metrics": {
     "R_H_codata_m_inverse": 10967758.3406,
@@ -1835,6 +2101,9 @@
     "helium_medium_rows_missing_normalization": 0,
     "helium_photon_energy_max_ev": 3.1883625981447454,
     "helium_photon_energy_min_ev": 1.7548633021579456,
+    "helium_quantum_defect_prediction_avg_abs_residual_eV": 0.013314104276392109,
+    "helium_quantum_defect_prediction_count": 7,
+    "helium_quantum_defect_prediction_max_abs_residual_eV": 0.04961120944315667,
     "helium_required_model_components": 7,
     "helium_rows_missing_transition_assignment": 0,
     "helium_rows_with_transition_assignment": 5,
