@@ -263,7 +263,7 @@
         "claim": "A predictive atomic-spectra closure contract now defines what must pass before claiming broad atomic prediction.",
         "metrics": {
           "closure_check_count": 5,
-          "fail_open_check_count": 2,
+          "fail_open_check_count": 1,
           "helium_quantum_defect_holdout_prediction_count": 3,
           "helium_quantum_defect_loo_prediction_count": 7,
           "helium_wavelength_holdout_predicted_vacuum_line_count": 2,
@@ -273,7 +273,9 @@
           "hyperfine_21cm_fermi_residual_ppm": 530.677220569032,
           "open_or_partial_check_count": 4,
           "precision_1s2s_dirac_residual_ppm": 2.880995748527676,
-          "precision_1s2s_lamb_handoff_residual_ppm": 0.004184223857857917
+          "precision_1s2s_lamb_handoff_residual_ppm": 0.004184223857857917,
+          "uncertainty_propagation_blocked_lane_count": 6,
+          "uncertainty_readiness_lane_count": 9
         },
         "source_evidence_readiness": "governance_contract_ready_predictive_claim_blocked",
         "status": "PREDICTIVE_CLAIM_BLOCKED_REQUIREMENTS_OPEN"
@@ -505,12 +507,13 @@
       },
       {
         "check_id": "AT20-PRED-04",
-        "current_state": "FAIL_OPEN",
+        "current_state": "PARTIAL",
         "evidence": [
-          "source hashes and residuals are recorded",
-          "precision gates record measurement uncertainty where available"
+          "atomic_uncertainty_readiness_gate maps source/model/propagation/threshold status by lane",
+          "9 uncertainty lanes are machine-readable",
+          "6 lanes still have blocked propagation"
         ],
-        "remaining_blocker": "No unified uncertainty propagation is applied to helium level, wavelength, QED, or hyperfine residual gates.",
+        "remaining_blocker": "Readiness is mapped, but uncertainty propagation and uncertainty-aware thresholds are still incomplete.",
         "requirement": "Propagate source and model uncertainty into residual thresholds."
       },
       {
@@ -530,7 +533,7 @@
     "formula_id": "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
     "metrics": {
       "closure_check_count": 5,
-      "fail_open_check_count": 2,
+      "fail_open_check_count": 1,
       "helium_quantum_defect_holdout_prediction_count": 3,
       "helium_quantum_defect_loo_prediction_count": 7,
       "helium_wavelength_holdout_predicted_vacuum_line_count": 2,
@@ -540,7 +543,9 @@
       "hyperfine_21cm_fermi_residual_ppm": 530.677220569032,
       "open_or_partial_check_count": 4,
       "precision_1s2s_dirac_residual_ppm": 2.880995748527676,
-      "precision_1s2s_lamb_handoff_residual_ppm": 0.004184223857857917
+      "precision_1s2s_lamb_handoff_residual_ppm": 0.004184223857857917,
+      "uncertainty_propagation_blocked_lane_count": 6,
+      "uncertainty_readiness_lane_count": 9
     },
     "promotion_requirements": [
       "independent external helium holdout rows with source locators and hashes",
@@ -553,6 +558,120 @@
     "role": "atomic_spectral_predictive_model_closure_gate",
     "schema_version": "1.0",
     "status": "PREDICTIVE_CLAIM_BLOCKED_REQUIREMENTS_OPEN"
+  },
+  "atomic_uncertainty_readiness_gate": {
+    "claim_boundary": "This gate maps uncertainty readiness only. It does not make residuals uncertainty-qualified until propagation rules and thresholds are implemented.",
+    "claim_class": "uncertainty_readiness_diagnostic_only",
+    "formula_id": "AT20-ATOMIC-UNCERTAINTY-READINESS-GATE",
+    "lanes": [
+      {
+        "evidence": "Rydberg line residuals and CODATA/source hashes are present, but line transcription uncertainty is not propagated.",
+        "lane_id": "hydrogen_rydberg_lines",
+        "model_uncertainty_status": "NOT_MODELED",
+        "propagation_status": "BLOCKED",
+        "source_uncertainty_status": "MISSING_PER_LINE_SOURCE_UNCERTAINTY",
+        "threshold_status": "FIXED_PPM_THRESHOLD_ONLY"
+      },
+      {
+        "evidence": "8 rounded n-level rows are benchmarked without direct per-level ASD uncertainty.",
+        "lane_id": "hydrogen_level_energy",
+        "model_uncertainty_status": "NOT_MODELED",
+        "propagation_status": "BLOCKED",
+        "source_uncertainty_status": "MISSING_DIRECT_ASD_LEVEL_UNCERTAINTY",
+        "threshold_status": "FIXED_PPM_THRESHOLD_ONLY"
+      },
+      {
+        "evidence": "2 primary He+/Li2+ rows are gated; C VI remains a higher-Z stress lane.",
+        "lane_id": "hydrogen_like_ions",
+        "model_uncertainty_status": "FINE_QED_POLICY_OPEN",
+        "propagation_status": "BLOCKED",
+        "source_uncertainty_status": "PARTIAL_SOURCE_STATUS_WITHOUT_UNIFIED_UNCERTAINTY",
+        "threshold_status": "PROVISIONAL_FIXED_PPM_THRESHOLD"
+      },
+      {
+        "evidence": {
+          "dirac_sigma_offset": 710471244.7,
+          "nonrel_sigma_offset": 2298942817.85
+        },
+        "lane_id": "hydrogen_1s2s_precision",
+        "model_uncertainty_status": "QED_RECOIL_PROTON_SIZE_MODEL_OPEN",
+        "propagation_status": "PARTIAL_SOURCE_SIGMA_DIAGNOSTIC_ONLY",
+        "source_uncertainty_status": "MEASUREMENT_UNCERTAINTY_RECORDED",
+        "threshold_status": "NO_PRECISION_PASS_THRESHOLD"
+      },
+      {
+        "evidence": {
+          "delta_uncertainty_hz": 30364.452901377954,
+          "residual_ppm": 0.004184223857857917
+        },
+        "lane_id": "hydrogen_lamb_handoff",
+        "model_uncertainty_status": "EMPIRICAL_HANDOFF_NOT_QED_MODEL",
+        "propagation_status": "PARTIAL_DELTA_UNCERTAINTY_ONLY",
+        "source_uncertainty_status": "LAMB_SOURCE_UNCERTAINTY_COMBINED",
+        "threshold_status": "NO_QED_CLOSURE_THRESHOLD"
+      },
+      {
+        "evidence": {
+          "fermi_residual_ppm": 530.677220569032,
+          "reference_frequency_hz": 1420405751.7680001
+        },
+        "lane_id": "hydrogen_21cm_hyperfine",
+        "model_uncertainty_status": "RECOIL_QED_PROTON_STRUCTURE_OPEN",
+        "propagation_status": "BLOCKED",
+        "source_uncertainty_status": "REFERENCE_FREQUENCY_UNCERTAINTY_PRESENT_WHERE_RECORDED",
+        "threshold_status": "NO_HYPERFINE_CLOSURE_THRESHOLD"
+      },
+      {
+        "evidence": {
+          "observed_total_binding_uncertainty_eV": 2.5019992006393606e-08,
+          "variational_residual_eV": 1.5164804246481225
+        },
+        "lane_id": "helium_ground_state",
+        "model_uncertainty_status": "CORRELATION_RELATIVISTIC_FINITE_MASS_QED_OPEN",
+        "propagation_status": "PARTIAL_OBSERVED_BINDING_UNCERTAINTY_ONLY",
+        "source_uncertainty_status": "IONIZATION_ENERGY_UNCERTAINTY_COMBINED",
+        "threshold_status": "NO_CORRELATED_GROUND_CLOSURE_THRESHOLD"
+      },
+      {
+        "evidence": {
+          "holdout_prediction_count": 3,
+          "loo_prediction_count": 7
+        },
+        "lane_id": "helium_quantum_defect_levels",
+        "model_uncertainty_status": "FITTED_SERIES_PARAMETER_UNCERTAINTY_NOT_PROPAGATED",
+        "propagation_status": "BLOCKED",
+        "source_uncertainty_status": "TERM_LEVEL_UNCERTAINTY_NOT_PROPAGATED",
+        "threshold_status": "DIAGNOSTIC_RESIDUALS_ONLY"
+      },
+      {
+        "evidence": {
+          "max_abs_residual_ppm": 80.24697624904677,
+          "predicted_line_count": 2
+        },
+        "lane_id": "helium_holdout_wavelengths",
+        "model_uncertainty_status": "LEVEL_TO_WAVELENGTH_MODEL_UNCERTAINTY_NOT_PROPAGATED",
+        "propagation_status": "BLOCKED",
+        "source_uncertainty_status": "WAVELENGTH_SOURCE_UNCERTAINTY_NOT_PROPAGATED",
+        "threshold_status": "DIAGNOSTIC_RESIDUALS_ONLY"
+      }
+    ],
+    "metrics": {
+      "lane_count": 9,
+      "lanes_with_model_uncertainty_open": 4,
+      "lanes_with_source_uncertainty_present_or_partial": 7,
+      "partial_propagation_lane_count": 3,
+      "propagation_blocked_lane_count": 6
+    },
+    "next_required_artifacts": [
+      "per-row source uncertainty fields for hydrogen/helium spectral lines and term energies",
+      "model-parameter uncertainty for fitted quantum defects and future CI/correlated parameters",
+      "unit-aware propagation from level energies to wavelengths and frequencies",
+      "uncertainty-aware pass/fail thresholds separated by hydrogen, hydrogen-like ion, helium, and hyperfine lanes"
+    ],
+    "purpose": "Map uncertainty readiness for atomic prediction and precision lanes before any uncertainty-aware spectral prediction claim.",
+    "role": "atomic_uncertainty_readiness_gate",
+    "schema_version": "1.0",
+    "status": "UNCERTAINTY_READINESS_MAPPED_PROPAGATION_INCOMPLETE"
   },
   "branch_claim_gate": {
     "claim_boundary": "This gate keeps the topic at hydrogen benchmark status, not full atomic-theory closure.",
@@ -597,10 +716,11 @@
     "AT20-HELIUM-QUANTUM-DEFECT-SOURCE-FAMILY-HOLDOUT",
     "AT20-HELIUM-QUANTUM-DEFECT-HOLDOUT-WAVELENGTH",
     "AT20-ATOMIC-PREDICTION-BASELINE-COMPARATOR",
+    "AT20-ATOMIC-UNCERTAINTY-READINESS-GATE",
     "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
     "AT20-UET-ATOMIC-BRIDGE-GATE"
   ],
-  "generated_at_utc": "2026-06-01T10:21:11.338557+00:00",
+  "generated_at_utc": "2026-06-01T10:26:30.407334+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -2554,8 +2674,10 @@
     "accepted_claim_branches": 5,
     "atomic_prediction_comparator_count": 6,
     "atomic_prediction_comparators_missing_external_or_ci_baseline": 2,
-    "atomic_predictive_closure_fail_open_checks": 2,
+    "atomic_predictive_closure_fail_open_checks": 1,
     "atomic_predictive_closure_open_or_partial_checks": 4,
+    "atomic_uncertainty_propagation_blocked_lanes": 6,
+    "atomic_uncertainty_readiness_lanes": 9,
     "average_wavelength_error_ppm": 7.504133013735595,
     "blocked_claim_exports": 7,
     "fitted_slope_through_origin_m_inverse": 10967845.50226957,

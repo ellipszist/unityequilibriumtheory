@@ -2089,6 +2089,147 @@ def build_atomic_prediction_baseline_comparator_gate(
     }
 
 
+def build_atomic_uncertainty_readiness_gate(
+    hydrogen_level_energy_benchmark: dict,
+    hydrogen_like_checkpoint: dict,
+    precision_baseline_gate: dict,
+    precision_dirac_baseline_gate: dict,
+    lamb_shift_handoff_gate: dict,
+    hyperfine_21cm_gate: dict,
+    hyperfine_fermi_baseline_gate: dict,
+    helium_ground_state_baseline_gate: dict,
+    helium_quantum_defect_prediction_gate: dict,
+    helium_quantum_defect_holdout_gate: dict,
+    helium_quantum_defect_wavelength_holdout_gate: dict,
+) -> dict:
+    lanes = [
+        {
+            "lane_id": "hydrogen_rydberg_lines",
+            "source_uncertainty_status": "MISSING_PER_LINE_SOURCE_UNCERTAINTY",
+            "model_uncertainty_status": "NOT_MODELED",
+            "propagation_status": "BLOCKED",
+            "threshold_status": "FIXED_PPM_THRESHOLD_ONLY",
+            "evidence": "Rydberg line residuals and CODATA/source hashes are present, but line transcription uncertainty is not propagated.",
+        },
+        {
+            "lane_id": "hydrogen_level_energy",
+            "source_uncertainty_status": "MISSING_DIRECT_ASD_LEVEL_UNCERTAINTY",
+            "model_uncertainty_status": "NOT_MODELED",
+            "propagation_status": "BLOCKED",
+            "threshold_status": "FIXED_PPM_THRESHOLD_ONLY",
+            "evidence": f"{hydrogen_level_energy_benchmark['metrics']['level_count']} rounded n-level rows are benchmarked without direct per-level ASD uncertainty.",
+        },
+        {
+            "lane_id": "hydrogen_like_ions",
+            "source_uncertainty_status": "PARTIAL_SOURCE_STATUS_WITHOUT_UNIFIED_UNCERTAINTY",
+            "model_uncertainty_status": "FINE_QED_POLICY_OPEN",
+            "propagation_status": "BLOCKED",
+            "threshold_status": "PROVISIONAL_FIXED_PPM_THRESHOLD",
+            "evidence": f"{hydrogen_like_checkpoint['metrics']['primary_benchmark_line_count']} primary He+/Li2+ rows are gated; C VI remains a higher-Z stress lane.",
+        },
+        {
+            "lane_id": "hydrogen_1s2s_precision",
+            "source_uncertainty_status": "MEASUREMENT_UNCERTAINTY_RECORDED",
+            "model_uncertainty_status": "QED_RECOIL_PROTON_SIZE_MODEL_OPEN",
+            "propagation_status": "PARTIAL_SOURCE_SIGMA_DIAGNOSTIC_ONLY",
+            "threshold_status": "NO_PRECISION_PASS_THRESHOLD",
+            "evidence": {
+                "nonrel_sigma_offset": precision_baseline_gate["prediction"]["sigma_offset_vs_measurement_uncertainty"],
+                "dirac_sigma_offset": precision_dirac_baseline_gate["prediction"]["sigma_offset_vs_measurement_uncertainty"],
+            },
+        },
+        {
+            "lane_id": "hydrogen_lamb_handoff",
+            "source_uncertainty_status": "LAMB_SOURCE_UNCERTAINTY_COMBINED",
+            "model_uncertainty_status": "EMPIRICAL_HANDOFF_NOT_QED_MODEL",
+            "propagation_status": "PARTIAL_DELTA_UNCERTAINTY_ONLY",
+            "threshold_status": "NO_QED_CLOSURE_THRESHOLD",
+            "evidence": {
+                "delta_uncertainty_hz": lamb_shift_handoff_gate["correction"]["delta_uncertainty_hz"],
+                "residual_ppm": lamb_shift_handoff_gate["prediction"]["residual_ppm"],
+            },
+        },
+        {
+            "lane_id": "hydrogen_21cm_hyperfine",
+            "source_uncertainty_status": "REFERENCE_FREQUENCY_UNCERTAINTY_PRESENT_WHERE_RECORDED",
+            "model_uncertainty_status": "RECOIL_QED_PROTON_STRUCTURE_OPEN",
+            "propagation_status": "BLOCKED",
+            "threshold_status": "NO_HYPERFINE_CLOSURE_THRESHOLD",
+            "evidence": {
+                "reference_frequency_hz": hyperfine_21cm_gate["recommended_frequency"]["value_hz"],
+                "fermi_residual_ppm": hyperfine_fermi_baseline_gate["prediction"]["residual_ppm"],
+            },
+        },
+        {
+            "lane_id": "helium_ground_state",
+            "source_uncertainty_status": "IONIZATION_ENERGY_UNCERTAINTY_COMBINED",
+            "model_uncertainty_status": "CORRELATION_RELATIVISTIC_FINITE_MASS_QED_OPEN",
+            "propagation_status": "PARTIAL_OBSERVED_BINDING_UNCERTAINTY_ONLY",
+            "threshold_status": "NO_CORRELATED_GROUND_CLOSURE_THRESHOLD",
+            "evidence": {
+                "observed_total_binding_uncertainty_eV": helium_ground_state_baseline_gate["observed_anchor"][
+                    "total_binding_uncertainty_eV"
+                ],
+                "variational_residual_eV": helium_ground_state_baseline_gate["baselines"][1]["absolute_residual_eV"],
+            },
+        },
+        {
+            "lane_id": "helium_quantum_defect_levels",
+            "source_uncertainty_status": "TERM_LEVEL_UNCERTAINTY_NOT_PROPAGATED",
+            "model_uncertainty_status": "FITTED_SERIES_PARAMETER_UNCERTAINTY_NOT_PROPAGATED",
+            "propagation_status": "BLOCKED",
+            "threshold_status": "DIAGNOSTIC_RESIDUALS_ONLY",
+            "evidence": {
+                "loo_prediction_count": helium_quantum_defect_prediction_gate["metrics"]["prediction_count"],
+                "holdout_prediction_count": helium_quantum_defect_holdout_gate["metrics"]["prediction_count"],
+            },
+        },
+        {
+            "lane_id": "helium_holdout_wavelengths",
+            "source_uncertainty_status": "WAVELENGTH_SOURCE_UNCERTAINTY_NOT_PROPAGATED",
+            "model_uncertainty_status": "LEVEL_TO_WAVELENGTH_MODEL_UNCERTAINTY_NOT_PROPAGATED",
+            "propagation_status": "BLOCKED",
+            "threshold_status": "DIAGNOSTIC_RESIDUALS_ONLY",
+            "evidence": {
+                "predicted_line_count": helium_quantum_defect_wavelength_holdout_gate["metrics"]["predicted_line_count"],
+                "max_abs_residual_ppm": helium_quantum_defect_wavelength_holdout_gate["metrics"][
+                    "max_abs_wavelength_residual_ppm"
+                ],
+            },
+        },
+    ]
+    blocked_lanes = [lane for lane in lanes if lane["propagation_status"] == "BLOCKED"]
+    partial_lanes = [lane for lane in lanes if lane["propagation_status"].startswith("PARTIAL")]
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_uncertainty_readiness_gate",
+        "status": "UNCERTAINTY_READINESS_MAPPED_PROPAGATION_INCOMPLETE",
+        "claim_class": "uncertainty_readiness_diagnostic_only",
+        "formula_id": "AT20-ATOMIC-UNCERTAINTY-READINESS-GATE",
+        "purpose": "Map uncertainty readiness for atomic prediction and precision lanes before any uncertainty-aware spectral prediction claim.",
+        "lanes": lanes,
+        "metrics": {
+            "lane_count": len(lanes),
+            "propagation_blocked_lane_count": len(blocked_lanes),
+            "partial_propagation_lane_count": len(partial_lanes),
+            "lanes_with_source_uncertainty_present_or_partial": sum(
+                1
+                for lane in lanes
+                if "UNCERTAINTY" in lane["source_uncertainty_status"]
+                and not lane["source_uncertainty_status"].startswith("MISSING")
+            ),
+            "lanes_with_model_uncertainty_open": sum(1 for lane in lanes if "OPEN" in lane["model_uncertainty_status"]),
+        },
+        "next_required_artifacts": [
+            "per-row source uncertainty fields for hydrogen/helium spectral lines and term energies",
+            "model-parameter uncertainty for fitted quantum defects and future CI/correlated parameters",
+            "unit-aware propagation from level energies to wavelengths and frequencies",
+            "uncertainty-aware pass/fail thresholds separated by hydrogen, hydrogen-like ion, helium, and hyperfine lanes",
+        ],
+        "claim_boundary": "This gate maps uncertainty readiness only. It does not make residuals uncertainty-qualified until propagation rules and thresholds are implemented.",
+    }
+
+
 def build_atomic_predictive_model_closure_gate(
     hydrogen_like_checkpoint: dict,
     precision_dirac_baseline_gate: dict,
@@ -2099,6 +2240,7 @@ def build_atomic_predictive_model_closure_gate(
     helium_quantum_defect_holdout_gate: dict,
     helium_quantum_defect_wavelength_holdout_gate: dict,
     atomic_prediction_baseline_comparator_gate: dict,
+    atomic_uncertainty_readiness_gate: dict,
 ) -> dict:
     closure_checks = [
         {
@@ -2136,12 +2278,13 @@ def build_atomic_predictive_model_closure_gate(
         {
             "check_id": "AT20-PRED-04",
             "requirement": "Propagate source and model uncertainty into residual thresholds.",
-            "current_state": "FAIL_OPEN",
+            "current_state": "PARTIAL",
             "evidence": [
-                "source hashes and residuals are recorded",
-                "precision gates record measurement uncertainty where available",
+                "atomic_uncertainty_readiness_gate maps source/model/propagation/threshold status by lane",
+                f"{atomic_uncertainty_readiness_gate['metrics']['lane_count']} uncertainty lanes are machine-readable",
+                f"{atomic_uncertainty_readiness_gate['metrics']['propagation_blocked_lane_count']} lanes still have blocked propagation",
             ],
-            "remaining_blocker": "No unified uncertainty propagation is applied to helium level, wavelength, QED, or hyperfine residual gates.",
+            "remaining_blocker": "Readiness is mapped, but uncertainty propagation and uncertainty-aware thresholds are still incomplete.",
         },
         {
             "check_id": "AT20-PRED-05",
@@ -2178,6 +2321,10 @@ def build_atomic_predictive_model_closure_gate(
             "precision_1s2s_dirac_residual_ppm": precision_dirac_baseline_gate["prediction"]["residual_ppm"],
             "precision_1s2s_lamb_handoff_residual_ppm": lamb_shift_handoff_gate["prediction"]["residual_ppm"],
             "hyperfine_21cm_fermi_residual_ppm": hyperfine_fermi_baseline_gate["prediction"]["residual_ppm"],
+            "uncertainty_readiness_lane_count": atomic_uncertainty_readiness_gate["metrics"]["lane_count"],
+            "uncertainty_propagation_blocked_lane_count": atomic_uncertainty_readiness_gate["metrics"][
+                "propagation_blocked_lane_count"
+            ],
         },
         "promotion_requirements": [
             "independent external helium holdout rows with source locators and hashes",
@@ -2626,6 +2773,19 @@ def run_rydberg_analysis():
         helium_quantum_defect_holdout_gate,
         helium_quantum_defect_wavelength_holdout_gate,
     )
+    atomic_uncertainty_readiness_gate = build_atomic_uncertainty_readiness_gate(
+        hydrogen_level_energy_benchmark,
+        hydrogen_like_checkpoint,
+        precision_baseline_gate,
+        precision_dirac_baseline_gate,
+        lamb_shift_handoff_gate,
+        hyperfine_21cm_gate,
+        hyperfine_fermi_baseline_gate,
+        helium_ground_state_baseline_gate,
+        helium_quantum_defect_prediction_gate,
+        helium_quantum_defect_holdout_gate,
+        helium_quantum_defect_wavelength_holdout_gate,
+    )
     atomic_predictive_model_closure_gate = build_atomic_predictive_model_closure_gate(
         hydrogen_like_checkpoint,
         precision_dirac_baseline_gate,
@@ -2636,6 +2796,7 @@ def run_rydberg_analysis():
         helium_quantum_defect_holdout_gate,
         helium_quantum_defect_wavelength_holdout_gate,
         atomic_prediction_baseline_comparator_gate,
+        atomic_uncertainty_readiness_gate,
     )
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
@@ -2789,6 +2950,7 @@ def run_rydberg_analysis():
             "AT20-HELIUM-QUANTUM-DEFECT-SOURCE-FAMILY-HOLDOUT",
             "AT20-HELIUM-QUANTUM-DEFECT-HOLDOUT-WAVELENGTH",
             "AT20-ATOMIC-PREDICTION-BASELINE-COMPARATOR",
+            "AT20-ATOMIC-UNCERTAINTY-READINESS-GATE",
             "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
             "AT20-UET-ATOMIC-BRIDGE-GATE",
         ],
@@ -2869,6 +3031,10 @@ def run_rydberg_analysis():
             "atomic_prediction_comparators_missing_external_or_ci_baseline": atomic_prediction_baseline_comparator_gate[
                 "metrics"
             ]["comparators_missing_external_or_ci_baseline"],
+            "atomic_uncertainty_readiness_lanes": atomic_uncertainty_readiness_gate["metrics"]["lane_count"],
+            "atomic_uncertainty_propagation_blocked_lanes": atomic_uncertainty_readiness_gate["metrics"][
+                "propagation_blocked_lane_count"
+            ],
             "atomic_predictive_closure_open_or_partial_checks": atomic_predictive_model_closure_gate["metrics"]["open_or_partial_check_count"],
             "atomic_predictive_closure_fail_open_checks": atomic_predictive_model_closure_gate["metrics"]["fail_open_check_count"],
         },
@@ -2909,6 +3075,7 @@ def run_rydberg_analysis():
     artifact["helium_quantum_defect_holdout_gate"] = helium_quantum_defect_holdout_gate
     artifact["helium_quantum_defect_wavelength_holdout_gate"] = helium_quantum_defect_wavelength_holdout_gate
     artifact["atomic_prediction_baseline_comparator_gate"] = atomic_prediction_baseline_comparator_gate
+    artifact["atomic_uncertainty_readiness_gate"] = atomic_uncertainty_readiness_gate
     artifact["atomic_predictive_model_closure_gate"] = atomic_predictive_model_closure_gate
     artifact["source_evidence_intake_stub"] = {
         "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
