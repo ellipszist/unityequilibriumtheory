@@ -1602,6 +1602,89 @@ def build_helium_excited_hydrogenic_residual_gate(
     }
 
 
+def build_helium_fixed_screening_baseline_gate(
+    helium_excited_hydrogenic_residual_gate: dict,
+) -> dict:
+    """Fixed one-active-electron screening baseline; heuristic comparator, not CI."""
+    r_infinity_ev = helium_excited_hydrogenic_residual_gate["constants"]["R_infinity_energy_eV"]
+    screening_sigma_1s_core = 0.85
+    nuclear_charge = 2.0
+    fixed_outer_zeff = nuclear_charge - screening_sigma_1s_core
+    rows = []
+
+    for level in helium_excited_hydrogenic_residual_gate["levels"]:
+        n_outer = level.get("outer_principal_quantum_number")
+        if level.get("baseline_status") != "RESIDUAL_COMPUTED_MODEL_INCOMPLETE" or n_outer is None:
+            rows.append(
+                {
+                    **level,
+                    "fixed_screening_status": "SKIPPED_NO_ZERO_QD_BASELINE",
+                }
+            )
+            continue
+        observed_outer_binding_ev = level["observed_outer_binding_to_HeII_limit_eV"]
+        fixed_screening_binding_ev = r_infinity_ev * (fixed_outer_zeff**2) / (n_outer**2)
+        residual_ev = fixed_screening_binding_ev - observed_outer_binding_ev
+        zero_qd_abs_residual_ev = level["absolute_residual_eV"]
+        rows.append(
+            {
+                **level,
+                "fixed_screening_status": "RESIDUAL_COMPUTED_FIXED_HEURISTIC_MODEL_INCOMPLETE",
+                "fixed_screening_sigma_1s_core": screening_sigma_1s_core,
+                "fixed_outer_effective_charge": fixed_outer_zeff,
+                "fixed_screening_binding_eV": fixed_screening_binding_ev,
+                "residual_eV_predicted_minus_observed": residual_ev,
+                "absolute_residual_eV": abs(residual_ev),
+                "zero_quantum_defect_absolute_residual_eV": zero_qd_abs_residual_ev,
+                "absolute_residual_delta_vs_zero_qd_eV": abs(residual_ev) - zero_qd_abs_residual_ev,
+            }
+        )
+
+    computed_rows = [
+        row for row in rows if row["fixed_screening_status"] == "RESIDUAL_COMPUTED_FIXED_HEURISTIC_MODEL_INCOMPLETE"
+    ]
+    residuals = [row["absolute_residual_eV"] for row in computed_rows]
+    zero_residuals = [row["zero_quantum_defect_absolute_residual_eV"] for row in computed_rows]
+    improved_rows = [row for row in computed_rows if row["absolute_residual_delta_vs_zero_qd_eV"] < 0.0]
+    return {
+        "schema_version": "1.0",
+        "role": "neutral_helium_fixed_screening_baseline_gate",
+        "status": "FIXED_SCREENING_BASELINE_COMPUTED_HEURISTIC_ONLY",
+        "claim_class": "fixed_parameter_screening_diagnostic_only_no_helium_validation",
+        "formula_id": "AT20-HELIUM-FIXED-SCREENING-BASELINE",
+        "formula": "E_bind_pred = h c R_infinity * Z_eff^2 / n^2; Z_eff fixed to 2 - 0.85 before evaluation.",
+        "parameter_policy": {
+            "nuclear_charge": nuclear_charge,
+            "screening_sigma_1s_core": screening_sigma_1s_core,
+            "fixed_outer_effective_charge": fixed_outer_zeff,
+            "fit_to_current_rows": False,
+            "holdout_leakage": False,
+        },
+        "metrics": {
+            "computed_level_count": len(computed_rows),
+            "average_abs_binding_residual_eV": float(np.mean(residuals)) if residuals else None,
+            "max_abs_binding_residual_eV": max(residuals) if residuals else None,
+            "zero_qd_average_abs_binding_residual_eV": float(np.mean(zero_residuals)) if zero_residuals else None,
+            "zero_qd_max_abs_binding_residual_eV": max(zero_residuals) if zero_residuals else None,
+            "rows_improved_vs_zero_qd": len(improved_rows),
+            "rows_worse_or_equal_vs_zero_qd": len(computed_rows) - len(improved_rows),
+        },
+        "levels": rows,
+        "blocked_residual_model_requirements": [
+            "source-backed justification or replacement of the fixed screening coefficient",
+            "singlet/triplet and angular-momentum-dependent correlation terms",
+            "CI/correlated two-electron excited-state Hamiltonian",
+            "uncertainty propagation and residual thresholds",
+        ],
+        "limitations": [
+            "This is a fixed-parameter heuristic comparator, not a CI model and not a UET atomic operator.",
+            "It intentionally does not fit screening to the current source rows or holdouts.",
+            "Improvement over zero-quantum-defect is not required for the gate to be useful; worse residuals are recorded as constraints.",
+        ],
+        "claim_boundary": "This gate supports only a fixed-parameter helium screening baseline diagnostic. It cannot be cited as neutral-helium validation, many-electron closure, or UET first-principles spectral prediction.",
+    }
+
+
 def build_helium_quantum_defect_prediction_gate(
     helium_excited_hydrogenic_residual_gate: dict,
 ) -> dict:
@@ -1982,11 +2065,13 @@ def build_atomic_prediction_baseline_comparator_gate(
     lamb_shift_handoff_gate: dict,
     hyperfine_fermi_baseline_gate: dict,
     helium_excited_hydrogenic_residual_gate: dict,
+    helium_fixed_screening_baseline_gate: dict,
     helium_quantum_defect_prediction_gate: dict,
     helium_quantum_defect_holdout_gate: dict,
     helium_quantum_defect_wavelength_holdout_gate: dict,
 ) -> dict:
     helium_zero_avg = helium_excited_hydrogenic_residual_gate["metrics"]["average_abs_binding_residual_eV"]
+    helium_fixed_avg = helium_fixed_screening_baseline_gate["metrics"]["average_abs_binding_residual_eV"]
     helium_loo_avg = helium_quantum_defect_prediction_gate["metrics"]["average_abs_excitation_residual_eV"]
     helium_holdout_avg = helium_quantum_defect_holdout_gate["metrics"]["average_abs_excitation_residual_eV"]
     precision_nonrel_ppm = precision_baseline_gate["prediction"]["residual_ppm"]
@@ -2012,6 +2097,19 @@ def build_atomic_prediction_baseline_comparator_gate(
             "candidate_residual_ppm": precision_lamb_ppm,
             "absolute_improvement_factor": precision_dirac_ppm / precision_lamb_ppm,
             "claim_role": "empirical handoff comparison only; not a QED derivation",
+        },
+        {
+            "comparator_id": "helium_excited_zero_qd_to_fixed_screening",
+            "domain": "neutral_helium_excited_levels",
+            "baseline_model": "zero-quantum-defect hydrogenic baseline",
+            "candidate_model": "fixed one-active-electron screening baseline",
+            "baseline_avg_abs_residual_eV": helium_zero_avg,
+            "candidate_avg_abs_residual_eV": helium_fixed_avg,
+            "average_residual_improvement_factor": helium_zero_avg / helium_fixed_avg,
+            "baseline_max_abs_residual_eV": helium_excited_hydrogenic_residual_gate["metrics"]["max_abs_binding_residual_eV"],
+            "candidate_max_abs_residual_eV": helium_fixed_screening_baseline_gate["metrics"]["max_abs_binding_residual_eV"],
+            "candidate_rows_improved_vs_baseline": helium_fixed_screening_baseline_gate["metrics"]["rows_improved_vs_zero_qd"],
+            "claim_role": "fixed-parameter heuristic comparison only; not CI and not UET first-principles derivation",
         },
         {
             "comparator_id": "helium_excited_zero_qd_to_qd_loo",
@@ -2074,6 +2172,7 @@ def build_atomic_prediction_baseline_comparator_gate(
             ),
             "comparators_missing_external_or_ci_baseline": 2,
             "helium_zero_qd_to_qd_loo_average_improvement_factor": helium_zero_avg / helium_loo_avg,
+            "helium_zero_qd_to_fixed_screening_average_improvement_factor": helium_zero_avg / helium_fixed_avg,
             "helium_zero_qd_to_same_source_holdout_average_improvement_factor": helium_zero_avg / helium_holdout_avg,
             "hydrogen_1s2s_nonrel_to_dirac_improvement_factor": precision_nonrel_ppm / precision_dirac_ppm,
             "hydrogen_1s2s_dirac_to_lamb_handoff_improvement_factor": precision_dirac_ppm / precision_lamb_ppm,
@@ -2235,6 +2334,7 @@ def build_atomic_fixed_parameter_model_readiness_gate(
     precision_dirac_baseline_gate: dict,
     lamb_shift_handoff_gate: dict,
     hyperfine_fermi_baseline_gate: dict,
+    helium_fixed_screening_baseline_gate: dict,
     helium_quantum_defect_prediction_gate: dict,
     helium_quantum_defect_holdout_gate: dict,
     atomic_prediction_baseline_comparator_gate: dict,
@@ -2295,6 +2395,22 @@ def build_atomic_fixed_parameter_model_readiness_gate(
             },
         },
         {
+            "model_id": "helium_fixed_screening_baseline",
+            "domain": "neutral_helium",
+            "parameter_policy": "FIXED_HEURISTIC_SCREENING_BEFORE_EVALUATION",
+            "generative_status": "FIXED_PARAMETER_HEURISTIC_BASELINE_ONLY",
+            "holdout_status": "SELECTED_SOURCE_TARGET_DIAGNOSTIC_ONLY",
+            "current_role": "fixed comparator between zero-quantum-defect and fitted quantum-defect lanes",
+            "evidence": {
+                "fixed_outer_effective_charge": helium_fixed_screening_baseline_gate["parameter_policy"][
+                    "fixed_outer_effective_charge"
+                ],
+                "average_abs_residual_eV": helium_fixed_screening_baseline_gate["metrics"][
+                    "average_abs_binding_residual_eV"
+                ],
+            },
+        },
+        {
             "model_id": "helium_quantum_defect_series_fit",
             "domain": "neutral_helium",
             "parameter_policy": "FITTED_FROM_SOURCE_SERIES",
@@ -2331,6 +2447,7 @@ def build_atomic_fixed_parameter_model_readiness_gate(
         if lane["parameter_policy"].startswith("FIXED")
         and lane["generative_status"] in {"STANDARD_FORMULA_BENCHMARK_ONLY", "PROVISIONAL_STANDARD_HYDROGENIC_BENCHMARK", "PARTIAL_STANDARD_BASELINE", "LEADING_BASELINE_ONLY"}
     ]
+    fixed_heuristics = [lane for lane in model_lanes if lane["parameter_policy"].startswith("FIXED_HEURISTIC")]
     fitted_not_fixed = [lane for lane in model_lanes if lane["parameter_policy"].startswith("FITTED")]
     missing_required = [lane for lane in model_lanes if lane["parameter_policy"] == "MISSING"]
     return {
@@ -2344,6 +2461,7 @@ def build_atomic_fixed_parameter_model_readiness_gate(
         "metrics": {
             "model_lane_count": len(model_lanes),
             "fixed_or_standard_baseline_count": len(fixed_or_standard),
+            "fixed_heuristic_baseline_count": len(fixed_heuristics),
             "fitted_not_fixed_count": len(fitted_not_fixed),
             "missing_required_model_count": len(missing_required),
             "comparator_count": atomic_prediction_baseline_comparator_gate["metrics"]["comparator_count"],
@@ -2885,6 +3003,9 @@ def run_rydberg_analysis():
     helium_excited_hydrogenic_residual_gate = build_helium_excited_hydrogenic_residual_gate(
         codata, helium_ground_state_baseline_gate, helium_excited_state_target_gate
     )
+    helium_fixed_screening_baseline_gate = build_helium_fixed_screening_baseline_gate(
+        helium_excited_hydrogenic_residual_gate
+    )
     helium_quantum_defect_prediction_gate = build_helium_quantum_defect_prediction_gate(
         helium_excited_hydrogenic_residual_gate
     )
@@ -2903,6 +3024,7 @@ def run_rydberg_analysis():
         lamb_shift_handoff_gate,
         hyperfine_fermi_baseline_gate,
         helium_excited_hydrogenic_residual_gate,
+        helium_fixed_screening_baseline_gate,
         helium_quantum_defect_prediction_gate,
         helium_quantum_defect_holdout_gate,
         helium_quantum_defect_wavelength_holdout_gate,
@@ -2925,6 +3047,7 @@ def run_rydberg_analysis():
         precision_dirac_baseline_gate,
         lamb_shift_handoff_gate,
         hyperfine_fermi_baseline_gate,
+        helium_fixed_screening_baseline_gate,
         helium_quantum_defect_prediction_gate,
         helium_quantum_defect_holdout_gate,
         atomic_prediction_baseline_comparator_gate,
@@ -3090,6 +3213,7 @@ def run_rydberg_analysis():
             "AT20-HELIUM-VARIATIONAL-ZETA-BASELINE",
             "AT20-HELIUM-EXCITED-STATE-TARGET-GAP",
             "AT20-HELIUM-ZERO-QUANTUM-DEFECT-BASELINE",
+            "AT20-HELIUM-FIXED-SCREENING-BASELINE",
             "AT20-HELIUM-QUANTUM-DEFECT-LOO-PREDICTION",
             "AT20-HELIUM-QUANTUM-DEFECT-SOURCE-FAMILY-HOLDOUT",
             "AT20-HELIUM-QUANTUM-DEFECT-HOLDOUT-WAVELENGTH",
@@ -3159,6 +3283,9 @@ def run_rydberg_analysis():
             "helium_excited_hydrogenic_max_abs_residual_eV": helium_excited_hydrogenic_residual_gate["metrics"]["max_abs_binding_residual_eV"],
             "helium_excited_hydrogenic_quantum_defect_min": helium_excited_hydrogenic_residual_gate["metrics"]["min_effective_quantum_defect"],
             "helium_excited_hydrogenic_quantum_defect_max": helium_excited_hydrogenic_residual_gate["metrics"]["max_effective_quantum_defect"],
+            "helium_fixed_screening_avg_abs_residual_eV": helium_fixed_screening_baseline_gate["metrics"]["average_abs_binding_residual_eV"],
+            "helium_fixed_screening_max_abs_residual_eV": helium_fixed_screening_baseline_gate["metrics"]["max_abs_binding_residual_eV"],
+            "helium_fixed_screening_rows_improved_vs_zero_qd": helium_fixed_screening_baseline_gate["metrics"]["rows_improved_vs_zero_qd"],
             "helium_quantum_defect_prediction_count": helium_quantum_defect_prediction_gate["metrics"]["prediction_count"],
             "helium_quantum_defect_prediction_avg_abs_residual_eV": helium_quantum_defect_prediction_gate["metrics"]["average_abs_excitation_residual_eV"],
             "helium_quantum_defect_prediction_max_abs_residual_eV": helium_quantum_defect_prediction_gate["metrics"]["max_abs_excitation_residual_eV"],
@@ -3220,6 +3347,7 @@ def run_rydberg_analysis():
     artifact["helium_ground_state_baseline_gate"] = helium_ground_state_baseline_gate
     artifact["helium_excited_state_target_gate"] = helium_excited_state_target_gate
     artifact["helium_excited_hydrogenic_residual_gate"] = helium_excited_hydrogenic_residual_gate
+    artifact["helium_fixed_screening_baseline_gate"] = helium_fixed_screening_baseline_gate
     artifact["helium_quantum_defect_prediction_gate"] = helium_quantum_defect_prediction_gate
     artifact["helium_quantum_defect_holdout_gate"] = helium_quantum_defect_holdout_gate
     artifact["helium_quantum_defect_wavelength_holdout_gate"] = helium_quantum_defect_wavelength_holdout_gate
