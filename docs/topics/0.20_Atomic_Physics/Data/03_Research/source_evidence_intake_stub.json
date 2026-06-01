@@ -72,9 +72,10 @@
     {
       "name": "Helium and many-electron package",
       "priority": "medium",
-      "status_hint": "source_package_ready_model_blocked",
+      "status_hint": "source_package_and_same_family_holdouts_ready_model_blocked",
       "evidence_entries": [
         "helium_dataset",
+        "helium_quantum_defect_holdout_dataset",
         "many_electron_dataset",
         "artifact_paths",
         "observable_scope",

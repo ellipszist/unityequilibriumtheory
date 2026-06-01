@@ -70,15 +70,15 @@
     {
       "name": "Helium and many-electron package",
       "priority": "medium",
-      "fields_total": 6,
-      "fields_complete": 4,
+      "fields_total": 7,
+      "fields_complete": 6,
       "fields_pending": 2,
       "pending_fields": [
-        "artifact_paths",
+        "independent_external_helium_holdouts",
         "many_electron_model_and_thresholds"
       ],
       "ready_for_source_review": true,
-      "blocking_reason": "Neutral helium source rows are ready for source review, but no two-electron Hamiltonian/correlation model or residual artifact is primary-gated yet."
+      "blocking_reason": "Neutral helium source rows and same-source-family quantum-defect holdouts are ready for source review, but independent external holdouts and a two-electron Hamiltonian/correlation model remain blocked."
     }
   ],
   "claim_boundary": "A ready row has enough provenance structure for source review. It does not by itself upgrade atomic-theory claims."

@@ -3,9 +3,9 @@
   "topic": "0.20_Atomic_Physics",
   "purpose": "Claim gate for separate atomic-physics branches inside the topic.",
   "summary": {
-    "branches_total": 8,
+    "branches_total": 9,
     "accepted_now": 5,
-    "blocked_for_strong_claims": 3
+    "blocked_for_strong_claims": 4
   },
   "branches": [
     {
@@ -47,8 +47,14 @@
     {
       "branch": "Helium and many-electron branch",
       "status": "source_package_ready_model_blocked",
-      "allowed_usage_now": "May cite only as a prepared neutral-helium source package for future many-electron artifacts.",
-      "blocker_to_stronger_claim": "Need a correlated two-electron Hamiltonian/spectral model, uncertainty policy, and residual thresholds before helium or many-electron claims."
+      "allowed_usage_now": "May cite only as a prepared neutral-helium source package plus diagnostic quantum-defect residual/prediction gates for future many-electron artifacts.",
+      "blocker_to_stronger_claim": "Need independent external holdouts, a correlated two-electron Hamiltonian/spectral model, uncertainty policy, and residual thresholds before helium or many-electron claims."
+    },
+    {
+      "branch": "Helium quantum-defect prediction branch",
+      "status": "same_source_family_holdout_model_blocked",
+      "allowed_usage_now": "May cite only as a limited source-calibrated He I quantum-defect diagnostic with same-source-family holdouts.",
+      "blocker_to_stronger_claim": "Need independent external holdout lines and a CI/correlated model that predicts quantum defects instead of fitting them."
     },
     {
       "branch": "First-principles UET atomic theory claims",
