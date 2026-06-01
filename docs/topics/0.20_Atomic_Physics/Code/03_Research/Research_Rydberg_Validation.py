@@ -1508,6 +1508,14 @@ def parse_term_multiplicity(term: str) -> str:
     return match.group(1) if match else "unknown"
 
 
+def classify_nist_wavelength_medium_angstrom(wavelength_angstrom: float) -> str:
+    if wavelength_angstrom < 2000.0:
+        return "vacuum"
+    if wavelength_angstrom <= 20000.0:
+        return "standard_air"
+    return "vacuum"
+
+
 def build_helium_excited_hydrogenic_residual_gate(
     codata: dict,
     helium_ground_state_baseline_gate: dict,
@@ -1813,7 +1821,7 @@ def build_helium_quantum_defect_holdout_gate(
         "blocked_residual_model_requirements": [
             "independent external holdout source family",
             "larger singlet/triplet calibration suite with explicit train/test split",
-            "uncertainty propagation and wavelength-medium policy for holdout rows",
+            "uncertainty propagation for level and derived wavelength holdout rows",
             "CI or correlated two-electron model that predicts series defects",
         ],
         "limitations": [
@@ -1842,11 +1850,13 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
     skipped = []
 
     for row in helium_qd_holdouts["holdout_levels"]:
+        source_medium = classify_nist_wavelength_medium_angstrom(row["wavelength_angstrom"])
         if abs(row["lower_energy_cm_inverse"]) > 0.0:
             skipped.append(
                 {
                     "holdout_id": row["holdout_id"],
                     "source_wavelength_angstrom": row["wavelength_angstrom"],
+                    "source_wavelength_medium": source_medium,
                     "reason": "lower_level_not_ground_state_to_avoid_holdout_energy_leakage",
                 }
             )
@@ -1865,6 +1875,7 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
                 {
                     "holdout_id": row["holdout_id"],
                     "source_wavelength_angstrom": row["wavelength_angstrom"],
+                    "source_wavelength_medium": source_medium,
                     "reason": "upper_level_not_predicted_by_holdout_gate",
                 }
             )
@@ -1873,12 +1884,29 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
         predicted_wavenumber_cm_inverse = prediction["predicted_excitation_energy_eV"] / EV_PER_CM_INVERSE
         predicted_wavelength_angstrom = 1.0e8 / predicted_wavenumber_cm_inverse
         observed_wavelength_angstrom = row["wavelength_angstrom"]
+        if source_medium == "vacuum":
+            source_vacuum_equivalent_angstrom = observed_wavelength_angstrom
+            medium_adjustment_status = "NO_AIR_CORRECTION_NEEDED_UNDER_NIST_CONVENTION"
+        else:
+            source_vacuum_equivalent_angstrom = None
+            medium_adjustment_status = "AIR_TO_VACUUM_CONVERSION_REQUIRED_BEFORE_MODEL_RESIDUAL"
+            skipped.append(
+                {
+                    "holdout_id": row["holdout_id"],
+                    "source_wavelength_angstrom": row["wavelength_angstrom"],
+                    "source_wavelength_medium": source_medium,
+                    "reason": "source_air_wavelength_requires_refractive_index_policy",
+                }
+            )
+            continue
         residual_angstrom = predicted_wavelength_angstrom - observed_wavelength_angstrom
         residual_ppm = abs(residual_angstrom) / observed_wavelength_angstrom * 1.0e6
         line_predictions.append(
             {
                 "holdout_id": row["holdout_id"],
                 "source_wavelength_angstrom": observed_wavelength_angstrom,
+                "source_wavelength_medium": source_medium,
+                "source_vacuum_equivalent_angstrom": source_vacuum_equivalent_angstrom,
                 "predicted_wavelength_angstrom": predicted_wavelength_angstrom,
                 "residual_angstrom_predicted_minus_source": residual_angstrom,
                 "absolute_residual_angstrom": abs(residual_angstrom),
@@ -1892,7 +1920,8 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
                 "upper_term": row["upper_term"],
                 "upper_j": row["upper_j"],
                 "source_locator": row["source_locator"],
-                "medium_policy": "Compares against NIST listed wavelength as a diagnostic; no air/vacuum refractive-index correction is applied.",
+                "medium_adjustment_status": medium_adjustment_status,
+                "medium_policy": "NIST convention: wavelengths below 2000 A are vacuum; 2000-20000 A are standard air; above 20000 A are vacuum.",
             }
         )
 
@@ -1901,15 +1930,29 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
     return {
         "schema_version": "1.0",
         "role": "neutral_helium_quantum_defect_wavelength_holdout_gate",
-        "status": "SOURCE_FAMILY_HOLDOUT_WAVELENGTH_RESIDUAL_COMPUTED_MEDIUM_POLICY_BLOCKED",
+        "status": "SOURCE_FAMILY_HOLDOUT_WAVELENGTH_RESIDUAL_COMPUTED_EXTERNAL_HOLDOUT_BLOCKED",
         "claim_class": "same_source_family_wavelength_prediction_diagnostic_only_no_independent_validation",
         "formula_id": "AT20-HELIUM-QUANTUM-DEFECT-HOLDOUT-WAVELENGTH",
         "formula": "lambda_pred_A = 1e8 / (E_upper_pred_eV / (h c)); lower level restricted to ground-state holdouts to avoid lower-level leakage.",
         "source_basis": helium_qd_holdouts["source"],
+        "wavelength_medium_policy": {
+            "basis": "NIST ASD/handbook wavelength convention",
+            "vacuum_below_angstrom": 2000.0,
+            "standard_air_from_angstrom": 2000.0,
+            "standard_air_to_angstrom": 20000.0,
+            "vacuum_above_angstrom": 20000.0,
+            "source_url": "https://pml.nist.gov/PhysRefData/ASD/Html/lineshelp.html",
+        },
         "metrics": {
             "holdout_line_count": len(helium_qd_holdouts["holdout_levels"]),
             "predicted_line_count": len(line_predictions),
             "skipped_line_count": len(skipped),
+            "predicted_vacuum_line_count": sum(
+                1 for line in line_predictions if line["source_wavelength_medium"] == "vacuum"
+            ),
+            "skipped_air_line_count": sum(
+                1 for line in skipped if line.get("source_wavelength_medium") == "standard_air"
+            ),
             "average_abs_wavelength_residual_angstrom": float(np.mean(residuals_angstrom)) if residuals_angstrom else None,
             "max_abs_wavelength_residual_angstrom": max(residuals_angstrom) if residuals_angstrom else None,
             "average_abs_wavelength_residual_ppm": float(np.mean(residuals_ppm)) if residuals_ppm else None,
@@ -1918,14 +1961,15 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
         "predictions": line_predictions,
         "skipped": skipped,
         "blocked_residual_model_requirements": [
-            "air/vacuum wavelength-medium correction policy for NIST visible rows",
             "independent external spectral-line holdout source",
             "uncertainty propagation from level prediction to wavelength residual",
+            "air/vacuum conversion policy for future non-ground holdout lines in the standard-air range",
             "correlated two-electron or CI model that predicts line positions without fitted quantum defects",
         ],
         "limitations": [
             "Only ground-to-excited holdout lines are predicted to avoid using holdout lower-level energies.",
-            "This gate compares to NIST listed wavelengths without a refractive-index medium correction.",
+            "Predicted holdout lines in this gate are below 2000 A and are treated as vacuum wavelengths under the NIST convention.",
+            "Holdout lines in the standard-air wavelength range are skipped until an air/vacuum conversion policy is applied.",
             "Same-source-family holdouts are not independent external validation.",
         ],
         "claim_boundary": "This gate supports only same-source-family He I wavelength holdout diagnostics. It does not validate helium spectra independently and does not derive line positions from first principles.",
@@ -2152,7 +2196,7 @@ def build_atomic_claim_scope_gate(
                 "status": helium_quantum_defect_wavelength_holdout_gate["status"],
                 "artifact_role": "neutral helium quantum-defect wavelength holdout gate",
                 "metrics": helium_quantum_defect_wavelength_holdout_gate["metrics"],
-                "source_evidence_readiness": "same_source_family_wavelength_holdouts_ready_medium_policy_and_external_validation_blocked",
+                "source_evidence_readiness": "same_source_family_wavelength_holdouts_ready_external_validation_and_uncertainty_blocked",
             },
         ],
         "blocked_claims": [
