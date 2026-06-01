@@ -2230,6 +2230,134 @@ def build_atomic_uncertainty_readiness_gate(
     }
 
 
+def build_atomic_fixed_parameter_model_readiness_gate(
+    hydrogen_like_checkpoint: dict,
+    precision_dirac_baseline_gate: dict,
+    lamb_shift_handoff_gate: dict,
+    hyperfine_fermi_baseline_gate: dict,
+    helium_quantum_defect_prediction_gate: dict,
+    helium_quantum_defect_holdout_gate: dict,
+    atomic_prediction_baseline_comparator_gate: dict,
+) -> dict:
+    model_lanes = [
+        {
+            "model_id": "hydrogen_rydberg_codata_fixed_constant",
+            "domain": "hydrogen_lines",
+            "parameter_policy": "FIXED_FROM_CODATA_BEFORE_EVALUATION",
+            "generative_status": "STANDARD_FORMULA_BENCHMARK_ONLY",
+            "holdout_status": "INTERNAL_SOURCE_WORKING_COPY",
+            "current_role": "accepted hydrogen benchmark, not UET-derived R_H",
+            "evidence": "CODATA R_H and NIST/CODATA source hashes are recorded by the primary artifact.",
+        },
+        {
+            "model_id": "hydrogen_like_reduced_mass_fixed_scaling",
+            "domain": "one_electron_ions",
+            "parameter_policy": "FIXED_CODATA_MASSES_AND_Z_BEFORE_EVALUATION",
+            "generative_status": "PROVISIONAL_STANDARD_HYDROGENIC_BENCHMARK",
+            "holdout_status": "SELECTED_SOURCE_ROWS_NOT_BROAD_HOLDOUT",
+            "current_role": "selected He+/Li2+ benchmark plus C VI stress lane",
+            "evidence": {
+                "primary_prediction_count": hydrogen_like_checkpoint["metrics"]["primary_benchmark_line_count"],
+                "stress_prediction_count": hydrogen_like_checkpoint["metrics"]["extended_stress_test_line_count"],
+            },
+        },
+        {
+            "model_id": "hydrogen_1s2s_dirac_fixed_baseline",
+            "domain": "hydrogen_precision",
+            "parameter_policy": "FIXED_CODATA_ALPHA_AND_R_H_BEFORE_EVALUATION",
+            "generative_status": "PARTIAL_STANDARD_BASELINE",
+            "holdout_status": "SOURCE_TARGET_DIAGNOSTIC_ONLY",
+            "current_role": "sizes missing Lamb/QED/recoil/proton-size corrections",
+            "evidence": {
+                "dirac_residual_ppm": precision_dirac_baseline_gate["prediction"]["residual_ppm"],
+            },
+        },
+        {
+            "model_id": "hydrogen_1s2s_empirical_lamb_handoff",
+            "domain": "hydrogen_precision",
+            "parameter_policy": "EMPIRICAL_SOURCE_VALUES_INSERTED",
+            "generative_status": "NOT_GENERATIVE_QED_MODEL",
+            "holdout_status": "NO_INDEPENDENT_HOLDOUT",
+            "current_role": "empirical residual handoff only",
+            "evidence": {
+                "lamb_handoff_residual_ppm": lamb_shift_handoff_gate["prediction"]["residual_ppm"],
+            },
+        },
+        {
+            "model_id": "hydrogen_21cm_fermi_fixed_baseline",
+            "domain": "hydrogen_hyperfine",
+            "parameter_policy": "FIXED_CODATA_AND_NIST_PROTON_G_FACTOR_BEFORE_EVALUATION",
+            "generative_status": "LEADING_BASELINE_ONLY",
+            "holdout_status": "SOURCE_TARGET_DIAGNOSTIC_ONLY",
+            "current_role": "sizes missing recoil/QED/proton-structure corrections",
+            "evidence": {
+                "fermi_residual_ppm": hyperfine_fermi_baseline_gate["prediction"]["residual_ppm"],
+            },
+        },
+        {
+            "model_id": "helium_quantum_defect_series_fit",
+            "domain": "neutral_helium",
+            "parameter_policy": "FITTED_FROM_SOURCE_SERIES",
+            "generative_status": "NOT_FIXED_PARAMETER_FIRST_PRINCIPLES_MODEL",
+            "holdout_status": "SAME_SOURCE_FAMILY_HOLDOUT_ONLY",
+            "current_role": "source-calibrated diagnostic; cannot derive quantum defects",
+            "evidence": {
+                "loo_prediction_count": helium_quantum_defect_prediction_gate["metrics"]["prediction_count"],
+                "same_source_holdout_prediction_count": helium_quantum_defect_holdout_gate["metrics"]["prediction_count"],
+            },
+        },
+        {
+            "model_id": "helium_ci_or_correlated_two_electron_model",
+            "domain": "neutral_helium",
+            "parameter_policy": "MISSING",
+            "generative_status": "REQUIRED_NOT_PRESENT",
+            "holdout_status": "BLOCKED",
+            "current_role": "required next model family for fixed-parameter helium prediction",
+            "evidence": "No in-repo CI/correlated excited-state residual model is primary-gated.",
+        },
+        {
+            "model_id": "uet_atomic_operator",
+            "domain": "cross_atomic",
+            "parameter_policy": "MISSING",
+            "generative_status": "REQUIRED_NOT_PRESENT_FOR_UET_PREDICTION_CLAIM",
+            "holdout_status": "BLOCKED",
+            "current_role": "required for UET-derived spectra rather than inherited standard formulas",
+            "evidence": "Current formula bridge records dependency roles only; no UET transition operator or Hamiltonian artifact is primary-gated.",
+        },
+    ]
+    fixed_or_standard = [
+        lane
+        for lane in model_lanes
+        if lane["parameter_policy"].startswith("FIXED")
+        and lane["generative_status"] in {"STANDARD_FORMULA_BENCHMARK_ONLY", "PROVISIONAL_STANDARD_HYDROGENIC_BENCHMARK", "PARTIAL_STANDARD_BASELINE", "LEADING_BASELINE_ONLY"}
+    ]
+    fitted_not_fixed = [lane for lane in model_lanes if lane["parameter_policy"].startswith("FITTED")]
+    missing_required = [lane for lane in model_lanes if lane["parameter_policy"] == "MISSING"]
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_fixed_parameter_model_readiness_gate",
+        "status": "FIXED_PARAMETER_READINESS_MAPPED_GENERATIVE_MODEL_MISSING",
+        "claim_class": "model_readiness_diagnostic_only",
+        "formula_id": "AT20-ATOMIC-FIXED-PARAMETER-MODEL-READINESS",
+        "purpose": "Separate fixed standard baselines, empirical handoffs, fitted diagnostics, and missing generative models before any predictive atomic-spectrum claim.",
+        "model_lanes": model_lanes,
+        "metrics": {
+            "model_lane_count": len(model_lanes),
+            "fixed_or_standard_baseline_count": len(fixed_or_standard),
+            "fitted_not_fixed_count": len(fitted_not_fixed),
+            "missing_required_model_count": len(missing_required),
+            "comparator_count": atomic_prediction_baseline_comparator_gate["metrics"]["comparator_count"],
+        },
+        "next_required_artifacts": [
+            "CI/correlated two-electron helium residual gate with parameters declared before holdout evaluation",
+            "explicit UET atomic Hamiltonian or transition-operator derivation if UET-specific prediction is claimed",
+            "parameter manifest separating constants, calibrated parameters, fitted diagnostics, and forbidden holdout-leakage fields",
+            "rerun of comparator and uncertainty gates using the fixed-parameter model output",
+        ],
+        "claim_boundary": "This gate maps model-readiness only. It does not make fitted quantum defects, empirical Lamb handoffs, or inherited standard formulas into UET first-principles predictions.",
+    }
+
+
 def build_atomic_predictive_model_closure_gate(
     hydrogen_like_checkpoint: dict,
     precision_dirac_baseline_gate: dict,
@@ -2241,6 +2369,7 @@ def build_atomic_predictive_model_closure_gate(
     helium_quantum_defect_wavelength_holdout_gate: dict,
     atomic_prediction_baseline_comparator_gate: dict,
     atomic_uncertainty_readiness_gate: dict,
+    atomic_fixed_parameter_model_readiness_gate: dict,
 ) -> dict:
     closure_checks = [
         {
@@ -2268,12 +2397,13 @@ def build_atomic_predictive_model_closure_gate(
         {
             "check_id": "AT20-PRED-03",
             "requirement": "Use a generative physics model whose parameters are fixed before the holdout set is evaluated.",
-            "current_state": "FAIL_OPEN",
+            "current_state": "PARTIAL",
             "evidence": [
-                "helium quantum-defect values are fitted from source series",
-                "Dirac and empirical Lamb gates are residual diagnostics, not closed derivations",
+                "atomic_fixed_parameter_model_readiness_gate separates fixed standard baselines, empirical handoffs, fitted diagnostics, and missing required generative models",
+                f"{atomic_fixed_parameter_model_readiness_gate['metrics']['model_lane_count']} model lanes are machine-readable",
+                f"{atomic_fixed_parameter_model_readiness_gate['metrics']['missing_required_model_count']} required model lanes remain missing",
             ],
-            "remaining_blocker": "Need a correlated two-electron/CI Hamiltonian or explicit UET atomic operator that predicts series defects and line positions without fitting them from the tested holdout rows.",
+            "remaining_blocker": "Readiness is mapped, but a fixed-parameter CI/correlated helium model or explicit UET atomic operator is still missing.",
         },
         {
             "check_id": "AT20-PRED-04",
@@ -2324,6 +2454,10 @@ def build_atomic_predictive_model_closure_gate(
             "uncertainty_readiness_lane_count": atomic_uncertainty_readiness_gate["metrics"]["lane_count"],
             "uncertainty_propagation_blocked_lane_count": atomic_uncertainty_readiness_gate["metrics"][
                 "propagation_blocked_lane_count"
+            ],
+            "fixed_parameter_model_lane_count": atomic_fixed_parameter_model_readiness_gate["metrics"]["model_lane_count"],
+            "missing_required_model_count": atomic_fixed_parameter_model_readiness_gate["metrics"][
+                "missing_required_model_count"
             ],
         },
         "promotion_requirements": [
@@ -2786,6 +2920,15 @@ def run_rydberg_analysis():
         helium_quantum_defect_holdout_gate,
         helium_quantum_defect_wavelength_holdout_gate,
     )
+    atomic_fixed_parameter_model_readiness_gate = build_atomic_fixed_parameter_model_readiness_gate(
+        hydrogen_like_checkpoint,
+        precision_dirac_baseline_gate,
+        lamb_shift_handoff_gate,
+        hyperfine_fermi_baseline_gate,
+        helium_quantum_defect_prediction_gate,
+        helium_quantum_defect_holdout_gate,
+        atomic_prediction_baseline_comparator_gate,
+    )
     atomic_predictive_model_closure_gate = build_atomic_predictive_model_closure_gate(
         hydrogen_like_checkpoint,
         precision_dirac_baseline_gate,
@@ -2797,6 +2940,7 @@ def run_rydberg_analysis():
         helium_quantum_defect_wavelength_holdout_gate,
         atomic_prediction_baseline_comparator_gate,
         atomic_uncertainty_readiness_gate,
+        atomic_fixed_parameter_model_readiness_gate,
     )
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
@@ -2951,6 +3095,7 @@ def run_rydberg_analysis():
             "AT20-HELIUM-QUANTUM-DEFECT-HOLDOUT-WAVELENGTH",
             "AT20-ATOMIC-PREDICTION-BASELINE-COMPARATOR",
             "AT20-ATOMIC-UNCERTAINTY-READINESS-GATE",
+            "AT20-ATOMIC-FIXED-PARAMETER-MODEL-READINESS",
             "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
             "AT20-UET-ATOMIC-BRIDGE-GATE",
         ],
@@ -3035,6 +3180,10 @@ def run_rydberg_analysis():
             "atomic_uncertainty_propagation_blocked_lanes": atomic_uncertainty_readiness_gate["metrics"][
                 "propagation_blocked_lane_count"
             ],
+            "atomic_fixed_parameter_model_lanes": atomic_fixed_parameter_model_readiness_gate["metrics"]["model_lane_count"],
+            "atomic_missing_required_model_lanes": atomic_fixed_parameter_model_readiness_gate["metrics"][
+                "missing_required_model_count"
+            ],
             "atomic_predictive_closure_open_or_partial_checks": atomic_predictive_model_closure_gate["metrics"]["open_or_partial_check_count"],
             "atomic_predictive_closure_fail_open_checks": atomic_predictive_model_closure_gate["metrics"]["fail_open_check_count"],
         },
@@ -3076,6 +3225,7 @@ def run_rydberg_analysis():
     artifact["helium_quantum_defect_wavelength_holdout_gate"] = helium_quantum_defect_wavelength_holdout_gate
     artifact["atomic_prediction_baseline_comparator_gate"] = atomic_prediction_baseline_comparator_gate
     artifact["atomic_uncertainty_readiness_gate"] = atomic_uncertainty_readiness_gate
+    artifact["atomic_fixed_parameter_model_readiness_gate"] = atomic_fixed_parameter_model_readiness_gate
     artifact["atomic_predictive_model_closure_gate"] = atomic_predictive_model_closure_gate
     artifact["source_evidence_intake_stub"] = {
         "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),

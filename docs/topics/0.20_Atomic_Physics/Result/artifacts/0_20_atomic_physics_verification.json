@@ -263,7 +263,8 @@
         "claim": "A predictive atomic-spectra closure contract now defines what must pass before claiming broad atomic prediction.",
         "metrics": {
           "closure_check_count": 5,
-          "fail_open_check_count": 1,
+          "fail_open_check_count": 0,
+          "fixed_parameter_model_lane_count": 8,
           "helium_quantum_defect_holdout_prediction_count": 3,
           "helium_quantum_defect_loo_prediction_count": 7,
           "helium_wavelength_holdout_predicted_vacuum_line_count": 2,
@@ -271,6 +272,7 @@
           "helium_zero_qd_avg_abs_residual_eV": 0.25249149613765204,
           "hydrogen_like_primary_prediction_count": 2,
           "hyperfine_21cm_fermi_residual_ppm": 530.677220569032,
+          "missing_required_model_count": 2,
           "open_or_partial_check_count": 4,
           "precision_1s2s_dirac_residual_ppm": 2.880995748527676,
           "precision_1s2s_lamb_handoff_residual_ppm": 0.004184223857857917,
@@ -363,6 +365,114 @@
       "targets_ready_for_source_review": 6
     },
     "topic": "0.20_Atomic_Physics"
+  },
+  "atomic_fixed_parameter_model_readiness_gate": {
+    "claim_boundary": "This gate maps model-readiness only. It does not make fitted quantum defects, empirical Lamb handoffs, or inherited standard formulas into UET first-principles predictions.",
+    "claim_class": "model_readiness_diagnostic_only",
+    "formula_id": "AT20-ATOMIC-FIXED-PARAMETER-MODEL-READINESS",
+    "metrics": {
+      "comparator_count": 6,
+      "fitted_not_fixed_count": 1,
+      "fixed_or_standard_baseline_count": 4,
+      "missing_required_model_count": 2,
+      "model_lane_count": 8
+    },
+    "model_lanes": [
+      {
+        "current_role": "accepted hydrogen benchmark, not UET-derived R_H",
+        "domain": "hydrogen_lines",
+        "evidence": "CODATA R_H and NIST/CODATA source hashes are recorded by the primary artifact.",
+        "generative_status": "STANDARD_FORMULA_BENCHMARK_ONLY",
+        "holdout_status": "INTERNAL_SOURCE_WORKING_COPY",
+        "model_id": "hydrogen_rydberg_codata_fixed_constant",
+        "parameter_policy": "FIXED_FROM_CODATA_BEFORE_EVALUATION"
+      },
+      {
+        "current_role": "selected He+/Li2+ benchmark plus C VI stress lane",
+        "domain": "one_electron_ions",
+        "evidence": {
+          "primary_prediction_count": 2,
+          "stress_prediction_count": 1
+        },
+        "generative_status": "PROVISIONAL_STANDARD_HYDROGENIC_BENCHMARK",
+        "holdout_status": "SELECTED_SOURCE_ROWS_NOT_BROAD_HOLDOUT",
+        "model_id": "hydrogen_like_reduced_mass_fixed_scaling",
+        "parameter_policy": "FIXED_CODATA_MASSES_AND_Z_BEFORE_EVALUATION"
+      },
+      {
+        "current_role": "sizes missing Lamb/QED/recoil/proton-size corrections",
+        "domain": "hydrogen_precision",
+        "evidence": {
+          "dirac_residual_ppm": 2.880995748527676
+        },
+        "generative_status": "PARTIAL_STANDARD_BASELINE",
+        "holdout_status": "SOURCE_TARGET_DIAGNOSTIC_ONLY",
+        "model_id": "hydrogen_1s2s_dirac_fixed_baseline",
+        "parameter_policy": "FIXED_CODATA_ALPHA_AND_R_H_BEFORE_EVALUATION"
+      },
+      {
+        "current_role": "empirical residual handoff only",
+        "domain": "hydrogen_precision",
+        "evidence": {
+          "lamb_handoff_residual_ppm": 0.004184223857857917
+        },
+        "generative_status": "NOT_GENERATIVE_QED_MODEL",
+        "holdout_status": "NO_INDEPENDENT_HOLDOUT",
+        "model_id": "hydrogen_1s2s_empirical_lamb_handoff",
+        "parameter_policy": "EMPIRICAL_SOURCE_VALUES_INSERTED"
+      },
+      {
+        "current_role": "sizes missing recoil/QED/proton-structure corrections",
+        "domain": "hydrogen_hyperfine",
+        "evidence": {
+          "fermi_residual_ppm": 530.677220569032
+        },
+        "generative_status": "LEADING_BASELINE_ONLY",
+        "holdout_status": "SOURCE_TARGET_DIAGNOSTIC_ONLY",
+        "model_id": "hydrogen_21cm_fermi_fixed_baseline",
+        "parameter_policy": "FIXED_CODATA_AND_NIST_PROTON_G_FACTOR_BEFORE_EVALUATION"
+      },
+      {
+        "current_role": "source-calibrated diagnostic; cannot derive quantum defects",
+        "domain": "neutral_helium",
+        "evidence": {
+          "loo_prediction_count": 7,
+          "same_source_holdout_prediction_count": 3
+        },
+        "generative_status": "NOT_FIXED_PARAMETER_FIRST_PRINCIPLES_MODEL",
+        "holdout_status": "SAME_SOURCE_FAMILY_HOLDOUT_ONLY",
+        "model_id": "helium_quantum_defect_series_fit",
+        "parameter_policy": "FITTED_FROM_SOURCE_SERIES"
+      },
+      {
+        "current_role": "required next model family for fixed-parameter helium prediction",
+        "domain": "neutral_helium",
+        "evidence": "No in-repo CI/correlated excited-state residual model is primary-gated.",
+        "generative_status": "REQUIRED_NOT_PRESENT",
+        "holdout_status": "BLOCKED",
+        "model_id": "helium_ci_or_correlated_two_electron_model",
+        "parameter_policy": "MISSING"
+      },
+      {
+        "current_role": "required for UET-derived spectra rather than inherited standard formulas",
+        "domain": "cross_atomic",
+        "evidence": "Current formula bridge records dependency roles only; no UET transition operator or Hamiltonian artifact is primary-gated.",
+        "generative_status": "REQUIRED_NOT_PRESENT_FOR_UET_PREDICTION_CLAIM",
+        "holdout_status": "BLOCKED",
+        "model_id": "uet_atomic_operator",
+        "parameter_policy": "MISSING"
+      }
+    ],
+    "next_required_artifacts": [
+      "CI/correlated two-electron helium residual gate with parameters declared before holdout evaluation",
+      "explicit UET atomic Hamiltonian or transition-operator derivation if UET-specific prediction is claimed",
+      "parameter manifest separating constants, calibrated parameters, fitted diagnostics, and forbidden holdout-leakage fields",
+      "rerun of comparator and uncertainty gates using the fixed-parameter model output"
+    ],
+    "purpose": "Separate fixed standard baselines, empirical handoffs, fitted diagnostics, and missing generative models before any predictive atomic-spectrum claim.",
+    "role": "atomic_fixed_parameter_model_readiness_gate",
+    "schema_version": "1.0",
+    "status": "FIXED_PARAMETER_READINESS_MAPPED_GENERATIVE_MODEL_MISSING"
   },
   "atomic_formula_bridge_manifest": {
     "claim_boundary": "This manifest makes the bridge explicit: inherited Bohr/de Broglie/Rydberg formulas are allowed as standard-theory foundations, while UET derivation and many-electron closure remain blocked until separate artifacts exist.",
@@ -497,12 +607,13 @@
       },
       {
         "check_id": "AT20-PRED-03",
-        "current_state": "FAIL_OPEN",
+        "current_state": "PARTIAL",
         "evidence": [
-          "helium quantum-defect values are fitted from source series",
-          "Dirac and empirical Lamb gates are residual diagnostics, not closed derivations"
+          "atomic_fixed_parameter_model_readiness_gate separates fixed standard baselines, empirical handoffs, fitted diagnostics, and missing required generative models",
+          "8 model lanes are machine-readable",
+          "2 required model lanes remain missing"
         ],
-        "remaining_blocker": "Need a correlated two-electron/CI Hamiltonian or explicit UET atomic operator that predicts series defects and line positions without fitting them from the tested holdout rows.",
+        "remaining_blocker": "Readiness is mapped, but a fixed-parameter CI/correlated helium model or explicit UET atomic operator is still missing.",
         "requirement": "Use a generative physics model whose parameters are fixed before the holdout set is evaluated."
       },
       {
@@ -533,7 +644,8 @@
     "formula_id": "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
     "metrics": {
       "closure_check_count": 5,
-      "fail_open_check_count": 1,
+      "fail_open_check_count": 0,
+      "fixed_parameter_model_lane_count": 8,
       "helium_quantum_defect_holdout_prediction_count": 3,
       "helium_quantum_defect_loo_prediction_count": 7,
       "helium_wavelength_holdout_predicted_vacuum_line_count": 2,
@@ -541,6 +653,7 @@
       "helium_zero_qd_avg_abs_residual_eV": 0.25249149613765204,
       "hydrogen_like_primary_prediction_count": 2,
       "hyperfine_21cm_fermi_residual_ppm": 530.677220569032,
+      "missing_required_model_count": 2,
       "open_or_partial_check_count": 4,
       "precision_1s2s_dirac_residual_ppm": 2.880995748527676,
       "precision_1s2s_lamb_handoff_residual_ppm": 0.004184223857857917,
@@ -717,10 +830,11 @@
     "AT20-HELIUM-QUANTUM-DEFECT-HOLDOUT-WAVELENGTH",
     "AT20-ATOMIC-PREDICTION-BASELINE-COMPARATOR",
     "AT20-ATOMIC-UNCERTAINTY-READINESS-GATE",
+    "AT20-ATOMIC-FIXED-PARAMETER-MODEL-READINESS",
     "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
     "AT20-UET-ATOMIC-BRIDGE-GATE"
   ],
-  "generated_at_utc": "2026-06-01T10:26:30.407334+00:00",
+  "generated_at_utc": "2026-06-01T10:31:20.712419+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -2672,9 +2786,11 @@
     "R_H_codata_m_inverse": 10967758.3406,
     "R_infinity_codata_m_inverse": 10973731.56816,
     "accepted_claim_branches": 5,
+    "atomic_fixed_parameter_model_lanes": 8,
+    "atomic_missing_required_model_lanes": 2,
     "atomic_prediction_comparator_count": 6,
     "atomic_prediction_comparators_missing_external_or_ci_baseline": 2,
-    "atomic_predictive_closure_fail_open_checks": 1,
+    "atomic_predictive_closure_fail_open_checks": 0,
     "atomic_predictive_closure_open_or_partial_checks": 4,
     "atomic_uncertainty_propagation_blocked_lanes": 6,
     "atomic_uncertainty_readiness_lanes": 9,
