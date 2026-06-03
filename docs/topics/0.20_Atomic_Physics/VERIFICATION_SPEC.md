@@ -10,7 +10,7 @@ python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validat
 
 | Input | Role | Required identity |
 | :-- | :-- | :-- |
-| `Data/03_Research/nist_hydrogen_spectrum.json` | NIST hydrogen line working copy | SHA256 and source DOI/URL recorded in artifact |
+| `Data/03_Research/nist_hydrogen_spectrum.json` | NIST hydrogen line working copy plus transcription-rounding wavelength bounds | SHA256, source DOI/URL, uncertainty policy, and line-bound status recorded in artifact |
 | `Data/03_Research/codata_2018_atomic.json` | CODATA atomic constants working copy | SHA256 and DOI recorded in artifact |
 | `Data/03_Research/hydrogen_spectra_data.json` | Rounded hydrogen n-level working copy | SHA256 and NIST ionization-energy anchor recorded in artifact |
 | `Data/03_Research/hydrogen_like_ion_spectrum.json` | Source-referenced He+ and Li2+ one-electron ion benchmark rows plus C VI higher-Z stress-test row | SHA256, source status, benchmark lane, and row policy recorded in artifact |
@@ -28,10 +28,12 @@ python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validat
 
 - Per-line predicted vacuum wavelength in nm.
 - Per-line wavelength error in ppm.
+- Per-line transcription-bound wavelength uncertainty and residual-to-bound ratio.
 - Average wavelength error in ppm.
 - Maximum wavelength error in ppm.
 - Fitted slope through origin for `1/lambda` vs. Rydberg geometric term.
 - Slope error relative to CODATA `R_H`.
+- Hydrogen Rydberg line transcription-bound row count, maximum absolute wavelength residual, and residual-to-source-uncertainty ratio extrema.
 - Hydrogen level-energy benchmark count, average error, and maximum error.
 - Count of formula-bridge dependency steps.
 - Hydrogen-like reduced-mass benchmark line count, average error, and maximum error.
@@ -84,6 +86,7 @@ The artifact must record:
 - command and timestamp
 - dataset paths, hashes, source labels, DOI/URL
 - formula IDs
+- hydrogen Rydberg line transcription-bound diagnostics, line residuals, source-bound basis, and diagnostic-only claim boundary
 - atomic formula bridge path/hash and dependency roles
 - hydrogen level-energy rows, source anchor, thresholds, residuals, and limitations
 - hydrogen-like reduced-mass benchmark rows, source status, benchmark lanes, stress-test residuals, thresholds, and limitations
@@ -104,7 +107,7 @@ The artifact must record:
 - neutral helium restricted wavelength-holdout rows, predicted-vacuum rows, skipped standard-air rows, uncertainty policy, wavelength source bounds, propagated fitted/fallback model uncertainty, wavelength residual diagnostics, and external-holdout/threshold blocker status
 - atomic prediction baseline-comparator rows, blocked comparator lanes, and internal-only claim boundary
 - atomic uncertainty-readiness lanes, propagation blockers, next required artifacts, and uncertainty-only claim boundary
-- atomic residual uncertainty-budget rows, source-uncertainty bases, residual-to-source-uncertainty ratios, missing source-uncertainty row count, transcription-bound limitations where used, and diagnostic-only claim boundary
+- atomic residual uncertainty-budget rows, source-uncertainty bases, residual-to-source-uncertainty ratios, missing source-uncertainty row count, hydrogen/helium transcription-bound limitations where used, and diagnostic-only claim boundary
 - atomic fixed-parameter model-readiness lanes, missing required model lanes, next required artifacts, and model-readiness-only claim boundary
 - atomic predictive-closure checks, promotion requirements, blocked claims, and machine-readable open/fail-open counts
 - thresholds, metrics, per-line residuals, and limitations

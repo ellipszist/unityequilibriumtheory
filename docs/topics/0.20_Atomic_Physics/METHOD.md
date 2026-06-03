@@ -8,7 +8,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 
 | Lane | Code/data path | Current status |
 | :-- | :-- | :-- |
-| Hydrogen Rydberg spectrum | `Research_Rydberg_Validation.py`, NIST/CODATA data | primary artifact, Claim Class C |
+| Hydrogen Rydberg spectrum | `Research_Rydberg_Validation.py`, NIST/CODATA data | primary artifact, Claim Class C; transcription-bound residual diagnostics only |
 | Atomic formula bridge | `atomic_formula_bridge_manifest.json`, artifact `atomic_formula_bridge_manifest` | explicit standard-formula and UET dependency map; manifest only |
 | Hydrogen-like ions | `hydrogen_like_ion_spectrum.json`, artifact `hydrogen_like_checkpoint` | provisional selected He+/Li2+ reduced-mass benchmark plus C VI higher-Z stress test |
 | Engine Balmer demo | `Engine_Atomic_Hydrogen.py` | secondary/demo; local rounded constant |
@@ -52,7 +52,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 13. Compute the leading Fermi-contact 21 cm baseline as a residual diagnostic, not as a closed hyperfine Hamiltonian.
 14. Load neutral helium source rows, compute photon energies, attach upper/lower term assignments, derive vacuum-equivalent wavelengths from level-energy differences, check source line-component/blend policy, compute ground-state baseline residuals from NIST ionization-energy anchors, prepare excited-state binding targets from term energies, compute a zero-quantum-defect hydrogenic residual baseline, compute a fixed-screening heuristic baseline with parameters locked before evaluation, run a limited same-series quantum-defect leave-one-out prediction gate, test additional NIST source-family holdout rows, and predict restricted ground-state holdout wavelengths before any helium claim.
 15. Build an internal baseline-comparator table so current prediction-like diagnostics are evaluated against named baselines instead of isolated residuals.
-16. Build an uncertainty-readiness matrix so each atomic prediction/precision lane states source uncertainty, model uncertainty, propagation, and threshold status, including limited fitted quantum-defect uncertainty diagnostics where current helium series data permit it.
+16. Build an uncertainty-readiness matrix so each atomic prediction/precision lane states source uncertainty, model uncertainty, propagation, and threshold status, including hydrogen line transcription-bound diagnostics and limited fitted quantum-defect uncertainty diagnostics where current helium series data permit it.
 17. Build a residual uncertainty-budget gate so available source uncertainties are converted into residual-to-uncertainty ratios without promoting incomplete models.
 18. Build a fixed-parameter model-readiness matrix so standard fixed baselines, empirical handoffs, fitted diagnostics, and missing generative models cannot be conflated.
 19. Build an atomic predictive-closure contract that lists the required no-leakage split, baseline comparator, fixed-parameter model, uncertainty, and domain-expansion gates before broad spectral prediction claims.
@@ -63,7 +63,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 
 - Vacuum wavelengths are used for the primary metric.
 - `R_H` is source-locked from CODATA; this verifier does not derive it.
-- Local NIST rows may be rounded or curated and need transcription precision notes before ppm-level public claims.
+- Local NIST rows may be rounded or curated. Hydrogen wavelength rows and helium holdout rows now include transcription-rounding bounds, but official/upstream source uncertainty and page-level transcription audit remain required before ppm-level public claims.
 - Bohr/de Broglie/Rydberg formulas are inherited standard physics unless a separate UET derivation artifact proves otherwise.
 - Hydrogen level-energy rows are rounded and source-referenced through the ionization-energy anchor until direct per-level ASD precision is captured.
 - Hydrogen-like ion predictions use reduced-mass scaling for the selected He+ and Li2+ rows. Li III remains provisional because direct ASD row capture is still pending. C VI is recorded only as a higher-Z stress-test row until fine/QED policy is added.
@@ -72,8 +72,8 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 - The fixed-screening helium baseline uses `Z_eff = 2 - 0.85` locked before evaluation. It is a heuristic comparator, not a CI/correlated model and not a UET atomic operator.
 - The predictive closure contract is a claim-control artifact only. It does not make the current quantum-defect or hydrogenic gates first-principles predictions.
 - The comparator table is internal only; it does not replace missing independent external holdouts or CI/correlated model baselines.
-- The uncertainty-readiness matrix is not uncertainty-qualified validation; it records partial propagation for fitted quantum-defect diagnostics and identifies which lanes still need full propagation and uncertainty-aware thresholds.
-- The residual uncertainty-budget gate computes ratios only where source uncertainty is already present or a bounded transcription policy is explicitly declared. It does not supply missing model uncertainty, official helium holdout measurement uncertainty, or pass/fail thresholds.
+- The uncertainty-readiness matrix is not uncertainty-qualified validation; it records partial propagation for hydrogen transcription-bound and fitted quantum-defect diagnostics and identifies which lanes still need full propagation and uncertainty-aware thresholds.
+- The residual uncertainty-budget gate computes ratios only where source uncertainty is already present or a bounded transcription policy is explicitly declared. It does not supply missing model uncertainty, official hydrogen/helium line measurement uncertainty, or pass/fail thresholds.
 - The fixed-parameter model-readiness matrix is not a CI or UET atomic model; it only prevents fitted diagnostics and empirical handoffs from being mistaken for fixed-parameter predictions.
 
 ## Domain of Validity

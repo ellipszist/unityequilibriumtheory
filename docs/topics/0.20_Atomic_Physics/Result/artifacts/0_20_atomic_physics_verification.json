@@ -289,10 +289,10 @@
           "open_or_partial_check_count": 4,
           "precision_1s2s_dirac_residual_ppm": 2.880995748527676,
           "precision_1s2s_lamb_handoff_residual_ppm": 0.004184223857857917,
-          "uncertainty_budget_computable_row_count": 8,
-          "uncertainty_budget_row_count": 8,
+          "uncertainty_budget_computable_row_count": 9,
+          "uncertainty_budget_row_count": 9,
           "uncertainty_budget_source_missing_row_count": 0,
-          "uncertainty_propagation_blocked_lane_count": 4,
+          "uncertainty_propagation_blocked_lane_count": 3,
           "uncertainty_readiness_lane_count": 9
         },
         "source_evidence_readiness": "governance_contract_ready_predictive_claim_blocked",
@@ -665,8 +665,8 @@
         "evidence": [
           "atomic_uncertainty_readiness_gate maps source/model/propagation/threshold status by lane",
           "9 uncertainty lanes are machine-readable",
-          "4 lanes still have blocked propagation",
-          "atomic_residual_uncertainty_budget_gate computes 8 source-uncertainty budget rows",
+          "3 lanes still have blocked propagation",
+          "atomic_residual_uncertainty_budget_gate computes 9 source-uncertainty budget rows",
           "0 budget rows still lack source uncertainty"
         ],
         "remaining_blocker": "Residual budgets are computed where possible, but source uncertainty, model uncertainty, and uncertainty-aware thresholds are still incomplete.",
@@ -702,10 +702,10 @@
       "open_or_partial_check_count": 4,
       "precision_1s2s_dirac_residual_ppm": 2.880995748527676,
       "precision_1s2s_lamb_handoff_residual_ppm": 0.004184223857857917,
-      "uncertainty_budget_computable_row_count": 8,
-      "uncertainty_budget_row_count": 8,
+      "uncertainty_budget_computable_row_count": 9,
+      "uncertainty_budget_row_count": 9,
       "uncertainty_budget_source_missing_row_count": 0,
-      "uncertainty_propagation_blocked_lane_count": 4,
+      "uncertainty_propagation_blocked_lane_count": 3,
       "uncertainty_readiness_lane_count": 9
     },
     "promotion_requirements": [
@@ -722,6 +722,17 @@
   },
   "atomic_residual_uncertainty_budget_gate": {
     "budget_rows": [
+      {
+        "absolute_residual": 0.00820631392946325,
+        "budget_id": "hydrogen_rydberg_line_transcription_bound",
+        "claim_role": "working-copy precision diagnostic; CODATA R_H input is not a UET derivation",
+        "domain": "hydrogen_lines",
+        "residual_quantity": "max_abs_wavelength_residual_nm",
+        "residual_to_source_uncertainty_ratio": 164.12627858926498,
+        "source_uncertainty": 0.0005,
+        "source_uncertainty_basis": "transcription rounding bound for local NIST ASD wavelength working copy; official NIST measurement uncertainty not included",
+        "status": "MODEL_RESIDUAL_EXCEEDS_SOURCE_UNCERTAINTY"
+      },
       {
         "absolute_residual": 22989428178.5,
         "budget_id": "hydrogen_1s2s_nonrel_source_sigma",
@@ -815,11 +826,11 @@
     "claim_class": "uncertainty_budget_diagnostic_only",
     "formula_id": "AT20-ATOMIC-RESIDUAL-UNCERTAINTY-BUDGET",
     "metrics": {
-      "budget_row_count": 8,
-      "computable_source_uncertainty_row_count": 8,
+      "budget_row_count": 9,
+      "computable_source_uncertainty_row_count": 9,
       "max_residual_to_source_uncertainty_ratio": 2298942817.85,
-      "min_residual_to_source_uncertainty_ratio": 339.82342688470857,
-      "model_residual_exceeds_source_uncertainty_count": 8,
+      "min_residual_to_source_uncertainty_ratio": 164.12627858926498,
+      "model_residual_exceeds_source_uncertainty_count": 9,
       "source_uncertainty_missing_row_count": 0
     },
     "next_required_artifacts": [
@@ -839,11 +850,15 @@
     "formula_id": "AT20-ATOMIC-UNCERTAINTY-READINESS-GATE",
     "lanes": [
       {
-        "evidence": "Rydberg line residuals and CODATA/source hashes are present, but line transcription uncertainty is not propagated.",
+        "evidence": {
+          "line_count": 7,
+          "lines_with_source_uncertainty_count": 7,
+          "max_residual_to_source_uncertainty_ratio": 164.12627858926498
+        },
         "lane_id": "hydrogen_rydberg_lines",
         "model_uncertainty_status": "NOT_MODELED",
-        "propagation_status": "BLOCKED",
-        "source_uncertainty_status": "MISSING_PER_LINE_SOURCE_UNCERTAINTY",
+        "propagation_status": "PARTIAL_SOURCE_BOUND_DIAGNOSTIC_ONLY",
+        "source_uncertainty_status": "TRANSCRIPTION_ROUNDING_BOUNDS_ONLY",
         "threshold_status": "FIXED_PPM_THRESHOLD_ONLY"
       },
       {
@@ -936,8 +951,8 @@
       "lane_count": 9,
       "lanes_with_model_uncertainty_open": 4,
       "lanes_with_source_uncertainty_present_or_partial": 5,
-      "partial_propagation_lane_count": 5,
-      "propagation_blocked_lane_count": 4
+      "partial_propagation_lane_count": 6,
+      "propagation_blocked_lane_count": 3
     },
     "next_required_artifacts": [
       "per-row source uncertainty fields for hydrogen/helium spectral lines and term energies",
@@ -975,6 +990,7 @@
     "AT20-RYDBERG-WAVELENGTH",
     "AT20-RH-CODATA-CHECKPOINT",
     "AT20-SPECTRUM-RESIDUAL",
+    "AT20-HYDROGEN-RYDBERG-LINE-TRANSCRIPTION-BUDGET",
     "AT20-HYDROGENIC-Z2-CHECKPOINT",
     "AT20-HYDROGEN-PRECISION-SOURCE-GATE",
     "AT20-HYDROGEN-1S2S-RYDBERG-BASELINE",
@@ -1001,7 +1017,7 @@
     "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
     "AT20-UET-ATOMIC-BRIDGE-GATE"
   ],
-  "generated_at_utc": "2026-06-03T17:31:36.506918+00:00",
+  "generated_at_utc": "2026-06-03T17:41:30.007358+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -3023,6 +3039,117 @@
       "source_policy": "Primary selected benchmark currently uses He II direct NIST handbook row and Li III secondary paper row citing NIST. C VI is kept in an extended stress-test lane until higher-Z fine/QED policy is added."
     }
   },
+  "hydrogen_rydberg_line_uncertainty_gate": {
+    "claim_boundary": "This gate supports only hydrogen Rydberg line transcription-bound diagnostics. It cannot be cited as uncertainty-qualified hydrogen validation or UET first-principles derivation.",
+    "claim_class": "source_transcription_uncertainty_diagnostic_only",
+    "formula_id": "AT20-HYDROGEN-RYDBERG-LINE-TRANSCRIPTION-BUDGET",
+    "limitations": [
+      "Uncertainty values are transcription-rounding bounds from the local working copy, not official NIST measurement uncertainties.",
+      "Residual-to-bound ratios diagnose working-copy precision only and do not validate UET-derived R_H or a complete atomic model.",
+      "CODATA R_H is used as an input constant; model uncertainty for R_H derivation is not present."
+    ],
+    "lines": [
+      {
+        "absolute_wavelength_residual_nm": 0.00820631392946325,
+        "name": "H-alpha",
+        "observed_wavelength_vacuum_nm": 656.4614,
+        "predicted_wavelength_nm": 656.4696063139295,
+        "residual_to_source_uncertainty_ratio": 164.12627858926498,
+        "series": "balmer",
+        "source_wavelength_uncertainty_basis": "half_last_decimal_place_transcription_bound",
+        "source_wavelength_uncertainty_nm": 5e-05
+      },
+      {
+        "absolute_wavelength_residual_nm": 0.0016824547626015374,
+        "name": "H-beta",
+        "observed_wavelength_vacuum_nm": 486.2721,
+        "predicted_wavelength_nm": 486.2737824547626,
+        "residual_to_source_uncertainty_ratio": 33.64909525203075,
+        "series": "balmer",
+        "source_wavelength_uncertainty_basis": "half_last_decimal_place_transcription_bound",
+        "source_wavelength_uncertainty_nm": 5e-05
+      },
+      {
+        "absolute_wavelength_residual_nm": 0.0038200488952497835,
+        "name": "H-gamma",
+        "observed_wavelength_vacuum_nm": 434.1692,
+        "predicted_wavelength_nm": 434.17302004889524,
+        "residual_to_source_uncertainty_ratio": 76.40097790499567,
+        "series": "balmer",
+        "source_wavelength_uncertainty_basis": "half_last_decimal_place_transcription_bound",
+        "source_wavelength_uncertainty_nm": 5e-05
+      },
+      {
+        "absolute_wavelength_residual_nm": 0.00029605379393160547,
+        "name": "H-delta",
+        "observed_wavelength_vacuum_nm": 410.2938,
+        "predicted_wavelength_nm": 410.29350394620604,
+        "residual_to_source_uncertainty_ratio": 5.921075878632109,
+        "series": "balmer",
+        "source_wavelength_uncertainty_basis": "half_last_decimal_place_transcription_bound",
+        "source_wavelength_uncertainty_nm": 5e-05
+      },
+      {
+        "absolute_wavelength_residual_nm": 0.0037890047228756885,
+        "name": "H-epsilon",
+        "observed_wavelength_vacuum_nm": 397.1198,
+        "predicted_wavelength_nm": 397.1235890047229,
+        "residual_to_source_uncertainty_ratio": 75.78009445751377,
+        "series": "balmer",
+        "source_wavelength_uncertainty_basis": "half_last_decimal_place_transcription_bound",
+        "source_wavelength_uncertainty_nm": 5e-05
+      },
+      {
+        "absolute_wavelength_residual_nm": 0.0014456136906630945,
+        "name": "Lyman-alpha",
+        "observed_wavelength_vacuum_nm": 121.567,
+        "predicted_wavelength_nm": 121.56844561369066,
+        "residual_to_source_uncertainty_ratio": 2.891227381326189,
+        "series": "lyman",
+        "source_wavelength_uncertainty_basis": "half_last_decimal_place_transcription_bound",
+        "source_wavelength_uncertainty_nm": 0.0005
+      },
+      {
+        "absolute_wavelength_residual_nm": 0.0005759865515102547,
+        "name": "Lyman-beta",
+        "observed_wavelength_vacuum_nm": 102.5728,
+        "predicted_wavelength_nm": 102.57337598655151,
+        "residual_to_source_uncertainty_ratio": 11.519731030205094,
+        "series": "lyman",
+        "source_wavelength_uncertainty_basis": "half_last_decimal_place_transcription_bound",
+        "source_wavelength_uncertainty_nm": 5e-05
+      }
+    ],
+    "metrics": {
+      "line_count": 7,
+      "lines_with_source_uncertainty_count": 7,
+      "max_abs_wavelength_residual_nm": 0.00820631392946325,
+      "max_residual_to_source_uncertainty_ratio": 164.12627858926498,
+      "max_source_wavelength_uncertainty_nm": 0.0005,
+      "min_residual_to_source_uncertainty_ratio": 2.891227381326189
+    },
+    "role": "hydrogen_rydberg_line_uncertainty_gate",
+    "schema_version": "1.0",
+    "source_basis": {
+      "authors": [
+        "Kramida, A.",
+        "Ralchenko, Yu.",
+        "Reader, J.",
+        "NIST ASD Team"
+      ],
+      "doi": "10.18434/T4W30F",
+      "title": "NIST Atomic Spectra Database (version 5.11)",
+      "url": "https://physics.nist.gov/asd",
+      "year": 2023
+    },
+    "status": "TRANSCRIPTION_BOUND_RESIDUALS_COMPUTED_CLAIM_STILL_BLOCKED",
+    "uncertainty_policy": {
+      "claim_boundary": "These uncertainty fields support residual-budget diagnostics only. They are not official NIST measurement uncertainties and cannot support uncertainty-qualified hydrogen validation.",
+      "rule": "Use half of the last shown decimal place as a conservative transcription-rounding uncertainty for wavelength fields.",
+      "source_uncertainty_status": "NIST ASD line uncertainties are not explicitly captured in this working copy.",
+      "status": "TRANSCRIPTION_ROUNDING_BOUNDS_ONLY"
+    }
+  },
   "hyperfine_21cm_gate": {
     "claim_boundary": "This package source-locks the 21 cm target and wavelength bookkeeping only. It does not validate the hyperfine Hamiltonian, QED corrections, proton-structure effects, or UET first-principles atomic theory.",
     "claim_class": "source_locked_hyperfine_target_no_hamiltonian_validation",
@@ -3110,8 +3237,9 @@
     {
       "doi": "10.18434/T4W30F",
       "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/nist_hydrogen_spectrum.json",
-      "sha256": "f355dd9aa2ffb65eb53e1e5140fa48580fc760e67c596a41a38cfb9a0210a4e8",
+      "sha256": "f6b6d7e70c3a1dcb4a3119f65f8a2a058b402f11b0254ef83fa428d50c228145",
       "source": "NIST Atomic Spectra Database",
+      "uncertainty_policy_status": "TRANSCRIPTION_ROUNDING_BOUNDS_ONLY",
       "url": "https://physics.nist.gov/asd"
     },
     {
@@ -3303,11 +3431,11 @@
     "atomic_prediction_comparators_missing_external_or_ci_baseline": 2,
     "atomic_predictive_closure_fail_open_checks": 0,
     "atomic_predictive_closure_open_or_partial_checks": 4,
-    "atomic_uncertainty_budget_computable_rows": 8,
+    "atomic_uncertainty_budget_computable_rows": 9,
     "atomic_uncertainty_budget_max_ratio": 2298942817.85,
-    "atomic_uncertainty_budget_rows": 8,
+    "atomic_uncertainty_budget_rows": 9,
     "atomic_uncertainty_budget_source_missing_rows": 0,
-    "atomic_uncertainty_propagation_blocked_lanes": 4,
+    "atomic_uncertainty_propagation_blocked_lanes": 3,
     "atomic_uncertainty_readiness_lanes": 9,
     "average_wavelength_error_ppm": 7.504133013735595,
     "blocked_claim_exports": 7,
@@ -3362,6 +3490,8 @@
     "hydrogen_like_avg_error_ppm": 76.32002589027381,
     "hydrogen_like_checkpoint_predictions": 3,
     "hydrogen_like_max_error_ppm": 96.9208106356392,
+    "hydrogen_rydberg_lines_with_source_uncertainty": 7,
+    "hydrogen_rydberg_max_residual_to_source_uncertainty_ratio": 164.12627858926498,
     "hyperfine_21cm_fermi_baseline_residual_hz": 753776.9764285088,
     "hyperfine_21cm_fermi_baseline_residual_ppm": 530.677220569032,
     "hyperfine_21cm_reference_hz": 1420405751.7680001,
@@ -3536,74 +3666,102 @@
   },
   "results": [
     {
+      "absolute_wavelength_residual_nm": 0.00820631392946325,
       "geometric_term": 0.1388888888888889,
       "n_lower": 2,
       "n_upper": 3,
       "name": "H-alpha",
       "predicted_wavelength_nm": 656.4696063139295,
+      "residual_to_source_uncertainty_ratio": 164.12627858926498,
       "series": "balmer",
       "wavelength_error_ppm": 12.500832386280821,
-      "wavelength_vacuum_nm": 656.4614
+      "wavelength_uncertainty_basis": "half_last_decimal_place_transcription_bound",
+      "wavelength_vacuum_nm": 656.4614,
+      "wavelength_vacuum_uncertainty_nm": 5e-05
     },
     {
+      "absolute_wavelength_residual_nm": 0.0016824547626015374,
       "geometric_term": 0.1875,
       "n_lower": 2,
       "n_upper": 4,
       "name": "H-beta",
       "predicted_wavelength_nm": 486.2737824547626,
+      "residual_to_source_uncertainty_ratio": 33.64909525203075,
       "series": "balmer",
       "wavelength_error_ppm": 3.4599039562449447,
-      "wavelength_vacuum_nm": 486.2721
+      "wavelength_uncertainty_basis": "half_last_decimal_place_transcription_bound",
+      "wavelength_vacuum_nm": 486.2721,
+      "wavelength_vacuum_uncertainty_nm": 5e-05
     },
     {
+      "absolute_wavelength_residual_nm": 0.0038200488952497835,
       "geometric_term": 0.21,
       "n_lower": 2,
       "n_upper": 5,
       "name": "H-gamma",
       "predicted_wavelength_nm": 434.17302004889524,
+      "residual_to_source_uncertainty_ratio": 76.40097790499567,
       "series": "balmer",
       "wavelength_error_ppm": 8.798525771173505,
-      "wavelength_vacuum_nm": 434.1692
+      "wavelength_uncertainty_basis": "half_last_decimal_place_transcription_bound",
+      "wavelength_vacuum_nm": 434.1692,
+      "wavelength_vacuum_uncertainty_nm": 5e-05
     },
     {
+      "absolute_wavelength_residual_nm": 0.00029605379393160547,
       "geometric_term": 0.2222222222222222,
       "n_lower": 2,
       "n_upper": 6,
       "name": "H-delta",
       "predicted_wavelength_nm": 410.29350394620604,
+      "residual_to_source_uncertainty_ratio": 5.921075878632109,
       "series": "balmer",
       "wavelength_error_ppm": 0.7215653610451961,
-      "wavelength_vacuum_nm": 410.2938
+      "wavelength_uncertainty_basis": "half_last_decimal_place_transcription_bound",
+      "wavelength_vacuum_nm": 410.2938,
+      "wavelength_vacuum_uncertainty_nm": 5e-05
     },
     {
+      "absolute_wavelength_residual_nm": 0.0037890047228756885,
       "geometric_term": 0.22959183673469388,
       "n_lower": 2,
       "n_upper": 7,
       "name": "H-epsilon",
       "predicted_wavelength_nm": 397.1235890047229,
+      "residual_to_source_uncertainty_ratio": 75.78009445751377,
       "series": "balmer",
       "wavelength_error_ppm": 9.541213313654188,
-      "wavelength_vacuum_nm": 397.1198
+      "wavelength_uncertainty_basis": "half_last_decimal_place_transcription_bound",
+      "wavelength_vacuum_nm": 397.1198,
+      "wavelength_vacuum_uncertainty_nm": 5e-05
     },
     {
+      "absolute_wavelength_residual_nm": 0.0014456136906630945,
       "geometric_term": 0.75,
       "n_lower": 1,
       "n_upper": 2,
       "name": "Lyman-alpha",
       "predicted_wavelength_nm": 121.56844561369066,
+      "residual_to_source_uncertainty_ratio": 2.891227381326189,
       "series": "lyman",
       "wavelength_error_ppm": 11.891497615825797,
-      "wavelength_vacuum_nm": 121.567
+      "wavelength_uncertainty_basis": "half_last_decimal_place_transcription_bound",
+      "wavelength_vacuum_nm": 121.567,
+      "wavelength_vacuum_uncertainty_nm": 0.0005
     },
     {
+      "absolute_wavelength_residual_nm": 0.0005759865515102547,
       "geometric_term": 0.8888888888888888,
       "n_lower": 1,
       "n_upper": 3,
       "name": "Lyman-beta",
       "predicted_wavelength_nm": 102.57337598655151,
+      "residual_to_source_uncertainty_ratio": 11.519731030205094,
       "series": "lyman",
       "wavelength_error_ppm": 5.615392691924708,
-      "wavelength_vacuum_nm": 102.5728
+      "wavelength_uncertainty_basis": "half_last_decimal_place_transcription_bound",
+      "wavelength_vacuum_nm": 102.5728,
+      "wavelength_vacuum_uncertainty_nm": 5e-05
     }
   ],
   "schema_version": "1.2",
@@ -3623,7 +3781,7 @@
   "source_evidence_readiness_matrix": {
     "claim_boundary": "A ready row has enough provenance structure for source review. It does not by itself upgrade atomic-theory claims.",
     "path": "Data/03_Research/source_evidence_readiness_matrix.json",
-    "sha256": "869741abc6730905c637b93b9ff74cf9ecff4f225ab77335a31d0657f9860169",
+    "sha256": "ba6f80c050d0a93fdef3b9ec97a8ed3966b36fbd457cb457fade72a63ac897cb",
     "summary": {
       "source_targets_total": 6,
       "targets_blocked_by_pending_evidence": 0,

@@ -17,6 +17,12 @@
     "symbol": "H",
     "atomic_number": 1
   },
+  "uncertainty_policy": {
+    "status": "TRANSCRIPTION_ROUNDING_BOUNDS_ONLY",
+    "source_uncertainty_status": "NIST ASD line uncertainties are not explicitly captured in this working copy.",
+    "rule": "Use half of the last shown decimal place as a conservative transcription-rounding uncertainty for wavelength fields.",
+    "claim_boundary": "These uncertainty fields support residual-budget diagnostics only. They are not official NIST measurement uncertainties and cannot support uncertainty-qualified hydrogen validation."
+  },
   "balmer_series": {
     "description": "Transitions to n=2 (visible light)",
     "lines": [
@@ -24,6 +30,8 @@
         "name": "H-alpha",
         "transition": "3 → 2",
         "wavelength_vacuum_nm": 656.4614,
+        "wavelength_vacuum_uncertainty_nm": 0.00005,
+        "wavelength_uncertainty_basis": "half_last_decimal_place_transcription_bound",
         "wavelength_air_nm": 656.2819,
         "frequency_THz": 456.676,
         "energy_eV": 1.889,
@@ -33,6 +41,8 @@
         "name": "H-beta",
         "transition": "4 → 2",
         "wavelength_vacuum_nm": 486.2721,
+        "wavelength_vacuum_uncertainty_nm": 0.00005,
+        "wavelength_uncertainty_basis": "half_last_decimal_place_transcription_bound",
         "wavelength_air_nm": 486.1342,
         "frequency_THz": 616.507,
         "energy_eV": 2.55,
@@ -42,6 +52,8 @@
         "name": "H-gamma",
         "transition": "5 → 2",
         "wavelength_vacuum_nm": 434.1692,
+        "wavelength_vacuum_uncertainty_nm": 0.00005,
+        "wavelength_uncertainty_basis": "half_last_decimal_place_transcription_bound",
         "wavelength_air_nm": 434.0472,
         "frequency_THz": 690.69,
         "energy_eV": 2.856,
@@ -51,6 +63,8 @@
         "name": "H-delta",
         "transition": "6 → 2",
         "wavelength_vacuum_nm": 410.2938,
+        "wavelength_vacuum_uncertainty_nm": 0.00005,
+        "wavelength_uncertainty_basis": "half_last_decimal_place_transcription_bound",
         "wavelength_air_nm": 410.1748,
         "frequency_THz": 731.017,
         "energy_eV": 3.023,
@@ -60,6 +74,8 @@
         "name": "H-epsilon",
         "transition": "7 → 2",
         "wavelength_vacuum_nm": 397.1198,
+        "wavelength_vacuum_uncertainty_nm": 0.00005,
+        "wavelength_uncertainty_basis": "half_last_decimal_place_transcription_bound",
         "wavelength_air_nm": 397.0075,
         "frequency_THz": 755.028,
         "energy_eV": 3.123,
@@ -74,12 +90,16 @@
         "name": "Lyman-alpha",
         "transition": "2 → 1",
         "wavelength_vacuum_nm": 121.567,
+        "wavelength_vacuum_uncertainty_nm": 0.0005,
+        "wavelength_uncertainty_basis": "half_last_decimal_place_transcription_bound",
         "energy_eV": 10.199
       },
       {
         "name": "Lyman-beta",
         "transition": "3 → 1",
         "wavelength_vacuum_nm": 102.5728,
+        "wavelength_vacuum_uncertainty_nm": 0.00005,
+        "wavelength_uncertainty_basis": "half_last_decimal_place_transcription_bound",
         "energy_eV": 12.088
       }
     ]

@@ -15,7 +15,7 @@
       "fields_complete": 5,
       "fields_pending": 1,
       "pending_fields": [
-        "transcription_precision_audit"
+        "official_or_upstream_line_uncertainty_capture"
       ],
       "ready_for_source_review": true,
       "blocking_reason": null

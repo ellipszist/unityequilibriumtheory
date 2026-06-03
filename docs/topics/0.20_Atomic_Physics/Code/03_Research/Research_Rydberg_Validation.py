@@ -91,6 +91,8 @@ def collect_lines(spectrum):
                     "n_upper": n_upper,
                     "n_lower": n_lower,
                     "wavelength_vacuum_nm": line["wavelength_vacuum_nm"],
+                    "wavelength_vacuum_uncertainty_nm": line.get("wavelength_vacuum_uncertainty_nm"),
+                    "wavelength_uncertainty_basis": line.get("wavelength_uncertainty_basis"),
                 }
             )
     return rows
@@ -205,7 +207,7 @@ def build_source_evidence_readiness_matrix() -> dict:
             "fields_total": 6,
             "fields_complete": 5,
             "fields_pending": 1,
-            "pending_fields": ["transcription_precision_audit"],
+            "pending_fields": ["official_or_upstream_line_uncertainty_capture"],
             "ready_for_source_review": True,
             "blocking_reason": None,
         },
@@ -2323,7 +2325,58 @@ def build_atomic_prediction_baseline_comparator_gate(
     }
 
 
+def build_hydrogen_rydberg_line_uncertainty_gate(spectrum: dict, results: list[dict]) -> dict:
+    uncertainty_rows = [
+        row for row in results if row.get("residual_to_source_uncertainty_ratio") is not None
+    ]
+    residual_ratios = [row["residual_to_source_uncertainty_ratio"] for row in uncertainty_rows]
+    wavelength_uncertainties = [
+        row["wavelength_vacuum_uncertainty_nm"]
+        for row in uncertainty_rows
+        if row.get("wavelength_vacuum_uncertainty_nm") is not None
+    ]
+    return {
+        "schema_version": "1.0",
+        "role": "hydrogen_rydberg_line_uncertainty_gate",
+        "status": "TRANSCRIPTION_BOUND_RESIDUALS_COMPUTED_CLAIM_STILL_BLOCKED",
+        "claim_class": "source_transcription_uncertainty_diagnostic_only",
+        "formula_id": "AT20-HYDROGEN-RYDBERG-LINE-TRANSCRIPTION-BUDGET",
+        "source_basis": spectrum.get("publication"),
+        "uncertainty_policy": spectrum.get("uncertainty_policy"),
+        "metrics": {
+            "line_count": len(results),
+            "lines_with_source_uncertainty_count": len(uncertainty_rows),
+            "max_source_wavelength_uncertainty_nm": max(wavelength_uncertainties) if wavelength_uncertainties else None,
+            "max_abs_wavelength_residual_nm": (
+                max(row["absolute_wavelength_residual_nm"] for row in results) if results else None
+            ),
+            "max_residual_to_source_uncertainty_ratio": max(residual_ratios) if residual_ratios else None,
+            "min_residual_to_source_uncertainty_ratio": min(residual_ratios) if residual_ratios else None,
+        },
+        "lines": [
+            {
+                "name": row["name"],
+                "series": row["series"],
+                "observed_wavelength_vacuum_nm": row["wavelength_vacuum_nm"],
+                "source_wavelength_uncertainty_nm": row.get("wavelength_vacuum_uncertainty_nm"),
+                "source_wavelength_uncertainty_basis": row.get("wavelength_uncertainty_basis"),
+                "predicted_wavelength_nm": row["predicted_wavelength_nm"],
+                "absolute_wavelength_residual_nm": row["absolute_wavelength_residual_nm"],
+                "residual_to_source_uncertainty_ratio": row.get("residual_to_source_uncertainty_ratio"),
+            }
+            for row in results
+        ],
+        "limitations": [
+            "Uncertainty values are transcription-rounding bounds from the local working copy, not official NIST measurement uncertainties.",
+            "Residual-to-bound ratios diagnose working-copy precision only and do not validate UET-derived R_H or a complete atomic model.",
+            "CODATA R_H is used as an input constant; model uncertainty for R_H derivation is not present.",
+        ],
+        "claim_boundary": "This gate supports only hydrogen Rydberg line transcription-bound diagnostics. It cannot be cited as uncertainty-qualified hydrogen validation or UET first-principles derivation.",
+    }
+
+
 def build_atomic_uncertainty_readiness_gate(
+    hydrogen_rydberg_line_uncertainty_gate: dict,
     hydrogen_level_energy_benchmark: dict,
     hydrogen_like_checkpoint: dict,
     precision_baseline_gate: dict,
@@ -2339,11 +2392,19 @@ def build_atomic_uncertainty_readiness_gate(
     lanes = [
         {
             "lane_id": "hydrogen_rydberg_lines",
-            "source_uncertainty_status": "MISSING_PER_LINE_SOURCE_UNCERTAINTY",
+            "source_uncertainty_status": "TRANSCRIPTION_ROUNDING_BOUNDS_ONLY",
             "model_uncertainty_status": "NOT_MODELED",
-            "propagation_status": "BLOCKED",
+            "propagation_status": "PARTIAL_SOURCE_BOUND_DIAGNOSTIC_ONLY",
             "threshold_status": "FIXED_PPM_THRESHOLD_ONLY",
-            "evidence": "Rydberg line residuals and CODATA/source hashes are present, but line transcription uncertainty is not propagated.",
+            "evidence": {
+                "line_count": hydrogen_rydberg_line_uncertainty_gate["metrics"]["line_count"],
+                "lines_with_source_uncertainty_count": hydrogen_rydberg_line_uncertainty_gate["metrics"][
+                    "lines_with_source_uncertainty_count"
+                ],
+                "max_residual_to_source_uncertainty_ratio": hydrogen_rydberg_line_uncertainty_gate["metrics"][
+                    "max_residual_to_source_uncertainty_ratio"
+                ],
+            },
         },
         {
             "lane_id": "hydrogen_level_energy",
@@ -2475,6 +2536,7 @@ def build_atomic_uncertainty_readiness_gate(
 
 
 def build_atomic_residual_uncertainty_budget_gate(
+    hydrogen_rydberg_line_uncertainty_gate: dict,
     precision_baseline_gate: dict,
     precision_dirac_baseline_gate: dict,
     lamb_shift_handoff_gate: dict,
@@ -2502,6 +2564,21 @@ def build_atomic_residual_uncertainty_budget_gate(
         "max_source_wavelength_uncertainty_angstrom"
     )
     rows = [
+        {
+            "budget_id": "hydrogen_rydberg_line_transcription_bound",
+            "domain": "hydrogen_lines",
+            "residual_quantity": "max_abs_wavelength_residual_nm",
+            "absolute_residual": hydrogen_rydberg_line_uncertainty_gate["metrics"]["max_abs_wavelength_residual_nm"],
+            "source_uncertainty": hydrogen_rydberg_line_uncertainty_gate["metrics"][
+                "max_source_wavelength_uncertainty_nm"
+            ],
+            "source_uncertainty_basis": "transcription rounding bound for local NIST ASD wavelength working copy; official NIST measurement uncertainty not included",
+            "residual_to_source_uncertainty_ratio": hydrogen_rydberg_line_uncertainty_gate["metrics"][
+                "max_residual_to_source_uncertainty_ratio"
+            ],
+            "status": "MODEL_RESIDUAL_EXCEEDS_SOURCE_UNCERTAINTY",
+            "claim_role": "working-copy precision diagnostic; CODATA R_H input is not a UET derivation",
+        },
         {
             "budget_id": "hydrogen_1s2s_nonrel_source_sigma",
             "domain": "hydrogen_precision",
@@ -3282,7 +3359,12 @@ def run_rydberg_analysis():
         term = (1.0 / row["n_lower"] ** 2) - (1.0 / row["n_upper"] ** 2)
         predicted_nm = 1e9 / (r_h * term)
         observed_nm = row["wavelength_vacuum_nm"]
-        error_ppm = abs(predicted_nm - observed_nm) / observed_nm * 1e6
+        absolute_residual_nm = abs(predicted_nm - observed_nm)
+        wavelength_uncertainty_nm = row.get("wavelength_vacuum_uncertainty_nm")
+        residual_to_uncertainty_ratio = (
+            absolute_residual_nm / wavelength_uncertainty_nm if wavelength_uncertainty_nm else None
+        )
+        error_ppm = absolute_residual_nm / observed_nm * 1e6
         inv_lam = 1.0 / (observed_nm * 1e-9)
         x_vals.append(term)
         y_vals.append(inv_lam)
@@ -3291,6 +3373,8 @@ def run_rydberg_analysis():
                 **row,
                 "geometric_term": term,
                 "predicted_wavelength_nm": predicted_nm,
+                "absolute_wavelength_residual_nm": absolute_residual_nm,
+                "residual_to_source_uncertainty_ratio": residual_to_uncertainty_ratio,
                 "wavelength_error_ppm": error_ppm,
             }
         )
@@ -3305,6 +3389,9 @@ def run_rydberg_analysis():
     slope_error_ppm = abs(slope_origin - r_h) / r_h * 1e6
     avg_error_ppm = float(np.mean([row["wavelength_error_ppm"] for row in results]))
     max_error_ppm = float(np.max([row["wavelength_error_ppm"] for row in results]))
+    line_uncertainty_rows = [
+        row for row in results if row.get("residual_to_source_uncertainty_ratio") is not None
+    ]
     threshold = {
         "average_wavelength_error_ppm_max": 100.0,
         "max_wavelength_error_ppm_max": 250.0,
@@ -3317,6 +3404,7 @@ def run_rydberg_analysis():
         and slope_error_ppm <= threshold["slope_error_ppm_max"]
         else "FAIL"
     )
+    hydrogen_rydberg_line_uncertainty_gate = build_hydrogen_rydberg_line_uncertainty_gate(spectrum, results)
     hydrogen_level_energy_benchmark = build_hydrogen_level_energy_benchmark(hydrogen_level_rows)
     hydrogen_like_checkpoint = build_hydrogen_like_checkpoint(codata, ion_data)
     precision_spectroscopy_gate = build_precision_spectroscopy_gate(precision_sources)
@@ -3373,6 +3461,7 @@ def run_rydberg_analysis():
         helium_quantum_defect_wavelength_holdout_gate,
     )
     atomic_uncertainty_readiness_gate = build_atomic_uncertainty_readiness_gate(
+        hydrogen_rydberg_line_uncertainty_gate,
         hydrogen_level_energy_benchmark,
         hydrogen_like_checkpoint,
         precision_baseline_gate,
@@ -3386,6 +3475,7 @@ def run_rydberg_analysis():
         helium_quantum_defect_wavelength_holdout_gate,
     )
     atomic_residual_uncertainty_budget_gate = build_atomic_residual_uncertainty_budget_gate(
+        hydrogen_rydberg_line_uncertainty_gate,
         precision_baseline_gate,
         precision_dirac_baseline_gate,
         lamb_shift_handoff_gate,
@@ -3465,6 +3555,7 @@ def run_rydberg_analysis():
                 "source": spectrum.get("source"),
                 "doi": spectrum.get("publication", {}).get("doi"),
                 "url": spectrum.get("publication", {}).get("url"),
+                "uncertainty_policy_status": spectrum.get("uncertainty_policy", {}).get("status"),
             },
             {
                 "path": str(CODATA_PATH.relative_to(ROOT)).replace("\\", "/"),
@@ -3552,6 +3643,7 @@ def run_rydberg_analysis():
             "AT20-RYDBERG-WAVELENGTH",
             "AT20-RH-CODATA-CHECKPOINT",
             "AT20-SPECTRUM-RESIDUAL",
+            "AT20-HYDROGEN-RYDBERG-LINE-TRANSCRIPTION-BUDGET",
             "AT20-HYDROGENIC-Z2-CHECKPOINT",
             "AT20-HYDROGEN-PRECISION-SOURCE-GATE",
             "AT20-HYDROGEN-1S2S-RYDBERG-BASELINE",
@@ -3586,6 +3678,12 @@ def run_rydberg_analysis():
             "slope_error_ppm": slope_error_ppm,
             "average_wavelength_error_ppm": avg_error_ppm,
             "max_wavelength_error_ppm": max_error_ppm,
+            "hydrogen_rydberg_lines_with_source_uncertainty": hydrogen_rydberg_line_uncertainty_gate["metrics"][
+                "lines_with_source_uncertainty_count"
+            ],
+            "hydrogen_rydberg_max_residual_to_source_uncertainty_ratio": hydrogen_rydberg_line_uncertainty_gate[
+                "metrics"
+            ]["max_residual_to_source_uncertainty_ratio"],
             "line_count": len(results),
             "source_targets_ready_for_review": source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
             "source_targets_blocked": source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
@@ -3697,6 +3795,7 @@ def run_rydberg_analysis():
         "cross_topic_dependencies": [row["topic"] for row in atomic_formula_bridge_manifest["cross_topic_dependencies"]],
         "claim_boundary": atomic_formula_bridge_manifest["claim_boundary"],
     }
+    artifact["hydrogen_rydberg_line_uncertainty_gate"] = hydrogen_rydberg_line_uncertainty_gate
     artifact["hydrogen_level_energy_benchmark"] = hydrogen_level_energy_benchmark
     artifact["hydrogen_like_checkpoint"] = hydrogen_like_checkpoint
     artifact["precision_spectroscopy_gate"] = precision_spectroscopy_gate
