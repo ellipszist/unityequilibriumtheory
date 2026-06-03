@@ -276,6 +276,9 @@
           "open_or_partial_check_count": 4,
           "precision_1s2s_dirac_residual_ppm": 2.880995748527676,
           "precision_1s2s_lamb_handoff_residual_ppm": 0.004184223857857917,
+          "uncertainty_budget_computable_row_count": 6,
+          "uncertainty_budget_row_count": 8,
+          "uncertainty_budget_source_missing_row_count": 2,
           "uncertainty_propagation_blocked_lane_count": 6,
           "uncertainty_readiness_lane_count": 9
         },
@@ -649,9 +652,11 @@
         "evidence": [
           "atomic_uncertainty_readiness_gate maps source/model/propagation/threshold status by lane",
           "9 uncertainty lanes are machine-readable",
-          "6 lanes still have blocked propagation"
+          "6 lanes still have blocked propagation",
+          "atomic_residual_uncertainty_budget_gate computes 6 source-uncertainty budget rows",
+          "2 budget rows still lack source uncertainty"
         ],
-        "remaining_blocker": "Readiness is mapped, but uncertainty propagation and uncertainty-aware thresholds are still incomplete.",
+        "remaining_blocker": "Residual budgets are computed where possible, but source uncertainty, model uncertainty, and uncertainty-aware thresholds are still incomplete.",
         "requirement": "Propagate source and model uncertainty into residual thresholds."
       },
       {
@@ -684,6 +689,9 @@
       "open_or_partial_check_count": 4,
       "precision_1s2s_dirac_residual_ppm": 2.880995748527676,
       "precision_1s2s_lamb_handoff_residual_ppm": 0.004184223857857917,
+      "uncertainty_budget_computable_row_count": 6,
+      "uncertainty_budget_row_count": 8,
+      "uncertainty_budget_source_missing_row_count": 2,
       "uncertainty_propagation_blocked_lane_count": 6,
       "uncertainty_readiness_lane_count": 9
     },
@@ -698,6 +706,119 @@
     "role": "atomic_spectral_predictive_model_closure_gate",
     "schema_version": "1.0",
     "status": "PREDICTIVE_CLAIM_BLOCKED_REQUIREMENTS_OPEN"
+  },
+  "atomic_residual_uncertainty_budget_gate": {
+    "budget_rows": [
+      {
+        "absolute_residual": 22989428178.5,
+        "budget_id": "hydrogen_1s2s_nonrel_source_sigma",
+        "claim_role": "diagnostic gap sizing; nonrelativistic baseline lacks precision corrections",
+        "domain": "hydrogen_precision",
+        "residual_quantity": "absolute_residual_hz",
+        "residual_to_source_uncertainty_ratio": 2298942817.85,
+        "source_uncertainty": 10.0,
+        "source_uncertainty_basis": "1S-2S measurement uncertainty only",
+        "status": "MODEL_RESIDUAL_EXCEEDS_SOURCE_UNCERTAINTY"
+      },
+      {
+        "absolute_residual": 7104712447.0,
+        "budget_id": "hydrogen_1s2s_dirac_source_sigma",
+        "claim_role": "diagnostic gap sizing; Dirac baseline lacks Lamb/QED/recoil/proton-size terms",
+        "domain": "hydrogen_precision",
+        "residual_quantity": "absolute_residual_hz",
+        "residual_to_source_uncertainty_ratio": 710471244.7,
+        "source_uncertainty": 10.0,
+        "source_uncertainty_basis": "1S-2S measurement uncertainty only",
+        "status": "MODEL_RESIDUAL_EXCEEDS_SOURCE_UNCERTAINTY"
+      },
+      {
+        "absolute_residual": 10318553.0,
+        "budget_id": "hydrogen_1s2s_lamb_handoff_source_sigma",
+        "claim_role": "empirical handoff diagnostic; residual remains too large for precision closure",
+        "domain": "hydrogen_precision",
+        "residual_quantity": "absolute_residual_hz",
+        "residual_to_source_uncertainty_ratio": 339.82342688470857,
+        "source_uncertainty": 30364.454548040212,
+        "source_uncertainty_basis": "quadrature of 1S-2S measurement and empirical Lamb-shift source uncertainties",
+        "status": "MODEL_RESIDUAL_EXCEEDS_SOURCE_UNCERTAINTY"
+      },
+      {
+        "absolute_residual": 753776.9764285088,
+        "budget_id": "hydrogen_21cm_fermi_cross_check_sigma",
+        "claim_role": "leading Fermi-contact diagnostic; recoil/QED/proton-structure corrections remain open",
+        "domain": "hydrogen_hyperfine",
+        "residual_quantity": "absolute_residual_hz",
+        "residual_to_source_uncertainty_ratio": 243153863.3640351,
+        "source_uncertainty": 0.0031,
+        "source_uncertainty_basis": "metrology cross-check uncertainty only; recommended NIST compilation uncertainty is not separately source-locked",
+        "status": "MODEL_RESIDUAL_EXCEEDS_SOURCE_UNCERTAINTY"
+      },
+      {
+        "absolute_residual": 29.83037651720001,
+        "budget_id": "helium_ground_independent_baseline_source_sigma",
+        "claim_role": "intentional failure baseline exposing missing electron-electron interaction",
+        "domain": "neutral_helium_ground_state",
+        "residual_quantity": "absolute_residual_eV",
+        "residual_to_source_uncertainty_ratio": 1192261632.6007283,
+        "source_uncertainty": 2.5019992006393606e-08,
+        "source_uncertainty_basis": "quadrature of NIST IE1 and IE2 uncertainties",
+        "status": "MODEL_RESIDUAL_EXCEEDS_SOURCE_UNCERTAINTY"
+      },
+      {
+        "absolute_residual": 1.5164804246481225,
+        "budget_id": "helium_ground_variational_baseline_source_sigma",
+        "claim_role": "uncorrelated variational diagnostic; correlation model remains required",
+        "domain": "neutral_helium_ground_state",
+        "residual_quantity": "absolute_residual_eV",
+        "residual_to_source_uncertainty_ratio": 60610747.76764922,
+        "source_uncertainty": 2.5019992006393606e-08,
+        "source_uncertainty_basis": "quadrature of NIST IE1 and IE2 uncertainties",
+        "status": "MODEL_RESIDUAL_EXCEEDS_SOURCE_UNCERTAINTY"
+      },
+      {
+        "absolute_residual": 0.0018526170410844145,
+        "budget_id": "helium_qd_same_source_level_holdout_uncertainty",
+        "claim_role": "same-source-family holdout diagnostic only",
+        "domain": "neutral_helium_excited_levels",
+        "residual_quantity": "absolute_residual_eV",
+        "residual_to_source_uncertainty_ratio": null,
+        "source_uncertainty": null,
+        "source_uncertainty_basis": "term-level uncertainty not captured in holdout package",
+        "status": "SOURCE_UNCERTAINTY_MISSING"
+      },
+      {
+        "absolute_residual": 0.04309502723526748,
+        "budget_id": "helium_qd_wavelength_holdout_uncertainty",
+        "claim_role": "same-source-family wavelength holdout diagnostic only",
+        "domain": "neutral_helium_wavelengths",
+        "residual_quantity": "absolute_residual_angstrom",
+        "residual_to_source_uncertainty_ratio": null,
+        "source_uncertainty": null,
+        "source_uncertainty_basis": "holdout wavelength uncertainty not captured in source package",
+        "status": "SOURCE_UNCERTAINTY_MISSING"
+      }
+    ],
+    "claim_boundary": "This gate reports residual-to-source-uncertainty budgets only. It does not validate precision spectra, helium, QED, hyperfine structure, or UET first-principles prediction.",
+    "claim_class": "uncertainty_budget_diagnostic_only",
+    "formula_id": "AT20-ATOMIC-RESIDUAL-UNCERTAINTY-BUDGET",
+    "metrics": {
+      "budget_row_count": 8,
+      "computable_source_uncertainty_row_count": 6,
+      "max_residual_to_source_uncertainty_ratio": 2298942817.85,
+      "min_residual_to_source_uncertainty_ratio": 339.82342688470857,
+      "model_residual_exceeds_source_uncertainty_count": 6,
+      "source_uncertainty_missing_row_count": 2
+    },
+    "next_required_artifacts": [
+      "source uncertainty capture for same-source and independent helium holdouts",
+      "model-parameter uncertainty for fitted quantum defects and future correlated/CI parameters",
+      "uncertainty-aware pass/fail thresholds per lane",
+      "residual budget rerun after QED, hyperfine, and correlated helium model terms are added"
+    ],
+    "purpose": "Convert available source uncertainties into residual-to-uncertainty ratios without promoting incomplete models.",
+    "role": "atomic_residual_uncertainty_budget_gate",
+    "schema_version": "1.0",
+    "status": "RESIDUAL_BUDGETS_COMPUTED_CLAIM_STILL_BLOCKED"
   },
   "atomic_uncertainty_readiness_gate": {
     "claim_boundary": "This gate maps uncertainty readiness only. It does not make residuals uncertainty-qualified until propagation rules and thresholds are implemented.",
@@ -858,11 +979,12 @@
     "AT20-HELIUM-QUANTUM-DEFECT-HOLDOUT-WAVELENGTH",
     "AT20-ATOMIC-PREDICTION-BASELINE-COMPARATOR",
     "AT20-ATOMIC-UNCERTAINTY-READINESS-GATE",
+    "AT20-ATOMIC-RESIDUAL-UNCERTAINTY-BUDGET",
     "AT20-ATOMIC-FIXED-PARAMETER-MODEL-READINESS",
     "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
     "AT20-UET-ATOMIC-BRIDGE-GATE"
   ],
-  "generated_at_utc": "2026-06-01T10:43:25.589397+00:00",
+  "generated_at_utc": "2026-06-03T17:11:12.502464+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -3056,6 +3178,10 @@
     "atomic_prediction_comparators_missing_external_or_ci_baseline": 2,
     "atomic_predictive_closure_fail_open_checks": 0,
     "atomic_predictive_closure_open_or_partial_checks": 4,
+    "atomic_uncertainty_budget_computable_rows": 6,
+    "atomic_uncertainty_budget_max_ratio": 2298942817.85,
+    "atomic_uncertainty_budget_rows": 8,
+    "atomic_uncertainty_budget_source_missing_rows": 2,
     "atomic_uncertainty_propagation_blocked_lanes": 6,
     "atomic_uncertainty_readiness_lanes": 9,
     "average_wavelength_error_ppm": 7.504133013735595,

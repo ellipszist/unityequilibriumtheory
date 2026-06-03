@@ -2329,6 +2329,168 @@ def build_atomic_uncertainty_readiness_gate(
     }
 
 
+def build_atomic_residual_uncertainty_budget_gate(
+    precision_baseline_gate: dict,
+    precision_dirac_baseline_gate: dict,
+    lamb_shift_handoff_gate: dict,
+    hyperfine_21cm_gate: dict,
+    hyperfine_fermi_baseline_gate: dict,
+    helium_ground_state_baseline_gate: dict,
+    helium_quantum_defect_holdout_gate: dict,
+    helium_quantum_defect_wavelength_holdout_gate: dict,
+) -> dict:
+    """Compute source-uncertainty residual budgets where current sources permit it."""
+
+    def ratio(abs_residual, uncertainty):
+        return abs_residual / uncertainty if uncertainty else None
+
+    h_obs_unc_hz = precision_baseline_gate["observed"]["uncertainty_hz"]
+    lamb_source_unc_hz = (
+        lamb_shift_handoff_gate["correction"]["delta_uncertainty_hz"] ** 2 + h_obs_unc_hz**2
+    ) ** 0.5
+    hyperfine_cross_check_unc_hz = hyperfine_21cm_gate["metrology_cross_check"].get("uncertainty_hz")
+    helium_ground_unc_ev = helium_ground_state_baseline_gate["observed_anchor"]["total_binding_uncertainty_eV"]
+    rows = [
+        {
+            "budget_id": "hydrogen_1s2s_nonrel_source_sigma",
+            "domain": "hydrogen_precision",
+            "residual_quantity": "absolute_residual_hz",
+            "absolute_residual": precision_baseline_gate["prediction"]["absolute_residual_hz"],
+            "source_uncertainty": h_obs_unc_hz,
+            "source_uncertainty_basis": "1S-2S measurement uncertainty only",
+            "residual_to_source_uncertainty_ratio": ratio(
+                precision_baseline_gate["prediction"]["absolute_residual_hz"], h_obs_unc_hz
+            ),
+            "status": "MODEL_RESIDUAL_EXCEEDS_SOURCE_UNCERTAINTY",
+            "claim_role": "diagnostic gap sizing; nonrelativistic baseline lacks precision corrections",
+        },
+        {
+            "budget_id": "hydrogen_1s2s_dirac_source_sigma",
+            "domain": "hydrogen_precision",
+            "residual_quantity": "absolute_residual_hz",
+            "absolute_residual": precision_dirac_baseline_gate["prediction"]["absolute_residual_hz"],
+            "source_uncertainty": h_obs_unc_hz,
+            "source_uncertainty_basis": "1S-2S measurement uncertainty only",
+            "residual_to_source_uncertainty_ratio": ratio(
+                precision_dirac_baseline_gate["prediction"]["absolute_residual_hz"], h_obs_unc_hz
+            ),
+            "status": "MODEL_RESIDUAL_EXCEEDS_SOURCE_UNCERTAINTY",
+            "claim_role": "diagnostic gap sizing; Dirac baseline lacks Lamb/QED/recoil/proton-size terms",
+        },
+        {
+            "budget_id": "hydrogen_1s2s_lamb_handoff_source_sigma",
+            "domain": "hydrogen_precision",
+            "residual_quantity": "absolute_residual_hz",
+            "absolute_residual": lamb_shift_handoff_gate["prediction"]["absolute_residual_hz"],
+            "source_uncertainty": lamb_source_unc_hz,
+            "source_uncertainty_basis": "quadrature of 1S-2S measurement and empirical Lamb-shift source uncertainties",
+            "residual_to_source_uncertainty_ratio": ratio(
+                lamb_shift_handoff_gate["prediction"]["absolute_residual_hz"], lamb_source_unc_hz
+            ),
+            "status": "MODEL_RESIDUAL_EXCEEDS_SOURCE_UNCERTAINTY",
+            "claim_role": "empirical handoff diagnostic; residual remains too large for precision closure",
+        },
+        {
+            "budget_id": "hydrogen_21cm_fermi_cross_check_sigma",
+            "domain": "hydrogen_hyperfine",
+            "residual_quantity": "absolute_residual_hz",
+            "absolute_residual": hyperfine_fermi_baseline_gate["prediction"]["absolute_residual_hz"],
+            "source_uncertainty": hyperfine_cross_check_unc_hz,
+            "source_uncertainty_basis": "metrology cross-check uncertainty only; recommended NIST compilation uncertainty is not separately source-locked",
+            "residual_to_source_uncertainty_ratio": ratio(
+                hyperfine_fermi_baseline_gate["prediction"]["absolute_residual_hz"], hyperfine_cross_check_unc_hz
+            ),
+            "status": "MODEL_RESIDUAL_EXCEEDS_SOURCE_UNCERTAINTY",
+            "claim_role": "leading Fermi-contact diagnostic; recoil/QED/proton-structure corrections remain open",
+        },
+        {
+            "budget_id": "helium_ground_independent_baseline_source_sigma",
+            "domain": "neutral_helium_ground_state",
+            "residual_quantity": "absolute_residual_eV",
+            "absolute_residual": helium_ground_state_baseline_gate["baselines"][0]["absolute_residual_eV"],
+            "source_uncertainty": helium_ground_unc_ev,
+            "source_uncertainty_basis": "quadrature of NIST IE1 and IE2 uncertainties",
+            "residual_to_source_uncertainty_ratio": ratio(
+                helium_ground_state_baseline_gate["baselines"][0]["absolute_residual_eV"], helium_ground_unc_ev
+            ),
+            "status": "MODEL_RESIDUAL_EXCEEDS_SOURCE_UNCERTAINTY",
+            "claim_role": "intentional failure baseline exposing missing electron-electron interaction",
+        },
+        {
+            "budget_id": "helium_ground_variational_baseline_source_sigma",
+            "domain": "neutral_helium_ground_state",
+            "residual_quantity": "absolute_residual_eV",
+            "absolute_residual": helium_ground_state_baseline_gate["baselines"][1]["absolute_residual_eV"],
+            "source_uncertainty": helium_ground_unc_ev,
+            "source_uncertainty_basis": "quadrature of NIST IE1 and IE2 uncertainties",
+            "residual_to_source_uncertainty_ratio": ratio(
+                helium_ground_state_baseline_gate["baselines"][1]["absolute_residual_eV"], helium_ground_unc_ev
+            ),
+            "status": "MODEL_RESIDUAL_EXCEEDS_SOURCE_UNCERTAINTY",
+            "claim_role": "uncorrelated variational diagnostic; correlation model remains required",
+        },
+        {
+            "budget_id": "helium_qd_same_source_level_holdout_uncertainty",
+            "domain": "neutral_helium_excited_levels",
+            "residual_quantity": "absolute_residual_eV",
+            "absolute_residual": helium_quantum_defect_holdout_gate["metrics"]["max_abs_excitation_residual_eV"],
+            "source_uncertainty": None,
+            "source_uncertainty_basis": "term-level uncertainty not captured in holdout package",
+            "residual_to_source_uncertainty_ratio": None,
+            "status": "SOURCE_UNCERTAINTY_MISSING",
+            "claim_role": "same-source-family holdout diagnostic only",
+        },
+        {
+            "budget_id": "helium_qd_wavelength_holdout_uncertainty",
+            "domain": "neutral_helium_wavelengths",
+            "residual_quantity": "absolute_residual_angstrom",
+            "absolute_residual": helium_quantum_defect_wavelength_holdout_gate["metrics"][
+                "max_abs_wavelength_residual_angstrom"
+            ],
+            "source_uncertainty": None,
+            "source_uncertainty_basis": "holdout wavelength uncertainty not captured in source package",
+            "residual_to_source_uncertainty_ratio": None,
+            "status": "SOURCE_UNCERTAINTY_MISSING",
+            "claim_role": "same-source-family wavelength holdout diagnostic only",
+        },
+    ]
+    computable_rows = [row for row in rows if row["residual_to_source_uncertainty_ratio"] is not None]
+    source_missing_rows = [row for row in rows if row["status"] == "SOURCE_UNCERTAINTY_MISSING"]
+    exceeds_rows = [row for row in rows if row["status"] == "MODEL_RESIDUAL_EXCEEDS_SOURCE_UNCERTAINTY"]
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_residual_uncertainty_budget_gate",
+        "status": "RESIDUAL_BUDGETS_COMPUTED_CLAIM_STILL_BLOCKED",
+        "claim_class": "uncertainty_budget_diagnostic_only",
+        "formula_id": "AT20-ATOMIC-RESIDUAL-UNCERTAINTY-BUDGET",
+        "purpose": "Convert available source uncertainties into residual-to-uncertainty ratios without promoting incomplete models.",
+        "budget_rows": rows,
+        "metrics": {
+            "budget_row_count": len(rows),
+            "computable_source_uncertainty_row_count": len(computable_rows),
+            "source_uncertainty_missing_row_count": len(source_missing_rows),
+            "model_residual_exceeds_source_uncertainty_count": len(exceeds_rows),
+            "max_residual_to_source_uncertainty_ratio": max(
+                row["residual_to_source_uncertainty_ratio"] for row in computable_rows
+            )
+            if computable_rows
+            else None,
+            "min_residual_to_source_uncertainty_ratio": min(
+                row["residual_to_source_uncertainty_ratio"] for row in computable_rows
+            )
+            if computable_rows
+            else None,
+        },
+        "next_required_artifacts": [
+            "source uncertainty capture for same-source and independent helium holdouts",
+            "model-parameter uncertainty for fitted quantum defects and future correlated/CI parameters",
+            "uncertainty-aware pass/fail thresholds per lane",
+            "residual budget rerun after QED, hyperfine, and correlated helium model terms are added",
+        ],
+        "claim_boundary": "This gate reports residual-to-source-uncertainty budgets only. It does not validate precision spectra, helium, QED, hyperfine structure, or UET first-principles prediction.",
+    }
+
+
 def build_atomic_fixed_parameter_model_readiness_gate(
     hydrogen_like_checkpoint: dict,
     precision_dirac_baseline_gate: dict,
@@ -2487,6 +2649,7 @@ def build_atomic_predictive_model_closure_gate(
     helium_quantum_defect_wavelength_holdout_gate: dict,
     atomic_prediction_baseline_comparator_gate: dict,
     atomic_uncertainty_readiness_gate: dict,
+    atomic_residual_uncertainty_budget_gate: dict,
     atomic_fixed_parameter_model_readiness_gate: dict,
 ) -> dict:
     closure_checks = [
@@ -2531,8 +2694,10 @@ def build_atomic_predictive_model_closure_gate(
                 "atomic_uncertainty_readiness_gate maps source/model/propagation/threshold status by lane",
                 f"{atomic_uncertainty_readiness_gate['metrics']['lane_count']} uncertainty lanes are machine-readable",
                 f"{atomic_uncertainty_readiness_gate['metrics']['propagation_blocked_lane_count']} lanes still have blocked propagation",
+                f"atomic_residual_uncertainty_budget_gate computes {atomic_residual_uncertainty_budget_gate['metrics']['computable_source_uncertainty_row_count']} source-uncertainty budget rows",
+                f"{atomic_residual_uncertainty_budget_gate['metrics']['source_uncertainty_missing_row_count']} budget rows still lack source uncertainty",
             ],
-            "remaining_blocker": "Readiness is mapped, but uncertainty propagation and uncertainty-aware thresholds are still incomplete.",
+            "remaining_blocker": "Residual budgets are computed where possible, but source uncertainty, model uncertainty, and uncertainty-aware thresholds are still incomplete.",
         },
         {
             "check_id": "AT20-PRED-05",
@@ -2572,6 +2737,13 @@ def build_atomic_predictive_model_closure_gate(
             "uncertainty_readiness_lane_count": atomic_uncertainty_readiness_gate["metrics"]["lane_count"],
             "uncertainty_propagation_blocked_lane_count": atomic_uncertainty_readiness_gate["metrics"][
                 "propagation_blocked_lane_count"
+            ],
+            "uncertainty_budget_row_count": atomic_residual_uncertainty_budget_gate["metrics"]["budget_row_count"],
+            "uncertainty_budget_computable_row_count": atomic_residual_uncertainty_budget_gate["metrics"][
+                "computable_source_uncertainty_row_count"
+            ],
+            "uncertainty_budget_source_missing_row_count": atomic_residual_uncertainty_budget_gate["metrics"][
+                "source_uncertainty_missing_row_count"
             ],
             "fixed_parameter_model_lane_count": atomic_fixed_parameter_model_readiness_gate["metrics"]["model_lane_count"],
             "missing_required_model_count": atomic_fixed_parameter_model_readiness_gate["metrics"][
@@ -3042,6 +3214,16 @@ def run_rydberg_analysis():
         helium_quantum_defect_holdout_gate,
         helium_quantum_defect_wavelength_holdout_gate,
     )
+    atomic_residual_uncertainty_budget_gate = build_atomic_residual_uncertainty_budget_gate(
+        precision_baseline_gate,
+        precision_dirac_baseline_gate,
+        lamb_shift_handoff_gate,
+        hyperfine_21cm_gate,
+        hyperfine_fermi_baseline_gate,
+        helium_ground_state_baseline_gate,
+        helium_quantum_defect_holdout_gate,
+        helium_quantum_defect_wavelength_holdout_gate,
+    )
     atomic_fixed_parameter_model_readiness_gate = build_atomic_fixed_parameter_model_readiness_gate(
         hydrogen_like_checkpoint,
         precision_dirac_baseline_gate,
@@ -3063,6 +3245,7 @@ def run_rydberg_analysis():
         helium_quantum_defect_wavelength_holdout_gate,
         atomic_prediction_baseline_comparator_gate,
         atomic_uncertainty_readiness_gate,
+        atomic_residual_uncertainty_budget_gate,
         atomic_fixed_parameter_model_readiness_gate,
     )
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
@@ -3219,6 +3402,7 @@ def run_rydberg_analysis():
             "AT20-HELIUM-QUANTUM-DEFECT-HOLDOUT-WAVELENGTH",
             "AT20-ATOMIC-PREDICTION-BASELINE-COMPARATOR",
             "AT20-ATOMIC-UNCERTAINTY-READINESS-GATE",
+            "AT20-ATOMIC-RESIDUAL-UNCERTAINTY-BUDGET",
             "AT20-ATOMIC-FIXED-PARAMETER-MODEL-READINESS",
             "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
             "AT20-UET-ATOMIC-BRIDGE-GATE",
@@ -3307,6 +3491,16 @@ def run_rydberg_analysis():
             "atomic_uncertainty_propagation_blocked_lanes": atomic_uncertainty_readiness_gate["metrics"][
                 "propagation_blocked_lane_count"
             ],
+            "atomic_uncertainty_budget_rows": atomic_residual_uncertainty_budget_gate["metrics"]["budget_row_count"],
+            "atomic_uncertainty_budget_computable_rows": atomic_residual_uncertainty_budget_gate["metrics"][
+                "computable_source_uncertainty_row_count"
+            ],
+            "atomic_uncertainty_budget_source_missing_rows": atomic_residual_uncertainty_budget_gate["metrics"][
+                "source_uncertainty_missing_row_count"
+            ],
+            "atomic_uncertainty_budget_max_ratio": atomic_residual_uncertainty_budget_gate["metrics"][
+                "max_residual_to_source_uncertainty_ratio"
+            ],
             "atomic_fixed_parameter_model_lanes": atomic_fixed_parameter_model_readiness_gate["metrics"]["model_lane_count"],
             "atomic_missing_required_model_lanes": atomic_fixed_parameter_model_readiness_gate["metrics"][
                 "missing_required_model_count"
@@ -3353,6 +3547,7 @@ def run_rydberg_analysis():
     artifact["helium_quantum_defect_wavelength_holdout_gate"] = helium_quantum_defect_wavelength_holdout_gate
     artifact["atomic_prediction_baseline_comparator_gate"] = atomic_prediction_baseline_comparator_gate
     artifact["atomic_uncertainty_readiness_gate"] = atomic_uncertainty_readiness_gate
+    artifact["atomic_residual_uncertainty_budget_gate"] = atomic_residual_uncertainty_budget_gate
     artifact["atomic_fixed_parameter_model_readiness_gate"] = atomic_fixed_parameter_model_readiness_gate
     artifact["atomic_predictive_model_closure_gate"] = atomic_predictive_model_closure_gate
     artifact["source_evidence_intake_stub"] = {
