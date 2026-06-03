@@ -277,7 +277,7 @@
         "metrics": {
           "closure_check_count": 5,
           "fail_open_check_count": 0,
-          "fixed_parameter_model_lane_count": 9,
+          "fixed_parameter_model_lane_count": 10,
           "helium_quantum_defect_holdout_prediction_count": 3,
           "helium_quantum_defect_loo_prediction_count": 7,
           "helium_wavelength_holdout_predicted_vacuum_line_count": 2,
@@ -285,6 +285,8 @@
           "helium_zero_qd_avg_abs_residual_eV": 0.25249149613765204,
           "hydrogen_like_primary_prediction_count": 2,
           "hyperfine_21cm_fermi_residual_ppm": 530.677220569032,
+          "legacy_multielectron_primary_evidence_script_count": 0,
+          "legacy_multielectron_scripts_audited": 2,
           "missing_required_model_count": 2,
           "open_or_partial_check_count": 4,
           "precision_1s2s_dirac_residual_ppm": 2.880995748527676,
@@ -392,7 +394,7 @@
       "fixed_heuristic_baseline_count": 1,
       "fixed_or_standard_baseline_count": 4,
       "missing_required_model_count": 2,
-      "model_lane_count": 9
+      "model_lane_count": 10
     },
     "model_lanes": [
       {
@@ -472,6 +474,19 @@
         "holdout_status": "SAME_SOURCE_FAMILY_HOLDOUT_ONLY",
         "model_id": "helium_quantum_defect_series_fit",
         "parameter_policy": "FITTED_FROM_SOURCE_SERIES"
+      },
+      {
+        "current_role": "audit continuity only; explicitly excluded from helium prediction evidence",
+        "domain": "neutral_helium",
+        "evidence": {
+          "audited_script_count": 2,
+          "ci_or_correlated_model_present": false,
+          "primary_evidence_script_count": 0
+        },
+        "generative_status": "LEGACY_SMOKE_TEST_NOT_PRIMARY_EVIDENCE",
+        "holdout_status": "NO_SOURCE_HOLDOUT_EVALUATION",
+        "model_id": "legacy_multielectron_three_body_scripts",
+        "parameter_policy": "NO_SPECTRAL_MODEL_PARAMETERS"
       },
       {
         "current_role": "required next model family for fixed-parameter helium prediction",
@@ -653,8 +668,9 @@
         "current_state": "PARTIAL",
         "evidence": [
           "atomic_fixed_parameter_model_readiness_gate separates fixed standard baselines, empirical handoffs, fitted diagnostics, and missing required generative models",
-          "9 model lanes are machine-readable",
-          "2 required model lanes remain missing"
+          "10 model lanes are machine-readable",
+          "2 required model lanes remain missing",
+          "legacy_multielectron_code_audit_gate classifies existing multi-electron scripts as smoke/demo code, not primary spectral evidence"
         ],
         "remaining_blocker": "Readiness is mapped, but a fixed-parameter CI/correlated helium model or explicit UET atomic operator is still missing.",
         "requirement": "Use a generative physics model whose parameters are fixed before the holdout set is evaluated."
@@ -690,7 +706,7 @@
     "metrics": {
       "closure_check_count": 5,
       "fail_open_check_count": 0,
-      "fixed_parameter_model_lane_count": 9,
+      "fixed_parameter_model_lane_count": 10,
       "helium_quantum_defect_holdout_prediction_count": 3,
       "helium_quantum_defect_loo_prediction_count": 7,
       "helium_wavelength_holdout_predicted_vacuum_line_count": 2,
@@ -698,6 +714,8 @@
       "helium_zero_qd_avg_abs_residual_eV": 0.25249149613765204,
       "hydrogen_like_primary_prediction_count": 2,
       "hyperfine_21cm_fermi_residual_ppm": 530.677220569032,
+      "legacy_multielectron_primary_evidence_script_count": 0,
+      "legacy_multielectron_scripts_audited": 2,
       "missing_required_model_count": 2,
       "open_or_partial_check_count": 4,
       "precision_1s2s_dirac_residual_ppm": 2.880995748527676,
@@ -1010,6 +1028,7 @@
     "AT20-HELIUM-QUANTUM-DEFECT-LOO-PREDICTION",
     "AT20-HELIUM-QUANTUM-DEFECT-SOURCE-FAMILY-HOLDOUT",
     "AT20-HELIUM-QUANTUM-DEFECT-HOLDOUT-WAVELENGTH",
+    "AT20-LEGACY-MULTIELECTRON-CODE-AUDIT",
     "AT20-ATOMIC-PREDICTION-BASELINE-COMPARATOR",
     "AT20-ATOMIC-UNCERTAINTY-READINESS-GATE",
     "AT20-ATOMIC-RESIDUAL-UNCERTAINTY-BUDGET",
@@ -1017,7 +1036,7 @@
     "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
     "AT20-UET-ATOMIC-BRIDGE-GATE"
   ],
-  "generated_at_utc": "2026-06-03T17:41:30.007358+00:00",
+  "generated_at_utc": "2026-06-03T17:50:17.193353+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -3412,6 +3431,55 @@
     "source_status": "SOURCE_PACKAGE_READY_EMPIRICAL_HANDOFF_MODEL_BLOCKED",
     "status": "EMPIRICAL_LAMB_HANDOFF_COMPUTED_MODEL_INCOMPLETE"
   },
+  "legacy_multielectron_code_audit_gate": {
+    "audited_scripts": [
+      {
+        "evidence_status": "DEMO_WRAPPER_NOT_PRIMARY_EVIDENCE",
+        "exists": true,
+        "observed_role": "wrapper that calls Research_Atomic_ThreeBody.run_three_body",
+        "path": "Code/03_Research/Research_Multi_Electron.py",
+        "script_id": "research_multi_electron",
+        "sha256": "f0041f8259087d481d107f4d28592cb4f1c1323b78c60ee5b1720fc422399741",
+        "why_not_model": [
+          "does not load helium source rows",
+          "does not compute energy levels or line positions",
+          "does not compare residuals to thresholds"
+        ]
+      },
+      {
+        "evidence_status": "SMOKE_TEST_NOT_ATOMIC_MODEL",
+        "exists": true,
+        "observed_role": "engine-coupling smoke test using beta / beta sanity check",
+        "path": "Code/03_Research/Research_Atomic_ThreeBody.py",
+        "script_id": "research_atomic_three_body",
+        "sha256": "d15bb655bb95c26329014a6815efcd3a3d5903c649bea40145bda0c08914a75b",
+        "why_not_model": [
+          "does not implement a two-electron Hamiltonian",
+          "does not model electron-electron correlation",
+          "does not emit source-backed spectral residuals"
+        ]
+      }
+    ],
+    "claim_boundary": "These legacy scripts are recorded for audit continuity only. They cannot support helium validation, many-electron spectra, CI/correlation closure, or UET atomic prediction claims.",
+    "claim_class": "code_audit_and_overclaim_prevention_only",
+    "formula_id": "AT20-LEGACY-MULTIELECTRON-CODE-AUDIT",
+    "metrics": {
+      "ci_or_correlated_model_present": false,
+      "primary_evidence_script_count": 0,
+      "script_count": 2,
+      "scripts_present": 2,
+      "spectral_residual_artifact_present": false
+    },
+    "required_replacement_artifacts": [
+      "fixed-parameter CI or correlated two-electron Hamiltonian residual gate",
+      "source-backed helium excited-state residual rows",
+      "uncertainty-aware thresholds for level and wavelength residuals",
+      "explicit UET atomic operator only if derived parameters are locked before holdout evaluation"
+    ],
+    "role": "legacy_multielectron_code_audit_gate",
+    "schema_version": "1.0",
+    "status": "LEGACY_CODE_CLASSIFIED_NOT_PRIMARY_EVIDENCE"
+  },
   "limitations": [
     "This validates the standard Rydberg relation against the topic-local hydrogen spectrum working copy.",
     "It does not derive the Rydberg relation from UET first principles.",
@@ -3425,7 +3493,7 @@
     "R_H_codata_m_inverse": 10967758.3406,
     "R_infinity_codata_m_inverse": 10973731.56816,
     "accepted_claim_branches": 5,
-    "atomic_fixed_parameter_model_lanes": 9,
+    "atomic_fixed_parameter_model_lanes": 10,
     "atomic_missing_required_model_lanes": 2,
     "atomic_prediction_comparator_count": 7,
     "atomic_prediction_comparators_missing_external_or_ci_baseline": 2,
@@ -3497,6 +3565,8 @@
     "hyperfine_21cm_reference_hz": 1420405751.7680001,
     "hyperfine_21cm_topic_row_delta_hz": -0.7680001258850098,
     "hyperfine_21cm_wavelength_cm": 21.106114054159796,
+    "legacy_multielectron_primary_evidence_script_count": 0,
+    "legacy_multielectron_scripts_audited": 2,
     "line_count": 7,
     "max_wavelength_error_ppm": 12.500832386280821,
     "precision_1s2s_baseline_residual_hz": 22989428178.5,

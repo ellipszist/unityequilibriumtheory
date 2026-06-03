@@ -48,6 +48,8 @@ HELIUM_MANY_ELECTRON_PATH = TOPIC_DIR / "Data" / "03_Research" / "helium_many_el
 HELIUM_TRANSITION_ASSIGNMENTS_PATH = TOPIC_DIR / "Data" / "03_Research" / "helium_transition_assignments.json"
 HELIUM_GROUND_STATE_ENERGY_PATH = TOPIC_DIR / "Data" / "03_Research" / "helium_ground_state_energy_sources.json"
 HELIUM_QD_HOLDOUT_PATH = TOPIC_DIR / "Data" / "03_Research" / "helium_quantum_defect_holdout_sources.json"
+LEGACY_MULTI_ELECTRON_PATH = TOPIC_DIR / "Code" / "03_Research" / "Research_Multi_Electron.py"
+LEGACY_THREE_BODY_PATH = TOPIC_DIR / "Code" / "03_Research" / "Research_Atomic_ThreeBody.py"
 ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_20_atomic_physics_verification.json"
 SOURCE_EVIDENCE_INTAKE_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_intake_stub.json"
 SOURCE_EVIDENCE_READINESS_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_readiness_matrix.json"
@@ -2375,6 +2377,69 @@ def build_hydrogen_rydberg_line_uncertainty_gate(spectrum: dict, results: list[d
     }
 
 
+def build_legacy_multielectron_code_audit_gate() -> dict:
+    scripts = [
+        {
+            "script_id": "research_multi_electron",
+            "path": LEGACY_MULTI_ELECTRON_PATH,
+            "observed_role": "wrapper that calls Research_Atomic_ThreeBody.run_three_body",
+            "evidence_status": "DEMO_WRAPPER_NOT_PRIMARY_EVIDENCE",
+            "why_not_model": [
+                "does not load helium source rows",
+                "does not compute energy levels or line positions",
+                "does not compare residuals to thresholds",
+            ],
+        },
+        {
+            "script_id": "research_atomic_three_body",
+            "path": LEGACY_THREE_BODY_PATH,
+            "observed_role": "engine-coupling smoke test using beta / beta sanity check",
+            "evidence_status": "SMOKE_TEST_NOT_ATOMIC_MODEL",
+            "why_not_model": [
+                "does not implement a two-electron Hamiltonian",
+                "does not model electron-electron correlation",
+                "does not emit source-backed spectral residuals",
+            ],
+        },
+    ]
+    rows = []
+    for script in scripts:
+        path = script["path"]
+        rows.append(
+            {
+                "script_id": script["script_id"],
+                "path": str(path.relative_to(TOPIC_DIR)).replace("\\", "/"),
+                "sha256": file_sha256(path) if path.exists() else None,
+                "exists": path.exists(),
+                "observed_role": script["observed_role"],
+                "evidence_status": script["evidence_status"],
+                "why_not_model": script["why_not_model"],
+            }
+        )
+    return {
+        "schema_version": "1.0",
+        "role": "legacy_multielectron_code_audit_gate",
+        "status": "LEGACY_CODE_CLASSIFIED_NOT_PRIMARY_EVIDENCE",
+        "claim_class": "code_audit_and_overclaim_prevention_only",
+        "formula_id": "AT20-LEGACY-MULTIELECTRON-CODE-AUDIT",
+        "audited_scripts": rows,
+        "metrics": {
+            "script_count": len(rows),
+            "scripts_present": sum(1 for row in rows if row["exists"]),
+            "primary_evidence_script_count": 0,
+            "ci_or_correlated_model_present": False,
+            "spectral_residual_artifact_present": False,
+        },
+        "required_replacement_artifacts": [
+            "fixed-parameter CI or correlated two-electron Hamiltonian residual gate",
+            "source-backed helium excited-state residual rows",
+            "uncertainty-aware thresholds for level and wavelength residuals",
+            "explicit UET atomic operator only if derived parameters are locked before holdout evaluation",
+        ],
+        "claim_boundary": "These legacy scripts are recorded for audit continuity only. They cannot support helium validation, many-electron spectra, CI/correlation closure, or UET atomic prediction claims.",
+    }
+
+
 def build_atomic_uncertainty_readiness_gate(
     hydrogen_rydberg_line_uncertainty_gate: dict,
     hydrogen_level_energy_benchmark: dict,
@@ -2748,6 +2813,7 @@ def build_atomic_fixed_parameter_model_readiness_gate(
     helium_quantum_defect_prediction_gate: dict,
     helium_quantum_defect_holdout_gate: dict,
     atomic_prediction_baseline_comparator_gate: dict,
+    legacy_multielectron_code_audit_gate: dict,
 ) -> dict:
     model_lanes = [
         {
@@ -2833,6 +2899,23 @@ def build_atomic_fixed_parameter_model_readiness_gate(
             },
         },
         {
+            "model_id": "legacy_multielectron_three_body_scripts",
+            "domain": "neutral_helium",
+            "parameter_policy": "NO_SPECTRAL_MODEL_PARAMETERS",
+            "generative_status": "LEGACY_SMOKE_TEST_NOT_PRIMARY_EVIDENCE",
+            "holdout_status": "NO_SOURCE_HOLDOUT_EVALUATION",
+            "current_role": "audit continuity only; explicitly excluded from helium prediction evidence",
+            "evidence": {
+                "audited_script_count": legacy_multielectron_code_audit_gate["metrics"]["script_count"],
+                "primary_evidence_script_count": legacy_multielectron_code_audit_gate["metrics"][
+                    "primary_evidence_script_count"
+                ],
+                "ci_or_correlated_model_present": legacy_multielectron_code_audit_gate["metrics"][
+                    "ci_or_correlated_model_present"
+                ],
+            },
+        },
+        {
             "model_id": "helium_ci_or_correlated_two_electron_model",
             "domain": "neutral_helium",
             "parameter_policy": "MISSING",
@@ -2899,6 +2982,7 @@ def build_atomic_predictive_model_closure_gate(
     atomic_uncertainty_readiness_gate: dict,
     atomic_residual_uncertainty_budget_gate: dict,
     atomic_fixed_parameter_model_readiness_gate: dict,
+    legacy_multielectron_code_audit_gate: dict,
 ) -> dict:
     closure_checks = [
         {
@@ -2931,6 +3015,7 @@ def build_atomic_predictive_model_closure_gate(
                 "atomic_fixed_parameter_model_readiness_gate separates fixed standard baselines, empirical handoffs, fitted diagnostics, and missing required generative models",
                 f"{atomic_fixed_parameter_model_readiness_gate['metrics']['model_lane_count']} model lanes are machine-readable",
                 f"{atomic_fixed_parameter_model_readiness_gate['metrics']['missing_required_model_count']} required model lanes remain missing",
+                "legacy_multielectron_code_audit_gate classifies existing multi-electron scripts as smoke/demo code, not primary spectral evidence",
             ],
             "remaining_blocker": "Readiness is mapped, but a fixed-parameter CI/correlated helium model or explicit UET atomic operator is still missing.",
         },
@@ -2996,6 +3081,10 @@ def build_atomic_predictive_model_closure_gate(
             "fixed_parameter_model_lane_count": atomic_fixed_parameter_model_readiness_gate["metrics"]["model_lane_count"],
             "missing_required_model_count": atomic_fixed_parameter_model_readiness_gate["metrics"][
                 "missing_required_model_count"
+            ],
+            "legacy_multielectron_scripts_audited": legacy_multielectron_code_audit_gate["metrics"]["scripts_present"],
+            "legacy_multielectron_primary_evidence_script_count": legacy_multielectron_code_audit_gate["metrics"][
+                "primary_evidence_script_count"
             ],
         },
         "promotion_requirements": [
@@ -3460,6 +3549,7 @@ def run_rydberg_analysis():
         helium_quantum_defect_holdout_gate,
         helium_quantum_defect_wavelength_holdout_gate,
     )
+    legacy_multielectron_code_audit_gate = build_legacy_multielectron_code_audit_gate()
     atomic_uncertainty_readiness_gate = build_atomic_uncertainty_readiness_gate(
         hydrogen_rydberg_line_uncertainty_gate,
         hydrogen_level_energy_benchmark,
@@ -3494,6 +3584,7 @@ def run_rydberg_analysis():
         helium_quantum_defect_prediction_gate,
         helium_quantum_defect_holdout_gate,
         atomic_prediction_baseline_comparator_gate,
+        legacy_multielectron_code_audit_gate,
     )
     atomic_predictive_model_closure_gate = build_atomic_predictive_model_closure_gate(
         hydrogen_like_checkpoint,
@@ -3508,6 +3599,7 @@ def run_rydberg_analysis():
         atomic_uncertainty_readiness_gate,
         atomic_residual_uncertainty_budget_gate,
         atomic_fixed_parameter_model_readiness_gate,
+        legacy_multielectron_code_audit_gate,
     )
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
@@ -3663,6 +3755,7 @@ def run_rydberg_analysis():
             "AT20-HELIUM-QUANTUM-DEFECT-LOO-PREDICTION",
             "AT20-HELIUM-QUANTUM-DEFECT-SOURCE-FAMILY-HOLDOUT",
             "AT20-HELIUM-QUANTUM-DEFECT-HOLDOUT-WAVELENGTH",
+            "AT20-LEGACY-MULTIELECTRON-CODE-AUDIT",
             "AT20-ATOMIC-PREDICTION-BASELINE-COMPARATOR",
             "AT20-ATOMIC-UNCERTAINTY-READINESS-GATE",
             "AT20-ATOMIC-RESIDUAL-UNCERTAINTY-BUDGET",
@@ -3752,6 +3845,10 @@ def run_rydberg_analysis():
             "helium_quantum_defect_wavelength_holdout_max_abs_residual_angstrom": helium_quantum_defect_wavelength_holdout_gate["metrics"]["max_abs_wavelength_residual_angstrom"],
             "helium_quantum_defect_wavelength_holdout_avg_abs_residual_ppm": helium_quantum_defect_wavelength_holdout_gate["metrics"]["average_abs_wavelength_residual_ppm"],
             "helium_quantum_defect_wavelength_holdout_max_abs_residual_ppm": helium_quantum_defect_wavelength_holdout_gate["metrics"]["max_abs_wavelength_residual_ppm"],
+            "legacy_multielectron_scripts_audited": legacy_multielectron_code_audit_gate["metrics"]["scripts_present"],
+            "legacy_multielectron_primary_evidence_script_count": legacy_multielectron_code_audit_gate["metrics"][
+                "primary_evidence_script_count"
+            ],
             "atomic_prediction_comparator_count": atomic_prediction_baseline_comparator_gate["metrics"]["comparator_count"],
             "atomic_prediction_comparators_missing_external_or_ci_baseline": atomic_prediction_baseline_comparator_gate[
                 "metrics"
@@ -3815,6 +3912,7 @@ def run_rydberg_analysis():
     artifact["helium_quantum_defect_prediction_gate"] = helium_quantum_defect_prediction_gate
     artifact["helium_quantum_defect_holdout_gate"] = helium_quantum_defect_holdout_gate
     artifact["helium_quantum_defect_wavelength_holdout_gate"] = helium_quantum_defect_wavelength_holdout_gate
+    artifact["legacy_multielectron_code_audit_gate"] = legacy_multielectron_code_audit_gate
     artifact["atomic_prediction_baseline_comparator_gate"] = atomic_prediction_baseline_comparator_gate
     artifact["atomic_uncertainty_readiness_gate"] = atomic_uncertainty_readiness_gate
     artifact["atomic_residual_uncertainty_budget_gate"] = atomic_residual_uncertainty_budget_gate

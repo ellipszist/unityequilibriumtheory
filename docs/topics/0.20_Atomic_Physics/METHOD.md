@@ -18,7 +18,8 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 | Atomic prediction comparator | artifact `atomic_prediction_baseline_comparator_gate` | internal named baseline/candidate comparison table; external and CI/correlated comparator lanes remain open |
 | Atomic uncertainty readiness | artifact `atomic_uncertainty_readiness_gate` | lane-wise uncertainty readiness map; fitted quantum-defect uncertainty diagnostics are partial, while broader propagation and uncertainty-aware thresholds remain incomplete |
 | Atomic residual uncertainty budget | artifact `atomic_residual_uncertainty_budget_gate` | source-uncertainty budget rows where current sources or declared transcription-rounding bounds permit residual-to-uncertainty ratios; claim remains blocked |
-| Fixed-parameter model readiness | artifact `atomic_fixed_parameter_model_readiness_gate` | lane-wise model readiness map; CI/correlated helium and UET atomic operator lanes remain missing |
+| Legacy multi-electron code audit | artifact `legacy_multielectron_code_audit_gate` | classifies existing multi-electron/three-body scripts as smoke/demo code, not primary evidence |
+| Fixed-parameter model readiness | artifact `atomic_fixed_parameter_model_readiness_gate` | lane-wise model readiness map including legacy-script exclusion; CI/correlated helium and UET atomic operator lanes remain missing |
 | Predictive closure contract | artifact `atomic_predictive_model_closure_gate` | governance gate only; broad atomic prediction blocked until no-leakage splits, independent holdouts, uncertainty propagation, comparator baselines, and fixed-parameter CI/correlated or UET operators exist |
 | Three-body coupling smoke test | `Research_Atomic_ThreeBody.py` | code-health check, not physics validation |
 | Multi-electron comparisons | `Research_Multi_Electron.py` | open lane |
@@ -54,10 +55,11 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 15. Build an internal baseline-comparator table so current prediction-like diagnostics are evaluated against named baselines instead of isolated residuals.
 16. Build an uncertainty-readiness matrix so each atomic prediction/precision lane states source uncertainty, model uncertainty, propagation, and threshold status, including hydrogen line transcription-bound diagnostics and limited fitted quantum-defect uncertainty diagnostics where current helium series data permit it.
 17. Build a residual uncertainty-budget gate so available source uncertainties are converted into residual-to-uncertainty ratios without promoting incomplete models.
-18. Build a fixed-parameter model-readiness matrix so standard fixed baselines, empirical handoffs, fitted diagnostics, and missing generative models cannot be conflated.
-19. Build an atomic predictive-closure contract that lists the required no-leakage split, baseline comparator, fixed-parameter model, uncertainty, and domain-expansion gates before broad spectral prediction claims.
-20. Write artifact with hashes, thresholds, metrics, formula bridge metadata, level-energy rows, selected ion rows, precision source/baseline gates, Dirac baseline gate, Lamb handoff gate, 21 cm source/Fermi gates, neutral helium source/gap/medium/component/ground-baseline/excited-target/hydrogenic-residual/fixed-screening/quantum-defect-prediction/holdout/wavelength-holdout gates, comparator table, uncertainty readiness, residual uncertainty budget, fixed-parameter readiness, predictive-closure contract, and limitations.
-21. Write `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json` so the hydrogen benchmark stays separate from broader atomic-theory claims.
+18. Audit legacy multi-electron scripts so smoke/demo code cannot be mistaken for a CI/correlated helium spectral model.
+19. Build a fixed-parameter model-readiness matrix so standard fixed baselines, empirical handoffs, fitted diagnostics, legacy smoke/demo scripts, and missing generative models cannot be conflated.
+20. Build an atomic predictive-closure contract that lists the required no-leakage split, baseline comparator, fixed-parameter model, uncertainty, and domain-expansion gates before broad spectral prediction claims.
+21. Write artifact with hashes, thresholds, metrics, formula bridge metadata, level-energy rows, selected ion rows, precision source/baseline gates, Dirac baseline gate, Lamb handoff gate, 21 cm source/Fermi gates, neutral helium source/gap/medium/component/ground-baseline/excited-target/hydrogenic-residual/fixed-screening/quantum-defect-prediction/holdout/wavelength-holdout gates, legacy code audit, comparator table, uncertainty readiness, residual uncertainty budget, fixed-parameter readiness, predictive-closure contract, and limitations.
+22. Write `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json` so the hydrogen benchmark stays separate from broader atomic-theory claims.
 
 ## Assumptions
 
@@ -74,7 +76,8 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 - The comparator table is internal only; it does not replace missing independent external holdouts or CI/correlated model baselines.
 - The uncertainty-readiness matrix is not uncertainty-qualified validation; it records partial propagation for hydrogen transcription-bound and fitted quantum-defect diagnostics and identifies which lanes still need full propagation and uncertainty-aware thresholds.
 - The residual uncertainty-budget gate computes ratios only where source uncertainty is already present or a bounded transcription policy is explicitly declared. It does not supply missing model uncertainty, official hydrogen/helium line measurement uncertainty, or pass/fail thresholds.
-- The fixed-parameter model-readiness matrix is not a CI or UET atomic model; it only prevents fitted diagnostics and empirical handoffs from being mistaken for fixed-parameter predictions.
+- The legacy multi-electron code audit is not a model result; it only records that existing multi-electron/three-body scripts are smoke/demo code and cannot substitute for CI/correlated helium evidence.
+- The fixed-parameter model-readiness matrix is not a CI or UET atomic model; it only prevents fitted diagnostics, legacy smoke/demo code, and empirical handoffs from being mistaken for fixed-parameter predictions.
 
 ## Domain of Validity
 
