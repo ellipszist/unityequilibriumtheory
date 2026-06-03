@@ -13,7 +13,7 @@
 - The predictive-closure gate is a governance contract, not a new validation result. It keeps broad atomic prediction blocked until independent holdouts, comparator baselines, fixed-parameter CI/correlated or UET operators, uncertainty propagation, and a multi-atom benchmark suite exist.
 - The baseline-comparator gate is internal and diagnostic. It can show residual improvement over named baselines, but it cannot establish independent helium validation or a first-principles atomic model.
 - The uncertainty-readiness gate maps uncertainty gaps only. It does not make current hydrogen, helium, QED, or hyperfine residuals uncertainty-qualified.
-- The residual uncertainty-budget gate computes source-uncertainty ratios only where current source packages already contain uncertainty values. It does not add model uncertainty, does not close QED/hyperfine/correlated-helium corrections, and records missing source uncertainty for helium holdout diagnostics.
+- The residual uncertainty-budget gate computes source-uncertainty ratios where current source packages contain uncertainty values or where the helium holdout package declares transcription-rounding bounds. Those helium bounds are not official NIST measurement uncertainties. The gate does not add model uncertainty and does not close QED/hyperfine/correlated-helium corrections.
 - The fixed-parameter model-readiness gate maps current model status only. It does not provide the missing CI/correlated helium spectral model or UET atomic operator.
 - Local spectral rows may be rounded or curated; source-table transcription precision should be audited before public ppm claims.
 - Air wavelengths are present in the data but the primary metric uses vacuum wavelengths only.

@@ -1839,11 +1839,19 @@ def build_helium_quantum_defect_holdout_gate(
             holdout_levels[key] = {
                 "holdout_id": row["holdout_id"],
                 "source_wavelength_angstrom": row["wavelength_angstrom"],
+                "source_wavelength_uncertainty_angstrom": row.get("wavelength_uncertainty_angstrom"),
+                "source_wavelength_uncertainty_basis": row.get("wavelength_uncertainty_basis"),
                 "configuration": row[f"{prefix}_configuration"],
                 "term": row[f"{prefix}_term"],
                 "j": row[f"{prefix}_j"],
                 "excitation_energy_cm_inverse": energy,
+                "excitation_energy_uncertainty_cm_inverse": row.get(f"{prefix}_energy_uncertainty_cm_inverse"),
                 "excitation_energy_eV": energy * EV_PER_CM_INVERSE,
+                "excitation_energy_uncertainty_eV": (
+                    row.get(f"{prefix}_energy_uncertainty_cm_inverse") * EV_PER_CM_INVERSE
+                    if row.get(f"{prefix}_energy_uncertainty_cm_inverse") is not None
+                    else None
+                ),
                 "source_locator": row["source_locator"],
             }
 
@@ -1882,6 +1890,11 @@ def build_helium_quantum_defect_holdout_gate(
         )
 
     residuals = [row["absolute_residual_eV"] for row in predictions]
+    prediction_uncertainties = [
+        row["excitation_energy_uncertainty_eV"]
+        for row in predictions
+        if row.get("excitation_energy_uncertainty_eV") is not None
+    ]
     return {
         "schema_version": "1.0",
         "role": "neutral_helium_quantum_defect_source_family_holdout_gate",
@@ -1891,6 +1904,7 @@ def build_helium_quantum_defect_holdout_gate(
         "formula": "E_bind_pred = h c R_infinity / (n - delta_selected_series)^2; holdout levels are excluded from the selected calibration set.",
         "source_basis": helium_qd_holdouts["source"],
         "split_policy": helium_qd_holdouts["split_policy"],
+        "uncertainty_policy": helium_qd_holdouts.get("uncertainty_policy"),
         "metrics": {
             "holdout_source_row_count": len(helium_qd_holdouts["holdout_levels"]),
             "unique_holdout_level_count": len(holdout_levels),
@@ -1898,18 +1912,22 @@ def build_helium_quantum_defect_holdout_gate(
             "skipped_level_count": len(skipped),
             "average_abs_excitation_residual_eV": float(np.mean(residuals)) if residuals else None,
             "max_abs_excitation_residual_eV": max(residuals) if residuals else None,
+            "predicted_levels_with_source_uncertainty_count": len(prediction_uncertainties),
+            "max_source_excitation_uncertainty_eV": max(prediction_uncertainties) if prediction_uncertainties else None,
+            "source_uncertainty_policy_status": helium_qd_holdouts.get("uncertainty_policy", {}).get("status"),
         },
         "predictions": predictions,
         "skipped": skipped,
         "blocked_residual_model_requirements": [
             "independent external holdout source family",
             "larger singlet/triplet calibration suite with explicit train/test split",
-            "uncertainty propagation for level and derived wavelength holdout rows",
+            "model-parameter uncertainty propagation for fitted quantum defects and derived wavelength holdout rows",
             "CI or correlated two-electron model that predicts series defects",
         ],
         "limitations": [
             "Holdouts come from the same NIST source family, so they are not independent external validation.",
             "Rows without a selected calibration series are skipped rather than fit from the holdout set.",
+            "Source uncertainties are transcription-rounding bounds, not official NIST measurement uncertainties.",
             "This gate tests extrapolation of fitted quantum defects, not first-principles helium theory.",
         ],
         "claim_boundary": helium_qd_holdouts["claim_boundary"],
@@ -1939,6 +1957,7 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
                 {
                     "holdout_id": row["holdout_id"],
                     "source_wavelength_angstrom": row["wavelength_angstrom"],
+                    "source_wavelength_uncertainty_angstrom": row.get("wavelength_uncertainty_angstrom"),
                     "source_wavelength_medium": source_medium,
                     "reason": "lower_level_not_ground_state_to_avoid_holdout_energy_leakage",
                 }
@@ -1958,6 +1977,7 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
                 {
                     "holdout_id": row["holdout_id"],
                     "source_wavelength_angstrom": row["wavelength_angstrom"],
+                    "source_wavelength_uncertainty_angstrom": row.get("wavelength_uncertainty_angstrom"),
                     "source_wavelength_medium": source_medium,
                     "reason": "upper_level_not_predicted_by_holdout_gate",
                 }
@@ -1977,6 +1997,7 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
                 {
                     "holdout_id": row["holdout_id"],
                     "source_wavelength_angstrom": row["wavelength_angstrom"],
+                    "source_wavelength_uncertainty_angstrom": row.get("wavelength_uncertainty_angstrom"),
                     "source_wavelength_medium": source_medium,
                     "reason": "source_air_wavelength_requires_refractive_index_policy",
                 }
@@ -1988,6 +2009,8 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
             {
                 "holdout_id": row["holdout_id"],
                 "source_wavelength_angstrom": observed_wavelength_angstrom,
+                "source_wavelength_uncertainty_angstrom": row.get("wavelength_uncertainty_angstrom"),
+                "source_wavelength_uncertainty_basis": row.get("wavelength_uncertainty_basis"),
                 "source_wavelength_medium": source_medium,
                 "source_vacuum_equivalent_angstrom": source_vacuum_equivalent_angstrom,
                 "predicted_wavelength_angstrom": predicted_wavelength_angstrom,
@@ -2010,6 +2033,11 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
 
     residuals_angstrom = [line["absolute_residual_angstrom"] for line in line_predictions]
     residuals_ppm = [line["absolute_residual_ppm"] for line in line_predictions]
+    wavelength_uncertainties = [
+        line["source_wavelength_uncertainty_angstrom"]
+        for line in line_predictions
+        if line.get("source_wavelength_uncertainty_angstrom") is not None
+    ]
     return {
         "schema_version": "1.0",
         "role": "neutral_helium_quantum_defect_wavelength_holdout_gate",
@@ -2018,6 +2046,7 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
         "formula_id": "AT20-HELIUM-QUANTUM-DEFECT-HOLDOUT-WAVELENGTH",
         "formula": "lambda_pred_A = 1e8 / (E_upper_pred_eV / (h c)); lower level restricted to ground-state holdouts to avoid lower-level leakage.",
         "source_basis": helium_qd_holdouts["source"],
+        "uncertainty_policy": helium_qd_holdouts.get("uncertainty_policy"),
         "wavelength_medium_policy": {
             "basis": "NIST ASD/handbook wavelength convention",
             "vacuum_below_angstrom": 2000.0,
@@ -2040,12 +2069,15 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
             "max_abs_wavelength_residual_angstrom": max(residuals_angstrom) if residuals_angstrom else None,
             "average_abs_wavelength_residual_ppm": float(np.mean(residuals_ppm)) if residuals_ppm else None,
             "max_abs_wavelength_residual_ppm": max(residuals_ppm) if residuals_ppm else None,
+            "predicted_lines_with_source_uncertainty_count": len(wavelength_uncertainties),
+            "max_source_wavelength_uncertainty_angstrom": max(wavelength_uncertainties) if wavelength_uncertainties else None,
+            "source_uncertainty_policy_status": helium_qd_holdouts.get("uncertainty_policy", {}).get("status"),
         },
         "predictions": line_predictions,
         "skipped": skipped,
         "blocked_residual_model_requirements": [
             "independent external spectral-line holdout source",
-            "uncertainty propagation from level prediction to wavelength residual",
+            "model-parameter uncertainty propagation from level prediction to wavelength residual",
             "air/vacuum conversion policy for future non-ground holdout lines in the standard-air range",
             "correlated two-electron or CI model that predicts line positions without fitted quantum defects",
         ],
@@ -2053,6 +2085,7 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
             "Only ground-to-excited holdout lines are predicted to avoid using holdout lower-level energies.",
             "Predicted holdout lines in this gate are below 2000 A and are treated as vacuum wavelengths under the NIST convention.",
             "Holdout lines in the standard-air wavelength range are skipped until an air/vacuum conversion policy is applied.",
+            "Source uncertainties are transcription-rounding bounds, not official NIST measurement uncertainties.",
             "Same-source-family holdouts are not independent external validation.",
         ],
         "claim_boundary": "This gate supports only same-source-family He I wavelength holdout diagnostics. It does not validate helium spectra independently and does not derive line positions from first principles.",
@@ -2350,6 +2383,12 @@ def build_atomic_residual_uncertainty_budget_gate(
     ) ** 0.5
     hyperfine_cross_check_unc_hz = hyperfine_21cm_gate["metrology_cross_check"].get("uncertainty_hz")
     helium_ground_unc_ev = helium_ground_state_baseline_gate["observed_anchor"]["total_binding_uncertainty_eV"]
+    helium_holdout_level_unc_ev = helium_quantum_defect_holdout_gate["metrics"].get(
+        "max_source_excitation_uncertainty_eV"
+    )
+    helium_holdout_wavelength_unc_a = helium_quantum_defect_wavelength_holdout_gate["metrics"].get(
+        "max_source_wavelength_uncertainty_angstrom"
+    )
     rows = [
         {
             "budget_id": "hydrogen_1s2s_nonrel_source_sigma",
@@ -2434,10 +2473,20 @@ def build_atomic_residual_uncertainty_budget_gate(
             "domain": "neutral_helium_excited_levels",
             "residual_quantity": "absolute_residual_eV",
             "absolute_residual": helium_quantum_defect_holdout_gate["metrics"]["max_abs_excitation_residual_eV"],
-            "source_uncertainty": None,
-            "source_uncertainty_basis": "term-level uncertainty not captured in holdout package",
-            "residual_to_source_uncertainty_ratio": None,
-            "status": "SOURCE_UNCERTAINTY_MISSING",
+            "source_uncertainty": helium_holdout_level_unc_ev,
+            "source_uncertainty_basis": (
+                "transcription rounding bound for observed holdout level energy; "
+                "official NIST measurement uncertainty and model-parameter uncertainty not included"
+            ),
+            "residual_to_source_uncertainty_ratio": ratio(
+                helium_quantum_defect_holdout_gate["metrics"]["max_abs_excitation_residual_eV"],
+                helium_holdout_level_unc_ev,
+            ),
+            "status": (
+                "MODEL_RESIDUAL_EXCEEDS_SOURCE_UNCERTAINTY"
+                if helium_holdout_level_unc_ev
+                else "SOURCE_UNCERTAINTY_MISSING"
+            ),
             "claim_role": "same-source-family holdout diagnostic only",
         },
         {
@@ -2447,10 +2496,20 @@ def build_atomic_residual_uncertainty_budget_gate(
             "absolute_residual": helium_quantum_defect_wavelength_holdout_gate["metrics"][
                 "max_abs_wavelength_residual_angstrom"
             ],
-            "source_uncertainty": None,
-            "source_uncertainty_basis": "holdout wavelength uncertainty not captured in source package",
-            "residual_to_source_uncertainty_ratio": None,
-            "status": "SOURCE_UNCERTAINTY_MISSING",
+            "source_uncertainty": helium_holdout_wavelength_unc_a,
+            "source_uncertainty_basis": (
+                "transcription rounding bound for source wavelength; "
+                "official NIST measurement uncertainty and model-parameter uncertainty not included"
+            ),
+            "residual_to_source_uncertainty_ratio": ratio(
+                helium_quantum_defect_wavelength_holdout_gate["metrics"]["max_abs_wavelength_residual_angstrom"],
+                helium_holdout_wavelength_unc_a,
+            ),
+            "status": (
+                "MODEL_RESIDUAL_EXCEEDS_SOURCE_UNCERTAINTY"
+                if helium_holdout_wavelength_unc_a
+                else "SOURCE_UNCERTAINTY_MISSING"
+            ),
             "claim_role": "same-source-family wavelength holdout diagnostic only",
         },
     ]
