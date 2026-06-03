@@ -1688,6 +1688,18 @@ def build_helium_fixed_screening_baseline_gate(
 def build_helium_quantum_defect_prediction_gate(
     helium_excited_hydrogenic_residual_gate: dict,
 ) -> dict:
+    def quantum_defect_standard_error(rows: list[dict]) -> float | None:
+        values = [row["effective_quantum_defect_from_source_level"] for row in rows]
+        if len(values) < 2:
+            return None
+        return float(np.std(values, ddof=1) / (len(values) ** 0.5))
+
+    def excitation_uncertainty_from_delta(r_infinity_energy_ev: float, n_outer: int, delta: float, delta_unc: float | None) -> float | None:
+        if delta_unc is None:
+            return None
+        sensitivity = abs(-2.0 * r_infinity_energy_ev / ((n_outer - delta) ** 3))
+        return sensitivity * delta_unc
+
     r_infinity_ev = helium_excited_hydrogenic_residual_gate["constants"]["R_infinity_energy_eV"]
     first_ionization_ev = helium_excited_hydrogenic_residual_gate["constants"]["first_ionization_energy_eV"]
     level_rows = [
@@ -1728,9 +1740,13 @@ def build_helium_quantum_defect_prediction_gate(
             delta_mean = float(
                 np.mean([candidate["effective_quantum_defect_from_source_level"] for candidate in training_rows])
             )
+            delta_standard_error = quantum_defect_standard_error(training_rows)
             n_outer = row["outer_principal_quantum_number"]
             predicted_binding_ev = r_infinity_ev / ((n_outer - delta_mean) ** 2)
             predicted_excitation_ev = first_ionization_ev - predicted_binding_ev
+            predicted_excitation_uncertainty_ev = excitation_uncertainty_from_delta(
+                r_infinity_ev, n_outer, delta_mean, delta_standard_error
+            )
             residual_ev = predicted_excitation_ev - row["excitation_energy_eV"]
             predictions.append(
                 {
@@ -1745,10 +1761,17 @@ def build_helium_quantum_defect_prediction_gate(
                         {candidate["outer_principal_quantum_number"] for candidate in training_rows}
                     ),
                     "calibrated_quantum_defect": delta_mean,
+                    "calibrated_quantum_defect_standard_error": delta_standard_error,
+                    "model_parameter_uncertainty_basis": (
+                        "same-series source quantum-defect standard error from training rows"
+                        if delta_standard_error is not None
+                        else "not available with fewer than two training rows"
+                    ),
                     "source_quantum_defect": row["effective_quantum_defect_from_source_level"],
                     "predicted_outer_binding_eV": predicted_binding_ev,
                     "observed_outer_binding_eV": row["observed_outer_binding_to_HeII_limit_eV"],
                     "predicted_excitation_energy_eV": predicted_excitation_ev,
+                    "predicted_excitation_model_uncertainty_eV": predicted_excitation_uncertainty_ev,
                     "observed_excitation_energy_eV": row["excitation_energy_eV"],
                     "residual_eV_predicted_minus_observed": residual_ev,
                     "absolute_residual_eV": abs(residual_ev),
@@ -1756,6 +1779,12 @@ def build_helium_quantum_defect_prediction_gate(
             )
 
     residuals = [row["absolute_residual_eV"] for row in predictions]
+    signed_residuals = [row["residual_eV_predicted_minus_observed"] for row in predictions]
+    model_uncertainties = [
+        row["predicted_excitation_model_uncertainty_eV"]
+        for row in predictions
+        if row.get("predicted_excitation_model_uncertainty_eV") is not None
+    ]
     return {
         "schema_version": "1.0",
         "role": "neutral_helium_quantum_defect_prediction_gate",
@@ -1773,6 +1802,13 @@ def build_helium_quantum_defect_prediction_gate(
             "skipped_level_count": len(skipped),
             "average_abs_excitation_residual_eV": float(np.mean(residuals)) if residuals else None,
             "max_abs_excitation_residual_eV": max(residuals) if residuals else None,
+            "excitation_residual_rmse_eV": (
+                float((np.mean([residual**2 for residual in signed_residuals])) ** 0.5)
+                if signed_residuals
+                else None
+            ),
+            "predictions_with_model_parameter_uncertainty_count": len(model_uncertainties),
+            "max_predicted_excitation_model_uncertainty_eV": max(model_uncertainties) if model_uncertainties else None,
         },
         "series_summary": {
             key: {
@@ -1781,6 +1817,15 @@ def build_helium_quantum_defect_prediction_gate(
                 "mean_source_quantum_defect": float(
                     np.mean([row["effective_quantum_defect_from_source_level"] for row in rows])
                 ),
+                "source_quantum_defect_standard_deviation": (
+                    float(np.std([row["effective_quantum_defect_from_source_level"] for row in rows], ddof=1))
+                    if len(rows) > 1
+                    else None
+                ),
+                "source_quantum_defect_standard_error": quantum_defect_standard_error(rows),
+                "model_parameter_uncertainty_status": (
+                    "SERIES_STANDARD_ERROR_AVAILABLE" if len(rows) > 1 else "INSUFFICIENT_SERIES_ROWS"
+                ),
             }
             for key, rows in sorted(series.items())
         },
@@ -1788,13 +1833,14 @@ def build_helium_quantum_defect_prediction_gate(
         "skipped": skipped,
         "blocked_residual_model_requirements": [
             "independent holdout lines not used for quantum-defect calibration",
-            "uncertainty propagation for term energies and ionization limit",
+            "official/source uncertainty propagation for term energies and ionization limit",
             "fine-structure/component policy for blended lines",
             "correlated two-electron or CI model that predicts quantum defects instead of fitting them",
         ],
         "limitations": [
             "This is a source-calibrated prediction diagnostic, not a first-principles model.",
             "Series with only one distinct n cannot be leave-one-out predicted by this gate.",
+            "Model-parameter uncertainty uses same-series quantum-defect scatter only; it does not include official term-energy uncertainty or model inadequacy.",
             "The gate uses only selected visible-line-linked levels, so it cannot support broad helium validation.",
         ],
         "claim_boundary": "This gate supports only limited source-calibrated quantum-defect prediction diagnostics for selected He I levels. It cannot be cited as UET deriving helium spectra or solving many-electron atoms.",
@@ -1818,6 +1864,13 @@ def build_helium_quantum_defect_holdout_gate(
         key: value["mean_source_quantum_defect"]
         for key, value in helium_quantum_defect_prediction_gate["series_summary"].items()
     }
+    calibration_delta_uncertainty_by_series = {
+        key: value.get("source_quantum_defect_standard_error")
+        for key, value in helium_quantum_defect_prediction_gate["series_summary"].items()
+    }
+    empirical_loo_model_uncertainty_ev = helium_quantum_defect_prediction_gate["metrics"].get(
+        "excitation_residual_rmse_eV"
+    )
     if helium_quantum_defect_prediction_gate["predictions"]:
         sample = helium_quantum_defect_prediction_gate["predictions"][0]
         n_sample = sample["outer_principal_quantum_number"]
@@ -1869,9 +1922,23 @@ def build_helium_quantum_defect_holdout_gate(
             skipped.append({**level, "series_key": series_key, "reason": "no_selected_calibration_series"})
             continue
         delta = calibration_delta_by_series[series_key]
+        delta_uncertainty = calibration_delta_uncertainty_by_series.get(series_key)
         predicted_binding_ev = r_infinity_ev / ((n_outer - delta) ** 2)
         observed_binding_ev = first_ionization_ev - level["excitation_energy_eV"]
         predicted_excitation_ev = first_ionization_ev - predicted_binding_ev
+        propagated_delta_uncertainty_ev = (
+            abs(-2.0 * r_infinity_ev / ((n_outer - delta) ** 3)) * delta_uncertainty
+            if delta_uncertainty is not None
+            else None
+        )
+        if propagated_delta_uncertainty_ev is not None:
+            predicted_excitation_model_uncertainty_ev = propagated_delta_uncertainty_ev
+            model_uncertainty_basis = "selected-series source quantum-defect standard error propagated through level formula"
+        else:
+            predicted_excitation_model_uncertainty_ev = empirical_loo_model_uncertainty_ev
+            model_uncertainty_basis = (
+                "global leave-one-out excitation residual RMSE fallback because selected series has fewer than two calibration rows"
+            )
         residual_ev = predicted_excitation_ev - level["excitation_energy_eV"]
         predictions.append(
             {
@@ -1880,9 +1947,17 @@ def build_helium_quantum_defect_holdout_gate(
                 "outer_principal_quantum_number": n_outer,
                 "calibration_delta_source": "selected_level_series_mean_quantum_defect",
                 "calibrated_quantum_defect": delta,
+                "calibrated_quantum_defect_standard_error": delta_uncertainty,
+                "model_parameter_uncertainty_basis": (
+                    "selected-series source quantum-defect standard error"
+                    if delta_uncertainty is not None
+                    else "not available with fewer than two selected calibration rows"
+                ),
+                "predicted_excitation_model_uncertainty_basis": model_uncertainty_basis,
                 "predicted_outer_binding_eV": predicted_binding_ev,
                 "observed_outer_binding_eV": observed_binding_ev,
                 "predicted_excitation_energy_eV": predicted_excitation_ev,
+                "predicted_excitation_model_uncertainty_eV": predicted_excitation_model_uncertainty_ev,
                 "observed_excitation_energy_eV": level["excitation_energy_eV"],
                 "residual_eV_predicted_minus_observed": residual_ev,
                 "absolute_residual_eV": abs(residual_ev),
@@ -1894,6 +1969,11 @@ def build_helium_quantum_defect_holdout_gate(
         row["excitation_energy_uncertainty_eV"]
         for row in predictions
         if row.get("excitation_energy_uncertainty_eV") is not None
+    ]
+    model_uncertainties = [
+        row["predicted_excitation_model_uncertainty_eV"]
+        for row in predictions
+        if row.get("predicted_excitation_model_uncertainty_eV") is not None
     ]
     return {
         "schema_version": "1.0",
@@ -1914,6 +1994,8 @@ def build_helium_quantum_defect_holdout_gate(
             "max_abs_excitation_residual_eV": max(residuals) if residuals else None,
             "predicted_levels_with_source_uncertainty_count": len(prediction_uncertainties),
             "max_source_excitation_uncertainty_eV": max(prediction_uncertainties) if prediction_uncertainties else None,
+            "predicted_levels_with_model_parameter_uncertainty_count": len(model_uncertainties),
+            "max_predicted_excitation_model_uncertainty_eV": max(model_uncertainties) if model_uncertainties else None,
             "source_uncertainty_policy_status": helium_qd_holdouts.get("uncertainty_policy", {}).get("status"),
         },
         "predictions": predictions,
@@ -1928,6 +2010,7 @@ def build_helium_quantum_defect_holdout_gate(
             "Holdouts come from the same NIST source family, so they are not independent external validation.",
             "Rows without a selected calibration series are skipped rather than fit from the holdout set.",
             "Source uncertainties are transcription-rounding bounds, not official NIST measurement uncertainties.",
+            "Model-parameter uncertainty uses selected-series quantum-defect scatter only; it does not include official term-energy uncertainty or model inadequacy.",
             "This gate tests extrapolation of fitted quantum defects, not first-principles helium theory.",
         ],
         "claim_boundary": helium_qd_holdouts["claim_boundary"],
@@ -1986,6 +2069,13 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
 
         predicted_wavenumber_cm_inverse = prediction["predicted_excitation_energy_eV"] / EV_PER_CM_INVERSE
         predicted_wavelength_angstrom = 1.0e8 / predicted_wavenumber_cm_inverse
+        predicted_excitation_model_uncertainty_eV = prediction.get("predicted_excitation_model_uncertainty_eV")
+        predicted_wavelength_model_uncertainty_angstrom = (
+            (1.0e8 * EV_PER_CM_INVERSE / (prediction["predicted_excitation_energy_eV"] ** 2))
+            * predicted_excitation_model_uncertainty_eV
+            if predicted_excitation_model_uncertainty_eV is not None
+            else None
+        )
         observed_wavelength_angstrom = row["wavelength_angstrom"]
         if source_medium == "vacuum":
             source_vacuum_equivalent_angstrom = observed_wavelength_angstrom
@@ -2014,6 +2104,7 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
                 "source_wavelength_medium": source_medium,
                 "source_vacuum_equivalent_angstrom": source_vacuum_equivalent_angstrom,
                 "predicted_wavelength_angstrom": predicted_wavelength_angstrom,
+                "predicted_wavelength_model_uncertainty_angstrom": predicted_wavelength_model_uncertainty_angstrom,
                 "residual_angstrom_predicted_minus_source": residual_angstrom,
                 "absolute_residual_angstrom": abs(residual_angstrom),
                 "absolute_residual_nm": abs(residual_angstrom) * 0.1,
@@ -2021,6 +2112,7 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
                 "predicted_wavenumber_cm_inverse": predicted_wavenumber_cm_inverse,
                 "source_upper_energy_cm_inverse": row["upper_energy_cm_inverse"],
                 "predicted_upper_excitation_energy_eV": prediction["predicted_excitation_energy_eV"],
+                "predicted_upper_excitation_model_uncertainty_eV": predicted_excitation_model_uncertainty_eV,
                 "source_upper_excitation_energy_eV": prediction["observed_excitation_energy_eV"],
                 "upper_configuration": row["upper_configuration"],
                 "upper_term": row["upper_term"],
@@ -2037,6 +2129,11 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
         line["source_wavelength_uncertainty_angstrom"]
         for line in line_predictions
         if line.get("source_wavelength_uncertainty_angstrom") is not None
+    ]
+    wavelength_model_uncertainties = [
+        line["predicted_wavelength_model_uncertainty_angstrom"]
+        for line in line_predictions
+        if line.get("predicted_wavelength_model_uncertainty_angstrom") is not None
     ]
     return {
         "schema_version": "1.0",
@@ -2071,6 +2168,10 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
             "max_abs_wavelength_residual_ppm": max(residuals_ppm) if residuals_ppm else None,
             "predicted_lines_with_source_uncertainty_count": len(wavelength_uncertainties),
             "max_source_wavelength_uncertainty_angstrom": max(wavelength_uncertainties) if wavelength_uncertainties else None,
+            "predicted_lines_with_model_parameter_uncertainty_count": len(wavelength_model_uncertainties),
+            "max_predicted_wavelength_model_uncertainty_angstrom": (
+                max(wavelength_model_uncertainties) if wavelength_model_uncertainties else None
+            ),
             "source_uncertainty_policy_status": helium_qd_holdouts.get("uncertainty_policy", {}).get("status"),
         },
         "predictions": line_predictions,
@@ -2086,6 +2187,7 @@ def build_helium_quantum_defect_wavelength_holdout_gate(
             "Predicted holdout lines in this gate are below 2000 A and are treated as vacuum wavelengths under the NIST convention.",
             "Holdout lines in the standard-air wavelength range are skipped until an air/vacuum conversion policy is applied.",
             "Source uncertainties are transcription-rounding bounds, not official NIST measurement uncertainties.",
+            "Wavelength model uncertainty propagates fitted quantum-defect scatter only; it is not a complete line-position uncertainty.",
             "Same-source-family holdouts are not independent external validation.",
         ],
         "claim_boundary": "This gate supports only same-source-family He I wavelength holdout diagnostics. It does not validate helium spectra independently and does not derive line positions from first principles.",
@@ -2307,23 +2409,32 @@ def build_atomic_uncertainty_readiness_gate(
         },
         {
             "lane_id": "helium_quantum_defect_levels",
-            "source_uncertainty_status": "TERM_LEVEL_UNCERTAINTY_NOT_PROPAGATED",
-            "model_uncertainty_status": "FITTED_SERIES_PARAMETER_UNCERTAINTY_NOT_PROPAGATED",
-            "propagation_status": "BLOCKED",
+            "source_uncertainty_status": "TRANSCRIPTION_ROUNDING_BOUNDS_FOR_HOLDOUTS_ONLY",
+            "model_uncertainty_status": "FITTED_SERIES_PARAMETER_SCATTER_PROPAGATED_DIAGNOSTIC_ONLY",
+            "propagation_status": "PARTIAL_FITTED_PARAMETER_SIGMA_DIAGNOSTIC_ONLY",
             "threshold_status": "DIAGNOSTIC_RESIDUALS_ONLY",
             "evidence": {
                 "loo_prediction_count": helium_quantum_defect_prediction_gate["metrics"]["prediction_count"],
                 "holdout_prediction_count": helium_quantum_defect_holdout_gate["metrics"]["prediction_count"],
+                "loo_predictions_with_model_parameter_uncertainty": helium_quantum_defect_prediction_gate["metrics"][
+                    "predictions_with_model_parameter_uncertainty_count"
+                ],
+                "holdout_predictions_with_model_parameter_uncertainty": helium_quantum_defect_holdout_gate["metrics"][
+                    "predicted_levels_with_model_parameter_uncertainty_count"
+                ],
             },
         },
         {
             "lane_id": "helium_holdout_wavelengths",
-            "source_uncertainty_status": "WAVELENGTH_SOURCE_UNCERTAINTY_NOT_PROPAGATED",
-            "model_uncertainty_status": "LEVEL_TO_WAVELENGTH_MODEL_UNCERTAINTY_NOT_PROPAGATED",
-            "propagation_status": "BLOCKED",
+            "source_uncertainty_status": "TRANSCRIPTION_ROUNDING_BOUNDS_FOR_HOLDOUT_WAVELENGTHS_ONLY",
+            "model_uncertainty_status": "FITTED_LEVEL_UNCERTAINTY_PROPAGATED_TO_WAVELENGTH_DIAGNOSTIC_ONLY",
+            "propagation_status": "PARTIAL_LEVEL_TO_WAVELENGTH_SIGMA_DIAGNOSTIC_ONLY",
             "threshold_status": "DIAGNOSTIC_RESIDUALS_ONLY",
             "evidence": {
                 "predicted_line_count": helium_quantum_defect_wavelength_holdout_gate["metrics"]["predicted_line_count"],
+                "predicted_lines_with_model_parameter_uncertainty": helium_quantum_defect_wavelength_holdout_gate[
+                    "metrics"
+                ]["predicted_lines_with_model_parameter_uncertainty_count"],
                 "max_abs_residual_ppm": helium_quantum_defect_wavelength_holdout_gate["metrics"][
                     "max_abs_wavelength_residual_ppm"
                 ],
@@ -2354,8 +2465,9 @@ def build_atomic_uncertainty_readiness_gate(
         },
         "next_required_artifacts": [
             "per-row source uncertainty fields for hydrogen/helium spectral lines and term energies",
-            "model-parameter uncertainty for fitted quantum defects and future CI/correlated parameters",
-            "unit-aware propagation from level energies to wavelengths and frequencies",
+            "official/source uncertainty replacement for helium transcription-rounding bounds",
+            "model-parameter uncertainty for future CI/correlated parameters and non-fitted UET operators",
+            "unit-aware propagation from level energies to wavelengths and frequencies for all lanes",
             "uncertainty-aware pass/fail thresholds separated by hydrogen, hydrogen-like ion, helium, and hyperfine lanes",
         ],
         "claim_boundary": "This gate maps uncertainty readiness only. It does not make residuals uncertainty-qualified until propagation rules and thresholds are implemented.",

@@ -50,8 +50,8 @@ python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validat
 - Neutral helium zero-quantum-defect baseline computed-level count, average and maximum binding residuals, and effective quantum-defect range.
 - Neutral helium fixed-screening baseline computed-level count, fixed `Z_eff`, average and maximum binding residuals, and count of rows improved versus zero-QD.
 - Neutral helium source-calibrated quantum-defect prediction count, skipped-level count, average residual, maximum residual, and series coverage.
-- Neutral helium same-source-family holdout row count, unique holdout level count, prediction count, skipped count, average residual, maximum residual, source-uncertainty policy status, predicted levels with source uncertainty, and maximum source excitation uncertainty.
-- Neutral helium restricted wavelength-holdout prediction count, predicted-vacuum-line count, skipped-line count, skipped-air-line count, average and maximum wavelength residual in angstrom and ppm, source-uncertainty policy status, predicted lines with source uncertainty, and maximum source wavelength uncertainty.
+- Neutral helium same-source-family holdout row count, unique holdout level count, prediction count, skipped count, average residual, maximum residual, source-uncertainty policy status, predicted levels with source uncertainty, maximum source excitation uncertainty, predicted levels with model uncertainty, and maximum predicted excitation model uncertainty.
+- Neutral helium restricted wavelength-holdout prediction count, predicted-vacuum-line count, skipped-line count, skipped-air-line count, average and maximum wavelength residual in angstrom and ppm, source-uncertainty policy status, predicted lines with source uncertainty, maximum source wavelength uncertainty, predicted lines with propagated model uncertainty, and maximum predicted wavelength model uncertainty.
 - Atomic prediction baseline-comparator row count, improvement-factor count, missing external/CI comparator count, and named comparator roles.
 - Atomic uncertainty-readiness lane count, blocked propagation lane count, partial propagation lane count, and lane-wise source/model/threshold status.
 - Atomic residual uncertainty-budget row count, computable source-uncertainty row count, source-uncertainty-missing row count, and residual-to-source-uncertainty ratio extrema.
@@ -100,8 +100,8 @@ The artifact must record:
 - neutral helium zero-quantum-defect hydrogenic residual rows, quantum-defect diagnostics, and correlation/CI blocker status
 - neutral helium fixed-screening baseline rows, fixed-parameter policy, residual diagnostics, and heuristic-only claim boundary
 - neutral helium quantum-defect leave-one-out prediction rows, skipped rows, residual diagnostics, and independent-holdout blocker status
-- neutral helium same-source-family holdout rows, prediction/skipped rows, uncertainty policy, transcription-rounding source bounds, residual diagnostics, and independent-external-source blocker status
-- neutral helium restricted wavelength-holdout rows, predicted-vacuum rows, skipped standard-air rows, uncertainty policy, wavelength source bounds, wavelength residual diagnostics, and external-holdout/model-uncertainty blocker status
+- neutral helium same-source-family holdout rows, prediction/skipped rows, uncertainty policy, transcription-rounding source bounds, fitted-parameter or LOO-RMSE fallback model uncertainty, residual diagnostics, and independent-external-source blocker status
+- neutral helium restricted wavelength-holdout rows, predicted-vacuum rows, skipped standard-air rows, uncertainty policy, wavelength source bounds, propagated fitted/fallback model uncertainty, wavelength residual diagnostics, and external-holdout/threshold blocker status
 - atomic prediction baseline-comparator rows, blocked comparator lanes, and internal-only claim boundary
 - atomic uncertainty-readiness lanes, propagation blockers, next required artifacts, and uncertainty-only claim boundary
 - atomic residual uncertainty-budget rows, source-uncertainty bases, residual-to-source-uncertainty ratios, missing source-uncertainty row count, transcription-bound limitations where used, and diagnostic-only claim boundary
