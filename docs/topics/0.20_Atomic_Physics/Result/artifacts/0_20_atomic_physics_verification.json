@@ -1264,7 +1264,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-04T11:16:30.219949+00:00",
+  "generated_at_utc": "2026-06-04T11:39:12.689899+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -1629,9 +1629,9 @@
       },
       {
         "description": "Archive raw/source rows and hashes before the candidate can enter verifier inputs.",
-        "evidence": "No local he_1.elvlc/he_1.wgfa capture or hash exists in the current topic package.",
+        "evidence": "2 raw CHIANTI files captured with 2 SHA256 hashes and 2 overlap rows recorded.",
         "requirement_id": "EXT-HE-02",
-        "status": "BLOCKED_RAW_HASH_MISSING"
+        "status": "READY_RAW_CAPTURED"
       },
       {
         "description": "Prove the source family is independent from the NIST family used by current calibration/holdout rows.",
@@ -1650,16 +1650,17 @@
     "claim_class": "source_acquisition_gate_only",
     "formula_id": "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
     "metrics": {
-      "blocked_requirement_count": 3,
+      "blocked_requirement_count": 2,
       "blocking_requirement_count": 4,
       "candidate_source_count": 2,
       "candidate_sources_with_overlap_count": 1,
       "first_candidate_level_holdout_count": 3,
       "first_candidate_wavelength_holdout_count": 2,
-      "overlap_line_candidate_count": 2
+      "overlap_line_candidate_count": 2,
+      "raw_file_count": 2,
+      "raw_file_hash_count": 2
     },
     "next_required_artifacts": [
-      "local CHIANTI He I raw-file capture manifest with SHA256 hashes and line-row locators",
       "lineage review deciding cross-check-only versus independent-validation use",
       "non-NIST measurement or compilation source package if CHIANTI lineage remains too NIST-dependent",
       "external-holdout residual gate rerun after source capture and uncertainty thresholds are declared"
@@ -1673,35 +1674,63 @@
         "candidate_id": "chianti_he_i_v11_table",
         "candidate_role": "external_database_cross_check_candidate",
         "capture_requirements": [
-          "archive he_1.elvlc and he_1.wgfa or source-page transcription records with SHA256 hashes",
           "record exact line indices, lower/upper configurations, terms, energies, wavelength, gf, and A values",
           "compare source lineage against the current NIST Handbook/ASD source family",
           "mark any row whose observed energy/wavelength lineage is NIST-derived as cross-check-only"
         ],
         "lineage_review": {
-          "reason": "CHIANTI He I metadata says energy levels and observed radiative data include Fuhr et al. 1999 / NIST ASD Version 2.0 lineage.",
-          "status": "SOURCE_FAMILY_NOT_YET_INDEPENDENT",
-          "use_boundary": "May be used first as an external database cross-check candidate, not as independent measurement validation until raw files and lineage are reviewed."
+          "allowed_current_use": "external database cross-check candidate only",
+          "blocked_upgrade": "independent external helium validation",
+          "known_dependency": "CHIANTI He I metadata records Fuhr et al. 1999 / NIST Atomic Spectra Database Version 2.0 lineage for energy levels and observed radiative data.",
+          "status": "NOT_INDEPENDENT_UNTIL_REVIEWED"
         },
         "metadata_url": "https://db.chiantidatabase.org/he/he_1.html",
         "overlap_with_selected_lane": [
           {
-            "candidate_upper_energy_cm_inverse": 191492.82,
-            "candidate_wavelength_angstrom": 522.213,
-            "current_holdout_id": "he_i_1s4p_1P_from_522_21309",
-            "current_wavelength_angstrom": 522.21309,
-            "match_status": "APPROXIMATE_LINE_ID_MATCH_REQUIRES_RAW_CAPTURE"
-          },
-          {
-            "candidate_upper_energy_cm_inverse": 186209.47,
+            "candidate_upper_energy_cm_inverse": 186209.468,
             "candidate_wavelength_angstrom": 537.03,
+            "chianti_elvlc_upper_line_number": 17,
+            "chianti_wgfa_line_number": 32,
             "current_holdout_id": "he_i_1s3p_1P_from_537_02992",
             "current_wavelength_angstrom": 537.02992,
-            "match_status": "APPROXIMATE_LINE_ID_MATCH_REQUIRES_RAW_CAPTURE"
+            "lineage_status": "CROSS_CHECK_ONLY_PENDING_INDEPENDENCE_REVIEW",
+            "match_status": "RAW_CAPTURED_APPROXIMATE_LINE_ID_MATCH"
+          },
+          {
+            "candidate_upper_energy_cm_inverse": 191492.816,
+            "candidate_wavelength_angstrom": 522.213,
+            "chianti_elvlc_upper_line_number": 31,
+            "chianti_wgfa_line_number": 86,
+            "current_holdout_id": "he_i_1s4p_1P_from_522_21309",
+            "current_wavelength_angstrom": 522.21309,
+            "lineage_status": "CROSS_CHECK_ONLY_PENDING_INDEPENDENCE_REVIEW",
+            "match_status": "RAW_CAPTURED_APPROXIMATE_LINE_ID_MATCH"
+          }
+        ],
+        "raw_capture_status": "RAW_CAPTURE_READY_LINEAGE_REVIEW_BLOCKED",
+        "raw_files": [
+          {
+            "bytes": 4530,
+            "file_id": "he_1_elvlc",
+            "lineage_note": "CHIANTI metadata says the energy levels are from Fuhr et al. 1999 / NIST Atomic Spectra Database Version 2.0.",
+            "local_path": "Data/03_Research/external_holdouts/chianti_he_i/he_1.elvlc",
+            "role": "energy level raw ASCII file",
+            "sha256": "63636b1fc89c0061a1ef13d2f11d7981f13fffec69f928a09eaddbd005e3cbad",
+            "source_url": "https://sohoftp.nascom.nasa.gov/solarsoft/packages/chianti/dbase/he/he_1/he_1.elvlc"
+          },
+          {
+            "bytes": 15091,
+            "file_id": "he_1_wgfa",
+            "lineage_note": "CHIANTI metadata says observed energy levels and some radiative data are from Fuhr et al. 1999 / NIST Atomic Spectra Database Version 2.0.",
+            "local_path": "Data/03_Research/external_holdouts/chianti_he_i/he_1.wgfa",
+            "role": "radiative transition raw ASCII file",
+            "sha256": "64eb6a571ef84f89e1d3d5f71ae6db2f63b472205205e5da749272f15421602f",
+            "source_url": "https://sohoftp.nascom.nasa.gov/solarsoft/packages/chianti/dbase/he/he_1/he_1.wgfa"
           }
         ],
         "source_family": "CHIANTI atomic database",
-        "source_url": "https://db.chiantidatabase.org/he/he_1_table.html"
+        "source_url": "https://db.chiantidatabase.org/he/he_1_table.html",
+        "source_version": "11.0.1"
       },
       {
         "candidate_id": "non_nist_measurement_or_compilation",
@@ -1724,7 +1753,7 @@
         "source_url": null
       }
     ],
-    "status": "EXTERNAL_CANDIDATE_IDENTIFIED_TRUE_INDEPENDENCE_BLOCKED"
+    "status": "RAW_CAPTURE_READY_LINEAGE_AND_THRESHOLD_BLOCKED"
   },
   "helium_fixed_screening_baseline_gate": {
     "blocked_residual_model_requirements": [
@@ -3783,6 +3812,16 @@
         "he_i_1s2s_1S_from_20581_287"
       ],
       "status": "SOURCE_FAMILY_HOLDOUT_ROWS_READY_MODEL_BLOCKED"
+    },
+    {
+      "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/external_holdouts/chianti_he_i/source_manifest.json",
+      "sha256": "889f0eb7b6f56631db40b456b80d19a46930659bdb67905e748bb88e1b221dac",
+      "source": "CHIANTI atomic database",
+      "source_rows": [
+        "he_i_1s3p_1P_from_537_02992",
+        "he_i_1s4p_1P_from_522_21309"
+      ],
+      "status": "RAW_CAPTURE_READY_LINEAGE_REVIEW_BLOCKED"
     }
   ],
   "interpretation": "This artifact supports a hydrogen Rydberg benchmark branch, a bounded atomic-constant consistency branch, an explicit formula-bridge manifest from inherited Bohr/de Broglie/Rydberg physics into UET dependencies, a rounded hydrogen n-level energy benchmark, a provisional selected He+/Li2+ reduced-mass hydrogenic benchmark plus C VI stress-test lane, a precision spectroscopy source gate, and a neutral helium source/assignment/medium-normalization/component-policy/ground-baseline/excited-target/hydrogenic-residual/quantum-defect-prediction/holdout/wavelength-holdout gate. It does not validate full atomic theory, fine structure, Lamb shift, hyperfine structure, QED corrections, broad hydrogen-like ion coverage, neutral helium residuals, or many-electron physics.",
@@ -3903,7 +3942,7 @@
     "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, line-component policy, ground-state baseline residuals, excited-state targets, zero-quantum-defect residual baselines, limited source-calibrated quantum-defect predictions, same-source-family holdout diagnostics, and selected holdout wavelength predictions computed but still do not validate electron correlation or many-electron spectra.",
     "The atomic predictive-model specification gate maps the required baseline-plus-correction contract, but the UET operator and fixed-parameter generative model remain missing.",
     "The first predictive implementation candidate gate selects the same-source-family helium quantum-defect holdout lane as the narrowest current diagnostic path, but external validation remains blocked.",
-    "The helium external-holdout acquisition gate identifies CHIANTI He I as an external database cross-check candidate, but raw capture, hashes, and source-lineage independence review remain blocking."
+    "The helium external-holdout acquisition gate identifies CHIANTI He I as an external database cross-check candidate with raw files and hashes captured, but source-lineage independence review and uncertainty-aware thresholds remain blocking."
   ],
   "metrics": {
     "R_H_codata_m_inverse": 10967758.3406,
@@ -3944,9 +3983,10 @@
     "helium_excited_state_max_air_photon_vs_level_delta_abs_eV": 0.0009039848194940525,
     "helium_excited_state_transition_targets": 5,
     "helium_excited_state_unique_levels": 9,
-    "helium_external_holdout_blocked_requirements": 3,
+    "helium_external_holdout_blocked_requirements": 2,
     "helium_external_holdout_candidate_sources": 2,
     "helium_external_holdout_overlap_candidates": 2,
+    "helium_external_holdout_raw_files": 2,
     "helium_fixed_screening_avg_abs_residual_eV": 0.5491888866196746,
     "helium_fixed_screening_max_abs_residual_eV": 1.129016300538522,
     "helium_fixed_screening_rows_improved_vs_zero_qd": 2,
