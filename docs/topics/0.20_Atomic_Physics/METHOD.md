@@ -11,6 +11,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 | Hydrogen Rydberg spectrum | `Research_Rydberg_Validation.py`, NIST/CODATA data | primary artifact, Claim Class C; transcription-bound residual diagnostics only |
 | Atomic formula bridge | `atomic_formula_bridge_manifest.json`, artifact `atomic_formula_bridge_manifest` | explicit standard-formula and UET dependency map; manifest only |
 | Hydrogen-like ions | `hydrogen_like_ion_spectrum.json`, artifact `hydrogen_like_checkpoint` | provisional selected He+/Li2+ reduced-mass benchmark plus C VI higher-Z stress test |
+| Hydrogen-like domain coverage | artifact `hydrogen_like_domain_coverage_gate` | coverage diagnostic only; maps represented `Z=2,3,6`, source-status counts, same-transition limitation, and broad-validation blockers |
 | Engine Balmer demo | `Engine_Atomic_Hydrogen.py` | secondary/demo; local rounded constant |
 | Hydrogen level energies | `hydrogen_spectra_data.json`, artifact `hydrogen_level_energy_benchmark` | rounded source-referenced n-level benchmark |
 | Precision spectroscopy targets | `hydrogen_precision_spectroscopy_sources.json`, `hydrogen_lamb_shift_correction_sources.json`, `hydrogen_hyperfine_21cm_sources.json`, `hydrogen_hyperfine_fermi_constants.json`, precision artifacts | source package plus nonrelativistic, leading Dirac, empirical Lamb-handoff, 21 cm bookkeeping, and Fermi-contact diagnostics; QED/recoil/proton-size/hyperfine model blocked |
@@ -46,7 +47,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 5. Compute per-line residuals and fitted slope through origin.
 6. Write `atomic_formula_bridge_manifest.json` to make the inherited Bohr/de Broglie/Rydberg chain and UET dependency roles explicit.
 7. Compare rounded hydrogen `n=1..8` level rows against `E_n = -13.5984/n^2` using the NIST ionization-energy anchor.
-8. Load source-referenced He+, Li2+, and C VI rows, apply reduced-mass hydrogenic scaling, compute He+/Li2+ under provisional thresholds, and record C VI as a higher-Z stress test.
+8. Load source-referenced He+, Li2+, and C VI rows, apply reduced-mass hydrogenic scaling, compute He+/Li2+ under provisional thresholds, record C VI as a higher-Z stress test, and emit a hydrogen-like domain-coverage gate.
 9. Load precision spectroscopy targets for 1S-2S, Lamb shift, and 21 cm hyperfine as source-package rows.
 10. Compute the nonrelativistic and leading Dirac 1S-2S baseline residuals as diagnostics, not as full precision correction models.
 11. Apply source-referenced Lamb-shift values as an empirical 1S-2S residual handoff, not as a QED derivation.
@@ -60,7 +61,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 19. Build a UET atomic-operator readiness gate so constant-origin, quantized-action, Hamiltonian/operator, correction, parameter-lock, and residual-gate requirements are explicit before any UET-derived spectrum claim.
 20. Build a fixed-parameter model-readiness matrix so standard fixed baselines, empirical handoffs, fitted diagnostics, legacy smoke/demo scripts, and missing generative models cannot be conflated.
 21. Build an atomic predictive-closure contract that lists the required no-leakage split, baseline comparator, fixed-parameter model, uncertainty, and domain-expansion gates before broad spectral prediction claims.
-22. Write artifact with hashes, thresholds, metrics, formula bridge metadata, level-energy rows, selected ion rows, precision source/baseline gates, Dirac baseline gate, Lamb handoff gate, 21 cm source/Fermi gates, neutral helium source/gap/medium/component/ground-baseline/excited-target/hydrogenic-residual/fixed-screening/quantum-defect-prediction/holdout/wavelength-holdout gates, legacy code audit, UET operator readiness, comparator table, uncertainty readiness, residual uncertainty budget, fixed-parameter readiness, predictive-closure contract, and limitations.
+22. Write artifact with hashes, thresholds, metrics, formula bridge metadata, level-energy rows, selected ion rows, hydrogen-like domain-coverage rows, precision source/baseline gates, Dirac baseline gate, Lamb handoff gate, 21 cm source/Fermi gates, neutral helium source/gap/medium/component/ground-baseline/excited-target/hydrogenic-residual/fixed-screening/quantum-defect-prediction/holdout/wavelength-holdout gates, legacy code audit, UET operator readiness, comparator table, uncertainty readiness, residual uncertainty budget, fixed-parameter readiness, predictive-closure contract, and limitations.
 23. Write `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json` so the hydrogen benchmark stays separate from broader atomic-theory claims.
 
 ## Assumptions
@@ -70,7 +71,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 - Local NIST rows may be rounded or curated. Hydrogen wavelength rows and helium holdout rows now include transcription-rounding bounds, but official/upstream source uncertainty and page-level transcription audit remain required before ppm-level public claims.
 - Bohr/de Broglie/Rydberg formulas are inherited standard physics unless a separate UET derivation artifact proves otherwise.
 - Hydrogen level-energy rows are rounded and source-referenced through the ionization-energy anchor until direct per-level ASD precision is captured.
-- Hydrogen-like ion predictions use reduced-mass scaling for the selected He+ and Li2+ rows. Li III remains provisional because direct ASD row capture is still pending. C VI is recorded only as a higher-Z stress-test row until fine/QED policy is added.
+- Hydrogen-like ion predictions use reduced-mass scaling for the selected He+ and Li2+ rows. The current domain-coverage gate records only `Z=2,3,6`; all current rows are 2 -> 1 Lyman-alpha style targets. Li III remains provisional because direct ASD row capture is still pending. C VI is recorded only as a higher-Z stress-test row until fine/QED policy is added.
 - Precision spectroscopy rows support a source package plus nonrelativistic, leading Dirac, empirical Lamb-handoff 1S-2S residuals, 21 cm source bookkeeping, and Fermi-contact baseline only until QED/recoil/proton-radius/hyperfine models and uncertainty propagation are added.
 - Neutral helium rows support source targets, photon-energy bookkeeping, term assignments, medium normalization, source component policy, ground-state baseline residual diagnostics, excited-state target preparation, zero-quantum-defect residual sizing, fixed-screening heuristic diagnostics, limited source-calibrated quantum-defect prediction diagnostics, same-source-family holdout diagnostics, and restricted wavelength-holdout diagnostics only until a correlated two-electron Hamiltonian/spectral model, independent holdout source family, official/source uncertainty capture, broader model-parameter uncertainty propagation, standard-air wavelength conversion policy for future holdout rows, resolved line-shape policy for precision use, and residual thresholds are added. Current helium holdout uncertainty fields are transcription-rounding bounds only, not official NIST measurement uncertainties; same-source holdouts use leave-one-out RMSE fallback model uncertainty when direct series scatter is unavailable.
 - The fixed-screening helium baseline uses `Z_eff = 2 - 0.85` locked before evaluation. It is a heuristic comparator, not a CI/correlated model and not a UET atomic operator.
@@ -89,6 +90,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 - Formula bridge manifest language that explains dependency roles without claiming derivation.
 - Rounded hydrogen `n=1..8` level-energy benchmark language.
 - Provisional selected He+/Li2+ one-electron ion residuals under the reduced-mass hydrogenic benchmark gate, plus C VI stress-test residual language.
+- Hydrogen-like domain-coverage diagnostic language only; it maps represented `Z`, benchmark lanes, source status, and missing broad-validation requirements.
 - Precision source-package readiness language for 1S-2S, Lamb shift, and 21 cm hyperfine targets, plus nonrelativistic, leading Dirac, empirical Lamb-handoff, 21 cm source-bookkeeping, and Fermi-contact diagnostic language.
 - Neutral helium source-package readiness, photon-energy, term-assignment, medium-normalization, component-policy, ground-state baseline, excited-state target, hydrogenic residual, fixed-screening heuristic baseline, quantum-defect prediction, same-source-family holdout, and wavelength-holdout blocker language for future many-electron artifacts.
 - Residual uncertainty-budget language for current precision, hyperfine, helium-ground, and helium-holdout diagnostics, without uncertainty-qualified validation.
@@ -98,6 +100,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 
 - First-principles UET derivation of `R_H`.
 - Broad source-backed validation of hydrogen-like ions beyond the selected provisional He+/Li2+ rows and the C VI stress-test lane.
+- Multi-transition or full hydrogen-like ion coverage; the current domain gate records `5/5` blocking coverage checks.
 - Fine structure, Lamb shift, hyperfine structure.
 - QED precision correction residual claims.
 - Helium or many-electron atomic spectra.

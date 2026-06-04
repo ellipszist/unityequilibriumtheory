@@ -588,6 +588,83 @@ def build_hydrogen_like_checkpoint(codata: dict, ion_data: dict) -> dict:
     }
 
 
+def build_hydrogen_like_domain_coverage_gate(hydrogen_like_checkpoint: dict, ion_data: dict) -> dict:
+    predictions = hydrogen_like_checkpoint["predictions"]
+    represented_z = sorted({row["Z"] for row in predictions})
+    benchmark_lanes = sorted({row["benchmark_lane"] for row in predictions})
+    primary_rows = [row for row in predictions if row["benchmark_lane"] == "primary_selected_benchmark"]
+    stress_rows = [row for row in predictions if row["benchmark_lane"] == "extended_stress_test"]
+    source_status_counts = {}
+    for row in predictions:
+        source_status_counts[row["source_status"]] = source_status_counts.get(row["source_status"], 0) + 1
+
+    coverage_rows = [
+        {
+            "coverage_id": "one_electron_primary_rows",
+            "status": "PARTIAL",
+            "evidence": f"{len(primary_rows)} primary selected rows are present for Z={sorted({row['Z'] for row in primary_rows})}.",
+            "blocker": "Primary lane is selected-row only and includes Li III through a secondary paper row citing NIST.",
+        },
+        {
+            "coverage_id": "higher_z_stress_lane",
+            "status": "RECORDED_NOT_PASS_GATED",
+            "evidence": f"{len(stress_rows)} stress row is present for Z={sorted({row['Z'] for row in stress_rows})}.",
+            "blocker": "No fine-structure/QED/source-precision policy exists for higher-Z PASS/FAIL.",
+        },
+        {
+            "coverage_id": "direct_primary_source_capture",
+            "status": "PARTIAL",
+            "evidence": {
+                "source_status_counts": source_status_counts,
+                "direct_primary_rows": hydrogen_like_checkpoint["metrics"]["direct_primary_rows"],
+                "secondary_source_rows": hydrogen_like_checkpoint["metrics"]["secondary_source_rows"],
+            },
+            "blocker": "Direct primary ASD capture is still missing for Li III.",
+        },
+        {
+            "coverage_id": "multi_transition_suite",
+            "status": "MISSING",
+            "evidence": "Current rows are all 2 -> 1 Lyman-alpha style targets.",
+            "blocker": "Need multiple transitions and components per ion before broad hydrogen-like validation.",
+        },
+        {
+            "coverage_id": "fine_qed_policy",
+            "status": "MISSING",
+            "evidence": "Line-structure notes explicitly mark representative wavelengths/blends.",
+            "blocker": "Fine-structure, Lamb/QED, recoil, and finite-nuclear-size policy is not primary-gated.",
+        },
+    ]
+    blocking_rows = [row for row in coverage_rows if row["status"] != "READY"]
+    return {
+        "schema_version": "1.0",
+        "role": "hydrogen_like_domain_coverage_gate",
+        "status": "DOMAIN_EXPANSION_MAPPED_BROAD_VALIDATION_BLOCKED",
+        "claim_class": "coverage_diagnostic_only",
+        "formula_id": "AT20-HYDROGEN-LIKE-DOMAIN-COVERAGE",
+        "represented_z": represented_z,
+        "benchmark_lanes": benchmark_lanes,
+        "coverage_rows": coverage_rows,
+        "metrics": {
+            "represented_z_count": len(represented_z),
+            "represented_z_min": min(represented_z) if represented_z else None,
+            "represented_z_max": max(represented_z) if represented_z else None,
+            "primary_selected_row_count": len(primary_rows),
+            "extended_stress_row_count": len(stress_rows),
+            "source_status_count": source_status_counts,
+            "coverage_check_count": len(coverage_rows),
+            "blocking_coverage_check_count": len(blocking_rows),
+            "all_rows_same_transition": len({row["transition"] for row in predictions}) == 1,
+        },
+        "next_required_artifacts": [
+            "direct Li III ASD/source-page capture",
+            "multi-ion and multi-transition hydrogen-like source package",
+            "fine-structure/QED/recoil/finite-size policy before higher-Z PASS thresholds",
+            "uncertainty-aware thresholds split by low-Z primary rows and higher-Z stress rows",
+        ],
+        "claim_boundary": "This gate maps hydrogen-like ion coverage only. It does not upgrade selected He+/Li2+ rows or C VI stress diagnostics into broad hydrogen-like ion validation.",
+    }
+
+
 def build_hydrogen_level_energy_benchmark(level_rows: list[dict]) -> dict:
     ionization_energy_ev = 13.5984
     results = []
@@ -3065,6 +3142,7 @@ def build_atomic_fixed_parameter_model_readiness_gate(
 
 def build_atomic_predictive_model_closure_gate(
     hydrogen_like_checkpoint: dict,
+    hydrogen_like_domain_coverage_gate: dict,
     precision_dirac_baseline_gate: dict,
     lamb_shift_handoff_gate: dict,
     hyperfine_fermi_baseline_gate: dict,
@@ -3135,6 +3213,7 @@ def build_atomic_predictive_model_closure_gate(
             "evidence": [
                 "selected He+ and Li2+ rows pass provisional reduced-mass thresholds",
                 "C VI is recorded as a higher-Z stress lane",
+                f"hydrogen_like_domain_coverage_gate maps {hydrogen_like_domain_coverage_gate['metrics']['coverage_check_count']} coverage checks",
                 "neutral helium source, ground, excited, quantum-defect, and wavelength diagnostics are present",
             ],
             "remaining_blocker": "Broad hydrogen-like ion coverage, direct Li III ASD capture, higher-Z fine/QED policy, and a multi-atom many-electron benchmark suite remain missing.",
@@ -3155,6 +3234,10 @@ def build_atomic_predictive_model_closure_gate(
             "open_or_partial_check_count": open_count,
             "fail_open_check_count": fail_open_count,
             "hydrogen_like_primary_prediction_count": hydrogen_like_checkpoint["metrics"]["primary_benchmark_line_count"],
+            "hydrogen_like_domain_coverage_blocking_check_count": hydrogen_like_domain_coverage_gate["metrics"][
+                "blocking_coverage_check_count"
+            ],
+            "hydrogen_like_represented_z_count": hydrogen_like_domain_coverage_gate["metrics"]["represented_z_count"],
             "helium_zero_qd_avg_abs_residual_eV": helium_excited_hydrogenic_residual_gate["metrics"]["average_abs_binding_residual_eV"],
             "helium_quantum_defect_loo_prediction_count": helium_quantum_defect_prediction_gate["metrics"]["prediction_count"],
             "helium_quantum_defect_holdout_prediction_count": helium_quantum_defect_holdout_gate["metrics"]["prediction_count"],
@@ -3598,6 +3681,7 @@ def run_rydberg_analysis():
     hydrogen_rydberg_line_uncertainty_gate = build_hydrogen_rydberg_line_uncertainty_gate(spectrum, results)
     hydrogen_level_energy_benchmark = build_hydrogen_level_energy_benchmark(hydrogen_level_rows)
     hydrogen_like_checkpoint = build_hydrogen_like_checkpoint(codata, ion_data)
+    hydrogen_like_domain_coverage_gate = build_hydrogen_like_domain_coverage_gate(hydrogen_like_checkpoint, ion_data)
     precision_spectroscopy_gate = build_precision_spectroscopy_gate(precision_sources)
     precision_baseline_gate = build_precision_baseline_gate(precision_sources, codata)
     precision_dirac_baseline_gate = build_precision_dirac_baseline_gate(precision_sources, codata)
@@ -3692,6 +3776,7 @@ def run_rydberg_analysis():
     )
     atomic_predictive_model_closure_gate = build_atomic_predictive_model_closure_gate(
         hydrogen_like_checkpoint,
+        hydrogen_like_domain_coverage_gate,
         precision_dirac_baseline_gate,
         lamb_shift_handoff_gate,
         hyperfine_fermi_baseline_gate,
@@ -3842,6 +3927,7 @@ def run_rydberg_analysis():
             "AT20-SPECTRUM-RESIDUAL",
             "AT20-HYDROGEN-RYDBERG-LINE-TRANSCRIPTION-BUDGET",
             "AT20-HYDROGENIC-Z2-CHECKPOINT",
+            "AT20-HYDROGEN-LIKE-DOMAIN-COVERAGE",
             "AT20-HYDROGEN-PRECISION-SOURCE-GATE",
             "AT20-HYDROGEN-1S2S-RYDBERG-BASELINE",
             "AT20-HYDROGEN-1S2S-DIRAC-BASELINE",
@@ -3895,6 +3981,10 @@ def run_rydberg_analysis():
             "hydrogen_like_checkpoint_predictions": len(hydrogen_like_checkpoint["predictions"]),
             "hydrogen_like_avg_error_ppm": hydrogen_like_checkpoint["metrics"]["average_wavelength_error_ppm"],
             "hydrogen_like_max_error_ppm": hydrogen_like_checkpoint["metrics"]["max_wavelength_error_ppm"],
+            "hydrogen_like_represented_z_count": hydrogen_like_domain_coverage_gate["metrics"]["represented_z_count"],
+            "hydrogen_like_domain_coverage_blocking_checks": hydrogen_like_domain_coverage_gate["metrics"][
+                "blocking_coverage_check_count"
+            ],
             "precision_source_rows": precision_spectroscopy_gate["source_row_count"],
             "precision_required_model_components": len(precision_spectroscopy_gate["required_model_components"]),
             "precision_1s2s_baseline_residual_hz": precision_baseline_gate["prediction"]["absolute_residual_hz"],
@@ -4007,6 +4097,7 @@ def run_rydberg_analysis():
     artifact["hydrogen_rydberg_line_uncertainty_gate"] = hydrogen_rydberg_line_uncertainty_gate
     artifact["hydrogen_level_energy_benchmark"] = hydrogen_level_energy_benchmark
     artifact["hydrogen_like_checkpoint"] = hydrogen_like_checkpoint
+    artifact["hydrogen_like_domain_coverage_gate"] = hydrogen_like_domain_coverage_gate
     artifact["precision_spectroscopy_gate"] = precision_spectroscopy_gate
     artifact["precision_baseline_gate"] = precision_baseline_gate
     artifact["precision_dirac_baseline_gate"] = precision_dirac_baseline_gate

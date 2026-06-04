@@ -283,7 +283,9 @@
           "helium_wavelength_holdout_predicted_vacuum_line_count": 2,
           "helium_wavelength_holdout_prediction_count": 2,
           "helium_zero_qd_avg_abs_residual_eV": 0.25249149613765204,
+          "hydrogen_like_domain_coverage_blocking_check_count": 5,
           "hydrogen_like_primary_prediction_count": 2,
+          "hydrogen_like_represented_z_count": 3,
           "hyperfine_21cm_fermi_residual_ppm": 530.677220569032,
           "legacy_multielectron_primary_evidence_script_count": 0,
           "legacy_multielectron_scripts_audited": 2,
@@ -701,6 +703,7 @@
         "evidence": [
           "selected He+ and Li2+ rows pass provisional reduced-mass thresholds",
           "C VI is recorded as a higher-Z stress lane",
+          "hydrogen_like_domain_coverage_gate maps 5 coverage checks",
           "neutral helium source, ground, excited, quantum-defect, and wavelength diagnostics are present"
         ],
         "remaining_blocker": "Broad hydrogen-like ion coverage, direct Li III ASD capture, higher-Z fine/QED policy, and a multi-atom many-electron benchmark suite remain missing.",
@@ -719,7 +722,9 @@
       "helium_wavelength_holdout_predicted_vacuum_line_count": 2,
       "helium_wavelength_holdout_prediction_count": 2,
       "helium_zero_qd_avg_abs_residual_eV": 0.25249149613765204,
+      "hydrogen_like_domain_coverage_blocking_check_count": 5,
       "hydrogen_like_primary_prediction_count": 2,
+      "hydrogen_like_represented_z_count": 3,
       "hyperfine_21cm_fermi_residual_ppm": 530.677220569032,
       "legacy_multielectron_primary_evidence_script_count": 0,
       "legacy_multielectron_scripts_audited": 2,
@@ -1019,6 +1024,7 @@
     "AT20-SPECTRUM-RESIDUAL",
     "AT20-HYDROGEN-RYDBERG-LINE-TRANSCRIPTION-BUDGET",
     "AT20-HYDROGENIC-Z2-CHECKPOINT",
+    "AT20-HYDROGEN-LIKE-DOMAIN-COVERAGE",
     "AT20-HYDROGEN-PRECISION-SOURCE-GATE",
     "AT20-HYDROGEN-1S2S-RYDBERG-BASELINE",
     "AT20-HYDROGEN-1S2S-DIRAC-BASELINE",
@@ -1046,7 +1052,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-04T10:27:02.523294+00:00",
+  "generated_at_utc": "2026-06-04T10:43:46.909057+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -3068,6 +3074,84 @@
       "source_policy": "Primary selected benchmark currently uses He II direct NIST handbook row and Li III secondary paper row citing NIST. C VI is kept in an extended stress-test lane until higher-Z fine/QED policy is added."
     }
   },
+  "hydrogen_like_domain_coverage_gate": {
+    "benchmark_lanes": [
+      "extended_stress_test",
+      "primary_selected_benchmark"
+    ],
+    "claim_boundary": "This gate maps hydrogen-like ion coverage only. It does not upgrade selected He+/Li2+ rows or C VI stress diagnostics into broad hydrogen-like ion validation.",
+    "claim_class": "coverage_diagnostic_only",
+    "coverage_rows": [
+      {
+        "blocker": "Primary lane is selected-row only and includes Li III through a secondary paper row citing NIST.",
+        "coverage_id": "one_electron_primary_rows",
+        "evidence": "2 primary selected rows are present for Z=[2, 3].",
+        "status": "PARTIAL"
+      },
+      {
+        "blocker": "No fine-structure/QED/source-precision policy exists for higher-Z PASS/FAIL.",
+        "coverage_id": "higher_z_stress_lane",
+        "evidence": "1 stress row is present for Z=[6].",
+        "status": "RECORDED_NOT_PASS_GATED"
+      },
+      {
+        "blocker": "Direct primary ASD capture is still missing for Li III.",
+        "coverage_id": "direct_primary_source_capture",
+        "evidence": {
+          "direct_primary_rows": 1,
+          "secondary_source_rows": 1,
+          "source_status_counts": {
+            "nist_reference_wavelength_compilation_row": 1,
+            "primary_nist_handbook_row": 1,
+            "secondary_paper_citing_nist_row": 1
+          }
+        },
+        "status": "PARTIAL"
+      },
+      {
+        "blocker": "Need multiple transitions and components per ion before broad hydrogen-like validation.",
+        "coverage_id": "multi_transition_suite",
+        "evidence": "Current rows are all 2 -> 1 Lyman-alpha style targets.",
+        "status": "MISSING"
+      },
+      {
+        "blocker": "Fine-structure, Lamb/QED, recoil, and finite-nuclear-size policy is not primary-gated.",
+        "coverage_id": "fine_qed_policy",
+        "evidence": "Line-structure notes explicitly mark representative wavelengths/blends.",
+        "status": "MISSING"
+      }
+    ],
+    "formula_id": "AT20-HYDROGEN-LIKE-DOMAIN-COVERAGE",
+    "metrics": {
+      "all_rows_same_transition": true,
+      "blocking_coverage_check_count": 5,
+      "coverage_check_count": 5,
+      "extended_stress_row_count": 1,
+      "primary_selected_row_count": 2,
+      "represented_z_count": 3,
+      "represented_z_max": 6,
+      "represented_z_min": 2,
+      "source_status_count": {
+        "nist_reference_wavelength_compilation_row": 1,
+        "primary_nist_handbook_row": 1,
+        "secondary_paper_citing_nist_row": 1
+      }
+    },
+    "next_required_artifacts": [
+      "direct Li III ASD/source-page capture",
+      "multi-ion and multi-transition hydrogen-like source package",
+      "fine-structure/QED/recoil/finite-size policy before higher-Z PASS thresholds",
+      "uncertainty-aware thresholds split by low-Z primary rows and higher-Z stress rows"
+    ],
+    "represented_z": [
+      2,
+      3,
+      6
+    ],
+    "role": "hydrogen_like_domain_coverage_gate",
+    "schema_version": "1.0",
+    "status": "DOMAIN_EXPANSION_MAPPED_BROAD_VALIDATION_BLOCKED"
+  },
   "hydrogen_rydberg_line_uncertainty_gate": {
     "claim_boundary": "This gate supports only hydrogen Rydberg line transcription-bound diagnostics. It cannot be cited as uncertainty-qualified hydrogen validation or UET first-principles derivation.",
     "claim_class": "source_transcription_uncertainty_diagnostic_only",
@@ -3567,7 +3651,9 @@
     "hydrogen_level_max_error_ppm": 117.64705882364706,
     "hydrogen_like_avg_error_ppm": 76.32002589027381,
     "hydrogen_like_checkpoint_predictions": 3,
+    "hydrogen_like_domain_coverage_blocking_checks": 5,
     "hydrogen_like_max_error_ppm": 96.9208106356392,
+    "hydrogen_like_represented_z_count": 3,
     "hydrogen_rydberg_lines_with_source_uncertainty": 7,
     "hydrogen_rydberg_max_residual_to_source_uncertainty_ratio": 164.12627858926498,
     "hyperfine_21cm_fermi_baseline_residual_hz": 753776.9764285088,
