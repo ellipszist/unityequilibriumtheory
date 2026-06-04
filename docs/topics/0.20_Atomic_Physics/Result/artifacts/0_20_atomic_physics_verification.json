@@ -388,6 +388,113 @@
     },
     "topic": "0.20_Atomic_Physics"
   },
+  "atomic_first_predictive_implementation_candidate_gate": {
+    "candidate_lanes": [
+      {
+        "baseline": "zero-quantum-defect hydrogenic baseline",
+        "claim_ceiling": "same-source-family diagnostic only; not independent helium validation",
+        "evidence": {
+          "calibration_prediction_count": 7,
+          "level_holdout_prediction_count": 3,
+          "source_uncertainty_policy_status": "TRANSCRIPTION_ROUNDING_BOUNDS_ONLY",
+          "wavelength_holdout_prediction_count": 2
+        },
+        "holdout_type": "same_source_family",
+        "lane_id": "helium_quantum_defect_source_family_holdout",
+        "model_form": "E_bind_pred = h c R_infinity / (n - delta_selected_series)^2",
+        "parameter_source": "delta_selected_series fitted from selected NIST He I calibration levels before holdout evaluation",
+        "readiness": "CANDIDATE_READY_DIAGNOSTIC_ONLY"
+      },
+      {
+        "baseline": "reduced-mass hydrogenic Rydberg relation",
+        "claim_ceiling": "coverage diagnostic only",
+        "evidence": {
+          "reason": "current hydrogen-like package has only 2 -> 1 rows for Z=2,3,6"
+        },
+        "holdout_type": "missing",
+        "lane_id": "hydrogen_like_multi_transition_holdout",
+        "model_form": "reduced-mass Rydberg baseline plus future correction policy",
+        "parameter_source": "no fit allowed until multi-transition source package exists",
+        "readiness": "BLOCKED_SOURCE_PACKAGE_MISSING"
+      },
+      {
+        "baseline": "strongest applicable standard baseline",
+        "claim_ceiling": "specification only",
+        "evidence": {
+          "blocking_implementation_blockers": 4,
+          "reason": "atomic_predictive_model_spec_gate marks implementation blocked"
+        },
+        "holdout_type": "missing",
+        "lane_id": "explicit_uet_atomic_operator_holdout",
+        "model_form": "standard_baseline + delta_uet(domain, locked_parameters, quantum_numbers)",
+        "parameter_source": "UET operator parameters must be locked before holdout evaluation",
+        "readiness": "BLOCKED_OPERATOR_MISSING"
+      }
+    ],
+    "claim_boundary": "This gate selects the most practical first implementation lane from current evidence. It does not promote same-source-family helium diagnostics into independent validation or first-principles UET prediction.",
+    "claim_class": "implementation_candidate_diagnostic_only",
+    "formula_id": "AT20-ATOMIC-FIRST-PREDICTIVE-IMPLEMENTATION-CANDIDATE",
+    "metrics": {
+      "blocked_candidate_lane_count": 2,
+      "blocking_success_criterion_count": 1,
+      "candidate_lane_count": 3,
+      "partial_success_criterion_count": 1,
+      "ready_diagnostic_lane_count": 1,
+      "selected_level_holdout_avg_abs_residual_eV": 0.000956144279510814,
+      "selected_level_holdout_prediction_count": 3,
+      "selected_wavelength_holdout_avg_abs_residual_angstrom": 0.03271735053414204,
+      "selected_wavelength_holdout_prediction_count": 2,
+      "success_criterion_count": 5
+    },
+    "next_required_artifacts": [
+      "independent external He I holdout source package with hashes and source locators",
+      "uncertainty-aware thresholds for level and wavelength holdout residuals",
+      "CI/correlated two-electron or explicit UET operator lane that predicts quantum defects rather than fitting them",
+      "same candidate-lane report rerun after external holdouts and model uncertainty are added"
+    ],
+    "role": "atomic_first_predictive_implementation_candidate_gate",
+    "schema_version": "1.0",
+    "selected_lane_id": "helium_quantum_defect_source_family_holdout",
+    "status": "FIRST_IMPLEMENTATION_CANDIDATE_SELECTED_EXTERNAL_VALIDATION_BLOCKED",
+    "success_criteria": [
+      {
+        "criterion_id": "FIT-01",
+        "description": "Parameters are fitted only from calibration rows and not from holdout rows.",
+        "evidence": "helium holdout gate uses selected-series calibration deltas and skips rows without a selected calibration series",
+        "status": "READY_DIAGNOSTIC"
+      },
+      {
+        "criterion_id": "HOLDOUT-01",
+        "description": "Holdout predictions exist for levels and at least one spectral line.",
+        "evidence": {
+          "level_holdout_prediction_count": 3,
+          "wavelength_holdout_prediction_count": 2
+        },
+        "status": "READY_DIAGNOSTIC"
+      },
+      {
+        "criterion_id": "BASELINE-01",
+        "description": "Candidate residuals are compared to a named baseline.",
+        "evidence": "7 comparator rows are present",
+        "status": "READY_INTERNAL"
+      },
+      {
+        "criterion_id": "UNCERTAINTY-01",
+        "description": "Source and model uncertainty are recorded, but thresholds are not yet uncertainty-qualified.",
+        "evidence": {
+          "residual_budget_rows": 9,
+          "source_uncertainty_policy_status": "TRANSCRIPTION_ROUNDING_BOUNDS_ONLY"
+        },
+        "status": "PARTIAL"
+      },
+      {
+        "criterion_id": "EXTERNAL-01",
+        "description": "Independent external validation source exists.",
+        "evidence": "current holdout rows are same-source-family NIST rows",
+        "status": "BLOCKED"
+      }
+    ]
+  },
   "atomic_fixed_parameter_model_readiness_gate": {
     "claim_boundary": "This gate maps model-readiness only. It does not make fitted quantum defects, empirical Lamb handoffs, or inherited standard formulas into UET first-principles predictions.",
     "claim_class": "model_readiness_diagnostic_only",
@@ -1152,10 +1259,11 @@
     "AT20-ATOMIC-FIXED-PARAMETER-MODEL-READINESS",
     "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
     "AT20-ATOMIC-PREDICTIVE-MODEL-SPEC",
+    "AT20-ATOMIC-FIRST-PREDICTIVE-IMPLEMENTATION-CANDIDATE",
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-04T10:54:05.648333+00:00",
+  "generated_at_utc": "2026-06-04T11:05:00.157694+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -3685,12 +3793,16 @@
     "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark; C VI is a higher-Z stress test until fine/QED policy and broader ion coverage are added.",
     "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines plus 21 cm source/Fermi gates are diagnostics only and do not validate hyperfine Hamiltonian closure, QED, helium, or many-electron atoms.",
     "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, line-component policy, ground-state baseline residuals, excited-state targets, zero-quantum-defect residual baselines, limited source-calibrated quantum-defect predictions, same-source-family holdout diagnostics, and selected holdout wavelength predictions computed but still do not validate electron correlation or many-electron spectra.",
-    "The atomic predictive-model specification gate maps the required baseline-plus-correction contract, but the UET operator and fixed-parameter generative model remain missing."
+    "The atomic predictive-model specification gate maps the required baseline-plus-correction contract, but the UET operator and fixed-parameter generative model remain missing.",
+    "The first predictive implementation candidate gate selects the same-source-family helium quantum-defect holdout lane as the narrowest current diagnostic path, but external validation remains blocked."
   ],
   "metrics": {
     "R_H_codata_m_inverse": 10967758.3406,
     "R_infinity_codata_m_inverse": 10973731.56816,
     "accepted_claim_branches": 5,
+    "atomic_first_predictive_candidate_blockers": 1,
+    "atomic_first_predictive_candidate_selected_level_holdouts": 3,
+    "atomic_first_predictive_candidate_selected_wavelength_holdouts": 2,
     "atomic_fixed_parameter_model_lanes": 10,
     "atomic_missing_required_model_lanes": 2,
     "atomic_prediction_comparator_count": 7,
