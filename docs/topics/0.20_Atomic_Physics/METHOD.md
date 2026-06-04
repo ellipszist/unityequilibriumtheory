@@ -23,6 +23,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 | UET atomic operator readiness | artifact `uet_atomic_operator_readiness_gate` | maps required UET derivation/residual artifacts before any UET-specific atomic prediction claim |
 | Fixed-parameter model readiness | artifact `atomic_fixed_parameter_model_readiness_gate` | lane-wise model readiness map including legacy-script exclusion; CI/correlated helium and UET atomic operator lanes remain missing |
 | Predictive closure contract | artifact `atomic_predictive_model_closure_gate` | governance gate only; broad atomic prediction blocked until no-leakage splits, independent holdouts, uncertainty propagation, comparator baselines, and fixed-parameter CI/correlated or UET operators exist |
+| Predictive model specification | artifact `atomic_predictive_model_spec_gate` | model-specification only; requires `standard_baseline + delta_uet_or_ci`, locked parameters, holdouts, comparators, uncertainty propagation, and domain lanes |
 | Three-body coupling smoke test | `Research_Atomic_ThreeBody.py` | code-health check, not physics validation |
 | Multi-electron comparisons | `Research_Multi_Electron.py` | open lane |
 
@@ -61,8 +62,9 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 19. Build a UET atomic-operator readiness gate so constant-origin, quantized-action, Hamiltonian/operator, correction, parameter-lock, and residual-gate requirements are explicit before any UET-derived spectrum claim.
 20. Build a fixed-parameter model-readiness matrix so standard fixed baselines, empirical handoffs, fitted diagnostics, legacy smoke/demo scripts, and missing generative models cannot be conflated.
 21. Build an atomic predictive-closure contract that lists the required no-leakage split, baseline comparator, fixed-parameter model, uncertainty, and domain-expansion gates before broad spectral prediction claims.
-22. Write artifact with hashes, thresholds, metrics, formula bridge metadata, level-energy rows, selected ion rows, hydrogen-like domain-coverage rows, precision source/baseline gates, Dirac baseline gate, Lamb handoff gate, 21 cm source/Fermi gates, neutral helium source/gap/medium/component/ground-baseline/excited-target/hydrogenic-residual/fixed-screening/quantum-defect-prediction/holdout/wavelength-holdout gates, legacy code audit, UET operator readiness, comparator table, uncertainty readiness, residual uncertainty budget, fixed-parameter readiness, predictive-closure contract, and limitations.
-23. Write `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json` so the hydrogen benchmark stays separate from broader atomic-theory claims.
+22. Build a predictive-model specification gate that defines the required baseline-plus-correction form, parameter manifest, holdout protocol, uncertainty protocol, and domain lanes before implementation.
+23. Write artifact with hashes, thresholds, metrics, formula bridge metadata, level-energy rows, selected ion rows, hydrogen-like domain-coverage rows, precision source/baseline gates, Dirac baseline gate, Lamb handoff gate, 21 cm source/Fermi gates, neutral helium source/gap/medium/component/ground-baseline/excited-target/hydrogenic-residual/fixed-screening/quantum-defect-prediction/holdout/wavelength-holdout gates, legacy code audit, UET operator readiness, comparator table, uncertainty readiness, residual uncertainty budget, fixed-parameter readiness, predictive-closure contract, predictive-model specification, and limitations.
+24. Write `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json` so the hydrogen benchmark stays separate from broader atomic-theory claims.
 
 ## Assumptions
 
@@ -76,6 +78,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 - Neutral helium rows support source targets, photon-energy bookkeeping, term assignments, medium normalization, source component policy, ground-state baseline residual diagnostics, excited-state target preparation, zero-quantum-defect residual sizing, fixed-screening heuristic diagnostics, limited source-calibrated quantum-defect prediction diagnostics, same-source-family holdout diagnostics, and restricted wavelength-holdout diagnostics only until a correlated two-electron Hamiltonian/spectral model, independent holdout source family, official/source uncertainty capture, broader model-parameter uncertainty propagation, standard-air wavelength conversion policy for future holdout rows, resolved line-shape policy for precision use, and residual thresholds are added. Current helium holdout uncertainty fields are transcription-rounding bounds only, not official NIST measurement uncertainties; same-source holdouts use leave-one-out RMSE fallback model uncertainty when direct series scatter is unavailable.
 - The fixed-screening helium baseline uses `Z_eff = 2 - 0.85` locked before evaluation. It is a heuristic comparator, not a CI/correlated model and not a UET atomic operator.
 - The predictive closure contract is a claim-control artifact only. It does not make the current quantum-defect or hydrogenic gates first-principles predictions.
+- The predictive-model specification is not an implementation. It requires a future model to use `standard_baseline + delta_uet_or_ci` with locked parameters, source-backed holdouts, named baseline comparators, uncertainty-aware thresholds, and domain-specific gates.
 - The comparator table is internal only; it does not replace missing independent external holdouts or CI/correlated model baselines.
 - The uncertainty-readiness matrix is not uncertainty-qualified validation; it records partial propagation for hydrogen transcription-bound and fitted quantum-defect diagnostics and identifies which lanes still need full propagation and uncertainty-aware thresholds.
 - The residual uncertainty-budget gate computes ratios only where source uncertainty is already present or a bounded transcription policy is explicitly declared. It does not supply missing model uncertainty, official hydrogen/helium line measurement uncertainty, or pass/fail thresholds.
@@ -95,6 +98,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 - Neutral helium source-package readiness, photon-energy, term-assignment, medium-normalization, component-policy, ground-state baseline, excited-state target, hydrogenic residual, fixed-screening heuristic baseline, quantum-defect prediction, same-source-family holdout, and wavelength-holdout blocker language for future many-electron artifacts.
 - Residual uncertainty-budget language for current precision, hyperfine, helium-ground, and helium-holdout diagnostics, without uncertainty-qualified validation.
 - Predictive closure language that defines the minimum artifact requirements for future atomic-spectrum prediction claims.
+- Predictive-model specification language that defines the model form and implementation blockers without claiming the model exists.
 
 ## Excluded Cases
 

@@ -3290,6 +3290,126 @@ def build_atomic_predictive_model_closure_gate(
     }
 
 
+def build_atomic_predictive_model_spec_gate(
+    atomic_predictive_model_closure_gate: dict,
+    atomic_fixed_parameter_model_readiness_gate: dict,
+    uet_atomic_operator_readiness_gate: dict,
+    hydrogen_like_domain_coverage_gate: dict,
+    atomic_uncertainty_readiness_gate: dict,
+) -> dict:
+    model_contract = {
+        "model_form": "E_or_nu_pred = standard_baseline(domain, constants, quantum_numbers) + delta_uet_or_ci(domain, locked_parameters, quantum_numbers)",
+        "baseline_requirement": "Use the strongest applicable named standard baseline before adding any UET correction term.",
+        "correction_requirement": (
+            "The correction term must be declared as a Hamiltonian/operator, energy-level correction, or transition-frequency "
+            "correction with units before holdout rows are evaluated."
+        ),
+        "parameter_requirement": "All fitted, calibrated, inherited, and forbidden holdout-leakage parameters must be listed before evaluation.",
+        "evaluation_requirement": "Every prediction lane must include holdout rows, named baseline comparator rows, uncertainty propagation, and fixed thresholds.",
+    }
+    development_lanes = [
+        {
+            "lane_id": "one_electron_hydrogenic",
+            "baseline": "reduced-mass Rydberg/Bohr relation",
+            "current_artifacts": ["hydrogen_like_checkpoint", "hydrogen_like_domain_coverage_gate"],
+            "ready_state": "PARTIAL",
+            "next_model_step": "Add direct Li III source capture and multi-transition hydrogen-like rows before fitting or claiming new corrections.",
+        },
+        {
+            "lane_id": "hydrogen_precision",
+            "baseline": "Dirac baseline plus explicit QED/Lamb/recoil/proton-size correction decomposition",
+            "current_artifacts": ["precision_dirac_baseline_gate", "lamb_shift_handoff_gate", "hyperfine_fermi_baseline_gate"],
+            "ready_state": "BLOCKED_MODEL_MISSING",
+            "next_model_step": "Replace empirical handoff with source-backed correction decomposition and uncertainty propagation.",
+        },
+        {
+            "lane_id": "helium_two_electron",
+            "baseline": "CI/correlated two-electron Hamiltonian or declared UET atomic operator",
+            "current_artifacts": [
+                "helium_ground_state_baseline_gate",
+                "helium_quantum_defect_prediction_gate",
+                "helium_quantum_defect_holdout_gate",
+            ],
+            "ready_state": "BLOCKED_GENERATIVE_MODEL_MISSING",
+            "next_model_step": "Add fixed-parameter CI/correlated residual gate or a UET operator that predicts quantum defects rather than fitting them.",
+        },
+        {
+            "lane_id": "periodic_table_expansion",
+            "baseline": "domain-split suites for one-electron ions, two-electron atoms, alkali-like atoms, and heavier many-electron systems",
+            "current_artifacts": ["atomic_predictive_model_closure_gate"],
+            "ready_state": "BLOCKED_DOMAIN_PACKAGE_MISSING",
+            "next_model_step": "Build a multi-atom source package with train/holdout splits and comparator baselines per atomic family.",
+        },
+    ]
+    implementation_blockers = [
+        {
+            "blocker_id": "uet_operator_absent",
+            "status": "BLOCKING",
+            "evidence": f"{uet_atomic_operator_readiness_gate['metrics']['blocking_requirement_count']} UET operator requirements remain blocking.",
+            "required_artifact": "UET Hamiltonian/transition-operator derivation with units and fixed parameter policy.",
+        },
+        {
+            "blocker_id": "fixed_parameter_model_missing",
+            "status": "BLOCKING",
+            "evidence": f"{atomic_fixed_parameter_model_readiness_gate['metrics']['missing_required_model_count']} required model lanes are missing.",
+            "required_artifact": "Fixed-parameter CI/correlated or UET spectral residual gate.",
+        },
+        {
+            "blocker_id": "uncertainty_thresholds_incomplete",
+            "status": "BLOCKING",
+            "evidence": f"{atomic_uncertainty_readiness_gate['metrics']['propagation_blocked_lane_count']} uncertainty lanes still block propagation.",
+            "required_artifact": "Uncertainty-aware residual thresholds for each prediction lane.",
+        },
+        {
+            "blocker_id": "domain_coverage_incomplete",
+            "status": "BLOCKING",
+            "evidence": f"{hydrogen_like_domain_coverage_gate['metrics']['blocking_coverage_check_count']} hydrogen-like coverage checks remain blocking.",
+            "required_artifact": "Multi-ion and multi-transition source packages with fine/QED policy.",
+        },
+    ]
+    blocking_count = sum(1 for row in implementation_blockers if row["status"] == "BLOCKING")
+    lane_blocking_count = sum(1 for row in development_lanes if row["ready_state"].startswith("BLOCKED"))
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_predictive_model_specification_gate",
+        "status": "SPEC_MAPPED_IMPLEMENTATION_BLOCKED",
+        "claim_class": "model_specification_only",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-MODEL-SPEC",
+        "model_contract": model_contract,
+        "development_lanes": development_lanes,
+        "implementation_blockers": implementation_blockers,
+        "metrics": {
+            "development_lane_count": len(development_lanes),
+            "development_lanes_blocked": lane_blocking_count,
+            "implementation_blocker_count": len(implementation_blockers),
+            "blocking_implementation_blocker_count": blocking_count,
+            "closure_checks_open_or_partial": atomic_predictive_model_closure_gate["metrics"][
+                "open_or_partial_check_count"
+            ],
+            "fixed_parameter_missing_required_model_count": atomic_fixed_parameter_model_readiness_gate["metrics"][
+                "missing_required_model_count"
+            ],
+            "uet_operator_blocking_requirement_count": uet_atomic_operator_readiness_gate["metrics"][
+                "blocking_requirement_count"
+            ],
+            "hydrogen_like_domain_coverage_blocking_check_count": hydrogen_like_domain_coverage_gate["metrics"][
+                "blocking_coverage_check_count"
+            ],
+            "uncertainty_propagation_blocked_lane_count": atomic_uncertainty_readiness_gate["metrics"][
+                "propagation_blocked_lane_count"
+            ],
+        },
+        "minimum_first_implementation": [
+            "Pick one narrow lane, preferably one-electron hydrogen-like ions or helium two-electron residuals.",
+            "Freeze constants and parameters before reading holdout rows.",
+            "Emit predictions for held-out transitions with baseline comparator residuals.",
+            "Propagate source and model uncertainty into the threshold decision.",
+            "Record any UET correction as an explicit operator/correction term with units, not as narrative interpretation.",
+        ],
+        "claim_boundary": "This gate specifies how a predictive atomic model must be built. It does not implement the missing UET operator or upgrade current diagnostics into broad predictions.",
+    }
+
+
 def build_atomic_claim_scope_gate(
     status: str,
     avg_error_ppm: float,
@@ -3791,6 +3911,13 @@ def run_rydberg_analysis():
         legacy_multielectron_code_audit_gate,
         uet_atomic_operator_readiness_gate,
     )
+    atomic_predictive_model_spec_gate = build_atomic_predictive_model_spec_gate(
+        atomic_predictive_model_closure_gate,
+        atomic_fixed_parameter_model_readiness_gate,
+        uet_atomic_operator_readiness_gate,
+        hydrogen_like_domain_coverage_gate,
+        atomic_uncertainty_readiness_gate,
+    )
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
         avg_error_ppm,
@@ -3952,6 +4079,7 @@ def run_rydberg_analysis():
             "AT20-ATOMIC-RESIDUAL-UNCERTAINTY-BUDGET",
             "AT20-ATOMIC-FIXED-PARAMETER-MODEL-READINESS",
             "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
+            "AT20-ATOMIC-PREDICTIVE-MODEL-SPEC",
             "AT20-UET-ATOMIC-BRIDGE-GATE",
             "AT20-UET-ATOMIC-OPERATOR-READINESS",
         ],
@@ -4075,6 +4203,12 @@ def run_rydberg_analysis():
             ],
             "atomic_predictive_closure_open_or_partial_checks": atomic_predictive_model_closure_gate["metrics"]["open_or_partial_check_count"],
             "atomic_predictive_closure_fail_open_checks": atomic_predictive_model_closure_gate["metrics"]["fail_open_check_count"],
+            "atomic_predictive_model_spec_blockers": atomic_predictive_model_spec_gate["metrics"][
+                "blocking_implementation_blocker_count"
+            ],
+            "atomic_predictive_model_spec_blocked_lanes": atomic_predictive_model_spec_gate["metrics"][
+                "development_lanes_blocked"
+            ],
         },
         "results": results,
         "limitations": [
@@ -4085,6 +4219,7 @@ def run_rydberg_analysis():
             "Hydrogen-like ion rows support only a provisional selected He+/Li2+ reduced-mass benchmark; C VI is a higher-Z stress test until fine/QED policy and broader ion coverage are added.",
             "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines plus 21 cm source/Fermi gates are diagnostics only and do not validate hyperfine Hamiltonian closure, QED, helium, or many-electron atoms.",
             "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, line-component policy, ground-state baseline residuals, excited-state targets, zero-quantum-defect residual baselines, limited source-calibrated quantum-defect predictions, same-source-family holdout diagnostics, and selected holdout wavelength predictions computed but still do not validate electron correlation or many-electron spectra.",
+            "The atomic predictive-model specification gate maps the required baseline-plus-correction contract, but the UET operator and fixed-parameter generative model remain missing.",
         ],
     }
     artifact["atomic_formula_bridge_manifest"] = {
@@ -4122,6 +4257,7 @@ def run_rydberg_analysis():
     artifact["atomic_residual_uncertainty_budget_gate"] = atomic_residual_uncertainty_budget_gate
     artifact["atomic_fixed_parameter_model_readiness_gate"] = atomic_fixed_parameter_model_readiness_gate
     artifact["atomic_predictive_model_closure_gate"] = atomic_predictive_model_closure_gate
+    artifact["atomic_predictive_model_spec_gate"] = atomic_predictive_model_spec_gate
     artifact["source_evidence_intake_stub"] = {
         "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
         "sha256": sha256(json.dumps(source_evidence_intake_stub, sort_keys=True).encode("utf-8")).hexdigest(),
