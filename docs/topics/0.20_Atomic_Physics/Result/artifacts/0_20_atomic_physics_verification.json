@@ -291,6 +291,8 @@
           "open_or_partial_check_count": 4,
           "precision_1s2s_dirac_residual_ppm": 2.880995748527676,
           "precision_1s2s_lamb_handoff_residual_ppm": 0.004184223857857917,
+          "uet_atomic_operator_blocking_requirement_count": 6,
+          "uet_operator_residual_lane_present": false,
           "uncertainty_budget_computable_row_count": 9,
           "uncertainty_budget_row_count": 9,
           "uncertainty_budget_source_missing_row_count": 0,
@@ -500,7 +502,11 @@
       {
         "current_role": "required for UET-derived spectra rather than inherited standard formulas",
         "domain": "cross_atomic",
-        "evidence": "Current formula bridge records dependency roles only; no UET transition operator or Hamiltonian artifact is primary-gated.",
+        "evidence": {
+          "blocking_requirement_count": 6,
+          "operator_readiness_status": "UET_ATOMIC_OPERATOR_NOT_READY",
+          "uet_operator_residual_lane_present": false
+        },
         "generative_status": "REQUIRED_NOT_PRESENT_FOR_UET_PREDICTION_CLAIM",
         "holdout_status": "BLOCKED",
         "model_id": "uet_atomic_operator",
@@ -670,7 +676,8 @@
           "atomic_fixed_parameter_model_readiness_gate separates fixed standard baselines, empirical handoffs, fitted diagnostics, and missing required generative models",
           "10 model lanes are machine-readable",
           "2 required model lanes remain missing",
-          "legacy_multielectron_code_audit_gate classifies existing multi-electron scripts as smoke/demo code, not primary spectral evidence"
+          "legacy_multielectron_code_audit_gate classifies existing multi-electron scripts as smoke/demo code, not primary spectral evidence",
+          "uet_atomic_operator_readiness_gate has 6 blocking requirements"
         ],
         "remaining_blocker": "Readiness is mapped, but a fixed-parameter CI/correlated helium model or explicit UET atomic operator is still missing.",
         "requirement": "Use a generative physics model whose parameters are fixed before the holdout set is evaluated."
@@ -720,6 +727,8 @@
       "open_or_partial_check_count": 4,
       "precision_1s2s_dirac_residual_ppm": 2.880995748527676,
       "precision_1s2s_lamb_handoff_residual_ppm": 0.004184223857857917,
+      "uet_atomic_operator_blocking_requirement_count": 6,
+      "uet_operator_residual_lane_present": false,
       "uncertainty_budget_computable_row_count": 9,
       "uncertainty_budget_row_count": 9,
       "uncertainty_budget_source_missing_row_count": 0,
@@ -1034,9 +1043,10 @@
     "AT20-ATOMIC-RESIDUAL-UNCERTAINTY-BUDGET",
     "AT20-ATOMIC-FIXED-PARAMETER-MODEL-READINESS",
     "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
-    "AT20-UET-ATOMIC-BRIDGE-GATE"
+    "AT20-UET-ATOMIC-BRIDGE-GATE",
+    "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-03T17:50:17.193353+00:00",
+  "generated_at_utc": "2026-06-04T10:27:02.523294+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -3579,7 +3589,9 @@
     "precision_source_rows": 3,
     "slope_error_ppm": 7.947081514956296,
     "source_targets_blocked": 0,
-    "source_targets_ready_for_review": 6
+    "source_targets_ready_for_review": 6,
+    "uet_atomic_operator_blocking_requirements": 6,
+    "uet_operator_residual_lane_present": false
   },
   "precision_baseline_gate": {
     "claim_class": "nonrelativistic_baseline_only_no_precision_validation",
@@ -3864,5 +3876,102 @@
     "max_wavelength_error_ppm_max": 250.0,
     "slope_error_ppm_max": 250.0
   },
-  "topic": "0.20_Atomic_Physics"
+  "topic": "0.20_Atomic_Physics",
+  "uet_atomic_operator_readiness_gate": {
+    "blocked_claims": [
+      "UET derives the Rydberg constant",
+      "UET derives h or alpha inside 0.20",
+      "UET supplies a validated atomic Hamiltonian",
+      "UET predicts hydrogen, helium, or periodic-table spectra from first principles"
+    ],
+    "claim_boundary": "This gate is a readiness map only. It does not derive an atomic operator; it records the artifacts required before UET-specific atomic prediction claims are allowed.",
+    "claim_class": "operator_readiness_and_derivation_gap_map_only",
+    "dependency_bridge": {
+      "bridge_claim_boundary": "This manifest makes the bridge explicit: inherited Bohr/de Broglie/Rydberg formulas are allowed as standard-theory foundations, while UET derivation and many-electron closure remain blocked until separate artifacts exist.",
+      "cross_topic_dependencies": [
+        "0.13_Thermodynamic_Bridge",
+        "0.6_Electroweak_Physics",
+        "0.17_Mass_Generation",
+        "0.23_Unity_Scale_Link"
+      ],
+      "formula_bridge_dependency_steps": 11
+    },
+    "formula_id": "AT20-UET-ATOMIC-OPERATOR-READINESS",
+    "metrics": {
+      "blocking_requirement_count": 6,
+      "codata_constants_treated_as_inputs": true,
+      "ready_requirement_count": 0,
+      "requirement_count": 6,
+      "uet_operator_residual_lane_present": false
+    },
+    "requirements": [
+      {
+        "blocking_dependency": [
+          "0.6_Electroweak_Physics",
+          "0.17_Mass_Generation"
+        ],
+        "current_evidence": "CODATA constants are source-locked as inputs; the formula bridge does not derive them from UET.",
+        "current_status": "MISSING_DERIVATION",
+        "name": "constant_origin",
+        "required_artifact": "Derive or source-lock the UET role of h, alpha, electron mass, charge, and R_H without treating CODATA inputs as derived outputs.",
+        "requirement_id": "UET-ATOM-01"
+      },
+      {
+        "blocking_dependency": [
+          "0.13_Thermodynamic_Bridge",
+          "0.23_Unity_Scale_Link"
+        ],
+        "current_evidence": "atomic_formula_bridge_manifest records de Broglie/Bohr relations as inherited standard physics.",
+        "current_status": "INHERITED_STANDARD_PHYSICS_ONLY",
+        "name": "quantized_action_bridge",
+        "required_artifact": "Derive the de Broglie/Bohr standing-wave quantization condition from UET assumptions or explicitly keep it inherited.",
+        "requirement_id": "UET-ATOM-02"
+      },
+      {
+        "blocking_dependency": [
+          "0.13_Thermodynamic_Bridge",
+          "0.6_Electroweak_Physics"
+        ],
+        "current_evidence": "No primary-gated UET Hamiltonian or transition-operator artifact exists in 0.20.",
+        "current_status": "MISSING_OPERATOR",
+        "name": "atomic_hamiltonian_or_operator",
+        "required_artifact": "Define a UET atomic Hamiltonian or transition operator that produces level energies and selection rules before holdout evaluation.",
+        "requirement_id": "UET-ATOM-03"
+      },
+      {
+        "blocking_dependency": [
+          "0.6_Electroweak_Physics",
+          "0.17_Mass_Generation"
+        ],
+        "current_evidence": "Current precision gates use standard baselines and empirical handoffs; correction decomposition is not UET-derived.",
+        "current_status": "MISSING_CORRECTION_POLICY",
+        "name": "correction_terms",
+        "required_artifact": "Specify whether UET supplies QED/Lamb, recoil, proton-size, hyperfine, spin-orbit, and electron-correlation corrections or inherits them from standard theory.",
+        "requirement_id": "UET-ATOM-04"
+      },
+      {
+        "blocking_dependency": [
+          "0.20_Atomic_Physics"
+        ],
+        "current_evidence": "Predictive closure gate maps no-leakage and holdout requirements, but UET model parameters are absent.",
+        "current_status": "PROTOCOL_MAPPED_MODEL_MISSING",
+        "name": "parameter_lock_and_holdout_protocol",
+        "required_artifact": "Declare all UET parameters before evaluating independent hydrogen-like, helium, and many-electron holdouts.",
+        "requirement_id": "UET-ATOM-05"
+      },
+      {
+        "blocking_dependency": [
+          "0.20_Atomic_Physics"
+        ],
+        "current_evidence": "Residual budgets exist for current standard/diagnostic lanes, but no UET operator residual lane exists.",
+        "current_status": "PARTIAL_DIAGNOSTIC_ONLY",
+        "name": "residual_and_uncertainty_gate",
+        "required_artifact": "Emit source-backed residuals with propagated source/model uncertainty and thresholds for each UET prediction lane.",
+        "requirement_id": "UET-ATOM-06"
+      }
+    ],
+    "role": "uet_atomic_operator_readiness_gate",
+    "schema_version": "1.0",
+    "status": "UET_ATOMIC_OPERATOR_NOT_READY"
+  }
 }

@@ -2440,6 +2440,91 @@ def build_legacy_multielectron_code_audit_gate() -> dict:
     }
 
 
+def build_uet_atomic_operator_readiness_gate(atomic_formula_bridge_manifest: dict) -> dict:
+    requirements = [
+        {
+            "requirement_id": "UET-ATOM-01",
+            "name": "constant_origin",
+            "required_artifact": "Derive or source-lock the UET role of h, alpha, electron mass, charge, and R_H without treating CODATA inputs as derived outputs.",
+            "current_status": "MISSING_DERIVATION",
+            "current_evidence": "CODATA constants are source-locked as inputs; the formula bridge does not derive them from UET.",
+            "blocking_dependency": ["0.6_Electroweak_Physics", "0.17_Mass_Generation"],
+        },
+        {
+            "requirement_id": "UET-ATOM-02",
+            "name": "quantized_action_bridge",
+            "required_artifact": "Derive the de Broglie/Bohr standing-wave quantization condition from UET assumptions or explicitly keep it inherited.",
+            "current_status": "INHERITED_STANDARD_PHYSICS_ONLY",
+            "current_evidence": "atomic_formula_bridge_manifest records de Broglie/Bohr relations as inherited standard physics.",
+            "blocking_dependency": ["0.13_Thermodynamic_Bridge", "0.23_Unity_Scale_Link"],
+        },
+        {
+            "requirement_id": "UET-ATOM-03",
+            "name": "atomic_hamiltonian_or_operator",
+            "required_artifact": "Define a UET atomic Hamiltonian or transition operator that produces level energies and selection rules before holdout evaluation.",
+            "current_status": "MISSING_OPERATOR",
+            "current_evidence": "No primary-gated UET Hamiltonian or transition-operator artifact exists in 0.20.",
+            "blocking_dependency": ["0.13_Thermodynamic_Bridge", "0.6_Electroweak_Physics"],
+        },
+        {
+            "requirement_id": "UET-ATOM-04",
+            "name": "correction_terms",
+            "required_artifact": "Specify whether UET supplies QED/Lamb, recoil, proton-size, hyperfine, spin-orbit, and electron-correlation corrections or inherits them from standard theory.",
+            "current_status": "MISSING_CORRECTION_POLICY",
+            "current_evidence": "Current precision gates use standard baselines and empirical handoffs; correction decomposition is not UET-derived.",
+            "blocking_dependency": ["0.6_Electroweak_Physics", "0.17_Mass_Generation"],
+        },
+        {
+            "requirement_id": "UET-ATOM-05",
+            "name": "parameter_lock_and_holdout_protocol",
+            "required_artifact": "Declare all UET parameters before evaluating independent hydrogen-like, helium, and many-electron holdouts.",
+            "current_status": "PROTOCOL_MAPPED_MODEL_MISSING",
+            "current_evidence": "Predictive closure gate maps no-leakage and holdout requirements, but UET model parameters are absent.",
+            "blocking_dependency": ["0.20_Atomic_Physics"],
+        },
+        {
+            "requirement_id": "UET-ATOM-06",
+            "name": "residual_and_uncertainty_gate",
+            "required_artifact": "Emit source-backed residuals with propagated source/model uncertainty and thresholds for each UET prediction lane.",
+            "current_status": "PARTIAL_DIAGNOSTIC_ONLY",
+            "current_evidence": "Residual budgets exist for current standard/diagnostic lanes, but no UET operator residual lane exists.",
+            "blocking_dependency": ["0.20_Atomic_Physics"],
+        },
+    ]
+    blocking_requirements = [
+        row
+        for row in requirements
+        if row["current_status"] not in {"READY", "PASS_INTERNAL"}
+    ]
+    return {
+        "schema_version": "1.0",
+        "role": "uet_atomic_operator_readiness_gate",
+        "status": "UET_ATOMIC_OPERATOR_NOT_READY",
+        "claim_class": "operator_readiness_and_derivation_gap_map_only",
+        "formula_id": "AT20-UET-ATOMIC-OPERATOR-READINESS",
+        "dependency_bridge": {
+            "formula_bridge_dependency_steps": len(atomic_formula_bridge_manifest["dependency_chain"]),
+            "cross_topic_dependencies": [row["topic"] for row in atomic_formula_bridge_manifest["cross_topic_dependencies"]],
+            "bridge_claim_boundary": atomic_formula_bridge_manifest["claim_boundary"],
+        },
+        "requirements": requirements,
+        "metrics": {
+            "requirement_count": len(requirements),
+            "blocking_requirement_count": len(blocking_requirements),
+            "ready_requirement_count": len(requirements) - len(blocking_requirements),
+            "uet_operator_residual_lane_present": False,
+            "codata_constants_treated_as_inputs": True,
+        },
+        "blocked_claims": [
+            "UET derives the Rydberg constant",
+            "UET derives h or alpha inside 0.20",
+            "UET supplies a validated atomic Hamiltonian",
+            "UET predicts hydrogen, helium, or periodic-table spectra from first principles",
+        ],
+        "claim_boundary": "This gate is a readiness map only. It does not derive an atomic operator; it records the artifacts required before UET-specific atomic prediction claims are allowed.",
+    }
+
+
 def build_atomic_uncertainty_readiness_gate(
     hydrogen_rydberg_line_uncertainty_gate: dict,
     hydrogen_level_energy_benchmark: dict,
@@ -2814,6 +2899,7 @@ def build_atomic_fixed_parameter_model_readiness_gate(
     helium_quantum_defect_holdout_gate: dict,
     atomic_prediction_baseline_comparator_gate: dict,
     legacy_multielectron_code_audit_gate: dict,
+    uet_atomic_operator_readiness_gate: dict,
 ) -> dict:
     model_lanes = [
         {
@@ -2931,7 +3017,15 @@ def build_atomic_fixed_parameter_model_readiness_gate(
             "generative_status": "REQUIRED_NOT_PRESENT_FOR_UET_PREDICTION_CLAIM",
             "holdout_status": "BLOCKED",
             "current_role": "required for UET-derived spectra rather than inherited standard formulas",
-            "evidence": "Current formula bridge records dependency roles only; no UET transition operator or Hamiltonian artifact is primary-gated.",
+            "evidence": {
+                "operator_readiness_status": uet_atomic_operator_readiness_gate["status"],
+                "blocking_requirement_count": uet_atomic_operator_readiness_gate["metrics"][
+                    "blocking_requirement_count"
+                ],
+                "uet_operator_residual_lane_present": uet_atomic_operator_readiness_gate["metrics"][
+                    "uet_operator_residual_lane_present"
+                ],
+            },
         },
     ]
     fixed_or_standard = [
@@ -2983,6 +3077,7 @@ def build_atomic_predictive_model_closure_gate(
     atomic_residual_uncertainty_budget_gate: dict,
     atomic_fixed_parameter_model_readiness_gate: dict,
     legacy_multielectron_code_audit_gate: dict,
+    uet_atomic_operator_readiness_gate: dict,
 ) -> dict:
     closure_checks = [
         {
@@ -3016,6 +3111,7 @@ def build_atomic_predictive_model_closure_gate(
                 f"{atomic_fixed_parameter_model_readiness_gate['metrics']['model_lane_count']} model lanes are machine-readable",
                 f"{atomic_fixed_parameter_model_readiness_gate['metrics']['missing_required_model_count']} required model lanes remain missing",
                 "legacy_multielectron_code_audit_gate classifies existing multi-electron scripts as smoke/demo code, not primary spectral evidence",
+                f"uet_atomic_operator_readiness_gate has {uet_atomic_operator_readiness_gate['metrics']['blocking_requirement_count']} blocking requirements",
             ],
             "remaining_blocker": "Readiness is mapped, but a fixed-parameter CI/correlated helium model or explicit UET atomic operator is still missing.",
         },
@@ -3085,6 +3181,12 @@ def build_atomic_predictive_model_closure_gate(
             "legacy_multielectron_scripts_audited": legacy_multielectron_code_audit_gate["metrics"]["scripts_present"],
             "legacy_multielectron_primary_evidence_script_count": legacy_multielectron_code_audit_gate["metrics"][
                 "primary_evidence_script_count"
+            ],
+            "uet_atomic_operator_blocking_requirement_count": uet_atomic_operator_readiness_gate["metrics"][
+                "blocking_requirement_count"
+            ],
+            "uet_operator_residual_lane_present": uet_atomic_operator_readiness_gate["metrics"][
+                "uet_operator_residual_lane_present"
             ],
         },
         "promotion_requirements": [
@@ -3550,6 +3652,7 @@ def run_rydberg_analysis():
         helium_quantum_defect_wavelength_holdout_gate,
     )
     legacy_multielectron_code_audit_gate = build_legacy_multielectron_code_audit_gate()
+    uet_atomic_operator_readiness_gate = build_uet_atomic_operator_readiness_gate(atomic_formula_bridge_manifest)
     atomic_uncertainty_readiness_gate = build_atomic_uncertainty_readiness_gate(
         hydrogen_rydberg_line_uncertainty_gate,
         hydrogen_level_energy_benchmark,
@@ -3585,6 +3688,7 @@ def run_rydberg_analysis():
         helium_quantum_defect_holdout_gate,
         atomic_prediction_baseline_comparator_gate,
         legacy_multielectron_code_audit_gate,
+        uet_atomic_operator_readiness_gate,
     )
     atomic_predictive_model_closure_gate = build_atomic_predictive_model_closure_gate(
         hydrogen_like_checkpoint,
@@ -3600,6 +3704,7 @@ def run_rydberg_analysis():
         atomic_residual_uncertainty_budget_gate,
         atomic_fixed_parameter_model_readiness_gate,
         legacy_multielectron_code_audit_gate,
+        uet_atomic_operator_readiness_gate,
     )
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
@@ -3762,6 +3867,7 @@ def run_rydberg_analysis():
             "AT20-ATOMIC-FIXED-PARAMETER-MODEL-READINESS",
             "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
             "AT20-UET-ATOMIC-BRIDGE-GATE",
+            "AT20-UET-ATOMIC-OPERATOR-READINESS",
         ],
         "threshold": threshold,
         "metrics": {
@@ -3871,6 +3977,12 @@ def run_rydberg_analysis():
             "atomic_missing_required_model_lanes": atomic_fixed_parameter_model_readiness_gate["metrics"][
                 "missing_required_model_count"
             ],
+            "uet_atomic_operator_blocking_requirements": uet_atomic_operator_readiness_gate["metrics"][
+                "blocking_requirement_count"
+            ],
+            "uet_operator_residual_lane_present": uet_atomic_operator_readiness_gate["metrics"][
+                "uet_operator_residual_lane_present"
+            ],
             "atomic_predictive_closure_open_or_partial_checks": atomic_predictive_model_closure_gate["metrics"]["open_or_partial_check_count"],
             "atomic_predictive_closure_fail_open_checks": atomic_predictive_model_closure_gate["metrics"]["fail_open_check_count"],
         },
@@ -3913,6 +4025,7 @@ def run_rydberg_analysis():
     artifact["helium_quantum_defect_holdout_gate"] = helium_quantum_defect_holdout_gate
     artifact["helium_quantum_defect_wavelength_holdout_gate"] = helium_quantum_defect_wavelength_holdout_gate
     artifact["legacy_multielectron_code_audit_gate"] = legacy_multielectron_code_audit_gate
+    artifact["uet_atomic_operator_readiness_gate"] = uet_atomic_operator_readiness_gate
     artifact["atomic_prediction_baseline_comparator_gate"] = atomic_prediction_baseline_comparator_gate
     artifact["atomic_uncertainty_readiness_gate"] = atomic_uncertainty_readiness_gate
     artifact["atomic_residual_uncertainty_budget_gate"] = atomic_residual_uncertainty_budget_gate

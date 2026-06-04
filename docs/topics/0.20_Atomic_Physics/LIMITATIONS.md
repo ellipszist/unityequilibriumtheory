@@ -16,6 +16,7 @@
 - The uncertainty-readiness gate maps uncertainty gaps, hydrogen transcription-bound diagnostics, and limited fitted quantum-defect uncertainty diagnostics only. It does not make current hydrogen, helium, QED, or hyperfine residuals uncertainty-qualified.
 - The residual uncertainty-budget gate computes source-uncertainty ratios where current source packages contain uncertainty values or where the hydrogen/helium line packages declare transcription-rounding bounds. Those bounds are not official NIST measurement uncertainties. The gate does not add complete model uncertainty and does not close QED/hyperfine/correlated-helium corrections.
 - The fixed-parameter model-readiness gate maps current model status only. It does not provide the missing CI/correlated helium spectral model or UET atomic operator, and it explicitly excludes legacy smoke/demo scripts from primary evidence.
+- The UET atomic-operator readiness gate maps six required derivation/residual artifacts, all still blocking. It does not derive constants, quantized action, Hamiltonians, transition operators, QED/correlation corrections, or UET residual predictions.
 - Local spectral rows may be rounded or curated; source-table transcription precision should be audited before public ppm claims.
 - Air wavelengths are present in the data but the primary metric uses vacuum wavelengths only.
 - The engine has a local rounded `R_H = 1.09677e7 m^-1`; ppm-level claims should use the CODATA working copy instead.
