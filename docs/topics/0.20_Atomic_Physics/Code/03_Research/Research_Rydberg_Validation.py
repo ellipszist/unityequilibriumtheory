@@ -3550,6 +3550,126 @@ def build_atomic_first_predictive_implementation_candidate_gate(
     }
 
 
+def build_helium_external_holdout_acquisition_gate(
+    atomic_first_predictive_implementation_candidate_gate: dict,
+) -> dict:
+    source_candidates = [
+        {
+            "candidate_id": "chianti_he_i_v11_table",
+            "source_family": "CHIANTI atomic database",
+            "source_url": "https://db.chiantidatabase.org/he/he_1_table.html",
+            "metadata_url": "https://db.chiantidatabase.org/he/he_1.html",
+            "candidate_role": "external_database_cross_check_candidate",
+            "overlap_with_selected_lane": [
+                {
+                    "current_holdout_id": "he_i_1s4p_1P_from_522_21309",
+                    "current_wavelength_angstrom": 522.21309,
+                    "candidate_wavelength_angstrom": 522.2130,
+                    "candidate_upper_energy_cm_inverse": 191492.82,
+                    "match_status": "APPROXIMATE_LINE_ID_MATCH_REQUIRES_RAW_CAPTURE",
+                },
+                {
+                    "current_holdout_id": "he_i_1s3p_1P_from_537_02992",
+                    "current_wavelength_angstrom": 537.02992,
+                    "candidate_wavelength_angstrom": 537.0300,
+                    "candidate_upper_energy_cm_inverse": 186209.47,
+                    "match_status": "APPROXIMATE_LINE_ID_MATCH_REQUIRES_RAW_CAPTURE",
+                },
+            ],
+            "lineage_review": {
+                "status": "SOURCE_FAMILY_NOT_YET_INDEPENDENT",
+                "reason": "CHIANTI He I metadata says energy levels and observed radiative data include Fuhr et al. 1999 / NIST ASD Version 2.0 lineage.",
+                "use_boundary": "May be used first as an external database cross-check candidate, not as independent measurement validation until raw files and lineage are reviewed.",
+            },
+            "capture_requirements": [
+                "archive he_1.elvlc and he_1.wgfa or source-page transcription records with SHA256 hashes",
+                "record exact line indices, lower/upper configurations, terms, energies, wavelength, gf, and A values",
+                "compare source lineage against the current NIST Handbook/ASD source family",
+                "mark any row whose observed energy/wavelength lineage is NIST-derived as cross-check-only",
+            ],
+        },
+        {
+            "candidate_id": "non_nist_measurement_or_compilation",
+            "source_family": "to_be_selected",
+            "source_url": None,
+            "metadata_url": None,
+            "candidate_role": "true_independent_validation_target",
+            "overlap_with_selected_lane": [],
+            "lineage_review": {
+                "status": "MISSING",
+                "reason": "No in-repo non-NIST He I measurement or independent compilation package has been source-locked.",
+                "use_boundary": "Required before helium holdout diagnostics can be upgraded to independent validation.",
+            },
+            "capture_requirements": [
+                "source DOI/URL and page/table locator",
+                "raw table or machine transcription with hash",
+                "wavelength medium convention and uncertainty fields",
+                "line-component/blend policy",
+                "explicit proof that rows were not used in the selected calibration package",
+            ],
+        },
+    ]
+    selected_candidate = source_candidates[0]
+    blocking_requirements = [
+        {
+            "requirement_id": "EXT-HE-01",
+            "status": "PARTIAL_CANDIDATE_IDENTIFIED",
+            "description": "Identify an external source candidate with overlapping He I holdout lines.",
+            "evidence": "CHIANTI He I table contains candidate matches for the 522.21309 A and 537.02992 A current holdout rows.",
+        },
+        {
+            "requirement_id": "EXT-HE-02",
+            "status": "BLOCKED_RAW_HASH_MISSING",
+            "description": "Archive raw/source rows and hashes before the candidate can enter verifier inputs.",
+            "evidence": "No local he_1.elvlc/he_1.wgfa capture or hash exists in the current topic package.",
+        },
+        {
+            "requirement_id": "EXT-HE-03",
+            "status": "BLOCKED_LINEAGE_NOT_INDEPENDENT",
+            "description": "Prove the source family is independent from the NIST family used by current calibration/holdout rows.",
+            "evidence": "CHIANTI metadata records NIST ASD Version 2.0 lineage for observed He I data.",
+        },
+        {
+            "requirement_id": "EXT-HE-04",
+            "status": "BLOCKED_THRESHOLD_MISSING",
+            "description": "Declare uncertainty-aware acceptance thresholds before external residuals are interpreted.",
+            "evidence": "Current helium line uncertainties are transcription-rounding bounds and the first-candidate gate keeps uncertainty criteria partial.",
+        },
+    ]
+    blocking_count = sum(1 for row in blocking_requirements if row["status"].startswith("BLOCKED"))
+    return {
+        "schema_version": "1.0",
+        "role": "helium_external_holdout_acquisition_gate",
+        "status": "EXTERNAL_CANDIDATE_IDENTIFIED_TRUE_INDEPENDENCE_BLOCKED",
+        "claim_class": "source_acquisition_gate_only",
+        "formula_id": "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
+        "selected_first_candidate_lane": atomic_first_predictive_implementation_candidate_gate["selected_lane_id"],
+        "source_candidates": source_candidates,
+        "selected_acquisition_candidate": selected_candidate["candidate_id"],
+        "blocking_requirements": blocking_requirements,
+        "metrics": {
+            "candidate_source_count": len(source_candidates),
+            "candidate_sources_with_overlap_count": sum(1 for row in source_candidates if row["overlap_with_selected_lane"]),
+            "overlap_line_candidate_count": len(selected_candidate["overlap_with_selected_lane"]),
+            "blocking_requirement_count": len(blocking_requirements),
+            "blocked_requirement_count": blocking_count,
+            "first_candidate_level_holdout_count": atomic_first_predictive_implementation_candidate_gate["metrics"][
+                "selected_level_holdout_prediction_count"
+            ],
+            "first_candidate_wavelength_holdout_count": atomic_first_predictive_implementation_candidate_gate["metrics"][
+                "selected_wavelength_holdout_prediction_count"
+            ],
+        },
+        "next_required_artifacts": [
+            "local CHIANTI He I raw-file capture manifest with SHA256 hashes and line-row locators",
+            "lineage review deciding cross-check-only versus independent-validation use",
+            "non-NIST measurement or compilation source package if CHIANTI lineage remains too NIST-dependent",
+            "external-holdout residual gate rerun after source capture and uncertainty thresholds are declared",
+        ],
+        "claim_boundary": "This gate narrows the external-holdout blocker. It identifies candidate source families but does not add external validation rows to the model and does not upgrade helium diagnostics.",
+    }
+
+
 def build_atomic_claim_scope_gate(
     status: str,
     avg_error_ppm: float,
@@ -4068,6 +4188,9 @@ def run_rydberg_analysis():
             atomic_residual_uncertainty_budget_gate,
         )
     )
+    helium_external_holdout_acquisition_gate = build_helium_external_holdout_acquisition_gate(
+        atomic_first_predictive_implementation_candidate_gate
+    )
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
         avg_error_ppm,
@@ -4231,6 +4354,7 @@ def run_rydberg_analysis():
             "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
             "AT20-ATOMIC-PREDICTIVE-MODEL-SPEC",
             "AT20-ATOMIC-FIRST-PREDICTIVE-IMPLEMENTATION-CANDIDATE",
+            "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
             "AT20-UET-ATOMIC-BRIDGE-GATE",
             "AT20-UET-ATOMIC-OPERATOR-READINESS",
         ],
@@ -4373,6 +4497,15 @@ def run_rydberg_analysis():
                     "selected_wavelength_holdout_prediction_count"
                 ]
             ),
+            "helium_external_holdout_candidate_sources": helium_external_holdout_acquisition_gate["metrics"][
+                "candidate_source_count"
+            ],
+            "helium_external_holdout_overlap_candidates": helium_external_holdout_acquisition_gate["metrics"][
+                "overlap_line_candidate_count"
+            ],
+            "helium_external_holdout_blocked_requirements": helium_external_holdout_acquisition_gate["metrics"][
+                "blocked_requirement_count"
+            ],
         },
         "results": results,
         "limitations": [
@@ -4385,6 +4518,7 @@ def run_rydberg_analysis():
             "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, line-component policy, ground-state baseline residuals, excited-state targets, zero-quantum-defect residual baselines, limited source-calibrated quantum-defect predictions, same-source-family holdout diagnostics, and selected holdout wavelength predictions computed but still do not validate electron correlation or many-electron spectra.",
             "The atomic predictive-model specification gate maps the required baseline-plus-correction contract, but the UET operator and fixed-parameter generative model remain missing.",
             "The first predictive implementation candidate gate selects the same-source-family helium quantum-defect holdout lane as the narrowest current diagnostic path, but external validation remains blocked.",
+            "The helium external-holdout acquisition gate identifies CHIANTI He I as an external database cross-check candidate, but raw capture, hashes, and source-lineage independence review remain blocking.",
         ],
     }
     artifact["atomic_formula_bridge_manifest"] = {
@@ -4426,6 +4560,7 @@ def run_rydberg_analysis():
     artifact["atomic_first_predictive_implementation_candidate_gate"] = (
         atomic_first_predictive_implementation_candidate_gate
     )
+    artifact["helium_external_holdout_acquisition_gate"] = helium_external_holdout_acquisition_gate
     artifact["source_evidence_intake_stub"] = {
         "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
         "sha256": sha256(json.dumps(source_evidence_intake_stub, sort_keys=True).encode("utf-8")).hexdigest(),
