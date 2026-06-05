@@ -48,6 +48,9 @@ HELIUM_MANY_ELECTRON_PATH = TOPIC_DIR / "Data" / "03_Research" / "helium_many_el
 HELIUM_TRANSITION_ASSIGNMENTS_PATH = TOPIC_DIR / "Data" / "03_Research" / "helium_transition_assignments.json"
 HELIUM_GROUND_STATE_ENERGY_PATH = TOPIC_DIR / "Data" / "03_Research" / "helium_ground_state_energy_sources.json"
 HELIUM_QD_HOLDOUT_PATH = TOPIC_DIR / "Data" / "03_Research" / "helium_quantum_defect_holdout_sources.json"
+ATOMIC_PREDICTIVE_V1_PARAMETER_MANIFEST_PATH = (
+    TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_parameter_manifest.json"
+)
 CHIANTI_HE_I_MANIFEST_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "external_holdouts" / "chianti_he_i" / "source_manifest.json"
 )
@@ -3553,10 +3556,121 @@ def build_atomic_first_predictive_implementation_candidate_gate(
     }
 
 
+def build_atomic_predictive_v1_parameter_lock_gate(
+    parameter_manifest: dict,
+    atomic_first_predictive_implementation_candidate_gate: dict,
+    helium_quantum_defect_holdout_gate: dict,
+    helium_external_holdout_residual_crosscheck_gate: dict,
+) -> dict:
+    constants = parameter_manifest.get("constants", [])
+    calibrated_parameters = parameter_manifest.get("calibrated_parameters", [])
+    future_required = parameter_manifest.get("future_locked_parameters_required", [])
+    forbidden_fields = parameter_manifest.get("forbidden_leakage_fields", [])
+    missing_future = [row for row in future_required if row.get("current_status") == "missing"]
+    leakage_policy_present = bool(forbidden_fields) and all(
+        "holdout" in field or "external_holdouts" in field for field in forbidden_fields
+    )
+    selected_lane_match = (
+        parameter_manifest.get("selected_lane_id")
+        == "helium_quantum_defect_then_ci_or_uet_correction_v1"
+        and atomic_first_predictive_implementation_candidate_gate["selected_lane_id"]
+        == parameter_manifest.get("current_diagnostic_lane_id")
+    )
+    policy_checks = [
+        {
+            "check_id": "PARAM-01",
+            "requirement": "Selected manifest lane must match the first implementation candidate.",
+            "status": "PASS" if selected_lane_match else "FAIL",
+            "evidence": {
+                "manifest_selected_lane_id": parameter_manifest.get("selected_lane_id"),
+                "manifest_current_diagnostic_lane_id": parameter_manifest.get("current_diagnostic_lane_id"),
+                "candidate_selected_lane_id": atomic_first_predictive_implementation_candidate_gate["selected_lane_id"],
+            },
+        },
+        {
+            "check_id": "PARAM-02",
+            "requirement": "Constants must be marked as inherited/not fitted before holdout evaluation.",
+            "status": "PASS" if constants and all(row.get("fit_status") == "not_fitted" for row in constants) else "FAIL",
+            "evidence": {"constant_count": len(constants)},
+        },
+        {
+            "check_id": "PARAM-03",
+            "requirement": "Calibrated parameters must identify calibration source and holdout leakage policy.",
+            "status": "PASS"
+            if calibrated_parameters
+            and all(row.get("calibration_source_path") and row.get("holdout_leakage_policy") for row in calibrated_parameters)
+            else "FAIL",
+            "evidence": {"calibrated_parameter_count": len(calibrated_parameters)},
+        },
+        {
+            "check_id": "PARAM-04",
+            "requirement": "Forbidden holdout/external fields must be listed before validation claims.",
+            "status": "PASS" if leakage_policy_present else "FAIL",
+            "evidence": {"forbidden_leakage_field_count": len(forbidden_fields)},
+        },
+        {
+            "check_id": "PARAM-05",
+            "requirement": "Future CI/correlated or UET correction parameters must remain explicit blockers until implemented.",
+            "status": "PARTIAL_BLOCKED_GENERATIVE_MODEL_MISSING" if missing_future else "PASS",
+            "evidence": {"missing_future_locked_parameter_count": len(missing_future)},
+        },
+    ]
+    fail_count = sum(1 for row in policy_checks if row["status"] == "FAIL")
+    partial_count = sum(1 for row in policy_checks if row["status"].startswith("PARTIAL"))
+    status = (
+        "PARAMETER_LOCK_POLICY_FAIL"
+        if fail_count
+        else "PARAMETER_MANIFEST_READY_GENERATIVE_MODEL_MISSING"
+        if partial_count
+        else "PARAMETER_MANIFEST_READY"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_predictive_v1_parameter_lock_gate",
+        "status": status,
+        "claim_class": "parameter_lock_diagnostic_only",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-PARAMETER-LOCK",
+        "manifest": {
+            "path": str(ATOMIC_PREDICTIVE_V1_PARAMETER_MANIFEST_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
+            "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_PARAMETER_MANIFEST_PATH),
+            "manifest_id": parameter_manifest.get("manifest_id"),
+            "selected_lane_id": parameter_manifest.get("selected_lane_id"),
+            "current_diagnostic_lane_id": parameter_manifest.get("current_diagnostic_lane_id"),
+        },
+        "policy_checks": policy_checks,
+        "metrics": {
+            "constant_count": len(constants),
+            "calibrated_parameter_count": len(calibrated_parameters),
+            "future_locked_parameter_required_count": len(future_required),
+            "missing_future_locked_parameter_count": len(missing_future),
+            "forbidden_leakage_field_count": len(forbidden_fields),
+            "policy_check_count": len(policy_checks),
+            "policy_fail_count": fail_count,
+            "policy_partial_count": partial_count,
+            "same_source_level_holdout_prediction_count": helium_quantum_defect_holdout_gate["metrics"][
+                "prediction_count"
+            ],
+            "external_crosscheck_row_count": helium_external_holdout_residual_crosscheck_gate["metrics"][
+                "crosscheck_row_count"
+            ],
+        },
+        "next_required_artifacts": [
+            row["required_artifact"] for row in missing_future if row.get("required_artifact")
+        ]
+        + [
+            "rerun v1 prediction report after fixed correction parameters are added",
+            "source-lineage gate proving any external rows were not used for parameter tuning",
+        ],
+        "blocked_claims": parameter_manifest.get("blocked_claims", []),
+        "claim_boundary": parameter_manifest.get("claim_boundary"),
+    }
+
+
 def build_atomic_predictive_model_blueprint_gate(
     atomic_predictive_model_closure_gate: dict,
     atomic_predictive_model_spec_gate: dict,
     atomic_first_predictive_implementation_candidate_gate: dict,
+    atomic_predictive_v1_parameter_lock_gate: dict,
     atomic_prediction_baseline_comparator_gate: dict,
     atomic_uncertainty_readiness_gate: dict,
     atomic_fixed_parameter_model_readiness_gate: dict,
@@ -3585,11 +3699,13 @@ def build_atomic_predictive_model_blueprint_gate(
             "step_id": "BLUEPRINT-03",
             "name": "parameter_lock",
             "requirement": "Freeze constants, calibrated parameters, and forbidden holdout-leakage fields before evaluating holdouts.",
-            "current_decision": "parameter manifest required before any predictive claim",
-            "status": "BLOCKED_PARAMETER_MANIFEST_AND_GENERATIVE_MODEL_MISSING",
+            "current_decision": atomic_predictive_v1_parameter_lock_gate["status"],
+            "status": "PARTIAL_PARAMETER_MANIFEST_READY_GENERATIVE_MODEL_MISSING",
             "evidence": (
-                f"{atomic_fixed_parameter_model_readiness_gate['metrics']['missing_required_model_count']} required "
-                "generative model lanes remain missing, and fitted quantum defects remain diagnostic only."
+                f"{atomic_predictive_v1_parameter_lock_gate['metrics']['calibrated_parameter_count']} calibrated "
+                "parameter policy rows and "
+                f"{atomic_predictive_v1_parameter_lock_gate['metrics']['forbidden_leakage_field_count']} forbidden "
+                "leakage fields are declared; generative CI/UET correction parameters remain missing."
             ),
         },
         {
@@ -3670,6 +3786,15 @@ def build_atomic_predictive_model_blueprint_gate(
             "partial_step_count": len(partial_steps),
             "blocked_step_count": len(blocked_steps),
             "closure_open_or_partial_checks": atomic_predictive_model_closure_gate["metrics"]["open_or_partial_check_count"],
+            "parameter_lock_policy_fail_count": atomic_predictive_v1_parameter_lock_gate["metrics"][
+                "policy_fail_count"
+            ],
+            "parameter_lock_policy_partial_count": atomic_predictive_v1_parameter_lock_gate["metrics"][
+                "policy_partial_count"
+            ],
+            "parameter_lock_missing_future_parameter_count": atomic_predictive_v1_parameter_lock_gate["metrics"][
+                "missing_future_locked_parameter_count"
+            ],
             "spec_blocking_implementation_blockers": atomic_predictive_model_spec_gate["metrics"][
                 "blocking_implementation_blocker_count"
             ],
@@ -4314,6 +4439,7 @@ def run_rydberg_analysis():
     helium_assignments = load_json(HELIUM_TRANSITION_ASSIGNMENTS_PATH)
     helium_ground_sources = load_json(HELIUM_GROUND_STATE_ENERGY_PATH)
     helium_qd_holdouts = load_json(HELIUM_QD_HOLDOUT_PATH)
+    atomic_predictive_v1_parameter_manifest = load_json(ATOMIC_PREDICTIVE_V1_PARAMETER_MANIFEST_PATH)
     chianti_he_i_manifest = load_json(CHIANTI_HE_I_MANIFEST_PATH)
     source_evidence_intake_stub = build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = build_source_evidence_readiness_matrix()
@@ -4519,10 +4645,17 @@ def run_rydberg_analysis():
             helium_external_holdout_acquisition_gate,
         )
     )
+    atomic_predictive_v1_parameter_lock_gate = build_atomic_predictive_v1_parameter_lock_gate(
+        atomic_predictive_v1_parameter_manifest,
+        atomic_first_predictive_implementation_candidate_gate,
+        helium_quantum_defect_holdout_gate,
+        helium_external_holdout_residual_crosscheck_gate,
+    )
     atomic_predictive_model_blueprint_gate = build_atomic_predictive_model_blueprint_gate(
         atomic_predictive_model_closure_gate,
         atomic_predictive_model_spec_gate,
         atomic_first_predictive_implementation_candidate_gate,
+        atomic_predictive_v1_parameter_lock_gate,
         atomic_prediction_baseline_comparator_gate,
         atomic_uncertainty_readiness_gate,
         atomic_fixed_parameter_model_readiness_gate,
@@ -4656,6 +4789,16 @@ def run_rydberg_analysis():
                 "source_rows": [row["holdout_id"] for row in helium_qd_holdouts["holdout_levels"]],
             },
             {
+                "path": str(ATOMIC_PREDICTIVE_V1_PARAMETER_MANIFEST_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_PARAMETER_MANIFEST_PATH),
+                "source": atomic_predictive_v1_parameter_manifest.get("purpose"),
+                "status": atomic_predictive_v1_parameter_manifest.get("status"),
+                "source_rows": [
+                    atomic_predictive_v1_parameter_manifest.get("selected_lane_id"),
+                    atomic_predictive_v1_parameter_manifest.get("current_diagnostic_lane_id"),
+                ],
+            },
+            {
                 "path": str(CHIANTI_HE_I_MANIFEST_PATH.relative_to(ROOT)).replace("\\", "/"),
                 "sha256": file_sha256(CHIANTI_HE_I_MANIFEST_PATH),
                 "source": chianti_he_i_manifest["source_family"]["name"],
@@ -4700,6 +4843,7 @@ def run_rydberg_analysis():
             "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
             "AT20-ATOMIC-PREDICTIVE-MODEL-SPEC",
             "AT20-ATOMIC-FIRST-PREDICTIVE-IMPLEMENTATION-CANDIDATE",
+            "AT20-ATOMIC-PREDICTIVE-V1-PARAMETER-LOCK",
             "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
             "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
             "AT20-HELIUM-EXTERNAL-HOLDOUT-RESIDUAL-CROSSCHECK",
@@ -4845,6 +4989,12 @@ def run_rydberg_analysis():
                     "selected_wavelength_holdout_prediction_count"
                 ]
             ),
+            "atomic_predictive_v1_parameter_lock_policy_fail_count": atomic_predictive_v1_parameter_lock_gate[
+                "metrics"
+            ]["policy_fail_count"],
+            "atomic_predictive_v1_missing_future_locked_parameters": atomic_predictive_v1_parameter_lock_gate[
+                "metrics"
+            ]["missing_future_locked_parameter_count"],
             "atomic_predictive_model_blueprint_steps": atomic_predictive_model_blueprint_gate["metrics"][
                 "blueprint_step_count"
             ],
@@ -4886,7 +5036,8 @@ def run_rydberg_analysis():
             "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines plus 21 cm source/Fermi gates are diagnostics only and do not validate hyperfine Hamiltonian closure, QED, helium, or many-electron atoms.",
             "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, line-component policy, ground-state baseline residuals, excited-state targets, zero-quantum-defect residual baselines, limited source-calibrated quantum-defect predictions, same-source-family holdout diagnostics, and selected holdout wavelength predictions computed but still do not validate electron correlation or many-electron spectra.",
             "The atomic predictive-model specification gate maps the required baseline-plus-correction contract, but the UET operator and fixed-parameter generative model remain missing.",
-            "The atomic predictive-model blueprint gate turns the build path into seven auditable steps; blocked steps still include parameter lock/generative model and external source-lineage closure.",
+            "The atomic predictive-v1 parameter-lock gate now records allowed calibration parameters and forbidden holdout/external leakage fields; future CI/UET correction parameters remain missing.",
+            "The atomic predictive-model blueprint gate turns the build path into seven auditable steps; blocked steps still include external source-lineage closure, while parameter lock is partial until the missing generative model exists.",
             "The first predictive implementation candidate gate selects the same-source-family helium quantum-defect holdout lane as the narrowest current diagnostic path, but external validation remains blocked.",
             "The helium external-holdout acquisition gate identifies CHIANTI He I as an external database cross-check candidate with raw files and hashes captured, but source-lineage independence review and uncertainty-aware thresholds remain blocking.",
             "The helium external-holdout residual cross-check gate computes CHIANTI-vs-current holdout deltas, but it remains cross-check-only because lineage and uncertainty thresholds are not resolved.",
@@ -4931,6 +5082,7 @@ def run_rydberg_analysis():
     artifact["atomic_first_predictive_implementation_candidate_gate"] = (
         atomic_first_predictive_implementation_candidate_gate
     )
+    artifact["atomic_predictive_v1_parameter_lock_gate"] = atomic_predictive_v1_parameter_lock_gate
     artifact["atomic_predictive_model_blueprint_gate"] = atomic_predictive_model_blueprint_gate
     artifact["helium_external_holdout_acquisition_gate"] = helium_external_holdout_acquisition_gate
     artifact["helium_external_holdout_residual_crosscheck_gate"] = (

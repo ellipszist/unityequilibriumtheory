@@ -772,11 +772,11 @@
         "step_id": "BLUEPRINT-02"
       },
       {
-        "current_decision": "parameter manifest required before any predictive claim",
-        "evidence": "2 required generative model lanes remain missing, and fitted quantum defects remain diagnostic only.",
+        "current_decision": "PARAMETER_MANIFEST_READY_GENERATIVE_MODEL_MISSING",
+        "evidence": "1 calibrated parameter policy rows and 4 forbidden leakage fields are declared; generative CI/UET correction parameters remain missing.",
         "name": "parameter_lock",
         "requirement": "Freeze constants, calibrated parameters, and forbidden holdout-leakage fields before evaluating holdouts.",
-        "status": "BLOCKED_PARAMETER_MANIFEST_AND_GENERATIVE_MODEL_MISSING",
+        "status": "PARTIAL_PARAMETER_MANIFEST_READY_GENERATIVE_MODEL_MISSING",
         "step_id": "BLUEPRINT-03"
       },
       {
@@ -829,13 +829,16 @@
     },
     "formula_id": "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
     "metrics": {
-      "blocked_step_count": 2,
+      "blocked_step_count": 1,
       "blueprint_step_count": 7,
       "closure_open_or_partial_checks": 4,
       "external_crosscheck_blocked_requirement_count": 2,
       "external_crosscheck_row_count": 2,
       "internal_pass_step_count": 1,
-      "partial_step_count": 2,
+      "parameter_lock_missing_future_parameter_count": 2,
+      "parameter_lock_policy_fail_count": 0,
+      "parameter_lock_policy_partial_count": 1,
+      "partial_step_count": 3,
       "ready_step_count": 1,
       "selected_level_holdout_prediction_count": 3,
       "selected_wavelength_holdout_prediction_count": 2,
@@ -1067,6 +1070,89 @@
     "role": "atomic_predictive_model_specification_gate",
     "schema_version": "1.0",
     "status": "SPEC_MAPPED_IMPLEMENTATION_BLOCKED"
+  },
+  "atomic_predictive_v1_parameter_lock_gate": {
+    "blocked_claims": [
+      "the current fitted quantum-defect lane is a first-principles UET prediction",
+      "same-source-family holdouts are independent validation",
+      "CHIANTI cross-check rows can tune parameters",
+      "a future UET correction can be added after seeing holdout residuals without a leakage audit"
+    ],
+    "claim_boundary": "This manifest locks the current diagnostic parameter policy and identifies missing future parameters. It does not implement a predictive CI/correlated or UET spectral model.",
+    "claim_class": "parameter_lock_diagnostic_only",
+    "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-PARAMETER-LOCK",
+    "manifest": {
+      "current_diagnostic_lane_id": "helium_quantum_defect_source_family_holdout",
+      "manifest_id": "AT20-PREDICTIVE-V1-PARAMETER-MANIFEST",
+      "path": "Data/03_Research/atomic_predictive_v1_parameter_manifest.json",
+      "selected_lane_id": "helium_quantum_defect_then_ci_or_uet_correction_v1",
+      "sha256": "8a211589382e0653d559051aa7e5e0c1a43ecf619843e9c3db94c00da1f4e3de"
+    },
+    "metrics": {
+      "calibrated_parameter_count": 1,
+      "constant_count": 3,
+      "external_crosscheck_row_count": 2,
+      "forbidden_leakage_field_count": 4,
+      "future_locked_parameter_required_count": 2,
+      "missing_future_locked_parameter_count": 2,
+      "policy_check_count": 5,
+      "policy_fail_count": 0,
+      "policy_partial_count": 1,
+      "same_source_level_holdout_prediction_count": 3
+    },
+    "next_required_artifacts": [
+      "CI/correlated or UET atomic correction operator with units and parameter values frozen before holdout evaluation",
+      "threshold manifest derived before residual evaluation",
+      "rerun v1 prediction report after fixed correction parameters are added",
+      "source-lineage gate proving any external rows were not used for parameter tuning"
+    ],
+    "policy_checks": [
+      {
+        "check_id": "PARAM-01",
+        "evidence": {
+          "candidate_selected_lane_id": "helium_quantum_defect_source_family_holdout",
+          "manifest_current_diagnostic_lane_id": "helium_quantum_defect_source_family_holdout",
+          "manifest_selected_lane_id": "helium_quantum_defect_then_ci_or_uet_correction_v1"
+        },
+        "requirement": "Selected manifest lane must match the first implementation candidate.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "PARAM-02",
+        "evidence": {
+          "constant_count": 3
+        },
+        "requirement": "Constants must be marked as inherited/not fitted before holdout evaluation.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "PARAM-03",
+        "evidence": {
+          "calibrated_parameter_count": 1
+        },
+        "requirement": "Calibrated parameters must identify calibration source and holdout leakage policy.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "PARAM-04",
+        "evidence": {
+          "forbidden_leakage_field_count": 4
+        },
+        "requirement": "Forbidden holdout/external fields must be listed before validation claims.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "PARAM-05",
+        "evidence": {
+          "missing_future_locked_parameter_count": 2
+        },
+        "requirement": "Future CI/correlated or UET correction parameters must remain explicit blockers until implemented.",
+        "status": "PARTIAL_BLOCKED_GENERATIVE_MODEL_MISSING"
+      }
+    ],
+    "role": "atomic_predictive_v1_parameter_lock_gate",
+    "schema_version": "1.0",
+    "status": "PARAMETER_MANIFEST_READY_GENERATIVE_MODEL_MISSING"
   },
   "atomic_residual_uncertainty_budget_gate": {
     "budget_rows": [
@@ -1367,13 +1453,14 @@
     "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
     "AT20-ATOMIC-PREDICTIVE-MODEL-SPEC",
     "AT20-ATOMIC-FIRST-PREDICTIVE-IMPLEMENTATION-CANDIDATE",
+    "AT20-ATOMIC-PREDICTIVE-V1-PARAMETER-LOCK",
     "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
     "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
     "AT20-HELIUM-EXTERNAL-HOLDOUT-RESIDUAL-CROSSCHECK",
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-05T13:19:41.486061+00:00",
+  "generated_at_utc": "2026-06-05T13:31:31.266655+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -4042,6 +4129,16 @@
       "status": "SOURCE_FAMILY_HOLDOUT_ROWS_READY_MODEL_BLOCKED"
     },
     {
+      "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/atomic_predictive_v1_parameter_manifest.json",
+      "sha256": "8a211589382e0653d559051aa7e5e0c1a43ecf619843e9c3db94c00da1f4e3de",
+      "source": "Declare the parameter policy for the first atomic predictive-model candidate before any claim upgrade from diagnostics to prediction validation.",
+      "source_rows": [
+        "helium_quantum_defect_then_ci_or_uet_correction_v1",
+        "helium_quantum_defect_source_family_holdout"
+      ],
+      "status": "PARAMETER_MANIFEST_READY_GENERATIVE_MODEL_MISSING"
+    },
+    {
       "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/external_holdouts/chianti_he_i/source_manifest.json",
       "sha256": "889f0eb7b6f56631db40b456b80d19a46930659bdb67905e748bb88e1b221dac",
       "source": "CHIANTI atomic database",
@@ -4169,7 +4266,8 @@
     "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines plus 21 cm source/Fermi gates are diagnostics only and do not validate hyperfine Hamiltonian closure, QED, helium, or many-electron atoms.",
     "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, line-component policy, ground-state baseline residuals, excited-state targets, zero-quantum-defect residual baselines, limited source-calibrated quantum-defect predictions, same-source-family holdout diagnostics, and selected holdout wavelength predictions computed but still do not validate electron correlation or many-electron spectra.",
     "The atomic predictive-model specification gate maps the required baseline-plus-correction contract, but the UET operator and fixed-parameter generative model remain missing.",
-    "The atomic predictive-model blueprint gate turns the build path into seven auditable steps; blocked steps still include parameter lock/generative model and external source-lineage closure.",
+    "The atomic predictive-v1 parameter-lock gate now records allowed calibration parameters and forbidden holdout/external leakage fields; future CI/UET correction parameters remain missing.",
+    "The atomic predictive-model blueprint gate turns the build path into seven auditable steps; blocked steps still include external source-lineage closure, while parameter lock is partial until the missing generative model exists.",
     "The first predictive implementation candidate gate selects the same-source-family helium quantum-defect holdout lane as the narrowest current diagnostic path, but external validation remains blocked.",
     "The helium external-holdout acquisition gate identifies CHIANTI He I as an external database cross-check candidate with raw files and hashes captured, but source-lineage independence review and uncertainty-aware thresholds remain blocking.",
     "The helium external-holdout residual cross-check gate computes CHIANTI-vs-current holdout deltas, but it remains cross-check-only because lineage and uncertainty thresholds are not resolved."
@@ -4187,11 +4285,13 @@
     "atomic_prediction_comparators_missing_external_or_ci_baseline": 2,
     "atomic_predictive_closure_fail_open_checks": 0,
     "atomic_predictive_closure_open_or_partial_checks": 4,
-    "atomic_predictive_model_blueprint_blocked_steps": 2,
-    "atomic_predictive_model_blueprint_partial_steps": 2,
+    "atomic_predictive_model_blueprint_blocked_steps": 1,
+    "atomic_predictive_model_blueprint_partial_steps": 3,
     "atomic_predictive_model_blueprint_steps": 7,
     "atomic_predictive_model_spec_blocked_lanes": 3,
     "atomic_predictive_model_spec_blockers": 4,
+    "atomic_predictive_v1_missing_future_locked_parameters": 2,
+    "atomic_predictive_v1_parameter_lock_policy_fail_count": 0,
     "atomic_uncertainty_budget_computable_rows": 9,
     "atomic_uncertainty_budget_max_ratio": 2298942817.85,
     "atomic_uncertainty_budget_rows": 9,

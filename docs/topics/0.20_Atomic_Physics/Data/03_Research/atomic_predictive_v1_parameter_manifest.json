@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.20_Atomic_Physics",
+  "manifest_id": "AT20-PREDICTIVE-V1-PARAMETER-MANIFEST",
+  "purpose": "Declare the parameter policy for the first atomic predictive-model candidate before any claim upgrade from diagnostics to prediction validation.",
+  "status": "PARAMETER_MANIFEST_READY_GENERATIVE_MODEL_MISSING",
+  "selected_lane_id": "helium_quantum_defect_then_ci_or_uet_correction_v1",
+  "current_diagnostic_lane_id": "helium_quantum_defect_source_family_holdout",
+  "model_contract": {
+    "required_form": "E_or_nu_pred = standard_baseline(domain, constants, quantum_numbers) + delta_uet_or_ci(domain, locked_parameters, quantum_numbers)",
+    "current_diagnostic_form": "E_bind_pred = h c R_infinity / (n - delta_selected_series)^2",
+    "allowed_current_use": "same-source-family diagnostic harness only",
+    "missing_predictive_component": "fixed-parameter CI/correlated or explicit UET correction operator that predicts helium level corrections rather than fitting holdout rows"
+  },
+  "parameter_policy": {
+    "lock_stage": "before_holdout_evaluation",
+    "locked_before_current_holdout": true,
+    "calibration_rows_allowed": "Selected He I term-level series rows from helium_transition_assignments.json used by helium_quantum_defect_prediction_gate.",
+    "holdout_rows_forbidden_for_fit": "Rows in helium_quantum_defect_holdout_sources.json and CHIANTI overlap rows must not set calibrated quantum defects or correction parameters.",
+    "external_rows_forbidden_for_fit": "CHIANTI He I rows are cross-check-only until source-lineage review closes; non-NIST independent rows must be held out from calibration.",
+    "claim_boundary": "A locked diagnostic parameter manifest does not turn fitted quantum defects into a first-principles UET prediction."
+  },
+  "constants": [
+    {
+      "constant_id": "R_infinity",
+      "source_path": "Data/03_Research/codata_2018_atomic.json",
+      "role": "standard hydrogenic energy scale for diagnostic quantum-defect relation",
+      "fit_status": "not_fitted"
+    },
+    {
+      "constant_id": "h",
+      "source_path": "Code/03_Research/Research_Rydberg_Validation.py",
+      "role": "Planck constant in eV s used for photon/energy conversion",
+      "fit_status": "not_fitted",
+      "limitation": "Current code constant is inherited standard physics, not a UET-derived constant."
+    },
+    {
+      "constant_id": "c",
+      "source_path": "Code/03_Research/Research_Rydberg_Validation.py",
+      "role": "exact SI speed of light used for energy/wavelength conversion",
+      "fit_status": "not_fitted"
+    }
+  ],
+  "calibrated_parameters": [
+    {
+      "parameter_id": "delta_selected_series",
+      "parameter_type": "empirical_quantum_defect_mean",
+      "source_gate": "helium_quantum_defect_prediction_gate.series_summary",
+      "calibration_source_path": "Data/03_Research/helium_transition_assignments.json",
+      "fit_status": "fitted_from_selected_calibration_series",
+      "holdout_leakage_policy": "must_not_use_helium_quantum_defect_holdout_sources_or_chianti_rows",
+      "uncertainty_policy": "series standard error where available; leave-one-out RMSE fallback for current same-source holdouts"
+    }
+  ],
+  "future_locked_parameters_required": [
+    {
+      "parameter_id": "delta_uet_or_ci",
+      "parameter_type": "operator_or_correction_term",
+      "required_before_claim": true,
+      "current_status": "missing",
+      "required_artifact": "CI/correlated or UET atomic correction operator with units and parameter values frozen before holdout evaluation"
+    },
+    {
+      "parameter_id": "thresholds_by_lane",
+      "parameter_type": "uncertainty_aware_residual_thresholds",
+      "required_before_claim": true,
+      "current_status": "missing",
+      "required_artifact": "threshold manifest derived before residual evaluation"
+    }
+  ],
+  "forbidden_leakage_fields": [
+    "holdout_levels.upper_energy_cm_inverse",
+    "holdout_levels.wavelength_angstrom",
+    "external_holdouts.chianti_he_i.overlap_rows.chianti_upper_energy_observed_cm_inverse",
+    "external_holdouts.chianti_he_i.overlap_rows.chianti_wavelength_angstrom"
+  ],
+  "evaluation_policy": {
+    "same_source_holdouts": "diagnostic only",
+    "chianti_rows": "cross-check only until lineage/source-version review closes",
+    "non_nist_rows": "required for independent validation",
+    "baseline_comparators_required": [
+      "zero_quantum_defect_hydrogenic",
+      "empirical_quantum_defect",
+      "fixed_parameter_ci_or_correlated",
+      "uet_correction_if_claimed"
+    ]
+  },
+  "blocked_claims": [
+    "the current fitted quantum-defect lane is a first-principles UET prediction",
+    "same-source-family holdouts are independent validation",
+    "CHIANTI cross-check rows can tune parameters",
+    "a future UET correction can be added after seeing holdout residuals without a leakage audit"
+  ],
+  "claim_boundary": "This manifest locks the current diagnostic parameter policy and identifies missing future parameters. It does not implement a predictive CI/correlated or UET spectral model."
+}
