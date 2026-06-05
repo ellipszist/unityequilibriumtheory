@@ -51,6 +51,9 @@ HELIUM_QD_HOLDOUT_PATH = TOPIC_DIR / "Data" / "03_Research" / "helium_quantum_de
 ATOMIC_PREDICTIVE_V1_PARAMETER_MANIFEST_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_parameter_manifest.json"
 )
+ATOMIC_PREDICTIVE_V1_THRESHOLD_MANIFEST_PATH = (
+    TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_threshold_manifest.json"
+)
 CHIANTI_HE_I_MANIFEST_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "external_holdouts" / "chianti_he_i" / "source_manifest.json"
 )
@@ -3666,11 +3669,97 @@ def build_atomic_predictive_v1_parameter_lock_gate(
     }
 
 
+def build_atomic_predictive_v1_threshold_gate(
+    threshold_manifest: dict,
+    helium_quantum_defect_holdout_gate: dict,
+    helium_quantum_defect_wavelength_holdout_gate: dict,
+    atomic_predictive_v1_parameter_lock_gate: dict,
+) -> dict:
+    current_metric_values = {
+        "max_abs_excitation_residual_eV": helium_quantum_defect_holdout_gate["metrics"][
+            "max_abs_excitation_residual_eV"
+        ],
+        "max_abs_wavelength_residual_angstrom": helium_quantum_defect_wavelength_holdout_gate["metrics"][
+            "max_abs_wavelength_residual_angstrom"
+        ],
+        "max_abs_wavelength_residual_ppm": helium_quantum_defect_wavelength_holdout_gate["metrics"][
+            "max_abs_wavelength_residual_ppm"
+        ],
+    }
+    threshold_rows = []
+    for row in threshold_manifest.get("thresholds", []):
+        metric = row["metric"]
+        current_value = current_metric_values.get(metric)
+        if current_value is None:
+            comparison_status = "MISSING_METRIC"
+            passes = False
+        elif row["operator"] == "<=":
+            passes = current_value <= row["value"]
+            comparison_status = "PASS_DIAGNOSTIC" if passes else "FAIL_DIAGNOSTIC"
+        else:
+            passes = False
+            comparison_status = "UNSUPPORTED_OPERATOR"
+        threshold_rows.append(
+            {
+                "threshold_id": row["threshold_id"],
+                "lane": row["lane"],
+                "metric": metric,
+                "operator": row["operator"],
+                "threshold_value": row["value"],
+                "unit": row["unit"],
+                "current_value": current_value,
+                "comparison_status": comparison_status,
+                "validation_ready": row.get("validation_ready", False),
+                "basis": row.get("basis"),
+            }
+        )
+    diagnostic_pass_count = sum(1 for row in threshold_rows if row["comparison_status"] == "PASS_DIAGNOSTIC")
+    diagnostic_fail_count = sum(1 for row in threshold_rows if row["comparison_status"] == "FAIL_DIAGNOSTIC")
+    validation_ready_count = sum(1 for row in threshold_rows if row["validation_ready"])
+    status = (
+        "THRESHOLD_DIAGNOSTIC_FAIL"
+        if diagnostic_fail_count
+        else "THRESHOLD_MANIFEST_READY_DIAGNOSTIC_ONLY_VALIDATION_BLOCKED"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_predictive_v1_threshold_gate",
+        "status": status,
+        "claim_class": "threshold_manifest_diagnostic_only",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-THRESHOLD-GATE",
+        "manifest": {
+            "path": str(ATOMIC_PREDICTIVE_V1_THRESHOLD_MANIFEST_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
+            "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_THRESHOLD_MANIFEST_PATH),
+            "manifest_id": threshold_manifest.get("manifest_id"),
+            "selected_lane_id": threshold_manifest.get("selected_lane_id"),
+            "current_diagnostic_lane_id": threshold_manifest.get("current_diagnostic_lane_id"),
+            "validation_use_allowed": threshold_manifest.get("threshold_policy", {}).get("validation_use_allowed"),
+        },
+        "threshold_rows": threshold_rows,
+        "metrics": {
+            "threshold_count": len(threshold_rows),
+            "diagnostic_pass_count": diagnostic_pass_count,
+            "diagnostic_fail_count": diagnostic_fail_count,
+            "validation_ready_threshold_count": validation_ready_count,
+            "parameter_lock_missing_future_parameter_count": atomic_predictive_v1_parameter_lock_gate["metrics"][
+                "missing_future_locked_parameter_count"
+            ],
+            "max_level_residual_eV": current_metric_values["max_abs_excitation_residual_eV"],
+            "max_wavelength_residual_angstrom": current_metric_values["max_abs_wavelength_residual_angstrom"],
+            "max_wavelength_residual_ppm": current_metric_values["max_abs_wavelength_residual_ppm"],
+        },
+        "required_for_validation_upgrade": threshold_manifest.get("required_for_validation_upgrade", []),
+        "blocked_claims": threshold_manifest.get("blocked_claims", []),
+        "claim_boundary": threshold_manifest.get("claim_boundary"),
+    }
+
+
 def build_atomic_predictive_model_blueprint_gate(
     atomic_predictive_model_closure_gate: dict,
     atomic_predictive_model_spec_gate: dict,
     atomic_first_predictive_implementation_candidate_gate: dict,
     atomic_predictive_v1_parameter_lock_gate: dict,
+    atomic_predictive_v1_threshold_gate: dict,
     atomic_prediction_baseline_comparator_gate: dict,
     atomic_uncertainty_readiness_gate: dict,
     atomic_fixed_parameter_model_readiness_gate: dict,
@@ -3733,11 +3822,12 @@ def build_atomic_predictive_model_blueprint_gate(
             "step_id": "BLUEPRINT-06",
             "name": "uncertainty_threshold",
             "requirement": "Propagate source and model uncertainty, then apply thresholds declared before evaluation.",
-            "current_decision": "uncertainty readiness is mapped but not closed",
-            "status": "PARTIAL_THRESHOLDS_NOT_VALIDATION_READY",
+            "current_decision": atomic_predictive_v1_threshold_gate["status"],
+            "status": "PARTIAL_THRESHOLD_MANIFEST_READY_VALIDATION_BLOCKED",
             "evidence": (
-                f"{atomic_uncertainty_readiness_gate['metrics']['propagation_blocked_lane_count']} uncertainty lanes "
-                "still block propagation."
+                f"{atomic_predictive_v1_threshold_gate['metrics']['diagnostic_pass_count']} diagnostic thresholds pass, "
+                f"{atomic_predictive_v1_threshold_gate['metrics']['validation_ready_threshold_count']} thresholds are validation-ready, "
+                "and official/source uncertainty plus independent lineage remain required."
             ),
         },
         {
@@ -3794,6 +3884,12 @@ def build_atomic_predictive_model_blueprint_gate(
             ],
             "parameter_lock_missing_future_parameter_count": atomic_predictive_v1_parameter_lock_gate["metrics"][
                 "missing_future_locked_parameter_count"
+            ],
+            "threshold_manifest_diagnostic_pass_count": atomic_predictive_v1_threshold_gate["metrics"][
+                "diagnostic_pass_count"
+            ],
+            "threshold_manifest_validation_ready_count": atomic_predictive_v1_threshold_gate["metrics"][
+                "validation_ready_threshold_count"
             ],
             "spec_blocking_implementation_blockers": atomic_predictive_model_spec_gate["metrics"][
                 "blocking_implementation_blocker_count"
@@ -4440,6 +4536,7 @@ def run_rydberg_analysis():
     helium_ground_sources = load_json(HELIUM_GROUND_STATE_ENERGY_PATH)
     helium_qd_holdouts = load_json(HELIUM_QD_HOLDOUT_PATH)
     atomic_predictive_v1_parameter_manifest = load_json(ATOMIC_PREDICTIVE_V1_PARAMETER_MANIFEST_PATH)
+    atomic_predictive_v1_threshold_manifest = load_json(ATOMIC_PREDICTIVE_V1_THRESHOLD_MANIFEST_PATH)
     chianti_he_i_manifest = load_json(CHIANTI_HE_I_MANIFEST_PATH)
     source_evidence_intake_stub = build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = build_source_evidence_readiness_matrix()
@@ -4651,11 +4748,18 @@ def run_rydberg_analysis():
         helium_quantum_defect_holdout_gate,
         helium_external_holdout_residual_crosscheck_gate,
     )
+    atomic_predictive_v1_threshold_gate = build_atomic_predictive_v1_threshold_gate(
+        atomic_predictive_v1_threshold_manifest,
+        helium_quantum_defect_holdout_gate,
+        helium_quantum_defect_wavelength_holdout_gate,
+        atomic_predictive_v1_parameter_lock_gate,
+    )
     atomic_predictive_model_blueprint_gate = build_atomic_predictive_model_blueprint_gate(
         atomic_predictive_model_closure_gate,
         atomic_predictive_model_spec_gate,
         atomic_first_predictive_implementation_candidate_gate,
         atomic_predictive_v1_parameter_lock_gate,
+        atomic_predictive_v1_threshold_gate,
         atomic_prediction_baseline_comparator_gate,
         atomic_uncertainty_readiness_gate,
         atomic_fixed_parameter_model_readiness_gate,
@@ -4799,6 +4903,15 @@ def run_rydberg_analysis():
                 ],
             },
             {
+                "path": str(ATOMIC_PREDICTIVE_V1_THRESHOLD_MANIFEST_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_THRESHOLD_MANIFEST_PATH),
+                "source": atomic_predictive_v1_threshold_manifest.get("purpose"),
+                "status": atomic_predictive_v1_threshold_manifest.get("status"),
+                "source_rows": [
+                    row["threshold_id"] for row in atomic_predictive_v1_threshold_manifest.get("thresholds", [])
+                ],
+            },
+            {
                 "path": str(CHIANTI_HE_I_MANIFEST_PATH.relative_to(ROOT)).replace("\\", "/"),
                 "sha256": file_sha256(CHIANTI_HE_I_MANIFEST_PATH),
                 "source": chianti_he_i_manifest["source_family"]["name"],
@@ -4844,6 +4957,7 @@ def run_rydberg_analysis():
             "AT20-ATOMIC-PREDICTIVE-MODEL-SPEC",
             "AT20-ATOMIC-FIRST-PREDICTIVE-IMPLEMENTATION-CANDIDATE",
             "AT20-ATOMIC-PREDICTIVE-V1-PARAMETER-LOCK",
+            "AT20-ATOMIC-PREDICTIVE-V1-THRESHOLD-GATE",
             "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
             "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
             "AT20-HELIUM-EXTERNAL-HOLDOUT-RESIDUAL-CROSSCHECK",
@@ -4995,6 +5109,12 @@ def run_rydberg_analysis():
             "atomic_predictive_v1_missing_future_locked_parameters": atomic_predictive_v1_parameter_lock_gate[
                 "metrics"
             ]["missing_future_locked_parameter_count"],
+            "atomic_predictive_v1_threshold_diagnostic_pass_count": atomic_predictive_v1_threshold_gate["metrics"][
+                "diagnostic_pass_count"
+            ],
+            "atomic_predictive_v1_threshold_validation_ready_count": atomic_predictive_v1_threshold_gate["metrics"][
+                "validation_ready_threshold_count"
+            ],
             "atomic_predictive_model_blueprint_steps": atomic_predictive_model_blueprint_gate["metrics"][
                 "blueprint_step_count"
             ],
@@ -5037,7 +5157,8 @@ def run_rydberg_analysis():
             "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, line-component policy, ground-state baseline residuals, excited-state targets, zero-quantum-defect residual baselines, limited source-calibrated quantum-defect predictions, same-source-family holdout diagnostics, and selected holdout wavelength predictions computed but still do not validate electron correlation or many-electron spectra.",
             "The atomic predictive-model specification gate maps the required baseline-plus-correction contract, but the UET operator and fixed-parameter generative model remain missing.",
             "The atomic predictive-v1 parameter-lock gate now records allowed calibration parameters and forbidden holdout/external leakage fields; future CI/UET correction parameters remain missing.",
-            "The atomic predictive-model blueprint gate turns the build path into seven auditable steps; blocked steps still include external source-lineage closure, while parameter lock is partial until the missing generative model exists.",
+            "The atomic predictive-v1 threshold gate now records diagnostic residual thresholds for the selected lane, but zero thresholds are validation-ready.",
+            "The atomic predictive-model blueprint gate turns the build path into seven auditable steps; blocked steps still include external source-lineage closure, while parameter lock and thresholds remain partial until the missing generative model and validation-ready uncertainty policy exist.",
             "The first predictive implementation candidate gate selects the same-source-family helium quantum-defect holdout lane as the narrowest current diagnostic path, but external validation remains blocked.",
             "The helium external-holdout acquisition gate identifies CHIANTI He I as an external database cross-check candidate with raw files and hashes captured, but source-lineage independence review and uncertainty-aware thresholds remain blocking.",
             "The helium external-holdout residual cross-check gate computes CHIANTI-vs-current holdout deltas, but it remains cross-check-only because lineage and uncertainty thresholds are not resolved.",
@@ -5083,6 +5204,7 @@ def run_rydberg_analysis():
         atomic_first_predictive_implementation_candidate_gate
     )
     artifact["atomic_predictive_v1_parameter_lock_gate"] = atomic_predictive_v1_parameter_lock_gate
+    artifact["atomic_predictive_v1_threshold_gate"] = atomic_predictive_v1_threshold_gate
     artifact["atomic_predictive_model_blueprint_gate"] = atomic_predictive_model_blueprint_gate
     artifact["helium_external_holdout_acquisition_gate"] = helium_external_holdout_acquisition_gate
     artifact["helium_external_holdout_residual_crosscheck_gate"] = (

@@ -64,8 +64,9 @@
       "parameter_id": "thresholds_by_lane",
       "parameter_type": "uncertainty_aware_residual_thresholds",
       "required_before_claim": true,
-      "current_status": "missing",
-      "required_artifact": "threshold manifest derived before residual evaluation"
+      "current_status": "diagnostic_threshold_manifest_present_validation_thresholds_blocked",
+      "artifact": "Data/03_Research/atomic_predictive_v1_threshold_manifest.json",
+      "required_artifact": "validation-ready threshold manifest after official/source uncertainty and independent-source policy are available"
     }
   ],
   "forbidden_leakage_fields": [

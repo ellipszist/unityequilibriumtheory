@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.20_Atomic_Physics",
+  "manifest_id": "AT20-PREDICTIVE-V1-THRESHOLD-MANIFEST",
+  "purpose": "Declare diagnostic residual thresholds for the first atomic predictive-model candidate before any future independent validation run.",
+  "status": "THRESHOLD_MANIFEST_READY_DIAGNOSTIC_ONLY",
+  "selected_lane_id": "helium_quantum_defect_then_ci_or_uet_correction_v1",
+  "current_diagnostic_lane_id": "helium_quantum_defect_source_family_holdout",
+  "threshold_policy": {
+    "lock_stage": "before_future_independent_holdout_evaluation",
+    "current_use": "same-source-family diagnostic rerun only",
+    "validation_use_allowed": false,
+    "reason_validation_blocked": "Current source uncertainties are transcription-rounding bounds, holdouts are same-source-family, and no fixed CI/UET correction operator exists.",
+    "claim_boundary": "These thresholds can control diagnostic reruns and future pre-registered validation attempts only. They do not validate the current fitted quantum-defect lane."
+  },
+  "thresholds": [
+    {
+      "threshold_id": "HE-QD-LEVEL-ABS-EV-DIAGNOSTIC",
+      "lane": "helium_quantum_defect_level_holdout",
+      "metric": "max_abs_excitation_residual_eV",
+      "operator": "<=",
+      "value": 0.025,
+      "unit": "eV",
+      "basis": "diagnostic ceiling above current leave-one-out RMSE fallback model uncertainty scale; not an official source-uncertainty validation bound",
+      "validation_ready": false
+    },
+    {
+      "threshold_id": "HE-QD-WAVELENGTH-ABS-A-DIAGNOSTIC",
+      "lane": "helium_quantum_defect_wavelength_holdout",
+      "metric": "max_abs_wavelength_residual_angstrom",
+      "operator": "<=",
+      "value": 0.6,
+      "unit": "angstrom",
+      "basis": "diagnostic ceiling above current propagated fallback model uncertainty scale; not an official source-uncertainty validation bound",
+      "validation_ready": false
+    },
+    {
+      "threshold_id": "HE-QD-WAVELENGTH-PPM-DIAGNOSTIC",
+      "lane": "helium_quantum_defect_wavelength_holdout",
+      "metric": "max_abs_wavelength_residual_ppm",
+      "operator": "<=",
+      "value": 1000.0,
+      "unit": "ppm",
+      "basis": "coarse diagnostic ceiling for current short-wavelength same-source-family rows; independent validation requires source-backed uncertainty thresholds",
+      "validation_ready": false
+    }
+  ],
+  "required_for_validation_upgrade": [
+    "official/source uncertainty replacement for current transcription-rounding bounds",
+    "fixed CI/correlated or UET correction operator with parameters frozen before holdout evaluation",
+    "non-NIST independent He I holdout source package or source-lineage exclusion record",
+    "threshold reclassification from diagnostic to validation-ready before independent rows are evaluated"
+  ],
+  "blocked_claims": [
+    "current diagnostic threshold pass proves independent helium prediction",
+    "thresholds derived for same-source-family reruns can validate non-NIST rows without reclassification",
+    "threshold manifest replaces missing model uncertainty for CI/UET correction terms"
+  ],
+  "claim_boundary": "This manifest closes the missing threshold-manifest bookkeeping blocker for the v1 lane, but all thresholds remain diagnostic until source uncertainty, independent lineage, and a fixed correction operator are available."
+}

@@ -796,11 +796,11 @@
         "step_id": "BLUEPRINT-05"
       },
       {
-        "current_decision": "uncertainty readiness is mapped but not closed",
-        "evidence": "3 uncertainty lanes still block propagation.",
+        "current_decision": "THRESHOLD_MANIFEST_READY_DIAGNOSTIC_ONLY_VALIDATION_BLOCKED",
+        "evidence": "3 diagnostic thresholds pass, 0 thresholds are validation-ready, and official/source uncertainty plus independent lineage remain required.",
         "name": "uncertainty_threshold",
         "requirement": "Propagate source and model uncertainty, then apply thresholds declared before evaluation.",
-        "status": "PARTIAL_THRESHOLDS_NOT_VALIDATION_READY",
+        "status": "PARTIAL_THRESHOLD_MANIFEST_READY_VALIDATION_BLOCKED",
         "step_id": "BLUEPRINT-06"
       },
       {
@@ -835,7 +835,7 @@
       "external_crosscheck_blocked_requirement_count": 2,
       "external_crosscheck_row_count": 2,
       "internal_pass_step_count": 1,
-      "parameter_lock_missing_future_parameter_count": 2,
+      "parameter_lock_missing_future_parameter_count": 1,
       "parameter_lock_policy_fail_count": 0,
       "parameter_lock_policy_partial_count": 1,
       "partial_step_count": 3,
@@ -843,6 +843,8 @@
       "selected_level_holdout_prediction_count": 3,
       "selected_wavelength_holdout_prediction_count": 2,
       "spec_blocking_implementation_blockers": 4,
+      "threshold_manifest_diagnostic_pass_count": 3,
+      "threshold_manifest_validation_ready_count": 0,
       "uet_operator_blocking_requirement_count": 6
     },
     "next_required_artifacts": [
@@ -1086,7 +1088,7 @@
       "manifest_id": "AT20-PREDICTIVE-V1-PARAMETER-MANIFEST",
       "path": "Data/03_Research/atomic_predictive_v1_parameter_manifest.json",
       "selected_lane_id": "helium_quantum_defect_then_ci_or_uet_correction_v1",
-      "sha256": "8a211589382e0653d559051aa7e5e0c1a43ecf619843e9c3db94c00da1f4e3de"
+      "sha256": "bd56ccf7bebaa7c49eaaca050fbef2c0fd41c2b14ddba1c8c5260ede4f830c9e"
     },
     "metrics": {
       "calibrated_parameter_count": 1,
@@ -1094,7 +1096,7 @@
       "external_crosscheck_row_count": 2,
       "forbidden_leakage_field_count": 4,
       "future_locked_parameter_required_count": 2,
-      "missing_future_locked_parameter_count": 2,
+      "missing_future_locked_parameter_count": 1,
       "policy_check_count": 5,
       "policy_fail_count": 0,
       "policy_partial_count": 1,
@@ -1102,7 +1104,6 @@
     },
     "next_required_artifacts": [
       "CI/correlated or UET atomic correction operator with units and parameter values frozen before holdout evaluation",
-      "threshold manifest derived before residual evaluation",
       "rerun v1 prediction report after fixed correction parameters are added",
       "source-lineage gate proving any external rows were not used for parameter tuning"
     ],
@@ -1144,7 +1145,7 @@
       {
         "check_id": "PARAM-05",
         "evidence": {
-          "missing_future_locked_parameter_count": 2
+          "missing_future_locked_parameter_count": 1
         },
         "requirement": "Future CI/correlated or UET correction parameters must remain explicit blockers until implemented.",
         "status": "PARTIAL_BLOCKED_GENERATIVE_MODEL_MISSING"
@@ -1153,6 +1154,81 @@
     "role": "atomic_predictive_v1_parameter_lock_gate",
     "schema_version": "1.0",
     "status": "PARAMETER_MANIFEST_READY_GENERATIVE_MODEL_MISSING"
+  },
+  "atomic_predictive_v1_threshold_gate": {
+    "blocked_claims": [
+      "current diagnostic threshold pass proves independent helium prediction",
+      "thresholds derived for same-source-family reruns can validate non-NIST rows without reclassification",
+      "threshold manifest replaces missing model uncertainty for CI/UET correction terms"
+    ],
+    "claim_boundary": "This manifest closes the missing threshold-manifest bookkeeping blocker for the v1 lane, but all thresholds remain diagnostic until source uncertainty, independent lineage, and a fixed correction operator are available.",
+    "claim_class": "threshold_manifest_diagnostic_only",
+    "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-THRESHOLD-GATE",
+    "manifest": {
+      "current_diagnostic_lane_id": "helium_quantum_defect_source_family_holdout",
+      "manifest_id": "AT20-PREDICTIVE-V1-THRESHOLD-MANIFEST",
+      "path": "Data/03_Research/atomic_predictive_v1_threshold_manifest.json",
+      "selected_lane_id": "helium_quantum_defect_then_ci_or_uet_correction_v1",
+      "sha256": "62b51f0234a481d299ec2e762cdf0b31aadb1bd9c7fab09513d037a0f669d946",
+      "validation_use_allowed": false
+    },
+    "metrics": {
+      "diagnostic_fail_count": 0,
+      "diagnostic_pass_count": 3,
+      "max_level_residual_eV": 0.0018526170410844145,
+      "max_wavelength_residual_angstrom": 0.04309502723526748,
+      "max_wavelength_residual_ppm": 80.24697624904677,
+      "parameter_lock_missing_future_parameter_count": 1,
+      "threshold_count": 3,
+      "validation_ready_threshold_count": 0
+    },
+    "required_for_validation_upgrade": [
+      "official/source uncertainty replacement for current transcription-rounding bounds",
+      "fixed CI/correlated or UET correction operator with parameters frozen before holdout evaluation",
+      "non-NIST independent He I holdout source package or source-lineage exclusion record",
+      "threshold reclassification from diagnostic to validation-ready before independent rows are evaluated"
+    ],
+    "role": "atomic_predictive_v1_threshold_gate",
+    "schema_version": "1.0",
+    "status": "THRESHOLD_MANIFEST_READY_DIAGNOSTIC_ONLY_VALIDATION_BLOCKED",
+    "threshold_rows": [
+      {
+        "basis": "diagnostic ceiling above current leave-one-out RMSE fallback model uncertainty scale; not an official source-uncertainty validation bound",
+        "comparison_status": "PASS_DIAGNOSTIC",
+        "current_value": 0.0018526170410844145,
+        "lane": "helium_quantum_defect_level_holdout",
+        "metric": "max_abs_excitation_residual_eV",
+        "operator": "<=",
+        "threshold_id": "HE-QD-LEVEL-ABS-EV-DIAGNOSTIC",
+        "threshold_value": 0.025,
+        "unit": "eV",
+        "validation_ready": false
+      },
+      {
+        "basis": "diagnostic ceiling above current propagated fallback model uncertainty scale; not an official source-uncertainty validation bound",
+        "comparison_status": "PASS_DIAGNOSTIC",
+        "current_value": 0.04309502723526748,
+        "lane": "helium_quantum_defect_wavelength_holdout",
+        "metric": "max_abs_wavelength_residual_angstrom",
+        "operator": "<=",
+        "threshold_id": "HE-QD-WAVELENGTH-ABS-A-DIAGNOSTIC",
+        "threshold_value": 0.6,
+        "unit": "angstrom",
+        "validation_ready": false
+      },
+      {
+        "basis": "coarse diagnostic ceiling for current short-wavelength same-source-family rows; independent validation requires source-backed uncertainty thresholds",
+        "comparison_status": "PASS_DIAGNOSTIC",
+        "current_value": 80.24697624904677,
+        "lane": "helium_quantum_defect_wavelength_holdout",
+        "metric": "max_abs_wavelength_residual_ppm",
+        "operator": "<=",
+        "threshold_id": "HE-QD-WAVELENGTH-PPM-DIAGNOSTIC",
+        "threshold_value": 1000.0,
+        "unit": "ppm",
+        "validation_ready": false
+      }
+    ]
   },
   "atomic_residual_uncertainty_budget_gate": {
     "budget_rows": [
@@ -1454,13 +1530,14 @@
     "AT20-ATOMIC-PREDICTIVE-MODEL-SPEC",
     "AT20-ATOMIC-FIRST-PREDICTIVE-IMPLEMENTATION-CANDIDATE",
     "AT20-ATOMIC-PREDICTIVE-V1-PARAMETER-LOCK",
+    "AT20-ATOMIC-PREDICTIVE-V1-THRESHOLD-GATE",
     "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
     "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
     "AT20-HELIUM-EXTERNAL-HOLDOUT-RESIDUAL-CROSSCHECK",
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-05T13:31:31.266655+00:00",
+  "generated_at_utc": "2026-06-05T13:45:43.568336+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -4130,13 +4207,24 @@
     },
     {
       "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/atomic_predictive_v1_parameter_manifest.json",
-      "sha256": "8a211589382e0653d559051aa7e5e0c1a43ecf619843e9c3db94c00da1f4e3de",
+      "sha256": "bd56ccf7bebaa7c49eaaca050fbef2c0fd41c2b14ddba1c8c5260ede4f830c9e",
       "source": "Declare the parameter policy for the first atomic predictive-model candidate before any claim upgrade from diagnostics to prediction validation.",
       "source_rows": [
         "helium_quantum_defect_then_ci_or_uet_correction_v1",
         "helium_quantum_defect_source_family_holdout"
       ],
       "status": "PARAMETER_MANIFEST_READY_GENERATIVE_MODEL_MISSING"
+    },
+    {
+      "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/atomic_predictive_v1_threshold_manifest.json",
+      "sha256": "62b51f0234a481d299ec2e762cdf0b31aadb1bd9c7fab09513d037a0f669d946",
+      "source": "Declare diagnostic residual thresholds for the first atomic predictive-model candidate before any future independent validation run.",
+      "source_rows": [
+        "HE-QD-LEVEL-ABS-EV-DIAGNOSTIC",
+        "HE-QD-WAVELENGTH-ABS-A-DIAGNOSTIC",
+        "HE-QD-WAVELENGTH-PPM-DIAGNOSTIC"
+      ],
+      "status": "THRESHOLD_MANIFEST_READY_DIAGNOSTIC_ONLY"
     },
     {
       "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/external_holdouts/chianti_he_i/source_manifest.json",
@@ -4267,7 +4355,8 @@
     "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, line-component policy, ground-state baseline residuals, excited-state targets, zero-quantum-defect residual baselines, limited source-calibrated quantum-defect predictions, same-source-family holdout diagnostics, and selected holdout wavelength predictions computed but still do not validate electron correlation or many-electron spectra.",
     "The atomic predictive-model specification gate maps the required baseline-plus-correction contract, but the UET operator and fixed-parameter generative model remain missing.",
     "The atomic predictive-v1 parameter-lock gate now records allowed calibration parameters and forbidden holdout/external leakage fields; future CI/UET correction parameters remain missing.",
-    "The atomic predictive-model blueprint gate turns the build path into seven auditable steps; blocked steps still include external source-lineage closure, while parameter lock is partial until the missing generative model exists.",
+    "The atomic predictive-v1 threshold gate now records diagnostic residual thresholds for the selected lane, but zero thresholds are validation-ready.",
+    "The atomic predictive-model blueprint gate turns the build path into seven auditable steps; blocked steps still include external source-lineage closure, while parameter lock and thresholds remain partial until the missing generative model and validation-ready uncertainty policy exist.",
     "The first predictive implementation candidate gate selects the same-source-family helium quantum-defect holdout lane as the narrowest current diagnostic path, but external validation remains blocked.",
     "The helium external-holdout acquisition gate identifies CHIANTI He I as an external database cross-check candidate with raw files and hashes captured, but source-lineage independence review and uncertainty-aware thresholds remain blocking.",
     "The helium external-holdout residual cross-check gate computes CHIANTI-vs-current holdout deltas, but it remains cross-check-only because lineage and uncertainty thresholds are not resolved."
@@ -4290,8 +4379,10 @@
     "atomic_predictive_model_blueprint_steps": 7,
     "atomic_predictive_model_spec_blocked_lanes": 3,
     "atomic_predictive_model_spec_blockers": 4,
-    "atomic_predictive_v1_missing_future_locked_parameters": 2,
+    "atomic_predictive_v1_missing_future_locked_parameters": 1,
     "atomic_predictive_v1_parameter_lock_policy_fail_count": 0,
+    "atomic_predictive_v1_threshold_diagnostic_pass_count": 3,
+    "atomic_predictive_v1_threshold_validation_ready_count": 0,
     "atomic_uncertainty_budget_computable_rows": 9,
     "atomic_uncertainty_budget_max_ratio": 2298942817.85,
     "atomic_uncertainty_budget_rows": 9,
