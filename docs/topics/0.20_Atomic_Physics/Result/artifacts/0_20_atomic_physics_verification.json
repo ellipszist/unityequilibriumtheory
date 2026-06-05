@@ -1261,10 +1261,11 @@
     "AT20-ATOMIC-PREDICTIVE-MODEL-SPEC",
     "AT20-ATOMIC-FIRST-PREDICTIVE-IMPLEMENTATION-CANDIDATE",
     "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
+    "AT20-HELIUM-EXTERNAL-HOLDOUT-RESIDUAL-CROSSCHECK",
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-04T11:39:12.689899+00:00",
+  "generated_at_utc": "2026-06-05T12:55:55.218455+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -1754,6 +1755,95 @@
       }
     ],
     "status": "RAW_CAPTURE_READY_LINEAGE_AND_THRESHOLD_BLOCKED"
+  },
+  "helium_external_holdout_residual_crosscheck_gate": {
+    "blocked_claims": [
+      "independent external helium validation",
+      "uncertainty-qualified CHIANTI-vs-NIST agreement",
+      "first-principles helium prediction"
+    ],
+    "claim_boundary": "This gate computes CHIANTI-vs-current holdout deltas after raw capture. It is not an external validation gate and cannot upgrade same-source-family helium prediction diagnostics.",
+    "claim_class": "external_database_crosscheck_diagnostic_only",
+    "crosscheck_rows": [
+      {
+        "candidate_source_family": "CHIANTI atomic database",
+        "chianti_elvlc_upper_line_number": 17,
+        "chianti_upper_energy_observed_cm_inverse": 186209.468,
+        "chianti_wavelength_angstrom": 537.03,
+        "chianti_wgfa_line_number": 32,
+        "current_holdout_id": "he_i_1s3p_1P_from_537_02992",
+        "current_source_family": "NIST Handbook persistent lines",
+        "current_upper_energy_cm_inverse": 186209.3651,
+        "current_wavelength_angstrom": 537.02992,
+        "interpretation": "cross-check delta only; not independent residual validation because CHIANTI lineage and thresholds remain blocked",
+        "lineage_status": "CROSS_CHECK_ONLY_PENDING_INDEPENDENCE_REVIEW",
+        "upper_energy_abs_delta_cm_inverse": 0.10289999999804422,
+        "upper_energy_delta_cm_inverse": 0.10289999999804422,
+        "upper_energy_delta_to_transcription_bound_ratio": 2057.9999999608845,
+        "upper_energy_transcription_bound_cm_inverse": 5e-05,
+        "wavelength_abs_delta_angstrom": 8.000000002539309e-05,
+        "wavelength_abs_delta_ppm": 0.14896749146750168,
+        "wavelength_delta_angstrom": 8.000000002539309e-05,
+        "wavelength_delta_to_transcription_bound_ratio": 16.00000000507862,
+        "wavelength_transcription_bound_angstrom": 5e-06
+      },
+      {
+        "candidate_source_family": "CHIANTI atomic database",
+        "chianti_elvlc_upper_line_number": 31,
+        "chianti_upper_energy_observed_cm_inverse": 191492.816,
+        "chianti_wavelength_angstrom": 522.213,
+        "chianti_wgfa_line_number": 86,
+        "current_holdout_id": "he_i_1s4p_1P_from_522_21309",
+        "current_source_family": "NIST Handbook persistent lines",
+        "current_upper_energy_cm_inverse": 191492.712,
+        "current_wavelength_angstrom": 522.21309,
+        "interpretation": "cross-check delta only; not independent residual validation because CHIANTI lineage and thresholds remain blocked",
+        "lineage_status": "CROSS_CHECK_ONLY_PENDING_INDEPENDENCE_REVIEW",
+        "upper_energy_abs_delta_cm_inverse": 0.10399999999208376,
+        "upper_energy_delta_cm_inverse": 0.10399999999208376,
+        "upper_energy_delta_to_transcription_bound_ratio": 2079.999999841675,
+        "upper_energy_transcription_bound_cm_inverse": 5e-05,
+        "wavelength_abs_delta_angstrom": 9.000000000014552e-05,
+        "wavelength_abs_delta_ppm": 0.17234343934225305,
+        "wavelength_delta_angstrom": -9.000000000014552e-05,
+        "wavelength_delta_to_transcription_bound_ratio": 18.000000000029104,
+        "wavelength_transcription_bound_angstrom": 5e-06
+      }
+    ],
+    "formula_id": "AT20-HELIUM-EXTERNAL-HOLDOUT-RESIDUAL-CROSSCHECK",
+    "metrics": {
+      "average_abs_upper_energy_delta_cm_inverse": 0.10344999999506399,
+      "average_abs_wavelength_delta_angstrom": 8.50000000127693e-05,
+      "average_abs_wavelength_delta_ppm": 0.16065546540487735,
+      "blocked_requirement_count": 2,
+      "crosscheck_row_count": 2,
+      "max_abs_upper_energy_delta_cm_inverse": 0.10399999999208376,
+      "max_abs_wavelength_delta_angstrom": 9.000000000014552e-05,
+      "max_abs_wavelength_delta_ppm": 0.17234343934225305,
+      "raw_file_count": 2,
+      "raw_file_hash_count": 2,
+      "skipped_row_count": 0
+    },
+    "next_required_artifacts": [
+      "lineage decision for whether CHIANTI observed He I rows are NIST-derived cross-check-only",
+      "uncertainty-aware threshold policy for CHIANTI-vs-current holdout residuals",
+      "non-NIST source package if CHIANTI remains NIST-dependent"
+    ],
+    "role": "helium_external_holdout_residual_crosscheck_gate",
+    "schema_version": "1.0",
+    "skipped_rows": [],
+    "source_basis": {
+      "acquisition_gate_status": "RAW_CAPTURE_READY_LINEAGE_AND_THRESHOLD_BLOCKED",
+      "candidate_lineage_status": "NOT_INDEPENDENT_UNTIL_REVIEWED",
+      "candidate_manifest_status": "RAW_CAPTURE_READY_LINEAGE_REVIEW_BLOCKED",
+      "current_holdout_package": {
+        "capture_note": "Rows are transcribed from the text view of the NIST He I persistent-lines table. These rows are not part of helium_many_electron_sources.json and are reserved for holdout diagnostics.",
+        "name": "NIST Handbook of Basic Atomic Spectroscopic Data, Persistent Lines of Neutral Helium",
+        "source_status": "primary_nist_handbook_persistent_lines_table",
+        "url": "https://physics.nist.gov/PhysRefData/Handbook/Tables/heliumtable3_a.htm"
+      }
+    },
+    "status": "CROSSCHECK_RESIDUALS_COMPUTED_LINEAGE_AND_THRESHOLD_BLOCKED"
   },
   "helium_fixed_screening_baseline_gate": {
     "blocked_residual_model_requirements": [
@@ -3942,7 +4032,8 @@
     "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, line-component policy, ground-state baseline residuals, excited-state targets, zero-quantum-defect residual baselines, limited source-calibrated quantum-defect predictions, same-source-family holdout diagnostics, and selected holdout wavelength predictions computed but still do not validate electron correlation or many-electron spectra.",
     "The atomic predictive-model specification gate maps the required baseline-plus-correction contract, but the UET operator and fixed-parameter generative model remain missing.",
     "The first predictive implementation candidate gate selects the same-source-family helium quantum-defect holdout lane as the narrowest current diagnostic path, but external validation remains blocked.",
-    "The helium external-holdout acquisition gate identifies CHIANTI He I as an external database cross-check candidate with raw files and hashes captured, but source-lineage independence review and uncertainty-aware thresholds remain blocking."
+    "The helium external-holdout acquisition gate identifies CHIANTI He I as an external database cross-check candidate with raw files and hashes captured, but source-lineage independence review and uncertainty-aware thresholds remain blocking.",
+    "The helium external-holdout residual cross-check gate computes CHIANTI-vs-current holdout deltas, but it remains cross-check-only because lineage and uncertainty thresholds are not resolved."
   ],
   "metrics": {
     "R_H_codata_m_inverse": 10967758.3406,
@@ -3985,6 +4076,9 @@
     "helium_excited_state_unique_levels": 9,
     "helium_external_holdout_blocked_requirements": 2,
     "helium_external_holdout_candidate_sources": 2,
+    "helium_external_holdout_crosscheck_max_abs_upper_energy_delta_cm_inverse": 0.10399999999208376,
+    "helium_external_holdout_crosscheck_max_abs_wavelength_delta_ppm": 0.17234343934225305,
+    "helium_external_holdout_crosscheck_rows": 2,
     "helium_external_holdout_overlap_candidates": 2,
     "helium_external_holdout_raw_files": 2,
     "helium_fixed_screening_avg_abs_residual_eV": 0.5491888866196746,

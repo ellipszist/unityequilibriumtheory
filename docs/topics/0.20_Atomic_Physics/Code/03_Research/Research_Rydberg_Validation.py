@@ -3674,6 +3674,119 @@ def build_helium_external_holdout_acquisition_gate(
     }
 
 
+def build_helium_external_holdout_residual_crosscheck_gate(
+    helium_qd_holdouts: dict,
+    chianti_he_i_manifest: dict,
+    helium_external_holdout_acquisition_gate: dict,
+) -> dict:
+    holdout_rows = {row["holdout_id"]: row for row in helium_qd_holdouts["holdout_levels"]}
+    crosscheck_rows = []
+    skipped_rows = []
+
+    for candidate in chianti_he_i_manifest["overlap_rows"]:
+        holdout = holdout_rows.get(candidate["current_holdout_id"])
+        if holdout is None:
+            skipped_rows.append(
+                {
+                    "current_holdout_id": candidate["current_holdout_id"],
+                    "reason": "current holdout row not found in helium_quantum_defect_holdout_sources.json",
+                }
+            )
+            continue
+
+        wavelength_delta_angstrom = candidate["chianti_wavelength_angstrom"] - holdout["wavelength_angstrom"]
+        wavelength_abs_delta_angstrom = abs(wavelength_delta_angstrom)
+        wavelength_delta_ppm = wavelength_abs_delta_angstrom / holdout["wavelength_angstrom"] * 1e6
+        upper_energy_delta_cm_inverse = (
+            candidate["chianti_upper_energy_observed_cm_inverse"] - holdout["upper_energy_cm_inverse"]
+        )
+        upper_energy_abs_delta_cm_inverse = abs(upper_energy_delta_cm_inverse)
+        wavelength_uncertainty = holdout.get("wavelength_uncertainty_angstrom")
+        upper_energy_uncertainty = holdout.get("upper_energy_uncertainty_cm_inverse")
+
+        crosscheck_rows.append(
+            {
+                "current_holdout_id": candidate["current_holdout_id"],
+                "current_source_family": "NIST Handbook persistent lines",
+                "candidate_source_family": chianti_he_i_manifest["source_family"]["name"],
+                "current_wavelength_angstrom": holdout["wavelength_angstrom"],
+                "chianti_wavelength_angstrom": candidate["chianti_wavelength_angstrom"],
+                "wavelength_delta_angstrom": wavelength_delta_angstrom,
+                "wavelength_abs_delta_angstrom": wavelength_abs_delta_angstrom,
+                "wavelength_abs_delta_ppm": wavelength_delta_ppm,
+                "current_upper_energy_cm_inverse": holdout["upper_energy_cm_inverse"],
+                "chianti_upper_energy_observed_cm_inverse": candidate[
+                    "chianti_upper_energy_observed_cm_inverse"
+                ],
+                "upper_energy_delta_cm_inverse": upper_energy_delta_cm_inverse,
+                "upper_energy_abs_delta_cm_inverse": upper_energy_abs_delta_cm_inverse,
+                "wavelength_transcription_bound_angstrom": wavelength_uncertainty,
+                "wavelength_delta_to_transcription_bound_ratio": (
+                    wavelength_abs_delta_angstrom / wavelength_uncertainty
+                    if wavelength_uncertainty
+                    else None
+                ),
+                "upper_energy_transcription_bound_cm_inverse": upper_energy_uncertainty,
+                "upper_energy_delta_to_transcription_bound_ratio": (
+                    upper_energy_abs_delta_cm_inverse / upper_energy_uncertainty
+                    if upper_energy_uncertainty
+                    else None
+                ),
+                "chianti_wgfa_line_number": candidate["chianti_wgfa_line_number"],
+                "chianti_elvlc_upper_line_number": candidate["chianti_elvlc_upper_line_number"],
+                "lineage_status": candidate["lineage_status"],
+                "interpretation": "cross-check delta only; not independent residual validation because CHIANTI lineage and thresholds remain blocked",
+            }
+        )
+
+    wavelength_residuals = [row["wavelength_abs_delta_angstrom"] for row in crosscheck_rows]
+    wavelength_ppm = [row["wavelength_abs_delta_ppm"] for row in crosscheck_rows]
+    energy_residuals = [row["upper_energy_abs_delta_cm_inverse"] for row in crosscheck_rows]
+    return {
+        "schema_version": "1.0",
+        "role": "helium_external_holdout_residual_crosscheck_gate",
+        "status": "CROSSCHECK_RESIDUALS_COMPUTED_LINEAGE_AND_THRESHOLD_BLOCKED",
+        "claim_class": "external_database_crosscheck_diagnostic_only",
+        "formula_id": "AT20-HELIUM-EXTERNAL-HOLDOUT-RESIDUAL-CROSSCHECK",
+        "source_basis": {
+            "current_holdout_package": helium_qd_holdouts["source"],
+            "candidate_manifest_status": chianti_he_i_manifest["status"],
+            "candidate_lineage_status": chianti_he_i_manifest["lineage_review"]["status"],
+            "acquisition_gate_status": helium_external_holdout_acquisition_gate["status"],
+        },
+        "metrics": {
+            "crosscheck_row_count": len(crosscheck_rows),
+            "skipped_row_count": len(skipped_rows),
+            "raw_file_count": len(chianti_he_i_manifest["raw_files"]),
+            "raw_file_hash_count": sum(1 for row in chianti_he_i_manifest["raw_files"] if row.get("sha256")),
+            "average_abs_wavelength_delta_angstrom": float(np.mean(wavelength_residuals))
+            if wavelength_residuals
+            else None,
+            "max_abs_wavelength_delta_angstrom": max(wavelength_residuals) if wavelength_residuals else None,
+            "average_abs_wavelength_delta_ppm": float(np.mean(wavelength_ppm)) if wavelength_ppm else None,
+            "max_abs_wavelength_delta_ppm": max(wavelength_ppm) if wavelength_ppm else None,
+            "average_abs_upper_energy_delta_cm_inverse": float(np.mean(energy_residuals))
+            if energy_residuals
+            else None,
+            "max_abs_upper_energy_delta_cm_inverse": max(energy_residuals) if energy_residuals else None,
+            "blocked_requirement_count": 2,
+        },
+        "crosscheck_rows": crosscheck_rows,
+        "skipped_rows": skipped_rows,
+        "blocked_claims": [
+            "independent external helium validation",
+            "uncertainty-qualified CHIANTI-vs-NIST agreement",
+            "first-principles helium prediction",
+        ],
+        "next_required_artifacts": [
+            "lineage decision for whether CHIANTI observed He I rows are NIST-derived cross-check-only",
+            "uncertainty-aware threshold policy for CHIANTI-vs-current holdout residuals",
+            "non-NIST source package if CHIANTI remains NIST-dependent",
+        ],
+        "claim_boundary": "This gate computes CHIANTI-vs-current holdout deltas after raw capture. It is not an external validation gate and cannot upgrade same-source-family helium prediction diagnostics.",
+    }
+
+
 def build_atomic_claim_scope_gate(
     status: str,
     avg_error_ppm: float,
@@ -4197,6 +4310,13 @@ def run_rydberg_analysis():
         atomic_first_predictive_implementation_candidate_gate,
         chianti_he_i_manifest,
     )
+    helium_external_holdout_residual_crosscheck_gate = (
+        build_helium_external_holdout_residual_crosscheck_gate(
+            helium_qd_holdouts,
+            chianti_he_i_manifest,
+            helium_external_holdout_acquisition_gate,
+        )
+    )
     atomic_claim_scope_gate = build_atomic_claim_scope_gate(
         status,
         avg_error_ppm,
@@ -4368,6 +4488,7 @@ def run_rydberg_analysis():
             "AT20-ATOMIC-PREDICTIVE-MODEL-SPEC",
             "AT20-ATOMIC-FIRST-PREDICTIVE-IMPLEMENTATION-CANDIDATE",
             "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
+            "AT20-HELIUM-EXTERNAL-HOLDOUT-RESIDUAL-CROSSCHECK",
             "AT20-UET-ATOMIC-BRIDGE-GATE",
             "AT20-UET-ATOMIC-OPERATOR-READINESS",
         ],
@@ -4520,6 +4641,17 @@ def run_rydberg_analysis():
             "helium_external_holdout_blocked_requirements": helium_external_holdout_acquisition_gate["metrics"][
                 "blocked_requirement_count"
             ],
+            "helium_external_holdout_crosscheck_rows": helium_external_holdout_residual_crosscheck_gate["metrics"][
+                "crosscheck_row_count"
+            ],
+            "helium_external_holdout_crosscheck_max_abs_wavelength_delta_ppm": (
+                helium_external_holdout_residual_crosscheck_gate["metrics"]["max_abs_wavelength_delta_ppm"]
+            ),
+            "helium_external_holdout_crosscheck_max_abs_upper_energy_delta_cm_inverse": (
+                helium_external_holdout_residual_crosscheck_gate["metrics"][
+                    "max_abs_upper_energy_delta_cm_inverse"
+                ]
+            ),
         },
         "results": results,
         "limitations": [
@@ -4533,6 +4665,7 @@ def run_rydberg_analysis():
             "The atomic predictive-model specification gate maps the required baseline-plus-correction contract, but the UET operator and fixed-parameter generative model remain missing.",
             "The first predictive implementation candidate gate selects the same-source-family helium quantum-defect holdout lane as the narrowest current diagnostic path, but external validation remains blocked.",
             "The helium external-holdout acquisition gate identifies CHIANTI He I as an external database cross-check candidate with raw files and hashes captured, but source-lineage independence review and uncertainty-aware thresholds remain blocking.",
+            "The helium external-holdout residual cross-check gate computes CHIANTI-vs-current holdout deltas, but it remains cross-check-only because lineage and uncertainty thresholds are not resolved.",
         ],
     }
     artifact["atomic_formula_bridge_manifest"] = {
@@ -4575,6 +4708,9 @@ def run_rydberg_analysis():
         atomic_first_predictive_implementation_candidate_gate
     )
     artifact["helium_external_holdout_acquisition_gate"] = helium_external_holdout_acquisition_gate
+    artifact["helium_external_holdout_residual_crosscheck_gate"] = (
+        helium_external_holdout_residual_crosscheck_gate
+    )
     artifact["source_evidence_intake_stub"] = {
         "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
         "sha256": sha256(json.dumps(source_evidence_intake_stub, sort_keys=True).encode("utf-8")).hexdigest(),
