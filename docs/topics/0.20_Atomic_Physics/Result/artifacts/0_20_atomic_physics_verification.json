@@ -747,6 +747,113 @@
     "schema_version": "1.0",
     "status": "INTERNAL_COMPARATOR_TABLE_READY_EXTERNAL_AND_CI_BASELINES_OPEN"
   },
+  "atomic_predictive_model_blueprint_gate": {
+    "blocked_claims": [
+      "same-source-family holdouts prove independent prediction",
+      "a fitted quantum-defect diagnostic is a UET derivation",
+      "CHIANTI cross-check residuals validate helium spectra before lineage review",
+      "standard Rydberg/Dirac/QED baselines alone prove UET atomic theory"
+    ],
+    "blueprint_steps": [
+      {
+        "current_decision": "helium_quantum_defect_source_family_holdout",
+        "evidence": "The first candidate gate selects the narrow helium quantum-defect same-source-family lane because it already has level and wavelength holdout diagnostics.",
+        "name": "domain_lane",
+        "requirement": "Choose one domain lane before modeling: one-electron hydrogenic, hydrogen precision, helium two-electron, or periodic-table expansion.",
+        "status": "READY_DIAGNOSTIC_LANE_SELECTED",
+        "step_id": "BLUEPRINT-01"
+      },
+      {
+        "current_decision": "E_or_nu_pred = standard_baseline(domain, constants, quantum_numbers) + delta_uet_or_ci(domain, locked_parameters, quantum_numbers)",
+        "evidence": "The model spec declares the baseline-plus-correction form, but no UET operator or CI/correlated correction implementation is present.",
+        "name": "model_equation",
+        "requirement": "Represent predictions as standard_baseline plus an explicit correction term with units.",
+        "status": "SPEC_READY_IMPLEMENTATION_BLOCKED",
+        "step_id": "BLUEPRINT-02"
+      },
+      {
+        "current_decision": "parameter manifest required before any predictive claim",
+        "evidence": "2 required generative model lanes remain missing, and fitted quantum defects remain diagnostic only.",
+        "name": "parameter_lock",
+        "requirement": "Freeze constants, calibrated parameters, and forbidden holdout-leakage fields before evaluating holdouts.",
+        "status": "BLOCKED_PARAMETER_MANIFEST_AND_GENERATIVE_MODEL_MISSING",
+        "step_id": "BLUEPRINT-03"
+      },
+      {
+        "current_decision": "same-source-family helium holdouts are allowed only as diagnostics",
+        "evidence": "3 level holdouts and 2 wavelength holdouts exist, but external validation remains blocked.",
+        "name": "holdout_protocol",
+        "requirement": "Evaluate on rows that were not used to calibrate parameters, with independent external rows required for validation.",
+        "status": "PARTIAL_EXTERNAL_VALIDATION_BLOCKED",
+        "step_id": "BLUEPRINT-04"
+      },
+      {
+        "current_decision": "internal comparator table present",
+        "evidence": "7 comparator rows are machine-readable.",
+        "name": "baseline_comparator",
+        "requirement": "Compare every claimed prediction against named standard and empirical baselines.",
+        "status": "PASS_INTERNAL_EXTERNAL_COMPARATORS_OPEN",
+        "step_id": "BLUEPRINT-05"
+      },
+      {
+        "current_decision": "uncertainty readiness is mapped but not closed",
+        "evidence": "3 uncertainty lanes still block propagation.",
+        "name": "uncertainty_threshold",
+        "requirement": "Propagate source and model uncertainty, then apply thresholds declared before evaluation.",
+        "status": "PARTIAL_THRESHOLDS_NOT_VALIDATION_READY",
+        "step_id": "BLUEPRINT-06"
+      },
+      {
+        "current_decision": "CHIANTI He I is cross-check-only until lineage/source-version review is closed",
+        "evidence": "2 CHIANTI raw files are captured; 2 overlap rows have residuals, but source-lineage independence is not established.",
+        "name": "source_lineage",
+        "requirement": "Classify cross-check sources by lineage before treating residuals as validation evidence.",
+        "status": "BLOCKED_CROSSCHECK_ONLY",
+        "step_id": "BLUEPRINT-07"
+      }
+    ],
+    "claim_boundary": "This blueprint answers how to build a predictive atomic model. It is not itself a predictive implementation or validation artifact.",
+    "claim_class": "predictive_model_blueprint_no_validation_claim",
+    "first_v1_lane": {
+      "allowed_current_use": "diagnostic blueprint only",
+      "claim_ceiling": "A successful v1 may claim a bounded holdout prediction lane only after parameter lock, uncertainty thresholds, and independent source lineage are closed.",
+      "implementation_order": [
+        "keep the current helium quantum-defect holdout lane as a smoke-test harness",
+        "add a fixed-parameter CI/correlated or explicit UET correction operator that predicts level corrections rather than fitting holdout rows",
+        "freeze a parameter manifest before holdout evaluation",
+        "rerun same-source-family holdouts only as internal diagnostics",
+        "add non-NIST independent He I rows before validation claims",
+        "compare residuals against zero-quantum-defect, empirical quantum-defect, CI/correlated, and any UET correction lane"
+      ],
+      "lane_id": "helium_quantum_defect_then_ci_or_uet_correction_v1"
+    },
+    "formula_id": "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
+    "metrics": {
+      "blocked_step_count": 2,
+      "blueprint_step_count": 7,
+      "closure_open_or_partial_checks": 4,
+      "external_crosscheck_blocked_requirement_count": 2,
+      "external_crosscheck_row_count": 2,
+      "internal_pass_step_count": 1,
+      "partial_step_count": 2,
+      "ready_step_count": 1,
+      "selected_level_holdout_prediction_count": 3,
+      "selected_wavelength_holdout_prediction_count": 2,
+      "spec_blocking_implementation_blockers": 4,
+      "uet_operator_blocking_requirement_count": 6
+    },
+    "next_required_artifacts": [
+      "parameter manifest for the selected v1 lane",
+      "fixed-parameter CI/correlated or explicit UET correction operator with units",
+      "non-NIST independent He I holdout package or completed source-lineage exclusion record",
+      "uncertainty-aware residual thresholds declared before holdout evaluation",
+      "v1 prediction report that compares standard baseline, empirical fit, CI/correlated, and UET correction residuals"
+    ],
+    "purpose": "Turn the predictive-model question into a machine-readable build plan that separates real prediction from fit diagnostics.",
+    "role": "atomic_predictive_model_blueprint_gate",
+    "schema_version": "1.0",
+    "status": "BLUEPRINT_READY_IMPLEMENTATION_AND_VALIDATION_BLOCKED"
+  },
   "atomic_predictive_model_closure_gate": {
     "blocked_claims": [
       "UET predicts all atomic spectra",
@@ -1260,12 +1367,13 @@
     "AT20-ATOMIC-PREDICTIVE-CLOSURE-GATE",
     "AT20-ATOMIC-PREDICTIVE-MODEL-SPEC",
     "AT20-ATOMIC-FIRST-PREDICTIVE-IMPLEMENTATION-CANDIDATE",
+    "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
     "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
     "AT20-HELIUM-EXTERNAL-HOLDOUT-RESIDUAL-CROSSCHECK",
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-05T13:05:38.200150+00:00",
+  "generated_at_utc": "2026-06-05T13:19:41.486061+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -4061,6 +4169,7 @@
     "Precision spectroscopy rows are source-package targets; the 1S-2S nonrelativistic, leading Dirac, and empirical Lamb handoff baselines plus 21 cm source/Fermi gates are diagnostics only and do not validate hyperfine Hamiltonian closure, QED, helium, or many-electron atoms.",
     "Neutral helium rows have photon energies, term assignments, wavelength-medium normalization, line-component policy, ground-state baseline residuals, excited-state targets, zero-quantum-defect residual baselines, limited source-calibrated quantum-defect predictions, same-source-family holdout diagnostics, and selected holdout wavelength predictions computed but still do not validate electron correlation or many-electron spectra.",
     "The atomic predictive-model specification gate maps the required baseline-plus-correction contract, but the UET operator and fixed-parameter generative model remain missing.",
+    "The atomic predictive-model blueprint gate turns the build path into seven auditable steps; blocked steps still include parameter lock/generative model and external source-lineage closure.",
     "The first predictive implementation candidate gate selects the same-source-family helium quantum-defect holdout lane as the narrowest current diagnostic path, but external validation remains blocked.",
     "The helium external-holdout acquisition gate identifies CHIANTI He I as an external database cross-check candidate with raw files and hashes captured, but source-lineage independence review and uncertainty-aware thresholds remain blocking.",
     "The helium external-holdout residual cross-check gate computes CHIANTI-vs-current holdout deltas, but it remains cross-check-only because lineage and uncertainty thresholds are not resolved."
@@ -4078,6 +4187,9 @@
     "atomic_prediction_comparators_missing_external_or_ci_baseline": 2,
     "atomic_predictive_closure_fail_open_checks": 0,
     "atomic_predictive_closure_open_or_partial_checks": 4,
+    "atomic_predictive_model_blueprint_blocked_steps": 2,
+    "atomic_predictive_model_blueprint_partial_steps": 2,
+    "atomic_predictive_model_blueprint_steps": 7,
     "atomic_predictive_model_spec_blocked_lanes": 3,
     "atomic_predictive_model_spec_blockers": 4,
     "atomic_uncertainty_budget_computable_rows": 9,
