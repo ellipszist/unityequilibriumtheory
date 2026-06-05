@@ -3634,16 +3634,16 @@ def build_helium_external_holdout_acquisition_gate(
         },
         {
             "requirement_id": "EXT-HE-04",
-            "status": "BLOCKED_THRESHOLD_MISSING",
-            "description": "Declare uncertainty-aware acceptance thresholds before external residuals are interpreted.",
-            "evidence": "Current helium line uncertainties are transcription-rounding bounds and the first-candidate gate keeps uncertainty criteria partial.",
+            "status": "BLOCKED_SOURCE_VERSION_REVIEW_REQUIRED",
+            "description": "Review source-version and lineage deltas before external residuals are interpreted as anything beyond cross-check diagnostics.",
+            "evidence": "The residual cross-check gate declares display-rounding policy, but CHIANTI-vs-current upper-energy deltas require source-version/lineage review.",
         },
     ]
     blocking_count = sum(1 for row in blocking_requirements if row["status"].startswith("BLOCKED"))
     return {
         "schema_version": "1.0",
         "role": "helium_external_holdout_acquisition_gate",
-        "status": "RAW_CAPTURE_READY_LINEAGE_AND_THRESHOLD_BLOCKED",
+        "status": "RAW_CAPTURE_READY_LINEAGE_AND_SOURCE_VERSION_REVIEW_BLOCKED",
         "claim_class": "source_acquisition_gate_only",
         "formula_id": "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
         "selected_first_candidate_lane": atomic_first_predictive_implementation_candidate_gate["selected_lane_id"],
@@ -3679,6 +3679,11 @@ def build_helium_external_holdout_residual_crosscheck_gate(
     chianti_he_i_manifest: dict,
     helium_external_holdout_acquisition_gate: dict,
 ) -> dict:
+    chianti_display_policy = {
+        "wavelength_rounding_bound_angstrom": 0.0005,
+        "upper_energy_rounding_bound_cm_inverse": 0.0005,
+        "basis": "half last shown decimal place in captured CHIANTI wgfa wavelengths (0.001 A) and elvlc observed energies (0.001 cm^-1)",
+    }
     holdout_rows = {row["holdout_id"]: row for row in helium_qd_holdouts["holdout_levels"]}
     crosscheck_rows = []
     skipped_rows = []
@@ -3703,6 +3708,13 @@ def build_helium_external_holdout_residual_crosscheck_gate(
         upper_energy_abs_delta_cm_inverse = abs(upper_energy_delta_cm_inverse)
         wavelength_uncertainty = holdout.get("wavelength_uncertainty_angstrom")
         upper_energy_uncertainty = holdout.get("upper_energy_uncertainty_cm_inverse")
+        combined_wavelength_rounding_bound = (
+            (wavelength_uncertainty or 0.0) + chianti_display_policy["wavelength_rounding_bound_angstrom"]
+        )
+        combined_energy_rounding_bound = (
+            (upper_energy_uncertainty or 0.0)
+            + chianti_display_policy["upper_energy_rounding_bound_cm_inverse"]
+        )
 
         crosscheck_rows.append(
             {
@@ -3726,28 +3738,63 @@ def build_helium_external_holdout_residual_crosscheck_gate(
                     if wavelength_uncertainty
                     else None
                 ),
+                "combined_wavelength_rounding_bound_angstrom": combined_wavelength_rounding_bound,
+                "wavelength_delta_to_combined_rounding_bound_ratio": (
+                    wavelength_abs_delta_angstrom / combined_wavelength_rounding_bound
+                    if combined_wavelength_rounding_bound
+                    else None
+                ),
+                "wavelength_rounding_policy_status": (
+                    "PASS_DISPLAY_ROUNDING_CONSISTENT"
+                    if wavelength_abs_delta_angstrom <= combined_wavelength_rounding_bound
+                    else "REVIEW_DISPLAY_ROUNDING_EXCEEDED"
+                ),
                 "upper_energy_transcription_bound_cm_inverse": upper_energy_uncertainty,
                 "upper_energy_delta_to_transcription_bound_ratio": (
                     upper_energy_abs_delta_cm_inverse / upper_energy_uncertainty
                     if upper_energy_uncertainty
                     else None
                 ),
+                "combined_upper_energy_rounding_bound_cm_inverse": combined_energy_rounding_bound,
+                "upper_energy_delta_to_combined_rounding_bound_ratio": (
+                    upper_energy_abs_delta_cm_inverse / combined_energy_rounding_bound
+                    if combined_energy_rounding_bound
+                    else None
+                ),
+                "upper_energy_rounding_policy_status": (
+                    "PASS_DISPLAY_ROUNDING_CONSISTENT"
+                    if upper_energy_abs_delta_cm_inverse <= combined_energy_rounding_bound
+                    else "BLOCKED_SOURCE_VERSION_OR_LINEAGE_DELTA_REVIEW"
+                ),
                 "chianti_wgfa_line_number": candidate["chianti_wgfa_line_number"],
                 "chianti_elvlc_upper_line_number": candidate["chianti_elvlc_upper_line_number"],
                 "lineage_status": candidate["lineage_status"],
-                "interpretation": "cross-check delta only; not independent residual validation because CHIANTI lineage and thresholds remain blocked",
+                "interpretation": "cross-check delta only; not independent residual validation because CHIANTI lineage and source-version review remain blocked",
             }
         )
 
     wavelength_residuals = [row["wavelength_abs_delta_angstrom"] for row in crosscheck_rows]
     wavelength_ppm = [row["wavelength_abs_delta_ppm"] for row in crosscheck_rows]
     energy_residuals = [row["upper_energy_abs_delta_cm_inverse"] for row in crosscheck_rows]
+    wavelength_policy_pass_count = sum(
+        1 for row in crosscheck_rows if row["wavelength_rounding_policy_status"].startswith("PASS")
+    )
+    energy_policy_block_count = sum(
+        1 for row in crosscheck_rows if row["upper_energy_rounding_policy_status"].startswith("BLOCKED")
+    )
     return {
         "schema_version": "1.0",
         "role": "helium_external_holdout_residual_crosscheck_gate",
-        "status": "CROSSCHECK_RESIDUALS_COMPUTED_LINEAGE_AND_THRESHOLD_BLOCKED",
+        "status": "CROSSCHECK_RESIDUALS_COMPUTED_LINEAGE_AND_SOURCE_VERSION_REVIEW_BLOCKED",
         "claim_class": "external_database_crosscheck_diagnostic_only",
         "formula_id": "AT20-HELIUM-EXTERNAL-HOLDOUT-RESIDUAL-CROSSCHECK",
+        "threshold_policy": {
+            "status": "DISPLAY_ROUNDING_POLICY_DECLARED_VALIDATION_BLOCKED",
+            "role": "screening_policy_only_not_validation_threshold",
+            "chianti_display_policy": chianti_display_policy,
+            "current_source_policy": helium_qd_holdouts.get("uncertainty_policy"),
+            "interpretation": "Wavelength deltas may pass display-rounding consistency while energy deltas can still require source-version/lineage review. This policy cannot validate helium prediction.",
+        },
         "source_basis": {
             "current_holdout_package": helium_qd_holdouts["source"],
             "candidate_manifest_status": chianti_he_i_manifest["status"],
@@ -3769,6 +3816,8 @@ def build_helium_external_holdout_residual_crosscheck_gate(
             if energy_residuals
             else None,
             "max_abs_upper_energy_delta_cm_inverse": max(energy_residuals) if energy_residuals else None,
+            "wavelength_display_rounding_pass_count": wavelength_policy_pass_count,
+            "upper_energy_source_version_review_count": energy_policy_block_count,
             "blocked_requirement_count": 2,
         },
         "crosscheck_rows": crosscheck_rows,
@@ -3780,7 +3829,7 @@ def build_helium_external_holdout_residual_crosscheck_gate(
         ],
         "next_required_artifacts": [
             "lineage decision for whether CHIANTI observed He I rows are NIST-derived cross-check-only",
-            "uncertainty-aware threshold policy for CHIANTI-vs-current holdout residuals",
+            "source-version review for CHIANTI-vs-current upper-energy deltas that exceed combined display rounding",
             "non-NIST source package if CHIANTI remains NIST-dependent",
         ],
         "claim_boundary": "This gate computes CHIANTI-vs-current holdout deltas after raw capture. It is not an external validation gate and cannot upgrade same-source-family helium prediction diagnostics.",

@@ -25,8 +25,8 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 | Predictive closure contract | artifact `atomic_predictive_model_closure_gate` | governance gate only; broad atomic prediction blocked until no-leakage splits, independent holdouts, uncertainty propagation, comparator baselines, and fixed-parameter CI/correlated or UET operators exist |
 | Predictive model specification | artifact `atomic_predictive_model_spec_gate` | model-specification only; requires `standard_baseline + delta_uet_or_ci`, locked parameters, holdouts, comparators, uncertainty propagation, and domain lanes |
 | First predictive implementation candidate | artifact `atomic_first_predictive_implementation_candidate_gate` | selects helium quantum-defect same-source-family holdouts as the first diagnostic implementation lane; independent external validation remains blocked |
-| Helium external holdout acquisition | artifact `helium_external_holdout_acquisition_gate` | identifies CHIANTI He I as a cross-check candidate with raw files and hashes captured; lineage and threshold blockers remain |
-| Helium external holdout residual cross-check | artifact `helium_external_holdout_residual_crosscheck_gate` | computes CHIANTI-vs-current holdout deltas for 2 raw-captured overlap rows; diagnostic only because lineage and thresholds remain blocked |
+| Helium external holdout acquisition | artifact `helium_external_holdout_acquisition_gate` | identifies CHIANTI He I as a cross-check candidate with raw files and hashes captured; lineage and source-version blockers remain |
+| Helium external holdout residual cross-check | artifact `helium_external_holdout_residual_crosscheck_gate` | computes CHIANTI-vs-current holdout deltas for 2 raw-captured overlap rows; display-rounding policy declared, diagnostic only because lineage/source-version review remains blocked |
 | Three-body coupling smoke test | `Research_Atomic_ThreeBody.py` | code-health check, not physics validation |
 | Multi-electron comparisons | `Research_Multi_Electron.py` | open lane |
 
@@ -86,8 +86,8 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 - The predictive closure contract is a claim-control artifact only. It does not make the current quantum-defect or hydrogenic gates first-principles predictions.
 - The predictive-model specification is not an implementation. It requires a future model to use `standard_baseline + delta_uet_or_ci` with locked parameters, source-backed holdouts, named baseline comparators, uncertainty-aware thresholds, and domain-specific gates.
 - The first predictive implementation candidate gate selects the helium quantum-defect same-source-family holdout lane because it has current level and wavelength holdout predictions. It remains diagnostic only until independent external holdouts, uncertainty-aware thresholds, and a CI/correlated or UET operator are added.
-- The helium external-holdout acquisition gate identifies CHIANTI He I as a cross-check candidate, not as independent validation, because CHIANTI metadata records NIST ASD lineage for observed He I data. Raw files, hashes, and two overlap locators are captured; source-lineage review and uncertainty-aware thresholds remain required.
-- The helium external-holdout residual cross-check gate computes CHIANTI-vs-current deltas for two overlap rows, but it remains diagnostic only because lineage review and uncertainty-aware thresholds are unresolved.
+- The helium external-holdout acquisition gate identifies CHIANTI He I as a cross-check candidate, not as independent validation, because CHIANTI metadata records NIST ASD lineage for observed He I data. Raw files, hashes, and two overlap locators are captured; source-lineage review and source-version review remain required.
+- The helium external-holdout residual cross-check gate computes CHIANTI-vs-current deltas for two overlap rows. The display-rounding policy records 2/2 wavelength rows as consistent and 2/2 upper-energy rows as requiring source-version/lineage review, so it remains diagnostic only.
 - The comparator table is internal only; it does not replace missing independent external holdouts or CI/correlated model baselines.
 - The uncertainty-readiness matrix is not uncertainty-qualified validation; it records partial propagation for hydrogen transcription-bound and fitted quantum-defect diagnostics and identifies which lanes still need full propagation and uncertainty-aware thresholds.
 - The residual uncertainty-budget gate computes ratios only where source uncertainty is already present or a bounded transcription policy is explicitly declared. It does not supply missing model uncertainty, official hydrogen/helium line measurement uncertainty, or pass/fail thresholds.
@@ -109,7 +109,7 @@ This topic tests whether the atomic layer can reproduce selected hydrogen spectr
 - Predictive closure language that defines the minimum artifact requirements for future atomic-spectrum prediction claims.
 - Predictive-model specification language that defines the model form and implementation blockers without claiming the model exists.
 - First predictive implementation candidate language that identifies helium same-source-family holdouts as the current narrow next lane while keeping independent validation blocked.
-- Helium external-holdout acquisition and residual cross-check language that narrows the independent-validation blocker to source-lineage review and uncertainty-aware thresholds.
+- Helium external-holdout acquisition and residual cross-check language that narrows the independent-validation blocker to source-lineage and source-version review.
 
 ## Excluded Cases
 

@@ -1265,7 +1265,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-05T12:55:55.218455+00:00",
+  "generated_at_utc": "2026-06-05T13:05:38.200150+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -1641,10 +1641,10 @@
         "status": "BLOCKED_LINEAGE_NOT_INDEPENDENT"
       },
       {
-        "description": "Declare uncertainty-aware acceptance thresholds before external residuals are interpreted.",
-        "evidence": "Current helium line uncertainties are transcription-rounding bounds and the first-candidate gate keeps uncertainty criteria partial.",
+        "description": "Review source-version and lineage deltas before external residuals are interpreted as anything beyond cross-check diagnostics.",
+        "evidence": "The residual cross-check gate declares display-rounding policy, but CHIANTI-vs-current upper-energy deltas require source-version/lineage review.",
         "requirement_id": "EXT-HE-04",
-        "status": "BLOCKED_THRESHOLD_MISSING"
+        "status": "BLOCKED_SOURCE_VERSION_REVIEW_REQUIRED"
       }
     ],
     "claim_boundary": "This gate narrows the external-holdout blocker. It identifies candidate source families but does not add external validation rows to the model and does not upgrade helium diagnostics.",
@@ -1754,7 +1754,7 @@
         "source_url": null
       }
     ],
-    "status": "RAW_CAPTURE_READY_LINEAGE_AND_THRESHOLD_BLOCKED"
+    "status": "RAW_CAPTURE_READY_LINEAGE_AND_SOURCE_VERSION_REVIEW_BLOCKED"
   },
   "helium_external_holdout_residual_crosscheck_gate": {
     "blocked_claims": [
@@ -1771,20 +1771,26 @@
         "chianti_upper_energy_observed_cm_inverse": 186209.468,
         "chianti_wavelength_angstrom": 537.03,
         "chianti_wgfa_line_number": 32,
+        "combined_upper_energy_rounding_bound_cm_inverse": 0.00055,
+        "combined_wavelength_rounding_bound_angstrom": 0.000505,
         "current_holdout_id": "he_i_1s3p_1P_from_537_02992",
         "current_source_family": "NIST Handbook persistent lines",
         "current_upper_energy_cm_inverse": 186209.3651,
         "current_wavelength_angstrom": 537.02992,
-        "interpretation": "cross-check delta only; not independent residual validation because CHIANTI lineage and thresholds remain blocked",
+        "interpretation": "cross-check delta only; not independent residual validation because CHIANTI lineage and source-version review remain blocked",
         "lineage_status": "CROSS_CHECK_ONLY_PENDING_INDEPENDENCE_REVIEW",
         "upper_energy_abs_delta_cm_inverse": 0.10289999999804422,
         "upper_energy_delta_cm_inverse": 0.10289999999804422,
+        "upper_energy_delta_to_combined_rounding_bound_ratio": 187.0909090873531,
         "upper_energy_delta_to_transcription_bound_ratio": 2057.9999999608845,
+        "upper_energy_rounding_policy_status": "BLOCKED_SOURCE_VERSION_OR_LINEAGE_DELTA_REVIEW",
         "upper_energy_transcription_bound_cm_inverse": 5e-05,
         "wavelength_abs_delta_angstrom": 8.000000002539309e-05,
         "wavelength_abs_delta_ppm": 0.14896749146750168,
         "wavelength_delta_angstrom": 8.000000002539309e-05,
+        "wavelength_delta_to_combined_rounding_bound_ratio": 0.15841584163444175,
         "wavelength_delta_to_transcription_bound_ratio": 16.00000000507862,
+        "wavelength_rounding_policy_status": "PASS_DISPLAY_ROUNDING_CONSISTENT",
         "wavelength_transcription_bound_angstrom": 5e-06
       },
       {
@@ -1793,20 +1799,26 @@
         "chianti_upper_energy_observed_cm_inverse": 191492.816,
         "chianti_wavelength_angstrom": 522.213,
         "chianti_wgfa_line_number": 86,
+        "combined_upper_energy_rounding_bound_cm_inverse": 0.00055,
+        "combined_wavelength_rounding_bound_angstrom": 0.000505,
         "current_holdout_id": "he_i_1s4p_1P_from_522_21309",
         "current_source_family": "NIST Handbook persistent lines",
         "current_upper_energy_cm_inverse": 191492.712,
         "current_wavelength_angstrom": 522.21309,
-        "interpretation": "cross-check delta only; not independent residual validation because CHIANTI lineage and thresholds remain blocked",
+        "interpretation": "cross-check delta only; not independent residual validation because CHIANTI lineage and source-version review remain blocked",
         "lineage_status": "CROSS_CHECK_ONLY_PENDING_INDEPENDENCE_REVIEW",
         "upper_energy_abs_delta_cm_inverse": 0.10399999999208376,
         "upper_energy_delta_cm_inverse": 0.10399999999208376,
+        "upper_energy_delta_to_combined_rounding_bound_ratio": 189.0909090765159,
         "upper_energy_delta_to_transcription_bound_ratio": 2079.999999841675,
+        "upper_energy_rounding_policy_status": "BLOCKED_SOURCE_VERSION_OR_LINEAGE_DELTA_REVIEW",
         "upper_energy_transcription_bound_cm_inverse": 5e-05,
         "wavelength_abs_delta_angstrom": 9.000000000014552e-05,
         "wavelength_abs_delta_ppm": 0.17234343934225305,
         "wavelength_delta_angstrom": -9.000000000014552e-05,
+        "wavelength_delta_to_combined_rounding_bound_ratio": 0.17821782178246637,
         "wavelength_delta_to_transcription_bound_ratio": 18.000000000029104,
+        "wavelength_rounding_policy_status": "PASS_DISPLAY_ROUNDING_CONSISTENT",
         "wavelength_transcription_bound_angstrom": 5e-06
       }
     ],
@@ -1822,18 +1834,20 @@
       "max_abs_wavelength_delta_ppm": 0.17234343934225305,
       "raw_file_count": 2,
       "raw_file_hash_count": 2,
-      "skipped_row_count": 0
+      "skipped_row_count": 0,
+      "upper_energy_source_version_review_count": 2,
+      "wavelength_display_rounding_pass_count": 2
     },
     "next_required_artifacts": [
       "lineage decision for whether CHIANTI observed He I rows are NIST-derived cross-check-only",
-      "uncertainty-aware threshold policy for CHIANTI-vs-current holdout residuals",
+      "source-version review for CHIANTI-vs-current upper-energy deltas that exceed combined display rounding",
       "non-NIST source package if CHIANTI remains NIST-dependent"
     ],
     "role": "helium_external_holdout_residual_crosscheck_gate",
     "schema_version": "1.0",
     "skipped_rows": [],
     "source_basis": {
-      "acquisition_gate_status": "RAW_CAPTURE_READY_LINEAGE_AND_THRESHOLD_BLOCKED",
+      "acquisition_gate_status": "RAW_CAPTURE_READY_LINEAGE_AND_SOURCE_VERSION_REVIEW_BLOCKED",
       "candidate_lineage_status": "NOT_INDEPENDENT_UNTIL_REVIEWED",
       "candidate_manifest_status": "RAW_CAPTURE_READY_LINEAGE_REVIEW_BLOCKED",
       "current_holdout_package": {
@@ -1843,7 +1857,23 @@
         "url": "https://physics.nist.gov/PhysRefData/Handbook/Tables/heliumtable3_a.htm"
       }
     },
-    "status": "CROSSCHECK_RESIDUALS_COMPUTED_LINEAGE_AND_THRESHOLD_BLOCKED"
+    "status": "CROSSCHECK_RESIDUALS_COMPUTED_LINEAGE_AND_SOURCE_VERSION_REVIEW_BLOCKED",
+    "threshold_policy": {
+      "chianti_display_policy": {
+        "basis": "half last shown decimal place in captured CHIANTI wgfa wavelengths (0.001 A) and elvlc observed energies (0.001 cm^-1)",
+        "upper_energy_rounding_bound_cm_inverse": 0.0005,
+        "wavelength_rounding_bound_angstrom": 0.0005
+      },
+      "current_source_policy": {
+        "claim_boundary": "These uncertainty fields support residual-budget diagnostics only. They are not official NIST measurement uncertainties and cannot support uncertainty-qualified helium validation.",
+        "rule": "Use half of the last shown decimal place as a conservative transcription-rounding uncertainty for wavelength and level-energy fields.",
+        "source_uncertainty_status": "NIST handbook row uncertainties are not explicitly captured in this package.",
+        "status": "TRANSCRIPTION_ROUNDING_BOUNDS_ONLY"
+      },
+      "interpretation": "Wavelength deltas may pass display-rounding consistency while energy deltas can still require source-version/lineage review. This policy cannot validate helium prediction.",
+      "role": "screening_policy_only_not_validation_threshold",
+      "status": "DISPLAY_ROUNDING_POLICY_DECLARED_VALIDATION_BLOCKED"
+    }
   },
   "helium_fixed_screening_baseline_gate": {
     "blocked_residual_model_requirements": [
