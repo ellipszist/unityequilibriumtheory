@@ -54,6 +54,9 @@ ATOMIC_PREDICTIVE_V1_PARAMETER_MANIFEST_PATH = (
 ATOMIC_PREDICTIVE_V1_THRESHOLD_MANIFEST_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_threshold_manifest.json"
 )
+ATOMIC_PREDICTIVE_V1_OPERATOR_MANIFEST_PATH = (
+    TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_fixed_correction_operator_manifest.json"
+)
 CHIANTI_HE_I_MANIFEST_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "external_holdouts" / "chianti_he_i" / "source_manifest.json"
 )
@@ -3754,6 +3757,128 @@ def build_atomic_predictive_v1_threshold_gate(
     }
 
 
+def build_atomic_predictive_v1_fixed_correction_operator_gate(
+    operator_manifest: dict,
+    atomic_predictive_v1_parameter_lock_gate: dict,
+    atomic_fixed_parameter_model_readiness_gate: dict,
+    uet_atomic_operator_readiness_gate: dict,
+) -> dict:
+    candidates = operator_manifest.get("operator_candidates", [])
+    accepted_candidates = [row for row in candidates if row.get("accepted_as_delta_uet_or_ci")]
+    missing_candidates = [row for row in candidates if row.get("current_status") == "MISSING"]
+    diagnostic_only_candidates = [
+        row for row in candidates if row.get("current_status", "").startswith("DIAGNOSTIC_ONLY")
+    ]
+    contract = operator_manifest.get("operator_contract", {})
+    contract_checks = [
+        {
+            "check_id": "OPERATOR-01",
+            "requirement": "The required correction operator ID and model form must be declared.",
+            "status": "PASS" if contract.get("required_operator_id") == "delta_uet_or_ci" else "FAIL",
+            "evidence": {
+                "required_operator_id": contract.get("required_operator_id"),
+                "required_model_form": operator_manifest.get("required_model_form"),
+            },
+        },
+        {
+            "check_id": "OPERATOR-02",
+            "requirement": "At least one accepted fixed CI/correlated or explicit UET correction operator must be implemented before validation claims.",
+            "status": "BLOCKED_NO_ACCEPTED_FIXED_CORRECTION_OPERATOR"
+            if not accepted_candidates
+            else "PASS",
+            "evidence": {
+                "accepted_operator_count": len(accepted_candidates),
+                "missing_candidate_count": len(missing_candidates),
+                "diagnostic_only_candidate_count": len(diagnostic_only_candidates),
+            },
+        },
+        {
+            "check_id": "OPERATOR-03",
+            "requirement": "The current empirical quantum-defect lane must not be treated as delta_uet_or_ci.",
+            "status": "PASS"
+            if all(not row.get("accepted_as_delta_uet_or_ci") for row in diagnostic_only_candidates)
+            else "FAIL",
+            "evidence": [row["candidate_id"] for row in diagnostic_only_candidates],
+        },
+        {
+            "check_id": "OPERATOR-04",
+            "requirement": "Parameter-lock gate must keep future correction parameters as explicit blockers while the operator is missing.",
+            "status": "PASS"
+            if atomic_predictive_v1_parameter_lock_gate["metrics"]["missing_future_locked_parameter_count"] >= 1
+            else "FAIL",
+            "evidence": atomic_predictive_v1_parameter_lock_gate["metrics"][
+                "missing_future_locked_parameter_count"
+            ],
+        },
+        {
+            "check_id": "OPERATOR-05",
+            "requirement": "UET operator readiness must remain blocking until derivation/residual artifacts exist.",
+            "status": "PASS"
+            if uet_atomic_operator_readiness_gate["metrics"]["blocking_requirement_count"] > 0
+            else "FAIL",
+            "evidence": {
+                "uet_blocking_requirement_count": uet_atomic_operator_readiness_gate["metrics"][
+                    "blocking_requirement_count"
+                ],
+                "uet_operator_residual_lane_present": uet_atomic_operator_readiness_gate["metrics"][
+                    "uet_operator_residual_lane_present"
+                ],
+            },
+        },
+    ]
+    fail_count = sum(1 for row in contract_checks if row["status"] == "FAIL")
+    blocking_count = sum(1 for row in contract_checks if row["status"].startswith("BLOCKED"))
+    status = (
+        "OPERATOR_CONTRACT_FAIL"
+        if fail_count
+        else "OPERATOR_CONTRACT_READY_IMPLEMENTATION_MISSING"
+        if blocking_count
+        else "OPERATOR_CONTRACT_READY"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_predictive_v1_fixed_correction_operator_gate",
+        "status": status,
+        "claim_class": "fixed_correction_operator_contract_no_validation_claim",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-FIXED-CORRECTION-OPERATOR",
+        "manifest": {
+            "path": str(ATOMIC_PREDICTIVE_V1_OPERATOR_MANIFEST_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
+            "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_MANIFEST_PATH),
+            "manifest_id": operator_manifest.get("manifest_id"),
+            "selected_lane_id": operator_manifest.get("selected_lane_id"),
+            "required_model_form": operator_manifest.get("required_model_form"),
+        },
+        "operator_contract": contract,
+        "operator_candidates": candidates,
+        "contract_checks": contract_checks,
+        "metrics": {
+            "operator_candidate_count": len(candidates),
+            "accepted_operator_count": len(accepted_candidates),
+            "missing_operator_candidate_count": len(missing_candidates),
+            "diagnostic_only_candidate_count": len(diagnostic_only_candidates),
+            "contract_check_count": len(contract_checks),
+            "contract_fail_count": fail_count,
+            "contract_blocking_count": blocking_count,
+            "fixed_parameter_missing_required_model_count": atomic_fixed_parameter_model_readiness_gate["metrics"][
+                "missing_required_model_count"
+            ],
+            "uet_operator_blocking_requirement_count": uet_atomic_operator_readiness_gate["metrics"][
+                "blocking_requirement_count"
+            ],
+        },
+        "pass_conditions_for_validation_upgrade": operator_manifest.get("pass_conditions_for_validation_upgrade", []),
+        "blocked_claims": operator_manifest.get("blocked_claims", []),
+        "next_required_artifacts": [
+            row.get("required_artifact") for row in missing_candidates if row.get("required_artifact")
+        ]
+        + [
+            "operator residual lane consumed by atomic_predictive_v1_diagnostic_report_gate",
+            "validation-ready threshold manifest after operator uncertainty is available",
+        ],
+        "claim_boundary": operator_manifest.get("claim_boundary"),
+    }
+
+
 def build_atomic_predictive_v1_diagnostic_report_gate(
     atomic_predictive_v1_parameter_manifest: dict,
     atomic_predictive_v1_threshold_manifest: dict,
@@ -3761,6 +3886,7 @@ def build_atomic_predictive_v1_diagnostic_report_gate(
     helium_quantum_defect_wavelength_holdout_gate: dict,
     atomic_predictive_v1_parameter_lock_gate: dict,
     atomic_predictive_v1_threshold_gate: dict,
+    atomic_predictive_v1_fixed_correction_operator_gate: dict,
     helium_external_holdout_lineage_decision_gate: dict,
 ) -> dict:
     level_predictions = [
@@ -3796,7 +3922,7 @@ def build_atomic_predictive_v1_diagnostic_report_gate(
         {
             "blocker_id": "V1-BLOCK-OPERATOR",
             "status": "BLOCKING",
-            "evidence": "delta_uet_or_ci remains missing from the parameter manifest.",
+            "evidence": atomic_predictive_v1_fixed_correction_operator_gate["status"],
             "required_artifact": "fixed-parameter CI/correlated or UET correction operator with units",
         },
         {
@@ -3845,6 +3971,7 @@ def build_atomic_predictive_v1_diagnostic_report_gate(
             ),
             "parameter_lock_status": atomic_predictive_v1_parameter_lock_gate["status"],
             "threshold_status": atomic_predictive_v1_threshold_gate["status"],
+            "fixed_correction_operator_status": atomic_predictive_v1_fixed_correction_operator_gate["status"],
             "external_lineage_decision": helium_external_holdout_lineage_decision_gate["decision"],
         },
         "level_holdout_predictions": level_predictions,
@@ -3871,6 +3998,9 @@ def build_atomic_predictive_v1_diagnostic_report_gate(
                 "validation_ready_threshold_count"
             ],
             "validation_blocker_count": blocking_count,
+            "accepted_fixed_correction_operator_count": atomic_predictive_v1_fixed_correction_operator_gate[
+                "metrics"
+            ]["accepted_operator_count"],
             "independent_validation_allowed": False,
         },
         "blocked_claims": [
@@ -4472,6 +4602,7 @@ def build_atomic_claim_scope_gate(
     helium_quantum_defect_holdout_gate: dict,
     helium_quantum_defect_wavelength_holdout_gate: dict,
     atomic_predictive_model_closure_gate: dict,
+    atomic_predictive_v1_fixed_correction_operator_gate: dict,
     atomic_predictive_v1_diagnostic_report_gate: dict,
     source_evidence_readiness_matrix: dict,
     branch_claim_gate: dict,
@@ -4686,6 +4817,13 @@ def build_atomic_claim_scope_gate(
                 "metrics": atomic_predictive_v1_diagnostic_report_gate["metrics"],
                 "source_evidence_readiness": "diagnostic_report_ready_validation_blocked",
             },
+            {
+                "claim": "The selected predictive-v1 lane now has a fixed-correction operator contract separating empirical quantum-defect diagnostics from acceptable CI/UET correction operators.",
+                "status": atomic_predictive_v1_fixed_correction_operator_gate["status"],
+                "artifact_role": "atomic predictive-v1 fixed correction operator gate",
+                "metrics": atomic_predictive_v1_fixed_correction_operator_gate["metrics"],
+                "source_evidence_readiness": "operator_contract_ready_implementation_missing",
+            },
         ],
         "blocked_claims": [
             {
@@ -4783,6 +4921,7 @@ def run_rydberg_analysis():
     helium_qd_holdouts = load_json(HELIUM_QD_HOLDOUT_PATH)
     atomic_predictive_v1_parameter_manifest = load_json(ATOMIC_PREDICTIVE_V1_PARAMETER_MANIFEST_PATH)
     atomic_predictive_v1_threshold_manifest = load_json(ATOMIC_PREDICTIVE_V1_THRESHOLD_MANIFEST_PATH)
+    atomic_predictive_v1_operator_manifest = load_json(ATOMIC_PREDICTIVE_V1_OPERATOR_MANIFEST_PATH)
     chianti_he_i_manifest = load_json(CHIANTI_HE_I_MANIFEST_PATH)
     source_evidence_intake_stub = build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = build_source_evidence_readiness_matrix()
@@ -5005,6 +5144,12 @@ def run_rydberg_analysis():
         helium_external_holdout_acquisition_gate,
         helium_external_holdout_residual_crosscheck_gate,
     )
+    atomic_predictive_v1_fixed_correction_operator_gate = build_atomic_predictive_v1_fixed_correction_operator_gate(
+        atomic_predictive_v1_operator_manifest,
+        atomic_predictive_v1_parameter_lock_gate,
+        atomic_fixed_parameter_model_readiness_gate,
+        uet_atomic_operator_readiness_gate,
+    )
     atomic_predictive_v1_diagnostic_report_gate = build_atomic_predictive_v1_diagnostic_report_gate(
         atomic_predictive_v1_parameter_manifest,
         atomic_predictive_v1_threshold_manifest,
@@ -5012,6 +5157,7 @@ def run_rydberg_analysis():
         helium_quantum_defect_wavelength_holdout_gate,
         atomic_predictive_v1_parameter_lock_gate,
         atomic_predictive_v1_threshold_gate,
+        atomic_predictive_v1_fixed_correction_operator_gate,
         helium_external_holdout_lineage_decision_gate,
     )
     atomic_predictive_model_blueprint_gate = build_atomic_predictive_model_blueprint_gate(
@@ -5052,6 +5198,7 @@ def run_rydberg_analysis():
         helium_quantum_defect_holdout_gate,
         helium_quantum_defect_wavelength_holdout_gate,
         atomic_predictive_model_closure_gate,
+        atomic_predictive_v1_fixed_correction_operator_gate,
         atomic_predictive_v1_diagnostic_report_gate,
         source_evidence_readiness_matrix,
         branch_claim_gate,
@@ -5174,6 +5321,15 @@ def run_rydberg_analysis():
                 ],
             },
             {
+                "path": str(ATOMIC_PREDICTIVE_V1_OPERATOR_MANIFEST_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_MANIFEST_PATH),
+                "source": atomic_predictive_v1_operator_manifest.get("purpose"),
+                "status": atomic_predictive_v1_operator_manifest.get("status"),
+                "source_rows": [
+                    row["candidate_id"] for row in atomic_predictive_v1_operator_manifest.get("operator_candidates", [])
+                ],
+            },
+            {
                 "path": str(CHIANTI_HE_I_MANIFEST_PATH.relative_to(ROOT)).replace("\\", "/"),
                 "sha256": file_sha256(CHIANTI_HE_I_MANIFEST_PATH),
                 "source": chianti_he_i_manifest["source_family"]["name"],
@@ -5220,6 +5376,7 @@ def run_rydberg_analysis():
             "AT20-ATOMIC-FIRST-PREDICTIVE-IMPLEMENTATION-CANDIDATE",
             "AT20-ATOMIC-PREDICTIVE-V1-PARAMETER-LOCK",
             "AT20-ATOMIC-PREDICTIVE-V1-THRESHOLD-GATE",
+            "AT20-ATOMIC-PREDICTIVE-V1-FIXED-CORRECTION-OPERATOR",
             "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
             "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
             "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
@@ -5379,6 +5536,12 @@ def run_rydberg_analysis():
             "atomic_predictive_v1_threshold_validation_ready_count": atomic_predictive_v1_threshold_gate["metrics"][
                 "validation_ready_threshold_count"
             ],
+            "atomic_predictive_v1_fixed_correction_accepted_operators": (
+                atomic_predictive_v1_fixed_correction_operator_gate["metrics"]["accepted_operator_count"]
+            ),
+            "atomic_predictive_v1_fixed_correction_blocking_checks": (
+                atomic_predictive_v1_fixed_correction_operator_gate["metrics"]["contract_blocking_count"]
+            ),
             "atomic_predictive_v1_report_validation_blockers": atomic_predictive_v1_diagnostic_report_gate["metrics"][
                 "validation_blocker_count"
             ],
@@ -5437,6 +5600,7 @@ def run_rydberg_analysis():
             "The atomic predictive-model specification gate maps the required baseline-plus-correction contract, but the UET operator and fixed-parameter generative model remain missing.",
             "The atomic predictive-v1 parameter-lock gate now records allowed calibration parameters and forbidden holdout/external leakage fields; future CI/UET correction parameters remain missing.",
             "The atomic predictive-v1 threshold gate now records diagnostic residual thresholds for the selected lane, but zero thresholds are validation-ready.",
+            "The atomic predictive-v1 fixed-correction operator gate defines the delta_uet_or_ci contract and records zero accepted fixed correction operators implemented.",
             "The atomic predictive-v1 diagnostic report records same-source-family level and wavelength predictions with diagnostic threshold checks, but validation remains blocked by the missing fixed CI/UET correction operator, non-NIST source package, and validation-ready thresholds.",
             "The helium external-holdout lineage decision gate classifies CHIANTI He I as cross-check-only because the captured metadata records NIST ASD lineage.",
             "The atomic predictive-model blueprint gate turns the build path into seven auditable steps; source lineage is now decided as cross-check-only, while parameter lock and thresholds remain partial until the missing generative model and validation-ready uncertainty policy exist.",
@@ -5486,6 +5650,9 @@ def run_rydberg_analysis():
     )
     artifact["atomic_predictive_v1_parameter_lock_gate"] = atomic_predictive_v1_parameter_lock_gate
     artifact["atomic_predictive_v1_threshold_gate"] = atomic_predictive_v1_threshold_gate
+    artifact["atomic_predictive_v1_fixed_correction_operator_gate"] = (
+        atomic_predictive_v1_fixed_correction_operator_gate
+    )
     artifact["atomic_predictive_v1_diagnostic_report_gate"] = atomic_predictive_v1_diagnostic_report_gate
     artifact["atomic_predictive_model_blueprint_gate"] = atomic_predictive_model_blueprint_gate
     artifact["helium_external_holdout_acquisition_gate"] = helium_external_holdout_acquisition_gate

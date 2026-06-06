@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.20_Atomic_Physics",
+  "manifest_id": "AT20-PREDICTIVE-V1-FIXED-CORRECTION-OPERATOR-MANIFEST",
+  "purpose": "Define the fixed correction-operator contract required before the selected atomic predictive-v1 lane can move from same-source-family diagnostics to validation.",
+  "status": "OPERATOR_MANIFEST_READY_IMPLEMENTATION_MISSING",
+  "selected_lane_id": "helium_quantum_defect_then_ci_or_uet_correction_v1",
+  "required_model_form": "E_or_nu_pred = standard_baseline(domain, constants, quantum_numbers) + delta_uet_or_ci(domain, locked_parameters, quantum_numbers)",
+  "current_diagnostic_form": "E_bind_pred = h c R_infinity / (n - delta_selected_series)^2",
+  "operator_contract": {
+    "required_operator_id": "delta_uet_or_ci",
+    "allowed_operator_classes": [
+      "fixed_parameter_ci_or_correlated_two_electron_correction",
+      "explicit_uet_atomic_hamiltonian_or_transition_operator_correction"
+    ],
+    "required_inputs": [
+      "domain",
+      "n",
+      "l_or_orbital",
+      "spin_multiplicity",
+      "j_or_component_policy",
+      "source-locked constants",
+      "locked correction parameters"
+    ],
+    "required_outputs": [
+      {
+        "name": "delta_energy",
+        "unit": "eV",
+        "required_for_level_lanes": true
+      },
+      {
+        "name": "delta_frequency_or_wavelength",
+        "unit": "Hz or angstrom after declared conversion",
+        "required_for_line_lanes": true
+      }
+    ],
+    "parameter_lock_rule": "All correction parameters must be declared in this manifest or a child manifest before any holdout/external rows are evaluated.",
+    "holdout_exclusion_rule": "Rows in helium_quantum_defect_holdout_sources.json and external_holdouts/chianti_he_i/source_manifest.json must not set correction parameters.",
+    "uncertainty_rule": "The operator must emit parameter/model uncertainty or a source-backed reason why uncertainty is not computable before validation thresholds can be reclassified."
+  },
+  "operator_candidates": [
+    {
+      "candidate_id": "empirical_quantum_defect_current_diagnostic",
+      "operator_class": "fitted_empirical_series_parameter",
+      "current_status": "DIAGNOSTIC_ONLY_NOT_ACCEPTED_AS_FIXED_CORRECTION",
+      "reason": "delta_selected_series is fitted from selected same-source-family helium levels and does not predict quantum defects from a CI/correlated or UET operator.",
+      "accepted_as_delta_uet_or_ci": false
+    },
+    {
+      "candidate_id": "fixed_parameter_ci_or_correlated_two_electron",
+      "operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction",
+      "current_status": "MISSING",
+      "required_artifact": "CI/correlated helium level residual gate with parameters frozen before holdout evaluation",
+      "accepted_as_delta_uet_or_ci": false
+    },
+    {
+      "candidate_id": "explicit_uet_atomic_operator",
+      "operator_class": "explicit_uet_atomic_hamiltonian_or_transition_operator_correction",
+      "current_status": "MISSING",
+      "required_artifact": "UET atomic Hamiltonian/transition-operator derivation with units, fixed parameters, and source-backed residual lane",
+      "accepted_as_delta_uet_or_ci": false
+    }
+  ],
+  "pass_conditions_for_validation_upgrade": [
+    "At least one accepted_as_delta_uet_or_ci operator candidate is implemented.",
+    "All accepted operator parameters are frozen before holdout evaluation.",
+    "The operator emits level/line residuals and uncertainty fields consumed by the threshold gate.",
+    "Non-NIST independent He I holdout rows are available and excluded from calibration.",
+    "Diagnostic thresholds are replaced or reclassified as validation-ready before independent rows are evaluated."
+  ],
+  "blocked_claims": [
+    "the current empirical quantum-defect lane is the fixed CI/UET correction operator",
+    "delta_uet_or_ci exists because the model equation is specified",
+    "same-source-family diagnostic residuals validate the missing correction operator",
+    "a future correction operator may be fitted after seeing holdout or CHIANTI residuals"
+  ],
+  "claim_boundary": "This manifest defines the fixed correction-operator contract and records that no accepted delta_uet_or_ci operator is implemented yet. It does not validate atomic spectra."
+}
