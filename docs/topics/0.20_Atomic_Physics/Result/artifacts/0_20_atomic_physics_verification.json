@@ -303,6 +303,24 @@
         },
         "source_evidence_readiness": "governance_contract_ready_predictive_claim_blocked",
         "status": "PREDICTIVE_CLAIM_BLOCKED_REQUIREMENTS_OPEN"
+      },
+      {
+        "artifact_role": "atomic predictive-v1 diagnostic report gate",
+        "claim": "The selected predictive-v1 lane now has a diagnostic report that collects current same-source-family predictions, thresholds, and validation blockers.",
+        "metrics": {
+          "diagnostic_threshold_fail_count": 0,
+          "diagnostic_threshold_pass_count": 3,
+          "independent_validation_allowed": false,
+          "level_holdout_prediction_count": 3,
+          "max_level_abs_residual_eV": 0.0018526170410844145,
+          "max_wavelength_abs_residual_angstrom": 0.04309502723526748,
+          "max_wavelength_abs_residual_ppm": 80.24697624904677,
+          "validation_blocker_count": 3,
+          "validation_ready_threshold_count": 0,
+          "wavelength_holdout_prediction_count": 2
+        },
+        "source_evidence_readiness": "diagnostic_report_ready_validation_blocked",
+        "status": "DIAGNOSTIC_REPORT_READY_VALIDATION_BLOCKED"
       }
     ],
     "blocked_claims": [
@@ -854,7 +872,7 @@
       "fixed-parameter CI/correlated or explicit UET correction operator with units",
       "non-NIST independent He I holdout package",
       "uncertainty-aware residual thresholds declared before holdout evaluation",
-      "v1 prediction report that compares standard baseline, empirical fit, CI/correlated, and UET correction residuals"
+      "v1 validation report that compares standard baseline, empirical fit, CI/correlated, and UET correction residuals"
     ],
     "purpose": "Turn the predictive-model question into a machine-readable build plan that separates real prediction from fit diagnostics.",
     "role": "atomic_predictive_model_blueprint_gate",
@@ -1075,6 +1093,169 @@
     "schema_version": "1.0",
     "status": "SPEC_MAPPED_IMPLEMENTATION_BLOCKED"
   },
+  "atomic_predictive_v1_diagnostic_report_gate": {
+    "blocked_claims": [
+      "diagnostic threshold pass proves independent prediction",
+      "empirical quantum-defect holdouts are a UET atomic operator",
+      "same-source-family NIST rows validate helium spectra",
+      "CHIANTI cross-check rows validate helium spectra despite NIST-lineage dependency"
+    ],
+    "claim_boundary": "This gate is the first v1 diagnostic prediction report. It records current holdout predictions and threshold checks, but validation remains blocked because the correction operator, non-NIST source package, and validation-ready thresholds are missing.",
+    "claim_class": "diagnostic_prediction_report_no_validation_claim",
+    "current_diagnostic_equation": "E_bind_pred = h c R_infinity / (n - delta_selected_series)^2",
+    "current_diagnostic_lane_id": "helium_quantum_defect_source_family_holdout",
+    "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
+    "implementation_state": {
+      "current_operator": "empirical_quantum_defect_same_source_family_diagnostic",
+      "external_lineage_decision": "CROSSCHECK_ONLY_NOT_INDEPENDENT",
+      "missing_operator": "fixed-parameter CI/correlated or explicit UET correction operator that predicts helium level corrections rather than fitting holdout rows",
+      "parameter_lock_status": "PARAMETER_MANIFEST_READY_GENERATIVE_MODEL_MISSING",
+      "threshold_status": "THRESHOLD_MANIFEST_READY_DIAGNOSTIC_ONLY_VALIDATION_BLOCKED"
+    },
+    "level_holdout_predictions": [
+      {
+        "absolute_residual_eV": 0.0,
+        "configuration": "1s 2p",
+        "holdout_id": "he_i_1s2s_1S_from_20581_287",
+        "model_uncertainty_eV": 0.02068097823932508,
+        "observed_excitation_energy_eV": 21.21802302375344,
+        "outer_principal_quantum_number": 2,
+        "predicted_excitation_energy_eV": 21.21802302375344,
+        "series_key": "1P",
+        "source_locator": "NIST He I persistent lines table; 20581.287 A row",
+        "term": "1P*"
+      },
+      {
+        "absolute_residual_eV": 0.0018526170410844145,
+        "configuration": "1s 3p",
+        "holdout_id": "he_i_1s3p_1P_from_537_02992",
+        "model_uncertainty_eV": 0.02068097823932508,
+        "observed_excitation_energy_eV": 23.087018867521273,
+        "outer_principal_quantum_number": 3,
+        "predicted_excitation_energy_eV": 23.08516625048019,
+        "series_key": "1P",
+        "source_locator": "NIST He I persistent lines table; 537.02992 A row",
+        "term": "1P*"
+      },
+      {
+        "absolute_residual_eV": 0.0010158157974480275,
+        "configuration": "1s 4p",
+        "holdout_id": "he_i_1s4p_1P_from_522_21309",
+        "model_uncertainty_eV": 0.02068097823932508,
+        "observed_excitation_energy_eV": 23.74207039781598,
+        "outer_principal_quantum_number": 4,
+        "predicted_excitation_energy_eV": 23.74105458201853,
+        "series_key": "1P",
+        "source_locator": "NIST He I persistent lines table; 522.21309 A row",
+        "term": "1P*"
+      }
+    ],
+    "metrics": {
+      "diagnostic_threshold_fail_count": 0,
+      "diagnostic_threshold_pass_count": 3,
+      "independent_validation_allowed": false,
+      "level_holdout_prediction_count": 3,
+      "max_level_abs_residual_eV": 0.0018526170410844145,
+      "max_wavelength_abs_residual_angstrom": 0.04309502723526748,
+      "max_wavelength_abs_residual_ppm": 80.24697624904677,
+      "validation_blocker_count": 3,
+      "validation_ready_threshold_count": 0,
+      "wavelength_holdout_prediction_count": 2
+    },
+    "model_equation": "E_or_nu_pred = standard_baseline(domain, constants, quantum_numbers) + delta_uet_or_ci(domain, locked_parameters, quantum_numbers)",
+    "next_required_artifacts": [
+      "fixed-parameter CI/correlated or UET correction operator that fills delta_uet_or_ci",
+      "non-NIST independent He I source package with source hashes and uncertainty policy",
+      "validation-ready threshold manifest declared before independent holdout evaluation",
+      "v1 validation report comparing standard baseline, empirical quantum defect, CI/correlated, and UET correction residuals"
+    ],
+    "role": "atomic_predictive_v1_diagnostic_report_gate",
+    "schema_version": "1.0",
+    "selected_lane_id": "helium_quantum_defect_then_ci_or_uet_correction_v1",
+    "status": "DIAGNOSTIC_REPORT_READY_VALIDATION_BLOCKED",
+    "threshold_rows": [
+      {
+        "basis": "diagnostic ceiling above current leave-one-out RMSE fallback model uncertainty scale; not an official source-uncertainty validation bound",
+        "comparison_status": "PASS_DIAGNOSTIC",
+        "current_value": 0.0018526170410844145,
+        "lane": "helium_quantum_defect_level_holdout",
+        "metric": "max_abs_excitation_residual_eV",
+        "operator": "<=",
+        "threshold_id": "HE-QD-LEVEL-ABS-EV-DIAGNOSTIC",
+        "threshold_value": 0.025,
+        "unit": "eV",
+        "validation_ready": false
+      },
+      {
+        "basis": "diagnostic ceiling above current propagated fallback model uncertainty scale; not an official source-uncertainty validation bound",
+        "comparison_status": "PASS_DIAGNOSTIC",
+        "current_value": 0.04309502723526748,
+        "lane": "helium_quantum_defect_wavelength_holdout",
+        "metric": "max_abs_wavelength_residual_angstrom",
+        "operator": "<=",
+        "threshold_id": "HE-QD-WAVELENGTH-ABS-A-DIAGNOSTIC",
+        "threshold_value": 0.6,
+        "unit": "angstrom",
+        "validation_ready": false
+      },
+      {
+        "basis": "coarse diagnostic ceiling for current short-wavelength same-source-family rows; independent validation requires source-backed uncertainty thresholds",
+        "comparison_status": "PASS_DIAGNOSTIC",
+        "current_value": 80.24697624904677,
+        "lane": "helium_quantum_defect_wavelength_holdout",
+        "metric": "max_abs_wavelength_residual_ppm",
+        "operator": "<=",
+        "threshold_id": "HE-QD-WAVELENGTH-PPM-DIAGNOSTIC",
+        "threshold_value": 1000.0,
+        "unit": "ppm",
+        "validation_ready": false
+      }
+    ],
+    "validation_blockers": [
+      {
+        "blocker_id": "V1-BLOCK-OPERATOR",
+        "evidence": "delta_uet_or_ci remains missing from the parameter manifest.",
+        "required_artifact": "fixed-parameter CI/correlated or UET correction operator with units",
+        "status": "BLOCKING"
+      },
+      {
+        "blocker_id": "V1-BLOCK-SOURCE",
+        "evidence": "CROSSCHECK_ONLY_NOT_INDEPENDENT",
+        "required_artifact": "non-NIST independent He I holdout package",
+        "status": "BLOCKING"
+      },
+      {
+        "blocker_id": "V1-BLOCK-THRESHOLD",
+        "evidence": "0 validation-ready thresholds",
+        "required_artifact": "validation-ready source/model uncertainty threshold policy",
+        "status": "BLOCKING"
+      }
+    ],
+    "wavelength_holdout_predictions": [
+      {
+        "absolute_residual_angstrom": 0.022339673833016604,
+        "absolute_residual_ppm": 42.778846912888774,
+        "holdout_id": "he_i_1s4p_1P_from_522_21309",
+        "model_uncertainty_angstrom": 0.4549224854176991,
+        "predicted_wavelength_angstrom": 522.235429673833,
+        "source_locator": "NIST He I persistent lines table; 522.21309 A row",
+        "source_wavelength_angstrom": 522.21309,
+        "upper_configuration": "1s 4p",
+        "upper_term": "1P*"
+      },
+      {
+        "absolute_residual_angstrom": 0.04309502723526748,
+        "absolute_residual_ppm": 80.24697624904677,
+        "holdout_id": "he_i_1s3p_1P_from_537_02992",
+        "model_uncertainty_angstrom": 0.48113993272523753,
+        "predicted_wavelength_angstrom": 537.0730150272352,
+        "source_locator": "NIST He I persistent lines table; 537.02992 A row",
+        "source_wavelength_angstrom": 537.02992,
+        "upper_configuration": "1s 3p",
+        "upper_term": "1P*"
+      }
+    ]
+  },
   "atomic_predictive_v1_parameter_lock_gate": {
     "blocked_claims": [
       "the current fitted quantum-defect lane is a first-principles UET prediction",
@@ -1106,7 +1287,7 @@
     },
     "next_required_artifacts": [
       "CI/correlated or UET atomic correction operator with units and parameter values frozen before holdout evaluation",
-      "rerun v1 prediction report after fixed correction parameters are added",
+      "rerun v1 fixed-correction report after fixed correction parameters are added",
       "source-lineage gate proving whether external rows are independent or cross-check-only"
     ],
     "policy_checks": [
@@ -1533,6 +1714,7 @@
     "AT20-ATOMIC-FIRST-PREDICTIVE-IMPLEMENTATION-CANDIDATE",
     "AT20-ATOMIC-PREDICTIVE-V1-PARAMETER-LOCK",
     "AT20-ATOMIC-PREDICTIVE-V1-THRESHOLD-GATE",
+    "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
     "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
     "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
     "AT20-HELIUM-EXTERNAL-HOLDOUT-RESIDUAL-CROSSCHECK",
@@ -1540,7 +1722,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-06T09:39:51.265686+00:00",
+  "generated_at_utc": "2026-06-06T09:59:28.421567+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -2123,13 +2305,13 @@
         "current_source_family": "NIST Handbook persistent lines",
         "current_upper_energy_cm_inverse": 186209.3651,
         "current_wavelength_angstrom": 537.02992,
-        "interpretation": "cross-check delta only; not independent residual validation because CHIANTI lineage and source-version review remain blocked",
+        "interpretation": "cross-check delta only; not independent residual validation because CHIANTI is NIST-lineage and source-version reconciliation remains open",
         "lineage_status": "CROSS_CHECK_ONLY_NOT_INDEPENDENT_NIST_LINEAGE",
         "upper_energy_abs_delta_cm_inverse": 0.10289999999804422,
         "upper_energy_delta_cm_inverse": 0.10289999999804422,
         "upper_energy_delta_to_combined_rounding_bound_ratio": 187.0909090873531,
         "upper_energy_delta_to_transcription_bound_ratio": 2057.9999999608845,
-        "upper_energy_rounding_policy_status": "BLOCKED_SOURCE_VERSION_OR_LINEAGE_DELTA_REVIEW",
+        "upper_energy_rounding_policy_status": "BLOCKED_SOURCE_VERSION_RECONCILIATION_REQUIRED",
         "upper_energy_transcription_bound_cm_inverse": 5e-05,
         "wavelength_abs_delta_angstrom": 8.000000002539309e-05,
         "wavelength_abs_delta_ppm": 0.14896749146750168,
@@ -2151,13 +2333,13 @@
         "current_source_family": "NIST Handbook persistent lines",
         "current_upper_energy_cm_inverse": 191492.712,
         "current_wavelength_angstrom": 522.21309,
-        "interpretation": "cross-check delta only; not independent residual validation because CHIANTI lineage and source-version review remain blocked",
+        "interpretation": "cross-check delta only; not independent residual validation because CHIANTI is NIST-lineage and source-version reconciliation remains open",
         "lineage_status": "CROSS_CHECK_ONLY_NOT_INDEPENDENT_NIST_LINEAGE",
         "upper_energy_abs_delta_cm_inverse": 0.10399999999208376,
         "upper_energy_delta_cm_inverse": 0.10399999999208376,
         "upper_energy_delta_to_combined_rounding_bound_ratio": 189.0909090765159,
         "upper_energy_delta_to_transcription_bound_ratio": 2079.999999841675,
-        "upper_energy_rounding_policy_status": "BLOCKED_SOURCE_VERSION_OR_LINEAGE_DELTA_REVIEW",
+        "upper_energy_rounding_policy_status": "BLOCKED_SOURCE_VERSION_RECONCILIATION_REQUIRED",
         "upper_energy_transcription_bound_cm_inverse": 5e-05,
         "wavelength_abs_delta_angstrom": 9.000000000014552e-05,
         "wavelength_abs_delta_ppm": 0.17234343934225305,
@@ -2185,9 +2367,8 @@
       "wavelength_display_rounding_pass_count": 2
     },
     "next_required_artifacts": [
-      "lineage decision for whether CHIANTI observed He I rows are NIST-derived cross-check-only",
       "source-version review for CHIANTI-vs-current upper-energy deltas that exceed combined display rounding",
-      "non-NIST source package if CHIANTI remains NIST-dependent"
+      "non-NIST source package because CHIANTI is NIST-dependent"
     ],
     "role": "helium_external_holdout_residual_crosscheck_gate",
     "schema_version": "1.0",
@@ -4430,6 +4611,7 @@
     "The atomic predictive-model specification gate maps the required baseline-plus-correction contract, but the UET operator and fixed-parameter generative model remain missing.",
     "The atomic predictive-v1 parameter-lock gate now records allowed calibration parameters and forbidden holdout/external leakage fields; future CI/UET correction parameters remain missing.",
     "The atomic predictive-v1 threshold gate now records diagnostic residual thresholds for the selected lane, but zero thresholds are validation-ready.",
+    "The atomic predictive-v1 diagnostic report records same-source-family level and wavelength predictions with diagnostic threshold checks, but validation remains blocked by the missing fixed CI/UET correction operator, non-NIST source package, and validation-ready thresholds.",
     "The helium external-holdout lineage decision gate classifies CHIANTI He I as cross-check-only because the captured metadata records NIST ASD lineage.",
     "The atomic predictive-model blueprint gate turns the build path into seven auditable steps; source lineage is now decided as cross-check-only, while parameter lock and thresholds remain partial until the missing generative model and validation-ready uncertainty policy exist.",
     "The first predictive implementation candidate gate selects the same-source-family helium quantum-defect holdout lane as the narrowest current diagnostic path, but external validation remains blocked.",
@@ -4456,6 +4638,9 @@
     "atomic_predictive_model_spec_blockers": 4,
     "atomic_predictive_v1_missing_future_locked_parameters": 1,
     "atomic_predictive_v1_parameter_lock_policy_fail_count": 0,
+    "atomic_predictive_v1_report_level_holdout_predictions": 3,
+    "atomic_predictive_v1_report_validation_blockers": 3,
+    "atomic_predictive_v1_report_wavelength_holdout_predictions": 2,
     "atomic_predictive_v1_threshold_diagnostic_pass_count": 3,
     "atomic_predictive_v1_threshold_validation_ready_count": 0,
     "atomic_uncertainty_budget_computable_rows": 9,

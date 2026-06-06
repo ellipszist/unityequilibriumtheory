@@ -3661,7 +3661,7 @@ def build_atomic_predictive_v1_parameter_lock_gate(
             row["required_artifact"] for row in missing_future if row.get("required_artifact")
         ]
         + [
-            "rerun v1 prediction report after fixed correction parameters are added",
+            "rerun v1 fixed-correction report after fixed correction parameters are added",
             "source-lineage gate proving whether external rows are independent or cross-check-only",
         ],
         "blocked_claims": parameter_manifest.get("blocked_claims", []),
@@ -3751,6 +3751,141 @@ def build_atomic_predictive_v1_threshold_gate(
         "required_for_validation_upgrade": threshold_manifest.get("required_for_validation_upgrade", []),
         "blocked_claims": threshold_manifest.get("blocked_claims", []),
         "claim_boundary": threshold_manifest.get("claim_boundary"),
+    }
+
+
+def build_atomic_predictive_v1_diagnostic_report_gate(
+    atomic_predictive_v1_parameter_manifest: dict,
+    atomic_predictive_v1_threshold_manifest: dict,
+    helium_quantum_defect_holdout_gate: dict,
+    helium_quantum_defect_wavelength_holdout_gate: dict,
+    atomic_predictive_v1_parameter_lock_gate: dict,
+    atomic_predictive_v1_threshold_gate: dict,
+    helium_external_holdout_lineage_decision_gate: dict,
+) -> dict:
+    level_predictions = [
+        {
+            "holdout_id": row["holdout_id"],
+            "series_key": row["series_key"],
+            "configuration": row["configuration"],
+            "term": row["term"],
+            "outer_principal_quantum_number": row["outer_principal_quantum_number"],
+            "predicted_excitation_energy_eV": row["predicted_excitation_energy_eV"],
+            "observed_excitation_energy_eV": row["observed_excitation_energy_eV"],
+            "absolute_residual_eV": row["absolute_residual_eV"],
+            "model_uncertainty_eV": row.get("predicted_excitation_model_uncertainty_eV"),
+            "source_locator": row["source_locator"],
+        }
+        for row in helium_quantum_defect_holdout_gate.get("predictions", [])
+    ]
+    wavelength_predictions = [
+        {
+            "holdout_id": row["holdout_id"],
+            "upper_configuration": row["upper_configuration"],
+            "upper_term": row["upper_term"],
+            "source_wavelength_angstrom": row["source_wavelength_angstrom"],
+            "predicted_wavelength_angstrom": row["predicted_wavelength_angstrom"],
+            "absolute_residual_angstrom": row["absolute_residual_angstrom"],
+            "absolute_residual_ppm": row["absolute_residual_ppm"],
+            "model_uncertainty_angstrom": row.get("predicted_wavelength_model_uncertainty_angstrom"),
+            "source_locator": row["source_locator"],
+        }
+        for row in helium_quantum_defect_wavelength_holdout_gate.get("predictions", [])
+    ]
+    validation_blockers = [
+        {
+            "blocker_id": "V1-BLOCK-OPERATOR",
+            "status": "BLOCKING",
+            "evidence": "delta_uet_or_ci remains missing from the parameter manifest.",
+            "required_artifact": "fixed-parameter CI/correlated or UET correction operator with units",
+        },
+        {
+            "blocker_id": "V1-BLOCK-SOURCE",
+            "status": "BLOCKING"
+            if helium_external_holdout_lineage_decision_gate["metrics"]["non_nist_source_required"]
+            else "PASS",
+            "evidence": helium_external_holdout_lineage_decision_gate["decision"],
+            "required_artifact": "non-NIST independent He I holdout package",
+        },
+        {
+            "blocker_id": "V1-BLOCK-THRESHOLD",
+            "status": "BLOCKING"
+            if atomic_predictive_v1_threshold_gate["metrics"]["validation_ready_threshold_count"] == 0
+            else "PASS",
+            "evidence": (
+                f"{atomic_predictive_v1_threshold_gate['metrics']['validation_ready_threshold_count']} "
+                "validation-ready thresholds"
+            ),
+            "required_artifact": "validation-ready source/model uncertainty threshold policy",
+        },
+    ]
+    diagnostic_threshold_fail_count = atomic_predictive_v1_threshold_gate["metrics"]["diagnostic_fail_count"]
+    blocking_count = sum(1 for row in validation_blockers if row["status"] == "BLOCKING")
+    implementation_status = (
+        "DIAGNOSTIC_REPORT_FAIL"
+        if diagnostic_threshold_fail_count
+        else "DIAGNOSTIC_REPORT_READY_VALIDATION_BLOCKED"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_predictive_v1_diagnostic_report_gate",
+        "status": implementation_status,
+        "claim_class": "diagnostic_prediction_report_no_validation_claim",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
+        "selected_lane_id": atomic_predictive_v1_parameter_manifest.get("selected_lane_id"),
+        "current_diagnostic_lane_id": atomic_predictive_v1_parameter_manifest.get("current_diagnostic_lane_id"),
+        "model_equation": atomic_predictive_v1_parameter_manifest.get("model_contract", {}).get("required_form"),
+        "current_diagnostic_equation": atomic_predictive_v1_parameter_manifest.get("model_contract", {}).get(
+            "current_diagnostic_form"
+        ),
+        "implementation_state": {
+            "current_operator": "empirical_quantum_defect_same_source_family_diagnostic",
+            "missing_operator": atomic_predictive_v1_parameter_manifest.get("model_contract", {}).get(
+                "missing_predictive_component"
+            ),
+            "parameter_lock_status": atomic_predictive_v1_parameter_lock_gate["status"],
+            "threshold_status": atomic_predictive_v1_threshold_gate["status"],
+            "external_lineage_decision": helium_external_holdout_lineage_decision_gate["decision"],
+        },
+        "level_holdout_predictions": level_predictions,
+        "wavelength_holdout_predictions": wavelength_predictions,
+        "threshold_rows": atomic_predictive_v1_threshold_gate["threshold_rows"],
+        "validation_blockers": validation_blockers,
+        "metrics": {
+            "level_holdout_prediction_count": len(level_predictions),
+            "wavelength_holdout_prediction_count": len(wavelength_predictions),
+            "max_level_abs_residual_eV": helium_quantum_defect_holdout_gate["metrics"][
+                "max_abs_excitation_residual_eV"
+            ],
+            "max_wavelength_abs_residual_angstrom": helium_quantum_defect_wavelength_holdout_gate["metrics"][
+                "max_abs_wavelength_residual_angstrom"
+            ],
+            "max_wavelength_abs_residual_ppm": helium_quantum_defect_wavelength_holdout_gate["metrics"][
+                "max_abs_wavelength_residual_ppm"
+            ],
+            "diagnostic_threshold_pass_count": atomic_predictive_v1_threshold_gate["metrics"][
+                "diagnostic_pass_count"
+            ],
+            "diagnostic_threshold_fail_count": diagnostic_threshold_fail_count,
+            "validation_ready_threshold_count": atomic_predictive_v1_threshold_gate["metrics"][
+                "validation_ready_threshold_count"
+            ],
+            "validation_blocker_count": blocking_count,
+            "independent_validation_allowed": False,
+        },
+        "blocked_claims": [
+            "diagnostic threshold pass proves independent prediction",
+            "empirical quantum-defect holdouts are a UET atomic operator",
+            "same-source-family NIST rows validate helium spectra",
+            "CHIANTI cross-check rows validate helium spectra despite NIST-lineage dependency",
+        ],
+        "next_required_artifacts": [
+            "fixed-parameter CI/correlated or UET correction operator that fills delta_uet_or_ci",
+            "non-NIST independent He I source package with source hashes and uncertainty policy",
+            "validation-ready threshold manifest declared before independent holdout evaluation",
+            "v1 validation report comparing standard baseline, empirical quantum defect, CI/correlated, and UET correction residuals",
+        ],
+        "claim_boundary": "This gate is the first v1 diagnostic prediction report. It records current holdout predictions and threshold checks, but validation remains blocked because the correction operator, non-NIST source package, and validation-ready thresholds are missing.",
     }
 
 
@@ -4025,7 +4160,7 @@ def build_atomic_predictive_model_blueprint_gate(
             "fixed-parameter CI/correlated or explicit UET correction operator with units",
             "non-NIST independent He I holdout package",
             "uncertainty-aware residual thresholds declared before holdout evaluation",
-            "v1 prediction report that compares standard baseline, empirical fit, CI/correlated, and UET correction residuals",
+            "v1 validation report that compares standard baseline, empirical fit, CI/correlated, and UET correction residuals",
         ],
         "claim_boundary": "This blueprint answers how to build a predictive atomic model. It is not itself a predictive implementation or validation artifact.",
     }
@@ -4242,12 +4377,12 @@ def build_helium_external_holdout_residual_crosscheck_gate(
                 "upper_energy_rounding_policy_status": (
                     "PASS_DISPLAY_ROUNDING_CONSISTENT"
                     if upper_energy_abs_delta_cm_inverse <= combined_energy_rounding_bound
-                    else "BLOCKED_SOURCE_VERSION_OR_LINEAGE_DELTA_REVIEW"
+                    else "BLOCKED_SOURCE_VERSION_RECONCILIATION_REQUIRED"
                 ),
                 "chianti_wgfa_line_number": candidate["chianti_wgfa_line_number"],
                 "chianti_elvlc_upper_line_number": candidate["chianti_elvlc_upper_line_number"],
                 "lineage_status": candidate["lineage_status"],
-                "interpretation": "cross-check delta only; not independent residual validation because CHIANTI lineage and source-version review remain blocked",
+                "interpretation": "cross-check delta only; not independent residual validation because CHIANTI is NIST-lineage and source-version reconciliation remains open",
             }
         )
 
@@ -4306,9 +4441,8 @@ def build_helium_external_holdout_residual_crosscheck_gate(
             "first-principles helium prediction",
         ],
         "next_required_artifacts": [
-            "lineage decision for whether CHIANTI observed He I rows are NIST-derived cross-check-only",
             "source-version review for CHIANTI-vs-current upper-energy deltas that exceed combined display rounding",
-            "non-NIST source package if CHIANTI remains NIST-dependent",
+            "non-NIST source package because CHIANTI is NIST-dependent",
         ],
         "claim_boundary": "This gate computes CHIANTI-vs-current holdout deltas after raw capture. It is not an external validation gate and cannot upgrade same-source-family helium prediction diagnostics.",
     }
@@ -4338,6 +4472,7 @@ def build_atomic_claim_scope_gate(
     helium_quantum_defect_holdout_gate: dict,
     helium_quantum_defect_wavelength_holdout_gate: dict,
     atomic_predictive_model_closure_gate: dict,
+    atomic_predictive_v1_diagnostic_report_gate: dict,
     source_evidence_readiness_matrix: dict,
     branch_claim_gate: dict,
 ) -> dict:
@@ -4543,6 +4678,13 @@ def build_atomic_claim_scope_gate(
                 "artifact_role": "atomic spectral predictive model closure gate",
                 "metrics": atomic_predictive_model_closure_gate["metrics"],
                 "source_evidence_readiness": "governance_contract_ready_predictive_claim_blocked",
+            },
+            {
+                "claim": "The selected predictive-v1 lane now has a diagnostic report that collects current same-source-family predictions, thresholds, and validation blockers.",
+                "status": atomic_predictive_v1_diagnostic_report_gate["status"],
+                "artifact_role": "atomic predictive-v1 diagnostic report gate",
+                "metrics": atomic_predictive_v1_diagnostic_report_gate["metrics"],
+                "source_evidence_readiness": "diagnostic_report_ready_validation_blocked",
             },
         ],
         "blocked_claims": [
@@ -4863,6 +5005,15 @@ def run_rydberg_analysis():
         helium_external_holdout_acquisition_gate,
         helium_external_holdout_residual_crosscheck_gate,
     )
+    atomic_predictive_v1_diagnostic_report_gate = build_atomic_predictive_v1_diagnostic_report_gate(
+        atomic_predictive_v1_parameter_manifest,
+        atomic_predictive_v1_threshold_manifest,
+        helium_quantum_defect_holdout_gate,
+        helium_quantum_defect_wavelength_holdout_gate,
+        atomic_predictive_v1_parameter_lock_gate,
+        atomic_predictive_v1_threshold_gate,
+        helium_external_holdout_lineage_decision_gate,
+    )
     atomic_predictive_model_blueprint_gate = build_atomic_predictive_model_blueprint_gate(
         atomic_predictive_model_closure_gate,
         atomic_predictive_model_spec_gate,
@@ -4901,6 +5052,7 @@ def run_rydberg_analysis():
         helium_quantum_defect_holdout_gate,
         helium_quantum_defect_wavelength_holdout_gate,
         atomic_predictive_model_closure_gate,
+        atomic_predictive_v1_diagnostic_report_gate,
         source_evidence_readiness_matrix,
         branch_claim_gate,
     )
@@ -5068,6 +5220,7 @@ def run_rydberg_analysis():
             "AT20-ATOMIC-FIRST-PREDICTIVE-IMPLEMENTATION-CANDIDATE",
             "AT20-ATOMIC-PREDICTIVE-V1-PARAMETER-LOCK",
             "AT20-ATOMIC-PREDICTIVE-V1-THRESHOLD-GATE",
+            "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
             "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
             "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
             "AT20-HELIUM-EXTERNAL-HOLDOUT-RESIDUAL-CROSSCHECK",
@@ -5226,6 +5379,15 @@ def run_rydberg_analysis():
             "atomic_predictive_v1_threshold_validation_ready_count": atomic_predictive_v1_threshold_gate["metrics"][
                 "validation_ready_threshold_count"
             ],
+            "atomic_predictive_v1_report_validation_blockers": atomic_predictive_v1_diagnostic_report_gate["metrics"][
+                "validation_blocker_count"
+            ],
+            "atomic_predictive_v1_report_level_holdout_predictions": atomic_predictive_v1_diagnostic_report_gate[
+                "metrics"
+            ]["level_holdout_prediction_count"],
+            "atomic_predictive_v1_report_wavelength_holdout_predictions": atomic_predictive_v1_diagnostic_report_gate[
+                "metrics"
+            ]["wavelength_holdout_prediction_count"],
             "atomic_predictive_model_blueprint_steps": atomic_predictive_model_blueprint_gate["metrics"][
                 "blueprint_step_count"
             ],
@@ -5275,6 +5437,7 @@ def run_rydberg_analysis():
             "The atomic predictive-model specification gate maps the required baseline-plus-correction contract, but the UET operator and fixed-parameter generative model remain missing.",
             "The atomic predictive-v1 parameter-lock gate now records allowed calibration parameters and forbidden holdout/external leakage fields; future CI/UET correction parameters remain missing.",
             "The atomic predictive-v1 threshold gate now records diagnostic residual thresholds for the selected lane, but zero thresholds are validation-ready.",
+            "The atomic predictive-v1 diagnostic report records same-source-family level and wavelength predictions with diagnostic threshold checks, but validation remains blocked by the missing fixed CI/UET correction operator, non-NIST source package, and validation-ready thresholds.",
             "The helium external-holdout lineage decision gate classifies CHIANTI He I as cross-check-only because the captured metadata records NIST ASD lineage.",
             "The atomic predictive-model blueprint gate turns the build path into seven auditable steps; source lineage is now decided as cross-check-only, while parameter lock and thresholds remain partial until the missing generative model and validation-ready uncertainty policy exist.",
             "The first predictive implementation candidate gate selects the same-source-family helium quantum-defect holdout lane as the narrowest current diagnostic path, but external validation remains blocked.",
@@ -5323,6 +5486,7 @@ def run_rydberg_analysis():
     )
     artifact["atomic_predictive_v1_parameter_lock_gate"] = atomic_predictive_v1_parameter_lock_gate
     artifact["atomic_predictive_v1_threshold_gate"] = atomic_predictive_v1_threshold_gate
+    artifact["atomic_predictive_v1_diagnostic_report_gate"] = atomic_predictive_v1_diagnostic_report_gate
     artifact["atomic_predictive_model_blueprint_gate"] = atomic_predictive_model_blueprint_gate
     artifact["helium_external_holdout_acquisition_gate"] = helium_external_holdout_acquisition_gate
     artifact["helium_external_holdout_residual_crosscheck_gate"] = (
