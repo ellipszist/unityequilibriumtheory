@@ -4122,6 +4122,7 @@ def build_atomic_predictive_model_blueprint_gate(
     atomic_first_predictive_implementation_candidate_gate: dict,
     atomic_predictive_v1_parameter_lock_gate: dict,
     atomic_predictive_v1_threshold_gate: dict,
+    atomic_predictive_v1_fixed_correction_operator_gate: dict,
     helium_external_holdout_lineage_decision_gate: dict,
     atomic_prediction_baseline_comparator_gate: dict,
     atomic_uncertainty_readiness_gate: dict,
@@ -4144,8 +4145,14 @@ def build_atomic_predictive_model_blueprint_gate(
             "name": "model_equation",
             "requirement": "Represent predictions as standard_baseline plus an explicit correction term with units.",
             "current_decision": atomic_predictive_model_spec_gate["model_contract"]["model_form"],
-            "status": "SPEC_READY_IMPLEMENTATION_BLOCKED",
-            "evidence": "The model spec declares the baseline-plus-correction form, but no UET operator or CI/correlated correction implementation is present.",
+            "status": "PARTIAL_OPERATOR_CONTRACT_READY_IMPLEMENTATION_MISSING",
+            "evidence": (
+                "The model spec declares the baseline-plus-correction form and the fixed-correction operator gate "
+                f"records {atomic_predictive_v1_fixed_correction_operator_gate['metrics']['operator_candidate_count']} "
+                "operator candidates, but "
+                f"{atomic_predictive_v1_fixed_correction_operator_gate['metrics']['accepted_operator_count']} "
+                "are accepted as implemented."
+            ),
         },
         {
             "step_id": "BLUEPRINT-03",
@@ -4254,6 +4261,15 @@ def build_atomic_predictive_model_blueprint_gate(
             "threshold_manifest_validation_ready_count": atomic_predictive_v1_threshold_gate["metrics"][
                 "validation_ready_threshold_count"
             ],
+            "fixed_correction_operator_candidate_count": atomic_predictive_v1_fixed_correction_operator_gate["metrics"][
+                "operator_candidate_count"
+            ],
+            "fixed_correction_operator_accepted_count": atomic_predictive_v1_fixed_correction_operator_gate["metrics"][
+                "accepted_operator_count"
+            ],
+            "fixed_correction_operator_contract_blocking_count": atomic_predictive_v1_fixed_correction_operator_gate[
+                "metrics"
+            ]["contract_blocking_count"],
             "external_lineage_independent_validation_allowed": helium_external_holdout_lineage_decision_gate["metrics"][
                 "independent_validation_allowed"
             ],
@@ -5166,6 +5182,7 @@ def run_rydberg_analysis():
         atomic_first_predictive_implementation_candidate_gate,
         atomic_predictive_v1_parameter_lock_gate,
         atomic_predictive_v1_threshold_gate,
+        atomic_predictive_v1_fixed_correction_operator_gate,
         helium_external_holdout_lineage_decision_gate,
         atomic_prediction_baseline_comparator_gate,
         atomic_uncertainty_readiness_gate,

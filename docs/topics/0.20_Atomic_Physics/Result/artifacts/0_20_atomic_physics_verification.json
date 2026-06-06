@@ -801,10 +801,10 @@
       },
       {
         "current_decision": "E_or_nu_pred = standard_baseline(domain, constants, quantum_numbers) + delta_uet_or_ci(domain, locked_parameters, quantum_numbers)",
-        "evidence": "The model spec declares the baseline-plus-correction form, but no UET operator or CI/correlated correction implementation is present.",
+        "evidence": "The model spec declares the baseline-plus-correction form and the fixed-correction operator gate records 3 operator candidates, but 0 are accepted as implemented.",
         "name": "model_equation",
         "requirement": "Represent predictions as standard_baseline plus an explicit correction term with units.",
-        "status": "SPEC_READY_IMPLEMENTATION_BLOCKED",
+        "status": "PARTIAL_OPERATOR_CONTRACT_READY_IMPLEMENTATION_MISSING",
         "step_id": "BLUEPRINT-02"
       },
       {
@@ -872,11 +872,14 @@
       "external_crosscheck_row_count": 2,
       "external_lineage_independent_validation_allowed": false,
       "external_lineage_non_nist_source_required": true,
+      "fixed_correction_operator_accepted_count": 0,
+      "fixed_correction_operator_candidate_count": 3,
+      "fixed_correction_operator_contract_blocking_count": 1,
       "internal_pass_step_count": 1,
       "parameter_lock_missing_future_parameter_count": 1,
       "parameter_lock_policy_fail_count": 0,
       "parameter_lock_policy_partial_count": 1,
-      "partial_step_count": 4,
+      "partial_step_count": 5,
       "ready_step_count": 1,
       "selected_level_holdout_prediction_count": 3,
       "selected_wavelength_holdout_prediction_count": 2,
@@ -1886,7 +1889,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-06T10:08:14.413285+00:00",
+  "generated_at_utc": "2026-06-06T10:17:51.305056+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -4808,7 +4811,7 @@
     "atomic_predictive_closure_fail_open_checks": 0,
     "atomic_predictive_closure_open_or_partial_checks": 4,
     "atomic_predictive_model_blueprint_blocked_steps": 0,
-    "atomic_predictive_model_blueprint_partial_steps": 4,
+    "atomic_predictive_model_blueprint_partial_steps": 5,
     "atomic_predictive_model_blueprint_steps": 7,
     "atomic_predictive_model_spec_blocked_lanes": 3,
     "atomic_predictive_model_spec_blockers": 4,
