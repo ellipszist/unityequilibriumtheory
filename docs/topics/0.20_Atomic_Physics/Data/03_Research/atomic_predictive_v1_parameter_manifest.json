@@ -17,7 +17,7 @@
     "locked_before_current_holdout": true,
     "calibration_rows_allowed": "Selected He I term-level series rows from helium_transition_assignments.json used by helium_quantum_defect_prediction_gate.",
     "holdout_rows_forbidden_for_fit": "Rows in helium_quantum_defect_holdout_sources.json and CHIANTI overlap rows must not set calibrated quantum defects or correction parameters.",
-    "external_rows_forbidden_for_fit": "CHIANTI He I rows are cross-check-only until source-lineage review closes; non-NIST independent rows must be held out from calibration.",
+    "external_rows_forbidden_for_fit": "CHIANTI He I rows are cross-check-only because the lineage decision classifies them as NIST-dependent; non-NIST independent rows must be held out from calibration.",
     "claim_boundary": "A locked diagnostic parameter manifest does not turn fitted quantum defects into a first-principles UET prediction."
   },
   "constants": [
@@ -77,7 +77,7 @@
   ],
   "evaluation_policy": {
     "same_source_holdouts": "diagnostic only",
-    "chianti_rows": "cross-check only until lineage/source-version review closes",
+    "chianti_rows": "cross-check only after lineage decision; source-version reconciliation still open",
     "non_nist_rows": "required for independent validation",
     "baseline_comparators_required": [
       "zero_quantum_defect_hydrogenic",

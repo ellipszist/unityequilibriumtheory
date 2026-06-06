@@ -3662,7 +3662,7 @@ def build_atomic_predictive_v1_parameter_lock_gate(
         ]
         + [
             "rerun v1 prediction report after fixed correction parameters are added",
-            "source-lineage gate proving any external rows were not used for parameter tuning",
+            "source-lineage gate proving whether external rows are independent or cross-check-only",
         ],
         "blocked_claims": parameter_manifest.get("blocked_claims", []),
         "claim_boundary": parameter_manifest.get("claim_boundary"),
@@ -3754,12 +3754,110 @@ def build_atomic_predictive_v1_threshold_gate(
     }
 
 
+def build_helium_external_holdout_lineage_decision_gate(
+    chianti_he_i_manifest: dict,
+    helium_external_holdout_acquisition_gate: dict,
+    helium_external_holdout_residual_crosscheck_gate: dict,
+) -> dict:
+    raw_files = chianti_he_i_manifest.get("raw_files", [])
+    overlap_rows = chianti_he_i_manifest.get("overlap_rows", [])
+    lineage_review = chianti_he_i_manifest.get("lineage_review", {})
+    nist_lineage_raw_files = [
+        row
+        for row in raw_files
+        if "NIST" in row.get("lineage_note", "") or "NIST" in lineage_review.get("known_dependency", "")
+    ]
+    nist_lineage_overlap_rows = [
+        row
+        for row in overlap_rows
+        if row.get("lineage_status", "").startswith("CROSS_CHECK_ONLY")
+    ]
+    wavelength_rounding_pass = helium_external_holdout_residual_crosscheck_gate["metrics"][
+        "wavelength_display_rounding_pass_count"
+    ]
+    upper_energy_review_count = helium_external_holdout_residual_crosscheck_gate["metrics"][
+        "upper_energy_source_version_review_count"
+    ]
+    decision_checks = [
+        {
+            "check_id": "LINEAGE-01",
+            "requirement": "Raw files and overlap row locators must be captured before lineage decision.",
+            "status": "PASS"
+            if helium_external_holdout_acquisition_gate["metrics"]["raw_file_hash_count"] == len(raw_files)
+            and len(overlap_rows)
+            else "FAIL",
+            "evidence": {
+                "raw_file_count": len(raw_files),
+                "raw_file_hash_count": helium_external_holdout_acquisition_gate["metrics"]["raw_file_hash_count"],
+                "overlap_row_count": len(overlap_rows),
+            },
+        },
+        {
+            "check_id": "LINEAGE-02",
+            "requirement": "Source metadata must be reviewed for dependency on the current NIST source family.",
+            "status": "CROSSCHECK_ONLY_NOT_INDEPENDENT" if nist_lineage_raw_files else "INDEPENDENCE_NOT_EXCLUDED",
+            "evidence": lineage_review.get("known_dependency"),
+        },
+        {
+            "check_id": "LINEAGE-03",
+            "requirement": "Residual deltas may be computed but cannot override source-family dependency.",
+            "status": "PASS_DIAGNOSTIC_ONLY",
+            "evidence": {
+                "crosscheck_row_count": helium_external_holdout_residual_crosscheck_gate["metrics"]["crosscheck_row_count"],
+                "wavelength_display_rounding_pass_count": wavelength_rounding_pass,
+                "upper_energy_source_version_review_count": upper_energy_review_count,
+            },
+        },
+    ]
+    fail_count = sum(1 for row in decision_checks if row["status"] == "FAIL")
+    decision = "CROSSCHECK_ONLY_NOT_INDEPENDENT" if nist_lineage_raw_files else "MORE_LINEAGE_REVIEW_REQUIRED"
+    status = "LINEAGE_DECISION_FAIL" if fail_count else f"LINEAGE_DECISION_{decision}"
+    return {
+        "schema_version": "1.0",
+        "role": "helium_external_holdout_lineage_decision_gate",
+        "status": status,
+        "decision": decision,
+        "claim_class": "source_lineage_decision_no_validation_claim",
+        "formula_id": "AT20-HELIUM-EXTERNAL-HOLDOUT-LINEAGE-DECISION",
+        "source_family": chianti_he_i_manifest.get("source_family"),
+        "decision_checks": decision_checks,
+        "metrics": {
+            "raw_file_count": len(raw_files),
+            "raw_file_hash_count": helium_external_holdout_acquisition_gate["metrics"]["raw_file_hash_count"],
+            "overlap_row_count": len(overlap_rows),
+            "nist_lineage_raw_file_count": len(nist_lineage_raw_files),
+            "crosscheck_only_overlap_row_count": len(nist_lineage_overlap_rows),
+            "wavelength_display_rounding_pass_count": wavelength_rounding_pass,
+            "upper_energy_source_version_review_count": upper_energy_review_count,
+            "independent_validation_allowed": False,
+            "non_nist_source_required": True,
+        },
+        "allowed_use": [
+            "external database cross-check diagnostics",
+            "source-version reconciliation work",
+            "evidence for why non-NIST independent holdouts are still required",
+        ],
+        "blocked_use": [
+            "independent external helium validation",
+            "parameter tuning for predictive v1 lane",
+            "claim upgrade for helium quantum-defect holdouts",
+        ],
+        "next_required_artifacts": [
+            "non-NIST He I measurement or independent compilation source package with raw/table hashes",
+            "source-version reconciliation note for CHIANTI-vs-current upper-energy deltas",
+            "validation-ready external holdout gate after independent source package is captured",
+        ],
+        "claim_boundary": "This gate decides that the current CHIANTI He I package is cross-check-only because the captured metadata records NIST ASD lineage. It narrows the blocker but does not provide independent validation.",
+    }
+
+
 def build_atomic_predictive_model_blueprint_gate(
     atomic_predictive_model_closure_gate: dict,
     atomic_predictive_model_spec_gate: dict,
     atomic_first_predictive_implementation_candidate_gate: dict,
     atomic_predictive_v1_parameter_lock_gate: dict,
     atomic_predictive_v1_threshold_gate: dict,
+    helium_external_holdout_lineage_decision_gate: dict,
     atomic_prediction_baseline_comparator_gate: dict,
     atomic_uncertainty_readiness_gate: dict,
     atomic_fixed_parameter_model_readiness_gate: dict,
@@ -3827,19 +3925,19 @@ def build_atomic_predictive_model_blueprint_gate(
             "evidence": (
                 f"{atomic_predictive_v1_threshold_gate['metrics']['diagnostic_pass_count']} diagnostic thresholds pass, "
                 f"{atomic_predictive_v1_threshold_gate['metrics']['validation_ready_threshold_count']} thresholds are validation-ready, "
-                "and official/source uncertainty plus independent lineage remain required."
+                "and official/source uncertainty plus a non-NIST independent source package remain required."
             ),
         },
         {
             "step_id": "BLUEPRINT-07",
             "name": "source_lineage",
             "requirement": "Classify cross-check sources by lineage before treating residuals as validation evidence.",
-            "current_decision": "CHIANTI He I is cross-check-only until lineage/source-version review is closed",
-            "status": "BLOCKED_CROSSCHECK_ONLY",
+            "current_decision": helium_external_holdout_lineage_decision_gate["decision"],
+            "status": "PARTIAL_LINEAGE_DECISION_CROSSCHECK_ONLY_NON_NIST_SOURCE_REQUIRED",
             "evidence": (
-                f"{helium_external_holdout_acquisition_gate['metrics']['raw_file_count']} CHIANTI raw files are captured; "
-                f"{helium_external_holdout_residual_crosscheck_gate['metrics']['crosscheck_row_count']} overlap rows have residuals, "
-                "but source-lineage independence is not established."
+                f"{helium_external_holdout_lineage_decision_gate['metrics']['nist_lineage_raw_file_count']} CHIANTI raw files carry NIST lineage notes; "
+                f"{helium_external_holdout_lineage_decision_gate['metrics']['crosscheck_only_overlap_row_count']} overlap rows remain cross-check-only; "
+                "non-NIST source package is still required."
             ),
         },
     ]
@@ -3891,6 +3989,12 @@ def build_atomic_predictive_model_blueprint_gate(
             "threshold_manifest_validation_ready_count": atomic_predictive_v1_threshold_gate["metrics"][
                 "validation_ready_threshold_count"
             ],
+            "external_lineage_independent_validation_allowed": helium_external_holdout_lineage_decision_gate["metrics"][
+                "independent_validation_allowed"
+            ],
+            "external_lineage_non_nist_source_required": helium_external_holdout_lineage_decision_gate["metrics"][
+                "non_nist_source_required"
+            ],
             "spec_blocking_implementation_blockers": atomic_predictive_model_spec_gate["metrics"][
                 "blocking_implementation_blocker_count"
             ],
@@ -3913,13 +4017,13 @@ def build_atomic_predictive_model_blueprint_gate(
         "blocked_claims": [
             "same-source-family holdouts prove independent prediction",
             "a fitted quantum-defect diagnostic is a UET derivation",
-            "CHIANTI cross-check residuals validate helium spectra before lineage review",
+            "CHIANTI cross-check residuals validate helium spectra despite NIST-lineage dependency",
             "standard Rydberg/Dirac/QED baselines alone prove UET atomic theory",
         ],
         "next_required_artifacts": [
             "parameter manifest for the selected v1 lane",
             "fixed-parameter CI/correlated or explicit UET correction operator with units",
-            "non-NIST independent He I holdout package or completed source-lineage exclusion record",
+            "non-NIST independent He I holdout package",
             "uncertainty-aware residual thresholds declared before holdout evaluation",
             "v1 prediction report that compares standard baseline, empirical fit, CI/correlated, and UET correction residuals",
         ],
@@ -4009,15 +4113,15 @@ def build_helium_external_holdout_acquisition_gate(
         {
             "requirement_id": "EXT-HE-04",
             "status": "BLOCKED_SOURCE_VERSION_REVIEW_REQUIRED",
-            "description": "Review source-version and lineage deltas before external residuals are interpreted as anything beyond cross-check diagnostics.",
-            "evidence": "The residual cross-check gate declares display-rounding policy, but CHIANTI-vs-current upper-energy deltas require source-version/lineage review.",
+            "description": "Review source-version deltas before external residuals are interpreted as anything beyond cross-check diagnostics.",
+            "evidence": "The residual cross-check gate declares display-rounding policy, but CHIANTI-vs-current upper-energy deltas require source-version reconciliation.",
         },
     ]
     blocking_count = sum(1 for row in blocking_requirements if row["status"].startswith("BLOCKED"))
     return {
         "schema_version": "1.0",
         "role": "helium_external_holdout_acquisition_gate",
-        "status": "RAW_CAPTURE_READY_LINEAGE_AND_SOURCE_VERSION_REVIEW_BLOCKED",
+        "status": "RAW_CAPTURE_READY_CROSSCHECK_ONLY_SOURCE_VERSION_REVIEW_OPEN",
         "claim_class": "source_acquisition_gate_only",
         "formula_id": "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
         "selected_first_candidate_lane": atomic_first_predictive_implementation_candidate_gate["selected_lane_id"],
@@ -4040,8 +4144,8 @@ def build_helium_external_holdout_acquisition_gate(
             ],
         },
         "next_required_artifacts": [
-            "lineage review deciding cross-check-only versus independent-validation use",
-            "non-NIST measurement or compilation source package if CHIANTI lineage remains too NIST-dependent",
+            "non-NIST source package for independent-validation use",
+            "non-NIST measurement or compilation source package because CHIANTI is NIST-dependent",
             "external-holdout residual gate rerun after source capture and uncertainty thresholds are declared",
         ],
         "claim_boundary": "This gate narrows the external-holdout blocker. It identifies candidate source families but does not add external validation rows to the model and does not upgrade helium diagnostics.",
@@ -4159,7 +4263,7 @@ def build_helium_external_holdout_residual_crosscheck_gate(
     return {
         "schema_version": "1.0",
         "role": "helium_external_holdout_residual_crosscheck_gate",
-        "status": "CROSSCHECK_RESIDUALS_COMPUTED_LINEAGE_AND_SOURCE_VERSION_REVIEW_BLOCKED",
+        "status": "CROSSCHECK_RESIDUALS_COMPUTED_NOT_INDEPENDENT_SOURCE_VERSION_REVIEW_OPEN",
         "claim_class": "external_database_crosscheck_diagnostic_only",
         "formula_id": "AT20-HELIUM-EXTERNAL-HOLDOUT-RESIDUAL-CROSSCHECK",
         "threshold_policy": {
@@ -4167,7 +4271,7 @@ def build_helium_external_holdout_residual_crosscheck_gate(
             "role": "screening_policy_only_not_validation_threshold",
             "chianti_display_policy": chianti_display_policy,
             "current_source_policy": helium_qd_holdouts.get("uncertainty_policy"),
-            "interpretation": "Wavelength deltas may pass display-rounding consistency while energy deltas can still require source-version/lineage review. This policy cannot validate helium prediction.",
+            "interpretation": "Wavelength deltas may pass display-rounding consistency while energy deltas can still require source-version reconciliation. This policy cannot validate helium prediction.",
         },
         "source_basis": {
             "current_holdout_package": helium_qd_holdouts["source"],
@@ -4754,12 +4858,18 @@ def run_rydberg_analysis():
         helium_quantum_defect_wavelength_holdout_gate,
         atomic_predictive_v1_parameter_lock_gate,
     )
+    helium_external_holdout_lineage_decision_gate = build_helium_external_holdout_lineage_decision_gate(
+        chianti_he_i_manifest,
+        helium_external_holdout_acquisition_gate,
+        helium_external_holdout_residual_crosscheck_gate,
+    )
     atomic_predictive_model_blueprint_gate = build_atomic_predictive_model_blueprint_gate(
         atomic_predictive_model_closure_gate,
         atomic_predictive_model_spec_gate,
         atomic_first_predictive_implementation_candidate_gate,
         atomic_predictive_v1_parameter_lock_gate,
         atomic_predictive_v1_threshold_gate,
+        helium_external_holdout_lineage_decision_gate,
         atomic_prediction_baseline_comparator_gate,
         atomic_uncertainty_readiness_gate,
         atomic_fixed_parameter_model_readiness_gate,
@@ -4961,6 +5071,7 @@ def run_rydberg_analysis():
             "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
             "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
             "AT20-HELIUM-EXTERNAL-HOLDOUT-RESIDUAL-CROSSCHECK",
+            "AT20-HELIUM-EXTERNAL-HOLDOUT-LINEAGE-DECISION",
             "AT20-UET-ATOMIC-BRIDGE-GATE",
             "AT20-UET-ATOMIC-OPERATOR-READINESS",
         ],
@@ -5145,6 +5256,12 @@ def run_rydberg_analysis():
                     "max_abs_upper_energy_delta_cm_inverse"
                 ]
             ),
+            "helium_external_holdout_lineage_independent_validation_allowed": (
+                helium_external_holdout_lineage_decision_gate["metrics"]["independent_validation_allowed"]
+            ),
+            "helium_external_holdout_lineage_non_nist_source_required": (
+                helium_external_holdout_lineage_decision_gate["metrics"]["non_nist_source_required"]
+            ),
         },
         "results": results,
         "limitations": [
@@ -5158,10 +5275,11 @@ def run_rydberg_analysis():
             "The atomic predictive-model specification gate maps the required baseline-plus-correction contract, but the UET operator and fixed-parameter generative model remain missing.",
             "The atomic predictive-v1 parameter-lock gate now records allowed calibration parameters and forbidden holdout/external leakage fields; future CI/UET correction parameters remain missing.",
             "The atomic predictive-v1 threshold gate now records diagnostic residual thresholds for the selected lane, but zero thresholds are validation-ready.",
-            "The atomic predictive-model blueprint gate turns the build path into seven auditable steps; blocked steps still include external source-lineage closure, while parameter lock and thresholds remain partial until the missing generative model and validation-ready uncertainty policy exist.",
+            "The helium external-holdout lineage decision gate classifies CHIANTI He I as cross-check-only because the captured metadata records NIST ASD lineage.",
+            "The atomic predictive-model blueprint gate turns the build path into seven auditable steps; source lineage is now decided as cross-check-only, while parameter lock and thresholds remain partial until the missing generative model and validation-ready uncertainty policy exist.",
             "The first predictive implementation candidate gate selects the same-source-family helium quantum-defect holdout lane as the narrowest current diagnostic path, but external validation remains blocked.",
-            "The helium external-holdout acquisition gate identifies CHIANTI He I as an external database cross-check candidate with raw files and hashes captured, but source-lineage independence review and uncertainty-aware thresholds remain blocking.",
-            "The helium external-holdout residual cross-check gate computes CHIANTI-vs-current holdout deltas, but it remains cross-check-only because lineage and uncertainty thresholds are not resolved.",
+            "The helium external-holdout acquisition gate identifies CHIANTI He I as an external database cross-check candidate with raw files and hashes captured, but independent validation requires a non-NIST source package.",
+            "The helium external-holdout residual cross-check gate computes CHIANTI-vs-current holdout deltas, but it remains cross-check-only because CHIANTI is NIST-lineage and validation-ready uncertainty thresholds are not resolved.",
         ],
     }
     artifact["atomic_formula_bridge_manifest"] = {
@@ -5210,6 +5328,7 @@ def run_rydberg_analysis():
     artifact["helium_external_holdout_residual_crosscheck_gate"] = (
         helium_external_holdout_residual_crosscheck_gate
     )
+    artifact["helium_external_holdout_lineage_decision_gate"] = helium_external_holdout_lineage_decision_gate
     artifact["source_evidence_intake_stub"] = {
         "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
         "sha256": sha256(json.dumps(source_evidence_intake_stub, sort_keys=True).encode("utf-8")).hexdigest(),

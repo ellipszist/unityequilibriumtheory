@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "topic": "0.20_Atomic_Physics",
   "purpose": "Raw CHIANTI He I external-database cross-check package for the selected helium quantum-defect holdout candidate lane.",
-  "status": "RAW_CAPTURE_READY_LINEAGE_REVIEW_BLOCKED",
+  "status": "RAW_CAPTURE_READY_CROSSCHECK_ONLY_NOT_INDEPENDENT",
   "claim_class": "external_database_cross_check_candidate_only",
   "source_family": {
     "name": "CHIANTI atomic database",
@@ -43,7 +43,7 @@
       "chianti_wavelength_angstrom": 537.03,
       "chianti_upper_energy_observed_cm_inverse": 186209.468,
       "match_status": "RAW_CAPTURED_APPROXIMATE_LINE_ID_MATCH",
-      "lineage_status": "CROSS_CHECK_ONLY_PENDING_INDEPENDENCE_REVIEW"
+      "lineage_status": "CROSS_CHECK_ONLY_NOT_INDEPENDENT_NIST_LINEAGE"
     },
     {
       "current_holdout_id": "he_i_1s4p_1P_from_522_21309",
@@ -55,20 +55,20 @@
       "chianti_wavelength_angstrom": 522.213,
       "chianti_upper_energy_observed_cm_inverse": 191492.816,
       "match_status": "RAW_CAPTURED_APPROXIMATE_LINE_ID_MATCH",
-      "lineage_status": "CROSS_CHECK_ONLY_PENDING_INDEPENDENCE_REVIEW"
+      "lineage_status": "CROSS_CHECK_ONLY_NOT_INDEPENDENT_NIST_LINEAGE"
     }
   ],
   "lineage_review": {
-    "status": "NOT_INDEPENDENT_UNTIL_REVIEWED",
+    "status": "CROSSCHECK_ONLY_NOT_INDEPENDENT",
     "known_dependency": "CHIANTI He I metadata records Fuhr et al. 1999 / NIST Atomic Spectra Database Version 2.0 lineage for energy levels and observed radiative data.",
     "allowed_current_use": "external database cross-check candidate only",
     "blocked_upgrade": "independent external helium validation"
   },
   "next_required_artifacts": [
-    "lineage review deciding whether CHIANTI rows can be more than cross-check-only",
+    "non-NIST measurement or compilation source package for independent validation",
     "uncertainty-aware threshold policy for CHIANTI-vs-current holdout residuals",
-    "non-NIST measurement or compilation source package if CHIANTI remains NIST-dependent",
-    "external-holdout residual verifier lane after lineage and threshold policy are complete"
+    "source-version reconciliation note for CHIANTI-vs-current upper-energy deltas",
+    "external-holdout residual verifier lane after non-NIST source and threshold policy are complete"
   ],
   "claim_boundary": "This package source-locks CHIANTI He I raw files for cross-check review only. It does not provide independent helium validation and does not upgrade the same-source-family holdout diagnostics."
 }

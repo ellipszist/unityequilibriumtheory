@@ -48,7 +48,7 @@
   "required_for_validation_upgrade": [
     "official/source uncertainty replacement for current transcription-rounding bounds",
     "fixed CI/correlated or UET correction operator with parameters frozen before holdout evaluation",
-    "non-NIST independent He I holdout source package or source-lineage exclusion record",
+    "non-NIST independent He I holdout source package",
     "threshold reclassification from diagnostic to validation-ready before independent rows are evaluated"
   ],
   "blocked_claims": [
@@ -56,5 +56,5 @@
     "thresholds derived for same-source-family reruns can validate non-NIST rows without reclassification",
     "threshold manifest replaces missing model uncertainty for CI/UET correction terms"
   ],
-  "claim_boundary": "This manifest closes the missing threshold-manifest bookkeeping blocker for the v1 lane, but all thresholds remain diagnostic until source uncertainty, independent lineage, and a fixed correction operator are available."
+  "claim_boundary": "This manifest closes the missing threshold-manifest bookkeeping blocker for the v1 lane, but all thresholds remain diagnostic until source uncertainty, a non-NIST independent source package, and a fixed correction operator are available."
 }
