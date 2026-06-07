@@ -4594,6 +4594,108 @@ def build_helium_external_holdout_residual_crosscheck_gate(
     }
 
 
+def build_helium_external_holdout_source_version_reconciliation_gate(
+    chianti_he_i_manifest: dict,
+    helium_external_holdout_residual_crosscheck_gate: dict,
+) -> dict:
+    reconciliation_rows = []
+    for row in helium_external_holdout_residual_crosscheck_gate.get("crosscheck_rows", []):
+        upper_energy_status = row["upper_energy_rounding_policy_status"]
+        wavelength_status = row["wavelength_rounding_policy_status"]
+        source_version_required = upper_energy_status.startswith("BLOCKED")
+        reconciliation_rows.append(
+            {
+                "current_holdout_id": row["current_holdout_id"],
+                "current_upper_energy_cm_inverse": row["current_upper_energy_cm_inverse"],
+                "chianti_upper_energy_observed_cm_inverse": row[
+                    "chianti_upper_energy_observed_cm_inverse"
+                ],
+                "upper_energy_abs_delta_cm_inverse": row["upper_energy_abs_delta_cm_inverse"],
+                "combined_upper_energy_rounding_bound_cm_inverse": row[
+                    "combined_upper_energy_rounding_bound_cm_inverse"
+                ],
+                "upper_energy_delta_to_combined_rounding_bound_ratio": row[
+                    "upper_energy_delta_to_combined_rounding_bound_ratio"
+                ],
+                "current_wavelength_angstrom": row["current_wavelength_angstrom"],
+                "chianti_wavelength_angstrom": row["chianti_wavelength_angstrom"],
+                "wavelength_abs_delta_ppm": row["wavelength_abs_delta_ppm"],
+                "wavelength_rounding_policy_status": wavelength_status,
+                "upper_energy_rounding_policy_status": upper_energy_status,
+                "classification": "SOURCE_VERSION_RECONCILIATION_REQUIRED"
+                if source_version_required
+                else "DISPLAY_ROUNDING_CONSISTENT",
+                "allowed_use": "cross-check bookkeeping only",
+                "blocked_use": "validation residual, parameter tuning input, or claim upgrade",
+                "source_locator": {
+                    "chianti_wgfa_line_number": row["chianti_wgfa_line_number"],
+                    "chianti_elvlc_upper_line_number": row["chianti_elvlc_upper_line_number"],
+                    "current_source_family": row["current_source_family"],
+                    "candidate_source_family": row["candidate_source_family"],
+                    "lineage_status": row["lineage_status"],
+                },
+            }
+        )
+
+    source_version_rows = [
+        row
+        for row in reconciliation_rows
+        if row["classification"] == "SOURCE_VERSION_RECONCILIATION_REQUIRED"
+    ]
+    wavelength_rounding_rows = [
+        row
+        for row in reconciliation_rows
+        if row["wavelength_rounding_policy_status"].startswith("PASS")
+    ]
+    upper_energy_deltas = [row["upper_energy_abs_delta_cm_inverse"] for row in reconciliation_rows]
+    upper_energy_ratios = [
+        row["upper_energy_delta_to_combined_rounding_bound_ratio"]
+        for row in reconciliation_rows
+        if row["upper_energy_delta_to_combined_rounding_bound_ratio"] is not None
+    ]
+    status = (
+        "SOURCE_VERSION_RECONCILIATION_REQUIRED"
+        if source_version_rows
+        else "SOURCE_VERSION_RECONCILED_BY_DISPLAY_ROUNDING"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "helium_external_holdout_source_version_reconciliation_gate",
+        "status": status,
+        "claim_class": "source_version_reconciliation_gate_no_validation_claim",
+        "formula_id": "AT20-HELIUM-EXTERNAL-HOLDOUT-SOURCE-VERSION-RECONCILIATION",
+        "source_basis": {
+            "candidate_manifest_status": chianti_he_i_manifest["status"],
+            "candidate_source_family": chianti_he_i_manifest["source_family"],
+            "candidate_lineage_status": chianti_he_i_manifest["lineage_review"]["status"],
+            "residual_crosscheck_status": helium_external_holdout_residual_crosscheck_gate["status"],
+        },
+        "metrics": {
+            "reconciliation_row_count": len(reconciliation_rows),
+            "source_version_reconciliation_required_count": len(source_version_rows),
+            "display_rounding_consistent_wavelength_count": len(wavelength_rounding_rows),
+            "max_upper_energy_abs_delta_cm_inverse": max(upper_energy_deltas)
+            if upper_energy_deltas
+            else None,
+            "max_upper_energy_delta_to_rounding_bound_ratio": max(upper_energy_ratios)
+            if upper_energy_ratios
+            else None,
+        },
+        "reconciliation_rows": reconciliation_rows,
+        "blocked_claims": [
+            "CHIANTI upper-energy deltas validate He I level predictions",
+            "source-version deltas can be ignored because wavelength display rounding passes",
+            "CHIANTI can become independent validation without non-NIST source lineage",
+        ],
+        "next_required_artifacts": [
+            "source-version locator comparing current NIST source version with CHIANTI NIST ASD v2.0/Fuhr et al. lineage",
+            "non-NIST He I source package for independent validation",
+            "validation-ready thresholds after source-version reconciliation and source uncertainty capture",
+        ],
+        "claim_boundary": "This gate separates wavelength display-rounding consistency from upper-energy source-version reconciliation. It is diagnostic source bookkeeping only and cannot validate helium predictions.",
+    }
+
+
 def build_atomic_claim_scope_gate(
     status: str,
     avg_error_ppm: float,
@@ -5143,6 +5245,12 @@ def run_rydberg_analysis():
             helium_external_holdout_acquisition_gate,
         )
     )
+    helium_external_holdout_source_version_reconciliation_gate = (
+        build_helium_external_holdout_source_version_reconciliation_gate(
+            chianti_he_i_manifest,
+            helium_external_holdout_residual_crosscheck_gate,
+        )
+    )
     atomic_predictive_v1_parameter_lock_gate = build_atomic_predictive_v1_parameter_lock_gate(
         atomic_predictive_v1_parameter_manifest,
         atomic_first_predictive_implementation_candidate_gate,
@@ -5398,6 +5506,7 @@ def run_rydberg_analysis():
             "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
             "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
             "AT20-HELIUM-EXTERNAL-HOLDOUT-RESIDUAL-CROSSCHECK",
+            "AT20-HELIUM-EXTERNAL-HOLDOUT-SOURCE-VERSION-RECONCILIATION",
             "AT20-HELIUM-EXTERNAL-HOLDOUT-LINEAGE-DECISION",
             "AT20-UET-ATOMIC-BRIDGE-GATE",
             "AT20-UET-ATOMIC-OPERATOR-READINESS",
@@ -5598,6 +5707,21 @@ def run_rydberg_analysis():
                     "max_abs_upper_energy_delta_cm_inverse"
                 ]
             ),
+            "helium_external_holdout_source_version_reconciliation_rows": (
+                helium_external_holdout_source_version_reconciliation_gate["metrics"][
+                    "reconciliation_row_count"
+                ]
+            ),
+            "helium_external_holdout_source_version_reconciliation_required": (
+                helium_external_holdout_source_version_reconciliation_gate["metrics"][
+                    "source_version_reconciliation_required_count"
+                ]
+            ),
+            "helium_external_holdout_source_version_max_upper_energy_delta_cm_inverse": (
+                helium_external_holdout_source_version_reconciliation_gate["metrics"][
+                    "max_upper_energy_abs_delta_cm_inverse"
+                ]
+            ),
             "helium_external_holdout_lineage_independent_validation_allowed": (
                 helium_external_holdout_lineage_decision_gate["metrics"]["independent_validation_allowed"]
             ),
@@ -5624,6 +5748,7 @@ def run_rydberg_analysis():
             "The first predictive implementation candidate gate selects the same-source-family helium quantum-defect holdout lane as the narrowest current diagnostic path, but external validation remains blocked.",
             "The helium external-holdout acquisition gate identifies CHIANTI He I as an external database cross-check candidate with raw files and hashes captured, but independent validation requires a non-NIST source package.",
             "The helium external-holdout residual cross-check gate computes CHIANTI-vs-current holdout deltas, but it remains cross-check-only because CHIANTI is NIST-lineage and validation-ready uncertainty thresholds are not resolved.",
+            "The helium external-holdout source-version reconciliation gate keeps wavelength display-rounding consistency separate from upper-energy source-version deltas; current upper-energy rows remain diagnostic-only until source-version reconciliation is closed.",
         ],
     }
     artifact["atomic_formula_bridge_manifest"] = {
@@ -5675,6 +5800,9 @@ def run_rydberg_analysis():
     artifact["helium_external_holdout_acquisition_gate"] = helium_external_holdout_acquisition_gate
     artifact["helium_external_holdout_residual_crosscheck_gate"] = (
         helium_external_holdout_residual_crosscheck_gate
+    )
+    artifact["helium_external_holdout_source_version_reconciliation_gate"] = (
+        helium_external_holdout_source_version_reconciliation_gate
     )
     artifact["helium_external_holdout_lineage_decision_gate"] = helium_external_holdout_lineage_decision_gate
     artifact["source_evidence_intake_stub"] = {

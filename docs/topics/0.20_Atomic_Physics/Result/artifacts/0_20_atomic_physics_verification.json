@@ -1885,11 +1885,12 @@
     "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
     "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
     "AT20-HELIUM-EXTERNAL-HOLDOUT-RESIDUAL-CROSSCHECK",
+    "AT20-HELIUM-EXTERNAL-HOLDOUT-SOURCE-VERSION-RECONCILIATION",
     "AT20-HELIUM-EXTERNAL-HOLDOUT-LINEAGE-DECISION",
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-06T10:17:51.305056+00:00",
+  "generated_at_utc": "2026-06-07T07:40:39.714255+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -2568,6 +2569,92 @@
       "role": "screening_policy_only_not_validation_threshold",
       "status": "DISPLAY_ROUNDING_POLICY_DECLARED_VALIDATION_BLOCKED"
     }
+  },
+  "helium_external_holdout_source_version_reconciliation_gate": {
+    "blocked_claims": [
+      "CHIANTI upper-energy deltas validate He I level predictions",
+      "source-version deltas can be ignored because wavelength display rounding passes",
+      "CHIANTI can become independent validation without non-NIST source lineage"
+    ],
+    "claim_boundary": "This gate separates wavelength display-rounding consistency from upper-energy source-version reconciliation. It is diagnostic source bookkeeping only and cannot validate helium predictions.",
+    "claim_class": "source_version_reconciliation_gate_no_validation_claim",
+    "formula_id": "AT20-HELIUM-EXTERNAL-HOLDOUT-SOURCE-VERSION-RECONCILIATION",
+    "metrics": {
+      "display_rounding_consistent_wavelength_count": 2,
+      "max_upper_energy_abs_delta_cm_inverse": 0.10399999999208376,
+      "max_upper_energy_delta_to_rounding_bound_ratio": 189.0909090765159,
+      "reconciliation_row_count": 2,
+      "source_version_reconciliation_required_count": 2
+    },
+    "next_required_artifacts": [
+      "source-version locator comparing current NIST source version with CHIANTI NIST ASD v2.0/Fuhr et al. lineage",
+      "non-NIST He I source package for independent validation",
+      "validation-ready thresholds after source-version reconciliation and source uncertainty capture"
+    ],
+    "reconciliation_rows": [
+      {
+        "allowed_use": "cross-check bookkeeping only",
+        "blocked_use": "validation residual, parameter tuning input, or claim upgrade",
+        "chianti_upper_energy_observed_cm_inverse": 186209.468,
+        "chianti_wavelength_angstrom": 537.03,
+        "classification": "SOURCE_VERSION_RECONCILIATION_REQUIRED",
+        "combined_upper_energy_rounding_bound_cm_inverse": 0.00055,
+        "current_holdout_id": "he_i_1s3p_1P_from_537_02992",
+        "current_upper_energy_cm_inverse": 186209.3651,
+        "current_wavelength_angstrom": 537.02992,
+        "source_locator": {
+          "candidate_source_family": "CHIANTI atomic database",
+          "chianti_elvlc_upper_line_number": 17,
+          "chianti_wgfa_line_number": 32,
+          "current_source_family": "NIST Handbook persistent lines",
+          "lineage_status": "CROSS_CHECK_ONLY_NOT_INDEPENDENT_NIST_LINEAGE"
+        },
+        "upper_energy_abs_delta_cm_inverse": 0.10289999999804422,
+        "upper_energy_delta_to_combined_rounding_bound_ratio": 187.0909090873531,
+        "upper_energy_rounding_policy_status": "BLOCKED_SOURCE_VERSION_RECONCILIATION_REQUIRED",
+        "wavelength_abs_delta_ppm": 0.14896749146750168,
+        "wavelength_rounding_policy_status": "PASS_DISPLAY_ROUNDING_CONSISTENT"
+      },
+      {
+        "allowed_use": "cross-check bookkeeping only",
+        "blocked_use": "validation residual, parameter tuning input, or claim upgrade",
+        "chianti_upper_energy_observed_cm_inverse": 191492.816,
+        "chianti_wavelength_angstrom": 522.213,
+        "classification": "SOURCE_VERSION_RECONCILIATION_REQUIRED",
+        "combined_upper_energy_rounding_bound_cm_inverse": 0.00055,
+        "current_holdout_id": "he_i_1s4p_1P_from_522_21309",
+        "current_upper_energy_cm_inverse": 191492.712,
+        "current_wavelength_angstrom": 522.21309,
+        "source_locator": {
+          "candidate_source_family": "CHIANTI atomic database",
+          "chianti_elvlc_upper_line_number": 31,
+          "chianti_wgfa_line_number": 86,
+          "current_source_family": "NIST Handbook persistent lines",
+          "lineage_status": "CROSS_CHECK_ONLY_NOT_INDEPENDENT_NIST_LINEAGE"
+        },
+        "upper_energy_abs_delta_cm_inverse": 0.10399999999208376,
+        "upper_energy_delta_to_combined_rounding_bound_ratio": 189.0909090765159,
+        "upper_energy_rounding_policy_status": "BLOCKED_SOURCE_VERSION_RECONCILIATION_REQUIRED",
+        "wavelength_abs_delta_ppm": 0.17234343934225305,
+        "wavelength_rounding_policy_status": "PASS_DISPLAY_ROUNDING_CONSISTENT"
+      }
+    ],
+    "role": "helium_external_holdout_source_version_reconciliation_gate",
+    "schema_version": "1.0",
+    "source_basis": {
+      "candidate_lineage_status": "CROSSCHECK_ONLY_NOT_INDEPENDENT",
+      "candidate_manifest_status": "RAW_CAPTURE_READY_CROSSCHECK_ONLY_NOT_INDEPENDENT",
+      "candidate_source_family": {
+        "created_note": "CHIANTI He I page states it was created by Giulio Del Zanna on Wed Apr 16 17:43:20 2025.",
+        "html_table_url": "https://db.chiantidatabase.org/he/he_1_table.html",
+        "ion": "He I",
+        "metadata_url": "https://db.chiantidatabase.org/he/he_1.html",
+        "name": "CHIANTI atomic database",
+        "version": "11.0.1"
+      },
+      "residual_crosscheck_status": "CROSSCHECK_RESIDUALS_COMPUTED_NOT_INDEPENDENT_SOURCE_VERSION_REVIEW_OPEN"
+    },
+    "status": "SOURCE_VERSION_RECONCILIATION_REQUIRED"
   },
   "helium_fixed_screening_baseline_gate": {
     "blocked_residual_model_requirements": [
@@ -4795,7 +4882,8 @@
     "The atomic predictive-model blueprint gate turns the build path into seven auditable steps; source lineage is now decided as cross-check-only, while parameter lock and thresholds remain partial until the missing generative model and validation-ready uncertainty policy exist.",
     "The first predictive implementation candidate gate selects the same-source-family helium quantum-defect holdout lane as the narrowest current diagnostic path, but external validation remains blocked.",
     "The helium external-holdout acquisition gate identifies CHIANTI He I as an external database cross-check candidate with raw files and hashes captured, but independent validation requires a non-NIST source package.",
-    "The helium external-holdout residual cross-check gate computes CHIANTI-vs-current holdout deltas, but it remains cross-check-only because CHIANTI is NIST-lineage and validation-ready uncertainty thresholds are not resolved."
+    "The helium external-holdout residual cross-check gate computes CHIANTI-vs-current holdout deltas, but it remains cross-check-only because CHIANTI is NIST-lineage and validation-ready uncertainty thresholds are not resolved.",
+    "The helium external-holdout source-version reconciliation gate keeps wavelength display-rounding consistency separate from upper-energy source-version deltas; current upper-energy rows remain diagnostic-only until source-version reconciliation is closed."
   ],
   "metrics": {
     "R_H_codata_m_inverse": 10967758.3406,
@@ -4857,6 +4945,9 @@
     "helium_external_holdout_lineage_non_nist_source_required": true,
     "helium_external_holdout_overlap_candidates": 2,
     "helium_external_holdout_raw_files": 2,
+    "helium_external_holdout_source_version_max_upper_energy_delta_cm_inverse": 0.10399999999208376,
+    "helium_external_holdout_source_version_reconciliation_required": 2,
+    "helium_external_holdout_source_version_reconciliation_rows": 2,
     "helium_fixed_screening_avg_abs_residual_eV": 0.5491888866196746,
     "helium_fixed_screening_max_abs_residual_eV": 1.129016300538522,
     "helium_fixed_screening_rows_improved_vs_zero_qd": 2,
