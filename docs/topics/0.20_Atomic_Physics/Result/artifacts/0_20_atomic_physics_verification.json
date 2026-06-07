@@ -1422,6 +1422,197 @@
     "schema_version": "1.0",
     "status": "OPERATOR_CONTRACT_READY_IMPLEMENTATION_MISSING"
   },
+  "atomic_predictive_v1_operator_build_spec_gate": {
+    "blocked_claims": [
+      "operator build spec is an implemented predictive model",
+      "implementation-ready inputs and outputs imply accepted delta_uet_or_ci",
+      "validation thresholds can be upgraded before operator uncertainty exists"
+    ],
+    "claim_boundary": "This manifest makes the missing operator implementation actionable. It is not itself an implemented CI/correlated or UET atomic operator and cannot validate atomic spectra.",
+    "claim_class": "operator_build_spec_no_validation_claim",
+    "forbidden_shortcuts": [
+      "treat Bohr/Rydberg/Dirac baseline formulas as delta_uet_or_ci",
+      "treat empirical Lamb or quantum-defect fitted parameters as a fixed correction operator",
+      "fit correction parameters after viewing holdout or CHIANTI residuals",
+      "use same-source-family holdout residuals as independent validation",
+      "skip uncertainty outputs while upgrading diagnostic thresholds to validation thresholds"
+    ],
+    "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-BUILD-SPEC",
+    "implementation_lanes": [
+      {
+        "acceptance_gate_count": 5,
+        "acceptance_gates": [
+          "parameters_locked_before_holdout_evaluation",
+          "no_holdout_or_chianti_rows_used_for_parameter_selection",
+          "named_baseline_comparator_present",
+          "residual_rows_emitted_for_selected_helium_holdouts",
+          "uncertainty_rows_consumed_by_predictive_v1_threshold_gate"
+        ],
+        "accepted_as_implemented": false,
+        "current_status": "IMPLEMENTATION_MISSING",
+        "implementation_ready": true,
+        "lane_id": "fixed_parameter_ci_or_correlated_two_electron_v1",
+        "operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction",
+        "priority": 1,
+        "required_input_count": 5,
+        "required_inputs": [
+          "source-locked helium ground-state energy anchors",
+          "source-locked excited-state target rows",
+          "declared basis/model family",
+          "locked basis size or convergence policy",
+          "locked constants and unit conversions"
+        ],
+        "required_output_count": 6,
+        "required_outputs": [
+          "predicted_excitation_energy_eV",
+          "delta_energy_eV",
+          "absolute_residual_eV",
+          "model_uncertainty_eV",
+          "source_uncertainty_eV_or_rounding_bound",
+          "operator_parameter_manifest_sha256"
+        ]
+      },
+      {
+        "acceptance_gate_count": 5,
+        "acceptance_gates": [
+          "derivation_artifact_present",
+          "parameter_manifest_present",
+          "residual_lane_present",
+          "baseline_comparator_present",
+          "claim_scope_gate_blocks first-principles wording until derivation and residuals align"
+        ],
+        "accepted_as_implemented": false,
+        "current_status": "DERIVATION_AND_IMPLEMENTATION_MISSING",
+        "implementation_ready": true,
+        "lane_id": "explicit_uet_atomic_operator_v1",
+        "operator_class": "explicit_uet_atomic_hamiltonian_or_transition_operator_correction",
+        "priority": 2,
+        "required_input_count": 4,
+        "required_inputs": [
+          "UET atomic Hamiltonian or transition operator derivation",
+          "constant-origin audit for h, alpha, masses, and charge coupling if claimed",
+          "locked UET parameters before holdout evaluation",
+          "declared mapping from UET variables to atomic quantum numbers"
+        ],
+        "required_output_count": 5,
+        "required_outputs": [
+          "delta_energy_eV_or_delta_frequency_Hz",
+          "operator_units",
+          "residual_rows_against_source_locked_targets",
+          "uncertainty_or_noncomputability_reason",
+          "blocked_claims_when inherited standard constants remain inputs"
+        ]
+      }
+    ],
+    "manifest": {
+      "manifest_id": "AT20-PREDICTIVE-V1-OPERATOR-BUILD-SPEC-MANIFEST",
+      "path": "Data/03_Research/atomic_predictive_v1_operator_build_spec_manifest.json",
+      "sha256": "22e9f67bb787ae64b1b0792458c791cac5c1f15cb165c66e79409c12d0cceca9",
+      "status": "BUILD_SPEC_READY_IMPLEMENTATION_MISSING"
+    },
+    "metrics": {
+      "acceptance_gate_total_count": 10,
+      "accepted_fixed_correction_operator_count": 0,
+      "accepted_implemented_lane_count": 0,
+      "forbidden_shortcut_count": 5,
+      "implementation_lane_count": 2,
+      "implementation_missing_lane_count": 2,
+      "implementation_ready_lane_count": 2,
+      "minimum_first_build_artifact_count": 5,
+      "required_input_total_count": 9,
+      "required_output_total_count": 11,
+      "spec_blocking_count": 1,
+      "spec_check_count": 5,
+      "spec_fail_count": 0
+    },
+    "minimum_first_build_artifacts": [
+      "operator parameter manifest with SHA256 recorded in primary artifact",
+      "operator residual table with source row IDs and no-leakage flag",
+      "operator uncertainty policy consumed by threshold gate",
+      "baseline comparator row comparing standard baseline, empirical diagnostic, and accepted operator",
+      "claim-scope update that keeps validation blocked until non-NIST external source rows exist"
+    ],
+    "next_required_artifacts": [
+      "operator parameter manifest with SHA256 recorded in primary artifact",
+      "operator residual table with source row IDs and no-leakage flag",
+      "operator uncertainty policy consumed by threshold gate",
+      "baseline comparator row comparing standard baseline, empirical diagnostic, and accepted operator",
+      "claim-scope update that keeps validation blocked until non-NIST external source rows exist"
+    ],
+    "operator_target": {
+      "first_target_domain": "neutral_helium_excited_levels",
+      "first_target_output_unit": "eV",
+      "line_output_policy": "Convert accepted level-energy outputs to wavelength/frequency only after level residual and uncertainty fields exist.",
+      "required_model_form": "E_or_nu_pred = standard_baseline(domain, constants, quantum_numbers) + delta_uet_or_ci(domain, locked_parameters, quantum_numbers)",
+      "required_operator_id": "delta_uet_or_ci"
+    },
+    "pass_conditions_for_accepting_operator": [
+      "One implementation lane has current_status ACCEPTED_IMPLEMENTED.",
+      "All required inputs and outputs for that lane are present in artifact rows.",
+      "Operator parameters are locked before holdout evaluation.",
+      "No forbidden shortcut is used.",
+      "The fixed-correction operator gate records accepted_operator_count >= 1."
+    ],
+    "role": "atomic_predictive_v1_operator_build_spec_gate",
+    "schema_version": "1.0",
+    "spec_checks": [
+      {
+        "check_id": "BUILD-SPEC-01",
+        "evidence": {
+          "first_target_domain": "neutral_helium_excited_levels",
+          "first_target_output_unit": "eV",
+          "line_output_policy": "Convert accepted level-energy outputs to wavelength/frequency only after level residual and uncertainty fields exist.",
+          "required_model_form": "E_or_nu_pred = standard_baseline(domain, constants, quantum_numbers) + delta_uet_or_ci(domain, locked_parameters, quantum_numbers)",
+          "required_operator_id": "delta_uet_or_ci"
+        },
+        "requirement": "Manifest must identify the required operator ID and model form.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "BUILD-SPEC-02",
+        "evidence": {
+          "implementation_ready_lane_count": 2,
+          "lane_count": 2
+        },
+        "requirement": "At least one implementation lane must declare inputs, outputs, and acceptance gates.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "BUILD-SPEC-03",
+        "evidence": [
+          "treat Bohr/Rydberg/Dirac baseline formulas as delta_uet_or_ci",
+          "treat empirical Lamb or quantum-defect fitted parameters as a fixed correction operator",
+          "fit correction parameters after viewing holdout or CHIANTI residuals",
+          "use same-source-family holdout residuals as independent validation",
+          "skip uncertainty outputs while upgrading diagnostic thresholds to validation thresholds"
+        ],
+        "requirement": "Forbidden shortcuts must be explicit before implementation work starts.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "BUILD-SPEC-04",
+        "evidence": [
+          "operator parameter manifest with SHA256 recorded in primary artifact",
+          "operator residual table with source row IDs and no-leakage flag",
+          "operator uncertainty policy consumed by threshold gate",
+          "baseline comparator row comparing standard baseline, empirical diagnostic, and accepted operator",
+          "claim-scope update that keeps validation blocked until non-NIST external source rows exist"
+        ],
+        "requirement": "Minimum first-build artifacts must be declared.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "BUILD-SPEC-05",
+        "evidence": {
+          "accepted_operator_count": 0,
+          "candidate_resolution_accepted_delta_count": 0
+        },
+        "requirement": "No operator may be accepted until the fixed-correction gate records an implemented operator.",
+        "status": "BLOCKED_IMPLEMENTATION_MISSING"
+      }
+    ],
+    "status": "OPERATOR_BUILD_SPEC_READY_IMPLEMENTATION_MISSING"
+  },
   "atomic_predictive_v1_operator_candidate_resolution_gate": {
     "blocked_claims": [
       "standard Bohr/Rydberg/Dirac formulas are the UET correction operator",
@@ -1997,6 +2188,7 @@
     "AT20-ATOMIC-PREDICTIVE-V1-THRESHOLD-GATE",
     "AT20-ATOMIC-PREDICTIVE-V1-FIXED-CORRECTION-OPERATOR",
     "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-CANDIDATE-RESOLUTION",
+    "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-BUILD-SPEC",
     "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
     "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
     "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
@@ -2006,7 +2198,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-07T08:55:17.768579+00:00",
+  "generated_at_utc": "2026-06-07T09:12:07.522898+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -4863,6 +5055,16 @@
       "status": "OPERATOR_MANIFEST_READY_IMPLEMENTATION_MISSING"
     },
     {
+      "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/atomic_predictive_v1_operator_build_spec_manifest.json",
+      "sha256": "22e9f67bb787ae64b1b0792458c791cac5c1f15cb165c66e79409c12d0cceca9",
+      "source": "Define the implementation-ready build contract for the first acceptable delta_uet_or_ci operator in the selected atomic predictive-v1 lane.",
+      "source_rows": [
+        "fixed_parameter_ci_or_correlated_two_electron_v1",
+        "explicit_uet_atomic_operator_v1"
+      ],
+      "status": "BUILD_SPEC_READY_IMPLEMENTATION_MISSING"
+    },
+    {
       "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/external_holdouts/chianti_he_i/source_manifest.json",
       "sha256": "7b878de9328e0e0ee2a7c64560165e2c722019fba2180a7df65fcb87364b74b2",
       "source": "CHIANTI atomic database",
@@ -4994,6 +5196,7 @@
     "The atomic predictive-v1 threshold gate now records diagnostic residual thresholds for the selected lane, but zero thresholds are validation-ready.",
     "The atomic predictive-v1 fixed-correction operator gate defines the delta_uet_or_ci contract and records zero accepted fixed correction operators implemented.",
     "The atomic predictive-v1 operator candidate resolution gate classifies current standard, heuristic, empirical, and legacy candidates against the delta_uet_or_ci contract; current accepted correction operators remain zero.",
+    "The atomic predictive-v1 operator build-spec gate defines implementation lanes, I/O, acceptance gates, forbidden shortcuts, and minimum first-build artifacts, but accepted implemented lanes remain zero.",
     "The atomic predictive-v1 diagnostic report records same-source-family level and wavelength predictions with diagnostic threshold checks, but validation remains blocked by the missing fixed CI/UET correction operator, non-NIST source package, and validation-ready thresholds.",
     "The helium external-holdout lineage decision gate classifies CHIANTI He I as cross-check-only because the captured metadata records NIST ASD lineage.",
     "The atomic predictive-model blueprint gate turns the build path into seven auditable steps; source lineage is now decided as cross-check-only, while parameter lock and thresholds remain partial until the missing generative model and validation-ready uncertainty policy exist.",
@@ -5023,6 +5226,10 @@
     "atomic_predictive_v1_fixed_correction_accepted_operators": 0,
     "atomic_predictive_v1_fixed_correction_blocking_checks": 1,
     "atomic_predictive_v1_missing_future_locked_parameters": 1,
+    "atomic_predictive_v1_operator_build_spec_blocking_checks": 1,
+    "atomic_predictive_v1_operator_build_spec_lanes": 2,
+    "atomic_predictive_v1_operator_build_spec_missing_lanes": 2,
+    "atomic_predictive_v1_operator_build_spec_ready_lanes": 2,
     "atomic_predictive_v1_operator_candidate_accepted_deltas": 0,
     "atomic_predictive_v1_operator_candidate_missing_acceptable_paths": 2,
     "atomic_predictive_v1_operator_candidate_rejected_existing": 5,

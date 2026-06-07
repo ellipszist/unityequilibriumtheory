@@ -57,6 +57,9 @@ ATOMIC_PREDICTIVE_V1_THRESHOLD_MANIFEST_PATH = (
 ATOMIC_PREDICTIVE_V1_OPERATOR_MANIFEST_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_fixed_correction_operator_manifest.json"
 )
+ATOMIC_PREDICTIVE_V1_OPERATOR_BUILD_SPEC_MANIFEST_PATH = (
+    TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_build_spec_manifest.json"
+)
 CHIANTI_HE_I_MANIFEST_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "external_holdouts" / "chianti_he_i" / "source_manifest.json"
 )
@@ -4038,6 +4041,142 @@ def build_atomic_predictive_v1_operator_candidate_resolution_gate(
     }
 
 
+def build_atomic_predictive_v1_operator_build_spec_gate(
+    operator_build_spec_manifest: dict,
+    atomic_predictive_v1_fixed_correction_operator_gate: dict,
+    atomic_predictive_v1_operator_candidate_resolution_gate: dict,
+) -> dict:
+    lanes = operator_build_spec_manifest.get("implementation_lanes", [])
+    forbidden_shortcuts = operator_build_spec_manifest.get("forbidden_shortcuts", [])
+    minimum_artifacts = operator_build_spec_manifest.get("minimum_first_build_artifacts", [])
+    accepted_operator_count = atomic_predictive_v1_fixed_correction_operator_gate["metrics"][
+        "accepted_operator_count"
+    ]
+    lane_rows = []
+    for lane in lanes:
+        required_inputs = lane.get("required_inputs", [])
+        required_outputs = lane.get("required_outputs", [])
+        acceptance_gates = lane.get("acceptance_gates", [])
+        lane_rows.append(
+            {
+                "lane_id": lane["lane_id"],
+                "operator_class": lane["operator_class"],
+                "priority": lane["priority"],
+                "current_status": lane["current_status"],
+                "required_input_count": len(required_inputs),
+                "required_output_count": len(required_outputs),
+                "acceptance_gate_count": len(acceptance_gates),
+                "implementation_ready": bool(required_inputs and required_outputs and acceptance_gates),
+                "accepted_as_implemented": lane["current_status"] == "ACCEPTED_IMPLEMENTED",
+                "required_inputs": required_inputs,
+                "required_outputs": required_outputs,
+                "acceptance_gates": acceptance_gates,
+            }
+        )
+    accepted_lanes = [row for row in lane_rows if row["accepted_as_implemented"]]
+    implementation_missing_lanes = [
+        row for row in lane_rows if row["current_status"].endswith("MISSING")
+    ]
+    spec_checks = [
+        {
+            "check_id": "BUILD-SPEC-01",
+            "requirement": "Manifest must identify the required operator ID and model form.",
+            "status": "PASS"
+            if operator_build_spec_manifest.get("operator_target", {}).get("required_operator_id")
+            == "delta_uet_or_ci"
+            and operator_build_spec_manifest.get("operator_target", {}).get("required_model_form")
+            else "FAIL",
+            "evidence": operator_build_spec_manifest.get("operator_target"),
+        },
+        {
+            "check_id": "BUILD-SPEC-02",
+            "requirement": "At least one implementation lane must declare inputs, outputs, and acceptance gates.",
+            "status": "PASS" if any(row["implementation_ready"] for row in lane_rows) else "FAIL",
+            "evidence": {
+                "lane_count": len(lane_rows),
+                "implementation_ready_lane_count": sum(1 for row in lane_rows if row["implementation_ready"]),
+            },
+        },
+        {
+            "check_id": "BUILD-SPEC-03",
+            "requirement": "Forbidden shortcuts must be explicit before implementation work starts.",
+            "status": "PASS" if forbidden_shortcuts else "FAIL",
+            "evidence": forbidden_shortcuts,
+        },
+        {
+            "check_id": "BUILD-SPEC-04",
+            "requirement": "Minimum first-build artifacts must be declared.",
+            "status": "PASS" if minimum_artifacts else "FAIL",
+            "evidence": minimum_artifacts,
+        },
+        {
+            "check_id": "BUILD-SPEC-05",
+            "requirement": "No operator may be accepted until the fixed-correction gate records an implemented operator.",
+            "status": "BLOCKED_IMPLEMENTATION_MISSING"
+            if accepted_operator_count == 0
+            else "PASS",
+            "evidence": {
+                "accepted_operator_count": accepted_operator_count,
+                "candidate_resolution_accepted_delta_count": atomic_predictive_v1_operator_candidate_resolution_gate[
+                    "metrics"
+                ]["accepted_delta_uet_or_ci_count"],
+            },
+        },
+    ]
+    fail_count = sum(1 for row in spec_checks if row["status"] == "FAIL")
+    blocking_count = sum(1 for row in spec_checks if row["status"].startswith("BLOCKED"))
+    status = (
+        "OPERATOR_BUILD_SPEC_FAIL"
+        if fail_count
+        else "OPERATOR_BUILD_SPEC_READY_IMPLEMENTATION_MISSING"
+        if blocking_count
+        else "OPERATOR_BUILD_SPEC_READY_OPERATOR_IMPLEMENTED"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_predictive_v1_operator_build_spec_gate",
+        "status": status,
+        "claim_class": "operator_build_spec_no_validation_claim",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-BUILD-SPEC",
+        "manifest": {
+            "path": str(ATOMIC_PREDICTIVE_V1_OPERATOR_BUILD_SPEC_MANIFEST_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
+            "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_BUILD_SPEC_MANIFEST_PATH),
+            "manifest_id": operator_build_spec_manifest.get("manifest_id"),
+            "status": operator_build_spec_manifest.get("status"),
+        },
+        "operator_target": operator_build_spec_manifest.get("operator_target"),
+        "implementation_lanes": lane_rows,
+        "spec_checks": spec_checks,
+        "forbidden_shortcuts": forbidden_shortcuts,
+        "minimum_first_build_artifacts": minimum_artifacts,
+        "pass_conditions_for_accepting_operator": operator_build_spec_manifest.get(
+            "pass_conditions_for_accepting_operator", []
+        ),
+        "metrics": {
+            "implementation_lane_count": len(lane_rows),
+            "implementation_ready_lane_count": sum(1 for row in lane_rows if row["implementation_ready"]),
+            "implementation_missing_lane_count": len(implementation_missing_lanes),
+            "accepted_implemented_lane_count": len(accepted_lanes),
+            "required_input_total_count": sum(row["required_input_count"] for row in lane_rows),
+            "required_output_total_count": sum(row["required_output_count"] for row in lane_rows),
+            "acceptance_gate_total_count": sum(row["acceptance_gate_count"] for row in lane_rows),
+            "forbidden_shortcut_count": len(forbidden_shortcuts),
+            "minimum_first_build_artifact_count": len(minimum_artifacts),
+            "spec_check_count": len(spec_checks),
+            "spec_fail_count": fail_count,
+            "spec_blocking_count": blocking_count,
+            "accepted_fixed_correction_operator_count": accepted_operator_count,
+        },
+        "blocked_claims": [
+            "operator build spec is an implemented predictive model",
+            "implementation-ready inputs and outputs imply accepted delta_uet_or_ci",
+            "validation thresholds can be upgraded before operator uncertainty exists",
+        ],
+        "next_required_artifacts": minimum_artifacts,
+        "claim_boundary": operator_build_spec_manifest.get("claim_boundary"),
+    }
+
+
 def build_atomic_predictive_v1_diagnostic_report_gate(
     atomic_predictive_v1_parameter_manifest: dict,
     atomic_predictive_v1_threshold_manifest: dict,
@@ -5199,6 +5338,9 @@ def run_rydberg_analysis():
     atomic_predictive_v1_parameter_manifest = load_json(ATOMIC_PREDICTIVE_V1_PARAMETER_MANIFEST_PATH)
     atomic_predictive_v1_threshold_manifest = load_json(ATOMIC_PREDICTIVE_V1_THRESHOLD_MANIFEST_PATH)
     atomic_predictive_v1_operator_manifest = load_json(ATOMIC_PREDICTIVE_V1_OPERATOR_MANIFEST_PATH)
+    atomic_predictive_v1_operator_build_spec_manifest = load_json(
+        ATOMIC_PREDICTIVE_V1_OPERATOR_BUILD_SPEC_MANIFEST_PATH
+    )
     chianti_he_i_manifest = load_json(CHIANTI_HE_I_MANIFEST_PATH)
     source_evidence_intake_stub = build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = build_source_evidence_readiness_matrix()
@@ -5442,6 +5584,11 @@ def run_rydberg_analysis():
             uet_atomic_operator_readiness_gate,
         )
     )
+    atomic_predictive_v1_operator_build_spec_gate = build_atomic_predictive_v1_operator_build_spec_gate(
+        atomic_predictive_v1_operator_build_spec_manifest,
+        atomic_predictive_v1_fixed_correction_operator_gate,
+        atomic_predictive_v1_operator_candidate_resolution_gate,
+    )
     atomic_predictive_v1_diagnostic_report_gate = build_atomic_predictive_v1_diagnostic_report_gate(
         atomic_predictive_v1_parameter_manifest,
         atomic_predictive_v1_threshold_manifest,
@@ -5623,6 +5770,16 @@ def run_rydberg_analysis():
                 ],
             },
             {
+                "path": str(ATOMIC_PREDICTIVE_V1_OPERATOR_BUILD_SPEC_MANIFEST_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_BUILD_SPEC_MANIFEST_PATH),
+                "source": atomic_predictive_v1_operator_build_spec_manifest.get("purpose"),
+                "status": atomic_predictive_v1_operator_build_spec_manifest.get("status"),
+                "source_rows": [
+                    row["lane_id"]
+                    for row in atomic_predictive_v1_operator_build_spec_manifest.get("implementation_lanes", [])
+                ],
+            },
+            {
                 "path": str(CHIANTI_HE_I_MANIFEST_PATH.relative_to(ROOT)).replace("\\", "/"),
                 "sha256": file_sha256(CHIANTI_HE_I_MANIFEST_PATH),
                 "source": chianti_he_i_manifest["source_family"]["name"],
@@ -5671,6 +5828,7 @@ def run_rydberg_analysis():
             "AT20-ATOMIC-PREDICTIVE-V1-THRESHOLD-GATE",
             "AT20-ATOMIC-PREDICTIVE-V1-FIXED-CORRECTION-OPERATOR",
             "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-CANDIDATE-RESOLUTION",
+            "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-BUILD-SPEC",
             "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
             "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
             "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
@@ -5857,6 +6015,18 @@ def run_rydberg_analysis():
                     "missing_acceptable_operator_path_count"
                 ]
             ),
+            "atomic_predictive_v1_operator_build_spec_lanes": (
+                atomic_predictive_v1_operator_build_spec_gate["metrics"]["implementation_lane_count"]
+            ),
+            "atomic_predictive_v1_operator_build_spec_ready_lanes": (
+                atomic_predictive_v1_operator_build_spec_gate["metrics"]["implementation_ready_lane_count"]
+            ),
+            "atomic_predictive_v1_operator_build_spec_missing_lanes": (
+                atomic_predictive_v1_operator_build_spec_gate["metrics"]["implementation_missing_lane_count"]
+            ),
+            "atomic_predictive_v1_operator_build_spec_blocking_checks": (
+                atomic_predictive_v1_operator_build_spec_gate["metrics"]["spec_blocking_count"]
+            ),
             "atomic_predictive_v1_report_validation_blockers": atomic_predictive_v1_diagnostic_report_gate["metrics"][
                 "validation_blocker_count"
             ],
@@ -5932,6 +6102,7 @@ def run_rydberg_analysis():
             "The atomic predictive-v1 threshold gate now records diagnostic residual thresholds for the selected lane, but zero thresholds are validation-ready.",
             "The atomic predictive-v1 fixed-correction operator gate defines the delta_uet_or_ci contract and records zero accepted fixed correction operators implemented.",
             "The atomic predictive-v1 operator candidate resolution gate classifies current standard, heuristic, empirical, and legacy candidates against the delta_uet_or_ci contract; current accepted correction operators remain zero.",
+            "The atomic predictive-v1 operator build-spec gate defines implementation lanes, I/O, acceptance gates, forbidden shortcuts, and minimum first-build artifacts, but accepted implemented lanes remain zero.",
             "The atomic predictive-v1 diagnostic report records same-source-family level and wavelength predictions with diagnostic threshold checks, but validation remains blocked by the missing fixed CI/UET correction operator, non-NIST source package, and validation-ready thresholds.",
             "The helium external-holdout lineage decision gate classifies CHIANTI He I as cross-check-only because the captured metadata records NIST ASD lineage.",
             "The atomic predictive-model blueprint gate turns the build path into seven auditable steps; source lineage is now decided as cross-check-only, while parameter lock and thresholds remain partial until the missing generative model and validation-ready uncertainty policy exist.",
@@ -5987,6 +6158,9 @@ def run_rydberg_analysis():
     )
     artifact["atomic_predictive_v1_operator_candidate_resolution_gate"] = (
         atomic_predictive_v1_operator_candidate_resolution_gate
+    )
+    artifact["atomic_predictive_v1_operator_build_spec_gate"] = (
+        atomic_predictive_v1_operator_build_spec_gate
     )
     artifact["atomic_predictive_v1_diagnostic_report_gate"] = atomic_predictive_v1_diagnostic_report_gate
     artifact["atomic_predictive_model_blueprint_gate"] = atomic_predictive_model_blueprint_gate
