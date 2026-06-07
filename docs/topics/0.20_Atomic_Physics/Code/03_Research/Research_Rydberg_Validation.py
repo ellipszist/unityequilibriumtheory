@@ -4555,6 +4555,151 @@ def build_atomic_predictive_v1_diagnostic_report_gate(
     }
 
 
+def build_atomic_predictive_v1_publication_readiness_gate(
+    atomic_predictive_v1_operator_residual_gate: dict,
+    atomic_predictive_v1_operator_acceptance_harness_gate: dict,
+    atomic_predictive_v1_diagnostic_report_gate: dict,
+    atomic_predictive_v1_threshold_gate: dict,
+    atomic_predictive_v1_fixed_correction_operator_gate: dict,
+    helium_external_holdout_lineage_decision_gate: dict,
+) -> dict:
+    checks = [
+        {
+            "check_id": "PUB-01",
+            "requirement": "Residual rows must exist, be schema-clean, and pass no-leakage checks.",
+            "status": "PASS"
+            if atomic_predictive_v1_operator_residual_gate["metrics"]["residual_row_count"] > 0
+            and atomic_predictive_v1_operator_acceptance_harness_gate["metrics"]["acceptance_check_blocking_count"] == 0
+            and atomic_predictive_v1_operator_acceptance_harness_gate["metrics"]["residual_row_schema_missing_count"] == 0
+            and atomic_predictive_v1_operator_acceptance_harness_gate["metrics"]["no_leakage_failure_count"] == 0
+            else "BLOCKING",
+            "evidence": {
+                "residual_row_count": atomic_predictive_v1_operator_residual_gate["metrics"]["residual_row_count"],
+                "harness_blocking_count": atomic_predictive_v1_operator_acceptance_harness_gate["metrics"][
+                    "acceptance_check_blocking_count"
+                ],
+                "schema_missing_count": atomic_predictive_v1_operator_acceptance_harness_gate["metrics"][
+                    "residual_row_schema_missing_count"
+                ],
+                "no_leakage_failure_count": atomic_predictive_v1_operator_acceptance_harness_gate["metrics"][
+                    "no_leakage_failure_count"
+                ],
+            },
+        },
+        {
+            "check_id": "PUB-02",
+            "requirement": "Diagnostic delta must improve over the named baseline before it can be discussed as a candidate lane.",
+            "status": "PASS"
+            if atomic_predictive_v1_operator_residual_gate["metrics"].get("residual_improved_row_count", 0)
+            == atomic_predictive_v1_operator_residual_gate["metrics"]["residual_row_count"]
+            else "BLOCKING",
+            "evidence": {
+                "residual_improved_row_count": atomic_predictive_v1_operator_residual_gate["metrics"].get(
+                    "residual_improved_row_count", 0
+                ),
+                "residual_row_count": atomic_predictive_v1_operator_residual_gate["metrics"]["residual_row_count"],
+                "average_baseline_abs_residual_eV": atomic_predictive_v1_operator_residual_gate["metrics"].get(
+                    "average_baseline_abs_residual_eV"
+                ),
+                "average_diagnostic_abs_residual_eV": atomic_predictive_v1_operator_residual_gate["metrics"].get(
+                    "average_diagnostic_abs_residual_eV"
+                ),
+            },
+        },
+        {
+            "check_id": "PUB-03",
+            "requirement": "An accepted fixed CI/correlated or UET correction operator must exist.",
+            "status": "PASS"
+            if atomic_predictive_v1_fixed_correction_operator_gate["metrics"]["accepted_operator_count"] > 0
+            else "BLOCKING",
+            "evidence": {
+                "fixed_correction_operator_status": atomic_predictive_v1_fixed_correction_operator_gate["status"],
+                "accepted_operator_count": atomic_predictive_v1_fixed_correction_operator_gate["metrics"][
+                    "accepted_operator_count"
+                ],
+            },
+        },
+        {
+            "check_id": "PUB-04",
+            "requirement": "At least one validation-ready threshold must be declared before publication claims.",
+            "status": "PASS"
+            if atomic_predictive_v1_threshold_gate["metrics"]["validation_ready_threshold_count"] > 0
+            else "BLOCKING",
+            "evidence": {
+                "threshold_status": atomic_predictive_v1_threshold_gate["status"],
+                "validation_ready_threshold_count": atomic_predictive_v1_threshold_gate["metrics"][
+                    "validation_ready_threshold_count"
+                ],
+                "diagnostic_threshold_pass_count": atomic_predictive_v1_threshold_gate["metrics"][
+                    "diagnostic_pass_count"
+                ],
+            },
+        },
+        {
+            "check_id": "PUB-05",
+            "requirement": "Independent non-NIST source lineage must be available for validation use.",
+            "status": "PASS"
+            if helium_external_holdout_lineage_decision_gate["metrics"]["independent_validation_allowed"]
+            else "BLOCKING",
+            "evidence": {
+                "lineage_decision": helium_external_holdout_lineage_decision_gate["decision"],
+                "independent_validation_allowed": helium_external_holdout_lineage_decision_gate["metrics"][
+                    "independent_validation_allowed"
+                ],
+                "non_nist_source_required": helium_external_holdout_lineage_decision_gate["metrics"][
+                    "non_nist_source_required"
+                ],
+            },
+        },
+    ]
+    blocking_checks = [row for row in checks if row["status"] == "BLOCKING"]
+    status = "PUBLICATION_READINESS_BLOCKED" if blocking_checks else "PUBLICATION_READINESS_READY_FOR_REVIEW"
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_predictive_v1_publication_readiness_gate",
+        "status": status,
+        "claim_class": "publication_readiness_gate_no_validation_claim",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-PUBLICATION-READINESS",
+        "publication_ready": not blocking_checks,
+        "checks": checks,
+        "validation_blockers": atomic_predictive_v1_diagnostic_report_gate["validation_blockers"],
+        "metrics": {
+            "publication_check_count": len(checks),
+            "publication_check_pass_count": sum(1 for row in checks if row["status"] == "PASS"),
+            "publication_check_blocking_count": len(blocking_checks),
+            "diagnostic_validation_blocker_count": atomic_predictive_v1_diagnostic_report_gate["metrics"][
+                "validation_blocker_count"
+            ],
+            "residual_row_count": atomic_predictive_v1_operator_residual_gate["metrics"]["residual_row_count"],
+            "residual_improved_row_count": atomic_predictive_v1_operator_residual_gate["metrics"].get(
+                "residual_improved_row_count", 0
+            ),
+            "accepted_operator_count": atomic_predictive_v1_fixed_correction_operator_gate["metrics"][
+                "accepted_operator_count"
+            ],
+            "validation_ready_threshold_count": atomic_predictive_v1_threshold_gate["metrics"][
+                "validation_ready_threshold_count"
+            ],
+            "independent_validation_allowed": helium_external_holdout_lineage_decision_gate["metrics"][
+                "independent_validation_allowed"
+            ],
+        },
+        "blocked_claims": [
+            "diagnostic same-source rows are publishable validation",
+            "schema-clean residual rows imply accepted correction operator",
+            "diagnostic threshold pass implies validation-ready threshold",
+            "CHIANTI NIST-lineage cross-check can replace independent source validation",
+        ],
+        "next_required_artifacts": [
+            "accepted fixed CI/correlated or explicit UET correction operator",
+            "validation-ready threshold manifest with source/model uncertainty basis",
+            "non-NIST independent He I holdout source package",
+            "publication validation report comparing baseline, diagnostic, CI/correlated, and UET lanes",
+        ],
+        "claim_boundary": "This gate decides publication readiness for predictive-v1 claims. Current diagnostic rows can be discussed as internal diagnostics only; validation and publication claims remain blocked until operator, threshold, and independent-source gates pass.",
+    }
+
+
 def build_helium_external_holdout_lineage_decision_gate(
     chianti_he_i_manifest: dict,
     helium_external_holdout_acquisition_gate: dict,
@@ -5851,6 +5996,16 @@ def run_rydberg_analysis():
         atomic_predictive_v1_fixed_correction_operator_gate,
         helium_external_holdout_lineage_decision_gate,
     )
+    atomic_predictive_v1_publication_readiness_gate = (
+        build_atomic_predictive_v1_publication_readiness_gate(
+            atomic_predictive_v1_operator_residual_gate,
+            atomic_predictive_v1_operator_acceptance_harness_gate,
+            atomic_predictive_v1_diagnostic_report_gate,
+            atomic_predictive_v1_threshold_gate,
+            atomic_predictive_v1_fixed_correction_operator_gate,
+            helium_external_holdout_lineage_decision_gate,
+        )
+    )
     atomic_predictive_model_blueprint_gate = build_atomic_predictive_model_blueprint_gate(
         atomic_predictive_model_closure_gate,
         atomic_predictive_model_spec_gate,
@@ -6328,6 +6483,12 @@ def run_rydberg_analysis():
             "atomic_predictive_v1_report_validation_blockers": atomic_predictive_v1_diagnostic_report_gate["metrics"][
                 "validation_blocker_count"
             ],
+            "atomic_predictive_v1_publication_ready": (
+                atomic_predictive_v1_publication_readiness_gate["publication_ready"]
+            ),
+            "atomic_predictive_v1_publication_blocking_checks": (
+                atomic_predictive_v1_publication_readiness_gate["metrics"]["publication_check_blocking_count"]
+            ),
             "atomic_predictive_v1_report_level_holdout_predictions": atomic_predictive_v1_diagnostic_report_gate[
                 "metrics"
             ]["level_holdout_prediction_count"],
@@ -6467,6 +6628,9 @@ def run_rydberg_analysis():
         atomic_predictive_v1_operator_acceptance_harness_gate
     )
     artifact["atomic_predictive_v1_diagnostic_report_gate"] = atomic_predictive_v1_diagnostic_report_gate
+    artifact["atomic_predictive_v1_publication_readiness_gate"] = (
+        atomic_predictive_v1_publication_readiness_gate
+    )
     artifact["atomic_predictive_model_blueprint_gate"] = atomic_predictive_model_blueprint_gate
     artifact["helium_external_holdout_acquisition_gate"] = helium_external_holdout_acquisition_gate
     artifact["helium_external_holdout_residual_crosscheck_gate"] = (

@@ -2141,6 +2141,111 @@
     "schema_version": "1.0",
     "status": "PARAMETER_MANIFEST_READY_GENERATIVE_MODEL_MISSING"
   },
+  "atomic_predictive_v1_publication_readiness_gate": {
+    "blocked_claims": [
+      "diagnostic same-source rows are publishable validation",
+      "schema-clean residual rows imply accepted correction operator",
+      "diagnostic threshold pass implies validation-ready threshold",
+      "CHIANTI NIST-lineage cross-check can replace independent source validation"
+    ],
+    "checks": [
+      {
+        "check_id": "PUB-01",
+        "evidence": {
+          "harness_blocking_count": 0,
+          "no_leakage_failure_count": 0,
+          "residual_row_count": 3,
+          "schema_missing_count": 0
+        },
+        "requirement": "Residual rows must exist, be schema-clean, and pass no-leakage checks.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "PUB-02",
+        "evidence": {
+          "average_baseline_abs_residual_eV": 0.016156012023859745,
+          "average_diagnostic_abs_residual_eV": 0.000956144279510814,
+          "residual_improved_row_count": 3,
+          "residual_row_count": 3
+        },
+        "requirement": "Diagnostic delta must improve over the named baseline before it can be discussed as a candidate lane.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "PUB-03",
+        "evidence": {
+          "accepted_operator_count": 0,
+          "fixed_correction_operator_status": "OPERATOR_CONTRACT_READY_IMPLEMENTATION_MISSING"
+        },
+        "requirement": "An accepted fixed CI/correlated or UET correction operator must exist.",
+        "status": "BLOCKING"
+      },
+      {
+        "check_id": "PUB-04",
+        "evidence": {
+          "diagnostic_threshold_pass_count": 3,
+          "threshold_status": "THRESHOLD_MANIFEST_READY_DIAGNOSTIC_ONLY_VALIDATION_BLOCKED",
+          "validation_ready_threshold_count": 0
+        },
+        "requirement": "At least one validation-ready threshold must be declared before publication claims.",
+        "status": "BLOCKING"
+      },
+      {
+        "check_id": "PUB-05",
+        "evidence": {
+          "independent_validation_allowed": false,
+          "lineage_decision": "CROSSCHECK_ONLY_NOT_INDEPENDENT",
+          "non_nist_source_required": true
+        },
+        "requirement": "Independent non-NIST source lineage must be available for validation use.",
+        "status": "BLOCKING"
+      }
+    ],
+    "claim_boundary": "This gate decides publication readiness for predictive-v1 claims. Current diagnostic rows can be discussed as internal diagnostics only; validation and publication claims remain blocked until operator, threshold, and independent-source gates pass.",
+    "claim_class": "publication_readiness_gate_no_validation_claim",
+    "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-PUBLICATION-READINESS",
+    "metrics": {
+      "accepted_operator_count": 0,
+      "diagnostic_validation_blocker_count": 3,
+      "independent_validation_allowed": false,
+      "publication_check_blocking_count": 3,
+      "publication_check_count": 5,
+      "publication_check_pass_count": 2,
+      "residual_improved_row_count": 3,
+      "residual_row_count": 3,
+      "validation_ready_threshold_count": 0
+    },
+    "next_required_artifacts": [
+      "accepted fixed CI/correlated or explicit UET correction operator",
+      "validation-ready threshold manifest with source/model uncertainty basis",
+      "non-NIST independent He I holdout source package",
+      "publication validation report comparing baseline, diagnostic, CI/correlated, and UET lanes"
+    ],
+    "publication_ready": false,
+    "role": "atomic_predictive_v1_publication_readiness_gate",
+    "schema_version": "1.0",
+    "status": "PUBLICATION_READINESS_BLOCKED",
+    "validation_blockers": [
+      {
+        "blocker_id": "V1-BLOCK-OPERATOR",
+        "evidence": "OPERATOR_CONTRACT_READY_IMPLEMENTATION_MISSING",
+        "required_artifact": "fixed-parameter CI/correlated or UET correction operator with units",
+        "status": "BLOCKING"
+      },
+      {
+        "blocker_id": "V1-BLOCK-SOURCE",
+        "evidence": "CROSSCHECK_ONLY_NOT_INDEPENDENT",
+        "required_artifact": "non-NIST independent He I holdout package",
+        "status": "BLOCKING"
+      },
+      {
+        "blocker_id": "V1-BLOCK-THRESHOLD",
+        "evidence": "0 validation-ready thresholds",
+        "required_artifact": "validation-ready source/model uncertainty threshold policy",
+        "status": "BLOCKING"
+      }
+    ]
+  },
   "atomic_predictive_v1_threshold_gate": {
     "blocked_claims": [
       "current diagnostic threshold pass proves independent helium prediction",
@@ -2530,7 +2635,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-07T13:01:34.641909+00:00",
+  "generated_at_utc": "2026-06-07T13:15:29.918178+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -5588,6 +5693,8 @@
     "atomic_predictive_v1_operator_residual_improved_rows": 3,
     "atomic_predictive_v1_operator_residual_rows": 3,
     "atomic_predictive_v1_parameter_lock_policy_fail_count": 0,
+    "atomic_predictive_v1_publication_blocking_checks": 3,
+    "atomic_predictive_v1_publication_ready": false,
     "atomic_predictive_v1_report_level_holdout_predictions": 3,
     "atomic_predictive_v1_report_validation_blockers": 3,
     "atomic_predictive_v1_report_wavelength_holdout_predictions": 2,
