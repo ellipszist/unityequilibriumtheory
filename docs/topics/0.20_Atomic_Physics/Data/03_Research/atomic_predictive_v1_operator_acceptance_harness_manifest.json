@@ -70,6 +70,46 @@
       "requirement": "Uncertainty policy exists before validation-ready thresholds are allowed."
     }
   ],
+  "operator_acceptance_decision_matrix": [
+    {
+      "decision_id": "OPERATOR-ACCEPT-01",
+      "requirement": "Target module and entrypoint are present.",
+      "current_status": "PASS",
+      "evidence_source": "acceptance harness target_module check",
+      "blocks_operator_acceptance": false
+    },
+    {
+      "decision_id": "OPERATOR-ACCEPT-02",
+      "requirement": "Diagnostic residual rows satisfy the required row schema and no-leakage flags.",
+      "current_status": "PASS_DIAGNOSTIC_ONLY",
+      "evidence_source": "operator residual rows artifact",
+      "blocks_operator_acceptance": false
+    },
+    {
+      "decision_id": "OPERATOR-ACCEPT-03",
+      "requirement": "A fixed CI/correlated or explicit UET correction operator emits the residual rows.",
+      "current_status": "BLOCKING",
+      "evidence_source": "atomic_predictive_v1_fixed_correction_operator_gate.accepted_operator_count",
+      "blocks_operator_acceptance": true,
+      "required_artifact": "accepted delta_uet_or_ci operator implementation and residual artifact"
+    },
+    {
+      "decision_id": "OPERATOR-ACCEPT-04",
+      "requirement": "Operator parameters are locked independently of holdout and CHIANTI rows.",
+      "current_status": "BLOCKING",
+      "evidence_source": "operator parameter manifest plus accepted implementation provenance",
+      "blocks_operator_acceptance": true,
+      "required_artifact": "operator parameter manifest with implementation provenance and lock timestamp"
+    },
+    {
+      "decision_id": "OPERATOR-ACCEPT-05",
+      "requirement": "Operator uncertainty is computable or explicitly noncomputable for every residual row.",
+      "current_status": "BLOCKING",
+      "evidence_source": "operator uncertainty policy consumed by residual rows",
+      "blocks_operator_acceptance": true,
+      "required_artifact": "operator residual rows with model_uncertainty_eV sourced from the accepted operator"
+    }
+  ],
   "forbidden_acceptance_states": [
     "target module exists but only wraps the current quantum-defect fit",
     "residual rows omit uncertainty fields",

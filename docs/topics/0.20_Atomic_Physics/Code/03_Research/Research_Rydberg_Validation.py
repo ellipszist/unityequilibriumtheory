@@ -4357,8 +4357,26 @@ def build_atomic_predictive_v1_operator_acceptance_harness_gate(
             },
         },
     ]
+    operator_acceptance_decision_rows = []
+    for row in operator_acceptance_harness_manifest.get("operator_acceptance_decision_matrix", []):
+        blocks_operator_acceptance = bool(row.get("blocks_operator_acceptance"))
+        current_status = row.get("current_status")
+        operator_acceptance_decision_rows.append(
+            {
+                "decision_id": row.get("decision_id"),
+                "requirement": row.get("requirement"),
+                "status": "BLOCKING" if blocks_operator_acceptance else current_status,
+                "manifest_status": current_status,
+                "blocks_operator_acceptance": blocks_operator_acceptance,
+                "evidence_source": row.get("evidence_source"),
+                "required_artifact": row.get("required_artifact"),
+            }
+        )
     blocking_count = sum(1 for row in acceptance_checks if row["status"].startswith("BLOCKED"))
     pass_count = sum(1 for row in acceptance_checks if row["status"].startswith("PASS"))
+    operator_acceptance_decision_blocking_count = sum(
+        1 for row in operator_acceptance_decision_rows if row["blocks_operator_acceptance"]
+    )
     accepted_operator_count = atomic_predictive_v1_fixed_correction_operator_gate["metrics"]["accepted_operator_count"]
     status = (
         "OPERATOR_ACCEPTANCE_HARNESS_READY_TARGETS_MISSING"
@@ -4398,6 +4416,7 @@ def build_atomic_predictive_v1_operator_acceptance_harness_gate(
             "accepted_as_delta_uet_or_ci": residual_rows_artifact.get("accepted_as_delta_uet_or_ci"),
         },
         "acceptance_checks": acceptance_checks,
+        "operator_acceptance_decision_matrix": operator_acceptance_decision_rows,
         "forbidden_acceptance_states": operator_acceptance_harness_manifest.get(
             "forbidden_acceptance_states", []
         ),
@@ -4419,6 +4438,8 @@ def build_atomic_predictive_v1_operator_acceptance_harness_gate(
             "uncertainty_policy_present": uncertainty_policy_present,
             "required_residual_schema_field_count": len(schema_fields),
             "accepted_fixed_correction_operator_count": accepted_operator_count,
+            "operator_acceptance_decision_count": len(operator_acceptance_decision_rows),
+            "operator_acceptance_decision_blocking_count": operator_acceptance_decision_blocking_count,
         },
         "blocked_claims": [
             "operator target module path proves implementation",
@@ -4427,7 +4448,11 @@ def build_atomic_predictive_v1_operator_acceptance_harness_gate(
         ],
         "next_required_artifacts": [
             row["path"] for row in missing_required_artifacts
-        ] + ([target_module.get("path")] if not target_module_present else []),
+        ] + ([target_module.get("path")] if not target_module_present else []) + [
+            row["required_artifact"]
+            for row in operator_acceptance_decision_rows
+            if row["blocks_operator_acceptance"] and row.get("required_artifact")
+        ],
         "claim_boundary": operator_acceptance_harness_manifest.get("claim_boundary"),
     }
 

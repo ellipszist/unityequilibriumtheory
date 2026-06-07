@@ -1537,7 +1537,7 @@
     "manifest": {
       "manifest_id": "AT20-PREDICTIVE-V1-OPERATOR-ACCEPTANCE-HARNESS-MANIFEST",
       "path": "Data/03_Research/atomic_predictive_v1_operator_acceptance_harness_manifest.json",
-      "sha256": "47e3103ab04aa37fd5f975b50caeed0ec38b77882feecf0e3828b2398926bf34",
+      "sha256": "47238c0bfde58d97e63f795a68eb2cd459db4e696fff032e309cba804116ac22",
       "status": "ACCEPTANCE_HARNESS_READY_TARGETS_MISSING"
     },
     "metrics": {
@@ -1546,6 +1546,8 @@
       "acceptance_check_pass_count": 5,
       "accepted_fixed_correction_operator_count": 0,
       "no_leakage_failure_count": 0,
+      "operator_acceptance_decision_blocking_count": 3,
+      "operator_acceptance_decision_count": 5,
       "parameter_manifest_present": true,
       "required_local_artifact_count": 3,
       "required_local_artifact_missing_count": 0,
@@ -1559,7 +1561,58 @@
       "target_return_key_present": true,
       "uncertainty_policy_present": true
     },
-    "next_required_artifacts": [],
+    "next_required_artifacts": [
+      "accepted delta_uet_or_ci operator implementation and residual artifact",
+      "operator parameter manifest with implementation provenance and lock timestamp",
+      "operator residual rows with model_uncertainty_eV sourced from the accepted operator"
+    ],
+    "operator_acceptance_decision_matrix": [
+      {
+        "blocks_operator_acceptance": false,
+        "decision_id": "OPERATOR-ACCEPT-01",
+        "evidence_source": "acceptance harness target_module check",
+        "manifest_status": "PASS",
+        "required_artifact": null,
+        "requirement": "Target module and entrypoint are present.",
+        "status": "PASS"
+      },
+      {
+        "blocks_operator_acceptance": false,
+        "decision_id": "OPERATOR-ACCEPT-02",
+        "evidence_source": "operator residual rows artifact",
+        "manifest_status": "PASS_DIAGNOSTIC_ONLY",
+        "required_artifact": null,
+        "requirement": "Diagnostic residual rows satisfy the required row schema and no-leakage flags.",
+        "status": "PASS_DIAGNOSTIC_ONLY"
+      },
+      {
+        "blocks_operator_acceptance": true,
+        "decision_id": "OPERATOR-ACCEPT-03",
+        "evidence_source": "atomic_predictive_v1_fixed_correction_operator_gate.accepted_operator_count",
+        "manifest_status": "BLOCKING",
+        "required_artifact": "accepted delta_uet_or_ci operator implementation and residual artifact",
+        "requirement": "A fixed CI/correlated or explicit UET correction operator emits the residual rows.",
+        "status": "BLOCKING"
+      },
+      {
+        "blocks_operator_acceptance": true,
+        "decision_id": "OPERATOR-ACCEPT-04",
+        "evidence_source": "operator parameter manifest plus accepted implementation provenance",
+        "manifest_status": "BLOCKING",
+        "required_artifact": "operator parameter manifest with implementation provenance and lock timestamp",
+        "requirement": "Operator parameters are locked independently of holdout and CHIANTI rows.",
+        "status": "BLOCKING"
+      },
+      {
+        "blocks_operator_acceptance": true,
+        "decision_id": "OPERATOR-ACCEPT-05",
+        "evidence_source": "operator uncertainty policy consumed by residual rows",
+        "manifest_status": "BLOCKING",
+        "required_artifact": "operator residual rows with model_uncertainty_eV sourced from the accepted operator",
+        "requirement": "Operator uncertainty is computable or explicitly noncomputable for every residual row.",
+        "status": "BLOCKING"
+      }
+    ],
     "required_local_artifacts": [
       {
         "artifact_id": "operator_parameter_manifest",
@@ -2665,7 +2718,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-07T13:26:31.964772+00:00",
+  "generated_at_utc": "2026-06-07T13:55:21.434110+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -5533,7 +5586,7 @@
     },
     {
       "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/atomic_predictive_v1_operator_acceptance_harness_manifest.json",
-      "sha256": "47e3103ab04aa37fd5f975b50caeed0ec38b77882feecf0e3828b2398926bf34",
+      "sha256": "47238c0bfde58d97e63f795a68eb2cd459db4e696fff032e309cba804116ac22",
       "source": "Define the concrete repository targets and row schema required before an atomic predictive-v1 correction operator can be considered runnable.",
       "source_rows": [
         "Code/03_Research/Research_Atomic_Operator_V1.py"
