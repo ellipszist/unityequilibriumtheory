@@ -1454,7 +1454,7 @@
             "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
             "purpose": "Store source-row residuals emitted by the target module.",
             "required_before_acceptance": true,
-            "sha256": "4129db488abd790c5e0854f2f0dbed3ce61513203c1bf0514c9b7eff784a7fed"
+            "sha256": "4ff227989cb8a92f646ddea63aab0e7092874af350b93771500e05a69d7edc5c"
           },
           {
             "artifact_id": "operator_uncertainty_policy",
@@ -1575,7 +1575,7 @@
         "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
         "purpose": "Store source-row residuals emitted by the target module.",
         "required_before_acceptance": true,
-        "sha256": "4129db488abd790c5e0854f2f0dbed3ce61513203c1bf0514c9b7eff784a7fed"
+        "sha256": "4ff227989cb8a92f646ddea63aab0e7092874af350b93771500e05a69d7edc5c"
       },
       {
         "artifact_id": "operator_uncertainty_policy",
@@ -1607,7 +1607,7 @@
       "accepted_as_delta_uet_or_ci": false,
       "exists": true,
       "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
-      "sha256": "4129db488abd790c5e0854f2f0dbed3ce61513203c1bf0514c9b7eff784a7fed",
+      "sha256": "4ff227989cb8a92f646ddea63aab0e7092874af350b93771500e05a69d7edc5c",
       "status": "DIAGNOSTIC_RESIDUAL_ROWS_EXPORTED_OPERATOR_NOT_ACCEPTED"
     },
     "role": "atomic_predictive_v1_operator_acceptance_harness_gate",
@@ -1621,7 +1621,7 @@
       "required_entrypoint": "run_atomic_operator_v1",
       "required_return_key": "atomic_predictive_v1_operator_residual_gate",
       "return_key_present": true,
-      "sha256": "eeb2f2bc03f9647025f399c2213bf14d72bafac9cf5d7f9b637f3c27b08d7ccd"
+      "sha256": "08f1f86a224ee728b6adabcc1753528609ce56eb54416085d6936e798a54ba12"
     }
   },
   "atomic_predictive_v1_operator_build_spec_gate": {
@@ -1941,9 +1941,16 @@
     "claim_class": "operator_skeleton_or_diagnostic_rows_no_validation_claim",
     "metrics": {
       "accepted_operator_count": 0,
+      "average_baseline_abs_residual_eV": 0.016156012023859745,
+      "average_diagnostic_abs_residual_eV": 0.000956144279510814,
+      "average_residual_improvement_eV": 0.01519986774434893,
+      "baseline_residual_populated_count": 3,
       "delta_energy_populated_count": 3,
       "diagnostic_only_row_count": 3,
+      "max_residual_improvement_eV": 0.032057292742159404,
       "parameters_locked_before_evaluation_count": 3,
+      "residual_improved_row_count": 3,
+      "residual_improvement_populated_count": 3,
       "residual_row_count": 3,
       "used_for_parameter_fit_count": 0
     },
@@ -1956,9 +1963,11 @@
     "residual_rows": [
       {
         "absolute_residual_eV": 0.0,
+        "baseline_absolute_residual_eV": 0.032057292742159404,
         "baseline_model_id": "zero_quantum_defect_hydrogenic_baseline",
         "baseline_outer_binding_eV": 3.401423279988721,
         "baseline_predicted_excitation_energy_eV": 21.18596573101128,
+        "baseline_residual_eV_predicted_minus_observed": -0.032057292742159404,
         "claim_use": "diagnostic_only_not_validation",
         "delta_energy_basis": "diagnostic quantum-defect prediction minus zero-quantum-defect hydrogenic baseline; not accepted as delta_uet_or_ci",
         "delta_energy_eV": 0.032057292742159404,
@@ -1970,6 +1979,8 @@
         "parameters_locked_before_evaluation": true,
         "predicted_excitation_energy_eV": 21.21802302375344,
         "residual_eV_predicted_minus_observed": 0.0,
+        "residual_improvement_eV": 0.032057292742159404,
+        "residual_improvement_ratio": 1.0,
         "row_id": "operator_v1_diag_he_i_1s2s_1S_from_20581_287",
         "source_family": "NIST_ASD_same_source_family",
         "source_locator": "NIST He I persistent lines table; 20581.287 A row",
@@ -1983,9 +1994,11 @@
       },
       {
         "absolute_residual_eV": 0.0018526170410844145,
+        "baseline_absolute_residual_eV": 0.011373536516259719,
         "baseline_model_id": "zero_quantum_defect_hydrogenic_baseline",
         "baseline_outer_binding_eV": 1.511743679994987,
         "baseline_predicted_excitation_energy_eV": 23.075645331005013,
+        "baseline_residual_eV_predicted_minus_observed": -0.011373536516259719,
         "claim_use": "diagnostic_only_not_validation",
         "delta_energy_basis": "diagnostic quantum-defect prediction minus zero-quantum-defect hydrogenic baseline; not accepted as delta_uet_or_ci",
         "delta_energy_eV": 0.009520919475175305,
@@ -1997,6 +2010,8 @@
         "parameters_locked_before_evaluation": true,
         "predicted_excitation_energy_eV": 23.08516625048019,
         "residual_eV_predicted_minus_observed": -0.0018526170410844145,
+        "residual_improvement_eV": 0.009520919475175305,
+        "residual_improvement_ratio": 0.8371116109368537,
         "row_id": "operator_v1_diag_he_i_1s3p_1P_from_537_02992",
         "source_family": "NIST_ASD_same_source_family",
         "source_locator": "NIST He I persistent lines table; 537.02992 A row",
@@ -2010,9 +2025,11 @@
       },
       {
         "absolute_residual_eV": 0.0010158157974480275,
+        "baseline_absolute_residual_eV": 0.005037206813160111,
         "baseline_model_id": "zero_quantum_defect_hydrogenic_baseline",
         "baseline_outer_binding_eV": 0.8503558199971802,
         "baseline_predicted_excitation_energy_eV": 23.73703319100282,
+        "baseline_residual_eV_predicted_minus_observed": -0.005037206813160111,
         "claim_use": "diagnostic_only_not_validation",
         "delta_energy_basis": "diagnostic quantum-defect prediction minus zero-quantum-defect hydrogenic baseline; not accepted as delta_uet_or_ci",
         "delta_energy_eV": 0.004021391015712084,
@@ -2024,6 +2041,8 @@
         "parameters_locked_before_evaluation": true,
         "predicted_excitation_energy_eV": 23.74105458201853,
         "residual_eV_predicted_minus_observed": -0.0010158157974480275,
+        "residual_improvement_eV": 0.004021391015712084,
+        "residual_improvement_ratio": 0.798337484418125,
         "row_id": "operator_v1_diag_he_i_1s4p_1P_from_522_21309",
         "source_family": "NIST_ASD_same_source_family",
         "source_locator": "NIST He I persistent lines table; 522.21309 A row",
@@ -2511,7 +2530,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-07T12:56:28.731989+00:00",
+  "generated_at_utc": "2026-06-07T13:01:34.641909+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -5563,7 +5582,10 @@
     "atomic_predictive_v1_operator_candidate_rejected_existing": 5,
     "atomic_predictive_v1_operator_candidate_resolutions": 7,
     "atomic_predictive_v1_operator_residual_accepted_operators": 0,
+    "atomic_predictive_v1_operator_residual_avg_baseline_abs_eV": 0.016156012023859745,
+    "atomic_predictive_v1_operator_residual_avg_diagnostic_abs_eV": 0.000956144279510814,
     "atomic_predictive_v1_operator_residual_delta_populated_rows": 3,
+    "atomic_predictive_v1_operator_residual_improved_rows": 3,
     "atomic_predictive_v1_operator_residual_rows": 3,
     "atomic_predictive_v1_parameter_lock_policy_fail_count": 0,
     "atomic_predictive_v1_report_level_holdout_predictions": 3,

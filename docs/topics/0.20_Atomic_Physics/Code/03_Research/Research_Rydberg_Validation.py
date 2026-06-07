@@ -6295,6 +6295,15 @@ def run_rydberg_analysis():
             "atomic_predictive_v1_operator_residual_delta_populated_rows": (
                 atomic_predictive_v1_operator_residual_gate["metrics"]["delta_energy_populated_count"]
             ),
+            "atomic_predictive_v1_operator_residual_improved_rows": (
+                atomic_predictive_v1_operator_residual_gate["metrics"]["residual_improved_row_count"]
+            ),
+            "atomic_predictive_v1_operator_residual_avg_baseline_abs_eV": (
+                atomic_predictive_v1_operator_residual_gate["metrics"]["average_baseline_abs_residual_eV"]
+            ),
+            "atomic_predictive_v1_operator_residual_avg_diagnostic_abs_eV": (
+                atomic_predictive_v1_operator_residual_gate["metrics"]["average_diagnostic_abs_residual_eV"]
+            ),
             "atomic_predictive_v1_operator_residual_accepted_operators": (
                 atomic_predictive_v1_operator_residual_gate["metrics"]["accepted_operator_count"]
             ),

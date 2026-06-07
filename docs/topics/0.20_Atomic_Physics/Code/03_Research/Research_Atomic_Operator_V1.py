@@ -36,6 +36,24 @@ def _diagnostic_residual_rows(
             if baseline_excitation_energy_eV is not None
             else None
         )
+        baseline_residual_eV = (
+            baseline_excitation_energy_eV - row["observed_excitation_energy_eV"]
+            if baseline_excitation_energy_eV is not None
+            else None
+        )
+        baseline_absolute_residual_eV = (
+            abs(baseline_residual_eV) if baseline_residual_eV is not None else None
+        )
+        residual_improvement_eV = (
+            baseline_absolute_residual_eV - row["absolute_residual_eV"]
+            if baseline_absolute_residual_eV is not None
+            else None
+        )
+        residual_improvement_ratio = (
+            residual_improvement_eV / baseline_absolute_residual_eV
+            if baseline_absolute_residual_eV not in (None, 0)
+            else None
+        )
         rows.append(
             {
                 "row_id": f"operator_v1_diag_{row['holdout_id']}",
@@ -46,10 +64,14 @@ def _diagnostic_residual_rows(
                 "diagnostic_model_id": "source_calibrated_quantum_defect_same_series_mean",
                 "baseline_predicted_excitation_energy_eV": baseline_excitation_energy_eV,
                 "baseline_outer_binding_eV": baseline_outer_binding_eV,
+                "baseline_residual_eV_predicted_minus_observed": baseline_residual_eV,
+                "baseline_absolute_residual_eV": baseline_absolute_residual_eV,
                 "predicted_excitation_energy_eV": row["predicted_excitation_energy_eV"],
                 "delta_energy_eV": delta_energy_eV,
                 "observed_excitation_energy_eV": row["observed_excitation_energy_eV"],
                 "absolute_residual_eV": row["absolute_residual_eV"],
+                "residual_improvement_eV": residual_improvement_eV,
+                "residual_improvement_ratio": residual_improvement_ratio,
                 "model_uncertainty_eV": row.get("predicted_excitation_model_uncertainty_eV"),
                 "source_uncertainty_eV_or_rounding_bound": row.get("excitation_energy_uncertainty_eV"),
                 "parameters_locked_before_evaluation": True,
@@ -78,6 +100,17 @@ def run_atomic_operator_v1(
 ) -> dict:
     """Return the current operator-v1 gate without accepting a correction operator."""
     residual_rows = _diagnostic_residual_rows(helium_holdout_predictions, baseline_constants)
+    baseline_residuals = [
+        row["baseline_absolute_residual_eV"]
+        for row in residual_rows
+        if row["baseline_absolute_residual_eV"] is not None
+    ]
+    diagnostic_residuals = [row["absolute_residual_eV"] for row in residual_rows]
+    improvements = [
+        row["residual_improvement_eV"]
+        for row in residual_rows
+        if row["residual_improvement_eV"] is not None
+    ]
     residual_artifact = {
         "schema_version": "1.0",
         "artifact_id": "atomic_predictive_v1_operator_residual_rows",
@@ -100,6 +133,21 @@ def run_atomic_operator_v1(
             "delta_energy_populated_count": sum(
                 1 for row in residual_rows if row["delta_energy_eV"] is not None
             ),
+            "baseline_residual_populated_count": len(baseline_residuals),
+            "residual_improvement_populated_count": len(improvements),
+            "residual_improved_row_count": sum(
+                1 for value in improvements if value is not None and value > 0
+            ),
+            "average_baseline_abs_residual_eV": (
+                sum(baseline_residuals) / len(baseline_residuals) if baseline_residuals else None
+            ),
+            "average_diagnostic_abs_residual_eV": (
+                sum(diagnostic_residuals) / len(diagnostic_residuals) if diagnostic_residuals else None
+            ),
+            "average_residual_improvement_eV": (
+                sum(improvements) / len(improvements) if improvements else None
+            ),
+            "max_residual_improvement_eV": max(improvements) if improvements else None,
         },
         "claim_boundary": (
             "Rows exported here are same-source-family diagnostic residual rows. "
