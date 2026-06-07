@@ -64,6 +64,9 @@ ATOMIC_PREDICTIVE_V1_OPERATOR_BUILD_SPEC_MANIFEST_PATH = (
 ATOMIC_PREDICTIVE_V1_OPERATOR_ACCEPTANCE_HARNESS_MANIFEST_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_acceptance_harness_manifest.json"
 )
+ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_PROVENANCE_PATH = (
+    TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_implementation_provenance.json"
+)
 ATOMIC_PREDICTIVE_V1_OPERATOR_RESIDUAL_ROWS_PATH = (
     TOPIC_DIR / "Result" / "artifacts" / "atomic_predictive_v1_operator_residual_rows.json"
 )
@@ -4457,6 +4460,71 @@ def build_atomic_predictive_v1_operator_acceptance_harness_gate(
     }
 
 
+def build_atomic_predictive_v1_operator_implementation_provenance_gate(
+    operator_implementation_provenance_manifest: dict,
+    atomic_predictive_v1_operator_acceptance_harness_gate: dict,
+    atomic_predictive_v1_fixed_correction_operator_gate: dict,
+) -> dict:
+    evidence_rows = []
+    for row in operator_implementation_provenance_manifest.get("required_provenance_evidence", []):
+        current_status = row.get("current_status")
+        evidence_rows.append(
+            {
+                "evidence_id": row.get("evidence_id"),
+                "requirement": row.get("requirement"),
+                "status": "BLOCKING" if current_status == "MISSING" else current_status,
+                "manifest_status": current_status,
+                "required_artifact": row.get("required_artifact"),
+            }
+        )
+    blocking_count = sum(1 for row in evidence_rows if row["status"] == "BLOCKING")
+    ready_count = sum(1 for row in evidence_rows if row["status"] in {"PASS", "READY", "PRESENT"})
+    accepted_operator_count = atomic_predictive_v1_fixed_correction_operator_gate["metrics"][
+        "accepted_operator_count"
+    ]
+    status = (
+        "PROVENANCE_READY_OPERATOR_ACCEPTED"
+        if accepted_operator_count > 0 and blocking_count == 0
+        else "PROVENANCE_CONTRACT_READY_IMPLEMENTATION_MISSING"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_predictive_v1_operator_implementation_provenance_gate",
+        "status": status,
+        "claim_class": "operator_implementation_provenance_no_validation_claim",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-IMPLEMENTATION-PROVENANCE",
+        "manifest": {
+            "path": str(ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_PROVENANCE_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
+            "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_PROVENANCE_PATH),
+            "manifest_id": operator_implementation_provenance_manifest.get("manifest_id"),
+            "status": operator_implementation_provenance_manifest.get("status"),
+        },
+        "current_candidate_state": operator_implementation_provenance_manifest.get("current_candidate_state", {}),
+        "required_provenance_evidence": evidence_rows,
+        "forbidden_provenance_shortcuts": operator_implementation_provenance_manifest.get(
+            "forbidden_provenance_shortcuts", []
+        ),
+        "metrics": {
+            "required_provenance_evidence_count": len(evidence_rows),
+            "provenance_ready_count": ready_count,
+            "provenance_blocking_count": blocking_count,
+            "accepted_fixed_correction_operator_count": accepted_operator_count,
+            "operator_acceptance_decision_blocking_count": atomic_predictive_v1_operator_acceptance_harness_gate[
+                "metrics"
+            ]["operator_acceptance_decision_blocking_count"],
+        },
+        "blocked_claims": [
+            "diagnostic quantum-defect wrapper is implementation provenance",
+            "empty parameter manifest is an accepted parameter lock",
+            "operator schema readiness proves delta_uet_or_ci implementation",
+        ],
+        "next_required_artifacts": [
+            row["required_artifact"] for row in evidence_rows if row["status"] == "BLOCKING"
+        ],
+        "claim_boundary": operator_implementation_provenance_manifest.get("claim_boundary"),
+    }
+
+
 def build_atomic_predictive_v1_diagnostic_report_gate(
     atomic_predictive_v1_parameter_manifest: dict,
     atomic_predictive_v1_threshold_manifest: dict,
@@ -5775,6 +5843,9 @@ def run_rydberg_analysis():
     atomic_predictive_v1_operator_acceptance_harness_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_ACCEPTANCE_HARNESS_MANIFEST_PATH
     )
+    atomic_predictive_v1_operator_implementation_provenance_manifest = load_json(
+        ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_PROVENANCE_PATH
+    )
     chianti_he_i_manifest = load_json(CHIANTI_HE_I_MANIFEST_PATH)
     source_evidence_intake_stub = build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = build_source_evidence_readiness_matrix()
@@ -6034,6 +6105,13 @@ def run_rydberg_analysis():
             atomic_predictive_v1_fixed_correction_operator_gate,
         )
     )
+    atomic_predictive_v1_operator_implementation_provenance_gate = (
+        build_atomic_predictive_v1_operator_implementation_provenance_gate(
+            atomic_predictive_v1_operator_implementation_provenance_manifest,
+            atomic_predictive_v1_operator_acceptance_harness_gate,
+            atomic_predictive_v1_fixed_correction_operator_gate,
+        )
+    )
     atomic_predictive_v1_diagnostic_report_gate = build_atomic_predictive_v1_diagnostic_report_gate(
         atomic_predictive_v1_parameter_manifest,
         atomic_predictive_v1_threshold_manifest,
@@ -6241,6 +6319,18 @@ def run_rydberg_analysis():
                 "status": atomic_predictive_v1_operator_acceptance_harness_manifest.get("status"),
                 "source_rows": [
                     atomic_predictive_v1_operator_acceptance_harness_manifest.get("target_module", {}).get("path")
+                ],
+            },
+            {
+                "path": str(ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_PROVENANCE_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_PROVENANCE_PATH),
+                "source": atomic_predictive_v1_operator_implementation_provenance_manifest.get("purpose"),
+                "status": atomic_predictive_v1_operator_implementation_provenance_manifest.get("status"),
+                "source_rows": [
+                    row.get("evidence_id")
+                    for row in atomic_predictive_v1_operator_implementation_provenance_manifest.get(
+                        "required_provenance_evidence", []
+                    )
                 ],
             },
             {
@@ -6528,6 +6618,16 @@ def run_rydberg_analysis():
                     "required_residual_schema_field_count"
                 ]
             ),
+            "atomic_predictive_v1_operator_provenance_blockers": (
+                atomic_predictive_v1_operator_implementation_provenance_gate["metrics"][
+                    "provenance_blocking_count"
+                ]
+            ),
+            "atomic_predictive_v1_operator_provenance_evidence_count": (
+                atomic_predictive_v1_operator_implementation_provenance_gate["metrics"][
+                    "required_provenance_evidence_count"
+                ]
+            ),
             "atomic_predictive_v1_report_validation_blockers": atomic_predictive_v1_diagnostic_report_gate["metrics"][
                 "validation_blocker_count"
             ],
@@ -6674,6 +6774,9 @@ def run_rydberg_analysis():
     artifact["atomic_predictive_v1_operator_residual_gate"] = atomic_predictive_v1_operator_residual_gate
     artifact["atomic_predictive_v1_operator_acceptance_harness_gate"] = (
         atomic_predictive_v1_operator_acceptance_harness_gate
+    )
+    artifact["atomic_predictive_v1_operator_implementation_provenance_gate"] = (
+        atomic_predictive_v1_operator_implementation_provenance_gate
     )
     artifact["atomic_predictive_v1_diagnostic_report_gate"] = atomic_predictive_v1_diagnostic_report_gate
     artifact["atomic_predictive_v1_publication_readiness_gate"] = (

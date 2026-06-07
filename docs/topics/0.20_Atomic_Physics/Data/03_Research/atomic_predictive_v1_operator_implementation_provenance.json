@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.20_Atomic_Physics",
+  "manifest_id": "AT20-PREDICTIVE-V1-OPERATOR-IMPLEMENTATION-PROVENANCE",
+  "purpose": "Define the implementation-provenance evidence required before any atomic predictive-v1 residual rows can be accepted as delta_uet_or_ci output.",
+  "status": "PROVENANCE_CONTRACT_READY_IMPLEMENTATION_MISSING",
+  "selected_lane_id": "helium_quantum_defect_then_ci_or_uet_correction_v1",
+  "operator_id": "delta_uet_or_ci",
+  "current_candidate_state": {
+    "target_module_path": "Code/03_Research/Research_Atomic_Operator_V1.py",
+    "current_emitter": "empirical_quantum_defect_diagnostic_not_delta_uet_or_ci",
+    "accepted_operator_class": null,
+    "accepted_operator_count": 0,
+    "current_rows_allowed_use": "diagnostic_only_not_validation"
+  },
+  "required_provenance_evidence": [
+    {
+      "evidence_id": "PROV-01",
+      "requirement": "Accepted operator source code is identified by module path, entrypoint, commit hash or source hash, and operator class.",
+      "current_status": "MISSING",
+      "required_artifact": "accepted operator implementation record with code hash and operator class"
+    },
+    {
+      "evidence_id": "PROV-02",
+      "requirement": "All operator parameters are listed, typed, unit-tagged, and locked before holdout or CHIANTI rows are evaluated.",
+      "current_status": "MISSING",
+      "required_artifact": "operator parameter manifest with non-empty accepted parameter set and lock timestamp"
+    },
+    {
+      "evidence_id": "PROV-03",
+      "requirement": "Training/calibration rows are explicitly separated from holdout and external cross-check rows.",
+      "current_status": "MISSING",
+      "required_artifact": "operator training/holdout split manifest with source row IDs and hashes"
+    },
+    {
+      "evidence_id": "PROV-04",
+      "requirement": "Residual rows are emitted by the accepted operator, not by the current diagnostic quantum-defect wrapper.",
+      "current_status": "MISSING",
+      "required_artifact": "operator residual rows with accepted_operator_class and accepted_as_delta_uet_or_ci=true"
+    },
+    {
+      "evidence_id": "PROV-05",
+      "requirement": "Model uncertainty is sourced from the accepted operator or is explicitly noncomputable with a blocker reason for every residual row.",
+      "current_status": "MISSING",
+      "required_artifact": "operator uncertainty provenance rows tied to accepted residual rows"
+    }
+  ],
+  "forbidden_provenance_shortcuts": [
+    "reuse empirical quantum-defect residual rows as accepted operator output",
+    "mark an empty parameter set as locked accepted parameters",
+    "use same-source-family holdout or CHIANTI rows to choose operator parameters",
+    "omit source row IDs, hashes, or code identity while raising accepted_operator_count",
+    "treat harness schema readiness as implementation provenance"
+  ],
+  "claim_boundary": "This provenance manifest narrows what is missing before an operator can be accepted. It does not implement delta_uet_or_ci and cannot validate atomic spectra."
+}
