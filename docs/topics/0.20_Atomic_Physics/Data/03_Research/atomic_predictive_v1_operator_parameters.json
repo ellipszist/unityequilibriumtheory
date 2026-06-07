@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.20_Atomic_Physics",
+  "manifest_id": "AT20-PREDICTIVE-V1-OPERATOR-PARAMETERS",
+  "purpose": "Freeze the current operator-v1 parameter state before any residual rows are evaluated.",
+  "status": "PARAMETER_MANIFEST_READY_NO_ACCEPTED_OPERATOR_PARAMETERS",
+  "selected_lane_id": "helium_quantum_defect_then_ci_or_uet_correction_v1",
+  "operator_id": "delta_uet_or_ci",
+  "accepted_operator_class": null,
+  "parameter_sets": [],
+  "locked_before_holdout_evaluation": true,
+  "holdout_exclusion_policy": {
+    "excluded_sources": [
+      "Data/03_Research/helium_quantum_defect_holdout_sources.json",
+      "Data/03_Research/external_holdouts/chianti_he_i/source_manifest.json"
+    ],
+    "policy": "Holdout and CHIANTI rows must not set operator parameters."
+  },
+  "blocked_claims": [
+    "empty parameter set is an accepted correction operator",
+    "operator parameters may be fitted after viewing holdout residuals"
+  ],
+  "claim_boundary": "This manifest freezes the absence of accepted operator parameters. It does not implement delta_uet_or_ci."
+}

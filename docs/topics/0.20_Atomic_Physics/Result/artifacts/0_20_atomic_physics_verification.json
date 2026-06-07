@@ -1428,22 +1428,25 @@
         "check_id": "HARNESS-01",
         "evidence": {
           "required_entrypoint": "run_atomic_operator_v1",
+          "required_return_key": "atomic_predictive_v1_operator_residual_gate",
+          "target_entrypoint_present": true,
           "target_module_path": "Code/03_Research/Research_Atomic_Operator_V1.py",
-          "target_module_present": false
+          "target_module_present": true,
+          "target_return_key_present": true
         },
         "requirement": "Target module exists and exposes the required entrypoint.",
-        "status": "BLOCKED_TARGET_MODULE_MISSING"
+        "status": "PASS"
       },
       {
         "check_id": "HARNESS-02",
         "evidence": [
           {
             "artifact_id": "operator_parameter_manifest",
-            "exists": false,
+            "exists": true,
             "path": "Data/03_Research/atomic_predictive_v1_operator_parameters.json",
             "purpose": "Freeze operator parameters before holdout evaluation.",
             "required_before_acceptance": true,
-            "sha256": null
+            "sha256": "04dd1beee571417fa23589338965591d4e564a410ec6e396c3c8a0441f720e86"
           },
           {
             "artifact_id": "operator_residual_rows",
@@ -1455,15 +1458,15 @@
           },
           {
             "artifact_id": "operator_uncertainty_policy",
-            "exists": false,
+            "exists": true,
             "path": "Data/03_Research/atomic_predictive_v1_operator_uncertainty_policy.json",
             "purpose": "Declare model/source uncertainty handling before threshold reclassification.",
             "required_before_acceptance": true,
-            "sha256": null
+            "sha256": "b58b55e7f287cd42b8b79a21094a46692ece577969b8a7d6d9f355f37798dfcc"
           }
         ],
         "requirement": "Parameter manifest exists and is hashed in the primary verifier artifact.",
-        "status": "BLOCKED_PARAMETER_MANIFEST_MISSING"
+        "status": "PASS"
       },
       {
         "check_id": "HARNESS-03",
@@ -1510,7 +1513,7 @@
           "operator_build_spec_status": "OPERATOR_BUILD_SPEC_READY_IMPLEMENTATION_MISSING"
         },
         "requirement": "Uncertainty policy exists before validation-ready thresholds are allowed.",
-        "status": "BLOCKED_UNCERTAINTY_POLICY_MISSING"
+        "status": "PASS"
       }
     ],
     "blocked_claims": [
@@ -1534,30 +1537,32 @@
       "status": "ACCEPTANCE_HARNESS_READY_TARGETS_MISSING"
     },
     "metrics": {
-      "acceptance_check_blocking_count": 5,
+      "acceptance_check_blocking_count": 2,
       "acceptance_check_count": 5,
-      "acceptance_check_pass_count": 0,
+      "acceptance_check_pass_count": 3,
       "accepted_fixed_correction_operator_count": 0,
+      "parameter_manifest_present": true,
       "required_local_artifact_count": 3,
-      "required_local_artifact_missing_count": 3,
-      "required_local_artifact_present_count": 0,
+      "required_local_artifact_missing_count": 1,
+      "required_local_artifact_present_count": 2,
       "required_residual_schema_field_count": 15,
-      "target_module_present": false
+      "residual_rows_present": false,
+      "target_entrypoint_present": true,
+      "target_module_present": true,
+      "target_return_key_present": true,
+      "uncertainty_policy_present": true
     },
     "next_required_artifacts": [
-      "Data/03_Research/atomic_predictive_v1_operator_parameters.json",
-      "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
-      "Data/03_Research/atomic_predictive_v1_operator_uncertainty_policy.json",
-      "Code/03_Research/Research_Atomic_Operator_V1.py"
+      "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json"
     ],
     "required_local_artifacts": [
       {
         "artifact_id": "operator_parameter_manifest",
-        "exists": false,
+        "exists": true,
         "path": "Data/03_Research/atomic_predictive_v1_operator_parameters.json",
         "purpose": "Freeze operator parameters before holdout evaluation.",
         "required_before_acceptance": true,
-        "sha256": null
+        "sha256": "04dd1beee571417fa23589338965591d4e564a410ec6e396c3c8a0441f720e86"
       },
       {
         "artifact_id": "operator_residual_rows",
@@ -1569,11 +1574,11 @@
       },
       {
         "artifact_id": "operator_uncertainty_policy",
-        "exists": false,
+        "exists": true,
         "path": "Data/03_Research/atomic_predictive_v1_operator_uncertainty_policy.json",
         "purpose": "Declare model/source uncertainty handling before threshold reclassification.",
         "required_before_acceptance": true,
-        "sha256": null
+        "sha256": "b58b55e7f287cd42b8b79a21094a46692ece577969b8a7d6d9f355f37798dfcc"
       }
     ],
     "required_residual_row_schema": [
@@ -1598,11 +1603,13 @@
     "status": "OPERATOR_ACCEPTANCE_HARNESS_READY_TARGETS_MISSING",
     "target_module": {
       "claim_boundary": "The module may emit diagnostics only until an accepted delta_uet_or_ci operator, uncertainty policy, and independent validation source exist.",
-      "exists": false,
+      "entrypoint_present": true,
+      "exists": true,
       "path": "Code/03_Research/Research_Atomic_Operator_V1.py",
       "required_entrypoint": "run_atomic_operator_v1",
       "required_return_key": "atomic_predictive_v1_operator_residual_gate",
-      "sha256": null
+      "return_key_present": true,
+      "sha256": "47d368a3d7095a93483089aae01c1599b0f3c755c41a7bd7fa2d44498daf8a32"
     }
   },
   "atomic_predictive_v1_operator_build_spec_gate": {
@@ -2382,7 +2389,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-07T12:01:45.451156+00:00",
+  "generated_at_utc": "2026-06-07T12:10:56.002010+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -5420,10 +5427,10 @@
     "atomic_predictive_v1_fixed_correction_accepted_operators": 0,
     "atomic_predictive_v1_fixed_correction_blocking_checks": 1,
     "atomic_predictive_v1_missing_future_locked_parameters": 1,
-    "atomic_predictive_v1_operator_acceptance_harness_blocking_checks": 5,
-    "atomic_predictive_v1_operator_acceptance_harness_missing_artifacts": 3,
+    "atomic_predictive_v1_operator_acceptance_harness_blocking_checks": 2,
+    "atomic_predictive_v1_operator_acceptance_harness_missing_artifacts": 1,
     "atomic_predictive_v1_operator_acceptance_harness_schema_fields": 15,
-    "atomic_predictive_v1_operator_acceptance_harness_target_module_present": false,
+    "atomic_predictive_v1_operator_acceptance_harness_target_module_present": true,
     "atomic_predictive_v1_operator_build_spec_blocking_checks": 1,
     "atomic_predictive_v1_operator_build_spec_lanes": 2,
     "atomic_predictive_v1_operator_build_spec_missing_lanes": 2,

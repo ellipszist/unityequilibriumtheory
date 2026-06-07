@@ -4187,6 +4187,11 @@ def build_atomic_predictive_v1_operator_acceptance_harness_gate(
 ) -> dict:
     target_module = operator_acceptance_harness_manifest.get("target_module", {})
     target_module_path = TOPIC_DIR / target_module.get("path", "")
+    target_module_text = target_module_path.read_text(encoding="utf-8") if target_module_path.exists() else ""
+    required_entrypoint = target_module.get("required_entrypoint")
+    required_return_key = target_module.get("required_return_key")
+    target_entrypoint_present = bool(required_entrypoint and f"def {required_entrypoint}" in target_module_text)
+    target_return_key_present = bool(required_return_key and required_return_key in target_module_text)
     required_artifact_rows = []
     for artifact in operator_acceptance_harness_manifest.get("required_local_artifacts", []):
         local_path = TOPIC_DIR / artifact["path"]
@@ -4204,32 +4209,47 @@ def build_atomic_predictive_v1_operator_acceptance_harness_gate(
         row for row in required_artifact_rows if row["required_before_acceptance"] and not row["exists"]
     ]
     target_module_present = target_module_path.exists()
+    parameter_manifest_present = any(
+        row["artifact_id"] == "operator_parameter_manifest" and row["exists"]
+        for row in required_artifact_rows
+    )
+    residual_rows_present = any(
+        row["artifact_id"] == "operator_residual_rows" and row["exists"]
+        for row in required_artifact_rows
+    )
+    uncertainty_policy_present = any(
+        row["artifact_id"] == "operator_uncertainty_policy" and row["exists"]
+        for row in required_artifact_rows
+    )
     schema_fields = operator_acceptance_harness_manifest.get("required_residual_row_schema", [])
     acceptance_checks = [
         {
             "check_id": "HARNESS-01",
             "requirement": "Target module exists and exposes the required entrypoint.",
-            "status": "BLOCKED_TARGET_MODULE_MISSING" if not target_module_present else "PASS_ENTRYPOINT_REVIEW_REQUIRED",
+            "status": "PASS"
+            if target_module_present and target_entrypoint_present and target_return_key_present
+            else "BLOCKED_TARGET_MODULE_MISSING"
+            if not target_module_present
+            else "BLOCKED_ENTRYPOINT_OR_RETURN_KEY_MISSING",
             "evidence": {
                 "target_module_path": target_module.get("path"),
                 "target_module_present": target_module_present,
-                "required_entrypoint": target_module.get("required_entrypoint"),
+                "required_entrypoint": required_entrypoint,
+                "target_entrypoint_present": target_entrypoint_present,
+                "required_return_key": required_return_key,
+                "target_return_key_present": target_return_key_present,
             },
         },
         {
             "check_id": "HARNESS-02",
             "requirement": "Parameter manifest exists and is hashed in the primary verifier artifact.",
-            "status": "PASS"
-            if any(row["artifact_id"] == "operator_parameter_manifest" and row["exists"] for row in required_artifact_rows)
-            else "BLOCKED_PARAMETER_MANIFEST_MISSING",
+            "status": "PASS" if parameter_manifest_present else "BLOCKED_PARAMETER_MANIFEST_MISSING",
             "evidence": required_artifact_rows,
         },
         {
             "check_id": "HARNESS-03",
             "requirement": "Residual rows exist and include every required schema field.",
-            "status": "PASS"
-            if any(row["artifact_id"] == "operator_residual_rows" and row["exists"] for row in required_artifact_rows)
-            else "BLOCKED_RESIDUAL_ROWS_MISSING",
+            "status": "PASS_SCHEMA_REVIEW_REQUIRED" if residual_rows_present else "BLOCKED_RESIDUAL_ROWS_MISSING",
             "evidence": {
                 "required_schema_field_count": len(schema_fields),
                 "required_schema_fields": schema_fields,
@@ -4251,9 +4271,7 @@ def build_atomic_predictive_v1_operator_acceptance_harness_gate(
         {
             "check_id": "HARNESS-05",
             "requirement": "Uncertainty policy exists before validation-ready thresholds are allowed.",
-            "status": "PASS"
-            if any(row["artifact_id"] == "operator_uncertainty_policy" and row["exists"] for row in required_artifact_rows)
-            else "BLOCKED_UNCERTAINTY_POLICY_MISSING",
+            "status": "PASS" if uncertainty_policy_present else "BLOCKED_UNCERTAINTY_POLICY_MISSING",
             "evidence": {
                 "operator_build_spec_status": atomic_predictive_v1_operator_build_spec_gate["status"],
                 "accepted_fixed_correction_operator_count": atomic_predictive_v1_fixed_correction_operator_gate[
@@ -4285,6 +4303,8 @@ def build_atomic_predictive_v1_operator_acceptance_harness_gate(
             **target_module,
             "exists": target_module_present,
             "sha256": file_sha256(target_module_path) if target_module_present else None,
+            "entrypoint_present": target_entrypoint_present,
+            "return_key_present": target_return_key_present,
         },
         "required_local_artifacts": required_artifact_rows,
         "required_residual_row_schema": schema_fields,
@@ -4297,9 +4317,14 @@ def build_atomic_predictive_v1_operator_acceptance_harness_gate(
             "acceptance_check_pass_count": pass_count,
             "acceptance_check_blocking_count": blocking_count,
             "target_module_present": target_module_present,
+            "target_entrypoint_present": target_entrypoint_present,
+            "target_return_key_present": target_return_key_present,
             "required_local_artifact_count": len(required_artifact_rows),
             "required_local_artifact_present_count": sum(1 for row in required_artifact_rows if row["exists"]),
             "required_local_artifact_missing_count": len(missing_required_artifacts),
+            "parameter_manifest_present": parameter_manifest_present,
+            "residual_rows_present": residual_rows_present,
+            "uncertainty_policy_present": uncertainty_policy_present,
             "required_residual_schema_field_count": len(schema_fields),
             "accepted_fixed_correction_operator_count": atomic_predictive_v1_fixed_correction_operator_gate[
                 "metrics"
