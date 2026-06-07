@@ -3879,6 +3879,165 @@ def build_atomic_predictive_v1_fixed_correction_operator_gate(
     }
 
 
+def build_atomic_predictive_v1_operator_candidate_resolution_gate(
+    operator_manifest: dict,
+    atomic_fixed_parameter_model_readiness_gate: dict,
+    atomic_prediction_baseline_comparator_gate: dict,
+    atomic_predictive_v1_fixed_correction_operator_gate: dict,
+    uet_atomic_operator_readiness_gate: dict,
+) -> dict:
+    model_lanes = {
+        row["model_id"]: row for row in atomic_fixed_parameter_model_readiness_gate.get("model_lanes", [])
+    }
+    manifest_candidates = {
+        row["candidate_id"]: row for row in operator_manifest.get("operator_candidates", [])
+    }
+    resolution_rows = [
+        {
+            "candidate_id": "standard_bohr_rydberg_hydrogenic_baseline",
+            "candidate_source": "formula bridge and hydrogen/hydrogen-like baseline gates",
+            "current_use": "standard_baseline",
+            "delta_uet_or_ci_resolution": "REJECTED_AS_DELTA_BASELINE_ONLY",
+            "accepted_as_delta_uet_or_ci": False,
+            "reason": "Bohr/Rydberg/hydrogenic formulas define the baseline side of the model equation, not the correction operator.",
+            "evidence": {
+                "hydrogen_like_comparator_count": atomic_prediction_baseline_comparator_gate["metrics"][
+                    "comparator_count"
+                ],
+            },
+        },
+        {
+            "candidate_id": "hydrogen_dirac_lamb_empirical_handoff",
+            "candidate_source": "precision baseline and Lamb handoff gates",
+            "current_use": "precision_gap_sizing_diagnostic",
+            "delta_uet_or_ci_resolution": "REJECTED_AS_DELTA_EMPIRICAL_HANDOFF_NOT_OPERATOR",
+            "accepted_as_delta_uet_or_ci": False,
+            "reason": "Dirac is inherited standard physics and the Lamb handoff uses empirical source values; neither is a UET or fixed CI correction operator for the selected helium lane.",
+            "evidence": {
+                "hydrogen_1s2s_dirac_to_lamb_handoff_improvement_factor": atomic_prediction_baseline_comparator_gate[
+                    "metrics"
+                ]["hydrogen_1s2s_dirac_to_lamb_handoff_improvement_factor"],
+            },
+        },
+        {
+            "candidate_id": "helium_fixed_screening_heuristic",
+            "candidate_source": "atomic_fixed_parameter_model_readiness_gate",
+            "current_use": "fixed_parameter_heuristic_comparator",
+            "delta_uet_or_ci_resolution": "REJECTED_AS_DELTA_HEURISTIC_NOT_CI_OR_UET_OPERATOR",
+            "accepted_as_delta_uet_or_ci": False,
+            "reason": "The fixed-screening lane is locked before evaluation, but its screening coefficient is heuristic and it is not a CI/correlated two-electron or UET operator.",
+            "evidence": model_lanes.get("helium_fixed_screening_baseline", {}).get("evidence"),
+        },
+        {
+            "candidate_id": "empirical_quantum_defect_current_diagnostic",
+            "candidate_source": "operator manifest and helium quantum-defect gates",
+            "current_use": "same_source_family_diagnostic_prediction",
+            "delta_uet_or_ci_resolution": "REJECTED_AS_DELTA_FITTED_DIAGNOSTIC",
+            "accepted_as_delta_uet_or_ci": manifest_candidates.get(
+                "empirical_quantum_defect_current_diagnostic", {}
+            ).get("accepted_as_delta_uet_or_ci", False),
+            "reason": manifest_candidates.get("empirical_quantum_defect_current_diagnostic", {}).get(
+                "reason"
+            ),
+            "evidence": model_lanes.get("helium_quantum_defect_series_fit", {}).get("evidence"),
+        },
+        {
+            "candidate_id": "legacy_multielectron_three_body_scripts",
+            "candidate_source": "legacy code audit gate",
+            "current_use": "audit_continuity_only",
+            "delta_uet_or_ci_resolution": "REJECTED_AS_DELTA_SMOKE_TEST_NOT_SPECTRAL_MODEL",
+            "accepted_as_delta_uet_or_ci": False,
+            "reason": "Legacy scripts do not emit source-backed helium level or line residuals and are excluded from primary evidence.",
+            "evidence": model_lanes.get("legacy_multielectron_three_body_scripts", {}).get("evidence"),
+        },
+        {
+            "candidate_id": "fixed_parameter_ci_or_correlated_two_electron",
+            "candidate_source": "operator manifest",
+            "current_use": "missing_acceptable_operator_path",
+            "delta_uet_or_ci_resolution": "ACCEPTABLE_CLASS_MISSING_IMPLEMENTATION",
+            "accepted_as_delta_uet_or_ci": manifest_candidates.get(
+                "fixed_parameter_ci_or_correlated_two_electron", {}
+            ).get("accepted_as_delta_uet_or_ci", False),
+            "reason": "This is an allowed operator class, but no primary-gated fixed-parameter CI/correlated residual lane exists yet.",
+            "required_artifact": manifest_candidates.get(
+                "fixed_parameter_ci_or_correlated_two_electron", {}
+            ).get("required_artifact"),
+        },
+        {
+            "candidate_id": "explicit_uet_atomic_operator",
+            "candidate_source": "operator manifest and UET operator readiness gate",
+            "current_use": "missing_acceptable_operator_path",
+            "delta_uet_or_ci_resolution": "ACCEPTABLE_CLASS_MISSING_DERIVATION_AND_RESIDUAL_LANE",
+            "accepted_as_delta_uet_or_ci": manifest_candidates.get("explicit_uet_atomic_operator", {}).get(
+                "accepted_as_delta_uet_or_ci", False
+            ),
+            "reason": "This is an allowed operator class, but UET derivation, fixed parameters, and source-backed residual artifacts are still absent.",
+            "evidence": {
+                "uet_operator_readiness_status": uet_atomic_operator_readiness_gate["status"],
+                "uet_operator_blocking_requirement_count": uet_atomic_operator_readiness_gate["metrics"][
+                    "blocking_requirement_count"
+                ],
+                "uet_operator_residual_lane_present": uet_atomic_operator_readiness_gate["metrics"][
+                    "uet_operator_residual_lane_present"
+                ],
+            },
+            "required_artifact": manifest_candidates.get("explicit_uet_atomic_operator", {}).get(
+                "required_artifact"
+            ),
+        },
+    ]
+    accepted_rows = [row for row in resolution_rows if row["accepted_as_delta_uet_or_ci"]]
+    missing_acceptable_rows = [
+        row for row in resolution_rows if row["delta_uet_or_ci_resolution"].startswith("ACCEPTABLE_CLASS_MISSING")
+    ]
+    rejected_existing_rows = [
+        row
+        for row in resolution_rows
+        if row["delta_uet_or_ci_resolution"].startswith("REJECTED")
+    ]
+    status = (
+        "OPERATOR_CANDIDATE_RESOLUTION_READY_NO_ACCEPTED_DELTA"
+        if not accepted_rows
+        else "OPERATOR_CANDIDATE_RESOLUTION_READY_WITH_ACCEPTED_DELTA"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_predictive_v1_operator_candidate_resolution_gate",
+        "status": status,
+        "claim_class": "operator_candidate_resolution_no_validation_claim",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-CANDIDATE-RESOLUTION",
+        "purpose": "Resolve common candidate formulas and model lanes against the delta_uet_or_ci contract so existing formulas cannot be mistaken for an implemented predictive correction operator.",
+        "required_model_form": operator_manifest.get("required_model_form"),
+        "fixed_correction_operator_gate_status": atomic_predictive_v1_fixed_correction_operator_gate["status"],
+        "resolution_rows": resolution_rows,
+        "metrics": {
+            "candidate_resolution_count": len(resolution_rows),
+            "accepted_delta_uet_or_ci_count": len(accepted_rows),
+            "rejected_existing_candidate_count": len(rejected_existing_rows),
+            "missing_acceptable_operator_path_count": len(missing_acceptable_rows),
+            "fixed_correction_contract_blocking_count": atomic_predictive_v1_fixed_correction_operator_gate[
+                "metrics"
+            ]["contract_blocking_count"],
+            "uet_operator_blocking_requirement_count": uet_atomic_operator_readiness_gate["metrics"][
+                "blocking_requirement_count"
+            ],
+        },
+        "blocked_claims": [
+            "standard Bohr/Rydberg/Dirac formulas are the UET correction operator",
+            "empirical Lamb or quantum-defect handoffs count as fixed delta_uet_or_ci",
+            "fixed-screening heuristic residuals validate a CI/correlated or UET operator",
+            "legacy smoke-test scripts are primary spectral evidence",
+        ],
+        "next_required_artifacts": [
+            "fixed-parameter CI/correlated two-electron operator residual lane with source-backed helium levels",
+            "explicit UET atomic Hamiltonian or transition operator derivation with units and locked parameters",
+            "operator uncertainty output consumed by predictive-v1 threshold gate",
+            "non-NIST independent He I validation package after the operator is implemented",
+        ],
+        "claim_boundary": "This gate is a candidate-resolution and anti-overclaim artifact. It does not implement delta_uet_or_ci and does not validate atomic spectra.",
+    }
+
+
 def build_atomic_predictive_v1_diagnostic_report_gate(
     atomic_predictive_v1_parameter_manifest: dict,
     atomic_predictive_v1_threshold_manifest: dict,
@@ -5274,6 +5433,15 @@ def run_rydberg_analysis():
         atomic_fixed_parameter_model_readiness_gate,
         uet_atomic_operator_readiness_gate,
     )
+    atomic_predictive_v1_operator_candidate_resolution_gate = (
+        build_atomic_predictive_v1_operator_candidate_resolution_gate(
+            atomic_predictive_v1_operator_manifest,
+            atomic_fixed_parameter_model_readiness_gate,
+            atomic_prediction_baseline_comparator_gate,
+            atomic_predictive_v1_fixed_correction_operator_gate,
+            uet_atomic_operator_readiness_gate,
+        )
+    )
     atomic_predictive_v1_diagnostic_report_gate = build_atomic_predictive_v1_diagnostic_report_gate(
         atomic_predictive_v1_parameter_manifest,
         atomic_predictive_v1_threshold_manifest,
@@ -5502,6 +5670,7 @@ def run_rydberg_analysis():
             "AT20-ATOMIC-PREDICTIVE-V1-PARAMETER-LOCK",
             "AT20-ATOMIC-PREDICTIVE-V1-THRESHOLD-GATE",
             "AT20-ATOMIC-PREDICTIVE-V1-FIXED-CORRECTION-OPERATOR",
+            "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-CANDIDATE-RESOLUTION",
             "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
             "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
             "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
@@ -5668,6 +5837,26 @@ def run_rydberg_analysis():
             "atomic_predictive_v1_fixed_correction_blocking_checks": (
                 atomic_predictive_v1_fixed_correction_operator_gate["metrics"]["contract_blocking_count"]
             ),
+            "atomic_predictive_v1_operator_candidate_resolutions": (
+                atomic_predictive_v1_operator_candidate_resolution_gate["metrics"][
+                    "candidate_resolution_count"
+                ]
+            ),
+            "atomic_predictive_v1_operator_candidate_accepted_deltas": (
+                atomic_predictive_v1_operator_candidate_resolution_gate["metrics"][
+                    "accepted_delta_uet_or_ci_count"
+                ]
+            ),
+            "atomic_predictive_v1_operator_candidate_rejected_existing": (
+                atomic_predictive_v1_operator_candidate_resolution_gate["metrics"][
+                    "rejected_existing_candidate_count"
+                ]
+            ),
+            "atomic_predictive_v1_operator_candidate_missing_acceptable_paths": (
+                atomic_predictive_v1_operator_candidate_resolution_gate["metrics"][
+                    "missing_acceptable_operator_path_count"
+                ]
+            ),
             "atomic_predictive_v1_report_validation_blockers": atomic_predictive_v1_diagnostic_report_gate["metrics"][
                 "validation_blocker_count"
             ],
@@ -5742,6 +5931,7 @@ def run_rydberg_analysis():
             "The atomic predictive-v1 parameter-lock gate now records allowed calibration parameters and forbidden holdout/external leakage fields; future CI/UET correction parameters remain missing.",
             "The atomic predictive-v1 threshold gate now records diagnostic residual thresholds for the selected lane, but zero thresholds are validation-ready.",
             "The atomic predictive-v1 fixed-correction operator gate defines the delta_uet_or_ci contract and records zero accepted fixed correction operators implemented.",
+            "The atomic predictive-v1 operator candidate resolution gate classifies current standard, heuristic, empirical, and legacy candidates against the delta_uet_or_ci contract; current accepted correction operators remain zero.",
             "The atomic predictive-v1 diagnostic report records same-source-family level and wavelength predictions with diagnostic threshold checks, but validation remains blocked by the missing fixed CI/UET correction operator, non-NIST source package, and validation-ready thresholds.",
             "The helium external-holdout lineage decision gate classifies CHIANTI He I as cross-check-only because the captured metadata records NIST ASD lineage.",
             "The atomic predictive-model blueprint gate turns the build path into seven auditable steps; source lineage is now decided as cross-check-only, while parameter lock and thresholds remain partial until the missing generative model and validation-ready uncertainty policy exist.",
@@ -5794,6 +5984,9 @@ def run_rydberg_analysis():
     artifact["atomic_predictive_v1_threshold_gate"] = atomic_predictive_v1_threshold_gate
     artifact["atomic_predictive_v1_fixed_correction_operator_gate"] = (
         atomic_predictive_v1_fixed_correction_operator_gate
+    )
+    artifact["atomic_predictive_v1_operator_candidate_resolution_gate"] = (
+        atomic_predictive_v1_operator_candidate_resolution_gate
     )
     artifact["atomic_predictive_v1_diagnostic_report_gate"] = atomic_predictive_v1_diagnostic_report_gate
     artifact["atomic_predictive_model_blueprint_gate"] = atomic_predictive_model_blueprint_gate

@@ -1422,6 +1422,121 @@
     "schema_version": "1.0",
     "status": "OPERATOR_CONTRACT_READY_IMPLEMENTATION_MISSING"
   },
+  "atomic_predictive_v1_operator_candidate_resolution_gate": {
+    "blocked_claims": [
+      "standard Bohr/Rydberg/Dirac formulas are the UET correction operator",
+      "empirical Lamb or quantum-defect handoffs count as fixed delta_uet_or_ci",
+      "fixed-screening heuristic residuals validate a CI/correlated or UET operator",
+      "legacy smoke-test scripts are primary spectral evidence"
+    ],
+    "claim_boundary": "This gate is a candidate-resolution and anti-overclaim artifact. It does not implement delta_uet_or_ci and does not validate atomic spectra.",
+    "claim_class": "operator_candidate_resolution_no_validation_claim",
+    "fixed_correction_operator_gate_status": "OPERATOR_CONTRACT_READY_IMPLEMENTATION_MISSING",
+    "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-CANDIDATE-RESOLUTION",
+    "metrics": {
+      "accepted_delta_uet_or_ci_count": 0,
+      "candidate_resolution_count": 7,
+      "fixed_correction_contract_blocking_count": 1,
+      "missing_acceptable_operator_path_count": 2,
+      "rejected_existing_candidate_count": 5,
+      "uet_operator_blocking_requirement_count": 6
+    },
+    "next_required_artifacts": [
+      "fixed-parameter CI/correlated two-electron operator residual lane with source-backed helium levels",
+      "explicit UET atomic Hamiltonian or transition operator derivation with units and locked parameters",
+      "operator uncertainty output consumed by predictive-v1 threshold gate",
+      "non-NIST independent He I validation package after the operator is implemented"
+    ],
+    "purpose": "Resolve common candidate formulas and model lanes against the delta_uet_or_ci contract so existing formulas cannot be mistaken for an implemented predictive correction operator.",
+    "required_model_form": "E_or_nu_pred = standard_baseline(domain, constants, quantum_numbers) + delta_uet_or_ci(domain, locked_parameters, quantum_numbers)",
+    "resolution_rows": [
+      {
+        "accepted_as_delta_uet_or_ci": false,
+        "candidate_id": "standard_bohr_rydberg_hydrogenic_baseline",
+        "candidate_source": "formula bridge and hydrogen/hydrogen-like baseline gates",
+        "current_use": "standard_baseline",
+        "delta_uet_or_ci_resolution": "REJECTED_AS_DELTA_BASELINE_ONLY",
+        "evidence": {
+          "hydrogen_like_comparator_count": 7
+        },
+        "reason": "Bohr/Rydberg/hydrogenic formulas define the baseline side of the model equation, not the correction operator."
+      },
+      {
+        "accepted_as_delta_uet_or_ci": false,
+        "candidate_id": "hydrogen_dirac_lamb_empirical_handoff",
+        "candidate_source": "precision baseline and Lamb handoff gates",
+        "current_use": "precision_gap_sizing_diagnostic",
+        "delta_uet_or_ci_resolution": "REJECTED_AS_DELTA_EMPIRICAL_HANDOFF_NOT_OPERATOR",
+        "evidence": {
+          "hydrogen_1s2s_dirac_to_lamb_handoff_improvement_factor": 688.5376706404472
+        },
+        "reason": "Dirac is inherited standard physics and the Lamb handoff uses empirical source values; neither is a UET or fixed CI correction operator for the selected helium lane."
+      },
+      {
+        "accepted_as_delta_uet_or_ci": false,
+        "candidate_id": "helium_fixed_screening_heuristic",
+        "candidate_source": "atomic_fixed_parameter_model_readiness_gate",
+        "current_use": "fixed_parameter_heuristic_comparator",
+        "delta_uet_or_ci_resolution": "REJECTED_AS_DELTA_HEURISTIC_NOT_CI_OR_UET_OPERATOR",
+        "evidence": {
+          "average_abs_residual_eV": 0.5491888866196746,
+          "fixed_outer_effective_charge": 1.15
+        },
+        "reason": "The fixed-screening lane is locked before evaluation, but its screening coefficient is heuristic and it is not a CI/correlated two-electron or UET operator."
+      },
+      {
+        "accepted_as_delta_uet_or_ci": false,
+        "candidate_id": "empirical_quantum_defect_current_diagnostic",
+        "candidate_source": "operator manifest and helium quantum-defect gates",
+        "current_use": "same_source_family_diagnostic_prediction",
+        "delta_uet_or_ci_resolution": "REJECTED_AS_DELTA_FITTED_DIAGNOSTIC",
+        "evidence": {
+          "loo_prediction_count": 7,
+          "same_source_holdout_prediction_count": 3
+        },
+        "reason": "delta_selected_series is fitted from selected same-source-family helium levels and does not predict quantum defects from a CI/correlated or UET operator."
+      },
+      {
+        "accepted_as_delta_uet_or_ci": false,
+        "candidate_id": "legacy_multielectron_three_body_scripts",
+        "candidate_source": "legacy code audit gate",
+        "current_use": "audit_continuity_only",
+        "delta_uet_or_ci_resolution": "REJECTED_AS_DELTA_SMOKE_TEST_NOT_SPECTRAL_MODEL",
+        "evidence": {
+          "audited_script_count": 2,
+          "ci_or_correlated_model_present": false,
+          "primary_evidence_script_count": 0
+        },
+        "reason": "Legacy scripts do not emit source-backed helium level or line residuals and are excluded from primary evidence."
+      },
+      {
+        "accepted_as_delta_uet_or_ci": false,
+        "candidate_id": "fixed_parameter_ci_or_correlated_two_electron",
+        "candidate_source": "operator manifest",
+        "current_use": "missing_acceptable_operator_path",
+        "delta_uet_or_ci_resolution": "ACCEPTABLE_CLASS_MISSING_IMPLEMENTATION",
+        "reason": "This is an allowed operator class, but no primary-gated fixed-parameter CI/correlated residual lane exists yet.",
+        "required_artifact": "CI/correlated helium level residual gate with parameters frozen before holdout evaluation"
+      },
+      {
+        "accepted_as_delta_uet_or_ci": false,
+        "candidate_id": "explicit_uet_atomic_operator",
+        "candidate_source": "operator manifest and UET operator readiness gate",
+        "current_use": "missing_acceptable_operator_path",
+        "delta_uet_or_ci_resolution": "ACCEPTABLE_CLASS_MISSING_DERIVATION_AND_RESIDUAL_LANE",
+        "evidence": {
+          "uet_operator_blocking_requirement_count": 6,
+          "uet_operator_readiness_status": "UET_ATOMIC_OPERATOR_NOT_READY",
+          "uet_operator_residual_lane_present": false
+        },
+        "reason": "This is an allowed operator class, but UET derivation, fixed parameters, and source-backed residual artifacts are still absent.",
+        "required_artifact": "UET atomic Hamiltonian/transition-operator derivation with units, fixed parameters, and source-backed residual lane"
+      }
+    ],
+    "role": "atomic_predictive_v1_operator_candidate_resolution_gate",
+    "schema_version": "1.0",
+    "status": "OPERATOR_CANDIDATE_RESOLUTION_READY_NO_ACCEPTED_DELTA"
+  },
   "atomic_predictive_v1_parameter_lock_gate": {
     "blocked_claims": [
       "the current fitted quantum-defect lane is a first-principles UET prediction",
@@ -1881,6 +1996,7 @@
     "AT20-ATOMIC-PREDICTIVE-V1-PARAMETER-LOCK",
     "AT20-ATOMIC-PREDICTIVE-V1-THRESHOLD-GATE",
     "AT20-ATOMIC-PREDICTIVE-V1-FIXED-CORRECTION-OPERATOR",
+    "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-CANDIDATE-RESOLUTION",
     "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
     "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
     "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
@@ -1890,7 +2006,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-07T07:40:39.714255+00:00",
+  "generated_at_utc": "2026-06-07T08:55:17.768579+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -4877,6 +4993,7 @@
     "The atomic predictive-v1 parameter-lock gate now records allowed calibration parameters and forbidden holdout/external leakage fields; future CI/UET correction parameters remain missing.",
     "The atomic predictive-v1 threshold gate now records diagnostic residual thresholds for the selected lane, but zero thresholds are validation-ready.",
     "The atomic predictive-v1 fixed-correction operator gate defines the delta_uet_or_ci contract and records zero accepted fixed correction operators implemented.",
+    "The atomic predictive-v1 operator candidate resolution gate classifies current standard, heuristic, empirical, and legacy candidates against the delta_uet_or_ci contract; current accepted correction operators remain zero.",
     "The atomic predictive-v1 diagnostic report records same-source-family level and wavelength predictions with diagnostic threshold checks, but validation remains blocked by the missing fixed CI/UET correction operator, non-NIST source package, and validation-ready thresholds.",
     "The helium external-holdout lineage decision gate classifies CHIANTI He I as cross-check-only because the captured metadata records NIST ASD lineage.",
     "The atomic predictive-model blueprint gate turns the build path into seven auditable steps; source lineage is now decided as cross-check-only, while parameter lock and thresholds remain partial until the missing generative model and validation-ready uncertainty policy exist.",
@@ -4906,6 +5023,10 @@
     "atomic_predictive_v1_fixed_correction_accepted_operators": 0,
     "atomic_predictive_v1_fixed_correction_blocking_checks": 1,
     "atomic_predictive_v1_missing_future_locked_parameters": 1,
+    "atomic_predictive_v1_operator_candidate_accepted_deltas": 0,
+    "atomic_predictive_v1_operator_candidate_missing_acceptable_paths": 2,
+    "atomic_predictive_v1_operator_candidate_rejected_existing": 5,
+    "atomic_predictive_v1_operator_candidate_resolutions": 7,
     "atomic_predictive_v1_parameter_lock_policy_fail_count": 0,
     "atomic_predictive_v1_report_level_holdout_predictions": 3,
     "atomic_predictive_v1_report_validation_blockers": 3,
