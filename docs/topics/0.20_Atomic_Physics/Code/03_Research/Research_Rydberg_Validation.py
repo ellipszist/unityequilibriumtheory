@@ -10,6 +10,7 @@ first principles or validate many-electron atomic physics.
 """
 
 import json
+import importlib.util
 import platform
 import re
 import sys
@@ -63,6 +64,9 @@ ATOMIC_PREDICTIVE_V1_OPERATOR_BUILD_SPEC_MANIFEST_PATH = (
 ATOMIC_PREDICTIVE_V1_OPERATOR_ACCEPTANCE_HARNESS_MANIFEST_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_acceptance_harness_manifest.json"
 )
+ATOMIC_PREDICTIVE_V1_OPERATOR_RESIDUAL_ROWS_PATH = (
+    TOPIC_DIR / "Result" / "artifacts" / "atomic_predictive_v1_operator_residual_rows.json"
+)
 CHIANTI_HE_I_MANIFEST_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "external_holdouts" / "chianti_he_i" / "source_manifest.json"
 )
@@ -90,6 +94,19 @@ def file_sha256(path):
 def load_json(path):
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
+
+
+def run_atomic_operator_v1_export(helium_quantum_defect_holdout_gate):
+    module_path = TOPIC_DIR / "Code" / "03_Research" / "Research_Atomic_Operator_V1.py"
+    spec = importlib.util.spec_from_file_location("atomic_operator_v1", module_path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Cannot import atomic operator module: {module_path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.run_atomic_operator_v1(
+        helium_holdout_predictions=helium_quantum_defect_holdout_gate.get("predictions", []),
+        write_artifact_path=ATOMIC_PREDICTIVE_V1_OPERATOR_RESIDUAL_ROWS_PATH,
+    )
 
 
 def parse_transition(text):
@@ -4222,6 +4239,37 @@ def build_atomic_predictive_v1_operator_acceptance_harness_gate(
         for row in required_artifact_rows
     )
     schema_fields = operator_acceptance_harness_manifest.get("required_residual_row_schema", [])
+    residual_rows_artifact = {}
+    residual_rows = []
+    residual_row_schema_missing = []
+    no_leakage_failures = []
+    residual_rows_artifact_path = TOPIC_DIR / next(
+        (
+            artifact["path"]
+            for artifact in operator_acceptance_harness_manifest.get("required_local_artifacts", [])
+            if artifact["artifact_id"] == "operator_residual_rows"
+        ),
+        "",
+    )
+    if residual_rows_artifact_path.exists():
+        residual_rows_artifact = load_json(residual_rows_artifact_path)
+        residual_rows = residual_rows_artifact.get("residual_rows", [])
+        for row in residual_rows:
+            missing = [field for field in schema_fields if field not in row]
+            if missing:
+                residual_row_schema_missing.append({"row_id": row.get("row_id"), "missing_fields": missing})
+            if not row.get("parameters_locked_before_evaluation") or row.get("used_for_parameter_fit"):
+                no_leakage_failures.append(
+                    {
+                        "row_id": row.get("row_id"),
+                        "parameters_locked_before_evaluation": row.get("parameters_locked_before_evaluation"),
+                        "used_for_parameter_fit": row.get("used_for_parameter_fit"),
+                        "source_family": row.get("source_family"),
+                        "claim_use": row.get("claim_use"),
+                    }
+                )
+    residual_rows_schema_complete = bool(residual_rows) and not residual_row_schema_missing
+    no_leakage_complete = bool(residual_rows) and not no_leakage_failures
     acceptance_checks = [
         {
             "check_id": "HARNESS-01",
@@ -4249,16 +4297,22 @@ def build_atomic_predictive_v1_operator_acceptance_harness_gate(
         {
             "check_id": "HARNESS-03",
             "requirement": "Residual rows exist and include every required schema field.",
-            "status": "PASS_SCHEMA_REVIEW_REQUIRED" if residual_rows_present else "BLOCKED_RESIDUAL_ROWS_MISSING",
+            "status": "PASS"
+            if residual_rows_schema_complete
+            else "BLOCKED_RESIDUAL_ROW_SCHEMA_INCOMPLETE"
+            if residual_rows
+            else "BLOCKED_RESIDUAL_ROWS_MISSING",
             "evidence": {
                 "required_schema_field_count": len(schema_fields),
                 "required_schema_fields": schema_fields,
+                "residual_row_count": len(residual_rows),
+                "schema_missing_rows": residual_row_schema_missing,
             },
         },
         {
             "check_id": "HARNESS-04",
             "requirement": "Every residual row has no-leakage flags before acceptance.",
-            "status": "BLOCKED_RESIDUAL_ROWS_MISSING",
+            "status": "PASS" if no_leakage_complete else "BLOCKED_NO_LEAKAGE_REVIEW_REQUIRED",
             "evidence": {
                 "required_no_leakage_fields": [
                     "parameters_locked_before_evaluation",
@@ -4266,6 +4320,8 @@ def build_atomic_predictive_v1_operator_acceptance_harness_gate(
                     "source_family",
                     "claim_use",
                 ],
+                "residual_row_count": len(residual_rows),
+                "no_leakage_failures": no_leakage_failures,
             },
         },
         {
@@ -4282,9 +4338,12 @@ def build_atomic_predictive_v1_operator_acceptance_harness_gate(
     ]
     blocking_count = sum(1 for row in acceptance_checks if row["status"].startswith("BLOCKED"))
     pass_count = sum(1 for row in acceptance_checks if row["status"].startswith("PASS"))
+    accepted_operator_count = atomic_predictive_v1_fixed_correction_operator_gate["metrics"]["accepted_operator_count"]
     status = (
         "OPERATOR_ACCEPTANCE_HARNESS_READY_TARGETS_MISSING"
         if blocking_count
+        else "OPERATOR_ACCEPTANCE_HARNESS_SCHEMA_READY_OPERATOR_NOT_ACCEPTED"
+        if accepted_operator_count == 0
         else "OPERATOR_ACCEPTANCE_HARNESS_READY_FOR_OPERATOR_REVIEW"
     )
     return {
@@ -4308,6 +4367,15 @@ def build_atomic_predictive_v1_operator_acceptance_harness_gate(
         },
         "required_local_artifacts": required_artifact_rows,
         "required_residual_row_schema": schema_fields,
+        "residual_rows_artifact": {
+            "path": str(residual_rows_artifact_path.relative_to(TOPIC_DIR)).replace("\\", "/")
+            if residual_rows_artifact_path.exists()
+            else "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
+            "exists": residual_rows_artifact_path.exists(),
+            "sha256": file_sha256(residual_rows_artifact_path) if residual_rows_artifact_path.exists() else None,
+            "status": residual_rows_artifact.get("status"),
+            "accepted_as_delta_uet_or_ci": residual_rows_artifact.get("accepted_as_delta_uet_or_ci"),
+        },
         "acceptance_checks": acceptance_checks,
         "forbidden_acceptance_states": operator_acceptance_harness_manifest.get(
             "forbidden_acceptance_states", []
@@ -4324,11 +4392,12 @@ def build_atomic_predictive_v1_operator_acceptance_harness_gate(
             "required_local_artifact_missing_count": len(missing_required_artifacts),
             "parameter_manifest_present": parameter_manifest_present,
             "residual_rows_present": residual_rows_present,
+            "residual_row_count": len(residual_rows),
+            "residual_row_schema_missing_count": len(residual_row_schema_missing),
+            "no_leakage_failure_count": len(no_leakage_failures),
             "uncertainty_policy_present": uncertainty_policy_present,
             "required_residual_schema_field_count": len(schema_fields),
-            "accepted_fixed_correction_operator_count": atomic_predictive_v1_fixed_correction_operator_gate[
-                "metrics"
-            ]["accepted_operator_count"],
+            "accepted_fixed_correction_operator_count": accepted_operator_count,
         },
         "blocked_claims": [
             "operator target module path proves implementation",
@@ -5757,6 +5826,9 @@ def run_rydberg_analysis():
         atomic_predictive_v1_fixed_correction_operator_gate,
         atomic_predictive_v1_operator_candidate_resolution_gate,
     )
+    atomic_predictive_v1_operator_residual_gate = run_atomic_operator_v1_export(
+        helium_quantum_defect_holdout_gate
+    )["atomic_predictive_v1_operator_residual_gate"]
     atomic_predictive_v1_operator_acceptance_harness_gate = (
         build_atomic_predictive_v1_operator_acceptance_harness_gate(
             atomic_predictive_v1_operator_acceptance_harness_manifest,
@@ -6212,6 +6284,12 @@ def run_rydberg_analysis():
             "atomic_predictive_v1_operator_build_spec_blocking_checks": (
                 atomic_predictive_v1_operator_build_spec_gate["metrics"]["spec_blocking_count"]
             ),
+            "atomic_predictive_v1_operator_residual_rows": (
+                atomic_predictive_v1_operator_residual_gate["metrics"]["residual_row_count"]
+            ),
+            "atomic_predictive_v1_operator_residual_accepted_operators": (
+                atomic_predictive_v1_operator_residual_gate["metrics"]["accepted_operator_count"]
+            ),
             "atomic_predictive_v1_operator_acceptance_harness_blocking_checks": (
                 atomic_predictive_v1_operator_acceptance_harness_gate["metrics"][
                     "acceptance_check_blocking_count"
@@ -6306,7 +6384,8 @@ def run_rydberg_analysis():
             "The atomic predictive-v1 fixed-correction operator gate defines the delta_uet_or_ci contract and records zero accepted fixed correction operators implemented.",
             "The atomic predictive-v1 operator candidate resolution gate classifies current standard, heuristic, empirical, and legacy candidates against the delta_uet_or_ci contract; current accepted correction operators remain zero.",
             "The atomic predictive-v1 operator build-spec gate defines implementation lanes, I/O, acceptance gates, forbidden shortcuts, and minimum first-build artifacts, but accepted implemented lanes remain zero.",
-            "The atomic predictive-v1 operator acceptance-harness gate names the target module, local artifacts, and residual row schema required before an operator can be accepted; target module and residual artifacts remain missing.",
+            "The atomic predictive-v1 operator residual gate exports same-source-family diagnostic rows only; accepted delta_uet_or_ci operators remain zero.",
+            "The atomic predictive-v1 operator acceptance-harness gate names the target module, local artifacts, and residual row schema required before an operator can be accepted; the current residual rows are diagnostic-only and do not validate the missing correction operator.",
             "The atomic predictive-v1 diagnostic report records same-source-family level and wavelength predictions with diagnostic threshold checks, but validation remains blocked by the missing fixed CI/UET correction operator, non-NIST source package, and validation-ready thresholds.",
             "The helium external-holdout lineage decision gate classifies CHIANTI He I as cross-check-only because the captured metadata records NIST ASD lineage.",
             "The atomic predictive-model blueprint gate turns the build path into seven auditable steps; source lineage is now decided as cross-check-only, while parameter lock and thresholds remain partial until the missing generative model and validation-ready uncertainty policy exist.",
@@ -6366,6 +6445,7 @@ def run_rydberg_analysis():
     artifact["atomic_predictive_v1_operator_build_spec_gate"] = (
         atomic_predictive_v1_operator_build_spec_gate
     )
+    artifact["atomic_predictive_v1_operator_residual_gate"] = atomic_predictive_v1_operator_residual_gate
     artifact["atomic_predictive_v1_operator_acceptance_harness_gate"] = (
         atomic_predictive_v1_operator_acceptance_harness_gate
     )

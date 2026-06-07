@@ -1,0 +1,86 @@
+{
+  "accepted_as_delta_uet_or_ci": false,
+  "artifact_id": "atomic_predictive_v1_operator_residual_rows",
+  "claim_boundary": "Rows exported here are same-source-family diagnostic residual rows. They do not implement or validate delta_uet_or_ci.",
+  "claim_class": "diagnostic_residual_rows_no_validation_claim",
+  "metrics": {
+    "accepted_operator_count": 0,
+    "diagnostic_only_row_count": 3,
+    "parameters_locked_before_evaluation_count": 3,
+    "residual_row_count": 3,
+    "used_for_parameter_fit_count": 0
+  },
+  "residual_rows": [
+    {
+      "absolute_residual_eV": 0.0,
+      "baseline_model_id": "source_calibrated_quantum_defect_same_series_mean",
+      "claim_use": "diagnostic_only_not_validation",
+      "delta_energy_eV": null,
+      "lane_id": "helium_quantum_defect_same_source_family_holdout",
+      "model_uncertainty_eV": 0.02068097823932508,
+      "observed_excitation_energy_eV": 21.21802302375344,
+      "operator_id": "empirical_quantum_defect_diagnostic_not_delta_uet_or_ci",
+      "parameters_locked_before_evaluation": true,
+      "predicted_excitation_energy_eV": 21.21802302375344,
+      "residual_eV_predicted_minus_observed": 0.0,
+      "row_id": "operator_v1_diag_he_i_1s2s_1S_from_20581_287",
+      "source_family": "NIST_ASD_same_source_family",
+      "source_locator": "NIST He I persistent lines table; 20581.287 A row",
+      "source_row_id": "he_i_1s2s_1S_from_20581_287",
+      "source_uncertainty_eV_or_rounding_bound": 6.199209920275185e-09,
+      "uncertainty_basis": {
+        "model": "global leave-one-out excitation residual RMSE fallback because selected series has fewer than two calibration rows",
+        "source": "excitation-energy uncertainty converted from source transcription bound"
+      },
+      "used_for_parameter_fit": false
+    },
+    {
+      "absolute_residual_eV": 0.0018526170410844145,
+      "baseline_model_id": "source_calibrated_quantum_defect_same_series_mean",
+      "claim_use": "diagnostic_only_not_validation",
+      "delta_energy_eV": null,
+      "lane_id": "helium_quantum_defect_same_source_family_holdout",
+      "model_uncertainty_eV": 0.02068097823932508,
+      "observed_excitation_energy_eV": 23.087018867521273,
+      "operator_id": "empirical_quantum_defect_diagnostic_not_delta_uet_or_ci",
+      "parameters_locked_before_evaluation": true,
+      "predicted_excitation_energy_eV": 23.08516625048019,
+      "residual_eV_predicted_minus_observed": -0.0018526170410844145,
+      "row_id": "operator_v1_diag_he_i_1s3p_1P_from_537_02992",
+      "source_family": "NIST_ASD_same_source_family",
+      "source_locator": "NIST He I persistent lines table; 537.02992 A row",
+      "source_row_id": "he_i_1s3p_1P_from_537_02992",
+      "source_uncertainty_eV_or_rounding_bound": 6.199209920275185e-09,
+      "uncertainty_basis": {
+        "model": "global leave-one-out excitation residual RMSE fallback because selected series has fewer than two calibration rows",
+        "source": "excitation-energy uncertainty converted from source transcription bound"
+      },
+      "used_for_parameter_fit": false
+    },
+    {
+      "absolute_residual_eV": 0.0010158157974480275,
+      "baseline_model_id": "source_calibrated_quantum_defect_same_series_mean",
+      "claim_use": "diagnostic_only_not_validation",
+      "delta_energy_eV": null,
+      "lane_id": "helium_quantum_defect_same_source_family_holdout",
+      "model_uncertainty_eV": 0.02068097823932508,
+      "observed_excitation_energy_eV": 23.74207039781598,
+      "operator_id": "empirical_quantum_defect_diagnostic_not_delta_uet_or_ci",
+      "parameters_locked_before_evaluation": true,
+      "predicted_excitation_energy_eV": 23.74105458201853,
+      "residual_eV_predicted_minus_observed": -0.0010158157974480275,
+      "row_id": "operator_v1_diag_he_i_1s4p_1P_from_522_21309",
+      "source_family": "NIST_ASD_same_source_family",
+      "source_locator": "NIST He I persistent lines table; 522.21309 A row",
+      "source_row_id": "he_i_1s4p_1P_from_522_21309",
+      "source_uncertainty_eV_or_rounding_bound": 6.199209920275185e-09,
+      "uncertainty_basis": {
+        "model": "global leave-one-out excitation residual RMSE fallback because selected series has fewer than two calibration rows",
+        "source": "excitation-energy uncertainty converted from source transcription bound"
+      },
+      "used_for_parameter_fit": false
+    }
+  ],
+  "schema_version": "1.0",
+  "status": "DIAGNOSTIC_RESIDUAL_ROWS_EXPORTED_OPERATOR_NOT_ACCEPTED"
+}
