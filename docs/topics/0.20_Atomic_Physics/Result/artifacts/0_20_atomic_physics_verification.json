@@ -1422,6 +1422,189 @@
     "schema_version": "1.0",
     "status": "OPERATOR_CONTRACT_READY_IMPLEMENTATION_MISSING"
   },
+  "atomic_predictive_v1_operator_acceptance_harness_gate": {
+    "acceptance_checks": [
+      {
+        "check_id": "HARNESS-01",
+        "evidence": {
+          "required_entrypoint": "run_atomic_operator_v1",
+          "target_module_path": "Code/03_Research/Research_Atomic_Operator_V1.py",
+          "target_module_present": false
+        },
+        "requirement": "Target module exists and exposes the required entrypoint.",
+        "status": "BLOCKED_TARGET_MODULE_MISSING"
+      },
+      {
+        "check_id": "HARNESS-02",
+        "evidence": [
+          {
+            "artifact_id": "operator_parameter_manifest",
+            "exists": false,
+            "path": "Data/03_Research/atomic_predictive_v1_operator_parameters.json",
+            "purpose": "Freeze operator parameters before holdout evaluation.",
+            "required_before_acceptance": true,
+            "sha256": null
+          },
+          {
+            "artifact_id": "operator_residual_rows",
+            "exists": false,
+            "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
+            "purpose": "Store source-row residuals emitted by the target module.",
+            "required_before_acceptance": true,
+            "sha256": null
+          },
+          {
+            "artifact_id": "operator_uncertainty_policy",
+            "exists": false,
+            "path": "Data/03_Research/atomic_predictive_v1_operator_uncertainty_policy.json",
+            "purpose": "Declare model/source uncertainty handling before threshold reclassification.",
+            "required_before_acceptance": true,
+            "sha256": null
+          }
+        ],
+        "requirement": "Parameter manifest exists and is hashed in the primary verifier artifact.",
+        "status": "BLOCKED_PARAMETER_MANIFEST_MISSING"
+      },
+      {
+        "check_id": "HARNESS-03",
+        "evidence": {
+          "required_schema_field_count": 15,
+          "required_schema_fields": [
+            "row_id",
+            "source_row_id",
+            "lane_id",
+            "operator_id",
+            "baseline_model_id",
+            "predicted_excitation_energy_eV",
+            "delta_energy_eV",
+            "observed_excitation_energy_eV",
+            "absolute_residual_eV",
+            "model_uncertainty_eV",
+            "source_uncertainty_eV_or_rounding_bound",
+            "parameters_locked_before_evaluation",
+            "used_for_parameter_fit",
+            "source_family",
+            "claim_use"
+          ]
+        },
+        "requirement": "Residual rows exist and include every required schema field.",
+        "status": "BLOCKED_RESIDUAL_ROWS_MISSING"
+      },
+      {
+        "check_id": "HARNESS-04",
+        "evidence": {
+          "required_no_leakage_fields": [
+            "parameters_locked_before_evaluation",
+            "used_for_parameter_fit",
+            "source_family",
+            "claim_use"
+          ]
+        },
+        "requirement": "Every residual row has no-leakage flags before acceptance.",
+        "status": "BLOCKED_RESIDUAL_ROWS_MISSING"
+      },
+      {
+        "check_id": "HARNESS-05",
+        "evidence": {
+          "accepted_fixed_correction_operator_count": 0,
+          "operator_build_spec_status": "OPERATOR_BUILD_SPEC_READY_IMPLEMENTATION_MISSING"
+        },
+        "requirement": "Uncertainty policy exists before validation-ready thresholds are allowed.",
+        "status": "BLOCKED_UNCERTAINTY_POLICY_MISSING"
+      }
+    ],
+    "blocked_claims": [
+      "operator target module path proves implementation",
+      "schema declaration proves residual rows exist",
+      "acceptance harness can raise accepted_operator_count without residual and uncertainty artifacts"
+    ],
+    "claim_boundary": "This manifest defines the acceptance harness for a future runnable operator. It does not create or validate an operator.",
+    "claim_class": "operator_acceptance_harness_no_validation_claim",
+    "forbidden_acceptance_states": [
+      "target module exists but only wraps the current quantum-defect fit",
+      "residual rows omit uncertainty fields",
+      "holdout or CHIANTI rows are used to set operator parameters",
+      "accepted operator count is raised before residual rows exist"
+    ],
+    "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-ACCEPTANCE-HARNESS",
+    "manifest": {
+      "manifest_id": "AT20-PREDICTIVE-V1-OPERATOR-ACCEPTANCE-HARNESS-MANIFEST",
+      "path": "Data/03_Research/atomic_predictive_v1_operator_acceptance_harness_manifest.json",
+      "sha256": "47e3103ab04aa37fd5f975b50caeed0ec38b77882feecf0e3828b2398926bf34",
+      "status": "ACCEPTANCE_HARNESS_READY_TARGETS_MISSING"
+    },
+    "metrics": {
+      "acceptance_check_blocking_count": 5,
+      "acceptance_check_count": 5,
+      "acceptance_check_pass_count": 0,
+      "accepted_fixed_correction_operator_count": 0,
+      "required_local_artifact_count": 3,
+      "required_local_artifact_missing_count": 3,
+      "required_local_artifact_present_count": 0,
+      "required_residual_schema_field_count": 15,
+      "target_module_present": false
+    },
+    "next_required_artifacts": [
+      "Data/03_Research/atomic_predictive_v1_operator_parameters.json",
+      "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
+      "Data/03_Research/atomic_predictive_v1_operator_uncertainty_policy.json",
+      "Code/03_Research/Research_Atomic_Operator_V1.py"
+    ],
+    "required_local_artifacts": [
+      {
+        "artifact_id": "operator_parameter_manifest",
+        "exists": false,
+        "path": "Data/03_Research/atomic_predictive_v1_operator_parameters.json",
+        "purpose": "Freeze operator parameters before holdout evaluation.",
+        "required_before_acceptance": true,
+        "sha256": null
+      },
+      {
+        "artifact_id": "operator_residual_rows",
+        "exists": false,
+        "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
+        "purpose": "Store source-row residuals emitted by the target module.",
+        "required_before_acceptance": true,
+        "sha256": null
+      },
+      {
+        "artifact_id": "operator_uncertainty_policy",
+        "exists": false,
+        "path": "Data/03_Research/atomic_predictive_v1_operator_uncertainty_policy.json",
+        "purpose": "Declare model/source uncertainty handling before threshold reclassification.",
+        "required_before_acceptance": true,
+        "sha256": null
+      }
+    ],
+    "required_residual_row_schema": [
+      "row_id",
+      "source_row_id",
+      "lane_id",
+      "operator_id",
+      "baseline_model_id",
+      "predicted_excitation_energy_eV",
+      "delta_energy_eV",
+      "observed_excitation_energy_eV",
+      "absolute_residual_eV",
+      "model_uncertainty_eV",
+      "source_uncertainty_eV_or_rounding_bound",
+      "parameters_locked_before_evaluation",
+      "used_for_parameter_fit",
+      "source_family",
+      "claim_use"
+    ],
+    "role": "atomic_predictive_v1_operator_acceptance_harness_gate",
+    "schema_version": "1.0",
+    "status": "OPERATOR_ACCEPTANCE_HARNESS_READY_TARGETS_MISSING",
+    "target_module": {
+      "claim_boundary": "The module may emit diagnostics only until an accepted delta_uet_or_ci operator, uncertainty policy, and independent validation source exist.",
+      "exists": false,
+      "path": "Code/03_Research/Research_Atomic_Operator_V1.py",
+      "required_entrypoint": "run_atomic_operator_v1",
+      "required_return_key": "atomic_predictive_v1_operator_residual_gate",
+      "sha256": null
+    }
+  },
   "atomic_predictive_v1_operator_build_spec_gate": {
     "blocked_claims": [
       "operator build spec is an implemented predictive model",
@@ -2189,6 +2372,7 @@
     "AT20-ATOMIC-PREDICTIVE-V1-FIXED-CORRECTION-OPERATOR",
     "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-CANDIDATE-RESOLUTION",
     "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-BUILD-SPEC",
+    "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-ACCEPTANCE-HARNESS",
     "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
     "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
     "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
@@ -2198,7 +2382,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-07T09:12:07.522898+00:00",
+  "generated_at_utc": "2026-06-07T12:01:45.451156+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -5065,6 +5249,15 @@
       "status": "BUILD_SPEC_READY_IMPLEMENTATION_MISSING"
     },
     {
+      "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/atomic_predictive_v1_operator_acceptance_harness_manifest.json",
+      "sha256": "47e3103ab04aa37fd5f975b50caeed0ec38b77882feecf0e3828b2398926bf34",
+      "source": "Define the concrete repository targets and row schema required before an atomic predictive-v1 correction operator can be considered runnable.",
+      "source_rows": [
+        "Code/03_Research/Research_Atomic_Operator_V1.py"
+      ],
+      "status": "ACCEPTANCE_HARNESS_READY_TARGETS_MISSING"
+    },
+    {
       "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/external_holdouts/chianti_he_i/source_manifest.json",
       "sha256": "7b878de9328e0e0ee2a7c64560165e2c722019fba2180a7df65fcb87364b74b2",
       "source": "CHIANTI atomic database",
@@ -5197,6 +5390,7 @@
     "The atomic predictive-v1 fixed-correction operator gate defines the delta_uet_or_ci contract and records zero accepted fixed correction operators implemented.",
     "The atomic predictive-v1 operator candidate resolution gate classifies current standard, heuristic, empirical, and legacy candidates against the delta_uet_or_ci contract; current accepted correction operators remain zero.",
     "The atomic predictive-v1 operator build-spec gate defines implementation lanes, I/O, acceptance gates, forbidden shortcuts, and minimum first-build artifacts, but accepted implemented lanes remain zero.",
+    "The atomic predictive-v1 operator acceptance-harness gate names the target module, local artifacts, and residual row schema required before an operator can be accepted; target module and residual artifacts remain missing.",
     "The atomic predictive-v1 diagnostic report records same-source-family level and wavelength predictions with diagnostic threshold checks, but validation remains blocked by the missing fixed CI/UET correction operator, non-NIST source package, and validation-ready thresholds.",
     "The helium external-holdout lineage decision gate classifies CHIANTI He I as cross-check-only because the captured metadata records NIST ASD lineage.",
     "The atomic predictive-model blueprint gate turns the build path into seven auditable steps; source lineage is now decided as cross-check-only, while parameter lock and thresholds remain partial until the missing generative model and validation-ready uncertainty policy exist.",
@@ -5226,6 +5420,10 @@
     "atomic_predictive_v1_fixed_correction_accepted_operators": 0,
     "atomic_predictive_v1_fixed_correction_blocking_checks": 1,
     "atomic_predictive_v1_missing_future_locked_parameters": 1,
+    "atomic_predictive_v1_operator_acceptance_harness_blocking_checks": 5,
+    "atomic_predictive_v1_operator_acceptance_harness_missing_artifacts": 3,
+    "atomic_predictive_v1_operator_acceptance_harness_schema_fields": 15,
+    "atomic_predictive_v1_operator_acceptance_harness_target_module_present": false,
     "atomic_predictive_v1_operator_build_spec_blocking_checks": 1,
     "atomic_predictive_v1_operator_build_spec_lanes": 2,
     "atomic_predictive_v1_operator_build_spec_missing_lanes": 2,
