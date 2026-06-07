@@ -2185,7 +2185,8 @@
         "evidence": {
           "diagnostic_threshold_pass_count": 3,
           "threshold_status": "THRESHOLD_MANIFEST_READY_DIAGNOSTIC_ONLY_VALIDATION_BLOCKED",
-          "validation_ready_threshold_count": 0
+          "validation_ready_threshold_count": 0,
+          "validation_reclassification_blocker_count": 4
         },
         "requirement": "At least one validation-ready threshold must be declared before publication claims.",
         "status": "BLOCKING"
@@ -2213,7 +2214,8 @@
       "publication_check_pass_count": 2,
       "residual_improved_row_count": 3,
       "residual_row_count": 3,
-      "validation_ready_threshold_count": 0
+      "validation_ready_threshold_count": 0,
+      "validation_reclassification_blocker_count": 4
     },
     "next_required_artifacts": [
       "accepted fixed CI/correlated or explicit UET correction operator",
@@ -2260,7 +2262,7 @@
       "manifest_id": "AT20-PREDICTIVE-V1-THRESHOLD-MANIFEST",
       "path": "Data/03_Research/atomic_predictive_v1_threshold_manifest.json",
       "selected_lane_id": "helium_quantum_defect_then_ci_or_uet_correction_v1",
-      "sha256": "1efc055a5f4c1ded5169bc8f4a3beaebe8865b3c1e9d76058a961c81c5bbafdc",
+      "sha256": "666876733f88932fa73e216ed20f5803b47d13bbafd88d68f13dbecbedc74adb",
       "validation_use_allowed": false
     },
     "metrics": {
@@ -2271,7 +2273,9 @@
       "max_wavelength_residual_ppm": 80.24697624904677,
       "parameter_lock_missing_future_parameter_count": 1,
       "threshold_count": 3,
-      "validation_ready_threshold_count": 0
+      "validation_ready_threshold_count": 0,
+      "validation_reclassification_blocker_count": 4,
+      "validation_reclassification_requirement_count": 4
     },
     "required_for_validation_upgrade": [
       "official/source uncertainty replacement for current transcription-rounding bounds",
@@ -2318,6 +2322,32 @@
         "threshold_value": 1000.0,
         "unit": "ppm",
         "validation_ready": false
+      }
+    ],
+    "validation_reclassification_blockers": [
+      {
+        "required_artifact": "source uncertainty capture package for He I level and wavelength holdouts",
+        "requirement": "Replace current transcription-rounding bounds with official/source uncertainty or a source-page uncertainty policy.",
+        "requirement_id": "THRESHOLD-VALIDATION-SOURCE-UNCERTAINTY",
+        "status": "BLOCKING"
+      },
+      {
+        "required_artifact": "accepted delta_uet_or_ci operator residual artifact",
+        "requirement": "Provide a fixed CI/correlated or explicit UET correction operator before validation thresholds can apply.",
+        "requirement_id": "THRESHOLD-VALIDATION-OPERATOR",
+        "status": "BLOCKING"
+      },
+      {
+        "required_artifact": "non-NIST independent He I holdout source package with hashes and locators",
+        "requirement": "Use a non-NIST independent He I holdout source package for validation rows.",
+        "requirement_id": "THRESHOLD-VALIDATION-INDEPENDENT-SOURCE",
+        "status": "BLOCKING"
+      },
+      {
+        "required_artifact": "threshold manifest revision with validation_ready=true rows and lock timestamp",
+        "requirement": "Reclassify thresholds from diagnostic to validation-ready before evaluating independent rows.",
+        "requirement_id": "THRESHOLD-VALIDATION-PREREGISTRATION",
+        "status": "BLOCKING"
       }
     ]
   },
@@ -2635,7 +2665,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-07T13:15:29.918178+00:00",
+  "generated_at_utc": "2026-06-07T13:26:31.964772+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -5471,7 +5501,7 @@
     },
     {
       "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/atomic_predictive_v1_threshold_manifest.json",
-      "sha256": "1efc055a5f4c1ded5169bc8f4a3beaebe8865b3c1e9d76058a961c81c5bbafdc",
+      "sha256": "666876733f88932fa73e216ed20f5803b47d13bbafd88d68f13dbecbedc74adb",
       "source": "Declare diagnostic residual thresholds for the first atomic predictive-model candidate before any future independent validation run.",
       "source_rows": [
         "HE-QD-LEVEL-ABS-EV-DIAGNOSTIC",

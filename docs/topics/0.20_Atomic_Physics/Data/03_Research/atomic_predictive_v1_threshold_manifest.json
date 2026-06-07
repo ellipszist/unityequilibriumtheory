@@ -51,6 +51,32 @@
     "non-NIST independent He I holdout source package",
     "threshold reclassification from diagnostic to validation-ready before independent rows are evaluated"
   ],
+  "validation_reclassification_requirements": [
+    {
+      "requirement_id": "THRESHOLD-VALIDATION-SOURCE-UNCERTAINTY",
+      "requirement": "Replace current transcription-rounding bounds with official/source uncertainty or a source-page uncertainty policy.",
+      "current_status": "MISSING",
+      "required_artifact": "source uncertainty capture package for He I level and wavelength holdouts"
+    },
+    {
+      "requirement_id": "THRESHOLD-VALIDATION-OPERATOR",
+      "requirement": "Provide a fixed CI/correlated or explicit UET correction operator before validation thresholds can apply.",
+      "current_status": "MISSING",
+      "required_artifact": "accepted delta_uet_or_ci operator residual artifact"
+    },
+    {
+      "requirement_id": "THRESHOLD-VALIDATION-INDEPENDENT-SOURCE",
+      "requirement": "Use a non-NIST independent He I holdout source package for validation rows.",
+      "current_status": "MISSING",
+      "required_artifact": "non-NIST independent He I holdout source package with hashes and locators"
+    },
+    {
+      "requirement_id": "THRESHOLD-VALIDATION-PREREGISTRATION",
+      "requirement": "Reclassify thresholds from diagnostic to validation-ready before evaluating independent rows.",
+      "current_status": "MISSING",
+      "required_artifact": "threshold manifest revision with validation_ready=true rows and lock timestamp"
+    }
+  ],
   "blocked_claims": [
     "current diagnostic threshold pass proves independent helium prediction",
     "thresholds derived for same-source-family reruns can validate non-NIST rows without reclassification",

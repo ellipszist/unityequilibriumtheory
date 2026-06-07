@@ -3746,6 +3746,18 @@ def build_atomic_predictive_v1_threshold_gate(
     diagnostic_pass_count = sum(1 for row in threshold_rows if row["comparison_status"] == "PASS_DIAGNOSTIC")
     diagnostic_fail_count = sum(1 for row in threshold_rows if row["comparison_status"] == "FAIL_DIAGNOSTIC")
     validation_ready_count = sum(1 for row in threshold_rows if row["validation_ready"])
+    validation_reclassification_requirements = threshold_manifest.get(
+        "validation_reclassification_requirements", []
+    )
+    validation_reclassification_blockers = [
+        {
+            "requirement_id": row.get("requirement_id"),
+            "requirement": row.get("requirement"),
+            "status": "BLOCKING" if row.get("current_status") == "MISSING" else row.get("current_status"),
+            "required_artifact": row.get("required_artifact"),
+        }
+        for row in validation_reclassification_requirements
+    ]
     status = (
         "THRESHOLD_DIAGNOSTIC_FAIL"
         if diagnostic_fail_count
@@ -3766,11 +3778,16 @@ def build_atomic_predictive_v1_threshold_gate(
             "validation_use_allowed": threshold_manifest.get("threshold_policy", {}).get("validation_use_allowed"),
         },
         "threshold_rows": threshold_rows,
+        "validation_reclassification_blockers": validation_reclassification_blockers,
         "metrics": {
             "threshold_count": len(threshold_rows),
             "diagnostic_pass_count": diagnostic_pass_count,
             "diagnostic_fail_count": diagnostic_fail_count,
             "validation_ready_threshold_count": validation_ready_count,
+            "validation_reclassification_requirement_count": len(validation_reclassification_requirements),
+            "validation_reclassification_blocker_count": sum(
+                1 for row in validation_reclassification_blockers if row["status"] == "BLOCKING"
+            ),
             "parameter_lock_missing_future_parameter_count": atomic_predictive_v1_parameter_lock_gate["metrics"][
                 "missing_future_locked_parameter_count"
             ],
@@ -4630,6 +4647,9 @@ def build_atomic_predictive_v1_publication_readiness_gate(
                 "validation_ready_threshold_count": atomic_predictive_v1_threshold_gate["metrics"][
                     "validation_ready_threshold_count"
                 ],
+                "validation_reclassification_blocker_count": atomic_predictive_v1_threshold_gate["metrics"][
+                    "validation_reclassification_blocker_count"
+                ],
                 "diagnostic_threshold_pass_count": atomic_predictive_v1_threshold_gate["metrics"][
                     "diagnostic_pass_count"
                 ],
@@ -4679,6 +4699,9 @@ def build_atomic_predictive_v1_publication_readiness_gate(
             ],
             "validation_ready_threshold_count": atomic_predictive_v1_threshold_gate["metrics"][
                 "validation_ready_threshold_count"
+            ],
+            "validation_reclassification_blocker_count": atomic_predictive_v1_threshold_gate["metrics"][
+                "validation_reclassification_blocker_count"
             ],
             "independent_validation_allowed": helium_external_holdout_lineage_decision_gate["metrics"][
                 "independent_validation_allowed"
