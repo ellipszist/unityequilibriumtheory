@@ -96,7 +96,10 @@ def load_json(path):
         return json.load(f)
 
 
-def run_atomic_operator_v1_export(helium_quantum_defect_holdout_gate):
+def run_atomic_operator_v1_export(
+    helium_quantum_defect_holdout_gate,
+    helium_excited_hydrogenic_residual_gate,
+):
     module_path = TOPIC_DIR / "Code" / "03_Research" / "Research_Atomic_Operator_V1.py"
     spec = importlib.util.spec_from_file_location("atomic_operator_v1", module_path)
     if spec is None or spec.loader is None:
@@ -105,6 +108,7 @@ def run_atomic_operator_v1_export(helium_quantum_defect_holdout_gate):
     spec.loader.exec_module(module)
     return module.run_atomic_operator_v1(
         helium_holdout_predictions=helium_quantum_defect_holdout_gate.get("predictions", []),
+        baseline_constants=helium_excited_hydrogenic_residual_gate.get("constants", {}),
         write_artifact_path=ATOMIC_PREDICTIVE_V1_OPERATOR_RESIDUAL_ROWS_PATH,
     )
 
@@ -5827,7 +5831,8 @@ def run_rydberg_analysis():
         atomic_predictive_v1_operator_candidate_resolution_gate,
     )
     atomic_predictive_v1_operator_residual_gate = run_atomic_operator_v1_export(
-        helium_quantum_defect_holdout_gate
+        helium_quantum_defect_holdout_gate,
+        helium_excited_hydrogenic_residual_gate,
     )["atomic_predictive_v1_operator_residual_gate"]
     atomic_predictive_v1_operator_acceptance_harness_gate = (
         build_atomic_predictive_v1_operator_acceptance_harness_gate(
@@ -6286,6 +6291,9 @@ def run_rydberg_analysis():
             ),
             "atomic_predictive_v1_operator_residual_rows": (
                 atomic_predictive_v1_operator_residual_gate["metrics"]["residual_row_count"]
+            ),
+            "atomic_predictive_v1_operator_residual_delta_populated_rows": (
+                atomic_predictive_v1_operator_residual_gate["metrics"]["delta_energy_populated_count"]
             ),
             "atomic_predictive_v1_operator_residual_accepted_operators": (
                 atomic_predictive_v1_operator_residual_gate["metrics"]["accepted_operator_count"]

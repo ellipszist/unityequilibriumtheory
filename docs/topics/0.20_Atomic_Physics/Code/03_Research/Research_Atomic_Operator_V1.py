@@ -13,18 +13,41 @@ import json
 from pathlib import Path
 
 
-def _diagnostic_residual_rows(helium_holdout_predictions: list[dict] | None) -> list[dict]:
+def _diagnostic_residual_rows(
+    helium_holdout_predictions: list[dict] | None,
+    baseline_constants: dict | None,
+) -> list[dict]:
+    baseline_constants = baseline_constants or {}
+    rydberg_energy_eV = baseline_constants.get("R_infinity_energy_eV")
+    first_ionization_energy_eV = baseline_constants.get("first_ionization_energy_eV")
     rows = []
     for row in helium_holdout_predictions or []:
+        n = row["outer_principal_quantum_number"]
+        baseline_outer_binding_eV = (
+            rydberg_energy_eV / (n * n) if rydberg_energy_eV is not None else None
+        )
+        baseline_excitation_energy_eV = (
+            first_ionization_energy_eV - baseline_outer_binding_eV
+            if first_ionization_energy_eV is not None and baseline_outer_binding_eV is not None
+            else None
+        )
+        delta_energy_eV = (
+            row["predicted_excitation_energy_eV"] - baseline_excitation_energy_eV
+            if baseline_excitation_energy_eV is not None
+            else None
+        )
         rows.append(
             {
                 "row_id": f"operator_v1_diag_{row['holdout_id']}",
                 "source_row_id": row["holdout_id"],
                 "lane_id": "helium_quantum_defect_same_source_family_holdout",
                 "operator_id": "empirical_quantum_defect_diagnostic_not_delta_uet_or_ci",
-                "baseline_model_id": "source_calibrated_quantum_defect_same_series_mean",
+                "baseline_model_id": "zero_quantum_defect_hydrogenic_baseline",
+                "diagnostic_model_id": "source_calibrated_quantum_defect_same_series_mean",
+                "baseline_predicted_excitation_energy_eV": baseline_excitation_energy_eV,
+                "baseline_outer_binding_eV": baseline_outer_binding_eV,
                 "predicted_excitation_energy_eV": row["predicted_excitation_energy_eV"],
-                "delta_energy_eV": None,
+                "delta_energy_eV": delta_energy_eV,
                 "observed_excitation_energy_eV": row["observed_excitation_energy_eV"],
                 "absolute_residual_eV": row["absolute_residual_eV"],
                 "model_uncertainty_eV": row.get("predicted_excitation_model_uncertainty_eV"),
@@ -39,6 +62,10 @@ def _diagnostic_residual_rows(helium_holdout_predictions: list[dict] | None) -> 
                     "model": row.get("predicted_excitation_model_uncertainty_basis"),
                     "source": "excitation-energy uncertainty converted from source transcription bound",
                 },
+                "delta_energy_basis": (
+                    "diagnostic quantum-defect prediction minus zero-quantum-defect hydrogenic baseline; "
+                    "not accepted as delta_uet_or_ci"
+                ),
             }
         )
     return rows
@@ -46,10 +73,11 @@ def _diagnostic_residual_rows(helium_holdout_predictions: list[dict] | None) -> 
 
 def run_atomic_operator_v1(
     helium_holdout_predictions: list[dict] | None = None,
+    baseline_constants: dict | None = None,
     write_artifact_path: str | Path | None = None,
 ) -> dict:
     """Return the current operator-v1 gate without accepting a correction operator."""
-    residual_rows = _diagnostic_residual_rows(helium_holdout_predictions)
+    residual_rows = _diagnostic_residual_rows(helium_holdout_predictions, baseline_constants)
     residual_artifact = {
         "schema_version": "1.0",
         "artifact_id": "atomic_predictive_v1_operator_residual_rows",
@@ -68,6 +96,9 @@ def run_atomic_operator_v1(
             "used_for_parameter_fit_count": sum(1 for row in residual_rows if row["used_for_parameter_fit"]),
             "diagnostic_only_row_count": sum(
                 1 for row in residual_rows if row["claim_use"] == "diagnostic_only_not_validation"
+            ),
+            "delta_energy_populated_count": sum(
+                1 for row in residual_rows if row["delta_energy_eV"] is not None
             ),
         },
         "claim_boundary": (

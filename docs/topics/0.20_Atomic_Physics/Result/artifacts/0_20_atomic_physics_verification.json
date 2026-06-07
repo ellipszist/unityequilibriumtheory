@@ -1454,7 +1454,7 @@
             "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
             "purpose": "Store source-row residuals emitted by the target module.",
             "required_before_acceptance": true,
-            "sha256": "7be3ff30ae9fe4a5a55fe0ab1f80fdd3e2b40fa8dbd2303bdc728a3097a94cc6"
+            "sha256": "4129db488abd790c5e0854f2f0dbed3ce61513203c1bf0514c9b7eff784a7fed"
           },
           {
             "artifact_id": "operator_uncertainty_policy",
@@ -1575,7 +1575,7 @@
         "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
         "purpose": "Store source-row residuals emitted by the target module.",
         "required_before_acceptance": true,
-        "sha256": "7be3ff30ae9fe4a5a55fe0ab1f80fdd3e2b40fa8dbd2303bdc728a3097a94cc6"
+        "sha256": "4129db488abd790c5e0854f2f0dbed3ce61513203c1bf0514c9b7eff784a7fed"
       },
       {
         "artifact_id": "operator_uncertainty_policy",
@@ -1607,7 +1607,7 @@
       "accepted_as_delta_uet_or_ci": false,
       "exists": true,
       "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
-      "sha256": "7be3ff30ae9fe4a5a55fe0ab1f80fdd3e2b40fa8dbd2303bdc728a3097a94cc6",
+      "sha256": "4129db488abd790c5e0854f2f0dbed3ce61513203c1bf0514c9b7eff784a7fed",
       "status": "DIAGNOSTIC_RESIDUAL_ROWS_EXPORTED_OPERATOR_NOT_ACCEPTED"
     },
     "role": "atomic_predictive_v1_operator_acceptance_harness_gate",
@@ -1621,7 +1621,7 @@
       "required_entrypoint": "run_atomic_operator_v1",
       "required_return_key": "atomic_predictive_v1_operator_residual_gate",
       "return_key_present": true,
-      "sha256": "6a53f08d668ad618fc4a100a7e93be06cb6c99b5924ac6fa406cb3a82ae263a8"
+      "sha256": "eeb2f2bc03f9647025f399c2213bf14d72bafac9cf5d7f9b637f3c27b08d7ccd"
     }
   },
   "atomic_predictive_v1_operator_build_spec_gate": {
@@ -1941,6 +1941,7 @@
     "claim_class": "operator_skeleton_or_diagnostic_rows_no_validation_claim",
     "metrics": {
       "accepted_operator_count": 0,
+      "delta_energy_populated_count": 3,
       "diagnostic_only_row_count": 3,
       "parameters_locked_before_evaluation_count": 3,
       "residual_row_count": 3,
@@ -1955,9 +1956,13 @@
     "residual_rows": [
       {
         "absolute_residual_eV": 0.0,
-        "baseline_model_id": "source_calibrated_quantum_defect_same_series_mean",
+        "baseline_model_id": "zero_quantum_defect_hydrogenic_baseline",
+        "baseline_outer_binding_eV": 3.401423279988721,
+        "baseline_predicted_excitation_energy_eV": 21.18596573101128,
         "claim_use": "diagnostic_only_not_validation",
-        "delta_energy_eV": null,
+        "delta_energy_basis": "diagnostic quantum-defect prediction minus zero-quantum-defect hydrogenic baseline; not accepted as delta_uet_or_ci",
+        "delta_energy_eV": 0.032057292742159404,
+        "diagnostic_model_id": "source_calibrated_quantum_defect_same_series_mean",
         "lane_id": "helium_quantum_defect_same_source_family_holdout",
         "model_uncertainty_eV": 0.02068097823932508,
         "observed_excitation_energy_eV": 21.21802302375344,
@@ -1978,9 +1983,13 @@
       },
       {
         "absolute_residual_eV": 0.0018526170410844145,
-        "baseline_model_id": "source_calibrated_quantum_defect_same_series_mean",
+        "baseline_model_id": "zero_quantum_defect_hydrogenic_baseline",
+        "baseline_outer_binding_eV": 1.511743679994987,
+        "baseline_predicted_excitation_energy_eV": 23.075645331005013,
         "claim_use": "diagnostic_only_not_validation",
-        "delta_energy_eV": null,
+        "delta_energy_basis": "diagnostic quantum-defect prediction minus zero-quantum-defect hydrogenic baseline; not accepted as delta_uet_or_ci",
+        "delta_energy_eV": 0.009520919475175305,
+        "diagnostic_model_id": "source_calibrated_quantum_defect_same_series_mean",
         "lane_id": "helium_quantum_defect_same_source_family_holdout",
         "model_uncertainty_eV": 0.02068097823932508,
         "observed_excitation_energy_eV": 23.087018867521273,
@@ -2001,9 +2010,13 @@
       },
       {
         "absolute_residual_eV": 0.0010158157974480275,
-        "baseline_model_id": "source_calibrated_quantum_defect_same_series_mean",
+        "baseline_model_id": "zero_quantum_defect_hydrogenic_baseline",
+        "baseline_outer_binding_eV": 0.8503558199971802,
+        "baseline_predicted_excitation_energy_eV": 23.73703319100282,
         "claim_use": "diagnostic_only_not_validation",
-        "delta_energy_eV": null,
+        "delta_energy_basis": "diagnostic quantum-defect prediction minus zero-quantum-defect hydrogenic baseline; not accepted as delta_uet_or_ci",
+        "delta_energy_eV": 0.004021391015712084,
+        "diagnostic_model_id": "source_calibrated_quantum_defect_same_series_mean",
         "lane_id": "helium_quantum_defect_same_source_family_holdout",
         "model_uncertainty_eV": 0.02068097823932508,
         "observed_excitation_energy_eV": 23.74207039781598,
@@ -2498,7 +2511,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-07T12:39:24.088033+00:00",
+  "generated_at_utc": "2026-06-07T12:56:28.731989+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -5550,6 +5563,7 @@
     "atomic_predictive_v1_operator_candidate_rejected_existing": 5,
     "atomic_predictive_v1_operator_candidate_resolutions": 7,
     "atomic_predictive_v1_operator_residual_accepted_operators": 0,
+    "atomic_predictive_v1_operator_residual_delta_populated_rows": 3,
     "atomic_predictive_v1_operator_residual_rows": 3,
     "atomic_predictive_v1_parameter_lock_policy_fail_count": 0,
     "atomic_predictive_v1_report_level_holdout_predictions": 3,
