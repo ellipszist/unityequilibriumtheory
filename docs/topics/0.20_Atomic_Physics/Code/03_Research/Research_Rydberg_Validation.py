@@ -4524,37 +4524,73 @@ def build_atomic_predictive_v1_operator_implementation_provenance_gate(
     atomic_predictive_v1_fixed_correction_operator_gate: dict,
 ) -> dict:
     evidence_rows = []
+    accepted_operator_count = atomic_predictive_v1_fixed_correction_operator_gate["metrics"][
+        "accepted_operator_count"
+    ]
+    harness_metrics = atomic_predictive_v1_operator_acceptance_harness_gate["metrics"]
     for row in operator_implementation_provenance_manifest.get("required_provenance_evidence", []):
+        evidence_id = row.get("evidence_id")
         current_status = row.get("current_status")
         evidence_path = row.get("evidence_path")
         evidence_file = TOPIC_DIR / evidence_path if evidence_path else None
         evidence_exists = bool(evidence_file and evidence_file.exists())
         status = "BLOCKING" if current_status == "MISSING" else current_status
-        if row.get("evidence_id") == "PROV-03":
+        blocker_reason = None
+        if evidence_id == "PROV-01":
+            if accepted_operator_count > 0 and evidence_exists:
+                status = "PRESENT"
+            else:
+                status = "BLOCKING_CANDIDATE_SOURCE_ONLY"
+                blocker_reason = "target module is present, but no accepted delta_uet_or_ci operator class exists"
+        elif evidence_id == "PROV-02":
+            if accepted_operator_count > 0 and evidence_exists:
+                status = "PRESENT"
+            else:
+                status = "BLOCKING_EMPTY_ACCEPTED_PARAMETER_SET"
+                blocker_reason = "operator parameter manifest exists, but accepted operator parameter set remains empty"
+        elif evidence_id == "PROV-03":
             status = (
                 "PRESENT"
                 if evidence_exists
                 and atomic_predictive_v1_operator_training_holdout_split_gate["status"]
                 == "TRAINING_HOLDOUT_SPLIT_READY_DIAGNOSTIC_ONLY"
-                else "BLOCKING"
+                else "BLOCKING_SPLIT_EVIDENCE_MISSING"
             )
+        elif evidence_id == "PROV-04":
+            if accepted_operator_count > 0 and evidence_exists:
+                status = "PRESENT"
+            else:
+                status = "BLOCKING_DIAGNOSTIC_RESIDUALS_ONLY"
+                blocker_reason = "residual rows exist, but they are emitted by the diagnostic wrapper, not an accepted operator"
+        elif evidence_id == "PROV-05":
+            if accepted_operator_count > 0 and evidence_exists:
+                status = "PRESENT"
+            else:
+                status = "BLOCKING_POLICY_ONLY_ACCEPTED_UNCERTAINTY_MISSING"
+                blocker_reason = "uncertainty policy exists, but uncertainty is not sourced from an accepted operator"
+        if not evidence_exists and evidence_path:
+            status = "BLOCKING_EVIDENCE_PATH_MISSING"
+            blocker_reason = "declared evidence path does not exist"
         evidence_rows.append(
             {
-                "evidence_id": row.get("evidence_id"),
+                "evidence_id": evidence_id,
                 "requirement": row.get("requirement"),
                 "status": status,
                 "manifest_status": current_status,
                 "evidence_path": evidence_path,
                 "evidence_exists": evidence_exists,
                 "evidence_sha256": file_sha256(evidence_file) if evidence_exists else None,
+                "blocker_reason": blocker_reason,
                 "required_artifact": row.get("required_artifact"),
             }
         )
-    blocking_count = sum(1 for row in evidence_rows if row["status"] == "BLOCKING")
+    blocking_count = sum(1 for row in evidence_rows if row["status"].startswith("BLOCKING"))
     ready_count = sum(1 for row in evidence_rows if row["status"] in {"PASS", "READY", "PRESENT"})
-    accepted_operator_count = atomic_predictive_v1_fixed_correction_operator_gate["metrics"][
-        "accepted_operator_count"
-    ]
+    candidate_evidence_count = sum(
+        1
+        for row in evidence_rows
+        if row["evidence_exists"] and row["status"].startswith("BLOCKING")
+    )
     status = (
         "PROVENANCE_READY_OPERATOR_ACCEPTED"
         if accepted_operator_count > 0 and blocking_count == 0
@@ -4581,10 +4617,13 @@ def build_atomic_predictive_v1_operator_implementation_provenance_gate(
             "required_provenance_evidence_count": len(evidence_rows),
             "provenance_ready_count": ready_count,
             "provenance_blocking_count": blocking_count,
+            "provenance_candidate_evidence_count": candidate_evidence_count,
             "accepted_fixed_correction_operator_count": accepted_operator_count,
-            "operator_acceptance_decision_blocking_count": atomic_predictive_v1_operator_acceptance_harness_gate[
-                "metrics"
-            ]["operator_acceptance_decision_blocking_count"],
+            "operator_acceptance_decision_blocking_count": harness_metrics[
+                "operator_acceptance_decision_blocking_count"
+            ],
+            "operator_residual_rows_present": harness_metrics["residual_rows_present"],
+            "operator_uncertainty_policy_present": harness_metrics["uncertainty_policy_present"],
         },
         "blocked_claims": [
             "diagnostic quantum-defect wrapper is implementation provenance",
@@ -4592,7 +4631,7 @@ def build_atomic_predictive_v1_operator_implementation_provenance_gate(
             "operator schema readiness proves delta_uet_or_ci implementation",
         ],
         "next_required_artifacts": [
-            row["required_artifact"] for row in evidence_rows if row["status"] == "BLOCKING"
+            row["required_artifact"] for row in evidence_rows if row["status"].startswith("BLOCKING")
         ],
         "claim_boundary": operator_implementation_provenance_manifest.get("claim_boundary"),
     }
