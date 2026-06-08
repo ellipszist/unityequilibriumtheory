@@ -64,6 +64,15 @@ ATOMIC_PREDICTIVE_V1_OPERATOR_BUILD_SPEC_MANIFEST_PATH = (
 ATOMIC_PREDICTIVE_V1_OPERATOR_ACCEPTANCE_HARNESS_MANIFEST_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_acceptance_harness_manifest.json"
 )
+ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETERS_PATH = (
+    TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_parameters.json"
+)
+ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETER_ACCEPTANCE_PREFLIGHT_PATH = (
+    TOPIC_DIR
+    / "Data"
+    / "03_Research"
+    / "atomic_predictive_v1_operator_parameter_acceptance_preflight.json"
+)
 ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_PROVENANCE_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_implementation_provenance.json"
 )
@@ -4463,6 +4472,176 @@ def build_atomic_predictive_v1_operator_acceptance_harness_gate(
     }
 
 
+def build_atomic_predictive_v1_operator_parameter_acceptance_preflight_gate(
+    operator_parameter_preflight_manifest: dict,
+    operator_parameters_manifest: dict,
+) -> dict:
+    parameter_sets = operator_parameters_manifest.get("parameter_sets", [])
+    required_set_fields = operator_parameter_preflight_manifest.get("required_parameter_set_fields", [])
+    required_parameter_fields = operator_parameter_preflight_manifest.get("required_parameter_fields", [])
+    allowed_operator_classes = set(operator_parameter_preflight_manifest.get("allowed_operator_classes", []))
+    forbidden_sources = set(operator_parameter_preflight_manifest.get("forbidden_parameter_sources", []))
+    parameter_set_rows = []
+    missing_set_field_rows = []
+    missing_parameter_field_rows = []
+    operator_class_failures = []
+    lock_failures = []
+    forbidden_source_policy_failures = []
+    for parameter_set in parameter_sets:
+        parameter_set_id = parameter_set.get("parameter_set_id")
+        missing_set_fields = [field for field in required_set_fields if field not in parameter_set]
+        if missing_set_fields:
+            missing_set_field_rows.append(
+                {"parameter_set_id": parameter_set_id, "missing_fields": missing_set_fields}
+            )
+        if parameter_set.get("operator_id") != "delta_uet_or_ci" or parameter_set.get("operator_class") not in (
+            allowed_operator_classes
+        ):
+            operator_class_failures.append(
+                {
+                    "parameter_set_id": parameter_set_id,
+                    "operator_id": parameter_set.get("operator_id"),
+                    "operator_class": parameter_set.get("operator_class"),
+                }
+            )
+        if parameter_set.get("locked_before_holdout_evaluation") is not True:
+            lock_failures.append(
+                {
+                    "parameter_set_id": parameter_set_id,
+                    "locked_before_holdout_evaluation": parameter_set.get(
+                        "locked_before_holdout_evaluation"
+                    ),
+                    "lock_timestamp_utc": parameter_set.get("lock_timestamp_utc"),
+                }
+            )
+        declared_forbidden_rows = set(parameter_set.get("forbidden_source_rows", []))
+        if not forbidden_sources.issubset(declared_forbidden_rows):
+            forbidden_source_policy_failures.append(
+                {
+                    "parameter_set_id": parameter_set_id,
+                    "missing_forbidden_sources": sorted(forbidden_sources - declared_forbidden_rows),
+                }
+            )
+        for parameter in parameter_set.get("parameters", []):
+            missing_parameter_fields = [
+                field for field in required_parameter_fields if field not in parameter
+            ]
+            if missing_parameter_fields:
+                missing_parameter_field_rows.append(
+                    {
+                        "parameter_set_id": parameter_set_id,
+                        "parameter_id": parameter.get("parameter_id"),
+                        "missing_fields": missing_parameter_fields,
+                    }
+                )
+        parameter_set_rows.append(
+            {
+                "parameter_set_id": parameter_set_id,
+                "operator_id": parameter_set.get("operator_id"),
+                "operator_class": parameter_set.get("operator_class"),
+                "parameter_count": len(parameter_set.get("parameters", [])),
+                "locked_before_holdout_evaluation": parameter_set.get(
+                    "locked_before_holdout_evaluation"
+                ),
+                "claim_use": parameter_set.get("claim_use"),
+            }
+        )
+    checks = [
+        {
+            "check_id": "PARAM-PREFLIGHT-01",
+            "requirement": "At least one parameter set must be present before PROV-02 can be satisfied.",
+            "status": "PASS" if parameter_sets else "BLOCKING_ACCEPTED_PARAMETER_SET_MISSING",
+            "evidence": {"parameter_set_count": len(parameter_sets)},
+        },
+        {
+            "check_id": "PARAM-PREFLIGHT-02",
+            "requirement": "Every parameter set must identify operator_id=delta_uet_or_ci and a permitted operator class.",
+            "status": "PASS" if parameter_sets and not operator_class_failures else "BLOCKING_OPERATOR_CLASS_MISSING",
+            "evidence": operator_class_failures,
+        },
+        {
+            "check_id": "PARAM-PREFLIGHT-03",
+            "requirement": "Every parameter and parameter set must carry required typed/unit/source fields.",
+            "status": (
+                "PASS"
+                if parameter_sets and not missing_set_field_rows and not missing_parameter_field_rows
+                else "BLOCKING_PARAMETER_FIELDS_MISSING"
+            ),
+            "evidence": {
+                "missing_parameter_set_fields": missing_set_field_rows,
+                "missing_parameter_fields": missing_parameter_field_rows,
+            },
+        },
+        {
+            "check_id": "PARAM-PREFLIGHT-04",
+            "requirement": "The parameter set must be locked before holdout or CHIANTI rows are evaluated.",
+            "status": "PASS" if parameter_sets and not lock_failures else "BLOCKING_LOCK_RULE_UNSATISFIED",
+            "evidence": lock_failures,
+        },
+        {
+            "check_id": "PARAM-PREFLIGHT-05",
+            "requirement": "Holdout and CHIANTI rows must be forbidden parameter sources.",
+            "status": (
+                "PASS"
+                if parameter_sets and not forbidden_source_policy_failures
+                else "BLOCKING_FORBIDDEN_SOURCE_POLICY_INCOMPLETE"
+            ),
+            "evidence": forbidden_source_policy_failures,
+        },
+    ]
+    blocking_count = sum(1 for check in checks if check["status"].startswith("BLOCKING"))
+    status = (
+        "PARAMETER_PREFLIGHT_READY_FOR_OPERATOR_ACCEPTANCE"
+        if parameter_sets and blocking_count == 0
+        else "PARAMETER_PREFLIGHT_BLOCKING_ACCEPTED_PARAMETER_SET"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_predictive_v1_operator_parameter_acceptance_preflight_gate",
+        "status": status,
+        "claim_class": "operator_parameter_preflight_no_validation_claim",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-PARAMETER-PREFLIGHT",
+        "manifest": {
+            "path": str(
+                ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETER_ACCEPTANCE_PREFLIGHT_PATH.relative_to(
+                    TOPIC_DIR
+                )
+            ).replace("\\", "/"),
+            "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETER_ACCEPTANCE_PREFLIGHT_PATH),
+            "manifest_id": operator_parameter_preflight_manifest.get("manifest_id"),
+            "status": operator_parameter_preflight_manifest.get("status"),
+        },
+        "operator_parameter_manifest": {
+            "path": str(ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETERS_PATH.relative_to(TOPIC_DIR)).replace(
+                "\\", "/"
+            ),
+            "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETERS_PATH),
+            "manifest_id": operator_parameters_manifest.get("manifest_id"),
+            "status": operator_parameters_manifest.get("status"),
+            "accepted_operator_class": operator_parameters_manifest.get("accepted_operator_class"),
+        },
+        "checks": checks,
+        "parameter_sets": parameter_set_rows,
+        "metrics": {
+            "parameter_set_count": len(parameter_sets),
+            "parameter_count": sum(len(row.get("parameters", [])) for row in parameter_sets),
+            "preflight_check_count": len(checks),
+            "preflight_blocking_count": blocking_count,
+            "missing_parameter_set_field_row_count": len(missing_set_field_rows),
+            "missing_parameter_field_row_count": len(missing_parameter_field_rows),
+            "operator_class_failure_count": len(operator_class_failures),
+            "lock_failure_count": len(lock_failures),
+            "forbidden_source_policy_failure_count": len(forbidden_source_policy_failures),
+        },
+        "blocked_claims": operator_parameter_preflight_manifest.get("blocked_claims", []),
+        "next_required_artifacts": [
+            "Data/03_Research/atomic_predictive_v1_operator_parameters.json with non-empty parameter_sets",
+            "parameter rows with typed values, units, source hashes, uncertainty policy, and lock timestamp",
+        ],
+        "claim_boundary": operator_parameter_preflight_manifest.get("claim_boundary"),
+    }
+
+
 def build_atomic_predictive_v1_operator_training_holdout_split_gate(
     operator_training_holdout_split_manifest: dict,
 ) -> dict:
@@ -4520,6 +4699,7 @@ def build_atomic_predictive_v1_operator_training_holdout_split_gate(
 def build_atomic_predictive_v1_operator_implementation_provenance_gate(
     operator_implementation_provenance_manifest: dict,
     atomic_predictive_v1_operator_training_holdout_split_gate: dict,
+    atomic_predictive_v1_operator_parameter_acceptance_preflight_gate: dict,
     atomic_predictive_v1_operator_acceptance_harness_gate: dict,
     atomic_predictive_v1_fixed_correction_operator_gate: dict,
 ) -> dict:
@@ -4543,11 +4723,20 @@ def build_atomic_predictive_v1_operator_implementation_provenance_gate(
                 status = "BLOCKING_CANDIDATE_SOURCE_ONLY"
                 blocker_reason = "target module is present, but no accepted delta_uet_or_ci operator class exists"
         elif evidence_id == "PROV-02":
-            if accepted_operator_count > 0 and evidence_exists:
+            if (
+                accepted_operator_count > 0
+                and evidence_exists
+                and atomic_predictive_v1_operator_parameter_acceptance_preflight_gate["status"]
+                == "PARAMETER_PREFLIGHT_READY_FOR_OPERATOR_ACCEPTANCE"
+            ):
                 status = "PRESENT"
             else:
                 status = "BLOCKING_EMPTY_ACCEPTED_PARAMETER_SET"
-                blocker_reason = "operator parameter manifest exists, but accepted operator parameter set remains empty"
+                blocker_reason = (
+                    "operator parameter manifest exists, but accepted operator parameter set remains empty; "
+                    f"parameter preflight blockers = "
+                    f"{atomic_predictive_v1_operator_parameter_acceptance_preflight_gate['metrics']['preflight_blocking_count']}"
+                )
         elif evidence_id == "PROV-03":
             status = (
                 "PRESENT"
@@ -4624,6 +4813,16 @@ def build_atomic_predictive_v1_operator_implementation_provenance_gate(
             ],
             "operator_residual_rows_present": harness_metrics["residual_rows_present"],
             "operator_uncertainty_policy_present": harness_metrics["uncertainty_policy_present"],
+            "operator_parameter_preflight_blocking_count": (
+                atomic_predictive_v1_operator_parameter_acceptance_preflight_gate["metrics"][
+                    "preflight_blocking_count"
+                ]
+            ),
+            "operator_parameter_set_count": (
+                atomic_predictive_v1_operator_parameter_acceptance_preflight_gate["metrics"][
+                    "parameter_set_count"
+                ]
+            ),
         },
         "blocked_claims": [
             "diagnostic quantum-defect wrapper is implementation provenance",
@@ -5955,6 +6154,12 @@ def run_rydberg_analysis():
     atomic_predictive_v1_operator_acceptance_harness_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_ACCEPTANCE_HARNESS_MANIFEST_PATH
     )
+    atomic_predictive_v1_operator_parameters_manifest = load_json(
+        ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETERS_PATH
+    )
+    atomic_predictive_v1_operator_parameter_acceptance_preflight_manifest = load_json(
+        ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETER_ACCEPTANCE_PREFLIGHT_PATH
+    )
     atomic_predictive_v1_operator_implementation_provenance_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_PROVENANCE_PATH
     )
@@ -6225,10 +6430,17 @@ def run_rydberg_analysis():
             atomic_predictive_v1_operator_training_holdout_split_manifest
         )
     )
+    atomic_predictive_v1_operator_parameter_acceptance_preflight_gate = (
+        build_atomic_predictive_v1_operator_parameter_acceptance_preflight_gate(
+            atomic_predictive_v1_operator_parameter_acceptance_preflight_manifest,
+            atomic_predictive_v1_operator_parameters_manifest,
+        )
+    )
     atomic_predictive_v1_operator_implementation_provenance_gate = (
         build_atomic_predictive_v1_operator_implementation_provenance_gate(
             atomic_predictive_v1_operator_implementation_provenance_manifest,
             atomic_predictive_v1_operator_training_holdout_split_gate,
+            atomic_predictive_v1_operator_parameter_acceptance_preflight_gate,
             atomic_predictive_v1_operator_acceptance_harness_gate,
             atomic_predictive_v1_fixed_correction_operator_gate,
         )
@@ -6443,6 +6655,28 @@ def run_rydberg_analysis():
                 ],
             },
             {
+                "path": str(ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETER_ACCEPTANCE_PREFLIGHT_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETER_ACCEPTANCE_PREFLIGHT_PATH),
+                "source": atomic_predictive_v1_operator_parameter_acceptance_preflight_manifest.get("purpose"),
+                "status": atomic_predictive_v1_operator_parameter_acceptance_preflight_manifest.get("status"),
+                "source_rows": [
+                    row.get("rule_id")
+                    for row in atomic_predictive_v1_operator_parameter_acceptance_preflight_manifest.get(
+                        "required_lock_rules", []
+                    )
+                ],
+            },
+            {
+                "path": str(ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETERS_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETERS_PATH),
+                "source": atomic_predictive_v1_operator_parameters_manifest.get("purpose"),
+                "status": atomic_predictive_v1_operator_parameters_manifest.get("status"),
+                "source_rows": [
+                    row.get("parameter_set_id")
+                    for row in atomic_predictive_v1_operator_parameters_manifest.get("parameter_sets", [])
+                ],
+            },
+            {
                 "path": str(ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_PROVENANCE_PATH.relative_to(ROOT)).replace("\\", "/"),
                 "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_PROVENANCE_PATH),
                 "source": atomic_predictive_v1_operator_implementation_provenance_manifest.get("purpose"),
@@ -6521,6 +6755,7 @@ def run_rydberg_analysis():
             "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-CANDIDATE-RESOLUTION",
             "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-BUILD-SPEC",
             "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-ACCEPTANCE-HARNESS",
+            "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-PARAMETER-PREFLIGHT",
             "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
             "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
             "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
@@ -6755,6 +6990,21 @@ def run_rydberg_analysis():
                     "required_residual_schema_field_count"
                 ]
             ),
+            "atomic_predictive_v1_operator_parameter_preflight_parameter_sets": (
+                atomic_predictive_v1_operator_parameter_acceptance_preflight_gate["metrics"][
+                    "parameter_set_count"
+                ]
+            ),
+            "atomic_predictive_v1_operator_parameter_preflight_blockers": (
+                atomic_predictive_v1_operator_parameter_acceptance_preflight_gate["metrics"][
+                    "preflight_blocking_count"
+                ]
+            ),
+            "atomic_predictive_v1_operator_parameter_preflight_checks": (
+                atomic_predictive_v1_operator_parameter_acceptance_preflight_gate["metrics"][
+                    "preflight_check_count"
+                ]
+            ),
             "atomic_predictive_v1_operator_provenance_blockers": (
                 atomic_predictive_v1_operator_implementation_provenance_gate["metrics"][
                     "provenance_blocking_count"
@@ -6923,6 +7173,9 @@ def run_rydberg_analysis():
     )
     artifact["atomic_predictive_v1_operator_training_holdout_split_gate"] = (
         atomic_predictive_v1_operator_training_holdout_split_gate
+    )
+    artifact["atomic_predictive_v1_operator_parameter_acceptance_preflight_gate"] = (
+        atomic_predictive_v1_operator_parameter_acceptance_preflight_gate
     )
     artifact["atomic_predictive_v1_operator_implementation_provenance_gate"] = (
         atomic_predictive_v1_operator_implementation_provenance_gate

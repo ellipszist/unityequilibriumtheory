@@ -2015,6 +2015,8 @@
     "metrics": {
       "accepted_fixed_correction_operator_count": 0,
       "operator_acceptance_decision_blocking_count": 3,
+      "operator_parameter_preflight_blocking_count": 5,
+      "operator_parameter_set_count": 0,
       "operator_residual_rows_present": true,
       "operator_uncertainty_policy_present": true,
       "provenance_blocking_count": 4,
@@ -2041,7 +2043,7 @@
         "status": "BLOCKING_CANDIDATE_SOURCE_ONLY"
       },
       {
-        "blocker_reason": "operator parameter manifest exists, but accepted operator parameter set remains empty",
+        "blocker_reason": "operator parameter manifest exists, but accepted operator parameter set remains empty; parameter preflight blockers = 5",
         "evidence_exists": true,
         "evidence_id": "PROV-02",
         "evidence_path": "Data/03_Research/atomic_predictive_v1_operator_parameters.json",
@@ -2088,6 +2090,85 @@
     "role": "atomic_predictive_v1_operator_implementation_provenance_gate",
     "schema_version": "1.0",
     "status": "PROVENANCE_CONTRACT_READY_IMPLEMENTATION_MISSING"
+  },
+  "atomic_predictive_v1_operator_parameter_acceptance_preflight_gate": {
+    "blocked_claims": [
+      "an empty parameter_sets array is a locked accepted operator",
+      "diagnostic quantum-defect parameters satisfy delta_uet_or_ci parameter provenance",
+      "holdout or CHIANTI rows may set operator parameters"
+    ],
+    "checks": [
+      {
+        "check_id": "PARAM-PREFLIGHT-01",
+        "evidence": {
+          "parameter_set_count": 0
+        },
+        "requirement": "At least one parameter set must be present before PROV-02 can be satisfied.",
+        "status": "BLOCKING_ACCEPTED_PARAMETER_SET_MISSING"
+      },
+      {
+        "check_id": "PARAM-PREFLIGHT-02",
+        "evidence": [],
+        "requirement": "Every parameter set must identify operator_id=delta_uet_or_ci and a permitted operator class.",
+        "status": "BLOCKING_OPERATOR_CLASS_MISSING"
+      },
+      {
+        "check_id": "PARAM-PREFLIGHT-03",
+        "evidence": {
+          "missing_parameter_fields": [],
+          "missing_parameter_set_fields": []
+        },
+        "requirement": "Every parameter and parameter set must carry required typed/unit/source fields.",
+        "status": "BLOCKING_PARAMETER_FIELDS_MISSING"
+      },
+      {
+        "check_id": "PARAM-PREFLIGHT-04",
+        "evidence": [],
+        "requirement": "The parameter set must be locked before holdout or CHIANTI rows are evaluated.",
+        "status": "BLOCKING_LOCK_RULE_UNSATISFIED"
+      },
+      {
+        "check_id": "PARAM-PREFLIGHT-05",
+        "evidence": [],
+        "requirement": "Holdout and CHIANTI rows must be forbidden parameter sources.",
+        "status": "BLOCKING_FORBIDDEN_SOURCE_POLICY_INCOMPLETE"
+      }
+    ],
+    "claim_boundary": "This preflight manifest defines acceptance checks for future operator parameters. It does not create a parameter set or accept an operator.",
+    "claim_class": "operator_parameter_preflight_no_validation_claim",
+    "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-PARAMETER-PREFLIGHT",
+    "manifest": {
+      "manifest_id": "AT20-PREDICTIVE-V1-OPERATOR-PARAMETER-ACCEPTANCE-PREFLIGHT",
+      "path": "Data/03_Research/atomic_predictive_v1_operator_parameter_acceptance_preflight.json",
+      "sha256": "424a50b3d0d55302d899ec248899f8d733684789018eab178105c01860a8cd0a",
+      "status": "PREFLIGHT_READY_ACCEPTED_PARAMETER_SET_MISSING"
+    },
+    "metrics": {
+      "forbidden_source_policy_failure_count": 0,
+      "lock_failure_count": 0,
+      "missing_parameter_field_row_count": 0,
+      "missing_parameter_set_field_row_count": 0,
+      "operator_class_failure_count": 0,
+      "parameter_count": 0,
+      "parameter_set_count": 0,
+      "preflight_blocking_count": 5,
+      "preflight_check_count": 5
+    },
+    "next_required_artifacts": [
+      "Data/03_Research/atomic_predictive_v1_operator_parameters.json with non-empty parameter_sets",
+      "parameter rows with typed values, units, source hashes, uncertainty policy, and lock timestamp"
+    ],
+    "operator_parameter_manifest": {
+      "accepted_operator_class": null,
+      "manifest_id": "AT20-PREDICTIVE-V1-OPERATOR-PARAMETERS",
+      "path": "Data/03_Research/atomic_predictive_v1_operator_parameters.json",
+      "sha256": "04dd1beee571417fa23589338965591d4e564a410ec6e396c3c8a0441f720e86",
+      "status": "PARAMETER_MANIFEST_READY_NO_ACCEPTED_OPERATOR_PARAMETERS"
+    },
+    "parameter_sets": [],
+    "role": "atomic_predictive_v1_operator_parameter_acceptance_preflight_gate",
+    "schema_version": "1.0",
+    "status": "PARAMETER_PREFLIGHT_BLOCKING_ACCEPTED_PARAMETER_SET"
   },
   "atomic_predictive_v1_operator_residual_gate": {
     "accepted_as_delta_uet_or_ci": false,
@@ -2874,6 +2955,7 @@
     "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-CANDIDATE-RESOLUTION",
     "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-BUILD-SPEC",
     "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-ACCEPTANCE-HARNESS",
+    "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-PARAMETER-PREFLIGHT",
     "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
     "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
     "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
@@ -2883,7 +2965,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-08T11:38:48.477504+00:00",
+  "generated_at_utc": "2026-06-08T11:46:13.045223+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -5759,6 +5841,26 @@
       "status": "ACCEPTANCE_HARNESS_READY_TARGETS_MISSING"
     },
     {
+      "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/atomic_predictive_v1_operator_parameter_acceptance_preflight.json",
+      "sha256": "424a50b3d0d55302d899ec248899f8d733684789018eab178105c01860a8cd0a",
+      "source": "Define the field-level checks required before an operator parameter set can count as locked evidence for an accepted delta_uet_or_ci operator.",
+      "source_rows": [
+        "PARAM-PREFLIGHT-01",
+        "PARAM-PREFLIGHT-02",
+        "PARAM-PREFLIGHT-03",
+        "PARAM-PREFLIGHT-04",
+        "PARAM-PREFLIGHT-05"
+      ],
+      "status": "PREFLIGHT_READY_ACCEPTED_PARAMETER_SET_MISSING"
+    },
+    {
+      "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/atomic_predictive_v1_operator_parameters.json",
+      "sha256": "04dd1beee571417fa23589338965591d4e564a410ec6e396c3c8a0441f720e86",
+      "source": "Freeze the current operator-v1 parameter state before any residual rows are evaluated.",
+      "source_rows": [],
+      "status": "PARAMETER_MANIFEST_READY_NO_ACCEPTED_OPERATOR_PARAMETERS"
+    },
+    {
       "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/atomic_predictive_v1_operator_implementation_provenance.json",
       "sha256": "6e5bebce1ee96e6ad1d2030882eb846d701a97a30131f63746436c8b7223a847",
       "source": "Define the implementation-provenance evidence required before any atomic predictive-v1 residual rows can be accepted as delta_uet_or_ci output.",
@@ -5966,6 +6068,9 @@
     "atomic_predictive_v1_operator_candidate_missing_acceptable_paths": 2,
     "atomic_predictive_v1_operator_candidate_rejected_existing": 5,
     "atomic_predictive_v1_operator_candidate_resolutions": 7,
+    "atomic_predictive_v1_operator_parameter_preflight_blockers": 5,
+    "atomic_predictive_v1_operator_parameter_preflight_checks": 5,
+    "atomic_predictive_v1_operator_parameter_preflight_parameter_sets": 0,
     "atomic_predictive_v1_operator_provenance_blockers": 4,
     "atomic_predictive_v1_operator_provenance_evidence_count": 5,
     "atomic_predictive_v1_operator_residual_accepted_operators": 0,

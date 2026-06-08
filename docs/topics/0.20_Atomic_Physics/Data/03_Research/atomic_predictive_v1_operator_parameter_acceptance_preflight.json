@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.20_Atomic_Physics",
+  "manifest_id": "AT20-PREDICTIVE-V1-OPERATOR-PARAMETER-ACCEPTANCE-PREFLIGHT",
+  "purpose": "Define the field-level checks required before an operator parameter set can count as locked evidence for an accepted delta_uet_or_ci operator.",
+  "status": "PREFLIGHT_READY_ACCEPTED_PARAMETER_SET_MISSING",
+  "selected_lane_id": "helium_quantum_defect_then_ci_or_uet_correction_v1",
+  "operator_parameter_manifest": "Data/03_Research/atomic_predictive_v1_operator_parameters.json",
+  "required_parameter_set_fields": [
+    "parameter_set_id",
+    "operator_id",
+    "operator_class",
+    "parameters",
+    "lock_timestamp_utc",
+    "locked_before_holdout_evaluation",
+    "calibration_source_rows",
+    "forbidden_source_rows",
+    "source_hashes",
+    "claim_use"
+  ],
+  "required_parameter_fields": [
+    "parameter_id",
+    "value",
+    "unit",
+    "parameter_type",
+    "fit_status",
+    "source",
+    "uncertainty"
+  ],
+  "required_lock_rules": [
+    {
+      "rule_id": "PARAM-PREFLIGHT-01",
+      "requirement": "At least one parameter set must be present before PROV-02 can be satisfied.",
+      "blocks_operator_acceptance": true
+    },
+    {
+      "rule_id": "PARAM-PREFLIGHT-02",
+      "requirement": "Every parameter set must identify operator_id=delta_uet_or_ci and a permitted operator class.",
+      "blocks_operator_acceptance": true
+    },
+    {
+      "rule_id": "PARAM-PREFLIGHT-03",
+      "requirement": "Every parameter must be typed, unit-tagged, source-tagged, and carry an uncertainty or explicit noncomputability reason.",
+      "blocks_operator_acceptance": true
+    },
+    {
+      "rule_id": "PARAM-PREFLIGHT-04",
+      "requirement": "The parameter set must be locked before holdout or CHIANTI rows are evaluated.",
+      "blocks_operator_acceptance": true
+    },
+    {
+      "rule_id": "PARAM-PREFLIGHT-05",
+      "requirement": "Holdout and CHIANTI rows must be forbidden parameter sources.",
+      "blocks_operator_acceptance": true
+    }
+  ],
+  "allowed_operator_classes": [
+    "fixed_parameter_ci_or_correlated_two_electron_correction",
+    "explicit_uet_atomic_hamiltonian_or_transition_operator_correction"
+  ],
+  "forbidden_parameter_sources": [
+    "Data/03_Research/helium_quantum_defect_holdout_sources.json",
+    "Data/03_Research/external_holdouts/chianti_he_i/source_manifest.json"
+  ],
+  "blocked_claims": [
+    "an empty parameter_sets array is a locked accepted operator",
+    "diagnostic quantum-defect parameters satisfy delta_uet_or_ci parameter provenance",
+    "holdout or CHIANTI rows may set operator parameters"
+  ],
+  "claim_boundary": "This preflight manifest defines acceptance checks for future operator parameters. It does not create a parameter set or accept an operator."
+}
