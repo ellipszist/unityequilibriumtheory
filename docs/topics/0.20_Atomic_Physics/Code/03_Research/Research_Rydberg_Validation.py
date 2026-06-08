@@ -67,6 +67,9 @@ ATOMIC_PREDICTIVE_V1_OPERATOR_ACCEPTANCE_HARNESS_MANIFEST_PATH = (
 ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_PROVENANCE_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_implementation_provenance.json"
 )
+ATOMIC_PREDICTIVE_V1_OPERATOR_TRAINING_HOLDOUT_SPLIT_PATH = (
+    TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_training_holdout_split.json"
+)
 ATOMIC_PREDICTIVE_V1_OPERATOR_RESIDUAL_ROWS_PATH = (
     TOPIC_DIR / "Result" / "artifacts" / "atomic_predictive_v1_operator_residual_rows.json"
 )
@@ -4460,20 +4463,90 @@ def build_atomic_predictive_v1_operator_acceptance_harness_gate(
     }
 
 
+def build_atomic_predictive_v1_operator_training_holdout_split_gate(
+    operator_training_holdout_split_manifest: dict,
+) -> dict:
+    calibration_rows = operator_training_holdout_split_manifest.get("calibration_rows", [])
+    holdout_rows = operator_training_holdout_split_manifest.get("holdout_rows", [])
+    external_rows = operator_training_holdout_split_manifest.get("external_crosscheck_rows", [])
+    calibration_ids = {row.get("row_id") for row in calibration_rows}
+    holdout_ids = {row.get("row_id") for row in holdout_rows}
+    external_ids = {row.get("row_id") for row in external_rows}
+    overlap_rows = sorted((calibration_ids & holdout_ids) | (calibration_ids & external_ids) | (holdout_ids & external_ids))
+    split_policy = operator_training_holdout_split_manifest.get("split_policy", {})
+    forbidden_parameter_sources = split_policy.get("forbidden_parameter_sources", [])
+    policy_complete = all(
+        source in forbidden_parameter_sources for source in ["holdout_rows", "external_crosscheck_rows"]
+    )
+    source_manifest_rows = operator_training_holdout_split_manifest.get("source_manifests", [])
+    status = (
+        "TRAINING_HOLDOUT_SPLIT_READY_DIAGNOSTIC_ONLY"
+        if calibration_rows and holdout_rows and source_manifest_rows and not overlap_rows and policy_complete
+        else "TRAINING_HOLDOUT_SPLIT_INCOMPLETE"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_predictive_v1_operator_training_holdout_split_gate",
+        "status": status,
+        "claim_class": "operator_training_holdout_split_no_validation_claim",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-TRAINING-HOLDOUT-SPLIT",
+        "manifest": {
+            "path": str(ATOMIC_PREDICTIVE_V1_OPERATOR_TRAINING_HOLDOUT_SPLIT_PATH.relative_to(TOPIC_DIR)).replace("\\", "/"),
+            "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_TRAINING_HOLDOUT_SPLIT_PATH),
+            "manifest_id": operator_training_holdout_split_manifest.get("manifest_id"),
+            "status": operator_training_holdout_split_manifest.get("status"),
+        },
+        "source_manifests": source_manifest_rows,
+        "split_policy": split_policy,
+        "overlap_rows": overlap_rows,
+        "metrics": {
+            "source_manifest_count": len(source_manifest_rows),
+            "calibration_row_count": len(calibration_rows),
+            "holdout_row_count": len(holdout_rows),
+            "external_crosscheck_row_count": len(external_rows),
+            "split_overlap_row_count": len(overlap_rows),
+            "forbidden_parameter_source_count": len(forbidden_parameter_sources),
+            "policy_complete": policy_complete,
+        },
+        "blocked_claims": [
+            "current split proves independent validation",
+            "diagnostic calibration rows are accepted operator training data",
+            "CHIANTI cross-check rows may set operator parameters",
+        ],
+        "claim_boundary": operator_training_holdout_split_manifest.get("claim_boundary"),
+    }
+
+
 def build_atomic_predictive_v1_operator_implementation_provenance_gate(
     operator_implementation_provenance_manifest: dict,
+    atomic_predictive_v1_operator_training_holdout_split_gate: dict,
     atomic_predictive_v1_operator_acceptance_harness_gate: dict,
     atomic_predictive_v1_fixed_correction_operator_gate: dict,
 ) -> dict:
     evidence_rows = []
     for row in operator_implementation_provenance_manifest.get("required_provenance_evidence", []):
         current_status = row.get("current_status")
+        evidence_path = row.get("evidence_path")
+        evidence_file = TOPIC_DIR / evidence_path if evidence_path else None
+        evidence_exists = bool(evidence_file and evidence_file.exists())
+        status = "BLOCKING" if current_status == "MISSING" else current_status
+        if row.get("evidence_id") == "PROV-03":
+            status = (
+                "PRESENT"
+                if evidence_exists
+                and atomic_predictive_v1_operator_training_holdout_split_gate["status"]
+                == "TRAINING_HOLDOUT_SPLIT_READY_DIAGNOSTIC_ONLY"
+                else "BLOCKING"
+            )
         evidence_rows.append(
             {
                 "evidence_id": row.get("evidence_id"),
                 "requirement": row.get("requirement"),
-                "status": "BLOCKING" if current_status == "MISSING" else current_status,
+                "status": status,
                 "manifest_status": current_status,
+                "evidence_path": evidence_path,
+                "evidence_exists": evidence_exists,
+                "evidence_sha256": file_sha256(evidence_file) if evidence_exists else None,
                 "required_artifact": row.get("required_artifact"),
             }
         )
@@ -5846,6 +5919,9 @@ def run_rydberg_analysis():
     atomic_predictive_v1_operator_implementation_provenance_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_PROVENANCE_PATH
     )
+    atomic_predictive_v1_operator_training_holdout_split_manifest = load_json(
+        ATOMIC_PREDICTIVE_V1_OPERATOR_TRAINING_HOLDOUT_SPLIT_PATH
+    )
     chianti_he_i_manifest = load_json(CHIANTI_HE_I_MANIFEST_PATH)
     source_evidence_intake_stub = build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = build_source_evidence_readiness_matrix()
@@ -6105,9 +6181,15 @@ def run_rydberg_analysis():
             atomic_predictive_v1_fixed_correction_operator_gate,
         )
     )
+    atomic_predictive_v1_operator_training_holdout_split_gate = (
+        build_atomic_predictive_v1_operator_training_holdout_split_gate(
+            atomic_predictive_v1_operator_training_holdout_split_manifest
+        )
+    )
     atomic_predictive_v1_operator_implementation_provenance_gate = (
         build_atomic_predictive_v1_operator_implementation_provenance_gate(
             atomic_predictive_v1_operator_implementation_provenance_manifest,
+            atomic_predictive_v1_operator_training_holdout_split_gate,
             atomic_predictive_v1_operator_acceptance_harness_gate,
             atomic_predictive_v1_fixed_correction_operator_gate,
         )
@@ -6330,6 +6412,22 @@ def run_rydberg_analysis():
                     row.get("evidence_id")
                     for row in atomic_predictive_v1_operator_implementation_provenance_manifest.get(
                         "required_provenance_evidence", []
+                    )
+                ],
+            },
+            {
+                "path": str(ATOMIC_PREDICTIVE_V1_OPERATOR_TRAINING_HOLDOUT_SPLIT_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_TRAINING_HOLDOUT_SPLIT_PATH),
+                "source": atomic_predictive_v1_operator_training_holdout_split_manifest.get("purpose"),
+                "status": atomic_predictive_v1_operator_training_holdout_split_manifest.get("status"),
+                "source_rows": [
+                    row.get("row_id")
+                    for row in (
+                        atomic_predictive_v1_operator_training_holdout_split_manifest.get("calibration_rows", [])
+                        + atomic_predictive_v1_operator_training_holdout_split_manifest.get("holdout_rows", [])
+                        + atomic_predictive_v1_operator_training_holdout_split_manifest.get(
+                            "external_crosscheck_rows", []
+                        )
                     )
                 ],
             },
@@ -6628,6 +6726,15 @@ def run_rydberg_analysis():
                     "required_provenance_evidence_count"
                 ]
             ),
+            "atomic_predictive_v1_operator_split_calibration_rows": (
+                atomic_predictive_v1_operator_training_holdout_split_gate["metrics"]["calibration_row_count"]
+            ),
+            "atomic_predictive_v1_operator_split_holdout_rows": (
+                atomic_predictive_v1_operator_training_holdout_split_gate["metrics"]["holdout_row_count"]
+            ),
+            "atomic_predictive_v1_operator_split_external_crosscheck_rows": (
+                atomic_predictive_v1_operator_training_holdout_split_gate["metrics"]["external_crosscheck_row_count"]
+            ),
             "atomic_predictive_v1_report_validation_blockers": atomic_predictive_v1_diagnostic_report_gate["metrics"][
                 "validation_blocker_count"
             ],
@@ -6774,6 +6881,9 @@ def run_rydberg_analysis():
     artifact["atomic_predictive_v1_operator_residual_gate"] = atomic_predictive_v1_operator_residual_gate
     artifact["atomic_predictive_v1_operator_acceptance_harness_gate"] = (
         atomic_predictive_v1_operator_acceptance_harness_gate
+    )
+    artifact["atomic_predictive_v1_operator_training_holdout_split_gate"] = (
+        atomic_predictive_v1_operator_training_holdout_split_gate
     )
     artifact["atomic_predictive_v1_operator_implementation_provenance_gate"] = (
         atomic_predictive_v1_operator_implementation_provenance_gate

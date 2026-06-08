@@ -29,7 +29,8 @@
     {
       "evidence_id": "PROV-03",
       "requirement": "Training/calibration rows are explicitly separated from holdout and external cross-check rows.",
-      "current_status": "MISSING",
+      "current_status": "PRESENT",
+      "evidence_path": "Data/03_Research/atomic_predictive_v1_operator_training_holdout_split.json",
       "required_artifact": "operator training/holdout split manifest with source row IDs and hashes"
     },
     {
