@@ -20,6 +20,16 @@ blockers were actually narrowed.
 
 ## Entries
 
+### 2026-06-11 - Add first operator parameter-set blueprint
+
+- Scope: `atomic_predictive_v1_operator_parameters.json`, `Research_Rydberg_Validation.py`, topic docs, primary artifact
+- Added or changed: Added a machine-readable blueprint for the first accepted parameter-set candidate, including allowed operator classes, required parameter rows, required source hashes, forbidden sources, and blocked-until items; surfaced that blueprint in the parameter-preflight gate.
+- Verified with: `python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validation.py`
+- Result: The parameter lane still has `0` accepted parameter sets, but the next required parameter-set shape is now explicit in the manifest and artifact instead of living only in prose.
+- Blocker narrowed: The repo now knows what the first real parameter set must look like before operator acceptance can advance.
+- Still open: Accepted fixed CI/UET correction operator, first accepted parameter set, accepted residual emitter, and accepted operator uncertainty provenance.
+- Claim impact: `no change`
+
 ### 2026-06-11 - Narrow parameter preflight root blocker
 
 - Scope: `Research_Rydberg_Validation.py`, topic docs, primary artifact

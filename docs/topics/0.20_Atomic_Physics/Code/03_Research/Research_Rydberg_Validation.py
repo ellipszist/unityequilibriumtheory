@@ -4656,12 +4656,26 @@ def build_atomic_predictive_v1_operator_parameter_acceptance_preflight_gate(
             "manifest_id": operator_parameters_manifest.get("manifest_id"),
             "status": operator_parameters_manifest.get("status"),
             "accepted_operator_class": operator_parameters_manifest.get("accepted_operator_class"),
+            "first_parameter_set_candidate_blueprint_status": operator_parameters_manifest.get(
+                "first_parameter_set_candidate_blueprint", {}
+            ).get("status"),
         },
+        "first_parameter_set_candidate_blueprint": operator_parameters_manifest.get(
+            "first_parameter_set_candidate_blueprint", {}
+        ),
         "checks": checks,
         "parameter_sets": parameter_set_rows,
         "metrics": {
             "parameter_set_count": len(parameter_sets),
             "parameter_count": sum(len(row.get("parameters", [])) for row in parameter_sets),
+            "candidate_blueprint_present": bool(
+                operator_parameters_manifest.get("first_parameter_set_candidate_blueprint")
+            ),
+            "candidate_blueprint_required_parameter_row_count": len(
+                operator_parameters_manifest.get("first_parameter_set_candidate_blueprint", {}).get(
+                    "required_parameter_rows", []
+                )
+            ),
             "preflight_check_count": len(checks),
             "preflight_blocking_count": blocking_count,
             "preflight_not_evaluated_count": not_evaluated_count,
