@@ -15,6 +15,7 @@ Use this file when:
 - deciding a topic's readiness label
 - promoting or demoting a topic
 - planning missing artifacts and next steps
+- deciding what kind of hardening work should happen before promotion
 
 ## Workflow summary
 
@@ -126,6 +127,9 @@ Minimum output:
 7. Compare against a baseline.
 8. Write limitations before writing summaries.
 9. Only then update public-facing wording.
+
+For topics that are already structured but still unclear or blocked, continue in
+[18_Research_Hardening_Workflow.md](./18_Research_Hardening_Workflow.md).
 
 ## Promotion rules
 

@@ -34,7 +34,7 @@ flowchart TD
     C --> H["04 Claim Rubric"]
     D --> I["02 Workflow and Lifecycle"]
     D --> J["10 Topic Architecture 5x4"]
-    D --> K["11-17 Operational Standards"]
+    D --> K["11-18 Operational Standards"]
     E --> L["14 Result Standard"]
     E --> M["15 Paper Standard"]
     E --> N["22 Paper Template"]
@@ -57,9 +57,11 @@ flowchart TD
 5. [13_Reference_Standard.md](./13_Reference_Standard.md)
 6. [14_Result_Standard.md](./14_Result_Standard.md)
 7. [17_Formula_Audit_Standard.md](./17_Formula_Audit_Standard.md)
-8. [20_TEMPLATE_README.md](./20_TEMPLATE_README.md)
-9. [21_TEMPLATE_ANALYSIS.md](./21_TEMPLATE_ANALYSIS.md)
-10. [23_TEMPLATE_FORMULA_AUDIT.md](./23_TEMPLATE_FORMULA_AUDIT.md)
+8. [18_Research_Hardening_Workflow.md](./18_Research_Hardening_Workflow.md)
+9. [20_TEMPLATE_README.md](./20_TEMPLATE_README.md)
+10. [21_TEMPLATE_ANALYSIS.md](./21_TEMPLATE_ANALYSIS.md)
+11. [23_TEMPLATE_FORMULA_AUDIT.md](./23_TEMPLATE_FORMULA_AUDIT.md)
+12. [24_TEMPLATE_UPDATE_LOG.md](./24_TEMPLATE_UPDATE_LOG.md)
 
 ### If you are fixing credibility or integrity issues
 
@@ -68,7 +70,8 @@ flowchart TD
 3. [04_Claim_and_Evidence_Rubric.md](./04_Claim_and_Evidence_Rubric.md)
 4. [02_Project_Workflow_and_Lifecycle.md](./02_Project_Workflow_and_Lifecycle.md)
 5. [17_Formula_Audit_Standard.md](./17_Formula_Audit_Standard.md)
-6. Relevant operational standard in `10-17`
+6. [18_Research_Hardening_Workflow.md](./18_Research_Hardening_Workflow.md)
+7. Relevant operational standard in `10-18`
 
 ### If you are preparing a paper
 
@@ -93,10 +96,12 @@ flowchart TD
 | `15_Paper_Standard.md` | manuscript readiness rules | repo work is being converted into a paper |
 | `16_Cinematic_Viz_Standard.md` | showcase visualization rules | creating presentation or social demo assets |
 | `17_Formula_Audit_Standard.md` | formula, unit, and proof-status control | formulas or constants need provenance and unit review |
+| `18_Research_Hardening_Workflow.md` | stepwise hardening workflow | a topic needs blocker-narrowing, gates, or predictive-candidate prep |
 | `20_TEMPLATE_README.md` | topic README template | starting or normalizing a topic root README |
 | `21_TEMPLATE_ANALYSIS.md` | analysis note template | creating structured technical analysis notes |
 | `22_UET_PAPER_TEMPLATE.tex` | manuscript starter | building a paper draft from a mature topic |
 | `23_TEMPLATE_FORMULA_AUDIT.md` | formula registry starter | starting a dedicated formula-audit file |
+| `24_TEMPLATE_UPDATE_LOG.md` | update log template | recording multi-wave progress without replacing artifacts |
 
 ## Quick decision matrix
 
@@ -111,13 +116,15 @@ flowchart TD
 | formula exists but provenance is unclear | `17_Formula_Audit_Standard.md` | `11_Code_README_Standard.md` |
 | units or variable meanings are unclear | `17_Formula_Audit_Standard.md` | `02_Project_Workflow_and_Lifecycle.md` |
 | AI wrote smooth prose without derivation support | `03_AI_Usage_and_Governance.md` | `04_Claim_and_Evidence_Rubric.md` |
+| topic is moving too slowly because blockers are vague | `18_Research_Hardening_Workflow.md` | `02_Project_Workflow_and_Lifecycle.md` |
+| many changes happened and progress is hard to track | `24_TEMPLATE_UPDATE_LOG.md` | `18_Research_Hardening_Workflow.md` |
 
 ## Naming pattern
 
 | Range | Meaning |
 | :-- | :-- |
 | `00-04` | governance and master rules |
-| `10-17` | operational standards by work pillar |
+| `10-18` | operational standards by work pillar |
 | `20+` | templates and production assets |
 
 ## Compatibility map
@@ -153,6 +160,7 @@ flowchart TD
 - Repository prose must not be promoted from dictation alone; it must be tied to a derivation, script, artifact, or source record.
 - Every topic README must include at least one conceptual diagram and one evidence/status matrix so later readers can understand the theory role, data path, formula status, verifier role, and limitations without reading the whole folder first.
 - Scientific hardening should strengthen the research argument by exposing dependencies, mechanisms, tests, and blockers; it must not collapse the topic into only defensive wording.
+- Multi-wave work should use a standard update log when a reader would otherwise need to reconstruct progress from diffs alone.
 
 ## Common failure modes
 

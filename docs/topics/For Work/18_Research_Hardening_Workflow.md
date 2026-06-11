@@ -1,0 +1,255 @@
+# Research Hardening Workflow
+
+This document defines the standard hardening workflow for moving a topic from
+loosely organized research into an auditable package with explicit blockers.
+
+It is not a promotion rule by itself. It is the step-by-step operating method
+used to make later readiness and claim decisions faster, clearer, and more
+repeatable.
+
+## Purpose
+
+Provide a shared hardening sequence so collaborators do not rebuild audit logic
+from scratch for every topic.
+
+Use this workflow to answer:
+
+- what should be done first
+- what should be recorded at each step
+- which artifacts turn ambiguity into named blockers
+- how to keep progress visible without inflating claims
+
+## When to use
+
+Use this file when:
+
+- a topic feels stuck between draft and reproducible
+- evidence exists but is scattered across code, notes, and artifacts
+- a verifier is growing but claim boundaries are still vague
+- you need to decide whether to deepen a topic or leave it source-ready
+- multiple topics need the same audit pattern
+
+## Workflow summary
+
+```mermaid
+flowchart TD
+    A["Source package"] --> B["Diagnostic artifact"]
+    B --> C["Hardening gates"]
+    C --> D["Predictive or mechanism candidate"]
+    D --> E["Claim and publication gate"]
+    A -. source gaps .-> A
+    C -. blocker found .-> B
+    E -. overclaim or missing dependency .-> C
+```
+
+## Core idea
+
+Hardening is the work of turning unclear progress into explicit, auditable state.
+
+The main outputs are not only better prose. The main outputs are:
+
+- source manifests
+- hashes and local paths
+- verifier artifacts
+- blocker reasons
+- dependency maps
+- claim boundaries
+- next required artifacts
+
+## Hardening stages
+
+| Stage | Main question | Required output | Typical blocker |
+| :-- | :-- | :-- | :-- |
+| `Source packaging` | do we know what inputs we are using? | source manifest, DOI or URL, local path, hash, units | source family unclear |
+| `Diagnostic artifact` | can we rerun and inspect the current behavior? | verifier, metrics, thresholds, artifact JSON | no stable script or threshold |
+| `Hardening gate` | do we know why the topic is not ready? | machine-readable gate with blockers | vague or narrative-only status |
+| `Predictive candidate` | what exact model or operator would count as progress? | parameter policy, split manifest, acceptance harness | fitted diagnostic mistaken for prediction |
+| `Claim gate` | what may be said publicly right now? | claim class, blocked phrases, publication checks | README outruns artifact |
+
+## Standard sequence
+
+### 1. Package sources first
+
+Before adding stronger wording or new artifacts, record:
+
+- source identity
+- DOI or URL
+- local path
+- file hash where practical
+- preprocessing note
+- unit basis
+- benchmark role
+
+If a topic depends on a shared cache, record the exact shared path and why it is
+used.
+
+### 2. Make one stable diagnostic artifact
+
+Before chasing broad theory claims, create one verifier that emits:
+
+- input identity
+- metric names
+- thresholds
+- result status
+- notes and limitations
+
+The first artifact may be diagnostic-only. That is acceptable as long as the
+claim boundary says so clearly.
+
+### 3. Add hardening gates
+
+After the first artifact exists, add machine-readable gates for the main
+blockers. Typical examples:
+
+- source readiness gate
+- formula provenance gate
+- uncertainty readiness gate
+- baseline comparator gate
+- training or holdout split gate
+- implementation provenance gate
+- publication readiness gate
+
+The goal is not to produce many gates. The goal is to ensure each major blocker
+has a named home.
+
+### 4. Separate diagnostics from candidate prediction
+
+If a topic may later claim prediction, explicitly separate:
+
+- calibration rows
+- holdout rows
+- external cross-check rows
+- forbidden parameter sources
+- accepted versus diagnostic parameter sets
+
+Do not let the current fitted diagnostic lane silently become the future
+predictive lane.
+
+### 5. Define acceptance before implementation
+
+Before calling a model, operator, or mechanism "accepted", define:
+
+- required inputs
+- required outputs
+- parameter lock rules
+- uncertainty rules
+- residual-row schema if applicable
+- baseline comparators
+- blocked claims
+
+This is where acceptance harnesses and preflight manifests belong.
+
+### 6. Narrow blockers before broadening scope
+
+If a topic is blocked, try to change:
+
+- `missing` -> `evidence present but insufficient`
+- `unclear blocker` -> `named blocker with required artifact`
+- `broad readiness gap` -> `one preflight or provenance rule`
+
+This counts as real progress because it shortens the path to the next move.
+
+### 7. Upgrade public wording last
+
+Only after the previous stages are stable should README, analysis, or paper
+language be upgraded.
+
+Hardening should usually change artifacts first, then documentation.
+
+## Required hardening outputs
+
+Every topic being actively hardened should aim to maintain:
+
+- `README.md`
+- `METHOD.md`
+- `DATA_MANIFEST.md`
+- `VERIFICATION_SPEC.md`
+- `LIMITATIONS.md`
+- `FORMULA_AUDIT.md` or equivalent
+- at least one verification artifact in `Result/artifacts/`
+- at least one machine-readable blocker gate if the topic is not claim-ready
+
+Recommended additions for predictive or operator-like work:
+
+- parameter manifest
+- parameter preflight or acceptance manifest
+- training or holdout split manifest
+- implementation provenance manifest
+- publication readiness gate
+
+## Choosing where to stop
+
+Not every topic needs to become predictive or academic-ready immediately.
+
+A topic may stop intentionally at:
+
+- `Source-ready`
+  Source package exists but model work is deferred.
+- `Diagnostic-only`
+  Verifier and artifact exist, but the lane is not prediction or validation.
+- `Predictive-candidate-prep`
+  Acceptance harness, parameter policy, and split exist, but no accepted model exists yet.
+
+This is better than pretending every topic must progress to the same depth now.
+
+## Log discipline
+
+Hardening work should be visible across time.
+
+Use an update log when:
+
+- a topic is undergoing multiple waves of cleanup
+- several manifests or gates are being added incrementally
+- you want a human reader to understand what changed without diff-hunting
+
+The update log does not replace artifacts or manifests.
+
+Use the update log to record:
+
+- what changed
+- what verifier or audit was run
+- what blocker narrowed
+- what still remains open
+
+Use [24_TEMPLATE_UPDATE_LOG.md](./24_TEMPLATE_UPDATE_LOG.md) as the standard
+format.
+
+## Anti-patterns
+
+Do not:
+
+- start with summary prose before source packaging
+- treat one passing diagnostic threshold as external validation
+- create blockers only in prose when a gate or manifest should exist
+- add many bespoke manifests with no clear acceptance role
+- use update logs as the only source of truth for status
+- treat progress on one lane as if it upgrades the whole topic automatically
+
+## Review questions
+
+Before closing a hardening pass, ask:
+
+1. What ambiguity was removed?
+2. Which blocker is now machine-readable?
+3. Which artifact or manifest was added?
+4. Did any public wording change without stronger evidence?
+5. What exact next artifact would unlock the next step?
+
+## Key rules
+
+- source packaging comes before promotion language
+- one stable artifact is better than many partial ones
+- blockers should be narrowed, not hidden
+- diagnostic lanes must stay labeled as diagnostic
+- acceptance conditions should be written before implementation is promoted
+- update logs support coordination, but artifacts remain the main evidence
+
+## Checklist
+
+- [ ] source package is explicit enough for audit
+- [ ] at least one stable artifact exists
+- [ ] current blockers are machine-readable where practical
+- [ ] diagnostics and predictive candidates are not conflated
+- [ ] acceptance conditions are defined before strong promotion
+- [ ] claim language still matches current evidence
+- [ ] update log is used if the hardening work spans multiple waves
