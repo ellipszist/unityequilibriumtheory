@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.20_Atomic_Physics",
+  "manifest_id": "AT20-PREDICTIVE-V1-OPERATOR-CANDIDATE-IMPLEMENTATION-REVIEW",
+  "purpose": "Lock the current candidate code identity, diagnostic residual emitter, and uncertainty lane for provenance review before any accepted correction-operator claim.",
+  "status": "CANDIDATE_IMPLEMENTATION_REVIEW_READY_ACCEPTED_OPERATOR_MISSING",
+  "selected_lane_id": "helium_quantum_defect_then_ci_or_uet_correction_v1",
+  "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction",
+  "target_module_review": {
+    "path": "Code/03_Research/Research_Atomic_Operator_V1.py",
+    "required_entrypoint": "run_atomic_operator_v1",
+    "required_return_key": "atomic_predictive_v1_operator_residual_gate",
+    "current_module_role": "operator_skeleton_and_diagnostic_residual_exporter",
+    "review_status": "TARGET_MODULE_LOCK_READY"
+  },
+  "diagnostic_emitter_review": {
+    "artifact_path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
+    "current_operator_id": "empirical_quantum_defect_diagnostic_not_delta_uet_or_ci",
+    "current_claim_use": "diagnostic_only_not_validation",
+    "accepted_as_delta_uet_or_ci": false,
+    "review_status": "DIAGNOSTIC_EMITTER_LOCK_READY"
+  },
+  "uncertainty_review": {
+    "policy_path": "Data/03_Research/atomic_predictive_v1_operator_uncertainty_policy.json",
+    "current_uncertainty_source": "diagnostic_quantum_defect_rmse_or_transcription_bound_only",
+    "validation_ready_thresholds_allowed": false,
+    "review_status": "DIAGNOSTIC_UNCERTAINTY_LOCK_READY"
+  },
+  "blocked_claims": [
+    "candidate implementation review means an accepted operator exists",
+    "diagnostic residual rows may be relabeled as accepted delta_uet_or_ci output",
+    "diagnostic uncertainty fallback may be used as accepted operator uncertainty provenance"
+  ],
+  "claim_boundary": "This review record locks the current candidate implementation state only. It does not accept or validate a correction operator."
+}

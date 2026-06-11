@@ -88,6 +88,12 @@ ATOMIC_PREDICTIVE_V1_OPERATOR_CLASS_SELECTION_REVIEW_PATH = (
     / "03_Research"
     / "atomic_predictive_v1_operator_class_selection_review.json"
 )
+ATOMIC_PREDICTIVE_V1_OPERATOR_CANDIDATE_IMPLEMENTATION_REVIEW_PATH = (
+    TOPIC_DIR
+    / "Data"
+    / "03_Research"
+    / "atomic_predictive_v1_operator_candidate_implementation_review.json"
+)
 ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_PROVENANCE_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_implementation_provenance.json"
 )
@@ -5028,6 +5034,7 @@ def build_atomic_predictive_v1_operator_training_holdout_split_gate(
 
 def build_atomic_predictive_v1_operator_implementation_provenance_gate(
     operator_implementation_provenance_manifest: dict,
+    operator_candidate_implementation_review_manifest: dict,
     atomic_predictive_v1_operator_training_holdout_split_gate: dict,
     atomic_predictive_v1_operator_parameter_acceptance_preflight_gate: dict,
     atomic_predictive_v1_operator_acceptance_harness_gate: dict,
@@ -5041,9 +5048,20 @@ def build_atomic_predictive_v1_operator_implementation_provenance_gate(
     candidate_state_manifest = operator_implementation_provenance_manifest.get("current_candidate_state", {})
     target_module_path = TOPIC_DIR / candidate_state_manifest.get("target_module_path", "")
     target_module_exists = target_module_path.exists() if candidate_state_manifest.get("target_module_path") else False
+    candidate_review_path = ATOMIC_PREDICTIVE_V1_OPERATOR_CANDIDATE_IMPLEMENTATION_REVIEW_PATH
+    candidate_review_exists = candidate_review_path.exists()
     parameter_manifest_path = ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETERS_PATH
     residual_rows_artifact_path = ATOMIC_PREDICTIVE_V1_OPERATOR_RESIDUAL_ROWS_PATH
     uncertainty_policy_path = ATOMIC_PREDICTIVE_V1_OPERATOR_UNCERTAINTY_POLICY_PATH
+    candidate_review_target_module = operator_candidate_implementation_review_manifest.get(
+        "target_module_review", {}
+    )
+    candidate_review_diagnostic_emitter = operator_candidate_implementation_review_manifest.get(
+        "diagnostic_emitter_review", {}
+    )
+    candidate_review_uncertainty = operator_candidate_implementation_review_manifest.get(
+        "uncertainty_review", {}
+    )
     current_candidate_state = {
         **candidate_state_manifest,
         "target_module_exists": target_module_exists,
@@ -5054,6 +5072,31 @@ def build_atomic_predictive_v1_operator_implementation_provenance_gate(
         "target_module_return_key_present": atomic_predictive_v1_operator_acceptance_harness_gate[
             "target_module"
         ].get("return_key_present"),
+        "candidate_implementation_review_exists": candidate_review_exists,
+        "candidate_implementation_review_path": (
+            str(candidate_review_path.relative_to(TOPIC_DIR)).replace("\\", "/")
+            if candidate_review_exists
+            else candidate_state_manifest.get("candidate_implementation_review_path")
+        ),
+        "candidate_implementation_review_sha256": (
+            file_sha256(candidate_review_path) if candidate_review_exists else None
+        ),
+        "candidate_implementation_review_status": operator_candidate_implementation_review_manifest.get(
+            "status"
+        ),
+        "selected_operator_class_review": operator_candidate_implementation_review_manifest.get(
+            "selected_operator_class"
+        ),
+        "candidate_target_module_review_status": candidate_review_target_module.get("review_status"),
+        "candidate_diagnostic_emitter_review_status": candidate_review_diagnostic_emitter.get(
+            "review_status"
+        ),
+        "candidate_diagnostic_operator_id": candidate_review_diagnostic_emitter.get(
+            "current_operator_id"
+        ),
+        "candidate_diagnostic_claim_use": candidate_review_diagnostic_emitter.get("current_claim_use"),
+        "candidate_uncertainty_review_status": candidate_review_uncertainty.get("review_status"),
+        "candidate_uncertainty_source": candidate_review_uncertainty.get("current_uncertainty_source"),
         "parameter_manifest_exists": parameter_manifest_path.exists(),
         "parameter_manifest_sha256": (
             file_sha256(parameter_manifest_path) if parameter_manifest_path.exists() else None
@@ -5079,9 +5122,31 @@ def build_atomic_predictive_v1_operator_implementation_provenance_gate(
         evidence_exists = bool(evidence_file and evidence_file.exists())
         status = "BLOCKING" if current_status == "MISSING" else current_status
         blocker_reason = None
+        supporting_review_record_path = None
+        supporting_review_record_exists = False
+        supporting_review_record_sha256 = None
         if evidence_id == "PROV-01":
             if accepted_operator_count > 0 and evidence_exists:
                 status = "PRESENT"
+            elif (
+                candidate_review_exists
+                and target_module_exists
+                and atomic_predictive_v1_operator_acceptance_harness_gate["target_module"].get(
+                    "entrypoint_present"
+                )
+                and atomic_predictive_v1_operator_acceptance_harness_gate["target_module"].get(
+                    "return_key_present"
+                )
+            ):
+                status = "BLOCKING_ACCEPTED_OPERATOR_CLASS_MISSING_CANDIDATE_IDENTITY_LOCKED"
+                blocker_reason = (
+                    "candidate module path, source hash, entrypoint, return key, and selected "
+                    "implementation class are locked for review, but no accepted delta_uet_or_ci "
+                    "operator class exists yet"
+                )
+                supporting_review_record_path = str(candidate_review_path.relative_to(TOPIC_DIR)).replace(
+                    "\\", "/"
+                )
             else:
                 status = "BLOCKING_CANDIDATE_SOURCE_ONLY"
                 blocker_reason = "target module is present, but no accepted delta_uet_or_ci operator class exists"
@@ -5121,18 +5186,42 @@ def build_atomic_predictive_v1_operator_implementation_provenance_gate(
         elif evidence_id == "PROV-04":
             if accepted_operator_count > 0 and evidence_exists:
                 status = "PRESENT"
+            elif candidate_review_exists and evidence_exists and harness_metrics["residual_rows_present"]:
+                status = "BLOCKING_ACCEPTED_RESIDUAL_EMITTER_MISSING_DIAGNOSTIC_ROWS_LOCKED"
+                blocker_reason = (
+                    "diagnostic residual rows are locked to the current candidate emitter, but no "
+                    "accepted operator emits delta_uet_or_ci residual rows yet"
+                )
+                supporting_review_record_path = str(candidate_review_path.relative_to(TOPIC_DIR)).replace(
+                    "\\", "/"
+                )
             else:
                 status = "BLOCKING_DIAGNOSTIC_RESIDUALS_ONLY"
                 blocker_reason = "residual rows exist, but they are emitted by the diagnostic wrapper, not an accepted operator"
         elif evidence_id == "PROV-05":
             if accepted_operator_count > 0 and evidence_exists:
                 status = "PRESENT"
+            elif candidate_review_exists and evidence_exists and uncertainty_policy_path.exists():
+                status = "BLOCKING_ACCEPTED_OPERATOR_UNCERTAINTY_SOURCE_MISSING_DIAGNOSTIC_POLICY_LOCKED"
+                blocker_reason = (
+                    "diagnostic uncertainty policy is locked for review, but no accepted operator "
+                    "sources row-level uncertainty provenance yet"
+                )
+                supporting_review_record_path = str(candidate_review_path.relative_to(TOPIC_DIR)).replace(
+                    "\\", "/"
+                )
             else:
                 status = "BLOCKING_POLICY_ONLY_ACCEPTED_UNCERTAINTY_MISSING"
                 blocker_reason = "uncertainty policy exists, but uncertainty is not sourced from an accepted operator"
         if not evidence_exists and evidence_path:
             status = "BLOCKING_EVIDENCE_PATH_MISSING"
             blocker_reason = "declared evidence path does not exist"
+        supporting_review_record_exists = bool(
+            supporting_review_record_path and candidate_review_exists
+        )
+        supporting_review_record_sha256 = (
+            file_sha256(candidate_review_path) if supporting_review_record_exists else None
+        )
         evidence_rows.append(
             {
                 "evidence_id": evidence_id,
@@ -5142,6 +5231,9 @@ def build_atomic_predictive_v1_operator_implementation_provenance_gate(
                 "evidence_path": evidence_path,
                 "evidence_exists": evidence_exists,
                 "evidence_sha256": file_sha256(evidence_file) if evidence_exists else None,
+                "supporting_review_record_path": supporting_review_record_path,
+                "supporting_review_record_exists": supporting_review_record_exists,
+                "supporting_review_record_sha256": supporting_review_record_sha256,
                 "blocker_reason": blocker_reason,
                 "required_artifact": row.get("required_artifact"),
             }
@@ -5186,6 +5278,7 @@ def build_atomic_predictive_v1_operator_implementation_provenance_gate(
             ],
             "operator_residual_rows_present": harness_metrics["residual_rows_present"],
             "operator_uncertainty_policy_present": harness_metrics["uncertainty_policy_present"],
+            "candidate_implementation_review_present": candidate_review_exists,
             "operator_parameter_preflight_blocking_count": (
                 atomic_predictive_v1_operator_parameter_acceptance_preflight_gate["metrics"][
                     "preflight_blocking_count"
@@ -6539,6 +6632,9 @@ def run_rydberg_analysis():
     atomic_predictive_v1_operator_class_selection_review_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_CLASS_SELECTION_REVIEW_PATH
     )
+    atomic_predictive_v1_operator_candidate_implementation_review_manifest = load_json(
+        ATOMIC_PREDICTIVE_V1_OPERATOR_CANDIDATE_IMPLEMENTATION_REVIEW_PATH
+    )
     atomic_predictive_v1_operator_implementation_provenance_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_PROVENANCE_PATH
     )
@@ -6834,6 +6930,7 @@ def run_rydberg_analysis():
     atomic_predictive_v1_operator_implementation_provenance_gate = (
         build_atomic_predictive_v1_operator_implementation_provenance_gate(
             atomic_predictive_v1_operator_implementation_provenance_manifest,
+            atomic_predictive_v1_operator_candidate_implementation_review_manifest,
             atomic_predictive_v1_operator_training_holdout_split_gate,
             atomic_predictive_v1_operator_parameter_acceptance_preflight_gate,
             atomic_predictive_v1_operator_acceptance_harness_gate,

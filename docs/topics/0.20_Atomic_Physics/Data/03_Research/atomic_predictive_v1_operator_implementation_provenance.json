@@ -8,6 +8,7 @@
   "operator_id": "delta_uet_or_ci",
   "current_candidate_state": {
     "target_module_path": "Code/03_Research/Research_Atomic_Operator_V1.py",
+    "candidate_implementation_review_path": "Data/03_Research/atomic_predictive_v1_operator_candidate_implementation_review.json",
     "current_emitter": "empirical_quantum_defect_diagnostic_not_delta_uet_or_ci",
     "accepted_operator_class": null,
     "accepted_operator_count": 0,
@@ -17,7 +18,7 @@
     {
       "evidence_id": "PROV-01",
       "requirement": "Accepted operator source code is identified by module path, entrypoint, commit hash or source hash, and operator class.",
-      "current_status": "CANDIDATE_PRESENT_ACCEPTED_OPERATOR_MISSING",
+      "current_status": "CANDIDATE_IDENTITY_LOCK_READY_ACCEPTED_OPERATOR_MISSING",
       "evidence_path": "Code/03_Research/Research_Atomic_Operator_V1.py",
       "required_artifact": "accepted operator implementation record with code hash and operator class"
     },
@@ -38,14 +39,14 @@
     {
       "evidence_id": "PROV-04",
       "requirement": "Residual rows are emitted by the accepted operator, not by the current diagnostic quantum-defect wrapper.",
-      "current_status": "DIAGNOSTIC_RESIDUAL_ROWS_PRESENT_ACCEPTED_OPERATOR_MISSING",
+      "current_status": "DIAGNOSTIC_RESIDUAL_ROWS_LOCK_READY_ACCEPTED_OPERATOR_MISSING",
       "evidence_path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
       "required_artifact": "operator residual rows with accepted_operator_class and accepted_as_delta_uet_or_ci=true"
     },
     {
       "evidence_id": "PROV-05",
       "requirement": "Model uncertainty is sourced from the accepted operator or is explicitly noncomputable with a blocker reason for every residual row.",
-      "current_status": "UNCERTAINTY_POLICY_PRESENT_ACCEPTED_OPERATOR_UNCERTAINTY_MISSING",
+      "current_status": "UNCERTAINTY_POLICY_LOCK_READY_ACCEPTED_OPERATOR_UNCERTAINTY_MISSING",
       "evidence_path": "Data/03_Research/atomic_predictive_v1_operator_uncertainty_policy.json",
       "required_artifact": "operator uncertainty provenance rows tied to accepted residual rows"
     }

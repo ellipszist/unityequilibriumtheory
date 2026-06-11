@@ -2059,6 +2059,16 @@
       "accepted_operator_class": null,
       "accepted_operator_count": 0,
       "accepted_parameter_set_count": 1,
+      "candidate_diagnostic_claim_use": "diagnostic_only_not_validation",
+      "candidate_diagnostic_emitter_review_status": "DIAGNOSTIC_EMITTER_LOCK_READY",
+      "candidate_diagnostic_operator_id": "empirical_quantum_defect_diagnostic_not_delta_uet_or_ci",
+      "candidate_implementation_review_exists": true,
+      "candidate_implementation_review_path": "Data/03_Research/atomic_predictive_v1_operator_candidate_implementation_review.json",
+      "candidate_implementation_review_sha256": "a0cbb6fb7a7eb0fbf66863f8414e156daf4d17250e362e9f9a64832feb0a9102",
+      "candidate_implementation_review_status": "CANDIDATE_IMPLEMENTATION_REVIEW_READY_ACCEPTED_OPERATOR_MISSING",
+      "candidate_target_module_review_status": "TARGET_MODULE_LOCK_READY",
+      "candidate_uncertainty_review_status": "DIAGNOSTIC_UNCERTAINTY_LOCK_READY",
+      "candidate_uncertainty_source": "diagnostic_quantum_defect_rmse_or_transcription_bound_only",
       "current_emitter": "empirical_quantum_defect_diagnostic_not_delta_uet_or_ci",
       "current_rows_allowed_use": "diagnostic_only_not_validation",
       "diagnostic_residual_row_count": 3,
@@ -2066,6 +2076,7 @@
       "parameter_manifest_sha256": "c6227e3f8127aaeb55b297c9ef7d4f89c3d5468352b9c861cd36580ac1803d1a",
       "residual_rows_artifact_exists": true,
       "residual_rows_artifact_sha256": "4ff227989cb8a92f646ddea63aab0e7092874af350b93771500e05a69d7edc5c",
+      "selected_operator_class_review": "fixed_parameter_ci_or_correlated_two_electron_correction",
       "target_module_entrypoint_present": true,
       "target_module_exists": true,
       "target_module_path": "Code/03_Research/Research_Atomic_Operator_V1.py",
@@ -2085,11 +2096,12 @@
     "manifest": {
       "manifest_id": "AT20-PREDICTIVE-V1-OPERATOR-IMPLEMENTATION-PROVENANCE",
       "path": "Data/03_Research/atomic_predictive_v1_operator_implementation_provenance.json",
-      "sha256": "6e5bebce1ee96e6ad1d2030882eb846d701a97a30131f63746436c8b7223a847",
+      "sha256": "8091eea6f0a3b0e8cb17e97e4622a8b01abb30209bb37004edbbda069cce7d21",
       "status": "PROVENANCE_CONTRACT_READY_IMPLEMENTATION_MISSING"
     },
     "metrics": {
       "accepted_fixed_correction_operator_count": 0,
+      "candidate_implementation_review_present": true,
       "operator_acceptance_decision_blocking_count": 3,
       "operator_parameter_preflight_blocking_count": 0,
       "operator_parameter_set_count": 1,
@@ -2108,15 +2120,18 @@
     ],
     "required_provenance_evidence": [
       {
-        "blocker_reason": "target module is present, but no accepted delta_uet_or_ci operator class exists",
+        "blocker_reason": "candidate module path, source hash, entrypoint, return key, and selected implementation class are locked for review, but no accepted delta_uet_or_ci operator class exists yet",
         "evidence_exists": true,
         "evidence_id": "PROV-01",
         "evidence_path": "Code/03_Research/Research_Atomic_Operator_V1.py",
         "evidence_sha256": "08f1f86a224ee728b6adabcc1753528609ce56eb54416085d6936e798a54ba12",
-        "manifest_status": "CANDIDATE_PRESENT_ACCEPTED_OPERATOR_MISSING",
+        "manifest_status": "CANDIDATE_IDENTITY_LOCK_READY_ACCEPTED_OPERATOR_MISSING",
         "required_artifact": "accepted operator implementation record with code hash and operator class",
         "requirement": "Accepted operator source code is identified by module path, entrypoint, commit hash or source hash, and operator class.",
-        "status": "BLOCKING_CANDIDATE_SOURCE_ONLY"
+        "status": "BLOCKING_ACCEPTED_OPERATOR_CLASS_MISSING_CANDIDATE_IDENTITY_LOCKED",
+        "supporting_review_record_exists": true,
+        "supporting_review_record_path": "Data/03_Research/atomic_predictive_v1_operator_candidate_implementation_review.json",
+        "supporting_review_record_sha256": "a0cbb6fb7a7eb0fbf66863f8414e156daf4d17250e362e9f9a64832feb0a9102"
       },
       {
         "blocker_reason": "operator parameter set is present and locked for review, but no accepted delta_uet_or_ci operator class exists yet",
@@ -2127,7 +2142,10 @@
         "manifest_status": "PARAMETER_MANIFEST_PRESENT_ACCEPTED_PARAMETER_SET_EMPTY",
         "required_artifact": "operator parameter manifest with non-empty accepted parameter set and lock timestamp",
         "requirement": "All operator parameters are listed, typed, unit-tagged, and locked before holdout or CHIANTI rows are evaluated.",
-        "status": "BLOCKING_ACCEPTED_OPERATOR_MISSING_PARAMETER_SET_READY"
+        "status": "BLOCKING_ACCEPTED_OPERATOR_MISSING_PARAMETER_SET_READY",
+        "supporting_review_record_exists": false,
+        "supporting_review_record_path": null,
+        "supporting_review_record_sha256": null
       },
       {
         "blocker_reason": null,
@@ -2138,29 +2156,38 @@
         "manifest_status": "PRESENT",
         "required_artifact": "operator training/holdout split manifest with source row IDs and hashes",
         "requirement": "Training/calibration rows are explicitly separated from holdout and external cross-check rows.",
-        "status": "PRESENT"
+        "status": "PRESENT",
+        "supporting_review_record_exists": false,
+        "supporting_review_record_path": null,
+        "supporting_review_record_sha256": null
       },
       {
-        "blocker_reason": "residual rows exist, but they are emitted by the diagnostic wrapper, not an accepted operator",
+        "blocker_reason": "diagnostic residual rows are locked to the current candidate emitter, but no accepted operator emits delta_uet_or_ci residual rows yet",
         "evidence_exists": true,
         "evidence_id": "PROV-04",
         "evidence_path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
         "evidence_sha256": "4ff227989cb8a92f646ddea63aab0e7092874af350b93771500e05a69d7edc5c",
-        "manifest_status": "DIAGNOSTIC_RESIDUAL_ROWS_PRESENT_ACCEPTED_OPERATOR_MISSING",
+        "manifest_status": "DIAGNOSTIC_RESIDUAL_ROWS_LOCK_READY_ACCEPTED_OPERATOR_MISSING",
         "required_artifact": "operator residual rows with accepted_operator_class and accepted_as_delta_uet_or_ci=true",
         "requirement": "Residual rows are emitted by the accepted operator, not by the current diagnostic quantum-defect wrapper.",
-        "status": "BLOCKING_DIAGNOSTIC_RESIDUALS_ONLY"
+        "status": "BLOCKING_ACCEPTED_RESIDUAL_EMITTER_MISSING_DIAGNOSTIC_ROWS_LOCKED",
+        "supporting_review_record_exists": true,
+        "supporting_review_record_path": "Data/03_Research/atomic_predictive_v1_operator_candidate_implementation_review.json",
+        "supporting_review_record_sha256": "a0cbb6fb7a7eb0fbf66863f8414e156daf4d17250e362e9f9a64832feb0a9102"
       },
       {
-        "blocker_reason": "uncertainty policy exists, but uncertainty is not sourced from an accepted operator",
+        "blocker_reason": "diagnostic uncertainty policy is locked for review, but no accepted operator sources row-level uncertainty provenance yet",
         "evidence_exists": true,
         "evidence_id": "PROV-05",
         "evidence_path": "Data/03_Research/atomic_predictive_v1_operator_uncertainty_policy.json",
         "evidence_sha256": "494a809a6001a42fbc4e2b3c431392d8997e2720f4593a0b88cc9c3d2bb7fa3c",
-        "manifest_status": "UNCERTAINTY_POLICY_PRESENT_ACCEPTED_OPERATOR_UNCERTAINTY_MISSING",
+        "manifest_status": "UNCERTAINTY_POLICY_LOCK_READY_ACCEPTED_OPERATOR_UNCERTAINTY_MISSING",
         "required_artifact": "operator uncertainty provenance rows tied to accepted residual rows",
         "requirement": "Model uncertainty is sourced from the accepted operator or is explicitly noncomputable with a blocker reason for every residual row.",
-        "status": "BLOCKING_POLICY_ONLY_ACCEPTED_UNCERTAINTY_MISSING"
+        "status": "BLOCKING_ACCEPTED_OPERATOR_UNCERTAINTY_SOURCE_MISSING_DIAGNOSTIC_POLICY_LOCKED",
+        "supporting_review_record_exists": true,
+        "supporting_review_record_path": "Data/03_Research/atomic_predictive_v1_operator_candidate_implementation_review.json",
+        "supporting_review_record_sha256": "a0cbb6fb7a7eb0fbf66863f8414e156daf4d17250e362e9f9a64832feb0a9102"
       }
     ],
     "role": "atomic_predictive_v1_operator_implementation_provenance_gate",
@@ -3227,7 +3254,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-11T20:21:10.306450+00:00",
+  "generated_at_utc": "2026-06-11T20:33:15.360063+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -6149,7 +6176,7 @@
     },
     {
       "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/atomic_predictive_v1_operator_implementation_provenance.json",
-      "sha256": "6e5bebce1ee96e6ad1d2030882eb846d701a97a30131f63746436c8b7223a847",
+      "sha256": "8091eea6f0a3b0e8cb17e97e4622a8b01abb30209bb37004edbbda069cce7d21",
       "source": "Define the implementation-provenance evidence required before any atomic predictive-v1 residual rows can be accepted as delta_uet_or_ci output.",
       "source_rows": [
         "PROV-01",

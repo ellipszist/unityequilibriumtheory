@@ -20,6 +20,18 @@ blockers were actually narrowed.
 
 ## Entries
 
+### 2026-06-12 - Lock candidate implementation review state for provenance
+
+- Scope: `atomic_predictive_v1_operator_candidate_implementation_review.json`, `atomic_predictive_v1_operator_implementation_provenance.json`, `Research_Rydberg_Validation.py`, primary artifact, topic docs
+- Added or changed: Added a dedicated candidate implementation review record and updated the implementation-provenance gate so `PROV-01/04/05` now distinguish locked candidate code identity, locked diagnostic residual emission, and locked diagnostic uncertainty policy from truly accepted operator provenance.
+- Files touched: `Data/03_Research/atomic_predictive_v1_operator_candidate_implementation_review.json`, `Data/03_Research/atomic_predictive_v1_operator_implementation_provenance.json`, `Code/03_Research/Research_Rydberg_Validation.py`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `FORMULA_AUDIT.md`, `DATA_MANIFEST.md`, `VERIFICATION_SPEC.md`, `UPDATE_LOG.md`, `Result/artifacts/0_20_atomic_physics_verification.json`
+- Verified with: `python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validation.py`
+- Result: The operator implementation-provenance gate remains `PROVENANCE_CONTRACT_READY_IMPLEMENTATION_MISSING` with `1/5` evidence rows present and `4/5` blocking, but `PROV-01 = BLOCKING_ACCEPTED_OPERATOR_CLASS_MISSING_CANDIDATE_IDENTITY_LOCKED`, `PROV-04 = BLOCKING_ACCEPTED_RESIDUAL_EMITTER_MISSING_DIAGNOSTIC_ROWS_LOCKED`, and `PROV-05 = BLOCKING_ACCEPTED_OPERATOR_UNCERTAINTY_SOURCE_MISSING_DIAGNOSTIC_POLICY_LOCKED`.
+- Blocker narrowed: The remaining provenance gap is no longer just “accepted operator missing.” It is now explicit that candidate module identity, diagnostic rows, and diagnostic uncertainty policy are review-locked while accepted operator provenance is still absent.
+- Still open: Accepted fixed CI/UET correction operator, accepted residual rows with `accepted_as_delta_uet_or_ci=true`, accepted operator uncertainty provenance, validation-ready thresholds, and independent non-NIST helium source lineage.
+- Claim impact: `no change`
+- Notes: This wave does not promote the diagnostic module into an accepted operator. It only makes the current implementation-review state reconstructable from the artifact.
+
 ### 2026-06-12 - Promote the review-only parameter set into parameter_sets
 
 - Scope: `atomic_predictive_v1_operator_parameters.json`, `Research_Rydberg_Validation.py`, primary artifact, topic docs
