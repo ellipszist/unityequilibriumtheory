@@ -20,6 +20,16 @@ blockers were actually narrowed.
 
 ## Entries
 
+### 2026-06-11 - Narrow parameter preflight root blocker
+
+- Scope: `Research_Rydberg_Validation.py`, topic docs, primary artifact
+- Added or changed: Reworked predictive-v1 parameter preflight reporting so an empty accepted-parameter set now registers as the root blocker, while the remaining field/class/lock/forbidden-source checks stay explicitly not yet evaluable instead of looking like independent failures.
+- Verified with: `python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validation.py`
+- Result: Parameter preflight still blocks operator acceptance, but now shows `1` direct blocker and `4` not-yet-evaluated checks rather than a misleading `5/5` failure wall.
+- Blocker narrowed: The next required move is now unambiguous: create the first accepted parameter set candidate before deeper parameter-field validation can even begin.
+- Still open: Accepted fixed CI/UET correction operator, first accepted parameter set, accepted residual emitter, and accepted operator uncertainty provenance.
+- Claim impact: `no change`
+
 ### 2026-06-11 - Normalize operator provenance candidate evidence
 
 - Scope: `atomic_predictive_v1_operator_uncertainty_policy.json`, `Research_Rydberg_Validation.py`, primary artifact

@@ -4480,6 +4480,7 @@ def build_atomic_predictive_v1_operator_parameter_acceptance_preflight_gate(
     operator_parameters_manifest: dict,
 ) -> dict:
     parameter_sets = operator_parameters_manifest.get("parameter_sets", [])
+    parameter_sets_present = bool(parameter_sets)
     required_set_fields = operator_parameter_preflight_manifest.get("required_parameter_set_fields", [])
     required_parameter_fields = operator_parameter_preflight_manifest.get("required_parameter_fields", [])
     allowed_operator_classes = set(operator_parameter_preflight_manifest.get("allowed_operator_classes", []))
@@ -4559,43 +4560,76 @@ def build_atomic_predictive_v1_operator_parameter_acceptance_preflight_gate(
         {
             "check_id": "PARAM-PREFLIGHT-02",
             "requirement": "Every parameter set must identify operator_id=delta_uet_or_ci and a permitted operator class.",
-            "status": "PASS" if parameter_sets and not operator_class_failures else "BLOCKING_OPERATOR_CLASS_MISSING",
-            "evidence": operator_class_failures,
+            "status": (
+                "PASS"
+                if parameter_sets_present and not operator_class_failures
+                else "NOT_EVALUATED_ACCEPTED_PARAMETER_SET_MISSING"
+                if not parameter_sets_present
+                else "BLOCKING_OPERATOR_CLASS_MISSING"
+            ),
+            "evidence": (
+                {"blocked_by": "PARAM-PREFLIGHT-01", "parameter_set_count": 0}
+                if not parameter_sets_present
+                else operator_class_failures
+            ),
         },
         {
             "check_id": "PARAM-PREFLIGHT-03",
             "requirement": "Every parameter and parameter set must carry required typed/unit/source fields.",
             "status": (
                 "PASS"
-                if parameter_sets and not missing_set_field_rows and not missing_parameter_field_rows
+                if parameter_sets_present and not missing_set_field_rows and not missing_parameter_field_rows
+                else "NOT_EVALUATED_ACCEPTED_PARAMETER_SET_MISSING"
+                if not parameter_sets_present
                 else "BLOCKING_PARAMETER_FIELDS_MISSING"
             ),
-            "evidence": {
-                "missing_parameter_set_fields": missing_set_field_rows,
-                "missing_parameter_fields": missing_parameter_field_rows,
-            },
+            "evidence": (
+                {"blocked_by": "PARAM-PREFLIGHT-01", "parameter_set_count": 0}
+                if not parameter_sets_present
+                else {
+                    "missing_parameter_set_fields": missing_set_field_rows,
+                    "missing_parameter_fields": missing_parameter_field_rows,
+                }
+            ),
         },
         {
             "check_id": "PARAM-PREFLIGHT-04",
             "requirement": "The parameter set must be locked before holdout or CHIANTI rows are evaluated.",
-            "status": "PASS" if parameter_sets and not lock_failures else "BLOCKING_LOCK_RULE_UNSATISFIED",
-            "evidence": lock_failures,
+            "status": (
+                "PASS"
+                if parameter_sets_present and not lock_failures
+                else "NOT_EVALUATED_ACCEPTED_PARAMETER_SET_MISSING"
+                if not parameter_sets_present
+                else "BLOCKING_LOCK_RULE_UNSATISFIED"
+            ),
+            "evidence": (
+                {"blocked_by": "PARAM-PREFLIGHT-01", "parameter_set_count": 0}
+                if not parameter_sets_present
+                else lock_failures
+            ),
         },
         {
             "check_id": "PARAM-PREFLIGHT-05",
             "requirement": "Holdout and CHIANTI rows must be forbidden parameter sources.",
             "status": (
                 "PASS"
-                if parameter_sets and not forbidden_source_policy_failures
+                if parameter_sets_present and not forbidden_source_policy_failures
+                else "NOT_EVALUATED_ACCEPTED_PARAMETER_SET_MISSING"
+                if not parameter_sets_present
                 else "BLOCKING_FORBIDDEN_SOURCE_POLICY_INCOMPLETE"
             ),
-            "evidence": forbidden_source_policy_failures,
+            "evidence": (
+                {"blocked_by": "PARAM-PREFLIGHT-01", "parameter_set_count": 0}
+                if not parameter_sets_present
+                else forbidden_source_policy_failures
+            ),
         },
     ]
     blocking_count = sum(1 for check in checks if check["status"].startswith("BLOCKING"))
+    not_evaluated_count = sum(1 for check in checks if check["status"].startswith("NOT_EVALUATED"))
     status = (
         "PARAMETER_PREFLIGHT_READY_FOR_OPERATOR_ACCEPTANCE"
-        if parameter_sets and blocking_count == 0
+        if parameter_sets_present and blocking_count == 0
         else "PARAMETER_PREFLIGHT_BLOCKING_ACCEPTED_PARAMETER_SET"
     )
     return {
@@ -4630,6 +4664,7 @@ def build_atomic_predictive_v1_operator_parameter_acceptance_preflight_gate(
             "parameter_count": sum(len(row.get("parameters", [])) for row in parameter_sets),
             "preflight_check_count": len(checks),
             "preflight_blocking_count": blocking_count,
+            "preflight_not_evaluated_count": not_evaluated_count,
             "missing_parameter_set_field_row_count": len(missing_set_field_rows),
             "missing_parameter_field_row_count": len(missing_parameter_field_rows),
             "operator_class_failure_count": len(operator_class_failures),
@@ -4640,6 +4675,7 @@ def build_atomic_predictive_v1_operator_parameter_acceptance_preflight_gate(
         "next_required_artifacts": [
             "Data/03_Research/atomic_predictive_v1_operator_parameters.json with non-empty parameter_sets",
             "parameter rows with typed values, units, source hashes, uncertainty policy, and lock timestamp",
+            "first accepted parameter set must declare allowed operator_class, calibration_source_rows, forbidden_source_rows, and source_hashes before holdout evaluation",
         ],
         "claim_boundary": operator_parameter_preflight_manifest.get("claim_boundary"),
     }

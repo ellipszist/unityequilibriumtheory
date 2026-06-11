@@ -2027,7 +2027,7 @@
     "metrics": {
       "accepted_fixed_correction_operator_count": 0,
       "operator_acceptance_decision_blocking_count": 3,
-      "operator_parameter_preflight_blocking_count": 5,
+      "operator_parameter_preflight_blocking_count": 1,
       "operator_parameter_set_count": 0,
       "operator_residual_rows_present": true,
       "operator_uncertainty_policy_present": true,
@@ -2055,7 +2055,7 @@
         "status": "BLOCKING_CANDIDATE_SOURCE_ONLY"
       },
       {
-        "blocker_reason": "operator parameter manifest exists, but accepted operator parameter set remains empty; parameter preflight blockers = 5",
+        "blocker_reason": "operator parameter manifest exists, but accepted operator parameter set remains empty; parameter preflight blockers = 1",
         "evidence_exists": true,
         "evidence_id": "PROV-02",
         "evidence_path": "Data/03_Research/atomic_predictive_v1_operator_parameters.json",
@@ -2120,30 +2120,39 @@
       },
       {
         "check_id": "PARAM-PREFLIGHT-02",
-        "evidence": [],
+        "evidence": {
+          "blocked_by": "PARAM-PREFLIGHT-01",
+          "parameter_set_count": 0
+        },
         "requirement": "Every parameter set must identify operator_id=delta_uet_or_ci and a permitted operator class.",
-        "status": "BLOCKING_OPERATOR_CLASS_MISSING"
+        "status": "NOT_EVALUATED_ACCEPTED_PARAMETER_SET_MISSING"
       },
       {
         "check_id": "PARAM-PREFLIGHT-03",
         "evidence": {
-          "missing_parameter_fields": [],
-          "missing_parameter_set_fields": []
+          "blocked_by": "PARAM-PREFLIGHT-01",
+          "parameter_set_count": 0
         },
         "requirement": "Every parameter and parameter set must carry required typed/unit/source fields.",
-        "status": "BLOCKING_PARAMETER_FIELDS_MISSING"
+        "status": "NOT_EVALUATED_ACCEPTED_PARAMETER_SET_MISSING"
       },
       {
         "check_id": "PARAM-PREFLIGHT-04",
-        "evidence": [],
+        "evidence": {
+          "blocked_by": "PARAM-PREFLIGHT-01",
+          "parameter_set_count": 0
+        },
         "requirement": "The parameter set must be locked before holdout or CHIANTI rows are evaluated.",
-        "status": "BLOCKING_LOCK_RULE_UNSATISFIED"
+        "status": "NOT_EVALUATED_ACCEPTED_PARAMETER_SET_MISSING"
       },
       {
         "check_id": "PARAM-PREFLIGHT-05",
-        "evidence": [],
+        "evidence": {
+          "blocked_by": "PARAM-PREFLIGHT-01",
+          "parameter_set_count": 0
+        },
         "requirement": "Holdout and CHIANTI rows must be forbidden parameter sources.",
-        "status": "BLOCKING_FORBIDDEN_SOURCE_POLICY_INCOMPLETE"
+        "status": "NOT_EVALUATED_ACCEPTED_PARAMETER_SET_MISSING"
       }
     ],
     "claim_boundary": "This preflight manifest defines acceptance checks for future operator parameters. It does not create a parameter set or accept an operator.",
@@ -2163,12 +2172,14 @@
       "operator_class_failure_count": 0,
       "parameter_count": 0,
       "parameter_set_count": 0,
-      "preflight_blocking_count": 5,
-      "preflight_check_count": 5
+      "preflight_blocking_count": 1,
+      "preflight_check_count": 5,
+      "preflight_not_evaluated_count": 4
     },
     "next_required_artifacts": [
       "Data/03_Research/atomic_predictive_v1_operator_parameters.json with non-empty parameter_sets",
-      "parameter rows with typed values, units, source hashes, uncertainty policy, and lock timestamp"
+      "parameter rows with typed values, units, source hashes, uncertainty policy, and lock timestamp",
+      "first accepted parameter set must declare allowed operator_class, calibration_source_rows, forbidden_source_rows, and source_hashes before holdout evaluation"
     ],
     "operator_parameter_manifest": {
       "accepted_operator_class": null,
@@ -2977,7 +2988,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-11T12:30:34.853971+00:00",
+  "generated_at_utc": "2026-06-11T12:33:44.703231+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -6080,7 +6091,7 @@
     "atomic_predictive_v1_operator_candidate_missing_acceptable_paths": 2,
     "atomic_predictive_v1_operator_candidate_rejected_existing": 5,
     "atomic_predictive_v1_operator_candidate_resolutions": 7,
-    "atomic_predictive_v1_operator_parameter_preflight_blockers": 5,
+    "atomic_predictive_v1_operator_parameter_preflight_blockers": 1,
     "atomic_predictive_v1_operator_parameter_preflight_checks": 5,
     "atomic_predictive_v1_operator_parameter_preflight_parameter_sets": 0,
     "atomic_predictive_v1_operator_provenance_blockers": 4,
