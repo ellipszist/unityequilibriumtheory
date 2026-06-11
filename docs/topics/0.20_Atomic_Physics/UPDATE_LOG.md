@@ -20,6 +20,18 @@ blockers were actually narrowed.
 
 ## Entries
 
+### 2026-06-12 - Freeze selected-class placeholders and reach promotion-review ready state
+
+- Scope: `atomic_predictive_v1_operator_parameters.json`, `Research_Rydberg_Validation.py`, primary artifact, topic docs
+- Added or changed: Replaced class-selection placeholders with explicit selected-class noncomputable placeholders, recorded a review freeze timestamp, narrowed claim use to review-only, and updated the selection-review gate so its next-step guidance matches the now-ready promotion state.
+- Files touched: `Data/03_Research/atomic_predictive_v1_operator_parameters.json`, `Code/03_Research/Research_Rydberg_Validation.py`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `FORMULA_AUDIT.md`, `DATA_MANIFEST.md`, `VERIFICATION_SPEC.md`, `UPDATE_LOG.md`, `Result/artifacts/0_20_atomic_physics_verification.json`
+- Verified with: `python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validation.py`
+- Result: The current candidate now reaches `READY_FOR_PROMOTION_REVIEW`; the promotion gate is `CANDIDATE_PROMOTION_REVIEW_READY` with `1` ready candidate and `0` blockers, while the selection-review gate stays `SELECTION_REVIEW_READY_CANDIDATE_CLASS_SELECTED`.
+- Blocker narrowed: The next work is no longer candidate cleanup; it is explicit promotion into `parameter_sets`, followed later by replacing selected-class placeholders with sourced fixed CI/correlated values once the accepted calibration procedure is locked.
+- Still open: Accepted parameter set, accepted fixed CI/UET correction operator, accepted residual emitter, accepted operator uncertainty provenance, validation-ready thresholds, and independent non-NIST helium source lineage.
+- Claim impact: `no change`
+- Notes: This pass does not invent physical CI values. It only makes the review-ready placeholder state machine-readable and timestamped.
+
 ### 2026-06-11 - Select the first operator class for the current candidate
 
 - Scope: `atomic_predictive_v1_operator_parameters.json`, `Research_Rydberg_Validation.py`, primary artifact, topic docs

@@ -4879,6 +4879,9 @@ def build_atomic_predictive_v1_operator_class_selection_review_gate(
     current_selected_operator_class = (
         candidate_rows[0].get("selected_operator_class") if candidate_rows else None
     )
+    candidate_promotion_blocking_count = parameter_candidate_promotion_gate["metrics"][
+        "promotion_blocking_count"
+    ]
     for option in class_selection_manifest.get("selection_options", []):
         operator_class = option.get("operator_class")
         build_lane = build_spec_lanes.get(operator_class, {})
@@ -4914,12 +4917,20 @@ def build_atomic_predictive_v1_operator_class_selection_review_gate(
     )
     next_required_artifacts = []
     if current_selected_operator_class:
-        next_required_artifacts.extend(
-            [
-                "replace placeholder parameter rows with sourced values or explicit noncomputable placeholders allowed by the selected class",
-                "record lock timestamp before holdout evaluation",
-            ]
-        )
+        if candidate_promotion_blocking_count == 0:
+            next_required_artifacts.extend(
+                [
+                    "promote the current candidate into parameter_sets only after explicit promotion review",
+                    "replace selected-class placeholders with sourced fixed CI/correlated values when the accepted calibration procedure is locked",
+                ]
+            )
+        else:
+            next_required_artifacts.extend(
+                [
+                    "replace placeholder parameter rows with sourced values or explicit noncomputable placeholders allowed by the selected class",
+                    "record lock timestamp before holdout evaluation",
+                ]
+            )
     else:
         next_required_artifacts.extend(
             [
@@ -4950,9 +4961,7 @@ def build_atomic_predictive_v1_operator_class_selection_review_gate(
             "recommended_option_count": sum(
                 1 for row in option_rows if row["recommendation_status"] == "RECOMMENDED_FIRST_SELECTION"
             ),
-            "candidate_promotion_blocking_count": parameter_candidate_promotion_gate["metrics"][
-                "promotion_blocking_count"
-            ],
+            "candidate_promotion_blocking_count": candidate_promotion_blocking_count,
             "uet_operator_blocking_requirement_count": uet_atomic_operator_readiness_gate["metrics"][
                 "blocking_requirement_count"
             ],
