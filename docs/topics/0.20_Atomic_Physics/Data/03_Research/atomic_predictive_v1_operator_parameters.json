@@ -8,6 +8,76 @@
   "operator_id": "delta_uet_or_ci",
   "accepted_operator_class": null,
   "parameter_sets": [],
+  "parameter_set_candidates": [
+    {
+      "candidate_id": "candidate_ci_or_uet_operator_v1",
+      "status": "CANDIDATE_ONLY_NOT_ACCEPTED",
+      "operator_id": "delta_uet_or_ci",
+      "selected_operator_class": null,
+      "allowed_operator_class_options": [
+        "fixed_parameter_ci_or_correlated_two_electron_correction",
+        "explicit_uet_atomic_hamiltonian_or_transition_operator_correction"
+      ],
+      "parameters": [
+        {
+          "parameter_id": "delta_uet_or_ci_primary_strength",
+          "value": null,
+          "unit": "pending_operator_class_selection",
+          "parameter_type": "candidate_placeholder",
+          "fit_status": "not_locked_not_accepted",
+          "source": "pending accepted operator class and calibration rule",
+          "uncertainty": {
+            "status": "noncomputable_until_operator_class_selection",
+            "reason": "No accepted CI/UET operator class or locked calibration procedure exists yet."
+          }
+        },
+        {
+          "parameter_id": "delta_uet_or_ci_energy_or_action_scale",
+          "value": null,
+          "unit": "pending_operator_class_selection",
+          "parameter_type": "candidate_placeholder",
+          "fit_status": "not_locked_not_accepted",
+          "source": "pending accepted operator class and calibration rule",
+          "uncertainty": {
+            "status": "noncomputable_until_operator_class_selection",
+            "reason": "No accepted CI/UET operator class or locked calibration procedure exists yet."
+          }
+        }
+      ],
+      "lock_timestamp_utc": null,
+      "locked_before_holdout_evaluation": false,
+      "calibration_source_rows": [
+        "he_i_visible_388_86489",
+        "he_i_visible_447_14802",
+        "he_i_visible_587_56148",
+        "he_i_visible_667_81517",
+        "he_i_visible_706_51771"
+      ],
+      "forbidden_source_rows": [
+        "Data/03_Research/helium_quantum_defect_holdout_sources.json",
+        "Data/03_Research/external_holdouts/chianti_he_i/source_manifest.json"
+      ],
+      "source_hashes": [
+        {
+          "path": "Data/03_Research/helium_transition_assignments.json",
+          "sha256": "b5ebfa25e37e2ab6d994ffc870ad775068499f048bc60ac78d6315d8550f5e67",
+          "role": "calibration term and level package"
+        },
+        {
+          "path": "Data/03_Research/atomic_predictive_v1_operator_training_holdout_split.json",
+          "sha256": "531b080b19d694e7ea12559ba37b8b8791d1d387084cffed9391627792fda5c7",
+          "role": "row separation policy"
+        }
+      ],
+      "claim_use": "candidate_blueprint_only_not_validation",
+      "blocked_until": [
+        "accepted operator class is selected",
+        "parameter values are sourced from a locked calibration procedure",
+        "lock timestamp is recorded before holdout evaluation",
+        "candidate is promoted into parameter_sets only after acceptance review"
+      ]
+    }
+  ],
   "first_parameter_set_candidate_blueprint": {
     "status": "CANDIDATE_BLUEPRINT_ONLY_NOT_ACCEPTED",
     "parameter_set_id": "candidate_ci_or_uet_operator_v1",
@@ -86,5 +156,5 @@
     "empty parameter set is an accepted correction operator",
     "operator parameters may be fitted after viewing holdout residuals"
   ],
-  "claim_boundary": "This manifest freezes the absence of accepted operator parameters and provides a blueprint for the first candidate set. It does not implement delta_uet_or_ci."
+  "claim_boundary": "This manifest freezes the absence of accepted operator parameters and provides candidate parameter-set scaffolding only. It does not implement delta_uet_or_ci."
 }

@@ -20,6 +20,16 @@ blockers were actually narrowed.
 
 ## Entries
 
+### 2026-06-11 - Add concrete unaccepted parameter-set candidate
+
+- Scope: `atomic_predictive_v1_operator_parameters.json`, `Research_Rydberg_Validation.py`, topic docs, primary artifact
+- Added or changed: Added `parameter_set_candidates` with one concrete unaccepted candidate tied to the current calibration rows, source hashes, forbidden sources, placeholder parameter rows, and blocked-until list; surfaced candidate counts and summary rows in the parameter-preflight gate.
+- Verified with: `python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validation.py`
+- Result: The operator parameter lane still has `0` accepted parameter sets, but now has `1` candidate record that can be promoted later instead of starting from an empty manifest.
+- Blocker narrowed: The next step is no longer "invent the first parameter set"; it is "promote or revise the existing candidate once operator class and parameter values are real."
+- Still open: Accepted fixed CI/UET correction operator, promotion of the candidate into an accepted parameter set, accepted residual emitter, and accepted operator uncertainty provenance.
+- Claim impact: `no change`
+
 ### 2026-06-11 - Add first operator parameter-set blueprint
 
 - Scope: `atomic_predictive_v1_operator_parameters.json`, `Research_Rydberg_Validation.py`, topic docs, primary artifact

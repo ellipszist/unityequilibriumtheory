@@ -1446,7 +1446,7 @@
             "path": "Data/03_Research/atomic_predictive_v1_operator_parameters.json",
             "purpose": "Freeze operator parameters before holdout evaluation.",
             "required_before_acceptance": true,
-            "sha256": "a49b12a76c768e751e988f76d1c3ee84543e69cc7194981215531622edd4d11b"
+            "sha256": "148bc04df1a02a3487ddf89dc5ef70b49055995a454769964660e50f90820965"
           },
           {
             "artifact_id": "operator_residual_rows",
@@ -1620,7 +1620,7 @@
         "path": "Data/03_Research/atomic_predictive_v1_operator_parameters.json",
         "purpose": "Freeze operator parameters before holdout evaluation.",
         "required_before_acceptance": true,
-        "sha256": "a49b12a76c768e751e988f76d1c3ee84543e69cc7194981215531622edd4d11b"
+        "sha256": "148bc04df1a02a3487ddf89dc5ef70b49055995a454769964660e50f90820965"
       },
       {
         "artifact_id": "operator_residual_rows",
@@ -1999,7 +1999,7 @@
       "current_rows_allowed_use": "diagnostic_only_not_validation",
       "diagnostic_residual_row_count": 3,
       "parameter_manifest_exists": true,
-      "parameter_manifest_sha256": "a49b12a76c768e751e988f76d1c3ee84543e69cc7194981215531622edd4d11b",
+      "parameter_manifest_sha256": "148bc04df1a02a3487ddf89dc5ef70b49055995a454769964660e50f90820965",
       "residual_rows_artifact_exists": true,
       "residual_rows_artifact_sha256": "4ff227989cb8a92f646ddea63aab0e7092874af350b93771500e05a69d7edc5c",
       "target_module_entrypoint_present": true,
@@ -2059,7 +2059,7 @@
         "evidence_exists": true,
         "evidence_id": "PROV-02",
         "evidence_path": "Data/03_Research/atomic_predictive_v1_operator_parameters.json",
-        "evidence_sha256": "a49b12a76c768e751e988f76d1c3ee84543e69cc7194981215531622edd4d11b",
+        "evidence_sha256": "148bc04df1a02a3487ddf89dc5ef70b49055995a454769964660e50f90820965",
         "manifest_status": "PARAMETER_MANIFEST_PRESENT_ACCEPTED_PARAMETER_SET_EMPTY",
         "required_artifact": "operator parameter manifest with non-empty accepted parameter set and lock timestamp",
         "requirement": "All operator parameters are listed, typed, unit-tagged, and locked before holdout or CHIANTI rows are evaluated.",
@@ -2239,6 +2239,7 @@
       "missing_parameter_set_field_row_count": 0,
       "operator_class_failure_count": 0,
       "parameter_count": 0,
+      "parameter_set_candidate_count": 1,
       "parameter_set_count": 0,
       "preflight_blocking_count": 1,
       "preflight_check_count": 5,
@@ -2253,10 +2254,34 @@
       "accepted_operator_class": null,
       "first_parameter_set_candidate_blueprint_status": "CANDIDATE_BLUEPRINT_ONLY_NOT_ACCEPTED",
       "manifest_id": "AT20-PREDICTIVE-V1-OPERATOR-PARAMETERS",
+      "parameter_set_candidate_count": 1,
       "path": "Data/03_Research/atomic_predictive_v1_operator_parameters.json",
-      "sha256": "a49b12a76c768e751e988f76d1c3ee84543e69cc7194981215531622edd4d11b",
+      "sha256": "148bc04df1a02a3487ddf89dc5ef70b49055995a454769964660e50f90820965",
       "status": "PARAMETER_MANIFEST_READY_NO_ACCEPTED_OPERATOR_PARAMETERS"
     },
+    "parameter_set_candidates": [
+      {
+        "allowed_operator_class_options": [
+          "fixed_parameter_ci_or_correlated_two_electron_correction",
+          "explicit_uet_atomic_hamiltonian_or_transition_operator_correction"
+        ],
+        "blocked_until": [
+          "accepted operator class is selected",
+          "parameter values are sourced from a locked calibration procedure",
+          "lock timestamp is recorded before holdout evaluation",
+          "candidate is promoted into parameter_sets only after acceptance review"
+        ],
+        "calibration_source_row_count": 5,
+        "candidate_id": "candidate_ci_or_uet_operator_v1",
+        "claim_use": "candidate_blueprint_only_not_validation",
+        "forbidden_source_row_count": 2,
+        "locked_before_holdout_evaluation": false,
+        "parameter_count": 2,
+        "selected_operator_class": null,
+        "source_hash_count": 2,
+        "status": "CANDIDATE_ONLY_NOT_ACCEPTED"
+      }
+    ],
     "parameter_sets": [],
     "role": "atomic_predictive_v1_operator_parameter_acceptance_preflight_gate",
     "schema_version": "1.0",
@@ -3057,7 +3082,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-11T12:36:26.223307+00:00",
+  "generated_at_utc": "2026-06-11T12:39:29.756017+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -5947,7 +5972,7 @@
     },
     {
       "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/atomic_predictive_v1_operator_parameters.json",
-      "sha256": "a49b12a76c768e751e988f76d1c3ee84543e69cc7194981215531622edd4d11b",
+      "sha256": "148bc04df1a02a3487ddf89dc5ef70b49055995a454769964660e50f90820965",
       "source": "Freeze the current operator-v1 parameter state before any residual rows are evaluated.",
       "source_rows": [],
       "status": "PARAMETER_MANIFEST_READY_NO_ACCEPTED_OPERATOR_PARAMETERS"

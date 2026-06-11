@@ -4480,6 +4480,7 @@ def build_atomic_predictive_v1_operator_parameter_acceptance_preflight_gate(
     operator_parameters_manifest: dict,
 ) -> dict:
     parameter_sets = operator_parameters_manifest.get("parameter_sets", [])
+    parameter_set_candidates = operator_parameters_manifest.get("parameter_set_candidates", [])
     parameter_sets_present = bool(parameter_sets)
     required_set_fields = operator_parameter_preflight_manifest.get("required_parameter_set_fields", [])
     required_parameter_fields = operator_parameter_preflight_manifest.get("required_parameter_fields", [])
@@ -4656,10 +4657,27 @@ def build_atomic_predictive_v1_operator_parameter_acceptance_preflight_gate(
             "manifest_id": operator_parameters_manifest.get("manifest_id"),
             "status": operator_parameters_manifest.get("status"),
             "accepted_operator_class": operator_parameters_manifest.get("accepted_operator_class"),
+            "parameter_set_candidate_count": len(parameter_set_candidates),
             "first_parameter_set_candidate_blueprint_status": operator_parameters_manifest.get(
                 "first_parameter_set_candidate_blueprint", {}
             ).get("status"),
         },
+        "parameter_set_candidates": [
+            {
+                "candidate_id": row.get("candidate_id"),
+                "status": row.get("status"),
+                "selected_operator_class": row.get("selected_operator_class"),
+                "allowed_operator_class_options": row.get("allowed_operator_class_options", []),
+                "parameter_count": len(row.get("parameters", [])),
+                "calibration_source_row_count": len(row.get("calibration_source_rows", [])),
+                "forbidden_source_row_count": len(row.get("forbidden_source_rows", [])),
+                "source_hash_count": len(row.get("source_hashes", [])),
+                "locked_before_holdout_evaluation": row.get("locked_before_holdout_evaluation"),
+                "claim_use": row.get("claim_use"),
+                "blocked_until": row.get("blocked_until", []),
+            }
+            for row in parameter_set_candidates
+        ],
         "first_parameter_set_candidate_blueprint": operator_parameters_manifest.get(
             "first_parameter_set_candidate_blueprint", {}
         ),
@@ -4671,6 +4689,7 @@ def build_atomic_predictive_v1_operator_parameter_acceptance_preflight_gate(
             "candidate_blueprint_present": bool(
                 operator_parameters_manifest.get("first_parameter_set_candidate_blueprint")
             ),
+            "parameter_set_candidate_count": len(parameter_set_candidates),
             "candidate_blueprint_required_parameter_row_count": len(
                 operator_parameters_manifest.get("first_parameter_set_candidate_blueprint", {}).get(
                     "required_parameter_rows", []
