@@ -1462,7 +1462,7 @@
             "path": "Data/03_Research/atomic_predictive_v1_operator_uncertainty_policy.json",
             "purpose": "Declare model/source uncertainty handling before threshold reclassification.",
             "required_before_acceptance": true,
-            "sha256": "b58b55e7f287cd42b8b79a21094a46692ece577969b8a7d6d9f355f37798dfcc"
+            "sha256": "494a809a6001a42fbc4e2b3c431392d8997e2720f4593a0b88cc9c3d2bb7fa3c"
           }
         ],
         "requirement": "Parameter manifest exists and is hashed in the primary verifier artifact.",
@@ -1636,7 +1636,7 @@
         "path": "Data/03_Research/atomic_predictive_v1_operator_uncertainty_policy.json",
         "purpose": "Declare model/source uncertainty handling before threshold reclassification.",
         "required_before_acceptance": true,
-        "sha256": "b58b55e7f287cd42b8b79a21094a46692ece577969b8a7d6d9f355f37798dfcc"
+        "sha256": "494a809a6001a42fbc4e2b3c431392d8997e2720f4593a0b88cc9c3d2bb7fa3c"
       }
     ],
     "required_residual_row_schema": [
@@ -1994,9 +1994,21 @@
     "current_candidate_state": {
       "accepted_operator_class": null,
       "accepted_operator_count": 0,
+      "accepted_parameter_set_count": 0,
       "current_emitter": "empirical_quantum_defect_diagnostic_not_delta_uet_or_ci",
       "current_rows_allowed_use": "diagnostic_only_not_validation",
-      "target_module_path": "Code/03_Research/Research_Atomic_Operator_V1.py"
+      "diagnostic_residual_row_count": 3,
+      "parameter_manifest_exists": true,
+      "parameter_manifest_sha256": "04dd1beee571417fa23589338965591d4e564a410ec6e396c3c8a0441f720e86",
+      "residual_rows_artifact_exists": true,
+      "residual_rows_artifact_sha256": "4ff227989cb8a92f646ddea63aab0e7092874af350b93771500e05a69d7edc5c",
+      "target_module_entrypoint_present": true,
+      "target_module_exists": true,
+      "target_module_path": "Code/03_Research/Research_Atomic_Operator_V1.py",
+      "target_module_return_key_present": true,
+      "target_module_sha256": "08f1f86a224ee728b6adabcc1753528609ce56eb54416085d6936e798a54ba12",
+      "uncertainty_policy_exists": true,
+      "uncertainty_policy_sha256": "494a809a6001a42fbc4e2b3c431392d8997e2720f4593a0b88cc9c3d2bb7fa3c"
     },
     "forbidden_provenance_shortcuts": [
       "reuse empirical quantum-defect residual rows as accepted operator output",
@@ -2080,7 +2092,7 @@
         "evidence_exists": true,
         "evidence_id": "PROV-05",
         "evidence_path": "Data/03_Research/atomic_predictive_v1_operator_uncertainty_policy.json",
-        "evidence_sha256": "b58b55e7f287cd42b8b79a21094a46692ece577969b8a7d6d9f355f37798dfcc",
+        "evidence_sha256": "494a809a6001a42fbc4e2b3c431392d8997e2720f4593a0b88cc9c3d2bb7fa3c",
         "manifest_status": "UNCERTAINTY_POLICY_PRESENT_ACCEPTED_OPERATOR_UNCERTAINTY_MISSING",
         "required_artifact": "operator uncertainty provenance rows tied to accepted residual rows",
         "requirement": "Model uncertainty is sourced from the accepted operator or is explicitly noncomputable with a blocker reason for every residual row.",
@@ -2965,7 +2977,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-11T12:25:15.257014+00:00",
+  "generated_at_utc": "2026-06-11T12:30:34.853971+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",

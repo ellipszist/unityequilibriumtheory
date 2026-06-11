@@ -20,6 +20,16 @@ blockers were actually narrowed.
 
 ## Entries
 
+### 2026-06-11 - Normalize operator provenance candidate evidence
+
+- Scope: `atomic_predictive_v1_operator_uncertainty_policy.json`, `Research_Rydberg_Validation.py`, primary artifact
+- Added or changed: Narrowed the operator uncertainty-policy wording so it distinguishes diagnostic residual rows from accepted operator residual rows, and upgraded the operator implementation-provenance gate to emit live candidate evidence metadata (`exists`, `sha256`, entrypoint/return-key presence, parameter/residual/uncertainty artifact presence).
+- Verified with: `python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validation.py`
+- Result: Predictive-v1 provenance still blocks operator acceptance, but the candidate state is now artifact-backed instead of only narrative: target module, parameter manifest, residual rows, and uncertainty policy are all traceable with live file hashes.
+- Blocker narrowed: The remaining gap is more concretely "accepted operator missing" rather than "implementation evidence unclear".
+- Still open: Accepted fixed CI/UET correction operator, non-empty accepted parameter set, accepted residual emitter, and accepted operator uncertainty provenance.
+- Claim impact: `no change`
+
 ### 2026-06-11 - Add topic hardening update log
 
 - Scope: `README.md`, `METHOD.md`, `UPDATE_LOG.md`

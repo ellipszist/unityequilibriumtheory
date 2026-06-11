@@ -67,6 +67,9 @@ ATOMIC_PREDICTIVE_V1_OPERATOR_ACCEPTANCE_HARNESS_MANIFEST_PATH = (
 ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETERS_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_parameters.json"
 )
+ATOMIC_PREDICTIVE_V1_OPERATOR_UNCERTAINTY_POLICY_PATH = (
+    TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_uncertainty_policy.json"
+)
 ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETER_ACCEPTANCE_PREFLIGHT_PATH = (
     TOPIC_DIR
     / "Data"
@@ -4708,6 +4711,39 @@ def build_atomic_predictive_v1_operator_implementation_provenance_gate(
         "accepted_operator_count"
     ]
     harness_metrics = atomic_predictive_v1_operator_acceptance_harness_gate["metrics"]
+    candidate_state_manifest = operator_implementation_provenance_manifest.get("current_candidate_state", {})
+    target_module_path = TOPIC_DIR / candidate_state_manifest.get("target_module_path", "")
+    target_module_exists = target_module_path.exists() if candidate_state_manifest.get("target_module_path") else False
+    parameter_manifest_path = ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETERS_PATH
+    residual_rows_artifact_path = ATOMIC_PREDICTIVE_V1_OPERATOR_RESIDUAL_ROWS_PATH
+    uncertainty_policy_path = ATOMIC_PREDICTIVE_V1_OPERATOR_UNCERTAINTY_POLICY_PATH
+    current_candidate_state = {
+        **candidate_state_manifest,
+        "target_module_exists": target_module_exists,
+        "target_module_sha256": file_sha256(target_module_path) if target_module_exists else None,
+        "target_module_entrypoint_present": atomic_predictive_v1_operator_acceptance_harness_gate[
+            "target_module"
+        ].get("entrypoint_present"),
+        "target_module_return_key_present": atomic_predictive_v1_operator_acceptance_harness_gate[
+            "target_module"
+        ].get("return_key_present"),
+        "parameter_manifest_exists": parameter_manifest_path.exists(),
+        "parameter_manifest_sha256": (
+            file_sha256(parameter_manifest_path) if parameter_manifest_path.exists() else None
+        ),
+        "accepted_parameter_set_count": atomic_predictive_v1_operator_parameter_acceptance_preflight_gate[
+            "metrics"
+        ].get("parameter_set_count"),
+        "residual_rows_artifact_exists": residual_rows_artifact_path.exists(),
+        "residual_rows_artifact_sha256": (
+            file_sha256(residual_rows_artifact_path) if residual_rows_artifact_path.exists() else None
+        ),
+        "diagnostic_residual_row_count": harness_metrics.get("residual_row_count"),
+        "uncertainty_policy_exists": uncertainty_policy_path.exists(),
+        "uncertainty_policy_sha256": (
+            file_sha256(uncertainty_policy_path) if uncertainty_policy_path.exists() else None
+        ),
+    }
     for row in operator_implementation_provenance_manifest.get("required_provenance_evidence", []):
         evidence_id = row.get("evidence_id")
         current_status = row.get("current_status")
@@ -4797,7 +4833,7 @@ def build_atomic_predictive_v1_operator_implementation_provenance_gate(
             "manifest_id": operator_implementation_provenance_manifest.get("manifest_id"),
             "status": operator_implementation_provenance_manifest.get("status"),
         },
-        "current_candidate_state": operator_implementation_provenance_manifest.get("current_candidate_state", {}),
+        "current_candidate_state": current_candidate_state,
         "required_provenance_evidence": evidence_rows,
         "forbidden_provenance_shortcuts": operator_implementation_provenance_manifest.get(
             "forbidden_provenance_shortcuts", []

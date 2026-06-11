@@ -3,7 +3,7 @@
   "topic": "0.20_Atomic_Physics",
   "policy_id": "AT20-PREDICTIVE-V1-OPERATOR-UNCERTAINTY-POLICY",
   "purpose": "Declare how operator-v1 residual uncertainty must be represented before diagnostic thresholds can become validation-ready.",
-  "status": "UNCERTAINTY_POLICY_READY_OPERATOR_RESIDUALS_MISSING",
+  "status": "UNCERTAINTY_POLICY_READY_ACCEPTED_OPERATOR_RESIDUALS_MISSING",
   "operator_id": "delta_uet_or_ci",
   "required_uncertainty_fields": [
     "model_uncertainty_eV",
@@ -12,13 +12,14 @@
     "uncertainty_computable"
   ],
   "current_policy": {
-    "operator_residual_rows_present": false,
+    "diagnostic_operator_residual_rows_present": true,
+    "accepted_operator_residual_rows_present": false,
     "validation_ready_thresholds_allowed": false,
-    "reason": "No accepted operator residual rows exist yet."
+    "reason": "Diagnostic residual rows exist, but no accepted delta_uet_or_ci operator residual rows exist yet."
   },
   "blocked_claims": [
     "operator thresholds are validation-ready before residual uncertainty rows exist",
     "source transcription bounds are official measurement uncertainty without source evidence"
   ],
-  "claim_boundary": "This policy declares required uncertainty fields only. It does not make any current threshold validation-ready."
+  "claim_boundary": "This policy declares required uncertainty fields only. Diagnostic residual rows do not make any current threshold validation-ready."
 }
