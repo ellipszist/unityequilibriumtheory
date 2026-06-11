@@ -59,12 +59,19 @@ Then choose the next standard by task.
 2. [`docs/topics/For Work/03_AI_Usage_and_Governance.md`](./docs/topics/For%20Work/03_AI_Usage_and_Governance.md)
 3. [`docs/topics/For Work/04_Claim_and_Evidence_Rubric.md`](./docs/topics/For%20Work/04_Claim_and_Evidence_Rubric.md)
 4. [`docs/topics/For Work/02_Project_Workflow_and_Lifecycle.md`](./docs/topics/For%20Work/02_Project_Workflow_and_Lifecycle.md)
+5. [`docs/topics/For Work/18_Research_Hardening_Workflow.md`](./docs/topics/For%20Work/18_Research_Hardening_Workflow.md)
 
 ### If the task is topic building or refactoring
 
 1. [`docs/topics/For Work/02_Project_Workflow_and_Lifecycle.md`](./docs/topics/For%20Work/02_Project_Workflow_and_Lifecycle.md)
 2. [`docs/topics/For Work/10_Topic_Architecture_5x4.md`](./docs/topics/For%20Work/10_Topic_Architecture_5x4.md)
-3. the relevant standards in `11-17`
+3. the relevant standards in `11-18`
+
+### If the task is multi-wave hardening or progress reconstruction
+
+1. [`docs/topics/For Work/18_Research_Hardening_Workflow.md`](./docs/topics/For%20Work/18_Research_Hardening_Workflow.md)
+2. [`docs/topics/For Work/24_TEMPLATE_UPDATE_LOG.md`](./docs/topics/For%20Work/24_TEMPLATE_UPDATE_LOG.md)
+3. the local topic `README.md`, `LIMITATIONS.md`, and `VERIFICATION_SPEC.md`
 
 ### If the task is mainly question answering or learning support
 
@@ -137,6 +144,8 @@ When asked to review or improve work, default to a verification-first mindset:
 - treat generated figures and logs as outputs that should be explained by scripts and inputs
 - if a topic status is unclear, consult `docs/topics/README.md` and the metadata in
   `docs/meta/` before summarizing it
+- if a topic is moving through repeated repair passes, use the hardening workflow and keep an
+  update log so later reviewers can reconstruct what changed and why
 
 ## Git workflow
 
@@ -182,6 +191,10 @@ Suggested commit cadence:
   [`14_Result_Standard.md`](./docs/topics/For%20Work/14_Result_Standard.md)
 - Formula origin or units are unclear: open
   [`17_Formula_Audit_Standard.md`](./docs/topics/For%20Work/17_Formula_Audit_Standard.md)
+- The topic is stuck in repeated `FAIL` or `WARN` cycles: open
+  [`18_Research_Hardening_Workflow.md`](./docs/topics/For%20Work/18_Research_Hardening_Workflow.md)
+- You need a durable record of what changed across waves: open
+  [`24_TEMPLATE_UPDATE_LOG.md`](./docs/topics/For%20Work/24_TEMPLATE_UPDATE_LOG.md)
 
 ## One-line principle
 
