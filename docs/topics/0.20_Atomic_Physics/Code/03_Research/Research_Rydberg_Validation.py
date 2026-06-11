@@ -5093,6 +5093,16 @@ def build_atomic_predictive_v1_operator_implementation_provenance_gate(
                 == "PARAMETER_PREFLIGHT_READY_FOR_OPERATOR_ACCEPTANCE"
             ):
                 status = "PRESENT"
+            elif (
+                evidence_exists
+                and atomic_predictive_v1_operator_parameter_acceptance_preflight_gate["status"]
+                == "PARAMETER_PREFLIGHT_READY_FOR_OPERATOR_ACCEPTANCE"
+            ):
+                status = "BLOCKING_ACCEPTED_OPERATOR_MISSING_PARAMETER_SET_READY"
+                blocker_reason = (
+                    "operator parameter set is present and locked for review, but no accepted "
+                    "delta_uet_or_ci operator class exists yet"
+                )
             else:
                 status = "BLOCKING_EMPTY_ACCEPTED_PARAMETER_SET"
                 blocker_reason = (

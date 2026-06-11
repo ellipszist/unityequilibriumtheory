@@ -20,6 +20,18 @@ blockers were actually narrowed.
 
 ## Entries
 
+### 2026-06-12 - Promote the review-only parameter set into parameter_sets
+
+- Scope: `atomic_predictive_v1_operator_parameters.json`, `Research_Rydberg_Validation.py`, primary artifact, topic docs
+- Added or changed: Promoted the fixed CI/correlated review-only parameter set into `parameter_sets`, preserved the candidate trail, and refined `PROV-02` so the provenance gate distinguishes parameter-set readiness from missing accepted operator implementation.
+- Files touched: `Data/03_Research/atomic_predictive_v1_operator_parameters.json`, `Code/03_Research/Research_Rydberg_Validation.py`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `FORMULA_AUDIT.md`, `DATA_MANIFEST.md`, `VERIFICATION_SPEC.md`, `UPDATE_LOG.md`, `Result/artifacts/0_20_atomic_physics_verification.json`
+- Verified with: `python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validation.py`
+- Result: The operator parameter preflight gate is now `PARAMETER_PREFLIGHT_READY_FOR_OPERATOR_ACCEPTANCE` with `1` parameter set and `0` blockers; `PROV-02` now reports `BLOCKING_ACCEPTED_OPERATOR_MISSING_PARAMETER_SET_READY` instead of treating the parameter set as empty.
+- Blocker narrowed: The next work is no longer parameter-set presence or field completeness. The remaining gap is accepted operator implementation, accepted residual emission, and accepted uncertainty provenance.
+- Still open: Accepted fixed CI/UET correction operator, accepted residual rows with `accepted_as_delta_uet_or_ci=true`, accepted operator uncertainty provenance, validation-ready thresholds, and independent non-NIST helium source lineage.
+- Claim impact: `no change`
+- Notes: The promoted set is review-only and still uses explicit noncomputable placeholders. It narrows provenance state without fabricating physical CI values.
+
 ### 2026-06-12 - Freeze selected-class placeholders and reach promotion-review ready state
 
 - Scope: `atomic_predictive_v1_operator_parameters.json`, `Research_Rydberg_Validation.py`, primary artifact, topic docs

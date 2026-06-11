@@ -3,15 +3,74 @@
   "topic": "0.20_Atomic_Physics",
   "manifest_id": "AT20-PREDICTIVE-V1-OPERATOR-PARAMETERS",
   "purpose": "Freeze the current operator-v1 parameter state before any residual rows are evaluated.",
-  "status": "PARAMETER_MANIFEST_READY_NO_ACCEPTED_OPERATOR_PARAMETERS",
+  "status": "PARAMETER_MANIFEST_READY_PARAMETER_SET_PRESENT_OPERATOR_UNACCEPTED",
   "selected_lane_id": "helium_quantum_defect_then_ci_or_uet_correction_v1",
   "operator_id": "delta_uet_or_ci",
   "accepted_operator_class": null,
-  "parameter_sets": [],
+  "parameter_sets": [
+    {
+      "parameter_set_id": "candidate_ci_or_uet_operator_v1",
+      "status": "PARAMETER_SET_REVIEW_ONLY_NOT_OPERATOR_ACCEPTED",
+      "operator_id": "delta_uet_or_ci",
+      "operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction",
+      "parameters": [
+        {
+          "parameter_id": "delta_uet_or_ci_primary_strength",
+          "value": "explicit_noncomputable_until_fixed_ci_or_correlated_basis_and_residual_family_are_locked",
+          "unit": "selected_class_noncomputable_placeholder_pending_fixed_ci_basis_units",
+          "parameter_type": "explicit_noncomputable_placeholder_selected_class",
+          "fit_status": "locked_selected_class_placeholder_not_accepted",
+          "source": "promoted review-only parameter set for fixed_parameter_ci_or_correlated_two_electron_correction; calibration value deferred until fixed CI/correlated basis and residual family are locked",
+          "uncertainty": {
+            "status": "noncomputable_until_fixed_ci_or_correlated_calibration_is_locked",
+            "reason": "The fixed CI/correlated class is selected, but no locked basis-size/convergence policy or accepted calibration procedure exists yet."
+          }
+        },
+        {
+          "parameter_id": "delta_uet_or_ci_energy_or_action_scale",
+          "value": "explicit_noncomputable_until_fixed_ci_or_correlated_energy_scale_mapping_is_locked",
+          "unit": "selected_class_noncomputable_placeholder_pending_fixed_ci_energy_scale_units",
+          "parameter_type": "explicit_noncomputable_placeholder_selected_class",
+          "fit_status": "locked_selected_class_placeholder_not_accepted",
+          "source": "promoted review-only parameter set for fixed_parameter_ci_or_correlated_two_electron_correction; energy or action scaling value deferred until the fixed CI/correlated mapping is locked",
+          "uncertainty": {
+            "status": "noncomputable_until_fixed_ci_or_correlated_calibration_is_locked",
+            "reason": "The fixed CI/correlated class is selected, but no locked basis-size/convergence policy or accepted calibration procedure exists yet."
+          }
+        }
+      ],
+      "lock_timestamp_utc": "2026-06-11T20:11:26.4409695Z",
+      "locked_before_holdout_evaluation": true,
+      "calibration_source_rows": [
+        "he_i_visible_388_86489",
+        "he_i_visible_447_14802",
+        "he_i_visible_587_56148",
+        "he_i_visible_667_81517",
+        "he_i_visible_706_51771"
+      ],
+      "forbidden_source_rows": [
+        "Data/03_Research/helium_quantum_defect_holdout_sources.json",
+        "Data/03_Research/external_holdouts/chianti_he_i/source_manifest.json"
+      ],
+      "source_hashes": [
+        {
+          "path": "Data/03_Research/helium_transition_assignments.json",
+          "sha256": "b5ebfa25e37e2ab6d994ffc870ad775068499f048bc60ac78d6315d8550f5e67",
+          "role": "calibration term and level package"
+        },
+        {
+          "path": "Data/03_Research/atomic_predictive_v1_operator_training_holdout_split.json",
+          "sha256": "531b080b19d694e7ea12559ba37b8b8791d1d387084cffed9391627792fda5c7",
+          "role": "row separation policy"
+        }
+      ],
+      "claim_use": "parameter_set_review_only_not_validation"
+    }
+  ],
   "parameter_set_candidates": [
     {
       "candidate_id": "candidate_ci_or_uet_operator_v1",
-      "status": "CANDIDATE_REVIEW_READY_NOT_ACCEPTED",
+      "status": "PROMOTED_TO_PARAMETER_SET_REVIEW_ONLY",
       "operator_id": "delta_uet_or_ci",
       "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction",
       "allowed_operator_class_options": [
@@ -72,7 +131,7 @@
       "claim_use": "candidate_review_only_not_validation",
       "blocked_until": [
         "selected-class placeholders are replaced by sourced values after fixed CI/correlated calibration is locked",
-        "candidate is promoted into parameter_sets only after promotion review",
+        "promoted parameter set is replaced by sourced fixed CI/correlated values after calibration is locked",
         "accepted operator, residual emitter, and uncertainty provenance exist before any validation claim"
       ]
     }
