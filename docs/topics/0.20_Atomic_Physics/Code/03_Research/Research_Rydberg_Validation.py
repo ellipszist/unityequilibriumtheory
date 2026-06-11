@@ -4875,6 +4875,10 @@ def build_atomic_predictive_v1_operator_class_selection_review_gate(
     option_rows = []
     recommended_operator_class = None
     recommended_reason = None
+    candidate_rows = parameter_candidate_promotion_gate.get("candidate_rows", [])
+    current_selected_operator_class = (
+        candidate_rows[0].get("selected_operator_class") if candidate_rows else None
+    )
     for option in class_selection_manifest.get("selection_options", []):
         operator_class = option.get("operator_class")
         build_lane = build_spec_lanes.get(operator_class, {})
@@ -4898,12 +4902,35 @@ def build_atomic_predictive_v1_operator_class_selection_review_gate(
                 "build_spec_lane_status": build_lane.get("current_status"),
                 "selection_readiness_basis": option.get("selection_readiness_basis", []),
                 "recommendation_status": recommendation_status,
+                "is_currently_selected_for_candidate": (
+                    operator_class == current_selected_operator_class
+                ),
             }
+        )
+    review_status = (
+        "SELECTION_REVIEW_READY_CANDIDATE_CLASS_SELECTED"
+        if current_selected_operator_class
+        else "SELECTION_REVIEW_READY_CANDIDATE_UNCHOSEN"
+    )
+    next_required_artifacts = []
+    if current_selected_operator_class:
+        next_required_artifacts.extend(
+            [
+                "replace placeholder parameter rows with sourced values or explicit noncomputable placeholders allowed by the selected class",
+                "record lock timestamp before holdout evaluation",
+            ]
+        )
+    else:
+        next_required_artifacts.extend(
+            [
+                "choose whether the current candidate will target the recommended CI/correlated lane or explicitly defer to the UET lane",
+                "write selected_operator_class into the candidate record only after that choice is explicit",
+            ]
         )
     return {
         "schema_version": "1.0",
         "role": "atomic_predictive_v1_operator_class_selection_review_gate",
-        "status": "SELECTION_REVIEW_READY_CANDIDATE_UNCHOSEN",
+        "status": review_status,
         "claim_class": "operator_class_selection_review_no_validation_claim",
         "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-CLASS-SELECTION-REVIEW",
         "manifest": {
@@ -4915,6 +4942,7 @@ def build_atomic_predictive_v1_operator_class_selection_review_gate(
             "status": class_selection_manifest.get("status"),
         },
         "selection_options": option_rows,
+        "current_selected_operator_class": current_selected_operator_class,
         "recommended_first_operator_class": recommended_operator_class,
         "recommended_reason": recommended_reason,
         "metrics": {
@@ -4930,10 +4958,7 @@ def build_atomic_predictive_v1_operator_class_selection_review_gate(
             ],
         },
         "blocked_claims": class_selection_manifest.get("blocked_claims", []),
-        "next_required_artifacts": [
-            "choose whether the current candidate will target the recommended CI/correlated lane or explicitly defer to the UET lane",
-            "write selected_operator_class into the candidate record only after that choice is explicit",
-        ],
+        "next_required_artifacts": next_required_artifacts,
         "claim_boundary": class_selection_manifest.get("claim_boundary"),
     }
 

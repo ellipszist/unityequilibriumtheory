@@ -13,7 +13,7 @@
       "candidate_id": "candidate_ci_or_uet_operator_v1",
       "status": "CANDIDATE_ONLY_NOT_ACCEPTED",
       "operator_id": "delta_uet_or_ci",
-      "selected_operator_class": null,
+      "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction",
       "allowed_operator_class_options": [
         "fixed_parameter_ci_or_correlated_two_electron_correction",
         "explicit_uet_atomic_hamiltonian_or_transition_operator_correction"
@@ -71,7 +71,6 @@
       ],
       "claim_use": "candidate_blueprint_only_not_validation",
       "blocked_until": [
-        "accepted operator class is selected",
         "parameter values are sourced from a locked calibration procedure",
         "lock timestamp is recorded before holdout evaluation",
         "candidate is promoted into parameter_sets only after acceptance review"
@@ -137,7 +136,6 @@
       "Data/03_Research/external_holdouts/chianti_he_i/source_manifest.json"
     ],
     "blocked_until": [
-      "accepted operator class is selected",
       "parameter values or explicit noncomputable placeholders are recorded",
       "lock timestamp is set before holdout evaluation",
       "calibration row IDs are frozen in the parameter set"

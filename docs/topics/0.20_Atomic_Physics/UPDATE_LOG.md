@@ -20,6 +20,18 @@ blockers were actually narrowed.
 
 ## Entries
 
+### 2026-06-11 - Select the first operator class for the current candidate
+
+- Scope: `atomic_predictive_v1_operator_parameters.json`, `Research_Rydberg_Validation.py`, primary artifact, topic docs
+- Added or changed: Wrote `selected_operator_class = fixed_parameter_ci_or_correlated_two_electron_correction` into the current candidate record and updated the selection-review gate so it reports explicit class selection instead of a stale unchosen state.
+- Files touched: `Data/03_Research/atomic_predictive_v1_operator_parameters.json`, `Code/03_Research/Research_Rydberg_Validation.py`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `FORMULA_AUDIT.md`, `DATA_MANIFEST.md`, `VERIFICATION_SPEC.md`, `Result/artifacts/0_20_atomic_physics_verification.json`
+- Verified with: `python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validation.py`
+- Result: The candidate now explicitly selects the fixed CI/correlated lane, the selection-review gate reports `SELECTION_REVIEW_READY_CANDIDATE_CLASS_SELECTED`, and parameter-candidate promotion blockers drop from `3` to `2`.
+- Blocker narrowed: The next work is now narrower than class choice: only placeholder parameter rows and missing lock timestamp still block promotion review for the current candidate.
+- Still open: Non-placeholder parameter values or explicit selected-class placeholders, lock timestamp, accepted fixed CI/UET correction operator, accepted residual emitter, and accepted operator uncertainty provenance.
+- Claim impact: `no change`
+- Notes: This pass intentionally does not invent parameter values or fake lock state. It only makes the implementation-lane choice explicit and keeps the remaining blockers honest.
+
 ### 2026-06-11 - Add operator class-selection review gate
 
 - Scope: `atomic_predictive_v1_operator_class_selection_review.json`, `Research_Rydberg_Validation.py`, topic docs, primary artifact
