@@ -131,6 +131,41 @@ Minimum output:
 For topics that are already structured but still unclear or blocked, continue in
 [18_Research_Hardening_Workflow.md](./18_Research_Hardening_Workflow.md).
 
+## Multi-wave operating loop
+
+When a topic is already structured but progress is slow, do not restart it from
+zero each time. Use a repeatable wave loop:
+
+1. identify the single narrowest blocker that currently controls progress
+2. choose the smallest artifact, manifest, or gate that can make that blocker
+   more explicit
+3. regenerate the relevant verifier artifact if the evidence state changed
+4. update the topic docs so the claim boundary matches the new artifact state
+5. record the pass in the topic update log
+6. commit the wave before moving to the next blocker
+
+This keeps the topic moving even when it is not yet promotable.
+
+## What counts as real progress
+
+Progress does not only mean a topic reaches a higher readiness state.
+
+These also count as valid progress:
+
+- a source family becomes source-locked
+- a vague blocker becomes one machine-readable gate
+- a topic-level `FAIL` is narrowed to one named sub-blocker
+- a predictive lane is separated from a fitted diagnostic lane
+- a README is brought back under the artifact claim boundary
+- an update log makes the recent wave history reconstructable
+
+These do not count as readiness upgrades by themselves:
+
+- longer prose
+- more files with no verification role
+- a passing branch result that does not control the topic gate
+- a new theory claim without tighter evidence control
+
 ## Promotion rules
 
 A topic may move up one readiness level only if its required artifacts are present.
@@ -178,3 +213,4 @@ If the answer to the last question is "no", the topic is probably still too vagu
 - [ ] metric, threshold, and baseline are explicit before promotion
 - [ ] public wording was updated only after evidence review
 - [ ] next blocker for promotion is named clearly
+- [ ] repeated hardening work is visible through an update log when needed

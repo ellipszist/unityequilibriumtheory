@@ -40,6 +40,15 @@ If the request is ambiguous, prefer:
 3. improve structure or wording conservatively
 4. avoid promoting status unless the evidence clearly supports it
 
+When work spans repeated repair passes, prefer a visible hardening loop:
+
+1. package or confirm the current sources
+2. regenerate one stable verifier artifact
+3. add or tighten one machine-readable blocker gate
+4. update the local topic docs to match the new blocker boundary
+5. record the pass in the topic update log
+6. commit the coherent change before starting the next wave
+
 ## Start here
 
 Open these files first when you need repository-wide context:
@@ -79,6 +88,13 @@ Then choose the next standard by task.
 2. answer from local evidence first, not memory
 3. cite the exact file that acts as the current source of truth
 4. say clearly when a conclusion is inference rather than an explicit repo statement
+
+### If the task is repeated hardening, unblock work, or reconstruct progress
+
+1. inspect the local topic package first
+2. open [`docs/topics/For Work/18_Research_Hardening_Workflow.md`](./docs/topics/For%20Work/18_Research_Hardening_Workflow.md)
+3. open [`docs/topics/For Work/24_TEMPLATE_UPDATE_LOG.md`](./docs/topics/For%20Work/24_TEMPLATE_UPDATE_LOG.md)
+4. rebuild the current blocker chain from manifests, gates, and artifacts before changing prose
 
 ## Non-negotiable rules
 
@@ -144,6 +160,8 @@ When asked to review or improve work, default to a verification-first mindset:
 - treat generated figures and logs as outputs that should be explained by scripts and inputs
 - if a topic status is unclear, consult `docs/topics/README.md` and the metadata in
   `docs/meta/` before summarizing it
+- if a topic has gone through many waves, prefer reconstructing the state from the update log,
+  verifier artifact, and blocker gates together rather than from prose memory alone
 - if a topic is moving through repeated repair passes, use the hardening workflow and keep an
   update log so later reviewers can reconstruct what changed and why
 
@@ -167,6 +185,14 @@ Suggested commit cadence:
 3. stage only the intended files
 4. commit before starting the next distinct chunk
 
+For multi-wave hardening, a good unit is:
+
+1. one blocker narrowed
+2. one manifest or gate added or tightened
+3. one verifier rerun if the artifact schema changed
+4. one short update-log entry
+5. one scoped commit
+
 ## Agent behavior expectations
 
 - Be useful for audits, critique, normalization, and learning support.
@@ -176,6 +202,8 @@ Suggested commit cadence:
 - If you infer something, label it as an inference.
 - If a file in `For Work` already governs the decision, follow it instead of inventing a new
   rule.
+- If a topic is stuck, aim to make the blocker narrower and more machine-readable before trying
+  to make the claim stronger.
 
 ## Quick routing
 

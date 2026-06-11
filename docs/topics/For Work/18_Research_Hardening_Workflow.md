@@ -156,6 +156,35 @@ language be upgraded.
 
 Hardening should usually change artifacts first, then documentation.
 
+## Standard hardening wave
+
+Use the following pattern for one hardening pass:
+
+1. pick one blocker that currently controls the topic-level state
+2. decide whether the pass is a source pass, artifact pass, gate pass, or
+   claim-boundary pass
+3. add or tighten the minimum manifest, gate, or verifier logic needed
+4. rerun the relevant verifier only if the artifact-producing state changed
+5. sync `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, and
+   `FORMULA_AUDIT.md` if the boundary moved
+6. write one update-log entry with the verifier result and the remaining blocker
+7. commit the wave as one scoped unit
+
+This is the preferred way to speed up a difficult topic without losing audit
+traceability.
+
+## What to optimize for
+
+In a difficult topic, the goal of a wave is usually one of these:
+
+- reduce ambiguity
+- isolate the controlling blocker
+- make the blocker reproducible
+- stop a branch result from overclaiming for the whole topic
+- prepare the next predictive or mechanism candidate cleanly
+
+Trying to solve every weakness in one pass usually slows the topic down.
+
 ## Required hardening outputs
 
 Every topic being actively hardened should aim to maintain:
@@ -210,9 +239,17 @@ Use the update log to record:
 - what verifier or audit was run
 - what blocker narrowed
 - what still remains open
+- whether the claim boundary changed or stayed the same
 
 Use [24_TEMPLATE_UPDATE_LOG.md](./24_TEMPLATE_UPDATE_LOG.md) as the standard
 format.
+
+Minimum expectation for a multi-wave topic:
+
+- one entry per coherent hardening pass
+- entries written after real work, not before
+- verifier commands listed only when actually run
+- blocker wording aligned with the artifact or gate wording
 
 ## Anti-patterns
 
@@ -253,3 +290,4 @@ Before closing a hardening pass, ask:
 - [ ] acceptance conditions are defined before strong promotion
 - [ ] claim language still matches current evidence
 - [ ] update log is used if the hardening work spans multiple waves
+- [ ] each wave leaves a narrower blocker or a clearer claim boundary than before

@@ -18,6 +18,7 @@ and what remains blocked.
 - Keep entries short and audit-friendly.
 - Do not let this log replace canonical status in artifacts, manifests, or
   README files.
+- One entry should usually correspond to one coherent hardening wave.
 
 ## Entry template
 
@@ -25,11 +26,13 @@ and what remains blocked.
 
 - Scope: `[topic or file set]`
 - Added or changed: `[artifact, manifest, script, doc, or gate]`
+- Files touched: `[key files only]`
 - Verified with: `[command]`
 - Result: `[PASS/WARN/FAIL or other concrete outcome]`
 - Blocker narrowed: `[what became clearer]`
 - Still open: `[next required artifact or unresolved blocker]`
 - Claim impact: `[no change / wording narrowed / wording upgraded with reason]`
+- Notes: `[optional before/after metric, dependency effect, or why no rerun happened]`
 
 ## Entries
 
@@ -37,8 +40,10 @@ and what remains blocked.
 
 - Scope: `[topic or file set]`
 - Added or changed: `[item]`
+- Files touched: `[key files only]`
 - Verified with: `[command or n/a]`
 - Result: `[outcome]`
 - Blocker narrowed: `[named blocker]`
 - Still open: `[next step]`
 - Claim impact: `[status]`
+- Notes: `[optional detail]`
