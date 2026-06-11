@@ -20,6 +20,18 @@ blockers were actually narrowed.
 
 ## Entries
 
+### 2026-06-11 - Add operator class-selection review gate
+
+- Scope: `atomic_predictive_v1_operator_class_selection_review.json`, `Research_Rydberg_Validation.py`, topic docs, primary artifact
+- Added or changed: Added a machine-readable class-selection review gate so the repo can compare the allowed CI/correlated and explicit UET operator lanes before writing `selected_operator_class` into the candidate record.
+- Files touched: `Data/03_Research/atomic_predictive_v1_operator_class_selection_review.json`, `Code/03_Research/Research_Rydberg_Validation.py`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `FORMULA_AUDIT.md`, `DATA_MANIFEST.md`, `VERIFICATION_SPEC.md`
+- Verified with: `python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validation.py`
+- Result: The new gate records `2` selection options, recommends `fixed_parameter_ci_or_correlated_two_electron_correction` as the first implementation path, keeps `selected_operator_class` unset, and reports `3` promotion blockers plus `6` UET operator readiness blockers.
+- Blocker narrowed: The next step is no longer "pick any operator somehow"; it is "explicitly choose one allowed class for the current candidate, with the fixed CI/correlated lane recommended first unless the repo intentionally defers to the UET lane."
+- Still open: Explicit `selected_operator_class`, non-placeholder parameter values, lock timestamp, accepted fixed CI/UET correction operator, accepted residual emitter, and accepted operator uncertainty provenance.
+- Claim impact: `no change`
+- Notes: The review is recommendation-only. It does not count as operator implementation, accepted parameters, or predictive validation.
+
 ### 2026-06-11 - Add parameter candidate promotion gate
 
 - Scope: `atomic_predictive_v1_operator_parameter_candidate_promotion.json`, `Research_Rydberg_Validation.py`, topic docs, primary artifact

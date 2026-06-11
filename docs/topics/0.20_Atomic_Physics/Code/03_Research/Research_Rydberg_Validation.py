@@ -82,6 +82,12 @@ ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETER_CANDIDATE_PROMOTION_PATH = (
     / "03_Research"
     / "atomic_predictive_v1_operator_parameter_candidate_promotion.json"
 )
+ATOMIC_PREDICTIVE_V1_OPERATOR_CLASS_SELECTION_REVIEW_PATH = (
+    TOPIC_DIR
+    / "Data"
+    / "03_Research"
+    / "atomic_predictive_v1_operator_class_selection_review.json"
+)
 ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_PROVENANCE_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_implementation_provenance.json"
 )
@@ -4851,6 +4857,87 @@ def build_atomic_predictive_v1_operator_parameter_candidate_promotion_gate(
     }
 
 
+def build_atomic_predictive_v1_operator_class_selection_review_gate(
+    class_selection_manifest: dict,
+    fixed_correction_operator_gate: dict,
+    operator_build_spec_gate: dict,
+    uet_atomic_operator_readiness_gate: dict,
+    parameter_candidate_promotion_gate: dict,
+) -> dict:
+    build_spec_lanes = {
+        row.get("operator_class"): row
+        for row in operator_build_spec_gate.get("implementation_lanes", [])
+    }
+    fixed_candidates = {
+        row.get("operator_class"): row
+        for row in fixed_correction_operator_gate.get("operator_candidates", [])
+    }
+    option_rows = []
+    recommended_operator_class = None
+    recommended_reason = None
+    for option in class_selection_manifest.get("selection_options", []):
+        operator_class = option.get("operator_class")
+        build_lane = build_spec_lanes.get(operator_class, {})
+        fixed_candidate = fixed_candidates.get(operator_class, {})
+        current_status = option.get("current_status")
+        recommendation_status = "REVIEW_ONLY"
+        if operator_class == "fixed_parameter_ci_or_correlated_two_electron_correction":
+            recommendation_status = "RECOMMENDED_FIRST_SELECTION"
+            recommended_operator_class = operator_class
+            recommended_reason = (
+                "build spec priority is 1 and this lane can start from current source-locked helium targets "
+                "without waiting for a new UET derivation artifact"
+            )
+        option_rows.append(
+            {
+                "operator_class": operator_class,
+                "lane_id": option.get("lane_id"),
+                "priority": option.get("priority"),
+                "current_status": current_status,
+                "fixed_operator_candidate_status": fixed_candidate.get("current_status"),
+                "build_spec_lane_status": build_lane.get("current_status"),
+                "selection_readiness_basis": option.get("selection_readiness_basis", []),
+                "recommendation_status": recommendation_status,
+            }
+        )
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_predictive_v1_operator_class_selection_review_gate",
+        "status": "SELECTION_REVIEW_READY_CANDIDATE_UNCHOSEN",
+        "claim_class": "operator_class_selection_review_no_validation_claim",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-CLASS-SELECTION-REVIEW",
+        "manifest": {
+            "path": str(ATOMIC_PREDICTIVE_V1_OPERATOR_CLASS_SELECTION_REVIEW_PATH.relative_to(TOPIC_DIR)).replace(
+                "\\", "/"
+            ),
+            "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_CLASS_SELECTION_REVIEW_PATH),
+            "manifest_id": class_selection_manifest.get("manifest_id"),
+            "status": class_selection_manifest.get("status"),
+        },
+        "selection_options": option_rows,
+        "recommended_first_operator_class": recommended_operator_class,
+        "recommended_reason": recommended_reason,
+        "metrics": {
+            "selection_option_count": len(option_rows),
+            "recommended_option_count": sum(
+                1 for row in option_rows if row["recommendation_status"] == "RECOMMENDED_FIRST_SELECTION"
+            ),
+            "candidate_promotion_blocking_count": parameter_candidate_promotion_gate["metrics"][
+                "promotion_blocking_count"
+            ],
+            "uet_operator_blocking_requirement_count": uet_atomic_operator_readiness_gate["metrics"][
+                "blocking_requirement_count"
+            ],
+        },
+        "blocked_claims": class_selection_manifest.get("blocked_claims", []),
+        "next_required_artifacts": [
+            "choose whether the current candidate will target the recommended CI/correlated lane or explicitly defer to the UET lane",
+            "write selected_operator_class into the candidate record only after that choice is explicit",
+        ],
+        "claim_boundary": class_selection_manifest.get("claim_boundary"),
+    }
+
+
 def build_atomic_predictive_v1_operator_training_holdout_split_gate(
     operator_training_holdout_split_manifest: dict,
 ) -> dict:
@@ -6405,6 +6492,9 @@ def run_rydberg_analysis():
     atomic_predictive_v1_operator_parameter_candidate_promotion_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETER_CANDIDATE_PROMOTION_PATH
     )
+    atomic_predictive_v1_operator_class_selection_review_manifest = load_json(
+        ATOMIC_PREDICTIVE_V1_OPERATOR_CLASS_SELECTION_REVIEW_PATH
+    )
     atomic_predictive_v1_operator_implementation_provenance_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_PROVENANCE_PATH
     )
@@ -6688,6 +6778,15 @@ def run_rydberg_analysis():
             atomic_predictive_v1_operator_parameter_acceptance_preflight_gate,
         )
     )
+    atomic_predictive_v1_operator_class_selection_review_gate = (
+        build_atomic_predictive_v1_operator_class_selection_review_gate(
+            atomic_predictive_v1_operator_class_selection_review_manifest,
+            atomic_predictive_v1_fixed_correction_operator_gate,
+            atomic_predictive_v1_operator_build_spec_gate,
+            uet_atomic_operator_readiness_gate,
+            atomic_predictive_v1_operator_parameter_candidate_promotion_gate,
+        )
+    )
     atomic_predictive_v1_operator_implementation_provenance_gate = (
         build_atomic_predictive_v1_operator_implementation_provenance_gate(
             atomic_predictive_v1_operator_implementation_provenance_manifest,
@@ -6927,6 +7026,18 @@ def run_rydberg_analysis():
                     row.get("requirement_id")
                     for row in atomic_predictive_v1_operator_parameter_candidate_promotion_manifest.get(
                         "promotion_requirements", []
+                    )
+                ],
+            },
+            {
+                "path": str(ATOMIC_PREDICTIVE_V1_OPERATOR_CLASS_SELECTION_REVIEW_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_CLASS_SELECTION_REVIEW_PATH),
+                "source": atomic_predictive_v1_operator_class_selection_review_manifest.get("purpose"),
+                "status": atomic_predictive_v1_operator_class_selection_review_manifest.get("status"),
+                "source_rows": [
+                    row.get("operator_class")
+                    for row in atomic_predictive_v1_operator_class_selection_review_manifest.get(
+                        "selection_options", []
                     )
                 ],
             },
@@ -7264,6 +7375,16 @@ def run_rydberg_analysis():
                     "parameter_set_candidate_count"
                 ]
             ),
+            "atomic_predictive_v1_operator_class_selection_options": (
+                atomic_predictive_v1_operator_class_selection_review_gate["metrics"][
+                    "selection_option_count"
+                ]
+            ),
+            "atomic_predictive_v1_operator_class_recommended_options": (
+                atomic_predictive_v1_operator_class_selection_review_gate["metrics"][
+                    "recommended_option_count"
+                ]
+            ),
             "atomic_predictive_v1_operator_parameter_preflight_blockers": (
                 atomic_predictive_v1_operator_parameter_acceptance_preflight_gate["metrics"][
                     "preflight_blocking_count"
@@ -7448,6 +7569,9 @@ def run_rydberg_analysis():
     )
     artifact["atomic_predictive_v1_operator_parameter_candidate_promotion_gate"] = (
         atomic_predictive_v1_operator_parameter_candidate_promotion_gate
+    )
+    artifact["atomic_predictive_v1_operator_class_selection_review_gate"] = (
+        atomic_predictive_v1_operator_class_selection_review_gate
     )
     artifact["atomic_predictive_v1_operator_implementation_provenance_gate"] = (
         atomic_predictive_v1_operator_implementation_provenance_gate

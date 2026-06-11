@@ -1983,6 +1983,67 @@
     "schema_version": "1.0",
     "status": "OPERATOR_CANDIDATE_RESOLUTION_READY_NO_ACCEPTED_DELTA"
   },
+  "atomic_predictive_v1_operator_class_selection_review_gate": {
+    "blocked_claims": [
+      "recommended first operator class is already selected",
+      "selection review means the operator class is implemented",
+      "priority order upgrades the UET derivation claim"
+    ],
+    "claim_boundary": "This manifest reviews operator-class selection only. It does not select, implement, or validate a correction operator.",
+    "claim_class": "operator_class_selection_review_no_validation_claim",
+    "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-CLASS-SELECTION-REVIEW",
+    "manifest": {
+      "manifest_id": "AT20-PREDICTIVE-V1-OPERATOR-CLASS-SELECTION-REVIEW",
+      "path": "Data/03_Research/atomic_predictive_v1_operator_class_selection_review.json",
+      "sha256": "75395ab330a8688e4c1ac4e15feb0d04c6816231d53e887ceda5d15a7a8ae055",
+      "status": "SELECTION_REVIEW_READY"
+    },
+    "metrics": {
+      "candidate_promotion_blocking_count": 3,
+      "recommended_option_count": 1,
+      "selection_option_count": 2,
+      "uet_operator_blocking_requirement_count": 6
+    },
+    "next_required_artifacts": [
+      "choose whether the current candidate will target the recommended CI/correlated lane or explicitly defer to the UET lane",
+      "write selected_operator_class into the candidate record only after that choice is explicit"
+    ],
+    "recommended_first_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction",
+    "recommended_reason": "build spec priority is 1 and this lane can start from current source-locked helium targets without waiting for a new UET derivation artifact",
+    "role": "atomic_predictive_v1_operator_class_selection_review_gate",
+    "schema_version": "1.0",
+    "selection_options": [
+      {
+        "build_spec_lane_status": "IMPLEMENTATION_MISSING",
+        "current_status": "IMPLEMENTATION_MISSING_BUT_BUILD_SPEC_PRIORITY_1",
+        "fixed_operator_candidate_status": "MISSING",
+        "lane_id": "fixed_parameter_ci_or_correlated_two_electron_v1",
+        "operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction",
+        "priority": 1,
+        "recommendation_status": "RECOMMENDED_FIRST_SELECTION",
+        "selection_readiness_basis": [
+          "operator build spec marks this lane priority 1",
+          "required inputs are already partially source-locked in current helium packages",
+          "does not require a new first-principles UET derivation artifact before starting implementation review"
+        ]
+      },
+      {
+        "build_spec_lane_status": "DERIVATION_AND_IMPLEMENTATION_MISSING",
+        "current_status": "DERIVATION_AND_IMPLEMENTATION_MISSING",
+        "fixed_operator_candidate_status": "MISSING",
+        "lane_id": "explicit_uet_atomic_operator_v1",
+        "operator_class": "explicit_uet_atomic_hamiltonian_or_transition_operator_correction",
+        "priority": 2,
+        "recommendation_status": "REVIEW_ONLY",
+        "selection_readiness_basis": [
+          "operator build spec marks this lane priority 2",
+          "UET atomic-operator readiness gate still reports derivation/residual blockers",
+          "requires a new UET Hamiltonian or transition-operator derivation artifact before implementation review"
+        ]
+      }
+    ],
+    "status": "SELECTION_REVIEW_READY_CANDIDATE_UNCHOSEN"
+  },
   "atomic_predictive_v1_operator_implementation_provenance_gate": {
     "blocked_claims": [
       "diagnostic quantum-defect wrapper is implementation provenance",
@@ -3169,7 +3230,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-11T12:46:20.017396+00:00",
+  "generated_at_utc": "2026-06-11T12:57:10.047952+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -6071,6 +6132,16 @@
       "status": "PROMOTION_REVIEW_READY"
     },
     {
+      "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/atomic_predictive_v1_operator_class_selection_review.json",
+      "sha256": "75395ab330a8688e4c1ac4e15feb0d04c6816231d53e887ceda5d15a7a8ae055",
+      "source": "Review which allowed operator class should be selected first for the current parameter candidate without falsely claiming implementation.",
+      "source_rows": [
+        "fixed_parameter_ci_or_correlated_two_electron_correction",
+        "explicit_uet_atomic_hamiltonian_or_transition_operator_correction"
+      ],
+      "status": "SELECTION_REVIEW_READY"
+    },
+    {
       "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/atomic_predictive_v1_operator_parameters.json",
       "sha256": "148bc04df1a02a3487ddf89dc5ef70b49055995a454769964660e50f90820965",
       "source": "Freeze the current operator-v1 parameter state before any residual rows are evaluated.",
@@ -6285,6 +6356,8 @@
     "atomic_predictive_v1_operator_candidate_missing_acceptable_paths": 2,
     "atomic_predictive_v1_operator_candidate_rejected_existing": 5,
     "atomic_predictive_v1_operator_candidate_resolutions": 7,
+    "atomic_predictive_v1_operator_class_recommended_options": 1,
+    "atomic_predictive_v1_operator_class_selection_options": 2,
     "atomic_predictive_v1_operator_parameter_candidate_count": 1,
     "atomic_predictive_v1_operator_parameter_preflight_blockers": 1,
     "atomic_predictive_v1_operator_parameter_preflight_checks": 5,

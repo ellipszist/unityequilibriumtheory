@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.20_Atomic_Physics",
+  "manifest_id": "AT20-PREDICTIVE-V1-OPERATOR-CLASS-SELECTION-REVIEW",
+  "purpose": "Review which allowed operator class should be selected first for the current parameter candidate without falsely claiming implementation.",
+  "status": "SELECTION_REVIEW_READY",
+  "selected_lane_id": "helium_quantum_defect_then_ci_or_uet_correction_v1",
+  "candidate_id": "candidate_ci_or_uet_operator_v1",
+  "selection_options": [
+    {
+      "operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction",
+      "lane_id": "fixed_parameter_ci_or_correlated_two_electron_v1",
+      "priority": 1,
+      "current_status": "IMPLEMENTATION_MISSING_BUT_BUILD_SPEC_PRIORITY_1",
+      "selection_readiness_basis": [
+        "operator build spec marks this lane priority 1",
+        "required inputs are already partially source-locked in current helium packages",
+        "does not require a new first-principles UET derivation artifact before starting implementation review"
+      ]
+    },
+    {
+      "operator_class": "explicit_uet_atomic_hamiltonian_or_transition_operator_correction",
+      "lane_id": "explicit_uet_atomic_operator_v1",
+      "priority": 2,
+      "current_status": "DERIVATION_AND_IMPLEMENTATION_MISSING",
+      "selection_readiness_basis": [
+        "operator build spec marks this lane priority 2",
+        "UET atomic-operator readiness gate still reports derivation/residual blockers",
+        "requires a new UET Hamiltonian or transition-operator derivation artifact before implementation review"
+      ]
+    }
+  ],
+  "selection_rule": "A recommended first class may be named for implementation order, but selected_operator_class remains null until the repo explicitly chooses it in the candidate record.",
+  "blocked_claims": [
+    "recommended first operator class is already selected",
+    "selection review means the operator class is implemented",
+    "priority order upgrades the UET derivation claim"
+  ],
+  "claim_boundary": "This manifest reviews operator-class selection only. It does not select, implement, or validate a correction operator."
+}
