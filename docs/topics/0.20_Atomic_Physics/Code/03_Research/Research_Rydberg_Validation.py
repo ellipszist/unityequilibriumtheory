@@ -58,6 +58,9 @@ ATOMIC_PREDICTIVE_V1_THRESHOLD_MANIFEST_PATH = (
 ATOMIC_PREDICTIVE_V1_OPERATOR_MANIFEST_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_fixed_correction_operator_manifest.json"
 )
+ATOMIC_PREDICTIVE_V1_FIXED_CI_INPUT_PREFLIGHT_PATH = (
+    TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_fixed_ci_input_preflight.json"
+)
 ATOMIC_PREDICTIVE_V1_OPERATOR_BUILD_SPEC_MANIFEST_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_build_spec_manifest.json"
 )
@@ -4120,6 +4123,7 @@ def build_atomic_predictive_v1_operator_candidate_resolution_gate(
 
 def build_atomic_predictive_v1_operator_build_spec_gate(
     operator_build_spec_manifest: dict,
+    fixed_ci_input_preflight_manifest: dict,
     atomic_predictive_v1_fixed_correction_operator_gate: dict,
     atomic_predictive_v1_operator_candidate_resolution_gate: dict,
 ) -> dict:
@@ -4130,16 +4134,34 @@ def build_atomic_predictive_v1_operator_build_spec_gate(
         "accepted_operator_count"
     ]
     lane_rows = []
+    fixed_ci_preflight_rows = fixed_ci_input_preflight_manifest.get("required_input_rows", [])
+    fixed_ci_preflight_blocking_rows = [
+        row for row in fixed_ci_preflight_rows if str(row.get("current_status", "")).startswith("BLOCKING")
+    ]
     for lane in lanes:
         required_inputs = lane.get("required_inputs", [])
         required_outputs = lane.get("required_outputs", [])
         acceptance_gates = lane.get("acceptance_gates", [])
+        lane_specific_preflight = None
+        if lane.get("operator_class") == "fixed_parameter_ci_or_correlated_two_electron_correction":
+            lane_specific_preflight = {
+                "manifest_path": str(ATOMIC_PREDICTIVE_V1_FIXED_CI_INPUT_PREFLIGHT_PATH.relative_to(TOPIC_DIR)).replace(
+                    "\\", "/"
+                ),
+                "manifest_sha256": file_sha256(ATOMIC_PREDICTIVE_V1_FIXED_CI_INPUT_PREFLIGHT_PATH),
+                "status": fixed_ci_input_preflight_manifest.get("status"),
+                "required_input_rows": fixed_ci_preflight_rows,
+                "blocking_input_count": len(fixed_ci_preflight_blocking_rows),
+            }
         lane_rows.append(
             {
                 "lane_id": lane["lane_id"],
                 "operator_class": lane["operator_class"],
                 "priority": lane["priority"],
                 "current_status": lane["current_status"],
+                "input_preflight_status": (
+                    lane_specific_preflight.get("status") if lane_specific_preflight else None
+                ),
                 "required_input_count": len(required_inputs),
                 "required_output_count": len(required_outputs),
                 "acceptance_gate_count": len(acceptance_gates),
@@ -4148,6 +4170,7 @@ def build_atomic_predictive_v1_operator_build_spec_gate(
                 "required_inputs": required_inputs,
                 "required_outputs": required_outputs,
                 "acceptance_gates": acceptance_gates,
+                "input_preflight": lane_specific_preflight,
             }
         )
     accepted_lanes = [row for row in lane_rows if row["accepted_as_implemented"]]
@@ -4199,6 +4222,19 @@ def build_atomic_predictive_v1_operator_build_spec_gate(
                 ]["accepted_delta_uet_or_ci_count"],
             },
         },
+        {
+            "check_id": "BUILD-SPEC-06",
+            "requirement": "The first fixed-CI lane must declare its model family and convergence policy before accepted implementation review.",
+            "status": (
+                "BLOCKED_FIXED_CI_INPUT_PREFLIGHT_INCOMPLETE"
+                if fixed_ci_preflight_blocking_rows
+                else "PASS"
+            ),
+            "evidence": {
+                "fixed_ci_input_preflight_status": fixed_ci_input_preflight_manifest.get("status"),
+                "fixed_ci_input_preflight_blocking_count": len(fixed_ci_preflight_blocking_rows),
+            },
+        },
     ]
     fail_count = sum(1 for row in spec_checks if row["status"] == "FAIL")
     blocking_count = sum(1 for row in spec_checks if row["status"].startswith("BLOCKED"))
@@ -4239,6 +4275,8 @@ def build_atomic_predictive_v1_operator_build_spec_gate(
             "acceptance_gate_total_count": sum(row["acceptance_gate_count"] for row in lane_rows),
             "forbidden_shortcut_count": len(forbidden_shortcuts),
             "minimum_first_build_artifact_count": len(minimum_artifacts),
+            "fixed_ci_input_preflight_required_count": len(fixed_ci_preflight_rows),
+            "fixed_ci_input_preflight_blocking_count": len(fixed_ci_preflight_blocking_rows),
             "spec_check_count": len(spec_checks),
             "spec_fail_count": fail_count,
             "spec_blocking_count": blocking_count,
@@ -6614,6 +6652,9 @@ def run_rydberg_analysis():
     atomic_predictive_v1_parameter_manifest = load_json(ATOMIC_PREDICTIVE_V1_PARAMETER_MANIFEST_PATH)
     atomic_predictive_v1_threshold_manifest = load_json(ATOMIC_PREDICTIVE_V1_THRESHOLD_MANIFEST_PATH)
     atomic_predictive_v1_operator_manifest = load_json(ATOMIC_PREDICTIVE_V1_OPERATOR_MANIFEST_PATH)
+    atomic_predictive_v1_fixed_ci_input_preflight_manifest = load_json(
+        ATOMIC_PREDICTIVE_V1_FIXED_CI_INPUT_PREFLIGHT_PATH
+    )
     atomic_predictive_v1_operator_build_spec_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_BUILD_SPEC_MANIFEST_PATH
     )
@@ -6886,6 +6927,7 @@ def run_rydberg_analysis():
     )
     atomic_predictive_v1_operator_build_spec_gate = build_atomic_predictive_v1_operator_build_spec_gate(
         atomic_predictive_v1_operator_build_spec_manifest,
+        atomic_predictive_v1_fixed_ci_input_preflight_manifest,
         atomic_predictive_v1_fixed_correction_operator_gate,
         atomic_predictive_v1_operator_candidate_resolution_gate,
     )

@@ -20,6 +20,18 @@ blockers were actually narrowed.
 
 ## Entries
 
+### 2026-06-12 - Narrow the fixed-CI build lane to two undeclared inputs
+
+- Scope: `atomic_predictive_v1_fixed_ci_input_preflight.json`, `Research_Rydberg_Validation.py`, primary artifact, topic docs
+- Added or changed: Added a fixed-CI input preflight manifest and wired it into the operator build-spec gate so the first implementation lane now distinguishes source-backed helium anchors/targets from still-missing declaration work.
+- Files touched: `Data/03_Research/atomic_predictive_v1_fixed_ci_input_preflight.json`, `Code/03_Research/Research_Rydberg_Validation.py`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `FORMULA_AUDIT.md`, `DATA_MANIFEST.md`, `VERIFICATION_SPEC.md`, `UPDATE_LOG.md`, `Result/artifacts/0_20_atomic_physics_verification.json`
+- Verified with: `python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validation.py`
+- Result: The operator build-spec gate remains `OPERATOR_BUILD_SPEC_READY_IMPLEMENTATION_MISSING`, but now reports `BUILD-SPEC-06 = BLOCKED_FIXED_CI_INPUT_PREFLIGHT_INCOMPLETE` with `5` fixed-CI required inputs and `2` blocking declarations.
+- Blocker narrowed: The first fixed-CI lane is no longer blocked by a vague “implementation missing” state. The next concrete blockers are a named model family and a locked basis-size or convergence policy.
+- Still open: Declared fixed-CI model family, locked convergence policy, accepted fixed CI/UET correction operator, accepted residual rows with `accepted_as_delta_uet_or_ci=true`, accepted operator uncertainty provenance, validation-ready thresholds, and independent non-NIST helium source lineage.
+- Claim impact: `no change`
+- Notes: This wave does not implement a correlated operator. It only narrows the first implementation pass to the two undeclared inputs that still block it.
+
 ### 2026-06-12 - Lock candidate implementation review state for provenance
 
 - Scope: `atomic_predictive_v1_operator_candidate_implementation_review.json`, `atomic_predictive_v1_operator_implementation_provenance.json`, `Research_Rydberg_Validation.py`, primary artifact, topic docs

@@ -1706,6 +1706,50 @@
         "accepted_as_implemented": false,
         "current_status": "IMPLEMENTATION_MISSING",
         "implementation_ready": true,
+        "input_preflight": {
+          "blocking_input_count": 2,
+          "manifest_path": "Data/03_Research/atomic_predictive_v1_fixed_ci_input_preflight.json",
+          "manifest_sha256": "47a730203698a13e11c7381694ba8997a9a607e8af9216a0e61afb7fedd377d0",
+          "required_input_rows": [
+            {
+              "current_status": "PRESENT_SOURCE_LOCKED",
+              "evidence_path": "Data/03_Research/helium_ground_state_energy_sources.json",
+              "input_id": "CI-IN-01",
+              "next_required_artifact": "none",
+              "requirement": "source-locked helium ground-state energy anchors"
+            },
+            {
+              "current_status": "PRESENT_SOURCE_LOCKED",
+              "evidence_path": "Data/03_Research/helium_many_electron_sources.json",
+              "input_id": "CI-IN-02",
+              "next_required_artifact": "none",
+              "requirement": "source-locked excited-state target rows"
+            },
+            {
+              "current_status": "BLOCKING_MODEL_FAMILY_UNDECLARED",
+              "evidence_path": null,
+              "input_id": "CI-IN-03",
+              "next_required_artifact": "fixed-CI implementation declaration with named basis/model family",
+              "requirement": "declared basis/model family"
+            },
+            {
+              "current_status": "BLOCKING_CONVERGENCE_POLICY_UNDECLARED",
+              "evidence_path": null,
+              "input_id": "CI-IN-04",
+              "next_required_artifact": "fixed-CI basis-size or convergence-policy declaration locked before holdout evaluation",
+              "requirement": "locked basis size or convergence policy"
+            },
+            {
+              "current_status": "PRESENT_INHERITED_CONSTANTS_AND_CONVERSIONS_DECLARED",
+              "evidence_path": "Data/03_Research/atomic_predictive_v1_parameter_manifest.json",
+              "input_id": "CI-IN-05",
+              "next_required_artifact": "lane-specific operator parameter binding once the fixed-CI model family is declared",
+              "requirement": "locked constants and unit conversions"
+            }
+          ],
+          "status": "INPUT_PREFLIGHT_PARTIAL_DECLARATION_AND_CONVERGENCE_POLICY_MISSING"
+        },
+        "input_preflight_status": "INPUT_PREFLIGHT_PARTIAL_DECLARATION_AND_CONVERGENCE_POLICY_MISSING",
         "lane_id": "fixed_parameter_ci_or_correlated_two_electron_v1",
         "operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction",
         "priority": 1,
@@ -1739,6 +1783,8 @@
         "accepted_as_implemented": false,
         "current_status": "DERIVATION_AND_IMPLEMENTATION_MISSING",
         "implementation_ready": true,
+        "input_preflight": null,
+        "input_preflight_status": null,
         "lane_id": "explicit_uet_atomic_operator_v1",
         "operator_class": "explicit_uet_atomic_hamiltonian_or_transition_operator_correction",
         "priority": 2,
@@ -1769,6 +1815,8 @@
       "acceptance_gate_total_count": 10,
       "accepted_fixed_correction_operator_count": 0,
       "accepted_implemented_lane_count": 0,
+      "fixed_ci_input_preflight_blocking_count": 2,
+      "fixed_ci_input_preflight_required_count": 5,
       "forbidden_shortcut_count": 5,
       "implementation_lane_count": 2,
       "implementation_missing_lane_count": 2,
@@ -1776,8 +1824,8 @@
       "minimum_first_build_artifact_count": 5,
       "required_input_total_count": 9,
       "required_output_total_count": 11,
-      "spec_blocking_count": 1,
-      "spec_check_count": 5,
+      "spec_blocking_count": 2,
+      "spec_check_count": 6,
       "spec_fail_count": 0
     },
     "minimum_first_build_artifacts": [
@@ -1864,6 +1912,15 @@
         },
         "requirement": "No operator may be accepted until the fixed-correction gate records an implemented operator.",
         "status": "BLOCKED_IMPLEMENTATION_MISSING"
+      },
+      {
+        "check_id": "BUILD-SPEC-06",
+        "evidence": {
+          "fixed_ci_input_preflight_blocking_count": 2,
+          "fixed_ci_input_preflight_status": "INPUT_PREFLIGHT_PARTIAL_DECLARATION_AND_CONVERGENCE_POLICY_MISSING"
+        },
+        "requirement": "The first fixed-CI lane must declare its model family and convergence policy before accepted implementation review.",
+        "status": "BLOCKED_FIXED_CI_INPUT_PREFLIGHT_INCOMPLETE"
       }
     ],
     "status": "OPERATOR_BUILD_SPEC_READY_IMPLEMENTATION_MISSING"
@@ -3254,7 +3311,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-11T20:33:15.360063+00:00",
+  "generated_at_utc": "2026-06-11T20:44:54.891161+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -6374,7 +6431,7 @@
     "atomic_predictive_v1_operator_acceptance_harness_missing_artifacts": 0,
     "atomic_predictive_v1_operator_acceptance_harness_schema_fields": 15,
     "atomic_predictive_v1_operator_acceptance_harness_target_module_present": true,
-    "atomic_predictive_v1_operator_build_spec_blocking_checks": 1,
+    "atomic_predictive_v1_operator_build_spec_blocking_checks": 2,
     "atomic_predictive_v1_operator_build_spec_lanes": 2,
     "atomic_predictive_v1_operator_build_spec_missing_lanes": 2,
     "atomic_predictive_v1_operator_build_spec_ready_lanes": 2,
