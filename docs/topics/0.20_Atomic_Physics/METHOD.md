@@ -4,6 +4,10 @@
 
 This topic tests whether the atomic layer can reproduce selected hydrogen spectral benchmarks with explicit source data, constants, formulas, residuals, and artifact thresholds.
 
+For multi-wave hardening history, use `UPDATE_LOG.md`. It records what changed,
+what was rerun, and which predictive-v1 blockers were narrowed without
+replacing the artifact as the canonical status source.
+
 ## Evidence Lanes
 
 | Lane | Code/data path | Current status |

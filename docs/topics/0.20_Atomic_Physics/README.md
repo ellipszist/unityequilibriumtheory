@@ -94,6 +94,7 @@ It must also record `atomic_claim_scope_gate`, which allows only hydrogen Rydber
 ## Key Files
 
 - `FORMULA_AUDIT.md`: formula registry, units, constants, proof status, and failure modes.
+- `UPDATE_LOG.md`: multi-wave hardening history for the hydrogen/helium predictive lane and operator-blocker narrowing.
 - `DATA_MANIFEST.md`: NIST/CODATA working-copy provenance and benchmark roles.
 - `VERIFICATION_SPEC.md`: primary command, thresholds, and artifact contract.
 - `METHOD.md`: evidence lanes and dependency policy.
