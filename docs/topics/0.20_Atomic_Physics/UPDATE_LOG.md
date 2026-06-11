@@ -20,6 +20,16 @@ blockers were actually narrowed.
 
 ## Entries
 
+### 2026-06-11 - Add parameter candidate promotion gate
+
+- Scope: `atomic_predictive_v1_operator_parameter_candidate_promotion.json`, `Research_Rydberg_Validation.py`, topic docs, primary artifact
+- Added or changed: Added a promotion-review gate for `parameter_set_candidates` so the repo can now distinguish "candidate exists" from "candidate is ready to move into accepted parameter_sets".
+- Verified with: `python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validation.py`
+- Result: The current candidate count remains `1`, and promotion is blocked for explicit reasons: no selected operator class, placeholder parameter rows, and no lock timestamp.
+- Blocker narrowed: The next work is now a promotion review of one concrete candidate, not a vague parameter-policy gap.
+- Still open: Accepted fixed CI/UET correction operator, promotion of the candidate into an accepted parameter set, accepted residual emitter, and accepted operator uncertainty provenance.
+- Claim impact: `no change`
+
 ### 2026-06-11 - Add concrete unaccepted parameter-set candidate
 
 - Scope: `atomic_predictive_v1_operator_parameters.json`, `Research_Rydberg_Validation.py`, topic docs, primary artifact

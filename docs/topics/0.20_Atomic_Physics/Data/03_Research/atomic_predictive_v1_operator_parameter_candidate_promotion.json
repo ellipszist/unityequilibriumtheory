@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.20_Atomic_Physics",
+  "manifest_id": "AT20-PREDICTIVE-V1-OPERATOR-PARAMETER-CANDIDATE-PROMOTION",
+  "purpose": "Define the review checks required before a parameter_set_candidate may be promoted into parameter_sets for operator acceptance review.",
+  "status": "PROMOTION_REVIEW_READY",
+  "selected_lane_id": "helium_quantum_defect_then_ci_or_uet_correction_v1",
+  "candidate_collection_path": "Data/03_Research/atomic_predictive_v1_operator_parameters.json",
+  "promotion_requirements": [
+    {
+      "requirement_id": "PROMOTE-01",
+      "requirement": "Candidate must select exactly one allowed operator class before promotion review.",
+      "blocks_promotion": true
+    },
+    {
+      "requirement_id": "PROMOTE-02",
+      "requirement": "Candidate parameter rows must replace placeholder value/unit states with sourced values or explicit noncomputable placeholders allowed by the selected operator class.",
+      "blocks_promotion": true
+    },
+    {
+      "requirement_id": "PROMOTE-03",
+      "requirement": "Candidate must record lock_timestamp_utc and set locked_before_holdout_evaluation=true before promotion.",
+      "blocks_promotion": true
+    },
+    {
+      "requirement_id": "PROMOTE-04",
+      "requirement": "Candidate must preserve calibration_source_rows, forbidden_source_rows, and source_hashes consistent with the frozen split manifest.",
+      "blocks_promotion": true
+    },
+    {
+      "requirement_id": "PROMOTE-05",
+      "requirement": "Candidate claim_use must remain non-validation language until accepted operator, residual emitter, and uncertainty provenance exist.",
+      "blocks_promotion": true
+    }
+  ],
+  "blocked_claims": [
+    "a candidate parameter set is already an accepted parameter set",
+    "placeholder parameter rows can be treated as locked accepted values",
+    "promotion review alone validates delta_uet_or_ci"
+  ],
+  "claim_boundary": "This manifest defines promotion review for parameter candidates only. It does not accept parameters or validate an operator."
+}

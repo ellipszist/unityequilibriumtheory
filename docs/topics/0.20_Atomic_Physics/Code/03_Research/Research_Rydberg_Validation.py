@@ -76,6 +76,12 @@ ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETER_ACCEPTANCE_PREFLIGHT_PATH = (
     / "03_Research"
     / "atomic_predictive_v1_operator_parameter_acceptance_preflight.json"
 )
+ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETER_CANDIDATE_PROMOTION_PATH = (
+    TOPIC_DIR
+    / "Data"
+    / "03_Research"
+    / "atomic_predictive_v1_operator_parameter_candidate_promotion.json"
+)
 ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_PROVENANCE_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_implementation_provenance.json"
 )
@@ -4714,6 +4720,137 @@ def build_atomic_predictive_v1_operator_parameter_acceptance_preflight_gate(
     }
 
 
+def build_atomic_predictive_v1_operator_parameter_candidate_promotion_gate(
+    candidate_promotion_manifest: dict,
+    operator_parameters_manifest: dict,
+    operator_parameter_preflight_gate: dict,
+) -> dict:
+    candidates = operator_parameters_manifest.get("parameter_set_candidates", [])
+    allowed_operator_classes = set(
+        operator_parameters_manifest.get("first_parameter_set_candidate_blueprint", {}).get(
+            "allowed_operator_classes", []
+        )
+    )
+    candidate_rows = []
+    blocking_count = 0
+    ready_count = 0
+    for candidate in candidates:
+        parameters = candidate.get("parameters", [])
+        selected_operator_class = candidate.get("selected_operator_class")
+        has_selected_class = selected_operator_class in allowed_operator_classes
+        placeholder_rows = [
+            row.get("parameter_id")
+            for row in parameters
+            if row.get("value") is None
+            or row.get("unit") == "pending_operator_class_selection"
+            or row.get("fit_status") == "not_locked_not_accepted"
+        ]
+        lock_ready = (
+            candidate.get("locked_before_holdout_evaluation") is True
+            and bool(candidate.get("lock_timestamp_utc"))
+        )
+        source_ready = bool(candidate.get("calibration_source_rows")) and bool(
+            candidate.get("forbidden_source_rows")
+        ) and bool(candidate.get("source_hashes"))
+        claim_use = candidate.get("claim_use")
+        claim_use_ready = claim_use in {
+            "candidate_blueprint_only_not_validation",
+            "candidate_review_only_not_validation",
+        }
+        requirement_rows = [
+            {
+                "requirement_id": "PROMOTE-01",
+                "status": "PASS" if has_selected_class else "BLOCKING_OPERATOR_CLASS_UNSELECTED",
+                "evidence": {"selected_operator_class": selected_operator_class},
+            },
+            {
+                "requirement_id": "PROMOTE-02",
+                "status": "PASS" if not placeholder_rows else "BLOCKING_PLACEHOLDER_PARAMETER_ROWS",
+                "evidence": {"placeholder_parameter_ids": placeholder_rows},
+            },
+            {
+                "requirement_id": "PROMOTE-03",
+                "status": "PASS" if lock_ready else "BLOCKING_LOCK_STATE_INCOMPLETE",
+                "evidence": {
+                    "lock_timestamp_utc": candidate.get("lock_timestamp_utc"),
+                    "locked_before_holdout_evaluation": candidate.get(
+                        "locked_before_holdout_evaluation"
+                    ),
+                },
+            },
+            {
+                "requirement_id": "PROMOTE-04",
+                "status": "PASS" if source_ready else "BLOCKING_SOURCE_BINDING_INCOMPLETE",
+                "evidence": {
+                    "calibration_source_row_count": len(candidate.get("calibration_source_rows", [])),
+                    "forbidden_source_row_count": len(candidate.get("forbidden_source_rows", [])),
+                    "source_hash_count": len(candidate.get("source_hashes", [])),
+                },
+            },
+            {
+                "requirement_id": "PROMOTE-05",
+                "status": "PASS" if claim_use_ready else "BLOCKING_CLAIM_USE_INCORRECT",
+                "evidence": {"claim_use": claim_use},
+            },
+        ]
+        candidate_blocking = sum(1 for row in requirement_rows if row["status"].startswith("BLOCKING"))
+        blocking_count += candidate_blocking
+        if candidate_blocking == 0:
+            ready_count += 1
+        candidate_rows.append(
+            {
+                "candidate_id": candidate.get("candidate_id"),
+                "status": (
+                    "READY_FOR_PROMOTION_REVIEW"
+                    if candidate_blocking == 0
+                    else "PROMOTION_BLOCKED"
+                ),
+                "selected_operator_class": selected_operator_class,
+                "requirement_rows": requirement_rows,
+                "blocked_until": candidate.get("blocked_until", []),
+            }
+        )
+    status = (
+        "CANDIDATE_PROMOTION_REVIEW_READY"
+        if candidates and blocking_count == 0
+        else "CANDIDATE_PRESENT_PROMOTION_BLOCKED"
+        if candidates
+        else "CANDIDATE_PROMOTION_REVIEW_CANDIDATE_MISSING"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_predictive_v1_operator_parameter_candidate_promotion_gate",
+        "status": status,
+        "claim_class": "operator_parameter_candidate_promotion_no_validation_claim",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-PARAMETER-CANDIDATE-PROMOTION",
+        "manifest": {
+            "path": str(
+                ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETER_CANDIDATE_PROMOTION_PATH.relative_to(TOPIC_DIR)
+            ).replace("\\", "/"),
+            "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETER_CANDIDATE_PROMOTION_PATH),
+            "manifest_id": candidate_promotion_manifest.get("manifest_id"),
+            "status": candidate_promotion_manifest.get("status"),
+        },
+        "candidate_rows": candidate_rows,
+        "metrics": {
+            "parameter_set_candidate_count": len(candidates),
+            "promotion_ready_candidate_count": ready_count,
+            "promotion_blocking_count": blocking_count,
+            "accepted_parameter_set_count": operator_parameter_preflight_gate["metrics"][
+                "parameter_set_count"
+            ],
+        },
+        "blocked_claims": candidate_promotion_manifest.get("blocked_claims", []),
+        "next_required_artifacts": [
+            "select one allowed operator class for the candidate",
+            "replace placeholder parameter rows with sourced values or explicit noncomputable placeholders allowed by that class",
+            "record lock timestamp before holdout evaluation",
+            "promote candidate into parameter_sets only after promotion review passes",
+        ],
+        "claim_boundary": candidate_promotion_manifest.get("claim_boundary"),
+    }
+
+
 def build_atomic_predictive_v1_operator_training_holdout_split_gate(
     operator_training_holdout_split_manifest: dict,
 ) -> dict:
@@ -6265,6 +6402,9 @@ def run_rydberg_analysis():
     atomic_predictive_v1_operator_parameter_acceptance_preflight_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETER_ACCEPTANCE_PREFLIGHT_PATH
     )
+    atomic_predictive_v1_operator_parameter_candidate_promotion_manifest = load_json(
+        ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETER_CANDIDATE_PROMOTION_PATH
+    )
     atomic_predictive_v1_operator_implementation_provenance_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_PROVENANCE_PATH
     )
@@ -6541,6 +6681,13 @@ def run_rydberg_analysis():
             atomic_predictive_v1_operator_parameters_manifest,
         )
     )
+    atomic_predictive_v1_operator_parameter_candidate_promotion_gate = (
+        build_atomic_predictive_v1_operator_parameter_candidate_promotion_gate(
+            atomic_predictive_v1_operator_parameter_candidate_promotion_manifest,
+            atomic_predictive_v1_operator_parameters_manifest,
+            atomic_predictive_v1_operator_parameter_acceptance_preflight_gate,
+        )
+    )
     atomic_predictive_v1_operator_implementation_provenance_gate = (
         build_atomic_predictive_v1_operator_implementation_provenance_gate(
             atomic_predictive_v1_operator_implementation_provenance_manifest,
@@ -6768,6 +6915,18 @@ def run_rydberg_analysis():
                     row.get("rule_id")
                     for row in atomic_predictive_v1_operator_parameter_acceptance_preflight_manifest.get(
                         "required_lock_rules", []
+                    )
+                ],
+            },
+            {
+                "path": str(ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETER_CANDIDATE_PROMOTION_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETER_CANDIDATE_PROMOTION_PATH),
+                "source": atomic_predictive_v1_operator_parameter_candidate_promotion_manifest.get("purpose"),
+                "status": atomic_predictive_v1_operator_parameter_candidate_promotion_manifest.get("status"),
+                "source_rows": [
+                    row.get("requirement_id")
+                    for row in atomic_predictive_v1_operator_parameter_candidate_promotion_manifest.get(
+                        "promotion_requirements", []
                     )
                 ],
             },
@@ -7100,6 +7259,11 @@ def run_rydberg_analysis():
                     "parameter_set_count"
                 ]
             ),
+            "atomic_predictive_v1_operator_parameter_candidate_count": (
+                atomic_predictive_v1_operator_parameter_candidate_promotion_gate["metrics"][
+                    "parameter_set_candidate_count"
+                ]
+            ),
             "atomic_predictive_v1_operator_parameter_preflight_blockers": (
                 atomic_predictive_v1_operator_parameter_acceptance_preflight_gate["metrics"][
                     "preflight_blocking_count"
@@ -7281,6 +7445,9 @@ def run_rydberg_analysis():
     )
     artifact["atomic_predictive_v1_operator_parameter_acceptance_preflight_gate"] = (
         atomic_predictive_v1_operator_parameter_acceptance_preflight_gate
+    )
+    artifact["atomic_predictive_v1_operator_parameter_candidate_promotion_gate"] = (
+        atomic_predictive_v1_operator_parameter_candidate_promotion_gate
     )
     artifact["atomic_predictive_v1_operator_implementation_provenance_gate"] = (
         atomic_predictive_v1_operator_implementation_provenance_gate
