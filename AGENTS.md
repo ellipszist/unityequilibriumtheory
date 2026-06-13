@@ -49,6 +49,25 @@ When work spans repeated repair passes, prefer a visible hardening loop:
 5. record the pass in the topic update log
 6. commit the coherent change before starting the next wave
 
+When the user wants faster progress across many topics, prefer improving the
+workflow standard and update-log discipline before trying to push every topic
+forward at once:
+
+1. tighten the operating rule in `docs/topics/For Work/` or this guide if the
+   same ambiguity is slowing multiple topics
+2. make the next blocker state machine-readable in the local topic package
+3. use one pilot topic to prove the updated workflow before rolling it out more
+   broadly
+
+When the repository is moving across many topics at once, prefer a status-first
+workflow before starting new edits:
+
+1. inspect `docs/topics/README.md` and relevant `docs/meta/` records
+2. inspect the local topic `README.md`, `LIMITATIONS.md`, and `VERIFICATION_SPEC.md`
+3. inspect the current verifier artifact and any machine-readable blocker gates
+4. inspect the topic `UPDATE_LOG.md` when the work spans multiple waves
+5. summarize the current blocker chain before proposing promotion, publication, or rewrite
+
 ## Start here
 
 Open these files first when you need repository-wide context:
@@ -81,6 +100,7 @@ Then choose the next standard by task.
 1. [`docs/topics/For Work/18_Research_Hardening_Workflow.md`](./docs/topics/For%20Work/18_Research_Hardening_Workflow.md)
 2. [`docs/topics/For Work/24_TEMPLATE_UPDATE_LOG.md`](./docs/topics/For%20Work/24_TEMPLATE_UPDATE_LOG.md)
 3. the local topic `README.md`, `LIMITATIONS.md`, and `VERIFICATION_SPEC.md`
+4. the latest verifier artifact and any blocker manifests or gate JSON files
 
 ### If the task is mainly question answering or learning support
 
@@ -164,6 +184,36 @@ When asked to review or improve work, default to a verification-first mindset:
   verifier artifact, and blocker gates together rather than from prose memory alone
 - if a topic is moving through repeated repair passes, use the hardening workflow and keep an
   update log so later reviewers can reconstruct what changed and why
+- if a topic seems stuck for a long time, first classify the blocker as source, formula,
+  artifact, threshold, dependency, or claim-boundary related before deciding what to do next
+
+## Update-log discipline
+
+Use an `UPDATE_LOG.md` when:
+
+- a topic is going through multiple hardening waves
+- a reader would otherwise need to reconstruct progress from diffs alone
+- blocker wording changes over time and needs a durable trail
+- a verifier is rerun repeatedly and the result needs short historical context
+
+An update log should record:
+
+- what changed in that wave
+- which verifier or audit was actually run
+- which blocker narrowed or stayed controlling
+- whether claim wording changed or stayed the same
+- what exact next blocker remains
+
+An update log should not:
+
+- replace artifact JSON as the canonical result
+- replace manifests as the source of truth for provenance
+- become a place for promises that were not implemented yet
+- be backfilled with vague summaries that hide what really changed
+
+When a topic is being hardened across many short waves, prefer one concise
+entry per completed wave over batching several blocker changes into one large
+retroactive summary.
 
 ## Git workflow
 
@@ -193,6 +243,14 @@ For multi-wave hardening, a good unit is:
 4. one short update-log entry
 5. one scoped commit
 
+When a standards or workflow change is introduced to speed up future research,
+capture it in `AGENTS.md` or `docs/topics/For Work/` close to the same time so
+later waves do not depend on unwritten habits.
+
+When touching standards such as `docs/topics/For Work/` or `AGENTS.md`, prefer a
+separate commit from topic-level research changes unless the standards update is
+required to explain the same hardening wave.
+
 ## Agent behavior expectations
 
 - Be useful for audits, critique, normalization, and learning support.
@@ -204,6 +262,11 @@ For multi-wave hardening, a good unit is:
   rule.
 - If a topic is stuck, aim to make the blocker narrower and more machine-readable before trying
   to make the claim stronger.
+- If several topics are stuck at once, prefer improving the shared workflow,
+  logging, or standards first so later topic work compounds instead of
+  repeating the same ambiguity.
+- When asked for a repo-wide status summary, reconstruct it from standards, metadata, topic
+  docs, artifacts, and update logs in that order rather than relying on memory.
 
 ## Quick routing
 
