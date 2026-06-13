@@ -61,6 +61,9 @@ ATOMIC_PREDICTIVE_V1_OPERATOR_MANIFEST_PATH = (
 ATOMIC_PREDICTIVE_V1_FIXED_CI_INPUT_PREFLIGHT_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_fixed_ci_input_preflight.json"
 )
+ATOMIC_PREDICTIVE_V1_FIXED_CI_IMPLEMENTATION_DECLARATION_PATH = (
+    TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_fixed_ci_implementation_declaration.json"
+)
 ATOMIC_PREDICTIVE_V1_OPERATOR_BUILD_SPEC_MANIFEST_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_build_spec_manifest.json"
 )
@@ -4124,6 +4127,7 @@ def build_atomic_predictive_v1_operator_candidate_resolution_gate(
 def build_atomic_predictive_v1_operator_build_spec_gate(
     operator_build_spec_manifest: dict,
     fixed_ci_input_preflight_manifest: dict,
+    fixed_ci_implementation_declaration_manifest: dict,
     atomic_predictive_v1_fixed_correction_operator_gate: dict,
     atomic_predictive_v1_operator_candidate_resolution_gate: dict,
 ) -> dict:
@@ -4133,6 +4137,8 @@ def build_atomic_predictive_v1_operator_build_spec_gate(
     accepted_operator_count = atomic_predictive_v1_fixed_correction_operator_gate["metrics"][
         "accepted_operator_count"
     ]
+    fixed_ci_declaration_path = ATOMIC_PREDICTIVE_V1_FIXED_CI_IMPLEMENTATION_DECLARATION_PATH
+    fixed_ci_declaration_exists = fixed_ci_declaration_path.exists()
     lane_rows = []
     fixed_ci_preflight_rows = fixed_ci_input_preflight_manifest.get("required_input_rows", [])
     fixed_ci_preflight_blocking_rows = [
@@ -4150,6 +4156,21 @@ def build_atomic_predictive_v1_operator_build_spec_gate(
                 ),
                 "manifest_sha256": file_sha256(ATOMIC_PREDICTIVE_V1_FIXED_CI_INPUT_PREFLIGHT_PATH),
                 "status": fixed_ci_input_preflight_manifest.get("status"),
+                "declaration_path": (
+                    str(fixed_ci_declaration_path.relative_to(TOPIC_DIR)).replace("\\", "/")
+                    if fixed_ci_declaration_exists
+                    else None
+                ),
+                "declaration_sha256": (
+                    file_sha256(fixed_ci_declaration_path) if fixed_ci_declaration_exists else None
+                ),
+                "declaration_status": fixed_ci_implementation_declaration_manifest.get("status"),
+                "declared_model_family_id": fixed_ci_implementation_declaration_manifest.get(
+                    "model_family_declaration", {}
+                ).get("model_family_id"),
+                "declared_convergence_policy_id": fixed_ci_implementation_declaration_manifest.get(
+                    "convergence_policy_declaration", {}
+                ).get("policy_id"),
                 "required_input_rows": fixed_ci_preflight_rows,
                 "blocking_input_count": len(fixed_ci_preflight_blocking_rows),
             }
@@ -4233,6 +4254,9 @@ def build_atomic_predictive_v1_operator_build_spec_gate(
             "evidence": {
                 "fixed_ci_input_preflight_status": fixed_ci_input_preflight_manifest.get("status"),
                 "fixed_ci_input_preflight_blocking_count": len(fixed_ci_preflight_blocking_rows),
+                "fixed_ci_implementation_declaration_status": fixed_ci_implementation_declaration_manifest.get(
+                    "status"
+                ),
             },
         },
     ]
@@ -4277,6 +4301,7 @@ def build_atomic_predictive_v1_operator_build_spec_gate(
             "minimum_first_build_artifact_count": len(minimum_artifacts),
             "fixed_ci_input_preflight_required_count": len(fixed_ci_preflight_rows),
             "fixed_ci_input_preflight_blocking_count": len(fixed_ci_preflight_blocking_rows),
+            "fixed_ci_implementation_declaration_present": fixed_ci_declaration_exists,
             "spec_check_count": len(spec_checks),
             "spec_fail_count": fail_count,
             "spec_blocking_count": blocking_count,
@@ -6655,6 +6680,9 @@ def run_rydberg_analysis():
     atomic_predictive_v1_fixed_ci_input_preflight_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_FIXED_CI_INPUT_PREFLIGHT_PATH
     )
+    atomic_predictive_v1_fixed_ci_implementation_declaration_manifest = load_json(
+        ATOMIC_PREDICTIVE_V1_FIXED_CI_IMPLEMENTATION_DECLARATION_PATH
+    )
     atomic_predictive_v1_operator_build_spec_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_BUILD_SPEC_MANIFEST_PATH
     )
@@ -6928,6 +6956,7 @@ def run_rydberg_analysis():
     atomic_predictive_v1_operator_build_spec_gate = build_atomic_predictive_v1_operator_build_spec_gate(
         atomic_predictive_v1_operator_build_spec_manifest,
         atomic_predictive_v1_fixed_ci_input_preflight_manifest,
+        atomic_predictive_v1_fixed_ci_implementation_declaration_manifest,
         atomic_predictive_v1_fixed_correction_operator_gate,
         atomic_predictive_v1_operator_candidate_resolution_gate,
     )

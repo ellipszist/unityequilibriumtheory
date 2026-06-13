@@ -1707,9 +1707,14 @@
         "current_status": "IMPLEMENTATION_MISSING",
         "implementation_ready": true,
         "input_preflight": {
-          "blocking_input_count": 2,
+          "blocking_input_count": 0,
+          "declaration_path": "Data/03_Research/atomic_predictive_v1_fixed_ci_implementation_declaration.json",
+          "declaration_sha256": "a989890c1f950f2e054f3980f2efbe11b5862687396e99505efdfaa43fd64e31",
+          "declaration_status": "DECLARATION_READY_REVIEW_ONLY_IMPLEMENTATION_MISSING",
+          "declared_convergence_policy_id": "fixed_ci_basis_lock_before_holdout_v1",
+          "declared_model_family_id": "correlated_two_electron_variational_ci_family_review_target",
           "manifest_path": "Data/03_Research/atomic_predictive_v1_fixed_ci_input_preflight.json",
-          "manifest_sha256": "47a730203698a13e11c7381694ba8997a9a607e8af9216a0e61afb7fedd377d0",
+          "manifest_sha256": "ff95288d9b73d605bfd38ce7507c10b589e791f2b8d3c64cacd29e940bf0b480",
           "required_input_rows": [
             {
               "current_status": "PRESENT_SOURCE_LOCKED",
@@ -1726,17 +1731,17 @@
               "requirement": "source-locked excited-state target rows"
             },
             {
-              "current_status": "BLOCKING_MODEL_FAMILY_UNDECLARED",
-              "evidence_path": null,
+              "current_status": "PRESENT_DECLARED_REVIEW_ONLY",
+              "evidence_path": "Data/03_Research/atomic_predictive_v1_fixed_ci_implementation_declaration.json",
               "input_id": "CI-IN-03",
-              "next_required_artifact": "fixed-CI implementation declaration with named basis/model family",
+              "next_required_artifact": "accepted operator implementation that uses the declared family without post-holdout retuning",
               "requirement": "declared basis/model family"
             },
             {
-              "current_status": "BLOCKING_CONVERGENCE_POLICY_UNDECLARED",
-              "evidence_path": null,
+              "current_status": "PRESENT_DECLARED_REVIEW_ONLY",
+              "evidence_path": "Data/03_Research/atomic_predictive_v1_fixed_ci_implementation_declaration.json",
               "input_id": "CI-IN-04",
-              "next_required_artifact": "fixed-CI basis-size or convergence-policy declaration locked before holdout evaluation",
+              "next_required_artifact": "accepted operator implementation that executes the declared convergence policy before holdout evaluation",
               "requirement": "locked basis size or convergence policy"
             },
             {
@@ -1815,7 +1820,8 @@
       "acceptance_gate_total_count": 10,
       "accepted_fixed_correction_operator_count": 0,
       "accepted_implemented_lane_count": 0,
-      "fixed_ci_input_preflight_blocking_count": 2,
+      "fixed_ci_implementation_declaration_present": true,
+      "fixed_ci_input_preflight_blocking_count": 0,
       "fixed_ci_input_preflight_required_count": 5,
       "forbidden_shortcut_count": 5,
       "implementation_lane_count": 2,
@@ -1824,7 +1830,7 @@
       "minimum_first_build_artifact_count": 5,
       "required_input_total_count": 9,
       "required_output_total_count": 11,
-      "spec_blocking_count": 2,
+      "spec_blocking_count": 1,
       "spec_check_count": 6,
       "spec_fail_count": 0
     },
@@ -1916,11 +1922,12 @@
       {
         "check_id": "BUILD-SPEC-06",
         "evidence": {
-          "fixed_ci_input_preflight_blocking_count": 2,
+          "fixed_ci_implementation_declaration_status": "DECLARATION_READY_REVIEW_ONLY_IMPLEMENTATION_MISSING",
+          "fixed_ci_input_preflight_blocking_count": 0,
           "fixed_ci_input_preflight_status": "INPUT_PREFLIGHT_PARTIAL_DECLARATION_AND_CONVERGENCE_POLICY_MISSING"
         },
         "requirement": "The first fixed-CI lane must declare its model family and convergence policy before accepted implementation review.",
-        "status": "BLOCKED_FIXED_CI_INPUT_PREFLIGHT_INCOMPLETE"
+        "status": "PASS"
       }
     ],
     "status": "OPERATOR_BUILD_SPEC_READY_IMPLEMENTATION_MISSING"
@@ -3311,7 +3318,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-11T20:44:54.891161+00:00",
+  "generated_at_utc": "2026-06-13T13:54:03.189814+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -6431,7 +6438,7 @@
     "atomic_predictive_v1_operator_acceptance_harness_missing_artifacts": 0,
     "atomic_predictive_v1_operator_acceptance_harness_schema_fields": 15,
     "atomic_predictive_v1_operator_acceptance_harness_target_module_present": true,
-    "atomic_predictive_v1_operator_build_spec_blocking_checks": 2,
+    "atomic_predictive_v1_operator_build_spec_blocking_checks": 1,
     "atomic_predictive_v1_operator_build_spec_lanes": 2,
     "atomic_predictive_v1_operator_build_spec_missing_lanes": 2,
     "atomic_predictive_v1_operator_build_spec_ready_lanes": 2,

@@ -20,6 +20,18 @@ blockers were actually narrowed.
 
 ## Entries
 
+### 2026-06-13 - Declare the first fixed-CI family and convergence lock
+
+- Scope: `atomic_predictive_v1_fixed_ci_implementation_declaration.json`, `atomic_predictive_v1_fixed_ci_input_preflight.json`, `Research_Rydberg_Validation.py`, primary artifact, topic docs
+- Added or changed: Added a fixed-CI implementation declaration manifest and updated the fixed-CI input preflight plus build-spec gate so the first correlated lane now has an explicit model-family declaration and convergence-lock policy.
+- Files touched: `Data/03_Research/atomic_predictive_v1_fixed_ci_implementation_declaration.json`, `Data/03_Research/atomic_predictive_v1_fixed_ci_input_preflight.json`, `Code/03_Research/Research_Rydberg_Validation.py`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `FORMULA_AUDIT.md`, `DATA_MANIFEST.md`, `VERIFICATION_SPEC.md`, `UPDATE_LOG.md`, `Result/artifacts/0_20_atomic_physics_verification.json`
+- Verified with: `python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validation.py`
+- Result: The fixed-CI input preflight now has `0` blocking input rows, the implementation declaration is present, and `BUILD-SPEC-06` now passes while the overall build-spec gate honestly remains `OPERATOR_BUILD_SPEC_READY_IMPLEMENTATION_MISSING`.
+- Blocker narrowed: The first fixed-CI lane is no longer blocked by undeclared family or policy state. The next blocker is the missing accepted implementation itself, not missing declaration scaffolding.
+- Still open: Accepted fixed CI/UET correction operator, accepted residual rows with `accepted_as_delta_uet_or_ci=true`, accepted operator uncertainty provenance, validation-ready thresholds, and independent non-NIST helium source lineage.
+- Claim impact: `no change`
+- Notes: This wave declares the intended family and convergence policy only. It does not implement the correlated operator in code.
+
 ### 2026-06-12 - Narrow the fixed-CI build lane to two undeclared inputs
 
 - Scope: `atomic_predictive_v1_fixed_ci_input_preflight.json`, `Research_Rydberg_Validation.py`, primary artifact, topic docs

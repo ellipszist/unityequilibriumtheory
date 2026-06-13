@@ -3,7 +3,7 @@
   "topic": "0.20_Atomic_Physics",
   "manifest_id": "AT20-PREDICTIVE-V1-FIXED-CI-INPUT-PREFLIGHT",
   "purpose": "Record which fixed-CI/correlated lane inputs are already source-backed versus still undeclared before the first accepted operator implementation pass.",
-  "status": "INPUT_PREFLIGHT_PARTIAL_DECLARATION_AND_CONVERGENCE_POLICY_MISSING",
+  "status": "INPUT_PREFLIGHT_DECLARATION_READY_REVIEW_ONLY_IMPLEMENTATION_MISSING",
   "selected_lane_id": "fixed_parameter_ci_or_correlated_two_electron_v1",
   "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction",
   "required_input_rows": [
@@ -24,16 +24,16 @@
     {
       "input_id": "CI-IN-03",
       "requirement": "declared basis/model family",
-      "current_status": "BLOCKING_MODEL_FAMILY_UNDECLARED",
-      "evidence_path": null,
-      "next_required_artifact": "fixed-CI implementation declaration with named basis/model family"
+      "current_status": "PRESENT_DECLARED_REVIEW_ONLY",
+      "evidence_path": "Data/03_Research/atomic_predictive_v1_fixed_ci_implementation_declaration.json",
+      "next_required_artifact": "accepted operator implementation that uses the declared family without post-holdout retuning"
     },
     {
       "input_id": "CI-IN-04",
       "requirement": "locked basis size or convergence policy",
-      "current_status": "BLOCKING_CONVERGENCE_POLICY_UNDECLARED",
-      "evidence_path": null,
-      "next_required_artifact": "fixed-CI basis-size or convergence-policy declaration locked before holdout evaluation"
+      "current_status": "PRESENT_DECLARED_REVIEW_ONLY",
+      "evidence_path": "Data/03_Research/atomic_predictive_v1_fixed_ci_implementation_declaration.json",
+      "next_required_artifact": "accepted operator implementation that executes the declared convergence policy before holdout evaluation"
     },
     {
       "input_id": "CI-IN-05",
@@ -44,9 +44,8 @@
     }
   ],
   "blocked_claims": [
-    "fixed-CI implementation can be called source-complete without a declared model family",
-    "fixed-CI implementation can be accepted before convergence policy is locked",
+    "fixed-CI implementation can be called accepted just because a family and convergence policy are declared",
     "source-backed targets alone imply a runnable correlated two-electron operator"
   ],
-  "claim_boundary": "This preflight manifest records fixed-CI input readiness only. It does not implement, accept, or validate a correlated two-electron operator."
+  "claim_boundary": "This preflight manifest records fixed-CI input readiness only. Declared family and convergence policy remain review-only until an accepted operator implementation exists."
 }
