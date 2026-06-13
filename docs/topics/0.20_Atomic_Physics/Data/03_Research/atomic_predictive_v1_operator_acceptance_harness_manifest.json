@@ -43,6 +43,7 @@
     "absolute_residual_eV",
     "model_uncertainty_eV",
     "source_uncertainty_eV_or_rounding_bound",
+    "uncertainty_computable",
     "parameters_locked_before_evaluation",
     "used_for_parameter_fit",
     "source_family",

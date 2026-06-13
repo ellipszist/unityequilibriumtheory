@@ -3,6 +3,7 @@
   "artifact_id": "atomic_predictive_v1_operator_residual_rows",
   "claim_boundary": "Rows exported here are same-source-family diagnostic residual rows. They do not implement or validate delta_uet_or_ci.",
   "claim_class": "diagnostic_residual_rows_no_validation_claim",
+  "execution_mode": "diagnostic_export_only",
   "metrics": {
     "accepted_operator_count": 0,
     "average_baseline_abs_residual_eV": 0.016156012023859745,
@@ -16,6 +17,7 @@
     "residual_improved_row_count": 3,
     "residual_improvement_populated_count": 3,
     "residual_row_count": 3,
+    "uncertainty_computable_row_count": 3,
     "used_for_parameter_fit_count": 0
   },
   "residual_rows": [
@@ -48,6 +50,7 @@
         "model": "global leave-one-out excitation residual RMSE fallback because selected series has fewer than two calibration rows",
         "source": "excitation-energy uncertainty converted from source transcription bound"
       },
+      "uncertainty_computable": true,
       "used_for_parameter_fit": false
     },
     {
@@ -79,6 +82,7 @@
         "model": "global leave-one-out excitation residual RMSE fallback because selected series has fewer than two calibration rows",
         "source": "excitation-energy uncertainty converted from source transcription bound"
       },
+      "uncertainty_computable": true,
       "used_for_parameter_fit": false
     },
     {
@@ -110,6 +114,7 @@
         "model": "global leave-one-out excitation residual RMSE fallback because selected series has fewer than two calibration rows",
         "source": "excitation-energy uncertainty converted from source transcription bound"
       },
+      "uncertainty_computable": true,
       "used_for_parameter_fit": false
     }
   ],

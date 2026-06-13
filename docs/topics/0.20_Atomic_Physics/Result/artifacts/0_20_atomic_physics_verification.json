@@ -1114,6 +1114,113 @@
     "schema_version": "1.0",
     "status": "SPEC_MAPPED_IMPLEMENTATION_BLOCKED"
   },
+  "atomic_predictive_v1_candidate_execution_gate": {
+    "blocked_claims": [
+      "candidate execution readiness means an accepted delta_uet_or_ci operator exists",
+      "diagnostic residual rows with uncertainty fields are validation-ready thresholds",
+      "a runnable exporter may be treated as a correlated two-electron or explicit UET correction operator before accepted provenance exists"
+    ],
+    "claim_boundary": "This manifest narrows implementation missing into runnable candidate-export checks only. It does not accept or validate a correction operator.",
+    "claim_class": "candidate_execution_no_validation_claim",
+    "execution_checks": [
+      {
+        "check_id": "EXEC-01",
+        "evidence": {
+          "entrypoint_present": true,
+          "return_key_present": true,
+          "target_module_exists": true,
+          "target_module_path": "Code/03_Research/Research_Atomic_Operator_V1.py"
+        },
+        "requirement": "The target module exists and exposes the required entrypoint plus return key.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "EXEC-02",
+        "evidence": {
+          "residual_artifact_exists": true,
+          "residual_artifact_path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
+          "residual_artifact_sha256": "88ae42a51fb047806453df52b39f4038c5328d8fe89acfd810a60e2a660619e3",
+          "returned_gate_present": true
+        },
+        "requirement": "Running the target module through the primary verifier writes the residual artifact and returns the operator gate.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "EXEC-03",
+        "evidence": {
+          "emitted_row_count": 3,
+          "expected_row_count": 3
+        },
+        "requirement": "The emitted residual-row count matches the current same-source-family helium holdout prediction count.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "EXEC-04",
+        "evidence": {
+          "required_uncertainty_fields": [
+            "model_uncertainty_eV",
+            "source_uncertainty_eV_or_rounding_bound",
+            "uncertainty_basis",
+            "uncertainty_computable"
+          ],
+          "residual_row_count": 3,
+          "rows_missing_uncertainty_fields": []
+        },
+        "requirement": "Every emitted residual row includes the required uncertainty fields, including uncertainty_computable.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "EXEC-05",
+        "evidence": {
+          "accepted_as_delta_uet_or_ci": false,
+          "diagnostic_state_failures": [],
+          "required_claim_use": "diagnostic_only_not_validation",
+          "required_current_operator_id": "empirical_quantum_defect_diagnostic_not_delta_uet_or_ci"
+        },
+        "requirement": "Every emitted residual row remains diagnostic-only and does not relabel the current emitter as delta_uet_or_ci.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "EXEC-06",
+        "evidence": {
+          "manifest_selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction",
+          "manifest_target_module_path": "Code/03_Research/Research_Atomic_Operator_V1.py",
+          "review_selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction",
+          "review_target_module_path": "Code/03_Research/Research_Atomic_Operator_V1.py",
+          "runtime_target_module_path": "Code/03_Research/Research_Atomic_Operator_V1.py"
+        },
+        "requirement": "The current execution state stays aligned with the candidate implementation review record for the selected operator class.",
+        "status": "PASS"
+      }
+    ],
+    "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-CANDIDATE-EXECUTION",
+    "manifest": {
+      "manifest_id": "AT20-PREDICTIVE-V1-CANDIDATE-EXECUTION-MANIFEST",
+      "path": "Data/03_Research/atomic_predictive_v1_candidate_execution_manifest.json",
+      "sha256": "8188aee5666139018aee634c9aa1b0fc30092be7d3ec31f5fd92a39d369fe667",
+      "status": "CANDIDATE_EXECUTION_CONTRACT_READY_ACCEPTED_OPERATOR_MISSING"
+    },
+    "metrics": {
+      "accepted_operator_count": 0,
+      "diagnostic_only_row_count": 3,
+      "execution_check_blocking_count": 0,
+      "execution_check_count": 6,
+      "execution_check_pass_count": 6,
+      "expected_row_count": 3,
+      "residual_row_count": 3,
+      "uncertainty_computable_row_count": 3
+    },
+    "role": "atomic_predictive_v1_candidate_execution_gate",
+    "schema_version": "1.0",
+    "status": "CANDIDATE_EXECUTION_READY_ACCEPTED_OPERATOR_MISSING",
+    "target_module": {
+      "entrypoint_present": true,
+      "exists": true,
+      "path": "Code/03_Research/Research_Atomic_Operator_V1.py",
+      "return_key_present": true,
+      "sha256": "bc24d600b2ef904bea5062bb1cca3d611a3ebf1ceaf463e2c96136a05df7cac8"
+    }
+  },
   "atomic_predictive_v1_diagnostic_report_gate": {
     "blocked_claims": [
       "diagnostic threshold pass proves independent prediction",
@@ -1454,7 +1561,7 @@
             "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
             "purpose": "Store source-row residuals emitted by the target module.",
             "required_before_acceptance": true,
-            "sha256": "4ff227989cb8a92f646ddea63aab0e7092874af350b93771500e05a69d7edc5c"
+            "sha256": "88ae42a51fb047806453df52b39f4038c5328d8fe89acfd810a60e2a660619e3"
           },
           {
             "artifact_id": "operator_uncertainty_policy",
@@ -1471,7 +1578,7 @@
       {
         "check_id": "HARNESS-03",
         "evidence": {
-          "required_schema_field_count": 15,
+          "required_schema_field_count": 16,
           "required_schema_fields": [
             "row_id",
             "source_row_id",
@@ -1484,6 +1591,7 @@
             "absolute_residual_eV",
             "model_uncertainty_eV",
             "source_uncertainty_eV_or_rounding_bound",
+            "uncertainty_computable",
             "parameters_locked_before_evaluation",
             "used_for_parameter_fit",
             "source_family",
@@ -1537,7 +1645,7 @@
     "manifest": {
       "manifest_id": "AT20-PREDICTIVE-V1-OPERATOR-ACCEPTANCE-HARNESS-MANIFEST",
       "path": "Data/03_Research/atomic_predictive_v1_operator_acceptance_harness_manifest.json",
-      "sha256": "47238c0bfde58d97e63f795a68eb2cd459db4e696fff032e309cba804116ac22",
+      "sha256": "fa77e983fc2fde4fdc32dac9cbc58e63e0b9fe1168c6adc27b8ea4d9e16349ac",
       "status": "ACCEPTANCE_HARNESS_READY_TARGETS_MISSING"
     },
     "metrics": {
@@ -1552,7 +1660,7 @@
       "required_local_artifact_count": 3,
       "required_local_artifact_missing_count": 0,
       "required_local_artifact_present_count": 3,
-      "required_residual_schema_field_count": 15,
+      "required_residual_schema_field_count": 16,
       "residual_row_count": 3,
       "residual_row_schema_missing_count": 0,
       "residual_rows_present": true,
@@ -1628,7 +1736,7 @@
         "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
         "purpose": "Store source-row residuals emitted by the target module.",
         "required_before_acceptance": true,
-        "sha256": "4ff227989cb8a92f646ddea63aab0e7092874af350b93771500e05a69d7edc5c"
+        "sha256": "88ae42a51fb047806453df52b39f4038c5328d8fe89acfd810a60e2a660619e3"
       },
       {
         "artifact_id": "operator_uncertainty_policy",
@@ -1651,6 +1759,7 @@
       "absolute_residual_eV",
       "model_uncertainty_eV",
       "source_uncertainty_eV_or_rounding_bound",
+      "uncertainty_computable",
       "parameters_locked_before_evaluation",
       "used_for_parameter_fit",
       "source_family",
@@ -1660,7 +1769,7 @@
       "accepted_as_delta_uet_or_ci": false,
       "exists": true,
       "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
-      "sha256": "4ff227989cb8a92f646ddea63aab0e7092874af350b93771500e05a69d7edc5c",
+      "sha256": "88ae42a51fb047806453df52b39f4038c5328d8fe89acfd810a60e2a660619e3",
       "status": "DIAGNOSTIC_RESIDUAL_ROWS_EXPORTED_OPERATOR_NOT_ACCEPTED"
     },
     "role": "atomic_predictive_v1_operator_acceptance_harness_gate",
@@ -1674,7 +1783,7 @@
       "required_entrypoint": "run_atomic_operator_v1",
       "required_return_key": "atomic_predictive_v1_operator_residual_gate",
       "return_key_present": true,
-      "sha256": "08f1f86a224ee728b6adabcc1753528609ce56eb54416085d6936e798a54ba12"
+      "sha256": "bc24d600b2ef904bea5062bb1cca3d611a3ebf1ceaf463e2c96136a05df7cac8"
     }
   },
   "atomic_predictive_v1_operator_build_spec_gate": {
@@ -1714,7 +1823,7 @@
           "declared_convergence_policy_id": "fixed_ci_basis_lock_before_holdout_v1",
           "declared_model_family_id": "correlated_two_electron_variational_ci_family_review_target",
           "manifest_path": "Data/03_Research/atomic_predictive_v1_fixed_ci_input_preflight.json",
-          "manifest_sha256": "ff95288d9b73d605bfd38ce7507c10b589e791f2b8d3c64cacd29e940bf0b480",
+          "manifest_sha256": "421a5d9da7c748265112aa3c8cb631ae55caea960b392e8eb16ae6abb982c5cc",
           "required_input_rows": [
             {
               "current_status": "PRESENT_SOURCE_LOCKED",
@@ -1752,9 +1861,9 @@
               "requirement": "locked constants and unit conversions"
             }
           ],
-          "status": "INPUT_PREFLIGHT_PARTIAL_DECLARATION_AND_CONVERGENCE_POLICY_MISSING"
+          "status": "INPUT_PREFLIGHT_DECLARATION_READY_REVIEW_ONLY_IMPLEMENTATION_MISSING"
         },
-        "input_preflight_status": "INPUT_PREFLIGHT_PARTIAL_DECLARATION_AND_CONVERGENCE_POLICY_MISSING",
+        "input_preflight_status": "INPUT_PREFLIGHT_DECLARATION_READY_REVIEW_ONLY_IMPLEMENTATION_MISSING",
         "lane_id": "fixed_parameter_ci_or_correlated_two_electron_v1",
         "operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction",
         "priority": 1,
@@ -1924,7 +2033,7 @@
         "evidence": {
           "fixed_ci_implementation_declaration_status": "DECLARATION_READY_REVIEW_ONLY_IMPLEMENTATION_MISSING",
           "fixed_ci_input_preflight_blocking_count": 0,
-          "fixed_ci_input_preflight_status": "INPUT_PREFLIGHT_PARTIAL_DECLARATION_AND_CONVERGENCE_POLICY_MISSING"
+          "fixed_ci_input_preflight_status": "INPUT_PREFLIGHT_DECLARATION_READY_REVIEW_ONLY_IMPLEMENTATION_MISSING"
         },
         "requirement": "The first fixed-CI lane must declare its model family and convergence policy before accepted implementation review.",
         "status": "PASS"
@@ -2139,13 +2248,13 @@
       "parameter_manifest_exists": true,
       "parameter_manifest_sha256": "c6227e3f8127aaeb55b297c9ef7d4f89c3d5468352b9c861cd36580ac1803d1a",
       "residual_rows_artifact_exists": true,
-      "residual_rows_artifact_sha256": "4ff227989cb8a92f646ddea63aab0e7092874af350b93771500e05a69d7edc5c",
+      "residual_rows_artifact_sha256": "88ae42a51fb047806453df52b39f4038c5328d8fe89acfd810a60e2a660619e3",
       "selected_operator_class_review": "fixed_parameter_ci_or_correlated_two_electron_correction",
       "target_module_entrypoint_present": true,
       "target_module_exists": true,
       "target_module_path": "Code/03_Research/Research_Atomic_Operator_V1.py",
       "target_module_return_key_present": true,
-      "target_module_sha256": "08f1f86a224ee728b6adabcc1753528609ce56eb54416085d6936e798a54ba12",
+      "target_module_sha256": "bc24d600b2ef904bea5062bb1cca3d611a3ebf1ceaf463e2c96136a05df7cac8",
       "uncertainty_policy_exists": true,
       "uncertainty_policy_sha256": "494a809a6001a42fbc4e2b3c431392d8997e2720f4593a0b88cc9c3d2bb7fa3c"
     },
@@ -2188,7 +2297,7 @@
         "evidence_exists": true,
         "evidence_id": "PROV-01",
         "evidence_path": "Code/03_Research/Research_Atomic_Operator_V1.py",
-        "evidence_sha256": "08f1f86a224ee728b6adabcc1753528609ce56eb54416085d6936e798a54ba12",
+        "evidence_sha256": "bc24d600b2ef904bea5062bb1cca3d611a3ebf1ceaf463e2c96136a05df7cac8",
         "manifest_status": "CANDIDATE_IDENTITY_LOCK_READY_ACCEPTED_OPERATOR_MISSING",
         "required_artifact": "accepted operator implementation record with code hash and operator class",
         "requirement": "Accepted operator source code is identified by module path, entrypoint, commit hash or source hash, and operator class.",
@@ -2230,7 +2339,7 @@
         "evidence_exists": true,
         "evidence_id": "PROV-04",
         "evidence_path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
-        "evidence_sha256": "4ff227989cb8a92f646ddea63aab0e7092874af350b93771500e05a69d7edc5c",
+        "evidence_sha256": "88ae42a51fb047806453df52b39f4038c5328d8fe89acfd810a60e2a660619e3",
         "manifest_status": "DIAGNOSTIC_RESIDUAL_ROWS_LOCK_READY_ACCEPTED_OPERATOR_MISSING",
         "required_artifact": "operator residual rows with accepted_operator_class and accepted_as_delta_uet_or_ci=true",
         "requirement": "Residual rows are emitted by the accepted operator, not by the current diagnostic quantum-defect wrapper.",
@@ -2532,6 +2641,7 @@
     ],
     "claim_boundary": "This skeleton only establishes the target entrypoint. It does not implement or validate delta_uet_or_ci.",
     "claim_class": "operator_skeleton_or_diagnostic_rows_no_validation_claim",
+    "execution_mode": "diagnostic_export_only",
     "metrics": {
       "accepted_operator_count": 0,
       "average_baseline_abs_residual_eV": 0.016156012023859745,
@@ -2545,6 +2655,7 @@
       "residual_improved_row_count": 3,
       "residual_improvement_populated_count": 3,
       "residual_row_count": 3,
+      "uncertainty_computable_row_count": 3,
       "used_for_parameter_fit_count": 0
     },
     "next_required_artifacts": [
@@ -2583,6 +2694,7 @@
           "model": "global leave-one-out excitation residual RMSE fallback because selected series has fewer than two calibration rows",
           "source": "excitation-energy uncertainty converted from source transcription bound"
         },
+        "uncertainty_computable": true,
         "used_for_parameter_fit": false
       },
       {
@@ -2614,6 +2726,7 @@
           "model": "global leave-one-out excitation residual RMSE fallback because selected series has fewer than two calibration rows",
           "source": "excitation-energy uncertainty converted from source transcription bound"
         },
+        "uncertainty_computable": true,
         "used_for_parameter_fit": false
       },
       {
@@ -2645,6 +2758,7 @@
           "model": "global leave-one-out excitation residual RMSE fallback because selected series has fewer than two calibration rows",
           "source": "excitation-energy uncertainty converted from source transcription bound"
         },
+        "uncertainty_computable": true,
         "used_for_parameter_fit": false
       }
     ],
@@ -3308,6 +3422,7 @@
     "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-CANDIDATE-RESOLUTION",
     "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-BUILD-SPEC",
     "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-ACCEPTANCE-HARNESS",
+    "AT20-ATOMIC-PREDICTIVE-V1-CANDIDATE-EXECUTION",
     "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-PARAMETER-PREFLIGHT",
     "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
     "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
@@ -3318,7 +3433,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-13T13:54:03.189814+00:00",
+  "generated_at_utc": "2026-06-13T14:06:43.094421+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -6186,7 +6301,7 @@
     },
     {
       "path": "docs/topics/0.20_Atomic_Physics/Data/03_Research/atomic_predictive_v1_operator_acceptance_harness_manifest.json",
-      "sha256": "47238c0bfde58d97e63f795a68eb2cd459db4e696fff032e309cba804116ac22",
+      "sha256": "fa77e983fc2fde4fdc32dac9cbc58e63e0b9fe1168c6adc27b8ea4d9e16349ac",
       "source": "Define the concrete repository targets and row schema required before an atomic predictive-v1 correction operator can be considered runnable.",
       "source_rows": [
         "Code/03_Research/Research_Atomic_Operator_V1.py"
@@ -6431,12 +6546,15 @@
     "atomic_predictive_model_blueprint_steps": 7,
     "atomic_predictive_model_spec_blocked_lanes": 3,
     "atomic_predictive_model_spec_blockers": 4,
+    "atomic_predictive_v1_candidate_execution_blocking_checks": 0,
+    "atomic_predictive_v1_candidate_execution_checks": 6,
+    "atomic_predictive_v1_candidate_execution_uncertainty_computable_rows": 3,
     "atomic_predictive_v1_fixed_correction_accepted_operators": 0,
     "atomic_predictive_v1_fixed_correction_blocking_checks": 1,
     "atomic_predictive_v1_missing_future_locked_parameters": 1,
     "atomic_predictive_v1_operator_acceptance_harness_blocking_checks": 0,
     "atomic_predictive_v1_operator_acceptance_harness_missing_artifacts": 0,
-    "atomic_predictive_v1_operator_acceptance_harness_schema_fields": 15,
+    "atomic_predictive_v1_operator_acceptance_harness_schema_fields": 16,
     "atomic_predictive_v1_operator_acceptance_harness_target_module_present": true,
     "atomic_predictive_v1_operator_build_spec_blocking_checks": 1,
     "atomic_predictive_v1_operator_build_spec_lanes": 2,

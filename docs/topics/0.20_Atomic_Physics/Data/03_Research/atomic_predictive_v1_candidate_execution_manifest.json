@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.20_Atomic_Physics",
+  "manifest_id": "AT20-PREDICTIVE-V1-CANDIDATE-EXECUTION-MANIFEST",
+  "purpose": "Define the runnable diagnostic-export checks that the current operator-v1 candidate must satisfy before the repo can honestly say implementation scaffolding exists while accepted delta_uet_or_ci remains missing.",
+  "status": "CANDIDATE_EXECUTION_CONTRACT_READY_ACCEPTED_OPERATOR_MISSING",
+  "selected_lane_id": "helium_quantum_defect_then_ci_or_uet_correction_v1",
+  "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction",
+  "target_module": {
+    "path": "Code/03_Research/Research_Atomic_Operator_V1.py",
+    "required_entrypoint": "run_atomic_operator_v1",
+    "required_return_key": "atomic_predictive_v1_operator_residual_gate"
+  },
+  "expected_outputs": {
+    "residual_artifact_path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
+    "required_residual_claim_use": "diagnostic_only_not_validation",
+    "required_current_operator_id": "empirical_quantum_defect_diagnostic_not_delta_uet_or_ci"
+  },
+  "required_execution_checks": [
+    {
+      "check_id": "EXEC-01",
+      "requirement": "The target module exists and exposes the required entrypoint plus return key."
+    },
+    {
+      "check_id": "EXEC-02",
+      "requirement": "Running the target module through the primary verifier writes the residual artifact and returns the operator gate."
+    },
+    {
+      "check_id": "EXEC-03",
+      "requirement": "The emitted residual-row count matches the current same-source-family helium holdout prediction count."
+    },
+    {
+      "check_id": "EXEC-04",
+      "requirement": "Every emitted residual row includes the required uncertainty fields, including uncertainty_computable."
+    },
+    {
+      "check_id": "EXEC-05",
+      "requirement": "Every emitted residual row remains diagnostic-only and does not relabel the current emitter as delta_uet_or_ci."
+    },
+    {
+      "check_id": "EXEC-06",
+      "requirement": "The current execution state stays aligned with the candidate implementation review record for the selected operator class."
+    }
+  ],
+  "blocked_claims": [
+    "candidate execution readiness means an accepted delta_uet_or_ci operator exists",
+    "diagnostic residual rows with uncertainty fields are validation-ready thresholds",
+    "a runnable exporter may be treated as a correlated two-electron or explicit UET correction operator before accepted provenance exists"
+  ],
+  "claim_boundary": "This manifest narrows implementation missing into runnable candidate-export checks only. It does not accept or validate a correction operator."
+}

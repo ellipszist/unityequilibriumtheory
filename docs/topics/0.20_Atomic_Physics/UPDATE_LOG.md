@@ -20,6 +20,18 @@ blockers were actually narrowed.
 
 ## Entries
 
+### 2026-06-13 - Prove the operator skeleton executes as a diagnostic exporter
+
+- Scope: `atomic_predictive_v1_candidate_execution_manifest.json`, `Research_Atomic_Operator_V1.py`, `atomic_predictive_v1_operator_acceptance_harness_manifest.json`, `Research_Rydberg_Validation.py`, primary artifact, topic docs
+- Added or changed: Added a candidate-execution manifest and gate, aligned the residual-row schema with the uncertainty policy by adding `uncertainty_computable`, and made the current operator skeleton prove it really runs through the verifier while staying diagnostic-only.
+- Files touched: `Data/03_Research/atomic_predictive_v1_candidate_execution_manifest.json`, `Data/03_Research/atomic_predictive_v1_operator_acceptance_harness_manifest.json`, `Code/03_Research/Research_Atomic_Operator_V1.py`, `Code/03_Research/Research_Rydberg_Validation.py`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `FORMULA_AUDIT.md`, `DATA_MANIFEST.md`, `VERIFICATION_SPEC.md`, `UPDATE_LOG.md`, `Result/artifacts/0_20_atomic_physics_verification.json`, `Result/artifacts/atomic_predictive_v1_operator_residual_rows.json`
+- Verified with: `python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validation.py`
+- Result: The new candidate-execution gate passes `6/6` execution checks, the residual exporter writes the expected `3` same-source-family holdout rows, and all `3` rows now carry `uncertainty_computable=true` while accepted operator count remains `0`.
+- Blocker narrowed: The repo no longer has to treat "implementation missing" as partly a runtime question for the current skeleton. Execution scaffolding is now explicit and passing; the next blocker is the missing accepted fixed CI/UET operator kernel plus accepted provenance, not whether the current exporter runs.
+- Still open: Accepted fixed CI/UET correction operator, accepted residual rows with `accepted_as_delta_uet_or_ci=true`, accepted operator uncertainty provenance, validation-ready thresholds, and independent non-NIST helium source lineage.
+- Claim impact: `no change`
+- Notes: This wave hardens the current diagnostic exporter only. It does not promote the exporter into an accepted correction operator.
+
 ### 2026-06-13 - Declare the first fixed-CI family and convergence lock
 
 - Scope: `atomic_predictive_v1_fixed_ci_implementation_declaration.json`, `atomic_predictive_v1_fixed_ci_input_preflight.json`, `Research_Rydberg_Validation.py`, primary artifact, topic docs

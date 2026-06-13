@@ -70,6 +70,9 @@ ATOMIC_PREDICTIVE_V1_OPERATOR_BUILD_SPEC_MANIFEST_PATH = (
 ATOMIC_PREDICTIVE_V1_OPERATOR_ACCEPTANCE_HARNESS_MANIFEST_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_acceptance_harness_manifest.json"
 )
+ATOMIC_PREDICTIVE_V1_CANDIDATE_EXECUTION_MANIFEST_PATH = (
+    TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_candidate_execution_manifest.json"
+)
 ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETERS_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_parameters.json"
 )
@@ -4556,6 +4559,206 @@ def build_atomic_predictive_v1_operator_acceptance_harness_gate(
     }
 
 
+def build_atomic_predictive_v1_candidate_execution_gate(
+    candidate_execution_manifest: dict,
+    atomic_predictive_v1_operator_residual_gate: dict,
+    atomic_predictive_v1_operator_acceptance_harness_gate: dict,
+    helium_quantum_defect_holdout_gate: dict,
+    operator_candidate_implementation_review_manifest: dict,
+) -> dict:
+    residual_rows_artifact_path = TOPIC_DIR / "Result" / "artifacts" / "atomic_predictive_v1_operator_residual_rows.json"
+    residual_rows_artifact_exists = residual_rows_artifact_path.exists()
+    residual_rows = atomic_predictive_v1_operator_residual_gate.get("residual_rows", [])
+    expected_row_count = helium_quantum_defect_holdout_gate.get("metrics", {}).get("prediction_count", 0)
+    target_module_gate = atomic_predictive_v1_operator_acceptance_harness_gate.get("target_module", {})
+    expected_outputs = candidate_execution_manifest.get("expected_outputs", {})
+    required_claim_use = expected_outputs.get("required_residual_claim_use")
+    required_operator_id = expected_outputs.get("required_current_operator_id")
+    required_uncertainty_fields = [
+        "model_uncertainty_eV",
+        "source_uncertainty_eV_or_rounding_bound",
+        "uncertainty_basis",
+        "uncertainty_computable",
+    ]
+    uncertainty_missing_rows = []
+    diagnostic_state_failures = []
+    for row in residual_rows:
+        missing_fields = [field for field in required_uncertainty_fields if field not in row]
+        missing_nested = []
+        uncertainty_basis = row.get("uncertainty_basis")
+        if not isinstance(uncertainty_basis, dict):
+            missing_nested.extend(["uncertainty_basis.model", "uncertainty_basis.source"])
+        else:
+            if uncertainty_basis.get("model") is None:
+                missing_nested.append("uncertainty_basis.model")
+            if uncertainty_basis.get("source") is None:
+                missing_nested.append("uncertainty_basis.source")
+        if missing_fields or missing_nested:
+            uncertainty_missing_rows.append(
+                {
+                    "row_id": row.get("row_id"),
+                    "missing_fields": missing_fields + missing_nested,
+                }
+            )
+        if (
+            row.get("claim_use") != required_claim_use
+            or row.get("operator_id") != required_operator_id
+            or row.get("uncertainty_computable") is not True
+        ):
+            diagnostic_state_failures.append(
+                {
+                    "row_id": row.get("row_id"),
+                    "claim_use": row.get("claim_use"),
+                    "operator_id": row.get("operator_id"),
+                    "uncertainty_computable": row.get("uncertainty_computable"),
+                }
+            )
+    candidate_review_target_module = operator_candidate_implementation_review_manifest.get(
+        "target_module_review", {}
+    )
+    execution_checks = [
+        {
+            "check_id": "EXEC-01",
+            "requirement": "The target module exists and exposes the required entrypoint plus return key.",
+            "status": "PASS"
+            if (
+                target_module_gate.get("exists")
+                and target_module_gate.get("entrypoint_present")
+                and target_module_gate.get("return_key_present")
+            )
+            else "BLOCKED_TARGET_MODULE_OR_ENTRYPOINT_MISSING",
+            "evidence": {
+                "target_module_path": target_module_gate.get("path"),
+                "target_module_exists": target_module_gate.get("exists"),
+                "entrypoint_present": target_module_gate.get("entrypoint_present"),
+                "return_key_present": target_module_gate.get("return_key_present"),
+            },
+        },
+        {
+            "check_id": "EXEC-02",
+            "requirement": "Running the target module through the primary verifier writes the residual artifact and returns the operator gate.",
+            "status": "PASS"
+            if residual_rows_artifact_exists and atomic_predictive_v1_operator_residual_gate
+            else "BLOCKED_EXECUTION_ARTIFACT_MISSING",
+            "evidence": {
+                "residual_artifact_path": str(residual_rows_artifact_path.relative_to(TOPIC_DIR)).replace("\\", "/"),
+                "residual_artifact_exists": residual_rows_artifact_exists,
+                "residual_artifact_sha256": file_sha256(residual_rows_artifact_path)
+                if residual_rows_artifact_exists
+                else None,
+                "returned_gate_present": bool(atomic_predictive_v1_operator_residual_gate),
+            },
+        },
+        {
+            "check_id": "EXEC-03",
+            "requirement": "The emitted residual-row count matches the current same-source-family helium holdout prediction count.",
+            "status": "PASS"
+            if len(residual_rows) == expected_row_count
+            else "BLOCKED_RESIDUAL_ROW_COUNT_MISMATCH",
+            "evidence": {
+                "expected_row_count": expected_row_count,
+                "emitted_row_count": len(residual_rows),
+            },
+        },
+        {
+            "check_id": "EXEC-04",
+            "requirement": "Every emitted residual row includes the required uncertainty fields, including uncertainty_computable.",
+            "status": "PASS"
+            if residual_rows and not uncertainty_missing_rows
+            else "BLOCKED_UNCERTAINTY_FIELDS_INCOMPLETE",
+            "evidence": {
+                "required_uncertainty_fields": required_uncertainty_fields,
+                "residual_row_count": len(residual_rows),
+                "rows_missing_uncertainty_fields": uncertainty_missing_rows,
+            },
+        },
+        {
+            "check_id": "EXEC-05",
+            "requirement": "Every emitted residual row remains diagnostic-only and does not relabel the current emitter as delta_uet_or_ci.",
+            "status": "PASS" if residual_rows and not diagnostic_state_failures else "BLOCKED_DIAGNOSTIC_STATE_MISMATCH",
+            "evidence": {
+                "required_claim_use": required_claim_use,
+                "required_current_operator_id": required_operator_id,
+                "accepted_as_delta_uet_or_ci": atomic_predictive_v1_operator_residual_gate.get(
+                    "accepted_as_delta_uet_or_ci"
+                ),
+                "diagnostic_state_failures": diagnostic_state_failures,
+            },
+        },
+        {
+            "check_id": "EXEC-06",
+            "requirement": "The current execution state stays aligned with the candidate implementation review record for the selected operator class.",
+            "status": "PASS"
+            if (
+                operator_candidate_implementation_review_manifest.get("selected_operator_class")
+                == candidate_execution_manifest.get("selected_operator_class")
+                and candidate_review_target_module.get("path") == target_module_gate.get("path")
+            )
+            else "BLOCKED_CANDIDATE_REVIEW_MISMATCH",
+            "evidence": {
+                "manifest_selected_operator_class": candidate_execution_manifest.get("selected_operator_class"),
+                "review_selected_operator_class": operator_candidate_implementation_review_manifest.get(
+                    "selected_operator_class"
+                ),
+                "manifest_target_module_path": candidate_execution_manifest.get("target_module", {}).get("path"),
+                "review_target_module_path": candidate_review_target_module.get("path"),
+                "runtime_target_module_path": target_module_gate.get("path"),
+            },
+        },
+    ]
+    blocking_count = sum(1 for row in execution_checks if row["status"].startswith("BLOCKED"))
+    pass_count = sum(1 for row in execution_checks if row["status"] == "PASS")
+    status = (
+        "CANDIDATE_EXECUTION_READY_ACCEPTED_OPERATOR_MISSING"
+        if blocking_count == 0
+        and not atomic_predictive_v1_operator_residual_gate.get("accepted_as_delta_uet_or_ci")
+        else "CANDIDATE_EXECUTION_BLOCKED"
+        if blocking_count
+        else "CANDIDATE_EXECUTION_READY_FOR_ACCEPTED_OPERATOR_REVIEW"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_predictive_v1_candidate_execution_gate",
+        "status": status,
+        "claim_class": "candidate_execution_no_validation_claim",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-CANDIDATE-EXECUTION",
+        "manifest": {
+            "path": str(ATOMIC_PREDICTIVE_V1_CANDIDATE_EXECUTION_MANIFEST_PATH.relative_to(TOPIC_DIR)).replace(
+                "\\", "/"
+            ),
+            "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_CANDIDATE_EXECUTION_MANIFEST_PATH),
+            "manifest_id": candidate_execution_manifest.get("manifest_id"),
+            "status": candidate_execution_manifest.get("status"),
+        },
+        "target_module": {
+            "path": target_module_gate.get("path"),
+            "exists": target_module_gate.get("exists"),
+            "sha256": target_module_gate.get("sha256"),
+            "entrypoint_present": target_module_gate.get("entrypoint_present"),
+            "return_key_present": target_module_gate.get("return_key_present"),
+        },
+        "execution_checks": execution_checks,
+        "metrics": {
+            "execution_check_count": len(execution_checks),
+            "execution_check_pass_count": pass_count,
+            "execution_check_blocking_count": blocking_count,
+            "expected_row_count": expected_row_count,
+            "residual_row_count": len(residual_rows),
+            "diagnostic_only_row_count": sum(
+                1 for row in residual_rows if row.get("claim_use") == required_claim_use
+            ),
+            "uncertainty_computable_row_count": sum(
+                1 for row in residual_rows if row.get("uncertainty_computable") is True
+            ),
+            "accepted_operator_count": atomic_predictive_v1_operator_residual_gate.get("metrics", {}).get(
+                "accepted_operator_count"
+            ),
+        },
+        "blocked_claims": candidate_execution_manifest.get("blocked_claims"),
+        "claim_boundary": candidate_execution_manifest.get("claim_boundary"),
+    }
+
+
 def build_atomic_predictive_v1_operator_parameter_acceptance_preflight_gate(
     operator_parameter_preflight_manifest: dict,
     operator_parameters_manifest: dict,
@@ -6689,6 +6892,9 @@ def run_rydberg_analysis():
     atomic_predictive_v1_operator_acceptance_harness_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_ACCEPTANCE_HARNESS_MANIFEST_PATH
     )
+    atomic_predictive_v1_candidate_execution_manifest = load_json(
+        ATOMIC_PREDICTIVE_V1_CANDIDATE_EXECUTION_MANIFEST_PATH
+    )
     atomic_predictive_v1_operator_parameters_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETERS_PATH
     )
@@ -6970,6 +7176,13 @@ def run_rydberg_analysis():
             atomic_predictive_v1_operator_build_spec_gate,
             atomic_predictive_v1_fixed_correction_operator_gate,
         )
+    )
+    atomic_predictive_v1_candidate_execution_gate = build_atomic_predictive_v1_candidate_execution_gate(
+        atomic_predictive_v1_candidate_execution_manifest,
+        atomic_predictive_v1_operator_residual_gate,
+        atomic_predictive_v1_operator_acceptance_harness_gate,
+        helium_quantum_defect_holdout_gate,
+        atomic_predictive_v1_operator_candidate_implementation_review_manifest,
     )
     atomic_predictive_v1_operator_training_holdout_split_gate = (
         build_atomic_predictive_v1_operator_training_holdout_split_gate(
@@ -7342,6 +7555,7 @@ def run_rydberg_analysis():
             "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-CANDIDATE-RESOLUTION",
             "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-BUILD-SPEC",
             "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-ACCEPTANCE-HARNESS",
+            "AT20-ATOMIC-PREDICTIVE-V1-CANDIDATE-EXECUTION",
             "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-PARAMETER-PREFLIGHT",
             "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
             "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
@@ -7577,6 +7791,19 @@ def run_rydberg_analysis():
                     "required_residual_schema_field_count"
                 ]
             ),
+            "atomic_predictive_v1_candidate_execution_checks": (
+                atomic_predictive_v1_candidate_execution_gate["metrics"]["execution_check_count"]
+            ),
+            "atomic_predictive_v1_candidate_execution_blocking_checks": (
+                atomic_predictive_v1_candidate_execution_gate["metrics"][
+                    "execution_check_blocking_count"
+                ]
+            ),
+            "atomic_predictive_v1_candidate_execution_uncertainty_computable_rows": (
+                atomic_predictive_v1_candidate_execution_gate["metrics"][
+                    "uncertainty_computable_row_count"
+                ]
+            ),
             "atomic_predictive_v1_operator_parameter_preflight_parameter_sets": (
                 atomic_predictive_v1_operator_parameter_acceptance_preflight_gate["metrics"][
                     "parameter_set_count"
@@ -7772,6 +7999,9 @@ def run_rydberg_analysis():
     artifact["atomic_predictive_v1_operator_residual_gate"] = atomic_predictive_v1_operator_residual_gate
     artifact["atomic_predictive_v1_operator_acceptance_harness_gate"] = (
         atomic_predictive_v1_operator_acceptance_harness_gate
+    )
+    artifact["atomic_predictive_v1_candidate_execution_gate"] = (
+        atomic_predictive_v1_candidate_execution_gate
     )
     artifact["atomic_predictive_v1_operator_training_holdout_split_gate"] = (
         atomic_predictive_v1_operator_training_holdout_split_gate

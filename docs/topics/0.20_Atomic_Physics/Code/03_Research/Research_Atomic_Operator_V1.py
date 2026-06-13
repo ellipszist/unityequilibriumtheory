@@ -74,6 +74,10 @@ def _diagnostic_residual_rows(
                 "residual_improvement_ratio": residual_improvement_ratio,
                 "model_uncertainty_eV": row.get("predicted_excitation_model_uncertainty_eV"),
                 "source_uncertainty_eV_or_rounding_bound": row.get("excitation_energy_uncertainty_eV"),
+                "uncertainty_computable": (
+                    row.get("predicted_excitation_model_uncertainty_eV") is not None
+                    and row.get("excitation_energy_uncertainty_eV") is not None
+                ),
                 "parameters_locked_before_evaluation": True,
                 "used_for_parameter_fit": False,
                 "source_family": "NIST_ASD_same_source_family",
@@ -119,6 +123,7 @@ def run_atomic_operator_v1(
         else "OPERATOR_V1_SKELETON_READY_RESIDUALS_MISSING",
         "claim_class": "diagnostic_residual_rows_no_validation_claim",
         "accepted_as_delta_uet_or_ci": False,
+        "execution_mode": "diagnostic_export_only",
         "residual_rows": residual_rows,
         "metrics": {
             "residual_row_count": len(residual_rows),
@@ -129,6 +134,9 @@ def run_atomic_operator_v1(
             "used_for_parameter_fit_count": sum(1 for row in residual_rows if row["used_for_parameter_fit"]),
             "diagnostic_only_row_count": sum(
                 1 for row in residual_rows if row["claim_use"] == "diagnostic_only_not_validation"
+            ),
+            "uncertainty_computable_row_count": sum(
+                1 for row in residual_rows if row.get("uncertainty_computable") is True
             ),
             "delta_energy_populated_count": sum(
                 1 for row in residual_rows if row["delta_energy_eV"] is not None
@@ -166,6 +174,7 @@ def run_atomic_operator_v1(
             "claim_class": "operator_skeleton_or_diagnostic_rows_no_validation_claim",
             "operator_id": "delta_uet_or_ci",
             "accepted_as_delta_uet_or_ci": False,
+            "execution_mode": "diagnostic_export_only",
             "residual_rows": residual_rows,
             "metrics": residual_artifact["metrics"],
             "blocked_claims": [
