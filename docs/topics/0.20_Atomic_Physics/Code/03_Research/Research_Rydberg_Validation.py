@@ -73,6 +73,9 @@ ATOMIC_PREDICTIVE_V1_OPERATOR_ACCEPTANCE_HARNESS_MANIFEST_PATH = (
 ATOMIC_PREDICTIVE_V1_CANDIDATE_EXECUTION_MANIFEST_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_candidate_execution_manifest.json"
 )
+ATOMIC_PREDICTIVE_V1_KERNEL_INTERFACE_MANIFEST_PATH = (
+    TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_kernel_interface_manifest.json"
+)
 ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETERS_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_parameters.json"
 )
@@ -4759,6 +4762,121 @@ def build_atomic_predictive_v1_candidate_execution_gate(
     }
 
 
+def build_atomic_predictive_v1_kernel_interface_gate(
+    kernel_interface_manifest: dict,
+    atomic_predictive_v1_operator_residual_gate: dict,
+    atomic_predictive_v1_candidate_execution_gate: dict,
+) -> dict:
+    target_module = kernel_interface_manifest.get("target_module", {})
+    module_path = TOPIC_DIR / target_module.get("path", "")
+    kernel_contract = atomic_predictive_v1_operator_residual_gate.get("kernel_contract", {})
+    required_fields = kernel_interface_manifest.get("required_kernel_fields", [])
+    required_missing_components = kernel_interface_manifest.get("required_missing_core_components", [])
+    missing_fields = [field for field in required_fields if field not in kernel_contract]
+    reported_components = kernel_contract.get("missing_core_components", [])
+    missing_components_not_reported = [
+        component for component in required_missing_components if component not in reported_components
+    ]
+    checks = [
+        {
+            "check_id": "KERNEL-01",
+            "requirement": "The target module exposes the kernel-contract entrypoint.",
+            "status": "PASS"
+            if module_path.exists() and "kernel_id" in kernel_contract and "kernel_status" in kernel_contract
+            else "BLOCKED_KERNEL_ENTRYPOINT_MISSING",
+            "evidence": {
+                "target_module_path": target_module.get("path"),
+                "target_module_exists": module_path.exists(),
+                "kernel_contract_present": bool(kernel_contract),
+            },
+        },
+        {
+            "check_id": "KERNEL-02",
+            "requirement": "The reported selected operator class matches the current fixed-CI/correlated implementation lane.",
+            "status": "PASS"
+            if kernel_contract.get("selected_operator_class")
+            == kernel_interface_manifest.get("selected_operator_class")
+            else "BLOCKED_SELECTED_OPERATOR_CLASS_MISMATCH",
+            "evidence": {
+                "manifest_selected_operator_class": kernel_interface_manifest.get("selected_operator_class"),
+                "reported_selected_operator_class": kernel_contract.get("selected_operator_class"),
+            },
+        },
+        {
+            "check_id": "KERNEL-03",
+            "requirement": "The kernel contract explicitly reports that accepted implementation is still missing.",
+            "status": "PASS"
+            if kernel_contract.get("kernel_status") == "MISSING_IMPLEMENTATION_DECLARED"
+            else "BLOCKED_KERNEL_STATUS_NOT_EXPLICIT",
+            "evidence": {
+                "reported_kernel_status": kernel_contract.get("kernel_status"),
+                "candidate_execution_status": atomic_predictive_v1_candidate_execution_gate.get("status"),
+            },
+        },
+        {
+            "check_id": "KERNEL-04",
+            "requirement": "The missing core components are enumerated rather than left implicit.",
+            "status": "PASS" if not missing_fields and not missing_components_not_reported else "BLOCKED_KERNEL_COMPONENT_LIST_INCOMPLETE",
+            "evidence": {
+                "required_kernel_fields": required_fields,
+                "missing_kernel_fields": missing_fields,
+                "required_missing_core_components": required_missing_components,
+                "reported_missing_core_components": reported_components,
+                "missing_components_not_reported": missing_components_not_reported,
+            },
+        },
+        {
+            "check_id": "KERNEL-05",
+            "requirement": "The runtime exporter remains diagnostic-only while the kernel status is missing.",
+            "status": "PASS"
+            if kernel_contract.get("implementation_mode") == "diagnostic_export_wrapper_only"
+            and atomic_predictive_v1_operator_residual_gate.get("execution_mode") == "diagnostic_export_only"
+            and atomic_predictive_v1_operator_residual_gate.get("accepted_as_delta_uet_or_ci") is False
+            else "BLOCKED_RUNTIME_STATE_NOT_DIAGNOSTIC_ONLY",
+            "evidence": {
+                "implementation_mode": kernel_contract.get("implementation_mode"),
+                "runtime_execution_mode": atomic_predictive_v1_operator_residual_gate.get("execution_mode"),
+                "accepted_as_delta_uet_or_ci": atomic_predictive_v1_operator_residual_gate.get(
+                    "accepted_as_delta_uet_or_ci"
+                ),
+            },
+        },
+    ]
+    blocking_count = sum(1 for row in checks if row["status"].startswith("BLOCKED"))
+    pass_count = sum(1 for row in checks if row["status"] == "PASS")
+    status = (
+        "KERNEL_INTERFACE_READY_ACCEPTED_KERNEL_MISSING"
+        if blocking_count == 0
+        else "KERNEL_INTERFACE_BLOCKED"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_predictive_v1_kernel_interface_gate",
+        "status": status,
+        "claim_class": "kernel_interface_no_validation_claim",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-KERNEL-INTERFACE",
+        "manifest": {
+            "path": str(ATOMIC_PREDICTIVE_V1_KERNEL_INTERFACE_MANIFEST_PATH.relative_to(TOPIC_DIR)).replace(
+                "\\", "/"
+            ),
+            "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_KERNEL_INTERFACE_MANIFEST_PATH),
+            "manifest_id": kernel_interface_manifest.get("manifest_id"),
+            "status": kernel_interface_manifest.get("status"),
+        },
+        "kernel_contract": kernel_contract,
+        "checks": checks,
+        "metrics": {
+            "kernel_check_count": len(checks),
+            "kernel_check_pass_count": pass_count,
+            "kernel_check_blocking_count": blocking_count,
+            "reported_missing_core_component_count": len(reported_components),
+            "accepted_operator_count": atomic_predictive_v1_operator_residual_gate.get("metrics", {}).get(
+                "accepted_operator_count"
+            ),
+        },
+        "claim_boundary": kernel_interface_manifest.get("claim_boundary"),
+    }
+
 def build_atomic_predictive_v1_operator_parameter_acceptance_preflight_gate(
     operator_parameter_preflight_manifest: dict,
     operator_parameters_manifest: dict,
@@ -6895,6 +7013,9 @@ def run_rydberg_analysis():
     atomic_predictive_v1_candidate_execution_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_CANDIDATE_EXECUTION_MANIFEST_PATH
     )
+    atomic_predictive_v1_kernel_interface_manifest = load_json(
+        ATOMIC_PREDICTIVE_V1_KERNEL_INTERFACE_MANIFEST_PATH
+    )
     atomic_predictive_v1_operator_parameters_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETERS_PATH
     )
@@ -7183,6 +7304,11 @@ def run_rydberg_analysis():
         atomic_predictive_v1_operator_acceptance_harness_gate,
         helium_quantum_defect_holdout_gate,
         atomic_predictive_v1_operator_candidate_implementation_review_manifest,
+    )
+    atomic_predictive_v1_kernel_interface_gate = build_atomic_predictive_v1_kernel_interface_gate(
+        atomic_predictive_v1_kernel_interface_manifest,
+        atomic_predictive_v1_operator_residual_gate,
+        atomic_predictive_v1_candidate_execution_gate,
     )
     atomic_predictive_v1_operator_training_holdout_split_gate = (
         build_atomic_predictive_v1_operator_training_holdout_split_gate(
@@ -7556,6 +7682,7 @@ def run_rydberg_analysis():
             "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-BUILD-SPEC",
             "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-ACCEPTANCE-HARNESS",
             "AT20-ATOMIC-PREDICTIVE-V1-CANDIDATE-EXECUTION",
+            "AT20-ATOMIC-PREDICTIVE-V1-KERNEL-INTERFACE",
             "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-PARAMETER-PREFLIGHT",
             "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
             "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
@@ -7804,6 +7931,17 @@ def run_rydberg_analysis():
                     "uncertainty_computable_row_count"
                 ]
             ),
+            "atomic_predictive_v1_kernel_interface_checks": (
+                atomic_predictive_v1_kernel_interface_gate["metrics"]["kernel_check_count"]
+            ),
+            "atomic_predictive_v1_kernel_interface_blocking_checks": (
+                atomic_predictive_v1_kernel_interface_gate["metrics"]["kernel_check_blocking_count"]
+            ),
+            "atomic_predictive_v1_kernel_interface_missing_core_components": (
+                atomic_predictive_v1_kernel_interface_gate["metrics"][
+                    "reported_missing_core_component_count"
+                ]
+            ),
             "atomic_predictive_v1_operator_parameter_preflight_parameter_sets": (
                 atomic_predictive_v1_operator_parameter_acceptance_preflight_gate["metrics"][
                     "parameter_set_count"
@@ -8002,6 +8140,9 @@ def run_rydberg_analysis():
     )
     artifact["atomic_predictive_v1_candidate_execution_gate"] = (
         atomic_predictive_v1_candidate_execution_gate
+    )
+    artifact["atomic_predictive_v1_kernel_interface_gate"] = (
+        atomic_predictive_v1_kernel_interface_gate
     )
     artifact["atomic_predictive_v1_operator_training_holdout_split_gate"] = (
         atomic_predictive_v1_operator_training_holdout_split_gate

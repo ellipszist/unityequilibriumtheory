@@ -13,6 +13,27 @@ import json
 from pathlib import Path
 
 
+def get_current_kernel_contract() -> dict:
+    """Describe the current kernel-level state without pretending the core operator exists."""
+    return {
+        "kernel_id": "delta_uet_or_ci_fixed_ci_or_correlated_kernel_v1",
+        "kernel_status": "MISSING_IMPLEMENTATION_DECLARED",
+        "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction",
+        "implementation_mode": "diagnostic_export_wrapper_only",
+        "missing_core_components": [
+            "fixed_ci_or_correlated_basis_assembly",
+            "hamiltonian_or_effective_operator_evaluation",
+            "parameterized_correction_emission_as_delta_uet_or_ci",
+            "row_level_uncertainty_from_accepted_operator",
+        ],
+        "blocked_claims": [
+            "diagnostic exporter means the fixed CI/correlated kernel exists",
+            "current delta rows are accepted delta_uet_or_ci output",
+            "accepted operator uncertainty exists before the kernel emits it",
+        ],
+    }
+
+
 def _diagnostic_residual_rows(
     helium_holdout_predictions: list[dict] | None,
     baseline_constants: dict | None,
@@ -103,6 +124,7 @@ def run_atomic_operator_v1(
     write_artifact_path: str | Path | None = None,
 ) -> dict:
     """Return the current operator-v1 gate without accepting a correction operator."""
+    kernel_contract = get_current_kernel_contract()
     residual_rows = _diagnostic_residual_rows(helium_holdout_predictions, baseline_constants)
     baseline_residuals = [
         row["baseline_absolute_residual_eV"]
@@ -124,6 +146,7 @@ def run_atomic_operator_v1(
         "claim_class": "diagnostic_residual_rows_no_validation_claim",
         "accepted_as_delta_uet_or_ci": False,
         "execution_mode": "diagnostic_export_only",
+        "kernel_contract": kernel_contract,
         "residual_rows": residual_rows,
         "metrics": {
             "residual_row_count": len(residual_rows),
@@ -175,6 +198,7 @@ def run_atomic_operator_v1(
             "operator_id": "delta_uet_or_ci",
             "accepted_as_delta_uet_or_ci": False,
             "execution_mode": "diagnostic_export_only",
+            "kernel_contract": kernel_contract,
             "residual_rows": residual_rows,
             "metrics": residual_artifact["metrics"],
             "blocked_claims": [

@@ -1139,7 +1139,7 @@
         "evidence": {
           "residual_artifact_exists": true,
           "residual_artifact_path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
-          "residual_artifact_sha256": "88ae42a51fb047806453df52b39f4038c5328d8fe89acfd810a60e2a660619e3",
+          "residual_artifact_sha256": "c2e9756980140db35a0b58dc6948755f4a42ed17be74f75ebc9b856cde4a1b1c",
           "returned_gate_present": true
         },
         "requirement": "Running the target module through the primary verifier writes the residual artifact and returns the operator gate.",
@@ -1218,7 +1218,7 @@
       "exists": true,
       "path": "Code/03_Research/Research_Atomic_Operator_V1.py",
       "return_key_present": true,
-      "sha256": "bc24d600b2ef904bea5062bb1cca3d611a3ebf1ceaf463e2c96136a05df7cac8"
+      "sha256": "dae7e7a743906d68553803cad1d43477d28cc17cdd736c1335b0b01dc3083338"
     }
   },
   "atomic_predictive_v1_diagnostic_report_gate": {
@@ -1529,6 +1529,113 @@
     "schema_version": "1.0",
     "status": "OPERATOR_CONTRACT_READY_IMPLEMENTATION_MISSING"
   },
+  "atomic_predictive_v1_kernel_interface_gate": {
+    "checks": [
+      {
+        "check_id": "KERNEL-01",
+        "evidence": {
+          "kernel_contract_present": true,
+          "target_module_exists": true,
+          "target_module_path": "Code/03_Research/Research_Atomic_Operator_V1.py"
+        },
+        "requirement": "The target module exposes the kernel-contract entrypoint.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "KERNEL-02",
+        "evidence": {
+          "manifest_selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction",
+          "reported_selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction"
+        },
+        "requirement": "The reported selected operator class matches the current fixed-CI/correlated implementation lane.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "KERNEL-03",
+        "evidence": {
+          "candidate_execution_status": "CANDIDATE_EXECUTION_READY_ACCEPTED_OPERATOR_MISSING",
+          "reported_kernel_status": "MISSING_IMPLEMENTATION_DECLARED"
+        },
+        "requirement": "The kernel contract explicitly reports that accepted implementation is still missing.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "KERNEL-04",
+        "evidence": {
+          "missing_components_not_reported": [],
+          "missing_kernel_fields": [],
+          "reported_missing_core_components": [
+            "fixed_ci_or_correlated_basis_assembly",
+            "hamiltonian_or_effective_operator_evaluation",
+            "parameterized_correction_emission_as_delta_uet_or_ci",
+            "row_level_uncertainty_from_accepted_operator"
+          ],
+          "required_kernel_fields": [
+            "kernel_status",
+            "kernel_id",
+            "selected_operator_class",
+            "implementation_mode",
+            "missing_core_components",
+            "blocked_claims"
+          ],
+          "required_missing_core_components": [
+            "fixed_ci_or_correlated_basis_assembly",
+            "hamiltonian_or_effective_operator_evaluation",
+            "parameterized_correction_emission_as_delta_uet_or_ci",
+            "row_level_uncertainty_from_accepted_operator"
+          ]
+        },
+        "requirement": "The missing core components are enumerated rather than left implicit.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "KERNEL-05",
+        "evidence": {
+          "accepted_as_delta_uet_or_ci": false,
+          "implementation_mode": "diagnostic_export_wrapper_only",
+          "runtime_execution_mode": "diagnostic_export_only"
+        },
+        "requirement": "The runtime exporter remains diagnostic-only while the kernel status is missing.",
+        "status": "PASS"
+      }
+    ],
+    "claim_boundary": "This manifest makes the missing kernel explicit. It does not implement or validate a fixed CI/correlated or UET correction operator.",
+    "claim_class": "kernel_interface_no_validation_claim",
+    "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-KERNEL-INTERFACE",
+    "kernel_contract": {
+      "blocked_claims": [
+        "diagnostic exporter means the fixed CI/correlated kernel exists",
+        "current delta rows are accepted delta_uet_or_ci output",
+        "accepted operator uncertainty exists before the kernel emits it"
+      ],
+      "implementation_mode": "diagnostic_export_wrapper_only",
+      "kernel_id": "delta_uet_or_ci_fixed_ci_or_correlated_kernel_v1",
+      "kernel_status": "MISSING_IMPLEMENTATION_DECLARED",
+      "missing_core_components": [
+        "fixed_ci_or_correlated_basis_assembly",
+        "hamiltonian_or_effective_operator_evaluation",
+        "parameterized_correction_emission_as_delta_uet_or_ci",
+        "row_level_uncertainty_from_accepted_operator"
+      ],
+      "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction"
+    },
+    "manifest": {
+      "manifest_id": "AT20-PREDICTIVE-V1-KERNEL-INTERFACE-MANIFEST",
+      "path": "Data/03_Research/atomic_predictive_v1_kernel_interface_manifest.json",
+      "sha256": "32044c9be78fd98c8b1ac1acf0f2eb09e6027f77364782b2bd847fcf509e9ed0",
+      "status": "KERNEL_INTERFACE_CONTRACT_READY_ACCEPTED_KERNEL_MISSING"
+    },
+    "metrics": {
+      "accepted_operator_count": 0,
+      "kernel_check_blocking_count": 0,
+      "kernel_check_count": 5,
+      "kernel_check_pass_count": 5,
+      "reported_missing_core_component_count": 4
+    },
+    "role": "atomic_predictive_v1_kernel_interface_gate",
+    "schema_version": "1.0",
+    "status": "KERNEL_INTERFACE_READY_ACCEPTED_KERNEL_MISSING"
+  },
   "atomic_predictive_v1_operator_acceptance_harness_gate": {
     "acceptance_checks": [
       {
@@ -1561,7 +1668,7 @@
             "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
             "purpose": "Store source-row residuals emitted by the target module.",
             "required_before_acceptance": true,
-            "sha256": "88ae42a51fb047806453df52b39f4038c5328d8fe89acfd810a60e2a660619e3"
+            "sha256": "c2e9756980140db35a0b58dc6948755f4a42ed17be74f75ebc9b856cde4a1b1c"
           },
           {
             "artifact_id": "operator_uncertainty_policy",
@@ -1736,7 +1843,7 @@
         "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
         "purpose": "Store source-row residuals emitted by the target module.",
         "required_before_acceptance": true,
-        "sha256": "88ae42a51fb047806453df52b39f4038c5328d8fe89acfd810a60e2a660619e3"
+        "sha256": "c2e9756980140db35a0b58dc6948755f4a42ed17be74f75ebc9b856cde4a1b1c"
       },
       {
         "artifact_id": "operator_uncertainty_policy",
@@ -1769,7 +1876,7 @@
       "accepted_as_delta_uet_or_ci": false,
       "exists": true,
       "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
-      "sha256": "88ae42a51fb047806453df52b39f4038c5328d8fe89acfd810a60e2a660619e3",
+      "sha256": "c2e9756980140db35a0b58dc6948755f4a42ed17be74f75ebc9b856cde4a1b1c",
       "status": "DIAGNOSTIC_RESIDUAL_ROWS_EXPORTED_OPERATOR_NOT_ACCEPTED"
     },
     "role": "atomic_predictive_v1_operator_acceptance_harness_gate",
@@ -1783,7 +1890,7 @@
       "required_entrypoint": "run_atomic_operator_v1",
       "required_return_key": "atomic_predictive_v1_operator_residual_gate",
       "return_key_present": true,
-      "sha256": "bc24d600b2ef904bea5062bb1cca3d611a3ebf1ceaf463e2c96136a05df7cac8"
+      "sha256": "dae7e7a743906d68553803cad1d43477d28cc17cdd736c1335b0b01dc3083338"
     }
   },
   "atomic_predictive_v1_operator_build_spec_gate": {
@@ -2248,13 +2355,13 @@
       "parameter_manifest_exists": true,
       "parameter_manifest_sha256": "c6227e3f8127aaeb55b297c9ef7d4f89c3d5468352b9c861cd36580ac1803d1a",
       "residual_rows_artifact_exists": true,
-      "residual_rows_artifact_sha256": "88ae42a51fb047806453df52b39f4038c5328d8fe89acfd810a60e2a660619e3",
+      "residual_rows_artifact_sha256": "c2e9756980140db35a0b58dc6948755f4a42ed17be74f75ebc9b856cde4a1b1c",
       "selected_operator_class_review": "fixed_parameter_ci_or_correlated_two_electron_correction",
       "target_module_entrypoint_present": true,
       "target_module_exists": true,
       "target_module_path": "Code/03_Research/Research_Atomic_Operator_V1.py",
       "target_module_return_key_present": true,
-      "target_module_sha256": "bc24d600b2ef904bea5062bb1cca3d611a3ebf1ceaf463e2c96136a05df7cac8",
+      "target_module_sha256": "dae7e7a743906d68553803cad1d43477d28cc17cdd736c1335b0b01dc3083338",
       "uncertainty_policy_exists": true,
       "uncertainty_policy_sha256": "494a809a6001a42fbc4e2b3c431392d8997e2720f4593a0b88cc9c3d2bb7fa3c"
     },
@@ -2297,7 +2404,7 @@
         "evidence_exists": true,
         "evidence_id": "PROV-01",
         "evidence_path": "Code/03_Research/Research_Atomic_Operator_V1.py",
-        "evidence_sha256": "bc24d600b2ef904bea5062bb1cca3d611a3ebf1ceaf463e2c96136a05df7cac8",
+        "evidence_sha256": "dae7e7a743906d68553803cad1d43477d28cc17cdd736c1335b0b01dc3083338",
         "manifest_status": "CANDIDATE_IDENTITY_LOCK_READY_ACCEPTED_OPERATOR_MISSING",
         "required_artifact": "accepted operator implementation record with code hash and operator class",
         "requirement": "Accepted operator source code is identified by module path, entrypoint, commit hash or source hash, and operator class.",
@@ -2339,7 +2446,7 @@
         "evidence_exists": true,
         "evidence_id": "PROV-04",
         "evidence_path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
-        "evidence_sha256": "88ae42a51fb047806453df52b39f4038c5328d8fe89acfd810a60e2a660619e3",
+        "evidence_sha256": "c2e9756980140db35a0b58dc6948755f4a42ed17be74f75ebc9b856cde4a1b1c",
         "manifest_status": "DIAGNOSTIC_RESIDUAL_ROWS_LOCK_READY_ACCEPTED_OPERATOR_MISSING",
         "required_artifact": "operator residual rows with accepted_operator_class and accepted_as_delta_uet_or_ci=true",
         "requirement": "Residual rows are emitted by the accepted operator, not by the current diagnostic quantum-defect wrapper.",
@@ -2642,6 +2749,23 @@
     "claim_boundary": "This skeleton only establishes the target entrypoint. It does not implement or validate delta_uet_or_ci.",
     "claim_class": "operator_skeleton_or_diagnostic_rows_no_validation_claim",
     "execution_mode": "diagnostic_export_only",
+    "kernel_contract": {
+      "blocked_claims": [
+        "diagnostic exporter means the fixed CI/correlated kernel exists",
+        "current delta rows are accepted delta_uet_or_ci output",
+        "accepted operator uncertainty exists before the kernel emits it"
+      ],
+      "implementation_mode": "diagnostic_export_wrapper_only",
+      "kernel_id": "delta_uet_or_ci_fixed_ci_or_correlated_kernel_v1",
+      "kernel_status": "MISSING_IMPLEMENTATION_DECLARED",
+      "missing_core_components": [
+        "fixed_ci_or_correlated_basis_assembly",
+        "hamiltonian_or_effective_operator_evaluation",
+        "parameterized_correction_emission_as_delta_uet_or_ci",
+        "row_level_uncertainty_from_accepted_operator"
+      ],
+      "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction"
+    },
     "metrics": {
       "accepted_operator_count": 0,
       "average_baseline_abs_residual_eV": 0.016156012023859745,
@@ -3423,6 +3547,7 @@
     "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-BUILD-SPEC",
     "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-ACCEPTANCE-HARNESS",
     "AT20-ATOMIC-PREDICTIVE-V1-CANDIDATE-EXECUTION",
+    "AT20-ATOMIC-PREDICTIVE-V1-KERNEL-INTERFACE",
     "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-PARAMETER-PREFLIGHT",
     "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
     "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
@@ -3433,7 +3558,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-13T14:06:43.094421+00:00",
+  "generated_at_utc": "2026-06-13T14:18:33.970046+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -6551,6 +6676,9 @@
     "atomic_predictive_v1_candidate_execution_uncertainty_computable_rows": 3,
     "atomic_predictive_v1_fixed_correction_accepted_operators": 0,
     "atomic_predictive_v1_fixed_correction_blocking_checks": 1,
+    "atomic_predictive_v1_kernel_interface_blocking_checks": 0,
+    "atomic_predictive_v1_kernel_interface_checks": 5,
+    "atomic_predictive_v1_kernel_interface_missing_core_components": 4,
     "atomic_predictive_v1_missing_future_locked_parameters": 1,
     "atomic_predictive_v1_operator_acceptance_harness_blocking_checks": 0,
     "atomic_predictive_v1_operator_acceptance_harness_missing_artifacts": 0,

@@ -4,6 +4,23 @@
   "claim_boundary": "Rows exported here are same-source-family diagnostic residual rows. They do not implement or validate delta_uet_or_ci.",
   "claim_class": "diagnostic_residual_rows_no_validation_claim",
   "execution_mode": "diagnostic_export_only",
+  "kernel_contract": {
+    "blocked_claims": [
+      "diagnostic exporter means the fixed CI/correlated kernel exists",
+      "current delta rows are accepted delta_uet_or_ci output",
+      "accepted operator uncertainty exists before the kernel emits it"
+    ],
+    "implementation_mode": "diagnostic_export_wrapper_only",
+    "kernel_id": "delta_uet_or_ci_fixed_ci_or_correlated_kernel_v1",
+    "kernel_status": "MISSING_IMPLEMENTATION_DECLARED",
+    "missing_core_components": [
+      "fixed_ci_or_correlated_basis_assembly",
+      "hamiltonian_or_effective_operator_evaluation",
+      "parameterized_correction_emission_as_delta_uet_or_ci",
+      "row_level_uncertainty_from_accepted_operator"
+    ],
+    "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction"
+  },
   "metrics": {
     "accepted_operator_count": 0,
     "average_baseline_abs_residual_eV": 0.016156012023859745,

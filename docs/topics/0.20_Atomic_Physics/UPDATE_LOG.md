@@ -20,6 +20,18 @@ blockers were actually narrowed.
 
 ## Entries
 
+### 2026-06-13 - Declare the missing operator kernel explicitly
+
+- Scope: `atomic_predictive_v1_kernel_interface_manifest.json`, `Research_Atomic_Operator_V1.py`, `Research_Rydberg_Validation.py`, primary artifact, topic docs
+- Added or changed: Added a kernel-interface manifest and gate, taught the operator module to expose a machine-readable kernel contract, and surfaced the missing fixed-CI/correlated core components directly in the operator artifact path.
+- Files touched: `Data/03_Research/atomic_predictive_v1_kernel_interface_manifest.json`, `Code/03_Research/Research_Atomic_Operator_V1.py`, `Code/03_Research/Research_Rydberg_Validation.py`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `FORMULA_AUDIT.md`, `DATA_MANIFEST.md`, `VERIFICATION_SPEC.md`, `UPDATE_LOG.md`, `Result/artifacts/0_20_atomic_physics_verification.json`, `Result/artifacts/atomic_predictive_v1_operator_residual_rows.json`
+- Verified with: `python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validation.py`
+- Result: The new kernel-interface gate passes `5/5` checks and records `4` explicit missing core components while the candidate exporter remains diagnostic-only and accepted operator count stays `0`.
+- Blocker narrowed: The next blocker is no longer generic accepted implementation missing. It is now the absence of four named kernel pieces: basis assembly, Hamiltonian/effective-operator evaluation, accepted `delta_uet_or_ci` emission, and row-level uncertainty from the accepted operator.
+- Still open: Accepted fixed CI/UET correction operator, accepted residual rows with `accepted_as_delta_uet_or_ci=true`, accepted operator uncertainty provenance, validation-ready thresholds, and independent non-NIST helium source lineage.
+- Claim impact: `no change`
+- Notes: This wave makes the missing kernel explicit. It does not implement the kernel.
+
 ### 2026-06-13 - Prove the operator skeleton executes as a diagnostic exporter
 
 - Scope: `atomic_predictive_v1_candidate_execution_manifest.json`, `Research_Atomic_Operator_V1.py`, `atomic_predictive_v1_operator_acceptance_harness_manifest.json`, `Research_Rydberg_Validation.py`, primary artifact, topic docs
