@@ -34,6 +34,32 @@ def get_fixed_ci_basis_assembly_contract() -> dict:
     }
 
 
+def get_hamiltonian_effective_operator_contract() -> dict:
+    """Describe the current Hamiltonian/effective-operator contract without claiming evaluation exists."""
+    return {
+        "evaluation_status": "CONTRACT_ONLY_IMPLEMENTATION_MISSING",
+        "basis_dependency_id": "fixed_ci_basis_assembly_contract",
+        "effective_operator_id": "fixed_parameter_ci_or_correlated_two_electron_correction",
+        "required_inputs": [
+            "assembled or declared correlated basis states",
+            "fixed Hamiltonian or effective-operator form",
+            "locked operator parameters or explicit no-fit declaration",
+            "source-locked target observables and unit conversions",
+            "holdout-excluded evaluation policy",
+        ],
+        "required_outputs": [
+            "row-level predicted excitation energies or equivalent observables",
+            "operator-side uncertainty fields or explicit missing-uncertainty status",
+            "machine-readable evaluation provenance",
+        ],
+        "blocked_claims": [
+            "declaring the Hamiltonian contract means correlated operator evaluation exists",
+            "effective operator naming means accepted delta_uet_or_ci emission exists",
+            "accepted residual rows exist before Hamiltonian/effective-operator evaluation emits them",
+        ],
+    }
+
+
 def get_current_kernel_contract() -> dict:
     """Describe the current kernel-level state without pretending the core operator exists."""
     return {
@@ -42,7 +68,8 @@ def get_current_kernel_contract() -> dict:
         "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction",
         "implementation_mode": "diagnostic_export_wrapper_only",
         "ready_scaffolds": [
-            "fixed_ci_basis_assembly_contract"
+            "fixed_ci_basis_assembly_contract",
+            "hamiltonian_effective_operator_contract",
         ],
         "missing_core_components": [
             "fixed_ci_or_correlated_basis_assembly",
@@ -150,6 +177,7 @@ def run_atomic_operator_v1(
     """Return the current operator-v1 gate without accepting a correction operator."""
     kernel_contract = get_current_kernel_contract()
     basis_assembly_contract = get_fixed_ci_basis_assembly_contract()
+    hamiltonian_effective_operator_contract = get_hamiltonian_effective_operator_contract()
     residual_rows = _diagnostic_residual_rows(helium_holdout_predictions, baseline_constants)
     baseline_residuals = [
         row["baseline_absolute_residual_eV"]
@@ -173,6 +201,7 @@ def run_atomic_operator_v1(
         "execution_mode": "diagnostic_export_only",
         "kernel_contract": kernel_contract,
         "basis_assembly_contract": basis_assembly_contract,
+        "hamiltonian_effective_operator_contract": hamiltonian_effective_operator_contract,
         "residual_rows": residual_rows,
         "metrics": {
             "residual_row_count": len(residual_rows),
@@ -226,6 +255,7 @@ def run_atomic_operator_v1(
             "execution_mode": "diagnostic_export_only",
             "kernel_contract": kernel_contract,
             "basis_assembly_contract": basis_assembly_contract,
+            "hamiltonian_effective_operator_contract": hamiltonian_effective_operator_contract,
             "residual_rows": residual_rows,
             "metrics": residual_artifact["metrics"],
             "blocked_claims": [

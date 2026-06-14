@@ -79,6 +79,9 @@ ATOMIC_PREDICTIVE_V1_KERNEL_INTERFACE_MANIFEST_PATH = (
 ATOMIC_PREDICTIVE_V1_BASIS_ASSEMBLY_MANIFEST_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_basis_assembly_manifest.json"
 )
+ATOMIC_PREDICTIVE_V1_HAMILTONIAN_EFFECTIVE_OPERATOR_MANIFEST_PATH = (
+    TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_hamiltonian_effective_operator_manifest.json"
+)
 ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETERS_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_parameters.json"
 )
@@ -4988,6 +4991,130 @@ def build_atomic_predictive_v1_basis_assembly_gate(
         },
         "claim_boundary": basis_assembly_manifest.get("claim_boundary"),
     }
+
+
+def build_atomic_predictive_v1_hamiltonian_effective_operator_gate(
+    hamiltonian_manifest: dict,
+    basis_assembly_manifest: dict,
+    atomic_predictive_v1_operator_residual_gate: dict,
+) -> dict:
+    ready_scaffolds = (
+        atomic_predictive_v1_operator_residual_gate.get("kernel_contract", {}).get("ready_scaffolds", [])
+    )
+    module_hamiltonian_contract = atomic_predictive_v1_operator_residual_gate.get(
+        "hamiltonian_effective_operator_contract"
+    )
+    basis_contract = atomic_predictive_v1_operator_residual_gate.get("basis_assembly_contract", {})
+    required_inputs = hamiltonian_manifest.get("required_inputs", [])
+    required_outputs = hamiltonian_manifest.get("required_outputs", [])
+    reported_inputs = (module_hamiltonian_contract or {}).get("required_inputs", [])
+    reported_outputs = (module_hamiltonian_contract or {}).get("required_outputs", [])
+    missing_inputs = [item for item in required_inputs if item not in reported_inputs]
+    missing_outputs = [item for item in required_outputs if item not in reported_outputs]
+    checks = [
+        {
+            "check_id": "HAM-01",
+            "requirement": "The target module exposes the Hamiltonian/effective-operator contract entrypoint.",
+            "status": "PASS" if module_hamiltonian_contract else "BLOCKED_HAMILTONIAN_CONTRACT_MISSING",
+            "evidence": {
+                "contract_present": bool(module_hamiltonian_contract),
+                "ready_scaffolds": ready_scaffolds,
+            },
+        },
+        {
+            "check_id": "HAM-02",
+            "requirement": "The contract explicitly depends on the fixed-CI basis-assembly scaffold instead of skipping basis provenance.",
+            "status": "PASS"
+            if (module_hamiltonian_contract or {}).get("basis_dependency_id")
+            == basis_assembly_manifest.get("target_module", {}).get("required_entrypoint")
+            .replace("get_", "")
+            else "BLOCKED_BASIS_DEPENDENCY_MISMATCH",
+            "evidence": {
+                "reported_basis_dependency_id": (module_hamiltonian_contract or {}).get("basis_dependency_id"),
+                "expected_basis_dependency_id": basis_assembly_manifest.get("target_module", {})
+                .get("required_entrypoint", "")
+                .replace("get_", ""),
+                "basis_contract_status": basis_contract.get("assembly_status"),
+            },
+        },
+        {
+            "check_id": "HAM-03",
+            "requirement": "The reported effective operator aligns with the selected fixed-CI/correlated operator class.",
+            "status": "PASS"
+            if (module_hamiltonian_contract or {}).get("effective_operator_id")
+            == hamiltonian_manifest.get("selected_operator_class")
+            else "BLOCKED_EFFECTIVE_OPERATOR_MISMATCH",
+            "evidence": {
+                "reported_effective_operator_id": (module_hamiltonian_contract or {}).get(
+                    "effective_operator_id"
+                ),
+                "expected_effective_operator_id": hamiltonian_manifest.get("selected_operator_class"),
+            },
+        },
+        {
+            "check_id": "HAM-04",
+            "requirement": "The contract lists required inputs and outputs explicitly rather than leaving evaluation expectations implicit.",
+            "status": "PASS"
+            if not missing_inputs and not missing_outputs
+            else "BLOCKED_INPUT_OUTPUT_CONTRACT_INCOMPLETE",
+            "evidence": {
+                "required_inputs": required_inputs,
+                "reported_inputs": reported_inputs,
+                "missing_inputs": missing_inputs,
+                "required_outputs": required_outputs,
+                "reported_outputs": reported_outputs,
+                "missing_outputs": missing_outputs,
+            },
+        },
+        {
+            "check_id": "HAM-05",
+            "requirement": "The contract still states that Hamiltonian/effective-operator evaluation is not implemented, so no accepted correlated evaluation claim is allowed.",
+            "status": "PASS"
+            if (module_hamiltonian_contract or {}).get("evaluation_status")
+            == "CONTRACT_ONLY_IMPLEMENTATION_MISSING"
+            else "BLOCKED_EVALUATION_STATUS_NOT_EXPLICIT",
+            "evidence": {
+                "reported_evaluation_status": (module_hamiltonian_contract or {}).get("evaluation_status"),
+                "kernel_missing_components": atomic_predictive_v1_operator_residual_gate.get(
+                    "kernel_contract", {}
+                ).get("missing_core_components"),
+            },
+        },
+    ]
+    blocking_count = sum(1 for row in checks if row["status"].startswith("BLOCKED"))
+    pass_count = sum(1 for row in checks if row["status"] == "PASS")
+    status = (
+        "HAMILTONIAN_CONTRACT_READY_IMPLEMENTATION_MISSING"
+        if blocking_count == 0
+        else "HAMILTONIAN_CONTRACT_BLOCKED"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_predictive_v1_hamiltonian_effective_operator_gate",
+        "status": status,
+        "claim_class": "hamiltonian_contract_no_validation_claim",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-HAMILTONIAN-EFFECTIVE-OPERATOR",
+        "manifest": {
+            "path": str(
+                ATOMIC_PREDICTIVE_V1_HAMILTONIAN_EFFECTIVE_OPERATOR_MANIFEST_PATH.relative_to(TOPIC_DIR)
+            ).replace("\\", "/"),
+            "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_HAMILTONIAN_EFFECTIVE_OPERATOR_MANIFEST_PATH),
+            "manifest_id": hamiltonian_manifest.get("manifest_id"),
+            "status": hamiltonian_manifest.get("status"),
+        },
+        "hamiltonian_effective_operator_contract": module_hamiltonian_contract,
+        "checks": checks,
+        "metrics": {
+            "hamiltonian_check_count": len(checks),
+            "hamiltonian_check_pass_count": pass_count,
+            "hamiltonian_check_blocking_count": blocking_count,
+            "required_input_count": len(required_inputs),
+            "reported_input_count": len(reported_inputs),
+            "required_output_count": len(required_outputs),
+            "reported_output_count": len(reported_outputs),
+        },
+        "claim_boundary": hamiltonian_manifest.get("claim_boundary"),
+    }
 def build_atomic_predictive_v1_operator_parameter_acceptance_preflight_gate(
     operator_parameter_preflight_manifest: dict,
     operator_parameters_manifest: dict,
@@ -7130,6 +7257,9 @@ def run_rydberg_analysis():
     atomic_predictive_v1_basis_assembly_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_BASIS_ASSEMBLY_MANIFEST_PATH
     )
+    atomic_predictive_v1_hamiltonian_effective_operator_manifest = load_json(
+        ATOMIC_PREDICTIVE_V1_HAMILTONIAN_EFFECTIVE_OPERATOR_MANIFEST_PATH
+    )
     atomic_predictive_v1_operator_parameters_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETERS_PATH
     )
@@ -7429,6 +7559,13 @@ def run_rydberg_analysis():
         atomic_predictive_v1_fixed_ci_implementation_declaration_manifest,
         atomic_predictive_v1_fixed_ci_input_preflight_manifest,
         atomic_predictive_v1_operator_residual_gate,
+    )
+    atomic_predictive_v1_hamiltonian_effective_operator_gate = (
+        build_atomic_predictive_v1_hamiltonian_effective_operator_gate(
+            atomic_predictive_v1_hamiltonian_effective_operator_manifest,
+            atomic_predictive_v1_basis_assembly_manifest,
+            atomic_predictive_v1_operator_residual_gate,
+        )
     )
     atomic_predictive_v1_operator_training_holdout_split_gate = (
         build_atomic_predictive_v1_operator_training_holdout_split_gate(
@@ -7804,6 +7941,7 @@ def run_rydberg_analysis():
             "AT20-ATOMIC-PREDICTIVE-V1-CANDIDATE-EXECUTION",
             "AT20-ATOMIC-PREDICTIVE-V1-KERNEL-INTERFACE",
             "AT20-ATOMIC-PREDICTIVE-V1-BASIS-ASSEMBLY",
+            "AT20-ATOMIC-PREDICTIVE-V1-HAMILTONIAN-EFFECTIVE-OPERATOR",
             "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-PARAMETER-PREFLIGHT",
             "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
             "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
@@ -8075,6 +8213,36 @@ def run_rydberg_analysis():
             "atomic_predictive_v1_basis_assembly_reported_inputs": (
                 atomic_predictive_v1_basis_assembly_gate["metrics"]["reported_input_count"]
             ),
+            "atomic_predictive_v1_hamiltonian_checks": (
+                atomic_predictive_v1_hamiltonian_effective_operator_gate["metrics"][
+                    "hamiltonian_check_count"
+                ]
+            ),
+            "atomic_predictive_v1_hamiltonian_blocking_checks": (
+                atomic_predictive_v1_hamiltonian_effective_operator_gate["metrics"][
+                    "hamiltonian_check_blocking_count"
+                ]
+            ),
+            "atomic_predictive_v1_hamiltonian_required_inputs": (
+                atomic_predictive_v1_hamiltonian_effective_operator_gate["metrics"][
+                    "required_input_count"
+                ]
+            ),
+            "atomic_predictive_v1_hamiltonian_reported_inputs": (
+                atomic_predictive_v1_hamiltonian_effective_operator_gate["metrics"][
+                    "reported_input_count"
+                ]
+            ),
+            "atomic_predictive_v1_hamiltonian_required_outputs": (
+                atomic_predictive_v1_hamiltonian_effective_operator_gate["metrics"][
+                    "required_output_count"
+                ]
+            ),
+            "atomic_predictive_v1_hamiltonian_reported_outputs": (
+                atomic_predictive_v1_hamiltonian_effective_operator_gate["metrics"][
+                    "reported_output_count"
+                ]
+            ),
             "atomic_predictive_v1_operator_parameter_preflight_parameter_sets": (
                 atomic_predictive_v1_operator_parameter_acceptance_preflight_gate["metrics"][
                     "parameter_set_count"
@@ -8279,6 +8447,9 @@ def run_rydberg_analysis():
     )
     artifact["atomic_predictive_v1_basis_assembly_gate"] = (
         atomic_predictive_v1_basis_assembly_gate
+    )
+    artifact["atomic_predictive_v1_hamiltonian_effective_operator_gate"] = (
+        atomic_predictive_v1_hamiltonian_effective_operator_gate
     )
     artifact["atomic_predictive_v1_operator_training_holdout_split_gate"] = (
         atomic_predictive_v1_operator_training_holdout_split_gate

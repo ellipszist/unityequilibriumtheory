@@ -21,6 +21,28 @@
   "claim_boundary": "Rows exported here are same-source-family diagnostic residual rows. They do not implement or validate delta_uet_or_ci.",
   "claim_class": "diagnostic_residual_rows_no_validation_claim",
   "execution_mode": "diagnostic_export_only",
+  "hamiltonian_effective_operator_contract": {
+    "basis_dependency_id": "fixed_ci_basis_assembly_contract",
+    "blocked_claims": [
+      "declaring the Hamiltonian contract means correlated operator evaluation exists",
+      "effective operator naming means accepted delta_uet_or_ci emission exists",
+      "accepted residual rows exist before Hamiltonian/effective-operator evaluation emits them"
+    ],
+    "effective_operator_id": "fixed_parameter_ci_or_correlated_two_electron_correction",
+    "evaluation_status": "CONTRACT_ONLY_IMPLEMENTATION_MISSING",
+    "required_inputs": [
+      "assembled or declared correlated basis states",
+      "fixed Hamiltonian or effective-operator form",
+      "locked operator parameters or explicit no-fit declaration",
+      "source-locked target observables and unit conversions",
+      "holdout-excluded evaluation policy"
+    ],
+    "required_outputs": [
+      "row-level predicted excitation energies or equivalent observables",
+      "operator-side uncertainty fields or explicit missing-uncertainty status",
+      "machine-readable evaluation provenance"
+    ]
+  },
   "kernel_contract": {
     "blocked_claims": [
       "diagnostic exporter means the fixed CI/correlated kernel exists",
@@ -37,7 +59,8 @@
       "row_level_uncertainty_from_accepted_operator"
     ],
     "ready_scaffolds": [
-      "fixed_ci_basis_assembly_contract"
+      "fixed_ci_basis_assembly_contract",
+      "hamiltonian_effective_operator_contract"
     ],
     "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction"
   },

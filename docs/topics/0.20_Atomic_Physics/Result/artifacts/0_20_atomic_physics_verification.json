@@ -1138,7 +1138,8 @@
         "evidence": {
           "contract_present": true,
           "ready_scaffolds": [
-            "fixed_ci_basis_assembly_contract"
+            "fixed_ci_basis_assembly_contract",
+            "hamiltonian_effective_operator_contract"
           ]
         },
         "requirement": "The target module exposes the basis-assembly contract entrypoint.",
@@ -1245,7 +1246,7 @@
         "evidence": {
           "residual_artifact_exists": true,
           "residual_artifact_path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
-          "residual_artifact_sha256": "a7755447e49556d63b587fd182282c105e05a58e33bbfbdc55459314da7d1d2d",
+          "residual_artifact_sha256": "f0d97221209e52533164f8de15a63b816a8702e0c294259ca57da60690526ef4",
           "returned_gate_present": true
         },
         "requirement": "Running the target module through the primary verifier writes the residual artifact and returns the operator gate.",
@@ -1324,7 +1325,7 @@
       "exists": true,
       "path": "Code/03_Research/Research_Atomic_Operator_V1.py",
       "return_key_present": true,
-      "sha256": "080b4c0b6318eb432451bd91be8bd88c3a997fefb2893b3c700405849c05de1a"
+      "sha256": "aae39e4d9dfd2163e556ba159fd5bc669d1d226f22a45c04fd4f2b284cebb0b3"
     }
   },
   "atomic_predictive_v1_diagnostic_report_gate": {
@@ -1635,6 +1636,131 @@
     "schema_version": "1.0",
     "status": "OPERATOR_CONTRACT_READY_IMPLEMENTATION_MISSING"
   },
+  "atomic_predictive_v1_hamiltonian_effective_operator_gate": {
+    "checks": [
+      {
+        "check_id": "HAM-01",
+        "evidence": {
+          "contract_present": true,
+          "ready_scaffolds": [
+            "fixed_ci_basis_assembly_contract",
+            "hamiltonian_effective_operator_contract"
+          ]
+        },
+        "requirement": "The target module exposes the Hamiltonian/effective-operator contract entrypoint.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "HAM-02",
+        "evidence": {
+          "basis_contract_status": "CONTRACT_ONLY_IMPLEMENTATION_MISSING",
+          "expected_basis_dependency_id": "fixed_ci_basis_assembly_contract",
+          "reported_basis_dependency_id": "fixed_ci_basis_assembly_contract"
+        },
+        "requirement": "The contract explicitly depends on the fixed-CI basis-assembly scaffold instead of skipping basis provenance.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "HAM-03",
+        "evidence": {
+          "expected_effective_operator_id": "fixed_parameter_ci_or_correlated_two_electron_correction",
+          "reported_effective_operator_id": "fixed_parameter_ci_or_correlated_two_electron_correction"
+        },
+        "requirement": "The reported effective operator aligns with the selected fixed-CI/correlated operator class.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "HAM-04",
+        "evidence": {
+          "missing_inputs": [],
+          "missing_outputs": [],
+          "reported_inputs": [
+            "assembled or declared correlated basis states",
+            "fixed Hamiltonian or effective-operator form",
+            "locked operator parameters or explicit no-fit declaration",
+            "source-locked target observables and unit conversions",
+            "holdout-excluded evaluation policy"
+          ],
+          "reported_outputs": [
+            "row-level predicted excitation energies or equivalent observables",
+            "operator-side uncertainty fields or explicit missing-uncertainty status",
+            "machine-readable evaluation provenance"
+          ],
+          "required_inputs": [
+            "assembled or declared correlated basis states",
+            "fixed Hamiltonian or effective-operator form",
+            "locked operator parameters or explicit no-fit declaration",
+            "source-locked target observables and unit conversions",
+            "holdout-excluded evaluation policy"
+          ],
+          "required_outputs": [
+            "row-level predicted excitation energies or equivalent observables",
+            "operator-side uncertainty fields or explicit missing-uncertainty status",
+            "machine-readable evaluation provenance"
+          ]
+        },
+        "requirement": "The contract lists required inputs and outputs explicitly rather than leaving evaluation expectations implicit.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "HAM-05",
+        "evidence": {
+          "kernel_missing_components": [
+            "fixed_ci_or_correlated_basis_assembly",
+            "hamiltonian_or_effective_operator_evaluation",
+            "parameterized_correction_emission_as_delta_uet_or_ci",
+            "row_level_uncertainty_from_accepted_operator"
+          ],
+          "reported_evaluation_status": "CONTRACT_ONLY_IMPLEMENTATION_MISSING"
+        },
+        "requirement": "The contract still states that Hamiltonian/effective-operator evaluation is not implemented, so no accepted correlated evaluation claim is allowed.",
+        "status": "PASS"
+      }
+    ],
+    "claim_boundary": "This manifest defines the Hamiltonian/effective-operator evaluation contract only. It does not evaluate a correlated Hamiltonian, emit accepted residual rows, or validate a correction operator.",
+    "claim_class": "hamiltonian_contract_no_validation_claim",
+    "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-HAMILTONIAN-EFFECTIVE-OPERATOR",
+    "hamiltonian_effective_operator_contract": {
+      "basis_dependency_id": "fixed_ci_basis_assembly_contract",
+      "blocked_claims": [
+        "declaring the Hamiltonian contract means correlated operator evaluation exists",
+        "effective operator naming means accepted delta_uet_or_ci emission exists",
+        "accepted residual rows exist before Hamiltonian/effective-operator evaluation emits them"
+      ],
+      "effective_operator_id": "fixed_parameter_ci_or_correlated_two_electron_correction",
+      "evaluation_status": "CONTRACT_ONLY_IMPLEMENTATION_MISSING",
+      "required_inputs": [
+        "assembled or declared correlated basis states",
+        "fixed Hamiltonian or effective-operator form",
+        "locked operator parameters or explicit no-fit declaration",
+        "source-locked target observables and unit conversions",
+        "holdout-excluded evaluation policy"
+      ],
+      "required_outputs": [
+        "row-level predicted excitation energies or equivalent observables",
+        "operator-side uncertainty fields or explicit missing-uncertainty status",
+        "machine-readable evaluation provenance"
+      ]
+    },
+    "manifest": {
+      "manifest_id": "AT20-PREDICTIVE-V1-HAMILTONIAN-EFFECTIVE-OPERATOR-MANIFEST",
+      "path": "Data/03_Research/atomic_predictive_v1_hamiltonian_effective_operator_manifest.json",
+      "sha256": "b2f9d51cb1fe86272595f0b47e2aae364febc0cf1e1e3135912e5aa9a0ac7f4f",
+      "status": "HAMILTONIAN_CONTRACT_READY_IMPLEMENTATION_MISSING"
+    },
+    "metrics": {
+      "hamiltonian_check_blocking_count": 0,
+      "hamiltonian_check_count": 5,
+      "hamiltonian_check_pass_count": 5,
+      "reported_input_count": 5,
+      "reported_output_count": 3,
+      "required_input_count": 5,
+      "required_output_count": 3
+    },
+    "role": "atomic_predictive_v1_hamiltonian_effective_operator_gate",
+    "schema_version": "1.0",
+    "status": "HAMILTONIAN_CONTRACT_READY_IMPLEMENTATION_MISSING"
+  },
   "atomic_predictive_v1_kernel_interface_gate": {
     "checks": [
       {
@@ -1724,7 +1850,8 @@
         "row_level_uncertainty_from_accepted_operator"
       ],
       "ready_scaffolds": [
-        "fixed_ci_basis_assembly_contract"
+        "fixed_ci_basis_assembly_contract",
+        "hamiltonian_effective_operator_contract"
       ],
       "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction"
     },
@@ -1777,7 +1904,7 @@
             "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
             "purpose": "Store source-row residuals emitted by the target module.",
             "required_before_acceptance": true,
-            "sha256": "a7755447e49556d63b587fd182282c105e05a58e33bbfbdc55459314da7d1d2d"
+            "sha256": "f0d97221209e52533164f8de15a63b816a8702e0c294259ca57da60690526ef4"
           },
           {
             "artifact_id": "operator_uncertainty_policy",
@@ -1952,7 +2079,7 @@
         "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
         "purpose": "Store source-row residuals emitted by the target module.",
         "required_before_acceptance": true,
-        "sha256": "a7755447e49556d63b587fd182282c105e05a58e33bbfbdc55459314da7d1d2d"
+        "sha256": "f0d97221209e52533164f8de15a63b816a8702e0c294259ca57da60690526ef4"
       },
       {
         "artifact_id": "operator_uncertainty_policy",
@@ -1985,7 +2112,7 @@
       "accepted_as_delta_uet_or_ci": false,
       "exists": true,
       "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
-      "sha256": "a7755447e49556d63b587fd182282c105e05a58e33bbfbdc55459314da7d1d2d",
+      "sha256": "f0d97221209e52533164f8de15a63b816a8702e0c294259ca57da60690526ef4",
       "status": "DIAGNOSTIC_RESIDUAL_ROWS_EXPORTED_OPERATOR_NOT_ACCEPTED"
     },
     "role": "atomic_predictive_v1_operator_acceptance_harness_gate",
@@ -1999,7 +2126,7 @@
       "required_entrypoint": "run_atomic_operator_v1",
       "required_return_key": "atomic_predictive_v1_operator_residual_gate",
       "return_key_present": true,
-      "sha256": "080b4c0b6318eb432451bd91be8bd88c3a997fefb2893b3c700405849c05de1a"
+      "sha256": "aae39e4d9dfd2163e556ba159fd5bc669d1d226f22a45c04fd4f2b284cebb0b3"
     }
   },
   "atomic_predictive_v1_operator_build_spec_gate": {
@@ -2464,13 +2591,13 @@
       "parameter_manifest_exists": true,
       "parameter_manifest_sha256": "c6227e3f8127aaeb55b297c9ef7d4f89c3d5468352b9c861cd36580ac1803d1a",
       "residual_rows_artifact_exists": true,
-      "residual_rows_artifact_sha256": "a7755447e49556d63b587fd182282c105e05a58e33bbfbdc55459314da7d1d2d",
+      "residual_rows_artifact_sha256": "f0d97221209e52533164f8de15a63b816a8702e0c294259ca57da60690526ef4",
       "selected_operator_class_review": "fixed_parameter_ci_or_correlated_two_electron_correction",
       "target_module_entrypoint_present": true,
       "target_module_exists": true,
       "target_module_path": "Code/03_Research/Research_Atomic_Operator_V1.py",
       "target_module_return_key_present": true,
-      "target_module_sha256": "080b4c0b6318eb432451bd91be8bd88c3a997fefb2893b3c700405849c05de1a",
+      "target_module_sha256": "aae39e4d9dfd2163e556ba159fd5bc669d1d226f22a45c04fd4f2b284cebb0b3",
       "uncertainty_policy_exists": true,
       "uncertainty_policy_sha256": "494a809a6001a42fbc4e2b3c431392d8997e2720f4593a0b88cc9c3d2bb7fa3c"
     },
@@ -2513,7 +2640,7 @@
         "evidence_exists": true,
         "evidence_id": "PROV-01",
         "evidence_path": "Code/03_Research/Research_Atomic_Operator_V1.py",
-        "evidence_sha256": "080b4c0b6318eb432451bd91be8bd88c3a997fefb2893b3c700405849c05de1a",
+        "evidence_sha256": "aae39e4d9dfd2163e556ba159fd5bc669d1d226f22a45c04fd4f2b284cebb0b3",
         "manifest_status": "CANDIDATE_IDENTITY_LOCK_READY_ACCEPTED_OPERATOR_MISSING",
         "required_artifact": "accepted operator implementation record with code hash and operator class",
         "requirement": "Accepted operator source code is identified by module path, entrypoint, commit hash or source hash, and operator class.",
@@ -2555,7 +2682,7 @@
         "evidence_exists": true,
         "evidence_id": "PROV-04",
         "evidence_path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
-        "evidence_sha256": "a7755447e49556d63b587fd182282c105e05a58e33bbfbdc55459314da7d1d2d",
+        "evidence_sha256": "f0d97221209e52533164f8de15a63b816a8702e0c294259ca57da60690526ef4",
         "manifest_status": "DIAGNOSTIC_RESIDUAL_ROWS_LOCK_READY_ACCEPTED_OPERATOR_MISSING",
         "required_artifact": "operator residual rows with accepted_operator_class and accepted_as_delta_uet_or_ci=true",
         "requirement": "Residual rows are emitted by the accepted operator, not by the current diagnostic quantum-defect wrapper.",
@@ -2875,6 +3002,28 @@
     "claim_boundary": "This skeleton only establishes the target entrypoint. It does not implement or validate delta_uet_or_ci.",
     "claim_class": "operator_skeleton_or_diagnostic_rows_no_validation_claim",
     "execution_mode": "diagnostic_export_only",
+    "hamiltonian_effective_operator_contract": {
+      "basis_dependency_id": "fixed_ci_basis_assembly_contract",
+      "blocked_claims": [
+        "declaring the Hamiltonian contract means correlated operator evaluation exists",
+        "effective operator naming means accepted delta_uet_or_ci emission exists",
+        "accepted residual rows exist before Hamiltonian/effective-operator evaluation emits them"
+      ],
+      "effective_operator_id": "fixed_parameter_ci_or_correlated_two_electron_correction",
+      "evaluation_status": "CONTRACT_ONLY_IMPLEMENTATION_MISSING",
+      "required_inputs": [
+        "assembled or declared correlated basis states",
+        "fixed Hamiltonian or effective-operator form",
+        "locked operator parameters or explicit no-fit declaration",
+        "source-locked target observables and unit conversions",
+        "holdout-excluded evaluation policy"
+      ],
+      "required_outputs": [
+        "row-level predicted excitation energies or equivalent observables",
+        "operator-side uncertainty fields or explicit missing-uncertainty status",
+        "machine-readable evaluation provenance"
+      ]
+    },
     "kernel_contract": {
       "blocked_claims": [
         "diagnostic exporter means the fixed CI/correlated kernel exists",
@@ -2891,7 +3040,8 @@
         "row_level_uncertainty_from_accepted_operator"
       ],
       "ready_scaffolds": [
-        "fixed_ci_basis_assembly_contract"
+        "fixed_ci_basis_assembly_contract",
+        "hamiltonian_effective_operator_contract"
       ],
       "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction"
     },
@@ -3678,6 +3828,7 @@
     "AT20-ATOMIC-PREDICTIVE-V1-CANDIDATE-EXECUTION",
     "AT20-ATOMIC-PREDICTIVE-V1-KERNEL-INTERFACE",
     "AT20-ATOMIC-PREDICTIVE-V1-BASIS-ASSEMBLY",
+    "AT20-ATOMIC-PREDICTIVE-V1-HAMILTONIAN-EFFECTIVE-OPERATOR",
     "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-PARAMETER-PREFLIGHT",
     "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
     "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
@@ -3688,7 +3839,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-14T08:00:45.504970+00:00",
+  "generated_at_utc": "2026-06-14T08:11:34.753283+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -6810,6 +6961,12 @@
     "atomic_predictive_v1_candidate_execution_uncertainty_computable_rows": 3,
     "atomic_predictive_v1_fixed_correction_accepted_operators": 0,
     "atomic_predictive_v1_fixed_correction_blocking_checks": 1,
+    "atomic_predictive_v1_hamiltonian_blocking_checks": 0,
+    "atomic_predictive_v1_hamiltonian_checks": 5,
+    "atomic_predictive_v1_hamiltonian_reported_inputs": 5,
+    "atomic_predictive_v1_hamiltonian_reported_outputs": 3,
+    "atomic_predictive_v1_hamiltonian_required_inputs": 5,
+    "atomic_predictive_v1_hamiltonian_required_outputs": 3,
     "atomic_predictive_v1_kernel_interface_blocking_checks": 0,
     "atomic_predictive_v1_kernel_interface_checks": 5,
     "atomic_predictive_v1_kernel_interface_missing_core_components": 4,
