@@ -76,6 +76,9 @@ ATOMIC_PREDICTIVE_V1_CANDIDATE_EXECUTION_MANIFEST_PATH = (
 ATOMIC_PREDICTIVE_V1_KERNEL_INTERFACE_MANIFEST_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_kernel_interface_manifest.json"
 )
+ATOMIC_PREDICTIVE_V1_BASIS_ASSEMBLY_MANIFEST_PATH = (
+    TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_basis_assembly_manifest.json"
+)
 ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETERS_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_parameters.json"
 )
@@ -4877,6 +4880,114 @@ def build_atomic_predictive_v1_kernel_interface_gate(
         "claim_boundary": kernel_interface_manifest.get("claim_boundary"),
     }
 
+
+def build_atomic_predictive_v1_basis_assembly_gate(
+    basis_assembly_manifest: dict,
+    fixed_ci_implementation_declaration_manifest: dict,
+    fixed_ci_input_preflight_manifest: dict,
+    atomic_predictive_v1_operator_residual_gate: dict,
+) -> dict:
+    basis_contract = (
+        atomic_predictive_v1_operator_residual_gate.get("kernel_contract", {}).get("ready_scaffolds", [])
+    )
+    residual_kernel_contract = atomic_predictive_v1_operator_residual_gate.get("kernel_contract", {})
+    module_basis_contract = atomic_predictive_v1_operator_residual_gate.get("basis_assembly_contract")
+    declaration_model_family_id = fixed_ci_implementation_declaration_manifest.get("model_family_declaration", {}).get(
+        "model_family_id"
+    )
+    declaration_convergence_policy_id = fixed_ci_implementation_declaration_manifest.get(
+        "convergence_policy_declaration", {}
+    ).get("policy_id")
+    required_inputs = basis_assembly_manifest.get("required_inputs", [])
+    contract_inputs = (module_basis_contract or {}).get("required_inputs", [])
+    missing_inputs = [item for item in required_inputs if item not in contract_inputs]
+    checks = [
+        {
+            "check_id": "BASIS-01",
+            "requirement": "The target module exposes the basis-assembly contract entrypoint.",
+            "status": "PASS" if module_basis_contract else "BLOCKED_BASIS_CONTRACT_MISSING",
+            "evidence": {
+                "contract_present": bool(module_basis_contract),
+                "ready_scaffolds": basis_contract,
+            },
+        },
+        {
+            "check_id": "BASIS-02",
+            "requirement": "The reported basis family aligns with the fixed-CI implementation declaration.",
+            "status": "PASS"
+            if (module_basis_contract or {}).get("basis_family_id") == declaration_model_family_id
+            else "BLOCKED_BASIS_FAMILY_MISMATCH",
+            "evidence": {
+                "reported_basis_family_id": (module_basis_contract or {}).get("basis_family_id"),
+                "declared_basis_family_id": declaration_model_family_id,
+            },
+        },
+        {
+            "check_id": "BASIS-03",
+            "requirement": "The reported convergence policy aligns with the fixed-CI implementation declaration.",
+            "status": "PASS"
+            if (module_basis_contract or {}).get("convergence_policy_id") == declaration_convergence_policy_id
+            else "BLOCKED_CONVERGENCE_POLICY_MISMATCH",
+            "evidence": {
+                "reported_convergence_policy_id": (module_basis_contract or {}).get("convergence_policy_id"),
+                "declared_convergence_policy_id": declaration_convergence_policy_id,
+            },
+        },
+        {
+            "check_id": "BASIS-04",
+            "requirement": "The contract lists the required fixed-CI inputs explicitly rather than leaving them implicit.",
+            "status": "PASS" if not missing_inputs else "BLOCKED_REQUIRED_INPUTS_INCOMPLETE",
+            "evidence": {
+                "required_inputs": required_inputs,
+                "reported_inputs": contract_inputs,
+                "missing_inputs": missing_inputs,
+                "input_preflight_status": fixed_ci_input_preflight_manifest.get("status"),
+            },
+        },
+        {
+            "check_id": "BASIS-05",
+            "requirement": "The contract still states that runnable basis assembly is missing, so no accepted correlated kernel claim is allowed.",
+            "status": "PASS"
+            if (module_basis_contract or {}).get("assembly_status") == "CONTRACT_ONLY_IMPLEMENTATION_MISSING"
+            else "BLOCKED_ASSEMBLY_STATUS_NOT_EXPLICIT",
+            "evidence": {
+                "reported_assembly_status": (module_basis_contract or {}).get("assembly_status"),
+                "kernel_missing_components": residual_kernel_contract.get("missing_core_components"),
+            },
+        },
+    ]
+    blocking_count = sum(1 for row in checks if row["status"].startswith("BLOCKED"))
+    pass_count = sum(1 for row in checks if row["status"] == "PASS")
+    status = (
+        "BASIS_ASSEMBLY_CONTRACT_READY_IMPLEMENTATION_MISSING"
+        if blocking_count == 0
+        else "BASIS_ASSEMBLY_CONTRACT_BLOCKED"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_predictive_v1_basis_assembly_gate",
+        "status": status,
+        "claim_class": "basis_assembly_contract_no_validation_claim",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-BASIS-ASSEMBLY",
+        "manifest": {
+            "path": str(ATOMIC_PREDICTIVE_V1_BASIS_ASSEMBLY_MANIFEST_PATH.relative_to(TOPIC_DIR)).replace(
+                "\\", "/"
+            ),
+            "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_BASIS_ASSEMBLY_MANIFEST_PATH),
+            "manifest_id": basis_assembly_manifest.get("manifest_id"),
+            "status": basis_assembly_manifest.get("status"),
+        },
+        "basis_assembly_contract": module_basis_contract,
+        "checks": checks,
+        "metrics": {
+            "basis_check_count": len(checks),
+            "basis_check_pass_count": pass_count,
+            "basis_check_blocking_count": blocking_count,
+            "required_input_count": len(required_inputs),
+            "reported_input_count": len(contract_inputs),
+        },
+        "claim_boundary": basis_assembly_manifest.get("claim_boundary"),
+    }
 def build_atomic_predictive_v1_operator_parameter_acceptance_preflight_gate(
     operator_parameter_preflight_manifest: dict,
     operator_parameters_manifest: dict,
@@ -7016,6 +7127,9 @@ def run_rydberg_analysis():
     atomic_predictive_v1_kernel_interface_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_KERNEL_INTERFACE_MANIFEST_PATH
     )
+    atomic_predictive_v1_basis_assembly_manifest = load_json(
+        ATOMIC_PREDICTIVE_V1_BASIS_ASSEMBLY_MANIFEST_PATH
+    )
     atomic_predictive_v1_operator_parameters_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETERS_PATH
     )
@@ -7309,6 +7423,12 @@ def run_rydberg_analysis():
         atomic_predictive_v1_kernel_interface_manifest,
         atomic_predictive_v1_operator_residual_gate,
         atomic_predictive_v1_candidate_execution_gate,
+    )
+    atomic_predictive_v1_basis_assembly_gate = build_atomic_predictive_v1_basis_assembly_gate(
+        atomic_predictive_v1_basis_assembly_manifest,
+        atomic_predictive_v1_fixed_ci_implementation_declaration_manifest,
+        atomic_predictive_v1_fixed_ci_input_preflight_manifest,
+        atomic_predictive_v1_operator_residual_gate,
     )
     atomic_predictive_v1_operator_training_holdout_split_gate = (
         build_atomic_predictive_v1_operator_training_holdout_split_gate(
@@ -7683,6 +7803,7 @@ def run_rydberg_analysis():
             "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-ACCEPTANCE-HARNESS",
             "AT20-ATOMIC-PREDICTIVE-V1-CANDIDATE-EXECUTION",
             "AT20-ATOMIC-PREDICTIVE-V1-KERNEL-INTERFACE",
+            "AT20-ATOMIC-PREDICTIVE-V1-BASIS-ASSEMBLY",
             "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-PARAMETER-PREFLIGHT",
             "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
             "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
@@ -7942,6 +8063,18 @@ def run_rydberg_analysis():
                     "reported_missing_core_component_count"
                 ]
             ),
+            "atomic_predictive_v1_basis_assembly_checks": (
+                atomic_predictive_v1_basis_assembly_gate["metrics"]["basis_check_count"]
+            ),
+            "atomic_predictive_v1_basis_assembly_blocking_checks": (
+                atomic_predictive_v1_basis_assembly_gate["metrics"]["basis_check_blocking_count"]
+            ),
+            "atomic_predictive_v1_basis_assembly_required_inputs": (
+                atomic_predictive_v1_basis_assembly_gate["metrics"]["required_input_count"]
+            ),
+            "atomic_predictive_v1_basis_assembly_reported_inputs": (
+                atomic_predictive_v1_basis_assembly_gate["metrics"]["reported_input_count"]
+            ),
             "atomic_predictive_v1_operator_parameter_preflight_parameter_sets": (
                 atomic_predictive_v1_operator_parameter_acceptance_preflight_gate["metrics"][
                     "parameter_set_count"
@@ -8143,6 +8276,9 @@ def run_rydberg_analysis():
     )
     artifact["atomic_predictive_v1_kernel_interface_gate"] = (
         atomic_predictive_v1_kernel_interface_gate
+    )
+    artifact["atomic_predictive_v1_basis_assembly_gate"] = (
+        atomic_predictive_v1_basis_assembly_gate
     )
     artifact["atomic_predictive_v1_operator_training_holdout_split_gate"] = (
         atomic_predictive_v1_operator_training_holdout_split_gate

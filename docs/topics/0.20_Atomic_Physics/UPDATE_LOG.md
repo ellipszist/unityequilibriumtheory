@@ -20,6 +20,19 @@ blockers were actually narrowed.
 
 ## Entries
 
+### 2026-06-14 - Declare the fixed-CI basis-assembly contract
+
+- Scope: `atomic_predictive_v1_basis_assembly_manifest.json`, `Research_Atomic_Operator_V1.py`, `Research_Rydberg_Validation.py`, primary artifact, topic docs
+- Added or changed: Added a basis-assembly manifest and gate, taught the operator module to emit a contract-only basis-assembly scaffold, and wired the verifier/artifacts/docs so the first missing kernel component is auditable as a declared contract rather than only a name in the missing-core list.
+- Files touched: `Data/03_Research/atomic_predictive_v1_basis_assembly_manifest.json`, `Code/03_Research/Research_Atomic_Operator_V1.py`, `Code/03_Research/Research_Rydberg_Validation.py`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `FORMULA_AUDIT.md`, `DATA_MANIFEST.md`, `VERIFICATION_SPEC.md`, `UPDATE_LOG.md`, `Result/artifacts/0_20_atomic_physics_verification.json`, `Result/artifacts/atomic_predictive_v1_operator_residual_rows.json`
+- Verified with: `python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validation.py`
+- Result: The new basis-assembly gate passes `5/5` checks, reports `0` blocking checks, records all `5` required inputs explicitly, and keeps `assembly_status = CONTRACT_ONLY_IMPLEMENTATION_MISSING` while the topic-level predictive operator state remains diagnostic-only.
+- Blocker narrowed: The first missing kernel component is no longer just "basis assembly" by name. It is now a contract-ready scaffold whose family, convergence policy, required inputs, and blocked-claim boundary are source-linked and runtime-visible.
+- Still open: Runnable correlated basis assembly, Hamiltonian/effective-operator evaluation, accepted `delta_uet_or_ci` emission, accepted operator uncertainty provenance, validation-ready thresholds, and independent non-NIST helium source lineage.
+- Next controller: `hamiltonian_or_effective_operator_evaluation` is now the narrowest undeclared core execution blocker after the basis-assembly contract wave.
+- Claim impact: `no change`
+- Notes: This wave does not assemble a correlated basis or emit accepted residual rows. It only turns the first kernel component into an auditable contract and keeps the implementation gap explicit.
+
 ### 2026-06-13 - Declare the missing operator kernel explicitly
 
 - Scope: `atomic_predictive_v1_kernel_interface_manifest.json`, `Research_Atomic_Operator_V1.py`, `Research_Rydberg_Validation.py`, primary artifact, topic docs

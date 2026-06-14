@@ -1114,6 +1114,112 @@
     "schema_version": "1.0",
     "status": "SPEC_MAPPED_IMPLEMENTATION_BLOCKED"
   },
+  "atomic_predictive_v1_basis_assembly_gate": {
+    "basis_assembly_contract": {
+      "assembly_status": "CONTRACT_ONLY_IMPLEMENTATION_MISSING",
+      "basis_family_id": "correlated_two_electron_variational_ci_family_review_target",
+      "blocked_claims": [
+        "basis assembly contract means a correlated basis has been assembled",
+        "declared family and convergence policy are accepted correlated results",
+        "fixed-CI kernel exists before basis assembly emits usable states or matrices"
+      ],
+      "convergence_policy_id": "fixed_ci_basis_lock_before_holdout_v1",
+      "required_inputs": [
+        "source-locked helium ground-state energy anchors",
+        "source-locked excited-state target rows",
+        "declared basis/model family",
+        "locked basis size or convergence policy",
+        "locked constants and unit conversions"
+      ]
+    },
+    "checks": [
+      {
+        "check_id": "BASIS-01",
+        "evidence": {
+          "contract_present": true,
+          "ready_scaffolds": [
+            "fixed_ci_basis_assembly_contract"
+          ]
+        },
+        "requirement": "The target module exposes the basis-assembly contract entrypoint.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "BASIS-02",
+        "evidence": {
+          "declared_basis_family_id": "correlated_two_electron_variational_ci_family_review_target",
+          "reported_basis_family_id": "correlated_two_electron_variational_ci_family_review_target"
+        },
+        "requirement": "The reported basis family aligns with the fixed-CI implementation declaration.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "BASIS-03",
+        "evidence": {
+          "declared_convergence_policy_id": "fixed_ci_basis_lock_before_holdout_v1",
+          "reported_convergence_policy_id": "fixed_ci_basis_lock_before_holdout_v1"
+        },
+        "requirement": "The reported convergence policy aligns with the fixed-CI implementation declaration.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "BASIS-04",
+        "evidence": {
+          "input_preflight_status": "INPUT_PREFLIGHT_DECLARATION_READY_REVIEW_ONLY_IMPLEMENTATION_MISSING",
+          "missing_inputs": [],
+          "reported_inputs": [
+            "source-locked helium ground-state energy anchors",
+            "source-locked excited-state target rows",
+            "declared basis/model family",
+            "locked basis size or convergence policy",
+            "locked constants and unit conversions"
+          ],
+          "required_inputs": [
+            "source-locked helium ground-state energy anchors",
+            "source-locked excited-state target rows",
+            "declared basis/model family",
+            "locked basis size or convergence policy",
+            "locked constants and unit conversions"
+          ]
+        },
+        "requirement": "The contract lists the required fixed-CI inputs explicitly rather than leaving them implicit.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "BASIS-05",
+        "evidence": {
+          "kernel_missing_components": [
+            "fixed_ci_or_correlated_basis_assembly",
+            "hamiltonian_or_effective_operator_evaluation",
+            "parameterized_correction_emission_as_delta_uet_or_ci",
+            "row_level_uncertainty_from_accepted_operator"
+          ],
+          "reported_assembly_status": "CONTRACT_ONLY_IMPLEMENTATION_MISSING"
+        },
+        "requirement": "The contract still states that runnable basis assembly is missing, so no accepted correlated kernel claim is allowed.",
+        "status": "PASS"
+      }
+    ],
+    "claim_boundary": "This manifest defines the fixed-CI basis-assembly contract only. It does not assemble a correlated basis or implement a correction operator.",
+    "claim_class": "basis_assembly_contract_no_validation_claim",
+    "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-BASIS-ASSEMBLY",
+    "manifest": {
+      "manifest_id": "AT20-PREDICTIVE-V1-BASIS-ASSEMBLY-MANIFEST",
+      "path": "Data/03_Research/atomic_predictive_v1_basis_assembly_manifest.json",
+      "sha256": "9d7e8f0b1ace0c98bd0008e32d22c5c17c08239698be65de9b02412cb71a0bdd",
+      "status": "BASIS_ASSEMBLY_CONTRACT_READY_IMPLEMENTATION_MISSING"
+    },
+    "metrics": {
+      "basis_check_blocking_count": 0,
+      "basis_check_count": 5,
+      "basis_check_pass_count": 5,
+      "reported_input_count": 5,
+      "required_input_count": 5
+    },
+    "role": "atomic_predictive_v1_basis_assembly_gate",
+    "schema_version": "1.0",
+    "status": "BASIS_ASSEMBLY_CONTRACT_READY_IMPLEMENTATION_MISSING"
+  },
   "atomic_predictive_v1_candidate_execution_gate": {
     "blocked_claims": [
       "candidate execution readiness means an accepted delta_uet_or_ci operator exists",
@@ -1139,7 +1245,7 @@
         "evidence": {
           "residual_artifact_exists": true,
           "residual_artifact_path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
-          "residual_artifact_sha256": "c2e9756980140db35a0b58dc6948755f4a42ed17be74f75ebc9b856cde4a1b1c",
+          "residual_artifact_sha256": "a7755447e49556d63b587fd182282c105e05a58e33bbfbdc55459314da7d1d2d",
           "returned_gate_present": true
         },
         "requirement": "Running the target module through the primary verifier writes the residual artifact and returns the operator gate.",
@@ -1218,7 +1324,7 @@
       "exists": true,
       "path": "Code/03_Research/Research_Atomic_Operator_V1.py",
       "return_key_present": true,
-      "sha256": "dae7e7a743906d68553803cad1d43477d28cc17cdd736c1335b0b01dc3083338"
+      "sha256": "080b4c0b6318eb432451bd91be8bd88c3a997fefb2893b3c700405849c05de1a"
     }
   },
   "atomic_predictive_v1_diagnostic_report_gate": {
@@ -1617,6 +1723,9 @@
         "parameterized_correction_emission_as_delta_uet_or_ci",
         "row_level_uncertainty_from_accepted_operator"
       ],
+      "ready_scaffolds": [
+        "fixed_ci_basis_assembly_contract"
+      ],
       "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction"
     },
     "manifest": {
@@ -1668,7 +1777,7 @@
             "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
             "purpose": "Store source-row residuals emitted by the target module.",
             "required_before_acceptance": true,
-            "sha256": "c2e9756980140db35a0b58dc6948755f4a42ed17be74f75ebc9b856cde4a1b1c"
+            "sha256": "a7755447e49556d63b587fd182282c105e05a58e33bbfbdc55459314da7d1d2d"
           },
           {
             "artifact_id": "operator_uncertainty_policy",
@@ -1843,7 +1952,7 @@
         "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
         "purpose": "Store source-row residuals emitted by the target module.",
         "required_before_acceptance": true,
-        "sha256": "c2e9756980140db35a0b58dc6948755f4a42ed17be74f75ebc9b856cde4a1b1c"
+        "sha256": "a7755447e49556d63b587fd182282c105e05a58e33bbfbdc55459314da7d1d2d"
       },
       {
         "artifact_id": "operator_uncertainty_policy",
@@ -1876,7 +1985,7 @@
       "accepted_as_delta_uet_or_ci": false,
       "exists": true,
       "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
-      "sha256": "c2e9756980140db35a0b58dc6948755f4a42ed17be74f75ebc9b856cde4a1b1c",
+      "sha256": "a7755447e49556d63b587fd182282c105e05a58e33bbfbdc55459314da7d1d2d",
       "status": "DIAGNOSTIC_RESIDUAL_ROWS_EXPORTED_OPERATOR_NOT_ACCEPTED"
     },
     "role": "atomic_predictive_v1_operator_acceptance_harness_gate",
@@ -1890,7 +1999,7 @@
       "required_entrypoint": "run_atomic_operator_v1",
       "required_return_key": "atomic_predictive_v1_operator_residual_gate",
       "return_key_present": true,
-      "sha256": "dae7e7a743906d68553803cad1d43477d28cc17cdd736c1335b0b01dc3083338"
+      "sha256": "080b4c0b6318eb432451bd91be8bd88c3a997fefb2893b3c700405849c05de1a"
     }
   },
   "atomic_predictive_v1_operator_build_spec_gate": {
@@ -2355,13 +2464,13 @@
       "parameter_manifest_exists": true,
       "parameter_manifest_sha256": "c6227e3f8127aaeb55b297c9ef7d4f89c3d5468352b9c861cd36580ac1803d1a",
       "residual_rows_artifact_exists": true,
-      "residual_rows_artifact_sha256": "c2e9756980140db35a0b58dc6948755f4a42ed17be74f75ebc9b856cde4a1b1c",
+      "residual_rows_artifact_sha256": "a7755447e49556d63b587fd182282c105e05a58e33bbfbdc55459314da7d1d2d",
       "selected_operator_class_review": "fixed_parameter_ci_or_correlated_two_electron_correction",
       "target_module_entrypoint_present": true,
       "target_module_exists": true,
       "target_module_path": "Code/03_Research/Research_Atomic_Operator_V1.py",
       "target_module_return_key_present": true,
-      "target_module_sha256": "dae7e7a743906d68553803cad1d43477d28cc17cdd736c1335b0b01dc3083338",
+      "target_module_sha256": "080b4c0b6318eb432451bd91be8bd88c3a997fefb2893b3c700405849c05de1a",
       "uncertainty_policy_exists": true,
       "uncertainty_policy_sha256": "494a809a6001a42fbc4e2b3c431392d8997e2720f4593a0b88cc9c3d2bb7fa3c"
     },
@@ -2404,7 +2513,7 @@
         "evidence_exists": true,
         "evidence_id": "PROV-01",
         "evidence_path": "Code/03_Research/Research_Atomic_Operator_V1.py",
-        "evidence_sha256": "dae7e7a743906d68553803cad1d43477d28cc17cdd736c1335b0b01dc3083338",
+        "evidence_sha256": "080b4c0b6318eb432451bd91be8bd88c3a997fefb2893b3c700405849c05de1a",
         "manifest_status": "CANDIDATE_IDENTITY_LOCK_READY_ACCEPTED_OPERATOR_MISSING",
         "required_artifact": "accepted operator implementation record with code hash and operator class",
         "requirement": "Accepted operator source code is identified by module path, entrypoint, commit hash or source hash, and operator class.",
@@ -2446,7 +2555,7 @@
         "evidence_exists": true,
         "evidence_id": "PROV-04",
         "evidence_path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
-        "evidence_sha256": "c2e9756980140db35a0b58dc6948755f4a42ed17be74f75ebc9b856cde4a1b1c",
+        "evidence_sha256": "a7755447e49556d63b587fd182282c105e05a58e33bbfbdc55459314da7d1d2d",
         "manifest_status": "DIAGNOSTIC_RESIDUAL_ROWS_LOCK_READY_ACCEPTED_OPERATOR_MISSING",
         "required_artifact": "operator residual rows with accepted_operator_class and accepted_as_delta_uet_or_ci=true",
         "requirement": "Residual rows are emitted by the accepted operator, not by the current diagnostic quantum-defect wrapper.",
@@ -2741,6 +2850,23 @@
   },
   "atomic_predictive_v1_operator_residual_gate": {
     "accepted_as_delta_uet_or_ci": false,
+    "basis_assembly_contract": {
+      "assembly_status": "CONTRACT_ONLY_IMPLEMENTATION_MISSING",
+      "basis_family_id": "correlated_two_electron_variational_ci_family_review_target",
+      "blocked_claims": [
+        "basis assembly contract means a correlated basis has been assembled",
+        "declared family and convergence policy are accepted correlated results",
+        "fixed-CI kernel exists before basis assembly emits usable states or matrices"
+      ],
+      "convergence_policy_id": "fixed_ci_basis_lock_before_holdout_v1",
+      "required_inputs": [
+        "source-locked helium ground-state energy anchors",
+        "source-locked excited-state target rows",
+        "declared basis/model family",
+        "locked basis size or convergence policy",
+        "locked constants and unit conversions"
+      ]
+    },
     "blocked_claims": [
       "operator skeleton is an implemented correction operator",
       "diagnostic residual rows validate atomic spectra",
@@ -2763,6 +2889,9 @@
         "hamiltonian_or_effective_operator_evaluation",
         "parameterized_correction_emission_as_delta_uet_or_ci",
         "row_level_uncertainty_from_accepted_operator"
+      ],
+      "ready_scaffolds": [
+        "fixed_ci_basis_assembly_contract"
       ],
       "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction"
     },
@@ -3548,6 +3677,7 @@
     "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-ACCEPTANCE-HARNESS",
     "AT20-ATOMIC-PREDICTIVE-V1-CANDIDATE-EXECUTION",
     "AT20-ATOMIC-PREDICTIVE-V1-KERNEL-INTERFACE",
+    "AT20-ATOMIC-PREDICTIVE-V1-BASIS-ASSEMBLY",
     "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-PARAMETER-PREFLIGHT",
     "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
     "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
@@ -3558,7 +3688,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-13T14:18:33.970046+00:00",
+  "generated_at_utc": "2026-06-14T08:00:45.504970+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -6671,6 +6801,10 @@
     "atomic_predictive_model_blueprint_steps": 7,
     "atomic_predictive_model_spec_blocked_lanes": 3,
     "atomic_predictive_model_spec_blockers": 4,
+    "atomic_predictive_v1_basis_assembly_blocking_checks": 0,
+    "atomic_predictive_v1_basis_assembly_checks": 5,
+    "atomic_predictive_v1_basis_assembly_reported_inputs": 5,
+    "atomic_predictive_v1_basis_assembly_required_inputs": 5,
     "atomic_predictive_v1_candidate_execution_blocking_checks": 0,
     "atomic_predictive_v1_candidate_execution_checks": 6,
     "atomic_predictive_v1_candidate_execution_uncertainty_computable_rows": 3,

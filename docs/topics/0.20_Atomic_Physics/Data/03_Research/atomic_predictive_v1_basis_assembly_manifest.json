@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.20_Atomic_Physics",
+  "manifest_id": "AT20-PREDICTIVE-V1-BASIS-ASSEMBLY-MANIFEST",
+  "purpose": "Define the fixed-CI/correlated basis-assembly contract for the first operator lane before any accepted correlated kernel exists.",
+  "status": "BASIS_ASSEMBLY_CONTRACT_READY_IMPLEMENTATION_MISSING",
+  "selected_lane_id": "fixed_parameter_ci_or_correlated_two_electron_v1",
+  "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction",
+  "target_module": {
+    "path": "Code/03_Research/Research_Atomic_Operator_V1.py",
+    "required_entrypoint": "get_fixed_ci_basis_assembly_contract"
+  },
+  "required_contract_fields": [
+    "assembly_status",
+    "basis_family_id",
+    "convergence_policy_id",
+    "required_inputs",
+    "blocked_claims"
+  ],
+  "required_inputs": [
+    "source-locked helium ground-state energy anchors",
+    "source-locked excited-state target rows",
+    "declared basis/model family",
+    "locked basis size or convergence policy",
+    "locked constants and unit conversions"
+  ],
+  "required_checks": [
+    {
+      "check_id": "BASIS-01",
+      "requirement": "The target module exposes the basis-assembly contract entrypoint."
+    },
+    {
+      "check_id": "BASIS-02",
+      "requirement": "The reported basis family aligns with the fixed-CI implementation declaration."
+    },
+    {
+      "check_id": "BASIS-03",
+      "requirement": "The reported convergence policy aligns with the fixed-CI implementation declaration."
+    },
+    {
+      "check_id": "BASIS-04",
+      "requirement": "The contract lists the required fixed-CI inputs explicitly rather than leaving them implicit."
+    },
+    {
+      "check_id": "BASIS-05",
+      "requirement": "The contract still states that runnable basis assembly is missing, so no accepted correlated kernel claim is allowed."
+    }
+  ],
+  "claim_boundary": "This manifest defines the fixed-CI basis-assembly contract only. It does not assemble a correlated basis or implement a correction operator."
+}

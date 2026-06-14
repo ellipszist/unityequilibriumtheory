@@ -13,6 +13,27 @@ import json
 from pathlib import Path
 
 
+def get_fixed_ci_basis_assembly_contract() -> dict:
+    """Describe the current fixed-CI basis-assembly contract without claiming assembly exists."""
+    return {
+        "assembly_status": "CONTRACT_ONLY_IMPLEMENTATION_MISSING",
+        "basis_family_id": "correlated_two_electron_variational_ci_family_review_target",
+        "convergence_policy_id": "fixed_ci_basis_lock_before_holdout_v1",
+        "required_inputs": [
+            "source-locked helium ground-state energy anchors",
+            "source-locked excited-state target rows",
+            "declared basis/model family",
+            "locked basis size or convergence policy",
+            "locked constants and unit conversions",
+        ],
+        "blocked_claims": [
+            "basis assembly contract means a correlated basis has been assembled",
+            "declared family and convergence policy are accepted correlated results",
+            "fixed-CI kernel exists before basis assembly emits usable states or matrices",
+        ],
+    }
+
+
 def get_current_kernel_contract() -> dict:
     """Describe the current kernel-level state without pretending the core operator exists."""
     return {
@@ -20,6 +41,9 @@ def get_current_kernel_contract() -> dict:
         "kernel_status": "MISSING_IMPLEMENTATION_DECLARED",
         "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction",
         "implementation_mode": "diagnostic_export_wrapper_only",
+        "ready_scaffolds": [
+            "fixed_ci_basis_assembly_contract"
+        ],
         "missing_core_components": [
             "fixed_ci_or_correlated_basis_assembly",
             "hamiltonian_or_effective_operator_evaluation",
@@ -125,6 +149,7 @@ def run_atomic_operator_v1(
 ) -> dict:
     """Return the current operator-v1 gate without accepting a correction operator."""
     kernel_contract = get_current_kernel_contract()
+    basis_assembly_contract = get_fixed_ci_basis_assembly_contract()
     residual_rows = _diagnostic_residual_rows(helium_holdout_predictions, baseline_constants)
     baseline_residuals = [
         row["baseline_absolute_residual_eV"]
@@ -147,6 +172,7 @@ def run_atomic_operator_v1(
         "accepted_as_delta_uet_or_ci": False,
         "execution_mode": "diagnostic_export_only",
         "kernel_contract": kernel_contract,
+        "basis_assembly_contract": basis_assembly_contract,
         "residual_rows": residual_rows,
         "metrics": {
             "residual_row_count": len(residual_rows),
@@ -199,6 +225,7 @@ def run_atomic_operator_v1(
             "accepted_as_delta_uet_or_ci": False,
             "execution_mode": "diagnostic_export_only",
             "kernel_contract": kernel_contract,
+            "basis_assembly_contract": basis_assembly_contract,
             "residual_rows": residual_rows,
             "metrics": residual_artifact["metrics"],
             "blocked_claims": [

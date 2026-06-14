@@ -1,6 +1,23 @@
 {
   "accepted_as_delta_uet_or_ci": false,
   "artifact_id": "atomic_predictive_v1_operator_residual_rows",
+  "basis_assembly_contract": {
+    "assembly_status": "CONTRACT_ONLY_IMPLEMENTATION_MISSING",
+    "basis_family_id": "correlated_two_electron_variational_ci_family_review_target",
+    "blocked_claims": [
+      "basis assembly contract means a correlated basis has been assembled",
+      "declared family and convergence policy are accepted correlated results",
+      "fixed-CI kernel exists before basis assembly emits usable states or matrices"
+    ],
+    "convergence_policy_id": "fixed_ci_basis_lock_before_holdout_v1",
+    "required_inputs": [
+      "source-locked helium ground-state energy anchors",
+      "source-locked excited-state target rows",
+      "declared basis/model family",
+      "locked basis size or convergence policy",
+      "locked constants and unit conversions"
+    ]
+  },
   "claim_boundary": "Rows exported here are same-source-family diagnostic residual rows. They do not implement or validate delta_uet_or_ci.",
   "claim_class": "diagnostic_residual_rows_no_validation_claim",
   "execution_mode": "diagnostic_export_only",
@@ -18,6 +35,9 @@
       "hamiltonian_or_effective_operator_evaluation",
       "parameterized_correction_emission_as_delta_uet_or_ci",
       "row_level_uncertainty_from_accepted_operator"
+    ],
+    "ready_scaffolds": [
+      "fixed_ci_basis_assembly_contract"
     ],
     "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction"
   },
