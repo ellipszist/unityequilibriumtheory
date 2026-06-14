@@ -59,6 +59,9 @@ forward at once:
 3. use one pilot topic to prove the updated workflow before rolling it out more
    broadly
 
+Treat this as the default acceleration path when progress feels slow across
+many topics. Shared workflow clarity should compound before topic count does.
+
 When the repository is moving across many topics at once, prefer a status-first
 workflow before starting new edits:
 
@@ -67,6 +70,10 @@ workflow before starting new edits:
 3. inspect the current verifier artifact and any machine-readable blocker gates
 4. inspect the topic `UPDATE_LOG.md` when the work spans multiple waves
 5. summarize the current blocker chain before proposing promotion, publication, or rewrite
+
+If these sources disagree, treat the latest stable verifier artifact and
+machine-readable blocker gate as the controlling state for the current pass,
+then repair documentation drift afterward.
 
 ## Start here
 
@@ -196,6 +203,9 @@ Use an `UPDATE_LOG.md` when:
 - blocker wording changes over time and needs a durable trail
 - a verifier is rerun repeatedly and the result needs short historical context
 
+The latest completed entry should make the next controlling blocker obvious to
+a new reviewer without requiring diff reconstruction first.
+
 An update log should record:
 
 - what changed in that wave
@@ -203,6 +213,7 @@ An update log should record:
 - which blocker narrowed or stayed controlling
 - whether claim wording changed or stayed the same
 - what exact next blocker remains
+- what currently controls the topic-level state after that wave
 
 An update log should not:
 
@@ -214,6 +225,14 @@ An update log should not:
 When a topic is being hardened across many short waves, prefer one concise
 entry per completed wave over batching several blocker changes into one large
 retroactive summary.
+
+Recommended sequence for repeated waves:
+
+1. change artifact, manifest, gate, or verifier logic first
+2. rerun the verifier only when the evidence-producing state changed
+3. sync topic docs to the new blocker boundary
+4. write one concise update-log entry
+5. commit the scoped wave before starting the next one
 
 ## Git workflow
 

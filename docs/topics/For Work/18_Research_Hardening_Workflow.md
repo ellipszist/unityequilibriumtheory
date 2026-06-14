@@ -173,6 +173,40 @@ Use the following pattern for one hardening pass:
 This is the preferred way to speed up a difficult topic without losing audit
 traceability.
 
+## Status reconstruction before a wave
+
+Before choosing the next blocker, reconstruct the current topic state from
+local evidence instead of prose memory.
+
+Use this order:
+
+1. root topic status sources such as `docs/topics/README.md` and relevant
+   `docs/meta/` records
+2. local `README.md`, `LIMITATIONS.md`, and `VERIFICATION_SPEC.md`
+3. latest verifier artifact
+4. machine-readable blocker gates, manifests, and dependency records
+5. local `UPDATE_LOG.md` when the topic has already gone through several waves
+
+If the sources disagree, do not average them together. Treat the latest stable
+artifact and blocker gate wording as the controlling state for the current
+pass, then bring documentation back into alignment.
+
+## Multi-topic hardening strategy
+
+When several topics are blocked at once, improve the shared workflow before
+trying to deeply advance every topic in parallel.
+
+Use this order:
+
+1. identify the repeated ambiguity slowing several topics
+2. tighten the shared rule in `For Work` or the repository guide
+3. require one machine-readable blocker per active topic
+4. prove the updated workflow in one pilot topic
+5. roll the pattern out only after the pilot stays auditable
+
+This is the standard way to increase research throughput without weakening
+claim discipline.
+
 ## What to optimize for
 
 In a difficult topic, the goal of a wave is usually one of these:
@@ -250,6 +284,8 @@ Minimum expectation for a multi-wave topic:
 - entries written after real work, not before
 - verifier commands listed only when actually run
 - blocker wording aligned with the artifact or gate wording
+- the latest entry must make the next controlling blocker obvious to a new
+  reviewer
 
 ## Anti-patterns
 
