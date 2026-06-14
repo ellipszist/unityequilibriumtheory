@@ -60,7 +60,8 @@
     ],
     "ready_scaffolds": [
       "fixed_ci_basis_assembly_contract",
-      "hamiltonian_effective_operator_contract"
+      "hamiltonian_effective_operator_contract",
+      "parameterized_correction_emission_contract"
     ],
     "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction"
   },
@@ -79,6 +80,28 @@
     "residual_row_count": 3,
     "uncertainty_computable_row_count": 3,
     "used_for_parameter_fit_count": 0
+  },
+  "parameterized_correction_emission_contract": {
+    "blocked_claims": [
+      "declaring the emission contract means accepted delta_uet_or_ci rows exist",
+      "delta_uet_or_ci naming means the current diagnostic exporter is an accepted operator",
+      "accepted claim-use can exist before the emission contract produces it"
+    ],
+    "emission_status": "CONTRACT_ONLY_IMPLEMENTATION_MISSING",
+    "emitted_operator_id": "delta_uet_or_ci",
+    "required_inputs": [
+      "evaluated Hamiltonian or effective-operator outputs",
+      "locked parameter set or explicit review-only placeholder policy",
+      "row-level observable targets and baseline comparator context",
+      "holdout-excluded emission policy",
+      "machine-readable uncertainty handoff status"
+    ],
+    "required_outputs": [
+      "accepted-or-diagnostic delta_uet_or_ci row values",
+      "claim-use classification for every emitted row",
+      "row-level provenance linking emission to source inputs and operator state"
+    ],
+    "upstream_evaluation_dependency_id": "hamiltonian_effective_operator_contract"
   },
   "residual_rows": [
     {

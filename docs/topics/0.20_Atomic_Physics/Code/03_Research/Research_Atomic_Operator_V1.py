@@ -60,6 +60,32 @@ def get_hamiltonian_effective_operator_contract() -> dict:
     }
 
 
+def get_parameterized_correction_emission_contract() -> dict:
+    """Describe the current delta_uet_or_ci emission contract without claiming accepted emission exists."""
+    return {
+        "emission_status": "CONTRACT_ONLY_IMPLEMENTATION_MISSING",
+        "upstream_evaluation_dependency_id": "hamiltonian_effective_operator_contract",
+        "emitted_operator_id": "delta_uet_or_ci",
+        "required_inputs": [
+            "evaluated Hamiltonian or effective-operator outputs",
+            "locked parameter set or explicit review-only placeholder policy",
+            "row-level observable targets and baseline comparator context",
+            "holdout-excluded emission policy",
+            "machine-readable uncertainty handoff status",
+        ],
+        "required_outputs": [
+            "accepted-or-diagnostic delta_uet_or_ci row values",
+            "claim-use classification for every emitted row",
+            "row-level provenance linking emission to source inputs and operator state",
+        ],
+        "blocked_claims": [
+            "declaring the emission contract means accepted delta_uet_or_ci rows exist",
+            "delta_uet_or_ci naming means the current diagnostic exporter is an accepted operator",
+            "accepted claim-use can exist before the emission contract produces it",
+        ],
+    }
+
+
 def get_current_kernel_contract() -> dict:
     """Describe the current kernel-level state without pretending the core operator exists."""
     return {
@@ -70,6 +96,7 @@ def get_current_kernel_contract() -> dict:
         "ready_scaffolds": [
             "fixed_ci_basis_assembly_contract",
             "hamiltonian_effective_operator_contract",
+            "parameterized_correction_emission_contract",
         ],
         "missing_core_components": [
             "fixed_ci_or_correlated_basis_assembly",
@@ -178,6 +205,7 @@ def run_atomic_operator_v1(
     kernel_contract = get_current_kernel_contract()
     basis_assembly_contract = get_fixed_ci_basis_assembly_contract()
     hamiltonian_effective_operator_contract = get_hamiltonian_effective_operator_contract()
+    parameterized_correction_emission_contract = get_parameterized_correction_emission_contract()
     residual_rows = _diagnostic_residual_rows(helium_holdout_predictions, baseline_constants)
     baseline_residuals = [
         row["baseline_absolute_residual_eV"]
@@ -202,6 +230,7 @@ def run_atomic_operator_v1(
         "kernel_contract": kernel_contract,
         "basis_assembly_contract": basis_assembly_contract,
         "hamiltonian_effective_operator_contract": hamiltonian_effective_operator_contract,
+        "parameterized_correction_emission_contract": parameterized_correction_emission_contract,
         "residual_rows": residual_rows,
         "metrics": {
             "residual_row_count": len(residual_rows),
@@ -256,6 +285,7 @@ def run_atomic_operator_v1(
             "kernel_contract": kernel_contract,
             "basis_assembly_contract": basis_assembly_contract,
             "hamiltonian_effective_operator_contract": hamiltonian_effective_operator_contract,
+            "parameterized_correction_emission_contract": parameterized_correction_emission_contract,
             "residual_rows": residual_rows,
             "metrics": residual_artifact["metrics"],
             "blocked_claims": [

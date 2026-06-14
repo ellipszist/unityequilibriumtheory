@@ -82,6 +82,12 @@ ATOMIC_PREDICTIVE_V1_BASIS_ASSEMBLY_MANIFEST_PATH = (
 ATOMIC_PREDICTIVE_V1_HAMILTONIAN_EFFECTIVE_OPERATOR_MANIFEST_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_hamiltonian_effective_operator_manifest.json"
 )
+ATOMIC_PREDICTIVE_V1_PARAMETERIZED_CORRECTION_EMISSION_MANIFEST_PATH = (
+    TOPIC_DIR
+    / "Data"
+    / "03_Research"
+    / "atomic_predictive_v1_parameterized_correction_emission_manifest.json"
+)
 ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETERS_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_parameters.json"
 )
@@ -5115,6 +5121,134 @@ def build_atomic_predictive_v1_hamiltonian_effective_operator_gate(
         },
         "claim_boundary": hamiltonian_manifest.get("claim_boundary"),
     }
+
+
+def build_atomic_predictive_v1_parameterized_correction_emission_gate(
+    correction_emission_manifest: dict,
+    hamiltonian_manifest: dict,
+    atomic_predictive_v1_operator_residual_gate: dict,
+) -> dict:
+    ready_scaffolds = (
+        atomic_predictive_v1_operator_residual_gate.get("kernel_contract", {}).get("ready_scaffolds", [])
+    )
+    module_emission_contract = atomic_predictive_v1_operator_residual_gate.get(
+        "parameterized_correction_emission_contract"
+    )
+    hamiltonian_contract = atomic_predictive_v1_operator_residual_gate.get(
+        "hamiltonian_effective_operator_contract", {}
+    )
+    required_inputs = correction_emission_manifest.get("required_inputs", [])
+    required_outputs = correction_emission_manifest.get("required_outputs", [])
+    reported_inputs = (module_emission_contract or {}).get("required_inputs", [])
+    reported_outputs = (module_emission_contract or {}).get("required_outputs", [])
+    missing_inputs = [item for item in required_inputs if item not in reported_inputs]
+    missing_outputs = [item for item in required_outputs if item not in reported_outputs]
+    checks = [
+        {
+            "check_id": "EMIT-01",
+            "requirement": "The target module exposes the parameterized correction-emission contract entrypoint.",
+            "status": "PASS" if module_emission_contract else "BLOCKED_CORRECTION_EMISSION_CONTRACT_MISSING",
+            "evidence": {
+                "contract_present": bool(module_emission_contract),
+                "ready_scaffolds": ready_scaffolds,
+            },
+        },
+        {
+            "check_id": "EMIT-02",
+            "requirement": "The contract explicitly depends on the Hamiltonian/effective-operator scaffold instead of skipping evaluation provenance.",
+            "status": "PASS"
+            if (module_emission_contract or {}).get("upstream_evaluation_dependency_id")
+            == hamiltonian_manifest.get("target_module", {}).get("required_entrypoint", "").replace("get_", "")
+            else "BLOCKED_EVALUATION_DEPENDENCY_MISMATCH",
+            "evidence": {
+                "reported_upstream_evaluation_dependency_id": (module_emission_contract or {}).get(
+                    "upstream_evaluation_dependency_id"
+                ),
+                "expected_upstream_evaluation_dependency_id": hamiltonian_manifest.get(
+                    "target_module", {}
+                )
+                .get("required_entrypoint", "")
+                .replace("get_", ""),
+                "hamiltonian_contract_status": hamiltonian_contract.get("evaluation_status"),
+            },
+        },
+        {
+            "check_id": "EMIT-03",
+            "requirement": "The contract explicitly names delta_uet_or_ci as the emitted operator target.",
+            "status": "PASS"
+            if (module_emission_contract or {}).get("emitted_operator_id") == "delta_uet_or_ci"
+            else "BLOCKED_EMITTED_OPERATOR_ID_MISMATCH",
+            "evidence": {
+                "reported_emitted_operator_id": (module_emission_contract or {}).get("emitted_operator_id"),
+                "expected_emitted_operator_id": "delta_uet_or_ci",
+            },
+        },
+        {
+            "check_id": "EMIT-04",
+            "requirement": "The contract lists required inputs and outputs explicitly rather than leaving emission expectations implicit.",
+            "status": "PASS"
+            if not missing_inputs and not missing_outputs
+            else "BLOCKED_EMISSION_INPUT_OUTPUT_CONTRACT_INCOMPLETE",
+            "evidence": {
+                "required_inputs": required_inputs,
+                "reported_inputs": reported_inputs,
+                "missing_inputs": missing_inputs,
+                "required_outputs": required_outputs,
+                "reported_outputs": reported_outputs,
+                "missing_outputs": missing_outputs,
+            },
+        },
+        {
+            "check_id": "EMIT-05",
+            "requirement": "The contract still states that accepted correction emission is not implemented, so diagnostic rows cannot be upgraded into accepted delta_uet_or_ci output.",
+            "status": "PASS"
+            if (module_emission_contract or {}).get("emission_status")
+            == "CONTRACT_ONLY_IMPLEMENTATION_MISSING"
+            else "BLOCKED_EMISSION_STATUS_NOT_EXPLICIT",
+            "evidence": {
+                "reported_emission_status": (module_emission_contract or {}).get("emission_status"),
+                "kernel_missing_components": atomic_predictive_v1_operator_residual_gate.get(
+                    "kernel_contract", {}
+                ).get("missing_core_components"),
+            },
+        },
+    ]
+    blocking_count = sum(1 for row in checks if row["status"].startswith("BLOCKED"))
+    pass_count = sum(1 for row in checks if row["status"] == "PASS")
+    status = (
+        "CORRECTION_EMISSION_CONTRACT_READY_IMPLEMENTATION_MISSING"
+        if blocking_count == 0
+        else "CORRECTION_EMISSION_CONTRACT_BLOCKED"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_predictive_v1_parameterized_correction_emission_gate",
+        "status": status,
+        "claim_class": "correction_emission_contract_no_validation_claim",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-PARAMETERIZED-CORRECTION-EMISSION",
+        "manifest": {
+            "path": str(
+                ATOMIC_PREDICTIVE_V1_PARAMETERIZED_CORRECTION_EMISSION_MANIFEST_PATH.relative_to(
+                    TOPIC_DIR
+                )
+            ).replace("\\", "/"),
+            "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_PARAMETERIZED_CORRECTION_EMISSION_MANIFEST_PATH),
+            "manifest_id": correction_emission_manifest.get("manifest_id"),
+            "status": correction_emission_manifest.get("status"),
+        },
+        "parameterized_correction_emission_contract": module_emission_contract,
+        "checks": checks,
+        "metrics": {
+            "correction_emission_check_count": len(checks),
+            "correction_emission_check_pass_count": pass_count,
+            "correction_emission_check_blocking_count": blocking_count,
+            "required_input_count": len(required_inputs),
+            "reported_input_count": len(reported_inputs),
+            "required_output_count": len(required_outputs),
+            "reported_output_count": len(reported_outputs),
+        },
+        "claim_boundary": correction_emission_manifest.get("claim_boundary"),
+    }
 def build_atomic_predictive_v1_operator_parameter_acceptance_preflight_gate(
     operator_parameter_preflight_manifest: dict,
     operator_parameters_manifest: dict,
@@ -7260,6 +7394,9 @@ def run_rydberg_analysis():
     atomic_predictive_v1_hamiltonian_effective_operator_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_HAMILTONIAN_EFFECTIVE_OPERATOR_MANIFEST_PATH
     )
+    atomic_predictive_v1_parameterized_correction_emission_manifest = load_json(
+        ATOMIC_PREDICTIVE_V1_PARAMETERIZED_CORRECTION_EMISSION_MANIFEST_PATH
+    )
     atomic_predictive_v1_operator_parameters_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETERS_PATH
     )
@@ -7564,6 +7701,13 @@ def run_rydberg_analysis():
         build_atomic_predictive_v1_hamiltonian_effective_operator_gate(
             atomic_predictive_v1_hamiltonian_effective_operator_manifest,
             atomic_predictive_v1_basis_assembly_manifest,
+            atomic_predictive_v1_operator_residual_gate,
+        )
+    )
+    atomic_predictive_v1_parameterized_correction_emission_gate = (
+        build_atomic_predictive_v1_parameterized_correction_emission_gate(
+            atomic_predictive_v1_parameterized_correction_emission_manifest,
+            atomic_predictive_v1_hamiltonian_effective_operator_manifest,
             atomic_predictive_v1_operator_residual_gate,
         )
     )
@@ -7942,6 +8086,7 @@ def run_rydberg_analysis():
             "AT20-ATOMIC-PREDICTIVE-V1-KERNEL-INTERFACE",
             "AT20-ATOMIC-PREDICTIVE-V1-BASIS-ASSEMBLY",
             "AT20-ATOMIC-PREDICTIVE-V1-HAMILTONIAN-EFFECTIVE-OPERATOR",
+            "AT20-ATOMIC-PREDICTIVE-V1-PARAMETERIZED-CORRECTION-EMISSION",
             "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-PARAMETER-PREFLIGHT",
             "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
             "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
@@ -8243,6 +8388,36 @@ def run_rydberg_analysis():
                     "reported_output_count"
                 ]
             ),
+            "atomic_predictive_v1_correction_emission_checks": (
+                atomic_predictive_v1_parameterized_correction_emission_gate["metrics"][
+                    "correction_emission_check_count"
+                ]
+            ),
+            "atomic_predictive_v1_correction_emission_blocking_checks": (
+                atomic_predictive_v1_parameterized_correction_emission_gate["metrics"][
+                    "correction_emission_check_blocking_count"
+                ]
+            ),
+            "atomic_predictive_v1_correction_emission_required_inputs": (
+                atomic_predictive_v1_parameterized_correction_emission_gate["metrics"][
+                    "required_input_count"
+                ]
+            ),
+            "atomic_predictive_v1_correction_emission_reported_inputs": (
+                atomic_predictive_v1_parameterized_correction_emission_gate["metrics"][
+                    "reported_input_count"
+                ]
+            ),
+            "atomic_predictive_v1_correction_emission_required_outputs": (
+                atomic_predictive_v1_parameterized_correction_emission_gate["metrics"][
+                    "required_output_count"
+                ]
+            ),
+            "atomic_predictive_v1_correction_emission_reported_outputs": (
+                atomic_predictive_v1_parameterized_correction_emission_gate["metrics"][
+                    "reported_output_count"
+                ]
+            ),
             "atomic_predictive_v1_operator_parameter_preflight_parameter_sets": (
                 atomic_predictive_v1_operator_parameter_acceptance_preflight_gate["metrics"][
                     "parameter_set_count"
@@ -8450,6 +8625,9 @@ def run_rydberg_analysis():
     )
     artifact["atomic_predictive_v1_hamiltonian_effective_operator_gate"] = (
         atomic_predictive_v1_hamiltonian_effective_operator_gate
+    )
+    artifact["atomic_predictive_v1_parameterized_correction_emission_gate"] = (
+        atomic_predictive_v1_parameterized_correction_emission_gate
     )
     artifact["atomic_predictive_v1_operator_training_holdout_split_gate"] = (
         atomic_predictive_v1_operator_training_holdout_split_gate
