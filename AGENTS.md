@@ -62,6 +62,11 @@ forward at once:
 Treat this as the default acceleration path when progress feels slow across
 many topics. Shared workflow clarity should compound before topic count does.
 
+When a collaborator asks for "overall progress" or "what changed lately,"
+prefer reconstructing status from current artifacts, manifests, and update logs
+instead of giving a prose-memory summary. The goal is to make repo-wide status
+readable without guessing.
+
 When the repository is moving across many topics at once, prefer a status-first
 workflow before starting new edits:
 
@@ -74,6 +79,11 @@ workflow before starting new edits:
 If these sources disagree, treat the latest stable verifier artifact and
 machine-readable blocker gate as the controlling state for the current pass,
 then repair documentation drift afterward.
+
+If a topic package does not yet expose its current blocker chain clearly enough
+to answer a status question, the next useful action is usually to add or tighten
+one machine-readable gate and record the wave in `UPDATE_LOG.md` before trying
+to advance the claim.
 
 ## Start here
 
@@ -233,6 +243,19 @@ Recommended sequence for repeated waves:
 3. sync topic docs to the new blocker boundary
 4. write one concise update-log entry
 5. commit the scoped wave before starting the next one
+
+When a repeated ambiguity appears across several topics, prefer updating
+`AGENTS.md` or the relevant `docs/topics/For Work/` standard close to the same
+time so the improved method becomes reusable rather than living only in one
+topic's local fixes.
+
+For repo-wide status requests, a good reconstruction order is:
+
+1. `docs/topics/README.md` and relevant `docs/meta/` records
+2. the local topic package (`README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`)
+3. the latest stable verifier artifact
+4. blocker manifests or gate JSON files
+5. `UPDATE_LOG.md` for wave history and next-controller context
 
 ## Git workflow
 
