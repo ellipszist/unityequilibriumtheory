@@ -62,6 +62,20 @@ forward at once:
 Treat this as the default acceleration path when progress feels slow across
 many topics. Shared workflow clarity should compound before topic count does.
 
+When progress feels slow because a topic keeps producing more prose than
+closure, add structure before adding scope:
+
+1. identify the single controlling blocker that still decides the topic state
+2. require that blocker to exist in a machine-readable gate, manifest, or
+   artifact field
+3. require the local `UPDATE_LOG.md` to say what changed, what was rerun, and
+   what still controls the topic now
+4. do not start the next blocker wave until the current controller is visible
+   in both artifact state and log state
+
+This is the default anti-drift rule for repeated hardening work. The aim is to
+stop a topic from feeling busy while remaining ambiguous.
+
 When a collaborator asks for "overall progress" or "what changed lately,"
 prefer reconstructing status from current artifacts, manifests, and update logs
 instead of giving a prose-memory summary. The goal is to make repo-wide status
@@ -84,6 +98,16 @@ If a topic package does not yet expose its current blocker chain clearly enough
 to answer a status question, the next useful action is usually to add or tighten
 one machine-readable gate and record the wave in `UPDATE_LOG.md` before trying
 to advance the claim.
+
+If several topics look stalled at the same time, do not spread effort evenly by
+default. Prefer this order:
+
+1. update the shared workflow rule that would remove repeated ambiguity
+2. require status-first reconstruction and update-log discipline on active topics
+3. prove the revised method on one pilot topic
+4. only then expand the same pattern to adjacent topics
+
+This keeps acceleration real instead of cosmetic.
 
 ## Start here
 
@@ -243,6 +267,16 @@ Recommended sequence for repeated waves:
 3. sync topic docs to the new blocker boundary
 4. write one concise update-log entry
 5. commit the scoped wave before starting the next one
+
+For repeated hardening, each completed log entry should make these three things
+recoverable in under a minute:
+
+1. what exact artifact or gate changed
+2. what exact blocker became narrower
+3. what exact blocker now controls the next wave
+
+If an entry cannot answer those three questions, tighten the entry before
+treating the wave as complete.
 
 When a repeated ambiguity appears across several topics, prefer updating
 `AGENTS.md` or the relevant `docs/topics/For Work/` standard close to the same

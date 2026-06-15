@@ -21,6 +21,8 @@ and what remains blocked.
 - One entry should usually correspond to one coherent hardening wave.
 - The latest completed entry should tell a new reviewer what the next
   controlling blocker is without needing to inspect git history first.
+- Each completed entry should make three things easy to recover: what changed,
+  what blocker narrowed, and what blocker now controls the next wave.
 
 ## Recommended use in repeated waves
 
@@ -34,6 +36,11 @@ Recommended pattern:
 3. sync topic docs to the new blocker boundary
 4. write one concise log entry
 5. commit the wave as a scoped unit
+
+If the same ambiguity appears in several topics, update the shared workflow
+standard near the same time and record that linkage briefly in the topic log.
+That helps later reviewers understand whether the wave was topic-deepening work
+or workflow-repair work.
 
 Do not backfill a long series of vague entries after the fact if the artifact
 history can no longer support them clearly.

@@ -173,6 +173,22 @@ Use the following pattern for one hardening pass:
 This is the preferred way to speed up a difficult topic without losing audit
 traceability.
 
+## Wave completion rule
+
+Do not treat a hardening wave as complete just because new prose or new files
+exist.
+
+A wave is complete when all of these are true:
+
+1. the controlling blocker for that wave is narrower than before
+2. the narrower blocker is visible in a machine-readable artifact, gate, or
+   manifest
+3. topic docs reflect the new blocker boundary
+4. the local `UPDATE_LOG.md` states what now controls the next wave
+
+If those four conditions are not met, the topic may be busier but it is not yet
+harder in the research sense.
+
 ## Status reconstruction before a wave
 
 Before choosing the next blocker, reconstruct the current topic state from
@@ -206,6 +222,18 @@ Use this order:
 
 This is the standard way to increase research throughput without weakening
 claim discipline.
+
+## Progress reconstruction rule
+
+When a collaborator asks why progress feels slow, answer from blocker
+reconstruction first, not from file count, prose length, or time spent.
+
+Use this order:
+
+1. identify the current controlling blocker in the latest stable artifact or gate
+2. identify whether the last wave narrowed that blocker or only added context
+3. identify whether the local `UPDATE_LOG.md` makes the next controller explicit
+4. only then decide whether the topic needs deeper research or shared workflow repair
 
 ## What to optimize for
 

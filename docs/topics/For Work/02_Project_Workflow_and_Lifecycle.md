@@ -163,6 +163,23 @@ Use this order:
 This keeps effort compounding instead of repeatedly rediscovering the same
 workflow gaps.
 
+## Anti-drift rule for repeated hardening
+
+If a topic keeps growing in files or prose without making the blocker chain
+clearer, stop broadening the topic and restore a narrow wave loop.
+
+Require all of the following before starting the next wave:
+
+1. one machine-readable controlling blocker is named in the current artifact,
+   gate, or manifest
+2. the local `UPDATE_LOG.md` records what changed, what was rerun, and what
+   still controls the topic now
+3. the local `README.md`, `LIMITATIONS.md`, and `VERIFICATION_SPEC.md` do not
+   outrun that controlling blocker
+
+If any of these are missing, the next useful action is usually workflow repair,
+not more topic expansion.
+
 ## Status-first review rule
 
 Before starting a new hardening wave on a topic that already exists, reconstruct
@@ -190,6 +207,7 @@ These also count as valid progress:
 - a README is brought back under the artifact claim boundary
 - an update log makes the recent wave history reconstructable
 - a shared workflow rule removes the same ambiguity across multiple topics
+- a completed wave makes the next controlling blocker obvious without opening git history
 
 These do not count as readiness upgrades by themselves:
 
