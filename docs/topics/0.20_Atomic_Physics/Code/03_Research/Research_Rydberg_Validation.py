@@ -112,6 +112,12 @@ ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETER_CANDIDATE_PROMOTION_PATH = (
     / "03_Research"
     / "atomic_predictive_v1_operator_parameter_candidate_promotion.json"
 )
+ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_RECORD_MANIFEST_PATH = (
+    TOPIC_DIR
+    / "Data"
+    / "03_Research"
+    / "atomic_predictive_v1_operator_implementation_record_manifest.json"
+)
 ATOMIC_PREDICTIVE_V1_OPERATOR_CLASS_SELECTION_REVIEW_PATH = (
     TOPIC_DIR
     / "Data"
@@ -5882,6 +5888,157 @@ def build_atomic_predictive_v1_operator_class_selection_review_gate(
     }
 
 
+def build_atomic_predictive_v1_operator_implementation_record_gate(
+    implementation_record_manifest: dict,
+    operator_candidate_implementation_review_manifest: dict,
+    operator_class_selection_review_gate: dict,
+    operator_parameter_preflight_gate: dict,
+    atomic_predictive_v1_operator_acceptance_harness_gate: dict,
+    atomic_predictive_v1_fixed_correction_operator_gate: dict,
+) -> dict:
+    target_module_review = operator_candidate_implementation_review_manifest.get(
+        "target_module_review", {}
+    )
+    manifest_target_module = implementation_record_manifest.get("target_module", {})
+    target_module_path = TOPIC_DIR / manifest_target_module.get("path", "")
+    target_module_exists = target_module_path.exists()
+    target_module_sha256 = file_sha256(target_module_path) if target_module_exists else None
+    current_selected_operator_class = operator_class_selection_review_gate.get(
+        "current_selected_operator_class"
+    )
+    selected_operator_class = implementation_record_manifest.get("selected_operator_class")
+    parameter_sets = operator_parameter_preflight_gate.get("parameter_sets", [])
+    matching_parameter_sets = [
+        row
+        for row in parameter_sets
+        if row.get("operator_class") == selected_operator_class
+        and row.get("locked_before_holdout_evaluation") is True
+    ]
+    accepted_operator_count = atomic_predictive_v1_fixed_correction_operator_gate["metrics"][
+        "accepted_operator_count"
+    ]
+    checks = [
+        {
+            "check_id": "IMPL-01",
+            "requirement": "The review record points to the current target module and required entrypoint.",
+            "status": "PASS"
+            if target_module_review.get("path") == manifest_target_module.get("path")
+            and target_module_review.get("required_entrypoint")
+            == manifest_target_module.get("required_entrypoint")
+            and atomic_predictive_v1_operator_acceptance_harness_gate.get("target_module", {}).get(
+                "entrypoint_present"
+            )
+            else "BLOCKED_TARGET_MODULE_REVIEW_MISMATCH",
+            "evidence": {
+                "manifest_target_module_path": manifest_target_module.get("path"),
+                "review_target_module_path": target_module_review.get("path"),
+                "manifest_required_entrypoint": manifest_target_module.get("required_entrypoint"),
+                "review_required_entrypoint": target_module_review.get("required_entrypoint"),
+                "runtime_entrypoint_present": atomic_predictive_v1_operator_acceptance_harness_gate.get(
+                    "target_module", {}
+                ).get("entrypoint_present"),
+            },
+        },
+        {
+            "check_id": "IMPL-02",
+            "requirement": "The selected operator class matches the current class-selection review.",
+            "status": "PASS"
+            if current_selected_operator_class == selected_operator_class
+            else "BLOCKED_SELECTED_OPERATOR_CLASS_MISMATCH",
+            "evidence": {
+                "manifest_selected_operator_class": selected_operator_class,
+                "current_selected_operator_class": current_selected_operator_class,
+            },
+        },
+        {
+            "check_id": "IMPL-03",
+            "requirement": "A runtime source hash can be computed for the target module used in review.",
+            "status": "PASS"
+            if target_module_exists
+            and target_module_sha256
+            and atomic_predictive_v1_operator_acceptance_harness_gate.get("target_module", {}).get(
+                "return_key_present"
+            )
+            else "BLOCKED_TARGET_MODULE_HASH_OR_RETURN_KEY_MISSING",
+            "evidence": {
+                "target_module_exists": target_module_exists,
+                "target_module_sha256": target_module_sha256,
+                "required_return_key": manifest_target_module.get("required_return_key"),
+                "runtime_return_key_present": atomic_predictive_v1_operator_acceptance_harness_gate.get(
+                    "target_module", {}
+                ).get("return_key_present"),
+            },
+        },
+        {
+            "check_id": "IMPL-04",
+            "requirement": "At least one locked review-only parameter set exists for the selected class.",
+            "status": "PASS"
+            if matching_parameter_sets
+            and operator_parameter_preflight_gate.get("status")
+            == "PARAMETER_PREFLIGHT_READY_FOR_OPERATOR_ACCEPTANCE"
+            else "BLOCKED_REVIEW_ONLY_PARAMETER_SET_MISSING",
+            "evidence": {
+                "matching_parameter_set_count": len(matching_parameter_sets),
+                "parameter_preflight_status": operator_parameter_preflight_gate.get("status"),
+            },
+        },
+        {
+            "check_id": "IMPL-05",
+            "requirement": "The record still states that the operator is not accepted, so implementation identity cannot be confused with accepted provenance.",
+            "status": "PASS"
+            if accepted_operator_count == 0
+            and operator_candidate_implementation_review_manifest.get("status")
+            == "CANDIDATE_IMPLEMENTATION_REVIEW_READY_ACCEPTED_OPERATOR_MISSING"
+            else "BLOCKED_ACCEPTED_OPERATOR_STATE_NOT_EXPLICIT",
+            "evidence": {
+                "accepted_operator_count": accepted_operator_count,
+                "candidate_review_status": operator_candidate_implementation_review_manifest.get("status"),
+            },
+        },
+    ]
+    blocking_count = sum(1 for row in checks if row["status"].startswith("BLOCKED"))
+    pass_count = sum(1 for row in checks if row["status"] == "PASS")
+    status = (
+        "IMPLEMENTATION_RECORD_READY_ACCEPTED_OPERATOR_MISSING"
+        if blocking_count == 0
+        else "IMPLEMENTATION_RECORD_BLOCKED"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_predictive_v1_operator_implementation_record_gate",
+        "status": status,
+        "claim_class": "operator_implementation_record_no_validation_claim",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-IMPLEMENTATION-RECORD",
+        "manifest": {
+            "path": str(
+                ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_RECORD_MANIFEST_PATH.relative_to(
+                    TOPIC_DIR
+                )
+            ).replace("\\", "/"),
+            "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_RECORD_MANIFEST_PATH),
+            "manifest_id": implementation_record_manifest.get("manifest_id"),
+            "status": implementation_record_manifest.get("status"),
+        },
+        "implementation_record": {
+            "selected_operator_class": selected_operator_class,
+            "target_module_path": manifest_target_module.get("path"),
+            "target_module_sha256": target_module_sha256,
+            "required_entrypoint": manifest_target_module.get("required_entrypoint"),
+            "required_return_key": manifest_target_module.get("required_return_key"),
+            "matching_review_only_parameter_set_count": len(matching_parameter_sets),
+        },
+        "checks": checks,
+        "metrics": {
+            "implementation_record_check_count": len(checks),
+            "implementation_record_check_pass_count": pass_count,
+            "implementation_record_check_blocking_count": blocking_count,
+            "matching_review_only_parameter_set_count": len(matching_parameter_sets),
+            "accepted_operator_count": accepted_operator_count,
+        },
+        "claim_boundary": implementation_record_manifest.get("claim_boundary"),
+    }
+
+
 def build_atomic_predictive_v1_operator_training_holdout_split_gate(
     operator_training_holdout_split_manifest: dict,
 ) -> dict:
@@ -5939,6 +6096,7 @@ def build_atomic_predictive_v1_operator_training_holdout_split_gate(
 def build_atomic_predictive_v1_operator_implementation_provenance_gate(
     operator_implementation_provenance_manifest: dict,
     operator_candidate_implementation_review_manifest: dict,
+    atomic_predictive_v1_operator_implementation_record_gate: dict,
     atomic_predictive_v1_operator_training_holdout_split_gate: dict,
     atomic_predictive_v1_operator_parameter_acceptance_preflight_gate: dict,
     atomic_predictive_v1_operator_acceptance_harness_gate: dict,
@@ -6033,24 +6191,20 @@ def build_atomic_predictive_v1_operator_implementation_provenance_gate(
             if accepted_operator_count > 0 and evidence_exists:
                 status = "PRESENT"
             elif (
-                candidate_review_exists
-                and target_module_exists
-                and atomic_predictive_v1_operator_acceptance_harness_gate["target_module"].get(
-                    "entrypoint_present"
-                )
-                and atomic_predictive_v1_operator_acceptance_harness_gate["target_module"].get(
-                    "return_key_present"
-                )
+                atomic_predictive_v1_operator_implementation_record_gate.get("status")
+                == "IMPLEMENTATION_RECORD_READY_ACCEPTED_OPERATOR_MISSING"
             ):
-                status = "BLOCKING_ACCEPTED_OPERATOR_CLASS_MISSING_CANDIDATE_IDENTITY_LOCKED"
+                status = "BLOCKING_ACCEPTED_OPERATOR_MISSING_IMPLEMENTATION_RECORD_READY"
                 blocker_reason = (
-                    "candidate module path, source hash, entrypoint, return key, and selected "
-                    "implementation class are locked for review, but no accepted delta_uet_or_ci "
-                    "operator class exists yet"
+                    "operator class, module identity, source hash, entrypoint, return key, and "
+                    "review-only parameter-set linkage are locked in a review-only implementation "
+                    "record, but no accepted delta_uet_or_ci operator exists yet"
                 )
-                supporting_review_record_path = str(candidate_review_path.relative_to(TOPIC_DIR)).replace(
-                    "\\", "/"
-                )
+                supporting_review_record_path = str(
+                    ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_RECORD_MANIFEST_PATH.relative_to(
+                        TOPIC_DIR
+                    )
+                ).replace("\\", "/")
             else:
                 status = "BLOCKING_CANDIDATE_SOURCE_ONLY"
                 blocker_reason = "target module is present, but no accepted delta_uet_or_ci operator class exists"
@@ -6120,11 +6274,16 @@ def build_atomic_predictive_v1_operator_implementation_provenance_gate(
         if not evidence_exists and evidence_path:
             status = "BLOCKING_EVIDENCE_PATH_MISSING"
             blocker_reason = "declared evidence path does not exist"
+        supporting_review_record_file = (
+            TOPIC_DIR / supporting_review_record_path if supporting_review_record_path else None
+        )
         supporting_review_record_exists = bool(
-            supporting_review_record_path and candidate_review_exists
+            supporting_review_record_file and supporting_review_record_file.exists()
         )
         supporting_review_record_sha256 = (
-            file_sha256(candidate_review_path) if supporting_review_record_exists else None
+            file_sha256(supporting_review_record_file)
+            if supporting_review_record_exists
+            else None
         )
         evidence_rows.append(
             {
@@ -6183,6 +6342,11 @@ def build_atomic_predictive_v1_operator_implementation_provenance_gate(
             "operator_residual_rows_present": harness_metrics["residual_rows_present"],
             "operator_uncertainty_policy_present": harness_metrics["uncertainty_policy_present"],
             "candidate_implementation_review_present": candidate_review_exists,
+            "implementation_record_gate_blocking_count": (
+                atomic_predictive_v1_operator_implementation_record_gate["metrics"][
+                    "implementation_record_check_blocking_count"
+                ]
+            ),
             "operator_parameter_preflight_blocking_count": (
                 atomic_predictive_v1_operator_parameter_acceptance_preflight_gate["metrics"][
                     "preflight_blocking_count"
@@ -7560,6 +7724,9 @@ def run_rydberg_analysis():
     atomic_predictive_v1_operator_parameter_candidate_promotion_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETER_CANDIDATE_PROMOTION_PATH
     )
+    atomic_predictive_v1_operator_implementation_record_manifest = load_json(
+        ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_RECORD_MANIFEST_PATH
+    )
     atomic_predictive_v1_operator_class_selection_review_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_CLASS_SELECTION_REVIEW_PATH
     )
@@ -7900,10 +8067,21 @@ def run_rydberg_analysis():
             atomic_predictive_v1_operator_parameter_candidate_promotion_gate,
         )
     )
+    atomic_predictive_v1_operator_implementation_record_gate = (
+        build_atomic_predictive_v1_operator_implementation_record_gate(
+            atomic_predictive_v1_operator_implementation_record_manifest,
+            atomic_predictive_v1_operator_candidate_implementation_review_manifest,
+            atomic_predictive_v1_operator_class_selection_review_gate,
+            atomic_predictive_v1_operator_parameter_acceptance_preflight_gate,
+            atomic_predictive_v1_operator_acceptance_harness_gate,
+            atomic_predictive_v1_fixed_correction_operator_gate,
+        )
+    )
     atomic_predictive_v1_operator_implementation_provenance_gate = (
         build_atomic_predictive_v1_operator_implementation_provenance_gate(
             atomic_predictive_v1_operator_implementation_provenance_manifest,
             atomic_predictive_v1_operator_candidate_implementation_review_manifest,
+            atomic_predictive_v1_operator_implementation_record_gate,
             atomic_predictive_v1_operator_training_holdout_split_gate,
             atomic_predictive_v1_operator_parameter_acceptance_preflight_gate,
             atomic_predictive_v1_operator_acceptance_harness_gate,
@@ -8251,6 +8429,7 @@ def run_rydberg_analysis():
             "AT20-ATOMIC-PREDICTIVE-V1-PARAMETERIZED-CORRECTION-EMISSION",
             "AT20-ATOMIC-PREDICTIVE-V1-ROW-LEVEL-UNCERTAINTY",
             "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-PARAMETER-PREFLIGHT",
+            "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-IMPLEMENTATION-RECORD",
             "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
             "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
             "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
@@ -8611,6 +8790,21 @@ def run_rydberg_analysis():
                     "reported_output_count"
                 ]
             ),
+            "atomic_predictive_v1_implementation_record_checks": (
+                atomic_predictive_v1_operator_implementation_record_gate["metrics"][
+                    "implementation_record_check_count"
+                ]
+            ),
+            "atomic_predictive_v1_implementation_record_blocking_checks": (
+                atomic_predictive_v1_operator_implementation_record_gate["metrics"][
+                    "implementation_record_check_blocking_count"
+                ]
+            ),
+            "atomic_predictive_v1_implementation_record_matching_parameter_sets": (
+                atomic_predictive_v1_operator_implementation_record_gate["metrics"][
+                    "matching_review_only_parameter_set_count"
+                ]
+            ),
             "atomic_predictive_v1_operator_parameter_preflight_parameter_sets": (
                 atomic_predictive_v1_operator_parameter_acceptance_preflight_gate["metrics"][
                     "parameter_set_count"
@@ -8836,6 +9030,9 @@ def run_rydberg_analysis():
     )
     artifact["atomic_predictive_v1_operator_class_selection_review_gate"] = (
         atomic_predictive_v1_operator_class_selection_review_gate
+    )
+    artifact["atomic_predictive_v1_operator_implementation_record_gate"] = (
+        atomic_predictive_v1_operator_implementation_record_gate
     )
     artifact["atomic_predictive_v1_operator_implementation_provenance_gate"] = (
         atomic_predictive_v1_operator_implementation_provenance_gate

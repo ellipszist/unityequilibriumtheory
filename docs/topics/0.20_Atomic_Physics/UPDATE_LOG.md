@@ -20,6 +20,19 @@ blockers were actually narrowed.
 
 ## Entries
 
+### 2026-06-15 - Declare the operator implementation-record gate
+
+- Scope: `atomic_predictive_v1_operator_implementation_record_manifest.json`, `atomic_predictive_v1_operator_implementation_provenance.json`, `Research_Rydberg_Validation.py`, primary artifact, topic docs
+- Added or changed: Added a separate implementation-record manifest and gate so selected operator class, target module identity, runtime source hash, entrypoint, return key, and matching review-only parameter-set linkage are locked before any accepted-operator provenance claim; updated provenance reporting so `PROV-01` now points to the implementation record as a narrower blocker state.
+- Files touched: `Data/03_Research/atomic_predictive_v1_operator_implementation_record_manifest.json`, `Data/03_Research/atomic_predictive_v1_operator_implementation_provenance.json`, `Code/03_Research/Research_Rydberg_Validation.py`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `FORMULA_AUDIT.md`, `DATA_MANIFEST.md`, `VERIFICATION_SPEC.md`, `UPDATE_LOG.md`, `Result/artifacts/0_20_atomic_physics_verification.json`
+- Verified with: `python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validation.py`
+- Result: The new implementation-record gate passes `5/5` checks with `0` blocking checks and records `IMPLEMENTATION_RECORD_READY_ACCEPTED_OPERATOR_MISSING`; the provenance gate still has `1/5` evidence rows present and `4/5` blocking, but `PROV-01` is now narrowed to `BLOCKING_ACCEPTED_OPERATOR_MISSING_IMPLEMENTATION_RECORD_READY`.
+- Blocker narrowed: Accepted operator provenance is no longer blocked by vague code-identity ambiguity. Selected class, module path, runtime source hash, entrypoint, return key, and review-only parameter linkage are now machine-readable and auditable.
+- Still open: Accepted operator execution, accepted residual emission, accepted operator uncertainty provenance, validation-ready thresholds, and independent non-NIST helium source lineage.
+- Next controller: The next controlling blocker is now accepted operator provenance beyond review-only code identity, especially accepted residual emission and accepted uncertainty provenance.
+- Claim impact: `no change`
+- Notes: This wave does not accept the operator or patch any physics result. It only turns code identity and review-only parameter linkage into a separate provenance prerequisite.
+
 ### 2026-06-15 - Declare the fixed-CI row-level uncertainty contract
 
 - Scope: `atomic_predictive_v1_row_level_uncertainty_manifest.json`, `Research_Atomic_Operator_V1.py`, `Research_Rydberg_Validation.py`, primary artifact, topic docs

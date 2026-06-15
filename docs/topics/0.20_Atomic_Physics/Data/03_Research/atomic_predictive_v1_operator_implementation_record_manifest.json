@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.20_Atomic_Physics",
+  "manifest_id": "AT20-PREDICTIVE-V1-OPERATOR-IMPLEMENTATION-RECORD-MANIFEST",
+  "purpose": "Define the review-only implementation record required before any candidate atomic predictive-v1 operator can be promoted into accepted delta_uet_or_ci provenance.",
+  "status": "IMPLEMENTATION_RECORD_READY_ACCEPTED_OPERATOR_MISSING",
+  "selected_lane_id": "helium_quantum_defect_then_ci_or_uet_correction_v1",
+  "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction",
+  "target_module": {
+    "path": "Code/03_Research/Research_Atomic_Operator_V1.py",
+    "required_entrypoint": "run_atomic_operator_v1",
+    "required_return_key": "atomic_predictive_v1_operator_residual_gate"
+  },
+  "required_record_fields": [
+    "selected_operator_class",
+    "target_module.path",
+    "target_module.required_entrypoint",
+    "target_module.required_return_key",
+    "target_module.source_hash",
+    "parameter_set_review_state"
+  ],
+  "required_checks": [
+    {
+      "check_id": "IMPL-01",
+      "requirement": "The review record points to the current target module and required entrypoint."
+    },
+    {
+      "check_id": "IMPL-02",
+      "requirement": "The selected operator class matches the current class-selection review."
+    },
+    {
+      "check_id": "IMPL-03",
+      "requirement": "A runtime source hash can be computed for the target module used in review."
+    },
+    {
+      "check_id": "IMPL-04",
+      "requirement": "At least one locked review-only parameter set exists for the selected class."
+    },
+    {
+      "check_id": "IMPL-05",
+      "requirement": "The record still states that the operator is not accepted, so implementation identity cannot be confused with accepted provenance."
+    }
+  ],
+  "blocked_claims": [
+    "a review-only implementation record means an accepted operator exists",
+    "module identity and source hash alone satisfy accepted operator provenance",
+    "review-only parameter sets may be cited as accepted operator output"
+  ],
+  "claim_boundary": "This manifest defines a review-only implementation record. It does not accept or validate delta_uet_or_ci."
+}
