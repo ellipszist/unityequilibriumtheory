@@ -86,6 +86,32 @@ def get_parameterized_correction_emission_contract() -> dict:
     }
 
 
+def get_row_level_uncertainty_contract() -> dict:
+    """Describe the current row-level uncertainty handoff contract without claiming accepted provenance exists."""
+    return {
+        "uncertainty_status": "CONTRACT_ONLY_IMPLEMENTATION_MISSING",
+        "upstream_emission_dependency_id": "parameterized_correction_emission_contract",
+        "operator_uncertainty_policy_id": "AT20-PREDICTIVE-V1-OPERATOR-UNCERTAINTY-POLICY",
+        "required_inputs": [
+            "accepted-or-diagnostic delta_uet_or_ci row values",
+            "locked uncertainty policy with required row-level field schema",
+            "accepted operator parameter uncertainties or explicit noncomputability reasons",
+            "source-backed observable uncertainties or rounding bounds",
+            "row-level provenance linking uncertainty to emitted operator state",
+        ],
+        "required_outputs": [
+            "row-level uncertainty fields aligned with the uncertainty policy",
+            "machine-readable uncertainty provenance per emitted row",
+            "claim-boundary flag preventing validation-ready use before accepted operator provenance exists",
+        ],
+        "blocked_claims": [
+            "declaring the uncertainty contract means accepted operator uncertainty provenance exists",
+            "diagnostic uncertainty fields are accepted row-level uncertainty from delta_uet_or_ci",
+            "validation-ready thresholds may consume operator uncertainty before accepted provenance exists",
+        ],
+    }
+
+
 def get_current_kernel_contract() -> dict:
     """Describe the current kernel-level state without pretending the core operator exists."""
     return {
@@ -97,6 +123,7 @@ def get_current_kernel_contract() -> dict:
             "fixed_ci_basis_assembly_contract",
             "hamiltonian_effective_operator_contract",
             "parameterized_correction_emission_contract",
+            "row_level_uncertainty_contract",
         ],
         "missing_core_components": [
             "fixed_ci_or_correlated_basis_assembly",
@@ -206,6 +233,7 @@ def run_atomic_operator_v1(
     basis_assembly_contract = get_fixed_ci_basis_assembly_contract()
     hamiltonian_effective_operator_contract = get_hamiltonian_effective_operator_contract()
     parameterized_correction_emission_contract = get_parameterized_correction_emission_contract()
+    row_level_uncertainty_contract = get_row_level_uncertainty_contract()
     residual_rows = _diagnostic_residual_rows(helium_holdout_predictions, baseline_constants)
     baseline_residuals = [
         row["baseline_absolute_residual_eV"]
@@ -231,6 +259,7 @@ def run_atomic_operator_v1(
         "basis_assembly_contract": basis_assembly_contract,
         "hamiltonian_effective_operator_contract": hamiltonian_effective_operator_contract,
         "parameterized_correction_emission_contract": parameterized_correction_emission_contract,
+        "row_level_uncertainty_contract": row_level_uncertainty_contract,
         "residual_rows": residual_rows,
         "metrics": {
             "residual_row_count": len(residual_rows),
@@ -286,6 +315,7 @@ def run_atomic_operator_v1(
             "basis_assembly_contract": basis_assembly_contract,
             "hamiltonian_effective_operator_contract": hamiltonian_effective_operator_contract,
             "parameterized_correction_emission_contract": parameterized_correction_emission_contract,
+            "row_level_uncertainty_contract": row_level_uncertainty_contract,
             "residual_rows": residual_rows,
             "metrics": residual_artifact["metrics"],
             "blocked_claims": [

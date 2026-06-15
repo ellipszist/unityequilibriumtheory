@@ -20,6 +20,19 @@ blockers were actually narrowed.
 
 ## Entries
 
+### 2026-06-15 - Declare the fixed-CI row-level uncertainty contract
+
+- Scope: `atomic_predictive_v1_row_level_uncertainty_manifest.json`, `Research_Atomic_Operator_V1.py`, `Research_Rydberg_Validation.py`, primary artifact, topic docs
+- Added or changed: Added a row-level uncertainty manifest and gate, taught the operator module to emit a contract-only uncertainty-provenance scaffold, and wired the verifier/artifacts/docs so the fourth missing kernel component is auditable as a declared contract rather than only a name in the missing-core list.
+- Files touched: `Data/03_Research/atomic_predictive_v1_row_level_uncertainty_manifest.json`, `Code/03_Research/Research_Atomic_Operator_V1.py`, `Code/03_Research/Research_Rydberg_Validation.py`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `FORMULA_AUDIT.md`, `DATA_MANIFEST.md`, `VERIFICATION_SPEC.md`, `UPDATE_LOG.md`, `Result/artifacts/0_20_atomic_physics_verification.json`, `Result/artifacts/atomic_predictive_v1_operator_residual_rows.json`
+- Verified with: `python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validation.py`
+- Result: The new row-level-uncertainty gate passes `5/5` checks, reports `0` blocking checks, records all `5` required inputs and all `3` required outputs explicitly, links itself to the locked operator uncertainty policy, and keeps `uncertainty_status = CONTRACT_ONLY_IMPLEMENTATION_MISSING` while validation-ready thresholds remain disallowed.
+- Blocker narrowed: The fourth missing kernel component is no longer just "row-level uncertainty from the accepted operator" by name. It is now a contract-ready scaffold whose upstream emission dependency, linked uncertainty-policy ID, required inputs, required outputs, and blocked-claim boundary are runtime-visible.
+- Still open: Runnable correlated basis assembly, runnable Hamiltonian/effective-operator evaluation, accepted `delta_uet_or_ci` emission, accepted operator uncertainty provenance, validation-ready thresholds, and independent non-NIST helium source lineage.
+- Next controller: The next controlling blocker is no longer an undeclared kernel-side contract. It is the absence of an accepted `delta_uet_or_ci` implementation and accepted operator provenance across the already-declared basis, Hamiltonian, emission, and uncertainty scaffolds.
+- Claim impact: `no change`
+- Notes: This wave does not source uncertainty from an accepted operator or close validation-ready thresholds. It only turns the fourth kernel component into an auditable contract and keeps the implementation gap explicit.
+
 ### 2026-06-14 - Declare the fixed-CI parameterized correction-emission contract
 
 - Scope: `atomic_predictive_v1_parameterized_correction_emission_manifest.json`, `Research_Atomic_Operator_V1.py`, `Research_Rydberg_Validation.py`, primary artifact, topic docs

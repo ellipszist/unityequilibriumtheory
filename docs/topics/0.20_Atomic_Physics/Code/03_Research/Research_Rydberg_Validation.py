@@ -88,6 +88,12 @@ ATOMIC_PREDICTIVE_V1_PARAMETERIZED_CORRECTION_EMISSION_MANIFEST_PATH = (
     / "03_Research"
     / "atomic_predictive_v1_parameterized_correction_emission_manifest.json"
 )
+ATOMIC_PREDICTIVE_V1_ROW_LEVEL_UNCERTAINTY_MANIFEST_PATH = (
+    TOPIC_DIR
+    / "Data"
+    / "03_Research"
+    / "atomic_predictive_v1_row_level_uncertainty_manifest.json"
+)
 ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETERS_PATH = (
     TOPIC_DIR / "Data" / "03_Research" / "atomic_predictive_v1_operator_parameters.json"
 )
@@ -5249,6 +5255,148 @@ def build_atomic_predictive_v1_parameterized_correction_emission_gate(
         },
         "claim_boundary": correction_emission_manifest.get("claim_boundary"),
     }
+
+
+def build_atomic_predictive_v1_row_level_uncertainty_gate(
+    row_level_uncertainty_manifest: dict,
+    correction_emission_manifest: dict,
+    operator_uncertainty_policy_manifest: dict,
+    atomic_predictive_v1_operator_residual_gate: dict,
+) -> dict:
+    ready_scaffolds = (
+        atomic_predictive_v1_operator_residual_gate.get("kernel_contract", {}).get("ready_scaffolds", [])
+    )
+    module_uncertainty_contract = atomic_predictive_v1_operator_residual_gate.get(
+        "row_level_uncertainty_contract"
+    )
+    emission_contract = atomic_predictive_v1_operator_residual_gate.get(
+        "parameterized_correction_emission_contract", {}
+    )
+    required_inputs = row_level_uncertainty_manifest.get("required_inputs", [])
+    required_outputs = row_level_uncertainty_manifest.get("required_outputs", [])
+    reported_inputs = (module_uncertainty_contract or {}).get("required_inputs", [])
+    reported_outputs = (module_uncertainty_contract or {}).get("required_outputs", [])
+    missing_inputs = [item for item in required_inputs if item not in reported_inputs]
+    missing_outputs = [item for item in required_outputs if item not in reported_outputs]
+    expected_dependency_id = correction_emission_manifest.get("target_module", {}).get(
+        "required_entrypoint", ""
+    ).replace("get_", "")
+    policy_required_fields = operator_uncertainty_policy_manifest.get("required_uncertainty_fields", [])
+    checks = [
+        {
+            "check_id": "UNC-01",
+            "requirement": "The target module exposes the row-level uncertainty contract entrypoint.",
+            "status": "PASS" if module_uncertainty_contract else "BLOCKED_ROW_LEVEL_UNCERTAINTY_CONTRACT_MISSING",
+            "evidence": {
+                "contract_present": bool(module_uncertainty_contract),
+                "ready_scaffolds": ready_scaffolds,
+            },
+        },
+        {
+            "check_id": "UNC-02",
+            "requirement": "The contract explicitly depends on the parameterized correction-emission scaffold instead of skipping emission provenance.",
+            "status": "PASS"
+            if (module_uncertainty_contract or {}).get("upstream_emission_dependency_id")
+            == expected_dependency_id
+            else "BLOCKED_UNCERTAINTY_DEPENDENCY_MISMATCH",
+            "evidence": {
+                "reported_upstream_emission_dependency_id": (module_uncertainty_contract or {}).get(
+                    "upstream_emission_dependency_id"
+                ),
+                "expected_upstream_emission_dependency_id": expected_dependency_id,
+                "emission_contract_status": emission_contract.get("emission_status"),
+            },
+        },
+        {
+            "check_id": "UNC-03",
+            "requirement": "The contract explicitly binds itself to the locked operator uncertainty policy.",
+            "status": "PASS"
+            if (module_uncertainty_contract or {}).get("operator_uncertainty_policy_id")
+            == operator_uncertainty_policy_manifest.get("policy_id")
+            else "BLOCKED_UNCERTAINTY_POLICY_ID_MISMATCH",
+            "evidence": {
+                "reported_operator_uncertainty_policy_id": (module_uncertainty_contract or {}).get(
+                    "operator_uncertainty_policy_id"
+                ),
+                "expected_operator_uncertainty_policy_id": operator_uncertainty_policy_manifest.get("policy_id"),
+                "policy_required_uncertainty_fields": policy_required_fields,
+                "policy_status": operator_uncertainty_policy_manifest.get("status"),
+            },
+        },
+        {
+            "check_id": "UNC-04",
+            "requirement": "The contract lists required inputs and outputs explicitly rather than leaving uncertainty provenance expectations implicit.",
+            "status": "PASS"
+            if not missing_inputs and not missing_outputs
+            else "BLOCKED_UNCERTAINTY_INPUT_OUTPUT_CONTRACT_INCOMPLETE",
+            "evidence": {
+                "required_inputs": required_inputs,
+                "reported_inputs": reported_inputs,
+                "missing_inputs": missing_inputs,
+                "required_outputs": required_outputs,
+                "reported_outputs": reported_outputs,
+                "missing_outputs": missing_outputs,
+            },
+        },
+        {
+            "check_id": "UNC-05",
+            "requirement": "The contract still states that accepted row-level uncertainty provenance is not implemented, so diagnostic rows cannot be upgraded into validation-ready operator uncertainty.",
+            "status": "PASS"
+            if (module_uncertainty_contract or {}).get("uncertainty_status")
+            == "CONTRACT_ONLY_IMPLEMENTATION_MISSING"
+            and operator_uncertainty_policy_manifest.get("current_policy", {}).get(
+                "validation_ready_thresholds_allowed"
+            )
+            is False
+            else "BLOCKED_UNCERTAINTY_STATUS_NOT_EXPLICIT",
+            "evidence": {
+                "reported_uncertainty_status": (module_uncertainty_contract or {}).get(
+                    "uncertainty_status"
+                ),
+                "validation_ready_thresholds_allowed": operator_uncertainty_policy_manifest.get(
+                    "current_policy", {}
+                ).get("validation_ready_thresholds_allowed"),
+                "kernel_missing_components": atomic_predictive_v1_operator_residual_gate.get(
+                    "kernel_contract", {}
+                ).get("missing_core_components"),
+            },
+        },
+    ]
+    blocking_count = sum(1 for row in checks if row["status"].startswith("BLOCKED"))
+    pass_count = sum(1 for row in checks if row["status"] == "PASS")
+    status = (
+        "ROW_LEVEL_UNCERTAINTY_CONTRACT_READY_IMPLEMENTATION_MISSING"
+        if blocking_count == 0
+        else "ROW_LEVEL_UNCERTAINTY_CONTRACT_BLOCKED"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_predictive_v1_row_level_uncertainty_gate",
+        "status": status,
+        "claim_class": "row_level_uncertainty_contract_no_validation_claim",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-ROW-LEVEL-UNCERTAINTY",
+        "manifest": {
+            "path": str(
+                ATOMIC_PREDICTIVE_V1_ROW_LEVEL_UNCERTAINTY_MANIFEST_PATH.relative_to(TOPIC_DIR)
+            ).replace("\\", "/"),
+            "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_ROW_LEVEL_UNCERTAINTY_MANIFEST_PATH),
+            "manifest_id": row_level_uncertainty_manifest.get("manifest_id"),
+            "status": row_level_uncertainty_manifest.get("status"),
+        },
+        "row_level_uncertainty_contract": module_uncertainty_contract,
+        "checks": checks,
+        "metrics": {
+            "row_level_uncertainty_check_count": len(checks),
+            "row_level_uncertainty_check_pass_count": pass_count,
+            "row_level_uncertainty_check_blocking_count": blocking_count,
+            "required_input_count": len(required_inputs),
+            "reported_input_count": len(reported_inputs),
+            "required_output_count": len(required_outputs),
+            "reported_output_count": len(reported_outputs),
+            "policy_required_uncertainty_field_count": len(policy_required_fields),
+        },
+        "claim_boundary": row_level_uncertainty_manifest.get("claim_boundary"),
+    }
 def build_atomic_predictive_v1_operator_parameter_acceptance_preflight_gate(
     operator_parameter_preflight_manifest: dict,
     operator_parameters_manifest: dict,
@@ -7397,6 +7545,12 @@ def run_rydberg_analysis():
     atomic_predictive_v1_parameterized_correction_emission_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_PARAMETERIZED_CORRECTION_EMISSION_MANIFEST_PATH
     )
+    atomic_predictive_v1_row_level_uncertainty_manifest = load_json(
+        ATOMIC_PREDICTIVE_V1_ROW_LEVEL_UNCERTAINTY_MANIFEST_PATH
+    )
+    atomic_predictive_v1_operator_uncertainty_policy_manifest = load_json(
+        ATOMIC_PREDICTIVE_V1_OPERATOR_UNCERTAINTY_POLICY_PATH
+    )
     atomic_predictive_v1_operator_parameters_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_PARAMETERS_PATH
     )
@@ -7708,6 +7862,14 @@ def run_rydberg_analysis():
         build_atomic_predictive_v1_parameterized_correction_emission_gate(
             atomic_predictive_v1_parameterized_correction_emission_manifest,
             atomic_predictive_v1_hamiltonian_effective_operator_manifest,
+            atomic_predictive_v1_operator_residual_gate,
+        )
+    )
+    atomic_predictive_v1_row_level_uncertainty_gate = (
+        build_atomic_predictive_v1_row_level_uncertainty_gate(
+            atomic_predictive_v1_row_level_uncertainty_manifest,
+            atomic_predictive_v1_parameterized_correction_emission_manifest,
+            atomic_predictive_v1_operator_uncertainty_policy_manifest,
             atomic_predictive_v1_operator_residual_gate,
         )
     )
@@ -8087,6 +8249,7 @@ def run_rydberg_analysis():
             "AT20-ATOMIC-PREDICTIVE-V1-BASIS-ASSEMBLY",
             "AT20-ATOMIC-PREDICTIVE-V1-HAMILTONIAN-EFFECTIVE-OPERATOR",
             "AT20-ATOMIC-PREDICTIVE-V1-PARAMETERIZED-CORRECTION-EMISSION",
+            "AT20-ATOMIC-PREDICTIVE-V1-ROW-LEVEL-UNCERTAINTY",
             "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-PARAMETER-PREFLIGHT",
             "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
             "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
@@ -8418,6 +8581,36 @@ def run_rydberg_analysis():
                     "reported_output_count"
                 ]
             ),
+            "atomic_predictive_v1_row_level_uncertainty_checks": (
+                atomic_predictive_v1_row_level_uncertainty_gate["metrics"][
+                    "row_level_uncertainty_check_count"
+                ]
+            ),
+            "atomic_predictive_v1_row_level_uncertainty_blocking_checks": (
+                atomic_predictive_v1_row_level_uncertainty_gate["metrics"][
+                    "row_level_uncertainty_check_blocking_count"
+                ]
+            ),
+            "atomic_predictive_v1_row_level_uncertainty_required_inputs": (
+                atomic_predictive_v1_row_level_uncertainty_gate["metrics"][
+                    "required_input_count"
+                ]
+            ),
+            "atomic_predictive_v1_row_level_uncertainty_reported_inputs": (
+                atomic_predictive_v1_row_level_uncertainty_gate["metrics"][
+                    "reported_input_count"
+                ]
+            ),
+            "atomic_predictive_v1_row_level_uncertainty_required_outputs": (
+                atomic_predictive_v1_row_level_uncertainty_gate["metrics"][
+                    "required_output_count"
+                ]
+            ),
+            "atomic_predictive_v1_row_level_uncertainty_reported_outputs": (
+                atomic_predictive_v1_row_level_uncertainty_gate["metrics"][
+                    "reported_output_count"
+                ]
+            ),
             "atomic_predictive_v1_operator_parameter_preflight_parameter_sets": (
                 atomic_predictive_v1_operator_parameter_acceptance_preflight_gate["metrics"][
                     "parameter_set_count"
@@ -8628,6 +8821,9 @@ def run_rydberg_analysis():
     )
     artifact["atomic_predictive_v1_parameterized_correction_emission_gate"] = (
         atomic_predictive_v1_parameterized_correction_emission_gate
+    )
+    artifact["atomic_predictive_v1_row_level_uncertainty_gate"] = (
+        atomic_predictive_v1_row_level_uncertainty_gate
     )
     artifact["atomic_predictive_v1_operator_training_holdout_split_gate"] = (
         atomic_predictive_v1_operator_training_holdout_split_gate

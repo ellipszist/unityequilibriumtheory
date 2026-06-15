@@ -61,7 +61,8 @@
     "ready_scaffolds": [
       "fixed_ci_basis_assembly_contract",
       "hamiltonian_effective_operator_contract",
-      "parameterized_correction_emission_contract"
+      "parameterized_correction_emission_contract",
+      "row_level_uncertainty_contract"
     ],
     "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction"
   },
@@ -201,6 +202,28 @@
       "used_for_parameter_fit": false
     }
   ],
+  "row_level_uncertainty_contract": {
+    "blocked_claims": [
+      "declaring the uncertainty contract means accepted operator uncertainty provenance exists",
+      "diagnostic uncertainty fields are accepted row-level uncertainty from delta_uet_or_ci",
+      "validation-ready thresholds may consume operator uncertainty before accepted provenance exists"
+    ],
+    "operator_uncertainty_policy_id": "AT20-PREDICTIVE-V1-OPERATOR-UNCERTAINTY-POLICY",
+    "required_inputs": [
+      "accepted-or-diagnostic delta_uet_or_ci row values",
+      "locked uncertainty policy with required row-level field schema",
+      "accepted operator parameter uncertainties or explicit noncomputability reasons",
+      "source-backed observable uncertainties or rounding bounds",
+      "row-level provenance linking uncertainty to emitted operator state"
+    ],
+    "required_outputs": [
+      "row-level uncertainty fields aligned with the uncertainty policy",
+      "machine-readable uncertainty provenance per emitted row",
+      "claim-boundary flag preventing validation-ready use before accepted operator provenance exists"
+    ],
+    "uncertainty_status": "CONTRACT_ONLY_IMPLEMENTATION_MISSING",
+    "upstream_emission_dependency_id": "parameterized_correction_emission_contract"
+  },
   "schema_version": "1.0",
   "status": "DIAGNOSTIC_RESIDUAL_ROWS_EXPORTED_OPERATOR_NOT_ACCEPTED"
 }

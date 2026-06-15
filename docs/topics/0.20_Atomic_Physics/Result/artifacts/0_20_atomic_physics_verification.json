@@ -1140,7 +1140,8 @@
           "ready_scaffolds": [
             "fixed_ci_basis_assembly_contract",
             "hamiltonian_effective_operator_contract",
-            "parameterized_correction_emission_contract"
+            "parameterized_correction_emission_contract",
+            "row_level_uncertainty_contract"
           ]
         },
         "requirement": "The target module exposes the basis-assembly contract entrypoint.",
@@ -1247,7 +1248,7 @@
         "evidence": {
           "residual_artifact_exists": true,
           "residual_artifact_path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
-          "residual_artifact_sha256": "874af10711128f9e0e7d58fbffe7d6724d909ce20d12c439c746444030fbf8bc",
+          "residual_artifact_sha256": "53478aceac0b34137594a4c3c3db832efc6588afd7579e1f4bcc3b37935dd64c",
           "returned_gate_present": true
         },
         "requirement": "Running the target module through the primary verifier writes the residual artifact and returns the operator gate.",
@@ -1326,7 +1327,7 @@
       "exists": true,
       "path": "Code/03_Research/Research_Atomic_Operator_V1.py",
       "return_key_present": true,
-      "sha256": "2b059058282379096c186b5cc65bf0e75fb99c0d7d4ee5caeb6e6e11b59822c8"
+      "sha256": "2e29afe31d7e937d2f8e979c7b224389087f83eb577d83b31a421200dbf2f69b"
     }
   },
   "atomic_predictive_v1_diagnostic_report_gate": {
@@ -1646,7 +1647,8 @@
           "ready_scaffolds": [
             "fixed_ci_basis_assembly_contract",
             "hamiltonian_effective_operator_contract",
-            "parameterized_correction_emission_contract"
+            "parameterized_correction_emission_contract",
+            "row_level_uncertainty_contract"
           ]
         },
         "requirement": "The target module exposes the Hamiltonian/effective-operator contract entrypoint.",
@@ -1854,7 +1856,8 @@
       "ready_scaffolds": [
         "fixed_ci_basis_assembly_contract",
         "hamiltonian_effective_operator_contract",
-        "parameterized_correction_emission_contract"
+        "parameterized_correction_emission_contract",
+        "row_level_uncertainty_contract"
       ],
       "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction"
     },
@@ -1907,7 +1910,7 @@
             "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
             "purpose": "Store source-row residuals emitted by the target module.",
             "required_before_acceptance": true,
-            "sha256": "874af10711128f9e0e7d58fbffe7d6724d909ce20d12c439c746444030fbf8bc"
+            "sha256": "53478aceac0b34137594a4c3c3db832efc6588afd7579e1f4bcc3b37935dd64c"
           },
           {
             "artifact_id": "operator_uncertainty_policy",
@@ -2082,7 +2085,7 @@
         "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
         "purpose": "Store source-row residuals emitted by the target module.",
         "required_before_acceptance": true,
-        "sha256": "874af10711128f9e0e7d58fbffe7d6724d909ce20d12c439c746444030fbf8bc"
+        "sha256": "53478aceac0b34137594a4c3c3db832efc6588afd7579e1f4bcc3b37935dd64c"
       },
       {
         "artifact_id": "operator_uncertainty_policy",
@@ -2115,7 +2118,7 @@
       "accepted_as_delta_uet_or_ci": false,
       "exists": true,
       "path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
-      "sha256": "874af10711128f9e0e7d58fbffe7d6724d909ce20d12c439c746444030fbf8bc",
+      "sha256": "53478aceac0b34137594a4c3c3db832efc6588afd7579e1f4bcc3b37935dd64c",
       "status": "DIAGNOSTIC_RESIDUAL_ROWS_EXPORTED_OPERATOR_NOT_ACCEPTED"
     },
     "role": "atomic_predictive_v1_operator_acceptance_harness_gate",
@@ -2129,7 +2132,7 @@
       "required_entrypoint": "run_atomic_operator_v1",
       "required_return_key": "atomic_predictive_v1_operator_residual_gate",
       "return_key_present": true,
-      "sha256": "2b059058282379096c186b5cc65bf0e75fb99c0d7d4ee5caeb6e6e11b59822c8"
+      "sha256": "2e29afe31d7e937d2f8e979c7b224389087f83eb577d83b31a421200dbf2f69b"
     }
   },
   "atomic_predictive_v1_operator_build_spec_gate": {
@@ -2594,13 +2597,13 @@
       "parameter_manifest_exists": true,
       "parameter_manifest_sha256": "c6227e3f8127aaeb55b297c9ef7d4f89c3d5468352b9c861cd36580ac1803d1a",
       "residual_rows_artifact_exists": true,
-      "residual_rows_artifact_sha256": "874af10711128f9e0e7d58fbffe7d6724d909ce20d12c439c746444030fbf8bc",
+      "residual_rows_artifact_sha256": "53478aceac0b34137594a4c3c3db832efc6588afd7579e1f4bcc3b37935dd64c",
       "selected_operator_class_review": "fixed_parameter_ci_or_correlated_two_electron_correction",
       "target_module_entrypoint_present": true,
       "target_module_exists": true,
       "target_module_path": "Code/03_Research/Research_Atomic_Operator_V1.py",
       "target_module_return_key_present": true,
-      "target_module_sha256": "2b059058282379096c186b5cc65bf0e75fb99c0d7d4ee5caeb6e6e11b59822c8",
+      "target_module_sha256": "2e29afe31d7e937d2f8e979c7b224389087f83eb577d83b31a421200dbf2f69b",
       "uncertainty_policy_exists": true,
       "uncertainty_policy_sha256": "494a809a6001a42fbc4e2b3c431392d8997e2720f4593a0b88cc9c3d2bb7fa3c"
     },
@@ -2643,7 +2646,7 @@
         "evidence_exists": true,
         "evidence_id": "PROV-01",
         "evidence_path": "Code/03_Research/Research_Atomic_Operator_V1.py",
-        "evidence_sha256": "2b059058282379096c186b5cc65bf0e75fb99c0d7d4ee5caeb6e6e11b59822c8",
+        "evidence_sha256": "2e29afe31d7e937d2f8e979c7b224389087f83eb577d83b31a421200dbf2f69b",
         "manifest_status": "CANDIDATE_IDENTITY_LOCK_READY_ACCEPTED_OPERATOR_MISSING",
         "required_artifact": "accepted operator implementation record with code hash and operator class",
         "requirement": "Accepted operator source code is identified by module path, entrypoint, commit hash or source hash, and operator class.",
@@ -2685,7 +2688,7 @@
         "evidence_exists": true,
         "evidence_id": "PROV-04",
         "evidence_path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
-        "evidence_sha256": "874af10711128f9e0e7d58fbffe7d6724d909ce20d12c439c746444030fbf8bc",
+        "evidence_sha256": "53478aceac0b34137594a4c3c3db832efc6588afd7579e1f4bcc3b37935dd64c",
         "manifest_status": "DIAGNOSTIC_RESIDUAL_ROWS_LOCK_READY_ACCEPTED_OPERATOR_MISSING",
         "required_artifact": "operator residual rows with accepted_operator_class and accepted_as_delta_uet_or_ci=true",
         "requirement": "Residual rows are emitted by the accepted operator, not by the current diagnostic quantum-defect wrapper.",
@@ -3045,7 +3048,8 @@
       "ready_scaffolds": [
         "fixed_ci_basis_assembly_contract",
         "hamiltonian_effective_operator_contract",
-        "parameterized_correction_emission_contract"
+        "parameterized_correction_emission_contract",
+        "row_level_uncertainty_contract"
       ],
       "selected_operator_class": "fixed_parameter_ci_or_correlated_two_electron_correction"
     },
@@ -3192,6 +3196,28 @@
       }
     ],
     "role": "atomic_predictive_v1_operator_residual_gate",
+    "row_level_uncertainty_contract": {
+      "blocked_claims": [
+        "declaring the uncertainty contract means accepted operator uncertainty provenance exists",
+        "diagnostic uncertainty fields are accepted row-level uncertainty from delta_uet_or_ci",
+        "validation-ready thresholds may consume operator uncertainty before accepted provenance exists"
+      ],
+      "operator_uncertainty_policy_id": "AT20-PREDICTIVE-V1-OPERATOR-UNCERTAINTY-POLICY",
+      "required_inputs": [
+        "accepted-or-diagnostic delta_uet_or_ci row values",
+        "locked uncertainty policy with required row-level field schema",
+        "accepted operator parameter uncertainties or explicit noncomputability reasons",
+        "source-backed observable uncertainties or rounding bounds",
+        "row-level provenance linking uncertainty to emitted operator state"
+      ],
+      "required_outputs": [
+        "row-level uncertainty fields aligned with the uncertainty policy",
+        "machine-readable uncertainty provenance per emitted row",
+        "claim-boundary flag preventing validation-ready use before accepted operator provenance exists"
+      ],
+      "uncertainty_status": "CONTRACT_ONLY_IMPLEMENTATION_MISSING",
+      "upstream_emission_dependency_id": "parameterized_correction_emission_contract"
+    },
     "schema_version": "1.0",
     "status": "DIAGNOSTIC_RESIDUAL_ROWS_EXPORTED_OPERATOR_NOT_ACCEPTED"
   },
@@ -3345,7 +3371,8 @@
           "ready_scaffolds": [
             "fixed_ci_basis_assembly_contract",
             "hamiltonian_effective_operator_contract",
-            "parameterized_correction_emission_contract"
+            "parameterized_correction_emission_contract",
+            "row_level_uncertainty_contract"
           ]
         },
         "requirement": "The target module exposes the parameterized correction-emission contract entrypoint.",
@@ -3568,6 +3595,142 @@
         "status": "BLOCKING"
       }
     ]
+  },
+  "atomic_predictive_v1_row_level_uncertainty_gate": {
+    "checks": [
+      {
+        "check_id": "UNC-01",
+        "evidence": {
+          "contract_present": true,
+          "ready_scaffolds": [
+            "fixed_ci_basis_assembly_contract",
+            "hamiltonian_effective_operator_contract",
+            "parameterized_correction_emission_contract",
+            "row_level_uncertainty_contract"
+          ]
+        },
+        "requirement": "The target module exposes the row-level uncertainty contract entrypoint.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "UNC-02",
+        "evidence": {
+          "emission_contract_status": "CONTRACT_ONLY_IMPLEMENTATION_MISSING",
+          "expected_upstream_emission_dependency_id": "parameterized_correction_emission_contract",
+          "reported_upstream_emission_dependency_id": "parameterized_correction_emission_contract"
+        },
+        "requirement": "The contract explicitly depends on the parameterized correction-emission scaffold instead of skipping emission provenance.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "UNC-03",
+        "evidence": {
+          "expected_operator_uncertainty_policy_id": "AT20-PREDICTIVE-V1-OPERATOR-UNCERTAINTY-POLICY",
+          "policy_required_uncertainty_fields": [
+            "model_uncertainty_eV",
+            "source_uncertainty_eV_or_rounding_bound",
+            "uncertainty_basis",
+            "uncertainty_computable"
+          ],
+          "policy_status": "UNCERTAINTY_POLICY_READY_ACCEPTED_OPERATOR_RESIDUALS_MISSING",
+          "reported_operator_uncertainty_policy_id": "AT20-PREDICTIVE-V1-OPERATOR-UNCERTAINTY-POLICY"
+        },
+        "requirement": "The contract explicitly binds itself to the locked operator uncertainty policy.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "UNC-04",
+        "evidence": {
+          "missing_inputs": [],
+          "missing_outputs": [],
+          "reported_inputs": [
+            "accepted-or-diagnostic delta_uet_or_ci row values",
+            "locked uncertainty policy with required row-level field schema",
+            "accepted operator parameter uncertainties or explicit noncomputability reasons",
+            "source-backed observable uncertainties or rounding bounds",
+            "row-level provenance linking uncertainty to emitted operator state"
+          ],
+          "reported_outputs": [
+            "row-level uncertainty fields aligned with the uncertainty policy",
+            "machine-readable uncertainty provenance per emitted row",
+            "claim-boundary flag preventing validation-ready use before accepted operator provenance exists"
+          ],
+          "required_inputs": [
+            "accepted-or-diagnostic delta_uet_or_ci row values",
+            "locked uncertainty policy with required row-level field schema",
+            "accepted operator parameter uncertainties or explicit noncomputability reasons",
+            "source-backed observable uncertainties or rounding bounds",
+            "row-level provenance linking uncertainty to emitted operator state"
+          ],
+          "required_outputs": [
+            "row-level uncertainty fields aligned with the uncertainty policy",
+            "machine-readable uncertainty provenance per emitted row",
+            "claim-boundary flag preventing validation-ready use before accepted operator provenance exists"
+          ]
+        },
+        "requirement": "The contract lists required inputs and outputs explicitly rather than leaving uncertainty provenance expectations implicit.",
+        "status": "PASS"
+      },
+      {
+        "check_id": "UNC-05",
+        "evidence": {
+          "kernel_missing_components": [
+            "fixed_ci_or_correlated_basis_assembly",
+            "hamiltonian_or_effective_operator_evaluation",
+            "parameterized_correction_emission_as_delta_uet_or_ci",
+            "row_level_uncertainty_from_accepted_operator"
+          ],
+          "reported_uncertainty_status": "CONTRACT_ONLY_IMPLEMENTATION_MISSING",
+          "validation_ready_thresholds_allowed": false
+        },
+        "requirement": "The contract still states that accepted row-level uncertainty provenance is not implemented, so diagnostic rows cannot be upgraded into validation-ready operator uncertainty.",
+        "status": "PASS"
+      }
+    ],
+    "claim_boundary": "This manifest defines the row-level uncertainty provenance contract only. It does not emit accepted operator uncertainty rows, close validation-ready thresholds, or validate a correction operator.",
+    "claim_class": "row_level_uncertainty_contract_no_validation_claim",
+    "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-ROW-LEVEL-UNCERTAINTY",
+    "manifest": {
+      "manifest_id": "AT20-PREDICTIVE-V1-ROW-LEVEL-UNCERTAINTY-MANIFEST",
+      "path": "Data/03_Research/atomic_predictive_v1_row_level_uncertainty_manifest.json",
+      "sha256": "832333a305a8f13cecee63147cf076f4f3f6261faa94e6a374c7fbb9d3da1425",
+      "status": "ROW_LEVEL_UNCERTAINTY_CONTRACT_READY_IMPLEMENTATION_MISSING"
+    },
+    "metrics": {
+      "policy_required_uncertainty_field_count": 4,
+      "reported_input_count": 5,
+      "reported_output_count": 3,
+      "required_input_count": 5,
+      "required_output_count": 3,
+      "row_level_uncertainty_check_blocking_count": 0,
+      "row_level_uncertainty_check_count": 5,
+      "row_level_uncertainty_check_pass_count": 5
+    },
+    "role": "atomic_predictive_v1_row_level_uncertainty_gate",
+    "row_level_uncertainty_contract": {
+      "blocked_claims": [
+        "declaring the uncertainty contract means accepted operator uncertainty provenance exists",
+        "diagnostic uncertainty fields are accepted row-level uncertainty from delta_uet_or_ci",
+        "validation-ready thresholds may consume operator uncertainty before accepted provenance exists"
+      ],
+      "operator_uncertainty_policy_id": "AT20-PREDICTIVE-V1-OPERATOR-UNCERTAINTY-POLICY",
+      "required_inputs": [
+        "accepted-or-diagnostic delta_uet_or_ci row values",
+        "locked uncertainty policy with required row-level field schema",
+        "accepted operator parameter uncertainties or explicit noncomputability reasons",
+        "source-backed observable uncertainties or rounding bounds",
+        "row-level provenance linking uncertainty to emitted operator state"
+      ],
+      "required_outputs": [
+        "row-level uncertainty fields aligned with the uncertainty policy",
+        "machine-readable uncertainty provenance per emitted row",
+        "claim-boundary flag preventing validation-ready use before accepted operator provenance exists"
+      ],
+      "uncertainty_status": "CONTRACT_ONLY_IMPLEMENTATION_MISSING",
+      "upstream_emission_dependency_id": "parameterized_correction_emission_contract"
+    },
+    "schema_version": "1.0",
+    "status": "ROW_LEVEL_UNCERTAINTY_CONTRACT_READY_IMPLEMENTATION_MISSING"
   },
   "atomic_predictive_v1_threshold_gate": {
     "blocked_claims": [
@@ -3982,6 +4145,7 @@
     "AT20-ATOMIC-PREDICTIVE-V1-BASIS-ASSEMBLY",
     "AT20-ATOMIC-PREDICTIVE-V1-HAMILTONIAN-EFFECTIVE-OPERATOR",
     "AT20-ATOMIC-PREDICTIVE-V1-PARAMETERIZED-CORRECTION-EMISSION",
+    "AT20-ATOMIC-PREDICTIVE-V1-ROW-LEVEL-UNCERTAINTY",
     "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-PARAMETER-PREFLIGHT",
     "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
     "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
@@ -3992,7 +4156,7 @@
     "AT20-UET-ATOMIC-BRIDGE-GATE",
     "AT20-UET-ATOMIC-OPERATOR-READINESS"
   ],
-  "generated_at_utc": "2026-06-14T08:20:13.097554+00:00",
+  "generated_at_utc": "2026-06-15T12:29:03.555255+00:00",
   "helium_excited_hydrogenic_residual_gate": {
     "blocked_residual_model_requirements": [
       "source-backed singlet/triplet quantum-defect or configuration-interaction policy",
@@ -7165,6 +7329,12 @@
     "atomic_predictive_v1_report_level_holdout_predictions": 3,
     "atomic_predictive_v1_report_validation_blockers": 3,
     "atomic_predictive_v1_report_wavelength_holdout_predictions": 2,
+    "atomic_predictive_v1_row_level_uncertainty_blocking_checks": 0,
+    "atomic_predictive_v1_row_level_uncertainty_checks": 5,
+    "atomic_predictive_v1_row_level_uncertainty_reported_inputs": 5,
+    "atomic_predictive_v1_row_level_uncertainty_reported_outputs": 3,
+    "atomic_predictive_v1_row_level_uncertainty_required_inputs": 5,
+    "atomic_predictive_v1_row_level_uncertainty_required_outputs": 3,
     "atomic_predictive_v1_threshold_diagnostic_pass_count": 3,
     "atomic_predictive_v1_threshold_validation_ready_count": 0,
     "atomic_uncertainty_budget_computable_rows": 9,
