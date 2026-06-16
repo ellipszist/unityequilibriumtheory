@@ -102,6 +102,7 @@ flowchart TD
 | `22_UET_PAPER_TEMPLATE.tex` | manuscript starter | building a paper draft from a mature topic |
 | `23_TEMPLATE_FORMULA_AUDIT.md` | formula registry starter | starting a dedicated formula-audit file |
 | `24_TEMPLATE_UPDATE_LOG.md` | update log template | recording multi-wave progress without replacing artifacts |
+| `25_Research_Throughput_Workflow.md` | token-saving hardening workflow | generating compact wave packets before reading whole topics |
 
 ## Quick decision matrix
 
@@ -118,6 +119,7 @@ flowchart TD
 | AI wrote smooth prose without derivation support | `03_AI_Usage_and_Governance.md` | `04_Claim_and_Evidence_Rubric.md` |
 | topic is moving too slowly because blockers are vague | `18_Research_Hardening_Workflow.md` | `02_Project_Workflow_and_Lifecycle.md` |
 | many changes happened and progress is hard to track | `24_TEMPLATE_UPDATE_LOG.md` | `18_Research_Hardening_Workflow.md` |
+| repeated topic passes are consuming too many tokens | `25_Research_Throughput_Workflow.md` | `18_Research_Hardening_Workflow.md` |
 
 ## Naming pattern
 
@@ -126,6 +128,7 @@ flowchart TD
 | `00-04` | governance and master rules |
 | `10-18` | operational standards by work pillar |
 | `20+` | templates and production assets |
+| `25` | throughput and token-saving workflow |
 
 ## Compatibility map
 
@@ -161,6 +164,7 @@ flowchart TD
 - Every topic README must include at least one conceptual diagram and one evidence/status matrix so later readers can understand the theory role, data path, formula status, verifier role, and limitations without reading the whole folder first.
 - Scientific hardening should strengthen the research argument by exposing dependencies, mechanisms, tests, and blockers; it must not collapse the topic into only defensive wording.
 - Multi-wave work should use a standard update log when a reader would otherwise need to reconstruct progress from diffs alone.
+- Repeated hardening work should start from a generated research wave packet before rereading a whole topic folder.
 
 ## Common failure modes
 

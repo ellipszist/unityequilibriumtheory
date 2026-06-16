@@ -8,6 +8,7 @@ hardening before public claims are upgraded.
 
 from __future__ import annotations
 
+import argparse
 import json
 import re
 from dataclasses import dataclass
@@ -20,6 +21,7 @@ TOPICS_ROOT = DOCS_ROOT / "topics"
 READINESS_FILE = DOCS_ROOT / "meta" / "topic_readiness.json"
 REPORT_FILE = DOCS_ROOT / "meta" / "core_research_hardening_audit.md"
 RUN_REPORT_DIR = DOCS_ROOT / "meta" / "core_research_hardening_runs"
+NEXT_ACTIONS_FILE = DOCS_ROOT / "meta" / "core_research_next_actions.json"
 
 CORE_REQUIRED = [
     "README.md",
@@ -58,6 +60,7 @@ class TopicAudit:
     missing_docs: list[str]
     formula_audit_status: str
     verification_command: str | None
+    artifact_target: str | None
     artifact_status: str
     overclaim_hits: list[str]
     scores: dict[str, int]
@@ -78,15 +81,23 @@ def load_readiness() -> dict[str, dict]:
 
 
 def extract_primary_command(spec_path: Path) -> str | None:
+    return extract_spec_value(spec_path, "Primary command")
+
+
+def extract_artifact_target(spec_path: Path) -> str | None:
+    return extract_spec_value(spec_path, "Artifact target")
+
+
+def extract_spec_value(spec_path: Path, marker: str) -> str | None:
     if not spec_path.exists():
         return None
     lines = spec_path.read_text(encoding="utf-8", errors="replace").splitlines()
     for index, line in enumerate(lines):
-        if "Primary command" in line:
+        if marker in line:
             for candidate in lines[index + 1 : index + 6]:
                 match = re.search(r"`([^`]+)`", candidate)
                 if match:
-                    return match.group(1)
+                    return match.group(1).strip()
     return None
 
 
@@ -178,6 +189,145 @@ def next_action(audit: TopicAudit) -> str:
     return "Run topic verifier and harden remaining limitations."
 
 
+def current_blocker(audit: TopicAudit) -> str:
+    if audit.missing_docs:
+        return "Missing root standards docs: " + format_list(audit.missing_docs)
+    if audit.formula_audit_status == "missing":
+        return "Missing formula audit coverage."
+    if audit.formula_audit_status == "bootstrap/open":
+        return "Formula audit exists but still has bootstrap or scaffold entries."
+    if audit.formula_audit_status == "present/open":
+        return "Formula audit still has open entries that must stay visible in limitations."
+    if audit.artifact_status == "FAIL present":
+        return "Machine-readable verifier artifact records FAIL."
+    if audit.data_status != "manifested real dataset":
+        return f"Data provenance is not yet manifested real dataset: {audit.data_status}."
+    if audit.overclaim_hits:
+        return "README wording contains overclaim signals: " + format_list(audit.overclaim_hits)
+    return "No top-level standards blocker; rerun verifier and harden remaining limitations."
+
+
+def recommended_files(audit: TopicAudit) -> list[str]:
+    topic_root = f"docs/topics/{audit.name}"
+    if audit.missing_docs:
+        return [f"{topic_root}/{name}" for name in audit.missing_docs]
+    if audit.formula_audit_status in {"missing", "bootstrap/open", "present/open"}:
+        return [
+            f"{topic_root}/FORMULA_AUDIT.md",
+            f"{topic_root}/LIMITATIONS.md",
+            f"{topic_root}/README.md",
+        ]
+    if audit.artifact_status == "FAIL present":
+        files = [
+            f"{topic_root}/VERIFICATION_SPEC.md",
+            f"{topic_root}/Result/artifacts/",
+            f"{topic_root}/LIMITATIONS.md",
+        ]
+        if audit.verification_command:
+            files.append("primary command target from VERIFICATION_SPEC.md")
+        return files
+    if audit.data_status != "manifested real dataset":
+        return [
+            f"{topic_root}/DATA_MANIFEST.md",
+            f"{topic_root}/LIMITATIONS.md",
+            f"{topic_root}/UPDATE_LOG.md",
+        ]
+    if audit.overclaim_hits:
+        return [
+            f"{topic_root}/README.md",
+            f"{topic_root}/METHOD.md",
+            f"{topic_root}/LIMITATIONS.md",
+            f"{topic_root}/VERIFICATION_SPEC.md",
+            f"{topic_root}/FORMULA_AUDIT.md",
+        ]
+    return [
+        f"{topic_root}/VERIFICATION_SPEC.md",
+        f"{topic_root}/LIMITATIONS.md",
+        f"{topic_root}/UPDATE_LOG.md",
+    ]
+
+
+def stop_condition(audit: TopicAudit) -> str:
+    if audit.missing_docs:
+        return "Stop when the missing standards docs exist and the standards audit no longer reports this topic as structurally incomplete."
+    if audit.formula_audit_status in {"missing", "bootstrap/open", "present/open"}:
+        return "Stop when the formula audit blocker is narrower and any remaining open formula status is mirrored in LIMITATIONS.md."
+    if audit.artifact_status == "FAIL present":
+        return "Stop when the FAIL cause is named in the topic docs or the verifier/model path has been repaired and rerun."
+    if audit.data_status != "manifested real dataset":
+        return "Stop when DATA_MANIFEST.md records source identity, local path, unit convention, and benchmark role, or clearly keeps the data limitation explicit."
+    if audit.overclaim_hits:
+        return "Stop when README/METHOD wording no longer outruns VERIFICATION_SPEC.md, LIMITATIONS.md, and FORMULA_AUDIT.md."
+    return "Stop after the declared verifier is rerun or the next limitations blocker is made explicit."
+
+
+def expected_artifact(audit: TopicAudit) -> str | None:
+    if audit.artifact_target:
+        return f"docs/topics/{audit.name}/{audit.artifact_target}"
+    return f"docs/topics/{audit.name}/Result/artifacts/"
+
+
+def packet_for(audit: TopicAudit) -> dict[str, object]:
+    return {
+        "topic": audit.name,
+        "priority": audit.priority,
+        "current_blocker": current_blocker(audit),
+        "next_action": audit.next_action,
+        "data_status": audit.data_status,
+        "artifact_status": audit.artifact_status,
+        "verification_command": audit.verification_command,
+        "expected_artifact": expected_artifact(audit),
+        "recommended_files": recommended_files(audit),
+        "stop_condition": stop_condition(audit),
+    }
+
+
+def build_next_actions(queue_audits: list[TopicAudit], summary_audits: list[TopicAudit], generated_at: str) -> dict[str, object]:
+    return {
+        "generated_at": generated_at,
+        "scope": "0.0_Grand_Unification through 0.26_Cosmic_Dynamic_Frame",
+        "summary": {
+            "audited_core_topics": len(summary_audits),
+            "queue_items": len(queue_audits),
+            "missing_formula_audits": sum(1 for item in summary_audits if item.formula_audit_status == "missing"),
+            "bootstrap_or_open_formula_audits": sum(1 for item in summary_audits if item.formula_audit_status == "bootstrap/open"),
+            "missing_root_standards_docs": sum(1 for item in summary_audits if item.missing_docs),
+            "machine_readable_fail_artifacts": sum(1 for item in summary_audits if item.artifact_status == "FAIL present"),
+            "readme_overclaim_signals": sum(1 for item in summary_audits if item.overclaim_hits),
+        },
+        "queue": [packet_for(audit) for audit in queue_audits],
+    }
+
+
+def render_packets(next_actions: dict[str, object]) -> str:
+    lines = [
+        "# Core Research Wave Packets",
+        "",
+        f"Generated at: `{next_actions['generated_at']}`",
+        f"Scope: `{next_actions['scope']}`",
+        "",
+    ]
+    for item in next_actions["queue"]:
+        packet = item
+        lines.extend(
+            [
+                f"## {packet['topic']}",
+                "",
+                f"- Priority: {packet['priority']}",
+                f"- Current blocker: {packet['current_blocker']}",
+                f"- Next action: {packet['next_action']}",
+                f"- Data status: {packet['data_status']}",
+                f"- Artifact status: {packet['artifact_status']}",
+                f"- Verification command: `{packet['verification_command']}`" if packet["verification_command"] else "- Verification command: n/a",
+                f"- Expected artifact: `{packet['expected_artifact']}`" if packet["expected_artifact"] else "- Expected artifact: n/a",
+                "- Recommended files: " + ", ".join(f"`{path}`" for path in packet["recommended_files"]),
+                f"- Stop condition: {packet['stop_condition']}",
+                "",
+            ]
+        )
+    return "\n".join(lines)
+
+
 def audit_topics() -> list[TopicAudit]:
     readiness = load_readiness()
     audits: list[TopicAudit] = []
@@ -188,7 +338,9 @@ def audit_topics() -> list[TopicAudit]:
         entry = readiness.get(topic_dir.name, {})
         missing_docs = [name for name in CORE_REQUIRED if not (topic_dir / name).exists()]
         formula_status = formula_audit_status(topic_dir)
-        command = extract_primary_command(topic_dir / "VERIFICATION_SPEC.md")
+        spec_path = topic_dir / "VERIFICATION_SPEC.md"
+        command = extract_primary_command(spec_path)
+        artifact_target = extract_artifact_target(spec_path)
         artifact = artifact_status(topic_dir)
         claims = overclaim_hits(topic_dir / "README.md")
         scores = {
@@ -206,6 +358,7 @@ def audit_topics() -> list[TopicAudit]:
             missing_docs=missing_docs,
             formula_audit_status=formula_status,
             verification_command=command,
+            artifact_target=artifact_target,
             artifact_status=artifact,
             overclaim_hits=claims,
             scores=scores,
@@ -278,6 +431,13 @@ def render_report(audits: list[TopicAudit]) -> str:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--json", action="store_true", help="write the token-saving next-actions JSON queue")
+    parser.add_argument("--top", type=int, default=None, help="limit JSON/packet output to the top N queue items")
+    parser.add_argument("--topic", action="append", default=[], help="limit JSON/packet output to one or more exact topic directory names")
+    parser.add_argument("--emit-packets", action="store_true", help="print compact research wave packets to stdout")
+    args = parser.parse_args()
+
     audits = audit_topics()
     report = render_report(audits)
     REPORT_FILE.write_text(report, encoding="utf-8")
@@ -292,6 +452,29 @@ def main() -> int:
     print(f"Bootstrap/open formula audits: {sum(1 for item in audits if item.formula_audit_status == 'bootstrap/open')}")
     print(f"Missing root standards docs: {sum(1 for item in audits if item.missing_docs)}")
     print(f"FAIL artifacts: {sum(1 for item in audits if item.artifact_status == 'FAIL present')}")
+
+    filtered_audits = audits
+    if args.topic:
+        requested = set(args.topic)
+        filtered_audits = [item for item in filtered_audits if item.name in requested]
+        missing = sorted(requested - {item.name for item in filtered_audits})
+        if missing:
+            print("Missing requested topics: " + ", ".join(missing))
+            return 1
+    if args.top is not None:
+        if args.top < 1:
+            print("--top must be at least 1")
+            return 1
+        filtered_audits = filtered_audits[: args.top]
+
+    if args.json or args.emit_packets:
+        generated_at = datetime.now(timezone.utc).isoformat()
+        next_actions = build_next_actions(filtered_audits, audits, generated_at)
+        NEXT_ACTIONS_FILE.write_text(json.dumps(next_actions, indent=2), encoding="utf-8")
+        print(f"Wrote {NEXT_ACTIONS_FILE}")
+        if args.emit_packets:
+            print()
+            print(render_packets(next_actions))
     return 0
 
 
