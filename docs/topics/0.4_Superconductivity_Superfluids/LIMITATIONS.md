@@ -2,6 +2,7 @@
 
 - The root baseline comparison now has a saved artifact, but the current raw McMillan model gate fails: average relative error is about 62.4 percent and only 1 of 10 rows is within 20 percent.
 - The current FAIL-cause gate classifies this as a mixed raw-McMillan model-family and row-source package blocker. There is no current evidence that the fixed 20 percent threshold or verifier run-contract separation is the bug.
+- The raw McMillan row-eligibility policy is now explicit as a hardening control, but it is not yet executable verifier logic; current metrics are unchanged until the verifier emits included, skipped, excluded, and branch-migration row classes directly.
 - Current data posture is "real source referenced", which is below a fully normalized archival dataset package.
 - The topic still needs a clear separation between phenomenological fit behavior and stronger microscopic claims.
 - The raw McMillan baseline currently has high residuals and should be treated as a model/baseline blocker, not a successful UET prediction.
@@ -148,6 +149,7 @@
 - The new Vanadium source-lock decision makes this stop machine-readable as `PATCH_BLOCKED`; the working row is intentionally unchanged until primary page confirmation and compatibility review clear together.
 - The Vanadium convention-impact gate now narrows the blocker further: the source-backed `lambda=0.91` and captured `mu_star` conventions still overpredict raw McMillan `Tc`, while the near-threshold `lambda=0.6` preview remains unsupported by current source captures.
 - The Vanadium benchmark-membership gate now prevents a cosmetic fix: Vanadium remains in the raw McMillan gate as a documented failure diagnostic until a uniform row-eligibility policy or source-labeled alternate branch verifier justifies exclusion or migration.
+- The raw McMillan row-eligibility policy generalizes that Vanadium decision: high error or metric improvement is not a valid row-exclusion reason by itself.
 - The new Vanadium primary-capture requirement packet makes the final raw-source blocker more precise, but the row still remains blocked until someone actually satisfies that capture contract from the primary source.
 - The Vanadium primary-page capture requirement is now satisfied for `Tc_observed` and `Theta_D_K_or_proxy_context`: APS harvest PDF text confirms `Tc=5.03 K` and `Theta=338±5 K`. This narrows the blocker but does not authorize a row patch because `lambda_ep` and `mu_star` still conflict with the working-row convention.
 - The new residual extraction dashboard improves coordination only; it does not itself archive evidence or reduce the raw McMillan FAIL.

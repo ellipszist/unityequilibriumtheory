@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.4_Superconductivity_Superfluids",
+  "purpose": "Uniform row-eligibility and branch-migration policy for the raw McMillan diagnostic gate.",
+  "policy_status": "active_for_hardening_control",
+  "controlling_artifact": "docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/0_4_superconductivity_superfluids_verification.json",
+  "policy_principles": [
+    "Raw McMillan membership must be controlled by formula-family and input-availability rules, not by whether a row improves the aggregate metric.",
+    "Rows with declared Tc, Theta_D or active phonon proxy, lambda_ep, and mu_star remain in the raw diagnostic gate unless a uniform exclusion rule applies.",
+    "Rows with lambda_ep or mu_star missing, or rows explicitly marked as non-BCS mechanism rows, are skipped from the raw McMillan gate and reported separately.",
+    "Rows with stronger-coupling, A15, two-gap, or convention-conflicted behavior may remain as failure diagnostics until a separate branch verifier or uniform exclusion policy exists.",
+    "Branch migration cannot erase the historical raw-gate failure; alternate branch artifacts must remain separate from the raw McMillan topic gate."
+  ],
+  "current_policy_rules": {
+    "include_in_raw_gate": [
+      {
+        "rule_id": "raw_inputs_present",
+        "condition": "Tc_K, Theta_D_K, lambda_ep, and mu_star are all present in the current raw working-copy row.",
+        "effect": "Row is evaluated by the raw McMillan diagnostic gate."
+      },
+      {
+        "rule_id": "formula_family_caveat_is_not_exclusion",
+        "condition": "Row has stronger-coupling, A15, two-gap, Type-II, or convention-conflicted behavior but still has the raw input fields present.",
+        "effect": "Row remains in the raw gate as a diagnostic failure or caveated pass unless a separate uniform exclusion rule is adopted."
+      }
+    ],
+    "skip_from_raw_gate": [
+      {
+        "rule_id": "missing_raw_coupling_inputs",
+        "condition": "lambda_ep or mu_star is missing or null.",
+        "effect": "Row is skipped and reported in skipped_rows with a reason."
+      },
+      {
+        "rule_id": "declared_non_bcs_mechanism",
+        "condition": "Row is explicitly marked as non-BCS or mechanism-incompatible for raw McMillan and lacks compatible coupling inputs.",
+        "effect": "Row is skipped from the raw McMillan diagnostic gate and routed to a future mechanism-specific branch."
+      }
+    ],
+    "do_not_use_as_exclusion_rule": [
+      {
+        "rule_id": "large_error",
+        "condition": "A row has high relative error.",
+        "effect": "Not a valid exclusion reason by itself."
+      },
+      {
+        "rule_id": "single_row_metric_improvement",
+        "condition": "Removing a row improves the aggregate average.",
+        "effect": "Not a valid exclusion reason by itself."
+      },
+      {
+        "rule_id": "inverse_fit_available",
+        "condition": "Inverse McMillan lambda can make the row fit.",
+        "effect": "Not a valid patch or inclusion/exclusion reason by itself."
+      }
+    ]
+  },
+  "current_row_classes": [
+    {
+      "class": "included_elemental_or_conventional_diagnostic_rows",
+      "rows": [
+        "Aluminum (Al)",
+        "Mercury (Hg)",
+        "Lead (Pb)",
+        "Vanadium (V)",
+        "Niobium (Nb)",
+        "Tin (Sn)",
+        "Indium (In)"
+      ],
+      "policy_status": "included_until_source-normalized_patch_or_uniform_exclusion_policy"
+    },
+    {
+      "class": "included_formula_family_stress_rows",
+      "rows": [
+        "Nb3Sn",
+        "Nb3Ge",
+        "MgB2"
+      ],
+      "policy_status": "included_as_diagnostic_stress_rows_until_alternate_branch_or_uniform_exclusion_policy"
+    },
+    {
+      "class": "skipped_non_bcs_or_missing_coupling_rows",
+      "rows": [
+        "YBCO (YBa2Cu3O7)",
+        "BSCCO-2223"
+      ],
+      "policy_status": "skipped_from_raw_mcmillan_gate_and_requires_future_mechanism_specific_branch"
+    }
+  ],
+  "vanadium_application": {
+    "membership_decision": "retain_as_gating_failure_diagnostic",
+    "reason": "Vanadium has the raw input fields present and no uniform exclusion or alternate branch verifier has been adopted.",
+    "blocked_actions": [
+      "Do not remove Vanadium solely because it is the worst current row.",
+      "Do not patch Vanadium with lambda_ep=0.6 because that value is an internal sensitivity candidate, not current source evidence.",
+      "Do not move Vanadium to an Eliashberg or Allen-Dynes branch until a source-labeled branch verifier exists."
+    ],
+    "linked_gate": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/vanadium_benchmark_membership_gate.json"
+  },
+  "future_verifier_requirements": {
+    "if_policy_becomes_executable": [
+      "Emit row_eligibility_policy path and hash in the primary artifact.",
+      "Separate included_rows, skipped_rows, excluded_rows, and branch_migration_candidates in the artifact.",
+      "Require every excluded row to name the policy rule that excluded it.",
+      "Keep raw-gate metrics based only on included_rows and publish skipped/excluded counts separately.",
+      "Record whether historical artifact comparisons are affected by any policy change."
+    ],
+    "if_branch_migration_is_adopted": [
+      "Create a branch design packet naming formula family, required fields, strict eligibility rules, and claim boundary.",
+      "Create a branch verifier artifact before changing the raw gate membership.",
+      "Update branch_claim_gate.json so branch results cannot overwrite raw McMillan status."
+    ]
+  },
+  "next_controller": {
+    "controller_name": "executable row-eligibility policy integration",
+    "controller_class": "verifier_schema_or_branch_design_wave",
+    "shortest_next_action": "Decide whether to implement this policy in the primary verifier artifact schema or first design a Vanadium-compatible alternate branch verifier."
+  },
+  "claim_boundary": "This policy is a hardening control. It does not change current raw-gate metrics, does not authorize row edits, and does not upgrade superconductivity claims."
+}

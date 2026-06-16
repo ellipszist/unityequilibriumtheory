@@ -47,6 +47,7 @@ flowchart LR
 | Evidence lanes | Primary artifact now separates raw gate, provisional sensitivity, Allen-Dynes smoke test, and row-resolution handoff | `evidence_lanes` in `Result/artifacts/0_4_superconductivity_superfluids_verification.json` | machine-readable lane status only |
 | Raw McMillan baseline | Primary current verifier; artifact status remains `FAIL` | `Result/artifacts/0_4_superconductivity_superfluids_verification.json` | internal baseline diagnostic and blocker |
 | Raw McMillan FAIL cause gate | Current broad FAIL is narrowed to a mixed raw-McMillan model-family and row-source package blocker; threshold and verifier-contract bug are not currently supported | `Data/03_Research/raw_mcmillan_fail_cause_gate.json` | blocker classification only |
+| Raw McMillan row-eligibility policy | Uniform rule that rows with raw McMillan inputs stay in the diagnostic gate unless a real exclusion rule or branch verifier exists | `Data/03_Research/raw_mcmillan_row_eligibility_policy.json` | hardening control; not metric change |
 | Inverse-McMillan audit | New failure-localization diagnostic; 9/10 rows currently over-drive `lambda_ep` relative to observed `Tc` | `parameter_mismatch_audit` in artifact | data-normalization priority, not prediction evidence |
 | Row normalization queue | Actionable per-material repair order generated from drift plus substitution sensitivity | `Data/03_Research/row_normalization_queue.json` | work queue only; not scientific evidence |
 | Row normalization status ledger | Per-row work-control artifact with source status and next actions | `Data/03_Research/row_normalization_status.json` | operations aid only |
@@ -105,6 +106,7 @@ python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment
 - `Data/03_Research/row_normalization_status.json`: current row-by-row status ledger for the normalization pass.
 - `Data/03_Research/row_normalization_candidates.json`: internal candidate values for triage before source-backed normalization.
 - `Data/03_Research/raw_mcmillan_fail_cause_gate.json`: current classifier for the raw McMillan artifact FAIL; records a mixed model-family and row-source package blocker rather than a threshold or verifier-contract bug.
+- `Data/03_Research/raw_mcmillan_row_eligibility_policy.json`: uniform row-inclusion, skip, exclusion, and branch-migration policy for the raw McMillan diagnostic gate.
 - `Data/03_Research/provisional_normalized_superconductors.json`: internal sensitivity package built from the candidate rows to estimate how much FAIL is driven by row-package drift.
 - `Data/03_Research/provisional_residual_blockers.json`: post-provisional blocker map showing which rows still fail the gate and which rows mostly need source locking.
 - `Data/03_Research/residual_blocker_row_dossiers.json`: targeted dossiers for `Nb3Sn`, `Nb3Ge`, and `Vanadium` so row-source checks can proceed without re-reading the whole artifact.
@@ -199,6 +201,7 @@ python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment
 - Many material inputs are topic-local working copies rather than normalized upstream archives.
 - Raw McMillan error is currently high and must be reported honestly.
 - The current FAIL is narrowed to a raw McMillan model-family plus row-source package blocker; the next controller is Vanadium `lambda_ep` and `mu_star` convention review, not a threshold change.
+- Row exclusion is now policy-controlled: high error, inverse-fit availability, or aggregate metric improvement cannot remove a row from the raw gate by themselves.
 - The Vanadium convention review currently points away from a simple row patch: source-backed coupling conventions still fail raw McMillan, while the older near-pass row preview lacks current source support.
 - Vanadium should not be removed from the raw gate just to improve the metric; exclusion or branch migration now requires a uniform membership policy or a source-labeled alternate branch verifier.
 - The inverse-McMillan audit points the next cleanup at row-level `lambda_ep`, `Theta_D_K`, and material-specific phonon-scale provenance.

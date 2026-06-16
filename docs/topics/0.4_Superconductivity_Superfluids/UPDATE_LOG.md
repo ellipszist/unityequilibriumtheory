@@ -6,6 +6,19 @@
 
 ## Entries
 
+### 2026-06-16 - Raw McMillan Row-Eligibility Policy
+
+- Scope: `0.4_Superconductivity_Superfluids` raw McMillan benchmark membership policy.
+- Added or changed: added a machine-readable row-eligibility policy defining include, skip, non-exclusion, and branch-migration requirements for the raw McMillan diagnostic gate.
+- Files touched: `Data/03_Research/raw_mcmillan_row_eligibility_policy.json`, `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `UPDATE_LOG.md`.
+- Verified with: local reconstruction from verifier behavior, formula audit, row evidence gates, and Vanadium membership gate; `.venv\Scripts\python.exe docs\scripts\audit\audit_core_research_hardening.py --topic 0.4_Superconductivity_Superfluids --emit-packets`.
+- Result: the policy now blocks one-row cosmetic exclusion and makes High-Tc/non-BCS skipping versus raw-input diagnostic inclusion explicit.
+- Blocker narrowed: the next controller is executable policy integration or a branch design packet, not an ad hoc Vanadium decision.
+- Still open: the primary verifier does not yet emit the policy path/hash or separate included, skipped, excluded, and branch-migration row classes.
+- Next controller: implement the policy in verifier schema or design a Vanadium-compatible alternate branch verifier.
+- Claim impact: no claim upgrade and no metric change.
+- Notes: this is a hardening control only; it preserves current raw-gate meaning.
+
 ### 2026-06-16 - Vanadium Benchmark Membership Gate
 
 - Scope: `0.4_Superconductivity_Superfluids` Vanadium raw-gate membership controller.
