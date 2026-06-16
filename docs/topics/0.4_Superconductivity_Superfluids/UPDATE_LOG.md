@@ -6,6 +6,19 @@
 
 ## Entries
 
+### 2026-06-16 - Vanadium Benchmark Membership Gate
+
+- Scope: `0.4_Superconductivity_Superfluids` Vanadium raw-gate membership controller.
+- Added or changed: added a machine-readable membership gate deciding that Vanadium stays in the raw McMillan gate as a documented failure diagnostic for now.
+- Files touched: `Data/03_Research/vanadium_benchmark_membership_gate.json`, `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `UPDATE_LOG.md`.
+- Verified with: local evidence reconstruction from the raw artifact, Vanadium source-lock decision, convention-impact gate, formula audit, and branch claim gate; `.venv\Scripts\python.exe docs\scripts\audit\audit_core_research_hardening.py --topic 0.4_Superconductivity_Superfluids --emit-packets`.
+- Result: patch, exclusion, and immediate branch migration are all blocked; retaining Vanadium as a raw-gate failure diagnostic is the selected conservative state.
+- Blocker narrowed: the next controller is no longer "what do we do with Vanadium?" broadly; it is a uniform raw McMillan row-eligibility and branch-migration policy.
+- Still open: decide whether the next implementation wave should add verifier-level row-eligibility logic or design a source-labeled Vanadium-compatible alternate branch.
+- Next controller: raw McMillan row-eligibility and branch-migration policy gate.
+- Claim impact: no claim upgrade; this prevents cosmetic PASS-seeking and preserves the current artifact meaning.
+- Notes: excluding Vanadium alone would still leave the raw McMillan average around 51.9 percent, so exclusion would not solve the topic-level FAIL.
+
 ### 2026-06-16 - Vanadium Convention Impact Gate
 
 - Scope: `0.4_Superconductivity_Superfluids` Vanadium residual-row controller.

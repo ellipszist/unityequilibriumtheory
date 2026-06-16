@@ -62,6 +62,7 @@ flowchart LR
 | Vanadium primary page capture | APS harvest PDF confirms article identity, `Tc=5.03 K`, and normal-state `Theta=338±5 K` without mirroring the PDF into the repo | `docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_primary_page_capture_record_20260516.json` | primary Tc/Theta evidence only |
 | Vanadium source-lock decision | Formal decision record for the current wave; Tc/Theta are primary-confirmed, but the older lambda-only preview remains blocked and the working row stays unchanged | `Data/03_Research/vanadium_source_lock_decision.json` | `PATCH_BLOCKED`; lambda/mu convention blocker |
 | Vanadium convention-impact gate | Source-backed `lambda=0.91` and captured `mu_star` conventions still fail raw McMillan; older near-threshold `lambda=0.6` preview remains unsupported | `Data/03_Research/vanadium_convention_impact_gate.json` | no patch; formula-family/convention controller |
+| Vanadium benchmark-membership gate | Keeps Vanadium in the raw McMillan gate as a documented failure diagnostic until a uniform exclusion or branch-migration policy exists | `Data/03_Research/vanadium_benchmark_membership_gate.json` | no cosmetic exclusion or migration |
 | A15 candidate patch preview | Shows why `Nb3Sn` and `Nb3Ge` are still not patchable without external row evidence | `Data/03_Research/a15_candidate_patch_preview.json` | blocked patch-preview workflow only |
 | Row evidence intake stub | Structured intake sheet for incoming row-level evidence before any working-copy edit is allowed | `Data/03_Research/row_evidence_intake_stub.json` | evidence-capture workflow only |
 | Row evidence readiness matrix | Shows which rows still have pending evidence fields before patch review is allowed | `Data/03_Research/row_evidence_readiness_matrix.json` | evidence-gate workflow only |
@@ -114,6 +115,7 @@ python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment
 - `Data/03_Research/vanadium_candidate_patch_preview.json`: preview of the exact `Vanadium` row edit to apply if row evidence confirms the current internal candidate.
 - `Data/03_Research/vanadium_source_lock_decision.json`: current source-lock decision for `Vanadium`; the row is `PATCH_BLOCKED` and remains unchanged because `lambda_ep` and `mu_star` still need convention review after the primary Tc/Theta capture.
 - `Data/03_Research/vanadium_convention_impact_gate.json`: preview-only gate showing that the current source-backed Vanadium coupling conventions do not rescue the raw McMillan row, while the older near-threshold preview is not source-supported.
+- `Data/03_Research/vanadium_benchmark_membership_gate.json`: membership decision gate retaining Vanadium as a raw McMillan failure diagnostic until a uniform row-eligibility policy or alternate branch verifier exists.
 - `Data/03_Research/a15_candidate_patch_preview.json`: blocked preview showing exactly why the A15 pair still cannot be edited honestly.
 - `Data/03_Research/row_evidence_intake_stub.json`: structured place to record future row evidence for `Vanadium`, `Nb3Sn`, and `Nb3Ge` before any patch is applied.
 - `Data/03_Research/row_evidence_readiness_matrix.json`: quick gate showing whether each blocker row still has pending evidence before patch review can begin.
@@ -198,6 +200,7 @@ python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment
 - Raw McMillan error is currently high and must be reported honestly.
 - The current FAIL is narrowed to a raw McMillan model-family plus row-source package blocker; the next controller is Vanadium `lambda_ep` and `mu_star` convention review, not a threshold change.
 - The Vanadium convention review currently points away from a simple row patch: source-backed coupling conventions still fail raw McMillan, while the older near-pass row preview lacks current source support.
+- Vanadium should not be removed from the raw gate just to improve the metric; exclusion or branch migration now requires a uniform membership policy or a source-labeled alternate branch verifier.
 - The inverse-McMillan audit points the next cleanup at row-level `lambda_ep`, `Theta_D_K`, and material-specific phonon-scale provenance.
 - The provisional normalized table is useful only for sensitivity analysis; it must not be cited as a source-backed repaired dataset.
 - UET coherence and relativistic correction terms are heuristic/calibration-sensitive.

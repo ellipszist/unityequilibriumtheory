@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.4_Superconductivity_Superfluids",
+  "material": "Vanadium (V)",
+  "purpose": "Machine-readable decision on Vanadium membership in the raw McMillan benchmark after convention-impact review.",
+  "controlling_inputs": {
+    "raw_mcmillan_artifact": "docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/0_4_superconductivity_superfluids_verification.json",
+    "fail_cause_gate": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/raw_mcmillan_fail_cause_gate.json",
+    "source_lock_decision": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/vanadium_source_lock_decision.json",
+    "convention_impact_gate": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/vanadium_convention_impact_gate.json",
+    "formula_audit": "docs/topics/0.4_Superconductivity_Superfluids/FORMULA_AUDIT.md",
+    "branch_claim_gate": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/branch_claim_gate.json"
+  },
+  "current_raw_gate_membership": {
+    "status": "retain_as_gating_failure_diagnostic",
+    "reason": "Vanadium is still a conventional benchmark row in the current raw McMillan table, but no source-backed patch or branch migration has been approved.",
+    "working_row_mutated": false,
+    "row_excluded_from_raw_gate": false,
+    "row_moved_to_alternate_branch": false
+  },
+  "membership_options_reviewed": [
+    {
+      "option": "patch_working_row_with_source_backed_values",
+      "decision": "not_allowed",
+      "reason": "Source-backed Tc/Theta/lambda/mu-star combinations still fail raw McMillan badly, and the captures mix primary-page thermodynamic context with open-fulltext Eliashberg convention context."
+    },
+    {
+      "option": "patch_working_row_with_older_lambda_0_6_preview",
+      "decision": "not_allowed",
+      "reason": "The near-threshold lambda=0.6 preview is an internal sensitivity value and is not supported by current Vanadium source captures."
+    },
+    {
+      "option": "exclude_vanadium_from_raw_mcmillan_gate_now",
+      "decision": "not_allowed",
+      "reason": "Exclusion would be a benchmark-membership change without a written row-eligibility policy. It also would not rescue the topic gate."
+    },
+    {
+      "option": "move_vanadium_to_eliashberg_or_allen_dynes_branch_now",
+      "decision": "not_allowed",
+      "reason": "No Vanadium alternate-branch verifier currently exists with source-labeled strict eligibility, formula-family convention checks, and an artifact-backed branch gate."
+    },
+    {
+      "option": "retain_vanadium_in_raw_gate_as_failure_diagnostic",
+      "decision": "selected",
+      "reason": "This preserves the current artifact meaning while making the row's source and model-family conflict explicit."
+    }
+  ],
+  "gate_impact_notes": {
+    "current_raw_gate_average_relative_error_percent": 62.41493526953724,
+    "current_vanadium_relative_error_percent": 156.93515224496207,
+    "average_relative_error_if_vanadium_excluded_only": 51.91268893893337,
+    "interpretation": "Removing Vanadium alone would still leave the raw McMillan gate far above the 20 percent average threshold and would not address the remaining A15/model-family blockers."
+  },
+  "future_change_requirements": {
+    "to_patch_vanadium_row": [
+      "A source-backed row package must define Tc, active phonon proxy, lambda_ep, and mu_star under one compatible convention or an explicitly justified cross-source convention.",
+      "The patch preview must show the row clears or honestly characterizes the raw McMillan gate without relying on inverse-fit values.",
+      "row_evidence_decision_gate.json must mark Vanadium eligible for patch review before real_superconductor_data.json or in-script rows are changed."
+    ],
+    "to_exclude_from_raw_gate": [
+      "VERIFICATION_SPEC.md must define a raw McMillan row-eligibility policy that applies uniformly, not only to Vanadium.",
+      "The verifier must emit skipped/excluded-row reasons separately from failed rows.",
+      "The update log must state whether exclusion changes the meaning of historical raw-gate artifacts."
+    ],
+    "to_move_to_alternate_branch": [
+      "A Vanadium-compatible Eliashberg or Allen-Dynes branch verifier must exist with source-labeled inputs and its own artifact.",
+      "Branch inputs must distinguish strict source-locked values from diagnostic, calibrated, or heuristic values.",
+      "branch_claim_gate.json must keep any branch result from overriding the raw McMillan topic gate."
+    ]
+  },
+  "next_controller": {
+    "controller_name": "raw McMillan row-eligibility and branch-migration policy",
+    "controller_class": "benchmark_membership_policy_gate",
+    "shortest_next_action": "Define a uniform row-eligibility policy before excluding or migrating Vanadium, then decide whether the next implementation wave belongs in verifier logic or an alternate branch design packet."
+  },
+  "claim_boundary": "This gate preserves Vanadium as a raw McMillan failure diagnostic and blocks cosmetic PASS-seeking. It does not authorize a row patch, exclusion, branch migration, or claim upgrade."
+}
