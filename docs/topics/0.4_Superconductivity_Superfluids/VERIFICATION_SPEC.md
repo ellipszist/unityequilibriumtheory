@@ -64,6 +64,7 @@
 - Artifact target:
   - Result/artifacts/0_4_superconductivity_superfluids_verification.json
 - Required workflow gates:
+  - `Data/03_Research/raw_mcmillan_fail_cause_gate.json`
   - `Data/03_Research/vanadium_source_lock_decision.json`
   - `docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_primary_page_capture_record_20260516.json`
   - `Data/03_Research/source_evidence_intake_stub.json`
@@ -77,6 +78,7 @@
 - Current artifact interpretation:
   - `run_status=PASS`: the verifier executed and wrote the artifact.
   - `model_gate_status=FAIL`: the raw McMillan parameter package fails the stated scientific gate.
+  - `Data/03_Research/raw_mcmillan_fail_cause_gate.json` classifies the current broad FAIL as a mixed raw-McMillan model-family and row-source package blocker; it records no current evidence that the fixed 20 percent threshold or verifier run contract is the bug.
   - Latest observed average relative error is about 62.4 percent with 1 of 10 rows within 20 percent.
   - The inverse-McMillan diagnostic currently shows 9 of 10 inverse-solvable rows have declared `lambda_ep` above the coupling required to reproduce observed `Tc` under the same `Theta_D_K` and `mu_star`.
   - Signed-error and grouped summaries should be used to determine whether the failure is systematic across conventional classes or concentrated in specific row packages.

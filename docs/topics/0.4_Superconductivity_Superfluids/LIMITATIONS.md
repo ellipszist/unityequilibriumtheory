@@ -1,6 +1,7 @@
 ﻿# Limitations
 
 - The root baseline comparison now has a saved artifact, but the current raw McMillan model gate fails: average relative error is about 62.4 percent and only 1 of 10 rows is within 20 percent.
+- The current FAIL-cause gate classifies this as a mixed raw-McMillan model-family and row-source package blocker. There is no current evidence that the fixed 20 percent threshold or verifier run-contract separation is the bug.
 - Current data posture is "real source referenced", which is below a fully normalized archival dataset package.
 - The topic still needs a clear separation between phenomenological fit behavior and stronger microscopic claims.
 - The raw McMillan baseline currently has high residuals and should be treated as a model/baseline blocker, not a successful UET prediction.
