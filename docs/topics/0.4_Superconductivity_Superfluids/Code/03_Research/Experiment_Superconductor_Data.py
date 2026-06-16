@@ -54,6 +54,9 @@ ROW_EVIDENCE_DECISION_GATE_PATH = DATA_DIR / "row_evidence_decision_gate.json"
 TOPIC_SOURCE_EVIDENCE_INTAKE_PATH = DATA_DIR / "source_evidence_intake_stub.json"
 TOPIC_SOURCE_EVIDENCE_READINESS_PATH = DATA_DIR / "source_evidence_readiness_matrix.json"
 TOPIC_BRANCH_CLAIM_GATE_PATH = DATA_DIR / "branch_claim_gate.json"
+RAW_MCMILLAN_ROW_ELIGIBILITY_POLICY_PATH = (
+    DATA_DIR / "raw_mcmillan_row_eligibility_policy.json"
+)
 ALLEN_DYNES_ARTIFACT_PATH = (
     TOPIC_DIR
     / "Result"
@@ -390,6 +393,82 @@ def source_record_hashes(source_lock: dict) -> list[dict]:
             }
         )
     return hashes
+
+
+def build_raw_mcmillan_row_eligibility_report(
+    rows: list[dict], skipped_rows: list[dict]
+) -> dict:
+    included_rows = []
+    branch_migration_candidates = []
+    for row in rows:
+        policy_rule = (
+            "raw_inputs_present"
+            if row["type"] in ["Type-I", "Type-II"]
+            else "formula_family_caveat_is_not_exclusion"
+        )
+        included_rows.append(
+            {
+                "name": row["name"],
+                "type": row["type"],
+                "source": row["source"],
+                "policy_rule": policy_rule,
+                "raw_gate_status": (
+                    "within_threshold" if row["within_20_percent"] else "failed_threshold"
+                ),
+                "relative_error_percent": row["relative_error_percent"],
+            }
+        )
+        if row["type"] in ["A15", "Two-Gap"] or row["name"] == "Vanadium (V)":
+            branch_migration_candidates.append(
+                {
+                    "name": row["name"],
+                    "type": row["type"],
+                    "candidate_status": "review_candidate_only",
+                    "current_raw_gate_membership": "included",
+                    "reason": (
+                        "Formula-family or convention caveat exists, but no "
+                        "source-labeled alternate branch verifier has migrated this row."
+                    ),
+                }
+            )
+
+    return {
+        "schema_version": "1.0",
+        "policy": {
+            "path": str(RAW_MCMILLAN_ROW_ELIGIBILITY_POLICY_PATH),
+            "sha256": hash_file(RAW_MCMILLAN_ROW_ELIGIBILITY_POLICY_PATH),
+            "status": (
+                "present"
+                if RAW_MCMILLAN_ROW_ELIGIBILITY_POLICY_PATH.exists()
+                else "missing"
+            ),
+        },
+        "summary": {
+            "included_rows": len(included_rows),
+            "skipped_rows": len(skipped_rows),
+            "excluded_rows": 0,
+            "branch_migration_candidates": len(branch_migration_candidates),
+            "policy_executable_in_this_artifact": True,
+            "metrics_changed_by_policy": False,
+        },
+        "included_rows": included_rows,
+        "skipped_rows": [
+            {
+                "name": row["name"],
+                "type": row["type"],
+                "source": row["source"],
+                "policy_rule": "missing_raw_coupling_inputs_or_declared_non_bcs",
+                "reason": row["reason"],
+            }
+            for row in skipped_rows
+        ],
+        "excluded_rows": [],
+        "branch_migration_candidates": branch_migration_candidates,
+        "claim_boundary": (
+            "This report makes row membership auditable. It does not exclude rows, "
+            "migrate rows, change raw-gate metrics, or upgrade claims."
+        ),
+    }
 
 
 def normalize_material_name(name: str) -> str:
@@ -2485,11 +2564,15 @@ def build_evidence_lanes(
 ) -> dict:
     allen_dynes_artifact = load_json(ALLEN_DYNES_ARTIFACT_PATH)
     raw_failed_rows = [row for row in rows if not row["within_20_percent"]]
+    row_eligibility_report = build_raw_mcmillan_row_eligibility_report(
+        rows, skipped_rows
+    )
     return {
         "schema_version": "1.0",
         "raw_mcmillan_gate": {
             "lane_role": "primary topic gate",
             "model_gate_status": status,
+            "row_eligibility_summary": row_eligibility_report["summary"],
             "claim_class": (
                 "internal baseline diagnostic"
                 if status == "PASS"
@@ -2588,6 +2671,9 @@ def build_evidence_lanes(
 def write_artifact(output_path: Path, avg_err: float, rows: list[dict], skipped_rows: list[dict]) -> None:
     data_path = DATA_DIR / "real_superconductor_data.json"
     source_lock = load_source_lock()
+    row_eligibility_report = build_raw_mcmillan_row_eligibility_report(
+        rows, skipped_rows
+    )
     topic_source_evidence_intake_stub = build_topic_source_evidence_intake_stub()
     topic_source_evidence_readiness_matrix = build_topic_source_evidence_readiness_matrix()
     topic_branch_claim_gate = build_topic_branch_claim_gate()
@@ -2662,7 +2748,7 @@ def write_artifact(output_path: Path, avg_err: float, rows: list[dict], skipped_
         vanadium_source_lock_decision=vanadium_source_lock_decision,
     )
     artifact = {
-        "schema_version": "1.3",
+        "schema_version": "1.4",
         "topic": "0.4_Superconductivity_Superfluids",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "command": "python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment_Superconductor_Data.py",
@@ -2709,6 +2795,8 @@ def write_artifact(output_path: Path, avg_err: float, rows: list[dict], skipped_
             "summary": topic_branch_claim_gate["summary"],
             "claim_boundary": topic_branch_claim_gate["claim_boundary"],
         },
+        "raw_mcmillan_row_eligibility_policy": row_eligibility_report["policy"],
+        "row_eligibility": row_eligibility_report,
         "thresholds": {
             "average_relative_error_percent_max": 20.0,
             "per_material_relative_error_percent_max": 20.0,
@@ -2718,6 +2806,12 @@ def write_artifact(output_path: Path, avg_err: float, rows: list[dict], skipped_
             "materials_tested": len(rows),
             "materials_within_20_percent": sum(1 for row in rows if row["within_20_percent"]),
             "materials_skipped_from_raw_mcmillan_gate": len(skipped_rows),
+            "materials_excluded_from_raw_mcmillan_gate": row_eligibility_report[
+                "summary"
+            ]["excluded_rows"],
+            "branch_migration_candidates": row_eligibility_report["summary"][
+                "branch_migration_candidates"
+            ],
             "source_targets_ready_for_review": topic_source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
             "source_targets_blocked": topic_source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
             "accepted_claim_branches": topic_branch_claim_gate["summary"]["accepted_now"],

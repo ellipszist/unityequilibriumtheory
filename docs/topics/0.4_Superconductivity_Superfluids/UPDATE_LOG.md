@@ -6,6 +6,19 @@
 
 ## Entries
 
+### 2026-06-16 - Executable Row-Eligibility Artifact Schema
+
+- Scope: `0.4_Superconductivity_Superfluids` primary raw McMillan verifier schema.
+- Added or changed: updated the primary verifier to emit raw McMillan row-eligibility policy path/hash plus included, skipped, excluded, and branch-migration-candidate row classes.
+- Files touched: `Code/03_Research/Experiment_Superconductor_Data.py`, `Result/artifacts/0_4_superconductivity_superfluids_verification.json`, `Data/03_Research/raw_mcmillan_row_eligibility_policy.json`, `Data/03_Research/branch_claim_gate.json`, `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `UPDATE_LOG.md`.
+- Verified with: `.venv\Scripts\python.exe docs\topics\0.4_Superconductivity_Superfluids\Code\03_Research\Experiment_Superconductor_Data.py`; `.venv\Scripts\python.exe docs\scripts\audit\audit_core_research_hardening.py --topic 0.4_Superconductivity_Superfluids --emit-packets`.
+- Result: primary artifact schema is now `1.4`; `row_eligibility.summary` reports 10 included rows, 2 skipped rows, 0 excluded rows, 4 branch-migration candidates, and `metrics_changed_by_policy=false`.
+- Blocker narrowed: the row-eligibility policy is now executable in the artifact schema; the next controller is branch design or stricter exclusion-rule implementation, not policy visibility.
+- Still open: no Vanadium-compatible alternate branch verifier exists yet, and no row has a source-backed migration or exclusion decision.
+- Next controller: source-labeled alternate branch design for Vanadium or stricter executable exclusion rules.
+- Claim impact: no claim upgrade and no metric change; raw McMillan artifact remains FAIL.
+- Notes: the branch-claim gate hash changed because the primary verifier regenerated it with the current Allen-Dynes artifact hash.
+
 ### 2026-06-16 - Raw McMillan Row-Eligibility Policy
 
 - Scope: `0.4_Superconductivity_Superfluids` raw McMillan benchmark membership policy.

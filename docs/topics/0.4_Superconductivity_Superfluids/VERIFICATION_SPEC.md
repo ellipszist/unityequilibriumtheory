@@ -82,7 +82,7 @@
   - `run_status=PASS`: the verifier executed and wrote the artifact.
   - `model_gate_status=FAIL`: the raw McMillan parameter package fails the stated scientific gate.
   - `Data/03_Research/raw_mcmillan_fail_cause_gate.json` classifies the current broad FAIL as a mixed raw-McMillan model-family and row-source package blocker; it records no current evidence that the fixed 20 percent threshold or verifier run contract is the bug.
-  - `Data/03_Research/raw_mcmillan_row_eligibility_policy.json` makes row inclusion/exclusion rules explicit: rows with raw McMillan inputs stay in the diagnostic gate unless a uniform exclusion rule or branch verifier exists; high error alone is not an exclusion rule.
+  - `Data/03_Research/raw_mcmillan_row_eligibility_policy.json` now has executable support in the primary artifact: the verifier emits the policy path/hash plus included, skipped, excluded, and branch-migration-candidate row classes while keeping the current metrics unchanged.
   - Latest observed average relative error is about 62.4 percent with 1 of 10 rows within 20 percent.
   - The inverse-McMillan diagnostic currently shows 9 of 10 inverse-solvable rows have declared `lambda_ep` above the coupling required to reproduce observed `Tc` under the same `Theta_D_K` and `mu_star`.
   - Signed-error and grouped summaries should be used to determine whether the failure is systematic across conventional classes or concentrated in specific row packages.

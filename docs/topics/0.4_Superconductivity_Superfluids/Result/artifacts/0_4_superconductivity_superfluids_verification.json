@@ -23,7 +23,7 @@
   "branch_claim_gate": {
     "claim_boundary": "This gate cannot raise the topic above the current baseline-diagnostic status while the raw McMillan artifact remains FAIL.",
     "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\branch_claim_gate.json",
-    "sha256": "4bfd18b93e8ea6e5c23af61d0a97e38ec6991ac7e21429458751e1d2c6e72542",
+    "sha256": "ad4e877552da51e5b688c1eff506d3e7f51fd2df07f3c2773f3d1f59cd55a98d",
     "summary": {
       "accepted_now": 2,
       "allen_dynes_branch_gate": "PASS",
@@ -48,7 +48,7 @@
   "evidence_lanes": {
     "allen_dynes_nb3sn_smoke_test": {
       "artifact_path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Result\\artifacts\\0_4_superconductivity_superfluids_allen_dynes_verification.json",
-      "artifact_sha256": "8dbfd46f554631fd85a1f0ec66469fd857d03141c02116a3d26fb38980893e98",
+      "artifact_sha256": "473785a69e589fa4256378701e68fb8ae3e20e6b236aa56453e6c4da688cc9f8",
       "claim_boundary": "This PASS, when present, is limited to the Nb3Sn Allen-Dynes smoke-test rows. It does not change the raw McMillan artifact or promote the full superconductivity topic.",
       "claim_class": "source-labeled branch smoke test",
       "lane_role": "separate branch gate",
@@ -84,6 +84,14 @@
         "materials_within_20_percent": 1
       },
       "model_gate_status": "FAIL",
+      "row_eligibility_summary": {
+        "branch_migration_candidates": 4,
+        "excluded_rows": 0,
+        "included_rows": 10,
+        "metrics_changed_by_policy": false,
+        "policy_executable_in_this_artifact": true,
+        "skipped_rows": 2
+      },
       "thresholds": {
         "average_relative_error_percent_max": 20.0,
         "per_material_relative_error_percent_max": 20.0
@@ -234,6 +242,8 @@
   "metrics": {
     "accepted_claim_branches": 2,
     "average_relative_error_percent": 62.41493526953724,
+    "branch_migration_candidates": 4,
+    "materials_excluded_from_raw_mcmillan_gate": 0,
     "materials_skipped_from_raw_mcmillan_gate": 2,
     "materials_tested": 10,
     "materials_within_20_percent": 1,
@@ -461,6 +471,11 @@
         "within_20_percent_after_provisional": true
       }
     ]
+  },
+  "raw_mcmillan_row_eligibility_policy": {
+    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\raw_mcmillan_row_eligibility_policy.json",
+    "sha256": "7376b4d073afb31c3488daa562858f147cd31c5831b8214223a63681fda0d44e",
+    "status": "present"
   },
   "residual_blocker_field_lock_matrix": {
     "claim_boundary": "This field-lock matrix is a workflow control layer only. It tracks unresolved fields but does not certify them as source-backed.",
@@ -862,6 +877,152 @@
       "within_20_percent": true
     }
   ],
+  "row_eligibility": {
+    "branch_migration_candidates": [
+      {
+        "candidate_status": "review_candidate_only",
+        "current_raw_gate_membership": "included",
+        "name": "Vanadium (V)",
+        "reason": "Formula-family or convention caveat exists, but no source-labeled alternate branch verifier has migrated this row.",
+        "type": "Type-II"
+      },
+      {
+        "candidate_status": "review_candidate_only",
+        "current_raw_gate_membership": "included",
+        "name": "Nb3Sn",
+        "reason": "Formula-family or convention caveat exists, but no source-labeled alternate branch verifier has migrated this row.",
+        "type": "A15"
+      },
+      {
+        "candidate_status": "review_candidate_only",
+        "current_raw_gate_membership": "included",
+        "name": "Nb3Ge",
+        "reason": "Formula-family or convention caveat exists, but no source-labeled alternate branch verifier has migrated this row.",
+        "type": "A15"
+      },
+      {
+        "candidate_status": "review_candidate_only",
+        "current_raw_gate_membership": "included",
+        "name": "MgB2",
+        "reason": "Formula-family or convention caveat exists, but no source-labeled alternate branch verifier has migrated this row.",
+        "type": "Two-Gap"
+      }
+    ],
+    "claim_boundary": "This report makes row membership auditable. It does not exclude rows, migrate rows, change raw-gate metrics, or upgrade claims.",
+    "excluded_rows": [],
+    "included_rows": [
+      {
+        "name": "Aluminum (Al)",
+        "policy_rule": "raw_inputs_present",
+        "raw_gate_status": "failed_threshold",
+        "relative_error_percent": 86.55242288064956,
+        "source": "McMillan 1968",
+        "type": "Type-I"
+      },
+      {
+        "name": "Mercury (Hg)",
+        "policy_rule": "raw_inputs_present",
+        "raw_gate_status": "failed_threshold",
+        "relative_error_percent": 73.61477118183707,
+        "source": "Onnes 1911 / Kittel",
+        "type": "Type-I"
+      },
+      {
+        "name": "Lead (Pb)",
+        "policy_rule": "raw_inputs_present",
+        "raw_gate_status": "failed_threshold",
+        "relative_error_percent": 33.975223995527934,
+        "source": "MIT Junior Lab",
+        "type": "Type-I"
+      },
+      {
+        "name": "Vanadium (V)",
+        "policy_rule": "raw_inputs_present",
+        "raw_gate_status": "failed_threshold",
+        "relative_error_percent": 156.93515224496207,
+        "source": "MIT Junior Lab",
+        "type": "Type-II"
+      },
+      {
+        "name": "Niobium (Nb)",
+        "policy_rule": "raw_inputs_present",
+        "raw_gate_status": "failed_threshold",
+        "relative_error_percent": 65.32366701043355,
+        "source": "Kittel / MIT",
+        "type": "Type-II"
+      },
+      {
+        "name": "Tin (Sn)",
+        "policy_rule": "raw_inputs_present",
+        "raw_gate_status": "failed_threshold",
+        "relative_error_percent": 65.53626864429087,
+        "source": "Kittel",
+        "type": "Type-I"
+      },
+      {
+        "name": "Indium (In)",
+        "policy_rule": "raw_inputs_present",
+        "raw_gate_status": "failed_threshold",
+        "relative_error_percent": 30.623739557942258,
+        "source": "Kittel",
+        "type": "Type-I"
+      },
+      {
+        "name": "Nb3Sn",
+        "policy_rule": "formula_family_caveat_is_not_exclusion",
+        "raw_gate_status": "failed_threshold",
+        "relative_error_percent": 56.317125564989745,
+        "source": "Matthias 1954",
+        "type": "A15"
+      },
+      {
+        "name": "Nb3Ge",
+        "policy_rule": "formula_family_caveat_is_not_exclusion",
+        "raw_gate_status": "failed_threshold",
+        "relative_error_percent": 48.83848988201212,
+        "source": "Gavaler 1973",
+        "type": "A15"
+      },
+      {
+        "name": "MgB2",
+        "policy_rule": "formula_family_caveat_is_not_exclusion",
+        "raw_gate_status": "within_threshold",
+        "relative_error_percent": 6.432491732727168,
+        "source": "Nagamatsu 2001 Nature",
+        "type": "Two-Gap"
+      }
+    ],
+    "policy": {
+      "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\raw_mcmillan_row_eligibility_policy.json",
+      "sha256": "7376b4d073afb31c3488daa562858f147cd31c5831b8214223a63681fda0d44e",
+      "status": "present"
+    },
+    "schema_version": "1.0",
+    "skipped_rows": [
+      {
+        "name": "YBCO (YBa2Cu3O7)",
+        "policy_rule": "missing_raw_coupling_inputs_or_declared_non_bcs",
+        "reason": "missing lambda_ep or non-BCS row for raw McMillan baseline",
+        "source": "Wu 1987 PRL",
+        "type": "High-Tc Cuprate"
+      },
+      {
+        "name": "BSCCO-2223",
+        "policy_rule": "missing_raw_coupling_inputs_or_declared_non_bcs",
+        "reason": "missing lambda_ep or non-BCS row for raw McMillan baseline",
+        "source": "Maeda 1988",
+        "type": "High-Tc Cuprate"
+      }
+    ],
+    "summary": {
+      "branch_migration_candidates": 4,
+      "excluded_rows": 0,
+      "included_rows": 10,
+      "metrics_changed_by_policy": false,
+      "policy_executable_in_this_artifact": true,
+      "skipped_rows": 2
+    }
+  },
   "row_evidence_decision_gate": {
     "claim_boundary": "This decision gate is a review-control layer only. It does not authorize a row patch or claim upgrade by itself.",
     "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\row_evidence_decision_gate.json",
@@ -1818,7 +1979,7 @@
     "sha256": "1305e80ca5e8f310c3366593bd857b1b1b6772b953a36de69548b23f83e1e030"
   },
   "run_status": "PASS",
-  "schema_version": "1.3",
+  "schema_version": "1.4",
   "skipped_rows": [
     {
       "name": "YBCO (YBa2Cu3O7)",
@@ -2464,7 +2625,7 @@
     "average_relative_error_percent_max": 20.0,
     "per_material_relative_error_percent_max": 20.0
   },
-  "timestamp_utc": "2026-05-16T22:07:03.543910+00:00",
+  "timestamp_utc": "2026-06-16T13:06:01.740949+00:00",
   "topic": "0.4_Superconductivity_Superfluids",
   "type_summary": [
     {

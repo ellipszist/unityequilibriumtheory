@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "topic": "0.4_Superconductivity_Superfluids",
   "purpose": "Uniform row-eligibility and branch-migration policy for the raw McMillan diagnostic gate.",
-  "policy_status": "active_for_hardening_control",
+  "policy_status": "executable_in_primary_artifact_schema",
   "controlling_artifact": "docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/0_4_superconductivity_superfluids_verification.json",
   "policy_principles": [
     "Raw McMillan membership must be controlled by formula-family and input-availability rules, not by whether a row improves the aggregate metric.",
@@ -96,13 +96,18 @@
     ],
     "linked_gate": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/vanadium_benchmark_membership_gate.json"
   },
-  "future_verifier_requirements": {
-    "if_policy_becomes_executable": [
-      "Emit row_eligibility_policy path and hash in the primary artifact.",
-      "Separate included_rows, skipped_rows, excluded_rows, and branch_migration_candidates in the artifact.",
-      "Require every excluded row to name the policy rule that excluded it.",
-      "Keep raw-gate metrics based only on included_rows and publish skipped/excluded counts separately.",
-      "Record whether historical artifact comparisons are affected by any policy change."
+  "verifier_schema_state": {
+    "implemented_now": [
+      "The primary artifact emits the policy path and hash.",
+      "The primary artifact separates included_rows, skipped_rows, excluded_rows, and branch_migration_candidates.",
+      "The primary artifact records that excluded_rows is currently zero.",
+      "The primary artifact records that metrics_changed_by_policy is false.",
+      "Raw-gate metrics remain based on the same 10 included rows as before this policy became executable."
+    ],
+    "still_required_for_future_policy_changes": [
+      "If any row is excluded later, the artifact must name the policy rule that excluded it.",
+      "If an exclusion or migration changes historical comparability, the artifact and update log must say so.",
+      "If branch migration is adopted, raw-gate and branch-gate metrics must remain separate."
     ],
     "if_branch_migration_is_adopted": [
       "Create a branch design packet naming formula family, required fields, strict eligibility rules, and claim boundary.",
@@ -111,9 +116,9 @@
     ]
   },
   "next_controller": {
-    "controller_name": "executable row-eligibility policy integration",
-    "controller_class": "verifier_schema_or_branch_design_wave",
-    "shortest_next_action": "Decide whether to implement this policy in the primary verifier artifact schema or first design a Vanadium-compatible alternate branch verifier."
+    "controller_name": "Vanadium-compatible alternate branch design or stricter executable exclusion rules",
+    "controller_class": "branch_design_or_policy_refinement_wave",
+    "shortest_next_action": "Design a source-labeled Vanadium-compatible alternate branch verifier, or tighten executable exclusion rules before any row migration is attempted."
   },
   "claim_boundary": "This policy is a hardening control. It does not change current raw-gate metrics, does not authorize row edits, and does not upgrade superconductivity claims."
 }
