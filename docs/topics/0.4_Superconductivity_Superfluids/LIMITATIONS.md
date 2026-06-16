@@ -146,6 +146,7 @@
 - The new Vanadium compatibility packet now makes one blocker sharper: the captured `lambda` and `mu_star` values do not automatically support either the current working row or the older internal lambda-only patch preview.
 - The new Vanadium patch-block decision now turns that blocker into an explicit workflow stop: the older lambda-only preview is not safe to execute under the current evidence state.
 - The new Vanadium source-lock decision makes this stop machine-readable as `PATCH_BLOCKED`; the working row is intentionally unchanged until primary page confirmation and compatibility review clear together.
+- The Vanadium convention-impact gate now narrows the blocker further: the source-backed `lambda=0.91` and captured `mu_star` conventions still overpredict raw McMillan `Tc`, while the near-threshold `lambda=0.6` preview remains unsupported by current source captures.
 - The new Vanadium primary-capture requirement packet makes the final raw-source blocker more precise, but the row still remains blocked until someone actually satisfies that capture contract from the primary source.
 - The Vanadium primary-page capture requirement is now satisfied for `Tc_observed` and `Theta_D_K_or_proxy_context`: APS harvest PDF text confirms `Tc=5.03 K` and `Theta=338±5 K`. This narrows the blocker but does not authorize a row patch because `lambda_ep` and `mu_star` still conflict with the working-row convention.
 - The new residual extraction dashboard improves coordination only; it does not itself archive evidence or reduce the raw McMillan FAIL.

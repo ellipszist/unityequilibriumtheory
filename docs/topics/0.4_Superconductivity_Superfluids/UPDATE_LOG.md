@@ -6,6 +6,19 @@
 
 ## Entries
 
+### 2026-06-16 - Vanadium Convention Impact Gate
+
+- Scope: `0.4_Superconductivity_Superfluids` Vanadium residual-row controller.
+- Added or changed: added a machine-readable convention-impact gate comparing current, primary-page, source-backed coupling, and unsupported older-preview Vanadium McMillan cases.
+- Files touched: `Data/03_Research/vanadium_convention_impact_gate.json`, `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `UPDATE_LOG.md`.
+- Verified with: local McMillan formula preview over Vanadium candidate cases; `.venv\Scripts\python.exe docs\scripts\audit\audit_core_research_hardening.py --topic 0.4_Superconductivity_Superfluids --emit-packets`.
+- Result: source-backed `lambda=0.91` plus captured `mu_star` conventions still fail the raw McMillan row, with best source-backed preview still about 107 percent relative error; older `lambda=0.6` preview remains near-threshold but unsupported.
+- Blocker narrowed: Vanadium is no longer just "lambda/mu convention unclear"; current source-backed convention values also do not rescue the raw McMillan gate.
+- Still open: decide whether Vanadium remains a documented raw-McMillan row-source/model-family failure, moves to an Eliashberg/Allen-Dynes-compatible branch, or is excluded from the raw McMillan gate with explicit source-backed rationale.
+- Next controller: Vanadium formula-family/benchmark membership decision before any row patch.
+- Claim impact: no claim upgrade; working row remains unchanged and the primary raw McMillan artifact remains FAIL.
+- Notes: no primary verifier rerun was done because no source-backed row patch was applied.
+
 ### 2026-06-16 - Raw McMillan FAIL Cause Classification
 
 - Scope: `0.4_Superconductivity_Superfluids` primary verifier blocker.
