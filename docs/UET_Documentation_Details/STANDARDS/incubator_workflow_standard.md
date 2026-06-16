@@ -8,5 +8,5 @@
 👉 **[thailand_proposals/](file:///c:/Users/santa/Desktop/uet_harness/thailand_proposals)**
 
 สำหรับมาตรฐานการดำเนินงานและการจัดโครงสร้างใหม่ สามารถอ่านต่อได้ที่:
-👉 **[thailand_proposals_standard.md](file:///c:/Users/santa/Desktop/uet_harness/thailand_proposals/thailand_proposals_standard.md)**
+👉 **[thailand_proposals_standard.md](../../../thailand_proposals/thailand_proposals_standard.md)**
 
