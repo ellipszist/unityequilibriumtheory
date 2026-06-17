@@ -19,6 +19,8 @@
   - Raw-table-derived AME2020 subset for selected nuclei plus PRad/CODATA proton-radius benchmarks.
 - Reported metrics:
   - binding-energy-per-nucleon residuals for the extracted subset
+  - SEMF-only binding-energy residuals for the extracted subset
+  - SEMF-plus-correction residuals and correction error deltas for the extracted subset
   - proton-radius residual
   - parsed-table coverage count
   - validation-subset count
@@ -33,15 +35,24 @@
 - Required workflow gates from the primary verifier:
   - `Data/03_Research/source_evidence_intake_stub.json`
   - `Data/03_Research/source_evidence_readiness_matrix.json`
+  - `Data/03_Research/semf_coefficient_provenance_gate.json`
+  - `Data/03_Research/pdg_hadron_qcd_source_mapping_gate.json`
   - `Data/03_Research/branch_claim_gate.json`
   - embedded `nuclear_claim_scope_gate` in `Result/artifacts/nuclear_binding_source_locked_validation.json`
 - Latest audit-run artifact identity:
-  - Source-locked verifier: `PASS`, dataset hash `a822071ab7769934cdae9a12da598d8dd48d7bcf7e09a53364be28e991b14689`, timestamp `2026-04-28T14:12:54.216457+00:00`.
-  - Full-table diagnostic: `DIAGNOSTIC`, dataset hash `5513ae294bc68c16b7c6649a28dcd088c2901d87a17c1d8895c912b993451f2e`, timestamp `2026-04-28T14:13:12.509370+00:00`.
+  - Source-locked verifier: `PASS`, dataset hash `d6f5d045222d0eca354ecf22d1b9b9bf1df24c49c31f46ccde7ed4a368555287`, timestamp `2026-06-17T01:14:27.709551+00:00`.
+  - Full-table diagnostic: `DIAGNOSTIC`, dataset hash `5513ae294bc68c16b7c6649a28dcd088c2901d87a17c1d8895c912b993451f2e`, timestamp `2026-06-17T01:08:33.803330+00:00`.
+  - The successful 2026-06-17 rerun used the bundled Codex Python at `C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe` because `python`/`py` were not on PATH and the repo `.venv` executable returned `Access is denied`.
   - The UTF-8 environment variables are required on this Windows shell because the logger emits Unicode status glyphs; without them the verifier can fail before artifact review with a console encoding error.
+- Current decomposition result:
+  - Heavy selected-subset SEMF-only mean error: about `0.86%`.
+  - Heavy selected-subset total-path mean error after current correction terms: about `1.68%`.
+  - This means the current correction lane is diagnostic and should not be described as improving the heavy-nucleus subset.
 - Interpretation:
   - A pass means the current engine is numerically compatible with the raw-derived AME2020 subset for heavy nuclei and with the proton-radius benchmark.
   - Treat `nuclear_claim_scope_gate` as the artifact-level controller for what the PASS may export to integration topics.
+  - Treat `semf_coefficient_provenance_gate.json` as the controller for parameter-free or first-principles wording.
+  - Treat `pdg_hadron_qcd_source_mapping_gate.json` as the controller for hadron/quark/QCD source-integration wording; current status is `SOURCE_EXISTS_NOT_INTEGRATED`.
   - It does not automatically certify light nuclei, hadron masses, QCD running, or confinement branches.
   - The diagnostic artifact summarizes table-wide behavior across the parsed AME2020 rows and should be used to describe broad performance honestly, especially the heavy-vs-light split.
   - It now certifies that table-wide AME2020 parsing is present, but it does not yet certify that the engine passes the full parsed AME table or a complete first-principles derivation of hadronic and nuclear structure.

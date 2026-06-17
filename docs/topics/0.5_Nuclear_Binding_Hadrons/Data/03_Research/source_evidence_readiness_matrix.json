@@ -31,18 +31,15 @@
     {
       "name": "PDG quark-mass source package",
       "priority": "high",
-      "fields_total": 6,
-      "fields_complete": 1,
-      "fields_pending": 5,
+      "fields_total": 7,
+      "fields_complete": 5,
+      "fields_pending": 2,
       "pending_fields": [
-        "doi_or_url",
-        "local_path",
-        "table_or_review_identifier",
-        "retrieval_date",
-        "extraction_note"
+        "extraction_note",
+        "verifier_integration"
       ],
       "ready_for_source_review": false,
-      "blocking_reason": "Working-copy source label exists, but the PDG package is not yet source-locked to an upstream record in this topic."
+      "blocking_reason": "PDG 2025 SQLite exists and a source-mapping gate identifies quark and hadron records, but topic 0.5 hadron/QCD scripts still do not read that package."
     },
     {
       "name": "QCD running benchmark package",
@@ -58,7 +55,7 @@
         "bug_status_note"
       ],
       "ready_for_source_review": false,
-      "blocking_reason": "The QCD branch still has unresolved source-lock work and an open alpha_s_uet_v2 data-shape bug."
+      "blocking_reason": "The QCD branch still has unresolved alpha_s source mapping and an open alpha_s_uet_v2 data-shape bug."
     },
     {
       "name": "Confinement proof gate package",

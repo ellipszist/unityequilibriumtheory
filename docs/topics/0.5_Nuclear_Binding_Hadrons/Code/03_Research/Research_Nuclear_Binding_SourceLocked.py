@@ -50,6 +50,8 @@ PDG_QUARKS_JSON = data_dir / "Data_PDG_Quarks_2024.json"
 SOURCE_EVIDENCE_INTAKE_PATH = data_dir / "source_evidence_intake_stub.json"
 SOURCE_EVIDENCE_READINESS_PATH = data_dir / "source_evidence_readiness_matrix.json"
 BRANCH_CLAIM_GATE_PATH = data_dir / "branch_claim_gate.json"
+SEMF_COEFFICIENT_GATE_PATH = data_dir / "semf_coefficient_provenance_gate.json"
+PDG_HADRON_QCD_MAPPING_GATE_PATH = data_dir / "pdg_hadron_qcd_source_mapping_gate.json"
 
 
 def load_json(path: Path) -> dict:
@@ -63,6 +65,26 @@ def write_json(path: Path, payload: dict) -> None:
 
 def binding_per_nucleon(be_kev: float, a: int) -> float:
     return (be_kev / 1000.0) / a
+
+
+def relative_error_percent(predicted: float, observed: float) -> float:
+    return abs(predicted - observed) / observed * 100 if observed else 0.0
+
+
+def summarize_errors(errors: list[float]) -> dict:
+    if not errors:
+        return {
+            "count": 0,
+            "mean_error_percent": None,
+            "median_error_percent": None,
+            "max_error_percent": None,
+        }
+    return {
+        "count": len(errors),
+        "mean_error_percent": statistics.fmean(errors),
+        "median_error_percent": statistics.median(errors),
+        "max_error_percent": max(errors),
+    }
 
 
 def build_source_evidence_intake_stub() -> dict:
@@ -100,7 +122,7 @@ def build_source_evidence_intake_stub() -> dict:
             {
                 "name": "PDG quark-mass source package",
                 "priority": "high",
-                "status_hint": "pending_external_source_lock",
+                "status_hint": "source_exists_not_integrated",
                 "evidence_entries": [
                     "doi_or_url",
                     "local_path",
@@ -108,6 +130,7 @@ def build_source_evidence_intake_stub() -> dict:
                     "retrieval_date",
                     "unit_basis",
                     "extraction_note",
+                    "source_mapping_gate",
                 ],
             },
             {
@@ -166,18 +189,15 @@ def build_source_evidence_readiness_matrix() -> dict:
         {
             "name": "PDG quark-mass source package",
             "priority": "high",
-            "fields_total": 6,
-            "fields_complete": 1,
-            "fields_pending": 5,
+            "fields_total": 7,
+            "fields_complete": 5,
+            "fields_pending": 2,
             "pending_fields": [
-                "doi_or_url",
-                "local_path",
-                "table_or_review_identifier",
-                "retrieval_date",
                 "extraction_note",
+                "verifier_integration",
             ],
             "ready_for_source_review": False,
-            "blocking_reason": "Working-copy source label exists, but the PDG package is not yet source-locked to an upstream record in this topic.",
+            "blocking_reason": "PDG 2025 SQLite exists and a source-mapping gate identifies quark and hadron records, but topic 0.5 hadron/QCD scripts still do not read that package.",
         },
         {
             "name": "QCD running benchmark package",
@@ -193,7 +213,7 @@ def build_source_evidence_readiness_matrix() -> dict:
                 "bug_status_note",
             ],
             "ready_for_source_review": False,
-            "blocking_reason": "The QCD branch still has unresolved source-lock work and an open alpha_s_uet_v2 data-shape bug.",
+            "blocking_reason": "The QCD branch still has unresolved alpha_s source mapping and an open alpha_s_uet_v2 data-shape bug.",
         },
         {
             "name": "Confinement proof gate package",
@@ -223,6 +243,120 @@ def build_source_evidence_readiness_matrix() -> dict:
         },
         "readiness_rows": rows,
         "claim_boundary": "A ready row means the topic has enough local provenance structure for source review. It does not itself upgrade a claim.",
+    }
+
+
+def build_semf_coefficient_provenance_gate() -> dict:
+    return {
+        "schema_version": "1.0",
+        "topic": "0.5_Nuclear_Binding_Hadrons",
+        "purpose": "Machine-readable provenance gate for SEMF coefficients used by Engine_Nuclear_Binding.py.",
+        "controller_status": "BLOCKED_FOR_PARAMETER_FREE_CLAIMS",
+        "claim_boundary": (
+            "The current nuclear-binding engine may be described as a checked-local SEMF baseline plus "
+            "heuristic correction workflow. It must not be described as parameter-free or first-principles "
+            "until the SEMF coefficient source package is locked."
+        ),
+        "code_surface": "Code/01_Engine/Engine_Nuclear_Binding.py",
+        "coefficients": [
+            {
+                "symbol": "a_vol",
+                "term": "volume",
+                "value": 15.75,
+                "unit": "MeV",
+                "source_status": "checked_local_reference",
+                "source_note": "Hardcoded in engine with only a broad Wapstra/Nuclear Physics A comment; no topic-local source record pins this exact value.",
+            },
+            {
+                "symbol": "a_surf",
+                "term": "surface",
+                "value": 17.8,
+                "unit": "MeV",
+                "source_status": "checked_local_reference",
+                "source_note": "Hardcoded in engine with only a broad Wapstra/Nuclear Physics A comment; no topic-local source record pins this exact value.",
+            },
+            {
+                "symbol": "a_coul",
+                "term": "coulomb",
+                "value": 0.711,
+                "unit": "MeV",
+                "source_status": "checked_local_reference",
+                "source_note": "Hardcoded in engine with only a broad Wapstra/Nuclear Physics A comment; no topic-local source record pins this exact value.",
+            },
+            {
+                "symbol": "a_asym",
+                "term": "asymmetry",
+                "value": 23.7,
+                "unit": "MeV",
+                "source_status": "checked_local_reference",
+                "source_note": "Hardcoded in engine with only a broad Wapstra/Nuclear Physics A comment; no topic-local source record pins this exact value.",
+            },
+            {
+                "symbol": "a_pair",
+                "term": "pairing",
+                "value": 11.18,
+                "unit": "MeV",
+                "source_status": "checked_local_reference",
+                "source_note": "Hardcoded in engine with only a broad Wapstra/Nuclear Physics A comment; no topic-local source record pins this exact value.",
+            },
+        ],
+        "correction_terms": [
+            {
+                "symbol": "beta_nuc",
+                "term": "UET entropy correction",
+                "current_gate_value": 0.0,
+                "unit": "dimensionless",
+                "source_status": "disabled_in_current_strict_binding_subset",
+                "source_note": "The primary strict binding gate calls binding_energy_components(beta_nuc=0.0), so this term is diagnostic-ready but not active in the saved strict benchmark until rerun.",
+            },
+            {
+                "symbol": "yukawa_prefactor",
+                "term": "Yukawa additive prefactor",
+                "value": 10.0,
+                "unit": "MeV-like scale before per-nucleus multiplication",
+                "source_status": "heuristic_bridge",
+                "source_note": "The coefficient and additive placement are not source-locked and require sensitivity review before any stronger mechanism claim.",
+            },
+            {
+                "symbol": "r0",
+                "term": "nuclear radius scale",
+                "value": 1.25,
+                "unit": "fm",
+                "source_status": "checked_local_reference",
+                "source_note": "Used in the Yukawa correction; source record and uncertainty policy are not yet pinned.",
+            },
+            {
+                "symbol": "m_pion",
+                "term": "pion mass convention",
+                "value": 139.57,
+                "unit": "MeV",
+                "source_status": "checked_local_reference",
+                "source_note": "Close to charged-pion mass convention, but not currently read from the downloaded PDG 2025 SQLite source.",
+            },
+            {
+                "symbol": "hbar_c",
+                "term": "conversion constant",
+                "value": 197.33,
+                "unit": "MeV fm",
+                "source_status": "checked_local_reference",
+                "source_note": "Rounded local constant; should be reconciled with shared constants policy before precision claims.",
+            },
+        ],
+        "required_to_close": [
+            "Create a source record or reference package that pins the exact SEMF coefficient set and edition used.",
+            "Decide whether the Yukawa term is a baseline nuclear-physics correction, a UET bridge term, or a separate diagnostic lane.",
+            "Add uncertainty or sensitivity policy for SEMF coefficients and heuristic correction terms.",
+        ],
+        "allowed_usage_now": [
+            "Internal selected-subset benchmark with explicit SEMF baseline dependency.",
+            "Diagnostic decomposition of SEMF-only versus SEMF-plus-correction behavior after verifier rerun.",
+        ],
+        "blocked_usage": [
+            "parameter-free nuclear-binding claim",
+            "first-principles derivation of nuclear binding",
+            "general strong-force theory claim",
+            "claim that UET alone explains the selected-subset pass without SEMF baseline support",
+        ],
     }
 
 
@@ -281,6 +415,8 @@ def build_branch_claim_gate() -> dict:
 def build_nuclear_claim_scope_gate(
     overall: bool,
     error_distribution: dict,
+    semf_decomposition: dict,
+    semf_coefficient_gate: dict,
     source_evidence_readiness_matrix: dict,
     branch_claim_gate: dict,
     light_excluded: list[str],
@@ -311,9 +447,26 @@ def build_nuclear_claim_scope_gate(
             "required_evidence": [
                 "fixed full-table acceptance threshold",
                 "heavy/light split metrics treated as separate gates",
-                "SEMF baseline versus UET-correction decomposition",
                 "uncertainty and data-quality policy for all parsed rows",
             ],
+        },
+        "semf_decomposition_gate": {
+            "status": "PRESENT_DIAGNOSTIC",
+            "controller_role": "prevents the selected-subset PASS from hiding the SEMF baseline contribution",
+            "claim_class": "C - internal diagnostic decomposition",
+            "supports": "The artifact reports SEMF-only and SEMF-plus-correction residuals for the selected subset.",
+            "does_not_support": "A parameter-free UET derivation or a source-locked SEMF coefficient package.",
+            "metrics": {
+                "heavy_semf_only_mean_error_percent": semf_decomposition["heavy_semf_only"]["mean_error_percent"],
+                "heavy_total_mean_error_percent": semf_decomposition["heavy_total"]["mean_error_percent"],
+                "heavy_mean_error_delta_percent_points": semf_decomposition["heavy_mean_error_delta_percent_points"],
+            },
+            "still_required": [
+                "source-locked SEMF coefficient provenance",
+                "fixed rule for whether Yukawa is baseline physics or UET correction",
+                "uncertainty and data-quality policy for all parsed rows",
+            ],
+            "coefficient_gate_status": semf_coefficient_gate["controller_status"],
         },
         "light_nuclei_gate": {
             "status": "EXCLUDED_FROM_PASS",
@@ -341,6 +494,7 @@ def build_nuclear_claim_scope_gate(
         "gate_inputs": {
             "source_evidence_summary": source_evidence_readiness_matrix["summary"],
             "branch_claim_summary": branch_claim_gate["summary"],
+            "semf_coefficient_status": semf_coefficient_gate["controller_status"],
         },
         "promotion_rule": (
             "Only the selected heavy-nucleus subset and proton-radius anchor compatibility can pass here. "
@@ -363,10 +517,13 @@ def run_test() -> bool:
     engine = UETNuclearBindingEngine()
     source_evidence_intake_stub = build_source_evidence_intake_stub()
     source_evidence_readiness_matrix = build_source_evidence_readiness_matrix()
+    semf_coefficient_gate = build_semf_coefficient_provenance_gate()
+    pdg_hadron_qcd_mapping_gate = load_json(PDG_HADRON_QCD_MAPPING_GATE_PATH)
     branch_claim_gate = build_branch_claim_gate()
 
     write_json(SOURCE_EVIDENCE_INTAKE_PATH, source_evidence_intake_stub)
     write_json(SOURCE_EVIDENCE_READINESS_PATH, source_evidence_readiness_matrix)
+    write_json(SEMF_COEFFICIENT_GATE_PATH, semf_coefficient_gate)
     write_json(BRANCH_CLAIM_GATE_PATH, branch_claim_gate)
 
     print("\n[1] BINDING ENERGY CHECKS")
@@ -377,6 +534,10 @@ def run_test() -> bool:
     comparisons = {}
     errors = []
     heavy_errors = []
+    semf_errors = []
+    heavy_semf_errors = []
+    correction_deltas = []
+    heavy_correction_deltas = []
     light_excluded = []
     heavy_pass = True
     heavy_count = 0
@@ -384,22 +545,37 @@ def run_test() -> bool:
         a = row["A"]
         z = row["Z"]
         obs = binding_per_nucleon(row["BE_keV"], a)
-        pred = engine.binding_energy_per_nucleon(a, z)
-        err = abs(pred - obs) / obs * 100 if obs else 0.0
+        components = engine.binding_energy_components(a, z, beta_nuc=0.0)
+        pred = components["total_mev"] / a
+        semf_pred = components["semf_mev"] / a
+        entropy_pred = components["uet_entropy_mev"] / a
+        yukawa_pred = components["yukawa_mev"] / a
+        err = relative_error_percent(pred, obs)
+        semf_err = relative_error_percent(semf_pred, obs)
+        correction_delta = err - semf_err
         heavy_gate = a >= 16
         if heavy_gate:
             heavy_count += 1
             heavy_pass = heavy_pass and (err < 15.0)
             heavy_errors.append(err)
+            heavy_semf_errors.append(semf_err)
+            heavy_correction_deltas.append(correction_delta)
         else:
             light_excluded.append(symbol)
         errors.append(err)
+        semf_errors.append(semf_err)
+        correction_deltas.append(correction_delta)
         comparisons[symbol] = {
             "A": a,
             "Z": z,
             "observed_be_per_a_mev": obs,
+            "semf_only_be_per_a_mev": semf_pred,
+            "uet_entropy_correction_per_a_mev": entropy_pred,
+            "yukawa_correction_per_a_mev": yukawa_pred,
             "predicted_be_per_a_mev": pred,
+            "semf_only_relative_error_percent": semf_err,
             "relative_error_percent": err,
+            "correction_error_delta_percent_points": correction_delta,
             "heavy_nucleus_gate": heavy_gate,
             "passes": (err < 15.0) if heavy_gate else None,
         }
@@ -430,9 +606,27 @@ def run_test() -> bool:
         "heavy_median_error_percent": statistics.median(heavy_errors) if heavy_errors else None,
         "heavy_max_error_percent": max(heavy_errors) if heavy_errors else None,
     }
+    semf_decomposition = {
+        "semf_coefficient_status": "checked_local_reference_not_source_locked",
+        "correction_policy": "Current selected-subset verifier calls binding_energy_components(beta_nuc=0.0); UET entropy is zero in this gate, while the Yukawa term remains an additive heuristic correction.",
+        "all_semf_only": summarize_errors(semf_errors),
+        "all_total": summarize_errors(errors),
+        "heavy_semf_only": summarize_errors(heavy_semf_errors),
+        "heavy_total": summarize_errors(heavy_errors),
+        "all_mean_error_delta_percent_points": (
+            statistics.fmean(correction_deltas) if correction_deltas else None
+        ),
+        "heavy_mean_error_delta_percent_points": (
+            statistics.fmean(heavy_correction_deltas) if heavy_correction_deltas else None
+        ),
+        "yukawa_term_status": "heuristic_bridge_in_current_engine",
+        "uet_entropy_term_status": "disabled_for_current strict binding subset because beta_nuc=0.0 in binding_energy_per_nucleon",
+    }
     nuclear_claim_scope_gate = build_nuclear_claim_scope_gate(
         overall,
         error_distribution,
+        semf_decomposition,
+        semf_coefficient_gate,
         source_evidence_readiness_matrix,
         branch_claim_gate,
         light_excluded,
@@ -483,6 +677,7 @@ def run_test() -> bool:
                 "manifest": manifest,
             },
             "error_distribution": error_distribution,
+            "semf_decomposition": semf_decomposition,
             "worst_cases": worst_cases,
             "proton_radius": {
                 "predicted_fm": rp_pred,
@@ -492,6 +687,8 @@ def run_test() -> bool:
             },
             "heavy_nuclei_all_pass": heavy_pass,
             "source_evidence_readiness_summary": source_evidence_readiness_matrix["summary"],
+            "semf_coefficient_gate_status": semf_coefficient_gate["controller_status"],
+            "pdg_hadron_qcd_mapping_gate_status": pdg_hadron_qcd_mapping_gate["controller_status"],
             "branch_claim_gate_summary": branch_claim_gate["summary"],
             "nuclear_claim_scope_status": nuclear_claim_scope_gate["controller_status"],
         },
@@ -512,9 +709,14 @@ def run_test() -> bool:
             "mean_error_percent": error_distribution["mean_error_percent"],
             "median_error_percent": error_distribution["median_error_percent"],
             "max_error_percent": error_distribution["max_error_percent"],
+            "heavy_semf_only_mean_error_percent": semf_decomposition["heavy_semf_only"]["mean_error_percent"],
+            "heavy_total_mean_error_percent": semf_decomposition["heavy_total"]["mean_error_percent"],
+            "heavy_mean_error_delta_percent_points": semf_decomposition["heavy_mean_error_delta_percent_points"],
             "source_targets_ready_for_review": source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
             "source_targets_blocked": source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
             "accepted_claim_branches": branch_claim_gate["summary"]["accepted_now"],
+            "semf_coefficient_gate_blocked": semf_coefficient_gate["controller_status"] != "PASS",
+            "pdg_hadron_qcd_mapping_gate_blocked": pdg_hadron_qcd_mapping_gate["controller_status"] != "PASS",
             "claim_scope_controller_status": nuclear_claim_scope_gate["controller_status"],
         },
         thresholds={
@@ -535,6 +737,18 @@ def run_test() -> bool:
         "summary": source_evidence_readiness_matrix["summary"],
         "claim_boundary": source_evidence_readiness_matrix["claim_boundary"],
     }
+    artifact["semf_coefficient_provenance_gate"] = {
+        "path": str(SEMF_COEFFICIENT_GATE_PATH.relative_to(topic_dir)).replace("\\", "/"),
+        "sha256": hash_dataset(semf_coefficient_gate),
+        "controller_status": semf_coefficient_gate["controller_status"],
+        "claim_boundary": semf_coefficient_gate["claim_boundary"],
+    }
+    artifact["pdg_hadron_qcd_source_mapping_gate"] = {
+        "path": str(PDG_HADRON_QCD_MAPPING_GATE_PATH.relative_to(topic_dir)).replace("\\", "/"),
+        "sha256": hash_dataset(pdg_hadron_qcd_mapping_gate),
+        "controller_status": pdg_hadron_qcd_mapping_gate["controller_status"],
+        "claim_boundary": pdg_hadron_qcd_mapping_gate["claim_boundary"],
+    }
     artifact["branch_claim_gate"] = {
         "path": str(BRANCH_CLAIM_GATE_PATH.relative_to(topic_dir)).replace("\\", "/"),
         "sha256": hash_dataset(branch_claim_gate),
@@ -551,6 +765,7 @@ def run_test() -> bool:
         "The strict pass/fail gate applies only to selected heavy nuclei plus proton-radius compatibility.",
         "Light nuclei remain diagnostic and can fail badly outside the liquid-drop validation regime.",
         "The proton-radius path is still benchmark-anchor behavior, not an independent prediction.",
+        "The SEMF baseline versus correction decomposition is now reported, but SEMF coefficient provenance remains checked-local rather than source-locked.",
         "Hadron-mass, QCD-running, and confinement-proof branches remain blocked for strong claims.",
     ]
     artifact_path = topic_dir / "Result" / "artifacts" / "nuclear_binding_source_locked_validation.json"

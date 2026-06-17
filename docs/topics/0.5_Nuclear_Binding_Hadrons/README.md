@@ -25,6 +25,9 @@ selected nuclear-binding, hadron-mass, proton-radius, and strong-force benchmark
 - Topic-local data files including `Data/03_Research/Data_AME2020_Binding.json` and
   `Data/03_Research/Data_PDG_Quarks_2024.json`
 - Workflow gate files for source evidence and branch claim ceilings under `Data/03_Research/`
+- A SEMF coefficient provenance gate under `Data/03_Research/semf_coefficient_provenance_gate.json`
+- A PDG hadron/QCD source-mapping gate under
+  `Data/03_Research/pdg_hadron_qcd_source_mapping_gate.json`
 - Competitor and visualization folders that support internal comparisons and plotting
 - Root standards docs for method, data manifest, baseline, verification, limitations, and
   formula audit
@@ -48,9 +51,17 @@ selected nuclear-binding, hadron-mass, proton-radius, and strong-force benchmark
   source-locked at the same standard.
 - Branch claim gates now separate heavy-nucleus binding and proton-radius benchmark use from
   light nuclei, hadron mass, QCD running, and confinement branches.
+- `semf_coefficient_provenance_gate.json` blocks parameter-free or first-principles wording
+  until the SEMF coefficient set, Yukawa policy, and rounded constants are source-locked.
+- `pdg_hadron_qcd_source_mapping_gate.json` records that PDG 2025 quark and several hadron
+  mass records are locally available, but hadron/QCD scripts still do not read them.
 - The strict artifact now carries `nuclear_claim_scope_gate`, which lets the heavy-nucleus
   selected-subset and proton-radius anchor checks pass while blocking full-table, light-nuclei,
   QCD, hadron-mass, confinement, and complete strong-force exports.
+- The primary verifier now reports SEMF-only, UET entropy, Yukawa, and total binding-energy
+  components in the saved strict artifact. In the current heavy-nucleus subset, SEMF-only
+  mean error is about `0.86%`, while the total path is about `1.68%`, so the correction lane
+  remains diagnostic and must not be described as an improvement.
 
 ## Verification notes
 
@@ -65,6 +76,8 @@ selected nuclear-binding, hadron-mass, proton-radius, and strong-force benchmark
 - Workflow artifacts:
   - `Data/03_Research/source_evidence_intake_stub.json`
   - `Data/03_Research/source_evidence_readiness_matrix.json`
+  - `Data/03_Research/semf_coefficient_provenance_gate.json`
+  - `Data/03_Research/pdg_hadron_qcd_source_mapping_gate.json`
   - `Data/03_Research/branch_claim_gate.json`
 
 ## Reproducibility
@@ -81,13 +94,15 @@ for broad AME2020 table behavior and must not be described as a full-table pass.
 
 ## Next remediation steps
 
-1. Split SEMF baseline and UET correction metrics in the primary artifact.
-2. Source-lock SEMF coefficients and embedded hadron/QCD constants.
-3. Upgrade the PDG quark-mass working copy into a source-locked upstream package.
-4. Fix the `alpha_s_uet_v2` data-shape bug before using that QCD branch in any verifier.
-5. Make the confinement proof script return real pass/fail status instead of printing a result
+1. Source-lock SEMF coefficients and decide whether the Yukawa term is baseline physics,
+   a UET bridge term, or a separate diagnostic lane.
+2. Replace embedded hadron/quark snapshots with a topic-local package generated from the
+   PDG 2025 SQLite source-mapping gate.
+3. Add QCD `alpha_s` source mapping and fix the `alpha_s_uet_v2` data-shape bug before
+   using that QCD branch in any verifier.
+4. Make the confinement proof script return real pass/fail status instead of printing a result
    and returning `True`.
-6. Keep light nuclei outside the heavy-nucleus pass claim unless a dedicated light-nuclei
+5. Keep light nuclei outside the heavy-nucleus pass claim unless a dedicated light-nuclei
    verifier is added.
 
 ## Current readiness status

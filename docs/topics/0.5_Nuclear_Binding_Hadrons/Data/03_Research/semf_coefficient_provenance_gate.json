@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.5_Nuclear_Binding_Hadrons",
+  "purpose": "Machine-readable provenance gate for SEMF coefficients used by Engine_Nuclear_Binding.py.",
+  "controller_status": "BLOCKED_FOR_PARAMETER_FREE_CLAIMS",
+  "claim_boundary": "The current nuclear-binding engine may be described as a checked-local SEMF baseline plus heuristic correction workflow. It must not be described as parameter-free or first-principles until the SEMF coefficient source package is locked.",
+  "code_surface": "Code/01_Engine/Engine_Nuclear_Binding.py",
+  "coefficients": [
+    {
+      "symbol": "a_vol",
+      "term": "volume",
+      "value": 15.75,
+      "unit": "MeV",
+      "source_status": "checked_local_reference",
+      "source_note": "Hardcoded in engine with only a broad Wapstra/Nuclear Physics A comment; no topic-local source record pins this exact value."
+    },
+    {
+      "symbol": "a_surf",
+      "term": "surface",
+      "value": 17.8,
+      "unit": "MeV",
+      "source_status": "checked_local_reference",
+      "source_note": "Hardcoded in engine with only a broad Wapstra/Nuclear Physics A comment; no topic-local source record pins this exact value."
+    },
+    {
+      "symbol": "a_coul",
+      "term": "coulomb",
+      "value": 0.711,
+      "unit": "MeV",
+      "source_status": "checked_local_reference",
+      "source_note": "Hardcoded in engine with only a broad Wapstra/Nuclear Physics A comment; no topic-local source record pins this exact value."
+    },
+    {
+      "symbol": "a_asym",
+      "term": "asymmetry",
+      "value": 23.7,
+      "unit": "MeV",
+      "source_status": "checked_local_reference",
+      "source_note": "Hardcoded in engine with only a broad Wapstra/Nuclear Physics A comment; no topic-local source record pins this exact value."
+    },
+    {
+      "symbol": "a_pair",
+      "term": "pairing",
+      "value": 11.18,
+      "unit": "MeV",
+      "source_status": "checked_local_reference",
+      "source_note": "Hardcoded in engine with only a broad Wapstra/Nuclear Physics A comment; no topic-local source record pins this exact value."
+    }
+  ],
+  "correction_terms": [
+    {
+      "symbol": "beta_nuc",
+      "term": "UET entropy correction",
+      "current_gate_value": 0.0,
+      "unit": "dimensionless",
+      "source_status": "disabled_in_current_strict_binding_subset",
+      "source_note": "The primary strict binding gate calls binding_energy_components(beta_nuc=0.0), so this term is diagnostic-ready but not active in the saved strict benchmark until rerun."
+    },
+    {
+      "symbol": "yukawa_prefactor",
+      "term": "Yukawa additive prefactor",
+      "value": 10.0,
+      "unit": "MeV-like scale before per-nucleus multiplication",
+      "source_status": "heuristic_bridge",
+      "source_note": "The coefficient and additive placement are not source-locked and require sensitivity review before any stronger mechanism claim."
+    },
+    {
+      "symbol": "r0",
+      "term": "nuclear radius scale",
+      "value": 1.25,
+      "unit": "fm",
+      "source_status": "checked_local_reference",
+      "source_note": "Used in the Yukawa correction; source record and uncertainty policy are not yet pinned."
+    },
+    {
+      "symbol": "m_pion",
+      "term": "pion mass convention",
+      "value": 139.57,
+      "unit": "MeV",
+      "source_status": "checked_local_reference",
+      "source_note": "Close to charged-pion mass convention, but not currently read from the downloaded PDG 2025 SQLite source."
+    },
+    {
+      "symbol": "hbar_c",
+      "term": "conversion constant",
+      "value": 197.33,
+      "unit": "MeV fm",
+      "source_status": "checked_local_reference",
+      "source_note": "Rounded local constant; should be reconciled with shared constants policy before precision claims."
+    }
+  ],
+  "required_to_close": [
+    "Create a source record or reference package that pins the exact SEMF coefficient set and edition used.",
+    "Decide whether the Yukawa term is a baseline nuclear-physics correction, a UET bridge term, or a separate diagnostic lane.",
+    "Add uncertainty or sensitivity policy for SEMF coefficients and heuristic correction terms."
+  ],
+  "allowed_usage_now": [
+    "Internal selected-subset benchmark with explicit SEMF baseline dependency.",
+    "Diagnostic decomposition of SEMF-only versus SEMF-plus-correction behavior after verifier rerun."
+  ],
+  "blocked_usage": [
+    "parameter-free nuclear-binding claim",
+    "first-principles derivation of nuclear binding",
+    "general strong-force theory claim",
+    "claim that UET alone explains the selected-subset pass without SEMF baseline support"
+  ]
+}

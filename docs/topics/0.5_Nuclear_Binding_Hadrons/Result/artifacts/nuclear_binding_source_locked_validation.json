@@ -20,32 +20,38 @@
   "dataset_hash": "d6f5d045222d0eca354ecf22d1b9b9bf1df24c49c31f46ccde7ed4a368555287",
   "environment": {
     "implementation": "CPython",
-    "matplotlib_version": "3.10.8",
-    "numpy_version": "2.4.0",
-    "pandas_version": "2.3.3",
+    "matplotlib_version": null,
+    "numpy_version": "2.3.5",
+    "pandas_version": "3.0.1",
     "platform": "Windows-11-10.0.26200-SP0",
-    "python_version": "3.14.2",
-    "scipy_version": "1.16.3",
+    "python_version": "3.12.13",
+    "scipy_version": null,
     "tensorflow_version": null,
-    "torch_version": "2.10.0+cpu"
+    "torch_version": null
   },
   "interpretation": "This artifact supports a source-backed heavy-nucleus subset benchmark and a proton-radius anchor-compatibility check. It does not validate light nuclei, hadron masses, QCD running, or confinement claims as audit-grade passes.",
   "limitations": [
     "The strict pass/fail gate applies only to selected heavy nuclei plus proton-radius compatibility.",
     "Light nuclei remain diagnostic and can fail badly outside the liquid-drop validation regime.",
     "The proton-radius path is still benchmark-anchor behavior, not an independent prediction.",
+    "The SEMF baseline versus correction decomposition is now reported, but SEMF coefficient provenance remains checked-local rather than source-locked.",
     "Hadron-mass, QCD-running, and confinement-proof branches remain blocked for strong claims."
   ],
   "metrics": {
     "accepted_claim_branches": 2,
     "claim_scope_controller_status": "WARN",
     "excluded_count": 3,
+    "heavy_mean_error_delta_percent_points": 0.8199566590336729,
     "heavy_nuclei_all_pass": true,
+    "heavy_semf_only_mean_error_percent": 0.8573674796563635,
+    "heavy_total_mean_error_percent": 1.6773241386900364,
     "max_error_percent": 122.13510751489672,
     "mean_error_percent": 19.12261328908742,
     "median_error_percent": 1.7694307073689635,
     "parsed_table_count": 3558,
+    "pdg_hadron_qcd_mapping_gate_blocked": true,
     "proton_radius_relative_error_percent": 1.203369434416367,
+    "semf_coefficient_gate_blocked": true,
     "source_targets_blocked": 3,
     "source_targets_ready_for_review": 2,
     "validation_subset_count": 7
@@ -66,7 +72,6 @@
       "required_evidence": [
         "fixed full-table acceptance threshold",
         "heavy/light split metrics treated as separate gates",
-        "SEMF baseline versus UET-correction decomposition",
         "uncertainty and data-quality policy for all parsed rows"
       ],
       "status": "DIAGNOSTIC_ONLY"
@@ -77,6 +82,7 @@
         "blocked_for_strong_claims": 4,
         "branches_total": 6
       },
+      "semf_coefficient_status": "BLOCKED_FOR_PARAMETER_FREE_CLAIMS",
       "source_evidence_summary": {
         "source_targets_total": 5,
         "targets_blocked_by_pending_evidence": 3,
@@ -120,72 +126,131 @@
       "status": "BLOCKED"
     },
     "schema_version": "1.0",
+    "semf_decomposition_gate": {
+      "claim_class": "C - internal diagnostic decomposition",
+      "coefficient_gate_status": "BLOCKED_FOR_PARAMETER_FREE_CLAIMS",
+      "controller_role": "prevents the selected-subset PASS from hiding the SEMF baseline contribution",
+      "does_not_support": "A parameter-free UET derivation or a source-locked SEMF coefficient package.",
+      "metrics": {
+        "heavy_mean_error_delta_percent_points": 0.8199566590336729,
+        "heavy_semf_only_mean_error_percent": 0.8573674796563635,
+        "heavy_total_mean_error_percent": 1.6773241386900364
+      },
+      "status": "PRESENT_DIAGNOSTIC",
+      "still_required": [
+        "source-locked SEMF coefficient provenance",
+        "fixed rule for whether Yukawa is baseline physics or UET correction",
+        "uncertainty and data-quality policy for all parsed rows"
+      ],
+      "supports": "The artifact reports SEMF-only and SEMF-plus-correction residuals for the selected subset."
+    },
     "topic": "0.5_Nuclear_Binding_Hadrons"
+  },
+  "pdg_hadron_qcd_source_mapping_gate": {
+    "claim_boundary": "PDG 2025 source records are locally available for several quark and hadron masses, but topic 0.5 hadron/QCD scripts still use embedded snapshots or hardcoded tables. These branches remain diagnostic until a verifier reads the source-mapped records directly.",
+    "controller_status": "SOURCE_EXISTS_NOT_INTEGRATED",
+    "path": "Data/03_Research/pdg_hadron_qcd_source_mapping_gate.json",
+    "sha256": "6e8eece95f6fe20796a0a82ee8cab8a376075a50af267a533f91aa1b25f56d69"
   },
   "results": {
     "binding_comparisons": {
       "C12": {
         "A": 12,
         "Z": 6,
+        "correction_error_delta_percent_points": 0.4781512972358981,
         "heavy_nucleus_gate": false,
         "observed_be_per_a_mev": 7.680144599999999,
         "passes": null,
         "predicted_be_per_a_mev": 7.929323684824436,
-        "relative_error_percent": 3.2444582465861007
+        "relative_error_percent": 3.2444582465861007,
+        "semf_only_be_per_a_mev": 7.467688226210055,
+        "semf_only_relative_error_percent": 2.7663069493502026,
+        "uet_entropy_correction_per_a_mev": 0.0,
+        "yukawa_correction_per_a_mev": 0.4616354586143809
       },
       "Fe56": {
         "A": 56,
         "Z": 26,
+        "correction_error_delta_percent_points": 0.8078883522883645,
         "heavy_nucleus_gate": true,
         "observed_be_per_a_mev": 8.7903563,
         "passes": true,
         "predicted_be_per_a_mev": 8.917153763593332,
-        "relative_error_percent": 1.442461025081912
+        "relative_error_percent": 1.442461025081912,
+        "semf_only_be_per_a_mev": 8.846137498920985,
+        "semf_only_relative_error_percent": 0.6345726727935476,
+        "uet_entropy_correction_per_a_mev": 0.0,
+        "yukawa_correction_per_a_mev": 0.0710162646723474
       },
       "H2": {
         "A": 2,
         "Z": 1,
+        "correction_error_delta_percent_points": -187.3975437813222,
         "heavy_nucleus_gate": false,
         "observed_be_per_a_mev": 1.1122831000000002,
         "passes": null,
         "predicted_be_per_a_mev": -0.24620506005502607,
-        "relative_error_percent": 122.13510751489672
+        "relative_error_percent": 122.13510751489672,
+        "semf_only_be_per_a_mev": -2.3305962693497753,
+        "semf_only_relative_error_percent": 309.53265129621894,
+        "uet_entropy_correction_per_a_mev": 0.0,
+        "yukawa_correction_per_a_mev": 2.084391209294749
       },
       "He4": {
         "A": 4,
         "Z": 2,
+        "correction_error_delta_percent_points": -17.50792553763891,
         "heavy_nucleus_gate": false,
         "observed_be_per_a_mev": 7.0739156,
         "passes": null,
         "predicted_be_per_a_mev": 6.948747565160237,
-        "relative_error_percent": 1.7694307073689635
+        "relative_error_percent": 1.7694307073689635,
+        "semf_only_be_per_a_mev": 5.710251689316814,
+        "semf_only_relative_error_percent": 19.277356245007876,
+        "uet_entropy_correction_per_a_mev": 0.0,
+        "yukawa_correction_per_a_mev": 1.2384958758434232
       },
       "Ni62": {
         "A": 62,
         "Z": 28,
+        "correction_error_delta_percent_points": 0.6945676888985799,
         "heavy_nucleus_gate": true,
         "observed_be_per_a_mev": 8.7945555,
         "passes": true,
         "predicted_be_per_a_mev": 8.924222419453763,
-        "relative_error_percent": 1.4743999222446569
+        "relative_error_percent": 1.4743999222446569,
+        "semf_only_be_per_a_mev": 8.86313827856851,
+        "semf_only_relative_error_percent": 0.779832233346077,
+        "uet_entropy_correction_per_a_mev": 0.0,
+        "yukawa_correction_per_a_mev": 0.061084140885251624
       },
       "O16": {
         "A": 16,
         "Z": 8,
+        "correction_error_delta_percent_points": 1.7062008984499755,
         "heavy_nucleus_gate": true,
         "observed_be_per_a_mev": 7.9762072,
         "passes": true,
         "predicted_be_per_a_mev": 8.215313579622835,
-        "relative_error_percent": 2.9977453397002396
+        "relative_error_percent": 2.9977453397002396,
+        "semf_only_be_per_a_mev": 7.873190939285797,
+        "semf_only_relative_error_percent": 1.2915444412502641,
+        "uet_entropy_correction_per_a_mev": 0.0,
+        "yukawa_correction_per_a_mev": 0.34212264033703876
       },
       "U238": {
         "A": 238,
         "Z": 92,
+        "correction_error_delta_percent_points": 0.07116969649777172,
         "heavy_nucleus_gate": true,
         "observed_be_per_a_mev": 7.5701262,
         "passes": true,
         "predicted_be_per_a_mev": 7.630285256166531,
-        "relative_error_percent": 0.7946902677333372
+        "relative_error_percent": 0.7946902677333372,
+        "semf_only_be_per_a_mev": 7.624897620325493,
+        "semf_only_relative_error_percent": 0.7235205712355655,
+        "uet_entropy_correction_per_a_mev": 0.0,
+        "yukawa_correction_per_a_mev": 0.005387635841038458
       }
     },
     "branch_claim_gate_summary": {
@@ -233,11 +298,45 @@
     },
     "heavy_nuclei_all_pass": true,
     "nuclear_claim_scope_status": "WARN",
+    "pdg_hadron_qcd_mapping_gate_status": "SOURCE_EXISTS_NOT_INTEGRATED",
     "proton_radius": {
       "observed_fm": 0.831,
       "passes": true,
       "predicted_fm": 0.841,
       "relative_error_percent": 1.203369434416367
+    },
+    "semf_coefficient_gate_status": "BLOCKED_FOR_PARAMETER_FREE_CLAIMS",
+    "semf_decomposition": {
+      "all_mean_error_delta_percent_points": -28.73535591222722,
+      "all_semf_only": {
+        "count": 7,
+        "max_error_percent": 309.53265129621894,
+        "mean_error_percent": 47.85796920131464,
+        "median_error_percent": 1.2915444412502641
+      },
+      "all_total": {
+        "count": 7,
+        "max_error_percent": 122.13510751489672,
+        "mean_error_percent": 19.12261328908742,
+        "median_error_percent": 1.7694307073689635
+      },
+      "correction_policy": "Current selected-subset verifier calls binding_energy_components(beta_nuc=0.0); UET entropy is zero in this gate, while the Yukawa term remains an additive heuristic correction.",
+      "heavy_mean_error_delta_percent_points": 0.8199566590336729,
+      "heavy_semf_only": {
+        "count": 4,
+        "max_error_percent": 1.2915444412502641,
+        "mean_error_percent": 0.8573674796563635,
+        "median_error_percent": 0.7516764022908212
+      },
+      "heavy_total": {
+        "count": 4,
+        "max_error_percent": 2.9977453397002396,
+        "mean_error_percent": 1.6773241386900364,
+        "median_error_percent": 1.4584304736632845
+      },
+      "semf_coefficient_status": "checked_local_reference_not_source_locked",
+      "uet_entropy_term_status": "disabled_for_current strict binding subset because beta_nuc=0.0 in binding_energy_per_nucleon",
+      "yukawa_term_status": "heuristic_bridge_in_current_engine"
     },
     "source_evidence_readiness_summary": {
       "source_targets_total": 5,
@@ -284,10 +383,16 @@
     ]
   },
   "seed": 42,
+  "semf_coefficient_provenance_gate": {
+    "claim_boundary": "The current nuclear-binding engine may be described as a checked-local SEMF baseline plus heuristic correction workflow. It must not be described as parameter-free or first-principles until the SEMF coefficient source package is locked.",
+    "controller_status": "BLOCKED_FOR_PARAMETER_FREE_CLAIMS",
+    "path": "Data/03_Research/semf_coefficient_provenance_gate.json",
+    "sha256": "b804f8c485b9b879d54c0f8c425c6fcef11aa3b36dc57840fcb046cb8f329cfa"
+  },
   "source_evidence_intake_stub": {
     "claim_boundary": "This intake stub organizes provenance work only. It does not authorize stronger strong-force or hadron claims by itself.",
     "path": "Data/03_Research/source_evidence_intake_stub.json",
-    "sha256": "8b205ee07d10168e8d3c09da9c308053e18b4548d6f65ddf0b183aef2cc116da",
+    "sha256": "713cbbf77e6f5f3bc9429f571615cb07d44cacda96f037a70b525369a3db85ca",
     "source_targets": [
       "AME2020 raw table and validation subset package",
       "Proton radius benchmark package",
@@ -299,7 +404,7 @@
   "source_evidence_readiness_matrix": {
     "claim_boundary": "A ready row means the topic has enough local provenance structure for source review. It does not itself upgrade a claim.",
     "path": "Data/03_Research/source_evidence_readiness_matrix.json",
-    "sha256": "14ad0f1c613d64759316c9e02c2a336d321d8fbba8982fe9a4624c160b78c17d",
+    "sha256": "a619b83e97f7014a6b2ec21768078b2a8ca50ace9f5c1e7e8d8aa177c9652bb9",
     "summary": {
       "source_targets_total": 5,
       "targets_blocked_by_pending_evidence": 3,
@@ -310,7 +415,7 @@
     "heavy_nucleus_binding_error_percent_max": 15.0,
     "proton_radius_relative_error_percent_max": 5.0
   },
-  "timestamp_utc": "2026-05-26T12:20:07.119908+00:00",
+  "timestamp_utc": "2026-06-17T01:14:27.709551+00:00",
   "topic": "0.5_Nuclear_Binding_Hadrons",
   "uet_version": "0.9.0"
 }

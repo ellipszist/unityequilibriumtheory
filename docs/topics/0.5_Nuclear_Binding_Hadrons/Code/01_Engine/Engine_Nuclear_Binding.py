@@ -105,24 +105,12 @@ class UETNuclearBindingEngine(UETBaseSolver):
         correction = 10.0 * (math.exp(-mu * R) / R)
         return correction
 
-    def binding_energy(self, A, Z, beta_nuc: Optional[float] = None):
-        """
-        Calculate Total Binding Energy (MeV).
-        """
+    def semi_empirical_binding_energy(self, A, Z):
+        """Calculate the SEMF baseline binding energy before UET/Yukawa terms."""
         if A <= 0:
             return 0.0
 
-        # Kill Switch Check
-        if INTEGRITY_KILL_SWITCH:
-            return float("nan")
-
-        check = self.params.beta / (
-            self.params.beta + 1e-20
-        )  # Avoid div by zero, but fail if really zero
-
         N = A - Z
-
-        # Standard Terms
         B = self.a_vol * A
         B -= self.a_surf * (A ** (2 / 3))
         B -= self.a_coul * Z * (Z - 1) / (A ** (1 / 3))
@@ -134,22 +122,52 @@ class UETNuclearBindingEngine(UETBaseSolver):
             delta = -self.a_pair / (A**0.5)
         else:
             delta = 0
-        B += delta
+        return B + delta
 
-        # [UET] Information Entropy Correction
-        # Use beta from params to ensure sabotage
+    def binding_energy_components(self, A, Z, beta_nuc: Optional[float] = None):
+        """Return SEMF, entropy, Yukawa, and total binding-energy components."""
+        if A <= 0:
+            return {
+                "semf_mev": 0.0,
+                "uet_entropy_mev": 0.0,
+                "yukawa_mev": 0.0,
+                "total_mev": 0.0,
+            }
+
+        if INTEGRITY_KILL_SWITCH:
+            nan = float("nan")
+            return {
+                "semf_mev": nan,
+                "uet_entropy_mev": nan,
+                "yukawa_mev": nan,
+                "total_mev": nan,
+            }
+
+        check = self.params.beta / (self.params.beta + 1e-20)
+        semf = self.semi_empirical_binding_energy(A, Z)
         b_val = beta_nuc if beta_nuc is not None else getattr(self.params, "beta", 1.0)
+        entropy = b_val * math.log(A) * check
+        yukawa = self.compute_yukawa_correction(A) * A
+        total = (semf + entropy + yukawa) * check
+        return {
+            "semf_mev": float(semf * check),
+            "uet_entropy_mev": float(entropy * check),
+            "yukawa_mev": float(yukawa * check),
+            "total_mev": float(total),
+        }
 
-        correction = b_val * (math.log(A) / A) * A * check
+    def binding_energy(self, A, Z, beta_nuc: Optional[float] = None):
+        """
+        Calculate Total Binding Energy (MeV).
+        """
+        if A <= 0:
+            return 0.0
 
-        # [UPGRADE] Add Yukawa Field Correction
-        # This represents the explicit short-range meson exchange force
-        # typically neglected in simple SEMF but crucial for light nuclei.
-        yukawa_term = self.compute_yukawa_correction(A) * A
+        # Kill Switch Check
+        if INTEGRITY_KILL_SWITCH:
+            return float("nan")
 
-        B = B + correction + yukawa_term
-
-        return float(B * check)
+        return self.binding_energy_components(A, Z, beta_nuc)["total_mev"]
 
     def binding_energy_per_nucleon(self, A, Z, beta_nuc=0.0):
         """Calculate B/A (MeV per nucleon)."""

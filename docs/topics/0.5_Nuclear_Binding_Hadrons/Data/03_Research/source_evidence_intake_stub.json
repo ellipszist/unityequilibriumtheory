@@ -32,14 +32,15 @@
     {
       "name": "PDG quark-mass source package",
       "priority": "high",
-      "status_hint": "pending_external_source_lock",
+      "status_hint": "source_exists_not_integrated",
       "evidence_entries": [
         "doi_or_url",
         "local_path",
         "table_or_review_identifier",
         "retrieval_date",
         "unit_basis",
-        "extraction_note"
+        "extraction_note",
+        "source_mapping_gate"
       ]
     },
     {
