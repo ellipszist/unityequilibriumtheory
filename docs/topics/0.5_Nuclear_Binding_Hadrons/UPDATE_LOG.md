@@ -6,6 +6,19 @@
 
 ## Entries
 
+### 2026-06-17 - QCD Alpha_s Source Probe
+
+- Scope: `0.5_Nuclear_Binding_Hadrons` QCD alpha_s runtime bug and source-row blocker
+- Added or changed: fixed the `alpha_s_uet_v2` data-shape bug in `Engine_QCD_Bridge.py`, added `Code/03_Research/Research_QCD_AlphaS_Source_Probe.py`, generated `Result/artifacts/qcd_alpha_s_source_probe.json`, and updated `pdg_hadron_qcd_source_mapping_gate.json` plus the source-readiness generator to record the narrowed QCD blocker
+- Files touched: `Code/01_Engine/Engine_QCD_Bridge.py`, `Code/03_Research/Research_QCD_AlphaS_Source_Probe.py`, `Code/03_Research/Research_Nuclear_Binding_SourceLocked.py`, `Data/03_Research/pdg_hadron_qcd_source_mapping_gate.json`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `Result/artifacts/qcd_alpha_s_source_probe.json`, `Result/artifacts/nuclear_binding_source_locked_validation.json`, `README.md`, `DATA_MANIFEST.md`, `VERIFICATION_SPEC.md`, `LIMITATIONS.md`, `FORMULA_AUDIT.md`, `BASELINE_COMPARISON.md`, `UPDATE_LOG.md`
+- Verified with: bundled Codex Python run of `Research_QCD_AlphaS_Source_Probe.py`; bundled Codex Python rerun of `Research_Nuclear_Binding_SourceLocked.py`
+- Result: `alpha_s_uet_v2` returned finite values at 4/4 checked scales; current local PDG SQLite query found `0` direct alpha_s/QCD-running rows; strict verifier remained `PASS` at `2026-06-17T01:36:30.524715+00:00`; PDG/QCD gate embedded with `controller_status=HADRON_MODEL_AND_QCD_SOURCE_DIAGNOSTIC_BLOCKED`
+- Blocker narrowed: QCD no longer has the known `alpha_s_uet_v2` runtime data-shape bug as the controlling blocker; it is now controlled by missing/vetted alpha_s source-package acquisition
+- Still open: source-lock alpha_s inputs from a vetted source package, decide baseline-QCD versus UET-correction policy, keep hadron branch blocked by high residuals, and keep confinement diagnostic until pass/fail behavior is fixed
+- Next controller: `Result/artifacts/qcd_alpha_s_source_probe.json` controls QCD source-integration wording; `pdg_hadron_qcd_source_mapping_gate.json` controls combined hadron/QCD branch status
+- Claim impact: wording narrowed; no QCD-running validation upgrade and no stronger nuclear-binding claim
+- Notes: the probe is a negative source-search artifact plus a runtime smoke test, not a QCD benchmark validation
+
 ### 2026-06-17 - Hadron Model Source-Package Diagnostic
 
 - Scope: `0.5_Nuclear_Binding_Hadrons` hadron-model source-package verifier and blocker boundary

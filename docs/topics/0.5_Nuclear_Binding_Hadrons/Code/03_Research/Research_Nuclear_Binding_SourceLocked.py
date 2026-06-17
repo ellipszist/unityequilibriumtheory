@@ -138,7 +138,7 @@ def build_source_evidence_intake_stub() -> dict:
             {
                 "name": "QCD running benchmark package",
                 "priority": "high",
-                "status_hint": "pending_qcd_branch_hardening",
+                "status_hint": "alpha_s_bug_fixed_source_row_not_found",
                 "evidence_entries": [
                     "benchmark_identity",
                     "local_path",
@@ -146,6 +146,7 @@ def build_source_evidence_intake_stub() -> dict:
                     "unit_basis",
                     "parameter_note",
                     "bug_status_note",
+                    "source_probe_artifact_path",
                 ],
             },
             {
@@ -203,18 +204,17 @@ def build_source_evidence_readiness_matrix() -> dict:
         {
             "name": "QCD running benchmark package",
             "priority": "high",
-            "fields_total": 6,
-            "fields_complete": 1,
-            "fields_pending": 5,
+            "fields_total": 7,
+            "fields_complete": 3,
+            "fields_pending": 4,
             "pending_fields": [
-                "local_path",
                 "source_reference",
                 "unit_basis",
                 "parameter_note",
-                "bug_status_note",
+                "alpha_s_source_package",
             ],
             "ready_for_source_review": False,
-            "blocking_reason": "The QCD branch still has unresolved alpha_s source mapping and an open alpha_s_uet_v2 data-shape bug.",
+            "blocking_reason": "The alpha_s_uet_v2 data-shape bug is fixed and smoke-tested, but the local PDG SQLite source probe found no direct alpha_s/QCD-running summary row.",
         },
         {
             "name": "Confinement proof gate package",

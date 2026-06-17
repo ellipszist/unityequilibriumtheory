@@ -48,14 +48,15 @@
     {
       "name": "QCD running benchmark package",
       "priority": "high",
-      "status_hint": "pending_qcd_branch_hardening",
+      "status_hint": "alpha_s_bug_fixed_source_row_not_found",
       "evidence_entries": [
         "benchmark_identity",
         "local_path",
         "source_reference",
         "unit_basis",
         "parameter_note",
-        "bug_status_note"
+        "bug_status_note",
+        "source_probe_artifact_path"
       ]
     },
     {

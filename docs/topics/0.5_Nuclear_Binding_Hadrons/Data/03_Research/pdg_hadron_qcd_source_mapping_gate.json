@@ -2,8 +2,8 @@
   "schema_version": "1.0",
   "topic": "0.5_Nuclear_Binding_Hadrons",
   "purpose": "Machine-readable source-mapping gate for hadron, quark-mass, and QCD-running branches against the downloaded PDG 2025 SQLite source.",
-  "controller_status": "MODEL_VERIFIER_SOURCE_PACKAGE_DIAGNOSTIC_BLOCKED",
-  "claim_boundary": "PDG 2025 source records are locally available, a generated topic-local package source-locks selected quark and hadron mass rows, and a diagnostic hadron-model verifier now reads that package. The diagnostic residuals remain too weak for validation wording, so hadron/QCD branches remain blocked for source-locked validation claims.",
+  "controller_status": "HADRON_MODEL_AND_QCD_SOURCE_DIAGNOSTIC_BLOCKED",
+  "claim_boundary": "PDG 2025 source records are locally available, a generated topic-local package source-locks selected quark and hadron mass rows, and a diagnostic hadron-model verifier now reads that package. The hadron residuals remain too weak for validation wording. The alpha_s_uet_v2 data-shape bug is fixed and smoke-tested, but the local PDG SQLite probe did not find a direct alpha_s/QCD-running source row. Hadron/QCD branches remain blocked for source-locked validation claims.",
   "source_database": {
     "dataset_id": "pdg_2025_sqlite",
     "local_path": "docs/data/external/particle_physics/pdg/pdg-2025-v0.2.2.sqlite",
@@ -26,6 +26,14 @@
     "mean_error_percent": 75.32635425728225,
     "max_error_percent": 94.90708381855248,
     "unsupported_source_labels": ["kaon_0", "kaon_pm", "pion_0"]
+  },
+  "qcd_alpha_s_source_probe": {
+    "artifact_path": "Result/artifacts/qcd_alpha_s_source_probe.json",
+    "status": "DIAGNOSTIC_QCD_ALPHA_S_SOURCE_PROBE",
+    "alpha_s_uet_v2_finite_count": 4,
+    "alpha_s_uet_v2_smoke_count": 4,
+    "pdg_sqlite_relevant_alpha_s_match_count": 0,
+    "source_mapping_status": "NO_ALPHA_S_SUMMARY_ROW_FOUND_IN_LOCAL_PDG_SQLITE"
   },
   "mapped_quark_mass_records": [
     {"flavor": "u", "pdgid": "Q002M", "value": 2.16, "unit": "MeV", "display": "2.16+-0.07", "mapping_status": "source_mapped_model_diagnostic_blocked"},
@@ -54,13 +62,13 @@
     },
     {
       "engine_label": "alpha_s_data",
-      "reason": "QCD running table in Engine_QCD_Bridge.py remains embedded. A dedicated PDG alpha_s mapping query and benchmark-package extraction are still required."
+      "reason": "QCD running table in Engine_QCD_Bridge.py remains embedded. The local PDG SQLite alpha_s probe found no direct alpha_s/QCD-running summary row, so a dedicated external source package or refined PDG mapping policy is still required."
     }
   ],
   "required_to_close": [
     "Decide whether the large source-package diagnostic residuals require changing the constituent-mass model, demoting the hadron branch, or splitting GMOR and constituent-model lanes.",
     "Add source-backed formula contracts for currently unsupported package labels: kaon_0, kaon_pm, and pion_0.",
-    "Create a QCD alpha_s source-mapping package and fix the alpha_s_uet_v2 data-shape bug before any QCD-running verifier uses that branch."
+    "Create a QCD alpha_s source package from a vetted source or refine the PDG mapping policy beyond the current SQLite query before any QCD-running verifier uses that branch."
   ],
   "allowed_usage_now": [
     "Source-mapping evidence for planning the hadron/QCD hardening pass.",

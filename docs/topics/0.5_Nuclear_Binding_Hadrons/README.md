@@ -59,6 +59,9 @@ selected nuclear-binding, hadron-mass, proton-radius, and strong-force benchmark
   hadron-model verifier now reads the package for 7 supported hadron labels, but the
   resulting source-package residuals remain weak (`75.33%` mean error, `94.91%` max error),
   so hadron/QCD claims remain blocked.
+- `qcd_alpha_s_source_probe.json` shows that `alpha_s_uet_v2` now smoke-tests as finite
+  at 4/4 checked scales after the data-shape fix, but the local PDG SQLite query found
+  no direct alpha_s/QCD-running source row, so QCD running remains source-blocked.
 - The strict artifact now carries `nuclear_claim_scope_gate`, which lets the heavy-nucleus
   selected-subset and proton-radius anchor checks pass while blocking full-table, light-nuclei,
   QCD, hadron-mass, confinement, and complete strong-force exports.
@@ -86,6 +89,7 @@ selected nuclear-binding, hadron-mass, proton-radius, and strong-force benchmark
   - `Data/03_Research/branch_claim_gate.json`
   - `Result/artifacts/pdg_hadron_quark_source_linkage.json`
   - `Result/artifacts/hadron_model_source_package_diagnostic.json`
+  - `Result/artifacts/qcd_alpha_s_source_probe.json`
 
 ## Reproducibility
 
@@ -105,8 +109,8 @@ for broad AME2020 table behavior and must not be described as a full-table pass.
    a UET bridge term, or a separate diagnostic lane.
 2. Decide whether the weak hadron source-package residuals require changing the
    constituent-mass model, demoting the branch, or splitting GMOR and constituent-model lanes.
-3. Add QCD `alpha_s` source mapping and fix the `alpha_s_uet_v2` data-shape bug before
-   using that QCD branch in any verifier.
+3. Create a vetted QCD `alpha_s` source package or refine the PDG mapping policy beyond
+   the current SQLite query before using that QCD branch in any validation verifier.
 4. Make the confinement proof script return real pass/fail status instead of printing a result
    and returning `True`.
 5. Keep light nuclei outside the heavy-nucleus pass claim unless a dedicated light-nuclei

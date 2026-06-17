@@ -14,6 +14,7 @@
 - The proton-radius path currently returns a benchmark-anchor value and should not be described as an independent radius prediction.
 - `pdg_hadron_qcd_source_mapping_gate.json`, `pdg_hadron_quark_reference_package.json`, and `Result/artifacts/pdg_hadron_quark_source_linkage.json` show that selected PDG 2025 quark and hadron mass rows are source-mapped (`16/16` found, `0` unit mismatches).
 - `Result/artifacts/hadron_model_source_package_diagnostic.json` compares 7 supported source-package labels and records about `75.33%` mean error and `94.91%` max error, so it is a blocker artifact rather than validation evidence.
-- The QCD bridge contains diagnostic/open branches, including a data-shape bug in `alpha_s_uet_v2`, and should not support public QCD-running claims until hardened.
+- The QCD bridge still contains diagnostic/open branches and should not support public QCD-running claims until source-backed inputs and verifier contracts are hardened.
+- The `alpha_s_uet_v2` data-shape bug is now fixed and smoke-tested in `qcd_alpha_s_source_probe.json`, but the local PDG SQLite probe found no direct alpha_s/QCD-running source row, so QCD running remains source-blocked.
 - The color-confinement proof script currently prints a pass/fail-style message but returns `True`, so it is not an audit-grade proof gate.
 - Internal script execution does not by itself establish external replication, theorem-level proof, or broad physical closure.

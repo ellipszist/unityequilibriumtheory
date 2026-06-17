@@ -170,7 +170,7 @@ def alpha_s_uet_v2(Q, beta_uet=0.03, Q0=1.0):
     This captures asymptotic freedom naturally.
     """
     n_f = get_n_f(Q)
-    Lambda = QCD_PARAMS["Lambda_QCD_5flavor"]["value"]
+    Lambda = QCD_PARAMS["Lambda_QCD_5flavor"]
 
     # Standard QCD
     alpha_qcd = alpha_s_qcd(Q, n_f=n_f, Lambda=Lambda)
