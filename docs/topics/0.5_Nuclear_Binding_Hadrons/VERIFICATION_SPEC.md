@@ -8,12 +8,18 @@
   - `python docs/topics/0.5_Nuclear_Binding_Hadrons/Code/03_Research/Research_Nuclear_Binding_FullTable_Diagnostic.py`
   - Windows repo venv command used for audit runs:
     - `$env:PYTHONIOENCODING='utf-8'; $env:PYTHONUTF8='1'; .\.venv\Scripts\python.exe docs\topics\0.5_Nuclear_Binding_Hadrons\Code\03_Research\Research_Nuclear_Binding_FullTable_Diagnostic.py`
+- Source-linkage diagnostic command:
+  - `python docs/topics/0.5_Nuclear_Binding_Hadrons/Code/03_Research/Research_PDG_Hadron_Source_Linkage.py`
+  - Bundled Codex runtime command used for the current run:
+    - `$env:PYTHONIOENCODING='utf-8'; $env:PYTHONUTF8='1'; & 'C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' docs\topics\0.5_Nuclear_Binding_Hadrons\Code\03_Research\Research_PDG_Hadron_Source_Linkage.py`
 - Inputs:
   - `docs/data/external/particle_physics/ame2020/mass_1.mas20`
   - `Data/03_Research/Data_AME2020_Binding_FullParsed.json`
   - `Data/03_Research/Data_AME2020_Binding_RawSubset.json`
   - `Data/03_Research/Data_AME2020_Benchmark_Manifest.json`
   - `Data/03_Research/Data_Proton_Radius.json`
+  - `Data/03_Research/pdg_hadron_qcd_source_mapping_gate.json`
+  - `Data/03_Research/pdg_hadron_quark_reference_package.json`
   - `Code/01_Engine/Engine_Nuclear_Binding.py`
 - Baseline:
   - Raw-table-derived AME2020 subset for selected nuclei plus PRad/CODATA proton-radius benchmarks.
@@ -32,16 +38,19 @@
 - Artifact target:
   - `Result/artifacts/nuclear_binding_source_locked_validation.json`
   - `Result/artifacts/nuclear_binding_full_table_diagnostic.json`
+  - `Result/artifacts/pdg_hadron_quark_source_linkage.json`
 - Required workflow gates from the primary verifier:
   - `Data/03_Research/source_evidence_intake_stub.json`
   - `Data/03_Research/source_evidence_readiness_matrix.json`
   - `Data/03_Research/semf_coefficient_provenance_gate.json`
   - `Data/03_Research/pdg_hadron_qcd_source_mapping_gate.json`
+  - `Data/03_Research/pdg_hadron_quark_reference_package.json`
   - `Data/03_Research/branch_claim_gate.json`
   - embedded `nuclear_claim_scope_gate` in `Result/artifacts/nuclear_binding_source_locked_validation.json`
 - Latest audit-run artifact identity:
-  - Source-locked verifier: `PASS`, dataset hash `d6f5d045222d0eca354ecf22d1b9b9bf1df24c49c31f46ccde7ed4a368555287`, timestamp `2026-06-17T01:14:27.709551+00:00`.
+  - Source-locked verifier: `PASS`, dataset hash `d6f5d045222d0eca354ecf22d1b9b9bf1df24c49c31f46ccde7ed4a368555287`, timestamp `2026-06-17T01:21:22.180783+00:00`.
   - Full-table diagnostic: `DIAGNOSTIC`, dataset hash `5513ae294bc68c16b7c6649a28dcd088c2901d87a17c1d8895c912b993451f2e`, timestamp `2026-06-17T01:08:33.803330+00:00`.
+  - PDG hadron/quark source-linkage diagnostic: `DIAGNOSTIC_SOURCE_LINKAGE`, `16/16` records found, `0` unit mismatches.
   - The successful 2026-06-17 rerun used the bundled Codex Python at `C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe` because `python`/`py` were not on PATH and the repo `.venv` executable returned `Access is denied`.
   - The UTF-8 environment variables are required on this Windows shell because the logger emits Unicode status glyphs; without them the verifier can fail before artifact review with a console encoding error.
 - Current decomposition result:
@@ -52,7 +61,7 @@
   - A pass means the current engine is numerically compatible with the raw-derived AME2020 subset for heavy nuclei and with the proton-radius benchmark.
   - Treat `nuclear_claim_scope_gate` as the artifact-level controller for what the PASS may export to integration topics.
   - Treat `semf_coefficient_provenance_gate.json` as the controller for parameter-free or first-principles wording.
-  - Treat `pdg_hadron_qcd_source_mapping_gate.json` as the controller for hadron/quark/QCD source-integration wording; current status is `SOURCE_EXISTS_NOT_INTEGRATED`.
+  - Treat `pdg_hadron_qcd_source_mapping_gate.json` as the controller for hadron/quark/QCD source-integration wording; current status is `SOURCE_MAPPED_PACKAGE_READY_DIAGNOSTIC`.
   - It does not automatically certify light nuclei, hadron masses, QCD running, or confinement branches.
   - The diagnostic artifact summarizes table-wide behavior across the parsed AME2020 rows and should be used to describe broad performance honestly, especially the heavy-vs-light split.
   - It now certifies that table-wide AME2020 parsing is present, but it does not yet certify that the engine passes the full parsed AME table or a complete first-principles derivation of hadronic and nuclear structure.

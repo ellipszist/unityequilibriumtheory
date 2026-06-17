@@ -6,13 +6,13 @@
 - The engine uses fixed semi-empirical coefficients plus a UET correction term, so this topic should not yet be presented as fully parameter-free.
 - Only the heavy-nucleus subset branch and proton-radius benchmark-anchor branch are currently accepted by the branch claim gate.
 - `nuclear_claim_scope_gate` allows those selected checks while blocking full-table, light-nuclei, QCD, hadron-mass, confinement, and complete strong-force exports.
-- PDG quark-mass and hadron-mass layers are still partly legacy local snapshots and should be upgraded separately.
+- A topic-local PDG-derived hadron/quark reference package now exists, but the hadron-mass and QCD model scripts still need to read it instead of legacy local snapshots or hardcoded tables.
 - The engine now exposes SEMF-only, entropy-correction, Yukawa-correction, and total binding components in the saved strict artifact.
 - In the current heavy selected subset, SEMF-only mean error is lower than the total path after current correction terms, so the correction lane is diagnostic rather than an improvement claim.
 - SEMF coefficients are still checked-local constants rather than a source-locked coefficient package, so decomposition does not make the topic parameter-free.
 - `semf_coefficient_provenance_gate.json` now makes that coefficient/source-policy blocker machine-readable and explicitly blocks first-principles nuclear-binding wording.
 - The proton-radius path currently returns a benchmark-anchor value and should not be described as an independent radius prediction.
-- `pdg_hadron_qcd_source_mapping_gate.json` shows that PDG 2025 quark and several hadron mass records are available locally, but the hadron/QCD scripts still use embedded snapshots or hardcoded tables.
+- `pdg_hadron_qcd_source_mapping_gate.json`, `pdg_hadron_quark_reference_package.json`, and `Result/artifacts/pdg_hadron_quark_source_linkage.json` show that selected PDG 2025 quark and hadron mass rows are source-mapped (`16/16` found, `0` unit mismatches), but the hadron/QCD scripts still use embedded snapshots or hardcoded tables.
 - The QCD bridge contains diagnostic/open branches, including a data-shape bug in `alpha_s_uet_v2`, and should not support public QCD-running claims until hardened.
 - The color-confinement proof script currently prints a pass/fail-style message but returns `True`, so it is not an audit-grade proof gate.
 - Internal script execution does not by itself establish external replication, theorem-level proof, or broad physical closure.

@@ -147,10 +147,10 @@
     "topic": "0.5_Nuclear_Binding_Hadrons"
   },
   "pdg_hadron_qcd_source_mapping_gate": {
-    "claim_boundary": "PDG 2025 source records are locally available for several quark and hadron masses, but topic 0.5 hadron/QCD scripts still use embedded snapshots or hardcoded tables. These branches remain diagnostic until a verifier reads the source-mapped records directly.",
-    "controller_status": "SOURCE_EXISTS_NOT_INTEGRATED",
+    "claim_boundary": "PDG 2025 source records are locally available and a generated topic-local package now source-locks selected quark and hadron mass rows, but topic 0.5 hadron/QCD model scripts still use embedded snapshots or hardcoded tables. These branches remain diagnostic until a model verifier reads the generated package directly.",
+    "controller_status": "SOURCE_MAPPED_PACKAGE_READY_DIAGNOSTIC",
     "path": "Data/03_Research/pdg_hadron_qcd_source_mapping_gate.json",
-    "sha256": "6e8eece95f6fe20796a0a82ee8cab8a376075a50af267a533f91aa1b25f56d69"
+    "sha256": "1ee40cba6de885aa114c3a5c5adab55bdf468f1b8d286fd98914b3b79a547638"
   },
   "results": {
     "binding_comparisons": {
@@ -298,7 +298,7 @@
     },
     "heavy_nuclei_all_pass": true,
     "nuclear_claim_scope_status": "WARN",
-    "pdg_hadron_qcd_mapping_gate_status": "SOURCE_EXISTS_NOT_INTEGRATED",
+    "pdg_hadron_qcd_mapping_gate_status": "SOURCE_MAPPED_PACKAGE_READY_DIAGNOSTIC",
     "proton_radius": {
       "observed_fm": 0.831,
       "passes": true,
@@ -415,7 +415,7 @@
     "heavy_nucleus_binding_error_percent_max": 15.0,
     "proton_radius_relative_error_percent_max": 5.0
   },
-  "timestamp_utc": "2026-06-17T01:14:27.709551+00:00",
+  "timestamp_utc": "2026-06-17T01:21:22.180783+00:00",
   "topic": "0.5_Nuclear_Binding_Hadrons",
   "uet_version": "0.9.0"
 }

@@ -6,6 +6,19 @@
 
 ## Entries
 
+### 2026-06-17 - PDG Hadron/Quark Source-Linkage Package
+
+- Scope: `0.5_Nuclear_Binding_Hadrons` PDG hadron/quark source package and diagnostic linkage artifact
+- Added or changed: added `Code/03_Research/Research_PDG_Hadron_Source_Linkage.py`, generated `Data/03_Research/pdg_hadron_quark_reference_package.json`, generated `Result/artifacts/pdg_hadron_quark_source_linkage.json`, and updated `pdg_hadron_qcd_source_mapping_gate.json` from source-exists to source-mapped diagnostic package status
+- Files touched: `Code/03_Research/Research_PDG_Hadron_Source_Linkage.py`, `Data/03_Research/pdg_hadron_qcd_source_mapping_gate.json`, `Data/03_Research/pdg_hadron_quark_reference_package.json`, `Result/artifacts/pdg_hadron_quark_source_linkage.json`, `Result/artifacts/nuclear_binding_source_locked_validation.json`, `README.md`, `DATA_MANIFEST.md`, `VERIFICATION_SPEC.md`, `LIMITATIONS.md`, `FORMULA_AUDIT.md`, `BASELINE_COMPARISON.md`, `UPDATE_LOG.md`
+- Verified with: bundled Codex Python run of `Research_PDG_Hadron_Source_Linkage.py`; bundled Codex Python rerun of `Research_Nuclear_Binding_SourceLocked.py`
+- Result: PDG source-linkage diagnostic produced `16/16` records found with `0` unit mismatches; strict verifier remained `PASS` at `2026-06-17T01:21:22.180783+00:00`; PDG gate embedded with `controller_status=SOURCE_MAPPED_PACKAGE_READY_DIAGNOSTIC`
+- Blocker narrowed: PDG quark/hadron source access is now a generated package and artifact instead of only a mapping note
+- Still open: make hadron/quark model verification read the generated package, add QCD `alpha_s` source mapping, fix `alpha_s_uet_v2`, and keep confinement diagnostic until it returns real pass/fail status
+- Next controller: `pdg_hadron_qcd_source_mapping_gate.json` and `pdg_hadron_quark_reference_package.json` control hadron/quark source-integration wording; `semf_coefficient_provenance_gate.json` still controls nuclear-binding parameter-free wording
+- Claim impact: wording narrowed; no hadron/QCD validation upgrade and no stronger nuclear-binding claim
+- Notes: the source-linkage package is diagnostic provenance, not a model-performance artifact
+
 ### 2026-06-17 - SEMF Coefficient Provenance Gate
 
 - Scope: `0.5_Nuclear_Binding_Hadrons` coefficient provenance and claim-boundary docs
