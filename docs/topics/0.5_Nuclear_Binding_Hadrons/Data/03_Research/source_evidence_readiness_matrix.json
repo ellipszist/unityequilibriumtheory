@@ -31,15 +31,14 @@
     {
       "name": "PDG quark-mass source package",
       "priority": "high",
-      "fields_total": 7,
-      "fields_complete": 5,
-      "fields_pending": 2,
+      "fields_total": 9,
+      "fields_complete": 8,
+      "fields_pending": 1,
       "pending_fields": [
-        "extraction_note",
-        "verifier_integration"
+        "validation_threshold_or_branch_demotion_policy"
       ],
       "ready_for_source_review": false,
-      "blocking_reason": "PDG 2025 SQLite exists and a source-mapping gate identifies quark and hadron records, but topic 0.5 hadron/QCD scripts still do not read that package."
+      "blocking_reason": "PDG 2025 SQLite records are source-linked and a diagnostic model verifier reads the generated package, but large residuals keep the hadron branch blocked for validation wording."
     },
     {
       "name": "QCD running benchmark package",

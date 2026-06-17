@@ -26,10 +26,10 @@ Priority remediation:
 
 | File | Bytes | SHA-256 | Role | Current status |
 | :-- | --: | :-- | :-- | :-- |
-| `source_evidence_intake_stub.json` | 2162 | `a0c0c2d4fe83b033b0a1c41e430bba40e509c03bf396d377d091bdaf565dfaa1` | provenance intake across nuclear, hadron, QCD, and confinement lanes | created by primary verifier |
-| `source_evidence_readiness_matrix.json` | 2551 | `2fe55db67b49a726af0d0faa0c90a5c911e36e6ddc4db463c46f7a35df77d30e` | tracks which source packages are review-ready | AME2020 and proton radius ready; PDG source exists but not integrated; QCD/confinement still blocked |
+| `source_evidence_intake_stub.json` | 2260 | `8735b3e488b03b6e0396fe6e527f969b5c2f2edd4a42e5ff16245f850cac9ad6` | provenance intake across nuclear, hadron, QCD, and confinement lanes | created by primary verifier |
+| `source_evidence_readiness_matrix.json` | 2576 | `e4c25b2c1a0bf4dad5cf78aaceeea468aaca0c8cf980ebcdf84efb8e1e115b86` | tracks which source packages are review-ready | AME2020 and proton radius ready; PDG source package and diagnostic model artifact exist; QCD/confinement still blocked |
 | `semf_coefficient_provenance_gate.json` | 4729 | `c30e8bc488afa4b43ac96f7398cb036459212f059f13e7769180e6207715d587` | tracks SEMF coefficient, Yukawa, and rounded-constant provenance | blocks parameter-free and first-principles nuclear-binding claims until coefficient source package and term policy are source-locked |
-| `pdg_hadron_qcd_source_mapping_gate.json` | 5511 | `6e94475f5847452f278f095a287cd65d992a59c9807174d950dd3222c81f1062` | maps available PDG 2025 quark and hadron mass records and records missing QCD integration | source-mapped package ready for diagnostic use, but hadron/QCD scripts do not yet read it |
+| `pdg_hadron_qcd_source_mapping_gate.json` | 5999 | `89899701cd5764d23701639dddd9fba218c35557967cde81eacedd74db9cb8f8` | maps available PDG 2025 quark and hadron mass records and records missing QCD integration | source-package model verifier exists, but high residuals keep hadron/QCD validation blocked |
 | `pdg_hadron_quark_reference_package.json` | 13401 | `16241283a47b2721d3c8638a59c325a1686d809e8aefdf15d0ba3fa3464268fd` | generated selected PDG 2025 quark/hadron mass package | diagnostic source-linkage package; not a model validation artifact |
 | `branch_claim_gate.json` | 2242 | `8b22acf0b9fc76d8d054fb52f8c5ea68313d9920c08eb150f9caeab3fa7d4ae9` | lane-by-lane claim ceiling | heavy binding and proton-radius anchor accepted; 4 branches blocked |
 
@@ -39,8 +39,9 @@ Priority remediation:
 | :-- | --: | :-- | :-- | :-- |
 | `Result/artifacts/0_5_nuclear_binding_hadrons_verification.json` | 5029 | `fbb29c6f4574476edc3f22af409dc22fd043fc5a87e1110f5556670d28b10797` | primary wrapper/run-contract artifact | Records scripts present and runnable; does not override branch claim gates |
 | `Result/artifacts/nuclear_binding_full_table_diagnostic.json` | 6722 | `af78181bbebd12fb47bdbafc2604e1436d489075134e9d43692c944e549fd4d3` | table-wide behavior diagnostic | Separates broad table behavior from strict pass/fail validation subset |
-| `Result/artifacts/nuclear_binding_source_locked_validation.json` | 18670 | `b26d08a5e2607dc2d70753f56e3dcfddd1a53d815074acc6ee1f612b24c491fb` | source-locked validation artifact | Supports heavy-nucleus subset and proton-radius anchor only; now embeds SEMF decomposition, SEMF coefficient gate status, and PDG source-mapping gate status |
+| `Result/artifacts/nuclear_binding_source_locked_validation.json` | 18703 | `cee37e29e687a66361ecf020810fe73251d645cd70f5c61bf2bca8209cae6835` | source-locked validation artifact | Supports heavy-nucleus subset and proton-radius anchor only; now embeds SEMF decomposition, SEMF coefficient gate status, and PDG source-package diagnostic-blocked status |
 | `Result/artifacts/pdg_hadron_quark_source_linkage.json` | 2219 | `e8a72e49daa4c86532cecf7539f027bea0c77034e34087e5163b127b8eb3f66d` | PDG quark/hadron source-linkage artifact | `DIAGNOSTIC_SOURCE_LINKAGE`; records `16/16` found and `0` unit mismatches |
+| `Result/artifacts/hadron_model_source_package_diagnostic.json` | 5198 | `9563d71cb0772de1f5e405a8cca38601f011381958ee09084967a32fcd627536` | source-package-driven hadron-model diagnostic | `DIAGNOSTIC_MODEL_SOURCE_PACKAGE`; compares 7 supported labels with `75.33%` mean error and `94.91%` max error |
 
 Repository note:
 
@@ -48,4 +49,5 @@ Repository note:
 - The binding-energy benchmark now records table-wide AME2020 coverage. The current pass/fail gate still uses a curated isotope subset, while full-table coverage is reported as provenance and audit metadata.
 - The current full-table diagnostic shows that heavy nuclei are broadly well-behaved while many light nuclei remain outside the intended liquid-drop validation regime.
 - The SEMF coefficient gate is now present as a machine-readable blocker and is embedded in the 2026-06-17 strict verifier artifact.
-- The PDG hadron/quark source-linkage artifact shows that selected quark masses and several hadron masses can be reproduced from the downloaded PDG 2025 SQLite source, but topic scripts still need model-verifier integration before hadron/QCD branches can leave diagnostic status.
+- The PDG hadron/quark source-linkage artifact shows that selected quark masses and several hadron masses can be reproduced from the downloaded PDG 2025 SQLite source.
+- The hadron source-package diagnostic now reads that package, but the large residuals keep hadron/QCD branches in diagnostic-blocked status.

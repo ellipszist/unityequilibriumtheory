@@ -122,7 +122,7 @@ def build_source_evidence_intake_stub() -> dict:
             {
                 "name": "PDG quark-mass source package",
                 "priority": "high",
-                "status_hint": "source_exists_not_integrated",
+                "status_hint": "model_verifier_source_package_diagnostic_blocked",
                 "evidence_entries": [
                     "doi_or_url",
                     "local_path",
@@ -131,6 +131,8 @@ def build_source_evidence_intake_stub() -> dict:
                     "unit_basis",
                     "extraction_note",
                     "source_mapping_gate",
+                    "reference_package_path",
+                    "model_diagnostic_artifact_path",
                 ],
             },
             {
@@ -189,15 +191,14 @@ def build_source_evidence_readiness_matrix() -> dict:
         {
             "name": "PDG quark-mass source package",
             "priority": "high",
-            "fields_total": 7,
-            "fields_complete": 5,
-            "fields_pending": 2,
+            "fields_total": 9,
+            "fields_complete": 8,
+            "fields_pending": 1,
             "pending_fields": [
-                "extraction_note",
-                "verifier_integration",
+                "validation_threshold_or_branch_demotion_policy",
             ],
             "ready_for_source_review": False,
-            "blocking_reason": "PDG 2025 SQLite exists and a source-mapping gate identifies quark and hadron records, but topic 0.5 hadron/QCD scripts still do not read that package.",
+            "blocking_reason": "PDG 2025 SQLite records are source-linked and a diagnostic model verifier reads the generated package, but large residuals keep the hadron branch blocked for validation wording.",
         },
         {
             "name": "QCD running benchmark package",

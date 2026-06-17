@@ -6,6 +6,19 @@
 
 ## Entries
 
+### 2026-06-17 - Hadron Model Source-Package Diagnostic
+
+- Scope: `0.5_Nuclear_Binding_Hadrons` hadron-model source-package verifier and blocker boundary
+- Added or changed: added source-package loader hooks to `Engine_Hadron_Model.py`, added `Code/03_Research/Research_Hadron_Model_SourcePackage.py`, generated `Result/artifacts/hadron_model_source_package_diagnostic.json`, and updated `pdg_hadron_qcd_source_mapping_gate.json` to diagnostic-blocked model-verifier status
+- Files touched: `Code/01_Engine/Engine_Hadron_Model.py`, `Code/03_Research/Research_Hadron_Model_SourcePackage.py`, `Data/03_Research/pdg_hadron_qcd_source_mapping_gate.json`, `Result/artifacts/hadron_model_source_package_diagnostic.json`, `Result/artifacts/nuclear_binding_source_locked_validation.json`, `README.md`, `DATA_MANIFEST.md`, `VERIFICATION_SPEC.md`, `LIMITATIONS.md`, `FORMULA_AUDIT.md`, `BASELINE_COMPARISON.md`, `UPDATE_LOG.md`
+- Verified with: bundled Codex Python run of `Research_Hadron_Model_SourcePackage.py`; bundled Codex Python rerun of `Research_Nuclear_Binding_SourceLocked.py`
+- Result: hadron source-package diagnostic compared 7 supported labels with about `75.33%` mean error and `94.91%` max error; strict verifier remained `PASS` at `2026-06-17T01:32:13.819880+00:00`; PDG gate embedded with `controller_status=MODEL_VERIFIER_SOURCE_PACKAGE_DIAGNOSTIC_BLOCKED`
+- Blocker narrowed: the old "make the model verifier read the PDG package" blocker is now narrowed to weak source-package model residuals and unsupported source labels
+- Still open: decide whether to revise the constituent model, split GMOR and constituent-model lanes, demote the hadron branch, source-contract unsupported labels, add QCD `alpha_s` source mapping, and fix `alpha_s_uet_v2`
+- Next controller: `pdg_hadron_qcd_source_mapping_gate.json` and `Result/artifacts/hadron_model_source_package_diagnostic.json` control hadron/quark validation wording; `semf_coefficient_provenance_gate.json` still controls nuclear-binding parameter-free wording
+- Claim impact: wording narrowed; no hadron/QCD validation upgrade and no stronger nuclear-binding claim
+- Notes: this is a useful negative/blocked diagnostic because it prevents the source-linked PDG package from being mistaken for model validation
+
 ### 2026-06-17 - PDG Hadron/Quark Source-Linkage Package
 
 - Scope: `0.5_Nuclear_Binding_Hadrons` PDG hadron/quark source package and diagnostic linkage artifact

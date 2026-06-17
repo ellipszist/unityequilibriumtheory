@@ -18,6 +18,7 @@ Uses UET V3.0 Master Equation:
     Data: PDG 2024 + Lattice QCD (FLAG 2024)
 """
 
+import json
 import sys
 from pathlib import Path
 
@@ -130,6 +131,58 @@ CONSTITUENT_MASSES = {
     "b": QUARK_MASSES["b"] + DELTA_M_UET,
 }
 
+DEFAULT_PDG_REFERENCE_PACKAGE_PATH = (
+    ROOT
+    / "docs"
+    / "topics"
+    / "0.5_Nuclear_Binding_Hadrons"
+    / "Data"
+    / "03_Research"
+    / "pdg_hadron_quark_reference_package.json"
+)
+
+
+def load_pdg_reference_package(path=DEFAULT_PDG_REFERENCE_PACKAGE_PATH):
+    """Load the generated PDG diagnostic package for source-backed checks."""
+    return json.loads(Path(path).read_text(encoding="utf-8"))
+
+
+def _record_mass_mev(record):
+    value = float(record["source_row"]["value"])
+    unit = record["source_row"]["unit_text"]
+    if unit == "MeV":
+        return value
+    if unit == "GeV":
+        return value * 1000.0
+    raise ValueError(f"Unsupported mass unit for {record.get('pdgid')}: {unit}")
+
+
+def extract_source_package_masses(package):
+    """Return quark and hadron masses in MeV from a PDG source package."""
+    quark_masses = {
+        record["flavor"]: _record_mass_mev(record)
+        for record in package["quark_mass_records"]
+        if record.get("source_query_status") == "FOUND"
+    }
+    hadron_masses = {
+        record["engine_label"]: _record_mass_mev(record)
+        for record in package["hadron_mass_records"]
+        if record.get("source_query_status") == "FOUND"
+    }
+    return quark_masses, hadron_masses
+
+
+def constituent_masses_from_current(quark_masses=None):
+    """Build the current engine's constituent-mass table from current masses."""
+    masses = quark_masses or QUARK_MASSES
+    return {
+        "u": masses["u"] + DELTA_M_UET,
+        "d": masses["d"] + DELTA_M_UET,
+        "s": masses["s"] + DELTA_M_UET * 1.45,
+        "c": masses["c"] + DELTA_M_UET,
+        "b": masses["b"] + DELTA_M_UET,
+    }
+
 # AXIOMATIC BINDING (Unity Coupling)
 # No arbitrary percentages.
 BINDING_FACTORS = {
@@ -143,7 +196,7 @@ BINDING_FACTORS = {
 # ================================================================
 
 
-def meson_mass_uet(q1, q2, beta_conf=1.0, r_meson=0.5):
+def meson_mass_uet(q1, q2, beta_conf=1.0, r_meson=0.5, constituent_masses=None):
     """
     UET meson mass calculation.
 
@@ -162,8 +215,9 @@ def meson_mass_uet(q1, q2, beta_conf=1.0, r_meson=0.5):
     sigma = CONFINEMENT_PARAMS["string_tension_GeV_fm"]  # GeV/fm
 
     # Quark masses
-    m1 = CONSTITUENT_MASSES.get(q1, 220)
-    m2 = CONSTITUENT_MASSES.get(q2, 220)
+    masses = constituent_masses or CONSTITUENT_MASSES
+    m1 = masses.get(q1, 220)
+    m2 = masses.get(q2, 220)
 
     # Total quark mass with binding
     binding = BINDING_FACTORS["meson"]
@@ -179,7 +233,7 @@ def meson_mass_uet(q1, q2, beta_conf=1.0, r_meson=0.5):
     return M
 
 
-def baryon_mass_uet(q1, q2, q3, beta_conf=1.0, r_baryon=0.8):
+def baryon_mass_uet(q1, q2, q3, beta_conf=1.0, r_baryon=0.8, constituent_masses=None):
     """
     UET baryon mass calculation.
 
@@ -193,9 +247,10 @@ def baryon_mass_uet(q1, q2, q3, beta_conf=1.0, r_baryon=0.8):
     sigma = CONFINEMENT_PARAMS["string_tension_GeV_fm"]
 
     # Quark masses
-    m1 = CONSTITUENT_MASSES.get(q1, 220)
-    m2 = CONSTITUENT_MASSES.get(q2, 220)
-    m3 = CONSTITUENT_MASSES.get(q3, 220)
+    masses = constituent_masses or CONSTITUENT_MASSES
+    m1 = masses.get(q1, 220)
+    m2 = masses.get(q2, 220)
+    m3 = masses.get(q3, 220)
 
     # Total with binding
     binding = BINDING_FACTORS["baryon"]
@@ -211,7 +266,7 @@ def baryon_mass_uet(q1, q2, q3, beta_conf=1.0, r_baryon=0.8):
     return M
 
 
-def pion_mass_gmor():
+def pion_mass_gmor(quark_masses=None):
     """
     Pion mass from GMOR relation (Gell-Mann–Oakes–Renner).
 
@@ -234,8 +289,9 @@ def pion_mass_gmor():
     because it's a Goldstone boson - the "vacuum wave" of QCD.
     """
     # Physical constants - PDG 2024 current quark masses
-    m_u = QUARK_MASSES["u"]  # ~2.16 MeV
-    m_d = QUARK_MASSES["d"]  # ~4.70 MeV
+    masses = quark_masses or QUARK_MASSES
+    m_u = masses["u"]  # ~2.16 MeV
+    m_d = masses["d"]  # ~4.70 MeV
 
     # Pion decay constant (experimental)
     F_pi = 92.4  # MeV

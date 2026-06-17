@@ -55,8 +55,10 @@ selected nuclear-binding, hadron-mass, proton-radius, and strong-force benchmark
   until the SEMF coefficient set, Yukawa policy, and rounded constants are source-locked.
 - `pdg_hadron_qcd_source_mapping_gate.json` and
   `pdg_hadron_quark_reference_package.json` now source-map selected PDG 2025 quark and
-  hadron mass rows (`16/16` records found, `0` unit mismatches), but hadron/QCD model
-  scripts still do not read that package.
+  hadron mass rows (`16/16` records found, `0` unit mismatches). A diagnostic
+  hadron-model verifier now reads the package for 7 supported hadron labels, but the
+  resulting source-package residuals remain weak (`75.33%` mean error, `94.91%` max error),
+  so hadron/QCD claims remain blocked.
 - The strict artifact now carries `nuclear_claim_scope_gate`, which lets the heavy-nucleus
   selected-subset and proton-radius anchor checks pass while blocking full-table, light-nuclei,
   QCD, hadron-mass, confinement, and complete strong-force exports.
@@ -83,6 +85,7 @@ selected nuclear-binding, hadron-mass, proton-radius, and strong-force benchmark
   - `Data/03_Research/pdg_hadron_quark_reference_package.json`
   - `Data/03_Research/branch_claim_gate.json`
   - `Result/artifacts/pdg_hadron_quark_source_linkage.json`
+  - `Result/artifacts/hadron_model_source_package_diagnostic.json`
 
 ## Reproducibility
 
@@ -100,8 +103,8 @@ for broad AME2020 table behavior and must not be described as a full-table pass.
 
 1. Source-lock SEMF coefficients and decide whether the Yukawa term is baseline physics,
    a UET bridge term, or a separate diagnostic lane.
-2. Make the hadron/quark model verifier read `pdg_hadron_quark_reference_package.json`
-   instead of embedded snapshots.
+2. Decide whether the weak hadron source-package residuals require changing the
+   constituent-mass model, demoting the branch, or splitting GMOR and constituent-model lanes.
 3. Add QCD `alpha_s` source mapping and fix the `alpha_s_uet_v2` data-shape bug before
    using that QCD branch in any verifier.
 4. Make the confinement proof script return real pass/fail status instead of printing a result

@@ -25,7 +25,8 @@
 - A future hardening pass must record the exact numeric threshold, generated artifact, timestamp, environment, and dataset hash.
 - The 2026-06-17 strict artifact exposes SEMF decomposition metrics. In the heavy selected subset, SEMF-only mean error is about `0.86%`, while the total path after current correction terms is about `1.68%`.
 - `Data/03_Research/semf_coefficient_provenance_gate.json` blocks parameter-free claims until the SEMF coefficient source package and Yukawa-term policy are source-locked.
-- `Data/03_Research/pdg_hadron_qcd_source_mapping_gate.json` and `Data/03_Research/pdg_hadron_quark_reference_package.json` now source-link selected PDG 2025 quark/hadron mass records, but hadron/QCD comparison remains diagnostic until model scripts read that generated package.
+- `Data/03_Research/pdg_hadron_qcd_source_mapping_gate.json` and `Data/03_Research/pdg_hadron_quark_reference_package.json` now source-link selected PDG 2025 quark/hadron mass records.
+- `Result/artifacts/hadron_model_source_package_diagnostic.json` reads that package for 7 supported hadron labels, but records about `75.33%` mean error and `94.91%` max error, so hadron/QCD comparison remains diagnostic-blocked.
 
 ## Claim boundary
 

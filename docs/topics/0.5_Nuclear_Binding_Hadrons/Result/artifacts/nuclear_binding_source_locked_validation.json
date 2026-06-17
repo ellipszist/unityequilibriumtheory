@@ -147,10 +147,10 @@
     "topic": "0.5_Nuclear_Binding_Hadrons"
   },
   "pdg_hadron_qcd_source_mapping_gate": {
-    "claim_boundary": "PDG 2025 source records are locally available and a generated topic-local package now source-locks selected quark and hadron mass rows, but topic 0.5 hadron/QCD model scripts still use embedded snapshots or hardcoded tables. These branches remain diagnostic until a model verifier reads the generated package directly.",
-    "controller_status": "SOURCE_MAPPED_PACKAGE_READY_DIAGNOSTIC",
+    "claim_boundary": "PDG 2025 source records are locally available, a generated topic-local package source-locks selected quark and hadron mass rows, and a diagnostic hadron-model verifier now reads that package. The diagnostic residuals remain too weak for validation wording, so hadron/QCD branches remain blocked for source-locked validation claims.",
+    "controller_status": "MODEL_VERIFIER_SOURCE_PACKAGE_DIAGNOSTIC_BLOCKED",
     "path": "Data/03_Research/pdg_hadron_qcd_source_mapping_gate.json",
-    "sha256": "1ee40cba6de885aa114c3a5c5adab55bdf468f1b8d286fd98914b3b79a547638"
+    "sha256": "5e90ed72c3e8da9c91e4b783cace505c44c6449fe72616bfedd7d79053c728d7"
   },
   "results": {
     "binding_comparisons": {
@@ -298,7 +298,7 @@
     },
     "heavy_nuclei_all_pass": true,
     "nuclear_claim_scope_status": "WARN",
-    "pdg_hadron_qcd_mapping_gate_status": "SOURCE_MAPPED_PACKAGE_READY_DIAGNOSTIC",
+    "pdg_hadron_qcd_mapping_gate_status": "MODEL_VERIFIER_SOURCE_PACKAGE_DIAGNOSTIC_BLOCKED",
     "proton_radius": {
       "observed_fm": 0.831,
       "passes": true,
@@ -392,7 +392,7 @@
   "source_evidence_intake_stub": {
     "claim_boundary": "This intake stub organizes provenance work only. It does not authorize stronger strong-force or hadron claims by itself.",
     "path": "Data/03_Research/source_evidence_intake_stub.json",
-    "sha256": "713cbbf77e6f5f3bc9429f571615cb07d44cacda96f037a70b525369a3db85ca",
+    "sha256": "9ede1034cbc14cd5ab56a05f43216b40dd2f106e878c8802d87e7c6c0e8d8bb0",
     "source_targets": [
       "AME2020 raw table and validation subset package",
       "Proton radius benchmark package",
@@ -404,7 +404,7 @@
   "source_evidence_readiness_matrix": {
     "claim_boundary": "A ready row means the topic has enough local provenance structure for source review. It does not itself upgrade a claim.",
     "path": "Data/03_Research/source_evidence_readiness_matrix.json",
-    "sha256": "a619b83e97f7014a6b2ec21768078b2a8ca50ace9f5c1e7e8d8aa177c9652bb9",
+    "sha256": "83d7cc6037726e5a535364c7d0451309ea5b2d4eb27ee71c396c692bd65b0332",
     "summary": {
       "source_targets_total": 5,
       "targets_blocked_by_pending_evidence": 3,
@@ -415,7 +415,7 @@
     "heavy_nucleus_binding_error_percent_max": 15.0,
     "proton_radius_relative_error_percent_max": 5.0
   },
-  "timestamp_utc": "2026-06-17T01:21:22.180783+00:00",
+  "timestamp_utc": "2026-06-17T01:32:13.819880+00:00",
   "topic": "0.5_Nuclear_Binding_Hadrons",
   "uet_version": "0.9.0"
 }
