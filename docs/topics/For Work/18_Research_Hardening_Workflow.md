@@ -223,6 +223,17 @@ Use this order:
 This is the standard way to increase research throughput without weakening
 claim discipline.
 
+If the same blocker wording or provenance ambiguity keeps reappearing, treat
+that recurrence as a standards signal. The next useful move is often:
+
+1. tighten the shared rule in `AGENTS.md` or `For Work`
+2. define the blocker class in machine-readable language
+3. require one pilot topic to expose that blocker cleanly
+4. only then spread the pattern more broadly
+
+This is how workflow repair becomes reusable instead of staying trapped inside
+one topic.
+
 ## Progress reconstruction rule
 
 When a collaborator asks why progress feels slow, answer from blocker
@@ -234,6 +245,9 @@ Use this order:
 2. identify whether the last wave narrowed that blocker or only added context
 3. identify whether the local `UPDATE_LOG.md` makes the next controller explicit
 4. only then decide whether the topic needs deeper research or shared workflow repair
+
+If a status question cannot be answered from that sequence in under a minute,
+the topic still needs status-hardening work before more theory expansion.
 
 ## What to optimize for
 
@@ -258,6 +272,22 @@ Every topic being actively hardened should aim to maintain:
 - `LIMITATIONS.md`
 - `FORMULA_AUDIT.md` or equivalent
 - at least one verification artifact in `Result/artifacts/`
+- `UPDATE_LOG.md` once the topic enters repeated hardening waves
+
+## Wave packet rule
+
+For repeated hardening, treat one completed wave as a small packet with all of
+these parts visible:
+
+1. one controlling blocker identified
+2. one artifact, gate, or manifest tightened
+3. one verifier rerun if evidence-producing state changed
+4. one doc sync to the new blocker boundary
+5. one update-log entry naming the next controller
+6. one scoped commit
+
+If one of those parts is missing, the wave may still be useful, but it is not
+yet closed as a standard hardening packet.
 - at least one machine-readable blocker gate if the topic is not claim-ready
 
 Recommended additions for predictive or operator-like work:

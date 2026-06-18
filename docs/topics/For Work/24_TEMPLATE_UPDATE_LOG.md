@@ -23,6 +23,11 @@ and what remains blocked.
   controlling blocker is without needing to inspect git history first.
 - Each completed entry should make three things easy to recover: what changed,
   what blocker narrowed, and what blocker now controls the next wave.
+- Once a topic has entered repeated hardening, the update log should be
+  maintained continuously rather than recreated only when someone asks for a
+  summary.
+- If the topic is serving as a pilot for a shared workflow change, note that
+  linkage in the relevant entry so standards work and topic work stay connected.
 
 ## Recommended use in repeated waves
 
@@ -37,6 +42,13 @@ Recommended pattern:
 4. write one concise log entry
 5. commit the wave as a scoped unit
 
+Treat the latest completed entry as a status handoff. A reviewer should be able
+to answer all of these from the top entry without opening git history first:
+
+1. what exact artifact, manifest, or gate changed
+2. what exact blocker became narrower
+3. what exact blocker now controls the next wave
+
 If the same ambiguity appears in several topics, update the shared workflow
 standard near the same time and record that linkage briefly in the topic log.
 That helps later reviewers understand whether the wave was topic-deepening work
@@ -50,6 +62,7 @@ history can no longer support them clearly.
 ### [YYYY-MM-DD] - [Short title]
 
 - Scope: `[topic or file set]`
+- Wave type: `[source pass / artifact pass / gate pass / claim-boundary pass / workflow-repair pass]`
 - Added or changed: `[artifact, manifest, script, doc, or gate]`
 - Files touched: `[key files only]`
 - Verified with: `[command]`
@@ -58,6 +71,7 @@ history can no longer support them clearly.
 - Still open: `[next required artifact or unresolved blocker]`
 - Next controller: `[what currently controls the topic-level state now]`
 - Claim impact: `[no change / wording narrowed / wording upgraded with reason]`
+- Workflow linkage: `[n/a or linked standards change / pilot topic note]`
 - Notes: `[optional before/after metric, dependency effect, or why no rerun happened]`
 
 ## Entries
@@ -65,6 +79,7 @@ history can no longer support them clearly.
 ### [YYYY-MM-DD] - [Initial entry]
 
 - Scope: `[topic or file set]`
+- Wave type: `[source pass / artifact pass / gate pass / claim-boundary pass / workflow-repair pass]`
 - Added or changed: `[item]`
 - Files touched: `[key files only]`
 - Verified with: `[command or n/a]`
@@ -73,4 +88,5 @@ history can no longer support them clearly.
 - Still open: `[next step]`
 - Next controller: `[current controlling blocker]`
 - Claim impact: `[status]`
+- Workflow linkage: `[n/a or linked standards change / pilot topic note]`
 - Notes: `[optional detail]`

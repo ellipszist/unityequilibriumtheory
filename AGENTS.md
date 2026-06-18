@@ -62,6 +62,18 @@ forward at once:
 Treat this as the default acceleration path when progress feels slow across
 many topics. Shared workflow clarity should compound before topic count does.
 
+When the same blocker shape appears in several topics, treat that as a
+workflow problem first and a topic problem second. Prefer this order:
+
+1. tighten the shared rule in `AGENTS.md` or `docs/topics/For Work/`
+2. name the repeated blocker class in machine-readable language
+3. require active topics of that class to expose the blocker in a gate,
+   manifest, or artifact field
+4. prove the repaired method in one pilot topic
+5. only then broaden the rollout
+
+This prevents repeated topic work from drifting into custom one-off habits.
+
 When progress feels slow because a topic keeps producing more prose than
 closure, add structure before adding scope:
 
@@ -98,6 +110,14 @@ If a topic package does not yet expose its current blocker chain clearly enough
 to answer a status question, the next useful action is usually to add or tighten
 one machine-readable gate and record the wave in `UPDATE_LOG.md` before trying
 to advance the claim.
+
+When progress reporting itself becomes difficult, treat that as a standards
+defect. The next useful action is usually one of:
+
+1. tighten the local topic `UPDATE_LOG.md`
+2. tighten the blocker wording in the latest artifact or manifest
+3. update `AGENTS.md` or the relevant `For Work` standard so the same
+   confusion does not recur elsewhere
 
 If several topics look stalled at the same time, do not spread effort evenly by
 default. Prefer this order:
@@ -256,6 +276,14 @@ An update log should not:
 - become a place for promises that were not implemented yet
 - be backfilled with vague summaries that hide what really changed
 
+For active hardening topics, treat the update log as required once any of these
+become true:
+
+- three or more distinct hardening waves have occurred
+- the controlling blocker has changed wording more than once
+- multiple collaborators would otherwise need git history to reconstruct state
+- the topic is being used as a pilot for a workflow change
+
 When a topic is being hardened across many short waves, prefer one concise
 entry per completed wave over batching several blocker changes into one large
 retroactive summary.
@@ -283,6 +311,11 @@ When a repeated ambiguity appears across several topics, prefer updating
 time so the improved method becomes reusable rather than living only in one
 topic's local fixes.
 
+For workflow-repair waves that change `AGENTS.md` or `docs/topics/For Work/`,
+record the linkage explicitly in the affected pilot topic log once the pilot is
+updated. That keeps standards work and topic work traceable as one method chain
+instead of two unrelated edits.
+
 For repo-wide status requests, a good reconstruction order is:
 
 1. `docs/topics/README.md` and relevant `docs/meta/` records
@@ -290,6 +323,18 @@ For repo-wide status requests, a good reconstruction order is:
 3. the latest stable verifier artifact
 4. blocker manifests or gate JSON files
 5. `UPDATE_LOG.md` for wave history and next-controller context
+
+For a fast repo-wide progress snapshot, prefer reporting this compact tuple for
+each active topic:
+
+1. current tier or readiness label
+2. current controlling blocker
+3. latest stable verifier result
+4. last completed hardening wave
+5. publication status boundary
+
+If any topic cannot be summarized in that tuple from local evidence, the topic
+still needs status-hardening work before more ambitious promotion claims.
 
 ## Git workflow
 
