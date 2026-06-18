@@ -9,8 +9,8 @@
 - A topic-local PDG-derived hadron/quark reference package now exists, and a diagnostic hadron-model verifier reads it for supported formula paths, but the resulting residuals remain too weak for validation wording.
 - The engine now exposes SEMF-only, entropy-correction, Yukawa-correction, and total binding components in the saved strict artifact.
 - In the current heavy selected subset, SEMF-only mean error is lower than the total path after current correction terms, so the correction lane is diagnostic rather than an improvement claim.
-- SEMF coefficients are still checked-local constants rather than a source-locked coefficient package, so decomposition does not make the topic parameter-free.
-- `semf_coefficient_provenance_gate.json` now makes that coefficient/source-policy blocker machine-readable and explicitly blocks first-principles nuclear-binding wording.
+- SEMF coefficients and Yukawa constants now have a local engine-extracted package with `0` gate mismatches, but they are still not externally source-locked, so decomposition does not make the topic parameter-free.
+- `semf_coefficient_provenance_gate.json`, `semf_coefficient_local_package.json`, and `semf_coefficient_provenance_diagnostic.json` make that coefficient/source-policy blocker machine-readable and explicitly block first-principles nuclear-binding wording.
 - The proton-radius path currently returns a benchmark-anchor value and should not be described as an independent radius prediction.
 - `pdg_hadron_qcd_source_mapping_gate.json`, `pdg_hadron_quark_reference_package.json`, and `Result/artifacts/pdg_hadron_quark_source_linkage.json` show that selected PDG 2025 quark and hadron mass rows are source-mapped (`16/16` found, `0` unit mismatches).
 - `Result/artifacts/hadron_model_source_package_diagnostic.json` compares 7 supported source-package labels and records about `75.33%` mean error and `94.91%` max error, so it is a blocker artifact rather than validation evidence.

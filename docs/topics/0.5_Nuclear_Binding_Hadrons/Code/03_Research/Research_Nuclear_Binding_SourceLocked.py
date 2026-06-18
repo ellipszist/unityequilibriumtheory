@@ -29,7 +29,7 @@ if not ROOT:
 
 
 from docs import ROOT_PATH
-from docs.core.reproducibility import generate_artifact, hash_dataset, save_artifact
+from docs.core.reproducibility import generate_artifact, hash_dataset, hash_file, save_artifact
 
 
 root_path = ROOT_PATH
@@ -51,6 +51,8 @@ SOURCE_EVIDENCE_INTAKE_PATH = data_dir / "source_evidence_intake_stub.json"
 SOURCE_EVIDENCE_READINESS_PATH = data_dir / "source_evidence_readiness_matrix.json"
 BRANCH_CLAIM_GATE_PATH = data_dir / "branch_claim_gate.json"
 SEMF_COEFFICIENT_GATE_PATH = data_dir / "semf_coefficient_provenance_gate.json"
+SEMF_COEFFICIENT_PACKAGE_PATH = data_dir / "semf_coefficient_local_package.json"
+SEMF_COEFFICIENT_DIAGNOSTIC_PATH = topic_dir / "Result" / "artifacts" / "semf_coefficient_provenance_diagnostic.json"
 PDG_HADRON_QCD_MAPPING_GATE_PATH = data_dir / "pdg_hadron_qcd_source_mapping_gate.json"
 
 
@@ -251,53 +253,64 @@ def build_semf_coefficient_provenance_gate() -> dict:
         "schema_version": "1.0",
         "topic": "0.5_Nuclear_Binding_Hadrons",
         "purpose": "Machine-readable provenance gate for SEMF coefficients used by Engine_Nuclear_Binding.py.",
-        "controller_status": "BLOCKED_FOR_PARAMETER_FREE_CLAIMS",
+        "controller_status": "LOCAL_PACKAGE_READY_SOURCE_GAP_BLOCKED",
         "claim_boundary": (
-            "The current nuclear-binding engine may be described as a checked-local SEMF baseline plus "
-            "heuristic correction workflow. It must not be described as parameter-free or first-principles "
-            "until the SEMF coefficient source package is locked."
+            "The current nuclear-binding engine may be described as a locally packaged SEMF baseline plus "
+            "heuristic correction workflow. The exact engine constants are machine-readable locally, but "
+            "the coefficient set is not source-locked and must not be described as parameter-free or "
+            "first-principles until a source record pins the SEMF edition and uncertainty policy."
         ),
         "code_surface": "Code/01_Engine/Engine_Nuclear_Binding.py",
+        "local_package": {
+            "path": "Data/03_Research/semf_coefficient_local_package.json",
+            "status": "LOCAL_PACKAGE_READY_SOURCE_GAP_BLOCKED",
+            "role": "records the exact current engine constants and gate comparison results; not an external source record",
+        },
+        "latest_diagnostic_artifact": {
+            "path": "Result/artifacts/semf_coefficient_provenance_diagnostic.json",
+            "status": "LOCAL_PACKAGE_READY_SOURCE_GAP_BLOCKED",
+            "role": "extracts constants from the engine and checks local gate consistency",
+        },
         "coefficients": [
             {
                 "symbol": "a_vol",
                 "term": "volume",
                 "value": 15.75,
                 "unit": "MeV",
-                "source_status": "checked_local_reference",
-                "source_note": "Hardcoded in engine with only a broad Wapstra/Nuclear Physics A comment; no topic-local source record pins this exact value.",
+                "source_status": "local_package_ready_not_source_locked",
+                "source_note": "Hardcoded in engine and captured by the local SEMF coefficient package; no topic-local source record pins this exact value.",
             },
             {
                 "symbol": "a_surf",
                 "term": "surface",
                 "value": 17.8,
                 "unit": "MeV",
-                "source_status": "checked_local_reference",
-                "source_note": "Hardcoded in engine with only a broad Wapstra/Nuclear Physics A comment; no topic-local source record pins this exact value.",
+                "source_status": "local_package_ready_not_source_locked",
+                "source_note": "Hardcoded in engine and captured by the local SEMF coefficient package; no topic-local source record pins this exact value.",
             },
             {
                 "symbol": "a_coul",
                 "term": "coulomb",
                 "value": 0.711,
                 "unit": "MeV",
-                "source_status": "checked_local_reference",
-                "source_note": "Hardcoded in engine with only a broad Wapstra/Nuclear Physics A comment; no topic-local source record pins this exact value.",
+                "source_status": "local_package_ready_not_source_locked",
+                "source_note": "Hardcoded in engine and captured by the local SEMF coefficient package; no topic-local source record pins this exact value.",
             },
             {
                 "symbol": "a_asym",
                 "term": "asymmetry",
                 "value": 23.7,
                 "unit": "MeV",
-                "source_status": "checked_local_reference",
-                "source_note": "Hardcoded in engine with only a broad Wapstra/Nuclear Physics A comment; no topic-local source record pins this exact value.",
+                "source_status": "local_package_ready_not_source_locked",
+                "source_note": "Hardcoded in engine and captured by the local SEMF coefficient package; no topic-local source record pins this exact value.",
             },
             {
                 "symbol": "a_pair",
                 "term": "pairing",
                 "value": 11.18,
                 "unit": "MeV",
-                "source_status": "checked_local_reference",
-                "source_note": "Hardcoded in engine with only a broad Wapstra/Nuclear Physics A comment; no topic-local source record pins this exact value.",
+                "source_status": "local_package_ready_not_source_locked",
+                "source_note": "Hardcoded in engine and captured by the local SEMF coefficient package; no topic-local source record pins this exact value.",
             },
         ],
         "correction_terms": [
@@ -322,24 +335,24 @@ def build_semf_coefficient_provenance_gate() -> dict:
                 "term": "nuclear radius scale",
                 "value": 1.25,
                 "unit": "fm",
-                "source_status": "checked_local_reference",
-                "source_note": "Used in the Yukawa correction; source record and uncertainty policy are not yet pinned.",
+                "source_status": "local_package_ready_not_source_locked",
+                "source_note": "Used in the Yukawa correction and captured by the local coefficient package; source record and uncertainty policy are not yet pinned.",
             },
             {
                 "symbol": "m_pion",
                 "term": "pion mass convention",
                 "value": 139.57,
                 "unit": "MeV",
-                "source_status": "checked_local_reference",
-                "source_note": "Close to charged-pion mass convention, but not currently read from the downloaded PDG 2025 SQLite source.",
+                "source_status": "local_package_ready_not_source_locked",
+                "source_note": "Captured by the local coefficient package and close to charged-pion mass convention, but not currently read from the downloaded PDG 2025 SQLite source.",
             },
             {
                 "symbol": "hbar_c",
                 "term": "conversion constant",
                 "value": 197.33,
                 "unit": "MeV fm",
-                "source_status": "checked_local_reference",
-                "source_note": "Rounded local constant; should be reconciled with shared constants policy before precision claims.",
+                "source_status": "local_package_ready_not_source_locked",
+                "source_note": "Captured by the local coefficient package as a rounded local constant; should be reconciled with shared constants policy before precision claims.",
             },
         ],
         "required_to_close": [
@@ -607,7 +620,7 @@ def run_test() -> bool:
         "heavy_max_error_percent": max(heavy_errors) if heavy_errors else None,
     }
     semf_decomposition = {
-        "semf_coefficient_status": "checked_local_reference_not_source_locked",
+        "semf_coefficient_status": semf_coefficient_gate["controller_status"],
         "correction_policy": "Current selected-subset verifier calls binding_energy_components(beta_nuc=0.0); UET entropy is zero in this gate, while the Yukawa term remains an additive heuristic correction.",
         "all_semf_only": summarize_errors(semf_errors),
         "all_total": summarize_errors(errors),
@@ -743,6 +756,16 @@ def run_test() -> bool:
         "controller_status": semf_coefficient_gate["controller_status"],
         "claim_boundary": semf_coefficient_gate["claim_boundary"],
     }
+    if SEMF_COEFFICIENT_PACKAGE_PATH.exists():
+        artifact["semf_coefficient_provenance_gate"]["local_package"] = {
+            "path": str(SEMF_COEFFICIENT_PACKAGE_PATH.relative_to(topic_dir)).replace("\\", "/"),
+            "sha256": hash_file(SEMF_COEFFICIENT_PACKAGE_PATH),
+        }
+    if SEMF_COEFFICIENT_DIAGNOSTIC_PATH.exists():
+        artifact["semf_coefficient_provenance_gate"]["latest_diagnostic_artifact"] = {
+            "path": str(SEMF_COEFFICIENT_DIAGNOSTIC_PATH.relative_to(topic_dir)).replace("\\", "/"),
+            "sha256": hash_file(SEMF_COEFFICIENT_DIAGNOSTIC_PATH),
+        }
     artifact["pdg_hadron_qcd_source_mapping_gate"] = {
         "path": str(PDG_HADRON_QCD_MAPPING_GATE_PATH.relative_to(topic_dir)).replace("\\", "/"),
         "sha256": hash_dataset(pdg_hadron_qcd_mapping_gate),
@@ -765,7 +788,7 @@ def run_test() -> bool:
         "The strict pass/fail gate applies only to selected heavy nuclei plus proton-radius compatibility.",
         "Light nuclei remain diagnostic and can fail badly outside the liquid-drop validation regime.",
         "The proton-radius path is still benchmark-anchor behavior, not an independent prediction.",
-        "The SEMF baseline versus correction decomposition is now reported, but SEMF coefficient provenance remains checked-local rather than source-locked.",
+        "The SEMF baseline versus correction decomposition is reported, and the exact engine constants now have a local package; SEMF coefficient provenance remains not source-locked.",
         "Hadron-mass, QCD-running, and confinement-proof branches remain blocked for strong claims.",
     ]
     artifact_path = topic_dir / "Result" / "artifacts" / "nuclear_binding_source_locked_validation.json"

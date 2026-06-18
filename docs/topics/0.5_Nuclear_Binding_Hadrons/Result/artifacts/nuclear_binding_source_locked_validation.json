@@ -34,7 +34,7 @@
     "The strict pass/fail gate applies only to selected heavy nuclei plus proton-radius compatibility.",
     "Light nuclei remain diagnostic and can fail badly outside the liquid-drop validation regime.",
     "The proton-radius path is still benchmark-anchor behavior, not an independent prediction.",
-    "The SEMF baseline versus correction decomposition is now reported, but SEMF coefficient provenance remains checked-local rather than source-locked.",
+    "The SEMF baseline versus correction decomposition is reported, and the exact engine constants now have a local package; SEMF coefficient provenance remains not source-locked.",
     "Hadron-mass, QCD-running, and confinement-proof branches remain blocked for strong claims."
   ],
   "metrics": {
@@ -82,7 +82,7 @@
         "blocked_for_strong_claims": 4,
         "branches_total": 6
       },
-      "semf_coefficient_status": "BLOCKED_FOR_PARAMETER_FREE_CLAIMS",
+      "semf_coefficient_status": "LOCAL_PACKAGE_READY_SOURCE_GAP_BLOCKED",
       "source_evidence_summary": {
         "source_targets_total": 5,
         "targets_blocked_by_pending_evidence": 3,
@@ -128,7 +128,7 @@
     "schema_version": "1.0",
     "semf_decomposition_gate": {
       "claim_class": "C - internal diagnostic decomposition",
-      "coefficient_gate_status": "BLOCKED_FOR_PARAMETER_FREE_CLAIMS",
+      "coefficient_gate_status": "LOCAL_PACKAGE_READY_SOURCE_GAP_BLOCKED",
       "controller_role": "prevents the selected-subset PASS from hiding the SEMF baseline contribution",
       "does_not_support": "A parameter-free UET derivation or a source-locked SEMF coefficient package.",
       "metrics": {
@@ -305,7 +305,7 @@
       "predicted_fm": 0.841,
       "relative_error_percent": 1.203369434416367
     },
-    "semf_coefficient_gate_status": "BLOCKED_FOR_PARAMETER_FREE_CLAIMS",
+    "semf_coefficient_gate_status": "LOCAL_PACKAGE_READY_SOURCE_GAP_BLOCKED",
     "semf_decomposition": {
       "all_mean_error_delta_percent_points": -28.73535591222722,
       "all_semf_only": {
@@ -334,7 +334,7 @@
         "mean_error_percent": 1.6773241386900364,
         "median_error_percent": 1.4584304736632845
       },
-      "semf_coefficient_status": "checked_local_reference_not_source_locked",
+      "semf_coefficient_status": "LOCAL_PACKAGE_READY_SOURCE_GAP_BLOCKED",
       "uet_entropy_term_status": "disabled_for_current strict binding subset because beta_nuc=0.0 in binding_energy_per_nucleon",
       "yukawa_term_status": "heuristic_bridge_in_current_engine"
     },
@@ -384,10 +384,18 @@
   },
   "seed": 42,
   "semf_coefficient_provenance_gate": {
-    "claim_boundary": "The current nuclear-binding engine may be described as a checked-local SEMF baseline plus heuristic correction workflow. It must not be described as parameter-free or first-principles until the SEMF coefficient source package is locked.",
-    "controller_status": "BLOCKED_FOR_PARAMETER_FREE_CLAIMS",
+    "claim_boundary": "The current nuclear-binding engine may be described as a locally packaged SEMF baseline plus heuristic correction workflow. The exact engine constants are machine-readable locally, but the coefficient set is not source-locked and must not be described as parameter-free or first-principles until a source record pins the SEMF edition and uncertainty policy.",
+    "controller_status": "LOCAL_PACKAGE_READY_SOURCE_GAP_BLOCKED",
+    "latest_diagnostic_artifact": {
+      "path": "Result/artifacts/semf_coefficient_provenance_diagnostic.json",
+      "sha256": "71bc06e023e17384e8376dcec85d196013ad81412e7f8ee4250690ef7bf3bef4"
+    },
+    "local_package": {
+      "path": "Data/03_Research/semf_coefficient_local_package.json",
+      "sha256": "62737400360e5b2f77885834c98d81768ad5117c761d3b756ac865a9f85d7ca5"
+    },
     "path": "Data/03_Research/semf_coefficient_provenance_gate.json",
-    "sha256": "b804f8c485b9b879d54c0f8c425c6fcef11aa3b36dc57840fcb046cb8f329cfa"
+    "sha256": "d985ef3697180db1ced9debba0f5a14a1b1373f2bb69a6575361af9a63b56eb4"
   },
   "source_evidence_intake_stub": {
     "claim_boundary": "This intake stub organizes provenance work only. It does not authorize stronger strong-force or hadron claims by itself.",
@@ -415,7 +423,7 @@
     "heavy_nucleus_binding_error_percent_max": 15.0,
     "proton_radius_relative_error_percent_max": 5.0
   },
-  "timestamp_utc": "2026-06-18T23:28:22.818723+00:00",
+  "timestamp_utc": "2026-06-18T23:40:55.350844+00:00",
   "topic": "0.5_Nuclear_Binding_Hadrons",
   "uet_version": "0.9.0"
 }

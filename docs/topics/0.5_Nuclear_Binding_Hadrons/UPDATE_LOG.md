@@ -6,6 +6,19 @@
 
 ## Entries
 
+### 2026-06-19 - SEMF Local Coefficient Package
+
+- Scope: `0.5_Nuclear_Binding_Hadrons` SEMF/Yukawa coefficient local package and provenance blocker
+- Added or changed: added `Code/03_Research/Research_SEMF_Coefficient_Provenance.py`, generated `Data/03_Research/semf_coefficient_local_package.json`, generated `Result/artifacts/semf_coefficient_provenance_diagnostic.json`, and updated the primary verifier to persist `LOCAL_PACKAGE_READY_SOURCE_GAP_BLOCKED` status in the SEMF gate and strict artifact
+- Files touched: `Code/03_Research/Research_SEMF_Coefficient_Provenance.py`, `Code/03_Research/Research_Nuclear_Binding_SourceLocked.py`, `Data/03_Research/semf_coefficient_provenance_gate.json`, `Data/03_Research/semf_coefficient_local_package.json`, `Result/artifacts/semf_coefficient_provenance_diagnostic.json`, `Result/artifacts/nuclear_binding_source_locked_validation.json`, `README.md`, `DATA_MANIFEST.md`, `VERIFICATION_SPEC.md`, `LIMITATIONS.md`, `FORMULA_AUDIT.md`, `BASELINE_COMPARISON.md`, `UPDATE_LOG.md`
+- Verified with: bundled Codex Python run of `Research_SEMF_Coefficient_Provenance.py`; bundled Codex Python rerun of `Research_Nuclear_Binding_SourceLocked.py`
+- Result: SEMF diagnostic extracted 9 engine constants, compared 9 gate records, found 0 local gate mismatches, and recorded `source_record_locked=false`; strict verifier remained `PASS` at `2026-06-18T23:40:55.350844+00:00`
+- Blocker narrowed: SEMF/Yukawa constants are no longer only prose or hardcoded engine state; the controlling blocker is now the missing external source record/edition plus unresolved Yukawa-term and uncertainty policy
+- Still open: source-lock the exact SEMF coefficient edition, define uncertainty/sensitivity policy, decide whether the Yukawa term is baseline physics, UET bridge, or a separate diagnostic lane, and keep hadron/QCD/confinement branches blocked
+- Next controller: `semf_coefficient_provenance_gate.json`, `semf_coefficient_local_package.json`, and `semf_coefficient_provenance_diagnostic.json` control parameter-free and first-principles nuclear-binding wording
+- Claim impact: wording narrowed; local engine state is packaged, but no parameter-free, first-principles, or stronger nuclear-binding claim is unlocked
+- Notes: this wave intentionally produces a blocker artifact rather than a positive validation artifact
+
 ### 2026-06-19 - Confinement Proof Return Contract
 
 - Scope: `0.5_Nuclear_Binding_Hadrons` confinement proof return contract and diagnostic artifact
