@@ -16,5 +16,5 @@
 - `Result/artifacts/hadron_model_source_package_diagnostic.json` compares 7 supported source-package labels and records about `75.33%` mean error and `94.91%` max error, so it is a blocker artifact rather than validation evidence.
 - The QCD bridge still contains diagnostic/open branches and should not support public QCD-running claims until source-backed inputs and verifier contracts are hardened.
 - The `alpha_s_uet_v2` data-shape bug is now fixed and smoke-tested in `qcd_alpha_s_source_probe.json`, but the local PDG SQLite probe found no direct alpha_s/QCD-running source row, so QCD running remains source-blocked.
-- The color-confinement proof script currently prints a pass/fail-style message but returns `True`, so it is not an audit-grade proof gate.
+- The color-confinement proof script now returns real pass/fail status, and `confinement_proof_gate_diagnostic.json` records a `FAIL` for the current narrow proton-mass consistency check; this is still not a formal confinement proof.
 - Internal script execution does not by itself establish external replication, theorem-level proof, or broad physical closure.

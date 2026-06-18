@@ -62,13 +62,14 @@
     {
       "name": "Confinement proof gate package",
       "priority": "medium",
-      "status_hint": "pending_proof_gate_fix",
+      "status_hint": "return_contract_fixed_diagnostic_only",
       "evidence_entries": [
         "proof_script_path",
         "return_contract_note",
         "benchmark_identity",
         "status_rule",
         "artifact_path",
+        "diagnostic_artifact_path",
         "limitation_note"
       ]
     }

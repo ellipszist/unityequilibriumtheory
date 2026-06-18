@@ -58,17 +58,15 @@
     {
       "name": "Confinement proof gate package",
       "priority": "medium",
-      "fields_total": 6,
-      "fields_complete": 2,
-      "fields_pending": 4,
+      "fields_total": 7,
+      "fields_complete": 5,
+      "fields_pending": 2,
       "pending_fields": [
         "benchmark_identity",
-        "status_rule",
-        "artifact_path",
-        "limitation_note"
+        "formal_derivation_benchmark"
       ],
       "ready_for_source_review": false,
-      "blocking_reason": "The proof script still returns True instead of enforcing an audit-grade pass/fail contract."
+      "blocking_reason": "The proof script now has a real pass/fail return contract and diagnostic artifact, but it remains a narrow proton-mass check rather than a formal confinement derivation."
     }
   ],
   "claim_boundary": "A ready row means the topic has enough local provenance structure for source review. It does not itself upgrade a claim."

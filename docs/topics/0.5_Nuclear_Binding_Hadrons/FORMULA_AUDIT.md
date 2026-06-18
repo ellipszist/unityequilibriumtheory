@@ -21,7 +21,7 @@ hadron/QCD scripts.
 | `T05-HADRON-008` | meson/baryon mass as sum of constituent masses with constituent shift `DELTA_M_UET = 330*beta` | `Code/01_Engine/Engine_Hadron_Model.py`; `Code/03_Research/Research_Hadron_Model_SourcePackage.py`; `Data/03_Research/pdg_hadron_qcd_source_mapping_gate.json`; `Data/03_Research/pdg_hadron_quark_reference_package.json` | quark masses MeV/GeV depending on PDG row; hadron mass MeV; `beta` dimensionless | PDG 2025 records source-linked in a diagnostic package; `heuristic_bridge` for constituent shift and strangeness factor | `heuristic bridge` | diagnostic-only | Source-package verifier reads PDG-derived inputs but records large residuals, so this formula path cannot support hadron-mass validation wording. | Decide whether to revise the constituent model, demote this branch, or split GMOR and constituent-model lanes before defining any pass/fail threshold. |
 | `T05-GMOR-009` | `m_pi = sqrt(abs(-(m_u+m_d)*condensate/F_pi^2))` | `Code/01_Engine/Engine_Hadron_Model.py` | `m_u`, `m_d`, `F_pi`, `sigma_qq` MeV; condensate MeV^3; result MeV | `checked_local_reference` from PDG/lattice-QCD-style constants | `checked local` | diagnostic-only | Constants are embedded and not yet tied to local source files/hashes. | Source-lock PDG/FLAG values or move this row to checked external benchmark status. |
 | `T05-QCD-010` | `alpha_s(Q) = 1/(b0*ln(Q^2/Lambda^2))`; UET variants multiply or alter `Lambda` | `Code/01_Engine/Engine_QCD_Bridge.py`; `Code/03_Research/Research_QCD_AlphaS_Source_Probe.py`; `Data/03_Research/pdg_hadron_qcd_source_mapping_gate.json` | `Q`, `Lambda` GeV; `alpha_s` dimensionless; `n_f` active flavors | embedded PDG-like table; source probe found no direct local PDG alpha_s/QCD-running row under the current query policy | `diagnostic blocked` | diagnostic-only | `alpha_s_uet_v2` now smoke-tests finite after the data-shape fix, but the alpha_s source package is still missing. | Source-lock alpha_s inputs from a vetted source package and define whether this is baseline QCD or a UET correction. |
-| `T05-CONF-011` | proof script checks `0.9 < proton_mass_gev < 1.01` after hadron engine step | `Code/02_Proof/Proof_Color_Confinement.py` | proton mass GeV from diagnostic hadron model | `heuristic_bridge` | `diagnostic blocked` | diagnostic-only | Script returns `True` regardless of pass/fail print path, so it cannot certify confinement. | Make proof command return real pass/fail and label as diagnostic until derivation exists. |
+| `T05-CONF-011` | proof script checks `0.9 < proton_mass_gev < 1.01` after hadron engine step | `Code/02_Proof/Proof_Color_Confinement.py`; `Code/03_Research/Research_Confinement_Proof_Gate.py` | proton mass GeV from diagnostic hadron model | `heuristic_bridge` | `diagnostic blocked` | diagnostic-only | Return contract now reflects pass/fail, but the current narrow proton-mass diagnostic fails and is not a formal confinement derivation. | Define a defensible derivation benchmark before any confinement proof claim. |
 
 ## Unit and Data Discipline
 
@@ -39,12 +39,12 @@ hadron/QCD scripts.
 - Light nuclei: `heuristic bridge` / diagnostic.
 - Proton radius: benchmark anchor, not independent prediction.
 - Hadron and QCD bridge: diagnostic-blocked until source-backed data and verifier contracts are added.
-- Confinement proof script: diagnostic-blocked; current return behavior is not a proof gate.
+- Confinement proof script: diagnostic-blocked; return behavior is now gateable, but the current diagnostic fails and is not a proof.
 
 ## Next Hardening Steps
 
 1. Source-lock SEMF coefficients and decide whether the Yukawa term is baseline physics, UET bridge, or a separate diagnostic lane.
 2. Decide the hadron branch policy after the source-package diagnostic: revise the constituent model, split formula lanes, or demote the branch.
 3. Source-lock QCD `alpha_s` inputs from a vetted source package before using QCD-running in any validation verifier.
-4. Change `Proof_Color_Confinement.py` to return a real pass/fail status.
+4. Define a defensible confinement derivation benchmark before any proof claim.
 5. Add a dedicated light-nuclei verifier or keep `A < 16` explicitly outside the heavy-nucleus claim.

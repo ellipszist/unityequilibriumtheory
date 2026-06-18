@@ -62,6 +62,10 @@ selected nuclear-binding, hadron-mass, proton-radius, and strong-force benchmark
 - `qcd_alpha_s_source_probe.json` shows that `alpha_s_uet_v2` now smoke-tests as finite
   at 4/4 checked scales after the data-shape fix, but the local PDG SQLite query found
   no direct alpha_s/QCD-running source row, so QCD running remains source-blocked.
+- `confinement_proof_gate_diagnostic.json` shows that the confinement proof script now
+  has a real return contract, but the current narrow proton-mass consistency check fails
+  (`0.058520 GeV` versus the `0.9` to `1.01 GeV` diagnostic band), so it remains a
+  blocker artifact rather than proof evidence.
 - The strict artifact now carries `nuclear_claim_scope_gate`, which lets the heavy-nucleus
   selected-subset and proton-radius anchor checks pass while blocking full-table, light-nuclei,
   QCD, hadron-mass, confinement, and complete strong-force exports.
@@ -90,6 +94,7 @@ selected nuclear-binding, hadron-mass, proton-radius, and strong-force benchmark
   - `Result/artifacts/pdg_hadron_quark_source_linkage.json`
   - `Result/artifacts/hadron_model_source_package_diagnostic.json`
   - `Result/artifacts/qcd_alpha_s_source_probe.json`
+  - `Result/artifacts/confinement_proof_gate_diagnostic.json`
 
 ## Reproducibility
 
@@ -111,8 +116,7 @@ for broad AME2020 table behavior and must not be described as a full-table pass.
    constituent-mass model, demoting the branch, or splitting GMOR and constituent-model lanes.
 3. Create a vetted QCD `alpha_s` source package or refine the PDG mapping policy beyond
    the current SQLite query before using that QCD branch in any validation verifier.
-4. Make the confinement proof script return real pass/fail status instead of printing a result
-   and returning `True`.
+4. Define a defensible confinement derivation benchmark before making any proof claim.
 5. Keep light nuclei outside the heavy-nucleus pass claim unless a dedicated light-nuclei
    verifier is added.
 

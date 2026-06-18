@@ -20,6 +20,10 @@
   - `python docs/topics/0.5_Nuclear_Binding_Hadrons/Code/03_Research/Research_QCD_AlphaS_Source_Probe.py`
   - Bundled Codex runtime command used for the current run:
     - `$env:PYTHONIOENCODING='utf-8'; $env:PYTHONUTF8='1'; & 'C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' docs\topics\0.5_Nuclear_Binding_Hadrons\Code\03_Research\Research_QCD_AlphaS_Source_Probe.py`
+- Confinement proof-gate diagnostic command:
+  - `python docs/topics/0.5_Nuclear_Binding_Hadrons/Code/03_Research/Research_Confinement_Proof_Gate.py`
+  - Bundled Codex runtime command used for the current run:
+    - `$env:PYTHONIOENCODING='utf-8'; $env:PYTHONUTF8='1'; & 'C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' docs\topics\0.5_Nuclear_Binding_Hadrons\Code\03_Research\Research_Confinement_Proof_Gate.py`
 - Inputs:
   - `docs/data/external/particle_physics/ame2020/mass_1.mas20`
   - `Data/03_Research/Data_AME2020_Binding_FullParsed.json`
@@ -31,6 +35,7 @@
   - `Code/01_Engine/Engine_Nuclear_Binding.py`
   - `Code/01_Engine/Engine_Hadron_Model.py`
   - `Code/01_Engine/Engine_QCD_Bridge.py`
+  - `Code/02_Proof/Proof_Color_Confinement.py`
 - Baseline:
   - Raw-table-derived AME2020 subset for selected nuclei plus PRad/CODATA proton-radius benchmarks.
 - Reported metrics:
@@ -51,6 +56,7 @@
   - `Result/artifacts/pdg_hadron_quark_source_linkage.json`
   - `Result/artifacts/hadron_model_source_package_diagnostic.json`
   - `Result/artifacts/qcd_alpha_s_source_probe.json`
+  - `Result/artifacts/confinement_proof_gate_diagnostic.json`
 - Required workflow gates from the primary verifier:
   - `Data/03_Research/source_evidence_intake_stub.json`
   - `Data/03_Research/source_evidence_readiness_matrix.json`
@@ -60,12 +66,13 @@
   - `Data/03_Research/branch_claim_gate.json`
   - embedded `nuclear_claim_scope_gate` in `Result/artifacts/nuclear_binding_source_locked_validation.json`
 - Latest audit-run artifact identity:
-  - Source-locked verifier: `PASS`, dataset hash `d6f5d045222d0eca354ecf22d1b9b9bf1df24c49c31f46ccde7ed4a368555287`, timestamp `2026-06-17T01:36:30.524715+00:00`.
-  - Full-table diagnostic: `DIAGNOSTIC`, dataset hash `5513ae294bc68c16b7c6649a28dcd088c2901d87a17c1d8895c912b993451f2e`, timestamp `2026-06-17T01:08:33.803330+00:00`.
-  - PDG hadron/quark source-linkage diagnostic: `DIAGNOSTIC_SOURCE_LINKAGE`, `16/16` records found, `0` unit mismatches.
+  - Source-locked verifier: `PASS`, dataset hash `d6f5d045222d0eca354ecf22d1b9b9bf1df24c49c31f46ccde7ed4a368555287`, timestamp `2026-06-18T23:28:22.818723+00:00`.
+  - Full-table diagnostic: `DIAGNOSTIC`, dataset hash `5513ae294bc68c16b7c6649a28dcd088c2901d87a17c1d8895c912b993451f2e`, timestamp `2026-06-18T13:54:44.331534+00:00`.
+  - PDG hadron/quark source-linkage diagnostic: `DIAGNOSTIC_SOURCE_LINKAGE`, `16/16` records found, `0` unit mismatches, timestamp `2026-06-18T13:55:01.160695+00:00`.
   - Hadron source-package diagnostic: `DIAGNOSTIC_MODEL_SOURCE_PACKAGE`, 7 labels compared, mean error about `75.33%`, max error about `94.91%`, unsupported source labels `kaon_0`, `kaon_pm`, and `pion_0`.
   - QCD alpha_s source probe: `DIAGNOSTIC_QCD_ALPHA_S_SOURCE_PROBE`, `alpha_s_uet_v2` finite at 4/4 checked scales, `0` direct local PDG alpha_s/QCD-running rows found by the current query policy.
-  - The successful 2026-06-17 rerun used the bundled Codex Python at `C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe` because `python`/`py` were not on PATH and the repo `.venv` executable returned `Access is denied`.
+  - Confinement proof-gate diagnostic: `DIAGNOSTIC_CONFINEMENT_PROOF_GATE`, return contract OK, proof-script status `FAIL`, proton mass `0.058520 GeV` against the narrow `0.9` to `1.01 GeV` check.
+  - The successful reruns used the bundled Codex Python at `C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe` because `python`/`py` were not on PATH and the repo `.venv` executable returned `Access is denied`.
   - The UTF-8 environment variables are required on this Windows shell because the logger emits Unicode status glyphs; without them the verifier can fail before artifact review with a console encoding error.
 - Current decomposition result:
   - Heavy selected-subset SEMF-only mean error: about `0.86%`.

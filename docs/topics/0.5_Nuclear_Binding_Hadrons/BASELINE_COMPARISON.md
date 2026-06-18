@@ -28,6 +28,7 @@
 - `Data/03_Research/pdg_hadron_qcd_source_mapping_gate.json` and `Data/03_Research/pdg_hadron_quark_reference_package.json` now source-link selected PDG 2025 quark/hadron mass records.
 - `Result/artifacts/hadron_model_source_package_diagnostic.json` reads that package for 7 supported hadron labels, but records about `75.33%` mean error and `94.91%` max error, so hadron/QCD comparison remains diagnostic-blocked.
 - `Result/artifacts/qcd_alpha_s_source_probe.json` smoke-tests `alpha_s_uet_v2` after the data-shape fix, but records `0` direct local PDG alpha_s/QCD-running source rows under the current query policy.
+- `Result/artifacts/confinement_proof_gate_diagnostic.json` verifies that the proof script now has a real return contract, but the current narrow proton-mass consistency check fails and remains diagnostic-blocked.
 
 ## Claim boundary
 

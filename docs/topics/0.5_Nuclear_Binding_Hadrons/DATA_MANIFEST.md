@@ -26,23 +26,24 @@ Priority remediation:
 
 | File | Bytes | SHA-256 | Role | Current status |
 | :-- | --: | :-- | :-- | :-- |
-| `source_evidence_intake_stub.json` | 2309 | `98c7ffda33ccbb8b2fdced10c4424a536bebb55a04dd236620ccf647c3795267` | provenance intake across nuclear, hadron, QCD, and confinement lanes | created by primary verifier |
-| `source_evidence_readiness_matrix.json` | 2606 | `6c4285ed8f42908b179af229565d910a8c2342febe241f950254ddefd6c07428` | tracks which source packages are review-ready | AME2020 and proton radius ready; PDG source package and diagnostic model artifact exist; QCD/confinement still blocked |
+| `source_evidence_intake_stub.json` | 2361 | `c766613447bab409357b5f476d284221272dd0d457b65740dd01b7bf2056ce36` | provenance intake across nuclear, hadron, QCD, and confinement lanes | created by primary verifier |
+| `source_evidence_readiness_matrix.json` | 2646 | `faebb47cff9104695819c0e3bf980648a2018572127f3a452d644a0c47980864` | tracks which source packages are review-ready | AME2020 and proton radius ready; PDG source package and diagnostic model artifact exist; QCD/confinement still blocked |
 | `semf_coefficient_provenance_gate.json` | 4729 | `c30e8bc488afa4b43ac96f7398cb036459212f059f13e7769180e6207715d587` | tracks SEMF coefficient, Yukawa, and rounded-constant provenance | blocks parameter-free and first-principles nuclear-binding claims until coefficient source package and term policy are source-locked |
 | `pdg_hadron_qcd_source_mapping_gate.json` | 6619 | `1dae879456ced395272c0e17fa0cd75970c0199f04f9f67063d201c3d2dce070` | maps available PDG 2025 quark/hadron mass records and QCD alpha_s source-probe status | hadron source-package verifier exists with high residuals; QCD alpha_s bug is fixed but source row remains missing |
-| `pdg_hadron_quark_reference_package.json` | 13401 | `16241283a47b2721d3c8638a59c325a1686d809e8aefdf15d0ba3fa3464268fd` | generated selected PDG 2025 quark/hadron mass package | diagnostic source-linkage package; not a model validation artifact |
-| `branch_claim_gate.json` | 2242 | `8b22acf0b9fc76d8d054fb52f8c5ea68313d9920c08eb150f9caeab3fa7d4ae9` | lane-by-lane claim ceiling | heavy binding and proton-radius anchor accepted; 4 branches blocked |
+| `pdg_hadron_quark_reference_package.json` | 13546 | `415a2df3d54781baa13e18841f06baf091c0ce78fa81bfccc48ed8b64feff107` | generated selected PDG 2025 quark/hadron mass package | diagnostic source-linkage package; not a model validation artifact |
+| `branch_claim_gate.json` | 2338 | `624ff981de0369b5e1fdf04d1feb085fade7fa907a05dc95e08edea510580eb0` | lane-by-lane claim ceiling | heavy binding and proton-radius anchor accepted; 4 branches blocked |
 
 ## Result Artifacts
 
 | Artifact | Bytes | SHA-256 | Role | Current status |
 | :-- | --: | :-- | :-- | :-- |
 | `Result/artifacts/0_5_nuclear_binding_hadrons_verification.json` | 5029 | `fbb29c6f4574476edc3f22af409dc22fd043fc5a87e1110f5556670d28b10797` | primary wrapper/run-contract artifact | Records scripts present and runnable; does not override branch claim gates |
-| `Result/artifacts/nuclear_binding_full_table_diagnostic.json` | 6722 | `af78181bbebd12fb47bdbafc2604e1436d489075134e9d43692c944e549fd4d3` | table-wide behavior diagnostic | Separates broad table behavior from strict pass/fail validation subset |
-| `Result/artifacts/nuclear_binding_source_locked_validation.json` | 18838 | `7acd01939d45ddc0921d3ee992309c3fb7400b9ef474c75213318f4c41e9ab7b` | source-locked validation artifact | Supports heavy-nucleus subset and proton-radius anchor only; now embeds SEMF decomposition, SEMF coefficient gate status, and hadron/QCD diagnostic-blocked status |
-| `Result/artifacts/pdg_hadron_quark_source_linkage.json` | 2219 | `e8a72e49daa4c86532cecf7539f027bea0c77034e34087e5163b127b8eb3f66d` | PDG quark/hadron source-linkage artifact | `DIAGNOSTIC_SOURCE_LINKAGE`; records `16/16` found and `0` unit mismatches |
-| `Result/artifacts/hadron_model_source_package_diagnostic.json` | 5198 | `9563d71cb0772de1f5e405a8cca38601f011381958ee09084967a32fcd627536` | source-package-driven hadron-model diagnostic | `DIAGNOSTIC_MODEL_SOURCE_PACKAGE`; compares 7 supported labels with `75.33%` mean error and `94.91%` max error |
-| `Result/artifacts/qcd_alpha_s_source_probe.json` | 3028 | `4cc95cf60c10f2cd2a939603c2f73d22e398eddbc68a7d03263d75e706059631` | QCD alpha_s source-probe and smoke-test artifact | `DIAGNOSTIC_QCD_ALPHA_S_SOURCE_PROBE`; `alpha_s_uet_v2` finite at 4/4 checked scales, but no direct local PDG alpha_s row found |
+| `Result/artifacts/nuclear_binding_full_table_diagnostic.json` | 6737 | `7b9dcff2969ec071711ad28972a25244cb2e700bb7a3c5bcfa7859ffa6aee5bd` | table-wide behavior diagnostic | Separates broad table behavior from strict pass/fail validation subset |
+| `Result/artifacts/nuclear_binding_source_locked_validation.json` | 18834 | `c3955d14cf32befaee861eb490ddfd83be56054e564a87c4d42736bf3d600d8a` | source-locked validation artifact | Supports heavy-nucleus subset and proton-radius anchor only; now embeds SEMF decomposition, SEMF coefficient gate status, and hadron/QCD/confinement diagnostic-blocked status |
+| `Result/artifacts/pdg_hadron_quark_source_linkage.json` | 2234 | `a29b3093cb1294931fc02c9954282143661f0e87c68daba58de9440e2081a7cd` | PDG quark/hadron source-linkage artifact | `DIAGNOSTIC_SOURCE_LINKAGE`; records `16/16` found and `0` unit mismatches |
+| `Result/artifacts/hadron_model_source_package_diagnostic.json` | 5213 | `9f77746497f9bab8475c73c1ed06ff9741984d30af213ebc3068e096289673df` | source-package-driven hadron-model diagnostic | `DIAGNOSTIC_MODEL_SOURCE_PACKAGE`; compares 7 supported labels with `75.33%` mean error and `94.91%` max error |
+| `Result/artifacts/qcd_alpha_s_source_probe.json` | 3043 | `e27153110ba5dc83c95314518d5571b2eb24ca3a118579ae9b52433b5002a1ce` | QCD alpha_s source-probe and smoke-test artifact | `DIAGNOSTIC_QCD_ALPHA_S_SOURCE_PROBE`; `alpha_s_uet_v2` finite at 4/4 checked scales, but no direct local PDG alpha_s row found |
+| `Result/artifacts/confinement_proof_gate_diagnostic.json` | 1945 | `e9de60e0bf0f8fbff335d0ea1cac12d3c7422033bed3a3a52d35736168f22fc1` | confinement proof return-contract diagnostic | `DIAGNOSTIC_CONFINEMENT_PROOF_GATE`; proof script return contract works but narrow proton-mass check is `FAIL` at `0.058520 GeV` |
 
 Repository note:
 
@@ -53,3 +54,4 @@ Repository note:
 - The PDG hadron/quark source-linkage artifact shows that selected quark masses and several hadron masses can be reproduced from the downloaded PDG 2025 SQLite source.
 - The hadron source-package diagnostic now reads that package, but the large residuals keep hadron/QCD branches in diagnostic-blocked status.
 - The QCD alpha_s source probe fixes and smoke-tests the local runtime bug, but it does not provide a source-backed QCD-running package.
+- The confinement proof gate diagnostic fixes the unconditional-return blocker and records a `FAIL` for the current narrow proton-mass consistency check; it is not a formal confinement proof.

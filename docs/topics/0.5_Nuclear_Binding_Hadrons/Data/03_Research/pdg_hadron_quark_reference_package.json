@@ -4,7 +4,7 @@
     {
       "display": "938.27208816+-0.00000029",
       "engine_label": "proton",
-      "mapping_status": "source_mapped_not_model_integrated",
+      "mapping_status": "source_mapped_model_diagnostic_blocked",
       "name": "p",
       "pdgid": "S016M",
       "record_kind": "hadron_mass",
@@ -28,7 +28,7 @@
     {
       "display": "939.5654205+-0.0000005",
       "engine_label": "neutron",
-      "mapping_status": "source_mapped_not_model_integrated",
+      "mapping_status": "source_mapped_model_diagnostic_blocked",
       "name": "n",
       "pdgid": "S017M",
       "record_kind": "hadron_mass",
@@ -52,7 +52,7 @@
     {
       "display": "139.57039+-0.00018",
       "engine_label": "pion_pm",
-      "mapping_status": "source_mapped_not_model_integrated",
+      "mapping_status": "source_mapped_model_diagnostic_blocked",
       "name": "pi+",
       "pdgid": "S008M",
       "record_kind": "hadron_mass",
@@ -76,7 +76,7 @@
     {
       "display": "134.9768+-0.0005",
       "engine_label": "pion_0",
-      "mapping_status": "source_mapped_not_model_integrated",
+      "mapping_status": "source_mapped_model_diagnostic_blocked",
       "name": "pi0",
       "pdgid": "S009M",
       "record_kind": "hadron_mass",
@@ -100,7 +100,7 @@
     {
       "display": "493.677+-0.015",
       "engine_label": "kaon_pm",
-      "mapping_status": "source_mapped_not_model_integrated",
+      "mapping_status": "source_mapped_model_diagnostic_blocked",
       "name": "K+",
       "pdgid": "S010M",
       "record_kind": "hadron_mass",
@@ -124,7 +124,7 @@
     {
       "display": "497.611+-0.013",
       "engine_label": "kaon_0",
-      "mapping_status": "source_mapped_not_model_integrated",
+      "mapping_status": "source_mapped_model_diagnostic_blocked",
       "name": "K0",
       "pdgid": "S011M",
       "record_kind": "hadron_mass",
@@ -148,7 +148,7 @@
     {
       "display": "1115.683+-0.006",
       "engine_label": "Lambda",
-      "mapping_status": "source_mapped_not_model_integrated",
+      "mapping_status": "source_mapped_model_diagnostic_blocked",
       "name": "Lambda0",
       "pdgid": "S018M",
       "record_kind": "hadron_mass",
@@ -172,7 +172,7 @@
     {
       "display": "1672.45+-0.29",
       "engine_label": "Omega",
-      "mapping_status": "source_mapped_not_model_integrated",
+      "mapping_status": "source_mapped_model_diagnostic_blocked",
       "name": "Omega-",
       "pdgid": "S024M",
       "record_kind": "hadron_mass",
@@ -196,7 +196,7 @@
     {
       "display": "782.66+-0.13",
       "engine_label": "omega",
-      "mapping_status": "source_mapped_not_model_integrated",
+      "mapping_status": "source_mapped_model_diagnostic_blocked",
       "name": "omega(782)0",
       "pdgid": "M001M",
       "record_kind": "hadron_mass",
@@ -220,7 +220,7 @@
     {
       "display": "1019.460+-0.016",
       "engine_label": "phi",
-      "mapping_status": "source_mapped_not_model_integrated",
+      "mapping_status": "source_mapped_model_diagnostic_blocked",
       "name": "phi(1020)0",
       "pdgid": "M004M",
       "record_kind": "hadron_mass",
@@ -246,7 +246,7 @@
     {
       "display": "2.16+-0.07",
       "flavor": "u",
-      "mapping_status": "source_mapped_not_model_integrated",
+      "mapping_status": "source_mapped_model_diagnostic_blocked",
       "pdgid": "Q002M",
       "record_kind": "quark_mass",
       "source_query_status": "FOUND",
@@ -269,7 +269,7 @@
     {
       "display": "4.70+-0.07",
       "flavor": "d",
-      "mapping_status": "source_mapped_not_model_integrated",
+      "mapping_status": "source_mapped_model_diagnostic_blocked",
       "pdgid": "Q001M",
       "record_kind": "quark_mass",
       "source_query_status": "FOUND",
@@ -292,7 +292,7 @@
     {
       "display": "93.5+-0.8",
       "flavor": "s",
-      "mapping_status": "source_mapped_not_model_integrated",
+      "mapping_status": "source_mapped_model_diagnostic_blocked",
       "pdgid": "Q003M",
       "record_kind": "quark_mass",
       "source_query_status": "FOUND",
@@ -315,7 +315,7 @@
     {
       "display": "1.2730+-0.0046",
       "flavor": "c",
-      "mapping_status": "source_mapped_not_model_integrated",
+      "mapping_status": "source_mapped_model_diagnostic_blocked",
       "pdgid": "Q004M",
       "record_kind": "quark_mass",
       "source_query_status": "FOUND",
@@ -338,7 +338,7 @@
     {
       "display": "4.183+-0.007",
       "flavor": "b",
-      "mapping_status": "source_mapped_not_model_integrated",
+      "mapping_status": "source_mapped_model_diagnostic_blocked",
       "pdgid": "Q005M",
       "record_kind": "quark_mass",
       "source_query_status": "FOUND",
@@ -361,7 +361,7 @@
     {
       "display": "172.56+-0.31",
       "flavor": "t",
-      "mapping_status": "source_mapped_not_model_integrated",
+      "mapping_status": "source_mapped_model_diagnostic_blocked",
       "pdgid": "Q007TP",
       "record_kind": "quark_mass",
       "source_query_status": "FOUND",
@@ -408,7 +408,7 @@
     },
     {
       "engine_label": "alpha_s_data",
-      "reason": "QCD running table in Engine_QCD_Bridge.py remains embedded. A dedicated PDG alpha_s mapping query and benchmark-package extraction are still required."
+      "reason": "QCD running table in Engine_QCD_Bridge.py remains embedded. The local PDG SQLite alpha_s probe found no direct alpha_s/QCD-running summary row, so a dedicated external source package or refined PDG mapping policy is still required."
     }
   ]
 }

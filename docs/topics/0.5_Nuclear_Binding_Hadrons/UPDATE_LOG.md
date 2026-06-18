@@ -6,6 +6,19 @@
 
 ## Entries
 
+### 2026-06-19 - Confinement Proof Return Contract
+
+- Scope: `0.5_Nuclear_Binding_Hadrons` confinement proof return contract and diagnostic artifact
+- Added or changed: rewrote `Code/02_Proof/Proof_Color_Confinement.py` to expose `evaluate_confinement()` and return real pass/fail status, added `Code/03_Research/Research_Confinement_Proof_Gate.py`, generated `Result/artifacts/confinement_proof_gate_diagnostic.json`, and updated the primary verifier's branch/readiness gate wording for confinement
+- Files touched: `Code/02_Proof/Proof_Color_Confinement.py`, `Code/03_Research/Research_Confinement_Proof_Gate.py`, `Code/03_Research/Research_Nuclear_Binding_SourceLocked.py`, `Data/03_Research/branch_claim_gate.json`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `Result/artifacts/confinement_proof_gate_diagnostic.json`, `Result/artifacts/nuclear_binding_source_locked_validation.json`, `README.md`, `DATA_MANIFEST.md`, `VERIFICATION_SPEC.md`, `LIMITATIONS.md`, `FORMULA_AUDIT.md`, `BASELINE_COMPARISON.md`, `UPDATE_LOG.md`
+- Verified with: bundled Codex Python run of `Research_Confinement_Proof_Gate.py`; bundled Codex Python rerun of `Research_Nuclear_Binding_SourceLocked.py`
+- Result: confinement diagnostic return contract is OK, but the proof-script status is `FAIL`; current proton-mass diagnostic value is `0.058520 GeV` against the narrow `0.9` to `1.01 GeV` band; strict verifier remained `PASS` at `2026-06-18T23:28:22.818723+00:00`
+- Blocker narrowed: the old unconditional-`True` proof-script blocker is closed; the controlling blocker is now the failed narrow diagnostic plus lack of a defensible confinement derivation benchmark
+- Still open: define a defensible confinement derivation benchmark, source-lock or demote remaining hadron/QCD constants, resolve hadron high residuals, and source-lock QCD alpha_s inputs
+- Next controller: `Result/artifacts/confinement_proof_gate_diagnostic.json` controls confinement proof wording; `branch_claim_gate.json` keeps the confinement branch blocked for strong claims
+- Claim impact: wording narrowed; no confinement proof claim and no stronger nuclear-binding claim
+- Notes: the artifact is intentionally negative/diagnostic evidence; it prevents a printed pass/fail message from being mistaken for a proof
+
 ### 2026-06-17 - QCD Alpha_s Source Probe
 
 - Scope: `0.5_Nuclear_Binding_Hadrons` QCD alpha_s runtime bug and source-row blocker
