@@ -4,7 +4,7 @@
     "gate": "Data/03_Research/semf_coefficient_provenance_gate.json",
     "method": "Python AST extraction of numeric constants from Engine_Nuclear_Binding.py."
   },
-  "dataset_hash": "3876e7ef645456cf11d8f25a76fb9095b7edce519577528a2dcdb889d257face",
+  "dataset_hash": "58fd0f5b8f0fe868ba609d5335f2c2557c1e23c51e25f9e5a8e75f14f7a5846d",
   "environment": {
     "implementation": "CPython",
     "matplotlib_version": null,
@@ -100,7 +100,7 @@
       }
     ],
     "package_path": "Data/03_Research/semf_coefficient_local_package.json",
-    "package_sha256": "62737400360e5b2f77885834c98d81768ad5117c761d3b756ac865a9f85d7ca5",
+    "package_sha256": "ab4a32d42db189bb9e327e6b6ce3b71ebdded760f573ec871975c151250fbf2a",
     "status": "LOCAL_PACKAGE_READY_SOURCE_GAP_BLOCKED",
     "summary": {
       "correction_constants_extracted": 4,
@@ -117,7 +117,7 @@
     "required_gate_mismatch_count": 0,
     "required_source_record_locked": true
   },
-  "timestamp_utc": "2026-06-18T23:38:30.867688+00:00",
+  "timestamp_utc": "2026-06-18T23:46:48.921705+00:00",
   "topic": "0.5_Nuclear_Binding_Hadrons",
   "uet_version": "0.9.0"
 }

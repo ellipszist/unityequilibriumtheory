@@ -27,6 +27,7 @@ selected nuclear-binding, hadron-mass, proton-radius, and strong-force benchmark
 - Workflow gate files for source evidence and branch claim ceilings under `Data/03_Research/`
 - A SEMF coefficient provenance gate under `Data/03_Research/semf_coefficient_provenance_gate.json`
 - A SEMF local coefficient package under `Data/03_Research/semf_coefficient_local_package.json`
+- A SEMF source-candidate package under `Data/03_Research/semf_coefficient_source_candidates.json`
 - A PDG hadron/QCD source-mapping gate under
   `Data/03_Research/pdg_hadron_qcd_source_mapping_gate.json`
 - Competitor and visualization folders that support internal comparisons and plotting
@@ -54,8 +55,10 @@ selected nuclear-binding, hadron-mass, proton-radius, and strong-force benchmark
   light nuclei, hadron mass, QCD running, and confinement branches.
 - `semf_coefficient_provenance_gate.json` and
   `semf_coefficient_local_package.json` now record the exact current engine constants
-  with `0` local gate mismatches, but still block parameter-free or first-principles wording
-  until the SEMF coefficient edition, Yukawa policy, and rounded constants are source-locked.
+  with `0` local gate mismatches. `semf_coefficient_source_candidates.json` records an
+  exact external source-candidate match, but still blocks parameter-free or first-principles
+  wording until the direct SEMF coefficient source record, Yukawa policy, and rounded
+  constants are source-locked.
 - `pdg_hadron_qcd_source_mapping_gate.json` and
   `pdg_hadron_quark_reference_package.json` now source-map selected PDG 2025 quark and
   hadron mass rows (`16/16` records found, `0` unit mismatches). A diagnostic
@@ -92,10 +95,12 @@ selected nuclear-binding, hadron-mass, proton-radius, and strong-force benchmark
   - `Data/03_Research/source_evidence_readiness_matrix.json`
   - `Data/03_Research/semf_coefficient_provenance_gate.json`
   - `Data/03_Research/semf_coefficient_local_package.json`
+  - `Data/03_Research/semf_coefficient_source_candidates.json`
   - `Data/03_Research/pdg_hadron_qcd_source_mapping_gate.json`
   - `Data/03_Research/pdg_hadron_quark_reference_package.json`
   - `Data/03_Research/branch_claim_gate.json`
   - `Result/artifacts/semf_coefficient_provenance_diagnostic.json`
+  - `Result/artifacts/semf_coefficient_source_candidate_audit.json`
   - `Result/artifacts/pdg_hadron_quark_source_linkage.json`
   - `Result/artifacts/hadron_model_source_package_diagnostic.json`
   - `Result/artifacts/qcd_alpha_s_source_probe.json`
@@ -108,17 +113,19 @@ Current verification commands:
 ```powershell
 python docs/topics/0.5_Nuclear_Binding_Hadrons/Code/03_Research/Research_Nuclear_Binding_SourceLocked.py
 python docs/topics/0.5_Nuclear_Binding_Hadrons/Code/03_Research/Research_SEMF_Coefficient_Provenance.py
+python docs/topics/0.5_Nuclear_Binding_Hadrons/Code/03_Research/Research_SEMF_Source_Candidate_Audit.py
 python docs/topics/0.5_Nuclear_Binding_Hadrons/Code/03_Research/Research_Nuclear_Binding_FullTable_Diagnostic.py
 ```
 
 The first command is the strict selected-subset gate. The second command extracts the
 current SEMF/Yukawa constants into a local package and verifies local gate consistency.
-The third command is a diagnostic for broad AME2020 table behavior and must not be
+The third command compares the local package to external source-candidate rows without
+source-locking them. The fourth command is a diagnostic for broad AME2020 table behavior and must not be
 described as a full-table pass.
 
 ## Next remediation steps
 
-1. Add a vetted source record for the locally packaged SEMF coefficients and decide whether
+1. Add a direct vetted source record for the matched SEMF source-candidate row and decide whether
    the Yukawa term is baseline physics, a UET bridge term, or a separate diagnostic lane.
 2. Decide whether the weak hadron source-package residuals require changing the
    constituent-mass model, demoting the branch, or splitting GMOR and constituent-model lanes.

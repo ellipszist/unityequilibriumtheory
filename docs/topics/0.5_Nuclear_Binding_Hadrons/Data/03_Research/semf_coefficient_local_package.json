@@ -6,7 +6,7 @@
   "code_surface": "Code/01_Engine/Engine_Nuclear_Binding.py",
   "code_surface_sha256": "d52a8468ad06378daaa26ea8a473c66737137175278eb34ca773966f73f49ad1",
   "gate_surface": "Data/03_Research/semf_coefficient_provenance_gate.json",
-  "gate_surface_sha256": "675817f13e401bf99eedc48b9fbe263c9f81a55b9ccf50c4e843656a377c85c5",
+  "gate_surface_sha256": "796f51ed455b4b00a83643bfdf4410839b37eb1d01417aa2ba91328c48dac9b2",
   "summary": {
     "engine_constants_extracted": 9,
     "semf_coefficients_extracted": 5,
@@ -157,9 +157,9 @@
       "gate_source_status": "heuristic_bridge"
     }
   ],
-  "claim_boundary": "The current nuclear-binding engine may be described as a locally packaged SEMF baseline plus heuristic correction workflow. The exact engine constants are machine-readable locally, but the coefficient set is not source-locked and must not be described as parameter-free or first-principles until a source record pins the SEMF edition and uncertainty policy.",
+  "claim_boundary": "The current nuclear-binding engine may be described as a locally packaged SEMF baseline plus heuristic correction workflow. The exact engine constants are machine-readable locally, and an external source-candidate row matches the SEMF coefficient set, but the direct source record is not locked. The workflow must not be described as parameter-free or first-principles until a direct source record pins the SEMF edition and uncertainty policy.",
   "required_to_close": [
-    "Create a source record or reference package that pins the exact SEMF coefficient set and edition used.",
+    "Acquire or cite a direct source record that pins the exact SEMF coefficient set and edition used.",
     "Decide whether the Yukawa term is a baseline nuclear-physics correction, a UET bridge term, or a separate diagnostic lane.",
     "Add uncertainty or sensitivity policy for SEMF coefficients and heuristic correction terms."
   ],

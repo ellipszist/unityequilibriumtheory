@@ -6,6 +6,19 @@
 
 ## Entries
 
+### 2026-06-19 - SEMF Source-Candidate Audit
+
+- Scope: `0.5_Nuclear_Binding_Hadrons` SEMF coefficient source-candidate matching and direct-source blocker
+- Added or changed: added `Code/03_Research/Research_SEMF_Source_Candidate_Audit.py`, generated `Data/03_Research/semf_coefficient_source_candidates.json`, generated `Result/artifacts/semf_coefficient_source_candidate_audit.json`, and updated the SEMF gate plus strict artifact to record `LOCAL_PACKAGE_AND_CANDIDATE_READY_DIRECT_SOURCE_BLOCKED`
+- Files touched: `Code/03_Research/Research_SEMF_Source_Candidate_Audit.py`, `Code/03_Research/Research_Nuclear_Binding_SourceLocked.py`, `Data/03_Research/semf_coefficient_provenance_gate.json`, `Data/03_Research/semf_coefficient_local_package.json`, `Data/03_Research/semf_coefficient_source_candidates.json`, `Result/artifacts/semf_coefficient_provenance_diagnostic.json`, `Result/artifacts/semf_coefficient_source_candidate_audit.json`, `Result/artifacts/nuclear_binding_source_locked_validation.json`, `README.md`, `DATA_MANIFEST.md`, `VERIFICATION_SPEC.md`, `LIMITATIONS.md`, `FORMULA_AUDIT.md`, `BASELINE_COMPARISON.md`, `UPDATE_LOG.md`
+- Verified with: bundled Codex Python rerun of `Research_SEMF_Coefficient_Provenance.py`; bundled Codex Python run of `Research_SEMF_Source_Candidate_Audit.py`; bundled Codex Python rerun of `Research_Nuclear_Binding_SourceLocked.py`
+- Result: source-candidate audit found 1 exact candidate match for the locally packaged SEMF coefficient set and 0 direct source records held; strict verifier remained `PASS` at `2026-06-18T23:49:49.547243+00:00`
+- Blocker narrowed: the controlling SEMF blocker is no longer "find any plausible coefficient source"; it is now "lock the direct source record for the matched candidate row and define uncertainty/Yukawa policy"
+- Still open: acquire or cite the direct source record, decide the Yukawa correction policy, define uncertainty/sensitivity policy, and keep hadron/QCD/confinement branches blocked
+- Next controller: `semf_coefficient_source_candidates.json` and `semf_coefficient_source_candidate_audit.json` control source-candidate wording; `semf_coefficient_provenance_gate.json` still blocks parameter-free and first-principles wording
+- Claim impact: wording narrowed; no source-locked, parameter-free, first-principles, or stronger nuclear-binding claim is unlocked
+- Notes: the candidate row is useful for narrowing provenance, but it is deliberately not treated as direct source evidence
+
 ### 2026-06-19 - SEMF Local Coefficient Package
 
 - Scope: `0.5_Nuclear_Binding_Hadrons` SEMF/Yukawa coefficient local package and provenance blocker

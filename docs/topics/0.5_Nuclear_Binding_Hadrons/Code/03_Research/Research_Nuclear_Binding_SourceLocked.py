@@ -53,6 +53,8 @@ BRANCH_CLAIM_GATE_PATH = data_dir / "branch_claim_gate.json"
 SEMF_COEFFICIENT_GATE_PATH = data_dir / "semf_coefficient_provenance_gate.json"
 SEMF_COEFFICIENT_PACKAGE_PATH = data_dir / "semf_coefficient_local_package.json"
 SEMF_COEFFICIENT_DIAGNOSTIC_PATH = topic_dir / "Result" / "artifacts" / "semf_coefficient_provenance_diagnostic.json"
+SEMF_SOURCE_CANDIDATES_PATH = data_dir / "semf_coefficient_source_candidates.json"
+SEMF_SOURCE_CANDIDATE_ARTIFACT_PATH = topic_dir / "Result" / "artifacts" / "semf_coefficient_source_candidate_audit.json"
 PDG_HADRON_QCD_MAPPING_GATE_PATH = data_dir / "pdg_hadron_qcd_source_mapping_gate.json"
 
 
@@ -253,12 +255,13 @@ def build_semf_coefficient_provenance_gate() -> dict:
         "schema_version": "1.0",
         "topic": "0.5_Nuclear_Binding_Hadrons",
         "purpose": "Machine-readable provenance gate for SEMF coefficients used by Engine_Nuclear_Binding.py.",
-        "controller_status": "LOCAL_PACKAGE_READY_SOURCE_GAP_BLOCKED",
+        "controller_status": "LOCAL_PACKAGE_AND_CANDIDATE_READY_DIRECT_SOURCE_BLOCKED",
         "claim_boundary": (
             "The current nuclear-binding engine may be described as a locally packaged SEMF baseline plus "
-            "heuristic correction workflow. The exact engine constants are machine-readable locally, but "
-            "the coefficient set is not source-locked and must not be described as parameter-free or "
-            "first-principles until a source record pins the SEMF edition and uncertainty policy."
+            "heuristic correction workflow. The exact engine constants are machine-readable locally, and "
+            "an external source-candidate row matches the SEMF coefficient set, but the direct source "
+            "record is not locked. The workflow must not be described as parameter-free or first-principles "
+            "until a direct source record pins the SEMF edition and uncertainty policy."
         ),
         "code_surface": "Code/01_Engine/Engine_Nuclear_Binding.py",
         "local_package": {
@@ -270,6 +273,16 @@ def build_semf_coefficient_provenance_gate() -> dict:
             "path": "Result/artifacts/semf_coefficient_provenance_diagnostic.json",
             "status": "LOCAL_PACKAGE_READY_SOURCE_GAP_BLOCKED",
             "role": "extracts constants from the engine and checks local gate consistency",
+        },
+        "source_candidate_package": {
+            "path": "Data/03_Research/semf_coefficient_source_candidates.json",
+            "status": "SOURCE_CANDIDATE_MATCH_DIRECT_SOURCE_BLOCKED",
+            "role": "records an exact external source-candidate match while preserving the direct-source blocker",
+        },
+        "source_candidate_artifact": {
+            "path": "Result/artifacts/semf_coefficient_source_candidate_audit.json",
+            "status": "SOURCE_CANDIDATE_MATCH_DIRECT_SOURCE_BLOCKED",
+            "role": "compares the local package to source-candidate rows",
         },
         "coefficients": [
             {
@@ -356,7 +369,7 @@ def build_semf_coefficient_provenance_gate() -> dict:
             },
         ],
         "required_to_close": [
-            "Create a source record or reference package that pins the exact SEMF coefficient set and edition used.",
+            "Acquire or cite a direct source record that pins the exact SEMF coefficient set and edition used.",
             "Decide whether the Yukawa term is a baseline nuclear-physics correction, a UET bridge term, or a separate diagnostic lane.",
             "Add uncertainty or sensitivity policy for SEMF coefficients and heuristic correction terms.",
         ],
@@ -765,6 +778,16 @@ def run_test() -> bool:
         artifact["semf_coefficient_provenance_gate"]["latest_diagnostic_artifact"] = {
             "path": str(SEMF_COEFFICIENT_DIAGNOSTIC_PATH.relative_to(topic_dir)).replace("\\", "/"),
             "sha256": hash_file(SEMF_COEFFICIENT_DIAGNOSTIC_PATH),
+        }
+    if SEMF_SOURCE_CANDIDATES_PATH.exists():
+        artifact["semf_coefficient_provenance_gate"]["source_candidate_package"] = {
+            "path": str(SEMF_SOURCE_CANDIDATES_PATH.relative_to(topic_dir)).replace("\\", "/"),
+            "sha256": hash_file(SEMF_SOURCE_CANDIDATES_PATH),
+        }
+    if SEMF_SOURCE_CANDIDATE_ARTIFACT_PATH.exists():
+        artifact["semf_coefficient_provenance_gate"]["source_candidate_artifact"] = {
+            "path": str(SEMF_SOURCE_CANDIDATE_ARTIFACT_PATH.relative_to(topic_dir)).replace("\\", "/"),
+            "sha256": hash_file(SEMF_SOURCE_CANDIDATE_ARTIFACT_PATH),
         }
     artifact["pdg_hadron_qcd_source_mapping_gate"] = {
         "path": str(PDG_HADRON_QCD_MAPPING_GATE_PATH.relative_to(topic_dir)).replace("\\", "/"),
