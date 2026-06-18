@@ -39,8 +39,8 @@
     {
       "evidence_id": "PROV-04",
       "requirement": "Residual rows are emitted by the accepted operator, not by the current diagnostic quantum-defect wrapper.",
-      "current_status": "DIAGNOSTIC_RESIDUAL_EMITTER_LOCK_READY_ACCEPTED_OPERATOR_MISSING",
-      "evidence_path": "Result/artifacts/atomic_predictive_v1_operator_residual_rows.json",
+      "current_status": "DIAGNOSTIC_RESIDUAL_EMITTER_RECORD_READY_ACCEPTED_OPERATOR_MISSING",
+      "evidence_path": "Data/03_Research/atomic_predictive_v1_operator_residual_emitter_manifest.json",
       "required_artifact": "operator residual rows with accepted_operator_class and accepted_as_delta_uet_or_ci=true"
     },
     {

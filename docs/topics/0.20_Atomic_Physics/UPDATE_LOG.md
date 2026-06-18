@@ -20,6 +20,21 @@ blockers were actually narrowed.
 
 ## Entries
 
+### 2026-06-18 - Declare the operator residual-emitter gate
+
+- Scope: `atomic_predictive_v1_operator_residual_emitter_manifest.json`, `atomic_predictive_v1_operator_implementation_provenance.json`, `Research_Rydberg_Validation.py`, primary artifact, topic docs
+- Wave type: `gate pass`
+- Added or changed: Added a separate residual-emitter manifest and gate so the current residual artifact path, diagnostic operator ID, diagnostic claim-use, locked review-only parameter linkage, and holdout-safe residual rows are frozen into a review-only emitter record before any accepted `delta_uet_or_ci` emission claim; updated provenance reporting so `PROV-04` now points to the residual-emitter record as a narrower blocker state.
+- Files touched: `Data/03_Research/atomic_predictive_v1_operator_residual_emitter_manifest.json`, `Data/03_Research/atomic_predictive_v1_operator_implementation_provenance.json`, `Code/03_Research/Research_Rydberg_Validation.py`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `FORMULA_AUDIT.md`, `DATA_MANIFEST.md`, `VERIFICATION_SPEC.md`, `UPDATE_LOG.md`, `Result/artifacts/0_20_atomic_physics_verification.json`
+- Verified with: `python docs/topics/0.20_Atomic_Physics/Code/03_Research/Research_Rydberg_Validation.py`
+- Result: The new residual-emitter gate passes `5/5` checks with `0` blocking checks, records runtime residual-row count `3`, and reports `DIAGNOSTIC_RESIDUAL_EMITTER_RECORD_READY_ACCEPTED_OPERATOR_MISSING`; the provenance gate still has `1/5` evidence rows present and `4/5` blocking, but `PROV-04` is now narrowed to `BLOCKING_ACCEPTED_RESIDUAL_EMITTER_MISSING_RECORD_READY`.
+- Blocker narrowed: Accepted residual-emitter provenance is no longer blocked by vague diagnostic-row identity. The current residual artifact path, diagnostic operator ID, diagnostic claim-use, review-only parameter linkage, and holdout-safe row state are now machine-readable and auditable.
+- Still open: Accepted operator execution, accepted residual emission, accepted operator uncertainty provenance, validation-ready thresholds, and independent non-NIST helium source lineage.
+- Next controller: The next controlling blocker is now accepted operator provenance beyond review-only code identity and review-only residual-emitter identity, especially accepted uncertainty provenance and accepted `delta_uet_or_ci` execution.
+- Claim impact: `no change`
+- Workflow linkage: `n/a`
+- Notes: This wave does not accept the operator or promote diagnostic rows into accepted residual evidence. It only turns residual-emitter identity into a separate provenance prerequisite and narrows `PROV-04`.
+
 ### 2026-06-15 - Declare the operator implementation-record gate
 
 - Scope: `atomic_predictive_v1_operator_implementation_record_manifest.json`, `atomic_predictive_v1_operator_implementation_provenance.json`, `Research_Rydberg_Validation.py`, primary artifact, topic docs

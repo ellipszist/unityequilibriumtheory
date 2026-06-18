@@ -118,6 +118,12 @@ ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_RECORD_MANIFEST_PATH = (
     / "03_Research"
     / "atomic_predictive_v1_operator_implementation_record_manifest.json"
 )
+ATOMIC_PREDICTIVE_V1_OPERATOR_RESIDUAL_EMITTER_MANIFEST_PATH = (
+    TOPIC_DIR
+    / "Data"
+    / "03_Research"
+    / "atomic_predictive_v1_operator_residual_emitter_manifest.json"
+)
 ATOMIC_PREDICTIVE_V1_OPERATOR_CLASS_SELECTION_REVIEW_PATH = (
     TOPIC_DIR
     / "Data"
@@ -6039,6 +6045,188 @@ def build_atomic_predictive_v1_operator_implementation_record_gate(
     }
 
 
+def build_atomic_predictive_v1_operator_residual_emitter_gate(
+    residual_emitter_manifest: dict,
+    operator_candidate_implementation_review_manifest: dict,
+    atomic_predictive_v1_operator_implementation_record_gate: dict,
+    operator_parameter_preflight_gate: dict,
+    atomic_predictive_v1_operator_training_holdout_split_gate: dict,
+    atomic_predictive_v1_operator_residual_gate: dict,
+    atomic_predictive_v1_fixed_correction_operator_gate: dict,
+) -> dict:
+    diagnostic_emitter_review = operator_candidate_implementation_review_manifest.get(
+        "diagnostic_emitter_review", {}
+    )
+    target_residual_artifact = residual_emitter_manifest.get("target_residual_artifact", {})
+    residual_artifact_path = TOPIC_DIR / target_residual_artifact.get("path", "")
+    residual_artifact_exists = residual_artifact_path.exists()
+    residual_artifact_sha256 = file_sha256(residual_artifact_path) if residual_artifact_exists else None
+    selected_operator_class = residual_emitter_manifest.get("selected_operator_class")
+    implementation_record = atomic_predictive_v1_operator_implementation_record_gate.get(
+        "implementation_record", {}
+    )
+    parameter_sets = operator_parameter_preflight_gate.get("parameter_sets", [])
+    matching_parameter_sets = [
+        row
+        for row in parameter_sets
+        if row.get("operator_class") == selected_operator_class
+        and row.get("locked_before_holdout_evaluation") is True
+    ]
+    residual_rows = atomic_predictive_v1_operator_residual_gate.get("residual_rows", [])
+    locked_rows = [
+        row
+        for row in residual_rows
+        if row.get("parameters_locked_before_evaluation") is True
+        and row.get("used_for_parameter_fit") is False
+    ]
+    diagnostic_rows = [
+        row
+        for row in residual_rows
+        if row.get("operator_id") == diagnostic_emitter_review.get("current_operator_id")
+        and row.get("claim_use") == diagnostic_emitter_review.get("current_claim_use")
+    ]
+    accepted_operator_count = atomic_predictive_v1_fixed_correction_operator_gate["metrics"][
+        "accepted_operator_count"
+    ]
+    checks = [
+        {
+            "check_id": "EMIT-01",
+            "requirement": "The review record points to the current residual artifact and the current diagnostic emitter state.",
+            "status": "PASS"
+            if diagnostic_emitter_review.get("artifact_path") == target_residual_artifact.get("path")
+            and diagnostic_emitter_review.get("current_operator_id")
+            == residual_emitter_manifest.get("current_diagnostic_operator_id")
+            and diagnostic_emitter_review.get("current_claim_use")
+            == residual_emitter_manifest.get("current_claim_use")
+            else "BLOCKED_DIAGNOSTIC_EMITTER_REVIEW_MISMATCH",
+            "evidence": {
+                "review_artifact_path": diagnostic_emitter_review.get("artifact_path"),
+                "manifest_artifact_path": target_residual_artifact.get("path"),
+                "review_current_operator_id": diagnostic_emitter_review.get("current_operator_id"),
+                "manifest_current_operator_id": residual_emitter_manifest.get(
+                    "current_diagnostic_operator_id"
+                ),
+                "review_current_claim_use": diagnostic_emitter_review.get("current_claim_use"),
+                "manifest_current_claim_use": residual_emitter_manifest.get("current_claim_use"),
+            },
+        },
+        {
+            "check_id": "EMIT-02",
+            "requirement": "A runtime residual artifact exists and exports row-level residuals for the current lane.",
+            "status": "PASS"
+            if residual_artifact_exists
+            and atomic_predictive_v1_operator_residual_gate.get("execution_mode") == "diagnostic_export_only"
+            and atomic_predictive_v1_operator_residual_gate.get("metrics", {}).get("residual_row_count", 0) > 0
+            else "BLOCKED_RUNTIME_RESIDUAL_ARTIFACT_MISSING",
+            "evidence": {
+                "residual_artifact_exists": residual_artifact_exists,
+                "residual_artifact_sha256": residual_artifact_sha256,
+                "runtime_execution_mode": atomic_predictive_v1_operator_residual_gate.get("execution_mode"),
+                "runtime_residual_row_count": atomic_predictive_v1_operator_residual_gate.get(
+                    "metrics", {}
+                ).get("residual_row_count"),
+            },
+        },
+        {
+            "check_id": "EMIT-03",
+            "requirement": "Every emitted row remains explicitly diagnostic rather than silently accepted as delta_uet_or_ci output.",
+            "status": "PASS"
+            if residual_rows
+            and len(diagnostic_rows) == len(residual_rows)
+            and atomic_predictive_v1_operator_residual_gate.get("accepted_as_delta_uet_or_ci") is False
+            and diagnostic_emitter_review.get("accepted_as_delta_uet_or_ci") is False
+            else "BLOCKED_DIAGNOSTIC_ROW_CLASSIFICATION_INCOMPLETE",
+            "evidence": {
+                "residual_row_count": len(residual_rows),
+                "diagnostic_row_count": len(diagnostic_rows),
+                "runtime_accepted_as_delta_uet_or_ci": atomic_predictive_v1_operator_residual_gate.get(
+                    "accepted_as_delta_uet_or_ci"
+                ),
+                "review_accepted_as_delta_uet_or_ci": diagnostic_emitter_review.get(
+                    "accepted_as_delta_uet_or_ci"
+                ),
+            },
+        },
+        {
+            "check_id": "EMIT-04",
+            "requirement": "Residual rows stay linked to locked review-only parameters and the holdout-exclusion policy.",
+            "status": "PASS"
+            if matching_parameter_sets
+            and atomic_predictive_v1_operator_training_holdout_split_gate.get("status")
+            == "TRAINING_HOLDOUT_SPLIT_READY_DIAGNOSTIC_ONLY"
+            and len(locked_rows) == len(residual_rows)
+            else "BLOCKED_LOCK_OR_SPLIT_CONTEXT_INCOMPLETE",
+            "evidence": {
+                "matching_review_only_parameter_set_count": len(matching_parameter_sets),
+                "training_holdout_split_status": atomic_predictive_v1_operator_training_holdout_split_gate.get(
+                    "status"
+                ),
+                "locked_row_count": len(locked_rows),
+                "residual_row_count": len(residual_rows),
+            },
+        },
+        {
+            "check_id": "EMIT-05",
+            "requirement": "The record still states that the residual emitter is not accepted, so diagnostic residual rows cannot be confused with accepted provenance.",
+            "status": "PASS"
+            if accepted_operator_count == 0
+            and implementation_record.get("selected_operator_class") == selected_operator_class
+            and operator_candidate_implementation_review_manifest.get("status")
+            == "CANDIDATE_IMPLEMENTATION_REVIEW_READY_ACCEPTED_OPERATOR_MISSING"
+            else "BLOCKED_ACCEPTED_RESIDUAL_EMITTER_STATE_NOT_EXPLICIT",
+            "evidence": {
+                "accepted_operator_count": accepted_operator_count,
+                "implementation_record_selected_operator_class": implementation_record.get(
+                    "selected_operator_class"
+                ),
+                "manifest_selected_operator_class": selected_operator_class,
+                "candidate_review_status": operator_candidate_implementation_review_manifest.get("status"),
+            },
+        },
+    ]
+    blocking_count = sum(1 for row in checks if row["status"].startswith("BLOCKED"))
+    pass_count = sum(1 for row in checks if row["status"] == "PASS")
+    status = (
+        "DIAGNOSTIC_RESIDUAL_EMITTER_RECORD_READY_ACCEPTED_OPERATOR_MISSING"
+        if blocking_count == 0
+        else "RESIDUAL_EMITTER_RECORD_BLOCKED"
+    )
+    return {
+        "schema_version": "1.0",
+        "role": "atomic_predictive_v1_operator_residual_emitter_gate",
+        "status": status,
+        "claim_class": "operator_residual_emitter_record_no_validation_claim",
+        "formula_id": "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-RESIDUAL-EMITTER",
+        "manifest": {
+            "path": str(
+                ATOMIC_PREDICTIVE_V1_OPERATOR_RESIDUAL_EMITTER_MANIFEST_PATH.relative_to(TOPIC_DIR)
+            ).replace("\\", "/"),
+            "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_RESIDUAL_EMITTER_MANIFEST_PATH),
+            "manifest_id": residual_emitter_manifest.get("manifest_id"),
+            "status": residual_emitter_manifest.get("status"),
+        },
+        "residual_emitter_record": {
+            "selected_operator_class": selected_operator_class,
+            "target_residual_artifact_path": target_residual_artifact.get("path"),
+            "target_residual_artifact_sha256": residual_artifact_sha256,
+            "current_diagnostic_operator_id": residual_emitter_manifest.get("current_diagnostic_operator_id"),
+            "current_claim_use": residual_emitter_manifest.get("current_claim_use"),
+            "matching_review_only_parameter_set_count": len(matching_parameter_sets),
+            "runtime_residual_row_count": len(residual_rows),
+        },
+        "checks": checks,
+        "metrics": {
+            "residual_emitter_check_count": len(checks),
+            "residual_emitter_check_pass_count": pass_count,
+            "residual_emitter_check_blocking_count": blocking_count,
+            "matching_review_only_parameter_set_count": len(matching_parameter_sets),
+            "runtime_residual_row_count": len(residual_rows),
+            "accepted_operator_count": accepted_operator_count,
+        },
+        "claim_boundary": residual_emitter_manifest.get("claim_boundary"),
+    }
+
+
 def build_atomic_predictive_v1_operator_training_holdout_split_gate(
     operator_training_holdout_split_manifest: dict,
 ) -> dict:
@@ -6097,6 +6285,7 @@ def build_atomic_predictive_v1_operator_implementation_provenance_gate(
     operator_implementation_provenance_manifest: dict,
     operator_candidate_implementation_review_manifest: dict,
     atomic_predictive_v1_operator_implementation_record_gate: dict,
+    atomic_predictive_v1_operator_residual_emitter_gate: dict,
     atomic_predictive_v1_operator_training_holdout_split_gate: dict,
     atomic_predictive_v1_operator_parameter_acceptance_preflight_gate: dict,
     atomic_predictive_v1_operator_acceptance_harness_gate: dict,
@@ -6244,6 +6433,20 @@ def build_atomic_predictive_v1_operator_implementation_provenance_gate(
         elif evidence_id == "PROV-04":
             if accepted_operator_count > 0 and evidence_exists:
                 status = "PRESENT"
+            elif (
+                atomic_predictive_v1_operator_residual_emitter_gate.get("status")
+                == "DIAGNOSTIC_RESIDUAL_EMITTER_RECORD_READY_ACCEPTED_OPERATOR_MISSING"
+            ):
+                status = "BLOCKING_ACCEPTED_RESIDUAL_EMITTER_MISSING_RECORD_READY"
+                blocker_reason = (
+                    "diagnostic residual artifact path, diagnostic operator id, diagnostic claim-use, "
+                    "locked review-only parameter linkage, and holdout-safe residual rows are locked "
+                    "in a review-only residual-emitter record, but no accepted operator emits "
+                    "delta_uet_or_ci residual rows yet"
+                )
+                supporting_review_record_path = str(
+                    ATOMIC_PREDICTIVE_V1_OPERATOR_RESIDUAL_EMITTER_MANIFEST_PATH.relative_to(TOPIC_DIR)
+                ).replace("\\", "/")
             elif candidate_review_exists and evidence_exists and harness_metrics["residual_rows_present"]:
                 status = "BLOCKING_ACCEPTED_RESIDUAL_EMITTER_MISSING_DIAGNOSTIC_ROWS_LOCKED"
                 blocker_reason = (
@@ -7727,6 +7930,9 @@ def run_rydberg_analysis():
     atomic_predictive_v1_operator_implementation_record_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_RECORD_MANIFEST_PATH
     )
+    atomic_predictive_v1_operator_residual_emitter_manifest = load_json(
+        ATOMIC_PREDICTIVE_V1_OPERATOR_RESIDUAL_EMITTER_MANIFEST_PATH
+    )
     atomic_predictive_v1_operator_class_selection_review_manifest = load_json(
         ATOMIC_PREDICTIVE_V1_OPERATOR_CLASS_SELECTION_REVIEW_PATH
     )
@@ -8077,11 +8283,23 @@ def run_rydberg_analysis():
             atomic_predictive_v1_fixed_correction_operator_gate,
         )
     )
+    atomic_predictive_v1_operator_residual_emitter_gate = (
+        build_atomic_predictive_v1_operator_residual_emitter_gate(
+            atomic_predictive_v1_operator_residual_emitter_manifest,
+            atomic_predictive_v1_operator_candidate_implementation_review_manifest,
+            atomic_predictive_v1_operator_implementation_record_gate,
+            atomic_predictive_v1_operator_parameter_acceptance_preflight_gate,
+            atomic_predictive_v1_operator_training_holdout_split_gate,
+            atomic_predictive_v1_operator_residual_gate,
+            atomic_predictive_v1_fixed_correction_operator_gate,
+        )
+    )
     atomic_predictive_v1_operator_implementation_provenance_gate = (
         build_atomic_predictive_v1_operator_implementation_provenance_gate(
             atomic_predictive_v1_operator_implementation_provenance_manifest,
             atomic_predictive_v1_operator_candidate_implementation_review_manifest,
             atomic_predictive_v1_operator_implementation_record_gate,
+            atomic_predictive_v1_operator_residual_emitter_gate,
             atomic_predictive_v1_operator_training_holdout_split_gate,
             atomic_predictive_v1_operator_parameter_acceptance_preflight_gate,
             atomic_predictive_v1_operator_acceptance_harness_gate,
@@ -8344,6 +8562,27 @@ def run_rydberg_analysis():
                 ],
             },
             {
+                "path": str(ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_RECORD_MANIFEST_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_RECORD_MANIFEST_PATH),
+                "source": atomic_predictive_v1_operator_implementation_record_manifest.get("purpose"),
+                "status": atomic_predictive_v1_operator_implementation_record_manifest.get("status"),
+                "source_rows": atomic_predictive_v1_operator_implementation_record_manifest.get(
+                    "required_record_fields", []
+                ),
+            },
+            {
+                "path": str(ATOMIC_PREDICTIVE_V1_OPERATOR_RESIDUAL_EMITTER_MANIFEST_PATH.relative_to(ROOT)).replace("\\", "/"),
+                "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_RESIDUAL_EMITTER_MANIFEST_PATH),
+                "source": atomic_predictive_v1_operator_residual_emitter_manifest.get("purpose"),
+                "status": atomic_predictive_v1_operator_residual_emitter_manifest.get("status"),
+                "source_rows": [
+                    row.get("check_id")
+                    for row in atomic_predictive_v1_operator_residual_emitter_manifest.get(
+                        "required_checks", []
+                    )
+                ],
+            },
+            {
                 "path": str(ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_PROVENANCE_PATH.relative_to(ROOT)).replace("\\", "/"),
                 "sha256": file_sha256(ATOMIC_PREDICTIVE_V1_OPERATOR_IMPLEMENTATION_PROVENANCE_PATH),
                 "source": atomic_predictive_v1_operator_implementation_provenance_manifest.get("purpose"),
@@ -8430,6 +8669,8 @@ def run_rydberg_analysis():
             "AT20-ATOMIC-PREDICTIVE-V1-ROW-LEVEL-UNCERTAINTY",
             "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-PARAMETER-PREFLIGHT",
             "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-IMPLEMENTATION-RECORD",
+            "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-RESIDUAL-EMITTER",
+            "AT20-ATOMIC-PREDICTIVE-V1-OPERATOR-IMPLEMENTATION-PROVENANCE",
             "AT20-ATOMIC-PREDICTIVE-V1-DIAGNOSTIC-REPORT",
             "AT20-ATOMIC-PREDICTIVE-MODEL-BLUEPRINT",
             "AT20-HELIUM-EXTERNAL-HOLDOUT-ACQUISITION",
@@ -8805,6 +9046,21 @@ def run_rydberg_analysis():
                     "matching_review_only_parameter_set_count"
                 ]
             ),
+            "atomic_predictive_v1_residual_emitter_checks": (
+                atomic_predictive_v1_operator_residual_emitter_gate["metrics"][
+                    "residual_emitter_check_count"
+                ]
+            ),
+            "atomic_predictive_v1_residual_emitter_blocking_checks": (
+                atomic_predictive_v1_operator_residual_emitter_gate["metrics"][
+                    "residual_emitter_check_blocking_count"
+                ]
+            ),
+            "atomic_predictive_v1_residual_emitter_runtime_rows": (
+                atomic_predictive_v1_operator_residual_emitter_gate["metrics"][
+                    "runtime_residual_row_count"
+                ]
+            ),
             "atomic_predictive_v1_operator_parameter_preflight_parameter_sets": (
                 atomic_predictive_v1_operator_parameter_acceptance_preflight_gate["metrics"][
                     "parameter_set_count"
@@ -9033,6 +9289,9 @@ def run_rydberg_analysis():
     )
     artifact["atomic_predictive_v1_operator_implementation_record_gate"] = (
         atomic_predictive_v1_operator_implementation_record_gate
+    )
+    artifact["atomic_predictive_v1_operator_residual_emitter_gate"] = (
+        atomic_predictive_v1_operator_residual_emitter_gate
     )
     artifact["atomic_predictive_v1_operator_implementation_provenance_gate"] = (
         atomic_predictive_v1_operator_implementation_provenance_gate
