@@ -6,6 +6,19 @@
 
 ## Entries
 
+### 2026-06-19 - Vanadium Alternate Branch Design Packet
+
+- Scope: `0.4_Superconductivity_Superfluids` Vanadium branch-migration controller.
+- Added or changed: added a design-only packet for a future source-labeled Vanadium Eliashberg or Allen-Dynes branch verifier.
+- Files touched: `Data/03_Research/vanadium_alternate_branch_design_packet.json`, `Data/03_Research/raw_mcmillan_row_eligibility_policy.json`, `Code/03_Research/Experiment_Superconductor_Data.py`, `Code/03_Research/Experiment_Allen_Dynes_Data.py`, `Code/03_Research/Experiment_Allen_Dynes_Policy_Dry_Run.py`, `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `UPDATE_LOG.md`.
+- Verified with: local evidence reconstruction from Vanadium Tc/Theta/lambda/mu capture records and the existing Nb3Sn Allen-Dynes branch pattern; `.venv\Scripts\python.exe docs\topics\0.4_Superconductivity_Superfluids\Code\03_Research\Experiment_Superconductor_Data.py`; `C:\Users\santa\Desktop\uet_harness\.venv\Scripts\python.exe Experiment_Superconductor_Data.py` and `C:\Users\santa\Desktop\uet_harness\.venv\Scripts\python.exe Experiment_Allen_Dynes_Data.py` from `Code/03_Research` after path-root hardening; `.venv\Scripts\python.exe docs\scripts\audit\audit_core_research_hardening.py --topic 0.4_Superconductivity_Superfluids --emit-packets`.
+- Result: branch migration remains blocked; the packet records missing `omega_log/omega2` or explicit Eliashberg equation contract, cross-source convention review, and Vanadium-specific evidence policy.
+- Blocker narrowed: the next controller is no longer generic "alternate branch"; it is a source-complete Vanadium branch input table.
+- Still open: no Vanadium alternate branch verifier or artifact exists yet.
+- Next controller: `vanadium_alternate_branch_source_labeled_inputs.json` after compatible source fields are captured.
+- Claim impact: no claim upgrade and no raw-gate membership change.
+- Notes: this mirrors the successful Nb3Sn Allen-Dynes branch pattern while keeping Vanadium design-only. The artifact-writing scripts now resolve back to repository root before using existing relative paths, preventing future reruns from writing under `Code/03_Research/docs/topics/...`. The hardening audit still reports one FAIL artifact, which is expected for this wave because the goal is blocker narrowing rather than raw-gate promotion.
+
 ### 2026-06-16 - Executable Row-Eligibility Artifact Schema
 
 - Scope: `0.4_Superconductivity_Superfluids` primary raw McMillan verifier schema.

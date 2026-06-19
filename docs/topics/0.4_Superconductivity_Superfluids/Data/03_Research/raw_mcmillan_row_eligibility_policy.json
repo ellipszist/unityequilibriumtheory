@@ -115,6 +115,13 @@
       "Update branch_claim_gate.json so branch results cannot overwrite raw McMillan status."
     ]
   },
+  "branch_design_packets": [
+    {
+      "material": "Vanadium (V)",
+      "path": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/vanadium_alternate_branch_design_packet.json",
+      "status": "design_only_blocked_pending_source_complete_inputs"
+    }
+  ],
   "next_controller": {
     "controller_name": "Vanadium-compatible alternate branch design or stricter executable exclusion rules",
     "controller_class": "branch_design_or_policy_refinement_wave",

@@ -28,6 +28,17 @@ if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 
+def _repo_root():
+    current = Path(__file__).resolve()
+    for parent in current.parents:
+        if (parent / "docs").is_dir() and (parent / "AGENTS.md").exists():
+            return parent
+    raise RuntimeError("Could not locate repository root from verifier path.")
+
+
+os.chdir(_repo_root())
+
+
 TOPIC_DIR = Path("docs/topics/0.4_Superconductivity_Superfluids")
 DATA_DIR = TOPIC_DIR / "Data" / "03_Research"
 ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_4_superconductivity_superfluids_verification.json"

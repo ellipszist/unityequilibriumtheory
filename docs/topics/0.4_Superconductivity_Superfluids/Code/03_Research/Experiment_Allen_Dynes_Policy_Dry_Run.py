@@ -7,6 +7,7 @@ non-mirrored policy state in memory and writes a separate dry-run artifact.
 
 import json
 import math
+import os
 import platform
 import sys
 from datetime import datetime, timezone
@@ -17,6 +18,17 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
+
+def _repo_root():
+    current = Path(__file__).resolve()
+    for parent in current.parents:
+        if (parent / "docs").is_dir() and (parent / "AGENTS.md").exists():
+            return parent
+    raise RuntimeError("Could not locate repository root from verifier path.")
+
+
+os.chdir(_repo_root())
 
 
 TOPIC_DIR = Path("docs/topics/0.4_Superconductivity_Superfluids")

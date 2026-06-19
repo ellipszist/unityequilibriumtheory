@@ -150,7 +150,7 @@
     "strict_average_relative_error_percent": 20.0,
     "strict_per_row_relative_error_percent": 20.0
   },
-  "timestamp_utc": "2026-05-16T22:07:05.582284+00:00",
+  "timestamp_utc": "2026-06-19T12:10:00.485564+00:00",
   "topic": "0.4_Superconductivity_Superfluids",
   "verifier_branch": "Allen-Dynes source-labeled smoke test"
 }
