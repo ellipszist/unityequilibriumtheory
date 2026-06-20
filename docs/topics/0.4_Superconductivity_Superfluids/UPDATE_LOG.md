@@ -6,6 +6,18 @@
 
 ## Entries
 
+### 2026-06-20 - Vanadium Branch Source Capture Target
+
+- Scope: `0.4_Superconductivity_Superfluids` Vanadium branch source-completeness acquisition controller.
+- Added or changed: added `docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_branch_source_capture_target_packet.json` and linked it from `Data/03_Research/vanadium_branch_source_completeness_gate.json`.
+- Files touched: `docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_branch_source_capture_target_packet.json`, `Data/03_Research/vanadium_branch_source_completeness_gate.json`, `UPDATE_LOG.md`.
+- Verified with: local reconstruction from the existing Vanadium full-text numeric acquisition packet, raw-page checklist, and source-completeness gate; `.venv\Scripts\python.exe -m json.tool` on the new and changed JSON files.
+- Result: the next acquisition target is now named explicitly: first inspect the `10.1007/s10948-017-4295-y` source family for an Eliashberg/Allen-Dynes equation or reproduction contract; fallback is source-backed `omega_log/omega2` capture from a compatible phonon-spectrum family.
+- Blocker narrowed: the next controller is no longer generic source capture; it is a named branch-source target sequence with first and fallback capture routes.
+- Still open: no Vanadium alternate branch input table, verifier, artifact, row migration, or raw-row patch is allowed.
+- Next controller: satisfy `vanadium_eliashberg_equation_contract_first` or `vanadium_allen_dynes_moments_second`, then record Vanadium-specific evidence policy.
+- Claim impact: no claim upgrade and no raw-gate membership change.
+
 ### 2026-06-20 - Vanadium Branch Source-Completeness Gate
 
 - Scope: `0.4_Superconductivity_Superfluids` Vanadium alternate-branch input-table controller.

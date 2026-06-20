@@ -83,6 +83,12 @@
     "Record a Vanadium-specific non-mirrored or archive policy decision before strict branch evidence release.",
     "Only after the above, create vanadium_alternate_branch_source_labeled_inputs.json and a separate Vanadium branch verifier artifact."
   ],
+  "source_acquisition_target_packet": {
+    "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_branch_source_capture_target_packet.json",
+    "status": "pending_capture",
+    "first_target": "vanadium_eliashberg_equation_contract_first",
+    "fallback_target": "vanadium_allen_dynes_moments_second"
+  },
   "claim_boundary": {
     "allowed_now": "Use this gate to explain why the Vanadium alternate branch is blocked at source-complete input construction.",
     "forbidden_now": [

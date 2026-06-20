@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_branch_source_capture_target_packet",
+  "source_role": "first capture target for the Vanadium alternate-branch source-completeness gate",
+  "material": "Vanadium (V)",
+  "topic": "0.4_Superconductivity_Superfluids",
+  "checked_date": "2026-06-20",
+  "controlling_topic_gate": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/vanadium_branch_source_completeness_gate.json",
+  "gate_status_before_capture": "BLOCKED",
+  "purpose": "Turn the Vanadium alternate-branch blocker into a concrete source-acquisition target before any branch input table or verifier is created.",
+  "not_a_raw_patch": {
+    "allow_raw_mcmillan_row_patch": false,
+    "allow_raw_mcmillan_row_migration": false,
+    "reason": "This packet targets alternate-branch source completeness only. The raw McMillan row remains a failure diagnostic."
+  },
+  "current_field_state": {
+    "tc_observed_K": {
+      "status": "available_for_design_context",
+      "value": 5.03,
+      "source": "10.1103/PhysRev.102.656"
+    },
+    "theta_D_or_proxy_context": {
+      "status": "available_as_debye_proxy_context_only",
+      "value": 338.0,
+      "source": "10.1103/PhysRev.102.656",
+      "branch_limitation": "Not usable as Allen-Dynes omega_log or omega2."
+    },
+    "lambda_ep": {
+      "status": "available_but_convention_pending",
+      "value": 0.91,
+      "source": "10.1007/s10948-017-4295-y"
+    },
+    "mu_star": {
+      "status": "available_but_convention_pending",
+      "value": 0.173,
+      "alternative_value": 0.15,
+      "alternative_uncertainty": 0.03,
+      "source": "10.1007/s10948-017-4295-y"
+    }
+  },
+  "capture_targets_in_order": [
+    {
+      "target_id": "vanadium_eliashberg_equation_contract_first",
+      "priority": 1,
+      "source_title_or_doi": "10.1007/s10948-017-4295-y",
+      "target_kind": "explicit Eliashberg or Allen-Dynes reproduction contract",
+      "why_first": "The same open-fulltext family already supplies lambda and mu-star values, so it is the shortest route to determine whether those values belong to a reproducible branch convention.",
+      "required_capture_fields": [
+        "source equation or named approximation",
+        "kernel or spectral convention if stated",
+        "Tc reproduction target",
+        "lambda convention",
+        "mu_star convention",
+        "quoted_source_text",
+        "page_or_section_locator",
+        "claim boundary for diagnostic-only use"
+      ],
+      "success_condition": "A reviewer can state exactly which equation or reproduction target the Vanadium branch would check, without substituting Theta_D as omega_log."
+    },
+    {
+      "target_id": "vanadium_allen_dynes_moments_second",
+      "priority": 2,
+      "source_title_or_doi": "compatible phonon-spectrum or Allen-Dynes source family",
+      "target_kind": "omega_log_K and omega2_sqrt_K_or_ratio capture",
+      "why_second": "An Allen-Dynes strict row needs phonon moments; the currently captured Theta=338+/-5 K is explicitly only Debye/proxy context.",
+      "required_capture_fields": [
+        "omega_log_K",
+        "omega2_sqrt_K_or_ratio or justified moment ratio",
+        "lambda_ep from compatible convention",
+        "mu_star from compatible convention",
+        "quoted_source_text",
+        "page_or_section_locator",
+        "archive or non-mirrored evidence policy"
+      ],
+      "success_condition": "A source-complete Allen-Dynes row can be assembled without treating Debye temperature as omega_log."
+    },
+    {
+      "target_id": "vanadium_specific_evidence_policy_third",
+      "priority": 3,
+      "source_title_or_doi": "policy record local to this Vanadium branch package",
+      "target_kind": "non-mirrored or archive policy decision",
+      "why_third": "Even if the equation or moments are captured, the existing non-mirrored acceptance only covers the Nb3Sn PhysRevB.27.1568 branch.",
+      "required_capture_fields": [
+        "accepted source package scope",
+        "allowed evidence layer",
+        "reviewer decision state",
+        "claim boundary",
+        "expiration or revisit condition"
+      ],
+      "success_condition": "The Vanadium branch can release strict evidence without borrowing the Nb3Sn-specific policy."
+    }
+  ],
+  "blocked_until": [
+    "Either target_id=vanadium_eliashberg_equation_contract_first succeeds or target_id=vanadium_allen_dynes_moments_second succeeds.",
+    "Vanadium-specific evidence policy is accepted for the captured source package.",
+    "The topic creates a separate branch input table and verifier artifact without changing the raw McMillan gate."
+  ],
+  "claim_boundary": "This packet is an acquisition target only. It does not certify a Vanadium branch, does not create a PASS, and does not authorize row migration or raw-row patching."
+}
