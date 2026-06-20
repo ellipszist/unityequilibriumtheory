@@ -6,6 +6,18 @@
 
 ## Entries
 
+### 2026-06-20 - Vanadium Branch Source Capture Target Doc Sync
+
+- Scope: `0.4_Superconductivity_Superfluids` packet-recommended docs for the Vanadium branch source-capture controller.
+- Added or changed: linked the external Vanadium branch source-capture target from `README.md`, `LIMITATIONS.md`, and `VERIFICATION_SPEC.md` so the next blocker is visible without reading the whole topic.
+- Files touched: `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `UPDATE_LOG.md`.
+- Verified with: local search for `vanadium_branch_source_capture_target_packet.json` across the packet-recommended docs and source-completeness gate.
+- Result: the front-door topic docs now identify the same next controller as the gate: inspect `10.1007/s10948-017-4295-y` first for an Eliashberg/Allen-Dynes equation or reproduction contract, then fall back to compatible `omega_log/omega2` capture.
+- Blocker narrowed: the generic source-completeness stop is now surfaced as a named acquisition target sequence in the docs most likely to be opened first.
+- Still open: no Vanadium alternate branch input table, verifier, artifact, row migration, or raw-row patch is allowed.
+- Next controller: satisfy the source-capture target and then update the source-completeness gate with actual evidence.
+- Claim impact: no claim upgrade, no threshold change, no verifier rerun, and no raw-gate membership change.
+
 ### 2026-06-20 - Vanadium Branch Source Capture Target
 
 - Scope: `0.4_Superconductivity_Superfluids` Vanadium branch source-completeness acquisition controller.

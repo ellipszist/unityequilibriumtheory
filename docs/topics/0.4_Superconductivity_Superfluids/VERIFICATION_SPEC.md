@@ -69,6 +69,7 @@
   - `Data/03_Research/vanadium_convention_impact_gate.json`
   - `Data/03_Research/vanadium_benchmark_membership_gate.json`
   - `Data/03_Research/vanadium_branch_source_completeness_gate.json`
+  - `docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_branch_source_capture_target_packet.json`
   - `Data/03_Research/vanadium_alternate_branch_design_packet.json`
   - `Data/03_Research/vanadium_source_lock_decision.json`
   - `docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_primary_page_capture_record_20260516.json`
@@ -105,6 +106,7 @@
   - The Vanadium convention-impact gate now records that source-backed `lambda_ep=0.91` with captured `mu_star` conventions still fails the raw McMillan row badly; the older near-threshold `lambda_ep=0.6` preview remains unsupported and must not be patched.
   - The Vanadium benchmark-membership gate keeps Vanadium in the raw McMillan gate as a documented failure diagnostic until a uniform row-eligibility policy or a source-labeled alternate branch verifier exists.
   - The Vanadium branch source-completeness gate must report `BLOCKED` until `omega_log/omega2` or an explicit Eliashberg equation contract, convention compatibility, and Vanadium-specific evidence policy are present.
+  - The Vanadium branch source-capture target is acquisition-only. It names the first source-contract target and fallback moment fields, but it cannot support raw-row patching, branch migration, or topic-level PASS by itself.
   - The Vanadium alternate-branch design packet defines the future branch contract but is `design_only_blocked_pending_source_completeness_gate`; it does not move Vanadium out of the raw gate.
   - The A15 blocked patch preview should be read as a stop sign, not a recommendation. It documents why an edit would be premature.
   - The intake stub is evidence capture only. Filling it is not equivalent to source review completion.
