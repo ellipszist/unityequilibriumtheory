@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.4_Superconductivity_Superfluids",
+  "material": "Vanadium (V)",
+  "gate_name": "Vanadium branch source-completeness gate",
+  "gate_status": "BLOCKED",
+  "purpose": "Decide whether a strict Vanadium alternate-branch input table may be created from the currently captured evidence.",
+  "decision": {
+    "allow_vanadium_alternate_branch_source_labeled_inputs": false,
+    "allow_vanadium_alternate_branch_verifier": false,
+    "allow_raw_mcmillan_row_migration": false,
+    "allow_raw_mcmillan_row_patch": false,
+    "reason": "The current evidence can support branch design and source-acquisition planning only. It is not source-complete for an Allen-Dynes strict row or an Eliashberg diagnostic contract."
+  },
+  "field_readiness": [
+    {
+      "field": "Tc_observed_K",
+      "status": "available_for_design_context",
+      "value": 5.03,
+      "source": "10.1103/PhysRev.102.656",
+      "record_path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium/tc_text_capture_record.json",
+      "record_sha256": "6e5d0ae2664d4708a44919937843e3f6775cf0f6f2b5312ec4fdb1d0029edb4c",
+      "strict_branch_issue": "Primary-page confirmed, but still needs to be paired with a compatible branch formula family before strict use."
+    },
+    {
+      "field": "Theta_D_K_or_proxy_context",
+      "status": "available_as_debye_proxy_context_only",
+      "value": 338.0,
+      "uncertainty_K": 5.0,
+      "source": "10.1103/PhysRev.102.656",
+      "record_path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium/theta_text_capture_record.json",
+      "record_sha256": "ef136e48f3fc7473116605345530cd454cc4198e0774fc48e59449e3903cf9c6",
+      "strict_branch_issue": "This is a Debye-temperature-style normal-state fit value, not an Allen-Dynes omega_log or omega2 moment."
+    },
+    {
+      "field": "omega_log_K",
+      "status": "missing",
+      "required_for": "Allen-Dynes strict branch",
+      "strict_branch_issue": "No source-captured logarithmic phonon moment is present for Vanadium."
+    },
+    {
+      "field": "omega2_sqrt_K_or_ratio",
+      "status": "missing",
+      "required_for": "Allen-Dynes strict branch",
+      "strict_branch_issue": "No source-captured second phonon moment or justified moment ratio is present for Vanadium."
+    },
+    {
+      "field": "lambda_ep",
+      "status": "available_but_convention_pending",
+      "value": 0.91,
+      "source": "10.1007/s10948-017-4295-y",
+      "record_path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium/lambda_numeric_capture_record.json",
+      "record_sha256": "813932b31e2808f0be42cc751d48555055f0ce725bd89b52b53c76d1cc51daee",
+      "strict_branch_issue": "The numeric capture is explicit but comes from a different source family and still needs compatibility review against the branch formula convention."
+    },
+    {
+      "field": "mu_star",
+      "status": "available_but_convention_pending",
+      "value": 0.173,
+      "alternative_value": 0.15,
+      "alternative_uncertainty": 0.03,
+      "source": "10.1007/s10948-017-4295-y",
+      "record_path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium/mu_star_numeric_capture_record.json",
+      "record_sha256": "f1d3b4f936cff16064c54f910a12908ce9d8a41c09c57e5e8ec71c41796ad5d3",
+      "strict_branch_issue": "Multiple mu-star conventions are present and no branch-specific convention decision has been made."
+    },
+    {
+      "field": "explicit_eliashberg_equation_contract",
+      "status": "missing",
+      "required_for": "Eliashberg diagnostic branch",
+      "strict_branch_issue": "No source-declared equation, kernel convention, or reproduction target has been captured for a Vanadium Eliashberg diagnostic."
+    },
+    {
+      "field": "vanadium_specific_non_mirrored_policy",
+      "status": "missing",
+      "required_for": "strict branch evidence release",
+      "strict_branch_issue": "The existing non-mirrored acceptance is scoped to the Nb3Sn PhysRevB.27.1568 Allen-Dynes branch, not Vanadium."
+    }
+  ],
+  "strict_unblock_requirements": [
+    "Capture Vanadium omega_log_K and omega2_sqrt_K_or_ratio from a compatible source family, or capture an explicit Eliashberg equation or reproduction contract.",
+    "Resolve whether the open-fulltext lambda_ep=0.91 and mu_star=0.173 or 0.15+/-0.03 conventions are compatible with the chosen branch.",
+    "Record a Vanadium-specific non-mirrored or archive policy decision before strict branch evidence release.",
+    "Only after the above, create vanadium_alternate_branch_source_labeled_inputs.json and a separate Vanadium branch verifier artifact."
+  ],
+  "claim_boundary": {
+    "allowed_now": "Use this gate to explain why the Vanadium alternate branch is blocked at source-complete input construction.",
+    "forbidden_now": [
+      "Do not create a strict Vanadium branch PASS artifact from the current fields.",
+      "Do not treat Theta_D_K_or_proxy_context as omega_log_K.",
+      "Do not move Vanadium out of the raw McMillan gate.",
+      "Do not patch the raw McMillan working row from this gate."
+    ]
+  },
+  "next_controller": {
+    "controller_name": "Vanadium omega_log/omega2 or Eliashberg equation contract capture",
+    "controller_class": "branch_source_completeness",
+    "shortest_next_action": "Find or capture a source-backed Vanadium omega_log/omega2 pair, or an explicit Eliashberg equation/reproduction contract, before creating the branch input table."
+  }
+}

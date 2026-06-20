@@ -6,6 +6,18 @@
 
 ## Entries
 
+### 2026-06-20 - Vanadium Branch Source-Completeness Gate
+
+- Scope: `0.4_Superconductivity_Superfluids` Vanadium alternate-branch input-table controller.
+- Added or changed: added `Data/03_Research/vanadium_branch_source_completeness_gate.json` and linked it from the design packet, raw McMillan row-eligibility policy, `README.md`, `LIMITATIONS.md`, and `VERIFICATION_SPEC.md`.
+- Files touched: `Data/03_Research/vanadium_branch_source_completeness_gate.json`, `Data/03_Research/vanadium_alternate_branch_design_packet.json`, `Data/03_Research/raw_mcmillan_row_eligibility_policy.json`, `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `UPDATE_LOG.md`.
+- Verified with: local reconstruction from Vanadium `Tc`, `Theta`, `lambda`, and `mu_star` capture records under `docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium/`; `.venv\Scripts\python.exe -m json.tool` on the new/changed JSON gates; `.venv\Scripts\python.exe docs\topics\0.4_Superconductivity_Superfluids\Code\03_Research\Experiment_Superconductor_Data.py`; `.venv\Scripts\python.exe docs\scripts\audit\audit_core_research_hardening.py --topic 0.4_Superconductivity_Superfluids --emit-packets` command output.
+- Result: the Vanadium branch remains `BLOCKED`; `Tc` and Debye-proxy context are available for design, `lambda/mu*` are convention-pending, and `omega_log/omega2` or an explicit Eliashberg equation contract are missing.
+- Blocker narrowed: the next controller is no longer generic source-complete input-table creation; it is specifically Vanadium `omega_log/omega2` or Eliashberg equation-contract capture plus branch evidence policy.
+- Still open: no Vanadium alternate branch input table, verifier, artifact, row migration, or raw-row patch is allowed.
+- Next controller: satisfy `vanadium_branch_source_completeness_gate.json`.
+- Claim impact: no claim upgrade and no raw-gate membership change.
+
 ### 2026-06-19 - Vanadium Alternate Branch Design Packet
 
 - Scope: `0.4_Superconductivity_Superfluids` Vanadium branch-migration controller.

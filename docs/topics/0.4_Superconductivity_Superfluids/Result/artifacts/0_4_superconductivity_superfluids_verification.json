@@ -474,7 +474,7 @@
   },
   "raw_mcmillan_row_eligibility_policy": {
     "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\raw_mcmillan_row_eligibility_policy.json",
-    "sha256": "e5dbd783110594f0e8b3ba96ce1976ff614d124f9ab58b19451e1a231f636f0f",
+    "sha256": "cdf94b0b249ba00cc98afa6b3b8ac8ab305d8d3dc43851e3cb58e1be39d225db",
     "status": "present"
   },
   "residual_blocker_field_lock_matrix": {
@@ -994,7 +994,7 @@
     ],
     "policy": {
       "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\raw_mcmillan_row_eligibility_policy.json",
-      "sha256": "e5dbd783110594f0e8b3ba96ce1976ff614d124f9ab58b19451e1a231f636f0f",
+      "sha256": "cdf94b0b249ba00cc98afa6b3b8ac8ab305d8d3dc43851e3cb58e1be39d225db",
       "status": "present"
     },
     "schema_version": "1.0",
@@ -2625,7 +2625,7 @@
     "average_relative_error_percent_max": 20.0,
     "per_material_relative_error_percent_max": 20.0
   },
-  "timestamp_utc": "2026-06-19T12:10:05.426324+00:00",
+  "timestamp_utc": "2026-06-19T17:35:22.956530+00:00",
   "topic": "0.4_Superconductivity_Superfluids",
   "type_summary": [
     {

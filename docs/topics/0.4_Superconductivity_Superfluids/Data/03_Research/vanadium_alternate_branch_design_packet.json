@@ -3,7 +3,7 @@
   "topic": "0.4_Superconductivity_Superfluids",
   "material": "Vanadium (V)",
   "purpose": "Design packet for a future Vanadium-compatible alternate branch verifier.",
-  "design_status": "design_only_blocked_pending_source_complete_inputs",
+  "design_status": "design_only_blocked_pending_source_completeness_gate",
   "branch_candidate": {
     "candidate_name": "Vanadium Eliashberg or Allen-Dynes convention branch",
     "candidate_role": "Separate branch verifier for convention-compatible Vanadium evidence; not a replacement for the raw McMillan artifact.",
@@ -83,6 +83,7 @@
     "future_code_target": "docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment_Vanadium_Alternate_Branch.py",
     "future_artifact_target": "docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/0_4_superconductivity_superfluids_vanadium_alternate_branch_verification.json",
     "future_input_table_target": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/vanadium_alternate_branch_source_labeled_inputs.json",
+    "source_completeness_gate": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/vanadium_branch_source_completeness_gate.json",
     "minimum_artifact_fields": [
       "run_status",
       "model_gate_status",
@@ -119,8 +120,8 @@
     "future_allowed_after_verifier": "A future artifact may support a Vanadium branch diagnostic only, and must not override the raw McMillan FAIL."
   },
   "next_controller": {
-    "controller_name": "Vanadium branch source-complete input table",
-    "controller_class": "source_labeled_branch_input_gate",
-    "shortest_next_action": "Create vanadium_alternate_branch_source_labeled_inputs.json only after omega_log/omega2 or an explicit Eliashberg equation contract is captured with compatible source policy."
+    "controller_name": "Vanadium branch source-completeness gate",
+    "controller_class": "branch_source_completeness",
+    "shortest_next_action": "Satisfy vanadium_branch_source_completeness_gate.json by capturing omega_log/omega2 or an explicit Eliashberg equation contract before creating vanadium_alternate_branch_source_labeled_inputs.json."
   }
 }

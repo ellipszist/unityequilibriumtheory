@@ -119,7 +119,8 @@
     {
       "material": "Vanadium (V)",
       "path": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/vanadium_alternate_branch_design_packet.json",
-      "status": "design_only_blocked_pending_source_complete_inputs"
+      "source_completeness_gate": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/vanadium_branch_source_completeness_gate.json",
+      "status": "design_only_blocked_pending_source_completeness_gate"
     }
   ],
   "next_controller": {

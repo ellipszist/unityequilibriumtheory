@@ -64,7 +64,8 @@ flowchart LR
 | Vanadium source-lock decision | Formal decision record for the current wave; Tc/Theta are primary-confirmed, but the older lambda-only preview remains blocked and the working row stays unchanged | `Data/03_Research/vanadium_source_lock_decision.json` | `PATCH_BLOCKED`; lambda/mu convention blocker |
 | Vanadium convention-impact gate | Source-backed `lambda=0.91` and captured `mu_star` conventions still fail raw McMillan; older near-threshold `lambda=0.6` preview remains unsupported | `Data/03_Research/vanadium_convention_impact_gate.json` | no patch; formula-family/convention controller |
 | Vanadium benchmark-membership gate | Keeps Vanadium in the raw McMillan gate as a documented failure diagnostic until a uniform exclusion or branch-migration policy exists | `Data/03_Research/vanadium_benchmark_membership_gate.json` | no cosmetic exclusion or migration |
-| Vanadium alternate-branch design | Defines a future source-labeled Vanadium Eliashberg/Allen-Dynes branch, but blocks execution until source-complete fields and policy exist | `Data/03_Research/vanadium_alternate_branch_design_packet.json` | design only; no migration |
+| Vanadium alternate-branch source-completeness gate | Blocks a future Vanadium Eliashberg/Allen-Dynes branch until `omega_log/omega2` or an explicit Eliashberg equation contract and policy exist | `Data/03_Research/vanadium_branch_source_completeness_gate.json` | `BLOCKED`; no input table |
+| Vanadium alternate-branch design | Defines a future source-labeled Vanadium Eliashberg/Allen-Dynes branch, but delegates execution to the source-completeness gate | `Data/03_Research/vanadium_alternate_branch_design_packet.json` | design only; no migration |
 | A15 candidate patch preview | Shows why `Nb3Sn` and `Nb3Ge` are still not patchable without external row evidence | `Data/03_Research/a15_candidate_patch_preview.json` | blocked patch-preview workflow only |
 | Row evidence intake stub | Structured intake sheet for incoming row-level evidence before any working-copy edit is allowed | `Data/03_Research/row_evidence_intake_stub.json` | evidence-capture workflow only |
 | Row evidence readiness matrix | Shows which rows still have pending evidence fields before patch review is allowed | `Data/03_Research/row_evidence_readiness_matrix.json` | evidence-gate workflow only |
@@ -119,6 +120,7 @@ python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment
 - `Data/03_Research/vanadium_source_lock_decision.json`: current source-lock decision for `Vanadium`; the row is `PATCH_BLOCKED` and remains unchanged because `lambda_ep` and `mu_star` still need convention review after the primary Tc/Theta capture.
 - `Data/03_Research/vanadium_convention_impact_gate.json`: preview-only gate showing that the current source-backed Vanadium coupling conventions do not rescue the raw McMillan row, while the older near-threshold preview is not source-supported.
 - `Data/03_Research/vanadium_benchmark_membership_gate.json`: membership decision gate retaining Vanadium as a raw McMillan failure diagnostic until a uniform row-eligibility policy or alternate branch verifier exists.
+- `Data/03_Research/vanadium_branch_source_completeness_gate.json`: machine-readable stop/go gate showing why the Vanadium alternate branch input table cannot be created yet.
 - `Data/03_Research/vanadium_alternate_branch_design_packet.json`: design-only contract for a future Vanadium-compatible alternate branch verifier; it names the source gaps that block execution.
 - `Data/03_Research/a15_candidate_patch_preview.json`: blocked preview showing exactly why the A15 pair still cannot be edited honestly.
 - `Data/03_Research/row_evidence_intake_stub.json`: structured place to record future row evidence for `Vanadium`, `Nb3Sn`, and `Nb3Ge` before any patch is applied.
@@ -206,7 +208,7 @@ python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment
 - Row exclusion is now policy-controlled: high error, inverse-fit availability, or aggregate metric improvement cannot remove a row from the raw gate by themselves.
 - The Vanadium convention review currently points away from a simple row patch: source-backed coupling conventions still fail raw McMillan, while the older near-pass row preview lacks current source support.
 - Vanadium should not be removed from the raw gate just to improve the metric; exclusion or branch migration now requires a uniform membership policy or a source-labeled alternate branch verifier.
-- A Vanadium alternate branch is now scoped, but not implemented: it needs source-complete `omega_log/omega2` or an explicit Eliashberg equation contract before any verifier can count it.
+- A Vanadium alternate branch is now scoped, but not implemented: the source-completeness gate blocks input-table construction until `omega_log/omega2` or an explicit Eliashberg equation contract is captured.
 - The inverse-McMillan audit points the next cleanup at row-level `lambda_ep`, `Theta_D_K`, and material-specific phonon-scale provenance.
 - The provisional normalized table is useful only for sensitivity analysis; it must not be cited as a source-backed repaired dataset.
 - UET coherence and relativistic correction terms are heuristic/calibration-sensitive.
