@@ -46,11 +46,11 @@
     }
   },
   "current_controller": {
-    "controller_name": "Vanadium lambda_ep and mu_star convention review",
-    "controller_class": "row_source_mapping_and_convention_gate",
-    "blocking_decision_path": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/vanadium_source_lock_decision.json",
-    "blocking_decision": "PATCH_BLOCKED",
-    "next_after_controller": "Nb3Ge source-lock pass, then broader A15 row-specific numeric capture review"
+    "controller_name": "Vanadium omega_log/omega2 or Eliashberg equation contract capture",
+    "controller_class": "branch_source_completeness_gate",
+    "blocking_decision_path": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/vanadium_branch_source_completeness_gate.json",
+    "blocking_decision": "BLOCKED",
+    "next_after_controller": "Satisfy vanadium_eliashberg_equation_contract_first or vanadium_allen_dynes_moments_second, then record Vanadium-specific evidence policy before any branch input table, verifier, row migration, or raw-row patch."
   },
   "stop_rule_for_this_wave": {
     "rerun_primary_verifier_now": false,

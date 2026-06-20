@@ -6,6 +6,18 @@
 
 ## Entries
 
+### 2026-06-20 - Raw McMillan FAIL Cause Controller Sync
+
+- Scope: `0.4_Superconductivity_Superfluids` machine-readable FAIL-cause gate used by the core hardening audit packet.
+- Added or changed: updated `Data/03_Research/raw_mcmillan_fail_cause_gate.json` so its `current_controller` points to the latest Vanadium branch source-completeness controller instead of the older lambda/mu convention-review wording.
+- Files touched: `Data/03_Research/raw_mcmillan_fail_cause_gate.json`, `UPDATE_LOG.md`.
+- Verified with: `.venv\Scripts\python.exe -m json.tool` on the fail-cause gate; `.venv\Scripts\python.exe docs\scripts\audit\audit_core_research_hardening.py --topic 0.4_Superconductivity_Superfluids --emit-packets` after audit packet support was added.
+- Result: the audit queue can now report the same current controller as the topic-local branch source-completeness gate: Vanadium `omega_log/omega2` or explicit Eliashberg equation-contract capture.
+- Blocker narrowed: the generic FAIL queue now resolves to a named source-completeness controller instead of looping on threshold/verifier/model ambiguity.
+- Still open: no primary verifier rerun is required because no model input, row value, threshold, or verifier contract changed.
+- Next controller: satisfy `vanadium_eliashberg_equation_contract_first` or `vanadium_allen_dynes_moments_second`, then record Vanadium-specific evidence policy.
+- Claim impact: no claim upgrade and no raw-gate membership change.
+
 ### 2026-06-20 - Vanadium Branch Source Capture Target Doc Sync
 
 - Scope: `0.4_Superconductivity_Superfluids` packet-recommended docs for the Vanadium branch source-capture controller.

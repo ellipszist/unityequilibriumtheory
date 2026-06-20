@@ -181,6 +181,15 @@ def next_action(audit: TopicAudit) -> str:
     if audit.formula_audit_status == "present/open":
         return "Close open formula-audit entries or keep matching limitations explicit."
     if audit.artifact_status == "FAIL present":
+        gate = fail_cause_gate(audit)
+        if gate:
+            controller = fail_cause_controller(gate)
+            controller_name = controller.get("controller_name")
+            controller_class = controller.get("controller_class")
+            if controller_name and controller_class:
+                return f"Narrow current FAIL via {controller_name} ({controller_class}); do not change threshold or verifier contract without new evidence."
+            if controller_name:
+                return f"Narrow current FAIL via {controller_name}; do not change threshold or verifier contract without new evidence."
         return "Treat verifier failure as blocker; document cause and fix model or threshold."
     if audit.data_status != "manifested real dataset":
         return "Upgrade DATA_MANIFEST.md with source, local path, unit convention, and benchmark role."
@@ -188,6 +197,29 @@ def next_action(audit: TopicAudit) -> str:
         return "Downgrade README wording to match verifier and formula-audit status."
     return "Run topic verifier and harden remaining limitations."
 
+
+def fail_cause_gate(audit: TopicAudit) -> dict[str, object] | None:
+    gate_path = TOPICS_ROOT / audit.name / "Data" / "03_Research" / "raw_mcmillan_fail_cause_gate.json"
+    if not gate_path.exists():
+        return None
+    try:
+        data = json.loads(gate_path.read_text(encoding="utf-8-sig"))
+    except Exception:
+        return None
+    return data if isinstance(data, dict) else None
+
+
+def fail_cause_controller(gate: dict[str, object]) -> dict[str, object]:
+    controller = gate.get("current_controller")
+    return controller if isinstance(controller, dict) else {}
+
+
+def fail_cause_summary(gate: dict[str, object]) -> str | None:
+    classification = gate.get("classification")
+    if not isinstance(classification, dict):
+        return None
+    cause = classification.get("overall_fail_cause")
+    return str(cause) if cause else None
 
 def current_blocker(audit: TopicAudit) -> str:
     if audit.missing_docs:
@@ -199,6 +231,15 @@ def current_blocker(audit: TopicAudit) -> str:
     if audit.formula_audit_status == "present/open":
         return "Formula audit still has open entries that must stay visible in limitations."
     if audit.artifact_status == "FAIL present":
+        gate = fail_cause_gate(audit)
+        if gate:
+            cause = fail_cause_summary(gate)
+            controller = fail_cause_controller(gate)
+            controller_name = controller.get("controller_name")
+            if cause and controller_name:
+                return f"FAIL cause is `{cause}`; current controller: {controller_name}."
+            if cause:
+                return f"FAIL cause is `{cause}`."
         return "Machine-readable verifier artifact records FAIL."
     if audit.data_status != "manifested real dataset":
         return f"Data provenance is not yet manifested real dataset: {audit.data_status}."
@@ -223,6 +264,8 @@ def recommended_files(audit: TopicAudit) -> list[str]:
             f"{topic_root}/Result/artifacts/",
             f"{topic_root}/LIMITATIONS.md",
         ]
+        if fail_cause_gate(audit):
+            files.append(f"{topic_root}/Data/03_Research/raw_mcmillan_fail_cause_gate.json")
         if audit.verification_command:
             files.append("primary command target from VERIFICATION_SPEC.md")
         return files
@@ -253,6 +296,12 @@ def stop_condition(audit: TopicAudit) -> str:
     if audit.formula_audit_status in {"missing", "bootstrap/open", "present/open"}:
         return "Stop when the formula audit blocker is narrower and any remaining open formula status is mirrored in LIMITATIONS.md."
     if audit.artifact_status == "FAIL present":
+        gate = fail_cause_gate(audit)
+        if gate:
+            stop_rule = gate.get("stop_rule_for_this_wave")
+            if isinstance(stop_rule, dict) and stop_rule.get("rerun_primary_verifier_now") is False:
+                reason = stop_rule.get("reason")
+                return f"Stop when the named FAIL controller is made more specific; primary verifier rerun is not required until row inputs, threshold, or verifier logic change. Current reason: {reason}"
         return "Stop when the FAIL cause is named in the topic docs or the verifier/model path has been repaired and rerun."
     if audit.data_status != "manifested real dataset":
         return "Stop when DATA_MANIFEST.md records source identity, local path, unit convention, and benchmark role, or clearly keeps the data limitation explicit."
@@ -268,7 +317,7 @@ def expected_artifact(audit: TopicAudit) -> str | None:
 
 
 def packet_for(audit: TopicAudit) -> dict[str, object]:
-    return {
+    packet = {
         "topic": audit.name,
         "priority": audit.priority,
         "current_blocker": current_blocker(audit),
@@ -280,6 +329,12 @@ def packet_for(audit: TopicAudit) -> dict[str, object]:
         "recommended_files": recommended_files(audit),
         "stop_condition": stop_condition(audit),
     }
+    gate = fail_cause_gate(audit) if audit.artifact_status == "FAIL present" else None
+    if gate:
+        packet["fail_cause_gate"] = f"docs/topics/{audit.name}/Data/03_Research/raw_mcmillan_fail_cause_gate.json"
+        packet["fail_cause_summary"] = fail_cause_summary(gate)
+        packet["current_controller"] = fail_cause_controller(gate)
+    return packet
 
 
 def build_next_actions(queue_audits: list[TopicAudit], summary_audits: list[TopicAudit], generated_at: str) -> dict[str, object]:
@@ -322,6 +377,9 @@ def render_packets(next_actions: dict[str, object]) -> str:
                 f"- Expected artifact: `{packet['expected_artifact']}`" if packet["expected_artifact"] else "- Expected artifact: n/a",
                 "- Recommended files: " + ", ".join(f"`{path}`" for path in packet["recommended_files"]),
                 f"- Stop condition: {packet['stop_condition']}",
+                f"- FAIL cause gate: `{packet['fail_cause_gate']}`" if packet.get("fail_cause_gate") else "- FAIL cause gate: n/a",
+                f"- FAIL cause summary: {packet['fail_cause_summary']}" if packet.get("fail_cause_summary") else "- FAIL cause summary: n/a",
+                f"- Current controller: {packet['current_controller'].get('controller_name')}" if isinstance(packet.get("current_controller"), dict) and packet['current_controller'].get("controller_name") else "- Current controller: n/a",
                 "",
             ]
         )

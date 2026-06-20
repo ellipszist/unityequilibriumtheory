@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-19T12:11:06.588900+00:00",
+  "generated_at": "2026-06-20T16:20:30.188905+00:00",
   "scope": "0.0_Grand_Unification through 0.26_Cosmic_Dynamic_Frame",
   "summary": {
     "audited_core_topics": 27,
@@ -14,8 +14,8 @@
     {
       "topic": "0.4_Superconductivity_Superfluids",
       "priority": 10,
-      "current_blocker": "Machine-readable verifier artifact records FAIL.",
-      "next_action": "Treat verifier failure as blocker; document cause and fix model or threshold.",
+      "current_blocker": "FAIL cause is `mixed_model_family_and_row_package_blocker`; current controller: Vanadium omega_log/omega2 or Eliashberg equation contract capture.",
+      "next_action": "Narrow current FAIL via Vanadium omega_log/omega2 or Eliashberg equation contract capture (branch_source_completeness_gate); do not change threshold or verifier contract without new evidence.",
       "data_status": "real source referenced",
       "artifact_status": "FAIL present",
       "verification_command": "python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment_Superconductor_Data.py",
@@ -24,9 +24,19 @@
         "docs/topics/0.4_Superconductivity_Superfluids/VERIFICATION_SPEC.md",
         "docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/",
         "docs/topics/0.4_Superconductivity_Superfluids/LIMITATIONS.md",
+        "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/raw_mcmillan_fail_cause_gate.json",
         "primary command target from VERIFICATION_SPEC.md"
       ],
-      "stop_condition": "Stop when the FAIL cause is named in the topic docs or the verifier/model path has been repaired and rerun."
+      "stop_condition": "Stop when the named FAIL controller is made more specific; primary verifier rerun is not required until row inputs, threshold, or verifier logic change. Current reason: No model input, row value, threshold, or verifier logic was changed in this wave; the useful progress is blocker classification.",
+      "fail_cause_gate": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/raw_mcmillan_fail_cause_gate.json",
+      "fail_cause_summary": "mixed_model_family_and_row_package_blocker",
+      "current_controller": {
+        "controller_name": "Vanadium omega_log/omega2 or Eliashberg equation contract capture",
+        "controller_class": "branch_source_completeness_gate",
+        "blocking_decision_path": "docs/topics/0.4_Superconductivity_Superfluids/Data/03_Research/vanadium_branch_source_completeness_gate.json",
+        "blocking_decision": "BLOCKED",
+        "next_after_controller": "Satisfy vanadium_eliashberg_equation_contract_first or vanadium_allen_dynes_moments_second, then record Vanadium-specific evidence policy before any branch input table, verifier, row migration, or raw-row patch."
+      }
     }
   ]
 }
