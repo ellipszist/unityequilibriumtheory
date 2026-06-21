@@ -18,6 +18,20 @@ Use this log when `0.13` changes in a way that narrows a provenance blocker, add
 
 ## Entries
 
+### 2026-06-21 - Jun legacy-row policy threading pass
+
+- Scope: thread the existing legacy `0.028 eV` row policy into the active Jun row controller so the topic no longer treats Jun as blocked by an undecided legacy-row branch choice
+- Wave type: `gate pass`
+- Added or changed: updated `jun_2014_uncertainty_gap.json`, `jun_2014_runtime_mapping_conflict.json`, `row_closure_matrix.json`, and the primary verifier wording so the inherited legacy `0.028 eV` row is demoted to legacy context outside active Jun logic; regenerated the verifier artifact, foundation gate, source-intake/readiness, uncertainty, derivation, units, beta, and Landauer-UET control artifacts; synced README, METHOD, LIMITATIONS, VERIFICATION_SPEC, ROW_CLOSURE_MATRIX, DERIVATION_MAP, and DATA_MANIFEST wording to the narrower Jun controller
+- Files touched: `Data/03_Research/jun_2014_uncertainty_gap.json`, `Data/03_Research/jun_2014_runtime_mapping_conflict.json`, `Data/03_Research/row_closure_matrix.json`, `Code/03_Research/Research_Landauer.py`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `ROW_CLOSURE_MATRIX.md`, `DERIVATION_MAP.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: Jun is no longer blocked by deciding whether the legacy `0.028 eV` row belongs in active Jun logic; that row is now declared legacy context outside the active Jun benchmark lane
+- Still open: original source-summary file/table identity, exact source row or fit-target locator, explicit source-unit basis, and archived source surface for the pinned Jun asymptotic-work summary remain open
+- Next controller: `jun_source_summary_file_identity_and_table_locator_required`
+- Claim impact: no upgrade; this wave only narrows Jun from legacy-row branch ambiguity to source-summary identity and locator closure
+- Workflow linkage: follows `For Work/18_Research_Hardening_Workflow.md` by moving one controlling blocker into artifact/gate state and recording the resulting controller in the topic update log
+
 ### 2026-06-21 - Berut figure-locator mapping pass
 
 - Scope: narrow the primary Berut provenance blocker beyond selected policy choice by attaching one exact preview-level locator to the current topic-summary row

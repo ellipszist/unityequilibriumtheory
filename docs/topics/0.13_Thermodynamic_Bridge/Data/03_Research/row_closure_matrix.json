@@ -26,16 +26,16 @@
       "current_local_surface": "Data/03_Research/experimental_data.py",
       "upstream_anchor": "docs/data/external/thermodynamics/landauer/jun_2014/source_record.json",
       "source_closure_status": "partial_summary_only",
-      "next_controller": "split_replace_or_relabel_legacy_runtime_row_before_uncertainty",
-      "uncertainty_status": "source_summary_interval_present_runtime_branch_policy_open",
+      "next_controller": "jun_source_summary_file_identity_and_table_locator_required",
+      "uncertainty_status": "source_summary_interval_present_legacy_row_policy_declared",
       "missing_requirements": [
-        "declared_decision_on_legacy_0p028_eV_row_branch",
-        "if_retained_in_jun_then_source_row_or_fit_target_identifier",
+        "original_file_name_or_table_identifier_for_source_summary",
+        "source_row_or_fit_target_identifier_for_pinned_asymptotic_work_summary",
         "explicit_source_unit_basis_and_conversion_path",
-        "original_file_name_or_table_identifier_for_source_summary"
+        "archived_source_surface_for_summary_layer_uncertainty"
       ],
-      "claim_effect_if_left_open": "Jun now contributes a summary-layer uncertainty-bearing lower-bound branch, but it still cannot count as a clean row-level benchmark package because the pinned Jun asymptotic-work summary is being kept separate from the legacy 0.028 eV mixed-lineage runtime row and the source-summary file/row identity is not yet archived tightly enough.",
-      "promotion_value_if_closed": "Would preserve Jun as a second uncertainty-aware Landauer row while making clear whether the legacy runtime quantity belongs to a different branch and whether the current summary quantity is archived precisely enough for stronger source-normalized use."
+      "claim_effect_if_left_open": "Jun now contributes a summary-layer uncertainty-bearing lower-bound branch, and the legacy 0.028 eV row is no longer treated as an active Jun benchmark quantity. It still cannot count as a clean row-level benchmark package because the source-summary file/table identity and exact fit-target locator are not yet archived tightly enough.",
+      "promotion_value_if_closed": "Would preserve Jun as a second uncertainty-aware Landauer row while moving the remaining blocker from legacy-row branch policy to source-summary file and fit-target identity."
     },
     {
       "row_id": "hong_2016_candidate_nanometric_memory_branch",

@@ -69,6 +69,7 @@ DATA_INPUTS = [
     TOPIC_DIR / "Data" / "03_Research" / "experimental_data.py",
     TOPIC_DIR / "Data" / "03_Research" / "landauer_source_lock.json",
     TOPIC_DIR / "Data" / "03_Research" / "hong_2016_runtime_target_policy.json",
+    TOPIC_DIR / "Data" / "03_Research" / "legacy_0p028_runtime_row_policy.json",
     TOPIC_DIR / "Data" / "03_Research" / "row_closure_matrix.json",
     ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "berut_2012" / "source_record.json",
     ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "jun_2014" / "source_record.json",
@@ -245,7 +246,7 @@ def _build_source_evidence_intake_stub():
                     {"field": "local_path", "status": "complete", "value": _relative_repo_path(experimental_module)},
                     {"field": "original_file_name", "status": "pending", "value": ""},
                     {"field": "reported_energy_value", "status": "complete", "value": "Source-facing asymptotic full-erasure work is recorded as 0.71 +/- 0.03 kT in the pinned Jun summary; under the current 300 K verifier baseline this converts to about 0.01836 +/- 0.00078 eV."},
-                    {"field": "reported_uncertainty_or_interval", "status": "partial", "value": "Summary-layer uncertainty is available in kT, but original file identity and final branch policy for the legacy 0.028 eV row are still open."},
+                    {"field": "reported_uncertainty_or_interval", "status": "partial", "value": "Summary-layer uncertainty is available in kT, and the legacy 0.028 eV row is now declared legacy context rather than an active Jun benchmark; original file/table identity for the pinned Jun summary remains open."},
                     {"field": "unit_basis", "status": "complete", "value": "source-facing quantity in kT; runtime comparison in eV after explicit conversion"},
                     {"field": "extraction_note", "status": "complete", "value": "Source identity is pinned for the Jun 2014 feedback-trap branch and a source-facing asymptotic-work summary is now recorded, while the separate legacy 0.028 eV runtime row remains mixed-lineage context that may belong to a later nanomagnetic-memory source branch."},
                 ],
@@ -470,7 +471,7 @@ def _build_evidence_lanes(test_results, metrics, readiness_matrix):
             "does_not_support": "Solved, verified, exact, or theory-confirmed wording.",
             "blockers": [
                 "Berut now has a selected Figure 3 preview locator mapped to the topic-summary row, but still lacks one numeric point capture or one stronger upstream numeric surface.",
-                "Uncertainty propagation is only partial: Berut summary and black-hole mass intervals are attached, but Jun uncertainty and measured-constant terms remain open.",
+                "Uncertainty propagation is only partial: Berut summary and black-hole mass intervals are attached, Jun still lacks source-summary file/table identity despite a declared legacy-row policy, and measured-constant terms remain open.",
                 "UET-specific field variables are not yet derived from the standard thermodynamic identities.",
             ],
         },
@@ -513,7 +514,7 @@ def _build_uncertainty_preprocessing_plan(metrics):
                 "conversion_formula": "source_facing_work_eV = source_facing_work_kT * (k_B T / e)",
                 "lower_bound_value": metrics["landauer_300K_engine_eV"],
                 "ratio_to_lower_bound": metrics["jun_2014_ratio_to_landauer_lower_bound"],
-                "uncertainty_propagation_note": "Source-facing asymptotic-work summary and uncertainty are available at the preprint-summary layer, but original file identity and the policy that keeps the legacy 0.028 eV row out of the Jun lane still remain open."
+                "uncertainty_propagation_note": "Source-facing asymptotic-work summary and uncertainty are available at the preprint-summary layer, and the legacy 0.028 eV row is now declared outside the active Jun lane; original file/table identity and exact fit-target locator still remain open."
             },
             {
                 "source_row_id": "gw150914_final_mass",
@@ -676,7 +677,7 @@ def _build_measured_constant_uncertainty_package():
             },
             {
                 "source_row_id": "jun_2014_summary_300K",
-                "current_interval_status": "source_summary_interval_present_runtime_branch_policy_open",
+                "current_interval_status": "source_summary_interval_present_legacy_row_policy_declared",
                 "measured_constant_uncertainty_status": "not_applicable_under_exact_constant_lane",
                 "relative_uncertainty_from_G_only": None,
             },
@@ -838,14 +839,14 @@ def _build_uncertainty_propagation_summary(metrics, measured_constant_package):
             "current_status": "partial_intervals_mass_plus_g_proxy_for_gravity_context",
             "notable_constraints": [
                 "Berut 2012 topic-summary interval crosses the Landauer lower bound at 1 sigma.",
-                "Jun 2014 now has a source-facing summary-layer interval, but original file identity and legacy-row branch policy remain open.",
+                "Jun 2014 now has a source-facing summary-layer interval and a declared legacy-row demotion policy, but original file/table identity and exact fit-target locator remain open.",
                 "Black-hole entropy and Hawking-temperature rows now keep mass-only intervals and also add provisional combined intervals using a G-only runtime proxy.",
                 "The G proxy is not yet a direct 2022 in-topic extraction and spin/systematic astrophysical terms remain excluded.",
             ],
         },
         "claim_boundary": (
             "This summary adds first-pass propagated intervals and provisional gravity-context combined intervals using a G-only runtime proxy, "
-            "but it is not a full uncertainty package. Raw-source row capture, Jun file/branch closure, direct 2022 measured-constant extraction, and systematic terms remain open."
+            "but it is not a full uncertainty package. Raw-source row capture, Jun source-summary file/table identity, direct 2022 measured-constant extraction, and systematic terms remain open."
         ),
     }
     UNCERTAINTY_PROPAGATION_SUMMARY_PATH.write_text(
@@ -982,7 +983,7 @@ def _build_bridge_derivation_map():
                 "current_state": "partial",
                 "needed_evidence": [
                     "Berut Figure 3 locator now needs one numeric point capture or one stronger upstream numeric surface",
-                    "Jun uncertainty row",
+                    "Jun source-summary file/table identity and fit-target locator",
                     "measured-constant uncertainty package",
                     "claim gate that stays conservative under uncertainty intervals"
                 ],
@@ -1466,7 +1467,7 @@ def _build_foundation_claim_gate(
             "current": "Do not promote to Tier A",
             "reason": "The topic is foundational, but source-normalized data, uncertainty propagation, and UET-specific derivation are not closed.",
             "promotion_requirements": [
-                "Berut must move beyond the selected Figure 3 preview locator to one numeric point capture or one stronger upstream numeric surface, while Jun/Peterson still need row-level closure to one exact source-facing quantity.",
+                "Berut must move beyond the selected Figure 3 preview locator to one numeric point capture or one stronger upstream numeric surface, Jun must attach original file/table identity for the pinned source-facing summary, and Peterson still needs one exact source-facing quantity.",
                 "Uncertainty propagation for Landauer heat values and black-hole mass inputs.",
                 "A derivation map from UET information-field variables to the standard thermodynamic identities, with open steps converted into derived or artifact-backed states.",
                 "A units contract that closes the proxy-to-SI boundary or keeps the bridge claim explicitly nondimensional.",

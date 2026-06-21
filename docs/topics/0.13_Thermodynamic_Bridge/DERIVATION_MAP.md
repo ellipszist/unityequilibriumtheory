@@ -89,7 +89,7 @@ Current partial progress:
 Still needed:
 
 - raw-row or machine-transcribed Landauer source package
-- Jun uncertainty row
+- Jun source-summary file/table identity and exact fit-target locator
 - measured-constant uncertainty package
 - gates that stay conservative under those intervals
 
