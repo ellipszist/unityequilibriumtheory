@@ -1,4 +1,4 @@
-"""
+﻿"""
 UET Thermodynamic Bridge: Landauer and Thermodynamic Identity Checks.
 
 This verifier anchors the topic to source-backed Landauer lower-bound behavior
@@ -51,16 +51,35 @@ ARTIFACT_PATH = TOPIC_DIR / "Result" / "artifacts" / "0_13_thermodynamic_bridge_
 SOURCE_EVIDENCE_INTAKE_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_intake_stub.json"
 SOURCE_EVIDENCE_READINESS_PATH = TOPIC_DIR / "Data" / "03_Research" / "source_evidence_readiness_matrix.json"
 FOUNDATION_CLAIM_GATE_PATH = TOPIC_DIR / "Data" / "03_Research" / "thermodynamic_bridge_foundation_claim_gate.json"
+UNCERTAINTY_PREPROCESSING_PATH = TOPIC_DIR / "Data" / "03_Research" / "uncertainty_preprocessing_manifest.json"
+UNCERTAINTY_PROPAGATION_SUMMARY_PATH = TOPIC_DIR / "Data" / "03_Research" / "uncertainty_propagation_summary.json"
+MEASURED_CONSTANT_UNCERTAINTY_PACKAGE_PATH = TOPIC_DIR / "Data" / "03_Research" / "measured_constant_uncertainty_package.json"
+BRIDGE_DERIVATION_MAP_PATH = TOPIC_DIR / "Data" / "03_Research" / "bridge_derivation_map.json"
+UNITS_CONTRACT_PATH = TOPIC_DIR / "Data" / "03_Research" / "units_contract.json"
+LANDAUER_UET_MAPPING_PATH = TOPIC_DIR / "Data" / "03_Research" / "landauer_uet_mapping.json"
+BETA_ROLE_CLARIFICATION_PATH = TOPIC_DIR / "Data" / "03_Research" / "beta_role_clarification.json"
+ROW_CLOSURE_MATRIX_PATH = TOPIC_DIR / "Data" / "03_Research" / "row_closure_matrix.json"
 DATA_INPUTS = [
     TOPIC_DIR / "Data" / "03_Research" / "__init__.py",
     TOPIC_DIR / "Data" / "03_Research" / "berut_2012.json",
+    TOPIC_DIR / "Data" / "03_Research" / "berut_2012_source_surface_note.json",
+    TOPIC_DIR / "Data" / "03_Research" / "berut_2012_transcription_policy_blocker.json",
+    TOPIC_DIR / "Data" / "03_Research" / "berut_2012_figure_locator_mapping.json",
     TOPIC_DIR / "Data" / "03_Research" / "cattaneo_data.json",
     TOPIC_DIR / "Data" / "03_Research" / "experimental_data.py",
     TOPIC_DIR / "Data" / "03_Research" / "landauer_source_lock.json",
+    TOPIC_DIR / "Data" / "03_Research" / "hong_2016_runtime_target_policy.json",
+    TOPIC_DIR / "Data" / "03_Research" / "row_closure_matrix.json",
     ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "berut_2012" / "source_record.json",
     ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "jun_2014" / "source_record.json",
+    ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "hong_2016" / "source_record.json",
+    ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "hong_2016" / "crossref_work_record.json",
     ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "peterson_2018" / "source_record.json",
     ROOT / "docs" / "data" / "external" / "constants" / "codata" / "si_2019_exact_constants.json",
+    ROOT / "docs" / "data" / "external" / "gravity" / "ligo_black_hole_mergers" / "source_record.json",
+    ROOT / "docs" / "data" / "external" / "gravity" / "eht_black_hole_masses" / "source_record.json",
+    ROOT / "docs" / "data" / "external" / "constants" / "codata" / "measured_constants_2022_source_record.json",
+    ROOT / "docs" / "topics" / "0.19_Gravity_GR" / "Data" / "03_Research" / "codata_2018_gravity.json",
 ]
 
 
@@ -97,9 +116,21 @@ def _audit_metrics():
     codata_landauer_j = k_B * T_room * np.log(2)
     engine_vs_codata_rel_error = abs(engine_landauer_j - codata_landauer_j) / codata_landauer_j
 
-    jun_observed_eV = 0.028
     landauer_eV = engine_landauer_j / electron_charge
-    jun_ratio_to_lower_bound = jun_observed_eV / landauer_eV
+    jun_source = _load_json(
+        ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "jun_2014" / "source_record.json"
+    )
+    jun_primary_work_kT = jun_source["source_facing_summary"]["value_kT"]
+    jun_primary_uncertainty_kT = jun_source["source_facing_summary"]["uncertainty_kT"]
+    jun_primary_statistical_error_kT = jun_source["source_facing_summary"]["measurement_statistical_error_kT"]
+    kT_eV = landauer_eV / np.log(2)
+    jun_primary_eV = jun_primary_work_kT * kT_eV
+    jun_primary_uncertainty_eV = jun_primary_uncertainty_kT * kT_eV
+    jun_primary_statistical_error_eV = jun_primary_statistical_error_kT * kT_eV
+    jun_ratio_to_lower_bound = jun_primary_eV / landauer_eV
+
+    legacy_mixed_lineage_eV = 0.028
+    legacy_mixed_lineage_ratio_to_lower_bound = legacy_mixed_lineage_eV / landauer_eV
 
     g_earth = 9.8
     earth_unruh_k = unruh_temperature(g_earth)
@@ -112,16 +143,54 @@ def _audit_metrics():
         "landauer_300K_engine_J": engine_landauer_j,
         "landauer_300K_codata_J": codata_landauer_j,
         "landauer_engine_vs_codata_relative_error": engine_vs_codata_rel_error,
-        "jun_2014_observed_eV": jun_observed_eV,
         "landauer_300K_engine_eV": landauer_eV,
+        "jun_2014_source_facing_work_kT": jun_primary_work_kT,
+        "jun_2014_source_facing_uncertainty_kT": jun_primary_uncertainty_kT,
+        "jun_2014_source_facing_statistical_error_kT": jun_primary_statistical_error_kT,
+        "jun_2014_source_facing_work_eV": jun_primary_eV,
+        "jun_2014_source_facing_uncertainty_eV": jun_primary_uncertainty_eV,
+        "jun_2014_source_facing_statistical_error_eV": jun_primary_statistical_error_eV,
         "jun_2014_ratio_to_landauer_lower_bound": jun_ratio_to_lower_bound,
+        "legacy_mixed_lineage_observed_eV": legacy_mixed_lineage_eV,
+        "legacy_mixed_lineage_ratio_to_landauer_lower_bound": legacy_mixed_lineage_ratio_to_lower_bound,
         "unruh_temperature_earth_g_K": earth_unruh_k,
         "hawking_temperature_solar_mass_K": solar_hawking_k,
         "bekenstein_hawking_entropy_solar_mass_planck_units": solar_entropy_planck,
     }
 
 
+def _relative_repo_path(path: Path) -> str:
+    return path.relative_to(ROOT).as_posix()
+
+
+def _load_json(path: Path) -> dict:
+    return json.loads(path.read_text(encoding="utf-8-sig"))
+
+
+def _load_module_from_path(module_name: str, path: Path):
+    spec = importlib.util.spec_from_file_location(module_name, path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def _build_source_evidence_intake_stub():
+    berut_source = _load_json(ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "berut_2012" / "source_record.json")
+    berut_surface_note = _load_json(TOPIC_DIR / "Data" / "03_Research" / "berut_2012_source_surface_note.json")
+    berut_transcription_policy = _load_json(TOPIC_DIR / "Data" / "03_Research" / "berut_2012_transcription_policy_blocker.json")
+    berut_locator_mapping = _load_json(TOPIC_DIR / "Data" / "03_Research" / "berut_2012_figure_locator_mapping.json")
+    jun_source = _load_json(ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "jun_2014" / "source_record.json")
+    hong_source = _load_json(ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "hong_2016" / "source_record.json")
+    peterson_source = _load_json(ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "peterson_2018" / "source_record.json")
+    ligo_source = _load_json(ROOT / "docs" / "data" / "external" / "gravity" / "ligo_black_hole_mergers" / "source_record.json")
+    eht_source = _load_json(ROOT / "docs" / "data" / "external" / "gravity" / "eht_black_hole_masses" / "source_record.json")
+    measured_constants_source = _load_json(ROOT / "docs" / "data" / "external" / "constants" / "codata" / "measured_constants_2022_source_record.json")
+    hong_runtime_target_policy = _load_json(TOPIC_DIR / "Data" / "03_Research" / "hong_2016_runtime_target_policy.json")
+    hong_candidate_ids = hong_source.get("candidate_primary_identifiers_from_secondary_reference_trail", {})
+
+    berut_working_copy = TOPIC_DIR / "Data" / "03_Research" / "berut_2012.json"
+    experimental_module = TOPIC_DIR / "Data" / "03_Research" / "experimental_data.py"
+
     stub = {
         "schema_version": "1.0",
         "topic": "0.13_Thermodynamic_Bridge",
@@ -133,81 +202,119 @@ def _build_source_evidence_intake_stub():
         ],
         "source_targets": [
             {
-                "name": "Berut 2012 raw or supplementary numeric table",
+                "name": "Berut 2012 upstream numeric surface or declared transcription policy",
                 "priority": "immediate",
-                "status": "pending",
+                "status": "partial",
                 "evidence_fields": [
-                    {"field": "doi_or_url", "status": "pending", "value": ""},
-                    {"field": "local_path", "status": "pending", "value": ""},
+                    {"field": "doi_or_url", "status": "complete", "value": berut_source["doi_url"]},
+                    {"field": "local_path", "status": "complete", "value": _relative_repo_path(berut_working_copy)},
                     {"field": "original_file_name", "status": "pending", "value": ""},
-                    {"field": "row_identifier_or_table_label", "status": "pending", "value": ""},
-                    {"field": "unit_basis", "status": "pending", "value": ""},
-                    {"field": "extraction_note", "status": "pending", "value": ""},
+                    {"field": "row_identifier_or_table_label", "status": "partial", "value": "Figure 3 preview locator captured; exact numeric point/curve identifier within the figure is still open."},
+                    {"field": "figure_level_locator", "status": "complete", "value": f"{berut_locator_mapping['selected_locator']['locator_value']}: {berut_locator_mapping['selected_locator']['locator_title']}"},
+                    {
+                        "field": "accessible_surface_status",
+                        "status": "partial",
+                        "value": (
+                            "Current visible Nature page surface is "
+                            f"{berut_surface_note['primary_surface_observation']['preview_surface_status']}; "
+                            "the preview exposes figure labels rather than a directly visible row table, and Figure 3 is now the selected preview-level locator for the topic-summary row."
+                        ),
+                    },
+                    {
+                        "field": "declared_transcription_policy",
+                        "status": "complete",
+                        "value": "figure_level_locator_capture selected; Figure 3 preview locator mapped to topic-summary row; numeric point capture or stronger surface still required",
+                    },
+                    {"field": "unit_basis", "status": "complete", "value": "T in K; heat in J with optional kT lower-bound context"},
+                    {
+                        "field": "extraction_note",
+                        "status": "complete",
+                        "value": (
+                            "Topic working copy stores a checked summary row only. The currently accessible source surface "
+                            "looks figure-level rather than table-level, so source-lock closure now requires one numeric point within the selected Figure 3 locator or one stronger upstream numeric surface before normalization."
+                        ),
+                    },
                 ],
             },
             {
-                "name": "Jun 2014 nanomagnetic erasure benchmark source",
+                "name": "Jun 2014 feedback-trap benchmark source",
                 "priority": "high",
-                "status": "pending",
+                "status": "partial",
                 "evidence_fields": [
-                    {"field": "doi_or_url", "status": "pending", "value": ""},
-                    {"field": "local_path", "status": "pending", "value": ""},
+                    {"field": "doi_or_url", "status": "complete", "value": jun_source["doi_url"]},
+                    {"field": "local_path", "status": "complete", "value": _relative_repo_path(experimental_module)},
                     {"field": "original_file_name", "status": "pending", "value": ""},
-                    {"field": "reported_energy_value", "status": "pending", "value": ""},
-                    {"field": "unit_basis", "status": "pending", "value": ""},
-                    {"field": "extraction_note", "status": "pending", "value": ""},
+                    {"field": "reported_energy_value", "status": "complete", "value": "Source-facing asymptotic full-erasure work is recorded as 0.71 +/- 0.03 kT in the pinned Jun summary; under the current 300 K verifier baseline this converts to about 0.01836 +/- 0.00078 eV."},
+                    {"field": "reported_uncertainty_or_interval", "status": "partial", "value": "Summary-layer uncertainty is available in kT, but original file identity and final branch policy for the legacy 0.028 eV row are still open."},
+                    {"field": "unit_basis", "status": "complete", "value": "source-facing quantity in kT; runtime comparison in eV after explicit conversion"},
+                    {"field": "extraction_note", "status": "complete", "value": "Source identity is pinned for the Jun 2014 feedback-trap branch and a source-facing asymptotic-work summary is now recorded, while the separate legacy 0.028 eV runtime row remains mixed-lineage context that may belong to a later nanomagnetic-memory source branch."},
                 ],
             },
             {
-                "name": "Peterson 2018 quantum Landauer benchmark source",
+                "name": "Hong 2016 nanomagnetic-memory benchmark candidate",
                 "priority": "high",
-                "status": "pending",
+                "status": "partial",
                 "evidence_fields": [
-                    {"field": "doi_or_url", "status": "pending", "value": ""},
-                    {"field": "local_path", "status": "pending", "value": ""},
+                    {"field": "primary_doi_or_article_page", "status": "partial", "value": hong_candidate_ids.get("doi_url", "")},
+                    {"field": "local_path", "status": "complete", "value": _relative_repo_path(ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "hong_2016" / "source_record.json")},
+                    {"field": "bibliographic_identity", "status": "complete", "value": hong_source["bibliographic_status"]},
                     {"field": "original_file_name", "status": "pending", "value": ""},
-                    {"field": "reported_energy_value", "status": "pending", "value": ""},
-                    {"field": "unit_basis", "status": "pending", "value": ""},
-                    {"field": "extraction_note", "status": "pending", "value": ""},
+                    {"field": "reported_energy_value", "status": "partial", "value": "An accessible same-author preprint precursor exposes two Hong-side source-facing candidates: 6.09 +/- 1.43 zJ (~0.0380 eV) and 4.2 +/- 0.9 zJ (~0.0262 eV). Current topic policy provisionally prefers the temperature-series mean as the best fit to the inherited 2016/44%-above-limit narrative, while a separate legacy-row policy demotes the local 0.028 eV value out of active Jun/Hong benchmark logic until final-source confirmation."},
+                    {"field": "reported_uncertainty_or_interval", "status": "partial", "value": "Preprint-level intervals are visible for both candidate Hong quantities, and the provisionally preferred target carries an interval, but final-source confirmation and the explicit replace/remove action for the local 0.028 eV row are still open."},
+                    {"field": "unit_basis", "status": "complete", "value": hong_source["unit_convention"]["energy"]},
+                    {"field": "extraction_note", "status": "complete", "value": "This candidate branch explains the 2016 nanomagnetic-memory narrative more plausibly than the current Jun source identity, and the current topic policy now provisionally prefers the Hong temperature-series mean because it best matches the inherited ~0.026 eV / 44%-above-limit wording. Final-source confirmation is still required before row closure."},
+                ],
+            },
+            {
+                "name": "Quantum Landauer branch source identity (legacy Peterson 2018 label unresolved)",
+                "priority": "high",
+                "status": "partial",
+                "evidence_fields": [
+                    {"field": "doi_or_url", "status": "partial", "value": "candidate sources recorded in peterson_2018/source_record.json; current evidence separates a Peterson-led 2016 quantum-thermodynamics paper, a trapped-ion PRL 2018 quantum-Landauer paper, and the Nature Physics 2018 DOI currently named by the legacy runtime label"},
+                    {"field": "local_path", "status": "complete", "value": _relative_repo_path(ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "peterson_2018" / "source_record.json")},
+                    {"field": "original_file_name", "status": "pending", "value": ""},
+                    {"field": "reported_energy_value", "status": "partial", "value": "Local runtime branch is not yet tied to one exact upstream row because the current branch appears composite rather than merely underspecified"},
+                    {"field": "unit_basis", "status": "complete", "value": "source-specific quantum thermodynamic work/heat convention; runtime conversion must be explicit"},
+                    {"field": "extraction_note", "status": "complete", "value": "This branch is intentionally unresolved; direct metadata checks now show that the local branch mixes incompatible source cues, so one exact paper identity must be chosen before row-level capture or gate use."},
                 ],
             },
             {
                 "name": "LIGO/Virgo mass uncertainty source package",
                 "priority": "medium",
-                "status": "pending",
+                "status": "ready_for_source_review",
                 "evidence_fields": [
-                    {"field": "doi_or_url", "status": "pending", "value": ""},
-                    {"field": "local_path", "status": "pending", "value": ""},
-                    {"field": "event_identifier", "status": "pending", "value": ""},
-                    {"field": "mass_value_and_uncertainty", "status": "pending", "value": ""},
-                    {"field": "unit_basis", "status": "pending", "value": ""},
-                    {"field": "extraction_note", "status": "pending", "value": ""},
+                    {"field": "doi_or_url", "status": "complete", "value": ligo_source["primary_reference"]["doi"]},
+                    {"field": "local_path", "status": "complete", "value": _relative_repo_path(ROOT / "docs" / "data" / "external" / "gravity" / "ligo_black_hole_mergers" / "source_record.json")},
+                    {"field": "event_identifier", "status": "complete", "value": "GW150914; GW151226; GW170104"},
+                    {"field": "mass_value_and_uncertainty", "status": "complete", "value": "Topic-local summary rows exist in experimental_data.py with source-reported solar-mass uncertainties."},
+                    {"field": "unit_basis", "status": "complete", "value": "solar masses in source rows; kg only after explicit conversion"},
+                    {"field": "extraction_note", "status": "complete", "value": "Source family and uncertainty-bearing summary rows are identified; row-level archival capture and entropy propagation still remain separate tasks."},
                 ],
             },
             {
                 "name": "EHT black-hole mass source package",
                 "priority": "medium",
-                "status": "pending",
+                "status": "ready_for_source_review",
                 "evidence_fields": [
-                    {"field": "doi_or_url", "status": "pending", "value": ""},
-                    {"field": "local_path", "status": "pending", "value": ""},
-                    {"field": "object_identifier", "status": "pending", "value": ""},
-                    {"field": "mass_value_and_uncertainty", "status": "pending", "value": ""},
-                    {"field": "unit_basis", "status": "pending", "value": ""},
-                    {"field": "extraction_note", "status": "pending", "value": ""},
+                    {"field": "doi_or_url", "status": "complete", "value": "M87*: https://arxiv.org/abs/1906.11238; Sgr A*: https://arxiv.org/abs/2311.09479"},
+                    {"field": "local_path", "status": "complete", "value": _relative_repo_path(ROOT / "docs" / "data" / "external" / "gravity" / "eht_black_hole_masses" / "source_record.json")},
+                    {"field": "object_identifier", "status": "complete", "value": "M87*; Sgr A*"},
+                    {"field": "mass_value_and_uncertainty", "status": "complete", "value": "Topic-local summary rows exist in experimental_data.py with source-reported solar-mass uncertainties."},
+                    {"field": "unit_basis", "status": "complete", "value": "solar masses in source rows; kg only after explicit conversion"},
+                    {"field": "extraction_note", "status": "complete", "value": "Source family and uncertainty-bearing summary rows are identified; object-level machine-readable capture still remains a follow-up task."},
                 ],
             },
             {
                 "name": "Measured-constant uncertainty record beyond exact SI constants",
                 "priority": "medium",
-                "status": "pending",
+                "status": "ready_for_source_review",
                 "evidence_fields": [
-                    {"field": "doi_or_url", "status": "pending", "value": ""},
-                    {"field": "local_path", "status": "pending", "value": ""},
-                    {"field": "constant_identifier", "status": "pending", "value": ""},
-                    {"field": "value_and_uncertainty", "status": "pending", "value": ""},
-                    {"field": "unit_basis", "status": "pending", "value": ""},
-                    {"field": "extraction_note", "status": "pending", "value": ""},
+                    {"field": "doi_or_url", "status": "complete", "value": "https://arxiv.org/abs/2409.03787; https://physics.nist.gov/constants"},
+                    {"field": "local_path", "status": "complete", "value": _relative_repo_path(ROOT / "docs" / "data" / "external" / "constants" / "codata" / "measured_constants_2022_source_record.json")},
+                    {"field": "constant_identifier", "status": "complete", "value": "G; hbar-derived combinations when uncertainty matters"},
+                    {"field": "value_and_uncertainty", "status": "complete", "value": "Source anchor exists; topic-level runtime uncertainty package still needs explicit extraction"},
+                    {"field": "unit_basis", "status": "complete", "value": measured_constants_source["unit_convention"]},
+                    {"field": "extraction_note", "status": "complete", "value": "This closes the provenance anchor for measured constants, not the final propagated runtime uncertainty package."},
                 ],
             },
         ],
@@ -223,16 +330,19 @@ def _build_source_evidence_intake_stub():
 def _build_source_evidence_readiness_matrix(intake_stub: dict):
     readiness_rows = []
     for target in intake_stub.get("source_targets", []):
-        pending = [field["field"] for field in target["evidence_fields"] if field.get("status") != "complete"]
+        pending = [field["field"] for field in target["evidence_fields"] if field.get("status") not in ("complete",)]
         ready = len(pending) == 0
+        fields_partial = sum(1 for field in target["evidence_fields"] if field.get("status") == "partial")
         readiness_rows.append(
             {
                 "name": target["name"],
                 "priority": target["priority"],
+                "status": target.get("status", "pending"),
                 "fields_total": len(target["evidence_fields"]),
                 "fields_complete": sum(
                     1 for field in target["evidence_fields"] if field.get("status") == "complete"
                 ),
+                "fields_partial": fields_partial,
                 "fields_pending": len(pending),
                 "pending_fields": pending,
                 "ready_for_source_review": ready,
@@ -253,6 +363,9 @@ def _build_source_evidence_readiness_matrix(intake_stub: dict):
             "targets_ready_for_source_review": sum(
                 1 for row in readiness_rows if row["ready_for_source_review"]
             ),
+            "targets_with_partial_evidence": sum(
+                1 for row in readiness_rows if row["fields_complete"] > 0 and not row["ready_for_source_review"]
+            ),
             "targets_blocked_by_pending_evidence": sum(
                 1 for row in readiness_rows if not row["ready_for_source_review"]
             ),
@@ -265,6 +378,47 @@ def _build_source_evidence_readiness_matrix(intake_stub: dict):
     }
     SOURCE_EVIDENCE_READINESS_PATH.write_text(json.dumps(matrix, indent=2), encoding="utf-8")
     return matrix
+
+
+def _build_row_controller_summary():
+    row_matrix = _load_json(ROW_CLOSURE_MATRIX_PATH)
+    tracked_rows = {
+        row["row_id"]: row
+        for row in row_matrix.get("rows", [])
+        if row["row_id"] in {
+            "berut_2012_summary_300K",
+            "jun_2014_summary_300K",
+            "hong_2016_candidate_nanometric_memory_branch",
+            "peterson_2018_quantum_landauer_branch",
+        }
+    }
+
+    return {
+        "path": ROW_CLOSURE_MATRIX_PATH.relative_to(ROOT).as_posix(),
+        "sha256": _sha256(ROW_CLOSURE_MATRIX_PATH),
+        "controller_rows": [
+            {
+                "row_id": row_id,
+                "source_closure_status": row_data["source_closure_status"],
+                "uncertainty_status": row_data["uncertainty_status"],
+                "next_controller": row_data.get("next_controller", "not_declared"),
+                "first_missing_requirement": row_data["missing_requirements"][0]
+                if row_data.get("missing_requirements")
+                else None,
+            }
+            for row_id, row_data in tracked_rows.items()
+        ],
+        "summary": {
+            "tracked_row_count": len(tracked_rows),
+            "rows_with_declared_next_controller": sum(
+                1 for row_data in tracked_rows.values() if row_data.get("next_controller")
+            ),
+            "claim_boundary": (
+                "This summary centralizes the current row-level controllers for the active Landauer blocker chain. "
+                "It does not by itself close any row or upgrade the main topic claim class."
+            ),
+        },
+    }
 
 
 def _build_evidence_lanes(test_results, metrics, readiness_matrix):
@@ -288,6 +442,7 @@ def _build_evidence_lanes(test_results, metrics, readiness_matrix):
                 "ready_targets": source_targets_ready,
                 "total_targets": source_targets_total,
                 "raw_numeric_tables_archived": False,
+                "berut_stronger_surface_or_policy_closed": False,
             },
         },
         "bekenstein_hawking_formula_consistency": {
@@ -314,18 +469,18 @@ def _build_evidence_lanes(test_results, metrics, readiness_matrix):
             "supports": "Structured mechanism target and dependency map.",
             "does_not_support": "Solved, verified, exact, or theory-confirmed wording.",
             "blockers": [
-                "Raw or supplemental Landauer numeric tables are not archived.",
-                "Uncertainty propagation is not yet applied to measured heat and black-hole mass inputs.",
+                "Berut now has a selected Figure 3 preview locator mapped to the topic-summary row, but still lacks one numeric point capture or one stronger upstream numeric surface.",
+                "Uncertainty propagation is only partial: Berut summary and black-hole mass intervals are attached, but Jun uncertainty and measured-constant terms remain open.",
                 "UET-specific field variables are not yet derived from the standard thermodynamic identities.",
             ],
         },
     }
 
 
-def _build_uncertainty_preprocessing_plan():
-    return {
+def _build_uncertainty_preprocessing_plan(metrics):
+    manifest = {
         "schema_version": "1.0",
-        "purpose": "Define the next preprocessing step before 0.13 can move beyond WARN/source-lock-open.",
+        "purpose": "Define and partially populate the next preprocessing step before 0.13 can move beyond WARN/source-lock-open.",
         "required_fields": [
             "source_row_id",
             "reported_value",
@@ -337,19 +492,850 @@ def _build_uncertainty_preprocessing_plan():
             "ratio_to_lower_bound",
             "uncertainty_propagation_note",
         ],
-        "target_sources": [
-            "Berut 2012 raw or supplementary numeric table",
-            "Jun 2014 feedback-trap erasure benchmark",
-            "Peterson 2018 quantum Landauer benchmark",
-            "LIGO/Virgo black-hole mass uncertainty package",
-            "EHT black-hole mass uncertainty package",
+        "rows": [
+            {
+                "source_row_id": "berut_2012_summary_300K",
+                "reported_value": 3.0e-21,
+                "reported_uncertainty": 5.0e-22,
+                "source_unit": "J",
+                "runtime_unit": "J",
+                "conversion_formula": "identity",
+                "lower_bound_value": metrics["landauer_300K_codata_J"],
+                "ratio_to_lower_bound": 3.0e-21 / metrics["landauer_300K_codata_J"],
+                "uncertainty_propagation_note": "Topic-local summary row exists and Figure 3 is now the selected preview-level locator, but numeric-point capture and stronger-surface provenance remain open."
+            },
+            {
+                "source_row_id": "jun_2014_summary_300K",
+                "reported_value": metrics["jun_2014_source_facing_work_eV"],
+                "reported_uncertainty": metrics["jun_2014_source_facing_uncertainty_eV"],
+                "source_unit": "eV",
+                "runtime_unit": "eV",
+                "conversion_formula": "source_facing_work_eV = source_facing_work_kT * (k_B T / e)",
+                "lower_bound_value": metrics["landauer_300K_engine_eV"],
+                "ratio_to_lower_bound": metrics["jun_2014_ratio_to_landauer_lower_bound"],
+                "uncertainty_propagation_note": "Source-facing asymptotic-work summary and uncertainty are available at the preprint-summary layer, but original file identity and the policy that keeps the legacy 0.028 eV row out of the Jun lane still remain open."
+            },
+            {
+                "source_row_id": "gw150914_final_mass",
+                "reported_value": 62.0,
+                "reported_uncertainty": 4.0,
+                "source_unit": "M_sun",
+                "runtime_unit": "kg",
+                "conversion_formula": "mass_kg = mass_Msun * M_sun",
+                "lower_bound_value": None,
+                "ratio_to_lower_bound": None,
+                "uncertainty_propagation_note": "Mass uncertainty exists in the topic-local summary, but propagation into entropy and Hawking-temperature uncertainty is still open."
+            },
+            {
+                "source_row_id": "m87_mass",
+                "reported_value": 6.5e9,
+                "reported_uncertainty": 0.7e9,
+                "source_unit": "M_sun",
+                "runtime_unit": "kg",
+                "conversion_formula": "mass_kg = mass_Msun * M_sun",
+                "lower_bound_value": None,
+                "ratio_to_lower_bound": None,
+                "uncertainty_propagation_note": "Object mass uncertainty is present in the topic-local summary, but object-level entropy uncertainty propagation is still open."
+            },
+            {
+                "source_row_id": "sgrA_mass",
+                "reported_value": 4.0e6,
+                "reported_uncertainty": 0.1e6,
+                "source_unit": "M_sun",
+                "runtime_unit": "kg",
+                "conversion_formula": "mass_kg = mass_Msun * M_sun",
+                "lower_bound_value": None,
+                "ratio_to_lower_bound": None,
+                "uncertainty_propagation_note": "Object mass uncertainty is present in the topic-local summary, but object-level entropy uncertainty propagation is still open."
+            }
         ],
-        "current_status": "planned_not_closed",
-        "claim_boundary": "This plan does not upgrade the topic; it defines the evidence needed for source-normalized multi-row validation.",
+        "target_sources": [
+            "Berut 2012 upstream numeric surface or declared transcription policy",
+            "Jun 2014 feedback-trap benchmark source",
+            "Quantum Landauer branch source identity (legacy Peterson 2018 label unresolved)",
+            "LIGO/Virgo black-hole mass uncertainty package",
+            "EHT black-hole mass uncertainty package"
+        ],
+        "current_status": "partially_populated_not_closed",
+        "claim_boundary": "This manifest narrows the uncertainty-preprocessing workload. It does not upgrade the topic until source-normalized rows and propagated uncertainty outputs are attached to the verifier.",
     }
+    UNCERTAINTY_PREPROCESSING_PATH.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    return manifest
 
 
-def _build_foundation_claim_gate(metrics, readiness_matrix, evidence_lanes):
+def _build_measured_constant_uncertainty_package():
+    measured_constants_source = _load_json(
+        ROOT / "docs" / "data" / "external" / "constants" / "codata" / "measured_constants_2022_source_record.json"
+    )
+    exact_constants = _load_json(
+        ROOT / "docs" / "data" / "external" / "constants" / "codata" / "si_2019_exact_constants.json"
+    )
+    gravity_codata_proxy = _load_json(
+        ROOT / "docs" / "topics" / "0.19_Gravity_GR" / "Data" / "03_Research" / "codata_2018_gravity.json"
+    )
+
+    g_entry = gravity_codata_proxy["constants"]["G"]
+    g_relative_uncertainty = g_entry["relative_uncertainty"]
+
+    package = {
+        "schema_version": "1.0",
+        "topic": "0.13_Thermodynamic_Bridge",
+        "purpose": (
+            "Declare the current runtime uncertainty policy for measured constants in gravity-adjacent "
+            "thermodynamic rows without pretending that those uncertainties are already fully threaded into the verifier intervals."
+        ),
+        "status": "provisional_runtime_proxy_threaded_into_gravity_context",
+        "provenance": {
+            "primary_anchor": {
+                "path": "docs/data/external/constants/codata/measured_constants_2022_source_record.json",
+                "role": measured_constants_source["source_role"],
+            },
+            "local_numeric_proxy_source": {
+                "path": "docs/topics/0.19_Gravity_GR/Data/03_Research/codata_2018_gravity.json",
+                "role": "local numeric proxy for runtime G uncertainty until direct 2022 in-topic extraction is archived",
+            },
+            "claim_boundary": (
+                "The provenance anchor for measured constants is pinned to the 2022/NIST source record, but the current "
+                "runtime numeric uncertainty proxy for G is still inherited from the local CODATA 2018 gravity checkpoint."
+            ),
+        },
+        "runtime_constants": {
+            "G": {
+                "value": g_entry["value"],
+                "uncertainty": g_entry["uncertainty"],
+                "relative_uncertainty": g_relative_uncertainty,
+                "unit": g_entry["unit"],
+                "source_status": "provisional_numeric_proxy_from_local_codata_2018_checkpoint",
+            },
+            "hbar": {
+                "value": exact_constants["constants"]["h"]["value"] / (2.0 * np.pi),
+                "uncertainty": 0.0,
+                "relative_uncertainty": 0.0,
+                "unit": "J s",
+                "source_status": "treated_as_exact_under_current_repo_convention",
+            },
+            "c": {
+                "value": exact_constants["constants"]["c"]["value"],
+                "uncertainty": 0.0,
+                "relative_uncertainty": 0.0,
+                "unit": exact_constants["constants"]["c"]["unit"],
+                "source_status": "exact_si_defining_constant",
+            },
+            "k_B": {
+                "value": exact_constants["constants"]["k_B"]["value"],
+                "uncertainty": 0.0,
+                "relative_uncertainty": 0.0,
+                "unit": exact_constants["constants"]["k_B"]["unit"],
+                "source_status": "exact_si_defining_constant",
+            },
+        },
+        "propagation_rules": [
+            {
+                "quantity": "Bekenstein-Hawking entropy",
+                "relation": "S_BH proportional to G * M^2 when c and hbar are treated as exact",
+                "relative_uncertainty_from_measured_constants_only": g_relative_uncertainty,
+                "included_in_current_intervals": False,
+            },
+            {
+                "quantity": "Hawking temperature",
+                "relation": "T_H proportional to 1 / (G * M) when c, hbar, and k_B are treated as exact",
+                "relative_uncertainty_from_measured_constants_only": g_relative_uncertainty,
+                "included_in_current_intervals": False,
+            },
+            {
+                "quantity": "Schwarzschild radius",
+                "relation": "r_s proportional to G * M when c is treated as exact",
+                "relative_uncertainty_from_measured_constants_only": g_relative_uncertainty,
+                "included_in_current_intervals": False,
+            },
+        ],
+        "row_policy": [
+            {
+                "source_row_id": "gw150914_final_mass",
+                "current_interval_status": "mass_plus_g_proxy_interval_present",
+                "measured_constant_uncertainty_status": "provisional_g_proxy_threaded",
+                "relative_uncertainty_from_G_only": g_relative_uncertainty,
+            },
+            {
+                "source_row_id": "m87_mass",
+                "current_interval_status": "mass_plus_g_proxy_interval_present",
+                "measured_constant_uncertainty_status": "provisional_g_proxy_threaded",
+                "relative_uncertainty_from_G_only": g_relative_uncertainty,
+            },
+            {
+                "source_row_id": "sgrA_mass",
+                "current_interval_status": "mass_plus_g_proxy_interval_present",
+                "measured_constant_uncertainty_status": "provisional_g_proxy_threaded",
+                "relative_uncertainty_from_G_only": g_relative_uncertainty,
+            },
+            {
+                "source_row_id": "berut_2012_summary_300K",
+                "current_interval_status": "topic_summary_interval_present",
+                "measured_constant_uncertainty_status": "not_applicable_under_exact_constant_lane",
+                "relative_uncertainty_from_G_only": None,
+            },
+            {
+                "source_row_id": "jun_2014_summary_300K",
+                "current_interval_status": "source_summary_interval_present_runtime_branch_policy_open",
+                "measured_constant_uncertainty_status": "not_applicable_under_exact_constant_lane",
+                "relative_uncertainty_from_G_only": None,
+            },
+        ],
+        "claim_boundary": (
+            "This package narrows the measured-constant blocker by declaring a runtime proxy and propagation policy. "
+            "It threads that proxy into provisional gravity-context combined intervals, but it does not mean measured-constant "
+            "uncertainty is fully source-normalized or that systematic astrophysical terms are closed."
+        ),
+    }
+    MEASURED_CONSTANT_UNCERTAINTY_PACKAGE_PATH.write_text(
+        json.dumps(package, indent=2), encoding="utf-8"
+    )
+    return package
+
+
+def _build_uncertainty_propagation_summary(metrics, measured_constant_package):
+    experimental_data = _load_module_from_path(
+        "thermodynamic_bridge_experimental_data",
+        TOPIC_DIR / "Data" / "03_Research" / "experimental_data.py",
+    )
+    g_relative_uncertainty = measured_constant_package["runtime_constants"]["G"]["relative_uncertainty"]
+
+    def _build_mass_interval_row(source_row_id: str, mass_solar: float, mass_error_solar: float):
+        mass_central_kg = mass_solar * experimental_data.M_SUN
+        mass_lower_kg = max(mass_solar - mass_error_solar, 0.0) * experimental_data.M_SUN
+        mass_upper_kg = (mass_solar + mass_error_solar) * experimental_data.M_SUN
+
+        entropy_central = bekenstein_bound_black_hole(mass_central_kg)
+        entropy_lower = bekenstein_bound_black_hole(mass_lower_kg)
+        entropy_upper = bekenstein_bound_black_hole(mass_upper_kg)
+
+        hawking_central = surface_gravity_temperature(mass_central_kg)
+        hawking_lower = surface_gravity_temperature(mass_upper_kg)
+        hawking_upper = surface_gravity_temperature(mass_lower_kg)
+
+        mass_relative_uncertainty = mass_error_solar / mass_solar
+        entropy_relative_uncertainty_combined = float(
+            np.sqrt((2.0 * mass_relative_uncertainty) ** 2 + g_relative_uncertainty ** 2)
+        )
+        hawking_relative_uncertainty_combined = float(
+            np.sqrt((mass_relative_uncertainty) ** 2 + g_relative_uncertainty ** 2)
+        )
+        return {
+            "source_row_id": source_row_id,
+            "runtime_inputs": {
+                "mass_solar_central": mass_solar,
+                "mass_solar_uncertainty": mass_error_solar,
+                "mass_relative_uncertainty": mass_relative_uncertainty,
+                "constant_uncertainty_included": False,
+                "measured_constant_relative_uncertainty_proxy": g_relative_uncertainty,
+            },
+            "propagated_outputs": {
+                "entropy_planck_central": entropy_central,
+                "entropy_planck_interval_1sigma": [entropy_lower, entropy_upper],
+                "entropy_relative_uncertainty_first_order": 2.0 * mass_relative_uncertainty,
+                "entropy_relative_uncertainty_combined_mass_plus_G_proxy": entropy_relative_uncertainty_combined,
+                "entropy_planck_interval_1sigma_mass_plus_G_proxy": [
+                    entropy_central * (1.0 - entropy_relative_uncertainty_combined),
+                    entropy_central * (1.0 + entropy_relative_uncertainty_combined),
+                ],
+                "hawking_temperature_K_central": hawking_central,
+                "hawking_temperature_K_interval_1sigma": [hawking_lower, hawking_upper],
+                "hawking_relative_uncertainty_first_order": mass_relative_uncertainty,
+                "hawking_relative_uncertainty_combined_mass_plus_G_proxy": hawking_relative_uncertainty_combined,
+                "hawking_temperature_K_interval_1sigma_mass_plus_G_proxy": [
+                    hawking_central * (1.0 - hawking_relative_uncertainty_combined),
+                    hawking_central * (1.0 + hawking_relative_uncertainty_combined),
+                ],
+                "measured_constant_relative_uncertainty_if_mass_fixed": {
+                    "entropy_from_G_only": g_relative_uncertainty,
+                    "hawking_temperature_from_G_only": g_relative_uncertainty,
+                },
+            },
+            "claim_boundary": (
+                "Mass-only intervals remain the current baseline. Additional combined intervals now include a provisional "
+                "G-only measured-constant proxy, but spin/systematic terms are still not included."
+            ),
+        }
+
+    berut_summary_value_j = 3.0e-21
+    berut_summary_uncertainty_j = 5.0e-22
+    berut_lower_bound_j = metrics["landauer_300K_codata_J"]
+    berut_ratio_sigma = berut_summary_uncertainty_j / berut_lower_bound_j
+    berut_interval = [
+        berut_summary_value_j - berut_summary_uncertainty_j,
+        berut_summary_value_j + berut_summary_uncertainty_j,
+    ]
+    berut_ratio_interval = [
+        berut_interval[0] / berut_lower_bound_j,
+        berut_interval[1] / berut_lower_bound_j,
+    ]
+
+    summary = {
+        "schema_version": "1.0",
+        "topic": "0.13_Thermodynamic_Bridge",
+        "purpose": "Attach first-pass propagated uncertainty intervals to the current 0.13 verifier without overstating source closure.",
+        "rows": [
+            {
+                "source_row_id": "berut_2012_summary_300K",
+                "runtime_inputs": {
+                    "reported_value_J": berut_summary_value_j,
+                    "reported_uncertainty_J": berut_summary_uncertainty_j,
+                    "lower_bound_J": berut_lower_bound_j,
+                    "constant_uncertainty_included": False,
+                },
+                "propagated_outputs": {
+                    "reported_interval_1sigma_J": berut_interval,
+                    "ratio_to_lower_bound_central": berut_summary_value_j / berut_lower_bound_j,
+                    "ratio_to_lower_bound_sigma": berut_ratio_sigma,
+                    "ratio_to_lower_bound_interval_1sigma": berut_ratio_interval,
+                    "lower_bound_clearance_sigma": (
+                        (berut_summary_value_j - berut_lower_bound_j) / berut_summary_uncertainty_j
+                    ),
+                    "crosses_lower_bound_at_1sigma": bool(berut_interval[0] < berut_lower_bound_j),
+                },
+                "claim_boundary": (
+                    "This row is propagated from a topic-local summary value and uncertainty, not a row-level archived source table."
+                ),
+            },
+            {
+                "source_row_id": "jun_2014_summary_300K",
+                "runtime_inputs": {
+                    "reported_value_eV": metrics["jun_2014_source_facing_work_eV"],
+                    "reported_uncertainty_eV": metrics["jun_2014_source_facing_uncertainty_eV"],
+                    "reported_statistical_error_eV": metrics["jun_2014_source_facing_statistical_error_eV"],
+                    "lower_bound_eV": metrics["landauer_300K_engine_eV"],
+                },
+                "propagated_outputs": {
+                    "ratio_to_lower_bound_central": metrics["jun_2014_ratio_to_landauer_lower_bound"],
+                    "ratio_to_lower_bound_sigma": (
+                        metrics["jun_2014_source_facing_uncertainty_eV"] / metrics["landauer_300K_engine_eV"]
+                    ),
+                    "ratio_to_lower_bound_interval_1sigma": [
+                        (metrics["jun_2014_source_facing_work_eV"] - metrics["jun_2014_source_facing_uncertainty_eV"]) / metrics["landauer_300K_engine_eV"],
+                        (metrics["jun_2014_source_facing_work_eV"] + metrics["jun_2014_source_facing_uncertainty_eV"]) / metrics["landauer_300K_engine_eV"],
+                    ],
+                    "reported_interval_1sigma_eV": [
+                        metrics["jun_2014_source_facing_work_eV"] - metrics["jun_2014_source_facing_uncertainty_eV"],
+                        metrics["jun_2014_source_facing_work_eV"] + metrics["jun_2014_source_facing_uncertainty_eV"],
+                    ],
+                    "crosses_lower_bound_at_1sigma": bool(
+                        (metrics["jun_2014_source_facing_work_eV"] - metrics["jun_2014_source_facing_uncertainty_eV"]) < metrics["landauer_300K_engine_eV"]
+                    ),
+                    "interval_status": "source_summary_interval_present",
+                },
+                "claim_boundary": "This interval is derived from the pinned Jun source-facing asymptotic-work summary and its summary-layer uncertainty, not from a fully archived row/file package. The legacy 0.028 eV runtime row remains separate mixed-lineage context.",
+            },
+            _build_mass_interval_row("gw150914_final_mass", 62.0, 4.0),
+            _build_mass_interval_row("m87_mass", 6.5e9, 0.7e9),
+            _build_mass_interval_row("sgrA_mass", 4.0e6, 0.1e6),
+        ],
+        "summary": {
+            "rows_total": 5,
+            "rows_with_propagated_intervals": 5,
+            "rows_missing_uncertainty_inputs": 0,
+            "constant_uncertainty_included": False,
+            "measured_constant_runtime_package_status": measured_constant_package["status"],
+            "current_status": "partial_intervals_mass_plus_g_proxy_for_gravity_context",
+            "notable_constraints": [
+                "Berut 2012 topic-summary interval crosses the Landauer lower bound at 1 sigma.",
+                "Jun 2014 now has a source-facing summary-layer interval, but original file identity and legacy-row branch policy remain open.",
+                "Black-hole entropy and Hawking-temperature rows now keep mass-only intervals and also add provisional combined intervals using a G-only runtime proxy.",
+                "The G proxy is not yet a direct 2022 in-topic extraction and spin/systematic astrophysical terms remain excluded.",
+            ],
+        },
+        "claim_boundary": (
+            "This summary adds first-pass propagated intervals and provisional gravity-context combined intervals using a G-only runtime proxy, "
+            "but it is not a full uncertainty package. Raw-source row capture, Jun file/branch closure, direct 2022 measured-constant extraction, and systematic terms remain open."
+        ),
+    }
+    UNCERTAINTY_PROPAGATION_SUMMARY_PATH.write_text(
+        json.dumps(summary, indent=2), encoding="utf-8"
+    )
+    return summary
+
+
+def _build_bridge_derivation_map():
+    derivation_map = {
+        "schema_version": "1.0",
+        "topic": "0.13_Thermodynamic_Bridge",
+        "purpose": (
+            "Make the bridge-derivation boundary explicit: which relations are standard identities, "
+            "which are UET proxies or hypotheses, and which proof gaps remain before stronger claims."
+        ),
+        "status": "open_boundary_mapped_not_derived",
+        "claim_boundary": (
+            "This map documents the current derivation state. It does not close the UET bridge proof."
+        ),
+        "layers": [
+            {
+                "layer_id": "standard_identity_inputs",
+                "role": "externally established thermodynamic relations",
+                "status": "usable_as_constraints_only",
+                "entries": [
+                    {
+                        "formula_id": "T13-004",
+                        "relation": "E_min = k_B T ln 2",
+                        "type": "standard_lower_bound",
+                        "derivation_status": "identity_or_source_backed_standard",
+                        "used_now_as": "lower-bound benchmark constraint",
+                    },
+                    {
+                        "formula_id": "T13-006",
+                        "relation": "Bekenstein bound",
+                        "type": "standard_identity",
+                        "derivation_status": "standard_relation",
+                        "used_now_as": "information-density constraint",
+                    },
+                    {
+                        "formula_id": "T13-008",
+                        "relation": "Unruh temperature",
+                        "type": "standard_identity",
+                        "derivation_status": "standard_relation",
+                        "used_now_as": "thermodynamic-gravity context",
+                    },
+                    {
+                        "formula_id": "T13-009",
+                        "relation": "Hawking temperature",
+                        "type": "standard_identity",
+                        "derivation_status": "standard_relation",
+                        "used_now_as": "thermodynamic-gravity context",
+                    },
+                ],
+            },
+            {
+                "layer_id": "uet_proxy_terms",
+                "role": "topic-local thermodynamic proxies and engine relations",
+                "status": "heuristic_or_model_component",
+                "entries": [
+                    {
+                        "formula_id": "T13-001",
+                        "relation": "Stirling entropy proxy",
+                        "type": "topic_proxy",
+                        "derivation_status": "heuristic_proxy",
+                        "used_now_as": "engine entropy trend",
+                    },
+                    {
+                        "formula_id": "T13-002",
+                        "relation": "dimensionless temperature proxy",
+                        "type": "topic_proxy",
+                        "derivation_status": "derived_from_proxy_not_physical_temperature",
+                        "used_now_as": "engine equilibrium trend",
+                    },
+                    {
+                        "formula_id": "T13-003",
+                        "relation": "contact equilibrium update",
+                        "type": "topic_model_rule",
+                        "derivation_status": "simulation_rule",
+                        "used_now_as": "zeroth-law-like sandbox",
+                    },
+                ],
+            },
+            {
+                "layer_id": "uet_bridge_hypothesis",
+                "role": "proposed information-entropy-energy bridge claims",
+                "status": "blocked_hypothesis_lane",
+                "entries": [
+                    {
+                        "formula_id": "T13-011",
+                        "relation": "vacuum sink / bridge extension logic",
+                        "type": "topic_hypothesis",
+                        "derivation_status": "open",
+                        "used_now_as": "hypothesis sandbox only",
+                    }
+                ],
+            },
+        ],
+        "required_derivation_steps": [
+            {
+                "step_id": "bridge_units_contract",
+                "question": "Which UET variables correspond to entropy, heat, work, temperature, and information in dimensional units?",
+                "current_state": "open",
+                "needed_evidence": [
+                    "symbol-to-unit contract",
+                    "conversion path from proxy quantities to physical observables",
+                    "explicit statement of where physical scaling enters"
+                ],
+            },
+            {
+                "step_id": "landauer_to_uet_mapping",
+                "question": "How does the UET bridge reproduce or constrain the Landauer lower bound without simply reusing the standard identity?",
+                "current_state": "open",
+                "needed_evidence": [
+                    "non-circular mapping from UET variables to erasure cost",
+                    "parameter-origin statement",
+                    "testable difference between UET bridge output and the imported lower bound"
+                ],
+            },
+            {
+                "step_id": "gravity_identity_mapping",
+                "question": "How do Bekenstein/Unruh/Hawking relations enter as consequences or constraints of UET rather than borrowed context only?",
+                "current_state": "open",
+                "needed_evidence": [
+                    "derivation path with assumptions",
+                    "regime statement for when the mapping is supposed to hold",
+                    "reason the bridge adds information beyond reusing the standard formulas"
+                ],
+            },
+            {
+                "step_id": "uncertainty_and_source_closure",
+                "question": "Can the bridge survive source-normalized data and uncertainty-aware evaluation?",
+                "current_state": "partial",
+                "needed_evidence": [
+                    "Berut Figure 3 locator now needs one numeric point capture or one stronger upstream numeric surface",
+                    "Jun uncertainty row",
+                    "measured-constant uncertainty package",
+                    "claim gate that stays conservative under uncertainty intervals"
+                ],
+            },
+        ],
+        "non_derivation_shortcuts_to_avoid": [
+            "Treating agreement with Landauer lower bound as proof of a full UET bridge",
+            "Treating Bekenstein/Unruh/Hawking reuse as if UET derived them",
+            "Upgrading synthetic Cattaneo or vacuum-sink behavior into empirical support",
+            "Hiding unresolved parameter origin behind successful benchmark output",
+        ],
+        "promotion_rule": (
+            "The bridge proof lane stays blocked until the unit contract, Landauer mapping, gravity-identity mapping, "
+            "and uncertainty/source closure steps are each documented and tied to an artifact or verifier gate."
+        ),
+    }
+    BRIDGE_DERIVATION_MAP_PATH.write_text(
+        json.dumps(derivation_map, indent=2), encoding="utf-8"
+    )
+    return derivation_map
+
+
+def _build_units_contract():
+    units_contract = {
+        "schema_version": "1.0",
+        "topic": "0.13_Thermodynamic_Bridge",
+        "purpose": (
+            "Declare which symbols in 0.13 are dimensional SI quantities, which are topic-local proxies, "
+            "and where no physical conversion path is currently justified."
+        ),
+        "status": "partial_contract_dimensional_and_proxy_layers_separated",
+        "unit_systems": [
+            {
+                "system_id": "si_physical_layer",
+                "scope": "Landauer and thermodynamic-gravity constraint calculations",
+                "status": "declared",
+            },
+            {
+                "system_id": "topic_proxy_layer",
+                "scope": "engine entropy/contact dynamics and exploratory bridge sandbox",
+                "status": "declared_nonphysical_until_scaled",
+            },
+        ],
+        "symbols": [
+            {
+                "symbol": "E_min",
+                "meaning": "Landauer lower-bound energy cost",
+                "unit": "J",
+                "layer": "si_physical_layer",
+                "status": "physical_quantity",
+                "code_surfaces": ["T13-004", "Research_Landauer.landauer_energy"],
+                "conversion_rule": "optional conversion to eV via division by e",
+            },
+            {
+                "symbol": "T",
+                "meaning": "physical temperature in Landauer, Unruh, and Hawking relations",
+                "unit": "K",
+                "layer": "si_physical_layer",
+                "status": "physical_quantity",
+                "code_surfaces": ["T13-004", "T13-008", "T13-009"],
+                "conversion_rule": "none; SI kelvin",
+            },
+            {
+                "symbol": "E_eV",
+                "meaning": "energy expressed in electron-volts for benchmark comparison",
+                "unit": "eV",
+                "layer": "si_physical_layer",
+                "status": "converted_physical_quantity",
+                "code_surfaces": ["T13-005", "Research_Landauer.landauer_energy_eV"],
+                "conversion_rule": "E_eV = E_J / e",
+            },
+            {
+                "symbol": "R",
+                "meaning": "radius for Bekenstein bound examples",
+                "unit": "m",
+                "layer": "si_physical_layer",
+                "status": "physical_quantity",
+                "code_surfaces": ["T13-006"],
+                "conversion_rule": "none; SI meter",
+            },
+            {
+                "symbol": "M",
+                "meaning": "black-hole mass for entropy and Hawking-temperature calculations",
+                "unit": "kg",
+                "layer": "si_physical_layer",
+                "status": "physical_quantity_with_source_conversion",
+                "code_surfaces": ["T13-007", "T13-009"],
+                "conversion_rule": "source values often enter in M_sun and convert via mass_kg = mass_Msun * M_sun",
+            },
+            {
+                "symbol": "S_BH",
+                "meaning": "Bekenstein-Hawking entropy in Planck-unit normalization",
+                "unit": "dimensionless_planck_units",
+                "layer": "si_physical_layer",
+                "status": "computed_theoretical_observable",
+                "code_surfaces": ["T13-007"],
+                "conversion_rule": "computed from area divided by 4*l_P^2",
+            },
+            {
+                "symbol": "a",
+                "meaning": "proper acceleration in Unruh relation",
+                "unit": "m/s^2",
+                "layer": "si_physical_layer",
+                "status": "physical_quantity",
+                "code_surfaces": ["T13-008"],
+                "conversion_rule": "none; SI acceleration",
+            },
+            {
+                "symbol": "E",
+                "meaning": "engine energy quanta in entropy/contact model",
+                "unit": "dimensionless_quanta",
+                "layer": "topic_proxy_layer",
+                "status": "proxy_not_mapped_to_joules",
+                "code_surfaces": ["T13-001", "T13-002", "T13-003"],
+                "conversion_rule": "no justified Joule conversion in current topic package",
+            },
+            {
+                "symbol": "N",
+                "meaning": "particle-count proxy in engine model",
+                "unit": "count",
+                "layer": "topic_proxy_layer",
+                "status": "combinatorial_count",
+                "code_surfaces": ["T13-001", "T13-002", "T13-003"],
+                "conversion_rule": "count only; no dimensional conversion needed",
+            },
+            {
+                "symbol": "S_proxy",
+                "meaning": "Stirling entropy proxy from topic engine",
+                "unit": "dimensionless_proxy",
+                "layer": "topic_proxy_layer",
+                "status": "proxy_not_physical_entropy",
+                "code_surfaces": ["T13-001"],
+                "conversion_rule": "no justified mapping to J/K or k_B units is documented yet",
+            },
+            {
+                "symbol": "T_proxy",
+                "meaning": "engine temperature-like quantity derived from S_proxy and E quanta",
+                "unit": "dimensionless_proxy",
+                "layer": "topic_proxy_layer",
+                "status": "proxy_not_kelvin",
+                "code_surfaces": ["T13-002"],
+                "conversion_rule": "must not be reported as kelvin without a separate scale contract",
+            },
+            {
+                "symbol": "q",
+                "meaning": "synthetic heat-flux-like variable in Cattaneo demo",
+                "unit": "synthetic_flux_proxy",
+                "layer": "topic_proxy_layer",
+                "status": "proxy_not_external_observable",
+                "code_surfaces": ["T13-010"],
+                "conversion_rule": "no stable SI calibration in current topic package",
+            },
+            {
+                "symbol": "grad(T)",
+                "meaning": "synthetic temperature-gradient-like driver in Cattaneo demo",
+                "unit": "synthetic_gradient_proxy",
+                "layer": "topic_proxy_layer",
+                "status": "proxy_not_external_observable",
+                "code_surfaces": ["T13-010"],
+                "conversion_rule": "current values are proxy inputs, not sourced SI gradients",
+            },
+            {
+                "symbol": "T_vac / T_sys",
+                "meaning": "vacuum-sink sandbox temperatures",
+                "unit": "mixed_labels_not_closed",
+                "layer": "topic_proxy_layer",
+                "status": "labelled_as_kelvin_but_not_physically_closed",
+                "code_surfaces": ["T13-011"],
+                "conversion_rule": "must not be treated as a physically grounded temperature field without conservation and mechanism closure",
+            },
+        ],
+        "forbidden_unit_shortcuts": [
+            "Do not report T13-002 engine temperature as kelvin.",
+            "Do not report T13-001 entropy proxy as physical entropy in J/K.",
+            "Do not treat synthetic Cattaneo q or grad(T) as sourced SI observables.",
+            "Do not mix vacuum-sink temperature labels with the source-backed Landauer/gravity temperature layer.",
+        ],
+        "open_contract_steps": [
+            "Map proxy energy quanta to a physically justified energy scale or keep the proxy layer explicitly nondimensional.",
+            "Map entropy proxy outputs to a declared physical entropy convention or keep them diagnostic-only.",
+            "Define whether any UET bridge term introduces a conversion between proxy and SI layers, and how that conversion is tested.",
+        ],
+        "claim_boundary": (
+            "This contract separates current SI and proxy layers. It does not provide a full conversion from the topic engine to physical observables."
+        ),
+    }
+    UNITS_CONTRACT_PATH.write_text(json.dumps(units_contract, indent=2), encoding="utf-8")
+    return units_contract
+
+
+def _build_landauer_uet_mapping(metrics):
+    mapping = {
+        "schema_version": "1.0",
+        "topic": "0.13_Thermodynamic_Bridge",
+        "purpose": (
+            "State what the current topic can honestly claim about a UET-to-Landauer mapping, "
+            "using current code and verifier evidence rather than aspiration."
+        ),
+        "status": "imported_constraint_not_noncircular_uet_derivation",
+        "claim_boundary": (
+            "Current 0.13 evidence supports Landauer as an imported lower-bound constraint. "
+            "It does not yet show a non-circular UET derivation of the erasure-energy cost."
+        ),
+        "current_code_reading": {
+            "engine_surface": "Code/01_Engine/Engine_Thermodynamics.py::get_landauer_limit",
+            "current_relation": "return k_B * T_K * ln(2) * (beta / beta)",
+            "interpretation": (
+                "The current implementation preserves the standard Landauer form exactly. "
+                "Because beta cancels algebraically, the present engine does not expose an additional UET-dependent scaling in this path."
+            ),
+            "added_uet_structure_detected": False,
+        },
+        "mapping_layers": [
+            {
+                "layer_id": "imported_standard_constraint",
+                "status": "present",
+                "statement": "Landauer lower bound enters as an externally established constraint formula.",
+                "evidence": [
+                    "T13-004",
+                    "Research_Landauer.landauer_energy",
+                    "engine_vs_codata_relative_error == 0"
+                ],
+            },
+            {
+                "layer_id": "uET_parameter_usage",
+                "status": "present_but_trivialized",
+                "statement": "A beta symbol appears in the engine path, but the current expression beta/beta cancels out.",
+                "evidence": [
+                    "Engine_Thermodynamics.get_landauer_limit",
+                    "no change in output from beta in current verifier path"
+                ],
+            },
+            {
+                "layer_id": "noncircular_bridge_claim",
+                "status": "absent",
+                "statement": "No current artifact shows how UET variables generate the lower bound without reusing the standard relation directly.",
+                "evidence_needed": [
+                    "explicit mapping from UET variables to erasure cost",
+                    "parameter-origin statement for any bridge coefficient",
+                    "test distinguishing imported Landauer baseline from a UET-added term"
+                ],
+            },
+        ],
+        "current_evidence_summary": {
+            "lower_bound_metric": metrics["jun_2014_ratio_to_landauer_lower_bound"],
+            "codata_match_metric": metrics["landauer_engine_vs_codata_relative_error"],
+            "what_passes_now": (
+                "Exact-constant consistency and lower-bound non-violation."
+            ),
+            "what_does_not_pass_now": (
+                "A UET-specific, non-circular derivation or correction term."
+            ),
+        },
+        "forbidden_overreads": [
+            "Do not say UET derives Landauer from first principles based on the current engine path.",
+            "Do not treat beta symbol presence alone as bridge closure.",
+            "Do not treat zero error against CODATA as evidence of a UET-added mechanism.",
+        ],
+        "next_hardening_steps": [
+            "State whether beta is meant to be a derived bridge coefficient, a normalization tag, or a placeholder in this lane.",
+            "If UET adds no correction here, document the lane explicitly as an imported thermodynamic boundary condition.",
+            "If UET is meant to add structure, implement and test a nontrivial mapping that survives claim-discipline review.",
+        ],
+    }
+    LANDAUER_UET_MAPPING_PATH.write_text(json.dumps(mapping, indent=2), encoding="utf-8")
+    return mapping
+
+
+def _build_beta_role_clarification():
+    clarification = {
+        "schema_version": "1.0",
+        "topic": "0.13_Thermodynamic_Bridge",
+        "purpose": (
+            "Record what the current repository state supports about beta in topic 0.13, "
+            "so legacy wording does not outrun the current verifier and engine path."
+        ),
+        "status": "beta_present_but_not_closed_as_derived_bridge_coefficient",
+        "claim_boundary": (
+            "Beta is visible in topic 0.13 language and code, but the current verifier does not support treating it "
+            "as a closed thermodynamic bridge coefficient."
+        ),
+        "evidence_sources": [
+            {
+                "path": "Code/01_Engine/Engine_Thermodynamics.py::get_landauer_limit",
+                "observation": "beta appears algebraically as beta/beta and cancels",
+                "supports": "placeholder_or_normalization_tag_in_current_landauer_lane",
+            },
+            {
+                "path": "Code/03_Research/Research_Landauer.py",
+                "observation": "primary verifier treats Landauer as imported lower-bound constraint and blocks bridge-proof claims",
+                "supports": "claim_discipline_ceiling",
+            },
+            {
+                "path": "Code/03_Research/Research_Real_Data_Validation.py",
+                "observation": "legacy script says beta*C*I term has thermodynamic basis, but this is not the current topic status authority",
+                "supports": "legacy_claim_risk_only",
+            },
+            {
+                "path": "Code/03_Research/Research_Thermodynamic_Bridge.py",
+                "observation": "legacy research script equates beta with kT ln 2 for a bridge narrative, but this is not exported by the current verifier",
+                "supports": "legacy_claim_risk_only",
+            },
+        ],
+        "current_allowed_reading": {
+            "landauer_lane": "beta may be mentioned only as a label attached to the imported lower-bound lane, not as a closed derived coefficient.",
+            "engine_lane": "beta currently behaves as a non-operative placeholder or normalization tag in get_landauer_limit because it cancels out.",
+            "topic_status_lane": "0.13 may export lower-bound consistency, not a verified beta bridge term.",
+        },
+        "disallowed_reading": [
+            "beta is experimentally verified as a UET thermodynamic coefficient",
+            "beta*C*I term is closed by current 0.13 evidence",
+            "beta in the current engine path generates a nontrivial correction to Landauer"
+        ],
+        "role_options_under_current_evidence": [
+            {
+                "role": "placeholder_symbol",
+                "fit_to_current_evidence": "strong",
+                "reason": "beta appears in code and narratives but does not currently alter the Landauer output."
+            },
+            {
+                "role": "normalization_tag",
+                "fit_to_current_evidence": "plausible",
+                "reason": "beta may mark the intended bridge slot without yet supplying a derived coefficient."
+            },
+            {
+                "role": "derived_bridge_coefficient",
+                "fit_to_current_evidence": "not_supported",
+                "reason": "no non-circular derivation or tested nontrivial output path is attached to current verifier exports."
+            },
+        ],
+        "next_hardening_questions": [
+            "Should beta remain explicit in the Landauer lane if it cancels out?",
+            "If beta is only a placeholder here, should legacy scripts and notes say that more clearly?",
+            "If beta is meant to be derived later, what artifact will show its origin and nontrivial effect?"
+        ],
+    }
+    BETA_ROLE_CLARIFICATION_PATH.write_text(
+        json.dumps(clarification, indent=2), encoding="utf-8"
+    )
+    return clarification
+
+
+def _build_foundation_claim_gate(
+    metrics,
+    readiness_matrix,
+    row_controller_summary,
+    evidence_lanes,
+    uncertainty_summary,
+    bridge_derivation_map,
+    units_contract,
+    landauer_uet_mapping,
+    beta_role_clarification,
+):
     source_summary = readiness_matrix["summary"]
     lower_bound_pass = evidence_lanes["landauer_lower_bound"]["status"] == "PASS"
     formula_pass = evidence_lanes["bekenstein_hawking_formula_consistency"]["status"] == "PASS"
@@ -374,7 +1360,15 @@ def _build_foundation_claim_gate(metrics, readiness_matrix, evidence_lanes):
                 "allowed_usage": "May constrain UET information-erasure energy language as a lower-bound relation.",
                 "metric": "jun_2014_ratio_to_landauer_lower_bound",
                 "value": metrics["jun_2014_ratio_to_landauer_lower_bound"],
-                "blocker_to_stronger_usage": "Raw row-level Landauer measurements and uncertainty propagation are still open.",
+                "blocker_to_stronger_usage": (
+                    "Active Landauer row controllers remain open ("
+                    + ", ".join(
+                        f"{row['row_id']} -> {row['next_controller']}"
+                        for row in row_controller_summary["controller_rows"]
+                    )
+                    + "), and the uncertainty lane is only "
+                    f"{uncertainty_summary['summary']['current_status']}."
+                ),
             },
             {
                 "export_id": "T13_EXPORT_STANDARD_THERMO_GRAVITY_IDENTITIES",
@@ -392,7 +1386,17 @@ def _build_foundation_claim_gate(metrics, readiness_matrix, evidence_lanes):
                 "status": "BLOCKED" if not bridge_unblocked else "OPEN",
                 "claim_class": "A/B blocked",
                 "forbidden_usage": "Do not cite 0.13 as proof that UET derives information, entropy, and energy from first principles.",
-                "blockers": evidence_lanes["uet_bridge_hypothesis"]["blockers"],
+                "blockers": evidence_lanes["uet_bridge_hypothesis"]["blockers"]
+                + [
+                    f"{row['row_id']} controller: {row['next_controller']}"
+                    for row in row_controller_summary["controller_rows"]
+                ]
+                + [
+                    f"Bridge derivation map status: {bridge_derivation_map['status']}",
+                    f"Units contract status: {units_contract['status']}",
+                    f"Landauer-UET mapping status: {landauer_uet_mapping['status']}",
+                    f"Beta role clarification status: {beta_role_clarification['status']}",
+                ],
             },
             {
                 "export_id": "T13_EXPORT_SOURCE_NORMALIZED_LANDAUER_DATASET",
@@ -400,7 +1404,24 @@ def _build_foundation_claim_gate(metrics, readiness_matrix, evidence_lanes):
                 "claim_class": "B blocked",
                 "forbidden_usage": "Do not cite the Landauer benchmark package as a fully source-normalized dataset.",
                 "blockers": [
-                    row["name"]
+                    {
+                        "source_target": row["name"],
+                        "next_controller": next(
+                            (
+                                controller_row["next_controller"]
+                                for controller_row in row_controller_summary["controller_rows"]
+                                if row["name"].startswith(
+                                    {
+                                        "berut_2012_summary_300K": "Berut",
+                                        "jun_2014_summary_300K": "Jun",
+                                        "hong_2016_candidate_nanometric_memory_branch": "Hong",
+                                        "peterson_2018_quantum_landauer_branch": "Quantum Landauer branch",
+                                    }[controller_row["row_id"]]
+                                )
+                            ),
+                            "not_declared",
+                        ),
+                    }
                     for row in readiness_matrix["readiness_rows"]
                     if not row["ready_for_source_review"]
                 ],
@@ -445,19 +1466,34 @@ def _build_foundation_claim_gate(metrics, readiness_matrix, evidence_lanes):
             "current": "Do not promote to Tier A",
             "reason": "The topic is foundational, but source-normalized data, uncertainty propagation, and UET-specific derivation are not closed.",
             "promotion_requirements": [
-                "Raw or machine-transcribed Berut/Jun/Peterson row-level values with source locators.",
+                "Berut must move beyond the selected Figure 3 preview locator to one numeric point capture or one stronger upstream numeric surface, while Jun/Peterson still need row-level closure to one exact source-facing quantity.",
                 "Uncertainty propagation for Landauer heat values and black-hole mass inputs.",
-                "A derivation map from UET information-field variables to the standard thermodynamic identities.",
+                "A derivation map from UET information-field variables to the standard thermodynamic identities, with open steps converted into derived or artifact-backed states.",
+                "A units contract that closes the proxy-to-SI boundary or keeps the bridge claim explicitly nondimensional.",
+                "A Landauer-to-UET mapping that does more than restate the imported lower bound.",
+                "A beta-role artifact showing whether beta is placeholder, normalization tag, or derived coefficient in this lane.",
                 "Verifier artifact showing no blocked source-evidence or hypothesis lanes.",
             ],
         },
         "claim_boundary": "0.13 is a priority foundation topic, but only its lower-bound and standard-formula lanes are currently usable by dependent theory topics.",
+        "row_controller_summary": row_controller_summary["controller_rows"],
     }
     FOUNDATION_CLAIM_GATE_PATH.write_text(json.dumps(gate, indent=2), encoding="utf-8")
     return gate
 
 
-def _build_thermodynamic_claim_scope_gate(status, evidence_lanes, readiness_matrix, foundation_claim_gate):
+def _build_thermodynamic_claim_scope_gate(
+    status,
+    evidence_lanes,
+    readiness_matrix,
+    row_controller_summary,
+    foundation_claim_gate,
+    uncertainty_summary,
+    bridge_derivation_map,
+    units_contract,
+    landauer_uet_mapping,
+    beta_role_clarification,
+):
     lower_bound_status = evidence_lanes["landauer_lower_bound"]["status"]
     formula_status = evidence_lanes["bekenstein_hawking_formula_consistency"]["status"]
     bridge_status = evidence_lanes["uet_bridge_hypothesis"]["status"]
@@ -499,14 +1535,41 @@ def _build_thermodynamic_claim_scope_gate(status, evidence_lanes, readiness_matr
                 "claim": "0.13 proves the UET information-entropy-energy bridge.",
                 "status": "BLOCKED" if bridge_status == "BLOCKED" else "OPEN",
                 "blocking_reason": "The UET-specific bridge lane is still a hypothesis lane, not a closed derivation.",
-                "next_evidence_required": evidence_lanes["uet_bridge_hypothesis"].get("blockers", []),
+                "next_evidence_required": evidence_lanes["uet_bridge_hypothesis"].get("blockers", [])
+                + [
+                    f"{row['row_id']} controller must move beyond {row['next_controller']}"
+                    for row in row_controller_summary["controller_rows"]
+                ]
+                + [
+                    f"bridge_derivation_map status must move beyond {bridge_derivation_map['status']}",
+                    f"units_contract status must move beyond {units_contract['status']}",
+                    f"landauer_uet_mapping status must move beyond {landauer_uet_mapping['status']}",
+                    f"beta_role_clarification status must move beyond {beta_role_clarification['status']}",
+                ],
             },
             {
                 "claim": "The Landauer benchmark package is fully source-normalized.",
                 "status": "BLOCKED" if not source_ready else "READY_FOR_REVIEW",
                 "blocking_reason": "Source-evidence readiness targets remain pending.",
                 "next_evidence_required": [
-                    row["name"]
+                    {
+                        "source_target": row["name"],
+                        "next_controller": next(
+                            (
+                                controller_row["next_controller"]
+                                for controller_row in row_controller_summary["controller_rows"]
+                                if row["name"].startswith(
+                                    {
+                                        "berut_2012_summary_300K": "Berut",
+                                        "jun_2014_summary_300K": "Jun",
+                                        "hong_2016_candidate_nanometric_memory_branch": "Hong",
+                                        "peterson_2018_quantum_landauer_branch": "Quantum Landauer branch",
+                                    }[controller_row["row_id"]]
+                                )
+                            ),
+                            "not_declared",
+                        ),
+                    }
                     for row in readiness_matrix["readiness_rows"]
                     if not row["ready_for_source_review"]
                 ],
@@ -532,8 +1595,11 @@ def _build_thermodynamic_claim_scope_gate(status, evidence_lanes, readiness_matr
         ],
         "machine_readable_next_blockers": [
             "raw_landauer_numeric_tables_not_archived",
-            "landauer_uncertainty_propagation_missing",
-            "uet_bridge_derivation_open",
+            f"landauer_uncertainty_status_{uncertainty_summary['summary']['current_status']}",
+            f"uet_bridge_derivation_status_{bridge_derivation_map['status']}",
+            f"units_contract_status_{units_contract['status']}",
+            f"landauer_uet_mapping_status_{landauer_uet_mapping['status']}",
+            f"beta_role_clarification_status_{beta_role_clarification['status']}",
             "synthetic_cattaneo_not_external_validation",
             "foundation_claim_gate_not_passed",
         ],
@@ -551,6 +1617,7 @@ def _build_thermodynamic_claim_scope_gate(status, evidence_lanes, readiness_matr
                 if item["status"] != "PASS"
             ],
         },
+        "row_controller_summary": row_controller_summary["controller_rows"],
         "dependency_export_policy": foundation_claim_gate["dependency_exports"],
         "claim_boundary": (
             "0.13 may be used as a lower-bound and standard-formula constraint layer. "
@@ -570,7 +1637,7 @@ def _write_verification_artifact(test_results, plot_paths, metrics):
     if not plot_pass:
         warnings.append("One or more optional visualization files failed to render.")
     warnings.append(
-        "Berut/CODATA source records and source-lock hashes are pinned, but Berut numeric rows remain topic-derived summaries rather than raw archived tables."
+        "Berut/CODATA source records and source-lock hashes are pinned, and the current Berut summary row now has a selected Figure 3 preview locator, but numeric-point capture or stronger-surface closure is still open."
     )
     warnings.append(
         "Bekenstein/Jacobson checks are formula-consistency checks, not independent tests of UET dynamics."
@@ -584,16 +1651,44 @@ def _write_verification_artifact(test_results, plot_paths, metrics):
     source_evidence_readiness_matrix = _build_source_evidence_readiness_matrix(
         source_evidence_intake_stub
     )
+    row_controller_summary = _build_row_controller_summary()
     evidence_lanes = _build_evidence_lanes(test_results, metrics, source_evidence_readiness_matrix)
-    uncertainty_preprocessing_plan = _build_uncertainty_preprocessing_plan()
+    uncertainty_preprocessing_plan = _build_uncertainty_preprocessing_plan(metrics)
+    measured_constant_uncertainty_package = _build_measured_constant_uncertainty_package()
+    uncertainty_propagation_summary = _build_uncertainty_propagation_summary(
+        metrics,
+        measured_constant_uncertainty_package,
+    )
+    bridge_derivation_map = _build_bridge_derivation_map()
+    units_contract = _build_units_contract()
+    landauer_uet_mapping = _build_landauer_uet_mapping(metrics)
+    beta_role_clarification = _build_beta_role_clarification()
     foundation_claim_gate = _build_foundation_claim_gate(
-        metrics, source_evidence_readiness_matrix, evidence_lanes
+        metrics,
+        source_evidence_readiness_matrix,
+        row_controller_summary,
+        evidence_lanes,
+        uncertainty_propagation_summary,
+        bridge_derivation_map,
+        units_contract,
+        landauer_uet_mapping,
+        beta_role_clarification,
     )
     thermodynamic_claim_scope_gate = _build_thermodynamic_claim_scope_gate(
         status,
         evidence_lanes,
         source_evidence_readiness_matrix,
+        row_controller_summary,
         foundation_claim_gate,
+        uncertainty_propagation_summary,
+        bridge_derivation_map,
+        units_contract,
+        landauer_uet_mapping,
+        beta_role_clarification,
+    )
+
+    warnings.append(
+        "Uncertainty propagation is now partial only: Berut summary intervals are attached, gravity-context rows now add provisional mass-plus-G-proxy intervals, Jun uncertainty remains open, and systematic astrophysical terms are still excluded."
     )
 
     artifact = {
@@ -607,6 +1702,12 @@ def _write_verification_artifact(test_results, plot_paths, metrics):
         "metrics": metrics,
         "evidence_lanes": evidence_lanes,
         "uncertainty_preprocessing_plan": uncertainty_preprocessing_plan,
+        "measured_constant_uncertainty_package": measured_constant_uncertainty_package,
+        "uncertainty_propagation_summary": uncertainty_propagation_summary,
+        "bridge_derivation_map": bridge_derivation_map,
+        "units_contract": units_contract,
+        "landauer_uet_mapping": landauer_uet_mapping,
+        "beta_role_clarification": beta_role_clarification,
         "thermodynamic_claim_scope_gate": thermodynamic_claim_scope_gate,
         "foundation_claim_gate": {
             "path": FOUNDATION_CLAIM_GATE_PATH.relative_to(ROOT).as_posix(),
@@ -652,12 +1753,76 @@ def _write_verification_artifact(test_results, plot_paths, metrics):
                 "It tracks whether source evidence is still pending."
             ),
         },
+        "row_controller_summary": row_controller_summary,
+        "uncertainty_preprocessing_manifest": {
+            "path": UNCERTAINTY_PREPROCESSING_PATH.relative_to(ROOT).as_posix(),
+            "sha256": _sha256(UNCERTAINTY_PREPROCESSING_PATH),
+            "current_status": uncertainty_preprocessing_plan["current_status"],
+            "row_count": len(uncertainty_preprocessing_plan["rows"]),
+            "claim_boundary": uncertainty_preprocessing_plan["claim_boundary"],
+        },
+        "uncertainty_propagation_artifact": {
+            "path": UNCERTAINTY_PROPAGATION_SUMMARY_PATH.relative_to(ROOT).as_posix(),
+            "sha256": _sha256(UNCERTAINTY_PROPAGATION_SUMMARY_PATH),
+            "current_status": uncertainty_propagation_summary["summary"]["current_status"],
+            "rows_with_propagated_intervals": uncertainty_propagation_summary["summary"]["rows_with_propagated_intervals"],
+            "rows_missing_uncertainty_inputs": uncertainty_propagation_summary["summary"]["rows_missing_uncertainty_inputs"],
+            "claim_boundary": uncertainty_propagation_summary["claim_boundary"],
+        },
+        "measured_constant_uncertainty_artifact": {
+            "path": MEASURED_CONSTANT_UNCERTAINTY_PACKAGE_PATH.relative_to(ROOT).as_posix(),
+            "sha256": _sha256(MEASURED_CONSTANT_UNCERTAINTY_PACKAGE_PATH),
+            "status": measured_constant_uncertainty_package["status"],
+            "row_policy_count": len(measured_constant_uncertainty_package["row_policy"]),
+            "claim_boundary": measured_constant_uncertainty_package["claim_boundary"],
+        },
+        "bridge_derivation_artifact": {
+            "path": BRIDGE_DERIVATION_MAP_PATH.relative_to(ROOT).as_posix(),
+            "sha256": _sha256(BRIDGE_DERIVATION_MAP_PATH),
+            "status": bridge_derivation_map["status"],
+            "required_derivation_steps_open": sum(
+                1
+                for step in bridge_derivation_map["required_derivation_steps"]
+                if step["current_state"] != "closed"
+            ),
+            "claim_boundary": bridge_derivation_map["claim_boundary"],
+        },
+        "units_contract_artifact": {
+            "path": UNITS_CONTRACT_PATH.relative_to(ROOT).as_posix(),
+            "sha256": _sha256(UNITS_CONTRACT_PATH),
+            "status": units_contract["status"],
+            "proxy_symbols_count": sum(
+                1 for symbol in units_contract["symbols"] if symbol["layer"] == "topic_proxy_layer"
+            ),
+            "physical_symbols_count": sum(
+                1 for symbol in units_contract["symbols"] if symbol["layer"] == "si_physical_layer"
+            ),
+            "claim_boundary": units_contract["claim_boundary"],
+        },
+        "landauer_uet_mapping_artifact": {
+            "path": LANDAUER_UET_MAPPING_PATH.relative_to(ROOT).as_posix(),
+            "sha256": _sha256(LANDAUER_UET_MAPPING_PATH),
+            "status": landauer_uet_mapping["status"],
+            "added_uet_structure_detected": landauer_uet_mapping["current_code_reading"]["added_uet_structure_detected"],
+            "claim_boundary": landauer_uet_mapping["claim_boundary"],
+        },
+        "beta_role_clarification_artifact": {
+            "path": BETA_ROLE_CLARIFICATION_PATH.relative_to(ROOT).as_posix(),
+            "sha256": _sha256(BETA_ROLE_CLARIFICATION_PATH),
+            "status": beta_role_clarification["status"],
+            "claim_boundary": beta_role_clarification["claim_boundary"],
+        },
         "paper_readiness_gate": {
             "status": "BLOCKED",
             "blocking_conditions": [
                 "source_evidence_readiness_matrix.targets_ready_for_source_review < source_targets_total",
                 "uet_bridge_hypothesis lane remains BLOCKED",
                 "uncertainty_preprocessing_plan.current_status != complete",
+                "uncertainty_propagation_summary.current_status != complete",
+                "bridge_derivation_map.status != derived_or_closed",
+                "units_contract.status != closed_proxy_to_si_mapping",
+                "landauer_uet_mapping.status != noncircular_mapping_closed",
+                "beta_role_clarification.status != derived_coefficient_role_closed",
                 "foundation_claim_gate.status != FOUNDATION_PASS",
             ],
             "allowed_public_wording": [
@@ -676,8 +1841,14 @@ def _write_verification_artifact(test_results, plot_paths, metrics):
         "warnings": warnings,
         "interpretation": (
             "The Landauer relation is anchored to exact SI constants and topic-local literature summary values. "
-            "The verifier currently supports formula-consistency and lower-bound checks; the UET-specific "
-            "thermodynamic bridge still requires source-normalized data, uncertainty propagation, and dependency proof."
+            "The verifier currently supports formula-consistency and lower-bound checks, and now records first-pass "
+            "propagated intervals for Berut-summary and black-hole mass rows. A machine-readable derivation map now "
+            "separates standard imported identities from UET proxy and hypothesis layers. A machine-readable units "
+            "contract now separates the SI and proxy symbol layers. A Landauer-to-UET mapping artifact now records "
+            "that the current engine path imports the lower bound as a constraint rather than exposing a nontrivial "
+            "UET-added term. A beta-role clarification artifact now records that beta is present in topic language "
+            "but not closed as a derived thermodynamic bridge coefficient. The UET-specific thermodynamic bridge "
+            "still requires narrower Berut/Jun/Peterson source closure, fuller uncertainty propagation, and dependency proof."
         ),
     }
     ARTIFACT_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -851,12 +2022,15 @@ def test_landauer_limit():
     print("\n[DATA] Lower-Bound Benchmark Summary:")
     T_exp = 300  # Room temperature
     E_landauer = landauer_energy_eV(T_exp)
-    E_observed = 0.028  # eV topic-derived literature summary; see DATA_MANIFEST
+    kT_eV = E_landauer / np.log(2)
+    E_jun_source = 0.71 * kT_eV
+    E_legacy_context = 0.028  # eV legacy mixed-lineage context; see DATA_MANIFEST
 
-    error = abs(E_observed - E_landauer) / E_landauer * 100
+    error = abs(E_jun_source - E_landauer) / E_landauer * 100
     print(f"   Landauer Prediction: {E_landauer:.6f} eV")
-    print(f"   Observed benchmark summary: {E_observed:.3f} eV")
-    print("   [OK] Observed summary remains above the Landauer lower bound")
+    print(f"   Jun source-facing asymptotic-work summary: {E_jun_source:.6f} eV")
+    print(f"   Legacy mixed-lineage context row: {E_legacy_context:.3f} eV")
+    print("   [OK] Jun source-facing summary remains above the Landauer lower bound")
 
     return True
 
@@ -982,10 +2156,19 @@ def run_all_tests():
         fig1.add_trace(
             uet_viz.go.Scatter(
                 x=[300],
+                y=[0.71 * (landauer_energy_eV(300) / np.log(2))],
+                mode="markers",
+                name="Jun source-facing benchmark",
+                marker=dict(color="blue", size=10),
+            )
+        )
+        fig1.add_trace(
+            uet_viz.go.Scatter(
+                x=[300],
                 y=[0.028],
                 mode="markers",
-                name="Observed erasure benchmark",
-                marker=dict(color="blue", size=10),
+                name="Legacy mixed-lineage context row",
+                marker=dict(color="orange", size=10, symbol="x"),
             )
         )
 
@@ -1081,3 +2264,6 @@ def run_all_tests():
 
 if __name__ == "__main__":
     run_all_tests()
+
+
+

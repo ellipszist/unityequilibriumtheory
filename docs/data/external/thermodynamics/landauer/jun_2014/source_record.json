@@ -10,12 +10,19 @@
   "publication": "Physical Review Letters 113, 190601 (2014)",
   "doi": "10.1103/PhysRevLett.113.190601",
   "doi_url": "https://doi.org/10.1103/PhysRevLett.113.190601",
-  "source_role": "Landauer lower-bound benchmark source",
+  "source_role": "Landauer lower-bound benchmark source for the feedback-trap branch",
+  "source_facing_summary": {
+    "quantity_name": "asymptotic full-erasure work",
+    "value_kT": 0.71,
+    "uncertainty_kT": 0.03,
+    "measurement_statistical_error_kT": 0.1,
+    "source_surface": "arXiv preprint text for the PRL article, including Table 1 asymptotic-work summary"
+  },
   "unit_convention": {
     "temperature": "K",
     "energy": "J, eV, or kBT as reported by source; runtime conversion must be explicit"
   },
   "local_archive_status": "source record only; raw numeric table or machine transcription not archived",
-  "claim_boundary": "This record anchors the source identity only. It does not close 0.13 source-lock or uncertainty propagation.",
-  "next_hardening_step": "Archive or transcribe row-level energy/uncertainty values and map them to Landauer lower-bound ratios."
+  "claim_boundary": "This record anchors the Jun 2014 feedback-trap source identity and now records the source-facing asymptotic-work summary. It still does not show that the legacy 0.028 eV runtime row belongs cleanly to Jun 2014, and it does not close 0.13 source-lock or uncertainty propagation.",
+  "next_hardening_step": "Use the source-facing asymptotic-work quantity to decide whether the legacy 0.028 eV runtime row should be replaced, split into a non-Jun branch, or explicitly mapped to a different Jun quantity before uncertainty propagation."
 }

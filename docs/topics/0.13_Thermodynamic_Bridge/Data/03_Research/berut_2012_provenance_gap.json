@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "row_id": "berut_2012_summary_300K",
+  "purpose": "Make the current Berut 2012 row-level provenance blocker explicit enough that later hardening can close it without relying on broad source-lock wording.",
+  "runtime_state": {
+    "runtime_surface": "Data/03_Research/berut_2012.json",
+    "temperature_K": 300,
+    "lower_bound_J": 2.870978885078724e-21,
+    "reported_value_J": 3e-21,
+    "reported_uncertainty_J": 5e-22,
+    "reported_interval_1sigma_J": [
+      2.5e-21,
+      3.4999999999999996e-21
+    ],
+    "ratio_to_lower_bound_central": 1.0449397644795768,
+    "current_interval_status": "summary_row_only_interval_present"
+  },
+  "source_anchor": {
+    "path": "docs/data/external/thermodynamics/landauer/berut_2012/source_record.json",
+    "doi": "10.1038/nature10872",
+    "claim_boundary": "Source identity is pinned, but row-level table capture and mapping into the runtime summary row are not archived."
+  },
+  "next_controller": {
+    "status": "figure_3_locator_captured_numeric_point_or_stronger_surface_still_required",
+    "why": "The repo now has one exact preview-level Figure 3 locator and a declared summary-mapping boundary, so the remaining Berut gap is no longer locator choice; it is numeric-point capture or a stronger upstream numeric surface."
+  },
+  "minimum_missing_evidence": [
+    "original_file_name or archived supplement identifier",
+    "numeric_point_or_curve_identifier_within_figure_3",
+    "machine-transcribed numeric point or archived stronger surface",
+    "explicit mapping from figure-level support to runtime summary value and uncertainty"
+  ],
+  "primary_surface_narrowing": {
+    "artifact": "Data/03_Research/berut_2012_figure_locator_mapping.json",
+    "status": "figure_3_preview_locator_attached_summary_mapping_only",
+    "effect_on_blocker": "The missing-row problem is now narrower than a generic figure-level policy choice: Figure 3 is attached as the current authoritative preview locator, so the next Berut move is one numeric point or a stronger upstream surface rather than choosing the locator itself."
+  },
+  "allowed_claim_while_open": "Berut may remain a summary-level lower-bound support row with a propagated interval, but it must not be counted as a row-level source-normalized Landauer benchmark row.",
+  "promotion_value_if_closed": "Closing this gap would convert the strongest current Landauer row from summary-only provenance to row-level source-normalized support with one declared normalization path.",
+  "claim_boundary": "This artifact narrows the Berut blocker. It does not by itself close source-lock, uncertainty propagation, or the UET bridge."
+}

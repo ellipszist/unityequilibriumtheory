@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "row_id": "legacy_0p028_eV_landauer_runtime_row",
+  "purpose": "Declare the current conservative handling policy for the inherited 0.028 eV runtime row while Jun and Hong closure remain open.",
+  "current_evidence_summary": {
+    "jun_conflict": "Pinned Jun asymptotic-work summary sits near 0.01836 eV at the current 300 K verifier baseline and does not match 0.028 eV.",
+    "hong_preprint_status": "Hong-side preprint quantities near ~0.0262 eV and ~0.0380 eV are visible, but final-source confirmation is still open.",
+    "lineage_status": "The 0.028 eV row is still mixed-lineage and should not be treated as a clean Jun or Hong benchmark quantity."
+  },
+  "policy": {
+    "status": "demote_to_legacy_context_until_final_source_confirmation",
+    "keep_in_jun_active_row_logic": false,
+    "keep_in_hong_active_row_logic": false,
+    "retain_as_legacy_context_note": true,
+    "replace_with_provisionally_preferred_hong_target_now": false,
+    "why": [
+      "The row is incompatible with the pinned Jun source-facing summary.",
+      "The row is not yet confirmed by the final Hong source surface.",
+      "Keeping it as an active benchmark row would overstate current source closure."
+    ]
+  },
+  "allowed_use_while_open": [
+    "legacy mixed-lineage lower-bound context value",
+    "historical marker for why Jun/Hong cleanup work exists"
+  ],
+  "forbidden_use_while_open": [
+    "active Jun benchmark quantity",
+    "active Hong benchmark quantity",
+    "uncertainty-bearing source-normalized Landauer row"
+  ],
+  "required_next_evidence": [
+    "final-source confirmation for the provisionally preferred Hong target",
+    "then an explicit replace_or_remove action for the legacy 0.028 eV row in active benchmark logic"
+  ],
+  "claim_boundary": "This policy demotes the legacy 0.028 eV row in active benchmark logic. It does not close Jun, establish Hong as final-source-normalized, or upgrade the UET bridge."
+}

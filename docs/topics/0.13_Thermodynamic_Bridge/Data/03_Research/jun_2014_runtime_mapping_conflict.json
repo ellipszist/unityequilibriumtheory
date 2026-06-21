@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "row_id": "jun_2014_summary_300K",
+  "purpose": "Make the current Jun 2014 runtime-to-source mapping conflict explicit enough that the row is not treated as merely awaiting a missing uncertainty field.",
+  "runtime_state": {
+    "runtime_surface": "Data/03_Research/experimental_data.py",
+    "runtime_value_eV": 0.028,
+    "runtime_lower_bound_eV": 0.0179192407638041,
+    "runtime_ratio_to_lower_bound": 1.5625662029475318
+  },
+  "source_anchor": {
+    "path": "docs/data/external/thermodynamics/landauer/jun_2014/source_record.json",
+    "doi": "10.1103/PhysRevLett.113.190601",
+    "source_facing_summary": {
+      "asymptotic_work_kT": 0.71,
+      "asymptotic_work_uncertainty_kT": 0.03,
+      "measurement_statistical_error_kT": 0.10
+    },
+    "converted_runtime_inference_at_300K": {
+      "value_eV_from_current_verifier_kT_baseline": 0.018357695608673848,
+      "uncertainty_eV_from_current_verifier_kT_baseline": 0.0007756843214932604,
+      "statistical_error_eV_from_current_verifier_kT_baseline": 0.0025856144049775348,
+      "inference_boundary": "These eV values are inferred from the current 300 K verifier baseline plus the Jun source-facing kT summary; they are not a source-authored eV row."
+    },
+    "claim_boundary": "Source identity is pinned and the source-facing summary now exposes a concrete asymptotic-work quantity that sits near 0.0184 eV at the current verifier baseline, not near the legacy 0.028 eV runtime row."
+  },
+  "next_controller": {
+    "status": "split_replace_or_relabel_legacy_runtime_row_before_uncertainty",
+    "why": "The pinned Jun asymptotic-work quantity is now concrete enough to show that the legacy 0.028 eV runtime row is not the same quantity under the current 300 K baseline, so the next Jun step is no longer just conversion bookkeeping."
+  },
+  "minimum_missing_evidence": [
+    "declared decision on whether the legacy 0.028 eV row stays in the Jun branch, moves to a non-Jun branch, or is removed from Jun-facing closure logic",
+    "if kept in Jun, a different source_row_or_fit_target_identifier than the current asymptotic-work summary",
+    "explicit source unit basis",
+    "conversion path from the chosen source quantity to the runtime eV row",
+    "source-backed uncertainty attached to the same converted quantity",
+    "propagated interval in runtime unit basis"
+  ],
+  "allowed_claim_while_open": "Jun may remain a source-identified summary-interval lower-bound support branch, but the legacy 0.028 eV row must not be treated as a clean Jun-mapped quantity or as a row-level source-normalized Jun benchmark row.",
+  "promotion_value_if_closed": "Closing this conflict would clarify whether the current 0.028 eV row should be replaced by the Jun asymptotic-work quantity, split into a different benchmark branch, or removed from Jun-facing closure logic entirely.",
+  "claim_boundary": "This artifact narrows the Jun blocker. It does not by itself close source-lock, uncertainty propagation, or the UET bridge."
+}

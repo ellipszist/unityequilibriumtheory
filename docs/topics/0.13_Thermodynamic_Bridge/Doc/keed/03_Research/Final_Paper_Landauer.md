@@ -6,11 +6,12 @@
 > source-normalized Landauer validation, external heat-transport validation, Tier-A completion, or a theorem-level thermodynamic proof.
 > Current allowed claims are controlled by `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and
 > `Result/artifacts/0_13_thermodynamic_bridge_verification.json`: Landauer lower-bound and standard formula-consistency lanes only.
-**Method**: UET Bit-Joule Bridge
-**Status**: Verified (Lower Bound)
 
-### 1. Abstract
-Landauer's Principle sets the minimum energy to erase a bit. UET confirms this is the "Exchange Rate" between Information Space and Energy Space.
+**Method:** Legacy Landauer-facing note
+**Status:** Legacy note only; current status remains at the verifier artifact
 
-### 2. Result
-$E = k_B T \ln 2$ is the fundamental currency conversion.
+## Current bounded interpretation
+
+- Landauer's relation remains the strongest current benchmark lane in `0.13`.
+- That support is still lower-bound and formula-consistency support, not a closed UET information-energy equivalence proof.
+- Use this file as historical framing only.

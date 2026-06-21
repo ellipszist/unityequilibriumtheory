@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "row_id": "berut_2012_summary_300K",
+  "purpose": "Record what the currently visible primary Berut 2012 page surface does and does not expose, so the row-locator blocker can be described more narrowly than a generic missing-table statement.",
+  "primary_surface_observation": {
+    "checked_date": "2026-06-16",
+    "source_url": "https://www.nature.com/articles/nature10872",
+    "source_identity": "Experimental verification of Landauer's principle linking information and thermodynamics",
+    "preview_surface_status": "abstract_and_figure_labels_visible",
+    "visible_figure_labels": [
+      "Figure 1: The erasure protocol used in the experiment.",
+      "Figure 2: Erasure cycles and typical trajectories.",
+      "Figure 3: Erasure rate and approach to the Landauer limit."
+    ],
+    "direct_table_surface_visible": false,
+    "direct_source_data_surface_visible": false,
+    "direct_supplement_identifier_visible": false,
+    "access_state": "preview_of_subscription_content"
+  },
+  "narrowed_blocker": {
+    "blocker_class": "row_locator_surface_not_yet_archived",
+    "meaning": "Current evidence suggests the accessible primary surface behaves like a figure-level preview rather than an exposed row table, so row-level closure may require figure-level locator capture, supplementary capture, or machine transcription from a non-preview source."
+  },
+  "allowed_claim_while_open": "Berut may remain a summary-level lower-bound support row with propagated interval support, but not a row-level source-normalized benchmark row.",
+  "promotion_value_if_closed": "Closing this blocker would clarify whether Berut can be normalized by direct table capture, supplementary capture, or only by explicit figure-level transcription policy.",
+  "claim_boundary": "This artifact narrows the Berut provenance blocker. It does not prove that no supplementary material exists, and it does not by itself close source-lock, uncertainty propagation, or the UET bridge."
+}

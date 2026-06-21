@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "row_id": "jun_2014_summary_300K",
+  "purpose": "Make the current Jun 2014 uncertainty blocker explicit enough that later hardening can close it without broad prose reconstruction.",
+  "runtime_state": {
+    "runtime_surface": "Data/03_Research/experimental_data.py",
+    "temperature_K": 300,
+    "reported_value_eV": 0.01835491984836923,
+    "reported_uncertainty_eV": 0.000775559993593066,
+    "lower_bound_eV": 0.0179192407638041,
+    "ratio_to_lower_bound_central": 1.024312924789228,
+    "current_interval_status": "source_summary_interval_present_runtime_branch_policy_open"
+  },
+  "source_anchor": {
+    "path": "docs/data/external/thermodynamics/landauer/jun_2014/source_record.json",
+    "doi": "10.1103/PhysRevLett.113.190601",
+    "claim_boundary": "Source identity is pinned and a source-facing asymptotic-work summary with uncertainty is now recorded, but row/file identity and legacy-row branch policy are still not closed tightly enough for stronger source-normalized use."
+  },
+  "next_controller": {
+    "status": "split_replace_or_relabel_legacy_runtime_row_before_uncertainty",
+    "why": "A summary-layer uncertainty is now present for the pinned Jun asymptotic-work quantity, so the next blocker is no longer a missing interval itself; it is the branch/file-identity cleanup that keeps the Jun summary quantity separate from the legacy 0.028 eV row."
+  },
+  "minimum_missing_evidence": [
+    "declared decision on whether the legacy 0.028 eV row stays out of the Jun closure lane",
+    "original_file_name or archived table identifier for the pinned Jun source-facing summary",
+    "source_row_or_fit_target_identifier if a more exact Jun quantity than the current summary is required",
+    "explicit source unit basis and conversion note for the summary-to-runtime comparison"
+  ],
+  "allowed_claim_while_open": "Jun may now remain a source-identified summary-interval lower-bound support row, but it must not yet be counted as a clean row-level source-normalized benchmark row.",
+  "promotion_value_if_closed": "Closing this gap would convert the current Jun summary-interval lane into a cleaner second uncertainty-aware Landauer row and reduce overreliance on the Berut summary row.",
+  "claim_boundary": "This artifact narrows the Jun blocker. It does not by itself close source-lock, uncertainty propagation, or the UET bridge."
+}

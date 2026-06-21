@@ -1,29 +1,104 @@
 {
-  "schema_version": "1.0",
-  "source_id": "peterson_2018_quantum_landauer_unresolved",
-  "title": "Peterson 2018 quantum Landauer branch - source identity unresolved",
+  "schema_version": "1.1",
+  "source_id": "peterson_2018_quantum_landauer_composite_unresolved",
+  "title": "Legacy Peterson 2018 quantum-Landauer branch - composite source identity unresolved",
   "authors": [],
-  "publication": "Unresolved source anchor; local topic data names Peterson et al. (2018) but the exact upstream paper/table still requires review",
+  "publication": "Unresolved composite source anchor; the local topic branch currently mixes incompatible DOI, title, system, and authorship cues rather than resolving to one upstream paper/table",
   "doi": "",
   "doi_url": "",
+  "current_local_runtime_reference": {
+    "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/experimental_data.py",
+    "paper_label": "Legacy 'Peterson et al. Nature Physics (2018)' composite placeholder",
+    "doi": "10.1038/s41567-018-0250-5",
+    "system": "Trapped Ca-40 ion",
+    "claim_role": "First quantum verification of Landauer principle"
+  },
+  "verified_from": [
+    {
+      "label": "Crossref work record for Phys. Rev. Lett. candidate",
+      "url": "https://api.crossref.org/works/10.1103/PhysRevLett.120.210601",
+      "checked_date": "2026-06-16",
+      "verified_fields": [
+        "title",
+        "authors",
+        "publisher",
+        "container_title",
+        "volume",
+        "article_number",
+        "published_online",
+        "resource_primary_url"
+      ],
+      "finding": "This DOI resolves to 'Single-Atom Demonstration of the Quantum Landauer Principle' in Physical Review Letters, which fits the quantum-Landauer narrative but does not fit the local Peterson authorship."
+    },
+    {
+      "label": "Crossref work record for Nature Physics DOI currently named by the runtime",
+      "url": "https://api.crossref.org/works/10.1038/s41567-018-0250-5",
+      "checked_date": "2026-06-16",
+      "verified_fields": [
+        "title",
+        "authors",
+        "publisher",
+        "container_title",
+        "volume",
+        "issue",
+        "pages",
+        "published_online",
+        "resource_primary_url"
+      ],
+      "finding": "This DOI resolves to 'Direct entropy measurement in a mesoscopic quantum system' in Nature Physics, which fits neither the trapped Ca-40 ion system nor the quantum-Landauer paper title used by the local branch."
+    }
+  ],
   "candidate_sources": [
     {
-      "title": "Experimental demonstration of information to energy conversion in a quantum system at the Landauer limit",
-      "doi": "10.1098/rspa.2015.0813",
-      "note": "Peterson-led quantum Landauer candidate, but publication year differs from the local topic note."
+      "title": "Single-Atom Demonstration of the Quantum Landauer Principle",
+      "publication": "Physical Review Letters 120, 210601 (2018)",
+      "doi": "10.1103/PhysRevLett.120.210601",
+      "publisher_url": "https://link.aps.org/doi/10.1103/PhysRevLett.120.210601",
+      "authors": [
+        "L. L. Yan",
+        "T. P. Xiong",
+        "K. Rehan",
+        "F. Zhou",
+        "D. F. Liang",
+        "L. Chen",
+        "J. Q. Zhang",
+        "W. L. Yang",
+        "Z. H. Ma",
+        "M. Feng"
+      ],
+      "fit_to_local_branch": "Matches the single-atom quantum-Landauer narrative better than the local runtime DOI, but not the local Peterson authorship."
     },
     {
       "title": "Direct entropy measurement in a mesoscopic quantum system",
+      "publication": "Nature Physics 14, 1083-1086 (2018)",
       "doi": "10.1038/s41567-018-0250-5",
-      "note": "2018 Nature Physics entropy-measurement source; not automatically equivalent to the local Peterson quantum-Landauer branch."
+      "publisher_url": "https://www.nature.com/articles/s41567-018-0250-5",
+      "authors": [
+        "Nikolaus Hartman",
+        "Christian Olsen",
+        "Silvia Luescher",
+        "Mohammad Samani",
+        "Saeed Fallahi",
+        "Geoffrey C. Gardner",
+        "Michael Manfra",
+        "Joshua Folk"
+      ],
+      "fit_to_local_branch": "Matches the local DOI only; Crossref metadata shows that it is a mesoscopic entropy-measurement paper rather than the trapped-ion quantum-Landauer branch."
+    },
+    {
+      "title": "Experimental demonstration of information to energy conversion in a quantum system at the Landauer limit",
+      "publication": "Proceedings of the Royal Society A 472, 20150813 (2016)",
+      "doi": "10.1098/rspa.2015.0813",
+      "fit_to_local_branch": "Peterson-led quantum thermodynamic candidate by authorship cue, but it is a different publication year and a different experimental setup from the trapped-ion 2018 narrative."
     }
   ],
+  "resolution_status": "candidate_families_separated_local_peterson_label_demoted",
   "source_role": "quantum Landauer benchmark source-resolution target",
   "unit_convention": {
     "temperature": "source-specific effective temperature",
     "energy": "source-reported quantum thermodynamic work/heat convention; runtime conversion must be explicit"
   },
   "local_archive_status": "source record only; raw numeric table or machine transcription not archived",
-  "claim_boundary": "This record intentionally does not close the Peterson branch. It documents a source-identity conflict that must be resolved before this branch can be used as a verification gate.",
-  "next_hardening_step": "Resolve the exact Peterson source identity used by the topic-local data module, then archive row-level numeric values and uncertainty notes."
+  "claim_boundary": "This record intentionally does not close the Peterson branch. Current evidence shows that the local runtime branch is not just missing a DOI; it combines incompatible 2018 paper cues while a separate Peterson-led 2016 paper fits the authorship cue better. Until one exact source identity is chosen and mapped, this branch must stay out of verifier gate logic and the local Peterson 2018 label should be treated as a demoted legacy placeholder only.",
+  "next_hardening_step": "Either remap the branch to one exact upstream paper with row-level numeric capture and unit conventions, or remove the legacy placeholder from active benchmark language entirely."
 }

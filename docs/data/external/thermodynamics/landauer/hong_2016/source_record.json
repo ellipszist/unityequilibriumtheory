@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0",
+  "source_id": "hong_2016_nanometric_memory_landauer_candidate",
+  "title": "Experimental test of Landauer's principle in single-bit operations on nanomagnetic memory bits",
+  "authors": [
+    "Jeongmin Hong",
+    "Brian Lambson",
+    "Scott Dhuey",
+    "Jeffrey Bokor"
+  ],
+  "publication": "Science Advances (2016-03-01)",
+  "doi": "10.1126/sciadv.1501492",
+  "doi_url": "https://doi.org/10.1126/sciadv.1501492",
+  "candidate_primary_identifiers_from_secondary_reference_trail": {
+    "doi": "10.1126/sciadv.1501492",
+    "doi_url": "https://doi.org/10.1126/sciadv.1501492",
+    "pmid": "26998519",
+    "pmcid": "PMC4795654",
+    "evidence_status": "identifier trail visible via secondary reference surfaces; direct official DOI landing page or archived publisher article page is not yet stored locally"
+  },
+  "primary_facing_preprint_surface": {
+    "title": "Experimental verification of Landauer's principle in erasure of nanomagnetic memory bits",
+    "url": "https://arxiv.org/abs/1411.6730",
+    "pdf_url": "https://arxiv.org/pdf/1411.6730",
+    "status": "accessible_primary_facing_precursor_surface",
+    "claim_boundary": "This is a same-author primary-facing precursor surface for the Hong nanomagnetic-memory branch. It is useful for source-facing numeric inspection, but it is not yet a locally archived final publisher article page."
+  },
+  "direct_fetch_attempts": [
+    {
+      "target": "https://arxiv.org/pdf/1411.6730",
+      "status": "accessible_pdf_primary_facing_precursor",
+      "note": "The arXiv preprint PDF is accessible and exposes source-facing numeric text, but it is a precursor surface rather than the final archived Science Advances article page."
+    },
+    {
+      "target": "https://doi.org/10.1126/sciadv.1501492",
+      "status": "tool_fetch_failed",
+      "note": "Identifier known, but the current fetch path did not return a stable page body through the available web tooling."
+    },
+    {
+      "target": "https://www.science.org/doi/10.1126/sciadv.1501492",
+      "status": "forbidden_403",
+      "note": "Official publisher DOI route is identified, but direct fetch returned 403 in the current environment."
+    },
+    {
+      "target": "https://www.science.org/doi/10.1126/sciadv.1501492 (browser-like user agent HEAD probe)",
+      "status": "forbidden_403_cloudflare_challenge",
+      "note": "A browser-like user-agent probe still returned 403 with Cf-Mitigated challenge headers, so the block is not limited to the default command-line client profile."
+    },
+    {
+      "target": "https://www.science.org/doi/pdf/10.1126/sciadv.1501492",
+      "status": "forbidden_403_cloudflare_challenge",
+      "note": "Publisher PDF route is identified, but a HEAD request returned 403 with Cf-Mitigated challenge headers in the current environment."
+    },
+    {
+      "target": "https://pubmed.ncbi.nlm.nih.gov/26998519/",
+      "status": "recaptcha_blocked",
+      "note": "PubMed identifier is known, but the current environment hit a browser-check/reCAPTCHA gate rather than a directly archived citation page."
+    },
+    {
+      "target": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4795654/",
+      "status": "recaptcha_blocked",
+      "note": "PMCID route is known, but the current environment hit a browser-check/reCAPTCHA gate rather than a directly archived article page."
+    }
+  ],
+  "verified_from": [
+    {
+      "label": "Crossref work record",
+      "url": "https://api.crossref.org/works/10.1126/sciadv.1501492",
+      "checked_date": "2026-06-15",
+      "verified_fields": [
+        "title",
+        "authors",
+        "publisher",
+        "container_title",
+        "volume",
+        "issue",
+        "article_number",
+        "published_print",
+        "doi",
+        "resource_primary_url"
+      ]
+    }
+  ],
+  "publisher_metadata": {
+    "publisher": "American Association for the Advancement of Science (AAAS)",
+    "container_title": "Science Advances",
+    "volume": "2",
+    "issue": "3",
+    "article_number": "e1501492",
+    "published_print": "2016-03-04",
+    "resource_primary_url": "https://www.science.org/doi/10.1126/sciadv.1501492",
+    "crossref_pdf_url": "https://www.science.org/doi/pdf/10.1126/sciadv.1501492",
+    "crossref_abstract_reading": "Crossref abstract states that the minimum energy dissipated in switching a magnetic bit was measured to be consistent with the Landauer limit of k_B T ln(2), but it does not expose the exact source-facing numeric row needed to choose between ~0.026 eV and 0.028 eV."
+  },
+  "source_facing_numeric_candidates": {
+    "primary_facing_preprint_room_temperature_five_trial_average": {
+      "value_zJ": 6.09,
+      "uncertainty_zJ": 1.43,
+      "source_lines": "arXiv:1411.6730 PDF, room-temperature five-trial average dissipation statement",
+      "runtime_inference_eV": 0.03801079026346604,
+      "runtime_inference_uncertainty_eV": 0.008925357976478891,
+      "claim_boundary": "This is a source-facing preprint quantity inferred into eV from the stated zJ value. It is not a final publisher-surface row capture."
+    },
+    "primary_facing_preprint_temperature_series_mean": {
+      "value_zJ": 4.2,
+      "uncertainty_zJ": 0.9,
+      "source_lines": "arXiv:1411.6730 PDF, separate temperature-varying run summary",
+      "runtime_inference_eV": 0.0262143381127352,
+      "runtime_inference_uncertainty_eV": 0.005617358167014686,
+      "claim_boundary": "This preprint quantity is numerically close to the commonly repeated ~0.026 eV secondary wording, but the repo still needs an explicit policy for whether this is the correct runtime comparison target."
+    }
+  },
+  "local_metadata_snapshot": {
+    "path": "docs/data/external/thermodynamics/landauer/hong_2016/crossref_work_record.json",
+    "role": "Machine-readable Crossref metadata snapshot fetched on 2026-06-15 for local provenance hardening.",
+    "claim_boundary": "This snapshot closes the DOI metadata anchor only. It does not replace a direct archived publisher article page, source-facing numeric row, or uncertainty package."
+  },
+  "source_role": "Candidate upstream source identity for the legacy 0.028 eV nanomagnetic-memory runtime branch in topic 0.13",
+  "unit_convention": {
+    "temperature": "K",
+    "energy": "eV or J as reported by source; runtime conversion must be explicit",
+    "lineage_note": "Secondary summaries currently describe the experiment as requiring about 0.026 eV at 300 K, roughly 44% above the Landauer minimum, while the accessible same-author preprint surface exposes both a 6.09 +/- 1.43 zJ room-temperature five-trial average and a separate 4.2 +/- 0.9 zJ temperature-series mean."
+  },
+  "bibliographic_status": "Crossref now confirms the DOI, title, authors, publisher, container title, issue, article number, and primary resource URL; an accessible same-author arXiv preprint also exposes primary-facing numeric text, but a direct archived final publisher article page is still not stored locally and current direct publisher-page fetch attempts remain blocked at the access layer, including a browser-like user-agent probe",
+  "local_archive_status": "source record plus local Crossref metadata snapshot; a primary-facing preprint surface is now known and accessible, but direct final-publisher article-page fetch is still blocked in the current environment and the repo still lacks one final-source row package tied to the intended runtime comparison target",
+  "claim_boundary": "This record stages a candidate source branch only. It does not prove that the legacy 0.028 eV runtime row belongs to Hong 2016, and it does not close 0.13 source-lock, unit mapping, or uncertainty propagation.",
+  "next_hardening_step": "Use the now-confirmed DOI metadata anchor plus the accessible same-author preprint surface to decide which Hong quantity is the intended runtime comparison target, then archive one direct final publisher article page or equivalent final-source surface before deciding whether the legacy 0.028 eV row should move from the Jun branch into a separate Hong 2016 branch."
+}

@@ -1,0 +1,143 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "purpose": "Map each active benchmark or summary row to its current source-closure state, uncertainty state, and claim impact so 0.13 hardening can move row-by-row instead of by broad prose.",
+  "rows": [
+    {
+      "row_id": "berut_2012_summary_300K",
+      "benchmark_family": "Landauer lower-bound",
+      "current_local_surface": "Data/03_Research/berut_2012.json",
+      "upstream_anchor": "docs/data/external/thermodynamics/landauer/berut_2012/source_record.json",
+      "source_closure_status": "figure_3_preview_locator_mapped_summary_only",
+      "next_controller": "figure_3_locator_captured_numeric_point_or_stronger_surface_still_required",
+      "uncertainty_status": "interval_present_topic_summary_only",
+      "missing_requirements": [
+        "original_file_name_or_archived_supplement_identifier",
+        "numeric_point_or_curve_identifier_within_figure_3",
+        "machine_transcribed_numeric_point_or_archived_stronger_surface",
+        "explicit_figure_level_support_to_runtime_mapping_rule"
+      ],
+      "claim_effect_if_left_open": "Landauer lane remains source-referenced rather than source-normalized; current propagated interval now has one exact Figure 3 preview locator attached to the topic-summary row, but Berut still cannot be overread as if one numeric point or direct source-data row had already been archived.",
+      "promotion_value_if_closed": "Would strengthen the primary Landauer benchmark lane from figure-level summary support toward one numeric-point-or-stronger-surface provenance package."
+    },
+    {
+      "row_id": "jun_2014_summary_300K",
+      "benchmark_family": "Landauer lower-bound",
+      "current_local_surface": "Data/03_Research/experimental_data.py",
+      "upstream_anchor": "docs/data/external/thermodynamics/landauer/jun_2014/source_record.json",
+      "source_closure_status": "partial_summary_only",
+      "next_controller": "split_replace_or_relabel_legacy_runtime_row_before_uncertainty",
+      "uncertainty_status": "source_summary_interval_present_runtime_branch_policy_open",
+      "missing_requirements": [
+        "declared_decision_on_legacy_0p028_eV_row_branch",
+        "if_retained_in_jun_then_source_row_or_fit_target_identifier",
+        "explicit_source_unit_basis_and_conversion_path",
+        "original_file_name_or_table_identifier_for_source_summary"
+      ],
+      "claim_effect_if_left_open": "Jun now contributes a summary-layer uncertainty-bearing lower-bound branch, but it still cannot count as a clean row-level benchmark package because the pinned Jun asymptotic-work summary is being kept separate from the legacy 0.028 eV mixed-lineage runtime row and the source-summary file/row identity is not yet archived tightly enough.",
+      "promotion_value_if_closed": "Would preserve Jun as a second uncertainty-aware Landauer row while making clear whether the legacy runtime quantity belongs to a different branch and whether the current summary quantity is archived precisely enough for stronger source-normalized use."
+    },
+    {
+      "row_id": "hong_2016_candidate_nanometric_memory_branch",
+      "benchmark_family": "Landauer lower-bound alternate-source candidate",
+      "current_local_surface": "Data/03_Research/experimental_data.py",
+      "upstream_anchor": "docs/data/external/thermodynamics/landauer/hong_2016/source_record.json",
+      "source_closure_status": "candidate_source_family_with_provisional_runtime_target_final_publisher_anchor_partial",
+      "next_controller": "final_source_confirmation_then_replace_or_remove_legacy_0p028_row",
+      "uncertainty_status": "preprint_interval_present_provisional_runtime_target_selected",
+      "missing_requirements": [
+        "final published article page or equivalent final-source confirmation for the chosen quantity",
+        "explicit replace_or_remove action for the legacy 0.028 eV row in active benchmark logic",
+        "declared runtime-row split_or_reassignment policy"
+      ],
+      "claim_effect_if_left_open": "The staged Hong branch now has a confirmed DOI metadata anchor, an accessible same-author preprint precursor, a provisional preferred runtime target near ~0.0262 eV, and a demotion policy for the legacy 0.028 eV row, but it still cannot close the branch cleanly because final-source confirmation and the explicit replace/remove action remain open.",
+      "promotion_value_if_closed": "Would either convert the legacy mixed-lineage cleanup lane into a source-mapped Hong benchmark lane with a final-source-confirmed statistic, or allow the legacy 0.028 eV row to be removed cleanly from active benchmark logic."
+    },
+    {
+      "row_id": "peterson_2018_quantum_landauer_branch",
+      "benchmark_family": "Quantum Landauer branch",
+      "current_local_surface": "Data/03_Research/experimental_data.py",
+      "upstream_anchor": "docs/data/external/thermodynamics/landauer/peterson_2018/source_record.json",
+      "source_closure_status": "candidate_families_separated_local_peterson_label_demoted",
+      "next_controller": "exact_one_paper_identity_before_any_row_capture",
+      "uncertainty_status": "not_eligible_until_source_identity_fixed",
+      "missing_requirements": [
+        "exact one-paper doi_or_url that matches the local narrative",
+        "resolution of current local DOI conflict and composite branch mix",
+        "original_file_name",
+        "row-level reported value",
+        "unit convention resolution",
+        "uncertainty row capture"
+      ],
+      "claim_effect_if_left_open": "This branch must stay out of promotion and gate logic because direct metadata checks now show that the local runtime branch is composite, and current evidence now separates at least three incompatible candidate families behind the legacy Peterson 2018 label. The label therefore cannot remain an active benchmark identity while row capture is still open.",
+      "promotion_value_if_closed": "Would either remap the branch cleanly to one legitimate quantum-thermodynamic comparison row or allow the legacy placeholder to be removed cleanly from active benchmark language."
+    },
+    {
+      "row_id": "gw150914_final_mass",
+      "benchmark_family": "Black-hole entropy and Hawking-temperature context",
+      "current_local_surface": "Data/03_Research/experimental_data.py",
+      "upstream_anchor": "docs/data/external/gravity/ligo_black_hole_mergers/source_record.json",
+      "source_closure_status": "ready_for_source_review_summary_row_present",
+      "uncertainty_status": "mass_plus_g_proxy_interval_present",
+      "missing_requirements": [
+        "row-level archival capture",
+        "direct_2022_measured_constant_extraction",
+        "spin_or_systematic term policy"
+      ],
+      "claim_effect_if_left_open": "Gravity-adjacent outputs now include a provisional mass-plus-G-proxy interval layer, but they still remain below a fuller uncertainty-aware context package because systematic terms are open.",
+      "promotion_value_if_closed": "Would make black-hole context rows less provisional and better separated from the Landauer source-lock problem."
+    },
+    {
+      "row_id": "m87_mass",
+      "benchmark_family": "Black-hole entropy and Hawking-temperature context",
+      "current_local_surface": "Data/03_Research/experimental_data.py",
+      "upstream_anchor": "docs/data/external/gravity/eht_black_hole_masses/source_record.json",
+      "source_closure_status": "ready_for_source_review_summary_row_present",
+      "uncertainty_status": "mass_plus_g_proxy_interval_present",
+      "missing_requirements": [
+        "object-level machine-readable source row capture",
+        "direct_2022_measured_constant_extraction",
+        "systematic term policy"
+      ],
+      "claim_effect_if_left_open": "EHT-derived uncertainty context now includes a provisional mass-plus-G-proxy layer, but it still cannot be overread as a fully normalized astrophysical support lane.",
+      "promotion_value_if_closed": "Would reduce ambiguity in the gravity-identity context without changing the current UET bridge ceiling."
+    },
+    {
+      "row_id": "sgrA_mass",
+      "benchmark_family": "Black-hole entropy and Hawking-temperature context",
+      "current_local_surface": "Data/03_Research/experimental_data.py",
+      "upstream_anchor": "docs/data/external/gravity/eht_black_hole_masses/source_record.json",
+      "source_closure_status": "ready_for_source_review_summary_row_present",
+      "uncertainty_status": "mass_plus_g_proxy_interval_present",
+      "missing_requirements": [
+        "object-level machine-readable source row capture",
+        "direct_2022_measured_constant_extraction",
+        "systematic term policy"
+      ],
+      "claim_effect_if_left_open": "Sgr A* now has a provisional mass-plus-G-proxy context interval, but systematic terms and source-normalized row capture remain open.",
+      "promotion_value_if_closed": "Would improve context-row completeness while keeping the core claim ceiling conservative."
+    },
+    {
+      "row_id": "measured_constants_runtime_package",
+      "benchmark_family": "Measured-constant uncertainty support layer",
+      "current_local_surface": "docs/data/external/constants/codata/measured_constants_2022_source_record.json",
+      "upstream_anchor": "docs/data/external/constants/codata/measured_constants_2022_source_record.json",
+      "source_closure_status": "provenance_anchor_present_runtime_package_declared",
+      "uncertainty_status": "provisional_proxy_threaded_into_gravity_outputs",
+      "missing_requirements": [
+        "direct_2022_runtime_constant_extraction",
+        "policy for exact versus measured constants in each lane"
+      ],
+      "claim_effect_if_left_open": "Gravity-context rows now expose a provisional G-proxy layer, but the package still stops short of direct 2022 extraction and broader systematic closure.",
+      "promotion_value_if_closed": "Would turn the current first-pass plus G-proxy interval package into a more explicit multi-source uncertainty package."
+    }
+  ],
+  "summary": {
+    "rows_total": 8,
+    "rows_blocked_by_source_identity_or_row_capture": 4,
+    "rows_with_partial_uncertainty_only": 5,
+    "rows_with_mass_plus_g_proxy_intervals": 3,
+    "rows_missing_any_source_backed_uncertainty": 2
+  },
+  "claim_boundary": "This matrix narrows the remaining 0.13 blocker chain row-by-row. It does not by itself close source-lock, uncertainty propagation, or the UET bridge derivation."
+}

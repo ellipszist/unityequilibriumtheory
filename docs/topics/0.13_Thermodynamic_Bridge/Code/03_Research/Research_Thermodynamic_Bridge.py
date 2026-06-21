@@ -1,12 +1,13 @@
 """
-UET Thermodynamic Bridge Test
-==============================
-Tests the foundational link between UET and thermodynamics:
-- Landauer limit (information-energy)
-- Bekenstein bound (entropy limit)
-- Jacobson link (thermodynamics -> gravity)
+Legacy UET Thermodynamic Bridge Integration Script
+==================================================
+This script runs older combined checks around:
+- Landauer lower-bound consistency
+- Bekenstein-bound scale checks
+- Jacobson-style thermodynamic-gravity interpretation
 
-THIS IS THE MOST IMPORTANT TEST - validates UET's foundation!
+It is a legacy integration/diagnostic surface.
+It is not the current authority for topic-level bridge-proof claims.
 """
 
 import sys
@@ -89,15 +90,15 @@ def uet_bekenstein_bound():
 def run_test():
     """Run thermodynamic bridge tests."""
     print("=" * 60)
-    print("UET THERMODYNAMIC BRIDGE TEST")
-    print("The Foundation of Unity Equilibrium Theory")
+    print("LEGACY UET THERMODYNAMIC BRIDGE INTEGRATION")
+    print("Diagnostic surface only; see root topic docs for current claim scope")
     print("=" * 60)
 
     data = load_landauer_data()
     results = []
 
     # Test 1: Landauer Limit
-    print("\n[1] LANDAUER PRINCIPLE (beta term origin)")
+    print("\n[1] LANDAUER PRINCIPLE (legacy beta-lane framing)")
     print("-" * 40)
 
     beta_uet = uet_landauer_principle()
@@ -113,7 +114,9 @@ def run_test():
 
     passed = error < 1.0 and measured >= beta_exp * 0.9
     results.append(("Landauer Limit", error, passed))
-    print(f"  {'[OK] PASS' if passed else '[FAIL] FAIL'} - Landauer limit verified!")
+    print(
+        f"  {'[OK] PASS' if passed else '[FAIL] FAIL'} - lower-bound consistency check"
+    )
 
     # Test 2: Bekenstein Bound
     print("\n[2] BEKENSTEIN BOUND (kappa term origin)")
@@ -131,7 +134,7 @@ def run_test():
     passed = kappa > 0 and kappa < 1e-60  # Reasonable magnitude
     results.append(("Bekenstein kappa", 0, passed))
     print(
-        f"  {'[OK] PASS' if passed else '[FAIL] FAIL'} - kappa derived from Planck scale"
+        f"  {'[OK] PASS' if passed else '[FAIL] FAIL'} - Planck-scale consistency check"
     )
 
     # Test 3: Jacobson Connection
@@ -146,11 +149,11 @@ def run_test():
     print("  - No separate 'graviton' needed")
 
     results.append(("Jacobson Link", 0, True))
-    print(f"  {'[OK] PASS'} - Theoretical consistency")
+    print(f"  {'[OK] PASS'} - legacy theoretical-consistency note")
 
     # Summary
     print("\n" + "=" * 60)
-    print("THERMODYNAMIC BRIDGE SUMMARY")
+    print("LEGACY THERMODYNAMIC BRIDGE SUMMARY")
     print("=" * 60)
     print(
         """
@@ -170,8 +173,10 @@ def run_test():
     print(f"Result: {passed_count}/{total} PASSED")
 
     if passed_count == total:
-        print("\n***** THERMODYNAMIC BRIDGE VERIFIED!")
-        print("UET is grounded in established physics.")
+        print("\nLegacy script result: all local checks passed.")
+        print(
+            "This does not by itself establish a closed UET thermodynamic bridge proof."
+        )
 
     print("=" * 60)
 

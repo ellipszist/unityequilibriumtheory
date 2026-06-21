@@ -1,0 +1,502 @@
+﻿# UPDATE LOG: 0.13_Thermodynamic_Bridge
+
+> **Scope:** `docs/topics/0.13_Thermodynamic_Bridge/`
+> **Owner:** `AI-assisted hardening with human review required for any upward promotion`
+> **Purpose:** Record multi-wave hardening progress for the thermodynamic bridge so later reviewers can reconstruct what changed, what was verified, and which blockers still control claim scope.
+
+## When to use
+
+Use this log when `0.13` changes in a way that narrows a provenance blocker, adds or tightens a verifier/gate, changes the claim boundary, or reorganizes the topic toward a stronger research package.
+
+## Log rules
+
+- Log real work, not intentions alone.
+- Record verifier or audit commands only when actually run.
+- Keep blocker names aligned with the verifier artifact and claim-gate language.
+- Treat this file as coordination history, not as the canonical status source.
+- One entry should correspond to one coherent hardening wave when possible.
+
+## Entries
+
+### 2026-06-21 - Berut figure-locator mapping pass
+
+- Scope: narrow the primary Berut provenance blocker beyond selected policy choice by attaching one exact preview-level locator to the current topic-summary row
+- Wave type: `gate pass`
+- Added or changed: added `BERUT_2012_FIGURE_LOCATOR_MAPPING.md` and `berut_2012_figure_locator_mapping.json`; updated the Berut source record, provenance gap, transcription-policy blocker, row-closure matrix, Landauer row contract, verifier intake/gate wording, and root docs so the package now names `Figure 3: Erasure rate and approach to the Landauer limit.` as the current authoritative preview-level locator for the Berut summary row
+- Files touched: `BERUT_2012_FIGURE_LOCATOR_MAPPING.md`, `Data/03_Research/berut_2012_figure_locator_mapping.json`, `docs/data/external/thermodynamics/landauer/berut_2012/source_record.json`, `BERUT_2012_PROVENANCE_GAP.md`, `Data/03_Research/berut_2012_provenance_gap.json`, `BERUT_2012_TRANSCRIPTION_POLICY_BLOCKER.md`, `Data/03_Research/berut_2012_transcription_policy_blocker.json`, `ROW_CLOSURE_MATRIX.md`, `Data/03_Research/row_closure_matrix.json`, `Data/03_Research/landauer_row_contract.json`, `Code/03_Research/Research_Landauer.py`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: preview-surface inspection of `https://www.nature.com/articles/nature10872` showing `Figure 3: Erasure rate and approach to the Landauer limit.`; then rerun the primary verifier
+- Result: `WARN`
+- Blocker narrowed: Berut is no longer blocked by figure-locator choice itself; the package now fixes `Figure 3` as the current preview-level locator and makes the next Berut controller numeric-point capture or one stronger upstream numeric surface
+- Still open: one numeric point/curve within `Figure 3`, one machine-transcribed value or stronger numeric surface, and one explicit rule mapping that figure-level support into the current runtime value and uncertainty remain open
+- Next controller: `figure_3_locator_captured_numeric_point_or_stronger_surface_still_required`
+- Claim impact: no upgrade; this wave only narrows the Berut provenance path from locator choice to numeric-capture closure
+- Workflow linkage: follows `For Work/18_Research_Hardening_Workflow.md` by closing one locator-choice ambiguity in a machine-readable way before any stronger provenance wording
+
+### 2026-06-21 - Berut transcription-policy decision pass
+
+- Scope: narrow the primary Berut provenance blocker beyond an open policy choice by selecting one conservative normalization path for the visible figure-level preview surface
+- Wave type: `gate pass`
+- Added or changed: added `BERUT_2012_TRANSCRIPTION_POLICY_DECISION.md` and `berut_2012_transcription_policy_decision.json`; updated the Berut transcription-policy blocker, row-closure matrix, verifier intake wording, and root docs so the repo now selects `figure_level_locator_capture` as the preferred path and pushes the next Berut controller to one exact figure/panel locator plus runtime mapping
+- Files touched: `BERUT_2012_TRANSCRIPTION_POLICY_DECISION.md`, `Data/03_Research/berut_2012_transcription_policy_decision.json`, `BERUT_2012_TRANSCRIPTION_POLICY_BLOCKER.md`, `Data/03_Research/berut_2012_transcription_policy_blocker.json`, `ROW_CLOSURE_MATRIX.md`, `Data/03_Research/row_closure_matrix.json`, `Code/03_Research/Research_Landauer.py`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: Berut is no longer blocked by a fully open transcription-policy choice; the package now explicitly selects `figure_level_locator_capture`, so the remaining controller is one exact figure/panel locator and explicit runtime mapping under that policy
+- Still open: exact figure/panel locator capture, explicit figure-to-runtime mapping, and broader row-level source normalization remain open
+- Next controller: `figure_level_locator_capture_then_runtime_mapping`
+- Claim impact: no upgrade; this wave only selects one conservative provenance path and makes the next Berut evidence requirement narrower
+- Workflow linkage: follows `For Work/18_Research_Hardening_Workflow.md` by converting an open policy choice into one named machine-readable decision before any stronger provenance language
+
+### 2026-06-21 - Peterson branch-identity policy pass
+
+- Scope: narrow the Peterson branch one step beyond `composite source conflict` by separating the incompatible candidate families behind the legacy local `Peterson 2018` label
+- Wave type: `source pass`
+- Added or changed: added `PETERSON_BRANCH_IDENTITY_POLICY.md` and `peterson_branch_identity_policy.json`; updated the Peterson conflict note, the staged Peterson source record, the local runtime placeholder wording, the row-closure matrix, and the verifier/source-intake wording so the branch now explicitly separates the Peterson-led `2016` Proc. R. Soc. A paper, the trapped-ion PRL `2018` quantum-Landauer paper, and the Nature Physics `2018` mesoscopic-entropy DOI instead of treating `Peterson 2018` as one fuzzy paper label
+- Files touched: `PETERSON_BRANCH_IDENTITY_POLICY.md`, `Data/03_Research/peterson_branch_identity_policy.json`, `PETERSON_2018_SOURCE_CONFLICT.md`, `Data/03_Research/peterson_2018_source_conflict.json`, `docs/data/external/thermodynamics/landauer/peterson_2018/source_record.json`, `Data/03_Research/experimental_data.py`, `Data/03_Research/row_closure_matrix.json`, `Code/03_Research/Research_Landauer.py`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `ROW_CLOSURE_MATRIX.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: primary-source inspection of `https://doi.org/10.1098/rspa.2015.0813` together with previously checked DOI metadata for `10.1103/PhysRevLett.120.210601` and `10.1038/s41567-018-0250-5`; then `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: Peterson is no longer blocked only by a generic one-paper conflict; the package now explicitly separates the Peterson-led `2016` authorship cue from the trapped-ion `2018` PRL cue and from the Nature Physics `2018` DOI, so the unsupported local `Peterson 2018` label is demoted to legacy-placeholder status
+- Still open: one exact upstream paper identity is still required before any Peterson-side row capture, unit normalization, uncertainty propagation, or benchmark use
+- Next controller: `exact_one_paper_identity_before_any_row_capture`
+- Claim impact: no upgrade; this wave only removes a misleading local paper label and tightens the provenance boundary around the quantum-Landauer branch
+- Workflow linkage: follows `For Work/18_Research_Hardening_Workflow.md` by narrowing one controlling blocker into a more explicit machine-readable policy before any attempt at numeric repair or broader promotion
+
+### 2026-06-19 - Hong provisional-target policy pass
+
+- Scope: narrow the Hong branch one step beyond `multiple candidate values visible` by declaring which currently visible Hong-side quantity best matches the inherited `2016 / 44% above limit / ~0.026 eV` runtime narrative
+- Added or changed: added `HONG_2016_RUNTIME_TARGET_POLICY.md` and `hong_2016_runtime_target_policy.json` so the topic now machine-readably provisionally prefers the preprint temperature-series mean `4.2 +/- 0.9 zJ (~0.0262 eV)` over the room-temperature five-trial average `6.09 +/- 1.43 zJ (~0.0380 eV)` for the inherited legacy runtime narrative; updated `row_closure_matrix.json`, `landauer_row_contract.json`, `LANDAUER_ROW_CONTRACT.md`, and the verifier-generated Hong intake wording so the next controller is no longer generic target selection but final-source confirmation plus a keep/replace/remove policy for the local `0.028 eV` row; then reran the verifier and synced root docs/manifests
+- Files touched: `HONG_2016_RUNTIME_TARGET_POLICY.md`, `Data/03_Research/hong_2016_runtime_target_policy.json`, `Data/03_Research/row_closure_matrix.json`, `Data/03_Research/landauer_row_contract.json`, `LANDAUER_ROW_CONTRACT.md`, `Code/03_Research/Research_Landauer.py`, `Data/03_Research/source_evidence_intake_stub.json`, `README.md`, `LIMITATIONS.md`, `ROW_CLOSURE_MATRIX.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`, `Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`
+- Verified with: `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: Hong no longer stops at `which statistic is the intended target?`; the package now provisionally prefers the `4.2 +/- 0.9 zJ` target for the inherited legacy narrative and pushes the next controller to final-source confirmation plus the local `0.028 eV` row policy
+- Still open: the repo still lacks a final archived publisher article page, a final-source confirmation for the provisionally preferred target, and a declared keep/replace/remove decision for the local `0.028 eV` row
+- Next controller: `final_source_confirmation_for_provisionally_selected_temperature_series_target`
+- Claim impact: no upgrade; this wave only turns Hong target selection into an explicit conservative topic policy
+- Workflow linkage: follows `For Work/18_Research_Hardening_Workflow.md` by turning one open choice into a named machine-readable controller before broadening scope
+
+### 2026-06-19 - Hong preprint numeric-target narrowing pass
+
+- Scope: move the Hong branch beyond `candidate source family with Crossref only` by attaching one accessible same-author primary-facing precursor surface and threading its numeric consequences through the row-governance package
+- Added or changed: updated the staged `Hong 2016` source record so it now records the accessible arXiv precursor `1411.6730` plus two source-facing dissipation summaries (`6.09 +/- 1.43 zJ` and `4.2 +/- 0.9 zJ`); added a corresponding `HONG_2016_CANDIDATE` block to `experimental_data.py`; updated the Hong acquisition, lineage, and numeric-mismatch notes/JSON so the blocker is now `which Hong statistic is the intended runtime target?` rather than only `missing primary source`; updated the row-closure matrix so Hong now exposes `numeric_target_resolution_then_final_source_confirmation`; then reran the verifier and synced the README, limitations, verification spec, row-closure prose, and manifest wording
+- Files touched: `docs/data/external/thermodynamics/landauer/hong_2016/source_record.json`, `Data/03_Research/experimental_data.py`, `Code/03_Research/Research_Landauer.py`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `Data/03_Research/row_closure_matrix.json`, `HONG_2016_SOURCE_ACQUISITION_BLOCKER.md`, `Data/03_Research/hong_2016_source_acquisition_blocker.json`, `HONG_2016_SOURCE_LINEAGE_NOTE.md`, `Data/03_Research/hong_2016_source_lineage_note.json`, `HONG_2016_NUMERIC_MISMATCH_NOTE.md`, `Data/03_Research/hong_2016_numeric_mismatch_note.json`, `ROW_CLOSURE_MATRIX.md`, `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`, `Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`
+- Verified with: primary-facing inspection of `https://arxiv.org/abs/1411.6730` / `https://arxiv.org/pdf/1411.6730`; then `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: Hong is no longer blocked mainly by `no primary-facing numeric surface`; the package now records that one accessible same-author preprint exposes at least two Hong-side dissipation candidates, one near `~0.026 eV` and another near `~0.038 eV`, so the next Hong controller is provisional target selection plus final-source confirmation rather than generic source discovery
+- Still open: the repo still lacks a final archived publisher article page, a declared keep/replace/remove policy for the legacy `0.028 eV` runtime row, and a final-source confirmation for whichever Hong statistic is chosen
+- Next controller: `numeric_target_resolution_then_final_source_confirmation`
+- Claim impact: no upgrade; this wave only strengthens Hong-side provenance and makes the numeric blocker more specific without closing the runtime row
+- Workflow linkage: follows `For Work/18_Research_Hardening_Workflow.md` by narrowing one controlling blocker into a more explicit machine-readable next move before broadening scope
+
+### 2026-06-18 - Jun runtime-separation and summary-interval pass
+
+- Scope: move the narrowed Jun blocker out of prose only by separating the pinned Jun source-facing asymptotic-work quantity from the legacy `0.028 eV` mixed-lineage row inside the live verifier
+- Added or changed: updated `Research_Landauer.py` so the main lower-bound metric now uses the pinned Jun source-facing asymptotic-work summary (`0.71 +/- 0.03 kT`) converted into `eV`, while the legacy `0.028 eV` value is retained only as mixed-lineage context; threaded the resulting Jun summary-layer interval into `uncertainty_preprocessing_manifest.json`, `uncertainty_propagation_summary.json`, `measured_constant_uncertainty_package.json`, the main verification artifact, and the generated source-evidence intake; then aligned `JUN_2014_UNCERTAINTY_GAP.md`, `jun_2014_uncertainty_gap.json`, `JUN_2014_RUNTIME_MAPPING_CONFLICT.md`, `jun_2014_runtime_mapping_conflict.json`, `ROW_CLOSURE_MATRIX.md`, `row_closure_matrix.json`, and the root docs/manifests to the new state
+- Files touched: `Code/03_Research/Research_Landauer.py`, `Data/03_Research/experimental_data.py`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/uncertainty_preprocessing_manifest.json`, `Data/03_Research/uncertainty_propagation_summary.json`, `Data/03_Research/measured_constant_uncertainty_package.json`, `Data/03_Research/row_closure_matrix.json`, `ROW_CLOSURE_MATRIX.md`, `JUN_2014_UNCERTAINTY_GAP.md`, `Data/03_Research/jun_2014_uncertainty_gap.json`, `JUN_2014_RUNTIME_MAPPING_CONFLICT.md`, `Data/03_Research/jun_2014_runtime_mapping_conflict.json`, `README.md`, `VERIFICATION_SPEC.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`, `Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`
+- Verified with: `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: `Jun` is no longer represented by the legacy `0.028 eV` row inside the main lower-bound metric; the verifier now uses the pinned Jun source-facing asymptotic-work quantity and carries a first-pass summary-layer interval, while the remaining blocker is the split/replace/relabel policy for the legacy row plus tighter file/row identity for the Jun summary quantity
+- Still open: the legacy `0.028 eV` row is still mixed-lineage context rather than a closed `Jun` or `Hong` benchmark row, Berut still needs stronger-surface-or-policy closure, Hong still needs primary-source capture then numeric-target resolution, Peterson still needs one exact paper identity before row capture, and the broader derivation/units/mapping/beta lanes remain open
+- Claim impact: no upgrade; this wave only makes the Jun lane more internally honest, more source-facing, and easier to harden without silently keeping the mixed-lineage runtime row inside the main metric
+
+### 2026-06-18 - Jun quantitative-mismatch pass
+
+- Scope: narrow the Jun blocker from a generic runtime-mapping problem to an evidence-backed quantitative mismatch using the pinned Jun primary-source-facing asymptotic-work summary
+- Added or changed: updated the staged `Jun 2014` source record so it now records the source-facing `0.71 +/- 0.03 kT` asymptotic-work summary and the `+/- 0.10 kT` measurement-statistics scale; updated `JUN_2014_RUNTIME_MAPPING_CONFLICT.md`, `jun_2014_runtime_mapping_conflict.json`, `ROW_CLOSURE_MATRIX.md`, and `row_closure_matrix.json` so the next Jun controller is now a split/replace/relabel decision on the legacy `0.028 eV` runtime row before uncertainty closure; reran the verifier and synced root docs/manifests to the new controller wording and hashes
+- Files touched: `docs/data/external/thermodynamics/landauer/jun_2014/source_record.json`, `JUN_2014_RUNTIME_MAPPING_CONFLICT.md`, `Data/03_Research/jun_2014_runtime_mapping_conflict.json`, `ROW_CLOSURE_MATRIX.md`, `Data/03_Research/row_closure_matrix.json`, `README.md`, `VERIFICATION_SPEC.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`, `Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`
+- Verified with: primary-source inspection of the Jun arXiv/PRL preprint text (`High-precision test of Landauer's principle in a feedback trap`), including the asymptotic-work summary `0.71 +/- 0.03 kT`; then `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: the pinned Jun branch is no longer blocked only by a vague mapping/uncertainty statement; the current package now records that the pinned Jun asymptotic-work quantity sits near `0.01836 eV` at the current `300 K` verifier baseline and therefore does not match the legacy `0.028 eV` runtime row
+- Still open: the repo still must decide whether the legacy `0.028 eV` row belongs in a non-Jun branch, whether a different Jun quantity can justify keeping it, or whether the row should be removed from Jun-facing closure logic entirely; source-backed uncertainty and propagated intervals for the final Jun-facing quantity also remain open
+- Claim impact: no upgrade; this wave only makes the Jun-side blocker more evidence-backed and reduces the risk of treating the legacy runtime row as a clean Jun benchmark quantity
+
+### 2026-06-18 - Claim-gate row-controller threading pass
+
+- Scope: align the dependency/export gates with the same row-controller chain already exposed by the main verifier artifact, then sync the topic docs to the rerun outputs
+- Added or changed: updated `Research_Landauer.py` so both `thermodynamic_claim_scope_gate` and `thermodynamic_bridge_foundation_claim_gate.json` now carry row-controller-aware blockers for `Berut`, `Jun`, `Hong`, and `Peterson`; synced `README.md`, `VERIFICATION_SPEC.md`, and `DATA_MANIFEST.md` to the new gate wording and refreshed manifest hashes/sizes for the rerun outputs
+- Files touched: `Code/03_Research/Research_Landauer.py`, `README.md`, `VERIFICATION_SPEC.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`, `Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`
+- Verified with: `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: the claim gates and the row-closure matrix now point to the same machine-readable next controllers, so dependent-topic inheritance and topic-level blocked claims no longer require separate blocker reconstruction paths
+- Still open: Berut still needs stronger-surface-or-policy closure, Jun still needs runtime mapping then source-backed uncertainty, Hong still needs primary-source capture then numeric-target resolution, Peterson still needs one exact paper identity before row capture, and the derivation/units/mapping/beta lanes remain open
+- Claim impact: no upgrade; this wave only unifies blocker navigation across the main artifact, the foundation gate, and the local docs
+
+### 2026-06-18 - Main-artifact row-controller export pass
+
+- Scope: move the active Landauer row controllers into the main verifier artifact so the current blocker chain can be reconstructed from the artifact itself instead of only from the separate row-closure matrix
+- Added or changed: updated `Research_Landauer.py` so `row_closure_matrix.json` is now a declared verifier input and the main artifact exports `row_controller_summary` for `Berut`, `Jun`, `Hong`, and `Peterson`; synced `README.md`, `VERIFICATION_SPEC.md`, and `DATA_MANIFEST.md` to the new input chain and artifact field
+- Files touched: `Code/03_Research/Research_Landauer.py`, `README.md`, `VERIFICATION_SPEC.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`
+- Verified with: `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: the main artifact now exposes the next controller for each active Landauer row without requiring a second manual reconstruction pass through `row_closure_matrix.json`
+- Still open: the controllers themselves remain unchanged; Berut still needs stronger-surface-or-policy closure, Jun still needs runtime mapping then uncertainty, Hong still needs primary-source capture then numeric-target resolution, and Peterson still needs one exact paper identity before any row capture
+- Claim impact: no upgrade; this wave only centralizes blocker visibility and improves artifact-first status reconstruction
+- Notes: the rerun kept `3/3` primary tests passing and added `row_closure_matrix.json` to the declared verifier input chain.
+
+### 2026-06-18 - For Work status-reconstruction sync pass
+
+- Scope: sync the remaining local prose surfaces to the current controlling artifact/gate language after reconstructing `0.13` state in the `For Work` order
+- Added or changed: reviewed `For Work/00_README.md`, `02_Project_Workflow_and_Lifecycle.md`, `04_Claim_and_Evidence_Rubric.md`, and `18_Research_Hardening_Workflow.md`; then aligned `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, and the README core-status line so they now match the current artifact/gate framing for Berut, Jun, and verifier inputs instead of older broader wording
+- Files touched: `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `README.md`, `UPDATE_LOG.md`
+- Verified with: direct consistency inspection against `Result/artifacts/0_13_thermodynamic_bridge_verification.json`, `thermodynamic_bridge_foundation_claim_gate.json`, `source_evidence_readiness_matrix.json`, and the updated local docs
+- Result: no verifier rerun required because this wave did not modify a declared verifier input
+- Blocker narrowed: the local prose package now points more directly to the current controlling blockers instead of older shorthand such as `raw-table source-lock`
+- Still open: Berut stronger-surface-or-policy closure, Jun runtime-quantity mapping plus uncertainty capture, Hong primary-source capture plus numeric-target resolution, Peterson one-paper identity closure, and the broader derivation/uncertainty gates
+- Claim impact: no upgrade; this wave only restores status-first consistency between `For Work` workflow expectations and the current `0.13` topic package
+
+### 2026-06-16 - Jun/Hong/Peterson next-controller pass
+
+- Scope: make the remaining non-Berut Landauer-row blockers easier to advance one step at a time by adding explicit `next_controller` states instead of leaving the next move to prose inference
+- Added or changed: updated `row_closure_matrix.json` so `Jun`, `Hong`, and `Peterson` now expose explicit next-controller states; updated `jun_2014_uncertainty_gap.json`, `jun_2014_runtime_mapping_conflict.json`, `hong_2016_source_lineage_note.json`, and `peterson_2018_source_conflict.json` so each artifact now states the one next controlling closure move in machine-readable form
+- Files touched: `Data/03_Research/row_closure_matrix.json`, `Data/03_Research/jun_2014_uncertainty_gap.json`, `Data/03_Research/jun_2014_runtime_mapping_conflict.json`, `Data/03_Research/hong_2016_source_lineage_note.json`, `Data/03_Research/peterson_2018_source_conflict.json`, `UPDATE_LOG.md`
+- Verified with: direct consistency inspection against the current verifier artifact, source-evidence workflow files, and the updated row-governance JSON files
+- Result: no verifier rerun required because this wave did not modify a declared verifier input
+- Blocker narrowed: `Jun` now points first to runtime-quantity mapping and then uncertainty capture, `Hong` now points first to primary-source capture and then numeric-target resolution, and `Peterson` now points first to one exact paper identity before any numeric repair
+- Still open: none of the three branches has closed its next controller yet, so the main claim ceiling and artifact status remain unchanged
+- Claim impact: no upgrade; this wave only makes the next closure move for each remaining Landauer-row blocker more explicit and less guess-dependent
+
+### 2026-06-16 - Berut row-governance narrowing pass
+
+- Scope: align the manual Berut row-governance artifacts with the narrower `stronger surface or declared policy` framing already used by the verifier-driven workflow
+- Added or changed: updated `row_closure_matrix.json`, `ROW_CLOSURE_MATRIX.md`, `berut_2012_provenance_gap.json`, `BERUT_2012_PROVENANCE_GAP.md`, and the matching README summary line so Berut is no longer described mainly as a generic raw/supplement-table problem; these artifacts now say more precisely that the next controlling blocker is one stronger upstream numeric surface or one explicit transcription/normalization policy, followed by source-row capture and mapping
+- Files touched: `Data/03_Research/row_closure_matrix.json`, `ROW_CLOSURE_MATRIX.md`, `Data/03_Research/berut_2012_provenance_gap.json`, `BERUT_2012_PROVENANCE_GAP.md`, `README.md`, `UPDATE_LOG.md`
+- Verified with: direct consistency inspection against `berut_2012_source_surface_note.json`, `berut_2012_transcription_policy_blocker.json`, the current verifier artifact, and the updated row-governance files
+- Result: no verifier rerun required because this wave did not modify a declared verifier input
+- Blocker narrowed: the row-governance layer now matches the main artifact in treating Berut as a `surface-or-policy` controller problem, not just a vague missing-table problem
+- Still open: no stronger Berut numeric surface is archived, no transcription policy has been chosen, and no source-row-to-runtime mapping exists yet
+- Claim impact: no upgrade; this wave only reduces wording drift between manual governance files and the verifier-driven claim ceiling
+
+### 2026-06-16 - Berut blocker-language alignment pass
+
+- Scope: align the remaining generated artifact language with the narrower Berut surface/transcription-policy framing instead of leaving some sections on the older generic raw-table wording
+- Added or changed: updated `Research_Landauer.py` so the generated `evidence_lanes`, derivation-step question for uncertainty/source closure, tier-promotion requirements, and final interpretation now all describe the Berut blocker in the same narrower terms used by the source-evidence intake and readiness workflow; reran the verifier and synced manifest hashes to the new artifact
+- Files touched: `Code/03_Research/Research_Landauer.py`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`
+- Verified with: `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: the main artifact no longer describes the Berut problem only as `raw table not archived`; it now says more precisely that Berut still lacks either a stronger upstream numeric surface or one declared transcription policy tied to a row locator
+- Still open: the stronger Berut surface is still not archived, no explicit transcription policy has been chosen, Jun uncertainty is still open, and the bridge-proof lane remains blocked
+- Claim impact: no upgrade; this wave only improves internal consistency and makes the main artifact harder to overread
+- Notes: the rerun kept `3/3` primary tests passing, kept the topic artifact at `WARN`, and preserved the high-level source-readiness summary at `3/7` ready and `4/7` partial.
+
+### 2026-06-16 - Berut intake/workflow threading pass
+
+- Scope: move the narrowed Berut surface/transcription-policy blocker back into the verifier-generated workflow artifacts instead of leaving it only in dedicated side-note files
+- Added or changed: `Research_Landauer.py` now treats `berut_2012_source_surface_note.json` and `berut_2012_transcription_policy_blocker.json` as declared verifier inputs; the generated source-evidence intake target for Berut now states that the currently visible Nature surface is still figure-level, and it now requires one explicit transcription-policy choice in addition to any future row locator; the readiness matrix now keeps Berut blocked by those named workflow fields instead of only by a generic missing-table description; synced `README.md`, `METHOD.md`, and `DATA_MANIFEST.md` to match the tighter machine-readable workflow boundary
+- Files touched: `Code/03_Research/Research_Landauer.py`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `README.md`, `METHOD.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`
+- Verified with: `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: the Berut source-evidence lane no longer stops at `raw table still missing`; it now machine-readably says that the currently accessible source surface is still preview-level and that one declared normalization/transcription policy is still missing before row-level closure
+- Still open: no stronger Berut source surface has been archived, no authoritative figure/table locator is attached, no transcription policy has been selected, and no source-row-to-runtime mapping exists yet
+- Claim impact: no upgrade; this wave only makes the verifier-driven workflow more honest and harder to overread
+- Notes: the rerun kept `3/3` primary tests passing, kept the topic artifact at `WARN`, preserved the high-level readiness counts at `3/7` ready and `4/7` partial, and added the Berut surface-note plus transcription-policy JSON files to the declared verifier input chain.
+
+### 2026-06-16 - Peterson composite-misreference hardening pass
+
+- Scope: move the `Peterson 2018` blocker beyond a generic `source identity unresolved` label by attaching direct DOI-metadata evidence showing that the local runtime branch is composite
+- Added or changed: verified two candidate DOI routes via Crossref metadata; updated the staged Peterson source record so it now records both DOI checks, candidate paper metadata, and a `composite_misreference_detected` resolution state; updated the Peterson conflict note/JSON to record that the local runtime branch mixes incompatible DOI, title, system, and authorship cues; downgraded both local `experimental_data.py` Peterson entries to explicit legacy composite placeholders; updated the verifier intake wording so the generated source-evidence intake now reflects the stronger blocker language
+- Files touched: `docs/data/external/thermodynamics/landauer/peterson_2018/source_record.json`, `PETERSON_2018_SOURCE_CONFLICT.md`, `Data/03_Research/peterson_2018_source_conflict.json`, `Data/03_Research/experimental_data.py`, `Data/landauer/experimental_data.py`, `Code/03_Research/Research_Landauer.py`, `Data/03_Research/row_closure_matrix.json`, `ROW_CLOSURE_MATRIX.md`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`
+- Verified with: Crossref work-record fetches for `10.1103/PhysRevLett.120.210601` and `10.1038/s41567-018-0250-5`; then `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: the Peterson branch is no longer described only as an unresolved one-paper citation problem; the repo now records machine-readably that the local runtime branch is composite and therefore unsafe to treat as a source-ready benchmark lane
+- Still open: one exact upstream paper still has not been chosen for this branch, no row-level numeric capture or uncertainty row exists, and the branch should still be removed rather than repaired if no exact source-to-runtime mapping can be justified
+- Claim impact: no upgrade; this wave only strengthens claim discipline by replacing a vague citation conflict with a directly evidenced composite-misreference blocker
+- Notes: the rerun kept the main artifact at `WARN`, preserved `3/3` primary test passes, kept the readiness summary at `3/7` ready and `4/7` partial, and updated the Peterson intake row so `doi_or_url` and `reported_energy_value` now remain explicitly partial because the branch is composite rather than merely underspecified.
+
+### 2026-06-16 - Berut source-surface narrowing pass
+
+- Scope: narrow the `Berut 2012` provenance blocker from a generic missing-row-label statement to a more precise description of what the currently visible primary source surface actually exposes
+- Added or changed: inspected the currently accessible Nature preview surface for `10.1038/nature10872`; updated the Berut external source record so it now records that the visible surface exposes the abstract plus Figure 1-3 labels but not a directly visible row table or supplementary identifier; added a dedicated Berut source-surface note/JSON; synced root topic docs and the data manifest to reflect that the next Berut provenance move may require supplementary capture, figure-level locator capture, or explicit transcription policy
+- Files touched: `docs/data/external/thermodynamics/landauer/berut_2012/source_record.json`, `BERUT_2012_SOURCE_SURFACE_NOTE.md`, `Data/03_Research/berut_2012_source_surface_note.json`, `BERUT_2012_PROVENANCE_GAP.md`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: direct inspection of the Nature preview page for `https://www.nature.com/articles/nature10872`; then `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: the Berut row-locator problem is now explicitly tied to a preview surface that currently looks figure-level rather than table-level
+- Still open: the repo still lacks an archived source row, a supplementary-file identity, a figure-to-runtime transcription policy, and an explicit source-row-to-runtime mapping
+- Claim impact: no upgrade; this wave only makes the Berut provenance blocker more precise and harder to overread
+- Notes: the rerun kept the main artifact at `WARN`, preserved `3/3` primary test passes, and updated the declared Berut source-record input hash without changing the high-level readiness counts.
+
+### 2026-06-16 - Berut transcription-policy narrowing pass
+
+- Scope: turn the newly narrowed Berut surface blocker into one explicit policy-choice blocker rather than leaving future row normalization method implicit
+- Added or changed: added a Berut transcription-policy blocker note/JSON; updated the Berut provenance-gap JSON and row-closure matrix so they now require one declared policy choice if Berut remains figure-level at the accessible source surface; synced root topic docs and the data manifest to reflect the new policy-choice blocker
+- Files touched: `BERUT_2012_TRANSCRIPTION_POLICY_BLOCKER.md`, `Data/03_Research/berut_2012_transcription_policy_blocker.json`, `BERUT_2012_PROVENANCE_GAP.md`, `Data/03_Research/berut_2012_provenance_gap.json`, `ROW_CLOSURE_MATRIX.md`, `Data/03_Research/row_closure_matrix.json`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: direct consistency inspection against `BERUT_2012_SOURCE_SURFACE_NOTE.md`, `berut_2012_source_surface_note.json`, and the current row-closure state
+- Result: no verifier rerun required because this wave did not modify a declared verifier input
+- Blocker narrowed: the Berut provenance lane no longer stops at `row locator missing`; it now also records that the repo must choose one explicit normalization policy before claiming row-level closure
+- Still open: no supplementary file has been archived, no figure panel has been declared authoritative, no machine-transcribed non-preview row has been attached, and no source-row-to-runtime mapping exists yet
+- Claim impact: no upgrade; this wave only reduces ambiguity about what kind of future Berut evidence would count as credible closure
+
+### 2026-06-15 - Hong branch machine-readable workflow pass
+
+- Scope: bring the staged `Hong 2016` alternate Landauer branch into the verifier-driven evidence workflow instead of leaving it only in prose-side blocker notes
+- Added or changed: `Research_Landauer.py` now reads the staged `Hong 2016` source record as a declared verifier input and emits a seventh source-evidence target for the nanomagnetic-memory candidate branch; the row-closure matrix was expanded so Hong now appears as its own machine-readable row-level blocker rather than only as adjacent narrative; the Hong source package and acquisition blocker were then tightened again so the repo now records a candidate DOI/PMID/PMCID trail, a confirmed Crossref DOI metadata anchor, a locally archived Crossref work-record snapshot, current direct-fetch access blockers, and a numeric-lane note that now distinguishes Crossref's qualitative abstract from the still-missing source-facing number while also quantifying what the current `44% above limit` wording implies against the verifier baseline
+- Files touched: `Code/03_Research/Research_Landauer.py`, `VERIFICATION_SPEC.md`, `ROW_CLOSURE_MATRIX.md`, `Data/03_Research/row_closure_matrix.json`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `README.md`, `DATA_MANIFEST.md`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`, `UPDATE_LOG.md`
+- Verified with: `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: the Hong branch is no longer just a side note to the Jun blocker; it is now an explicit source-evidence target and row-level closure lane with its own pending DOI/page, numeric-target, and uncertainty requirements
+- Still open: direct publisher-page or PDF acquisition beyond the current `403`/Cloudflare challenge, exact source-facing row extraction, formal `0.026 eV` versus `0.028 eV` reconciliation, and any propagated interval for the alternate branch
+- Claim impact: no upgrade; this wave only makes the alternate-source blocker visible in the same machine-readable workflow that already controls Berut, Jun, and Peterson
+- Notes: the rerun kept the main artifact at `WARN`, preserved `3/3` primary test passes, kept the source-evidence workflow at `3/7` targets ready for source review and `4/7` still partial, moved the Hong intake row to `4/8` complete fields with bibliographic identity now closed by Crossref metadata while direct page capture remains partial, and added the local `crossref_work_record.json` snapshot to the verifier input chain.
+
+### 2026-05-28 - Source-evidence and foundation-gate hardening pass
+
+- Scope: `0.13` verifier artifact, source-evidence workflow files, and dependency export gate
+- Added or changed: source-evidence intake stub, readiness matrix, foundation claim gate, and artifact-level claim-scope controller
+- Files touched: `Code/03_Research/Research_Landauer.py`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`
+- Verified with: `.venv\Scripts\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: broad provenance uncertainty became named blockers for raw Landauer numeric tables, uncertainty propagation, and UET-specific derivation
+- Still open: source-normalized row capture, uncertainty-aware preprocessing, and a derivation map from UET variables to standard thermodynamic identities
+- Claim impact: wording stayed capped at lower-bound and standard-formula consistency only
+- Notes: foundation exports were split into allowed lower-bound/formula lanes and blocked bridge-proof/source-normalized/external-validation lanes
+
+### 2026-06-12 - Source-normalization and uncertainty-preprocessing pass
+
+- Scope: verifier-driven provenance and uncertainty hardening for the `0.13` foundation topic
+- Added or changed: lane-based method/baseline docs, gravity/measured-constant source records, partially populated source-evidence intake, readiness matrix with partial-evidence counts, uncertainty-preprocessing manifest, and rerun artifact
+- Files touched: `METHOD.md`, `BASELINE_COMPARISON.md`, `README.md`, `DATA_MANIFEST.md`, `VERIFICATION_SPEC.md`, `LIMITATIONS.md`, `UPDATE_LOG.md`, `Code/03_Research/Research_Landauer.py`, `docs/core/uet_parameters.py`, `docs/core/uet_master_equation.py`, `docs/data/external/gravity/ligo_black_hole_mergers/source_record.json`, `docs/data/external/gravity/eht_black_hole_masses/source_record.json`, `docs/data/external/constants/codata/measured_constants_2022_source_record.json`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `Data/03_Research/uncertainty_preprocessing_manifest.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`
+- Verified with: `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: source readiness moved from an all-pending state to `3/6` targets ready for source review and `3/6` targets with partial evidence; uncertainty preprocessing moved from a generic plan to a `5`-row machine-readable manifest
+- Still open: Berut raw/supplement row capture, Jun row-level file identity, Peterson source-resolution closure, propagated uncertainty outputs, and UET bridge derivation map
+- Claim impact: no upgrade; documentation now makes the current claim ceiling easier to audit
+- Notes: the verifier rerun passed all `3/3` primary formula/lower-bound tests; artifact stayed `WARN` because plot rendering lacks `plotly` in the bundled runtime and because the topic's source/uncertainty/derivation blockers remain open
+
+### 2026-06-12 - Partial uncertainty-propagation artifact pass
+
+- Scope: move `0.13` from uncertainty planning only toward machine-readable propagated intervals
+- Added or changed: verifier now writes `Data/03_Research/uncertainty_propagation_summary.json` and threads its status into the main artifact, claim scope gate, and dependency gate wording
+- Files touched: `Code/03_Research/Research_Landauer.py`, `README.md`, `VERIFICATION_SPEC.md`, `METHOD.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `Data/03_Research/uncertainty_propagation_summary.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`
+- Verified with: `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: uncertainty moved from preprocessing-only to a partial propagated-interval package covering `4/5` tracked rows
+- Still open: Jun uncertainty row, measured-constant uncertainty package, Berut raw-row locator/source closure, Peterson source-resolution closure, and UET bridge derivation map
+- Claim impact: no upgrade; the artifact now makes it explicit that Berut's topic-summary `1 sigma` interval still crosses the Landauer lower bound, so lower-bound wording remains conservative
+- Notes: plot rendering still warns because the bundled runtime lacks `plotly`; this did not block the machine-readable uncertainty outputs
+
+### 2026-06-12 - Bridge derivation-boundary mapping pass
+
+- Scope: make the UET bridge-proof gap explicit instead of leaving it as a generic blocker label
+- Added or changed: root `DERIVATION_MAP.md`, verifier-generated `Data/03_Research/bridge_derivation_map.json`, and documentation/spec references to the new derivation-boundary files
+- Files touched: `DERIVATION_MAP.md`, `Code/03_Research/Research_Landauer.py`, `README.md`, `METHOD.md`, `VERIFICATION_SPEC.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `Data/03_Research/bridge_derivation_map.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`
+- Verified with: `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: the bridge-proof blocker is now decomposed into explicit open steps for units contract, Landauer-to-UET mapping, gravity-identity mapping, and uncertainty/source closure
+- Still open: all four derivation steps remain open or partial; the new map is a boundary artifact, not a derivation itself
+- Claim impact: no upgrade; the claim ceiling is clearer and harder to overread
+
+### 2026-06-12 - Units-contract boundary pass
+
+- Scope: separate physical SI observables from topic-local proxies before any stronger bridge wording
+- Added or changed: root `UNITS_CONTRACT.md`, verifier-generated `Data/03_Research/units_contract.json`, and documentation/spec references to the new units-boundary files
+- Files touched: `UNITS_CONTRACT.md`, `Code/03_Research/Research_Landauer.py`, `README.md`, `METHOD.md`, `VERIFICATION_SPEC.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `Data/03_Research/units_contract.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`
+- Verified with: `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: the topic now explicitly declares which symbols are SI quantities and which remain proxies, reducing the risk of overreading engine outputs as physical thermodynamic observables
+- Still open: no justified proxy-to-SI bridge conversion exists yet; the units contract is a boundary artifact, not a closure artifact
+
+### 2026-06-12 - Landauer-to-UET mapping honesty pass
+
+- Scope: make the Landauer bridge lane say exactly what current code supports and nothing more
+- Added or changed: root `LANDAUER_UET_MAPPING.md`, verifier-generated `Data/03_Research/landauer_uet_mapping.json`, and documentation/spec references to the new lane-specific mapping files
+- Files touched: `LANDAUER_UET_MAPPING.md`, `Code/03_Research/Research_Landauer.py`, `README.md`, `METHOD.md`, `VERIFICATION_SPEC.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `Data/03_Research/landauer_uet_mapping.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`
+- Verified with: `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: the topic now records machine-readably that the current engine path imports the standard lower bound as a constraint and does not yet expose a nontrivial UET-added Landauer term
+- Still open: a non-circular mapping from UET variables to erasure cost; parameter-origin closure for any bridge coefficient; and a test that distinguishes imported baseline from UET-added structure
+
+### 2026-06-12 - Beta-role clarification pass
+
+- Scope: make the role of `beta` in the 0.13 Landauer lane explicit and evidence-backed
+- Added or changed: root `BETA_ROLE.md`, verifier-generated `Data/03_Research/beta_role_clarification.json`, and documentation/spec references to the new beta-role files
+- Files touched: `BETA_ROLE.md`, `Code/03_Research/Research_Landauer.py`, `README.md`, `METHOD.md`, `VERIFICATION_SPEC.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `Data/03_Research/beta_role_clarification.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`
+- Verified with: `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: the topic now records machine-readably that `beta` is present in topic code/language but is not closed as a derived bridge coefficient in the current verifier lane
+- Still open: decide whether beta remains a placeholder, normalization tag, or future derived coefficient; if derived, attach a nontrivial tested output path
+
+### 2026-06-13 - Legacy claim-surface cleanup pass
+
+- Scope: reduce overclaim risk in older `0.13` code, bibliography, and working-copy data surfaces
+- Added or changed: `LEGACY_CLAIM_SURFACE_AUDIT.md`; downgraded `Code/README.md` to a legacy code map; downgraded `Research_Thermodynamic_Bridge.py` and `Research_Real_Data_Validation.py` to legacy diagnostic surfaces; softened legacy bibliography wording; replaced overstrong `verification` strings in duplicate Berut working copies; softened legacy summary labels in duplicate `experimental_data.py` copies; replaced one legacy `Doc/keed` analysis note with bounded status wording
+- Files touched: `LEGACY_CLAIM_SURFACE_AUDIT.md`, `Code/README.md`, `Code/03_Research/Research_Thermodynamic_Bridge.py`, `Code/03_Research/Research_Real_Data_Validation.py`, `Ref/BIBLIOGRAPHY_ANALYSIS.md`, `Data/03_Research/berut_2012.json`, `Data/landauer/berut_2012.json`, `Data/03_Research/experimental_data.py`, `Data/landauer/experimental_data.py`, `Doc/keed/ANALYSIS_03_Landauer.md`, `UPDATE_LOG.md`
+- Verified with: targeted file inspection plus string-level consistency checks on the edited legacy surfaces
+- Result: claim-boundary cleanup completed; topic status remains unchanged
+- Blocker narrowed: legacy surfaces are less likely to outrun the root-topic verifier and claim-gate ceiling
+- Still open: additional legacy notes may still contain strong internal prose below warning banners, and legacy scripts are still secondary to `Research_Landauer.py`
+- Claim impact: no upgrade; this wave only reduces the chance that readers confuse legacy diagnostic surfaces with current topic authority
+
+### 2026-06-13 - Legacy analysis-note boundary pass
+
+- Scope: continue reducing overclaim risk by rewriting high-risk legacy analysis notes under `Doc/` and `Doc/keed/`
+- Added or changed: replaced several legacy analysis files with bounded summary notes that now defer explicitly to the root topic package and verifier artifact instead of carrying forward closed-result wording
+- Files touched: `Doc/ANALYSIS_Thermodynamic_Bridge.md`, `Doc/ANALYSIS_01_Thermodynamics.md`, `Doc/keed/ANALYSIS_03_Real_Data.md`, `Doc/keed/ANALYSIS_01_Engine_Thermo.md`, `Doc/keed/03_Research/before.md`, `UPDATE_LOG.md`
+- Verified with: targeted file inspection and repo-local string scan for high-risk wording after the rewrites
+- Result: bounded-note rewrites completed for the highest-risk legacy analysis surfaces inspected in this wave
+- Blocker narrowed: legacy note surfaces now align more clearly with the current `0.13` claim ceiling and are less likely to be mistaken for live status authority
+- Still open: more legacy notes remain in `Doc/keed/03_Research/` and adjacent `Doc/` files, so the legacy-surface audit is not yet exhaustive
+- Claim impact: no upgrade; this wave only improves documentation discipline and reduces stale overclaim pathways
+
+### 2026-06-13 - Remaining legacy paper-note boundary pass
+
+- Scope: continue the `0.13` documentation-hardening sweep across remaining high-risk legacy analysis and paper-note files
+- Added or changed: replaced additional `Doc/ANALYSIS_*.md` and `Doc/keed/03_Research/*` files with short bounded notes that now defer explicitly to the current verifier artifact and root topic package
+- Files touched: `Doc/ANALYSIS_Engine_Thermodynamics.md`, `Doc/ANALYSIS_Proof_Entropy_Max.md`, `Doc/ANALYSIS_Thermodynamic_Bridge_Research.md`, `Doc/keed/03_Research/analysis.md`, `Doc/keed/03_Research/result_summary.md`, `Doc/keed/03_Research/Final_Paper_Bekenstein.md`, `Doc/keed/03_Research/Final_Paper_Landauer.md`, `UPDATE_LOG.md`
+- Verified with: targeted file inspection and repo-local string scans after the rewrites
+- Result: the highest-risk remaining note surfaces inspected in this wave were downgraded to bounded historical notes
+- Blocker narrowed: legacy analysis and paper-note files are now less likely to be mistaken for live evidence or final-status authority
+- Still open: more legacy surfaces remain, especially `Doc/keed/03_Research/solution.md` and `Final_Paper_Jacobson.md`, so the full legacy-note audit remains incomplete
+- Claim impact: no upgrade; this wave only improves claim discipline and consistency across historical notes
+
+### 2026-06-13 - Remaining bridge-logic and Jacobson-note boundary pass
+
+- Scope: continue the `0.13` legacy-note sweep across the remaining bridge-logic, Jacobson, Bekenstein-framing, and data-loader note surfaces
+- Added or changed: replaced the remaining high-risk note files with bounded historical notes that now point readers back to the root topic package, provenance files, and verifier artifact
+- Files touched: `Doc/keed/03_Research/solution.md`, `Doc/keed/03_Research/Final_Paper_Jacobson.md`, `Doc/keed/ANALYSIS_03_Bridge_Logic.md`, `Doc/keed/ANALYSIS_03_Data_Loader.md`, `UPDATE_LOG.md`
+- Verified with: targeted file inspection and repo-local string scans after the rewrites
+- Result: the inspected bridge-logic and Jacobson-facing legacy notes no longer present themselves as current proof or verification authority
+- Blocker narrowed: the set of stale legacy files that can be mistaken for live `0.13` status is smaller again
+- Still open: additional historical notes may still exist elsewhere, but the most obvious remaining overclaim surfaces in `Doc/keed/03_Research/` are now substantially reduced
+- Claim impact: no upgrade; this wave only tightens documentation discipline and reduces stale overclaim pathways
+
+### 2026-06-13 - Legacy doc-surface inventory pass
+
+- Scope: convert the ad hoc legacy-note cleanup into a tracked inventory for `Doc/` and `Doc/keed/`
+- Added or changed: added `LEGACY_DOC_SURFACE_INVENTORY.md` to list the current legacy documentation surfaces and their bounded-note status
+- Files touched: `LEGACY_DOC_SURFACE_INVENTORY.md`, `UPDATE_LOG.md`
+- Verified with: direct inventory check against the current `Doc/` and `Doc/keed/` file set plus repo-local scans for stale note wording
+- Result: the current legacy documentation surfaces for `0.13` now have a dedicated control file instead of relying only on repeated search passes
+- Blocker narrowed: future hardening waves can verify doc-surface coverage from one inventory file instead of reconstructing the note set from memory
+- Still open: this inventory controls legacy documentation posture only; it does not close the scientific blockers around source-normalized Landauer data, uncertainty propagation, or UET bridge derivation
+- Claim impact: no upgrade; this wave only improves documentation governance and auditability
+
+### 2026-06-13 - Row-closure matrix pass
+
+- Scope: move `0.13` from broad source/uncertainty blocker wording toward row-by-row closure planning
+- Added or changed: `ROW_CLOSURE_MATRIX.md` and `Data/03_Research/row_closure_matrix.json`; updated root docs to reference the new row-level blocker map
+- Files touched: `ROW_CLOSURE_MATRIX.md`, `Data/03_Research/row_closure_matrix.json`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: direct inspection against the current source-evidence intake, readiness matrix, uncertainty preprocessing manifest, and uncertainty propagation summary
+- Result: `0.13` now has an explicit row-by-row closure map for Berut, Jun, Peterson, LIGO/EHT context rows, and the measured-constant uncertainty support layer
+- Blocker narrowed: next hardening work can now target one row or support layer at a time instead of using only broad labels like `source` or `uncertainty`
+- Still open: the matrix itself does not close any row; Berut raw-row provenance, Jun uncertainty capture, Peterson source identity, and measured-constant runtime uncertainty remain open
+- Claim impact: no upgrade; this wave only improves blocker precision and auditability
+
+### 2026-06-13 - Landauer row-contract pass
+
+- Scope: further narrow the main `0.13` benchmark lane to the two most actionable rows, `Berut` and `Jun`
+- Added or changed: `LANDAUER_ROW_CONTRACT.md` and `Data/03_Research/landauer_row_contract.json`; updated root docs to reference the new Berut/Jun closure contract
+- Files touched: `LANDAUER_ROW_CONTRACT.md`, `Data/03_Research/landauer_row_contract.json`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: direct inspection against the current runtime rows, source records, row-closure matrix, and uncertainty artifacts
+- Result: `0.13` now has an explicit minimum-closure contract for the two Landauer rows most relevant to near-term hardening
+- Blocker narrowed: Berut is now explicitly framed as a row-level provenance problem, while Jun is explicitly framed as a missing source-backed uncertainty problem
+- Still open: neither row is closed; the contract is a navigation artifact only
+- Claim impact: no upgrade; this wave only sharpens the Landauer-lane blocker map
+
+### 2026-06-13 - Jun uncertainty-gap pass
+
+- Scope: isolate the narrowest remaining Landauer-row blocker in `0.13`, namely the missing `Jun 2014` source-backed uncertainty field
+- Added or changed: `JUN_2014_UNCERTAINTY_GAP.md` and `Data/03_Research/jun_2014_uncertainty_gap.json`; updated the source-evidence intake/readiness files to make the missing Jun uncertainty field explicit; updated root docs to reference the new Jun-specific blocker artifact
+- Files touched: `JUN_2014_UNCERTAINTY_GAP.md`, `Data/03_Research/jun_2014_uncertainty_gap.json`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: direct inspection against the current Jun runtime row, Jun source record, uncertainty preprocessing manifest, and uncertainty propagation summary
+- Result: the `Jun` blocker is now isolated as a missing source-backed uncertainty field rather than only a broad `uncertainty open` label
+- Blocker narrowed: future work can now target one specific missing field set for the `Jun 2014` row
+- Still open: the row remains central-value only until a source-backed uncertainty value or interval is archived and propagated
+- Claim impact: no upgrade; this wave only sharpens the Jun-specific blocker map
+
+### 2026-06-13 - Berut provenance-gap pass
+
+- Scope: isolate the row-level provenance blocker on the strongest current Landauer row in `0.13`
+- Added or changed: `BERUT_2012_PROVENANCE_GAP.md` and `Data/03_Research/berut_2012_provenance_gap.json`; updated root docs to reference the new Berut-specific blocker artifact
+- Files touched: `BERUT_2012_PROVENANCE_GAP.md`, `Data/03_Research/berut_2012_provenance_gap.json`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: direct inspection against the current Berut runtime row, Berut source record, row-closure matrix, and uncertainty propagation summary
+- Result: the `Berut` blocker is now isolated as a row-level provenance and table-mapping problem rather than only a broad source-lock label
+- Blocker narrowed: future work can now target one specific missing field set for the `Berut 2012` row
+- Still open: the row remains summary-level provenance only until an archived row locator and row-to-runtime mapping are attached
+- Claim impact: no upgrade; this wave only sharpens the Berut-specific blocker map
+
+### 2026-06-14 - Peterson source-conflict pass
+
+- Scope: isolate the `Peterson 2018` blocker as a one-paper source-identity conflict rather than only an unresolved-source placeholder
+- Added or changed: `PETERSON_2018_SOURCE_CONFLICT.md` and `Data/03_Research/peterson_2018_source_conflict.json`; updated `docs/data/external/thermodynamics/landauer/peterson_2018/source_record.json`; threaded the conflict into the row-closure and intake workflow plus root docs
+- Files touched: `PETERSON_2018_SOURCE_CONFLICT.md`, `Data/03_Research/peterson_2018_source_conflict.json`, `docs/data/external/thermodynamics/landauer/peterson_2018/source_record.json`, `Data/03_Research/row_closure_matrix.json`, `Data/03_Research/source_evidence_intake_stub.json`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: direct inspection of the local `experimental_data.py` Peterson branch, the external source-resolution record, and targeted JSON syntax/reference checks
+- Result: the quantum-Landauer branch is now explicitly blocked by a conflict between the local runtime DOI and the likely trapped-ion Landauer paper identity
+- Blocker narrowed: future work can now resolve one exact source identity before attempting row capture, unit normalization, or uncertainty propagation
+- Still open: the branch still has no resolved one-paper source identity, no row-level value capture, and no uncertainty package
+- Claim impact: no upgrade; this wave only sharpens the Peterson-specific blocker map
+
+### 2026-06-14 - Measured-constant uncertainty-package pass
+
+- Scope: isolate the measured-constant uncertainty layer as an explicit runtime policy package rather than leaving gravity-context intervals described only as `mass-only`
+- Added or changed: `MEASURED_CONSTANT_UNCERTAINTY_PACKAGE.md`; extended `Research_Landauer.py` so it now generates `Data/03_Research/measured_constant_uncertainty_package.json` and threads its status into the main verifier artifact; updated root docs to reference the new package
+- Files touched: `MEASURED_CONSTANT_UNCERTAINTY_PACKAGE.md`, `Code/03_Research/Research_Landauer.py`, `Data/03_Research/measured_constant_uncertainty_package.json`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`
+- Verified with: rerun of `Research_Landauer.py`, JSON syntax check on the new machine-readable package, and direct inspection of the new package summary inside the main verifier artifact
+- Result: `0.13` now states explicitly that a runtime proxy for `G` uncertainty exists, which rows would inherit it, and that the current black-hole intervals still exclude it
+- Blocker narrowed: future work can now choose between `declare-only`, `thread into intervals`, or `replace provisional numeric proxy with direct 2022 extraction`
+- Still open: the package is still provisional, the current intervals remain mass-only, and spin/systematic astrophysical terms are still out of scope
+- Claim impact: no upgrade; this wave only sharpens the measured-constant uncertainty boundary
+
+### 2026-06-14 - Gravity mass-plus-G-proxy interval pass
+
+- Scope: advance the gravity-context uncertainty lane from `declare-only` measured-constant policy to provisional combined intervals while keeping the old mass-only baseline visible
+- Added or changed: extended `Research_Landauer.py` so the uncertainty summary now emits `entropy_*_mass_plus_G_proxy` and `hawking_*_mass_plus_G_proxy` outputs for `GW150914`, `M87*`, and `Sgr A*`; updated the measured-constant package status and row policy; updated root docs and row-closure map to match
+- Files touched: `Code/03_Research/Research_Landauer.py`, `Data/03_Research/measured_constant_uncertainty_package.json`, `Data/03_Research/uncertainty_propagation_summary.json`, `Data/03_Research/row_closure_matrix.json`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `MEASURED_CONSTANT_UNCERTAINTY_PACKAGE.md`, `UPDATE_LOG.md`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`
+- Verified with: rerun of `Research_Landauer.py`, direct inspection of the new combined interval fields, and confirmation that the main artifact still remains `WARN`
+- Result: gravity-context rows now expose both mass-only baseline intervals and provisional mass-plus-`G`-proxy combined intervals, while still labeling the added `G` term as a runtime proxy rather than a closed source-normalized uncertainty package
+- Blocker narrowed: the next uncertainty decision is no longer `whether` to include measured-constant terms at all, but whether to replace the provisional `G` proxy with direct 2022 extraction and how to add spin/systematic terms
+- Still open: Jun remains central-value only, raw-row source closure remains open, the `G` term is still a provisional local proxy, and systematic astrophysical uncertainty is still excluded
+- Claim impact: no upgrade; this wave makes the gravity-context uncertainty lane more explicit without promoting it beyond provisional status
+
+### 2026-06-14 - Jun runtime-mapping conflict pass
+
+- Scope: narrow the `Jun 2014` blocker beyond `missing uncertainty` by making the runtime-to-source quantity mismatch explicit
+- Added or changed: `JUN_2014_RUNTIME_MAPPING_CONFLICT.md` and `Data/03_Research/jun_2014_runtime_mapping_conflict.json`; updated the Jun source record next-step wording; updated the verifier's source-evidence intake generator so the `reported_energy_value` field is no longer treated as fully closed for Jun
+- Files touched: `JUN_2014_RUNTIME_MAPPING_CONFLICT.md`, `Data/03_Research/jun_2014_runtime_mapping_conflict.json`, `docs/data/external/thermodynamics/landauer/jun_2014/source_record.json`, `Code/03_Research/Research_Landauer.py`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: direct inspection of the archived Jun source-facing summary, targeted consistency scans, and JSON syntax checks on the new Jun machine-readable artifact
+- Result: `0.13` now states explicitly that the current `0.028 eV` Jun runtime row is not yet normalized to one named source-facing `Jun 2014` quantity, so the row cannot be treated as only awaiting an uncertainty field
+- Blocker narrowed: the next Jun pass can now decide whether to replace the runtime row, split it into a differently labeled Jun quantity, or archive the missing conversion path
+- Still open: the source-facing row/fit target is still not archived, the unit conversion path is still missing, and no propagated Jun interval exists
+- Claim impact: no upgrade; this wave only sharpens the Jun-specific blocker map
+
+### 2026-06-14 - Legacy 0.028 eV lineage-note pass
+
+- Scope: narrow the remaining `0.13` Jun blocker again by separating `missing Jun mapping` from `possible cross-source lineage contamination`
+- Added or changed: `HONG_2016_SOURCE_LINEAGE_NOTE.md` and `Data/03_Research/hong_2016_source_lineage_note.json`; softened the legacy `JUN_2014_DATA` runtime surface in both `experimental_data.py` copies; updated the Jun source record wording; updated the verifier intake generator so the Jun target now names the feedback-trap branch explicitly and flags the legacy `0.028 eV` value as possibly belonging to a later nanomagnetic-memory branch
+- Files touched: `HONG_2016_SOURCE_LINEAGE_NOTE.md`, `Data/03_Research/hong_2016_source_lineage_note.json`, `Data/03_Research/experimental_data.py`, `Data/landauer/experimental_data.py`, `docs/data/external/thermodynamics/landauer/jun_2014/source_record.json`, `Code/03_Research/Research_Landauer.py`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: local lineage search for `0.028 eV`, `44% above limit`, and `Experimental (2016)` plus targeted web confirmation that a later nanomagnetic-memory Landauer narrative exists distinct from the pinned Jun 2014 feedback-trap source
+- Result: `0.13` now treats the legacy `0.028 eV` row as a mixed-lineage blocker rather than only a Jun uncertainty/mapping blocker
+- Blocker narrowed: future work can now split into either a clean `Jun 2014` row reconstruction or a separate `Hong 2016` source-intake pass instead of pretending both branches are already one row
+- Still open: no primary `Hong 2016` source package is archived yet, no one-paper runtime-row reassignment is closed yet, and no propagated interval exists for the legacy `0.028 eV` row under a resolved source identity
+- Claim impact: no upgrade; this wave only sharpens the provenance boundary around the legacy runtime row
+
+### 2026-06-15 - Hong 2016 candidate-source staging pass
+
+- Scope: give the possible later nanomagnetic-memory branch a real local source-package anchor instead of leaving it only as a narrative suspicion inside the lineage note
+- Added or changed: `docs/data/external/thermodynamics/landauer/hong_2016/source_record.json`; updated the Hong lineage note and root `0.13` docs so the branch is now explicitly staged as a source-record-only candidate rather than an unnamed alternate source family
+- Files touched: `docs/data/external/thermodynamics/landauer/hong_2016/source_record.json`, `HONG_2016_SOURCE_LINEAGE_NOTE.md`, `Data/03_Research/hong_2016_source_lineage_note.json`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: targeted web confirmation of the bibliographic identity `Jeongmin Hong et al., Science Advances, 2016-03-01` plus local consistency checks against the legacy `0.028 eV / Experimental (2016) / 44% above limit` wording
+- Result: `0.13` now has a separate local source-package anchor for the likely alternate branch behind the legacy runtime row
+- Blocker narrowed: future work can now pursue a concrete `Hong 2016` intake pass with DOI/page capture and row extraction, instead of reconstructing the alternate branch from prose clues alone
+- Still open: the staged Hong record is still secondary-confirmed only, the official DOI/page is not archived locally, and the runtime row is still not reassigned or uncertainty-closed
+- Claim impact: no upgrade; this wave only improves provenance structure and blocker navigation
+
+### 2026-06-15 - Hong numeric-mismatch pass
+
+- Scope: narrow the alternate-branch blocker again by separating `candidate Hong source family` from `candidate Hong numeric closure`
+- Added or changed: `HONG_2016_NUMERIC_MISMATCH_NOTE.md` and `Data/03_Research/hong_2016_numeric_mismatch_note.json`; updated root `0.13` docs so they now state explicitly that the staged Hong branch may fit the `2016` narrative while still not matching the local `0.028 eV` runtime number
+- Files touched: `HONG_2016_NUMERIC_MISMATCH_NOTE.md`, `Data/03_Research/hong_2016_numeric_mismatch_note.json`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: targeted web review of secondary Hong summaries showing about `0.026 eV` at `300 K` together with local inspection of the current `0.028 eV` runtime row
+- Result: `0.13` now treats the alternate-source blocker and the alternate-number blocker as separate issues
+- Blocker narrowed: future work can now target exact numeric extraction from the Hong paper instead of treating source-family capture alone as enough
+- Still open: primary DOI/page capture for Hong, source-facing quantity extraction, `0.026` versus `0.028` reconciliation, and uncertainty propagation all remain open
+- Claim impact: no upgrade; this wave only tightens numeric provenance discipline around the staged Hong branch
+
+### 2026-06-15 - Hong source-acquisition blocker pass
+
+- Scope: make the remaining Hong bibliographic gap explicit instead of leaving it implicit inside source-record wording
+- Added or changed: `HONG_2016_SOURCE_ACQUISITION_BLOCKER.md` and `Data/03_Research/hong_2016_source_acquisition_blocker.json`; updated root `0.13` docs so they now state explicitly that the staged Hong branch still lacks a primary DOI or official article page
+- Files touched: `HONG_2016_SOURCE_ACQUISITION_BLOCKER.md`, `Data/03_Research/hong_2016_source_acquisition_blocker.json`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: targeted web searches confirming the likely Hong title/authors/publication/date from repeated secondary summaries while still failing to capture a primary DOI/article page in this wave
+- Result: `0.13` now tracks the Hong branch as blocked not only by lineage and numeric mismatch, but also by missing primary bibliographic anchoring
+- Blocker narrowed: future work can now target `primary anchor capture` as its own explicit task instead of bundling it loosely into generic provenance cleanup
+- Still open: DOI/page capture, exact numeric extraction, uncertainty extraction, and row reassignment all remain open
+- Claim impact: no upgrade; this wave only sharpens bibliographic provenance control
+
+

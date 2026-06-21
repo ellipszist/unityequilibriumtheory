@@ -34,8 +34,48 @@
         "published_online",
         "doi"
       ]
+    },
+    {
+      "label": "Nature preview surface inspection",
+      "url": "https://www.nature.com/articles/nature10872",
+      "checked_date": "2026-06-16",
+      "verified_fields": [
+        "abstract",
+        "figure_labels_visible_in_preview",
+        "access_wall_state"
+      ],
+      "finding": "The currently accessible preview surface shows Figure 1, Figure 2, and Figure 3 labels plus abstract-level text, but no directly visible row table, source-data table, or supplementary-file identifier in the preview surface itself."
+    },
+    {
+      "label": "Nature preview figure-locator mapping check",
+      "url": "https://www.nature.com/articles/nature10872",
+      "checked_date": "2026-06-21",
+      "verified_fields": [
+        "exact_preview_figure_locator",
+        "locator_title",
+        "summary_row_mapping_boundary"
+      ],
+      "finding": "The currently visible preview surface supports Figure 3 as the narrowest conservative locator for the local Berut summary row because the preview explicitly labels it as the approach to the Landauer limit, while still not exposing one numeric point or source-data table."
     }
   ],
+  "observed_primary_page_surface": {
+    "status": "preview_exposes_abstract_and_figures_but_not_row_table",
+    "visible_figure_labels": [
+      "Figure 1: The erasure protocol used in the experiment.",
+      "Figure 2: Erasure cycles and typical trajectories.",
+      "Figure 3: Erasure rate and approach to the Landauer limit."
+    ],
+    "direct_table_surface_visible_in_preview": false,
+    "direct_supplement_identifier_visible_in_preview": false,
+    "claim_boundary": "This observation narrows the row-locator blocker by showing that the currently visible primary page surface behaves like a figure-level preview. It does not prove that no supplementary file exists behind the access wall.",
+    "selected_preview_locator": {
+      "figure_id": "Figure 3",
+      "figure_title": "Erasure rate and approach to the Landauer limit.",
+      "checked_date": "2026-06-21",
+      "mapping_scope": "figure_level_summary_mapping_only",
+      "claim_boundary": "Figure 3 is now the selected preview-level locator for the current Berut summary row, but no numeric point or table row has yet been archived from that figure."
+    }
+  },
   "unit_convention": {
     "temperature": "K",
     "heat": "J or kT as explicitly declared by topic-local derived data",
