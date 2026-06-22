@@ -25,16 +25,16 @@
       "benchmark_family": "Landauer lower-bound",
       "current_local_surface": "Data/03_Research/experimental_data.py",
       "upstream_anchor": "docs/data/external/thermodynamics/landauer/jun_2014/source_record.json",
-      "source_closure_status": "arxiv_table_1_summary_locator_mapped_final_parity_open",
-      "next_controller": "jun_final_source_parity_or_local_archive_before_row_level_normalization",
+      "source_closure_status": "arxiv_table_1_summary_transcribed_final_prl_parity_open",
+      "next_controller": "jun_final_prl_parity_or_aps_access_resolution_required",
       "uncertainty_status": "source_summary_interval_present_legacy_row_policy_declared",
       "missing_requirements": [
         "final_prl_page_or_pdf_parity_for_arxiv_table_1_summary",
-        "local_archive_or_machine_transcription_of_the_summary_surface",
+        "aps_access_resolution_or_equivalent_final_source_confirmation",
         "explicit_policy_that_legacy_0p028_eV_remains_outside_active_jun_logic"
       ],
-      "claim_effect_if_left_open": "Jun now contributes a summary-layer uncertainty-bearing lower-bound branch with a captured arXiv Table 1/Figure 4/Eq. (3) locator. It still cannot count as a clean row-level benchmark package until final-source parity or local archival is attached and the legacy 0.028 eV row stays outside active Jun logic.",
-      "promotion_value_if_closed": "Would preserve Jun as a second uncertainty-aware Landauer row with a stronger source-surface package, while keeping the legacy 0.028 eV row demoted unless final-source evidence later reassigns it."
+      "claim_effect_if_left_open": "Jun now contributes a summary-layer uncertainty-bearing lower-bound branch with a captured arXiv Table I/Figure 4/Eq. (3) locator and local transcription. It still cannot count as a clean final-source benchmark package until final PRL parity or equivalent final-source confirmation is attached.",
+      "promotion_value_if_closed": "Would preserve Jun as a second uncertainty-aware Landauer row with local arXiv transcription plus final-source parity, while keeping the legacy 0.028 eV row demoted unless final-source evidence later reassigns it."
     },
     {
       "row_id": "hong_2016_candidate_nanometric_memory_branch",

@@ -30,12 +30,43 @@
     "temperature": "K",
     "energy": "J, eV, or kBT as reported by source; runtime conversion must be explicit"
   },
-  "local_archive_status": "source record plus topic-local source-summary locator; final PRL page/PDF parity and local article/table archive still open",
-  "claim_boundary": "This record anchors the Jun 2014 feedback-trap source identity and now records the source-facing asymptotic-work summary locator. It still does not show that the legacy 0.028 eV runtime row belongs cleanly to Jun 2014, and it does not close final-source parity or 0.13 source-lock.",
-  "next_hardening_step": "Confirm final PRL page/PDF parity or archive the final article/table surface locally before treating the Jun summary interval as row-level source-normalized support.",
+  "local_archive_status": "source record plus topic-local source-summary locator and arXiv Table I/Figure 4 transcription present; final PRL page/PDF parity remains open because APS routes returned 403 in the current environment",
+  "claim_boundary": "This record anchors the Jun 2014 feedback-trap source identity and now records both the source-facing asymptotic-work summary locator and a local arXiv Table I/Figure 4 transcription. It still does not show that the legacy 0.028 eV runtime row belongs cleanly to Jun 2014, and it does not close final PRL parity or 0.13 source-lock.",
+  "next_hardening_step": "Resolve final PRL page/PDF parity or APS access before treating the Jun summary interval as final-source-normalized support.",
   "arxiv": {
     "id": "1408.5089",
     "abs_url": "https://arxiv.org/abs/1408.5089",
     "pdf_url": "https://arxiv.org/pdf/1408.5089"
-  }
+  },
+  "local_source_summary_transcription": {
+    "status": "present_arxiv_surface_final_prl_parity_open",
+    "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/jun_2014_source_summary_transcription.json",
+    "checked_date": "2026-06-22",
+    "arxiv_pdf_sha256": "97e9f107a68554016bafc14700bb879e7f8b1bd8b966741225bc85cece530eb6",
+    "table_locator": "TABLE I",
+    "figure_locator": "FIG. 4",
+    "active_row_value_kT": 0.71,
+    "active_row_uncertainty_kT": 0.03,
+    "claim_boundary": "Local arXiv transcription is present; final PRL parity remains open."
+  },
+  "aps_final_route_attempts": [
+    {
+      "checked_date": "2026-06-22",
+      "url": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.113.190601",
+      "method": "HTTP HEAD via PowerShell Invoke-WebRequest",
+      "result": "403 Forbidden in current environment"
+    },
+    {
+      "checked_date": "2026-06-22",
+      "url": "https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.113.190601",
+      "method": "HTTP HEAD via PowerShell Invoke-WebRequest",
+      "result": "403 Forbidden in current environment"
+    },
+    {
+      "checked_date": "2026-06-22",
+      "url": "https://link.aps.org/doi/10.1103/PhysRevLett.113.190601",
+      "method": "HTTP HEAD via PowerShell Invoke-WebRequest",
+      "result": "403 Forbidden in current environment"
+    }
+  ]
 }

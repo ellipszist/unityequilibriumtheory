@@ -40,9 +40,18 @@
     "ratio_to_lower_bound": 1.024313479031164
   },
   "blocker_transition": {
-    "previous_controller": "jun_source_summary_file_identity_and_table_locator_required",
-    "new_controller": "jun_final_source_parity_or_local_archive_before_row_level_normalization",
-    "why_narrower": "The active source-summary file/table/fit-target identity is now captured as arXiv:1408.5089 Figure 4, Table 1, Eq. (3), full-erasure p=1 asymptotic-work fit. Remaining work is final-source parity/local archival and stronger row-level normalization, not identifying the summary target itself."
+    "previous_controller": "jun_final_source_parity_or_local_archive_before_row_level_normalization",
+    "new_controller": "jun_final_prl_parity_or_aps_access_resolution_required",
+    "why_narrower": "The arXiv summary surface is now locally machine-transcribed; the remaining blocker is final PRL parity or APS access resolution, not local summary transcription."
   },
-  "claim_boundary": "This locator closes the generic Jun source-summary identity gap for the active summary interval. It does not prove PRL final-page parity, archive a local PDF/table, map the legacy 0.028 eV row back into Jun, or close row-level source normalization."
+  "claim_boundary": "This locator plus local transcription closes the generic Jun source-summary identity and local arXiv transcription gaps for the active summary interval. It does not prove PRL final-page parity, map the legacy 0.028 eV row back into Jun, or close row-level source normalization.",
+  "local_source_summary_transcription": {
+    "status": "present_arxiv_surface_final_prl_parity_open",
+    "path": "Data/03_Research/jun_2014_source_summary_transcription.json",
+    "page_number_one_based": 4,
+    "transcribed_table": "TABLE I",
+    "transcribed_figure": "FIG. 4",
+    "active_row_value_kT": 0.71,
+    "active_row_uncertainty_kT": 0.03
+  }
 }

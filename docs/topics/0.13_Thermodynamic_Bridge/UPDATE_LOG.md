@@ -18,6 +18,21 @@ Use this log when `0.13` changes in a way that narrows a provenance blocker, add
 
 ## Entries
 
+### 2026-06-22 - Jun arXiv Table I local-transcription pass
+
+- Scope: narrow the active Jun row from `final parity or local archive` to final PRL parity/APS access by locally transcribing the arXiv Table I/Figure 4 source-summary surface for the `0.71 +/- 0.03 kT` full-erasure asymptotic-work row
+- Wave type: `source pass`
+- Added or changed: added `JUN_2014_SOURCE_SUMMARY_TRANSCRIPTION.md` and `jun_2014_source_summary_transcription.json`; updated the Jun source record, Jun source-summary locator, row-closure matrix, verifier intake/gate wording, root docs, and manifest so the active Jun controller is now `jun_final_prl_parity_or_aps_access_resolution_required`
+- Files touched: `JUN_2014_SOURCE_SUMMARY_TRANSCRIPTION.md`, `Data/03_Research/jun_2014_source_summary_transcription.json`, `docs/data/external/thermodynamics/landauer/jun_2014/source_record.json`, `Data/03_Research/jun_2014_source_summary_locator.json`, `Data/03_Research/row_closure_matrix.json`, `Code/03_Research/Research_Landauer.py`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`, `README.md`, `ROW_CLOSURE_MATRIX.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: arXiv PDF `https://arxiv.org/pdf/1408.5089`, targeted page-4 text extraction showing `TABLE I`, `FIG. 4`, `full erasure (p = 1) 0.71 1.39 8.2`, and the `Work ... divided by kT` caption; APS abstract/PDF/DOI routes returned `403 Forbidden` in this environment; then rerun the primary verifier
+- Result: `WARN`
+- Blocker narrowed: Jun is no longer blocked by local source-summary transcription; the active summary surface now has a machine-readable local transcription
+- Still open: final PRL parity or APS access resolution, plus continued exclusion of the legacy `0.028 eV` row from active Jun logic unless future final-source evidence reassigns it
+- Next controller: `jun_final_prl_parity_or_aps_access_resolution_required`
+- Claim impact: no upgrade; this wave strengthens Jun source handling but does not make the row final-source-normalized
+- Workflow linkage: follows `For Work/18_Research_Hardening_Workflow.md` by converting one source-summary archive ambiguity into a named machine-readable transcription before broader source-normalization claims
+
+
 ### 2026-06-22 - Berut Figure 3 PPT source-route pass
 
 - Scope: narrow the active Berut row beyond preview-level locator capture by identifying and download-testing the official publisher PowerPoint route for `Figure 3`

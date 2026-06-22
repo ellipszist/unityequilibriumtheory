@@ -15,18 +15,24 @@
   "source_anchor": {
     "path": "docs/data/external/thermodynamics/landauer/jun_2014/source_record.json",
     "doi": "10.1103/PhysRevLett.113.190601",
-    "claim_boundary": "Source identity is pinned and the active asymptotic-work summary locator is captured as arXiv:1408.5089 Figure 4, Table 1, Eq. (3), full-erasure p=1. Final-source parity/local archival and row-level normalization remain open."
+    "claim_boundary": "Source identity is pinned, the active asymptotic-work summary locator is captured as arXiv:1408.5089 Figure 4, Table I, Eq. (3), full-erasure p=1, and a local arXiv source-summary transcription is present. Final PRL parity/APS access resolution and row-level normalization remain open.",
+    "local_source_summary_transcription": {
+      "status": "present_arxiv_surface_final_prl_parity_open",
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/jun_2014_source_summary_transcription.json",
+      "active_row_value_kT": 0.71,
+      "active_row_uncertainty_kT": 0.03
+    }
   },
   "next_controller": {
-    "status": "jun_final_source_parity_or_local_archive_before_row_level_normalization",
-    "why": "The source-summary file/table/fit-target identity is now captured, so the next Jun blocker is final PRL parity or local archival of that source surface before row-level normalization."
+    "status": "jun_final_prl_parity_or_aps_access_resolution_required",
+    "why": "The source-summary file/table/fit-target identity and local arXiv transcription are now captured, so the next Jun blocker is final PRL parity or APS access resolution before row-level normalization."
   },
   "minimum_missing_evidence": [
     "final_prl_page_or_pdf_parity_for_arxiv_table_1_summary",
-    "local_archive_or_machine_transcription_of_the_summary_surface",
+    "aps_access_resolution_or_equivalent_final_source_confirmation",
     "explicit policy that the legacy 0.028 eV row remains outside active Jun logic unless final-source evidence reassigns it"
   ],
-  "allowed_claim_while_open": "Jun may remain a source-identified summary-interval lower-bound support row with a captured Table 1/Figure 4 locator, but it must not yet be counted as a final-source-normalized row-level benchmark.",
+  "allowed_claim_while_open": "Jun may remain a source-identified and locally transcribed summary-interval lower-bound support row, but it must not yet be counted as a final-source-normalized row-level benchmark.",
   "promotion_value_if_closed": "Closing this gap would convert the current Jun summary-interval lane into a cleaner second uncertainty-aware Landauer row and reduce overreliance on the Berut summary row.",
   "claim_boundary": "This artifact narrows the Jun blocker. It does not by itself close source-lock, uncertainty propagation, or the UET bridge."
 }

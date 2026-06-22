@@ -101,9 +101,14 @@
           "value": "Summary-layer uncertainty is available in kT and is tied to the captured Table 1/Figure 4/Eq. (3) asymptotic-work fit target."
         },
         {
-          "field": "final_source_or_local_archive",
+          "field": "local_source_summary_transcription",
+          "status": "complete",
+          "value": "TABLE I page 4; full-erasure p=1 value=0.71 +/- 0.03 kT; pdf_sha256=97e9f107a68554016bafc14700bb879e7f8b1bd8b966741225bc85cece530eb6"
+        },
+        {
+          "field": "final_prl_parity",
           "status": "partial",
-          "value": "arXiv:1408.5089 source-summary locator captured; final PRL page/PDF parity or local article/table archive remains open."
+          "value": "Local arXiv Table I/Figure 4 transcription captured; official APS abstract/PDF/DOI routes returned 403 in the current environment, so final PRL parity remains open."
         },
         {
           "field": "unit_basis",
@@ -113,7 +118,7 @@
         {
           "field": "extraction_note",
           "status": "complete",
-          "value": "Source identity and source-summary locator are pinned for the Jun 2014 feedback-trap branch; the separate legacy 0.028 eV runtime row remains mixed-lineage context outside active Jun logic."
+          "value": "Source identity, source-summary locator, and local arXiv transcription are pinned for the Jun 2014 feedback-trap branch; the separate legacy 0.028 eV runtime row remains mixed-lineage context outside active Jun logic."
         }
       ]
     },

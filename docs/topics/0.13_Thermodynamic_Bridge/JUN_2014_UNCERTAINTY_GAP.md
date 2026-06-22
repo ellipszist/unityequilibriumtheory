@@ -22,7 +22,7 @@ This file exists to say exactly what still keeps the current `Jun` lane below st
 - source-facing summary value used by the verifier: about `0.01835 eV`
 - lower-bound comparator at `300 K`: `0.0179192407638041 eV`
 - current status: summary-layer interval present
-- current gap: the interval is attached to a pinned source summary, but the legacy `0.028 eV` row is still mixed-lineage context and the summary/file identity is not yet closed tightly enough for stronger source-normalized use
+- current gap: the interval is attached to a pinned and locally transcribed arXiv source summary, but final PRL parity/APS access remains open and the legacy `0.028 eV` row is still mixed-lineage context outside active Jun logic
 
 ## Minimum closure rule for this row
 
@@ -30,15 +30,16 @@ Do not treat `Jun 2014` as uncertainty-closed unless the topic package has:
 
 1. a stable source identity
 2. a declared policy that keeps the legacy `0.028 eV` row out of the Jun closure lane unless a different Jun quantity is justified
-3. a row or table locator, or at minimum a tighter original-file identity for the pinned source-facing summary
+3. a row or table locator plus local transcription for the pinned source-facing summary
 4. an explicit mapping from that source-facing quantity into the runtime `eV` value
 5. confirmation that the attached propagated interval corresponds to that same quantity
+6. final PRL parity or equivalent final-source confirmation for the transcribed arXiv summary surface
 
 ## Current claim boundary
 
 While this gap remains open, `Jun 2014` may support:
 
-- summary-layer interval-bearing lower-bound context
+- locally transcribed summary-layer interval-bearing lower-bound context
 
 It must not support:
 
