@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "source": "Berut et al. 2012 Nature Figure 3 official PPT embedded rasters",
+  "created_utc": "2026-06-22T00:00:00Z",
+  "purpose": "Record an automated, non-accepted landmark-candidate pass over official Figure 3 raster candidates before any numeric transcription.",
+  "input_artifacts": [
+    "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/berut_2012_figure3_ppt_source_route.json",
+    "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/berut_2012_figure3_raster_asset_inventory.json",
+    "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/berut_2012_figure3_digitization_protocol.json"
+  ],
+  "analysis_method": {
+    "runtime": "PIL/NumPy local raster pass",
+    "thresholds": {
+      "dark_pixel_luma_lt": 80,
+      "medium_pixel_luma_lt": 160,
+      "row_line_threshold_fraction_of_width": 0.12,
+      "column_line_threshold_fraction_of_height": 0.12
+    },
+    "note": "The pass used dark-pixel row/column projections and connected-component bounding boxes. It is suitable for candidate discovery only, not final calibration."
+  },
+  "candidate_files": {
+    "jpeg_3": {
+      "local_temp_file": "C:/tmp/berut_latest_asset_jpeg_3.jpg",
+      "size_px": [646, 815],
+      "dark_pixel_count": 2946,
+      "medium_pixel_count": 42797,
+      "line_detection": {
+        "row_line_segments_dark": [],
+        "column_line_segments_dark": []
+      },
+      "interpretation": "Previously selected first calibration candidate, but automated line detection did not identify robust full-axis line segments."
+    },
+    "jpeg_2": {
+      "local_temp_file": "C:/tmp/berut_latest_asset_jpeg_2.jpg",
+      "size_px": [946, 1669],
+      "dark_pixel_count": 26608,
+      "medium_pixel_count": 43322,
+      "row_line_segments_dark": [
+        {"start": 17, "end": 18, "max_dark_pixels": 886, "sum_dark_pixels": 1762},
+        {"start": 493, "end": 494, "max_dark_pixels": 856, "sum_dark_pixels": 1709},
+        {"start": 587, "end": 588, "max_dark_pixels": 876, "sum_dark_pixels": 1750},
+        {"start": 1053, "end": 1055, "max_dark_pixels": 853, "sum_dark_pixels": 2432},
+        {"start": 1126, "end": 1127, "max_dark_pixels": 879, "sum_dark_pixels": 1754},
+        {"start": 1511, "end": 1512, "max_dark_pixels": 428, "sum_dark_pixels": 849},
+        {"start": 1592, "end": 1593, "max_dark_pixels": 861, "sum_dark_pixels": 1716}
+      ],
+      "column_line_segments_dark": [
+        {"start": 89, "end": 91, "max_dark_pixels": 1410, "sum_dark_pixels": 2885},
+        {"start": 474, "end": 475, "max_dark_pixels": 257, "sum_dark_pixels": 510},
+        {"start": 943, "end": 945, "max_dark_pixels": 1410, "sum_dark_pixels": 2787}
+      ],
+      "candidate_panel_components": [
+        {"panel_candidate": "upper_panel", "bbox_px": [89, 17, 945, 494], "width_px": 857, "height_px": 478, "dark_component_pixels": 5475},
+        {"panel_candidate": "middle_panel", "bbox_px": [89, 587, 945, 1055], "width_px": 857, "height_px": 469, "dark_component_pixels": 6220},
+        {"panel_candidate": "lower_panel", "bbox_px": [89, 1126, 945, 1593], "width_px": 857, "height_px": 468, "dark_component_pixels": 5525}
+      ],
+      "interpretation": "Automated candidate discovery favors jpeg_2 for manual panel-frame review because it exposes stronger full-panel frame candidates than jpeg_3."
+    }
+  },
+  "candidate_selection_update": {
+    "previous_first_candidate": "jpeg_3",
+    "automated_review_preferred_candidate": "jpeg_2",
+    "status": "candidate_only_not_accepted_calibration",
+    "reason": "jpeg_2 exposes strong horizontal and vertical panel-frame candidates, while jpeg_3 did not expose robust full-axis line segments under the same pass."
+  },
+  "remaining_required_landmarks": [
+    "human_or_visual_review_of_candidate_panel_frame_bounds",
+    "x_axis_and_y_axis_tick_value_mapping_for_the_selected_panel",
+    "landauer_reference_line_or_limit_marker_coordinate",
+    "selected_curve_or_point_pixel_coordinates",
+    "numeric_transcription_or_stronger_upstream_source_data_surface"
+  ],
+  "blocker_transition": {
+    "previous_controller": "berut_figure_3_axis_landmark_coordinates_required",
+    "new_controller": "berut_figure_3_candidate_panel_frame_review_required",
+    "claim_boundary": "The candidate capture narrows the visual-search space but does not close axis calibration or numeric transcription."
+  }
+}

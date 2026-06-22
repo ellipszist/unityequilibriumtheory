@@ -8,18 +8,19 @@
       "benchmark_family": "Landauer lower-bound",
       "current_local_surface": "Data/03_Research/berut_2012.json",
       "upstream_anchor": "docs/data/external/thermodynamics/landauer/berut_2012/source_record.json",
-      "source_closure_status": "official_figure_3_digitization_protocol_selected_landmark_capture_open",
-      "next_controller": "berut_figure_3_axis_landmark_coordinates_required",
+      "source_closure_status": "official_figure_3_landmark_candidate_capture_present_review_open",
+      "next_controller": "berut_figure_3_candidate_panel_frame_review_required",
       "uncertainty_status": "interval_present_topic_summary_only",
       "missing_requirements": [
-        "plot_frame_bounds_for_selected_official_figure_3_raster_candidate",
-        "x_axis_and_y_axis_tick_calibration_landmarks",
+        "human_or_visual_review_of_candidate_panel_frame_bounds",
+        "x_axis_and_y_axis_tick_value_mapping_for_the_selected_panel",
+        "landauer_reference_line_or_limit_marker_coordinate",
         "selected_curve_or_point_pixel_coordinates",
         "machine_transcribed_numeric_point_or_archived_stronger_source_data_surface",
         "explicit_figure_level_support_to_runtime_mapping_rule"
       ],
-      "claim_effect_if_left_open": "Landauer lane remains source-referenced rather than source-normalized. The Berut row now has official Figure 3 PPT route, binary identity, embedded raster candidates, and a digitization protocol, but still cannot be treated as a numeric source row until landmark coordinates and a transcribed value or stronger source data exist.",
-      "promotion_value_if_closed": "Would strengthen the primary Landauer benchmark lane from protocol-ready raster support toward one calibrated numeric-point-or-stronger-surface provenance package."
+      "claim_effect_if_left_open": "Landauer lane remains source-referenced rather than source-normalized. The Berut row now has official Figure 3 PPT route, binary identity, embedded raster candidates, a digitization protocol, and automated panel-frame candidates, but still cannot be treated as a numeric source row until candidate frames are visually reviewed, axis ticks are mapped, and a transcribed value or stronger source data exists.",
+      "promotion_value_if_closed": "Would strengthen the primary Landauer benchmark lane from candidate-panel support toward one calibrated numeric-point-or-stronger-surface provenance package."
     },
     {
       "row_id": "jun_2014_summary_300K",

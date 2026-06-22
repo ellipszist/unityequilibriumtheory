@@ -119,7 +119,7 @@
       "question": "Can the bridge survive source-normalized data and uncertainty-aware evaluation?",
       "current_state": "partial",
       "needed_evidence": [
-        "Berut official Figure 3 PPT digitization protocol now needs axis landmark coordinates, point/curve selection, and numeric transcription or one stronger upstream source-data surface",
+        "Berut official Figure 3 PPT digitization protocol now has automated panel-frame candidates and needs visual review, accepted tick mapping, point/curve selection, and numeric transcription or one stronger upstream source-data surface",
         "Jun final PRL parity/APS access resolution after local Table I/Figure 4 transcription",
         "measured-constant uncertainty package",
         "claim gate that stays conservative under uncertainty intervals"

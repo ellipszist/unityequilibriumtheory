@@ -602,3 +602,13 @@ Use this log when `0.13` changes in a way that narrows a provenance blocker, add
 - Claim impact: no upgrade; this wave only sharpens bibliographic provenance control
 
 
+### 2026-06-22 - Berut Figure 3 landmark-candidate capture pass
+
+- Scope: narrow the remaining Berut Figure 3 digitization blocker from generic axis-landmark capture to candidate panel-frame review without claiming numeric transcription.
+- Added or changed: `BERUT_2012_FIGURE3_LANDMARK_CANDIDATE_CAPTURE.md` and `Data/03_Research/berut_2012_figure3_landmark_candidate_capture.json`; threaded the candidate artifact into `Research_Landauer.py`, source-evidence intake, row-controller summary, foundation gate, and local docs.
+- Files touched: `BERUT_2012_FIGURE3_LANDMARK_CANDIDATE_CAPTURE.md`, `Data/03_Research/berut_2012_figure3_landmark_candidate_capture.json`, `Code/03_Research/Research_Landauer.py`, `Data/03_Research/row_closure_matrix.json`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `ROW_CLOSURE_MATRIX.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`.
+- Verified with: automated PIL/NumPy raster pass over `jpeg_3` and `jpeg_2`, rerun of `Research_Landauer.py`, and JSON syntax checks on the new and regenerated machine-readable artifacts.
+- Result: `jpeg_2` is now recorded as the automated-review-preferred candidate for visual panel-frame review because it exposes stronger full-panel frame candidates; `jpeg_3` remains documented as the prior protocol first candidate but did not expose robust full-axis segments under this automated pass.
+- Blocker narrowed: Berut now moves from `berut_figure_3_axis_landmark_coordinates_required` to `berut_figure_3_candidate_panel_frame_review_required`.
+- Still open: human or visual review of candidate panel frames, axis tick mapping, Landauer reference/limit marker identification, selected point/curve coordinates, and numeric transcription or a stronger source-data surface.
+- Claim impact: no upgrade; this wave records candidate landmarks only and keeps the Berut row below source-normalized numeric closure.
