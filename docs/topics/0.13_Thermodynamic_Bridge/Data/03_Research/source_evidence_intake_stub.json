@@ -31,7 +31,7 @@
         {
           "field": "row_identifier_or_table_label",
           "status": "partial",
-          "value": "Official Figure 3 PPT route captured, embedded raster candidates named, first calibration protocol declared, and automated panel-frame candidates captured; accepted axis calibration and numeric point/curve remain open."
+          "value": "Official Figure 3 PPT route captured, embedded raster candidates named, semantic asset-role review completed, and jpeg_2 selected as the preferred quantitative candidate; panel selection, tick mapping, and numeric point/curve remain open."
         },
         {
           "field": "figure_level_locator",
@@ -51,12 +51,17 @@
         {
           "field": "digitization_protocol",
           "status": "complete",
-          "value": "preferred=jpeg_3; fallback=jpeg_2; next=berut_figure_3_axis_landmark_coordinates_required"
+          "value": "preferred=jpeg_2; demoted=jpeg_3; next=berut_figure_3_quantitative_panel_tick_mapping_required"
         },
         {
           "field": "landmark_candidate_capture",
           "status": "partial",
           "value": "automated_review_preferred=jpeg_2; status=candidate_only_not_accepted_calibration; next=berut_figure_3_candidate_panel_frame_review_required"
+        },
+        {
+          "field": "semantic_asset_review",
+          "status": "partial",
+          "value": "new_preferred=jpeg_2; previous_preferred=jpeg_3; next=berut_figure_3_quantitative_panel_tick_mapping_required"
         },
         {
           "field": "accessible_surface_status",
@@ -66,7 +71,7 @@
         {
           "field": "declared_transcription_policy",
           "status": "complete",
-          "value": "figure_level_locator_capture selected; official Figure 3 PPT route, embedded raster candidates, digitization protocol, and automated panel-frame candidates captured; accepted axis tick mapping, point/curve transcription, or stronger source-data surface still required"
+          "value": "figure_level_locator_capture selected; official Figure 3 PPT route, embedded raster candidates, automated panel-frame candidates, and semantic asset-role review captured; selected quantitative panel, accepted axis tick mapping, point/curve transcription, or stronger source-data surface still required"
         },
         {
           "field": "unit_basis",
@@ -76,7 +81,7 @@
         {
           "field": "extraction_note",
           "status": "complete",
-          "value": "Topic working copy stores a checked summary row only. The currently accessible source surface now exposes an official Figure 3 PPT route, embedded raster candidates, a digitization protocol, and candidate panel-frame coordinates, but the source still lacks accepted axis tick mapping and a selected numeric point/curve, so source-lock closure requires visual review plus transcription or one stronger upstream source-data surface before normalization."
+          "value": "Topic working copy stores a checked summary row only. The currently accessible source surface now exposes an official Figure 3 PPT route, embedded raster candidates, a digitization protocol, candidate panel-frame coordinates, and a semantic asset-role review that selects jpeg_2 for quantitative work, but the source still lacks selected-panel tick mapping and a selected numeric point/curve, so source-lock closure requires tick mapping plus transcription or one stronger upstream source-data surface before normalization."
         }
       ]
     },

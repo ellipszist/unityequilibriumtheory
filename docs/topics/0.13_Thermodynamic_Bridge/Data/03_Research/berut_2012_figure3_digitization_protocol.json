@@ -2,30 +2,30 @@
   "schema_version": "1.0",
   "topic": "0.13_Thermodynamic_Bridge",
   "row_id": "berut_2012_summary_300K",
-  "artifact_role": "digitization protocol for the official Berut 2012 Figure 3 raster candidates",
+  "artifact_role": "digitization protocol for the official Berut 2012 Figure 3 quantitative raster candidate",
   "source_inventory": {
     "path": "Data/03_Research/berut_2012_figure3_raster_asset_inventory.json",
     "official_ppt_sha256": "e4bab6be849a093b7578bc52ce6df9be95dc25d83d51ecb718b4f798a37d50fa"
   },
   "candidate_selection": {
-    "status": "provisional_first_calibration_candidate_selected_fallback_retained",
+    "status": "semantic_quantitative_candidate_selected_tick_mapping_open",
     "preferred_first_candidate": {
-      "asset_id": "jpeg_3",
-      "dimensions_px": [
-        646,
-        815
-      ],
-      "sha256": "c22dd0c37b145d4b1759d55b77f07fc6c79daff1e4ed48a15f85bf12087b921d",
-      "rationale": "Use the smaller large raster candidate first because it is likely a cropped or alternate panel that may be easier to calibrate. This is a workflow selection, not evidence that the candidate already contains a calibrated numeric row."
-    },
-    "fallback_candidate": {
       "asset_id": "jpeg_2",
       "dimensions_px": [
         946,
         1669
       ],
       "sha256": "95823a29ed7f979d3979eb6fa776bce7df8eaa4485632073347874b5c868b188",
-      "rationale": "Retain the largest raster as fallback if jpeg_3 cannot be calibrated or does not expose the needed axes/curve clearly."
+      "rationale": "Use the largest raster candidate first because semantic review and automated panel-frame detection identify it as the better quantitative heat-plot candidate for average heat Q versus duration tau."
+    },
+    "demoted_candidate": {
+      "asset_id": "jpeg_3",
+      "dimensions_px": [
+        646,
+        815
+      ],
+      "sha256": "c22dd0c37b145d4b1759d55b77f07fc6c79daff1e4ed48a15f85bf12087b921d",
+      "rationale": "Retain only as schematic/procedure support unless later evidence shows it contains the quantitative heat plot; the prior preference was based on calibration convenience, not semantic match."
     }
   },
   "required_calibration_landmarks": [
@@ -107,9 +107,9 @@
     ]
   },
   "blocker_transition": {
-    "previous_controller": "berut_figure_3_axis_calibration_and_point_selection_required",
-    "new_controller": "berut_figure_3_axis_landmark_coordinates_required",
-    "why_narrower": "The protocol now selects a first calibration candidate and defines the exact landmark fields required before numeric transcription. Remaining work is landmark coordinate capture, not deciding how to structure the digitization pass."
+    "previous_controller": "berut_figure_3_candidate_panel_frame_review_required",
+    "new_controller": "berut_figure_3_quantitative_panel_tick_mapping_required",
+    "why_narrower": "Semantic review now selects the likely quantitative raster candidate and demotes the likely procedure schematic. Remaining work is panel selection, axis tick mapping, reference-marker identification, and point/curve capture."
   },
-  "claim_boundary": "This protocol narrows the Berut digitization workflow. It does not calibrate axes, select a real data point, transcribe a numeric value, or close source-normalized Berut evidence."
+  "claim_boundary": "This protocol now narrows the Berut digitization workflow to the likely quantitative Figure 3 raster candidate. It does not calibrate axes, select a real data point, transcribe a numeric value, or close source-normalized Berut evidence."
 }

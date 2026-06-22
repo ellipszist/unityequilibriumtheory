@@ -2,7 +2,7 @@
   "schema_version": "1.3",
   "topic": "0.13_Thermodynamic_Bridge",
   "command": ".venv\\Scripts\\python.exe docs\\topics\\0.13_Thermodynamic_Bridge\\Code\\03_Research\\Research_Landauer.py",
-  "timestamp_utc": "2026-06-22T13:16:48.239699+00:00",
+  "timestamp_utc": "2026-06-22T13:45:47.828427+00:00",
   "status": "WARN",
   "claim_class": "C",
   "inputs": [
@@ -43,13 +43,18 @@
     },
     {
       "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/berut_2012_figure3_digitization_protocol.json",
-      "sha256": "117676d6fb2b659217db5e7301797278626fb8e58ae1ef66d00d156a26f65462",
-      "size_bytes": 4889
+      "sha256": "87b3f0e84c8688b680fa7875b6b3f29a40c399fde8bb6955585cb5c4fec76a01",
+      "size_bytes": 4978
     },
     {
       "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/berut_2012_figure3_landmark_candidate_capture.json",
       "sha256": "63b37cb5dc94757213db6a73a8b325b81b182a731dd83f09e57f78c368d995fd",
       "size_bytes": 4412
+    },
+    {
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/berut_2012_figure3_semantic_asset_review.json",
+      "sha256": "38022aec606173fae4632bcdd14d12125bc8f26f6154ebeecc10da0672eccdd4",
+      "size_bytes": 3063
     },
     {
       "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/cattaneo_data.json",
@@ -88,8 +93,8 @@
     },
     {
       "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/row_closure_matrix.json",
-      "sha256": "56874688d126996579ed11b867e633f2bafaaa0f626010c35950c552e0916f02",
-      "size_bytes": 10753
+      "sha256": "3d391bcbb0792728cb006a24fdb5115b000c8dc2edc6daa9be7a83b90c6b2b70",
+      "size_bytes": 10888
     },
     {
       "path": "docs/data/external/thermodynamics/landauer/berut_2012/source_record.json",
@@ -214,7 +219,7 @@
       "supports": "Structured mechanism target and dependency map.",
       "does_not_support": "Solved, verified, exact, or theory-confirmed wording.",
       "blockers": [
-        "Berut now has an official Figure 3 PPT route, embedded raster asset inventory, digitization protocol, and automated panel-frame candidates, but still lacks visual review, accepted tick mapping, numeric point/curve selection, and transcription or one stronger upstream source-data surface.",
+        "Berut now has an official Figure 3 PPT route, embedded raster asset inventory, digitization protocol, automated panel-frame candidates, and semantic asset-role review selecting jpeg_2 as the quantitative candidate, but still lacks selected-panel tick mapping, numeric point/curve selection, and transcription or one stronger upstream source-data surface.",
         "Uncertainty propagation is only partial: Berut summary and black-hole mass intervals are attached, Jun has a captured and locally transcribed Table I/Figure 4 source-summary surface but still lacks final PRL parity/APS access resolution, and measured-constant terms remain open.",
         "UET-specific field variables are not yet derived from the standard thermodynamic identities."
       ]
@@ -244,7 +249,7 @@
         "conversion_formula": "identity",
         "lower_bound_value": 2.870978885078724e-21,
         "ratio_to_lower_bound": 1.0449397644795768,
-        "uncertainty_propagation_note": "Topic-local summary row exists and Figure 3 now has an official PPT route, embedded raster inventory, digitization protocol, and automated panel-frame candidates, but visual review, tick mapping, point/curve selection, and stronger source-data provenance remain open."
+        "uncertainty_propagation_note": "Topic-local summary row exists and Figure 3 now has an official PPT route, embedded raster inventory, digitization protocol, automated panel-frame candidates, and semantic asset-role review selecting jpeg_2, but selected-panel tick mapping, point/curve selection, and stronger source-data provenance remain open."
       },
       {
         "source_row_id": "jun_2014_summary_300K",
@@ -710,7 +715,7 @@
         "question": "Can the bridge survive source-normalized data and uncertainty-aware evaluation?",
         "current_state": "partial",
         "needed_evidence": [
-          "Berut official Figure 3 PPT digitization protocol now has automated panel-frame candidates and needs visual review, accepted tick mapping, point/curve selection, and numeric transcription or one stronger upstream source-data surface",
+          "Berut official Figure 3 PPT digitization protocol now selects jpeg_2 as the quantitative candidate and needs selected-panel tick mapping, point/curve selection, and numeric transcription or one stronger upstream source-data surface",
           "Jun final PRL parity/APS access resolution after local Table I/Figure 4 transcription",
           "measured-constant uncertainty package",
           "claim gate that stays conservative under uncertainty intervals"
@@ -1067,10 +1072,10 @@
         "status": "BLOCKED",
         "blocking_reason": "The UET-specific bridge lane is still a hypothesis lane, not a closed derivation.",
         "next_evidence_required": [
-          "Berut now has an official Figure 3 PPT route, embedded raster asset inventory, digitization protocol, and automated panel-frame candidates, but still lacks visual review, accepted tick mapping, numeric point/curve selection, and transcription or one stronger upstream source-data surface.",
+          "Berut now has an official Figure 3 PPT route, embedded raster asset inventory, digitization protocol, automated panel-frame candidates, and semantic asset-role review selecting jpeg_2 as the quantitative candidate, but still lacks selected-panel tick mapping, numeric point/curve selection, and transcription or one stronger upstream source-data surface.",
           "Uncertainty propagation is only partial: Berut summary and black-hole mass intervals are attached, Jun has a captured and locally transcribed Table I/Figure 4 source-summary surface but still lacks final PRL parity/APS access resolution, and measured-constant terms remain open.",
           "UET-specific field variables are not yet derived from the standard thermodynamic identities.",
-          "berut_2012_summary_300K controller must move beyond berut_figure_3_candidate_panel_frame_review_required",
+          "berut_2012_summary_300K controller must move beyond berut_figure_3_quantitative_panel_tick_mapping_required",
           "jun_2014_summary_300K controller must move beyond jun_final_prl_parity_or_aps_access_resolution_required",
           "hong_2016_candidate_nanometric_memory_branch controller must move beyond final_source_confirmation_then_replace_or_remove_legacy_0p028_row",
           "peterson_2018_quantum_landauer_branch controller must move beyond exact_one_paper_identity_before_any_row_capture",
@@ -1087,7 +1092,7 @@
         "next_evidence_required": [
           {
             "source_target": "Berut 2012 upstream numeric surface or declared transcription policy",
-            "next_controller": "berut_figure_3_candidate_panel_frame_review_required"
+            "next_controller": "berut_figure_3_quantitative_panel_tick_mapping_required"
           },
           {
             "source_target": "Jun 2014 feedback-trap benchmark source",
@@ -1148,10 +1153,10 @@
     "row_controller_summary": [
       {
         "row_id": "berut_2012_summary_300K",
-        "source_closure_status": "official_figure_3_landmark_candidate_capture_present_review_open",
+        "source_closure_status": "official_figure_3_semantic_quantitative_candidate_selected_tick_mapping_open",
         "uncertainty_status": "interval_present_topic_summary_only",
-        "next_controller": "berut_figure_3_candidate_panel_frame_review_required",
-        "first_missing_requirement": "human_or_visual_review_of_candidate_panel_frame_bounds"
+        "next_controller": "berut_figure_3_quantitative_panel_tick_mapping_required",
+        "first_missing_requirement": "select_relevant_quantitative_panel_within_jpeg_2"
       },
       {
         "row_id": "jun_2014_summary_300K",
@@ -1204,7 +1209,7 @@
   },
   "foundation_claim_gate": {
     "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json",
-    "sha256": "39e592115b2fab8188d5b8cbd730f7b8cc0b69e38f8136d3fbbfe4e76dc0215d",
+    "sha256": "4500f6eeb6915dc7dbf8f4813b5bf161ededebee08554eddb305f925ef921ab1",
     "status": "FOUNDATION_WARN",
     "claim_ceiling": "C - formula/lower-bound consistency only",
     "accepted_foundation_exports": [
@@ -1220,7 +1225,7 @@
       "current": "Do not promote to Tier A",
       "reason": "The topic is foundational, but source-normalized data, uncertainty propagation, and UET-specific derivation are not closed.",
       "promotion_requirements": [
-        "Berut must move beyond automated Figure 3 panel-frame candidates to visual review, accepted tick mapping, point/curve selection, and numeric transcription or one stronger upstream source-data surface; Jun must resolve final PRL parity/APS access for the locally transcribed Table I/Figure 4 source-facing summary, and Peterson still needs one exact source-facing quantity.",
+        "Berut must move beyond the jpeg_2 quantitative-candidate selection to selected-panel tick mapping, point/curve selection, and numeric transcription or one stronger upstream source-data surface; Jun must resolve final PRL parity/APS access for the locally transcribed Table I/Figure 4 source-facing summary, and Peterson still needs one exact source-facing quantity.",
         "Uncertainty propagation for Landauer heat values and black-hole mass inputs.",
         "A derivation map from UET information-field variables to the standard thermodynamic identities, with open steps converted into derived or artifact-backed states.",
         "A units contract that closes the proxy-to-SI boundary or keeps the bridge claim explicitly nondimensional.",
@@ -1261,7 +1266,7 @@
   ],
   "source_evidence_intake_stub": {
     "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/source_evidence_intake_stub.json",
-    "sha256": "e7092959b6fce72928e45e9207c0e49f5758372242edb5f176ddf0909d7f168a",
+    "sha256": "91ffcd183dfaead47cca1432a2d7c8edadd040755f1bfc4d2fadc15b73f74889",
     "source_targets": [
       "Berut 2012 upstream numeric surface or declared transcription policy",
       "Jun 2014 feedback-trap benchmark source",
@@ -1275,7 +1280,7 @@
   },
   "source_evidence_readiness_matrix": {
     "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/source_evidence_readiness_matrix.json",
-    "sha256": "4c485646db626b4d8b9b0bfe2d1b7299d6d69e16c7b2c1bedbcc2a7a1b96fc95",
+    "sha256": "72a836c3c03dadd4f0579980042920e7af6b249258bb8fc8eb8aa023983b2e38",
     "summary": {
       "source_targets_total": 7,
       "targets_ready_for_source_review": 3,
@@ -1286,14 +1291,14 @@
   },
   "row_controller_summary": {
     "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/row_closure_matrix.json",
-    "sha256": "56874688d126996579ed11b867e633f2bafaaa0f626010c35950c552e0916f02",
+    "sha256": "3d391bcbb0792728cb006a24fdb5115b000c8dc2edc6daa9be7a83b90c6b2b70",
     "controller_rows": [
       {
         "row_id": "berut_2012_summary_300K",
-        "source_closure_status": "official_figure_3_landmark_candidate_capture_present_review_open",
+        "source_closure_status": "official_figure_3_semantic_quantitative_candidate_selected_tick_mapping_open",
         "uncertainty_status": "interval_present_topic_summary_only",
-        "next_controller": "berut_figure_3_candidate_panel_frame_review_required",
-        "first_missing_requirement": "human_or_visual_review_of_candidate_panel_frame_bounds"
+        "next_controller": "berut_figure_3_quantitative_panel_tick_mapping_required",
+        "first_missing_requirement": "select_relevant_quantitative_panel_within_jpeg_2"
       },
       {
         "row_id": "jun_2014_summary_300K",
@@ -1325,7 +1330,7 @@
   },
   "uncertainty_preprocessing_manifest": {
     "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/uncertainty_preprocessing_manifest.json",
-    "sha256": "b0ade09938774c040c987d33d3a022026bf7078566cd2428ebf91462b2fe1780",
+    "sha256": "4fd8f7b803454a509a1d9fb8b41058612b3aaa10c7a3e98db91c14871210a73c",
     "current_status": "partially_populated_not_closed",
     "row_count": 5,
     "claim_boundary": "This manifest narrows the uncertainty-preprocessing workload. It does not upgrade the topic until source-normalized rows and propagated uncertainty outputs are attached to the verifier."
@@ -1347,7 +1352,7 @@
   },
   "bridge_derivation_artifact": {
     "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/bridge_derivation_map.json",
-    "sha256": "1b1ea4a28551e992881bb0e7d87aed0a8af5ad91662f536654b7c9908ea23b95",
+    "sha256": "d3a3c502f143164feedcb89f415a9d839b52e44f2b46a520d2104c96d7d8a579",
     "status": "open_boundary_mapped_not_derived",
     "required_derivation_steps_open": 4,
     "claim_boundary": "This map documents the current derivation state. It does not close the UET bridge proof."
@@ -1401,7 +1406,7 @@
   },
   "warnings": [
     "One or more optional visualization files failed to render.",
-    "Berut/CODATA source records and source-lock hashes are pinned, and the current Berut summary row now has an official Figure 3 PPT route, embedded raster inventory, digitization protocol, and automated panel-frame candidates, but accepted axis tick mapping, numeric-point/curve transcription, or stronger source-data closure is still open.",
+    "Berut/CODATA source records and source-lock hashes are pinned, and the current Berut summary row now has an official Figure 3 PPT route, embedded raster inventory, digitization protocol, automated panel-frame candidates, and semantic asset-role review selecting jpeg_2, but selected-panel tick mapping, numeric-point/curve transcription, or stronger source-data closure is still open.",
     "Bekenstein/Jacobson checks are formula-consistency checks, not independent tests of UET dynamics.",
     "Uncertainty propagation is now partial only: Berut summary intervals are attached, gravity-context rows now add mass-plus-direct-CODATA-2022-G intervals, Jun final-source parity/local archival remains open, and systematic astrophysical terms are still excluded."
   ],

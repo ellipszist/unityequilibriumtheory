@@ -612,3 +612,15 @@ Use this log when `0.13` changes in a way that narrows a provenance blocker, add
 - Blocker narrowed: Berut now moves from `berut_figure_3_axis_landmark_coordinates_required` to `berut_figure_3_candidate_panel_frame_review_required`.
 - Still open: human or visual review of candidate panel frames, axis tick mapping, Landauer reference/limit marker identification, selected point/curve coordinates, and numeric transcription or a stronger source-data surface.
 - Claim impact: no upgrade; this wave records candidate landmarks only and keeps the Berut row below source-normalized numeric closure.
+
+
+### 2026-06-22 - Berut Figure 3 semantic asset-role review pass
+
+- Scope: narrow the Berut Figure 3 digitization path by correcting which embedded raster should be treated as the quantitative heat-plot candidate.
+- Added or changed: `BERUT_2012_FIGURE3_SEMANTIC_ASSET_REVIEW.md` and `Data/03_Research/berut_2012_figure3_semantic_asset_review.json`; updated the digitization protocol so `jpeg_2` is now the preferred quantitative digitization candidate and `jpeg_3` is demoted to schematic/procedure support unless later evidence proves otherwise.
+- Files touched: `BERUT_2012_FIGURE3_SEMANTIC_ASSET_REVIEW.md`, `Data/03_Research/berut_2012_figure3_semantic_asset_review.json`, `BERUT_2012_FIGURE3_DIGITIZATION_PROTOCOL.md`, `Data/03_Research/berut_2012_figure3_digitization_protocol.json`, `Code/03_Research/Research_Landauer.py`, `Data/03_Research/row_closure_matrix.json`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `ROW_CLOSURE_MATRIX.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`.
+- Verified with: author-page semantic check, local raster-candidate evidence from the previous landmark pass, rerun of `Research_Landauer.py`, and JSON syntax checks on the new and regenerated machine-readable artifacts.
+- Result: Berut no longer starts numeric digitization from the likely reset-procedure schematic; the next quantitative pass should begin with `jpeg_2`.
+- Blocker narrowed: Berut now moves from `berut_figure_3_candidate_panel_frame_review_required` to `berut_figure_3_quantitative_panel_tick_mapping_required`.
+- Still open: select the relevant quantitative panel within `jpeg_2`, map duration and heat ticks, identify the Landauer reference/limit marker, capture selected point/curve pixels, and define digitization uncertainty before any numeric transcription.
+- Claim impact: no upgrade; this wave corrects candidate priority only and keeps the Berut row below source-normalized numeric closure.

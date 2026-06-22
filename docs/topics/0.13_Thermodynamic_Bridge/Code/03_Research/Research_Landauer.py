@@ -66,6 +66,7 @@ BERUT_FIGURE3_PPT_SOURCE_ROUTE_PATH = TOPIC_DIR / "Data" / "03_Research" / "beru
 BERUT_FIGURE3_RASTER_ASSET_INVENTORY_PATH = TOPIC_DIR / "Data" / "03_Research" / "berut_2012_figure3_raster_asset_inventory.json"
 BERUT_FIGURE3_DIGITIZATION_PROTOCOL_PATH = TOPIC_DIR / "Data" / "03_Research" / "berut_2012_figure3_digitization_protocol.json"
 BERUT_FIGURE3_LANDMARK_CANDIDATE_CAPTURE_PATH = TOPIC_DIR / "Data" / "03_Research" / "berut_2012_figure3_landmark_candidate_capture.json"
+BERUT_FIGURE3_SEMANTIC_ASSET_REVIEW_PATH = TOPIC_DIR / "Data" / "03_Research" / "berut_2012_figure3_semantic_asset_review.json"
 DATA_INPUTS = [
     TOPIC_DIR / "Data" / "03_Research" / "__init__.py",
     TOPIC_DIR / "Data" / "03_Research" / "berut_2012.json",
@@ -76,6 +77,7 @@ DATA_INPUTS = [
     BERUT_FIGURE3_RASTER_ASSET_INVENTORY_PATH,
     BERUT_FIGURE3_DIGITIZATION_PROTOCOL_PATH,
     BERUT_FIGURE3_LANDMARK_CANDIDATE_CAPTURE_PATH,
+    BERUT_FIGURE3_SEMANTIC_ASSET_REVIEW_PATH,
     TOPIC_DIR / "Data" / "03_Research" / "cattaneo_data.json",
     TOPIC_DIR / "Data" / "03_Research" / "experimental_data.py",
     TOPIC_DIR / "Data" / "03_Research" / "landauer_source_lock.json",
@@ -197,6 +199,7 @@ def _build_source_evidence_intake_stub():
     berut_raster_inventory = _load_json(BERUT_FIGURE3_RASTER_ASSET_INVENTORY_PATH)
     berut_digitization_protocol = _load_json(BERUT_FIGURE3_DIGITIZATION_PROTOCOL_PATH)
     berut_landmark_candidates = _load_json(BERUT_FIGURE3_LANDMARK_CANDIDATE_CAPTURE_PATH)
+    berut_semantic_review = _load_json(BERUT_FIGURE3_SEMANTIC_ASSET_REVIEW_PATH)
     jun_source = _load_json(ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "jun_2014" / "source_record.json")
     jun_locator = _load_json(JUN_SOURCE_SUMMARY_LOCATOR_PATH)
     jun_transcription = _load_json(JUN_SOURCE_SUMMARY_TRANSCRIPTION_PATH)
@@ -229,12 +232,13 @@ def _build_source_evidence_intake_stub():
                     {"field": "doi_or_url", "status": "complete", "value": berut_source["doi_url"]},
                     {"field": "local_path", "status": "complete", "value": _relative_repo_path(berut_working_copy)},
                     {"field": "original_file_name", "status": "complete", "value": berut_figure3_ppt_route["official_figure_route"]["file_name"]},
-                    {"field": "row_identifier_or_table_label", "status": "partial", "value": "Official Figure 3 PPT route captured, embedded raster candidates named, first calibration protocol declared, and automated panel-frame candidates captured; accepted axis calibration and numeric point/curve remain open."},
+                    {"field": "row_identifier_or_table_label", "status": "partial", "value": "Official Figure 3 PPT route captured, embedded raster candidates named, semantic asset-role review completed, and jpeg_2 selected as the preferred quantitative candidate; panel selection, tick mapping, and numeric point/curve remain open."},
                     {"field": "figure_level_locator", "status": "complete", "value": f"{berut_locator_mapping['selected_locator']['locator_value']}: {berut_locator_mapping['selected_locator']['locator_title']}"},
                     {"field": "official_figure_ppt_route", "status": "complete", "value": f"{berut_figure3_ppt_route['official_figure_route']['file_name']} | sha256={berut_figure3_ppt_route['download_test']['sha256']} | url={berut_figure3_ppt_route['official_figure_route']['download_url']}"},
                     {"field": "embedded_raster_asset_inventory", "status": "complete", "value": f"primary_candidates={','.join(item['asset_id'] for item in berut_raster_inventory['primary_digitization_candidates'])}; assets={len(berut_raster_inventory['embedded_assets'])}; next={berut_raster_inventory['blocker_transition']['new_controller']}"},
-                    {"field": "digitization_protocol", "status": "complete", "value": f"preferred={berut_digitization_protocol['candidate_selection']['preferred_first_candidate']['asset_id']}; fallback={berut_digitization_protocol['candidate_selection']['fallback_candidate']['asset_id']}; next={berut_digitization_protocol['blocker_transition']['new_controller']}"},
+                    {"field": "digitization_protocol", "status": "complete", "value": f"preferred={berut_digitization_protocol['candidate_selection']['preferred_first_candidate']['asset_id']}; demoted={berut_digitization_protocol['candidate_selection']['demoted_candidate']['asset_id']}; next={berut_digitization_protocol['blocker_transition']['new_controller']}"},
                     {"field": "landmark_candidate_capture", "status": "partial", "value": f"automated_review_preferred={berut_landmark_candidates['candidate_selection_update']['automated_review_preferred_candidate']}; status={berut_landmark_candidates['candidate_selection_update']['status']}; next={berut_landmark_candidates['blocker_transition']['new_controller']}"},
+                    {"field": "semantic_asset_review", "status": "partial", "value": f"new_preferred={berut_semantic_review['protocol_update']['new_preferred_candidate']}; previous_preferred={berut_semantic_review['protocol_update']['previous_preferred_candidate']}; next={berut_semantic_review['blocker_transition']['new_controller']}"},
                     {
                         "field": "accessible_surface_status",
                         "status": "partial",
@@ -247,7 +251,7 @@ def _build_source_evidence_intake_stub():
                     {
                         "field": "declared_transcription_policy",
                         "status": "complete",
-                        "value": "figure_level_locator_capture selected; official Figure 3 PPT route, embedded raster candidates, digitization protocol, and automated panel-frame candidates captured; accepted axis tick mapping, point/curve transcription, or stronger source-data surface still required",
+                        "value": "figure_level_locator_capture selected; official Figure 3 PPT route, embedded raster candidates, automated panel-frame candidates, and semantic asset-role review captured; selected quantitative panel, accepted axis tick mapping, point/curve transcription, or stronger source-data surface still required",
                     },
                     {"field": "unit_basis", "status": "complete", "value": "T in K; heat in J with optional kT lower-bound context"},
                     {
@@ -255,7 +259,7 @@ def _build_source_evidence_intake_stub():
                         "status": "complete",
                         "value": (
                             "Topic working copy stores a checked summary row only. The currently accessible source surface "
-                            "now exposes an official Figure 3 PPT route, embedded raster candidates, a digitization protocol, and candidate panel-frame coordinates, but the source still lacks accepted axis tick mapping and a selected numeric point/curve, so source-lock closure requires visual review plus transcription or one stronger upstream source-data surface before normalization."
+                            "now exposes an official Figure 3 PPT route, embedded raster candidates, a digitization protocol, candidate panel-frame coordinates, and a semantic asset-role review that selects jpeg_2 for quantitative work, but the source still lacks selected-panel tick mapping and a selected numeric point/curve, so source-lock closure requires tick mapping plus transcription or one stronger upstream source-data surface before normalization."
                         ),
                     },
                 ],
@@ -497,7 +501,7 @@ def _build_evidence_lanes(test_results, metrics, readiness_matrix):
             "supports": "Structured mechanism target and dependency map.",
             "does_not_support": "Solved, verified, exact, or theory-confirmed wording.",
             "blockers": [
-                "Berut now has an official Figure 3 PPT route, embedded raster asset inventory, digitization protocol, and automated panel-frame candidates, but still lacks visual review, accepted tick mapping, numeric point/curve selection, and transcription or one stronger upstream source-data surface.",
+                "Berut now has an official Figure 3 PPT route, embedded raster asset inventory, digitization protocol, automated panel-frame candidates, and semantic asset-role review selecting jpeg_2 as the quantitative candidate, but still lacks selected-panel tick mapping, numeric point/curve selection, and transcription or one stronger upstream source-data surface.",
                 "Uncertainty propagation is only partial: Berut summary and black-hole mass intervals are attached, Jun has a captured and locally transcribed Table I/Figure 4 source-summary surface but still lacks final PRL parity/APS access resolution, and measured-constant terms remain open.",
                 "UET-specific field variables are not yet derived from the standard thermodynamic identities.",
             ],
@@ -530,7 +534,7 @@ def _build_uncertainty_preprocessing_plan(metrics):
                 "conversion_formula": "identity",
                 "lower_bound_value": metrics["landauer_300K_codata_J"],
                 "ratio_to_lower_bound": 3.0e-21 / metrics["landauer_300K_codata_J"],
-                "uncertainty_propagation_note": "Topic-local summary row exists and Figure 3 now has an official PPT route, embedded raster inventory, digitization protocol, and automated panel-frame candidates, but visual review, tick mapping, point/curve selection, and stronger source-data provenance remain open."
+                "uncertainty_propagation_note": "Topic-local summary row exists and Figure 3 now has an official PPT route, embedded raster inventory, digitization protocol, automated panel-frame candidates, and semantic asset-role review selecting jpeg_2, but selected-panel tick mapping, point/curve selection, and stronger source-data provenance remain open."
             },
             {
                 "source_row_id": "jun_2014_summary_300K",
@@ -1007,7 +1011,7 @@ def _build_bridge_derivation_map():
                 "question": "Can the bridge survive source-normalized data and uncertainty-aware evaluation?",
                 "current_state": "partial",
                 "needed_evidence": [
-                    "Berut official Figure 3 PPT digitization protocol now has automated panel-frame candidates and needs visual review, accepted tick mapping, point/curve selection, and numeric transcription or one stronger upstream source-data surface",
+                    "Berut official Figure 3 PPT digitization protocol now selects jpeg_2 as the quantitative candidate and needs selected-panel tick mapping, point/curve selection, and numeric transcription or one stronger upstream source-data surface",
                     "Jun final PRL parity/APS access resolution after local Table I/Figure 4 transcription",
                     "measured-constant uncertainty package",
                     "claim gate that stays conservative under uncertainty intervals"
@@ -1492,7 +1496,7 @@ def _build_foundation_claim_gate(
             "current": "Do not promote to Tier A",
             "reason": "The topic is foundational, but source-normalized data, uncertainty propagation, and UET-specific derivation are not closed.",
             "promotion_requirements": [
-                "Berut must move beyond automated Figure 3 panel-frame candidates to visual review, accepted tick mapping, point/curve selection, and numeric transcription or one stronger upstream source-data surface; Jun must resolve final PRL parity/APS access for the locally transcribed Table I/Figure 4 source-facing summary, and Peterson still needs one exact source-facing quantity.",
+                "Berut must move beyond the jpeg_2 quantitative-candidate selection to selected-panel tick mapping, point/curve selection, and numeric transcription or one stronger upstream source-data surface; Jun must resolve final PRL parity/APS access for the locally transcribed Table I/Figure 4 source-facing summary, and Peterson still needs one exact source-facing quantity.",
                 "Uncertainty propagation for Landauer heat values and black-hole mass inputs.",
                 "A derivation map from UET information-field variables to the standard thermodynamic identities, with open steps converted into derived or artifact-backed states.",
                 "A units contract that closes the proxy-to-SI boundary or keeps the bridge claim explicitly nondimensional.",
@@ -1663,7 +1667,7 @@ def _write_verification_artifact(test_results, plot_paths, metrics):
     if not plot_pass:
         warnings.append("One or more optional visualization files failed to render.")
     warnings.append(
-        "Berut/CODATA source records and source-lock hashes are pinned, and the current Berut summary row now has an official Figure 3 PPT route, embedded raster inventory, digitization protocol, and automated panel-frame candidates, but accepted axis tick mapping, numeric-point/curve transcription, or stronger source-data closure is still open."
+        "Berut/CODATA source records and source-lock hashes are pinned, and the current Berut summary row now has an official Figure 3 PPT route, embedded raster inventory, digitization protocol, automated panel-frame candidates, and semantic asset-role review selecting jpeg_2, but selected-panel tick mapping, numeric-point/curve transcription, or stronger source-data closure is still open."
     )
     warnings.append(
         "Bekenstein/Jacobson checks are formula-consistency checks, not independent tests of UET dynamics."
