@@ -178,10 +178,10 @@
     "current_status": "partial_intervals_mass_plus_direct_2022_g_for_gravity_context",
     "notable_constraints": [
       "Berut 2012 topic-summary interval crosses the Landauer lower bound at 1 sigma.",
-      "Jun 2014 now has a source-facing summary-layer interval and a declared legacy-row demotion policy, but original file/table identity and exact fit-target locator remain open.",
+      "Jun 2014 now has a source-facing summary-layer interval, a declared legacy-row demotion policy, and a captured Table 1/Figure 4 locator, but final-source parity/local archival remain open.",
       "Black-hole entropy and Hawking-temperature rows now keep mass-only intervals and also add combined intervals using a direct CODATA 2022 G extraction.",
       "The G term now comes from a direct CODATA 2022 extract, while spin/systematic astrophysical terms remain excluded."
     ]
   },
-  "claim_boundary": "This summary adds first-pass propagated intervals and gravity-context combined intervals using direct CODATA 2022 G extraction, but it is not a full uncertainty package. Raw-source row capture, Jun source-summary file/table identity, systematic astrophysical terms remain open."
+  "claim_boundary": "This summary adds first-pass propagated intervals and gravity-context combined intervals using direct CODATA 2022 G extraction, but it is not a full uncertainty package. Raw-source row capture, Jun final-source parity/local archival, systematic astrophysical terms remain open."
 }

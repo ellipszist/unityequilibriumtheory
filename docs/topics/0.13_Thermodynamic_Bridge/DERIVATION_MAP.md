@@ -89,7 +89,7 @@ Current partial progress:
 Still needed:
 
 - raw-row or machine-transcribed Landauer source package
-- Jun source-summary file/table identity and exact fit-target locator
+- Jun final-source parity/local archival for the captured Table 1/Figure 4 fit target
 - systematic astrophysical uncertainty terms after direct CODATA 2022 G extraction
 - gates that stay conservative under those intervals
 

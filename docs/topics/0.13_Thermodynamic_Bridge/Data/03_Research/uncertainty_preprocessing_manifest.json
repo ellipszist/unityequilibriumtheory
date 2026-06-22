@@ -33,7 +33,7 @@
       "conversion_formula": "source_facing_work_eV = source_facing_work_kT * (k_B T / e)",
       "lower_bound_value": 0.0179192407638041,
       "ratio_to_lower_bound": 1.024313479031164,
-      "uncertainty_propagation_note": "Source-facing asymptotic-work summary and uncertainty are available at the preprint-summary layer, and the legacy 0.028 eV row is now declared outside the active Jun lane; original file/table identity and exact fit-target locator still remain open."
+      "uncertainty_propagation_note": "Source-facing asymptotic-work summary and uncertainty are available at the preprint-summary layer, and the legacy 0.028 eV row is now declared outside the active Jun lane; final PRL parity/local archive still remains open."
     },
     {
       "source_row_id": "gw150914_final_mass",

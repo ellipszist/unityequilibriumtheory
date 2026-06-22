@@ -77,18 +77,28 @@
         },
         {
           "field": "original_file_name",
-          "status": "pending",
-          "value": ""
+          "status": "complete",
+          "value": "1408.5089"
+        },
+        {
+          "field": "source_summary_locator",
+          "status": "complete",
+          "value": "Figure 4; Table 1; Equation (3); full erasure (p=1) asymptotic work from the tau^-1 extrapolation of mean work"
         },
         {
           "field": "reported_energy_value",
           "status": "complete",
-          "value": "Source-facing asymptotic full-erasure work is recorded as 0.71 +/- 0.03 kT in the pinned Jun summary; under the current 300 K verifier baseline this converts to about 0.01836 +/- 0.00078 eV."
+          "value": "Source-facing asymptotic full-erasure work is recorded as 0.71 +/- 0.03 kT in Table 1 for the full-erasure p=1 fit; under the current 300 K verifier baseline this converts to about 0.01836 +/- 0.00078 eV."
         },
         {
           "field": "reported_uncertainty_or_interval",
+          "status": "complete",
+          "value": "Summary-layer uncertainty is available in kT and is tied to the captured Table 1/Figure 4/Eq. (3) asymptotic-work fit target."
+        },
+        {
+          "field": "final_source_or_local_archive",
           "status": "partial",
-          "value": "Summary-layer uncertainty is available in kT, and the legacy 0.028 eV row is now declared legacy context rather than an active Jun benchmark; original file/table identity for the pinned Jun summary remains open."
+          "value": "arXiv:1408.5089 source-summary locator captured; final PRL page/PDF parity or local article/table archive remains open."
         },
         {
           "field": "unit_basis",
@@ -98,7 +108,7 @@
         {
           "field": "extraction_note",
           "status": "complete",
-          "value": "Source identity is pinned for the Jun 2014 feedback-trap branch and a source-facing asymptotic-work summary is now recorded, while the separate legacy 0.028 eV runtime row remains mixed-lineage context that may belong to a later nanomagnetic-memory source branch."
+          "value": "Source identity and source-summary locator are pinned for the Jun 2014 feedback-trap branch; the separate legacy 0.028 eV runtime row remains mixed-lineage context outside active Jun logic."
         }
       ]
     },

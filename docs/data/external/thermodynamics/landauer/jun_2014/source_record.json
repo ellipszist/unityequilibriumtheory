@@ -4,7 +4,7 @@
   "title": "High-Precision Test of Landauer's Principle in a Feedback Trap",
   "authors": [
     "Yonggun Jun",
-    "Momčilo Gavrilov",
+    "Momcilo Gavrilov",
     "John Bechhoefer"
   ],
   "publication": "Physical Review Letters 113, 190601 (2014)",
@@ -16,13 +16,26 @@
     "value_kT": 0.71,
     "uncertainty_kT": 0.03,
     "measurement_statistical_error_kT": 0.1,
-    "source_surface": "arXiv preprint text for the PRL article, including Table 1 asymptotic-work summary"
+    "source_surface": "arXiv:1408.5089 primary-facing preprint text for the PRL article; Figure 4, Table 1, Eq. (3)",
+    "source_locator": {
+      "figure_locator": "Figure 4",
+      "table_locator": "Table 1",
+      "equation_locator": "Equation (3)",
+      "fit_target": "full erasure (p=1) asymptotic work from tau^-1 extrapolation",
+      "source_table_row_label": "full erasure (p=1)",
+      "source_column_label": "Asymptotic work (+/- 0.03)"
+    }
   },
   "unit_convention": {
     "temperature": "K",
     "energy": "J, eV, or kBT as reported by source; runtime conversion must be explicit"
   },
-  "local_archive_status": "source record only; raw numeric table or machine transcription not archived",
-  "claim_boundary": "This record anchors the Jun 2014 feedback-trap source identity and now records the source-facing asymptotic-work summary. It still does not show that the legacy 0.028 eV runtime row belongs cleanly to Jun 2014, and it does not close 0.13 source-lock or uncertainty propagation.",
-  "next_hardening_step": "Use the source-facing asymptotic-work quantity to decide whether the legacy 0.028 eV runtime row should be replaced, split into a non-Jun branch, or explicitly mapped to a different Jun quantity before uncertainty propagation."
+  "local_archive_status": "source record plus topic-local source-summary locator; final PRL page/PDF parity and local article/table archive still open",
+  "claim_boundary": "This record anchors the Jun 2014 feedback-trap source identity and now records the source-facing asymptotic-work summary locator. It still does not show that the legacy 0.028 eV runtime row belongs cleanly to Jun 2014, and it does not close final-source parity or 0.13 source-lock.",
+  "next_hardening_step": "Confirm final PRL page/PDF parity or archive the final article/table surface locally before treating the Jun summary interval as row-level source-normalized support.",
+  "arxiv": {
+    "id": "1408.5089",
+    "abs_url": "https://arxiv.org/abs/1408.5089",
+    "pdf_url": "https://arxiv.org/pdf/1408.5089"
+  }
 }

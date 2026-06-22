@@ -29,13 +29,12 @@
       "name": "Jun 2014 feedback-trap benchmark source",
       "priority": "high",
       "status": "partial",
-      "fields_total": 7,
-      "fields_complete": 5,
+      "fields_total": 9,
+      "fields_complete": 8,
       "fields_partial": 1,
-      "fields_pending": 2,
+      "fields_pending": 1,
       "pending_fields": [
-        "original_file_name",
-        "reported_uncertainty_or_interval"
+        "final_source_or_local_archive"
       ],
       "ready_for_source_review": false,
       "blocking_reason": "One or more required evidence fields are still pending."

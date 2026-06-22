@@ -18,6 +18,20 @@ Use this log when `0.13` changes in a way that narrows a provenance blocker, add
 
 ## Entries
 
+### 2026-06-22 - Jun Table 1 source-summary locator pass
+
+- Scope: narrow the active Jun row from a generic source-summary file/table identity blocker to a captured Table 1/Figure 4 fit-target locator for the `0.71 +/- 0.03 kT` asymptotic-work summary
+- Wave type: `source pass`
+- Added or changed: added `JUN_2014_SOURCE_SUMMARY_LOCATOR.md` and `jun_2014_source_summary_locator.json`; updated the Jun source record, Jun uncertainty/runtime conflict artifacts, row-closure matrix, verifier intake, foundation gate, uncertainty summaries, root docs, and manifest so the active Jun controller is now `jun_final_source_parity_or_local_archive_before_row_level_normalization`
+- Files touched: `JUN_2014_SOURCE_SUMMARY_LOCATOR.md`, `Data/03_Research/jun_2014_source_summary_locator.json`, `docs/data/external/thermodynamics/landauer/jun_2014/source_record.json`, `Data/03_Research/jun_2014_uncertainty_gap.json`, `Data/03_Research/jun_2014_runtime_mapping_conflict.json`, `Data/03_Research/row_closure_matrix.json`, `Code/03_Research/Research_Landauer.py`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `ROW_CLOSURE_MATRIX.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: primary-facing arXiv surface `https://arxiv.org/abs/1408.5089`, where Figure 4/Table 1/Eq. (3) identify the full-erasure `p=1` asymptotic work as `0.71 +/- 0.03 kT`; then `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: Jun is no longer blocked by finding the active summary file/table/fit target; the package now names the arXiv source surface, Figure 4, Table 1, Eq. (3), and the full-erasure `p=1` fit target
+- Still open: final PRL page/PDF parity or local article/table archival, row-level normalization, and any reassignment of the legacy `0.028 eV` row remain open
+- Next controller: `jun_final_source_parity_or_local_archive_before_row_level_normalization`
+- Claim impact: no upgrade; this wave strengthens the Jun source-summary package but does not make the row final-source-normalized or restore the legacy `0.028 eV` row
+- Workflow linkage: follows `For Work/18_Research_Hardening_Workflow.md` by turning one source-summary identity ambiguity into a named machine-readable locator before broader source-normalization claims
+
 ### 2026-06-21 - CODATA 2022 G direct-extraction pass
 
 - Scope: replace the measured-constant `G` uncertainty proxy inherited from the local `0.19` CODATA 2018 checkpoint with a direct CODATA 2022/NIST extract inside the active `0.13` gravity-context interval package

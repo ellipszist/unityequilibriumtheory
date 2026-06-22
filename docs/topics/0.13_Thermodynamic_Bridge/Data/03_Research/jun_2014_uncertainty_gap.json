@@ -15,19 +15,18 @@
   "source_anchor": {
     "path": "docs/data/external/thermodynamics/landauer/jun_2014/source_record.json",
     "doi": "10.1103/PhysRevLett.113.190601",
-    "claim_boundary": "Source identity is pinned and a source-facing asymptotic-work summary with uncertainty is recorded. The inherited legacy 0.028 eV runtime row is now demoted to legacy context outside active Jun closure logic, but the original source-summary file/table identity and exact fit-target locator are still not closed tightly enough for stronger source-normalized use."
+    "claim_boundary": "Source identity is pinned and the active asymptotic-work summary locator is captured as arXiv:1408.5089 Figure 4, Table 1, Eq. (3), full-erasure p=1. Final-source parity/local archival and row-level normalization remain open."
   },
   "next_controller": {
-    "status": "jun_source_summary_file_identity_and_table_locator_required",
-    "why": "A summary-layer uncertainty is present for the pinned Jun asymptotic-work quantity, and the legacy 0.028 eV row now has a declared demotion policy outside active Jun logic. The remaining Jun blocker is the original source-summary file/table identity, exact source row or fit-target locator, and explicit unit-conversion path."
+    "status": "jun_final_source_parity_or_local_archive_before_row_level_normalization",
+    "why": "The source-summary file/table/fit-target identity is now captured, so the next Jun blocker is final PRL parity or local archival of that source surface before row-level normalization."
   },
   "minimum_missing_evidence": [
-    "original_file_name or archived table identifier for the pinned Jun source-facing summary",
-    "source_row_or_fit_target_identifier for the pinned asymptotic-work summary or a stronger exact Jun quantity",
-    "explicit source unit basis and conversion note for the summary-to-runtime comparison",
-    "archived source surface sufficient to support summary-layer uncertainty and later row-level normalization"
+    "final_prl_page_or_pdf_parity_for_arxiv_table_1_summary",
+    "local_archive_or_machine_transcription_of_the_summary_surface",
+    "explicit policy that the legacy 0.028 eV row remains outside active Jun logic unless final-source evidence reassigns it"
   ],
-  "allowed_claim_while_open": "Jun may remain a source-identified summary-interval lower-bound support row, and the legacy 0.028 eV row may remain legacy context only, but Jun must not yet be counted as a clean row-level source-normalized benchmark row.",
+  "allowed_claim_while_open": "Jun may remain a source-identified summary-interval lower-bound support row with a captured Table 1/Figure 4 locator, but it must not yet be counted as a final-source-normalized row-level benchmark.",
   "promotion_value_if_closed": "Closing this gap would convert the current Jun summary-interval lane into a cleaner second uncertainty-aware Landauer row and reduce overreliance on the Berut summary row.",
   "claim_boundary": "This artifact narrows the Jun blocker. It does not by itself close source-lock, uncertainty propagation, or the UET bridge."
 }

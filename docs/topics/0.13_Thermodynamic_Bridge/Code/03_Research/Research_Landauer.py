@@ -60,6 +60,7 @@ UNITS_CONTRACT_PATH = TOPIC_DIR / "Data" / "03_Research" / "units_contract.json"
 LANDAUER_UET_MAPPING_PATH = TOPIC_DIR / "Data" / "03_Research" / "landauer_uet_mapping.json"
 BETA_ROLE_CLARIFICATION_PATH = TOPIC_DIR / "Data" / "03_Research" / "beta_role_clarification.json"
 ROW_CLOSURE_MATRIX_PATH = TOPIC_DIR / "Data" / "03_Research" / "row_closure_matrix.json"
+JUN_SOURCE_SUMMARY_LOCATOR_PATH = TOPIC_DIR / "Data" / "03_Research" / "jun_2014_source_summary_locator.json"
 DATA_INPUTS = [
     TOPIC_DIR / "Data" / "03_Research" / "__init__.py",
     TOPIC_DIR / "Data" / "03_Research" / "berut_2012.json",
@@ -71,6 +72,7 @@ DATA_INPUTS = [
     TOPIC_DIR / "Data" / "03_Research" / "landauer_source_lock.json",
     TOPIC_DIR / "Data" / "03_Research" / "hong_2016_runtime_target_policy.json",
     TOPIC_DIR / "Data" / "03_Research" / "legacy_0p028_runtime_row_policy.json",
+    TOPIC_DIR / "Data" / "03_Research" / "jun_2014_source_summary_locator.json",
     TOPIC_DIR / "Data" / "03_Research" / "row_closure_matrix.json",
     ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "berut_2012" / "source_record.json",
     ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "jun_2014" / "source_record.json",
@@ -182,6 +184,7 @@ def _build_source_evidence_intake_stub():
     berut_transcription_policy = _load_json(TOPIC_DIR / "Data" / "03_Research" / "berut_2012_transcription_policy_blocker.json")
     berut_locator_mapping = _load_json(TOPIC_DIR / "Data" / "03_Research" / "berut_2012_figure_locator_mapping.json")
     jun_source = _load_json(ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "jun_2014" / "source_record.json")
+    jun_locator = _load_json(JUN_SOURCE_SUMMARY_LOCATOR_PATH)
     hong_source = _load_json(ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "hong_2016" / "source_record.json")
     peterson_source = _load_json(ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "peterson_2018" / "source_record.json")
     ligo_source = _load_json(ROOT / "docs" / "data" / "external" / "gravity" / "ligo_black_hole_mergers" / "source_record.json")
@@ -245,11 +248,13 @@ def _build_source_evidence_intake_stub():
                 "evidence_fields": [
                     {"field": "doi_or_url", "status": "complete", "value": jun_source["doi_url"]},
                     {"field": "local_path", "status": "complete", "value": _relative_repo_path(experimental_module)},
-                    {"field": "original_file_name", "status": "pending", "value": ""},
-                    {"field": "reported_energy_value", "status": "complete", "value": "Source-facing asymptotic full-erasure work is recorded as 0.71 +/- 0.03 kT in the pinned Jun summary; under the current 300 K verifier baseline this converts to about 0.01836 +/- 0.00078 eV."},
-                    {"field": "reported_uncertainty_or_interval", "status": "partial", "value": "Summary-layer uncertainty is available in kT, and the legacy 0.028 eV row is now declared legacy context rather than an active Jun benchmark; original file/table identity for the pinned Jun summary remains open."},
+                    {"field": "original_file_name", "status": "complete", "value": jun_locator["source_identity"]["arxiv_id"]},
+                    {"field": "source_summary_locator", "status": "complete", "value": f"{jun_locator["source_summary_locator"]["figure_locator"]}; {jun_locator["source_summary_locator"]["table_locator"]}; {jun_locator["source_summary_locator"]["equation_locator"]}; {jun_locator["source_summary_locator"]["fit_target"]}"},
+                    {"field": "reported_energy_value", "status": "complete", "value": "Source-facing asymptotic full-erasure work is recorded as 0.71 +/- 0.03 kT in Table 1 for the full-erasure p=1 fit; under the current 300 K verifier baseline this converts to about 0.01836 +/- 0.00078 eV."},
+                    {"field": "reported_uncertainty_or_interval", "status": "complete", "value": "Summary-layer uncertainty is available in kT and is tied to the captured Table 1/Figure 4/Eq. (3) asymptotic-work fit target."},
+                    {"field": "final_source_or_local_archive", "status": "partial", "value": "arXiv:1408.5089 source-summary locator captured; final PRL page/PDF parity or local article/table archive remains open."},
                     {"field": "unit_basis", "status": "complete", "value": "source-facing quantity in kT; runtime comparison in eV after explicit conversion"},
-                    {"field": "extraction_note", "status": "complete", "value": "Source identity is pinned for the Jun 2014 feedback-trap branch and a source-facing asymptotic-work summary is now recorded, while the separate legacy 0.028 eV runtime row remains mixed-lineage context that may belong to a later nanomagnetic-memory source branch."},
+                    {"field": "extraction_note", "status": "complete", "value": "Source identity and source-summary locator are pinned for the Jun 2014 feedback-trap branch; the separate legacy 0.028 eV runtime row remains mixed-lineage context outside active Jun logic."},
                 ],
             },
             {
@@ -473,7 +478,7 @@ def _build_evidence_lanes(test_results, metrics, readiness_matrix):
             "does_not_support": "Solved, verified, exact, or theory-confirmed wording.",
             "blockers": [
                 "Berut now has a selected Figure 3 preview locator mapped to the topic-summary row, but still lacks one numeric point capture or one stronger upstream numeric surface.",
-                "Uncertainty propagation is only partial: Berut summary and black-hole mass intervals are attached, Jun still lacks source-summary file/table identity despite a declared legacy-row policy, and measured-constant terms remain open.",
+                "Uncertainty propagation is only partial: Berut summary and black-hole mass intervals are attached, Jun has a captured Table 1/Figure 4 source-summary locator but still lacks final-source parity or local archival, and measured-constant terms remain open.",
                 "UET-specific field variables are not yet derived from the standard thermodynamic identities.",
             ],
         },
@@ -516,7 +521,7 @@ def _build_uncertainty_preprocessing_plan(metrics):
                 "conversion_formula": "source_facing_work_eV = source_facing_work_kT * (k_B T / e)",
                 "lower_bound_value": metrics["landauer_300K_engine_eV"],
                 "ratio_to_lower_bound": metrics["jun_2014_ratio_to_landauer_lower_bound"],
-                "uncertainty_propagation_note": "Source-facing asymptotic-work summary and uncertainty are available at the preprint-summary layer, and the legacy 0.028 eV row is now declared outside the active Jun lane; original file/table identity and exact fit-target locator still remain open."
+                "uncertainty_propagation_note": "Source-facing asymptotic-work summary and uncertainty are available at the preprint-summary layer, and the legacy 0.028 eV row is now declared outside the active Jun lane; final PRL parity/local archive still remains open."
             },
             {
                 "source_row_id": "gw150914_final_mass",
@@ -839,14 +844,14 @@ def _build_uncertainty_propagation_summary(metrics, measured_constant_package):
             "current_status": "partial_intervals_mass_plus_direct_2022_g_for_gravity_context",
             "notable_constraints": [
                 "Berut 2012 topic-summary interval crosses the Landauer lower bound at 1 sigma.",
-                "Jun 2014 now has a source-facing summary-layer interval and a declared legacy-row demotion policy, but original file/table identity and exact fit-target locator remain open.",
+                "Jun 2014 now has a source-facing summary-layer interval, a declared legacy-row demotion policy, and a captured Table 1/Figure 4 locator, but final-source parity/local archival remain open.",
                 "Black-hole entropy and Hawking-temperature rows now keep mass-only intervals and also add combined intervals using a direct CODATA 2022 G extraction.",
                 "The G term now comes from a direct CODATA 2022 extract, while spin/systematic astrophysical terms remain excluded.",
             ],
         },
         "claim_boundary": (
             "This summary adds first-pass propagated intervals and gravity-context combined intervals using direct CODATA 2022 G extraction, "
-            "but it is not a full uncertainty package. Raw-source row capture, Jun source-summary file/table identity, systematic astrophysical terms remain open."
+            "but it is not a full uncertainty package. Raw-source row capture, Jun final-source parity/local archival, systematic astrophysical terms remain open."
         ),
     }
     UNCERTAINTY_PROPAGATION_SUMMARY_PATH.write_text(
@@ -983,7 +988,7 @@ def _build_bridge_derivation_map():
                 "current_state": "partial",
                 "needed_evidence": [
                     "Berut Figure 3 locator now needs one numeric point capture or one stronger upstream numeric surface",
-                    "Jun source-summary file/table identity and fit-target locator",
+                    "Jun final-source parity/local archive for captured Table 1/Figure 4 locator",
                     "measured-constant uncertainty package",
                     "claim gate that stays conservative under uncertainty intervals"
                 ],
@@ -1467,7 +1472,7 @@ def _build_foundation_claim_gate(
             "current": "Do not promote to Tier A",
             "reason": "The topic is foundational, but source-normalized data, uncertainty propagation, and UET-specific derivation are not closed.",
             "promotion_requirements": [
-                "Berut must move beyond the selected Figure 3 preview locator to one numeric point capture or one stronger upstream numeric surface, Jun must attach original file/table identity for the pinned source-facing summary, and Peterson still needs one exact source-facing quantity.",
+                "Berut must move beyond the selected Figure 3 preview locator to one numeric point capture or one stronger upstream numeric surface, Jun must attach final-source parity or local archival for the pinned Table 1/Figure 4 source-facing summary, and Peterson still needs one exact source-facing quantity.",
                 "Uncertainty propagation for Landauer heat values and black-hole mass inputs.",
                 "A derivation map from UET information-field variables to the standard thermodynamic identities, with open steps converted into derived or artifact-backed states.",
                 "A units contract that closes the proxy-to-SI boundary or keeps the bridge claim explicitly nondimensional.",
@@ -1689,7 +1694,7 @@ def _write_verification_artifact(test_results, plot_paths, metrics):
     )
 
     warnings.append(
-        "Uncertainty propagation is now partial only: Berut summary intervals are attached, gravity-context rows now add mass-plus-direct-CODATA-2022-G intervals, Jun source-summary identity remains open, and systematic astrophysical terms are still excluded."
+        "Uncertainty propagation is now partial only: Berut summary intervals are attached, gravity-context rows now add mass-plus-direct-CODATA-2022-G intervals, Jun final-source parity/local archival remains open, and systematic astrophysical terms are still excluded."
     )
 
     artifact = {

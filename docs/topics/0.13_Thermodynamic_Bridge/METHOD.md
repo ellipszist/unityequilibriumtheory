@@ -90,7 +90,7 @@ This topic currently mixes all three classes. The key governance rule is that on
 ## Current hardening priorities
 
 1. Move the primary Landauer lane from source-referenced working-copy status toward row-level source-normalized status.
-2. Extend the current uncertainty artifact into a fuller package: Jun needs source-summary file/table identity and an exact fit-target locator, Berut needs numeric-point or stronger-surface provenance, and gravity-adjacent outputs still need systematic astrophysical-term closure plus systematic terms beyond the current mass-plus-`G`-proxy layer.
+2. Extend the current uncertainty artifact into a fuller package: Jun needs final-source parity/local archival for the captured Table 1/Figure 4 fit target, Berut needs numeric-point or stronger-surface provenance, and gravity-adjacent outputs still need systematic astrophysical-term closure plus systematic terms beyond the current mass-plus-direct-CODATA-2022-`G` layer.
 3. Keep the standard-identity lane separate from any claim that UET derives those identities.
 4. Replace or explicitly quarantine synthetic nonequilibrium and vacuum-sink lanes so they do not drift upward into core-claim territory.
 5. Build a derivation map showing what a future UET-specific bridge proof would have to supply beyond the current identities and lower-bound checks.

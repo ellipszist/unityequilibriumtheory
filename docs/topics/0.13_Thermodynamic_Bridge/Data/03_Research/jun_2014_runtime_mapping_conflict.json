@@ -26,18 +26,16 @@
     "claim_boundary": "Source identity is pinned and the source-facing summary now exposes a concrete asymptotic-work quantity that sits near 0.0184 eV at the current verifier baseline, not near the legacy 0.028 eV runtime row."
   },
   "next_controller": {
-    "status": "jun_source_summary_file_identity_and_table_locator_required",
-    "why": "The pinned Jun asymptotic-work quantity is concrete enough to show that the legacy 0.028 eV runtime row is not the same quantity under the current 300 K baseline, and the legacy-row policy now keeps that inherited row outside active Jun closure logic. The remaining Jun step is source-summary file/table identity and exact fit-target locator closure."
+    "status": "jun_final_source_parity_or_local_archive_before_row_level_normalization",
+    "why": "The active Jun asymptotic-work quantity now has a captured source-summary locator, but the legacy 0.028 eV row still remains outside active Jun logic and final-source parity/local archival remain open."
   },
   "minimum_missing_evidence": [
-    "original_file_name or archived table identifier for the pinned Jun source-facing summary",
-    "source_row_or_fit_target_identifier for the pinned asymptotic-work summary or any stronger Jun quantity selected later",
-    "explicit source unit basis",
-    "conversion path from the chosen source quantity to the runtime eV row",
-    "source-backed uncertainty attached to the same converted quantity",
-    "propagated interval in runtime unit basis"
+    "final_prl_page_or_pdf_parity_for_arxiv_table_1_summary",
+    "local_archive_or_machine_transcription_of_the_summary_surface",
+    "explicit policy that no different Jun quantity restores the legacy 0.028 eV row without final-source evidence",
+    "source-backed uncertainty attached to any different converted quantity if selected later"
   ],
-  "allowed_claim_while_open": "Jun may remain a source-identified summary-interval lower-bound support branch, and the legacy 0.028 eV row may remain legacy context only, but the legacy row must not be treated as a clean Jun-mapped quantity or row-level source-normalized Jun benchmark row.",
-  "promotion_value_if_closed": "Closing this conflict would clarify the exact source-summary surface behind the active Jun asymptotic-work quantity while keeping the legacy 0.028 eV row out of Jun-facing closure logic unless final-source evidence later reassigns it.",
+  "allowed_claim_while_open": "Jun may remain a source-identified summary-interval lower-bound support branch with captured Table 1/Figure 4 locator, and the legacy 0.028 eV row may remain legacy context only.",
+  "promotion_value_if_closed": "Closing this conflict would give the active Jun asymptotic-work quantity a final-source or locally archived row surface while keeping the legacy 0.028 eV row out of Jun-facing closure logic unless stronger evidence reassigns it.",
   "claim_boundary": "This artifact narrows the Jun blocker. It does not by itself close source-lock, uncertainty propagation, or the UET bridge."
 }
