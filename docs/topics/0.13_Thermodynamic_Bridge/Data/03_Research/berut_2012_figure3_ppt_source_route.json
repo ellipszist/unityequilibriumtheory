@@ -65,14 +65,15 @@
     "machine_readable_numeric_table_detected": false,
     "claim_boundary": "This pass captures an official Figure 3 PPT route and verifies embedded raster assets, but does not machine-transcribe any numeric point or curve from the figure."
   },
-  "next_controller": "berut_figure_3_axis_calibration_and_point_selection_required",
+  "next_controller": "berut_figure_3_axis_landmark_coordinates_required",
   "remaining_requirements": [
-    "axis calibration for one selected embedded raster candidate",
-    "numeric point or curve selection within the calibrated raster",
+    "machine-readable plot frame bounds for the selected raster candidate",
+    "machine-readable x-axis and y-axis tick calibration landmarks",
+    "selected curve or point pixel coordinates",
     "machine-transcribed numeric point or archived stronger source-data surface",
     "explicit mapping from the captured value to the current topic-summary runtime row"
   ],
-  "claim_boundary": "The Berut row moves beyond preview locator and raster-asset identity into axis calibration and point/curve selection. It still remains below row-level source-normalized numeric closure.",
+  "claim_boundary": "The Berut row moves beyond preview locator, raster-asset identity, and digitization protocol choice into landmark coordinate capture. It still remains below row-level source-normalized numeric closure.",
   "embedded_raster_asset_inventory": {
     "status": "present_primary_candidates_named_digitization_open",
     "path": "Data/03_Research/berut_2012_figure3_raster_asset_inventory.json",
@@ -80,6 +81,12 @@
       "jpeg_2",
       "jpeg_3"
     ],
-    "next_controller": "berut_figure_3_axis_calibration_and_point_selection_required"
+    "next_controller": "berut_figure_3_axis_landmark_coordinates_required",
+    "digitization_protocol": {
+      "status": "present_first_candidate_selected_landmarks_required",
+      "path": "Data/03_Research/berut_2012_figure3_digitization_protocol.json",
+      "preferred_first_candidate": "jpeg_3",
+      "fallback_candidate": "jpeg_2"
+    }
   }
 }

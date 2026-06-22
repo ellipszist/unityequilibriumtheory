@@ -18,6 +18,21 @@ Use this log when `0.13` changes in a way that narrows a provenance blocker, add
 
 ## Entries
 
+### 2026-06-22 - Berut Figure 3 digitization-protocol pass
+
+- Scope: narrow the active Berut row beyond raster-asset inventory by selecting a first calibration candidate and defining the required landmark fields before any numeric transcription
+- Wave type: `gate pass`
+- Added or changed: added `BERUT_2012_FIGURE3_DIGITIZATION_PROTOCOL.md` and `berut_2012_figure3_digitization_protocol.json`; updated the raster inventory, source route, Berut source record, row-closure matrix, verifier intake/gate wording, root docs, and manifest so the active Berut controller is now `berut_figure_3_axis_landmark_coordinates_required`
+- Files touched: `BERUT_2012_FIGURE3_DIGITIZATION_PROTOCOL.md`, `Data/03_Research/berut_2012_figure3_digitization_protocol.json`, `Data/03_Research/berut_2012_figure3_raster_asset_inventory.json`, `Data/03_Research/berut_2012_figure3_ppt_source_route.json`, `docs/data/external/thermodynamics/landauer/berut_2012/source_record.json`, `Data/03_Research/row_closure_matrix.json`, `Code/03_Research/Research_Landauer.py`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`, `README.md`, `ROW_CLOSURE_MATRIX.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: local artifact inspection of the raster inventory plus verifier rerun
+- Result: `WARN`
+- Blocker narrowed: Berut is no longer blocked by deciding how to structure the first digitization attempt; the package now selects `jpeg_3` for first calibration, keeps `jpeg_2` as fallback, and requires plot-frame, axis tick, reference-line, and point/curve landmarks
+- Still open: machine-readable landmark coordinates, point/curve pixel coordinates, numeric transcription, and explicit mapping into the topic-summary runtime row
+- Next controller: `berut_figure_3_axis_landmark_coordinates_required`
+- Claim impact: no upgrade; this wave creates a controlled digitization protocol but does not create a numeric Berut source row
+- Workflow linkage: follows `For Work/18_Research_Hardening_Workflow.md` by turning an open digitization procedure into a named machine-readable protocol before any numeric row claims
+
+
 ### 2026-06-22 - Berut Figure 3 embedded-raster inventory pass
 
 - Scope: narrow the active Berut row beyond official PPT route capture by enumerating the valid embedded raster assets and naming primary digitization candidates

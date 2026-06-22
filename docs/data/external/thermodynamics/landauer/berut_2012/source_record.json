@@ -81,6 +81,18 @@
         "asset_dimensions"
       ],
       "finding": "The official Figure 3 PPT contains six valid embedded raster assets. The largest candidate is jpeg_2 (946 x 1669) and the secondary large candidate is jpeg_3 (646 x 815). Axis calibration and numeric point/curve selection remain open."
+    },
+    {
+      "label": "Berut Figure 3 digitization protocol selection",
+      "url": "https://static-content.springer.com/esm/art%3A10.1038%2Fnature10872/MediaObjects/41586_2012_BFnature10872_MOESM77_ESM.ppt",
+      "checked_date": "2026-06-22",
+      "verified_fields": [
+        "preferred_first_digitization_candidate",
+        "fallback_candidate",
+        "required_axis_landmark_fields",
+        "numeric_capture_boundary"
+      ],
+      "finding": "The topic now selects jpeg_3 as the first calibration candidate, retains jpeg_2 as fallback, and requires plot frame, axis tick, reference-line, and selected point/curve landmarks before numeric transcription."
     }
   ],
   "observed_primary_page_surface": {
@@ -119,7 +131,14 @@
           "jpeg_2",
           "jpeg_3"
         ],
-        "claim_boundary": "Valid embedded raster assets are identified, but no axis calibration or numeric digitization has been performed."
+        "claim_boundary": "Valid embedded raster assets are identified, but no axis calibration or numeric digitization has been performed.",
+        "digitization_protocol": {
+          "status": "present_first_candidate_selected_landmarks_required",
+          "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/berut_2012_figure3_digitization_protocol.json",
+          "preferred_first_candidate": "jpeg_3",
+          "fallback_candidate": "jpeg_2",
+          "claim_boundary": "Digitization protocol is present, but no axis landmarks, point coordinates, or numeric transcription have been captured."
+        }
       }
     }
   },

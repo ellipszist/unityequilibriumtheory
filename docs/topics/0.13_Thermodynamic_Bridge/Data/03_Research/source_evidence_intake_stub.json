@@ -31,7 +31,7 @@
         {
           "field": "row_identifier_or_table_label",
           "status": "partial",
-          "value": "Official Figure 3 PPT route captured and embedded raster candidates named; exact calibrated numeric point/curve remains open."
+          "value": "Official Figure 3 PPT route captured, embedded raster candidates named, and first calibration candidate selected; exact landmark coordinates and numeric point/curve remain open."
         },
         {
           "field": "figure_level_locator",
@@ -46,7 +46,12 @@
         {
           "field": "embedded_raster_asset_inventory",
           "status": "complete",
-          "value": "primary_candidates=jpeg_2,jpeg_3; assets=6; next=berut_figure_3_axis_calibration_and_point_selection_required"
+          "value": "primary_candidates=jpeg_2,jpeg_3; assets=6; next=berut_figure_3_axis_landmark_coordinates_required"
+        },
+        {
+          "field": "digitization_protocol",
+          "status": "complete",
+          "value": "preferred=jpeg_3; fallback=jpeg_2; next=berut_figure_3_axis_landmark_coordinates_required"
         },
         {
           "field": "accessible_surface_status",
@@ -56,7 +61,7 @@
         {
           "field": "declared_transcription_policy",
           "status": "complete",
-          "value": "figure_level_locator_capture selected; official Figure 3 PPT route and embedded raster candidates captured; axis calibration and point/curve selection or stronger source-data surface still required"
+          "value": "figure_level_locator_capture selected; official Figure 3 PPT route, embedded raster candidates, and digitization protocol captured; axis landmark coordinates and point/curve transcription or stronger source-data surface still required"
         },
         {
           "field": "unit_basis",
@@ -66,7 +71,7 @@
         {
           "field": "extraction_note",
           "status": "complete",
-          "value": "Topic working copy stores a checked summary row only. The currently accessible source surface now exposes an official Figure 3 PPT route, and the embedded raster candidates are inventoried, but the source still lacks calibrated axes and a selected numeric point/curve, so source-lock closure requires calibration plus transcription or one stronger upstream source-data surface before normalization."
+          "value": "Topic working copy stores a checked summary row only. The currently accessible source surface now exposes an official Figure 3 PPT route, embedded raster candidates, and a digitization protocol, but the source still lacks axis landmark coordinates and a selected numeric point/curve, so source-lock closure requires landmark capture plus transcription or one stronger upstream source-data surface before normalization."
         }
       ]
     },

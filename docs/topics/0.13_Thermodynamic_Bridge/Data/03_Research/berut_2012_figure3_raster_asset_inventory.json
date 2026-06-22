@@ -122,15 +122,22 @@
     "primary raster candidates named for the next digitization pass"
   ],
   "not_closed_in_this_pass": [
-    "axis calibration",
-    "numeric point or curve selection",
+    "axis landmark coordinate capture",
+    "numeric point or curve selection with pixel coordinates",
     "machine-transcribed heat/work value from the raster",
     "explicit mapping from a digitized point/curve to the current topic-summary runtime row"
   ],
   "blocker_transition": {
     "previous_controller": "berut_figure_3_ppt_raster_digitization_or_source_data_required",
-    "new_controller": "berut_figure_3_axis_calibration_and_point_selection_required",
-    "why_narrower": "The official PPT route is now not only identified; its valid embedded raster assets are enumerated and the primary digitization candidates are named. Remaining work is calibration and point/curve selection, not locating the raster asset."
+    "new_controller": "berut_figure_3_axis_landmark_coordinates_required",
+    "why_narrower": "Raster assets are inventoried and a first calibration candidate/protocol is now declared. Remaining work is landmark coordinate capture before numeric transcription."
   },
-  "claim_boundary": "This artifact identifies candidate raster assets for future digitization. It does not digitize a numeric Berut point, close uncertainty mapping, or make the row source-normalized."
+  "claim_boundary": "This artifact identifies candidate raster assets and points to the digitization protocol. It does not digitize a numeric Berut point, close uncertainty mapping, or make the row source-normalized.",
+  "digitization_protocol": {
+    "status": "present_first_candidate_selected_landmarks_required",
+    "path": "Data/03_Research/berut_2012_figure3_digitization_protocol.json",
+    "preferred_first_candidate": "jpeg_3",
+    "fallback_candidate": "jpeg_2",
+    "next_controller": "berut_figure_3_axis_landmark_coordinates_required"
+  }
 }
