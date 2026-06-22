@@ -90,7 +90,7 @@ Still needed:
 
 - raw-row or machine-transcribed Landauer source package
 - Jun source-summary file/table identity and exact fit-target locator
-- measured-constant uncertainty package
+- systematic astrophysical uncertainty terms after direct CODATA 2022 G extraction
 - gates that stay conservative under those intervals
 
 ## Non-allowed shortcuts

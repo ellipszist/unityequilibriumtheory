@@ -276,14 +276,19 @@
           "value": "docs/data/external/constants/codata/measured_constants_2022_source_record.json"
         },
         {
+          "field": "numeric_extract_path",
+          "status": "complete",
+          "value": "docs/data/external/constants/codata/codata_2022_measured_constants_extract.json"
+        },
+        {
           "field": "constant_identifier",
           "status": "complete",
-          "value": "G; hbar-derived combinations when uncertainty matters"
+          "value": "G; supporting G_over_hbar_c row captured for audit context"
         },
         {
           "field": "value_and_uncertainty",
           "status": "complete",
-          "value": "Source anchor exists; topic-level runtime uncertainty package still needs explicit extraction"
+          "value": "Direct CODATA 2022 extraction records G = 6.67430e-11 with standard uncertainty 0.00015e-11 m^3 kg^-1 s^-2."
         },
         {
           "field": "unit_basis",
@@ -293,7 +298,7 @@
         {
           "field": "extraction_note",
           "status": "complete",
-          "value": "This closes the provenance anchor for measured constants, not the final propagated runtime uncertainty package."
+          "value": "This closes the direct G numeric-extraction blocker for the current gravity-context interval package; systematic astrophysical terms remain separate."
         }
       ]
     }

@@ -18,6 +18,20 @@ Use this log when `0.13` changes in a way that narrows a provenance blocker, add
 
 ## Entries
 
+### 2026-06-21 - CODATA 2022 G direct-extraction pass
+
+- Scope: replace the measured-constant `G` uncertainty proxy inherited from the local `0.19` CODATA 2018 checkpoint with a direct CODATA 2022/NIST extract inside the active `0.13` gravity-context interval package
+- Wave type: `source pass`
+- Added or changed: added `docs/data/external/constants/codata/codata_2022_measured_constants_extract.json`; updated the measured-constants source record, row-closure matrix, primary verifier, source-evidence intake/readiness, measured-constant package, uncertainty summary, foundation gate, verification artifact, and topic docs so the gravity-context rows now use `direct_2022_g_threaded` instead of `provisional_g_proxy_threaded`
+- Files touched: `docs/data/external/constants/codata/codata_2022_measured_constants_extract.json`, `docs/data/external/constants/codata/measured_constants_2022_source_record.json`, `Data/03_Research/measured_constant_uncertainty_package.json`, `Data/03_Research/uncertainty_propagation_summary.json`, `Data/03_Research/row_closure_matrix.json`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json`, `Code/03_Research/Research_Landauer.py`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`, `MEASURED_CONSTANT_UNCERTAINTY_PACKAGE.md`, `README.md`, `METHOD.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `DERIVATION_MAP.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: NIST/CODATA 2022 complete ASCII listing at `https://physics.nist.gov/cuu/Constants/Table/allascii.txt`, row `Newtonian constant of gravitation 6.674 30 e-11 0.000 15 e-11 m^3 kg^-1 s^-2`; then `$env:PYTHONUTF8='1'; C:\Users\santa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
+- Result: `WARN`
+- Blocker narrowed: the measured-constant support layer is no longer blocked by direct 2022 `G` numeric extraction; that value and uncertainty now live in a local source extract and are threaded into the gravity-context combined intervals
+- Still open: systematic astrophysical terms, object-level black-hole source-row capture, broader CODATA table archival, and the core Landauer row controllers remain open
+- Next controller: `systematic_term_policy_after_direct_2022_g_extraction`
+- Claim impact: no upgrade; this wave improves uncertainty provenance for gravity-context rows without changing the UET bridge proof ceiling
+- Workflow linkage: follows `For Work/18_Research_Hardening_Workflow.md` by converting one support-layer source blocker into a direct local extract before broadening the uncertainty package
+
 ### 2026-06-21 - Jun legacy-row policy threading pass
 
 - Scope: thread the existing legacy `0.028 eV` row policy into the active Jun row controller so the topic no longer treats Jun as blocked by an undecided legacy-row branch choice

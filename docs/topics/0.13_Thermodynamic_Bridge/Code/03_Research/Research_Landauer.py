@@ -54,6 +54,7 @@ FOUNDATION_CLAIM_GATE_PATH = TOPIC_DIR / "Data" / "03_Research" / "thermodynamic
 UNCERTAINTY_PREPROCESSING_PATH = TOPIC_DIR / "Data" / "03_Research" / "uncertainty_preprocessing_manifest.json"
 UNCERTAINTY_PROPAGATION_SUMMARY_PATH = TOPIC_DIR / "Data" / "03_Research" / "uncertainty_propagation_summary.json"
 MEASURED_CONSTANT_UNCERTAINTY_PACKAGE_PATH = TOPIC_DIR / "Data" / "03_Research" / "measured_constant_uncertainty_package.json"
+CODATA_2022_MEASURED_CONSTANTS_EXTRACT_PATH = ROOT / "docs" / "data" / "external" / "constants" / "codata" / "codata_2022_measured_constants_extract.json"
 BRIDGE_DERIVATION_MAP_PATH = TOPIC_DIR / "Data" / "03_Research" / "bridge_derivation_map.json"
 UNITS_CONTRACT_PATH = TOPIC_DIR / "Data" / "03_Research" / "units_contract.json"
 LANDAUER_UET_MAPPING_PATH = TOPIC_DIR / "Data" / "03_Research" / "landauer_uet_mapping.json"
@@ -80,7 +81,7 @@ DATA_INPUTS = [
     ROOT / "docs" / "data" / "external" / "gravity" / "ligo_black_hole_mergers" / "source_record.json",
     ROOT / "docs" / "data" / "external" / "gravity" / "eht_black_hole_masses" / "source_record.json",
     ROOT / "docs" / "data" / "external" / "constants" / "codata" / "measured_constants_2022_source_record.json",
-    ROOT / "docs" / "topics" / "0.19_Gravity_GR" / "Data" / "03_Research" / "codata_2018_gravity.json",
+    CODATA_2022_MEASURED_CONSTANTS_EXTRACT_PATH,
 ]
 
 
@@ -312,10 +313,11 @@ def _build_source_evidence_intake_stub():
                 "evidence_fields": [
                     {"field": "doi_or_url", "status": "complete", "value": "https://arxiv.org/abs/2409.03787; https://physics.nist.gov/constants"},
                     {"field": "local_path", "status": "complete", "value": _relative_repo_path(ROOT / "docs" / "data" / "external" / "constants" / "codata" / "measured_constants_2022_source_record.json")},
-                    {"field": "constant_identifier", "status": "complete", "value": "G; hbar-derived combinations when uncertainty matters"},
-                    {"field": "value_and_uncertainty", "status": "complete", "value": "Source anchor exists; topic-level runtime uncertainty package still needs explicit extraction"},
+                    {"field": "numeric_extract_path", "status": "complete", "value": _relative_repo_path(CODATA_2022_MEASURED_CONSTANTS_EXTRACT_PATH)},
+                    {"field": "constant_identifier", "status": "complete", "value": "G; supporting G_over_hbar_c row captured for audit context"},
+                    {"field": "value_and_uncertainty", "status": "complete", "value": "Direct CODATA 2022 extraction records G = 6.67430e-11 with standard uncertainty 0.00015e-11 m^3 kg^-1 s^-2."},
                     {"field": "unit_basis", "status": "complete", "value": measured_constants_source["unit_convention"]},
-                    {"field": "extraction_note", "status": "complete", "value": "This closes the provenance anchor for measured constants, not the final propagated runtime uncertainty package."},
+                    {"field": "extraction_note", "status": "complete", "value": "This closes the direct G numeric-extraction blocker for the current gravity-context interval package; systematic astrophysical terms remain separate."},
                 ],
             },
         ],
@@ -571,11 +573,9 @@ def _build_measured_constant_uncertainty_package():
     exact_constants = _load_json(
         ROOT / "docs" / "data" / "external" / "constants" / "codata" / "si_2019_exact_constants.json"
     )
-    gravity_codata_proxy = _load_json(
-        ROOT / "docs" / "topics" / "0.19_Gravity_GR" / "Data" / "03_Research" / "codata_2018_gravity.json"
-    )
+    measured_constants_extract = _load_json(CODATA_2022_MEASURED_CONSTANTS_EXTRACT_PATH)
 
-    g_entry = gravity_codata_proxy["constants"]["G"]
+    g_entry = measured_constants_extract["constants"]["G"]
     g_relative_uncertainty = g_entry["relative_uncertainty"]
 
     package = {
@@ -583,21 +583,22 @@ def _build_measured_constant_uncertainty_package():
         "topic": "0.13_Thermodynamic_Bridge",
         "purpose": (
             "Declare the current runtime uncertainty policy for measured constants in gravity-adjacent "
-            "thermodynamic rows without pretending that those uncertainties are already fully threaded into the verifier intervals."
+            "thermodynamic rows using the direct CODATA 2022 G extraction while keeping systematic astrophysical terms separate."
         ),
-        "status": "provisional_runtime_proxy_threaded_into_gravity_context",
+        "status": "direct_2022_g_extraction_threaded_into_gravity_context",
         "provenance": {
             "primary_anchor": {
                 "path": "docs/data/external/constants/codata/measured_constants_2022_source_record.json",
                 "role": measured_constants_source["source_role"],
             },
-            "local_numeric_proxy_source": {
-                "path": "docs/topics/0.19_Gravity_GR/Data/03_Research/codata_2018_gravity.json",
-                "role": "local numeric proxy for runtime G uncertainty until direct 2022 in-topic extraction is archived",
+            "local_numeric_extract": {
+                "path": _relative_repo_path(CODATA_2022_MEASURED_CONSTANTS_EXTRACT_PATH),
+                "role": measured_constants_extract["source_class"],
+                "source_url": measured_constants_extract["source_url"],
             },
             "claim_boundary": (
-                "The provenance anchor for measured constants is pinned to the 2022/NIST source record, but the current "
-                "runtime numeric uncertainty proxy for G is still inherited from the local CODATA 2018 gravity checkpoint."
+                "The provenance anchor for measured constants is pinned to the 2022/NIST source record and the current "
+                "runtime numeric uncertainty for G now comes from the direct CODATA 2022 extract stored in the repo."
             ),
         },
         "runtime_constants": {
@@ -606,7 +607,7 @@ def _build_measured_constant_uncertainty_package():
                 "uncertainty": g_entry["uncertainty"],
                 "relative_uncertainty": g_relative_uncertainty,
                 "unit": g_entry["unit"],
-                "source_status": "provisional_numeric_proxy_from_local_codata_2018_checkpoint",
+                "source_status": g_entry["source_status"],
             },
             "hbar": {
                 "value": exact_constants["constants"]["h"]["value"] / (2.0 * np.pi),
@@ -653,20 +654,20 @@ def _build_measured_constant_uncertainty_package():
         "row_policy": [
             {
                 "source_row_id": "gw150914_final_mass",
-                "current_interval_status": "mass_plus_g_proxy_interval_present",
-                "measured_constant_uncertainty_status": "provisional_g_proxy_threaded",
+                "current_interval_status": "mass_plus_direct_2022_g_interval_present",
+                "measured_constant_uncertainty_status": "direct_2022_g_threaded",
                 "relative_uncertainty_from_G_only": g_relative_uncertainty,
             },
             {
                 "source_row_id": "m87_mass",
-                "current_interval_status": "mass_plus_g_proxy_interval_present",
-                "measured_constant_uncertainty_status": "provisional_g_proxy_threaded",
+                "current_interval_status": "mass_plus_direct_2022_g_interval_present",
+                "measured_constant_uncertainty_status": "direct_2022_g_threaded",
                 "relative_uncertainty_from_G_only": g_relative_uncertainty,
             },
             {
                 "source_row_id": "sgrA_mass",
-                "current_interval_status": "mass_plus_g_proxy_interval_present",
-                "measured_constant_uncertainty_status": "provisional_g_proxy_threaded",
+                "current_interval_status": "mass_plus_direct_2022_g_interval_present",
+                "measured_constant_uncertainty_status": "direct_2022_g_threaded",
                 "relative_uncertainty_from_G_only": g_relative_uncertainty,
             },
             {
@@ -683,9 +684,8 @@ def _build_measured_constant_uncertainty_package():
             },
         ],
         "claim_boundary": (
-            "This package narrows the measured-constant blocker by declaring a runtime proxy and propagation policy. "
-            "It threads that proxy into provisional gravity-context combined intervals, but it does not mean measured-constant "
-            "uncertainty is fully source-normalized or that systematic astrophysical terms are closed."
+            "This package narrows the measured-constant blocker by replacing the prior runtime proxy with a direct CODATA 2022 G extraction and propagation policy. "
+            "It threads that direct G value into gravity-context combined intervals, but it does not mean astrophysical systematic terms or object-level source-row capture are closed."
         ),
     }
     MEASURED_CONSTANT_UNCERTAINTY_PACKAGE_PATH.write_text(
@@ -728,22 +728,22 @@ def _build_uncertainty_propagation_summary(metrics, measured_constant_package):
                 "mass_solar_uncertainty": mass_error_solar,
                 "mass_relative_uncertainty": mass_relative_uncertainty,
                 "constant_uncertainty_included": False,
-                "measured_constant_relative_uncertainty_proxy": g_relative_uncertainty,
+                "measured_constant_relative_uncertainty_direct_2022_G": g_relative_uncertainty,
             },
             "propagated_outputs": {
                 "entropy_planck_central": entropy_central,
                 "entropy_planck_interval_1sigma": [entropy_lower, entropy_upper],
                 "entropy_relative_uncertainty_first_order": 2.0 * mass_relative_uncertainty,
-                "entropy_relative_uncertainty_combined_mass_plus_G_proxy": entropy_relative_uncertainty_combined,
-                "entropy_planck_interval_1sigma_mass_plus_G_proxy": [
+                "entropy_relative_uncertainty_combined_mass_plus_direct_2022_G": entropy_relative_uncertainty_combined,
+                "entropy_planck_interval_1sigma_mass_plus_direct_2022_G": [
                     entropy_central * (1.0 - entropy_relative_uncertainty_combined),
                     entropy_central * (1.0 + entropy_relative_uncertainty_combined),
                 ],
                 "hawking_temperature_K_central": hawking_central,
                 "hawking_temperature_K_interval_1sigma": [hawking_lower, hawking_upper],
                 "hawking_relative_uncertainty_first_order": mass_relative_uncertainty,
-                "hawking_relative_uncertainty_combined_mass_plus_G_proxy": hawking_relative_uncertainty_combined,
-                "hawking_temperature_K_interval_1sigma_mass_plus_G_proxy": [
+                "hawking_relative_uncertainty_combined_mass_plus_direct_2022_G": hawking_relative_uncertainty_combined,
+                "hawking_temperature_K_interval_1sigma_mass_plus_direct_2022_G": [
                     hawking_central * (1.0 - hawking_relative_uncertainty_combined),
                     hawking_central * (1.0 + hawking_relative_uncertainty_combined),
                 ],
@@ -754,7 +754,7 @@ def _build_uncertainty_propagation_summary(metrics, measured_constant_package):
             },
             "claim_boundary": (
                 "Mass-only intervals remain the current baseline. Additional combined intervals now include a provisional "
-                "G-only measured-constant proxy, but spin/systematic terms are still not included."
+                "direct CODATA 2022 G uncertainty, but spin/systematic terms are still not included."
             ),
         }
 
@@ -836,17 +836,17 @@ def _build_uncertainty_propagation_summary(metrics, measured_constant_package):
             "rows_missing_uncertainty_inputs": 0,
             "constant_uncertainty_included": False,
             "measured_constant_runtime_package_status": measured_constant_package["status"],
-            "current_status": "partial_intervals_mass_plus_g_proxy_for_gravity_context",
+            "current_status": "partial_intervals_mass_plus_direct_2022_g_for_gravity_context",
             "notable_constraints": [
                 "Berut 2012 topic-summary interval crosses the Landauer lower bound at 1 sigma.",
                 "Jun 2014 now has a source-facing summary-layer interval and a declared legacy-row demotion policy, but original file/table identity and exact fit-target locator remain open.",
-                "Black-hole entropy and Hawking-temperature rows now keep mass-only intervals and also add provisional combined intervals using a G-only runtime proxy.",
-                "The G proxy is not yet a direct 2022 in-topic extraction and spin/systematic astrophysical terms remain excluded.",
+                "Black-hole entropy and Hawking-temperature rows now keep mass-only intervals and also add combined intervals using a direct CODATA 2022 G extraction.",
+                "The G term now comes from a direct CODATA 2022 extract, while spin/systematic astrophysical terms remain excluded.",
             ],
         },
         "claim_boundary": (
-            "This summary adds first-pass propagated intervals and provisional gravity-context combined intervals using a G-only runtime proxy, "
-            "but it is not a full uncertainty package. Raw-source row capture, Jun source-summary file/table identity, direct 2022 measured-constant extraction, and systematic terms remain open."
+            "This summary adds first-pass propagated intervals and gravity-context combined intervals using direct CODATA 2022 G extraction, "
+            "but it is not a full uncertainty package. Raw-source row capture, Jun source-summary file/table identity, systematic astrophysical terms remain open."
         ),
     }
     UNCERTAINTY_PROPAGATION_SUMMARY_PATH.write_text(
@@ -1689,7 +1689,7 @@ def _write_verification_artifact(test_results, plot_paths, metrics):
     )
 
     warnings.append(
-        "Uncertainty propagation is now partial only: Berut summary intervals are attached, gravity-context rows now add provisional mass-plus-G-proxy intervals, Jun uncertainty remains open, and systematic astrophysical terms are still excluded."
+        "Uncertainty propagation is now partial only: Berut summary intervals are attached, gravity-context rows now add mass-plus-direct-CODATA-2022-G intervals, Jun source-summary identity remains open, and systematic astrophysical terms are still excluded."
     )
 
     artifact = {

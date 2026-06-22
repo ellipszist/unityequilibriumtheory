@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "source_class": "external_numeric_extract",
+  "source_label": "NIST/CODATA 2022 recommended constants, complete ASCII listing",
+  "source_url": "https://physics.nist.gov/cuu/Constants/Table/allascii.txt",
+  "checked_date": "2026-06-21",
+  "extraction_method": "manual transcription from the NIST 2022 CODATA complete ASCII listing row for Newtonian constant of gravitation",
+  "constants": {
+    "G": {
+      "quantity_label": "Newtonian constant of gravitation",
+      "value": 6.6743e-11,
+      "uncertainty": 1.5e-15,
+      "relative_uncertainty": 2.2474266964325848e-05,
+      "unit": "m^3 kg^-1 s^-2",
+      "source_row_text": "Newtonian constant of gravitation 6.674 30 e-11 0.000 15 e-11 m^3 kg^-1 s^-2",
+      "source_status": "direct_2022_nist_codata_ascii_extract"
+    },
+    "G_over_hbar_c": {
+      "quantity_label": "Newtonian constant of gravitation over h-bar c",
+      "value": 6.70883e-39,
+      "uncertainty": 1.5e-43,
+      "relative_uncertainty": 2.2358593078077695e-05,
+      "unit": "(GeV/c^2)^-2",
+      "source_row_text": "Newtonian constant of gravitation over h-bar c 6.708 83 e-39 0.000 15 e-39 (GeV/c^2)^-2",
+      "source_status": "direct_2022_nist_codata_ascii_extract_supporting_reference"
+    }
+  },
+  "claim_boundary": "This extract records CODATA 2022 measured-constant values needed by 0.13 gravity-context uncertainty propagation. It does not add astrophysical systematic terms or close black-hole source-row capture."
+}

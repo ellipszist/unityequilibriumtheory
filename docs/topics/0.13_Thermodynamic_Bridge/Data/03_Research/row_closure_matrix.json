@@ -78,13 +78,12 @@
       "current_local_surface": "Data/03_Research/experimental_data.py",
       "upstream_anchor": "docs/data/external/gravity/ligo_black_hole_mergers/source_record.json",
       "source_closure_status": "ready_for_source_review_summary_row_present",
-      "uncertainty_status": "mass_plus_g_proxy_interval_present",
+      "uncertainty_status": "mass_plus_direct_2022_g_interval_present",
       "missing_requirements": [
         "row-level archival capture",
-        "direct_2022_measured_constant_extraction",
         "spin_or_systematic term policy"
       ],
-      "claim_effect_if_left_open": "Gravity-adjacent outputs now include a provisional mass-plus-G-proxy interval layer, but they still remain below a fuller uncertainty-aware context package because systematic terms are open.",
+      "claim_effect_if_left_open": "Gravity-adjacent outputs now include a mass-plus-direct-2022-G interval layer, but they still remain below a fuller uncertainty-aware context package because systematic terms are open.",
       "promotion_value_if_closed": "Would make black-hole context rows less provisional and better separated from the Landauer source-lock problem."
     },
     {
@@ -93,13 +92,12 @@
       "current_local_surface": "Data/03_Research/experimental_data.py",
       "upstream_anchor": "docs/data/external/gravity/eht_black_hole_masses/source_record.json",
       "source_closure_status": "ready_for_source_review_summary_row_present",
-      "uncertainty_status": "mass_plus_g_proxy_interval_present",
+      "uncertainty_status": "mass_plus_direct_2022_g_interval_present",
       "missing_requirements": [
         "object-level machine-readable source row capture",
-        "direct_2022_measured_constant_extraction",
         "systematic term policy"
       ],
-      "claim_effect_if_left_open": "EHT-derived uncertainty context now includes a provisional mass-plus-G-proxy layer, but it still cannot be overread as a fully normalized astrophysical support lane.",
+      "claim_effect_if_left_open": "EHT-derived uncertainty context now includes a mass-plus-direct-2022-G layer, but it still cannot be overread as a fully normalized astrophysical support lane.",
       "promotion_value_if_closed": "Would reduce ambiguity in the gravity-identity context without changing the current UET bridge ceiling."
     },
     {
@@ -108,13 +106,12 @@
       "current_local_surface": "Data/03_Research/experimental_data.py",
       "upstream_anchor": "docs/data/external/gravity/eht_black_hole_masses/source_record.json",
       "source_closure_status": "ready_for_source_review_summary_row_present",
-      "uncertainty_status": "mass_plus_g_proxy_interval_present",
+      "uncertainty_status": "mass_plus_direct_2022_g_interval_present",
       "missing_requirements": [
         "object-level machine-readable source row capture",
-        "direct_2022_measured_constant_extraction",
         "systematic term policy"
       ],
-      "claim_effect_if_left_open": "Sgr A* now has a provisional mass-plus-G-proxy context interval, but systematic terms and source-normalized row capture remain open.",
+      "claim_effect_if_left_open": "Sgr A* now has a mass-plus-direct-2022-G context interval, but systematic terms and source-normalized row capture remain open.",
       "promotion_value_if_closed": "Would improve context-row completeness while keeping the core claim ceiling conservative."
     },
     {
@@ -122,22 +119,22 @@
       "benchmark_family": "Measured-constant uncertainty support layer",
       "current_local_surface": "docs/data/external/constants/codata/measured_constants_2022_source_record.json",
       "upstream_anchor": "docs/data/external/constants/codata/measured_constants_2022_source_record.json",
-      "source_closure_status": "provenance_anchor_present_runtime_package_declared",
-      "uncertainty_status": "provisional_proxy_threaded_into_gravity_outputs",
+      "source_closure_status": "direct_2022_g_extract_present_runtime_package_threaded",
+      "uncertainty_status": "direct_2022_g_threaded_into_gravity_outputs",
       "missing_requirements": [
-        "direct_2022_runtime_constant_extraction",
-        "policy for exact versus measured constants in each lane"
+        "policy for exact versus measured constants in each lane beyond current G-only support",
+        "systematic-term interface for gravity-context rows"
       ],
-      "claim_effect_if_left_open": "Gravity-context rows now expose a provisional G-proxy layer, but the package still stops short of direct 2022 extraction and broader systematic closure.",
-      "promotion_value_if_closed": "Would turn the current first-pass plus G-proxy interval package into a more explicit multi-source uncertainty package."
+      "claim_effect_if_left_open": "Gravity-context rows now use a direct CODATA 2022 G extraction rather than a 0.19-derived proxy, but the package still stops short of broader systematic-term closure.",
+      "promotion_value_if_closed": "Would turn the current direct-G interval package into a fuller multi-source uncertainty package that includes systematic terms and object-level source-row capture."
     }
   ],
   "summary": {
     "rows_total": 8,
     "rows_blocked_by_source_identity_or_row_capture": 4,
     "rows_with_partial_uncertainty_only": 5,
-    "rows_with_mass_plus_g_proxy_intervals": 3,
-    "rows_missing_any_source_backed_uncertainty": 2
+    "rows_missing_any_source_backed_uncertainty": 2,
+    "rows_with_mass_plus_direct_2022_g_intervals": 3
   },
   "claim_boundary": "This matrix narrows the remaining 0.13 blocker chain row-by-row. It does not by itself close source-lock, uncertainty propagation, or the UET bridge derivation."
 }
