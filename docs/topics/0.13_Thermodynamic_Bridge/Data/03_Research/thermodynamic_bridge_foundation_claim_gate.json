@@ -13,7 +13,7 @@
       "allowed_usage": "May constrain UET information-erasure energy language as a lower-bound relation.",
       "metric": "jun_2014_ratio_to_landauer_lower_bound",
       "value": 1.024313479031164,
-      "blocker_to_stronger_usage": "Active Landauer row controllers remain open (berut_2012_summary_300K -> berut_figure_3_ppt_raster_digitization_or_source_data_required, jun_2014_summary_300K -> jun_final_prl_parity_or_aps_access_resolution_required, hong_2016_candidate_nanometric_memory_branch -> final_source_confirmation_then_replace_or_remove_legacy_0p028_row, peterson_2018_quantum_landauer_branch -> exact_one_paper_identity_before_any_row_capture), and the uncertainty lane is only partial_intervals_mass_plus_direct_2022_g_for_gravity_context."
+      "blocker_to_stronger_usage": "Active Landauer row controllers remain open (berut_2012_summary_300K -> berut_figure_3_axis_calibration_and_point_selection_required, jun_2014_summary_300K -> jun_final_prl_parity_or_aps_access_resolution_required, hong_2016_candidate_nanometric_memory_branch -> final_source_confirmation_then_replace_or_remove_legacy_0p028_row, peterson_2018_quantum_landauer_branch -> exact_one_paper_identity_before_any_row_capture), and the uncertainty lane is only partial_intervals_mass_plus_direct_2022_g_for_gravity_context."
     },
     {
       "export_id": "T13_EXPORT_STANDARD_THERMO_GRAVITY_IDENTITIES",
@@ -32,10 +32,10 @@
       "claim_class": "A/B blocked",
       "forbidden_usage": "Do not cite 0.13 as proof that UET derives information, entropy, and energy from first principles.",
       "blockers": [
-        "Berut now has an official Figure 3 PPT route with binary identity captured, but still lacks calibrated numeric point/curve transcription or one stronger upstream source-data surface.",
+        "Berut now has an official Figure 3 PPT route and embedded raster asset inventory, but still lacks axis calibration, numeric point/curve selection, and transcription or one stronger upstream source-data surface.",
         "Uncertainty propagation is only partial: Berut summary and black-hole mass intervals are attached, Jun has a captured and locally transcribed Table I/Figure 4 source-summary surface but still lacks final PRL parity/APS access resolution, and measured-constant terms remain open.",
         "UET-specific field variables are not yet derived from the standard thermodynamic identities.",
-        "berut_2012_summary_300K controller: berut_figure_3_ppt_raster_digitization_or_source_data_required",
+        "berut_2012_summary_300K controller: berut_figure_3_axis_calibration_and_point_selection_required",
         "jun_2014_summary_300K controller: jun_final_prl_parity_or_aps_access_resolution_required",
         "hong_2016_candidate_nanometric_memory_branch controller: final_source_confirmation_then_replace_or_remove_legacy_0p028_row",
         "peterson_2018_quantum_landauer_branch controller: exact_one_paper_identity_before_any_row_capture",
@@ -53,7 +53,7 @@
       "blockers": [
         {
           "source_target": "Berut 2012 upstream numeric surface or declared transcription policy",
-          "next_controller": "berut_figure_3_ppt_raster_digitization_or_source_data_required"
+          "next_controller": "berut_figure_3_axis_calibration_and_point_selection_required"
         },
         {
           "source_target": "Jun 2014 feedback-trap benchmark source",
@@ -109,7 +109,7 @@
     "current": "Do not promote to Tier A",
     "reason": "The topic is foundational, but source-normalized data, uncertainty propagation, and UET-specific derivation are not closed.",
     "promotion_requirements": [
-      "Berut must move beyond the official Figure 3 PPT route to calibrated numeric point/curve transcription or one stronger upstream source-data surface, Jun must resolve final PRL parity/APS access for the locally transcribed Table I/Figure 4 source-facing summary, and Peterson still needs one exact source-facing quantity.",
+      "Berut must move beyond the official Figure 3 PPT raster inventory to axis calibration, point/curve selection, and numeric transcription or one stronger upstream source-data surface, Jun must resolve final PRL parity/APS access for the locally transcribed Table I/Figure 4 source-facing summary, and Peterson still needs one exact source-facing quantity.",
       "Uncertainty propagation for Landauer heat values and black-hole mass inputs.",
       "A derivation map from UET information-field variables to the standard thermodynamic identities, with open steps converted into derived or artifact-backed states.",
       "A units contract that closes the proxy-to-SI boundary or keeps the bridge claim explicitly nondimensional.",
@@ -122,10 +122,10 @@
   "row_controller_summary": [
     {
       "row_id": "berut_2012_summary_300K",
-      "source_closure_status": "official_figure_3_powerpoint_route_captured_raster_only_numeric_capture_open",
+      "source_closure_status": "official_figure_3_ppt_raster_assets_inventoried_digitization_open",
       "uncertainty_status": "interval_present_topic_summary_only",
-      "next_controller": "berut_figure_3_ppt_raster_digitization_or_source_data_required",
-      "first_missing_requirement": "numeric_point_or_curve_identifier_within_official_figure_3_ppt_raster"
+      "next_controller": "berut_figure_3_axis_calibration_and_point_selection_required",
+      "first_missing_requirement": "axis_calibration_for_selected_official_figure_3_raster_candidate"
     },
     {
       "row_id": "jun_2014_summary_300K",

@@ -65,12 +65,21 @@
     "machine_readable_numeric_table_detected": false,
     "claim_boundary": "This pass captures an official Figure 3 PPT route and verifies embedded raster assets, but does not machine-transcribe any numeric point or curve from the figure."
   },
-  "next_controller": "berut_figure_3_ppt_raster_digitization_or_source_data_required",
+  "next_controller": "berut_figure_3_axis_calibration_and_point_selection_required",
   "remaining_requirements": [
-    "machine-transcribed numeric point or curve from the official Figure 3 image",
-    "or a stronger upstream source-data table/archive if one is found",
-    "explicit pixel/axis calibration and uncertainty policy if raster digitization is used",
+    "axis calibration for one selected embedded raster candidate",
+    "numeric point or curve selection within the calibrated raster",
+    "machine-transcribed numeric point or archived stronger source-data surface",
     "explicit mapping from the captured value to the current topic-summary runtime row"
   ],
-  "claim_boundary": "The Berut row moves beyond preview locator choice into official figure-file route capture. It still remains below row-level source-normalized numeric closure."
+  "claim_boundary": "The Berut row moves beyond preview locator and raster-asset identity into axis calibration and point/curve selection. It still remains below row-level source-normalized numeric closure.",
+  "embedded_raster_asset_inventory": {
+    "status": "present_primary_candidates_named_digitization_open",
+    "path": "Data/03_Research/berut_2012_figure3_raster_asset_inventory.json",
+    "primary_candidate_asset_ids": [
+      "jpeg_2",
+      "jpeg_3"
+    ],
+    "next_controller": "berut_figure_3_axis_calibration_and_point_selection_required"
+  }
 }

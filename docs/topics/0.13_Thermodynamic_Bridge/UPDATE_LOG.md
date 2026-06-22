@@ -18,6 +18,21 @@ Use this log when `0.13` changes in a way that narrows a provenance blocker, add
 
 ## Entries
 
+### 2026-06-22 - Berut Figure 3 embedded-raster inventory pass
+
+- Scope: narrow the active Berut row beyond official PPT route capture by enumerating the valid embedded raster assets and naming primary digitization candidates
+- Wave type: `source pass`
+- Added or changed: added `BERUT_2012_FIGURE3_RASTER_ASSET_INVENTORY.md` and `berut_2012_figure3_raster_asset_inventory.json`; updated the Berut source route, Berut source record, row-closure matrix, verifier intake/gate wording, root docs, and manifest so the active Berut controller is now `berut_figure_3_axis_calibration_and_point_selection_required`
+- Files touched: `BERUT_2012_FIGURE3_RASTER_ASSET_INVENTORY.md`, `Data/03_Research/berut_2012_figure3_raster_asset_inventory.json`, `Data/03_Research/berut_2012_figure3_ppt_source_route.json`, `docs/data/external/thermodynamics/landauer/berut_2012/source_record.json`, `Data/03_Research/row_closure_matrix.json`, `Code/03_Research/Research_Landauer.py`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`, `README.md`, `ROW_CLOSURE_MATRIX.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: re-download of the official Nature/Springer Figure 3 PPT route, byte-signature scan for valid JPEG/PNG streams, and PIL validation of embedded image dimensions; then rerun the primary verifier
+- Result: `WARN`
+- Blocker narrowed: Berut is no longer blocked by identifying which embedded raster assets exist inside the official Figure 3 PPT; the package now names `jpeg_2` and `jpeg_3` as primary digitization candidates with hashes and dimensions
+- Still open: axis calibration, point/curve selection, numeric transcription, and explicit mapping into the topic-summary runtime row
+- Next controller: `berut_figure_3_axis_calibration_and_point_selection_required`
+- Claim impact: no upgrade; this wave strengthens source acquisition and digitization readiness but does not create a numeric Berut source row
+- Workflow linkage: follows `For Work/18_Research_Hardening_Workflow.md` by converting one raster-asset identity ambiguity into a named machine-readable inventory before numeric transcription claims
+
+
 ### 2026-06-22 - Jun arXiv Table I local-transcription pass
 
 - Scope: narrow the active Jun row from `final parity or local archive` to final PRL parity/APS access by locally transcribing the arXiv Table I/Figure 4 source-summary surface for the `0.71 +/- 0.03 kT` full-erasure asymptotic-work row

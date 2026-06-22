@@ -31,7 +31,7 @@
         {
           "field": "row_identifier_or_table_label",
           "status": "partial",
-          "value": "Official Figure 3 PPT route captured; exact numeric point/curve identifier within the embedded raster is still open."
+          "value": "Official Figure 3 PPT route captured and embedded raster candidates named; exact calibrated numeric point/curve remains open."
         },
         {
           "field": "figure_level_locator",
@@ -44,6 +44,11 @@
           "value": "41586_2012_BFnature10872_MOESM77_ESM.ppt | sha256=e4bab6be849a093b7578bc52ce6df9be95dc25d83d51ecb718b4f798a37d50fa | url=https://static-content.springer.com/esm/art%3A10.1038%2Fnature10872/MediaObjects/41586_2012_BFnature10872_MOESM77_ESM.ppt"
         },
         {
+          "field": "embedded_raster_asset_inventory",
+          "status": "complete",
+          "value": "primary_candidates=jpeg_2,jpeg_3; assets=6; next=berut_figure_3_axis_calibration_and_point_selection_required"
+        },
+        {
           "field": "accessible_surface_status",
           "status": "partial",
           "value": "Current visible Nature page surface is abstract_and_figure_labels_visible; the preview exposes figure labels and publisher figure-PPT routes rather than a directly visible row table, and Figure 3 now has an official PPT route for the topic-summary row."
@@ -51,7 +56,7 @@
         {
           "field": "declared_transcription_policy",
           "status": "complete",
-          "value": "figure_level_locator_capture selected; official Figure 3 PPT route captured; calibrated raster digitization or stronger source-data surface still required"
+          "value": "figure_level_locator_capture selected; official Figure 3 PPT route and embedded raster candidates captured; axis calibration and point/curve selection or stronger source-data surface still required"
         },
         {
           "field": "unit_basis",
@@ -61,7 +66,7 @@
         {
           "field": "extraction_note",
           "status": "complete",
-          "value": "Topic working copy stores a checked summary row only. The currently accessible source surface now exposes an official Figure 3 PPT route, but the inspected binary behaves like embedded raster imagery rather than a machine-readable numeric table, so source-lock closure now requires calibrated raster digitization or one stronger upstream source-data surface before normalization."
+          "value": "Topic working copy stores a checked summary row only. The currently accessible source surface now exposes an official Figure 3 PPT route, and the embedded raster candidates are inventoried, but the source still lacks calibrated axes and a selected numeric point/curve, so source-lock closure requires calibration plus transcription or one stronger upstream source-data surface before normalization."
         }
       ]
     },

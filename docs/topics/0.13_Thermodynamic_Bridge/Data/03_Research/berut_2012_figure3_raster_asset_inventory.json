@@ -1,0 +1,136 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "row_id": "berut_2012_summary_300K",
+  "artifact_role": "embedded raster asset inventory for the official Berut 2012 Figure 3 PPT route",
+  "source_identity": {
+    "paper": "Experimental verification of Landauer's principle linking information and thermodynamics",
+    "doi": "10.1038/nature10872",
+    "article_url": "https://www.nature.com/articles/nature10872",
+    "download_url": "https://static-content.springer.com/esm/art%3A10.1038%2Fnature10872/MediaObjects/41586_2012_BFnature10872_MOESM77_ESM.ppt",
+    "file_name": "41586_2012_BFnature10872_MOESM77_ESM.ppt"
+  },
+  "ppt_download_test": {
+    "checked_date": "2026-06-22",
+    "status": "downloaded_to_temp_and_scanned_not_archived_in_repo",
+    "size_bytes": 479744,
+    "sha256": "e4bab6be849a093b7578bc52ce6df9be95dc25d83d51ecb718b4f798a37d50fa",
+    "scanner": "byte-signature scan for JPEG and PNG streams plus PIL validation",
+    "repo_archive_status": "raw_ppt_not_stored_in_repo"
+  },
+  "embedded_assets": [
+    {
+      "asset_id": "jpeg_1",
+      "format": "JPEG",
+      "byte_start": 5374,
+      "byte_end_exclusive": 8365,
+      "size_bytes": 2991,
+      "sha256": "a9cebc3a95ec8e368907d059ecc4ebc45d8f58c70dc0acb3978645c211ef1041",
+      "dimensions_px": [
+        128,
+        29
+      ],
+      "mode": "RGB",
+      "candidate_role": "small embedded graphic or label asset"
+    },
+    {
+      "asset_id": "jpeg_2",
+      "format": "JPEG",
+      "byte_start": 183366,
+      "byte_end_exclusive": 271205,
+      "size_bytes": 87839,
+      "sha256": "95823a29ed7f979d3979eb6fa776bce7df8eaa4485632073347874b5c868b188",
+      "dimensions_px": [
+        946,
+        1669
+      ],
+      "mode": "RGB",
+      "candidate_role": "primary high-resolution Figure 3 raster candidate"
+    },
+    {
+      "asset_id": "jpeg_3",
+      "format": "JPEG",
+      "byte_start": 284996,
+      "byte_end_exclusive": 372795,
+      "size_bytes": 87799,
+      "sha256": "c22dd0c37b145d4b1759d55b77f07fc6c79daff1e4ed48a15f85bf12087b921d",
+      "dimensions_px": [
+        646,
+        815
+      ],
+      "mode": "RGB",
+      "candidate_role": "secondary cropped or alternate Figure 3 raster candidate"
+    },
+    {
+      "asset_id": "jpeg_5",
+      "format": "JPEG",
+      "byte_start": 387989,
+      "byte_end_exclusive": 390820,
+      "size_bytes": 2831,
+      "sha256": "8040b175110fae8050db40c6b11a5024f2423ce27e4ce0c722db5cfdbd853448",
+      "dimensions_px": [
+        128,
+        88
+      ],
+      "mode": "RGB",
+      "candidate_role": "small embedded graphic or label asset"
+    },
+    {
+      "asset_id": "png_0",
+      "format": "PNG",
+      "byte_start": 281420,
+      "byte_end_exclusive": 284971,
+      "size_bytes": 3551,
+      "sha256": "2fe8d7d2c76fdd9a93eb3b51d279402b3b527750ee20ff8e1f420b31a880a6b9",
+      "dimensions_px": [
+        297,
+        50
+      ],
+      "mode": "P",
+      "candidate_role": "small embedded graphic or label asset"
+    },
+    {
+      "asset_id": "png_1",
+      "format": "PNG",
+      "byte_start": 372820,
+      "byte_end_exclusive": 383579,
+      "size_bytes": 10759,
+      "sha256": "661da5e260d9504cb2c84f48a0f62a1bb0b21d14e53634dab7093e8ba01f00b6",
+      "dimensions_px": [
+        553,
+        75
+      ],
+      "mode": "P",
+      "candidate_role": "small embedded graphic or label asset"
+    }
+  ],
+  "primary_digitization_candidates": [
+    {
+      "asset_id": "jpeg_2",
+      "why_selected": "largest valid embedded JPEG by dimensions; likely full high-resolution figure/slide raster candidate",
+      "required_next_step": "axis calibration and point/curve selection before any numeric transcription"
+    },
+    {
+      "asset_id": "jpeg_3",
+      "why_selected": "second large valid embedded JPEG; likely cropped or alternate raster candidate that may be easier to calibrate",
+      "required_next_step": "compare against jpeg_2 and select one calibrated panel before numeric transcription"
+    }
+  ],
+  "closed_in_this_pass": [
+    "official PPT route binary identity rechecked",
+    "valid embedded raster assets enumerated with byte offsets, dimensions, sizes, and hashes",
+    "primary raster candidates named for the next digitization pass"
+  ],
+  "not_closed_in_this_pass": [
+    "axis calibration",
+    "numeric point or curve selection",
+    "machine-transcribed heat/work value from the raster",
+    "explicit mapping from a digitized point/curve to the current topic-summary runtime row"
+  ],
+  "blocker_transition": {
+    "previous_controller": "berut_figure_3_ppt_raster_digitization_or_source_data_required",
+    "new_controller": "berut_figure_3_axis_calibration_and_point_selection_required",
+    "why_narrower": "The official PPT route is now not only identified; its valid embedded raster assets are enumerated and the primary digitization candidates are named. Remaining work is calibration and point/curve selection, not locating the raster asset."
+  },
+  "claim_boundary": "This artifact identifies candidate raster assets for future digitization. It does not digitize a numeric Berut point, close uncertainty mapping, or make the row source-normalized."
+}

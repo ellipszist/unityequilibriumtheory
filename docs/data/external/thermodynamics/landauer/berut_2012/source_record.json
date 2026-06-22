@@ -69,6 +69,18 @@
         "embedded_raster_assets_present"
       ],
       "finding": "The Nature article page exposes a PowerPoint slide for Figure 3. A bounded download test verified the official binary route and embedded raster assets, but did not identify a machine-readable numeric table or close row-level numeric capture."
+    },
+    {
+      "label": "Nature Figure 3 PPT embedded raster asset inventory",
+      "url": "https://static-content.springer.com/esm/art%3A10.1038%2Fnature10872/MediaObjects/41586_2012_BFnature10872_MOESM77_ESM.ppt",
+      "checked_date": "2026-06-22",
+      "verified_fields": [
+        "valid_embedded_raster_assets",
+        "primary_digitization_candidates",
+        "asset_hashes",
+        "asset_dimensions"
+      ],
+      "finding": "The official Figure 3 PPT contains six valid embedded raster assets. The largest candidate is jpeg_2 (946 x 1669) and the secondary large candidate is jpeg_3 (646 x 815). Axis calibration and numeric point/curve selection remain open."
     }
   ],
   "observed_primary_page_surface": {
@@ -99,7 +111,16 @@
       "size_bytes": 479744,
       "sha256": "e4bab6be849a093b7578bc52ce6df9be95dc25d83d51ecb718b4f798a37d50fa",
       "local_raw_file_status": "not_stored_in_repo",
-      "claim_boundary": "This official figure-file route narrows source acquisition, but it does not itself provide a machine-transcribed numeric point or row-level source-data table."
+      "claim_boundary": "This official figure-file route narrows source acquisition, but it does not itself provide a machine-transcribed numeric point or row-level source-data table.",
+      "embedded_raster_asset_inventory": {
+        "status": "present_primary_candidates_named_digitization_open",
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/berut_2012_figure3_raster_asset_inventory.json",
+        "primary_candidate_asset_ids": [
+          "jpeg_2",
+          "jpeg_3"
+        ],
+        "claim_boundary": "Valid embedded raster assets are identified, but no axis calibration or numeric digitization has been performed."
+      }
     }
   },
   "unit_convention": {
