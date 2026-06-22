@@ -18,6 +18,21 @@ Use this log when `0.13` changes in a way that narrows a provenance blocker, add
 
 ## Entries
 
+### 2026-06-22 - Berut Figure 3 PPT source-route pass
+
+- Scope: narrow the active Berut row beyond preview-level locator capture by identifying and download-testing the official publisher PowerPoint route for `Figure 3`
+- Wave type: `source pass`
+- Added or changed: added `BERUT_2012_FIGURE3_PPT_SOURCE_ROUTE.md` and `berut_2012_figure3_ppt_source_route.json`; updated the Berut source record, row-closure matrix, verifier intake wording, README, ROW_CLOSURE_MATRIX, and manifest so the active Berut controller is now `berut_figure_3_ppt_raster_digitization_or_source_data_required`
+- Files touched: `BERUT_2012_FIGURE3_PPT_SOURCE_ROUTE.md`, `Data/03_Research/berut_2012_figure3_ppt_source_route.json`, `docs/data/external/thermodynamics/landauer/berut_2012/source_record.json`, `Data/03_Research/row_closure_matrix.json`, `Code/03_Research/Research_Landauer.py`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json`, `Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json`, `Result/artifacts/0_13_thermodynamic_bridge_verification.json`, `README.md`, `ROW_CLOSURE_MATRIX.md`, `DATA_MANIFEST.md`, `UPDATE_LOG.md`
+- Verified with: Nature article page `https://www.nature.com/articles/nature10872`, which exposes `PowerPoint slide for Fig. 3 (download PPT)`, and download test of `https://static-content.springer.com/esm/art%3A10.1038%2Fnature10872/MediaObjects/41586_2012_BFnature10872_MOESM77_ESM.ppt`; then rerun the primary verifier
+- Result: `WARN`
+- Blocker narrowed: Berut is no longer blocked by finding the official Figure 3 file route; the package now records the file name, URL, byte size, SHA-256, embedded raster observation, and no-numeric-table boundary
+- Still open: calibrated raster digitization or a stronger source-data surface, plus explicit mapping from any captured point/curve to the topic-summary runtime row
+- Next controller: `berut_figure_3_ppt_raster_digitization_or_source_data_required`
+- Claim impact: no upgrade; this wave strengthens source acquisition but does not create a numeric Berut source row
+- Workflow linkage: follows `For Work/18_Research_Hardening_Workflow.md` by converting one source-route ambiguity into a named machine-readable route and leaving the numeric row blocker explicit
+
+
 ### 2026-06-22 - Jun Table 1 source-summary locator pass
 
 - Scope: narrow the active Jun row from a generic source-summary file/table identity blocker to a captured Table 1/Figure 4 fit-target locator for the `0.71 +/- 0.03 kT` asymptotic-work summary

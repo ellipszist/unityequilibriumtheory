@@ -8,17 +8,17 @@
       "benchmark_family": "Landauer lower-bound",
       "current_local_surface": "Data/03_Research/berut_2012.json",
       "upstream_anchor": "docs/data/external/thermodynamics/landauer/berut_2012/source_record.json",
-      "source_closure_status": "figure_3_preview_locator_mapped_summary_only",
-      "next_controller": "figure_3_locator_captured_numeric_point_or_stronger_surface_still_required",
+      "source_closure_status": "official_figure_3_powerpoint_route_captured_raster_only_numeric_capture_open",
+      "next_controller": "berut_figure_3_ppt_raster_digitization_or_source_data_required",
       "uncertainty_status": "interval_present_topic_summary_only",
       "missing_requirements": [
-        "original_file_name_or_archived_supplement_identifier",
-        "numeric_point_or_curve_identifier_within_figure_3",
-        "machine_transcribed_numeric_point_or_archived_stronger_surface",
+        "numeric_point_or_curve_identifier_within_official_figure_3_ppt_raster",
+        "machine_transcribed_numeric_point_or_archived_stronger_source_data_surface",
+        "pixel_axis_calibration_and_uncertainty_policy_if_raster_digitization_is_used",
         "explicit_figure_level_support_to_runtime_mapping_rule"
       ],
-      "claim_effect_if_left_open": "Landauer lane remains source-referenced rather than source-normalized; current propagated interval now has one exact Figure 3 preview locator attached to the topic-summary row, but Berut still cannot be overread as if one numeric point or direct source-data row had already been archived.",
-      "promotion_value_if_closed": "Would strengthen the primary Landauer benchmark lane from figure-level summary support toward one numeric-point-or-stronger-surface provenance package."
+      "claim_effect_if_left_open": "Landauer lane remains source-referenced rather than source-normalized. The Berut row now has an official Figure 3 PPT route and binary identity, but still cannot be treated as a numeric source row until a calibrated point/curve transcription or stronger source-data surface exists.",
+      "promotion_value_if_closed": "Would strengthen the primary Landauer benchmark lane from official figure-route support toward one numeric-point-or-stronger-surface provenance package."
     },
     {
       "row_id": "jun_2014_summary_300K",

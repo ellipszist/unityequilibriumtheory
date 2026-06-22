@@ -19,7 +19,7 @@
   "publisher_url": "https://www.nature.com/articles/nature10872",
   "doi_url": "https://doi.org/10.1038/nature10872",
   "local_raw_file_status": "not_stored",
-  "local_raw_file_reason": "Publisher article/supplement was not downloaded during this standards pass; topic uses checked summary values only.",
+  "local_raw_file_reason": "The official Figure 3 PowerPoint route has been identified and download-tested, but the raw publisher file is not stored in the repository during this standards pass; the topic still needs numeric transcription or a stronger source-data surface before row-level normalization.",
   "verified_from": [
     {
       "label": "Nature article page",
@@ -56,6 +56,19 @@
         "summary_row_mapping_boundary"
       ],
       "finding": "The currently visible preview surface supports Figure 3 as the narrowest conservative locator for the local Berut summary row because the preview explicitly labels it as the approach to the Landauer limit, while still not exposing one numeric point or source-data table."
+    },
+    {
+      "label": "Nature Figure 3 PowerPoint route inspection",
+      "url": "https://static-content.springer.com/esm/art%3A10.1038%2Fnature10872/MediaObjects/41586_2012_BFnature10872_MOESM77_ESM.ppt",
+      "checked_date": "2026-06-22",
+      "verified_fields": [
+        "figure_3_powerpoint_download_route",
+        "download_file_name",
+        "binary_size_bytes",
+        "binary_sha256",
+        "embedded_raster_assets_present"
+      ],
+      "finding": "The Nature article page exposes a PowerPoint slide for Figure 3. A bounded download test verified the official binary route and embedded raster assets, but did not identify a machine-readable numeric table or close row-level numeric capture."
     }
   ],
   "observed_primary_page_surface": {
@@ -66,14 +79,27 @@
       "Figure 3: Erasure rate and approach to the Landauer limit."
     ],
     "direct_table_surface_visible_in_preview": false,
-    "direct_supplement_identifier_visible_in_preview": false,
+    "direct_supplement_identifier_visible_in_preview": true,
     "claim_boundary": "This observation narrows the row-locator blocker by showing that the currently visible primary page surface behaves like a figure-level preview. It does not prove that no supplementary file exists behind the access wall.",
     "selected_preview_locator": {
       "figure_id": "Figure 3",
       "figure_title": "Erasure rate and approach to the Landauer limit.",
       "checked_date": "2026-06-21",
       "mapping_scope": "figure_level_summary_mapping_only",
-      "claim_boundary": "Figure 3 is now the selected preview-level locator for the current Berut summary row, but no numeric point or table row has yet been archived from that figure."
+      "claim_boundary": "Figure 3 is now the selected preview-level locator for the current Berut summary row, but no numeric point or table row has yet been archived from that figure.",
+      "source_route_artifact": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/berut_2012_figure3_ppt_source_route.json",
+      "source_route_status": "official_figure_3_ppt_route_download_tested_numeric_capture_open"
+    },
+    "direct_supplement_identifier_note": "The visible page exposes publisher PowerPoint-slide downloads for figures, including a Fig. 3 PPT route; this is a figure-file route, not a numeric source-data table.",
+    "figure_3_powerpoint_route": {
+      "status": "official_route_download_tested_numeric_capture_open",
+      "download_url": "https://static-content.springer.com/esm/art%3A10.1038%2Fnature10872/MediaObjects/41586_2012_BFnature10872_MOESM77_ESM.ppt",
+      "file_name": "41586_2012_BFnature10872_MOESM77_ESM.ppt",
+      "checked_date": "2026-06-22",
+      "size_bytes": 479744,
+      "sha256": "e4bab6be849a093b7578bc52ce6df9be95dc25d83d51ecb718b4f798a37d50fa",
+      "local_raw_file_status": "not_stored_in_repo",
+      "claim_boundary": "This official figure-file route narrows source acquisition, but it does not itself provide a machine-transcribed numeric point or row-level source-data table."
     }
   },
   "unit_convention": {
@@ -84,6 +110,6 @@
   "benchmark_role": "source provenance for topic-local Landauer lower-bound consistency checks",
   "limitations": [
     "This is a source record, not a raw experimental table.",
-    "Numeric measurements in docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research remain checked topic-derived summaries until raw/supplemental tables are archived or machine-transcribed."
+    "Numeric measurements in docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research remain checked topic-derived summaries until the official Figure 3 raster is digitized with an explicit calibration policy or a stronger source-data table is archived."
   ]
 }

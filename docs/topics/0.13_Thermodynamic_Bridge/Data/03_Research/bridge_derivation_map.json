@@ -119,7 +119,7 @@
       "question": "Can the bridge survive source-normalized data and uncertainty-aware evaluation?",
       "current_state": "partial",
       "needed_evidence": [
-        "Berut Figure 3 locator now needs one numeric point capture or one stronger upstream numeric surface",
+        "Berut official Figure 3 PPT route now needs calibrated numeric point/curve transcription or one stronger upstream source-data surface",
         "Jun final-source parity/local archive for captured Table 1/Figure 4 locator",
         "measured-constant uncertainty package",
         "claim gate that stays conservative under uncertainty intervals"

@@ -61,12 +61,14 @@ LANDAUER_UET_MAPPING_PATH = TOPIC_DIR / "Data" / "03_Research" / "landauer_uet_m
 BETA_ROLE_CLARIFICATION_PATH = TOPIC_DIR / "Data" / "03_Research" / "beta_role_clarification.json"
 ROW_CLOSURE_MATRIX_PATH = TOPIC_DIR / "Data" / "03_Research" / "row_closure_matrix.json"
 JUN_SOURCE_SUMMARY_LOCATOR_PATH = TOPIC_DIR / "Data" / "03_Research" / "jun_2014_source_summary_locator.json"
+BERUT_FIGURE3_PPT_SOURCE_ROUTE_PATH = TOPIC_DIR / "Data" / "03_Research" / "berut_2012_figure3_ppt_source_route.json"
 DATA_INPUTS = [
     TOPIC_DIR / "Data" / "03_Research" / "__init__.py",
     TOPIC_DIR / "Data" / "03_Research" / "berut_2012.json",
     TOPIC_DIR / "Data" / "03_Research" / "berut_2012_source_surface_note.json",
     TOPIC_DIR / "Data" / "03_Research" / "berut_2012_transcription_policy_blocker.json",
     TOPIC_DIR / "Data" / "03_Research" / "berut_2012_figure_locator_mapping.json",
+    BERUT_FIGURE3_PPT_SOURCE_ROUTE_PATH,
     TOPIC_DIR / "Data" / "03_Research" / "cattaneo_data.json",
     TOPIC_DIR / "Data" / "03_Research" / "experimental_data.py",
     TOPIC_DIR / "Data" / "03_Research" / "landauer_source_lock.json",
@@ -183,6 +185,7 @@ def _build_source_evidence_intake_stub():
     berut_surface_note = _load_json(TOPIC_DIR / "Data" / "03_Research" / "berut_2012_source_surface_note.json")
     berut_transcription_policy = _load_json(TOPIC_DIR / "Data" / "03_Research" / "berut_2012_transcription_policy_blocker.json")
     berut_locator_mapping = _load_json(TOPIC_DIR / "Data" / "03_Research" / "berut_2012_figure_locator_mapping.json")
+    berut_figure3_ppt_route = _load_json(BERUT_FIGURE3_PPT_SOURCE_ROUTE_PATH)
     jun_source = _load_json(ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "jun_2014" / "source_record.json")
     jun_locator = _load_json(JUN_SOURCE_SUMMARY_LOCATOR_PATH)
     hong_source = _load_json(ROOT / "docs" / "data" / "external" / "thermodynamics" / "landauer" / "hong_2016" / "source_record.json")
@@ -213,22 +216,23 @@ def _build_source_evidence_intake_stub():
                 "evidence_fields": [
                     {"field": "doi_or_url", "status": "complete", "value": berut_source["doi_url"]},
                     {"field": "local_path", "status": "complete", "value": _relative_repo_path(berut_working_copy)},
-                    {"field": "original_file_name", "status": "pending", "value": ""},
-                    {"field": "row_identifier_or_table_label", "status": "partial", "value": "Figure 3 preview locator captured; exact numeric point/curve identifier within the figure is still open."},
+                    {"field": "original_file_name", "status": "complete", "value": berut_figure3_ppt_route["official_figure_route"]["file_name"]},
+                    {"field": "row_identifier_or_table_label", "status": "partial", "value": "Official Figure 3 PPT route captured; exact numeric point/curve identifier within the embedded raster is still open."},
                     {"field": "figure_level_locator", "status": "complete", "value": f"{berut_locator_mapping['selected_locator']['locator_value']}: {berut_locator_mapping['selected_locator']['locator_title']}"},
+                    {"field": "official_figure_ppt_route", "status": "complete", "value": f"{berut_figure3_ppt_route['official_figure_route']['file_name']} | sha256={berut_figure3_ppt_route['download_test']['sha256']} | url={berut_figure3_ppt_route['official_figure_route']['download_url']}"},
                     {
                         "field": "accessible_surface_status",
                         "status": "partial",
                         "value": (
                             "Current visible Nature page surface is "
                             f"{berut_surface_note['primary_surface_observation']['preview_surface_status']}; "
-                            "the preview exposes figure labels rather than a directly visible row table, and Figure 3 is now the selected preview-level locator for the topic-summary row."
+                            "the preview exposes figure labels and publisher figure-PPT routes rather than a directly visible row table, and Figure 3 now has an official PPT route for the topic-summary row."
                         ),
                     },
                     {
                         "field": "declared_transcription_policy",
                         "status": "complete",
-                        "value": "figure_level_locator_capture selected; Figure 3 preview locator mapped to topic-summary row; numeric point capture or stronger surface still required",
+                        "value": "figure_level_locator_capture selected; official Figure 3 PPT route captured; calibrated raster digitization or stronger source-data surface still required",
                     },
                     {"field": "unit_basis", "status": "complete", "value": "T in K; heat in J with optional kT lower-bound context"},
                     {
@@ -236,7 +240,7 @@ def _build_source_evidence_intake_stub():
                         "status": "complete",
                         "value": (
                             "Topic working copy stores a checked summary row only. The currently accessible source surface "
-                            "looks figure-level rather than table-level, so source-lock closure now requires one numeric point within the selected Figure 3 locator or one stronger upstream numeric surface before normalization."
+                            "now exposes an official Figure 3 PPT route, but the inspected binary behaves like embedded raster imagery rather than a machine-readable numeric table, so source-lock closure now requires calibrated raster digitization or one stronger upstream source-data surface before normalization."
                         ),
                     },
                 ],
@@ -477,7 +481,7 @@ def _build_evidence_lanes(test_results, metrics, readiness_matrix):
             "supports": "Structured mechanism target and dependency map.",
             "does_not_support": "Solved, verified, exact, or theory-confirmed wording.",
             "blockers": [
-                "Berut now has a selected Figure 3 preview locator mapped to the topic-summary row, but still lacks one numeric point capture or one stronger upstream numeric surface.",
+                "Berut now has an official Figure 3 PPT route with binary identity captured, but still lacks calibrated numeric point/curve transcription or one stronger upstream source-data surface.",
                 "Uncertainty propagation is only partial: Berut summary and black-hole mass intervals are attached, Jun has a captured Table 1/Figure 4 source-summary locator but still lacks final-source parity or local archival, and measured-constant terms remain open.",
                 "UET-specific field variables are not yet derived from the standard thermodynamic identities.",
             ],
@@ -510,7 +514,7 @@ def _build_uncertainty_preprocessing_plan(metrics):
                 "conversion_formula": "identity",
                 "lower_bound_value": metrics["landauer_300K_codata_J"],
                 "ratio_to_lower_bound": 3.0e-21 / metrics["landauer_300K_codata_J"],
-                "uncertainty_propagation_note": "Topic-local summary row exists and Figure 3 is now the selected preview-level locator, but numeric-point capture and stronger-surface provenance remain open."
+                "uncertainty_propagation_note": "Topic-local summary row exists and Figure 3 now has an official PPT route, but calibrated raster digitization or stronger source-data provenance remains open."
             },
             {
                 "source_row_id": "jun_2014_summary_300K",
@@ -987,7 +991,7 @@ def _build_bridge_derivation_map():
                 "question": "Can the bridge survive source-normalized data and uncertainty-aware evaluation?",
                 "current_state": "partial",
                 "needed_evidence": [
-                    "Berut Figure 3 locator now needs one numeric point capture or one stronger upstream numeric surface",
+                    "Berut official Figure 3 PPT route now needs calibrated numeric point/curve transcription or one stronger upstream source-data surface",
                     "Jun final-source parity/local archive for captured Table 1/Figure 4 locator",
                     "measured-constant uncertainty package",
                     "claim gate that stays conservative under uncertainty intervals"
@@ -1472,7 +1476,7 @@ def _build_foundation_claim_gate(
             "current": "Do not promote to Tier A",
             "reason": "The topic is foundational, but source-normalized data, uncertainty propagation, and UET-specific derivation are not closed.",
             "promotion_requirements": [
-                "Berut must move beyond the selected Figure 3 preview locator to one numeric point capture or one stronger upstream numeric surface, Jun must attach final-source parity or local archival for the pinned Table 1/Figure 4 source-facing summary, and Peterson still needs one exact source-facing quantity.",
+                "Berut must move beyond the official Figure 3 PPT route to calibrated numeric point/curve transcription or one stronger upstream source-data surface, Jun must attach final-source parity or local archival for the pinned Table 1/Figure 4 source-facing summary, and Peterson still needs one exact source-facing quantity.",
                 "Uncertainty propagation for Landauer heat values and black-hole mass inputs.",
                 "A derivation map from UET information-field variables to the standard thermodynamic identities, with open steps converted into derived or artifact-backed states.",
                 "A units contract that closes the proxy-to-SI boundary or keeps the bridge claim explicitly nondimensional.",
@@ -1643,7 +1647,7 @@ def _write_verification_artifact(test_results, plot_paths, metrics):
     if not plot_pass:
         warnings.append("One or more optional visualization files failed to render.")
     warnings.append(
-        "Berut/CODATA source records and source-lock hashes are pinned, and the current Berut summary row now has a selected Figure 3 preview locator, but numeric-point capture or stronger-surface closure is still open."
+        "Berut/CODATA source records and source-lock hashes are pinned, and the current Berut summary row now has an official Figure 3 PPT route, but calibrated numeric-point/curve transcription or stronger source-data closure is still open."
     )
     warnings.append(
         "Bekenstein/Jacobson checks are formula-consistency checks, not independent tests of UET dynamics."

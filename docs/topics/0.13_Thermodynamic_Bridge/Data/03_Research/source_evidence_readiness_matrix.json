@@ -13,12 +13,11 @@
       "name": "Berut 2012 upstream numeric surface or declared transcription policy",
       "priority": "immediate",
       "status": "partial",
-      "fields_total": 9,
-      "fields_complete": 6,
+      "fields_total": 10,
+      "fields_complete": 8,
       "fields_partial": 2,
-      "fields_pending": 3,
+      "fields_pending": 2,
       "pending_fields": [
-        "original_file_name",
         "row_identifier_or_table_label",
         "accessible_surface_status"
       ],
