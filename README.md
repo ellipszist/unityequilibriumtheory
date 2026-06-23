@@ -240,6 +240,13 @@ graph TD
 | Quantum | Wave (ψ) | The search for Connection (Search Algo) |
 | Quantum | Collapse | The establishment of a Link (Decision) |
 
+
+**Read the technical notes:**
+
+- [Master Equation Stable Summary](./docs/UET_Documentation_Details/03_Core_Theory/master-equation-stable-summary.md)
+- [Term-by-Term Stable Summary](./docs/UET_Documentation_Details/03_Core_Theory/term-by-term-stable-summary.md)
+- [Parameter Registry Stable Summary](./docs/UET_Documentation_Details/03_Core_Theory/parameter-registry-stable-summary.md)
+- [Correspondence and Reduction](./docs/UET_Documentation_Details/03_Core_Theory/correspondence-and-reduction.md)
 ---
 
 ## 📊 7. Test Results (v0.9.0)
