@@ -1,5 +1,29 @@
 # Update Log: 0.11 Phase Transitions
 
+## Wave: Spatial-Coupled V2 Candidate Diagnostic (Wave 11)
+
+**What changed:**
+- Added opt-in `spatial_coupled_v2` support in `docs/core/uet_master_equation.py` with screened nonlocal memory contrast and a conserved interface/game force.
+- Added v2 candidate controls to `docs/core/uet_parameters.py` without changing `legacy_local` defaults or `spatial_coupled_v1` behavior.
+- Added core unit checks for v2 zero/uniform gates, 1D/2D shape handling, conserved game-force sum, and explicit v2 dynamics shape preservation.
+- Added `Research_Spatial_Coupled_V2_Diagnostic.py`, machine-readable artifact `Result/artifacts/0_11_spatial_coupled_v2_diagnostic.json`, and CSV `Result/gl_spatial_coupled_v2_diagnostic_stats.csv`.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs/core/test/test_spatial_coupling.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Spatial_Coupled_V2_Diagnostic.py`
+
+**Which blocker narrowed:**
+- Narrowed `operator_form_revision_required` into `spatial_coupled_v2_correlation_not_yet_established`.
+- The artifact reports `v2_core_operator_gate == PASS`, `v2_spatial_safety_gate == PASS`, and `v2_stability_gate == PASS`.
+- It also reports `v2_correlation_response_gate == BLOCKED` and `v2_operator_separation_gate == BLOCKED`; max `xi/L` is baseline `0.0798`, v1 `0.0813`, and v2 `0.0733`.
+
+**Next controlling blocker:**
+- The first v2 operator is structurally safer but still does not create measurable connected-correlation growth. The next wave needs another operator-form revision or a stronger derivation of the nonlocal/conserved dynamics before finite-size or universality claims can be rerun.
+
+**Current topic-level status after wave:**
+- The spatial candidates remain diagnostic-only. No RG closure, universality-class shift, or phase-transition-solution claim is supported.
+
+---
 ## Wave: Operator-Form Requirement Gate (Wave 10)
 
 **What changed:**

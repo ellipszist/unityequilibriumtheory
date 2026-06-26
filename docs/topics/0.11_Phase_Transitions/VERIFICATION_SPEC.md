@@ -182,3 +182,32 @@
 - Interpretation:
   - The next useful work is operator-form redesign, not coefficient-only tuning or simply longer runs.
   - A future candidate must remain opt-in, use core engine paths, and demonstrate connected-correlation growth plus baseline separation before any dynamics claim is upgraded.
+
+## Wave 11 Spatial-Coupled V2 Diagnostic
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Spatial_Coupled_V2_Diagnostic.py`
+- Artifact target:
+  - `Result/artifacts/0_11_spatial_coupled_v2_diagnostic.json`
+  - `Result/gl_spatial_coupled_v2_diagnostic_stats.csv`
+- Purpose:
+  - Test the first opt-in `spatial_coupled_v2` core candidate required by Wave 10.
+  - Keep candidate availability, safety, stability, correlation response, and operator separation as separate gates.
+- Required gates:
+  - `v2_core_operator_gate.status == PASS`
+  - `v2_spatial_safety_gate.status == PASS`
+  - `v2_stability_gate.status == PASS`
+  - `v2_correlation_response_gate.status == PASS`
+  - `v2_operator_separation_gate.status == PASS`
+- Current Wave 11 result:
+  - overall status `WARN`
+  - `v2_core_operator_gate == PASS`
+  - `v2_spatial_safety_gate == PASS`
+  - `v2_stability_gate == PASS`
+  - `v2_correlation_response_gate == BLOCKED`
+  - `v2_operator_separation_gate == BLOCKED`
+  - max `xi/L`: baseline `0.0798`, v1 `0.0813`, v2 `0.0733`
+  - v2 minus baseline `xi/L`: `-0.0065`
+- Interpretation:
+  - The first v2 candidate satisfies the code-surface and safety requirements but does not yet create connected-correlation growth or lane separation.
+  - The next useful repair path is another operator-form revision or stronger derivation of the nonlocal/conserved dynamics, not claim promotion.

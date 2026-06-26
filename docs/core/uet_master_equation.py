@@ -81,7 +81,12 @@ from docs.core.uet_parameters import INTEGRITY_KILL_SWITCH, UETParameters
 
 LEGACY_OPERATOR_MODE = "legacy_local"
 SPATIAL_COUPLED_OPERATOR_MODE = "spatial_coupled_v1"
-SUPPORTED_OPERATOR_MODES = {LEGACY_OPERATOR_MODE, SPATIAL_COUPLED_OPERATOR_MODE}
+SPATIAL_COUPLED_V2_OPERATOR_MODE = "spatial_coupled_v2"
+SUPPORTED_OPERATOR_MODES = {
+    LEGACY_OPERATOR_MODE,
+    SPATIAL_COUPLED_OPERATOR_MODE,
+    SPATIAL_COUPLED_V2_OPERATOR_MODE,
+}
 
 
 def resolve_operator_mode(
@@ -121,6 +126,60 @@ def gradient_magnitude_squared(C: np.ndarray, dx: float) -> np.ndarray:
         grad_axis = np.gradient(C, dx, axis=axis, edge_order=edge_order)
         grad_sq += grad_axis**2
     return grad_sq
+
+
+def conserved_laplacian(field: np.ndarray, dx: float) -> np.ndarray:
+    """Periodic Laplacian used by opt-in conserved diagnostic operators."""
+    field = np.asarray(field, dtype=float)
+    lap = np.zeros_like(field, dtype=float)
+    if field.ndim == 0:
+        return lap
+
+    for axis, size in enumerate(field.shape):
+        if size <= 1:
+            continue
+        lap += (np.roll(field, 1, axis=axis) - 2 * field + np.roll(field, -1, axis=axis)) / dx**2
+    return lap
+
+
+def screened_nonlocal_field(field: np.ndarray, dx: float, length_scale: float) -> np.ndarray:
+    """
+    Return a deterministic screened nonlocal average.
+
+    This is a Wave 11 candidate helper, not accepted physics. It keeps the
+    zero mode unchanged and damps shorter wavelengths by 1/(1 + ell^2 k^2),
+    so uniform fields return unchanged and memory contrast vanishes.
+    """
+    field = np.asarray(field, dtype=float)
+    if field.ndim == 0 or length_scale <= 0:
+        return np.array(field, copy=True)
+    if all(size <= 1 for size in field.shape):
+        return np.array(field, copy=True)
+
+    k_sq = np.zeros(field.shape, dtype=float)
+    for axis, size in enumerate(field.shape):
+        if size <= 1:
+            continue
+        freqs = 2.0 * np.pi * np.fft.fftfreq(size, d=dx)
+        shape = [1] * field.ndim
+        shape[axis] = size
+        k_sq += freqs.reshape(shape) ** 2
+
+    spectral_filter = 1.0 / (1.0 + (length_scale**2) * k_sq)
+    return np.fft.ifftn(np.fft.fftn(field) * spectral_filter).real
+
+
+def spatial_memory_contrast(C: np.ndarray, dx: float, params: UETParameters) -> np.ndarray:
+    """Scale-dependent contrast between local C and screened space-memory field."""
+    length_scale = getattr(params, "spatial_v2_memory_length", 2.0)
+    return screened_nonlocal_field(C, dx, length_scale) - np.asarray(C, dtype=float)
+
+
+def spatial_interface_activity(C: np.ndarray, dx: float, params: UETParameters) -> np.ndarray:
+    """Wave 11 candidate activity: local gradient plus nonlocal memory contrast."""
+    memory = spatial_memory_contrast(C, dx, params)
+    coeff = getattr(params, "spatial_v2_nonlocal_coupling", 1.0)
+    return gradient_magnitude_squared(C, dx) + coeff * memory**2
 # =============================================================================
 # PHYSICAL CONSTANTS (CODATA 2024 / Real Experiments)
 # =============================================================================
@@ -193,10 +252,16 @@ def information_coupling(
 
     Legacy mode keeps the historical beta C*I coupling. Wave 5 spatial mode is
     an opt-in candidate that uses 0.5*beta*C^2*I so the C dynamics source is
-    proportional to C*I. This is a heuristic bridge, not an accepted derivation.
+    proportional to C*I. Wave 11 v2 additionally gates the candidate by
+    interface/nonlocal activity. These are heuristic bridges, not accepted
+    derivations.
     """
     mode = resolve_operator_mode(params, operator_mode)
     volume = _volume_element(C, dx)
+    if mode == SPATIAL_COUPLED_V2_OPERATOR_MODE:
+        coeff = getattr(params, "spatial_v2_information_coupling", 1.0)
+        activity = spatial_interface_activity(C, dx, params)
+        return 0.5 * params.beta * coeff * np.sum(C**2 * I * activity) * volume
     if mode == SPATIAL_COUPLED_OPERATOR_MODE:
         coeff = getattr(params, "spatial_information_coupling", 1.0)
         return 0.5 * params.beta * coeff * np.sum(C**2 * I) * volume
@@ -208,11 +273,16 @@ def information_dynamics_source(
     I: Optional[np.ndarray],
     params: UETParameters,
     operator_mode: Optional[str] = None,
+    dx: float = 1.0,
 ) -> Union[np.ndarray, float]:
     """Negative functional-gradient source from the information coupling."""
     if I is None:
         return 0.0
     mode = resolve_operator_mode(params, operator_mode)
+    if mode == SPATIAL_COUPLED_V2_OPERATOR_MODE:
+        coeff = getattr(params, "spatial_v2_information_coupling", 1.0)
+        activity = spatial_interface_activity(C, dx, params)
+        return -params.beta * coeff * C * I * activity
     if mode == SPATIAL_COUPLED_OPERATOR_MODE:
         coeff = getattr(params, "spatial_information_coupling", 1.0)
         return -params.beta * coeff * C * I
@@ -247,7 +317,11 @@ def information_propagator_step(
     # Where m_I is the "Information Decay" or "Forgetfulness" of Space
     decay = params.kappa_I * I  # Reusing kappa as a dispersion/mass term proxy
     mode = resolve_operator_mode(params, operator_mode)
-    if mode == SPATIAL_COUPLED_OPERATOR_MODE:
+    if mode == SPATIAL_COUPLED_V2_OPERATOR_MODE:
+        coeff = getattr(params, "spatial_v2_information_coupling", 1.0)
+        activity = spatial_interface_activity(C, dx, params)
+        source = 0.5 * params.beta * coeff * C**2 * activity
+    elif mode == SPATIAL_COUPLED_OPERATOR_MODE:
         coeff = getattr(params, "spatial_information_coupling", 1.0)
         source = 0.5 * params.beta * coeff * C**2
     else:
@@ -439,12 +513,17 @@ def game_theory_potential(
 
     Legacy mode keeps V_game = beta_U*C^2. Wave 5 spatial mode is an opt-in
     heuristic bridge that makes the candidate game term interface-sensitive via
-    |grad C|^2 instead of local amplitude alone.
+    |grad C|^2 instead of local amplitude alone. Wave 11 v2 adds a screened
+    memory contrast term so this lane is scale-dependent and still zero on
+    uniform fields.
     """
     if params is None:
         params = UETParameters()
     mode = resolve_operator_mode(params, operator_mode)
     beta_U = strategic_boost(density, scale, params)
+    if mode == SPATIAL_COUPLED_V2_OPERATOR_MODE:
+        coeff = getattr(params, "spatial_v2_game_coupling", 1.0)
+        return beta_U * coeff * spatial_interface_activity(C, dx, params)
     if mode == SPATIAL_COUPLED_OPERATOR_MODE:
         coeff = getattr(params, "spatial_game_coupling", 1.0)
         return beta_U * coeff * gradient_magnitude_squared(C, dx)
@@ -465,19 +544,33 @@ def game_theory_force(
     Legacy dynamics did not include an explicit game force in the master-step
     path, so legacy mode returns zero for backward compatibility. The Wave 5
     candidate exposes a KPZ-style interface drive proportional to |grad C|^2.
+    Wave 11 v2 returns a conserved Laplacian of the interface/memory potential.
     """
     mode = resolve_operator_mode(params, operator_mode)
-    if mode != SPATIAL_COUPLED_OPERATOR_MODE or density <= 0:
+    if density <= 0:
         return 0.0
-    kpz_coeff = getattr(params, "spatial_kpz_coupling", 1.0)
-    return kpz_coeff * game_theory_potential(
-        C,
-        density=density,
-        scale=scale,
-        params=params,
-        dx=dx,
-        operator_mode=mode,
-    )
+    if mode == SPATIAL_COUPLED_V2_OPERATOR_MODE:
+        conserved_coeff = getattr(params, "spatial_v2_conserved_coupling", 1.0)
+        potential = game_theory_potential(
+            C,
+            density=density,
+            scale=scale,
+            params=params,
+            dx=dx,
+            operator_mode=mode,
+        )
+        return conserved_coeff * conserved_laplacian(potential, dx)
+    if mode == SPATIAL_COUPLED_OPERATOR_MODE:
+        kpz_coeff = getattr(params, "spatial_kpz_coupling", 1.0)
+        return kpz_coeff * game_theory_potential(
+            C,
+            density=density,
+            scale=scale,
+            params=params,
+            dx=dx,
+            operator_mode=mode,
+        )
+    return 0.0
 
 # =============================================================================
 # AXIOM 9: DYNAMIC EQUILIBRIUM CENTER
@@ -929,7 +1022,7 @@ def dynamics_step_complete(
         will_force = 0.0
 
     # Information source term
-    source = information_dynamics_source(C, I, params, operator_mode=operator_mode)
+    source = information_dynamics_source(C, I, params, operator_mode=operator_mode, dx=dx)
 
     # A4: Exchange term
     if J_in is not None and J_out is not None:

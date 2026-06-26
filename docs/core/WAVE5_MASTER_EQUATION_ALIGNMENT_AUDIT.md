@@ -123,15 +123,31 @@ should not be a coefficient-only sweep or longer run of `spatial_coupled_v1`; it
 opt-in operator form with nonlocal, conserved, or scale-dependent behavior plus fresh unit,
 formula, correlation-growth, and finite-size gates.
 
+
+## Wave 11 Spatial-Coupled V2 Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_spatial_coupled_v2_diagnostic.json`
+
+- `v2_core_operator_gate`: `PASS`
+- `v2_spatial_safety_gate`: `PASS`
+- `v2_stability_gate`: `PASS`
+- `v2_correlation_response_gate`: `BLOCKED`
+- `v2_operator_separation_gate`: `BLOCKED`
+- max `xi/L`: baseline `0.0798`, v1 `0.0813`, v2 `0.0733`
+
+This implements the first Wave 10-compliant candidate shape, but it does not repair the physics
+blocker. The operator is available, opt-in, interface-gated, and conserved on the game-force
+lane, yet it still does not create connected-correlation growth or separation from baseline.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 10
-now records the next controller as `operator_form_revision_required`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 11
+now records the next controller as `spatial_coupled_v2_correlation_not_yet_established`.
 
 ## Next Hardening Step
 
-Keep the spatial-coupled operator as an opt-in diagnostic candidate. The next wave should revise
-the candidate operator only as another opt-in core mode, and it should add a stronger
-derivation/unit-closure package before rerunning scaling claims.
+Keep both spatial-coupled operators as opt-in diagnostic candidates. The next wave should revise
+the nonlocal/conserved dynamics or add a stronger derivation/unit-closure package before rerunning
+finite-size or universality claims.

@@ -42,6 +42,7 @@ demonstrations.
 | `PT-FINITE-SIZE-SCALING-DIAGNOSTIC` | sweep grid sizes and compare `xi/L`, Binder-style proxy, and lane separation | `Research_Finite_Size_Scaling_Diagnostics.py`; `0_11_finite_size_scaling_diagnostics.json` | `xi/L` dimensionless; Binder proxy dimensionless | `topic_derived_relation` | `diagnostic artifact` | finite-size gate | Wave 8 found Binder-style spread but `xi/L` too small and no spatial-vs-baseline separation. | Redesign finite-size window and operator form before stronger claims. |
 | `PT-CRITICAL-WINDOW-RELAXATION-DIAGNOSTIC` | sweep closer-to-Tc temperatures and step counts; compare spatial/baseline `xi/L` | `Research_Critical_Window_Relaxation_Diagnostics.py`; `0_11_critical_window_relaxation_diagnostics.json` | `xi/L` dimensionless; steps synthetic time | `topic_derived_relation` | `diagnostic artifact` | window/relaxation gate | Wave 9 found max spatial `xi/L = 0.0737` and no gain from longer relaxation. | Stop treating runtime/window extension alone as the likely repair; revise dynamics/operator form. |
 | `PT-OPERATOR-FORM-REQUIREMENT-GATE` | aggregate Waves 5-9 into blocked repair paths and v2 design requirements | `Research_Operator_Form_Requirement_Gate.py`; `0_11_operator_form_requirement_gate.json` | gate statuses and thresholds are dimensionless artifact fields | `topic_derived_relation` | `design requirement gate` | operator-revision controller | Wave 10 keeps coefficient-only, finite-size signal, and critical-window paths blocked for the current operator family. | Design a new opt-in operator with nonlocal, conserved, or scale-dependent behavior before rerunning scaling claims. |
+| `PT-UET-SPATIAL-V2-CANDIDATE` | activity `= |grad C|^2 + a(nonlocal(C)-C)^2`; game force `= lambda nabla^2 V_game`; info source `~ -beta C I activity` | `uet_master_equation.py`; `Research_Spatial_Coupled_V2_Diagnostic.py`; `0_11_spatial_coupled_v2_diagnostic.json` | normalized `C`, `I`, `xi/L`; v2 coefficients are heuristic/proxy | `heuristic_bridge` | `candidate diagnostic-only` | v2 availability/safety/stability gate | Wave 11 passes core/safety/stability but blocks correlation growth and lane separation (`max_xi/L = 0.0733`). | Revise nonlocal/conserved dynamics or derive stronger operator before finite-size claims. |
 
 ## Wave 5 Formula Boundary
 
@@ -88,3 +89,12 @@ family has core-engine availability but still lacks coefficient, finite-size, cr
 and operator-separation support for a dynamics claim. The next hardening step must introduce a
 new opt-in operator form with explicit unit/proxy boundaries, unit tests, formula-audit entries,
 and fresh scaling artifacts before any claim is upgraded.
+
+## Wave 11 Spatial-Coupled V2 Boundary
+
+The first `spatial_coupled_v2` candidate moves beyond coefficient-only tuning by adding screened
+nonlocal space-memory contrast and a conserved interface/game drive in the core engine. The
+candidate passes availability, zero/uniform-field safety, conserved-force, and short-run
+stability checks. It does not pass dynamics-claim gates: v2 `xi/L` remains below the baseline
+lane in the first diagnostic, so the current evidence only supports continued operator-design
+work.

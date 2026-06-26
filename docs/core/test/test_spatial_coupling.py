@@ -23,12 +23,17 @@ _bootstrap()
 from docs.core.uet_master_equation import (  # noqa: E402
     LEGACY_OPERATOR_MODE,
     SPATIAL_COUPLED_OPERATOR_MODE,
+    SPATIAL_COUPLED_V2_OPERATOR_MODE,
+    conserved_laplacian,
     dynamics_step_complete,
     game_theory_force,
     game_theory_potential,
     gradient_magnitude_squared,
     information_coupling,
     information_dynamics_source,
+    screened_nonlocal_field,
+    spatial_interface_activity,
+    spatial_memory_contrast,
 )
 from docs.core.uet_parameters import UETParameters  # noqa: E402
 
@@ -96,6 +101,85 @@ def test_spatial_game_operator_preserves_2d_shape() -> None:
     assert float(np.linalg.norm(force)) > 0.0
 
 
+def test_spatial_v2_memory_contrast_zero_uniform_and_shape_safe() -> None:
+    params = UETParameters(operator_mode=SPATIAL_COUPLED_V2_OPERATOR_MODE)
+    uniform_1d = np.ones(16)
+    uniform_2d = np.ones((6, 8))
+    interface_2d = np.zeros((6, 8))
+    interface_2d[:, 4:] = 1.0
+
+    np.testing.assert_allclose(spatial_memory_contrast(uniform_1d, 1.0, params), 0.0, atol=1e-12)
+    np.testing.assert_allclose(spatial_memory_contrast(uniform_2d, 1.0, params), 0.0, atol=1e-12)
+    assert screened_nonlocal_field(interface_2d, 1.0, params.spatial_v2_memory_length).shape == interface_2d.shape
+    assert spatial_interface_activity(interface_2d, 1.0, params).shape == interface_2d.shape
+    assert float(np.linalg.norm(spatial_interface_activity(interface_2d, 1.0, params))) > 0.0
+
+
+def test_spatial_v2_information_source_zero_and_interface_gates() -> None:
+    params = UETParameters(beta=0.25, operator_mode=SPATIAL_COUPLED_V2_OPERATOR_MODE)
+    uniform = np.ones(16)
+    interface = np.concatenate([np.zeros(8), np.ones(8)])
+    I = np.ones_like(interface)
+
+    np.testing.assert_allclose(information_dynamics_source(uniform, I, params, dx=1.0), 0.0, atol=1e-12)
+    np.testing.assert_allclose(information_dynamics_source(np.zeros_like(interface), I, params, dx=1.0), 0.0)
+    np.testing.assert_allclose(information_dynamics_source(interface, np.zeros_like(I), params, dx=1.0), 0.0)
+    assert float(np.linalg.norm(information_dynamics_source(interface, I, params, dx=1.0))) > 0.0
+
+
+def test_spatial_v2_game_force_is_conserved_and_interface_active() -> None:
+    params = UETParameters(beta=0.05, operator_mode=SPATIAL_COUPLED_V2_OPERATOR_MODE)
+    uniform = np.ones(32)
+    interface = np.concatenate([np.zeros(16), np.ones(16)])
+
+    uniform_force = game_theory_force(
+        uniform,
+        density=params.SIGMA_CRIT,
+        scale=1.0,
+        dx=1.0,
+        params=params,
+        operator_mode=SPATIAL_COUPLED_V2_OPERATOR_MODE,
+    )
+    interface_force = game_theory_force(
+        interface,
+        density=params.SIGMA_CRIT,
+        scale=1.0,
+        dx=1.0,
+        params=params,
+        operator_mode=SPATIAL_COUPLED_V2_OPERATOR_MODE,
+    )
+
+    np.testing.assert_allclose(uniform_force, 0.0, atol=1e-12)
+    assert float(np.linalg.norm(interface_force)) > 0.0
+    np.testing.assert_allclose(np.sum(interface_force), 0.0, atol=1e-10)
+    np.testing.assert_allclose(np.sum(conserved_laplacian(interface, 1.0)), 0.0, atol=1e-12)
+
+
+def test_spatial_v2_dynamics_preserves_shape() -> None:
+    params = UETParameters(
+        beta=0.05,
+        kappa=0.1,
+        W_N=0.0,
+        a0_viscosity=0.0,
+        operator_mode=SPATIAL_COUPLED_V2_OPERATOR_MODE,
+    )
+    C = np.zeros((8, 8))
+    C[:, 4:] = 1.0
+    I = np.ones_like(C)
+    updated = dynamics_step_complete(
+        C,
+        I=I,
+        dx=1.0,
+        dt=0.01,
+        params=params,
+        density=params.SIGMA_CRIT,
+        operator_mode=SPATIAL_COUPLED_V2_OPERATOR_MODE,
+    )
+    C_updated, I_updated = updated
+    assert C_updated.shape == C.shape
+    assert I_updated.shape == I.shape
+
+
 def test_default_and_explicit_legacy_dynamics_match() -> None:
     params = UETParameters(beta=0.05, kappa=0.1, W_N=0.0, a0_viscosity=0.0)
     C = np.linspace(-0.2, 0.2, 16)
@@ -117,5 +201,9 @@ if __name__ == "__main__":
     test_spatial_information_source_zero_gates()
     test_spatial_game_operator_is_interface_sensitive()
     test_spatial_game_operator_preserves_2d_shape()
+    test_spatial_v2_memory_contrast_zero_uniform_and_shape_safe()
+    test_spatial_v2_information_source_zero_and_interface_gates()
+    test_spatial_v2_game_force_is_conserved_and_interface_active()
+    test_spatial_v2_dynamics_preserves_shape()
     test_default_and_explicit_legacy_dynamics_match()
-    print("Wave 5 spatial coupling unit checks passed")
+    print("Wave 5/11 spatial coupling unit checks passed")
