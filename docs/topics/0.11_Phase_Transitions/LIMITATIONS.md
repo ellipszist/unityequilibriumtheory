@@ -16,3 +16,4 @@
 - The current spatial-coupled candidate estimates beta near mean-field (`0.5081`), so it must stay a diagnostic heuristic bridge until a revised operator or derivation changes the gate result.
 - Wave 6 coefficient sensitivity found beta only in the `0.4729` to `0.5243` range across the tested coefficient grid; coefficient-only tuning is not evidence for escaping mean-field behavior.
 - Wave 7 correlation-length diagnostics found only weak correlation growth (`xi_near/xi_far ~= 1.07`, `nu_proxy ~= 0.03`), so the current synthetic window/estimator is not adequate for RG or universality-class claims.
+- Wave 8 finite-size diagnostics found `finite_size_coverage_gate == PASS` and `binder_crossing_gate == PASS`, but `correlation_window_gate == BLOCKED` and `operator_separation_gate == BLOCKED`; the current grid/window still cannot support universality-class claims.

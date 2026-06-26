@@ -102,3 +102,30 @@
 - Interpretation:
   - The current order-parameter beta fit remains mean-field-like and is not paired with critical correlation growth.
   - The next useful repair path is a finite-size/correlation-length-aware scaling design before any stronger universality claim.
+
+## Wave 8 Finite-Size Scaling Readiness Diagnostic
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Finite_Size_Scaling_Diagnostics.py`
+- Artifact target:
+  - `Result/artifacts/0_11_finite_size_scaling_diagnostics.json`
+  - `Result/gl_finite_size_scaling_diagnostics_stats.csv`
+- Purpose:
+  - Test whether multiple grid sizes show enough near-critical `xi/L`, Binder-style crossing behavior, and spatial-vs-baseline separation to justify a stronger finite-size scaling pass.
+- Required gates:
+  - `finite_size_coverage_gate.status == PASS`
+  - `correlation_window_gate.status == PASS`
+  - `binder_crossing_gate.status == PASS`
+  - `operator_separation_gate.status == PASS`
+- Current Wave 8 result:
+  - overall status `WARN`
+  - `finite_size_coverage_gate == PASS`
+  - `binder_crossing_gate == PASS`
+  - `correlation_window_gate == BLOCKED`
+  - `operator_separation_gate == BLOCKED`
+  - max spatial near-critical `xi/L == 0.0961`
+  - max baseline near-critical `xi/L == 0.1045`
+  - best Binder-style spread `0.0058`
+- Interpretation:
+  - The diagnostic has enough grid/temperature coverage to expose the blocker.
+  - The current finite-size window keeps correlations too local and does not separate the spatial candidate from baseline.

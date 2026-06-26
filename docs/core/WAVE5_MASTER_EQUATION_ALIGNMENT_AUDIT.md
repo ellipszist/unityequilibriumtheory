@@ -77,6 +77,21 @@ This narrows the next blocker again: the current synthetic window and estimator 
 critical correlation growth. Stronger claims need finite-size/correlation-length-aware scaling
 and a revised operator form, not beta-only curve fitting.
 
+## Wave 8 Finite-Size Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_finite_size_scaling_diagnostics.json`
+
+- `finite_size_coverage_gate`: `PASS`
+- `binder_crossing_gate`: `PASS`
+- `correlation_window_gate`: `BLOCKED`
+- `operator_separation_gate`: `BLOCKED`
+- max spatial near-critical `xi/L`: `0.0961`
+- max baseline near-critical `xi/L`: `0.1045`
+
+This narrows the next blocker to finite-size window and operator separation. The current grid
+coverage can run the diagnostic, but the spatial candidate still does not create enough
+near-critical correlation length or baseline separation.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not

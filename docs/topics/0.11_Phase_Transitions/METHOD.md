@@ -17,6 +17,7 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 - `Code/03_Research/Research_Spatial_Coupling_Scaling.py`
 - `Code/03_Research/Research_Spatial_Coupling_Sensitivity.py`
 - `Code/03_Research/Research_Correlation_Length_Diagnostics.py`
+- `Code/03_Research/Research_Finite_Size_Scaling_Diagnostics.py`
 - `Code/03_Research/test_05_phase_demixing.py`
 - `Code/03_Research/test_phase_transitions.py`
 
@@ -45,6 +46,7 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 - The Wave 5 spatial-coupling verifier is a dynamics diagnostic gate; it currently keeps universality-shift claims blocked.
 - The Wave 6 coefficient sensitivity verifier narrows the blocker further: coefficient-only tuning remains mean-field-like, so the next repair needs operator-form or estimator revision.
 - The Wave 7 correlation-length verifier checks whether the simulation window exposes critical correlation growth; it currently blocks beta-only universality promotion.
+- The Wave 8 finite-size verifier checks multi-grid xi/L and Binder-style proxy behavior; it currently blocks universality promotion because xi/L stays small and the spatial lane does not separate from baseline.
 - Cahn-Hilliard simulations should be treated as normalized mechanism diagnostics until seed, grid, morphology, and material-unit gates are added.
 
 ## Dependency policy

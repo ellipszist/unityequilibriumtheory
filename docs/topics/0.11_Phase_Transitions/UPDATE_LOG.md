@@ -1,5 +1,27 @@
 # Update Log: 0.11 Phase Transitions
 
+## Wave: Finite-Size Scaling Readiness Diagnostic (Wave 8)
+
+**What changed:**
+- Added `Research_Finite_Size_Scaling_Diagnostics.py` to compare baseline TDGL and the spatial candidate across grid sizes `8`, `12`, and `16`.
+- Added machine-readable artifact `Result/artifacts/0_11_finite_size_scaling_diagnostics.json` and CSV `Result/gl_finite_size_scaling_diagnostics_stats.csv`.
+- Updated topic docs to keep finite-size scaling claims blocked until xi/L and operator-separation gates pass.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Finite_Size_Scaling_Diagnostics.py`
+
+**Which blocker narrowed:**
+- Narrowed the next controller to `finite_size_scaling_window_not_established`.
+- The artifact reports `finite_size_coverage_gate == PASS` and `binder_crossing_gate == PASS`, but `correlation_window_gate == BLOCKED` and `operator_separation_gate == BLOCKED`.
+- Max near-critical `xi/L` remains small: spatial `0.0961`, baseline `0.1045`.
+
+**Next controlling blocker:**
+- Redesign the finite-size window and/or operator form so the spatial lane creates measurable near-critical correlation length and separates from the baseline.
+
+**Current topic-level status after wave:**
+- The spatial candidate remains diagnostic-only. Finite-size scaling and universality-class claims remain blocked.
+
+---
 ## Wave: Correlation-Length Estimator Diagnostic (Wave 7)
 
 **What changed:**
