@@ -76,3 +76,29 @@
 - Interpretation:
   - Coefficient-only tuning of the current spatial candidate remains mean-field-like.
   - The next useful repair path is a revised operator form, nonlocal/scale-dependent term, or correlation-length-aware estimator.
+
+## Wave 7 Correlation-Length Estimator Diagnostic
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Correlation_Length_Diagnostics.py`
+- Artifact target:
+  - `Result/artifacts/0_11_correlation_length_diagnostics.json`
+  - `Result/gl_correlation_length_diagnostics_stats.csv`
+- Purpose:
+  - Test whether the current synthetic temperature window exposes connected correlation-length growth alongside the order-parameter beta fit.
+  - Separate beta-only curve fitting from a stronger critical-scaling or universality claim.
+- Required gates:
+  - `critical_window_gate.status == PASS`
+  - `estimator_adequacy_gate.status == PASS`
+  - `operator_separation_gate.status == PASS`
+- Current Wave 7 result:
+  - overall status `WARN`
+  - `critical_window_gate == BLOCKED`
+  - `estimator_adequacy_gate == BLOCKED`
+  - `operator_separation_gate == BLOCKED`
+  - spatial beta `0.5081`
+  - spatial correlation-length proxy `nu_proxy ~= 0.0324`
+  - spatial `xi_near/xi_far ~= 1.0668`
+- Interpretation:
+  - The current order-parameter beta fit remains mean-field-like and is not paired with critical correlation growth.
+  - The next useful repair path is a finite-size/correlation-length-aware scaling design before any stronger universality claim.

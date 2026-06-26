@@ -1,5 +1,27 @@
 # Update Log: 0.11 Phase Transitions
 
+## Wave: Correlation-Length Estimator Diagnostic (Wave 7)
+
+**What changed:**
+- Added `Research_Correlation_Length_Diagnostics.py` to compute order-parameter beta and a connected autocorrelation-length proxy from the same baseline, legacy, and spatial candidate lanes.
+- Added machine-readable artifact `Result/artifacts/0_11_correlation_length_diagnostics.json` and CSV `Result/gl_correlation_length_diagnostics_stats.csv`.
+- Updated topic docs to block beta-only universality promotion unless correlation-window and estimator gates also pass.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Correlation_Length_Diagnostics.py`
+
+**Which blocker narrowed:**
+- Narrowed the next controller to `critical_window_or_operator_form_not_resolved`.
+- The artifact reports `critical_window_gate == BLOCKED`, `estimator_adequacy_gate == BLOCKED`, and `operator_separation_gate == BLOCKED`.
+- Spatial beta remains `0.5081`, while spatial `nu_proxy` is only `0.0324` and `xi_near/xi_far` is only `1.0668`.
+
+**Next controlling blocker:**
+- Build finite-size/correlation-length-aware scaling and revise the operator form so the spatial lane separates from the baseline in both beta and correlation diagnostics.
+
+**Current topic-level status after wave:**
+- The spatial candidate remains diagnostic-only. The current synthetic window does not support RG closure, universality-class shift, or phase-transition-solution claims.
+
+---
 ## Wave: Spatial-Coupling Coefficient Sensitivity (Wave 6)
 
 **What changed:**

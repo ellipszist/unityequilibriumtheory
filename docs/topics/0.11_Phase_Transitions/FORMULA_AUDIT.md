@@ -38,6 +38,7 @@ demonstrations.
 | `PT-UET-SPATIAL-GAME-CANDIDATE` | `V_game = beta_U |grad C|^2`; dynamics candidate `F_game = c_kpz V_game` | `game_theory_potential`; `game_theory_force` | `grad C` normalized grid gradient; `beta_U` strategic boost; units proxy/open | `heuristic_bridge` | `candidate diagnostic-only` | spatial operator gate | Passing interface sensitivity does not imply RG closure or universality shift. | Add unit closure and compare against accepted interface-growth/scaling references. |
 | `PT-SPATIAL-SCALING-GATE` | fit `log(<|C|>) = beta log(Tc-T)+b` for baseline, legacy, and spatial lanes | `Research_Spatial_Coupling_Scaling.py`; `0_11_spatial_coupling_scaling.json` | beta dimensionless; synthetic normalized TDGL grid | `topic_derived_relation` | `diagnostic artifact` | hardening gate | Current Wave 5 result remains near mean-field: baseline `0.4912`, legacy `0.5050`, spatial `0.5081`. | Keep universality claims blocked until `universality_shift_gate` passes with documented derivation. |
 | `PT-SPATIAL-COEFFICIENT-SENSITIVITY` | sweep `spatial_information_coupling` and `spatial_game_coupling`; fit beta per case | `Research_Spatial_Coupling_Sensitivity.py`; `0_11_spatial_coupling_sensitivity.json` | beta dimensionless; reduced synthetic TDGL grid | `topic_derived_relation` | `diagnostic artifact` | blocker triage | Wave 6 found no tested coefficient-only case near 3D Ising beta; best beta `0.4729`, range `0.4729` to `0.5243`. | Stop treating coefficient strength as the likely repair; revise operator form or estimator. |
+| `PT-CORRELATION-LENGTH-DIAGNOSTIC` | connected autocorrelation axis crossing proxy for `xi`; fit `xi ~ (Tc-T)^(-nu_proxy)` | `Research_Correlation_Length_Diagnostics.py`; `0_11_correlation_length_diagnostics.json` | `xi` grid units; `nu_proxy` dimensionless diagnostic | `topic_derived_relation` | `diagnostic artifact` | estimator gate | Wave 7 found weak spatial correlation growth: spatial `nu_proxy ~= 0.0324`, `xi_near/xi_far ~= 1.0668`. | Add finite-size/correlation-length-aware scaling before stronger universality claims. |
 
 ## Wave 5 Formula Boundary
 
@@ -53,3 +54,11 @@ coefficients alone did not shift the fitted beta exponent toward the 3D Ising ta
 allowed claim is limited to: coefficient-only tuning remains mean-field-like under the tested
 grid, so the next hardening step needs a revised operator form, nonlocal/scale-dependent term,
 or correlation-length-aware estimator.
+
+## Wave 7 Estimator Boundary
+
+The correlation-length diagnostic shows that the current synthetic temperature window does not
+expose strong connected correlation-length growth. The allowed claim is limited to: beta-only
+order-parameter fits are not enough for universality promotion, and the next hardening step
+needs finite-size/correlation-length-aware scaling plus an operator form that separates from
+baseline behavior.

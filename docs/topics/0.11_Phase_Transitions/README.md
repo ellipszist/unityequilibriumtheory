@@ -50,6 +50,7 @@ flowchart LR
 | Claim-scope gate | Artifact export controller | `phase_transition_claim_scope_gate` in artifact | blocks universality/RG overclaim |
 | Wave 5 spatial-coupling candidate | Diagnostic candidate | `Result/artifacts/0_11_spatial_coupling_scaling.json` | operator gates pass; universality shift blocked |
 | Wave 6 coefficient sensitivity | Diagnostic triage | `Result/artifacts/0_11_spatial_coupling_sensitivity.json` | coefficient-only tuning remains mean-field-like |
+| Wave 7 correlation-length diagnostic | Estimator triage | `Result/artifacts/0_11_correlation_length_diagnostics.json` | critical-window and estimator gates blocked |
 | Universal phase-transition theory | Not closed | limitations and formula audit | do not claim full proof |
 
 ## 5x4 Grid Structure
@@ -90,5 +91,6 @@ python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exp
   renormalization-group closure are source-backed.
 - The Wave 5 `spatial_coupled_v1` candidate currently remains diagnostic-only: engine and spatial-operator gates pass, but `universality_shift_gate` is `BLOCKED` with beta still near mean-field.
 - The Wave 6 coefficient sensitivity diagnostic found no tested coefficient-only case near the 3D Ising beta target; the next blocker is operator-form or estimator revision, not simple coefficient tuning.
+- The Wave 7 correlation-length diagnostic shows the current synthetic window does not expose critical correlation growth (`xi_near/xi_far` about `1.07`, `nu_proxy` about `0.03`), so beta-only fits must not be used for universality promotion.
 
 *Status note: internal critical-exponent benchmark and formula-audit hardening gate.*

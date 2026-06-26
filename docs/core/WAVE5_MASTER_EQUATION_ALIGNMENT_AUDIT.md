@@ -62,6 +62,21 @@ This narrows the next blocker from general spatial coupling to coefficient-only 
 The next wave should revise the operator form or estimator rather than merely increasing the
 current candidate coefficients.
 
+## Wave 7 Correlation-Length Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_correlation_length_diagnostics.json`
+
+- `critical_window_gate`: `BLOCKED`
+- `estimator_adequacy_gate`: `BLOCKED`
+- `operator_separation_gate`: `BLOCKED`
+- spatial beta: `0.5081`
+- spatial `nu_proxy`: `0.0324`
+- spatial `xi_near/xi_far`: `1.0668`
+
+This narrows the next blocker again: the current synthetic window and estimator do not expose
+critical correlation growth. Stronger claims need finite-size/correlation-length-aware scaling
+and a revised operator form, not beta-only curve fitting.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
