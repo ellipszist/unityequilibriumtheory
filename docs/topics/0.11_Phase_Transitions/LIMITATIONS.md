@@ -14,3 +14,4 @@
 - Wave 4 synthetic scaling showed the historical UET terms stayed near mean-field behavior, not the 3D Ising exponent.
 - Wave 5 adds an opt-in `spatial_coupled_v1` core candidate, but the current dynamics verifier remains `WARN`: engine alignment and spatial-operator gates pass, while `universality_shift_gate` is `BLOCKED`.
 - The current spatial-coupled candidate estimates beta near mean-field (`0.5081`), so it must stay a diagnostic heuristic bridge until a revised operator or derivation changes the gate result.
+- Wave 6 coefficient sensitivity found beta only in the `0.4729` to `0.5243` range across the tested coefficient grid; coefficient-only tuning is not evidence for escaping mean-field behavior.

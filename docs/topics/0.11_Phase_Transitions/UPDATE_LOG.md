@@ -1,5 +1,26 @@
 # Update Log: 0.11 Phase Transitions
 
+## Wave: Spatial-Coupling Coefficient Sensitivity (Wave 6)
+
+**What changed:**
+- Added `Research_Spatial_Coupling_Sensitivity.py` to test whether coefficient-only tuning of the current `spatial_coupled_v1` operator can move beta away from mean-field.
+- Added machine-readable artifact `Result/artifacts/0_11_spatial_coupling_sensitivity.json` and CSV `Result/gl_spatial_coupling_sensitivity_stats.csv`.
+- Updated topic docs to treat coefficient-only tuning as a blocked repair path rather than a likely route to a universality shift.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Spatial_Coupling_Sensitivity.py`
+
+**Which blocker narrowed:**
+- Narrowed `universality_shift_gate` into `coefficient_only_spatial_operator_still_mean_field`.
+- The sensitivity artifact tested 20 coefficient cases and found beta range `0.4729` to `0.5243`; best beta was `0.4729`, with zero cases near the 3D Ising reference under the declared tolerance.
+
+**Next controlling blocker:**
+- Coefficient tuning is not enough. The next wave needs a revised operator form, nonlocal/scale-dependent term, or correlation-length-aware estimator before rerunning stronger scaling claims.
+
+**Current topic-level status after wave:**
+- The spatial candidate remains diagnostic-only. No RG closure, universality-class shift, or phase-transition-solution claim is supported.
+
+---
 ## Wave: Core GL Limit Verifier Stabilization (Wave 5 follow-up)
 
 **What changed:**

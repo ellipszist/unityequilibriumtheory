@@ -47,6 +47,21 @@ made deterministic and isolated from UET extras:
 This is verifier hygiene evidence only. It does not change the Wave 5 physics boundary or the
 blocked universality-shift gate.
 
+
+## Wave 6 Sensitivity Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_spatial_coupling_sensitivity.json`
+
+- `coefficient_sensitivity_gate`: `BLOCKED`
+- `operator_form_revision_gate`: `BLOCKED`
+- tested coefficient cases: `20`
+- beta range: `0.4729` to `0.5243`
+- best beta found: `0.4729`, still closer to mean-field than to the 3D Ising reference
+
+This narrows the next blocker from general spatial coupling to coefficient-only insufficiency.
+The next wave should revise the operator form or estimator rather than merely increasing the
+current candidate coefficients.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not

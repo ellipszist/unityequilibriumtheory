@@ -51,3 +51,28 @@
   - The candidate fixes the implementation availability of spatial operators in core mode.
   - The current candidate does not move the dynamics away from mean-field behavior.
   - Public or README language must not claim RG closure, universality-class shift, or phase-transition solution from this artifact.
+
+## Wave 6 Spatial-Coupling Coefficient Sensitivity
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Spatial_Coupling_Sensitivity.py`
+- Artifact target:
+  - `Result/artifacts/0_11_spatial_coupling_sensitivity.json`
+  - `Result/gl_spatial_coupling_sensitivity_stats.csv`
+- Purpose:
+  - Test whether changing only the spatial-coupled candidate coefficients can move the fitted beta exponent toward the 3D Ising benchmark.
+  - Keep this as triage for the blocked `universality_shift_gate`, not as a replacement for the full Wave 5 scaling verifier.
+- Required gates:
+  - `coefficient_sensitivity_gate.status == PASS` before treating coefficient tuning as a plausible repair path.
+  - `operator_form_revision_gate.status != BLOCKED` before rerunning stronger dynamics claims without an operator revision.
+- Current Wave 6 result:
+  - overall status `WARN`
+  - `coefficient_sensitivity_gate == BLOCKED`
+  - `operator_form_revision_gate == BLOCKED`
+  - tested coefficient cases: `20`
+  - best beta found: `0.4729`
+  - beta range: `0.4729` to `0.5243`
+  - near-3D-Ising cases: `0`
+- Interpretation:
+  - Coefficient-only tuning of the current spatial candidate remains mean-field-like.
+  - The next useful repair path is a revised operator form, nonlocal/scale-dependent term, or correlation-length-aware estimator.
