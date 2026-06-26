@@ -551,7 +551,7 @@ def run_critical_analysis():
     )
 
     if error < 5.0:
-        print("✅ PASS: UET captures non-classical critical behavior (Beta ~ 1/3).")
+        print("PASS: selected UET beta projection matches the topic-local beta benchmark; this is not a dynamics or RG-closure claim.")
         return True
     else:
         print("⚠️ WARNING: Error > 5%.")

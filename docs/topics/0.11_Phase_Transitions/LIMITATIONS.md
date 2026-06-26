@@ -1,4 +1,4 @@
-﻿# Limitations
+# Limitations
 
 - The root baseline comparison is present, but numeric acceptance boundaries are still provisional until a saved artifact is generated and reviewed.
 - Current data posture is "real source referenced", which is below a fully normalized archival dataset package.
@@ -11,3 +11,6 @@
 - The artifact-level `phase_transition_claim_scope_gate` is the export controller: a passing
   beta gate remains topic-level `WARN` until source archives, full exponent/scaling checks,
   material critical-point gates, and renormalization-group closure are available.
+- Wave 4 synthetic scaling showed the historical UET terms stayed near mean-field behavior, not the 3D Ising exponent.
+- Wave 5 adds an opt-in `spatial_coupled_v1` core candidate, but the current dynamics verifier remains `WARN`: engine alignment and spatial-operator gates pass, while `universality_shift_gate` is `BLOCKED`.
+- The current spatial-coupled candidate estimates beta near mean-field (`0.5081`), so it must stay a diagnostic heuristic bridge until a revised operator or derivation changes the gate result.

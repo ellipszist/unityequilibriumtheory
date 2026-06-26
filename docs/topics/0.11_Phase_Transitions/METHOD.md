@@ -1,4 +1,4 @@
-﻿# Method
+# Method
 
 ## Problem target
 
@@ -14,6 +14,7 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 
 ### Research and comparison components
 - `Code/03_Research/Research_Critical_Exponents.py`
+- `Code/03_Research/Research_Spatial_Coupling_Scaling.py`
 - `Code/03_Research/test_05_phase_demixing.py`
 - `Code/03_Research/test_phase_transitions.py`
 
@@ -39,6 +40,7 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 
 - Critical exponents and fit settings remain dependent on the chosen benchmark subset.
 - The current primary verifier is deliberately narrow: it checks only the beta critical exponent for a 3D Ising/liquid-gas benchmark.
+- The Wave 5 spatial-coupling verifier is a dynamics diagnostic gate; it currently keeps universality-shift claims blocked.
 - Cahn-Hilliard simulations should be treated as normalized mechanism diagnostics until seed, grid, morphology, and material-unit gates are added.
 
 ## Dependency policy

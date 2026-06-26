@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 """
 UET Central Parameter Module
 ============================
@@ -34,7 +36,7 @@ INTEGRITY_KILL_SWITCH = os.getenv("UET_KILL_ENGINE", "FALSE").upper() == "TRUE"
 
 HBAR = 1.054571817e-34  # Planck constant [J·s]
 C = 299792458  # Speed of light [m/s]
-G = 6.67430e-11  # Gravitational constant [m³/kg/s²] 
+G = 6.67430e-11  # Gravitational constant [m³/kg/s²]
 K_B = 1.380649e-23  # Boltzmann constant [J/K]
 ALPHA_EM = 1 / 137.035999  # Fine structure constant
 M_SUN = 1.98847e30  # Solar Mass (kg) [IAU 2015]
@@ -99,22 +101,22 @@ def calculate_beta_landauer(temperature: float = 293.15) -> float:
         - Bérut et al. (2012): Experimental verification (DOI: 10.1103/PhysRevLett.109.180601)
     """
     # Normalize to 'Unity Basis' (1.0 = Landauer limit at critical density)
-    # [STABILIZATION]: Under high temperatures (e.g. Electroweak), 
+    # [STABILIZATION]: Under high temperatures (e.g. Electroweak),
     # we implement a logarithmic saturation to keep beta (coupling) physically bounded.
     # Unity Principle: Information cost saturates as it approaches vacuum capacity.
     raw_energy = (K_B * temperature * LANDAUER_CONSTANT) * 1e21
-    
+
     if raw_energy > 0.5:
         # Logarithmic saturation for coupling sustainability
         return 0.5 * (1 + np.log10(2 * raw_energy))
-    
+
     return raw_energy
 
 
 def calculate_dynamic_kappa(scale: float) -> float:
     """
     Calculate κ dynamically based on the 'Unity Scale Link' formula.
-    
+
     This function implements the Renormalization Group Flow of UET, anchoring
     κ to axiomatic values at specific scales (Planck, Nuclear, Macro).
 
@@ -137,17 +139,17 @@ def calculate_dynamic_kappa(scale: float) -> float:
     if log_l <= -15:
         # Interpolate between -35 (0.5) and -15 (0.57)
         return 0.5 + (log_l + 35) * (0.57 - 0.5) / 20.0
-    
+
     # 2. Nuclear to Atomic (The Peak)
     elif log_l <= -10:
         # Interpolate between -15 (0.57) and -10 (1.40)
         return 0.57 + (log_l + 15) * (1.40 - 0.57) / 5.0
-    
+
     # 3. Atomic to Macro
     elif log_l <= 0:
         # Interpolate between -10 (1.40) and 0 (0.10)
         return 1.40 + (log_l + 10) * (0.10 - 1.40) / 10.0
-    
+
     # 4. Macro Asymptotic Limit
     else:
         return 0.10
@@ -218,12 +220,12 @@ def derive_parameters_first_principles(
         "sigma_interaction": 1.0,
         "tau_inertia": 0.01, # Standard Systemic Inertia
     }
-    
+
     # Resolving Thermodynamic vs Field Coupling Beta
     # [AXIOMATIC PURGE]: Legacy scale-dependent beta overrides removed.
     # All coupling parameters are now derived solely from Landauer Principle
     # and the Dynamic Scale Link.
-    
+
     # Apply Overrides (Final Pass)
     data.update(overrides)
 
@@ -250,7 +252,14 @@ class UETParameters:
     gamma_J: float = 0.1  # Exchange rate (A4)
     W_N: float = 0.05  # Natural Will (A5)
     lambda_coherence: float = 0.01  # Layer coherence (A10)
-    
+
+    # === Wave 5 candidate operator controls ===
+    # Default remains legacy-safe. Candidate coefficients are only used when
+    # operator_mode is explicitly set to "spatial_coupled_v1".
+    operator_mode: str = "legacy_local"
+    spatial_information_coupling: float = 1.0
+    spatial_game_coupling: float = 1.0
+    spatial_kpz_coupling: float = 1.0
     dynamic: bool = False # Tracking Axiomatic Origins
 
     # === Hardened Field Dynamics (Audit Fixes) ===
@@ -282,7 +291,8 @@ class UETParameters:
             # TOTAL BLACKOUT: Kill all 12+ axiomatic parameters
             kill_list = [
                 "kappa", "beta", "alpha", "gamma", "C0", "kappa_I",
-                "lambda_coherence", "gamma_J", "W_N", "tau_inertia", "a0_viscosity"
+                "lambda_coherence", "gamma_J", "W_N", "tau_inertia", "a0_viscosity",
+                "spatial_information_coupling", "spatial_game_coupling", "spatial_kpz_coupling"
             ]
             for field_name in kill_list:
                 if hasattr(self, field_name):
@@ -367,7 +377,7 @@ _TOPIC_DOMAIN_MAP = {
     "0.3": "galactic",
     "0.10": "fluid",
     "0.31": "fluid", # Propulsion
-    
+
     # --- Particle & Quantum (0.5-0.9, 0.17-0.21) ---
     "0.5": "nuclear_binding",
     "0.6": "electroweak", # Electroweak (High Energy)
@@ -381,7 +391,7 @@ _TOPIC_DOMAIN_MAP = {
     "0.24": "ai_cortex", # AI (Axiomatic logic)
     "0.25": "fluid", # Strategy/Economics
     "0.32": "nuclear_binding", # Fusion
-    
+
     "General": "fluid",
 }
 
@@ -405,7 +415,7 @@ def get_params(topic_id_or_domain: str = "fluid", **overrides) -> UETParameters:
     """
     # 1. Resolve domain from topic_id if provided
     domain = _TOPIC_DOMAIN_MAP.get(topic_id_or_domain, topic_id_or_domain)
-    
+
     # 2. Check if it's a known domain
     if domain not in _DOMAIN_PRESETS:
         # Fallback to fluid (macroscopic) but log it as observation-only
@@ -417,7 +427,7 @@ def get_params(topic_id_or_domain: str = "fluid", **overrides) -> UETParameters:
     # Default scale from Topic Registry or Domain Preset
     # Use topic_id_or_domain to lookup the specific scale if it's a topic ID
     topic_scale = _TOPIC_SCALE_REGISTRY.get(topic_id_or_domain, preset["scale"])
-    
+
     return derive_parameters_first_principles(
         scale=topic_scale,
         temperature=preset["temperature"],

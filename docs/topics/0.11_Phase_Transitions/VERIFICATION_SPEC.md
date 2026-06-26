@@ -1,4 +1,4 @@
-﻿# Verification Spec
+# Verification Spec
 
 - Primary command:
   - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exponents.py`
@@ -27,3 +27,27 @@
   - `phase_transition_claim_scope_gate.controller_status == WARN` is expected when the
     selected beta benchmark passes while source archives, full exponent/scaling gates, and
     renormalization-group closure remain open.
+## Wave 5 Spatial-Coupling Dynamics Verifier
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Spatial_Coupling_Scaling.py`
+- Artifact target:
+  - `Result/artifacts/0_11_spatial_coupling_scaling.json`
+  - `Result/gl_spatial_coupling_scaling_stats.csv`
+- Purpose:
+  - Test the opt-in `spatial_coupled_v1` core operator against baseline TDGL and the historical local-additive UET lane.
+  - Keep this separate from the selected beta projection in `critical_exponents.json`.
+- Required gates:
+  - `engine_alignment_gate.status == PASS`
+  - `spatial_operator_gate.status == PASS`
+  - `universality_shift_gate.status == PASS` before any dynamics-based universality-shift claim is allowed.
+- Current Wave 5 result:
+  - overall status `WARN`
+  - `engine_alignment_gate == PASS`
+  - `spatial_operator_gate == PASS`
+  - `universality_shift_gate == BLOCKED`
+  - beta estimates: baseline `0.4912`, legacy local UET `0.5050`, spatial-coupled candidate `0.5081`
+- Interpretation:
+  - The candidate fixes the implementation availability of spatial operators in core mode.
+  - The current candidate does not move the dynamics away from mean-field behavior.
+  - Public or README language must not claim RG closure, universality-class shift, or phase-transition solution from this artifact.

@@ -29,3 +29,18 @@ demonstrations.
   to physical material units.
 - Order emergence and symmetry-breaking language must remain model/diagnostic wording unless
   backed by broader exponent, morphology, and material-data gates.
+## Wave 5 Spatial-Coupling Candidate Addendum
+
+| formula_id | relation | code surface | variables and units | constant_origin | proof_status | verification_role | failure_mode | next_hardening_step |
+| :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
+| `PT-UET-LEGACY-INFO` | `Omega_info = beta C I`; `dC/dt += -beta I` | `docs/core/uet_master_equation.py::information_coupling`; `information_dynamics_source` | `C` normalized order field; `I` normalized information field; units remain normalized/proxy in topic 0.11 | `heuristic_bridge` | `legacy local operator` | compatibility baseline | Local source can act without requiring mass/interface structure, so it can stay spatially blind. | Keep as legacy comparator only unless a derivation requires it. |
+| `PT-UET-SPATIAL-INFO-CANDIDATE` | `Omega_info = 0.5 beta C^2 I`; `dC/dt += -beta C I` | `information_coupling(..., operator_mode="spatial_coupled_v1")`; `information_dynamics_source` | `C` normalized order field; `I` normalized information field; unit closure open | `heuristic_bridge` | `candidate heuristic bridge` | diagnostic gate input | Wrong coefficient/sign can create artificial damping or noise response without physical closure. | Derive or reject the multiplicative information term before stronger claims. |
+| `PT-UET-SPATIAL-GAME-CANDIDATE` | `V_game = beta_U |grad C|^2`; dynamics candidate `F_game = c_kpz V_game` | `game_theory_potential`; `game_theory_force` | `grad C` normalized grid gradient; `beta_U` strategic boost; units proxy/open | `heuristic_bridge` | `candidate diagnostic-only` | spatial operator gate | Passing interface sensitivity does not imply RG closure or universality shift. | Add unit closure and compare against accepted interface-growth/scaling references. |
+| `PT-SPATIAL-SCALING-GATE` | fit `log(<|C|>) = beta log(Tc-T)+b` for baseline, legacy, and spatial lanes | `Research_Spatial_Coupling_Scaling.py`; `0_11_spatial_coupling_scaling.json` | beta dimensionless; synthetic normalized TDGL grid | `topic_derived_relation` | `diagnostic artifact` | hardening gate | Current Wave 5 result remains near mean-field: baseline `0.4912`, legacy `0.5050`, spatial `0.5081`. | Keep universality claims blocked until `universality_shift_gate` passes with documented derivation. |
+
+## Wave 5 Formula Boundary
+
+The spatial-coupled operator is now available as an opt-in core candidate, but the current
+scaling artifact does not support a claim that UET escapes mean-field behavior. The allowed
+claim is limited to: a candidate spatial operator exists, its interface/zero-field gates pass,
+and its current scaling result remains diagnostic-only.
