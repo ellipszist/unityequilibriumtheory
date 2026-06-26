@@ -1,5 +1,27 @@
 # Update Log: 0.11 Phase Transitions
 
+## Wave: Operator-Form Requirement Gate (Wave 10)
+
+**What changed:**
+- Added `Research_Operator_Form_Requirement_Gate.py` to aggregate Waves 5-9 into a machine-readable design gate before any `spatial_coupled_v2` proposal is treated as claim-bearing.
+- Added machine-readable artifact `Result/artifacts/0_11_operator_form_requirement_gate.json`.
+- Updated topic docs to make `operator_form_revision_required` the current controller rather than coefficient tuning or longer runtime/window extension.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Operator_Form_Requirement_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed the post-Wave-9 blocker to `operator_form_revision_required`.
+- The artifact reports `prior_artifact_chain_gate == PASS` and `core_engine_alignment_gate == PASS`, but `coefficient_only_path_gate == BLOCKED`, `finite_size_signal_gate == BLOCKED`, `critical_window_path_gate == BLOCKED`, and `operator_form_requirement_gate == BLOCKED`.
+- The blocked paths show that coefficient-only tuning, finite-size/window adjustments, and longer critical-window relaxation are not sufficient repair paths for the current `spatial_coupled_v1` family.
+
+**Next controlling blocker:**
+- Design a new opt-in core-engine operator form with nonlocal, conserved, or scale-dependent dynamics, then rerun unit, formula, correlation-growth, operator-separation, and finite-size gates before any claim upgrade.
+
+**Current topic-level status after wave:**
+- The spatial candidate remains diagnostic-only. Wave 10 authorizes only operator-design work, not validation of new physics or universality-class claims.
+
+---
 ## Wave: Critical-Window Relaxation Diagnostic (Wave 9)
 
 **What changed:**

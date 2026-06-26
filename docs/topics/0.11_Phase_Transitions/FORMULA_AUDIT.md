@@ -41,6 +41,7 @@ demonstrations.
 | `PT-CORRELATION-LENGTH-DIAGNOSTIC` | connected autocorrelation axis crossing proxy for `xi`; fit `xi ~ (Tc-T)^(-nu_proxy)` | `Research_Correlation_Length_Diagnostics.py`; `0_11_correlation_length_diagnostics.json` | `xi` grid units; `nu_proxy` dimensionless diagnostic | `topic_derived_relation` | `diagnostic artifact` | estimator gate | Wave 7 found weak spatial correlation growth: spatial `nu_proxy ~= 0.0324`, `xi_near/xi_far ~= 1.0668`. | Add finite-size/correlation-length-aware scaling before stronger universality claims. |
 | `PT-FINITE-SIZE-SCALING-DIAGNOSTIC` | sweep grid sizes and compare `xi/L`, Binder-style proxy, and lane separation | `Research_Finite_Size_Scaling_Diagnostics.py`; `0_11_finite_size_scaling_diagnostics.json` | `xi/L` dimensionless; Binder proxy dimensionless | `topic_derived_relation` | `diagnostic artifact` | finite-size gate | Wave 8 found Binder-style spread but `xi/L` too small and no spatial-vs-baseline separation. | Redesign finite-size window and operator form before stronger claims. |
 | `PT-CRITICAL-WINDOW-RELAXATION-DIAGNOSTIC` | sweep closer-to-Tc temperatures and step counts; compare spatial/baseline `xi/L` | `Research_Critical_Window_Relaxation_Diagnostics.py`; `0_11_critical_window_relaxation_diagnostics.json` | `xi/L` dimensionless; steps synthetic time | `topic_derived_relation` | `diagnostic artifact` | window/relaxation gate | Wave 9 found max spatial `xi/L = 0.0737` and no gain from longer relaxation. | Stop treating runtime/window extension alone as the likely repair; revise dynamics/operator form. |
+| `PT-OPERATOR-FORM-REQUIREMENT-GATE` | aggregate Waves 5-9 into blocked repair paths and v2 design requirements | `Research_Operator_Form_Requirement_Gate.py`; `0_11_operator_form_requirement_gate.json` | gate statuses and thresholds are dimensionless artifact fields | `topic_derived_relation` | `design requirement gate` | operator-revision controller | Wave 10 keeps coefficient-only, finite-size signal, and critical-window paths blocked for the current operator family. | Design a new opt-in operator with nonlocal, conserved, or scale-dependent behavior before rerunning scaling claims. |
 
 ## Wave 5 Formula Boundary
 
@@ -78,3 +79,12 @@ The critical-window relaxation diagnostic shows that moving closer to `Tc` and i
 steps up to `2800` does not lift the spatial candidate out of local-correlation behavior. The
 next hardening step must change the dynamics/operator form or add a better critical-growth
 mechanism before rerunning finite-size claims.
+
+## Wave 10 Operator-Form Requirement Boundary
+
+The operator-form requirement gate aggregates the Wave 5-9 evidence chain into a design
+controller. It does not validate a new equation. It records that the current `spatial_coupled_v1`
+family has core-engine availability but still lacks coefficient, finite-size, critical-window,
+and operator-separation support for a dynamics claim. The next hardening step must introduce a
+new opt-in operator form with explicit unit/proxy boundaries, unit tests, formula-audit entries,
+and fresh scaling artifacts before any claim is upgraded.

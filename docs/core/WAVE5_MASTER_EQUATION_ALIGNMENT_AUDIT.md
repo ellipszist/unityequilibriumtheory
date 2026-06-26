@@ -106,14 +106,32 @@ Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_critical_win
 This narrows the blocker again: simply moving closer to `Tc` and running longer does not create
 measurable connected correlation growth for the current spatial candidate.
 
+
+## Wave 10 Operator-Form Requirement Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_operator_form_requirement_gate.json`
+
+- `prior_artifact_chain_gate`: `PASS`
+- `core_engine_alignment_gate`: `PASS`
+- `coefficient_only_path_gate`: `BLOCKED`
+- `finite_size_signal_gate`: `BLOCKED`
+- `critical_window_path_gate`: `BLOCKED`
+- `operator_form_requirement_gate`: `BLOCKED`
+
+This converts the Wave 5-9 blocker chain into an explicit design requirement. The next repair
+should not be a coefficient-only sweep or longer run of `spatial_coupled_v1`; it needs a new
+opt-in operator form with nonlocal, conserved, or scale-dependent behavior plus fresh unit,
+formula, correlation-growth, and finite-size gates.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 10
+now records the next controller as `operator_form_revision_required`.
 
 ## Next Hardening Step
 
-Keep the spatial-coupled operator as an opt-in diagnostic candidate. The next wave should either
-revise the candidate operator or add a stronger derivation/unit-closure package before rerunning
-scaling claims.
+Keep the spatial-coupled operator as an opt-in diagnostic candidate. The next wave should revise
+the candidate operator only as another opt-in core mode, and it should add a stronger
+derivation/unit-closure package before rerunning scaling claims.

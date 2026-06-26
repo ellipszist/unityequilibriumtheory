@@ -154,3 +154,31 @@
 - Interpretation:
   - The current small-correlation blocker is not resolved by this closer-to-Tc/longer-run window.
   - The next useful repair path is operator-form or dynamics redesign that creates measurable connected correlation growth.
+
+## Wave 10 Operator-Form Requirement Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Operator_Form_Requirement_Gate.py`
+- Artifact target:
+  - `Result/artifacts/0_11_operator_form_requirement_gate.json`
+- Purpose:
+  - Aggregate Waves 5-9 into a machine-readable design gate before proposing any `spatial_coupled_v2` operator.
+  - Separate allowed design work from unsupported claim promotion.
+- Required gates:
+  - `prior_artifact_chain_gate.status == PASS`
+  - `core_engine_alignment_gate.status == PASS`
+  - `coefficient_only_path_gate.status == PASS` or documented replacement by a revised operator path
+  - `finite_size_signal_gate.status == PASS`
+  - `critical_window_path_gate.status == PASS`
+  - `operator_form_requirement_gate.status == PASS` before describing a new operator as claim-bearing.
+- Current Wave 10 result:
+  - overall status `WARN`
+  - `prior_artifact_chain_gate == PASS`
+  - `core_engine_alignment_gate == PASS`
+  - `coefficient_only_path_gate == BLOCKED`
+  - `finite_size_signal_gate == BLOCKED`
+  - `critical_window_path_gate == BLOCKED`
+  - `operator_form_requirement_gate == BLOCKED`
+- Interpretation:
+  - The next useful work is operator-form redesign, not coefficient-only tuning or simply longer runs.
+  - A future candidate must remain opt-in, use core engine paths, and demonstrate connected-correlation growth plus baseline separation before any dynamics claim is upgraded.
