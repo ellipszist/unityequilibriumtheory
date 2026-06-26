@@ -17,3 +17,4 @@
 - Wave 6 coefficient sensitivity found beta only in the `0.4729` to `0.5243` range across the tested coefficient grid; coefficient-only tuning is not evidence for escaping mean-field behavior.
 - Wave 7 correlation-length diagnostics found only weak correlation growth (`xi_near/xi_far ~= 1.07`, `nu_proxy ~= 0.03`), so the current synthetic window/estimator is not adequate for RG or universality-class claims.
 - Wave 8 finite-size diagnostics found `finite_size_coverage_gate == PASS` and `binder_crossing_gate == PASS`, but `correlation_window_gate == BLOCKED` and `operator_separation_gate == BLOCKED`; the current grid/window still cannot support universality-class claims.
+- Wave 9 critical-window relaxation found that closer-to-Tc temperatures and longer runs still keep spatial `xi/L` below `0.074`, with no baseline separation; runtime/window extension alone is not a supported repair path.

@@ -40,6 +40,7 @@ demonstrations.
 | `PT-SPATIAL-COEFFICIENT-SENSITIVITY` | sweep `spatial_information_coupling` and `spatial_game_coupling`; fit beta per case | `Research_Spatial_Coupling_Sensitivity.py`; `0_11_spatial_coupling_sensitivity.json` | beta dimensionless; reduced synthetic TDGL grid | `topic_derived_relation` | `diagnostic artifact` | blocker triage | Wave 6 found no tested coefficient-only case near 3D Ising beta; best beta `0.4729`, range `0.4729` to `0.5243`. | Stop treating coefficient strength as the likely repair; revise operator form or estimator. |
 | `PT-CORRELATION-LENGTH-DIAGNOSTIC` | connected autocorrelation axis crossing proxy for `xi`; fit `xi ~ (Tc-T)^(-nu_proxy)` | `Research_Correlation_Length_Diagnostics.py`; `0_11_correlation_length_diagnostics.json` | `xi` grid units; `nu_proxy` dimensionless diagnostic | `topic_derived_relation` | `diagnostic artifact` | estimator gate | Wave 7 found weak spatial correlation growth: spatial `nu_proxy ~= 0.0324`, `xi_near/xi_far ~= 1.0668`. | Add finite-size/correlation-length-aware scaling before stronger universality claims. |
 | `PT-FINITE-SIZE-SCALING-DIAGNOSTIC` | sweep grid sizes and compare `xi/L`, Binder-style proxy, and lane separation | `Research_Finite_Size_Scaling_Diagnostics.py`; `0_11_finite_size_scaling_diagnostics.json` | `xi/L` dimensionless; Binder proxy dimensionless | `topic_derived_relation` | `diagnostic artifact` | finite-size gate | Wave 8 found Binder-style spread but `xi/L` too small and no spatial-vs-baseline separation. | Redesign finite-size window and operator form before stronger claims. |
+| `PT-CRITICAL-WINDOW-RELAXATION-DIAGNOSTIC` | sweep closer-to-Tc temperatures and step counts; compare spatial/baseline `xi/L` | `Research_Critical_Window_Relaxation_Diagnostics.py`; `0_11_critical_window_relaxation_diagnostics.json` | `xi/L` dimensionless; steps synthetic time | `topic_derived_relation` | `diagnostic artifact` | window/relaxation gate | Wave 9 found max spatial `xi/L = 0.0737` and no gain from longer relaxation. | Stop treating runtime/window extension alone as the likely repair; revise dynamics/operator form. |
 
 ## Wave 5 Formula Boundary
 
@@ -70,3 +71,10 @@ The finite-size diagnostic shows that grid coverage and Binder-style proxy sprea
 limiting issue by themselves. The current blocker is that near-critical `xi/L` remains too
 small and the spatial lane does not separate from the TDGL baseline, so finite-size scaling
 claims remain blocked.
+
+## Wave 9 Relaxation Boundary
+
+The critical-window relaxation diagnostic shows that moving closer to `Tc` and increasing
+steps up to `2800` does not lift the spatial candidate out of local-correlation behavior. The
+next hardening step must change the dynamics/operator form or add a better critical-growth
+mechanism before rerunning finite-size claims.

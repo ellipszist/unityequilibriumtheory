@@ -92,6 +92,20 @@ This narrows the next blocker to finite-size window and operator separation. The
 coverage can run the diagnostic, but the spatial candidate still does not create enough
 near-critical correlation length or baseline separation.
 
+## Wave 9 Critical-Window Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_critical_window_relaxation_diagnostics.json`
+
+- `critical_window_extension_gate`: `BLOCKED`
+- `relaxation_sensitivity_gate`: `BLOCKED`
+- `operator_separation_gate`: `BLOCKED`
+- max spatial `xi/L`: `0.0737`
+- max baseline `xi/L`: `0.0797`
+- nearest-T relaxation gain from `700` to `2800` steps: `-0.0024`
+
+This narrows the blocker again: simply moving closer to `Tc` and running longer does not create
+measurable connected correlation growth for the current spatial candidate.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not

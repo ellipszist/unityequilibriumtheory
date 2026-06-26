@@ -129,3 +129,28 @@
 - Interpretation:
   - The diagnostic has enough grid/temperature coverage to expose the blocker.
   - The current finite-size window keeps correlations too local and does not separate the spatial candidate from baseline.
+
+## Wave 9 Critical-Window Relaxation Diagnostic
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Window_Relaxation_Diagnostics.py`
+- Artifact target:
+  - `Result/artifacts/0_11_critical_window_relaxation_diagnostics.json`
+  - `Result/gl_critical_window_relaxation_diagnostics_stats.csv`
+- Purpose:
+  - Test whether moving closer to `Tc` and increasing relaxation steps can lift spatial `xi/L` without changing the operator form.
+- Required gates:
+  - `critical_window_extension_gate.status == PASS`
+  - `relaxation_sensitivity_gate.status == PASS`
+  - `operator_separation_gate.status == PASS`
+- Current Wave 9 result:
+  - overall status `WARN`
+  - `critical_window_extension_gate == BLOCKED`
+  - `relaxation_sensitivity_gate == BLOCKED`
+  - `operator_separation_gate == BLOCKED`
+  - max spatial `xi/L == 0.0737`
+  - max baseline `xi/L == 0.0797`
+  - nearest-T relaxation gain from `700` to `2800` steps: `-0.0024`
+- Interpretation:
+  - The current small-correlation blocker is not resolved by this closer-to-Tc/longer-run window.
+  - The next useful repair path is operator-form or dynamics redesign that creates measurable connected correlation growth.

@@ -1,5 +1,27 @@
 # Update Log: 0.11 Phase Transitions
 
+## Wave: Critical-Window Relaxation Diagnostic (Wave 9)
+
+**What changed:**
+- Added `Research_Critical_Window_Relaxation_Diagnostics.py` to test closer-to-Tc temperatures and longer relaxation windows without changing the current spatial operator.
+- Added machine-readable artifact `Result/artifacts/0_11_critical_window_relaxation_diagnostics.json` and CSV `Result/gl_critical_window_relaxation_diagnostics_stats.csv`.
+- Updated topic docs to block the assumption that simply running closer to `Tc` or longer fixes the small-correlation blocker.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Window_Relaxation_Diagnostics.py`
+
+**Which blocker narrowed:**
+- Narrowed the next controller to `critical_window_extension_still_local`.
+- The artifact reports `critical_window_extension_gate == BLOCKED`, `relaxation_sensitivity_gate == BLOCKED`, and `operator_separation_gate == BLOCKED`.
+- Max spatial `xi/L` remains `0.0737`, max baseline `xi/L` is `0.0797`, and nearest-T relaxation gain from `700` to `2800` steps is `-0.0024`.
+
+**Next controlling blocker:**
+- Runtime/window extension alone is not enough. The next wave needs a dynamics/operator-form revision that creates measurable connected correlation growth and separates from baseline.
+
+**Current topic-level status after wave:**
+- The spatial candidate remains diagnostic-only. Finite-size scaling and universality-class claims remain blocked.
+
+---
 ## Wave: Finite-Size Scaling Readiness Diagnostic (Wave 8)
 
 **What changed:**
