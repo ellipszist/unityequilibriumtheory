@@ -190,15 +190,31 @@ This makes Model C-style conserved dynamics available through the core engine as
 candidate, but it does not yet reproduce the stronger topic Cahn-Hilliard mechanism response.
 The next repair should focus on the numerical/operator form of the core conserved path.
 
+## Wave 15 Conserved-Order Numerics-Gap Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_numerics_gap.json`
+
+- `artifact_chain_gate`: `PASS`
+- `mechanism_gap_gate`: `PASS`
+- `explicit_core_viability_gate`: `BLOCKED`
+- `spectral_core_requirement_gate`: `BLOCKED`
+- Wave 13 explicit stiffness proxy: `32685`
+- Wave 14 explicit stiffness proxy: `0.097`
+- Wave 13-to-Wave 14 stiffness ratio: `335544`
+
+This narrows the Wave 14 mechanism gap into a numerical/operator-form requirement. The next
+core repair should not be mobility-only tuning or recombination of the current spatial v2
+components; it should implement a spectral or semi-implicit conserved-order candidate.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 14
-now records the next controller as `conserved_order_core_candidate_needs_mechanism_tuning`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 15
+now records the next controller as `explicit_core_ch_scheme_stiffness_blocks_model_c_response`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should tune or replace the
-explicit finite-difference conserved core path, likely by comparing it against the spectral/semi-implicit
-Cahn-Hilliard engine before rerunning finite-size or universality claims.
+Keep all candidate operators as opt-in diagnostics. The next wave should implement a spectral
+or semi-implicit conserved-order core path and then rerun mechanism, finite-size, and scaling
+gates before any universality or phase-transition claim is upgraded.

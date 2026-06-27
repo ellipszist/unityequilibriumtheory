@@ -59,6 +59,7 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 - The Wave 12 v2 component-ablation verifier separates information-only, game-only, full, short-memory, and long-memory profiles; it currently shows no tested v2 component improves correlation length over baseline.
 - The Wave 13 Model C verifier uses `Engine_Phase.py` to test conserved order-parameter dynamics as a different operator family; it currently supports Model C as a mechanism repair direction while leaving finite-size scaling and core integration open.
 - The Wave 14 core-candidate verifier tests `conserved_order_v1` inside `uet_master_equation.py`; it currently confirms opt-in availability, legacy compatibility, and mass conservation, while blocking the explicit core path on mechanism response.
+- The Wave 15 numerics-gap verifier compares Wave 13 spectral Cahn-Hilliard settings with the Wave 14 explicit core candidate; it currently blocks coefficient-only repair and requires a spectral or semi-implicit conserved-order core path before rerunning scaling claims.
 - Cahn-Hilliard simulations should be treated as normalized mechanism diagnostics until seed, grid, morphology, and material-unit gates are added.
 
 ## Dependency policy

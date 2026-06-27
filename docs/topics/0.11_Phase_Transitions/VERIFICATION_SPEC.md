@@ -298,3 +298,30 @@
 - Interpretation:
   - Core exposure and conservation are now available as an opt-in candidate.
   - The explicit finite-difference core path does not yet reproduce the Wave 13 Cahn-Hilliard mechanism response; the next useful work is mechanism tuning or spectral/semi-implicit core integration, not claim promotion.
+
+## Wave 15 Conserved-Order Numerics-Gap Diagnostic
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Numerics_Gap.py`
+- Artifact target:
+  - `Result/artifacts/0_11_conserved_order_numerics_gap.json`
+- Purpose:
+  - Compare Wave 13 spectral Cahn-Hilliard settings and Wave 14 explicit core settings using the dimensionless stiffness proxy `dt * kappa * (pi / dx)^4`.
+  - Decide whether the next core repair can be coefficient or mobility tuning, or whether it needs a spectral/semi-implicit conserved-order update.
+- Required gates:
+  - `artifact_chain_gate.status == PASS`
+  - `mechanism_gap_gate.status == PASS`
+  - `explicit_core_viability_gate.status == PASS` before treating the explicit core finite-difference path as a viable direct replacement.
+  - `spectral_core_requirement_gate.status != BLOCKED` before proceeding with coefficient-only tuning.
+- Current Wave 15 result:
+  - overall status `WARN`
+  - `artifact_chain_gate == PASS`
+  - `mechanism_gap_gate == PASS`
+  - `explicit_core_viability_gate == BLOCKED`
+  - `spectral_core_requirement_gate == BLOCKED`
+  - Wave 13 explicit stiffness proxy `32685`
+  - Wave 14 explicit stiffness proxy `0.097`
+  - Wave 13-to-Wave 14 stiffness ratio `335544`
+- Interpretation:
+  - The explicit core conserved-order path is not yet a viable direct replacement under Wave 13-like settings.
+  - The next supported implementation path is a spectral or semi-implicit conserved-order core candidate, not mobility-only tuning or recombining the current spatial v2 components.

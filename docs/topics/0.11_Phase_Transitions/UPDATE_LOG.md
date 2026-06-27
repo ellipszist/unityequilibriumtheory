@@ -1,5 +1,29 @@
 # Update Log: 0.11 Phase Transitions
 
+## Wave: Conserved-Order Numerics Gap (Wave 15)
+
+**What changed:**
+- Added `Research_Conserved_Order_Numerics_Gap.py` to compare the Wave 13 spectral Cahn-Hilliard settings against the Wave 14 explicit core candidate using the stiffness proxy `dt * kappa * (pi / dx)^4`.
+- Added machine-readable artifact `Result/artifacts/0_11_conserved_order_numerics_gap.json`.
+- Updated topic docs and the Wave 5 alignment audit to make the next controller explicit: spectral or semi-implicit conserved-order core integration is required before coefficient-only tuning or finite-size claim reruns.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Numerics_Gap.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Numerics_Gap.py`
+
+**Which blocker narrowed:**
+- Narrowed `conserved_order_core_candidate_needs_mechanism_tuning` into `explicit_core_ch_scheme_stiffness_blocks_model_c_response`.
+- The artifact reports `artifact_chain_gate == PASS` and `mechanism_gap_gate == PASS`, but `explicit_core_viability_gate == BLOCKED` and `spectral_core_requirement_gate == BLOCKED`.
+- The Wave 13 explicit stiffness proxy is `32685`, the Wave 14 explicit proxy is `0.097`, and the ratio is `335544`.
+
+**Next controlling blocker:**
+- Implement a spectral or semi-implicit conserved-order core candidate. Mobility-only tuning, recombining current spatial v2 components, or treating `conserved_order_v1` as mechanism-complete are blocked repair paths.
+
+**Current topic-level status after wave:**
+- The conserved-order path remains diagnostic-only. Wave 15 supports a narrower implementation requirement, not a dynamics claim, RG closure, universality-class shift, or phase-transition-solution claim.
+
+---
+
 ## Wave: Conserved-Order Core Candidate (Wave 14)
 
 **What changed:**
