@@ -206,15 +206,35 @@ This narrows the Wave 14 mechanism gap into a numerical/operator-form requiremen
 core repair should not be mobility-only tuning or recombination of the current spatial v2
 components; it should implement a spectral or semi-implicit conserved-order candidate.
 
+## Wave 16 Conserved-Order Spectral-Core Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_core_candidate.json`
+
+- `core_spectral_alignment_gate`: `PASS`
+- `legacy_compatibility_gate`: `PASS`
+- `spectral_mass_stability_gate`: `PASS`
+- `topic_engine_bridge_gate`: `PASS`
+- `mechanism_response_gate`: `PASS`
+- `wave15_repair_gate`: `PASS`
+- `claim_boundary_gate`: `WARN`
+- core spectral max mass drift: `4.86e-16`
+- max topic-engine field delta: `2.89e-12`
+- median `xi` growth ratio: core spectral `30.49`, topic spectral reference `30.49`
+- explicit `conserved_order_v1` stable cases under Wave 13-like settings: `0`
+
+This repairs the core implementation bridge required by Wave 15 while keeping the candidate
+opt-in and diagnostic-only. The next controller is now finite-size/exponent scaling, not core
+spectral availability.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 15
-now records the next controller as `explicit_core_ch_scheme_stiffness_blocks_model_c_response`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 16
+now records the next controller as `conserved_order_spectral_core_candidate_scaling_open`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should implement a spectral
-or semi-implicit conserved-order core path and then rerun mechanism, finite-size, and scaling
-gates before any universality or phase-transition claim is upgraded.
+Keep all candidate operators as opt-in diagnostics. The next wave should run finite-size and
+critical-exponent scaling gates against `conserved_order_spectral_v1` before any universality
+or phase-transition claim is upgraded.

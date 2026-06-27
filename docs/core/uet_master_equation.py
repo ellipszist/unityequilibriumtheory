@@ -83,11 +83,13 @@ LEGACY_OPERATOR_MODE = "legacy_local"
 SPATIAL_COUPLED_OPERATOR_MODE = "spatial_coupled_v1"
 SPATIAL_COUPLED_V2_OPERATOR_MODE = "spatial_coupled_v2"
 CONSERVED_ORDER_OPERATOR_MODE = "conserved_order_v1"
+CONSERVED_ORDER_SPECTRAL_OPERATOR_MODE = "conserved_order_spectral_v1"
 SUPPORTED_OPERATOR_MODES = {
     LEGACY_OPERATOR_MODE,
     SPATIAL_COUPLED_OPERATOR_MODE,
     SPATIAL_COUPLED_V2_OPERATOR_MODE,
     CONSERVED_ORDER_OPERATOR_MODE,
+    CONSERVED_ORDER_SPECTRAL_OPERATOR_MODE,
 }
 
 
@@ -142,6 +144,47 @@ def conserved_laplacian(field: np.ndarray, dx: float) -> np.ndarray:
             continue
         lap += (np.roll(field, 1, axis=axis) - 2 * field + np.roll(field, -1, axis=axis)) / dx**2
     return lap
+
+
+def spectral_conserved_order_step(
+    C: np.ndarray,
+    non_gradient_force: np.ndarray,
+    dx: float,
+    dt: float,
+    params: UETParameters,
+) -> np.ndarray:
+    """
+    Wave 16 candidate: semi-implicit spectral conserved-order update.
+
+    `non_gradient_force` is the already assembled force with the explicit
+    `kappa * laplacian(C)` part removed. The conserved flow is treated as
+    `-nabla^2(non_gradient_force) - kappa*nabla^4(C)`, with the stiff
+    biharmonic term in the denominator. This mirrors the topic 0.11 spectral
+    Cahn-Hilliard engine while keeping the core path opt-in.
+    """
+    C = np.asarray(C, dtype=float)
+    non_gradient_force = np.asarray(non_gradient_force, dtype=float)
+    if C.ndim == 0 or dt == 0 or all(size <= 1 for size in C.shape):
+        return np.array(C, copy=True)
+
+    k_sq = np.zeros(C.shape, dtype=float)
+    for axis, size in enumerate(C.shape):
+        if size <= 1:
+            continue
+        freqs = 2.0 * np.pi * np.fft.fftfreq(size, d=dx)
+        shape = [1] * C.ndim
+        shape[axis] = size
+        k_sq += freqs.reshape(shape) ** 2
+
+    mobility = getattr(params, "conserved_order_mobility", 1.0)
+    kappa = getattr(params, "kappa", 0.0)
+    numerator = np.fft.fftn(C) + dt * mobility * k_sq * np.fft.fftn(non_gradient_force)
+    denominator = 1.0 + dt * mobility * kappa * k_sq**2
+    updated = np.fft.ifftn(numerator / denominator).real
+
+    # Preserve the zero mode exactly enough for gate-level mass checks.
+    updated += float(np.mean(C)) - float(np.mean(updated))
+    return updated
 
 
 def screened_nonlocal_field(field: np.ndarray, dx: float, length_scale: float) -> np.ndarray:
@@ -1045,6 +1088,7 @@ def dynamics_step_complete(
     # Total derivative
     # Total force (Negative Functional Gradient)
     force = reaction + diffusion + source + exchange + will_force + game_force
+    raw_force = force
 
     # A14: Dynamic Viscosity (MOND-like scaling for low-acc regimes)
     # Applied to the force before integration
@@ -1066,6 +1110,13 @@ def dynamics_step_complete(
         conserved_force = -mobility * conserved_laplacian(force, dx)
         C_new = C + dt * conserved_force
         V_new = np.clip(conserved_force, -0.999999 * LIGHT_SPEED, 0.999999 * LIGHT_SPEED)
+    elif mode == CONSERVED_ORDER_SPECTRAL_OPERATOR_MODE:
+        # Wave 16 candidate: keep the local/source force explicit, but integrate the
+        # stiff kappa*nabla^4 term semi-implicitly in Fourier space.
+        non_gradient_force = raw_force - diffusion
+        C_new = spectral_conserved_order_step(C, non_gradient_force, dx, dt, params)
+        spectral_velocity = (C_new - C) / max(dt, 1e-30)
+        V_new = np.clip(spectral_velocity, -0.999999 * LIGHT_SPEED, 0.999999 * LIGHT_SPEED)
     elif params.tau_inertia > 0 and V is not None:
         # C_acc = (F - V) / tau
         C_acc = (force - V) / params.tau_inertia

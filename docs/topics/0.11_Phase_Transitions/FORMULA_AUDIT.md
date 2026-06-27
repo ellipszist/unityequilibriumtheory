@@ -47,6 +47,7 @@ demonstrations.
 | `PT-MODEL-C-CONSERVED-ORDER-DIAGNOSTIC` | `dC/dt = M nabla^2(delta F/delta C)` via topic Cahn-Hilliard engine | `Engine_Phase.py`; `Research_Model_C_Conserved_Order_Diagnostic.py`; `0_11_model_c_conserved_order_diagnostic.json` | normalized 2D `C`, grid units, `xi` proxy; no material units | `checked_local_reference` plus topic diagnostic | `mechanism repair direction` | conserved-order mechanism gate | Wave 13 passes mass conservation, domain growth, and operator distinction gates, but remains normalized 2D mechanism evidence. | Integrate as opt-in core candidate or run finite-size/exponent gates before stronger claims. |
 | `PT-CONSERVED-ORDER-CORE-CANDIDATE` | core opt-in `conserved_order_v1`: `dC/dt = -M nabla^2(force)` where `force = -delta Omega/delta C` | `uet_master_equation.py`; `Research_Conserved_Order_Core_Candidate.py`; `0_11_conserved_order_core_candidate.json` | normalized `C`, grid units, explicit finite-difference helper; no material units | `heuristic_bridge` from Model C diagnostic | `core candidate diagnostic-only` | core integration and mass-conservation gate | Wave 14 passes core exposure, legacy compatibility, and mass conservation, but blocks mechanism response (`xi` growth `0.87` vs legacy `1.47`). | Tune/integrate a spectral or semi-implicit conserved core path before finite-size claims. |
 | `PT-CONSERVED-ORDER-NUMERICS-GAP` | stiffness proxy `dt * kappa * (pi / dx)^4` comparing Wave 13 spectral settings to Wave 14 explicit core settings | `Research_Conserved_Order_Numerics_Gap.py`; `0_11_conserved_order_numerics_gap.json` | dimensionless explicit-stability proxy; normalized grid units | `topic_derived_relation` | `diagnostic requirement gate` | next-operator controller | Wave 15 blocks explicit core viability: Wave 13-like stiffness proxy `32685` versus Wave 14 explicit proxy `0.097`, ratio `335544`. | Implement a spectral or semi-implicit conserved-order core candidate before coefficient tuning or finite-size claims. |
+| `PT-CONSERVED-ORDER-SPECTRAL-CORE-CANDIDATE` | core opt-in semi-implicit update `C_hat_new = (C_hat + dt M k^2 F_non_grad_hat)/(1 + dt M kappa k^4)` | `uet_master_equation.py::spectral_conserved_order_step`; `Research_Conserved_Order_Spectral_Core_Candidate.py`; `0_11_conserved_order_spectral_core_candidate.json` | normalized `C`, FFT grid units, `xi` proxy; no material units | `heuristic_bridge` from Wave 13 topic engine | `core candidate diagnostic-only` | Wave 15 repair and topic-engine bridge gate | Wave 16 passes core bridge gates with max topic-engine delta `2.89e-12` and median `xi` growth `30.49`. | Run finite-size/exponent scaling gates before stronger dynamics or universality claims. |
 
 ## Wave 5 Formula Boundary
 
@@ -137,3 +138,11 @@ Wave 13 spectral Cahn-Hilliard response: the Wave 13-like explicit stiffness pro
 the declared viability threshold. The allowed claim is limited to a next-implementation
 requirement: use a spectral or semi-implicit conserved-order core candidate before rerunning
 finite-size, exponent, or universality gates.
+
+## Wave 16 Spectral-Core Boundary
+
+The `conserved_order_spectral_v1` core mode repairs the Wave 15 implementation blocker by
+matching the topic spectral Cahn-Hilliard engine under normalized Wave 13-like settings while
+preserving legacy defaults. The allowed claim is limited to: an opt-in core spectral bridge now
+exists and passes mechanism/implementation gates. It is not yet a finite-size scaling result,
+critical-exponent result, material validation, RG closure, or universal phase-transition proof.

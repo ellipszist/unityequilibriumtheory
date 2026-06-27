@@ -325,3 +325,39 @@
 - Interpretation:
   - The explicit core conserved-order path is not yet a viable direct replacement under Wave 13-like settings.
   - The next supported implementation path is a spectral or semi-implicit conserved-order core candidate, not mobility-only tuning or recombining the current spatial v2 components.
+
+## Wave 16 Conserved-Order Spectral Core Candidate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Core_Candidate.py`
+- Artifact target:
+  - `Result/artifacts/0_11_conserved_order_spectral_core_candidate.json`
+  - `Result/gl_conserved_order_spectral_core_candidate_stats.csv`
+- Purpose:
+  - Verify that `operator_mode="conserved_order_spectral_v1"` is exposed through `docs/core/uet_master_equation.py` without changing legacy defaults.
+  - Compare the opt-in core spectral lane against the existing topic spectral Cahn-Hilliard engine under Wave 13-like settings.
+  - Confirm that the Wave 15 explicit-core stiffness blocker is repaired by a stable spectral/semi-implicit core path before rerunning scaling claims.
+- Required gates:
+  - `core_spectral_alignment_gate.status == PASS`
+  - `legacy_compatibility_gate.status == PASS`
+  - `spectral_mass_stability_gate.status == PASS`
+  - `topic_engine_bridge_gate.status == PASS`
+  - `mechanism_response_gate.status == PASS`
+  - `wave15_repair_gate.status == PASS`
+  - `claim_boundary_gate.status == WARN` until finite-size/exponent gates and formula audit closure exist.
+- Current Wave 16 result:
+  - overall status `PASS`
+  - `core_spectral_alignment_gate == PASS`
+  - `legacy_compatibility_gate == PASS`
+  - `spectral_mass_stability_gate == PASS`
+  - `topic_engine_bridge_gate == PASS`
+  - `mechanism_response_gate == PASS`
+  - `wave15_repair_gate == PASS`
+  - `claim_boundary_gate == WARN`
+  - core spectral max mass drift `4.86e-16`
+  - max topic-engine field delta `2.89e-12`
+  - core spectral median `xi` growth ratio `30.49`
+  - explicit `conserved_order_v1` stable case count under Wave 13-like settings `0`
+- Interpretation:
+  - The core spectral candidate repairs the implementation bridge blocker identified in Wave 15.
+  - The next useful work is a finite-size/exponent scaling verifier using the opt-in spectral core candidate; this result is not a universality, material, or RG-closure claim.

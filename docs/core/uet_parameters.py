@@ -269,7 +269,8 @@ class UETParameters:
     spatial_v2_memory_length: float = 2.0
     spatial_v2_conserved_coupling: float = 1.0
 
-    # Wave 14 Model C candidate control. Used only by conserved_order_v1.
+    # Wave 14/16 Model C candidate control. Used only by conserved_order_v1
+    # and conserved_order_spectral_v1.
     conserved_order_mobility: float = 1.0
     dynamic: bool = False # Tracking Axiomatic Origins
 

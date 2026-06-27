@@ -59,6 +59,7 @@ flowchart LR
 | Wave 13 Model C conserved-order diagnostic | Mechanism repair triage | `Result/artifacts/0_11_model_c_conserved_order_diagnostic.json` | conserved-order mechanism passes; scaling/core integration still open |
 | Wave 14 conserved-order core candidate | Opt-in core integration gate | `Result/artifacts/0_11_conserved_order_core_candidate.json` | core mode/mass/legacy gates pass; mechanism response blocked |
 | Wave 15 conserved-order numerics gap | Scheme gap diagnostic | `Result/artifacts/0_11_conserved_order_numerics_gap.json` | explicit core stiffness blocks Model C response; spectral/semi-implicit core required |
+| Wave 16 conserved-order spectral core | Opt-in core bridge gate | `Result/artifacts/0_11_conserved_order_spectral_core_candidate.json` | core spectral bridge passes; finite-size/exponent scaling still open |
 | Universal phase-transition theory | Not closed | limitations and formula audit | do not claim full proof |
 
 ## 5x4 Grid Structure
@@ -108,5 +109,6 @@ python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exp
 - The Wave 13 Model C diagnostic uses the topic Cahn-Hilliard engine and passes mechanism gates: mass drift is `~2.1e-16`, median Model C `xi` growth is `30.49`, and the lane separates from the nonconserved comparison by `5.81` in median `xi`-growth ratio. This is a repair direction, not a universality proof.
 - The Wave 14 `conserved_order_v1` core candidate exposes Model C-style conserved flow as an opt-in core mode and preserves legacy defaults/mass conservation, but its explicit finite-difference mechanism response is still blocked: core conserved median `xi` growth is `0.87` versus legacy core `1.47`.
 - The Wave 15 numerics-gap diagnostic shows the explicit core path is not a viable direct replacement under Wave 13-like settings: the explicit stiffness proxy is `32685` for the spectral reference settings versus `0.097` for the Wave 14 core candidate, so the next core candidate should be spectral or semi-implicit rather than mobility-only tuning.
+- The Wave 16 `conserved_order_spectral_v1` core candidate repairs that implementation gap under Wave 13-like settings: all core bridge gates pass, max topic-engine field delta is `2.89e-12`, and median `xi` growth matches the topic spectral engine at `30.49`; this opens the next scaling verifier but does not upgrade universality claims.
 
 *Status note: internal critical-exponent benchmark and formula-audit hardening gate.*

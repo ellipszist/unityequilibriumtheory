@@ -1,5 +1,31 @@
 # Update Log: 0.11 Phase Transitions
 
+## Wave: Conserved-Order Spectral Core Candidate (Wave 16)
+
+**What changed:**
+- Added opt-in `conserved_order_spectral_v1` support in `docs/core/uet_master_equation.py` using a semi-implicit spectral conserved-order update that keeps the stiff `kappa*nabla^4` term in the denominator.
+- Added unit checks for Wave 13-like mass conservation and uniform-field stationarity without changing legacy defaults.
+- Added `Research_Conserved_Order_Spectral_Core_Candidate.py`, machine-readable artifact `Result/artifacts/0_11_conserved_order_spectral_core_candidate.json`, and CSV `Result/gl_conserved_order_spectral_core_candidate_stats.csv`.
+- Updated topic docs and the Wave 5 alignment audit to separate implementation bridge success from still-open finite-size/exponent claims.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/core/uet_master_equation.py docs/core/uet_parameters.py docs/core/test/test_spatial_coupling.py docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Core_Candidate.py`
+- `.\.venv\Scripts\python.exe docs/core/test/test_spatial_coupling.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Core_Candidate.py`
+
+**Which blocker narrowed:**
+- Narrowed `explicit_core_ch_scheme_stiffness_blocks_model_c_response` into `conserved_order_spectral_core_candidate_scaling_open`.
+- The artifact reports `core_spectral_alignment_gate == PASS`, `legacy_compatibility_gate == PASS`, `spectral_mass_stability_gate == PASS`, `topic_engine_bridge_gate == PASS`, `mechanism_response_gate == PASS`, and `wave15_repair_gate == PASS`.
+- The core spectral max mass drift is `4.86e-16`, max topic-engine field delta is `2.89e-12`, median `xi` growth ratio is `30.49`, and the explicit v1 lane has `0` stable cases under Wave 13-like settings.
+
+**Next controlling blocker:**
+- Build and run a finite-size/exponent scaling verifier using the opt-in spectral core candidate. Do not promote phase-transition, universality, material, or RG claims from this implementation bridge alone.
+
+**Current topic-level status after wave:**
+- The conserved-order spectral core candidate is implementation/mechanism-bridged but diagnostic-only. No universality-class shift, material validation, RG closure, or phase-transition-solution claim is supported.
+
+---
+
 ## Wave: Conserved-Order Numerics Gap (Wave 15)
 
 **What changed:**
