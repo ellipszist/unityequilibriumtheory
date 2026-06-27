@@ -211,3 +211,30 @@
 - Interpretation:
   - The first v2 candidate satisfies the code-surface and safety requirements but does not yet create connected-correlation growth or lane separation.
   - The next useful repair path is another operator-form revision or stronger derivation of the nonlocal/conserved dynamics, not claim promotion.
+
+## Wave 12 Spatial-Coupled V2 Component Ablation
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Spatial_Coupled_V2_Component_Ablation.py`
+- Artifact target:
+  - `Result/artifacts/0_11_spatial_coupled_v2_component_ablation.json`
+  - `Result/gl_spatial_coupled_v2_component_ablation_stats.csv`
+- Purpose:
+  - Separate `spatial_coupled_v2` into information-only, game-only, full, short-memory, and long-memory profiles.
+  - Determine whether any existing v2 component is a plausible correlation-growth repair direction before designing another operator form.
+- Required gates:
+  - `ablation_coverage_gate.status == PASS`
+  - `force_lane_activity_gate.status == PASS`
+  - `component_improvement_gate.status == PASS` before treating any v2 component profile as a plausible repair path.
+  - `memory_length_response_gate.status == PASS` before treating memory-length changes as a plausible repair path.
+- Current Wave 12 result:
+  - overall status `WARN`
+  - `ablation_coverage_gate == PASS`
+  - `force_lane_activity_gate == PASS`
+  - `component_improvement_gate == BLOCKED`
+  - `memory_length_response_gate == BLOCKED`
+  - baseline max `xi/L == 0.0801`
+  - best profile: `v2_memory_long`, improvement over baseline `-0.0038`
+- Interpretation:
+  - The tested v2 components are correctly isolated and stable, but none improves correlation length over baseline.
+  - The next useful repair path is a different operator structure or derivation, not recombining or length-tuning the current v2 components.

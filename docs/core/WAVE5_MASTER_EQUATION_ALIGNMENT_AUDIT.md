@@ -139,15 +139,31 @@ This implements the first Wave 10-compliant candidate shape, but it does not rep
 blocker. The operator is available, opt-in, interface-gated, and conserved on the game-force
 lane, yet it still does not create connected-correlation growth or separation from baseline.
 
+
+## Wave 12 V2 Component-Ablation Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_spatial_coupled_v2_component_ablation.json`
+
+- `ablation_coverage_gate`: `PASS`
+- `force_lane_activity_gate`: `PASS`
+- `component_improvement_gate`: `BLOCKED`
+- `memory_length_response_gate`: `BLOCKED`
+- baseline max `xi/L`: `0.0801`
+- best v2 profile: `v2_memory_long`, improvement over baseline `-0.0038`
+
+This narrows the v2 blocker: the tested information, game, full, short-memory, and long-memory
+profiles are stable and force-isolated, but they remain correlation-neutral or damping relative
+to baseline. The next operator revision should not simply recombine these v2 components.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 11
-now records the next controller as `spatial_coupled_v2_correlation_not_yet_established`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 12
+now records the next controller as `v2_components_remain_correlation_neutral_or_damping`.
 
 ## Next Hardening Step
 
-Keep both spatial-coupled operators as opt-in diagnostic candidates. The next wave should revise
-the nonlocal/conserved dynamics or add a stronger derivation/unit-closure package before rerunning
+Keep both spatial-coupled operators as opt-in diagnostic candidates. The next wave should design
+a different operator structure or add a stronger derivation/unit-closure package before rerunning
 finite-size or universality claims.

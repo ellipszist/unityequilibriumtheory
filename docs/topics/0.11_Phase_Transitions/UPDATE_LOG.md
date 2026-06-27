@@ -1,5 +1,27 @@
 # Update Log: 0.11 Phase Transitions
 
+## Wave: Spatial-Coupled V2 Component Ablation (Wave 12)
+
+**What changed:**
+- Added `Research_Spatial_Coupled_V2_Component_Ablation.py` to separate the Wave 11 v2 operator into information-only, game-only, full, short-memory, and long-memory profiles.
+- Added machine-readable artifact `Result/artifacts/0_11_spatial_coupled_v2_component_ablation.json` and CSV `Result/gl_spatial_coupled_v2_component_ablation_stats.csv`.
+- Updated topic docs to distinguish successful force-lane isolation from failed correlation-growth repair.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Spatial_Coupled_V2_Component_Ablation.py`
+
+**Which blocker narrowed:**
+- Narrowed `spatial_coupled_v2_correlation_not_yet_established` into `v2_components_remain_correlation_neutral_or_damping`.
+- The artifact reports `ablation_coverage_gate == PASS` and `force_lane_activity_gate == PASS`, but `component_improvement_gate == BLOCKED` and `memory_length_response_gate == BLOCKED`.
+- Baseline max `xi/L` is `0.0801`; all tested v2 profiles are lower. The best profile is `v2_memory_long` with improvement `-0.0038` over baseline.
+
+**Next controlling blocker:**
+- The current v2 component family is not a plausible correlation-growth repair under this synthetic window. The next wave needs a different operator structure or a stronger derivation, not recombination or memory-length tuning of the current v2 terms.
+
+**Current topic-level status after wave:**
+- The spatial candidates remain diagnostic-only. No RG closure, universality-class shift, or phase-transition-solution claim is supported.
+
+---
 ## Wave: Spatial-Coupled V2 Candidate Diagnostic (Wave 11)
 
 **What changed:**

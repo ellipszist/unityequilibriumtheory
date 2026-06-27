@@ -55,6 +55,7 @@ flowchart LR
 | Wave 9 critical-window relaxation | Window/relaxation triage | `Result/artifacts/0_11_critical_window_relaxation_diagnostics.json` | closer Tc and longer runs still local |
 | Wave 10 operator-form requirement | Design requirement gate | `Result/artifacts/0_11_operator_form_requirement_gate.json` | operator-form revision required before v2 claims |
 | Wave 11 spatial-coupled v2 candidate | First v2 operator triage | `Result/artifacts/0_11_spatial_coupled_v2_diagnostic.json` | core/safety/stability pass; correlation and separation blocked |
+| Wave 12 v2 component ablation | Component failure triage | `Result/artifacts/0_11_spatial_coupled_v2_component_ablation.json` | tested v2 components remain neutral/damping for correlation growth |
 | Universal phase-transition theory | Not closed | limitations and formula audit | do not claim full proof |
 
 ## 5x4 Grid Structure
@@ -100,5 +101,6 @@ python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exp
 - The Wave 9 critical-window relaxation diagnostic moved closer to `Tc` and increased steps to `2800`, but spatial `xi/L` stayed near `0.07` and did not separate from baseline.
 - The Wave 10 operator-form requirement gate aggregates Waves 5-9 and keeps `operator_form_requirement_gate == BLOCKED`; any `spatial_coupled_v2` path must add a nonlocal, conserved, or scale-dependent mechanism and pass correlation/separation gates before claim promotion.
 - The Wave 11 `spatial_coupled_v2` candidate adds screened nonlocal memory and a conserved interface/game drive in core mode, but its first diagnostic remains `WARN`: core/safety/stability gates pass while `v2_correlation_response_gate` and `v2_operator_separation_gate` are `BLOCKED` (`max_xi/L = 0.0733`).
+- The Wave 12 component ablation keeps the v2 family diagnostic-only: coverage and force-lane isolation pass, but every tested v2 component profile stays below baseline `xi/L`; the best profile is `v2_memory_long` with improvement `-0.0038`.
 
 *Status note: internal critical-exponent benchmark and formula-audit hardening gate.*
