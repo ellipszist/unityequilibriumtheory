@@ -361,3 +361,36 @@
 - Interpretation:
   - The core spectral candidate repairs the implementation bridge blocker identified in Wave 15.
   - The next useful work is a finite-size/exponent scaling verifier using the opt-in spectral core candidate; this result is not a universality, material, or RG-closure claim.
+
+## Wave 17 Conserved-Order Spectral Finite-Size Scaling
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Scaling.py`
+- Artifact target:
+  - `Result/artifacts/0_11_conserved_order_spectral_scaling.json`
+  - `Result/gl_conserved_order_spectral_scaling_stats.csv`
+- Purpose:
+  - Run a normalized 3D finite-size/exponent sweep using the opt-in `conserved_order_spectral_v1` core candidate.
+  - Keep implementation stability separate from finite-size correlation-window and universality-exponent claims.
+- Required gates:
+  - `wave16_bridge_gate.status == PASS`
+  - `finite_size_coverage_gate.status == PASS`
+  - `spectral_stability_gate.status == PASS`
+  - `correlation_window_gate.status == PASS` before treating `xi/L` as adequate for finite-size scaling claims.
+  - `universality_exponent_gate.status == PASS` before claiming a 3D Ising-like exponent shift.
+  - `claim_boundary_gate.status == WARN` until material and RG closure gates exist.
+- Current Wave 17 result:
+  - overall status `WARN`
+  - `wave16_bridge_gate == PASS`
+  - `finite_size_coverage_gate == PASS`
+  - `spectral_stability_gate == PASS`
+  - `binder_crossing_gate == PASS`
+  - `correlation_window_gate == BLOCKED`
+  - `universality_exponent_gate == BLOCKED`
+  - `claim_boundary_gate == WARN`
+  - max near-critical `xi/L` `0.145`
+  - beta range `1.61` to `1.83`; median beta `1.77`
+  - median beta fit `R^2` `0.912`
+- Interpretation:
+  - The spectral core candidate remains stable in this normalized 3D sweep, but the finite-size window is still too local for universality claims.
+  - The next useful work is a better finite-size/equilibration/scaling-window design, not claim promotion.

@@ -1,5 +1,29 @@
 # Update Log: 0.11 Phase Transitions
 
+## Wave: Conserved-Order Spectral Scaling (Wave 17)
+
+**What changed:**
+- Added `Research_Conserved_Order_Spectral_Scaling.py` to run a normalized 3D finite-size/exponent sweep for `conserved_order_spectral_v1`.
+- Added machine-readable artifact `Result/artifacts/0_11_conserved_order_spectral_scaling.json` and CSV `Result/gl_conserved_order_spectral_scaling_stats.csv`.
+- Updated topic docs and the Wave 5 alignment audit to separate Wave 16 core-bridge success from still-blocked finite-size/exponent claims.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Scaling.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Scaling.py`
+
+**Which blocker narrowed:**
+- Narrowed `conserved_order_spectral_core_candidate_scaling_open` into `spectral_core_finite_size_window_not_established`.
+- The artifact reports `wave16_bridge_gate == PASS`, `finite_size_coverage_gate == PASS`, `spectral_stability_gate == PASS`, and `binder_crossing_gate == PASS`.
+- It also reports `correlation_window_gate == BLOCKED` and `universality_exponent_gate == BLOCKED`: max near-critical `xi/L` is `0.145`, beta range is `1.61` to `1.83`, and median beta is `1.77`.
+
+**Next controlling blocker:**
+- Improve the finite-size/equilibration/scaling-window design for the spectral conserved-order candidate before rerunning exponent or universality gates.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 17 supports stability plus a narrower scaling blocker, not a universality-class shift, material validation, RG closure, or phase-transition-solution claim.
+
+---
+
 ## Wave: Conserved-Order Spectral Core Candidate (Wave 16)
 
 **What changed:**

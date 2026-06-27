@@ -61,6 +61,7 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 - The Wave 14 core-candidate verifier tests `conserved_order_v1` inside `uet_master_equation.py`; it currently confirms opt-in availability, legacy compatibility, and mass conservation, while blocking the explicit core path on mechanism response.
 - The Wave 15 numerics-gap verifier compares Wave 13 spectral Cahn-Hilliard settings with the Wave 14 explicit core candidate; it currently blocks coefficient-only repair and requires a spectral or semi-implicit conserved-order core path before rerunning scaling claims.
 - The Wave 16 spectral-core verifier tests `conserved_order_spectral_v1` inside `uet_master_equation.py` against the existing topic spectral engine; it passes implementation/mechanism bridge gates and moves the next blocker to finite-size/exponent scaling.
+- The Wave 17 spectral-scaling verifier runs a normalized 3D finite-size sweep for `conserved_order_spectral_v1`; it passes stability and coverage gates but blocks universality promotion on `xi/L` window and beta-exponent gates.
 - Cahn-Hilliard simulations should be treated as normalized mechanism diagnostics until seed, grid, morphology, and material-unit gates are added.
 
 ## Dependency policy

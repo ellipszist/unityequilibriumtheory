@@ -226,15 +226,34 @@ This repairs the core implementation bridge required by Wave 15 while keeping th
 opt-in and diagnostic-only. The next controller is now finite-size/exponent scaling, not core
 spectral availability.
 
+## Wave 17 Conserved-Order Spectral-Scaling Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_scaling.json`
+
+- `wave16_bridge_gate`: `PASS`
+- `finite_size_coverage_gate`: `PASS`
+- `spectral_stability_gate`: `PASS`
+- `binder_crossing_gate`: `PASS`
+- `correlation_window_gate`: `BLOCKED`
+- `universality_exponent_gate`: `BLOCKED`
+- `claim_boundary_gate`: `WARN`
+- max near-critical `xi/L`: `0.145`
+- beta range: `1.61` to `1.83`
+- median beta: `1.77`
+
+This keeps the spectral core candidate claim-bounded: implementation stability is no longer the
+controller, but the finite-size window and exponent scaling are not yet adequate for universality
+promotion.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 16
-now records the next controller as `conserved_order_spectral_core_candidate_scaling_open`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 17
+now records the next controller as `spectral_core_finite_size_window_not_established`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should run finite-size and
-critical-exponent scaling gates against `conserved_order_spectral_v1` before any universality
-or phase-transition claim is upgraded.
+Keep all candidate operators as opt-in diagnostics. The next wave should improve the finite-size,
+equilibration, or scaling-window design for `conserved_order_spectral_v1` before rerunning exponent
+or universality gates.

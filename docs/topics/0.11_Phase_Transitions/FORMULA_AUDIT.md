@@ -48,6 +48,7 @@ demonstrations.
 | `PT-CONSERVED-ORDER-CORE-CANDIDATE` | core opt-in `conserved_order_v1`: `dC/dt = -M nabla^2(force)` where `force = -delta Omega/delta C` | `uet_master_equation.py`; `Research_Conserved_Order_Core_Candidate.py`; `0_11_conserved_order_core_candidate.json` | normalized `C`, grid units, explicit finite-difference helper; no material units | `heuristic_bridge` from Model C diagnostic | `core candidate diagnostic-only` | core integration and mass-conservation gate | Wave 14 passes core exposure, legacy compatibility, and mass conservation, but blocks mechanism response (`xi` growth `0.87` vs legacy `1.47`). | Tune/integrate a spectral or semi-implicit conserved core path before finite-size claims. |
 | `PT-CONSERVED-ORDER-NUMERICS-GAP` | stiffness proxy `dt * kappa * (pi / dx)^4` comparing Wave 13 spectral settings to Wave 14 explicit core settings | `Research_Conserved_Order_Numerics_Gap.py`; `0_11_conserved_order_numerics_gap.json` | dimensionless explicit-stability proxy; normalized grid units | `topic_derived_relation` | `diagnostic requirement gate` | next-operator controller | Wave 15 blocks explicit core viability: Wave 13-like stiffness proxy `32685` versus Wave 14 explicit proxy `0.097`, ratio `335544`. | Implement a spectral or semi-implicit conserved-order core candidate before coefficient tuning or finite-size claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-CORE-CANDIDATE` | core opt-in semi-implicit update `C_hat_new = (C_hat + dt M k^2 F_non_grad_hat)/(1 + dt M kappa k^4)` | `uet_master_equation.py::spectral_conserved_order_step`; `Research_Conserved_Order_Spectral_Core_Candidate.py`; `0_11_conserved_order_spectral_core_candidate.json` | normalized `C`, FFT grid units, `xi` proxy; no material units | `heuristic_bridge` from Wave 13 topic engine | `core candidate diagnostic-only` | Wave 15 repair and topic-engine bridge gate | Wave 16 passes core bridge gates with max topic-engine delta `2.89e-12` and median `xi` growth `30.49`. | Run finite-size/exponent scaling gates before stronger dynamics or universality claims. |
+| `PT-CONSERVED-ORDER-SPECTRAL-SCALING` | finite-size sweep fits `log(<|C|>)` and `log(xi)` versus `log(Tc-T)` for `conserved_order_spectral_v1` | `Research_Conserved_Order_Spectral_Scaling.py`; `0_11_conserved_order_spectral_scaling.json` | normalized 3D lattice units; `xi/L`, Binder proxy, beta and nu proxies | `topic_derived_relation` | `diagnostic finite-size/exponent gate` | claim-boundary controller | Wave 17 passes stability/coverage but blocks correlation window (`max xi/L = 0.145`) and universality exponent (median beta `1.77`). | Improve finite-size/equilibration/scaling-window design before stronger dynamics or universality claims. |
 
 ## Wave 5 Formula Boundary
 
@@ -146,3 +147,10 @@ matching the topic spectral Cahn-Hilliard engine under normalized Wave 13-like s
 preserving legacy defaults. The allowed claim is limited to: an opt-in core spectral bridge now
 exists and passes mechanism/implementation gates. It is not yet a finite-size scaling result,
 critical-exponent result, material validation, RG closure, or universal phase-transition proof.
+
+## Wave 17 Spectral-Scaling Boundary
+
+The spectral-scaling diagnostic is the first finite-size/exponent gate for `conserved_order_spectral_v1`.
+It supports stability and coverage, but it does not support universality promotion: the near-critical
+`xi/L` window remains below threshold and the fitted beta proxy is far from the 3D Ising benchmark.
+The allowed claim is limited to: the next blocker is finite-size/equilibration/scaling-window design.
