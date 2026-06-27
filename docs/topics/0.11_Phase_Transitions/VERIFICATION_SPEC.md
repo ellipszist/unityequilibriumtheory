@@ -268,3 +268,33 @@
 - Interpretation:
   - Model C is now the strongest mechanism-level repair direction found after v2 ablation.
   - This does not validate a universality-class shift; next work needs opt-in core integration and finite-size/exponent gates.
+
+## Wave 14 Conserved-Order Core Candidate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Core_Candidate.py`
+- Artifact target:
+  - `Result/artifacts/0_11_conserved_order_core_candidate.json`
+  - `Result/gl_conserved_order_core_candidate_stats.csv`
+- Purpose:
+  - Verify that the Model C repair direction can be exposed through `docs/core/uet_master_equation.py` as opt-in `operator_mode="conserved_order_v1"` without changing legacy defaults.
+  - Separate core integration, mass conservation, and mechanism response gates.
+- Required gates:
+  - `core_conserved_alignment_gate.status == PASS`
+  - `legacy_compatibility_gate.status == PASS`
+  - `conserved_mass_gate.status == PASS`
+  - `core_mechanism_response_gate.status == PASS` before treating the explicit core path as a mechanism repair.
+  - `claim_boundary_gate.status == WARN` until finite-size/exponent gates and formula audit closure exist.
+- Current Wave 14 result:
+  - overall status `WARN`
+  - `core_conserved_alignment_gate == PASS`
+  - `legacy_compatibility_gate == PASS`
+  - `conserved_mass_gate == PASS`
+  - `wave13_bridge_gate == PASS`
+  - `core_mechanism_response_gate == BLOCKED`
+  - `claim_boundary_gate == WARN`
+  - core conserved max mass drift `~1.0e-17`; legacy core max mass drift `0.0149`
+  - core conserved median `xi` growth ratio `0.87`; legacy core comparison `1.47`
+- Interpretation:
+  - Core exposure and conservation are now available as an opt-in candidate.
+  - The explicit finite-difference core path does not yet reproduce the Wave 13 Cahn-Hilliard mechanism response; the next useful work is mechanism tuning or spectral/semi-implicit core integration, not claim promotion.

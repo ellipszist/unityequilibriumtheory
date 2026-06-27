@@ -45,6 +45,7 @@ demonstrations.
 | `PT-UET-SPATIAL-V2-CANDIDATE` | activity `= |grad C|^2 + a(nonlocal(C)-C)^2`; game force `= lambda nabla^2 V_game`; info source `~ -beta C I activity` | `uet_master_equation.py`; `Research_Spatial_Coupled_V2_Diagnostic.py`; `0_11_spatial_coupled_v2_diagnostic.json` | normalized `C`, `I`, `xi/L`; v2 coefficients are heuristic/proxy | `heuristic_bridge` | `candidate diagnostic-only` | v2 availability/safety/stability gate | Wave 11 passes core/safety/stability but blocks correlation growth and lane separation (`max_xi/L = 0.0733`). | Revise nonlocal/conserved dynamics or derive stronger operator before finite-size claims. |
 | `PT-UET-SPATIAL-V2-ABLATION` | compare v2 information-only, game-only, full, short-memory, and long-memory profiles against baseline `xi/L` | `Research_Spatial_Coupled_V2_Component_Ablation.py`; `0_11_spatial_coupled_v2_component_ablation.json` | normalized `xi/L`; profile coefficients are heuristic/proxy | `topic_derived_relation` | `diagnostic ablation` | component blocker triage | Wave 12 found all tested v2 profiles below baseline; best improvement `-0.0038`. | Stop treating current v2 components as a likely repair; design a different operator structure or derivation. |
 | `PT-MODEL-C-CONSERVED-ORDER-DIAGNOSTIC` | `dC/dt = M nabla^2(delta F/delta C)` via topic Cahn-Hilliard engine | `Engine_Phase.py`; `Research_Model_C_Conserved_Order_Diagnostic.py`; `0_11_model_c_conserved_order_diagnostic.json` | normalized 2D `C`, grid units, `xi` proxy; no material units | `checked_local_reference` plus topic diagnostic | `mechanism repair direction` | conserved-order mechanism gate | Wave 13 passes mass conservation, domain growth, and operator distinction gates, but remains normalized 2D mechanism evidence. | Integrate as opt-in core candidate or run finite-size/exponent gates before stronger claims. |
+| `PT-CONSERVED-ORDER-CORE-CANDIDATE` | core opt-in `conserved_order_v1`: `dC/dt = -M nabla^2(force)` where `force = -delta Omega/delta C` | `uet_master_equation.py`; `Research_Conserved_Order_Core_Candidate.py`; `0_11_conserved_order_core_candidate.json` | normalized `C`, grid units, explicit finite-difference helper; no material units | `heuristic_bridge` from Model C diagnostic | `core candidate diagnostic-only` | core integration and mass-conservation gate | Wave 14 passes core exposure, legacy compatibility, and mass conservation, but blocks mechanism response (`xi` growth `0.87` vs legacy `1.47`). | Tune/integrate a spectral or semi-implicit conserved core path before finite-size claims. |
 
 ## Wave 5 Formula Boundary
 
@@ -117,3 +118,12 @@ and produces stronger domain/correlation growth than the nonconserved comparison
 allowed claim is limited to: Model C is a plausible mechanism-level repair direction. It is not
 yet a core UET operator replacement, 3D finite-size scaling result, material validation, or
 universality-class proof.
+
+## Wave 14 Conserved-Order Core Boundary
+
+The `conserved_order_v1` core mode exposes a Model C-style conserved flow without changing
+legacy defaults. It passes the core exposure, legacy compatibility, Wave 13 bridge, and mass
+conservation gates. It does not yet pass the mechanism-response gate: the explicit finite-
+difference core candidate produces weaker `xi` growth than the legacy core comparison in the
+current diagnostic. The allowed claim is limited to opt-in availability and conservation, not
+validated phase-transition dynamics.

@@ -82,10 +82,12 @@ from docs.core.uet_parameters import INTEGRITY_KILL_SWITCH, UETParameters
 LEGACY_OPERATOR_MODE = "legacy_local"
 SPATIAL_COUPLED_OPERATOR_MODE = "spatial_coupled_v1"
 SPATIAL_COUPLED_V2_OPERATOR_MODE = "spatial_coupled_v2"
+CONSERVED_ORDER_OPERATOR_MODE = "conserved_order_v1"
 SUPPORTED_OPERATOR_MODES = {
     LEGACY_OPERATOR_MODE,
     SPATIAL_COUPLED_OPERATOR_MODE,
     SPATIAL_COUPLED_V2_OPERATOR_MODE,
+    CONSERVED_ORDER_OPERATOR_MODE,
 }
 
 
@@ -1056,7 +1058,15 @@ def dynamics_step_complete(
     # HARDENING FIX (Lorentz Safeguard): Ensure v < c strictly
     LIGHT_SPEED = 299792458.0 # SI C
 
-    if params.tau_inertia > 0 and V is not None:
+    mode = resolve_operator_mode(params, operator_mode)
+    if mode == CONSERVED_ORDER_OPERATOR_MODE:
+        # Wave 14 candidate: Model C form dC/dt = nabla^2(delta Omega/delta C).
+        # `force` is the negative functional gradient, so the conserved flow is -nabla^2(force).
+        mobility = getattr(params, "conserved_order_mobility", 1.0)
+        conserved_force = -mobility * conserved_laplacian(force, dx)
+        C_new = C + dt * conserved_force
+        V_new = np.clip(conserved_force, -0.999999 * LIGHT_SPEED, 0.999999 * LIGHT_SPEED)
+    elif params.tau_inertia > 0 and V is not None:
         # C_acc = (F - V) / tau
         C_acc = (force - V) / params.tau_inertia
         V_raw = V + dt * C_acc

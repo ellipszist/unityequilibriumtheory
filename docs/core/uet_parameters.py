@@ -268,6 +268,9 @@ class UETParameters:
     spatial_v2_nonlocal_coupling: float = 1.0
     spatial_v2_memory_length: float = 2.0
     spatial_v2_conserved_coupling: float = 1.0
+
+    # Wave 14 Model C candidate control. Used only by conserved_order_v1.
+    conserved_order_mobility: float = 1.0
     dynamic: bool = False # Tracking Axiomatic Origins
 
     # === Hardened Field Dynamics (Audit Fixes) ===
@@ -303,7 +306,7 @@ class UETParameters:
                 "spatial_information_coupling", "spatial_game_coupling", "spatial_kpz_coupling",
                 "spatial_v2_information_coupling", "spatial_v2_game_coupling",
                 "spatial_v2_nonlocal_coupling", "spatial_v2_memory_length",
-                "spatial_v2_conserved_coupling"
+                "spatial_v2_conserved_coupling", "conserved_order_mobility"
             ]
             for field_name in kill_list:
                 if hasattr(self, field_name):

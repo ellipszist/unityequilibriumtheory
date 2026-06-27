@@ -1,5 +1,29 @@
 # Update Log: 0.11 Phase Transitions
 
+## Wave: Conserved-Order Core Candidate (Wave 14)
+
+**What changed:**
+- Added opt-in `conserved_order_v1` support in `docs/core/uet_master_equation.py` using a Model C-style conserved flow `dC/dt = -M nabla^2(force)` where `force` is the negative functional gradient already assembled by the core path.
+- Added `conserved_order_mobility` to `docs/core/uet_parameters.py` and unit checks for conserved mass, shape safety, uniform-field stationarity, and legacy compatibility.
+- Added `Research_Conserved_Order_Core_Candidate.py`, machine-readable artifact `Result/artifacts/0_11_conserved_order_core_candidate.json`, and CSV `Result/gl_conserved_order_core_candidate_stats.csv`.
+- Updated topic docs to separate opt-in core exposure and mass conservation from the still-blocked mechanism response.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs/core/test/test_spatial_coupling.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Core_Candidate.py`
+
+**Which blocker narrowed:**
+- Narrowed `model_c_mechanism_promising_scaling_open` into `conserved_order_core_candidate_needs_mechanism_tuning`.
+- The artifact reports `core_conserved_alignment_gate == PASS`, `legacy_compatibility_gate == PASS`, `conserved_mass_gate == PASS`, and `wave13_bridge_gate == PASS`.
+- It also reports `core_mechanism_response_gate == BLOCKED`: core conserved median `xi` growth ratio is `0.87`, while the legacy core comparison is `1.47`.
+
+**Next controlling blocker:**
+- The Model C structure is now available as an opt-in core candidate and conserves mass, but the explicit finite-difference core implementation does not yet reproduce the stronger Wave 13 Cahn-Hilliard mechanism response. The next wave needs mechanism tuning, spectral/semi-implicit core integration, or a finite-size gate that explains the gap.
+
+**Current topic-level status after wave:**
+- The conserved-order core candidate remains diagnostic-only. No RG closure, universality-class shift, or phase-transition-solution claim is supported.
+
+---
 ## Wave: Model C Conserved-Order Diagnostic (Wave 13)
 
 **What changed:**

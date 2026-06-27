@@ -172,15 +172,33 @@ This does not validate a full phase-transition claim. It does narrow the next re
 v2 components remained correlation-neutral or damping, the conserved order-parameter structure
 from Model C is the strongest mechanism-level candidate for future opt-in core integration.
 
+
+## Wave 14 Conserved-Order Core-Candidate Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_core_candidate.json`
+
+- `core_conserved_alignment_gate`: `PASS`
+- `legacy_compatibility_gate`: `PASS`
+- `conserved_mass_gate`: `PASS`
+- `wave13_bridge_gate`: `PASS`
+- `core_mechanism_response_gate`: `BLOCKED`
+- `claim_boundary_gate`: `WARN`
+- core conserved max mass drift: `~1.0e-17`
+- median `xi` growth ratio: core conserved `0.87`, legacy core comparison `1.47`
+
+This makes Model C-style conserved dynamics available through the core engine as an opt-in
+candidate, but it does not yet reproduce the stronger topic Cahn-Hilliard mechanism response.
+The next repair should focus on the numerical/operator form of the core conserved path.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 13
-now records the next controller as `model_c_mechanism_promising_scaling_open`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 14
+now records the next controller as `conserved_order_core_candidate_needs_mechanism_tuning`.
 
 ## Next Hardening Step
 
-Keep both spatial-coupled operators as opt-in diagnostic candidates. The next wave should either
-integrate the Model C conserved-order structure as an opt-in core candidate or run finite-size/exponent
-gates that test whether the mechanism survives beyond normalized 2D diagnostics.
+Keep all candidate operators as opt-in diagnostics. The next wave should tune or replace the
+explicit finite-difference conserved core path, likely by comparing it against the spectral/semi-implicit
+Cahn-Hilliard engine before rerunning finite-size or universality claims.

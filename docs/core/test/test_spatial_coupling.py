@@ -21,6 +21,7 @@ def _bootstrap() -> Path:
 _bootstrap()
 
 from docs.core.uet_master_equation import (  # noqa: E402
+    CONSERVED_ORDER_OPERATOR_MODE,
     LEGACY_OPERATOR_MODE,
     SPATIAL_COUPLED_OPERATOR_MODE,
     SPATIAL_COUPLED_V2_OPERATOR_MODE,
@@ -180,6 +181,77 @@ def test_spatial_v2_dynamics_preserves_shape() -> None:
     assert I_updated.shape == I.shape
 
 
+def test_conserved_order_mode_preserves_mass_and_shape_2d() -> None:
+    params = UETParameters(
+        alpha=-1.0,
+        gamma=1.0,
+        C0=0.0,
+        beta=0.0,
+        kappa=0.1,
+        W_N=0.0,
+        a0_viscosity=0.0,
+        operator_mode=CONSERVED_ORDER_OPERATOR_MODE,
+    )
+    C = np.zeros((8, 8))
+    C[:, 4:] = 0.2
+    initial_mean = float(np.mean(C))
+    updated = dynamics_step_complete(
+        C,
+        dx=1.0,
+        dt=0.01,
+        params=params,
+        operator_mode=CONSERVED_ORDER_OPERATOR_MODE,
+    )
+    assert updated.shape == C.shape
+    np.testing.assert_allclose(float(np.mean(updated)), initial_mean, atol=1e-12)
+
+
+def test_conserved_order_mode_preserves_mass_1d_over_steps() -> None:
+    params = UETParameters(
+        alpha=-1.0,
+        gamma=1.0,
+        C0=0.0,
+        beta=0.0,
+        kappa=0.1,
+        W_N=0.0,
+        a0_viscosity=0.0,
+        operator_mode=CONSERVED_ORDER_OPERATOR_MODE,
+    )
+    C = np.linspace(-0.2, 0.2, 16)
+    initial_mean = float(np.mean(C))
+    for _ in range(12):
+        C = dynamics_step_complete(
+            C,
+            dx=1.0,
+            dt=0.005,
+            params=params,
+            operator_mode=CONSERVED_ORDER_OPERATOR_MODE,
+        )
+    np.testing.assert_allclose(float(np.mean(C)), initial_mean, atol=1e-12)
+
+
+def test_conserved_order_uniform_field_is_stationary() -> None:
+    params = UETParameters(
+        alpha=-1.0,
+        gamma=1.0,
+        C0=0.0,
+        beta=0.0,
+        kappa=0.1,
+        W_N=0.0,
+        a0_viscosity=0.0,
+        operator_mode=CONSERVED_ORDER_OPERATOR_MODE,
+    )
+    C = np.ones((5, 7)) * 0.2
+    updated = dynamics_step_complete(
+        C,
+        dx=1.0,
+        dt=0.01,
+        params=params,
+        operator_mode=CONSERVED_ORDER_OPERATOR_MODE,
+    )
+    np.testing.assert_allclose(updated, C, atol=1e-12)
+
+
 def test_default_and_explicit_legacy_dynamics_match() -> None:
     params = UETParameters(beta=0.05, kappa=0.1, W_N=0.0, a0_viscosity=0.0)
     C = np.linspace(-0.2, 0.2, 16)
@@ -205,5 +277,8 @@ if __name__ == "__main__":
     test_spatial_v2_information_source_zero_and_interface_gates()
     test_spatial_v2_game_force_is_conserved_and_interface_active()
     test_spatial_v2_dynamics_preserves_shape()
+    test_conserved_order_mode_preserves_mass_and_shape_2d()
+    test_conserved_order_mode_preserves_mass_1d_over_steps()
+    test_conserved_order_uniform_field_is_stationary()
     test_default_and_explicit_legacy_dynamics_match()
-    print("Wave 5/11 spatial coupling unit checks passed")
+    print("Wave 5/11/14 spatial and conserved-order unit checks passed")
