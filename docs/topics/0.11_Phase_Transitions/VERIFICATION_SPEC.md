@@ -394,3 +394,34 @@
 - Interpretation:
   - The spectral core candidate remains stable in this normalized 3D sweep, but the finite-size window is still too local for universality claims.
   - The next useful work is a better finite-size/equilibration/scaling-window design, not claim promotion.
+
+## Wave 18 Conserved-Order Spectral Window Repair
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Window_Repair.py`
+- Artifact target:
+  - `Result/artifacts/0_11_conserved_order_spectral_window_repair.json`
+  - `Result/gl_conserved_order_spectral_window_repair_stats.csv`
+- Purpose:
+  - Test whether longer relaxation or closer-to-Tc windows repair the Wave 17 `xi/L` blocker.
+  - Test whether kappa sensitivity can lift `xi/L` while preserving order-parameter signal.
+- Required gates:
+  - `wave17_chain_gate.status == PASS`
+  - `relaxation_window_repair_gate.status == PASS` before treating runtime/window-only changes as sufficient.
+  - `kappa_window_sensitivity_gate.status == PASS` only records that kappa can lift `xi/L`; it is not enough without signal preservation.
+  - `signal_preservation_gate.status == PASS` before treating a high-`xi/L` case as scaling evidence.
+  - `claim_boundary_gate.status == WARN` until full finite-size/exponent, material, and RG gates exist.
+- Current Wave 18 result:
+  - overall status `WARN`
+  - `wave17_chain_gate == PASS`
+  - `relaxation_window_repair_gate == BLOCKED`
+  - `kappa_window_sensitivity_gate == PASS`
+  - `signal_preservation_gate == BLOCKED`
+  - `claim_boundary_gate == WARN`
+  - max relaxation/window-only `xi/L` `0.113`
+  - max kappa-sweep `xi/L` `0.377`
+  - best high-`xi/L` order parameter `0.000377`
+  - viable high-`xi/L` plus preserved-signal case count `0`
+- Interpretation:
+  - Relaxation/window-only changes do not repair the finite-size blocker.
+  - Kappa can increase `xi/L`, but only by producing a very low-amplitude order signal in this diagnostic; this should be treated as a smoothing tradeoff, not universality evidence.

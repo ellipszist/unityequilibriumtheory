@@ -245,15 +245,33 @@ This keeps the spectral core candidate claim-bounded: implementation stability i
 controller, but the finite-size window and exponent scaling are not yet adequate for universality
 promotion.
 
+## Wave 18 Conserved-Order Spectral Window-Repair Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_window_repair.json`
+
+- `wave17_chain_gate`: `PASS`
+- `relaxation_window_repair_gate`: `BLOCKED`
+- `kappa_window_sensitivity_gate`: `PASS`
+- `signal_preservation_gate`: `BLOCKED`
+- `claim_boundary_gate`: `WARN`
+- max relaxation/window-only `xi/L`: `0.113`
+- max kappa-sweep `xi/L`: `0.377`
+- best high-`xi/L` order parameter: `0.000377`
+- viable high-`xi/L` plus preserved-signal cases: `0`
+
+This narrows the finite-size blocker into a signal-preservation problem. Kappa can create large
+correlation-length proxies in this window, but not with enough order amplitude to count as
+scaling evidence.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 17
-now records the next controller as `spectral_core_finite_size_window_not_established`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 18
+now records the next controller as `spectral_core_xi_window_only_via_low_signal_smoothing`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should improve the finite-size,
-equilibration, or scaling-window design for `conserved_order_spectral_v1` before rerunning exponent
-or universality gates.
+Keep all candidate operators as opt-in diagnostics. The next wave should design a finite-size
+window or estimator that preserves order signal while improving `xi/L`, or revise the operator
+before rerunning exponent or universality gates.

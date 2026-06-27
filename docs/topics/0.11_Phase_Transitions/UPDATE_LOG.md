@@ -1,5 +1,29 @@
 # Update Log: 0.11 Phase Transitions
 
+## Wave: Conserved-Order Spectral Window Repair (Wave 18)
+
+**What changed:**
+- Added `Research_Conserved_Order_Spectral_Window_Repair.py` to test relaxation/window-only repairs and kappa sensitivity for the Wave 17 finite-size blocker.
+- Added machine-readable artifact `Result/artifacts/0_11_conserved_order_spectral_window_repair.json` and CSV `Result/gl_conserved_order_spectral_window_repair_stats.csv`.
+- Updated topic docs and the Wave 5 alignment audit to separate high `xi/L` smoothing from preserved-signal scaling evidence.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Window_Repair.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Window_Repair.py`
+
+**Which blocker narrowed:**
+- Narrowed `spectral_core_finite_size_window_not_established` into `spectral_core_xi_window_only_via_low_signal_smoothing`.
+- The artifact reports `wave17_chain_gate == PASS` and `kappa_window_sensitivity_gate == PASS`.
+- It also reports `relaxation_window_repair_gate == BLOCKED` and `signal_preservation_gate == BLOCKED`: relaxation/window-only max `xi/L` is `0.113`, kappa max `xi/L` is `0.377`, but the best high-`xi/L` case has order parameter only `0.000377`.
+
+**Next controlling blocker:**
+- Design a finite-size/scaling window that preserves order signal while improving `xi/L`, or revise the scaling estimator/operator before rerunning universality gates.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 18 identifies a smoothing/signal tradeoff; it does not support universality-class shift, material validation, RG closure, or phase-transition-solution claims.
+
+---
+
 ## Wave: Conserved-Order Spectral Scaling (Wave 17)
 
 **What changed:**

@@ -61,6 +61,7 @@ flowchart LR
 | Wave 15 conserved-order numerics gap | Scheme gap diagnostic | `Result/artifacts/0_11_conserved_order_numerics_gap.json` | explicit core stiffness blocks Model C response; spectral/semi-implicit core required |
 | Wave 16 conserved-order spectral core | Opt-in core bridge gate | `Result/artifacts/0_11_conserved_order_spectral_core_candidate.json` | core spectral bridge passes; finite-size/exponent scaling still open |
 | Wave 17 conserved-order spectral scaling | Finite-size/exponent diagnostic | `Result/artifacts/0_11_conserved_order_spectral_scaling.json` | stability/coverage pass; xi/L and universality exponent gates blocked |
+| Wave 18 spectral window repair | Window/parameter tradeoff diagnostic | `Result/artifacts/0_11_conserved_order_spectral_window_repair.json` | kappa can lift xi/L only with low signal; relaxation-only blocked |
 | Universal phase-transition theory | Not closed | limitations and formula audit | do not claim full proof |
 
 ## 5x4 Grid Structure
@@ -112,5 +113,6 @@ python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exp
 - The Wave 15 numerics-gap diagnostic shows the explicit core path is not a viable direct replacement under Wave 13-like settings: the explicit stiffness proxy is `32685` for the spectral reference settings versus `0.097` for the Wave 14 core candidate, so the next core candidate should be spectral or semi-implicit rather than mobility-only tuning.
 - The Wave 16 `conserved_order_spectral_v1` core candidate repairs that implementation gap under Wave 13-like settings: all core bridge gates pass, max topic-engine field delta is `2.89e-12`, and median `xi` growth matches the topic spectral engine at `30.49`; this opens the next scaling verifier but does not upgrade universality claims.
 - The Wave 17 finite-size/exponent diagnostic keeps the spectral core candidate diagnostic-only: coverage, stability, and Binder-style proxy gates pass, but max near-critical `xi/L` is only `0.145` and median beta is `1.77`, so correlation-window and universality-exponent gates remain blocked.
+- The Wave 18 window-repair diagnostic shows longer relaxation/window tweaks still fail (`max xi/L = 0.113`), while kappa can lift `xi/L` to `0.377` only with low order signal (`0.000377`), so smoothing-like parameter tradeoffs must not be promoted as scaling evidence.
 
 *Status note: internal critical-exponent benchmark and formula-audit hardening gate.*

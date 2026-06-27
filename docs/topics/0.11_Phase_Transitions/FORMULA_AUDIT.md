@@ -49,6 +49,7 @@ demonstrations.
 | `PT-CONSERVED-ORDER-NUMERICS-GAP` | stiffness proxy `dt * kappa * (pi / dx)^4` comparing Wave 13 spectral settings to Wave 14 explicit core settings | `Research_Conserved_Order_Numerics_Gap.py`; `0_11_conserved_order_numerics_gap.json` | dimensionless explicit-stability proxy; normalized grid units | `topic_derived_relation` | `diagnostic requirement gate` | next-operator controller | Wave 15 blocks explicit core viability: Wave 13-like stiffness proxy `32685` versus Wave 14 explicit proxy `0.097`, ratio `335544`. | Implement a spectral or semi-implicit conserved-order core candidate before coefficient tuning or finite-size claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-CORE-CANDIDATE` | core opt-in semi-implicit update `C_hat_new = (C_hat + dt M k^2 F_non_grad_hat)/(1 + dt M kappa k^4)` | `uet_master_equation.py::spectral_conserved_order_step`; `Research_Conserved_Order_Spectral_Core_Candidate.py`; `0_11_conserved_order_spectral_core_candidate.json` | normalized `C`, FFT grid units, `xi` proxy; no material units | `heuristic_bridge` from Wave 13 topic engine | `core candidate diagnostic-only` | Wave 15 repair and topic-engine bridge gate | Wave 16 passes core bridge gates with max topic-engine delta `2.89e-12` and median `xi` growth `30.49`. | Run finite-size/exponent scaling gates before stronger dynamics or universality claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-SCALING` | finite-size sweep fits `log(<|C|>)` and `log(xi)` versus `log(Tc-T)` for `conserved_order_spectral_v1` | `Research_Conserved_Order_Spectral_Scaling.py`; `0_11_conserved_order_spectral_scaling.json` | normalized 3D lattice units; `xi/L`, Binder proxy, beta and nu proxies | `topic_derived_relation` | `diagnostic finite-size/exponent gate` | claim-boundary controller | Wave 17 passes stability/coverage but blocks correlation window (`max xi/L = 0.145`) and universality exponent (median beta `1.77`). | Improve finite-size/equilibration/scaling-window design before stronger dynamics or universality claims. |
+| `PT-CONSERVED-ORDER-SPECTRAL-WINDOW-REPAIR` | targeted relaxation and kappa sweeps compare `xi/L` against order-signal preservation | `Research_Conserved_Order_Spectral_Window_Repair.py`; `0_11_conserved_order_spectral_window_repair.json` | normalized 3D lattice units; `xi/L`, order amplitude, kappa proxy | `topic_derived_relation` | `diagnostic repair triage` | next-window controller | Wave 18 finds relaxation-only max `xi/L = 0.113`; kappa max `xi/L = 0.377` only at order `0.000377`, below signal floor. | Design a window that preserves order signal while lifting `xi/L`, or revise the scaling estimator/operator before stronger claims. |
 
 ## Wave 5 Formula Boundary
 
@@ -154,3 +155,10 @@ The spectral-scaling diagnostic is the first finite-size/exponent gate for `cons
 It supports stability and coverage, but it does not support universality promotion: the near-critical
 `xi/L` window remains below threshold and the fitted beta proxy is far from the 3D Ising benchmark.
 The allowed claim is limited to: the next blocker is finite-size/equilibration/scaling-window design.
+
+## Wave 18 Window-Repair Boundary
+
+The window-repair diagnostic shows that the blocker is not fixed by simply running longer or moving
+closer to `Tc`. Increasing `kappa` can raise `xi/L`, but the passing `xi/L` cases lose the order
+signal below the declared floor. The allowed claim is limited to: the next repair must preserve
+order amplitude while improving finite-size correlation structure, or revise the estimator/operator.
