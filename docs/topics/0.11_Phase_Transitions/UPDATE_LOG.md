@@ -1,5 +1,27 @@
 # Update Log: 0.11 Phase Transitions
 
+## Wave: Model C Conserved-Order Diagnostic (Wave 13)
+
+**What changed:**
+- Added `Research_Model_C_Conserved_Order_Diagnostic.py` to test Model C / Cahn-Hilliard conserved order-parameter dynamics as a different operator family after v2 component ablation failed to improve correlation growth.
+- Added machine-readable artifact `Result/artifacts/0_11_model_c_conserved_order_diagnostic.json` and CSV `Result/gl_model_c_conserved_order_diagnostic_stats.csv`.
+- Updated topic docs to treat Model C as a mechanism repair direction while keeping finite-size, exponent, material, and core-integration claims open.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Model_C_Conserved_Order_Diagnostic.py`
+
+**Which blocker narrowed:**
+- Narrowed `v2_components_remain_correlation_neutral_or_damping` into `model_c_mechanism_promising_scaling_open`.
+- The artifact reports `model_c_engine_alignment_gate == PASS`, `mass_conservation_gate == PASS`, `domain_growth_gate == PASS`, and `operator_distinction_gate == PASS`, with `claim_boundary_gate == WARN`.
+- Model C max mass drift is `~2.1e-16`; median Model C `xi` growth ratio is `30.49`; baseline comparison is `24.68`; Model C minus baseline is `5.81`.
+
+**Next controlling blocker:**
+- Model C is a plausible mechanism-level repair direction, but it still needs opt-in core integration and finite-size/exponent gates before any dynamics or universality claim can be upgraded.
+
+**Current topic-level status after wave:**
+- The spatial v1/v2 candidates remain diagnostic-only. Model C becomes the strongest current repair direction, but no RG closure, universality-class shift, or phase-transition-solution claim is supported.
+
+---
 ## Wave: Spatial-Coupled V2 Component Ablation (Wave 12)
 
 **What changed:**

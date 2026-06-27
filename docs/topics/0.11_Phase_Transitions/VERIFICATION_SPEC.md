@@ -238,3 +238,33 @@
 - Interpretation:
   - The tested v2 components are correctly isolated and stable, but none improves correlation length over baseline.
   - The next useful repair path is a different operator structure or derivation, not recombining or length-tuning the current v2 components.
+
+## Wave 13 Model C Conserved-Order Diagnostic
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Model_C_Conserved_Order_Diagnostic.py`
+- Artifact target:
+  - `Result/artifacts/0_11_model_c_conserved_order_diagnostic.json`
+  - `Result/gl_model_c_conserved_order_diagnostic_stats.csv`
+- Purpose:
+  - Test Model C / Cahn-Hilliard conserved order-parameter dynamics as a different operator family after v2 component ablation blocked the current spatial-coupled terms.
+  - Use the topic `Engine_Phase.py` Cahn-Hilliard engine rather than a hidden standalone accepted-equation lane.
+- Required gates:
+  - `model_c_engine_alignment_gate.status == PASS`
+  - `mass_conservation_gate.status == PASS`
+  - `domain_growth_gate.status == PASS`
+  - `operator_distinction_gate.status == PASS`
+  - `claim_boundary_gate.status == WARN` until finite-size/exponent gates and core formula integration exist.
+- Current Wave 13 result:
+  - overall status `PASS` for mechanism triage
+  - `model_c_engine_alignment_gate == PASS`
+  - `mass_conservation_gate == PASS`
+  - `domain_growth_gate == PASS`
+  - `operator_distinction_gate == PASS`
+  - `claim_boundary_gate == WARN`
+  - Model C max mass drift `~2.1e-16`
+  - Model C median `xi` growth ratio `30.49`; baseline comparison `24.68`
+  - Model C minus baseline median `xi` growth ratio `5.81`
+- Interpretation:
+  - Model C is now the strongest mechanism-level repair direction found after v2 ablation.
+  - This does not validate a universality-class shift; next work needs opt-in core integration and finite-size/exponent gates.

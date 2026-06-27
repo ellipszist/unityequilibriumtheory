@@ -44,6 +44,7 @@ demonstrations.
 | `PT-OPERATOR-FORM-REQUIREMENT-GATE` | aggregate Waves 5-9 into blocked repair paths and v2 design requirements | `Research_Operator_Form_Requirement_Gate.py`; `0_11_operator_form_requirement_gate.json` | gate statuses and thresholds are dimensionless artifact fields | `topic_derived_relation` | `design requirement gate` | operator-revision controller | Wave 10 keeps coefficient-only, finite-size signal, and critical-window paths blocked for the current operator family. | Design a new opt-in operator with nonlocal, conserved, or scale-dependent behavior before rerunning scaling claims. |
 | `PT-UET-SPATIAL-V2-CANDIDATE` | activity `= |grad C|^2 + a(nonlocal(C)-C)^2`; game force `= lambda nabla^2 V_game`; info source `~ -beta C I activity` | `uet_master_equation.py`; `Research_Spatial_Coupled_V2_Diagnostic.py`; `0_11_spatial_coupled_v2_diagnostic.json` | normalized `C`, `I`, `xi/L`; v2 coefficients are heuristic/proxy | `heuristic_bridge` | `candidate diagnostic-only` | v2 availability/safety/stability gate | Wave 11 passes core/safety/stability but blocks correlation growth and lane separation (`max_xi/L = 0.0733`). | Revise nonlocal/conserved dynamics or derive stronger operator before finite-size claims. |
 | `PT-UET-SPATIAL-V2-ABLATION` | compare v2 information-only, game-only, full, short-memory, and long-memory profiles against baseline `xi/L` | `Research_Spatial_Coupled_V2_Component_Ablation.py`; `0_11_spatial_coupled_v2_component_ablation.json` | normalized `xi/L`; profile coefficients are heuristic/proxy | `topic_derived_relation` | `diagnostic ablation` | component blocker triage | Wave 12 found all tested v2 profiles below baseline; best improvement `-0.0038`. | Stop treating current v2 components as a likely repair; design a different operator structure or derivation. |
+| `PT-MODEL-C-CONSERVED-ORDER-DIAGNOSTIC` | `dC/dt = M nabla^2(delta F/delta C)` via topic Cahn-Hilliard engine | `Engine_Phase.py`; `Research_Model_C_Conserved_Order_Diagnostic.py`; `0_11_model_c_conserved_order_diagnostic.json` | normalized 2D `C`, grid units, `xi` proxy; no material units | `checked_local_reference` plus topic diagnostic | `mechanism repair direction` | conserved-order mechanism gate | Wave 13 passes mass conservation, domain growth, and operator distinction gates, but remains normalized 2D mechanism evidence. | Integrate as opt-in core candidate or run finite-size/exponent gates before stronger claims. |
 
 ## Wave 5 Formula Boundary
 
@@ -107,3 +108,12 @@ combined lane. Information-only, game-only, full, short-memory, and long-memory 
 stable and force-isolated, but none improves the correlation-length proxy over baseline. The
 current v2 component family therefore remains diagnostic-only and should not be promoted by
 recombining or retuning those components alone.
+
+## Wave 13 Model C Boundary
+
+The Model C diagnostic is the first post-v2 path that passes mechanism triage. It uses the topic
+Cahn-Hilliard engine instead of a hidden standalone equation, conserves the mean order parameter,
+and produces stronger domain/correlation growth than the nonconserved comparison lane. The
+allowed claim is limited to: Model C is a plausible mechanism-level repair direction. It is not
+yet a core UET operator replacement, 3D finite-size scaling result, material validation, or
+universality-class proof.

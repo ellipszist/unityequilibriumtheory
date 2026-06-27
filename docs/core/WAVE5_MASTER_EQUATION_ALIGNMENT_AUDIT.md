@@ -155,15 +155,32 @@ This narrows the v2 blocker: the tested information, game, full, short-memory, a
 profiles are stable and force-isolated, but they remain correlation-neutral or damping relative
 to baseline. The next operator revision should not simply recombine these v2 components.
 
+
+## Wave 13 Model C Conserved-Order Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_model_c_conserved_order_diagnostic.json`
+
+- `model_c_engine_alignment_gate`: `PASS`
+- `mass_conservation_gate`: `PASS`
+- `domain_growth_gate`: `PASS`
+- `operator_distinction_gate`: `PASS`
+- `claim_boundary_gate`: `WARN`
+- Model C max mass drift: `~2.1e-16`
+- median `xi` growth ratio: Model C `30.49`, baseline comparison `24.68`
+
+This does not validate a full phase-transition claim. It does narrow the next repair path: after
+v2 components remained correlation-neutral or damping, the conserved order-parameter structure
+from Model C is the strongest mechanism-level candidate for future opt-in core integration.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 12
-now records the next controller as `v2_components_remain_correlation_neutral_or_damping`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 13
+now records the next controller as `model_c_mechanism_promising_scaling_open`.
 
 ## Next Hardening Step
 
-Keep both spatial-coupled operators as opt-in diagnostic candidates. The next wave should design
-a different operator structure or add a stronger derivation/unit-closure package before rerunning
-finite-size or universality claims.
+Keep both spatial-coupled operators as opt-in diagnostic candidates. The next wave should either
+integrate the Model C conserved-order structure as an opt-in core candidate or run finite-size/exponent
+gates that test whether the mechanism survives beyond normalized 2D diagnostics.

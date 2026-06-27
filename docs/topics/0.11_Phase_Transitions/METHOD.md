@@ -22,6 +22,7 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 - `Code/03_Research/Research_Operator_Form_Requirement_Gate.py`
 - `Code/03_Research/Research_Spatial_Coupled_V2_Diagnostic.py`
 - `Code/03_Research/Research_Spatial_Coupled_V2_Component_Ablation.py`
+- `Code/03_Research/Research_Model_C_Conserved_Order_Diagnostic.py`
 - `Code/03_Research/test_05_phase_demixing.py`
 - `Code/03_Research/test_phase_transitions.py`
 
@@ -55,6 +56,7 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 - The Wave 10 operator-form requirement verifier aggregates Waves 5-9 and blocks claim upgrades until a revised opt-in operator demonstrates nonlocal, conserved, or scale-dependent correlation growth and baseline separation.
 - The Wave 11 v2 diagnostic tests the first such opt-in candidate using core-engine screened memory and conserved interface/game helpers; it currently blocks claim upgrades because correlation growth and lane separation did not appear.
 - The Wave 12 v2 component-ablation verifier separates information-only, game-only, full, short-memory, and long-memory profiles; it currently shows no tested v2 component improves correlation length over baseline.
+- The Wave 13 Model C verifier uses `Engine_Phase.py` to test conserved order-parameter dynamics as a different operator family; it currently supports Model C as a mechanism repair direction while leaving finite-size scaling and core integration open.
 - Cahn-Hilliard simulations should be treated as normalized mechanism diagnostics until seed, grid, morphology, and material-unit gates are added.
 
 ## Dependency policy
