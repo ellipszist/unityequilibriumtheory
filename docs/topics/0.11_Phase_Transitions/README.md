@@ -62,6 +62,7 @@ flowchart LR
 | Wave 16 conserved-order spectral core | Opt-in core bridge gate | `Result/artifacts/0_11_conserved_order_spectral_core_candidate.json` | core spectral bridge passes; finite-size/exponent scaling still open |
 | Wave 17 conserved-order spectral scaling | Finite-size/exponent diagnostic | `Result/artifacts/0_11_conserved_order_spectral_scaling.json` | stability/coverage pass; xi/L and universality exponent gates blocked |
 | Wave 18 spectral window repair | Window/parameter tradeoff diagnostic | `Result/artifacts/0_11_conserved_order_spectral_window_repair.json` | kappa can lift xi/L only with low signal; relaxation-only blocked |
+| Wave 19 spectral spinodal window | Seed-margin diagnostic | `Result/artifacts/0_11_conserved_order_spectral_spinodal_window.json` | one order-preserving xi/L pass found; seed-margin gate blocked |
 | Universal phase-transition theory | Not closed | limitations and formula audit | do not claim full proof |
 
 ## 5x4 Grid Structure
@@ -114,5 +115,6 @@ python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exp
 - The Wave 16 `conserved_order_spectral_v1` core candidate repairs that implementation gap under Wave 13-like settings: all core bridge gates pass, max topic-engine field delta is `2.89e-12`, and median `xi` growth matches the topic spectral engine at `30.49`; this opens the next scaling verifier but does not upgrade universality claims.
 - The Wave 17 finite-size/exponent diagnostic keeps the spectral core candidate diagnostic-only: coverage, stability, and Binder-style proxy gates pass, but max near-critical `xi/L` is only `0.145` and median beta is `1.77`, so correlation-window and universality-exponent gates remain blocked.
 - The Wave 18 window-repair diagnostic shows longer relaxation/window tweaks still fail (`max xi/L = 0.113`), while kappa can lift `xi/L` to `0.377` only with low order signal (`0.000377`), so smoothing-like parameter tradeoffs must not be promoted as scaling evidence.
+- The Wave 19 spinodal-window diagnostic finds one order-preserving `xi/L` pass (`xi/L = 0.204`, order `0.0126`) at `T = 0.900`, `kappa = 0.100`, and `2400` steps, but the target seed replicate pass fraction is only `0.25` and median replicate `xi/L` is `0.1965`, so the next blocker is seed-margin and finite-size replication, not claim promotion.
 
 *Status note: internal critical-exponent benchmark and formula-audit hardening gate.*

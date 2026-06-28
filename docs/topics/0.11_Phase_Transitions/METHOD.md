@@ -24,6 +24,11 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 - `Code/03_Research/Research_Spatial_Coupled_V2_Component_Ablation.py`
 - `Code/03_Research/Research_Model_C_Conserved_Order_Diagnostic.py`
 - `Code/03_Research/Research_Conserved_Order_Core_Candidate.py`
+- `Code/03_Research/Research_Conserved_Order_Numerics_Gap.py`
+- `Code/03_Research/Research_Conserved_Order_Spectral_Core_Candidate.py`
+- `Code/03_Research/Research_Conserved_Order_Spectral_Scaling.py`
+- `Code/03_Research/Research_Conserved_Order_Spectral_Window_Repair.py`
+- `Code/03_Research/Research_Conserved_Order_Spectral_Spinodal_Window.py`
 - `Code/03_Research/test_05_phase_demixing.py`
 - `Code/03_Research/test_phase_transitions.py`
 
@@ -63,6 +68,7 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 - The Wave 16 spectral-core verifier tests `conserved_order_spectral_v1` inside `uet_master_equation.py` against the existing topic spectral engine; it passes implementation/mechanism bridge gates and moves the next blocker to finite-size/exponent scaling.
 - The Wave 17 spectral-scaling verifier runs a normalized 3D finite-size sweep for `conserved_order_spectral_v1`; it passes stability and coverage gates but blocks universality promotion on `xi/L` window and beta-exponent gates.
 - The Wave 18 window-repair verifier separates relaxation/window-only repairs from kappa sensitivity and requires `xi/L` gains to preserve order-parameter signal before they count as scaling evidence.
+- The Wave 19 spinodal-window verifier finds a single-grid order-preserving `xi/L` candidate but keeps claim upgrades blocked until seed-margin and finite-size replication pass.
 - Cahn-Hilliard simulations should be treated as normalized mechanism diagnostics until seed, grid, morphology, and material-unit gates are added.
 
 ## Dependency policy

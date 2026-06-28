@@ -425,3 +425,33 @@
 - Interpretation:
   - Relaxation/window-only changes do not repair the finite-size blocker.
   - Kappa can increase `xi/L`, but only by producing a very low-amplitude order signal in this diagnostic; this should be treated as a smoothing tradeoff, not universality evidence.
+
+
+## Wave 19 Conserved-Order Spectral Spinodal Window
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Spinodal_Window.py`
+- Artifact target:
+  - `Result/artifacts/0_11_conserved_order_spectral_spinodal_window.json`
+  - `Result/gl_conserved_order_spectral_spinodal_window_stats.csv`
+- Purpose:
+  - Test whether a targeted positive spinodal-margin window can lift `xi/L` while preserving order-parameter signal.
+  - Separate a single-grid candidate window from seed-robust finite-size scaling evidence.
+- Required gates:
+  - `wave18_chain_gate.status == PASS`
+  - `spinodal_access_gate.status == PASS`
+  - `order_signal_window_gate.status == PASS` before treating the window as a candidate repair.
+  - `seed_margin_gate.status == PASS` before treating the candidate window as robust enough for finite-size replication.
+  - `finite_size_claim_boundary_gate.status == WARN` until multi-grid scaling, material, and RG gates exist.
+- Current Wave 19 result:
+  - overall status `WARN`
+  - `wave18_chain_gate == PASS`
+  - `spinodal_access_gate == PASS`
+  - `order_signal_window_gate == PASS`
+  - `seed_margin_gate == BLOCKED`
+  - `finite_size_claim_boundary_gate == WARN`
+  - best viable case: `T = 0.900`, `kappa = 0.100`, `steps = 2400`, `xi/L = 0.204`, order `0.0126`
+  - target replicate pass fraction `0.25`, median replicate `xi/L = 0.1965`, minimum replicate `xi/L = 0.1942`
+- Interpretation:
+  - The Wave 18 low-signal blocker is narrowed: an order-preserving `xi/L` candidate exists in a targeted spinodal window.
+  - The window is not seed-robust yet and remains single-grid, so it does not support universality, finite-size scaling, material, or RG-closure claims.

@@ -1,5 +1,29 @@
 # Update Log: 0.11 Phase Transitions
 
+## Wave: Conserved-Order Spectral Spinodal Window (Wave 19)
+
+**What changed:**
+- Added `Research_Conserved_Order_Spectral_Spinodal_Window.py` to test a targeted positive spinodal-margin window after the Wave 18 low-signal smoothing blocker.
+- Added machine-readable artifact `Result/artifacts/0_11_conserved_order_spectral_spinodal_window.json` and CSV `Result/gl_conserved_order_spectral_spinodal_window_stats.csv`.
+- Updated topic docs and the Wave 5 alignment audit to record the narrower seed-margin blocker.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Spinodal_Window.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Spinodal_Window.py`
+
+**Which blocker narrowed:**
+- Narrowed `spectral_core_xi_window_only_via_low_signal_smoothing` into `spectral_core_spinodal_window_seed_margin_not_robust`.
+- The artifact reports `wave18_chain_gate == PASS`, `spinodal_access_gate == PASS`, and `order_signal_window_gate == PASS`.
+- It also reports `seed_margin_gate == BLOCKED`: the best viable case reaches `xi/L = 0.204` with order `0.0126`, but the target replicate pass fraction is `0.25` and median replicate `xi/L` is `0.1965`.
+
+**Next controlling blocker:**
+- Replicate the spinodal window across seeds and grid sizes, or adjust the estimator/window so the order-preserving `xi/L` margin is robust before rerunning exponent or universality gates.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 19 finds a candidate order-preserving window, but it does not support universality-class shift, material validation, RG closure, or phase-transition-solution claims.
+
+---
+
 ## Wave: Conserved-Order Spectral Window Repair (Wave 18)
 
 **What changed:**

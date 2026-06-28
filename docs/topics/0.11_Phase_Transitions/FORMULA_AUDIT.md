@@ -50,6 +50,7 @@ demonstrations.
 | `PT-CONSERVED-ORDER-SPECTRAL-CORE-CANDIDATE` | core opt-in semi-implicit update `C_hat_new = (C_hat + dt M k^2 F_non_grad_hat)/(1 + dt M kappa k^4)` | `uet_master_equation.py::spectral_conserved_order_step`; `Research_Conserved_Order_Spectral_Core_Candidate.py`; `0_11_conserved_order_spectral_core_candidate.json` | normalized `C`, FFT grid units, `xi` proxy; no material units | `heuristic_bridge` from Wave 13 topic engine | `core candidate diagnostic-only` | Wave 15 repair and topic-engine bridge gate | Wave 16 passes core bridge gates with max topic-engine delta `2.89e-12` and median `xi` growth `30.49`. | Run finite-size/exponent scaling gates before stronger dynamics or universality claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-SCALING` | finite-size sweep fits `log(<|C|>)` and `log(xi)` versus `log(Tc-T)` for `conserved_order_spectral_v1` | `Research_Conserved_Order_Spectral_Scaling.py`; `0_11_conserved_order_spectral_scaling.json` | normalized 3D lattice units; `xi/L`, Binder proxy, beta and nu proxies | `topic_derived_relation` | `diagnostic finite-size/exponent gate` | claim-boundary controller | Wave 17 passes stability/coverage but blocks correlation window (`max xi/L = 0.145`) and universality exponent (median beta `1.77`). | Improve finite-size/equilibration/scaling-window design before stronger dynamics or universality claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-WINDOW-REPAIR` | targeted relaxation and kappa sweeps compare `xi/L` against order-signal preservation | `Research_Conserved_Order_Spectral_Window_Repair.py`; `0_11_conserved_order_spectral_window_repair.json` | normalized 3D lattice units; `xi/L`, order amplitude, kappa proxy | `topic_derived_relation` | `diagnostic repair triage` | next-window controller | Wave 18 finds relaxation-only max `xi/L = 0.113`; kappa max `xi/L = 0.377` only at order `0.000377`, below signal floor. | Design a window that preserves order signal while lifting `xi/L`, or revise the scaling estimator/operator before stronger claims. |
+| `PT-CONSERVED-ORDER-SPECTRAL-SPINODAL-WINDOW` | targeted positive spinodal-margin cases compare `xi/L` and order-signal preservation across seed replicates | `Research_Conserved_Order_Spectral_Spinodal_Window.py`; `0_11_conserved_order_spectral_spinodal_window.json` | normalized 3D lattice units; `xi/L`, order amplitude, seed replicate margin | `topic_derived_relation` | `diagnostic window candidate` | seed-margin controller | Wave 19 finds one viable order-preserving `xi/L` case (`xi/L = 0.204`, order `0.0126`) but target seed pass fraction is `0.25`. | Replicate the window across seeds and grid sizes before exponent or universality claims. |
 
 ## Wave 5 Formula Boundary
 
@@ -162,3 +163,10 @@ The window-repair diagnostic shows that the blocker is not fixed by simply runni
 closer to `Tc`. Increasing `kappa` can raise `xi/L`, but the passing `xi/L` cases lose the order
 signal below the declared floor. The allowed claim is limited to: the next repair must preserve
 order amplitude while improving finite-size correlation structure, or revise the estimator/operator.
+
+## Wave 19 Spinodal-Window Boundary
+
+The spinodal-window diagnostic finds a narrow order-preserving `xi/L` candidate in the opt-in
+`conserved_order_spectral_v1` path, but the target seed replicate margin is not robust. The allowed
+claim is limited to: a candidate single-grid window exists for the next finite-size replication
+pass. It is not a universality, material, RG-closure, or exponent-scaling result.

@@ -263,15 +263,33 @@ This narrows the finite-size blocker into a signal-preservation problem. Kappa c
 correlation-length proxies in this window, but not with enough order amplitude to count as
 scaling evidence.
 
+
+## Wave 19 Conserved-Order Spectral Spinodal-Window Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_spinodal_window.json`
+
+- `wave18_chain_gate`: `PASS`
+- `spinodal_access_gate`: `PASS`
+- `order_signal_window_gate`: `PASS`
+- `seed_margin_gate`: `BLOCKED`
+- `finite_size_claim_boundary_gate`: `WARN`
+- best viable case: `xi/L = 0.204`, order `0.0126`, `T = 0.900`, `kappa = 0.100`, `steps = 2400`
+- target replicate pass fraction: `0.25`
+- target replicate median `xi/L`: `0.1965`
+
+This narrows the Wave 18 signal-preservation blocker: an order-preserving spinodal-window
+candidate exists, but it is too close to the `xi/L` threshold and not seed-robust. Treat it as a
+next-window candidate only, not as finite-size or universality evidence.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 18
-now records the next controller as `spectral_core_xi_window_only_via_low_signal_smoothing`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 19
+now records the next controller as `spectral_core_spinodal_window_seed_margin_not_robust`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should design a finite-size
-window or estimator that preserves order signal while improving `xi/L`, or revise the operator
-before rerunning exponent or universality gates.
+Keep all candidate operators as opt-in diagnostics. The next wave should replicate the Wave 19
+spinodal window across seeds and grid sizes, or adjust the estimator/window until the
+order-preserving `xi/L` margin is robust before rerunning exponent or universality gates.
