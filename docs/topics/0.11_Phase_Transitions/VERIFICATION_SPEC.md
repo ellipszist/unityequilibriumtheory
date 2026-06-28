@@ -486,3 +486,35 @@
 - Interpretation:
   - The Wave 19 seed-margin blocker is repaired for the declared single-grid target window.
   - This is still not finite-size scaling evidence; the next controlling blocker is multi-grid replication and then exponent/universality gates.
+
+
+## Wave 21 Conserved-Order Spectral Finite-Size Replication
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Finite_Size_Replication.py`
+- Artifact target:
+  - `Result/artifacts/0_11_conserved_order_spectral_finite_size_replication.json`
+  - `Result/gl_conserved_order_spectral_finite_size_replication_stats.csv`
+- Purpose:
+  - Test whether the Wave 20 seed-margin-passing spinodal window replicates across `L=8`, `L=12`, and `L=16` with both the Wave 20 seed set and a fresh seed set.
+  - Keep finite-size replication separate from exponent fitting and universality claims.
+- Required gates:
+  - `wave20_chain_gate.status == PASS`
+  - `finite_size_coverage_gate.status == PASS`
+  - `grid_replication_gate.status == PASS` before treating the target window as finite-size replicated.
+  - `seed_set_generalization_gate.status == PASS` before treating the window as seed-generalized.
+  - `exponent_claim_gate.status == PASS` only in a separate exponent/universality verifier.
+- Current Wave 21 result:
+  - overall status `WARN`
+  - `wave20_chain_gate == PASS`
+  - `finite_size_coverage_gate == PASS`
+  - `grid_replication_gate == BLOCKED`
+  - `seed_set_generalization_gate == BLOCKED`
+  - `exponent_claim_gate == BLOCKED`
+  - `claim_boundary_gate == WARN`
+  - `L=8` pass fraction `1.0`, min `xi/L = 0.4499`
+  - `L=12` pass fraction `1.0`, min `xi/L = 0.2423`
+  - `L=16` pass fraction `0.667`, fresh seed pass fraction `0.333`, min `xi/L = 0.1944`
+- Interpretation:
+  - The Wave 20 seed-margin result does not yet generalize robustly across grid sizes and fresh seeds.
+  - The next useful work is to revise the finite-size/window scaling design or estimator before rerunning exponent or universality gates.

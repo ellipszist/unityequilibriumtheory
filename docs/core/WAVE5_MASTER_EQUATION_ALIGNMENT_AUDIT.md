@@ -300,14 +300,34 @@ Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_or
 This repairs the Wave 19 seed-margin blocker for one normalized grid. The next controller is now
 finite-size replication of the same window, not another single-grid seed retry.
 
+
+## Wave 21 Conserved-Order Spectral Finite-Size Replication Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_finite_size_replication.json`
+
+- `wave20_chain_gate`: `PASS`
+- `finite_size_coverage_gate`: `PASS`
+- `grid_replication_gate`: `BLOCKED`
+- `seed_set_generalization_gate`: `BLOCKED`
+- `exponent_claim_gate`: `BLOCKED`
+- `claim_boundary_gate`: `WARN`
+- `L=8` pass fraction: `1.0`, minimum `xi/L`: `0.4499`
+- `L=12` pass fraction: `1.0`, minimum `xi/L`: `0.2423`
+- `L=16` pass fraction: `0.667`, fresh-seed pass fraction: `0.333`, minimum `xi/L`: `0.1944`
+
+This blocks promotion from the Wave 20 single-grid seed-margin repair. The next controller is a
+finite-size/window-scaling or estimator repair for the `L=16` fresh-seed margin, not an exponent
+or universality rerun.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 20
-now records the next controller as `spectral_core_seed_margin_passes_single_grid_needs_finite_size_replication`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 21
+now records the next controller as `spectral_core_finite_size_replication_not_robust`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should replicate the seed-margin-
-passing spinodal window across grid sizes and only then rerun exponent or universality gates.
+Keep all candidate operators as opt-in diagnostics. The next wave should revise the finite-size
+window scaling or estimator so the `L=16` fresh-seed margin is robust before rerunning exponent
+or universality gates.

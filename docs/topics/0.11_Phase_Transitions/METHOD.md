@@ -30,6 +30,7 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 - `Code/03_Research/Research_Conserved_Order_Spectral_Window_Repair.py`
 - `Code/03_Research/Research_Conserved_Order_Spectral_Spinodal_Window.py`
 - `Code/03_Research/Research_Conserved_Order_Spectral_Seed_Margin.py`
+- `Code/03_Research/Research_Conserved_Order_Spectral_Finite_Size_Replication.py`
 - `Code/03_Research/test_05_phase_demixing.py`
 - `Code/03_Research/test_phase_transitions.py`
 
@@ -71,6 +72,7 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 - The Wave 18 window-repair verifier separates relaxation/window-only repairs from kappa sensitivity and requires `xi/L` gains to preserve order-parameter signal before they count as scaling evidence.
 - The Wave 19 spinodal-window verifier finds a single-grid order-preserving `xi/L` candidate but keeps claim upgrades blocked until seed-margin and finite-size replication pass.
 - The Wave 20 seed-margin verifier extends the same normalized window to `4000` steps and passes the target seed-margin gate at `L=16`; claim upgrades remain blocked until multi-grid finite-size replication passes.
+- The Wave 21 finite-size replication verifier reruns the target window across `L=8,12,16` and both Wave 20 plus fresh seed sets; it blocks promotion because `L=16` is not robust under fresh seeds.
 - Cahn-Hilliard simulations should be treated as normalized mechanism diagnostics until seed, grid, morphology, and material-unit gates are added.
 
 ## Dependency policy

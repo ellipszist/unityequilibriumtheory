@@ -1,5 +1,29 @@
 # Update Log: 0.11 Phase Transitions
 
+## Wave: Conserved-Order Spectral Finite-Size Replication (Wave 21)
+
+**What changed:**
+- Added `Research_Conserved_Order_Spectral_Finite_Size_Replication.py` to test the Wave 20 seed-margin-passing window over `L=8,12,16` and two seed sets.
+- Added machine-readable artifact `Result/artifacts/0_11_conserved_order_spectral_finite_size_replication.json` and CSV `Result/gl_conserved_order_spectral_finite_size_replication_stats.csv`.
+- Updated topic docs and the Wave 5 alignment audit to move the controller from single-grid seed-margin to finite-size/grid-seed replication.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Finite_Size_Replication.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Finite_Size_Replication.py`
+
+**Which blocker narrowed:**
+- Narrowed `spectral_core_seed_margin_passes_single_grid_needs_finite_size_replication` into `spectral_core_finite_size_replication_not_robust`.
+- The artifact reports `wave20_chain_gate == PASS` and `finite_size_coverage_gate == PASS`.
+- It also reports `grid_replication_gate == BLOCKED` and `seed_set_generalization_gate == BLOCKED`: `L=8` and `L=12` pass across tested seeds, but `L=16` passes only `4/6` cases and the fresh seed set passes only `1/3` with minimum `xi/L = 0.1944`.
+
+**Next controlling blocker:**
+- Revise the finite-size/window scaling design or estimator so the `L=16` fresh-seed margin is robust before rerunning exponent or universality gates.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 21 blocks finite-size replication and does not support universality-class shift, material validation, RG closure, or phase-transition-solution claims.
+
+---
+
 ## Wave: Conserved-Order Spectral Seed-Margin Repair (Wave 20)
 
 **What changed:**
