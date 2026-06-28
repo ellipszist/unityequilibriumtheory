@@ -1,6 +1,31 @@
 # Update Log: 0.11 Phase Transitions
 
 
+## Wave: Conserved-Order Spectral L16 Structure-Factor Estimator (Wave 24)
+
+**What changed:**
+- Added `Research_Conserved_Order_Spectral_L16_Structure_Factor_Estimator.py` to test a threshold-free Fourier-domain characteristic-length proxy on the same Wave 23 `L=16` fresh-seed fields.
+- Added machine-readable artifact `Result/artifacts/0_11_conserved_order_spectral_l16_structure_factor_estimator.json` and CSV `Result/gl_conserved_order_spectral_l16_structure_factor_estimator_stats.csv`.
+- Updated topic docs and the Wave 5 alignment audit to move the controller from threshold sensitivity to structure-factor multi-grid calibration.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_L16_Structure_Factor_Estimator.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_L16_Structure_Factor_Estimator.py`
+
+**Which blocker narrowed:**
+- Narrowed `spectral_core_l16_xi_gate_threshold_sensitive` into `spectral_core_l16_structure_factor_domain_scale_needs_multigrid_calibration`.
+- The artifact reports `wave23_chain_gate == PASS`, `engine_path_gate == PASS`, `estimator_case_coverage_gate == PASS`, and `default_estimator_reproduction_gate == PASS`.
+- It also reports `structure_factor_margin_gate == PASS` but `domain_scale_guard_gate == WARN`: the structure-factor RMS estimator passes `9/9` cases with min `xi/L = 0.5549`, but max `xi/L = 0.5799` is near the single-grid domain scale.
+
+**Next controlling blocker:**
+- Run multi-grid structure-factor calibration/replication, or calibrate the estimator against a source-backed benchmark, before rerunning finite-size, exponent, or universality gates.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 24 records a threshold-free estimator candidate and a domain-scale calibration blocker; it does not support universality-class shift, material validation, RG closure, or phase-transition-solution claims.
+
+---
+
+
 ## Wave: Conserved-Order Spectral L16 Estimator Sensitivity (Wave 23)
 
 **What changed:**

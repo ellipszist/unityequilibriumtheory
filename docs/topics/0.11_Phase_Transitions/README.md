@@ -67,6 +67,7 @@ flowchart LR
 | Wave 21 spectral finite-size replication | Multi-grid replication diagnostic | `Result/artifacts/0_11_conserved_order_spectral_finite_size_replication.json` | L=8/12 pass; L=16 fresh seeds block replication |
 | Wave 22 L16 relaxation repair | Relaxation-only repair diagnostic | `Result/artifacts/0_11_conserved_order_spectral_l16_relaxation_repair.json` | longer L16 relaxation preserves order but leaves xi/L margin blocked |
 | Wave 23 L16 estimator sensitivity | Estimator-threshold diagnostic | `Result/artifacts/0_11_conserved_order_spectral_l16_estimator_sensitivity.json` | L16 xi/L gate is threshold-sensitive; non-default threshold not accepted |
+| Wave 24 L16 structure-factor estimator | Threshold-free estimator diagnostic | `Result/artifacts/0_11_conserved_order_spectral_l16_structure_factor_estimator.json` | structure-factor margin passes but domain-scale guard warns |
 | Universal phase-transition theory | Not closed | limitations and formula audit | do not claim full proof |
 
 ## 5x4 Grid Structure
@@ -124,5 +125,6 @@ python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exp
 - The Wave 21 finite-size replication diagnostic keeps the window diagnostic-only: `L=8` and `L=12` pass across tested seed sets, but `L=16` fresh seeds pass only `1/3` and drop to min `xi/L = 0.1944`, so grid replication and seed-set generalization remain blocked.
 - The Wave 22 `L=16` relaxation-repair diagnostic shows longer runs at `4800` and `5600` steps increase order amplitude but still pass only `1/3` fresh seeds; min `xi/L` remains below threshold (`0.1938` to `0.1950`), so relaxation-only repair is blocked.
 - The Wave 23 estimator-sensitivity diagnostic reproduces the default `e^-1` blocker exactly, but lower axis-autocorrelation thresholds (`0.30`, `0.25`, `0.20`) make all 9 L16 fresh-seed cases pass without saturation; this narrows the controller to estimator derivation/calibration, not claim promotion.
+- The Wave 24 structure-factor diagnostic adds a threshold-free RMS length proxy: it passes the L16 margin in `9/9` cases with min `xi/L = 0.5549`, but `domain_scale_guard == WARN` because the single-grid length is near the domain scale, so multi-grid calibration is now the controller.
 
 *Status note: internal critical-exponent benchmark and formula-audit hardening gate.*

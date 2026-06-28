@@ -360,15 +360,37 @@ This narrows the Wave 22 blocker further: the `L=16` fields are stable and order
 the declared `xi/L` result depends on an uncalibrated autocorrelation crossing threshold. This is
 an estimator-design finding only, not acceptance of a new threshold or a universality result.
 
+
+## Wave 24 Conserved-Order Spectral L16 Structure-Factor Estimator Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_l16_structure_factor_estimator.json`
+
+- `wave23_chain_gate`: `PASS`
+- `engine_path_gate`: `PASS`
+- `estimator_case_coverage_gate`: `PASS`
+- `default_estimator_reproduction_gate`: `PASS`
+- `structure_factor_margin_gate`: `PASS`
+- `domain_scale_guard_gate`: `WARN`
+- `estimator_disagreement_gate`: `WARN`
+- `next_path_gate`: `BLOCKED`
+- `claim_boundary_gate`: `WARN`
+- axis default pass fraction: `0.333`, minimum `xi/L`: `0.1938`
+- axis lower `0.30` pass fraction: `1.0`, minimum `xi/L`: `0.2067`
+- structure-factor pass fraction: `1.0`, minimum `xi/L`: `0.5549`, maximum `xi/L`: `0.5799`
+
+This narrows the estimator blocker without upgrading the claim. The threshold-free structure
+factor sees long-wavelength structure, but its single-grid length is near the domain scale, so
+the next controller is multi-grid calibration rather than accepting a new scaling result.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 23
-now records the next controller as `spectral_core_l16_xi_gate_threshold_sensitive`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 24
+now records the next controller as `spectral_core_l16_structure_factor_domain_scale_needs_multigrid_calibration`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should derive or calibrate the
-correlation estimator threshold, or replace it with a source-backed structure-factor/correlation
-estimator, before rerunning finite-size, exponent, or universality gates.
+Keep all candidate operators as opt-in diagnostics. The next wave should run multi-grid
+structure-factor calibration/replication, or calibrate the estimator against a source-backed
+benchmark, before rerunning finite-size, exponent, or universality gates.

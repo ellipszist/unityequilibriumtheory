@@ -55,6 +55,7 @@ demonstrations.
 | `PT-CONSERVED-ORDER-SPECTRAL-FINITE-SIZE-REPLICATION` | replicate the Wave 20 target window over `L=8,12,16` and two seed sets | `Research_Conserved_Order_Spectral_Finite_Size_Replication.py`; `0_11_conserved_order_spectral_finite_size_replication.json` | normalized 3D lattice units; `xi/L`, order amplitude, grid/seed pass fractions | `topic_derived_relation` | `diagnostic finite-size replication gate` | grid/seed replication controller | Wave 21 passes coverage but blocks replication: `L=16` fresh seeds pass only `1/3` and min `xi/L = 0.1944`. | Revise finite-size/window scaling or estimator before exponent or universality claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-L16-RELAXATION-REPAIR` | test `L=16` fresh seeds at `4000`, `4800`, and `5600` steps for `xi/L` repair | `Research_Conserved_Order_Spectral_L16_Relaxation_Repair.py`; `0_11_conserved_order_spectral_l16_relaxation_repair.json` | normalized 3D `L=16` lattice units; `xi/L`, order amplitude, step-group pass fractions | `topic_derived_relation` | `diagnostic relaxation repair gate` | next-window/estimator controller | Wave 22 blocks relaxation-only repair: all step groups pass only `1/3` fresh seeds while order stays above floor. | Revise estimator or finite-size/window scaling before exponent or universality claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-L16-ESTIMATOR-SENSITIVITY` | sweep axis-autocorrelation crossing thresholds for the same `L=16` fresh-seed fields | `Research_Conserved_Order_Spectral_L16_Estimator_Sensitivity.py`; `0_11_conserved_order_spectral_l16_estimator_sensitivity.json` | normalized 3D `L=16` lattice units; `xi/L`, autocorrelation threshold, crossing/saturation counts | `topic_derived_relation` | `diagnostic estimator-sensitivity gate` | estimator-design controller | Wave 23 finds the default `e^-1` threshold reproduces Wave 22, while lower thresholds make `9/9` cases pass without saturation. | Derive, calibrate, or replace the correlation estimator before exponent or universality claims. |
+| `PT-CONSERVED-ORDER-SPECTRAL-L16-STRUCTURE-FACTOR-ESTIMATOR` | threshold-free characteristic length `xi_sf = 2*pi / sqrt(sum(S(k) k^2) / sum(S(k)))` over nonzero FFT modes | `Research_Conserved_Order_Spectral_L16_Structure_Factor_Estimator.py`; `0_11_conserved_order_spectral_l16_structure_factor_estimator.json` | normalized 3D `L=16` lattice units; structure-factor power, RMS wave number, `xi/L` | `topic_derived_relation` | `diagnostic estimator candidate` | finite-size calibration controller | Wave 24 passes the L16 margin but warns on domain-scale risk: structure-factor max `xi/L = 0.5799`. | Calibrate over multiple grid sizes before exponent or universality claims. |
 
 ## Wave 5 Formula Boundary
 
@@ -205,3 +206,12 @@ blocked result, while lower thresholds (`0.30`, `0.25`, `0.20`) make all 9 fresh
 without max-radius saturation. The allowed claim is limited to: the current `xi/L` gate needs
 estimator derivation/calibration or replacement before any non-default threshold can support
 finite-size, exponent, material, RG, or universality claims.
+
+## Wave 24 L16 Structure-Factor Estimator Boundary
+
+The structure-factor diagnostic adds a threshold-free characteristic-length proxy to the same
+`L=16` fresh-seed fields. It confirms that the fields contain long-wavelength structure, but it
+also flags finite-size/domain-scale risk: structure-factor `xi/L` ranges from `0.5549` to
+`0.5799` on a single grid. The allowed claim is limited to: a candidate estimator exists for the
+next multi-grid calibration wave. It is not an accepted critical correlation length, exponent
+result, material validation, RG closure, or universality-class proof.

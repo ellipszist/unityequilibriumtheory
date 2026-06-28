@@ -584,3 +584,39 @@
 - Interpretation:
   - The `L=16` blocker is now narrower: the field dynamics are stable and order-preserving, but the current `xi/L` gate is estimator-threshold-sensitive.
   - A non-default threshold remains unaccepted until it is derived, calibrated, or replaced by a better source-backed correlation estimator and then rerun through finite-size/exponent gates.
+
+
+## Wave 24 Conserved-Order Spectral L16 Structure-Factor Estimator
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_L16_Structure_Factor_Estimator.py`
+- Artifact target:
+  - `Result/artifacts/0_11_conserved_order_spectral_l16_structure_factor_estimator.json`
+  - `Result/gl_conserved_order_spectral_l16_structure_factor_estimator_stats.csv`
+- Purpose:
+  - Add a threshold-free Fourier-domain characteristic-length proxy, `xi_sf = 2*pi / sqrt(<k^2>_S)`, for the same `L=16` fresh-seed fields.
+  - Separate long-wavelength structure detection from accepted critical correlation-length or universality claims.
+- Required gates:
+  - `wave23_chain_gate.status == PASS`
+  - `engine_path_gate.status == PASS`
+  - `estimator_case_coverage_gate.status == PASS`
+  - `default_estimator_reproduction_gate.status == PASS`
+  - `structure_factor_margin_gate.status == PASS` only records a candidate threshold-free margin.
+  - `domain_scale_guard_gate.status == PASS` before treating the single-grid structure-factor length as unsaturated.
+  - `next_path_gate.status != BLOCKED` before exponent or universality gates may use this estimator.
+- Current Wave 24 result:
+  - overall status `WARN`
+  - `wave23_chain_gate == PASS`
+  - `engine_path_gate == PASS`
+  - `estimator_case_coverage_gate == PASS`
+  - `default_estimator_reproduction_gate == PASS`
+  - `structure_factor_margin_gate == PASS`
+  - `domain_scale_guard_gate == WARN`
+  - `estimator_disagreement_gate == WARN`
+  - `next_path_gate == BLOCKED`
+  - axis default summary: `3/9` passes, min `xi/L = 0.1938`
+  - axis lower `0.30` summary: `9/9` passes, min `xi/L = 0.2067`
+  - structure-factor RMS summary: `9/9` passes, min `xi/L = 0.5549`, max `xi/L = 0.5799`
+- Interpretation:
+  - The threshold-free estimator confirms long-wavelength structure in the `L=16` fields, but the length is close to the domain scale on a single grid.
+  - The next useful work is multi-grid structure-factor calibration/replication, not universality or exponent promotion.
