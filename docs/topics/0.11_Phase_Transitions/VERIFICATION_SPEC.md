@@ -549,3 +549,38 @@
 - Interpretation:
   - Longer relaxation increases order amplitude but does not create a robust `L=16` fresh-seed `xi/L` margin.
   - The next useful work is estimator, finite-size-window, or scaling-design repair before exponent or universality gates are rerun.
+
+
+## Wave 23 Conserved-Order Spectral L16 Estimator Sensitivity
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_L16_Estimator_Sensitivity.py`
+- Artifact target:
+  - `Result/artifacts/0_11_conserved_order_spectral_l16_estimator_sensitivity.json`
+  - `Result/gl_conserved_order_spectral_l16_estimator_sensitivity_stats.csv`
+- Purpose:
+  - Test whether the Wave 22 `L=16` fresh-seed `xi/L` blocker is controlled by the current axis-autocorrelation crossing threshold.
+  - Keep estimator-threshold sensitivity separate from accepting a new estimator or making dynamics/universality claims.
+- Required gates:
+  - `wave22_chain_gate.status == PASS`
+  - `engine_path_gate.status == PASS`
+  - `estimator_case_coverage_gate.status == PASS`
+  - `default_estimator_reproduction_gate.status == PASS`
+  - `threshold_sensitivity_gate.status == PASS` only records sensitivity; it does not accept a non-default threshold.
+  - `next_path_gate.status != BLOCKED` before a non-default threshold can be used for exponent or universality gates.
+- Current Wave 23 result:
+  - overall status `WARN`
+  - `wave22_chain_gate == PASS`
+  - `engine_path_gate == PASS`
+  - `estimator_case_coverage_gate == PASS`
+  - `default_estimator_reproduction_gate == PASS`
+  - `threshold_sensitivity_gate == PASS`
+  - `next_path_gate == BLOCKED`
+  - default `e^-1` threshold reproduces Wave 22: `3/9` passes, min `xi/L = 0.1938`
+  - lower threshold `0.30`: `9/9` passes, min `xi/L = 0.2067`
+  - lower threshold `0.25`: `9/9` passes, min `xi/L = 0.2161`
+  - lower threshold `0.20`: `9/9` passes, min `xi/L = 0.2256`
+  - all tested thresholds crossed in all 9 cases; no max-radius saturation was needed
+- Interpretation:
+  - The `L=16` blocker is now narrower: the field dynamics are stable and order-preserving, but the current `xi/L` gate is estimator-threshold-sensitive.
+  - A non-default threshold remains unaccepted until it is derived, calibrated, or replaced by a better source-backed correlation estimator and then rerun through finite-size/exponent gates.

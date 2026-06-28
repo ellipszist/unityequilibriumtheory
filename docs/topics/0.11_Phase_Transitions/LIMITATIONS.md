@@ -31,3 +31,4 @@
 - Wave 20 repairs the single-grid seed-margin blocker for the `T=0.900`, `kappa=0.100`, `4000`-step window, but it is still a normalized `L=16` result; finite-size replication, exponent fits, material calibration, and RG closure remain blocked.
 - Wave 21 tests that same window across `L=8,12,16` and two seed sets; `L=16` fresh seeds are not robust (`1/3` pass, min `xi/L = 0.1944`), so finite-size replication remains blocked.
 - Wave 22 shows that longer `L=16` relaxation alone does not repair the fresh-seed `xi/L` margin: `4000`, `4800`, and `5600` step groups each pass only `1/3` seeds, even while order amplitude increases.
+- Wave 23 shows that the `L=16` fresh-seed `xi/L` blocker is sensitive to the axis-autocorrelation crossing threshold: the default `e^-1` gate reproduces Wave 22 at `3/9` passes, while lower thresholds pass `9/9`; this is an estimator-design blocker, not evidence for accepting a new threshold or upgrading universality claims.

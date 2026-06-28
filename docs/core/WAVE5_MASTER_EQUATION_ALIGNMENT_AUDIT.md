@@ -338,15 +338,37 @@ Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_or
 This narrows the Wave 21 blocker: the `L=16` problem is not loss of order signal and is not
 repaired by simply running longer. The next controller is estimator/window-scaling design.
 
+
+## Wave 23 Conserved-Order Spectral L16 Estimator-Sensitivity Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_l16_estimator_sensitivity.json`
+
+- `wave22_chain_gate`: `PASS`
+- `engine_path_gate`: `PASS`
+- `estimator_case_coverage_gate`: `PASS`
+- `default_estimator_reproduction_gate`: `PASS`
+- `threshold_sensitivity_gate`: `PASS`
+- `next_path_gate`: `BLOCKED`
+- `claim_boundary_gate`: `WARN`
+- default `e^-1` threshold pass fraction: `0.333`, minimum `xi/L`: `0.1938`
+- lower threshold `0.30` pass fraction: `1.0`, minimum `xi/L`: `0.2067`
+- lower threshold `0.25` pass fraction: `1.0`, minimum `xi/L`: `0.2161`
+- lower threshold `0.20` pass fraction: `1.0`, minimum `xi/L`: `0.2256`
+- threshold saturation count: `0` for every tested threshold
+
+This narrows the Wave 22 blocker further: the `L=16` fields are stable and order-preserving, but
+the declared `xi/L` result depends on an uncalibrated autocorrelation crossing threshold. This is
+an estimator-design finding only, not acceptance of a new threshold or a universality result.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 22
-now records the next controller as `spectral_core_l16_relaxation_only_repair_blocked`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 23
+now records the next controller as `spectral_core_l16_xi_gate_threshold_sensitive`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should revise the finite-size
-window scaling, correlation estimator, or threshold design before rerunning exponent or
-universality gates.
+Keep all candidate operators as opt-in diagnostics. The next wave should derive or calibrate the
+correlation estimator threshold, or replace it with a source-backed structure-factor/correlation
+estimator, before rerunning finite-size, exponent, or universality gates.

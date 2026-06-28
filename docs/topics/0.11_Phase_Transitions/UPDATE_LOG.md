@@ -1,5 +1,30 @@
 # Update Log: 0.11 Phase Transitions
 
+
+## Wave: Conserved-Order Spectral L16 Estimator Sensitivity (Wave 23)
+
+**What changed:**
+- Added `Research_Conserved_Order_Spectral_L16_Estimator_Sensitivity.py` to test whether the Wave 22 `L=16` fresh-seed blocker depends on the axis-autocorrelation crossing threshold.
+- Added machine-readable artifact `Result/artifacts/0_11_conserved_order_spectral_l16_estimator_sensitivity.json` and CSV `Result/gl_conserved_order_spectral_l16_estimator_sensitivity_stats.csv`.
+- Updated topic docs and the Wave 5 alignment audit to move the controller from relaxation-only insufficiency to estimator-threshold sensitivity.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_L16_Estimator_Sensitivity.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_L16_Estimator_Sensitivity.py`
+
+**Which blocker narrowed:**
+- Narrowed `spectral_core_l16_relaxation_only_repair_blocked` into `spectral_core_l16_xi_gate_threshold_sensitive`.
+- The artifact reports `wave22_chain_gate == PASS`, `engine_path_gate == PASS`, `estimator_case_coverage_gate == PASS`, and `default_estimator_reproduction_gate == PASS`.
+- It also reports `threshold_sensitivity_gate == PASS`: the default `e^-1` threshold reproduces Wave 22 at `3/9` passes and min `xi/L = 0.1938`, while thresholds `0.30`, `0.25`, and `0.20` pass `9/9` cases without threshold saturation.
+
+**Next controlling blocker:**
+- Derive or calibrate the correlation estimator threshold, or replace it with a source-backed structure-factor/correlation estimator, before rerunning finite-size, exponent, or universality gates.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 23 shows estimator-threshold sensitivity but does not accept a non-default threshold or support universality-class shift, material validation, RG closure, or phase-transition-solution claims.
+
+---
+
 ## Wave: Conserved-Order Spectral L16 Relaxation Repair (Wave 22)
 
 **What changed:**
