@@ -382,15 +382,37 @@ This narrows the estimator blocker without upgrading the claim. The threshold-fr
 factor sees long-wavelength structure, but its single-grid length is near the domain scale, so
 the next controller is multi-grid calibration rather than accepting a new scaling result.
 
+
+## Wave 25 Conserved-Order Spectral Structure-Factor Multi-Grid Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_structure_factor_multigrid_calibration.json`
+
+- `wave24_chain_gate`: `PASS`
+- `inbox_chain_gate`: `PASS`
+- `engine_path_gate`: `PASS`
+- `multigrid_coverage_gate`: `PASS`
+- `structure_factor_margin_replication_gate`: `PASS`
+- `domain_scale_calibration_gate`: `BLOCKED`
+- `estimator_disagreement_gate`: `WARN`
+- `next_path_gate`: `BLOCKED`
+- `claim_boundary_gate`: `WARN`
+- structure-factor margin: `18/18` cases pass
+- median structure-factor `xi/L`: `L=8 -> 0.9972`, `L=12 -> 0.7166`, `L=16 -> 0.5661`
+- median absolute structure-factor `xi`: `L=8 -> 7.978`, `L=12 -> 8.599`, `L=16 -> 9.057`
+
+This completes the requested multi-grid calibration pass but keeps claims blocked: the estimator
+replicates as a long-wavelength/domain-scale proxy, not as an accepted critical correlation
+length for exponent or universality gates.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 24
-now records the next controller as `spectral_core_l16_structure_factor_domain_scale_needs_multigrid_calibration`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 25
+now records the next controller as `spectral_core_structure_factor_multigrid_domain_scale_saturated`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should run multi-grid
-structure-factor calibration/replication, or calibrate the estimator against a source-backed
-benchmark, before rerunning finite-size, exponent, or universality gates.
+Keep all candidate operators as opt-in diagnostics. The next wave should calibrate the
+structure-factor estimator against larger grids, known/source-backed benchmarks, or a derived
+finite-size acceptance rule before rerunning exponent or universality gates.

@@ -68,6 +68,10 @@ ARTIFACTS = {
     / "Result"
     / "artifacts"
     / "0_11_conserved_order_spectral_l16_structure_factor_estimator.json",
+    "wave25_structure_factor_multigrid": TOPIC_DIR
+    / "Result"
+    / "artifacts"
+    / "0_11_conserved_order_spectral_structure_factor_multigrid_calibration.json",
 }
 
 
@@ -124,13 +128,13 @@ def build_artifact() -> dict[str, Any]:
         ),
     ]
     artifacts = {name: artifact_record(name, path) for name, path in ARTIFACTS.items()}
-    wave24 = artifacts["wave24_structure_factor_estimator"]
+    wave25 = artifacts["wave25_structure_factor_multigrid"]
 
     source_packaging_pass = all(record["exists"] and record["sha256"] for record in sources)
     artifact_chain_pass = (
-        wave24["exists"]
-        and wave24["blocker_label"]
-        == "spectral_core_l16_structure_factor_domain_scale_needs_multigrid_calibration"
+        wave25["exists"]
+        and wave25["blocker_label"]
+        == "spectral_core_structure_factor_multigrid_domain_scale_saturated"
     )
 
     claim_map = [
@@ -155,9 +159,10 @@ def build_artifact() -> dict[str, Any]:
                 "wave16_spectral_core",
                 "wave23_estimator_sensitivity",
                 "wave24_structure_factor_estimator",
+                "wave25_structure_factor_multigrid",
             ],
-            "current_boundary": "Core spectral bridge exists, but the latest controller is structure-factor domain-scale calibration.",
-            "next_action": "Run multi-grid structure-factor calibration/replication before exponent or universality claims.",
+            "current_boundary": "Core spectral bridge exists, but multi-grid calibration shows the structure-factor estimator is domain-scale saturated.",
+            "next_action": "Calibrate against larger grids, known/source-backed benchmarks, or a derived finite-size acceptance rule before exponent or universality claims.",
         },
         {
             "inbox_claim_id": "warped_space_kappa_of_c",
@@ -204,8 +209,8 @@ def build_artifact() -> dict[str, Any]:
         "artifact_chain_gate": {
             "status": "PASS" if artifact_chain_pass else "BLOCKED",
             "required_condition": "The current 0.11 artifact chain must expose the latest controller.",
-            "latest_expected_blocker": "spectral_core_l16_structure_factor_domain_scale_needs_multigrid_calibration",
-            "latest_observed_blocker": wave24["blocker_label"],
+            "latest_expected_blocker": "spectral_core_structure_factor_multigrid_domain_scale_saturated",
+            "latest_observed_blocker": wave25["blocker_label"],
         },
         "coverage_boundary_gate": {
             "status": "WARN",
@@ -215,8 +220,8 @@ def build_artifact() -> dict[str, Any]:
         },
         "next_controller_gate": {
             "status": "BLOCKED",
-            "required_condition": "No broad UET phase-transition claim may be promoted until the current multi-grid calibration blocker is cleared.",
-            "next_controller": "multi_grid_structure_factor_calibration_or_source_backed_estimator_benchmark",
+            "required_condition": "No broad UET phase-transition claim may be promoted until the current domain-scale calibration blocker is cleared.",
+            "next_controller": "larger_grid_or_source_backed_structure_factor_estimator_calibration",
         },
     }
 
@@ -225,15 +230,15 @@ def build_artifact() -> dict[str, Any]:
         "audit_id": "core_inbox_research_alignment_gate",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "status": "WARN",
-        "blocker_label": "inbox_claims_mapped_current_controller_multigrid_calibration",
+        "blocker_label": "inbox_claims_mapped_current_controller_domain_scale_saturation",
         "claim_class": "source_intake_alignment_only",
         "sources": sources,
         "artifacts": list(artifacts.values()),
         "claim_map": claim_map,
         "gates": gates,
         "recommended_next_wave": {
-            "step": "Run multi-grid structure-factor calibration for 0.11 before adding new warped-space or dynamic-game operators.",
-            "reason": "Wave 24 narrowed the active evidence chain to estimator/domain-scale calibration; For Work prefers narrowing the current controller before broadening scope.",
+            "step": "Calibrate the structure-factor estimator against larger grids, known/source-backed benchmarks, or a derived finite-size acceptance rule before adding new warped-space or dynamic-game operators.",
+            "reason": "Wave 25 showed that the structure-factor margin replicates but remains domain-scale saturated; For Work prefers clearing the current controller before broadening scope.",
         },
         "limitations": [
             "This audit does not validate any inbox claim as physics.",

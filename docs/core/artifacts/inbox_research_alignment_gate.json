@@ -62,10 +62,19 @@
       "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_l16_structure_factor_estimator.json",
       "sha256": "d9718bf402942b38100016d94da6a6709bccba88e0d42c33780a061c4105bcd6",
       "status": "WARN"
+    },
+    {
+      "blocker_label": "spectral_core_structure_factor_multigrid_domain_scale_saturated",
+      "claim_class": "diagnostic_structure_factor_multigrid_calibration_only",
+      "exists": true,
+      "id": "wave25_structure_factor_multigrid",
+      "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_structure_factor_multigrid_calibration.json",
+      "sha256": "da511db3301313e3cce9639c68decdd015d5ae831386549bd7e7ed84065e016a",
+      "status": "WARN"
     }
   ],
   "audit_id": "core_inbox_research_alignment_gate",
-  "blocker_label": "inbox_claims_mapped_current_controller_multigrid_calibration",
+  "blocker_label": "inbox_claims_mapped_current_controller_domain_scale_saturation",
   "claim_class": "source_intake_alignment_only",
   "claim_map": [
     {
@@ -82,16 +91,17 @@
       "next_action": "Do not retune A/B coefficients as the next default path; only revisit with a new formula/unit gate."
     },
     {
-      "current_boundary": "Core spectral bridge exists, but the latest controller is structure-factor domain-scale calibration.",
+      "current_boundary": "Core spectral bridge exists, but multi-grid calibration shows the structure-factor estimator is domain-scale saturated.",
       "current_repo_state": "implemented_as_conserved_order_spectral_v1_and_bridge_passed",
       "evidence": [
         "wave16_spectral_core",
         "wave23_estimator_sensitivity",
-        "wave24_structure_factor_estimator"
+        "wave24_structure_factor_estimator",
+        "wave25_structure_factor_multigrid"
       ],
       "inbox_claim_id": "c_conserved_order_parameter",
       "inbox_claim_summary": "Use conserved-order/Cahn-Hilliard-like dynamics so mass/order is transported rather than locally destroyed.",
-      "next_action": "Run multi-grid structure-factor calibration/replication before exponent or universality claims."
+      "next_action": "Calibrate against larger grids, known/source-backed benchmarks, or a derived finite-size acceptance rule before exponent or universality claims."
     },
     {
       "current_boundary": "No formula-audit entry, unit closure, core opt-in mode, or scaling artifact currently accepts this path.",
@@ -132,8 +142,8 @@
   },
   "gates": {
     "artifact_chain_gate": {
-      "latest_expected_blocker": "spectral_core_l16_structure_factor_domain_scale_needs_multigrid_calibration",
-      "latest_observed_blocker": "spectral_core_l16_structure_factor_domain_scale_needs_multigrid_calibration",
+      "latest_expected_blocker": "spectral_core_structure_factor_multigrid_domain_scale_saturated",
+      "latest_observed_blocker": "spectral_core_structure_factor_multigrid_domain_scale_saturated",
       "required_condition": "The current 0.11 artifact chain must expose the latest controller.",
       "status": "PASS"
     },
@@ -155,8 +165,8 @@
       "status": "PASS"
     },
     "next_controller_gate": {
-      "next_controller": "multi_grid_structure_factor_calibration_or_source_backed_estimator_benchmark",
-      "required_condition": "No broad UET phase-transition claim may be promoted until the current multi-grid calibration blocker is cleared.",
+      "next_controller": "larger_grid_or_source_backed_structure_factor_estimator_calibration",
+      "required_condition": "No broad UET phase-transition claim may be promoted until the current domain-scale calibration blocker is cleared.",
       "status": "BLOCKED"
     }
   },
@@ -166,8 +176,8 @@
     "The raw inbox directory remains intake evidence; artifact gates, formula audits, and topic verifiers control claim wording."
   ],
   "recommended_next_wave": {
-    "reason": "Wave 24 narrowed the active evidence chain to estimator/domain-scale calibration; For Work prefers narrowing the current controller before broadening scope.",
-    "step": "Run multi-grid structure-factor calibration for 0.11 before adding new warped-space or dynamic-game operators."
+    "reason": "Wave 25 showed that the structure-factor margin replicates but remains domain-scale saturated; For Work prefers clearing the current controller before broadening scope.",
+    "step": "Calibrate the structure-factor estimator against larger grids, known/source-backed benchmarks, or a derived finite-size acceptance rule before adding new warped-space or dynamic-game operators."
   },
   "schema_version": "1.0",
   "sources": [
@@ -194,5 +204,5 @@
     }
   ],
   "status": "WARN",
-  "timestamp_utc": "2026-06-28T17:54:53.728291+00:00"
+  "timestamp_utc": "2026-06-28T18:16:34.803794+00:00"
 }

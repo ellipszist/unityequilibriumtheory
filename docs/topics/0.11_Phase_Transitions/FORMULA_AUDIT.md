@@ -56,6 +56,7 @@ demonstrations.
 | `PT-CONSERVED-ORDER-SPECTRAL-L16-RELAXATION-REPAIR` | test `L=16` fresh seeds at `4000`, `4800`, and `5600` steps for `xi/L` repair | `Research_Conserved_Order_Spectral_L16_Relaxation_Repair.py`; `0_11_conserved_order_spectral_l16_relaxation_repair.json` | normalized 3D `L=16` lattice units; `xi/L`, order amplitude, step-group pass fractions | `topic_derived_relation` | `diagnostic relaxation repair gate` | next-window/estimator controller | Wave 22 blocks relaxation-only repair: all step groups pass only `1/3` fresh seeds while order stays above floor. | Revise estimator or finite-size/window scaling before exponent or universality claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-L16-ESTIMATOR-SENSITIVITY` | sweep axis-autocorrelation crossing thresholds for the same `L=16` fresh-seed fields | `Research_Conserved_Order_Spectral_L16_Estimator_Sensitivity.py`; `0_11_conserved_order_spectral_l16_estimator_sensitivity.json` | normalized 3D `L=16` lattice units; `xi/L`, autocorrelation threshold, crossing/saturation counts | `topic_derived_relation` | `diagnostic estimator-sensitivity gate` | estimator-design controller | Wave 23 finds the default `e^-1` threshold reproduces Wave 22, while lower thresholds make `9/9` cases pass without saturation. | Derive, calibrate, or replace the correlation estimator before exponent or universality claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-L16-STRUCTURE-FACTOR-ESTIMATOR` | threshold-free characteristic length `xi_sf = 2*pi / sqrt(sum(S(k) k^2) / sum(S(k)))` over nonzero FFT modes | `Research_Conserved_Order_Spectral_L16_Structure_Factor_Estimator.py`; `0_11_conserved_order_spectral_l16_structure_factor_estimator.json` | normalized 3D `L=16` lattice units; structure-factor power, RMS wave number, `xi/L` | `topic_derived_relation` | `diagnostic estimator candidate` | finite-size calibration controller | Wave 24 passes the L16 margin but warns on domain-scale risk: structure-factor max `xi/L = 0.5799`. | Calibrate over multiple grid sizes before exponent or universality claims. |
+| `PT-CONSERVED-ORDER-SPECTRAL-STRUCTURE-FACTOR-MULTIGRID` | replicate `xi_sf = 2*pi / sqrt(sum(S(k) k^2) / sum(S(k)))` over `L=8,12,16` and two seed sets | `Research_Conserved_Order_Spectral_Structure_Factor_Multigrid_Calibration.py`; `0_11_conserved_order_spectral_structure_factor_multigrid_calibration.json` | normalized 3D lattice units; structure-factor `xi/L`, absolute `xi`, grid-size trend | `topic_derived_relation` | `diagnostic calibration gate` | domain-scale saturation controller | Wave 25 passes margin replication but blocks calibration: median `xi/L` is `0.997` at `L=8`, `0.717` at `L=12`, and `0.566` at `L=16`. | Add larger-grid/source-backed estimator calibration or derived acceptance rule before exponent claims. |
 
 ## Wave 5 Formula Boundary
 
@@ -215,3 +216,13 @@ also flags finite-size/domain-scale risk: structure-factor `xi/L` ranges from `0
 `0.5799` on a single grid. The allowed claim is limited to: a candidate estimator exists for the
 next multi-grid calibration wave. It is not an accepted critical correlation length, exponent
 result, material validation, RG closure, or universality-class proof.
+
+## Wave 25 Structure-Factor Multi-Grid Boundary
+
+The multi-grid calibration diagnostic confirms that the Wave 24 structure-factor margin is
+replicable, but this makes the limitation sharper rather than promoting the claim. Across
+`L=8,12,16` and two seed sets, the estimator passes `18/18` cases while sitting near the domain
+scale, with median `xi/L` decreasing from `0.997` to `0.566` as grid size increases. The allowed
+claim is limited to: the current structure-factor RMS proxy is a reproducible long-wavelength
+diagnostic that still needs larger-grid/source-backed calibration before finite-size, exponent,
+material, RG, or universality claims.

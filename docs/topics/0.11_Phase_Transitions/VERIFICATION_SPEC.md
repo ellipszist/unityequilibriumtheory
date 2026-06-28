@@ -620,3 +620,39 @@
 - Interpretation:
   - The threshold-free estimator confirms long-wavelength structure in the `L=16` fields, but the length is close to the domain scale on a single grid.
   - The next useful work is multi-grid structure-factor calibration/replication, not universality or exponent promotion.
+
+
+## Wave 25 Conserved-Order Spectral Structure-Factor Multi-Grid Calibration
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Structure_Factor_Multigrid_Calibration.py`
+- Artifact target:
+  - `Result/artifacts/0_11_conserved_order_spectral_structure_factor_multigrid_calibration.json`
+  - `Result/gl_conserved_order_spectral_structure_factor_multigrid_calibration_stats.csv`
+- Purpose:
+  - Rerun the Wave 24 structure-factor RMS estimator over `L=8,12,16` and both Wave 20 plus fresh seed sets.
+  - Decide whether the threshold-free estimator behaves like a calibratable finite-size diagnostic or a domain-scale proxy.
+- Required gates:
+  - `wave24_chain_gate.status == PASS`
+  - `inbox_chain_gate.status == PASS`
+  - `engine_path_gate.status == PASS`
+  - `multigrid_coverage_gate.status == PASS`
+  - `structure_factor_margin_replication_gate.status == PASS` only records replicated high `xi/L`.
+  - `domain_scale_calibration_gate.status == PASS` before exponent or universality gates may use this estimator.
+  - `next_path_gate.status != BLOCKED` before claim promotion.
+- Current Wave 25 result:
+  - overall status `WARN`
+  - `wave24_chain_gate == PASS`
+  - `inbox_chain_gate == PASS`
+  - `engine_path_gate == PASS`
+  - `multigrid_coverage_gate == PASS`
+  - `structure_factor_margin_replication_gate == PASS`
+  - `domain_scale_calibration_gate == BLOCKED`
+  - `estimator_disagreement_gate == WARN`
+  - `next_path_gate == BLOCKED`
+  - structure-factor RMS margin: `18/18` passes, min `xi/L = 0.5549`, max `xi/L = 0.9985`
+  - median structure-factor `xi/L` by grid: `L=8 -> 0.9972`, `L=12 -> 0.7166`, `L=16 -> 0.5661`
+  - median absolute structure-factor `xi` by grid: `L=8 -> 7.978`, `L=12 -> 8.599`, `L=16 -> 9.057`
+- Interpretation:
+  - The structure-factor estimator is reproducible, but the multi-grid check shows domain-scale saturation, especially at smaller grids.
+  - The next useful work is a larger-grid/source-backed estimator benchmark or a derived acceptance rule, not exponent or universality promotion.

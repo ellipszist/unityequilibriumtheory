@@ -1,6 +1,31 @@
 # Update Log: 0.11 Phase Transitions
 
 
+## Wave: Conserved-Order Spectral Structure-Factor Multi-Grid Calibration (Wave 25)
+
+**What changed:**
+- Added `Research_Conserved_Order_Spectral_Structure_Factor_Multigrid_Calibration.py` to rerun the Wave 24 threshold-free estimator over `L=8,12,16` and both Wave 20 plus fresh seed sets.
+- Added machine-readable artifact `Result/artifacts/0_11_conserved_order_spectral_structure_factor_multigrid_calibration.json` and CSV `Result/gl_conserved_order_spectral_structure_factor_multigrid_calibration_stats.csv`.
+- Updated topic docs and the Wave 5 alignment audit to move the controller from needing multi-grid calibration to domain-scale saturation under that calibration.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Structure_Factor_Multigrid_Calibration.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Structure_Factor_Multigrid_Calibration.py`
+
+**Which blocker narrowed:**
+- Narrowed `spectral_core_l16_structure_factor_domain_scale_needs_multigrid_calibration` into `spectral_core_structure_factor_multigrid_domain_scale_saturated`.
+- The artifact reports `wave24_chain_gate == PASS`, `inbox_chain_gate == PASS`, `engine_path_gate == PASS`, and `multigrid_coverage_gate == PASS`.
+- It also reports `structure_factor_margin_replication_gate == PASS` but `domain_scale_calibration_gate == BLOCKED`: structure-factor margin passes `18/18` cases, while median `xi/L` is `0.9972` at `L=8`, `0.7166` at `L=12`, and `0.5661` at `L=16`.
+
+**Next controlling blocker:**
+- Calibrate the structure-factor estimator against larger grids, known/source-backed benchmarks, or a derived finite-size acceptance rule before rerunning exponent or universality gates.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 25 records reproducible domain-scale saturation, not an accepted critical correlation length, universality-class shift, material validation, RG closure, or phase-transition-solution claim.
+
+---
+
+
 ## Wave: Conserved-Order Spectral L16 Structure-Factor Estimator (Wave 24)
 
 **What changed:**
