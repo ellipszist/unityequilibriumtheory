@@ -1,0 +1,198 @@
+{
+  "artifacts": [
+    {
+      "blocker_label": "spatially_blind_engine_operator",
+      "claim_class": "diagnostic_candidate_only",
+      "exists": true,
+      "id": "wave5_spatial_scaling",
+      "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_spatial_coupling_scaling.json",
+      "sha256": "e6be74fad40c7df5ae112e4e8ce52040bceceb019fe8dc8bdaaa405b7b2491db",
+      "status": "WARN"
+    },
+    {
+      "blocker_label": "coefficient_only_spatial_operator_still_mean_field",
+      "claim_class": "diagnostic_sensitivity_only",
+      "exists": true,
+      "id": "wave6_coefficient_sensitivity",
+      "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_spatial_coupling_sensitivity.json",
+      "sha256": "c1def6fc0df5db9ae02cc1e682851ece2489821195baf4ce73aa58cfe8e7d550",
+      "status": "WARN"
+    },
+    {
+      "blocker_label": "operator_form_revision_required",
+      "claim_class": "design_requirement_gate",
+      "exists": true,
+      "id": "wave10_operator_requirement",
+      "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_operator_form_requirement_gate.json",
+      "sha256": "7756359e403a0287f148cb12ca6c4201568e5c292bae7750bd0076cf49eeda6d",
+      "status": "WARN"
+    },
+    {
+      "blocker_label": "v2_components_remain_correlation_neutral_or_damping",
+      "claim_class": "diagnostic_ablation_only",
+      "exists": true,
+      "id": "wave12_v2_ablation",
+      "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_spatial_coupled_v2_component_ablation.json",
+      "sha256": "461023f8d5806775badf5bcb8286dba8f2923e3aa6f3e4dabffc5e5ab5039819",
+      "status": "WARN"
+    },
+    {
+      "blocker_label": "conserved_order_spectral_core_candidate_scaling_open",
+      "claim_class": "diagnostic_core_candidate_only",
+      "exists": true,
+      "id": "wave16_spectral_core",
+      "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_core_candidate.json",
+      "sha256": "1deb04f3299905d23411ede6dc8613c647d1ebcfdc8e1d01f609f5e8695126ed",
+      "status": "PASS"
+    },
+    {
+      "blocker_label": "spectral_core_l16_xi_gate_threshold_sensitive",
+      "claim_class": "diagnostic_l16_estimator_sensitivity_only",
+      "exists": true,
+      "id": "wave23_estimator_sensitivity",
+      "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_l16_estimator_sensitivity.json",
+      "sha256": "864dab473e36b86ef14472a4a6852d15cc6ca50c61751bf2af8617c10e182b63",
+      "status": "WARN"
+    },
+    {
+      "blocker_label": "spectral_core_l16_structure_factor_domain_scale_needs_multigrid_calibration",
+      "claim_class": "diagnostic_l16_structure_factor_estimator_only",
+      "exists": true,
+      "id": "wave24_structure_factor_estimator",
+      "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_l16_structure_factor_estimator.json",
+      "sha256": "d9718bf402942b38100016d94da6a6709bccba88e0d42c33780a061c4105bcd6",
+      "status": "WARN"
+    }
+  ],
+  "audit_id": "core_inbox_research_alignment_gate",
+  "blocker_label": "inbox_claims_mapped_current_controller_multigrid_calibration",
+  "claim_class": "source_intake_alignment_only",
+  "claim_map": [
+    {
+      "current_boundary": "A/B candidate availability and safety are not enough; beta and correlation gates stayed diagnostic or blocked.",
+      "current_repo_state": "implemented_as_opt_in_diagnostic_then_blocked_by_scaling_gates",
+      "evidence": [
+        "wave5_spatial_scaling",
+        "wave6_coefficient_sensitivity",
+        "wave10_operator_requirement",
+        "wave12_v2_ablation"
+      ],
+      "inbox_claim_id": "a_b_multiplicative_info_plus_gradient_game",
+      "inbox_claim_summary": "Combine multiplicative information coupling with interface/gradient-sensitive game coupling.",
+      "next_action": "Do not retune A/B coefficients as the next default path; only revisit with a new formula/unit gate."
+    },
+    {
+      "current_boundary": "Core spectral bridge exists, but the latest controller is structure-factor domain-scale calibration.",
+      "current_repo_state": "implemented_as_conserved_order_spectral_v1_and_bridge_passed",
+      "evidence": [
+        "wave16_spectral_core",
+        "wave23_estimator_sensitivity",
+        "wave24_structure_factor_estimator"
+      ],
+      "inbox_claim_id": "c_conserved_order_parameter",
+      "inbox_claim_summary": "Use conserved-order/Cahn-Hilliard-like dynamics so mass/order is transported rather than locally destroyed.",
+      "next_action": "Run multi-grid structure-factor calibration/replication before exponent or universality claims."
+    },
+    {
+      "current_boundary": "No formula-audit entry, unit closure, core opt-in mode, or scaling artifact currently accepts this path.",
+      "current_repo_state": "not_accepted_not_primary",
+      "evidence": [
+        "implementation_plan.md"
+      ],
+      "inbox_claim_id": "warped_space_kappa_of_c",
+      "inbox_claim_summary": "Let the spatial stiffness/operator depend on the field, e.g. kappa(C) = kappa0 * (1 + alpha C^2).",
+      "next_action": "If pursued, start with formula/unit/provenance gate before code."
+    },
+    {
+      "current_boundary": "No state-variable policy, unit closure, stability gate, or artifact currently accepts dynamic beta_U.",
+      "current_repo_state": "not_accepted_not_primary",
+      "evidence": [
+        "implementation_plan.md"
+      ],
+      "inbox_claim_id": "dynamic_game_landscape_beta_u",
+      "inbox_claim_summary": "Make beta_U evolve with interface conflict, e.g. d beta_U/dt = -gamma beta_U + mu |grad C|^2.",
+      "next_action": "If pursued, define state evolution, conservation/safety gates, and claim boundary first."
+    },
+    {
+      "current_boundary": "Future candidates still need explicit engine-path gates before claim interpretation.",
+      "current_repo_state": "mitigated_by_core_engine_path_gates",
+      "evidence": [
+        "wave5_spatial_scaling",
+        "wave16_spectral_core",
+        "wave24_structure_factor_estimator"
+      ],
+      "inbox_claim_id": "hidden_standalone_equation_risk",
+      "inbox_claim_summary": "Earlier tests risked bypassing docs/core/uet_master_equation.py with standalone equations.",
+      "next_action": "Keep engine alignment gates mandatory for every new operator or estimator verifier."
+    }
+  ],
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.14.2"
+  },
+  "gates": {
+    "artifact_chain_gate": {
+      "latest_expected_blocker": "spectral_core_l16_structure_factor_domain_scale_needs_multigrid_calibration",
+      "latest_observed_blocker": "spectral_core_l16_structure_factor_domain_scale_needs_multigrid_calibration",
+      "required_condition": "The current 0.11 artifact chain must expose the latest controller.",
+      "status": "PASS"
+    },
+    "coverage_boundary_gate": {
+      "claim_boundary": "Coverage means mapped to current evidence, not all options implemented or accepted.",
+      "mapped_claim_count": 5,
+      "required_condition": "Inbox options must be separated into implemented diagnostic paths, blocked paths, and unaccepted future paths.",
+      "status": "WARN"
+    },
+    "inbox_authority_boundary_gate": {
+      "claim_boundary": "Inbox claims can propose candidates; artifacts and formula gates control current status.",
+      "required_condition": "Inbox material must be treated as intake evidence, not canonical proof.",
+      "status": "PASS"
+    },
+    "inbox_source_packaging_gate": {
+      "hashed_source_count": 3,
+      "required_condition": "All local inbox intake files must exist and have recorded hashes.",
+      "source_count": 3,
+      "status": "PASS"
+    },
+    "next_controller_gate": {
+      "next_controller": "multi_grid_structure_factor_calibration_or_source_backed_estimator_benchmark",
+      "required_condition": "No broad UET phase-transition claim may be promoted until the current multi-grid calibration blocker is cleared.",
+      "status": "BLOCKED"
+    }
+  },
+  "limitations": [
+    "This audit does not validate any inbox claim as physics.",
+    "Mojibake in the inbox text is preserved as source evidence and should be cleaned only in a separate source-normalization pass.",
+    "The raw inbox directory remains intake evidence; artifact gates, formula audits, and topic verifiers control claim wording."
+  ],
+  "recommended_next_wave": {
+    "reason": "Wave 24 narrowed the active evidence chain to estimator/domain-scale calibration; For Work prefers narrowing the current controller before broadening scope.",
+    "step": "Run multi-grid structure-factor calibration for 0.11 before adding new warped-space or dynamic-game operators."
+  },
+  "schema_version": "1.0",
+  "sources": [
+    {
+      "bytes": 7572,
+      "exists": true,
+      "path": "docs/core/00_inbox/UET_Master_Equation_Analysis.md",
+      "role": "analysis claim: local additive game/information terms are spatially blind; proposes multiplicative information and gradient game repairs",
+      "sha256": "3389022097b1f7324db6d3161f4bc038cdea87f4a6a5fd0e0c47d26c23092579"
+    },
+    {
+      "bytes": 7138,
+      "exists": true,
+      "path": "docs/core/00_inbox/implementation_plan.md",
+      "role": "implementation plan: co-evolutionary options including kappa(C), dynamic beta_U, and multiplicative information",
+      "sha256": "5d3b52336934923d2ab7c5d8a71801964fa8fb196d6f4896468bb0e476c4ed9a"
+    },
+    {
+      "bytes": 51322,
+      "exists": true,
+      "path": "docs/core/00_inbox/raw chat.md",
+      "role": "raw conversation intake containing the original concern about hidden standalone equations and engine alignment",
+      "sha256": "e2d390c583d05fe94efde3e35070610b65eace653f8722270f7b24066d8170b8"
+    }
+  ],
+  "status": "WARN",
+  "timestamp_utc": "2026-06-28T17:54:53.728291+00:00"
+}
