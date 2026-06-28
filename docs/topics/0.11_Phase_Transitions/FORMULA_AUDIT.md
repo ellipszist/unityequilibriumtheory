@@ -51,6 +51,7 @@ demonstrations.
 | `PT-CONSERVED-ORDER-SPECTRAL-SCALING` | finite-size sweep fits `log(<|C|>)` and `log(xi)` versus `log(Tc-T)` for `conserved_order_spectral_v1` | `Research_Conserved_Order_Spectral_Scaling.py`; `0_11_conserved_order_spectral_scaling.json` | normalized 3D lattice units; `xi/L`, Binder proxy, beta and nu proxies | `topic_derived_relation` | `diagnostic finite-size/exponent gate` | claim-boundary controller | Wave 17 passes stability/coverage but blocks correlation window (`max xi/L = 0.145`) and universality exponent (median beta `1.77`). | Improve finite-size/equilibration/scaling-window design before stronger dynamics or universality claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-WINDOW-REPAIR` | targeted relaxation and kappa sweeps compare `xi/L` against order-signal preservation | `Research_Conserved_Order_Spectral_Window_Repair.py`; `0_11_conserved_order_spectral_window_repair.json` | normalized 3D lattice units; `xi/L`, order amplitude, kappa proxy | `topic_derived_relation` | `diagnostic repair triage` | next-window controller | Wave 18 finds relaxation-only max `xi/L = 0.113`; kappa max `xi/L = 0.377` only at order `0.000377`, below signal floor. | Design a window that preserves order signal while lifting `xi/L`, or revise the scaling estimator/operator before stronger claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-SPINODAL-WINDOW` | targeted positive spinodal-margin cases compare `xi/L` and order-signal preservation across seed replicates | `Research_Conserved_Order_Spectral_Spinodal_Window.py`; `0_11_conserved_order_spectral_spinodal_window.json` | normalized 3D lattice units; `xi/L`, order amplitude, seed replicate margin | `topic_derived_relation` | `diagnostic window candidate` | seed-margin controller | Wave 19 finds one viable order-preserving `xi/L` case (`xi/L = 0.204`, order `0.0126`) but target seed pass fraction is `0.25`. | Replicate the window across seeds and grid sizes before exponent or universality claims. |
+| `PT-CONSERVED-ORDER-SPECTRAL-SEED-MARGIN` | target spinodal window at `T=0.900`, `kappa=0.100`, `steps=4000` compares seed replicate `xi/L` and order floors | `Research_Conserved_Order_Spectral_Seed_Margin.py`; `0_11_conserved_order_spectral_seed_margin.json` | normalized 3D `L=16` lattice units; `xi/L`, order amplitude, seed replicate pass fraction | `topic_derived_relation` | `diagnostic seed-margin repair` | finite-size replication controller | Wave 20 passes the target seed-margin gate (`4/4` seeds, min `xi/L = 0.2004`, min order `0.0505`) but remains single-grid. | Replicate over grid sizes before exponent or universality claims. |
 
 ## Wave 5 Formula Boundary
 
@@ -170,3 +171,10 @@ The spinodal-window diagnostic finds a narrow order-preserving `xi/L` candidate 
 `conserved_order_spectral_v1` path, but the target seed replicate margin is not robust. The allowed
 claim is limited to: a candidate single-grid window exists for the next finite-size replication
 pass. It is not a universality, material, RG-closure, or exponent-scaling result.
+
+## Wave 20 Seed-Margin Boundary
+
+The seed-margin diagnostic repairs the Wave 19 seed robustness blocker for the single-grid target
+window by extending relaxation to `4000` steps. The allowed claim is limited to: the `L=16`
+spinodal-window target now has enough seed-margin to justify finite-size replication. It is not
+yet exponent scaling, material validation, RG closure, or universal phase-transition evidence.

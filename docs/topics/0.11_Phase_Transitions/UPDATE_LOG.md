@@ -1,5 +1,29 @@
 # Update Log: 0.11 Phase Transitions
 
+## Wave: Conserved-Order Spectral Seed-Margin Repair (Wave 20)
+
+**What changed:**
+- Added `Research_Conserved_Order_Spectral_Seed_Margin.py` to test whether the Wave 19 spinodal target becomes seed-robust with longer relaxation.
+- Added machine-readable artifact `Result/artifacts/0_11_conserved_order_spectral_seed_margin.json` and CSV `Result/gl_conserved_order_spectral_seed_margin_stats.csv`.
+- Updated topic docs and the Wave 5 alignment audit to move the controller from seed-margin repair to finite-size replication.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Seed_Margin.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Seed_Margin.py`
+
+**Which blocker narrowed:**
+- Narrowed `spectral_core_spinodal_window_seed_margin_not_robust` into `spectral_core_seed_margin_passes_single_grid_needs_finite_size_replication`.
+- The artifact reports `wave19_chain_gate == PASS`, `seed_group_coverage_gate == PASS`, `seed_margin_repair_gate == PASS`, and `relaxation_margin_gate == PASS`.
+- It also reports `finite_size_replication_gate == BLOCKED`: the `L=16`, `T=0.900`, `kappa=0.100`, `4000`-step target passes `4/4` seeds with min `xi/L = 0.2004`, but no multi-grid replication has been run.
+
+**Next controlling blocker:**
+- Replicate the seed-margin-passing spinodal window across multiple grid sizes and only then rerun exponent or universality gates.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 20 repairs the single-grid seed-margin blocker, but it does not support universality-class shift, material validation, RG closure, or phase-transition-solution claims.
+
+---
+
 ## Wave: Conserved-Order Spectral Spinodal Window (Wave 19)
 
 **What changed:**

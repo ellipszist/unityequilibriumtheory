@@ -281,15 +281,33 @@ This narrows the Wave 18 signal-preservation blocker: an order-preserving spinod
 candidate exists, but it is too close to the `xi/L` threshold and not seed-robust. Treat it as a
 next-window candidate only, not as finite-size or universality evidence.
 
+
+## Wave 20 Conserved-Order Spectral Seed-Margin Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_seed_margin.json`
+
+- `wave19_chain_gate`: `PASS`
+- `seed_group_coverage_gate`: `PASS`
+- `seed_margin_repair_gate`: `PASS`
+- `relaxation_margin_gate`: `PASS`
+- `finite_size_replication_gate`: `BLOCKED`
+- `claim_boundary_gate`: `WARN`
+- target group: `T = 0.900`, `kappa = 0.100`, `steps = 4000`, `L = 16`
+- target pass fraction: `1.0`
+- target minimum `xi/L`: `0.2004`
+- target minimum order parameter: `0.0505`
+
+This repairs the Wave 19 seed-margin blocker for one normalized grid. The next controller is now
+finite-size replication of the same window, not another single-grid seed retry.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 19
-now records the next controller as `spectral_core_spinodal_window_seed_margin_not_robust`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 20
+now records the next controller as `spectral_core_seed_margin_passes_single_grid_needs_finite_size_replication`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should replicate the Wave 19
-spinodal window across seeds and grid sizes, or adjust the estimator/window until the
-order-preserving `xi/L` margin is robust before rerunning exponent or universality gates.
+Keep all candidate operators as opt-in diagnostics. The next wave should replicate the seed-margin-
+passing spinodal window across grid sizes and only then rerun exponent or universality gates.

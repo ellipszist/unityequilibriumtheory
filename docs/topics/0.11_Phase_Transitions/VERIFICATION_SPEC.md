@@ -455,3 +455,34 @@
 - Interpretation:
   - The Wave 18 low-signal blocker is narrowed: an order-preserving `xi/L` candidate exists in a targeted spinodal window.
   - The window is not seed-robust yet and remains single-grid, so it does not support universality, finite-size scaling, material, or RG-closure claims.
+
+
+## Wave 20 Conserved-Order Spectral Seed-Margin Repair
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Seed_Margin.py`
+- Artifact target:
+  - `Result/artifacts/0_11_conserved_order_spectral_seed_margin.json`
+  - `Result/gl_conserved_order_spectral_seed_margin_stats.csv`
+- Purpose:
+  - Test whether the Wave 19 target window becomes seed-robust when relaxation is extended to `4000` steps.
+  - Move the blocker from seed-margin robustness to finite-size replication only if all target seeds pass the declared `xi/L` and order thresholds.
+- Required gates:
+  - `wave19_chain_gate.status == PASS`
+  - `seed_group_coverage_gate.status == PASS`
+  - `seed_margin_repair_gate.status == PASS` before treating the single-grid seed margin as repaired.
+  - `relaxation_margin_gate.status == PASS` before treating the longer target as a real improvement over the 2400-step baseline group.
+  - `finite_size_replication_gate.status == PASS` before any finite-size or universality claim is allowed.
+- Current Wave 20 result:
+  - overall status `WARN`
+  - `wave19_chain_gate == PASS`
+  - `seed_group_coverage_gate == PASS`
+  - `seed_margin_repair_gate == PASS`
+  - `relaxation_margin_gate == PASS`
+  - `finite_size_replication_gate == BLOCKED`
+  - `claim_boundary_gate == WARN`
+  - target group `T = 0.900`, `kappa = 0.100`, `steps = 4000`, `L = 16`
+  - target pass fraction `1.0`, min `xi/L = 0.2004`, median `xi/L = 0.2059`, min order `0.0505`
+- Interpretation:
+  - The Wave 19 seed-margin blocker is repaired for the declared single-grid target window.
+  - This is still not finite-size scaling evidence; the next controlling blocker is multi-grid replication and then exponent/universality gates.

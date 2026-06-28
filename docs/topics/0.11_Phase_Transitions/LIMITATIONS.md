@@ -28,3 +28,4 @@
 - Wave 17 runs that next finite-size/exponent check and keeps claims blocked: max near-critical `xi/L` is `0.145`, below the `0.20` correlation-window threshold, and median beta is `1.77`, far from the 3D Ising reference.
 - Wave 18 finds that relaxation/window-only changes still do not repair the `xi/L` blocker, while high-kappa cases that pass `xi/L` erase the order signal below the declared floor; this is a smoothing tradeoff, not universality evidence.
 - Wave 19 finds one spinodal-window case that preserves order while passing `xi/L`, but the target seed replicate pass fraction is only `0.25`; the candidate window remains diagnostic until seed-margin and finite-size replication gates pass.
+- Wave 20 repairs the single-grid seed-margin blocker for the `T=0.900`, `kappa=0.100`, `4000`-step window, but it is still a normalized `L=16` result; finite-size replication, exponent fits, material calibration, and RG closure remain blocked.
