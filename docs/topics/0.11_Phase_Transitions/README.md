@@ -65,6 +65,7 @@ flowchart LR
 | Wave 19 spectral spinodal window | Seed-margin diagnostic | `Result/artifacts/0_11_conserved_order_spectral_spinodal_window.json` | one order-preserving xi/L pass found; seed-margin gate blocked |
 | Wave 20 spectral seed-margin repair | Single-grid seed-margin gate | `Result/artifacts/0_11_conserved_order_spectral_seed_margin.json` | seed margin passes at L=16; finite-size replication blocked |
 | Wave 21 spectral finite-size replication | Multi-grid replication diagnostic | `Result/artifacts/0_11_conserved_order_spectral_finite_size_replication.json` | L=8/12 pass; L=16 fresh seeds block replication |
+| Wave 22 L16 relaxation repair | Relaxation-only repair diagnostic | `Result/artifacts/0_11_conserved_order_spectral_l16_relaxation_repair.json` | longer L16 relaxation preserves order but leaves xi/L margin blocked |
 | Universal phase-transition theory | Not closed | limitations and formula audit | do not claim full proof |
 
 ## 5x4 Grid Structure
@@ -120,5 +121,6 @@ python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exp
 - The Wave 19 spinodal-window diagnostic finds one order-preserving `xi/L` pass (`xi/L = 0.204`, order `0.0126`) at `T = 0.900`, `kappa = 0.100`, and `2400` steps, but the target seed replicate pass fraction is only `0.25` and median replicate `xi/L` is `0.1965`, so the next blocker is seed-margin and finite-size replication, not claim promotion.
 - The Wave 20 seed-margin diagnostic repairs that single-grid seed margin at `T = 0.900`, `kappa = 0.100`, and `4000` steps: target pass fraction is `1.0`, min `xi/L` is `0.2004`, and min order is `0.0505`, but `finite_size_replication_gate` remains `BLOCKED`.
 - The Wave 21 finite-size replication diagnostic keeps the window diagnostic-only: `L=8` and `L=12` pass across tested seed sets, but `L=16` fresh seeds pass only `1/3` and drop to min `xi/L = 0.1944`, so grid replication and seed-set generalization remain blocked.
+- The Wave 22 `L=16` relaxation-repair diagnostic shows longer runs at `4800` and `5600` steps increase order amplitude but still pass only `1/3` fresh seeds; min `xi/L` remains below threshold (`0.1938` to `0.1950`), so relaxation-only repair is blocked.
 
 *Status note: internal critical-exponent benchmark and formula-audit hardening gate.*

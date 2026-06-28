@@ -518,3 +518,34 @@
 - Interpretation:
   - The Wave 20 seed-margin result does not yet generalize robustly across grid sizes and fresh seeds.
   - The next useful work is to revise the finite-size/window scaling design or estimator before rerunning exponent or universality gates.
+
+
+## Wave 22 Conserved-Order Spectral L16 Relaxation Repair
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_L16_Relaxation_Repair.py`
+- Artifact target:
+  - `Result/artifacts/0_11_conserved_order_spectral_l16_relaxation_repair.json`
+  - `Result/gl_conserved_order_spectral_l16_relaxation_repair_stats.csv`
+- Purpose:
+  - Test whether longer single-grid relaxation repairs the Wave 21 `L=16` fresh-seed `xi/L` blocker.
+  - Separate order-amplitude growth from robust correlation-length margin.
+- Required gates:
+  - `wave21_chain_gate.status == PASS`
+  - `l16_case_coverage_gate.status == PASS`
+  - `relaxation_repair_gate.status == PASS` before treating longer relaxation as a sufficient repair path.
+  - `order_signal_gate.status == PASS` to confirm the failure is not caused by lost order signal.
+  - `next_path_gate.status != BLOCKED` before rerunning longer single-grid cases as the default next path.
+- Current Wave 22 result:
+  - overall status `WARN`
+  - `wave21_chain_gate == PASS`
+  - `l16_case_coverage_gate == PASS`
+  - `relaxation_repair_gate == BLOCKED`
+  - `order_signal_gate == PASS`
+  - `next_path_gate == BLOCKED`
+  - `claim_boundary_gate == WARN`
+  - `4000`, `4800`, and `5600` step groups each pass only `1/3` fresh seeds
+  - longest group min `xi/L = 0.1950`, median `xi/L = 0.1992`, min order `0.1359`
+- Interpretation:
+  - Longer relaxation increases order amplitude but does not create a robust `L=16` fresh-seed `xi/L` margin.
+  - The next useful work is estimator, finite-size-window, or scaling-design repair before exponent or universality gates are rerun.

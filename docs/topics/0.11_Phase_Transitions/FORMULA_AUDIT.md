@@ -53,6 +53,7 @@ demonstrations.
 | `PT-CONSERVED-ORDER-SPECTRAL-SPINODAL-WINDOW` | targeted positive spinodal-margin cases compare `xi/L` and order-signal preservation across seed replicates | `Research_Conserved_Order_Spectral_Spinodal_Window.py`; `0_11_conserved_order_spectral_spinodal_window.json` | normalized 3D lattice units; `xi/L`, order amplitude, seed replicate margin | `topic_derived_relation` | `diagnostic window candidate` | seed-margin controller | Wave 19 finds one viable order-preserving `xi/L` case (`xi/L = 0.204`, order `0.0126`) but target seed pass fraction is `0.25`. | Replicate the window across seeds and grid sizes before exponent or universality claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-SEED-MARGIN` | target spinodal window at `T=0.900`, `kappa=0.100`, `steps=4000` compares seed replicate `xi/L` and order floors | `Research_Conserved_Order_Spectral_Seed_Margin.py`; `0_11_conserved_order_spectral_seed_margin.json` | normalized 3D `L=16` lattice units; `xi/L`, order amplitude, seed replicate pass fraction | `topic_derived_relation` | `diagnostic seed-margin repair` | finite-size replication controller | Wave 20 passes the target seed-margin gate (`4/4` seeds, min `xi/L = 0.2004`, min order `0.0505`) but remains single-grid. | Replicate over grid sizes before exponent or universality claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-FINITE-SIZE-REPLICATION` | replicate the Wave 20 target window over `L=8,12,16` and two seed sets | `Research_Conserved_Order_Spectral_Finite_Size_Replication.py`; `0_11_conserved_order_spectral_finite_size_replication.json` | normalized 3D lattice units; `xi/L`, order amplitude, grid/seed pass fractions | `topic_derived_relation` | `diagnostic finite-size replication gate` | grid/seed replication controller | Wave 21 passes coverage but blocks replication: `L=16` fresh seeds pass only `1/3` and min `xi/L = 0.1944`. | Revise finite-size/window scaling or estimator before exponent or universality claims. |
+| `PT-CONSERVED-ORDER-SPECTRAL-L16-RELAXATION-REPAIR` | test `L=16` fresh seeds at `4000`, `4800`, and `5600` steps for `xi/L` repair | `Research_Conserved_Order_Spectral_L16_Relaxation_Repair.py`; `0_11_conserved_order_spectral_l16_relaxation_repair.json` | normalized 3D `L=16` lattice units; `xi/L`, order amplitude, step-group pass fractions | `topic_derived_relation` | `diagnostic relaxation repair gate` | next-window/estimator controller | Wave 22 blocks relaxation-only repair: all step groups pass only `1/3` fresh seeds while order stays above floor. | Revise estimator or finite-size/window scaling before exponent or universality claims. |
 
 ## Wave 5 Formula Boundary
 
@@ -187,3 +188,10 @@ tested grid/seed combinations. Smaller grids pass, but `L=16` fresh seeds fall b
 `xi/L` threshold in two of three cases. The allowed claim is limited to: the current finite-size
 window still needs redesign or estimator repair before exponent, material, RG, or universality
 claims can be tested.
+
+## Wave 22 L16 Relaxation-Repair Boundary
+
+The `L=16` relaxation-repair diagnostic shows that longer single-grid runs are not enough to fix
+the fresh-seed `xi/L` margin. Order amplitude increases with step count, but the pass fraction
+stays `1/3` through `5600` steps. The allowed claim is limited to: relaxation-only repair is
+blocked, so the next wave should adjust the estimator, finite-size window, or scaling design.

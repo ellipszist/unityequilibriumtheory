@@ -319,15 +319,34 @@ This blocks promotion from the Wave 20 single-grid seed-margin repair. The next 
 finite-size/window-scaling or estimator repair for the `L=16` fresh-seed margin, not an exponent
 or universality rerun.
 
+
+## Wave 22 Conserved-Order Spectral L16 Relaxation-Repair Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_l16_relaxation_repair.json`
+
+- `wave21_chain_gate`: `PASS`
+- `l16_case_coverage_gate`: `PASS`
+- `relaxation_repair_gate`: `BLOCKED`
+- `order_signal_gate`: `PASS`
+- `next_path_gate`: `BLOCKED`
+- `claim_boundary_gate`: `WARN`
+- `4000` step pass fraction: `0.333`, minimum `xi/L`: `0.1944`
+- `4800` step pass fraction: `0.333`, minimum `xi/L`: `0.1938`
+- `5600` step pass fraction: `0.333`, minimum `xi/L`: `0.1950`
+- longest-group minimum order parameter: `0.1359`
+
+This narrows the Wave 21 blocker: the `L=16` problem is not loss of order signal and is not
+repaired by simply running longer. The next controller is estimator/window-scaling design.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 21
-now records the next controller as `spectral_core_finite_size_replication_not_robust`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 22
+now records the next controller as `spectral_core_l16_relaxation_only_repair_blocked`.
 
 ## Next Hardening Step
 
 Keep all candidate operators as opt-in diagnostics. The next wave should revise the finite-size
-window scaling or estimator so the `L=16` fresh-seed margin is robust before rerunning exponent
-or universality gates.
+window scaling, correlation estimator, or threshold design before rerunning exponent or
+universality gates.

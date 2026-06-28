@@ -30,3 +30,4 @@
 - Wave 19 finds one spinodal-window case that preserves order while passing `xi/L`, but the target seed replicate pass fraction is only `0.25`; the candidate window remains diagnostic until seed-margin and finite-size replication gates pass.
 - Wave 20 repairs the single-grid seed-margin blocker for the `T=0.900`, `kappa=0.100`, `4000`-step window, but it is still a normalized `L=16` result; finite-size replication, exponent fits, material calibration, and RG closure remain blocked.
 - Wave 21 tests that same window across `L=8,12,16` and two seed sets; `L=16` fresh seeds are not robust (`1/3` pass, min `xi/L = 0.1944`), so finite-size replication remains blocked.
+- Wave 22 shows that longer `L=16` relaxation alone does not repair the fresh-seed `xi/L` margin: `4000`, `4800`, and `5600` step groups each pass only `1/3` seeds, even while order amplitude increases.

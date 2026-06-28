@@ -1,5 +1,29 @@
 # Update Log: 0.11 Phase Transitions
 
+## Wave: Conserved-Order Spectral L16 Relaxation Repair (Wave 22)
+
+**What changed:**
+- Added `Research_Conserved_Order_Spectral_L16_Relaxation_Repair.py` to test whether longer `L=16` relaxation repairs the Wave 21 fresh-seed margin blocker.
+- Added machine-readable artifact `Result/artifacts/0_11_conserved_order_spectral_l16_relaxation_repair.json` and CSV `Result/gl_conserved_order_spectral_l16_relaxation_repair_stats.csv`.
+- Updated topic docs and the Wave 5 alignment audit to move the controller from generic finite-size replication to relaxation-only insufficiency.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_L16_Relaxation_Repair.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_L16_Relaxation_Repair.py`
+
+**Which blocker narrowed:**
+- Narrowed `spectral_core_finite_size_replication_not_robust` into `spectral_core_l16_relaxation_only_repair_blocked`.
+- The artifact reports `wave21_chain_gate == PASS`, `l16_case_coverage_gate == PASS`, and `order_signal_gate == PASS`.
+- It also reports `relaxation_repair_gate == BLOCKED`: `4000`, `4800`, and `5600` step groups each pass only `1/3` fresh seeds; the longest group has min `xi/L = 0.1950` despite min order `0.1359`.
+
+**Next controlling blocker:**
+- Revise the estimator, finite-size window, or scaling design; do not treat longer single-grid relaxation as the next default repair path.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 22 blocks relaxation-only repair and does not support universality-class shift, material validation, RG closure, or phase-transition-solution claims.
+
+---
+
 ## Wave: Conserved-Order Spectral Finite-Size Replication (Wave 21)
 
 **What changed:**
