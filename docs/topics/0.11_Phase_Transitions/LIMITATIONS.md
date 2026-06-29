@@ -39,3 +39,4 @@
 - Wave 28 narrows estimator disagreement: the structure-factor/axis-lower ratio is stable across L16 and L20 (`~2.66`), but that factor is not source-backed or derived and both estimators show declining absolute length from L16 to L20.
 - Wave 29 scans the local reference package and finds no text-source support for structure-factor, second-moment correlation length, Fourier estimator definition, or finite-size admissibility; external source candidates remain unaccepted until packaged.
 - Wave 30 packages three primary estimator-source candidates in a manifest, but formula extraction, local full-text support, and calibration acceptance remain blocked.
+- Wave 31 extracts the source-family second-moment estimator boundary, but the current RMS inverse-k proxy is not source-matched and remains diagnostic-only for claim use.

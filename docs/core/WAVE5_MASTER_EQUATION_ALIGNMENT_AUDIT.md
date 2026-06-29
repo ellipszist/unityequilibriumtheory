@@ -507,15 +507,34 @@ Manifest: `docs/topics/0.11_Phase_Transitions/Data/03_Research/structure_factor_
 This narrows the blocker again. Primary-source candidates are now manifest-packaged for
 review, but formula extraction and estimator mapping remain open.
 
+## Wave 31 Structure-Factor Estimator Formula-Boundary Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_formula_boundary_gate.json`
+Formula boundary: `docs/topics/0.11_Phase_Transitions/Data/03_Research/structure_factor_estimator_formula_boundary.json`
+
+- `wave30_chain_gate`: `PASS`
+- `formula_boundary_schema_gate`: `PASS`
+- `source_formula_extraction_gate`: `PASS`
+- `current_proxy_source_match_gate`: `BLOCKED`
+- `calibration_acceptance_gate`: `BLOCKED`
+- `replacement_path_gate`: `BLOCKED`
+- `claim_boundary_gate`: `WARN`
+- current proxy match to source second-moment estimator: `false`
+- candidate calibration factor remains unaccepted: `2.6555`
+
+This narrows the blocker from formula absence to formula mismatch. The source-family
+second-moment estimator uses zero-mode to lowest-nonzero-mode structure-factor information,
+while the current proxy uses all nonzero modes and an RMS inverse-k length.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 30
-now records the next controller as `structure_factor_source_manifest_packaged_formula_extraction_open`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 31
+now records the next controller as `structure_factor_source_formula_extracted_current_rms_proxy_mismatch`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should extract source formula
-boundaries for second-moment/finite-size correlation-length estimators and map or reject the
-current RMS inverse-k proxy before accepting calibration or rerunning exponent/universality gates.
+Keep all candidate operators as opt-in diagnostics. The next wave should implement a
+lowest-mode second-moment estimator candidate or repair the window/dynamics path before
+accepting calibration or rerunning exponent/universality gates.

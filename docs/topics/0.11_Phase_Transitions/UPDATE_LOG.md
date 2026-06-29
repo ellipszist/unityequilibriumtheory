@@ -1,6 +1,32 @@
 # Update Log: 0.11 Phase Transitions
 
 
+
+## Wave: Structure-Factor Estimator Formula-Boundary Gate (Wave 31)
+
+**What changed:**
+- Added `Data/03_Research/structure_factor_estimator_formula_boundary.json` with source-family second-moment estimator boundaries and the current-proxy mismatch decision.
+- Added `Research_Structure_Factor_Formula_Boundary_Gate.py` and artifact `Result/artifacts/0_11_structure_factor_formula_boundary_gate.json`.
+- Updated topic docs and the inbox alignment audit to move the controller from formula extraction to estimator replacement or window/dynamics repair.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Formula_Boundary_Gate.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Formula_Boundary_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `structure_factor_source_manifest_packaged_formula_extraction_open` into `structure_factor_source_formula_extracted_current_rms_proxy_mismatch`.
+- The artifact reports `source_formula_extraction_gate == PASS`.
+- It also reports `current_proxy_source_match_gate == BLOCKED`, `calibration_acceptance_gate == BLOCKED`, and `replacement_path_gate == BLOCKED`.
+
+**Next controlling blocker:**
+- Implement a lowest-mode second-moment estimator candidate and compare it against the current proxy, or repair the window/dynamics path so accepted estimators show nondeclining absolute lengths before exponent gates.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 31 extracts the source formula boundary but rejects the current RMS inverse-k proxy for source-backed claim use; it does not accept estimator calibration, exponent, universality, material, RG, or phase-transition-solution claims.
+
+---
+
+
 ## Wave: Structure-Factor Estimator Source-Manifest Gate (Wave 30)
 
 **What changed:**

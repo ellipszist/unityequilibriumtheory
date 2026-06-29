@@ -809,3 +809,34 @@
 - Interpretation:
   - The source candidates are now packaged for review, but no formula has been extracted or mapped to the current estimator.
   - The next useful work is source-formula extraction and a map/reject decision for the current RMS inverse-k proxy.
+
+## Wave 31 Structure-Factor Estimator Formula-Boundary Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Formula_Boundary_Gate.py`
+- Artifact target:
+  - `Result/artifacts/0_11_structure_factor_formula_boundary_gate.json`
+- Formula-boundary manifest:
+  - `Data/03_Research/structure_factor_estimator_formula_boundary.json`
+- Purpose:
+  - Extract the source-family second-moment correlation-length boundary from the packaged primary-source candidates.
+  - Decide whether the current all-nonzero-mode RMS inverse-k proxy can be treated as that source-backed estimator.
+- Required gates:
+  - `wave30_chain_gate.status == PASS`
+  - `formula_boundary_schema_gate.status == PASS`
+  - `source_formula_extraction_gate.status == PASS` before replacement work can proceed.
+  - `current_proxy_source_match_gate.status == PASS` before the current proxy can be used for calibration or exponent gates.
+  - `calibration_acceptance_gate.status == PASS` before any Wave 28 calibration factor can be applied.
+  - `replacement_path_gate.status != BLOCKED` before rerunning exponent or universality gates.
+- Current Wave 31 result:
+  - overall status `WARN`
+  - `wave30_chain_gate == PASS`
+  - `formula_boundary_schema_gate == PASS`
+  - `source_formula_extraction_gate == PASS`
+  - `current_proxy_source_match_gate == BLOCKED`
+  - `calibration_acceptance_gate == BLOCKED`
+  - `replacement_path_gate == BLOCKED`
+- Interpretation:
+  - The source formula boundary is now extracted, so the blocker is no longer vague formula absence.
+  - The current RMS inverse-k proxy does not match the source-family lowest-mode second-moment relation and must stay diagnostic-only.
+  - The next useful work is to implement a lowest-mode second-moment estimator candidate or repair the window/dynamics path before exponent claims are rerun.

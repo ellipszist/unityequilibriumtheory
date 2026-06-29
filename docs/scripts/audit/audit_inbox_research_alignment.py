@@ -92,6 +92,10 @@ ARTIFACTS = {
     / "Result"
     / "artifacts"
     / "0_11_structure_factor_source_manifest_gate.json",
+    "wave31_formula_boundary": TOPIC_DIR
+    / "Result"
+    / "artifacts"
+    / "0_11_structure_factor_formula_boundary_gate.json",
 }
 
 
@@ -148,13 +152,13 @@ def build_artifact() -> dict[str, Any]:
         ),
     ]
     artifacts = {name: artifact_record(name, path) for name, path in ARTIFACTS.items()}
-    wave30 = artifacts["wave30_source_manifest"]
+    wave31 = artifacts["wave31_formula_boundary"]
 
     source_packaging_pass = all(record["exists"] and record["sha256"] for record in sources)
     artifact_chain_pass = (
-        wave30["exists"]
-        and wave30["blocker_label"]
-        == "structure_factor_source_manifest_packaged_formula_extraction_open"
+        wave31["exists"]
+        and wave31["blocker_label"]
+        == "structure_factor_source_formula_extracted_current_rms_proxy_mismatch"
     )
 
     claim_map = [
@@ -185,9 +189,10 @@ def build_artifact() -> dict[str, Any]:
                 "wave28_estimator_reconciliation",
                 "wave29_calibration_source_support",
                 "wave30_source_manifest",
+                "wave31_formula_boundary",
             ],
-            "current_boundary": "Primary estimator-source candidates are now manifest-packaged, but formula extraction and mapping from the current RMS inverse-k proxy remain open.",
-            "next_action": "Extract source formula boundaries for the second-moment estimator and either map or reject the current RMS inverse-k proxy before exponent gates.",
+            "current_boundary": "Source formula boundaries are now extracted, and they reject the current RMS inverse-k proxy as a source-backed second-moment estimator for claim use.",
+            "next_action": "Implement a lowest-mode second-moment estimator candidate or repair the window/dynamics path before exponent gates.",
         },
         {
             "inbox_claim_id": "warped_space_kappa_of_c",
@@ -218,6 +223,7 @@ def build_artifact() -> dict[str, Any]:
                 "wave28_estimator_reconciliation",
                 "wave29_calibration_source_support",
                 "wave30_source_manifest",
+                "wave31_formula_boundary",
             ],
             "current_boundary": "Future candidates still need explicit engine-path gates before claim interpretation.",
             "next_action": "Keep engine alignment gates mandatory for every new operator or estimator verifier.",
@@ -239,8 +245,8 @@ def build_artifact() -> dict[str, Any]:
         "artifact_chain_gate": {
             "status": "PASS" if artifact_chain_pass else "BLOCKED",
             "required_condition": "The current 0.11 artifact chain must expose the latest controller.",
-            "latest_expected_blocker": "structure_factor_source_manifest_packaged_formula_extraction_open",
-            "latest_observed_blocker": wave30["blocker_label"],
+            "latest_expected_blocker": "structure_factor_source_formula_extracted_current_rms_proxy_mismatch",
+            "latest_observed_blocker": wave31["blocker_label"],
         },
         "coverage_boundary_gate": {
             "status": "WARN",
@@ -250,8 +256,8 @@ def build_artifact() -> dict[str, Any]:
         },
         "next_controller_gate": {
             "status": "BLOCKED",
-            "required_condition": "No broad UET phase-transition claim may be promoted until source formulas are extracted and the current estimator is mapped or rejected.",
-            "next_controller": "extract_source_formula_boundary_for_second_moment_estimator",
+            "required_condition": "No broad UET phase-transition claim may be promoted until the current proxy is replaced by a source-family estimator candidate or the window/dynamics path repairs absolute-length growth.",
+            "next_controller": "implement_lowest_mode_second_moment_estimator_candidate_or_repair_window_dynamics",
         },
     }
 
@@ -260,15 +266,15 @@ def build_artifact() -> dict[str, Any]:
         "audit_id": "core_inbox_research_alignment_gate",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "status": "WARN",
-        "blocker_label": "inbox_claims_mapped_current_controller_source_formula_extraction",
+        "blocker_label": "inbox_claims_mapped_current_controller_current_proxy_mismatch",
         "claim_class": "source_intake_alignment_only",
         "sources": sources,
         "artifacts": list(artifacts.values()),
         "claim_map": claim_map,
         "gates": gates,
         "recommended_next_wave": {
-            "step": "Extract formula boundaries from the packaged primary estimator-source candidates before accepting calibration or adding new warped-space/dynamic-game operators.",
-            "reason": "Wave 30 packages three primary-source candidates and passes metadata coverage, but formula extraction and calibration acceptance remain blocked.",
+            "step": "Implement a lowest-mode second-moment estimator candidate or repair the window/dynamics path before accepting calibration or adding new warped-space/dynamic-game operators.",
+            "reason": "Wave 31 extracts the source formula family and rejects the current RMS inverse-k proxy for source-backed claim use.",
         },
         "limitations": [
             "This audit does not validate any inbox claim as physics.",

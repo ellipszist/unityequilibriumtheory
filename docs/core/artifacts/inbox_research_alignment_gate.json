@@ -116,10 +116,19 @@
       "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_source_manifest_gate.json",
       "sha256": "5832bc7e145b298772b7e2092ab35f7246bf9963f3e85876a5f23f82ff5b5812",
       "status": "WARN"
+    },
+    {
+      "blocker_label": "structure_factor_source_formula_extracted_current_rms_proxy_mismatch",
+      "claim_class": "source_formula_boundary_only",
+      "exists": true,
+      "id": "wave31_formula_boundary",
+      "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_formula_boundary_gate.json",
+      "sha256": "32d44b726e26d9c727d15d89d7b5150aa13ac8bcd373b88857f8c68fe0e74de3",
+      "status": "WARN"
     }
   ],
   "audit_id": "core_inbox_research_alignment_gate",
-  "blocker_label": "inbox_claims_mapped_current_controller_source_formula_extraction",
+  "blocker_label": "inbox_claims_mapped_current_controller_current_proxy_mismatch",
   "claim_class": "source_intake_alignment_only",
   "claim_map": [
     {
@@ -136,7 +145,7 @@
       "next_action": "Do not retune A/B coefficients as the next default path; only revisit with a new formula/unit gate."
     },
     {
-      "current_boundary": "Primary estimator-source candidates are now manifest-packaged, but formula extraction and mapping from the current RMS inverse-k proxy remain open.",
+      "current_boundary": "Source formula boundaries are now extracted, and they reject the current RMS inverse-k proxy as a source-backed second-moment estimator for claim use.",
       "current_repo_state": "implemented_as_conserved_order_spectral_v1_and_bridge_passed",
       "evidence": [
         "wave16_spectral_core",
@@ -147,11 +156,12 @@
         "wave27_structure_factor_acceptance_rule",
         "wave28_estimator_reconciliation",
         "wave29_calibration_source_support",
-        "wave30_source_manifest"
+        "wave30_source_manifest",
+        "wave31_formula_boundary"
       ],
       "inbox_claim_id": "c_conserved_order_parameter",
       "inbox_claim_summary": "Use conserved-order/Cahn-Hilliard-like dynamics so mass/order is transported rather than locally destroyed.",
-      "next_action": "Extract source formula boundaries for the second-moment estimator and either map or reject the current RMS inverse-k proxy before exponent gates."
+      "next_action": "Implement a lowest-mode second-moment estimator candidate or repair the window/dynamics path before exponent gates."
     },
     {
       "current_boundary": "No formula-audit entry, unit closure, core opt-in mode, or scaling artifact currently accepts this path.",
@@ -184,7 +194,8 @@
         "wave27_structure_factor_acceptance_rule",
         "wave28_estimator_reconciliation",
         "wave29_calibration_source_support",
-        "wave30_source_manifest"
+        "wave30_source_manifest",
+        "wave31_formula_boundary"
       ],
       "inbox_claim_id": "hidden_standalone_equation_risk",
       "inbox_claim_summary": "Earlier tests risked bypassing docs/core/uet_master_equation.py with standalone equations.",
@@ -197,8 +208,8 @@
   },
   "gates": {
     "artifact_chain_gate": {
-      "latest_expected_blocker": "structure_factor_source_manifest_packaged_formula_extraction_open",
-      "latest_observed_blocker": "structure_factor_source_manifest_packaged_formula_extraction_open",
+      "latest_expected_blocker": "structure_factor_source_formula_extracted_current_rms_proxy_mismatch",
+      "latest_observed_blocker": "structure_factor_source_formula_extracted_current_rms_proxy_mismatch",
       "required_condition": "The current 0.11 artifact chain must expose the latest controller.",
       "status": "PASS"
     },
@@ -220,8 +231,8 @@
       "status": "PASS"
     },
     "next_controller_gate": {
-      "next_controller": "extract_source_formula_boundary_for_second_moment_estimator",
-      "required_condition": "No broad UET phase-transition claim may be promoted until source formulas are extracted and the current estimator is mapped or rejected.",
+      "next_controller": "implement_lowest_mode_second_moment_estimator_candidate_or_repair_window_dynamics",
+      "required_condition": "No broad UET phase-transition claim may be promoted until the current proxy is replaced by a source-family estimator candidate or the window/dynamics path repairs absolute-length growth.",
       "status": "BLOCKED"
     }
   },
@@ -231,8 +242,8 @@
     "The raw inbox directory remains intake evidence; artifact gates, formula audits, and topic verifiers control claim wording."
   ],
   "recommended_next_wave": {
-    "reason": "Wave 30 packages three primary-source candidates and passes metadata coverage, but formula extraction and calibration acceptance remain blocked.",
-    "step": "Extract formula boundaries from the packaged primary estimator-source candidates before accepting calibration or adding new warped-space/dynamic-game operators."
+    "reason": "Wave 31 extracts the source formula family and rejects the current RMS inverse-k proxy for source-backed claim use.",
+    "step": "Implement a lowest-mode second-moment estimator candidate or repair the window/dynamics path before accepting calibration or adding new warped-space/dynamic-game operators."
   },
   "schema_version": "1.0",
   "sources": [
@@ -259,5 +270,5 @@
     }
   ],
   "status": "WARN",
-  "timestamp_utc": "2026-06-29T16:15:02.013042+00:00"
+  "timestamp_utc": "2026-06-29T16:26:59.989582+00:00"
 }
