@@ -61,6 +61,7 @@ demonstrations.
 | `PT-CONSERVED-ORDER-SPECTRAL-STRUCTURE-FACTOR-ACCEPTANCE-RULE` | preflight rule excludes domain-scale grids, requires >=3 admissible grids, absolute-`xi` consistency, and estimator reconciliation | `Research_Structure_Factor_Acceptance_Rule_Gate.py`; `0_11_structure_factor_acceptance_rule_gate.json` | normalized 3D lattice units; `xi_sf/L`, absolute `xi_sf`, grid subset, estimator ratio | `topic_derived_relation` | `heuristic preflight, not physics acceptance` | claim-boundary gate | Wave 27 defines the rule but current evidence fails: `L=8` excluded, `L20/L16 = 0.9599`, and estimator ratio `2.6261` is unreconciled. | Repair absolute-length consistency or add a source-backed estimator benchmark before exponent claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-ESTIMATOR-RECONCILIATION` | compare `xi_sf / xi_axis_lower` at L16 and L20; candidate calibration factor is the observed ratio average | `Research_Structure_Factor_Estimator_Reconciliation_Gate.py`; `0_11_structure_factor_estimator_reconciliation_gate.json` | normalized grid units; estimator ratio dimensionless; calibration factor unaccepted | `topic_derived_relation` | `diagnostic reconciliation only` | estimator-calibration gate | Wave 28 finds stable ratio drift (`0.0219`) but blocks magnitude/provenance and absolute-length trend. | Source-back or derive calibration, or repair the window/dynamics before exponent claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-CALIBRATION-SOURCE-SUPPORT` | scan local refs for structure-factor/second-moment/Fourier/finite-size estimator support before accepting calibration | `Research_Structure_Factor_Calibration_Source_Support_Gate.py`; `0_11_structure_factor_calibration_source_support_gate.json` | source hashes, keyword matches, DOI/URL candidates; no physical units | `source_support_triage` | `source gap diagnostic` | source-packaging gate | Wave 29 finds zero local text-source matches for all required estimator-support classes. | Package primary estimator sources and formula boundaries before calibration or exponent claims. |
+| `PT-CONSERVED-ORDER-SPECTRAL-SOURCE-MANIFEST` | package primary estimator-source candidates with DOI/URL, formula role, and claim boundary | `structure_factor_estimator_source_manifest.json`; `Research_Structure_Factor_Source_Manifest_Gate.py`; `0_11_structure_factor_source_manifest_gate.json` | source metadata only; no estimator units accepted | `source_support_triage` | `source manifest only` | source-review gate | Wave 30 passes metadata coverage but blocks local formula extraction and calibration acceptance. | Extract source formulas and map or reject the RMS inverse-k proxy before exponent claims. |
 
 ## Wave 5 Formula Boundary
 
@@ -266,3 +267,10 @@ observed calibration factor or current RMS inverse-k proxy. It cannot: local tex
 zero matches for structure-factor, second-moment correlation length, Fourier estimator
 definition, or finite-size admissibility. External primary candidates are recorded only as
 candidates until packaged with formula roles and claim boundaries.
+
+## Wave 30 Source-Manifest Boundary
+
+The source-manifest gate packages three primary-source candidates with DOI/URL, formula role,
+and claim boundary. This repairs metadata organization only. It keeps formula extraction,
+local full-text support, and calibration acceptance blocked, so the current RMS inverse-k proxy
+remains diagnostic-only.

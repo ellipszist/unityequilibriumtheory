@@ -21,16 +21,16 @@
 | Inbox claim | Current repo state | Current boundary | Next action |
 | :-- | :-- | :-- | :-- |
 | `a_b_multiplicative_info_plus_gradient_game` | implemented_as_opt_in_diagnostic_then_blocked_by_scaling_gates | A/B candidate availability and safety are not enough; beta and correlation gates stayed diagnostic or blocked. | Do not retune A/B coefficients as the next default path; only revisit with a new formula/unit gate. |
-| `c_conserved_order_parameter` | implemented_as_conserved_order_spectral_v1_and_bridge_passed | Core spectral bridge exists, but the current local reference package does not contain source-backed structure-factor/second-moment estimator support for accepting the observed calibration factor. | Package primary second-moment or finite-size correlation-length estimator sources before accepting calibration or rerunning exponent gates. |
+| `c_conserved_order_parameter` | implemented_as_conserved_order_spectral_v1_and_bridge_passed | Primary estimator-source candidates are now manifest-packaged, but formula extraction and mapping from the current RMS inverse-k proxy remain open. | Extract source formula boundaries for the second-moment estimator and either map or reject the current RMS inverse-k proxy before exponent gates. |
 | `warped_space_kappa_of_c` | not_accepted_not_primary | No formula-audit entry, unit closure, core opt-in mode, or scaling artifact currently accepts this path. | If pursued, start with formula/unit/provenance gate before code. |
 | `dynamic_game_landscape_beta_u` | not_accepted_not_primary | No state-variable policy, unit closure, stability gate, or artifact currently accepts dynamic beta_U. | If pursued, define state evolution, conservation/safety gates, and claim boundary first. |
 | `hidden_standalone_equation_risk` | mitigated_by_core_engine_path_gates | Future candidates still need explicit engine-path gates before claim interpretation. | Keep engine alignment gates mandatory for every new operator or estimator verifier. |
 
 ## Current Controller
 
-`Package primary second-moment or finite-size correlation-length estimator sources before accepting calibration or adding new warped-space/dynamic-game operators.`
+`Extract formula boundaries from the packaged primary estimator-source candidates before accepting calibration or adding new warped-space/dynamic-game operators.`
 
-Wave 29 finds zero local text-source matches for structure-factor, second-moment correlation length, Fourier estimator definition, or finite-size admissibility; external primary candidates are not yet packaged.
+Wave 30 packages three primary-source candidates and passes metadata coverage, but formula extraction and calibration acceptance remain blocked.
 
 ## Claim Boundary
 

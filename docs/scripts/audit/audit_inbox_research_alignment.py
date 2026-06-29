@@ -88,6 +88,10 @@ ARTIFACTS = {
     / "Result"
     / "artifacts"
     / "0_11_structure_factor_calibration_source_support_gate.json",
+    "wave30_source_manifest": TOPIC_DIR
+    / "Result"
+    / "artifacts"
+    / "0_11_structure_factor_source_manifest_gate.json",
 }
 
 
@@ -144,13 +148,13 @@ def build_artifact() -> dict[str, Any]:
         ),
     ]
     artifacts = {name: artifact_record(name, path) for name, path in ARTIFACTS.items()}
-    wave29 = artifacts["wave29_calibration_source_support"]
+    wave30 = artifacts["wave30_source_manifest"]
 
     source_packaging_pass = all(record["exists"] and record["sha256"] for record in sources)
     artifact_chain_pass = (
-        wave29["exists"]
-        and wave29["blocker_label"]
-        == "structure_factor_calibration_source_support_missing_locally"
+        wave30["exists"]
+        and wave30["blocker_label"]
+        == "structure_factor_source_manifest_packaged_formula_extraction_open"
     )
 
     claim_map = [
@@ -180,9 +184,10 @@ def build_artifact() -> dict[str, Any]:
                 "wave27_structure_factor_acceptance_rule",
                 "wave28_estimator_reconciliation",
                 "wave29_calibration_source_support",
+                "wave30_source_manifest",
             ],
-            "current_boundary": "Core spectral bridge exists, but the current local reference package does not contain source-backed structure-factor/second-moment estimator support for accepting the observed calibration factor.",
-            "next_action": "Package primary second-moment or finite-size correlation-length estimator sources before accepting calibration or rerunning exponent gates.",
+            "current_boundary": "Primary estimator-source candidates are now manifest-packaged, but formula extraction and mapping from the current RMS inverse-k proxy remain open.",
+            "next_action": "Extract source formula boundaries for the second-moment estimator and either map or reject the current RMS inverse-k proxy before exponent gates.",
         },
         {
             "inbox_claim_id": "warped_space_kappa_of_c",
@@ -212,6 +217,7 @@ def build_artifact() -> dict[str, Any]:
                 "wave27_structure_factor_acceptance_rule",
                 "wave28_estimator_reconciliation",
                 "wave29_calibration_source_support",
+                "wave30_source_manifest",
             ],
             "current_boundary": "Future candidates still need explicit engine-path gates before claim interpretation.",
             "next_action": "Keep engine alignment gates mandatory for every new operator or estimator verifier.",
@@ -233,8 +239,8 @@ def build_artifact() -> dict[str, Any]:
         "artifact_chain_gate": {
             "status": "PASS" if artifact_chain_pass else "BLOCKED",
             "required_condition": "The current 0.11 artifact chain must expose the latest controller.",
-            "latest_expected_blocker": "structure_factor_calibration_source_support_missing_locally",
-            "latest_observed_blocker": wave29["blocker_label"],
+            "latest_expected_blocker": "structure_factor_source_manifest_packaged_formula_extraction_open",
+            "latest_observed_blocker": wave30["blocker_label"],
         },
         "coverage_boundary_gate": {
             "status": "WARN",
@@ -244,8 +250,8 @@ def build_artifact() -> dict[str, Any]:
         },
         "next_controller_gate": {
             "status": "BLOCKED",
-            "required_condition": "No broad UET phase-transition claim may be promoted until local primary estimator sources are packaged and formula boundaries are recorded.",
-            "next_controller": "package_primary_second_moment_estimator_sources_before_calibration",
+            "required_condition": "No broad UET phase-transition claim may be promoted until source formulas are extracted and the current estimator is mapped or rejected.",
+            "next_controller": "extract_source_formula_boundary_for_second_moment_estimator",
         },
     }
 
@@ -254,15 +260,15 @@ def build_artifact() -> dict[str, Any]:
         "audit_id": "core_inbox_research_alignment_gate",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "status": "WARN",
-        "blocker_label": "inbox_claims_mapped_current_controller_estimator_source_packaging",
+        "blocker_label": "inbox_claims_mapped_current_controller_source_formula_extraction",
         "claim_class": "source_intake_alignment_only",
         "sources": sources,
         "artifacts": list(artifacts.values()),
         "claim_map": claim_map,
         "gates": gates,
         "recommended_next_wave": {
-            "step": "Package primary second-moment or finite-size correlation-length estimator sources before accepting calibration or adding new warped-space/dynamic-game operators.",
-            "reason": "Wave 29 finds zero local text-source matches for structure-factor, second-moment correlation length, Fourier estimator definition, or finite-size admissibility; external primary candidates are not yet packaged.",
+            "step": "Extract formula boundaries from the packaged primary estimator-source candidates before accepting calibration or adding new warped-space/dynamic-game operators.",
+            "reason": "Wave 30 packages three primary-source candidates and passes metadata coverage, but formula extraction and calibration acceptance remain blocked.",
         },
         "limitations": [
             "This audit does not validate any inbox claim as physics.",

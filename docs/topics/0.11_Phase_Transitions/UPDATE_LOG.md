@@ -1,6 +1,32 @@
 # Update Log: 0.11 Phase Transitions
 
 
+## Wave: Structure-Factor Estimator Source-Manifest Gate (Wave 30)
+
+**What changed:**
+- Added `Data/03_Research/structure_factor_estimator_source_manifest.json` with primary estimator-source candidates and claim boundaries.
+- Added `Research_Structure_Factor_Source_Manifest_Gate.py` and artifact `Result/artifacts/0_11_structure_factor_source_manifest_gate.json`.
+- Updated topic docs and the inbox alignment audit to move the controller from source-support absence to formula extraction/mapping.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Source_Manifest_Gate.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Source_Manifest_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `structure_factor_calibration_source_support_missing_locally` into `structure_factor_source_manifest_packaged_formula_extraction_open`.
+- The artifact reports `manifest_schema_gate == PASS` and `primary_source_metadata_gate == PASS`.
+- It also reports `local_formula_extraction_gate == BLOCKED` and `calibration_acceptance_gate == BLOCKED`.
+
+**Next controlling blocker:**
+- Extract source formula boundaries for second-moment/finite-size correlation-length estimators and map or reject the current RMS inverse-k proxy before calibration or exponent gates.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 30 packages source candidates for review but does not accept estimator formulas, calibration, exponent, universality, material, RG, or phase-transition-solution claims.
+
+---
+
+
+
 ## Wave: Structure-Factor Calibration Source-Support Gate (Wave 29)
 
 **What changed:**

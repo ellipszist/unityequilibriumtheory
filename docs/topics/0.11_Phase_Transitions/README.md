@@ -73,6 +73,7 @@ flowchart LR
 | Wave 27 structure-factor acceptance rule | Estimator acceptance preflight | `Result/artifacts/0_11_structure_factor_acceptance_rule_gate.json` | rule defined; current gridset fails domain-scale, absolute-length, and estimator-reconciliation gates |
 | Wave 28 estimator reconciliation | Estimator calibration triage | `Result/artifacts/0_11_structure_factor_estimator_reconciliation_gate.json` | ratio stable, but calibration is unaccepted and both absolute lengths decline L16->L20 |
 | Wave 29 calibration source support | Source-packaging triage | `Result/artifacts/0_11_structure_factor_calibration_source_support_gate.json` | local estimator-source support missing; package primary second-moment sources before calibration |
+| Wave 30 estimator source manifest | Source-manifest packaging | `Data/03_Research/structure_factor_estimator_source_manifest.json`; `Result/artifacts/0_11_structure_factor_source_manifest_gate.json` | primary metadata packaged; formula extraction and calibration still blocked |
 | Universal phase-transition theory | Not closed | limitations and formula audit | do not claim full proof |
 
 ## 5x4 Grid Structure
@@ -136,5 +137,6 @@ python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exp
 - The Wave 27 acceptance preflight defines the missing rule but does not clear it: candidate grids `L=12,16,20` exist, while `L=8` is excluded, `absolute_length_consistency_gate == BLOCKED`, and `estimator_reconciliation_gate == BLOCKED`.
 - The Wave 28 reconciliation gate finds the structure-factor/axis-lower ratio is stable (`2.6849` at L16 and `2.6261` at L20), but calibration remains unaccepted and both axis-lower and structure-factor absolute lengths decline from L16 to L20.
 - The Wave 29 source-support gate finds zero local text-source matches for structure-factor, second-moment correlation length, Fourier estimator definition, or finite-size admissibility, so calibration acceptance is blocked until primary estimator sources are packaged.
+- The Wave 30 source-manifest gate packages three primary-source candidates and passes metadata coverage, but `local_formula_extraction_gate` and `calibration_acceptance_gate` remain `BLOCKED`.
 
 *Status note: internal critical-exponent benchmark and formula-audit hardening gate.*

@@ -779,3 +779,33 @@
 - Interpretation:
   - The source-backed path is not ready locally.
   - The next useful work is to package primary second-moment/finite-size estimator sources with formula boundaries, or choose the window/dynamics repair path without pretending the calibration is accepted.
+
+
+## Wave 30 Structure-Factor Estimator Source-Manifest Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Source_Manifest_Gate.py`
+- Artifact target:
+  - `Result/artifacts/0_11_structure_factor_source_manifest_gate.json`
+- Source manifest:
+  - `Data/03_Research/structure_factor_estimator_source_manifest.json`
+- Purpose:
+  - Package primary estimator-source candidates with DOI/URL, formula role, and claim boundary.
+  - Keep metadata packaging separate from formula extraction and calibration acceptance.
+- Required gates:
+  - `wave29_chain_gate.status == PASS`
+  - `manifest_schema_gate.status == PASS`
+  - `primary_source_metadata_gate.status == PASS` before source-review work can proceed.
+  - `local_formula_extraction_gate.status == PASS` before source formulas can support calibration.
+  - `calibration_acceptance_gate.status == PASS` before any estimator rescaling or exponent rerun.
+- Current Wave 30 result:
+  - overall status `WARN`
+  - `wave29_chain_gate == PASS`
+  - `manifest_schema_gate == PASS`
+  - `primary_source_metadata_gate == PASS` with three ready source rows
+  - `local_formula_extraction_gate == BLOCKED`
+  - `calibration_acceptance_gate == BLOCKED`
+  - `next_path_gate == BLOCKED`
+- Interpretation:
+  - The source candidates are now packaged for review, but no formula has been extracted or mapped to the current estimator.
+  - The next useful work is source-formula extraction and a map/reject decision for the current RMS inverse-k proxy.

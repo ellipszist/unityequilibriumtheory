@@ -489,15 +489,33 @@ Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_fa
 This narrows the blocker from uncalibrated ratio to a source-packaging gap. The local reference
 package does not yet justify accepting the calibration factor or current RMS inverse-k proxy.
 
+## Wave 30 Structure-Factor Estimator Source-Manifest Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_source_manifest_gate.json`
+Manifest: `docs/topics/0.11_Phase_Transitions/Data/03_Research/structure_factor_estimator_source_manifest.json`
+
+- `wave29_chain_gate`: `PASS`
+- `manifest_schema_gate`: `PASS`
+- `primary_source_metadata_gate`: `PASS`
+- `local_formula_extraction_gate`: `BLOCKED`
+- `calibration_acceptance_gate`: `BLOCKED`
+- `next_path_gate`: `BLOCKED`
+- ready source rows: `3`
+- local full-text source count: `0`
+- metadata-only source count: `3`
+
+This narrows the blocker again. Primary-source candidates are now manifest-packaged for
+review, but formula extraction and estimator mapping remain open.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 29
-now records the next controller as `structure_factor_calibration_source_support_missing_locally`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 30
+now records the next controller as `structure_factor_source_manifest_packaged_formula_extraction_open`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should package primary
-second-moment or finite-size correlation-length estimator sources with formula boundaries before
-accepting calibration or rerunning exponent/universality gates.
+Keep all candidate operators as opt-in diagnostics. The next wave should extract source formula
+boundaries for second-moment/finite-size correlation-length estimators and map or reject the
+current RMS inverse-k proxy before accepting calibration or rerunning exponent/universality gates.

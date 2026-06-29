@@ -38,3 +38,4 @@
 - Wave 27 defines a topic-derived structure-factor acceptance preflight, but the current artifact chain fails it: `L=8` is excluded as domain-scale, `L20/L16` absolute `xi` is `0.9599`, and the structure-factor/axis-lower estimator ratio remains `2.6261`.
 - Wave 28 narrows estimator disagreement: the structure-factor/axis-lower ratio is stable across L16 and L20 (`~2.66`), but that factor is not source-backed or derived and both estimators show declining absolute length from L16 to L20.
 - Wave 29 scans the local reference package and finds no text-source support for structure-factor, second-moment correlation length, Fourier estimator definition, or finite-size admissibility; external source candidates remain unaccepted until packaged.
+- Wave 30 packages three primary estimator-source candidates in a manifest, but formula extraction, local full-text support, and calibration acceptance remain blocked.
