@@ -870,3 +870,34 @@
 - Interpretation:
   - The replacement formula can be implemented, but the current single-snapshot conserved-order lane does not provide the source-family `S(0)` susceptibility observable.
   - The next useful work is to derive an ensemble/connected susceptibility second-moment lane or repair the window/dynamics path before exponent claims are rerun.
+
+## Wave 33 Ensemble Susceptibility S0 Lane Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Ensemble_Susceptibility_Lane_Gate.py`
+- Artifact target:
+  - `Result/artifacts/0_11_structure_factor_ensemble_susceptibility_lane_gate.json`
+- Purpose:
+  - Separate the source-closer ensemble magnetization `S(0)` lane from the spatial-variance diagnostic proxy.
+  - Prevent `N * Var_space(C)` from silently replacing source-family zero-mode susceptibility.
+- Required gates:
+  - `wave32_chain_gate.status == PASS`
+  - `ensemble_susceptibility_definition_gate.status == PASS`
+  - `raw_ensemble_susceptibility_gate.status == PASS` before a source-closer `S(0)` lane can feed a replacement estimator.
+  - `source_equivalence_gate.status == PASS` before any `S(0)` proxy can be accepted for exponent use.
+  - `finite_size_trend_gate.status == PASS` before exponent or universality gates may rerun.
+  - `replacement_acceptance_gate.status == PASS` before replacing the RMS proxy.
+- Current Wave 33 result:
+  - overall status `WARN`
+  - `wave32_chain_gate == PASS`
+  - `ensemble_susceptibility_definition_gate == PASS`
+  - `raw_ensemble_susceptibility_gate == BLOCKED`
+  - `spatial_variance_proxy_gate == WARN`
+  - `source_equivalence_gate == BLOCKED`
+  - `finite_size_trend_gate == BLOCKED`
+  - ensemble valid groups: none
+  - spatial proxy valid groups: `L16_4000`, `L20_4000`
+- Interpretation:
+  - The source-closer ensemble magnetization lane is blocked by the conserved-mean constraint.
+  - The spatial variance proxy can produce numbers, but it is not accepted as source-equivalent `S(0)`.
+  - The next useful work is to source-back a conserved-order susceptibility policy, switch to a source-backed finite-k/canonical estimator, or repair the window/dynamics path.

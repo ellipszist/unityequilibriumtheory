@@ -543,15 +543,33 @@ Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_fa
 This narrows the blocker again. The source-family formula can be implemented, but the current
 single-snapshot conserved-order lane does not provide a valid `S(0)` susceptibility observable.
 
+## Wave 33 Ensemble Susceptibility S0 Lane Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_ensemble_susceptibility_lane_gate.json`
+
+- `wave32_chain_gate`: `PASS`
+- `ensemble_susceptibility_definition_gate`: `PASS`
+- `raw_ensemble_susceptibility_gate`: `BLOCKED`
+- `spatial_variance_proxy_gate`: `WARN`
+- `source_equivalence_gate`: `BLOCKED`
+- `finite_size_trend_gate`: `BLOCKED`
+- `replacement_acceptance_gate`: `BLOCKED`
+- ensemble valid groups: none
+- spatial proxy valid groups: `L16_4000`, `L20_4000`
+
+This narrows the blocker from missing `S(0)` implementation to a conserved-order susceptibility
+policy gap. The source-closer ensemble lane is blocked by conserved mean, while the spatial
+variance lane remains diagnostic-only.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 32
-now records the next controller as `lowest_mode_second_moment_candidate_blocked_by_zero_mode_snapshot_observable`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 33
+now records the next controller as `ensemble_susceptibility_lane_blocked_by_conserved_mean_constraint`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should derive an
-ensemble/connected susceptibility second-moment lane or repair the window/dynamics path before
-accepting calibration or rerunning exponent/universality gates.
+Keep all candidate operators as opt-in diagnostics. The next wave should source-back a
+conserved-order susceptibility policy, switch to a source-backed finite-k/canonical estimator,
+or repair the window/dynamics path before accepting calibration or rerunning exponent/universality gates.

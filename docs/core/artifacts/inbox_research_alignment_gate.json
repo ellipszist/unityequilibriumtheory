@@ -132,12 +132,21 @@
       "exists": true,
       "id": "wave32_lowest_mode_candidate",
       "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_lowest_mode_candidate_gate.json",
-      "sha256": "6962672646a5bb2fb9677d35258be3e9ef986564ebf71086f468a22efcd9ab9d",
+      "sha256": "6e52921568e2496245bd2d59bca4d6915a4bbaf302bdd7be5fdc9b9efadef116",
+      "status": "WARN"
+    },
+    {
+      "blocker_label": "ensemble_susceptibility_lane_blocked_by_conserved_mean_constraint",
+      "claim_class": "susceptibility_lane_diagnostic_only",
+      "exists": true,
+      "id": "wave33_ensemble_susceptibility_lane",
+      "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_ensemble_susceptibility_lane_gate.json",
+      "sha256": "8edacca23823157230ee830d48750c3d082b36c32a6f4deed988ee6c9725b586",
       "status": "WARN"
     }
   ],
   "audit_id": "core_inbox_research_alignment_gate",
-  "blocker_label": "inbox_claims_mapped_current_controller_zero_mode_observable_gap",
+  "blocker_label": "inbox_claims_mapped_current_controller_conserved_susceptibility_policy_gap",
   "claim_class": "source_intake_alignment_only",
   "claim_map": [
     {
@@ -154,7 +163,7 @@
       "next_action": "Do not retune A/B coefficients as the next default path; only revisit with a new formula/unit gate."
     },
     {
-      "current_boundary": "The lowest-mode source-family candidate is implemented, but the current single-snapshot conserved-order lane lacks a valid S(0) susceptibility observable.",
+      "current_boundary": "The ensemble susceptibility lane is tested and source-closer S(0) remains blocked by the conserved-mean constraint; spatial variance stays diagnostic-only.",
       "current_repo_state": "implemented_as_conserved_order_spectral_v1_and_bridge_passed",
       "evidence": [
         "wave16_spectral_core",
@@ -167,11 +176,12 @@
         "wave29_calibration_source_support",
         "wave30_source_manifest",
         "wave31_formula_boundary",
-        "wave32_lowest_mode_candidate"
+        "wave32_lowest_mode_candidate",
+        "wave33_ensemble_susceptibility_lane"
       ],
       "inbox_claim_id": "c_conserved_order_parameter",
       "inbox_claim_summary": "Use conserved-order/Cahn-Hilliard-like dynamics so mass/order is transported rather than locally destroyed.",
-      "next_action": "Derive an ensemble/connected susceptibility second-moment lane or repair the window/dynamics path before exponent gates."
+      "next_action": "Source-back a conserved-order susceptibility policy, switch to a source-backed finite-k/canonical estimator, or repair the window/dynamics path before exponent gates."
     },
     {
       "current_boundary": "No formula-audit entry, unit closure, core opt-in mode, or scaling artifact currently accepts this path.",
@@ -206,7 +216,8 @@
         "wave29_calibration_source_support",
         "wave30_source_manifest",
         "wave31_formula_boundary",
-        "wave32_lowest_mode_candidate"
+        "wave32_lowest_mode_candidate",
+        "wave33_ensemble_susceptibility_lane"
       ],
       "inbox_claim_id": "hidden_standalone_equation_risk",
       "inbox_claim_summary": "Earlier tests risked bypassing docs/core/uet_master_equation.py with standalone equations.",
@@ -219,8 +230,8 @@
   },
   "gates": {
     "artifact_chain_gate": {
-      "latest_expected_blocker": "lowest_mode_second_moment_candidate_blocked_by_zero_mode_snapshot_observable",
-      "latest_observed_blocker": "lowest_mode_second_moment_candidate_blocked_by_zero_mode_snapshot_observable",
+      "latest_expected_blocker": "ensemble_susceptibility_lane_blocked_by_conserved_mean_constraint",
+      "latest_observed_blocker": "ensemble_susceptibility_lane_blocked_by_conserved_mean_constraint",
       "required_condition": "The current 0.11 artifact chain must expose the latest controller.",
       "status": "PASS"
     },
@@ -242,8 +253,8 @@
       "status": "PASS"
     },
     "next_controller_gate": {
-      "next_controller": "derive_ensemble_susceptibility_second_moment_lane_or_repair_window_dynamics",
-      "required_condition": "No broad UET phase-transition claim may be promoted until a valid S(0) susceptibility lane exists for the source-family estimator or the window/dynamics path repairs accepted-estimator lengths.",
+      "next_controller": "source_back_conserved_order_susceptibility_or_finite_k_estimator_policy",
+      "required_condition": "No broad UET phase-transition claim may be promoted until conserved-order S(0) policy is source-backed or the analysis switches to a source-backed finite-k/canonical estimator.",
       "status": "BLOCKED"
     }
   },
@@ -253,8 +264,8 @@
     "The raw inbox directory remains intake evidence; artifact gates, formula audits, and topic verifiers control claim wording."
   ],
   "recommended_next_wave": {
-    "reason": "Wave 32 implements the literal lowest-mode candidate but blocks replacement because the current snapshot lane lacks a valid S(0) susceptibility observable.",
-    "step": "Derive an ensemble/connected susceptibility second-moment lane or repair the window/dynamics path before accepting calibration or adding new warped-space/dynamic-game operators."
+    "reason": "Wave 33 tests ensemble and spatial-variance S0 lanes; the source-closer ensemble lane is blocked by conserved mean and the spatial proxy remains diagnostic-only.",
+    "step": "Source-back a conserved-order susceptibility policy, switch to a source-backed finite-k/canonical estimator, or repair the window/dynamics path before accepting calibration or adding new warped-space/dynamic-game operators."
   },
   "schema_version": "1.0",
   "sources": [
@@ -281,5 +292,5 @@
     }
   ],
   "status": "WARN",
-  "timestamp_utc": "2026-06-29T23:32:33.607518+00:00"
+  "timestamp_utc": "2026-06-29T23:43:49.037098+00:00"
 }

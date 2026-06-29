@@ -27,7 +27,7 @@ stored as a normalized external archive.
 | `critical_exponents.json` | critical exponents are dimensionless | Primary beta benchmark |
 | `NIST_Critical_Points.csv` | `Tc` K, `Pc` MPa, critical density kg/m^3 | Future material critical-point benchmark |
 | `structure_factor_estimator_source_manifest.json` | source metadata and claim-boundary roles | Source candidate package feeding Wave 31 formula-boundary gate |
-| `structure_factor_estimator_formula_boundary.json` | source-family formulas and current-proxy mismatch decision | Feeds Wave 32; latest controller is ensemble/connected susceptibility lane or window/dynamics repair |
+| `structure_factor_estimator_formula_boundary.json` | source-family formulas and current-proxy mismatch decision | Feeds Waves 32-33; latest controller is source-backed conserved-order susceptibility policy or finite-k estimator policy |
 
 Repository note:
 

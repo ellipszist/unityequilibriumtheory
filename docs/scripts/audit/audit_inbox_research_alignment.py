@@ -100,6 +100,10 @@ ARTIFACTS = {
     / "Result"
     / "artifacts"
     / "0_11_structure_factor_lowest_mode_candidate_gate.json",
+    "wave33_ensemble_susceptibility_lane": TOPIC_DIR
+    / "Result"
+    / "artifacts"
+    / "0_11_structure_factor_ensemble_susceptibility_lane_gate.json",
 }
 
 
@@ -156,13 +160,13 @@ def build_artifact() -> dict[str, Any]:
         ),
     ]
     artifacts = {name: artifact_record(name, path) for name, path in ARTIFACTS.items()}
-    wave32 = artifacts["wave32_lowest_mode_candidate"]
+    wave33 = artifacts["wave33_ensemble_susceptibility_lane"]
 
     source_packaging_pass = all(record["exists"] and record["sha256"] for record in sources)
     artifact_chain_pass = (
-        wave32["exists"]
-        and wave32["blocker_label"]
-        == "lowest_mode_second_moment_candidate_blocked_by_zero_mode_snapshot_observable"
+        wave33["exists"]
+        and wave33["blocker_label"]
+        == "ensemble_susceptibility_lane_blocked_by_conserved_mean_constraint"
     )
 
     claim_map = [
@@ -195,9 +199,10 @@ def build_artifact() -> dict[str, Any]:
                 "wave30_source_manifest",
                 "wave31_formula_boundary",
                 "wave32_lowest_mode_candidate",
+                "wave33_ensemble_susceptibility_lane",
             ],
-            "current_boundary": "The lowest-mode source-family candidate is implemented, but the current single-snapshot conserved-order lane lacks a valid S(0) susceptibility observable.",
-            "next_action": "Derive an ensemble/connected susceptibility second-moment lane or repair the window/dynamics path before exponent gates.",
+            "current_boundary": "The ensemble susceptibility lane is tested and source-closer S(0) remains blocked by the conserved-mean constraint; spatial variance stays diagnostic-only.",
+            "next_action": "Source-back a conserved-order susceptibility policy, switch to a source-backed finite-k/canonical estimator, or repair the window/dynamics path before exponent gates.",
         },
         {
             "inbox_claim_id": "warped_space_kappa_of_c",
@@ -230,6 +235,7 @@ def build_artifact() -> dict[str, Any]:
                 "wave30_source_manifest",
                 "wave31_formula_boundary",
                 "wave32_lowest_mode_candidate",
+                "wave33_ensemble_susceptibility_lane",
             ],
             "current_boundary": "Future candidates still need explicit engine-path gates before claim interpretation.",
             "next_action": "Keep engine alignment gates mandatory for every new operator or estimator verifier.",
@@ -251,8 +257,8 @@ def build_artifact() -> dict[str, Any]:
         "artifact_chain_gate": {
             "status": "PASS" if artifact_chain_pass else "BLOCKED",
             "required_condition": "The current 0.11 artifact chain must expose the latest controller.",
-            "latest_expected_blocker": "lowest_mode_second_moment_candidate_blocked_by_zero_mode_snapshot_observable",
-            "latest_observed_blocker": wave32["blocker_label"],
+            "latest_expected_blocker": "ensemble_susceptibility_lane_blocked_by_conserved_mean_constraint",
+            "latest_observed_blocker": wave33["blocker_label"],
         },
         "coverage_boundary_gate": {
             "status": "WARN",
@@ -262,8 +268,8 @@ def build_artifact() -> dict[str, Any]:
         },
         "next_controller_gate": {
             "status": "BLOCKED",
-            "required_condition": "No broad UET phase-transition claim may be promoted until a valid S(0) susceptibility lane exists for the source-family estimator or the window/dynamics path repairs accepted-estimator lengths.",
-            "next_controller": "derive_ensemble_susceptibility_second_moment_lane_or_repair_window_dynamics",
+            "required_condition": "No broad UET phase-transition claim may be promoted until conserved-order S(0) policy is source-backed or the analysis switches to a source-backed finite-k/canonical estimator.",
+            "next_controller": "source_back_conserved_order_susceptibility_or_finite_k_estimator_policy",
         },
     }
 
@@ -272,15 +278,15 @@ def build_artifact() -> dict[str, Any]:
         "audit_id": "core_inbox_research_alignment_gate",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "status": "WARN",
-        "blocker_label": "inbox_claims_mapped_current_controller_zero_mode_observable_gap",
+        "blocker_label": "inbox_claims_mapped_current_controller_conserved_susceptibility_policy_gap",
         "claim_class": "source_intake_alignment_only",
         "sources": sources,
         "artifacts": list(artifacts.values()),
         "claim_map": claim_map,
         "gates": gates,
         "recommended_next_wave": {
-            "step": "Derive an ensemble/connected susceptibility second-moment lane or repair the window/dynamics path before accepting calibration or adding new warped-space/dynamic-game operators.",
-            "reason": "Wave 32 implements the literal lowest-mode candidate but blocks replacement because the current snapshot lane lacks a valid S(0) susceptibility observable.",
+            "step": "Source-back a conserved-order susceptibility policy, switch to a source-backed finite-k/canonical estimator, or repair the window/dynamics path before accepting calibration or adding new warped-space/dynamic-game operators.",
+            "reason": "Wave 33 tests ensemble and spatial-variance S0 lanes; the source-closer ensemble lane is blocked by conserved mean and the spatial proxy remains diagnostic-only.",
         },
         "limitations": [
             "This audit does not validate any inbox claim as physics.",

@@ -2,6 +2,33 @@
 
 
 
+## Wave: Ensemble Susceptibility S0 Lane Gate (Wave 33)
+
+**What changed:**
+- Added `Research_Structure_Factor_Ensemble_Susceptibility_Lane_Gate.py` to separate ensemble magnetization `S(0)` from the spatial-variance diagnostic proxy.
+- Added artifact `Result/artifacts/0_11_structure_factor_ensemble_susceptibility_lane_gate.json`.
+- Updated topic docs and the inbox alignment audit to move the controller from missing snapshot `S(0)` to a conserved-order susceptibility/finite-k estimator policy gap.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Ensemble_Susceptibility_Lane_Gate.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Ensemble_Susceptibility_Lane_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `lowest_mode_second_moment_candidate_blocked_by_zero_mode_snapshot_observable` into `ensemble_susceptibility_lane_blocked_by_conserved_mean_constraint`.
+- The artifact reports `ensemble_susceptibility_definition_gate == PASS`.
+- It also reports `raw_ensemble_susceptibility_gate == BLOCKED`, `source_equivalence_gate == BLOCKED`, and `replacement_acceptance_gate == BLOCKED`.
+- `spatial_variance_proxy_gate == WARN`: the proxy is numerically valid for L16/L20 but remains diagnostic-only and not source-equivalent.
+
+**Next controlling blocker:**
+- Source-back a conserved-order susceptibility policy, switch to a source-backed finite-k/canonical estimator, or repair the window/dynamics path before exponent gates.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 33 does not accept `S(0)`, the spatial variance proxy, estimator replacement, calibration, exponent, universality, material, RG, or phase-transition-solution claims.
+
+---
+
+
+
 ## Wave: Lowest-Mode Second-Moment Estimator Candidate Gate (Wave 32)
 
 **What changed:**

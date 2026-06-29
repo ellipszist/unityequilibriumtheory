@@ -93,6 +93,7 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 - The Wave 30 source-manifest verifier packages primary estimator-source metadata but keeps formula extraction and calibration acceptance blocked.
 - The Wave 31 formula-boundary verifier extracts the source-family second-moment estimator relation and blocks claim use of the current RMS inverse-k proxy.
 - The Wave 32 lowest-mode candidate verifier implements that source-family relation on the existing L16/L20 fields and blocks replacement because the single-snapshot conserved-order lane lacks a valid `S(0)` susceptibility observable.
+- The Wave 33 susceptibility-lane verifier tests ensemble magnetization `S(0)` and spatial-variance proxy lanes, then blocks claim use because the source-closer lane is constrained by conserved mean while the spatial proxy is not source-equivalent.
 - Cahn-Hilliard simulations should be treated as normalized mechanism diagnostics until seed, grid, morphology, and material-unit gates are added.
 
 ## Dependency policy
