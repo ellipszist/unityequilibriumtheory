@@ -1,6 +1,32 @@
 # Update Log: 0.11 Phase Transitions
 
 
+## Wave: Structure-Factor / Axis-Estimator Reconciliation Gate (Wave 28)
+
+**What changed:**
+- Added `Research_Structure_Factor_Estimator_Reconciliation_Gate.py` to compare structure-factor and axis-threshold estimators at L16 and L20.
+- Added artifact `Result/artifacts/0_11_structure_factor_estimator_reconciliation_gate.json`.
+- Updated topic docs and the inbox alignment audit to move the controller from generic estimator reconciliation to source-backed calibration or window/dynamics repair.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Estimator_Reconciliation_Gate.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Estimator_Reconciliation_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `structure_factor_acceptance_rule_defined_current_evidence_fails_consistency` into `structure_factor_estimator_ratio_stable_but_uncalibrated_and_lengths_decline`.
+- The artifact reports `ratio_stability_gate == PASS`: structure-factor/axis-lower ratio is `2.6849` at L16 and `2.6261` at L20.
+- It also reports `magnitude_reconciliation_gate == BLOCKED`, `calibration_factor_gate == BLOCKED`, and `shared_absolute_length_trend_gate == BLOCKED`.
+
+**Next controlling blocker:**
+- Source-back or derive the estimator calibration factor, or repair the window/dynamics so absolute lengths grow from L16 to L20, before rerunning exponent or universality gates.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 28 shows estimator disagreement is structured but not solved; it does not support accepted critical length, exponent, universality, material, RG, or phase-transition-solution claims.
+
+---
+
+
+
 ## Wave: Structure-Factor Acceptance-Rule Preflight (Wave 27)
 
 **What changed:**

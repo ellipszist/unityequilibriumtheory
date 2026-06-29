@@ -722,3 +722,32 @@
 - Interpretation:
   - The missing-rule blocker is now narrower: a topic-derived preflight rule exists, but the current evidence does not satisfy it.
   - The next useful work is estimator reconciliation, source-backed calibration, or a dynamics/window repair that makes absolute `xi_sf` consistent before exponent claims are rerun.
+
+
+## Wave 28 Structure-Factor / Axis-Estimator Reconciliation Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Estimator_Reconciliation_Gate.py`
+- Artifact target:
+  - `Result/artifacts/0_11_structure_factor_estimator_reconciliation_gate.json`
+- Purpose:
+  - Test whether the Wave 27 estimator disagreement is unstable/noisy or a stable but unaccepted calibration-factor gap.
+  - Separate estimator calibration from the shared absolute-length decline seen between L16 and L20.
+- Required gates:
+  - `wave27_chain_gate.status == PASS`
+  - `ratio_stability_gate.status == PASS` before studying any calibration factor.
+  - `magnitude_reconciliation_gate.status == PASS` or an explicit source/derivation before accepting the factor.
+  - `shared_absolute_length_trend_gate.status == PASS` before treating the issue as estimator-only.
+  - `calibration_factor_gate.status == PASS` before exponent gates may use a rescaled estimator.
+  - `reconciliation_application_gate.status == PASS` before rerunning exponent or universality gates.
+- Current Wave 28 result:
+  - overall status `WARN`
+  - `wave27_chain_gate == PASS`
+  - `ratio_stability_gate == PASS` with ratio drift `0.0219`
+  - `magnitude_reconciliation_gate == BLOCKED` because the raw ratio remains above `2.0`
+  - `shared_absolute_length_trend_gate == BLOCKED`: structure-factor `L20/L16 = 0.9548`, axis-lower `L20/L16 = 0.9762`
+  - `calibration_factor_gate == BLOCKED` because the candidate factor `2.6555` is observed but not source-backed or derived
+  - `reconciliation_application_gate == BLOCKED`
+- Interpretation:
+  - The estimator disagreement is structured enough to study, but not accepted.
+  - The next useful work is either source-backed estimator calibration or a window/dynamics repair that restores absolute-length growth before exponent gates are rerun.

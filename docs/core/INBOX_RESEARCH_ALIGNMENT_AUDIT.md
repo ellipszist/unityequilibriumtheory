@@ -21,16 +21,16 @@
 | Inbox claim | Current repo state | Current boundary | Next action |
 | :-- | :-- | :-- | :-- |
 | `a_b_multiplicative_info_plus_gradient_game` | implemented_as_opt_in_diagnostic_then_blocked_by_scaling_gates | A/B candidate availability and safety are not enough; beta and correlation gates stayed diagnostic or blocked. | Do not retune A/B coefficients as the next default path; only revisit with a new formula/unit gate. |
-| `c_conserved_order_parameter` | implemented_as_conserved_order_spectral_v1_and_bridge_passed | Core spectral bridge exists and a topic-derived acceptance preflight now exists, but the current structure-factor evidence fails domain-scale exclusion, absolute-length consistency, and estimator-reconciliation gates. | Repair absolute-length consistency and reconcile the structure-factor/axis estimators before exponent or universality claims. |
+| `c_conserved_order_parameter` | implemented_as_conserved_order_spectral_v1_and_bridge_passed | Core spectral bridge exists and a topic-derived acceptance preflight now exists. Wave 28 shows the structure-factor/axis ratio is stable, but still uncalibrated, and both estimators show declining absolute length from L16 to L20. | Source-back or derive the estimator calibration factor, or repair the simulation window/dynamics so absolute lengths grow before exponent or universality claims. |
 | `warped_space_kappa_of_c` | not_accepted_not_primary | No formula-audit entry, unit closure, core opt-in mode, or scaling artifact currently accepts this path. | If pursued, start with formula/unit/provenance gate before code. |
 | `dynamic_game_landscape_beta_u` | not_accepted_not_primary | No state-variable policy, unit closure, stability gate, or artifact currently accepts dynamic beta_U. | If pursued, define state evolution, conservation/safety gates, and claim boundary first. |
 | `hidden_standalone_equation_risk` | mitigated_by_core_engine_path_gates | Future candidates still need explicit engine-path gates before claim interpretation. | Keep engine alignment gates mandatory for every new operator or estimator verifier. |
 
 ## Current Controller
 
-`Repair structure-factor absolute-length consistency and estimator reconciliation before adding new warped-space or dynamic-game operators.`
+`Source-back or derive estimator calibration, or repair the window/dynamics so absolute lengths grow before adding new warped-space or dynamic-game operators.`
 
-Wave 27 defines a topic-derived preflight rule; the current artifact chain fails it because L8 is domain-scale, L20 absolute xi drops below L16, and structure-factor/axis estimators remain unreconciled.
+Wave 28 shows the structure-factor/axis-lower ratio is stable across L16 and L20, but the ratio is uncalibrated and both estimators decline in absolute length from L16 to L20.
 
 ## Claim Boundary
 

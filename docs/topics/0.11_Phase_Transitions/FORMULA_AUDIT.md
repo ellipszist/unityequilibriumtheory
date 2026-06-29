@@ -59,6 +59,7 @@ demonstrations.
 | `PT-CONSERVED-ORDER-SPECTRAL-STRUCTURE-FACTOR-MULTIGRID` | replicate `xi_sf = 2*pi / sqrt(sum(S(k) k^2) / sum(S(k)))` over `L=8,12,16` and two seed sets | `Research_Conserved_Order_Spectral_Structure_Factor_Multigrid_Calibration.py`; `0_11_conserved_order_spectral_structure_factor_multigrid_calibration.json` | normalized 3D lattice units; structure-factor `xi/L`, absolute `xi`, grid-size trend | `topic_derived_relation` | `diagnostic calibration gate` | domain-scale saturation controller | Wave 25 passes margin replication but blocks calibration: median `xi/L` is `0.997` at `L=8`, `0.717` at `L=12`, and `0.566` at `L=16`. | Add larger-grid/source-backed estimator calibration or derived acceptance rule before exponent claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-STRUCTURE-FACTOR-L20-PROBE` | rerun `xi_sf` on `L=20` and extend the median trend from Wave 25 | `Research_Conserved_Order_Spectral_Structure_Factor_L20_Probe.py`; `0_11_conserved_order_spectral_structure_factor_l20_probe.json` | normalized 3D lattice units; L20 `xi/L`, absolute `xi`, estimator ratio to axis threshold | `topic_derived_relation` | `diagnostic larger-grid probe` | acceptance-rule controller | Wave 26 passes L20 relief (`median xi/L = 0.4347`) but blocks acceptance-rule use; L20 absolute xi is below L16 (`ratio = 0.9599`) and estimator reconciliation is still missing. | Create source-backed or derived acceptance rule before exponent claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-STRUCTURE-FACTOR-ACCEPTANCE-RULE` | preflight rule excludes domain-scale grids, requires >=3 admissible grids, absolute-`xi` consistency, and estimator reconciliation | `Research_Structure_Factor_Acceptance_Rule_Gate.py`; `0_11_structure_factor_acceptance_rule_gate.json` | normalized 3D lattice units; `xi_sf/L`, absolute `xi_sf`, grid subset, estimator ratio | `topic_derived_relation` | `heuristic preflight, not physics acceptance` | claim-boundary gate | Wave 27 defines the rule but current evidence fails: `L=8` excluded, `L20/L16 = 0.9599`, and estimator ratio `2.6261` is unreconciled. | Repair absolute-length consistency or add a source-backed estimator benchmark before exponent claims. |
+| `PT-CONSERVED-ORDER-SPECTRAL-ESTIMATOR-RECONCILIATION` | compare `xi_sf / xi_axis_lower` at L16 and L20; candidate calibration factor is the observed ratio average | `Research_Structure_Factor_Estimator_Reconciliation_Gate.py`; `0_11_structure_factor_estimator_reconciliation_gate.json` | normalized grid units; estimator ratio dimensionless; calibration factor unaccepted | `topic_derived_relation` | `diagnostic reconciliation only` | estimator-calibration gate | Wave 28 finds stable ratio drift (`0.0219`) but blocks magnitude/provenance and absolute-length trend. | Source-back or derive calibration, or repair the window/dynamics before exponent claims. |
 
 ## Wave 5 Formula Boundary
 
@@ -248,3 +249,11 @@ fails the preflight because `L=8` is domain-scale, absolute `xi_sf` drops from `
 and the structure-factor/axis-lower estimator disagreement has no reconciliation rule. The
 allowed claim is limited to: a conservative preflight rule exists and blocks exponent use of
 the current estimator evidence. It is not an accepted critical length or universality result.
+
+## Wave 28 Estimator-Reconciliation Boundary
+
+The estimator-reconciliation gate shows the structure-factor/axis-lower ratio is stable enough
+to study as a calibration-gap candidate (`2.6849` at L16, `2.6261` at L20; drift `0.0219`).
+That does not accept the factor: the observed calibration remains source-free, the raw ratio
+exceeds the unreconciled-ratio ceiling, and both estimators show declining absolute length from
+L16 to L20. The allowed claim is limited to: disagreement is structured, not solved.

@@ -450,16 +450,37 @@ This narrows the blocker from missing rule to failed rule application. A conserv
 topic-derived preflight exists, but the current structure-factor evidence still cannot feed
 exponent or universality gates.
 
+## Wave 28 Structure-Factor / Axis-Estimator Reconciliation Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_estimator_reconciliation_gate.json`
+
+- `wave27_chain_gate`: `PASS`
+- `ratio_stability_gate`: `PASS`
+- `magnitude_reconciliation_gate`: `BLOCKED`
+- `shared_absolute_length_trend_gate`: `BLOCKED`
+- `calibration_factor_gate`: `BLOCKED`
+- `reconciliation_application_gate`: `BLOCKED`
+- `claim_boundary_gate`: `WARN`
+- ratio L16: `2.6849`
+- ratio L20: `2.6261`
+- relative ratio drift: `0.0219`
+- candidate calibration factor: `2.6555`
+- structure-factor L20/L16 absolute `xi`: `0.9548`
+- axis-lower L20/L16 absolute `xi`: `0.9762`
+
+This narrows the blocker again: estimator disagreement is structured and stable enough to study,
+but no accepted calibration exists and both estimator families still show declining absolute
+length from L16 to L20.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 27
-now records the next controller as `structure_factor_acceptance_rule_defined_current_evidence_fails_consistency`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 28
+now records the next controller as `structure_factor_estimator_ratio_stable_but_uncalibrated_and_lengths_decline`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should repair
-structure-factor absolute-length consistency and reconcile structure-factor versus axis-threshold
-estimators, or source-back an external estimator benchmark, before rerunning exponent or
-universality gates.
+Keep all candidate operators as opt-in diagnostics. The next wave should either source-back or
+derive the estimator calibration factor, or repair the window/dynamics so absolute lengths grow
+from L16 to L20, before rerunning exponent or universality gates.

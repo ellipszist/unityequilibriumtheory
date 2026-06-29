@@ -80,6 +80,10 @@ ARTIFACTS = {
     / "Result"
     / "artifacts"
     / "0_11_structure_factor_acceptance_rule_gate.json",
+    "wave28_estimator_reconciliation": TOPIC_DIR
+    / "Result"
+    / "artifacts"
+    / "0_11_structure_factor_estimator_reconciliation_gate.json",
 }
 
 
@@ -136,13 +140,13 @@ def build_artifact() -> dict[str, Any]:
         ),
     ]
     artifacts = {name: artifact_record(name, path) for name, path in ARTIFACTS.items()}
-    wave27 = artifacts["wave27_structure_factor_acceptance_rule"]
+    wave28 = artifacts["wave28_estimator_reconciliation"]
 
     source_packaging_pass = all(record["exists"] and record["sha256"] for record in sources)
     artifact_chain_pass = (
-        wave27["exists"]
-        and wave27["blocker_label"]
-        == "structure_factor_acceptance_rule_defined_current_evidence_fails_consistency"
+        wave28["exists"]
+        and wave28["blocker_label"]
+        == "structure_factor_estimator_ratio_stable_but_uncalibrated_and_lengths_decline"
     )
 
     claim_map = [
@@ -170,9 +174,10 @@ def build_artifact() -> dict[str, Any]:
                 "wave25_structure_factor_multigrid",
                 "wave26_structure_factor_l20_probe",
                 "wave27_structure_factor_acceptance_rule",
+                "wave28_estimator_reconciliation",
             ],
-            "current_boundary": "Core spectral bridge exists and a topic-derived acceptance preflight now exists, but the current structure-factor evidence fails domain-scale exclusion, absolute-length consistency, and estimator-reconciliation gates.",
-            "next_action": "Repair absolute-length consistency and reconcile the structure-factor/axis estimators before exponent or universality claims.",
+            "current_boundary": "Core spectral bridge exists and a topic-derived acceptance preflight now exists. Wave 28 shows the structure-factor/axis ratio is stable, but still uncalibrated, and both estimators show declining absolute length from L16 to L20.",
+            "next_action": "Source-back or derive the estimator calibration factor, or repair the simulation window/dynamics so absolute lengths grow before exponent or universality claims.",
         },
         {
             "inbox_claim_id": "warped_space_kappa_of_c",
@@ -200,6 +205,7 @@ def build_artifact() -> dict[str, Any]:
                 "wave24_structure_factor_estimator",
                 "wave26_structure_factor_l20_probe",
                 "wave27_structure_factor_acceptance_rule",
+                "wave28_estimator_reconciliation",
             ],
             "current_boundary": "Future candidates still need explicit engine-path gates before claim interpretation.",
             "next_action": "Keep engine alignment gates mandatory for every new operator or estimator verifier.",
@@ -221,8 +227,8 @@ def build_artifact() -> dict[str, Any]:
         "artifact_chain_gate": {
             "status": "PASS" if artifact_chain_pass else "BLOCKED",
             "required_condition": "The current 0.11 artifact chain must expose the latest controller.",
-            "latest_expected_blocker": "structure_factor_acceptance_rule_defined_current_evidence_fails_consistency",
-            "latest_observed_blocker": wave27["blocker_label"],
+            "latest_expected_blocker": "structure_factor_estimator_ratio_stable_but_uncalibrated_and_lengths_decline",
+            "latest_observed_blocker": wave28["blocker_label"],
         },
         "coverage_boundary_gate": {
             "status": "WARN",
@@ -232,8 +238,8 @@ def build_artifact() -> dict[str, Any]:
         },
         "next_controller_gate": {
             "status": "BLOCKED",
-            "required_condition": "No broad UET phase-transition claim may be promoted until the structure-factor acceptance preflight passes or is replaced by a source-backed benchmark.",
-            "next_controller": "structure_factor_absolute_length_consistency_and_estimator_reconciliation",
+            "required_condition": "No broad UET phase-transition claim may be promoted until estimator calibration is source-backed/derived or the window/dynamics repair restores absolute-length growth.",
+            "next_controller": "source_backed_estimator_calibration_or_window_repair_for_absolute_length_growth",
         },
     }
 
@@ -242,15 +248,15 @@ def build_artifact() -> dict[str, Any]:
         "audit_id": "core_inbox_research_alignment_gate",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "status": "WARN",
-        "blocker_label": "inbox_claims_mapped_current_controller_structure_factor_acceptance_rule_consistency",
+        "blocker_label": "inbox_claims_mapped_current_controller_estimator_reconciliation_calibration",
         "claim_class": "source_intake_alignment_only",
         "sources": sources,
         "artifacts": list(artifacts.values()),
         "claim_map": claim_map,
         "gates": gates,
         "recommended_next_wave": {
-            "step": "Repair structure-factor absolute-length consistency and estimator reconciliation before adding new warped-space or dynamic-game operators.",
-            "reason": "Wave 27 defines a topic-derived preflight rule; the current artifact chain fails it because L8 is domain-scale, L20 absolute xi drops below L16, and structure-factor/axis estimators remain unreconciled.",
+            "step": "Source-back or derive estimator calibration, or repair the window/dynamics so absolute lengths grow before adding new warped-space or dynamic-game operators.",
+            "reason": "Wave 28 shows the structure-factor/axis-lower ratio is stable across L16 and L20, but the ratio is uncalibrated and both estimators decline in absolute length from L16 to L20.",
         },
         "limitations": [
             "This audit does not validate any inbox claim as physics.",
