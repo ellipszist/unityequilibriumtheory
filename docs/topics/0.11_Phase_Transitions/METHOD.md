@@ -38,6 +38,7 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 - `Code/03_Research/Research_Conserved_Order_Spectral_Structure_Factor_L20_Probe.py`
 - `Code/03_Research/Research_Structure_Factor_Acceptance_Rule_Gate.py`
 - `Code/03_Research/Research_Structure_Factor_Estimator_Reconciliation_Gate.py`
+- `Code/03_Research/Research_Structure_Factor_Calibration_Source_Support_Gate.py`
 - `Code/03_Research/test_05_phase_demixing.py`
 - `Code/03_Research/test_phase_transitions.py`
 
@@ -87,6 +88,7 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 - The Wave 26 L20 verifier shows the largest-grid `xi/L` can fall below the domain-scale warning threshold, but blocks claim use because a source-backed or derived acceptance rule is still missing.
 - The Wave 27 acceptance-rule verifier defines a topic-derived preflight rule and keeps exponent use blocked because the current gridset fails domain-scale exclusion, absolute-length consistency, and estimator-reconciliation gates.
 - The Wave 28 estimator-reconciliation verifier shows the structure-factor/axis-lower ratio is stable but uncalibrated, and both estimators show declining absolute length from L16 to L20.
+- The Wave 29 source-support verifier scans the local reference package and blocks calibration acceptance until primary second-moment/finite-size estimator sources are packaged with formula boundaries.
 - Cahn-Hilliard simulations should be treated as normalized mechanism diagnostics until seed, grid, morphology, and material-unit gates are added.
 
 ## Dependency policy

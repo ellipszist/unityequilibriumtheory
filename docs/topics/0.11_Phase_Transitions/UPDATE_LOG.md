@@ -1,6 +1,32 @@
 # Update Log: 0.11 Phase Transitions
 
 
+## Wave: Structure-Factor Calibration Source-Support Gate (Wave 29)
+
+**What changed:**
+- Added `Research_Structure_Factor_Calibration_Source_Support_Gate.py` to scan local references for estimator-calibration support.
+- Added artifact `Result/artifacts/0_11_structure_factor_calibration_source_support_gate.json`.
+- Updated topic docs and the inbox alignment audit to move the controller from uncalibrated estimator ratio to primary-source packaging before calibration.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Calibration_Source_Support_Gate.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Calibration_Source_Support_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `structure_factor_estimator_ratio_stable_but_uncalibrated_and_lengths_decline` into `structure_factor_calibration_source_support_missing_locally`.
+- The artifact reports `wave28_chain_gate == PASS` but `local_source_packaging_gate == BLOCKED`, `empirical_calibration_factor_gate == BLOCKED`, and `formula_alignment_gate == BLOCKED`.
+- Local text-source match counts are zero for structure factor, second-moment correlation length, Fourier estimator definition, and finite-size admissibility.
+
+**Next controlling blocker:**
+- Package primary second-moment or finite-size correlation-length estimator sources with formula boundaries before accepting calibration or rerunning exponent/universality gates.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 29 finds a source-packaging gap, not an accepted calibration, exponent, universality, material, RG, or phase-transition-solution claim.
+
+---
+
+
+
 ## Wave: Structure-Factor / Axis-Estimator Reconciliation Gate (Wave 28)
 
 **What changed:**

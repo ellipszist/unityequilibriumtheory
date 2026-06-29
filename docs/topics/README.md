@@ -61,7 +61,7 @@ These topics determine the current scientific credibility of the repo.
 | [0.8](./0.8_Muon_g2_Anomaly/) | `Draft` | `B` | benchmark-oriented topic that still lacks manifest-backed verification framing |
 | [0.9](./0.9_Quantum_Nonlocality/) | `Draft` | `B` | has local materials, but not a standardized evidence contract |
 | [0.10](./0.10_Fluid_Dynamics_Chaos/) | `Structured` | `B` | structured package exists and latest run passed, but repeated-run speed-threshold stability is not yet demonstrated |
-| [0.11](./0.11_Phase_Transitions/) | `Draft` | `B` | Wave 28 shows estimator ratio is stable but uncalibrated; exponent claims remain blocked by absolute-length decline |
+| [0.11](./0.11_Phase_Transitions/) | `Draft` | `B` | Wave 29 blocks calibration on missing local source support for structure-factor/second-moment estimator use |
 | [0.12](./0.12_Vacuum_Energy_Casimir/) | `Draft` | `B` | topic has research assets, yet audit-grade verification remains absent |
 | [0.13](./0.13_Thermodynamic_Bridge/) | `Draft` | `B` | concept and data references exist, but data reality still looks partly manual |
 | [0.14](./0.14_Complex_Systems/) | `Draft` | `B` | substantial local material exists, but standards migration has not happened |

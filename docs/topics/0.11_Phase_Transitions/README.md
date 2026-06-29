@@ -72,6 +72,7 @@ flowchart LR
 | Wave 26 L20 structure-factor probe | Larger-grid estimator probe | `Result/artifacts/0_11_conserved_order_spectral_structure_factor_l20_probe.json` | L20 domain-scale relief passes; acceptance-rule gate remains blocked |
 | Wave 27 structure-factor acceptance rule | Estimator acceptance preflight | `Result/artifacts/0_11_structure_factor_acceptance_rule_gate.json` | rule defined; current gridset fails domain-scale, absolute-length, and estimator-reconciliation gates |
 | Wave 28 estimator reconciliation | Estimator calibration triage | `Result/artifacts/0_11_structure_factor_estimator_reconciliation_gate.json` | ratio stable, but calibration is unaccepted and both absolute lengths decline L16->L20 |
+| Wave 29 calibration source support | Source-packaging triage | `Result/artifacts/0_11_structure_factor_calibration_source_support_gate.json` | local estimator-source support missing; package primary second-moment sources before calibration |
 | Universal phase-transition theory | Not closed | limitations and formula audit | do not claim full proof |
 
 ## 5x4 Grid Structure
@@ -134,5 +135,6 @@ python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exp
 - The Wave 26 L20 probe passes stability and L20 margin gates (`6/6` cases, median `xi/L = 0.4347`), but `derived_acceptance_rule_gate == BLOCKED`: the L20 absolute `xi` is slightly below L16 (`L20/L16 = 0.9599`), prior L8 remains domain-scale, and structure-factor/axis-estimator reconciliation still lacks an admissibility rule.
 - The Wave 27 acceptance preflight defines the missing rule but does not clear it: candidate grids `L=12,16,20` exist, while `L=8` is excluded, `absolute_length_consistency_gate == BLOCKED`, and `estimator_reconciliation_gate == BLOCKED`.
 - The Wave 28 reconciliation gate finds the structure-factor/axis-lower ratio is stable (`2.6849` at L16 and `2.6261` at L20), but calibration remains unaccepted and both axis-lower and structure-factor absolute lengths decline from L16 to L20.
+- The Wave 29 source-support gate finds zero local text-source matches for structure-factor, second-moment correlation length, Fourier estimator definition, or finite-size admissibility, so calibration acceptance is blocked until primary estimator sources are packaged.
 
 *Status note: internal critical-exponent benchmark and formula-audit hardening gate.*

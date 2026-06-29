@@ -84,6 +84,10 @@ ARTIFACTS = {
     / "Result"
     / "artifacts"
     / "0_11_structure_factor_estimator_reconciliation_gate.json",
+    "wave29_calibration_source_support": TOPIC_DIR
+    / "Result"
+    / "artifacts"
+    / "0_11_structure_factor_calibration_source_support_gate.json",
 }
 
 
@@ -140,13 +144,13 @@ def build_artifact() -> dict[str, Any]:
         ),
     ]
     artifacts = {name: artifact_record(name, path) for name, path in ARTIFACTS.items()}
-    wave28 = artifacts["wave28_estimator_reconciliation"]
+    wave29 = artifacts["wave29_calibration_source_support"]
 
     source_packaging_pass = all(record["exists"] and record["sha256"] for record in sources)
     artifact_chain_pass = (
-        wave28["exists"]
-        and wave28["blocker_label"]
-        == "structure_factor_estimator_ratio_stable_but_uncalibrated_and_lengths_decline"
+        wave29["exists"]
+        and wave29["blocker_label"]
+        == "structure_factor_calibration_source_support_missing_locally"
     )
 
     claim_map = [
@@ -175,9 +179,10 @@ def build_artifact() -> dict[str, Any]:
                 "wave26_structure_factor_l20_probe",
                 "wave27_structure_factor_acceptance_rule",
                 "wave28_estimator_reconciliation",
+                "wave29_calibration_source_support",
             ],
-            "current_boundary": "Core spectral bridge exists and a topic-derived acceptance preflight now exists. Wave 28 shows the structure-factor/axis ratio is stable, but still uncalibrated, and both estimators show declining absolute length from L16 to L20.",
-            "next_action": "Source-back or derive the estimator calibration factor, or repair the simulation window/dynamics so absolute lengths grow before exponent or universality claims.",
+            "current_boundary": "Core spectral bridge exists, but the current local reference package does not contain source-backed structure-factor/second-moment estimator support for accepting the observed calibration factor.",
+            "next_action": "Package primary second-moment or finite-size correlation-length estimator sources before accepting calibration or rerunning exponent gates.",
         },
         {
             "inbox_claim_id": "warped_space_kappa_of_c",
@@ -206,6 +211,7 @@ def build_artifact() -> dict[str, Any]:
                 "wave26_structure_factor_l20_probe",
                 "wave27_structure_factor_acceptance_rule",
                 "wave28_estimator_reconciliation",
+                "wave29_calibration_source_support",
             ],
             "current_boundary": "Future candidates still need explicit engine-path gates before claim interpretation.",
             "next_action": "Keep engine alignment gates mandatory for every new operator or estimator verifier.",
@@ -227,8 +233,8 @@ def build_artifact() -> dict[str, Any]:
         "artifact_chain_gate": {
             "status": "PASS" if artifact_chain_pass else "BLOCKED",
             "required_condition": "The current 0.11 artifact chain must expose the latest controller.",
-            "latest_expected_blocker": "structure_factor_estimator_ratio_stable_but_uncalibrated_and_lengths_decline",
-            "latest_observed_blocker": wave28["blocker_label"],
+            "latest_expected_blocker": "structure_factor_calibration_source_support_missing_locally",
+            "latest_observed_blocker": wave29["blocker_label"],
         },
         "coverage_boundary_gate": {
             "status": "WARN",
@@ -238,8 +244,8 @@ def build_artifact() -> dict[str, Any]:
         },
         "next_controller_gate": {
             "status": "BLOCKED",
-            "required_condition": "No broad UET phase-transition claim may be promoted until estimator calibration is source-backed/derived or the window/dynamics repair restores absolute-length growth.",
-            "next_controller": "source_backed_estimator_calibration_or_window_repair_for_absolute_length_growth",
+            "required_condition": "No broad UET phase-transition claim may be promoted until local primary estimator sources are packaged and formula boundaries are recorded.",
+            "next_controller": "package_primary_second_moment_estimator_sources_before_calibration",
         },
     }
 
@@ -248,15 +254,15 @@ def build_artifact() -> dict[str, Any]:
         "audit_id": "core_inbox_research_alignment_gate",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "status": "WARN",
-        "blocker_label": "inbox_claims_mapped_current_controller_estimator_reconciliation_calibration",
+        "blocker_label": "inbox_claims_mapped_current_controller_estimator_source_packaging",
         "claim_class": "source_intake_alignment_only",
         "sources": sources,
         "artifacts": list(artifacts.values()),
         "claim_map": claim_map,
         "gates": gates,
         "recommended_next_wave": {
-            "step": "Source-back or derive estimator calibration, or repair the window/dynamics so absolute lengths grow before adding new warped-space or dynamic-game operators.",
-            "reason": "Wave 28 shows the structure-factor/axis-lower ratio is stable across L16 and L20, but the ratio is uncalibrated and both estimators decline in absolute length from L16 to L20.",
+            "step": "Package primary second-moment or finite-size correlation-length estimator sources before accepting calibration or adding new warped-space/dynamic-game operators.",
+            "reason": "Wave 29 finds zero local text-source matches for structure-factor, second-moment correlation length, Fourier estimator definition, or finite-size admissibility; external primary candidates are not yet packaged.",
         },
         "limitations": [
             "This audit does not validate any inbox claim as physics.",

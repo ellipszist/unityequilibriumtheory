@@ -472,15 +472,32 @@ This narrows the blocker again: estimator disagreement is structured and stable 
 but no accepted calibration exists and both estimator families still show declining absolute
 length from L16 to L20.
 
+## Wave 29 Structure-Factor Calibration Source-Support Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_calibration_source_support_gate.json`
+
+- `wave28_chain_gate`: `PASS`
+- `local_source_packaging_gate`: `BLOCKED`
+- `external_candidate_gate`: `WARN`
+- `empirical_calibration_factor_gate`: `BLOCKED`
+- `formula_alignment_gate`: `BLOCKED`
+- `next_path_decision_gate`: `BLOCKED`
+- local text-source matches: structure factor `0`, second-moment correlation length `0`, Fourier estimator definition `0`, finite-size admissibility `0`
+- candidate calibration factor: `2.6555`
+- local PDF sources hashed: `12`
+
+This narrows the blocker from uncalibrated ratio to a source-packaging gap. The local reference
+package does not yet justify accepting the calibration factor or current RMS inverse-k proxy.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 28
-now records the next controller as `structure_factor_estimator_ratio_stable_but_uncalibrated_and_lengths_decline`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 29
+now records the next controller as `structure_factor_calibration_source_support_missing_locally`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should either source-back or
-derive the estimator calibration factor, or repair the window/dynamics so absolute lengths grow
-from L16 to L20, before rerunning exponent or universality gates.
+Keep all candidate operators as opt-in diagnostics. The next wave should package primary
+second-moment or finite-size correlation-length estimator sources with formula boundaries before
+accepting calibration or rerunning exponent/universality gates.

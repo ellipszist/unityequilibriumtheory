@@ -751,3 +751,31 @@
 - Interpretation:
   - The estimator disagreement is structured enough to study, but not accepted.
   - The next useful work is either source-backed estimator calibration or a window/dynamics repair that restores absolute-length growth before exponent gates are rerun.
+
+
+## Wave 29 Structure-Factor Calibration Source-Support Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Calibration_Source_Support_Gate.py`
+- Artifact target:
+  - `Result/artifacts/0_11_structure_factor_calibration_source_support_gate.json`
+- Purpose:
+  - Check whether the local reference package can source-back the observed calibration factor or current RMS inverse-k structure-factor proxy.
+  - Record external primary-source candidates as candidates only, not accepted proof.
+- Required gates:
+  - `wave28_chain_gate.status == PASS`
+  - `local_source_packaging_gate.status == PASS` before accepting estimator calibration locally.
+  - `empirical_calibration_factor_gate.status == PASS` before using the observed factor in exponent fits.
+  - `formula_alignment_gate.status == PASS` before treating the RMS inverse-k proxy as an accepted critical length.
+  - `next_path_decision_gate.status != BLOCKED` before rerunning exponent or universality gates.
+- Current Wave 29 result:
+  - overall status `WARN`
+  - `wave28_chain_gate == PASS`
+  - `local_source_packaging_gate == BLOCKED`: required local match counts are zero for structure factor, second-moment correlation length, Fourier estimator definition, and finite-size admissibility.
+  - `external_candidate_gate == WARN`: candidate primary sources are recorded but not packaged.
+  - `empirical_calibration_factor_gate == BLOCKED` for candidate factor `2.6555`
+  - `formula_alignment_gate == BLOCKED`
+  - `next_path_decision_gate == BLOCKED`
+- Interpretation:
+  - The source-backed path is not ready locally.
+  - The next useful work is to package primary second-moment/finite-size estimator sources with formula boundaries, or choose the window/dynamics repair path without pretending the calibration is accepted.
