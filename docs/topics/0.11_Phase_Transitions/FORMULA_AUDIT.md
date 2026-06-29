@@ -58,6 +58,7 @@ demonstrations.
 | `PT-CONSERVED-ORDER-SPECTRAL-L16-STRUCTURE-FACTOR-ESTIMATOR` | threshold-free characteristic length `xi_sf = 2*pi / sqrt(sum(S(k) k^2) / sum(S(k)))` over nonzero FFT modes | `Research_Conserved_Order_Spectral_L16_Structure_Factor_Estimator.py`; `0_11_conserved_order_spectral_l16_structure_factor_estimator.json` | normalized 3D `L=16` lattice units; structure-factor power, RMS wave number, `xi/L` | `topic_derived_relation` | `diagnostic estimator candidate` | finite-size calibration controller | Wave 24 passes the L16 margin but warns on domain-scale risk: structure-factor max `xi/L = 0.5799`. | Calibrate over multiple grid sizes before exponent or universality claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-STRUCTURE-FACTOR-MULTIGRID` | replicate `xi_sf = 2*pi / sqrt(sum(S(k) k^2) / sum(S(k)))` over `L=8,12,16` and two seed sets | `Research_Conserved_Order_Spectral_Structure_Factor_Multigrid_Calibration.py`; `0_11_conserved_order_spectral_structure_factor_multigrid_calibration.json` | normalized 3D lattice units; structure-factor `xi/L`, absolute `xi`, grid-size trend | `topic_derived_relation` | `diagnostic calibration gate` | domain-scale saturation controller | Wave 25 passes margin replication but blocks calibration: median `xi/L` is `0.997` at `L=8`, `0.717` at `L=12`, and `0.566` at `L=16`. | Add larger-grid/source-backed estimator calibration or derived acceptance rule before exponent claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-STRUCTURE-FACTOR-L20-PROBE` | rerun `xi_sf` on `L=20` and extend the median trend from Wave 25 | `Research_Conserved_Order_Spectral_Structure_Factor_L20_Probe.py`; `0_11_conserved_order_spectral_structure_factor_l20_probe.json` | normalized 3D lattice units; L20 `xi/L`, absolute `xi`, estimator ratio to axis threshold | `topic_derived_relation` | `diagnostic larger-grid probe` | acceptance-rule controller | Wave 26 passes L20 relief (`median xi/L = 0.4347`) but blocks acceptance-rule use; L20 absolute xi is below L16 (`ratio = 0.9599`) and estimator reconciliation is still missing. | Create source-backed or derived acceptance rule before exponent claims. |
+| `PT-CONSERVED-ORDER-SPECTRAL-STRUCTURE-FACTOR-ACCEPTANCE-RULE` | preflight rule excludes domain-scale grids, requires >=3 admissible grids, absolute-`xi` consistency, and estimator reconciliation | `Research_Structure_Factor_Acceptance_Rule_Gate.py`; `0_11_structure_factor_acceptance_rule_gate.json` | normalized 3D lattice units; `xi_sf/L`, absolute `xi_sf`, grid subset, estimator ratio | `topic_derived_relation` | `heuristic preflight, not physics acceptance` | claim-boundary gate | Wave 27 defines the rule but current evidence fails: `L=8` excluded, `L20/L16 = 0.9599`, and estimator ratio `2.6261` is unreconciled. | Repair absolute-length consistency or add a source-backed estimator benchmark before exponent claims. |
 
 ## Wave 5 Formula Boundary
 
@@ -238,3 +239,12 @@ median remains domain-scale (`0.9972`), and the structure-factor/axis-lower esti
 is `2.6261`. The allowed claim is limited to: the larger-grid symptom improved, but the
 estimator still needs a source-backed or derived admissibility rule before finite-size,
 exponent, material, RG, or universality claims.
+
+## Wave 27 Acceptance-Rule Boundary
+
+The acceptance-rule preflight turns the Wave 26 missing-rule blocker into explicit machine
+checks. A candidate admissible subset (`L=12,16,20`) exists, but the full current chain still
+fails the preflight because `L=8` is domain-scale, absolute `xi_sf` drops from `L=16` to `L=20`,
+and the structure-factor/axis-lower estimator disagreement has no reconciliation rule. The
+allowed claim is limited to: a conservative preflight rule exists and blocks exponent use of
+the current estimator evidence. It is not an accepted critical length or universality result.

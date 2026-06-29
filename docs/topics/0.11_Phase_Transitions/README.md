@@ -70,6 +70,7 @@ flowchart LR
 | Wave 24 L16 structure-factor estimator | Threshold-free estimator diagnostic | `Result/artifacts/0_11_conserved_order_spectral_l16_structure_factor_estimator.json` | structure-factor margin passes but domain-scale guard warns |
 | Wave 25 structure-factor multigrid calibration | Multi-grid estimator calibration | `Result/artifacts/0_11_conserved_order_spectral_structure_factor_multigrid_calibration.json` | margin replicates; domain-scale calibration remains blocked |
 | Wave 26 L20 structure-factor probe | Larger-grid estimator probe | `Result/artifacts/0_11_conserved_order_spectral_structure_factor_l20_probe.json` | L20 domain-scale relief passes; acceptance-rule gate remains blocked |
+| Wave 27 structure-factor acceptance rule | Estimator acceptance preflight | `Result/artifacts/0_11_structure_factor_acceptance_rule_gate.json` | rule defined; current gridset fails domain-scale, absolute-length, and estimator-reconciliation gates |
 | Universal phase-transition theory | Not closed | limitations and formula audit | do not claim full proof |
 
 ## 5x4 Grid Structure
@@ -130,5 +131,6 @@ python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exp
 - The Wave 24 structure-factor diagnostic adds a threshold-free RMS length proxy: it passes the L16 margin in `9/9` cases with min `xi/L = 0.5549`, but `domain_scale_guard == WARN` because the single-grid length is near the domain scale, so multi-grid calibration is now the controller.
 - The Wave 25 multi-grid calibration confirms the structure-factor margin replicates across `L=8,12,16` and both seed sets (`18/18` passes), but `domain_scale_calibration_gate == BLOCKED`: median `xi/L` is `0.997` at `L=8`, `0.717` at `L=12`, and `0.566` at `L=16`, so the estimator remains domain-scale saturated.
 - The Wave 26 L20 probe passes stability and L20 margin gates (`6/6` cases, median `xi/L = 0.4347`), but `derived_acceptance_rule_gate == BLOCKED`: the L20 absolute `xi` is slightly below L16 (`L20/L16 = 0.9599`), prior L8 remains domain-scale, and structure-factor/axis-estimator reconciliation still lacks an admissibility rule.
+- The Wave 27 acceptance preflight defines the missing rule but does not clear it: candidate grids `L=12,16,20` exist, while `L=8` is excluded, `absolute_length_consistency_gate == BLOCKED`, and `estimator_reconciliation_gate == BLOCKED`.
 
 *Status note: internal critical-exponent benchmark and formula-audit hardening gate.*

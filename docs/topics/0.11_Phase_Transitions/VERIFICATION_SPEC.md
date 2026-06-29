@@ -691,3 +691,34 @@
 - Interpretation:
   - L20 reduces the largest-grid domain-scale symptom, but this does not validate the estimator for exponent fitting.
   - The next useful work is a source-backed or derived estimator acceptance rule that defines admissible grids and reconciles estimator disagreement.
+
+
+## Wave 27 Structure-Factor Acceptance-Rule Preflight
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Acceptance_Rule_Gate.py`
+- Artifact target:
+  - `Result/artifacts/0_11_structure_factor_acceptance_rule_gate.json`
+- Purpose:
+  - Convert the Wave 26 missing-rule blocker into an explicit topic-derived preflight rule.
+  - Decide whether current Wave 24-26 structure-factor artifacts are admissible inputs for a future exponent/universality verifier.
+- Required gates:
+  - `artifact_chain_gate.status == PASS`
+  - `candidate_rule_definition_gate.status == PASS`
+  - `domain_scale_exclusion_gate.status == PASS` before using the full grid chain.
+  - `admissible_subset_gate.status == PASS` before any declared subset can be considered.
+  - `absolute_length_consistency_gate.status == PASS` before treating `xi_sf` as scaling length.
+  - `estimator_reconciliation_gate.status != BLOCKED` before exponent gates may use the estimator.
+  - `acceptance_rule_application_gate.status == PASS` before rerunning exponent or universality gates.
+- Current Wave 27 result:
+  - overall status `WARN`
+  - `artifact_chain_gate == PASS`
+  - `candidate_rule_definition_gate == PASS`
+  - `admissible_subset_gate == PASS` for candidate grids `L=12,16,20`
+  - `domain_scale_exclusion_gate == BLOCKED` because `L=8` remains domain-scale
+  - `absolute_length_consistency_gate == BLOCKED` because `L20/L16 = 0.9599`
+  - `estimator_reconciliation_gate == BLOCKED` because the L20 structure-factor/axis-lower ratio is `2.6261`
+  - `acceptance_rule_application_gate == BLOCKED`
+- Interpretation:
+  - The missing-rule blocker is now narrower: a topic-derived preflight rule exists, but the current evidence does not satisfy it.
+  - The next useful work is estimator reconciliation, source-backed calibration, or a dynamics/window repair that makes absolute `xi_sf` consistent before exponent claims are rerun.

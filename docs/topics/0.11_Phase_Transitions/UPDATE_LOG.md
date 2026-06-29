@@ -1,6 +1,32 @@
 # Update Log: 0.11 Phase Transitions
 
 
+## Wave: Structure-Factor Acceptance-Rule Preflight (Wave 27)
+
+**What changed:**
+- Added `Research_Structure_Factor_Acceptance_Rule_Gate.py` to convert the Wave 26 missing-rule blocker into a machine-readable preflight.
+- Added artifact `Result/artifacts/0_11_structure_factor_acceptance_rule_gate.json`.
+- Updated topic docs and the inbox alignment audit to move the controller from missing acceptance rule to failed absolute-length consistency and estimator reconciliation.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Acceptance_Rule_Gate.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Acceptance_Rule_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `spectral_core_structure_factor_larger_grid_probe_needs_acceptance_rule` into `structure_factor_acceptance_rule_defined_current_evidence_fails_consistency`.
+- The artifact reports `candidate_rule_definition_gate == PASS` and `admissible_subset_gate == PASS` for candidate grids `L=12,16,20`.
+- It also reports `domain_scale_exclusion_gate == BLOCKED`, `absolute_length_consistency_gate == BLOCKED`, and `estimator_reconciliation_gate == BLOCKED`.
+
+**Next controlling blocker:**
+- Repair structure-factor absolute-length consistency and reconcile structure-factor versus axis-threshold estimators, or source-back an external estimator benchmark, before rerunning exponent or universality gates.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 27 defines a conservative preflight rule, but the current evidence fails it and does not support accepted critical length, exponent, universality, material, RG, or phase-transition-solution claims.
+
+---
+
+
+
 ## Wave: Conserved-Order Spectral Structure-Factor L20 Probe (Wave 26)
 
 **What changed:**

@@ -76,6 +76,10 @@ ARTIFACTS = {
     / "Result"
     / "artifacts"
     / "0_11_conserved_order_spectral_structure_factor_l20_probe.json",
+    "wave27_structure_factor_acceptance_rule": TOPIC_DIR
+    / "Result"
+    / "artifacts"
+    / "0_11_structure_factor_acceptance_rule_gate.json",
 }
 
 
@@ -132,13 +136,13 @@ def build_artifact() -> dict[str, Any]:
         ),
     ]
     artifacts = {name: artifact_record(name, path) for name, path in ARTIFACTS.items()}
-    wave26 = artifacts["wave26_structure_factor_l20_probe"]
+    wave27 = artifacts["wave27_structure_factor_acceptance_rule"]
 
     source_packaging_pass = all(record["exists"] and record["sha256"] for record in sources)
     artifact_chain_pass = (
-        wave26["exists"]
-        and wave26["blocker_label"]
-        == "spectral_core_structure_factor_larger_grid_probe_needs_acceptance_rule"
+        wave27["exists"]
+        and wave27["blocker_label"]
+        == "structure_factor_acceptance_rule_defined_current_evidence_fails_consistency"
     )
 
     claim_map = [
@@ -165,9 +169,10 @@ def build_artifact() -> dict[str, Any]:
                 "wave24_structure_factor_estimator",
                 "wave25_structure_factor_multigrid",
                 "wave26_structure_factor_l20_probe",
+                "wave27_structure_factor_acceptance_rule",
             ],
-            "current_boundary": "Core spectral bridge exists and the L20 probe reduces the domain-scale symptom, but the structure-factor estimator still lacks an accepted source-backed or derived finite-size acceptance rule.",
-            "next_action": "Create a source-backed or derived structure-factor acceptance rule before exponent or universality claims.",
+            "current_boundary": "Core spectral bridge exists and a topic-derived acceptance preflight now exists, but the current structure-factor evidence fails domain-scale exclusion, absolute-length consistency, and estimator-reconciliation gates.",
+            "next_action": "Repair absolute-length consistency and reconcile the structure-factor/axis estimators before exponent or universality claims.",
         },
         {
             "inbox_claim_id": "warped_space_kappa_of_c",
@@ -194,6 +199,7 @@ def build_artifact() -> dict[str, Any]:
                 "wave16_spectral_core",
                 "wave24_structure_factor_estimator",
                 "wave26_structure_factor_l20_probe",
+                "wave27_structure_factor_acceptance_rule",
             ],
             "current_boundary": "Future candidates still need explicit engine-path gates before claim interpretation.",
             "next_action": "Keep engine alignment gates mandatory for every new operator or estimator verifier.",
@@ -215,8 +221,8 @@ def build_artifact() -> dict[str, Any]:
         "artifact_chain_gate": {
             "status": "PASS" if artifact_chain_pass else "BLOCKED",
             "required_condition": "The current 0.11 artifact chain must expose the latest controller.",
-            "latest_expected_blocker": "spectral_core_structure_factor_larger_grid_probe_needs_acceptance_rule",
-            "latest_observed_blocker": wave26["blocker_label"],
+            "latest_expected_blocker": "structure_factor_acceptance_rule_defined_current_evidence_fails_consistency",
+            "latest_observed_blocker": wave27["blocker_label"],
         },
         "coverage_boundary_gate": {
             "status": "WARN",
@@ -226,8 +232,8 @@ def build_artifact() -> dict[str, Any]:
         },
         "next_controller_gate": {
             "status": "BLOCKED",
-            "required_condition": "No broad UET phase-transition claim may be promoted until the structure-factor acceptance-rule blocker is cleared.",
-            "next_controller": "source_backed_or_derived_structure_factor_acceptance_rule",
+            "required_condition": "No broad UET phase-transition claim may be promoted until the structure-factor acceptance preflight passes or is replaced by a source-backed benchmark.",
+            "next_controller": "structure_factor_absolute_length_consistency_and_estimator_reconciliation",
         },
     }
 
@@ -236,15 +242,15 @@ def build_artifact() -> dict[str, Any]:
         "audit_id": "core_inbox_research_alignment_gate",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "status": "WARN",
-        "blocker_label": "inbox_claims_mapped_current_controller_structure_factor_acceptance_rule",
+        "blocker_label": "inbox_claims_mapped_current_controller_structure_factor_acceptance_rule_consistency",
         "claim_class": "source_intake_alignment_only",
         "sources": sources,
         "artifacts": list(artifacts.values()),
         "claim_map": claim_map,
         "gates": gates,
         "recommended_next_wave": {
-            "step": "Create a source-backed or derived structure-factor acceptance rule before adding new warped-space or dynamic-game operators.",
-            "reason": "Wave 26 showed L20 relieves the largest-grid domain-scale symptom, but the estimator still lacks an admissibility rule and remains blocked for exponent claims.",
+            "step": "Repair structure-factor absolute-length consistency and estimator reconciliation before adding new warped-space or dynamic-game operators.",
+            "reason": "Wave 27 defines a topic-derived preflight rule; the current artifact chain fails it because L8 is domain-scale, L20 absolute xi drops below L16, and structure-factor/axis estimators remain unreconciled.",
         },
         "limitations": [
             "This audit does not validate any inbox claim as physics.",

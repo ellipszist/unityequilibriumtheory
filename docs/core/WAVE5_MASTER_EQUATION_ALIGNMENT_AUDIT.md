@@ -429,15 +429,37 @@ but it does not create an accepted estimator rule. The next controller is an exp
 source-backed or derived acceptance rule before exponent or universality gates can use this
 structure-factor proxy.
 
+## Wave 27 Structure-Factor Acceptance-Rule Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_acceptance_rule_gate.json`
+
+- `artifact_chain_gate`: `PASS`
+- `candidate_rule_definition_gate`: `PASS`
+- `admissible_subset_gate`: `PASS`
+- `domain_scale_exclusion_gate`: `BLOCKED`
+- `absolute_length_consistency_gate`: `BLOCKED`
+- `estimator_reconciliation_gate`: `BLOCKED`
+- `acceptance_rule_application_gate`: `BLOCKED`
+- `claim_boundary_gate`: `WARN`
+- candidate admissible grids: `L=12,16,20`
+- excluded domain-scale grid: `L=8`
+- L20/L16 absolute `xi` ratio: `0.9599`
+- structure-factor/axis-lower estimator ratio: `2.6261`
+
+This narrows the blocker from missing rule to failed rule application. A conservative
+topic-derived preflight exists, but the current structure-factor evidence still cannot feed
+exponent or universality gates.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 26
-now records the next controller as `spectral_core_structure_factor_larger_grid_probe_needs_acceptance_rule`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 27
+now records the next controller as `structure_factor_acceptance_rule_defined_current_evidence_fails_consistency`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should create a
-source-backed or derived structure-factor acceptance rule that defines admissible grids and
-reconciles estimator disagreement before rerunning exponent or universality gates.
+Keep all candidate operators as opt-in diagnostics. The next wave should repair
+structure-factor absolute-length consistency and reconcile structure-factor versus axis-threshold
+estimators, or source-back an external estimator benchmark, before rerunning exponent or
+universality gates.
