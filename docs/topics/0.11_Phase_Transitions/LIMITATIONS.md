@@ -40,3 +40,4 @@
 - Wave 29 scans the local reference package and finds no text-source support for structure-factor, second-moment correlation length, Fourier estimator definition, or finite-size admissibility; external source candidates remain unaccepted until packaged.
 - Wave 30 packages three primary estimator-source candidates in a manifest, but formula extraction, local full-text support, and calibration acceptance remain blocked.
 - Wave 31 extracts the source-family second-moment estimator boundary, but the current RMS inverse-k proxy is not source-matched and remains diagnostic-only for claim use.
+- Wave 32 implements the literal lowest-mode second-moment candidate, but all current L16/L20 snapshot cases are invalid for that formula because raw `S(0)` is not larger than `S(k_min)`; no surrogate `S(0)` is accepted.

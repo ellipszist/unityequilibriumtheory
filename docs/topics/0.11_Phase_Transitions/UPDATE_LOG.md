@@ -2,6 +2,33 @@
 
 
 
+## Wave: Lowest-Mode Second-Moment Estimator Candidate Gate (Wave 32)
+
+**What changed:**
+- Added `Research_Structure_Factor_Lowest_Mode_Candidate_Gate.py` to implement the source-family lowest-mode estimator on existing L16/L20 conserved-order fields.
+- Added artifact `Result/artifacts/0_11_structure_factor_lowest_mode_candidate_gate.json`.
+- Updated topic docs and the inbox alignment audit to move the controller from current-proxy mismatch to the missing zero-mode susceptibility observable lane.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Lowest_Mode_Candidate_Gate.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Lowest_Mode_Candidate_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `structure_factor_source_formula_extracted_current_rms_proxy_mismatch` into `lowest_mode_second_moment_candidate_blocked_by_zero_mode_snapshot_observable`.
+- The artifact reports `lowest_mode_implementation_gate == PASS`.
+- It also reports `lowest_mode_observable_gate == BLOCKED`, `finite_size_trend_gate == BLOCKED`, and `replacement_acceptance_gate == BLOCKED`.
+- All `15/15` tested L16/L20 cases are invalid for the literal formula with reason `zero_mode_not_larger_than_lowest_mode`.
+
+**Next controlling blocker:**
+- Derive an ensemble/connected susceptibility `S(0)` lane for the conserved-order field, or repair the window/dynamics path so accepted estimators show nondeclining absolute lengths before exponent gates.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 32 implements the source-family candidate but does not accept it, the RMS proxy, calibration, exponent, universality, material, RG, or phase-transition-solution claims.
+
+---
+
+
+
 ## Wave: Structure-Factor Estimator Formula-Boundary Gate (Wave 31)
 
 **What changed:**

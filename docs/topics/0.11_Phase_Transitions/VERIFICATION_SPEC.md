@@ -840,3 +840,33 @@
   - The source formula boundary is now extracted, so the blocker is no longer vague formula absence.
   - The current RMS inverse-k proxy does not match the source-family lowest-mode second-moment relation and must stay diagnostic-only.
   - The next useful work is to implement a lowest-mode second-moment estimator candidate or repair the window/dynamics path before exponent claims are rerun.
+
+## Wave 32 Lowest-Mode Second-Moment Estimator Candidate Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Lowest_Mode_Candidate_Gate.py`
+- Artifact target:
+  - `Result/artifacts/0_11_structure_factor_lowest_mode_candidate_gate.json`
+- Purpose:
+  - Implement the literal source-family lowest-mode estimator on the same L16/L20 conserved-order fields used by prior structure-factor diagnostics.
+  - Separate formula implementation from observable availability so no surrogate `S(0)` quietly replaces the source relation.
+- Required gates:
+  - `wave31_chain_gate.status == PASS`
+  - `formula_boundary_gate.status == PASS`
+  - `lowest_mode_implementation_gate.status == PASS`
+  - `lowest_mode_observable_gate.status == PASS` before the candidate can replace the RMS proxy.
+  - `finite_size_trend_gate.status == PASS` before exponent gates may use the candidate.
+  - `replacement_acceptance_gate.status == PASS` before rerunning exponent or universality gates.
+- Current Wave 32 result:
+  - overall status `WARN`
+  - `wave31_chain_gate == PASS`
+  - `formula_boundary_gate == PASS`
+  - `lowest_mode_implementation_gate == PASS`
+  - `lowest_mode_observable_gate == BLOCKED`
+  - `finite_size_trend_gate == BLOCKED`
+  - `replacement_acceptance_gate == BLOCKED`
+  - valid lowest-mode cases: `0/15`
+  - invalid reason: `zero_mode_not_larger_than_lowest_mode`
+- Interpretation:
+  - The replacement formula can be implemented, but the current single-snapshot conserved-order lane does not provide the source-family `S(0)` susceptibility observable.
+  - The next useful work is to derive an ensemble/connected susceptibility second-moment lane or repair the window/dynamics path before exponent claims are rerun.

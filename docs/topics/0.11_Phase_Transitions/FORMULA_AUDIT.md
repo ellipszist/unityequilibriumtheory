@@ -63,6 +63,7 @@ demonstrations.
 | `PT-CONSERVED-ORDER-SPECTRAL-CALIBRATION-SOURCE-SUPPORT` | scan local refs for structure-factor/second-moment/Fourier/finite-size estimator support before accepting calibration | `Research_Structure_Factor_Calibration_Source_Support_Gate.py`; `0_11_structure_factor_calibration_source_support_gate.json` | source hashes, keyword matches, DOI/URL candidates; no physical units | `source_support_triage` | `source gap diagnostic` | source-packaging gate | Wave 29 finds zero local text-source matches for all required estimator-support classes. | Package primary estimator sources and formula boundaries before calibration or exponent claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-SOURCE-MANIFEST` | package primary estimator-source candidates with DOI/URL, formula role, and claim boundary | `structure_factor_estimator_source_manifest.json`; `Research_Structure_Factor_Source_Manifest_Gate.py`; `0_11_structure_factor_source_manifest_gate.json` | source metadata only; no estimator units accepted | `source_support_triage` | `source manifest only` | source-review gate | Wave 30 passes metadata coverage but blocks local formula extraction and calibration acceptance. | Extract source formulas and map or reject the RMS inverse-k proxy before exponent claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-FORMULA-BOUNDARY` | source family uses `xi_2nd = sqrt(S(0)/S(k_min)-1)/(2 sin(k_min/2))`; current proxy uses all-nonzero-mode RMS inverse-k | `structure_factor_estimator_formula_boundary.json`; `Research_Structure_Factor_Formula_Boundary_Gate.py`; `0_11_structure_factor_formula_boundary_gate.json` | source formula in lattice units; current proxy remains normalized diagnostic units | `source_formula_boundary` plus `topic_derived_relation` | `source boundary extracted; current proxy mismatch` | formula-boundary gate | Wave 31 passes source formula extraction but blocks current proxy source-match and calibration acceptance. | Implement a lowest-mode second-moment estimator candidate or repair window/dynamics before exponent claims. |
+| `PT-CONSERVED-ORDER-SPECTRAL-LOWEST-MODE-CANDIDATE` | literal candidate `xi_2nd = sqrt(S(0)/S(k_min)-1)/(2 sin(k_min/2))` on L16/L20 conserved-order fields | `Research_Structure_Factor_Lowest_Mode_Candidate_Gate.py`; `0_11_structure_factor_lowest_mode_candidate_gate.json` | normalized lattice units; raw snapshot `S(0)` is not accepted susceptibility | `source_formula_candidate` | `candidate implemented; observable blocked` | replacement feasibility gate | Wave 32 passes implementation but blocks observable validity: `0/15` cases valid, all with `zero_mode_not_larger_than_lowest_mode`. | Derive an ensemble/connected susceptibility lane or repair window/dynamics before exponent claims. |
 
 ## Wave 5 Formula Boundary
 
@@ -283,3 +284,11 @@ zero-mode to lowest-nonzero-mode ratio with a lattice finite-difference denomina
 current topic proxy instead uses all nonzero Fourier modes and a `2*pi / RMS-k` length.
 Therefore the current proxy is rejected for source-backed exponent or calibration use until a
 lowest-mode estimator candidate is implemented, compared, and passed through acceptance gates.
+
+## Wave 32 Lowest-Mode Candidate Boundary
+
+The lowest-mode candidate gate implements the source-family relation on the existing L16 and
+L20 conserved-order fields. The implementation path passes, but the observable path blocks:
+the raw snapshot zero mode is not larger than the lowest nonzero mode in any tested case
+(`0/15` valid), so the current single-snapshot lane cannot supply the required susceptibility
+observable. No surrogate `S(0)` is accepted by this wave.

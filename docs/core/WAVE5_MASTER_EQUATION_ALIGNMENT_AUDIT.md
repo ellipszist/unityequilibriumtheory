@@ -526,15 +526,32 @@ This narrows the blocker from formula absence to formula mismatch. The source-fa
 second-moment estimator uses zero-mode to lowest-nonzero-mode structure-factor information,
 while the current proxy uses all nonzero modes and an RMS inverse-k length.
 
+## Wave 32 Lowest-Mode Second-Moment Candidate Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_lowest_mode_candidate_gate.json`
+
+- `wave31_chain_gate`: `PASS`
+- `formula_boundary_gate`: `PASS`
+- `lowest_mode_implementation_gate`: `PASS`
+- `lowest_mode_observable_gate`: `BLOCKED`
+- `finite_size_trend_gate`: `BLOCKED`
+- `replacement_acceptance_gate`: `BLOCKED`
+- `claim_boundary_gate`: `WARN`
+- valid lowest-mode cases: `0/15`
+- invalid reason: `zero_mode_not_larger_than_lowest_mode`
+
+This narrows the blocker again. The source-family formula can be implemented, but the current
+single-snapshot conserved-order lane does not provide a valid `S(0)` susceptibility observable.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 31
-now records the next controller as `structure_factor_source_formula_extracted_current_rms_proxy_mismatch`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 32
+now records the next controller as `lowest_mode_second_moment_candidate_blocked_by_zero_mode_snapshot_observable`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should implement a
-lowest-mode second-moment estimator candidate or repair the window/dynamics path before
+Keep all candidate operators as opt-in diagnostics. The next wave should derive an
+ensemble/connected susceptibility second-moment lane or repair the window/dynamics path before
 accepting calibration or rerunning exponent/universality gates.

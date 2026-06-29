@@ -75,6 +75,7 @@ flowchart LR
 | Wave 29 calibration source support | Source-packaging triage | `Result/artifacts/0_11_structure_factor_calibration_source_support_gate.json` | local estimator-source support missing; package primary second-moment sources before calibration |
 | Wave 30 estimator source manifest | Source-manifest packaging | `Data/03_Research/structure_factor_estimator_source_manifest.json`; `Result/artifacts/0_11_structure_factor_source_manifest_gate.json` | primary metadata packaged; formula extraction and calibration still blocked |
 | Wave 31 estimator formula boundary | Source-formula mismatch gate | `Data/03_Research/structure_factor_estimator_formula_boundary.json`; `Result/artifacts/0_11_structure_factor_formula_boundary_gate.json` | source formula boundary passes; current RMS inverse-k proxy rejected for claim use |
+| Wave 32 lowest-mode estimator candidate | Source-family replacement diagnostic | `Result/artifacts/0_11_structure_factor_lowest_mode_candidate_gate.json` | implementation passes; observable validity blocked by zero-mode snapshot lane |
 | Universal phase-transition theory | Not closed | limitations and formula audit | do not claim full proof |
 
 ## 5x4 Grid Structure
@@ -140,5 +141,6 @@ python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exp
 - The Wave 29 source-support gate finds zero local text-source matches for structure-factor, second-moment correlation length, Fourier estimator definition, or finite-size admissibility, so calibration acceptance is blocked until primary estimator sources are packaged.
 - The Wave 30 source-manifest gate packages three primary-source candidates and passes metadata coverage, but `local_formula_extraction_gate` and `calibration_acceptance_gate` remain `BLOCKED`.
 - The Wave 31 formula-boundary gate extracts the source-family second-moment estimator boundary, but `current_proxy_source_match_gate` remains `BLOCKED` because the current RMS inverse-k proxy does not match the source-backed lowest-mode relation.
+- The Wave 32 lowest-mode candidate gate implements the source-family estimator, but `lowest_mode_observable_gate` is `BLOCKED`: all `15/15` current snapshot cases are invalid because raw `S(0)` is not larger than `S(k_min)`.
 
 *Status note: internal critical-exponent benchmark and formula-audit hardening gate.*

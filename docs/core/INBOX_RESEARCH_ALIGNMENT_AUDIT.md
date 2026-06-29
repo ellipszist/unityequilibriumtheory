@@ -21,16 +21,16 @@
 | Inbox claim | Current repo state | Current boundary | Next action |
 | :-- | :-- | :-- | :-- |
 | `a_b_multiplicative_info_plus_gradient_game` | implemented_as_opt_in_diagnostic_then_blocked_by_scaling_gates | A/B candidate availability and safety are not enough; beta and correlation gates stayed diagnostic or blocked. | Do not retune A/B coefficients as the next default path; only revisit with a new formula/unit gate. |
-| `c_conserved_order_parameter` | implemented_as_conserved_order_spectral_v1_and_bridge_passed | Source formula boundaries are now extracted, and they reject the current RMS inverse-k proxy as a source-backed second-moment estimator for claim use. | Implement a lowest-mode second-moment estimator candidate or repair the window/dynamics path before exponent gates. |
+| `c_conserved_order_parameter` | implemented_as_conserved_order_spectral_v1_and_bridge_passed | The lowest-mode source-family candidate is implemented, but the current single-snapshot conserved-order lane lacks a valid S(0) susceptibility observable. | Derive an ensemble/connected susceptibility second-moment lane or repair the window/dynamics path before exponent gates. |
 | `warped_space_kappa_of_c` | not_accepted_not_primary | No formula-audit entry, unit closure, core opt-in mode, or scaling artifact currently accepts this path. | If pursued, start with formula/unit/provenance gate before code. |
 | `dynamic_game_landscape_beta_u` | not_accepted_not_primary | No state-variable policy, unit closure, stability gate, or artifact currently accepts dynamic beta_U. | If pursued, define state evolution, conservation/safety gates, and claim boundary first. |
 | `hidden_standalone_equation_risk` | mitigated_by_core_engine_path_gates | Future candidates still need explicit engine-path gates before claim interpretation. | Keep engine alignment gates mandatory for every new operator or estimator verifier. |
 
 ## Current Controller
 
-`Implement a lowest-mode second-moment estimator candidate or repair the window/dynamics path before accepting calibration or adding new warped-space/dynamic-game operators.`
+`Derive an ensemble/connected susceptibility second-moment lane or repair the window/dynamics path before accepting calibration or adding new warped-space/dynamic-game operators.`
 
-Wave 31 extracts the source formula family and rejects the current RMS inverse-k proxy for source-backed claim use.
+Wave 32 implements the literal lowest-mode candidate but blocks replacement because the current snapshot lane lacks a valid S(0) susceptibility observable.
 
 ## Claim Boundary
 
