@@ -21,16 +21,16 @@
 | Inbox claim | Current repo state | Current boundary | Next action |
 | :-- | :-- | :-- | :-- |
 | `a_b_multiplicative_info_plus_gradient_game` | implemented_as_opt_in_diagnostic_then_blocked_by_scaling_gates | A/B candidate availability and safety are not enough; beta and correlation gates stayed diagnostic or blocked. | Do not retune A/B coefficients as the next default path; only revisit with a new formula/unit gate. |
-| `c_conserved_order_parameter` | implemented_as_conserved_order_spectral_v1_and_bridge_passed | Core spectral bridge exists, but multi-grid calibration shows the structure-factor estimator is domain-scale saturated. | Calibrate against larger grids, known/source-backed benchmarks, or a derived finite-size acceptance rule before exponent or universality claims. |
+| `c_conserved_order_parameter` | implemented_as_conserved_order_spectral_v1_and_bridge_passed | Core spectral bridge exists and the L20 probe reduces the domain-scale symptom, but the structure-factor estimator still lacks an accepted source-backed or derived finite-size acceptance rule. | Create a source-backed or derived structure-factor acceptance rule before exponent or universality claims. |
 | `warped_space_kappa_of_c` | not_accepted_not_primary | No formula-audit entry, unit closure, core opt-in mode, or scaling artifact currently accepts this path. | If pursued, start with formula/unit/provenance gate before code. |
 | `dynamic_game_landscape_beta_u` | not_accepted_not_primary | No state-variable policy, unit closure, stability gate, or artifact currently accepts dynamic beta_U. | If pursued, define state evolution, conservation/safety gates, and claim boundary first. |
 | `hidden_standalone_equation_risk` | mitigated_by_core_engine_path_gates | Future candidates still need explicit engine-path gates before claim interpretation. | Keep engine alignment gates mandatory for every new operator or estimator verifier. |
 
 ## Current Controller
 
-`Calibrate the structure-factor estimator against larger grids, known/source-backed benchmarks, or a derived finite-size acceptance rule before adding new warped-space or dynamic-game operators.`
+`Create a source-backed or derived structure-factor acceptance rule before adding new warped-space or dynamic-game operators.`
 
-Wave 25 showed that the structure-factor margin replicates but remains domain-scale saturated; For Work prefers clearing the current controller before broadening scope.
+Wave 26 showed L20 relieves the largest-grid domain-scale symptom, but the estimator still lacks an admissibility rule and remains blocked for exponent claims.
 
 ## Claim Boundary
 

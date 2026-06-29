@@ -69,6 +69,7 @@ flowchart LR
 | Wave 23 L16 estimator sensitivity | Estimator-threshold diagnostic | `Result/artifacts/0_11_conserved_order_spectral_l16_estimator_sensitivity.json` | L16 xi/L gate is threshold-sensitive; non-default threshold not accepted |
 | Wave 24 L16 structure-factor estimator | Threshold-free estimator diagnostic | `Result/artifacts/0_11_conserved_order_spectral_l16_structure_factor_estimator.json` | structure-factor margin passes but domain-scale guard warns |
 | Wave 25 structure-factor multigrid calibration | Multi-grid estimator calibration | `Result/artifacts/0_11_conserved_order_spectral_structure_factor_multigrid_calibration.json` | margin replicates; domain-scale calibration remains blocked |
+| Wave 26 L20 structure-factor probe | Larger-grid estimator probe | `Result/artifacts/0_11_conserved_order_spectral_structure_factor_l20_probe.json` | L20 domain-scale relief passes; acceptance-rule gate remains blocked |
 | Universal phase-transition theory | Not closed | limitations and formula audit | do not claim full proof |
 
 ## 5x4 Grid Structure
@@ -128,5 +129,6 @@ python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exp
 - The Wave 23 estimator-sensitivity diagnostic reproduces the default `e^-1` blocker exactly, but lower axis-autocorrelation thresholds (`0.30`, `0.25`, `0.20`) make all 9 L16 fresh-seed cases pass without saturation; this narrows the controller to estimator derivation/calibration, not claim promotion.
 - The Wave 24 structure-factor diagnostic adds a threshold-free RMS length proxy: it passes the L16 margin in `9/9` cases with min `xi/L = 0.5549`, but `domain_scale_guard == WARN` because the single-grid length is near the domain scale, so multi-grid calibration is now the controller.
 - The Wave 25 multi-grid calibration confirms the structure-factor margin replicates across `L=8,12,16` and both seed sets (`18/18` passes), but `domain_scale_calibration_gate == BLOCKED`: median `xi/L` is `0.997` at `L=8`, `0.717` at `L=12`, and `0.566` at `L=16`, so the estimator remains domain-scale saturated.
+- The Wave 26 L20 probe passes stability and L20 margin gates (`6/6` cases, median `xi/L = 0.4347`), but `derived_acceptance_rule_gate == BLOCKED`: the L20 absolute `xi` is slightly below L16 (`L20/L16 = 0.9599`), prior L8 remains domain-scale, and structure-factor/axis-estimator reconciliation still lacks an admissibility rule.
 
 *Status note: internal critical-exponent benchmark and formula-audit hardening gate.*

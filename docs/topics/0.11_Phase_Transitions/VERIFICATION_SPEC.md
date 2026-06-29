@@ -656,3 +656,38 @@
 - Interpretation:
   - The structure-factor estimator is reproducible, but the multi-grid check shows domain-scale saturation, especially at smaller grids.
   - The next useful work is a larger-grid/source-backed estimator benchmark or a derived acceptance rule, not exponent or universality promotion.
+
+
+## Wave 26 Conserved-Order Spectral Structure-Factor L20 Probe
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Structure_Factor_L20_Probe.py`
+- Artifact target:
+  - `Result/artifacts/0_11_conserved_order_spectral_structure_factor_l20_probe.json`
+  - `Result/gl_conserved_order_spectral_structure_factor_l20_probe_stats.csv`
+- Purpose:
+  - Add an `L=20` larger-grid probe after Wave 25 domain-scale saturation.
+  - Decide whether the structure-factor estimator is ready for exponent gates or still needs an explicit acceptance rule.
+- Required gates:
+  - `wave25_chain_gate.status == PASS`
+  - `inbox_chain_gate.status == PASS`
+  - `engine_path_gate.status == PASS`
+  - `larger_grid_probe_gate.status == PASS`
+  - `l20_margin_gate.status == PASS`
+  - `derived_acceptance_rule_gate.status == PASS` before exponent or universality gates may use this estimator.
+  - `next_path_gate.status != BLOCKED` before claim promotion.
+- Current Wave 26 result:
+  - overall status `WARN`
+  - `larger_grid_probe_gate == PASS`
+  - `l20_margin_gate == PASS`
+  - `l20_domain_scale_relief_gate == PASS`
+  - `extended_scaling_gate == WARN`
+  - `derived_acceptance_rule_gate == BLOCKED`
+  - `next_path_gate == BLOCKED`
+  - L20 structure-factor margin: `6/6` passes, median `xi/L = 0.4347`, min `xi/L = 0.4333`
+  - extended medians by grid: `L=8 -> 0.9972`, `L=12 -> 0.7166`, `L=16 -> 0.5661`, `L=20 -> 0.4347`
+  - L20/L16 absolute `xi` ratio: `0.9599`; four-grid log `xi` vs log `L` slope: `0.1110`
+  - structure-factor to lower-axis estimator ratio at L20: `2.6261`
+- Interpretation:
+  - L20 reduces the largest-grid domain-scale symptom, but this does not validate the estimator for exponent fitting.
+  - The next useful work is a source-backed or derived estimator acceptance rule that defines admissible grids and reconciles estimator disagreement.

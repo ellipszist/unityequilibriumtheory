@@ -404,15 +404,40 @@ This completes the requested multi-grid calibration pass but keeps claims blocke
 replicates as a long-wavelength/domain-scale proxy, not as an accepted critical correlation
 length for exponent or universality gates.
 
+
+## Wave 26 Conserved-Order Spectral Structure-Factor L20 Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_structure_factor_l20_probe.json`
+
+- `wave25_chain_gate`: `PASS`
+- `inbox_chain_gate`: `PASS`
+- `engine_path_gate`: `PASS`
+- `larger_grid_probe_gate`: `PASS`
+- `l20_margin_gate`: `PASS`
+- `l20_domain_scale_relief_gate`: `PASS`
+- `extended_scaling_gate`: `WARN`
+- `derived_acceptance_rule_gate`: `BLOCKED`
+- `next_path_gate`: `BLOCKED`
+- `claim_boundary_gate`: `WARN`
+- L20 structure-factor margin: `6/6` cases pass
+- L20 median structure-factor `xi/L`: `0.4347`
+- L20/L16 absolute `xi` ratio: `0.9599`
+- structure-factor/lower-axis estimator ratio: `2.6261`
+
+This narrows the blocker again. The L20 probe reduces the largest-grid domain-scale symptom,
+but it does not create an accepted estimator rule. The next controller is an explicit
+source-backed or derived acceptance rule before exponent or universality gates can use this
+structure-factor proxy.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 25
-now records the next controller as `spectral_core_structure_factor_multigrid_domain_scale_saturated`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 26
+now records the next controller as `spectral_core_structure_factor_larger_grid_probe_needs_acceptance_rule`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should calibrate the
-structure-factor estimator against larger grids, known/source-backed benchmarks, or a derived
-finite-size acceptance rule before rerunning exponent or universality gates.
+Keep all candidate operators as opt-in diagnostics. The next wave should create a
+source-backed or derived structure-factor acceptance rule that defines admissible grids and
+reconciles estimator disagreement before rerunning exponent or universality gates.

@@ -1,6 +1,33 @@
 # Update Log: 0.11 Phase Transitions
 
 
+## Wave: Conserved-Order Spectral Structure-Factor L20 Probe (Wave 26)
+
+**What changed:**
+- Added `Research_Conserved_Order_Spectral_Structure_Factor_L20_Probe.py` to test the Wave 25 structure-factor estimator on an `L=20` larger grid.
+- Added machine-readable artifact `Result/artifacts/0_11_conserved_order_spectral_structure_factor_l20_probe.json` and CSV `Result/gl_conserved_order_spectral_structure_factor_l20_probe_stats.csv`.
+- Updated topic docs and the inbox alignment audit to move the controller from larger-grid probing to a source-backed or derived structure-factor acceptance rule.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Structure_Factor_L20_Probe.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Structure_Factor_L20_Probe.py`
+- `.\.venv\Scripts\python.exe docs/scripts/audit/audit_inbox_research_alignment.py`
+
+**Which blocker narrowed:**
+- Narrowed `spectral_core_structure_factor_multigrid_domain_scale_saturated` into `spectral_core_structure_factor_larger_grid_probe_needs_acceptance_rule`.
+- The artifact reports `larger_grid_probe_gate == PASS`, `l20_margin_gate == PASS`, and `l20_domain_scale_relief_gate == PASS`.
+- It also reports `derived_acceptance_rule_gate == BLOCKED`: L20 median `xi/L` is `0.4347`, but prior L8 remains domain-scale, L20/L16 absolute `xi` ratio is `0.9599`, and the structure-factor/lower-axis estimator ratio is `2.6261`.
+
+**Next controlling blocker:**
+- Create a source-backed or derived structure-factor acceptance rule before rerunning exponent or universality gates.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 26 records partial larger-grid relief, not an accepted critical correlation length, universality-class shift, material validation, RG closure, or phase-transition-solution claim.
+
+---
+
+
+
 ## Wave: Conserved-Order Spectral Structure-Factor Multi-Grid Calibration (Wave 25)
 
 **What changed:**
