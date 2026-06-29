@@ -42,3 +42,4 @@
 - Wave 31 extracts the source-family second-moment estimator boundary, but the current RMS inverse-k proxy is not source-matched and remains diagnostic-only for claim use.
 - Wave 32 implements the literal lowest-mode second-moment candidate, but all current L16/L20 snapshot cases are invalid for that formula because raw `S(0)` is not larger than `S(k_min)`; no surrogate `S(0)` is accepted.
 - Wave 33 tests ensemble and spatial-variance `S(0)` lanes, but the source-closer ensemble lane remains invalid under the conserved-mean constraint and the spatial-variance proxy remains diagnostic-only.
+- Wave 34 defines estimator-policy requirements, but no source-backed conserved-order susceptibility or finite-k/canonical estimator policy is accepted yet.

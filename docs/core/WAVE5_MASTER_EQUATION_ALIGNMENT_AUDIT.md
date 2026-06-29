@@ -561,15 +561,32 @@ This narrows the blocker from missing `S(0)` implementation to a conserved-order
 policy gap. The source-closer ensemble lane is blocked by conserved mean, while the spatial
 variance lane remains diagnostic-only.
 
+## Wave 34 Estimator-Policy Source-Support Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_estimator_policy_source_gate.json`
+Policy requirements: `docs/topics/0.11_Phase_Transitions/Data/03_Research/structure_factor_estimator_policy_requirements.json`
+
+- `wave33_chain_gate`: `PASS`
+- `policy_requirement_manifest_gate`: `PASS`
+- `conserved_susceptibility_source_gate`: `BLOCKED`
+- `finite_k_policy_source_gate`: `BLOCKED`
+- `spatial_variance_proxy_policy_gate`: `PASS`
+- `estimator_policy_selection_gate`: `BLOCKED`
+- `claim_boundary_gate`: `WARN`
+
+This narrows the blocker again. Required estimator-policy paths are now explicit, but the
+current source package does not accept conserved-order susceptibility or finite-k/canonical
+replacement.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 33
-now records the next controller as `ensemble_susceptibility_lane_blocked_by_conserved_mean_constraint`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 34
+now records the next controller as `estimator_policy_source_support_missing_for_conserved_susceptibility_or_finite_k_path`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should source-back a
-conserved-order susceptibility policy, switch to a source-backed finite-k/canonical estimator,
-or repair the window/dynamics path before accepting calibration or rerunning exponent/universality gates.
+Keep all candidate operators as opt-in diagnostics. The next wave should package
+policy-specific sources for conserved-order susceptibility or finite-k/canonical estimator
+replacement, or choose window/dynamics repair without accepting an estimator.

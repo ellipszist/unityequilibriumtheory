@@ -2,6 +2,32 @@
 
 
 
+## Wave: Estimator-Policy Source-Support Gate (Wave 34)
+
+**What changed:**
+- Added `Data/03_Research/structure_factor_estimator_policy_requirements.json` to define conserved-order susceptibility, finite-k/canonical, and spatial-variance proxy policy requirements.
+- Added `Research_Structure_Factor_Estimator_Policy_Source_Gate.py` and artifact `Result/artifacts/0_11_structure_factor_estimator_policy_source_gate.json`.
+- Updated topic docs and the inbox alignment audit to move the controller from source-backing policy in general to packaging policy-specific source support.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Estimator_Policy_Source_Gate.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Estimator_Policy_Source_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `ensemble_susceptibility_lane_blocked_by_conserved_mean_constraint` into `estimator_policy_source_support_missing_for_conserved_susceptibility_or_finite_k_path`.
+- The artifact reports `policy_requirement_manifest_gate == PASS` and `spatial_variance_proxy_policy_gate == PASS`.
+- It also reports `conserved_susceptibility_source_gate == BLOCKED`, `finite_k_policy_source_gate == BLOCKED`, and `estimator_policy_selection_gate == BLOCKED`.
+
+**Next controlling blocker:**
+- Package policy-specific sources for conserved-order/fixed-composition susceptibility or finite-k/canonical estimator replacement, or choose window/dynamics repair without accepting an estimator.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 34 does not accept a susceptibility policy, finite-k estimator policy, spatial-variance proxy, calibration, exponent, universality, material, RG, or phase-transition-solution claims.
+
+---
+
+
+
 ## Wave: Ensemble Susceptibility S0 Lane Gate (Wave 33)
 
 **What changed:**

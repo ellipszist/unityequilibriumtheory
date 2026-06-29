@@ -901,3 +901,32 @@
   - The source-closer ensemble magnetization lane is blocked by the conserved-mean constraint.
   - The spatial variance proxy can produce numbers, but it is not accepted as source-equivalent `S(0)`.
   - The next useful work is to source-back a conserved-order susceptibility policy, switch to a source-backed finite-k/canonical estimator, or repair the window/dynamics path.
+
+## Wave 34 Estimator-Policy Source-Support Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Estimator_Policy_Source_Gate.py`
+- Artifact target:
+  - `Result/artifacts/0_11_structure_factor_estimator_policy_source_gate.json`
+- Policy requirements manifest:
+  - `Data/03_Research/structure_factor_estimator_policy_requirements.json`
+- Purpose:
+  - Define the source requirements for conserved-order susceptibility, finite-k/canonical replacement, and spatial-variance proxy exclusion.
+  - Prevent estimator replacement until a policy path is source-backed and explicitly accepted.
+- Required gates:
+  - `wave33_chain_gate.status == PASS`
+  - `policy_requirement_manifest_gate.status == PASS`
+  - `conserved_susceptibility_source_gate.status == PASS` or `finite_k_policy_source_gate.status == PASS` before replacement work may continue.
+  - `spatial_variance_proxy_policy_gate.status == PASS` to keep the proxy diagnostic-only unless source-backed.
+  - `estimator_policy_selection_gate.status == PASS` before exponent or universality gates may rerun.
+- Current Wave 34 result:
+  - overall status `WARN`
+  - `wave33_chain_gate == PASS`
+  - `policy_requirement_manifest_gate == PASS`
+  - `conserved_susceptibility_source_gate == BLOCKED`
+  - `finite_k_policy_source_gate == BLOCKED`
+  - `spatial_variance_proxy_policy_gate == PASS`
+  - `estimator_policy_selection_gate == BLOCKED`
+- Interpretation:
+  - The policy requirements are explicit, but neither source-backed replacement path is accepted.
+  - The next useful work is to package policy-specific sources or choose window/dynamics repair without pretending an estimator is accepted.
