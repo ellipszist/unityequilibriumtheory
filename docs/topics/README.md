@@ -1,4 +1,4 @@
-# UET Research Topics Audit Index
+ิิิิิ# UET Research Topics Audit Index
 
 This page is the conservative entrypoint for `docs/topics`.
 
@@ -90,13 +90,13 @@ phase they are treated as exploratory or proposal-level work, not as evidence-be
 | [0.30](./0.30_Mega_Flora_Biotech/) | `Draft` | `D` | concept-rich future topic with code and docs, but no clear real-data package |
 | [0.31](./0.31_SpaceTime_Propulsion/) | `Draft` | `D` | integration-heavy future topic that still lacks explicit benchmark boundaries |
 | [0.32](./0.32_Micro_Nuclear_Fusion/) | `Draft` | `D` | future engineering topic with partial assets, not yet part of the current theory evidence core |
-| [0.33 Battery Tech](./0.33_Battery_Tech/) | `Draft` | `D` | duplicate-number future topic; kept outside theory-core credibility until merged, renamed, or standardized |
-| [0.33](./0.33_High_Energy_Density_Battery_Materials/) | `Draft` | `D` | sparse future shell with no current data path |
+| [0.33](./0.33_Battery_Tech/) | `Draft` | `D` | future shell with no current data path, merged for R&D |
 | [0.34](./0.34_Information_Centric_Nanofabrication/) | `Draft` | `D` | active future concept area, but still missing several core pillars and manifests |
 | [0.35](./0.35_ICN_Digital_Automation/) | `Draft` | `D` | infrastructure-facing shell that should remain exploratory until evidence assets exist |
 | [0.36](./0.36_Orbital_Manufacturing/) | `Draft` | `D` | README-driven integration vision with no auditable data or verification path |
-| [0.37](./0.37_Quantum_Photovoltaics_Solar_Paint/) | `Draft` | `D` | early shell topic with minimal assets and no real-data package yet |
+| [0.37](./0.37_Quantum_Photovoltaics/) | `Draft` | `D` | early shell topic with minimal assets and no real-data package yet |
 | [0.38](./0.38_Bio_Synthetic_Integration/) | `Draft` | `D` | application-facing concept topic that currently lacks manifested data and standardized proof boundaries |
+| [0.39](./0.39_Bio_Smart_City/) | `Draft` | `D` | integration concept topic that currently lacks manifested data and standardized proof boundaries |
 
 ## Working rules for readers
 

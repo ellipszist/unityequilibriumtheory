@@ -173,6 +173,6 @@
   "thresholds": {
     "per_target": "abs(predicted_shadow_uas - observed_shadow_uas) <= 2 * observed_error_uas"
   },
-  "timestamp_utc": "2026-05-26T12:47:27.491733+00:00",
+  "timestamp_utc": "2026-06-18T13:48:16.727281+00:00",
   "topic": "0.2_Black_Hole_Physics"
 }

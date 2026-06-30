@@ -8,13 +8,13 @@
   "environment": {
     "implementation": "CPython",
     "matplotlib_version": "3.10.8",
-    "numpy_version": "2.3.5",
+    "numpy_version": "2.4.0",
     "pandas_version": "2.3.3",
     "platform": "Windows-11-10.0.26200-SP0",
     "python_version": "3.14.2",
     "scipy_version": "1.16.3",
     "tensorflow_version": null,
-    "torch_version": null
+    "torch_version": "2.10.0+cpu"
   },
   "metrics": {
     "current_relative_error_percent": 0.05063064848888634,
@@ -35,7 +35,7 @@
   "thresholds": {
     "advisory_only": true
   },
-  "timestamp_utc": "2026-05-04T15:23:48.510222+00:00",
+  "timestamp_utc": "2026-06-18T13:55:59.153709+00:00",
   "topic": "0.6_Electroweak_Physics",
   "uet_version": "0.9.0"
 }

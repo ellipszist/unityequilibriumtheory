@@ -101,7 +101,7 @@
     "CL15-DRAG-TOY",
     "CL15-OFFSET-SIGN-GATE"
   ],
-  "generated_at_utc": "2026-05-28T13:32:51.407820+00:00",
+  "generated_at_utc": "2026-06-18T13:39:08.718660+00:00",
   "inputs": [
     {
       "path": "docs/topics/0.15_Cluster_Dynamics/Data/Bullet_Cluster_Coordinates.json",

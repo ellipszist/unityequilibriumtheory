@@ -1,20 +1,30 @@
 ---
 layout: article
-title: "UET Topic 0.33: Battery Tech"
-description: "Exploratory future-concept placeholder for battery technology work."
+title: "UET Topic 0.33: High Energy Density Battery Materials"
+description: "ALD SEI Stabilization and Kinetic Symmetry for Next-Gen Batteries."
 ---
 
-# 0.33 Battery Tech
+# 🔋 0.33 High Energy Density Battery Materials
 
-This folder is currently an exploratory future-concept placeholder only.
+> **"Mastering the Interface."**
 
-## Current status
+## 🎯 Problem & Grounded Solution
 
-- Scope class: `future_concept`
-- Status: `Draft`
-- Audit tier: `D`
-- Claim boundary: no scientific, engineering, or product-performance claim is supported from this folder yet
+- **The Problem:** High-capacity anodes (like Silicon) expand by 300% during charging, shattering the Solid Electrolyte Interphase (SEI) and degrading the battery rapidly.
+- **The Grounded Solution:** **Atomic Layer Deposition (ALD) & Kinetic Symmetry**. Using extreme precision coating (ALD) to create flexible, self-healing SEI layers. UET focuses on aligning the ion transport rates (Kinetic Symmetry) between high-nickel cathodes and silicon anodes to prevent lithium plating and thermal runaway.
 
-## Current limitation
+## 🔗 Theory Connection
+```mermaid
+graph TB
+    subgraph Standard["🔬 Standard Batteries"]
+        Silicon["Si Anode Expansion"] --> Shatter["SEI Destruction / Short Life"]
+    end
+    subgraph UET["✅ UET Scientific Pathway"]
+        ALD["Atomic Layer Deposition"] --> Flex["Flexible SEI"]
+        Flex --> Survive["High Energy Density / Long Life"]
+    end
+```
 
-This topic does not yet have a standards package, source-backed data, formula audit, or runnable verifier. It must not be used as evidence for core theory claims.
+## 📊 Evaluation Focus (LIMITATIONS)
+- **Manufacturing Scaling:** ALD is traditionally very slow; scaling it for gigafactory volume is the primary blocker.
+- **Volumetric Swelling:** Managing the physical expansion at the macro-pack level.

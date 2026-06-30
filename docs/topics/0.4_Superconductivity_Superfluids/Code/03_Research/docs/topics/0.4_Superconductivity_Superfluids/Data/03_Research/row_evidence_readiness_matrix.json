@@ -14,8 +14,15 @@
       "recommended_starting_point": "Check the Tc row identity and Theta_D_K-backed lambda_ep citation first.",
       "fields_total": 4,
       "fields_complete": 0,
+      "fields_with_working_context": 4,
       "fields_pending": 4,
       "pending_fields": [
+        "Tc_observed",
+        "Theta_D_K",
+        "lambda_ep",
+        "mu_star"
+      ],
+      "context_only_fields": [
         "Tc_observed",
         "Theta_D_K",
         "lambda_ep",
@@ -30,8 +37,15 @@
       "recommended_starting_point": "Resolve Tc row identity and phonon proxy convention before any parameter patching.",
       "fields_total": 4,
       "fields_complete": 0,
+      "fields_with_working_context": 4,
       "fields_pending": 4,
       "pending_fields": [
+        "Tc_observed",
+        "Theta_D_K_or_omega_log_K",
+        "lambda_ep",
+        "mu_star"
+      ],
+      "context_only_fields": [
         "Tc_observed",
         "Theta_D_K_or_omega_log_K",
         "lambda_ep",
@@ -46,8 +60,15 @@
       "recommended_starting_point": "Resolve Tc row identity and phonon proxy convention before any parameter patching.",
       "fields_total": 4,
       "fields_complete": 0,
+      "fields_with_working_context": 4,
       "fields_pending": 4,
       "pending_fields": [
+        "Tc_observed",
+        "Theta_D_K_or_omega_log_K",
+        "lambda_ep",
+        "mu_star"
+      ],
+      "context_only_fields": [
         "Tc_observed",
         "Theta_D_K_or_omega_log_K",
         "lambda_ep",

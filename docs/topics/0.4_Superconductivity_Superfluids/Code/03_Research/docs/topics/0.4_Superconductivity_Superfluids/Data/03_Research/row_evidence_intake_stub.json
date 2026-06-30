@@ -16,43 +16,47 @@
       "evidence_entries": [
         {
           "field": "Tc_observed",
-          "status": "pending",
-          "source_type": "",
-          "source_path_or_doi": "",
-          "original_row_identifier": "",
-          "extracted_value": null,
-          "unit_basis": "",
-          "extraction_note": ""
+          "status": "working_copy_context_present",
+          "source_type": "working_copy_row_packet",
+          "source_path_or_doi": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\vanadium_source_lock_packet.json",
+          "original_row_identifier": "MIT Junior Lab cited row identity still unlocked",
+          "extracted_value": 5.36,
+          "unit_basis": "K",
+          "extraction_note": "Working-copy Tc is present in the Vanadium packet, but the cited upstream/literature row still needs to be attached."
         },
         {
           "field": "Theta_D_K",
-          "status": "pending",
-          "source_type": "",
-          "source_path_or_doi": "",
-          "original_row_identifier": "",
+          "status": "working_copy_context_present",
+          "source_type": "working_copy_row_packet",
+          "source_path_or_doi": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\vanadium_source_lock_packet.json",
+          "original_row_identifier": "raw benchmark row with proxy choice still open",
           "extracted_value": null,
           "unit_basis": "K",
-          "extraction_note": ""
+          "extraction_note": "Theta_D_K is present in the working row, but source review must confirm whether Debye temperature is the correct proxy for this material row."
         },
         {
           "field": "lambda_ep",
-          "status": "pending",
-          "source_type": "",
-          "source_path_or_doi": "",
-          "original_row_identifier": "",
-          "extracted_value": null,
+          "status": "working_copy_context_present",
+          "source_type": "working_copy_row_packet",
+          "source_path_or_doi": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\vanadium_source_lock_packet.json",
+          "original_row_identifier": "raw benchmark row plus internal candidate comparison",
+          "extracted_value": {
+            "raw_lambda_ep": null,
+            "candidate_lambda_ep": null,
+            "inverse_required_lambda_ep": null
+          },
           "unit_basis": "dimensionless",
-          "extraction_note": ""
+          "extraction_note": "Internal packet narrows the likely lambda range, but the cited row value is not source-locked yet."
         },
         {
           "field": "mu_star",
-          "status": "pending",
-          "source_type": "",
-          "source_path_or_doi": "",
-          "original_row_identifier": "",
+          "status": "working_copy_context_present",
+          "source_type": "working_copy_row_packet",
+          "source_path_or_doi": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\vanadium_source_lock_packet.json",
+          "original_row_identifier": "working benchmark convention",
           "extracted_value": null,
           "unit_basis": "dimensionless",
-          "extraction_note": ""
+          "extraction_note": "Current packet retains mu_star as a working convention until a row-specific citation is attached."
         }
       ]
     },
@@ -63,43 +67,50 @@
       "evidence_entries": [
         {
           "field": "Tc_observed",
-          "status": "pending",
-          "source_type": "",
-          "source_path_or_doi": "",
-          "original_row_identifier": "",
-          "extracted_value": null,
-          "unit_basis": "",
-          "extraction_note": ""
+          "status": "working_copy_context_present",
+          "source_type": "working_copy_row_packet",
+          "source_path_or_doi": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\a15_external_resolution_packet.json",
+          "original_row_identifier": "Matthias 1954 cited row identity still unlocked",
+          "extracted_value": 18.3,
+          "unit_basis": "K",
+          "extraction_note": "Working-copy Tc is known, but the exact source row still needs to be attached before patch review."
         },
         {
           "field": "Theta_D_K_or_omega_log_K",
-          "status": "pending",
-          "source_type": "",
-          "source_path_or_doi": "",
-          "original_row_identifier": "",
-          "extracted_value": null,
+          "status": "proxy_unresolved",
+          "source_type": "working_copy_and_internal_comparison",
+          "source_path_or_doi": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\a15_external_resolution_packet.json",
+          "original_row_identifier": "A15 proxy convention unresolved",
+          "extracted_value": {
+            "raw_theta_D_K": null,
+            "comparison_omega_log_K": null
+          },
           "unit_basis": "K",
-          "extraction_note": ""
+          "extraction_note": "Both Debye and omega_log proxy candidates are known internally, but the source-backed proxy convention for Nb3Sn is unresolved."
         },
         {
           "field": "lambda_ep",
-          "status": "pending",
-          "source_type": "",
-          "source_path_or_doi": "",
-          "original_row_identifier": "",
-          "extracted_value": null,
+          "status": "working_copy_context_present",
+          "source_type": "working_copy_and_internal_comparison",
+          "source_path_or_doi": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\a15_external_resolution_packet.json",
+          "original_row_identifier": "raw row plus internal comparison candidate",
+          "extracted_value": {
+            "raw_lambda_ep": null,
+            "comparison_lambda_ep": null,
+            "inverse_required_lambda_ep": null
+          },
           "unit_basis": "dimensionless",
-          "extraction_note": ""
+          "extraction_note": "Internal comparison narrows the disagreement, but no external row has yet certified the lambda value."
         },
         {
           "field": "mu_star",
-          "status": "pending",
-          "source_type": "",
-          "source_path_or_doi": "",
-          "original_row_identifier": "",
+          "status": "working_copy_context_present",
+          "source_type": "working_copy_row_packet",
+          "source_path_or_doi": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\a15_external_resolution_packet.json",
+          "original_row_identifier": "family-level working convention",
           "extracted_value": null,
           "unit_basis": "dimensionless",
-          "extraction_note": ""
+          "extraction_note": "Current A15 packet keeps mu_star as a working convention; a row-specific citation is still required."
         }
       ]
     },
@@ -110,43 +121,50 @@
       "evidence_entries": [
         {
           "field": "Tc_observed",
-          "status": "pending",
-          "source_type": "",
-          "source_path_or_doi": "",
-          "original_row_identifier": "",
-          "extracted_value": null,
-          "unit_basis": "",
-          "extraction_note": ""
+          "status": "working_copy_context_present",
+          "source_type": "working_copy_row_packet",
+          "source_path_or_doi": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\a15_external_resolution_packet.json",
+          "original_row_identifier": "Gavaler 1973 cited row identity still unlocked",
+          "extracted_value": 23.2,
+          "unit_basis": "K",
+          "extraction_note": "Working-copy Tc is known, but the exact source row still needs to be attached before patch review."
         },
         {
           "field": "Theta_D_K_or_omega_log_K",
-          "status": "pending",
-          "source_type": "",
-          "source_path_or_doi": "",
-          "original_row_identifier": "",
-          "extracted_value": null,
+          "status": "proxy_unresolved",
+          "source_type": "working_copy_and_internal_comparison",
+          "source_path_or_doi": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\a15_external_resolution_packet.json",
+          "original_row_identifier": "A15 proxy convention unresolved",
+          "extracted_value": {
+            "raw_theta_D_K": null,
+            "comparison_omega_log_K": null
+          },
           "unit_basis": "K",
-          "extraction_note": ""
+          "extraction_note": "Both Debye and omega_log proxy candidates are known internally, but the source-backed proxy convention for Nb3Ge is unresolved."
         },
         {
           "field": "lambda_ep",
-          "status": "pending",
-          "source_type": "",
-          "source_path_or_doi": "",
-          "original_row_identifier": "",
-          "extracted_value": null,
+          "status": "working_copy_context_present",
+          "source_type": "working_copy_and_internal_comparison",
+          "source_path_or_doi": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\a15_external_resolution_packet.json",
+          "original_row_identifier": "raw row plus internal comparison candidate",
+          "extracted_value": {
+            "raw_lambda_ep": null,
+            "comparison_lambda_ep": null,
+            "inverse_required_lambda_ep": null
+          },
           "unit_basis": "dimensionless",
-          "extraction_note": ""
+          "extraction_note": "Internal comparison narrows the disagreement, but no external row has yet certified the lambda value."
         },
         {
           "field": "mu_star",
-          "status": "pending",
-          "source_type": "",
-          "source_path_or_doi": "",
-          "original_row_identifier": "",
+          "status": "working_copy_context_present",
+          "source_type": "working_copy_row_packet",
+          "source_path_or_doi": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\a15_external_resolution_packet.json",
+          "original_row_identifier": "family-level working convention",
           "extracted_value": null,
           "unit_basis": "dimensionless",
-          "extraction_note": ""
+          "extraction_note": "Current A15 packet keeps mu_star as a working convention; a row-specific citation is still required."
         }
       ]
     }

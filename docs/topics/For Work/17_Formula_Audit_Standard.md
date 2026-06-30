@@ -45,8 +45,9 @@ flowchart TD
 | :-- | :-- |
 | `formula_id` | what calculation path is this entry tracking? |
 | `relation` | what exact formula or pseudo-formula is used? |
-| `variables` | what does each symbol mean? |
+| `variables` | what does each symbol mean physically and mathematically (e.g., continuous field, tensor, scalar)? |
 | `units` | what units must each dimensional quantity use? |
+| `unit_closure_status` | does the dimensional analysis balance exactly (Closed), use proxy units (Proxy), or remain unproven (Open)? |
 | `conversion_steps` | where do units change and how? |
 | `constant_origin` | source-locked constant, derived term, heuristic bridge, or benchmark anchor? |
 | `proof_status` | identity, derived, checked local, heuristic, or open? |
@@ -92,13 +93,14 @@ At minimum, a topic with scientific code should have:
 Every important formula entry should state:
 
 1. the calculation path
-2. the variables and meanings
+2. the variables and their exact physical/mathematical meaning
 3. the unit system
-4. the conversion steps
-5. the origin class of constants
-6. the proof status
-7. the verification role
-8. the current limitation
+4. the unit closure status (Dimensional Analysis)
+5. the conversion steps
+6. the origin class of constants
+7. the proof status
+8. the verification role
+9. the current limitation
 
 ## Example decision table
 
@@ -114,6 +116,8 @@ Every important formula entry should state:
 
 - No important formula should remain undocumented once a topic is `Structured`.
 - Units must be explicit whenever dimensional quantities appear.
+- Unit closure (Dimensional Analysis) must balance, or the status must explicitly be marked as `Open`.
+- Variables must have clear mathematical and physical definitions, not just casual prose.
 - Hidden benchmark anchors are not allowed.
 - Heuristic bridges are allowed only when labeled honestly.
 - A formula registry must map back to real code or artifacts.
@@ -129,7 +133,8 @@ Every important formula entry should state:
 ## Checklist
 
 - [ ] main formulas are listed explicitly
-- [ ] variables and units are defined
+- [ ] variables are defined mathematically and physically
+- [ ] units are defined and Unit Closure is verified
 - [ ] conversion steps are written down
 - [ ] constants are labeled by origin class
 - [ ] proof status is assigned honestly

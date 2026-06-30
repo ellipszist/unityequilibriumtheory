@@ -1,0 +1,19 @@
+{
+  "run_id": "1781789166_UET_Slingshot",
+  "simulation": "UET_Slingshot",
+  "status": "FAILED",
+  "timestamp": "Thu Jun 18 20:26:06 2026",
+  "duration_seconds": 0.004915714263916016,
+  "total_steps": 0,
+  "metadata": {
+    "nx": 1,
+    "ny": 1,
+    "dt": 0.01,
+    "kappa": 0.4900000000000001,
+    "beta": 0.8795299970535078,
+    "alpha": 1.0,
+    "C0": 1.0,
+    "phi_loss": 0.05
+  },
+  "final_state": null
+}

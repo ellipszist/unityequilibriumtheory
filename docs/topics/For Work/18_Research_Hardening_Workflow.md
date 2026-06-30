@@ -62,6 +62,7 @@ The main outputs are not only better prose. The main outputs are:
 | :-- | :-- | :-- | :-- |
 | `Source packaging` | do we know what inputs we are using? | source manifest, DOI or URL, local path, hash, units | source family unclear |
 | `Diagnostic artifact` | can we rerun and inspect the current behavior? | verifier, metrics, thresholds, artifact JSON | no stable script or threshold |
+| `Unit Audit` | do all formulas balance dimensionally? | unit closure status, explicit mathematical variable definitions | mismatched SI units, naked floats |
 | `Hardening gate` | do we know why the topic is not ready? | machine-readable gate with blockers | vague or narrative-only status |
 | `Predictive candidate` | what exact model or operator would count as progress? | parameter policy, split manifest, acceptance harness | fitted diagnostic mistaken for prediction |
 | `Claim gate` | what may be said publicly right now? | claim class, blocked phrases, publication checks | README outruns artifact |
@@ -103,6 +104,8 @@ blockers. Typical examples:
 
 - source readiness gate
 - formula provenance gate
+- unit closure gate (Dimensional analysis must perfectly balance)
+- mathematical variable definition gate
 - uncertainty readiness gate
 - baseline comparator gate
 - training or holdout split gate
@@ -110,7 +113,7 @@ blockers. Typical examples:
 - publication readiness gate
 
 The goal is not to produce many gates. The goal is to ensure each major blocker
-has a named home.
+has a named home, especially physical unit gaps.
 
 ### 4. Separate diagnostics from candidate prediction
 

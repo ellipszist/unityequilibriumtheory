@@ -316,7 +316,7 @@
     "predicted_mass_less_than_katrin_limit": true,
     "runtime_splittings_within_any_3sigma": true
   },
-  "timestamp_utc": "2026-05-26T12:26:40.180365+00:00",
+  "timestamp_utc": "2026-06-18T13:56:55.554707+00:00",
   "topic": "0.7_Neutrino_Physics",
   "uet_version": "0.9.0"
 }

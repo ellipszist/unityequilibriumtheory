@@ -1,0 +1,35 @@
+{
+  "run_id": "1781791068_Quantum_Entanglement",
+  "simulation": "Quantum_Entanglement",
+  "status": "COMPLETED",
+  "timestamp": "Thu Jun 18 20:57:48 2026",
+  "duration_seconds": 0.0012781620025634766,
+  "total_steps": 1,
+  "metadata": {
+    "nx": 60,
+    "ny": 1,
+    "dt": 0.001,
+    "kappa": 1.4,
+    "beta": 0.04019370439110214,
+    "alpha": 1.0,
+    "C0": 1.0,
+    "phi_loss": 0.05
+  },
+  "final_state": {
+    "step": 0,
+    "time": 0.001,
+    "omega": 0.3927771717468938,
+    "kinetic": 0.0,
+    "potential": 0.3927771717468938,
+    "entropy": 0.0,
+    "gradient_norm": 0.0,
+    "max_density": 0.11368496374382335,
+    "min_density": 0.11368496374382335,
+    "is_stable": true,
+    "gradient_energy": 0.0,
+    "entropy_interaction": 0.0,
+    "mode": "entanglement",
+    "metric_val": 0.11368496374382335,
+    "violation": false
+  }
+}

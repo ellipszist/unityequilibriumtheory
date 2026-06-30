@@ -1,0 +1,27 @@
+{
+    "metadata": {
+        "timestamp": "2026-06-25T22:21:39.013662",
+        "topic": "0.31_SpaceTime_Propulsion",
+        "status": "PASS"
+    },
+    "metrics": {
+        "achieved_drag_reduction_pct": 95.0,
+        "target_drag_reduction_pct": 90.0,
+        "achieved_displacement_mm": 33.333333333333336,
+        "max_allowable_displacement_mm": 50.0
+    },
+    "drag_test": [
+        {
+            "velocity_ms": 50,
+            "force_classical_n": 2242187.5,
+            "force_plasma_n": 112109.37499999999,
+            "drag_reduction_pct": 95.0
+        }
+    ],
+    "stability_test": [
+        {
+            "external_force_n": 5000,
+            "displacement_mm": 33.333333333333336
+        }
+    ]
+}

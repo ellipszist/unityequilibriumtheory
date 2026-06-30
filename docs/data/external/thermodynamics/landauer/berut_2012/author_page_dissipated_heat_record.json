@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "source_family": "Berut et al. 2012 Landauer heat figure adjunct",
+  "artifact_role": "author-page quantitative figure surface record",
+  "source_url": "https://ilm-perso.univ-lyon1.fr/~aberut/images/Dissipated-heat.png",
+  "parent_page_url": "https://ilm-perso.univ-lyon1.fr/~aberut/research.html",
+  "checked_date": "2026-06-22",
+  "local_path": "docs/data/external/thermodynamics/landauer/berut_2012/author_page_dissipated_heat.png",
+  "file_identity": {
+    "file_name": "author_page_dissipated_heat.png",
+    "size_bytes": 68873,
+    "sha256": "7894360fb599b7068a0894c63434a30f2df37b72ec54445a659d7151553b23f3",
+    "dimensions_px": [
+      916,
+      635
+    ],
+    "mode": "RGBA"
+  },
+  "semantic_context": {
+    "parent_page_line_range": "lines 76-85 in browser capture",
+    "summary": "Author page describes this visual as average heat Q dissipated by the memory erasure procedure as a function of procedure duration tau, linked to the Nature 2012 Landauer article."
+  },
+  "status": "author_page_quantitative_surface_archived_tick_mapping_open",
+  "claim_boundary": "This author-page image is a quantitative figure surface and useful parity/tick-mapping aid, but it is not a raw data table and does not by itself close the official Nature Figure 3 source-normalized Berut row."
+}

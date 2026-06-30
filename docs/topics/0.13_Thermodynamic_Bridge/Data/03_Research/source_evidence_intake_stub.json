@@ -31,7 +31,7 @@
         {
           "field": "row_identifier_or_table_label",
           "status": "partial",
-          "value": "Official Figure 3 PPT route captured, embedded raster candidates named, semantic asset-role review completed, and jpeg_2 selected as the preferred quantitative candidate; panel selection, tick mapping, and numeric point/curve remain open."
+          "value": "Official Figure 3 PPT route captured, embedded raster candidates named, semantic asset-role review completed, jpeg_2 selected as the preferred quantitative candidate, and the author-page heat image archived; tick mapping, official parity, and numeric point/curve remain open."
         },
         {
           "field": "figure_level_locator",
@@ -64,6 +64,11 @@
           "value": "new_preferred=jpeg_2; previous_preferred=jpeg_3; next=berut_figure_3_quantitative_panel_tick_mapping_required"
         },
         {
+          "field": "author_page_heat_image_surface",
+          "status": "partial",
+          "value": "local_image=docs/data/external/thermodynamics/landauer/berut_2012/author_page_dissipated_heat.png; sha256=7894360fb599b7068a0894c63434a30f2df37b72ec54445a659d7151553b23f3; next=berut_author_heat_image_tick_mapping_and_official_parity_required"
+        },
+        {
           "field": "accessible_surface_status",
           "status": "partial",
           "value": "Current visible Nature page surface is abstract_and_figure_labels_visible; the preview exposes figure labels and publisher figure-PPT routes rather than a directly visible row table, and Figure 3 now has an official PPT route for the topic-summary row."
@@ -71,7 +76,7 @@
         {
           "field": "declared_transcription_policy",
           "status": "complete",
-          "value": "figure_level_locator_capture selected; official Figure 3 PPT route, embedded raster candidates, automated panel-frame candidates, and semantic asset-role review captured; selected quantitative panel, accepted axis tick mapping, point/curve transcription, or stronger source-data surface still required"
+          "value": "figure_level_locator_capture selected; official Figure 3 PPT route, embedded raster candidates, automated panel-frame candidates, semantic asset-role review, and author-page heat image surface captured; axis tick mapping, official Figure 3 parity, point/curve transcription, or stronger source-data surface still required"
         },
         {
           "field": "unit_basis",
@@ -81,7 +86,7 @@
         {
           "field": "extraction_note",
           "status": "complete",
-          "value": "Topic working copy stores a checked summary row only. The currently accessible source surface now exposes an official Figure 3 PPT route, embedded raster candidates, a digitization protocol, candidate panel-frame coordinates, and a semantic asset-role review that selects jpeg_2 for quantitative work, but the source still lacks selected-panel tick mapping and a selected numeric point/curve, so source-lock closure requires tick mapping plus transcription or one stronger upstream source-data surface before normalization."
+          "value": "Topic working copy stores a checked summary row only. The currently accessible source surface now exposes an official Figure 3 PPT route, embedded raster candidates, a digitization protocol, candidate panel-frame coordinates, a semantic asset-role review that selects jpeg_2 for quantitative work, and an archived author-page heat image, but the source still lacks tick mapping, author-image-to-official-Figure-3 parity, and a selected numeric point/curve, so source-lock closure requires tick mapping plus transcription or one stronger upstream source-data surface before normalization."
         }
       ]
     },

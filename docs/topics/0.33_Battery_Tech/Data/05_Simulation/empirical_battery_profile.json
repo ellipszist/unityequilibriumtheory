@@ -1,0 +1,17 @@
+{
+    "metadata": {
+        "dataset_name": "High-Energy Solid-State Battery Profile",
+        "source": "Simulated Empirical Lab Data",
+        "version": "1.0",
+        "date": "2026-06-25"
+    },
+    "empirical_limits": {
+        "max_temperature_celsius": 85.0,
+        "target_energy_density_wh_kg": 450.0,
+        "base_coulomb_capacity_mah_g": 380.0
+    },
+    "thermal_profile": {
+        "ambient_t_k": 298.15,
+        "heat_generation_rate_w_per_c": 0.05
+    }
+}

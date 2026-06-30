@@ -14,9 +14,9 @@ Use this template to document important formulas in a topic.
 
 **Variables**
 
-| Symbol | Meaning | Unit |
+| Symbol | Mathematical/Physical Definition | Unit |
 | :-- | :-- | :-- |
-| `<x>` | `<meaning>` | `<unit>` |
+| `<x>` | `<continuous field / scalar / tensor / exact meaning>` | `<unit>` |
 
 **Conversion steps**
 
@@ -34,6 +34,7 @@ Use this template to document important formulas in a topic.
 
 | Field | Value |
 | :-- | :-- |
+| `unit_closure_status` | `<Closed (exact match) / Proxy (approximate) / Open (unresolved)>` |
 | `proof_status` | `<identity / derived / checked local / heuristic bridge / open>` |
 | `verification_role` | `<gate / benchmark input / diagnostic-only / exploratory>` |
 | `code_path` | `<script or engine path>` |

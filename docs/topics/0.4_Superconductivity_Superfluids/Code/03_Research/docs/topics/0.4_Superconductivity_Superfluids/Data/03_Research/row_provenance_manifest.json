@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "topic": "0.4_Superconductivity_Superfluids",
   "purpose": "Row-level provenance and drift tracker for the raw McMillan gate table.",
-  "raw_gate_input_hash": "96861226b45409f72943c648fe67e492b6c53855e7359ea607da0539eb6e2b45",
+  "raw_gate_input_hash": "eb1108ccf032ac52396a9d948c5f2317ca95cd51ce371bc24bd9c9cefe9a1628",
   "comprehensive_input_hash": null,
   "tested_rows": [
     {
