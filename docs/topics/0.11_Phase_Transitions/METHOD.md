@@ -98,6 +98,7 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 - The Wave 35 source-candidate verifier packages fixed-magnetization/canonical and Cahn-Hilliard structure-factor candidates, then blocks estimator replacement until formula boundaries are extracted and mapped to the current UET normalization.
 - The Wave 36 formula-boundary verifier extracts abstract-level fixed-magnetization/canonical and Cahn-Hilliard structure-factor boundaries, then blocks estimator replacement until full-text formulas and UET normalization mapping are accepted.
 - The Wave 37 readiness verifier records source-access state and blocks formula extraction until local TeX/PDF math sources are localized; rendered text remains boundary evidence only.
+- The Wave 38 localization verifier checks temporary arXiv source archives, hashes, and main TeX members, then blocks estimator replacement until exact TeX formula fragments are extracted and mapped.
 - Cahn-Hilliard simulations should be treated as normalized mechanism diagnostics until seed, grid, morphology, and material-unit gates are added.
 
 ## Dependency policy

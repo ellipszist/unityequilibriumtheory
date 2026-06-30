@@ -632,15 +632,33 @@ This narrows the blocker from full-text formula extraction in general to local m
 localization. Rendered and abstract access remains boundary evidence only and cannot accept an
 estimator formula or UET normalization mapping.
 
+## Wave 38 Source-Archive Localization Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_source_archive_localization_gate.json`
+Localization manifest: `docs/topics/0.11_Phase_Transitions/Data/03_Research/structure_factor_source_archive_localization_manifest.json`
+
+- `wave37_chain_gate`: `PASS`
+- `readiness_chain_gate`: `PASS`
+- `localization_manifest_gate`: `PASS`
+- `temporary_local_archive_gate`: `PASS`
+- `tex_member_identification_gate`: `PASS`
+- `repo_archival_policy_gate`: `WARN`
+- `formula_extraction_gate`: `BLOCKED`
+- `claim_boundary_gate`: `WARN`
+
+This narrows the blocker from local math source localization to TeX formula-fragment extraction.
+The source archives are available in a temporary cache, but raw sources are not repo-archived and
+no formulas are extracted or accepted.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 37
-now records the next controller as `full_text_formula_extraction_requires_local_math_source`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 38
+now records the next controller as `localized_source_archives_present_tex_formula_extraction_open`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should localize TeX/PDF math
-sources for the packaged candidates, or explicitly choose window/dynamics repair without
-accepting an estimator.
+Keep all candidate operators as opt-in diagnostics. The next wave should extract TeX formula
+fragments from the identified members, define a source archival policy, or explicitly choose
+window/dynamics repair without accepting an estimator.

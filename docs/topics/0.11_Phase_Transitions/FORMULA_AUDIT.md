@@ -69,6 +69,7 @@ demonstrations.
 | `PT-CONSERVED-ORDER-SPECTRAL-POLICY-SOURCE-CANDIDATES` | package fixed-magnetization/canonical and Cahn-Hilliard structure-factor source candidates for estimator-policy review | `structure_factor_estimator_policy_source_candidates.json`; `Research_Structure_Factor_Policy_Source_Candidate_Gate.py`; `0_11_structure_factor_policy_source_candidate_gate.json` | source metadata only; formula units not extracted | `source_candidate_packaging` | `candidates packaged; formula extraction blocked` | policy source-candidate gate | Wave 35 passes candidate manifest coverage but blocks formula extraction and policy acceptance. | Extract policy formula boundaries or choose window/dynamics repair before exponent claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-POLICY-FORMULA-BOUNDARY` | extract abstract-level fixed-magnetization/canonical and Cahn-Hilliard structure-factor boundaries for estimator-policy review | `structure_factor_estimator_policy_formula_boundary.json`; `Research_Structure_Factor_Policy_Formula_Boundary_Gate.py`; `0_11_structure_factor_policy_formula_boundary_gate.json` | abstract-level source boundaries; no accepted estimator units | `partial_formula_boundary` | `boundaries extracted; accepted formula blocked` | policy formula-boundary gate | Wave 36 passes boundary manifest and abstract boundary gates but blocks estimator acceptance and normalization mapping. | Extract full-text formulas or choose window/dynamics repair before exponent claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-FULL-TEXT-FORMULA-READINESS` | record rendered/abstract source-access readiness and extraction gaps before formula acceptance | `structure_factor_full_text_formula_extraction_readiness.json`; `Research_Structure_Factor_Full_Text_Formula_Readiness_Gate.py`; `0_11_structure_factor_full_text_formula_readiness_gate.json` | source-access metadata; no accepted estimator units | `formula_extraction_readiness` | `local math source blocked` | full-text formula readiness gate | Wave 37 passes readiness manifest but blocks local math source and accepted formula gates. | Localize TeX/PDF math sources or choose window/dynamics repair before exponent claims. |
+| `PT-CONSERVED-ORDER-SPECTRAL-SOURCE-ARCHIVE-LOCALIZATION` | verify temporary arXiv source archives and main TeX members for formula extraction | `structure_factor_source_archive_localization_manifest.json`; `Research_Structure_Factor_Source_Archive_Localization_Gate.py`; `0_11_structure_factor_source_archive_localization_gate.json` | source archive metadata; no accepted formulas | `source_archive_localization` | `archives localized; formula extraction blocked` | source archive localization gate | Wave 38 passes temporary archive and TeX member gates but blocks formula extraction and keeps repo archival policy warning-level. | Extract TeX formula fragments or define repo archival policy before exponent claims. |
 
 ## Wave 5 Formula Boundary
 
@@ -337,3 +338,11 @@ The readiness gate records that rendered or abstract source access is enough to 
 boundaries but not enough to accept formulas. The next acceptable formula path requires local
 TeX/PDF math source extraction, exact formula capture, UET lattice normalization mapping, and
 finite-size admissibility rules before any estimator replacement or exponent rerun.
+
+## Wave 38 Source-Archive Localization
+
+The localization gate verifies that the three arXiv e-print source archives are present in a
+temporary local cache and expose main TeX members (`paper-a6.tex`, `yjdeng0.tex`, and
+`StructureFactor.tex`). This is not formula extraction. Raw arXiv sources are not committed,
+and the next controller is exact TeX formula-fragment extraction or an explicit source-archive
+policy before any UET normalization mapping.

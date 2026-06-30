@@ -1,6 +1,31 @@
 # Update Log: 0.11 Phase Transitions
 
 
+## Wave: Source-Archive Localization Gate (Wave 38)
+
+**What changed:**
+- Added `Data/03_Research/structure_factor_source_archive_localization_manifest.json` to record temporary arXiv source-cache paths, hashes, and main TeX members.
+- Added `Research_Structure_Factor_Source_Archive_Localization_Gate.py` and artifact `Result/artifacts/0_11_structure_factor_source_archive_localization_gate.json`.
+- Updated topic docs and the inbox alignment audit to move the controller from local math source localization to TeX formula-fragment extraction or explicit source archival policy.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Source_Archive_Localization_Gate.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Source_Archive_Localization_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `full_text_formula_extraction_requires_local_math_source` into `localized_source_archives_present_tex_formula_extraction_open`.
+- The artifact reports `temporary_local_archive_gate == PASS` and `tex_member_identification_gate == PASS`.
+- It also reports `repo_archival_policy_gate == WARN` and `formula_extraction_gate == BLOCKED`.
+
+**Next controlling blocker:**
+- Extract exact TeX formula fragments from the identified members, define a repository archival policy, or explicitly choose window/dynamics repair without accepting an estimator.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 38 accepts no conserved-order S0 policy, finite-k estimator, spatial-variance proxy, calibration, exponent, universality, material, RG, or phase-transition-solution claims.
+
+---
+
+
 ## Wave: Full-Text Formula-Extraction Readiness Gate (Wave 37)
 
 **What changed:**

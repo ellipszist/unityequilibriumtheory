@@ -1023,3 +1023,33 @@
 - Interpretation:
   - Rendered and abstract source access is boundary evidence only, not accepted formula extraction.
   - The next useful work is to localize TeX/PDF math sources or choose window/dynamics repair without accepting an estimator.
+
+## Wave 38 Source-Archive Localization Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Source_Archive_Localization_Gate.py`
+- Artifact target:
+  - `Result/artifacts/0_11_structure_factor_source_archive_localization_gate.json`
+- Localization manifest:
+  - `Data/03_Research/structure_factor_source_archive_localization_manifest.json`
+- Purpose:
+  - Verify temporary local arXiv source archives, hashes, and main TeX member discovery.
+  - Keep archive localization separate from formula extraction and estimator acceptance.
+- Required gates:
+  - `wave37_chain_gate.status == PASS`
+  - `readiness_chain_gate.status == PASS`
+  - `localization_manifest_gate.status == PASS`
+  - `temporary_local_archive_gate.status == PASS`
+  - `tex_member_identification_gate.status == PASS`
+  - `formula_extraction_gate.status == PASS` before estimator replacement may continue.
+- Current Wave 38 result:
+  - overall status `WARN`
+  - `wave37_chain_gate == PASS`
+  - `localization_manifest_gate == PASS`
+  - `temporary_local_archive_gate == PASS`
+  - `tex_member_identification_gate == PASS`
+  - `repo_archival_policy_gate == WARN`
+  - `formula_extraction_gate == BLOCKED`
+- Interpretation:
+  - Source archives and main TeX members are localized in a temporary cache, but formulas are not extracted or accepted.
+  - The next useful work is exact TeX formula-fragment extraction or a repo archival policy decision, without accepting an estimator.

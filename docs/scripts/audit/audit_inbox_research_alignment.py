@@ -120,6 +120,10 @@ ARTIFACTS = {
     / "Result"
     / "artifacts"
     / "0_11_structure_factor_full_text_formula_readiness_gate.json",
+    "wave38_source_archive_localization": TOPIC_DIR
+    / "Result"
+    / "artifacts"
+    / "0_11_structure_factor_source_archive_localization_gate.json",
 }
 
 
@@ -180,12 +184,13 @@ def build_artifact() -> dict[str, Any]:
     wave35 = artifacts["wave35_policy_source_candidate"]
     wave36 = artifacts["wave36_policy_formula_boundary"]
     wave37 = artifacts["wave37_full_text_formula_readiness"]
+    wave38 = artifacts["wave38_source_archive_localization"]
 
     source_packaging_pass = all(record["exists"] and record["sha256"] for record in sources)
     artifact_chain_pass = (
-        wave37["exists"]
-        and wave37["blocker_label"]
-        == "full_text_formula_extraction_requires_local_math_source"
+        wave38["exists"]
+        and wave38["blocker_label"]
+        == "localized_source_archives_present_tex_formula_extraction_open"
     )
 
     claim_map = [
@@ -223,9 +228,10 @@ def build_artifact() -> dict[str, Any]:
                 "wave35_policy_source_candidate",
                 "wave36_policy_formula_boundary",
                 "wave37_full_text_formula_readiness",
+                "wave38_source_archive_localization",
             ],
-            "current_boundary": "Rendered and abstract source access is recorded as boundary evidence, but local TeX/PDF math source extraction remains blocked.",
-            "next_action": "Localize TeX/PDF math sources or choose window/dynamics repair without treating any estimator as accepted.",
+            "current_boundary": "Temporary arXiv source archives and main TeX members are localized, but exact formula extraction and repo archival policy remain open.",
+            "next_action": "Extract TeX formula fragments, define source archival policy, or choose window/dynamics repair without treating any estimator as accepted.",
         },
         {
             "inbox_claim_id": "warped_space_kappa_of_c",
@@ -263,6 +269,7 @@ def build_artifact() -> dict[str, Any]:
                 "wave35_policy_source_candidate",
                 "wave36_policy_formula_boundary",
                 "wave37_full_text_formula_readiness",
+                "wave38_source_archive_localization",
             ],
             "current_boundary": "Future candidates still need explicit engine-path gates before claim interpretation.",
             "next_action": "Keep engine alignment gates mandatory for every new operator or estimator verifier.",
@@ -284,8 +291,8 @@ def build_artifact() -> dict[str, Any]:
         "artifact_chain_gate": {
             "status": "PASS" if artifact_chain_pass else "BLOCKED",
             "required_condition": "The current 0.11 artifact chain must expose the latest controller.",
-            "latest_expected_blocker": "full_text_formula_extraction_requires_local_math_source",
-            "latest_observed_blocker": wave37["blocker_label"],
+            "latest_expected_blocker": "localized_source_archives_present_tex_formula_extraction_open",
+            "latest_observed_blocker": wave38["blocker_label"],
         },
         "coverage_boundary_gate": {
             "status": "WARN",
@@ -295,8 +302,8 @@ def build_artifact() -> dict[str, Any]:
         },
         "next_controller_gate": {
             "status": "BLOCKED",
-            "required_condition": "No broad UET phase-transition claim may be promoted until local TeX/PDF math sources are extracted and accepted, or window/dynamics repair is chosen explicitly.",
-            "next_controller": "localize_tex_or_pdf_math_sources_or_choose_window_dynamics_repair",
+            "required_condition": "No broad UET phase-transition claim may be promoted until TeX formula fragments are extracted and accepted, source archival policy is clear, or window/dynamics repair is chosen explicitly.",
+            "next_controller": "extract_tex_formula_fragments_or_choose_window_dynamics_repair",
         },
     }
 
@@ -305,15 +312,15 @@ def build_artifact() -> dict[str, Any]:
         "audit_id": "core_inbox_research_alignment_gate",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "status": "WARN",
-        "blocker_label": "inbox_claims_mapped_current_controller_local_math_source_gap",
+        "blocker_label": "inbox_claims_mapped_current_controller_tex_formula_fragment_gap",
         "claim_class": "source_intake_alignment_only",
         "sources": sources,
         "artifacts": list(artifacts.values()),
         "claim_map": claim_map,
         "gates": gates,
         "recommended_next_wave": {
-            "step": "Localize TeX/PDF math sources for the packaged candidates, or choose window/dynamics repair without accepting an estimator.",
-            "reason": "Wave 37 records rendered/abstract access as boundary evidence but blocks local math source extraction and formula acceptance.",
+            "step": "Extract TeX formula fragments from identified source members, define source archival policy, or choose window/dynamics repair without accepting an estimator.",
+            "reason": "Wave 38 localizes temporary arXiv source archives and main TeX members but blocks formula extraction and estimator acceptance.",
         },
         "limitations": [
             "This audit does not validate any inbox claim as physics.",

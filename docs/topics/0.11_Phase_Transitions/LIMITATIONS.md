@@ -46,3 +46,4 @@
 - Wave 35 packages source candidates for fixed-composition/canonical and finite-k policy review, but candidate metadata is not formula extraction and no estimator policy is accepted.
 - Wave 36 extracts source boundaries only at abstract/policy level; no conserved-order S0, finite-k estimator, calibration factor, or normalization mapping is accepted.
 - Wave 37 shows rendered/abstract access is insufficient for accepted formulas; local TeX/PDF math extraction is still required before estimator policy or exponent gates.
+- Wave 38 localizes arXiv source archives only in a temporary cache; raw sources are not repo-archived and no TeX formulas are accepted yet.
