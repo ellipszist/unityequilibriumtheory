@@ -79,7 +79,10 @@ node_modules/
 .obsidian/
 /uet_history/
 /uet_knowledge_state.json
-
+docs/knowledge_base/personal_index.sqlite3
+docs/knowledge_base/personal_index.sqlite3-*
+docs/knowledge_base/vectors/vectors.db
+docs/knowledge_base/vectors/vectors.db-*
 # Local Cache and States
 uet_knowledge_state.json
 uet_miner/target/
