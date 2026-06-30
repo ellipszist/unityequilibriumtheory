@@ -51,7 +51,7 @@ flowchart TD
 ### If you are creating a new topic
 
 1. [02_Project_Workflow_and_Lifecycle.md](./02_Project_Workflow_and_Lifecycle.md)
-2. [10_Topic_Architecture_5x4.md](./10_Topic_Architecture_5x4.md)
+2. [10_Topic_Architecture_5x5(+1).md](./10_Topic_Architecture_5x5(+1).md)
 3. [11_Code_README_Standard.md](./11_Code_README_Standard.md)
 4. [12_Data_Standard.md](./12_Data_Standard.md)
 5. [13_Reference_Standard.md](./13_Reference_Standard.md)
@@ -88,7 +88,7 @@ flowchart TD
 | `02_Project_Workflow_and_Lifecycle.md` | readiness and promotion workflow | you need to place a topic in the correct stage |
 | `03_AI_Usage_and_Governance.md` | human-AI collaboration rules | AI is drafting, refactoring, or auditing work |
 | `04_Claim_and_Evidence_Rubric.md` | wording and evidence control | a claim feels too strong or too vague |
-| `10_Topic_Architecture_5x4.md` | folder architecture | you are laying out or repairing topic structure |
+| `10_Topic_Architecture_5x5(+1).md` | folder architecture | you are laying out or repairing topic structure |
 | `11_Code_README_Standard.md` | code documentation standard | you are documenting runnable scripts |
 | `12_Data_Standard.md` | provenance and dataset control | a result depends on local or external data |
 | `13_Reference_Standard.md` | source and bibliography discipline | references need to constrain claims better |
@@ -103,13 +103,17 @@ flowchart TD
 | `23_TEMPLATE_FORMULA_AUDIT.md` | formula registry starter | starting a dedicated formula-audit file |
 | `24_TEMPLATE_UPDATE_LOG.md` | update log template | recording multi-wave progress without replacing artifacts |
 | `25_Research_Throughput_Workflow.md` | token-saving hardening workflow | generating compact wave packets before reading whole topics |
+| `26_AI_AGENT_SKILL_MAP.md` | AI skill layer map | deciding which UET-focused skill should support a task |
+| `27_AI_AGENT_ROUTING_MATRIX.md` | AI task routing matrix | routing common user requests to the minimum useful skill set |
+| `28_AI_AGENT_SKILL_AUTHORING_STANDARD.md` | UET skill authoring rules | creating or reviewing skills without replacing `For Work` |
+| `29_TEMPLATE_AI_AGENT_SKILL_SPEC.md` | skill spec template | drafting a portable UET skill before installing it |
 
 ## Quick decision matrix
 
 | If the problem is... | Open first | Then open |
 | :-- | :-- | :-- |
 | claim sounds too strong | `04_Claim_and_Evidence_Rubric.md` | `01_Project_Research_Constitution.md` |
-| topic structure is messy | `10_Topic_Architecture_5x4.md` | `02_Project_Workflow_and_Lifecycle.md` |
+| topic structure is messy | `10_Topic_Architecture_5x5(+1).md` | `02_Project_Workflow_and_Lifecycle.md` |
 | code exists but nobody knows how to run it | `11_Code_README_Standard.md` | `14_Result_Standard.md` |
 | dataset source is unclear | `12_Data_Standard.md` | `04_Claim_and_Evidence_Rubric.md` |
 | references are decorative instead of useful | `13_Reference_Standard.md` | `15_Paper_Standard.md` |
@@ -120,6 +124,8 @@ flowchart TD
 | topic is moving too slowly because blockers are vague | `18_Research_Hardening_Workflow.md` | `02_Project_Workflow_and_Lifecycle.md` |
 | many changes happened and progress is hard to track | `24_TEMPLATE_UPDATE_LOG.md` | `18_Research_Hardening_Workflow.md` |
 | repeated topic passes are consuming too many tokens | `25_Research_Throughput_Workflow.md` | `18_Research_Hardening_Workflow.md` |
+| AI agent needs the right skill or workflow | `27_AI_AGENT_ROUTING_MATRIX.md` | `26_AI_AGENT_SKILL_MAP.md` |
+| a new UET-specific Codex skill is being created | `28_AI_AGENT_SKILL_AUTHORING_STANDARD.md` | `29_TEMPLATE_AI_AGENT_SKILL_SPEC.md` |
 
 ## Naming pattern
 
@@ -129,6 +135,7 @@ flowchart TD
 | `10-18` | operational standards by work pillar |
 | `20+` | templates and production assets |
 | `25` | throughput and token-saving workflow |
+| `26-29` | AI skill routing, authoring, and portable skill specs |
 
 ## Compatibility map
 
@@ -139,7 +146,7 @@ flowchart TD
 | `01_Project_Workflow_and_Lifecycle.md` | `02_Project_Workflow_and_Lifecycle.md` |
 | `02_AI_Usage_and_Governance.md` | `03_AI_Usage_and_Governance.md` |
 | `03_Claim_and_Evidence_Rubric.md` | `04_Claim_and_Evidence_Rubric.md` |
-| `how to topics5x4.md` | `10_Topic_Architecture_5x4.md` |
+| `how to topics5x4.md` | `10_Topic_Architecture_5x5(+1).md` |
 | `how to Code README.md` | `11_Code_README_Standard.md` |
 | `how to Data Standard.md` | `12_Data_Standard.md` |
 | `how to Reference Standard.md` | `13_Reference_Standard.md` |
