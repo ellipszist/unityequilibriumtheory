@@ -614,15 +614,33 @@ This narrows the blocker from candidate sources packaged to partial source-bound
 The boundary extracts prevent silent promotion but do not accept a conserved-order `S(0)`, finite-k
 replacement estimator, or UET normalization mapping.
 
+## Wave 37 Full-Text Formula-Extraction Readiness Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_full_text_formula_readiness_gate.json`
+Readiness manifest: `docs/topics/0.11_Phase_Transitions/Data/03_Research/structure_factor_full_text_formula_extraction_readiness.json`
+
+- `wave36_chain_gate`: `PASS`
+- `formula_boundary_chain_gate`: `PASS`
+- `readiness_manifest_gate`: `PASS`
+- `rendered_boundary_gate`: `WARN`
+- `local_math_source_gate`: `BLOCKED`
+- `accepted_formula_source_gate`: `BLOCKED`
+- `normalization_mapping_gate`: `BLOCKED`
+- `claim_boundary_gate`: `WARN`
+
+This narrows the blocker from full-text formula extraction in general to local math source
+localization. Rendered and abstract access remains boundary evidence only and cannot accept an
+estimator formula or UET normalization mapping.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 36
-now records the next controller as `policy_formula_boundaries_partial_full_text_extraction_open`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 37
+now records the next controller as `full_text_formula_extraction_requires_local_math_source`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should extract full-text policy
-formulas and UET normalization mapping, or explicitly choose window/dynamics repair without
+Keep all candidate operators as opt-in diagnostics. The next wave should localize TeX/PDF math
+sources for the packaged candidates, or explicitly choose window/dynamics repair without
 accepting an estimator.

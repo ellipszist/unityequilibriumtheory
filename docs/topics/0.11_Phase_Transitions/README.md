@@ -80,6 +80,7 @@ flowchart LR
 | Wave 34 estimator policy source gate | Policy-source packaging gate | `Data/03_Research/structure_factor_estimator_policy_requirements.json`; `Result/artifacts/0_11_structure_factor_estimator_policy_source_gate.json` | policy requirements pass; conserved susceptibility and finite-k source support missing |
 | Wave 35 estimator policy source-candidate gate | Policy source-candidate gate | `Data/03_Research/structure_factor_estimator_policy_source_candidates.json`; `Result/artifacts/0_11_structure_factor_policy_source_candidate_gate.json` | candidate sources packaged; formula extraction and accepted policy still blocked |
 | Wave 36 estimator policy formula-boundary gate | Partial policy formula-boundary gate | `Data/03_Research/structure_factor_estimator_policy_formula_boundary.json`; `Result/artifacts/0_11_structure_factor_policy_formula_boundary_gate.json` | abstract-level boundaries pass; full-text extraction and accepted formula remain blocked |
+| Wave 37 full-text formula readiness gate | Formula-source localization gate | `Data/03_Research/structure_factor_full_text_formula_extraction_readiness.json`; `Result/artifacts/0_11_structure_factor_full_text_formula_readiness_gate.json` | rendered/abstract boundaries recorded; local TeX/PDF math source remains blocked |
 | Universal phase-transition theory | Not closed | limitations and formula audit | do not claim full proof |
 
 ## 5x4 Grid Structure
@@ -150,5 +151,6 @@ python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exp
 - The Wave 34 estimator-policy source gate defines three policy paths, but both source-backed replacement paths remain `BLOCKED`; spatial variance stays diagnostic-only.
 - The Wave 35 source-candidate gate packages fixed-magnetization/canonical and Cahn-Hilliard structure-factor source candidates, but formula extraction and accepted estimator policy remain `BLOCKED`.
 - The Wave 36 formula-boundary gate extracts conservative source boundaries, but full-text formula extraction, UET normalization mapping, and accepted estimator policy remain `BLOCKED`.
+- The Wave 37 readiness gate records rendered/abstract source access but blocks formula acceptance until local TeX/PDF math sources are localized and mapped.
 
 *Status note: internal critical-exponent benchmark and formula-audit hardening gate.*

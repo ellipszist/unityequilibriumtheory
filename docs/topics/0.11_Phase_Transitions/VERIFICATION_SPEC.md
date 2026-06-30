@@ -992,3 +992,34 @@
 - Interpretation:
   - Abstract-level policy boundaries are now explicit, but no estimator formula is accepted.
   - The next useful work is full-text formula extraction or explicit window/dynamics repair without accepting an estimator.
+
+## Wave 37 Full-Text Formula-Extraction Readiness Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Full_Text_Formula_Readiness_Gate.py`
+- Artifact target:
+  - `Result/artifacts/0_11_structure_factor_full_text_formula_readiness_gate.json`
+- Readiness manifest:
+  - `Data/03_Research/structure_factor_full_text_formula_extraction_readiness.json`
+- Purpose:
+  - Record whether rendered/abstract source access is sufficient for formula acceptance.
+  - Keep rendered text as boundary evidence only until local TeX/PDF math extraction is available.
+- Required gates:
+  - `wave36_chain_gate.status == PASS`
+  - `formula_boundary_chain_gate.status == PASS`
+  - `readiness_manifest_gate.status == PASS`
+  - `local_math_source_gate.status == PASS` before formula extraction may be accepted.
+  - `accepted_formula_source_gate.status == PASS` before estimator replacement may continue.
+  - `normalization_mapping_gate.status == PASS` before exponent or universality gates may rerun.
+- Current Wave 37 result:
+  - overall status `WARN`
+  - `wave36_chain_gate == PASS`
+  - `formula_boundary_chain_gate == PASS`
+  - `readiness_manifest_gate == PASS`
+  - `rendered_boundary_gate == WARN`
+  - `local_math_source_gate == BLOCKED`
+  - `accepted_formula_source_gate == BLOCKED`
+  - `normalization_mapping_gate == BLOCKED`
+- Interpretation:
+  - Rendered and abstract source access is boundary evidence only, not accepted formula extraction.
+  - The next useful work is to localize TeX/PDF math sources or choose window/dynamics repair without accepting an estimator.

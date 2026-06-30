@@ -68,6 +68,7 @@ demonstrations.
 | `PT-CONSERVED-ORDER-SPECTRAL-ESTIMATOR-POLICY-SOURCE` | define required policies for conserved-order S0, finite-k/canonical replacement, and spatial-variance proxy exclusion | `structure_factor_estimator_policy_requirements.json`; `Research_Structure_Factor_Estimator_Policy_Source_Gate.py`; `0_11_structure_factor_estimator_policy_source_gate.json` | policy metadata; no estimator units accepted | `estimator_policy_source_triage` | `requirements defined; source support missing` | policy-source gate | Wave 34 passes policy requirement manifest but blocks conserved susceptibility and finite-k policy source gates. | Package policy-specific sources or choose window/dynamics repair before exponent claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-POLICY-SOURCE-CANDIDATES` | package fixed-magnetization/canonical and Cahn-Hilliard structure-factor source candidates for estimator-policy review | `structure_factor_estimator_policy_source_candidates.json`; `Research_Structure_Factor_Policy_Source_Candidate_Gate.py`; `0_11_structure_factor_policy_source_candidate_gate.json` | source metadata only; formula units not extracted | `source_candidate_packaging` | `candidates packaged; formula extraction blocked` | policy source-candidate gate | Wave 35 passes candidate manifest coverage but blocks formula extraction and policy acceptance. | Extract policy formula boundaries or choose window/dynamics repair before exponent claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-POLICY-FORMULA-BOUNDARY` | extract abstract-level fixed-magnetization/canonical and Cahn-Hilliard structure-factor boundaries for estimator-policy review | `structure_factor_estimator_policy_formula_boundary.json`; `Research_Structure_Factor_Policy_Formula_Boundary_Gate.py`; `0_11_structure_factor_policy_formula_boundary_gate.json` | abstract-level source boundaries; no accepted estimator units | `partial_formula_boundary` | `boundaries extracted; accepted formula blocked` | policy formula-boundary gate | Wave 36 passes boundary manifest and abstract boundary gates but blocks estimator acceptance and normalization mapping. | Extract full-text formulas or choose window/dynamics repair before exponent claims. |
+| `PT-CONSERVED-ORDER-SPECTRAL-FULL-TEXT-FORMULA-READINESS` | record rendered/abstract source-access readiness and extraction gaps before formula acceptance | `structure_factor_full_text_formula_extraction_readiness.json`; `Research_Structure_Factor_Full_Text_Formula_Readiness_Gate.py`; `0_11_structure_factor_full_text_formula_readiness_gate.json` | source-access metadata; no accepted estimator units | `formula_extraction_readiness` | `local math source blocked` | full-text formula readiness gate | Wave 37 passes readiness manifest but blocks local math source and accepted formula gates. | Localize TeX/PDF math sources or choose window/dynamics repair before exponent claims. |
 
 ## Wave 5 Formula Boundary
 
@@ -329,3 +330,10 @@ and canonical finite-size sources warn that finite systems under conserved const
 silently supply a canonical zero-mode susceptibility. The Cahn-Hilliard source supports a
 finite-k/domain-size review lane, but not an accepted critical `xi_2nd` replacement. Full-text
 formula extraction and UET normalization mapping remain open before any exponent gate can rerun.
+
+## Wave 37 Full-Text Formula Readiness
+
+The readiness gate records that rendered or abstract source access is enough to preserve claim
+boundaries but not enough to accept formulas. The next acceptable formula path requires local
+TeX/PDF math source extraction, exact formula capture, UET lattice normalization mapping, and
+finite-size admissibility rules before any estimator replacement or exponent rerun.

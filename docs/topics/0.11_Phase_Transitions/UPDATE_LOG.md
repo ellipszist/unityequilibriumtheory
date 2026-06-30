@@ -1,6 +1,31 @@
 # Update Log: 0.11 Phase Transitions
 
 
+## Wave: Full-Text Formula-Extraction Readiness Gate (Wave 37)
+
+**What changed:**
+- Added `Data/03_Research/structure_factor_full_text_formula_extraction_readiness.json` to record source-access state and extraction gaps for the packaged estimator-policy candidates.
+- Added `Research_Structure_Factor_Full_Text_Formula_Readiness_Gate.py` and artifact `Result/artifacts/0_11_structure_factor_full_text_formula_readiness_gate.json`.
+- Updated topic docs and the inbox alignment audit to move the controller from full-text formula extraction in general to local TeX/PDF math source localization or explicit window/dynamics repair.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Full_Text_Formula_Readiness_Gate.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Full_Text_Formula_Readiness_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `policy_formula_boundaries_partial_full_text_extraction_open` into `full_text_formula_extraction_requires_local_math_source`.
+- The artifact reports `readiness_manifest_gate == PASS` and `rendered_boundary_gate == WARN`.
+- It also reports `local_math_source_gate == BLOCKED`, `accepted_formula_source_gate == BLOCKED`, and `normalization_mapping_gate == BLOCKED`.
+
+**Next controlling blocker:**
+- Localize TeX/PDF math sources for the packaged candidates or explicitly choose window/dynamics repair without accepting an estimator.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 37 accepts no conserved-order S0 policy, finite-k estimator, spatial-variance proxy, calibration, exponent, universality, material, RG, or phase-transition-solution claims.
+
+---
+
+
 ## Wave: Estimator-Policy Formula-Boundary Gate (Wave 36)
 
 **What changed:**
