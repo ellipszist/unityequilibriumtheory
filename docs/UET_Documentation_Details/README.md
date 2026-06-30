@@ -29,6 +29,12 @@ This documentation tree exists to make the project readable in the correct order
 7. [03_Core_Theory/correspondence-and-reduction.md](./03_Core_Theory/correspondence-and-reduction.md)
 8. [06_Evidence_and_Research/validation-reports.md](./06_Evidence_and_Research/validation-reports.md)
 
+### If you want the knowledge-base / AI search architecture
+
+1. [01_Introduction/knowledge-system-architecture.md](./01_Introduction/knowledge-system-architecture.md)
+2. [04_User_Guides/knowledge-ingestion-workflow.md](./04_User_Guides/knowledge-ingestion-workflow.md)
+3. [05_API_Reference/knowledge-api-and-graphql-plan.md](./05_API_Reference/knowledge-api-and-graphql-plan.md)
+
 ### If you want the theory backstory
 
 1. [01_Introduction/origin-and-development.md](./01_Introduction/origin-and-development.md)
@@ -82,6 +88,17 @@ understand the theory correctly:
 - [03_Core_Theory/uet-term-activation-rules.md](./03_Core_Theory/uet-term-activation-rules.md)
 - [06_Evidence_and_Research/criticism-and-collaboration.md](./06_Evidence_and_Research/criticism-and-collaboration.md)
 - [legacy-promotion-map.md](./legacy-promotion-map.md)
+
+## Knowledge system planning
+
+The project also contains a planned knowledge-base layer for AI retrieval,
+incremental embedding, MCP access, and future GraphQL inspection.
+
+Start with:
+
+- [01_Introduction/knowledge-system-architecture.md](./01_Introduction/knowledge-system-architecture.md)
+- [04_User_Guides/knowledge-ingestion-workflow.md](./04_User_Guides/knowledge-ingestion-workflow.md)
+- [05_API_Reference/knowledge-api-and-graphql-plan.md](./05_API_Reference/knowledge-api-and-graphql-plan.md)
 
 ## Archive note
 

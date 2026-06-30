@@ -1,4 +1,32 @@
-# 🧠 UET Knowledge Base Client (`docs.knowledge_base`)
+# UET Knowledge Base Client (`docs.knowledge_base`)
+
+## Current local-first status
+
+This folder contains older knowledge-base experiments and bridge code. Some of
+that code still describes the larger MCP/Postgres/vector-search direction, but
+it should not be treated as the current working path without verification.
+
+For day-to-day personal research use, start with the small local helper:
+
+```bash
+python -m docs.knowledge_base.personal_kb status
+python -m docs.knowledge_base.personal_kb ingest --dry-run
+python -m docs.knowledge_base.personal_kb ingest
+python -m docs.knowledge_base.personal_kb search "claim evidence"
+```
+
+This helper builds a local SQLite text index and tracks file hashes so changed
+files can be identified before heavier embedding infrastructure is repaired. It
+does not replace canonical project documents, `docs/meta/`, topic packages, or
+the future MCP/Postgres knowledge service.
+
+The larger service plan is documented in:
+
+- `docs/UET_Documentation_Details/01_Introduction/knowledge-system-architecture.md`
+- `docs/UET_Documentation_Details/04_User_Guides/knowledge-ingestion-workflow.md`
+- `docs/UET_Documentation_Details/05_API_Reference/knowledge-api-and-graphql-plan.md`
+
+---
 
 ![Status](https://img.shields.io/badge/Status-ACTIVE-brightgreen)
 ![Client](https://img.shields.io/badge/Client-Python-blue)
