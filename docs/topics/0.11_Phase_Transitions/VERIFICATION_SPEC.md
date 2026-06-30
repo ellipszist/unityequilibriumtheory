@@ -961,3 +961,34 @@
 - Interpretation:
   - Policy-specific source candidates are packaged, but no candidate formula is extracted or accepted.
   - The next useful work is to extract policy formula boundaries or choose window/dynamics repair without pretending an estimator is accepted.
+
+## Wave 36 Estimator-Policy Formula-Boundary Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Policy_Formula_Boundary_Gate.py`
+- Artifact target:
+  - `Result/artifacts/0_11_structure_factor_policy_formula_boundary_gate.json`
+- Formula-boundary manifest:
+  - `Data/03_Research/structure_factor_estimator_policy_formula_boundary.json`
+- Purpose:
+  - Extract conservative source boundaries from fixed-magnetization/canonical and Cahn-Hilliard structure-factor source candidates.
+  - Prevent abstract-level source notes from becoming accepted estimator formulas.
+- Required gates:
+  - `wave35_chain_gate.status == PASS`
+  - `source_candidate_chain_gate.status == PASS`
+  - `formula_boundary_manifest_gate.status == PASS`
+  - `abstract_boundary_gate.status == PASS` as boundary extraction only.
+  - `accepted_estimator_formula_gate.status == PASS` before estimator replacement may continue.
+  - `normalization_mapping_gate.status == PASS` before exponent or universality gates may rerun.
+- Current Wave 36 result:
+  - overall status `WARN`
+  - `wave35_chain_gate == PASS`
+  - `source_candidate_chain_gate == PASS`
+  - `formula_boundary_manifest_gate == PASS`
+  - `abstract_boundary_gate == PASS`
+  - `accepted_estimator_formula_gate == BLOCKED`
+  - `normalization_mapping_gate == BLOCKED`
+  - `spatial_variance_boundary_gate == PASS`
+- Interpretation:
+  - Abstract-level policy boundaries are now explicit, but no estimator formula is accepted.
+  - The next useful work is full-text formula extraction or explicit window/dynamics repair without accepting an estimator.

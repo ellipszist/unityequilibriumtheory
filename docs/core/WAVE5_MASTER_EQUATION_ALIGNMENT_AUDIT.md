@@ -596,15 +596,33 @@ This narrows the blocker from missing policy-specific source packaging to candid
 packaged but formula extraction open. The packaged sources are review inputs only; none accepts
 conserved-order `S(0)`, a finite-k replacement estimator, or a calibration factor for claims.
 
+## Wave 36 Estimator-Policy Formula-Boundary Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_policy_formula_boundary_gate.json`
+Formula boundary: `docs/topics/0.11_Phase_Transitions/Data/03_Research/structure_factor_estimator_policy_formula_boundary.json`
+
+- `wave35_chain_gate`: `PASS`
+- `source_candidate_chain_gate`: `PASS`
+- `formula_boundary_manifest_gate`: `PASS`
+- `abstract_boundary_gate`: `PASS`
+- `accepted_estimator_formula_gate`: `BLOCKED`
+- `normalization_mapping_gate`: `BLOCKED`
+- `spatial_variance_boundary_gate`: `PASS`
+- `claim_boundary_gate`: `WARN`
+
+This narrows the blocker from candidate sources packaged to partial source-boundary extraction.
+The boundary extracts prevent silent promotion but do not accept a conserved-order `S(0)`, finite-k
+replacement estimator, or UET normalization mapping.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 35
-now records the next controller as `estimator_policy_source_candidates_packaged_formula_extraction_open`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 36
+now records the next controller as `policy_formula_boundaries_partial_full_text_extraction_open`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should extract policy formula
-boundaries from the packaged source candidates, or explicitly choose window/dynamics repair
-without accepting an estimator.
+Keep all candidate operators as opt-in diagnostics. The next wave should extract full-text policy
+formulas and UET normalization mapping, or explicitly choose window/dynamics repair without
+accepting an estimator.

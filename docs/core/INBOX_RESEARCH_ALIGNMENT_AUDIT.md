@@ -6,7 +6,7 @@
 
 - `docs/core/00_inbox/UET_Master_Equation_Analysis.md`: `3389022097b1f7324db6d3161f4bc038cdea87f4a6a5fd0e0c47d26c23092579` (7572 bytes)
 - `docs/core/00_inbox/implementation_plan.md`: `5d3b52336934923d2ab7c5d8a71801964fa8fb196d6f4896468bb0e476c4ed9a` (7138 bytes)
-- `docs/core/00_inbox/raw chat.md`: `46d5ab24a18c903be0f4a2871a05c8c45b51d7d8835ca02c2c3c1d2208020248` (51325 bytes)
+- `docs/core/00_inbox/implementation_plan01.md`: `d3c7ba36a9f3e00e3f51bd7b5612a5fc8c78adeaba348e0b256ed0f2a5d2a356` (6298 bytes)
 
 ## Gate Summary
 
@@ -21,16 +21,16 @@
 | Inbox claim | Current repo state | Current boundary | Next action |
 | :-- | :-- | :-- | :-- |
 | `a_b_multiplicative_info_plus_gradient_game` | implemented_as_opt_in_diagnostic_then_blocked_by_scaling_gates | A/B candidate availability and safety are not enough; beta and correlation gates stayed diagnostic or blocked. | Do not retune A/B coefficients as the next default path; only revisit with a new formula/unit gate. |
-| `c_conserved_order_parameter` | implemented_as_conserved_order_spectral_v1_and_bridge_passed | Policy-specific source candidates are now packaged, but formula extraction and accepted policy mapping remain blocked. | Extract policy formula boundaries from the packaged candidates or choose window/dynamics repair without treating any estimator as accepted. |
+| `c_conserved_order_parameter` | implemented_as_conserved_order_spectral_v1_and_bridge_passed | Abstract-level policy boundaries are now extracted, but full-text formula extraction, accepted estimator policy, and UET normalization mapping remain blocked. | Extract full-text policy formulas and normalization mapping or choose window/dynamics repair without treating any estimator as accepted. |
 | `warped_space_kappa_of_c` | not_accepted_not_primary | No formula-audit entry, unit closure, core opt-in mode, or scaling artifact currently accepts this path. | If pursued, start with formula/unit/provenance gate before code. |
 | `dynamic_game_landscape_beta_u` | not_accepted_not_primary | No state-variable policy, unit closure, stability gate, or artifact currently accepts dynamic beta_U. | If pursued, define state evolution, conservation/safety gates, and claim boundary first. |
 | `hidden_standalone_equation_risk` | mitigated_by_core_engine_path_gates | Future candidates still need explicit engine-path gates before claim interpretation. | Keep engine alignment gates mandatory for every new operator or estimator verifier. |
 
 ## Current Controller
 
-`Extract policy formula boundaries from packaged conserved-order/canonical and finite-k source candidates, or choose window/dynamics repair without accepting an estimator.`
+`Extract full-text policy formulas and UET normalization mapping, or choose window/dynamics repair without accepting an estimator.`
 
-Wave 35 packages policy-specific source candidates but blocks formula extraction and policy acceptance.
+Wave 36 extracts abstract-level policy boundaries but blocks accepted estimator formulas and normalization mapping.
 
 ## Claim Boundary
 

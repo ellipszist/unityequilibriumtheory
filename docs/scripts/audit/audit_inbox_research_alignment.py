@@ -36,7 +36,7 @@ REPORT_PATH = CORE_DIR / "INBOX_RESEARCH_ALIGNMENT_AUDIT.md"
 INBOX_FILES = [
     INBOX_DIR / "UET_Master_Equation_Analysis.md",
     INBOX_DIR / "implementation_plan.md",
-    INBOX_DIR / "raw chat.md",
+    INBOX_DIR / "implementation_plan01.md",
 ]
 
 ARTIFACTS = {
@@ -112,6 +112,10 @@ ARTIFACTS = {
     / "Result"
     / "artifacts"
     / "0_11_structure_factor_policy_source_candidate_gate.json",
+    "wave36_policy_formula_boundary": TOPIC_DIR
+    / "Result"
+    / "artifacts"
+    / "0_11_structure_factor_policy_formula_boundary_gate.json",
 }
 
 
@@ -164,18 +168,19 @@ def build_artifact() -> dict[str, Any]:
         ),
         source_record(
             INBOX_FILES[2],
-            "raw conversation intake containing the original concern about hidden standalone equations and engine alignment",
+            "implementation plan follow-up intake with the user-facing concern about hidden standalone equations and engine alignment",
         ),
     ]
     artifacts = {name: artifact_record(name, path) for name, path in ARTIFACTS.items()}
     wave34 = artifacts["wave34_estimator_policy_source"]
     wave35 = artifacts["wave35_policy_source_candidate"]
+    wave36 = artifacts["wave36_policy_formula_boundary"]
 
     source_packaging_pass = all(record["exists"] and record["sha256"] for record in sources)
     artifact_chain_pass = (
-        wave35["exists"]
-        and wave35["blocker_label"]
-        == "estimator_policy_source_candidates_packaged_formula_extraction_open"
+        wave36["exists"]
+        and wave36["blocker_label"]
+        == "policy_formula_boundaries_partial_full_text_extraction_open"
     )
 
     claim_map = [
@@ -211,9 +216,10 @@ def build_artifact() -> dict[str, Any]:
                 "wave33_ensemble_susceptibility_lane",
                 "wave34_estimator_policy_source",
                 "wave35_policy_source_candidate",
+                "wave36_policy_formula_boundary",
             ],
-            "current_boundary": "Policy-specific source candidates are now packaged, but formula extraction and accepted policy mapping remain blocked.",
-            "next_action": "Extract policy formula boundaries from the packaged candidates or choose window/dynamics repair without treating any estimator as accepted.",
+            "current_boundary": "Abstract-level policy boundaries are now extracted, but full-text formula extraction, accepted estimator policy, and UET normalization mapping remain blocked.",
+            "next_action": "Extract full-text policy formulas and normalization mapping or choose window/dynamics repair without treating any estimator as accepted.",
         },
         {
             "inbox_claim_id": "warped_space_kappa_of_c",
@@ -249,6 +255,7 @@ def build_artifact() -> dict[str, Any]:
                 "wave33_ensemble_susceptibility_lane",
                 "wave34_estimator_policy_source",
                 "wave35_policy_source_candidate",
+                "wave36_policy_formula_boundary",
             ],
             "current_boundary": "Future candidates still need explicit engine-path gates before claim interpretation.",
             "next_action": "Keep engine alignment gates mandatory for every new operator or estimator verifier.",
@@ -270,8 +277,8 @@ def build_artifact() -> dict[str, Any]:
         "artifact_chain_gate": {
             "status": "PASS" if artifact_chain_pass else "BLOCKED",
             "required_condition": "The current 0.11 artifact chain must expose the latest controller.",
-            "latest_expected_blocker": "estimator_policy_source_candidates_packaged_formula_extraction_open",
-            "latest_observed_blocker": wave35["blocker_label"],
+            "latest_expected_blocker": "policy_formula_boundaries_partial_full_text_extraction_open",
+            "latest_observed_blocker": wave36["blocker_label"],
         },
         "coverage_boundary_gate": {
             "status": "WARN",
@@ -281,8 +288,8 @@ def build_artifact() -> dict[str, Any]:
         },
         "next_controller_gate": {
             "status": "BLOCKED",
-            "required_condition": "No broad UET phase-transition claim may be promoted until policy formula boundaries are extracted and accepted, or window/dynamics repair is chosen explicitly.",
-            "next_controller": "extract_policy_formula_boundaries_or_choose_window_dynamics_repair",
+            "required_condition": "No broad UET phase-transition claim may be promoted until full-text policy formulas and UET normalization mapping are extracted and accepted, or window/dynamics repair is chosen explicitly.",
+            "next_controller": "extract_full_text_policy_formulas_or_choose_window_dynamics_repair",
         },
     }
 
@@ -291,15 +298,15 @@ def build_artifact() -> dict[str, Any]:
         "audit_id": "core_inbox_research_alignment_gate",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "status": "WARN",
-        "blocker_label": "inbox_claims_mapped_current_controller_policy_formula_extraction_gap",
+        "blocker_label": "inbox_claims_mapped_current_controller_full_text_formula_extraction_gap",
         "claim_class": "source_intake_alignment_only",
         "sources": sources,
         "artifacts": list(artifacts.values()),
         "claim_map": claim_map,
         "gates": gates,
         "recommended_next_wave": {
-            "step": "Extract policy formula boundaries from packaged conserved-order/canonical and finite-k source candidates, or choose window/dynamics repair without accepting an estimator.",
-            "reason": "Wave 35 packages policy-specific source candidates but blocks formula extraction and policy acceptance.",
+            "step": "Extract full-text policy formulas and UET normalization mapping, or choose window/dynamics repair without accepting an estimator.",
+            "reason": "Wave 36 extracts abstract-level policy boundaries but blocks accepted estimator formulas and normalization mapping.",
         },
         "limitations": [
             "This audit does not validate any inbox claim as physics.",

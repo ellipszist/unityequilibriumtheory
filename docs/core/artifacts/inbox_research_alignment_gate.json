@@ -161,10 +161,19 @@
       "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_policy_source_candidate_gate.json",
       "sha256": "6acc98a75f104f390e3ae63817197e4ab9d66608d182aeb4277aa4cf1bfb2b28",
       "status": "WARN"
+    },
+    {
+      "blocker_label": "policy_formula_boundaries_partial_full_text_extraction_open",
+      "claim_class": "estimator_policy_formula_boundary_partial_only",
+      "exists": true,
+      "id": "wave36_policy_formula_boundary",
+      "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_policy_formula_boundary_gate.json",
+      "sha256": "448358c09b1c06c4b6053cf95f1f327a75661275d30bf925c2a19256d0584332",
+      "status": "WARN"
     }
   ],
   "audit_id": "core_inbox_research_alignment_gate",
-  "blocker_label": "inbox_claims_mapped_current_controller_policy_formula_extraction_gap",
+  "blocker_label": "inbox_claims_mapped_current_controller_full_text_formula_extraction_gap",
   "claim_class": "source_intake_alignment_only",
   "claim_map": [
     {
@@ -181,7 +190,7 @@
       "next_action": "Do not retune A/B coefficients as the next default path; only revisit with a new formula/unit gate."
     },
     {
-      "current_boundary": "Policy-specific source candidates are now packaged, but formula extraction and accepted policy mapping remain blocked.",
+      "current_boundary": "Abstract-level policy boundaries are now extracted, but full-text formula extraction, accepted estimator policy, and UET normalization mapping remain blocked.",
       "current_repo_state": "implemented_as_conserved_order_spectral_v1_and_bridge_passed",
       "evidence": [
         "wave16_spectral_core",
@@ -197,11 +206,12 @@
         "wave32_lowest_mode_candidate",
         "wave33_ensemble_susceptibility_lane",
         "wave34_estimator_policy_source",
-        "wave35_policy_source_candidate"
+        "wave35_policy_source_candidate",
+        "wave36_policy_formula_boundary"
       ],
       "inbox_claim_id": "c_conserved_order_parameter",
       "inbox_claim_summary": "Use conserved-order/Cahn-Hilliard-like dynamics so mass/order is transported rather than locally destroyed.",
-      "next_action": "Extract policy formula boundaries from the packaged candidates or choose window/dynamics repair without treating any estimator as accepted."
+      "next_action": "Extract full-text policy formulas and normalization mapping or choose window/dynamics repair without treating any estimator as accepted."
     },
     {
       "current_boundary": "No formula-audit entry, unit closure, core opt-in mode, or scaling artifact currently accepts this path.",
@@ -239,7 +249,8 @@
         "wave32_lowest_mode_candidate",
         "wave33_ensemble_susceptibility_lane",
         "wave34_estimator_policy_source",
-        "wave35_policy_source_candidate"
+        "wave35_policy_source_candidate",
+        "wave36_policy_formula_boundary"
       ],
       "inbox_claim_id": "hidden_standalone_equation_risk",
       "inbox_claim_summary": "Earlier tests risked bypassing docs/core/uet_master_equation.py with standalone equations.",
@@ -252,8 +263,8 @@
   },
   "gates": {
     "artifact_chain_gate": {
-      "latest_expected_blocker": "estimator_policy_source_candidates_packaged_formula_extraction_open",
-      "latest_observed_blocker": "estimator_policy_source_candidates_packaged_formula_extraction_open",
+      "latest_expected_blocker": "policy_formula_boundaries_partial_full_text_extraction_open",
+      "latest_observed_blocker": "policy_formula_boundaries_partial_full_text_extraction_open",
       "required_condition": "The current 0.11 artifact chain must expose the latest controller.",
       "status": "PASS"
     },
@@ -275,8 +286,8 @@
       "status": "PASS"
     },
     "next_controller_gate": {
-      "next_controller": "extract_policy_formula_boundaries_or_choose_window_dynamics_repair",
-      "required_condition": "No broad UET phase-transition claim may be promoted until policy formula boundaries are extracted and accepted, or window/dynamics repair is chosen explicitly.",
+      "next_controller": "extract_full_text_policy_formulas_or_choose_window_dynamics_repair",
+      "required_condition": "No broad UET phase-transition claim may be promoted until full-text policy formulas and UET normalization mapping are extracted and accepted, or window/dynamics repair is chosen explicitly.",
       "status": "BLOCKED"
     }
   },
@@ -286,8 +297,8 @@
     "The raw inbox directory remains intake evidence; artifact gates, formula audits, and topic verifiers control claim wording."
   ],
   "recommended_next_wave": {
-    "reason": "Wave 35 packages policy-specific source candidates but blocks formula extraction and policy acceptance.",
-    "step": "Extract policy formula boundaries from packaged conserved-order/canonical and finite-k source candidates, or choose window/dynamics repair without accepting an estimator."
+    "reason": "Wave 36 extracts abstract-level policy boundaries but blocks accepted estimator formulas and normalization mapping.",
+    "step": "Extract full-text policy formulas and UET normalization mapping, or choose window/dynamics repair without accepting an estimator."
   },
   "schema_version": "1.0",
   "sources": [
@@ -306,13 +317,13 @@
       "sha256": "5d3b52336934923d2ab7c5d8a71801964fa8fb196d6f4896468bb0e476c4ed9a"
     },
     {
-      "bytes": 51325,
+      "bytes": 6298,
       "exists": true,
-      "path": "docs/core/00_inbox/raw chat.md",
-      "role": "raw conversation intake containing the original concern about hidden standalone equations and engine alignment",
-      "sha256": "46d5ab24a18c903be0f4a2871a05c8c45b51d7d8835ca02c2c3c1d2208020248"
+      "path": "docs/core/00_inbox/implementation_plan01.md",
+      "role": "implementation plan follow-up intake with the user-facing concern about hidden standalone equations and engine alignment",
+      "sha256": "d3c7ba36a9f3e00e3f51bd7b5612a5fc8c78adeaba348e0b256ed0f2a5d2a356"
     }
   ],
   "status": "WARN",
-  "timestamp_utc": "2026-06-30T12:24:27.709768+00:00"
+  "timestamp_utc": "2026-06-30T17:11:38.703423+00:00"
 }

@@ -1,6 +1,31 @@
 # Update Log: 0.11 Phase Transitions
 
 
+## Wave: Estimator-Policy Formula-Boundary Gate (Wave 36)
+
+**What changed:**
+- Added `Data/03_Research/structure_factor_estimator_policy_formula_boundary.json` to record abstract-level fixed-magnetization/canonical and Cahn-Hilliard source boundaries.
+- Added `Research_Structure_Factor_Policy_Formula_Boundary_Gate.py` and artifact `Result/artifacts/0_11_structure_factor_policy_formula_boundary_gate.json`.
+- Updated topic docs and the inbox alignment audit to move the controller from candidate formula extraction to full-text policy formulas or explicit window/dynamics repair.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Policy_Formula_Boundary_Gate.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Policy_Formula_Boundary_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `estimator_policy_source_candidates_packaged_formula_extraction_open` into `policy_formula_boundaries_partial_full_text_extraction_open`.
+- The artifact reports `formula_boundary_manifest_gate == PASS` and `abstract_boundary_gate == PASS`.
+- It also reports `accepted_estimator_formula_gate == BLOCKED` and `normalization_mapping_gate == BLOCKED`.
+
+**Next controlling blocker:**
+- Extract full-text policy formulas and UET normalization mapping, or explicitly choose window/dynamics repair without accepting an estimator.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 36 accepts no conserved-order S0 policy, finite-k estimator, spatial-variance proxy, calibration, exponent, universality, material, RG, or phase-transition-solution claims.
+
+---
+
+
 ## Wave: Estimator-Policy Source-Candidate Gate (Wave 35)
 
 **What changed:**

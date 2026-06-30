@@ -44,3 +44,4 @@
 - Wave 33 tests ensemble and spatial-variance `S(0)` lanes, but the source-closer ensemble lane remains invalid under the conserved-mean constraint and the spatial-variance proxy remains diagnostic-only.
 - Wave 34 defines estimator-policy requirements, but no source-backed conserved-order susceptibility or finite-k/canonical estimator policy is accepted yet.
 - Wave 35 packages source candidates for fixed-composition/canonical and finite-k policy review, but candidate metadata is not formula extraction and no estimator policy is accepted.
+- Wave 36 extracts source boundaries only at abstract/policy level; no conserved-order S0, finite-k estimator, calibration factor, or normalization mapping is accepted.

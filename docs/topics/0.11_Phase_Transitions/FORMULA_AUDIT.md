@@ -67,6 +67,7 @@ demonstrations.
 | `PT-CONSERVED-ORDER-SPECTRAL-ENSEMBLE-SUSCEPTIBILITY-LANE` | compare `S0 = N Var_ensemble(mean(C))` against diagnostic `S0_proxy = mean(N Var_space(C))` for lowest-mode estimator use | `Research_Structure_Factor_Ensemble_Susceptibility_Lane_Gate.py`; `0_11_structure_factor_ensemble_susceptibility_lane_gate.json` | normalized lattice structure-factor units; spatial proxy not source-equivalent | `susceptibility_lane_diagnostic` | `source-closer lane blocked; proxy diagnostic-only` | S0 policy gate | Wave 33 blocks raw ensemble S0 because conserved mean gives `S0/S(k_min) < 1`; spatial proxy is numeric but not accepted. | Source-back a conserved-order susceptibility policy or finite-k/canonical estimator before exponent claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-ESTIMATOR-POLICY-SOURCE` | define required policies for conserved-order S0, finite-k/canonical replacement, and spatial-variance proxy exclusion | `structure_factor_estimator_policy_requirements.json`; `Research_Structure_Factor_Estimator_Policy_Source_Gate.py`; `0_11_structure_factor_estimator_policy_source_gate.json` | policy metadata; no estimator units accepted | `estimator_policy_source_triage` | `requirements defined; source support missing` | policy-source gate | Wave 34 passes policy requirement manifest but blocks conserved susceptibility and finite-k policy source gates. | Package policy-specific sources or choose window/dynamics repair before exponent claims. |
 | `PT-CONSERVED-ORDER-SPECTRAL-POLICY-SOURCE-CANDIDATES` | package fixed-magnetization/canonical and Cahn-Hilliard structure-factor source candidates for estimator-policy review | `structure_factor_estimator_policy_source_candidates.json`; `Research_Structure_Factor_Policy_Source_Candidate_Gate.py`; `0_11_structure_factor_policy_source_candidate_gate.json` | source metadata only; formula units not extracted | `source_candidate_packaging` | `candidates packaged; formula extraction blocked` | policy source-candidate gate | Wave 35 passes candidate manifest coverage but blocks formula extraction and policy acceptance. | Extract policy formula boundaries or choose window/dynamics repair before exponent claims. |
+| `PT-CONSERVED-ORDER-SPECTRAL-POLICY-FORMULA-BOUNDARY` | extract abstract-level fixed-magnetization/canonical and Cahn-Hilliard structure-factor boundaries for estimator-policy review | `structure_factor_estimator_policy_formula_boundary.json`; `Research_Structure_Factor_Policy_Formula_Boundary_Gate.py`; `0_11_structure_factor_policy_formula_boundary_gate.json` | abstract-level source boundaries; no accepted estimator units | `partial_formula_boundary` | `boundaries extracted; accepted formula blocked` | policy formula-boundary gate | Wave 36 passes boundary manifest and abstract boundary gates but blocks estimator acceptance and normalization mapping. | Extract full-text formulas or choose window/dynamics repair before exponent claims. |
 
 ## Wave 5 Formula Boundary
 
@@ -320,3 +321,11 @@ structure-factor source candidates. This is source packaging, not formula accept
 current blocker is now formula extraction and normalization mapping: no candidate source has
 been extracted into an accepted conserved-order `S(0)` policy, finite-k estimator, calibration
 factor, or finite-size admissibility rule for exponent gates.
+
+## Wave 36 Policy Formula-Boundary
+
+The formula-boundary gate extracts only conservative source boundaries. Fixed-magnetization
+and canonical finite-size sources warn that finite systems under conserved constraints cannot
+silently supply a canonical zero-mode susceptibility. The Cahn-Hilliard source supports a
+finite-k/domain-size review lane, but not an accepted critical `xi_2nd` replacement. Full-text
+formula extraction and UET normalization mapping remain open before any exponent gate can rerun.
