@@ -95,6 +95,7 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 - The Wave 32 lowest-mode candidate verifier implements that source-family relation on the existing L16/L20 fields and blocks replacement because the single-snapshot conserved-order lane lacks a valid `S(0)` susceptibility observable.
 - The Wave 33 susceptibility-lane verifier tests ensemble magnetization `S(0)` and spatial-variance proxy lanes, then blocks claim use because the source-closer lane is constrained by conserved mean while the spatial proxy is not source-equivalent.
 - The Wave 34 estimator-policy source verifier defines the required conserved-order susceptibility, finite-k/canonical, and spatial-variance proxy policies, then blocks replacement because source support for the accepted policy paths is still missing.
+- The Wave 35 source-candidate verifier packages fixed-magnetization/canonical and Cahn-Hilliard structure-factor candidates, then blocks estimator replacement until formula boundaries are extracted and mapped to the current UET normalization.
 - Cahn-Hilliard simulations should be treated as normalized mechanism diagnostics until seed, grid, morphology, and material-unit gates are added.
 
 ## Dependency policy

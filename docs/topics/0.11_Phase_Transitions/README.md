@@ -78,6 +78,7 @@ flowchart LR
 | Wave 32 lowest-mode estimator candidate | Source-family replacement diagnostic | `Result/artifacts/0_11_structure_factor_lowest_mode_candidate_gate.json` | implementation passes; observable validity blocked by zero-mode snapshot lane |
 | Wave 33 ensemble susceptibility lane | S0 observable policy diagnostic | `Result/artifacts/0_11_structure_factor_ensemble_susceptibility_lane_gate.json` | ensemble S0 blocked by conserved mean; spatial variance remains diagnostic-only |
 | Wave 34 estimator policy source gate | Policy-source packaging gate | `Data/03_Research/structure_factor_estimator_policy_requirements.json`; `Result/artifacts/0_11_structure_factor_estimator_policy_source_gate.json` | policy requirements pass; conserved susceptibility and finite-k source support missing |
+| Wave 35 estimator policy source-candidate gate | Policy source-candidate gate | `Data/03_Research/structure_factor_estimator_policy_source_candidates.json`; `Result/artifacts/0_11_structure_factor_policy_source_candidate_gate.json` | candidate sources packaged; formula extraction and accepted policy still blocked |
 | Universal phase-transition theory | Not closed | limitations and formula audit | do not claim full proof |
 
 ## 5x4 Grid Structure
@@ -146,5 +147,6 @@ python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exp
 - The Wave 32 lowest-mode candidate gate implements the source-family estimator, but `lowest_mode_observable_gate` is `BLOCKED`: all `15/15` current snapshot cases are invalid because raw `S(0)` is not larger than `S(k_min)`.
 - The Wave 33 susceptibility-lane gate separates ensemble magnetization `S(0)` from spatial-variance proxy: raw ensemble `S(0)` is blocked by conserved-mean constraints, while spatial variance is diagnostic-only and not source-equivalent.
 - The Wave 34 estimator-policy source gate defines three policy paths, but both source-backed replacement paths remain `BLOCKED`; spatial variance stays diagnostic-only.
+- The Wave 35 source-candidate gate packages fixed-magnetization/canonical and Cahn-Hilliard structure-factor source candidates, but formula extraction and accepted estimator policy remain `BLOCKED`.
 
 *Status note: internal critical-exponent benchmark and formula-audit hardening gate.*

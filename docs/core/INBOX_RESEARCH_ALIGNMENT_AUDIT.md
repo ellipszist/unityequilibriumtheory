@@ -21,16 +21,16 @@
 | Inbox claim | Current repo state | Current boundary | Next action |
 | :-- | :-- | :-- | :-- |
 | `a_b_multiplicative_info_plus_gradient_game` | implemented_as_opt_in_diagnostic_then_blocked_by_scaling_gates | A/B candidate availability and safety are not enough; beta and correlation gates stayed diagnostic or blocked. | Do not retune A/B coefficients as the next default path; only revisit with a new formula/unit gate. |
-| `c_conserved_order_parameter` | implemented_as_conserved_order_spectral_v1_and_bridge_passed | Estimator policy requirements are now explicit, but source support is still missing for conserved-order susceptibility and finite-k/canonical replacement paths. | Package policy-specific sources or choose window/dynamics repair without treating any estimator as accepted. |
+| `c_conserved_order_parameter` | implemented_as_conserved_order_spectral_v1_and_bridge_passed | Policy-specific source candidates are now packaged, but formula extraction and accepted policy mapping remain blocked. | Extract policy formula boundaries from the packaged candidates or choose window/dynamics repair without treating any estimator as accepted. |
 | `warped_space_kappa_of_c` | not_accepted_not_primary | No formula-audit entry, unit closure, core opt-in mode, or scaling artifact currently accepts this path. | If pursued, start with formula/unit/provenance gate before code. |
 | `dynamic_game_landscape_beta_u` | not_accepted_not_primary | No state-variable policy, unit closure, stability gate, or artifact currently accepts dynamic beta_U. | If pursued, define state evolution, conservation/safety gates, and claim boundary first. |
 | `hidden_standalone_equation_risk` | mitigated_by_core_engine_path_gates | Future candidates still need explicit engine-path gates before claim interpretation. | Keep engine alignment gates mandatory for every new operator or estimator verifier. |
 
 ## Current Controller
 
-`Package policy-specific sources for conserved-order susceptibility or finite-k/canonical estimator replacement, or choose window/dynamics repair without accepting an estimator.`
+`Extract policy formula boundaries from packaged conserved-order/canonical and finite-k source candidates, or choose window/dynamics repair without accepting an estimator.`
 
-Wave 34 defines estimator policy requirements and blocks both source-backed replacement paths because policy support is still missing.
+Wave 35 packages policy-specific source candidates but blocks formula extraction and policy acceptance.
 
 ## Claim Boundary
 

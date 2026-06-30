@@ -108,6 +108,10 @@ ARTIFACTS = {
     / "Result"
     / "artifacts"
     / "0_11_structure_factor_estimator_policy_source_gate.json",
+    "wave35_policy_source_candidate": TOPIC_DIR
+    / "Result"
+    / "artifacts"
+    / "0_11_structure_factor_policy_source_candidate_gate.json",
 }
 
 
@@ -165,12 +169,13 @@ def build_artifact() -> dict[str, Any]:
     ]
     artifacts = {name: artifact_record(name, path) for name, path in ARTIFACTS.items()}
     wave34 = artifacts["wave34_estimator_policy_source"]
+    wave35 = artifacts["wave35_policy_source_candidate"]
 
     source_packaging_pass = all(record["exists"] and record["sha256"] for record in sources)
     artifact_chain_pass = (
-        wave34["exists"]
-        and wave34["blocker_label"]
-        == "estimator_policy_source_support_missing_for_conserved_susceptibility_or_finite_k_path"
+        wave35["exists"]
+        and wave35["blocker_label"]
+        == "estimator_policy_source_candidates_packaged_formula_extraction_open"
     )
 
     claim_map = [
@@ -205,9 +210,10 @@ def build_artifact() -> dict[str, Any]:
                 "wave32_lowest_mode_candidate",
                 "wave33_ensemble_susceptibility_lane",
                 "wave34_estimator_policy_source",
+                "wave35_policy_source_candidate",
             ],
-            "current_boundary": "Estimator policy requirements are now explicit, but source support is still missing for conserved-order susceptibility and finite-k/canonical replacement paths.",
-            "next_action": "Package policy-specific sources or choose window/dynamics repair without treating any estimator as accepted.",
+            "current_boundary": "Policy-specific source candidates are now packaged, but formula extraction and accepted policy mapping remain blocked.",
+            "next_action": "Extract policy formula boundaries from the packaged candidates or choose window/dynamics repair without treating any estimator as accepted.",
         },
         {
             "inbox_claim_id": "warped_space_kappa_of_c",
@@ -242,6 +248,7 @@ def build_artifact() -> dict[str, Any]:
                 "wave32_lowest_mode_candidate",
                 "wave33_ensemble_susceptibility_lane",
                 "wave34_estimator_policy_source",
+                "wave35_policy_source_candidate",
             ],
             "current_boundary": "Future candidates still need explicit engine-path gates before claim interpretation.",
             "next_action": "Keep engine alignment gates mandatory for every new operator or estimator verifier.",
@@ -263,8 +270,8 @@ def build_artifact() -> dict[str, Any]:
         "artifact_chain_gate": {
             "status": "PASS" if artifact_chain_pass else "BLOCKED",
             "required_condition": "The current 0.11 artifact chain must expose the latest controller.",
-            "latest_expected_blocker": "estimator_policy_source_support_missing_for_conserved_susceptibility_or_finite_k_path",
-            "latest_observed_blocker": wave34["blocker_label"],
+            "latest_expected_blocker": "estimator_policy_source_candidates_packaged_formula_extraction_open",
+            "latest_observed_blocker": wave35["blocker_label"],
         },
         "coverage_boundary_gate": {
             "status": "WARN",
@@ -274,8 +281,8 @@ def build_artifact() -> dict[str, Any]:
         },
         "next_controller_gate": {
             "status": "BLOCKED",
-            "required_condition": "No broad UET phase-transition claim may be promoted until estimator-policy source support is packaged and accepted, or window/dynamics repair is chosen explicitly.",
-            "next_controller": "package_conserved_order_or_finite_k_estimator_policy_sources",
+            "required_condition": "No broad UET phase-transition claim may be promoted until policy formula boundaries are extracted and accepted, or window/dynamics repair is chosen explicitly.",
+            "next_controller": "extract_policy_formula_boundaries_or_choose_window_dynamics_repair",
         },
     }
 
@@ -284,15 +291,15 @@ def build_artifact() -> dict[str, Any]:
         "audit_id": "core_inbox_research_alignment_gate",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "status": "WARN",
-        "blocker_label": "inbox_claims_mapped_current_controller_policy_source_packaging_gap",
+        "blocker_label": "inbox_claims_mapped_current_controller_policy_formula_extraction_gap",
         "claim_class": "source_intake_alignment_only",
         "sources": sources,
         "artifacts": list(artifacts.values()),
         "claim_map": claim_map,
         "gates": gates,
         "recommended_next_wave": {
-            "step": "Package policy-specific sources for conserved-order susceptibility or finite-k/canonical estimator replacement, or choose window/dynamics repair without accepting an estimator.",
-            "reason": "Wave 34 defines estimator policy requirements and blocks both source-backed replacement paths because policy support is still missing.",
+            "step": "Extract policy formula boundaries from packaged conserved-order/canonical and finite-k source candidates, or choose window/dynamics repair without accepting an estimator.",
+            "reason": "Wave 35 packages policy-specific source candidates but blocks formula extraction and policy acceptance.",
         },
         "limitations": [
             "This audit does not validate any inbox claim as physics.",

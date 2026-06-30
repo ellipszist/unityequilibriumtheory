@@ -930,3 +930,34 @@
 - Interpretation:
   - The policy requirements are explicit, but neither source-backed replacement path is accepted.
   - The next useful work is to package policy-specific sources or choose window/dynamics repair without pretending an estimator is accepted.
+
+## Wave 35 Estimator-Policy Source-Candidate Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Policy_Source_Candidate_Gate.py`
+- Artifact target:
+  - `Result/artifacts/0_11_structure_factor_policy_source_candidate_gate.json`
+- Source-candidate manifest:
+  - `Data/03_Research/structure_factor_estimator_policy_source_candidates.json`
+- Purpose:
+  - Package fixed-magnetization/canonical and Cahn-Hilliard structure-factor source candidates for policy review.
+  - Keep candidate metadata separate from accepted formula extraction and estimator replacement.
+- Required gates:
+  - `wave34_chain_gate.status == PASS`
+  - `source_candidate_manifest_gate.status == PASS`
+  - `conserved_policy_candidate_gate.status in {WARN, PASS}` as candidate coverage only.
+  - `finite_k_policy_candidate_gate.status in {WARN, PASS}` as candidate coverage only.
+  - `formula_extraction_gate.status == PASS` before policy acceptance work may continue.
+  - `accepted_policy_gate.status == PASS` before exponent or universality gates may rerun.
+- Current Wave 35 result:
+  - overall status `WARN`
+  - `wave34_chain_gate == PASS`
+  - `source_candidate_manifest_gate == PASS`
+  - `conserved_policy_candidate_gate == WARN`
+  - `finite_k_policy_candidate_gate == WARN`
+  - `spatial_variance_boundary_gate == PASS`
+  - `formula_extraction_gate == BLOCKED`
+  - `accepted_policy_gate == BLOCKED`
+- Interpretation:
+  - Policy-specific source candidates are packaged, but no candidate formula is extracted or accepted.
+  - The next useful work is to extract policy formula boundaries or choose window/dynamics repair without pretending an estimator is accepted.

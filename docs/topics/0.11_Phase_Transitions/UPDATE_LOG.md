@@ -1,6 +1,31 @@
 # Update Log: 0.11 Phase Transitions
 
 
+## Wave: Estimator-Policy Source-Candidate Gate (Wave 35)
+
+**What changed:**
+- Added `Data/03_Research/structure_factor_estimator_policy_source_candidates.json` to package fixed-magnetization/canonical and Cahn-Hilliard structure-factor source candidates.
+- Added `Research_Structure_Factor_Policy_Source_Candidate_Gate.py` and artifact `Result/artifacts/0_11_structure_factor_policy_source_candidate_gate.json`.
+- Updated topic docs and the inbox alignment audit to move the controller from policy-source packaging to policy formula extraction or explicit window/dynamics repair.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe -m py_compile docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Policy_Source_Candidate_Gate.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Policy_Source_Candidate_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `estimator_policy_source_support_missing_for_conserved_susceptibility_or_finite_k_path` into `estimator_policy_source_candidates_packaged_formula_extraction_open`.
+- The artifact reports `source_candidate_manifest_gate == PASS`, `conserved_policy_candidate_gate == WARN`, and `finite_k_policy_candidate_gate == WARN`.
+- It also reports `formula_extraction_gate == BLOCKED` and `accepted_policy_gate == BLOCKED`.
+
+**Next controlling blocker:**
+- Extract policy formula boundaries for the packaged candidates, or explicitly choose window/dynamics repair without accepting an estimator.
+
+**Current topic-level status after wave:**
+- The spectral core candidate remains diagnostic-only. Wave 35 packages source candidates but accepts no conserved-order S0 policy, finite-k estimator, spatial-variance proxy, calibration, exponent, universality, material, RG, or phase-transition-solution claims.
+
+---
+
+
 
 ## Wave: Estimator-Policy Source-Support Gate (Wave 34)
 

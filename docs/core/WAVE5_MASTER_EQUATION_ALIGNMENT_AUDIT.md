@@ -578,15 +578,33 @@ This narrows the blocker again. Required estimator-policy paths are now explicit
 current source package does not accept conserved-order susceptibility or finite-k/canonical
 replacement.
 
+## Wave 35 Estimator-Policy Source-Candidate Follow-Up
+
+Artifact: `docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_policy_source_candidate_gate.json`
+Source candidates: `docs/topics/0.11_Phase_Transitions/Data/03_Research/structure_factor_estimator_policy_source_candidates.json`
+
+- `wave34_chain_gate`: `PASS`
+- `source_candidate_manifest_gate`: `PASS`
+- `conserved_policy_candidate_gate`: `WARN`
+- `finite_k_policy_candidate_gate`: `WARN`
+- `spatial_variance_boundary_gate`: `PASS`
+- `formula_extraction_gate`: `BLOCKED`
+- `accepted_policy_gate`: `BLOCKED`
+- `claim_boundary_gate`: `WARN`
+
+This narrows the blocker from missing policy-specific source packaging to candidate sources
+packaged but formula extraction open. The packaged sources are review inputs only; none accepts
+conserved-order `S(0)`, a finite-k replacement estimator, or a calibration factor for claims.
+
 ## Current Boundary
 
 The Wave 5 candidate fixes the narrow implementation blocker that spatial operators were not
 available in the core engine. It does not fix the physics blocker: the current candidate still
-fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 34
-now records the next controller as `estimator_policy_source_support_missing_for_conserved_susceptibility_or_finite_k_path`.
+fits near mean-field behavior and does not shift toward the 3D Ising beta exponent. Wave 35
+now records the next controller as `estimator_policy_source_candidates_packaged_formula_extraction_open`.
 
 ## Next Hardening Step
 
-Keep all candidate operators as opt-in diagnostics. The next wave should package
-policy-specific sources for conserved-order susceptibility or finite-k/canonical estimator
-replacement, or choose window/dynamics repair without accepting an estimator.
+Keep all candidate operators as opt-in diagnostics. The next wave should extract policy formula
+boundaries from the packaged source candidates, or explicitly choose window/dynamics repair
+without accepting an estimator.
