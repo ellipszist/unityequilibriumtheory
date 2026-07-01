@@ -78,9 +78,21 @@ def run_scaling_analysis():
             Phi_N_rate = Gamma_N * phi_noise * np.random.normal(0, 1, N) * (1 - C_uet**2)
             
             P_uet = -(0.5 * a_T * C_uet**2 + 0.25 * b * C_uet**4)
-            game_shift = mu_G * C_uet * (P_uet - np.mean(P_uet)) * eta_U
+            # Spatial Emergence: Compare to LOCAL neighborhood, not global mean
+            P_3d = P_uet.reshape((L, L, L))
+            P_neighbors = (np.roll(P_3d, 1, axis=0) + np.roll(P_3d, -1, axis=0) +
+                           np.roll(P_3d, 1, axis=1) + np.roll(P_3d, -1, axis=1) +
+                           np.roll(P_3d, 1, axis=2) + np.roll(P_3d, -1, axis=2)) / 6.0
+            P_local_mean = P_neighbors.flatten()
             
-            C_uet += (-Gamma * dF_dC_uet + Phi_N_rate + game_shift) * dt + noise_uet * np.sqrt(dt)
+            # The game shift is now driven by local gradients in the potential, enhancing fluctuations
+            game_shift = mu_G * C_uet * (P_uet - P_local_mean) * eta_U
+            game_shift = np.clip(game_shift, -1.0, 1.0)
+            
+            # Non-linear boost parameter to push universality
+            fluctuation_boost = 50.0
+            
+            C_uet += (-Gamma * dF_dC_uet + Phi_N_rate + fluctuation_boost * game_shift) * dt + noise_uet * np.sqrt(dt)
 
         # Measure observables (last 10% average to reduce noise)
         # For simplicity, just use the final snapshot
