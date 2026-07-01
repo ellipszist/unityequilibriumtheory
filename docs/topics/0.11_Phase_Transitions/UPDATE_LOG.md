@@ -954,3 +954,30 @@
 
 **Current topic-level status after wave:**
 - Topic 11 is formally **VERIFIED** at the analytical projection level. The numerical simulation serves as a stable qualitative baseline but is correctly bounded by grid limits. No further "fudging" of the engine is required to force the numerical output.
+
+---
+
+## Wave 42: Closure Status Reconstruction Gate
+
+**What changed:**
+- Added `CLOSURE_STATUS_AUDIT.md` to reconstruct why 0.11 still cannot close as Tier A.
+- Added machine-readable `Result/artifacts/0_11_closure_status_audit.json` so the current blocker is visible without reading the whole history.
+- Recorded Wave 39-41 wording as historical claim drift rather than controlling status.
+
+**Which verifier was run:**
+- No numerical verifier was rerun. This was a claim-boundary/status reconstruction pass over current docs and artifacts.
+
+**Which blocker narrowed:**
+- Narrowed the current controller to `accepted_structure_factor_estimator_policy_missing`.
+- The gate records `primary_beta_gate == PASS`, but `scaling_claim_gate == BLOCKED`, `estimator_formula_gate == BLOCKED`, and `tier_a_closure_gate == BLOCKED`.
+
+**Next controlling blocker:**
+- Extract exact TeX/PDF formula fragments from the localized source archives and map an accepted conserved-order structure-factor/correlation-length estimator into UET normalized lattice units before rerunning finite-size/exponent gates.
+
+**Current topic-level status after wave:**
+- 0.11 remains `Draft / Tier B`. It is promising and important, but not closed as Tier A.
+- Allowed claim: selected internal beta benchmark plus diagnostic mechanism lanes.
+- Blocked claims: full phase-transition theory, RG closure, accepted universality shift, or Tier A closure from beta projection alone.
+
+**Correction note for Wave 39-41 wording:**
+- The prior wording that Topic 11 is formally verified at the analytical projection level is historical drift and is not the controlling topic status. The current topic index, verification spec, formula audit, and Wave 38/42 gates control status.
