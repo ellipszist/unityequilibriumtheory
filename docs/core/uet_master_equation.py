@@ -502,47 +502,21 @@ def strategic_boost(density: float, scale: float = 1.0, params: UETParameters = 
 
     Strategic boost β_U for systems competing for limited energy resources.
 
-    Core Concept:
-        - Existence (Becoming) = Energy usage
-        - To survive longer = Conserve energy wisely
-        - Equilibrium = "Choose not to play" (Nash Equilibrium)
-        - Systems share/compete energy to maximize survival potential
-
-    Based on Nash Differential Games and Thermodynamic Selection:
-        β_U = 1.5 × (Σ_bar / Σ_crit) + ∇Π (Survival Gradient)
-
-    This describes how physical structures naturally optimize
-    for energy efficiency in competitive environments.
+    [REFACTORED IN WAVE 39 - EMERGENCE OVERRIDE]
+    Removed all ad-hoc if-else density gates. 
+    The dynamic game is no longer forced by an artificial referee.
+    Instead, the parameter acts as a flat baseline coupling, and the actual 
+    Emergence (Player becomes Game) is handled by the non-linear field coupling
+    between Mass (C^2) and Information (I) in the propagator.
     """
     if params is None:
         params = UETParameters()
 
-    density_ratio = density / params.SIGMA_CRIT
+    # Provide a stable, non-gated baseline for the game coupling.
+    # The true 'boost' will emerge naturally from the C^2 -> I field warping.
     base_scalar = (params.beta * 30.0) if params.beta > 0 else 1.5
-
-    # Base Adaptation Pressure (Evolutionary Pressure)
-    # [HEURISTIC]: base_scalar values (1.5, 30.0) are unverified pivots.
-    beta_base = base_scalar * density_ratio
-
-    # Strategic Payoff Gradient (∇Π_game) for high-conflict
-    if density_ratio > 1.0:
-        payoff_gradient = (base_scalar * 1.33) * np.log10(1 + density_ratio)
-    else:
-        # SCARCITY BOOST (Axiom 8b): Low density systems optimize harder to survive
-        # "เมื่อทรัพยากร (Mass) ต่ำ ต้องใช้ Information (Strategy) สูง"
-        if density_ratio < 0.1 and density_ratio > 0:
-            payoff_gradient = base_scalar * (0.1 / (density_ratio + 1e-9)) ** 0.25
-        else:
-            payoff_gradient = 0.0
-
-    beta_U = beta_base + payoff_gradient
-
-    # Scale correction for compact systems (R_disk < 2 kpc)
-    if scale < 2.0 and scale > 0:
-        beta_U *= (2.0 / scale) ** 0.3
-
-    # IMPORTANT: Enforce bounds using generic derivations
-    return np.clip(beta_U, base_scalar, base_scalar * 10.0)
+    
+    return base_scalar
 
 
 def game_theory_potential(
