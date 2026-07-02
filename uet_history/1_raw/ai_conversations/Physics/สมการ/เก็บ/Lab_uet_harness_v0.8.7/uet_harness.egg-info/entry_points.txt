@@ -1,0 +1,3 @@
+[console_scripts]
+uet-doctor = uet_doctor:main
+uet-run = scripts.run_uet_jax:main

@@ -77,7 +77,10 @@ uet_api/.fastembed_cache/
 node_modules/
 .next/
 .obsidian/
-/uet_history/
+/uet_history/*
+!/uet_history/1_raw/
+!/uet_history/1_raw/ai_conversations/
+!/uet_history/1_raw/ai_conversations/**
 /uet_knowledge_state.json
 docs/knowledge_base/personal_index.sqlite3
 docs/knowledge_base/personal_index.sqlite3-*
