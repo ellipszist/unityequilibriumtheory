@@ -97,3 +97,15 @@ Topic 0.11 is verified as a full theory.
 The current engine proves a 3D Ising universality shift.
 The analytical beta projection alone closes the topic as Tier A.
 ```
+
+## Wave 43 Update
+
+Wave 43 narrows the formula-source blocker. The project now has `structure_factor_tex_formula_fragments.json` and `0_11_structure_factor_tex_formula_fragment_gate.json`, with 19 formula fragments extracted from the three localized source lanes.
+
+This does not close Tier A. The current controller moves to:
+
+```text
+map_extracted_formulas_to_uet_estimator_policy
+```
+
+Required next evidence: accepted estimator policy, UET normalization mapping, and finite-size admissibility before exponent or universality gates rerun.

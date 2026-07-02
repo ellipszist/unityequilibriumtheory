@@ -104,3 +104,18 @@ services_and_experiments/**/.rustc_info.json
 services_and_experiments/**/CACHEDIR.TAG
 services_and_experiments/**/*.exe
 services_and_experiments/**/*_linux
+
+
+# Local recovery scratch files
+/output.txt
+/transcript.th.vtt
+
+# Thailand proposal raw assets are tracked through LOCAL_RECOVERY_MANIFEST.md first.
+thailand_proposals/**/*.pdf
+thailand_proposals/**/*.png
+thailand_proposals/**/*.jpg
+thailand_proposals/**/*.jpeg
+thailand_proposals/**/*.m4a
+thailand_proposals/**/*.mp3
+thailand_proposals/**/*.wav
+thailand_proposals/**/*.webp
