@@ -1,4 +1,4 @@
-﻿# 0.11 Closure Status Audit
+# 0.11 Closure Status Audit
 
 **Date:** 2026-07-01
 **Scope:** 0.11 Phase Transitions
@@ -97,3 +97,15 @@ Topic 0.11 is verified as a full theory.
 The current engine proves a 3D Ising universality shift.
 The analytical beta projection alone closes the topic as Tier A.
 ```
+
+## Wave 43 Update
+
+Wave 43 narrows the formula-source blocker. The project now has `structure_factor_tex_formula_fragments.json` and `0_11_structure_factor_tex_formula_fragment_gate.json`, with 19 formula fragments preserved from the three localized source lanes. The current rerun reports the temporary source cache missing, so source-cache reproducibility is now part of the controller.
+
+This does not close Tier A. The current controller moves to:
+
+```text
+restore_or_archive_source_cache_then_map_extracted_formulas_to_uet_estimator_policy
+```
+
+Required next evidence: restored/repo-archived source cache, accepted estimator policy, UET normalization mapping, and finite-size admissibility before exponent or universality gates rerun.

@@ -47,3 +47,5 @@
 - Wave 36 extracts source boundaries only at abstract/policy level; no conserved-order S0, finite-k estimator, calibration factor, or normalization mapping is accepted.
 - Wave 37 shows rendered/abstract access is insufficient for accepted formulas; local TeX/PDF math extraction is still required before estimator policy or exponent gates.
 - Wave 38 localizes arXiv source archives only in a temporary cache; raw sources are not repo-archived and no TeX formulas are accepted yet.
+
+- Wave 43 preserves 19 TeX formula fragments in a manifest, but the rerun reports `source_archive_availability_gate == BLOCKED` and `source_formula_fragment_gate == WARN`; `accepted_estimator_policy_gate`, `uet_normalization_mapping_gate`, and `next_path_gate` remain `BLOCKED`; no exponent, RG, universality, material, or Tier A claim is upgraded.

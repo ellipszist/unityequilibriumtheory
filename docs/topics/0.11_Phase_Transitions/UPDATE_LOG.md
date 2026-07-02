@@ -891,7 +891,7 @@
 
 **Which blocker narrowed:**
 - Addressed the small sample size (5 seeds) caveat from V2.
-- The V3 result over 100 seeds shows UET wins 60% of the time, with a paired difference mean of -0.000511 ± 0.002225 J.
+- The V3 result over 100 seeds shows UET wins 60% of the time, with a paired difference mean of -0.000511 Â± 0.002225 J.
 - Internally measured a small effect-size signal, though variance remains high.
 
 **Next controlling blocker:**
@@ -981,3 +981,27 @@
 
 **Correction note for Wave 39-41 wording:**
 - The prior wording that Topic 11 is formally verified at the analytical projection level is historical drift and is not the controlling topic status. The current topic index, verification spec, formula audit, and Wave 38/42 gates control status.
+
+---
+
+## Wave 43: TeX Formula-Fragment Extraction Gate
+
+**What changed:**
+- Added `Research_Structure_Factor_Tex_Formula_Fragment_Gate.py` to extract exact TeX formula fragments from the three Wave 38 localized source archives.
+- Added `Data/03_Research/structure_factor_tex_formula_fragments.json` with 19 preserved fragments across fixed-magnetization, canonical finite-size, and Cahn-Hilliard structure-factor source lanes.
+- Added `Result/artifacts/0_11_structure_factor_tex_formula_fragment_gate.json` and synced topic docs to the narrower blocker.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Tex_Formula_Fragment_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `localized_source_archives_present_tex_formula_extraction_open` to `tex_formula_fragments_extracted_estimator_policy_open`.
+- The artifact records `formula_fragment_manifest_gate == PASS`, `source_archive_availability_gate == BLOCKED`, and `source_formula_fragment_gate == WARN` with 19 prior fragments preserved but not freshly refreshed from the missing temporary cache.
+- `accepted_estimator_policy_gate`, `uet_normalization_mapping_gate`, and `next_path_gate` remain `BLOCKED`.
+
+**Next controlling blocker:**
+- Restore or repo-archive the source cache, then map the extracted formulas into a source-backed UET estimator policy, including conserved-order S(0) or finite-k policy choice, UET lattice normalization, and finite-size admissibility.
+
+**Current topic-level status after wave:**
+- 0.11 remains `Draft / Tier B` with selected beta benchmark plus diagnostic mechanism/source-formula lanes.
+- No exponent, universality, RG, material, or Tier A claim is upgraded.

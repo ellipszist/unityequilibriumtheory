@@ -82,6 +82,7 @@ flowchart LR
 | Wave 36 estimator policy formula-boundary gate | Partial policy formula-boundary gate | `Data/03_Research/structure_factor_estimator_policy_formula_boundary.json`; `Result/artifacts/0_11_structure_factor_policy_formula_boundary_gate.json` | abstract-level boundaries pass; full-text extraction and accepted formula remain blocked |
 | Wave 37 full-text formula readiness gate | Formula-source localization gate | `Data/03_Research/structure_factor_full_text_formula_extraction_readiness.json`; `Result/artifacts/0_11_structure_factor_full_text_formula_readiness_gate.json` | rendered/abstract boundaries recorded; local TeX/PDF math source remains blocked |
 | Wave 38 source-archive localization gate | Temporary arXiv source-cache gate | `Data/03_Research/structure_factor_source_archive_localization_manifest.json`; `Result/artifacts/0_11_structure_factor_source_archive_localization_gate.json` | source archives and TeX members localized in temp cache; formula extraction remains blocked |
+| Wave 43 TeX formula-fragment extraction | Source-formula extraction gate | `Data/03_Research/structure_factor_tex_formula_fragments.json`; `Result/artifacts/0_11_structure_factor_tex_formula_fragment_gate.json` | 19 formula fragments preserved in manifest; temporary source cache is missing, so refresh/provenance plus estimator policy and UET normalization remain blocked |
 | Universal phase-transition theory | Not closed | limitations and formula audit | do not claim full proof |
 
 ## 5x4 Grid Structure
@@ -154,5 +155,6 @@ python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exp
 - The Wave 36 formula-boundary gate extracts conservative source boundaries, but full-text formula extraction, UET normalization mapping, and accepted estimator policy remain `BLOCKED`.
 - The Wave 37 readiness gate records rendered/abstract source access but blocks formula acceptance until local TeX/PDF math sources are localized and mapped.
 - The Wave 38 localization gate verifies temporary arXiv source archives and main TeX members, but formula extraction, repo archival policy, and estimator acceptance remain blocked or warning-level.
+- Wave 43 preserves 19 TeX formula fragments across the fixed-magnetization, canonical finite-size, and Cahn-Hilliard structure-factor source lanes, but the current rerun finds the temporary source cache missing; source refresh/provenance, accepted estimator policy, and UET normalization mapping remain blocked.
 
 *Status note: internal critical-exponent benchmark and formula-audit hardening gate.*

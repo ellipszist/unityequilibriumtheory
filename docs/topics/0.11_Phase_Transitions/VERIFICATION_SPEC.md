@@ -1053,3 +1053,36 @@
 - Interpretation:
   - Source archives and main TeX members are localized in a temporary cache, but formulas are not extracted or accepted.
   - The next useful work is exact TeX formula-fragment extraction or a repo archival policy decision, without accepting an estimator.
+
+## Wave 43 TeX Formula-Fragment Extraction Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Tex_Formula_Fragment_Gate.py`
+- Artifact target:
+  - `Result/artifacts/0_11_structure_factor_tex_formula_fragment_gate.json`
+- Formula-fragment manifest:
+  - `Data/03_Research/structure_factor_tex_formula_fragments.json`
+- Purpose:
+  - Extract exact TeX formula fragments from the three localized source archives identified in Wave 38.
+  - Keep formula extraction separate from estimator-policy acceptance, UET normalization mapping, and exponent reruns.
+- Required gates:
+  - `wave38_chain_gate.status == PASS`
+  - `formula_fragment_manifest_gate.status == PASS`
+  - `source_archive_availability_gate.status == PASS` before fragments can be refreshed from source archives.
+  - `source_formula_fragment_gate.status == PASS` for a fresh extraction, or `WARN` only when prior extracted fragments exist but the temporary cache is missing.
+  - `accepted_estimator_policy_gate.status == PASS` before estimator replacement or exponent gates may rerun.
+  - `uet_normalization_mapping_gate.status == PASS` before claim-bearing scaling use.
+- Current Wave 43 result:
+  - overall status `WARN`
+  - `wave38_chain_gate == PASS`
+  - `formula_fragment_manifest_gate == PASS`
+  - `source_archive_availability_gate == BLOCKED` on the current rerun because the temporary source cache is missing
+  - `source_formula_fragment_gate == WARN` because the prior manifest preserves extracted fragments but they were not freshly refreshed
+  - extracted fragments preserved: `19` total from `3` source lanes
+  - `accepted_estimator_policy_gate == BLOCKED`
+  - `uet_normalization_mapping_gate == BLOCKED`
+  - `next_path_gate == BLOCKED`
+- Interpretation:
+  - The source-formula absence blocker is narrowed: TeX formula fragments now exist in a machine-readable manifest, but source-cache reproducibility must be repaired or archived.
+  - No source fragment is accepted as the current UET conserved-order estimator policy yet.
+  - The next useful work is UET normalization mapping and estimator-policy selection or explicit rejection before exponent, material, RG, universality, or Tier A claims.
