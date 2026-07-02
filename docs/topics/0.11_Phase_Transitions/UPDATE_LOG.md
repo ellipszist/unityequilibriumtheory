@@ -984,6 +984,29 @@
 
 ---
 
+## Wave 44: Source-Archive Policy Gate
+
+**What changed:**
+- Added `Research_Structure_Factor_Source_Archive_Policy_Gate.py` to record the source archive policy after the Wave 43 rerun found the temporary source cache missing.
+- Added `Data/03_Research/structure_factor_source_archive_policy.json` with arXiv e-print URLs, expected hashes/byte counts, and candidate repo archive paths.
+- Added `Result/artifacts/0_11_structure_factor_source_archive_policy_gate.json` and synced topic docs to the source-availability blocker.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Source_Archive_Policy_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `tex_formula_fragments_extracted_source_cache_missing` to `source_archive_policy_recorded_repo_archives_missing`.
+- `formula_fragment_preservation_gate == PASS` and `source_archive_policy_manifest_gate == PASS`.
+- `repo_archive_availability_gate == BLOCKED` and `temporary_cache_availability_gate == BLOCKED`, both with `0/3` archives available.
+
+**Next controlling blocker:**
+- Reacquire or repo-archive the three arXiv e-print archives and verify the expected hashes before fresh formula extraction or estimator-policy mapping can be treated as reproducible.
+
+**Current topic-level status after wave:**
+- 0.11 remains `Draft / Tier B`. No estimator, exponent, universality, RG, material, or Tier A claim is upgraded.
+
+---
+
 ## Wave 43: TeX Formula-Fragment Extraction Gate
 
 **What changed:**

@@ -49,3 +49,4 @@
 - Wave 38 localizes arXiv source archives only in a temporary cache; raw sources are not repo-archived and no TeX formulas are accepted yet.
 
 - Wave 43 preserves 19 TeX formula fragments in a manifest, but the rerun reports `source_archive_availability_gate == BLOCKED` and `source_formula_fragment_gate == WARN`; `accepted_estimator_policy_gate`, `uet_normalization_mapping_gate`, and `next_path_gate` remain `BLOCKED`; no exponent, RG, universality, material, or Tier A claim is upgraded.
+- Wave 44 records source archive policy and candidate repo paths, but `repo_archive_availability_gate == BLOCKED` and `temporary_cache_availability_gate == BLOCKED` (`0/3` archives available in each lane); fresh formula extraction is not repo-reproducible until archives are restored or archived.

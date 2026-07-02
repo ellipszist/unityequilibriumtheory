@@ -105,7 +105,11 @@ Wave 43 narrows the formula-source blocker. The project now has `structure_facto
 This does not close Tier A. The current controller moves to:
 
 ```text
-restore_or_archive_source_cache_then_map_extracted_formulas_to_uet_estimator_policy
+restore_or_archive_sources_then_map_estimator_policy
 ```
 
-Required next evidence: restored/repo-archived source cache, accepted estimator policy, UET normalization mapping, and finite-size admissibility before exponent or universality gates rerun.
+Required next evidence: reacquired or repo-archived source archives with expected hashes, accepted estimator policy, UET normalization mapping, and finite-size admissibility before exponent or universality gates rerun.
+
+## Wave 44 Update
+
+Wave 44 adds `structure_factor_source_archive_policy.json` and `0_11_structure_factor_source_archive_policy_gate.json`. The policy manifest records the three arXiv e-print URLs, expected hashes, and candidate repo archive paths. `formula_fragment_preservation_gate == PASS` and `source_archive_policy_manifest_gate == PASS`, but `repo_archive_availability_gate == BLOCKED` and `temporary_cache_availability_gate == BLOCKED` with `0/3` archives available. The next controller remains source reacquisition or repo archival before estimator-policy mapping.

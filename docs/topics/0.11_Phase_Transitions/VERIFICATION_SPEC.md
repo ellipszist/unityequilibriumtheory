@@ -1054,6 +1054,35 @@
   - Source archives and main TeX members are localized in a temporary cache, but formulas are not extracted or accepted.
   - The next useful work is exact TeX formula-fragment extraction or a repo archival policy decision, without accepting an estimator.
 
+## Wave 44 Source-Archive Policy Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Source_Archive_Policy_Gate.py`
+- Artifact target:
+  - `Result/artifacts/0_11_structure_factor_source_archive_policy_gate.json`
+- Source-archive policy manifest:
+  - `Data/03_Research/structure_factor_source_archive_policy.json`
+- Purpose:
+  - Record acquisition URLs, expected hashes, candidate repo archive paths, and claim boundary for the three structure-factor source archives.
+  - Keep formula-fragment preservation separate from raw source availability and estimator-policy acceptance.
+- Required gates:
+  - `wave43_chain_gate.status == PASS`
+  - `formula_fragment_preservation_gate.status == PASS`
+  - `source_archive_policy_manifest_gate.status == PASS`
+  - `repo_archive_availability_gate.status == PASS` before fresh formula extraction is repo-reproducible.
+  - `estimator_policy_gate.status == PASS` before exponent or universality gates may rerun.
+- Current Wave 44 result:
+  - overall status `WARN`
+  - `wave43_chain_gate == PASS`
+  - `formula_fragment_preservation_gate == PASS` with `19` preserved fragments
+  - `source_archive_policy_manifest_gate == PASS`
+  - `repo_archive_availability_gate == BLOCKED` with `0/3` repo archives present
+  - `temporary_cache_availability_gate == BLOCKED` with `0/3` temp archives present
+  - `estimator_policy_gate == BLOCKED`
+- Interpretation:
+  - The source policy is now machine-readable, but raw source availability is still missing.
+  - The next useful work is to reacquire or archive the three arXiv e-print archives and verify expected hashes before mapping the estimator policy.
+
 ## Wave 43 TeX Formula-Fragment Extraction Gate
 
 - Candidate command:

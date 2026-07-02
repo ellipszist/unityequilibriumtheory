@@ -1,5 +1,5 @@
 {
-  "allowed_claim_now": "0.11 has a passing internal selected-beta benchmark, diagnostic operator/mechanism lanes, and preserved source TeX formula fragments; the strongest open blocker is restoring source-cache reproducibility and mapping those fragments into an accepted UET estimator policy for conserved-order scaling.",
+  "allowed_claim_now": "0.11 has a passing internal selected-beta benchmark, diagnostic operator/mechanism lanes, preserved source TeX formula fragments, and a recorded source-archive policy; the strongest open blocker is raw source archive availability before estimator-policy mapping.",
   "audit_date": "2026-07-01",
   "audit_type": "closure_status_reconstruction",
   "blocked_claims": [
@@ -11,10 +11,10 @@
   "claim_class": "selected_internal_beta_benchmark_plus_diagnostic_mechanism_lanes",
   "completed_since_wave42": [
     "preserved extracted TeX formula fragments in structure_factor_tex_formula_fragments.json",
-    "created 0_11_structure_factor_tex_formula_fragment_gate.json",
-    "made temporary source-cache availability a machine-readable blocker"
+    "made temporary source-cache availability a machine-readable blocker",
+    "recorded source archive policy, expected hashes, and candidate repo paths in structure_factor_source_archive_policy.json"
   ],
-  "controlling_blocker": "restore_or_archive_source_cache_then_map_extracted_formulas_to_uet_estimator_policy",
+  "controlling_blocker": "source_archive_policy_recorded_repo_archives_missing",
   "current_readiness": "Draft",
   "current_tier": "B",
   "drift_notes": [
@@ -49,7 +49,7 @@
       "status": "BLOCKED"
     },
     "source_archive_policy_gate": {
-      "boundary": "temporary arXiv source cache is missing on current rerun; restore cache or define repo archival policy before fresh formula extraction can be reproduced",
+      "boundary": "source archive policy is recorded, but repo archive availability and temporary cache availability are both blocked at 0/3 archives",
       "evidence": "Result/artifacts/0_11_structure_factor_source_archive_localization_gate.json",
       "status": "BLOCKED"
     },
@@ -58,7 +58,7 @@
       "status": "BLOCKED"
     }
   },
-  "latest_wave": "Wave 43 TeX formula-fragment extraction gate (source cache missing on rerun)",
+  "latest_wave": "Wave 44 source-archive policy gate",
   "schema_version": "0.1",
   "source_of_truth_order": [
     "docs/topics/README.md",
@@ -69,7 +69,7 @@
   ],
   "status": "WARN",
   "tier_a_required_next_steps": [
-    "restore the temporary source cache or define a repo archival policy for the localized source archives",
+    "reacquire the three arXiv e-print source archives and verify expected hashes or store allowed archive records under the declared repo archive root",
     "accept or reject conserved-order estimator policy with source-backed formula boundaries",
     "map accepted estimator into UET normalized lattice units",
     "define finite-size admissibility for the L-series scaling window",
