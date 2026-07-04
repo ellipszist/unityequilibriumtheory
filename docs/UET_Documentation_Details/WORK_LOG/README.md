@@ -1,23 +1,12 @@
-# UET Work Log
+# UET Work Log Legacy Location
 
-This folder records daily operating checkpoints for work that spans major UET
-workspaces.
+The repo-wide work log now lives at [`WORK_LEDGER/`](../../../WORK_LEDGER/).
 
-Use one file per day, named like `2026-07-04.md`.
+Do not create a second daily log stream here. This folder remains only as a
+pointer for older documentation that mentioned `docs/UET_Documentation_Details/WORK_LOG/`.
 
-Each completed work section should add a short entry with:
+Use:
 
-- timestamp or section label
-- workspace or topic touched
-- files or artifact groups changed
-- verifier, audit, or review run, if any
-- what remains uncommitted, private, or unsafe to publish
-- next commit or push action
-
-This log does not replace topic-level `UPDATE_LOG.md` files. Topic logs describe
-research state changes. This folder tracks daily repository work so progress
-does not sit invisible in local branches.
-
-After 10 entries for unpushed work, stop expanding scope and make a checkpoint:
-inspect status, stage only intended files, commit the safe unit, and push or open
-a draft PR. If publishing is blocked, record the blocker here before continuing.
+- [`WORK_LEDGER/README.md`](../../../WORK_LEDGER/README.md) for the operating rule
+- [`WORK_LEDGER/AREAS.md`](../../../WORK_LEDGER/AREAS.md) for area classification
+- `WORK_LEDGER/YYYY/YYYY-MM-DD.md` for daily repo-wide ledger entries
