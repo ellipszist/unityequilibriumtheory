@@ -356,6 +356,49 @@ Suggested commit cadence:
 3. stage only the intended files
 4. commit before starting the next distinct chunk
 
+### Daily work log and push checkpoints
+
+Use a daily work log when work touches a major workspace such as `docs/`,
+`docs/topics/`, `uet_history/`, `thailand_proposals/`, `services_and_experiments/`,
+or another top-level project area.
+
+Write the log under `docs/UET_Documentation_Details/WORK_LOG/` using one file per
+day, such as `2026-07-04.md`. The log is not a replacement for topic
+`UPDATE_LOG.md`; it is the repo-level operating trace that shows what moved that
+day and what still needs a commit, push, or PR.
+
+Add one work-log entry after each completed section of work. A section can be a
+research pass, source cleanup, documentation repair, result artifact review,
+history migration, service experiment change, or any coherent batch that a future
+reviewer should be able to reconstruct without reading the whole diff first.
+
+Each entry should record:
+
+- timestamp or short section label
+- workspace or topic touched
+- files or artifact groups changed
+- verifier, audit, or review actually run, if any
+- what remains uncommitted, private, or unsafe to publish
+- next commit or push action
+
+Do not let work logs become another place for vague progress claims. Keep them
+short, factual, and tied to actual files or artifacts.
+
+Checkpoint rule:
+
+- if 10 work-log entries exist for the current unpushed work, stop expanding scope
+- inspect `git status` and stage only the intended files
+- commit the safe coherent unit
+- push the branch the same day whenever network and repository policy allow it
+- if the work is not ready for `main`, open or update a draft PR instead of
+  leaving the branch local-only
+- if files are unsafe to publish, commit a manifest or log note that names the
+  excluded class without publishing the raw/private content
+
+Do not start an eleventh work-log entry until the checkpoint decision is made.
+If a push is blocked, record the blocker and the exact next action in the daily
+work log before continuing.
+
 For multi-wave hardening, a good unit is:
 
 1. one blocker narrowed
