@@ -1,12 +1,11 @@
-﻿# UET Book Workspace
+# UET Book Workspace
 
 This folder contains public-facing book and long-form narrative scaffolds.
 
 Current public projects:
 
 - `00_uet_core_theory/` - core UET theory explanation scaffold
-- `origin_of_wealth_and_economics/` - public concept outline for the economics
-  and wealth-origin book track
+- `origin_of_wealth_and_economics/` - public outline and working blueprint for the economics`r`n  and wealth-origin book track
 
 Draft inputs and raw chapter sources remain local-only until reviewed.
 
