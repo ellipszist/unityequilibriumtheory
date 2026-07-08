@@ -1,4 +1,4 @@
-﻿# UET History Public Manifest
+# UET History Public Manifest
 
 **Updated:** 2026-07-08
 **Purpose:** Replace the old public `uet_history` tree with a curated structure
@@ -17,6 +17,7 @@ that reflects the current local workflow without publishing raw folders.
 | `uet_history/3_publish/books/README.md` | included | Book workspace orientation. |
 | `uet_history/3_publish/books/00_uet_core_theory/README.md` | included | Core UET theory book placeholder. |
 | `uet_history/3_publish/books/origin_of_wealth_and_economics/README.md` | included | Public concept outline for the economics and wealth-origin book track. |
+| `uet_history/3_publish/books/origin_of_wealth_and_economics/the_origin_of_wealth_book_blueprint.md` | included | Working public blueprint for review; not treated as a validated economics result. |
 
 ## Excluded From This Public Update
 
@@ -26,7 +27,7 @@ that reflects the current local workflow without publishing raw folders.
 | `uet_history/_archive/` | Local archive and recovery material; not a current public source tree. |
 | `uet_history/Dev_history/` | Contains raw development snapshots, ZIPs, videos, and large historical assets. |
 | nested `1_raw/` folders inside `3_publish/` | Draft input material; not yet reviewed as public-safe. |
-| full economics and wealth-origin book drafts | A public outline is included, but full local drafts still need encoding, claim-strength, source-boundary, and raw/draft review before promotion. |
+| remaining economics and wealth-origin book drafts | The public outline and blueprint are included, but remaining local drafts still need encoding, claim-strength, source-boundary, and raw/draft review before promotion. |
 | media/audio/video/PDF/ZIP files | Large or potentially private assets; should be handled by a separate asset plan. |
 
 ## Legacy Paths Retired From Main

@@ -32,8 +32,11 @@ The project is a UET-style economics narrative. It connects economic value to
 energy flow, knowledge accumulation, infrastructure, institutional trust, and
 the ability of a society to reduce waste while increasing useful coordination.
 
-It is not presented here as a finished theory of economics. The public version
-is a map of the argument and a place to develop reviewed sections later.
+It is not presented here as a finished theory of economics. The public version is a map of the argument and a place to develop reviewed sections later. The current public blueprint is available in [the_origin_of_wealth_book_blueprint.md](./the_origin_of_wealth_book_blueprint.md).
+
+## Public Files
+
+- [the_origin_of_wealth_book_blueprint.md](./the_origin_of_wealth_book_blueprint.md) - working book blueprint copied from the local book track for public review. Treat it as a draft planning artifact, not a finished or externally validated economics text.
 
 ## Draft Book Structure
 
