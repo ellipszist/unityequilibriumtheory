@@ -1,18 +1,21 @@
-# UET Book Workspace
+﻿# UET Book Workspace
 
 This folder contains public-facing book and long-form narrative scaffolds.
 
 Current public projects:
 
 - `00_uet_core_theory/` - core UET theory explanation scaffold
+- `origin_of_wealth_and_economics/` - public concept outline for the economics
+  and wealth-origin book track
 
 Draft inputs and raw chapter sources remain local-only until reviewed.
 
-## Not Yet Published Here
+## Publication Boundary
 
-Economics and wealth-origin writing exists locally as draft material, but it is
-not exposed in the public tree yet because the current files still need review
-for encoding, claim strength, source boundary, and raw/draft separation.
+The economics and wealth-origin track now has a small public outline so readers
+can understand what the project is about. The full local drafts are still not
+published here because they need review for encoding, claim strength, source
+boundary, and raw/draft separation.
 
-When that material is ready, promote a small reviewed outline or chapter draft in
-a separate scoped PR instead of creating an empty placeholder folder.
+Future additions should promote reviewed chapter sections in small scoped PRs
+instead of dumping raw notes or unreviewed draft folders into the public tree.
