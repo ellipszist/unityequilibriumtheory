@@ -58,6 +58,8 @@ def write_policy_manifest(localization: dict[str, Any], fragments: dict[str, Any
     source_archives = []
     for row in localization.get("source_archives", []):
         source_id = row["source_id"]
+        repo_archive_candidate_path = EXTERNAL_DIR / source_id / Path(str(row.get("local_cache_path"))).name
+        repo_archive_exists = repo_archive_candidate_path.exists()
         source_archives.append(
             {
                 "source_id": source_id,
@@ -67,22 +69,31 @@ def write_policy_manifest(localization: dict[str, Any], fragments: dict[str, Any
                 "expected_bytes": row.get("expected_bytes"),
                 "expected_tex_members": row.get("expected_tex_members", []),
                 "temporary_cache_path": row.get("local_cache_path"),
-                "repo_archive_candidate_path": relpath(EXTERNAL_DIR / source_id / Path(str(row.get("local_cache_path"))).name),
-                "repo_archival_status": "not_committed",
-                "reacquisition_required": True,
+                "repo_archive_candidate_path": relpath(repo_archive_candidate_path),
+                "repo_archival_status": "repo_archive_present" if repo_archive_exists else "not_committed",
+                "reacquisition_required": not repo_archive_exists,
                 "policy_role": "formula_refresh_source_only",
             }
         )
 
+    restored_count = sum(1 for row in source_archives if not row["reacquisition_required"])
     manifest = {
         "schema_version": "1.0",
         "manifest_id": "0_11_structure_factor_source_archive_policy",
         "topic": "0.11_Phase_Transitions",
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "policy_decision": {
-            "decision": "formula_fragments_preserved_raw_archives_not_repo_archived",
+            "decision": (
+                "repo_archives_restored_estimator_policy_open"
+                if restored_count == len(source_archives)
+                else "formula_fragments_preserved_raw_archives_not_repo_archived"
+            ),
             "repo_archive_root_candidate": relpath(EXTERNAL_DIR),
-            "raw_archive_policy": "do_not_claim_reproducible_fresh_formula_extraction_until_raw_archives_are_restored_or_repo_archived",
+            "raw_archive_policy": (
+                "repo_archives_available_for_fresh_formula_extraction_estimator_policy_still_blocked"
+                if restored_count == len(source_archives)
+                else "do_not_claim_reproducible_fresh_formula_extraction_until_raw_archives_are_restored_or_repo_archived"
+            ),
             "formula_fragment_manifest": relpath(FORMULA_FRAGMENT_MANIFEST_PATH),
             "formula_fragment_manifest_sha256": hash_file(FORMULA_FRAGMENT_MANIFEST_PATH)
             if FORMULA_FRAGMENT_MANIFEST_PATH.exists()

@@ -43,7 +43,7 @@ from hashlib import sha256
 current_path = Path(__file__).resolve()
 project_root = None
 for parent in [current_path] + list(current_path.parents):
-    if (parent / "docs").exists():
+    if (parent / "docs").exists() and (parent / "docs" / "core").exists():
         project_root = parent
         break
 

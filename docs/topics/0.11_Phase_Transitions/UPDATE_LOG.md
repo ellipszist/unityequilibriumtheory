@@ -984,6 +984,268 @@
 
 ---
 
+
+
+
+## Wave 55: CH Finite-K Next-Path Decision Gate
+
+**What changed:**
+- Added `Research_Structure_Factor_CH_Finite_K_Next_Path_Decision_Gate.py` to choose between replicate/temporal acquisition and replacement-observable review.
+- Added `Data/03_Research/structure_factor_ch_finite_k_next_path_decision.json` and `Result/artifacts/0_11_structure_factor_ch_finite_k_next_path_decision_gate.json`.
+- Updated topic docs, closure status, and topic index to expose the selected path without accepting an estimator or upgrading claims.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs\topics\0.11_Phase_Transitions\Code\03_Research\Research_Structure_Factor_CH_Finite_K_Next_Path_Decision_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `ch_finite_k_replicate_temporal_averaging_or_replacement_observable_open` to `ch_finite_k_replicate_temporal_acquisition_plan_defined_execution_open`.
+- `wave54_chain_gate`, `replicate_temporal_acquisition_plan_gate`, and `selected_next_path_gate` pass.
+- `replacement_observable_available_gate`, `estimator_acceptance_gate`, `exponent_rerun_gate`, and `next_path_gate` remain `BLOCKED`.
+
+**Next controlling blocker:**
+- Execute the replicate/temporal acquisition plan: add at least two accepted L24 rows and two accepted L28 rows, store a temporal or multi-snapshot ensemble rule, and propagate row/grid/fit uncertainty; alternatively accept a source-backed replacement observable.
+
+**Current topic-level status after wave:**
+- 0.11 remains `Draft / Tier B`. Wave 55 selects the next path only and accepts no estimator, exponent, universality, RG, material, or Tier A claim.
+
+---
+
+## Wave 54: CH Finite-K Source Averaging/Uncertainty Policy Gate
+
+**What changed:**
+- Added `Research_Structure_Factor_CH_Finite_K_Source_Averaging_Uncertainty_Gate.py` to separate diagnostic seed aggregation from claim-bearing source averaging and uncertainty policy.
+- Added `Data/03_Research/structure_factor_ch_finite_k_source_averaging_uncertainty_policy.json` and `Result/artifacts/0_11_structure_factor_ch_finite_k_source_averaging_uncertainty_gate.json`.
+- Updated topic docs and topic index to move the controller from broad source averaging/uncertainty wording to replicate/temporal averaging data or replacement observable policy.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs\topics\0.11_Phase_Transitions\Code\03_Research\Research_Structure_Factor_CH_Finite_K_Source_Averaging_Uncertainty_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `ch_finite_k_source_averaging_and_uncertainty_policy_open` to `ch_finite_k_replicate_temporal_averaging_or_replacement_observable_open`.
+- `wave53_chain_gate` and `diagnostic_seed_aggregation_gate` pass.
+- `claim_bearing_replicate_gate`, `source_time_averaging_gate`, `uncertainty_interval_policy_gate`, `source_equivalent_estimator_gate`, and `exponent_rerun_gate` remain `BLOCKED`.
+
+**Next controlling blocker:**
+- Add replicate/temporal averaging evidence with uncertainty propagation, or choose an explicit replacement observable policy before estimator acceptance.
+
+**Current topic-level status after wave:**
+- 0.11 remains `Draft / Tier B`. Wave 54 accepts diagnostic seed aggregation only and accepts no source-equivalent estimator, exponent, universality, RG, material, or Tier A claim.
+
+---
+
+## Wave 53: CH Finite-K Shape-Only Normalization Policy Gate
+
+**What changed:**
+- Added `Research_Structure_Factor_CH_Finite_K_Shape_Only_Normalization_Policy_Gate.py` to separate amplitude-invariant `q_peak` diagnostics from source-amplitude and susceptibility claims.
+- Added `Data/03_Research/structure_factor_ch_finite_k_shape_only_normalization_policy.json` and `Result/artifacts/0_11_structure_factor_ch_finite_k_shape_only_normalization_policy_gate.json`.
+- Updated topic docs and topic index to move the controller from broad amplitude/averaging normalization to source averaging/uncertainty policy before estimator replacement.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs\topics\0.11_Phase_Transitions\Code\03_Research\Research_Structure_Factor_CH_Finite_K_Shape_Only_Normalization_Policy_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `ch_finite_k_field_amplitude_and_averaging_normalization_open` to `ch_finite_k_source_averaging_and_uncertainty_policy_open`.
+- `wave52_chain_gate`, `q_peak_amplitude_invariance_gate`, `diagnostic_seed_aggregation_gate`, and `shape_only_diagnostic_lane_gate` pass.
+- `source_amplitude_normalization_gate`, `source_averaging_convention_gate`, `source_equivalent_estimator_gate`, and `exponent_rerun_gate` remain `BLOCKED`.
+
+**Next controlling blocker:**
+- Define source averaging/uncertainty policy for claim-bearing `S(q,t)` rows, or choose an explicit replacement observable policy before accepting the estimator.
+
+**Current topic-level status after wave:**
+- 0.11 remains `Draft / Tier B`. Wave 53 accepts shape-only `q_peak` diagnostics only and accepts no source-equivalent estimator, exponent, universality, RG, material, or Tier A claim.
+
+---
+
+## Wave 52: CH Finite-K Field-Normalization Decision Gate
+
+**What changed:**
+- Added `Research_Structure_Factor_CH_Finite_K_Field_Normalization_Decision_Gate.py` to audit centered-UET-`C` against source Cahn-Hilliard `S(q,t)` field symbols.
+- Added `Data/03_Research/structure_factor_ch_finite_k_field_normalization_decision.json` and `Result/artifacts/0_11_structure_factor_ch_finite_k_field_normalization_decision_gate.json`.
+- Updated topic docs and topic index to move the controller from broad source-equivalent field normalization to amplitude/variance normalization plus ensemble/time-averaging convention.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs\topics\0.11_Phase_Transitions\Code\03_Research\Research_Structure_Factor_CH_Finite_K_Field_Normalization_Decision_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `ch_finite_k_field_normalization_open_measurement_coefficient_policy_separated` to `ch_finite_k_field_amplitude_and_averaging_normalization_open`.
+- `wave51_chain_gate`, `source_field_symbol_gate`, `uet_centered_field_proxy_gate`, and `diagnostic_measurement_lane_gate` pass.
+- `amplitude_normalization_gate`, `averaging_convention_gate`, `source_equivalent_field_acceptance_gate`, `accepted_estimator_replacement_gate`, and `exponent_rerun_gate` remain `BLOCKED`.
+
+**Next controlling blocker:**
+- Define and source-back amplitude/variance normalization plus ensemble/time-averaging convention for centered `C`, or choose a replacement observable policy before accepting the estimator.
+
+**Current topic-level status after wave:**
+- 0.11 remains `Draft / Tier B`. Wave 52 accepts centered `C` only as a diagnostic proxy and accepts no estimator, exponent, universality, RG, material, or Tier A claim.
+
+---
+
+## Wave 51: CH Finite-K Field/Coefficient Policy Gate
+
+**What changed:**
+- Added `Research_Structure_Factor_CH_Finite_K_Field_Coefficient_Policy_Gate.py` to separate the measurement-only finite-k lane from source-dynamics/material claim lanes.
+- Added `Data/03_Research/structure_factor_ch_finite_k_field_coefficient_policy.json` and `Result/artifacts/0_11_structure_factor_ch_finite_k_field_coefficient_policy_gate.json`.
+- Updated topic docs and topic index to move the controller from mixed field/coefficient wording to source-equivalent field normalization before estimator replacement.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs\topics\0.11_Phase_Transitions\Code\03_Research\Research_Structure_Factor_CH_Finite_K_Field_Coefficient_Policy_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `ch_finite_k_extended_grid_coverage_repaired_normalization_and_coefficients_open` to `ch_finite_k_field_normalization_open_measurement_coefficient_policy_separated`.
+- `wave50_chain_gate`, `measurement_field_centering_gate`, `measurement_only_coefficient_exclusion_gate`, and `diagnostic_measurement_lane_gate` pass.
+- `source_equivalent_field_normalization_gate`, `accepted_estimator_replacement_gate`, and `exponent_rerun_gate` remain `BLOCKED`.
+
+**Next controlling blocker:**
+- Derive, source-back, or replace the centered-`C` field normalization before accepting the CH finite-k estimator or rerunning exponent gates.
+
+**Current topic-level status after wave:**
+- 0.11 remains `Draft / Tier B`. Wave 51 narrows claim boundaries only and accepts no estimator, exponent, universality, RG, material, or Tier A claim.
+
+---
+
+## Wave 50: CH Finite-K Extended-Grid Coverage Probe
+
+**What changed:**
+- Added `Research_Structure_Factor_CH_Finite_K_Extended_Grid_Coverage_Probe.py` to test whether larger grids can repair the Wave 49 accepted-row coverage blocker under the unchanged strict policy.
+- Added `Result/artifacts/0_11_structure_factor_ch_finite_k_extended_grid_coverage_probe.json` and `Result/gl_structure_factor_ch_finite_k_extended_grid_coverage_probe_stats.csv`.
+- Updated topic docs and topic index to move the controller from row coverage to field-normalization/source-coefficient policy.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs\topics\0.11_Phase_Transitions\Code\03_Research\Research_Structure_Factor_CH_Finite_K_Extended_Grid_Coverage_Probe.py`
+
+**Which blocker narrowed:**
+- Narrowed `ch_finite_k_acceptance_policy_defined_finite_size_coverage_and_normalization_open` to `ch_finite_k_extended_grid_coverage_repaired_normalization_and_coefficients_open`.
+- `wave49_chain_gate`, `extended_grid_probe_gate`, `policy_application_gate`, and `accepted_multi_grid_coverage_gate` pass.
+- Accepted grid counts are `L20:6`, `L24:2`, and `L28:2`.
+- `field_normalization_policy_gate == WARN`; `source_dynamics_coefficient_mapping_gate`, `estimator_acceptance_gate`, and `exponent_rerun_gate` remain `BLOCKED`.
+
+**Next controlling blocker:**
+- Resolve centered-C field normalization and source CH dynamics coefficient mapping before estimator acceptance or finite-size/exponent rerun.
+
+**Current topic-level status after wave:**
+- 0.11 remains `Draft / Tier B`. Wave 50 repairs row coverage only as a probe and accepts no estimator, exponent, universality, RG, material, or Tier A claim.
+
+---
+
+## Wave 49: CH Finite-K Acceptance Policy
+
+**What changed:**
+- Added `Research_Structure_Factor_CH_Finite_K_Acceptance_Policy_Gate.py` to define row-level acceptance for the Wave 48 finite-k candidate before any exponent rerun.
+- Added `Data/03_Research/structure_factor_ch_finite_k_acceptance_policy.json` and `Result/artifacts/0_11_structure_factor_ch_finite_k_acceptance_policy_gate.json`.
+- Updated topic docs and topic index to move the controller from open acceptance policy to accepted multi-grid row coverage plus field/coefficient normalization.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs\topics\0.11_Phase_Transitions\Code\03_Research\Research_Structure_Factor_CH_Finite_K_Acceptance_Policy_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `ch_finite_k_candidate_implemented_acceptance_policy_open` to `ch_finite_k_acceptance_policy_defined_finite_size_coverage_and_normalization_open`.
+- `wave48_chain_gate`, `acceptance_policy_manifest_gate`, `coefficient_exclusion_policy_gate`, and `low_window_edge_policy_gate` pass.
+- `field_normalization_policy_gate == WARN`; `accepted_row_coverage_gate`, `source_dynamics_coefficient_mapping_gate`, `estimator_acceptance_gate`, and `exponent_rerun_gate` remain `BLOCKED`.
+- Strict policy accepts `6/18` rows, all at `L20`; accepted grid count is `1`, below the required `3`.
+
+**Next controlling blocker:**
+- Repair accepted multi-grid row coverage and settle field-normalization/source-coefficient policy before any finite-size/exponent rerun.
+
+**Current topic-level status after wave:**
+- 0.11 remains `Draft / Tier B`. Wave 49 defines policy but accepts no estimator, exponent, universality, RG, material, or Tier A claim.
+
+---
+
+## Wave 48: CH Finite-K Estimator Candidate
+
+**What changed:**
+- Added `Research_Structure_Factor_CH_Finite_K_Estimator_Candidate.py` to implement a source-linked finite-k peak estimator candidate from the Wave 47 q-grid preflight.
+- Added `Result/artifacts/0_11_structure_factor_ch_finite_k_estimator_candidate_gate.json` and `Result/gl_structure_factor_ch_finite_k_estimator_candidate_stats.csv`.
+- Updated topic docs and topic index to move the controller from missing implementation to estimator acceptance policy.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs\topics\0.11_Phase_Transitions\Code\03_Research\Research_Structure_Factor_CH_Finite_K_Estimator_Candidate.py`
+
+**Which blocker narrowed:**
+- Narrowed `implement_source_backed_ch_finite_k_estimator_candidate` to `ch_finite_k_candidate_implemented_acceptance_policy_open`.
+- `wave47_chain_gate`, `source_formula_linkage_gate`, `implementation_coverage_gate`, `q_window_diagnostic_gate`, `domain_scale_guard_gate`, and `finite_size_trend_gate` pass.
+- `coefficient_policy_gate` and `estimator_acceptance_gate` remain `BLOCKED`.
+- Diagnostic metrics: median `xi/L = 0.5`, pass fraction `12/18`, and low-window-edge peak count `11/18`.
+
+**Next controlling blocker:**
+- Define and pass estimator acceptance policy: field-normalization status, source coefficient inclusion/exclusion, q-window/low-edge acceptance thresholds, and a finite-size/exponent rerun using accepted candidate rows only.
+
+**Current topic-level status after wave:**
+- 0.11 remains `Draft / Tier B`. Wave 48 implements a candidate but accepts no estimator, exponent, universality, RG, material, or Tier A claim.
+
+---
+
+## Wave 47: CH Finite-K Normalization Preflight
+
+**What changed:**
+- Added `Research_Structure_Factor_CH_Finite_K_Normalization_Preflight.py` to split the Wave 46 normalization blocker into field, q-grid, coefficient, xi-extraction, finite-size admissibility, and implementation gates.
+- Added `Data/03_Research/structure_factor_ch_finite_k_normalization_preflight.json` and `Result/artifacts/0_11_structure_factor_ch_finite_k_normalization_preflight_gate.json`.
+- Updated topic docs and topic index to keep the Cahn-Hilliard finite-k lane candidate-only.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs\topics\0.11_Phase_Transitions\Code\03_Research\Research_Structure_Factor_CH_Finite_K_Normalization_Preflight.py`
+
+**Which blocker narrowed:**
+- Narrowed `derive_uet_lattice_normalization_for_ch_finite_k_structure_factor` to `ch_finite_k_normalization_preflight_written_estimator_implementation_open`.
+- `wave46_chain_gate == PASS`, `ch_candidate_chain_gate == PASS`, `preflight_manifest_gate == PASS`, and `fourier_convention_gate == PASS`.
+- `field_normalization_gate == WARN`; centered UET `C` remains a proxy for source concentration fluctuation.
+- `coefficient_mapping_gate`, `xi_extraction_rule_gate`, `finite_size_admissibility_gate`, `implementation_acceptance_gate`, and `estimator_acceptance_preflight_gate` remain `BLOCKED`.
+
+**Next controlling blocker:**
+- Implement a source-backed CH finite-k estimator candidate using the declared q-grid, explicit q-window exclusion diagnostics, and a coefficient inclusion/exclusion policy before any finite-size/exponent rerun.
+
+**Current topic-level status after wave:**
+- 0.11 remains `Draft / Tier B`. Wave 47 accepts no estimator, exponent, universality, RG, material, or Tier A claim.
+
+---
+
+## Wave 46: Estimator Policy Normalization Map
+
+**What changed:**
+- Added `Research_Structure_Factor_Estimator_Normalization_Map_Gate.py` to map restored Wave 45 source formula fragments into policy lanes.
+- Added `Data/03_Research/structure_factor_estimator_normalization_map.json` and `Result/artifacts/0_11_structure_factor_estimator_normalization_map_gate.json`.
+- Updated topic docs and the topic index to move the controller from broad estimator-policy mapping to Cahn-Hilliard finite-k normalization and finite-size admissibility.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs\topics\0.11_Phase_Transitions\Code\03_Research\Research_Structure_Factor_Estimator_Normalization_Map_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `map_restored_source_formulas_to_estimator_policy` to `source_formulas_mapped_normalization_and_admissibility_open`.
+- `wave43_chain_gate == PASS`, `wave44_archive_gate == PASS`, `fragment_coverage_gate == PASS`, and `policy_mapping_manifest_gate == PASS`.
+- `finite_k_policy_candidate_gate == WARN`: the Cahn-Hilliard finite-k structure-factor lane is the strongest candidate family, not an accepted estimator.
+- `uet_normalization_mapping_gate`, `finite_size_admissibility_gate`, and `estimator_policy_acceptance_gate` remain `BLOCKED`.
+
+**Next controlling blocker:**
+- Derive UET lattice normalization for the Cahn-Hilliard finite-k structure-factor lane, define q-window/domain-scale admissibility, implement an accepted estimator, and only then rerun finite-size/exponent gates.
+
+**Current topic-level status after wave:**
+- 0.11 remains `Draft / Tier B`. Wave 46 improves closure planning but upgrades no estimator, exponent, universality, RG, material, or Tier A claim.
+
+---
+
+## Wave 45: Repo Source Archive Restoration
+
+**What changed:**
+- Reacquired the three arXiv e-print source archives and stored them under the Wave 44 candidate repo archive paths.
+- Updated `Research_Structure_Factor_Tex_Formula_Fragment_Gate.py` so Wave 43 can use repo archives as a fallback when the temporary cache is absent.
+- Reran Wave 43 and Wave 44 gates: repo archive availability and fresh formula extraction now pass from repo-local sources.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Tex_Formula_Fragment_Gate.py`
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Source_Archive_Policy_Gate.py`
+
+**Which blocker narrowed:**
+- Narrowed `source_archive_policy_recorded_repo_archives_missing` to estimator-policy/UET-normalization mapping.
+- `source_archive_availability_gate == PASS`, `source_formula_fragment_gate == PASS`, and `repo_archive_availability_gate == PASS`.
+- `accepted_estimator_policy_gate`, `uet_normalization_mapping_gate`, and `estimator_policy_gate` remain `BLOCKED`.
+
+**Next controlling blocker:**
+- Map the restored source formulas into an accepted finite-k or conserved-susceptibility estimator policy with UET lattice normalization and finite-size admissibility.
+
+**Current topic-level status after wave:**
+- 0.11 remains `Draft / Tier B`. Source provenance and fresh formula extraction are stronger, but no estimator, exponent, universality, RG, material, or Tier A claim is upgraded.
+
+---
+
 ## Wave 44: Source-Archive Policy Gate
 
 **What changed:**

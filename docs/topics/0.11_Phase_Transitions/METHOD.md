@@ -40,6 +40,18 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 - `Code/03_Research/Research_Structure_Factor_Estimator_Reconciliation_Gate.py`
 - `Code/03_Research/Research_Structure_Factor_Calibration_Source_Support_Gate.py`
 - `Code/03_Research/Research_Structure_Factor_Source_Manifest_Gate.py`
+- `Code/03_Research/Research_Structure_Factor_Tex_Formula_Fragment_Gate.py`
+- `Code/03_Research/Research_Structure_Factor_Source_Archive_Policy_Gate.py`
+- `Code/03_Research/Research_Structure_Factor_Estimator_Normalization_Map_Gate.py`
+- `Code/03_Research/Research_Structure_Factor_CH_Finite_K_Normalization_Preflight.py`
+- `Code/03_Research/Research_Structure_Factor_CH_Finite_K_Estimator_Candidate.py`
+- `Code/03_Research/Research_Structure_Factor_CH_Finite_K_Acceptance_Policy_Gate.py`
+- `Code/03_Research/Research_Structure_Factor_CH_Finite_K_Extended_Grid_Coverage_Probe.py`
+- `Code/03_Research/Research_Structure_Factor_CH_Finite_K_Field_Coefficient_Policy_Gate.py`
+- `Code/03_Research/Research_Structure_Factor_CH_Finite_K_Field_Normalization_Decision_Gate.py`
+- `Code/03_Research/Research_Structure_Factor_CH_Finite_K_Shape_Only_Normalization_Policy_Gate.py`
+- `Code/03_Research/Research_Structure_Factor_CH_Finite_K_Source_Averaging_Uncertainty_Gate.py`
+- `Code/03_Research/Research_Structure_Factor_CH_Finite_K_Next_Path_Decision_Gate.py`
 - `Code/03_Research/test_05_phase_demixing.py`
 - `Code/03_Research/test_phase_transitions.py`
 
@@ -99,6 +111,13 @@ This topic studies whether UET-style transition rules can reproduce selected cri
 - The Wave 36 formula-boundary verifier extracts abstract-level fixed-magnetization/canonical and Cahn-Hilliard structure-factor boundaries, then blocks estimator replacement until full-text formulas and UET normalization mapping are accepted.
 - The Wave 37 readiness verifier records source-access state and blocks formula extraction until local TeX/PDF math sources are localized; rendered text remains boundary evidence only.
 - The Wave 38 localization verifier checks temporary arXiv source archives, hashes, and main TeX members, then blocks estimator replacement until exact TeX formula fragments are extracted and mapped.
+- The Wave 49 CH finite-k acceptance-policy verifier defines strict row acceptance for the Wave 48 candidate. It accepts only `6/18` rows and only `L20`, so it narrows the blocker to accepted multi-grid coverage plus field/coefficient normalization before exponent reruns.
+- The Wave 50 extended-grid coverage probe adds `L24/L28` rows under the unchanged Wave 49 policy and passes accepted multi-grid coverage (`L20:6`, `L24:2`, `L28:2`), but field normalization and source coefficient mapping still block estimator acceptance.
+- The Wave 51 field/coefficient policy gate separates the diagnostic measurement lane from source-dynamics claims: finite-k `q_peak` measurement may exclude source dynamics coefficients, while source-equivalent centered-`C` normalization still blocks estimator replacement and exponent reruns.
+- The Wave 52 field-normalization decision gate audits the source fragments and Wave 47 preflight. It accepts centered `C` only as a diagnostic proxy and narrows the next controller to amplitude/variance normalization plus ensemble/time-averaging convention.
+- The Wave 53 shape-only normalization policy gate records that positive amplitude scaling does not move `q_peak`, so `xi_peak = 2*pi/q_peak` may remain diagnostic. It keeps source amplitude/susceptibility and source averaging blocked before estimator replacement.
+- The Wave 54 source averaging/uncertainty policy gate preserves diagnostic seed aggregation but blocks claim-bearing uncertainty because accepted L24/L28 coverage has only two rows each, rows are final snapshots, and no uncertainty interval or fit propagation policy is accepted.
+- The Wave 55 next-path decision gate compares the still-unaccepted replacement-observable policies with the Wave 54 row and uncertainty shortfalls. It selects replicate/temporal acquisition: add at least two accepted L24 rows and two accepted L28 rows, plus temporal or ensemble averaging and uncertainty propagation, before estimator acceptance or exponent rerun.
 - Cahn-Hilliard simulations should be treated as normalized mechanism diagnostics until seed, grid, morphology, and material-unit gates are added.
 
 ## Dependency policy
