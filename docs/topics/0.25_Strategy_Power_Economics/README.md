@@ -101,3 +101,15 @@ python docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_Econo
 ---
 
 [Previous: Artificial Intelligence](../0.24_Artificial_Intelligence/README.md) | [Back to Topics](../README.md)
+
+## Book 1 Historical Diagnostic Lane
+
+A separate U.S. historical lane now operationalizes the Book 1 `R = N + K + I`
+and `R / M` ideas as source-gated diagnostic proxies. It is deliberately separate
+from the existing Yahoo-style market diagnostics: no local market CSV, economy
+working copy, or power-engine simulation is used as primary evidence here.
+
+The lane is controlled by `Result/artifacts/0_25_uet_economics_verification.json`.
+It remains Claim Class C and `DESCRIPTIVE_DIAGNOSTIC_ONLY` until the source manifest
+contains the exact BEA fixed-assets export, EIA annual primary-energy export, and
+versioned EPI productivity-pay export required to form the 1959-2024 panel.

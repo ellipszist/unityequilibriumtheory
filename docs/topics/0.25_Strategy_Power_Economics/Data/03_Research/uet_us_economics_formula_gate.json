@@ -1,0 +1,59 @@
+{
+  "claim_boundary": "Formula entries are diagnostic operationalizations of Book 1 hypotheses; none is a derived economic law.",
+  "formulae": [
+    {
+      "constant_origin": "heuristic_bridge",
+      "conversion_steps": [
+        "source units to annual observations",
+        "per-capita/per-employee normalization",
+        "1959=100 rebasing",
+        "log changes",
+        "training-window standardization for N"
+      ],
+      "failure_mode": "A fitted proxy composite could be mistaken for a dimensional identity or causal mechanism.",
+      "formula_id": "EC25-UET-RESOURCE-ENGINE",
+      "next_hardening_step": "Source-lock every proxy and test predeclared out-of-sample diagnostics without claim promotion.",
+      "proof_status": "heuristic bridge",
+      "relation": "R = N + K + I (Book 1 conceptual expression); operational diagnostic uses delta ln(R[t+3]) = alpha + beta_N*N_t + beta_K*delta ln(K_t) + beta_I*delta ln(I_t) + epsilon_t.",
+      "unit_closure_status": "Proxy",
+      "variables": {
+        "I": "infrastructure proxy indexed per employee",
+        "K": "knowledge proxy indexed per employee",
+        "N": "dimensionless constraint proxy",
+        "R": "dimensionless resource-capacity index"
+      },
+      "verification_role": "diagnostic-only temporal association"
+    },
+    {
+      "constant_origin": "topic_derived_relation",
+      "failure_mode": "Endogeneity and omitted supply/demand factors make causal interpretation invalid.",
+      "formula_id": "EC25-UET-MONETARY-RESOURCE-MISMATCH",
+      "next_hardening_step": "Report baseline comparison and uncertainty; retain the non-causal claim boundary.",
+      "proof_status": "heuristic bridge",
+      "relation": "D_t = delta ln(M2_t) - delta ln(R_t)",
+      "unit_closure_status": "Closed after log transformation",
+      "variables": {
+        "D": "dimensionless mismatch",
+        "M2": "money stock",
+        "R": "resource-capacity proxy"
+      },
+      "verification_role": "inflation diagnostic comparator"
+    },
+    {
+      "constant_origin": "source_locked_benchmark_input when the source export is present",
+      "failure_mode": "BLS and EPI series have different universes and deflators; they must not be silently interchanged.",
+      "formula_id": "EC25-UET-WAGE-PRODUCTIVITY-GAP",
+      "next_hardening_step": "Archive a versioned EPI export and report both constructions separately.",
+      "proof_status": "diagnostic",
+      "relation": "gap_t = ln(productivity_t) - ln(compensation_t)",
+      "unit_closure_status": "Closed after log transformation",
+      "variables": {
+        "compensation": "source-specific real compensation measure",
+        "productivity": "source-specific output-per-hour or EPI net-productivity measure"
+      },
+      "verification_role": "construction-specific replication and comparator"
+    }
+  ],
+  "schema_version": "1.0",
+  "topic": "0.25_Strategy_Power_Economics"
+}

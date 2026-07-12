@@ -22,3 +22,16 @@
   policy prescription.
 - Strong paper-facing claims require exact input source, formula ID, artifact
   status, uncertainty, and a clear limitation statement.
+
+## Book 1 historical lane limitations
+
+- The 1959-2024 U.S. macro panel is not generated until BEA fixed-assets, EIA
+  annual primary-energy, and versioned EPI chart-data exports are source-locked.
+- `R=N+K+I` is a heuristic bridge expressed through dimensionless proxies, not a
+  derived economic identity.
+- The 1971-1973 years are excluded only from descriptive pre/post summaries; this
+  does not create a causal estimate of fiat currency or the Nixon Shock.
+- Gold and S&P 500 total-return tests remain blocked without exact LBMA and licensed
+  S&P inputs; local Yahoo price series may not fill that gap.
+- Energy-consumption history cannot establish a literal energy-density mechanism
+  without a source-locked heat-content basis and unit-conversion audit.

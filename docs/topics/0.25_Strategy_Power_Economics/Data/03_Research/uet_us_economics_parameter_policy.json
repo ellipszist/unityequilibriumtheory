@@ -1,0 +1,51 @@
+{
+  "candidate_signal_threshold": {
+    "bootstrap_interval_requirement": "95 percent interval for squared-error difference lies below zero",
+    "claim_impact": "none; Claim Class C remains controlling",
+    "median_rmse_improvement_vs_each_primary_baseline": 0.1
+  },
+  "horizons": {
+    "primary": 3,
+    "sensitivity": [
+      1,
+      5
+    ]
+  },
+  "infrastructure_proxy": {
+    "aggregation": "equal-weight geometric mean",
+    "components": [
+      "real_private_tangible_nonresidential_fixed_assets_per_employee",
+      "real_government_fixed_assets_per_employee"
+    ]
+  },
+  "knowledge_proxy": {
+    "primary": "real_intellectual_property_investment_per_employee",
+    "robustness": "utility_patents_per_capita"
+  },
+  "necessity_proxy": {
+    "aggregation": "equal-weight standardized mean",
+    "components": [
+      "annual_cpi_energy_inflation",
+      "annual_unemployment_rate"
+    ],
+    "standardization": "fit on each training window only"
+  },
+  "policy": "Predeclared before the first model run; do not tune against holdout results.",
+  "resource_index": {
+    "aggregation": "equal-weight geometric mean",
+    "base_year": 1959,
+    "components": [
+      "real_gdp_per_capita",
+      "nonfarm_business_output_per_hour",
+      "primary_energy_per_capita"
+    ]
+  },
+  "sample": {
+    "country": "United States",
+    "end_year": 2024,
+    "frequency": "annual",
+    "start_year": 1959
+  },
+  "schema_version": "1.0",
+  "topic": "0.25_Strategy_Power_Economics"
+}

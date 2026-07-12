@@ -52,3 +52,23 @@ about strategic superiority, social stabilization, or economic policy outcomes.
 - Bitcoin market metadata: `5/6` fields complete; missing `retrieval_date`
 - Global economy baseline: `4/6` fields complete; missing upstream `URL/DOI` and `retrieval_date`
 - Daily snapshot feed: `5/6` fields complete; missing `upstream_url_or_api`
+
+## Book 1 U.S. historical source package
+
+`Data/03_Research/uet_us_economics_source_manifest.json` is the canonical source
+lock for the Book 1 lane. It records provider URL, terms, retrieval vintage, raw
+path, hash, source unit, preprocessing, and benchmark role. Public FRED CSVs are
+archived under `docs/data/external/economics/us_historical/fred/2026-07-12/`.
+
+The primary 1959-2024 panel is blocked until these exact annual exports are stored
+under the corresponding source-vintage folders:
+
+| Source | Required export | Role | Status |
+| :-- | :-- | :-- | :-- |
+| BEA Fixed Assets | `bea_fixed_assets_annual.csv` | `K` and `I` proxies | missing |
+| EIA Table 1.3 | `eia_primary_energy_annual.csv` | `R` energy component | missing |
+| EPI productivity-pay chart data | `epi_productivity_pay.csv` | 1979-2021 construction replication | missing |
+
+LBMA gold and a user-licensed S&P 500 total-return export are separate optional
+asset-lane inputs. The asset lane remains blocked without them; Yahoo price files
+are not substitutes.

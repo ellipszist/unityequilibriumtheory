@@ -1,0 +1,200 @@
+{
+  "claim_class": "C - internal economic data integrity and historical diagnostic benchmark",
+  "command": "python docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Verify_UET_Economics_Hardening.py",
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Code\\03_Research\\Research_UET_Economics_Panel.py"
+      ],
+      "exit_code": 0,
+      "script": "docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_UET_Economics_Panel.py",
+      "stderr_tail": "",
+      "stdout_tail": "UET 0.25 economics panel: WARN\n  blocker: Primary panel cannot be constructed until every declared primary source is present and parseable.\n  blocker: bea_fixed_assets: MISSING_REQUIRED_EXPORT\n  blocker: bea_fixed_assets: required normalized annual export is absent.\n  blocker: eia_primary_energy: MISSING_REQUIRED_EXPORT\n  blocker: eia_primary_energy: required normalized annual export is absent.\n  blocker: epi_productivity_pay: MISSING_REQUIRED_EXPORT\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Code\\03_Research\\Research_UET_Resource_Equation_Audit.py"
+      ],
+      "exit_code": 0,
+      "script": "docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_UET_Resource_Equation_Audit.py",
+      "stderr_tail": "",
+      "stdout_tail": "UET resource-equation audit: WARN (panel blocked)\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Code\\03_Research\\Research_Stone_Balloon_Audit.py"
+      ],
+      "exit_code": 0,
+      "script": "docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_Stone_Balloon_Audit.py",
+      "stderr_tail": "",
+      "stdout_tail": "Stone-in-the-Balloon audit: WARN (panel blocked)\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Code\\03_Research\\Research_Energy_Density_Audit.py"
+      ],
+      "exit_code": 0,
+      "script": "docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_Energy_Density_Audit.py",
+      "stderr_tail": "",
+      "stdout_tail": "Energy-density audit: WARN\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Code\\03_Research\\Research_Wage_Productivity_Audit.py"
+      ],
+      "exit_code": 0,
+      "script": "docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_Wage_Productivity_Audit.py",
+      "stderr_tail": "",
+      "stdout_tail": "Wage-productivity audit: WARN\n"
+    }
+  ],
+  "economics_claim_scope_gate": {
+    "allowed_claims_now": [
+      "The topic contains a source-gated U.S. historical diagnostic architecture.",
+      "A completed artifact may report its predeclared descriptive comparison results and failures."
+    ],
+    "blocked_claims": [
+      "R=N+K+I is a derived or confirmed economic law.",
+      "Fiat money causally created inflation, wage divergence, or wealth transfer.",
+      "Gold or equities are validated scaling pegs or superior assets.",
+      "A policy, strategy, social-stabilization, or Nash-equilibrium claim is validated."
+    ],
+    "claim_boundary": "All results remain internal, descriptive, and non-causal pending source completion, human review, causal design, and external replication.",
+    "controller_status": "DESCRIPTIVE_DIAGNOSTIC_ONLY",
+    "gate": "uet_book1_economics_claim_gate",
+    "machine_readable_next_blockers": [
+      "Primary panel cannot be constructed until every declared primary source is present and parseable.",
+      "bea_fixed_assets: MISSING_REQUIRED_EXPORT",
+      "bea_fixed_assets: required normalized annual export is absent.",
+      "eia_primary_energy: MISSING_REQUIRED_EXPORT",
+      "eia_primary_energy: required normalized annual export is absent.",
+      "energy_density: WARN",
+      "epi_productivity_pay: MISSING_REQUIRED_EXPORT",
+      "resource_equation: WARN",
+      "stone_balloon: WARN",
+      "wage_productivity: WARN"
+    ],
+    "schema_version": "1.0",
+    "topic": "0.25_Strategy_Power_Economics"
+  },
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.2"
+  },
+  "formula_gate": {
+    "blockers": [],
+    "controller_status": null,
+    "exists": true,
+    "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_us_economics_formula_gate.json",
+    "sha256": "5872ae4456a7f70375a228f1f7082bffd81be87f62b4cbed41033671de8fe7ef",
+    "status": "PRESENT"
+  },
+  "formula_ids": [
+    "EC25-UET-RESOURCE-ENGINE",
+    "EC25-UET-MONETARY-RESOURCE-MISMATCH",
+    "EC25-UET-WAGE-PRODUCTIVITY-GAP"
+  ],
+  "generated_at_utc": "2026-07-12T12:01:44.809057+00:00",
+  "holdout_policy": {
+    "blockers": [],
+    "controller_status": null,
+    "exists": true,
+    "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_us_economics_holdout_policy.json",
+    "sha256": "fd7970db16a03713f3b613ce270b40e4e6177f543750686a5a5d02d9c1e58e8e",
+    "status": "PRESENT"
+  },
+  "limitations": [
+    "The Book 1 economic relations are operationalized as source-dependent proxies, not derivations.",
+    "The 1971 regime summaries are non-causal and exclude 1971-1973 from pre/post descriptive comparisons.",
+    "An internal candidate signal cannot upgrade Claim Class C or support policy, asset-superiority, or strategic-superiority claims."
+  ],
+  "parameter_policy": {
+    "blockers": [],
+    "controller_status": null,
+    "exists": true,
+    "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_us_economics_parameter_policy.json",
+    "sha256": "feeb5784a3f5abc52f0a12469192fde2008d54fbef4ef32a0e239164f6a4d43d",
+    "status": "PRESENT"
+  },
+  "schema_version": "1.0",
+  "source_manifest": {
+    "blockers": [],
+    "controller_status": null,
+    "exists": true,
+    "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_us_economics_source_manifest.json",
+    "sha256": "268c714c256ee05a1ef3c3cd715ee813f4d72b79a8df02093422ea45d9d46ffd",
+    "status": "PRESENT"
+  },
+  "source_readiness": {
+    "asset_lane_status": "BLOCKED_PENDING_LBMA_AND_LICENSED_SP500_TOTAL_RETURN",
+    "blockers": [
+      "bea_fixed_assets: MISSING_REQUIRED_EXPORT",
+      "eia_primary_energy: MISSING_REQUIRED_EXPORT",
+      "epi_productivity_pay: MISSING_REQUIRED_EXPORT"
+    ],
+    "claim_boundary": "This readiness gate cannot promote Topic 0.25 beyond internal diagnostic evidence.",
+    "controller_reason": "The U.S. historical primary panel is incomplete; model results must remain blocked.",
+    "energy_density_literal_status": "BLOCKED_PENDING_SOURCE_LOCKED_HEAT_CONTENT_BASIS",
+    "gate": "uet_us_historical_source_readiness",
+    "required_sources": 15,
+    "required_sources_ready": 12,
+    "schema_version": "1.0",
+    "status": "WARN",
+    "topic": "0.25_Strategy_Power_Economics"
+  },
+  "status": "WARN",
+  "sub_artifacts": {
+    "energy_density": {
+      "blockers": [],
+      "controller_status": null,
+      "exists": true,
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_energy_density_audit.json",
+      "sha256": "ef03ad3468bbeda2c4290e28a085a97f06b8dbb9abaefb162812338e5ad1173a",
+      "status": "WARN"
+    },
+    "resource_equation": {
+      "blockers": [
+        "Primary panel cannot be constructed until every declared primary source is present and parseable.",
+        "bea_fixed_assets: MISSING_REQUIRED_EXPORT",
+        "bea_fixed_assets: required normalized annual export is absent.",
+        "eia_primary_energy: MISSING_REQUIRED_EXPORT",
+        "eia_primary_energy: required normalized annual export is absent.",
+        "epi_productivity_pay: MISSING_REQUIRED_EXPORT"
+      ],
+      "controller_status": null,
+      "exists": true,
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_resource_equation_audit.json",
+      "sha256": "db93d10bac4e37d9d9c6bffc7460e063096c3f1a8dda1048fd8ca4f99565a9a2",
+      "status": "WARN"
+    },
+    "stone_balloon": {
+      "blockers": [
+        "Primary panel cannot be constructed until every declared primary source is present and parseable.",
+        "bea_fixed_assets: MISSING_REQUIRED_EXPORT",
+        "bea_fixed_assets: required normalized annual export is absent.",
+        "eia_primary_energy: MISSING_REQUIRED_EXPORT",
+        "eia_primary_energy: required normalized annual export is absent.",
+        "epi_productivity_pay: MISSING_REQUIRED_EXPORT"
+      ],
+      "controller_status": null,
+      "exists": true,
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_stone_balloon_audit.json",
+      "sha256": "a53ae9c7b4e79ae8e0e25b341137359823b720ee84d57e88b867a6446b07bef7",
+      "status": "WARN"
+    },
+    "wage_productivity": {
+      "blockers": [],
+      "controller_status": null,
+      "exists": true,
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_wage_productivity_audit.json",
+      "sha256": "8fd4afd56b2c78cab16275018779a83b4e83d47ea994edf6d606bb506af3698d",
+      "status": "WARN"
+    }
+  },
+  "topic": "0.25_Strategy_Power_Economics"
+}

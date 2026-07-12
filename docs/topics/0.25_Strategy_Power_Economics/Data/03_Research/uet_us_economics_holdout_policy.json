@@ -1,0 +1,17 @@
+{
+  "rolling_origin_end": 2024,
+  "rolling_origin_start": 2000,
+  "rules": [
+    "Fit transformations and coefficients with data available at each origin only.",
+    "Do not select source proxies, lags, or coefficients after inspecting holdout results.",
+    "Report missing-source or insufficient-row conditions as WARN/FAIL, never by imputation."
+  ],
+  "schema_version": "1.0",
+  "topic": "0.25_Strategy_Power_Economics",
+  "training_start": 1959,
+  "transition_years_excluded_from_pre_post_summary": [
+    1971,
+    1972,
+    1973
+  ]
+}

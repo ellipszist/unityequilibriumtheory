@@ -28,3 +28,15 @@ heuristic until separate verifiers with falsifiable thresholds exist.
 ## Audit Link
 
 - Core audit report: `docs/meta/core_research_hardening_audit.md`
+
+## Book 1 historical economics formulas
+
+| formula_id | relation | variables and units | constant origin / proof status | verification role | failure mode |
+| :-- | :-- | :-- | :-- | :-- | :-- |
+| `EC25-UET-RESOURCE-ENGINE` | Book concept `R=N+K+I`; diagnostic `?ln(R[t+3])=?+?_NN+?_K?ln(K)+?_I?ln(I)+?` | `R,N,K,I` are dimensionless proxies after documented per-person/per-worker normalization, rebasing, logs, and training-window standardization | heuristic bridge / heuristic | temporal diagnostic only | proxy fit mistaken for a dimensional identity or causal mechanism |
+| `EC25-UET-MONETARY-RESOURCE-MISMATCH` | `D_t=?ln(M2_t)-?ln(R_t)` | log-growth terms are dimensionless | topic-derived relation / heuristic | inflation baseline comparator | monetary endogeneity and omitted shocks invalidate causal interpretation |
+| `EC25-UET-WAGE-PRODUCTIVITY-GAP` | `gap=ln(productivity)-ln(compensation)` | source-specific positive indices become dimensionless after logs | source-locked benchmark input when exports exist / diagnostic | EPI construction replication and BLS comparator | EPI and BLS universes/deflators are silently interchanged |
+| `EC25-UET-ENERGY-DENSITY` | historical energy source mix and throughput | consumption is in source-declared quads; literal density requires a common physical basis | open placeholder / open | descriptive history only | energy throughput is falsely described as literal fuel-energy density |
+
+The new formula gate records all conversion steps and explicitly keeps unit closure
+at `Proxy` for the Book 1 resource engine.

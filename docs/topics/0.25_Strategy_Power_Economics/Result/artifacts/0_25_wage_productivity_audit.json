@@ -1,0 +1,25 @@
+{
+  "bls_comparator": {
+    "construction_note": "This BLS nonfarm-business all-worker measure differs from EPI's total-economy net-productivity and typical-worker compensation construction, so numerical agreement is not expected.",
+    "coverage": [
+      1979,
+      2021
+    ],
+    "gap_percentage_points": 68.38084969944609,
+    "productivity_growth_percent": 125.016413644031,
+    "real_hourly_compensation_growth_percent": 56.63556394458491,
+    "status": "DIAGNOSTIC_COMPLETE"
+  },
+  "claim_boundary": "The result can describe source-specific wage/productivity divergence. It cannot identify fiat-money causality, transfer mechanisms, or a policy prescription.",
+  "epi_replication": {
+    "blocker": "Versioned EPI chart-data export is absent.",
+    "status": "BLOCKED"
+  },
+  "formula_ids": [
+    "EC25-UET-WAGE-PRODUCTIVITY-GAP"
+  ],
+  "generated_at_utc": "2026-07-12T12:01:44.758860+00:00",
+  "schema_version": "1.0",
+  "status": "WARN",
+  "topic": "0.25_Strategy_Power_Economics"
+}

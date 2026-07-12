@@ -1,0 +1,31 @@
+{
+  "claim_boundary": "The lane may describe a source-locked energy transition. It cannot prove a literal energy-density leap or a UET macroeconomic mechanism.",
+  "energy_density_definition_gate": {
+    "blocked_claims": [
+      "energy-density leap proved",
+      "literal fuel-density mechanism validated",
+      "energy transition causally explains resource growth"
+    ],
+    "controller_reason": "The available source plan measures energy consumption, not comparable energy density across wood, coal, petroleum, nuclear, and renewable sources.",
+    "gate": "energy_density_definition_gate",
+    "required_before_literal_claim": [
+      "source-locked heating-value table",
+      "common physical basis such as MJ/kg",
+      "declared treatment or exclusion of nuclear, hydro, wind, and solar",
+      "unit conversion audit"
+    ],
+    "status": "BLOCKED"
+  },
+  "generated_at_utc": "2026-07-12T12:01:43.374149+00:00",
+  "historical_energy_transition": {
+    "blocker": "EIA historical 1776-1945 annual export is absent.",
+    "status": "BLOCKED"
+  },
+  "postwar_primary_energy_input": {
+    "blocker": "EIA primary-energy annual export is absent.",
+    "status": "BLOCKED"
+  },
+  "schema_version": "1.0",
+  "status": "WARN",
+  "topic": "0.25_Strategy_Power_Economics"
+}

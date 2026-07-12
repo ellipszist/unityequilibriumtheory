@@ -1,0 +1,18 @@
+{
+  "blockers": [
+    "Primary panel cannot be constructed until every declared primary source is present and parseable.",
+    "bea_fixed_assets: MISSING_REQUIRED_EXPORT",
+    "bea_fixed_assets: required normalized annual export is absent.",
+    "eia_primary_energy: MISSING_REQUIRED_EXPORT",
+    "eia_primary_energy: required normalized annual export is absent.",
+    "epi_productivity_pay: MISSING_REQUIRED_EXPORT"
+  ],
+  "claim_boundary": "The R/N/K/I diagnostic did not run because the source-locked panel is incomplete.",
+  "formula_ids": [
+    "EC25-UET-RESOURCE-ENGINE"
+  ],
+  "generated_at_utc": "2026-07-12T12:01:41.709562+00:00",
+  "schema_version": "1.0",
+  "status": "WARN",
+  "topic": "0.25_Strategy_Power_Economics"
+}

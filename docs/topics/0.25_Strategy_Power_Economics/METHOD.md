@@ -68,3 +68,16 @@ separate deterministic verifier with seeds and thresholds.
 - Global economy lane: partial (`4/6`), blocked by missing upstream URL/DOI and retrieval date
 - Daily snapshot lane: partial (`5/6`), blocked by missing upstream URL/API
 - No lane is source-review-ready yet, but all five are now field-mapped instead of blank placeholders
+
+## Book 1 historical diagnostic lane
+
+The Book 1 lane uses a U.S. annual 1959-2024 panel only after every source is
+locked. `R` is an equal-weight geometric index of real GDP per capita, output per
+hour, and primary energy per capita. `N` is a training-window-standardized proxy
+formed from CPI-energy inflation and unemployment. `K` is real intellectual-property
+investment per employee, and `I` is a geometric infrastructure proxy built from
+private tangible nonresidential and government fixed assets per employee.
+
+The operational regression, monetary-resource mismatch, asset tracking, energy
+history, and wage-productivity checks are diagnostic-only. They neither identify
+fiat-currency causality nor validate a policy, asset, or strategy claim.

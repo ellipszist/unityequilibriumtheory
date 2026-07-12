@@ -76,3 +76,18 @@ descriptive market/economy diagnostics, but it blocks market prediction,
 strategic-superiority, Nash-equilibrium, policy-causality, and
 social-stabilization claims until source locks, baselines, causal design, and
 calibrated simulation comparators exist.
+
+## Book 1 economics hardening command
+
+```powershell
+.\.venv\Scripts\python.exe docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Verify_UET_Economics_Hardening.py
+```
+
+Use `--refresh-sources` only when fetching the public FRED inputs. The verifier
+writes `Result/artifacts/0_25_uet_economics_verification.json` plus source,
+parameter, holdout, formula, and claim gates under `Data/03_Research/`.
+
+`WARN` is the correct result while required source exports are missing. A completed
+internal diagnostic remains Claim Class C; a passing run never authorizes claims
+of causal fiat effects, a confirmed economic law, policy validation, or asset
+superiority.
