@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "last_reviewed": "2026-07-13",
+  "publishing_mode": "human_in_the_loop",
+  "unattended_publishing": false,
+  "source_of_truth": "WORK_LEDGER/{year}/monthly_updates/{month}_update_pack.md",
+  "channels": [
+    {
+      "id": "facebook_public",
+      "platform": "Facebook",
+      "surface": "Page or profile",
+      "role": "broad_monthly_visibility",
+      "formats": ["text", "image", "link", "video"],
+      "cadence": "monthly_or_milestone",
+      "draft_file": "facebook.md",
+      "approval": "human"
+    },
+    {
+      "id": "facebook_community",
+      "platform": "Facebook or Discord",
+      "surface": "Group or community",
+      "role": "discussion_and_critique",
+      "formats": ["process_note", "question", "file", "link"],
+      "cadence": "when_useful",
+      "draft_file": "community.md",
+      "approval": "human"
+    },
+    {
+      "id": "instagram_feed",
+      "platform": "Instagram",
+      "surface": "Professional profile feed",
+      "role": "visual_project_identity",
+      "formats": ["image", "carousel", "reel"],
+      "cadence": "monthly_or_milestone",
+      "draft_file": "instagram_feed.md",
+      "approval": "human"
+    },
+    {
+      "id": "instagram_stories",
+      "platform": "Instagram",
+      "surface": "Stories",
+      "role": "approved_reshare_and_continuity",
+      "formats": ["reshare", "short_note", "poll"],
+      "cadence": "after_approved_update",
+      "draft_file": "instagram_stories.md",
+      "approval": "human"
+    },
+    {
+      "id": "threads_research_pulse",
+      "platform": "Threads",
+      "surface": "Profile",
+      "role": "frequent_research_pulse",
+      "formats": ["short_note", "reply", "mini_thread", "question"],
+      "cadence": "one_to_three_per_week_when_changed",
+      "draft_file": "threads.md",
+      "approval": "human"
+    },
+    {
+      "id": "linkedin_professional",
+      "platform": "LinkedIn",
+      "surface": "Profile or organization page",
+      "role": "professional_credibility",
+      "formats": ["text", "image", "document", "article", "video"],
+      "cadence": "one_to_two_per_month",
+      "draft_file": "linkedin.md",
+      "approval": "human_source_review"
+    },
+    {
+      "id": "x_research_thread",
+      "platform": "X",
+      "surface": "Profile",
+      "role": "short_form_ideas_and_threads",
+      "formats": ["short_note", "thread", "link", "image"],
+      "cadence": "optional_pulse_or_milestone",
+      "draft_file": "x.md",
+      "approval": "human"
+    },
+    {
+      "id": "video_major_work",
+      "platform": "YouTube or TikTok",
+      "surface": "Channel or profile",
+      "role": "durable_explanation",
+      "formats": ["long_video", "short_video"],
+      "cadence": "milestone_only_at_first",
+      "draft_file": "video.md",
+      "approval": "red_level_human"
+    },
+    {
+      "id": "canonical_archive",
+      "platform": "GitHub or Blog",
+      "surface": "Repository or site",
+      "role": "canonical_archive",
+      "formats": ["markdown", "artifact_link", "changelog"],
+      "cadence": "stable_milestone",
+      "draft_file": null,
+      "approval": "source_and_claim_review"
+    }
+  ]
+}
