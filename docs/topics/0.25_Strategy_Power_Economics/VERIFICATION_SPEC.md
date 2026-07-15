@@ -1,93 +1,81 @@
-# Verification Spec
+# Verification Specification: Topic 0.25
 
-## Primary command
+## Primary hardening commands
 
-```powershell
-python docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_Economic_Data_Audit.py
-```
-
-## Inputs
-
-| Input | Role |
-| :-- | :-- |
-| `Data/03_Research/SP500_yahoo_real.csv` | S&P 500 market time-series working copy |
-| `Data/03_Research/Gold_yahoo_real.csv` | gold futures market time-series working copy |
-| `Data/03_Research/Bitcoin_yahoo_real.csv` | Bitcoin market time-series working copy |
-| `Data/Global_Economy_2024.json` | population, GDP PPP, and Gini working copy |
-| `Data/03_Research/daily_economic_snapshot.json` | local daily indicator snapshot |
-| `Data/03_Research/source_lock_manifest.json` | binds market/economy/snapshot working copies to explicit provenance classes |
-
-## Generated workflow artifacts
-
-- `Data/03_Research/source_lock_manifest.json`
-- `Data/03_Research/source_evidence_intake_stub.json`
-- `Data/03_Research/source_evidence_readiness_matrix.json`
-- `Data/03_Research/model_claim_gate.json`
-- embedded `descriptive_diagnostic_gate` in `Result/artifacts/0_25_strategy_power_economics_verification.json`
-- embedded `economics_claim_scope_gate` in `Result/artifacts/0_25_strategy_power_economics_verification.json`
-
-## Current readiness snapshot
-
-- SP500/Gold/Bitcoin metadata packages: each `5/6` complete; blocked only by missing retrieval date
-- Global economy baseline package: `4/6` complete; blocked by missing upstream URL/DOI and retrieval date
-- Daily snapshot feed: `5/6` complete; blocked by missing upstream URL/API
-
-## Metrics
-
-| Metric | Meaning | Current threshold |
-| :-- | :-- | :-- |
-| `row_count` | usable close-price rows per market series | `>= 2500` |
-| `annualized_volatility` | descriptive volatility from log returns | recorded, not pass/fail |
-| `return_correlation` | descriptive cross-market Pearson correlation | recorded, not pass/fail |
-| `gini_min/gini_max` | Gini index unit sanity | within `0..100` |
-| source URL/DOI presence | provenance gate for economy/snapshot inputs | required for PASS |
-
-## Artifact target
-
-`Result/artifacts/0_25_strategy_power_economics_verification.json`
-
-The artifact must include `status`, command, environment, formula IDs, input
-hashes, market metrics, economy metrics, thresholds, checks, blockers, and
-limitations. It must also include `economics_claim_scope_gate.controller_status`,
-blocked export phrases, and machine-readable next blockers so integration
-summaries cannot promote descriptive diagnostics into policy or market-prediction
-claims.
-
-## Interpretation
-
-- `PASS`: local time series are long enough, Gini units are sane, and source
-  URL/DOI provenance is recorded.
-- `WARN`: diagnostic metrics are computable, but provenance or model-claim
-  blockers remain.
-- `FAIL`: required inputs cannot be parsed or core metrics cannot be computed.
-
-This verifier does not test strategic superiority, Nash-equilibrium improvement,
-policy causality, or global social stabilization.
-
-`descriptive_diagnostic_gate.diagnostic_run_contract == PASS` means only that
-the market row-count and Gini sanity diagnostics passed. If
-`descriptive_diagnostic_gate.status == DESCRIPTIVE_WARN`, policy, prediction,
-and strategic-superiority claims remain blocked by provenance and causal-design
-gaps.
-
-`economics_claim_scope_gate.controller_status == DESCRIPTIVE_DIAGNOSTIC_ONLY`
-is the export controller for `0.0` and paper-facing summaries. It may allow
-descriptive market/economy diagnostics, but it blocks market prediction,
-strategic-superiority, Nash-equilibrium, policy-causality, and
-social-stabilization claims until source locks, baselines, causal design, and
-calibrated simulation comparators exist.
-
-## Book 1 economics hardening command
+Run the source transformation first when the official BEA/EIA files or the EPI provider export
+change. Then lock the manifest and run the non-network verifier:
 
 ```powershell
+cd C:\Users\santa\Desktop\uet_harness
+.\.venv\Scripts\python.exe docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_UET_Economics_External_Source_Transform.py --vintage 2026-07-12 --epi-csv <provider-export.csv>
+.\.venv\Scripts\python.exe docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_UET_Economics_Source_Package.py --vintage 2026-07-12
 .\.venv\Scripts\python.exe docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Verify_UET_Economics_Hardening.py
 ```
 
-Use `--refresh-sources` only when fetching the public FRED inputs. The verifier
-writes `Result/artifacts/0_25_uet_economics_verification.json` plus source,
-parameter, holdout, formula, and claim gates under `Data/03_Research/`.
+The transform script archives provider inputs and creates normalized subsets. The source
+package verifies the frozen vintage and writes source/formula/parameter/holdout/claim gates.
+The aggregate verifier runs the panel and all four audits with network disabled. It records
+non-zero subcommand exits in `execution_gate.command_failures`; stale artifacts cannot mask a
+runtime failure.
 
-`WARN` is the correct result while required source exports are missing. A completed
-internal diagnostic remains Claim Class C; a passing run never authorizes claims
-of causal fiat effects, a confirmed economic law, policy validation, or asset
-superiority.
+The legacy descriptive command is separate:
+
+```powershell
+.\.venv\Scripts\python.exe docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_Economic_Data_Audit.py
+```
+
+## Required gates
+
+- `uet_us_economics_source_readiness.json`: `15/15` required primary inputs.
+- `uet_us_macro_panel_status.json`: complete 1959-2024 coverage, no imputation.
+- `uet_us_economics_formula_gate.json`: formula IDs, units, origin, proof status, and limits.
+- `uet_us_economics_parameter_policy.json`: horizons, proxy definitions, baselines, and
+  candidate threshold declared before model execution.
+- `uet_us_economics_holdout_policy.json`: rolling origins 2000-2024 and transition split.
+- `uet_economics_claim_gate.json`: allowed and blocked export language.
+- aggregate `execution_gate`: all verifier subcommands exit zero.
+- aggregate `legacy_claim_quarantine`: every legacy markdown note contains the required
+  `Legacy claim boundary` warning before it can be treated as topic documentation.
+
+## Acceptance and model contract
+
+Primary horizon: 3 years. Sensitivities: 1 and 5 years. Forecast origins: 2000 onward,
+using only information available at each origin. The candidate rule requires at least 10%
+lower median rolling-origin RMSE than every named baseline and a 95% block-bootstrap interval
+for squared-error differences below zero. This rule is diagnostic-only and cannot upgrade
+Claim Class C.
+
+The resource baselines are constant-growth (training mean target) and zero-growth. The Stone
+baselines are inflation autoregression, money-growth-only, and quantity-style M2 minus real GDP
+per-capita growth. Pre/post regime summaries use 1959-1970 and 1974-2024, excluding 1971-1973.
+
+## Artifact contract
+
+`Result/artifacts/0_25_uet_economics_verification.json` must preserve:
+
+- source, transform, panel, formula, parameter, holdout, claim, and sub-artifact hashes;
+- retrieval vintage, coverage, units/proxy definitions, formulas, coefficients, and uncertainty;
+- rolling-origin boundaries, baseline errors, median and aggregate RMSE, and bootstrap intervals;
+- asset-lane status, energy-definition gate, failures, limitations, and blocked claims;
+- command exit codes, legacy-claim quarantine result, and the current controller status;
+- a self-contained `evidence_bundle` containing source records/hashes, transform and panel
+  payloads, formula/parameter/holdout contracts, and complete sub-artifact payloads.
+
+## Current machine result
+
+- Source readiness: `PASS`, `15/15`.
+- Panel: `PASS`, `66` rows, 1959-2024.
+- Resource, Stone, and wage sub-artifacts: `DIAGNOSTIC_COMPLETE`.
+- Energy sub-artifact: `WARN`; postwar throughput is ready, historical energy-mix export and
+  literal density basis are blocked.
+- Aggregate: `WARN`; controller remains `DESCRIPTIVE_DIAGNOSTIC_ONLY`; legacy quarantine is
+  `PASS` for 12 files.
+- Candidate signals: false at all tested horizons.
+
+## Interpretation boundary
+
+`PASS` on a source or panel gate means that the declared input and transformation contract is
+satisfied. `DIAGNOSTIC_COMPLETE` means the predeclared comparison ran. Neither status means
+an economic law was confirmed. `WARN` is retained when a declared sub-lane is intentionally
+blocked. Causal, policy, asset-superiority, and strategic claims require separate human-reviewed
+identification and external replication.

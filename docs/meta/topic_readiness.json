@@ -1,6 +1,6 @@
 {
   "schema_version": "2.1",
-  "generated_date": "2026-04-23",
+  "generated_date": "2026-07-16",
   "scope": {
     "numbered_topics": 42,
     "support_workspaces": 2,
@@ -425,16 +425,16 @@
       "name": "0.25_Strategy_Power_Economics",
       "kind": "numbered_topic",
       "scope_class": "core_research",
-      "status": "Draft",
-      "audit_tier": "B",
+      "status": "Structured",
+      "audit_tier": "A",
       "structure_score": 3,
-      "data_reality_score": 2,
-      "data_reality_status": "real source referenced",
-      "verification_score": 2,
+      "data_reality_score": 3,
+      "data_reality_status": "source-locked U.S. historical panel; legacy working copies remain partial",
+      "verification_score": 3,
       "mathematical_rigor_score": 2,
       "physical_rigor_score": 1,
       "claim_integrity_score": 3,
-      "recommended_next_action": "Normalize upstream Yahoo/World Bank/IMF provenance and build a seeded social-power verifier before upgrading beyond internal economic data diagnostics."
+      "recommended_next_action": "Close the energy-density definition gate, optional asset exports, and external replication before any move beyond the internal Claim Class C diagnostic boundary."
     },
     {
       "name": "0.26_Cosmic_Dynamic_Frame",

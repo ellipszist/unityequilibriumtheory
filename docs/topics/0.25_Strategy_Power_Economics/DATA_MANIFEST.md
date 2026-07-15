@@ -1,74 +1,73 @@
-# Data Manifest
+# Data Manifest: Topic 0.25
 
-Current data reality status: `real source referenced`
+## Data reality
 
-The topic contains usable local economic and market working copies, but upstream
-source identity is not yet archival enough for strong macroeconomic or policy
-claims.
+This topic now contains two deliberately separated data classes:
 
-## Primary Inputs
+1. a source-locked U.S. historical Book 1 package used by the new primary diagnostics;
+2. legacy local market/economy working copies used only for descriptive integrity checks.
 
-| Dataset | Local path | Source | Unit convention | Bytes | SHA-256 | Benchmark role | Provenance status |
-| :-- | :-- | :-- | :-- | --: | :-- | :-- | :-- |
-| S&P 500 time series | `Data/03_Research/SP500_yahoo_real.csv` | Yahoo-style `^GSPC` working copy | index points, date, volume | 342,186 | `bc85614da6993c0edcf87ceb5bfd623003bad18b7b78f9b010bd8582a6252eeb` | market diagnostic input | local copy hashed by artifact; retrieval URL/date still needed |
-| Gold time series | `Data/03_Research/Gold_yahoo_real.csv` | Yahoo-style `GC=F` working copy | USD/oz futures close, date, volume | 294,015 | `c558881407ce03cdf4dda12e57d972f620447d37be9750e953224502f3b940ba` | market diagnostic input | local copy hashed by artifact; retrieval URL/date still needed |
-| Bitcoin time series | `Data/03_Research/Bitcoin_yahoo_real.csv` | Yahoo-style `BTC-USD` working copy | USD close, date, volume | 323,807 | `62a93ec47ffe98f7908a8c8b29ba9fa5a070fa611bb3cde5ae22bfb23ff9617a` | market diagnostic input | local copy hashed by artifact; retrieval URL/date still needed |
-| Global economy baseline | `Data/Global_Economy_2024.json` | local World Bank/IMF referenced working copy | population count, GDP PPP USD, Gini 0-100 | 1,505 | `a3dd47fd7dadb6ce2ba6f4b634788a6dc782ea70b4f63d8222689c50eb8ba9d7` | economy sanity benchmark | source named but URL/DOI and exact table extraction missing |
-| Daily economic snapshot | `Data/03_Research/daily_economic_snapshot.json` | `UET_FINANCIAL_GATEWAY` local snapshot | mixed: points, USD/oz, THB, percent | 729 | `f22483d6854d4c48039bf95d0f68b475b74e06860375c66b962e23a160fdd721` | local indicator snapshot | no upstream URL/DOI; not paper-ready |
-| Source-lock manifest | `Data/03_Research/source_lock_manifest.json` | topic-derived provenance map for market/economy/snapshot working copies | inherits per-target unit conventions | 3,448 | `540f9bedafe6c04317482da3daedb8e6970fb0ed7347e1e6c9ae4762232dafe6` | binds local data classes, benchmark roles, and shared Yahoo-style provider reference | present; improves provenance discipline but does not create archival upstream retrieval metadata |
-| Source evidence intake stub | `Data/03_Research/source_evidence_intake_stub.json` | topic-generated intake sheet for unresolved market/economy/snapshot source metadata | mixed; each target declares its own expected unit basis | 7,344 | `2de01fc979dc68868f18f24bf441620f55f3b31bf52914b2f5cfb0e1e88bf2b2` | landing zone before data rewrites or claim upgrades | workflow control only; not evidence by itself |
-| Source evidence readiness matrix | `Data/03_Research/source_evidence_readiness_matrix.json` | topic-generated readiness gate derived from the intake stub | n/a | 2,602 | `4463d2303d8f5cec7ca413f3aef3b966017e3677d78dd151567def36bc54b81e` | tracks completeness of provenance capture | all five targets are now mapped as `partial`; remaining blockers are specific metadata gaps rather than blank placeholders |
-| Model claim gate | `Data/03_Research/model_claim_gate.json` | topic-generated claim gate for diagnostic versus simulation lanes | n/a | 1,960 | `fa902d0d6d67cea9df2be2ad429123b2ef5a27099d23c00ff66aebf3c395591f` | controls allowed claim class per lane | workflow control only; cannot raise claim strength beyond descriptive diagnostics |
-| Research_Economic_Data_Audit.py | `Code/03_Research/Research_Economic_Data_Audit.py` | topic verifier | n/a | 28,515 | `eb6e5ca4c385ff41ae6aaf3a1164655d84a25dbb8dc9bb74c4d4764477e3e71b` | regenerates descriptive diagnostics and claim-scope artifact | executable verifier; does not create prediction, policy, or strategy validation |
-| Descriptive diagnostic gate artifact | `Result/artifacts/0_25_strategy_power_economics_verification.json` | verifier-generated gate for market/economy diagnostics | n/a | 12,755 | `89ec901da2c8b1546ca175931f3b7b98a1a162350207ad352466b81158c94ddc` | separates row-count/Gini sanity from policy or prediction claims | Can pass only descriptive diagnostics; policy, prediction, and strategic claims remain blocked until provenance and causal baselines exist. |
+The Book 1 source gate is `PASS` (`15/15` required inputs). The raw provider files live under
+`docs/data/external/economics/us_historical/<provider>/2026-07-12/`; normalized source subsets
+and their hashes are described by `Data/03_Research/uet_us_economics_transform_manifest.json`.
+Provider raw files may remain local-only because of terms or repository ignore rules. If a
+required file is absent or its hash does not match the manifest, the panel gate must return
+`WARN` and no model may silently proceed.
 
-## Hash Policy
+## Book 1 source map
 
-The primary verifier records SHA-256 hashes for all primary inputs in
-`Result/artifacts/0_25_strategy_power_economics_verification.json`.
+| Source / series | Upstream URL | Frozen local path | Source unit | Runtime transformation | Role |
+| :-- | :-- | :-- | :-- | :-- | :-- |
+| FRED `M2SL` | https://fred.stlouisfed.org/series/M2SL | `docs/data/external/economics/us_historical/fred/2026-07-12/M2SL.csv` | billions USD, SA, monthly | December/end-of-year annual observation | primary `M` |
+| FRED `GDPC1` | https://fred.stlouisfed.org/series/GDPC1 | `.../fred/2026-07-12/GDPC1.csv` | chained-dollar real GDP, quarterly | annual mean | `R` component |
+| FRED `POP` | https://fred.stlouisfed.org/series/POP | `.../fred/2026-07-12/POP.csv` | thousands of persons, monthly | annual mean | per-capita denominator |
+| FRED `UNRATE` | https://fred.stlouisfed.org/series/UNRATE | `.../fred/2026-07-12/UNRATE.csv` | percent, monthly | annual mean | `N` proxy |
+| FRED `CPIENGSL`, `CPIAUCSL` | https://fred.stlouisfed.org/series/CPIENGSL | `.../fred/2026-07-12/` | CPI indexes, monthly | annual mean, log change | `N` and inflation |
+| FRED `GDPDEF`, `TB3MS` | https://fred.stlouisfed.org/series/GDPDEF | `.../fred/2026-07-12/` | price index / percent | annual mean | robustness/context |
+| FRED `OPHNFB`, `COMPRNFB` | https://fred.stlouisfed.org/series/OPHNFB | `.../fred/2026-07-12/` | BLS indexes, quarterly | annual mean | BLS wage comparator and `R` productivity |
+| FRED `PAYEMS`, `CMDEBT` | https://fred.stlouisfed.org/series/PAYEMS | `.../fred/2026-07-12/` | thousands / billions USD | annual mean or end-of-year | per-worker and credit sensitivity |
+| BEA Fixed Assets | https://www.bea.gov/itable/fixed-assets | `docs/data/external/economics/us_historical/bea/2026-07-12/bea_fixed_assets_annual.csv` | chain-type quantity indexes, 2017=100 | Table 1.2/2.8 extraction; per-worker proxies | `K` and `I` |
+| EIA Table 1.3 | https://www.eia.gov/totalenergy/data/browser/csv.php?tbl=T01.03&freq=A | `docs/data/external/economics/us_historical/eia/2026-07-12/eia_primary_energy_annual.csv` | quadrillion Btu/year | annual `TETCBUS`; divide by population, rebase | `R` energy |
+| EPI provider chart | https://data.epi.org/productivity/productivity_levels/line/year/national/real_dollars_per_hour_2024/productivity_pay | `docs/data/external/economics/us_historical/epi/2026-07-12/epi_productivity_pay.csv` | provider real-dollar-per-hour chart values | rebase both series to 1979=100 | wage construction |
 
-## Data Use Boundary
+The exact original filenames, bytes, SHA-256 hashes, retrieval vintage, per-input UTC retrieval
+timestamp, coverage, terms, and benchmark roles are machine-recorded in
+`uet_us_economics_source_manifest.json`; raw-to-normalized lineage is machine-recorded in
+`uet_us_economics_transform_manifest.json`. The panel recomputes each required input hash and
+returns `WARN` on any mismatch.
 
-These data support descriptive diagnostics: row counts, returns, volatility,
-correlations, and Gini sanity. They do not by themselves support causal claims
-about strategic superiority, social stabilization, or economic policy outcomes.
+## Derived panel and artifacts
 
-## Next Provenance Work
+- `Data/03_Research/uet_us_macro_panel_1959_2024.csv`: normalized 66-row panel; committed
+  research subset with hash in `uet_us_macro_panel_status.json`.
+- `Result/artifacts/0_25_uet_economics_verification.json`: aggregate artifact; references
+  source, transform, panel, formula, parameter, holdout, claim, and sub-artifact hashes.
+- `Result/artifacts/0_25_uet_resource_equation_audit.json`: coefficients, rolling origins,
+  aggregate and median RMSE, and block-bootstrap intervals.
+- `Result/artifacts/0_25_stone_balloon_audit.json`: mismatch forecasts, regime summaries,
+  baselines, bootstrap intervals, and asset-lane status.
 
-- Add exact retrieval dates for each Yahoo-style market time series.
-- Add upstream World Bank/IMF URL or DOI and retrieval date for `Global_Economy_2024.json`.
-- Add upstream URL or API description for `daily_economic_snapshot.json`.
-- Replace local World Bank/IMF referenced JSON with source-locked tables and
-  retrieval dates.
-- Move raw upstream downloads to `docs/data/external/economics/...` when fetched;
-  keep topic-derived normalized copies under this topic's `Data/` folder.
-- Use `source_evidence_intake_stub.json` and `source_evidence_readiness_matrix.json`
-  as the gate before editing working-copy data or upgrading claim language.
+## Legacy working-copy lane
 
-## Current Readiness Snapshot
+`Data/03_Research/SP500_yahoo_real.csv`, `Gold_yahoo_real.csv`, `Bitcoin_yahoo_real.csv`,
+`Data/Global_Economy_2024.json`, and `daily_economic_snapshot.json` remain local diagnostic
+working copies. Their provenance gate is separate and incomplete; none is primary evidence for
+the Book 1 panel. They support only row-count, Gini-range, return-volatility, and correlation
+statistics.
 
-- SP500 market metadata: `5/6` fields complete; missing `retrieval_date`
-- Gold market metadata: `5/6` fields complete; missing `retrieval_date`
-- Bitcoin market metadata: `5/6` fields complete; missing `retrieval_date`
-- Global economy baseline: `4/6` fields complete; missing upstream `URL/DOI` and `retrieval_date`
-- Daily snapshot feed: `5/6` fields complete; missing `upstream_url_or_api`
+## Provenance and unit rules
 
-## Book 1 U.S. historical source package
+- Every input records source URL, terms, original filename, local path, preprocessing, unit,
+  coverage, retrieval vintage, benchmark role, and SHA-256 where available.
+- `R`, `N`, `K`, and `I` are dimensionless/indexed proxies only after the documented divisions,
+  rebasing, logs, and training-window standardization.
+- Missing values are rejected; no interpolation, forward filling, or silent imputation is used.
+- A manifest is a provenance control, not external validation or causal evidence.
 
-`Data/03_Research/uet_us_economics_source_manifest.json` is the canonical source
-lock for the Book 1 lane. It records provider URL, terms, retrieval vintage, raw
-path, hash, source unit, preprocessing, and benchmark role. Public FRED CSVs are
-archived under `docs/data/external/economics/us_historical/fred/2026-07-12/`.
+## Open data blockers
 
-The primary 1959-2024 panel is blocked until these exact annual exports are stored
-under the corresponding source-vintage folders:
-
-| Source | Required export | Role | Status |
-| :-- | :-- | :-- | :-- |
-| BEA Fixed Assets | `bea_fixed_assets_annual.csv` | `K` and `I` proxies | missing |
-| EIA Table 1.3 | `eia_primary_energy_annual.csv` | `R` energy component | missing |
-| EPI productivity-pay chart data | `epi_productivity_pay.csv` | 1979-2021 construction replication | missing |
-
-LBMA gold and a user-licensed S&P 500 total-return export are separate optional
-asset-lane inputs. The asset lane remains blocked without them; Yahoo price files
-are not substitutes.
+- EIA 1776-1945 source-mix export is absent.
+- A source-locked heat-content table with a common physical basis is absent, so literal
+  energy-density claims remain blocked.
+- LBMA annual gold and a licensed S&P 500 total-return export are absent.
+- Legacy market/economy working copies still lack complete upstream retrieval metadata.

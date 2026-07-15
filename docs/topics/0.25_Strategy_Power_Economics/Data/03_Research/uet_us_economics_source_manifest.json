@@ -6,7 +6,7 @@
     "platform": "Windows-11-10.0.26200-SP0",
     "python": "3.14.2"
   },
-  "generated_at_utc": "2026-07-12T11:57:44.925087+00:00",
+  "generated_at_utc": "2026-07-15T19:09:30.919351+00:00",
   "raw_root": "docs/data/external/economics/us_historical",
   "retrieval_vintage": "2026-07-12",
   "schema_version": "1.0",
@@ -14,6 +14,12 @@
     {
       "benchmark_role": "primary U.S. macroeconomic panel input",
       "bytes": 14550,
+      "coverage": {
+        "end": "2026-05-01",
+        "field": "observation_date",
+        "observations": 809,
+        "start": "1959-01-01"
+      },
       "download_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=M2SL",
       "exists": true,
       "license_or_terms": "FRED terms and the upstream agency terms apply; preserve attribution in downstream artifacts.",
@@ -22,6 +28,7 @@
       "preprocessing": "Raw FRED CSV. Annualization is performed transparently by Research_UET_Economics_Panel.py.",
       "required_for_primary_panel": true,
       "retrieval_date": "2026-07-12",
+      "retrieval_timestamp_utc": "2026-07-15T19:09:30.878309+00:00",
       "sha256": "cf0751c50c64ea1a6bd6cc6694d91d702466825ca7c393bc2a1e3ef75a14247a",
       "source": "Federal Reserve Economic Data (FRED); upstream agency varies by series",
       "source_id": "fred_m2sl",
@@ -32,6 +39,12 @@
     {
       "benchmark_role": "primary U.S. macroeconomic panel input",
       "bytes": 6506,
+      "coverage": {
+        "end": "2026-01-01",
+        "field": "observation_date",
+        "observations": 317,
+        "start": "1947-01-01"
+      },
       "download_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPC1",
       "exists": true,
       "license_or_terms": "FRED terms and the upstream agency terms apply; preserve attribution in downstream artifacts.",
@@ -40,6 +53,7 @@
       "preprocessing": "Raw FRED CSV. Annualization is performed transparently by Research_UET_Economics_Panel.py.",
       "required_for_primary_panel": true,
       "retrieval_date": "2026-07-12",
+      "retrieval_timestamp_utc": "2026-07-15T19:09:30.881436+00:00",
       "sha256": "c7e1bb58b27de8f4b4b117e91d8099407727845dd4b7f1bdb5d6c14f925fc122",
       "source": "Federal Reserve Economic Data (FRED); upstream agency varies by series",
       "source_id": "fred_gdpc1",
@@ -50,6 +64,12 @@
     {
       "benchmark_role": "primary U.S. macroeconomic panel input",
       "bytes": 19821,
+      "coverage": {
+        "end": "2026-12-01",
+        "field": "observation_date",
+        "observations": 900,
+        "start": "1952-01-01"
+      },
       "download_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=POP",
       "exists": true,
       "license_or_terms": "FRED terms and the upstream agency terms apply; preserve attribution in downstream artifacts.",
@@ -58,6 +78,7 @@
       "preprocessing": "Raw FRED CSV. Annualization is performed transparently by Research_UET_Economics_Panel.py.",
       "required_for_primary_panel": true,
       "retrieval_date": "2026-07-12",
+      "retrieval_timestamp_utc": "2026-07-15T19:09:30.884997+00:00",
       "sha256": "77b42891fa92ba6c74ad586c4df9753e5dc408a048ce3d96e776d21401c217b7",
       "source": "Federal Reserve Economic Data (FRED); upstream agency varies by series",
       "source_id": "fred_pop",
@@ -68,6 +89,12 @@
     {
       "benchmark_role": "primary U.S. macroeconomic panel input",
       "bytes": 14166,
+      "coverage": {
+        "end": "2026-06-01",
+        "field": "observation_date",
+        "observations": 942,
+        "start": "1948-01-01"
+      },
       "download_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE",
       "exists": true,
       "license_or_terms": "FRED terms and the upstream agency terms apply; preserve attribution in downstream artifacts.",
@@ -76,6 +103,7 @@
       "preprocessing": "Raw FRED CSV. Annualization is performed transparently by Research_UET_Economics_Panel.py.",
       "required_for_primary_panel": true,
       "retrieval_date": "2026-07-12",
+      "retrieval_timestamp_utc": "2026-07-15T19:09:30.888271+00:00",
       "sha256": "0c99be07bd92f467672c4f0c5fd160b24fbb0b587ca1612867468a07f28a555f",
       "source": "Federal Reserve Economic Data (FRED); upstream agency varies by series",
       "source_id": "fred_unrate",
@@ -86,6 +114,12 @@
     {
       "benchmark_role": "primary U.S. macroeconomic panel input",
       "bytes": 15481,
+      "coverage": {
+        "end": "2026-05-01",
+        "field": "observation_date",
+        "observations": 833,
+        "start": "1957-01-01"
+      },
       "download_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIENGSL",
       "exists": true,
       "license_or_terms": "FRED terms and the upstream agency terms apply; preserve attribution in downstream artifacts.",
@@ -94,6 +128,7 @@
       "preprocessing": "Raw FRED CSV. Annualization is performed transparently by Research_UET_Economics_Panel.py.",
       "required_for_primary_panel": true,
       "retrieval_date": "2026-07-12",
+      "retrieval_timestamp_utc": "2026-07-15T19:09:30.891885+00:00",
       "sha256": "05583d55e776ca573c55620d356ee6df3a52424bd160b997472bd4196480af69",
       "source": "Federal Reserve Economic Data (FRED); upstream agency varies by series",
       "source_id": "fred_cpiengsl",
@@ -104,6 +139,12 @@
     {
       "benchmark_role": "primary U.S. macroeconomic panel input",
       "bytes": 17687,
+      "coverage": {
+        "end": "2026-05-01",
+        "field": "observation_date",
+        "observations": 953,
+        "start": "1947-01-01"
+      },
       "download_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL",
       "exists": true,
       "license_or_terms": "FRED terms and the upstream agency terms apply; preserve attribution in downstream artifacts.",
@@ -112,6 +153,7 @@
       "preprocessing": "Raw FRED CSV. Annualization is performed transparently by Research_UET_Economics_Panel.py.",
       "required_for_primary_panel": true,
       "retrieval_date": "2026-07-12",
+      "retrieval_timestamp_utc": "2026-07-15T19:09:30.895497+00:00",
       "sha256": "788111197a818c80e40722270c0f63e487df5c9713436e808f102b3424e94ee6",
       "source": "Federal Reserve Economic Data (FRED); upstream agency varies by series",
       "source_id": "fred_cpiaucsl",
@@ -122,6 +164,12 @@
     {
       "benchmark_role": "primary U.S. macroeconomic panel input",
       "bytes": 5765,
+      "coverage": {
+        "end": "2026-01-01",
+        "field": "observation_date",
+        "observations": 317,
+        "start": "1947-01-01"
+      },
       "download_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPDEF",
       "exists": true,
       "license_or_terms": "FRED terms and the upstream agency terms apply; preserve attribution in downstream artifacts.",
@@ -130,6 +178,7 @@
       "preprocessing": "Raw FRED CSV. Annualization is performed transparently by Research_UET_Economics_Panel.py.",
       "required_for_primary_panel": true,
       "retrieval_date": "2026-07-12",
+      "retrieval_timestamp_utc": "2026-07-15T19:09:30.897336+00:00",
       "sha256": "9282015ec926512b06ca2669cf75ce182314091180f844295546240a2ee9cf63",
       "source": "Federal Reserve Economic Data (FRED); upstream agency varies by series",
       "source_id": "fred_gdpdef",
@@ -140,6 +189,12 @@
     {
       "benchmark_role": "primary U.S. macroeconomic panel input",
       "bytes": 17817,
+      "coverage": {
+        "end": "2026-06-01",
+        "field": "observation_date",
+        "observations": 1110,
+        "start": "1934-01-01"
+      },
       "download_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=TB3MS",
       "exists": true,
       "license_or_terms": "FRED terms and the upstream agency terms apply; preserve attribution in downstream artifacts.",
@@ -148,6 +203,7 @@
       "preprocessing": "Raw FRED CSV. Annualization is performed transparently by Research_UET_Economics_Panel.py.",
       "required_for_primary_panel": true,
       "retrieval_date": "2026-07-12",
+      "retrieval_timestamp_utc": "2026-07-15T19:09:30.901718+00:00",
       "sha256": "ac6c866c6e9f5479926092179e680ad558262ff038a806977a9ce586b88aa436",
       "source": "Federal Reserve Economic Data (FRED); upstream agency varies by series",
       "source_id": "fred_tb3ms",
@@ -158,6 +214,12 @@
     {
       "benchmark_role": "primary U.S. macroeconomic panel input",
       "bytes": 5765,
+      "coverage": {
+        "end": "2026-01-01",
+        "field": "observation_date",
+        "observations": 317,
+        "start": "1947-01-01"
+      },
       "download_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=OPHNFB",
       "exists": true,
       "license_or_terms": "FRED terms and the upstream agency terms apply; preserve attribution in downstream artifacts.",
@@ -166,6 +228,7 @@
       "preprocessing": "Raw FRED CSV. Annualization is performed transparently by Research_UET_Economics_Panel.py.",
       "required_for_primary_panel": true,
       "retrieval_date": "2026-07-12",
+      "retrieval_timestamp_utc": "2026-07-15T19:09:30.903578+00:00",
       "sha256": "1a2155ebb301ccce6bf334af6a389e995e9edb3718cb78186f74eb13cdceb643",
       "source": "Federal Reserve Economic Data (FRED); upstream agency varies by series",
       "source_id": "fred_ophnfb",
@@ -176,6 +239,12 @@
     {
       "benchmark_role": "primary U.S. macroeconomic panel input",
       "bytes": 5767,
+      "coverage": {
+        "end": "2026-01-01",
+        "field": "observation_date",
+        "observations": 317,
+        "start": "1947-01-01"
+      },
       "download_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=COMPRNFB",
       "exists": true,
       "license_or_terms": "FRED terms and the upstream agency terms apply; preserve attribution in downstream artifacts.",
@@ -184,6 +253,7 @@
       "preprocessing": "Raw FRED CSV. Annualization is performed transparently by Research_UET_Economics_Panel.py.",
       "required_for_primary_panel": true,
       "retrieval_date": "2026-07-12",
+      "retrieval_timestamp_utc": "2026-07-15T19:09:30.906753+00:00",
       "sha256": "c97ffe3e8089ec6f99156a92e3f413d51af9bae887c1da6c4b5cefe832bc53b5",
       "source": "Federal Reserve Economic Data (FRED); upstream agency varies by series",
       "source_id": "fred_comprnfb",
@@ -194,6 +264,12 @@
     {
       "benchmark_role": "primary U.S. macroeconomic panel input",
       "bytes": 18351,
+      "coverage": {
+        "end": "2026-06-01",
+        "field": "observation_date",
+        "observations": 1050,
+        "start": "1939-01-01"
+      },
       "download_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=PAYEMS",
       "exists": true,
       "license_or_terms": "FRED terms and the upstream agency terms apply; preserve attribution in downstream artifacts.",
@@ -202,6 +278,7 @@
       "preprocessing": "Raw FRED CSV. Annualization is performed transparently by Research_UET_Economics_Panel.py.",
       "required_for_primary_panel": true,
       "retrieval_date": "2026-07-12",
+      "retrieval_timestamp_utc": "2026-07-15T19:09:30.911285+00:00",
       "sha256": "177efe81de346565992ed81e5f62fbfe6740d300762f898bf9cca6be304b4d69",
       "source": "Federal Reserve Economic Data (FRED); upstream agency varies by series",
       "source_id": "fred_payems",
@@ -212,6 +289,12 @@
     {
       "benchmark_role": "primary U.S. macroeconomic panel input",
       "bytes": 5981,
+      "coverage": {
+        "end": "2026-01-01",
+        "field": "observation_date",
+        "observations": 322,
+        "start": "1945-10-01"
+      },
       "download_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CMDEBT",
       "exists": true,
       "license_or_terms": "FRED terms and the upstream agency terms apply; preserve attribution in downstream artifacts.",
@@ -220,6 +303,7 @@
       "preprocessing": "Raw FRED CSV. Annualization is performed transparently by Research_UET_Economics_Panel.py.",
       "required_for_primary_panel": true,
       "retrieval_date": "2026-07-12",
+      "retrieval_timestamp_utc": "2026-07-15T19:09:30.913739+00:00",
       "sha256": "0e02fa74fd4b341293a0f3cf665a228ba9562ecc88b5538d35590358677b00c3",
       "source": "Federal Reserve Economic Data (FRED); upstream agency varies by series",
       "source_id": "fred_cmdebt",
@@ -229,28 +313,45 @@
     },
     {
       "benchmark_role": "primary knowledge and infrastructure input",
-      "exists": false,
+      "bytes": 2635,
+      "coverage": {
+        "end": "2024",
+        "field": "Year",
+        "observations": 66,
+        "start": "1959"
+      },
+      "exists": true,
       "expected_columns": [
         "Year",
-        "real_intellectual_property_investment",
-        "real_private_tangible_nonresidential_fixed_assets",
-        "real_government_fixed_assets"
+        "ip_product_quantity_index_2017_100",
+        "private_tangible_fixed_assets_quantity_index_2017_100",
+        "government_fixed_assets_quantity_index_2017_100"
       ],
       "license_or_terms": "BEA public-data terms; record exact table and release vintage.",
       "local_path": "docs/data/external/economics/us_historical/bea/2026-07-12/bea_fixed_assets_annual.csv",
       "original_filename": "bea_fixed_assets_annual.csv",
-      "preprocessing": "Raw or provider-exported annual table. The normalizer rejects files that do not match the declared schema.",
+      "preprocessing": "Normalized research subset produced from a provider raw export. See Data/03_Research/uet_us_economics_transform_manifest.json for raw identity, table/series selection, and transformations.",
       "required_for_primary_panel": true,
-      "retrieval_date": null,
+      "retrieval_date": "2026-07-12",
+      "retrieval_timestamp_utc": "2026-07-15T19:09:30.915010+00:00",
+      "sha256": "f926e7b7c1b81600be075d6e1e8eaceb5f97b7d489b1b30f1c04133afec755fe",
       "source": "bea",
       "source_id": "bea_fixed_assets",
-      "source_status": "MISSING_REQUIRED_EXPORT",
+      "source_status": "READY_FOR_REVIEW",
       "source_url": "https://www.bea.gov/itable/fixed-assets",
-      "unit_system": "Declared by the source-specific schema and recorded again in the normalized panel."
+      "transformation_manifest": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_us_economics_transform_manifest.json",
+      "unit_system": "BEA chain-type quantity indexes, 2017=100; runtime divides by employees for indexed proxies; no dollar conversion"
     },
     {
       "benchmark_role": "primary resource-capacity energy input",
-      "exists": false,
+      "bytes": 1086,
+      "coverage": {
+        "end": "2024",
+        "field": "Year",
+        "observations": 66,
+        "start": "1959"
+      },
+      "exists": true,
       "expected_columns": [
         "Year",
         "primary_energy_quadrillion_btu"
@@ -258,17 +359,21 @@
       "license_or_terms": "EIA public-data terms; preserve table release vintage.",
       "local_path": "docs/data/external/economics/us_historical/eia/2026-07-12/eia_primary_energy_annual.csv",
       "original_filename": "eia_primary_energy_annual.csv",
-      "preprocessing": "Raw or provider-exported annual table. The normalizer rejects files that do not match the declared schema.",
+      "preprocessing": "Normalized research subset produced from a provider raw export. See Data/03_Research/uet_us_economics_transform_manifest.json for raw identity, table/series selection, and transformations.",
       "required_for_primary_panel": true,
-      "retrieval_date": null,
+      "retrieval_date": "2026-07-12",
+      "retrieval_timestamp_utc": "2026-07-15T19:09:30.916601+00:00",
+      "sha256": "b4114a3b198680795d3ae03c411e657c4f8ad0186a92c8be4588932aaf07a293",
       "source": "eia",
       "source_id": "eia_primary_energy",
-      "source_status": "MISSING_REQUIRED_EXPORT",
-      "source_url": "https://www.eia.gov/totalenergy/data/browser/?tbl=T01.03",
-      "unit_system": "Declared by the source-specific schema and recorded again in the normalized panel."
+      "source_status": "READY_FOR_REVIEW",
+      "source_url": "https://www.eia.gov/totalenergy/data/browser/csv.php?tbl=T01.03&freq=A",
+      "transformation_manifest": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_us_economics_transform_manifest.json",
+      "unit_system": "quadrillion Btu per year; runtime divides by population thousands before rebasing"
     },
     {
       "benchmark_role": "historical descriptive energy-transition input",
+      "coverage": null,
       "exists": false,
       "expected_columns": [
         "Year",
@@ -279,37 +384,50 @@
       "license_or_terms": "EIA public-data terms; preserve estimation notes and source columns.",
       "local_path": "docs/data/external/economics/us_historical/eia/2026-07-12/eia_energy_history_1776_1945.csv",
       "original_filename": "eia_energy_history_1776_1945.csv",
-      "preprocessing": "Raw or provider-exported annual table. The normalizer rejects files that do not match the declared schema.",
+      "preprocessing": "Normalized research subset produced from a provider raw export. See Data/03_Research/uet_us_economics_transform_manifest.json for raw identity, table/series selection, and transformations.",
       "required_for_primary_panel": false,
       "retrieval_date": null,
+      "retrieval_timestamp_utc": null,
       "source": "eia",
       "source_id": "eia_energy_history",
-      "source_status": "MISSING_REQUIRED_EXPORT",
+      "source_status": "OPTIONAL_EXPORT_PENDING",
       "source_url": "https://www.eia.gov/todayinenergy/detail.php?id=67824",
-      "unit_system": "Declared by the source-specific schema and recorded again in the normalized panel."
+      "transformation_manifest": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_us_economics_transform_manifest.json",
+      "unit_system": "source-declared quadrillion Btu; literal heat-content comparability remains blocked"
     },
     {
       "benchmark_role": "exact construction-specific wage-productivity replication",
-      "exists": false,
+      "bytes": 3331,
+      "coverage": {
+        "end": "2024",
+        "field": "Year",
+        "observations": 77,
+        "start": "1948"
+      },
+      "exists": true,
       "expected_columns": [
         "Year",
         "net_productivity_index",
-        "typical_worker_compensation_index"
+        "epi_compensation_index"
       ],
       "license_or_terms": "EPI data-library terms; archive the downloaded chart data and chart date.",
       "local_path": "docs/data/external/economics/us_historical/epi/2026-07-12/epi_productivity_pay.csv",
       "original_filename": "epi_productivity_pay.csv",
-      "preprocessing": "Raw or provider-exported annual table. The normalizer rejects files that do not match the declared schema.",
+      "preprocessing": "Normalized research subset produced from a provider raw export. See Data/03_Research/uet_us_economics_transform_manifest.json for raw identity, table/series selection, and transformations.",
       "required_for_primary_panel": true,
-      "retrieval_date": null,
+      "retrieval_date": "2026-07-12",
+      "retrieval_timestamp_utc": "2026-07-15T19:09:30.918267+00:00",
+      "sha256": "21b9eafdbc60248f674c04e2c0ee4f1563eb30fe6e590b32fe4162aa363ff555",
       "source": "epi",
       "source_id": "epi_productivity_pay",
-      "source_status": "MISSING_REQUIRED_EXPORT",
+      "source_status": "READY_FOR_REVIEW",
       "source_url": "https://www.epi.org/productivity-pay-gap/",
-      "unit_system": "Declared by the source-specific schema and recorded again in the normalized panel."
+      "transformation_manifest": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_us_economics_transform_manifest.json",
+      "unit_system": "dimensionless indexes rebased to 1979=100 from provider chart values"
     },
     {
       "benchmark_role": "gold real-asset diagnostic",
+      "coverage": null,
       "exists": false,
       "expected_columns": [
         "Year",
@@ -318,17 +436,20 @@
       "license_or_terms": "LBMA data terms apply; archive licensed/export metadata.",
       "local_path": "docs/data/external/economics/us_historical/lbma/2026-07-12/lbma_gold_annual.csv",
       "original_filename": "lbma_gold_annual.csv",
-      "preprocessing": "Raw or provider-exported annual table. The normalizer rejects files that do not match the declared schema.",
+      "preprocessing": "Normalized research subset produced from a provider raw export. See Data/03_Research/uet_us_economics_transform_manifest.json for raw identity, table/series selection, and transformations.",
       "required_for_primary_panel": false,
       "retrieval_date": null,
+      "retrieval_timestamp_utc": null,
       "source": "lbma",
       "source_id": "lbma_gold",
-      "source_status": "MISSING_REQUIRED_EXPORT",
+      "source_status": "OPTIONAL_EXPORT_PENDING",
       "source_url": "https://www.lbma.org.uk/prices-and-data/precious-metal-prices",
-      "unit_system": "Declared by the source-specific schema and recorded again in the normalized panel."
+      "transformation_manifest": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_us_economics_transform_manifest.json",
+      "unit_system": "USD per troy ounce; real normalization uses CPI-U"
     },
     {
       "benchmark_role": "S&P wealth-preservation diagnostic",
+      "coverage": null,
       "exists": false,
       "expected_columns": [
         "Year",
@@ -337,14 +458,16 @@
       "license_or_terms": "Requires a user-licensed S&P Dow Jones total-return export; do not use a Yahoo price-only substitute.",
       "local_path": "docs/data/external/economics/us_historical/sp_dji/2026-07-12/sp500_total_return_annual.csv",
       "original_filename": "sp500_total_return_annual.csv",
-      "preprocessing": "Raw or provider-exported annual table. The normalizer rejects files that do not match the declared schema.",
+      "preprocessing": "Normalized research subset produced from a provider raw export. See Data/03_Research/uet_us_economics_transform_manifest.json for raw identity, table/series selection, and transformations.",
       "required_for_primary_panel": false,
       "retrieval_date": null,
+      "retrieval_timestamp_utc": null,
       "source": "sp_dji",
       "source_id": "sp500_total_return",
-      "source_status": "MISSING_REQUIRED_EXPORT",
+      "source_status": "OPTIONAL_EXPORT_PENDING",
       "source_url": "https://www.spglobal.com/spdji/",
-      "unit_system": "Declared by the source-specific schema and recorded again in the normalized panel."
+      "transformation_manifest": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_us_economics_transform_manifest.json",
+      "unit_system": "dimensionless total-return index; real normalization uses CPI-U"
     }
   ],
   "topic": "0.25_Strategy_Power_Economics"

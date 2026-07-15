@@ -1,18 +1,352 @@
 {
-  "blockers": [
-    "Primary panel cannot be constructed until every declared primary source is present and parseable.",
-    "bea_fixed_assets: MISSING_REQUIRED_EXPORT",
-    "bea_fixed_assets: required normalized annual export is absent.",
-    "eia_primary_energy: MISSING_REQUIRED_EXPORT",
-    "eia_primary_energy: required normalized annual export is absent.",
-    "epi_productivity_pay: MISSING_REQUIRED_EXPORT"
-  ],
-  "claim_boundary": "The R/N/K/I diagnostic did not run because the source-locked panel is incomplete.",
+  "claim_boundary": "The model measures temporal association in a U.S. proxy panel. It does not prove R=N+K+I, fiat causality, or an economic law.",
+  "controller_status": "NO_PREDECLARED_CANDIDATE_SIGNAL",
   "formula_ids": [
     "EC25-UET-RESOURCE-ENGINE"
   ],
-  "generated_at_utc": "2026-07-12T12:01:41.709562+00:00",
+  "generated_at_utc": "2026-07-15T19:12:38.678781+00:00",
+  "parameter_policy": {
+    "candidate_signal_threshold": {
+      "bootstrap_interval_requirement": "95 percent interval for squared-error difference lies below zero",
+      "claim_impact": "none; Claim Class C remains controlling",
+      "declared_primary_baselines": [
+        "constant_growth",
+        "zero_growth"
+      ],
+      "median_rmse_improvement_vs_each_primary_baseline": 0.1
+    },
+    "horizons": {
+      "primary": 3,
+      "sensitivity": [
+        1,
+        5
+      ]
+    },
+    "infrastructure_proxy": {
+      "aggregation": "equal-weight geometric mean",
+      "components": [
+        "private_tangible_fixed_assets_quantity_index_2017_100_per_employee",
+        "government_fixed_assets_quantity_index_2017_100_per_employee"
+      ],
+      "unit_note": "BEA chain-type quantity indexes, not a dollar-valued stock series"
+    },
+    "knowledge_proxy": {
+      "primary": "ip_product_quantity_index_2017_100_per_employee",
+      "robustness": "utility_patents_per_capita",
+      "unit_note": "BEA chain-type quantity index, not a dollar-valued investment series"
+    },
+    "necessity_proxy": {
+      "aggregation": "equal-weight standardized mean",
+      "components": [
+        "annual_cpi_energy_inflation",
+        "annual_unemployment_rate"
+      ],
+      "standardization": "fit on each training window only"
+    },
+    "policy": "Predeclared before the first model run; do not tune against holdout results.",
+    "resource_index": {
+      "aggregation": "equal-weight geometric mean",
+      "base_year": 1959,
+      "components": [
+        "real_gdp_per_capita",
+        "nonfarm_business_output_per_hour",
+        "primary_energy_per_capita"
+      ]
+    },
+    "sample": {
+      "country": "United States",
+      "end_year": 2024,
+      "frequency": "annual",
+      "start_year": 1959
+    },
+    "schema_version": "1.0",
+    "topic": "0.25_Strategy_Power_Economics"
+  },
+  "results": [
+    {
+      "candidate_signal": false,
+      "global_fit": {
+        "coefficient_labels": [
+          "intercept",
+          "necessity_constraint_proxy",
+          "knowledge_growth",
+          "infrastructure_growth"
+        ],
+        "coefficients": [
+          0.03343942449037147,
+          -0.015365587281775266,
+          0.05236105660517627,
+          0.6481147444355005
+        ],
+        "n": 62,
+        "r_squared": 0.18658832647593282,
+        "residual_rmse": 0.030804971935631538
+      },
+      "horizon_years": 3,
+      "interpretation": "A candidate signal is a predeclared internal diagnostic condition only. It is neither causal evidence nor a claim-class upgrade.",
+      "rolling_origin": {
+        "acceptance_rule": "Candidate requires at least 10 percent lower median rolling-origin RMSE than every declared baseline and a 95 percent block-bootstrap squared-error interval below zero.",
+        "baseline_metrics": {
+          "constant_growth": {
+            "aggregate_rmse_improvement": -0.3244051630308977,
+            "median_rmse_improvement": -0.14876428245070006,
+            "median_rolling_rmse": 0.023148850248467134,
+            "rmse": 0.02986883032126981,
+            "squared_error_delta_bootstrap": {
+              "block_size": 3,
+              "draws": 1000,
+              "lower": 0.0002120953985786207,
+              "mean": 0.0006727226038688401,
+              "status": "OK",
+              "upper": 0.0012418535896312243
+            }
+          },
+          "zero_growth": {
+            "aggregate_rmse_improvement": -0.31871470947420755,
+            "median_rmse_improvement": -0.06371942093187233,
+            "median_rolling_rmse": 0.02499961157232855,
+            "rmse": 0.029997718844704584,
+            "squared_error_delta_bootstrap": {
+              "block_size": 3,
+              "draws": 1000,
+              "lower": 0.00017745053315552844,
+              "mean": 0.0006650064927437021,
+              "status": "OK",
+              "upper": 0.0012023193118791636
+            }
+          }
+        },
+        "constant_growth_baseline_rmse": 0.02986883032126981,
+        "median_constant_growth_baseline_rmse": 0.023148850248467134,
+        "median_rmse_improvement": -0.14876428245070006,
+        "origins": [
+          2000,
+          2001,
+          2002,
+          2003,
+          2004,
+          2005,
+          2006,
+          2007,
+          2008,
+          2009,
+          2010,
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021
+        ],
+        "rmse_improvement": -0.3244051630308977,
+        "squared_error_delta_bootstrap": {
+          "block_size": 3,
+          "draws": 1000,
+          "lower": 0.0002120953985786207,
+          "mean": 0.0006727226038688401,
+          "status": "OK",
+          "upper": 0.0012418535896312243
+        },
+        "uet_median_rolling_rmse": 0.026592572345239058,
+        "uet_rmse": 0.039558433091183565
+      },
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "candidate_signal": false,
+      "global_fit": {
+        "coefficient_labels": [
+          "intercept",
+          "necessity_constraint_proxy",
+          "knowledge_growth",
+          "infrastructure_growth"
+        ],
+        "coefficients": [
+          0.011624873800020044,
+          -0.0065219231771876445,
+          0.0011689587551144461,
+          0.2928492153665018
+        ],
+        "n": 64,
+        "r_squared": 0.13891314220445738,
+        "residual_rmse": 0.01620414657159486
+      },
+      "horizon_years": 1,
+      "interpretation": "A candidate signal is a predeclared internal diagnostic condition only. It is neither causal evidence nor a claim-class upgrade.",
+      "rolling_origin": {
+        "acceptance_rule": "Candidate requires at least 10 percent lower median rolling-origin RMSE than every declared baseline and a 95 percent block-bootstrap squared-error interval below zero.",
+        "baseline_metrics": {
+          "constant_growth": {
+            "aggregate_rmse_improvement": -0.05362886654396015,
+            "median_rmse_improvement": 0.07260990740903805,
+            "median_rolling_rmse": 0.00873960129612069,
+            "rmse": 0.016008584618287452,
+            "squared_error_delta_bootstrap": {
+              "block_size": 3,
+              "draws": 1000,
+              "lower": -0.00010083607565110406,
+              "mean": 2.8224512559640167e-05,
+              "status": "OK",
+              "upper": 0.00013279595954761235
+            }
+          },
+          "zero_growth": {
+            "aggregate_rmse_improvement": -0.051654473676547186,
+            "median_rmse_improvement": 0.2574459081302961,
+            "median_rolling_rmse": 0.010915056214705565,
+            "rmse": 0.01603863939015299,
+            "squared_error_delta_bootstrap": {
+              "block_size": 3,
+              "draws": 1000,
+              "lower": -0.00023914421511639567,
+              "mean": 2.7261340553142634e-05,
+              "status": "OK",
+              "upper": 0.000341747724399736
+            }
+          }
+        },
+        "constant_growth_baseline_rmse": 0.016008584618287452,
+        "median_constant_growth_baseline_rmse": 0.00873960129612069,
+        "median_rmse_improvement": 0.07260990740903805,
+        "origins": [
+          2000,
+          2001,
+          2002,
+          2003,
+          2004,
+          2005,
+          2006,
+          2007,
+          2008,
+          2009,
+          2010,
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023
+        ],
+        "rmse_improvement": -0.05362886654396015,
+        "squared_error_delta_bootstrap": {
+          "block_size": 3,
+          "draws": 1000,
+          "lower": -0.00010083607565110406,
+          "mean": 2.8224512559640167e-05,
+          "status": "OK",
+          "upper": 0.00013279595954761235
+        },
+        "uet_median_rolling_rmse": 0.008105019655217458,
+        "uet_rmse": 0.01686710686633928
+      },
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "candidate_signal": false,
+      "global_fit": {
+        "coefficient_labels": [
+          "intercept",
+          "necessity_constraint_proxy",
+          "knowledge_growth",
+          "infrastructure_growth"
+        ],
+        "coefficients": [
+          0.04580717113302678,
+          -0.019947431100649466,
+          0.29095781032280765,
+          1.0273011241651608
+        ],
+        "n": 60,
+        "r_squared": 0.19375836099083898,
+        "residual_rmse": 0.04220848591797405
+      },
+      "horizon_years": 5,
+      "interpretation": "A candidate signal is a predeclared internal diagnostic condition only. It is neither causal evidence nor a claim-class upgrade.",
+      "rolling_origin": {
+        "acceptance_rule": "Candidate requires at least 10 percent lower median rolling-origin RMSE than every declared baseline and a 95 percent block-bootstrap squared-error interval below zero.",
+        "baseline_metrics": {
+          "constant_growth": {
+            "aggregate_rmse_improvement": -0.21559570799693728,
+            "median_rmse_improvement": -0.42121752779324595,
+            "median_rolling_rmse": 0.035080679579327784,
+            "rmse": 0.0486671756934951,
+            "squared_error_delta_bootstrap": {
+              "block_size": 3,
+              "draws": 1000,
+              "lower": 0.0004518035398162749,
+              "mean": 0.0011313654527513035,
+              "status": "OK",
+              "upper": 0.0019775960293615964
+            }
+          },
+          "zero_growth": {
+            "aggregate_rmse_improvement": -0.3755032678638983,
+            "median_rmse_improvement": -0.21327788416959526,
+            "median_rolling_rmse": 0.041093040065725006,
+            "rmse": 0.04300942882179991,
+            "squared_error_delta_bootstrap": {
+              "block_size": 3,
+              "draws": 1000,
+              "lower": 6.652673181005687e-05,
+              "mean": 0.001650048475155351,
+              "status": "OK",
+              "upper": 0.0029455287490681463
+            }
+          }
+        },
+        "constant_growth_baseline_rmse": 0.0486671756934951,
+        "median_constant_growth_baseline_rmse": 0.035080679579327784,
+        "median_rmse_improvement": -0.42121752779324595,
+        "origins": [
+          2000,
+          2001,
+          2002,
+          2003,
+          2004,
+          2005,
+          2006,
+          2007,
+          2008,
+          2009,
+          2010,
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
+          2016,
+          2017,
+          2018,
+          2019
+        ],
+        "rmse_improvement": -0.21559570799693728,
+        "squared_error_delta_bootstrap": {
+          "block_size": 3,
+          "draws": 1000,
+          "lower": 0.0004518035398162749,
+          "mean": 0.0011313654527513035,
+          "status": "OK",
+          "upper": 0.0019775960293615964
+        },
+        "uet_median_rolling_rmse": 0.04985727670503924,
+        "uet_rmse": 0.05915960989334551
+      },
+      "status": "DIAGNOSTIC_COMPLETE"
+    }
+  ],
   "schema_version": "1.0",
-  "status": "WARN",
+  "status": "DIAGNOSTIC_COMPLETE",
   "topic": "0.25_Strategy_Power_Economics"
 }

@@ -2,6 +2,10 @@
   "candidate_signal_threshold": {
     "bootstrap_interval_requirement": "95 percent interval for squared-error difference lies below zero",
     "claim_impact": "none; Claim Class C remains controlling",
+    "declared_primary_baselines": [
+      "constant_growth",
+      "zero_growth"
+    ],
     "median_rmse_improvement_vs_each_primary_baseline": 0.1
   },
   "horizons": {
@@ -14,13 +18,15 @@
   "infrastructure_proxy": {
     "aggregation": "equal-weight geometric mean",
     "components": [
-      "real_private_tangible_nonresidential_fixed_assets_per_employee",
-      "real_government_fixed_assets_per_employee"
-    ]
+      "private_tangible_fixed_assets_quantity_index_2017_100_per_employee",
+      "government_fixed_assets_quantity_index_2017_100_per_employee"
+    ],
+    "unit_note": "BEA chain-type quantity indexes, not a dollar-valued stock series"
   },
   "knowledge_proxy": {
-    "primary": "real_intellectual_property_investment_per_employee",
-    "robustness": "utility_patents_per_capita"
+    "primary": "ip_product_quantity_index_2017_100_per_employee",
+    "robustness": "utility_patents_per_capita",
+    "unit_note": "BEA chain-type quantity index, not a dollar-valued investment series"
   },
   "necessity_proxy": {
     "aggregation": "equal-weight standardized mean",

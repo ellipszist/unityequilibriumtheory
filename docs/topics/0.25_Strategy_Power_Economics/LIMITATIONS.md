@@ -1,37 +1,52 @@
-# Limitations
+# Limitations: Topic 0.25
 
-- Current evidence supports only internal data integrity and descriptive market
-  diagnostics.
-- Upstream provenance remains incomplete for the World Bank/IMF economy baseline,
-  Yahoo-style market CSVs, and daily economic snapshot.
-- Provenance is now partially normalized rather than blank: each market lane is blocked only by missing retrieval date, the economy baseline still lacks upstream URL/DOI plus retrieval date, and the daily snapshot still lacks an upstream URL/API description.
-- `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`,
-  `source_lock_manifest.json`, and `model_claim_gate.json` are workflow controls only. They do not count as
-  upstream evidence, causal identification, or policy validation.
-- `economics_claim_scope_gate` is the current export controller: it allows only
-  internal descriptive market/economy diagnostics and blocks market prediction,
-  strategic-superiority, policy-causality, Nash-equilibrium, and
-  social-stabilization claims.
-- The old 8-billion resonance artifact was only a run-contract artifact and did
-  not provide a valid PASS for inequality reduction.
-- Market returns, volatility, and correlations are descriptive statistics, not
-  causal proof of a UET economic law.
-- Social-manifold terms such as Type C stabilizers, world lease, leverage wave,
-  and Omega reduction remain heuristic until calibrated and verifier-gated.
-- No current artifact proves superiority over Nash equilibrium or any real-world
-  policy prescription.
-- Strong paper-facing claims require exact input source, formula ID, artifact
-  status, uncertainty, and a clear limitation statement.
+## Current boundary
 
-## Book 1 historical lane limitations
+The topic is `Structured / Tier A` as an internally auditable package, while its scientific
+claim remains `Claim Class C` and `DESCRIPTIVE_DIAGNOSTIC_ONLY`. The tier change reflects the
+presence and rerunnability of standards artifacts; it is not a theory confirmation.
 
-- The 1959-2024 U.S. macro panel is not generated until BEA fixed-assets, EIA
-  annual primary-energy, and versioned EPI chart-data exports are source-locked.
-- `R=N+K+I` is a heuristic bridge expressed through dimensionless proxies, not a
-  derived economic identity.
-- The 1971-1973 years are excluded only from descriptive pre/post summaries; this
-  does not create a causal estimate of fiat currency or the Nixon Shock.
-- Gold and S&P 500 total-return tests remain blocked without exact LBMA and licensed
-  S&P inputs; local Yahoo price series may not fill that gap.
-- Energy-consumption history cannot establish a literal energy-density mechanism
-  without a source-locked heat-content basis and unit-conversion audit.
+## Data limitations
+
+- The primary panel is U.S.-only, annual, and 1959-2024. It is not a global causal comparison.
+- BEA fixed-asset inputs are chain-type quantity indexes (2017=100), not dollar-valued stocks.
+  Dividing them by employees creates indexed proxies, not physical capital measures.
+- EIA primary energy measures throughput in quadrillion Btu. It is not a literal fuel-energy
+  density measure.
+- The EIA 1776-1945 historical energy-mix export is absent.
+- A source-locked heat-content table with a common physical basis and explicit treatment of
+  nuclear, hydro, wind, and solar is absent.
+- LBMA annual gold and licensed S&P 500 total-return exports are absent; Yahoo price-only
+  files are not substitutes.
+- The EPI export is a current provider chart construction. It is not silently relabeled as the
+  Book's typical-worker series. BLS is reported as a separate comparator.
+- Legacy Yahoo-style market files, the global economy JSON, and daily snapshot have incomplete
+  upstream metadata and remain descriptive working copies only.
+
+## Model and inference limitations
+
+- `R=N+K+I` is a heuristic bridge through indexed proxies, not a dimensional identity or law.
+- Equal weights, base year, horizons, and proxy choices are predeclared benchmark policy, not
+  fitted constants or first-principles derivations.
+- Rolling-origin forecasts are internal temporal diagnostics. They are not external validation,
+  structural estimates, or causal identification.
+- The 1971-1973 exclusion makes pre/post summaries descriptive; it does not identify the Nixon
+  Shock, fiat regime, or any intervention effect.
+- The small pre-1971 sample (`n=11`) limits regime comparison precision.
+- The candidate signal is false at all tested horizons. A negative or mixed result is retained;
+  it is not tuned away.
+- No social-power, strategy, policy, or Nash-equilibrium lane is calibrated to real intervention
+  data or accepted as evidence.
+
+## Claim restrictions
+
+Do not export the current package as evidence that:
+
+- an economic law has been proved or verified;
+- fiat currency caused inflation, wage divergence, or wealth transfer;
+- gold, equities, or any asset is a validated scaling peg or superior store of value;
+- a policy, strategy, social stabilizer, or Nash-equilibrium improvement is validated.
+
+The next controlling machine-readable blocker is `energy_density: WARN` in the aggregate claim
+gate. Closing it would only unlock a descriptive historical lane; it would not by itself raise
+Claim Class C or establish causality.

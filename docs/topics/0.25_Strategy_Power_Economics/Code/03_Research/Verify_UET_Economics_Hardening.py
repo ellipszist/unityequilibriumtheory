@@ -13,6 +13,7 @@ from economic_hardening_common import (
     FORMULA_GATE,
     HOLDOUT_POLICY,
     PARAMETER_POLICY,
+    PANEL_STATUS,
     RESEARCH_DATA,
     ROOT,
     SOURCE_MANIFEST,
@@ -34,6 +35,23 @@ SUB_ARTIFACTS = {
     "energy_density": ARTIFACT_DIR / "0_25_energy_density_audit.json",
     "wage_productivity": ARTIFACT_DIR / "0_25_wage_productivity_audit.json",
 }
+LEGACY_DOC_ROOT = ROOT / "docs/topics/0.25_Strategy_Power_Economics/Doc"
+
+
+def legacy_claim_quarantine() -> dict:
+    docs = sorted(LEGACY_DOC_ROOT.rglob("*.md")) if LEGACY_DOC_ROOT.exists() else []
+    missing_warning = []
+    for path in docs:
+        content = path.read_text(encoding="utf-8", errors="replace")
+        if "Legacy claim boundary" not in content:
+            missing_warning.append(relative(path))
+    return {
+        "status": "PASS" if docs and not missing_warning else "WARN",
+        "files_scanned": len(docs),
+        "missing_boundary_warning_files": missing_warning,
+        "required_boundary_phrase": "Legacy claim boundary",
+        "claim_effect": "Legacy notes remain quarantined from topic status and primary Book 1 evidence.",
+    }
 
 
 def run(script: str, arguments: list[str] | None = None) -> dict:
@@ -79,12 +97,29 @@ def main() -> int:
         ]
     )
     readiness = load_json(SOURCE_READINESS)
+    source_manifest_payload = load_json(SOURCE_MANIFEST)
+    transform_manifest_payload = load_json(RESEARCH_DATA / "uet_us_economics_transform_manifest.json")
+    panel_payload = load_json(PANEL_STATUS)
+    formula_payload = load_json(FORMULA_GATE)
+    parameter_payload = load_json(PARAMETER_POLICY)
+    holdout_payload = load_json(HOLDOUT_POLICY)
     sub_artifacts = {name: artifact_reference(path) for name, path in SUB_ARTIFACTS.items()}
+    sub_artifact_payloads = {name: load_json(path) for name, path in SUB_ARTIFACTS.items()}
+    legacy_quarantine = legacy_claim_quarantine()
     source_ready = readiness.get("status") == "PASS"
-    sub_complete = all(item["status"] not in {"MISSING", "WARN"} for item in sub_artifacts.values())
+    command_failures = [f"{item['script']}: exit_code={item['exit_code']}" for item in commands if item.get("exit_code") != 0]
+    sub_complete = (
+        not command_failures
+        and legacy_quarantine["status"] == "PASS"
+        and all(item["status"] not in {"MISSING", "WARN"} for item in sub_artifacts.values())
+    )
     controller_status = "DESCRIPTIVE_DIAGNOSTIC_ONLY"
     status = "DIAGNOSTIC_COMPLETE" if source_ready and sub_complete else "WARN"
     next_blockers = list(readiness.get("blockers", []))
+    next_blockers.extend(command_failures)
+    if legacy_quarantine["status"] != "PASS":
+        next_blockers.append("legacy_claim_quarantine: WARN")
+        next_blockers.extend(legacy_quarantine["missing_boundary_warning_files"])
     if not source_ready and not next_blockers:
         next_blockers.append("Source-readiness gate is absent or not PASS.")
     for name, item in sub_artifacts.items():
@@ -121,10 +156,24 @@ def main() -> int:
         "formula_ids": ["EC25-UET-RESOURCE-ENGINE", "EC25-UET-MONETARY-RESOURCE-MISMATCH", "EC25-UET-WAGE-PRODUCTIVITY-GAP"],
         "source_manifest": artifact_reference(SOURCE_MANIFEST),
         "source_readiness": readiness,
+        "source_transformation_manifest": artifact_reference(RESEARCH_DATA / "uet_us_economics_transform_manifest.json"),
+        "panel_status": artifact_reference(PANEL_STATUS),
+        "execution_gate": {"all_commands_exit_zero": not command_failures, "command_failures": command_failures},
+        "legacy_claim_quarantine": legacy_quarantine,
         "formula_gate": artifact_reference(FORMULA_GATE),
         "parameter_policy": artifact_reference(PARAMETER_POLICY),
         "holdout_policy": artifact_reference(HOLDOUT_POLICY),
         "sub_artifacts": sub_artifacts,
+        "evidence_bundle": {
+            "retrieval_vintage": source_manifest_payload.get("retrieval_vintage"),
+            "source_records_with_hashes": source_manifest_payload.get("sources", []),
+            "source_transformation_manifest": transform_manifest_payload,
+            "panel_status_payload": panel_payload,
+            "formula_gate_payload": formula_payload,
+            "parameter_policy_payload": parameter_payload,
+            "holdout_policy_payload": holdout_payload,
+            "sub_artifact_payloads": sub_artifact_payloads,
+        },
         "commands": commands,
         "economics_claim_scope_gate": claim_gate,
         "limitations": [

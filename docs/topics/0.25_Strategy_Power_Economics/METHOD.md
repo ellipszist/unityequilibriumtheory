@@ -1,83 +1,87 @@
-# Method
+# Method: Book 1 Economics Diagnostic Lane
 
-## Problem Target
+## Scope and theory status
 
-This topic studies whether UET-style social and economic models can be connected
-to measurable market and macroeconomic diagnostics. The current hardening pass
-limits accepted evidence to data integrity and descriptive benchmark metrics.
+Book 1 supplies hypotheses, not a closed economic theory. The conceptual relation `R = N + K + I`
+links resource-capacity change to necessity/constraint, knowledge, and infrastructure. The
+money-value idea is tested as a mismatch between monetary growth and a measured resource-capacity
+proxy. The Stone-in-the-Balloon, energy-density, and wage-productivity statements are kept as
+separate falsifiable lanes.
 
-## Evidence Lanes
+All four lanes are internal, descriptive, and non-causal. The formulas are registered as
+`heuristic bridge` or `topic-derived relation`, never as first-principles economic identities.
 
-| Lane | Files | Current role |
-| :-- | :-- | :-- |
-| Market time-series diagnostics | Yahoo-style CSVs, `source_lock_manifest.json`, `Research_Economic_Data_Audit.py` | primary verifier lane |
-| Economy baseline sanity | `Global_Economy_2024.json`, `source_lock_manifest.json`, verifier artifact | primary verifier lane |
-| Daily indicator snapshot | `daily_economic_snapshot.json`, `source_lock_manifest.json` | local context only until upstream source is recorded |
-| Source evidence workflow | `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, `source_lock_manifest.json` | provenance gate before data or claim upgrades |
-| Social power engine | `Engine_Power_Dynamics.py` | model proposal; not causal evidence |
-| Stability/proof scripts | `Proof_Social_Stability.py`, `Research_8_Billion_Resonance.py` | heuristic simulations; require seeded artifact gates |
-| Policy/strategy scripts | world lease, leverage, water, ecosystem scripts | future scenario lanes; blocked by `model_claim_gate.json` |
+## Population, period, and source package
 
-## Variables
+- Country: United States.
+- Frequency: annual.
+- Coverage: 1959-2024, frozen at retrieval vintage `2026-07-12`.
+- Panel: `66` complete rows; no silent imputation.
+- Sources: FRED/H.6 and BLS series, BEA Fixed Assets Tables 1.2/2.8, EIA Table 1.3,
+  and a versioned EPI Data Library chart export.
+- Source identity: `Data/03_Research/uet_us_economics_source_manifest.json` and
+  `uet_us_economics_transform_manifest.json`.
 
-| Symbol / field | Meaning | Unit |
-| :-- | :-- | :-- |
-| `P_t` | close price or index level at date `t` | source unit |
-| `r_t` | log return | dimensionless |
-| `sigma_ann` | annualized volatility | dimensionless fraction/year |
-| `corr` | Pearson correlation of returns | dimensionless |
-| `Gini` | inequality index | 0-100 |
-| `GDP_PPP_USD` | purchasing-power-parity GDP | USD |
-| `Population` | human population | count |
-| `Omega` | simulation resource-spread proxy | dimensionless, heuristic |
+## Proxy construction
 
-## Procedure
+### Resource capacity `R`
 
-1. Parse each market CSV and count valid close-price rows.
-2. Compute log returns and annualized volatility.
-3. Compute descriptive cross-market return correlations.
-4. Parse the economy JSON and check Gini values against the declared 0-100 unit convention.
-5. Record all input hashes and provenance blockers.
-6. Regenerate source-lock, source-evidence, and model-claim workflow files.
-7. Write a machine-readable artifact with metrics, thresholds, checks, blockers,
-   and limitations.
+Each component is rebased to 1959=100 and combined as an equal-weight geometric mean:
 
-## Domain of Validity
+1. real GDP per capita from `GDPC1 / POP`;
+2. nonfarm-business output per hour from `OPHNFB`;
+3. primary energy consumption per capita from EIA `TETCBUS / POP`.
 
-The current method supports only internal descriptive diagnostics for the local
-market/economy data package. It does not prove policy causality, strategic
-superiority, social stabilization, or game-theory dominance.
+The result is dimensionless and intentionally proxy-based. It is not a national wealth stock
+and not a direct measurement of the Book's theoretical `R`.
 
-## Dependency Policy
+### Necessity / constraint `N`
 
-Simulation claims from the power engine must not be treated as evidence for real
-economic outcomes until they are calibrated against source-locked data and pass a
-separate deterministic verifier with seeds and thresholds.
+`N` is the equal-weight mean of training-window standardized CPI-energy inflation and the
+unemployment rate. Standardization is recomputed using only data available at each rolling
+forecast origin. This is an explicit diagnostic proxy for constraint, not biological necessity.
 
-## Claim Workflow
+### Knowledge `K`
 
-1. Run `Research_Economic_Data_Audit.py` to regenerate the artifact and workflow files.
-2. Read `source_lock_manifest.json` as the normative map of which files are Yahoo-style working copies, local macroeconomic working tables, or local gateway snapshots.
-3. Fill `source_evidence_intake_stub.json` only with real upstream market, macro, and snapshot metadata.
-4. Use `source_evidence_readiness_matrix.json` as the provenance gate before changing working-copy data or claim class.
-5. Check `model_claim_gate.json` before treating any simulation or policy lane as evidence.
+`K` is BEA nonresidential intellectual-property product investment's chain-type quantity index
+(2017=100), divided by total nonfarm employees. The index is not treated as a dollar-valued
+investment series. Utility patents per capita remain a declared robustness extension and are
+not silently substituted in the primary run.
 
-## Current provenance gate state
+### Infrastructure `I`
 
-- Market lanes: partial but nearly complete (`5/6` fields each), blocked only by retrieval date
-- Global economy lane: partial (`4/6`), blocked by missing upstream URL/DOI and retrieval date
-- Daily snapshot lane: partial (`5/6`), blocked by missing upstream URL/API
-- No lane is source-review-ready yet, but all five are now field-mapped instead of blank placeholders
+`I` is the geometric mean of BEA nonresidential tangible fixed-asset and government fixed-asset
+chain-type quantity indexes (2017=100), each divided by total nonfarm employees. It is an
+indexed infrastructure proxy, not a dollar-valued capital stock.
 
-## Book 1 historical diagnostic lane
+## Verification lanes
 
-The Book 1 lane uses a U.S. annual 1959-2024 panel only after every source is
-locked. `R` is an equal-weight geometric index of real GDP per capita, output per
-hour, and primary energy per capita. `N` is a training-window-standardized proxy
-formed from CPI-energy inflation and unemployment. `K` is real intellectual-property
-investment per employee, and `I` is a geometric infrastructure proxy built from
-private tangible nonresidential and government fixed assets per employee.
+1. **Resource engine:** estimate `Delta ln R[t+3]` on `N[t]`, `Delta ln K[t]`, and
+   `Delta ln I[t]`; report one- and five-year sensitivities. `K` and `I` have expected
+   positive associations in the diagnostic, while `N` has no predeclared sign.
+2. **Stone-in-the-Balloon:** define `D[t] = Delta ln M2[t] - Delta ln R[t]`; compare one-,
+   three-, and five-year inflation forecasts with inflation autoregression, money-growth-only,
+   and quantity-style baselines. Summaries split 1959-1970 and 1974-2024, excluding 1971-1973.
+3. **Pegged-stone asset lane:** requires exact LBMA gold and licensed S&P 500 total-return
+   exports. The current lane is blocked; no Yahoo price-only substitution is allowed.
+4. **Energy lane:** the postwar EIA throughput series is ready for the panel. The historical
+   1776-1945 transition and literal fuel-energy-density claim remain blocked pending a common
+   heat-content basis and conversion audit.
+5. **Wage lane:** reproduce the versioned EPI chart construction, then report BLS OPHNFB/
+   COMPRNFB separately. Differences are source/vintage/construction findings, not evidence of
+   fiat causality.
 
-The operational regression, monetary-resource mismatch, asset tracking, energy
-history, and wage-productivity checks are diagnostic-only. They neither identify
-fiat-currency causality nor validate a policy, asset, or strategy claim.
+## Evaluation and uncertainty
+
+Rolling-origin forecasts start in 2000. Every transformation and coefficient is fitted only
+on data available at each origin. The primary horizon is three years; one and five years are
+sensitivities. The predictive-candidate rule was declared before the run: at least 10% lower
+median rolling-origin RMSE than every named baseline and a 95% block-bootstrap interval for
+squared-error differences below zero. A candidate signal would still leave Claim Class C in
+place; the current result is false for every tested horizon.
+
+## What the method does not identify
+
+The design is not a causal estimate of fiat money, the 1971-1973 monetary regime transition,
+policy effects, asset superiority, or social stabilization. It is a source-locked diagnostic
+architecture that reports both mixed and negative results.

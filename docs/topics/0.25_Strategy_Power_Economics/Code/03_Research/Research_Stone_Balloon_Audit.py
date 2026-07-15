@@ -12,6 +12,7 @@ from economic_hardening_common import (
     SOURCE_MANIFEST,
     as_float,
     load_json,
+    median,
     moving_block_bootstrap_interval,
     ols,
     read_csv,
@@ -87,19 +88,28 @@ def rolling_models(rows: dict[int, dict[str, float]], horizon: int, start: int =
         actual.append(candidate["target"])
         for name in names:
             predictions[name].append(pending[name])
-    metrics = {name: {"rmse": rmse(actual, predicted), "predictions": predicted} for name, predicted in predictions.items()}
+    metrics = {
+        name: {
+            "rmse": rmse(actual, predicted),
+            "median_rolling_rmse": median([abs(observed - forecast) for observed, forecast in zip(actual, predicted)]),
+        }
+        for name, predicted in predictions.items()
+    }
     uet_rmse = metrics["uet_monetary_resource_mismatch"]["rmse"]
+    uet_median_rmse = metrics["uet_monetary_resource_mismatch"]["median_rolling_rmse"]
     comparisons = {}
     for name in names[:-1]:
         baseline_rmse = metrics[name]["rmse"]
+        baseline_median_rmse = metrics[name]["median_rolling_rmse"]
         deltas = [(uet - observed) ** 2 - (baseline - observed) ** 2 for observed, uet, baseline in zip(actual, predictions["uet_monetary_resource_mismatch"], predictions[name])]
         comparisons[name] = {
-            "rmse_improvement": None if not uet_rmse or not baseline_rmse else 1.0 - uet_rmse / baseline_rmse,
+            "rmse_improvement": None if uet_rmse is None or baseline_rmse is None else 1.0 - uet_rmse / baseline_rmse,
+            "median_rmse_improvement": None if uet_median_rmse is None or baseline_median_rmse is None else 1.0 - uet_median_rmse / baseline_median_rmse,
             "squared_error_delta_bootstrap": moving_block_bootstrap_interval(deltas),
         }
     candidate_signal = bool(comparisons) and all(
-        item["rmse_improvement"] is not None
-        and item["rmse_improvement"] >= 0.1
+        item["median_rmse_improvement"] is not None
+        and item["median_rmse_improvement"] >= 0.1
         and item["squared_error_delta_bootstrap"].get("upper") is not None
         and item["squared_error_delta_bootstrap"]["upper"] < 0
         for item in comparisons.values()
@@ -108,8 +118,9 @@ def rolling_models(rows: dict[int, dict[str, float]], horizon: int, start: int =
         "horizon_years": horizon,
         "origins": origins,
         "actual_inflation": actual,
-        "model_metrics": {name: {"rmse": data["rmse"]} for name, data in metrics.items()},
+        "model_metrics": metrics,
         "uet_vs_baselines": comparisons,
+        "acceptance_rule": "Candidate requires at least 10 percent lower median rolling-origin RMSE than every named baseline and a 95 percent block-bootstrap squared-error interval below zero.",
         "candidate_signal": candidate_signal,
     }
 

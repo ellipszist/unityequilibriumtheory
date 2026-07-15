@@ -1,18 +1,73 @@
 {
-  "blockers": [
-    "Primary panel cannot be constructed until every declared primary source is present and parseable.",
-    "bea_fixed_assets: MISSING_REQUIRED_EXPORT",
-    "bea_fixed_assets: required normalized annual export is absent.",
-    "eia_primary_energy: MISSING_REQUIRED_EXPORT",
-    "eia_primary_energy: required normalized annual export is absent.",
-    "epi_productivity_pay: MISSING_REQUIRED_EXPORT"
+  "claim_boundary": "The normalized panel enables internal descriptive diagnostics only.",
+  "coverage": {
+    "end_year": 2024,
+    "rows": 66,
+    "start_year": 1959
+  },
+  "formula_boundary": "R/N/K/I are dimensionless proxy constructs after the stated transformations; they are not a dimensional identity.",
+  "generated_at_utc": "2026-07-15T19:12:38.421210+00:00",
+  "input_hashes": [
+    {
+      "path": "docs/data/external/economics/us_historical/fred/2026-07-12/M2SL.csv",
+      "sha256": "cf0751c50c64ea1a6bd6cc6694d91d702466825ca7c393bc2a1e3ef75a14247a"
+    },
+    {
+      "path": "docs/data/external/economics/us_historical/fred/2026-07-12/GDPC1.csv",
+      "sha256": "c7e1bb58b27de8f4b4b117e91d8099407727845dd4b7f1bdb5d6c14f925fc122"
+    },
+    {
+      "path": "docs/data/external/economics/us_historical/fred/2026-07-12/POP.csv",
+      "sha256": "77b42891fa92ba6c74ad586c4df9753e5dc408a048ce3d96e776d21401c217b7"
+    },
+    {
+      "path": "docs/data/external/economics/us_historical/fred/2026-07-12/UNRATE.csv",
+      "sha256": "0c99be07bd92f467672c4f0c5fd160b24fbb0b587ca1612867468a07f28a555f"
+    },
+    {
+      "path": "docs/data/external/economics/us_historical/fred/2026-07-12/CPIENGSL.csv",
+      "sha256": "05583d55e776ca573c55620d356ee6df3a52424bd160b997472bd4196480af69"
+    },
+    {
+      "path": "docs/data/external/economics/us_historical/fred/2026-07-12/CPIAUCSL.csv",
+      "sha256": "788111197a818c80e40722270c0f63e487df5c9713436e808f102b3424e94ee6"
+    },
+    {
+      "path": "docs/data/external/economics/us_historical/fred/2026-07-12/GDPDEF.csv",
+      "sha256": "9282015ec926512b06ca2669cf75ce182314091180f844295546240a2ee9cf63"
+    },
+    {
+      "path": "docs/data/external/economics/us_historical/fred/2026-07-12/TB3MS.csv",
+      "sha256": "ac6c866c6e9f5479926092179e680ad558262ff038a806977a9ce586b88aa436"
+    },
+    {
+      "path": "docs/data/external/economics/us_historical/fred/2026-07-12/OPHNFB.csv",
+      "sha256": "1a2155ebb301ccce6bf334af6a389e995e9edb3718cb78186f74eb13cdceb643"
+    },
+    {
+      "path": "docs/data/external/economics/us_historical/fred/2026-07-12/COMPRNFB.csv",
+      "sha256": "c97ffe3e8089ec6f99156a92e3f413d51af9bae887c1da6c4b5cefe832bc53b5"
+    },
+    {
+      "path": "docs/data/external/economics/us_historical/fred/2026-07-12/PAYEMS.csv",
+      "sha256": "177efe81de346565992ed81e5f62fbfe6740d300762f898bf9cca6be304b4d69"
+    },
+    {
+      "path": "docs/data/external/economics/us_historical/fred/2026-07-12/CMDEBT.csv",
+      "sha256": "0e02fa74fd4b341293a0f3cf665a228ba9562ecc88b5538d35590358677b00c3"
+    },
+    {
+      "path": "docs/data/external/economics/us_historical/bea/2026-07-12/bea_fixed_assets_annual.csv",
+      "sha256": "f926e7b7c1b81600be075d6e1e8eaceb5f97b7d489b1b30f1c04133afec755fe"
+    },
+    {
+      "path": "docs/data/external/economics/us_historical/eia/2026-07-12/eia_primary_energy_annual.csv",
+      "sha256": "b4114a3b198680795d3ae03c411e657c4f8ad0186a92c8be4588932aaf07a293"
+    }
   ],
-  "claim_boundary": "No model result was generated; absent values were not inferred or imputed.",
-  "controller_reason": "Source-lock and complete annual coverage are required before a UET historical panel can exist.",
-  "generated_at_utc": "2026-07-12T12:01:40.274899+00:00",
-  "missing_years": {},
   "panel_path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_us_macro_panel_1959_2024.csv",
+  "panel_sha256": "8c7dbdae24f5b46f372a1e8f5ad8267867299c7484992cd34cf1ffa0635fc085",
   "schema_version": "1.0",
-  "status": "WARN",
+  "status": "PASS",
   "topic": "0.25_Strategy_Power_Economics"
 }

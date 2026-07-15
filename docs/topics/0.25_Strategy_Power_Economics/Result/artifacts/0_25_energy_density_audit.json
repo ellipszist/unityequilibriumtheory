@@ -16,14 +16,16 @@
     ],
     "status": "BLOCKED"
   },
-  "generated_at_utc": "2026-07-12T12:01:43.374149+00:00",
+  "generated_at_utc": "2026-07-15T19:12:39.158902+00:00",
   "historical_energy_transition": {
     "blocker": "EIA historical 1776-1945 annual export is absent.",
     "status": "BLOCKED"
   },
   "postwar_primary_energy_input": {
-    "blocker": "EIA primary-energy annual export is absent.",
-    "status": "BLOCKED"
+    "first_year": 1959,
+    "last_year": 2024,
+    "n": 66,
+    "status": "READY_FOR_PANEL"
   },
   "schema_version": "1.0",
   "status": "WARN",

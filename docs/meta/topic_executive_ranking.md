@@ -18,6 +18,8 @@ These are the current template set for normalization of the theory-core:
   Current best template for a data-backed astrophysics topic with manifested dataset framing.
 - `0.21_Yang_Mills_Mass_Gap`
   Strongest math-facing structured topic, but claim discipline remains especially important.
+- `0.25_Strategy_Power_Economics`
+  Source-locked internal economics package; energy-density, asset, causal, and external-replication blockers remain.
 
 ## Tier B — Core topics with real research but incomplete standardization
 
@@ -28,7 +30,7 @@ waves:
   Main blocker: structured package exists, but the latest Hubble verification artifact fails its stated threshold.
 - `0.10`
   Main blocker: latest run passes, but previous run fell below the speedup threshold; keep below Tier `A` until repeated-run stability is demonstrated.
-- `0.2`, `0.4`, `0.11`, `0.12`, `0.15`, `0.16`, `0.19`, `0.20`, `0.24`, `0.25`
+- `0.2`, `0.4`, `0.11`, `0.12`, `0.15`, `0.16`, `0.19`, `0.20`, `0.24`
   Main blocker: verification specs, baselines, and artifact contracts are missing.
 - `0.5`, `0.6`, `0.7`, `0.8`, `0.13`, `0.18`, `0.22`, `0.26`
   Main blocker: data provenance is still manual, placeholder-like, or insufficiently manifested.
@@ -69,7 +71,7 @@ Shared rule:
 
 ## Recommended execution order
 
-1. Keep `Tier A` stable and use those four topics as migration templates.
+1. Keep `Tier A` stable and use those three topics as migration templates.
 2. Convert `Tier B` core topics in batches by blocker type:
    `claim cleanup`, `data-provenance cleanup`, `verification cleanup`, `math and physics boundary cleanup`.
 3. Reframe `Tier C` as a broad synthesis topic that must earn structure before stronger claims.

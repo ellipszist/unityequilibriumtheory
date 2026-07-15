@@ -1,18 +1,369 @@
 {
-  "blockers": [
-    "Primary panel cannot be constructed until every declared primary source is present and parseable.",
-    "bea_fixed_assets: MISSING_REQUIRED_EXPORT",
-    "bea_fixed_assets: required normalized annual export is absent.",
-    "eia_primary_energy: MISSING_REQUIRED_EXPORT",
-    "eia_primary_energy: required normalized annual export is absent.",
-    "epi_productivity_pay: MISSING_REQUIRED_EXPORT"
-  ],
-  "claim_boundary": "Stone-in-the-Balloon diagnostics did not run.",
+  "asset_lane": {
+    "blockers": [
+      "LBMA annual gold export is absent.",
+      "Licensed S&P 500 total-return annual export is absent; Yahoo price-only data are forbidden here."
+    ],
+    "claim_boundary": "No asset may be called a pegged stone without exact source-locked asset series.",
+    "status": "BLOCKED"
+  },
+  "claim_boundary": "These are U.S. descriptive temporal comparisons. They do not identify a fiat-currency intervention effect or establish asset superiority.",
   "formula_ids": [
     "EC25-UET-MONETARY-RESOURCE-MISMATCH"
   ],
-  "generated_at_utc": "2026-07-12T12:01:42.069246+00:00",
+  "generated_at_utc": "2026-07-15T19:12:38.965005+00:00",
+  "inflation_baseline_comparison": [
+    {
+      "acceptance_rule": "Candidate requires at least 10 percent lower median rolling-origin RMSE than every named baseline and a 95 percent block-bootstrap squared-error interval below zero.",
+      "actual_inflation": [
+        0.02271992194349435,
+        0.026326130977493756,
+        0.03310425713904399,
+        0.03171268921627754,
+        0.028301218568101732,
+        0.037439834086176814,
+        -0.0032087183613803546,
+        0.01623322091168824,
+        0.030913731264422376,
+        0.020519928537881843,
+        0.014553300627600529,
+        0.016025535291913272,
+        0.0012106392059088504,
+        0.012593967457635085,
+        0.021090473646619905,
+        0.024097308744636954,
+        0.017970151513157187,
+        0.012451530302269191,
+        0.04574976584885302,
+        0.07687604444800933,
+        0.040440764657817166,
+        0.02909373926159943
+      ],
+      "candidate_signal": false,
+      "horizon_years": 3,
+      "model_metrics": {
+        "inflation_autoregression": {
+          "median_rolling_rmse": 0.013532955946703184,
+          "rmse": 0.01938631599499614
+        },
+        "money_growth_only": {
+          "median_rolling_rmse": 0.02013682346216836,
+          "rmse": 0.028180595274855134
+        },
+        "quantity_style": {
+          "median_rolling_rmse": 0.021876382352658506,
+          "rmse": 0.027099236626077994
+        },
+        "uet_monetary_resource_mismatch": {
+          "median_rolling_rmse": 0.02260370062827302,
+          "rmse": 0.027304910485467668
+        }
+      },
+      "origins": [
+        2000,
+        2001,
+        2002,
+        2003,
+        2004,
+        2005,
+        2006,
+        2007,
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "uet_vs_baselines": {
+        "inflation_autoregression": {
+          "median_rmse_improvement": -0.6702707610438647,
+          "rmse_improvement": -0.40846308770141904,
+          "squared_error_delta_bootstrap": {
+            "block_size": 3,
+            "draws": 1000,
+            "lower": 0.00027617123952721476,
+            "mean": 0.000369728888761559,
+            "status": "OK",
+            "upper": 0.0004602719238955268
+          }
+        },
+        "money_growth_only": {
+          "median_rmse_improvement": -0.12250577509105409,
+          "rmse_improvement": 0.031074034485311874,
+          "squared_error_delta_bootstrap": {
+            "block_size": 3,
+            "draws": 1000,
+            "lower": -0.00019950694873313026,
+            "mean": -4.858781342578541e-05,
+            "status": "OK",
+            "upper": 0.0001314769188372327
+          }
+        },
+        "quantity_style": {
+          "median_rmse_improvement": -0.03324673448698112,
+          "rmse_improvement": -0.007589655097212322,
+          "squared_error_delta_bootstrap": {
+            "block_size": 3,
+            "draws": 1000,
+            "lower": -2.7655980388655728e-05,
+            "mean": 1.1189510903235188e-05,
+            "status": "OK",
+            "upper": 5.9041866557751336e-05
+          }
+        }
+      }
+    },
+    {
+      "acceptance_rule": "Candidate requires at least 10 percent lower median rolling-origin RMSE than every named baseline and a 95 percent block-bootstrap squared-error interval below zero.",
+      "actual_inflation": [
+        0.02777691228530719,
+        0.015830725898625234,
+        0.02271992194349435,
+        0.026326130977493756,
+        0.03310425713904399,
+        0.03171268921627754,
+        0.028301218568101732,
+        0.037439834086176814,
+        -0.0032087183613803546,
+        0.01623322091168824,
+        0.030913731264422376,
+        0.020519928537881843,
+        0.014553300627600529,
+        0.016025535291913272,
+        0.0012106392059088504,
+        0.012593967457635085,
+        0.021090473646619905,
+        0.024097308744636954,
+        0.017970151513157187,
+        0.012451530302269191,
+        0.04574976584885302,
+        0.07687604444800933,
+        0.040440764657817166,
+        0.02909373926159943
+      ],
+      "candidate_signal": false,
+      "horizon_years": 1,
+      "model_metrics": {
+        "inflation_autoregression": {
+          "median_rolling_rmse": 0.008731689744437407,
+          "rmse": 0.015971195598138983
+        },
+        "money_growth_only": {
+          "median_rolling_rmse": 0.01785759613637984,
+          "rmse": 0.02181406608705208
+        },
+        "quantity_style": {
+          "median_rolling_rmse": 0.01642575085580133,
+          "rmse": 0.023160169991480625
+        },
+        "uet_monetary_resource_mismatch": {
+          "median_rolling_rmse": 0.018120389803842292,
+          "rmse": 0.023755902386181936
+        }
+      },
+      "origins": [
+        2000,
+        2001,
+        2002,
+        2003,
+        2004,
+        2005,
+        2006,
+        2007,
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "uet_vs_baselines": {
+        "inflation_autoregression": {
+          "median_rmse_improvement": -1.0752443495127655,
+          "rmse_improvement": -0.48742166735156967,
+          "squared_error_delta_bootstrap": {
+            "block_size": 3,
+            "draws": 1000,
+            "lower": 9.615455971919927e-05,
+            "mean": 0.0003092638093477905,
+            "status": "OK",
+            "upper": 0.0005058943289222955
+          }
+        },
+        "money_growth_only": {
+          "median_rmse_improvement": -0.014716071830467747,
+          "rmse_improvement": -0.08901762245427736,
+          "squared_error_delta_bootstrap": {
+            "block_size": 3,
+            "draws": 1000,
+            "lower": 1.1525794870417163e-05,
+            "mean": 8.848941893152891e-05,
+            "status": "OK",
+            "upper": 0.00019092782362779422
+          }
+        },
+        "quantity_style": {
+          "median_rmse_improvement": -0.10316964885915358,
+          "rmse_improvement": -0.025722280748390336,
+          "squared_error_delta_bootstrap": {
+            "block_size": 3,
+            "draws": 1000,
+            "lower": -8.904518340296752e-06,
+            "mean": 2.794942414752494e-05,
+            "status": "OK",
+            "upper": 5.267509902833864e-05
+          }
+        }
+      }
+    },
+    {
+      "acceptance_rule": "Candidate requires at least 10 percent lower median rolling-origin RMSE than every named baseline and a 95 percent block-bootstrap squared-error interval below zero.",
+      "actual_inflation": [
+        0.03310425713904399,
+        0.03171268921627754,
+        0.028301218568101732,
+        0.037439834086176814,
+        -0.0032087183613803546,
+        0.01623322091168824,
+        0.030913731264422376,
+        0.020519928537881843,
+        0.014553300627600529,
+        0.016025535291913272,
+        0.0012106392059088504,
+        0.012593967457635085,
+        0.021090473646619905,
+        0.024097308744636954,
+        0.017970151513157187,
+        0.012451530302269191,
+        0.04574976584885302,
+        0.07687604444800933,
+        0.040440764657817166,
+        0.02909373926159943
+      ],
+      "candidate_signal": false,
+      "horizon_years": 5,
+      "model_metrics": {
+        "inflation_autoregression": {
+          "median_rolling_rmse": 0.011452334794188942,
+          "rmse": 0.020637225437520834
+        },
+        "money_growth_only": {
+          "median_rolling_rmse": 0.018563468371835066,
+          "rmse": 0.024269688655080713
+        },
+        "quantity_style": {
+          "median_rolling_rmse": 0.02208709086863324,
+          "rmse": 0.02692609126418394
+        },
+        "uet_monetary_resource_mismatch": {
+          "median_rolling_rmse": 0.02147935773927309,
+          "rmse": 0.026298629156059346
+        }
+      },
+      "origins": [
+        2000,
+        2001,
+        2002,
+        2003,
+        2004,
+        2005,
+        2006,
+        2007,
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "uet_vs_baselines": {
+        "inflation_autoregression": {
+          "median_rmse_improvement": -0.8755439938912708,
+          "rmse_improvement": -0.27432969299474896,
+          "squared_error_delta_bootstrap": {
+            "block_size": 3,
+            "draws": 1000,
+            "lower": 0.0001178345291021795,
+            "mean": 0.0002657228217288776,
+            "status": "OK",
+            "upper": 0.00035606716468108307
+          }
+        },
+        "money_growth_only": {
+          "median_rmse_improvement": -0.1570767546792109,
+          "rmse_improvement": -0.08359977459182977,
+          "squared_error_delta_bootstrap": {
+            "block_size": 3,
+            "draws": 1000,
+            "lower": 4.5805632553695065e-05,
+            "mean": 0.00010260010807338127,
+            "status": "OK",
+            "upper": 0.0001619904996574286
+          }
+        },
+        "quantity_style": {
+          "median_rmse_improvement": 0.027515308963717455,
+          "rmse_improvement": 0.0233031263976744,
+          "squared_error_delta_bootstrap": {
+            "block_size": 3,
+            "draws": 1000,
+            "lower": -9.250218391508381e-05,
+            "mean": -3.339649527922807e-05,
+            "status": "OK",
+            "upper": 3.039451407488129e-06
+          }
+        }
+      }
+    }
+  ],
+  "post_1973_summary": {
+    "interpretation": "Descriptive regime summary only; 1971-1973 are excluded and no intervention effect is identified.",
+    "mean_cpi_inflation_log": 0.03832605680223523,
+    "mean_monetary_resource_mismatch": 0.0529809282667097,
+    "n": 51,
+    "same_year_correlation": 0.18610634040374266,
+    "years": [
+      1974,
+      2024
+    ]
+  },
+  "pre_1971_summary": {
+    "interpretation": "Descriptive regime summary only; 1971-1973 are excluded and no intervention effect is identified.",
+    "mean_cpi_inflation_log": 0.026094421890381247,
+    "mean_monetary_resource_mismatch": 0.04075926382965988,
+    "n": 11,
+    "same_year_correlation": -0.231150858803507,
+    "years": [
+      1959,
+      1970
+    ]
+  },
   "schema_version": "1.0",
-  "status": "WARN",
+  "status": "DIAGNOSTIC_COMPLETE",
   "topic": "0.25_Strategy_Power_Economics"
 }

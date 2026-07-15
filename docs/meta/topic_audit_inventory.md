@@ -41,7 +41,7 @@ Legend:
 | `0.22_Biophysics_Origin_of_Life` | `core` | `Draft` | `B` | 2 | 1 | 1 | 1 | 1 | 2 | `manual or placeholder` | active topic with incomplete data provenance | document real dataset provenance and convert data handling into a manifest-backed workflow |
 | `0.23_Unity_Scale_Link` | `core` | `Draft` | `B` | 2 | 1 | 1 | 1 | 1 | 2 | `embedded local only` | scale-link narrative is ahead of the standards package | document real dataset provenance and convert data handling into a manifest-backed workflow |
 | `0.24_Artificial_Intelligence` | `core` | `Draft` | `B` | 2 | 2 | 1 | 1 | 1 | 3 | `real source referenced` | public wording is relatively controlled, but verification is still weak | define a verification spec with explicit metrics, thresholds, baseline, and artifact output |
-| `0.25_Strategy_Power_Economics` | `core` | `Draft` | `B` | 2 | 2 | 1 | 1 | 1 | 1 | `real source referenced` | code and inputs exist without an audit-grade benchmark contract | define a verification spec with explicit metrics, thresholds, baseline, and artifact output |
+| `0.25_Strategy_Power_Economics` | `core` | `Structured` | `A` | 3 | 3 | 3 | 2 | 1 | 3 | `source-locked U.S. historical panel` | literal energy-density and optional asset lanes remain blocked; Claim Class C controls | close named blockers and seek human-reviewed external replication before stronger claims |
 | `0.26_Cosmic_Dynamic_Frame` | `core` | `Draft` | `B` | 2 | 1 | 1 | 1 | 1 | 1 | `manual or placeholder` | data workflow still contains manual signals | document real dataset provenance and convert data handling into a manifest-backed workflow |
 | `0.27_Cold_Light_Hologram` | `future` | `Draft` | `D` | 2 | 1 | 1 | 1 | 1 | 1 | `embedded local only` | exploratory topic remains outside the current theory-core credibility scope | keep this topic explicitly exploratory until real datasets, standards docs, and verification outputs exist |
 | `0.28_Material_Synthesis` | `future` | `Draft` | `D` | 2 | 2 | 1 | 1 | 1 | 1 | `real source referenced` | future-facing topic has partial assets but is not part of the current theory-core audit | keep this topic explicitly exploratory until real datasets, standards docs, and verification outputs exist |
@@ -59,7 +59,7 @@ Legend:
 
 ## Immediate conclusions
 
-- Only `2` topics currently qualify as `Tier A`: `0.1`, `0.21`
+- Only `3` topics currently qualify as `Tier A`: `0.1`, `0.21`, `0.25`
 - Most of the current theory-core (`0.0-0.26`) sits in `Tier B`, meaning research assets exist but the standards migration is unfinished
 - `0.0_Grand_Unification` remains the only `Tier C` topic inside the core scope because it is broad, theory-central, and under-packaged
 - All topics `0.27-0.38` are intentionally held in `Tier D` for this phase so they do not distort the credibility signal of the core theory audit

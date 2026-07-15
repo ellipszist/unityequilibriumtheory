@@ -1,13 +1,14 @@
 """Package the auditable U.S. economics inputs for Topic 0.25.
 
-Run with --refresh only when external downloads are intended.  The script fetches
-public FRED series, but deliberately leaves licensed and table-extraction inputs
-blocked until their exact source exports are supplied.
+Run with --refresh only when external downloads are intended. Public FRED files
+and source-specific normalized subsets are checked against the declared vintage;
+the official BEA/EIA/EPI transformation pass must run before this manifest pass.
 """
 
 from __future__ import annotations
 
 import argparse
+import csv
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -30,6 +31,24 @@ from economic_hardening_common import (
 )
 
 
+def file_coverage(path: Path) -> dict | None:
+    if not path.exists():
+        return None
+    try:
+        with path.open("r", encoding="utf-8-sig", newline="") as handle:
+            reader = csv.DictReader(handle)
+            fields = reader.fieldnames or []
+            date_field = next((field for field in fields if field.lower() in {"observation_date", "date", "year"}), None)
+            if date_field is None:
+                return None
+            values = [str(row.get(date_field, "")).strip() for row in reader if str(row.get(date_field, "")).strip()]
+        if not values:
+            return None
+        return {"start": min(values), "end": max(values), "observations": len(values), "field": date_field}
+    except (OSError, UnicodeError, csv.Error):
+        return None
+
+
 FRED_SERIES = {
     "fred_m2sl": ("M2SL", "M2 money stock; billions of USD, seasonally adjusted; monthly"),
     "fred_gdpc1": ("GDPC1", "real GDP; chained dollars; quarterly"),
@@ -50,13 +69,15 @@ def record(path: Path, **fields: object) -> dict:
     payload = dict(fields)
     payload["local_path"] = relative(path)
     payload["exists"] = path.exists()
+    payload["coverage"] = file_coverage(path)
+    payload["retrieval_timestamp_utc"] = utc_now() if path.exists() else None
     if path.exists():
         payload["sha256"] = sha256(path)
         payload["bytes"] = path.stat().st_size
     return payload
 
 
-def manual_target(provider: str, vintage: str, filename: str, source_id: str, source_url: str, terms: str, schema: list[str], role: str, required: bool) -> dict:
+def manual_target(provider: str, vintage: str, filename: str, source_id: str, source_url: str, terms: str, schema: list[str], role: str, required: bool, unit_system: str) -> dict:
     path = RAW_ROOT / provider / vintage / filename
     return record(
         path,
@@ -66,12 +87,17 @@ def manual_target(provider: str, vintage: str, filename: str, source_id: str, so
         retrieval_date=vintage if path.exists() else None,
         original_filename=filename,
         license_or_terms=terms,
-        preprocessing="Raw or provider-exported annual table. The normalizer rejects files that do not match the declared schema.",
-        unit_system="Declared by the source-specific schema and recorded again in the normalized panel.",
+        preprocessing="Normalized research subset produced from a provider raw export. See Data/03_Research/uet_us_economics_transform_manifest.json for raw identity, table/series selection, and transformations.",
+        transformation_manifest="docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_us_economics_transform_manifest.json",
+        unit_system=unit_system,
         benchmark_role=role,
         required_for_primary_panel=required,
         expected_columns=schema,
-        source_status="READY_FOR_REVIEW" if path.exists() else "MISSING_REQUIRED_EXPORT",
+        source_status=(
+            "READY_FOR_REVIEW"
+            if path.exists()
+            else ("MISSING_REQUIRED_EXPORT" if required else "OPTIONAL_EXPORT_PENDING")
+        ),
     )
 
 
@@ -86,14 +112,14 @@ def write_contracts() -> None:
                 {
                     "formula_id": "EC25-UET-RESOURCE-ENGINE",
                     "relation": "R = N + K + I (Book 1 conceptual expression); operational diagnostic uses delta ln(R[t+3]) = alpha + beta_N*N_t + beta_K*delta ln(K_t) + beta_I*delta ln(I_t) + epsilon_t.",
-                    "variables": {"R": "dimensionless resource-capacity index", "N": "dimensionless constraint proxy", "K": "knowledge proxy indexed per employee", "I": "infrastructure proxy indexed per employee"},
+                    "variables": {"R": "dimensionless resource-capacity index", "N": "dimensionless constraint proxy", "K": "BEA chain-type IP-product quantity index (2017=100) divided by employees; indexed proxy", "I": "geometric mean of BEA chain-type fixed-asset quantity indexes (2017=100) divided by employees; indexed proxy"},
                     "unit_closure_status": "Proxy",
                     "conversion_steps": ["source units to annual observations", "per-capita/per-employee normalization", "1959=100 rebasing", "log changes", "training-window standardization for N"],
                     "constant_origin": "heuristic_bridge",
                     "proof_status": "heuristic bridge",
                     "verification_role": "diagnostic-only temporal association",
                     "failure_mode": "A fitted proxy composite could be mistaken for a dimensional identity or causal mechanism.",
-                    "next_hardening_step": "Source-lock every proxy and test predeclared out-of-sample diagnostics without claim promotion.",
+                    "next_hardening_step": "Add a source-locked patent robustness series and externally replicated panel before any stronger interpretation.",
                 },
                 {
                     "formula_id": "EC25-UET-MONETARY-RESOURCE-MISMATCH",
@@ -129,10 +155,10 @@ def write_contracts() -> None:
             "sample": {"country": "United States", "frequency": "annual", "start_year": 1959, "end_year": 2024},
             "resource_index": {"components": ["real_gdp_per_capita", "nonfarm_business_output_per_hour", "primary_energy_per_capita"], "aggregation": "equal-weight geometric mean", "base_year": 1959},
             "necessity_proxy": {"components": ["annual_cpi_energy_inflation", "annual_unemployment_rate"], "aggregation": "equal-weight standardized mean", "standardization": "fit on each training window only"},
-            "knowledge_proxy": {"primary": "real_intellectual_property_investment_per_employee", "robustness": "utility_patents_per_capita"},
-            "infrastructure_proxy": {"components": ["real_private_tangible_nonresidential_fixed_assets_per_employee", "real_government_fixed_assets_per_employee"], "aggregation": "equal-weight geometric mean"},
+            "knowledge_proxy": {"primary": "ip_product_quantity_index_2017_100_per_employee", "robustness": "utility_patents_per_capita", "unit_note": "BEA chain-type quantity index, not a dollar-valued investment series"},
+            "infrastructure_proxy": {"components": ["private_tangible_fixed_assets_quantity_index_2017_100_per_employee", "government_fixed_assets_quantity_index_2017_100_per_employee"], "aggregation": "equal-weight geometric mean", "unit_note": "BEA chain-type quantity indexes, not a dollar-valued stock series"},
             "horizons": {"primary": 3, "sensitivity": [1, 5]},
-            "candidate_signal_threshold": {"median_rmse_improvement_vs_each_primary_baseline": 0.1, "bootstrap_interval_requirement": "95 percent interval for squared-error difference lies below zero", "claim_impact": "none; Claim Class C remains controlling"},
+            "candidate_signal_threshold": {"declared_primary_baselines": ["constant_growth", "zero_growth"], "median_rmse_improvement_vs_each_primary_baseline": 0.1, "bootstrap_interval_requirement": "95 percent interval for squared-error difference lies below zero", "claim_impact": "none; Claim Class C remains controlling"},
         },
     )
     write_json(
@@ -185,12 +211,12 @@ def main() -> int:
 
     sources.extend(
         [
-            manual_target("bea", vintage, "bea_fixed_assets_annual.csv", "bea_fixed_assets", "https://www.bea.gov/itable/fixed-assets", "BEA public-data terms; record exact table and release vintage.", ["Year", "real_intellectual_property_investment", "real_private_tangible_nonresidential_fixed_assets", "real_government_fixed_assets"], "primary knowledge and infrastructure input", True),
-            manual_target("eia", vintage, "eia_primary_energy_annual.csv", "eia_primary_energy", "https://www.eia.gov/totalenergy/data/browser/?tbl=T01.03", "EIA public-data terms; preserve table release vintage.", ["Year", "primary_energy_quadrillion_btu"], "primary resource-capacity energy input", True),
-            manual_target("eia", vintage, "eia_energy_history_1776_1945.csv", "eia_energy_history", "https://www.eia.gov/todayinenergy/detail.php?id=67824", "EIA public-data terms; preserve estimation notes and source columns.", ["Year", "wood_quadrillion_btu", "coal_quadrillion_btu", "petroleum_quadrillion_btu"], "historical descriptive energy-transition input", False),
-            manual_target("epi", vintage, "epi_productivity_pay.csv", "epi_productivity_pay", "https://www.epi.org/productivity-pay-gap/", "EPI data-library terms; archive the downloaded chart data and chart date.", ["Year", "net_productivity_index", "typical_worker_compensation_index"], "exact construction-specific wage-productivity replication", True),
-            manual_target("lbma", vintage, "lbma_gold_annual.csv", "lbma_gold", "https://www.lbma.org.uk/prices-and-data/precious-metal-prices", "LBMA data terms apply; archive licensed/export metadata.", ["Year", "gold_usd_per_troy_ounce"], "gold real-asset diagnostic", False),
-            manual_target("sp_dji", vintage, "sp500_total_return_annual.csv", "sp500_total_return", "https://www.spglobal.com/spdji/", "Requires a user-licensed S&P Dow Jones total-return export; do not use a Yahoo price-only substitute.", ["Year", "sp500_total_return_index"], "S&P wealth-preservation diagnostic", False),
+            manual_target("bea", vintage, "bea_fixed_assets_annual.csv", "bea_fixed_assets", "https://www.bea.gov/itable/fixed-assets", "BEA public-data terms; record exact table and release vintage.", ["Year", "ip_product_quantity_index_2017_100", "private_tangible_fixed_assets_quantity_index_2017_100", "government_fixed_assets_quantity_index_2017_100"], "primary knowledge and infrastructure input", True, "BEA chain-type quantity indexes, 2017=100; runtime divides by employees for indexed proxies; no dollar conversion"),
+            manual_target("eia", vintage, "eia_primary_energy_annual.csv", "eia_primary_energy", "https://www.eia.gov/totalenergy/data/browser/csv.php?tbl=T01.03&freq=A", "EIA public-data terms; preserve table release vintage.", ["Year", "primary_energy_quadrillion_btu"], "primary resource-capacity energy input", True, "quadrillion Btu per year; runtime divides by population thousands before rebasing"),
+            manual_target("eia", vintage, "eia_energy_history_1776_1945.csv", "eia_energy_history", "https://www.eia.gov/todayinenergy/detail.php?id=67824", "EIA public-data terms; preserve estimation notes and source columns.", ["Year", "wood_quadrillion_btu", "coal_quadrillion_btu", "petroleum_quadrillion_btu"], "historical descriptive energy-transition input", False, "source-declared quadrillion Btu; literal heat-content comparability remains blocked"),
+            manual_target("epi", vintage, "epi_productivity_pay.csv", "epi_productivity_pay", "https://www.epi.org/productivity-pay-gap/", "EPI data-library terms; archive the downloaded chart data and chart date.", ["Year", "net_productivity_index", "epi_compensation_index"], "exact construction-specific wage-productivity replication", True, "dimensionless indexes rebased to 1979=100 from provider chart values"),
+            manual_target("lbma", vintage, "lbma_gold_annual.csv", "lbma_gold", "https://www.lbma.org.uk/prices-and-data/precious-metal-prices", "LBMA data terms apply; archive licensed/export metadata.", ["Year", "gold_usd_per_troy_ounce"], "gold real-asset diagnostic", False, "USD per troy ounce; real normalization uses CPI-U"),
+            manual_target("sp_dji", vintage, "sp500_total_return_annual.csv", "sp500_total_return", "https://www.spglobal.com/spdji/", "Requires a user-licensed S&P Dow Jones total-return export; do not use a Yahoo price-only substitute.", ["Year", "sp500_total_return_index"], "S&P wealth-preservation diagnostic", False, "dimensionless total-return index; real normalization uses CPI-U"),
         ]
     )
 

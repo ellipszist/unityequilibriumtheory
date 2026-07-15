@@ -1,17 +1,13 @@
 {
   "asset_lane_status": "BLOCKED_PENDING_LBMA_AND_LICENSED_SP500_TOTAL_RETURN",
-  "blockers": [
-    "bea_fixed_assets: MISSING_REQUIRED_EXPORT",
-    "eia_primary_energy: MISSING_REQUIRED_EXPORT",
-    "epi_productivity_pay: MISSING_REQUIRED_EXPORT"
-  ],
+  "blockers": [],
   "claim_boundary": "This readiness gate cannot promote Topic 0.25 beyond internal diagnostic evidence.",
-  "controller_reason": "The U.S. historical primary panel is incomplete; model results must remain blocked.",
+  "controller_reason": "All required primary-panel sources are source-packaged.",
   "energy_density_literal_status": "BLOCKED_PENDING_SOURCE_LOCKED_HEAT_CONTENT_BASIS",
   "gate": "uet_us_historical_source_readiness",
   "required_sources": 15,
-  "required_sources_ready": 12,
+  "required_sources_ready": 15,
   "schema_version": "1.0",
-  "status": "WARN",
+  "status": "PASS",
   "topic": "0.25_Strategy_Power_Economics"
 }

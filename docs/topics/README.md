@@ -11,11 +11,11 @@ physical framing, and public claim discipline.
 - Canonical numbered topics in scope: `40` directories (`0.0` through `0.38`, with two `0.33` future-topic directories)
 - Core research scope for this phase: `0.0-0.26`
 - Future concept scope for this phase: `0.27-0.38`
-- Tier `A`: `2` topics
-- Tier `B`: `24` topics
+- Tier `A`: `3` topics
+- Tier `B`: `23` topics
 - Tier `C`: `1` topic
 - Tier `D`: `13` topics
-- Current `Structured` topics in metadata: `0.1`, `0.3`, `0.10`, `0.21`
+- Current `Structured` topics in metadata: `0.1`, `0.3`, `0.10`, `0.21`, `0.25`
 - Current run-contract pass count: `26/27` core topics; `0.3` currently fails its stated verification threshold
 - `0.10` passed the latest run but showed threshold instability in the previous run, so it remains below Tier `A` until repeated-run stability is demonstrated
 
@@ -75,7 +75,7 @@ These topics determine the current scientific credibility of the repo.
 | [0.22](./0.22_Biophysics_Origin_of_Life/) | `Draft` | `B` | active topic with manual-or-placeholder data signals still present |
 | [0.23](./0.23_Unity_Scale_Link/) | `Draft` | `B` | topic has local material, but evidence packaging is still incomplete |
 | [0.24](./0.24_Artificial_Intelligence/) | `Draft` | `B` | relatively conservative README, but verification framing remains weak |
-| [0.25](./0.25_Strategy_Power_Economics/) | `Draft` | `B` | topic has code and data references, but no standards-grade benchmark contract |
+| [0.25](./0.25_Strategy_Power_Economics/) | `Structured` | `A` | source-locked U.S. Book 1 diagnostic package; energy-density and asset lanes remain bounded |
 | [0.26](./0.26_Cosmic_Dynamic_Frame/) | `Draft` | `B` | data path still appears partly manual, so the topic stays below structured grade |
 ## Future concepts (`0.27-0.38`)
 

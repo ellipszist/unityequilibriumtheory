@@ -1,42 +1,37 @@
-# Topic 0.25: Strategic Expansion & Economic Power - Code
+# Topic 0.25 Research Code
 
-This module simulates **Social Manifolds** and **Strategic Stability** using Agent-Based Modeling (ABM).
+This directory contains exploratory strategy simulations and the source-locked Book 1 economics
+hardening lane. The two are separate evidence classes.
 
-## 5x4 Structure
+## Book 1 hardening scripts
 
-```
-Code/
-  01_Engine/
-    Engine_Power_Dynamics.py   # Social Field Engine
-  02_Proof/
-    Proof_Social_Stability.py  # Inequality and Omega Verification
-  03_Research/
-    Research_Leverage_Wave.py  # Tactical Redistribution Proof
-```
+| Script | Role | Output |
+| :-- | :-- | :-- |
+| `Research_UET_Economics_External_Source_Transform.py` | download/parse official BEA/EIA files and a provider-supplied EPI chart export | raw-cache hashes and transform manifest |
+| `Research_UET_Economics_Source_Package.py` | lock source identity, terms, units, coverage, and hashes | source/formula/parameter/holdout/claim gates |
+| `Research_UET_Economics_Panel.py` | annualize FRED, validate coverage, construct indexed proxies, reject imputation | normalized panel and panel-status gate |
+| `Research_UET_Resource_Equation_Audit.py` | test the predeclared `R/N/K/I` diagnostic and rolling-origin candidate rule | resource artifact |
+| `Research_Stone_Balloon_Audit.py` | test monetary-resource mismatch and inflation baselines; gate assets | Stone artifact |
+| `Research_Energy_Density_Audit.py` | separate throughput history from literal density definition | energy artifact |
+| `Research_Wage_Productivity_Audit.py` | reproduce EPI chart construction and report BLS separately | wage artifact |
+| `Verify_UET_Economics_Hardening.py` | execute and aggregate all lanes; fail on subcommand errors and missing legacy boundary warnings | aggregate verifier artifact |
 
-## 🚀 Run Commands
+## Rerun
 
 ```powershell
-cd c:\Users\santa\Desktop\lad\Lab_uet_harness_v0.9.0
-
-# 1. Social Field Engine
-python docs/topics/0.25_Strategy_Power_Economics/Code/01_Engine/Engine_Power_Dynamics.py
-
-# 2. Leverage Research
-python docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_Leverage_Wave.py
+cd C:\Users\santa\Desktop\uet_harness
+.\.venv\Scripts\python.exe docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_UET_Economics_External_Source_Transform.py --vintage 2026-07-12 --epi-csv <provider-export.csv>
+.\.venv\Scripts\python.exe docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_UET_Economics_Source_Package.py --vintage 2026-07-12
+.\.venv\Scripts\python.exe docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Verify_UET_Economics_Hardening.py
 ```
 
-## 📊 Test Results
+## Evidence boundary
 
-| Script | Test | Result | Status |
-|--------|------|--------|--------|
-| Engine_Power_Dynamics.py | ABM Resonance | Pulsed | PASS |
-| Proof_Social_Stability.py | Omega Reduction | 4x Improvement | PASS |
+A `PASS` source or panel gate means only that the declared input contract is present. A
+`DIAGNOSTIC_COMPLETE` artifact means the predeclared comparison ran. Neither status supports
+claims of economic-law confirmation, fiat causality, policy validation, asset superiority, or
+strategic superiority. The current aggregate is intentionally `WARN` because the literal
+energy-density lane is blocked.
 
-## 🧬 Key Physics
-
-1.  **Social Manifolds:** Power is the concentration of information flux.
-2.  **Strategic resonance:** Type C agents stabilize systems via non-zero-sum coordination.
-
-## ASCII Note
-All Unicode replaced with ASCII for Windows compatibility.
+The older engine/proof/research scripts remain exploratory model proposals and are not included
+in the Book 1 primary panel.

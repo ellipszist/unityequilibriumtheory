@@ -78,10 +78,10 @@ def run_horizon(rows_by_year: dict[int, dict[str, float]], horizon: int, rolling
         return {"horizon_years": horizon, "status": "INSUFFICIENT_ROWS", "n": len(all_observations)}
     global_stats = n_stats(all_observations)
     global_fit = ols([feature(row, global_stats) for row in all_observations], [row["target"] for row in all_observations])
-    origins = []
+    origins: list[int] = []
     actual: list[float] = []
     uet_predictions: list[float] = []
-    baseline_predictions: list[float] = []
+    baseline_predictions = {"constant_growth": [], "zero_growth": []}
     for origin in range(rolling_start, max(rows_by_year) - horizon + 1):
         training = source_rows(rows_by_year, horizon, origin - horizon)
         candidate = next((row for row in source_rows(rows_by_year, horizon, origin) if int(row["year"]) == origin), None)
@@ -96,21 +96,33 @@ def run_horizon(rows_by_year: dict[int, dict[str, float]], horizon: int, rolling
         origins.append(origin)
         actual.append(candidate["target"])
         uet_predictions.append(prediction)
-        baseline_predictions.append(sum(row["target"] for row in training) / len(training))
+        baseline_predictions["constant_growth"].append(sum(row["target"] for row in training) / len(training))
+        baseline_predictions["zero_growth"].append(0.0)
+
     uet_rmse = rmse(actual, uet_predictions)
-    baseline_rmse = rmse(actual, baseline_predictions)
-    squared_error_deltas = [(u - a) ** 2 - (b - a) ** 2 for a, u, b in zip(actual, uet_predictions, baseline_predictions)]
-    interval = moving_block_bootstrap_interval(squared_error_deltas)
-    improvement = None if not uet_rmse or not baseline_rmse else 1.0 - uet_rmse / baseline_rmse
-    beta_n, beta_k, beta_i = global_fit["coefficients"][1:]
-    candidate_signal = bool(
-        improvement is not None
-        and improvement >= 0.1
-        and interval.get("upper") is not None
-        and interval["upper"] < 0
-        and beta_k > 0
-        and beta_i > 0
+    uet_median_rmse = median([abs(observed - predicted) for observed, predicted in zip(actual, uet_predictions)])
+    baseline_metrics: dict[str, dict] = {}
+    for name, predictions in baseline_predictions.items():
+        baseline_rmse = rmse(actual, predictions)
+        baseline_median_rmse = median([abs(observed - predicted) for observed, predicted in zip(actual, predictions)])
+        deltas = [(uet - observed) ** 2 - (baseline - observed) ** 2 for observed, uet, baseline in zip(actual, uet_predictions, predictions)]
+        baseline_metrics[name] = {
+            "rmse": baseline_rmse,
+            "median_rolling_rmse": baseline_median_rmse,
+            "aggregate_rmse_improvement": None if not uet_rmse or not baseline_rmse else 1.0 - uet_rmse / baseline_rmse,
+            "median_rmse_improvement": None if uet_median_rmse is None or baseline_median_rmse is None else 1.0 - uet_median_rmse / baseline_median_rmse,
+            "squared_error_delta_bootstrap": moving_block_bootstrap_interval(deltas),
+        }
+    acceptance = all(
+        item["median_rmse_improvement"] is not None
+        and item["median_rmse_improvement"] >= 0.1
+        and item["squared_error_delta_bootstrap"].get("upper") is not None
+        and item["squared_error_delta_bootstrap"].get("upper") < 0
+        for item in baseline_metrics.values()
     )
+    beta_n, beta_k, beta_i = global_fit["coefficients"][1:]
+    candidate_signal = bool(acceptance and beta_k > 0 and beta_i > 0)
+    constant = baseline_metrics["constant_growth"]
     return {
         "horizon_years": horizon,
         "status": "DIAGNOSTIC_COMPLETE",
@@ -124,9 +136,14 @@ def run_horizon(rows_by_year: dict[int, dict[str, float]], horizon: int, rolling
         "rolling_origin": {
             "origins": origins,
             "uet_rmse": uet_rmse,
-            "constant_growth_baseline_rmse": baseline_rmse,
-            "rmse_improvement": improvement,
-            "squared_error_delta_bootstrap": interval,
+            "uet_median_rolling_rmse": uet_median_rmse,
+            "constant_growth_baseline_rmse": constant["rmse"],
+            "median_constant_growth_baseline_rmse": constant["median_rolling_rmse"],
+            "rmse_improvement": constant["aggregate_rmse_improvement"],
+            "median_rmse_improvement": constant["median_rmse_improvement"],
+            "squared_error_delta_bootstrap": constant["squared_error_delta_bootstrap"],
+            "baseline_metrics": baseline_metrics,
+            "acceptance_rule": "Candidate requires at least 10 percent lower median rolling-origin RMSE than every declared baseline and a 95 percent block-bootstrap squared-error interval below zero.",
         },
         "candidate_signal": candidate_signal,
         "interpretation": "A candidate signal is a predeclared internal diagnostic condition only. It is neither causal evidence nor a claim-class upgrade.",

@@ -1,0 +1,76 @@
+{
+  "claim_boundary": "The manifest documents source extraction and normalization only. It does not establish an economic mechanism, causal effect, or policy result.",
+  "generated_at_utc": "2026-07-15T14:06:21.207319+00:00",
+  "normalized_outputs": {
+    "bea_fixed_assets": {
+      "coverage": [
+        1959,
+        2024
+      ],
+      "normalized_path": "docs/data/external/economics/us_historical/bea/2026-07-12/bea_fixed_assets_annual.csv",
+      "normalized_sha256": "f926e7b7c1b81600be075d6e1e8eaceb5f97b7d489b1b30f1c04133afec755fe",
+      "selected_series": {
+        "government_fixed_assets_quantity_index_2017_100": "BEA Fixed Assets Table 1.2, code kcgtotl1es00: chain-type quantity index for government fixed assets (2017=100)",
+        "ip_product_quantity_index_2017_100": "BEA Fixed Assets Table 2.8, code icntotl1ip00: chain-type quantity index for investment in nonresidential intellectual property products (2017=100)",
+        "private_tangible_fixed_assets_quantity_index_2017_100": "geometric composite of BEA Fixed Assets Table 1.2 codes kcntotl1eq00 (nonresidential equipment) and kcntotl1st00 (nonresidential structures), both chain-type quantity indexes (2017=100)"
+      }
+    },
+    "eia_primary_energy": {
+      "coverage": [
+        1959,
+        2024
+      ],
+      "normalized_path": "docs/data/external/economics/us_historical/eia/2026-07-12/eia_primary_energy_annual.csv",
+      "normalized_sha256": "b4114a3b198680795d3ae03c411e657c4f8ad0186a92c8be4588932aaf07a293",
+      "selected_series": {
+        "primary_energy_quadrillion_btu": "EIA Monthly Energy Review Table 1.3 annual observation: TETCBUS, Total Primary Energy Consumption, Quadrillion Btu"
+      }
+    },
+    "epi_productivity_pay": {
+      "base_year": 1979,
+      "coverage": [
+        1948,
+        2024
+      ],
+      "normalized_path": "docs/data/external/economics/us_historical/epi/2026-07-12/epi_productivity_pay.csv",
+      "normalized_sha256": "21b9eafdbc60248f674c04e2c0ee4f1563eb30fe6e590b32fe4162aa363ff555",
+      "selected_series": {
+        "epi_compensation_index": "Total compensation per hour",
+        "net_productivity_index": "Net productivity output per hour"
+      }
+    }
+  },
+  "raw_sources": [
+    {
+      "bytes": 172757,
+      "path": "docs/data/external/economics/us_historical/bea/2026-07-12/Section1All_xls.xlsx",
+      "role": "BEA Fixed Assets Table 1.2 extraction",
+      "sha256": "7f6821bd2d4b82fccda89f077d398ecb0eb08773ca90c26c754a638e33ba6ec0",
+      "source_url": "https://apps.bea.gov/national/FixedAssets/Release/xls/Section1All_xls.xlsx"
+    },
+    {
+      "bytes": 729401,
+      "path": "docs/data/external/economics/us_historical/bea/2026-07-12/Section2All_xls.xlsx",
+      "role": "BEA Fixed Assets Table 2.8 extraction",
+      "sha256": "710086d6ba0653aaa52b5f717871d67e27fb23dd2f9b01a833a968f3708b8bd4",
+      "source_url": "https://apps.bea.gov/national/FixedAssets/Release/xls/Section2All_xls.xlsx"
+    },
+    {
+      "bytes": 758201,
+      "path": "docs/data/external/economics/us_historical/eia/2026-07-12/EIA_Table_1_3_annual.csv",
+      "role": "EIA Table 1.3 annual TETCBUS extraction",
+      "sha256": "8556e267444ffb2c09f3a7f4f54a1dddf12d091c80284db9e2387cbf6f6225c0",
+      "source_url": "https://www.eia.gov/totalenergy/data/browser/csv.php?tbl=T01.03&freq=A"
+    },
+    {
+      "bytes": 3734,
+      "path": "docs/data/external/economics/us_historical/epi/2026-07-12/EPI_productivity_pay_levels_provider_export.csv",
+      "role": "EPI Data Library provider-generated chart CSV",
+      "sha256": "83020c3edf1a0aba536b2da169bf517fca82364f3acf71ca44c95375f96417dd",
+      "source_url": "https://data.epi.org/productivity/productivity_levels/line/year/national/real_dollars_per_hour_2024/productivity_pay?dateString=2024-01-01&highlightedLines=compensation_productivity_pay&highlightedLines=productivity_productivity_pay&timeEnd=2024-01-01&timeStart=1948-01-01"
+    }
+  ],
+  "schema_version": "1.0",
+  "topic": "0.25_Strategy_Power_Economics",
+  "vintage": "2026-07-12"
+}

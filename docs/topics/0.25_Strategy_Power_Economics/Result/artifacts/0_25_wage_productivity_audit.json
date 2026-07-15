@@ -12,14 +12,25 @@
   },
   "claim_boundary": "The result can describe source-specific wage/productivity divergence. It cannot identify fiat-money causality, transfer mechanisms, or a policy prescription.",
   "epi_replication": {
-    "blocker": "Versioned EPI chart-data export is absent.",
-    "status": "BLOCKED"
+    "comparison_to_book": "Report any difference as a source-vintage or construction difference; do not select the closer result.",
+    "coverage": [
+      1979,
+      2021
+    ],
+    "epi_published_compensation_growth_percent": 28.37760248757828,
+    "gap_percentage_points": 51.86203646094345,
+    "productivity_growth_percent": 80.23963894852173,
+    "quoted_book_figure": {
+      "book_quoted_typical_worker_compensation_growth_percent": 17.3,
+      "productivity_growth_percent": 64.6
+    },
+    "status": "REPLICATED_FROM_VERSIONED_EXPORT"
   },
   "formula_ids": [
     "EC25-UET-WAGE-PRODUCTIVITY-GAP"
   ],
-  "generated_at_utc": "2026-07-12T12:01:44.758860+00:00",
+  "generated_at_utc": "2026-07-15T19:12:39.345825+00:00",
   "schema_version": "1.0",
-  "status": "WARN",
+  "status": "DIAGNOSTIC_COMPLETE",
   "topic": "0.25_Strategy_Power_Economics"
 }

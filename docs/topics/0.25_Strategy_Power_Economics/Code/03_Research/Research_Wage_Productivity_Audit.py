@@ -33,7 +33,9 @@ def epi_replication(path) -> dict:
     for row in read_csv(path):
         year = as_float(row.get("Year"))
         productivity = as_float(row.get("net_productivity_index"))
-        compensation = as_float(row.get("typical_worker_compensation_index"))
+        compensation = as_float(row.get("epi_compensation_index"))
+        if compensation is None:
+            compensation = as_float(row.get("typical_worker_compensation_index"))
         if year is not None and productivity is not None and compensation is not None:
             values[int(year)] = {"productivity": productivity, "compensation": compensation}
     start = values.get(START_YEAR)
@@ -46,9 +48,9 @@ def epi_replication(path) -> dict:
         "status": "REPLICATED_FROM_VERSIONED_EXPORT",
         "coverage": [START_YEAR, END_YEAR],
         "productivity_growth_percent": productivity_growth,
-        "typical_worker_compensation_growth_percent": compensation_growth,
+        "epi_published_compensation_growth_percent": compensation_growth,
         "gap_percentage_points": None if productivity_growth is None or compensation_growth is None else productivity_growth - compensation_growth,
-        "quoted_book_figure": {"productivity_growth_percent": 64.6, "typical_worker_compensation_growth_percent": 17.3},
+        "quoted_book_figure": {"productivity_growth_percent": 64.6, "book_quoted_typical_worker_compensation_growth_percent": 17.3},
         "comparison_to_book": "Report any difference as a source-vintage or construction difference; do not select the closer result.",
     }
 

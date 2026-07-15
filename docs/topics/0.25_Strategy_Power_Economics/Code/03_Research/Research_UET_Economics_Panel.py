@@ -8,6 +8,7 @@ from pathlib import Path
 from economic_hardening_common import (
     PANEL_PATH,
     PANEL_STATUS,
+    ROOT,
     SOURCE_MANIFEST,
     SOURCE_READINESS,
     annualise_fred,
@@ -27,6 +28,23 @@ from economic_hardening_common import (
 
 START_YEAR = 1959
 END_YEAR = 2024
+
+
+def verified_source_path(manifest: dict, source_id: str, blockers: list[str]) -> Path | None:
+    for item in manifest.get("sources", []):
+        if item.get("source_id") != source_id or not item.get("local_path"):
+            continue
+        candidate = ROOT / item["local_path"]
+        if not candidate.exists():
+            blockers.append(f"{source_id}: source file is absent from the manifest path.")
+            return None
+        expected = item.get("sha256")
+        if expected and sha256(candidate) != expected:
+            blockers.append(f"{source_id}: SHA-256 mismatch against source manifest.")
+            return None
+        return candidate
+    blockers.append(f"{source_id}: source file is absent from the manifest.")
+    return None
 
 
 def annual_manual(path: Path, field_names: list[str]) -> dict[str, dict[int, float]]:
@@ -67,7 +85,7 @@ def main() -> int:
     }
     fred: dict[str, dict[int, float]] = {}
     for source_id, method in fred_methods.items():
-        path = source_path(manifest, source_id)
+        path = verified_source_path(manifest, source_id, blockers)
         if path is None:
             blockers.append(f"{source_id}: source file is absent from the manifest.")
             continue
@@ -76,8 +94,8 @@ def main() -> int:
         except Exception as error:  # noqa: BLE001
             blockers.append(f"{source_id}: annualization failed ({type(error).__name__}: {error}).")
 
-    bea_path = source_path(manifest, "bea_fixed_assets")
-    eia_path = source_path(manifest, "eia_primary_energy")
+    bea_path = verified_source_path(manifest, "bea_fixed_assets", blockers)
+    eia_path = verified_source_path(manifest, "eia_primary_energy", blockers)
     bea: dict[str, dict[int, float]] = {}
     energy: dict[str, dict[int, float]] = {}
     if bea_path is None:
@@ -85,7 +103,7 @@ def main() -> int:
     else:
         bea = annual_manual(
             bea_path,
-            ["real_intellectual_property_investment", "real_private_tangible_nonresidential_fixed_assets", "real_government_fixed_assets"],
+            ["ip_product_quantity_index_2017_100", "private_tangible_fixed_assets_quantity_index_2017_100", "government_fixed_assets_quantity_index_2017_100"],
         )
     if eia_path is None:
         blockers.append("eia_primary_energy: required normalized annual export is absent.")
@@ -114,9 +132,9 @@ def main() -> int:
                 "employees_thousands": fred["fred_payems"].get(year),
                 "domestic_nonfinancial_debt_usd_billions": fred["fred_cmdebt"].get(year),
                 "primary_energy_quadrillion_btu": energy["primary_energy_quadrillion_btu"].get(year),
-                "real_intellectual_property_investment": bea["real_intellectual_property_investment"].get(year),
-                "real_private_tangible_nonresidential_fixed_assets": bea["real_private_tangible_nonresidential_fixed_assets"].get(year),
-                "real_government_fixed_assets": bea["real_government_fixed_assets"].get(year),
+                "ip_product_quantity_index_2017_100": bea["ip_product_quantity_index_2017_100"].get(year),
+                "private_tangible_fixed_assets_quantity_index_2017_100": bea["private_tangible_fixed_assets_quantity_index_2017_100"].get(year),
+                "government_fixed_assets_quantity_index_2017_100": bea["government_fixed_assets_quantity_index_2017_100"].get(year),
             }
             absent = [name for name, value in values.items() if value is None or value <= 0]
             if absent:
@@ -150,9 +168,9 @@ def main() -> int:
     for row in rows:
         row["real_gdp_per_capita"] = float(row["real_gdp"]) / float(row["population_thousands"])
         row["primary_energy_per_capita"] = float(row["primary_energy_quadrillion_btu"]) / float(row["population_thousands"])
-        row["knowledge_per_employee"] = float(row["real_intellectual_property_investment"]) / float(row["employees_thousands"])
-        private_tangible = float(row["real_private_tangible_nonresidential_fixed_assets"]) / float(row["employees_thousands"])
-        government_assets = float(row["real_government_fixed_assets"]) / float(row["employees_thousands"])
+        row["knowledge_per_employee"] = float(row["ip_product_quantity_index_2017_100"]) / float(row["employees_thousands"])
+        private_tangible = float(row["private_tangible_fixed_assets_quantity_index_2017_100"]) / float(row["employees_thousands"])
+        government_assets = float(row["government_fixed_assets_quantity_index_2017_100"]) / float(row["employees_thousands"])
         row["infrastructure_per_employee"] = math.sqrt(private_tangible * government_assets)
     base_gdp_pc = float(base["real_gdp"]) / float(base["population_thousands"])
     base_energy_pc = float(base["primary_energy_quadrillion_btu"]) / float(base["population_thousands"])
@@ -181,7 +199,7 @@ def main() -> int:
         previous = row
     fields = list(rows[0].keys())
     write_csv(PANEL_PATH, rows, fields)
-    input_paths = [source_path(manifest, source_id) for source_id in list(fred_methods) + ["bea_fixed_assets", "eia_primary_energy"]]
+    input_paths = [verified_source_path(manifest, source_id, []) for source_id in list(fred_methods) + ["bea_fixed_assets", "eia_primary_energy"]]
     status = {
         "schema_version": "1.0",
         "topic": "0.25_Strategy_Power_Economics",

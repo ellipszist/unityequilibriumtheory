@@ -12,13 +12,13 @@
       ],
       "failure_mode": "A fitted proxy composite could be mistaken for a dimensional identity or causal mechanism.",
       "formula_id": "EC25-UET-RESOURCE-ENGINE",
-      "next_hardening_step": "Source-lock every proxy and test predeclared out-of-sample diagnostics without claim promotion.",
+      "next_hardening_step": "Add a source-locked patent robustness series and externally replicated panel before any stronger interpretation.",
       "proof_status": "heuristic bridge",
       "relation": "R = N + K + I (Book 1 conceptual expression); operational diagnostic uses delta ln(R[t+3]) = alpha + beta_N*N_t + beta_K*delta ln(K_t) + beta_I*delta ln(I_t) + epsilon_t.",
       "unit_closure_status": "Proxy",
       "variables": {
-        "I": "infrastructure proxy indexed per employee",
-        "K": "knowledge proxy indexed per employee",
+        "I": "geometric mean of BEA chain-type fixed-asset quantity indexes (2017=100) divided by employees; indexed proxy",
+        "K": "BEA chain-type IP-product quantity index (2017=100) divided by employees; indexed proxy",
         "N": "dimensionless constraint proxy",
         "R": "dimensionless resource-capacity index"
       },
