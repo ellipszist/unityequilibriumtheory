@@ -27,7 +27,8 @@ and Social Stabilization remain quarantined from core economics evidence.
 - Coverage: 1959-2024, frozen at retrieval vintage `2026-07-12`.
 - Panel: `66` complete rows; no silent imputation.
 - Sources: FRED/H.6 and BLS series, BEA Fixed Assets Tables 1.2/2.8, EIA Table 1.3,
-  and a versioned EPI Data Library chart export.
+  a versioned EPI Data Library chart export, the BLS public industry-hours API, official USGS
+  mineral quantity workbooks, SEC Company Facts, and a restricted-data project-ledger gate.
 - Source identity: `Data/03_Research/uet_us_economics_source_manifest.json` and
   `uet_us_economics_transform_manifest.json`.
 
@@ -105,6 +106,21 @@ indexed infrastructure proxy, not a dollar-valued capital stock.
    hours -> physical resource quantities -> output/innovation`. The gate records local archive
    identity and hashes for each link, rejects missing or unverified joins, and does not infer a
    project funding share from aggregate accounts.
+
+13. **Industry labor-hours:** query only the official BLS public API for predeclared four-digit
+   NAICS candidates. Returned rows are annual hours worked (millions of hours), coverage is
+   recorded per code, and absent codes remain missing; this is an input to a future industry
+   join, not a complete labor ledger.
+14. **Physical materials:** parse source-locked USGS historical workbooks for declared
+   commodities. Quantities are national production/consumption observations on the provider's
+   commodity-specific basis. They are not allocated to BEA industries, firms, or projects.
+15. **Firm funding proxy:** extract annual SEC 10-K Company Facts for a predeclared nonfinancial
+   sample. Profit and operating-cash-flow-to-capex ratios, plus signed debt transactions, are
+   scale diagnostics. A ratio is not a financing share because refinancing, cash balances,
+   equity issuance/repurchase, and timing are not fully observed.
+16. **Project payment ledger gate:** record the public-data boundary and restricted-use route for
+   invoice/transaction-level payer and purchase records. The gate is deliberately `BLOCKED` until
+   approved microdata access and a reproducible ledger are available.
 
 ## Evaluation and uncertainty
 

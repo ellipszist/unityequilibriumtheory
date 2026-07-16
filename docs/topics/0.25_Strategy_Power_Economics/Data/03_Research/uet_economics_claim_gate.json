@@ -31,6 +31,7 @@
     "WARN_SOURCE: WARN",
     "WARN_UNIT: WARN",
     "Z.1 current-release vintage is revised; historical-as-of vintages are still needed for real-time tests.",
+    "bls_industry_hours: WARN",
     "energy_density: WARN",
     "fed_z1_funding_mapping: WARN",
     "fed_z1_funding_mix: WARN",

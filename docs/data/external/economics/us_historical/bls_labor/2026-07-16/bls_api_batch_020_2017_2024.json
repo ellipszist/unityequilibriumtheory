@@ -1,0 +1,23 @@
+{
+  "error": null,
+  "provider": "U.S. Bureau of Labor Statistics",
+  "request": {
+    "endyear": "2024",
+    "seriesid": [
+      "IPUAN8134__L200000000",
+      "IPUAN8139__L200000000"
+    ],
+    "startyear": "2017"
+  },
+  "response": {
+    "Results": {},
+    "message": [
+      "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key  has been reached."
+    ],
+    "responseTime": 0,
+    "status": "REQUEST_NOT_PROCESSED"
+  },
+  "retrieval_timestamp_utc": "2026-07-16T14:13:23.013154+00:00",
+  "schema_version": "1.0",
+  "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/"
+}

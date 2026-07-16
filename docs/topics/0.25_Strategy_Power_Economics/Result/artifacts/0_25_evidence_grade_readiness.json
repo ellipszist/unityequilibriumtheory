@@ -20,7 +20,12 @@
     "bls_io_source_gate": "BLOCKED",
     "fed_z1_funding_mix": "WARN",
     "payer_resource_join": "BLOCKED",
-    "bea_1997_io_benchmark": "PASS_WITH_BOUNDARY"
+    "bea_1997_io_benchmark": "PASS_WITH_BOUNDARY",
+    "bls_industry_hours": "WARN",
+    "usgs_material_quantities": "PASS_WITH_BOUNDARY",
+    "sec_public_firm_funding_proxy": "PASS_WITH_BOUNDARY",
+    "sec_public_firm_funding_mix": "PASS_WITH_BOUNDARY",
+    "project_payment_ledger": "BLOCKED"
   },
   "controlling_blockers": [
     "source_and_panel",
@@ -34,7 +39,12 @@
     "bls_io_source_gate",
     "fed_z1_funding_mix",
     "payer_resource_join",
-    "bea_1997_io_benchmark"
+    "bea_1997_io_benchmark",
+    "bls_industry_hours",
+    "usgs_material_quantities",
+    "sec_public_firm_funding_proxy",
+    "sec_public_firm_funding_mix",
+    "project_payment_ledger"
   ],
   "promotion_rule": "All critical source, measurement, causal, global, independent-replication, and publication checks must be PASS; no WARN/BLOCKED critical gate may be averaged away.",
   "claim_boundary": "Current evidence supports only source-locked descriptive diagnostics. This readiness artifact does not promote Claim Class C."

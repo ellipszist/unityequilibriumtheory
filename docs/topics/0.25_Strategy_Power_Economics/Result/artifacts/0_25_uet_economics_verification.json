@@ -160,7 +160,7 @@
       "exit_code": 0,
       "script": "docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_UET_Payer_Resource_Join_Readiness.py",
       "stderr_tail": "",
-      "stdout_tail": "Payer-resource join readiness: BLOCKED blocking components 3\n"
+      "stdout_tail": "Payer-resource join readiness: BLOCKED blocking components 2\n"
     },
     {
       "command": [
@@ -171,6 +171,56 @@
       "script": "docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_UET_BEA_1997_IO_Benchmark_Audit.py",
       "stderr_tail": "",
       "stdout_tail": "BEA 1997 benchmark audit: PASS_WITH_BOUNDARY blocking archives 0\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Code\\03_Research\\Research_UET_BLS_Industry_Hours_Source_Package.py"
+      ],
+      "exit_code": 0,
+      "script": "docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_UET_BLS_Industry_Hours_Source_Package.py",
+      "stderr_tail": "",
+      "stdout_tail": "BLS industry-hours source package: WARN returned 11 of 202 NAICS4 codes rows 220\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Code\\03_Research\\Research_UET_USGS_Material_Quantity_Audit.py"
+      ],
+      "exit_code": 0,
+      "script": "docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_UET_USGS_Material_Quantity_Audit.py",
+      "stderr_tail": "",
+      "stdout_tail": "USGS material quantity audit: PASS_WITH_BOUNDARY commodities 3 rows 1027\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Code\\03_Research\\Research_UET_SEC_Public_Firm_Funding_Proxy.py"
+      ],
+      "exit_code": 0,
+      "script": "docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_UET_SEC_Public_Firm_Funding_Proxy.py",
+      "stderr_tail": "",
+      "stdout_tail": "SEC public-firm funding proxy: PASS_WITH_BOUNDARY companies 10 rows 149\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Code\\03_Research\\Research_UET_SEC_Public_Firm_Funding_Mix_Audit.py"
+      ],
+      "exit_code": 0,
+      "script": "docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_UET_SEC_Public_Firm_Funding_Mix_Audit.py",
+      "stderr_tail": "",
+      "stdout_tail": "SEC public-firm funding mix audit: PASS_WITH_BOUNDARY usable rows 81\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Code\\03_Research\\Research_UET_Project_Payment_Ledger_Gate.py"
+      ],
+      "exit_code": 0,
+      "script": "docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_UET_Project_Payment_Ledger_Gate.py",
+      "stderr_tail": "",
+      "stdout_tail": "Project payment ledger gate: BLOCKED\n"
     },
     {
       "command": [
@@ -306,6 +356,7 @@
       "WARN_SOURCE: WARN",
       "WARN_UNIT: WARN",
       "Z.1 current-release vintage is revised; historical-as-of vintages are still needed for real-time tests.",
+      "bls_industry_hours: WARN",
       "energy_density: WARN",
       "fed_z1_funding_mapping: WARN",
       "fed_z1_funding_mix: WARN",
@@ -722,7 +773,7 @@
         "start_year": 1959
       },
       "formula_boundary": "R/N/K/I are dimensionless proxy constructs after the stated transformations; they are not a dimensional identity.",
-      "generated_at_utc": "2026-07-16T12:52:03.010293+00:00",
+      "generated_at_utc": "2026-07-16T14:22:19.388955+00:00",
       "input_hashes": [
         {
           "path": "docs/data/external/economics/us_historical/fred/2026-07-12/M2SL.csv",
@@ -1723,7 +1774,7 @@
         "claim_boundary": "Benchmark-descriptive only. Do not infer annual flow dynamics, payer provenance, resource causality, innovation causality, or fiat-money causality from this artifact.",
         "controller_status": "BEA_1997_BENCHMARK_ONLY",
         "formula_id": "EC25-PAYER-RESOURCE-JOIN",
-        "generated_at_utc": "2026-07-16T12:52:27.850579+00:00",
+        "generated_at_utc": "2026-07-16T14:22:46.178841+00:00",
         "limitations": [
           "BEA explicitly cautions that benchmark input-output tables are not suitable as a time series.",
           "Make/use dollar cells are producers-prices millions of dollars; requirements tables are dimensionless coefficients.",
@@ -1965,6 +2016,601 @@
           "table_reference_and_unit_checks": true
         }
       },
+      "bls_industry_hours": {
+        "claim_boundary": "BLS industry-hours observations provide an annual labor-input measure for returned NAICS series. They do not identify who paid, whether funding was profit or debt, worker occupation within a payment, or causal resource use.",
+        "controller_status": "BLS_INDUSTRY_HOURS_SOURCE_GATE",
+        "coverage": {
+          "complete_series_count": 0,
+          "missing_naics4": [
+            "2121",
+            "2122",
+            "2123",
+            "2131",
+            "2211",
+            "2212",
+            "2213",
+            "3111",
+            "3112",
+            "3113",
+            "3114",
+            "3115",
+            "3116",
+            "3117",
+            "3118",
+            "3119",
+            "3121",
+            "3122",
+            "3131",
+            "3132",
+            "3133",
+            "3141",
+            "3149",
+            "3211",
+            "3212",
+            "3219",
+            "3221",
+            "3222",
+            "3231",
+            "3241",
+            "3251",
+            "3252",
+            "3253",
+            "3254",
+            "3255",
+            "3256",
+            "3259",
+            "3261",
+            "3262",
+            "3271",
+            "3272",
+            "3273",
+            "3274",
+            "3279",
+            "3311",
+            "3312",
+            "3313",
+            "3314",
+            "3315",
+            "3321",
+            "3322",
+            "3323",
+            "3324",
+            "3325",
+            "3326",
+            "3327",
+            "3328",
+            "3329",
+            "3331",
+            "3332",
+            "3333",
+            "3334",
+            "3335",
+            "3336",
+            "3339",
+            "3341",
+            "3342",
+            "3343",
+            "3344",
+            "3345",
+            "3346",
+            "3351",
+            "3352",
+            "3353",
+            "3359",
+            "3361",
+            "3362",
+            "3363",
+            "3364",
+            "3365",
+            "3366",
+            "3369",
+            "3371",
+            "3372",
+            "3379",
+            "3391",
+            "3399",
+            "4231",
+            "4232",
+            "4233",
+            "4234",
+            "4235",
+            "4236",
+            "4237",
+            "4238",
+            "4239",
+            "4241",
+            "4242",
+            "4243",
+            "4244",
+            "4245",
+            "4246",
+            "4247",
+            "4248",
+            "4249",
+            "5111",
+            "5112",
+            "5121",
+            "5122",
+            "5151",
+            "5152",
+            "5173",
+            "5174",
+            "5179",
+            "5182",
+            "5191",
+            "5221",
+            "5222",
+            "5223",
+            "5231",
+            "5232",
+            "5239",
+            "5241",
+            "5242",
+            "5321",
+            "5322",
+            "5323",
+            "5324",
+            "5411",
+            "5412",
+            "5413",
+            "5414",
+            "5415",
+            "5416",
+            "5417",
+            "5418",
+            "5419",
+            "5611",
+            "5612",
+            "5613",
+            "5614",
+            "5615",
+            "5616",
+            "5617",
+            "5619",
+            "6111",
+            "6112",
+            "6113",
+            "6114",
+            "6115",
+            "6116",
+            "6117",
+            "6211",
+            "6212",
+            "6213",
+            "6214",
+            "6215",
+            "6216",
+            "6219",
+            "6231",
+            "6232",
+            "6233",
+            "6239",
+            "6241",
+            "6242",
+            "6243",
+            "6244",
+            "7111",
+            "7112",
+            "7113",
+            "7114",
+            "7115",
+            "7131",
+            "7132",
+            "7139",
+            "7223",
+            "7224",
+            "7225",
+            "8111",
+            "8112",
+            "8113",
+            "8114",
+            "8121",
+            "8122",
+            "8123",
+            "8129",
+            "8131",
+            "8132",
+            "8133",
+            "8134",
+            "8139"
+          ],
+          "no_imputation": true,
+          "requested_bea_naics4": 202,
+          "returned_naics4": 11,
+          "rows": 220,
+          "series_count": 11,
+          "years": [
+            1987,
+            2024
+          ]
+        },
+        "generated_at_utc": "2026-07-16T14:22:47.742571+00:00",
+        "incomplete_series": {
+          "IPUAN1111__L200000000": [
+            2007,
+            2008,
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "IPUAN1112__L200000000": [
+            2007,
+            2008,
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "IPUAN1113__L200000000": [
+            2007,
+            2008,
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "IPUAN1114__L200000000": [
+            2007,
+            2008,
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "IPUAN1119__L200000000": [
+            2007,
+            2008,
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "IPUAN1121__L200000000": [
+            2007,
+            2008,
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "IPUAN1122__L200000000": [
+            2007,
+            2008,
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "IPUAN1123__L200000000": [
+            2007,
+            2008,
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "IPUAN1124__L200000000": [
+            2007,
+            2008,
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "IPUAN1125__L200000000": [
+            2007,
+            2008,
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "IPUAN1129__L200000000": [
+            2007,
+            2008,
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024
+          ]
+        },
+        "limitations": [
+          "The four-digit NAICS set is a concordance candidate, not a one-to-one equivalence to every BEA 1997 I-O industry code.",
+          "The public API has a ten-year request window; each response is archived and hashed.",
+          "Missing or incomplete series are reported rather than imputed."
+        ],
+        "normalized_panel": {
+          "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/bls_industry_hours_1987_2024.csv",
+          "sha256": "8ca110ee5de7546fe30cf3f31ec4baf04f83a46fe43dc1bb583bde42aca9b783"
+        },
+        "request_failures": [
+          {
+            "error": null,
+            "message": [
+              "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key  has been reached."
+            ],
+            "path": "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_003_2007_2016.json",
+            "status": "REQUEST_NOT_PROCESSED"
+          },
+          {
+            "error": null,
+            "message": [
+              "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key  has been reached."
+            ],
+            "path": "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_004_2017_2024.json",
+            "status": "REQUEST_NOT_PROCESSED"
+          },
+          {
+            "error": null,
+            "message": [
+              "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key  has been reached."
+            ],
+            "path": "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_005_1987_1996.json",
+            "status": "REQUEST_NOT_PROCESSED"
+          },
+          {
+            "error": null,
+            "message": [
+              "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key  has been reached."
+            ],
+            "path": "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_006_1997_2006.json",
+            "status": "REQUEST_NOT_PROCESSED"
+          },
+          {
+            "error": null,
+            "message": [
+              "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key  has been reached."
+            ],
+            "path": "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_007_2007_2016.json",
+            "status": "REQUEST_NOT_PROCESSED"
+          },
+          {
+            "error": null,
+            "message": [
+              "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key  has been reached."
+            ],
+            "path": "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_008_2017_2024.json",
+            "status": "REQUEST_NOT_PROCESSED"
+          },
+          {
+            "error": null,
+            "message": [
+              "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key  has been reached."
+            ],
+            "path": "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_009_1987_1996.json",
+            "status": "REQUEST_NOT_PROCESSED"
+          },
+          {
+            "error": null,
+            "message": [
+              "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key  has been reached."
+            ],
+            "path": "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_010_1997_2006.json",
+            "status": "REQUEST_NOT_PROCESSED"
+          },
+          {
+            "error": null,
+            "message": [
+              "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key  has been reached."
+            ],
+            "path": "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_011_2007_2016.json",
+            "status": "REQUEST_NOT_PROCESSED"
+          },
+          {
+            "error": null,
+            "message": [
+              "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key  has been reached."
+            ],
+            "path": "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_012_2017_2024.json",
+            "status": "REQUEST_NOT_PROCESSED"
+          },
+          {
+            "error": null,
+            "message": [
+              "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key  has been reached."
+            ],
+            "path": "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_013_1987_1996.json",
+            "status": "REQUEST_NOT_PROCESSED"
+          },
+          {
+            "error": null,
+            "message": [
+              "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key  has been reached."
+            ],
+            "path": "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_014_1997_2006.json",
+            "status": "REQUEST_NOT_PROCESSED"
+          },
+          {
+            "error": null,
+            "message": [
+              "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key  has been reached."
+            ],
+            "path": "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_015_2007_2016.json",
+            "status": "REQUEST_NOT_PROCESSED"
+          },
+          {
+            "error": null,
+            "message": [
+              "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key  has been reached."
+            ],
+            "path": "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_016_2017_2024.json",
+            "status": "REQUEST_NOT_PROCESSED"
+          },
+          {
+            "error": null,
+            "message": [
+              "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key  has been reached."
+            ],
+            "path": "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_017_1987_1996.json",
+            "status": "REQUEST_NOT_PROCESSED"
+          },
+          {
+            "error": null,
+            "message": [
+              "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key  has been reached."
+            ],
+            "path": "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_018_1997_2006.json",
+            "status": "REQUEST_NOT_PROCESSED"
+          },
+          {
+            "error": null,
+            "message": [
+              "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key  has been reached."
+            ],
+            "path": "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_019_2007_2016.json",
+            "status": "REQUEST_NOT_PROCESSED"
+          },
+          {
+            "error": null,
+            "message": [
+              "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key  has been reached."
+            ],
+            "path": "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_020_2017_2024.json",
+            "status": "REQUEST_NOT_PROCESSED"
+          }
+        ],
+        "schema_version": "1.0",
+        "source_manifest": {
+          "path": "docs/data/external/economics/us_historical/bls_labor/2026-07-16/source_manifest.json",
+          "sha256": "6712542dce85e290f9b1913874c7f15b2579ecbd69ed4e880991d4187b46b01f",
+          "status": "WARN"
+        },
+        "status": "WARN",
+        "topic": "0.25_Strategy_Power_Economics"
+      },
       "bls_io_source_gate": {
         "access_observation": {
           "automated_retrieval_status": "ACCESS_DENIED",
@@ -1985,7 +2631,7 @@
         ],
         "claim_boundary": "This gate establishes source identity and a quality/access blocker only. It does not provide payment-level flows, causal evidence, or a payer-resource result.",
         "controller_status": "BLS_IO_QUALITY_AND_ACCESS_GATE",
-        "generated_at_utc": "2026-07-16T12:52:22.114635+00:00",
+        "generated_at_utc": "2026-07-16T14:22:39.807815+00:00",
         "provider_quality_notice": {
           "effect": "No matrix result may be used until the replacement or researcher ZIP is independently checked against the notice and archived with a hash.",
           "notice_date": "2026-02-06",
@@ -2049,7 +2695,7 @@
           ],
           "status": "BLOCKED"
         },
-        "generated_at_utc": "2026-07-16T12:52:40.226732+00:00",
+        "generated_at_utc": "2026-07-16T14:23:09.735424+00:00",
         "historical_energy_transition": {
           "blocker": "EIA historical 1776-1945 annual export is absent.",
           "status": "BLOCKED"
@@ -2103,7 +2749,7 @@
           ],
           "rows": 66
         },
-        "generated_at_utc": "2026-07-16T12:52:20.782955+00:00",
+        "generated_at_utc": "2026-07-16T14:22:38.248549+00:00",
         "payer_and_source_visibility": {
           "not_observable_from_this_table": [
             "individual payer-payee identity or invoice-level exchange",
@@ -2486,7 +3132,7 @@
           ],
           "status": "NOT_IDENTIFIED"
         },
-        "generated_at_utc": "2026-07-16T12:52:23.552609+00:00",
+        "generated_at_utc": "2026-07-16T14:22:41.202633+00:00",
         "payment_flow_scale": {
           "capital_formation": {
             "interpretation": "sector-level flow scale, not a payer identity or earmarked use",
@@ -3481,7 +4127,7 @@
             "resource_exporter"
           ]
         },
-        "generated_at_utc": "2026-07-16T12:52:35.713466+00:00",
+        "generated_at_utc": "2026-07-16T14:23:05.174237+00:00",
         "required_providers": {
           "BIS": "credit, debt, financial conditions",
           "ILOSTAT": "productivity, earnings, hours, labor income",
@@ -3653,7 +4299,7 @@
             "R_standardized_additive"
           ]
         },
-        "generated_at_utc": "2026-07-16T12:52:04.502586+00:00",
+        "generated_at_utc": "2026-07-16T14:22:21.008336+00:00",
         "measurement_gates": {
           "R_family_stability": true,
           "at_least_three_declared_families": true,
@@ -4862,7 +5508,7 @@
             "n": 64
           }
         },
-        "generated_at_utc": "2026-07-16T12:52:07.274072+00:00",
+        "generated_at_utc": "2026-07-16T14:22:23.980983+00:00",
         "observations": [
           {
             "credit_to_gdp": 4.231706560198307,
@@ -5663,7 +6309,6 @@
       "payer_resource_join": {
         "blocking_components": [
           "labor_industry_hours",
-          "material_quantities",
           "firm_project_payment_ledger"
         ],
         "claim_boundary": "This gate reports source/join readiness only. It does not infer payment-level provenance, funding shares, resource causality, or innovation causality.",
@@ -5678,7 +6323,7 @@
               "controller_status": "BEA_1997_BENCHMARK_ONLY",
               "exists": true,
               "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bea_1997_io_benchmark_audit.json",
-              "sha256": "af24784318be15b727ee8acc53e47be5f7947e1eddbca0866c96cb8b9502a478",
+              "sha256": "551bcb97fbbddcff470abe1765efd95065dbdd2a813924be34dd913f48f825f7",
               "status": "PASS_WITH_BOUNDARY"
             },
             "boundary": "A source-locked 1997 benchmark is archived for structural validation; annual supply-use/input-output flow export still requires the BEA API or interactive application.",
@@ -5724,7 +6369,30 @@
             "status": "PASS_WITH_BOUNDARY"
           },
           "firm_project_payment_ledger": {
-            "boundary": "Public aggregate accounts cannot identify which payer funded which purchase or project.",
+            "artifact": {
+              "ledger_gate": {
+                "controller_status": "PROJECT_PAYMENT_LEDGER_NOT_PUBLIC",
+                "exists": true,
+                "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_project_payment_ledger_gate.json",
+                "sha256": "c24f3c4c2116d099f2e777b42b8ae972b01166524fae484ec10b031b110f9369",
+                "status": "BLOCKED"
+              },
+              "public_firm_funding_mix": {
+                "controller_status": "SEC_PUBLIC_FIRM_FUNDING_MIX_DESCRIPTIVE_ONLY",
+                "exists": true,
+                "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_sec_public_firm_funding_mix_audit.json",
+                "sha256": "7ada881650e2ba1ee59bc02d8435fbeb5fd9d7b20196f5699a8549706c76579c",
+                "status": "PASS_WITH_BOUNDARY"
+              },
+              "public_firm_funding_proxy": {
+                "controller_status": "SEC_PUBLIC_FIRM_PROXY_SOURCE_LOCKED",
+                "exists": true,
+                "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_sec_public_firm_funding_proxy.json",
+                "sha256": "3ab5d261d9138ddf9bcb061550810f042475098ebb85421de54b088a48e40719",
+                "status": "PASS_WITH_BOUNDARY"
+              }
+            },
+            "boundary": "SEC public-firm annual accounting provides profit/debt/capex channel proxies, but no invoice-level payer, supplier, project, or physical-resource ledger is public in this package.",
             "source": {
               "local_archives": [],
               "required_providers": [
@@ -5740,7 +6408,7 @@
               "controller_status": "FUNDING_FLOW_MAPPING_DESCRIPTIVE_ONLY",
               "exists": true,
               "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_fed_z1_funding_mapping_probe.json",
-              "sha256": "360e1f8cf1242e2dcfd27f198632f603b77c8a2f6c3a1f6f2e49852811f19aa4",
+              "sha256": "3b0276360ed4949234d2ddc78ddafe06d64f7e2fb7c137d9acf5a3292b12dae3",
               "status": "WARN"
             },
             "boundary": "Aggregate sectoral channels and an accounting bridge are present; no payer-payee or project earmark is observed.",
@@ -5779,14 +6447,14 @@
                 "controller_status": "BLS_IO_QUALITY_AND_ACCESS_GATE",
                 "exists": true,
                 "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bls_io_source_gate.json",
-                "sha256": "4a72732e4fed46575c65ddf4326e827260c438cdef0c600011122483a6636061",
+                "sha256": "072222c0ced044d1c3a883d0798cf87a93d1e32b6db2bc42b27eb73aee25504f",
                 "status": "BLOCKED"
               },
               "benchmark": {
                 "controller_status": "BEA_1997_BENCHMARK_ONLY",
                 "exists": true,
                 "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bea_1997_io_benchmark_audit.json",
-                "sha256": "af24784318be15b727ee8acc53e47be5f7947e1eddbca0866c96cb8b9502a478",
+                "sha256": "551bcb97fbbddcff470abe1765efd95065dbdd2a813924be34dd913f48f825f7",
                 "status": "PASS_WITH_BOUNDARY"
               }
             },
@@ -5802,32 +6470,117 @@
             "status": "PASS_WITH_BOUNDARY"
           },
           "labor_industry_hours": {
-            "boundary": "Aggregate productivity and employment proxies exist in the macro panel, but industry-level hours/occupations are not archived for concordance.",
+            "artifact": {
+              "controller_status": "BLS_INDUSTRY_HOURS_SOURCE_GATE",
+              "exists": true,
+              "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bls_industry_hours_source_package.json",
+              "sha256": "2b1b522c38700116bef2fa1917030a4208ae3a97f4baaecc5ba3b93ce2803430",
+              "status": "WARN"
+            },
+            "boundary": "BLS annual hours are source-locked for returned four-digit NAICS series; coverage is partial and is not payment-level occupation or payer provenance.",
             "source": {
               "directory": "docs/data/external/economics/us_historical/bls_labor/2026-07-16",
-              "files": [],
-              "hashes": {},
-              "pattern": "*",
-              "role": "BLS industry/occupation hours and labor input",
-              "status": "MISSING"
+              "files": [
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_001_1987_1996.json",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_002_1997_2006.json",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_003_2007_2016.json",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_004_2017_2024.json",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_005_1987_1996.json",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_006_1997_2006.json",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_007_2007_2016.json",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_008_2017_2024.json",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_009_1987_1996.json",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_010_1997_2006.json",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_011_2007_2016.json",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_012_2017_2024.json",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_013_1987_1996.json",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_014_1997_2006.json",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_015_2007_2016.json",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_016_2017_2024.json",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_017_1987_1996.json",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_018_1997_2006.json",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_019_2007_2016.json",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_020_2017_2024.json",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/source_manifest.json"
+              ],
+              "hashes": {
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_001_1987_1996.json": "5e4ddd37d9ff9565dc6c7394574151835e091556b074df6a86509a961581404e",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_002_1997_2006.json": "e7d34f2fe7ab8b3b9c2819f1af5e021c69a1b8000ce1898837edddb8063b85eb",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_003_2007_2016.json": "df3d7a0bfc9fa82d4d8aaefe6fc56c13db496a25b5db1b6ff8f95cc342b967f8",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_004_2017_2024.json": "a360dcc48d7b7e0e8f6bfe481e209578e57193a471e6bf535a88ed45e6a47dce",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_005_1987_1996.json": "adafae593471895945c91989e1e159b428b918e388a141b8d61e3c4a4f442d8e",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_006_1997_2006.json": "4079d5d7b4ad256fc559b2d2d03720e6d1182d62c34faaafde82d137cbec2412",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_007_2007_2016.json": "2b64a3bc14be82f22a11bcf6f11a98bd44bfe6255cc743de96afea0652b550e4",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_008_2017_2024.json": "6a23b6c84fa7b8a397a5ad1e82d68de060334f26e6b1127c676a6392bd25e62e",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_009_1987_1996.json": "c0dded1367edde0d29e7f99e8567e68e6fda760c5cc2d78ec0fe4c73ff317224",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_010_1997_2006.json": "f5d44052490f805e8cd51fd4d671c1cda39b295034ce409e5335834c4f509e7f",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_011_2007_2016.json": "22221b655684aa0b8da85be470c70cb2ba7e919163bfab5471a9aa81d30230e0",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_012_2017_2024.json": "6fc94f60cfece42f90d06935939bb5e8de27dbd7f4a2d15981f518068997979f",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_013_1987_1996.json": "7183e82bce4f4de971d6384866e77bc0fb03b133c4794a45056617e625baae65",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_014_1997_2006.json": "0aaa1bb872d12a9ea50542e5dd5c25ea19060c7326775361e948a3892066465d",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_015_2007_2016.json": "66a4d61385b3afd3d677abcb5a099cdc29e2819419dd869160498239e5b41a22",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_016_2017_2024.json": "6597e603a721596c08dad679ad03e0e0979bb086f012e3ebb975f06891133250",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_017_1987_1996.json": "75c73e8fb03551a8806cf4b8a1292cb0f9138bafffe0edfcba5d1f0939fa0802",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_018_1997_2006.json": "e36c371d2b7a3a16d02f414605b666555474ea9e0f4fad2b856c9b184c54dba4",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_019_2007_2016.json": "fc10a03caedba04f3349b968c042d6890e35f6f09fa8136443a001180c71f1eb",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/bls_api_batch_020_2017_2024.json": "bff2cb3984e4afb1c8f5ba1c9a7abf03431e25f398be38e0f5bc097a7530c0fa",
+                "docs/data/external/economics/us_historical/bls_labor/2026-07-16/source_manifest.json": "6712542dce85e290f9b1913874c7f15b2579ecbd69ed4e880991d4187b46b01f"
+              },
+              "pattern": "*.json",
+              "role": "BLS industry hours API responses",
+              "status": "PASS"
             },
             "status": "BLOCKED"
           },
           "material_quantities": {
-            "boundary": "No source-locked physical material quantity panel and industry concordance are present.",
-            "source": {
-              "local_archives": [],
-              "required_providers": [
-                "USGS",
-                "FAOSTAT",
-                "EIA source-level extraction/environmental accounts"
-              ],
-              "status": "MISSING"
+            "artifact": {
+              "controller_status": "USGS_PHYSICAL_QUANTITY_SOURCE_LOCKED",
+              "exists": true,
+              "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_usgs_material_quantity_audit.json",
+              "sha256": "2edc663670eb87017d91c04acc1936647b5253375a9c64201c06e8502eb2f5be",
+              "status": "PASS_WITH_BOUNDARY"
             },
-            "status": "BLOCKED"
+            "boundary": "USGS national commodity quantity series are source-locked for selected materials; no material-to-industry or project allocation is observed.",
+            "source": {
+              "directory": "docs/data/external/economics/us_historical/usgs_materials/2026-07-16",
+              "files": [
+                "docs/data/external/economics/us_historical/usgs_materials/2026-07-16/cement.xlsx",
+                "docs/data/external/economics/us_historical/usgs_materials/2026-07-16/copper.xlsx",
+                "docs/data/external/economics/us_historical/usgs_materials/2026-07-16/gold.xlsx"
+              ],
+              "hashes": {
+                "docs/data/external/economics/us_historical/usgs_materials/2026-07-16/cement.xlsx": "0053f8d21454e503232e5f8b84e979aa5af80996105421d4ea12c401c6834521",
+                "docs/data/external/economics/us_historical/usgs_materials/2026-07-16/copper.xlsx": "8c5e3682ceae94a06146c4b5000c4499521b02fcbd7dda5954e9ac4eb17ffc3f",
+                "docs/data/external/economics/us_historical/usgs_materials/2026-07-16/gold.xlsx": "025f3eb98adb606cc214b82caa70646b80cf9debdf6544dbafce361283c1c480"
+              },
+              "pattern": "*.xlsx",
+              "role": "USGS physical material quantity workbooks",
+              "status": "PASS"
+            },
+            "status": "PASS_WITH_BOUNDARY"
+          },
+          "public_firm_funding_proxy": {
+            "artifact": {
+              "funding_mix": {
+                "controller_status": "SEC_PUBLIC_FIRM_FUNDING_MIX_DESCRIPTIVE_ONLY",
+                "exists": true,
+                "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_sec_public_firm_funding_mix_audit.json",
+                "sha256": "7ada881650e2ba1ee59bc02d8435fbeb5fd9d7b20196f5699a8549706c76579c",
+                "status": "PASS_WITH_BOUNDARY"
+              },
+              "source_package": {
+                "controller_status": "SEC_PUBLIC_FIRM_PROXY_SOURCE_LOCKED",
+                "exists": true,
+                "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_sec_public_firm_funding_proxy.json",
+                "sha256": "3ab5d261d9138ddf9bcb061550810f042475098ebb85421de54b088a48e40719",
+                "status": "PASS_WITH_BOUNDARY"
+              }
+            },
+            "boundary": "Predeclared public-firm annual accounting channels can be compared descriptively; funding shares and invoice provenance remain unidentified.",
+            "status": "PASS_WITH_BOUNDARY"
           }
         },
-        "generated_at_utc": "2026-07-16T12:52:24.923920+00:00",
+        "generated_at_utc": "2026-07-16T14:22:42.725759+00:00",
         "limitations": [
           "Operating surplus and net saving are accounting aggregates, not earmarked cash sources.",
           "Debt and equity liability transactions can include refinancing, redemptions, and repurchases.",
@@ -5839,6 +6592,51 @@
           "industry labor hours and occupations",
           "source-level physical resource quantities",
           "versioned industry/commodity/labor/resource concordance"
+        ],
+        "schema_version": "1.0",
+        "status": "BLOCKED",
+        "topic": "0.25_Strategy_Power_Economics"
+      },
+      "project_payment_ledger": {
+        "claim_boundary": "No payment-level payer, profit-vs-debt attribution, project-resource transformation, or innovation-causality claim is allowed from the current public package.",
+        "controller_status": "PROJECT_PAYMENT_LEDGER_NOT_PUBLIC",
+        "generated_at_utc": "2026-07-16T14:22:56.996901+00:00",
+        "limitations": [
+          "Aggregate financial accounts and public-firm filings cannot trace a particular payment to a physical resource.",
+          "Restricted-use access would require a human-approved research project and secure output review; it is not an automatic source acquisition."
+        ],
+        "local_archives": [],
+        "next_allowed_path": "Obtain approved restricted-use access or a licensed, source-locked transaction ledger; archive terms, vintage, and hash before any join.",
+        "public_sources_checked": [
+          {
+            "observation": "Business Register, LBD, ACES, QFR, CFS, and related economic microdata are listed as restricted-use assets requiring approved secure access; they are not a public invoice-level ledger.",
+            "provider": "U.S. Census Bureau",
+            "role": "firm/establishment/transaction microdata availability",
+            "status": "RESTRICTED_USE",
+            "url": "https://www.census.gov/topics/research/guidance/restricted-use-microdata/economic-data.html"
+          },
+          {
+            "observation": "The LBD is available only to qualified researchers for approved projects in secure Federal Statistical Research Data Centers.",
+            "provider": "U.S. Census Bureau",
+            "role": "firm/establishment longitudinal linkage",
+            "status": "RESTRICTED_USE",
+            "url": "https://www.census.gov/programs-surveys/ces/data/restricted-use-data/longitudinal-business-database.html"
+          },
+          {
+            "observation": "SEC XBRL facts provide annual accounting channels but no supplier invoice, payment counterparty, or project resource ledger.",
+            "provider": "U.S. Securities and Exchange Commission",
+            "role": "public-firm accounting proxy",
+            "status": "PUBLIC_PROXY_ONLY",
+            "url": "https://www.sec.gov/edgar/sec-api-documentation"
+          }
+        ],
+        "required_fields": [
+          "payer identity",
+          "payee/supplier identity",
+          "transaction date and amount",
+          "industry/commodity concordance",
+          "project or asset identity",
+          "profit/debt/equity funding provenance"
         ],
         "schema_version": "1.0",
         "status": "BLOCKED",
@@ -5875,7 +6673,7 @@
         "formula_ids": [
           "EC25-UET-RESOURCE-ENGINE"
         ],
-        "generated_at_utc": "2026-07-16T12:52:37.244825+00:00",
+        "generated_at_utc": "2026-07-16T14:23:06.728370+00:00",
         "parameter_policy": {
           "candidate_signal_threshold": {
             "bootstrap_interval_requirement": "95 percent interval for squared-error difference lies below zero",
@@ -6221,6 +7019,299 @@
         "status": "DIAGNOSTIC_COMPLETE",
         "topic": "0.25_Strategy_Power_Economics"
       },
+      "sec_public_firm_funding_mix": {
+        "claim_boundary": "Descriptive public-firm accounting comparison only. No economy-wide, payer-level, project-level, physical-resource, or causal funding claim is supported.",
+        "controller_status": "SEC_PUBLIC_FIRM_FUNDING_MIX_DESCRIPTIVE_ONLY",
+        "funding_share_identification": {
+          "reason": "Profit, operating cash, and net debt are annual firm-accounting channels; their ratios to capex are scale diagnostics, not source-of-payment shares.",
+          "status": "NOT_IDENTIFIED"
+        },
+        "generated_at_utc": "2026-07-16T14:22:55.509755+00:00",
+        "limitations": [
+          "The panel covers only ten predeclared public firms and current-vintage 10-K facts.",
+          "Net debt flows can include refinancing, redemptions, and timing differences; cash pooling is unobserved.",
+          "Capex tags do not identify which supplier or physical resource was paid."
+        ],
+        "panel": {
+          "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/sec_public_firm_funding_proxy_2010_2024.csv",
+          "rows": 149,
+          "sha256": "84d51bf6247409d8cd960ccf46a7435e4a113058c163931e6d55952ac5837dc3",
+          "usable_capex_rows": 81
+        },
+        "schema_version": "1.0",
+        "sector_summaries": {
+          "energy": {
+            "debt_observed_rows": 15,
+            "median_net_debt_to_capex": 0.033322634297219225,
+            "median_operating_cash_to_capex": 1.8016821108257974,
+            "median_profit_to_capex": 1.4498157865356704,
+            "profit_observed_rows": 15,
+            "rows": 15
+          },
+          "manufacturing": {
+            "debt_observed_rows": 0,
+            "median_net_debt_to_capex": null,
+            "median_operating_cash_to_capex": 3.989188672024493,
+            "median_profit_to_capex": 2.3008498801592014,
+            "profit_observed_rows": 20,
+            "rows": 20
+          },
+          "retail_logistics": {
+            "debt_observed_rows": 15,
+            "median_net_debt_to_capex": 0.9180327868852459,
+            "median_operating_cash_to_capex": 2.1551628934290448,
+            "median_profit_to_capex": 1.2347254447022429,
+            "profit_observed_rows": 21,
+            "rows": 21
+          },
+          "technology": {
+            "debt_observed_rows": 10,
+            "median_net_debt_to_capex": 2.112640345181557,
+            "median_operating_cash_to_capex": 5.816420040561857,
+            "median_profit_to_capex": 4.592692828146143,
+            "profit_observed_rows": 25,
+            "rows": 25
+          }
+        },
+        "source_artifact": {
+          "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_sec_public_firm_funding_proxy.json",
+          "sha256": "8ed53beabac85ad0fc66103620a119ff9bbb34535e581699e9d643cc28eed144"
+        },
+        "status": "PASS_WITH_BOUNDARY",
+        "topic": "0.25_Strategy_Power_Economics"
+      },
+      "sec_public_firm_funding_proxy": {
+        "claim_boundary": "Public-firm accounting proxy only. It can compare observed profit/debt/cash/capex channels for the predeclared firms; it cannot establish economy-wide payer provenance, project-level payment identity, physical resource use, or causality.",
+        "companies": [
+          {
+            "available_tags": {
+              "capex_raw_usd": 10,
+              "cash_balance_usd": 15,
+              "common_dividends_raw_usd": 1,
+              "debt_proceeds_usd": 12,
+              "debt_repayments_raw_usd": 9,
+              "net_income_usd": 15,
+              "operating_cash_flow_usd": 12
+            },
+            "cik": "0000320193",
+            "company": "apple",
+            "rows": 15,
+            "sector": "technology",
+            "status": "PASS_WITH_BOUNDARY",
+            "years": [
+              2010,
+              2024
+            ]
+          },
+          {
+            "available_tags": {
+              "capex_raw_usd": 15,
+              "cash_balance_usd": 15,
+              "common_dividends_raw_usd": 15,
+              "debt_proceeds_usd": 0,
+              "debt_repayments_raw_usd": 0,
+              "net_income_usd": 15,
+              "operating_cash_flow_usd": 11
+            },
+            "cik": "0000789019",
+            "company": "microsoft",
+            "rows": 15,
+            "sector": "technology",
+            "status": "PASS_WITH_BOUNDARY",
+            "years": [
+              2010,
+              2024
+            ]
+          },
+          {
+            "available_tags": {
+              "capex_raw_usd": 7,
+              "cash_balance_usd": 15,
+              "common_dividends_raw_usd": 0,
+              "debt_proceeds_usd": 9,
+              "debt_repayments_raw_usd": 4,
+              "net_income_usd": 15,
+              "operating_cash_flow_usd": 15
+            },
+            "cik": "0001018724",
+            "company": "amazon",
+            "rows": 15,
+            "sector": "retail_logistics",
+            "status": "PASS_WITH_BOUNDARY",
+            "years": [
+              2010,
+              2024
+            ]
+          },
+          {
+            "available_tags": {
+              "capex_raw_usd": 14,
+              "cash_balance_usd": 14,
+              "common_dividends_raw_usd": 4,
+              "debt_proceeds_usd": 14,
+              "debt_repayments_raw_usd": 14,
+              "net_income_usd": 14,
+              "operating_cash_flow_usd": 14
+            },
+            "cik": "0000104169",
+            "company": "walmart",
+            "rows": 14,
+            "sector": "retail_logistics",
+            "status": "PASS_WITH_BOUNDARY",
+            "years": [
+              2010,
+              2024
+            ]
+          },
+          {
+            "available_tags": {
+              "capex_raw_usd": 15,
+              "cash_balance_usd": 15,
+              "common_dividends_raw_usd": 15,
+              "debt_proceeds_usd": 15,
+              "debt_repayments_raw_usd": 14,
+              "net_income_usd": 15,
+              "operating_cash_flow_usd": 11
+            },
+            "cik": "0000034088",
+            "company": "exxon_mobil",
+            "rows": 15,
+            "sector": "energy",
+            "status": "PASS_WITH_BOUNDARY",
+            "years": [
+              2010,
+              2024
+            ]
+          },
+          {
+            "available_tags": {
+              "capex_raw_usd": 0,
+              "cash_balance_usd": 11,
+              "common_dividends_raw_usd": 15,
+              "debt_proceeds_usd": 15,
+              "debt_repayments_raw_usd": 0,
+              "net_income_usd": 15,
+              "operating_cash_flow_usd": 15
+            },
+            "cik": "0000093410",
+            "company": "chevron",
+            "rows": 15,
+            "sector": "energy",
+            "status": "PASS_WITH_BOUNDARY",
+            "years": [
+              2010,
+              2024
+            ]
+          },
+          {
+            "available_tags": {
+              "capex_raw_usd": 15,
+              "cash_balance_usd": 15,
+              "common_dividends_raw_usd": 13,
+              "debt_proceeds_usd": 0,
+              "debt_repayments_raw_usd": 0,
+              "net_income_usd": 15,
+              "operating_cash_flow_usd": 15
+            },
+            "cik": "0000012927",
+            "company": "boeing",
+            "rows": 15,
+            "sector": "manufacturing",
+            "status": "PASS_WITH_BOUNDARY",
+            "years": [
+              2010,
+              2024
+            ]
+          },
+          {
+            "available_tags": {
+              "capex_raw_usd": 0,
+              "cash_balance_usd": 15,
+              "common_dividends_raw_usd": 13,
+              "debt_proceeds_usd": 2,
+              "debt_repayments_raw_usd": 2,
+              "net_income_usd": 8,
+              "operating_cash_flow_usd": 6
+            },
+            "cik": "0000037996",
+            "company": "ford",
+            "rows": 15,
+            "sector": "manufacturing",
+            "status": "PASS_WITH_BOUNDARY",
+            "years": [
+              2010,
+              2024
+            ]
+          },
+          {
+            "available_tags": {
+              "capex_raw_usd": 5,
+              "cash_balance_usd": 4,
+              "common_dividends_raw_usd": 15,
+              "debt_proceeds_usd": 0,
+              "debt_repayments_raw_usd": 0,
+              "net_income_usd": 1,
+              "operating_cash_flow_usd": 7
+            },
+            "cik": "0000018230",
+            "company": "caterpillar",
+            "rows": 15,
+            "sector": "manufacturing",
+            "status": "PASS_WITH_BOUNDARY",
+            "years": [
+              2010,
+              2024
+            ]
+          },
+          {
+            "available_tags": {
+              "capex_raw_usd": 0,
+              "cash_balance_usd": 15,
+              "common_dividends_raw_usd": 15,
+              "debt_proceeds_usd": 0,
+              "debt_repayments_raw_usd": 0,
+              "net_income_usd": 15,
+              "operating_cash_flow_usd": 14
+            },
+            "cik": "0000354950",
+            "company": "home_depot",
+            "rows": 15,
+            "sector": "retail_logistics",
+            "status": "PASS_WITH_BOUNDARY",
+            "years": [
+              2010,
+              2024
+            ]
+          }
+        ],
+        "controller_status": "SEC_PUBLIC_FIRM_PROXY_SOURCE_LOCKED",
+        "coverage": {
+          "no_imputation": true,
+          "rows": 149,
+          "years": [
+            2010,
+            2024
+          ]
+        },
+        "funding_share_identification": {
+          "reason": "Net income, debt proceeds, debt repayments, and capex are annual firm-accounting channels; they do not identify which dollar paid which invoice or prevent refinancing/working-capital overlap.",
+          "status": "NOT_IDENTIFIED"
+        },
+        "generated_at_utc": "2026-07-16T14:22:54.056058+00:00",
+        "limitations": [
+          "SEC company facts cover public registrants only and are not representative of all firms.",
+          "Annual 10-K facts are current-vintage observations, not historical-as-of releases.",
+          "Tag availability and fiscal-year definitions vary by issuer; missing facts remain missing."
+        ],
+        "schema_version": "1.0",
+        "source_manifest": {
+          "path": "docs/data/external/economics/us_historical/sec_xbrl/2026-07-16/source_manifest.json",
+          "sha256": "f43014ad161a1758de396a421193ad1b8b31dc7afb4e4dee7f75d8e7b400ebfb",
+          "status": "PASS_WITH_BOUNDARY"
+        },
+        "status": "PASS_WITH_BOUNDARY",
+        "topic": "0.25_Strategy_Power_Economics"
+      },
       "stone_balloon": {
         "asset_lane": {
           "blockers": [
@@ -6234,7 +7325,7 @@
         "formula_ids": [
           "EC25-UET-MONETARY-RESOURCE-MISMATCH"
         ],
-        "generated_at_utc": "2026-07-16T12:52:38.896858+00:00",
+        "generated_at_utc": "2026-07-16T14:23:08.246787+00:00",
         "inflation_baseline_comparison": [
           {
             "acceptance_rule": "Candidate requires at least 10 percent lower median rolling-origin RMSE than every named baseline and a 95 percent block-bootstrap squared-error interval below zero.",
@@ -6590,6 +7681,118 @@
         "status": "DIAGNOSTIC_COMPLETE",
         "topic": "0.25_Strategy_Power_Economics"
       },
+      "usgs_material_quantities": {
+        "claim_boundary": "The artifact establishes source-locked national physical quantity series for selected commodities. It does not identify which industry consumed them, which project used them, who paid, or whether funding was profit or debt.",
+        "controller_status": "USGS_PHYSICAL_QUANTITY_SOURCE_LOCKED",
+        "coverage": {
+          "commodities": [
+            "cement",
+            "copper",
+            "gold"
+          ],
+          "files": [
+            {
+              "columns_found": [
+                "Apparent consumption",
+                "Production"
+              ],
+              "commodity": "cement",
+              "data_rows": 122,
+              "exists": true,
+              "header_row": 5,
+              "local_path": "docs/data/external/economics/us_historical/usgs_materials/2026-07-16/cement.xlsx",
+              "original_filename": "cement.xlsx",
+              "parsed_quantity_rows": 244,
+              "quantity_columns": [
+                "Production",
+                "Apparent consumption"
+              ],
+              "sha256": "0053f8d21454e503232e5f8b84e979aa5af80996105421d4ea12c401c6834521",
+              "source_url": "https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/ds140-cement-2021.xlsx",
+              "status": "PASS_WITH_BOUNDARY",
+              "unit_basis": "metric tons gross weight",
+              "years": [
+                1900,
+                2021
+              ]
+            },
+            {
+              "columns_found": [
+                "Apparent consumption",
+                "Consumption",
+                "Primary production",
+                "Secondary production"
+              ],
+              "commodity": "copper",
+              "data_rows": 121,
+              "exists": true,
+              "header_row": 5,
+              "local_path": "docs/data/external/economics/us_historical/usgs_materials/2026-07-16/copper.xlsx",
+              "original_filename": "copper.xlsx",
+              "parsed_quantity_rows": 478,
+              "quantity_columns": [
+                "Primary production",
+                "Secondary production",
+                "Consumption",
+                "Apparent consumption"
+              ],
+              "sha256": "8c5e3682ceae94a06146c4b5000c4499521b02fcbd7dda5954e9ac4eb17ffc3f",
+              "source_url": "https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/ds140-copper-2020.xlsx",
+              "status": "PASS_WITH_BOUNDARY",
+              "unit_basis": "metric tons copper content",
+              "years": [
+                1900,
+                2020
+              ]
+            },
+            {
+              "columns_found": [
+                "Primary production",
+                "Reported consumption",
+                "Secondary production"
+              ],
+              "commodity": "gold",
+              "data_rows": 123,
+              "exists": true,
+              "header_row": 5,
+              "local_path": "docs/data/external/economics/us_historical/usgs_materials/2026-07-16/gold.xlsx",
+              "original_filename": "gold.xlsx",
+              "parsed_quantity_rows": 305,
+              "quantity_columns": [
+                "Primary production",
+                "Secondary production",
+                "Reported consumption"
+              ],
+              "sha256": "025f3eb98adb606cc214b82caa70646b80cf9debdf6544dbafce361283c1c480",
+              "source_url": "https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/ds140-gold-2022.xlsx",
+              "status": "PASS_WITH_BOUNDARY",
+              "unit_basis": "metric tons gold content",
+              "years": [
+                1900,
+                2022
+              ]
+            }
+          ],
+          "no_imputation": true,
+          "normalized_rows": 1027
+        },
+        "generated_at_utc": "2026-07-16T14:22:49.253155+00:00",
+        "limitations": [
+          "Commodity workbooks have different update years and commodity-specific measurement bases.",
+          "USGS notes that blank cells may mean unavailable or withheld data and are not zeros.",
+          "A material-to-industry concordance and transaction/project ledger are still missing."
+        ],
+        "mapping_status": "NOT_MAPPED_TO_BEA_INDUSTRY_OR_PROJECT",
+        "parse_failures": [],
+        "schema_version": "1.0",
+        "source_manifest": {
+          "path": "docs/data/external/economics/us_historical/usgs_materials/2026-07-16/source_manifest.json",
+          "sha256": "d1fea5a23274c5371bb64156be750c0dc0d0a297e20319543c2aa44b74d3e1b2",
+          "status": "PASS_WITH_BOUNDARY"
+        },
+        "status": "PASS_WITH_BOUNDARY",
+        "topic": "0.25_Strategy_Power_Economics"
+      },
       "wage_productivity": {
         "bls_comparator": {
           "construction_note": "This BLS nonfarm-business all-worker measure differs from EPI's total-economy net-productivity and typical-worker compensation construction, so numerical agreement is not expected.",
@@ -6631,7 +7834,7 @@
         "formula_ids": [
           "EC25-UET-WAGE-PRODUCTIVITY-GAP"
         ],
-        "generated_at_utc": "2026-07-16T12:52:41.545775+00:00",
+        "generated_at_utc": "2026-07-16T14:23:11.168249+00:00",
         "schema_version": "1.0",
         "status": "DIAGNOSTIC_COMPLETE",
         "topic": "0.25_Strategy_Power_Economics"
@@ -6649,7 +7852,7 @@
           ],
           "rows": 40
         },
-        "generated_at_utc": "2026-07-16T12:52:05.856789+00:00",
+        "generated_at_utc": "2026-07-16T14:22:22.495838+00:00",
         "missing_sources": [],
         "no_imputation": true,
         "observations": [
@@ -7590,7 +8793,7 @@
     "EC25-UET-MONETARY-RESOURCE-MISMATCH",
     "EC25-UET-WAGE-PRODUCTIVITY-GAP"
   ],
-  "generated_at_utc": "2026-07-16T12:52:41.794202+00:00",
+  "generated_at_utc": "2026-07-16T14:23:11.461077+00:00",
   "holdout_policy": {
     "blockers": [],
     "controller_status": null,
@@ -7616,7 +8819,7 @@
     "controller_status": null,
     "exists": true,
     "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_us_macro_panel_status.json",
-    "sha256": "9e010c504f349dea4a606e3b6a820aff14dd3dd09b0d03ddef47d4f27b39892d",
+    "sha256": "7c386d982f5ec14de7e0110175eb2074b38e7840a4a65556650e7bea3a1382a4",
     "status": "PASS"
   },
   "parameter_policy": {
@@ -7947,8 +9150,16 @@
       "controller_status": "BEA_1997_BENCHMARK_ONLY",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bea_1997_io_benchmark_audit.json",
-      "sha256": "2b1d0f48d321f5ab181aef9c7a204bb5a25253493e66995dfe2207d4cc6553c5",
+      "sha256": "79ea1dcb23f8bcc5029ad3977e4286b6c2dbfe7e974e86f89918af00ff0e428c",
       "status": "PASS_WITH_BOUNDARY"
+    },
+    "bls_industry_hours": {
+      "blockers": [],
+      "controller_status": "BLS_INDUSTRY_HOURS_SOURCE_GATE",
+      "exists": true,
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bls_industry_hours_source_package.json",
+      "sha256": "cd69f87f562c529d48a49d072f09afd5a5f1e55786b89bbce5efce5db985a020",
+      "status": "WARN"
     },
     "bls_io_source_gate": {
       "blockers": [
@@ -7959,7 +9170,7 @@
       "controller_status": "BLS_IO_QUALITY_AND_ACCESS_GATE",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bls_io_source_gate.json",
-      "sha256": "4a72732e4fed46575c65ddf4326e827260c438cdef0c600011122483a6636061",
+      "sha256": "072222c0ced044d1c3a883d0798cf87a93d1e32b6db2bc42b27eb73aee25504f",
       "status": "BLOCKED"
     },
     "causal_identification": {
@@ -7980,7 +9191,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_energy_density_audit.json",
-      "sha256": "e5622f9d07038e07d69469c923887690c293b279995176a090a31feb8615079a",
+      "sha256": "d00251386d7320fbe862894e86a28467c0ce6a2add66ecfab02962b9c76decd0",
       "status": "WARN"
     },
     "fed_z1_funding_mapping": {
@@ -7992,7 +9203,7 @@
       "controller_status": "FUNDING_FLOW_MAPPING_DESCRIPTIVE_ONLY",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_fed_z1_funding_mapping_probe.json",
-      "sha256": "360e1f8cf1242e2dcfd27f198632f603b77c8a2f6c3a1f6f2e49852811f19aa4",
+      "sha256": "3b0276360ed4949234d2ddc78ddafe06d64f7e2fb7c137d9acf5a3292b12dae3",
       "status": "WARN"
     },
     "fed_z1_funding_mix": {
@@ -8004,7 +9215,7 @@
       "controller_status": "FUNDING_MIX_ASSOCIATION_DESCRIPTIVE_ONLY",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_fed_z1_funding_mix_audit.json",
-      "sha256": "1b6c63dd32da889d8b897c35e24f9110c198921f6c74a5ff60eca4489109328b",
+      "sha256": "133854a705d25e4ea283d0e5a6733c91fc7ca1ca7890391304709818b98e79d6",
       "status": "WARN"
     },
     "fed_z1_source_probe": {
@@ -8070,7 +9281,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_global_replication_readiness.json",
-      "sha256": "aa870c56ff2333fcf766506a8d8244595835975e87aa0002a3dc3211470f9c64",
+      "sha256": "44288afa630dc4ae1de2453bbe14c3dc34fa7753224bd0492c686db12034f351",
       "status": "PARTIAL_PASS"
     },
     "global_wdi_leave_one_out": {
@@ -8144,7 +9355,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_measurement_validity_audit.json",
-      "sha256": "5376ee7edc61d43ae675cb0fffebc44e4d333484abdda6a90f7fe951cbd842b6",
+      "sha256": "2101003fb81cfc438af55a9b5063ce22792c3000a2a7d0e9004b8963ba3eb9c5",
       "status": "WARN"
     },
     "money_credit_inflation": {
@@ -8152,7 +9363,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_money_credit_inflation_audit.json",
-      "sha256": "24d95304a4c90bbc938216c07dea242077fa8f17a42ded3196f233478386fc67",
+      "sha256": "9f6d8f4734ce9ec313bf76a70b3ad78132f53b26a0016e105bde1e9706c982fe",
       "status": "PASS"
     },
     "payer_resource_join": {
@@ -8160,7 +9371,15 @@
       "controller_status": "PAYER_RESOURCE_JOIN_NOT_IDENTIFIED",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_payer_resource_join_readiness.json",
-      "sha256": "e928466bf58728f7f811a9fca4ded02f1da5937a9847d46ef90dad3db9c1134c",
+      "sha256": "4f70cf5806a8c6ccc2be3a5d6043dd5c028bd920f21be5c6f7301684733ca42b",
+      "status": "BLOCKED"
+    },
+    "project_payment_ledger": {
+      "blockers": [],
+      "controller_status": "PROJECT_PAYMENT_LEDGER_NOT_PUBLIC",
+      "exists": true,
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_project_payment_ledger_gate.json",
+      "sha256": "f467c0b7ab7b38743cf5c8fed908f1ebeecc37de89b34b0bede3bd19d91e6b59",
       "status": "BLOCKED"
     },
     "publication_hardening": {
@@ -8180,23 +9399,47 @@
       "controller_status": "NO_PREDECLARED_CANDIDATE_SIGNAL",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_resource_equation_audit.json",
-      "sha256": "da06da2bd840a30cee8901f7282874b881a90b6c1d8c17b54664953f083b7f27",
+      "sha256": "ddd4bf6c35481e25e368855dbd6814ced3bf096584d5fafae954e3803b56e271",
       "status": "DIAGNOSTIC_COMPLETE"
+    },
+    "sec_public_firm_funding_mix": {
+      "blockers": [],
+      "controller_status": "SEC_PUBLIC_FIRM_FUNDING_MIX_DESCRIPTIVE_ONLY",
+      "exists": true,
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_sec_public_firm_funding_mix_audit.json",
+      "sha256": "b79df9897ac3ce34744b48cf2099b796d9537ffca7b7a3daee81325d573395e2",
+      "status": "PASS_WITH_BOUNDARY"
+    },
+    "sec_public_firm_funding_proxy": {
+      "blockers": [],
+      "controller_status": "SEC_PUBLIC_FIRM_PROXY_SOURCE_LOCKED",
+      "exists": true,
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_sec_public_firm_funding_proxy.json",
+      "sha256": "8ed53beabac85ad0fc66103620a119ff9bbb34535e581699e9d643cc28eed144",
+      "status": "PASS_WITH_BOUNDARY"
     },
     "stone_balloon": {
       "blockers": [],
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_stone_balloon_audit.json",
-      "sha256": "472f321677e889ad5487238a8f2a4dfaa9798ea7d6c066c112edb2555cc615a2",
+      "sha256": "b03f52718cc4ddfae11e3e9f4d44045bc8d45e39ad51069c4c2079696f8f4737",
       "status": "DIAGNOSTIC_COMPLETE"
+    },
+    "usgs_material_quantities": {
+      "blockers": [],
+      "controller_status": "USGS_PHYSICAL_QUANTITY_SOURCE_LOCKED",
+      "exists": true,
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_usgs_material_quantity_audit.json",
+      "sha256": "c9541a26a5ec5ffd87fbbd1a5da2233d1012e9d4707555f6e79c3cb5606120a1",
+      "status": "PASS_WITH_BOUNDARY"
     },
     "wage_productivity": {
       "blockers": [],
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_wage_productivity_audit.json",
-      "sha256": "761e51fbd2a8931118bee6f5b30df732a5083b547b519235bb1b25c22f3f1864",
+      "sha256": "318b47397e3025cad2c68ebac43c9fbd0c38753dc763c565a0e0a78834f03c71",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "welfare": {
@@ -8204,7 +9447,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_welfare_audit.json",
-      "sha256": "041a3a982091538b0a3a2fcf662ece66f0ddf09f5b5b4a1de812b08a92982d2d",
+      "sha256": "1bca1f223f3c4c688c7a754dc2c0822ec20f8a9b1a8d2beda74d16767e27c8d5",
       "status": "PASS"
     }
   },

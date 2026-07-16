@@ -5,6 +5,17 @@
 
 ## Entries
 
+### 2026-07-16 - Labor, material, and public-firm funding provenance wave
+
+- Scope: add observable inputs for the chain `funding -> industry use -> labor -> physical material`, while keeping payer/project provenance separate.
+- Added: official BLS public-API industry-hours package, USGS cement/copper/gold quantity audit, SEC Company Facts proxy and funding-mix audit, and the explicit project payment ledger gate; integrated artifacts into the aggregate/readiness/join contracts.
+- Verified with: py_compile, cached-source reruns, standalone BLS/USGS/SEC/project gates, payer-resource join, evidence-readiness, and aggregate verifier.
+- Result: BLS `WARN` (11/202 predeclared NAICS4 candidates returned for 1987-2006; later API windows hit the provider daily quota); USGS `PASS_WITH_BOUNDARY` (3 commodities, 1,027 rows); SEC `PASS_WITH_BOUNDARY` (10 firms, 149 rows, 2010-2024); project ledger `BLOCKED`.
+- Blocker narrowed: payer-resource join now has two controlling components, `labor_industry_hours` (provider quota-limited) and `firm_project_payment_ledger`; USGS is source-locked as a national quantity lane, not a completed common industry/project join. SEC funding ratios explicitly remain `NOT_IDENTIFIED` as shares.
+- Next controller: obtain approved restricted-use or licensed transaction/project ledger and establish concordant industry/material allocation; Claim Class C and `DESCRIPTIVE_DIAGNOSTIC_ONLY` remain unchanged.
+- Claim impact: no upgrade; no claim that profit, debt, or money paid for a specific resource transformation is permitted.
+
+
 ### 2026-07-16 - BEA 1997 benchmark structural audit
 
 - Scope: close the structural industry/commodity-flow sub-check without pretending that a one-year benchmark supplies annual funding provenance.

@@ -32,6 +32,11 @@ The legacy Yahoo-style market files, `Global_Economy_2024.json`, and the local d
 remain a separate Claim Class C diagnostic lane. They are not used as primary inputs to the
 Book 1 historical tests.
 
+This wave also adds source-locked payer/resource inputs. BLS industry-hours, USGS physical
+material quantities, and SEC public-firm funding proxies are available only as bounded
+diagnostics. The project-level payment ledger remains blocked, so the package still cannot
+say which payer funded a specific purchase or how that payment became a measured resource.
+
 ## Current claim boundary
 
 Allowed wording is limited to source-locked descriptive findings such as:
@@ -73,9 +78,13 @@ flowchart LR
 | Resource engine | Primary 3-year and 1/5-year sensitivities complete; candidate signal false | 0_25_uet_resource_equation_audit.json | proxy association and baseline comparison |
 | Monetary-resource mismatch | 1/3/5-year baseline comparisons complete; candidate signal false | `0_25_stone_balloon_audit.json` | non-causal temporal comparison |
 | Funding-source flow | Fed Z.1 S11.1.i.a maps 66 annual sectoral flow rows; accounting bridge is rounded-pass, payer/resource linkage remains blocked | `0_25_fed_z1_funding_mapping_probe.json` | sectoral accounting diagnostics only |
-| Payer-resource input-output source | BLS annual 1997-2024 lane remains access/quality blocked; a separate BEA 1997 benchmark structure is validated | `0_25_bls_io_source_gate.json` | source/access/quality gate only |
+| Payer-resource input-output source | BLS annual industry-hours lane is partial/quota-limited; a separate BEA 1997 benchmark structure is validated | `0_25_bls_io_source_gate.json` | source/access/quality gate only |
+| Industry labor-hours | Official BLS public API returned annual hours for 11/202 predeclared NAICS4 candidates, 1987-2006 in the frozen archive; later requests hit the provider daily quota and are reported, not imputed | `0_25_bls_industry_hours_source_package.json` | bounded industry labor-input diagnostic |
+| Physical material quantities | USGS cement, copper, and gold workbooks yield national quantity rows; no industry/project allocation is asserted | `0_25_usgs_material_quantity_audit.json` | national material-throughput diagnostic only |
+| Public-firm funding proxy | SEC Company Facts for 10 predeclared nonfinancial firms, 2010-2024; profit, operating cash, capex, debt, and dividends are descriptive scale ratios | `0_25_sec_public_firm_funding_proxy.json`, `0_25_sec_public_firm_funding_mix_audit.json` | firm-level funding-scale diagnostic; shares `NOT_IDENTIFIED` |
+| Project payment ledger | Public-data boundary records Census restricted-use ledger requirement; SEC public filings are not invoice/project ledgers | `0_25_project_payment_ledger_gate.json` | `BLOCKED`; no payer-to-purchase claim |
 | Funding mix audit | Fed Z.1 same-year/lead associations and payment-flow scale computed; gross earmarked shares not identified | `0_25_fed_z1_funding_mix_audit.json` | signed sector-level diagnostic only |
-| Payer-resource join readiness | A source-locked BEA 1997 benchmark closes the structural industry-flow check; labor-hours, material quantities, and project-ledger links remain blocked | `0_25_payer_resource_join_readiness.json` | join-readiness boundary only |
+| Payer-resource join readiness | BEA 1997 structure and bounded USGS/SEC inputs are present; BLS labor-hours is quota-limited and project-ledger provenance remains blocked | `0_25_payer_resource_join_readiness.json` | join-readiness boundary only |
 | Wage-productivity | EPI export reproduced; BLS comparator reported separately | `0_25_wage_productivity_audit.json` | construction/vintage findings |
 | Energy | 1959-2024 throughput ready; 1776-1945 history absent; literal density blocked | `0_25_energy_density_audit.json` | descriptive energy lane only |
 | Pegged-stone assets | LBMA and licensed S&P total-return exports absent | `asset_lane` in stone artifact | no peg or asset-superiority claim |
@@ -91,7 +100,7 @@ flowchart LR
   horizon; the 3-year median improvement versus that baseline is `-67.0%`.
 - Funding-source mapping: Fed Z.1 provides 66 complete annual nonfinancial-corporate flow rows (1959-2024), including wages, taxes, interest, dividends, net saving, capital formation, debt and equity transactions. The mapped capital-account identity is within `1` million dollars of published rounding, but counterparty/project provenance and physical resource links are absent.
 - Funding-mix audit: the Z.1 panel reports signed net-flow correlations and flow-to-GVA/capital-formation scale, but explicitly returns `NOT_IDENTIFIED` for gross funding shares because debt/equity flows can include refinancing, redemptions, or repurchases.
-- Payer-resource join: the frozen package now includes a validated, hashed BEA 1997 benchmark (511 code rows; make/use, direct-requirements, and total-requirements structures) plus the concordance and aggregate energy throughput. The benchmark is not a time series and does not identify a payer. Industry labor-hours, material quantities, and project payment ledger remain `BLOCKED` (three components).
+- Payer-resource join: the frozen package now includes a validated, hashed BEA 1997 benchmark (511 code rows; make/use, direct-requirements, and total-requirements structures), a partial BLS annual industry-hours archive, and selected USGS material quantities. SEC public-firm ratios add a firm funding-scale view. BLS coverage is currently `WARN` because the provider daily API quota prevented later windows; the project payment ledger remains `BLOCKED`; therefore payer-to-purchase-to-resource provenance is still not identified.
 - Wage lane: the versioned EPI chart gives productivity growth `80.24%` and published total
   compensation growth `28.38%` for 1979-2021. The Book quote (`64.6%` and `17.3%`) is retained
   as a source/construction comparison. The BLS comparator gives `125.02%` and `56.64%`.

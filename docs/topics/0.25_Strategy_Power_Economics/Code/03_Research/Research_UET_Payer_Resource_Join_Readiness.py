@@ -16,6 +16,11 @@ from pathlib import Path
 from economic_hardening_common import (
     ARTIFACT_DIR,
     BEA_1997_IO_ARTIFACT,
+    BLS_INDUSTRY_HOURS_ARTIFACT,
+    USGS_MATERIAL_QUANTITY_ARTIFACT,
+    SEC_PUBLIC_FIRM_PROXY_ARTIFACT,
+    SEC_PUBLIC_FIRM_MIX_ARTIFACT,
+    PROJECT_PAYMENT_LEDGER_ARTIFACT,
     BLS_IO_SOURCE_GATE_ARTIFACT,
     FED_Z1_FUNDING_MAPPING_ARTIFACT,
     RAW_ROOT,
@@ -115,6 +120,13 @@ def main() -> int:
     concordance_path = RAW_ROOT / "bea_io" / "2026-07-16" / "BEA-Industry-and-Commodity-Codes-and-NAICS-Concordance.xlsx"
     bea_benchmark = _artifact_status(BEA_1997_IO_ARTIFACT)
     benchmark_ready = bea_benchmark.get("status") == "PASS_WITH_BOUNDARY"
+    bls_hours = _artifact_status(BLS_INDUSTRY_HOURS_ARTIFACT)
+    bls_hours_ready = bls_hours.get("status") == "PASS_WITH_BOUNDARY"
+    usgs_materials = _artifact_status(USGS_MATERIAL_QUANTITY_ARTIFACT)
+    usgs_materials_ready = usgs_materials.get("status") == "PASS_WITH_BOUNDARY"
+    sec_funding_proxy = _artifact_status(SEC_PUBLIC_FIRM_PROXY_ARTIFACT)
+    sec_funding_mix = _artifact_status(SEC_PUBLIC_FIRM_MIX_ARTIFACT)
+    project_ledger_gate = _artifact_status(PROJECT_PAYMENT_LEDGER_ARTIFACT)
 
     evidence = {
         "funding_flows": {
@@ -152,9 +164,10 @@ def main() -> int:
             "boundary": "A source-locked 1997 benchmark is archived for structural validation; annual supply-use/input-output flow export still requires the BEA API or interactive application.",
         },
         "labor_industry_hours": {
-            "status": "BLOCKED",
-            "source": _glob_record(RAW_ROOT / "bls_labor" / "2026-07-16", "*", "BLS industry/occupation hours and labor input"),
-            "boundary": "Aggregate productivity and employment proxies exist in the macro panel, but industry-level hours/occupations are not archived for concordance.",
+            "status": "PASS_WITH_BOUNDARY" if bls_hours_ready else "BLOCKED",
+            "artifact": bls_hours,
+            "source": _glob_record(RAW_ROOT / "bls_labor" / "2026-07-16", "*.json", "BLS industry hours API responses"),
+            "boundary": "BLS annual hours are source-locked for returned four-digit NAICS series; coverage is partial and is not payment-level occupation or payer provenance.",
         },
         "energy_throughput": {
             "status": "PASS_WITH_BOUNDARY",
@@ -162,22 +175,25 @@ def main() -> int:
             "boundary": "Energy throughput is available; it is not a complete material-extraction or project-level resource ledger.",
         },
         "material_quantities": {
-            "status": "BLOCKED",
-            "source": {
-                "required_providers": ["USGS", "FAOSTAT", "EIA source-level extraction/environmental accounts"],
-                "local_archives": [],
-                "status": "MISSING",
-            },
-            "boundary": "No source-locked physical material quantity panel and industry concordance are present.",
+            "status": "PASS_WITH_BOUNDARY" if usgs_materials_ready else "BLOCKED",
+            "artifact": usgs_materials,
+            "source": _glob_record(RAW_ROOT / "usgs_materials" / "2026-07-16", "*.xlsx", "USGS physical material quantity workbooks"),
+            "boundary": "USGS national commodity quantity series are source-locked for selected materials; no material-to-industry or project allocation is observed.",
+        },
+        "public_firm_funding_proxy": {
+            "status": "PASS_WITH_BOUNDARY" if sec_funding_proxy.get("status") == "PASS_WITH_BOUNDARY" and sec_funding_mix.get("status") == "PASS_WITH_BOUNDARY" else "BLOCKED",
+            "artifact": {"source_package": sec_funding_proxy, "funding_mix": sec_funding_mix},
+            "boundary": "Predeclared public-firm annual accounting channels can be compared descriptively; funding shares and invoice provenance remain unidentified.",
         },
         "firm_project_payment_ledger": {
             "status": "BLOCKED",
+            "artifact": {"public_firm_funding_proxy": sec_funding_proxy, "public_firm_funding_mix": sec_funding_mix, "ledger_gate": project_ledger_gate},
             "source": {
                 "required_providers": ["Census business microdata", "administrative ACH/card/invoice records"],
                 "local_archives": [],
                 "status": "MISSING",
             },
-            "boundary": "Public aggregate accounts cannot identify which payer funded which purchase or project.",
+            "boundary": "SEC public-firm annual accounting provides profit/debt/capex channel proxies, but no invoice-level payer, supplier, project, or physical-resource ledger is public in this package.",
         },
         "industry_concordance": {
             "status": "PASS_WITH_BOUNDARY" if concordance_path.is_file() else "BLOCKED",

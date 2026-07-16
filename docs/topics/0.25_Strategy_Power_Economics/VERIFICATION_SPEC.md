@@ -48,6 +48,10 @@ The legacy descriptive command is separate:
   imputation and no payment-level inference. The BEA code concordance may pass with boundary,
   while the flow join remains blocked.
 - `0_25_bea_1997_io_benchmark_audit.json`: byte-hash and layout checks for the official 1997 BEA make/use, direct-requirements, and industry-by-industry total-requirements archives. It is a one-year benchmark with an explicit not-time-series boundary.
+- `0_25_bls_industry_hours_source_package.json`: official API request/response hashes, returned NAICS4 coverage, annual-hours units, missing-code list, and provider-quota failures; no imputation.
+- `0_25_usgs_material_quantity_audit.json`: raw workbook hashes, commodity/quantity-column mapping, coverage, and explicit no-industry/project-allocation boundary.
+- `0_25_sec_public_firm_funding_proxy.json` and `0_25_sec_public_firm_funding_mix_audit.json`: current-vintage 10-K fact hashes, tag/unit/date coverage, descriptive firm ratios, and `NOT_IDENTIFIED` funding-share status.
+- `0_25_project_payment_ledger_gate.json`: public-data restriction, approved restricted-use route, and controlling `PROJECT_PAYMENT_LEDGER_NOT_PUBLIC` blocker.
 - aggregate `execution_gate`: all verifier subcommands exit zero.
 - aggregate legacy_claim_quarantine: every legacy markdown note contains the required
   Legacy claim boundary warning before it can be treated as topic documentation.
@@ -84,6 +88,8 @@ per-capita growth. Pre/post regime summaries use 1959-1970 and 1974-2024, exclud
   blocker;
 - funding-mix association rows, lag policy, signed-ratio definitions, and gross-share blocker;
 - payer-resource join component statuses, local input hashes, missing components, and join claim boundary;
+- BLS industry-hours, USGS material, SEC Company Facts, and project-ledger artifact hashes, coverage,
+  units, and bounded-join limitations;
 - command exit codes, legacy-claim quarantine result, and the current controller status;
 - a self-contained evidence_bundle containing source records/hashes, transform and panel
   payloads, formula/parameter/holdout contracts, research register, variable dictionary,

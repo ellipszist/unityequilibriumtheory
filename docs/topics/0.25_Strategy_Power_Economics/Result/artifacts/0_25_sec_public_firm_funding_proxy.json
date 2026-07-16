@@ -1,0 +1,232 @@
+{
+  "claim_boundary": "Public-firm accounting proxy only. It can compare observed profit/debt/cash/capex channels for the predeclared firms; it cannot establish economy-wide payer provenance, project-level payment identity, physical resource use, or causality.",
+  "companies": [
+    {
+      "available_tags": {
+        "capex_raw_usd": 10,
+        "cash_balance_usd": 15,
+        "common_dividends_raw_usd": 1,
+        "debt_proceeds_usd": 12,
+        "debt_repayments_raw_usd": 9,
+        "net_income_usd": 15,
+        "operating_cash_flow_usd": 12
+      },
+      "cik": "0000320193",
+      "company": "apple",
+      "rows": 15,
+      "sector": "technology",
+      "status": "PASS_WITH_BOUNDARY",
+      "years": [
+        2010,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 15,
+        "cash_balance_usd": 15,
+        "common_dividends_raw_usd": 15,
+        "debt_proceeds_usd": 0,
+        "debt_repayments_raw_usd": 0,
+        "net_income_usd": 15,
+        "operating_cash_flow_usd": 11
+      },
+      "cik": "0000789019",
+      "company": "microsoft",
+      "rows": 15,
+      "sector": "technology",
+      "status": "PASS_WITH_BOUNDARY",
+      "years": [
+        2010,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 7,
+        "cash_balance_usd": 15,
+        "common_dividends_raw_usd": 0,
+        "debt_proceeds_usd": 9,
+        "debt_repayments_raw_usd": 4,
+        "net_income_usd": 15,
+        "operating_cash_flow_usd": 15
+      },
+      "cik": "0001018724",
+      "company": "amazon",
+      "rows": 15,
+      "sector": "retail_logistics",
+      "status": "PASS_WITH_BOUNDARY",
+      "years": [
+        2010,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 14,
+        "cash_balance_usd": 14,
+        "common_dividends_raw_usd": 4,
+        "debt_proceeds_usd": 14,
+        "debt_repayments_raw_usd": 14,
+        "net_income_usd": 14,
+        "operating_cash_flow_usd": 14
+      },
+      "cik": "0000104169",
+      "company": "walmart",
+      "rows": 14,
+      "sector": "retail_logistics",
+      "status": "PASS_WITH_BOUNDARY",
+      "years": [
+        2010,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 15,
+        "cash_balance_usd": 15,
+        "common_dividends_raw_usd": 15,
+        "debt_proceeds_usd": 15,
+        "debt_repayments_raw_usd": 14,
+        "net_income_usd": 15,
+        "operating_cash_flow_usd": 11
+      },
+      "cik": "0000034088",
+      "company": "exxon_mobil",
+      "rows": 15,
+      "sector": "energy",
+      "status": "PASS_WITH_BOUNDARY",
+      "years": [
+        2010,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 0,
+        "cash_balance_usd": 11,
+        "common_dividends_raw_usd": 15,
+        "debt_proceeds_usd": 15,
+        "debt_repayments_raw_usd": 0,
+        "net_income_usd": 15,
+        "operating_cash_flow_usd": 15
+      },
+      "cik": "0000093410",
+      "company": "chevron",
+      "rows": 15,
+      "sector": "energy",
+      "status": "PASS_WITH_BOUNDARY",
+      "years": [
+        2010,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 15,
+        "cash_balance_usd": 15,
+        "common_dividends_raw_usd": 13,
+        "debt_proceeds_usd": 0,
+        "debt_repayments_raw_usd": 0,
+        "net_income_usd": 15,
+        "operating_cash_flow_usd": 15
+      },
+      "cik": "0000012927",
+      "company": "boeing",
+      "rows": 15,
+      "sector": "manufacturing",
+      "status": "PASS_WITH_BOUNDARY",
+      "years": [
+        2010,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 0,
+        "cash_balance_usd": 15,
+        "common_dividends_raw_usd": 13,
+        "debt_proceeds_usd": 2,
+        "debt_repayments_raw_usd": 2,
+        "net_income_usd": 8,
+        "operating_cash_flow_usd": 6
+      },
+      "cik": "0000037996",
+      "company": "ford",
+      "rows": 15,
+      "sector": "manufacturing",
+      "status": "PASS_WITH_BOUNDARY",
+      "years": [
+        2010,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 5,
+        "cash_balance_usd": 4,
+        "common_dividends_raw_usd": 15,
+        "debt_proceeds_usd": 0,
+        "debt_repayments_raw_usd": 0,
+        "net_income_usd": 1,
+        "operating_cash_flow_usd": 7
+      },
+      "cik": "0000018230",
+      "company": "caterpillar",
+      "rows": 15,
+      "sector": "manufacturing",
+      "status": "PASS_WITH_BOUNDARY",
+      "years": [
+        2010,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 0,
+        "cash_balance_usd": 15,
+        "common_dividends_raw_usd": 15,
+        "debt_proceeds_usd": 0,
+        "debt_repayments_raw_usd": 0,
+        "net_income_usd": 15,
+        "operating_cash_flow_usd": 14
+      },
+      "cik": "0000354950",
+      "company": "home_depot",
+      "rows": 15,
+      "sector": "retail_logistics",
+      "status": "PASS_WITH_BOUNDARY",
+      "years": [
+        2010,
+        2024
+      ]
+    }
+  ],
+  "controller_status": "SEC_PUBLIC_FIRM_PROXY_SOURCE_LOCKED",
+  "coverage": {
+    "no_imputation": true,
+    "rows": 149,
+    "years": [
+      2010,
+      2024
+    ]
+  },
+  "funding_share_identification": {
+    "reason": "Net income, debt proceeds, debt repayments, and capex are annual firm-accounting channels; they do not identify which dollar paid which invoice or prevent refinancing/working-capital overlap.",
+    "status": "NOT_IDENTIFIED"
+  },
+  "generated_at_utc": "2026-07-16T14:22:54.056058+00:00",
+  "limitations": [
+    "SEC company facts cover public registrants only and are not representative of all firms.",
+    "Annual 10-K facts are current-vintage observations, not historical-as-of releases.",
+    "Tag availability and fiscal-year definitions vary by issuer; missing facts remain missing."
+  ],
+  "schema_version": "1.0",
+  "source_manifest": {
+    "path": "docs/data/external/economics/us_historical/sec_xbrl/2026-07-16/source_manifest.json",
+    "sha256": "f43014ad161a1758de396a421193ad1b8b31dc7afb4e4dee7f75d8e7b400ebfb",
+    "status": "PASS_WITH_BOUNDARY"
+  },
+  "status": "PASS_WITH_BOUNDARY",
+  "topic": "0.25_Strategy_Power_Economics"
+}

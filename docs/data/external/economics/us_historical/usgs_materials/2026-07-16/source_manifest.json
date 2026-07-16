@@ -1,0 +1,45 @@
+{
+  "coverage": "US national mineral commodity production/consumption quantities; commodity-specific historical coverage through the workbook update years",
+  "normalized_panel": {
+    "local_path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/usgs_material_quantities_1900_2022.csv",
+    "rows": 1027,
+    "sha256": "e1c0b36d73442f4b4c949fdc4c3172c3a0f0a937c8a1d403a635689849fb42a4"
+  },
+  "official_page": "https://www.usgs.gov/centers/national-minerals-information-center/historical-statistics-mineral-commodities-united",
+  "preprocessing": "Read worksheet rows by the Year header and declared quantity columns; retain missing cells as missing; no zero filling, unit conversion, or industry allocation.",
+  "provider": "U.S. Geological Survey, National Minerals Information Center",
+  "retrieval_timestamp_utc": "2026-07-16T14:22:49.240069+00:00",
+  "retrieval_vintage": "2026-07-16",
+  "schema_version": "1.0",
+  "sources": [
+    {
+      "benchmark_role": "physical material throughput; not industry/payment allocation",
+      "local_path": "docs/data/external/economics/us_historical/usgs_materials/2026-07-16/cement.xlsx",
+      "original_filename": "cement.xlsx",
+      "sha256": "0053f8d21454e503232e5f8b84e979aa5af80996105421d4ea12c401c6834521",
+      "source_id": "usgs_cement",
+      "source_url": "https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/ds140-cement-2021.xlsx",
+      "units": "metric tons gross weight"
+    },
+    {
+      "benchmark_role": "physical material throughput; not industry/payment allocation",
+      "local_path": "docs/data/external/economics/us_historical/usgs_materials/2026-07-16/copper.xlsx",
+      "original_filename": "copper.xlsx",
+      "sha256": "8c5e3682ceae94a06146c4b5000c4499521b02fcbd7dda5954e9ac4eb17ffc3f",
+      "source_id": "usgs_copper",
+      "source_url": "https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/ds140-copper-2020.xlsx",
+      "units": "metric tons copper content"
+    },
+    {
+      "benchmark_role": "physical material throughput; not industry/payment allocation",
+      "local_path": "docs/data/external/economics/us_historical/usgs_materials/2026-07-16/gold.xlsx",
+      "original_filename": "gold.xlsx",
+      "sha256": "025f3eb98adb606cc214b82caa70646b80cf9debdf6544dbafce361283c1c480",
+      "source_id": "usgs_gold",
+      "source_url": "https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/ds140-gold-2022.xlsx",
+      "units": "metric tons gold content"
+    }
+  ],
+  "status": "PASS_WITH_BOUNDARY",
+  "terms": "USGS public-domain historical statistics; retain provider attribution."
+}

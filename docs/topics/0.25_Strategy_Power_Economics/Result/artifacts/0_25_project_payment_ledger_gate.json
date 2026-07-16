@@ -1,0 +1,45 @@
+{
+  "claim_boundary": "No payment-level payer, profit-vs-debt attribution, project-resource transformation, or innovation-causality claim is allowed from the current public package.",
+  "controller_status": "PROJECT_PAYMENT_LEDGER_NOT_PUBLIC",
+  "generated_at_utc": "2026-07-16T14:22:56.996901+00:00",
+  "limitations": [
+    "Aggregate financial accounts and public-firm filings cannot trace a particular payment to a physical resource.",
+    "Restricted-use access would require a human-approved research project and secure output review; it is not an automatic source acquisition."
+  ],
+  "local_archives": [],
+  "next_allowed_path": "Obtain approved restricted-use access or a licensed, source-locked transaction ledger; archive terms, vintage, and hash before any join.",
+  "public_sources_checked": [
+    {
+      "observation": "Business Register, LBD, ACES, QFR, CFS, and related economic microdata are listed as restricted-use assets requiring approved secure access; they are not a public invoice-level ledger.",
+      "provider": "U.S. Census Bureau",
+      "role": "firm/establishment/transaction microdata availability",
+      "status": "RESTRICTED_USE",
+      "url": "https://www.census.gov/topics/research/guidance/restricted-use-microdata/economic-data.html"
+    },
+    {
+      "observation": "The LBD is available only to qualified researchers for approved projects in secure Federal Statistical Research Data Centers.",
+      "provider": "U.S. Census Bureau",
+      "role": "firm/establishment longitudinal linkage",
+      "status": "RESTRICTED_USE",
+      "url": "https://www.census.gov/programs-surveys/ces/data/restricted-use-data/longitudinal-business-database.html"
+    },
+    {
+      "observation": "SEC XBRL facts provide annual accounting channels but no supplier invoice, payment counterparty, or project resource ledger.",
+      "provider": "U.S. Securities and Exchange Commission",
+      "role": "public-firm accounting proxy",
+      "status": "PUBLIC_PROXY_ONLY",
+      "url": "https://www.sec.gov/edgar/sec-api-documentation"
+    }
+  ],
+  "required_fields": [
+    "payer identity",
+    "payee/supplier identity",
+    "transaction date and amount",
+    "industry/commodity concordance",
+    "project or asset identity",
+    "profit/debt/equity funding provenance"
+  ],
+  "schema_version": "1.0",
+  "status": "BLOCKED",
+  "topic": "0.25_Strategy_Power_Economics"
+}

@@ -1,0 +1,61 @@
+{
+  "claim_boundary": "Descriptive public-firm accounting comparison only. No economy-wide, payer-level, project-level, physical-resource, or causal funding claim is supported.",
+  "controller_status": "SEC_PUBLIC_FIRM_FUNDING_MIX_DESCRIPTIVE_ONLY",
+  "funding_share_identification": {
+    "reason": "Profit, operating cash, and net debt are annual firm-accounting channels; their ratios to capex are scale diagnostics, not source-of-payment shares.",
+    "status": "NOT_IDENTIFIED"
+  },
+  "generated_at_utc": "2026-07-16T14:22:55.509755+00:00",
+  "limitations": [
+    "The panel covers only ten predeclared public firms and current-vintage 10-K facts.",
+    "Net debt flows can include refinancing, redemptions, and timing differences; cash pooling is unobserved.",
+    "Capex tags do not identify which supplier or physical resource was paid."
+  ],
+  "panel": {
+    "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/sec_public_firm_funding_proxy_2010_2024.csv",
+    "rows": 149,
+    "sha256": "84d51bf6247409d8cd960ccf46a7435e4a113058c163931e6d55952ac5837dc3",
+    "usable_capex_rows": 81
+  },
+  "schema_version": "1.0",
+  "sector_summaries": {
+    "energy": {
+      "debt_observed_rows": 15,
+      "median_net_debt_to_capex": 0.033322634297219225,
+      "median_operating_cash_to_capex": 1.8016821108257974,
+      "median_profit_to_capex": 1.4498157865356704,
+      "profit_observed_rows": 15,
+      "rows": 15
+    },
+    "manufacturing": {
+      "debt_observed_rows": 0,
+      "median_net_debt_to_capex": null,
+      "median_operating_cash_to_capex": 3.989188672024493,
+      "median_profit_to_capex": 2.3008498801592014,
+      "profit_observed_rows": 20,
+      "rows": 20
+    },
+    "retail_logistics": {
+      "debt_observed_rows": 15,
+      "median_net_debt_to_capex": 0.9180327868852459,
+      "median_operating_cash_to_capex": 2.1551628934290448,
+      "median_profit_to_capex": 1.2347254447022429,
+      "profit_observed_rows": 21,
+      "rows": 21
+    },
+    "technology": {
+      "debt_observed_rows": 10,
+      "median_net_debt_to_capex": 2.112640345181557,
+      "median_operating_cash_to_capex": 5.816420040561857,
+      "median_profit_to_capex": 4.592692828146143,
+      "profit_observed_rows": 25,
+      "rows": 25
+    }
+  },
+  "source_artifact": {
+    "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_sec_public_firm_funding_proxy.json",
+    "sha256": "8ed53beabac85ad0fc66103620a119ff9bbb34535e581699e9d643cc28eed144"
+  },
+  "status": "PASS_WITH_BOUNDARY",
+  "topic": "0.25_Strategy_Power_Economics"
+}
