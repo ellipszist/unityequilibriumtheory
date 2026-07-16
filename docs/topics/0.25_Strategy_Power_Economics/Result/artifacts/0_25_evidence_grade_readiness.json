@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "topic": "0.25_Strategy_Power_Economics",
+  "status": "BLOCKED",
+  "target": "Evidence Grade A",
+  "checks": {
+    "source_and_panel": "WARN",
+    "measurement_validity": "WARN",
+    "causal_identification": "BLOCKED",
+    "global_replication": "BLOCKED",
+    "independent_replication": "BLOCKED",
+    "publication_review": "BLOCKED"
+  },
+  "controlling_blockers": [
+    "source_and_panel",
+    "measurement_validity",
+    "causal_identification",
+    "global_replication",
+    "independent_replication",
+    "publication_review"
+  ],
+  "promotion_rule": "All critical source, measurement, causal, global, independent-replication, and publication checks must be PASS; no WARN/BLOCKED critical gate may be averaged away.",
+  "claim_boundary": "Current evidence supports only source-locked descriptive diagnostics. This readiness artifact does not promote Claim Class C."
+}
