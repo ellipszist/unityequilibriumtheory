@@ -10,7 +10,8 @@
     "global_replication": "PARTIAL_PASS",
     "independent_replication": "BLOCKED",
     "publication_review": "BLOCKED",
-    "regional_robustness": "PASS"
+    "regional_robustness": "PASS",
+    "imf_cpi_coverage": "PASS"
   },
   "controlling_blockers": [
     "source_and_panel",
