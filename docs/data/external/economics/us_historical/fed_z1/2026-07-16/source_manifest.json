@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "provider": "Federal Reserve Board Z.1",
+  "release": "2026:Q1 current release",
+  "url": "https://www.federalreserve.gov/releases/z1/current/z1_csv_files.zip",
+  "retrieved_at_utc": "2026-07-16T06:55:58.436375+00:00",
+  "local_path": "docs/data/external/economics/us_historical/fed_z1/2026-07-16/z1_csv_files.zip",
+  "sha256": "b23e0ad3a5afc700c3608863707b0514e6e119b43efeaf89ec6e746da8dbea24",
+  "bytes": 8075952,
+  "terms": "Federal Reserve public release; current vintage; revisions possible",
+  "role": "sectoral transactions, financial assets/liabilities, balance sheets"
+}
