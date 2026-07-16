@@ -112,3 +112,10 @@
 - Normalized 4,699 complete country-year rows; 186 economies have at least 20 complete years across all three indicators. No imputation was used.
 - Added `Research_UET_Global_WDI_Panel.py` and the panel artifact; this closes only the WDI sub-lane. OECD/ILOSTAT/IMF/BIS/WID source closure, PPP split, measurement invariance, and external replication remain blocked.
 - Aggregate verifier remains `WARN / Claim C / DESCRIPTIVE_DIAGNOSTIC_ONLY`.
+
+### 2026-07-16 - IMF CPI normalization and regional WDI hardening
+
+- Added source-locked IMF DataMapper CPI archive and coverage artifact (228 economies; 222 with 20+ years).
+- Added reproducible IMF ISO3 to WDI ISO2 normalization (147 matched economies with 20+ years) and integrated it into the aggregate verifier.
+- Repaired WDI regional leave-one-out country join using ISO2 metadata, excluding aggregates; 162 countries joined and the regional script now runs in the aggregate chain.
+- Current claim boundary remains descriptive; causal, universal, and Evidence Grade A promotion remain blocked.
