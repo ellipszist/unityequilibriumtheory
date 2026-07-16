@@ -54,6 +54,7 @@ MEASUREMENT_ARTIFACT = ARTIFACT_DIR / "0_25_uet_measurement_validity_audit.json"
 WELFARE_SOURCE_MANIFEST = RAW_ROOT.parent.parent / "welfare" / "uet_us_welfare_source_manifest.json"
 WELFARE_ARTIFACT = ARTIFACT_DIR / "0_25_uet_welfare_audit.json"
 MONEY_CREDIT_ARTIFACT = ARTIFACT_DIR / "0_25_money_credit_inflation_audit.json"
+GLOBAL_REPLICATION_ARTIFACT = ARTIFACT_DIR / "0_25_global_replication_readiness.json"
 
 
 def utc_now() -> str:
