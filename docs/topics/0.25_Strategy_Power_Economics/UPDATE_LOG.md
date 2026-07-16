@@ -119,3 +119,10 @@
 - Added reproducible IMF ISO3 to WDI ISO2 normalization (147 matched economies with 20+ years) and integrated it into the aggregate verifier.
 - Repaired WDI regional leave-one-out country join using ISO2 metadata, excluding aggregates; 162 countries joined and the regional script now runs in the aggregate chain.
 - Current claim boundary remains descriptive; causal, universal, and Evidence Grade A promotion remain blocked.
+
+### 2026-07-16 - Funding-source and money-flow proxy wave
+
+- Archived FRED CPATAX, GPDI, BUSLOANS, and dividend-income series with a funding-source manifest.
+- Added a 67-year no-imputation annual sectoral proxy panel and integrated it into the aggregate verifier.
+- The panel distinguishes profit/investment and business-credit ratios but cannot identify individual payer funding provenance; transfers/equity and transaction-level links remain blocked.
+- Aggregate remains `WARN / Claim Class C / DESCRIPTIVE_DIAGNOSTIC_ONLY`.
