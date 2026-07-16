@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "status": "PASS",
+  "imf_countries": 228,
+  "matched_to_wdi_panel": 152,
+  "matched_20_plus_years": 147,
+  "coverage_window": [
+    2000,
+    2024
+  ],
+  "join_policy": "IMF ISO3 -> World Bank metadata iso2Code -> WDI panel ISO2; aggregates excluded",
+  "missingness_policy": "no imputation; IMF values remain a separate inflation robustness lane",
+  "claim_boundary": "Normalized IMF/WDI linkage supports measurement comparison only; it does not establish causal inflation effects."
+}
