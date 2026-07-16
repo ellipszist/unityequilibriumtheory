@@ -21,16 +21,20 @@ REQUIRED = {
 }
 
 def main() -> int:
+    wdi_manifest = Path("docs/data/external/economics/global/wdi/2026-07-16/source_manifest.json")
+    wdi_panel = Path("docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_global_wdi_panel.json")
+    wdi_ready = wdi_manifest.exists() and wdi_panel.exists() and json.loads(wdi_panel.read_text()).get("status") == "PASS"
     blockers = [
-        "No frozen 30+ economy source manifest with provider release/vintage/hash records.",
-        "No common-coverage panel proving at least 20 years per economy and variable.",
-        "PPP and exchange-rate versions are not yet separated in a normalized panel.",
-        "No measurement-invariance or leave-one-country/region-out artifact exists.",
+        "OECD, ILOSTAT, IMF, BIS, and WID source manifests with release/vintage/hash records are absent.",
+        "PPP and exchange-rate versions are not yet pooled through a measurement-invariance protocol.",
+        "No leave-one-region-out artifact or official income/resource-exporter classification is locked.",
+        "Independent global replication remains absent.",
     ]
     payload = {
         "schema_version": "1.0",
         "topic": "0.25_Strategy_Power_Economics",
-        "status": "BLOCKED",
+        "status": "PARTIAL_PASS" if wdi_ready else "BLOCKED",
+        "completed_sublanes": {"world_bank_wdi": "PASS" if wdi_ready else "BLOCKED"},
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "required_providers": REQUIRED,
         "design": {
@@ -44,7 +48,7 @@ def main() -> int:
     }
     ARTIFACT.parent.mkdir(parents=True, exist_ok=True)
     ARTIFACT.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print("Global replication readiness: BLOCKED")
+    print("Global replication readiness:", payload["status"])
     return 0
 
 if __name__ == "__main__":
