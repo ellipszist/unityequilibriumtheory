@@ -3,9 +3,9 @@
   "status": "PASS",
   "coverage": [
     1960,
-    2026
+    2024
   ],
-  "rows": 67,
+  "rows": 65,
   "series": [
     "CPATAX",
     "GPDI",
@@ -597,24 +597,6 @@
       "W790RC1Q027SBEA": 867.4205,
       "profit_to_investment_ratio": 0.5935007089082195,
       "credit_to_profit_ratio": 0.8862343513561713
-    },
-    {
-      "year": 2025,
-      "CPATAX": 3382.2915000000003,
-      "GPDI": 5458.62825,
-      "BUSLOANS": 2681.738691666667,
-      "W790RC1Q027SBEA": 845.36775,
-      "profit_to_investment_ratio": 0.6196229794545911,
-      "credit_to_profit_ratio": 0.792876276827904
-    },
-    {
-      "year": 2026,
-      "CPATAX": 3623.718,
-      "GPDI": 5634.016,
-      "BUSLOANS": 2831.3621500000004,
-      "W790RC1Q027SBEA": 868.023,
-      "profit_to_investment_ratio": 0.6431856068566366,
-      "credit_to_profit_ratio": 0.7813417462396358
     }
   ],
   "construction": "quarterly FRED observations annualized by arithmetic mean; no imputation",

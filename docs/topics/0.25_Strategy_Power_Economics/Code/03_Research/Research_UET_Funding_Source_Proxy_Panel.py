@@ -12,7 +12,7 @@ def main():
    try:annual.setdefault(int(r["observation_date"][:4]),[]).append(float(r[code]))
    except:pass
   data[code]={y:sum(v)/len(v) for y,v in annual.items()}
- years=sorted(set.intersection(*(set(v) for v in data.values())));obs=[]
+ years=sorted(y for y in set.intersection(*(set(v) for v in data.values())) if 1959 <= y <= 2024);obs=[]
  for y in years:
   r={"year":y,**{c:data[c][y] for c in CODES}};r["profit_to_investment_ratio"]=r["CPATAX"]/r["GPDI"] if r["GPDI"] else None;r["credit_to_profit_ratio"]=r["BUSLOANS"]/r["CPATAX"] if r["CPATAX"] else None;obs.append(r)
  out={"schema_version":"1.0","status":"PASS" if len(obs)>=50 else "WARN","coverage":[years[0],years[-1]],"rows":len(obs),"series":CODES,"observations":obs,"construction":"quarterly FRED observations annualized by arithmetic mean; no imputation","interpretation":"Aggregate sectoral funding proxies only; not transaction provenance or causality.","blockers":["Transfers and equity issuance are not represented; transaction-level payer/source linkage remains blocked."]};ART.write_text(json.dumps(out,indent=2)+"\n");print("Funding proxy panel:",out["status"],len(obs))
