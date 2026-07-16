@@ -14,7 +14,8 @@
     "imf_cpi_coverage": "PASS",
     "imf_wdi_normalization": "PASS",
     "funding_proxy_panel": "PASS",
-    "funding_flow_gate": "BLOCKED"
+    "funding_flow_gate": "BLOCKED",
+    "fed_z1_source_probe": "WARN"
   },
   "controlling_blockers": [
     "source_and_panel",
@@ -23,7 +24,8 @@
     "global_replication",
     "independent_replication",
     "publication_review",
-    "funding_flow_gate"
+    "funding_flow_gate",
+    "fed_z1_source_probe"
   ],
   "promotion_rule": "All critical source, measurement, causal, global, independent-replication, and publication checks must be PASS; no WARN/BLOCKED critical gate may be averaged away.",
   "claim_boundary": "Current evidence supports only source-locked descriptive diagnostics. This readiness artifact does not promote Claim Class C."
