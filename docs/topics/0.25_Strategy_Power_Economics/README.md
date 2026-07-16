@@ -69,6 +69,7 @@ flowchart LR
 | Source package | 15/15 required inputs present in frozen `2026-07-12` package | `uet_us_economics_source_manifest.json`, `uet_us_economics_source_readiness.json` | provenance and rerun readiness only |
 | Normalized panel | 66 annual U.S. rows, 1959-2024; no imputation | `uet_us_macro_panel_1959_2024.csv`, `uet_us_macro_panel_status.json` | internal descriptive diagnostics |
 | Measurement validity | Three R/N/K/I families compared; R correlations pass the declared diagnostic threshold but coefficient stability and patent coverage fail | 0_25_uet_measurement_validity_audit.json | proxy sensitivity only |
+| Household welfare | Rent, OER, real median household income, and FHFA house-price series; 40 annual observations 1985-2024 | 0_25_uet_welfare_audit.json | descriptive cost-of-living pressure separate from GDP |
 | Resource engine | Primary 3-year and 1/5-year sensitivities complete; candidate signal false | 0_25_uet_resource_equation_audit.json | proxy association and baseline comparison |
 | Monetary-resource mismatch | 1/3/5-year baseline comparisons complete; candidate signal false | `0_25_stone_balloon_audit.json` | non-causal temporal comparison |
 | Wage-productivity | EPI export reproduced; BLS comparator reported separately | `0_25_wage_productivity_audit.json` | construction/vintage findings |

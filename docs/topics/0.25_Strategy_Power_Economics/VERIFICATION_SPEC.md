@@ -35,6 +35,8 @@ The legacy descriptive command is separate:
 - uet_economics_claim_gate.json: allowed and blocked export language.
 - 0_25_uet_measurement_validity_audit.json: declared proxy-family correlations, three-year
   combinations, sign stability, and missing-family blockers.
+- 0_25_uet_welfare_audit.json: source-locked rent/OER/income/house-price coverage and
+  no-imputation welfare outcomes.
 - aggregate `execution_gate`: all verifier subcommands exit zero.
 - aggregate legacy_claim_quarantine: every legacy markdown note contains the required
   Legacy claim boundary warning before it can be treated as topic documentation.
@@ -59,7 +61,8 @@ per-capita growth. Pre/post regime summaries use 1959-1970 and 1974-2024, exclud
 
 `Result/artifacts/0_25_uet_economics_verification.json` must preserve:
 
-- source, transform, panel, formula, parameter, holdout, claim, and sub-artifact hashes;
+- source, welfare-source, transform, panel, formula, parameter, holdout, claim, and
+  sub-artifact hashes;
 - retrieval vintage, coverage, units/proxy definitions, formulas, coefficients, and uncertainty;
 - rolling-origin boundaries, baseline errors, median and aggregate RMSE, and bootstrap intervals;
 - asset-lane status, energy-definition gate, measurement-validity result, failures, limitations,

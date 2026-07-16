@@ -24,6 +24,8 @@ from economic_hardening_common import (
     SOURCE_READINESS,
     VARIABLE_DICTIONARY,
     WARN_GATE_REGISTRY,
+    WELFARE_ARTIFACT,
+    WELFARE_SOURCE_MANIFEST,
     load_json,
     relative,
     runtime_environment,
@@ -37,6 +39,7 @@ ARTIFACT = ARTIFACT_DIR / "0_25_uet_economics_verification.json"
 HERE = Path(__file__).resolve().parent
 SUB_ARTIFACTS = {
     "measurement_validity": MEASUREMENT_ARTIFACT,
+    "welfare": WELFARE_ARTIFACT,
     "resource_equation": ARTIFACT_DIR / "0_25_uet_resource_equation_audit.json",
     "stone_balloon": ARTIFACT_DIR / "0_25_stone_balloon_audit.json",
     "energy_density": ARTIFACT_DIR / "0_25_energy_density_audit.json",
@@ -98,6 +101,7 @@ def main() -> int:
         [
             run("Research_UET_Economics_Panel.py"),
             run("Research_UET_Measurement_Validity_Audit.py"),
+            run("Research_UET_Welfare_Audit.py"),
             run("Research_UET_Resource_Equation_Audit.py"),
             run("Research_Stone_Balloon_Audit.py"),
             run("Research_Energy_Density_Audit.py"),
@@ -106,6 +110,7 @@ def main() -> int:
     )
     readiness = load_json(SOURCE_READINESS)
     source_manifest_payload = load_json(SOURCE_MANIFEST)
+    welfare_source_manifest_payload = load_json(WELFARE_SOURCE_MANIFEST)
     transform_manifest_payload = load_json(RESEARCH_DATA / "uet_us_economics_transform_manifest.json")
     panel_payload = load_json(PANEL_STATUS)
     formula_payload = load_json(FORMULA_GATE)
@@ -188,6 +193,7 @@ def main() -> int:
         "claim_class": "C - internal economic data integrity and historical diagnostic benchmark",
         "formula_ids": ["EC25-UET-RESOURCE-ENGINE", "EC25-UET-MONETARY-RESOURCE-MISMATCH", "EC25-UET-WAGE-PRODUCTIVITY-GAP"],
         "source_manifest": artifact_reference(SOURCE_MANIFEST),
+        "welfare_source_manifest": artifact_reference(WELFARE_SOURCE_MANIFEST),
         "source_readiness": readiness,
         "source_transformation_manifest": artifact_reference(RESEARCH_DATA / "uet_us_economics_transform_manifest.json"),
         "panel_status": artifact_reference(PANEL_STATUS),
@@ -211,6 +217,7 @@ def main() -> int:
         "evidence_bundle": {
             "retrieval_vintage": source_manifest_payload.get("retrieval_vintage"),
             "source_records_with_hashes": source_manifest_payload.get("sources", []),
+            "welfare_source_records_with_hashes": welfare_source_manifest_payload.get("sources", []),
             "source_transformation_manifest": transform_manifest_payload,
             "panel_status_payload": panel_payload,
             "formula_gate_payload": formula_payload,

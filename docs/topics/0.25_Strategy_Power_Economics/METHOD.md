@@ -82,6 +82,9 @@ indexed infrastructure proxy, not a dollar-valued capital stock.
 6. Measurement-validity lane: compare three declared R, N, K, and I families, report pairwise
    index correlations and coefficient-sign stability, and leave missing patent data as a
    blocker rather than imputing it.
+7. Welfare lane: use source-locked rent, OER, real median household income, and house-price
+   series to report household pressure separately from GDP. The lane is descriptive and does
+   not infer policy or fiat causality.
 
 ## Evaluation and uncertainty
 

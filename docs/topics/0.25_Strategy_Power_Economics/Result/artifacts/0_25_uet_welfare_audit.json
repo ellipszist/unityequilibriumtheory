@@ -1,0 +1,428 @@
+{
+  "claim_boundary": "This is a descriptive household-welfare and cost-of-living lane separate from GDP. It does not establish policy success, fiat causality, or household welfare causality.",
+  "coverage": {
+    "actual": [
+      1985,
+      2024
+    ],
+    "requested": [
+      1984,
+      2024
+    ],
+    "rows": 40
+  },
+  "generated_at_utc": "2026-07-16T05:14:05.178513+00:00",
+  "missing_sources": [],
+  "no_imputation": true,
+  "observations": [
+    {
+      "house_price_growth": 0.04980690917317501,
+      "housing_cost_pressure_index": 0.9751018360718161,
+      "oer_inflation": 0.0530080615878084,
+      "real_median_income_growth": 0.018854562964592907,
+      "rent_inflation": 0.05959994566414339,
+      "year": 1985
+    },
+    {
+      "house_price_growth": 0.06610891339120678,
+      "housing_cost_pressure_index": 0.6609798096944094,
+      "oer_inflation": 0.053625232312804076,
+      "real_median_income_growth": 0.03636184355542961,
+      "rent_inflation": 0.05666951149880922,
+      "year": 1986
+    },
+    {
+      "house_price_growth": 0.0626976820032763,
+      "housing_cost_pressure_index": 0.35685252766164827,
+      "oer_inflation": 0.04457315199432252,
+      "real_median_income_growth": 0.012451522739318177,
+      "rent_inflation": 0.040252577818705615,
+      "year": 1987
+    },
+    {
+      "house_price_growth": 0.052200939421172966,
+      "housing_cost_pressure_index": 0.47333921828501496,
+      "oer_inflation": 0.04923831032978825,
+      "real_median_income_growth": 0.007397167340443769,
+      "rent_inflation": 0.037457064941139345,
+      "year": 1988
+    },
+    {
+      "house_price_growth": 0.051507512765199305,
+      "housing_cost_pressure_index": 0.28630172061836917,
+      "oer_inflation": 0.04662400537466549,
+      "real_median_income_growth": 0.01689923751869401,
+      "rent_inflation": 0.03805171797960607,
+      "year": 1989
+    },
+    {
+      "house_price_growth": 0.03078954528723245,
+      "housing_cost_pressure_index": 0.9435303716632957,
+      "oer_inflation": 0.05263595684908144,
+      "real_median_income_growth": -0.012150817782512691,
+      "rent_inflation": 0.04142422278296122,
+      "year": 1990
+    },
+    {
+      "house_price_growth": 0.018904098226107908,
+      "housing_cost_pressure_index": 0.6624905160830109,
+      "oer_inflation": 0.03805359216620719,
+      "real_median_income_growth": -0.029621457016049686,
+      "rent_inflation": 0.03478817436350138,
+      "year": 1991
+    },
+    {
+      "house_price_growth": 0.02745090333599688,
+      "housing_cost_pressure_index": -0.02583764267915552,
+      "oer_inflation": 0.033288285905505956,
+      "real_median_income_growth": -0.00821879132447778,
+      "rent_inflation": 0.024752175314901658,
+      "year": 1992
+    },
+    {
+      "house_price_growth": 0.023042461390875745,
+      "housing_cost_pressure_index": -0.15571429363108993,
+      "oer_inflation": 0.0316967866681908,
+      "real_median_income_growth": -0.004931996315089095,
+      "rent_inflation": 0.02310167216705952,
+      "year": 1993
+    },
+    {
+      "house_price_growth": 0.024966083732474526,
+      "housing_cost_pressure_index": -0.34193455161991526,
+      "oer_inflation": 0.03223202125020104,
+      "real_median_income_growth": 0.010629115696550583,
+      "rent_inflation": 0.02409623183295323,
+      "year": 1994
+    },
+    {
+      "house_price_growth": 0.030039991598704355,
+      "housing_cost_pressure_index": -0.6236619808738819,
+      "oer_inflation": 0.032880622541574235,
+      "real_median_income_growth": 0.03122583796063903,
+      "rent_inflation": 0.024110434740382495,
+      "year": 1995
+    },
+    {
+      "house_price_growth": 0.03386785689189687,
+      "housing_cost_pressure_index": -0.37189674698948005,
+      "oer_inflation": 0.0312682580030871,
+      "real_median_income_growth": 0.014576632222841788,
+      "rent_inflation": 0.02606757965586979,
+      "year": 1996
+    },
+    {
+      "house_price_growth": 0.032932488717955254,
+      "housing_cost_pressure_index": -0.4522379744392671,
+      "oer_inflation": 0.028672301717341947,
+      "real_median_income_growth": 0.020588523746028247,
+      "rent_inflation": 0.02881108185411944,
+      "year": 1997
+    },
+    {
+      "house_price_growth": 0.04995064175324846,
+      "housing_cost_pressure_index": -0.5119064480977791,
+      "oer_inflation": 0.03187466958184587,
+      "real_median_income_growth": 0.03596675376683084,
+      "rent_inflation": 0.03203147083066376,
+      "year": 1998
+    },
+    {
+      "house_price_growth": 0.0479348794645233,
+      "housing_cost_pressure_index": -0.5073778429968582,
+      "oer_inflation": 0.02696713931505647,
+      "real_median_income_growth": 0.02503999161911926,
+      "rent_inflation": 0.03080247334070387,
+      "year": 1999
+    },
+    {
+      "house_price_growth": 0.06199993626997457,
+      "housing_cost_pressure_index": 0.07783544011640874,
+      "oer_inflation": 0.029283672308021143,
+      "real_median_income_growth": -0.002643112062492971,
+      "rent_inflation": 0.03569831189287845,
+      "year": 2000
+    },
+    {
+      "house_price_growth": 0.07214607239394706,
+      "housing_cost_pressure_index": 0.6905576141368971,
+      "oer_inflation": 0.037662646616237416,
+      "real_median_income_growth": -0.01657341306013618,
+      "rent_inflation": 0.043531383199222104,
+      "year": 2001
+    },
+    {
+      "house_price_growth": 0.0613694161217488,
+      "housing_cost_pressure_index": 0.495669140376157,
+      "oer_inflation": 0.03991186526919991,
+      "real_median_income_growth": -0.00810527011060434,
+      "rent_inflation": 0.038589860429789465,
+      "year": 2002
+    },
+    {
+      "house_price_growth": 0.06046962147228564,
+      "housing_cost_pressure_index": -0.2736457602234294,
+      "oer_inflation": 0.02412157984369394,
+      "real_median_income_growth": 0.0005709392104849367,
+      "rent_inflation": 0.028877824201090193,
+      "year": 2003
+    },
+    {
+      "house_price_growth": 0.08961190917278307,
+      "housing_cost_pressure_index": -0.34737192825778257,
+      "oer_inflation": 0.02247959187733223,
+      "real_median_income_growth": -0.0015708678703306661,
+      "rent_inflation": 0.026409985649722776,
+      "year": 2004
+    },
+    {
+      "house_price_growth": 0.10752995612329869,
+      "housing_cost_pressure_index": -0.5027203225976594,
+      "oer_inflation": 0.022890999334042945,
+      "real_median_income_growth": 0.015458011835075638,
+      "rent_inflation": 0.029533496783577532,
+      "year": 2005
+    },
+    {
+      "house_price_growth": 0.06921083138319369,
+      "housing_cost_pressure_index": -0.011911942374415433,
+      "oer_inflation": 0.034310636255096644,
+      "real_median_income_growth": 0.011056021932152974,
+      "rent_inflation": 0.035074131830956506,
+      "year": 2006
+    },
+    {
+      "house_price_growth": 0.01103263055346015,
+      "housing_cost_pressure_index": 0.06244900814111659,
+      "oer_inflation": 0.03328066689845646,
+      "real_median_income_growth": 0.016015805542960396,
+      "rent_inflation": 0.041698021181057414,
+      "year": 2007
+    },
+    {
+      "house_price_growth": -0.052815806100489804,
+      "housing_cost_pressure_index": 0.4382643122548666,
+      "oer_inflation": 0.024840025173779912,
+      "real_median_income_growth": -0.03470006053832496,
+      "rent_inflation": 0.03595314708715235,
+      "year": 2008
+    },
+    {
+      "house_price_growth": -0.0571050654267845,
+      "housing_cost_pressure_index": -0.5290056270033682,
+      "oer_inflation": 0.016426811198242863,
+      "real_median_income_growth": -0.006401615147226957,
+      "rent_inflation": 0.022501005182262772,
+      "year": 2009
+    },
+    {
+      "house_price_growth": -0.04168966979320397,
+      "housing_cost_pressure_index": -1.210993247631589,
+      "oer_inflation": -0.00010847184614128108,
+      "real_median_income_growth": -0.023829562832983948,
+      "rent_inflation": 0.002293280124890851,
+      "year": 2010
+    },
+    {
+      "house_price_growth": -0.039481963719321,
+      "housing_cost_pressure_index": -0.6720040141320718,
+      "oer_inflation": 0.011573339558153633,
+      "real_median_income_growth": -0.014871804684111182,
+      "rent_inflation": 0.01690175293167616,
+      "year": 2011
+    },
+    {
+      "house_price_growth": -0.0026873218776404828,
+      "housing_cost_pressure_index": -0.43320771851647094,
+      "oer_inflation": 0.020095844505028593,
+      "real_median_income_growth": -0.0001483569470861697,
+      "rent_inflation": 0.026175574769480344,
+      "year": 2012
+    },
+    {
+      "house_price_growth": 0.0366633738904101,
+      "housing_cost_pressure_index": -0.8864705524431221,
+      "oer_inflation": 0.021824321883057666,
+      "real_median_income_growth": 0.03713568319322889,
+      "rent_inflation": 0.027858254122667465,
+      "year": 2013
+    },
+    {
+      "house_price_growth": 0.04840623540065156,
+      "housing_cost_pressure_index": 0.024241713677348103,
+      "oer_inflation": 0.02606128269872967,
+      "real_median_income_growth": -0.012805009149643875,
+      "rent_inflation": 0.031041347167891167,
+      "year": 2014
+    },
+    {
+      "house_price_growth": 0.05001689841935285,
+      "housing_cost_pressure_index": -0.7510200048775794,
+      "oer_inflation": 0.028719528688128857,
+      "real_median_income_growth": 0.052602891168320294,
+      "rent_inflation": 0.03511908147856508,
+      "year": 2015
+    },
+    {
+      "house_price_growth": 0.0508338841828452,
+      "housing_cost_pressure_index": -0.35222646155870874,
+      "oer_inflation": 0.03249537254286083,
+      "real_median_income_growth": 0.034963404708822726,
+      "rent_inflation": 0.03703603270370088,
+      "year": 2016
+    },
+    {
+      "house_price_growth": 0.05250280215141579,
+      "housing_cost_pressure_index": -0.0901354500535475,
+      "oer_inflation": 0.03243555188629531,
+      "real_median_income_growth": 0.017490090132215554,
+      "rent_inflation": 0.03744496151982493,
+      "year": 2017
+    },
+    {
+      "house_price_growth": 0.05373507731130095,
+      "housing_cost_pressure_index": -0.0731911787415464,
+      "oer_inflation": 0.03239795190632447,
+      "real_median_income_growth": 0.0128231794023969,
+      "rent_inflation": 0.03552839859847118,
+      "year": 2018
+    },
+    {
+      "house_price_growth": 0.045330152083302135,
+      "housing_cost_pressure_index": -0.8570353442998399,
+      "oer_inflation": 0.03273482953265746,
+      "real_median_income_growth": 0.06911298439322772,
+      "rent_inflation": 0.036405627811153286,
+      "year": 2019
+    },
+    {
+      "house_price_growth": 0.05043573971893164,
+      "housing_cost_pressure_index": 0.1669367181568202,
+      "oer_inflation": 0.027683877680488453,
+      "real_median_income_growth": -0.020384107877416967,
+      "rent_inflation": 0.030759571001099432,
+      "year": 2020
+    },
+    {
+      "house_price_growth": 0.12869386084341708,
+      "housing_cost_pressure_index": -0.3507867569095875,
+      "oer_inflation": 0.025434657319389292,
+      "real_median_income_growth": -0.003807189124298957,
+      "rent_inflation": 0.02220048883171663,
+      "year": 2021
+    },
+    {
+      "house_price_growth": 0.15238301609450386,
+      "housing_cost_pressure_index": 1.6082952638985788,
+      "oer_inflation": 0.055740499211466475,
+      "real_median_income_growth": -0.022019923104827265,
+      "rent_inflation": 0.058581882611527324,
+      "year": 2022
+    },
+    {
+      "house_price_growth": 0.05086015143486128,
+      "housing_cost_pressure_index": 1.5887510992788505,
+      "oer_inflation": 0.07199649853214501,
+      "real_median_income_growth": 0.039341654073789124,
+      "rent_inflation": 0.07653160134356088,
+      "year": 2023
+    },
+    {
+      "house_price_growth": 0.05391182023495094,
+      "housing_cost_pressure_index": 0.8206974808335348,
+      "oer_inflation": 0.05329061456315726,
+      "real_median_income_growth": 0.012498660482265132,
+      "rent_inflation": 0.04982456729540224,
+      "year": 2024
+    }
+  ],
+  "outcomes": [
+    "rent_inflation",
+    "oer_inflation",
+    "real_median_income_growth",
+    "house_price_growth",
+    "housing_cost_pressure_index"
+  ],
+  "schema_version": "1.0",
+  "source_manifest": {
+    "path": "docs/data/external/welfare/uet_us_welfare_source_manifest.json",
+    "retrieval_vintage": "2026-07-12",
+    "sources": [
+      {
+        "benchmark_role": "rent cost-of-living input",
+        "bytes": 10367,
+        "download_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CUSR0000SEHA",
+        "exists": true,
+        "license_or_terms": "FRED terms and upstream agency terms apply; preserve attribution.",
+        "local_path": "docs/data/external/economics/us_historical/fred/2026-07-12/CUSR0000SEHA.csv",
+        "required_for_primary_macro_panel": false,
+        "retrieval_timestamp_utc": "2026-07-16T05:12:07.123711+00:00",
+        "retrieval_vintage": "2026-07-12",
+        "series_id": "CUSR0000SEHA",
+        "sha256": "89a4067d2af8a4d9b8e4157f1ef2414d35393033e5c1fbf878b691504280ed41",
+        "source": "Federal Reserve Economic Data (FRED); FHFA series where identified by upstream provider",
+        "source_id": "fred_rent_primary",
+        "source_status": "READY_FOR_REVIEW",
+        "source_url": "https://fred.stlouisfed.org/series/CUSR0000SEHA",
+        "unit_system": "CPI rent of primary residence; index; monthly"
+      },
+      {
+        "benchmark_role": "housing cost input",
+        "bytes": 9941,
+        "download_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CUSR0000SEHC",
+        "exists": true,
+        "license_or_terms": "FRED terms and upstream agency terms apply; preserve attribution.",
+        "local_path": "docs/data/external/economics/us_historical/fred/2026-07-12/CUSR0000SEHC.csv",
+        "required_for_primary_macro_panel": false,
+        "retrieval_timestamp_utc": "2026-07-16T05:12:07.817162+00:00",
+        "retrieval_vintage": "2026-07-12",
+        "series_id": "CUSR0000SEHC",
+        "sha256": "e8f20ac157d06d8a7550fb2bbf91dc80ef3749237c6a8cd576a1854e7a63a873",
+        "source": "Federal Reserve Economic Data (FRED); FHFA series where identified by upstream provider",
+        "source_id": "fred_oer",
+        "source_status": "READY_FOR_REVIEW",
+        "source_url": "https://fred.stlouisfed.org/series/CUSR0000SEHC",
+        "unit_system": "CPI owners' equivalent rent of residences; index; monthly"
+      },
+      {
+        "benchmark_role": "real household welfare outcome",
+        "bytes": 728,
+        "download_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=MEHOINUSA672N",
+        "exists": true,
+        "license_or_terms": "FRED terms and upstream agency terms apply; preserve attribution.",
+        "local_path": "docs/data/external/economics/us_historical/fred/2026-07-12/MEHOINUSA672N.csv",
+        "required_for_primary_macro_panel": false,
+        "retrieval_timestamp_utc": "2026-07-16T05:12:08.344443+00:00",
+        "retrieval_vintage": "2026-07-12",
+        "series_id": "MEHOINUSA672N",
+        "sha256": "9c734c064346b7cca95c1dafba2c138922e30f0969bce774b287c714db5fbd06",
+        "source": "Federal Reserve Economic Data (FRED); FHFA series where identified by upstream provider",
+        "source_id": "fred_real_median_income",
+        "source_status": "READY_FOR_REVIEW",
+        "source_url": "https://fred.stlouisfed.org/series/MEHOINUSA672N",
+        "unit_system": "real median household income in 2024 dollars; annual"
+      },
+      {
+        "benchmark_role": "housing asset/burden robustness input",
+        "bytes": 3695,
+        "download_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=USSTHPI",
+        "exists": true,
+        "license_or_terms": "FRED terms and upstream agency terms apply; preserve attribution.",
+        "local_path": "docs/data/external/economics/us_historical/fred/2026-07-12/USSTHPI.csv",
+        "required_for_primary_macro_panel": false,
+        "retrieval_timestamp_utc": "2026-07-16T05:12:08.626723+00:00",
+        "retrieval_vintage": "2026-07-12",
+        "series_id": "USSTHPI",
+        "sha256": "bce17ff502e58beb50d0d03cc4a3016e5db0d3c5b804f224edebee42f9a937d5",
+        "source": "Federal Reserve Economic Data (FRED); FHFA series where identified by upstream provider",
+        "source_id": "fred_house_price",
+        "source_status": "READY_FOR_REVIEW",
+        "source_url": "https://fred.stlouisfed.org/series/USSTHPI",
+        "unit_system": "FHFA all-transactions house price index; quarterly"
+      }
+    ]
+  },
+  "status": "PASS",
+  "topic": "0.25_Strategy_Power_Economics",
+  "unit_policy": "Rent/OER/house prices are source indexes; real median income is provider real 2024-dollar annual income. The pressure index is dimensionless after explicit standardization."
+}

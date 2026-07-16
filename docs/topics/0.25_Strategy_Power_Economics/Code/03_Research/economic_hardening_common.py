@@ -51,6 +51,8 @@ CAUSAL_DAG = RESEARCH_DATA / "uet_economics_causal_dag.json"
 CLAIM_MATRIX = RESEARCH_DATA / "uet_economics_claim_matrix.json"
 WARN_GATE_REGISTRY = RESEARCH_DATA / "uet_economics_warn_gate_registry.json"
 MEASUREMENT_ARTIFACT = ARTIFACT_DIR / "0_25_uet_measurement_validity_audit.json"
+WELFARE_SOURCE_MANIFEST = RAW_ROOT.parent.parent / "welfare" / "uet_us_welfare_source_manifest.json"
+WELFARE_ARTIFACT = ARTIFACT_DIR / "0_25_uet_welfare_audit.json"
 
 
 def utc_now() -> str:

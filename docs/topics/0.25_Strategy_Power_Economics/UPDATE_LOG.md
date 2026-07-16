@@ -5,6 +5,23 @@
 
 ## Entries
 
+### 2026-07-16 - Wave 3 cost-of-living and household-welfare lane
+
+- Scope: U.S. household welfare separate from aggregate GDP.
+- Added: welfare source package and audit for rent, owners equivalent rent, real median household
+  income, and FHFA house-price index; archived source metadata/hashes under the external welfare
+  manifest and embedded them into the aggregate artifact.
+- Verified with: public source refresh, py_compile, standalone welfare audit, and aggregate
+  verifier exit zero.
+- Result: welfare lane PASS for 40 complete annual observations, 1985-2024 (requested start
+  1984 was unavailable in the common intersection); no imputation was used. Aggregate remains
+  WARN and Claim Class C.
+- Claim impact: no upgrade; welfare pressure is descriptive and not evidence of policy or fiat
+  causality.
+- Next controller: expand distributional/regional coverage and keep revision/measurement gates
+  explicit before any welfare generalization.
+
+
 ### 2026-07-16 - Wave 2 measurement-validity sensitivity
 
 - Scope: frozen U.S. 1959-2024 R/N/K/I proxy construct.

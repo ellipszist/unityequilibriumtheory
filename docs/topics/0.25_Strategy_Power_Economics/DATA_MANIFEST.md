@@ -66,6 +66,14 @@ statistics.
 - Missing values are rejected; no interpolation, forward filling, or silent imputation is used.
 - A manifest is a provenance control, not external validation or causal evidence.
 
+## Wave 3 welfare source package
+
+The separate welfare manifest at docs/data/external/welfare/uet_us_welfare_source_manifest.json
+archives FRED rent (CUSR0000SEHA), owners equivalent rent (CUSR0000SEHC), real median household
+income (MEHOINUSA672N), and FHFA house-price index (USSTHPI). The audit freezes observations
+through 2024, uses the common complete intersection without imputation, and keeps welfare
+outcomes separate from aggregate GDP. Its source hashes are embedded in the aggregate artifact.
+
 ## Long-term source expansion contract
 
 Wave 1 extends the manifest to FRED/H.6, BEA, BLS, EIA, FHFA, Census/Fed distributional
