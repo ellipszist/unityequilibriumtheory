@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "status": "PASS",
+  "countries_total": 228,
+  "countries_20_plus_years_2000_2024": 222,
+  "coverage_window": [
+    2000,
+    2024
+  ],
+  "unit": "percent change in consumer prices",
+  "no_imputation": true,
+  "claim_boundary": "IMF CPI is a source lane for inflation measurement robustness; it is not merged into the U.S. causal or WDI resource panel without preregistered unit/coverage mapping."
+}
