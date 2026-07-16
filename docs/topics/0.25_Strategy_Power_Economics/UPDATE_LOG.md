@@ -126,3 +126,9 @@
 - Added a 67-year no-imputation annual sectoral proxy panel and integrated it into the aggregate verifier.
 - The panel distinguishes profit/investment and business-credit ratios but cannot identify individual payer funding provenance; transfers/equity and transaction-level links remain blocked.
 - Aggregate remains `WARN / Claim Class C / DESCRIPTIVE_DIAGNOSTIC_ONLY`.
+
+### 2026-07-16 - Funding proxy association audit
+
+- Added a 62-observation complete-case audit of annual log changes in investment against corporate profits, business loans, and dividend income.
+- Same-year correlations were approximately `0.549`, `0.086`, and `0.903` respectively; these are descriptive associations only and do not identify funding direction or payment provenance.
+- Integrated the association artifact into the aggregate verifier; funding-flow provenance remains blocked.

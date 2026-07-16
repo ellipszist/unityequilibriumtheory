@@ -46,3 +46,4 @@ current Claim Class C boundary.
 | Research_UET_IMF_WDI_Normalization.py | normalize IMF CPI ISO3 to WDI ISO2 with coverage/no-imputation checks | IMF-WDI normalization artifact |
 | Research_UET_Global_WDI_Region_Leave_One_Out.py | run official-region leave-one-out robustness with aggregate exclusion | regional robustness artifact |
 | Research_UET_Funding_Source_Proxy_Panel.py | construct no-imputation annual sectoral proxies for profits, investment, business credit, and dividends | funding proxy panel |
+| Research_UET_Funding_Source_Association_Audit.py | calculate descriptive profit/credit/dividend associations with investment growth | funding association artifact |
