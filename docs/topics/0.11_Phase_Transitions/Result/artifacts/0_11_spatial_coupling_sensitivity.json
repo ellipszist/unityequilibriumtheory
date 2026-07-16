@@ -1,0 +1,375 @@
+{
+  "blocker_label": "coefficient_only_spatial_operator_still_mean_field",
+  "claim_boundary": "Do not claim UET escaped mean-field from coefficient sweeps; use this artifact only to decide whether the operator family needs revision.",
+  "claim_class": "diagnostic_sensitivity_only",
+  "command": "python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Spatial_Coupling_Sensitivity.py",
+  "environment": {
+    "numpy_version": "2.4.0",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.14.2"
+  },
+  "gates": {
+    "coefficient_sensitivity_gate": {
+      "best_case": {
+        "beta": 0.47289104404488275,
+        "distance_to_ising": 0.14639104404488273,
+        "distance_to_mean_field": 0.027108955955117253,
+        "game_coeff": 0.05,
+        "info_coeff": 5.0,
+        "kpz_coeff": 0.25,
+        "max_abs_c": 0.605453000174558,
+        "p_value": 6.577180931766807e-07,
+        "r_squared": 0.9986759378478903,
+        "status": "OK",
+        "stderr": 0.008609401986574661
+      },
+      "beta_max": 0.5242675990131896,
+      "beta_min": 0.47289104404488275,
+      "claim_boundary": "A blocked gate means coefficient tuning alone is not evidence for a universality shift.",
+      "near_ising_case_count": 0,
+      "required_condition": "at least one stable coefficient-only case within tolerance of 3D Ising beta",
+      "stable_case_count": 20,
+      "status": "BLOCKED",
+      "tested_case_count": 20,
+      "unstable_case_count": 0
+    },
+    "operator_form_revision_gate": {
+      "next_evidence_required": [
+        "derive a nonlocal or scale-dependent operator",
+        "define a correlation-length-aware estimator",
+        "rerun the full Wave 5 scaling verifier with the revised operator"
+      ],
+      "reason": "The current spatial-coupled operator family remains mean-field-like across the tested coefficient grid.",
+      "status": "BLOCKED"
+    }
+  },
+  "inputs": [
+    {
+      "path": "docs/core/uet_master_equation.py",
+      "role": "core candidate operator implementation",
+      "sha256": "4fff36213153cbae0a86fa936c8e904d40bd4007e6c654425af1a70ea5685072"
+    }
+  ],
+  "limitations": [
+    "This reduced-grid sensitivity diagnostic is not the publication verifier.",
+    "The result tests coefficient-only changes, not new operator derivations.",
+    "Passing this diagnostic would still require rerunning the full spatial scaling verifier."
+  ],
+  "metrics": {
+    "best_case": {
+      "beta": 0.47289104404488275,
+      "distance_to_ising": 0.14639104404488273,
+      "distance_to_mean_field": 0.027108955955117253,
+      "game_coeff": 0.05,
+      "info_coeff": 5.0,
+      "kpz_coeff": 0.25,
+      "max_abs_c": 0.605453000174558,
+      "p_value": 6.577180931766807e-07,
+      "r_squared": 0.9986759378478903,
+      "status": "OK",
+      "stderr": 0.008609401986574661
+    },
+    "case_results": [
+      {
+        "beta": 0.48517663114169357,
+        "distance_to_ising": 0.15867663114169356,
+        "distance_to_mean_field": 0.01482336885830643,
+        "game_coeff": 0.0,
+        "info_coeff": 0.0,
+        "kpz_coeff": 0.25,
+        "max_abs_c": 0.574455205349733,
+        "p_value": 2.6124935045297743e-06,
+        "r_squared": 0.9973617204506933,
+        "status": "OK",
+        "stderr": 0.012476820775101226
+      },
+      {
+        "beta": 0.4880794595680099,
+        "distance_to_ising": 0.1615794595680099,
+        "distance_to_mean_field": 0.01192054043199009,
+        "game_coeff": 0.01,
+        "info_coeff": 0.0,
+        "kpz_coeff": 0.25,
+        "max_abs_c": 0.5655365952300583,
+        "p_value": 3.393857153763583e-08,
+        "r_squared": 0.9996991781561635,
+        "status": "OK",
+        "stderr": 0.004233314677419317
+      },
+      {
+        "beta": 0.48995292443089133,
+        "distance_to_ising": 0.16345292443089132,
+        "distance_to_mean_field": 0.010047075569108666,
+        "game_coeff": 0.05,
+        "info_coeff": 0.0,
+        "kpz_coeff": 0.25,
+        "max_abs_c": 0.5923380908328605,
+        "p_value": 1.0842994141429714e-07,
+        "r_squared": 0.9994623247432297,
+        "status": "OK",
+        "stderr": 0.005681999226311015
+      },
+      {
+        "beta": 0.4870069801221045,
+        "distance_to_ising": 0.16050698012210451,
+        "distance_to_mean_field": 0.012993019877895473,
+        "game_coeff": 0.2,
+        "info_coeff": 0.0,
+        "kpz_coeff": 0.25,
+        "max_abs_c": 0.5777197708359613,
+        "p_value": 3.904008311585259e-07,
+        "r_squared": 0.9989798457061205,
+        "status": "OK",
+        "stderr": 0.007781436144113722
+      },
+      {
+        "beta": 0.47788466031667837,
+        "distance_to_ising": 0.15138466031667835,
+        "distance_to_mean_field": 0.022115339683321633,
+        "game_coeff": 1.0,
+        "info_coeff": 0.0,
+        "kpz_coeff": 0.25,
+        "max_abs_c": 0.6044697965633852,
+        "p_value": 1.4205397079842704e-06,
+        "r_squared": 0.9980543258276686,
+        "status": "OK",
+        "stderr": 0.010549966021768532
+      },
+      {
+        "beta": 0.5041578752063861,
+        "distance_to_ising": 0.1776578752063861,
+        "distance_to_mean_field": 0.004157875206386108,
+        "game_coeff": 0.0,
+        "info_coeff": 0.5,
+        "kpz_coeff": 0.25,
+        "max_abs_c": 0.6184495612100189,
+        "p_value": 2.327437413216392e-08,
+        "r_squared": 0.9997508818682779,
+        "status": "OK",
+        "stderr": 0.00397917767168072
+      },
+      {
+        "beta": 0.5110616535266733,
+        "distance_to_ising": 0.1845616535266733,
+        "distance_to_mean_field": 0.01106165352667332,
+        "game_coeff": 0.01,
+        "info_coeff": 0.5,
+        "kpz_coeff": 0.25,
+        "max_abs_c": 0.5972771386719177,
+        "p_value": 4.0973602550796964e-08,
+        "r_squared": 0.999669468759492,
+        "status": "OK",
+        "stderr": 0.004646450798039435
+      },
+      {
+        "beta": 0.4943435747297592,
+        "distance_to_ising": 0.1678435747297592,
+        "distance_to_mean_field": 0.005656425270240795,
+        "game_coeff": 0.05,
+        "info_coeff": 0.5,
+        "kpz_coeff": 0.25,
+        "max_abs_c": 0.6051229655513485,
+        "p_value": 4.324428967662084e-06,
+        "r_squared": 0.9966060709542118,
+        "status": "OK",
+        "stderr": 0.014424092978077754
+      },
+      {
+        "beta": 0.5063048866820237,
+        "distance_to_ising": 0.17980488668202366,
+        "distance_to_mean_field": 0.006304886682023669,
+        "game_coeff": 0.2,
+        "info_coeff": 0.5,
+        "kpz_coeff": 0.25,
+        "max_abs_c": 0.610702567816971,
+        "p_value": 2.09332538452117e-06,
+        "r_squared": 0.9976382624871372,
+        "status": "OK",
+        "stderr": 0.012317182850729677
+      },
+      {
+        "beta": 0.48012980947884376,
+        "distance_to_ising": 0.15362980947884375,
+        "distance_to_mean_field": 0.01987019052115624,
+        "game_coeff": 1.0,
+        "info_coeff": 0.5,
+        "kpz_coeff": 0.25,
+        "max_abs_c": 0.6001744288852753,
+        "p_value": 1.561714511534053e-08,
+        "r_squared": 0.9997959341102697,
+        "status": "OK",
+        "stderr": 0.003429716322180995
+      },
+      {
+        "beta": 0.49624046010715067,
+        "distance_to_ising": 0.16974046010715066,
+        "distance_to_mean_field": 0.0037595398928493284,
+        "game_coeff": 0.0,
+        "info_coeff": 2.0,
+        "kpz_coeff": 0.25,
+        "max_abs_c": 0.5903560865735474,
+        "p_value": 2.888858328654374e-07,
+        "r_squared": 0.9991224256011138,
+        "status": "OK",
+        "stderr": 0.007353511811186427
+      },
+      {
+        "beta": 0.5076499077695282,
+        "distance_to_ising": 0.18114990776952822,
+        "distance_to_mean_field": 0.00764990776952823,
+        "game_coeff": 0.01,
+        "info_coeff": 2.0,
+        "kpz_coeff": 0.25,
+        "max_abs_c": 0.585396438589193,
+        "p_value": 1.1093988594104128e-08,
+        "r_squared": 0.9998280050192031,
+        "status": "OK",
+        "stderr": 0.0033291207993009367
+      },
+      {
+        "beta": 0.49144545610305046,
+        "distance_to_ising": 0.16494545610305045,
+        "distance_to_mean_field": 0.00855454389694954,
+        "game_coeff": 0.05,
+        "info_coeff": 2.0,
+        "kpz_coeff": 0.25,
+        "max_abs_c": 0.5962084833679094,
+        "p_value": 9.671202809606965e-08,
+        "r_squared": 0.9994922056682718,
+        "status": "OK",
+        "stderr": 0.005538594202958831
+      },
+      {
+        "beta": 0.5242675990131896,
+        "distance_to_ising": 0.19776759901318963,
+        "distance_to_mean_field": 0.024267599013189645,
+        "game_coeff": 0.2,
+        "info_coeff": 2.0,
+        "kpz_coeff": 0.25,
+        "max_abs_c": 0.5769779690520617,
+        "p_value": 2.810009835559715e-07,
+        "r_squared": 0.999134482972106,
+        "status": "OK",
+        "stderr": 0.007715229631818918
+      },
+      {
+        "beta": 0.5080579906043705,
+        "distance_to_ising": 0.1815579906043705,
+        "distance_to_mean_field": 0.008057990604370513,
+        "game_coeff": 1.0,
+        "info_coeff": 2.0,
+        "kpz_coeff": 0.25,
+        "max_abs_c": 0.5781943860513203,
+        "p_value": 2.09230299811596e-07,
+        "r_squared": 0.9992531341898178,
+        "status": "OK",
+        "stderr": 0.0069449131728851875
+      },
+      {
+        "beta": 0.5021380885133301,
+        "distance_to_ising": 0.17563808851333007,
+        "distance_to_mean_field": 0.002138088513330083,
+        "game_coeff": 0.0,
+        "info_coeff": 5.0,
+        "kpz_coeff": 0.25,
+        "max_abs_c": 0.6185732002762037,
+        "p_value": 8.147623858306871e-07,
+        "r_squared": 0.9985263541566669,
+        "status": "OK",
+        "stderr": 0.009645171744586465
+      },
+      {
+        "beta": 0.5097896595188869,
+        "distance_to_ising": 0.18328965951888687,
+        "distance_to_mean_field": 0.009789659518886884,
+        "game_coeff": 0.01,
+        "info_coeff": 5.0,
+        "kpz_coeff": 0.25,
+        "max_abs_c": 0.6036435717065403,
+        "p_value": 1.3970329428582084e-07,
+        "r_squared": 0.9993896998115809,
+        "status": "OK",
+        "stderr": 0.006298909140962031
+      },
+      {
+        "beta": 0.47289104404488275,
+        "distance_to_ising": 0.14639104404488273,
+        "distance_to_mean_field": 0.027108955955117253,
+        "game_coeff": 0.05,
+        "info_coeff": 5.0,
+        "kpz_coeff": 0.25,
+        "max_abs_c": 0.605453000174558,
+        "p_value": 6.577180931766807e-07,
+        "r_squared": 0.9986759378478903,
+        "status": "OK",
+        "stderr": 0.008609401986574661
+      },
+      {
+        "beta": 0.4835937664349446,
+        "distance_to_ising": 0.1570937664349446,
+        "distance_to_mean_field": 0.016406233565055384,
+        "game_coeff": 0.2,
+        "info_coeff": 5.0,
+        "kpz_coeff": 0.25,
+        "max_abs_c": 0.6090520163459193,
+        "p_value": 3.2113530741197862e-06,
+        "r_squared": 0.9970750635465772,
+        "status": "OK",
+        "stderr": 0.013096190645087375
+      },
+      {
+        "beta": 0.473100558354428,
+        "distance_to_ising": 0.14660055835442798,
+        "distance_to_mean_field": 0.02689944164557201,
+        "game_coeff": 1.0,
+        "info_coeff": 5.0,
+        "kpz_coeff": 0.25,
+        "max_abs_c": 0.5934687150644312,
+        "p_value": 1.7586614291198977e-07,
+        "r_squared": 0.999315259668233,
+        "status": "OK",
+        "stderr": 0.0061920600551885864
+      }
+    ],
+    "stats_csv": "Result/gl_spatial_coupling_sensitivity_stats.csv"
+  },
+  "parameters": {
+    "beta_3d_ising_reference": 0.3265,
+    "beta_mean_field_reference": 0.5,
+    "dt": 0.02,
+    "dx": 1.0,
+    "game_coefficients": [
+      0.0,
+      0.01,
+      0.05,
+      0.2,
+      1.0
+    ],
+    "grid_L": 12,
+    "grid_points": 1728,
+    "info_coefficients": [
+      0.0,
+      0.5,
+      2.0,
+      5.0
+    ],
+    "kpz_coefficients": [
+      0.25
+    ],
+    "steps": 500,
+    "temperature_points": [
+      0.8,
+      0.8360000000000001,
+      0.872,
+      0.908,
+      0.944,
+      0.98
+    ],
+    "tolerance_to_ising": 0.08
+  },
+  "schema_version": "1.0",
+  "status": "WARN",
+  "timestamp_utc": "2026-06-26T17:47:02.823505+00:00",
+  "topic": "0.11_Phase_Transitions",
+  "wave": "Wave 6 spatial-coupling coefficient sensitivity"
+}

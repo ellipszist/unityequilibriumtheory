@@ -42,6 +42,12 @@ LOCALIZATION_MANIFEST_PATH = (
     / "03_Research"
     / "structure_factor_source_archive_localization_manifest.json"
 )
+SOURCE_ARCHIVE_POLICY_PATH = (
+    TOPIC_DIR
+    / "Data"
+    / "03_Research"
+    / "structure_factor_source_archive_policy.json"
+)
 FORMULA_FRAGMENT_MANIFEST_PATH = (
     TOPIC_DIR
     / "Data"
@@ -183,10 +189,34 @@ def extract_tex_member(archive_path: Path, member_name: str) -> str:
         return member.read().decode("utf-8", errors="replace")
 
 
-def fragment_observation(record: dict[str, Any]) -> dict[str, Any]:
+def policy_archive_map() -> dict[str, str]:
+    if not SOURCE_ARCHIVE_POLICY_PATH.exists():
+        return {}
+    policy = load_json(SOURCE_ARCHIVE_POLICY_PATH)
+    return {
+        str(row.get("source_id")): str(row.get("repo_archive_candidate_path"))
+        for row in policy.get("source_archives", [])
+        if row.get("source_id") and row.get("repo_archive_candidate_path")
+    }
+
+
+def resolve_archive_path(record: dict[str, Any], repo_archive_by_source: dict[str, str]) -> tuple[Path, str]:
+    source_id = str(record["source_id"])
+    temp_path = Path(str(record["local_cache_path"]))
+    if temp_path.exists():
+        return temp_path, "temporary_cache"
+    repo_rel = repo_archive_by_source.get(source_id)
+    if repo_rel:
+        repo_path = ROOT / repo_rel
+        if repo_path.exists():
+            return repo_path, "repo_archive"
+    return temp_path, "missing"
+
+
+def fragment_observation(record: dict[str, Any], repo_archive_by_source: dict[str, str]) -> dict[str, Any]:
     source_id = str(record["source_id"])
     plan = FRAGMENT_PLAN[source_id]
-    archive_path = Path(str(record["local_cache_path"]))
+    archive_path, archive_source = resolve_archive_path(record, repo_archive_by_source)
     tex_member = str(record["expected_tex_members"][0]["name"])
     tex_text = extract_tex_member(archive_path, tex_member)
     blocks = equation_blocks(tex_text)
@@ -272,12 +302,34 @@ def write_manifest(observations: list[dict[str, Any]]) -> dict[str, Any]:
 def run_tex_formula_fragment_gate() -> dict[str, Any]:
     wave38 = load_json(WAVE38_ARTIFACT_PATH) if WAVE38_ARTIFACT_PATH.exists() else {}
     localization = load_json(LOCALIZATION_MANIFEST_PATH)
-    observations = [
-        fragment_observation(row)
+    repo_archive_by_source = policy_archive_map()
+    source_archives = [
+        row
         for row in localization.get("source_archives", [])
         if row.get("source_id") in FRAGMENT_PLAN
     ]
-    manifest = write_manifest(observations)
+    missing_archives = []
+    for row in source_archives:
+        _, archive_source = resolve_archive_path(row, repo_archive_by_source)
+        if archive_source == "missing":
+            missing_archives.append(
+                {
+                    "source_id": row.get("source_id"),
+                    "local_cache_path": str(row.get("local_cache_path")),
+                    "repo_archive_candidate_path": repo_archive_by_source.get(str(row.get("source_id"))),
+                }
+            )
+    prior_manifest = (
+        load_json(FORMULA_FRAGMENT_MANIFEST_PATH)
+        if FORMULA_FRAGMENT_MANIFEST_PATH.exists()
+        else {}
+    )
+    if missing_archives:
+        observations = prior_manifest.get("source_formula_fragments", [])
+        manifest = prior_manifest
+    else:
+        observations = [fragment_observation(row, repo_archive_by_source) for row in source_archives]
+        manifest = write_manifest(observations)
 
     expected_sources = set(FRAGMENT_PLAN)
     observed_sources = {row["source_id"] for row in observations}
@@ -300,6 +352,12 @@ def run_tex_formula_fragment_gate() -> dict[str, Any]:
         "wave38_status": wave38.get("status"),
         "wave38_blocker_label": wave38.get("blocker_label"),
     }
+    source_archive_availability_gate = {
+        "status": "PASS" if not missing_archives else "BLOCKED",
+        "required_condition": "All temporary source archives referenced by the localization manifest must be available before formula fragments can be refreshed.",
+        "missing_archives": missing_archives,
+        "cache_policy": localization.get("local_cache_policy", {}),
+    }
     formula_fragment_manifest_gate = {
         "status": (
             "PASS"
@@ -317,9 +375,16 @@ def run_tex_formula_fragment_gate() -> dict[str, Any]:
         "missing_expected_labels": missing_labels,
     }
     source_formula_fragment_gate = {
-        "status": "PASS" if extracted_count >= 3 else "BLOCKED",
+        "status": (
+            "PASS"
+            if extracted_count >= 3 and not missing_archives
+            else "WARN"
+            if extracted_count >= 3
+            else "BLOCKED"
+        ),
         "required_condition": "Formula fragments must be extracted from localized TeX sources before policy review can proceed.",
         "extracted_fragment_count": extracted_count,
+        "fresh_extraction": not missing_archives,
     }
     accepted_estimator_policy_gate = {
         "status": "PASS" if accepted_count else "BLOCKED",
@@ -358,11 +423,16 @@ def run_tex_formula_fragment_gate() -> dict[str, Any]:
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "command": "python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Tex_Formula_Fragment_Gate.py",
         "status": "WARN",
-        "blocker_label": "tex_formula_fragments_extracted_estimator_policy_open",
+        "blocker_label": (
+            "tex_formula_fragments_extracted_source_cache_missing"
+            if missing_archives
+            else "tex_formula_fragments_extracted_estimator_policy_open"
+        ),
         "claim_class": "formula_fragment_extraction_only",
         "inputs": [
             artifact_record(WAVE38_ARTIFACT_PATH, "Wave 38 source archive localization controller"),
             source_record(LOCALIZATION_MANIFEST_PATH, "Wave 38 source archive localization manifest"),
+            source_record(SOURCE_ARCHIVE_POLICY_PATH, "Wave 44 source archive policy manifest"),
             source_record(FORMULA_FRAGMENT_MANIFEST_PATH, "Wave 43 formula-fragment manifest"),
         ],
         "metrics": {
@@ -373,6 +443,7 @@ def run_tex_formula_fragment_gate() -> dict[str, Any]:
         },
         "gates": {
             "wave38_chain_gate": wave38_chain_gate,
+            "source_archive_availability_gate": source_archive_availability_gate,
             "formula_fragment_manifest_gate": formula_fragment_manifest_gate,
             "source_formula_fragment_gate": source_formula_fragment_gate,
             "accepted_estimator_policy_gate": accepted_estimator_policy_gate,
@@ -382,6 +453,7 @@ def run_tex_formula_fragment_gate() -> dict[str, Any]:
         },
         "limitations": [
             "Extracted TeX fragments are source-review evidence only.",
+            "Formula-fragment refresh depends on temporary source archives unless a repo archival policy is added.",
             "No source fragment is accepted as the current UET estimator policy in this wave.",
             "UET normalization and finite-size admissibility mapping remain open.",
             "No exponent, universality, RG, material, or Tier A claim may be upgraded.",

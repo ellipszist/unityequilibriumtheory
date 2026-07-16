@@ -1054,6 +1054,35 @@
   - Source archives and main TeX members are localized in a temporary cache, but formulas are not extracted or accepted.
   - The next useful work is exact TeX formula-fragment extraction or a repo archival policy decision, without accepting an estimator.
 
+## Wave 44 Source-Archive Policy Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Source_Archive_Policy_Gate.py`
+- Artifact target:
+  - `Result/artifacts/0_11_structure_factor_source_archive_policy_gate.json`
+- Source-archive policy manifest:
+  - `Data/03_Research/structure_factor_source_archive_policy.json`
+- Purpose:
+  - Record acquisition URLs, expected hashes, candidate repo archive paths, and claim boundary for the three structure-factor source archives.
+  - Keep formula-fragment preservation separate from raw source availability and estimator-policy acceptance.
+- Required gates:
+  - `wave43_chain_gate.status == PASS`
+  - `formula_fragment_preservation_gate.status == PASS`
+  - `source_archive_policy_manifest_gate.status == PASS`
+  - `repo_archive_availability_gate.status == PASS` before fresh formula extraction is repo-reproducible.
+  - `estimator_policy_gate.status == PASS` before exponent or universality gates may rerun.
+- Current Wave 44 result:
+  - overall status `WARN`
+  - `wave43_chain_gate == PASS`
+  - `formula_fragment_preservation_gate == PASS` with `19` preserved fragments
+  - `source_archive_policy_manifest_gate == PASS`
+  - `repo_archive_availability_gate == PASS` after all `3/3` repo archives were restored and hash-verified
+  - `temporary_cache_availability_gate == BLOCKED`; temp cache is no longer the reproducibility source
+  - `estimator_policy_gate == BLOCKED`
+- Interpretation:
+  - The source policy is now machine-readable and repo source availability is restored.
+  - The next useful work is estimator-policy/UET normalization mapping using the restored source archives and preserved formula fragments.
+
 ## Wave 43 TeX Formula-Fragment Extraction Gate
 
 - Candidate command:
@@ -1068,19 +1097,377 @@
 - Required gates:
   - `wave38_chain_gate.status == PASS`
   - `formula_fragment_manifest_gate.status == PASS`
-  - `source_formula_fragment_gate.status == PASS`
+  - `source_archive_availability_gate.status == PASS` before fragments can be refreshed from source archives.
+  - `source_formula_fragment_gate.status == PASS` for a fresh extraction, or `WARN` only when prior extracted fragments exist but the temporary cache is missing.
   - `accepted_estimator_policy_gate.status == PASS` before estimator replacement or exponent gates may rerun.
   - `uet_normalization_mapping_gate.status == PASS` before claim-bearing scaling use.
 - Current Wave 43 result:
   - overall status `WARN`
   - `wave38_chain_gate == PASS`
   - `formula_fragment_manifest_gate == PASS`
-  - `source_formula_fragment_gate == PASS`
+  - `source_archive_availability_gate == PASS` using the repo archive fallback from Wave 44/45
+  - `source_formula_fragment_gate == PASS` with fresh extraction restored
   - extracted fragments: `19` total from `3` source lanes
   - `accepted_estimator_policy_gate == BLOCKED`
   - `uet_normalization_mapping_gate == BLOCKED`
   - `next_path_gate == BLOCKED`
 - Interpretation:
-  - The source-formula absence blocker is narrowed: TeX formula fragments now exist in a machine-readable manifest.
+  - The source-formula absence blocker is narrowed: TeX formula fragments now exist in a machine-readable manifest and can be freshly regenerated from repo archives.
   - No source fragment is accepted as the current UET conserved-order estimator policy yet.
   - The next useful work is UET normalization mapping and estimator-policy selection or explicit rejection before exponent, material, RG, universality, or Tier A claims.
+
+## Wave 46 Estimator Policy Normalization-Map Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_Estimator_Normalization_Map_Gate.py`
+- Artifact target:
+  - `Result/artifacts/0_11_structure_factor_estimator_normalization_map_gate.json`
+- Normalization-map manifest:
+  - `Data/03_Research/structure_factor_estimator_normalization_map.json`
+- Purpose:
+  - Map the restored Wave 45 source formula fragments to estimator-policy lanes before accepting any replacement estimator.
+  - Separate fixed-magnetization/canonical susceptibility boundary evidence from the Cahn-Hilliard finite-k structure-factor candidate lane.
+  - Keep UET lattice normalization and finite-size admissibility as explicit blockers before exponent reruns.
+- Required gates:
+  - `wave43_chain_gate.status == PASS`
+  - `wave44_archive_gate.status == PASS`
+  - `fragment_coverage_gate.status == PASS`
+  - `policy_mapping_manifest_gate.status == PASS`
+  - `uet_normalization_mapping_gate.status == PASS` before any source formula can be used in scaling claims.
+  - `finite_size_admissibility_gate.status == PASS` before finite-size/exponent gates may rerun.
+  - `estimator_policy_acceptance_gate.status == PASS` before estimator replacement is accepted.
+- Current Wave 46 result:
+  - overall status `WARN`
+  - `wave43_chain_gate == PASS`
+  - `wave44_archive_gate == PASS`
+  - `fragment_coverage_gate == PASS`
+  - `policy_mapping_manifest_gate == PASS`
+  - `finite_k_policy_candidate_gate == WARN`
+  - `conserved_susceptibility_policy_gate == BLOCKED`
+  - `uet_normalization_mapping_gate == BLOCKED`
+  - `finite_size_admissibility_gate == BLOCKED`
+  - `estimator_policy_acceptance_gate == BLOCKED`
+- Interpretation:
+  - Source formulas are now mapped rather than merely preserved.
+  - The Cahn-Hilliard finite-k `S(q,t)` source lane is the strongest candidate family, but it is not accepted until UET lattice normalization, q-window admissibility, and estimator implementation pass.
+  - Do not rerun exponent, universality, material, RG, or Tier A gates from this artifact alone.
+
+## Wave 47 Cahn-Hilliard Finite-K Normalization Preflight
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_CH_Finite_K_Normalization_Preflight.py`
+- Artifact target:
+  - `Result/artifacts/0_11_structure_factor_ch_finite_k_normalization_preflight_gate.json`
+- Preflight manifest:
+  - `Data/03_Research/structure_factor_ch_finite_k_normalization_preflight.json`
+- Purpose:
+  - Convert the Wave 46 CH finite-k candidate into explicit normalization and admissibility checks.
+  - Declare what is closed in lattice units and what still blocks estimator acceptance.
+  - Prevent exponent reruns from using a source formula before field normalization, coefficient policy, xi extraction, and q-window admissibility are ready.
+- Required gates:
+  - `wave46_chain_gate.status == PASS`
+  - `ch_candidate_chain_gate.status == PASS`
+  - `preflight_manifest_gate.status == PASS`
+  - `fourier_convention_gate.status == PASS`
+  - `field_normalization_gate.status == PASS` before field mapping is accepted.
+  - `coefficient_mapping_gate.status == PASS` before source dynamics coefficients are used as source-backed.
+  - `xi_extraction_rule_gate.status == PASS` before a finite-k length can feed scaling.
+  - `finite_size_admissibility_gate.status == PASS` before exponent fits rerun.
+  - `implementation_acceptance_gate.status == PASS` before estimator replacement is accepted.
+- Current Wave 47 result:
+  - overall status `WARN`
+  - `wave46_chain_gate == PASS`
+  - `ch_candidate_chain_gate == PASS`
+  - `preflight_manifest_gate == PASS`
+  - `fourier_convention_gate == PASS`
+  - `field_normalization_gate == WARN`
+  - `coefficient_mapping_gate == BLOCKED`
+  - `xi_extraction_rule_gate == BLOCKED`
+  - `finite_size_admissibility_gate == BLOCKED`
+  - `implementation_acceptance_gate == BLOCKED`
+  - `estimator_acceptance_preflight_gate == BLOCKED`
+- Interpretation:
+  - The q-grid convention is now explicit in lattice units, but that is not enough to accept the estimator.
+  - The next useful work is an implementation verifier for a source-backed CH finite-k estimator candidate with q-window diagnostics and explicit coefficient inclusion/exclusion policy.
+  - Do not rerun exponent, universality, material, RG, or Tier A gates from this preflight alone.
+
+## Wave 48 Cahn-Hilliard Finite-K Estimator Candidate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_CH_Finite_K_Estimator_Candidate.py`
+- Artifact target:
+  - `Result/artifacts/0_11_structure_factor_ch_finite_k_estimator_candidate_gate.json`
+  - `Result/gl_structure_factor_ch_finite_k_estimator_candidate_stats.csv`
+- Purpose:
+  - Implement the source-linked CH finite-k `S(q)` candidate required by Wave 47.
+  - Use centered UET `C`, the declared FFT q-grid, and a finite-k peak rule instead of the rejected all-nonzero RMS inverse-k proxy.
+  - Emit q-window, low-mode, domain-scale, and finite-size trend diagnostics before any exponent rerun.
+- Required gates:
+  - `wave47_chain_gate.status == PASS`
+  - `source_formula_linkage_gate.status == PASS`
+  - `implementation_coverage_gate.status == PASS`
+  - `q_window_diagnostic_gate.status == PASS`
+  - `domain_scale_guard_gate.status == PASS`
+  - `finite_size_trend_gate.status == PASS` as diagnostic readiness only.
+  - `coefficient_policy_gate.status == PASS` before source dynamics coefficients are treated as mapped.
+  - `estimator_acceptance_gate.status == PASS` before exponent gates may use the candidate.
+- Current Wave 48 result:
+  - overall status `WARN`
+  - blocker label `ch_finite_k_candidate_implemented_acceptance_policy_open`
+  - `wave47_chain_gate == PASS`
+  - `source_formula_linkage_gate == PASS`
+  - `implementation_coverage_gate == PASS`
+  - `q_window_diagnostic_gate == PASS`
+  - `domain_scale_guard_gate == PASS`
+  - `finite_size_trend_gate == PASS`
+  - `coefficient_policy_gate == BLOCKED`
+  - `estimator_acceptance_gate == BLOCKED`
+  - median `xi/L = 0.5`; pass fraction `12/18`; peak low-window-edge count `11/18`
+- Interpretation:
+  - The candidate is now implemented and source-linked, so the blocker is no longer missing implementation.
+  - It is still not an accepted estimator because coefficient policy, field normalization, q-window acceptance, and exponent rerun gates remain open.
+  - Do not rerun exponent, universality, material, RG, or Tier A gates from this candidate alone.
+
+
+## Wave 49 Cahn-Hilliard Finite-K Acceptance Policy
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_CH_Finite_K_Acceptance_Policy_Gate.py`
+- Artifact target:
+  - `Data/03_Research/structure_factor_ch_finite_k_acceptance_policy.json`
+  - `Result/artifacts/0_11_structure_factor_ch_finite_k_acceptance_policy_gate.json`
+- Purpose:
+  - Define row-level acceptance before any estimator replacement or exponent rerun.
+  - Keep measurement-only `S(q)` diagnostics separate from source dynamics coefficient claims.
+  - Exclude finite-k peaks that hit the low-window edge from claim-bearing exponent rows.
+- Required gates:
+  - `wave48_chain_gate.status == PASS`
+  - `acceptance_policy_manifest_gate.status == PASS`
+  - `coefficient_exclusion_policy_gate.status == PASS` for measurement-only diagnostics.
+  - `source_dynamics_coefficient_mapping_gate.status == PASS` before source dynamics coefficients are accepted.
+  - `accepted_row_coverage_gate.status == PASS` before finite-size/exponent reruns may use the candidate.
+  - `estimator_acceptance_gate.status == PASS` before estimator replacement is accepted.
+  - `exponent_rerun_gate.status == PASS` before any exponent, universality, material, RG, or Tier A claim changes.
+- Current Wave 49 result:
+  - overall status `WARN`
+  - blocker label `ch_finite_k_acceptance_policy_defined_finite_size_coverage_and_normalization_open`
+  - `wave48_chain_gate == PASS`
+  - `acceptance_policy_manifest_gate == PASS`
+  - `coefficient_exclusion_policy_gate == PASS`
+  - `low_window_edge_policy_gate == PASS`
+  - `field_normalization_policy_gate == WARN`
+  - `accepted_row_coverage_gate == BLOCKED`
+  - `source_dynamics_coefficient_mapping_gate == BLOCKED`
+  - `estimator_acceptance_gate == BLOCKED`
+  - `exponent_rerun_gate == BLOCKED`
+  - accepted rows `6/18`, accepted grid count `1`, all accepted rows at `L20`
+- Interpretation:
+  - The policy gate narrows the blocker from open acceptance policy to finite-size row coverage plus field/coefficient normalization.
+  - The candidate remains diagnostic-only because strict policy leaves no accepted multi-grid coverage.
+  - Do not rerun exponent, universality, material, RG, or Tier A gates from this policy artifact alone.
+
+
+## Wave 50 Cahn-Hilliard Finite-K Extended-Grid Coverage Probe
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_CH_Finite_K_Extended_Grid_Coverage_Probe.py`
+- Artifact target:
+  - `Result/artifacts/0_11_structure_factor_ch_finite_k_extended_grid_coverage_probe.json`
+  - `Result/gl_structure_factor_ch_finite_k_extended_grid_coverage_probe_stats.csv`
+- Purpose:
+  - Test whether the Wave 49 accepted-row coverage blocker can be repaired by adding larger grids under the unchanged strict policy.
+  - Keep this as a coverage probe, not estimator acceptance or exponent rerun.
+- Required gates:
+  - `wave49_chain_gate.status == PASS`
+  - `extended_grid_probe_gate.status == PASS`
+  - `policy_application_gate.status == PASS`
+  - `accepted_multi_grid_coverage_gate.status == PASS` before coverage is treated as repaired.
+  - `field_normalization_policy_gate.status == PASS` before source-equivalent field normalization is accepted.
+  - `source_dynamics_coefficient_mapping_gate.status == PASS` before source CH dynamics coefficients are accepted.
+  - `estimator_acceptance_gate.status == PASS` before estimator replacement is accepted.
+  - `exponent_rerun_gate.status == PASS` before any exponent, universality, material, RG, or Tier A claim changes.
+- Current Wave 50 result:
+  - overall status `WARN`
+  - blocker label `ch_finite_k_extended_grid_coverage_repaired_normalization_and_coefficients_open`
+  - `wave49_chain_gate == PASS`
+  - `extended_grid_probe_gate == PASS`
+  - `policy_application_gate == PASS`
+  - `accepted_multi_grid_coverage_gate == PASS` with accepted grid counts `L20:6`, `L24:2`, `L28:2`
+  - `field_normalization_policy_gate == WARN`
+  - `source_dynamics_coefficient_mapping_gate == BLOCKED`
+  - `estimator_acceptance_gate == BLOCKED`
+  - `exponent_rerun_gate == BLOCKED`
+- Interpretation:
+  - The row-coverage blocker is narrowed: larger grids can satisfy the strict policy's minimum multi-grid row coverage.
+  - The estimator remains unaccepted because field normalization and source coefficient mapping are still unresolved.
+  - Do not rerun exponent, universality, material, RG, or Tier A gates from this coverage probe alone.
+
+
+## Wave 51 Cahn-Hilliard Finite-K Field/Coefficient Policy Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_CH_Finite_K_Field_Coefficient_Policy_Gate.py`
+- Artifact target:
+  - `Data/03_Research/structure_factor_ch_finite_k_field_coefficient_policy.json`
+  - `Result/artifacts/0_11_structure_factor_ch_finite_k_field_coefficient_policy_gate.json`
+- Purpose:
+  - Separate the measurement-only finite-k `S(q)` lane from source-dynamics and material-claim lanes.
+  - Keep Wave 50 coverage as diagnostic evidence only until field normalization is source-equivalent or replaced.
+- Required gates:
+  - `wave50_chain_gate.status == PASS`
+  - `measurement_field_centering_gate.status == PASS`
+  - `measurement_only_coefficient_exclusion_gate.status == PASS`
+  - `source_equivalent_field_normalization_gate.status == PASS` before estimator replacement is accepted.
+  - `accepted_estimator_replacement_gate.status == PASS` before exponent gates rerun.
+  - `exponent_rerun_gate.status == PASS` before any exponent, universality, material, RG, or Tier A claim changes.
+- Current Wave 51 result:
+  - overall status `WARN`
+  - blocker label `ch_finite_k_field_normalization_open_measurement_coefficient_policy_separated`
+  - `wave50_chain_gate == PASS`
+  - `measurement_field_centering_gate == PASS`
+  - `measurement_only_coefficient_exclusion_gate == PASS`
+  - `diagnostic_measurement_lane_gate == PASS`
+  - `source_equivalent_field_normalization_gate == BLOCKED`
+  - `source_dynamics_coefficient_mapping_gate == BLOCKED` for source-dynamics/material claims
+  - `accepted_estimator_replacement_gate == BLOCKED`
+  - `exponent_rerun_gate == BLOCKED`
+- Interpretation:
+  - The source-coefficient blocker is no longer allowed to block the measurement-only diagnostic lane.
+  - The topic still cannot accept the finite-k estimator for exponent use because centered `C` is not source-equivalent.
+  - The next useful work is a field-normalization derivation, a replacement field observable, or a source-backed rule for centered `C` before exponent reruns.
+
+
+## Wave 52 Cahn-Hilliard Finite-K Field-Normalization Decision Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_CH_Finite_K_Field_Normalization_Decision_Gate.py`
+- Artifact target:
+  - `Data/03_Research/structure_factor_ch_finite_k_field_normalization_decision.json`
+  - `Result/artifacts/0_11_structure_factor_ch_finite_k_field_normalization_decision_gate.json`
+- Purpose:
+  - Decide how far centered UET `C` can be used against the source Cahn-Hilliard `S(q,t)` field symbols.
+  - Separate diagnostic centered-field use from accepted source-equivalent field normalization.
+- Required gates:
+  - `wave51_chain_gate.status == PASS`
+  - `source_field_symbol_gate.status == PASS`
+  - `uet_centered_field_proxy_gate.status == PASS` for diagnostic finite-k measurement only.
+  - `amplitude_normalization_gate.status == PASS` before source-equivalent field normalization can be accepted.
+  - `averaging_convention_gate.status == PASS` before source-equivalent field normalization can be accepted.
+  - `source_equivalent_field_acceptance_gate.status == PASS` before estimator replacement is accepted.
+  - `exponent_rerun_gate.status == PASS` before exponent, universality, material, RG, or Tier A claim changes.
+- Current Wave 52 result:
+  - overall status `WARN`
+  - blocker label `ch_finite_k_field_amplitude_and_averaging_normalization_open`
+  - `wave51_chain_gate == PASS`
+  - `source_field_symbol_gate == PASS`
+  - `uet_centered_field_proxy_gate == PASS`
+  - `diagnostic_measurement_lane_gate == PASS`
+  - `amplitude_normalization_gate == BLOCKED`
+  - `averaging_convention_gate == BLOCKED`
+  - `source_equivalent_field_acceptance_gate == BLOCKED`
+  - `accepted_estimator_replacement_gate == BLOCKED`
+  - `exponent_rerun_gate == BLOCKED`
+- Interpretation:
+  - Centered `C` is acceptable only as a diagnostic finite-k proxy field.
+  - The accepted-estimator path now specifically needs an amplitude/variance normalization policy and an ensemble/time-averaging convention.
+  - Do not rerun exponent, universality, material, RG, or Tier A gates from this decision artifact alone.
+
+
+## Wave 53 Cahn-Hilliard Finite-K Shape-Only Normalization Policy Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_CH_Finite_K_Shape_Only_Normalization_Policy_Gate.py`
+- Artifact target:
+  - `Data/03_Research/structure_factor_ch_finite_k_shape_only_normalization_policy.json`
+  - `Result/artifacts/0_11_structure_factor_ch_finite_k_shape_only_normalization_policy_gate.json`
+- Purpose:
+  - Separate amplitude-invariant `q_peak` shape diagnostics from source-equivalent `S(q)` amplitude and susceptibility claims.
+  - Preserve Wave 50/52 diagnostic coverage without accepting estimator replacement.
+- Required gates:
+  - `wave52_chain_gate.status == PASS`
+  - `q_peak_amplitude_invariance_gate.status == PASS`
+  - `diagnostic_seed_aggregation_gate.status == PASS`
+  - `shape_only_diagnostic_lane_gate.status == PASS` for diagnostic use only.
+  - `source_amplitude_normalization_gate.status == PASS` before source `S(q)` amplitude or susceptibility claims.
+  - `source_averaging_convention_gate.status == PASS` before source-equivalent estimator use.
+  - `source_equivalent_estimator_gate.status == PASS` before exponent rerun.
+- Current Wave 53 result:
+  - overall status `WARN`
+  - blocker label `ch_finite_k_source_averaging_and_uncertainty_policy_open`
+  - `wave52_chain_gate == PASS`
+  - `q_peak_amplitude_invariance_gate == PASS`
+  - `diagnostic_seed_aggregation_gate == PASS`
+  - `shape_only_diagnostic_lane_gate == PASS`
+  - `source_amplitude_normalization_gate == BLOCKED`
+  - `source_averaging_convention_gate == BLOCKED`
+  - `source_equivalent_estimator_gate == BLOCKED`
+  - `exponent_rerun_gate == BLOCKED`
+- Interpretation:
+  - `q_peak` and `xi_peak = 2*pi/q_peak` can remain diagnostic shape-only measurements because positive amplitude scaling does not move the peak.
+  - This does not accept source `S(q)` amplitude, susceptibility, ensemble/time averaging, estimator replacement, or exponent use.
+  - The next useful work is a source averaging/uncertainty acceptance policy or a replacement observable policy.
+
+
+## Wave 54 Cahn-Hilliard Finite-K Source Averaging/Uncertainty Policy Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_CH_Finite_K_Source_Averaging_Uncertainty_Gate.py`
+- Artifact target:
+  - `Data/03_Research/structure_factor_ch_finite_k_source_averaging_uncertainty_policy.json`
+  - `Result/artifacts/0_11_structure_factor_ch_finite_k_source_averaging_uncertainty_gate.json`
+- Purpose:
+  - Separate diagnostic seed aggregation from claim-bearing source averaging and uncertainty propagation.
+  - Define the replicate/time/uncertainty blockers before any estimator replacement or exponent rerun.
+- Required gates:
+  - `wave53_chain_gate.status == PASS`
+  - `diagnostic_seed_aggregation_gate.status == PASS` for diagnostic use only.
+  - `claim_bearing_replicate_gate.status == PASS` before claim-bearing uncertainty use.
+  - `source_time_averaging_gate.status == PASS` before source-equivalent `S(q,t)` averaging use.
+  - `uncertainty_interval_policy_gate.status == PASS` before finite-size/exponent fits.
+  - `source_equivalent_estimator_gate.status == PASS` before exponent rerun.
+- Current Wave 54 result:
+  - overall status `WARN`
+  - blocker label `ch_finite_k_replicate_temporal_averaging_or_replacement_observable_open`
+  - `wave53_chain_gate == PASS`
+  - `diagnostic_seed_aggregation_gate == PASS`
+  - `claim_bearing_replicate_gate == BLOCKED`
+  - `source_time_averaging_gate == BLOCKED`
+  - `uncertainty_interval_policy_gate == BLOCKED`
+  - `source_equivalent_estimator_gate == BLOCKED`
+  - `exponent_rerun_gate == BLOCKED`
+- Interpretation:
+  - Current accepted rows are enough for diagnostic multi-grid seed aggregation only.
+  - Accepted L24/L28 coverage has only two rows each, rows are final snapshots, and no uncertainty interval/fit propagation policy is accepted.
+  - The next useful work is either more replicate/temporal averaging evidence or an explicit replacement observable policy before estimator acceptance.
+
+## Wave 55 Cahn-Hilliard Finite-K Next-Path Decision Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Structure_Factor_CH_Finite_K_Next_Path_Decision_Gate.py`
+- Artifact target:
+  - `Data/03_Research/structure_factor_ch_finite_k_next_path_decision.json`
+  - `Result/artifacts/0_11_structure_factor_ch_finite_k_next_path_decision_gate.json`
+- Purpose:
+  - Decide whether the next accepted-estimator path should be replicate/temporal acquisition or replacement-observable review.
+  - Keep this decision separate from estimator acceptance, exponent rerun, and universality/material/RG claims.
+- Required gates:
+  - `wave54_chain_gate.status == PASS`
+  - `replicate_temporal_acquisition_plan_gate.status == PASS` when no replacement observable is accepted.
+  - `selected_next_path_gate.status == PASS`
+  - `estimator_acceptance_gate.status == PASS` before exponent rerun.
+  - `exponent_rerun_gate.status == PASS` before exponent, universality, material, RG, or Tier A claim changes.
+- Current Wave 55 result:
+  - overall status `WARN`
+  - blocker label `ch_finite_k_replicate_temporal_acquisition_plan_defined_execution_open`
+  - selected next path `replicate_temporal_acquisition`
+  - `wave54_chain_gate == PASS`
+  - `replicate_temporal_acquisition_plan_gate == PASS`
+  - `selected_next_path_gate == PASS`
+  - `replacement_observable_available_gate == BLOCKED`
+  - `estimator_acceptance_gate == BLOCKED`
+  - `exponent_rerun_gate == BLOCKED`
+  - `next_path_gate == BLOCKED`
+- Interpretation:
+  - Replacement-observable policies remain unavailable for accepted use.
+  - The next controller is execution of the acquisition plan: add at least two accepted L24 rows and two accepted L28 rows, plus temporal/ensemble averaging and uncertainty propagation, or accept a source-backed replacement observable.
+  - Do not rerun exponent, universality, material, RG, or Tier A gates from this decision artifact alone.

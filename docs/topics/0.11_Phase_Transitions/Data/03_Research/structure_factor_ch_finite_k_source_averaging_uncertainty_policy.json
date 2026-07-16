@@ -1,0 +1,112 @@
+{
+  "claim_boundary": "Wave 54 keeps seed/grid aggregation diagnostic-only. It does not accept source S(q,t) averaging, uncertainty intervals, estimator replacement, or exponent rerun.",
+  "claim_class": "source_averaging_uncertainty_policy_preflight",
+  "inputs": [
+    {
+      "blocker_label": "ch_finite_k_source_averaging_and_uncertainty_policy_open",
+      "exists": true,
+      "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_ch_finite_k_shape_only_normalization_policy_gate.json",
+      "role": "Wave 53 shape-only normalization policy gate",
+      "sha256": "f9ee114b896356600863e7d442c8feef92cef1c7bc313e87e01677e9e2bef51a",
+      "status": "WARN"
+    },
+    {
+      "exists": true,
+      "path": "docs/topics/0.11_Phase_Transitions/Data/03_Research/structure_factor_ch_finite_k_shape_only_normalization_policy.json",
+      "role": "Wave 53 shape-only normalization policy manifest",
+      "sha256": "5899ecefe071fcafbb10c38a3ac6cd421ef85dac3f6a19b454e009b13668bbe8"
+    }
+  ],
+  "row_summary": {
+    "accepted_grid_count": 3,
+    "accepted_grid_counts": {
+      "20": 6,
+      "24": 2,
+      "28": 2
+    },
+    "by_grid": {
+      "12": {
+        "accepted_shape_rows": 0,
+        "candidate_pass_rows": 0,
+        "has_single_timepoint_only": true,
+        "seed_count": 6,
+        "total_rows": 6
+      },
+      "16": {
+        "accepted_shape_rows": 0,
+        "candidate_pass_rows": 6,
+        "has_single_timepoint_only": true,
+        "seed_count": 6,
+        "total_rows": 6
+      },
+      "20": {
+        "accepted_shape_rows": 6,
+        "candidate_pass_rows": 6,
+        "has_single_timepoint_only": true,
+        "seed_count": 6,
+        "total_rows": 6
+      },
+      "24": {
+        "accepted_shape_rows": 2,
+        "candidate_pass_rows": 2,
+        "has_single_timepoint_only": true,
+        "seed_count": 2,
+        "total_rows": 2
+      },
+      "28": {
+        "accepted_shape_rows": 2,
+        "candidate_pass_rows": 2,
+        "has_single_timepoint_only": true,
+        "seed_count": 2,
+        "total_rows": 2
+      }
+    },
+    "min_accepted_rows_per_grid": 2,
+    "source_rows": {
+      "wave48_csv": "docs/topics/0.11_Phase_Transitions/Result/gl_structure_factor_ch_finite_k_estimator_candidate_stats.csv",
+      "wave50_csv": "docs/topics/0.11_Phase_Transitions/Result/gl_structure_factor_ch_finite_k_extended_grid_coverage_probe_stats.csv"
+    },
+    "total_rows": 22
+  },
+  "schema_version": "1.0",
+  "timestamp_utc": "2026-07-10T15:27:25.989215+00:00",
+  "topic": "0.11_Phase_Transitions",
+  "uncertainty_policy": {
+    "claim_bearing_replicate_policy": {
+      "minimum_rows_per_grid": 4,
+      "reason": "Claim-bearing uncertainty needs more than the current minimum diagnostic replicate count on L24/L28.",
+      "row_shortfalls": {
+        "24": 2,
+        "28": 2
+      },
+      "status": "BLOCKED"
+    },
+    "diagnostic_seed_aggregation": {
+      "accepted_grid_counts": {
+        "20": 6,
+        "24": 2,
+        "28": 2
+      },
+      "allowed_claim": "diagnostic robustness only",
+      "minimum_accepted_grids": 3,
+      "minimum_rows_per_grid": 2,
+      "status": "PASS"
+    },
+    "source_averaging_policy": {
+      "missing": [
+        "accepted time-window averaging policy",
+        "source-equivalent ensemble expectation policy",
+        "uncertainty interval or bootstrap policy for accepted rows"
+      ],
+      "single_timepoint_grids": [
+        "12",
+        "16",
+        "20",
+        "24",
+        "28"
+      ],
+      "status": "BLOCKED"
+    }
+  },
+  "wave": "Wave 54 CH finite-k source averaging/uncertainty policy gate"
+}

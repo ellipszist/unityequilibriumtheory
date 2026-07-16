@@ -49,12 +49,182 @@ Sources:
     - Lorentz Invariance (1905) - see uet_lorentz.py
 """
 
+import sys
+from pathlib import Path
+
 import numpy as np
 from dataclasses import dataclass, field
 from typing import Tuple, Optional, List, Union, Any
-from scipy.constants import k as k_B, c, G, hbar
-from docs.core.uet_parameters import INTEGRITY_KILL_SWITCH
 
+
+def _bootstrap_docs_root() -> None:
+    """Allow direct script execution without hardcoded local paths."""
+    current = Path(__file__).resolve()
+    for parent in [current] + list(current.parents):
+        if (parent / "docs" / "core").exists():
+            if str(parent) not in sys.path:
+                sys.path.insert(0, str(parent))
+            return
+
+
+_bootstrap_docs_root()
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
+try:
+    from scipy.constants import k as k_B, c, G, hbar
+except ModuleNotFoundError:
+    from docs.core.uet_parameters import K_B as k_B, C as c, G, HBAR as hbar
+
+from docs.core.uet_parameters import INTEGRITY_KILL_SWITCH, UETParameters
+
+LEGACY_OPERATOR_MODE = "legacy_local"
+SPATIAL_COUPLED_OPERATOR_MODE = "spatial_coupled_v1"
+SPATIAL_COUPLED_V2_OPERATOR_MODE = "spatial_coupled_v2"
+CONSERVED_ORDER_OPERATOR_MODE = "conserved_order_v1"
+CONSERVED_ORDER_SPECTRAL_OPERATOR_MODE = "conserved_order_spectral_v1"
+SUPPORTED_OPERATOR_MODES = {
+    LEGACY_OPERATOR_MODE,
+    SPATIAL_COUPLED_OPERATOR_MODE,
+    SPATIAL_COUPLED_V2_OPERATOR_MODE,
+    CONSERVED_ORDER_OPERATOR_MODE,
+    CONSERVED_ORDER_SPECTRAL_OPERATOR_MODE,
+}
+
+
+def resolve_operator_mode(
+    params: Optional[UETParameters] = None, operator_mode: Optional[str] = None
+) -> str:
+    """Resolve the active equation-operator family without changing legacy defaults."""
+    mode = operator_mode or getattr(params, "operator_mode", LEGACY_OPERATOR_MODE)
+    if mode not in SUPPORTED_OPERATOR_MODES:
+        raise ValueError(
+            f"Unsupported UET operator_mode={mode!r}. "
+            f"Expected one of {sorted(SUPPORTED_OPERATOR_MODES)}."
+        )
+    return mode
+
+
+def _volume_element(field: np.ndarray, dx: float) -> float:
+    """Match the repository convention for integrating 1D versus higher-dimensional grids."""
+    ndim = getattr(field, "ndim", 0)
+    if ndim <= 0:
+        return 1.0
+    if ndim == 1:
+        return dx
+    return dx**ndim
+
+
+def gradient_magnitude_squared(C: np.ndarray, dx: float) -> np.ndarray:
+    """Return |grad C|^2 with zero gradients on singleton axes."""
+    C = np.asarray(C, dtype=float)
+    grad_sq = np.zeros_like(C, dtype=float)
+    if C.ndim == 0:
+        return grad_sq
+
+    for axis, size in enumerate(C.shape):
+        if size <= 1:
+            continue
+        edge_order = 2 if size > 2 else 1
+        grad_axis = np.gradient(C, dx, axis=axis, edge_order=edge_order)
+        grad_sq += grad_axis**2
+    return grad_sq
+
+
+def conserved_laplacian(field: np.ndarray, dx: float) -> np.ndarray:
+    """Periodic Laplacian used by opt-in conserved diagnostic operators."""
+    field = np.asarray(field, dtype=float)
+    lap = np.zeros_like(field, dtype=float)
+    if field.ndim == 0:
+        return lap
+
+    for axis, size in enumerate(field.shape):
+        if size <= 1:
+            continue
+        lap += (np.roll(field, 1, axis=axis) - 2 * field + np.roll(field, -1, axis=axis)) / dx**2
+    return lap
+
+
+def spectral_conserved_order_step(
+    C: np.ndarray,
+    non_gradient_force: np.ndarray,
+    dx: float,
+    dt: float,
+    params: UETParameters,
+) -> np.ndarray:
+    """
+    Wave 16 candidate: semi-implicit spectral conserved-order update.
+
+    `non_gradient_force` is the already assembled force with the explicit
+    `kappa * laplacian(C)` part removed. The conserved flow is treated as
+    `-nabla^2(non_gradient_force) - kappa*nabla^4(C)`, with the stiff
+    biharmonic term in the denominator. This mirrors the topic 0.11 spectral
+    Cahn-Hilliard engine while keeping the core path opt-in.
+    """
+    C = np.asarray(C, dtype=float)
+    non_gradient_force = np.asarray(non_gradient_force, dtype=float)
+    if C.ndim == 0 or dt == 0 or all(size <= 1 for size in C.shape):
+        return np.array(C, copy=True)
+
+    k_sq = np.zeros(C.shape, dtype=float)
+    for axis, size in enumerate(C.shape):
+        if size <= 1:
+            continue
+        freqs = 2.0 * np.pi * np.fft.fftfreq(size, d=dx)
+        shape = [1] * C.ndim
+        shape[axis] = size
+        k_sq += freqs.reshape(shape) ** 2
+
+    mobility = getattr(params, "conserved_order_mobility", 1.0)
+    kappa = getattr(params, "kappa", 0.0)
+    numerator = np.fft.fftn(C) + dt * mobility * k_sq * np.fft.fftn(non_gradient_force)
+    denominator = 1.0 + dt * mobility * kappa * k_sq**2
+    updated = np.fft.ifftn(numerator / denominator).real
+
+    # Preserve the zero mode exactly enough for gate-level mass checks.
+    updated += float(np.mean(C)) - float(np.mean(updated))
+    return updated
+
+
+def screened_nonlocal_field(field: np.ndarray, dx: float, length_scale: float) -> np.ndarray:
+    """
+    Return a deterministic screened nonlocal average.
+
+    This is a Wave 11 candidate helper, not accepted physics. It keeps the
+    zero mode unchanged and damps shorter wavelengths by 1/(1 + ell^2 k^2),
+    so uniform fields return unchanged and memory contrast vanishes.
+    """
+    field = np.asarray(field, dtype=float)
+    if field.ndim == 0 or length_scale <= 0:
+        return np.array(field, copy=True)
+    if all(size <= 1 for size in field.shape):
+        return np.array(field, copy=True)
+
+    k_sq = np.zeros(field.shape, dtype=float)
+    for axis, size in enumerate(field.shape):
+        if size <= 1:
+            continue
+        freqs = 2.0 * np.pi * np.fft.fftfreq(size, d=dx)
+        shape = [1] * field.ndim
+        shape[axis] = size
+        k_sq += freqs.reshape(shape) ** 2
+
+    spectral_filter = 1.0 / (1.0 + (length_scale**2) * k_sq)
+    return np.fft.ifftn(np.fft.fftn(field) * spectral_filter).real
+
+
+def spatial_memory_contrast(C: np.ndarray, dx: float, params: UETParameters) -> np.ndarray:
+    """Scale-dependent contrast between local C and screened space-memory field."""
+    length_scale = getattr(params, "spatial_v2_memory_length", 2.0)
+    return screened_nonlocal_field(C, dx, length_scale) - np.asarray(C, dtype=float)
+
+
+def spatial_interface_activity(C: np.ndarray, dx: float, params: UETParameters) -> np.ndarray:
+    """Wave 11 candidate activity: local gradient plus nonlocal memory contrast."""
+    memory = spatial_memory_contrast(C, dx, params)
+    coeff = getattr(params, "spatial_v2_nonlocal_coupling", 1.0)
+    return gradient_magnitude_squared(C, dx) + coeff * memory**2
 # =============================================================================
 # PHYSICAL CONSTANTS (CODATA 2024 / Real Experiments)
 # =============================================================================
@@ -76,7 +246,7 @@ KAPPA_BEKENSTEIN = L_P_SQUARED / 4  # ≈ 6.5e-71 m²
 # =============================================================================
 
 
-from docs.core.uet_parameters import UETParameters
+# UETParameters imported above with the integrity switch.
 
 # =============================================================================
 # AXIOM 1: ENERGY CONSERVATION - POTENTIAL V(C)
@@ -105,7 +275,7 @@ def potential_derivative(C: Union[np.ndarray, Tuple], params: UETParameters) -> 
     # Robust unpacking if C is passed as a state tuple
     if isinstance(C, (tuple, list)):
         C = C[0]
-        
+
     diff = C - params.C0
     return params.alpha * diff + params.gamma * diff**3
 
@@ -116,29 +286,60 @@ def potential_derivative(C: Union[np.ndarray, Tuple], params: UETParameters) -> 
 
 
 def information_coupling(
-    C: np.ndarray, I: np.ndarray, dx: float, params: UETParameters
+    C: np.ndarray,
+    I: np.ndarray,
+    dx: float,
+    params: UETParameters,
+    operator_mode: Optional[str] = None,
 ) -> float:
     """
-    📝 AXIOM 2: Information Emerges from Irreversibility
+    AXIOM 2: Information Emerges from Irreversibility.
 
-    Coupling term: βCI
-
-    Identity Change (Audit Fix):
-    Information is now an INDEPENDENT field I(x,t).
-    This term creates a source/sink relationship between Energy (C) and Information (I).
+    Legacy mode keeps the historical beta C*I coupling. Wave 5 spatial mode is
+    an opt-in candidate that uses 0.5*beta*C^2*I so the C dynamics source is
+    proportional to C*I. Wave 11 v2 additionally gates the candidate by
+    interface/nonlocal activity. These are heuristic bridges, not accepted
+    derivations.
     """
-    if C.ndim == 1:
-        return params.beta * np.sum(C * I) * dx
-    else:
-        return params.beta * np.sum(C * I) * dx**C.ndim
+    mode = resolve_operator_mode(params, operator_mode)
+    volume = _volume_element(C, dx)
+    if mode == SPATIAL_COUPLED_V2_OPERATOR_MODE:
+        coeff = getattr(params, "spatial_v2_information_coupling", 1.0)
+        activity = spatial_interface_activity(C, dx, params)
+        return 0.5 * params.beta * coeff * np.sum(C**2 * I * activity) * volume
+    if mode == SPATIAL_COUPLED_OPERATOR_MODE:
+        coeff = getattr(params, "spatial_information_coupling", 1.0)
+        return 0.5 * params.beta * coeff * np.sum(C**2 * I) * volume
+    return params.beta * np.sum(C * I) * volume
 
+
+def information_dynamics_source(
+    C: np.ndarray,
+    I: Optional[np.ndarray],
+    params: UETParameters,
+    operator_mode: Optional[str] = None,
+    dx: float = 1.0,
+) -> Union[np.ndarray, float]:
+    """Negative functional-gradient source from the information coupling."""
+    if I is None:
+        return 0.0
+    mode = resolve_operator_mode(params, operator_mode)
+    if mode == SPATIAL_COUPLED_V2_OPERATOR_MODE:
+        coeff = getattr(params, "spatial_v2_information_coupling", 1.0)
+        activity = spatial_interface_activity(C, dx, params)
+        return -params.beta * coeff * C * I * activity
+    if mode == SPATIAL_COUPLED_OPERATOR_MODE:
+        coeff = getattr(params, "spatial_information_coupling", 1.0)
+        return -params.beta * coeff * C * I
+    return -params.beta * I
 
 def information_propagator_step(
     I: np.ndarray,
     C: np.ndarray,
     dx: float,
     dt: float,
-    params: UETParameters
+    params: UETParameters,
+    operator_mode: Optional[str] = None,
 ) -> np.ndarray:
     """
     NEW: Information Field Equation of Motion (EoM)
@@ -160,7 +361,16 @@ def information_propagator_step(
     # Governing Equation: dI/dt = D∇²I - m_I²I + βC
     # Where m_I is the "Information Decay" or "Forgetfulness" of Space
     decay = params.kappa_I * I  # Reusing kappa as a dispersion/mass term proxy
-    source = params.beta * C
+    mode = resolve_operator_mode(params, operator_mode)
+    if mode == SPATIAL_COUPLED_V2_OPERATOR_MODE:
+        coeff = getattr(params, "spatial_v2_information_coupling", 1.0)
+        activity = spatial_interface_activity(C, dx, params)
+        source = 0.5 * params.beta * coeff * C**2 * activity
+    elif mode == SPATIAL_COUPLED_OPERATOR_MODE:
+        coeff = getattr(params, "spatial_information_coupling", 1.0)
+        source = 0.5 * params.beta * coeff * C**2
+    else:
+        source = params.beta * C
 
     dI_dt = laplacian - decay + source
     return I + dt * dI_dt
@@ -292,60 +502,94 @@ def strategic_boost(density: float, scale: float = 1.0, params: UETParameters = 
 
     Strategic boost β_U for systems competing for limited energy resources.
 
-    Core Concept:
-        - Existence (Becoming) = Energy usage
-        - To survive longer = Conserve energy wisely
-        - Equilibrium = "Choose not to play" (Nash Equilibrium)
-        - Systems share/compete energy to maximize survival potential
-
-    Based on Nash Differential Games and Thermodynamic Selection:
-        β_U = 1.5 × (Σ_bar / Σ_crit) + ∇Π (Survival Gradient)
-
-    This describes how physical structures naturally optimize
-    for energy efficiency in competitive environments.
+    [REFACTORED IN WAVE 39 - EMERGENCE OVERRIDE]
+    Removed all ad-hoc if-else density gates.
+    The dynamic game is no longer forced by an artificial referee.
+    Instead, the parameter acts as a flat baseline coupling, and the actual
+    Emergence (Player becomes Game) is handled by the non-linear field coupling
+    between Mass (C^2) and Information (I) in the propagator.
     """
     if params is None:
         params = UETParameters()
-        
-    density_ratio = density / params.SIGMA_CRIT
+
+    # Provide a stable, non-gated baseline for the game coupling.
+    # The true 'boost' will emerge naturally from the C^2 -> I field warping.
     base_scalar = (params.beta * 30.0) if params.beta > 0 else 1.5
 
-    # Base Adaptation Pressure (Evolutionary Pressure)
-    # [HEURISTIC]: base_scalar values (1.5, 30.0) are unverified pivots.
-    beta_base = base_scalar * density_ratio
-
-    # Strategic Payoff Gradient (∇Π_game) for high-conflict
-    if density_ratio > 1.0:
-        payoff_gradient = (base_scalar * 1.33) * np.log10(1 + density_ratio)
-    else:
-        # SCARCITY BOOST (Axiom 8b): Low density systems optimize harder to survive
-        # "เมื่อทรัพยากร (Mass) ต่ำ ต้องใช้ Information (Strategy) สูง"
-        if density_ratio < 0.1 and density_ratio > 0:
-            payoff_gradient = base_scalar * (0.1 / (density_ratio + 1e-9)) ** 0.25
-        else:
-            payoff_gradient = 0.0
-
-    beta_U = beta_base + payoff_gradient
-
-    # Scale correction for compact systems (R_disk < 2 kpc)
-    if scale < 2.0 and scale > 0:
-        beta_U *= (2.0 / scale) ** 0.3
-
-    # IMPORTANT: Enforce bounds using generic derivations
-    return np.clip(beta_U, base_scalar, base_scalar * 10.0)
+    return base_scalar
 
 
 def game_theory_potential(
-    C: np.ndarray, density: float, scale: float = 1.0, params: UETParameters = None
+    C: np.ndarray,
+    density: float,
+    scale: float = 1.0,
+    params: UETParameters = None,
+    dx: float = 1.0,
+    operator_mode: Optional[str] = None,
 ) -> np.ndarray:
     """
     Dynamic Game correction to potential for energy-competitive systems.
 
-    Adds: V_game = β_U × C²
+    Legacy mode keeps V_game = beta_U*C^2. Wave 5 spatial mode is an opt-in
+    heuristic bridge that makes the candidate game term interface-sensitive via
+    |grad C|^2 instead of local amplitude alone. Wave 11 v2 adds a screened
+    memory contrast term so this lane is scale-dependent and still zero on
+    uniform fields.
     """
+    if params is None:
+        params = UETParameters()
+    mode = resolve_operator_mode(params, operator_mode)
     beta_U = strategic_boost(density, scale, params)
+    if mode == SPATIAL_COUPLED_V2_OPERATOR_MODE:
+        coeff = getattr(params, "spatial_v2_game_coupling", 1.0)
+        return beta_U * coeff * spatial_interface_activity(C, dx, params)
+    if mode == SPATIAL_COUPLED_OPERATOR_MODE:
+        coeff = getattr(params, "spatial_game_coupling", 1.0)
+        return beta_U * coeff * gradient_magnitude_squared(C, dx)
     return beta_U * C**2
 
+
+def game_theory_force(
+    C: np.ndarray,
+    density: float,
+    scale: float,
+    dx: float,
+    params: UETParameters,
+    operator_mode: Optional[str] = None,
+) -> Union[np.ndarray, float]:
+    """
+    Dynamics-side game operator.
+
+    Legacy dynamics did not include an explicit game force in the master-step
+    path, so legacy mode returns zero for backward compatibility. The Wave 5
+    candidate exposes a KPZ-style interface drive proportional to |grad C|^2.
+    Wave 11 v2 returns a conserved Laplacian of the interface/memory potential.
+    """
+    mode = resolve_operator_mode(params, operator_mode)
+    if density <= 0:
+        return 0.0
+    if mode == SPATIAL_COUPLED_V2_OPERATOR_MODE:
+        conserved_coeff = getattr(params, "spatial_v2_conserved_coupling", 1.0)
+        potential = game_theory_potential(
+            C,
+            density=density,
+            scale=scale,
+            params=params,
+            dx=dx,
+            operator_mode=mode,
+        )
+        return conserved_coeff * conserved_laplacian(potential, dx)
+    if mode == SPATIAL_COUPLED_OPERATOR_MODE:
+        kpz_coeff = getattr(params, "spatial_kpz_coupling", 1.0)
+        return kpz_coeff * game_theory_potential(
+            C,
+            density=density,
+            scale=scale,
+            params=params,
+            dx=dx,
+            operator_mode=mode,
+        )
+    return 0.0
 
 # =============================================================================
 # AXIOM 9: DYNAMIC EQUILIBRIUM CENTER
@@ -462,6 +706,7 @@ def omega_functional_complete(
     scale: float = 1.0,
     dx: float = 0.1,
     params: UETParameters = None,
+    operator_mode: Optional[str] = None,
 ) -> float:
     """
     🌌 THE COMPLETE UET MASTER EQUATION
@@ -497,7 +742,7 @@ def omega_functional_complete(
 
     # === A2: Information coupling ===
     if I is not None:
-        info_integral = information_coupling(C, I, dx, params)
+        info_integral = information_coupling(C, I, dx, params, operator_mode=operator_mode)
     else:
         info_integral = 0.0
 
@@ -512,7 +757,7 @@ def omega_functional_complete(
 
     # === A8: Dynamic Game ===
     if density > 0:
-        V_game = game_theory_potential(C, density, scale, params)
+        V_game = game_theory_potential(C, density, scale, params, dx=dx, operator_mode=operator_mode)
         if C.ndim == 1:
             game_integral = np.sum(V_game) * dx
         else:
@@ -621,6 +866,9 @@ class UETMasterEquation:
         J_in: Optional[np.ndarray] = None,
         J_out: Optional[np.ndarray] = None,
         constraints: Optional[dict] = None,
+        density: float = 0.0,
+        scale: float = 1.0,
+        operator_mode: Optional[str] = None,
     ) -> Tuple[np.ndarray, ...]:
         """
         Execute one dynamics step with state management.
@@ -639,6 +887,9 @@ class UETMasterEquation:
             dt=dt,
             constraints=constraints,
             params=self.params,
+            density=density,
+            scale=scale,
+            operator_mode=operator_mode,
         )
 
         # Unpack results based on what was returned
@@ -660,10 +911,21 @@ class UETMasterEquation:
         I: Optional[np.ndarray] = None,
         J_in: Optional[np.ndarray] = None,
         J_out: Optional[np.ndarray] = None,
+        density: float = 0.0,
+        scale: float = 1.0,
+        operator_mode: Optional[str] = None,
     ) -> float:
         """Compute instantaneous Omega value."""
         return omega_functional_complete(
-            C=C, I=I, J_in=J_in, J_out=J_out, dx=dx, params=self.params
+            C=C,
+            I=I,
+            J_in=J_in,
+            J_out=J_out,
+            density=density,
+            scale=scale,
+            dx=dx,
+            params=self.params,
+            operator_mode=operator_mode,
         )
 
 
@@ -700,6 +962,9 @@ def dynamics_step_complete(
     dt: float = 0.01,
     constraints: Optional[dict] = None,
     params: UETParameters = None,
+    density: float = 0.0,
+    scale: float = 1.0,
+    operator_mode: Optional[str] = None,
 ) -> Union[np.ndarray, Tuple[np.ndarray, ...]]:
     """
     AXIOM 6/13/14: Dynamics as Inertial Constrained Optimization
@@ -776,10 +1041,7 @@ def dynamics_step_complete(
         will_force = 0.0
 
     # Information source term
-    if I is not None:
-        source = -params.beta * I
-    else:
-        source = 0.0
+    source = information_dynamics_source(C, I, params, operator_mode=operator_mode, dx=dx)
 
     # A4: Exchange term
     if J_in is not None and J_out is not None:
@@ -787,9 +1049,20 @@ def dynamics_step_complete(
     else:
         exchange = 0.0
 
+    # A8: Dynamic Game candidate force (opt-in spatial mode only)
+    game_force = game_theory_force(
+        C,
+        density=density,
+        scale=scale,
+        dx=dx,
+        params=params,
+        operator_mode=operator_mode,
+    )
+
     # Total derivative
     # Total force (Negative Functional Gradient)
-    force = reaction + diffusion + source + exchange + will_force
+    force = reaction + diffusion + source + exchange + will_force + game_force
+    raw_force = force
 
     # A14: Dynamic Viscosity (MOND-like scaling for low-acc regimes)
     # Applied to the force before integration
@@ -802,12 +1075,27 @@ def dynamics_step_complete(
     # Reduces to dC/dt = F when tau_inertia = 0 (Overdamped limit)
     # HARDENING FIX (Lorentz Safeguard): Ensure v < c strictly
     LIGHT_SPEED = 299792458.0 # SI C
-    
-    if params.tau_inertia > 0 and V is not None:
+
+    mode = resolve_operator_mode(params, operator_mode)
+    if mode == CONSERVED_ORDER_OPERATOR_MODE:
+        # Wave 14 candidate: Model C form dC/dt = nabla^2(delta Omega/delta C).
+        # `force` is the negative functional gradient, so the conserved flow is -nabla^2(force).
+        mobility = getattr(params, "conserved_order_mobility", 1.0)
+        conserved_force = -mobility * conserved_laplacian(force, dx)
+        C_new = C + dt * conserved_force
+        V_new = np.clip(conserved_force, -0.999999 * LIGHT_SPEED, 0.999999 * LIGHT_SPEED)
+    elif mode == CONSERVED_ORDER_SPECTRAL_OPERATOR_MODE:
+        # Wave 16 candidate: keep the local/source force explicit, but integrate the
+        # stiff kappa*nabla^4 term semi-implicitly in Fourier space.
+        non_gradient_force = raw_force - diffusion
+        C_new = spectral_conserved_order_step(C, non_gradient_force, dx, dt, params)
+        spectral_velocity = (C_new - C) / max(dt, 1e-30)
+        V_new = np.clip(spectral_velocity, -0.999999 * LIGHT_SPEED, 0.999999 * LIGHT_SPEED)
+    elif params.tau_inertia > 0 and V is not None:
         # C_acc = (F - V) / tau
         C_acc = (force - V) / params.tau_inertia
         V_raw = V + dt * C_acc
-        
+
         # Lorentz Clamp (A13/A11 Alignment)
         V_new = np.clip(V_raw, -0.999999 * LIGHT_SPEED, 0.999999 * LIGHT_SPEED)
         C_new = C + dt * V_new
@@ -815,11 +1103,11 @@ def dynamics_step_complete(
         # Diffusion limit (Overdamped)
         C_new = C + dt * force
         # For consistency, clip force-derived velocity too
-        V_new = np.clip(force, -0.999999 * LIGHT_SPEED, 0.999999 * LIGHT_SPEED) 
+        V_new = np.clip(force, -0.999999 * LIGHT_SPEED, 0.999999 * LIGHT_SPEED)
 
     # If I is present, update it via its own Propagator EoM
     if I is not None:
-        I_new = information_propagator_step(I, C, dx, dt, params)
+        I_new = information_propagator_step(I, C, dx, dt, params, operator_mode=operator_mode)
     else:
         I_new = None
 
@@ -835,7 +1123,7 @@ def dynamics_step_complete(
         returns.append(V_new)
     if I is not None:
         returns.append(I_new)
-        
+
     if len(returns) > 1:
         return tuple(returns)
     return C_new
@@ -865,24 +1153,33 @@ def verify_heat_equation_limit() -> Tuple[bool, str]:
 
 
 def verify_ginzburg_landau_limit() -> Tuple[bool, str]:
-    """A11: Reduce to Ginzburg-Landau with V(C)."""
-    params = UETParameters(alpha=1.0, gamma=0.1, kappa=0.01, beta=0.0)
+    """A11: deterministic pure-GL lane with UET extras disabled."""
+    params = UETParameters(
+        alpha=1.0,
+        gamma=0.1,
+        kappa=0.01,
+        beta=0.0,
+        W_N=0.0,
+        gamma_J=0.0,
+        a0_viscosity=0.0,
+        tau_inertia=0.0,
+    )
 
     N = 64
     dx = 0.1
-    C = 0.1 * (np.random.rand(N) - 0.5)
+    rng = np.random.default_rng(1105)
+    C = 0.1 * (rng.random(N) - 0.5)
+    initial_energy = float(np.mean(potential_V(C, params)))
 
-    dt = dx**2 / (4 * params.kappa + 1e-10)
-    dt = min(dt, 0.0001)
-
-    for _ in range(500):
+    dt = 0.001
+    for _ in range(5000):
         C = dynamics_step_complete(C, dx=dx, dt=dt, params=params)
 
-    # GL should drive toward minima
-    final_energy = np.mean(potential_V(C, params))
-    passed = final_energy < 0.1
+    # Pure GL relaxation should descend the local potential toward the C0 minimum.
+    final_energy = float(np.mean(potential_V(C, params)))
+    passed = final_energy < 0.1 and final_energy < 0.25 * initial_energy
 
-    return passed, f"Final V={final_energy:.4f}"
+    return passed, f"Initial V={initial_energy:.4f}; Final V={final_energy:.4f}"
 
 
 def verify_bounded_below() -> Tuple[bool, str]:
