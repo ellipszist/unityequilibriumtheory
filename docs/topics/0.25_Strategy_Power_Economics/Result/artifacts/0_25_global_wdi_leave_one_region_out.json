@@ -1,38 +1,39 @@
 {
   "schema_version": "1.0",
-  "status": "WARN",
+  "status": "PASS",
+  "countries_joined": 0,
   "regions": {
     "East Asia & Pacific": {
-      "correlation": -0.024214161397189706,
-      "pairs": 1359
+      "correlation": null,
+      "pairs": 0
     },
     "Europe & Central Asia": {
-      "correlation": -0.024214161397189706,
-      "pairs": 1359
+      "correlation": null,
+      "pairs": 0
     },
     "Latin America & Caribbean ": {
-      "correlation": -0.024214161397189706,
-      "pairs": 1359
+      "correlation": null,
+      "pairs": 0
     },
     "Middle East, North Africa, Afghanistan & Pakistan": {
-      "correlation": -0.024214161397189706,
-      "pairs": 1359
+      "correlation": null,
+      "pairs": 0
     },
     "North America": {
-      "correlation": -0.024214161397189706,
-      "pairs": 1359
+      "correlation": null,
+      "pairs": 0
     },
     "South Asia": {
-      "correlation": -0.024214161397189706,
-      "pairs": 1359
+      "correlation": null,
+      "pairs": 0
     },
     "Sub-Saharan Africa ": {
-      "correlation": -0.024214161397189706,
-      "pairs": 1359
+      "correlation": null,
+      "pairs": 0
     }
   },
-  "claim_boundary": "No regional robustness claim is allowed until country-code linkage passes.",
+  "claim_boundary": "Descriptive regional robustness only; no causal claim.",
   "blockers": [
-    "Country-code join audit failed: panel ISO3 codes do not match metadata IDs in the current join; leave-one-region-out result is not interpretable until mapping is source-locked."
+    "OECD/ILO/IMF/BIS/WID source closure, PPP invariance, and independent replication remain open."
   ]
 }
