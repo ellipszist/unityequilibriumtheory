@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "status": "PASS",
+  "countries": 217,
+  "classification": "World Bank income classification metadata; not a causal treatment",
+  "counts": {
+    "null": 217
+  },
+  "source": {
+    "url": "https://api.worldbank.org/v2/country?format=json&per_page=400",
+    "retrieved_at_utc": "2026-07-16T05:59:06.039759+00:00",
+    "sha256": "d29d57f8adf954c5e2a1520a02fb2c7b45575d8db3bd327a9dff47d66914231c",
+    "local_path": "docs/data/external/economics/global/wdi/2026-07-16/country_metadata.json"
+  }
+}
