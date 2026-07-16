@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "status": "PASS",
+  "status": "WARN",
   "countries_joined": 0,
   "regions": {
     "East Asia & Pacific": {
@@ -34,6 +34,6 @@
   },
   "claim_boundary": "Descriptive regional robustness only; no causal claim.",
   "blockers": [
-    "OECD/ILO/IMF/BIS/WID source closure, PPP invariance, and independent replication remain open."
+    "Panel country identifiers do not intersect official metadata identifiers (0 joined countries); regional robustness cannot run until WDI parser preserves ISO3 country IDs and excludes aggregates."
   ]
 }
