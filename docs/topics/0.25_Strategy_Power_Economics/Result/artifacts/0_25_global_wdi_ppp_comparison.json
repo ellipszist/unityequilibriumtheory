@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "status": "PASS",
+  "rows": 6091,
+  "countries": 246,
+  "years": [
+    2000,
+    2024
+  ],
+  "ratio_median": 2.4630925627823026,
+  "ratio_min": 0.5839618365334659,
+  "ratio_max": 7.354453859074952,
+  "unit_policy": "PPP and constant-USD measures remain separate; no pooling in the primary diagnostic",
+  "claim_boundary": "PPP comparison is a measurement robustness lane, not a causal or welfare conclusion."
+}
