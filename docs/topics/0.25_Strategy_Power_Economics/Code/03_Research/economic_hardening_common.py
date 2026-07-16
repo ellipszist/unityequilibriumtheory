@@ -57,6 +57,7 @@ MONEY_CREDIT_ARTIFACT = ARTIFACT_DIR / "0_25_money_credit_inflation_audit.json"
 GLOBAL_REPLICATION_ARTIFACT = ARTIFACT_DIR / "0_25_global_replication_readiness.json"
 GLOBAL_WDI_PANEL_ARTIFACT = ARTIFACT_DIR / "0_25_global_wdi_panel.json"
 GLOBAL_WDI_LOO_ARTIFACT = ARTIFACT_DIR / "0_25_global_wdi_leave_one_out.json"
+GLOBAL_WDI_PPP_ARTIFACT = ARTIFACT_DIR / "0_25_global_wdi_ppp_comparison.json"
 
 
 def utc_now() -> str:
