@@ -155,6 +155,16 @@
     {
       "command": [
         "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Code\\03_Research\\Research_UET_Payer_Resource_Join_Readiness.py"
+      ],
+      "exit_code": 0,
+      "script": "docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_UET_Payer_Resource_Join_Readiness.py",
+      "stderr_tail": "",
+      "stdout_tail": "Payer-resource join readiness: BLOCKED blocking components 5\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
         "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Code\\03_Research\\Research_UET_Funding_Source_Flow_Gate.py"
       ],
       "exit_code": 0,
@@ -702,7 +712,7 @@
         "start_year": 1959
       },
       "formula_boundary": "R/N/K/I are dimensionless proxy constructs after the stated transformations; they are not a dimensional identity.",
-      "generated_at_utc": "2026-07-16T08:30:50.919427+00:00",
+      "generated_at_utc": "2026-07-16T12:27:17.427508+00:00",
       "input_hashes": [
         {
           "path": "docs/data/external/economics/us_historical/fred/2026-07-12/M2SL.csv",
@@ -1718,7 +1728,7 @@
         ],
         "claim_boundary": "This gate establishes source identity and a quality/access blocker only. It does not provide payment-level flows, causal evidence, or a payer-resource result.",
         "controller_status": "BLS_IO_QUALITY_AND_ACCESS_GATE",
-        "generated_at_utc": "2026-07-16T08:31:10.576001+00:00",
+        "generated_at_utc": "2026-07-16T12:27:37.148967+00:00",
         "provider_quality_notice": {
           "effect": "No matrix result may be used until the replacement or researcher ZIP is independently checked against the notice and archived with a hash.",
           "notice_date": "2026-02-06",
@@ -1782,7 +1792,7 @@
           ],
           "status": "BLOCKED"
         },
-        "generated_at_utc": "2026-07-16T08:31:24.355458+00:00",
+        "generated_at_utc": "2026-07-16T12:27:52.083523+00:00",
         "historical_energy_transition": {
           "blocker": "EIA historical 1776-1945 annual export is absent.",
           "status": "BLOCKED"
@@ -1836,7 +1846,7 @@
           ],
           "rows": 66
         },
-        "generated_at_utc": "2026-07-16T08:31:09.119876+00:00",
+        "generated_at_utc": "2026-07-16T12:27:35.748597+00:00",
         "payer_and_source_visibility": {
           "not_observable_from_this_table": [
             "individual payer-payee identity or invoice-level exchange",
@@ -2219,7 +2229,7 @@
           ],
           "status": "NOT_IDENTIFIED"
         },
-        "generated_at_utc": "2026-07-16T08:31:12.076236+00:00",
+        "generated_at_utc": "2026-07-16T12:27:38.618325+00:00",
         "payment_flow_scale": {
           "capital_formation": {
             "interpretation": "sector-level flow scale, not a payer identity or earmarked use",
@@ -3214,7 +3224,7 @@
             "resource_exporter"
           ]
         },
-        "generated_at_utc": "2026-07-16T08:31:19.844440+00:00",
+        "generated_at_utc": "2026-07-16T12:27:47.780539+00:00",
         "required_providers": {
           "BIS": "credit, debt, financial conditions",
           "ILOSTAT": "productivity, earnings, hours, labor income",
@@ -3386,7 +3396,7 @@
             "R_standardized_additive"
           ]
         },
-        "generated_at_utc": "2026-07-16T08:30:52.409824+00:00",
+        "generated_at_utc": "2026-07-16T12:27:19.029762+00:00",
         "measurement_gates": {
           "R_family_stability": true,
           "at_least_three_declared_families": true,
@@ -4595,7 +4605,7 @@
             "n": 64
           }
         },
-        "generated_at_utc": "2026-07-16T08:30:55.288725+00:00",
+        "generated_at_utc": "2026-07-16T12:27:21.817343+00:00",
         "observations": [
           {
             "credit_to_gdp": 4.231706560198307,
@@ -5393,6 +5403,176 @@
         "status": "PASS",
         "topic": "0.25_Strategy_Power_Economics"
       },
+      "payer_resource_join": {
+        "blocking_components": [
+          "industry_input_output",
+          "bea_industry_accounts",
+          "labor_industry_hours",
+          "material_quantities",
+          "firm_project_payment_ledger"
+        ],
+        "claim_boundary": "This gate reports source/join readiness only. It does not infer payment-level provenance, funding shares, resource causality, or innovation causality.",
+        "controller_status": "PAYER_RESOURCE_JOIN_NOT_IDENTIFIED",
+        "coverage": {
+          "no_imputation": true,
+          "requested": "sectoral funding -> industry use -> labor hours -> physical resources -> output/innovation"
+        },
+        "evidence": {
+          "bea_industry_accounts": {
+            "boundary": "BEA identifies the official supply-use/input-output tables, but no source-locked flow export is archived; API registration or an interactive export is still required.",
+            "provider_access": {
+              "api_registration": "https://apps.bea.gov/api/signup/",
+              "direct_backend_probe": {
+                "anti_bot_bypass": false,
+                "status_code": 500,
+                "table_rows_archived": false,
+                "url": "https://apps.bea.gov/iTablecore/data/app/52"
+              },
+              "interactive_application": "https://apps.bea.gov/iTable/?Categories=Core&isURI=1&reqid=1602&step=2",
+              "interactive_application_id": 52,
+              "official_page": "https://www.bea.gov/itable/input-output",
+              "status": "REGISTRATION_OR_INTERACTIVE_EXPORT_REQUIRED"
+            },
+            "source": {
+              "directory": "docs/data/external/economics/us_historical/bea/2026-07-12",
+              "files": [],
+              "hashes": {},
+              "pattern": "*input*output*",
+              "role": "BEA supply-use/input-output accounts",
+              "status": "MISSING"
+            },
+            "status": "BLOCKED"
+          },
+          "energy_throughput": {
+            "boundary": "Energy throughput is available; it is not a complete material-extraction or project-level resource ledger.",
+            "source": {
+              "directory": "docs/data/external/economics/us_historical/eia/2026-07-12",
+              "files": [
+                "docs/data/external/economics/us_historical/eia/2026-07-12/eia_primary_energy_annual.csv",
+                "docs/data/external/economics/us_historical/eia/2026-07-12/EIA_Table_1_3_annual.csv"
+              ],
+              "hashes": {
+                "docs/data/external/economics/us_historical/eia/2026-07-12/EIA_Table_1_3_annual.csv": "8556e267444ffb2c09f3a7f4f54a1dddf12d091c80284db9e2387cbf6f6225c0",
+                "docs/data/external/economics/us_historical/eia/2026-07-12/eia_primary_energy_annual.csv": "b4114a3b198680795d3ae03c411e657c4f8ad0186a92c8be4588932aaf07a293"
+              },
+              "pattern": "*.csv",
+              "role": "EIA energy throughput",
+              "status": "PASS"
+            },
+            "status": "PASS_WITH_BOUNDARY"
+          },
+          "firm_project_payment_ledger": {
+            "boundary": "Public aggregate accounts cannot identify which payer funded which purchase or project.",
+            "source": {
+              "local_archives": [],
+              "required_providers": [
+                "Census business microdata",
+                "administrative ACH/card/invoice records"
+              ],
+              "status": "MISSING"
+            },
+            "status": "BLOCKED"
+          },
+          "funding_flows": {
+            "artifact": {
+              "controller_status": "FUNDING_FLOW_MAPPING_DESCRIPTIVE_ONLY",
+              "exists": true,
+              "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_fed_z1_funding_mapping_probe.json",
+              "sha256": "b5ef5b9dd997396a542f6fa4b521da48162fc3310ed1e16aaf6dde8ab6a4d7a3",
+              "status": "WARN"
+            },
+            "boundary": "Aggregate sectoral channels and an accounting bridge are present; no payer-payee or project earmark is observed.",
+            "source": {
+              "exists": true,
+              "path": "docs/data/external/economics/us_historical/fed_z1/2026-07-16/z1_csv_files.zip",
+              "role": "Fed Z.1 sectoral transactions",
+              "sha256": "b23e0ad3a5afc700c3608863707b0514e6e119b43efeaf89ec6e746da8dbea24",
+              "status": "PASS"
+            },
+            "status": "PASS_WITH_BOUNDARY"
+          },
+          "industry_concordance": {
+            "boundary": "The BEA code concordance is archived and hashed, but it does not itself provide payer, labor-hours, or physical-resource observations.",
+            "source": {
+              "exists": true,
+              "path": "docs/data/external/economics/us_historical/bea_io/2026-07-16/BEA-Industry-and-Commodity-Codes-and-NAICS-Concordance.xlsx",
+              "role": "BEA industry and commodity codes / NAICS concordance",
+              "sha256": "6e25267ff60ccedc0808c14153b0cdeb566a7f5e9097536c70c2b9694ef5ff47",
+              "sheet_names": [
+                "NAICS Codes"
+              ],
+              "source_manifest": {
+                "exists": true,
+                "hash_matches_data": true,
+                "path": "docs/data/external/economics/us_historical/bea_io/2026-07-16/source_manifest.json",
+                "sha256": "311f6f098015b87bae2921a749406b5a9cfdd85ef761842f5e0f3b3a5bd3d722"
+              },
+              "status": "PASS_WITH_BOUNDARY"
+            },
+            "status": "PASS_WITH_BOUNDARY"
+          },
+          "industry_input_output": {
+            "artifact": {
+              "controller_status": "BLS_IO_QUALITY_AND_ACCESS_GATE",
+              "exists": true,
+              "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bls_io_source_gate.json",
+              "sha256": "c59afc7927010522e8f19fbecd100116e2ad7c13a84b993fddc82976f346f631",
+              "status": "BLOCKED"
+            },
+            "boundary": "The official BLS source is identified, but the archive is not locally available and the provider quality notice remains open.",
+            "source": {
+              "directory": "docs/data/external/economics/us_historical/bls_io/2026-07-16",
+              "files": [],
+              "hashes": {},
+              "pattern": "*",
+              "role": "BLS/BEA industry and commodity flows",
+              "status": "MISSING"
+            },
+            "status": "BLOCKED"
+          },
+          "labor_industry_hours": {
+            "boundary": "Aggregate productivity and employment proxies exist in the macro panel, but industry-level hours/occupations are not archived for concordance.",
+            "source": {
+              "directory": "docs/data/external/economics/us_historical/bls_labor/2026-07-16",
+              "files": [],
+              "hashes": {},
+              "pattern": "*",
+              "role": "BLS industry/occupation hours and labor input",
+              "status": "MISSING"
+            },
+            "status": "BLOCKED"
+          },
+          "material_quantities": {
+            "boundary": "No source-locked physical material quantity panel and industry concordance are present.",
+            "source": {
+              "local_archives": [],
+              "required_providers": [
+                "USGS",
+                "FAOSTAT",
+                "EIA source-level extraction/environmental accounts"
+              ],
+              "status": "MISSING"
+            },
+            "status": "BLOCKED"
+          }
+        },
+        "generated_at_utc": "2026-07-16T12:27:39.995132+00:00",
+        "limitations": [
+          "Operating surplus and net saving are accounting aggregates, not earmarked cash sources.",
+          "Debt and equity liability transactions can include refinancing, redemptions, and repurchases.",
+          "A complete public dataset linking every payment to a physical resource transformation is not present in the frozen package."
+        ],
+        "required_join": [
+          "transaction or firm/project funding records",
+          "industry/commodity input-output table",
+          "industry labor hours and occupations",
+          "source-level physical resource quantities",
+          "versioned industry/commodity/labor/resource concordance"
+        ],
+        "schema_version": "1.0",
+        "status": "BLOCKED",
+        "topic": "0.25_Strategy_Power_Economics"
+      },
       "publication_hardening": {
         "blockers": [
           "No human reviewer sign-offs are recorded for the current wave.",
@@ -5424,7 +5604,7 @@
         "formula_ids": [
           "EC25-UET-RESOURCE-ENGINE"
         ],
-        "generated_at_utc": "2026-07-16T08:31:21.356652+00:00",
+        "generated_at_utc": "2026-07-16T12:27:49.277240+00:00",
         "parameter_policy": {
           "candidate_signal_threshold": {
             "bootstrap_interval_requirement": "95 percent interval for squared-error difference lies below zero",
@@ -5783,7 +5963,7 @@
         "formula_ids": [
           "EC25-UET-MONETARY-RESOURCE-MISMATCH"
         ],
-        "generated_at_utc": "2026-07-16T08:31:22.916631+00:00",
+        "generated_at_utc": "2026-07-16T12:27:50.721906+00:00",
         "inflation_baseline_comparison": [
           {
             "acceptance_rule": "Candidate requires at least 10 percent lower median rolling-origin RMSE than every named baseline and a 95 percent block-bootstrap squared-error interval below zero.",
@@ -6180,7 +6360,7 @@
         "formula_ids": [
           "EC25-UET-WAGE-PRODUCTIVITY-GAP"
         ],
-        "generated_at_utc": "2026-07-16T08:31:25.811579+00:00",
+        "generated_at_utc": "2026-07-16T12:27:53.439706+00:00",
         "schema_version": "1.0",
         "status": "DIAGNOSTIC_COMPLETE",
         "topic": "0.25_Strategy_Power_Economics"
@@ -6198,7 +6378,7 @@
           ],
           "rows": 40
         },
-        "generated_at_utc": "2026-07-16T08:30:53.786052+00:00",
+        "generated_at_utc": "2026-07-16T12:27:20.468920+00:00",
         "missing_sources": [],
         "no_imputation": true,
         "observations": [
@@ -7139,7 +7319,7 @@
     "EC25-UET-MONETARY-RESOURCE-MISMATCH",
     "EC25-UET-WAGE-PRODUCTIVITY-GAP"
   ],
-  "generated_at_utc": "2026-07-16T08:31:26.017261+00:00",
+  "generated_at_utc": "2026-07-16T12:27:53.700287+00:00",
   "holdout_policy": {
     "blockers": [],
     "controller_status": null,
@@ -7165,7 +7345,7 @@
     "controller_status": null,
     "exists": true,
     "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_us_macro_panel_status.json",
-    "sha256": "feafffa8923e78ddd09e4ea4f5046e84795fd4c2984dd1b4b95d4f17fab08db0",
+    "sha256": "4fa831ea8f79bc4e0a753b83b8e93606a4ea820b659c4af1b6a90028bbd9315b",
     "status": "PASS"
   },
   "parameter_policy": {
@@ -7500,7 +7680,7 @@
       "controller_status": "BLS_IO_QUALITY_AND_ACCESS_GATE",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bls_io_source_gate.json",
-      "sha256": "f51dbc7a849dd57c312cd26bed0582480c7d0ee66119ba5269862eb3101229b1",
+      "sha256": "c59afc7927010522e8f19fbecd100116e2ad7c13a84b993fddc82976f346f631",
       "status": "BLOCKED"
     },
     "causal_identification": {
@@ -7521,7 +7701,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_energy_density_audit.json",
-      "sha256": "dce9a2571d6d1ae3f0e2ac84745230ebc001cfd1e6f83a949a1152f08c6460d1",
+      "sha256": "b4826a0207cbdf5fd3a70bf8cb6d6d4b892ad2bd0c9454e8cdae2584c51d076f",
       "status": "WARN"
     },
     "fed_z1_funding_mapping": {
@@ -7533,7 +7713,7 @@
       "controller_status": "FUNDING_FLOW_MAPPING_DESCRIPTIVE_ONLY",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_fed_z1_funding_mapping_probe.json",
-      "sha256": "388a61ab2bacfdf8c43324b36c45b2b8cddfb26e317835ca44b33014290492d6",
+      "sha256": "b5ef5b9dd997396a542f6fa4b521da48162fc3310ed1e16aaf6dde8ab6a4d7a3",
       "status": "WARN"
     },
     "fed_z1_funding_mix": {
@@ -7545,7 +7725,7 @@
       "controller_status": "FUNDING_MIX_ASSOCIATION_DESCRIPTIVE_ONLY",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_fed_z1_funding_mix_audit.json",
-      "sha256": "24d5db14155f821fb824b59dc37e6ebf4acd7aa37af6fc484a0381cde2300c15",
+      "sha256": "40bde41d61bda57cbf7c25679b60266ffe8c19ffe65047b87a2188331aaa6a3c",
       "status": "WARN"
     },
     "fed_z1_source_probe": {
@@ -7611,7 +7791,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_global_replication_readiness.json",
-      "sha256": "02e03a9de1425c3b11ebd2a7292ece785fcdc890b62f14d99530f66a0e8c5e4d",
+      "sha256": "c0a07e3dbbb8a41b0f0a7a502504e2d977656de38621d6a0479f3050c35cf286",
       "status": "PARTIAL_PASS"
     },
     "global_wdi_leave_one_out": {
@@ -7685,7 +7865,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_measurement_validity_audit.json",
-      "sha256": "2cecb6491b1a66837e4a8dcfb6c2744a95c69bd7391c37247478f430581ed449",
+      "sha256": "3c71ae18cf4cb839cd8e4a7ff200e17ebf6b29d4f160f66d3c9709de1500cf8c",
       "status": "WARN"
     },
     "money_credit_inflation": {
@@ -7693,8 +7873,16 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_money_credit_inflation_audit.json",
-      "sha256": "87a87e688bc069fb9e0c1d9996c572bf501c7310b199ca92678f8ffb41a23b4a",
+      "sha256": "d7a9459d4dc5a0b4379be068f0975538149bc5f69346ffe068ba7f072e39ad4e",
       "status": "PASS"
+    },
+    "payer_resource_join": {
+      "blockers": [],
+      "controller_status": "PAYER_RESOURCE_JOIN_NOT_IDENTIFIED",
+      "exists": true,
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_payer_resource_join_readiness.json",
+      "sha256": "30498683f5c9872b9847d8be7030e0b67aedcde58158493075ba72826f3b9fd8",
+      "status": "BLOCKED"
     },
     "publication_hardening": {
       "blockers": [
@@ -7713,7 +7901,7 @@
       "controller_status": "NO_PREDECLARED_CANDIDATE_SIGNAL",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_resource_equation_audit.json",
-      "sha256": "ade1a38c7d9e9a591a47ecabfc199c1aa41db92d2b04200c9d265fe23fee600d",
+      "sha256": "675dad91d175bda9c03233e46e3c2489facc4bf74f459b5c571e3eddd6143e34",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "stone_balloon": {
@@ -7721,7 +7909,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_stone_balloon_audit.json",
-      "sha256": "26d5c10fd156a0ee7ae8da5a34febb8ef699a98ef470f95c7e2a0a49f49f7f78",
+      "sha256": "c90f4de5ad56659148c41d6013d4e5a178598cf229a8b720976b25568b26268d",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "wage_productivity": {
@@ -7729,7 +7917,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_wage_productivity_audit.json",
-      "sha256": "2830d6d439397cc46786000af72afea104908c75f017b9b9cbd85ede385b28ba",
+      "sha256": "fb903aeec42df8f68feb70e2ecca0fd35de9adca3c180a42d77f0973e779d6fa",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "welfare": {
@@ -7737,7 +7925,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_welfare_audit.json",
-      "sha256": "e3db4fdeeb0c836b16f95839063e87d3c176c9a00519349d26cdbe6196030aea",
+      "sha256": "eec43ab623836bed3b54286e47eb3c18f21c4c8cbcb26dd928e61e6f175571c1",
       "status": "PASS"
     }
   },

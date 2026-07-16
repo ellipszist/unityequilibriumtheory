@@ -18,7 +18,8 @@
     "fed_z1_source_probe": "PASS",
     "fed_z1_funding_mapping": "WARN",
     "bls_io_source_gate": "BLOCKED",
-    "fed_z1_funding_mix": "WARN"
+    "fed_z1_funding_mix": "WARN",
+    "payer_resource_join": "BLOCKED"
   },
   "controlling_blockers": [
     "source_and_panel",
@@ -30,7 +31,8 @@
     "funding_flow_gate",
     "fed_z1_funding_mapping",
     "bls_io_source_gate",
-    "fed_z1_funding_mix"
+    "fed_z1_funding_mix",
+    "payer_resource_join"
   ],
   "promotion_rule": "All critical source, measurement, causal, global, independent-replication, and publication checks must be PASS; no WARN/BLOCKED critical gate may be averaged away.",
   "claim_boundary": "Current evidence supports only source-locked descriptive diagnostics. This readiness artifact does not promote Claim Class C."

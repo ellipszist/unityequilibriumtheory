@@ -98,6 +98,10 @@ indexed infrastructure proxy, not a dollar-valued capital stock.
    saving, debt, loans, and equity-liability transactions and capital formation, plus payment-flow
    scale relative to gross value added. Ratios are signed net-flow diagnostics and are not summed
    or labeled as earmarked funding shares.
+11. **Payer-resource join readiness:** audit the required chain `funding -> industry use -> labor
+   hours -> physical resource quantities -> output/innovation`. The gate records local archive
+   identity and hashes for each link, rejects missing or unverified joins, and does not infer a
+   project funding share from aggregate accounts.
 
 ## Evaluation and uncertainty
 

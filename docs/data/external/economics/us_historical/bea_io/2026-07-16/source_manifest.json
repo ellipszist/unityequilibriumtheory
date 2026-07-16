@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "provider": "U.S. Bureau of Economic Analysis (BEA)",
+  "source_url": "https://www.bea.gov/sites/default/files/2023-10/BEA-Industry-and-Commodity-Codes-and-NAICS-Concordance.xlsx",
+  "official_page": "https://www.bea.gov/itable/input-output",
+  "original_filename": "BEA-Industry-and-Commodity-Codes-and-NAICS-Concordance.xlsx",
+  "local_path": "docs/data/external/economics/us_historical/bea_io/2026-07-16/BEA-Industry-and-Commodity-Codes-and-NAICS-Concordance.xlsx",
+  "retrieval_timestamp_utc": "2026-07-16T12:17:38Z",
+  "retrieval_vintage": "2026-07-16",
+  "terms": "Public BEA open-data download; retain provider attribution and verify current terms before redistribution.",
+  "units": "classification codes and labels; no monetary flow observations",
+  "coverage": "BEA industry and commodity codes / NAICS concordance workbook; sheet NAICS Codes",
+  "benchmark_role": "crosswalk only for industry/commodity mapping in payer-resource join",
+  "preprocessing": "Archived byte-for-byte; workbook ZIP structure and sheet names checked; no value imputation.",
+  "sha256": "6e25267ff60ccedc0808c14153b0cdeb566a7f5e9097536c70c2b9694ef5ff47",
+  "status": "PASS_WITH_BOUNDARY"
+}

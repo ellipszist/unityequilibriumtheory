@@ -5,6 +5,16 @@
 
 ## Entries
 
+### 2026-07-16 - Payer-resource join readiness gate
+
+- Scope: make the missing link from aggregate funding channels to actual industry, labor, and physical-resource use machine-readable.
+- Added: `Research_UET_Payer_Resource_Join_Readiness.py`, aggregate/readiness integration, and synchronized topic docs/manifests/specification.
+- Verified with: py_compile, standalone join gate, and aggregate verifier exit zero.
+- Result: `BLOCKED` / `PAYER_RESOURCE_JOIN_NOT_IDENTIFIED`; funding flow and aggregate energy throughput are present, and the BEA code concordance now passes with boundary, while industry I-O, industry labor-hours, material quantities, and project payment ledger remain missing or blocked.
+- Blocker narrowed: the package now distinguishes an available aggregate channel and a hashed industry crosswalk from a valid transaction-to-resource join; no imputation or hidden GDP substitution is allowed.
+- Next controller: approved source-locked I-O archive plus labor/resource/project concordance; Claim Class C and `DESCRIPTIVE_DIAGNOSTIC_ONLY` remain unchanged.
+- Claim impact: no upgrade; no funding-share, payer-level, resource-causality, or innovation-causality claim is permitted.
+
 ### 2026-07-16 - Fed Z.1 signed funding-mix audit
 
 - Scope: distinguish descriptive net saving/debt/equity associations from a true funding-share claim.

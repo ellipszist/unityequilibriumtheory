@@ -43,6 +43,10 @@ The legacy descriptive command is separate:
   access observation, provider quality notice, and no-use-until-validated gate.
 - `0_25_fed_z1_funding_mix_audit.json`: signed net-flow associations, payment-flow scale,
   period summaries, and explicit `NOT_IDENTIFIED` gross funding-share gate.
+- `0_25_payer_resource_join_readiness.json`: source/hash/readiness records for the funding,
+  industry-use, labor-hours, physical-resource, project-ledger, and concordance links; no
+  imputation and no payment-level inference. The BEA code concordance may pass with boundary,
+  while the flow join remains blocked.
 - aggregate `execution_gate`: all verifier subcommands exit zero.
 - aggregate legacy_claim_quarantine: every legacy markdown note contains the required
   Legacy claim boundary warning before it can be treated as topic documentation.
@@ -78,6 +82,7 @@ per-capita growth. Pre/post regime summaries use 1959-1970 and 1974-2024, exclud
 - BLS I-O source gate status, URL, archive identity (when present), quality notice, and access
   blocker;
 - funding-mix association rows, lag policy, signed-ratio definitions, and gross-share blocker;
+- payer-resource join component statuses, local input hashes, missing components, and join claim boundary;
 - command exit codes, legacy-claim quarantine result, and the current controller status;
 - a self-contained evidence_bundle containing source records/hashes, transform and panel
   payloads, formula/parameter/holdout contracts, research register, variable dictionary,
