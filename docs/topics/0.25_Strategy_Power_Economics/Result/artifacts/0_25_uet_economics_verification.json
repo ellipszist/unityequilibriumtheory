@@ -654,7 +654,7 @@
         "start_year": 1959
       },
       "formula_boundary": "R/N/K/I are dimensionless proxy constructs after the stated transformations; they are not a dimensional identity.",
-      "generated_at_utc": "2026-07-16T06:51:07.997166+00:00",
+      "generated_at_utc": "2026-07-16T06:53:37.221778+00:00",
       "input_hashes": [
         {
           "path": "docs/data/external/economics/us_historical/fred/2026-07-12/M2SL.csv",
@@ -1694,7 +1694,7 @@
           ],
           "status": "BLOCKED"
         },
-        "generated_at_utc": "2026-07-16T06:51:36.378005+00:00",
+        "generated_at_utc": "2026-07-16T06:54:05.984145+00:00",
         "historical_energy_transition": {
           "blocker": "EIA historical 1776-1945 annual export is absent.",
           "status": "BLOCKED"
@@ -1720,6 +1720,7 @@
         "same_year_correlations_with_investment_growth": {
           "BUSLOANS": 0.0857901952443486,
           "CPATAX": 0.5486415907577155,
+          "PCTR": -0.35842737860984925,
           "W790RC1Q027SBEA": 0.9034667277377632
         },
         "schema_version": "1.0",
@@ -1784,6 +1785,10 @@
               "correlation": 0.5486415907577155,
               "n": 62
             },
+            "PCTR": {
+              "correlation": -0.35842737860984925,
+              "n": 62
+            },
             "W790RC1Q027SBEA": {
               "correlation": 0.9034667277377632,
               "n": 62
@@ -1798,6 +1803,10 @@
               "correlation": 0.3277369616146551,
               "n": 60
             },
+            "PCTR": {
+              "correlation": 0.1837279201111553,
+              "n": 60
+            },
             "W790RC1Q027SBEA": {
               "correlation": -0.06315316204577746,
               "n": 60
@@ -1810,6 +1819,10 @@
             },
             "CPATAX": {
               "correlation": 0.004885598420640863,
+              "n": 58
+            },
+            "PCTR": {
+              "correlation": 0.2571938649728784,
               "n": 58
             },
             "W790RC1Q027SBEA": {
@@ -1836,6 +1849,7 @@
             "BUSLOANS": 40.96935833333333,
             "CPATAX": 32.7945,
             "GPDI": 86.478,
+            "PCTR": 25.75,
             "W790RC1Q027SBEA": 20.71425,
             "credit_to_profit_ratio": 1.2492752849817297,
             "profit_to_investment_ratio": 0.3792236175674738,
@@ -1845,6 +1859,7 @@
             "BUSLOANS": 42.56305,
             "CPATAX": 33.7425,
             "GPDI": 86.5835,
+            "PCTR": 29.441666666666666,
             "W790RC1Q027SBEA": 20.214,
             "credit_to_profit_ratio": 1.261407720234126,
             "profit_to_investment_ratio": 0.3897105106631171,
@@ -1854,6 +1869,7 @@
             "BUSLOANS": 45.53235,
             "CPATAX": 40.74725,
             "GPDI": 96.977,
+            "PCTR": 30.400000000000002,
             "W790RC1Q027SBEA": 27.28425,
             "credit_to_profit_ratio": 1.117433691844235,
             "profit_to_investment_ratio": 0.42017437124266577,
@@ -1863,6 +1879,7 @@
             "BUSLOANS": 49.36185833333334,
             "CPATAX": 45.0175,
             "GPDI": 103.285,
+            "PCTR": 32.21666666666667,
             "W790RC1Q027SBEA": 29.61825,
             "credit_to_profit_ratio": 1.0965037670535533,
             "profit_to_investment_ratio": 0.43585709444740284,
@@ -1872,6 +1889,7 @@
             "BUSLOANS": 54.67041666666666,
             "CPATAX": 51.13475,
             "GPDI": 112.15174999999999,
+            "PCTR": 33.5,
             "W790RC1Q027SBEA": 34.088499999999996,
             "credit_to_profit_ratio": 1.069144107806661,
             "profit_to_investment_ratio": 0.4559425064700283,
@@ -1881,6 +1899,7 @@
             "BUSLOANS": 64.199,
             "CPATAX": 59.5205,
             "GPDI": 129.64575,
+            "PCTR": 36.175000000000004,
             "W790RC1Q027SBEA": 46.64325,
             "credit_to_profit_ratio": 1.0786031703362706,
             "profit_to_investment_ratio": 0.4591010503622371,
@@ -1890,6 +1909,7 @@
             "BUSLOANS": 74.99190833333334,
             "CPATAX": 63.88975,
             "GPDI": 144.1875,
+            "PCTR": 39.63333333333333,
             "W790RC1Q027SBEA": 57.38675,
             "credit_to_profit_ratio": 1.173770570918392,
             "profit_to_investment_ratio": 0.44310186389250106,
@@ -1899,6 +1919,7 @@
             "BUSLOANS": 82.52158333333334,
             "CPATAX": 62.87375,
             "GPDI": 142.6985,
+            "PCTR": 48.025,
             "W790RC1Q027SBEA": 50.13425,
             "credit_to_profit_ratio": 1.312496603643545,
             "profit_to_investment_ratio": 0.4406055424548962,
@@ -1908,6 +1929,7 @@
             "BUSLOANS": 90.43284999999999,
             "CPATAX": 64.5835,
             "GPDI": 156.9185,
+            "PCTR": 56.10833333333333,
             "W790RC1Q027SBEA": 54.096000000000004,
             "credit_to_profit_ratio": 1.4002469671046007,
             "profit_to_investment_ratio": 0.4115735238356217,
@@ -1917,6 +1939,7 @@
             "BUSLOANS": 102.18670833333334,
             "CPATAX": 61.45825,
             "GPDI": 173.5615,
+            "PCTR": 62.300000000000004,
             "W790RC1Q027SBEA": 60.887,
             "credit_to_profit_ratio": 1.6627012375610002,
             "profit_to_investment_ratio": 0.35410070781826614,
@@ -1926,6 +1949,7 @@
             "BUSLOANS": 107.74858333333333,
             "CPATAX": 54.98075,
             "GPDI": 170.0565,
+            "PCTR": 74.64999999999999,
             "W790RC1Q027SBEA": 50.766000000000005,
             "credit_to_profit_ratio": 1.9597510643876872,
             "profit_to_investment_ratio": 0.32330872386530357,
@@ -1935,6 +1959,7 @@
             "BUSLOANS": 114.531225,
             "CPATAX": 65.83875,
             "GPDI": 196.82325,
+            "PCTR": 88.10833333333333,
             "W790RC1Q027SBEA": 58.74325,
             "credit_to_profit_ratio": 1.7395716808110724,
             "profit_to_investment_ratio": 0.3345069751668058,
@@ -1944,6 +1969,7 @@
             "BUSLOANS": 124.65686666666666,
             "CPATAX": 78.10175000000001,
             "GPDI": 228.14275,
+            "PCTR": 97.91666666666667,
             "W790RC1Q027SBEA": 70.7975,
             "credit_to_profit_ratio": 1.596082887600683,
             "profit_to_investment_ratio": 0.34233719896862824,
@@ -1953,6 +1979,7 @@
             "BUSLOANS": 151.97655,
             "CPATAX": 87.7575,
             "GPDI": 266.9255,
+            "PCTR": 112.575,
             "W790RC1Q027SBEA": 92.0795,
             "credit_to_profit_ratio": 1.7317784804717546,
             "profit_to_investment_ratio": 0.32877151115198805,
@@ -1962,6 +1989,7 @@
             "BUSLOANS": 179.88464166666665,
             "CPATAX": 78.46975,
             "GPDI": 274.526,
+            "PCTR": 133.28333333333333,
             "W790RC1Q027SBEA": 86.6975,
             "credit_to_profit_ratio": 2.2924074776161087,
             "profit_to_investment_ratio": 0.2858372248894458,
@@ -1971,6 +1999,7 @@
             "BUSLOANS": 185.5251916666667,
             "CPATAX": 92.59475,
             "GPDI": 257.25375,
+            "PCTR": 169.975,
             "W790RC1Q027SBEA": 45.192750000000004,
             "credit_to_profit_ratio": 2.0036253855285175,
             "profit_to_investment_ratio": 0.3599354722720271,
@@ -1980,6 +2009,7 @@
             "BUSLOANS": 180.907275,
             "CPATAX": 114.92,
             "GPDI": 323.2245,
+            "PCTR": 184.34166666666667,
             "W790RC1Q027SBEA": 78.0715,
             "credit_to_profit_ratio": 1.5742018360598677,
             "profit_to_investment_ratio": 0.3555423552360666,
@@ -1989,6 +2019,7 @@
             "BUSLOANS": 194.87708333333333,
             "CPATAX": 137.27949999999998,
             "GPDI": 396.61225,
+            "PCTR": 194.5666666666667,
             "W790RC1Q027SBEA": 106.396,
             "credit_to_profit_ratio": 1.4195643437901024,
             "profit_to_investment_ratio": 0.3461302569449128,
@@ -1998,6 +2029,7 @@
             "BUSLOANS": 223.59099166666667,
             "CPATAX": 160.717,
             "GPDI": 478.37649999999996,
+            "PCTR": 209.88333333333333,
             "W790RC1Q027SBEA": 146.3155,
             "credit_to_profit_ratio": 1.3912093410570547,
             "profit_to_investment_ratio": 0.3359634095738399,
@@ -2007,6 +2039,7 @@
             "BUSLOANS": 262.791925,
             "CPATAX": 168.47875,
             "GPDI": 539.6495,
+            "PCTR": 235.5666666666667,
             "W790RC1Q027SBEA": 172.9295,
             "credit_to_profit_ratio": 1.559792703827634,
             "profit_to_investment_ratio": 0.31220032632291883,
@@ -2016,6 +2049,7 @@
             "BUSLOANS": 293.00795,
             "CPATAX": 147.64175,
             "GPDI": 530.09975,
+            "PCTR": 280.125,
             "W790RC1Q027SBEA": 140.4425,
             "credit_to_profit_ratio": 1.9845873541867391,
             "profit_to_investment_ratio": 0.2785169206361633,
@@ -2025,6 +2059,7 @@
             "BUSLOANS": 329.5190416666667,
             "CPATAX": 175.57925,
             "GPDI": 631.229,
+            "PCTR": 318.9916666666667,
             "W790RC1Q027SBEA": 200.406,
             "credit_to_profit_ratio": 1.8767538969819422,
             "profit_to_investment_ratio": 0.27815459999461367,
@@ -2034,6 +2069,7 @@
             "BUSLOANS": 378.70725,
             "CPATAX": 176.462,
             "GPDI": 581.0337499999999,
+            "PCTR": 355.47499999999997,
             "W790RC1Q027SBEA": 123.25574999999999,
             "credit_to_profit_ratio": 2.146112194126781,
             "profit_to_investment_ratio": 0.30370352840949427,
@@ -2043,6 +2079,7 @@
             "BUSLOANS": 399.10994166666666,
             "CPATAX": 211.48375,
             "GPDI": 637.517,
+            "PCTR": 384.2833333333333,
             "W790RC1Q027SBEA": 122.05475,
             "credit_to_profit_ratio": 1.887189638289782,
             "profit_to_investment_ratio": 0.33173036954308666,
@@ -2052,6 +2089,7 @@
             "BUSLOANS": 449.3697833333333,
             "CPATAX": 255.791,
             "GPDI": 820.08975,
+            "PCTR": 400.6333333333334,
             "W790RC1Q027SBEA": 259.04825,
             "credit_to_profit_ratio": 1.7567849663722857,
             "profit_to_investment_ratio": 0.31190610539882985,
@@ -2061,6 +2099,7 @@
             "BUSLOANS": 485.953675,
             "CPATAX": 271.46799999999996,
             "GPDI": 829.65175,
+            "PCTR": 425.3666666666666,
             "W790RC1Q027SBEA": 234.1265,
             "credit_to_profit_ratio": 1.7900956097956298,
             "profit_to_investment_ratio": 0.3272071685499367,
@@ -2070,6 +2109,7 @@
             "BUSLOANS": 513.3187083333333,
             "CPATAX": 231.69400000000002,
             "GPDI": 849.14725,
+            "PCTR": 451.55833333333334,
             "W790RC1Q027SBEA": 195.93175,
             "credit_to_profit_ratio": 2.2155028111791126,
             "profit_to_investment_ratio": 0.2728549141506376,
@@ -2079,6 +2119,7 @@
             "BUSLOANS": 554.9388,
             "CPATAX": 258.11,
             "GPDI": 892.17725,
+            "PCTR": 468.15000000000003,
             "W790RC1Q027SBEA": 192.15075000000002,
             "credit_to_profit_ratio": 2.1500089109294485,
             "profit_to_investment_ratio": 0.2893034988282878,
@@ -2088,6 +2129,7 @@
             "BUSLOANS": 587.1338833333333,
             "CPATAX": 291.977,
             "GPDI": 936.96275,
+            "PCTR": 497.4666666666667,
             "W790RC1Q027SBEA": 190.082,
             "credit_to_profit_ratio": 2.010890869257967,
             "profit_to_investment_ratio": 0.3116207127764684,
@@ -2097,6 +2139,7 @@
             "BUSLOANS": 627.2961416666667,
             "CPATAX": 294.29575,
             "GPDI": 999.70075,
+            "PCTR": 544.2416666666667,
             "W790RC1Q027SBEA": 217.3715,
             "credit_to_profit_ratio": 2.1315161420668383,
             "profit_to_investment_ratio": 0.29438384436542636,
@@ -2106,6 +2149,7 @@
             "BUSLOANS": 639.2352666666667,
             "CPATAX": 297.51374999999996,
             "GPDI": 993.449,
+            "PCTR": 596.8583333333333,
             "W790RC1Q027SBEA": 190.53525000000002,
             "credit_to_profit_ratio": 2.1485906673781185,
             "profit_to_investment_ratio": 0.29947561475224194,
@@ -2115,6 +2159,7 @@
             "BUSLOANS": 626.0582166666667,
             "CPATAX": 330.92875000000004,
             "GPDI": 944.3435,
+            "PCTR": 668.1416666666667,
             "W790RC1Q027SBEA": 123.15350000000001,
             "credit_to_profit_ratio": 1.8918217793608643,
             "profit_to_investment_ratio": 0.3504326021198855,
@@ -2124,6 +2169,7 @@
             "BUSLOANS": 601.9638666666666,
             "CPATAX": 349.376,
             "GPDI": 1013.00625,
+            "PCTR": 748.0416666666666,
             "W790RC1Q027SBEA": 141.57,
             "credit_to_profit_ratio": 1.7229685687244305,
             "profit_to_investment_ratio": 0.3448902709139257,
@@ -2133,6 +2179,7 @@
             "BUSLOANS": 588.0712416666667,
             "CPATAX": 375.67025,
             "GPDI": 1106.8255,
+            "PCTR": 793.0,
             "W790RC1Q027SBEA": 183.513,
             "credit_to_profit_ratio": 1.5653921002971798,
             "profit_to_investment_ratio": 0.3394123554254939,
@@ -2142,6 +2189,7 @@
             "BUSLOANS": 613.5027833333334,
             "CPATAX": 461.42025,
             "GPDI": 1256.4845,
+            "PCTR": 828.9666666666667,
             "W790RC1Q027SBEA": 263.66325,
             "credit_to_profit_ratio": 1.3295965734779376,
             "profit_to_investment_ratio": 0.3672311516775575,
@@ -2151,6 +2199,7 @@
             "BUSLOANS": 690.8658999999999,
             "CPATAX": 522.22875,
             "GPDI": 1317.48925,
+            "PCTR": 883.4499999999999,
             "W790RC1Q027SBEA": 284.09975,
             "credit_to_profit_ratio": 1.3229181656505888,
             "profit_to_investment_ratio": 0.39638179210949914,
@@ -2160,6 +2209,7 @@
             "BUSLOANS": 745.9583083333333,
             "CPATAX": 592.18575,
             "GPDI": 1432.05475,
+            "PCTR": 929.2166666666667,
             "W790RC1Q027SBEA": 322.519,
             "credit_to_profit_ratio": 1.25966946744891,
             "profit_to_investment_ratio": 0.4135217246407653,
@@ -2169,6 +2219,7 @@
             "BUSLOANS": 815.152975,
             "CPATAX": 665.10425,
             "GPDI": 1595.6005,
+            "PCTR": 954.8583333333332,
             "W790RC1Q027SBEA": 411.54200000000003,
             "credit_to_profit_ratio": 1.2256018135502817,
             "profit_to_investment_ratio": 0.41683632588483144,
@@ -2178,6 +2229,7 @@
             "BUSLOANS": 895.2084916666666,
             "CPATAX": 613.36175,
             "GPDI": 1736.671,
+            "PCTR": 983.9166666666666,
             "W790RC1Q027SBEA": 446.3665,
             "credit_to_profit_ratio": 1.4595114411139374,
             "profit_to_investment_ratio": 0.35318246806677833,
@@ -2187,6 +2239,7 @@
             "BUSLOANS": 961.6675749999999,
             "CPATAX": 639.3725,
             "GPDI": 1887.059,
+            "PCTR": 1026.175,
             "W790RC1Q027SBEA": 494.582,
             "credit_to_profit_ratio": 1.5040802896590015,
             "profit_to_investment_ratio": 0.3388195599607643,
@@ -2196,6 +2249,7 @@
             "BUSLOANS": 1054.456725,
             "CPATAX": 592.962,
             "GPDI": 2038.408,
+            "PCTR": 1087.3166666666668,
             "W790RC1Q027SBEA": 536.88275,
             "credit_to_profit_ratio": 1.7782871836643832,
             "profit_to_investment_ratio": 0.29089465896915634,
@@ -2205,6 +2259,7 @@
             "BUSLOANS": 1067.1016333333334,
             "CPATAX": 617.0427500000001,
             "GPDI": 1934.8415,
+            "PCTR": 1192.5916666666667,
             "W790RC1Q027SBEA": 341.375,
             "credit_to_profit_ratio": 1.7293803927415619,
             "profit_to_investment_ratio": 0.31891126482453475,
@@ -2214,6 +2269,7 @@
             "BUSLOANS": 984.39605,
             "CPATAX": 769.692,
             "GPDI": 1930.41725,
+            "PCTR": 1285.2083333333333,
             "W790RC1Q027SBEA": 256.80674999999997,
             "credit_to_profit_ratio": 1.2789480077745383,
             "profit_to_investment_ratio": 0.3987179455633232,
@@ -2223,6 +2279,7 @@
             "BUSLOANS": 915.7939,
             "CPATAX": 863.30425,
             "GPDI": 2027.0555,
+            "PCTR": 1347.2583333333334,
             "W790RC1Q027SBEA": 253.584,
             "credit_to_profit_ratio": 1.060800870608479,
             "profit_to_investment_ratio": 0.42589078098749644,
@@ -2232,6 +2289,7 @@
             "BUSLOANS": 879.8550666666666,
             "CPATAX": 1042.03175,
             "GPDI": 2281.2532499999998,
+            "PCTR": 1421.25,
             "W790RC1Q027SBEA": 347.97775,
             "credit_to_profit_ratio": 0.8443649309789903,
             "profit_to_investment_ratio": 0.4567803903402659,
@@ -2241,6 +2299,7 @@
             "BUSLOANS": 980.1061583333334,
             "CPATAX": 1150.29575,
             "GPDI": 2534.7202500000003,
+            "PCTR": 1516.7250000000001,
             "W790RC1Q027SBEA": 415.60275,
             "credit_to_profit_ratio": 0.8520471003507867,
             "profit_to_investment_ratio": 0.4538156626949265,
@@ -2250,6 +2309,7 @@
             "BUSLOANS": 1119.2625416666667,
             "CPATAX": 1265.958,
             "GPDI": 2700.9545,
+            "PCTR": 1613.8333333333333,
             "W790RC1Q027SBEA": 490.0715,
             "credit_to_profit_ratio": 0.884122965901449,
             "profit_to_investment_ratio": 0.46870763650405817,
@@ -2259,6 +2319,7 @@
             "BUSLOANS": 1289.5,
             "CPATAX": 1204.0217499999999,
             "GPDI": 2673.0102500000003,
+            "PCTR": 1728.1166666666668,
             "W790RC1Q027SBEA": 506.38775,
             "credit_to_profit_ratio": 1.0709939417622647,
             "profit_to_investment_ratio": 0.45043663786923366,
@@ -2268,6 +2329,7 @@
             "BUSLOANS": 1509.8495333333333,
             "CPATAX": 1089.70175,
             "GPDI": 2477.61325,
+            "PCTR": 1955.1166666666668,
             "W790RC1Q027SBEA": 376.6355,
             "credit_to_profit_ratio": 1.385562180966795,
             "profit_to_investment_ratio": 0.4398191485293356,
@@ -2277,6 +2339,7 @@
             "BUSLOANS": 1412.1514083333334,
             "CPATAX": 1221.71875,
             "GPDI": 1929.6635,
+            "PCTR": 2146.741666666667,
             "W790RC1Q027SBEA": -68.90575,
             "credit_to_profit_ratio": 1.1558727475806796,
             "profit_to_investment_ratio": 0.6331252832423891,
@@ -2286,6 +2349,7 @@
             "BUSLOANS": 1199.485175,
             "CPATAX": 1502.2075,
             "GPDI": 2165.47275,
+            "PCTR": 2325.15,
             "W790RC1Q027SBEA": 172.268,
             "credit_to_profit_ratio": 0.798481684454378,
             "profit_to_investment_ratio": 0.6937087986907247,
@@ -2295,6 +2359,7 @@
             "BUSLOANS": 1244.5148333333334,
             "CPATAX": 1581.66425,
             "GPDI": 2332.56225,
+            "PCTR": 2358.6916666666666,
             "W790RC1Q027SBEA": 269.43525,
             "credit_to_profit_ratio": 0.786838820775859,
             "profit_to_investment_ratio": 0.678080188427983,
@@ -2304,6 +2369,7 @@
             "BUSLOANS": 1401.4225666666669,
             "CPATAX": 1723.1444999999999,
             "GPDI": 2621.7535,
+            "PCTR": 2363.016666666667,
             "W790RC1Q027SBEA": 427.05925,
             "credit_to_profit_ratio": 0.8132937003638795,
             "profit_to_investment_ratio": 0.657248860352432,
@@ -2313,6 +2379,7 @@
             "BUSLOANS": 1525.2503083333334,
             "CPATAX": 1718.72225,
             "GPDI": 2838.32675,
+            "PCTR": 2424.35,
             "W790RC1Q027SBEA": 489.35474999999997,
             "credit_to_profit_ratio": 0.8874326892162671,
             "profit_to_investment_ratio": 0.6055406587701715,
@@ -2322,6 +2389,7 @@
             "BUSLOANS": 1684.9656000000002,
             "CPATAX": 1805.94375,
             "GPDI": 3073.9809999999998,
+            "PCTR": 2541.5583333333334,
             "W790RC1Q027SBEA": 585.55625,
             "credit_to_profit_ratio": 0.9330111195323776,
             "profit_to_investment_ratio": 0.5874934653141968,
@@ -2331,6 +2399,7 @@
             "BUSLOANS": 1880.1864583333333,
             "CPATAX": 1777.00325,
             "GPDI": 3288.4815,
+            "PCTR": 2685.4166666666665,
             "W790RC1Q027SBEA": 647.8597500000001,
             "credit_to_profit_ratio": 1.0580658523462652,
             "profit_to_investment_ratio": 0.5403719771572381,
@@ -2340,6 +2409,7 @@
             "BUSLOANS": 2044.9801416666667,
             "CPATAX": 1768.27725,
             "GPDI": 3278.30525,
+            "PCTR": 2777.0333333333333,
             "W790RC1Q027SBEA": 516.76225,
             "credit_to_profit_ratio": 1.1564816216838545,
             "profit_to_investment_ratio": 0.5393876149879576,
@@ -2349,6 +2419,7 @@
             "BUSLOANS": 2085.7826416666667,
             "CPATAX": 1928.08475,
             "GPDI": 3467.66425,
+            "PCTR": 2855.691666666667,
             "W790RC1Q027SBEA": 560.43675,
             "credit_to_profit_ratio": 1.081789916997511,
             "profit_to_investment_ratio": 0.5560182909865048,
@@ -2358,6 +2429,7 @@
             "BUSLOANS": 2195.3782916666664,
             "CPATAX": 2067.744,
             "GPDI": 3724.7705,
+            "PCTR": 2976.275,
             "W790RC1Q027SBEA": 664.15525,
             "credit_to_profit_ratio": 1.061726350876446,
             "profit_to_investment_ratio": 0.5551332625728216,
@@ -2367,6 +2439,7 @@
             "BUSLOANS": 2347.8321333333333,
             "CPATAX": 2174.1262500000003,
             "GPDI": 3893.7337500000003,
+            "PCTR": 3147.1,
             "W790RC1Q027SBEA": 692.988,
             "credit_to_profit_ratio": 1.079896870447764,
             "profit_to_investment_ratio": 0.5583654121188949,
@@ -2376,6 +2449,7 @@
             "BUSLOANS": 2709.024608333333,
             "CPATAX": 2100.46125,
             "GPDI": 3763.3865,
+            "PCTR": 4235.191666666667,
             "W790RC1Q027SBEA": 397.14425,
             "credit_to_profit_ratio": 1.2897284386147725,
             "profit_to_investment_ratio": 0.5581306225124631,
@@ -2385,6 +2459,7 @@
             "BUSLOANS": 2494.9927000000002,
             "CPATAX": 2629.1324999999997,
             "GPDI": 4246.54475,
+            "PCTR": 4660.208333333333,
             "W790RC1Q027SBEA": 567.066,
             "credit_to_profit_ratio": 0.9489794447408035,
             "profit_to_investment_ratio": 0.6191227585674212,
@@ -2394,6 +2469,7 @@
             "BUSLOANS": 2658.3858583333335,
             "CPATAX": 2762.0325000000003,
             "GPDI": 4844.333,
+            "PCTR": 4139.641666666666,
             "W790RC1Q027SBEA": 850.186,
             "credit_to_profit_ratio": 0.9624745032266395,
             "profit_to_investment_ratio": 0.5701574396310081,
@@ -2403,6 +2479,7 @@
             "BUSLOANS": 2773.4839833333335,
             "CPATAX": 3004.316,
             "GPDI": 5023.7115,
+            "PCTR": 4256.7,
             "W790RC1Q027SBEA": 875.918,
             "credit_to_profit_ratio": 0.9231665321934622,
             "profit_to_investment_ratio": 0.5980271757245613,
@@ -2412,6 +2489,7 @@
             "BUSLOANS": 2766.3007666666667,
             "CPATAX": 3121.41,
             "GPDI": 5259.319750000001,
+            "PCTR": 4555.416666666667,
             "W790RC1Q027SBEA": 867.4205,
             "credit_to_profit_ratio": 0.8862343513561713,
             "profit_to_investment_ratio": 0.5935007089082195,
@@ -2424,7 +2502,8 @@
           "CPATAX",
           "GPDI",
           "BUSLOANS",
-          "W790RC1Q027SBEA"
+          "W790RC1Q027SBEA",
+          "PCTR"
         ],
         "status": "PASS"
       },
@@ -2454,7 +2533,7 @@
             "resource_exporter"
           ]
         },
-        "generated_at_utc": "2026-07-16T06:51:31.775955+00:00",
+        "generated_at_utc": "2026-07-16T06:54:01.238843+00:00",
         "required_providers": {
           "BIS": "credit, debt, financial conditions",
           "ILOSTAT": "productivity, earnings, hours, labor income",
@@ -2626,7 +2705,7 @@
             "R_standardized_additive"
           ]
         },
-        "generated_at_utc": "2026-07-16T06:51:09.522137+00:00",
+        "generated_at_utc": "2026-07-16T06:53:38.797078+00:00",
         "measurement_gates": {
           "R_family_stability": true,
           "at_least_three_declared_families": true,
@@ -3835,7 +3914,7 @@
             "n": 64
           }
         },
-        "generated_at_utc": "2026-07-16T06:51:12.525240+00:00",
+        "generated_at_utc": "2026-07-16T06:53:41.826389+00:00",
         "observations": [
           {
             "credit_to_gdp": 4.231706560198307,
@@ -4664,7 +4743,7 @@
         "formula_ids": [
           "EC25-UET-RESOURCE-ENGINE"
         ],
-        "generated_at_utc": "2026-07-16T06:51:33.347064+00:00",
+        "generated_at_utc": "2026-07-16T06:54:02.834842+00:00",
         "parameter_policy": {
           "candidate_signal_threshold": {
             "bootstrap_interval_requirement": "95 percent interval for squared-error difference lies below zero",
@@ -5023,7 +5102,7 @@
         "formula_ids": [
           "EC25-UET-MONETARY-RESOURCE-MISMATCH"
         ],
-        "generated_at_utc": "2026-07-16T06:51:34.911519+00:00",
+        "generated_at_utc": "2026-07-16T06:54:04.503474+00:00",
         "inflation_baseline_comparison": [
           {
             "acceptance_rule": "Candidate requires at least 10 percent lower median rolling-origin RMSE than every named baseline and a 95 percent block-bootstrap squared-error interval below zero.",
@@ -5420,7 +5499,7 @@
         "formula_ids": [
           "EC25-UET-WAGE-PRODUCTIVITY-GAP"
         ],
-        "generated_at_utc": "2026-07-16T06:51:37.853122+00:00",
+        "generated_at_utc": "2026-07-16T06:54:07.511587+00:00",
         "schema_version": "1.0",
         "status": "DIAGNOSTIC_COMPLETE",
         "topic": "0.25_Strategy_Power_Economics"
@@ -5438,7 +5517,7 @@
           ],
           "rows": 40
         },
-        "generated_at_utc": "2026-07-16T06:51:11.085945+00:00",
+        "generated_at_utc": "2026-07-16T06:53:40.296604+00:00",
         "missing_sources": [],
         "no_imputation": true,
         "observations": [
@@ -6379,7 +6458,7 @@
     "EC25-UET-MONETARY-RESOURCE-MISMATCH",
     "EC25-UET-WAGE-PRODUCTIVITY-GAP"
   ],
-  "generated_at_utc": "2026-07-16T06:51:38.093367+00:00",
+  "generated_at_utc": "2026-07-16T06:54:07.707111+00:00",
   "holdout_policy": {
     "blockers": [],
     "controller_status": null,
@@ -6405,7 +6484,7 @@
     "controller_status": null,
     "exists": true,
     "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_us_macro_panel_status.json",
-    "sha256": "5c6c0fba538c0bb0bb8d8aa0c1427da071385604812aae1e022f610a190858c7",
+    "sha256": "46caea7f37ed9429e2ad851d286a2abe98720328bb13ff3cb88170272fd008f5",
     "status": "PASS"
   },
   "parameter_policy": {
@@ -6749,7 +6828,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_energy_density_audit.json",
-      "sha256": "c205792d2c80f96c57890cf410a8f2ea8252e6600d048edfc705dcbc79d9284e",
+      "sha256": "db430dce1fb34d332b9e50c43d7090404224835213b047327e383baceac268ea",
       "status": "WARN"
     },
     "funding_source_association": {
@@ -6759,7 +6838,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_funding_source_association_audit.json",
-      "sha256": "ddc0a968aca4d9146b2d05957b1290b941b1c6d76720dde26aa4b6acfed25db0",
+      "sha256": "162dcb5e8554ecf3db57893f5a5a0b81c30b79cdb3ee13626beacf803ddbb904",
       "status": "PASS"
     },
     "funding_source_flow": {
@@ -6781,7 +6860,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_funding_source_lag_association_audit.json",
-      "sha256": "1d208873535a519fd35c680a4b076e2e1865fbf84e0a1d4b577e07ca7a4787e9",
+      "sha256": "a13814fc0fd1140e69cf50350ff401a97bfeb3034ba4bd20c48599bdc7fee035",
       "status": "PASS"
     },
     "funding_source_proxy_panel": {
@@ -6791,7 +6870,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_funding_source_proxy_panel.json",
-      "sha256": "0006c2e300907f0bbd5d8418a5bfb5095256b9f7b6f85a181926684221499938",
+      "sha256": "7be3016c0d0f71dc551235240d883be2d9676d9231c35c398c1cf831c14809fa",
       "status": "PASS"
     },
     "global_replication_readiness": {
@@ -6804,7 +6883,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_global_replication_readiness.json",
-      "sha256": "f16f348a48cc9611a503de3fa14a2835e32109f70066a3bf5fc2abdaf2eff93f",
+      "sha256": "239c8135dee97fb6a7274ec97f44b2d76c7e8dd6eea9d54b0fb4fa23bbe075cc",
       "status": "PARTIAL_PASS"
     },
     "global_wdi_leave_one_out": {
@@ -6878,7 +6957,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_measurement_validity_audit.json",
-      "sha256": "71fc48ce94efe7609c425dbe63477da891ef851af9b590f28c2d9c5caf9ef84e",
+      "sha256": "418a6b8b3e937414eb1d2bcaa599c2469f673a489ebc3f5dd4b14a84fdbda9a3",
       "status": "WARN"
     },
     "money_credit_inflation": {
@@ -6886,7 +6965,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_money_credit_inflation_audit.json",
-      "sha256": "dd940864d12e0892a985b2644335a7e13740934c8139f73e93127c96cf373c5a",
+      "sha256": "a8741c195c44991ff55ea473fcb5275ef22311bda1a59fb1a3aeb78af7a40d94",
       "status": "PASS"
     },
     "publication_hardening": {
@@ -6906,7 +6985,7 @@
       "controller_status": "NO_PREDECLARED_CANDIDATE_SIGNAL",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_resource_equation_audit.json",
-      "sha256": "739b5288c1bc8fc996ffda8f5954ed04d530f2315c4fff21e1670cf268927bda",
+      "sha256": "494eaf048bb66c168862321ec9991896761d5662bd74fcf91138cd8ecaf101bb",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "stone_balloon": {
@@ -6914,7 +6993,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_stone_balloon_audit.json",
-      "sha256": "09db3721e3e921ceaf0c766eb6385f52609315bb3d16cc3490af68977b4781dd",
+      "sha256": "f41dac18f05ca3c52c11e31453a0b0af3c01de8c962343235f60295da163ebac",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "wage_productivity": {
@@ -6922,7 +7001,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_wage_productivity_audit.json",
-      "sha256": "38aabac6d9856f8d548106331eb2250c8df087421ec581bc5659cd5d8c4c3281",
+      "sha256": "5f31070089157ce855d66b1e7fa032ac0b907a83ac757e51d0730a877ae8e273",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "welfare": {
@@ -6930,7 +7009,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_welfare_audit.json",
-      "sha256": "a8bd6baaaf0f47b73885be79f4a957b7c84402dbb661b24eb032368b052f240a",
+      "sha256": "7b045747fbd14681e91c806eb62e65507a9e15c36ea98d29ab6ba2d19bf34365",
       "status": "PASS"
     }
   },
