@@ -1,2 +1,0 @@
-registries
-uet_core

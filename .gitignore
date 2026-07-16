@@ -77,10 +77,7 @@ uet_api/.fastembed_cache/
 node_modules/
 .next/
 .obsidian/
-/uet_history/*
-!/uet_history/1_raw/
-!/uet_history/1_raw/ai_conversations/
-!/uet_history/1_raw/ai_conversations/**
+/uet_history/
 /uet_knowledge_state.json
 docs/knowledge_base/personal_index.sqlite3
 docs/knowledge_base/personal_index.sqlite3-*
@@ -97,3 +94,65 @@ uet_web/.env
 
 # Archived non-research platform/prototype material, if temporarily restored locally.
 _archive_non_research/
+
+# Local service experiment artifacts
+services_and_experiments/**/.env
+services_and_experiments/**/target/
+services_and_experiments/**/target_*/
+services_and_experiments/**/debug/
+services_and_experiments/**/.rustc_info.json
+services_and_experiments/**/CACHEDIR.TAG
+services_and_experiments/**/*.exe
+services_and_experiments/**/*_linux
+
+
+# Local recovery scratch files
+/output.txt
+/transcript.th.vtt
+
+# Thailand proposal raw assets are tracked through LOCAL_RECOVERY_MANIFEST.md first.
+thailand_proposals/**/*.pdf
+thailand_proposals/**/*.png
+thailand_proposals/**/*.jpg
+thailand_proposals/**/*.jpeg
+thailand_proposals/**/*.m4a
+thailand_proposals/**/*.mp3
+thailand_proposals/**/*.wav
+thailand_proposals/**/*.webp
+# Curated public history exceptions. Raw and draft history remains ignored.
+!/uet_history/3_publish/
+!/uet_history/3_publish/books/
+!/uet_history/3_publish/books/README.md
+!/uet_history/3_publish/books/BOOK_REGISTRY.json
+!/uet_history/3_publish/books/00_uet_core_theory/
+/uet_history/3_publish/books/00_uet_core_theory/*
+!/uet_history/3_publish/books/00_uet_core_theory/README.md
+!/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/
+/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/*
+!/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/README.md
+!/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/book_1_blueprint.md
+# Re-open only curated history files while keeping the rest of uet_history local-only.
+!/uet_history/
+/uet_history/*
+!/uet_history/README.md
+!/uet_history/PUBLIC_MANIFEST.md
+!/uet_history/3_publish/
+/uet_history/3_publish/*
+!/uet_history/3_publish/books/
+/uet_history/3_publish/books/*
+!/uet_history/3_publish/books/README.md
+!/uet_history/3_publish/books/BOOK_REGISTRY.json
+!/uet_history/3_publish/books/00_uet_core_theory/
+/uet_history/3_publish/books/00_uet_core_theory/*
+!/uet_history/3_publish/books/00_uet_core_theory/README.md
+!/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/
+/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/*
+!/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/README.md
+!/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/book_1_blueprint.md
+
+# Explicit raw and draft guardrails: these inputs remain local-only.
+/uet_history/1_raw/
+/uet_history/**/1_raw/
+/uet_history/**/ch_drafts/
+/uet_history/**/raw/
+/uet_history/**/Raw/
