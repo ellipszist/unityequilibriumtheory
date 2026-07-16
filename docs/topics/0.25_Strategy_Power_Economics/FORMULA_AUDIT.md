@@ -14,6 +14,14 @@ machine-readable artifact.
 | `EC25-UET-ENERGY-DENSITY` | energy-throughput source mix and literal heat-content definition gate in `Research_Energy_Density_Audit.py` | postwar EIA input is quadrillion Btu/year; literal density requires a common physical basis such as MJ/kg and declared treatment of non-combustion sources | open placeholder; not closed | descriptive energy lane only. Throughput is not fuel density and cannot establish a macro mechanism. |
 | `EC25-LOG-RETURN` and legacy formulas | legacy market return/volatility/correlation formulas in `Research_Economic_Data_Audit.py` | source-unit prices become dimensionless log returns; annualization uses a documented 252-day convention | checked local diagnostic | separate legacy lane; incomplete upstream retrieval metadata remains a limitation. |
 
+## Formula registry v2 and measurement gate
+
+The formula IDs above remain the current operational contract. The long-term registry requires
+at least three declared operationalizations for each R/N/K/I construct, reliability and
+measurement-error checks, historical invariance, and structural-break sensitivity. The
+machine-readable variable and formula architecture is embedded by the aggregate verifier; until
+WARN_MEASUREMENT and WARN_UNIT close, R=N+K+I remains a heuristic bridge.
+
 ## Unit closure policy
 
 The Book 1 resource engine is explicitly `Proxy`, not `Closed`: source quantities are divided
@@ -35,4 +43,6 @@ They are not fitted to the holdout and do not imply a theoretical constant.
 - Resource artifact: `Result/artifacts/0_25_uet_resource_equation_audit.json`.
 - Stone artifact: `Result/artifacts/0_25_stone_balloon_audit.json`.
 - Wage artifact: `Result/artifacts/0_25_wage_productivity_audit.json`.
-- Aggregate export controller: `Result/artifacts/0_25_uet_economics_verification.json`.
+- Aggregate export controller: Result/artifacts/0_25_uet_economics_verification.json.
+- Long-term architecture: RESEARCH_ROADMAP_EVIDENCE_GRADE_A.md, VARIABLE_DICTIONARY.md,
+  CAUSAL_DAG.md, and Data/03_Research/uet_economics_warn_gate_registry.json.

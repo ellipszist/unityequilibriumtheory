@@ -16,7 +16,8 @@ physical framing, and public claim discipline.
 - Tier `C`: `1` topic
 - Tier `D`: `13` topics
 - Current `Structured` topics in metadata: `0.1`, `0.3`, `0.10`, `0.21`, `0.25`
-- Current run-contract pass count: `26/27` core topics; `0.3` currently fails its stated verification threshold
+- Current run-contract pass count: 26/27 core topics; 0.3 currently fails its stated verification threshold
+- Topic 0.25 note: Tier A is Package Tier A readiness only; its Evidence Grade A target is governed by 10 waves and 12 WARN gates and is not yet reached.
 - `0.10` passed the latest run but showed threshold instability in the previous run, so it remains below Tier `A` until repeated-run stability is demonstrated
 
 ## Read this first
@@ -75,7 +76,7 @@ These topics determine the current scientific credibility of the repo.
 | [0.22](./0.22_Biophysics_Origin_of_Life/) | `Draft` | `B` | active topic with manual-or-placeholder data signals still present |
 | [0.23](./0.23_Unity_Scale_Link/) | `Draft` | `B` | topic has local material, but evidence packaging is still incomplete |
 | [0.24](./0.24_Artificial_Intelligence/) | `Draft` | `B` | relatively conservative README, but verification framing remains weak |
-| [0.25](./0.25_Strategy_Power_Economics/) | `Structured` | `A` | source-locked U.S. Book 1 diagnostic package; energy-density and asset lanes remain bounded |
+| [0.25](./0.25_Strategy_Power_Economics/) | Structured | A | Package Tier A source-locked U.S. Book 1 diagnostic; Evidence Grade A is a future 10-wave target and energy/asset/causal/global lanes remain bounded |
 | [0.26](./0.26_Cosmic_Dynamic_Frame/) | `Draft` | `B` | data path still appears partly manual, so the topic stays below structured grade |
 ## Future concepts (`0.27-0.38`)
 

@@ -34,8 +34,12 @@ The legacy descriptive command is separate:
 - `uet_us_economics_holdout_policy.json`: rolling origins 2000-2024 and transition split.
 - `uet_economics_claim_gate.json`: allowed and blocked export language.
 - aggregate `execution_gate`: all verifier subcommands exit zero.
-- aggregate `legacy_claim_quarantine`: every legacy markdown note contains the required
-  `Legacy claim boundary` warning before it can be treated as topic documentation.
+- aggregate legacy_claim_quarantine: every legacy markdown note contains the required
+  Legacy claim boundary warning before it can be treated as topic documentation.
+- uet_economics_warn_gate_registry.json: all 12 Evidence Grade A gates, statuses, evidence
+  requirements, and controlling effects.
+- research register, variable dictionary, causal DAG, and claim matrix: preregistered
+  architecture contracts embedded in the aggregate evidence bundle.
 
 ## Acceptance and model contract
 
@@ -58,8 +62,9 @@ per-capita growth. Pre/post regime summaries use 1959-1970 and 1974-2024, exclud
 - rolling-origin boundaries, baseline errors, median and aggregate RMSE, and bootstrap intervals;
 - asset-lane status, energy-definition gate, failures, limitations, and blocked claims;
 - command exit codes, legacy-claim quarantine result, and the current controller status;
-- a self-contained `evidence_bundle` containing source records/hashes, transform and panel
-  payloads, formula/parameter/holdout contracts, and complete sub-artifact payloads.
+- a self-contained evidence_bundle containing source records/hashes, transform and panel
+  payloads, formula/parameter/holdout contracts, research register, variable dictionary,
+  causal DAG, claim matrix, WARN registry, and complete sub-artifact payloads.
 
 ## Current machine result
 
@@ -71,11 +76,15 @@ per-capita growth. Pre/post regime summaries use 1959-1970 and 1974-2024, exclud
 - Aggregate: `WARN`; controller remains `DESCRIPTIVE_DIAGNOSTIC_ONLY`; legacy quarantine is
   `PASS` for 12 files.
 - Candidate signals: false at all tested horizons.
+- Research architecture: WARN; current package is Package Tier A, target is Evidence Grade A,
+  and the 12-gate registry still contains open controlling gates. Strategy/social claims remain
+  quarantined.
 
 ## Interpretation boundary
 
-`PASS` on a source or panel gate means that the declared input and transformation contract is
-satisfied. `DIAGNOSTIC_COMPLETE` means the predeclared comparison ran. Neither status means
-an economic law was confirmed. `WARN` is retained when a declared sub-lane is intentionally
-blocked. Causal, policy, asset-superiority, and strategic claims require separate human-reviewed
-identification and external replication.
+PASS on a source or panel gate means that the declared input and transformation contract is
+satisfied. DIAGNOSTIC_COMPLETE means the predeclared comparison ran. Neither status means
+an economic law was confirmed. WARN is retained when a declared sub-lane or evidence-grade
+gate is intentionally open; no average can hide a controlling WARN. Causal, policy,
+asset-superiority, and strategic claims require separate human-reviewed identification and
+external replication.

@@ -24,8 +24,9 @@ The Book 1 lane now has a frozen U.S. annual source package for 1959-2024. The s
 is `PASS` with `15/15` required inputs, the normalized panel has `66` rows, all four
 non-network audit commands complete with zero execution failures, and the legacy-document
 quarantine gate passes for `12/12` markdown notes. The aggregate artifact is
-still `WARN` because the literal energy-density lane is intentionally blocked. That warning
-is a scientific boundary, not a missing result.
+still WARN: the energy-density lane is intentionally blocked and the long-term Evidence
+Grade A architecture has open source, revision, license, measurement, causal, external, and
+publication gates. These WARNs are scientific boundaries, not missing prose.
 
 The legacy Yahoo-style market files, `Global_Economy_2024.json`, and the local daily snapshot
 remain a separate Claim Class C diagnostic lane. They are not used as primary inputs to the
@@ -72,7 +73,7 @@ flowchart LR
 | Wage-productivity | EPI export reproduced; BLS comparator reported separately | `0_25_wage_productivity_audit.json` | construction/vintage findings |
 | Energy | 1959-2024 throughput ready; 1776-1945 history absent; literal density blocked | `0_25_energy_density_audit.json` | descriptive energy lane only |
 | Pegged-stone assets | LBMA and licensed S&P total-return exports absent | `asset_lane` in stone artifact | no peg or asset-superiority claim |
-| Legacy claim quarantine | all `12` legacy markdown notes carry the required boundary warning | `legacy_claim_quarantine` in aggregate artifact | legacy prose is not status or primary evidence |
+| Evidence-grade architecture | 10 waves and 12 machine-readable WARN gates; current target is Evidence Grade A | uet_economics_research_register.json, uet_economics_warn_gate_registry.json | roadmap/controller only; no grade promotion |\n| Legacy claim quarantine | all `12` legacy markdown notes carry the required boundary warning | `legacy_claim_quarantine` in aggregate artifact | legacy prose is not status or primary evidence |
 | Legacy market/economy | local working-copy diagnostics with incomplete upstream metadata | `0_25_strategy_power_economics_verification.json` | row-count, Gini, return statistics only |
 
 ## Current result snapshot
@@ -85,8 +86,9 @@ flowchart LR
 - Wage lane: the versioned EPI chart gives productivity growth `80.24%` and published total
   compensation growth `28.38%` for 1979-2021. The Book quote (`64.6%` and `17.3%`) is retained
   as a source/construction comparison. The BLS comparator gives `125.02%` and `56.64%`.
-- Aggregate status: `WARN`, with only `energy_density: WARN` as the machine-readable next
-  controller; all executed commands exit zero and the legacy quarantine gate is `PASS`.
+- Aggregate status: WARN; all executed commands exit zero and the legacy quarantine gate is
+  PASS, while the 12-gate Evidence Grade A registry records the remaining architecture
+  blockers. The current controller remains DESCRIPTIVE_DIAGNOSTIC_ONLY.
 
 ## Readiness and tier meaning
 
@@ -95,6 +97,14 @@ parameter/holdout policies, normalized panel, baselines, and verifier artifacts 
 and auditable internally. It does not mean the theory is proved. Any move beyond this internal
 package still requires human review, external replication, stronger causal identification,
 and closure of the named blockers.
+
+## Long-term Evidence Grade A roadmap
+
+Package Tier A describes internal package completeness; Evidence Grade A additionally requires
+measurement validity, causal identification, global replication, independent rerun, and
+human-reviewed publication. The ten-wave sequence and 12 machine-readable WARN gates are
+documented in RESEARCH_ROADMAP_EVIDENCE_GRADE_A.md. The preregistered contracts are
+RESEARCH_REGISTER.md, VARIABLE_DICTIONARY.md, CAUSAL_DAG.md, and CLAIM_MATRIX.md.
 
 ## Quick start
 
@@ -117,5 +127,9 @@ for the declared primary panel.
 - `BASELINE_COMPARISON.md`: exact baseline metrics from the latest artifact.
 - `VERIFICATION_SPEC.md`: rerun order, gates, thresholds, and artifact contract.
 - `LIMITATIONS.md`: open evidence and claim blockers.
-- `UPDATE_LOG.md`: hardening-wave history.
-- `Result/artifacts/0_25_uet_economics_verification.json`: current export controller.
+- UPDATE_LOG.md: hardening-wave history.
+- RESEARCH_ROADMAP_EVIDENCE_GRADE_A.md: ten-wave roadmap and evidence-grade acceptance.
+- RESEARCH_REGISTER.md, VARIABLE_DICTIONARY.md, CAUSAL_DAG.md, CLAIM_MATRIX.md:
+  preregistration and claim-boundary contracts.
+- Result/artifacts/0_25_uet_economics_verification.json: current export controller and
+  embedded research-architecture/gate payloads.

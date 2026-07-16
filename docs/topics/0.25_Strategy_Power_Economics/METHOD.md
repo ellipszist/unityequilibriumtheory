@@ -11,6 +11,15 @@ separate falsifiable lanes.
 All four lanes are internal, descriptive, and non-causal. The formulas are registered as
 `heuristic bridge` or `topic-derived relation`, never as first-principles economic identities.
 
+## Long-term research architecture
+
+The current method is the U.S. diagnostic baseline in a ten-wave path toward Evidence Grade A.
+The preregistered hypotheses, outcomes, and holdout policy live in RESEARCH_REGISTER.md; variable
+definitions, the causal DAG, and the claim matrix are separate contracts. The 12-gate registry
+is controlling: source/revision/license/unit/measurement/missingness/leakage, baseline, causal,
+external, and publication WARNs cannot be hidden by an aggregate average. Strategy, Power, Nash,
+and Social Stabilization remain quarantined from core economics evidence.
+
 ## Population, period, and source package
 
 - Country: United States.

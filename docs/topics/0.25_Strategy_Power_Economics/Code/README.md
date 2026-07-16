@@ -31,7 +31,12 @@ A `PASS` source or panel gate means only that the declared input contract is pre
 `DIAGNOSTIC_COMPLETE` artifact means the predeclared comparison ran. Neither status supports
 claims of economic-law confirmation, fiat causality, policy validation, asset superiority, or
 strategic superiority. The current aggregate is intentionally `WARN` because the literal
-energy-density lane is blocked.
+energy-density and architecture WARN gates remain open.
 
 The older engine/proof/research scripts remain exploratory model proposals and are not included
 in the Book 1 primary panel.
+
+The verifier also embeds the preregistered research register, variable dictionary, causal DAG,
+claim matrix, and 12-gate WARN registry from Data/03_Research. These contracts define the
+ten-wave path from Package Tier A to the Evidence Grade A target; they do not change the
+current Claim Class C boundary.

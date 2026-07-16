@@ -13,8 +13,20 @@
   "controller_status": "DESCRIPTIVE_DIAGNOSTIC_ONLY",
   "gate": "uet_book1_economics_claim_gate",
   "machine_readable_next_blockers": [
+    "WARN_BASELINE: WARN_RESULT_MIXED",
+    "WARN_CAUSAL: BLOCKED",
+    "WARN_EXTERNAL: BLOCKED",
+    "WARN_LEAKAGE: WARN",
+    "WARN_LICENSE: WARN",
+    "WARN_MEASUREMENT: WARN",
+    "WARN_MISSINGNESS: WARN",
+    "WARN_PUBLICATION: BLOCKED",
+    "WARN_REVISION: WARN",
+    "WARN_SOURCE: WARN",
+    "WARN_UNIT: WARN",
     "energy_density: WARN"
   ],
   "schema_version": "1.0",
+  "strategy_social_quarantine": "Strategy, power, Nash, and social-stabilization notes remain exploratory and excluded from core economics evidence.",
   "topic": "0.25_Strategy_Power_Economics"
 }

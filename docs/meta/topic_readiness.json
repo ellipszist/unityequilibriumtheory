@@ -434,7 +434,12 @@
       "mathematical_rigor_score": 2,
       "physical_rigor_score": 1,
       "claim_integrity_score": 3,
-      "recommended_next_action": "Close the energy-density definition gate, optional asset exports, and external replication before any move beyond the internal Claim Class C diagnostic boundary."
+      "recommended_next_action": "Close the 12-gate Evidence Grade A architecture blockers, beginning with measurement/source/revision and the energy/asset lanes before causal and external replication.",
+      "evidence_maturity": "E1_SOURCE_LOCKED_INTERNAL",
+      "evidence_target": "Evidence Grade A",
+      "research_architecture": "10 waves / 12 WARN gates",
+      "strategy_social_claim_status": "QUARANTINED",
+      "current_controlling_gates": ["WARN_SOURCE", "WARN_REVISION", "WARN_LICENSE", "WARN_UNIT", "WARN_MEASUREMENT", "WARN_MISSINGNESS", "WARN_LEAKAGE", "WARN_BASELINE", "WARN_CAUSAL", "WARN_EXTERNAL", "WARN_PUBLICATION"]
     },
     {
       "name": "0.26_Cosmic_Dynamic_Frame",

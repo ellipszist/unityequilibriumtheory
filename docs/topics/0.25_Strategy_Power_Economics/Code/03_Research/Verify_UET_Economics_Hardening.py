@@ -9,15 +9,20 @@ from pathlib import Path
 
 from economic_hardening_common import (
     ARTIFACT_DIR,
+    CAUSAL_DAG,
+    CLAIM_MATRIX,
     CLAIM_GATE,
     FORMULA_GATE,
     HOLDOUT_POLICY,
     PARAMETER_POLICY,
     PANEL_STATUS,
     RESEARCH_DATA,
+    RESEARCH_REGISTER,
     ROOT,
     SOURCE_MANIFEST,
     SOURCE_READINESS,
+    VARIABLE_DICTIONARY,
+    WARN_GATE_REGISTRY,
     load_json,
     relative,
     runtime_environment,
@@ -103,6 +108,27 @@ def main() -> int:
     formula_payload = load_json(FORMULA_GATE)
     parameter_payload = load_json(PARAMETER_POLICY)
     holdout_payload = load_json(HOLDOUT_POLICY)
+    research_register_payload = load_json(RESEARCH_REGISTER)
+    variable_dictionary_payload = load_json(VARIABLE_DICTIONARY)
+    causal_dag_payload = load_json(CAUSAL_DAG)
+    claim_matrix_payload = load_json(CLAIM_MATRIX)
+    warn_gate_registry_payload = load_json(WARN_GATE_REGISTRY)
+    architecture_files = {
+        "research_register": RESEARCH_REGISTER,
+        "variable_dictionary": VARIABLE_DICTIONARY,
+        "causal_dag": CAUSAL_DAG,
+        "claim_matrix": CLAIM_MATRIX,
+        "warn_gate_registry": WARN_GATE_REGISTRY,
+    }
+    architecture_missing = [name for name, path in architecture_files.items() if not path.exists()]
+    architecture_gate_rows = warn_gate_registry_payload.get("gates", [])
+    architecture_blockers = [
+        f"{row.get('gate_id')}: {row.get('status')}"
+        for row in architecture_gate_rows
+        if row.get("controlling") and row.get("status") not in {"PASS", "PASS_WITH_BOUNDARY"}
+    ]
+    if architecture_missing:
+        architecture_blockers.extend(f"architecture_file_missing: {name}" for name in architecture_missing)
     sub_artifacts = {name: artifact_reference(path) for name, path in SUB_ARTIFACTS.items()}
     sub_artifact_payloads = {name: load_json(path) for name, path in SUB_ARTIFACTS.items()}
     legacy_quarantine = legacy_claim_quarantine()
@@ -126,6 +152,9 @@ def main() -> int:
         if item["status"] in {"MISSING", "WARN"}:
             next_blockers.append(f"{name}: {item['status']}")
             next_blockers.extend(item.get("blockers", []))
+    next_blockers.extend(architecture_blockers)
+    if architecture_blockers:
+        status = "WARN"
     claim_gate = {
         "schema_version": "1.0",
         "topic": "0.25_Strategy_Power_Economics",
@@ -143,10 +172,11 @@ def main() -> int:
         ],
         "machine_readable_next_blockers": sorted(set(next_blockers)),
         "claim_boundary": "All results remain internal, descriptive, and non-causal pending source completion, human review, causal design, and external replication.",
+        "strategy_social_quarantine": "Strategy, power, Nash, and social-stabilization notes remain exploratory and excluded from core economics evidence.",
     }
     write_json(CLAIM_GATE, claim_gate)
     artifact = {
-        "schema_version": "1.0",
+        "schema_version": "1.1",
         "topic": "0.25_Strategy_Power_Economics",
         "status": status,
         "generated_at_utc": utc_now(),
@@ -163,6 +193,17 @@ def main() -> int:
         "formula_gate": artifact_reference(FORMULA_GATE),
         "parameter_policy": artifact_reference(PARAMETER_POLICY),
         "holdout_policy": artifact_reference(HOLDOUT_POLICY),
+        "research_architecture": {
+            "current_package_tier": research_register_payload.get("current_package_tier", "Package Tier A"),
+            "target_evidence_grade": research_register_payload.get("target_evidence_grade", "Evidence Grade A"),
+            "current_claim_class": research_register_payload.get("current_claim_class", "C"),
+            "active_waves": [row for row in research_register_payload.get("waves", []) if row.get("status") == "IN_PROGRESS"],
+            "strategy_social_quarantine": research_register_payload.get("strategy_social_quarantine", {}),
+            "architecture_status": "PASS" if not architecture_blockers else "WARN",
+            "controlling_gate_blockers": sorted(set(architecture_blockers)),
+            "file_references": {name: artifact_reference(path) for name, path in architecture_files.items()},
+            "warn_gate_registry": warn_gate_registry_payload,
+        },
         "sub_artifacts": sub_artifacts,
         "evidence_bundle": {
             "retrieval_vintage": source_manifest_payload.get("retrieval_vintage"),
@@ -172,6 +213,11 @@ def main() -> int:
             "formula_gate_payload": formula_payload,
             "parameter_policy_payload": parameter_payload,
             "holdout_policy_payload": holdout_payload,
+            "research_register_payload": research_register_payload,
+            "variable_dictionary_payload": variable_dictionary_payload,
+            "causal_dag_payload": causal_dag_payload,
+            "claim_matrix_payload": claim_matrix_payload,
+            "warn_gate_registry_payload": warn_gate_registry_payload,
             "sub_artifact_payloads": sub_artifact_payloads,
         },
         "commands": commands,

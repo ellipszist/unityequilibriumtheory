@@ -7,7 +7,9 @@ This topic now contains two deliberately separated data classes:
 1. a source-locked U.S. historical Book 1 package used by the new primary diagnostics;
 2. legacy local market/economy working copies used only for descriptive integrity checks.
 
-The Book 1 source gate is `PASS` (`15/15` required inputs). The raw provider files live under
+The Book 1 U.S. source gate is PASS (15/15 required inputs). The long-term roadmap adds
+global, welfare, credit, licensed asset, energy-density, and distributional lanes without
+mixing them into the frozen baseline. The raw provider files live under
 `docs/data/external/economics/us_historical/<provider>/2026-07-12/`; normalized source subsets
 and their hashes are described by `Data/03_Research/uet_us_economics_transform_manifest.json`.
 Provider raw files may remain local-only because of terms or repository ignore rules. If a
@@ -63,6 +65,15 @@ statistics.
   rebasing, logs, and training-window standardization.
 - Missing values are rejected; no interpolation, forward filling, or silent imputation is used.
 - A manifest is a provenance control, not external validation or causal evidence.
+
+## Long-term source expansion contract
+
+Wave 1 extends the manifest to FRED/H.6, BEA, BLS, EIA, FHFA, Census/Fed distributional
+accounts, USPTO/PatsView, licensed LBMA/S&P/CRSP, and later WDI/OECD/ILOSTAT/IMF/BIS/WID.
+Each new file must record provider, source URL, terms, release and retrieval timestamps,
+as-of/revision vintage, original filename, local path, preprocessing, units, coverage,
+benchmark role, and SHA-256. Global files are not eligible for pooling until the U.S. package
+and PPP/exchange-rate policy are frozen.
 
 ## Open data blockers
 

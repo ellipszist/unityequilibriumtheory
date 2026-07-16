@@ -5,6 +5,23 @@
 
 ## Entries
 
+### 2026-07-16 - Evidence Grade A roadmap, preregistration, and 12-gate architecture
+
+- Scope: long-term hardening architecture for the U.S.-first to global economics evidence lane.
+- Wave type: research-constitution, gate, claim-boundary, and documentation pass.
+- Added: 10-wave research register; source-family and global-panel contract; variable dictionary;
+  causal DAG; claim matrix; 12 machine-readable WARN gates; explicit Strategy/Power/Nash/Social
+  Stabilization quarantine; roadmap, formula/data/verification documentation links.
+- Verified with: JSON parsing for the new contracts; py_compile for the updated common/verifier
+  modules; Verify_UET_Economics_Hardening.py (exit zero).
+- Result: aggregate artifact remains WARN, controller DESCRIPTIVE_DIAGNOSTIC_ONLY, Claim Class C;
+  source/panel/sub-audit execution remains complete, while architecture blockers include open
+  measurement, revision, license, causal, external, publication, and related gates.
+- Claim impact: no upgrade. Package Tier A is explicitly separated from the Evidence Grade A target.
+- Next controller: close WARN_MEASUREMENT/WARN_UNIT and the source/revision/asset/energy lanes
+  before attempting causal identification or global replication.
+
+
 ### 2026-07-16 - Optional-source semantics and legacy-claim quarantine
 
 - Scope: source manifest semantics and whole-topic claim-boundary audit.

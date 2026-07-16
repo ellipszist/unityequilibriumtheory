@@ -45,6 +45,11 @@ HOLDOUT_POLICY = RESEARCH_DATA / "uet_us_economics_holdout_policy.json"
 CLAIM_GATE = RESEARCH_DATA / "uet_economics_claim_gate.json"
 PANEL_PATH = RESEARCH_DATA / "uet_us_macro_panel_1959_2024.csv"
 PANEL_STATUS = RESEARCH_DATA / "uet_us_macro_panel_status.json"
+RESEARCH_REGISTER = RESEARCH_DATA / "uet_economics_research_register.json"
+VARIABLE_DICTIONARY = RESEARCH_DATA / "uet_economics_variable_dictionary.json"
+CAUSAL_DAG = RESEARCH_DATA / "uet_economics_causal_dag.json"
+CLAIM_MATRIX = RESEARCH_DATA / "uet_economics_claim_matrix.json"
+WARN_GATE_REGISTRY = RESEARCH_DATA / "uet_economics_warn_gate_registry.json"
 
 
 def utc_now() -> str:

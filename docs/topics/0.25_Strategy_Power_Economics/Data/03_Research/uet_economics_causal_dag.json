@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "dag_id": "EC25-CAUSAL-DAG-V2",
+  "topic": "0.25_Strategy_Power_Economics",
+  "status": "DESIGN_ONLY",
+  "nodes": [
+    {"id": "necessity_proxy_N", "type": "treatment_or_state", "measurement": "CPI energy/food/housing stress plus unemployment"},
+    {"id": "knowledge_proxy_K", "type": "treatment_or_state", "measurement": "IPP investment, patents, R&D"},
+    {"id": "infrastructure_proxy_I", "type": "treatment_or_state", "measurement": "private and government fixed assets"},
+    {"id": "money_M", "type": "treatment_or_state", "measurement": "M2 and broad-money alternatives"},
+    {"id": "credit_C", "type": "treatment_or_state", "measurement": "credit-to-GDP gap/debt service"},
+    {"id": "resource_capacity_R", "type": "outcome", "measurement": "indexed GDP/productivity/energy capacity"},
+    {"id": "inflation_P", "type": "outcome", "measurement": "CPI/PCE inflation"},
+    {"id": "welfare_W", "type": "outcome", "measurement": "real median disposable income and household burdens"},
+    {"id": "wage_productivity_gap", "type": "outcome", "measurement": "separate EPI/BLS/international constructions"},
+    {"id": "asset_retention_A", "type": "outcome", "measurement": "real total-return and purchasing-power retention"},
+    {"id": "technology_T", "type": "confounder", "measurement": "time-varying technology and sector composition"},
+    {"id": "demography_D", "type": "confounder", "measurement": "population, age, labor-force composition"},
+    {"id": "fiscal_policy_F", "type": "confounder", "measurement": "deficit, transfers, tax and issuance"},
+    {"id": "external_shocks_X", "type": "confounder", "measurement": "war, pandemic, commodity and weather shocks"},
+    {"id": "measurement_definition_Q", "type": "design_node", "measurement": "deflator, PPP, vintage and construction choices"}
+  ],
+  "edges": [
+    ["necessity_proxy_N", "resource_capacity_R"],
+    ["knowledge_proxy_K", "resource_capacity_R"],
+    ["infrastructure_proxy_I", "resource_capacity_R"],
+    ["money_M", "inflation_P"],
+    ["credit_C", "inflation_P"],
+    ["money_M", "welfare_W"],
+    ["inflation_P", "welfare_W"],
+    ["resource_capacity_R", "wage_productivity_gap"],
+    ["technology_T", "knowledge_proxy_K"],
+    ["technology_T", "resource_capacity_R"],
+    ["demography_D", "welfare_W"],
+    ["demography_D", "wage_productivity_gap"],
+    ["fiscal_policy_F", "money_M"],
+    ["fiscal_policy_F", "welfare_W"],
+    ["external_shocks_X", "necessity_proxy_N"],
+    ["external_shocks_X", "inflation_P"],
+    ["measurement_definition_Q", "resource_capacity_R"],
+    ["measurement_definition_Q", "wage_productivity_gap"]
+  ],
+  "identification_contract": {
+    "current_status": "NOT_IDENTIFIED",
+    "descriptive_models_allowed": true,
+    "causal_models_allowed": false,
+    "candidate_designs": ["high_frequency_monetary_surprise", "narrative_monetary_shock", "exogenous_energy_supply_or_weather_exposure", "predeclared_infrastructure_or_R_and_D_policy_exposure"],
+    "required_checks": ["joint_pretrend", "placebo_windows", "negative_controls", "weak_instrument_screen", "alternative_windows", "two_independent_designs"],
+    "prohibited_interpretation": "A fitted association, VAR, local projection, or forecast improvement is not a causal estimate of fiat policy, strategy, or social stabilization."
+  }
+}

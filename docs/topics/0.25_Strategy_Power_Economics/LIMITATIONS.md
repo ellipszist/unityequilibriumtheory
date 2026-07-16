@@ -47,6 +47,8 @@ Do not export the current package as evidence that:
 - gold, equities, or any asset is a validated scaling peg or superior store of value;
 - a policy, strategy, social stabilizer, or Nash-equilibrium improvement is validated.
 
-The next controlling machine-readable blocker is `energy_density: WARN` in the aggregate claim
-gate. Closing it would only unlock a descriptive historical lane; it would not by itself raise
-Claim Class C or establish causality.
+The aggregate research-architecture controller is the 12-gate WARN registry in
+Data/03_Research/uet_economics_warn_gate_registry.json. Energy density remains a concrete
+sub-lane blocker, while source/revision/license/unit/measurement/missingness/leakage,
+baseline, causal, external, and publication gates also remain open for Evidence Grade A.
+Closing one gate would not by itself raise Claim Class C or establish causality.
