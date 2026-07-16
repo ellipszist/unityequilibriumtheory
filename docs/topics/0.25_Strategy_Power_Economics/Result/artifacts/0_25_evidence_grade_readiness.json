@@ -7,9 +7,10 @@
     "source_and_panel": "WARN",
     "measurement_validity": "WARN",
     "causal_identification": "BLOCKED",
-    "global_replication": "BLOCKED",
+    "global_replication": "PARTIAL_PASS",
     "independent_replication": "BLOCKED",
-    "publication_review": "BLOCKED"
+    "publication_review": "BLOCKED",
+    "regional_robustness": "PASS"
   },
   "controlling_blockers": [
     "source_and_panel",
