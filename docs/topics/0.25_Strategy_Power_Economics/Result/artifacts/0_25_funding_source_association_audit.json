@@ -6,7 +6,8 @@
   "same_year_correlations_with_investment_growth": {
     "CPATAX": 0.5486415907577155,
     "BUSLOANS": 0.0857901952443486,
-    "W790RC1Q027SBEA": 0.9034667277377632
+    "W790RC1Q027SBEA": 0.9034667277377632,
+    "PCTR": -0.35842737860984925
   },
   "construction": "annual-average sectoral proxies; log changes; complete-case only; no imputation",
   "interpretation": "Descriptive same-year association only; not funding causality or payment provenance.",

@@ -3,7 +3,7 @@ import csv,json
 ROOT=Path(__file__).resolve().parents[2]
 RAW=Path("docs/data/external/economics/us_historical/fred/2026-07-16")
 ART=ROOT/"Result/artifacts/0_25_funding_source_proxy_panel.json"
-CODES=["CPATAX","GPDI","BUSLOANS","W790RC1Q027SBEA"]
+CODES=["CPATAX","GPDI","BUSLOANS","W790RC1Q027SBEA","PCTR"]
 def main():
  data={}
  for code in CODES:

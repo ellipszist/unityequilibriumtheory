@@ -9,12 +9,12 @@ def corr(x,y):
 def main():
  obs=json.loads(PANEL.read_text())["observations"];g={}
  for a,b in zip(obs,obs[1:]):
-  try:g[b["year"]]={k:math.log(b[k]/a[k]) for k in ["CPATAX","GPDI","BUSLOANS","W790RC1Q027SBEA"]}
+  try:g[b["year"]]={k:math.log(b[k]/a[k]) for k in ["CPATAX","GPDI","BUSLOANS","W790RC1Q027SBEA","PCTR"]}
   except:pass
  out={}
  for lag in [0,1,2]:
   out[str(lag)]={}
-  for key in ["CPATAX","BUSLOANS","W790RC1Q027SBEA"]:
+  for key in ["CPATAX","BUSLOANS","W790RC1Q027SBEA","PCTR"]:
    x=[];y=[]
    for year in sorted(g):
     if year-lag in g:x.append(g[year-lag][key]);y.append(g[year]["GPDI"])

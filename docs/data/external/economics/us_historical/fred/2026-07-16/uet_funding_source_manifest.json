@@ -46,8 +46,19 @@
       "sha256": "9fd0b55a4b4a73de563ef5f5115662c387d5fa17e28b05d8808636e3a9a86a3a",
       "bytes": 4996,
       "terms": "FRED terms; source series may be revised"
+    },
+    {
+      "provider": "Federal Reserve FRED",
+      "series_id": "PCTR",
+      "description": "Personal current transfer receipts (billions USD, SAAR)",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=PCTR",
+      "retrieved_at_utc": "2026-07-16T06:52:32.824284+00:00",
+      "local_path": "docs/data/external/economics/us_historical/fred/2026-07-16/PCTR.csv",
+      "sha256": "528c3442c1c80c3540e0f3ad2bcba6cb4eeb61cff4c4decd8a14acf4449d6206",
+      "bytes": 13941,
+      "terms": "FRED terms; source series may be revised"
     }
   ],
-  "status": "WARN",
+  "status": "PASS",
   "claim_boundary": "These are aggregate sectoral proxies, not transaction-level funding provenance."
 }
