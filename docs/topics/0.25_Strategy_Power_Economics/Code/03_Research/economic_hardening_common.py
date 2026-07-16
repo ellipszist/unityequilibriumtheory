@@ -63,6 +63,7 @@ GLOBAL_WDI_REGION_LOO_ARTIFACT = ARTIFACT_DIR / "0_25_global_wdi_leave_one_regio
 IMF_WDI_NORMALIZATION_ARTIFACT = ARTIFACT_DIR / "0_25_global_imf_wdi_normalization.json"
 FUNDING_FLOW_GATE_ARTIFACT = ARTIFACT_DIR / "0_25_funding_source_flow_gate.json"
 FUNDING_PROXY_PANEL_ARTIFACT = ARTIFACT_DIR / "0_25_funding_source_proxy_panel.json"
+FUNDING_ASSOCIATION_ARTIFACT = ARTIFACT_DIR / "0_25_funding_source_association_audit.json"
 CAUSAL_GATE_ARTIFACT = ARTIFACT_DIR / "0_25_causal_identification_gate.json"
 REPLICATION_GATE_ARTIFACT = ARTIFACT_DIR / "0_25_independent_replication_gate.json"
 PUBLICATION_GATE_ARTIFACT = ARTIFACT_DIR / "0_25_publication_hardening_gate.json"
