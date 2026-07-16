@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "status": "PASS",
+  "lags_years": [
+    0,
+    1,
+    2
+  ],
+  "results": {
+    "0": {
+      "CPATAX": {
+        "correlation": 0.5486415907577155,
+        "n": 62
+      },
+      "BUSLOANS": {
+        "correlation": 0.0857901952443486,
+        "n": 62
+      },
+      "W790RC1Q027SBEA": {
+        "correlation": 0.9034667277377632,
+        "n": 62
+      }
+    },
+    "1": {
+      "CPATAX": {
+        "correlation": 0.3277369616146551,
+        "n": 60
+      },
+      "BUSLOANS": {
+        "correlation": -0.31869035293092807,
+        "n": 60
+      },
+      "W790RC1Q027SBEA": {
+        "correlation": -0.06315316204577746,
+        "n": 60
+      }
+    },
+    "2": {
+      "CPATAX": {
+        "correlation": 0.004885598420640863,
+        "n": 58
+      },
+      "BUSLOANS": {
+        "correlation": -0.10268607331632776,
+        "n": 58
+      },
+      "W790RC1Q027SBEA": {
+        "correlation": -0.26277971527040045,
+        "n": 58
+      }
+    }
+  },
+  "interpretation": "Lead-lag descriptive association; no causality, controls, or funding provenance.",
+  "claim_boundary": "Lagged association is not evidence that profits or credit cause investment.",
+  "blockers": [
+    "Sectoral controls, intervention design, and accounting reconciliation remain open."
+  ]
+}
