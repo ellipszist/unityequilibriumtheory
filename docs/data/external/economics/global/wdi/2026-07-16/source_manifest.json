@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "retrieval_vintage": "2026-07-16",
+  "provider": "World Bank WDI",
+  "coverage": "2000-2024",
+  "records": [
+    {
+      "provider": "World Bank WDI",
+      "indicator": "NY.GDP.PCAP.KD",
+      "label": "real_gdp_per_capita_usd_2015",
+      "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.KD?date=2000:2024&format=json&per_page=20000",
+      "retrieved_at_utc": "2026-07-16T05:43:26.400547+00:00",
+      "local_path": "docs/data/external/economics/global/wdi/2026-07-16/NY.GDP.PCAP.KD.json",
+      "sha256": "1b37494e6bb89d6f2bf18b8e06a2f1216a403f1c380eaeab5475f5c5aa9f6e2b",
+      "bytes": 1516286,
+      "terms": "World Bank open data terms; verify before publication"
+    },
+    {
+      "provider": "World Bank WDI",
+      "indicator": "SP.POP.TOTL",
+      "label": "population",
+      "url": "https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?date=2000:2024&format=json&per_page=20000",
+      "retrieved_at_utc": "2026-07-16T05:43:28.803332+00:00",
+      "local_path": "docs/data/external/economics/global/wdi/2026-07-16/SP.POP.TOTL.json",
+      "sha256": "5fc64f7fb228c32b03756967d43372aa8b7cef77fad617393b63f7b66f0356f3",
+      "bytes": 1331496,
+      "terms": "World Bank open data terms; verify before publication"
+    },
+    {
+      "provider": "World Bank WDI",
+      "indicator": "EG.USE.PCAP.KG.OE",
+      "label": "energy_use_kg_oil_equivalent_per_capita",
+      "url": "https://api.worldbank.org/v2/country/all/indicator/EG.USE.PCAP.KG.OE?date=2000:2024&format=json&per_page=20000",
+      "retrieved_at_utc": "2026-07-16T05:43:33.759797+00:00",
+      "local_path": "docs/data/external/economics/global/wdi/2026-07-16/EG.USE.PCAP.KG.OE.json",
+      "sha256": "8263188e94f697c146e87d42925d3ca33710c9e0fc2c89d666cf8ec4de2b67ad",
+      "bytes": 1584064,
+      "terms": "World Bank open data terms; verify before publication"
+    },
+    {
+      "provider": "World Bank WDI",
+      "indicator": "NY.GDP.PCAP.PP.KD",
+      "label": "real_gdp_per_capita_ppp_constant_2021_intl_dollar",
+      "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.PP.KD?date=2000:2024&format=json&per_page=20000",
+      "retrieved_at_utc": "2026-07-16T05:47:59.945697+00:00",
+      "local_path": "docs/data/external/economics/global/wdi/2026-07-16/NY.GDP.PCAP.PP.KD.json",
+      "sha256": "24bb0ec3ddb5211f5f0ebc6d01087fd0d80eac6c3476537beddf534a1ef8ceb7",
+      "bytes": 1645752,
+      "terms": "World Bank open data terms; verify before publication"
+    }
+  ],
+  "status": "PASS"
+}
