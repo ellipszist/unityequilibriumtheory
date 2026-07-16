@@ -433,6 +433,14 @@ When touching standards such as `docs/topics/For Work/` or `AGENTS.md`, prefer a
 separate commit from topic-level research changes unless the standards update is
 required to explain the same hardening wave.
 
+## Book workspace path discipline
+
+- `uet_history/3_publish/books/BOOK_REGISTRY.json` is the canonical map for book identity and paths.
+- Before creating or publishing a book path, inspect the registry and existing `books/` folders.
+- An existing book folder is canonical. Do not create a semantic alias for the same book.
+- Keep raw and draft directories local unless the registry explicitly lists a reviewed public file.
+- A book update is complete only when the canonical source, registry state, scoped commit, and public `main` path agree.
+- If a public copy differs from the canonical working file, stop and record the drift before publishing another copy.
 ## Agent behavior expectations
 
 - Be useful for audits, critique, normalization, and learning support.

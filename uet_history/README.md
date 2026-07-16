@@ -35,3 +35,5 @@ Excluded local areas include:
 - large media, audio, video, PDF, ZIP, and cache-like files
 
 Use `PUBLIC_MANIFEST.md` to see what this public tree includes and excludes.
+
+The book-specific path map is 3_publish/books/BOOK_REGISTRY.json. It records canonical working folders, public paths, local-only tracks, and retired aliases so a book is not silently duplicated under a new name.
