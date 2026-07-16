@@ -9,6 +9,6 @@
     2024
   ],
   "join_policy": "IMF ISO3 -> World Bank metadata iso2Code -> WDI panel ISO2; aggregates excluded",
-  "missingness_policy": "no imputation; IMF values remain a separate inflation robustness lane",
-  "claim_boundary": "Normalized IMF/WDI linkage supports measurement comparison only; it does not establish causal inflation effects."
+  "missingness_policy": "no imputation",
+  "claim_boundary": "Measurement comparison only; no causal inflation claim."
 }
