@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "status": "PASS",
+  "regions": {
+    "East Asia & Pacific": {
+      "correlation": -0.024214161397189706,
+      "pairs": 1359
+    },
+    "Europe & Central Asia": {
+      "correlation": -0.024214161397189706,
+      "pairs": 1359
+    },
+    "Latin America & Caribbean ": {
+      "correlation": -0.024214161397189706,
+      "pairs": 1359
+    },
+    "Middle East, North Africa, Afghanistan & Pakistan": {
+      "correlation": -0.024214161397189706,
+      "pairs": 1359
+    },
+    "North America": {
+      "correlation": -0.024214161397189706,
+      "pairs": 1359
+    },
+    "South Asia": {
+      "correlation": -0.024214161397189706,
+      "pairs": 1359
+    },
+    "Sub-Saharan Africa ": {
+      "correlation": -0.024214161397189706,
+      "pairs": 1359
+    }
+  },
+  "claim_boundary": "Descriptive regional robustness only; no causal claim."
+}
