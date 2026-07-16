@@ -11,7 +11,8 @@
     "independent_replication": "BLOCKED",
     "publication_review": "BLOCKED",
     "regional_robustness": "PASS",
-    "imf_cpi_coverage": "PASS"
+    "imf_cpi_coverage": "PASS",
+    "imf_wdi_normalization": "PASS"
   },
   "controlling_blockers": [
     "source_and_panel",
