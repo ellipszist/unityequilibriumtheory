@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "retrieval_vintage": "2026-07-16",
+  "role": "funding-source sectoral proxies",
+  "sources": [
+    {
+      "provider": "Federal Reserve FRED",
+      "series_id": "CPATAX",
+      "description": "Corporate profits after tax (billions USD)",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPATAX",
+      "retrieved_at_utc": "2026-07-16T06:41:12.257793+00:00",
+      "local_path": "docs/data/external/economics/us_historical/fred/2026-07-16/CPATAX.csv",
+      "sha256": "66b0c8cff0d9b216839770eb1e2b4975c3d1b455aca86cad9eb173a035af3524",
+      "bytes": 6019,
+      "terms": "FRED terms; source series may be revised"
+    },
+    {
+      "provider": "Federal Reserve FRED",
+      "series_id": "GPDI",
+      "description": "Gross private domestic investment (billions USD)",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=GPDI",
+      "retrieved_at_utc": "2026-07-16T06:41:13.083824+00:00",
+      "local_path": "docs/data/external/economics/us_historical/fred/2026-07-16/GPDI.csv",
+      "sha256": "069da48856622a95219bdc04ec0716c0247a0c4df849c03c2c75b8b263c22f2f",
+      "bytes": 6121,
+      "terms": "FRED terms; source series may be revised"
+    },
+    {
+      "provider": "Federal Reserve FRED",
+      "series_id": "BUSLOANS",
+      "description": "Commercial and industrial loans (billions USD)",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=BUSLOANS",
+      "retrieved_at_utc": "2026-07-16T06:41:13.923747+00:00",
+      "local_path": "docs/data/external/economics/us_historical/fred/2026-07-16/BUSLOANS.csv",
+      "sha256": "c80bb2c8759ecd5f1b64e9cc3e80fcb6c3c9c63016b3554c6e9f07c869a48e21",
+      "bytes": 19119,
+      "terms": "FRED terms; source series may be revised"
+    },
+    {
+      "provider": "Federal Reserve FRED",
+      "series_id": "W790RC1Q027SBEA",
+      "description": "Personal dividend income (billions USD)",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=W790RC1Q027SBEA",
+      "retrieved_at_utc": "2026-07-16T06:41:15.191276+00:00",
+      "local_path": "docs/data/external/economics/us_historical/fred/2026-07-16/W790RC1Q027SBEA.csv",
+      "sha256": "9fd0b55a4b4a73de563ef5f5115662c387d5fa17e28b05d8808636e3a9a86a3a",
+      "bytes": 4996,
+      "terms": "FRED terms; source series may be revised"
+    }
+  ],
+  "status": "WARN",
+  "claim_boundary": "These are aggregate sectoral proxies, not transaction-level funding provenance."
+}
