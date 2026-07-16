@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "status": "PASS",
+  "groups": {
+    "low": {
+      "countries": 67,
+      "pairs": 507,
+      "change_correlation": -0.0005037252357015693
+    },
+    "middle": {
+      "countries": 65,
+      "pairs": 336,
+      "change_correlation": 0.015244559191820668
+    },
+    "high": {
+      "countries": 67,
+      "pairs": 516,
+      "change_correlation": null
+    }
+  },
+  "claim_boundary": "Descriptive stratified associations only.",
+  "blockers": [
+    "PPP pooled model, official classification, and independent replication remain open."
+  ]
+}
