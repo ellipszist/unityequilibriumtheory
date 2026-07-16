@@ -564,7 +564,7 @@
         "start_year": 1959
       },
       "formula_boundary": "R/N/K/I are dimensionless proxy constructs after the stated transformations; they are not a dimensional identity.",
-      "generated_at_utc": "2026-07-16T05:48:44.195621+00:00",
+      "generated_at_utc": "2026-07-16T05:51:04.823410+00:00",
       "input_hashes": [
         {
           "path": "docs/data/external/economics/us_historical/fred/2026-07-12/M2SL.csv",
@@ -1578,7 +1578,7 @@
           ],
           "status": "BLOCKED"
         },
-        "generated_at_utc": "2026-07-16T05:48:59.545656+00:00",
+        "generated_at_utc": "2026-07-16T05:51:20.332211+00:00",
         "historical_energy_transition": {
           "blocker": "EIA historical 1776-1945 annual export is absent.",
           "status": "BLOCKED"
@@ -1616,7 +1616,7 @@
             "resource_exporter"
           ]
         },
-        "generated_at_utc": "2026-07-16T05:48:55.428061+00:00",
+        "generated_at_utc": "2026-07-16T05:51:16.078726+00:00",
         "required_providers": {
           "BIS": "credit, debt, financial conditions",
           "ILOSTAT": "productivity, earnings, hours, labor income",
@@ -1667,6 +1667,31 @@
         "status": "PASS",
         "unit_policy": "PPP and constant-USD measures remain separate; no pooling in primary diagnostic"
       },
+      "global_wdi_strata": {
+        "blockers": [
+          "PPP pooled model, official classification, and independent replication remain open."
+        ],
+        "claim_boundary": "Descriptive stratified associations only.",
+        "groups": {
+          "high": {
+            "change_correlation": null,
+            "countries": 67,
+            "pairs": 516
+          },
+          "low": {
+            "change_correlation": -0.0005037252357015693,
+            "countries": 67,
+            "pairs": 507
+          },
+          "middle": {
+            "change_correlation": 0.015244559191820668,
+            "countries": 65,
+            "pairs": 336
+          }
+        },
+        "schema_version": "1.0",
+        "status": "PASS"
+      },
       "measurement_validity": {
         "blockers": [
           "K_patents_per_capita:USPTO/PatsView export not present in frozen panel"
@@ -1694,7 +1719,7 @@
             "R_standardized_additive"
           ]
         },
-        "generated_at_utc": "2026-07-16T05:48:45.638348+00:00",
+        "generated_at_utc": "2026-07-16T05:51:06.365447+00:00",
         "measurement_gates": {
           "R_family_stability": true,
           "at_least_three_declared_families": true,
@@ -2903,7 +2928,7 @@
             "n": 64
           }
         },
-        "generated_at_utc": "2026-07-16T05:48:48.475556+00:00",
+        "generated_at_utc": "2026-07-16T05:51:09.172195+00:00",
         "observations": [
           {
             "credit_to_gdp": 4.231706560198307,
@@ -3707,7 +3732,7 @@
         "formula_ids": [
           "EC25-UET-RESOURCE-ENGINE"
         ],
-        "generated_at_utc": "2026-07-16T05:48:56.795624+00:00",
+        "generated_at_utc": "2026-07-16T05:51:17.441055+00:00",
         "parameter_policy": {
           "candidate_signal_threshold": {
             "bootstrap_interval_requirement": "95 percent interval for squared-error difference lies below zero",
@@ -4066,7 +4091,7 @@
         "formula_ids": [
           "EC25-UET-MONETARY-RESOURCE-MISMATCH"
         ],
-        "generated_at_utc": "2026-07-16T05:48:58.163954+00:00",
+        "generated_at_utc": "2026-07-16T05:51:18.924662+00:00",
         "inflation_baseline_comparison": [
           {
             "acceptance_rule": "Candidate requires at least 10 percent lower median rolling-origin RMSE than every named baseline and a 95 percent block-bootstrap squared-error interval below zero.",
@@ -4463,7 +4488,7 @@
         "formula_ids": [
           "EC25-UET-WAGE-PRODUCTIVITY-GAP"
         ],
-        "generated_at_utc": "2026-07-16T05:49:00.942100+00:00",
+        "generated_at_utc": "2026-07-16T05:51:21.823730+00:00",
         "schema_version": "1.0",
         "status": "DIAGNOSTIC_COMPLETE",
         "topic": "0.25_Strategy_Power_Economics"
@@ -4481,7 +4506,7 @@
           ],
           "rows": 40
         },
-        "generated_at_utc": "2026-07-16T05:48:47.048231+00:00",
+        "generated_at_utc": "2026-07-16T05:51:07.768218+00:00",
         "missing_sources": [],
         "no_imputation": true,
         "observations": [
@@ -5422,7 +5447,7 @@
     "EC25-UET-MONETARY-RESOURCE-MISMATCH",
     "EC25-UET-WAGE-PRODUCTIVITY-GAP"
   ],
-  "generated_at_utc": "2026-07-16T05:49:01.167703+00:00",
+  "generated_at_utc": "2026-07-16T05:51:22.002632+00:00",
   "holdout_policy": {
     "blockers": [],
     "controller_status": null,
@@ -5448,7 +5473,7 @@
     "controller_status": null,
     "exists": true,
     "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_us_macro_panel_status.json",
-    "sha256": "fc4d9c8429c46a7b854e5e7e2ab003b5c1695ca76efb5c985f52278361884ddc",
+    "sha256": "f704e708f971bd26d41dcf920ed7830d4200ec3fad3d2d0e1b4e8b905e56e8b2",
     "status": "PASS"
   },
   "parameter_policy": {
@@ -5779,7 +5804,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_energy_density_audit.json",
-      "sha256": "7a5848544d13f7a059122175e9123dfa58621e3c19a6380554f8eca89692bb26",
+      "sha256": "366dede97aff8c28bbe897bc3a944a79e8b2485f02887e653cb93bd5b81017b0",
       "status": "WARN"
     },
     "global_replication_readiness": {
@@ -5792,7 +5817,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_global_replication_readiness.json",
-      "sha256": "69736a49a7cf6f5dd5835d196442f6afc170e1424f37ecaf5810bcfb79316a92",
+      "sha256": "c40abe48915435063c876ee907a4f25f4e515d65247893663dae855260bf91c5",
       "status": "BLOCKED"
     },
     "global_wdi_leave_one_out": {
@@ -5821,6 +5846,16 @@
       "sha256": "74845e6c0580edc6899814c9df675e705f27b5ba9c43d9d4e5c15fd0d629fd39",
       "status": "PASS"
     },
+    "global_wdi_strata": {
+      "blockers": [
+        "PPP pooled model, official classification, and independent replication remain open."
+      ],
+      "controller_status": null,
+      "exists": true,
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_global_wdi_strata_audit.json",
+      "sha256": "567e3b76ec1e824ce249862c521876988c406eab86080b362883109a56dec883",
+      "status": "PASS"
+    },
     "measurement_validity": {
       "blockers": [
         "K_patents_per_capita:USPTO/PatsView export not present in frozen panel"
@@ -5828,7 +5863,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_measurement_validity_audit.json",
-      "sha256": "74bcad42302443013f2c05c326aab01fdee552517a0798105f88ef85388c16af",
+      "sha256": "99883f43699d999782a900bcbe37ec943a83636ee71da09544d598d4b3549d89",
       "status": "WARN"
     },
     "money_credit_inflation": {
@@ -5836,7 +5871,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_money_credit_inflation_audit.json",
-      "sha256": "273c1750a0e1b80162243af1edcdd3078e2cdf50e0b95fc773b34df2c69930e5",
+      "sha256": "35f51126dcedc7644409ac248f76090e4c6702e76a9b68236599e5e84d851d59",
       "status": "PASS"
     },
     "resource_equation": {
@@ -5844,7 +5879,7 @@
       "controller_status": "NO_PREDECLARED_CANDIDATE_SIGNAL",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_resource_equation_audit.json",
-      "sha256": "d448466fb1e76bea1fdf26b19a960f355f79871b592723b120518873af752380",
+      "sha256": "75b6242e173bd971d2f988ad6c68ff618fe6e92875abca684207fcff667733bd",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "stone_balloon": {
@@ -5852,7 +5887,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_stone_balloon_audit.json",
-      "sha256": "2cd4ebeceaf213d60678e78fc0fc313e9828105bb9c3b77ee5aab560c279252b",
+      "sha256": "6a60eb541bdc2684ad37849ca14ccfea15ad6259231d4c8b3ba744ef861b4cfd",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "wage_productivity": {
@@ -5860,7 +5895,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_wage_productivity_audit.json",
-      "sha256": "78a7268f2b96e90ab916f33a2126a331eb302fb015d886b9bb1150a9b78adb80",
+      "sha256": "a3e21e1971d989acd2e4ade8aa058aacb769831d29f760e7ec2cd98f6f7b00e4",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "welfare": {
@@ -5868,7 +5903,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_welfare_audit.json",
-      "sha256": "3ad46e0b1f7a2142f1c5f3c858f56da6b2b2fa0f7f978946393ab46489ffd614",
+      "sha256": "36c08c232ac55db714c6498ebf593584e9dd00f85e730b91c3981f9509c46fca",
       "status": "PASS"
     }
   },
