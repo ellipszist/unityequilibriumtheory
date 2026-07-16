@@ -1,39 +1,40 @@
 {
   "schema_version": "1.0",
-  "status": "WARN",
-  "countries_joined": 0,
+  "status": "PASS",
+  "countries_joined": 162,
   "regions": {
     "East Asia & Pacific": {
-      "correlation": null,
-      "pairs": 0
+      "correlation": -0.02901891862245384,
+      "pairs": 975
     },
     "Europe & Central Asia": {
-      "correlation": null,
-      "pairs": 0
+      "correlation": -0.003024186364222067,
+      "pairs": 1179
     },
     "Latin America & Caribbean ": {
-      "correlation": null,
-      "pairs": 0
+      "correlation": 0.01059854901346799,
+      "pairs": 915
     },
     "Middle East, North Africa, Afghanistan & Pakistan": {
-      "correlation": null,
-      "pairs": 0
+      "correlation": 0.00392498922290771,
+      "pairs": 1202
     },
     "North America": {
-      "correlation": null,
-      "pairs": 0
+      "correlation": -0.02457522638508712,
+      "pairs": 1255
     },
     "South Asia": {
-      "correlation": null,
-      "pairs": 0
+      "correlation": -0.025291325106750275,
+      "pairs": 1239
     },
     "Sub-Saharan Africa ": {
-      "correlation": null,
-      "pairs": 0
+      "correlation": -0.02949009919603949,
+      "pairs": 909
     }
   },
+  "join_policy": "panel country id is ISO2; joined to metadata iso2Code; aggregates excluded by region id NA",
   "claim_boundary": "Descriptive regional robustness only; no causal claim.",
   "blockers": [
-    "Panel country identifiers do not intersect official metadata identifiers (0 joined countries); regional robustness cannot run until WDI parser preserves ISO3 country IDs and excludes aggregates."
+    "OECD/ILO/IMF/BIS/WID source closure, PPP invariance, and independent replication remain open."
   ]
 }
