@@ -27,7 +27,7 @@ def main() -> int:
     blockers = [
         "OECD, ILOSTAT, IMF, BIS, and WID source manifests with release/vintage/hash records are absent.",
         "PPP and exchange-rate versions are not yet pooled through a measurement-invariance protocol.",
-        "No leave-one-region-out artifact or official income/resource-exporter classification is locked.",
+        "No leave-one-region-out artifact or resource-exporter classification is locked.",
         "Independent global replication remains absent.",
     ]
     payload = {
