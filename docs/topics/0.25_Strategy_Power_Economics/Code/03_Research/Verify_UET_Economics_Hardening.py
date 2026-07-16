@@ -25,6 +25,7 @@ from economic_hardening_common import (
     VARIABLE_DICTIONARY,
     WARN_GATE_REGISTRY,
     WELFARE_ARTIFACT,
+    MONEY_CREDIT_ARTIFACT,
     WELFARE_SOURCE_MANIFEST,
     load_json,
     relative,
@@ -40,6 +41,7 @@ HERE = Path(__file__).resolve().parent
 SUB_ARTIFACTS = {
     "measurement_validity": MEASUREMENT_ARTIFACT,
     "welfare": WELFARE_ARTIFACT,
+    "money_credit_inflation": MONEY_CREDIT_ARTIFACT,
     "resource_equation": ARTIFACT_DIR / "0_25_uet_resource_equation_audit.json",
     "stone_balloon": ARTIFACT_DIR / "0_25_stone_balloon_audit.json",
     "energy_density": ARTIFACT_DIR / "0_25_energy_density_audit.json",
@@ -102,6 +104,7 @@ def main() -> int:
             run("Research_UET_Economics_Panel.py"),
             run("Research_UET_Measurement_Validity_Audit.py"),
             run("Research_UET_Welfare_Audit.py"),
+            run("Research_UET_Money_Credit_Inflation_Audit.py"),
             run("Research_UET_Resource_Equation_Audit.py"),
             run("Research_Stone_Balloon_Audit.py"),
             run("Research_Energy_Density_Audit.py"),

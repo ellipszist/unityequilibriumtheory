@@ -90,3 +90,11 @@
 - Next controller: `uet_us_historical_source_readiness` remains `WARN`.
 - Claim impact: no change; Claim Class C and `DESCRIPTIVE_DIAGNOSTIC_ONLY` remain controlling.
 - Workflow linkage: follows the Topic 0.25 source-packaging and formula-audit hardening workflow.
+
+### 2026-07-16 - Wave 4 money-credit-inflation diagnostic
+
+- Scope: extend the Stone-in-the-Balloon lane from M2/resource mismatch to descriptive money, credit, velocity, debt-to-GDP-gap, and inflation diagnostics.
+- Added: `Research_UET_Money_Credit_Inflation_Audit.py` and `0_25_money_credit_inflation_audit.json`; integrated both into the aggregate verifier.
+- Verified: audit `PASS` with 64 annual observations; aggregate verifier `WARN`; all executed commands exit zero.
+- Result: correlations and regressions are descriptive associations only; no monetary, fiat, fiscal, or policy causal claim is supported.
+- Controller: energy-density definition remains the controlling blocker; Claim Class C and `DESCRIPTIVE_DIAGNOSTIC_ONLY` remain unchanged.
