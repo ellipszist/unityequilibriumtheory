@@ -132,3 +132,9 @@
 - Added a 62-observation complete-case audit of annual log changes in investment against corporate profits, business loans, and dividend income.
 - Same-year correlations were approximately `0.549`, `0.086`, and `0.903` respectively; these are descriptive associations only and do not identify funding direction or payment provenance.
 - Integrated the association artifact into the aggregate verifier; funding-flow provenance remains blocked.
+
+### 2026-07-16 - Transfer receipts added to funding lane
+
+- Added FRED/BEA Personal Current Transfer Receipts (`PCTR`) to the frozen funding-source proxy panel.
+- Same-year transfer-receipt/investment-growth association was `-0.358`; one-year lag was `0.184`; two-year lag was `0.257`.
+- These are descriptive co-movements, not evidence that transfers cause or fund investment; transaction-level provenance remains blocked.
