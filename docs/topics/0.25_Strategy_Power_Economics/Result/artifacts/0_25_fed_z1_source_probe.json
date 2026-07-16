@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "status": "WARN",
+  "release_vintage": "2026:Q1 current release",
+  "zip_path": "docs/data/external/economics/us_historical/fed_z1/2026-07-16/z1_csv_files.zip",
+  "table_counts": {
+    "all_csv": 286,
+    "transaction_tables": 76,
+    "levels_tables": 0,
+    "sector_tables": 166
+  },
+  "sample_transaction_tables": [
+    "F2_1_t_tu.csv",
+    "F4_5c_t_tu.csv",
+    "F3_4_t.csv",
+    "F519_1_t_tu.csv",
+    "F4_5d_t_tu.csv",
+    "F4_5_t_tu.csv",
+    "F4_5c_t.csv",
+    "F522_1_t_tu.csv",
+    "F6_2_t_tu.csv",
+    "F51_1_t.csv",
+    "F89_1_t.csv",
+    "F2_2_t_tu.csv",
+    "F89_1_t_tu.csv",
+    "F4_5b_t.csv",
+    "F6_2_t.csv",
+    "F89_3_t.csv",
+    "F2_4_t_tu.csv",
+    "F4_3_t.csv",
+    "F4_5_t.csv",
+    "F4_1_t.csv"
+  ],
+  "sample_levels_tables": [],
+  "coverage_policy": "Use observations through 2024 only for the Topic primary freeze; preserve current-release vintage separately.",
+  "claim_boundary": "Z.1 provides sectoral financial-account evidence, not anonymous individual payment provenance; variable mapping and accounting reconciliation are required before causal use.",
+  "blockers": [
+    "No preregistered mapping yet links specific Z.1 instrument/sector columns to labor/resource/output transactions.",
+    "Current release is revised 2026 vintage; a historical-as-of release comparison is still required for revision control."
+  ]
+}
