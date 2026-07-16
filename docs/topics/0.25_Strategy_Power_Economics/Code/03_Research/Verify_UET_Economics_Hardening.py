@@ -14,6 +14,7 @@ from economic_hardening_common import (
     CLAIM_GATE,
     FORMULA_GATE,
     HOLDOUT_POLICY,
+    MEASUREMENT_ARTIFACT,
     PARAMETER_POLICY,
     PANEL_STATUS,
     RESEARCH_DATA,
@@ -35,6 +36,7 @@ from economic_hardening_common import (
 ARTIFACT = ARTIFACT_DIR / "0_25_uet_economics_verification.json"
 HERE = Path(__file__).resolve().parent
 SUB_ARTIFACTS = {
+    "measurement_validity": MEASUREMENT_ARTIFACT,
     "resource_equation": ARTIFACT_DIR / "0_25_uet_resource_equation_audit.json",
     "stone_balloon": ARTIFACT_DIR / "0_25_stone_balloon_audit.json",
     "energy_density": ARTIFACT_DIR / "0_25_energy_density_audit.json",
@@ -95,6 +97,7 @@ def main() -> int:
     commands.extend(
         [
             run("Research_UET_Economics_Panel.py"),
+            run("Research_UET_Measurement_Validity_Audit.py"),
             run("Research_UET_Resource_Equation_Audit.py"),
             run("Research_Stone_Balloon_Audit.py"),
             run("Research_Energy_Density_Audit.py"),

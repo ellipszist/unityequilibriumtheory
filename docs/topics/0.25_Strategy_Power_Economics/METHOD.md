@@ -76,9 +76,12 @@ indexed infrastructure proxy, not a dollar-valued capital stock.
 4. **Energy lane:** the postwar EIA throughput series is ready for the panel. The historical
    1776-1945 transition and literal fuel-energy-density claim remain blocked pending a common
    heat-content basis and conversion audit.
-5. **Wage lane:** reproduce the versioned EPI chart construction, then report BLS OPHNFB/
+5. Wage lane: reproduce the versioned EPI chart construction, then report BLS OPHNFB/
    COMPRNFB separately. Differences are source/vintage/construction findings, not evidence of
    fiat causality.
+6. Measurement-validity lane: compare three declared R, N, K, and I families, report pairwise
+   index correlations and coefficient-sign stability, and leave missing patent data as a
+   blocker rather than imputing it.
 
 ## Evaluation and uncertainty
 

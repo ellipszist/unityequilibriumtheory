@@ -44,5 +44,6 @@ They are not fitted to the holdout and do not imply a theoretical constant.
 - Stone artifact: `Result/artifacts/0_25_stone_balloon_audit.json`.
 - Wage artifact: `Result/artifacts/0_25_wage_productivity_audit.json`.
 - Aggregate export controller: Result/artifacts/0_25_uet_economics_verification.json.
+- Measurement-validity artifact: Result/artifacts/0_25_uet_measurement_validity_audit.json.
 - Long-term architecture: RESEARCH_ROADMAP_EVIDENCE_GRADE_A.md, VARIABLE_DICTIONARY.md,
   CAUSAL_DAG.md, and Data/03_Research/uet_economics_warn_gate_registry.json.

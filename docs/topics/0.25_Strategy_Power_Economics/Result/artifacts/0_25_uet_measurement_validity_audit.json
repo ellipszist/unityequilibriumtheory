@@ -1,0 +1,1189 @@
+{
+  "blockers": [
+    "K_patents_per_capita:USPTO/PatsView export not present in frozen panel"
+  ],
+  "claim_boundary": "This artifact tests proxy sensitivity and measurement stability only. It does not establish construct validity, an economic law, or causal evidence.",
+  "constructs": {
+    "I": [
+      "I_combined_per_employee",
+      "I_private_quantity_index",
+      "I_government_quantity_index"
+    ],
+    "K": [
+      "K_ip_per_employee",
+      "K_ip_quantity_index",
+      "K_patents_per_capita"
+    ],
+    "N": [
+      "N_energy_unemployment",
+      "N_cpi_unemployment",
+      "N_unemployment_only"
+    ],
+    "R": [
+      "R_core_geometric",
+      "R_no_energy_geometric",
+      "R_standardized_additive"
+    ]
+  },
+  "generated_at_utc": "2026-07-16T05:06:03.648030+00:00",
+  "measurement_gates": {
+    "R_family_stability": true,
+    "at_least_three_declared_families": true,
+    "directional_coefficient_stability": false,
+    "no_silent_imputation": true,
+    "pairwise_R_correlation_threshold": 0.8
+  },
+  "panel": {
+    "coverage": [
+      1959,
+      2024
+    ],
+    "n": 66,
+    "path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Data\\03_Research\\uet_us_macro_panel_1959_2024.csv",
+    "sha256": "8c7dbdae24f5b46f372a1e8f5ad8267867299c7484992cd34cf1ffa0635fc085"
+  },
+  "proxy_family_correlations": {
+    "R_core_geometric__R_no_energy_geometric": 0.9864472442523238,
+    "R_core_geometric__R_standardized_additive": 0.9531339980083815,
+    "R_no_energy_geometric__R_standardized_additive": 0.8945845033308103
+  },
+  "schema_version": "1.0",
+  "status": "WARN",
+  "three_year_diagnostic_combinations": [
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.03390074517184101,
+        -0.015609367078813127,
+        0.05238088365217844,
+        0.6490174729315631
+      ],
+      "i_family": "I_combined_per_employee",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_energy_unemployment",
+      "r_family": "R_core_geometric",
+      "r_squared": 0.18619886549960085,
+      "residual_rmse": 0.030812345753281973,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.029226726287113668,
+        -0.012706279678481487,
+        0.08553807906793894,
+        0.294387143495985
+      ],
+      "i_family": "I_private_quantity_index",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_energy_unemployment",
+      "r_family": "R_core_geometric",
+      "r_squared": 0.09232276432835507,
+      "residual_rmse": 0.03254103326688591,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.0020434842716083867,
+        -0.006703760154148437,
+        0.07266993593333965,
+        1.764908590388149
+      ],
+      "i_family": "I_government_quantity_index",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_energy_unemployment",
+      "r_family": "R_core_geometric",
+      "r_squared": 0.35904860131054106,
+      "residual_rmse": 0.02734501505821847,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.023318068282789085,
+        -0.015033839078672409,
+        0.17840029486539807,
+        0.8174976409977525
+      ],
+      "i_family": "I_combined_per_employee",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_energy_unemployment",
+      "r_family": "R_core_geometric",
+      "r_squared": 0.20908862174829457,
+      "residual_rmse": 0.03037592618644963,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "-",
+        "+"
+      ],
+      "coefficients": [
+        0.03553596953125187,
+        -0.01272009987085259,
+        -0.050549008146524695,
+        0.3335012756269309
+      ],
+      "i_family": "I_private_quantity_index",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_energy_unemployment",
+      "r_family": "R_core_geometric",
+      "r_squared": 0.08929083053146636,
+      "residual_rmse": 0.032595336713682116,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "-",
+        "+"
+      ],
+      "coefficients": [
+        0.009360672261689199,
+        -0.0068678858404527445,
+        -0.06570364553510985,
+        1.790084979546645
+      ],
+      "i_family": "I_government_quantity_index",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_energy_unemployment",
+      "r_family": "R_core_geometric",
+      "r_squared": 0.3594619089830665,
+      "residual_rmse": 0.027336197129819693,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.0344424464468609,
+        -0.011632561735746269,
+        0.03419617033063506,
+        0.664473327659169
+      ],
+      "i_family": "I_combined_per_employee",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_cpi_unemployment",
+      "r_family": "R_core_geometric",
+      "r_squared": 0.15469396602399466,
+      "residual_rmse": 0.03140310574429842,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.026606271991646044,
+        -0.008623213201275683,
+        0.07395263311167902,
+        0.3950809371398793
+      ],
+      "i_family": "I_private_quantity_index",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_cpi_unemployment",
+      "r_family": "R_core_geometric",
+      "r_squared": 0.06684227752033145,
+      "residual_rmse": 0.03299462101524172,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.0007996685221428115,
+        -0.0024154385452840156,
+        0.06645870849169393,
+        1.8327823014109668
+      ],
+      "i_family": "I_government_quantity_index",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_cpi_unemployment",
+      "r_family": "R_core_geometric",
+      "r_squared": 0.3447884832597351,
+      "residual_rmse": 0.027647532566993028,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.023251978056548946,
+        -0.01101448598530694,
+        0.17511991790503986,
+        0.825806149418268
+      ],
+      "i_family": "I_combined_per_employee",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_cpi_unemployment",
+      "r_family": "R_core_geometric",
+      "r_squared": 0.1776995973640243,
+      "residual_rmse": 0.030972828551617877,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "-",
+        "+"
+      ],
+      "coefficients": [
+        0.03307139672337444,
+        -0.009076963955368469,
+        -0.06942537471624541,
+        0.4515691633040577
+      ],
+      "i_family": "I_private_quantity_index",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_cpi_unemployment",
+      "r_family": "R_core_geometric",
+      "r_squared": 0.06704558585303,
+      "residual_rmse": 0.03299102652813653,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "-",
+        "+"
+      ],
+      "coefficients": [
+        0.0077675758126706865,
+        -0.0028353376451137804,
+        -0.06283116036197223,
+        1.8513197248530868
+      ],
+      "i_family": "I_government_quantity_index",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_cpi_unemployment",
+      "r_family": "R_core_geometric",
+      "r_squared": 0.3454232268376164,
+      "residual_rmse": 0.027634137391867524,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.0338110941306888,
+        -0.004225725239464218,
+        0.048445968438890624,
+        0.66001655279778
+      ],
+      "i_family": "I_combined_per_employee",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_unemployment_only",
+      "r_family": "R_core_geometric",
+      "r_squared": 0.10249861222944512,
+      "residual_rmse": 0.0323581125645614,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "+",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.020878682985464227,
+        0.0029354331696074807,
+        0.07696908030383708,
+        0.569332916159856
+      ],
+      "i_family": "I_private_quantity_index",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_unemployment_only",
+      "r_family": "R_core_geometric",
+      "r_squared": 0.03535060307141258,
+      "residual_rmse": 0.033546743312310584,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "+",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        -0.0029445320277011883,
+        0.005126044306259895,
+        0.058063872336691046,
+        2.014754079179485
+      ],
+      "i_family": "I_government_quantity_index",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_unemployment_only",
+      "r_family": "R_core_geometric",
+      "r_squared": 0.363344566737415,
+      "residual_rmse": 0.027253221247843414,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.022443836584433604,
+        -0.003446363371312208,
+        0.1875298735880085,
+        0.8242506401819223
+      ],
+      "i_family": "I_combined_per_employee",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_unemployment_only",
+      "r_family": "R_core_geometric",
+      "r_squared": 0.12797998816525968,
+      "residual_rmse": 0.03189545800892925,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "+",
+        "-",
+        "+"
+      ],
+      "coefficients": [
+        0.026176689957727976,
+        0.002907441841174672,
+        -0.0340583720044001,
+        0.5923151161612886
+      ],
+      "i_family": "I_private_quantity_index",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_unemployment_only",
+      "r_family": "R_core_geometric",
+      "r_squared": 0.03209984266221577,
+      "residual_rmse": 0.03360322015572467,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "+",
+        "-",
+        "+"
+      ],
+      "coefficients": [
+        0.0011654246757989914,
+        0.005049450674633442,
+        -0.021856772844880454,
+        2.022355494733209
+      ],
+      "i_family": "I_government_quantity_index",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_unemployment_only",
+      "r_family": "R_core_geometric",
+      "r_squared": 0.36136688471579204,
+      "residual_rmse": 0.027295517607015818,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.04876234609502442,
+        -0.009713519063924229,
+        0.12698367390167822,
+        0.5349628031957154
+      ],
+      "i_family": "I_combined_per_employee",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_energy_unemployment",
+      "r_family": "R_no_energy_geometric",
+      "r_squared": 0.17395496519193054,
+      "residual_rmse": 0.025109571837748264,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.04779190946815047,
+        -0.007683814179249059,
+        0.15252808149710032,
+        0.1491341930021463
+      ],
+      "i_family": "I_private_quantity_index",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_energy_unemployment",
+      "r_family": "R_no_energy_geometric",
+      "r_squared": 0.06941545348892719,
+      "residual_rmse": 0.02665111374855239,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.03130493885662579,
+        -0.004107646572860959,
+        0.14546632347475447,
+        1.0263084083680731
+      ],
+      "i_family": "I_government_quantity_index",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_energy_unemployment",
+      "r_family": "R_no_energy_geometric",
+      "r_squared": 0.2086335431647831,
+      "residual_rmse": 0.02457685254466481,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.04078370797408856,
+        -0.00902921237204539,
+        0.19147041850122948,
+        0.7244332371512521
+      ],
+      "i_family": "I_combined_per_employee",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_energy_unemployment",
+      "r_family": "R_no_energy_geometric",
+      "r_squared": 0.20005754438506396,
+      "residual_rmse": 0.024709662761769065,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.05538240030795388,
+        -0.007537021414774356,
+        0.009687566145831205,
+        0.1232275186331042
+      ],
+      "i_family": "I_private_quantity_index",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_energy_unemployment",
+      "r_family": "R_no_energy_geometric",
+      "r_squared": 0.04398260657100095,
+      "residual_rmse": 0.02701284593388096,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "-",
+        "+"
+      ],
+      "coefficients": [
+        0.038748115854041254,
+        -0.003932743145665627,
+        -0.007559335965738663,
+        1.0337530213471056
+      ],
+      "i_family": "I_government_quantity_index",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_energy_unemployment",
+      "r_family": "R_no_energy_geometric",
+      "r_squared": 0.185427452426269,
+      "residual_rmse": 0.02493459562837392,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.049099454035398234,
+        -0.008258922872462004,
+        0.11479440635672905,
+        0.5519221965086198
+      ],
+      "i_family": "I_combined_per_employee",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_cpi_unemployment",
+      "r_family": "R_no_energy_geometric",
+      "r_squared": 0.16713921628510575,
+      "residual_rmse": 0.025212949350925905,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.046377213925099456,
+        -0.005949762888699,
+        0.1450324050133312,
+        0.2056757069739421
+      ],
+      "i_family": "I_private_quantity_index",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_cpi_unemployment",
+      "r_family": "R_no_energy_geometric",
+      "r_squared": 0.061420485622635135,
+      "residual_rmse": 0.02676535329011162,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.030938408706242912,
+        -0.002358447822245027,
+        0.1412095228080501,
+        1.050738948050071
+      ],
+      "i_family": "I_government_quantity_index",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_cpi_unemployment",
+      "r_family": "R_no_energy_geometric",
+      "r_squared": 0.20285246942184731,
+      "residual_rmse": 0.024666458351256575,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.040886989609354926,
+        -0.007697097126606945,
+        0.18694914642415503,
+        0.7347409642313822
+      ],
+      "i_family": "I_combined_per_employee",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_cpi_unemployment",
+      "r_family": "R_no_energy_geometric",
+      "r_squared": 0.19424893880109195,
+      "residual_rmse": 0.024799212375817472,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "-",
+        "+"
+      ],
+      "coefficients": [
+        0.05414862426089038,
+        -0.00611009755687745,
+        -0.003800647530503763,
+        0.19116804622220493
+      ],
+      "i_family": "I_private_quantity_index",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_cpi_unemployment",
+      "r_family": "R_no_energy_geometric",
+      "r_squared": 0.03833754180102966,
+      "residual_rmse": 0.02709248089895999,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "-",
+        "+"
+      ],
+      "coefficients": [
+        0.038357467329387746,
+        -0.002519592604887179,
+        -0.008398411587671205,
+        1.0523457118306039
+      ],
+      "i_family": "I_government_quantity_index",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_cpi_unemployment",
+      "r_family": "R_no_energy_geometric",
+      "r_squared": 0.1809944594025681,
+      "residual_rmse": 0.02500235196933887,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.048545240081792146,
+        -0.003709605134895878,
+        0.12563227210409045,
+        0.5620637473707342
+      ],
+      "i_family": "I_combined_per_employee",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_unemployment_only",
+      "r_family": "R_no_energy_geometric",
+      "r_squared": 0.13265296167349094,
+      "residual_rmse": 0.025729650955849663,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "+",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.04353805688255511,
+        0.001150572078269837,
+        0.14792655046043726,
+        0.28918497420709854
+      ],
+      "i_family": "I_private_quantity_index",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_unemployment_only",
+      "r_family": "R_no_energy_geometric",
+      "r_squared": 0.03577431824864907,
+      "residual_rmse": 0.027128563139609936,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "+",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.028489077201886724,
+        0.002676857497203013,
+        0.1373888835259938,
+        1.1671954947178487
+      ],
+      "i_family": "I_government_quantity_index",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_unemployment_only",
+      "r_family": "R_no_energy_geometric",
+      "r_squared": 0.2077575853909709,
+      "residual_rmse": 0.024590450752407712,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.04040216777508103,
+        -0.002833773382773728,
+        0.19394733532743824,
+        0.7401445546654688
+      ],
+      "i_family": "I_combined_per_employee",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_unemployment_only",
+      "r_family": "R_no_energy_geometric",
+      "r_squared": 0.159782153676856,
+      "residual_rmse": 0.025324063604323124,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "+",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.05034207229903022,
+        0.0013630394897773401,
+        0.018618230682882746,
+        0.2622663676813646
+      ],
+      "i_family": "I_private_quantity_index",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_unemployment_only",
+      "r_family": "R_no_energy_geometric",
+      "r_squared": 0.012207963421236312,
+      "residual_rmse": 0.02745808246851273,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "+",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.0338961262038132,
+        0.0030537648265879544,
+        0.01861301954536988,
+        1.1705798496656712
+      ],
+      "i_family": "I_government_quantity_index",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_unemployment_only",
+      "r_family": "R_no_energy_geometric",
+      "r_squared": 0.18751782815444074,
+      "residual_rmse": 0.024902581195626324,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "-",
+        "+"
+      ],
+      "coefficients": [
+        0.01032680563910659,
+        -0.012342823347035632,
+        -0.00729704168095357,
+        0.4008405428469527
+      ],
+      "i_family": "I_combined_per_employee",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_energy_unemployment",
+      "r_family": "R_standardized_additive",
+      "r_squared": 0.2050090290353348,
+      "residual_rmse": 0.02033645496538124,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.01046130149328683,
+        -0.01093057389508198,
+        0.011309141945416386,
+        0.08378681455656456
+      ],
+      "i_family": "I_private_quantity_index",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_energy_unemployment",
+      "r_family": "R_standardized_additive",
+      "r_squared": 0.11735327587089794,
+      "residual_rmse": 0.02142829457802125,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        -0.009395961356851574,
+        -0.006833284891952981,
+        0.005224240958340756,
+        1.092333061852434
+      ],
+      "i_family": "I_government_quantity_index",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_energy_unemployment",
+      "r_family": "R_standardized_additive",
+      "r_squared": 0.35387183905674835,
+      "residual_rmse": 0.018333842076054818,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.005118675306750435,
+        -0.012154244980099914,
+        0.06626099847135453,
+        0.4601481338043749
+      ],
+      "i_family": "I_combined_per_employee",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_energy_unemployment",
+      "r_family": "R_standardized_additive",
+      "r_squared": 0.21261288241114684,
+      "residual_rmse": 0.02023896520330786,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "-",
+        "+"
+      ],
+      "coefficients": [
+        0.013116068814400932,
+        -0.011017681836606855,
+        -0.056340728302681164,
+        0.1365408079054631
+      ],
+      "i_family": "I_private_quantity_index",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_energy_unemployment",
+      "r_family": "R_standardized_additive",
+      "r_squared": 0.1233509453284658,
+      "residual_rmse": 0.02135536681684083,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "-",
+        "+"
+      ],
+      "coefficients": [
+        -0.004808910923710937,
+        -0.007128884533921081,
+        -0.07460375654606233,
+        1.1183559841384578
+      ],
+      "i_family": "I_government_quantity_index",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_energy_unemployment",
+      "r_family": "R_standardized_additive",
+      "r_squared": 0.3660180913696923,
+      "residual_rmse": 0.018160699975312194,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "-",
+        "+"
+      ],
+      "coefficients": [
+        0.010755147268271339,
+        -0.00928601833597711,
+        -0.021751407212027875,
+        0.4136937075568902
+      ],
+      "i_family": "I_combined_per_employee",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_cpi_unemployment",
+      "r_family": "R_standardized_additive",
+      "r_squared": 0.16261535422035245,
+      "residual_rmse": 0.020871643489116014,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.008233148407759655,
+        -0.00753096585338828,
+        0.0012675933060524664,
+        0.16974072634493914
+      ],
+      "i_family": "I_private_quantity_index",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_cpi_unemployment",
+      "r_family": "R_standardized_additive",
+      "r_squared": 0.07695114173605566,
+      "residual_rmse": 0.02191323498727154,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "-",
+        "+"
+      ],
+      "coefficients": [
+        -0.0101736133890446,
+        -0.0035505649198465964,
+        -0.0016657690098447445,
+        1.1402572024650388
+      ],
+      "i_family": "I_government_quantity_index",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_cpi_unemployment",
+      "r_family": "R_standardized_additive",
+      "r_squared": 0.32748607189027923,
+      "residual_rmse": 0.01870444355801262,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.0050804416194194756,
+        -0.00901976071600918,
+        0.06333777753892789,
+        0.4674304698637628
+      ],
+      "i_family": "I_combined_per_employee",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_cpi_unemployment",
+      "r_family": "R_standardized_additive",
+      "r_squared": 0.1688501113558245,
+      "residual_rmse": 0.020793798286680616,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "-",
+        "+"
+      ],
+      "coefficients": [
+        0.011003631730372256,
+        -0.007934109582017956,
+        -0.07291731970923132,
+        0.23860835448871137
+      ],
+      "i_family": "I_private_quantity_index",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_cpi_unemployment",
+      "r_family": "R_standardized_additive",
+      "r_squared": 0.08717306040809081,
+      "residual_rmse": 0.021791562717635132,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "-",
+        "+"
+      ],
+      "coefficients": [
+        -0.005856212827916402,
+        -0.003984641222485862,
+        -0.07450956240209824,
+        1.1627699272262544
+      ],
+      "i_family": "I_government_quantity_index",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_cpi_unemployment",
+      "r_family": "R_standardized_additive",
+      "r_squared": 0.33952057875576724,
+      "residual_rmse": 0.01853633187886656,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "-",
+        "+"
+      ],
+      "coefficients": [
+        0.010335036474681964,
+        -0.0028117172520598626,
+        -0.010946668144142408,
+        0.3996027971168048
+      ],
+      "i_family": "I_combined_per_employee",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_unemployment_only",
+      "r_family": "R_standardized_additive",
+      "r_squared": 0.08189197181875019,
+      "residual_rmse": 0.02185450849455244,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "+",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.005281496175761165,
+        0.0009515911205778241,
+        0.005399920745150928,
+        0.2542561254531374
+      ],
+      "i_family": "I_private_quantity_index",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_unemployment_only",
+      "r_family": "R_standardized_additive",
+      "r_squared": 0.014912643591991293,
+      "residual_rmse": 0.022637659520632684,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "+",
+        "-",
+        "+"
+      ],
+      "coefficients": [
+        -0.013354044382017007,
+        0.0030516440942236454,
+        -0.005578862087693003,
+        1.2898546378691085
+      ],
+      "i_family": "I_government_quantity_index",
+      "k_family": "K_ip_per_employee",
+      "n": 62,
+      "n_family": "N_unemployment_only",
+      "r_family": "R_standardized_additive",
+      "r_squared": 0.3312178582868254,
+      "residual_rmse": 0.018652475794751214,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "-",
+        "+",
+        "+"
+      ],
+      "coefficients": [
+        0.004363642109862401,
+        -0.0025294048047304453,
+        0.07465263404933983,
+        0.46168889524910234
+      ],
+      "i_family": "I_combined_per_employee",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_unemployment_only",
+      "r_family": "R_standardized_additive",
+      "r_squared": 0.09135242629037565,
+      "residual_rmse": 0.021741619297126466,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "+",
+        "-",
+        "+"
+      ],
+      "coefficients": [
+        0.00740733666052145,
+        0.0008113685121017651,
+        -0.046045730299466195,
+        0.29278128636038986
+      ],
+      "i_family": "I_private_quantity_index",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_unemployment_only",
+      "r_family": "R_standardized_additive",
+      "r_squared": 0.01898413964288581,
+      "residual_rmse": 0.0225908288640067,
+      "status": "DIAGNOSTIC_COMPLETE"
+    },
+    {
+      "coefficient_signs": [
+        "+",
+        "-",
+        "+"
+      ],
+      "coefficients": [
+        -0.010802014536417813,
+        0.00267806937973871,
+        -0.04590043441438007,
+        1.2990901360517462
+      ],
+      "i_family": "I_government_quantity_index",
+      "k_family": "K_ip_quantity_index",
+      "n": 62,
+      "n_family": "N_unemployment_only",
+      "r_family": "R_standardized_additive",
+      "r_squared": 0.33557001185061697,
+      "residual_rmse": 0.018591685490841343,
+      "status": "DIAGNOSTIC_COMPLETE"
+    }
+  ],
+  "topic": "0.25_Strategy_Power_Economics"
+}

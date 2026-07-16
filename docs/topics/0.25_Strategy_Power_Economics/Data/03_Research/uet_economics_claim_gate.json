@@ -13,6 +13,7 @@
   "controller_status": "DESCRIPTIVE_DIAGNOSTIC_ONLY",
   "gate": "uet_book1_economics_claim_gate",
   "machine_readable_next_blockers": [
+    "K_patents_per_capita:USPTO/PatsView export not present in frozen panel",
     "WARN_BASELINE: WARN_RESULT_MIXED",
     "WARN_CAUSAL: BLOCKED",
     "WARN_EXTERNAL: BLOCKED",
@@ -24,7 +25,8 @@
     "WARN_REVISION: WARN",
     "WARN_SOURCE: WARN",
     "WARN_UNIT: WARN",
-    "energy_density: WARN"
+    "energy_density: WARN",
+    "measurement_validity: WARN"
   ],
   "schema_version": "1.0",
   "strategy_social_quarantine": "Strategy, power, Nash, and social-stabilization notes remain exploratory and excluded from core economics evidence.",

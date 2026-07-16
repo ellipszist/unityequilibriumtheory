@@ -32,7 +32,9 @@ The legacy descriptive command is separate:
 - `uet_us_economics_parameter_policy.json`: horizons, proxy definitions, baselines, and
   candidate threshold declared before model execution.
 - `uet_us_economics_holdout_policy.json`: rolling origins 2000-2024 and transition split.
-- `uet_economics_claim_gate.json`: allowed and blocked export language.
+- uet_economics_claim_gate.json: allowed and blocked export language.
+- 0_25_uet_measurement_validity_audit.json: declared proxy-family correlations, three-year
+  combinations, sign stability, and missing-family blockers.
 - aggregate `execution_gate`: all verifier subcommands exit zero.
 - aggregate legacy_claim_quarantine: every legacy markdown note contains the required
   Legacy claim boundary warning before it can be treated as topic documentation.
@@ -60,7 +62,8 @@ per-capita growth. Pre/post regime summaries use 1959-1970 and 1974-2024, exclud
 - source, transform, panel, formula, parameter, holdout, claim, and sub-artifact hashes;
 - retrieval vintage, coverage, units/proxy definitions, formulas, coefficients, and uncertainty;
 - rolling-origin boundaries, baseline errors, median and aggregate RMSE, and bootstrap intervals;
-- asset-lane status, energy-definition gate, failures, limitations, and blocked claims;
+- asset-lane status, energy-definition gate, measurement-validity result, failures, limitations,
+  and blocked claims;
 - command exit codes, legacy-claim quarantine result, and the current controller status;
 - a self-contained evidence_bundle containing source records/hashes, transform and panel
   payloads, formula/parameter/holdout contracts, research register, variable dictionary,
@@ -76,6 +79,8 @@ per-capita growth. Pre/post regime summaries use 1959-1970 and 1974-2024, exclud
 - Aggregate: `WARN`; controller remains `DESCRIPTIVE_DIAGNOSTIC_ONLY`; legacy quarantine is
   `PASS` for 12 files.
 - Candidate signals: false at all tested horizons.
+- Measurement validity: WARN; R-family correlations exceed the declared 0.8 diagnostic threshold,
+  but coefficient signs are not stable across combinations and the patent family is absent.
 - Research architecture: WARN; current package is Package Tier A, target is Evidence Grade A,
   and the 12-gate registry still contains open controlling gates. Strategy/social claims remain
   quarantined.

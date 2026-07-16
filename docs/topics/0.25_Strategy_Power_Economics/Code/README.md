@@ -10,7 +10,8 @@ hardening lane. The two are separate evidence classes.
 | `Research_UET_Economics_External_Source_Transform.py` | download/parse official BEA/EIA files and a provider-supplied EPI chart export | raw-cache hashes and transform manifest |
 | `Research_UET_Economics_Source_Package.py` | lock source identity, terms, units, coverage, and hashes | source/formula/parameter/holdout/claim gates |
 | `Research_UET_Economics_Panel.py` | annualize FRED, validate coverage, construct indexed proxies, reject imputation | normalized panel and panel-status gate |
-| `Research_UET_Resource_Equation_Audit.py` | test the predeclared `R/N/K/I` diagnostic and rolling-origin candidate rule | resource artifact |
+| Research_UET_Measurement_Validity_Audit.py | compare declared R/N/K/I proxy families and explicit missingness | measurement-validity artifact |
+| Research_UET_Resource_Equation_Audit.py | test the predeclared R/N/K/I diagnostic and rolling-origin candidate rule | resource artifact |
 | `Research_Stone_Balloon_Audit.py` | test monetary-resource mismatch and inflation baselines; gate assets | Stone artifact |
 | `Research_Energy_Density_Audit.py` | separate throughput history from literal density definition | energy artifact |
 | `Research_Wage_Productivity_Audit.py` | reproduce EPI chart construction and report BLS separately | wage artifact |

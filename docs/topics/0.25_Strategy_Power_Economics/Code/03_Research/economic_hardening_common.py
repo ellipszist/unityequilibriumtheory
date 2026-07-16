@@ -50,6 +50,7 @@ VARIABLE_DICTIONARY = RESEARCH_DATA / "uet_economics_variable_dictionary.json"
 CAUSAL_DAG = RESEARCH_DATA / "uet_economics_causal_dag.json"
 CLAIM_MATRIX = RESEARCH_DATA / "uet_economics_claim_matrix.json"
 WARN_GATE_REGISTRY = RESEARCH_DATA / "uet_economics_warn_gate_registry.json"
+MEASUREMENT_ARTIFACT = ARTIFACT_DIR / "0_25_uet_measurement_validity_audit.json"
 
 
 def utc_now() -> str:

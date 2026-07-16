@@ -5,6 +5,21 @@
 
 ## Entries
 
+### 2026-07-16 - Wave 2 measurement-validity sensitivity
+
+- Scope: frozen U.S. 1959-2024 R/N/K/I proxy construct.
+- Added: Research_UET_Measurement_Validity_Audit.py and
+  0_25_uet_measurement_validity_audit.json; compared three R families, three N families,
+  two available K families plus an explicit missing patent family, and three I families.
+- Verified with: py_compile, standalone measurement audit, and aggregate verifier exit zero.
+- Result: WARN. R-family pairwise correlations were 0.8946-0.9864 and exceeded the declared
+  0.8 diagnostic threshold, but coefficient signs were not stable across 54 combinations and
+  USPTO/PatsView patents-per-capita data are absent. No imputation was used.
+- Claim impact: no upgrade; R=N+K+I remains a heuristic proxy diagnostic and Claim Class C.
+- Next controller: close WARN_MEASUREMENT with a predeclared third K family, reliability/error
+  analysis, and invariance/structural-break checks.
+
+
 ### 2026-07-16 - Evidence Grade A roadmap, preregistration, and 12-gate architecture
 
 - Scope: long-term hardening architecture for the U.S.-first to global economics evidence lane.
