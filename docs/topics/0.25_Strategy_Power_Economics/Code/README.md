@@ -43,3 +43,5 @@ The verifier also embeds the preregistered research register, variable dictionar
 claim matrix, and 12-gate WARN registry from Data/03_Research. These contracts define the
 ten-wave path from Package Tier A to the Evidence Grade A target; they do not change the
 current Claim Class C boundary.
+| Research_UET_IMF_WDI_Normalization.py | normalize IMF CPI ISO3 to WDI ISO2 with coverage/no-imputation checks | IMF-WDI normalization artifact |
+| Research_UET_Global_WDI_Region_Leave_One_Out.py | run official-region leave-one-out robustness with aggregate exclusion | regional robustness artifact |
