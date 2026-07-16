@@ -124,7 +124,7 @@ def main() -> int:
             run("Research_UET_Welfare_Audit.py"),
             run("Research_UET_Money_Credit_Inflation_Audit.py"),
             run("Research_UET_Global_WDI_Panel.py"),
-            run("Research_UET_Global_WDI_Leave_One_Out.py"),
+            run("Research_UET_Global_WDI_Leave_One_Out.py"),`n            run("Research_UET_Global_WDI_Region_Leave_One_Out.py"),
             run("Research_UET_Global_WDI_PPP_Comparison.py"),
             run("Research_UET_Causal_Identification_Gate.py"),
             run("Research_UET_Independent_Replication_Gate.py"),
