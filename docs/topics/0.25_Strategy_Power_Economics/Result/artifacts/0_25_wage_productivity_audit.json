@@ -10,7 +10,17 @@
     "real_hourly_compensation_growth_percent": 56.63556394458491,
     "status": "DIAGNOSTIC_COMPLETE"
   },
-  "claim_boundary": "The result can describe source-specific wage/productivity divergence. It cannot identify fiat-money causality, transfer mechanisms, or a policy prescription.",
+  "claim_boundary": "The result can describe source-specific wage/productivity divergence. It cannot identify fiat-money causality, transfer mechanisms, distributional welfare, or a policy prescription.",
+  "distribution_lane": {
+    "blocker": "The frozen primary panel does not contain source-locked median, quantile, household-disposable-income, or industry-composition series; aggregate wage/productivity results cannot be presented as distributional evidence.",
+    "required_sources": [
+      "CPS/CE real median wage",
+      "BEA real median disposable income",
+      "distributional national accounts",
+      "industry and hours controls"
+    ],
+    "status": "BLOCKED"
+  },
   "epi_replication": {
     "comparison_to_book": "Report any difference as a source-vintage or construction difference; do not select the closer result.",
     "coverage": [
@@ -29,7 +39,7 @@
   "formula_ids": [
     "EC25-UET-WAGE-PRODUCTIVITY-GAP"
   ],
-  "generated_at_utc": "2026-07-16T05:14:10.586162+00:00",
+  "generated_at_utc": "2026-07-16T05:24:20.190381+00:00",
   "schema_version": "1.0",
   "status": "DIAGNOSTIC_COMPLETE",
   "topic": "0.25_Strategy_Power_Economics"

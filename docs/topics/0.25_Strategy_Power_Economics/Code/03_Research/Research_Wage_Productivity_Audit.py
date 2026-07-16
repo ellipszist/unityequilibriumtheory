@@ -86,7 +86,12 @@ def main() -> int:
         "formula_ids": ["EC25-UET-WAGE-PRODUCTIVITY-GAP"],
         "epi_replication": epi,
         "bls_comparator": bls,
-        "claim_boundary": "The result can describe source-specific wage/productivity divergence. It cannot identify fiat-money causality, transfer mechanisms, or a policy prescription.",
+        "distribution_lane": {
+            "status": "BLOCKED",
+            "required_sources": ["CPS/CE real median wage", "BEA real median disposable income", "distributional national accounts", "industry and hours controls"],
+            "blocker": "The frozen primary panel does not contain source-locked median, quantile, household-disposable-income, or industry-composition series; aggregate wage/productivity results cannot be presented as distributional evidence.",
+        },
+        "claim_boundary": "The result can describe source-specific wage/productivity divergence. It cannot identify fiat-money causality, transfer mechanisms, distributional welfare, or a policy prescription.",
     }
     write_json(ARTIFACT, artifact)
     print(f"Wage-productivity audit: {artifact['status']}")
