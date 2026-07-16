@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0",
+  "status": "PASS",
+  "rows": 4699,
+  "countries_with_20_plus_years": 186,
+  "panel_path": "C:/Users/santa/Desktop/uet_harness/docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_global_wdi_panel.csv",
+  "missingness_policy": "no imputation"
+}

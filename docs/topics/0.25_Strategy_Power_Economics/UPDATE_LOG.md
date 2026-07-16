@@ -105,3 +105,10 @@
 - Gate records the required World Bank, OECD, ILOSTAT, IMF, BIS, and WID provider roles plus 30-economy/20-year coverage and PPP-versus-exchange-rate policy.
 - Result: `BLOCKED`; no global result is constructed until source vintages, hashes, common coverage, measurement invariance, and leave-one-out artifacts exist.
 - Aggregate verifier rerun: `WARN`; Claim Class C and `DESCRIPTIVE_DIAGNOSTIC_ONLY` remain unchanged.
+
+### 2026-07-16 - Wave 8 WDI source and panel pass
+
+- Archived three World Bank WDI API responses (real GDP per capita, population, energy use per capita) with retrieval URL, timestamp, and SHA-256 manifest under the global raw-data cache.
+- Normalized 4,699 complete country-year rows; 186 economies have at least 20 complete years across all three indicators. No imputation was used.
+- Added `Research_UET_Global_WDI_Panel.py` and the panel artifact; this closes only the WDI sub-lane. OECD/ILOSTAT/IMF/BIS/WID source closure, PPP split, measurement invariance, and external replication remain blocked.
+- Aggregate verifier remains `WARN / Claim C / DESCRIPTIVE_DIAGNOSTIC_ONLY`.

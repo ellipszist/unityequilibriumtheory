@@ -55,6 +55,7 @@ WELFARE_SOURCE_MANIFEST = RAW_ROOT.parent.parent / "welfare" / "uet_us_welfare_s
 WELFARE_ARTIFACT = ARTIFACT_DIR / "0_25_uet_welfare_audit.json"
 MONEY_CREDIT_ARTIFACT = ARTIFACT_DIR / "0_25_money_credit_inflation_audit.json"
 GLOBAL_REPLICATION_ARTIFACT = ARTIFACT_DIR / "0_25_global_replication_readiness.json"
+GLOBAL_WDI_PANEL_ARTIFACT = ARTIFACT_DIR / "0_25_global_wdi_panel.json"
 
 
 def utc_now() -> str:
