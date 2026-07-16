@@ -95,6 +95,16 @@
     {
       "command": [
         "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Code\\03_Research\\Research_UET_Publication_Hardening_Gate.py"
+      ],
+      "exit_code": 0,
+      "script": "docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_UET_Publication_Hardening_Gate.py",
+      "stderr_tail": "",
+      "stdout_tail": "Publication hardening gate: BLOCKED\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
         "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Code\\03_Research\\Research_UET_Global_Replication_Readiness.py"
       ],
       "exit_code": 0,
@@ -584,7 +594,7 @@
         "start_year": 1959
       },
       "formula_boundary": "R/N/K/I are dimensionless proxy constructs after the stated transformations; they are not a dimensional identity.",
-      "generated_at_utc": "2026-07-16T05:53:19.942105+00:00",
+      "generated_at_utc": "2026-07-16T05:54:33.601786+00:00",
       "input_hashes": [
         {
           "path": "docs/data/external/economics/us_historical/fred/2026-07-12/M2SL.csv",
@@ -1624,7 +1634,7 @@
           ],
           "status": "BLOCKED"
         },
-        "generated_at_utc": "2026-07-16T05:53:38.000894+00:00",
+        "generated_at_utc": "2026-07-16T05:54:53.134810+00:00",
         "historical_energy_transition": {
           "blocker": "EIA historical 1776-1945 annual export is absent.",
           "status": "BLOCKED"
@@ -1662,7 +1672,7 @@
             "resource_exporter"
           ]
         },
-        "generated_at_utc": "2026-07-16T05:53:33.809231+00:00",
+        "generated_at_utc": "2026-07-16T05:54:48.807398+00:00",
         "required_providers": {
           "BIS": "credit, debt, financial conditions",
           "ILOSTAT": "productivity, earnings, hours, labor income",
@@ -1783,7 +1793,7 @@
             "R_standardized_additive"
           ]
         },
-        "generated_at_utc": "2026-07-16T05:53:21.364917+00:00",
+        "generated_at_utc": "2026-07-16T05:54:35.150964+00:00",
         "measurement_gates": {
           "R_family_stability": true,
           "at_least_three_declared_families": true,
@@ -2992,7 +3002,7 @@
             "n": 64
           }
         },
-        "generated_at_utc": "2026-07-16T05:53:24.176298+00:00",
+        "generated_at_utc": "2026-07-16T05:54:38.093563+00:00",
         "observations": [
           {
             "credit_to_gdp": 4.231706560198307,
@@ -3790,13 +3800,38 @@
         "status": "PASS",
         "topic": "0.25_Strategy_Power_Economics"
       },
+      "publication_hardening": {
+        "blockers": [
+          "No human reviewer sign-offs are recorded for the current wave.",
+          "No complete publication/replication package is frozen and independently rerun.",
+          "Claim boundary remains descriptive and cannot be promoted by aggregate WARN averaging."
+        ],
+        "claim_boundary": "Publication readiness is not evidence-grade promotion; human review and replication are prerequisites, not substitutes for causal identification.",
+        "required_package": [
+          "frozen raw inputs and hashes",
+          "reproduction instructions",
+          "environment/dependency lock",
+          "all figures/tables generated from code",
+          "limitations and blocked-claims register",
+          "independent replication report"
+        ],
+        "required_signoffs": [
+          "formula audit human reviewer",
+          "data provenance audit human reviewer",
+          "result artifact reviewer",
+          "claim-boundary reviewer"
+        ],
+        "schema_version": "1.0",
+        "status": "BLOCKED",
+        "topic": "0.25_Strategy_Power_Economics"
+      },
       "resource_equation": {
         "claim_boundary": "The model measures temporal association in a U.S. proxy panel. It does not prove R=N+K+I, fiat causality, or an economic law.",
         "controller_status": "NO_PREDECLARED_CANDIDATE_SIGNAL",
         "formula_ids": [
           "EC25-UET-RESOURCE-ENGINE"
         ],
-        "generated_at_utc": "2026-07-16T05:53:35.161418+00:00",
+        "generated_at_utc": "2026-07-16T05:54:50.241720+00:00",
         "parameter_policy": {
           "candidate_signal_threshold": {
             "bootstrap_interval_requirement": "95 percent interval for squared-error difference lies below zero",
@@ -4155,7 +4190,7 @@
         "formula_ids": [
           "EC25-UET-MONETARY-RESOURCE-MISMATCH"
         ],
-        "generated_at_utc": "2026-07-16T05:53:36.637007+00:00",
+        "generated_at_utc": "2026-07-16T05:54:51.774517+00:00",
         "inflation_baseline_comparison": [
           {
             "acceptance_rule": "Candidate requires at least 10 percent lower median rolling-origin RMSE than every named baseline and a 95 percent block-bootstrap squared-error interval below zero.",
@@ -4552,7 +4587,7 @@
         "formula_ids": [
           "EC25-UET-WAGE-PRODUCTIVITY-GAP"
         ],
-        "generated_at_utc": "2026-07-16T05:53:39.408650+00:00",
+        "generated_at_utc": "2026-07-16T05:54:54.551172+00:00",
         "schema_version": "1.0",
         "status": "DIAGNOSTIC_COMPLETE",
         "topic": "0.25_Strategy_Power_Economics"
@@ -4570,7 +4605,7 @@
           ],
           "rows": 40
         },
-        "generated_at_utc": "2026-07-16T05:53:22.818989+00:00",
+        "generated_at_utc": "2026-07-16T05:54:36.616960+00:00",
         "missing_sources": [],
         "no_imputation": true,
         "observations": [
@@ -5511,7 +5546,7 @@
     "EC25-UET-MONETARY-RESOURCE-MISMATCH",
     "EC25-UET-WAGE-PRODUCTIVITY-GAP"
   ],
-  "generated_at_utc": "2026-07-16T05:53:39.575540+00:00",
+  "generated_at_utc": "2026-07-16T05:54:54.701892+00:00",
   "holdout_policy": {
     "blockers": [],
     "controller_status": null,
@@ -5537,7 +5572,7 @@
     "controller_status": null,
     "exists": true,
     "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_us_macro_panel_status.json",
-    "sha256": "0eab758d5e22a8bbfb1695b02783d28f8fc5557eb8a43e9dc06c43ff0e058970",
+    "sha256": "e58c2185da28beb957d21b2e00beeaa43c544337138734687f8f02701da54b74",
     "status": "PASS"
   },
   "parameter_policy": {
@@ -5881,7 +5916,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_energy_density_audit.json",
-      "sha256": "b5de4414e89f4363f2dc55d0f532159fcbd271df32c5c1ea4ed7274485c001f0",
+      "sha256": "38137ea51d474214cf7c2d9dc62ce131a4604f2746cb8052c9ec71faf4be25b9",
       "status": "WARN"
     },
     "global_replication_readiness": {
@@ -5894,7 +5929,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_global_replication_readiness.json",
-      "sha256": "f2c64b437b0fbcf1c272f061b4cdb290f38d95629c9687855123fffee906037b",
+      "sha256": "381831b9c4ce4a8d03e83e2a19afeb1bea56589f0da94c4a25de8c4addcb85e8",
       "status": "BLOCKED"
     },
     "global_wdi_leave_one_out": {
@@ -5952,7 +5987,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_measurement_validity_audit.json",
-      "sha256": "5fbcffb24646090b56edf55cb6bcd47d27c9840a1ea73516a9f1afe0071e09c7",
+      "sha256": "b471d2668a6732a68af46b4b3e031c9ad8fd5dafc9555c4df2621f47246f168b",
       "status": "WARN"
     },
     "money_credit_inflation": {
@@ -5960,15 +5995,27 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_money_credit_inflation_audit.json",
-      "sha256": "fcf76f351f116499e573691065e08ad78c31242b228483cab6895c126f767dca",
+      "sha256": "fb28c6a15575ec58fa8710295c60f96c6bc228934fbc1a195f24db86301733df",
       "status": "PASS"
+    },
+    "publication_hardening": {
+      "blockers": [
+        "No human reviewer sign-offs are recorded for the current wave.",
+        "No complete publication/replication package is frozen and independently rerun.",
+        "Claim boundary remains descriptive and cannot be promoted by aggregate WARN averaging."
+      ],
+      "controller_status": null,
+      "exists": true,
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_publication_hardening_gate.json",
+      "sha256": "9c2461fa1bbe3335c81e8d8db84b0d2ce74265962a592f0008382cb9b6a1ace6",
+      "status": "BLOCKED"
     },
     "resource_equation": {
       "blockers": [],
       "controller_status": "NO_PREDECLARED_CANDIDATE_SIGNAL",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_resource_equation_audit.json",
-      "sha256": "8f2b899b558efe3948c6a39b8cd34f0798415dcae01a447e3e0cf3103eb3e50f",
+      "sha256": "21c0f7d4b5aded2c6b209a77ea7895668552256852513e25c413f2a24d61bcaa",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "stone_balloon": {
@@ -5976,7 +6023,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_stone_balloon_audit.json",
-      "sha256": "1c688785222db9e4b0f91455352a3ff48fdd27967a1cf8653933345c2ec39e14",
+      "sha256": "87c6f7fddf71813ff98f4f1db7d954e148fe246c3803ba75880a361a4e2fb6dd",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "wage_productivity": {
@@ -5984,7 +6031,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_wage_productivity_audit.json",
-      "sha256": "cc42fc0e9bbd9ac150dd64a59e2ca60c74e6ce77ad75944b9a26777cd4469fdf",
+      "sha256": "d3cc060e7044ed45ec223c2b6b329a1ee4a3014875c85c3432f7e13976b0aef6",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "welfare": {
@@ -5992,7 +6039,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_welfare_audit.json",
-      "sha256": "8bcc82c75f56ea37ad345446a37fb86986db1e6d4020d10f445791a1656fa693",
+      "sha256": "0c74b0c98b70830a0db0d589db17176320bd9a30f31a54192018a18f8281dcc3",
       "status": "PASS"
     }
   },
