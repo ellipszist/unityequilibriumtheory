@@ -37,6 +37,12 @@ The legacy descriptive command is separate:
   combinations, sign stability, and missing-family blockers.
 - 0_25_uet_welfare_audit.json: source-locked rent/OER/income/house-price coverage and
   no-imputation welfare outcomes.
+- `0_25_fed_z1_funding_mapping_probe.json`: source-locked 1959-2024 sectoral flow mapping,
+  rounded capital-account identity check, and explicit payer/resource visibility blockers.
+- `0_25_bls_io_source_gate.json`: BLS input-output source identity, 1997-2024 coverage claim,
+  access observation, provider quality notice, and no-use-until-validated gate.
+- `0_25_fed_z1_funding_mix_audit.json`: signed net-flow associations, payment-flow scale,
+  period summaries, and explicit `NOT_IDENTIFIED` gross funding-share gate.
 - aggregate `execution_gate`: all verifier subcommands exit zero.
 - aggregate legacy_claim_quarantine: every legacy markdown note contains the required
   Legacy claim boundary warning before it can be treated as topic documentation.
@@ -67,6 +73,11 @@ per-capita growth. Pre/post regime summaries use 1959-1970 and 1974-2024, exclud
 - rolling-origin boundaries, baseline errors, median and aggregate RMSE, and bootstrap intervals;
 - asset-lane status, energy-definition gate, measurement-validity result, failures, limitations,
   and blocked claims;
+- funding-source mapping status, Fed Z.1 archive hash, series roles/units, accounting-bridge
+  residuals, payer/resource visibility blockers, and no-imputation coverage;
+- BLS I-O source gate status, URL, archive identity (when present), quality notice, and access
+  blocker;
+- funding-mix association rows, lag policy, signed-ratio definitions, and gross-share blocker;
 - command exit codes, legacy-claim quarantine result, and the current controller status;
 - a self-contained evidence_bundle containing source records/hashes, transform and panel
   payloads, formula/parameter/holdout contracts, research register, variable dictionary,

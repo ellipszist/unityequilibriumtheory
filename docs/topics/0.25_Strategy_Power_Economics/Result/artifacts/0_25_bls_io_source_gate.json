@@ -1,0 +1,40 @@
+{
+  "access_observation": {
+    "automated_retrieval_status": "ACCESS_DENIED",
+    "next_allowed_action": "Obtain the provider file through an approved manual or official access path, record terms/release/hash, then rerun this gate.",
+    "observation": "The official download endpoint returned an Access Denied response to the repository retrieval attempt; no user-agent spoofing, anti-bot bypass, or mirror substitution was used."
+  },
+  "archive": {
+    "bytes": null,
+    "exists": false,
+    "member_count": null,
+    "path": "C:/Users/santa/Desktop/uet_harness/docs/data/external/economics/us_historical/bls_io/2026-07-16/input-output.zip",
+    "sha256": null
+  },
+  "blockers": [
+    "The BLS researcher ZIP is not archived in the frozen package.",
+    "No firm/project payer-payee identities or invoice-level payment records are supplied by an aggregate input-output matrix.",
+    "Physical natural-resource quantities still require a concordant EIA/USGS/FAOSTAT or environmental satellite-account join."
+  ],
+  "claim_boundary": "This gate establishes source identity and a quality/access blocker only. It does not provide payment-level flows, causal evidence, or a payer-resource result.",
+  "controller_status": "BLS_IO_QUALITY_AND_ACCESS_GATE",
+  "generated_at_utc": "2026-07-16T08:31:10.576001+00:00",
+  "provider_quality_notice": {
+    "effect": "No matrix result may be used until the replacement or researcher ZIP is independently checked against the notice and archived with a hash.",
+    "notice_date": "2026-02-06",
+    "text": "BLS page says the three public matrix files were removed because they included incorrect values for the percentage of total industry output that is value added; updated tables are pending."
+  },
+  "schema_version": "1.0",
+  "source": {
+    "coverage_claimed_by_provider": [
+      1997,
+      2024
+    ],
+    "data_role": "commodity flows from production through intermediate industry use to final users; labor/resource concordance candidate",
+    "download_url": "https://www.bls.gov/emp/input-output/input-output.zip",
+    "official_page": "https://www.bls.gov/emp/data/input-output-matrix.htm",
+    "provider": "U.S. Bureau of Labor Statistics Employment Projections",
+    "upstream_note": "BLS states the matrices are developed from input-output data initially developed by BEA."
+  },
+  "status": "BLOCKED"
+}

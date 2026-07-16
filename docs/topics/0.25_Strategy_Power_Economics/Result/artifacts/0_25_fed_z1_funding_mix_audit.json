@@ -1,0 +1,242 @@
+{
+  "blockers": [
+    "No gross earmarked funding shares are identified.",
+    "Same-year and lead correlations are descriptive and non-causal.",
+    "BLS input-output archive and physical resource concordance remain unavailable or quality-blocked."
+  ],
+  "claim_boundary": "The audit reports signed sector-level co-movements and payment-flow scale. It cannot answer which source paid for a particular purchase, nor connect money to labor and natural-resource transformation at project level.",
+  "controller_status": "FUNDING_MIX_ASSOCIATION_DESCRIPTIVE_ONLY",
+  "coverage": {
+    "complete_rows": 66,
+    "no_imputation": true,
+    "observed": [
+      1959,
+      2024
+    ],
+    "requested": [
+      1959,
+      2024
+    ],
+    "rows": 66
+  },
+  "funding_flow_associations": {
+    "corporate_equities": {
+      "lags": {
+        "lead_0_years": {
+          "correlation": -0.8374257868706034,
+          "interpretation": "descriptive lead association only; not funding direction or causality",
+          "rows": 66
+        },
+        "lead_1_years": {
+          "correlation": -0.6832634774260842,
+          "interpretation": "descriptive lead association only; not funding direction or causality",
+          "rows": 65
+        },
+        "lead_2_years": {
+          "correlation": -0.5269559972569055,
+          "interpretation": "descriptive lead association only; not funding direction or causality",
+          "rows": 64
+        }
+      },
+      "series": "corporate_equities_liability"
+    },
+    "debt_securities": {
+      "lags": {
+        "lead_0_years": {
+          "correlation": 0.6484574346612473,
+          "interpretation": "descriptive lead association only; not funding direction or causality",
+          "rows": 66
+        },
+        "lead_1_years": {
+          "correlation": 0.6639262288922685,
+          "interpretation": "descriptive lead association only; not funding direction or causality",
+          "rows": 65
+        },
+        "lead_2_years": {
+          "correlation": 0.7568240236519791,
+          "interpretation": "descriptive lead association only; not funding direction or causality",
+          "rows": 64
+        }
+      },
+      "series": "debt_securities_liability"
+    },
+    "equity_fund_shares": {
+      "lags": {
+        "lead_0_years": {
+          "correlation": -0.533491704418407,
+          "interpretation": "descriptive lead association only; not funding direction or causality",
+          "rows": 66
+        },
+        "lead_1_years": {
+          "correlation": -0.3048003431627155,
+          "interpretation": "descriptive lead association only; not funding direction or causality",
+          "rows": 65
+        },
+        "lead_2_years": {
+          "correlation": -0.08614804961549581,
+          "interpretation": "descriptive lead association only; not funding direction or causality",
+          "rows": 64
+        }
+      },
+      "series": "equity_fund_shares_liability"
+    },
+    "internal_saving": {
+      "lags": {
+        "lead_0_years": {
+          "correlation": 0.8515800263265662,
+          "interpretation": "descriptive lead association only; not funding direction or causality",
+          "rows": 66
+        },
+        "lead_1_years": {
+          "correlation": 0.886308021250583,
+          "interpretation": "descriptive lead association only; not funding direction or causality",
+          "rows": 65
+        },
+        "lead_2_years": {
+          "correlation": 0.8753535858625164,
+          "interpretation": "descriptive lead association only; not funding direction or causality",
+          "rows": 64
+        }
+      },
+      "series": "net_saving"
+    },
+    "loans": {
+      "lags": {
+        "lead_0_years": {
+          "correlation": 0.5873885337852005,
+          "interpretation": "descriptive lead association only; not funding direction or causality",
+          "rows": 66
+        },
+        "lead_1_years": {
+          "correlation": 0.47109355041716494,
+          "interpretation": "descriptive lead association only; not funding direction or causality",
+          "rows": 65
+        },
+        "lead_2_years": {
+          "correlation": 0.37415373110718425,
+          "interpretation": "descriptive lead association only; not funding direction or causality",
+          "rows": 64
+        }
+      },
+      "series": "loans_liability"
+    }
+  },
+  "funding_share_identification": {
+    "reason": "Z.1 reports net sectoral transactions. A debt issuance, retained saving, or equity transaction is not earmarked to a specific capital-formation project, and liability flows can include refinancing, redemptions, or repurchases.",
+    "required_evidence": [
+      "firm/project cash-flow or payment ledger",
+      "counterparty concordance",
+      "industry/commodity use table",
+      "labor-hours and physical resource quantities"
+    ],
+    "status": "NOT_IDENTIFIED"
+  },
+  "generated_at_utc": "2026-07-16T08:31:12.076236+00:00",
+  "payment_flow_scale": {
+    "capital_formation": {
+      "interpretation": "sector-level flow scale, not a payer identity or earmarked use",
+      "ratio_to_gross_value_added": {
+        "mean": 0.05444005480888725,
+        "median": 0.05317270940595591,
+        "rows": 66
+      },
+      "series": "net_capital_formation"
+    },
+    "compensation": {
+      "interpretation": "sector-level flow scale, not a payer identity or earmarked use",
+      "ratio_to_gross_value_added": {
+        "mean": 0.618657809323286,
+        "median": 0.628602387892464,
+        "rows": 66
+      },
+      "series": "compensation_paid"
+    },
+    "dividends": {
+      "interpretation": "sector-level flow scale, not a payer identity or earmarked use",
+      "ratio_to_gross_value_added": {
+        "mean": 0.06104771843764053,
+        "median": 0.0519459601949709,
+        "rows": 66
+      },
+      "series": "dividends_paid"
+    },
+    "interest": {
+      "interpretation": "sector-level flow scale, not a payer identity or earmarked use",
+      "ratio_to_gross_value_added": {
+        "mean": 0.06187988380951237,
+        "median": 0.0625527498778375,
+        "rows": 66
+      },
+      "series": "interest_paid"
+    },
+    "taxes": {
+      "interpretation": "sector-level flow scale, not a payer identity or earmarked use",
+      "ratio_to_gross_value_added": {
+        "mean": 0.0394577731614766,
+        "median": 0.03469994400509585,
+        "rows": 66
+      },
+      "series": "taxes_paid"
+    }
+  },
+  "period_net_flow_ratios": {
+    "1959-1970": {
+      "interpretation": "signed net-flow ratios; they must not be summed as funding shares",
+      "median_flow_to_capital_formation": {
+        "corporate_equities_liability": 0.057054991049352285,
+        "debt_securities_liability": 0.2624705481956934,
+        "equity_fund_shares_liability": 0.06987115525208219,
+        "loans_liability": 0.39584181079845515,
+        "net_saving": 1.0490221677548361
+      },
+      "rows": 12
+    },
+    "1974-1990": {
+      "interpretation": "signed net-flow ratios; they must not be summed as funding shares",
+      "median_flow_to_capital_formation": {
+        "corporate_equities_liability": -0.06627289338375898,
+        "debt_securities_liability": 0.4328246510265838,
+        "equity_fund_shares_liability": 0.01771918582465134,
+        "loans_liability": 0.532153058336121,
+        "net_saving": 0.8487432448357717
+      },
+      "rows": 17
+    },
+    "1991-2007": {
+      "interpretation": "signed net-flow ratios; they must not be summed as funding shares",
+      "median_flow_to_capital_formation": {
+        "corporate_equities_liability": -0.17891825224815297,
+        "debt_securities_liability": 0.474218745320259,
+        "equity_fund_shares_liability": 0.08820666698931497,
+        "loans_liability": 0.38391988264172316,
+        "net_saving": 0.8889952980453968
+      },
+      "rows": 17
+    },
+    "2008-2019": {
+      "interpretation": "signed net-flow ratios; they must not be summed as funding shares",
+      "median_flow_to_capital_formation": {
+        "corporate_equities_liability": -0.9326826517883301,
+        "debt_securities_liability": 0.7840688392902537,
+        "equity_fund_shares_liability": -0.24051202016535445,
+        "loans_liability": 0.36350888959726413,
+        "net_saving": 1.1925055272811207
+      },
+      "rows": 12
+    },
+    "2020-2024": {
+      "interpretation": "signed net-flow ratios; they must not be summed as funding shares",
+      "median_flow_to_capital_formation": {
+        "corporate_equities_liability": -0.5838559246823012,
+        "debt_securities_liability": 0.3883634859373418,
+        "equity_fund_shares_liability": -0.24020718821650025,
+        "loans_liability": 0.5507612982177301,
+        "net_saving": 1.050093605422659
+      },
+      "rows": 5
+    }
+  },
+  "schema_version": "1.0",
+  "source_role": "Fed Z.1 S11.1.i.a annual nonfinancial corporate business flows",
+  "status": "WARN"
+}

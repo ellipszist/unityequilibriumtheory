@@ -31,6 +31,8 @@ required file is absent or its hash does not match the manifest, the panel gate 
 | BEA Fixed Assets | https://www.bea.gov/itable/fixed-assets | `docs/data/external/economics/us_historical/bea/2026-07-12/bea_fixed_assets_annual.csv` | chain-type quantity indexes, 2017=100 | Table 1.2/2.8 extraction; per-worker proxies | `K` and `I` |
 | EIA Table 1.3 | https://www.eia.gov/totalenergy/data/browser/csv.php?tbl=T01.03&freq=A | `docs/data/external/economics/us_historical/eia/2026-07-12/eia_primary_energy_annual.csv` | quadrillion Btu/year | annual `TETCBUS`; divide by population, rebase | `R` energy |
 | EPI provider chart | https://data.epi.org/productivity/productivity_levels/line/year/national/real_dollars_per_hour_2024/productivity_pay | `docs/data/external/economics/us_historical/epi/2026-07-12/epi_productivity_pay.csv` | provider real-dollar-per-hour chart values | rebase both series to 1979=100 | wage construction |
+| Fed Z.1 `S11.1.i.a` | https://www.federalreserve.gov/releases/z1/ | `docs/data/external/economics/us_historical/fed_z1/2026-07-16/z1_csv_files.zip` | millions of dollars; annual transactions, NSA | select sectoral flow codes; freeze 1959-2024; no imputation | funding channels and accounting bridge |
+| BLS Input-Output researcher ZIP | https://www.bls.gov/emp/data/input-output-matrix.htm | `docs/data/external/economics/us_historical/bls_io/2026-07-16/input-output.zip` (pending) | nominal and chain-weighted I-O matrices; provider coverage 1997-2024 | archive/hash/quality gate before parsing | payer-resource industry/commodity flow candidate |
 
 The exact original filenames, bytes, SHA-256 hashes, retrieval vintage, per-input UTC retrieval
 timestamp, coverage, terms, and benchmark roles are machine-recorded in
@@ -90,3 +92,7 @@ and PPP/exchange-rate policy are frozen.
   energy-density claims remain blocked.
 - LBMA annual gold and a licensed S&P 500 total-return export are absent.
 - Legacy market/economy working copies still lack complete upstream retrieval metadata.
+- Fed Z.1 sectoral flow mapping is complete for the frozen years, but payer/payee and
+  natural-resource concordance data are not yet source-locked.
+- BLS I-O archive is pending because the official endpoint returned Access Denied and the
+  provider quality notice requires replacement-file validation.

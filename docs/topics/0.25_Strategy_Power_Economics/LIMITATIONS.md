@@ -22,6 +22,17 @@ presence and rerunnability of standards artifacts; it is not a theory confirmati
   Book's typical-worker series. BLS is reported as a separate comparator.
 - Legacy Yahoo-style market files, the global economy JSON, and daily snapshot have incomplete
   upstream metadata and remain descriptive working copies only.
+- Fed Z.1 S11.1.i.a now supplies a complete annual sectoral accounting bridge, but it does not
+  identify invoice-level payer/payee, funding provenance for a particular investment, or a
+  concordant labor and natural-resource extraction quantity. The current release is revised
+  2026:Q1, so historical-as-of vintage testing remains open.
+- The official BLS I-O source is identified for 1997-2024, but the repository retrieval was
+  access-denied and the provider has a 2026-02-06 quality notice for removed matrix files. No
+  BLS matrix result is used until an approved, hashed replacement archive passes validation.
+
+- Z.1 funding-mix ratios are signed net transactions, not gross financing shares: debt can be
+  refinancing or repayment, equity can be issuance or repurchase, and saving is not earmarked
+  to a specific investment.
 
 ## Model and inference limitations
 

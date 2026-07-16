@@ -5,6 +5,42 @@
 
 ## Entries
 
+### 2026-07-16 - Fed Z.1 signed funding-mix audit
+
+- Scope: distinguish descriptive net saving/debt/equity associations from a true funding-share claim.
+- Wave type: artifact pass and claim-boundary pass.
+- Added: `Research_UET_Fed_Z1_Funding_Mix_Audit.py`, aggregate/readiness integration, and signed-ratio definitions.
+- Verified with: py_compile, standalone audit (66 complete rows, 1959-2024), and aggregate verifier exit zero.
+- Result: `WARN` / `FUNDING_MIX_ASSOCIATION_DESCRIPTIVE_ONLY`; same-year and 0-2-year lead correlations plus payment-flow scale are reported.
+- Blocker narrowed: the artifact now machine-reads `funding_share_identification.status = NOT_IDENTIFIED`; net debt/equity/saving flows cannot be summed as project funding shares.
+- Still open: gross payment ledger, counterparty/project identity, BLS I-O replacement archive, and physical resource/labor concordance.
+- Next controller: source-validated industry/commodity flow join; no fiat or profit-causality wording is permitted.
+- Claim impact: no upgrade.
+
+### 2026-07-16 - BLS input-output source and quality gate
+
+- Scope: industry/commodity flow source needed to connect payer channels to labor and resource use.
+- Wave type: source pass and access/quality gate pass.
+- Added: `Research_UET_BLS_IO_Source_Gate.py`, aggregate-verifier/readiness integration, and the BLS source contract.
+- Verified with: py_compile, official page metadata review, and aggregate verifier exit zero.
+- Result: `BLOCKED` because the official automated endpoint returned Access Denied; the provider page also records a 2026-02-06 removal notice for matrix files with incorrect value-added percentages. No BLS matrix rows enter the primary evidence.
+- Blocker narrowed: the required coverage is now explicit (1997-2024; production -> intermediate industry use -> final users), with a named approved-access and quality-validation requirement.
+- Still open: obtain an approved official archive, hash it, inspect layout/units, and join it to EIA/USGS/FAOSTAT physical resource and BLS labor measures.
+- Next controller: BLS I-O replacement archive and payer/resource concordance; Fed Z.1 remains the usable aggregate accounting lane.
+- Claim impact: no upgrade; this gate is source readiness only.
+
+### 2026-07-16 - Fed Z.1 sectoral funding mapping and accounting bridge
+
+- Scope: payer/funding-source visibility for the Book 1 money-flow question.
+- Wave type: source pass, artifact pass, and blocker-narrowing gate pass.
+- Added: `Research_UET_Fed_Z1_Funding_Mapping_Probe.py`, its source/hash-linked artifact, and aggregate-verifier integration.
+- Verified with: py_compile, standalone Fed Z.1 mapping probe, and `Verify_UET_Economics_Hardening.py` (exit zero).
+- Result: `WARN` / `FUNDING_FLOW_MAPPING_DESCRIPTIVE_ONLY`; 66 complete annual rows (1959-2024) from `S11.1.i.a`; the capital-account identity residual is at most 1 million dollars from published rounding.
+- Blocker narrowed: observed aggregate channels now separate labor payments, taxes, interest, dividends, internal saving, debt, equity transactions, and capital formation.
+- Still open: counterparty/project-level payer provenance, historical-as-of revision vintages, and concordant labor/physical natural-resource extraction data.
+- Next controller: payer/resource provenance join; energy-density remains the topic's separate concrete sub-lane blocker.
+- Claim impact: no upgrade; sectoral accounting mapping is descriptive and does not identify which funding source paid for a particular investment or prove fiat causality.
+
 ### 2026-07-16 - Wave 3 cost-of-living and household-welfare lane
 
 - Scope: U.S. household welfare separate from aggregate GDP.

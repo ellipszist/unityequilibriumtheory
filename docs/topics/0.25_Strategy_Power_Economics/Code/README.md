@@ -47,3 +47,8 @@ current Claim Class C boundary.
 | Research_UET_Global_WDI_Region_Leave_One_Out.py | run official-region leave-one-out robustness with aggregate exclusion | regional robustness artifact |
 | Research_UET_Funding_Source_Proxy_Panel.py | construct no-imputation annual sectoral proxies for profits, investment, business credit, and dividends | funding proxy panel |
 | Research_UET_Funding_Source_Association_Audit.py | calculate descriptive profit/credit/dividend associations with investment growth | funding association artifact |
+| Research_UET_Funding_Source_Lag_Association.py | report predeclared 0-2 year funding-source lag associations | funding lag artifact |
+| Research_UET_Fed_Z1_Source_Probe.py | archive and count official Fed Z.1 release tables | Fed Z.1 source probe |
+| Research_UET_Fed_Z1_Funding_Mapping_Probe.py | map sectoral wages, taxes, interest, dividends, saving, capital formation, debt, and equity flows; check the rounded accounting bridge | Fed Z.1 funding mapping artifact |
+| Research_UET_BLS_IO_Source_Gate.py | record the official BLS I-O source identity, coverage, access observation, and provider quality notice without bypassing controls | BLS I-O source gate |
+| Research_UET_Fed_Z1_Funding_Mix_Audit.py | compute signed 0-2-year net-flow associations and payment-flow scale; reject gross earmarked-share interpretation | funding mix audit artifact |

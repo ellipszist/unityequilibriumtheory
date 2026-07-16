@@ -1,17 +1,16 @@
 {
   "schema_version": "1.0",
-  "topic": "0.25_Strategy_Power_Economics",
   "status": "PASS",
-  "rows": 4699,
-  "countries_evaluated": 222,
-  "full_panel_change_correlation": 0.3861605803537091,
-  "full_panel_change_pairs": 4477,
+  "rows": 1558,
+  "countries_evaluated": 199,
+  "full_panel_change_correlation": -0.024214161397189706,
+  "full_panel_change_pairs": 1359,
   "leave_one_country_out": {
-    "positive": 222,
-    "negative": 0,
-    "min": 0.37852334619600164,
-    "median": 0.38605541365087404,
-    "max": 0.391624409280949
+    "positive": 4,
+    "negative": 195,
+    "min": -0.055167188963125606,
+    "median": -0.024214161397189706,
+    "max": 0.07202567710132057
   },
   "interpretation": "Descriptive robustness only; not causal and not measurement invariance.",
   "blockers": [

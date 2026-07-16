@@ -72,6 +72,9 @@ flowchart LR
 | Household welfare | Rent, OER, real median household income, and FHFA house-price series; 40 annual observations 1985-2024 | 0_25_uet_welfare_audit.json | descriptive cost-of-living pressure separate from GDP |
 | Resource engine | Primary 3-year and 1/5-year sensitivities complete; candidate signal false | 0_25_uet_resource_equation_audit.json | proxy association and baseline comparison |
 | Monetary-resource mismatch | 1/3/5-year baseline comparisons complete; candidate signal false | `0_25_stone_balloon_audit.json` | non-causal temporal comparison |
+| Funding-source flow | Fed Z.1 S11.1.i.a maps 66 annual sectoral flow rows; accounting bridge is rounded-pass, payer/resource linkage remains blocked | `0_25_fed_z1_funding_mapping_probe.json` | sectoral accounting diagnostics only |
+| Payer-resource input-output source | BLS official 1997-2024 I-O source identified, but automated archive is access-blocked and provider quality notice is open | `0_25_bls_io_source_gate.json` | source/access/quality gate only |
+| Funding mix audit | Fed Z.1 same-year/lead associations and payment-flow scale computed; gross earmarked shares not identified | `0_25_fed_z1_funding_mix_audit.json` | signed sector-level diagnostic only |
 | Wage-productivity | EPI export reproduced; BLS comparator reported separately | `0_25_wage_productivity_audit.json` | construction/vintage findings |
 | Energy | 1959-2024 throughput ready; 1776-1945 history absent; literal density blocked | `0_25_energy_density_audit.json` | descriptive energy lane only |
 | Pegged-stone assets | LBMA and licensed S&P total-return exports absent | `asset_lane` in stone artifact | no peg or asset-superiority claim |
@@ -85,6 +88,8 @@ flowchart LR
   false. The 1-year and 5-year sensitivities also fail the predeclared candidate rule.
 - Stone-in-the-Balloon: the mismatch does not beat the inflation autoregression at any
   horizon; the 3-year median improvement versus that baseline is `-67.0%`.
+- Funding-source mapping: Fed Z.1 provides 66 complete annual nonfinancial-corporate flow rows (1959-2024), including wages, taxes, interest, dividends, net saving, capital formation, debt and equity transactions. The mapped capital-account identity is within `1` million dollars of published rounding, but counterparty/project provenance and physical resource links are absent.
+- Funding-mix audit: the Z.1 panel reports signed net-flow correlations and flow-to-GVA/capital-formation scale, but explicitly returns `NOT_IDENTIFIED` for gross funding shares because debt/equity flows can include refinancing, redemptions, or repurchases.
 - Wage lane: the versioned EPI chart gives productivity growth `80.24%` and published total
   compensation growth `28.38%` for 1979-2021. The Book quote (`64.6%` and `17.3%`) is retained
   as a source/construction comparison. The BLS comparator gives `125.02%` and `56.64%`.

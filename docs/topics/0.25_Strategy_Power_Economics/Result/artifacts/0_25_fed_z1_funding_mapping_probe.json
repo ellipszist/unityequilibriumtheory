@@ -1,0 +1,289 @@
+{
+  "accounting_bridge": {
+    "financial_vs_capital_gap_summary_millions": {
+      "count": 66,
+      "max_abs": 667086.0,
+      "mean": -57176.954545454544,
+      "median": -36167.0
+    },
+    "identity": "net_lending_capital = net_saving - net_capital_formation - net_capital_transfers_paid",
+    "identity_status": "PASS_WITH_ROUNDING",
+    "interpretation": "Exact within the published rounded table for the mapped rows; the financial-account gap is a reconciliation/statistical item, not a payer trace.",
+    "residual_summary_millions": {
+      "count": 66,
+      "max_abs": 1.0,
+      "mean": -0.06060606060606061,
+      "median": 0.0
+    }
+  },
+  "blockers": [
+    "Z.1 current-release vintage is revised; historical-as-of vintages are still needed for real-time tests.",
+    "Counterparty and project-level payer provenance is not identified by the aggregate S11.1.i.a table.",
+    "Natural-resource extraction and labor-use links require a separate physical/industry panel and explicit concordance."
+  ],
+  "claim_boundary": "The mapping establishes a reproducible sectoral accounting bridge and identifies observable funding channels. It does not establish payment-level provenance, resource causality, or fiat-money causality.",
+  "controller_status": "FUNDING_FLOW_MAPPING_DESCRIPTIVE_ONLY",
+  "coverage": {
+    "complete_rows": 66,
+    "missing_required_rows": 0,
+    "no_imputation": true,
+    "observed": [
+      1959,
+      2024
+    ],
+    "requested": [
+      1959,
+      2024
+    ],
+    "rows": 66
+  },
+  "generated_at_utc": "2026-07-16T08:31:09.119876+00:00",
+  "payer_and_source_visibility": {
+    "not_observable_from_this_table": [
+      "individual payer-payee identity or invoice-level exchange",
+      "whether a particular investment dollar came from profit, a new loan, equity issuance, or a transfer",
+      "labor hours and physical natural-resource extraction linked to each payment",
+      "innovation/output transformation at project or firm level"
+    ],
+    "observable_aggregate_flows": [
+      "nonfinancial corporate business pays compensation/wages, taxes, interest, dividends, and transfers",
+      "net saving is an internal-funding proxy after current-account flows",
+      "debt and equity liability transactions are observable funding channels",
+      "capital formation is an observed real-use destination"
+    ],
+    "required_join_sources": [
+      "BEA Supply-Use/Input-Output accounts for industry-to-industry purchases and compensation",
+      "BLS hours/occupations and productivity for labor input",
+      "EIA, USGS, and FAOSTAT source-level extraction/energy/material quantities",
+      "Census business/transaction microdata or administrative payment data for payer-payee provenance"
+    ]
+  },
+  "schema_version": "1.0",
+  "series_mapping": {
+    "compensation_paid": {
+      "coverage": [
+        1959,
+        2024
+      ],
+      "label": "compensation of employees paid",
+      "role": "labor_payment",
+      "series_code": "FU106025005.A",
+      "source_vintage": "Fed Z.1 current release 2026:Q1; observations frozen through 2024",
+      "table": "csv/S11_1_i_a.csv",
+      "unit": "millions of dollars; annual transactions, not seasonally adjusted"
+    },
+    "corporate_bonds_liability": {
+      "coverage": [
+        1959,
+        2024
+      ],
+      "label": "corporate bonds liability",
+      "role": "debt_funding",
+      "series_code": "FU103163005.A",
+      "source_vintage": "Fed Z.1 current release 2026:Q1; observations frozen through 2024",
+      "table": "csv/S11_1_i_a.csv",
+      "unit": "millions of dollars; annual transactions, not seasonally adjusted"
+    },
+    "corporate_equities_liability": {
+      "coverage": [
+        1959,
+        2024
+      ],
+      "label": "corporate equities liability",
+      "role": "equity_funding",
+      "series_code": "FU103164105.A",
+      "source_vintage": "Fed Z.1 current release 2026:Q1; observations frozen through 2024",
+      "table": "csv/S11_1_i_a.csv",
+      "unit": "millions of dollars; annual transactions, not seasonally adjusted"
+    },
+    "debt_securities_liability": {
+      "coverage": [
+        1959,
+        2024
+      ],
+      "label": "debt securities liability",
+      "role": "debt_funding",
+      "series_code": "FU104122005.A",
+      "source_vintage": "Fed Z.1 current release 2026:Q1; observations frozen through 2024",
+      "table": "csv/S11_1_i_a.csv",
+      "unit": "millions of dollars; annual transactions, not seasonally adjusted"
+    },
+    "dividends_paid": {
+      "coverage": [
+        1959,
+        2024
+      ],
+      "label": "dividends paid",
+      "role": "equity_payment",
+      "series_code": "FU106121001.A",
+      "source_vintage": "Fed Z.1 current release 2026:Q1; observations frozen through 2024",
+      "table": "csv/S11_1_i_a.csv",
+      "unit": "millions of dollars; annual transactions, not seasonally adjusted"
+    },
+    "equity_fund_shares_liability": {
+      "coverage": [
+        1959,
+        2024
+      ],
+      "label": "equity and investment fund shares liability",
+      "role": "equity_funding",
+      "series_code": "FU103181005.A",
+      "source_vintage": "Fed Z.1 current release 2026:Q1; observations frozen through 2024",
+      "table": "csv/S11_1_i_a.csv",
+      "unit": "millions of dollars; annual transactions, not seasonally adjusted"
+    },
+    "gross_value_added": {
+      "coverage": [
+        1959,
+        2024
+      ],
+      "label": "gross value added",
+      "role": "output",
+      "series_code": "FU106902501.A",
+      "source_vintage": "Fed Z.1 current release 2026:Q1; observations frozen through 2024",
+      "table": "csv/S11_1_i_a.csv",
+      "unit": "millions of dollars; annual transactions, not seasonally adjusted"
+    },
+    "interest_paid": {
+      "coverage": [
+        1959,
+        2024
+      ],
+      "label": "interest paid",
+      "role": "debt_service",
+      "series_code": "FU106130001.A",
+      "source_vintage": "Fed Z.1 current release 2026:Q1; observations frozen through 2024",
+      "table": "csv/S11_1_i_a.csv",
+      "unit": "millions of dollars; annual transactions, not seasonally adjusted"
+    },
+    "loans_liability": {
+      "coverage": [
+        1959,
+        2024
+      ],
+      "label": "total loans liability",
+      "role": "debt_funding",
+      "series_code": "FU104135005.A",
+      "source_vintage": "Fed Z.1 current release 2026:Q1; observations frozen through 2024",
+      "table": "csv/S11_1_i_a.csv",
+      "unit": "millions of dollars; annual transactions, not seasonally adjusted"
+    },
+    "net_capital_formation": {
+      "coverage": [
+        1959,
+        2024
+      ],
+      "label": "capital formation, net",
+      "role": "real_use",
+      "series_code": "FU105050985.A",
+      "source_vintage": "Fed Z.1 current release 2026:Q1; observations frozen through 2024",
+      "table": "csv/S11_1_i_a.csv",
+      "unit": "millions of dollars; annual transactions, not seasonally adjusted"
+    },
+    "net_capital_transfers_paid": {
+      "coverage": [
+        1959,
+        2024
+      ],
+      "label": "net capital transfers paid",
+      "role": "transfer",
+      "series_code": "FU105440005.A",
+      "source_vintage": "Fed Z.1 current release 2026:Q1; observations frozen through 2024",
+      "table": "csv/S11_1_i_a.csv",
+      "unit": "millions of dollars; annual transactions, not seasonally adjusted"
+    },
+    "net_lending_capital_account": {
+      "coverage": [
+        1959,
+        2024
+      ],
+      "label": "net lending (+) or borrowing (-), capital account",
+      "role": "accounting_bridge",
+      "series_code": "FU105000905.A",
+      "source_vintage": "Fed Z.1 current release 2026:Q1; observations frozen through 2024",
+      "table": "csv/S11_1_i_a.csv",
+      "unit": "millions of dollars; annual transactions, not seasonally adjusted"
+    },
+    "net_lending_financial_account": {
+      "coverage": [
+        1959,
+        2024
+      ],
+      "label": "net lending (+) or borrowing (-), financial account",
+      "role": "accounting_bridge",
+      "series_code": "FU105000005.A",
+      "source_vintage": "Fed Z.1 current release 2026:Q1; observations frozen through 2024",
+      "table": "csv/S11_1_i_a.csv",
+      "unit": "millions of dollars; annual transactions, not seasonally adjusted"
+    },
+    "net_saving": {
+      "coverage": [
+        1959,
+        2024
+      ],
+      "label": "disposable income, net; net saving",
+      "role": "internal_funding_proxy",
+      "series_code": "FU106012095.A",
+      "source_vintage": "Fed Z.1 current release 2026:Q1; observations frozen through 2024",
+      "table": "csv/S11_1_i_a.csv",
+      "unit": "millions of dollars; annual transactions, not seasonally adjusted"
+    },
+    "operating_surplus_net": {
+      "coverage": [
+        1959,
+        2024
+      ],
+      "label": "operating surplus, net",
+      "role": "profit",
+      "series_code": "FU106402101.A",
+      "source_vintage": "Fed Z.1 current release 2026:Q1; observations frozen through 2024",
+      "table": "csv/S11_1_i_a.csv",
+      "unit": "millions of dollars; annual transactions, not seasonally adjusted"
+    },
+    "other_current_transfers_paid": {
+      "coverage": [
+        1959,
+        2024
+      ],
+      "label": "other current transfers paid",
+      "role": "transfer",
+      "series_code": "FU106403001.A",
+      "source_vintage": "Fed Z.1 current release 2026:Q1; observations frozen through 2024",
+      "table": "csv/S11_1_i_a.csv",
+      "unit": "millions of dollars; annual transactions, not seasonally adjusted"
+    },
+    "taxes_paid": {
+      "coverage": [
+        1959,
+        2024
+      ],
+      "label": "current taxes on income, wealth, etc. paid",
+      "role": "public_payment",
+      "series_code": "FU106220001.A",
+      "source_vintage": "Fed Z.1 current release 2026:Q1; observations frozen through 2024",
+      "table": "csv/S11_1_i_a.csv",
+      "unit": "millions of dollars; annual transactions, not seasonally adjusted"
+    },
+    "wages_salaries_paid": {
+      "coverage": [
+        1959,
+        2024
+      ],
+      "label": "wages and salaries paid",
+      "role": "labor_payment",
+      "series_code": "FU106020001.A",
+      "source_vintage": "Fed Z.1 current release 2026:Q1; observations frozen through 2024",
+      "table": "csv/S11_1_i_a.csv",
+      "unit": "millions of dollars; annual transactions, not seasonally adjusted"
+    }
+  },
+  "source": {
+    "archive_path": "C:/Users/santa/Desktop/uet_harness/docs/data/external/economics/us_historical/fed_z1/2026-07-16/z1_csv_files.zip",
+    "archive_sha256": "b23e0ad3a5afc700c3608863707b0514e6e119b43efeaf89ec6e746da8dbea24",
+    "provider": "Federal Reserve Financial Accounts (Z.1)",
+    "release_vintage": "2026:Q1 current release",
+    "table": "csv/S11_1_i_a.csv",
+    "table_role": "annual nonfinancial corporate business integrated macro accounts"
+  },
+  "status": "WARN"
+}
