@@ -70,6 +70,7 @@ FED_Z1_FUNDING_MAPPING_ARTIFACT = ARTIFACT_DIR / "0_25_fed_z1_funding_mapping_pr
 BLS_IO_SOURCE_GATE_ARTIFACT = ARTIFACT_DIR / "0_25_bls_io_source_gate.json"
 FED_Z1_FUNDING_MIX_ARTIFACT = ARTIFACT_DIR / "0_25_fed_z1_funding_mix_audit.json"
 PAYER_RESOURCE_JOIN_ARTIFACT = ARTIFACT_DIR / "0_25_payer_resource_join_readiness.json"
+BEA_1997_IO_ARTIFACT = ARTIFACT_DIR / "0_25_bea_1997_io_benchmark_audit.json"
 CAUSAL_GATE_ARTIFACT = ARTIFACT_DIR / "0_25_causal_identification_gate.json"
 REPLICATION_GATE_ARTIFACT = ARTIFACT_DIR / "0_25_independent_replication_gate.json"
 PUBLICATION_GATE_ARTIFACT = ARTIFACT_DIR / "0_25_publication_hardening_gate.json"

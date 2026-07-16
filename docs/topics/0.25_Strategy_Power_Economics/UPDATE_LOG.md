@@ -5,6 +5,16 @@
 
 ## Entries
 
+### 2026-07-16 - BEA 1997 benchmark structural audit
+
+- Scope: close the structural industry/commodity-flow sub-check without pretending that a one-year benchmark supplies annual funding provenance.
+- Added: `Research_UET_BEA_1997_IO_Benchmark_Audit.py`, the official BEA 1997 benchmark archives and source manifest, aggregate/readiness integration, and synchronized topic docs.
+- Verified with: py_compile, standalone benchmark audit, payer-resource join gate, evidence-readiness artifact, and aggregate verifier; all verifier commands exited zero.
+- Result: benchmark artifact `PASS_WITH_BOUNDARY`; 511 code-dictionary rows, 76,809 make/use rows, 73,766 direct-requirements rows, and 241,081 total-requirements rows pass finite-value, table-reference, year, and code-crosswalk checks.
+- Blocker narrowed: payer-resource join remains `BLOCKED` with three controlling components: industry labor-hours, physical material quantities, and project payment ledger. The annual BLS/BEA flow lane remains separate and unavailable.
+- Next controller: obtain source-locked labor/resource/project joins or explicitly quarantine the payer-level claim; Claim Class C and `DESCRIPTIVE_DIAGNOSTIC_ONLY` remain unchanged.
+- Claim impact: no upgrade; no profit-vs-debt payer attribution, payment-level resource claim, resource causality, or innovation causality is permitted.
+
 ### 2026-07-16 - Payer-resource join readiness gate
 
 - Scope: make the missing link from aggregate funding channels to actual industry, labor, and physical-resource use machine-readable.

@@ -33,11 +33,7 @@ presence and rerunnability of standards artifacts; it is not a theory confirmati
 - Z.1 funding-mix ratios are signed net transactions, not gross financing shares: debt can be
   refinancing or repayment, equity can be issuance or repurchase, and saving is not earmarked
   to a specific investment.
-- The payer-resource join gate is `BLOCKED`: the frozen package lacks a validated industry
-  input-output flow export, industry-level labor-hours concordance, source-level material
-  quantities, and a project payment ledger. A BEA industry/commodity/NAICS concordance is
-  archived and hashed, but it does not supply observations. Aggregate energy throughput is
-  present but is not a complete physical-resource ledger.
+- The payer-resource join gate is `BLOCKED`: the frozen package now validates a BEA 1997 benchmark make/use and requirements structure, but that benchmark is one year only and cannot identify a payer. Industry-level labor-hours concordance, source-level material quantities, and a project payment ledger remain unavailable. Aggregate energy throughput is present but is not a complete physical-resource ledger.
 
 ## Model and inference limitations
 

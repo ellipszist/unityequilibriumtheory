@@ -53,3 +53,4 @@ current Claim Class C boundary.
 | Research_UET_BLS_IO_Source_Gate.py | record the official BLS I-O source identity, coverage, access observation, and provider quality notice without bypassing controls | BLS I-O source gate |
 | Research_UET_Fed_Z1_Funding_Mix_Audit.py | compute signed 0-2-year net-flow associations and payment-flow scale; reject gross earmarked-share interpretation | funding mix audit artifact |
 | Research_UET_Payer_Resource_Join_Readiness.py | check source/hash readiness for funding -> industry use -> labor hours -> physical resources -> project/output joins | payer-resource join readiness artifact |
+| Research_UET_BEA_1997_IO_Benchmark_Audit.py | validate the official 1997 BEA make/use and requirements benchmark without treating it as a time series | BEA benchmark structural artifact |

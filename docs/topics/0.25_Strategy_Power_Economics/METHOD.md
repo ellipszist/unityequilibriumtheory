@@ -90,15 +90,18 @@ indexed infrastructure proxy, not a dollar-valued capital stock.
    equity transactions) into a rounded accounting bridge to capital formation. This identifies
    aggregate channels, not the payer of an individual purchase or the physical resource and
    labor transformation behind an investment.
-9. **Payer-resource input-output source:** the BLS 1997-2024 matrix is reserved for a later
-   industry/commodity flow join. Its source gate records the provider quality notice and access
-   failure; no matrix rows enter the primary evidence until a validated archive is available.
+9. **Payer-resource input-output source:** the BLS 1997-2024 matrix remains reserved for a later
+   annual industry/commodity flow join; its source gate records the provider quality notice and access
+   failure. A separate BEA 1997 benchmark archive is validated only as a one-year structural check,
+   not as a time series or primary annual panel.
 
 10. **Funding mix audit:** compute same-year and 0-2-year lead correlations between Z.1 net
    saving, debt, loans, and equity-liability transactions and capital formation, plus payment-flow
    scale relative to gross value added. Ratios are signed net-flow diagnostics and are not summed
    or labeled as earmarked funding shares.
-11. **Payer-resource join readiness:** audit the required chain `funding -> industry use -> labor
+11. **BEA benchmark structural check:** validate the source-locked 1997 make/use, direct-requirements, and total-requirements tables, including code crosswalk, table references, units, and finite-value checks. The benchmark is explicitly not a time series and cannot identify payer provenance.
+
+12. **Payer-resource join readiness:** audit the required chain `funding -> industry use -> labor
    hours -> physical resource quantities -> output/innovation`. The gate records local archive
    identity and hashes for each link, rejects missing or unverified joins, and does not infer a
    project funding share from aggregate accounts.

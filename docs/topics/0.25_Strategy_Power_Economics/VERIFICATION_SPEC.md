@@ -47,6 +47,7 @@ The legacy descriptive command is separate:
   industry-use, labor-hours, physical-resource, project-ledger, and concordance links; no
   imputation and no payment-level inference. The BEA code concordance may pass with boundary,
   while the flow join remains blocked.
+- `0_25_bea_1997_io_benchmark_audit.json`: byte-hash and layout checks for the official 1997 BEA make/use, direct-requirements, and industry-by-industry total-requirements archives. It is a one-year benchmark with an explicit not-time-series boundary.
 - aggregate `execution_gate`: all verifier subcommands exit zero.
 - aggregate legacy_claim_quarantine: every legacy markdown note contains the required
   Legacy claim boundary warning before it can be treated as topic documentation.

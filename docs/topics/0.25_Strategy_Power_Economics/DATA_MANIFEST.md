@@ -33,6 +33,7 @@ required file is absent or its hash does not match the manifest, the panel gate 
 | EPI provider chart | https://data.epi.org/productivity/productivity_levels/line/year/national/real_dollars_per_hour_2024/productivity_pay | `docs/data/external/economics/us_historical/epi/2026-07-12/epi_productivity_pay.csv` | provider real-dollar-per-hour chart values | rebase both series to 1979=100 | wage construction |
 | Fed Z.1 `S11.1.i.a` | https://www.federalreserve.gov/releases/z1/ | `docs/data/external/economics/us_historical/fed_z1/2026-07-16/z1_csv_files.zip` | millions of dollars; annual transactions, NSA | select sectoral flow codes; freeze 1959-2024; no imputation | funding channels and accounting bridge |
 | BLS Input-Output researcher ZIP | https://www.bls.gov/emp/data/input-output-matrix.htm | `docs/data/external/economics/us_historical/bls_io/2026-07-16/input-output.zip` (pending) | nominal and chain-weighted I-O matrices; provider coverage 1997-2024 | archive/hash/quality gate before parsing | payer-resource industry/commodity flow candidate |
+| BEA 1997 benchmark I-O archives | https://www.bea.gov/industry/historical-benchmark-input-output-tables | `docs/data/external/economics/us_historical/bea_io/1997-benchmark/` | make/use: millions of dollars at producers prices; requirements: coefficients | ZIP member, code, table-reference, year, finite-value, and SHA-256 checks | one-year structural benchmark only; not annual payer/resource evidence |
 | BEA industry/commodity/NAICS concordance | https://www.bea.gov/itable/input-output | `docs/data/external/economics/us_historical/bea_io/2026-07-16/BEA-Industry-and-Commodity-Codes-and-NAICS-Concordance.xlsx` | official code crosswalk workbook | ZIP structure/sheet check; SHA-256 lock | industry concordance only; no flow observations |
 
 The exact original filenames, bytes, SHA-256 hashes, retrieval vintage, per-input UTC retrieval
@@ -100,7 +101,8 @@ and PPP/exchange-rate policy are frozen.
   natural-resource concordance data are not yet source-locked.
 - BLS I-O archive is pending because the official endpoint returned Access Denied and the
   provider quality notice requires replacement-file validation.
-- BEA code concordance is source-locked, but the BEA I-O flow export requires API registration
-  or an interactive export and has not entered the primary panel.
-- Payer-resource join gate is `BLOCKED`: industry-use, industry labor-hours, material quantities,
-  and project payment ledger remain unavailable; the concordance alone is not an observation.
+- BEA code concordance and the 1997 benchmark I-O archives are source-locked and validated for
+  structural use. The BEA annual I-O flow export still requires API registration or an interactive
+  export and has not entered the primary panel.
+- Payer-resource join gate is `BLOCKED`: the 1997 benchmark closes only the one-year industry-flow
+  structure; industry labor-hours, material quantities, and project payment ledger remain unavailable.

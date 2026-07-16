@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "provider": "U.S. Bureau of Economic Analysis (BEA)",
+  "official_page": "https://www.bea.gov/industry/historical-benchmark-input-output-tables",
+  "retrieval_timestamp_utc": "2026-07-16T12:40:29Z",
+  "retrieval_vintage": "2026-07-16",
+  "coverage": "1997 benchmark input-output accounts: make/use, direct requirements, and industry-by-industry total requirements",
+  "not_time_series": true,
+  "terms": "Public BEA open-data benchmark archive; retain provider attribution and verify current terms before redistribution.",
+  "sources": [
+    {
+      "source_id": "bea_1997_make_use_requirements",
+      "source_url": "https://apps.bea.gov/industry/zip/ndn0307.zip",
+      "original_filename": "ndn0307.zip",
+      "local_path": "docs/data/external/economics/us_historical/bea_io/1997-benchmark/ndn0307.zip",
+      "sha256": "b372271d6777df20f26ad084b75ca89701ca8e7a9512c4266401b9e6bfbd2825",
+      "units": "Make/use values: millions of dollars at producers' prices; direct requirements: coefficients per dollar of industry output",
+      "benchmark_role": "1997 structural industry/commodity flow validation; not a time-series input"
+    },
+    {
+      "source_id": "bea_1997_total_requirements",
+      "source_url": "https://apps.bea.gov/industry/zip/ndn0310.zip",
+      "original_filename": "ndn0310.zip",
+      "local_path": "docs/data/external/economics/us_historical/bea_io/1997-benchmark/ndn0310.zip",
+      "sha256": "bc38b01e50144669691c65ff4cdea2fb7a0d3062a9701f81fc3ae222b6020d49",
+      "units": "Industry-by-industry total requirements coefficients",
+      "benchmark_role": "1997 structural multiplier validation; not a time-series input"
+    },
+    {
+      "source_id": "bea_1997_pre_redefinition_make_use",
+      "source_url": "https://apps.bea.gov/industry/zip/ndn0306.zip",
+      "original_filename": "ndn0306.zip",
+      "local_path": "docs/data/external/economics/us_historical/bea_io/1997-benchmark/ndn0306.zip",
+      "sha256": "2f5b7ab7e685685c5805e80b89adaac977e48afd5456093e7c75cd7eb5eda55b",
+      "units": "Pre-redefinition make/use values: millions of dollars at producers' prices",
+      "benchmark_role": "Retained for source completeness; not used as the after-redefinition primary table"
+    }
+  ],
+  "preprocessing": "Archives retained byte-for-byte. The audit reads ASCII/CSV members directly from ZIP archives, checks table references, 1997 year fields, finite values, and code-dictionary coverage; no imputation or time-series stitching is performed.",
+  "status": "PASS_WITH_BOUNDARY"
+}

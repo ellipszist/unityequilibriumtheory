@@ -160,7 +160,17 @@
       "exit_code": 0,
       "script": "docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_UET_Payer_Resource_Join_Readiness.py",
       "stderr_tail": "",
-      "stdout_tail": "Payer-resource join readiness: BLOCKED blocking components 5\n"
+      "stdout_tail": "Payer-resource join readiness: BLOCKED blocking components 3\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Code\\03_Research\\Research_UET_BEA_1997_IO_Benchmark_Audit.py"
+      ],
+      "exit_code": 0,
+      "script": "docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_UET_BEA_1997_IO_Benchmark_Audit.py",
+      "stderr_tail": "",
+      "stdout_tail": "BEA 1997 benchmark audit: PASS_WITH_BOUNDARY blocking archives 0\n"
     },
     {
       "command": [
@@ -712,7 +722,7 @@
         "start_year": 1959
       },
       "formula_boundary": "R/N/K/I are dimensionless proxy constructs after the stated transformations; they are not a dimensional identity.",
-      "generated_at_utc": "2026-07-16T12:27:17.427508+00:00",
+      "generated_at_utc": "2026-07-16T12:52:03.010293+00:00",
       "input_hashes": [
         {
           "path": "docs/data/external/economics/us_historical/fred/2026-07-12/M2SL.csv",
@@ -1708,6 +1718,253 @@
       "vintage": "2026-07-12"
     },
     "sub_artifact_payloads": {
+      "bea_1997_io_benchmark": {
+        "blocking_components": [],
+        "claim_boundary": "Benchmark-descriptive only. Do not infer annual flow dynamics, payer provenance, resource causality, innovation causality, or fiat-money causality from this artifact.",
+        "controller_status": "BEA_1997_BENCHMARK_ONLY",
+        "formula_id": "EC25-PAYER-RESOURCE-JOIN",
+        "generated_at_utc": "2026-07-16T12:52:27.850579+00:00",
+        "limitations": [
+          "BEA explicitly cautions that benchmark input-output tables are not suitable as a time series.",
+          "Make/use dollar cells are producers-prices millions of dollars; requirements tables are dimensionless coefficients.",
+          "Aggregate sectoral funding remains separate from industry purchases and cannot be joined to a specific payer or project."
+        ],
+        "schema_version": "1.0",
+        "source": {
+          "archives": {
+            "direct_requirements": {
+              "code_dictionary": {
+                "codes": 511,
+                "rows": 511,
+                "sample": {
+                  "1111A0": "Oilseed farming",
+                  "1111B0": "Grain farming",
+                  "111200": "Vegetable and melon farming"
+                }
+              },
+              "exists": true,
+              "member_checks": {
+                "IODirectRequireDetail.txt": {
+                  "column_code_count": 491,
+                  "finite_value_rows": 73766,
+                  "known_code_count": 511,
+                  "nonnegative_failures": 0,
+                  "parse_failure_count": 0,
+                  "parse_failure_examples": [],
+                  "positive_value_rows": 72106,
+                  "row_code_count": 458,
+                  "rows": 73766,
+                  "unknown_code_rows": 0,
+                  "value_max": 1.39015,
+                  "value_min": -1.45238,
+                  "years": []
+                },
+                "IOMakeDetail.txt": {
+                  "column_code_count": 480,
+                  "finite_value_rows": 3213,
+                  "known_code_count": 511,
+                  "nonnegative_failures": 0,
+                  "parse_failure_count": 0,
+                  "parse_failure_examples": [],
+                  "positive_value_rows": 3213,
+                  "row_code_count": 491,
+                  "rows": 3213,
+                  "unknown_code_rows": 0,
+                  "value_max": 937811.7,
+                  "value_min": 0.2,
+                  "years": []
+                },
+                "IOUseDetail.txt": {
+                  "column_code_count": 504,
+                  "finite_value_rows": 76809,
+                  "known_code_count": 511,
+                  "nonnegative_failures": 0,
+                  "parse_failure_count": 0,
+                  "parse_failure_examples": [],
+                  "positive_value_rows": 76316,
+                  "row_code_count": 486,
+                  "rows": 76809,
+                  "unknown_code_rows": 0,
+                  "value_max": 786710.7,
+                  "value_min": -120513.9,
+                  "years": [
+                    1997
+                  ]
+                }
+              },
+              "member_count": 12,
+              "missing_members": [],
+              "path": "docs/data/external/economics/us_historical/bea_io/1997-benchmark/ndn0307.zip",
+              "required_members": [
+                "IO-CodeDetail.txt",
+                "IODirectRequireDetail.txt",
+                "ReadMe.txt"
+              ],
+              "sha256": "b372271d6777df20f26ad084b75ca89701ca8e7a9512c4266401b9e6bfbd2825",
+              "status": "PASS_WITH_BOUNDARY",
+              "units": "direct requirements are coefficients per dollar of industry output",
+              "url": "https://apps.bea.gov/industry/zip/ndn0307.zip"
+            },
+            "make_use": {
+              "code_dictionary": {
+                "codes": 511,
+                "rows": 511,
+                "sample": {
+                  "1111A0": "Oilseed farming",
+                  "1111B0": "Grain farming",
+                  "111200": "Vegetable and melon farming"
+                }
+              },
+              "exists": true,
+              "member_checks": {
+                "IODirectRequireDetail.txt": {
+                  "column_code_count": 491,
+                  "finite_value_rows": 73766,
+                  "known_code_count": 511,
+                  "nonnegative_failures": 0,
+                  "parse_failure_count": 0,
+                  "parse_failure_examples": [],
+                  "positive_value_rows": 72106,
+                  "row_code_count": 458,
+                  "rows": 73766,
+                  "unknown_code_rows": 0,
+                  "value_max": 1.39015,
+                  "value_min": -1.45238,
+                  "years": []
+                },
+                "IOMakeDetail.txt": {
+                  "column_code_count": 480,
+                  "finite_value_rows": 3213,
+                  "known_code_count": 511,
+                  "nonnegative_failures": 0,
+                  "parse_failure_count": 0,
+                  "parse_failure_examples": [],
+                  "positive_value_rows": 3213,
+                  "row_code_count": 491,
+                  "rows": 3213,
+                  "unknown_code_rows": 0,
+                  "value_max": 937811.7,
+                  "value_min": 0.2,
+                  "years": []
+                },
+                "IOUseDetail.txt": {
+                  "column_code_count": 504,
+                  "finite_value_rows": 76809,
+                  "known_code_count": 511,
+                  "nonnegative_failures": 0,
+                  "parse_failure_count": 0,
+                  "parse_failure_examples": [],
+                  "positive_value_rows": 76316,
+                  "row_code_count": 486,
+                  "rows": 76809,
+                  "unknown_code_rows": 0,
+                  "value_max": 786710.7,
+                  "value_min": -120513.9,
+                  "years": [
+                    1997
+                  ]
+                }
+              },
+              "member_count": 12,
+              "missing_members": [],
+              "path": "docs/data/external/economics/us_historical/bea_io/1997-benchmark/ndn0307.zip",
+              "required_members": [
+                "IO-CodeDetail.txt",
+                "IOMakeDetail.txt",
+                "IOUseDetail.txt",
+                "ReadMe.txt"
+              ],
+              "sha256": "b372271d6777df20f26ad084b75ca89701ca8e7a9512c4266401b9e6bfbd2825",
+              "status": "PASS_WITH_BOUNDARY",
+              "units": "make/use values are millions of dollars at producers' prices",
+              "url": "https://apps.bea.gov/industry/zip/ndn0307.zip"
+            },
+            "total_requirements": {
+              "code_dictionary": {
+                "codes": 511,
+                "rows": 511,
+                "sample": {
+                  "1111A0": "Oilseed farming",
+                  "1111B0": "Grain farming",
+                  "111200": "Vegetable and melon farming"
+                }
+              },
+              "exists": true,
+              "member_checks": {
+                "IndbyIndTRDetail.txt": {
+                  "column_code_count": 491,
+                  "finite_value_rows": 241081,
+                  "known_code_count": 511,
+                  "nonnegative_failures": 0,
+                  "parse_failure_count": 0,
+                  "parse_failure_examples": [],
+                  "positive_value_rows": 222549,
+                  "row_code_count": 491,
+                  "rows": 241081,
+                  "unknown_code_rows": 0,
+                  "value_max": 1.9406135,
+                  "value_min": 0.0,
+                  "years": []
+                }
+              },
+              "member_count": 10,
+              "missing_members": [],
+              "path": "docs/data/external/economics/us_historical/bea_io/1997-benchmark/ndn0310.zip",
+              "required_members": [
+                "IO-CodeDetail.txt",
+                "IndbyIndTRDetail.txt",
+                "ReadMe.txt"
+              ],
+              "sha256": "bc38b01e50144669691c65ff4cdea2fb7a0d3062a9701f81fc3ae222b6020d49",
+              "status": "PASS_WITH_BOUNDARY",
+              "units": "industry-by-industry total requirements are coefficients",
+              "url": "https://apps.bea.gov/industry/zip/ndn0310.zip"
+            }
+          },
+          "benchmark_year": 1997,
+          "coverage": "NAICS benchmark make/use, direct requirements, and industry-by-industry total requirements",
+          "not_time_series": true,
+          "official_page": "https://www.bea.gov/industry/historical-benchmark-input-output-tables",
+          "provider": "U.S. Bureau of Economic Analysis (BEA)",
+          "retrieval_vintage": "2026-07-16",
+          "source_manifest": {
+            "exists": true,
+            "path": "docs/data/external/economics/us_historical/bea_io/1997-benchmark/source_manifest.json",
+            "records": [
+              {
+                "expected_sha256": "b372271d6777df20f26ad084b75ca89701ca8e7a9512c4266401b9e6bfbd2825",
+                "hash_matches": true,
+                "observed_sha256": "b372271d6777df20f26ad084b75ca89701ca8e7a9512c4266401b9e6bfbd2825",
+                "path": "docs/data/external/economics/us_historical/bea_io/1997-benchmark/ndn0307.zip",
+                "source_id": "bea_1997_make_use_requirements"
+              },
+              {
+                "expected_sha256": "bc38b01e50144669691c65ff4cdea2fb7a0d3062a9701f81fc3ae222b6020d49",
+                "hash_matches": true,
+                "observed_sha256": "bc38b01e50144669691c65ff4cdea2fb7a0d3062a9701f81fc3ae222b6020d49",
+                "path": "docs/data/external/economics/us_historical/bea_io/1997-benchmark/ndn0310.zip",
+                "source_id": "bea_1997_total_requirements"
+              },
+              {
+                "expected_sha256": "2f5b7ab7e685685c5805e80b89adaac977e48afd5456093e7c75cd7eb5eda55b",
+                "hash_matches": true,
+                "observed_sha256": "2f5b7ab7e685685c5805e80b89adaac977e48afd5456093e7c75cd7eb5eda55b",
+                "path": "docs/data/external/economics/us_historical/bea_io/1997-benchmark/ndn0306.zip",
+                "source_id": "bea_1997_pre_redefinition_make_use"
+              }
+            ],
+            "status": "PASS_WITH_BOUNDARY"
+          }
+        },
+        "status": "PASS_WITH_BOUNDARY",
+        "topic": "0.25_Strategy_Power_Economics",
+        "validation": {
+          "code_dictionary_crosswalk_checked": true,
+          "interpretation": "The tables establish a reproducible 1997 industry/commodity flow structure. They do not identify who paid, whether funding was profit or debt, labor hours by payment, or physical extraction quantities.",
+          "no_imputation": true,
+          "table_reference_and_unit_checks": true
+        }
+      },
       "bls_io_source_gate": {
         "access_observation": {
           "automated_retrieval_status": "ACCESS_DENIED",
@@ -1728,7 +1985,7 @@
         ],
         "claim_boundary": "This gate establishes source identity and a quality/access blocker only. It does not provide payment-level flows, causal evidence, or a payer-resource result.",
         "controller_status": "BLS_IO_QUALITY_AND_ACCESS_GATE",
-        "generated_at_utc": "2026-07-16T12:27:37.148967+00:00",
+        "generated_at_utc": "2026-07-16T12:52:22.114635+00:00",
         "provider_quality_notice": {
           "effect": "No matrix result may be used until the replacement or researcher ZIP is independently checked against the notice and archived with a hash.",
           "notice_date": "2026-02-06",
@@ -1792,7 +2049,7 @@
           ],
           "status": "BLOCKED"
         },
-        "generated_at_utc": "2026-07-16T12:27:52.083523+00:00",
+        "generated_at_utc": "2026-07-16T12:52:40.226732+00:00",
         "historical_energy_transition": {
           "blocker": "EIA historical 1776-1945 annual export is absent.",
           "status": "BLOCKED"
@@ -1846,7 +2103,7 @@
           ],
           "rows": 66
         },
-        "generated_at_utc": "2026-07-16T12:27:35.748597+00:00",
+        "generated_at_utc": "2026-07-16T12:52:20.782955+00:00",
         "payer_and_source_visibility": {
           "not_observable_from_this_table": [
             "individual payer-payee identity or invoice-level exchange",
@@ -2229,7 +2486,7 @@
           ],
           "status": "NOT_IDENTIFIED"
         },
-        "generated_at_utc": "2026-07-16T12:27:38.618325+00:00",
+        "generated_at_utc": "2026-07-16T12:52:23.552609+00:00",
         "payment_flow_scale": {
           "capital_formation": {
             "interpretation": "sector-level flow scale, not a payer identity or earmarked use",
@@ -3224,7 +3481,7 @@
             "resource_exporter"
           ]
         },
-        "generated_at_utc": "2026-07-16T12:27:47.780539+00:00",
+        "generated_at_utc": "2026-07-16T12:52:35.713466+00:00",
         "required_providers": {
           "BIS": "credit, debt, financial conditions",
           "ILOSTAT": "productivity, earnings, hours, labor income",
@@ -3396,7 +3653,7 @@
             "R_standardized_additive"
           ]
         },
-        "generated_at_utc": "2026-07-16T12:27:19.029762+00:00",
+        "generated_at_utc": "2026-07-16T12:52:04.502586+00:00",
         "measurement_gates": {
           "R_family_stability": true,
           "at_least_three_declared_families": true,
@@ -4605,7 +4862,7 @@
             "n": 64
           }
         },
-        "generated_at_utc": "2026-07-16T12:27:21.817343+00:00",
+        "generated_at_utc": "2026-07-16T12:52:07.274072+00:00",
         "observations": [
           {
             "credit_to_gdp": 4.231706560198307,
@@ -5405,8 +5662,6 @@
       },
       "payer_resource_join": {
         "blocking_components": [
-          "industry_input_output",
-          "bea_industry_accounts",
           "labor_industry_hours",
           "material_quantities",
           "firm_project_payment_ledger"
@@ -5419,7 +5674,14 @@
         },
         "evidence": {
           "bea_industry_accounts": {
-            "boundary": "BEA identifies the official supply-use/input-output tables, but no source-locked flow export is archived; API registration or an interactive export is still required.",
+            "artifact": {
+              "controller_status": "BEA_1997_BENCHMARK_ONLY",
+              "exists": true,
+              "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bea_1997_io_benchmark_audit.json",
+              "sha256": "af24784318be15b727ee8acc53e47be5f7947e1eddbca0866c96cb8b9502a478",
+              "status": "PASS_WITH_BOUNDARY"
+            },
+            "boundary": "A source-locked 1997 benchmark is archived for structural validation; annual supply-use/input-output flow export still requires the BEA API or interactive application.",
             "provider_access": {
               "api_registration": "https://apps.bea.gov/api/signup/",
               "direct_backend_probe": {
@@ -5438,10 +5700,10 @@
               "files": [],
               "hashes": {},
               "pattern": "*input*output*",
-              "role": "BEA supply-use/input-output accounts",
+              "role": "BEA annual supply-use/input-output accounts",
               "status": "MISSING"
             },
-            "status": "BLOCKED"
+            "status": "PASS_WITH_BOUNDARY"
           },
           "energy_throughput": {
             "boundary": "Energy throughput is available; it is not a complete material-extraction or project-level resource ledger.",
@@ -5478,7 +5740,7 @@
               "controller_status": "FUNDING_FLOW_MAPPING_DESCRIPTIVE_ONLY",
               "exists": true,
               "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_fed_z1_funding_mapping_probe.json",
-              "sha256": "b5ef5b9dd997396a542f6fa4b521da48162fc3310ed1e16aaf6dde8ab6a4d7a3",
+              "sha256": "360e1f8cf1242e2dcfd27f198632f603b77c8a2f6c3a1f6f2e49852811f19aa4",
               "status": "WARN"
             },
             "boundary": "Aggregate sectoral channels and an accounting bridge are present; no payer-payee or project earmark is observed.",
@@ -5513,13 +5775,22 @@
           },
           "industry_input_output": {
             "artifact": {
-              "controller_status": "BLS_IO_QUALITY_AND_ACCESS_GATE",
-              "exists": true,
-              "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bls_io_source_gate.json",
-              "sha256": "c59afc7927010522e8f19fbecd100116e2ad7c13a84b993fddc82976f346f631",
-              "status": "BLOCKED"
+              "annual_bls_source_gate": {
+                "controller_status": "BLS_IO_QUALITY_AND_ACCESS_GATE",
+                "exists": true,
+                "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bls_io_source_gate.json",
+                "sha256": "4a72732e4fed46575c65ddf4326e827260c438cdef0c600011122483a6636061",
+                "status": "BLOCKED"
+              },
+              "benchmark": {
+                "controller_status": "BEA_1997_BENCHMARK_ONLY",
+                "exists": true,
+                "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bea_1997_io_benchmark_audit.json",
+                "sha256": "af24784318be15b727ee8acc53e47be5f7947e1eddbca0866c96cb8b9502a478",
+                "status": "PASS_WITH_BOUNDARY"
+              }
             },
-            "boundary": "The official BLS source is identified, but the archive is not locally available and the provider quality notice remains open.",
+            "boundary": "The 1997 BEA benchmark structure is source-locked and validated; the annual BLS/BEA flow lane remains unavailable and cannot be treated as a 1997-2024 panel.",
             "source": {
               "directory": "docs/data/external/economics/us_historical/bls_io/2026-07-16",
               "files": [],
@@ -5528,7 +5799,7 @@
               "role": "BLS/BEA industry and commodity flows",
               "status": "MISSING"
             },
-            "status": "BLOCKED"
+            "status": "PASS_WITH_BOUNDARY"
           },
           "labor_industry_hours": {
             "boundary": "Aggregate productivity and employment proxies exist in the macro panel, but industry-level hours/occupations are not archived for concordance.",
@@ -5556,7 +5827,7 @@
             "status": "BLOCKED"
           }
         },
-        "generated_at_utc": "2026-07-16T12:27:39.995132+00:00",
+        "generated_at_utc": "2026-07-16T12:52:24.923920+00:00",
         "limitations": [
           "Operating surplus and net saving are accounting aggregates, not earmarked cash sources.",
           "Debt and equity liability transactions can include refinancing, redemptions, and repurchases.",
@@ -5604,7 +5875,7 @@
         "formula_ids": [
           "EC25-UET-RESOURCE-ENGINE"
         ],
-        "generated_at_utc": "2026-07-16T12:27:49.277240+00:00",
+        "generated_at_utc": "2026-07-16T12:52:37.244825+00:00",
         "parameter_policy": {
           "candidate_signal_threshold": {
             "bootstrap_interval_requirement": "95 percent interval for squared-error difference lies below zero",
@@ -5963,7 +6234,7 @@
         "formula_ids": [
           "EC25-UET-MONETARY-RESOURCE-MISMATCH"
         ],
-        "generated_at_utc": "2026-07-16T12:27:50.721906+00:00",
+        "generated_at_utc": "2026-07-16T12:52:38.896858+00:00",
         "inflation_baseline_comparison": [
           {
             "acceptance_rule": "Candidate requires at least 10 percent lower median rolling-origin RMSE than every named baseline and a 95 percent block-bootstrap squared-error interval below zero.",
@@ -6360,7 +6631,7 @@
         "formula_ids": [
           "EC25-UET-WAGE-PRODUCTIVITY-GAP"
         ],
-        "generated_at_utc": "2026-07-16T12:27:53.439706+00:00",
+        "generated_at_utc": "2026-07-16T12:52:41.545775+00:00",
         "schema_version": "1.0",
         "status": "DIAGNOSTIC_COMPLETE",
         "topic": "0.25_Strategy_Power_Economics"
@@ -6378,7 +6649,7 @@
           ],
           "rows": 40
         },
-        "generated_at_utc": "2026-07-16T12:27:20.468920+00:00",
+        "generated_at_utc": "2026-07-16T12:52:05.856789+00:00",
         "missing_sources": [],
         "no_imputation": true,
         "observations": [
@@ -7319,7 +7590,7 @@
     "EC25-UET-MONETARY-RESOURCE-MISMATCH",
     "EC25-UET-WAGE-PRODUCTIVITY-GAP"
   ],
-  "generated_at_utc": "2026-07-16T12:27:53.700287+00:00",
+  "generated_at_utc": "2026-07-16T12:52:41.794202+00:00",
   "holdout_policy": {
     "blockers": [],
     "controller_status": null,
@@ -7345,7 +7616,7 @@
     "controller_status": null,
     "exists": true,
     "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_us_macro_panel_status.json",
-    "sha256": "4fa831ea8f79bc4e0a753b83b8e93606a4ea820b659c4af1b6a90028bbd9315b",
+    "sha256": "9e010c504f349dea4a606e3b6a820aff14dd3dd09b0d03ddef47d4f27b39892d",
     "status": "PASS"
   },
   "parameter_policy": {
@@ -7671,6 +7942,14 @@
   },
   "status": "WARN",
   "sub_artifacts": {
+    "bea_1997_io_benchmark": {
+      "blockers": [],
+      "controller_status": "BEA_1997_BENCHMARK_ONLY",
+      "exists": true,
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bea_1997_io_benchmark_audit.json",
+      "sha256": "2b1d0f48d321f5ab181aef9c7a204bb5a25253493e66995dfe2207d4cc6553c5",
+      "status": "PASS_WITH_BOUNDARY"
+    },
     "bls_io_source_gate": {
       "blockers": [
         "The BLS researcher ZIP is not archived in the frozen package.",
@@ -7680,7 +7959,7 @@
       "controller_status": "BLS_IO_QUALITY_AND_ACCESS_GATE",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bls_io_source_gate.json",
-      "sha256": "c59afc7927010522e8f19fbecd100116e2ad7c13a84b993fddc82976f346f631",
+      "sha256": "4a72732e4fed46575c65ddf4326e827260c438cdef0c600011122483a6636061",
       "status": "BLOCKED"
     },
     "causal_identification": {
@@ -7701,7 +7980,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_energy_density_audit.json",
-      "sha256": "b4826a0207cbdf5fd3a70bf8cb6d6d4b892ad2bd0c9454e8cdae2584c51d076f",
+      "sha256": "e5622f9d07038e07d69469c923887690c293b279995176a090a31feb8615079a",
       "status": "WARN"
     },
     "fed_z1_funding_mapping": {
@@ -7713,7 +7992,7 @@
       "controller_status": "FUNDING_FLOW_MAPPING_DESCRIPTIVE_ONLY",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_fed_z1_funding_mapping_probe.json",
-      "sha256": "b5ef5b9dd997396a542f6fa4b521da48162fc3310ed1e16aaf6dde8ab6a4d7a3",
+      "sha256": "360e1f8cf1242e2dcfd27f198632f603b77c8a2f6c3a1f6f2e49852811f19aa4",
       "status": "WARN"
     },
     "fed_z1_funding_mix": {
@@ -7725,7 +8004,7 @@
       "controller_status": "FUNDING_MIX_ASSOCIATION_DESCRIPTIVE_ONLY",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_fed_z1_funding_mix_audit.json",
-      "sha256": "40bde41d61bda57cbf7c25679b60266ffe8c19ffe65047b87a2188331aaa6a3c",
+      "sha256": "1b6c63dd32da889d8b897c35e24f9110c198921f6c74a5ff60eca4489109328b",
       "status": "WARN"
     },
     "fed_z1_source_probe": {
@@ -7791,7 +8070,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_global_replication_readiness.json",
-      "sha256": "c0a07e3dbbb8a41b0f0a7a502504e2d977656de38621d6a0479f3050c35cf286",
+      "sha256": "aa870c56ff2333fcf766506a8d8244595835975e87aa0002a3dc3211470f9c64",
       "status": "PARTIAL_PASS"
     },
     "global_wdi_leave_one_out": {
@@ -7865,7 +8144,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_measurement_validity_audit.json",
-      "sha256": "3c71ae18cf4cb839cd8e4a7ff200e17ebf6b29d4f160f66d3c9709de1500cf8c",
+      "sha256": "5376ee7edc61d43ae675cb0fffebc44e4d333484abdda6a90f7fe951cbd842b6",
       "status": "WARN"
     },
     "money_credit_inflation": {
@@ -7873,7 +8152,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_money_credit_inflation_audit.json",
-      "sha256": "d7a9459d4dc5a0b4379be068f0975538149bc5f69346ffe068ba7f072e39ad4e",
+      "sha256": "24d95304a4c90bbc938216c07dea242077fa8f17a42ded3196f233478386fc67",
       "status": "PASS"
     },
     "payer_resource_join": {
@@ -7881,7 +8160,7 @@
       "controller_status": "PAYER_RESOURCE_JOIN_NOT_IDENTIFIED",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_payer_resource_join_readiness.json",
-      "sha256": "30498683f5c9872b9847d8be7030e0b67aedcde58158493075ba72826f3b9fd8",
+      "sha256": "e928466bf58728f7f811a9fca4ded02f1da5937a9847d46ef90dad3db9c1134c",
       "status": "BLOCKED"
     },
     "publication_hardening": {
@@ -7901,7 +8180,7 @@
       "controller_status": "NO_PREDECLARED_CANDIDATE_SIGNAL",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_resource_equation_audit.json",
-      "sha256": "675dad91d175bda9c03233e46e3c2489facc4bf74f459b5c571e3eddd6143e34",
+      "sha256": "da06da2bd840a30cee8901f7282874b881a90b6c1d8c17b54664953f083b7f27",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "stone_balloon": {
@@ -7909,7 +8188,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_stone_balloon_audit.json",
-      "sha256": "c90f4de5ad56659148c41d6013d4e5a178598cf229a8b720976b25568b26268d",
+      "sha256": "472f321677e889ad5487238a8f2a4dfaa9798ea7d6c066c112edb2555cc615a2",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "wage_productivity": {
@@ -7917,7 +8196,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_wage_productivity_audit.json",
-      "sha256": "fb903aeec42df8f68feb70e2ecca0fd35de9adca3c180a42d77f0973e779d6fa",
+      "sha256": "761e51fbd2a8931118bee6f5b30df732a5083b547b519235bb1b25c22f3f1864",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "welfare": {
@@ -7925,7 +8204,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_welfare_audit.json",
-      "sha256": "eec43ab623836bed3b54286e47eb3c18f21c4c8cbcb26dd928e61e6f175571c1",
+      "sha256": "041a3a982091538b0a3a2fcf662ece66f0ddf09f5b5b4a1de812b08a92982d2d",
       "status": "PASS"
     }
   },

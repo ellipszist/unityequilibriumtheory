@@ -15,6 +15,7 @@ from pathlib import Path
 
 from economic_hardening_common import (
     ARTIFACT_DIR,
+    BEA_1997_IO_ARTIFACT,
     BLS_IO_SOURCE_GATE_ARTIFACT,
     FED_Z1_FUNDING_MAPPING_ARTIFACT,
     RAW_ROOT,
@@ -112,6 +113,8 @@ def main() -> int:
     bea_dir = RAW_ROOT / "bea" / "2026-07-12"
     eia_dir = RAW_ROOT / "eia" / "2026-07-12"
     concordance_path = RAW_ROOT / "bea_io" / "2026-07-16" / "BEA-Industry-and-Commodity-Codes-and-NAICS-Concordance.xlsx"
+    bea_benchmark = _artifact_status(BEA_1997_IO_ARTIFACT)
+    benchmark_ready = bea_benchmark.get("status") == "PASS_WITH_BOUNDARY"
 
     evidence = {
         "funding_flows": {
@@ -121,14 +124,18 @@ def main() -> int:
             "boundary": "Aggregate sectoral channels and an accounting bridge are present; no payer-payee or project earmark is observed.",
         },
         "industry_input_output": {
-            "status": "BLOCKED",
-            "artifact": _artifact_status(BLS_IO_SOURCE_GATE_ARTIFACT),
+            "status": "PASS_WITH_BOUNDARY" if benchmark_ready else "BLOCKED",
+            "artifact": {
+                "benchmark": bea_benchmark,
+                "annual_bls_source_gate": _artifact_status(BLS_IO_SOURCE_GATE_ARTIFACT),
+            },
             "source": _glob_record(bls_io_dir, "*", "BLS/BEA industry and commodity flows"),
-            "boundary": "The official BLS source is identified, but the archive is not locally available and the provider quality notice remains open.",
+            "boundary": "The 1997 BEA benchmark structure is source-locked and validated; the annual BLS/BEA flow lane remains unavailable and cannot be treated as a 1997-2024 panel.",
         },
         "bea_industry_accounts": {
-            "status": "BLOCKED",
-            "source": _glob_record(bea_dir, "*input*output*", "BEA supply-use/input-output accounts"),
+            "status": "PASS_WITH_BOUNDARY" if benchmark_ready else "BLOCKED",
+            "artifact": bea_benchmark,
+            "source": _glob_record(bea_dir, "*input*output*", "BEA annual supply-use/input-output accounts"),
             "provider_access": {
                 "official_page": "https://www.bea.gov/itable/input-output",
                 "api_registration": "https://apps.bea.gov/api/signup/",
@@ -142,7 +149,7 @@ def main() -> int:
                 },
                 "status": "REGISTRATION_OR_INTERACTIVE_EXPORT_REQUIRED",
             },
-            "boundary": "BEA identifies the official supply-use/input-output tables, but no source-locked flow export is archived; API registration or an interactive export is still required.",
+            "boundary": "A source-locked 1997 benchmark is archived for structural validation; annual supply-use/input-output flow export still requires the BEA API or interactive application.",
         },
         "labor_industry_hours": {
             "status": "BLOCKED",

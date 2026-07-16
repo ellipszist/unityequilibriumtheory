@@ -1,0 +1,184 @@
+{
+  "blocking_components": [
+    "labor_industry_hours",
+    "material_quantities",
+    "firm_project_payment_ledger"
+  ],
+  "claim_boundary": "This gate reports source/join readiness only. It does not infer payment-level provenance, funding shares, resource causality, or innovation causality.",
+  "controller_status": "PAYER_RESOURCE_JOIN_NOT_IDENTIFIED",
+  "coverage": {
+    "no_imputation": true,
+    "requested": "sectoral funding -> industry use -> labor hours -> physical resources -> output/innovation"
+  },
+  "evidence": {
+    "bea_industry_accounts": {
+      "artifact": {
+        "controller_status": "BEA_1997_BENCHMARK_ONLY",
+        "exists": true,
+        "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bea_1997_io_benchmark_audit.json",
+        "sha256": "af24784318be15b727ee8acc53e47be5f7947e1eddbca0866c96cb8b9502a478",
+        "status": "PASS_WITH_BOUNDARY"
+      },
+      "boundary": "A source-locked 1997 benchmark is archived for structural validation; annual supply-use/input-output flow export still requires the BEA API or interactive application.",
+      "provider_access": {
+        "api_registration": "https://apps.bea.gov/api/signup/",
+        "direct_backend_probe": {
+          "anti_bot_bypass": false,
+          "status_code": 500,
+          "table_rows_archived": false,
+          "url": "https://apps.bea.gov/iTablecore/data/app/52"
+        },
+        "interactive_application": "https://apps.bea.gov/iTable/?Categories=Core&isURI=1&reqid=1602&step=2",
+        "interactive_application_id": 52,
+        "official_page": "https://www.bea.gov/itable/input-output",
+        "status": "REGISTRATION_OR_INTERACTIVE_EXPORT_REQUIRED"
+      },
+      "source": {
+        "directory": "docs/data/external/economics/us_historical/bea/2026-07-12",
+        "files": [],
+        "hashes": {},
+        "pattern": "*input*output*",
+        "role": "BEA annual supply-use/input-output accounts",
+        "status": "MISSING"
+      },
+      "status": "PASS_WITH_BOUNDARY"
+    },
+    "energy_throughput": {
+      "boundary": "Energy throughput is available; it is not a complete material-extraction or project-level resource ledger.",
+      "source": {
+        "directory": "docs/data/external/economics/us_historical/eia/2026-07-12",
+        "files": [
+          "docs/data/external/economics/us_historical/eia/2026-07-12/eia_primary_energy_annual.csv",
+          "docs/data/external/economics/us_historical/eia/2026-07-12/EIA_Table_1_3_annual.csv"
+        ],
+        "hashes": {
+          "docs/data/external/economics/us_historical/eia/2026-07-12/EIA_Table_1_3_annual.csv": "8556e267444ffb2c09f3a7f4f54a1dddf12d091c80284db9e2387cbf6f6225c0",
+          "docs/data/external/economics/us_historical/eia/2026-07-12/eia_primary_energy_annual.csv": "b4114a3b198680795d3ae03c411e657c4f8ad0186a92c8be4588932aaf07a293"
+        },
+        "pattern": "*.csv",
+        "role": "EIA energy throughput",
+        "status": "PASS"
+      },
+      "status": "PASS_WITH_BOUNDARY"
+    },
+    "firm_project_payment_ledger": {
+      "boundary": "Public aggregate accounts cannot identify which payer funded which purchase or project.",
+      "source": {
+        "local_archives": [],
+        "required_providers": [
+          "Census business microdata",
+          "administrative ACH/card/invoice records"
+        ],
+        "status": "MISSING"
+      },
+      "status": "BLOCKED"
+    },
+    "funding_flows": {
+      "artifact": {
+        "controller_status": "FUNDING_FLOW_MAPPING_DESCRIPTIVE_ONLY",
+        "exists": true,
+        "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_fed_z1_funding_mapping_probe.json",
+        "sha256": "360e1f8cf1242e2dcfd27f198632f603b77c8a2f6c3a1f6f2e49852811f19aa4",
+        "status": "WARN"
+      },
+      "boundary": "Aggregate sectoral channels and an accounting bridge are present; no payer-payee or project earmark is observed.",
+      "source": {
+        "exists": true,
+        "path": "docs/data/external/economics/us_historical/fed_z1/2026-07-16/z1_csv_files.zip",
+        "role": "Fed Z.1 sectoral transactions",
+        "sha256": "b23e0ad3a5afc700c3608863707b0514e6e119b43efeaf89ec6e746da8dbea24",
+        "status": "PASS"
+      },
+      "status": "PASS_WITH_BOUNDARY"
+    },
+    "industry_concordance": {
+      "boundary": "The BEA code concordance is archived and hashed, but it does not itself provide payer, labor-hours, or physical-resource observations.",
+      "source": {
+        "exists": true,
+        "path": "docs/data/external/economics/us_historical/bea_io/2026-07-16/BEA-Industry-and-Commodity-Codes-and-NAICS-Concordance.xlsx",
+        "role": "BEA industry and commodity codes / NAICS concordance",
+        "sha256": "6e25267ff60ccedc0808c14153b0cdeb566a7f5e9097536c70c2b9694ef5ff47",
+        "sheet_names": [
+          "NAICS Codes"
+        ],
+        "source_manifest": {
+          "exists": true,
+          "hash_matches_data": true,
+          "path": "docs/data/external/economics/us_historical/bea_io/2026-07-16/source_manifest.json",
+          "sha256": "311f6f098015b87bae2921a749406b5a9cfdd85ef761842f5e0f3b3a5bd3d722"
+        },
+        "status": "PASS_WITH_BOUNDARY"
+      },
+      "status": "PASS_WITH_BOUNDARY"
+    },
+    "industry_input_output": {
+      "artifact": {
+        "annual_bls_source_gate": {
+          "controller_status": "BLS_IO_QUALITY_AND_ACCESS_GATE",
+          "exists": true,
+          "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bls_io_source_gate.json",
+          "sha256": "4a72732e4fed46575c65ddf4326e827260c438cdef0c600011122483a6636061",
+          "status": "BLOCKED"
+        },
+        "benchmark": {
+          "controller_status": "BEA_1997_BENCHMARK_ONLY",
+          "exists": true,
+          "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bea_1997_io_benchmark_audit.json",
+          "sha256": "af24784318be15b727ee8acc53e47be5f7947e1eddbca0866c96cb8b9502a478",
+          "status": "PASS_WITH_BOUNDARY"
+        }
+      },
+      "boundary": "The 1997 BEA benchmark structure is source-locked and validated; the annual BLS/BEA flow lane remains unavailable and cannot be treated as a 1997-2024 panel.",
+      "source": {
+        "directory": "docs/data/external/economics/us_historical/bls_io/2026-07-16",
+        "files": [],
+        "hashes": {},
+        "pattern": "*",
+        "role": "BLS/BEA industry and commodity flows",
+        "status": "MISSING"
+      },
+      "status": "PASS_WITH_BOUNDARY"
+    },
+    "labor_industry_hours": {
+      "boundary": "Aggregate productivity and employment proxies exist in the macro panel, but industry-level hours/occupations are not archived for concordance.",
+      "source": {
+        "directory": "docs/data/external/economics/us_historical/bls_labor/2026-07-16",
+        "files": [],
+        "hashes": {},
+        "pattern": "*",
+        "role": "BLS industry/occupation hours and labor input",
+        "status": "MISSING"
+      },
+      "status": "BLOCKED"
+    },
+    "material_quantities": {
+      "boundary": "No source-locked physical material quantity panel and industry concordance are present.",
+      "source": {
+        "local_archives": [],
+        "required_providers": [
+          "USGS",
+          "FAOSTAT",
+          "EIA source-level extraction/environmental accounts"
+        ],
+        "status": "MISSING"
+      },
+      "status": "BLOCKED"
+    }
+  },
+  "generated_at_utc": "2026-07-16T12:52:24.923920+00:00",
+  "limitations": [
+    "Operating surplus and net saving are accounting aggregates, not earmarked cash sources.",
+    "Debt and equity liability transactions can include refinancing, redemptions, and repurchases.",
+    "A complete public dataset linking every payment to a physical resource transformation is not present in the frozen package."
+  ],
+  "required_join": [
+    "transaction or firm/project funding records",
+    "industry/commodity input-output table",
+    "industry labor hours and occupations",
+    "source-level physical resource quantities",
+    "versioned industry/commodity/labor/resource concordance"
+  ],
+  "schema_version": "1.0",
+  "status": "BLOCKED",
+  "topic": "0.25_Strategy_Power_Economics"
+}
