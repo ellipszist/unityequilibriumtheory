@@ -119,3 +119,33 @@ thailand_proposals/**/*.m4a
 thailand_proposals/**/*.mp3
 thailand_proposals/**/*.wav
 thailand_proposals/**/*.webp
+# Curated public history exceptions. Raw and draft history remains ignored.
+!/uet_history/3_publish/
+!/uet_history/3_publish/books/
+!/uet_history/3_publish/books/README.md
+!/uet_history/3_publish/books/BOOK_REGISTRY.json
+!/uet_history/3_publish/books/00_uet_core_theory/
+/uet_history/3_publish/books/00_uet_core_theory/*
+!/uet_history/3_publish/books/00_uet_core_theory/README.md
+!/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/
+/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/*
+!/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/README.md
+!/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/book_1_blueprint.md
+# Re-open only curated history files while keeping the rest of uet_history local-only.
+!/uet_history/
+/uet_history/*
+!/uet_history/README.md
+!/uet_history/PUBLIC_MANIFEST.md
+!/uet_history/3_publish/
+/uet_history/3_publish/*
+!/uet_history/3_publish/books/
+/uet_history/3_publish/books/*
+!/uet_history/3_publish/books/README.md
+!/uet_history/3_publish/books/BOOK_REGISTRY.json
+!/uet_history/3_publish/books/00_uet_core_theory/
+/uet_history/3_publish/books/00_uet_core_theory/*
+!/uet_history/3_publish/books/00_uet_core_theory/README.md
+!/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/
+/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/*
+!/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/README.md
+!/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/book_1_blueprint.md

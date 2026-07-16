@@ -1,20 +1,36 @@
 # UET Book Workspace
 
-This folder contains public-facing book and long-form narrative scaffolds.
+This directory is the public-facing book workspace. `BOOK_REGISTRY.json` is
+the source of truth for book identity, canonical paths, public paths, and
+publication state.
 
-Current public projects:
+## Path rule
 
-- `00_uet_core_theory/` - core UET theory explanation scaffold
-- `origin_of_wealth_and_economics/` - public outline and working blueprint for the economics`r`n  and wealth-origin book track
+Existing book folders are canonical. Agents must inspect this directory and
+the registry before creating a path. A new semantic alias for an existing book
+is not allowed.
 
-Draft inputs and raw chapter sources remain local-only until reviewed.
+The working source and public output use the same book identity. Raw material
+and chapter drafts may remain local, but they must not be silently replaced by
+a renamed public copy.
 
-## Publication Boundary
+## Current public tree
 
-The economics and wealth-origin track now has a small public outline so readers
-can understand what the project is about. The full local drafts are still not
-published here because they need review for encoding, claim strength, source
-boundary, and raw/draft separation.
+| Book | Public path | State |
+| --- | --- | --- |
+| Core UET theory | `00_uet_core_theory/` | curated scaffold |
+| The Origin of Wealth | `0.1 Econmi - The Origin of Wealth/` | curated blueprint |
 
-Future additions should promote reviewed chapter sections in small scoped PRs
-instead of dumping raw notes or unreviewed draft folders into the public tree.
+The remaining book tracks are recorded in `BOOK_REGISTRY.json` as local-only
+until their reviewed public files are promoted. The previous
+`origin_of_wealth_and_economics/` path was a duplicate alias and is retired.
+
+## Publication workflow
+
+1. Update the existing canonical book folder.
+2. Keep `1_raw/` and `ch_drafts/` outside the public file list.
+3. Update the registry state and public file list.
+4. Commit the coherent book change and verify the public `main` path.
+
+One workflow applies to every book. A book-specific change must not create a
+book-specific directory convention.
