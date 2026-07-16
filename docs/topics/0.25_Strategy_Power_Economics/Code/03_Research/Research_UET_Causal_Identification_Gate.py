@@ -1,0 +1,7 @@
+from pathlib import Path
+import json
+ROOT=Path(__file__).resolve().parents[2]
+ART=ROOT/"Result/artifacts/0_25_causal_identification_gate.json"
+def main():
+ out={"schema_version":"1.0","topic":"0.25_Strategy_Power_Economics","status":"BLOCKED","hypotheses":["monetary shocks","energy supply/weather/geopolitical shocks","infrastructure exposure","R&D/patent policy shocks","labor interventions"],"minimum_acceptance":{"independent_identification_strategies":2,"pretrend_joint_test":"no material violation","placebo_windows":"null/negative-control consistent","iv_first_stage":"passes preregistered weak-instrument screen","robustness":"alternative windows, controls, weighting"},"blockers":["No intervention-level treatment/exposure archive with release vintage and hash is locked.","No preregistered treatment/control design or event window exists.","No pre-trend, placebo, negative-control, or first-stage artifact exists.","Aggregate macro associations cannot be relabeled as causal effects."],"claim_boundary":"Until this gate is PASS, results may be descriptive associations only; fiat causality, policy success, and mechanism claims remain blocked."};ART.write_text(json.dumps(out,indent=2)+'\n',encoding='utf-8');print('Causal identification gate: BLOCKED')
+if __name__=="__main__":main()
