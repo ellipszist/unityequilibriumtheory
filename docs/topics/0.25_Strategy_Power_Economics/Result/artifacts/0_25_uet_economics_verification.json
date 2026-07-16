@@ -85,6 +85,16 @@
     {
       "command": [
         "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Code\\03_Research\\Research_UET_Independent_Replication_Gate.py"
+      ],
+      "exit_code": 0,
+      "script": "docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_UET_Independent_Replication_Gate.py",
+      "stderr_tail": "",
+      "stdout_tail": "Independent replication gate: BLOCKED\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
         "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Code\\03_Research\\Research_UET_Global_Replication_Readiness.py"
       ],
       "exit_code": 0,
@@ -574,7 +584,7 @@
         "start_year": 1959
       },
       "formula_boundary": "R/N/K/I are dimensionless proxy constructs after the stated transformations; they are not a dimensional identity.",
-      "generated_at_utc": "2026-07-16T05:52:13.945191+00:00",
+      "generated_at_utc": "2026-07-16T05:53:19.942105+00:00",
       "input_hashes": [
         {
           "path": "docs/data/external/economics/us_historical/fred/2026-07-12/M2SL.csv",
@@ -1614,7 +1624,7 @@
           ],
           "status": "BLOCKED"
         },
-        "generated_at_utc": "2026-07-16T05:52:31.068883+00:00",
+        "generated_at_utc": "2026-07-16T05:53:38.000894+00:00",
         "historical_energy_transition": {
           "blocker": "EIA historical 1776-1945 annual export is absent.",
           "status": "BLOCKED"
@@ -1652,7 +1662,7 @@
             "resource_exporter"
           ]
         },
-        "generated_at_utc": "2026-07-16T05:52:26.700781+00:00",
+        "generated_at_utc": "2026-07-16T05:53:33.809231+00:00",
         "required_providers": {
           "BIS": "credit, debt, financial conditions",
           "ILOSTAT": "productivity, earnings, hours, labor income",
@@ -1728,6 +1738,24 @@
         "schema_version": "1.0",
         "status": "PASS"
       },
+      "independent_replication": {
+        "blockers": [
+          "No independent analyst/agent rerun artifact is archived.",
+          "No second implementation using the frozen archive exists.",
+          "No replication comparison table with coefficient/interval tolerance exists."
+        ],
+        "claim_boundary": "Internal reruns are not external replication. Evidence Grade A remains blocked until an independent replication succeeds or transparently fails.",
+        "required_protocol": {
+          "agreement": "primary effect direction agrees, confidence intervals overlap, preregistered tolerance is met",
+          "code_path": "independent implementation, not a rerun of the primary script",
+          "failure_reporting": "all replication failures must be reported",
+          "inputs": "same frozen source vintage and hashes",
+          "replicator": "independent analyst or agent"
+        },
+        "schema_version": "1.0",
+        "status": "BLOCKED",
+        "topic": "0.25_Strategy_Power_Economics"
+      },
       "measurement_validity": {
         "blockers": [
           "K_patents_per_capita:USPTO/PatsView export not present in frozen panel"
@@ -1755,7 +1783,7 @@
             "R_standardized_additive"
           ]
         },
-        "generated_at_utc": "2026-07-16T05:52:15.492061+00:00",
+        "generated_at_utc": "2026-07-16T05:53:21.364917+00:00",
         "measurement_gates": {
           "R_family_stability": true,
           "at_least_three_declared_families": true,
@@ -2964,7 +2992,7 @@
             "n": 64
           }
         },
-        "generated_at_utc": "2026-07-16T05:52:18.366201+00:00",
+        "generated_at_utc": "2026-07-16T05:53:24.176298+00:00",
         "observations": [
           {
             "credit_to_gdp": 4.231706560198307,
@@ -3768,7 +3796,7 @@
         "formula_ids": [
           "EC25-UET-RESOURCE-ENGINE"
         ],
-        "generated_at_utc": "2026-07-16T05:52:28.194229+00:00",
+        "generated_at_utc": "2026-07-16T05:53:35.161418+00:00",
         "parameter_policy": {
           "candidate_signal_threshold": {
             "bootstrap_interval_requirement": "95 percent interval for squared-error difference lies below zero",
@@ -4127,7 +4155,7 @@
         "formula_ids": [
           "EC25-UET-MONETARY-RESOURCE-MISMATCH"
         ],
-        "generated_at_utc": "2026-07-16T05:52:29.686472+00:00",
+        "generated_at_utc": "2026-07-16T05:53:36.637007+00:00",
         "inflation_baseline_comparison": [
           {
             "acceptance_rule": "Candidate requires at least 10 percent lower median rolling-origin RMSE than every named baseline and a 95 percent block-bootstrap squared-error interval below zero.",
@@ -4524,7 +4552,7 @@
         "formula_ids": [
           "EC25-UET-WAGE-PRODUCTIVITY-GAP"
         ],
-        "generated_at_utc": "2026-07-16T05:52:32.520596+00:00",
+        "generated_at_utc": "2026-07-16T05:53:39.408650+00:00",
         "schema_version": "1.0",
         "status": "DIAGNOSTIC_COMPLETE",
         "topic": "0.25_Strategy_Power_Economics"
@@ -4542,7 +4570,7 @@
           ],
           "rows": 40
         },
-        "generated_at_utc": "2026-07-16T05:52:16.881057+00:00",
+        "generated_at_utc": "2026-07-16T05:53:22.818989+00:00",
         "missing_sources": [],
         "no_imputation": true,
         "observations": [
@@ -5483,7 +5511,7 @@
     "EC25-UET-MONETARY-RESOURCE-MISMATCH",
     "EC25-UET-WAGE-PRODUCTIVITY-GAP"
   ],
-  "generated_at_utc": "2026-07-16T05:52:32.678956+00:00",
+  "generated_at_utc": "2026-07-16T05:53:39.575540+00:00",
   "holdout_policy": {
     "blockers": [],
     "controller_status": null,
@@ -5509,7 +5537,7 @@
     "controller_status": null,
     "exists": true,
     "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_us_macro_panel_status.json",
-    "sha256": "a282257db9d70d06695766b787180c2141bd1b42aa5057fefdeed81cfcad8d08",
+    "sha256": "0eab758d5e22a8bbfb1695b02783d28f8fc5557eb8a43e9dc06c43ff0e058970",
     "status": "PASS"
   },
   "parameter_policy": {
@@ -5853,7 +5881,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_energy_density_audit.json",
-      "sha256": "7db69e3524eca8af74cd591f5fc314b806922a7466cb17d1216bdf0363c5488c",
+      "sha256": "b5de4414e89f4363f2dc55d0f532159fcbd271df32c5c1ea4ed7274485c001f0",
       "status": "WARN"
     },
     "global_replication_readiness": {
@@ -5866,7 +5894,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_global_replication_readiness.json",
-      "sha256": "9d9cca429723aef5d759de97eb31fc4b18f358b991420502f9152315d1f9a5b7",
+      "sha256": "f2c64b437b0fbcf1c272f061b4cdb290f38d95629c9687855123fffee906037b",
       "status": "BLOCKED"
     },
     "global_wdi_leave_one_out": {
@@ -5905,6 +5933,18 @@
       "sha256": "567e3b76ec1e824ce249862c521876988c406eab86080b362883109a56dec883",
       "status": "PASS"
     },
+    "independent_replication": {
+      "blockers": [
+        "No independent analyst/agent rerun artifact is archived.",
+        "No second implementation using the frozen archive exists.",
+        "No replication comparison table with coefficient/interval tolerance exists."
+      ],
+      "controller_status": null,
+      "exists": true,
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_independent_replication_gate.json",
+      "sha256": "a319f03622235dc2880fc69b2bad18e66b45aab34f70dd5bc15119a263dbb993",
+      "status": "BLOCKED"
+    },
     "measurement_validity": {
       "blockers": [
         "K_patents_per_capita:USPTO/PatsView export not present in frozen panel"
@@ -5912,7 +5952,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_measurement_validity_audit.json",
-      "sha256": "25eeac6a0dfcab7f5065fb03694f3a53b333fd589ce74538f865f26a8d825f99",
+      "sha256": "5fbcffb24646090b56edf55cb6bcd47d27c9840a1ea73516a9f1afe0071e09c7",
       "status": "WARN"
     },
     "money_credit_inflation": {
@@ -5920,7 +5960,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_money_credit_inflation_audit.json",
-      "sha256": "9b731b3e0496c8e21d5084f300c6e6153ee529a18b1fecd03e4c52d13038df51",
+      "sha256": "fcf76f351f116499e573691065e08ad78c31242b228483cab6895c126f767dca",
       "status": "PASS"
     },
     "resource_equation": {
@@ -5928,7 +5968,7 @@
       "controller_status": "NO_PREDECLARED_CANDIDATE_SIGNAL",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_resource_equation_audit.json",
-      "sha256": "10aafd1479571ebffdb6b29c275aa278fdefec3a530ff2ced2ce93e71054101a",
+      "sha256": "8f2b899b558efe3948c6a39b8cd34f0798415dcae01a447e3e0cf3103eb3e50f",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "stone_balloon": {
@@ -5936,7 +5976,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_stone_balloon_audit.json",
-      "sha256": "3f59f7ca3de88f2a8724236a4312b8a845fe49c5c2bdc0b7b4df121867157c3a",
+      "sha256": "1c688785222db9e4b0f91455352a3ff48fdd27967a1cf8653933345c2ec39e14",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "wage_productivity": {
@@ -5944,7 +5984,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_wage_productivity_audit.json",
-      "sha256": "7fb8a662088e45801dde02e842c39cb693d9e5150f9e791e2ab5186cfae37921",
+      "sha256": "cc42fc0e9bbd9ac150dd64a59e2ca60c74e6ce77ad75944b9a26777cd4469fdf",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "welfare": {
@@ -5952,7 +5992,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_welfare_audit.json",
-      "sha256": "80e6b42bf184bec0022677c2f06f02239cbb9402dcdca13419788766efe115dc",
+      "sha256": "8bcc82c75f56ea37ad345446a37fb86986db1e6d4020d10f445791a1656fa693",
       "status": "PASS"
     }
   },

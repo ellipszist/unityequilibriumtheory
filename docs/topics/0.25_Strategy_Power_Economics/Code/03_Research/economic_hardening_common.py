@@ -60,6 +60,7 @@ GLOBAL_WDI_LOO_ARTIFACT = ARTIFACT_DIR / "0_25_global_wdi_leave_one_out.json"
 GLOBAL_WDI_PPP_ARTIFACT = ARTIFACT_DIR / "0_25_global_wdi_ppp_comparison.json"
 GLOBAL_WDI_STRATA_ARTIFACT = ARTIFACT_DIR / "0_25_global_wdi_strata_audit.json"
 CAUSAL_GATE_ARTIFACT = ARTIFACT_DIR / "0_25_causal_identification_gate.json"
+REPLICATION_GATE_ARTIFACT = ARTIFACT_DIR / "0_25_independent_replication_gate.json"
 
 
 def utc_now() -> str:
