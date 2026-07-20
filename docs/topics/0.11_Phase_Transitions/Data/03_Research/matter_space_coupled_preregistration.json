@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0",
+  "artifact": "matter_space_coupled_preregistration",
+  "topic": "0.11_Phase_Transitions",
+  "created_on": "2026-07-21",
+  "status": "LOCKED_BEFORE_EXECUTION",
+  "unit_lane": "normalized",
+  "external_numeric_inputs": [],
+  "parameter_fitting": false,
+  "random_seeds": [1101, 1102, 1103],
+  "primary": {
+    "domain_length": 32.0,
+    "cells": 64,
+    "duration": 1.5,
+    "output_interval": 0.05,
+    "dt_fraction_of_preflight": 0.05,
+    "a_matter": -0.8,
+    "b_matter": 1.0,
+    "kappa_matter": 0.15,
+    "mobility_matter": 0.1,
+    "a_space": 0.8,
+    "b_space": 0.5,
+    "kappa_space": 0.1,
+    "mobility_space": 0.5,
+    "tau_space": 0.6,
+    "coupling_g": 0.4,
+    "matter_dynamics": "conserved",
+    "boundary_condition": "periodic",
+    "stability_safety": 0.2,
+    "ledger_tolerance": 1e-6
+  },
+  "initial_conditions": {
+    "uniform_C": 0.35,
+    "localized_mean": 0.05,
+    "localized_amplitude": 0.45,
+    "localized_sigma": 2.0,
+    "domain_amplitude": 0.7,
+    "domain_interface_width": 1.0,
+    "spinodal_noise_sigma": 0.03,
+    "alternate_phi_amplitude": 0.08,
+    "alternate_pi_amplitude": 0.05
+  },
+  "resolution_control": {
+    "cells": [32, 64, 128],
+    "duration": 0.75,
+    "dt_fraction_of_preflight": 0.05,
+    "temporal_refinement_fractions": [0.05, 0.025]
+  },
+  "trace_control": {
+    "steps": 12,
+    "D_trace": 0.05,
+    "tau_trace": 0.2,
+    "lambda_trace": 0.1,
+    "source_normalization": "normalized",
+    "boundary_condition": "periodic"
+  },
+  "adiabatic_control": {
+    "scales": [1.0, 2.0, 4.0, 8.0],
+    "duration": 0.25,
+    "dt_fraction_of_preflight": 0.1,
+    "tau_scale_power": 2.0,
+    "mobility_scale_power": 1.0,
+    "a_scale_power": 1.0,
+    "kappa_scale_power": -1.0
+  },
+  "legacy_comparator": {
+    "duration": 0.25,
+    "dt": 0.0005,
+    "alpha": 0.5,
+    "gamma": 0.05,
+    "C0": 0.0,
+    "kappa": 0.15,
+    "beta": 0.0,
+    "W_N": 0.0,
+    "a0_viscosity": 0.0
+  },
+  "thresholds": {
+    "matter_relative_drift_max": 1e-10,
+    "minimum_dissipation_density_min": -1e-12,
+    "closed_energy_relative_increase_max": 1e-9,
+    "ledger_closure_relative_max": 1e-6,
+    "trace_physical_difference_max": 1e-12,
+    "coupling_effect_absolute_min": 1e-6,
+    "effect_to_temporal_error_min": 10.0,
+    "resolution_effect_ratio_min": 0.5,
+    "state_sensitivity_to_temporal_error_min": 10.0,
+    "adiabatic_finest_relative_error_max": 0.05
+  },
+  "claim_policy": {
+    "artifact_status": "INTERNAL_DIAGNOSTIC",
+    "topic_readiness_change_allowed": false,
+    "structure_factor_gate_change_allowed": false,
+    "universality_claim_allowed": false,
+    "trace_backreaction_allowed": false
+  }
+}

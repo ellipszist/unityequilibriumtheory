@@ -1290,3 +1290,27 @@
 **Current topic-level status after wave:**
 - 0.11 remains `Draft / Tier B` with selected beta benchmark plus diagnostic mechanism/source-formula lanes.
 - No exponent, universality, RG, material, or Tier A claim is upgraded.
+
+## 2026-07-21 - Matter-Space Coupling Pilot (separate program Wave 5)
+
+**What changed:**
+- Added an isolated normalized pilot specification, locked preregistration, five-comparator runner, post-diagnostic ledger amendment, generated JSON/CSV/four figures, and seven artifact/claim-boundary tests.
+- Compared descriptive legacy UET, canonical conserved `C`, canonical `C` plus trace, coupled `(C, Phi, Pi)`, and the adiabatic reduced model across uniform, localized, two-domain, and three locked spinodal initial conditions.
+- Updated only the README pilot lane and this log; no existing structure-factor gate, verifier artifact, readiness field, or controlling blocker was rewritten.
+
+**Which verifier was run:**
+- `Research_Matter_Space_Coupling.py` completed deterministically with `INTERNAL_DIAGNOSTIC / PASS` and dependency status `BLOCKED`.
+- `pytest docs/core/test/test_matter_space_phase_pilot.py -q` passed `7/7` tests.
+- All four generated figures were visually reviewed; JSON and declared input/output hashes were checked by tests.
+
+**Which blocker narrowed:**
+- Internal normalized conservation, energy descent, refined ledger closure, effect-above-error, multi-resolution persistence, physical-state sensitivity, trace-history invariance, and the three-condition adiabatic sequence now have a machine-readable diagnostic result.
+- The locked run's ledger residual `3.49e-5` remains recorded as failed. Amendment 001 changed only the ledger-control `dt` fraction from `0.05` to `0.005`; the refined maximum is `3.49e-7`. This is disclosed post-diagnostic refinement, not blind confirmation.
+
+**Next controlling blocker:**
+- For this pilot: inherited core physical pre-arrival leakage remains blocking.
+- For Topic 0.11: `ch_finite_k_replicate_temporal_acquisition_plan_defined_execution_open` remains unchanged; morphology metrics from this pilot cannot feed estimator or exponent gates.
+
+**Current topic-level status after wave:**
+- Topic 0.11 remains `Draft / Tier B`. The pilot has `topic_status_impact = NONE` and supports only an internal normalized matter-space diagnostic.
+- No structure-factor estimator, critical exponent, universality, RG, material, spacetime, external-validation, or solved-phase-transition claim is upgraded.

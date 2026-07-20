@@ -94,6 +94,7 @@ flowchart LR
 | Wave 53 CH finite-k shape-only normalization policy gate | Shape-only normalization policy gate | `Data/03_Research/structure_factor_ch_finite_k_shape_only_normalization_policy.json`; `Result/artifacts/0_11_structure_factor_ch_finite_k_shape_only_normalization_policy_gate.json` | q-peak amplitude invariance and diagnostic seed aggregation pass; source amplitude, source averaging, estimator replacement, and exponent rerun remain blocked |
 | Wave 54 CH finite-k source averaging/uncertainty policy gate | Uncertainty policy preflight | `Data/03_Research/structure_factor_ch_finite_k_source_averaging_uncertainty_policy.json`; `Result/artifacts/0_11_structure_factor_ch_finite_k_source_averaging_uncertainty_gate.json` | diagnostic aggregation passes; claim-bearing replicate floor, source time averaging, uncertainty intervals, estimator replacement, and exponent rerun remain blocked |
 | Wave 55 CH finite-k next-path decision gate | Next-path decision preflight | `Data/03_Research/structure_factor_ch_finite_k_next_path_decision.json`; `Result/artifacts/0_11_structure_factor_ch_finite_k_next_path_decision_gate.json` | replicate/temporal acquisition is selected because no replacement observable is accepted; estimator acceptance and exponent rerun remain blocked |
+| Matter-space coupling pilot | Isolated normalized diagnostic | `Result/artifacts/0_11_matter_space_coupled_diagnostic.json` | internal gates pass; core causal dependency blocked; no readiness or estimator impact |
 | Universal phase-transition theory | Not closed | limitations and formula audit | do not claim full proof |
 
 ## 5x4 Grid Structure
@@ -112,6 +113,15 @@ flowchart LR
 cd C:\Users\santa\Desktop\uet_harness
 python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exponents.py
 ```
+
+## Matter-space coupling pilot (isolated diagnostic)
+
++- Contract: [MATTER_SPACE_PILOT_SPEC.md](./MATTER_SPACE_PILOT_SPEC.md)
++- Runner: [Research_Matter_Space_Coupling.py](./Code/03_Research/Research_Matter_Space_Coupling.py)
++- Artifact: [0_11_matter_space_coupled_diagnostic.json](./Result/artifacts/0_11_matter_space_coupled_diagnostic.json)
++- Result: `INTERNAL_DIAGNOSTIC / PASS` for the locked internal gates, with matter drift `1.11e-15`, refined ledger closure `3.49e-7`, coupling/error ratio `1.36e5`, resolution-effect ratio `0.889`, exact trace-history physical invariance, and finest adiabatic error `4.81e-8`.
++- Numerical disclosure: the locked run's maximum ledger residual was `3.49e-5`; amendment 001 reduced only the ledger-control `dt` fraction by ten, retained the original failure, and is not a blind confirmation.
++- Dependency and claim boundary: the core pre-arrival leakage dependency remains `BLOCKED`; Topic 0.11 stays `Draft / Tier B`, and `ch_finite_k_replicate_temporal_acquisition_plan_defined_execution_open` remains the topic controller. Morphology outputs are not accepted structure-factor or correlation-length estimators.
 
 ## Key Files
 
