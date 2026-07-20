@@ -49,3 +49,17 @@
 - Next controller: repair the physical-response numerical scheme; downstream pilots may run only as blocked diagnostic controls.
 - Claim impact: no status upgrade; SI and physical-space interpretations remain blocked.
 - Workflow linkage: Wave 3 of the matter-space hardening plan.
+
+### 2026-07-21 - Integrated research report and downstream dependency gate
+
+- Scope: cross-topic synthesis of the matter-space core and diagnostic pilots in 0.13 and 0.11.
+- Wave type: artifact review, dependency-gate pass, and claim-boundary pass.
+- Added or changed: generated program gate, cross-topic audit script and tests, and the integrated technical research report.
+- Files touched: `MATTER_SPACE_RESEARCH_REPORT.md`, `artifacts/matter_space_research_program_gate.json`, `audit_matter_space_research_program.py`, `test_matter_space_research_program.py`, this log, and the repo work ledger.
+- Verified with: deterministic program audit, seven focused program-gate tests, the combined matter-space/trace regression suite, JSON parsing, dependency/output hash checks, link review, and restricted-claim wording review.
+- Result: overall program `BLOCKED`; core passes 16/17 gates, artifact integrity passes, and artifact layout is `WARN` because eight pilot figures remain in legacy `Result/03_show_Result/` paths.
+- Blocker narrowed: internal variational closure, causal compact-support failure, pilot status, amendment disclosure, and downstream claim gates are now separated in one machine-readable artifact.
+- Still open: pre-arrival leakage `1.76394e-2` must reach `<=1e-6` without clipping or cone padding; SI observable mapping and external validation remain blocked.
+- Next controller: repair or replace the physical-response discretization and generate a causal-discretization repair artifact.
+- Claim impact: no status upgrade; wording is consolidated at `candidate normalized effective model` with 0.13 simulation-only and 0.11 internal-diagnostic boundaries.
+- Workflow linkage: Wave 6 of the matter-space hardening plan; Topic 0.11 remains Draft/Tier B under its independent Wave 55 controller.
