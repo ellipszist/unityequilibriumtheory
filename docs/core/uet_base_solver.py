@@ -22,6 +22,7 @@ if str(root_dir) not in sys.path:
     sys.path.insert(0, str(root_dir))
 
 from docs.core.uet_master_equation import (
+    MATTER_SPACE_OPERATOR_MODE,
     SPACETIME_TRACE_OPERATOR_MODE,
     UETParameters,
     UETMasterEquation,
@@ -104,6 +105,8 @@ class UETBaseSolver(ABC):
         self.C = np.ones((ny, nx)) * self.params.C0
         self.I = np.zeros((ny, nx))
         self.trace_observable = np.zeros((ny, nx))
+        self.space_response = np.zeros((ny, nx))
+        self.space_rate = np.zeros((ny, nx))
 
         # State Tracking
         self.time = 0.0
@@ -162,6 +165,17 @@ class UETBaseSolver(ABC):
             result = self.engine.step(
                 self.C, dt=self.dt, dx=self.dx, I=None, constraints=self.constraints
             )
+        elif active_mode == MATTER_SPACE_OPERATOR_MODE:
+            result = self.engine.step(
+                self.C,
+                dt=self.dt,
+                dx=self.dx,
+                I=None,
+                constraints=None,
+                operator_mode=active_mode,
+                space_response=self.space_response,
+                space_rate=self.space_rate,
+            )
         else:
             result = self.engine.step(
                 self.C, dt=self.dt, dx=self.dx, I=self.I, constraints=self.constraints
@@ -171,8 +185,13 @@ class UETBaseSolver(ABC):
             self.C = result.C
             self.trace_observable = result.trace_observable
             self.metadata["energy_ledger"] = result.energy_ledger
+            self.metadata["diagnostics"] = result.diagnostics
             if result.V is not None:
                 self.metadata["V_field"] = result.V
+            if getattr(result, "space_response", None) is not None:
+                self.space_response = result.space_response
+            if getattr(result, "space_rate", None) is not None:
+                self.space_rate = result.space_rate
             self.I = None
         elif isinstance(result, (tuple, list)):
             # Legacy core returns (C, V, I); keep that adapter explicit.
@@ -213,11 +232,18 @@ class UETBaseSolver(ABC):
         # Handle cases where Fields are coupled (Tuples)
         C_field = self.C[0] if isinstance(self.C, tuple) else self.C
         active_mode = getattr(self.params, "operator_mode", "legacy_local")
-        if active_mode == SPACETIME_TRACE_OPERATOR_MODE:
+        if active_mode in {SPACETIME_TRACE_OPERATOR_MODE, MATTER_SPACE_OPERATOR_MODE}:
             I_field = np.zeros_like(C_field, dtype=float)
-            self.metadata["trace_observable_integral"] = float(
-                np.sum(self.trace_observable) * self.dx * self.dy
-            )
+            if self.trace_observable is not None:
+                cell_volume = self.dx if C_field.ndim == 1 else self.dx * self.dy
+                self.metadata["trace_observable_integral"] = float(
+                    np.sum(self.trace_observable) * cell_volume
+                )
+            if active_mode == MATTER_SPACE_OPERATOR_MODE:
+                self.metadata["space_response_norm"] = float(
+                    np.linalg.norm(self.space_response)
+                )
+                self.metadata["space_rate_norm"] = float(np.linalg.norm(self.space_rate))
         else:
             I_field = self.I[0] if isinstance(self.I, tuple) else self.I
 

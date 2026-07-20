@@ -35,6 +35,13 @@ from .uet_parameters import (
     PARAMETER_POLICY,
 )
 from .uet_trace import TraceKernelConfig, UETStepResult
+from .uet_matter_space import (
+    MATTER_SPACE_OPERATOR_MODE,
+    MatterSpaceConfig,
+    MatterSpaceState,
+    MatterSpaceStabilityError,
+    matter_space_step,
+)
 
 __all__ = [
     # Parameters
@@ -54,6 +61,11 @@ __all__ = [
     "PARAMETER_POLICY",
     "TraceKernelConfig",
     "UETStepResult",
+    "MATTER_SPACE_OPERATOR_MODE",
+    "MatterSpaceConfig",
+    "MatterSpaceState",
+    "MatterSpaceStabilityError",
+    "matter_space_step",
 ]
 
 __version__ = "0.9.0"

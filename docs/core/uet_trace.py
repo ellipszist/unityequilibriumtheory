@@ -73,13 +73,19 @@ class TraceKernelConfig:
 
 @dataclass
 class UETStepResult:
-    """Structured result for the history-dependent operator mode."""
+    """Structured result shared by trace and matter-space operator modes.
+
+    The first five fields retain their original positional order. New physical
+    space-state fields are optional and appended for backward compatibility.
+    """
 
     C: np.ndarray
     V: Optional[np.ndarray]
-    trace_observable: np.ndarray
+    trace_observable: Optional[np.ndarray]
     energy_ledger: Dict[str, Any]
     diagnostics: Dict[str, Any]
+    space_response: Optional[np.ndarray] = None
+    space_rate: Optional[np.ndarray] = None
 
 
 def compute_dissipation_source(

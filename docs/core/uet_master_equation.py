@@ -78,6 +78,12 @@ except ModuleNotFoundError:
     from docs.core.uet_parameters import K_B as k_B, C as c, G, HBAR as hbar
 
 from docs.core.uet_parameters import INTEGRITY_KILL_SWITCH, UETParameters
+from docs.core.uet_matter_space import (
+    MATTER_SPACE_OPERATOR_MODE,
+    MatterSpaceConfig,
+    MatterSpaceState,
+    matter_space_step,
+)
 from docs.core.uet_trace import (
     TraceKernelConfig,
     UETStepResult,
@@ -98,6 +104,7 @@ SUPPORTED_OPERATOR_MODES = {
     CONSERVED_ORDER_OPERATOR_MODE,
     CONSERVED_ORDER_SPECTRAL_OPERATOR_MODE,
     SPACETIME_TRACE_OPERATOR_MODE,
+    MATTER_SPACE_OPERATOR_MODE,
 }
 
 
@@ -875,6 +882,44 @@ class UETMasterEquation:
         self.trace_history: List[np.ndarray] = []  # computational cache only
         self.trace_observable = None
         self.trace_config: Optional[TraceKernelConfig] = None
+        self.space_response = None
+        self.space_rate = None
+        self.matter_space_config: Optional[MatterSpaceConfig] = None
+
+    def step_matter_space(
+        self,
+        state: MatterSpaceState,
+        dt: float,
+        dx: float,
+        config: MatterSpaceConfig,
+        matter_source: Optional[np.ndarray] = None,
+        space_source: Optional[np.ndarray] = None,
+        trace_config: Optional[TraceKernelConfig] = None,
+    ) -> UETStepResult:
+        """Advance the explicit physical matter-space state and update engine caches."""
+
+        result = matter_space_step(
+            state=state,
+            dt=dt,
+            dx=dx,
+            config=config,
+            matter_source=matter_source,
+            space_source=space_source,
+            trace_history=self.trace_history,
+            trace_config=trace_config,
+        )
+        self.C = result.C
+        self.V = None
+        self.I = None
+        self.space_response = result.space_response
+        self.space_rate = result.space_rate
+        self.trace_observable = result.trace_observable
+        self.trace_config = trace_config
+        self.matter_space_config = config
+        source_snapshot = result.diagnostics.get("source_snapshot")
+        if source_snapshot is not None:
+            self.trace_history.append(np.asarray(source_snapshot, dtype=float).copy())
+        return result
 
     def step(
         self,
@@ -890,12 +935,63 @@ class UETMasterEquation:
         scale: float = 1.0,
         operator_mode: Optional[str] = None,
         trace_config: Optional[TraceKernelConfig] = None,
+        matter_space_config: Optional[MatterSpaceConfig] = None,
+        space_response: Optional[np.ndarray] = None,
+        space_rate: Optional[np.ndarray] = None,
+        matter_source: Optional[np.ndarray] = None,
+        space_source: Optional[np.ndarray] = None,
     ) -> Union[Tuple[np.ndarray, ...], UETStepResult, np.ndarray]:
         """
         Execute one dynamics step with state management.
         If V or I are not provided, uses internal state.
         """
         mode = resolve_operator_mode(self.params, operator_mode)
+        if mode == MATTER_SPACE_OPERATOR_MODE:
+            ambiguous = [
+                name
+                for name, value in (
+                    ("I", I),
+                    ("V", V),
+                    ("J_in", J_in),
+                    ("J_out", J_out),
+                    ("constraints", constraints),
+                )
+                if value is not None
+            ]
+            if ambiguous:
+                raise ValueError(
+                    "matter_space_coupled_v1 rejects ambiguous legacy inputs: "
+                    + ", ".join(ambiguous)
+                )
+            config = matter_space_config or self.matter_space_config or MatterSpaceConfig()
+            C_array = np.asarray(C, dtype=float)
+            response = space_response
+            if response is None:
+                cached = self.space_response
+                response = (
+                    np.asarray(cached, dtype=float)
+                    if cached is not None and np.shape(cached) == C_array.shape
+                    else np.zeros_like(C_array)
+                )
+            rate = space_rate
+            if rate is None:
+                cached = self.space_rate
+                rate = (
+                    np.asarray(cached, dtype=float)
+                    if cached is not None and np.shape(cached) == C_array.shape
+                    else np.zeros_like(C_array)
+                )
+            state = MatterSpaceState(C_array, response, rate)
+            return self.step_matter_space(
+                state=state,
+                dt=dt,
+                dx=dx,
+                config=config,
+                matter_source=matter_source,
+                space_source=space_source,
+                trace_config=trace_config,
+            )
+
         if mode == SPACETIME_TRACE_OPERATOR_MODE:
             if I is not None:
                 raise ValueError(
@@ -1132,6 +1228,10 @@ def dynamics_step_complete(
     trace_history: Optional[List[np.ndarray]] = None,
     trace_config: Optional[TraceKernelConfig] = None,
     trace_coupling: Optional[float] = None,
+    matter_space_state: Optional[MatterSpaceState] = None,
+    matter_space_config: Optional[MatterSpaceConfig] = None,
+    matter_source: Optional[np.ndarray] = None,
+    space_source: Optional[np.ndarray] = None,
 ) -> Union[np.ndarray, Tuple[np.ndarray, ...], UETStepResult]:
     """
     AXIOM 6/13/14: Dynamics as Inertial Constrained Optimization
@@ -1153,6 +1253,43 @@ def dynamics_step_complete(
         params = UETParameters()
 
     mode = resolve_operator_mode(params, operator_mode)
+    if mode == MATTER_SPACE_OPERATOR_MODE:
+        ambiguous = [
+            name
+            for name, value in (
+                ("I", I),
+                ("V", V),
+                ("J_in", J_in),
+                ("J_out", J_out),
+                ("constraints", constraints),
+            )
+            if value is not None
+        ]
+        if ambiguous:
+            raise ValueError(
+                "matter_space_coupled_v1 rejects ambiguous legacy inputs: "
+                + ", ".join(ambiguous)
+            )
+        C_field = C[0] if isinstance(C, (tuple, list)) else C
+        C_array = np.asarray(C_field, dtype=float)
+        state = matter_space_state
+        if state is None:
+            state = MatterSpaceState(
+                C_array, np.zeros_like(C_array), np.zeros_like(C_array)
+            )
+        elif not np.array_equal(C_array, state.C):
+            raise ValueError("C must match matter_space_state.C in compatibility mode")
+        return matter_space_step(
+            state=state,
+            dt=dt,
+            dx=dx,
+            config=matter_space_config or MatterSpaceConfig(),
+            matter_source=matter_source,
+            space_source=space_source,
+            trace_history=trace_history,
+            trace_config=trace_config,
+        )
+
     if mode == SPACETIME_TRACE_OPERATOR_MODE:
         if I is not None:
             raise ValueError(
