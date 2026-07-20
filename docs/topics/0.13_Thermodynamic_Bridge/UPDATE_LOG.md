@@ -18,6 +18,25 @@ Use this log when `0.13` changes in a way that narrows a provenance blocker, add
 
 ## Entries
 
+### 2026-07-20 - Spacetime thermodynamic trace contract
+
+- Scope: separate simulation-only trace diagnostic lane.
+- Wave type: artifact pass and claim-boundary pass.
+- Added or changed: `docs/core/TRACE_RESEARCH_SPEC.md`, trace
+  ontology/formula artifacts, and the opt-in `spacetime_trace_v1` benchmark.
+- Files touched: trace benchmark script, Cattaneo artifact, README and this log.
+- Verified with: 10 trace tests, 24 combined targeted regression tests, and
+  `Code/03_Research/Research_Spacetime_Trace.py`.
+- Result: normalized internal gates `PASS`; Cattaneo artifact remains
+  `SIMULATION_ONLY` and topic status remains `WARN`.
+- Blocker narrowed: trace history now has an explicit non-independent ontology.
+- Still open: SI units/ledger closure and source-backed external benchmark.
+- Next controller: an observable mapping with dimensional units; the existing
+  Landauer source-normalization blocker remains the topic-level controller.
+- Claim impact: no upgrade; the trace lane cannot support a UET bridge proof.
+- Workflow linkage: core trace checkpoint before the matter-space pilot.
+
+
 ### 2026-06-22 - Berut Figure 3 digitization-protocol pass
 
 - Scope: narrow the active Berut row beyond raster-asset inventory by selecting a first calibration candidate and defining the required landmark fields before any numeric transcription

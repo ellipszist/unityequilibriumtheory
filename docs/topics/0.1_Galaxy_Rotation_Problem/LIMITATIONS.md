@@ -16,6 +16,17 @@
 - The artifact-level `galaxy_claim_scope_gate` is the export controller for integration topics; it must remain blocking while full-curve SPARC source-lock, competitor baselines, uncertainty handling, and out-of-sample checks are open.
 - No fresh external replication package is documented in this hardening pass.
 
+## History-dependent trace lane
+
+The history-dependent comparison is a separate candidate lane, not a
+replacement for the current rotation verifier. It requires full radial
+curves, pointwise uncertainty, a galaxy-history or controlled proxy, named
+competitor baselines, locked parameters, and holdout evaluation.
+
+The current readiness artifact is
+docs/topics/0.1_Galaxy_Rotation_Problem/Result/artifacts/galaxy_history_comparison.json
+and remains BLOCKED. Dark-matter replacement wording remains blocked.
+
 ## Current Claim Boundary
 
 | Claim area | Allowed wording now | Blocker to stronger wording |

@@ -75,7 +75,7 @@ M_PLANCK = (HBAR * C / G) ** 0.5  # Planck mass
 T_PLANCK = L_PLANCK / C  # Planck time
 
 # =============================================================================
-# FIRST-PRINCIPLES CALCULATION (Landauer Principle)
+# LANDAUER LOWER BOUND AND LEGACY NORMALIZED PROXY
 # =============================================================================
 
 LANDAUER_CONSTANT = math.log(2)  # ln(2) for Landauer coupling
@@ -83,18 +83,19 @@ LANDAUER_CONSTANT = math.log(2)  # ln(2) for Landauer coupling
 
 def calculate_beta_landauer(temperature: float = 293.15) -> float:
     """
-    Calculate β from Landauer Principle (First Principles).
+    Compatibility helper: this function returns a normalized coupling proxy,
+    not the SI Landauer energy. Use ``landauer_minimum_energy`` for joules.
 
-    β = k_B * T * ln(2)
-
-    This is the minimum energy cost per bit of information processing,
-    derived from thermodynamics and validated experimentally (Bérut 2012).
+    This legacy helper produces a normalized coupling proxy for compatibility;
+    it is not the SI energy cost per bit and is not a first-principles
+    derivation of the dimensionless core beta.
 
     Args:
         temperature: System temperature in Kelvin (default: room temperature 293.15K)
 
     Returns:
-        β in Joules (energy per bit)
+        A normalized coupling proxy. Use ``landauer_minimum_energy`` for the
+        joule-valued lower bound ``E_min = k_B T ln(2)``.
 
     Reference:
         - Landauer (1961): Irreversibility and heat generation
@@ -111,6 +112,14 @@ def calculate_beta_landauer(temperature: float = 293.15) -> float:
         return 0.5 * (1 + np.log10(2 * raw_energy))
 
     return raw_energy
+
+
+def landauer_minimum_energy(temperature: float = 293.15) -> float:
+    """Return the SI Landauer lower bound ``k_B T ln(2)`` in joules."""
+
+    if temperature < 0:
+        raise ValueError("temperature must be non-negative")
+    return float(K_B * temperature * LANDAUER_CONSTANT)
 
 
 def calculate_dynamic_kappa(scale: float) -> float:
@@ -245,7 +254,7 @@ class UETParameters:
     """
 
     kappa: float = 0.1  # Gradient penalty (A3)
-    beta: float = 0.05  # Coupling constant (A2)
+    beta: float = 0.05  # Dimensionless normalized coupling (not Joules)
     alpha: float = 1.0  # Equilibrium stiffness (A1)
     gamma: float = 0.025  # Nonlinear stability (A1)
     C0: float = 1.0  # Vacuum Expectation Value (A1)
@@ -280,6 +289,16 @@ class UETParameters:
     tau_inertia: float = 0.0  # s (Systemic Inertia - 0.0 = Overdamped/Diffusion)
     a0_viscosity: float = 1.2e-10  # m/s² (Dynamic Viscosity pivot)
 
+    # === Spacetime trace candidate controls (opt-in only) ===
+    # These values are normalized-lane defaults.  They do not define SI
+    # transport coefficients until a topic-specific units contract is closed.
+    D_trace: float = 0.1
+    tau_trace: float = 0.1
+    lambda_trace: float = 0.0
+    trace_coupling: float = 0.1
+    trace_source_normalization: str = "normalized"
+    trace_boundary_condition: str = "periodic"
+
     # === Structural & Loss Bridge (Audit Fixes) ===
     phi_loss: float = 0.05  # Informational dissipation (Loss factor)
     I_max: float = 1.0     # Axiomatic Informational Capacity (Normalized)
@@ -304,6 +323,7 @@ class UETParameters:
             kill_list = [
                 "kappa", "beta", "alpha", "gamma", "C0", "kappa_I",
                 "lambda_coherence", "gamma_J", "W_N", "tau_inertia", "a0_viscosity",
+                "D_trace", "tau_trace", "lambda_trace", "trace_coupling",
                 "spatial_information_coupling", "spatial_game_coupling", "spatial_kpz_coupling",
                 "spatial_v2_information_coupling", "spatial_v2_game_coupling",
                 "spatial_v2_nonlocal_coupling", "spatial_v2_memory_length",

@@ -151,6 +151,22 @@ Not allowed:
 - `UET overturns Einstein/GR`.
 - `dynamic equilibrium is solved physics`.
 
+## New operator-mode distinction
+
+The audit above describes the repository's legacy I terminology. The opt-in
+spacetime_trace_v1 lane narrows it further:
+
+- C remains the material/structural state.
+- sigma_C is the non-negative source made from change in C.
+- I_trace is a retarded functional of source_history, not an independent field
+  or a new substance.
+- The history buffer is a computational cache, not a second ontology.
+- Infrared and heat-map values remain system-specific observable proxies.
+
+The legacy propagator and information-coupling modes remain available for
+compatibility, but they must not be used as evidence that the new trace
+functional has been derived or externally validated.
+
 ## Next Documentation Step
 
 Before further engine changes, topic docs that use `I` should state:

@@ -1,8 +1,8 @@
 """
-UET Master Equation - Complete Implementation of ALL 12 Core Axioms
+UET Master Equation - Candidate Core and Opt-in Operator Implementations
 ====================================================================
 
-This module implements the COMPLETE UET master equation covering all axioms:
+This module implements the UET baseline functional plus opt-in candidate operators:
 
     Ω[C,I,J] = ∫ d³x [
         V(C)                          # A1: Symmetry Breaking (U(1))
@@ -15,7 +15,7 @@ This module implements the COMPLETE UET master equation covering all axioms:
       + λ Σ_layers(C_i-C_j)²          # A10: Multi-layer Coherence
     ]
 
-Axiom Coverage:
+Axiom Coverage (implementation map; not proof):
     ✅ A1:  Energy Conservation & Transformative Dissipation
     ✅ A2:  Information Emerges from Irreversibility
     ✅ A3:  Space is the Universal Memory Substrate
@@ -53,7 +53,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from typing import Tuple, Optional, List, Union, Any
 
 
@@ -78,18 +78,26 @@ except ModuleNotFoundError:
     from docs.core.uet_parameters import K_B as k_B, C as c, G, HBAR as hbar
 
 from docs.core.uet_parameters import INTEGRITY_KILL_SWITCH, UETParameters
-
+from docs.core.uet_trace import (
+    TraceKernelConfig,
+    UETStepResult,
+    build_trace_energy_ledger,
+    compute_dissipation_source,
+    compute_spacetime_trace,
+)
 LEGACY_OPERATOR_MODE = "legacy_local"
 SPATIAL_COUPLED_OPERATOR_MODE = "spatial_coupled_v1"
 SPATIAL_COUPLED_V2_OPERATOR_MODE = "spatial_coupled_v2"
 CONSERVED_ORDER_OPERATOR_MODE = "conserved_order_v1"
 CONSERVED_ORDER_SPECTRAL_OPERATOR_MODE = "conserved_order_spectral_v1"
+SPACETIME_TRACE_OPERATOR_MODE = "spacetime_trace_v1"
 SUPPORTED_OPERATOR_MODES = {
     LEGACY_OPERATOR_MODE,
     SPATIAL_COUPLED_OPERATOR_MODE,
     SPATIAL_COUPLED_V2_OPERATOR_MODE,
     CONSERVED_ORDER_OPERATOR_MODE,
     CONSERVED_ORDER_SPECTRAL_OPERATOR_MODE,
+    SPACETIME_TRACE_OPERATOR_MODE,
 }
 
 
@@ -242,7 +250,7 @@ KAPPA_BEKENSTEIN = L_P_SQUARED / 4  # ≈ 6.5e-71 m²
 
 
 # =============================================================================
-# UET PARAMETERS - COVERS ALL AXIOMS
+# UET PARAMETERS - CENTRALIZED CANDIDATE CONTROLS
 # =============================================================================
 
 
@@ -356,7 +364,7 @@ def information_propagator_step(
             laplacian[0] = laplacian[1]
             laplacian[-1] = laplacian[-2]
     else:
-        laplacian = np.zeros_like(I) # Placeholder for 2D
+        laplacian = conserved_laplacian(I, dx)  # periodic finite-difference Laplacian for 2D/3D
 
     # Governing Equation: dI/dt = D∇²I - m_I²I + βC
     # Where m_I is the "Information Decay" or "Forgetfulness" of Space
@@ -659,7 +667,7 @@ def layer_coherence_term(
 
 
 # =============================================================================
-# COMPLETE OMEGA FUNCTIONAL - ALL AXIOMS
+# BASELINE OMEGA FUNCTIONAL AND OPT-IN CANDIDATE TERMS
 # =============================================================================
 
 
@@ -721,7 +729,7 @@ def omega_functional_complete(
       + λ Σ_layers(C_i-C_j)²          # A10: Multi-layer Coherence
     ]
 
-    Covers ALL 12 Core Axioms.
+    Provides a baseline functional plus opt-in candidate operators; it does not close all axioms.
     """
     if params is None:
         params = UETParameters()
@@ -743,8 +751,15 @@ def omega_functional_complete(
     # === A2: Information coupling ===
     if I is not None:
         info_integral = information_coupling(C, I, dx, params, operator_mode=operator_mode)
+        info_volume = _volume_element(I, dx)
+        # The header's |grad I|² + m_I² I² terms are now explicit.  The
+        # normalized core uses kappa_I as the candidate m_I² coefficient.
+        info_gradient_integral = 0.5 * np.sum(gradient_magnitude_squared(I, dx)) * info_volume
+        info_mass_integral = 0.5 * getattr(params, "kappa_I", 0.0) * np.sum(I**2) * info_volume
     else:
         info_integral = 0.0
+        info_gradient_integral = 0.0
+        info_mass_integral = 0.0
 
     # === A4: Semi-open exchange (In-Ex) ===
     if J_in is not None and J_out is not None:
@@ -776,6 +791,8 @@ def omega_functional_complete(
         potential_integral
         + gradient_integral
         + info_integral
+        + info_gradient_integral
+        + info_mass_integral
         + exchange_integral
         + will_integral
         + game_integral
@@ -804,7 +821,7 @@ def calculate_value(omega_prev: float, omega_curr: float) -> float:
     - Biology: Fitness Gradient Ascent (+ΔFitness)
     - ML: Gradient Descent on Loss Function (-ΔLoss)
 
-    This is not philosophy; it is the Second Law of Thermodynamics applied to complex systems.
+    In this core it is a Lyapunov/free-energy diagnostic, not a proof of full energy conservation.
     Ω must decrease for any spontaneous process (dΩ/dt ≤ 0), thus V must be positive.
     """
     return -(omega_curr - omega_prev)
@@ -855,6 +872,9 @@ class UETMasterEquation:
         self.params = params if params else UETParameters()
         self.V = None  # Velocity state for inertia
         self.I = None  # Information field state
+        self.trace_history: List[np.ndarray] = []  # computational cache only
+        self.trace_observable = None
+        self.trace_config: Optional[TraceKernelConfig] = None
 
     def step(
         self,
@@ -869,11 +889,60 @@ class UETMasterEquation:
         density: float = 0.0,
         scale: float = 1.0,
         operator_mode: Optional[str] = None,
-    ) -> Tuple[np.ndarray, ...]:
+        trace_config: Optional[TraceKernelConfig] = None,
+    ) -> Union[Tuple[np.ndarray, ...], UETStepResult, np.ndarray]:
         """
         Execute one dynamics step with state management.
         If V or I are not provided, uses internal state.
         """
+        mode = resolve_operator_mode(self.params, operator_mode)
+        if mode == SPACETIME_TRACE_OPERATOR_MODE:
+            if I is not None:
+                raise ValueError(
+                    "spacetime_trace_v1 consumes source_history; pass no independent I field"
+                )
+            config = trace_config or self.trace_config
+            if config is None:
+                config = TraceKernelConfig(
+                    D_trace=getattr(self.params, "D_trace", 0.1),
+                    tau_trace=getattr(self.params, "tau_trace", 0.1),
+                    lambda_trace=getattr(self.params, "lambda_trace", 0.0),
+                    source_normalization=getattr(
+                        self.params, "trace_source_normalization", "normalized"
+                    ),
+                    boundary_condition=getattr(
+                        self.params, "trace_boundary_condition", "periodic"
+                    ),
+                )
+            results = dynamics_step_complete(
+                C=C,
+                V=V if V is not None else self.V,
+                I=None,
+                J_in=J_in,
+                J_out=J_out,
+                dx=dx,
+                dt=dt,
+                constraints=constraints,
+                params=self.params,
+                density=density,
+                scale=scale,
+                operator_mode=mode,
+                trace_history=self.trace_history,
+                trace_config=config,
+                trace_coupling=getattr(self.params, "trace_coupling", 0.1),
+            )
+            if not isinstance(results, UETStepResult):
+                raise TypeError("spacetime_trace_v1 must return UETStepResult")
+            self.C = results.C
+            self.V = results.V
+            self.I = None
+            self.trace_observable = results.trace_observable
+            self.trace_config = config
+            source_snapshot = results.diagnostics.get("source_snapshot")
+            if source_snapshot is not None:
+                self.trace_history.append(np.asarray(source_snapshot, dtype=float).copy())
+            return results
+
         v_in = V if V is not None else self.V
         i_in = I if I is not None else self.I
 
@@ -903,6 +972,11 @@ class UETMasterEquation:
         else:
             self.C = results
             return results
+
+    def reset_trace_history(self) -> None:
+        """Reset the computational trace cache between independent runs."""
+        self.trace_history.clear()
+        self.trace_observable = None
 
     def compute_omega(
         self,
@@ -952,6 +1026,96 @@ def is_system_improving(omega_series: List[float], window: int = 10) -> bool:
 # =============================================================================
 
 
+def _spacetime_trace_dynamics_step(
+    C: np.ndarray,
+    V: Optional[np.ndarray],
+    J_in: Optional[np.ndarray],
+    J_out: Optional[np.ndarray],
+    dx: float,
+    dt: float,
+    constraints: Optional[dict],
+    params: UETParameters,
+    density: float,
+    scale: float,
+    trace_history: Optional[List[np.ndarray]],
+    trace_config: Optional[TraceKernelConfig],
+    trace_coupling: Optional[float],
+) -> UETStepResult:
+    """Run the opt-in history-functional branch without an independent ``I``."""
+
+    if trace_config is None:
+        trace_config = TraceKernelConfig(
+            D_trace=getattr(params, "D_trace", 0.1),
+            tau_trace=getattr(params, "tau_trace", 0.1),
+            lambda_trace=getattr(params, "lambda_trace", 0.0),
+            source_normalization=getattr(params, "trace_source_normalization", "normalized"),
+            boundary_condition=getattr(params, "trace_boundary_condition", "periodic"),
+        )
+    history = list(trace_history or [])
+    trace = compute_spacetime_trace(history, dx, dt, trace_config, shape=np.asarray(C).shape)
+
+    # The trace response is compared with the current local baseline.  The
+    # algebraic MOND-like A14 correction is disabled in this branch so a
+    # measured history effect cannot be confused with the old viscosity proxy.
+    baseline_params = replace(
+        params, a0_viscosity=0.0, operator_mode=LEGACY_OPERATOR_MODE
+    )
+    baseline = dynamics_step_complete(
+        C=C,
+        V=V,
+        I=None,
+        J_in=J_in,
+        J_out=J_out,
+        dx=dx,
+        dt=dt,
+        constraints=constraints,
+        params=baseline_params,
+        density=density,
+        scale=scale,
+        operator_mode=LEGACY_OPERATOR_MODE,
+    )
+    if isinstance(baseline, tuple):
+        baseline_C = np.asarray(baseline[0], dtype=float)
+        baseline_V = np.asarray(baseline[1], dtype=float) if len(baseline) > 1 else None
+    else:
+        baseline_C = np.asarray(baseline, dtype=float)
+        baseline_V = None
+
+    strength = max(
+        0.0,
+        float(getattr(params, "trace_coupling", 0.1) if trace_coupling is None else trace_coupling),
+    )
+    feedback = 1.0 / (1.0 + strength * np.maximum(trace, 0.0))
+    C_new = np.asarray(C, dtype=float) + feedback * (baseline_C - np.asarray(C, dtype=float))
+    if constraints is not None:
+        C_new = nea_dynamics(C_new, constraints, params)
+    V_new = feedback * baseline_V if baseline_V is not None else None
+
+    source = compute_dissipation_source(C, C_new, dt)
+    ledger = build_trace_energy_ledger(source, trace, dx, trace_config)
+    diagnostics = {
+        "operator_mode": SPACETIME_TRACE_OPERATOR_MODE,
+        "kernel_equation": trace_config.operator_equation,
+        "kernel_is_causal_by_construction": True,
+        "causal_speed": trace_config.v_trace,
+        "trace_history_length": len(history),
+        "baseline_operator": LEGACY_OPERATOR_MODE,
+        "algebraic_viscosity_applied": False,
+        "trace_feedback_min": float(np.min(feedback)),
+        "trace_feedback_max": float(np.max(feedback)),
+        "source_nonnegative": bool(np.min(source) >= -1e-12),
+        "source_snapshot": source,
+        "ontology": "history_functional_cache_not_independent_field",
+    }
+    return UETStepResult(
+        C=C_new,
+        V=V_new,
+        trace_observable=trace,
+        energy_ledger=ledger,
+        diagnostics=diagnostics,
+    )
+
+
 def dynamics_step_complete(
     C: np.ndarray,
     V: Optional[np.ndarray] = None,      # A13: Velocity field for inertia
@@ -965,14 +1129,17 @@ def dynamics_step_complete(
     density: float = 0.0,
     scale: float = 1.0,
     operator_mode: Optional[str] = None,
-) -> Union[np.ndarray, Tuple[np.ndarray, ...]]:
+    trace_history: Optional[List[np.ndarray]] = None,
+    trace_config: Optional[TraceKernelConfig] = None,
+    trace_coupling: Optional[float] = None,
+) -> Union[np.ndarray, Tuple[np.ndarray, ...], UETStepResult]:
     """
     AXIOM 6/13/14: Dynamics as Inertial Constrained Optimization
 
     Equation (v0.9.0):
         τ_i ∂²C/∂t² + ∂C/∂t = -μ(a/a0)⁻¹ δΩ/δC
 
-    This combines Diffusion (A6), Inertia (A13), and Dynamic Viscosity (A14).
+    Legacy path combines diffusion, inertia, and an algebraic viscosity proxy; trace mode is a separate history functional.
     """
     """
     AXIOM 6: Dynamics as Constrained Optimization
@@ -985,13 +1152,37 @@ def dynamics_step_complete(
     if params is None:
         params = UETParameters()
 
+    mode = resolve_operator_mode(params, operator_mode)
+    if mode == SPACETIME_TRACE_OPERATOR_MODE:
+        if I is not None:
+            raise ValueError(
+                "spacetime_trace_v1 consumes source_history; pass no independent I field"
+            )
+        if isinstance(C, (tuple, list)):
+            C = C[0]
+        return _spacetime_trace_dynamics_step(
+            C=np.asarray(C, dtype=float),
+            V=V,
+            J_in=J_in,
+            J_out=J_out,
+            dx=dx,
+            dt=dt,
+            constraints=constraints,
+            params=params,
+            density=density,
+            scale=scale,
+            trace_history=trace_history,
+            trace_config=trace_config,
+            trace_coupling=trace_coupling,
+        )
+
     # Handle coupled fields (tuple) from previous steps
     if isinstance(C, (tuple, list)):
         # Ensure we have a valid state to work with
-        if len(C) > 1 and I is None:
-            I = C[1]
-        if len(C) > 2 and V is None:
-            V = C[2]
+        if len(C) > 1 and V is None:
+            V = C[1]
+        if len(C) > 2 and I is None:
+            I = C[2]
         C = C[0]
 
     # --- INTEGRITY KILL SWITCH ---
@@ -1214,19 +1405,19 @@ def verify_all_limits() -> dict:
 
 
 # =============================================================================
-# MAIN - TEST ALL AXIOMS
+# MAIN - RUN LIMIT AND CANDIDATE CHECKS
 # =============================================================================
 
 if __name__ == "__main__":
     print("=" * 70)
-    print("UET MASTER EQUATION V0.9.0 - COMPLETE 12 AXIOM IMPLEMENTATION")
+    print("UET MASTER EQUATION V0.9.0 - CANDIDATE CORE / OPT-IN OPERATORS")
     print("=" * 70)
 
     # Create parameters
     params = UETParameters()
     print(f"\nScale: {params.scale}")
     print(f"Temperature: {params.temperature} K")
-    print(f"β (Landauer): {params.beta:.2e} J")
+    print(f"beta (normalized core coupling): {params.beta:.2e}")
     print(f"κ (Bekenstein): {params.kappa}")
     print(f"W_N (Natural Will): {params.W_N}")
     print(f"γ_J (Exchange): {params.gamma_J}")
@@ -1241,9 +1432,9 @@ if __name__ == "__main__":
     all_passed = all(r["passed"] for r in results.values())
     print(f"\n{'✅ ALL LIMIT TESTS PASSED!' if all_passed else '❌ SOME TESTS FAILED'}")
 
-    # Test complete Omega functional
+    # Test baseline Omega functional
     print("\n" + "=" * 70)
-    print("COMPLETE OMEGA FUNCTIONAL TEST")
+    print("BASELINE OMEGA FUNCTIONAL TEST")
     print("=" * 70)
 
     N = 50
@@ -1278,7 +1469,7 @@ if __name__ == "__main__":
         params=params,
     )
 
-    print(f"Ω (complete) = {omega:.4f}")
+    print(f"Omega (candidate functional) = {omega:.4f}")
     print(f"  - Potential (A1): ✅")
     print(f"  - Gradient (A3): ✅")
     print(f"  - Info coupling (A2): ✅")
@@ -1288,5 +1479,5 @@ if __name__ == "__main__":
     print(f"  - Coherence (A10): ✅")
 
     print("\n" + "=" * 70)
-    print("ALL 12 AXIOMS IMPLEMENTED")
+    print("CANDIDATE CORE CHECKS COMPLETE; AXIOM CLOSURE REMAINS OPEN")
     print("=" * 70)

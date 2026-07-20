@@ -140,6 +140,15 @@ Current uncertainty note: the propagated `1 sigma` interval for the topic-summar
 .venv\Scripts\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py
 ```
 
+## Spacetime trace lane (diagnostic)
+
+- Core contract: docs/core/TRACE_RESEARCH_SPEC.md
+- Ontology and formula artifacts: docs/core/artifacts/trace_ontology_contract.json and trace_kernel_formula_audit.json
+- Synthetic benchmark: Code/03_Research/Research_Spacetime_Trace.py
+- Benchmark artifact: Result/artifacts/cattaneo_benchmark_artifact.json
+- Current status: normalized internal gates pass; SI closure and external benchmark remain open
+- Claim boundary: candidate mechanism and simulation-only; no UET thermodynamic bridge proof claim
+
 ## Key Files
 
 - [Engine_Thermodynamics.py](./Code/01_Engine/Engine_Thermodynamics.py): microstate and thermodynamic helper engine.

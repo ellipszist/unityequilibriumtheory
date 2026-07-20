@@ -34,6 +34,7 @@ from .uet_parameters import (
     # Policy
     PARAMETER_POLICY,
 )
+from .uet_trace import TraceKernelConfig, UETStepResult
 
 __all__ = [
     # Parameters
@@ -51,6 +52,8 @@ __all__ = [
     "T_PLANCK",
     # Policy
     "PARAMETER_POLICY",
+    "TraceKernelConfig",
+    "UETStepResult",
 ]
 
 __version__ = "0.9.0"

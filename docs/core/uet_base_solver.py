@@ -21,7 +21,11 @@ root_dir = Path(__file__).resolve().parent.parent.parent
 if str(root_dir) not in sys.path:
     sys.path.insert(0, str(root_dir))
 
-from docs.core.uet_master_equation import UETParameters, UETMasterEquation
+from docs.core.uet_master_equation import (
+    SPACETIME_TRACE_OPERATOR_MODE,
+    UETParameters,
+    UETMasterEquation,
+)
 from docs.core.uet_glass_box import UETMetricLogger
 from docs.core.uet_parameters import INTEGRITY_KILL_SWITCH
 
@@ -99,6 +103,7 @@ class UETBaseSolver(ABC):
         # 3. Fields (Initialized to Equilibrium)
         self.C = np.ones((ny, nx)) * self.params.C0
         self.I = np.zeros((ny, nx))
+        self.trace_observable = np.zeros((ny, nx))
 
         # State Tracking
         self.time = 0.0
@@ -152,18 +157,34 @@ class UETBaseSolver(ABC):
         """
         # 1. Physics Step (Core)
         # Handle cases where the engine returns coupled fields (tuple)
-        result = self.engine.step(
-            self.C, dt=self.dt, dx=self.dx, I=self.I, constraints=self.constraints
-        )
-        
-        if isinstance(result, (tuple, list)):
-            # Robust unpacking of (C, I, V) state
+        active_mode = getattr(self.params, "operator_mode", "legacy_local")
+        if active_mode == SPACETIME_TRACE_OPERATOR_MODE:
+            result = self.engine.step(
+                self.C, dt=self.dt, dx=self.dx, I=None, constraints=self.constraints
+            )
+        else:
+            result = self.engine.step(
+                self.C, dt=self.dt, dx=self.dx, I=self.I, constraints=self.constraints
+            )
+
+        if hasattr(result, "C") and hasattr(result, "trace_observable"):
+            self.C = result.C
+            self.trace_observable = result.trace_observable
+            self.metadata["energy_ledger"] = result.energy_ledger
+            if result.V is not None:
+                self.metadata["V_field"] = result.V
+            self.I = None
+        elif isinstance(result, (tuple, list)):
+            # Legacy core returns (C, V, I); keep that adapter explicit.
             self.C = result[0]
             if len(result) > 1:
-                self.I = result[1]
+                if len(result) > 2 or self.I is None:
+                    self.metadata["V_field"] = result[1]
+                else:
+                    # Historical I-only tuple is (C, I).
+                    self.I = result[1]
             if len(result) > 2:
-                # Potential Velocity Field (Inertial UET) 
-                self.metadata["V_field"] = result[2]
+                self.I = result[2]
         else:
             self.C = result
 
@@ -191,7 +212,14 @@ class UETBaseSolver(ABC):
         """
         # Handle cases where Fields are coupled (Tuples)
         C_field = self.C[0] if isinstance(self.C, tuple) else self.C
-        I_field = self.I[0] if isinstance(self.I, tuple) else self.I
+        active_mode = getattr(self.params, "operator_mode", "legacy_local")
+        if active_mode == SPACETIME_TRACE_OPERATOR_MODE:
+            I_field = np.zeros_like(C_field, dtype=float)
+            self.metadata["trace_observable_integral"] = float(
+                np.sum(self.trace_observable) * self.dx * self.dy
+            )
+        else:
+            I_field = self.I[0] if isinstance(self.I, tuple) else self.I
 
         # Calculate Gradients for Omega
         # Robust check: Need at least 2 elements in the dimension to calculate gradient

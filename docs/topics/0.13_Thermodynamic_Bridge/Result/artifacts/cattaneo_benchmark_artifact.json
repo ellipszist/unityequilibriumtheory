@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "artifact": "cattaneo_benchmark_artifact",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "status": "SIMULATION_ONLY",
+  "claim_class": "simulation_only",
+  "external_validation": false,
+  "controls": {
+    "fourier": "q = -k grad T",
+    "cattaneo": "tau_q dq/dt + q = -k grad T",
+    "uet_trace": "retarded history observable from sigma_C"
+  },
+  "parameters": {
+    "tau_q": 0.2,
+    "k": 1.0,
+    "omega": 0.75,
+    "dt": 0.001,
+    "dx": 1.0
+  },
+  "metrics": {
+    "analytical_residual": 0.0,
+    "phase_error_radians": 8.237731386362412e-06,
+    "hysteresis_area_relative_error": 0.00010992216481651663,
+    "spatial_propagation_speed": 1.0,
+    "causal_leakage_ratio": 0.0,
+    "source_negativity": 0.0,
+    "trace_lag_time": 0.2,
+    "trace_hysteresis_loop_area": 0.3138385342779729,
+    "dt_dx_convergence_error": 2.7508412080434752e-05
+  },
+  "thresholds": {
+    "analytical_residual_max": 1e-10,
+    "causal_leakage_ratio_max": 1e-08,
+    "source_negativity_min": -1e-12,
+    "phase_error_radians_max": 0.05,
+    "hysteresis_area_relative_error_max": 0.05,
+    "convergence_error_max": 0.0005
+  },
+  "gates": {
+    "analytical_residual": true,
+    "causal_leakage": true,
+    "source_sign": true,
+    "lag_phase": true,
+    "hysteresis": true,
+    "dt_dx_convergence": true
+  },
+  "interpretation": [
+    "Cattaneo result is a control-system benchmark, not a derivation of UET.",
+    "UET trace values are normalized observables, not heat flux in W/m2.",
+    "A passing synthetic gate cannot be called external validation."
+  ]
+}
