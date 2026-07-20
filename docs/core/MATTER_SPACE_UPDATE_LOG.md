@@ -34,3 +34,18 @@
 - Next controller: run the deterministic core verifier and dependency gate without changing legacy defaults.
 - Claim impact: none; status remains `candidate normalized effective model`.
 - Workflow linkage: Wave 2 of the matter-space hardening plan.
+
+### 2026-07-20 - Variational, ledger, and dependency verification
+
+- Scope: deterministic core verifier, generated artifacts, and regression gates for `matter_space_coupled_v1`.
+- Wave type: verifier and falsification pass.
+- Added or changed: 38 matter-space/API tests, generated variational and dependency artifacts, alignment/formula-audit synchronization, explicit stability-error metadata, and an open-space-drive ledger gate.
+- Files touched: `audit_matter_space_core.py`, two core test modules, two new verifier artifacts, alignment/formula audit, and the stability exception contract.
+- Verified with: artifact generator plus 62 targeted tests covering the new suite and existing trace/spatial regressions.
+- Result: 16 of 17 numerical gates pass; overall core status `FAIL` and dependency status `BLOCKED` because pre-arrival leakage is `1.76394e-2` versus the `1e-6` limit.
+- Gates passed: local derivative (`2.71e-14`), discrete directional derivatives (`<6.60e-11`), exact conserved-matter drift (`0`), non-negative dissipation, energy descent, closed/open ledger closure (`<1e-6`), `g=0` decoupling, trace on/off and history invariance, physical-state history separation, arrival-speed error (`0.604%`), second-order temporal/spatial convergence, and three-scale adiabatic convergence (`0.0312%` error).
+- Blocker narrowed: the declared continuum response speed is recovered at the 20% arrival threshold, but the explicit Heun/central-Laplacian stencil does not preserve compact support tightly enough.
+- Still open: a causal discretization repair or replacement that meets leakage `<=1e-6` without field clipping or cone padding.
+- Next controller: repair the physical-response numerical scheme; downstream pilots may run only as blocked diagnostic controls.
+- Claim impact: no status upgrade; SI and physical-space interpretations remain blocked.
+- Workflow linkage: Wave 3 of the matter-space hardening plan.

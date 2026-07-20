@@ -30,6 +30,13 @@ MATTER_SPACE_OPERATOR_MODE = "matter_space_coupled_v1"
 class MatterSpaceStabilityError(ValueError):
     """Raised when a requested fixed step exceeds the declared preflight bound."""
 
+    def __init__(self, dt: float, recommended_max_dt: float):
+        self.dt = float(dt)
+        self.recommended_max_dt = float(recommended_max_dt)
+        super().__init__(
+            f"dt={self.dt:.6g} exceeds recommended_max_dt={self.recommended_max_dt:.6g}"
+        )
+
 
 @dataclass(frozen=True)
 class MatterSpaceConfig:
@@ -335,9 +342,7 @@ def matter_space_step(
     )
     max_dt = matter_space_stability_limit(physical, spacing, config)
     if step_size > max_dt * (1.0 + 1e-12):
-        raise MatterSpaceStabilityError(
-            f"dt={step_size:.6g} exceeds recommended_max_dt={max_dt:.6g}"
-        )
+        raise MatterSpaceStabilityError(step_size, max_dt)
 
     energy_before = matter_space_extended_energy(physical, spacing, config)
     k1_C, k1_Phi, k1_Pi, mu_C_before, _ = matter_space_rhs(

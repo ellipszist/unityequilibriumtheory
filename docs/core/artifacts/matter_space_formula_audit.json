@@ -19,9 +19,11 @@
       "constant_origin": "heuristic_bridge",
       "proof_status": "heuristic bridge",
       "verification_role": "future gate",
-      "implementation": "docs/core/uet_matter_space.py::matter_space_free_energy (target)",
+      "implementation": "docs/core/uet_matter_space.py::matter_space_free_energy",
       "failure_mode": "unbounded or non-variational dynamics",
-      "next_hardening_step": "implement the discrete functional and directional-derivative gate"
+      "next_hardening_step": "implement the discrete functional and directional-derivative gate",
+      "implementation_status": "PRESENT",
+      "last_verifier": "docs/core/artifacts/matter_space_variational_verification.json"
     },
     {
       "formula_id": "MS-002",
@@ -35,9 +37,11 @@
       "constant_origin": "heuristic_bridge",
       "proof_status": "derived",
       "verification_role": "future gate",
-      "implementation": "docs/core/uet_matter_space.py::matter_space_chemical_potentials (target)",
+      "implementation": "docs/core/uet_matter_space.py::matter_space_chemical_potentials",
       "failure_mode": "matter dynamics no longer descends the declared functional",
-      "next_hardening_step": "finite-difference directional derivative comparison"
+      "next_hardening_step": "finite-difference directional derivative comparison",
+      "implementation_status": "PRESENT",
+      "last_verifier": "docs/core/artifacts/matter_space_variational_verification.json"
     },
     {
       "formula_id": "MS-003",
@@ -51,9 +55,11 @@
       "constant_origin": "heuristic_bridge",
       "proof_status": "derived",
       "verification_role": "future gate",
-      "implementation": "docs/core/uet_matter_space.py::matter_space_chemical_potentials (target)",
+      "implementation": "docs/core/uet_matter_space.py::matter_space_chemical_potentials",
       "failure_mode": "space response exchanges untracked energy with matter",
-      "next_hardening_step": "finite-difference directional derivative comparison"
+      "next_hardening_step": "finite-difference directional derivative comparison",
+      "implementation_status": "PRESENT",
+      "last_verifier": "docs/core/artifacts/matter_space_variational_verification.json"
     },
     {
       "formula_id": "MS-004",
@@ -68,9 +74,11 @@
       "constant_origin": "heuristic_bridge",
       "proof_status": "heuristic bridge",
       "verification_role": "future gate",
-      "implementation": "docs/core/uet_matter_space.py::matter_space_rhs (target)",
+      "implementation": "docs/core/uet_matter_space.py::matter_space_rhs",
       "failure_mode": "closed matter amount drifts",
-      "next_hardening_step": "mass-drift and source-integral gates"
+      "next_hardening_step": "mass-drift and source-integral gates",
+      "implementation_status": "PRESENT",
+      "last_verifier": "docs/core/artifacts/matter_space_variational_verification.json"
     },
     {
       "formula_id": "MS-005",
@@ -85,9 +93,11 @@
       "constant_origin": "heuristic_bridge",
       "proof_status": "heuristic bridge",
       "verification_role": "future gate",
-      "implementation": "docs/core/uet_matter_space.py::matter_space_rhs (target)",
+      "implementation": "docs/core/uet_matter_space.py::matter_space_rhs",
       "failure_mode": "non-conserved control is mistaken for matter-density conservation",
-      "next_hardening_step": "separate lane test and explicit diagnostics"
+      "next_hardening_step": "separate lane test and explicit diagnostics",
+      "implementation_status": "PRESENT",
+      "last_verifier": "docs/core/artifacts/matter_space_variational_verification.json"
     },
     {
       "formula_id": "MS-006",
@@ -104,9 +114,11 @@
       "constant_origin": "heuristic_bridge",
       "proof_status": "heuristic bridge",
       "verification_role": "future gate",
-      "implementation": "docs/core/uet_matter_space.py::matter_space_rhs (target)",
+      "implementation": "docs/core/uet_matter_space.py::matter_space_rhs",
       "failure_mode": "claimed memory lacks a physical state or ledger",
-      "next_hardening_step": "causal-control, stability, and open-work gates"
+      "next_hardening_step": "causal-control, stability, and open-work gates",
+      "implementation_status": "PRESENT",
+      "last_verifier": "docs/core/artifacts/matter_space_variational_verification.json"
     },
     {
       "formula_id": "MS-007",
@@ -120,9 +132,11 @@
       "constant_origin": "heuristic_bridge",
       "proof_status": "derived",
       "verification_role": "future gate",
-      "implementation": "docs/core/uet_matter_space.py::matter_space_extended_energy (target)",
+      "implementation": "docs/core/uet_matter_space.py::matter_space_extended_energy",
       "failure_mode": "dissipation is mislabeled as lost energy",
-      "next_hardening_step": "closed/open ledger residual gate"
+      "next_hardening_step": "closed/open ledger residual gate",
+      "implementation_status": "PRESENT",
+      "last_verifier": "docs/core/artifacts/matter_space_variational_verification.json"
     },
     {
       "formula_id": "MS-008",
@@ -137,9 +151,11 @@
       "constant_origin": "heuristic_bridge",
       "proof_status": "derived",
       "verification_role": "future gate",
-      "implementation": "docs/core/uet_matter_space.py::matter_space_dissipation (target)",
+      "implementation": "docs/core/uet_matter_space.py::matter_space_dissipation",
       "failure_mode": "trace source becomes negative or loses thermodynamic meaning",
-      "next_hardening_step": "non-negativity and discrete energy-law gates"
+      "next_hardening_step": "non-negativity and discrete energy-law gates",
+      "implementation_status": "PRESENT",
+      "last_verifier": "docs/core/artifacts/matter_space_variational_verification.json"
     },
     {
       "formula_id": "MS-009",
@@ -156,7 +172,9 @@
       "verification_role": "diagnostic-only",
       "implementation": "docs/core/uet_trace.py::compute_spacetime_trace",
       "failure_mode": "derived information silently becomes a feedback state",
-      "next_hardening_step": "trace-enabled versus trace-disabled state-invariance gate"
+      "next_hardening_step": "trace-enabled versus trace-disabled state-invariance gate",
+      "implementation_status": "PRESENT",
+      "last_verifier": "docs/core/artifacts/matter_space_variational_verification.json"
     },
     {
       "formula_id": "MS-010",
@@ -170,9 +188,11 @@
       "constant_origin": "heuristic_bridge",
       "proof_status": "derived",
       "verification_role": "future gate",
-      "implementation": "docs/core/uet_matter_space.py::MatterSpaceConfig.space_speed (target)",
+      "implementation": "docs/core/uet_matter_space.py::MatterSpaceConfig.space_speed",
       "failure_mode": "causal interpretation exceeds the implemented response scale",
-      "next_hardening_step": "arrival-speed control and SI speed-policy gate"
+      "next_hardening_step": "arrival-speed control and SI speed-policy gate",
+      "implementation_status": "PRESENT",
+      "last_verifier": "docs/core/artifacts/matter_space_variational_verification.json"
     }
   ],
   "coefficient_policy": {
@@ -200,5 +220,7 @@
     "v_Phi is normalized until dx and dt scales are source-locked"
   ],
   "legacy_alignment_warning": "legacy potential_V and potential_derivative are not an exact derivative pair and remain unchanged for compatibility",
-  "next_controller": "implement and numerically verify the exact variational pair"
+  "next_controller": "prearrival_leakage",
+  "implementation_status": "PRESENT",
+  "verification_status": "FAIL"
 }

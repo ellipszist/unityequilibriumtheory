@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact": "master_equation_alignment_gate_v2",
   "status": "BLOCKED",
-  "controlling_blocker": "matter_space_exact_variational_implementation_missing",
+  "controlling_blocker": "prearrival_leakage",
   "legacy_core": {
     "default_behavior_must_remain_unchanged": true,
     "potential_derivative_alignment": "WARN",
@@ -15,10 +15,10 @@
   },
   "matter_space_contract": {
     "ontology_separation_gate": "PASS",
-    "functional_derivative_contract_gate": "PASS_SPEC_ONLY",
-    "normalized_units_contract_gate": "PASS_SPEC_ONLY",
-    "implementation_gate": "BLOCKED",
-    "numerical_verification_gate": "BLOCKED",
+    "functional_derivative_contract_gate": "PASS",
+    "normalized_units_contract_gate": "PASS",
+    "implementation_gate": "PASS",
+    "numerical_verification_gate": "FAIL",
     "SI_gate": "BLOCKED"
   },
   "migration_policy": {
@@ -31,6 +31,7 @@
     ],
     "new_trace_backreaction": false
   },
-  "next_required_artifact": "matter_space_variational_verification.json",
-  "claim_impact": "no_status_upgrade"
+  "next_required_artifact": "causal_discretization_repair_artifact.json",
+  "claim_impact": "no_status_upgrade",
+  "last_verifier_artifact": "docs/core/artifacts/matter_space_variational_verification.json"
 }
