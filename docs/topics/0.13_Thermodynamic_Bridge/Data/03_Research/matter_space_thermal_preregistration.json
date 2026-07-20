@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "artifact": "matter_space_thermal_preregistration",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "status": "LOCKED_BEFORE_EXECUTION",
+  "locked_on": "2026-07-21",
+  "unit_lane": "normalized",
+  "external_numeric_inputs": [],
+  "random_seed": 13013,
+  "forcing": {
+    "form": "sin(omega*t)",
+    "omega": 0.75,
+    "amplitude": 1.0,
+    "duration": 32.0
+  },
+  "cattaneo_control": {
+    "tau_q": 0.2,
+    "conductivity_normalized": 1.0,
+    "dt": 0.001
+  },
+  "trace_control": {
+    "D_trace": 0.05,
+    "tau_trace": 0.2,
+    "lambda_trace": 0.1,
+    "dt": 0.05,
+    "boundary_condition": "zero"
+  },
+  "linear_space_control": {
+    "a_space": 0.8,
+    "mobility_space": 0.6,
+    "tau_space": 0.3,
+    "drive_amplitude": 0.3
+  },
+  "nonlinear_primary": {
+    "cells": 8,
+    "dx": 1.0,
+    "dt": 0.00025,
+    "output_dt": 0.01,
+    "a_matter": 0.5,
+    "b_matter": 1.0,
+    "kappa_matter": 0.02,
+    "mobility_matter": 0.4,
+    "a_space": 0.8,
+    "b_space": 0.5,
+    "kappa_space": 0.1,
+    "mobility_space": 0.6,
+    "tau_space": 0.5,
+    "coupling_g": 0.3,
+    "matter_dynamics": "nonconserved",
+    "boundary_condition": "periodic",
+    "matter_drive_amplitude": 0.08,
+    "space_drive_amplitude": 0.3,
+    "initial_noise_amplitude": 0.0,
+    "convergence_dt": 0.0005,
+    "homogeneous_reduction": true
+  },
+  "sensitivity_grid": {
+    "coupling_g": [
+      0.0,
+      0.15,
+      0.3
+    ],
+    "tau_space": [
+      0.2,
+      0.5
+    ],
+    "dt": 0.002,
+    "duration": 24.0,
+    "selection_policy": "all rows reported; primary row g=0.3,tau=0.5 was selected before execution and is not chosen by fit"
+  },
+  "analysis": {
+    "transient_cutoff": 16.0,
+    "arrival_threshold_fraction": 0.2,
+    "prearrival_guard_fraction": 0.05
+  },
+  "thresholds": {
+    "cattaneo_analytical_residual_max": 1e-10,
+    "cattaneo_phase_relative_error_max": 0.05,
+    "cattaneo_lag_relative_error_max": 0.05,
+    "cattaneo_hysteresis_relative_error_max": 0.05,
+    "cattaneo_convergence_error_max": 0.0005,
+    "source_minimum": -1e-12,
+    "ledger_closure_relative_max": 1e-06,
+    "causal_arrival_speed_relative_error_max": 0.05,
+    "prearrival_leakage_fraction_max": 1e-06
+  },
+  "holdout_policy": "xie_2026 source data and curves are prohibited for parameter selection, fitting, or gate tuning",
+  "claim_status": "SIMULATION_ONLY",
+  "random_seed_policy": "recorded for reproducibility; the locked primary run is deterministic and does not draw random numbers"
+}

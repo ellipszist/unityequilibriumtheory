@@ -149,6 +149,16 @@ Current uncertainty note: the propagated `1 sigma` interval for the topic-summar
 - Current status: normalized internal gates pass; SI closure and external benchmark remain open
 - Claim boundary: candidate mechanism and simulation-only; no UET thermodynamic bridge proof claim
 
+## Matter-space thermal control pilot (diagnostic)
+
+- Pilot contract: [THERMAL_MATTER_SPACE_PILOT_SPEC.md](./THERMAL_MATTER_SPACE_PILOT_SPEC.md)
+- Reproducible runner: [Research_Matter_Space_Thermal_Control.py](./Code/03_Research/Research_Matter_Space_Thermal_Control.py)
+- Machine-readable result: [matter_space_thermal_control.json](./Result/artifacts/matter_space_thermal_control.json)
+- External-source intake: [matter_space_second_sound_source_package.json](./Data/03_Research/matter_space_second_sound_source_package.json)
+- Current result: `SIMULATION_ONLY / FAIL`; analytical Cattaneo controls, source sign, core cross-check, arrival-speed error, and the disclosed refined ledger pass, while physical pre-arrival leakage (`0.01764` versus `1e-6`) and the external numeric-source gate remain failed.
+- Numerical disclosure: the locked `dt=2.5e-4` run failed the per-step ledger threshold; a post-diagnostic amendment reduced only `dt` to `5e-5`, retained the original failure, and passed the unchanged ledger threshold. This is a numerical repair, not a blind confirmation.
+- Claim boundary: `Phi` and `R` remain normalized internal variables, the trace has no backreaction, no map to measured temperature/TTG signal is closed, and Landauer remains an external lower-bound constraint only.
+
 ## Key Files
 
 - [Engine_Thermodynamics.py](./Code/01_Engine/Engine_Thermodynamics.py): microstate and thermodynamic helper engine.

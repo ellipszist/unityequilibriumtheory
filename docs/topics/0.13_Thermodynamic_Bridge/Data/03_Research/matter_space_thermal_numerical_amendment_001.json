@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "record": "matter_space_thermal_numerical_amendment_001",
+  "created_at": "2026-07-21",
+  "status": "POST_DIAGNOSTIC_NUMERICAL_AMENDMENT",
+  "blind_preregistration": false,
+  "trigger": {
+    "description": "The locked primary run used dt=0.00025 and exceeded the per-step relative ledger threshold while retaining small absolute and integrated residuals.",
+    "initial_artifact_sha256": "31580525238212ca00b227f6acd74d14e9127bdda5c006b49fd4e71fa893d373",
+    "locked_preregistration_sha256": "f0cb51e720c8c4813973d4227566373b9f3c473308346974e048f49056792fcd",
+    "locked_dt": 0.00025,
+    "observed_max_ledger_closure_relative": 1.4947115299549963e-05,
+    "threshold": 1e-06
+  },
+  "amendment": {
+    "analysis_dt": 5e-05,
+    "reason": "Numerical time-step refinement only; evaluate whether the ledger residual converges below the unchanged threshold.",
+    "physical_parameters_changed": false,
+    "thresholds_changed": false,
+    "external_data_added": false,
+    "parameter_fitting": false,
+    "seed_changed": false
+  },
+  "claim_boundary": [
+    "This amendment was selected after observing the locked-run ledger failure and is not an independent preregistered result.",
+    "The locked-run result remains reported in the generated artifact.",
+    "A passing amended ledger gate demonstrates numerical refinement behavior only."
+  ]
+}

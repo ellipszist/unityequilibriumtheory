@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0",
+  "artifact": "matter_space_second_sound_source_package",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "status": "BLOCKED",
+  "created_on": "2026-07-21",
+  "usage_policy": {
+    "numeric_fitting_allowed": false,
+    "metadata_review_allowed": true,
+    "observable_map_status": "MISSING",
+    "local_numeric_source_status": "MISSING",
+    "blocker": "no dimensional map from normalized Phi to a measured temperature or TTG signal, and no calibration-ready local numeric package"
+  },
+  "sources": [
+    {
+      "source_id": "ding_2022_graphite_over_200K",
+      "title": "Observation of second sound in graphite over 200 K",
+      "authors": "Zhiwei Ding, Ke Chen, Bai Song, Jungwoo Shin, Alexei A. Maznev, Keith A. Nelson, Gang Chen",
+      "publication": "Nature Communications 13, 285 (2022)",
+      "doi": "10.1038/s41467-021-27907-z",
+      "url": "https://www.nature.com/articles/s41467-021-27907-z",
+      "license_or_terms": "CC BY 4.0 article; paper states supporting data are available from the corresponding author on reasonable request",
+      "upstream_data_availability": "author_request_required",
+      "original_filename": null,
+      "local_raw_path": null,
+      "local_record_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_second_sound_source_package.json",
+      "preprocessing": "none; metadata only; no figure digitization or curve extraction",
+      "reported_observable_family": "transient thermal grating temperature response and thermal-wave dispersion",
+      "reported_unit_context": [
+        "temperature K",
+        "grating period micrometre",
+        "time-resolved TTG signal",
+        "thermal-wave velocity"
+      ],
+      "extraction_uncertainty": null,
+      "benchmark_role": "primary external source candidate after observable-map and raw-data closure",
+      "status": "BLOCKED_NO_LOCAL_NUMERIC_SOURCE"
+    },
+    {
+      "source_id": "huberman_2019_graphite_above_100K",
+      "title": "Observation of second sound in graphite at temperatures above 100 K",
+      "authors": "Samuel Huberman, Ryan A. Duncan, Ke Chen, Bai Song, Vazrik Chiloyan, Zhiwei Ding, Alexei A. Maznev, Gang Chen, Keith A. Nelson",
+      "publication": "Science 364(6438), 375-379 (2019); arXiv:1901.09160",
+      "doi": "10.1126/science.aav3548",
+      "url": "https://arxiv.org/abs/1901.09160",
+      "license_or_terms": "arXiv metadata/abstract route; journal reuse terms not audited for local numeric extraction",
+      "upstream_data_availability": "not_packaged_locally",
+      "original_filename": null,
+      "local_raw_path": null,
+      "local_record_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_second_sound_source_package.json",
+      "preprocessing": "none; metadata only",
+      "reported_observable_family": "time-resolved optical thermal transport on 5-20 micrometre scales",
+      "reported_unit_context": [
+        "temperature K",
+        "length micrometre",
+        "relative optical/TTG response"
+      ],
+      "extraction_uncertainty": null,
+      "benchmark_role": "graphite-family comparator; not a calibration target",
+      "status": "METADATA_ONLY"
+    },
+    {
+      "source_id": "mcnelly_1970_NaF_heat_pulse",
+      "title": "Heat Pulses in NaF: Onset of Second Sound",
+      "authors": "T. F. McNelly, S. J. Rogers, D. J. Channin, R. J. Rollefson, W. M. Goubau, G. E. Schmidt, J. A. Krumhansl, R. O. Pohl",
+      "publication": "Physical Review Letters 24(3), 100-102 (1970)",
+      "doi": "10.1103/PhysRevLett.24.100",
+      "url": "https://doi.org/10.1103/PhysRevLett.24.100",
+      "license_or_terms": "APS article terms; numeric reuse terms and raw-data availability not audited",
+      "upstream_data_availability": "not_packaged_locally",
+      "original_filename": null,
+      "local_raw_path": null,
+      "local_record_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_second_sound_source_package.json",
+      "preprocessing": "none; bibliographic metadata only",
+      "reported_observable_family": "cryogenic heat-pulse arrival in very pure NaF",
+      "reported_unit_context": [
+        "temperature K",
+        "heat-pulse time/arrival context"
+      ],
+      "extraction_uncertainty": null,
+      "benchmark_role": "separate material-family comparator; pooling with graphite is prohibited",
+      "status": "SEPARATE_FAMILY_METADATA_ONLY"
+    },
+    {
+      "source_id": "xie_2026_isotopically_pure_graphite_holdout",
+      "title": "Room-temperature second sound in isotopically pure graphite",
+      "authors": "Zhikun Xie, Yifan Zhang, Xin Huang, Zhiwei Ding, et al.",
+      "publication": "Nature Communications 17, 4806 (2026)",
+      "doi": "10.1038/s41467-026-70807-3",
+      "url": "https://www.nature.com/articles/s41467-026-70807-3",
+      "license_or_terms": "CC BY 4.0 article; source data are provided with the study",
+      "upstream_data_availability": "source_data_available_but_locked",
+      "original_filename": null,
+      "local_raw_path": null,
+      "local_record_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_second_sound_source_package.json",
+      "preprocessing": "none; identity metadata inspected only; source data and curves not imported",
+      "reported_observable_family": "room-temperature transient thermal grating signal in isotopically purified graphite",
+      "reported_unit_context": [
+        "temperature K",
+        "grating period micrometre",
+        "normalized TTG signal"
+      ],
+      "extraction_uncertainty": null,
+      "benchmark_role": "locked holdout; prohibited for parameter selection or tuning in this workstream",
+      "holdout_unlock_condition": "freeze observable map and parameters, then execute a separately logged holdout protocol",
+      "status": "HOLDOUT_LOCKED_METADATA_ONLY"
+    }
+  ],
+  "claim_boundary": "source identities are externally anchored; no external numeric validation package exists"
+}

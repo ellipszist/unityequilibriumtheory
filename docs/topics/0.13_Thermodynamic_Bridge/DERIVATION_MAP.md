@@ -27,6 +27,7 @@ Current allowed reading:
 | Standard identity layer | Landauer lower bound, Bekenstein bound, Unruh temperature, Hawking temperature | usable as constraints | proof of UET |
 | UET proxy layer | Stirling entropy proxy, dimensionless temperature proxy, stochastic contact update | heuristic/model component | dimensional bridge closure |
 | UET bridge hypothesis layer | proposed information-entropy-energy interpretation and vacuum-sink extension logic | blocked hypothesis lane | solved or exact bridge claims |
+| Matter-space diagnostic layer | normalized `(C, Phi, Pi)` dynamics, energy/dissipation ledger, and derived trace `R` | `SIMULATION_ONLY / FAIL` | a temperature map, measured heat-flux prediction, or external validation |
 
 ## Formula path
 
@@ -40,6 +41,16 @@ Current allowed reading:
 | `T13-002` | defines a topic-local temperature proxy | useful engine sandbox, not Kelvin by default |
 | `T13-003` | defines a contact/equilibration rule | useful trend model, not closed derivation |
 | `T13-011` | holds bridge-extension/vacuum-sink hypothesis logic | keeps the speculative branch visible and contained |
+
+## Matter-space thermal diagnostic boundary
+
+The pilot follows the one-way chain
+
+`(C, Phi, Pi) -> (mu_C, mu_Phi) -> dynamics -> energy/dissipation ledger -> R`.
+
+`R` has no arrow back into `C`, `Phi`, or `Pi`. The nonlinear homogeneous reduction is cross-checked against `matter_space_coupled_v1`, while Fourier and Cattaneo remain standard controls. The current artifact is still `SIMULATION_ONLY / FAIL`: its disclosed refined ledger passes, but the core physical pre-arrival leakage gate and external numeric-source gate fail. No map from normalized `Phi` to kelvin, heat flux, or a TTG signal has been established.
+
+This diagnostic therefore tests internal constitutive behavior only. It does not derive Cattaneo transport, Landauer's lower bound, second sound, or a dimensional thermodynamic bridge from UET.
 
 ## Open derivation steps
 
@@ -97,7 +108,8 @@ Still needed:
 
 - Do not treat lower-bound agreement as full bridge proof.
 - Do not treat imported gravity identities as derived UET outputs.
-- Do not let synthetic Cattaneo or vacuum-sink behavior act as empirical support.
+- Do not let synthetic Cattaneo, matter-space, trace, or vacuum-sink behavior act as empirical support.
+- Do not treat a post-diagnostic numerical amendment as a blind preregistered confirmation.
 - Do not hide unresolved parameter origin behind good-looking benchmark output.
 
 ## Artifact link

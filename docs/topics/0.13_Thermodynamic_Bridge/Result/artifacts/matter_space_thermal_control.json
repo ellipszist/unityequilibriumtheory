@@ -1,0 +1,254 @@
+{
+  "schema_version": "1.0",
+  "artifact": "matter_space_thermal_control",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "generated_at": "2026-07-20T18:15:52.493986+00:00",
+  "status": "SIMULATION_ONLY",
+  "internal_gate_status": "FAIL",
+  "dependency_status": "BLOCKED",
+  "controlling_blocker": "core_prearrival_leakage",
+  "claim_class": "internal_synthetic_diagnostic",
+  "external_validation": false,
+  "operator_mode": "matter_space_coupled_v1_homogeneous_reduction_plus_spatial_causal_control",
+  "controls": {
+    "fourier": "q = k F(t)",
+    "cattaneo": "tau_q dq/dt + q = k F(t)",
+    "trace_only": "R = G_ret * sigma; no backreaction",
+    "linear_space": "tau_Phi Phi_tt + Phi_t + M_Phi a_Phi Phi = J_Phi(t)",
+    "nonlinear_candidate": "uniform reduction of the exact functional, cross-checked against the core operator"
+  },
+  "metrics": {
+    "cattaneo_analytical_residual": 0.0,
+    "cattaneo_phase_relative_error": 9.271874244056374e-08,
+    "cattaneo_lag_relative_error": 9.271874248716792e-08,
+    "cattaneo_hysteresis_relative_error": 2.3093928019540135e-07,
+    "cattaneo_convergence_error": 1.0357818269746133e-07,
+    "nonlinear_homogeneous_core_crosscheck_error": 0.0,
+    "nonlinear_dt_convergence_error": 4.008454790316307e-09,
+    "nonlinear_locked_to_coarse_dt_error": 1.2530324500215073e-08,
+    "locked_primary_max_ledger_closure_relative": 1.4947115299549963e-05,
+    "nonlinear_max_ledger_closure_relative": 6.024616654447595e-07,
+    "minimum_dissipation_source": 6.60669215673652e-05,
+    "core_causal_arrival_speed_relative_error": 0.006036217303822644,
+    "core_prearrival_leakage_fraction": 0.017639381271029236,
+    "pilot_visual_arrival_speed_relative_error": 0.008064516129032029,
+    "pilot_visual_prearrival_leakage_fraction": 0.052060621423768744,
+    "trace_source_minimum": 1.1456673200014236e-06,
+    "trace_lag_time": -0.6775763673485588,
+    "trace_hysteresis_area": 0.5950466836340469
+  },
+  "thresholds": {
+    "cattaneo_analytical_residual_max": 1e-10,
+    "cattaneo_phase_relative_error_max": 0.05,
+    "cattaneo_lag_relative_error_max": 0.05,
+    "cattaneo_hysteresis_relative_error_max": 0.05,
+    "cattaneo_convergence_error_max": 0.0005,
+    "source_minimum": -1e-12,
+    "ledger_closure_relative_max": 1e-06,
+    "causal_arrival_speed_relative_error_max": 0.05,
+    "prearrival_leakage_fraction_max": 1e-06
+  },
+  "gates": {
+    "cattaneo_analytical_residual": true,
+    "cattaneo_phase": true,
+    "cattaneo_lag": true,
+    "cattaneo_hysteresis": true,
+    "cattaneo_convergence": true,
+    "homogeneous_core_crosscheck": true,
+    "ledger_closure_refined": true,
+    "source_sign": true,
+    "trace_source_sign": true,
+    "causal_arrival_speed": true,
+    "prearrival_leakage": false,
+    "external_source_ready": false
+  },
+  "failed_gates": [
+    "prearrival_leakage",
+    "external_source_ready"
+  ],
+  "primary_parameters": {
+    "cells": 8,
+    "dx": 1.0,
+    "dt": 5e-05,
+    "output_dt": 0.01,
+    "a_matter": 0.5,
+    "b_matter": 1.0,
+    "kappa_matter": 0.02,
+    "mobility_matter": 0.4,
+    "a_space": 0.8,
+    "b_space": 0.5,
+    "kappa_space": 0.1,
+    "mobility_space": 0.6,
+    "tau_space": 0.5,
+    "coupling_g": 0.3,
+    "matter_dynamics": "nonconserved",
+    "boundary_condition": "periodic",
+    "matter_drive_amplitude": 0.08,
+    "space_drive_amplitude": 0.3,
+    "initial_noise_amplitude": 0.0,
+    "convergence_dt": 0.0005,
+    "homogeneous_reduction": true
+  },
+  "locked_primary_observation": {
+    "dt": 0.00025,
+    "ledger_closure_relative": 1.4947115299549963e-05,
+    "ledger_gate_passed": false,
+    "role": "preserved trigger for the post-diagnostic numerical amendment"
+  },
+  "sensitivity_grid": [
+    {
+      "coupling_g": 0.0,
+      "tau_space": 0.2,
+      "phase_radians": -1.0853361147901348,
+      "lag_time": 1.4471148197201797,
+      "hysteresis_area": 1.1277178300736537,
+      "max_ledger_closure_relative": 0.002600101122789942,
+      "minimum_trace_source": 8.685339848301865e-05,
+      "final_C": -0.08340970459252871,
+      "final_Phi": -0.331944327786456,
+      "final_Pi": -0.09360776688455767
+    },
+    {
+      "coupling_g": 0.0,
+      "tau_space": 0.5,
+      "phase_radians": -1.271547158272549,
+      "lag_time": 1.6953962110300653,
+      "hysteresis_area": 1.315400927249953,
+      "max_ledger_closure_relative": 0.0005219378789188584,
+      "minimum_trace_source": 0.00012585059041159605,
+      "final_C": -0.08340970459252871,
+      "final_Phi": -0.3267580647974863,
+      "final_Pi": -0.1520760617574752
+    },
+    {
+      "coupling_g": 0.15,
+      "tau_space": 0.2,
+      "phase_radians": -1.085723138224405,
+      "lag_time": 1.4476308509658733,
+      "hysteresis_area": 1.128083802254321,
+      "max_ledger_closure_relative": 0.0033925069364990415,
+      "minimum_trace_source": 6.409223126171808e-05,
+      "final_C": -0.07865011071488757,
+      "final_Phi": -0.3316024610063914,
+      "final_Pi": -0.0935889682352429
+    },
+    {
+      "coupling_g": 0.15,
+      "tau_space": 0.5,
+      "phase_radians": -1.2720073259052596,
+      "lag_time": 1.6960097678736794,
+      "hysteresis_area": 1.3157435197296707,
+      "max_ledger_closure_relative": 0.000652683589980536,
+      "minimum_trace_source": 9.974793093579742e-05,
+      "final_C": -0.07818886882492274,
+      "final_Phi": -0.3263981851401291,
+      "final_Pi": -0.15215227836352754
+    },
+    {
+      "coupling_g": 0.3,
+      "tau_space": 0.2,
+      "phase_radians": -1.0864368030716804,
+      "lag_time": 1.448582404095574,
+      "hysteresis_area": 1.1287046698529157,
+      "max_ledger_closure_relative": 0.005750330423237858,
+      "minimum_trace_source": 3.7828884589579996e-05,
+      "final_C": -0.07381895224233027,
+      "final_Phi": -0.33121823211384505,
+      "final_Pi": -0.09366079751834802
+    },
+    {
+      "coupling_g": 0.3,
+      "tau_space": 0.5,
+      "phase_radians": -1.2728313571021324,
+      "lag_time": 1.6971084761361765,
+      "hysteresis_area": 1.3162993605716278,
+      "max_ledger_closure_relative": 0.0009418829797964042,
+      "minimum_trace_source": 6.618270960982822e-05,
+      "final_C": -0.07282753280157783,
+      "final_Phi": -0.325962658995495,
+      "final_Pi": -0.1523329638817904
+    }
+  ],
+  "preregistration": {
+    "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_thermal_preregistration.json",
+    "sha256": "f0cb51e720c8c4813973d4227566373b9f3c473308346974e048f49056792fcd",
+    "status": "LOCKED_BEFORE_EXECUTION",
+    "parameter_fitting": false,
+    "seed": 13013
+  },
+  "numerical_amendment": {
+    "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_thermal_numerical_amendment_001.json",
+    "sha256": "a30b639531fda62983b380051b4ca86c791cda772b0440b3113c5ca7daf5f85e",
+    "status": "POST_DIAGNOSTIC_NUMERICAL_AMENDMENT",
+    "blind_preregistration": false,
+    "analysis_dt": 5e-05,
+    "physical_parameters_changed": false,
+    "thresholds_changed": false
+  },
+  "source_package": {
+    "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_second_sound_source_package.json",
+    "sha256": "118ddf77864d74fe1c662e447af41705e544cfae4a8523cbe802560b6d4279f6",
+    "status": "BLOCKED",
+    "numeric_rows_consumed": 0,
+    "holdout_consumed": false
+  },
+  "core_dependency": {
+    "path": "docs/core/artifacts/matter_space_variational_verification.json",
+    "sha256": "a0a1d54212181ad3c3f88b479c5ef99fa0cb3d8ec7735c62020b163abd2a79c4",
+    "status": "FAIL",
+    "controlling_blocker": "prearrival_leakage"
+  },
+  "outputs": {
+    "timeseries_csv": {
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/03_show_Result/matter_space_thermal_control_timeseries.csv",
+      "sha256": "8dd7de2709cfff5ffe3df66d6862328b9d58b2864a5b4365cc6dc6b1a1d92308"
+    },
+    "figures": [
+      {
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/03_show_Result/matter_space_thermal_phase_lag.png",
+        "caption": "Fourier, Cattaneo, linear Phi, nonlinear Phi, and a separately plotted derived trace.",
+        "caveat": "Visual phase similarity is not external validation.",
+        "sha256": "a83e271128c066e0b514ce08f7763e55cdde5a43731c2722adbc4f691916673a"
+      },
+      {
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/03_show_Result/matter_space_thermal_hysteresis.png",
+        "caption": "Physical-control loops and the source-to-trace loop are kept on separate axes.",
+        "caveat": "No material-level comparison is made.",
+        "sha256": "2e60f37e47d943c64f4fe3dfaafdfb8482a865f020c5eb21205d7e968a83e9fb"
+      },
+      {
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/03_show_Result/matter_space_thermal_causal_arrival.png",
+        "caption": "Compact-pulse detector response against the declared Phi propagation time.",
+        "caveat": "Pre-arrival leakage blocks physical interpretation.",
+        "sha256": "a6a53713114591d0f2ae0b289a3ea5889774d3d120f783ec1b7ff10c55f3f1bb"
+      },
+      {
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/03_show_Result/matter_space_thermal_ledger.png",
+        "caption": "Normalized extended energy and open-system ledger closure.",
+        "caveat": "This is not an SI heat or entropy balance.",
+        "sha256": "f0bf947ef6820a4e9883cce58371ece276bf3595d038deb097f0aa53f15bc6a9"
+      }
+    ],
+    "script_sha256": "7b8988c2c72574d85428ddcb7b9c880f4af361b060bcdcdc8837f6f2041d15c5"
+  },
+  "run_integrity": {
+    "unit_lane": "normalized",
+    "random_draws_used": false,
+    "field_clipping": false,
+    "parameter_fitting": false,
+    "external_numeric_data_used": false,
+    "trace_backreaction": false,
+    "post_diagnostic_numerical_amendment": true,
+    "amendment_informed_by_initial_ledger_failure": true
+  },
+  "interpretation": [
+    "Cattaneo is an analytical/numerical control, not a UET derivation.",
+    "Phi and R are normalized internal variables, not temperature or heat flux.",
+    "The trace-only response never changes C, Phi, or Pi.",
+    "The strict physical causal-cone gate fails and blocks physical interpretation.",
+    "The locked dt failed the strict per-step ledger threshold; the preserved post-diagnostic refinement passes without changing physics parameters or thresholds.",
+    "The refined ledger result is a disclosed numerical repair, not an independent blind confirmation.",
+    "The external source package is metadata-only and the 2026 source is an untouched holdout.",
+    "Landauer k_B T ln 2 is not used to derive beta or a pilot coefficient."
+  ]
+}

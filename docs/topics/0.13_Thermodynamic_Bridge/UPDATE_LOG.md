@@ -643,3 +643,16 @@ Use this log when `0.13` changes in a way that narrows a provenance blocker, add
 - Blocker narrowed: Berut now moves from `berut_figure_3_candidate_panel_frame_review_required` to `berut_figure_3_quantitative_panel_tick_mapping_required`.
 - Still open: select the relevant quantitative panel within `jpeg_2`, map duration and heat ticks, identify the Landauer reference/limit marker, capture selected point/curve pixels, and define digitization uncertainty before any numeric transcription.
 - Claim impact: no upgrade; this wave corrects candidate priority only and keeps the Berut row below source-normalized numeric closure.
+
+### 2026-07-21 - Matter-space thermal control pilot
+
+- Scope: add the Wave 4 normalized thermal control lane without changing the main `0.13` Landauer verifier or its controlling source-lock blocker.
+- Added or changed: pilot specification, five-way synthetic runner, locked preregistration, metadata-only second-sound source package, disclosed post-diagnostic numerical amendment, generated artifact/CSV/four figures, six artifact-boundary tests, and focused README/derivation/data-manifest updates.
+- Files touched: `THERMAL_MATTER_SPACE_PILOT_SPEC.md`, `Code/03_Research/Research_Matter_Space_Thermal_Control.py`, three `Data/03_Research/matter_space_*` control files, `Result/artifacts/matter_space_thermal_control.json`, four `Result/03_show_Result/matter_space_thermal_*.png`, the generated CSV, `docs/core/test/test_matter_space_thermal_pilot.py`, `README.md`, `DERIVATION_MAP.md`, `DATA_MANIFEST.md`, and `UPDATE_LOG.md`.
+- Verified with: deterministic pilot rerun; JSON/hash checks; visual review of all four figures; `pytest docs/core/test/test_matter_space_thermal_pilot.py -q` (`6 passed`).
+- Result: analytical Cattaneo residual is `0`; phase, lag, and hysteresis relative errors are below `2.4e-7`; homogeneous core cross-check error is `0`; dissipation/trace source signs pass; refined ledger closure is `6.02e-7` against `1e-6`.
+- Numerical disclosure: the initially locked `dt=2.5e-4` run produced ledger closure `1.49e-5` and remains recorded as failed; amendment 001 changed only analysis `dt` to `5e-5`, was informed by that failure, and is not presented as blind confirmation.
+- Blocker narrowed: the pilot now isolates physical pre-arrival leakage (`0.01764` against `1e-6`) as the core causal controller, while the external source package remains separately blocked by absent local numeric rows and absent dimensional `Phi`-to-observable mapping.
+- Still open: repair or replace the causal discretization/kernel under the unchanged cone gate; acquire a licensed numeric source package with locator, units, preprocessing, uncertainty, and hashes; define the dimensional observable map before any fit.
+- Claim impact: no upgrade. Status remains `SIMULATION_ONLY / FAIL`; no external validation, thermodynamic derivation, second-sound prediction, or Landauer derivation is claimed.
+- Workflow linkage: Wave 4 of the matter-space research plan; the main `0.13` verification artifact and Landauer controlling blocker were intentionally not rerun or changed.
