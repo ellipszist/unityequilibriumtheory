@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "artifact": "matter_space_ontology_contract",
+  "status": "PASS",
+  "claim_class": "candidate_normalized_effective_model",
+  "operator_mode": "matter_space_coupled_v1",
+  "ontology": {
+    "C": {
+      "meaning": "matter or structural state",
+      "independent_state": true,
+      "conservation_policy": "lane_specific"
+    },
+    "Phi": {
+      "meaning": "signed effective space response relative to Phi=0 ordered reference",
+      "independent_state": true,
+      "information": false,
+      "metric_tensor": false,
+      "particle_identity": false
+    },
+    "Pi": {
+      "meaning": "partial_t Phi",
+      "independent_state": true
+    },
+    "sigma": {
+      "meaning": "non-negative dissipation source derived from physical dynamics",
+      "independent_state": false
+    },
+    "R": {
+      "aliases": [
+        "I_trace"
+      ],
+      "meaning": "retarded observable derived from sigma history",
+      "independent_state": false,
+      "feeds_back_into_dynamics": false
+    },
+    "history_buffer": {
+      "meaning": "computational cache",
+      "physical_ontology": false
+    },
+    "J_C": {
+      "meaning": "matter source",
+      "closed_conserved_requirement": "integral J_C dx = 0"
+    },
+    "J_Phi": {
+      "meaning": "open effective space-subsystem drive",
+      "work_must_be_ledgered": true
+    }
+  },
+  "data_flow": [
+    "C_Phi_Pi",
+    "chemical_potentials",
+    "physical_dynamics",
+    "ledger_and_dissipation",
+    "derived_R"
+  ],
+  "forbidden_edges": [
+    "R_to_C",
+    "R_to_Phi",
+    "legacy_I_as_Phi",
+    "legacy_V_as_Pi"
+  ],
+  "units_contract": {
+    "normalized": {
+      "status": "CONTRACT_LOCKED",
+      "implementation": "PENDING"
+    },
+    "SI": {
+      "status": "BLOCKED",
+      "requirements": [
+        "lane_specific_observable_map",
+        "coefficient_units",
+        "source_and_boundary_units",
+        "speed_limit_policy",
+        "dimensional_ledger_closure"
+      ]
+    }
+  },
+  "claim_boundary": {
+    "allowed": [
+      "candidate normalized effective model",
+      "effective space-response variable",
+      "derived causal trace observable",
+      "internal diagnostic"
+    ],
+    "blocked": [
+      "spacetime geometry derived",
+      "information as substance",
+      "ether identification",
+      "antimatter or particle derivation",
+      "external validation",
+      "dark-matter replacement"
+    ]
+  }
+}

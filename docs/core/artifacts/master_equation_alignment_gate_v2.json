@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "artifact": "master_equation_alignment_gate_v2",
+  "status": "BLOCKED",
+  "controlling_blocker": "matter_space_exact_variational_implementation_missing",
+  "legacy_core": {
+    "default_behavior_must_remain_unchanged": true,
+    "potential_derivative_alignment": "WARN",
+    "potential_code": "docs/core/uet_master_equation.py::potential_V",
+    "derivative_code": "docs/core/uet_master_equation.py::potential_derivative",
+    "mismatch": "potential_V uses powers of C^2-C0^2 while potential_derivative uses powers of C-C0",
+    "information_role_alignment": "WARN",
+    "trace_feedback_alignment": "HEURISTIC",
+    "trace_feedback_code": "docs/core/uet_master_equation.py::_spacetime_trace_dynamics_step"
+  },
+  "matter_space_contract": {
+    "ontology_separation_gate": "PASS",
+    "functional_derivative_contract_gate": "PASS_SPEC_ONLY",
+    "normalized_units_contract_gate": "PASS_SPEC_ONLY",
+    "implementation_gate": "BLOCKED",
+    "numerical_verification_gate": "BLOCKED",
+    "SI_gate": "BLOCKED"
+  },
+  "migration_policy": {
+    "legacy_potential_modified_in_this_program": false,
+    "new_operator_opt_in": true,
+    "legacy_tuple_order": [
+      "C",
+      "V",
+      "I"
+    ],
+    "new_trace_backreaction": false
+  },
+  "next_required_artifact": "matter_space_variational_verification.json",
+  "claim_impact": "no_status_upgrade"
+}
