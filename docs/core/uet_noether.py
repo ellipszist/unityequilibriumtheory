@@ -1,9 +1,12 @@
 """
-UET Noether's Theorem Core Module
-==================================
+Legacy UET Noether Diagnostic Module
+====================================
 
-This module implements Noether's Theorem for the UET Master Equation,
-providing the theoretical foundation for conservation laws.
+This module preserves early spatial diagnostics for compatibility and code
+archaeology. It does not currently derive Noether currents from the same
+covariant action and physical dynamics used by the GR correspondence program.
+Its gradient-flow updates and real-field charge proxy are not conservation
+proofs.
 
 Purpose:
 - Derive Noether currents for all symmetries
@@ -18,11 +21,16 @@ Noether current: J^μ = (∂L/∂(∂_μC))·X(C) - K^μ
 Conservation: ∂_μ J^μ = 0
 """
 
+from __future__ import annotations
+
 import numpy as np
 from typing import Dict, Tuple, Callable
 from dataclasses import dataclass
 
 from docs.core.uet_parameters import UETParameters
+
+
+LEGACY_NOETHER_EVIDENCE_STATUS = "BLOCKED_FOR_CONSERVATION_PROOF_CLAIMS"
 
 
 @dataclass
@@ -36,7 +44,7 @@ class NoetherCurrent:
 
 
 class UETNoether:
-    """Implements Noether's Theorem for UET."""
+    """Legacy spatial diagnostics; not a covariant Noether proof."""
 
     def __init__(self, params: UETParameters = None):
         if params is None:
@@ -779,7 +787,7 @@ def test_noether():
     print(f"\nPassed: {results['summary']['passed']}/{results['summary']['total']}")
 
     print("\n" + "=" * 70)
-    print("NOETHER'S THEOREM: IMPLEMENTATION COMPLETE")
+    print("LEGACY NOETHER DIAGNOSTIC: CONSERVATION PROOF CLAIM BLOCKED")
     print("=" * 70)
 
     return results

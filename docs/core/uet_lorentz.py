@@ -1,9 +1,12 @@
 """
-UET Lorentz Invariance Core Module
-==================================
+Legacy UET Lorentz Diagnostic Module
+====================================
 
-This module implements Lorentz invariance for the UET Master Equation,
-enabling relativistic formulation and connection to GR.
+This module preserves early relativistic experiments for compatibility and
+code archaeology. It does not currently establish Lorentz invariance,
+generally covariant dynamics, curved-spacetime coupling, or a connection to
+Einstein's field equations. The generated boost matrix is not yet applied to
+the sampled field in the legacy claim methods.
 
 Purpose:
 - Extend UET to 4D spacetime
@@ -17,11 +20,16 @@ Metric tensor: g^{μν} defines spacetime geometry.
 4D spacetime: (x, y, z, t) or (x^0, x^1, x^2, x^3) where x^0 = ct
 """
 
+from __future__ import annotations
+
 import numpy as np
-from typing import Tuple, Optional
+from typing import Dict, Optional, Tuple
 from dataclasses import dataclass
 
 from docs.core.uet_parameters import UETParameters
+
+
+LEGACY_COVARIANCE_EVIDENCE_STATUS = "BLOCKED_FOR_INVARIANCE_CLAIMS"
 
 
 @dataclass
@@ -174,7 +182,7 @@ class LorentzTransformation:
 
 
 class UETLorentz:
-    """Implements Lorentz invariance for UET."""
+    """Legacy numerical diagnostics; not a covariance or invariance proof."""
 
     def __init__(self, params: UETParameters = None):
         if params is None:
@@ -724,7 +732,7 @@ def test_lorentz():
     print(f"  Momentum flux (T^01) mean: {np.mean(T[0, 1]):.6e}")
 
     print("\n" + "=" * 70)
-    print("LORENTZ INVARIANCE: IMPLEMENTATION COMPLETE")
+    print("LEGACY LORENTZ DIAGNOSTIC: INVARIANCE CLAIM BLOCKED")
     print("=" * 70)
 
     return invariance
