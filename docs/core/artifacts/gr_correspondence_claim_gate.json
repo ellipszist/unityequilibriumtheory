@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "artifact": "gr_correspondence_claim_gate",
+  "generated_date": "2026-07-21",
+  "status": "BLOCKED",
+  "claim_class": "A_HYPOTHESIS",
+  "controller": "covariant_parent_action_missing",
+  "allowed_claims_now": [
+    "UET proposes Einstein GR as its zero-response null model.",
+    "The existing matter-space operator is a normalized nonrelativistic prototype.",
+    "The derived trace is not an independent source and has no feedback path.",
+    "Global closure of the complete universe is unresolved."
+  ],
+  "blocked_claims": [
+    {
+      "claim": "The universe is proved open.",
+      "reason": "No operational global boundary or balance artifact exists."
+    },
+    {
+      "claim": "UET derives Einstein's equations.",
+      "reason": "No covariant parent action or exact closed-limit verifier exists yet."
+    },
+    {
+      "claim": "UET is Lorentz invariant.",
+      "reason": "The legacy invariance routines do not apply the generated Lorentz transform to the field."
+    },
+    {
+      "claim": "UET validates general relativity.",
+      "reason": "Topic 0.19 remains a CODATA constant checkpoint without classical GR-test artifacts."
+    },
+    {
+      "claim": "The space-response field is antimatter, ether, or a particle.",
+      "reason": "No particle representation, conserved current, Lorentz, CPT, or observational identity is established."
+    }
+  ],
+  "required_for_next_claim_class": [
+    "candidate covariant action with explicit unit lane",
+    "generated formula audit",
+    "exact GR closed-limit verification",
+    "legacy Lorentz-Noether alignment gate"
+  ],
+  "topic_status_impact": "NONE",
+  "publication_boundary": "research specification and hypothesis only"
+}

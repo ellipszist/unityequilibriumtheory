@@ -1,6 +1,6 @@
 # UET Matter-Space Response Research Specification
 
-**Status:** candidate normalized effective model / implementation pending
+**Status:** implemented normalized prototype / physical interpretation blocked
 
 This specification separates physical evolution from a derived record of past
 change. It is an opt-in research lane and does not alter the legacy UET
@@ -174,3 +174,22 @@ Blocked wording:
 - antimatter/positron/neutrino derivation
 - external validation from synthetic controls
 - galaxy or dark-matter replacement
+
+## 9. GR correspondence handoff
+
+This one-dimensional model is not the covariant gravity parent. Its role in the
+new GR correspondence program is a possible nonrelativistic constitutive limit
+that must be derived later rather than assumed.
+
+The repository now separates four statements that were previously easy to
+conflate:
+
+- conserved matter amount means the declared integral/current is preserved;
+- matter stress-energy exchange requires a future covariant current `Q^nu`;
+- the GR closed-response limit means all additional UET response terms vanish;
+- whether the complete universe is globally open or closed remains unresolved.
+
+The controlling specification is
+[`UET_GR_NONCLOSED_RESEARCH_SPEC.md`](./UET_GR_NONCLOSED_RESEARCH_SPEC.md).
+Until its covariant parent and exact-limit verifier exist, this implementation
+supports no Einstein-equation, Lorentz, global-open-universe, or spacetime
