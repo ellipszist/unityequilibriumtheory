@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "artifact": "gr_closed_limit_verification",
+  "generated_at": "2026-07-21T12:42:05.204589+00:00",
+  "status": "PASS",
+  "evidence_class": "B",
+  "claim": "exact algebraic GR null limit of a candidate tensor-formula evaluator",
+  "thresholds": {
+    "closed_limit": 1e-12,
+    "symmetry": 1e-12,
+    "tensor_transform": 1e-11
+  },
+  "symbolic": {
+    "metric_closed_difference": "0",
+    "metric_closed_limit_exact": true,
+    "scalar_closed_difference": "0",
+    "scalar_closed_limit_exact": true,
+    "factor_at_equilibrium": "1",
+    "factor_first_at_equilibrium": "0",
+    "potential_first_at_equilibrium": "0",
+    "potential_second_at_equilibrium": "m2",
+    "ordered_reference_exact": true
+  },
+  "numeric": {
+    "closed_limit_max_abs_residual": 0.0,
+    "closed_limit_componentwise_exact": true,
+    "scalar_closed_limit_residual": 0.0,
+    "response_stress_symmetry_error": 0.0,
+    "local_tensor_transformation_max_abs_error": 2.220446049250313e-16,
+    "ordered_reference": {
+      "curvature_factor": 1.0,
+      "curvature_factor_base_derivative": 0.0,
+      "potential_derivative": 0.0,
+      "potential_hessian": 0.8,
+      "lambda_effective": 0.0245,
+      "lambda_effective_expected": 0.0245
+    }
+  },
+  "gates": {
+    "symbolic_metric_closed_limit": "PASS",
+    "symbolic_scalar_decoupling": "PASS",
+    "numeric_componentwise_closed_limit": "PASS",
+    "ordered_reference": "PASS",
+    "symmetric_response_stress": "PASS",
+    "local_tensor_transformation": "PASS",
+    "natural_unit_dimension_closure": "PASS",
+    "no_epsilon_denominator": "PASS",
+    "si_lane_quarantine": "PASS",
+    "derived_trace_disconnected": "PASS"
+  },
+  "source_hashes": {
+    "docs\\core\\uet_covariant_response.py": "64a3842c66f4261b95270fb06a89ef3c91c39290cc34ad5372c22b3509635fcd",
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "300c2d6a896391b134ba99ca599ce6b21f4c91bce8c97d0f763671770a8a6cc0"
+  },
+  "run_contract": {
+    "seed": 190021,
+    "parameter_fitting": false,
+    "external_data": false,
+    "metric_pde_solved": false,
+    "bianchi_identity_proved": false,
+    "trace_backreaction": false
+  },
+  "allowed_language": [
+    "candidate conservative covariant parent",
+    "exact implemented GR closed-limit contract",
+    "local tensor-transformation consistency"
+  ],
+  "blocked_language": [
+    "Einstein equations derived from UET",
+    "physical GR validation",
+    "Bianchi or Noether proof",
+    "universe proved non-closed"
+  ],
+  "next_controller": "covariant_bianchi_exchange_balance_missing"
+}

@@ -7,6 +7,20 @@
 
 ## Entries
 
+### 2026-07-21 - Implement conservative covariant parent and exact GR null limit
+
+- Scope: `docs/core` covariant response formula evaluator and generated evidence
+- Wave type: formula-closure and exact-limit verification pass
+- Added or changed: natural-unit scalar-response action evaluator, tensor residuals, public exports, verifier, focused tests, and three generated artifacts
+- Files touched: `uet_covariant_response.py`, `__init__.py`, `audit_uet_gr_closed_limit.py`, two focused test files, and core artifacts
+- Verified with: strict generated audit and a 61-test covariant, legacy-alignment, and matter-space regression suite
+- Result: exact GR closed-limit residual `0.0`; local tensor-transformation error `2.22e-16`; 61 tests passed
+- Blocker narrowed: `covariant_parent_action_missing` is closed for the candidate formula-evaluator scope
+- Still open: no Bianchi/exchange identity, causal influence functional, characteristic analysis, metric PDE solver, SI map, or physical GR validation
+- Next controller: `covariant_bianchi_exchange_balance_missing`
+- Claim impact: model evidence advances to class B; program and Topic 0.19 promotion remain blocked
+- Notes: `epsilon_nc` is a nesting parameter, not a percentage openness; global-universe closure remains unresolved
+
 ### 2026-07-21 - Quarantine legacy Lorentz and Noether proof exports
 
 - Scope: `docs/core/uet_lorentz.py`, `docs/core/uet_noether.py`, and generated alignment evidence

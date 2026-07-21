@@ -42,6 +42,14 @@ from .uet_matter_space import (
     MatterSpaceStabilityError,
     matter_space_step,
 )
+from .uet_covariant_response import (
+    COVARIANT_RESPONSE_MODEL_STATUS,
+    CovariantResponseConfig,
+    conservative_action_density,
+    einstein_gr_residual,
+    response_scalar_equation_residual,
+    uet_metric_residual,
+)
 
 __all__ = [
     # Parameters
@@ -66,6 +74,12 @@ __all__ = [
     "MatterSpaceState",
     "MatterSpaceStabilityError",
     "matter_space_step",
+    "COVARIANT_RESPONSE_MODEL_STATUS",
+    "CovariantResponseConfig",
+    "conservative_action_density",
+    "einstein_gr_residual",
+    "response_scalar_equation_residual",
+    "uet_metric_residual",
 ]
 
 __version__ = "0.9.0"

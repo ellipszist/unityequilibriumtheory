@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "artifact": "covariant_action_formula_audit",
+  "generated_at": "2026-07-21T12:42:05.204589+00:00",
+  "status": "WARN",
+  "implementation_status": "PRESENT",
+  "model_status": "CANDIDATE_CONSERVATIVE_TENSOR_FORMULA_EVALUATOR",
+  "claim_class": "B",
+  "unit_lane": "natural",
+  "dimension_audit": {
+    "status": "PASS",
+    "declared": {
+      "coordinate": -1,
+      "derivative": 1,
+      "phi": 1,
+      "epsilon_nc": 0,
+      "response_kinetic": 0,
+      "response_mass_sq": 2,
+      "response_quartic": 0,
+      "curvature_coupling": -2,
+      "equilibrium_density": 4,
+      "einstein_coupling": -2,
+      "cosmological_constant": 2,
+      "lagrangian_scalar": 4,
+      "stress_tensor": 4,
+      "metric_equation_residual": 2
+    },
+    "actual": {
+      "gravitational_lagrangian": 4,
+      "kinetic_lagrangian": 4,
+      "mass_potential": 4,
+      "quartic_potential": 4,
+      "curvature_factor_term": 0,
+      "stress_to_metric_equation": 2
+    },
+    "expected": {
+      "gravitational_lagrangian": 4,
+      "kinetic_lagrangian": 4,
+      "mass_potential": 4,
+      "quartic_potential": 4,
+      "curvature_factor_term": 0,
+      "stress_to_metric_equation": 2
+    }
+  },
+  "epsilon_denominator_lines": [],
+  "formula_registry": [
+    {
+      "id": "covariant_conservative_action",
+      "status": "IMPLEMENTED",
+      "implementation": "docs/core/uet_covariant_response.py::conservative_action_density",
+      "derivation_status": "candidate ansatz"
+    },
+    {
+      "id": "response_potential",
+      "status": "IMPLEMENTED",
+      "implementation": "docs/core/uet_covariant_response.py::response_potential",
+      "derivation_status": "declared constitutive choice"
+    },
+    {
+      "id": "response_stress_tensor",
+      "status": "IMPLEMENTED",
+      "implementation": "docs/core/uet_covariant_response.py::response_stress_tensor",
+      "derivation_status": "canonical scalar target"
+    },
+    {
+      "id": "nested_metric_residual",
+      "status": "IMPLEMENTED",
+      "implementation": "docs/core/uet_covariant_response.py::uet_metric_residual",
+      "derivation_status": "candidate scalar-tensor equation"
+    },
+    {
+      "id": "nested_scalar_residual",
+      "status": "IMPLEMENTED",
+      "implementation": "docs/core/uet_covariant_response.py::response_scalar_equation_residual",
+      "derivation_status": "candidate Euler-Lagrange equation"
+    }
+  ],
+  "coefficient_policy": {
+    "defaults_are_physical_constants": false,
+    "epsilon_is_open_percentage": false,
+    "rho_star_maps_to_lambda_eff": true
+  },
+  "open_formula_gates": [
+    "covariant_bianchi_exchange_balance_missing",
+    "causal_influence_functional_missing",
+    "principal_symbol_and_ghost_analysis_missing",
+    "system_specific_SI_contract_missing"
+  ],
+  "source_hashes": {
+    "docs\\core\\uet_covariant_response.py": "64a3842c66f4261b95270fb06a89ef3c91c39290cc34ad5372c22b3509635fcd",
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "300c2d6a896391b134ba99ca599ce6b21f4c91bce8c97d0f763671770a8a6cc0"
+  }
+}
