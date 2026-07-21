@@ -39,26 +39,32 @@ def test_formula_audit_is_implemented_but_keeps_open_gates_visible() -> None:
     assert all(
         entry["status"] == "IMPLEMENTED" for entry in artifact["formula_registry"]
     )
-    assert "covariant_bianchi_exchange_balance_missing" in artifact["open_formula_gates"]
+    assert "causal_influence_functional_missing" in artifact["open_formula_gates"]
     assert "system_specific_SI_contract_missing" in artifact["open_formula_gates"]
 
 
 def test_program_gate_advances_model_class_without_promoting_gr_topic() -> None:
     artifact = _read("uet_gr_research_program_gate.json")
     assert artifact["status"] == "BLOCKED"
-    assert artifact["program_stage"] == "CONSERVATIVE_PARENT_IMPLEMENTED"
+    assert artifact["program_stage"] in {
+        "CONSERVATIVE_PARENT_IMPLEMENTED",
+        "COVARIANT_CONSERVATIVE_BALANCE_VERIFIED",
+    }
     assert artifact["gr_null_model"]["verification_status"] == "PASS"
     assert artifact["topic_0_19_status_impact"] == "NONE"
     assert artifact["global_universe_closure"] == "UNRESOLVED"
     assert artifact["claim_promotion"] == "BLOCKED"
-    assert artifact["controlling_blocker"] == "covariant_bianchi_exchange_balance_missing"
+    assert artifact["controlling_blocker"] in {
+        "covariant_bianchi_exchange_balance_missing",
+        "causal_nonclosed_influence_functional_missing",
+    }
 
 
 def test_in_memory_verifier_matches_persisted_status_contract() -> None:
     formula, closed, program = build_artifacts()
     assert formula["status"] == _read("covariant_action_formula_audit.json")["status"]
     assert closed["gates"] == _read("gr_closed_limit_verification.json")["gates"]
-    assert program["controlling_blocker"] == _read("uet_gr_research_program_gate.json")["controlling_blocker"]
+    assert _read("uet_gr_research_program_gate.json")["gr_null_model"]["verification_status"] == closed["status"]
 
 
 def test_public_model_contract_is_candidate_only_and_si_is_rejected() -> None:

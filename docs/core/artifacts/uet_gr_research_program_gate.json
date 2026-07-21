@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_gr_research_program_gate",
-  "generated_at": "2026-07-21T12:42:05.204589+00:00",
+  "generated_at": "2026-07-21T12:56:09.347424+00:00",
   "status": "BLOCKED",
-  "program_stage": "CONSERVATIVE_PARENT_IMPLEMENTED",
+  "program_stage": "COVARIANT_CONSERVATIVE_BALANCE_VERIFIED",
   "current_claim_class": "B",
   "gr_null_model": {
     "parameter": "epsilon_nc",
-    "value": 0.0,
+    "value": 0,
     "verification_status": "PASS"
   },
   "sector_status": {
@@ -15,14 +15,19 @@
     "legacy_claim_quarantine": "PASS",
     "conservative_tensor_formula": "PASS",
     "exact_gr_closed_limit": "PASS",
-    "covariant_exchange_bianchi_balance": "BLOCKED",
+    "covariant_exchange_bianchi_balance": "PASS",
     "causal_nonclosed_sector": "NOT_IMPLEMENTED",
     "weak_field_reduction": "NOT_IMPLEMENTED",
     "physical_gr_benchmarks": "NOT_STARTED"
   },
   "global_universe_closure": "UNRESOLVED",
   "topic_0_19_status_impact": "NONE",
-  "controlling_blocker": "covariant_bianchi_exchange_balance_missing",
+  "controlling_blocker": "causal_nonclosed_influence_functional_missing",
   "claim_promotion": "BLOCKED",
-  "reason": "Algebraic GR nesting exists, but generated Bianchi/exchange and causal non-closed dynamics do not."
+  "reason": "Local conservative exchange closes, but a causal non-closed constitutive source and its stability gates are not implemented.",
+  "artifact_dependencies": {
+    "closed_limit": "docs\\core\\artifacts\\gr_closed_limit_verification.json",
+    "balance_verification": "docs/core/artifacts/covariant_bianchi_exchange_verification.json",
+    "exchange_contract": "docs/core/artifacts/covariant_exchange_contract.json"
+  }
 }

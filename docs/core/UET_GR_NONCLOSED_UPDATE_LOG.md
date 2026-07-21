@@ -7,6 +7,20 @@
 
 ## Entries
 
+### 2026-07-21 - Close the conservative covariant exchange identity
+
+- Scope: `docs/core` Noether/Bianchi identity and exchange-completed local ledger
+- Wave type: derivation, gate, and claim-boundary pass
+- Added or changed: covariant balance module, strict symbolic/numeric verifier, exchange contract, public exports, focused tests, and monotonic upstream generator behavior
+- Files touched: `uet_covariant_balance.py`, `audit_uet_gr_covariant_balance.py`, two focused test files, core exports, generated artifacts, and prior closed-limit generator/tests
+- Verified with: strict balance audit and a 72-test combined covariant, legacy-alignment, and matter-space regression suite
+- Result: symbolic identity exact; numeric identity difference `1.39e-17`; exchange and sourced-shell closure `0.0`
+- Blocker narrowed: `covariant_bianchi_exchange_balance_missing` is closed for the local candidate identity scope
+- Still open: no causal source kernel, influence functional, curved-derivative solver, global energy theorem, characteristic analysis, or physical validation
+- Next controller: `causal_nonclosed_influence_functional_missing`
+- Claim impact: class B retained; program and Topic 0.19 remain blocked
+- Notes: matter-number conservation remains an independent equation and global-universe closure remains unresolved
+
 ### 2026-07-21 - Implement conservative covariant parent and exact GR null limit
 
 - Scope: `docs/core` covariant response formula evaluator and generated evidence

@@ -50,6 +50,13 @@ from .uet_covariant_response import (
     response_scalar_equation_residual,
     uet_metric_residual,
 )
+from .uet_covariant_balance import (
+    COVARIANT_BALANCE_STATUS,
+    CovariantExchangeLedger,
+    balance_contract,
+    evaluate_balance_identity,
+    exchange_completed_ledger,
+)
 
 __all__ = [
     # Parameters
@@ -80,6 +87,11 @@ __all__ = [
     "einstein_gr_residual",
     "response_scalar_equation_residual",
     "uet_metric_residual",
+    "COVARIANT_BALANCE_STATUS",
+    "CovariantExchangeLedger",
+    "balance_contract",
+    "evaluate_balance_identity",
+    "exchange_completed_ledger",
 ]
 
 __version__ = "0.9.0"

@@ -212,6 +212,14 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
     symbolic, numeric, dimensions = _symbolic(), _numeric(), _dimension_audit()
     denominator_lines = _epsilon_denominators(source)
     contract = model_contract()
+    balance_path = OUT / "covariant_bianchi_exchange_verification.json"
+    balance_status = "NOT_RUN"
+    if balance_path.exists():
+        try:
+            balance_status = json.loads(balance_path.read_text(encoding="utf-8")).get("status", "FAIL")
+        except (OSError, json.JSONDecodeError):
+            balance_status = "FAIL"
+    balance_passed = balance_status == "PASS"
     gates = {
         "symbolic_metric_closed_limit": "PASS" if symbolic["metric_closed_limit_exact"] else "FAIL",
         "symbolic_scalar_decoupling": "PASS" if symbolic["scalar_closed_limit_exact"] else "FAIL",
@@ -238,7 +246,7 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
                          "trace_backreaction": False},
         "allowed_language": ["candidate conservative covariant parent", "exact implemented GR closed-limit contract", "local tensor-transformation consistency"],
         "blocked_language": ["Einstein equations derived from UET", "physical GR validation", "Bianchi or Noether proof", "universe proved non-closed"],
-        "next_controller": "covariant_bianchi_exchange_balance_missing",
+        "next_controller": "causal_nonclosed_influence_functional_missing" if balance_passed else "covariant_bianchi_exchange_balance_missing",
     }
     registry = [
         ["covariant_conservative_action", "conservative_action_density", "candidate ansatz"],
@@ -259,22 +267,25 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
             for item in registry
         ],
         "coefficient_policy": {"defaults_are_physical_constants": False, "epsilon_is_open_percentage": False, "rho_star_maps_to_lambda_eff": True},
-        "open_formula_gates": ["covariant_bianchi_exchange_balance_missing", "causal_influence_functional_missing", "principal_symbol_and_ghost_analysis_missing", "system_specific_SI_contract_missing"],
+        "open_formula_gates": (([] if balance_passed else ["covariant_bianchi_exchange_balance_missing"])
+                               + ["causal_influence_functional_missing", "principal_symbol_and_ghost_analysis_missing",
+                                  "system_specific_SI_contract_missing"]),
+        "completed_formula_gates": ["covariant_bianchi_exchange_balance"] if balance_passed else [],
         "source_hashes": hashes,
     }
     program = {
         "schema_version": "1.0", "artifact": "uet_gr_research_program_gate",
         "generated_at": now, "status": "BLOCKED",
-        "program_stage": "CONSERVATIVE_PARENT_IMPLEMENTED", "current_claim_class": "B" if status == "PASS" else "A",
+        "program_stage": "COVARIANT_CONSERVATIVE_BALANCE_VERIFIED" if balance_passed else "CONSERVATIVE_PARENT_IMPLEMENTED", "current_claim_class": "B" if status == "PASS" else "A",
         "gr_null_model": {"parameter": "epsilon_nc", "value": 0.0, "verification_status": status},
         "sector_status": {"ontology_and_claim_contract": "PASS", "legacy_claim_quarantine": "PASS",
                           "conservative_tensor_formula": status, "exact_gr_closed_limit": status,
-                          "covariant_exchange_bianchi_balance": "BLOCKED", "causal_nonclosed_sector": "NOT_IMPLEMENTED",
+                          "covariant_exchange_bianchi_balance": "PASS" if balance_passed else "BLOCKED", "causal_nonclosed_sector": "NOT_IMPLEMENTED",
                           "weak_field_reduction": "NOT_IMPLEMENTED", "physical_gr_benchmarks": "NOT_STARTED"},
         "global_universe_closure": "UNRESOLVED", "topic_0_19_status_impact": "NONE",
-        "controlling_blocker": "covariant_bianchi_exchange_balance_missing",
+        "controlling_blocker": "causal_nonclosed_influence_functional_missing" if balance_passed else "covariant_bianchi_exchange_balance_missing",
         "claim_promotion": "BLOCKED",
-        "reason": "Algebraic GR nesting exists, but generated Bianchi/exchange and causal non-closed dynamics do not.",
+        "reason": "Local conservative exchange closes, but causal non-closed dynamics are missing." if balance_passed else "Algebraic GR nesting exists, but generated Bianchi/exchange and causal non-closed dynamics do not.",
     }
     return formula, closed, program
 
