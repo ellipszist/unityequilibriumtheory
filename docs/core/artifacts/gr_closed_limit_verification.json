@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "gr_closed_limit_verification",
-  "generated_at": "2026-07-21T12:55:48.142523+00:00",
+  "generated_at": "2026-07-21T13:20:56.661303+00:00",
   "status": "PASS",
   "evidence_class": "B",
   "claim": "exact algebraic GR null limit of a candidate tensor-formula evaluator",
@@ -50,7 +50,7 @@
   },
   "source_hashes": {
     "docs\\core\\uet_covariant_response.py": "7fb4b7228afb8ede0ac4f1664d634346ef46cc7678c94ed7b55d73645590c0c2",
-    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "2712a300fab8b3d7b39edd6acc2033d73ae5fb5e72aceb16358dd89b5e23585a"
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "70a8ccb35dd91924a010cc2dd52bf2158e24946164c45103d6c1e0ac91f20ac4"
   },
   "run_contract": {
     "seed": 190021,
@@ -71,5 +71,5 @@
     "Bianchi or Noether proof",
     "universe proved non-closed"
   ],
-  "next_controller": "causal_nonclosed_influence_functional_missing"
+  "next_controller": "controlled_covariant_to_matter_space_reduction_missing"
 }

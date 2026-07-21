@@ -39,7 +39,10 @@ def test_formula_audit_is_implemented_but_keeps_open_gates_visible() -> None:
     assert all(
         entry["status"] == "IMPLEMENTED" for entry in artifact["formula_registry"]
     )
-    assert "causal_influence_functional_missing" in artifact["open_formula_gates"]
+    assert any(
+        gate in artifact["open_formula_gates"]
+        for gate in ("causal_influence_functional_missing", "closed_time_path_derivation_missing")
+    )
     assert "system_specific_SI_contract_missing" in artifact["open_formula_gates"]
 
 
@@ -49,6 +52,7 @@ def test_program_gate_advances_model_class_without_promoting_gr_topic() -> None:
     assert artifact["program_stage"] in {
         "CONSERVATIVE_PARENT_IMPLEMENTED",
         "COVARIANT_CONSERVATIVE_BALANCE_VERIFIED",
+        "CAUSAL_NONCLOSED_CONSTITUTIVE_KERNEL_VERIFIED",
     }
     assert artifact["gr_null_model"]["verification_status"] == "PASS"
     assert artifact["topic_0_19_status_impact"] == "NONE"
@@ -57,6 +61,7 @@ def test_program_gate_advances_model_class_without_promoting_gr_topic() -> None:
     assert artifact["controlling_blocker"] in {
         "covariant_bianchi_exchange_balance_missing",
         "causal_nonclosed_influence_functional_missing",
+        "controlled_covariant_to_matter_space_reduction_missing",
     }
 
 

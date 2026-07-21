@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "artifact": "causal_nonclosed_contract",
+  "generated_at": "2026-07-21T13:21:28.742329+00:00",
+  "status": "CANDIDATE_RETARDED_CONSTITUTIVE_KERNEL_1P1D",
+  "operator": "tau(u.nabla)^2 + (u.nabla) - D(e.nabla)^2 + lambda",
+  "kernel_support": "retarded_1p1_local_rest_frame_cone",
+  "characteristic_speed": "sqrt(D/tau) <= 1",
+  "source_role": "physical_constitutive_influence_j_phi",
+  "source_nesting": "J_phi = epsilon_nc * j_phi",
+  "derived_trace_role": "separate_observable_no_feedback",
+  "derived_trace_imported": false,
+  "history_cache_is_new_ontology": false,
+  "global_universe_closure": "UNRESOLVED",
+  "curved_green_solver": false,
+  "closed_time_path_derivation": false,
+  "spatial_dimension": 1,
+  "unit_lane": "natural",
+  "mass_dimensions": {
+    "coordinate": -1,
+    "tau_memory": -1,
+    "diffusivity": -1,
+    "decay_rate": 1,
+    "propagation_speed": 0,
+    "kernel_operator": 1
+  },
+  "exchange_completion": "j_phi -> J_phi=epsilon*j_phi -> Q_m=-J_phi grad(phi), Q_response=+J_phi grad(phi)",
+  "gr_limit": "epsilon_nc=0 switches off physical exchange while GR remains",
+  "claim_class": "B"
+}

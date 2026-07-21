@@ -1,0 +1,67 @@
+"""Artifact alignment tests for the causal non-closed kernel wave."""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+from docs.scripts.audit.audit_uet_gr_causal_nonclosed import build_artifacts
+
+ARTIFACT_DIR = Path(__file__).resolve().parents[1] / "artifacts"
+
+
+def _read(name: str) -> dict[str, object]:
+    return json.loads((ARTIFACT_DIR / name).read_text(encoding="utf-8"))
+
+
+def test_causal_verification_passes_exact_support_and_dependency_gates() -> None:
+    artifact = _read("causal_nonclosed_kernel_verification.json")
+    assert artifact["status"] == "PASS"
+    assert set(artifact["gates"].values()) == {"PASS"}
+    assert artifact["numeric"]["outside_cone_max_abs"] == 0.0
+    assert artifact["numeric"]["arrival_speed_relative_error_max"] == 0.0
+    assert artifact["numeric"]["future_event_influence_error"] == 0.0
+    assert artifact["run_contract"]["spatial_dimension"] == 1
+    assert artifact["run_contract"]["curved_green_solver"] is False
+    assert artifact["run_contract"]["closed_time_path_derivation"] is False
+    assert artifact["run_contract"]["trace_backreaction"] is False
+
+
+def test_causal_formula_audit_is_present_but_remains_an_ansatz() -> None:
+    artifact = _read("causal_influence_formula_audit.json")
+    assert artifact["status"] == "WARN"
+    assert artifact["implementation_status"] == "PRESENT"
+    assert artifact["derivation_status"] == "phenomenological retarded constitutive ansatz"
+    assert artifact["unit_lane"] == "natural"
+    assert artifact["spatial_dimension"] == 1
+    assert "closed_time_path_derivation_missing" in artifact["open_formula_gates"]
+    assert "curved_spacetime_green_function_missing" in artifact["open_formula_gates"]
+
+
+def test_causal_contract_does_not_relabel_trace_or_global_universe() -> None:
+    artifact = _read("causal_nonclosed_contract.json")
+    assert artifact["source_role"] == "physical_constitutive_influence_j_phi"
+    assert artifact["derived_trace_role"] == "separate_observable_no_feedback"
+    assert artifact["derived_trace_imported"] is False
+    assert artifact["global_universe_closure"] == "UNRESOLVED"
+    assert artifact["curved_green_solver"] is False
+
+
+def test_program_gate_advances_only_the_restricted_constitutive_lane() -> None:
+    artifact = _read("uet_gr_research_program_gate.json")
+    assert artifact["status"] == "BLOCKED"
+    assert artifact["program_stage"] == "CAUSAL_NONCLOSED_CONSTITUTIVE_KERNEL_VERIFIED"
+    assert artifact["sector_status"]["causal_nonclosed_sector"] == "PASS_CONSTITUTIVE_1P1D"
+    assert artifact["sector_status"]["weak_field_reduction"] == "NOT_IMPLEMENTED"
+    assert artifact["controlling_blocker"] == "controlled_covariant_to_matter_space_reduction_missing"
+    assert artifact["topic_0_19_status_impact"] == "NONE"
+    assert artifact["global_universe_closure"] == "UNRESOLVED"
+    assert artifact["claim_promotion"] == "BLOCKED"
+
+
+def test_in_memory_artifacts_match_persisted_status_and_gates() -> None:
+    verification, formula, contract, program = build_artifacts()
+    assert verification["gates"] == _read("causal_nonclosed_kernel_verification.json")["gates"]
+    assert formula["status"] == _read("causal_influence_formula_audit.json")["status"]
+    assert contract["status"] == _read("causal_nonclosed_contract.json")["status"]
+    assert program["controlling_blocker"] == _read("uet_gr_research_program_gate.json")["controlling_blocker"]

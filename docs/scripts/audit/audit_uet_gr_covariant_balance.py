@@ -153,6 +153,14 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
     denominators = _epsilon_denominators()
     contract = balance_contract()
     closed = json.loads(CLOSED.read_text(encoding="utf-8"))
+    causal_path = OUT / "causal_nonclosed_kernel_verification.json"
+    causal_status = "NOT_RUN"
+    if causal_path.exists():
+        try:
+            causal_status = json.loads(causal_path.read_text(encoding="utf-8")).get("status", "FAIL")
+        except (OSError, json.JSONDecodeError):
+            causal_status = "FAIL"
+    causal_passed = causal_status == "PASS"
     gates = {
         "expanded_compact_noether_identity": "PASS" if symbolic["identity_exact"] else "FAIL",
         "exchange_completed_total_balance": "PASS" if symbolic["exchange_closure_exact"] and numeric["exchange_closure_max_abs"] <= 1e-12 else "FAIL",
@@ -181,8 +189,11 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
                          "curved_derivative_solver": False, "causal_kernel": False,
                          "global_energy_theorem": False, "trace_backreaction": False},
         "allowed_language": ["candidate covariant balance identity", "exchange-completed local ledger", "matter stress exchange can coexist with an independent number-current equation"],
-        "blocked_language": ["global universe conservation proved", "universe proved open", "causal non-closed response implemented", "physical GR validation"],
-        "next_controller": "causal_nonclosed_influence_functional_missing",
+        "blocked_language": ["global universe conservation proved", "universe proved open",
+                             "full curved-spacetime causal non-closed response", "physical GR validation"],
+        "next_controller": ("controlled_covariant_to_matter_space_reduction_missing"
+                            if causal_passed else "causal_nonclosed_influence_functional_missing"),
+        "downstream_causal_kernel_status": causal_status,
     }
     exchange_contract = {
         "schema_version": "1.0", "artifact": "covariant_exchange_contract",
@@ -194,24 +205,33 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
         "matter_number_balance": "nabla_mu N^mu = 0 is an independent lane-specific equation",
         "gr_limit": "epsilon_nc=0 gives J_phi=Q_m=Q_response=0 exactly",
         "global_universe_closure": "UNRESOLVED",
-        "causal_source_policy": "BLOCKED_UNTIL_WAVE_4",
+        "causal_source_policy": "IMPLEMENTED_CONSTITUTIVE_1P1D" if causal_passed else "BLOCKED_UNTIL_WAVE_4",
         "derived_trace_backreaction": False,
     }
     program = {
         "schema_version": "1.0", "artifact": "uet_gr_research_program_gate",
         "generated_at": now, "status": "BLOCKED",
-        "program_stage": "COVARIANT_CONSERVATIVE_BALANCE_VERIFIED" if status == "PASS" else "CONSERVATIVE_PARENT_IMPLEMENTED",
+        "program_stage": (
+            "CAUSAL_NONCLOSED_CONSTITUTIVE_KERNEL_VERIFIED" if causal_passed
+            else "COVARIANT_CONSERVATIVE_BALANCE_VERIFIED" if status == "PASS" else "CONSERVATIVE_PARENT_IMPLEMENTED"
+        ),
         "current_claim_class": "B",
         "gr_null_model": {"parameter": "epsilon_nc", "value": 0, "verification_status": closed["status"]},
         "sector_status": {"ontology_and_claim_contract": "PASS", "legacy_claim_quarantine": "PASS",
                           "conservative_tensor_formula": closed["status"], "exact_gr_closed_limit": closed["status"],
                           "covariant_exchange_bianchi_balance": status,
-                          "causal_nonclosed_sector": "NOT_IMPLEMENTED", "weak_field_reduction": "NOT_IMPLEMENTED",
+                          "causal_nonclosed_sector": "PASS_CONSTITUTIVE_1P1D" if causal_passed else "NOT_IMPLEMENTED", "weak_field_reduction": "NOT_IMPLEMENTED",
                           "physical_gr_benchmarks": "NOT_STARTED"},
         "global_universe_closure": "UNRESOLVED", "topic_0_19_status_impact": "NONE",
-        "controlling_blocker": "causal_nonclosed_influence_functional_missing" if status == "PASS" else "covariant_bianchi_exchange_balance_missing",
+        "controlling_blocker": (
+            "controlled_covariant_to_matter_space_reduction_missing" if causal_passed
+            else "causal_nonclosed_influence_functional_missing" if status == "PASS" else "covariant_bianchi_exchange_balance_missing"
+        ),
         "claim_promotion": "BLOCKED",
-        "reason": "Local conservative exchange closes, but a causal non-closed constitutive source and its stability gates are not implemented.",
+        "reason": (
+            "A restricted causal constitutive source passes, but the controlled weak-field reduction is missing." if causal_passed
+            else "Local conservative exchange closes, but a causal non-closed constitutive source and its stability gates are not implemented."
+        ),
         "artifact_dependencies": {"closed_limit": str(CLOSED.relative_to(ROOT)),
                                   "balance_verification": "docs/core/artifacts/covariant_bianchi_exchange_verification.json",
                                   "exchange_contract": "docs/core/artifacts/covariant_exchange_contract.json"},

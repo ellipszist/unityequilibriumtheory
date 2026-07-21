@@ -7,6 +7,20 @@
 
 ## Entries
 
+### 2026-07-21 - Add restricted causal non-closed constitutive kernel
+
+- Scope: retarded source history on a declared 1+1-dimensional local rest-frame slice
+- Wave type: causal-support, characteristic, exchange, and claim-boundary pass
+- Added or changed: exact telegraph Green evaluator, event-history convolution, causal exchange adapter, strict verifier, formula/contract artifacts, public API, tests, and monotonic upstream gates
+- Files touched: `uet_covariant_nonclosed.py`, `audit_uet_gr_causal_nonclosed.py`, two focused test files, core exports, generated artifacts, and upstream generators/tests
+- Verified with: strict causal audit, 20 focused tests, and a 92-test combined covariant/causal/legacy/matter-space regression suite
+- Result: outside-cone leakage `0.0`, arrival error `0.0`, coordinate-scalar error `2.22e-16`, future-event influence `0.0`, and exchange closure `0.0`
+- Blocker narrowed: a causal constitutive source exists on the restricted local slice
+- Still open: closed-time-path derivation, curved 3+1 Green solver, parent-action ghost analysis, observable source map, controlled reduction, and physical validation
+- Next controller: `controlled_covariant_to_matter_space_reduction_missing`
+- Claim impact: class B retained; causal result is a constitutive ansatz and Topic 0.19 remains unchanged
+- Notes: the physical source `j_phi` is not the derived trace `R`; global-universe closure remains unresolved
+
 ### 2026-07-21 - Close the conservative covariant exchange identity
 
 - Scope: `docs/core` Noether/Bianchi identity and exchange-completed local ledger

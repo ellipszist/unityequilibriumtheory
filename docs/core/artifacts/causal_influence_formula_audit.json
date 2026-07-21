@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "artifact": "causal_influence_formula_audit",
+  "generated_at": "2026-07-21T13:21:28.742329+00:00",
+  "status": "WARN",
+  "implementation_status": "PRESENT",
+  "derivation_status": "phenomenological retarded constitutive ansatz",
+  "operator": "tau(u.nabla)^2 + (u.nabla) - D(e.nabla)^2 + lambda",
+  "unit_lane": "natural",
+  "spatial_dimension": 1,
+  "coefficient_policy": {
+    "tau_positive": true,
+    "diffusivity_positive": true,
+    "decay_nonnegative": true,
+    "speed_not_above_c": true,
+    "defaults_are_physical_constants": false
+  },
+  "open_formula_gates": [
+    "closed_time_path_derivation_missing",
+    "curved_spacetime_green_function_missing",
+    "three_spatial_dimension_kernel_missing",
+    "observable_source_mapping_missing",
+    "ghost_analysis_of_parent_action_missing"
+  ],
+  "source_hashes": {
+    "docs\\core\\uet_covariant_nonclosed.py": "eec206167657218b7ad093ca346290383ed43bac31f3a5b478c8fa3f30c857ff",
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "70a8ccb35dd91924a010cc2dd52bf2158e24946164c45103d6c1e0ac91f20ac4"
+  }
+}

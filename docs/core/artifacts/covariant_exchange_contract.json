@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "covariant_exchange_contract",
-  "generated_at": "2026-07-21T12:56:09.347424+00:00",
+  "generated_at": "2026-07-21T13:21:11.425783+00:00",
   "status": "CANDIDATE",
   "scalar_equation": "E_phi = epsilon_nc * j_phi",
   "matter_stress_balance": "nabla_mu T_m^(mu nu) = -epsilon_nc*j_phi*nabla^nu(phi)",
@@ -10,6 +10,6 @@
   "matter_number_balance": "nabla_mu N^mu = 0 is an independent lane-specific equation",
   "gr_limit": "epsilon_nc=0 gives J_phi=Q_m=Q_response=0 exactly",
   "global_universe_closure": "UNRESOLVED",
-  "causal_source_policy": "BLOCKED_UNTIL_WAVE_4",
+  "causal_source_policy": "IMPLEMENTED_CONSTITUTIVE_1P1D",
   "derived_trace_backreaction": false
 }

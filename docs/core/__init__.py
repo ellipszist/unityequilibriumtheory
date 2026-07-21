@@ -57,6 +57,15 @@ from .uet_covariant_balance import (
     evaluate_balance_identity,
     exchange_completed_ledger,
 )
+from .uet_covariant_nonclosed import (
+    CAUSAL_NONCLOSED_STATUS,
+    CausalInfluenceConfig,
+    CausalSourceEvent,
+    causal_exchange_from_events,
+    covariant_retarded_kernel_value,
+    retarded_influence_from_events,
+    retarded_telegraph_kernel_1p1,
+)
 
 __all__ = [
     # Parameters
@@ -92,6 +101,13 @@ __all__ = [
     "balance_contract",
     "evaluate_balance_identity",
     "exchange_completed_ledger",
+    "CAUSAL_NONCLOSED_STATUS",
+    "CausalInfluenceConfig",
+    "CausalSourceEvent",
+    "causal_exchange_from_events",
+    "covariant_retarded_kernel_value",
+    "retarded_influence_from_events",
+    "retarded_telegraph_kernel_1p1",
 ]
 
 __version__ = "0.9.0"
