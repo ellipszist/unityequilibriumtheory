@@ -29,6 +29,10 @@ from docs.core.uet_covariant_reduction import (  # noqa: E402
 from docs.core.uet_covariant_response import CovariantResponseConfig  # noqa: E402
 from docs.core.uet_matter_space import MatterSpaceConfig  # noqa: E402
 
+from docs.scripts.audit.uet_gr_monotonic_stage import (  # noqa: E402
+    apply_latest_hyperbolic_phase_field_stage,
+)
+
 CORE = ROOT / "docs/core/uet_covariant_reduction.py"
 SPEC = ROOT / "docs/core/UET_GR_NONCLOSED_RESEARCH_SPEC.md"
 OUT = ROOT / "docs/core/artifacts"
@@ -272,6 +276,7 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
             else "The response equation maps exactly, but the covariant matter equation, reciprocal coupling, and causal realization of the required source are absent."
         ),
     }
+    apply_latest_hyperbolic_phase_field_stage(OUT, verification, contract_artifact, program)
     return verification, contract_artifact, program
 
 

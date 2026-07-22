@@ -35,6 +35,10 @@ from docs.core.uet_covariant_diffusion import (  # noqa: E402
 )
 from docs.core.uet_spatial import integral_1d  # noqa: E402
 
+from docs.scripts.audit.uet_gr_monotonic_stage import (  # noqa: E402
+    apply_latest_hyperbolic_phase_field_stage,
+)
+
 CORE = ROOT / "docs/core/uet_covariant_diffusion.py"
 SPEC = ROOT / "docs/core/UET_GR_NONCLOSED_RESEARCH_SPEC.md"
 OUT = ROOT / "docs/core/artifacts"
@@ -523,6 +527,7 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], d
         "claim_promotion": "BLOCKED",
         "reason": "The coarse-grained conserved-current bridge, energy identity, regular epsilon nesting, and Model-B limit close, but microscopic density matching and a first-order hyperbolic closure for the gradient/spinodal phase field are absent.",
     }
+    apply_latest_hyperbolic_phase_field_stage(OUT, verification, formula, contract_artifact, program)
     return verification, formula, contract_artifact, program
 
 

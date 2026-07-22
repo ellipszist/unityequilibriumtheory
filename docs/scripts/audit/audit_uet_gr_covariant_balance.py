@@ -27,6 +27,10 @@ from docs.core.uet_covariant_balance import (  # noqa: E402
 )
 from docs.core.uet_covariant_response import CovariantResponseConfig  # noqa: E402
 
+from docs.scripts.audit.uet_gr_monotonic_stage import (  # noqa: E402
+    apply_latest_hyperbolic_phase_field_stage,
+)
+
 CORE = ROOT / "docs/core/uet_covariant_balance.py"
 RESPONSE_CORE = ROOT / "docs/core/uet_covariant_response.py"
 SPEC = ROOT / "docs/core/UET_GR_NONCLOSED_RESEARCH_SPEC.md"
@@ -305,6 +309,7 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
                                   "balance_verification": "docs/core/artifacts/covariant_bianchi_exchange_verification.json",
                                   "exchange_contract": "docs/core/artifacts/covariant_exchange_contract.json"},
     }
+    apply_latest_hyperbolic_phase_field_stage(OUT, verification, exchange_contract, program)
     return verification, exchange_contract, program
 
 

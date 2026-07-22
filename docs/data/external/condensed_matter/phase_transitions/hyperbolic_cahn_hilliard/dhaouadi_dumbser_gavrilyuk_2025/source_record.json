@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "record_type": "external_formula_source",
+  "title": "A first-order hyperbolic reformulation of the Cahn-Hilliard equation",
+  "authors": [
+    "Firas Dhaouadi",
+    "Michael Dumbser",
+    "Sergey Gavrilyuk"
+  ],
+  "journal": "Proceedings of the Royal Society A: Mathematical, Physical and Engineering Sciences",
+  "publication_year": 2025,
+  "volume": "481",
+  "issue": "2312",
+  "article_number": "20240606",
+  "doi": "10.1098/rspa.2024.0606",
+  "doi_url": "https://doi.org/10.1098/rspa.2024.0606",
+  "arxiv_id": "2408.03862",
+  "arxiv_version": "v1",
+  "arxiv_submitted": "2024-08-07",
+  "arxiv_url": "https://arxiv.org/abs/2408.03862",
+  "arxiv_source_url": "https://export.arxiv.org/e-print/2408.03862",
+  "license_or_terms": {
+    "arxiv_license": "arXiv non-exclusive distribution license 1.0",
+    "arxiv_license_url": "https://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+    "publisher_license_metadata_url": "https://royalsociety.org/-/media/journals/author/Licence-to-Publish-20062019-final.pdf",
+    "repository_policy": "The upstream TeX archive was inspected temporarily and is not redistributed in this repository; no open-reuse right for the publisher PDF is assumed."
+  },
+  "original_file_name": "arXiv 2408.03862 source archive (unnamed tar response)",
+  "local_path": null,
+  "local_copy_status": "TEMPORARY_INSPECTION_ONLY_NOT_REDISTRIBUTED",
+  "temporary_inspection_date": "2026-07-22",
+  "upstream_source_archive_sha256": "b2e7c43ef849dc7275850b3166169e8b0d656023b00aa481d764ad0731ec49e2",
+  "source_archive_size_bytes": 3252617,
+  "preprocessing_note": "Downloaded the arXiv v1 TeX source to a temporary directory, computed SHA-256, inspected Cahn-Hilliard.tex, and transcribed only the mathematical system, energy, characteristic speeds, and stated asymptotic scaling into a repository-owned formula evaluator. The upstream archive and publisher PDF are not repository inputs.",
+  "formula_locators": [
+    {
+      "id": "classical_cahn_hilliard",
+      "source_locator": "arXiv TeX label eq:CH1; journal equation (1.1)",
+      "role": "parabolic reference"
+    },
+    {
+      "id": "first_order_hyperbolic_system",
+      "source_locator": "arXiv TeX label eq:CH_Hyp; journal section 2(b), equations (2.5a-e)",
+      "role": "external comparator equations"
+    },
+    {
+      "id": "augmented_lyapunov_functional",
+      "source_locator": "arXiv TeX subsection 'Lyapunov functional', labels eq:Edecay and eq:Edecay_int; journal section 2(c)",
+      "role": "energy identity"
+    },
+    {
+      "id": "characteristic_speeds",
+      "source_locator": "arXiv TeX subsection 'Hyperbolicity'; journal section 2(d)",
+      "role": "fixed-parameter hyperbolicity condition"
+    },
+    {
+      "id": "formal_cahn_hilliard_scaling",
+      "source_locator": "arXiv TeX remark following eq:CH_Hyp: alpha=gamma^-1, tau=gamma^2, beta=gamma^2",
+      "role": "singular asymptotic comparator"
+    }
+  ],
+  "unit_system": "source equations are nondimensional/model coefficients; UET implementation accepts normalized units only",
+  "benchmark_role": "EXTERNAL_MATHEMATICAL_COMPARATOR_NOT_PHYSICAL_VALIDATION",
+  "topics_used": [
+    "docs/core",
+    "0.11_Phase_Transitions dependency gate",
+    "0.19_Gravity_GR dependency gate"
+  ],
+  "known_access_limitations": [
+    "Publisher PDF endpoint required a JavaScript/cookie challenge during the 2026-07-22 audit.",
+    "Formula transcription was checked against arXiv v1 TeX; journal metadata was checked through DOI metadata, but the publisher PDF was not stored or parsed."
+  ],
+  "claim_boundary": [
+    "The source supports an external first-order hyperbolic Cahn-Hilliard comparator.",
+    "It does not derive the UET matter-space equations, identify its auxiliary phase with UET space response, or establish a uniformly subluminal parabolic limit."
+  ]
+}

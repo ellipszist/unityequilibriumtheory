@@ -54,7 +54,7 @@ def test_program_gate_advances_only_the_restricted_constitutive_lane() -> None:
         "CAUSAL_NONCLOSED_CONSTITUTIVE_KERNEL_VERIFIED",
         "CONTROLLED_RESPONSE_REDUCTION_PARTIAL",
         "COVARIANT_MATTER_ACTION_RECIPROCITY_VERIFIED",
-        "CONSERVED_CURRENT_DIFFUSIVE_BRIDGE_PARTIAL",
+        "EXTERNAL_HYPERBOLIC_PHASE_FIELD_COMPARATOR_FORMULA_VERIFIED",
     }
     assert artifact["sector_status"]["causal_nonclosed_sector"] == "PASS_CONSTITUTIVE_1P1D"
     assert artifact["sector_status"]["weak_field_reduction"] in {
@@ -65,14 +65,14 @@ def test_program_gate_advances_only_the_restricted_constitutive_lane() -> None:
         "controlled_covariant_to_matter_space_reduction_missing",
         "covariant_matter_action_and_reciprocal_coupling_missing",
         "regular_covariant_to_diffusive_matter_reduction_missing",
-        "first_order_hyperbolic_phase_field_uv_closure_missing",
+        "uniform_subluminal_hyperbolic_phase_field_and_covariant_mapping_missing",
     }
     if artifact["program_stage"] == "CONTROLLED_RESPONSE_REDUCTION_PARTIAL":
         assert artifact["sector_status"]["covariant_matter_action"] == "NOT_IMPLEMENTED"
     if artifact["program_stage"] == "COVARIANT_MATTER_ACTION_RECIPROCITY_VERIFIED":
         assert artifact["sector_status"]["covariant_matter_action"] == "PASS_O2_SCALAR_PILOT"
     assert artifact["topic_0_19_status_impact"] == "NONE"
-    if artifact["program_stage"] == "CONSERVED_CURRENT_DIFFUSIVE_BRIDGE_PARTIAL":
+    if artifact["program_stage"] == "EXTERNAL_HYPERBOLIC_PHASE_FIELD_COMPARATOR_FORMULA_VERIFIED":
         assert artifact["sector_status"]["diffusive_matter_reduction"] == (
             "PARTIAL_CONSTITUTIVE_WITH_EXACT_MODEL_B_LIMIT"
         )

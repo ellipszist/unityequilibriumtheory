@@ -323,5 +323,5 @@ def reduction_contract() -> dict[str, Any]:
         "derived_trace_backreaction": False,
         "topic_0_11_status_impact": "NONE",
         "topic_0_19_status_impact": "NONE",
-        "next_controller": "first_order_hyperbolic_phase_field_uv_closure_missing",
+        "next_controller": "uniform_subluminal_hyperbolic_phase_field_and_covariant_mapping_missing",
     }

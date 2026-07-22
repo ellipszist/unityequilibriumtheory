@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "causal_influence_formula_audit",
-  "generated_at": "2026-07-22T03:15:47.436926+00:00",
+  "generated_at": "2026-07-22T04:30:00.636904+00:00",
   "status": "WARN",
   "implementation_status": "PRESENT",
   "derivation_status": "phenomenological retarded constitutive ansatz",
@@ -24,6 +24,14 @@
   ],
   "source_hashes": {
     "docs\\core\\uet_covariant_nonclosed.py": "eec206167657218b7ad093ca346290383ed43bac31f3a5b478c8fa3f30c857ff",
-    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "33126e8852d66dddece453a99345303e0bd6dae5bee83bfa6b53f8be182e3ca3"
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "e313b8757bbb5aaa18b714f89e9e364d9c35a201682136276e4205413affac45"
+  },
+  "downstream_hyperbolic_phase_field": {
+    "artifact": "hyperbolic_phase_field_external_comparator_verification.json",
+    "audit_status": "PASS",
+    "evidence_status": "PARTIAL_EXTERNAL_COMPARATOR",
+    "role": "external_fixed_parameter_formula_comparator",
+    "uet_derivation": "BLOCKED",
+    "uniform_subluminal_limit": "BLOCKED"
   }
 }

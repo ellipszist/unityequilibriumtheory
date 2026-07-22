@@ -287,6 +287,6 @@ def test_contract_preserves_ontology_and_trace_boundary() -> None:
     assert contract["derived_trace_backreaction"] is False
     assert contract["full_gradient_phase_field_causality"].startswith("BLOCKED")
     assert contract["next_controller"] == (
-        "first_order_hyperbolic_phase_field_uv_closure_missing"
+        "uniform_subluminal_hyperbolic_phase_field_and_covariant_mapping_missing"
     )
     assert "trace" not in inspect.signature(causal_current_rhs).parameters

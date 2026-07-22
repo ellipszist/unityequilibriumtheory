@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "covariant_action_formula_audit",
-  "generated_at": "2026-07-22T03:15:18.236366+00:00",
+  "generated_at": "2026-07-22T04:29:11.326965+00:00",
   "status": "WARN",
   "implementation_status": "PRESENT",
   "model_status": "CANDIDATE_CONSERVATIVE_TENSOR_FORMULA_EVALUATOR",
@@ -82,7 +82,7 @@
   },
   "open_formula_gates": [
     "closed_time_path_derivation_missing",
-    "first_order_hyperbolic_phase_field_uv_closure_missing",
+    "uniform_subluminal_hyperbolic_phase_field_and_covariant_mapping_missing",
     "principal_symbol_and_ghost_analysis_missing",
     "system_specific_SI_contract_missing"
   ],
@@ -91,7 +91,8 @@
     "causal_constitutive_kernel_1p1d",
     "controlled_response_sector_reduction_partial",
     "conserved_current_diffusive_bridge_partial",
-    "covariant_matter_action_reciprocity"
+    "covariant_matter_action_reciprocity",
+    "external_hyperbolic_phase_field_comparator_formula"
   ],
   "downstream_reduction_status": "PASS",
   "downstream_reduction_evidence": "PARTIAL",
@@ -101,6 +102,14 @@
   "downstream_matter_evidence": "PARTIAL",
   "source_hashes": {
     "docs\\core\\uet_covariant_response.py": "7fb4b7228afb8ede0ac4f1664d634346ef46cc7678c94ed7b55d73645590c0c2",
-    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "33126e8852d66dddece453a99345303e0bd6dae5bee83bfa6b53f8be182e3ca3"
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "e313b8757bbb5aaa18b714f89e9e364d9c35a201682136276e4205413affac45"
+  },
+  "downstream_hyperbolic_phase_field": {
+    "artifact": "hyperbolic_phase_field_external_comparator_verification.json",
+    "audit_status": "PASS",
+    "evidence_status": "PARTIAL_EXTERNAL_COMPARATOR",
+    "role": "external_fixed_parameter_formula_comparator",
+    "uet_derivation": "BLOCKED",
+    "uniform_subluminal_limit": "BLOCKED"
   }
 }

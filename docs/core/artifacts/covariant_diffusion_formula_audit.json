@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "covariant_diffusion_formula_audit",
-  "generated_at": "2026-07-22T03:16:39.720513+00:00",
+  "generated_at": "2026-07-22T04:35:45.315384+00:00",
   "status": "WARN",
   "implementation_status": "PRESENT",
   "derivation_status": "constitutive current reduction with exact discrete identities; microscopic and full hyperbolic phase-field derivations remain open",
@@ -32,7 +32,8 @@
     "regular_epsilon_nested_matter_coupling",
     "conserved_current_energy_identity",
     "model_b_matter_equation_map",
-    "local_convex_characteristic_control"
+    "local_convex_characteristic_control",
+    "external_hyperbolic_phase_field_comparator_formula"
   ],
   "open_formula_gates": [
     "microscopic_amplitude_to_charge_density_matching",
@@ -46,8 +47,16 @@
   ],
   "epsilon_denominator_lines": [],
   "source_hashes": {
-    "docs\\core\\uet_covariant_diffusion.py": "ffaebdffd13ec83ba0ca0b848c6a649b2514692b64b6ba4999d993537bf2f298",
-    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "33126e8852d66dddece453a99345303e0bd6dae5bee83bfa6b53f8be182e3ca3",
-    "docs\\core\\artifacts\\covariant_matter_action_verification.json": "755a2cd1b904b018d7b5631c391962c8865d66e3e7d76a06f698a9d596a8234a"
+    "docs\\core\\uet_covariant_diffusion.py": "a267b89e39db4a8dfac56e71a070539a9da05a55b8bb8b22216e7fd1b839bc53",
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "e313b8757bbb5aaa18b714f89e9e364d9c35a201682136276e4205413affac45",
+    "docs\\core\\artifacts\\covariant_matter_action_verification.json": "434e7291881dc7676c60e70d6d7c36b47ecc0f408fe935286da95701427de4f6"
+  },
+  "downstream_hyperbolic_phase_field": {
+    "artifact": "hyperbolic_phase_field_external_comparator_verification.json",
+    "audit_status": "PASS",
+    "evidence_status": "PARTIAL_EXTERNAL_COMPARATOR",
+    "role": "external_fixed_parameter_formula_comparator",
+    "uet_derivation": "BLOCKED",
+    "uniform_subluminal_limit": "BLOCKED"
   }
 }

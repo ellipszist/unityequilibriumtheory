@@ -7,6 +7,22 @@
 
 ## Entries
 
+### 2026-07-22 - Source and audit a first-order hyperbolic phase-field comparator
+
+- Scope: formula-level transcription of the Dhaouadi-Dumbser-Gavrilyuk first-order hyperbolic Cahn-Hilliard system into an isolated normalized 1D periodic comparator
+- Wave type: primary-source provenance, formula transcription, Lyapunov/constraint closure, characteristic, singular-limit, dependency-gate, and claim-boundary pass
+- Added or changed: external source record, comparator module and public exports, strict verifier, three generated artifacts, focused/alignment tests, shared monotonic-stage policy, regenerated upstream artifacts, and specification/controller updates
+- Files touched: `uet_hyperbolic_phase_field.py`, its source record/audit/tests/artifacts, core exports/specification/log, the prior diffusion/reduction controller contracts, six upstream audits and alignment tests, and the shared program gate
+- Verified with: seven strict audits in dependency order and a 235-test trace, matter-space, legacy, covariant, diffusion, and hyperbolic-comparator regression suite
+- Result: audit `PASS`, evidence `PARTIAL_EXTERNAL_COMPARATOR`, formula audit `WARN`; mass residual `2.22e-17`, energy closure `4.34e-18`, characteristic-eigenvalue error `2.22e-16`, cone leakage/arrival error `0.0`, and quasistatic chemical-limit order `0.968`
+- Blocker narrowed: a sourced first-order fixed-parameter hyperbolic phase-field comparator now exists and closes its periodic semi-discrete mass, Lyapunov, constraint, and principal-speed identities
+- Still open: UET-native covariant derivation, mapping of the comparator order parameter to the coarse-grained Noether density, uniformly subluminal Cahn-Hilliard recovery, CTP/KMS transport matching, dissipative Bianchi closure, curved 3+1 evolution, SI mapping, numerical benchmark replication, and physical validation
+- Next controller: `uniform_subluminal_hyperbolic_phase_field_and_covariant_mapping_missing`
+- Claim impact: class B retained; program remains `BLOCKED`; Topic 0.11 and Topic 0.19 status remain unchanged; global-universe closure remains unresolved
+- Workflow linkage: the provenance audit locks DOI/arXiv identity and formula locators while the formula audit keeps external transcription separate from UET derivation
+- Notes: the source auxiliary `varphi` is not UET `Phi`; fixed-parameter hyperbolicity is not automatically subluminal, and the paper scaling drives maximum sampled speed from `10.0` to `249.8` as `gamma` falls from `0.2` to `0.025`
+- Provenance boundary: the arXiv source archive was inspected temporarily and hashed but is not redistributed; the publisher PDF was blocked by a JavaScript/cookie challenge and is not claimed as parsed
+
 ### 2026-07-22 - Add conserved-current bridge and restrict causal scope
 
 - Scope: local-frame decomposition of the O(2) Noether current into a coarse-grained conserved density and spatial current in a normalized 1D constitutive lane

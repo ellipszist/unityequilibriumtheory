@@ -1,8 +1,8 @@
 # UET GR Closed-Limit and Non-Closed Response Research Specification
 
-> **Status:** `CONSERVED CURRENT DIFFUSIVE BRIDGE PARTIAL / PROGRAM BLOCKED`
+> **Status:** `EXTERNAL HYPERBOLIC PHASE-FIELD COMPARATOR VERIFIED / PROGRAM BLOCKED`
 > **Current claim class:** `B`
-> **Current controlling blocker:** `first_order_hyperbolic_phase_field_uv_closure_missing`
+> **Current controlling blocker:** `uniform_subluminal_hyperbolic_phase_field_and_covariant_mapping_missing`
 > **Program rule:** General relativity is the null/closed-response model. A
 > non-zero UET response is an empirical alternative, not a conclusion assumed
 > from the existence of the model.
@@ -289,6 +289,105 @@ first-order augmented hyperbolic phase-field closure, closed-time-path/KMS
 matching of transport coefficients, dissipative Bianchi accounting, curved
 3+1 transport, SI mapping, and physical validation remain open. The derived
 history trace is absent from this reduction and has no backreaction.
+
+### 5.3 Sourced first-order hyperbolic phase-field comparator
+
+The ultraviolet obstruction in the simple finite-current bridge is now
+compared against Dhaouadi, Dumbser, and Gavrilyuk, *A first-order hyperbolic
+reformulation of the Cahn-Hilliard equation* (2025),
+[DOI 10.1098/rspa.2024.0606](https://doi.org/10.1098/rspa.2024.0606) and
+[arXiv:2408.03862](https://arxiv.org/abs/2408.03862). This is a sourced
+external comparator, not a derivation from the UET covariant action.
+
+The source introduces four auxiliary quantities in addition to its physical
+order parameter. In the repository transcription:
+
+```text
+C                 = source c, used only inside the isolated comparator
+flux_impulse      = source q; physical mass flux is q/tau
+auxiliary_phase   = source varphi
+auxiliary_rate    = source w = beta partial_t varphi
+gradient_proxy    = source p = grad varphi when the constraint is prepared
+```
+
+The source `varphi` is an auxiliary phase/order-parameter regularization. It
+is **not** the UET effective space response `Phi`, information, a history
+trace, an ether, or a new particle. Identifying the comparator's `C` with the
+coarse-grained Noether-charge density in section 5.2 also remains an open map.
+
+In normalized one-dimensional notation, the transcribed system is
+
+```text
+partial_t C + partial_x(q/tau) = 0
+partial_t q + partial_x[g'(C) + alpha(C-varphi)] = -q/tau
+partial_t w - gamma partial_x p = alpha(C-varphi)
+partial_t p - partial_x w/beta = 0
+partial_t varphi = w/beta
+
+g(C) = (C^2-1)^2/4
+```
+
+with augmented Lyapunov functional
+
+```text
+E_hyp = integral [
+  g(C) + gamma p^2/2 + alpha(C-varphi)^2/2
+  + w^2/(2 beta) + q^2/(2 tau)
+] dx
+
+dE_hyp/dt = -integral (q/tau)^2 dx <= 0
+```
+
+The v1 formula evaluator uses a periodic skew-adjoint central derivative. It
+therefore conserves the discrete integral of `C`, closes the semi-discrete
+energy identity, and preserves the prepared constraint
+`p - partial_x varphi = 0` at roundoff. It is not yet a validated time
+integrator or an external numerical replication of the paper's benchmarks.
+
+For the symmetric double well, the one-dimensional characteristic speeds are
+
+```text
+lambda_C = +/-sqrt([alpha + g''(C)]/tau)
+lambda_aux = +/-sqrt(gamma/beta)
+lambda_0 = 0
+```
+
+Strict hyperbolicity requires `alpha > 1`; `alpha = 1` only reaches the
+degenerate boundary at `C = 0`. Mathematical hyperbolicity and a UET
+relativistic light-cone condition are separate gates. At fixed parameters,
+both speed families can be finite and can be constrained by
+`max(abs(lambda)) <= c_hat`. Hyperbolicity alone does not enforce that bound.
+
+The source's formal Cahn-Hilliard scaling is
+
+```text
+alpha = gamma^-1
+tau = gamma^2
+beta = gamma^2
+```
+
+so as `gamma -> 0` the two speed scales behave as
+
+```text
+abs(lambda_C) = O(gamma^-3/2)
+abs(lambda_aux) = O(gamma^-1/2)
+```
+
+and diverge. The comparator therefore supplies a fixed-parameter finite-cone
+regularization, while recovery of the parabolic Cahn-Hilliard equation is a
+singular limit that is not uniformly subluminal. The quasistatic augmented
+chemical potential converges to the repository's discrete Cahn-Hilliard
+chemical potential with approximately first order in `1/alpha`, but this
+spatial formula limit is not a covariant UET matter map.
+
+This wave narrows the blocker from “no first-order phase-field comparator” to
+the absence of a UET-native covariant derivation and a parameter policy that
+keeps the physical approximation useful while all characteristics remain
+uniformly inside the declared light cone. Closed-time-path/KMS transport
+matching, dissipative Bianchi closure, curved 3+1 evolution, SI mapping,
+external numerical replication, and physical validation remain blocked.
+Topic 0.11 and Topic 0.19 status do not change, and complete-universe closure
+remains unresolved.
 
 ## 6. GR closed-limit contract
 

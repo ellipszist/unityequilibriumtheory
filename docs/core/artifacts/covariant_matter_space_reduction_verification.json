@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "covariant_matter_space_reduction_verification",
-  "generated_at": "2026-07-22T03:16:04.121223+00:00",
+  "generated_at": "2026-07-22T04:30:25.434148+00:00",
   "audit_status": "PASS",
   "evidence_status": "PARTIAL",
   "claim_class": "B",
@@ -55,8 +55,8 @@
     "system_specific_SI_map": "BLOCKED"
   },
   "source_hashes": {
-    "docs\\core\\uet_covariant_reduction.py": "99e8434a5ab74e0fb397cbae37c2e5147ef072f2a33a83152fac454f14956023",
-    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "33126e8852d66dddece453a99345303e0bd6dae5bee83bfa6b53f8be182e3ca3"
+    "docs\\core\\uet_covariant_reduction.py": "aa65633292562810e4aa5aaed6c689ee00483543342187597c49534524a754dc",
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "e313b8757bbb5aaa18b714f89e9e364d9c35a201682136276e4205413affac45"
   },
   "run_contract": {
     "seed": 190041,
@@ -77,9 +77,17 @@
     "causal bath source derived",
     "Topic 0.11 or 0.19 validated"
   ],
-  "next_controller": "first_order_hyperbolic_phase_field_uv_closure_missing",
+  "next_controller": "uniform_subluminal_hyperbolic_phase_field_and_covariant_mapping_missing",
   "downstream_matter_status": "PASS",
   "downstream_matter_evidence": "PARTIAL",
   "downstream_diffusion_status": "PASS",
-  "downstream_diffusion_evidence": "PARTIAL"
+  "downstream_diffusion_evidence": "PARTIAL",
+  "downstream_hyperbolic_phase_field": {
+    "artifact": "hyperbolic_phase_field_external_comparator_verification.json",
+    "audit_status": "PASS",
+    "evidence_status": "PARTIAL_EXTERNAL_COMPARATOR",
+    "role": "external_fixed_parameter_formula_comparator",
+    "uet_derivation": "BLOCKED",
+    "uniform_subluminal_limit": "BLOCKED"
+  }
 }

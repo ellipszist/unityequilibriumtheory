@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "covariant_bianchi_exchange_verification",
-  "generated_at": "2026-07-22T03:15:33.587286+00:00",
+  "generated_at": "2026-07-22T04:29:39.954784+00:00",
   "status": "PASS",
   "evidence_class": "B",
   "claim": "symbolic local Noether/Bianchi identity and exchange-completed ledger for the candidate parent",
@@ -52,7 +52,7 @@
   "source_hashes": {
     "docs\\core\\uet_covariant_balance.py": "815852035010f278e395d845516d1714eebafb24a851f38533bbeea15f01b885",
     "docs\\core\\uet_covariant_response.py": "7fb4b7228afb8ede0ac4f1664d634346ef46cc7678c94ed7b55d73645590c0c2",
-    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "33126e8852d66dddece453a99345303e0bd6dae5bee83bfa6b53f8be182e3ca3"
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "e313b8757bbb5aaa18b714f89e9e364d9c35a201682136276e4205413affac45"
   },
   "run_contract": {
     "seed": 190031,
@@ -74,12 +74,20 @@
     "full curved-spacetime causal non-closed response",
     "physical GR validation"
   ],
-  "next_controller": "first_order_hyperbolic_phase_field_uv_closure_missing",
+  "next_controller": "uniform_subluminal_hyperbolic_phase_field_and_covariant_mapping_missing",
   "downstream_causal_kernel_status": "PASS",
   "downstream_reduction_status": "PASS",
   "downstream_matter_status": "PASS",
   "downstream_matter_evidence": "PARTIAL",
   "downstream_reduction_evidence": "PARTIAL",
   "downstream_diffusion_status": "PASS",
-  "downstream_diffusion_evidence": "PARTIAL"
+  "downstream_diffusion_evidence": "PARTIAL",
+  "downstream_hyperbolic_phase_field": {
+    "artifact": "hyperbolic_phase_field_external_comparator_verification.json",
+    "audit_status": "PASS",
+    "evidence_status": "PARTIAL_EXTERNAL_COMPARATOR",
+    "role": "external_fixed_parameter_formula_comparator",
+    "uet_derivation": "BLOCKED",
+    "uniform_subluminal_limit": "BLOCKED"
+  }
 }

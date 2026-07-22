@@ -39,6 +39,10 @@ from docs.core.uet_covariant_response import (  # noqa: E402
     uet_metric_residual,
 )
 
+from docs.scripts.audit.uet_gr_monotonic_stage import (  # noqa: E402
+    apply_latest_hyperbolic_phase_field_stage,
+)
+
 CORE = ROOT / "docs/core/uet_covariant_response.py"
 SPEC = ROOT / "docs/core/UET_GR_NONCLOSED_RESEARCH_SPEC.md"
 OUT = ROOT / "docs/core/artifacts"
@@ -382,6 +386,7 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
             else "Algebraic GR nesting exists, but generated Bianchi/exchange and causal non-closed dynamics do not."
         ),
     }
+    apply_latest_hyperbolic_phase_field_stage(OUT, formula, closed, program)
     return formula, closed, program
 
 

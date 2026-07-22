@@ -49,7 +49,7 @@ def test_program_gate_reports_partial_reduction_without_promotion() -> None:
     assert artifact["program_stage"] in {
         "CONTROLLED_RESPONSE_REDUCTION_PARTIAL",
         "COVARIANT_MATTER_ACTION_RECIPROCITY_VERIFIED",
-        "CONSERVED_CURRENT_DIFFUSIVE_BRIDGE_PARTIAL",
+        "EXTERNAL_HYPERBOLIC_PHASE_FIELD_COMPARATOR_FORMULA_VERIFIED",
     }
     assert artifact["sector_status"]["weak_field_reduction"] == "PARTIAL_RESPONSE_ONLY"
     assert artifact["sector_status"]["covariant_matter_action"] in {
@@ -59,7 +59,7 @@ def test_program_gate_reports_partial_reduction_without_promotion() -> None:
     assert artifact["controlling_blocker"] in {
         "covariant_matter_action_and_reciprocal_coupling_missing",
         "regular_covariant_to_diffusive_matter_reduction_missing",
-        "first_order_hyperbolic_phase_field_uv_closure_missing",
+        "uniform_subluminal_hyperbolic_phase_field_and_covariant_mapping_missing",
     }
     assert artifact["topic_0_11_status_impact"] == "NONE"
     assert artifact["topic_0_19_status_impact"] == "NONE"

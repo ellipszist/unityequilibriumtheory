@@ -41,6 +41,10 @@ from docs.core.uet_covariant_response import (  # noqa: E402
     einstein_gr_residual,
 )
 
+from docs.scripts.audit.uet_gr_monotonic_stage import (  # noqa: E402
+    apply_latest_hyperbolic_phase_field_stage,
+)
+
 CORE = ROOT / "docs/core/uet_covariant_matter.py"
 SPEC = ROOT / "docs/core/UET_GR_NONCLOSED_RESEARCH_SPEC.md"
 OUT = ROOT / "docs/core/artifacts"
@@ -516,6 +520,7 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], d
             else "The conservative scalar matter action and reciprocal interaction close, but the density interpretation, regular epsilon-nested normalized chart, and dissipative conserved-matter dynamics are not derived."
         ),
     }
+    apply_latest_hyperbolic_phase_field_stage(OUT, verification, formula, contract_artifact, program)
     return verification, formula, contract_artifact, program
 
 

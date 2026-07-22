@@ -30,6 +30,10 @@ from docs.core.uet_covariant_nonclosed import (  # noqa: E402
 )
 from docs.core.uet_covariant_response import CovariantResponseConfig  # noqa: E402
 
+from docs.scripts.audit.uet_gr_monotonic_stage import (  # noqa: E402
+    apply_latest_hyperbolic_phase_field_stage,
+)
+
 CORE = ROOT / "docs/core/uet_covariant_nonclosed.py"
 SPEC = ROOT / "docs/core/UET_GR_NONCLOSED_RESEARCH_SPEC.md"
 OUT = ROOT / "docs/core/artifacts"
@@ -344,6 +348,7 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], d
             else "The constitutive kernel is causal on a restricted local slice, but no controlled reduction or curved 3+1 implementation exists."
         ),
     }
+    apply_latest_hyperbolic_phase_field_stage(OUT, verification, formula, contract_artifact, program)
     return verification, formula, contract_artifact, program
 
 
