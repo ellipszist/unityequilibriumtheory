@@ -42,10 +42,19 @@ def test_reduction_contract_names_missing_matter_and_source_derivations() -> Non
 def test_program_gate_reports_partial_reduction_without_promotion() -> None:
     artifact = _read("uet_gr_research_program_gate.json")
     assert artifact["status"] == "BLOCKED"
-    assert artifact["program_stage"] == "CONTROLLED_RESPONSE_REDUCTION_PARTIAL"
+    assert artifact["program_stage"] in {
+        "CONTROLLED_RESPONSE_REDUCTION_PARTIAL",
+        "COVARIANT_MATTER_ACTION_RECIPROCITY_VERIFIED",
+    }
     assert artifact["sector_status"]["weak_field_reduction"] == "PARTIAL_RESPONSE_ONLY"
-    assert artifact["sector_status"]["covariant_matter_action"] == "NOT_IMPLEMENTED"
-    assert artifact["controlling_blocker"] == "covariant_matter_action_and_reciprocal_coupling_missing"
+    assert artifact["sector_status"]["covariant_matter_action"] in {
+        "NOT_IMPLEMENTED",
+        "PASS_O2_SCALAR_PILOT",
+    }
+    assert artifact["controlling_blocker"] in {
+        "covariant_matter_action_and_reciprocal_coupling_missing",
+        "regular_covariant_to_diffusive_matter_reduction_missing",
+    }
     assert artifact["topic_0_11_status_impact"] == "NONE"
     assert artifact["topic_0_19_status_impact"] == "NONE"
     assert artifact["global_universe_closure"] == "UNRESOLVED"

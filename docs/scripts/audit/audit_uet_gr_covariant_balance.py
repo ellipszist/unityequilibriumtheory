@@ -172,6 +172,17 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
         except (OSError, json.JSONDecodeError):
             reduction_status, reduction_evidence = "FAIL", "BLOCKED"
     reduction_passed = reduction_status == "PASS" and reduction_evidence == "PARTIAL"
+    matter_path = OUT / "covariant_matter_action_verification.json"
+    matter_status = "NOT_RUN"
+    matter_evidence = "MISSING"
+    if matter_path.exists():
+        try:
+            matter_payload = json.loads(matter_path.read_text(encoding="utf-8"))
+            matter_status = matter_payload.get("audit_status", "FAIL")
+            matter_evidence = matter_payload.get("evidence_status", "BLOCKED")
+        except (OSError, json.JSONDecodeError):
+            matter_status, matter_evidence = "FAIL", "BLOCKED"
+    matter_passed = matter_status == "PASS" and matter_evidence == "PARTIAL"
     gates = {
         "expanded_compact_noether_identity": "PASS" if symbolic["identity_exact"] else "FAIL",
         "exchange_completed_total_balance": "PASS" if symbolic["exchange_closure_exact"] and numeric["exchange_closure_max_abs"] <= 1e-12 else "FAIL",
@@ -203,12 +214,15 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
         "blocked_language": ["global universe conservation proved", "universe proved open",
                              "full curved-spacetime causal non-closed response", "physical GR validation"],
         "next_controller": (
-            "covariant_matter_action_and_reciprocal_coupling_missing" if reduction_passed
+            "regular_covariant_to_diffusive_matter_reduction_missing" if matter_passed
+            else "covariant_matter_action_and_reciprocal_coupling_missing" if reduction_passed
             else "controlled_covariant_to_matter_space_reduction_missing" if causal_passed
             else "causal_nonclosed_influence_functional_missing"
         ),
         "downstream_causal_kernel_status": causal_status,
         "downstream_reduction_status": reduction_status,
+        "downstream_matter_status": matter_status,
+        "downstream_matter_evidence": matter_evidence,
         "downstream_reduction_evidence": reduction_evidence,
     }
     exchange_contract = {
@@ -223,14 +237,18 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
         "global_universe_closure": "UNRESOLVED",
         "causal_source_policy": "IMPLEMENTED_CONSTITUTIVE_1P1D" if causal_passed else "BLOCKED_UNTIL_WAVE_4",
         "downstream_reduction": "PARTIAL_RESPONSE_ONLY" if reduction_passed else "NOT_IMPLEMENTED",
-        "covariant_matter_action": "NOT_IMPLEMENTED",
+        "covariant_matter_action": "PASS_O2_SCALAR_PILOT" if matter_passed else "NOT_IMPLEMENTED",
+        "reciprocal_coupling": "PASS_ACTION_LEVEL" if matter_passed else "NOT_IMPLEMENTED",
+        "matter_number_current": "PASS_ON_SHELL_O2" if matter_passed else "NOT_IMPLEMENTED",
+        "diffusive_matter_reduction": "NOT_IMPLEMENTED",
         "derived_trace_backreaction": False,
     }
     program = {
         "schema_version": "1.0", "artifact": "uet_gr_research_program_gate",
         "generated_at": now, "status": "BLOCKED",
         "program_stage": (
-            "CONTROLLED_RESPONSE_REDUCTION_PARTIAL" if reduction_passed
+            "COVARIANT_MATTER_ACTION_RECIPROCITY_VERIFIED" if matter_passed
+            else "CONTROLLED_RESPONSE_REDUCTION_PARTIAL" if reduction_passed
             else "CAUSAL_NONCLOSED_CONSTITUTIVE_KERNEL_VERIFIED" if causal_passed
             else "COVARIANT_CONSERVATIVE_BALANCE_VERIFIED" if status == "PASS" else "CONSERVATIVE_PARENT_IMPLEMENTED"
         ),
@@ -241,17 +259,22 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
                           "covariant_exchange_bianchi_balance": status,
                           "causal_nonclosed_sector": "PASS_CONSTITUTIVE_1P1D" if causal_passed else "NOT_IMPLEMENTED",
                           "weak_field_reduction": "PARTIAL_RESPONSE_ONLY" if reduction_passed else "NOT_IMPLEMENTED",
-                          "covariant_matter_action": "NOT_IMPLEMENTED",
+                          "covariant_matter_action": "PASS_O2_SCALAR_PILOT" if matter_passed else "NOT_IMPLEMENTED",
+                          "reciprocal_coupling": "PASS_ACTION_LEVEL" if matter_passed else "NOT_IMPLEMENTED",
+                          "matter_number_current": "PASS_ON_SHELL_O2" if matter_passed else "NOT_IMPLEMENTED",
+                          "diffusive_matter_reduction": "NOT_IMPLEMENTED",
                           "physical_gr_benchmarks": "NOT_STARTED"},
         "global_universe_closure": "UNRESOLVED", "topic_0_11_status_impact": "NONE", "topic_0_19_status_impact": "NONE",
         "controlling_blocker": (
-            "covariant_matter_action_and_reciprocal_coupling_missing" if reduction_passed
+            "regular_covariant_to_diffusive_matter_reduction_missing" if matter_passed
+            else "covariant_matter_action_and_reciprocal_coupling_missing" if reduction_passed
             else "controlled_covariant_to_matter_space_reduction_missing" if causal_passed
             else "causal_nonclosed_influence_functional_missing" if status == "PASS" else "covariant_bianchi_exchange_balance_missing"
         ),
         "claim_promotion": "BLOCKED",
         "reason": (
-            "The response equation maps exactly, but the covariant matter equation, reciprocal coupling, and causal realization of the required source are absent." if reduction_passed
+            "The conservative scalar matter action and reciprocal interaction close, but the density interpretation, regular epsilon-nested normalized chart, and dissipative conserved-matter dynamics are not derived." if matter_passed
+            else "The response equation maps exactly, but the covariant matter equation, reciprocal coupling, and causal realization of the required source are absent." if reduction_passed
             else "A restricted causal constitutive source passes, but the controlled weak-field reduction is missing." if causal_passed
             else "Local conservative exchange closes, but a causal non-closed constitutive source and its stability gates are not implemented."
         ),

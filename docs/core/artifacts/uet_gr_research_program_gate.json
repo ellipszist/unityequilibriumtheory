@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_gr_research_program_gate",
-  "generated_at": "2026-07-21T20:00:03.456069+00:00",
+  "generated_at": "2026-07-22T02:23:25.449483+00:00",
   "status": "BLOCKED",
-  "program_stage": "CONTROLLED_RESPONSE_REDUCTION_PARTIAL",
+  "program_stage": "COVARIANT_MATTER_ACTION_RECIPROCITY_VERIFIED",
   "current_claim_class": "B",
   "gr_null_model": {
     "parameter": "epsilon_nc",
@@ -18,13 +18,16 @@
     "covariant_exchange_bianchi_balance": "PASS",
     "causal_nonclosed_sector": "PASS_CONSTITUTIVE_1P1D",
     "weak_field_reduction": "PARTIAL_RESPONSE_ONLY",
-    "covariant_matter_action": "NOT_IMPLEMENTED",
+    "covariant_matter_action": "PASS_O2_SCALAR_PILOT",
+    "reciprocal_coupling": "PASS_ACTION_LEVEL",
+    "matter_number_current": "PASS_ON_SHELL_O2",
+    "diffusive_matter_reduction": "NOT_IMPLEMENTED",
     "physical_gr_benchmarks": "NOT_STARTED"
   },
   "global_universe_closure": "UNRESOLVED",
   "topic_0_11_status_impact": "NONE",
   "topic_0_19_status_impact": "NONE",
-  "controlling_blocker": "covariant_matter_action_and_reciprocal_coupling_missing",
+  "controlling_blocker": "regular_covariant_to_diffusive_matter_reduction_missing",
   "claim_promotion": "BLOCKED",
-  "reason": "The response equation maps exactly, but the covariant matter equation, reciprocal coupling, and causal realization of the required source are absent."
+  "reason": "The conservative scalar matter action and reciprocal interaction close, but the density interpretation, regular epsilon-nested normalized chart, and dissipative conserved-matter dynamics are not derived."
 }

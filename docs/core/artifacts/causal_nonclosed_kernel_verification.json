@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "causal_nonclosed_kernel_verification",
-  "generated_at": "2026-07-21T19:59:45.232405+00:00",
+  "generated_at": "2026-07-22T02:22:56.135122+00:00",
   "status": "PASS",
   "evidence_class": "B",
   "claim": "exact-support retarded 1+1 constitutive kernel on a declared local rest-frame slice",
@@ -61,7 +61,7 @@
   },
   "source_hashes": {
     "docs\\core\\uet_covariant_nonclosed.py": "eec206167657218b7ad093ca346290383ed43bac31f3a5b478c8fa3f30c857ff",
-    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "59abe916875553449677c733820f60f6deb6ac40509e709a1984b06072c9a7fb"
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "40aaac8395b3e0e0136f6e640fd27203183c82c51a1fed7100f419e2df5dd660"
   },
   "run_contract": {
     "external_data": false,
@@ -83,7 +83,9 @@
     "ghost-free fundamental action",
     "universe proved non-closed"
   ],
-  "next_controller": "covariant_matter_action_and_reciprocal_coupling_missing",
+  "next_controller": "regular_covariant_to_diffusive_matter_reduction_missing",
   "downstream_reduction_status": "PASS",
+  "downstream_matter_status": "PASS",
+  "downstream_matter_evidence": "PARTIAL",
   "downstream_reduction_evidence": "PARTIAL"
 }

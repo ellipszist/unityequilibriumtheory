@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "covariant_reduction_contract",
-  "generated_at": "2026-07-21T20:00:03.456069+00:00",
+  "generated_at": "2026-07-22T02:23:10.927390+00:00",
   "status": "PARTIAL_RESPONSE_SECTOR_EXACT",
   "assumptions": [
     "local_rest_frame",
@@ -19,7 +19,7 @@
   "derived_trace_backreaction": false,
   "topic_0_11_status_impact": "NONE",
   "topic_0_19_status_impact": "NONE",
-  "next_controller": "covariant_matter_action_and_reciprocal_coupling_missing",
+  "next_controller": "regular_covariant_to_diffusive_matter_reduction_missing",
   "coefficient_map": {
     "a_space": "T**2*mass_sq*tau/(Z*mobility)",
     "b_space": "T**2*field_scale**2*quartic*tau/(Z*mobility)",
@@ -27,5 +27,7 @@
   },
   "source_map": "j_hat=Pi/tau-M*g*C^2/(2*tau)-J_Phi/tau",
   "epsilon_policy": "adapter requires epsilon_nc>0; epsilon_nc=0 selects GR and no response operator",
-  "unit_policy": "declared natural scales to normalized coefficients; not an SI calibration"
+  "unit_policy": "declared natural scales to normalized coefficients; not an SI calibration",
+  "downstream_matter_status": "PASS",
+  "downstream_matter_evidence": "PARTIAL"
 }

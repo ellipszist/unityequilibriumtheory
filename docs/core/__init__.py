@@ -74,6 +74,19 @@ from .uet_covariant_reduction import (
     derive_response_coefficients,
     matter_space_config_from_reduction,
 )
+from .uet_covariant_matter import (
+    COVARIANT_MATTER_STATUS,
+    CovariantMatterConfig,
+    coupled_conservative_action_density,
+    coupled_matter_stress_tensor,
+    coupled_metric_residual,
+    coupled_response_scalar_equation_residual,
+    matter_action_contract,
+    matter_current_divergence,
+    matter_eom_residual,
+    matter_noether_current,
+    reciprocal_interaction_derivatives,
+)
 
 __all__ = [
     # Parameters
@@ -122,6 +135,17 @@ __all__ = [
     "compare_response_reduction",
     "derive_response_coefficients",
     "matter_space_config_from_reduction",
+    "COVARIANT_MATTER_STATUS",
+    "CovariantMatterConfig",
+    "coupled_conservative_action_density",
+    "coupled_matter_stress_tensor",
+    "coupled_metric_residual",
+    "coupled_response_scalar_equation_residual",
+    "matter_action_contract",
+    "matter_current_divergence",
+    "matter_eom_residual",
+    "matter_noether_current",
+    "reciprocal_interaction_derivatives",
 ]
 
 __version__ = "0.9.0"

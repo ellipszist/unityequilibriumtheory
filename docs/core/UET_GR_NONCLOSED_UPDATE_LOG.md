@@ -7,6 +7,21 @@
 
 ## Entries
 
+### 2026-07-22 - Add conservative covariant matter-action pilot
+
+- Scope: one complex scalar represented by an O(2) real doublet, coupled reciprocally to the covariant response scalar through one conservative action
+- Wave type: formula-closure, action-reciprocity, current-conservation, dependency-gate, and claim-boundary pass
+- Added or changed: covariant matter module, exact interaction derivatives, O(2) Noether current identity, coupled metric residual, strict verifier, three generated artifacts, focused tests, public exports, and monotonic upstream generators
+- Files touched: `uet_covariant_matter.py`, `audit_uet_gr_covariant_matter.py`, core exports, two matter test files, generated matter/program artifacts, upstream audits/tests, and this specification/log
+- Verified with: five strict audits in dependency order and a 129-test combined covariant, causal, reduction, matter-action, legacy-alignment, and matter-space regression suite
+- Result: audit `PASS`, evidence `PARTIAL`, formula audit `WARN`; reciprocal finite-difference error `1.77e-13`, Noether identity and on-shell current-divergence errors `0.0`, tensor transformation error `6.94e-18`, and exact `epsilon_nc = 0` interaction residual `0.0`
+- Blocker narrowed: a conservative scalar pilot now derives reciprocal response/matter coupling and an on-shell O(2) current from the same action
+- Still open: amplitude-to-density identification, regular covariant-to-diffusive reduction, Cahn-Hilliard/closed-time-path derivation, coupled Bianchi identity with the new matter action, SI map, and particle or antimatter identification
+- Next controller: `regular_covariant_to_diffusive_matter_reduction_missing`
+- Claim impact: class B retained; program remains `BLOCKED`; Topic 0.11 and Topic 0.19 status remain unchanged
+- Workflow linkage: the formula and claim audits separate exact conservative identities from the still-missing dissipative constitutive bridge
+- Notes: the conserved O(2) charge is not yet the normalized matter field `C`; it establishes neither global-universe closure nor a particle-species interpretation
+
 ### 2026-07-22 - Map the covariant response sector to the normalized matter-space operator
 
 - Scope: declared local-rest-frame and weak-curvature reduction of the response equation only

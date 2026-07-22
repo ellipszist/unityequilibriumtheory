@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "artifact": "covariant_matter_formula_audit",
+  "generated_at": "2026-07-22T02:23:25.449483+00:00",
+  "status": "WARN",
+  "implementation_status": "PRESENT",
+  "derivation_status": "candidate conservative scalar-matter ansatz",
+  "unit_lane": "natural",
+  "formula_registry": [
+    {
+      "id": "o2_matter_lagrangian",
+      "implementation": "docs/core/uet_covariant_matter.py::coupled_matter_lagrangian_scalar",
+      "status": "IMPLEMENTED"
+    },
+    {
+      "id": "reciprocal_interaction",
+      "implementation": "docs/core/uet_covariant_matter.py::reciprocal_interaction_derivatives",
+      "status": "IMPLEMENTED"
+    },
+    {
+      "id": "matter_euler_lagrange_residual",
+      "implementation": "docs/core/uet_covariant_matter.py::matter_eom_residual",
+      "status": "IMPLEMENTED"
+    },
+    {
+      "id": "global_o2_noether_current",
+      "implementation": "docs/core/uet_covariant_matter.py::matter_noether_current",
+      "status": "IMPLEMENTED"
+    }
+  ],
+  "completed_formula_gates": [
+    "covariant_matter_action_scalar_pilot",
+    "action_level_reciprocal_coupling",
+    "global_o2_current_identity"
+  ],
+  "open_formula_gates": [
+    "matter_amplitude_as_density_C",
+    "cahn_hilliard_from_covariant_action",
+    "regular_nested_normalized_epsilon_map",
+    "closed_time_path_dissipative_matter_action",
+    "coupled_bianchi_exchange_with_matter_action",
+    "system_specific_SI_map",
+    "particle_or_antimatter_identity"
+  ],
+  "dimension_audit": {
+    "status": "PASS",
+    "computed": {
+      "interaction": 4,
+      "matter_eom_kinetic": 3,
+      "matter_eom_potential": 3,
+      "noether_current": 3,
+      "current_divergence": 4
+    },
+    "expected": {
+      "interaction": 4,
+      "matter_eom_kinetic": 3,
+      "matter_eom_potential": 3,
+      "noether_current": 3,
+      "current_divergence": 4
+    },
+    "registry": {
+      "matter_doublet": 1,
+      "matter_gradient": 2,
+      "matter_box": 3,
+      "matter_kinetic": 0,
+      "matter_mass_sq": 2,
+      "matter_quartic": 0,
+      "response_coupling": 1,
+      "matter_potential": 4,
+      "interaction_energy_density": 4,
+      "matter_eom_residual": 3,
+      "noether_current": 3,
+      "current_divergence": 4,
+      "stress_tensor": 4
+    }
+  },
+  "epsilon_denominator_lines": [],
+  "source_hashes": {
+    "docs\\core\\uet_covariant_matter.py": "8a57d95e898a8ac962bbd749670ad0695b597281937da36496d2ec7e074f9c53",
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "40aaac8395b3e0e0136f6e640fd27203183c82c51a1fed7100f419e2df5dd660"
+  }
+}

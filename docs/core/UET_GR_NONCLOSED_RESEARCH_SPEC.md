@@ -1,8 +1,8 @@
 # UET GR Closed-Limit and Non-Closed Response Research Specification
 
-> **Status:** `PARTIAL CONTROLLED RESPONSE REDUCTION / PROGRAM BLOCKED`
+> **Status:** `COVARIANT MATTER ACTION RECIPROCITY / PROGRAM BLOCKED`
 > **Current claim class:** `B`
-> **Current controlling blocker:** `covariant_matter_action_and_reciprocal_coupling_missing`
+> **Current controlling blocker:** `regular_covariant_to_diffusive_matter_reduction_missing`
 > **Program rule:** General relativity is the null/closed-response model. A
 > non-zero UET response is an empirical alternative, not a conclusion assumed
 > from the existence of the model.
@@ -156,6 +156,64 @@ T_Phi_mu_nu = Z_Phi nabla_mu Phi nabla_nu Phi
 
 The first code wave is a tensor-formula evaluator and exact-limit verifier. It
 is not a metric PDE solver, a curved-spacetime simulation, or a Bianchi proof.
+
+### 5.1 Covariant matter-action pilot
+
+The first matter representation is an O(2) scalar doublet
+`chi_A = (chi_1, chi_2)`, equivalent to one complex scalar. Define
+
+```text
+C_amp^2 = chi_1^2 + chi_2^2
+W(C_amp) = m_C^2 C_amp^2/2 + lambda_C C_amp^4/4
+```
+
+and add the nested interaction
+
+```text
+L_m,coupled = -Z_C/2 sum_A (nabla chi_A)^2
+              - W(C_amp)
+              + epsilon_nc h/2 delta_Phi C_amp^2
+```
+
+with `Z_C > 0`, `lambda_C > 0`, and `h >= 0`. The same action term gives
+both coupling directions:
+
+```text
+E_chi_A = Z_C box chi_A
+          - [m_C^2 + lambda_C C_amp^2
+             - epsilon_nc h delta_Phi] chi_A
+
+E_Phi,coupling = +epsilon_nc h C_amp^2/2
+```
+
+The mixed derivatives of the interaction energy agree exactly, so the
+matter and response forces are reciprocal at the conservative action level.
+At `epsilon_nc = 0`, the interaction and response equation vanish while the
+ordinary scalar matter action remains in the Einstein equation.
+
+The global O(2) rotation has the candidate current
+
+```text
+N^mu = Z_C [chi_1 nabla^mu chi_2 - chi_2 nabla^mu chi_1]
+```
+
+and its local identity is
+
+```text
+nabla_mu N^mu = chi_1 E_chi_2 - chi_2 E_chi_1
+```
+
+so the current is conserved on the conservative matter shell. This does not
+yet identify `C_amp` with the normalized density/order variable `C`:
+
+- a conserved Noether charge is not automatically a locally diffusing
+  amplitude;
+- the Cahn-Hilliard/Model-B law requires a constitutive or closed-time-path
+  dissipative reduction;
+- the current normalized operator is a fixed `epsilon_nc > 0` chart and does
+  not yet expose a regular nested epsilon limit; and
+- the scalar pilot is not a Dirac field, antiparticle identification,
+  positron, neutrino, or established microscopic matter ontology.
 
 ## 6. GR closed-limit contract
 
