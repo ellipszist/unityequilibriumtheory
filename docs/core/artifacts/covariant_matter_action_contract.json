@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "covariant_matter_action_contract",
-  "generated_at": "2026-07-22T02:23:25.449483+00:00",
+  "generated_at": "2026-07-22T03:16:21.104100+00:00",
   "status": "CANDIDATE_O2_SCALAR_ACTION_WITH_RECIPROCAL_RESPONSE_COUPLING",
   "representation": "two_real_scalars_global_O2_equivalent_to_complex_scalar",
   "matter_amplitude_role": "lorentz_scalar_amplitude_not_yet_density_C",
@@ -32,5 +32,7 @@
     "noether_current": 3,
     "current_divergence": 4,
     "stress_tensor": 4
-  }
+  },
+  "downstream_diffusion_status": "PASS",
+  "downstream_diffusion_evidence": "PARTIAL"
 }

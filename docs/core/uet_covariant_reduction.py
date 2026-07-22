@@ -6,11 +6,12 @@ and nondimensionalization assumptions explicit.  It recovers the
 declared constitutive source supplies damping, matter forcing, and external
 drive.
 
-It does not derive the conserved ``C`` equation or the reciprocal
-``-g C Phi`` matter chemical-potential term because the current covariant
-parent has no relativistic matter action with that coupling.  Consequently
-this module supports a partial response-sector bridge, not a full derivation
-of the existing matter-space operator.
+It does not itself derive the conserved ``C`` equation.  A later O(2) scalar
+matter action supplies reciprocal conservative coupling, and
+``uet_covariant_diffusion`` supplies a separate coarse-grained constitutive
+current bridge with an exact Model-B limit.  Neither result turns this older
+response-only adapter into a microscopic dissipative derivation of the full
+matter-space operator.
 """
 
 from __future__ import annotations
@@ -314,13 +315,13 @@ def reduction_contract() -> dict[str, Any]:
             "declared_natural_to_normalized_scales",
         ],
         "response_equation_mapping": "EXACT_ALGEBRAIC",
-        "matter_equation_mapping": "BLOCKED",
-        "reciprocal_coupling_derivation": "BLOCKED",
+        "matter_equation_mapping": "PARTIAL_IN_SEPARATE_CONSTITUTIVE_CURRENT_BRIDGE",
+        "reciprocal_coupling_derivation": "IMPLEMENTED_ACTION_LEVEL_IN_SEPARATE_MATTER_MODULE",
         "causal_source_realization": "BLOCKED",
-        "reason": "the covariant parent lacks a relativistic matter action and a derived bath/source law for the required damping and reciprocal coupling",
+        "reason": "this module maps only the response equation; the separate matter action and conserved-current bridge do not yet supply microscopic CTP/KMS transport matching or a first-order hyperbolic gradient-phase-field closure",
         "derived_trace_imported": False,
         "derived_trace_backreaction": False,
         "topic_0_11_status_impact": "NONE",
         "topic_0_19_status_impact": "NONE",
-        "next_controller": "covariant_matter_action_and_reciprocal_coupling_missing",
+        "next_controller": "first_order_hyperbolic_phase_field_uv_closure_missing",
     }

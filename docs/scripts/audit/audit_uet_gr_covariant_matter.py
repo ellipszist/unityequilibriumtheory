@@ -337,6 +337,19 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], d
     denominators = _epsilon_denominators(source)
     reduction = json.loads(REDUCTION.read_text(encoding="utf-8"))
     signature = inspect.signature(matter_eom_residual)
+    diffusion_path = OUT / "covariant_diffusive_current_verification.json"
+    diffusion_status = "NOT_RUN"
+    diffusion_evidence = "MISSING"
+    if diffusion_path.exists():
+        try:
+            diffusion_payload = json.loads(
+                diffusion_path.read_text(encoding="utf-8")
+            )
+            diffusion_status = diffusion_payload.get("audit_status", "FAIL")
+            diffusion_evidence = diffusion_payload.get("evidence_status", "BLOCKED")
+        except (OSError, json.JSONDecodeError):
+            diffusion_status, diffusion_evidence = "FAIL", "BLOCKED"
+    diffusion_passed = diffusion_status == "PASS" and diffusion_evidence == "PARTIAL"
     achieved_gates = {
         "reciprocal_variational_coupling": "PASS" if symbolic["reciprocal_variation_exact"] and numeric["reciprocal_finite_difference_max_abs_error"] <= 1e-9 else "FAIL",
         "global_o2_invariance": "PASS" if symbolic["o2_invariance_exact"] else "FAIL",
@@ -418,7 +431,13 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], d
                 "url": "https://arxiv.org/abs/1511.03646",
             },
         ],
-        "next_controller": "regular_covariant_to_diffusive_matter_reduction_missing",
+        "next_controller": (
+            "first_order_hyperbolic_phase_field_uv_closure_missing"
+            if diffusion_passed
+            else "regular_covariant_to_diffusive_matter_reduction_missing"
+        ),
+        "downstream_diffusion_status": diffusion_status,
+        "downstream_diffusion_evidence": diffusion_evidence,
     }
     formula = {
         "schema_version": "1.0",
@@ -442,6 +461,8 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], d
         "open_formula_gates": list(blocked_gates),
         "dimension_audit": dimensions,
         "epsilon_denominator_lines": denominators,
+        "downstream_diffusion_status": diffusion_status,
+        "downstream_diffusion_evidence": diffusion_evidence,
         "source_hashes": hashes,
     }
     contract_artifact = {
@@ -449,13 +470,19 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], d
         "artifact": "covariant_matter_action_contract",
         "generated_at": now,
         **contract,
+        "downstream_diffusion_status": diffusion_status,
+        "downstream_diffusion_evidence": diffusion_evidence,
     }
     program = {
         "schema_version": "1.0",
         "artifact": "uet_gr_research_program_gate",
         "generated_at": now,
         "status": "BLOCKED",
-        "program_stage": "COVARIANT_MATTER_ACTION_RECIPROCITY_VERIFIED" if audit_status == "PASS" else "CONTROLLED_RESPONSE_REDUCTION_PARTIAL",
+        "program_stage": (
+            "CONSERVED_CURRENT_DIFFUSIVE_BRIDGE_PARTIAL" if diffusion_passed
+            else "COVARIANT_MATTER_ACTION_RECIPROCITY_VERIFIED" if audit_status == "PASS"
+            else "CONTROLLED_RESPONSE_REDUCTION_PARTIAL"
+        ),
         "current_claim_class": "B",
         "gr_null_model": {"parameter": "epsilon_nc", "value": 0, "verification_status": "PASS"},
         "sector_status": {
@@ -469,15 +496,25 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], d
             "covariant_matter_action": "PASS_O2_SCALAR_PILOT",
             "reciprocal_coupling": "PASS_ACTION_LEVEL",
             "matter_number_current": "PASS_ON_SHELL_O2",
-            "diffusive_matter_reduction": "NOT_IMPLEMENTED",
+            "diffusive_matter_reduction": "PARTIAL_CONSTITUTIVE_WITH_EXACT_MODEL_B_LIMIT" if diffusion_passed else "NOT_IMPLEMENTED",
+            "local_convex_matter_causality": "PASS_CONTROL" if diffusion_passed else "NOT_IMPLEMENTED",
+            "gradient_phase_field_causality": "BLOCKED_UV" if diffusion_passed else "NOT_IMPLEMENTED",
             "physical_gr_benchmarks": "NOT_STARTED",
         },
         "global_universe_closure": "UNRESOLVED",
         "topic_0_11_status_impact": "NONE",
         "topic_0_19_status_impact": "NONE",
-        "controlling_blocker": "regular_covariant_to_diffusive_matter_reduction_missing",
+        "controlling_blocker": (
+            "first_order_hyperbolic_phase_field_uv_closure_missing"
+            if diffusion_passed
+            else "regular_covariant_to_diffusive_matter_reduction_missing"
+        ),
         "claim_promotion": "BLOCKED",
-        "reason": "The conservative scalar matter action and reciprocal interaction close, but the density interpretation, regular epsilon-nested normalized chart, and dissipative conserved-matter dynamics are not derived.",
+        "reason": (
+            "The coarse-grained conserved-current bridge and exact Model-B limit are present, but microscopic density matching and a first-order hyperbolic closure for the gradient/spinodal phase field are absent."
+            if diffusion_passed
+            else "The conservative scalar matter action and reciprocal interaction close, but the density interpretation, regular epsilon-nested normalized chart, and dissipative conserved-matter dynamics are not derived."
+        ),
     }
     return verification, formula, contract_artifact, program
 

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "covariant_matter_action_verification",
-  "generated_at": "2026-07-22T02:23:25.449483+00:00",
+  "generated_at": "2026-07-22T03:16:21.104100+00:00",
   "audit_status": "PASS",
   "evidence_status": "PARTIAL",
   "claim_class": "B",
@@ -95,7 +95,7 @@
   },
   "source_hashes": {
     "docs\\core\\uet_covariant_matter.py": "8a57d95e898a8ac962bbd749670ad0695b597281937da36496d2ec7e074f9c53",
-    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "40aaac8395b3e0e0136f6e640fd27203183c82c51a1fed7100f419e2df5dd660"
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "33126e8852d66dddece453a99345303e0bd6dae5bee83bfa6b53f8be182e3ca3"
   },
   "run_contract": {
     "seed": 190051,
@@ -135,5 +135,7 @@
       "url": "https://arxiv.org/abs/1511.03646"
     }
   ],
-  "next_controller": "regular_covariant_to_diffusive_matter_reduction_missing"
+  "next_controller": "first_order_hyperbolic_phase_field_uv_closure_missing",
+  "downstream_diffusion_status": "PASS",
+  "downstream_diffusion_evidence": "PARTIAL"
 }

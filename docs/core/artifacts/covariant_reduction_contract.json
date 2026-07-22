@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "covariant_reduction_contract",
-  "generated_at": "2026-07-22T02:23:10.927390+00:00",
+  "generated_at": "2026-07-22T03:16:04.121223+00:00",
   "status": "PARTIAL_RESPONSE_SECTOR_EXACT",
   "assumptions": [
     "local_rest_frame",
@@ -11,15 +11,15 @@
     "declared_natural_to_normalized_scales"
   ],
   "response_equation_mapping": "EXACT_ALGEBRAIC",
-  "matter_equation_mapping": "BLOCKED",
-  "reciprocal_coupling_derivation": "BLOCKED",
+  "matter_equation_mapping": "PARTIAL_IN_SEPARATE_CONSTITUTIVE_CURRENT_BRIDGE",
+  "reciprocal_coupling_derivation": "IMPLEMENTED_ACTION_LEVEL_IN_SEPARATE_MATTER_MODULE",
   "causal_source_realization": "BLOCKED",
-  "reason": "the covariant parent lacks a relativistic matter action and a derived bath/source law for the required damping and reciprocal coupling",
+  "reason": "this module maps only the response equation; the separate matter action and conserved-current bridge do not yet supply microscopic CTP/KMS transport matching or a first-order hyperbolic gradient-phase-field closure",
   "derived_trace_imported": false,
   "derived_trace_backreaction": false,
   "topic_0_11_status_impact": "NONE",
   "topic_0_19_status_impact": "NONE",
-  "next_controller": "regular_covariant_to_diffusive_matter_reduction_missing",
+  "next_controller": "first_order_hyperbolic_phase_field_uv_closure_missing",
   "coefficient_map": {
     "a_space": "T**2*mass_sq*tau/(Z*mobility)",
     "b_space": "T**2*field_scale**2*quartic*tau/(Z*mobility)",
@@ -29,5 +29,7 @@
   "epsilon_policy": "adapter requires epsilon_nc>0; epsilon_nc=0 selects GR and no response operator",
   "unit_policy": "declared natural scales to normalized coefficients; not an SI calibration",
   "downstream_matter_status": "PASS",
-  "downstream_matter_evidence": "PARTIAL"
+  "downstream_matter_evidence": "PARTIAL",
+  "downstream_diffusion_status": "PASS",
+  "downstream_diffusion_evidence": "PARTIAL"
 }

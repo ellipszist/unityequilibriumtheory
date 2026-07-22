@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "covariant_exchange_contract",
-  "generated_at": "2026-07-22T02:22:40.154413+00:00",
+  "generated_at": "2026-07-22T03:15:33.587286+00:00",
   "status": "CANDIDATE",
   "scalar_equation": "E_phi = epsilon_nc * j_phi",
   "matter_stress_balance": "nabla_mu T_m^(mu nu) = -epsilon_nc*j_phi*nabla^nu(phi)",
@@ -15,6 +15,8 @@
   "covariant_matter_action": "PASS_O2_SCALAR_PILOT",
   "reciprocal_coupling": "PASS_ACTION_LEVEL",
   "matter_number_current": "PASS_ON_SHELL_O2",
-  "diffusive_matter_reduction": "NOT_IMPLEMENTED",
+  "diffusive_matter_reduction": "PARTIAL_CONSTITUTIVE_WITH_EXACT_MODEL_B_LIMIT",
+  "local_convex_matter_causality": "PASS_CONTROL",
+  "gradient_phase_field_causality": "BLOCKED_UV",
   "derived_trace_backreaction": false
 }

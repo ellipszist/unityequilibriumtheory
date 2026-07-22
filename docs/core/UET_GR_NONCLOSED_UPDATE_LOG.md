@@ -7,6 +7,21 @@
 
 ## Entries
 
+### 2026-07-22 - Add conserved-current bridge and restrict causal scope
+
+- Scope: local-frame decomposition of the O(2) Noether current into a coarse-grained conserved density and spatial current in a normalized 1D constitutive lane
+- Wave type: formula-closure, discrete-conservation, energy-ledger, adiabatic-limit, principal-symbol, and claim-boundary pass
+- Added or changed: covariant diffusion module, public exports, strict verifier, three generated artifacts, focused tests, monotonic upstream gates, and specification/reduction drift repair
+- Files touched: `uet_covariant_diffusion.py`, its audit and tests, public exports, diffusion/program artifacts, upstream audits/tests/artifacts, the reduction contract, and this specification/log
+- Verified with: six strict audits in dependency order and a 164-test combined covariant, causal, reduction, matter-action, diffusion, legacy-alignment, and matter-space regression suite
+- Result: audit `PASS`, evidence `PARTIAL`, formula audit `WARN`; mass residual at most `5.55e-17`, energy-identity residual at most `2.88e-16`, Model-B limit residual at most `2.27e-13`, matter-space RHS mismatch `0.0`, exact-null-branch response mismatch `0.0`, and local-cone leakage/arrival error `0.0`
+- Blocker narrowed: the regular covariant-to-diffusive map closes only as a declared coarse-grained constitutive-current bridge with an exact semi-discrete Model-B limit
+- Still open: microscopic amplitude-to-charge-density matching, first-order hyperbolic closure for gradient/spinodal phase fields, closed-time-path/KMS coefficient matching, dissipative Bianchi closure, curved 3+1 reduction, SI mapping, and physical validation
+- Next controller: `first_order_hyperbolic_phase_field_uv_closure_missing`
+- Claim impact: class B retained; program remains `BLOCKED`; Topic 0.11 and Topic 0.19 status remain unchanged; global-universe closure remains unresolved
+- Workflow linkage: the formula and claim audits separate the causal local-convex control from the fourth-order ultraviolet obstruction in the full Cahn-Hilliard lane
+- Notes: finite flux relaxation alone does not make the gradient/spinodal equation relativistically causal; the trace remains derived and has no feedback, and no scalar amplitude is identified with density
+
 ### 2026-07-22 - Add conservative covariant matter-action pilot
 
 - Scope: one complex scalar represented by an O(2) real doublet, coupled reciprocally to the covariant response scalar through one conservative action

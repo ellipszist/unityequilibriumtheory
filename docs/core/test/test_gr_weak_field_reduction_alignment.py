@@ -31,8 +31,12 @@ def test_reduction_contract_names_missing_matter_and_source_derivations() -> Non
     artifact = _read("covariant_reduction_contract.json")
     assert artifact["status"] == "PARTIAL_RESPONSE_SECTOR_EXACT"
     assert artifact["response_equation_mapping"] == "EXACT_ALGEBRAIC"
-    assert artifact["matter_equation_mapping"] == "BLOCKED"
-    assert artifact["reciprocal_coupling_derivation"] == "BLOCKED"
+    assert artifact["matter_equation_mapping"] == (
+        "PARTIAL_IN_SEPARATE_CONSTITUTIVE_CURRENT_BRIDGE"
+    )
+    assert artifact["reciprocal_coupling_derivation"] == (
+        "IMPLEMENTED_ACTION_LEVEL_IN_SEPARATE_MATTER_MODULE"
+    )
     assert artifact["causal_source_realization"] == "BLOCKED"
     assert "epsilon_nc>0" in artifact["epsilon_policy"]
     assert artifact["topic_0_11_status_impact"] == "NONE"
@@ -45,6 +49,7 @@ def test_program_gate_reports_partial_reduction_without_promotion() -> None:
     assert artifact["program_stage"] in {
         "CONTROLLED_RESPONSE_REDUCTION_PARTIAL",
         "COVARIANT_MATTER_ACTION_RECIPROCITY_VERIFIED",
+        "CONSERVED_CURRENT_DIFFUSIVE_BRIDGE_PARTIAL",
     }
     assert artifact["sector_status"]["weak_field_reduction"] == "PARTIAL_RESPONSE_ONLY"
     assert artifact["sector_status"]["covariant_matter_action"] in {
@@ -54,6 +59,7 @@ def test_program_gate_reports_partial_reduction_without_promotion() -> None:
     assert artifact["controlling_blocker"] in {
         "covariant_matter_action_and_reciprocal_coupling_missing",
         "regular_covariant_to_diffusive_matter_reduction_missing",
+        "first_order_hyperbolic_phase_field_uv_closure_missing",
     }
     assert artifact["topic_0_11_status_impact"] == "NONE"
     assert artifact["topic_0_19_status_impact"] == "NONE"

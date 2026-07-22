@@ -251,6 +251,19 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
         except (OSError, json.JSONDecodeError):
             matter_status, matter_evidence = "FAIL", "BLOCKED"
     matter_passed = matter_status == "PASS" and matter_evidence == "PARTIAL"
+    diffusion_path = OUT / "covariant_diffusive_current_verification.json"
+    diffusion_status = "NOT_RUN"
+    diffusion_evidence = "MISSING"
+    if diffusion_path.exists():
+        try:
+            diffusion_payload = json.loads(
+                diffusion_path.read_text(encoding="utf-8")
+            )
+            diffusion_status = diffusion_payload.get("audit_status", "FAIL")
+            diffusion_evidence = diffusion_payload.get("evidence_status", "BLOCKED")
+        except (OSError, json.JSONDecodeError):
+            diffusion_status, diffusion_evidence = "FAIL", "BLOCKED"
+    diffusion_passed = diffusion_status == "PASS" and diffusion_evidence == "PARTIAL"
     gates = {
         "symbolic_metric_closed_limit": "PASS" if symbolic["metric_closed_limit_exact"] else "FAIL",
         "symbolic_scalar_decoupling": "PASS" if symbolic["scalar_closed_limit_exact"] else "FAIL",
@@ -278,7 +291,8 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
         "allowed_language": ["candidate conservative covariant parent", "exact implemented GR closed-limit contract", "local tensor-transformation consistency"],
         "blocked_language": ["Einstein equations derived from UET", "physical GR validation", "Bianchi or Noether proof", "universe proved non-closed"],
         "next_controller": (
-            "regular_covariant_to_diffusive_matter_reduction_missing" if matter_passed
+            "first_order_hyperbolic_phase_field_uv_closure_missing" if diffusion_passed
+            else "regular_covariant_to_diffusive_matter_reduction_missing" if matter_passed
             else "covariant_matter_action_and_reciprocal_coupling_missing" if reduction_passed
             else "controlled_covariant_to_matter_space_reduction_missing" if causal_passed
             else "causal_nonclosed_influence_functional_missing" if balance_passed else "covariant_bianchi_exchange_balance_missing"
@@ -306,7 +320,8 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
         "open_formula_gates": (
             ([] if balance_passed else ["covariant_bianchi_exchange_balance_missing"])
             + (["closed_time_path_derivation_missing"] if causal_passed else ["causal_influence_functional_missing"])
-            + (["regular_covariant_to_diffusive_matter_reduction_missing"] if matter_passed
+            + (["first_order_hyperbolic_phase_field_uv_closure_missing"] if diffusion_passed
+               else ["regular_covariant_to_diffusive_matter_reduction_missing"] if matter_passed
                else ["covariant_matter_action_and_reciprocal_coupling_missing"] if reduction_passed
                else ["controlled_covariant_to_matter_space_reduction_missing"] if causal_passed else [])
             + ["principal_symbol_and_ghost_analysis_missing", "system_specific_SI_contract_missing"]
@@ -315,11 +330,14 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
             (["covariant_bianchi_exchange_balance"] if balance_passed else [])
             + (["causal_constitutive_kernel_1p1d"] if causal_passed else [])
             + (["controlled_response_sector_reduction_partial"] if reduction_passed else [])
+            + (["conserved_current_diffusive_bridge_partial"] if diffusion_passed else [])
             + (["covariant_matter_action_reciprocity"] if matter_passed else [])
         ),
         "downstream_reduction_status": reduction_status,
         "downstream_reduction_evidence": reduction_evidence,
         "downstream_matter_status": matter_status,
+        "downstream_diffusion_status": diffusion_status,
+        "downstream_diffusion_evidence": diffusion_evidence,
         "downstream_matter_evidence": matter_evidence,
         "source_hashes": hashes,
     }
@@ -327,7 +345,8 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
         "schema_version": "1.0", "artifact": "uet_gr_research_program_gate",
         "generated_at": now, "status": "BLOCKED",
         "program_stage": (
-            "COVARIANT_MATTER_ACTION_RECIPROCITY_VERIFIED" if matter_passed
+            "CONSERVED_CURRENT_DIFFUSIVE_BRIDGE_PARTIAL" if diffusion_passed
+            else "COVARIANT_MATTER_ACTION_RECIPROCITY_VERIFIED" if matter_passed
             else "CONTROLLED_RESPONSE_REDUCTION_PARTIAL" if reduction_passed
             else "CAUSAL_NONCLOSED_CONSTITUTIVE_KERNEL_VERIFIED" if causal_passed
             else "COVARIANT_CONSERVATIVE_BALANCE_VERIFIED" if balance_passed else "CONSERVATIVE_PARENT_IMPLEMENTED"
@@ -341,18 +360,22 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
                           "covariant_matter_action": "PASS_O2_SCALAR_PILOT" if matter_passed else "NOT_IMPLEMENTED",
                           "reciprocal_coupling": "PASS_ACTION_LEVEL" if matter_passed else "NOT_IMPLEMENTED",
                           "matter_number_current": "PASS_ON_SHELL_O2" if matter_passed else "NOT_IMPLEMENTED",
-                          "diffusive_matter_reduction": "NOT_IMPLEMENTED",
+                          "diffusive_matter_reduction": "PARTIAL_CONSTITUTIVE_WITH_EXACT_MODEL_B_LIMIT" if diffusion_passed else "NOT_IMPLEMENTED",
+                          "local_convex_matter_causality": "PASS_CONTROL" if diffusion_passed else "NOT_IMPLEMENTED",
+                          "gradient_phase_field_causality": "BLOCKED_UV" if diffusion_passed else "NOT_IMPLEMENTED",
                           "physical_gr_benchmarks": "NOT_STARTED"},
         "global_universe_closure": "UNRESOLVED", "topic_0_11_status_impact": "NONE", "topic_0_19_status_impact": "NONE",
         "controlling_blocker": (
-            "regular_covariant_to_diffusive_matter_reduction_missing" if matter_passed
+            "first_order_hyperbolic_phase_field_uv_closure_missing" if diffusion_passed
+            else "regular_covariant_to_diffusive_matter_reduction_missing" if matter_passed
             else "covariant_matter_action_and_reciprocal_coupling_missing" if reduction_passed
             else "controlled_covariant_to_matter_space_reduction_missing" if causal_passed
             else "causal_nonclosed_influence_functional_missing" if balance_passed else "covariant_bianchi_exchange_balance_missing"
         ),
         "claim_promotion": "BLOCKED",
         "reason": (
-            "The conservative scalar matter action and reciprocal interaction close, but the density interpretation, regular epsilon-nested normalized chart, and dissipative conserved-matter dynamics are not derived." if matter_passed
+            "The coarse-grained conserved-current bridge and exact Model-B limit are present, but microscopic density matching and a first-order hyperbolic closure for the gradient/spinodal phase field are absent." if diffusion_passed
+            else "The conservative scalar matter action and reciprocal interaction close, but the density interpretation, regular epsilon-nested normalized chart, and dissipative conserved-matter dynamics are not derived." if matter_passed
             else "The response equation maps exactly, but the covariant matter equation, reciprocal coupling, and causal realization of the required source are absent." if reduction_passed
             else "A restricted causal constitutive kernel exists, but the controlled weak-field reduction is missing." if causal_passed
             else "Local conservative exchange closes, but causal non-closed dynamics are missing." if balance_passed

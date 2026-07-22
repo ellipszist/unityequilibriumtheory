@@ -55,6 +55,7 @@ def test_program_gate_advances_model_class_without_promoting_gr_topic() -> None:
         "CAUSAL_NONCLOSED_CONSTITUTIVE_KERNEL_VERIFIED",
         "CONTROLLED_RESPONSE_REDUCTION_PARTIAL",
         "COVARIANT_MATTER_ACTION_RECIPROCITY_VERIFIED",
+        "CONSERVED_CURRENT_DIFFUSIVE_BRIDGE_PARTIAL",
     }
     assert artifact["gr_null_model"]["verification_status"] == "PASS"
     assert artifact["topic_0_19_status_impact"] == "NONE"
@@ -66,6 +67,7 @@ def test_program_gate_advances_model_class_without_promoting_gr_topic() -> None:
         "controlled_covariant_to_matter_space_reduction_missing",
         "covariant_matter_action_and_reciprocal_coupling_missing",
         "regular_covariant_to_diffusive_matter_reduction_missing",
+        "first_order_hyperbolic_phase_field_uv_closure_missing",
     }
 
 

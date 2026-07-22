@@ -49,12 +49,18 @@ def test_matter_contract_separates_scalar_amplitude_from_density() -> None:
 def test_program_advances_without_topic_or_global_closure_promotion() -> None:
     artifact = _read("uet_gr_research_program_gate.json")
     assert artifact["status"] == "BLOCKED"
-    assert artifact["program_stage"] == "COVARIANT_MATTER_ACTION_RECIPROCITY_VERIFIED"
+    assert artifact["program_stage"] == "CONSERVED_CURRENT_DIFFUSIVE_BRIDGE_PARTIAL"
     assert artifact["sector_status"]["covariant_matter_action"] == "PASS_O2_SCALAR_PILOT"
     assert artifact["sector_status"]["reciprocal_coupling"] == "PASS_ACTION_LEVEL"
     assert artifact["sector_status"]["matter_number_current"] == "PASS_ON_SHELL_O2"
-    assert artifact["sector_status"]["diffusive_matter_reduction"] == "NOT_IMPLEMENTED"
-    assert artifact["controlling_blocker"] == "regular_covariant_to_diffusive_matter_reduction_missing"
+    assert artifact["sector_status"]["diffusive_matter_reduction"] == (
+        "PARTIAL_CONSTITUTIVE_WITH_EXACT_MODEL_B_LIMIT"
+    )
+    assert artifact["sector_status"]["local_convex_matter_causality"] == "PASS_CONTROL"
+    assert artifact["sector_status"]["gradient_phase_field_causality"] == "BLOCKED_UV"
+    assert artifact["controlling_blocker"] == (
+        "first_order_hyperbolic_phase_field_uv_closure_missing"
+    )
     assert artifact["topic_0_11_status_impact"] == "NONE"
     assert artifact["topic_0_19_status_impact"] == "NONE"
     assert artifact["global_universe_closure"] == "UNRESOLVED"

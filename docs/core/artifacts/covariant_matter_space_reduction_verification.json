@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "covariant_matter_space_reduction_verification",
-  "generated_at": "2026-07-22T02:23:10.927390+00:00",
+  "generated_at": "2026-07-22T03:16:04.121223+00:00",
   "audit_status": "PASS",
   "evidence_status": "PARTIAL",
   "claim_class": "B",
@@ -48,15 +48,15 @@
     "causal_dependency": "PASS"
   },
   "blocked_gates": {
-    "regular_covariant_to_diffusive_matter_reduction": "BLOCKED",
-    "regular_nested_normalized_epsilon_map": "BLOCKED",
+    "first_order_hyperbolic_phase_field_uv_closure": "BLOCKED",
+    "closed_time_path_kms_transport_matching": "BLOCKED",
     "required_source_from_causal_kernel": "BLOCKED",
     "full_coupled_matter_space_reduction": "BLOCKED",
     "system_specific_SI_map": "BLOCKED"
   },
   "source_hashes": {
-    "docs\\core\\uet_covariant_reduction.py": "7ca61ee1d536641e2c2ed8c9b23081c15636ff0b0df219e4a2fb7785755e8c96",
-    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "40aaac8395b3e0e0136f6e640fd27203183c82c51a1fed7100f419e2df5dd660"
+    "docs\\core\\uet_covariant_reduction.py": "99e8434a5ab74e0fb397cbae37c2e5147ef072f2a33a83152fac454f14956023",
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "33126e8852d66dddece453a99345303e0bd6dae5bee83bfa6b53f8be182e3ca3"
   },
   "run_contract": {
     "seed": 190041,
@@ -73,11 +73,13 @@
   ],
   "blocked_language": [
     "full matter-space model derived from the covariant parent",
-    "reciprocal matter coupling derived",
+    "microscopic dissipative matter transport derived",
     "causal bath source derived",
     "Topic 0.11 or 0.19 validated"
   ],
-  "next_controller": "regular_covariant_to_diffusive_matter_reduction_missing",
+  "next_controller": "first_order_hyperbolic_phase_field_uv_closure_missing",
   "downstream_matter_status": "PASS",
-  "downstream_matter_evidence": "PARTIAL"
+  "downstream_matter_evidence": "PARTIAL",
+  "downstream_diffusion_status": "PASS",
+  "downstream_diffusion_evidence": "PARTIAL"
 }

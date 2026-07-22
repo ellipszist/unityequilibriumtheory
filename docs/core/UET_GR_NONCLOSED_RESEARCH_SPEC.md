@@ -1,8 +1,8 @@
 # UET GR Closed-Limit and Non-Closed Response Research Specification
 
-> **Status:** `COVARIANT MATTER ACTION RECIPROCITY / PROGRAM BLOCKED`
+> **Status:** `CONSERVED CURRENT DIFFUSIVE BRIDGE PARTIAL / PROGRAM BLOCKED`
 > **Current claim class:** `B`
-> **Current controlling blocker:** `regular_covariant_to_diffusive_matter_reduction_missing`
+> **Current controlling blocker:** `first_order_hyperbolic_phase_field_uv_closure_missing`
 > **Program rule:** General relativity is the null/closed-response model. A
 > non-zero UET response is an empirical alternative, not a conclusion assumed
 > from the existence of the model.
@@ -214,6 +214,81 @@ yet identify `C_amp` with the normalized density/order variable `C`:
   not yet expose a regular nested epsilon limit; and
 - the scalar pilot is not a Dirac field, antiparticle identification,
   positron, neutrino, or established microscopic matter ontology.
+
+### 5.2 Conserved-current and diffusive-matter bridge
+
+The matter action supplies an on-shell O(2) Noether current, but its scalar
+amplitude is not a conserved density. After choosing a unit timelike local
+frame `u^mu`, decompose the current kinematically as
+
+```text
+N^mu = n u^mu + j^mu
+n = -u_mu N^mu
+u_mu j^mu = 0
+```
+
+The normalized matter variable is now declared to be a coarse-grained charge
+density, not the scalar amplitude:
+
+```text
+C = n / n_0
+J = T j^x / (n_0 L)
+```
+
+This identification is a constitutive coarse-graining assumption. It does not
+derive `n_0`, `L`, `T`, or the transport coefficients from the scalar action.
+On a one-dimensional local-rest-frame slice, use exact continuity and a
+finite-relaxation current:
+
+```text
+partial_t C + partial_x J = 0
+tau_J partial_t J + J = -M_C partial_x mu_C
+
+mu_C = a_C C + b_C C^3 - kappa_C partial_x^2 C
+       - epsilon_nc g_0 C Phi
+```
+
+The nesting is regular because `g_effective = epsilon_nc g_0`; there is no
+division by `epsilon_nc`. At the GR null branch, the matter-space coupling
+vanishes while the closed matter-current equation remains available. For
+periodic or zero-flux boundaries, the matter-conditioned extended energy is
+
+```text
+E_C = F_C[C | Phi] + tau_J/(2 M_C) integral J^2 dx
+dE_C/dt = -integral J^2/M_C dx <= 0
+```
+
+when `Phi` is held fixed for the matter-sector reduction. In the adiabatic
+limit,
+
+```text
+J -> -M_C partial_x mu_C
+partial_t C -> M_C partial_x^2 mu_C
+```
+
+which is exactly the discrete conserved matter equation in
+`matter_space_coupled_v1`. This closes the algebraic Model-B limit and the
+regular epsilon-nested matter coupling, but not a microscopic dissipative
+derivation.
+
+The causal boundary is deliberately split:
+
+- for `kappa_C = 0` and positive local curvature
+  `A = partial mu_C/partial C > 0`, the principal system is Maxwell-Cattaneo
+  with characteristic speed `v_C = sqrt(M_C A/tau_J)` and must satisfy
+  `v_C <= c_hat`;
+- for `kappa_C > 0`, the linear dispersion contains
+  `M_C kappa_C k^4`, so the high-wavenumber phase speed grows as
+  `sqrt(M_C kappa_C/tau_J) k`; finite current relaxation alone is not a proof
+  of a relativistic causal cone; and
+- in the spinodal lane where the local curvature is negative, the simple
+  local hyperbolicity condition also fails.
+
+Accordingly, the current bridge is a partial constitutive result. A genuinely
+first-order augmented hyperbolic phase-field closure, closed-time-path/KMS
+matching of transport coefficients, dissipative Bianchi accounting, curved
+3+1 transport, SI mapping, and physical validation remain open. The derived
+history trace is absent from this reduction and has no backreaction.
 
 ## 6. GR closed-limit contract
 

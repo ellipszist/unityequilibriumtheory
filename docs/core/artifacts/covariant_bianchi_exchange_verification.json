@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "covariant_bianchi_exchange_verification",
-  "generated_at": "2026-07-22T02:22:40.154413+00:00",
+  "generated_at": "2026-07-22T03:15:33.587286+00:00",
   "status": "PASS",
   "evidence_class": "B",
   "claim": "symbolic local Noether/Bianchi identity and exchange-completed ledger for the candidate parent",
@@ -52,7 +52,7 @@
   "source_hashes": {
     "docs\\core\\uet_covariant_balance.py": "815852035010f278e395d845516d1714eebafb24a851f38533bbeea15f01b885",
     "docs\\core\\uet_covariant_response.py": "7fb4b7228afb8ede0ac4f1664d634346ef46cc7678c94ed7b55d73645590c0c2",
-    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "40aaac8395b3e0e0136f6e640fd27203183c82c51a1fed7100f419e2df5dd660"
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "33126e8852d66dddece453a99345303e0bd6dae5bee83bfa6b53f8be182e3ca3"
   },
   "run_contract": {
     "seed": 190031,
@@ -74,10 +74,12 @@
     "full curved-spacetime causal non-closed response",
     "physical GR validation"
   ],
-  "next_controller": "regular_covariant_to_diffusive_matter_reduction_missing",
+  "next_controller": "first_order_hyperbolic_phase_field_uv_closure_missing",
   "downstream_causal_kernel_status": "PASS",
   "downstream_reduction_status": "PASS",
   "downstream_matter_status": "PASS",
   "downstream_matter_evidence": "PARTIAL",
-  "downstream_reduction_evidence": "PARTIAL"
+  "downstream_reduction_evidence": "PARTIAL",
+  "downstream_diffusion_status": "PASS",
+  "downstream_diffusion_evidence": "PARTIAL"
 }

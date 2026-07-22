@@ -159,8 +159,12 @@ def test_reduction_adapter_is_not_active_on_exact_gr_branch() -> None:
 def test_contract_exposes_partial_scope_and_no_trace_edge() -> None:
     contract = reduction_contract()
     assert contract["response_equation_mapping"] == "EXACT_ALGEBRAIC"
-    assert contract["matter_equation_mapping"] == "BLOCKED"
-    assert contract["reciprocal_coupling_derivation"] == "BLOCKED"
+    assert contract["matter_equation_mapping"] == (
+        "PARTIAL_IN_SEPARATE_CONSTITUTIVE_CURRENT_BRIDGE"
+    )
+    assert contract["reciprocal_coupling_derivation"] == (
+        "IMPLEMENTED_ACTION_LEVEL_IN_SEPARATE_MATTER_MODULE"
+    )
     assert contract["causal_source_realization"] == "BLOCKED"
     assert contract["derived_trace_backreaction"] is False
     assert "trace" not in inspect.signature(compare_response_reduction).parameters

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "causal_nonclosed_kernel_verification",
-  "generated_at": "2026-07-22T02:22:56.135122+00:00",
+  "generated_at": "2026-07-22T03:15:47.436926+00:00",
   "status": "PASS",
   "evidence_class": "B",
   "claim": "exact-support retarded 1+1 constitutive kernel on a declared local rest-frame slice",
@@ -61,7 +61,7 @@
   },
   "source_hashes": {
     "docs\\core\\uet_covariant_nonclosed.py": "eec206167657218b7ad093ca346290383ed43bac31f3a5b478c8fa3f30c857ff",
-    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "40aaac8395b3e0e0136f6e640fd27203183c82c51a1fed7100f419e2df5dd660"
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "33126e8852d66dddece453a99345303e0bd6dae5bee83bfa6b53f8be182e3ca3"
   },
   "run_contract": {
     "external_data": false,
@@ -83,9 +83,11 @@
     "ghost-free fundamental action",
     "universe proved non-closed"
   ],
-  "next_controller": "regular_covariant_to_diffusive_matter_reduction_missing",
+  "next_controller": "first_order_hyperbolic_phase_field_uv_closure_missing",
   "downstream_reduction_status": "PASS",
   "downstream_matter_status": "PASS",
   "downstream_matter_evidence": "PARTIAL",
-  "downstream_reduction_evidence": "PARTIAL"
+  "downstream_reduction_evidence": "PARTIAL",
+  "downstream_diffusion_status": "PASS",
+  "downstream_diffusion_evidence": "PARTIAL"
 }

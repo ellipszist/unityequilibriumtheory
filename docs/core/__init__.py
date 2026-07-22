@@ -87,6 +87,25 @@ from .uet_covariant_matter import (
     matter_noether_current,
     reciprocal_interaction_derivatives,
 )
+from .uet_covariant_diffusion import (
+    COVARIANT_DIFFUSION_STATUS,
+    ConservedCurrentBridgeConfig,
+    ConservedCurrentState,
+    CurrentDecomposition,
+    causal_current_rhs,
+    compare_adiabatic_limit,
+    compare_matter_space_conserved_rhs,
+    conditioned_matter_chemical_potential,
+    conditioned_matter_free_energy,
+    current_bridge_contract,
+    current_energy_balance,
+    current_extended_energy,
+    decompose_noether_current,
+    matter_equation_config_from_current_bridge,
+    model_b_rhs,
+    normalize_local_charge_and_current,
+    principal_symbol_diagnostics,
+)
 
 __all__ = [
     # Parameters
@@ -146,6 +165,23 @@ __all__ = [
     "matter_eom_residual",
     "matter_noether_current",
     "reciprocal_interaction_derivatives",
-]
+    "COVARIANT_DIFFUSION_STATUS",
+    "ConservedCurrentBridgeConfig",
+    "ConservedCurrentState",
+    "CurrentDecomposition",
+    "causal_current_rhs",
+    "compare_adiabatic_limit",
+    "compare_matter_space_conserved_rhs",
+    "conditioned_matter_chemical_potential",
+    "conditioned_matter_free_energy",
+    "current_bridge_contract",
+    "current_energy_balance",
+    "current_extended_energy",
+    "decompose_noether_current",
+    "matter_equation_config_from_current_bridge",
+    "model_b_rhs",
+    "normalize_local_charge_and_current",
+    "principal_symbol_diagnostics",
 
+]
 __version__ = "0.9.0"
