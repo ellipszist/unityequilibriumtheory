@@ -66,6 +66,14 @@ from .uet_covariant_nonclosed import (
     retarded_influence_from_events,
     retarded_telegraph_kernel_1p1,
 )
+from .uet_covariant_reduction import (
+    COVARIANT_REDUCTION_STATUS,
+    ReducedResponseCoefficients,
+    WeakFieldReductionConfig,
+    compare_response_reduction,
+    derive_response_coefficients,
+    matter_space_config_from_reduction,
+)
 
 __all__ = [
     # Parameters
@@ -108,6 +116,12 @@ __all__ = [
     "covariant_retarded_kernel_value",
     "retarded_influence_from_events",
     "retarded_telegraph_kernel_1p1",
+    "COVARIANT_REDUCTION_STATUS",
+    "ReducedResponseCoefficients",
+    "WeakFieldReductionConfig",
+    "compare_response_reduction",
+    "derive_response_coefficients",
+    "matter_space_config_from_reduction",
 ]
 
 __version__ = "0.9.0"

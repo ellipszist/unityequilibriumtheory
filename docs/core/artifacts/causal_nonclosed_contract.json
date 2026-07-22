@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "causal_nonclosed_contract",
-  "generated_at": "2026-07-21T13:21:28.742329+00:00",
+  "generated_at": "2026-07-21T19:59:45.232405+00:00",
   "status": "CANDIDATE_RETARDED_CONSTITUTIVE_KERNEL_1P1D",
   "operator": "tau(u.nabla)^2 + (u.nabla) - D(e.nabla)^2 + lambda",
   "kernel_support": "retarded_1p1_local_rest_frame_cone",
@@ -26,5 +26,7 @@
   },
   "exchange_completion": "j_phi -> J_phi=epsilon*j_phi -> Q_m=-J_phi grad(phi), Q_response=+J_phi grad(phi)",
   "gr_limit": "epsilon_nc=0 switches off physical exchange while GR remains",
+  "downstream_reduction": "PARTIAL_RESPONSE_ONLY",
+  "covariant_matter_action": "NOT_IMPLEMENTED",
   "claim_class": "B"
 }

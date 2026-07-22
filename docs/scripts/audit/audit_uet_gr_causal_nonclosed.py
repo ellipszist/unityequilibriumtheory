@@ -200,6 +200,17 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], d
     closed = json.loads(CLOSED.read_text(encoding="utf-8"))
     balance = json.loads(BALANCE.read_text(encoding="utf-8"))
     source = CORE.read_text(encoding="utf-8")
+    reduction_path = OUT / "covariant_matter_space_reduction_verification.json"
+    reduction_status = "NOT_RUN"
+    reduction_evidence = "MISSING"
+    if reduction_path.exists():
+        try:
+            reduction_payload = json.loads(reduction_path.read_text(encoding="utf-8"))
+            reduction_status = reduction_payload.get("audit_status", "FAIL")
+            reduction_evidence = reduction_payload.get("evidence_status", "BLOCKED")
+        except (OSError, json.JSONDecodeError):
+            reduction_status, reduction_evidence = "FAIL", "BLOCKED"
+    reduction_passed = reduction_status == "PASS" and reduction_evidence == "PARTIAL"
     gates = {
         "interior_green_equation": "PASS" if symbolic["interior_pde_exact"] else "FAIL",
         "retarded_support": "PASS" if numeric["negative_time_kernel"] == 0.0 else "FAIL",
@@ -229,7 +240,12 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], d
                          "closed_time_path_derivation": False, "trace_backreaction": False},
         "allowed_language": ["candidate retarded constitutive kernel", "exact support on the declared 1+1 cone", "subluminal configured characteristic"],
         "blocked_language": ["full curved-spacetime causal proof", "closed-time-path derivation", "ghost-free fundamental action", "universe proved non-closed"],
-        "next_controller": "controlled_covariant_to_matter_space_reduction_missing",
+        "next_controller": (
+            "covariant_matter_action_and_reciprocal_coupling_missing" if reduction_passed
+            else "controlled_covariant_to_matter_space_reduction_missing"
+        ),
+        "downstream_reduction_status": reduction_status,
+        "downstream_reduction_evidence": reduction_evidence,
     }
     formula = {
         "schema_version": "1.0", "artifact": "causal_influence_formula_audit",
@@ -250,22 +266,36 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], d
         "generated_at": now, **contract,
         "exchange_completion": "j_phi -> J_phi=epsilon*j_phi -> Q_m=-J_phi grad(phi), Q_response=+J_phi grad(phi)",
         "gr_limit": "epsilon_nc=0 switches off physical exchange while GR remains",
+        "downstream_reduction": "PARTIAL_RESPONSE_ONLY" if reduction_passed else "NOT_IMPLEMENTED",
+        "covariant_matter_action": "NOT_IMPLEMENTED",
         "claim_class": "B" if status == "PASS" else "A",
     }
     program = {
         "schema_version": "1.0", "artifact": "uet_gr_research_program_gate",
         "generated_at": now, "status": "BLOCKED",
-        "program_stage": "CAUSAL_NONCLOSED_CONSTITUTIVE_KERNEL_VERIFIED" if status == "PASS" else "COVARIANT_CONSERVATIVE_BALANCE_VERIFIED",
+        "program_stage": (
+            "CONTROLLED_RESPONSE_REDUCTION_PARTIAL" if reduction_passed
+            else "CAUSAL_NONCLOSED_CONSTITUTIVE_KERNEL_VERIFIED" if status == "PASS"
+            else "COVARIANT_CONSERVATIVE_BALANCE_VERIFIED"
+        ),
         "current_claim_class": "B", "gr_null_model": {"parameter": "epsilon_nc", "value": 0, "verification_status": closed["status"]},
         "sector_status": {"ontology_and_claim_contract": "PASS", "legacy_claim_quarantine": "PASS",
                           "conservative_tensor_formula": closed["status"], "exact_gr_closed_limit": closed["status"],
                           "covariant_exchange_bianchi_balance": balance["status"],
                           "causal_nonclosed_sector": "PASS_CONSTITUTIVE_1P1D" if status == "PASS" else "BLOCKED",
-                          "weak_field_reduction": "NOT_IMPLEMENTED", "physical_gr_benchmarks": "NOT_STARTED"},
-        "global_universe_closure": "UNRESOLVED", "topic_0_19_status_impact": "NONE",
-        "controlling_blocker": "controlled_covariant_to_matter_space_reduction_missing" if status == "PASS" else "causal_nonclosed_influence_functional_missing",
+                          "weak_field_reduction": "PARTIAL_RESPONSE_ONLY" if reduction_passed else "NOT_IMPLEMENTED",
+                          "covariant_matter_action": "NOT_IMPLEMENTED", "physical_gr_benchmarks": "NOT_STARTED"},
+        "global_universe_closure": "UNRESOLVED", "topic_0_11_status_impact": "NONE", "topic_0_19_status_impact": "NONE",
+        "controlling_blocker": (
+            "covariant_matter_action_and_reciprocal_coupling_missing" if reduction_passed
+            else "controlled_covariant_to_matter_space_reduction_missing" if status == "PASS"
+            else "causal_nonclosed_influence_functional_missing"
+        ),
         "claim_promotion": "BLOCKED",
-        "reason": "The constitutive kernel is causal on a restricted local slice, but no controlled reduction or curved 3+1 implementation exists.",
+        "reason": (
+            "The response equation maps exactly, but the covariant matter equation, reciprocal coupling, and causal realization of the required source are absent." if reduction_passed
+            else "The constitutive kernel is causal on a restricted local slice, but no controlled reduction or curved 3+1 implementation exists."
+        ),
     }
     return verification, formula, contract_artifact, program
 

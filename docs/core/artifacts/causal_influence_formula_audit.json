@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "causal_influence_formula_audit",
-  "generated_at": "2026-07-21T13:21:28.742329+00:00",
+  "generated_at": "2026-07-21T19:59:45.232405+00:00",
   "status": "WARN",
   "implementation_status": "PRESENT",
   "derivation_status": "phenomenological retarded constitutive ansatz",
@@ -24,6 +24,6 @@
   ],
   "source_hashes": {
     "docs\\core\\uet_covariant_nonclosed.py": "eec206167657218b7ad093ca346290383ed43bac31f3a5b478c8fa3f30c857ff",
-    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "70a8ccb35dd91924a010cc2dd52bf2158e24946164c45103d6c1e0ac91f20ac4"
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "59abe916875553449677c733820f60f6deb6ac40509e709a1984b06072c9a7fb"
   }
 }

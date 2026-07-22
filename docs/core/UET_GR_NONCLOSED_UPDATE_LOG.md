@@ -7,6 +7,21 @@
 
 ## Entries
 
+### 2026-07-22 - Map the covariant response sector to the normalized matter-space operator
+
+- Scope: declared local-rest-frame and weak-curvature reduction of the response equation only
+- Wave type: controlled-reduction, formula-map, dependency-gate, and claim-boundary pass
+- Added or changed: exact coefficient/scaling map, reduction adapter, strict verifier, generated reduction contract, focused tests, public exports, and monotonic upstream generators
+- Files touched: `uet_covariant_reduction.py`, `audit_uet_gr_weak_field_reduction.py`, core exports, two reduction test files, generated reduction artifacts, upstream audits/tests, and this specification/log
+- Verified with: four strict audits in dependency order and a 110-test combined covariant, causal, reduction, legacy-alignment, and matter-space regression suite
+- Result: audit `PASS`, evidence `PARTIAL`; response-acceleration mismatch `8.33e-17`, mapped speed error `0.0`, matter template preserved, and the `epsilon_nc = 0` adapter branch rejected
+- Blocker narrowed: `controlled_covariant_to_matter_space_reduction_missing` is closed only for the response-sector coefficient map
+- Still open: covariant matter action, reciprocal matter coupling, derivation of the required causal source, curved 3+1 reduction, principal/ghost analysis, SI map, and physical validation
+- Next controller: `covariant_matter_action_and_reciprocal_coupling_missing`
+- Claim impact: class B retained; program remains `BLOCKED`; Topic 0.11 and Topic 0.19 status remain unchanged
+- Workflow linkage: formula and claim audits force the partial result to remain distinct from a full coupled derivation
+- Notes: no derived trace feeds back; the reduction is disabled at the exact GR null branch and does not establish global-universe non-closure
+
 ### 2026-07-21 - Add restricted causal non-closed constitutive kernel
 
 - Scope: retarded source history on a declared 1+1-dimensional local rest-frame slice

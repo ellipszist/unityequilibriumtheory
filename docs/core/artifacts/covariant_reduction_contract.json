@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "artifact": "covariant_reduction_contract",
+  "generated_at": "2026-07-21T20:00:03.456069+00:00",
+  "status": "PARTIAL_RESPONSE_SECTOR_EXACT",
+  "assumptions": [
+    "local_rest_frame",
+    "weak_curvature_or_curvature_drive_absorbed_into_source",
+    "one_spatial_dimension",
+    "near_equilibrium_response_field",
+    "declared_natural_to_normalized_scales"
+  ],
+  "response_equation_mapping": "EXACT_ALGEBRAIC",
+  "matter_equation_mapping": "BLOCKED",
+  "reciprocal_coupling_derivation": "BLOCKED",
+  "causal_source_realization": "BLOCKED",
+  "reason": "the covariant parent lacks a relativistic matter action and a derived bath/source law for the required damping and reciprocal coupling",
+  "derived_trace_imported": false,
+  "derived_trace_backreaction": false,
+  "topic_0_11_status_impact": "NONE",
+  "topic_0_19_status_impact": "NONE",
+  "next_controller": "covariant_matter_action_and_reciprocal_coupling_missing",
+  "coefficient_map": {
+    "a_space": "T**2*mass_sq*tau/(Z*mobility)",
+    "b_space": "T**2*field_scale**2*quartic*tau/(Z*mobility)",
+    "kappa_space": "T**2*tau/(L**2*mobility)"
+  },
+  "source_map": "j_hat=Pi/tau-M*g*C^2/(2*tau)-J_Phi/tau",
+  "epsilon_policy": "adapter requires epsilon_nc>0; epsilon_nc=0 selects GR and no response operator",
+  "unit_policy": "declared natural scales to normalized coefficients; not an SI calibration"
+}

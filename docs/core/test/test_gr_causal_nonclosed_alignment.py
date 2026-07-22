@@ -50,10 +50,21 @@ def test_causal_contract_does_not_relabel_trace_or_global_universe() -> None:
 def test_program_gate_advances_only_the_restricted_constitutive_lane() -> None:
     artifact = _read("uet_gr_research_program_gate.json")
     assert artifact["status"] == "BLOCKED"
-    assert artifact["program_stage"] == "CAUSAL_NONCLOSED_CONSTITUTIVE_KERNEL_VERIFIED"
+    assert artifact["program_stage"] in {
+        "CAUSAL_NONCLOSED_CONSTITUTIVE_KERNEL_VERIFIED",
+        "CONTROLLED_RESPONSE_REDUCTION_PARTIAL",
+    }
     assert artifact["sector_status"]["causal_nonclosed_sector"] == "PASS_CONSTITUTIVE_1P1D"
-    assert artifact["sector_status"]["weak_field_reduction"] == "NOT_IMPLEMENTED"
-    assert artifact["controlling_blocker"] == "controlled_covariant_to_matter_space_reduction_missing"
+    assert artifact["sector_status"]["weak_field_reduction"] in {
+        "NOT_IMPLEMENTED",
+        "PARTIAL_RESPONSE_ONLY",
+    }
+    assert artifact["controlling_blocker"] in {
+        "controlled_covariant_to_matter_space_reduction_missing",
+        "covariant_matter_action_and_reciprocal_coupling_missing",
+    }
+    if artifact["program_stage"] == "CONTROLLED_RESPONSE_REDUCTION_PARTIAL":
+        assert artifact["sector_status"]["covariant_matter_action"] == "NOT_IMPLEMENTED"
     assert artifact["topic_0_19_status_impact"] == "NONE"
     assert artifact["global_universe_closure"] == "UNRESOLVED"
     assert artifact["claim_promotion"] == "BLOCKED"

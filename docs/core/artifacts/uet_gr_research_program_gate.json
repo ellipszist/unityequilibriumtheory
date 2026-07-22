@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_gr_research_program_gate",
-  "generated_at": "2026-07-21T13:21:28.742329+00:00",
+  "generated_at": "2026-07-21T20:00:03.456069+00:00",
   "status": "BLOCKED",
-  "program_stage": "CAUSAL_NONCLOSED_CONSTITUTIVE_KERNEL_VERIFIED",
+  "program_stage": "CONTROLLED_RESPONSE_REDUCTION_PARTIAL",
   "current_claim_class": "B",
   "gr_null_model": {
     "parameter": "epsilon_nc",
@@ -17,12 +17,14 @@
     "exact_gr_closed_limit": "PASS",
     "covariant_exchange_bianchi_balance": "PASS",
     "causal_nonclosed_sector": "PASS_CONSTITUTIVE_1P1D",
-    "weak_field_reduction": "NOT_IMPLEMENTED",
+    "weak_field_reduction": "PARTIAL_RESPONSE_ONLY",
+    "covariant_matter_action": "NOT_IMPLEMENTED",
     "physical_gr_benchmarks": "NOT_STARTED"
   },
   "global_universe_closure": "UNRESOLVED",
+  "topic_0_11_status_impact": "NONE",
   "topic_0_19_status_impact": "NONE",
-  "controlling_blocker": "controlled_covariant_to_matter_space_reduction_missing",
+  "controlling_blocker": "covariant_matter_action_and_reciprocal_coupling_missing",
   "claim_promotion": "BLOCKED",
-  "reason": "The constitutive kernel is causal on a restricted local slice, but no controlled reduction or curved 3+1 implementation exists."
+  "reason": "The response equation maps exactly, but the covariant matter equation, reciprocal coupling, and causal realization of the required source are absent."
 }

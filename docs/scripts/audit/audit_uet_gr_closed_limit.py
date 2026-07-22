@@ -228,6 +228,18 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
         except (OSError, json.JSONDecodeError):
             causal_status = "FAIL"
     causal_passed = causal_status == "PASS"
+    reduction_path = OUT / "covariant_matter_space_reduction_verification.json"
+    reduction_status = "NOT_RUN"
+    reduction_evidence = "MISSING"
+    if reduction_path.exists():
+        try:
+            reduction_payload = json.loads(reduction_path.read_text(encoding="utf-8"))
+            reduction_status, reduction_evidence = reduction_payload.get("audit_status", "FAIL"), reduction_payload.get("evidence_status", "BLOCKED")
+        except (OSError, json.JSONDecodeError):
+            reduction_status, reduction_evidence = "FAIL", "BLOCKED"
+    reduction_passed = (
+        reduction_status == "PASS" and reduction_evidence == "PARTIAL"
+    )
     gates = {
         "symbolic_metric_closed_limit": "PASS" if symbolic["metric_closed_limit_exact"] else "FAIL",
         "symbolic_scalar_decoupling": "PASS" if symbolic["scalar_closed_limit_exact"] else "FAIL",
@@ -255,7 +267,8 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
         "allowed_language": ["candidate conservative covariant parent", "exact implemented GR closed-limit contract", "local tensor-transformation consistency"],
         "blocked_language": ["Einstein equations derived from UET", "physical GR validation", "Bianchi or Noether proof", "universe proved non-closed"],
         "next_controller": (
-            "controlled_covariant_to_matter_space_reduction_missing" if causal_passed
+            "covariant_matter_action_and_reciprocal_coupling_missing" if reduction_passed
+            else "controlled_covariant_to_matter_space_reduction_missing" if causal_passed
             else "causal_nonclosed_influence_functional_missing" if balance_passed else "covariant_bianchi_exchange_balance_missing"
         ),
     }
@@ -281,17 +294,25 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
         "open_formula_gates": (
             ([] if balance_passed else ["covariant_bianchi_exchange_balance_missing"])
             + (["closed_time_path_derivation_missing"] if causal_passed else ["causal_influence_functional_missing"])
+            + (["covariant_matter_action_and_reciprocal_coupling_missing"] if reduction_passed
+               else ["controlled_covariant_to_matter_space_reduction_missing"] if causal_passed else [])
             + ["principal_symbol_and_ghost_analysis_missing", "system_specific_SI_contract_missing"]
         ),
-        "completed_formula_gates": ((["covariant_bianchi_exchange_balance"] if balance_passed else [])
-                                    + (["causal_constitutive_kernel_1p1d"] if causal_passed else [])),
+        "completed_formula_gates": (
+            (["covariant_bianchi_exchange_balance"] if balance_passed else [])
+            + (["causal_constitutive_kernel_1p1d"] if causal_passed else [])
+            + (["controlled_response_sector_reduction_partial"] if reduction_passed else [])
+        ),
+        "downstream_reduction_status": reduction_status,
+        "downstream_reduction_evidence": reduction_evidence,
         "source_hashes": hashes,
     }
     program = {
         "schema_version": "1.0", "artifact": "uet_gr_research_program_gate",
         "generated_at": now, "status": "BLOCKED",
         "program_stage": (
-            "CAUSAL_NONCLOSED_CONSTITUTIVE_KERNEL_VERIFIED" if causal_passed
+            "CONTROLLED_RESPONSE_REDUCTION_PARTIAL" if reduction_passed
+            else "CAUSAL_NONCLOSED_CONSTITUTIVE_KERNEL_VERIFIED" if causal_passed
             else "COVARIANT_CONSERVATIVE_BALANCE_VERIFIED" if balance_passed else "CONSERVATIVE_PARENT_IMPLEMENTED"
         ),
         "current_claim_class": "B" if status == "PASS" else "A",
@@ -299,15 +320,18 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
         "sector_status": {"ontology_and_claim_contract": "PASS", "legacy_claim_quarantine": "PASS",
                           "conservative_tensor_formula": status, "exact_gr_closed_limit": status,
                           "covariant_exchange_bianchi_balance": "PASS" if balance_passed else "BLOCKED", "causal_nonclosed_sector": "PASS_CONSTITUTIVE_1P1D" if causal_passed else "NOT_IMPLEMENTED",
-                          "weak_field_reduction": "NOT_IMPLEMENTED", "physical_gr_benchmarks": "NOT_STARTED"},
-        "global_universe_closure": "UNRESOLVED", "topic_0_19_status_impact": "NONE",
+                          "weak_field_reduction": "PARTIAL_RESPONSE_ONLY" if reduction_passed else "NOT_IMPLEMENTED",
+                          "covariant_matter_action": "NOT_IMPLEMENTED", "physical_gr_benchmarks": "NOT_STARTED"},
+        "global_universe_closure": "UNRESOLVED", "topic_0_11_status_impact": "NONE", "topic_0_19_status_impact": "NONE",
         "controlling_blocker": (
-            "controlled_covariant_to_matter_space_reduction_missing" if causal_passed
+            "covariant_matter_action_and_reciprocal_coupling_missing" if reduction_passed
+            else "controlled_covariant_to_matter_space_reduction_missing" if causal_passed
             else "causal_nonclosed_influence_functional_missing" if balance_passed else "covariant_bianchi_exchange_balance_missing"
         ),
         "claim_promotion": "BLOCKED",
         "reason": (
-            "A restricted causal constitutive kernel exists, but the controlled weak-field reduction is missing." if causal_passed
+            "The response equation maps exactly, but the covariant matter equation, reciprocal coupling, and causal realization of the required source are absent." if reduction_passed
+            else "A restricted causal constitutive kernel exists, but the controlled weak-field reduction is missing." if causal_passed
             else "Local conservative exchange closes, but causal non-closed dynamics are missing." if balance_passed
             else "Algebraic GR nesting exists, but generated Bianchi/exchange and causal non-closed dynamics do not."
         ),

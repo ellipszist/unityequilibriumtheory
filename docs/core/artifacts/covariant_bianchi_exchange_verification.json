@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "covariant_bianchi_exchange_verification",
-  "generated_at": "2026-07-21T13:21:11.425783+00:00",
+  "generated_at": "2026-07-21T19:59:29.132288+00:00",
   "status": "PASS",
   "evidence_class": "B",
   "claim": "symbolic local Noether/Bianchi identity and exchange-completed ledger for the candidate parent",
@@ -52,7 +52,7 @@
   "source_hashes": {
     "docs\\core\\uet_covariant_balance.py": "815852035010f278e395d845516d1714eebafb24a851f38533bbeea15f01b885",
     "docs\\core\\uet_covariant_response.py": "7fb4b7228afb8ede0ac4f1664d634346ef46cc7678c94ed7b55d73645590c0c2",
-    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "70a8ccb35dd91924a010cc2dd52bf2158e24946164c45103d6c1e0ac91f20ac4"
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "59abe916875553449677c733820f60f6deb6ac40509e709a1984b06072c9a7fb"
   },
   "run_contract": {
     "seed": 190031,
@@ -74,6 +74,8 @@
     "full curved-spacetime causal non-closed response",
     "physical GR validation"
   ],
-  "next_controller": "controlled_covariant_to_matter_space_reduction_missing",
-  "downstream_causal_kernel_status": "PASS"
+  "next_controller": "covariant_matter_action_and_reciprocal_coupling_missing",
+  "downstream_causal_kernel_status": "PASS",
+  "downstream_reduction_status": "PASS",
+  "downstream_reduction_evidence": "PARTIAL"
 }

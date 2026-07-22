@@ -1,8 +1,8 @@
 # UET GR Closed-Limit and Non-Closed Response Research Specification
 
-> **Status:** `CANDIDATE CAUSAL CONSTITUTIVE KERNEL / PROGRAM BLOCKED`
+> **Status:** `PARTIAL CONTROLLED RESPONSE REDUCTION / PROGRAM BLOCKED`
 > **Current claim class:** `B`
-> **Current controlling blocker:** `controlled_covariant_to_matter_space_reduction_missing`
+> **Current controlling blocker:** `covariant_matter_action_and_reciprocal_coupling_missing`
 > **Program rule:** General relativity is the null/closed-response model. A
 > non-zero UET response is an empirical alternative, not a conclusion assumed
 > from the existence of the model.

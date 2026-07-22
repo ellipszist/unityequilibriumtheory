@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "covariant_action_formula_audit",
-  "generated_at": "2026-07-21T13:20:56.661303+00:00",
+  "generated_at": "2026-07-21T19:59:13.886778+00:00",
   "status": "WARN",
   "implementation_status": "PRESENT",
   "model_status": "CANDIDATE_CONSERVATIVE_TENSOR_FORMULA_EVALUATOR",
@@ -82,15 +82,19 @@
   },
   "open_formula_gates": [
     "closed_time_path_derivation_missing",
+    "covariant_matter_action_and_reciprocal_coupling_missing",
     "principal_symbol_and_ghost_analysis_missing",
     "system_specific_SI_contract_missing"
   ],
   "completed_formula_gates": [
     "covariant_bianchi_exchange_balance",
-    "causal_constitutive_kernel_1p1d"
+    "causal_constitutive_kernel_1p1d",
+    "controlled_response_sector_reduction_partial"
   ],
+  "downstream_reduction_status": "PASS",
+  "downstream_reduction_evidence": "PARTIAL",
   "source_hashes": {
     "docs\\core\\uet_covariant_response.py": "7fb4b7228afb8ede0ac4f1664d634346ef46cc7678c94ed7b55d73645590c0c2",
-    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "70a8ccb35dd91924a010cc2dd52bf2158e24946164c45103d6c1e0ac91f20ac4"
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "59abe916875553449677c733820f60f6deb6ac40509e709a1984b06072c9a7fb"
   }
 }
