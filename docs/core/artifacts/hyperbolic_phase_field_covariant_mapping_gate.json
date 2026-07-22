@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "artifact": "hyperbolic_phase_field_covariant_mapping_gate",
+  "generated_at": "2026-07-22T12:14:26+00:00",
+  "topic": "docs/core UET GR non-closed response",
+  "version": "wave8_v1",
+  "benchmark_role": "dependency_gate",
+  "method_label": "covariant_transport_readiness",
+  "status": "BLOCKED",
+  "evidence_status": "PARTIAL_ANALYTIC_CAUSAL_BRIDGE",
+  "input_identity": {
+    "external_comparator_artifact": "docs\\core\\artifacts\\hyperbolic_phase_field_external_comparator_verification.json",
+    "source_records": [
+      "docs\\data\\external\\relativistic_transport\\jain_kovtun_2024\\source_record.json",
+      "docs\\data\\external\\relativistic_transport\\crossley_glorioso_liu_2017\\source_record.json"
+    ]
+  },
+  "thresholds": {
+    "required_fixed_cone_status": "PASS",
+    "required_local_current_map_status": "PASS_MOBILITY_ONE",
+    "required_covariant_state_map_status_for_promotion": "PASS"
+  },
+  "notes": [
+    "External characteristic formulas are sourced; fixed-cone inequalities are derived.",
+    "A local algebraic current map is not a covariant UET derivation."
+  ],
+  "completed_layers": {
+    "external_formula_transcription": "PASS",
+    "fixed_light_cone_normalized_parameter_domain": "PASS",
+    "external_q_to_local_current_law": "PASS_MOBILITY_ONE"
+  },
+  "classical_covariant_lane": {
+    "noether_density_to_phase_field_order_parameter": "BLOCKED_CONTROLLING",
+    "covariant_projected_current_law": "BLOCKED",
+    "nonnegative_entropy_current_divergence": "BLOCKED",
+    "stress_energy_exchange_and_bianchi_closure": "BLOCKED",
+    "curved_spacetime_well_posedness": "BLOCKED"
+  },
+  "thermal_stochastic_lane": {
+    "closed_time_path_action": "BLOCKED_DOWNSTREAM",
+    "dynamical_kms_symmetry": "BLOCKED_DOWNSTREAM",
+    "fluctuation_dissipation_matching": "BLOCKED_DOWNSTREAM"
+  },
+  "external_requirement_sources": [
+    {
+      "source": "docs\\data\\external\\relativistic_transport\\jain_kovtun_2024\\source_record.json",
+      "role": "causal_relativistic_current_entropy_and_sk_kms_requirements"
+    },
+    {
+      "source": "docs\\data\\external\\relativistic_transport\\crossley_glorioso_liu_2017\\source_record.json",
+      "role": "dissipative_ctp_local_kms_and_entropy_readiness_requirements"
+    }
+  ],
+  "forbidden_shortcuts": [
+    "do_not_identify_source_C_with_UET_Noether_density_without_a_map",
+    "do_not_identify_source_auxiliary_phase_with_UET_Phi",
+    "do_not_use_trace_as_backreaction",
+    "do_not_call_a_1D_algebraic_flux_map_covariant",
+    "do_not_promote_normalized_feasibility_to_physical_validation"
+  ],
+  "global_universe_closure": "UNRESOLVED",
+  "gr_null_model": {
+    "parameter": "epsilon_nc",
+    "value": 0,
+    "verification_status": "PASS_INHERITED_EXACT_GR_RESPONSE_NULL"
+  },
+  "topic_0_11_status_impact": "NONE",
+  "topic_0_19_status_impact": "NONE",
+  "controlling_blocker": "noether_density_to_phase_field_order_parameter_map_missing",
+  "required_next_evidence": [
+    "declare whether the physical conserved variable is charge, mass, or another Noether density",
+    "derive an invertible coarse-graining/state map to the phase-field order parameter",
+    "show compatibility with continuity, equilibrium susceptibility, and the UET epsilon_nc=0 null branch",
+    "only then construct the covariant entropy-current constitutive lane"
+  ]
+}

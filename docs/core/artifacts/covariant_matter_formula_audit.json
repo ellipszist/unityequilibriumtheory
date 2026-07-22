@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "covariant_matter_formula_audit",
-  "generated_at": "2026-07-22T04:30:46.619352+00:00",
+  "generated_at": "2026-07-22T12:07:04.688206+00:00",
   "status": "WARN",
   "implementation_status": "PRESENT",
   "derivation_status": "candidate conservative scalar-matter ansatz",
@@ -32,7 +32,9 @@
     "covariant_matter_action_scalar_pilot",
     "action_level_reciprocal_coupling",
     "global_o2_current_identity",
-    "external_hyperbolic_phase_field_comparator_formula"
+    "external_hyperbolic_phase_field_comparator_formula",
+    "fixed_light_cone_parameter_inequalities",
+    "external_q_to_local_current_law_map"
   ],
   "open_formula_gates": [
     "matter_amplitude_as_density_C",
@@ -80,14 +82,17 @@
   "downstream_diffusion_evidence": "PARTIAL",
   "source_hashes": {
     "docs\\core\\uet_covariant_matter.py": "8a57d95e898a8ac962bbd749670ad0695b597281937da36496d2ec7e074f9c53",
-    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "e313b8757bbb5aaa18b714f89e9e364d9c35a201682136276e4205413affac45"
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "b8a03fa1c60140ba2becbeff8f1b15739d6cdf3bf8a52072a518e3d98307b21e"
   },
   "downstream_hyperbolic_phase_field": {
     "artifact": "hyperbolic_phase_field_external_comparator_verification.json",
     "audit_status": "PASS",
     "evidence_status": "PARTIAL_EXTERNAL_COMPARATOR",
     "role": "external_fixed_parameter_formula_comparator",
-    "uet_derivation": "BLOCKED",
-    "uniform_subluminal_limit": "BLOCKED"
+    "causal_feasibility_artifact": "hyperbolic_phase_field_causal_feasibility.json",
+    "causal_feasibility_status": "PASS",
+    "fixed_light_cone_parameter_domain": "PASS_NORMALIZED_ANALYTIC",
+    "uniform_subluminal_limit": "NO_GO_EXACT_PARABOLIC_LIMIT",
+    "uet_derivation": "BLOCKED"
   }
 }

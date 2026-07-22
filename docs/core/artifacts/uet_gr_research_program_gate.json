@@ -1,9 +1,21 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_gr_research_program_gate",
-  "generated_at": "2026-07-22T04:36:10.243392+00:00",
+  "generated_at": "2026-07-22T12:14:26+00:00",
+  "topic": "docs/core UET GR non-closed response",
+  "version": "wave8_v1",
+  "benchmark_role": "program_gate",
+  "method_label": "monotonic_gr_research_stage_gate",
+  "input_identity": {
+    "causal_feasibility_artifact": "docs/core/artifacts/hyperbolic_phase_field_causal_feasibility.json",
+    "covariant_mapping_gate": "docs/core/artifacts/hyperbolic_phase_field_covariant_mapping_gate.json"
+  },
+  "notes": [
+    "The controlling blocker is the physical density/order-parameter state map.",
+    "Thermal SK/KMS completion is downstream of the classical covariant lane."
+  ],
   "status": "BLOCKED",
-  "program_stage": "EXTERNAL_HYPERBOLIC_PHASE_FIELD_COMPARATOR_FORMULA_VERIFIED",
+  "program_stage": "FIXED_LIGHT_CONE_FEASIBILITY_AND_LOCAL_CURRENT_MAP_VERIFIED",
   "current_claim_class": "B",
   "gr_null_model": {
     "parameter": "epsilon_nc",
@@ -15,7 +27,7 @@
     "legacy_claim_quarantine": "PASS",
     "conservative_tensor_formula": "PASS",
     "exact_gr_closed_limit": "PASS",
-    "covariant_exchange_bianchi_balance": "PASS",
+    "covariant_exchange_bianchi_balance": "PASS_CONSERVATIVE_PARENT_ONLY",
     "causal_nonclosed_sector": "PASS_CONSTITUTIVE_1P1D",
     "weak_field_reduction": "PARTIAL_RESPONSE_ONLY",
     "covariant_matter_action": "PASS_O2_SCALAR_PILOT",
@@ -24,14 +36,17 @@
     "diffusive_matter_reduction": "PARTIAL_CONSTITUTIVE_WITH_EXACT_MODEL_B_LIMIT",
     "local_convex_matter_causality": "PASS_CONTROL",
     "gradient_phase_field_causality": "PASS_EXTERNAL_FIXED_PARAMETER_COMPARATOR_ONLY",
-    "uniform_subluminal_phase_field_limit": "BLOCKED",
+    "fixed_light_cone_parameter_domain": "PASS_NORMALIZED_ANALYTIC",
+    "uniform_subluminal_phase_field_limit": "NO_GO_FOR_EXACT_PARABOLIC_LIMIT",
+    "local_current_law_mapping": "PASS_ALGEBRAIC_MOBILITY_ONE",
     "uet_covariant_phase_field_mapping": "BLOCKED",
+    "entropy_current_kms_completion": "BLOCKED",
     "physical_gr_benchmarks": "NOT_STARTED"
   },
   "global_universe_closure": "UNRESOLVED",
   "topic_0_11_status_impact": "NONE",
   "topic_0_19_status_impact": "NONE",
-  "controlling_blocker": "uniform_subluminal_hyperbolic_phase_field_and_covariant_mapping_missing",
+  "controlling_blocker": "noether_density_to_phase_field_order_parameter_map_missing",
   "claim_promotion": "BLOCKED",
-  "reason": "A sourced external first-order hyperbolic phase-field comparator now closes at formula level for fixed parameters, but it is not UET-derived and its parabolic Cahn-Hilliard scaling is not uniformly subluminal."
+  "reason": "The normalized comparator now has exact fixed-cone feasibility bounds, an analytic no-common exact parabolic limit, and a local mobility-one current-law map. The physical order parameter has not been mapped to the conserved UET Noether density, so no covariant dissipative UET completion follows."
 }

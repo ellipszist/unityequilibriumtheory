@@ -131,6 +131,19 @@ from .uet_hyperbolic_phase_field import (
     principal_matrix,
     quasistatic_auxiliary_phase,
 )
+from .uet_hyperbolic_phase_field_bridge import (
+    HYPERBOLIC_PHASE_FIELD_BRIDGE_CONTROLLER,
+    HYPERBOLIC_PHASE_FIELD_BRIDGE_STATUS,
+    LocalCurrentLawMap,
+    evaluate_parameter_sequence,
+    fixed_cone_parabolic_limit_no_go,
+    fixed_light_cone_feasibility,
+    hyperbolic_phase_field_bridge_contract,
+    map_external_flux_law_to_current,
+    shifted_curvature_domain_bounds,
+    subluminal_parameter_bounds,
+)
+
 
 __all__ = [
     # Parameters
@@ -230,6 +243,16 @@ __all__ = [
     "periodic_central_derivative",
     "principal_matrix",
     "quasistatic_auxiliary_phase",
+    "HYPERBOLIC_PHASE_FIELD_BRIDGE_CONTROLLER",
+    "HYPERBOLIC_PHASE_FIELD_BRIDGE_STATUS",
+    "LocalCurrentLawMap",
+    "evaluate_parameter_sequence",
+    "fixed_cone_parabolic_limit_no_go",
+    "fixed_light_cone_feasibility",
+    "hyperbolic_phase_field_bridge_contract",
+    "map_external_flux_law_to_current",
+    "shifted_curvature_domain_bounds",
+    "subluminal_parameter_bounds",
 
 ]
 __version__ = "0.9.0"

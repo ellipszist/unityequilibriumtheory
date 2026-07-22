@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "covariant_diffusion_formula_audit",
-  "generated_at": "2026-07-22T04:35:45.315384+00:00",
+  "generated_at": "2026-07-22T12:07:19.476790+00:00",
   "status": "WARN",
   "implementation_status": "PRESENT",
   "derivation_status": "constitutive current reduction with exact discrete identities; microscopic and full hyperbolic phase-field derivations remain open",
@@ -33,7 +33,9 @@
     "conserved_current_energy_identity",
     "model_b_matter_equation_map",
     "local_convex_characteristic_control",
-    "external_hyperbolic_phase_field_comparator_formula"
+    "external_hyperbolic_phase_field_comparator_formula",
+    "fixed_light_cone_parameter_inequalities",
+    "external_q_to_local_current_law_map"
   ],
   "open_formula_gates": [
     "microscopic_amplitude_to_charge_density_matching",
@@ -48,15 +50,18 @@
   "epsilon_denominator_lines": [],
   "source_hashes": {
     "docs\\core\\uet_covariant_diffusion.py": "a267b89e39db4a8dfac56e71a070539a9da05a55b8bb8b22216e7fd1b839bc53",
-    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "e313b8757bbb5aaa18b714f89e9e364d9c35a201682136276e4205413affac45",
-    "docs\\core\\artifacts\\covariant_matter_action_verification.json": "434e7291881dc7676c60e70d6d7c36b47ecc0f408fe935286da95701427de4f6"
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "b8a03fa1c60140ba2becbeff8f1b15739d6cdf3bf8a52072a518e3d98307b21e",
+    "docs\\core\\artifacts\\covariant_matter_action_verification.json": "9034e5fc2b426f3fcf148e3c55d86b9aad28fca1104dc24b51d32e753c7789a2"
   },
   "downstream_hyperbolic_phase_field": {
     "artifact": "hyperbolic_phase_field_external_comparator_verification.json",
     "audit_status": "PASS",
     "evidence_status": "PARTIAL_EXTERNAL_COMPARATOR",
     "role": "external_fixed_parameter_formula_comparator",
-    "uet_derivation": "BLOCKED",
-    "uniform_subluminal_limit": "BLOCKED"
+    "causal_feasibility_artifact": "hyperbolic_phase_field_causal_feasibility.json",
+    "causal_feasibility_status": "PASS",
+    "fixed_light_cone_parameter_domain": "PASS_NORMALIZED_ANALYTIC",
+    "uniform_subluminal_limit": "NO_GO_EXACT_PARABOLIC_LIMIT",
+    "uet_derivation": "BLOCKED"
   }
 }

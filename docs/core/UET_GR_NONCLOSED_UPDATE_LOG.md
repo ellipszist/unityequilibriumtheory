@@ -6,6 +6,23 @@
 > program without upgrading claims ahead of generated evidence.
 
 ## Entries
+### 2026-07-22 - Derive fixed-light-cone feasibility and isolate the covariant state-map blocker
+
+- Scope: normalized analytic feasibility over `|C| <= 1.25`, exact local `J=q/tau` current-law mapping, and covariant/thermal transport readiness boundaries
+- Wave type: formula derivation, negative-limit control, primary-source provenance, claim-boundary, dependency-gate, and monotonic-state pass
+- Added or changed: fixed-cone bridge module and public exports, two relativistic-transport source records, strict verifier, three generated Wave 8 artifacts, focused/alignment tests, monotonic upstream hook, regenerated GR-chain artifacts, specification, update log, and work ledger
+- Verified with: eight strict audits in dependency order and a 275-test trace, matter-space, legacy-alignment, covariant, sourced-comparator, and causal-feasibility regression suite
+- Result: audit `PASS`, evidence `PARTIAL_ANALYTIC_CAUSAL_BRIDGE`, formula audit `WARN`, covariant mapping gate `BLOCKED`; 64 random feasible controls matched the analytic speed bound with residual `0.0`, all negative controls were rejected, and the local current-law residual was `1.33e-15`
+- Fixed-cone result: strict domain hyperbolicity requires `alpha>1`; the exact normalized bounds are `tau >= (alpha+3*C_max^2-1)/c_hat^2` and `beta >= gamma/c_hat^2`
+- No-common-limit result: at fixed finite `c_hat`, `alpha->infinity` forces the causal lower bound on `tau` to diverge, so it cannot also satisfy the exact parabolic target `tau->0`; this result is restricted to the declared comparator
+- Tradeoff control: quasistatic chemical error fell from `4.39e-2` to `7.89e-4` while the minimum fixed-cone `tau` rose from `11.6875` to `515.6875`; the source scaling remained outside the cone at every sampled point
+- Blocker narrowed: the external `q` law maps exactly to the mobility-one local Maxwell-Cattaneo law, but external order parameter `C` is not yet mapped to the conserved UET Noether density
+- Still open: Noether-density/order-parameter state map, UET-native covariant phase-field action, entropy-current and dissipative-Bianchi closure, CTP/KMS transport matching, curved 3+1 well-posedness, SI mapping, external numerical replication, and physical validation
+- Next controller: `noether_density_to_phase_field_order_parameter_map_missing`
+- Claim impact: class B retained; program remains `BLOCKED`; Topic 0.11 and Topic 0.19 status remain unchanged; global-universe closure remains `UNRESOLVED`
+- Ontology boundary: source auxiliary `varphi` is not UET `Phi`, information, or trace; derived trace remains absent from and cannot feed back into the physical map
+- Provenance boundary: Jain-Kovtun 2024 and Crossley-Glorioso-Liu 2017 DOI/arXiv identities, formula/readiness locators, temporary-source hashes, units, and claim roles are recorded; their TeX archives are not redistributed
+
 
 ### 2026-07-22 - Source and audit a first-order hyperbolic phase-field comparator
 

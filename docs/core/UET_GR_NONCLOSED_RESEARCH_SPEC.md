@@ -2,7 +2,7 @@
 
 > **Status:** `EXTERNAL HYPERBOLIC PHASE-FIELD COMPARATOR VERIFIED / PROGRAM BLOCKED`
 > **Current claim class:** `B`
-> **Current controlling blocker:** `uniform_subluminal_hyperbolic_phase_field_and_covariant_mapping_missing`
+> **Current controlling blocker:** `noether_density_to_phase_field_order_parameter_map_missing`
 > **Program rule:** General relativity is the null/closed-response model. A
 > non-zero UET response is an empirical alternative, not a conclusion assumed
 > from the existence of the model.
@@ -388,6 +388,115 @@ matching, dissipative Bianchi closure, curved 3+1 evolution, SI mapping,
 external numerical replication, and physical validation remain blocked.
 Topic 0.11 and Topic 0.19 status do not change, and complete-universe closure
 remains unresolved.
+
+### 5.4 Fixed-light-cone feasibility and covariant mapping readiness
+
+The comparator's finite characteristic speeds can now be turned into exact
+parameter inequalities, provided the amplitude domain is declared. For the
+symmetric interval `|C| <= C_max`,
+
+```text
+g''(C) = 3 C^2 - 1
+min[alpha + g''(C)] = alpha - 1
+max[alpha + g''(C)] = alpha + 3 C_max^2 - 1
+```
+
+Thus strict hyperbolicity over the whole interval still requires
+`alpha > 1`. Keeping both characteristic families inside a fixed normalized
+cone `c_hat` is equivalent to
+
+```text
+tau >= (alpha + 3 C_max^2 - 1) / c_hat^2
+beta >= gamma / c_hat^2
+```
+
+These are necessary and sufficient inequalities for the two speed formulas of
+this normalized external comparator on the declared interval. They are not a
+physical SI calibration and do not establish a covariant UET completion.
+
+The inequalities also expose an exact incompatibility between two simultaneous
+limits. Exact parabolic Cahn-Hilliard recovery asks for
+
+```text
+alpha -> infinity
+tau -> 0
+```
+
+whereas the fixed-cone inequality forces
+
+```text
+tau_min >= (alpha + 3 C_max^2 - 1) / c_hat^2 -> infinity.
+```
+
+No common parameter sequence can satisfy both exact limits at fixed finite
+`c_hat`. This is a normalized no-common-limit result for the declared
+comparator, not a theorem that all causal phase-field completions are
+impossible. The scientifically allowed choices are therefore to retain finite
+relaxation and auxiliary dynamics, or to treat parabolic Cahn-Hilliard as a
+late-time, low-wavenumber approximation rather than an exact all-scale law.
+
+The external flux variable does admit one exact local algebraic map. With
+constant positive `tau`, define
+
+```text
+J = q / tau.
+```
+
+Then the source equations
+
+```text
+partial_t C + partial_x(q/tau) = 0
+partial_t q + partial_x(mu_aug) = -q/tau
+```
+
+become
+
+```text
+partial_t C + partial_x J = 0
+tau partial_t J + J = -partial_x(mu_aug).
+```
+
+This matches the mobility-one local Maxwell-Cattaneo form in the conserved
+current bridge. It does **not** yet match the physical state variables:
+
+```text
+external comparator C          != established UET Noether density
+external auxiliary varphi      != UET Phi
+external auxiliary varphi      != information or derived trace
+local q/tau current-law map    != covariant UET derivation
+```
+
+The remaining map is split into two evidence lanes. The classical covariant
+lane must first:
+
+1. declare whether the conserved variable is charge, mass, or another Noether
+   density;
+2. derive an invertible coarse-graining/state map from that density to the
+   phase-field order parameter;
+3. write the current law with a four-velocity and spatial projector;
+4. exhibit non-negative entropy-current divergence; and
+5. close stress-energy exchange with the dissipative Bianchi ledger in curved
+   spacetime.
+
+Only after that lane closes does a thermal stochastic claim additionally need
+a closed-time-path action, dynamical KMS symmetry, and fluctuation-dissipation
+matching. These requirements are source-audited against Jain and Kovtun,
+*Schwinger-Keldysh effective field theory for stable and causal relativistic
+hydrodynamics* ([DOI 10.1007/JHEP01(2024)162](https://doi.org/10.1007/JHEP01(2024)162),
+[arXiv:2309.00511](https://arxiv.org/abs/2309.00511)), and Crossley,
+Glorioso, and Liu, *Effective field theory of dissipative fluids*
+([DOI 10.1007/JHEP09(2017)095](https://doi.org/10.1007/JHEP09(2017)095),
+[arXiv:1511.03646](https://arxiv.org/abs/1511.03646)). The former supplies a
+relativistic conserved-current/Maxwell-Cattaneo/entropy/SK-KMS comparator; the
+latter supplies the broader CTP/local-KMS dissipative-EFT architecture. Neither
+paper derives UET or identifies its variables.
+
+The controller is therefore narrowed to
+`noether_density_to_phase_field_order_parameter_map_missing`. The exact
+`epsilon_nc = 0` GR response-null branch remains unchanged, but this does not
+decide whether the complete universe is open or closed. Global-universe
+closure remains `UNRESOLVED`; Topic 0.11 and Topic 0.19 receive no status
+promotion.
 
 ## 6. GR closed-limit contract
 

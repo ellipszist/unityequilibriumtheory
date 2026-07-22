@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "record_type": "external_readiness_source",
+  "title": "Effective field theory of dissipative fluids",
+  "authors": [
+    "Michael Crossley",
+    "Paolo Glorioso",
+    "Hong Liu"
+  ],
+  "journal": "Journal of High Energy Physics",
+  "publication_year": 2017,
+  "volume": "2017",
+  "issue": "9",
+  "article_number": "095",
+  "doi": "10.1007/JHEP09(2017)095",
+  "doi_url": "https://doi.org/10.1007/JHEP09(2017)095",
+  "arxiv_id": "1511.03646",
+  "arxiv_version": "v3",
+  "arxiv_last_revised": "2017-01-27",
+  "arxiv_url": "https://arxiv.org/abs/1511.03646",
+  "arxiv_source_url": "https://export.arxiv.org/e-print/1511.03646",
+  "license_or_terms": {
+    "version_of_record_license": "CC BY 4.0",
+    "repository_policy": "The current arXiv TeX archive was inspected temporarily for section and equation locators and is not redistributed in this repository."
+  },
+  "original_file_name": "arXiv 1511.03646 source archive (unnamed tar response)",
+  "local_path": null,
+  "local_copy_status": "TEMPORARY_INSPECTION_ONLY_NOT_REDISTRIBUTED",
+  "temporary_inspection_date": "2026-07-22",
+  "upstream_source_archive_sha256": "9a7bd94ea12a3040404421e46707b9fd3d3e9898fd9f280393c3d49181b9b629",
+  "source_archive_size_bytes": 171118,
+  "preprocessing_note": "Downloaded the current arXiv TeX source to C:/tmp, computed SHA-256, inspected draft26.tex, and recorded only source identities and readiness locators. The temporary archive and source figures are not repository inputs.",
+  "formula_locators": [
+    {
+      "id": "closed_time_path_effective_action",
+      "source_locator": "draft26.tex sections on the CTP generating functional and dynamical variables",
+      "role": "dissipative action architecture"
+    },
+    {
+      "id": "local_kms_condition",
+      "source_locator": "draft26.tex local KMS conditions and constraints on constitutive relations",
+      "role": "thermal fluctuation-dissipation and nonlinear Onsager requirement"
+    },
+    {
+      "id": "single_conserved_current_diffusion",
+      "source_locator": "draft26.tex section 'A baby example: stochastic diffusion'",
+      "role": "conserved-current stochastic EFT comparator"
+    },
+    {
+      "id": "entropy_current",
+      "source_locator": "draft26.tex section 'Entropy current'",
+      "role": "entropy-current interpretation and non-negative divergence boundary"
+    }
+  ],
+  "unit_system": "relativistic effective-field-theory conventions stated in the source",
+  "benchmark_role": "EXTERNAL_DISSIPATIVE_EFT_READINESS_SOURCE_NOT_UET_DERIVATION",
+  "topics_used": [
+    "docs/core",
+    "0.19_Gravity_GR dependency gate"
+  ],
+  "claim_boundary": [
+    "The source supports the need for a closed-time-path effective action, local KMS constraints, and controlled entropy/constitutive relations when promoting a thermal dissipative theory to stochastic EFT status.",
+    "It does not supply a UET variable map, a phase-field light-cone theorem, or a UET covariant completion."
+  ]
+}

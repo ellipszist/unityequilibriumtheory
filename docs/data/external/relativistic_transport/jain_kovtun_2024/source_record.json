@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "record_type": "external_formula_and_readiness_source",
+  "title": "Schwinger-Keldysh effective field theory for stable and causal relativistic hydrodynamics",
+  "authors": [
+    "Akash Jain",
+    "Pavel Kovtun"
+  ],
+  "journal": "Journal of High Energy Physics",
+  "publication_year": 2024,
+  "volume": "2024",
+  "issue": "1",
+  "article_number": "162",
+  "doi": "10.1007/JHEP01(2024)162",
+  "doi_url": "https://doi.org/10.1007/JHEP01(2024)162",
+  "arxiv_id": "2309.00511",
+  "arxiv_version": "v1",
+  "arxiv_submitted": "2023-09-01",
+  "arxiv_url": "https://arxiv.org/abs/2309.00511",
+  "arxiv_source_url": "https://export.arxiv.org/e-print/2309.00511",
+  "license_or_terms": {
+    "version_of_record_license": "CC BY",
+    "repository_policy": "The arXiv TeX archive was inspected temporarily for equation locators and is not redistributed in this repository."
+  },
+  "original_file_name": "arXiv 2309.00511 source archive (unnamed tar response)",
+  "local_path": null,
+  "local_copy_status": "TEMPORARY_INSPECTION_ONLY_NOT_REDISTRIBUTED",
+  "temporary_inspection_date": "2026-07-22",
+  "upstream_source_archive_sha256": "6a295ee19340cc08559bbb074ac1a495b1764b81b4732b828b682ac800649176",
+  "source_archive_size_bytes": 64030,
+  "preprocessing_note": "Downloaded the arXiv v1 TeX source to C:/tmp, computed SHA-256, inspected main.tex, and recorded only source identities, equation locators, and readiness requirements. The temporary archive is not a repository input.",
+  "formula_locators": [
+    {
+      "id": "conserved_u1_current",
+      "source_locator": "main.tex equation label eq:conservation",
+      "role": "covariant current conservation requirement"
+    },
+    {
+      "id": "density_flux_decomposition",
+      "source_locator": "main.tex equation label eq:param-J",
+      "role": "local-rest-frame density and spatial-flux decomposition"
+    },
+    {
+      "id": "entropy_production",
+      "source_locator": "main.tex equation labels eq:second-law and eq:ec-net-rate",
+      "role": "non-negative entropy-production requirement"
+    },
+    {
+      "id": "maxwell_cattaneo_current_relaxation",
+      "source_locator": "main.tex equation labels eq:consti-cJ-relax and eq:MIS-diff-simple",
+      "role": "causal constitutive comparator"
+    },
+    {
+      "id": "relativistic_stability_causality_bound",
+      "source_locator": "main.tex section Maxwell-Cattaneo model; stability bound tau > D > 0 and large-wavevector cone discussion",
+      "role": "external relativistic causal-readiness requirement"
+    },
+    {
+      "id": "sk_action_and_dynamical_kms",
+      "source_locator": "main.tex equation labels eq:action-MIS, eq:sigma-KMS, eq:KMS-diff-standard and eq:KMS-diff-alternate",
+      "role": "thermal stochastic EFT readiness requirement"
+    }
+  ],
+  "unit_system": "natural units with c=k_B=1 in the source",
+  "benchmark_role": "EXTERNAL_COVARIANT_TRANSPORT_READINESS_SOURCE_NOT_UET_DERIVATION",
+  "topics_used": [
+    "docs/core",
+    "0.19_Gravity_GR dependency gate"
+  ],
+  "claim_boundary": [
+    "The source supports conserved-current, entropy-production, relaxation, stability/causality, and SK/KMS requirements for relativistic dissipative transport.",
+    "It does not identify the UET variables, derive the UET matter-space equations, or validate the external hyperbolic phase-field comparator as a relativistic UET theory."
+  ]
+}

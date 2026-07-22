@@ -39,6 +39,9 @@ from docs.core.uet_hyperbolic_phase_field import (  # noqa: E402
     principal_matrix,
 )
 from docs.core.uet_spatial import integral_1d  # noqa: E402
+from docs.scripts.audit.uet_gr_monotonic_stage import (  # noqa: E402
+    apply_latest_hyperbolic_phase_field_stage,
+)
 
 CORE = ROOT / "docs/core/uet_hyperbolic_phase_field.py"
 SPEC = ROOT / "docs/core/UET_GR_NONCLOSED_RESEARCH_SPEC.md"
@@ -581,6 +584,7 @@ def build_artifacts() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], d
             "and its parabolic Cahn-Hilliard scaling is not uniformly subluminal."
         ),
     }
+    apply_latest_hyperbolic_phase_field_stage(OUT, verification, formula, contract_artifact, program)
     return verification, formula, contract_artifact, program
 
 

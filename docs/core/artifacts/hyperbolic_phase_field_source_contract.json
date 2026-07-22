@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "hyperbolic_phase_field_source_contract",
-  "generated_at": "2026-07-22T04:36:10.243392+00:00",
+  "generated_at": "2026-07-22T12:07:37.365463+00:00",
   "provenance_status": "PASS",
   "status": "EXTERNAL_FORMULA_COMPARATOR_NOT_UET_DERIVATION",
   "source_doi": "10.1098/rspa.2024.0606",
@@ -30,5 +30,16 @@
   "uet_covariant_derivation": "BLOCKED",
   "topic_0_11_status_impact": "NONE",
   "topic_0_19_status_impact": "NONE",
-  "next_controller": "uniform_subluminal_hyperbolic_phase_field_and_covariant_mapping_missing"
+  "next_controller": "noether_density_to_phase_field_order_parameter_map_missing",
+  "downstream_hyperbolic_phase_field": {
+    "artifact": "hyperbolic_phase_field_external_comparator_verification.json",
+    "audit_status": "PASS",
+    "evidence_status": "PARTIAL_EXTERNAL_COMPARATOR",
+    "role": "external_fixed_parameter_formula_comparator",
+    "causal_feasibility_artifact": "hyperbolic_phase_field_causal_feasibility.json",
+    "causal_feasibility_status": "PASS",
+    "fixed_light_cone_parameter_domain": "PASS_NORMALIZED_ANALYTIC",
+    "uniform_subluminal_limit": "NO_GO_EXACT_PARABOLIC_LIMIT",
+    "uet_derivation": "BLOCKED"
+  }
 }

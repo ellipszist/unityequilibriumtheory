@@ -55,6 +55,7 @@ def test_program_gate_advances_only_the_restricted_constitutive_lane() -> None:
         "CONTROLLED_RESPONSE_REDUCTION_PARTIAL",
         "COVARIANT_MATTER_ACTION_RECIPROCITY_VERIFIED",
         "EXTERNAL_HYPERBOLIC_PHASE_FIELD_COMPARATOR_FORMULA_VERIFIED",
+        "FIXED_LIGHT_CONE_FEASIBILITY_AND_LOCAL_CURRENT_MAP_VERIFIED",
     }
     assert artifact["sector_status"]["causal_nonclosed_sector"] == "PASS_CONSTITUTIVE_1P1D"
     assert artifact["sector_status"]["weak_field_reduction"] in {
@@ -66,6 +67,7 @@ def test_program_gate_advances_only_the_restricted_constitutive_lane() -> None:
         "covariant_matter_action_and_reciprocal_coupling_missing",
         "regular_covariant_to_diffusive_matter_reduction_missing",
         "uniform_subluminal_hyperbolic_phase_field_and_covariant_mapping_missing",
+        "noether_density_to_phase_field_order_parameter_map_missing",
     }
     if artifact["program_stage"] == "CONTROLLED_RESPONSE_REDUCTION_PARTIAL":
         assert artifact["sector_status"]["covariant_matter_action"] == "NOT_IMPLEMENTED"

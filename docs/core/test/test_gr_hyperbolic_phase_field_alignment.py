@@ -111,16 +111,19 @@ def test_program_gate_advances_stage_without_promotion() -> None:
     program = _load("uet_gr_research_program_gate.json")
     assert program["status"] == "BLOCKED"
     assert program["program_stage"] == (
-        "EXTERNAL_HYPERBOLIC_PHASE_FIELD_COMPARATOR_FORMULA_VERIFIED"
+        "FIXED_LIGHT_CONE_FEASIBILITY_AND_LOCAL_CURRENT_MAP_VERIFIED"
     )
     assert program["controlling_blocker"] == (
-        "uniform_subluminal_hyperbolic_phase_field_and_covariant_mapping_missing"
+        "noether_density_to_phase_field_order_parameter_map_missing"
     )
     assert program["sector_status"]["gradient_phase_field_causality"] == (
         "PASS_EXTERNAL_FIXED_PARAMETER_COMPARATOR_ONLY"
     )
     assert program["sector_status"]["uniform_subluminal_phase_field_limit"] == (
-        "BLOCKED"
+        "NO_GO_FOR_EXACT_PARABOLIC_LIMIT"
+    )
+    assert program["sector_status"]["fixed_light_cone_parameter_domain"] == (
+        "PASS_NORMALIZED_ANALYTIC"
     )
     assert program["claim_promotion"] == "BLOCKED"
 

@@ -81,7 +81,9 @@ def test_artifact_hashes_match_current_sources() -> None:
 def test_program_advances_without_topic_or_global_closure_promotion() -> None:
     artifact = _read("uet_gr_research_program_gate.json")
     assert artifact["status"] == "BLOCKED"
-    assert artifact["program_stage"] == "EXTERNAL_HYPERBOLIC_PHASE_FIELD_COMPARATOR_FORMULA_VERIFIED"
+    assert artifact["program_stage"] == (
+        "FIXED_LIGHT_CONE_FEASIBILITY_AND_LOCAL_CURRENT_MAP_VERIFIED"
+    )
     assert artifact["sector_status"]["diffusive_matter_reduction"] == (
         "PARTIAL_CONSTITUTIVE_WITH_EXACT_MODEL_B_LIMIT"
     )
@@ -92,7 +94,7 @@ def test_program_advances_without_topic_or_global_closure_promotion() -> None:
         "PASS_EXTERNAL_FIXED_PARAMETER_COMPARATOR_ONLY"
     )
     assert artifact["controlling_blocker"] == (
-        "uniform_subluminal_hyperbolic_phase_field_and_covariant_mapping_missing"
+        "noether_density_to_phase_field_order_parameter_map_missing"
     )
     assert artifact["topic_0_11_status_impact"] == "NONE"
     assert artifact["topic_0_19_status_impact"] == "NONE"

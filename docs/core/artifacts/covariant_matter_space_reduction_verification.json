@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "covariant_matter_space_reduction_verification",
-  "generated_at": "2026-07-22T04:30:25.434148+00:00",
+  "generated_at": "2026-07-22T12:06:49.559320+00:00",
   "audit_status": "PASS",
   "evidence_status": "PARTIAL",
   "claim_class": "B",
@@ -56,7 +56,7 @@
   },
   "source_hashes": {
     "docs\\core\\uet_covariant_reduction.py": "aa65633292562810e4aa5aaed6c689ee00483543342187597c49534524a754dc",
-    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "e313b8757bbb5aaa18b714f89e9e364d9c35a201682136276e4205413affac45"
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "b8a03fa1c60140ba2becbeff8f1b15739d6cdf3bf8a52072a518e3d98307b21e"
   },
   "run_contract": {
     "seed": 190041,
@@ -77,7 +77,7 @@
     "causal bath source derived",
     "Topic 0.11 or 0.19 validated"
   ],
-  "next_controller": "uniform_subluminal_hyperbolic_phase_field_and_covariant_mapping_missing",
+  "next_controller": "noether_density_to_phase_field_order_parameter_map_missing",
   "downstream_matter_status": "PASS",
   "downstream_matter_evidence": "PARTIAL",
   "downstream_diffusion_status": "PASS",
@@ -87,7 +87,10 @@
     "audit_status": "PASS",
     "evidence_status": "PARTIAL_EXTERNAL_COMPARATOR",
     "role": "external_fixed_parameter_formula_comparator",
-    "uet_derivation": "BLOCKED",
-    "uniform_subluminal_limit": "BLOCKED"
+    "causal_feasibility_artifact": "hyperbolic_phase_field_causal_feasibility.json",
+    "causal_feasibility_status": "PASS",
+    "fixed_light_cone_parameter_domain": "PASS_NORMALIZED_ANALYTIC",
+    "uniform_subluminal_limit": "NO_GO_EXACT_PARABOLIC_LIMIT",
+    "uet_derivation": "BLOCKED"
   }
 }
