@@ -1,7 +1,5 @@
 import sys
 from pathlib import Path
-import numpy as np
-import json
 
 # --- ROBUST UET BOOTSTRAP ---
 def _bootstrap():
@@ -18,121 +16,123 @@ if not ROOT:
     print("CRITICAL: UET docs root not found!")
     sys.exit(1)
 
-from docs.core.uet_base_solver import UETBaseSolver
-from docs.core.uet_parameters import get_params, INTEGRITY_KILL_SWITCH
+import numpy as np
+import os
+import sys
+from pathlib import Path
 
-# --- ACOUSTO-OPTIC HOLOGRAPHY ENGINE ---
+# --- ROBUST PATH FINDER ---
 
-class UETColdLightEngine(UETBaseSolver):
-    """
-    Acousto-Optic Levitation & Haptics Engine.
-    Simulates the physics of ultrasonic levitation for 3D holographic canvases.
-    """
-    def __init__(self, params=None, name="UET_Cold_Light"):
-        if params is None:
-            params = get_params("0.27")
-            
-        super().__init__(
-            nx=1, ny=1, dt=0.01,
-            params=params, name=name,
-            topic="0.27_Cold_Light_Hologram", pillar="01_Engine"
-        )
-        
-        # Environmental Constants (Air at 20C)
-        self.rho_0 = 1.204  # Air density (kg/m^3)
-        self.c_0 = 343.0    # Speed of sound in air (m/s)
-        self.g = 9.81       # Gravity (m/s^2)
 
-        # Transducer Array Settings
-        self.frequency = 40000.0  # 40 kHz (Ultrasonic)
-        self.wavelength = self.c_0 / self.frequency
-        self.k = 2 * np.pi / self.wavelength # Wave number
+from docs.core.uet_parameters import get_params, C, HBAR
+from docs.core.uet_glass_box import UETPathManager
 
-        # Particle Settings (Lead-Free Perovskite Dust)
-        self.particle_radius = 15e-6  # 15 micrometers
-        self.particle_density = 4000.0 # ~4 g/cm^3
-        
-        self.results_history = []
+# --- UET CORE SETUP ---
+# Path logic is now handled by UETPathManager where possible.
 
-    def calculate_levitation(self, pressure_amplitude):
+
+class ColdLightEngine:
+    def __init__(self, params=None):
+        self.params = params if params else get_params("0.27")
+        self.c = C
+        self.h_bar = HBAR  # Use CODATA hbar
+        self.lattice_constant = 0.142e-9  # Graphene C-C bond length (nm)
+
+        # UET Resonance Factor (Geometry)
+        # Resonance occurs when Wavelength = Lattice_Perimeter / Integer
+        # Hexagon Perimeter = 6 * a
+        self.resonance_lambda = 6 * self.lattice_constant
+
+    def simulate_photon_interaction(self, input_wavelength_nm, transparency_mode=False):
         """
-        Calculates if the acoustic pressure can levitate the particle.
-        Using Gork'ov potential / Acoustic Radiation Force approximation.
+        Simulates a photon interacting with the Graphene Lattice.
+        Returns: Final Velocity, Trapped State (Bool), Entropy Gen
         """
-        # 1. Gravity Force
-        volume = (4.0 / 3.0) * np.pi * (self.particle_radius ** 3)
-        mass = volume * self.particle_density
-        f_gravity = mass * self.g
+        wavelength = input_wavelength_nm * 1e-9
 
-        # 2. Max Acoustic Radiation Force
-        # F_rad_max = (5*pi/6) * a^3 * (P0^2 / (rho0 * c0^2)) * k
-        term1 = (5.0 * np.pi / 6.0) * (self.particle_radius ** 3)
-        term2 = (pressure_amplitude ** 2) / (self.rho_0 * (self.c_0 ** 2))
-        f_rad_max = term1 * term2 * self.k
+        # 1. Geometric Mismatch Calculation
+        # How far is the photon from the "Locking Key" size at resonance harmonic?
+        # We check primarily the first harmonic (n=1)
+        mismatch = abs(wavelength - self.resonance_lambda) / self.resonance_lambda
 
-        # 3. Levitation Check
-        is_levitated = f_rad_max > f_gravity
-        safety_factor = f_rad_max / f_gravity if f_gravity > 0 else 0
+        # 2. Trap Probability (Lorentzian Resonance Profile)
+        # The closer the mismatch is to 0, the higher the trap probability.
+        # "Q-Factor" of Graphene is extremely high (simulated as 5000)
+        q_factor = 5000.0
+        trap_prob = 1.0 / (1.0 + (q_factor * mismatch) ** 2)
 
-        # 4. Haptic Feedback (Force on a 1cm^2 fingertip)
-        intensity = (pressure_amplitude ** 2) / (2 * self.rho_0 * self.c_0)
-        finger_area = 1e-4 # 1 cm^2
-        f_haptic = (2 * intensity / self.c_0) * finger_area
-        f_haptic_mN = f_haptic * 1000.0
-
-        if f_haptic_mN > 50.0:
-            haptic_desc = "DANGER (Too Strong)"
-        elif f_haptic_mN > 10.0:
-            haptic_desc = "FIRM (Solid Object)"
-        elif f_haptic_mN > 1.0:
-            haptic_desc = "SOFT (Light Touch)"
+        # 3. Dynamic State Evolution
+        if trap_prob > 0.95 and not transparency_mode:
+            # LOCKED STATE (Cold Light)
+            velocity = 0.0
+            is_trapped = True
+            entropy_gen = 0.0  # Ordered rotation (Standing Wave)
+            state_desc = "LOCKED (Ring Current)"
+        elif trap_prob > 0.1:
+            # PARTIAL INTERACTION (Slowing/Refraction)
+            velocity = self.c * (1.0 - trap_prob)
+            is_trapped = False
+            entropy_gen = 0.1 * trap_prob  # Some scattering heat
+            state_desc = "SLOWED / SCATTERED"
         else:
-            haptic_desc = "GHOST (Barely Felt)"
+            # PASS THROUGH (Transparent)
+            velocity = self.c
+            is_trapped = False
+            entropy_gen = 0.0
+            state_desc = "TRANSPARENT"
 
         return {
-            "pressure_pa": pressure_amplitude,
-            "f_gravity_N": f_gravity,
-            "f_rad_max_N": f_rad_max,
-            "is_levitated": is_levitated,
-            "safety_factor": safety_factor,
-            "f_haptic_mN": f_haptic_mN,
-            "haptic_desc": haptic_desc
+            "wavelength_nm": input_wavelength_nm,
+            "resonance_target_nm": self.resonance_lambda * 1e9,
+            "mismatch_pct": mismatch * 100,
+            "trap_probability": trap_prob,
+            "final_velocity": velocity,
+            "is_trapped": is_trapped,
+            "entropy_generated": entropy_gen,
+            "state_desc": state_desc,
         }
 
-    def step(self, step_idx: int = 0):
-        if INTEGRITY_KILL_SWITCH:
-            self.results_history.append({"tick": step_idx, "status": "KILLED"})
-            return
+    def run_sweep(self):
+        print("💡 ENGINE: Cold Light Resonance Sweep")
+        print("=====================================")
+        print(f"Target Lattice: Graphene (a = {self.lattice_constant*1e9:.3f} nm)")
+        print(f"Resonance Wavelength (6a): {self.resonance_lambda*1e9:.3f} nm (Target)")
+        print("-------------------------------------")
 
-        # Ramp up pressure amplitude
-        p0 = 500.0 + (step_idx * 500.0)
-        res = self.calculate_levitation(p0)
-        res["tick"] = step_idx
-        
-        self.results_history.append(res)
-        
-        if (step_idx + 1) % 5 == 0:
-            status_icon = "🔵" if res["is_levitated"] else "❌"
-            print(f"   [COLD LIGHT] P0: {p0:>5.0f} Pa | {status_icon} SF: {res['safety_factor']:>5.1f} | Haptic: {res['f_haptic_mN']:>5.1f} mN")
+        # Sweep wavelengths around resonance
+        center = self.resonance_lambda * 1e9
+        test_lambdas = np.linspace(center - 0.5, center + 0.5, 11)
 
-    def save_results(self):
-        from docs.core.uet_glass_box import UETPathManager
-        result_dir = UETPathManager.get_result_dir(
-            topic_id="0.27_Cold_Light_Hologram",
-            experiment_name=self.name,
-            pillar="01_Engine",
-            category="log",
-        )
-        out_file = result_dir / "Acoustic_Levitation.json"
-        with open(out_file, "w") as f:
-            json.dump(self.results_history, f, indent=2)
-        return str(out_file)
+        results = []
+        for l in test_lambdas:
+            res = self.simulate_photon_interaction(l)
+            results.append(res)
+
+            # Visual Bar
+            vel_bar = "#" * int(res["final_velocity"] / 3e7)  # Scale for display
+            status_icon = "❄️" if res["is_trapped"] else "⚡"
+
+            print(
+                f"λ = {l:.3f} nm | {status_icon} {res['state_desc']:<20} | Vel: {res['final_velocity']:.1e} | S: {res['entropy_generated']:.4f}"
+            )
+
+        return results
+
 
 if __name__ == "__main__":
-    print(f"\n[START] UET COLD LIGHT ENGINE: Simulating Levitation & Haptics...")
-    engine = UETColdLightEngine()
-    engine.run(steps=20, verbose=True)
-    path = engine.save_results()
-    print(f"[SUCCESS] RESULTS SAVED: {path}\n")
+    engine = ColdLightEngine()
+    results = engine.run_sweep()
 
+    # Save JSON results using UETPathManager
+    import json
 
+    result_dir = UETPathManager.get_result_dir(
+        topic_id="0.27_Cold_Light_Hologram",
+        experiment_name="Engine_Cold_Light",
+        pillar="01_Engine",
+        category="log",
+    )
+    out_file = result_dir / "Cold_Light_Resonance.json"
+    with open(out_file, "w") as f:
+        json.dump(results, f, indent=2)
+    print(f"\n✅ RESULTS SAVED: {out_file}")

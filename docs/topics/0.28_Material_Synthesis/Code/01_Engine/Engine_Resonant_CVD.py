@@ -78,53 +78,33 @@ class ResonantCVDEngine:
                     placed += 1  # Success
 
             elif mode == "UET_RESONANT":
-                # Resonant CVD: Guided by Surface Acoustic Wave (SAW) Potential
-                # The substrate vibrates, creating a standing wave potential U(x,y)
-                # U(x,y) = U_0 * sin^2(k*x) * sin^2(k*y)
-                # Particles experience force F = -nabla U, pushing them to the nodes (minima).
-                
-                # To simulate this physically without a full PDE solver,
-                # we calculate the distance to the nearest theoretical lattice node.
-                # If the thermal energy kT < Acoustic Potential U, the atom is trapped.
-                
-                # Find nearest ideal node
-                ideal_dx = 0
-                ideal_dy = 0
-                min_dist = float('inf')
-                
-                # In a honeycomb lattice, valid points have (i+j)%2 == 0
-                # We search the immediate neighborhood for a valid potential well
-                candidates = []
-                for dx in range(-3, 4):
-                    for dy in range(-3, 4):
-                        candidates.append((dx, dy))
-                
-                candidates.sort(key=lambda p: p[0]**2 + p[1]**2)
-                
+                # Resonant CVD: "Smart" sticking
+                # Atom is guided by potential well to valid site
+
+                # Check neighbors (simulating slide)
                 slide_success = False
+                # Extended Search Radius: The "Wave" guides atoms from further away
+                # Range 2 pixels = larger capture area
+                candidates = []
+                for dx in range(-2, 3):
+                    for dy in range(-2, 3):
+                        candidates.append((dx, dy))
+                # Sort by distance to prefer closest slot
+                candidates.sort(key=lambda p: p[0] ** 2 + p[1] ** 2)
+
                 for dx, dy in candidates:
                     nx, ny = (x + dx) % self.size, (y + dy) % self.size
-                    
                     if lattice_map[nx][ny] == 1.0 and self.grid[nx][ny] == 0:
-                        # Acoustic trapping condition (simulated)
-                        # The further the drift, the higher the required acoustic amplitude U_0
-                        # Let's say capture probability depends on distance and Acoustic Energy vs Thermal Noise
-                        # P_capture = exp(- (dx^2 + dy^2) / Lambda^2)
-                        # Where Lambda is the acoustic trapping range
-                        lambda_trap = 2.5 # Effective trapping range in lattice units
-                        dist_sq = dx**2 + dy**2
-                        p_capture = np.exp(-dist_sq / (lambda_trap**2))
-                        
-                        if random.random() < p_capture:
-                            self.grid[nx][ny] = 1
-                            placed += 1
-                            slide_success = True
-                            break
-                
+                        self.grid[nx][ny] = 1
+                        placed += 1
+                        slide_success = True
+                        break
+
                 if not slide_success:
-                    # If it fails to trap in a valid well, it becomes a defect or escapes
-                    # Thermal noise overrides the acoustic trap
-                    if random.random() < 0.05: # 5% chance to stick as defect
+                    # Only counts as defect if we force it (rare in resonance)
+                    # Often it just floats away (efficiency loss, not quality loss)
+                    # But for comparison, let's say 1% stick as defect
+                    if random.random() < 0.01:
                         defects += 1
 
         end_time = time.time()

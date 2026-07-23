@@ -1,7 +1,7 @@
 # นโยบายปฏิรูปการศึกษาเชิงปัญญา การประยุกต์ใช้สื่อการเรียนรู้สั้น และการจัดสมดุลวงจรโดปามีน (Cognitive Learning Reform, Micro-Content Optimization, & Dopamine Loop Reinforcement Policy)
 
-**Date Added:** 2026-05-28  
-**Status:** 💡 Idea (ไอเดียตั้งต้น)  
+**Date Added:** 2026-05-28
+**Status:** 💡 Idea (ไอเดียตั้งต้น)
 **Category:** Policy / Education / Cognitive Psychology / Neuroscience
 
 ---

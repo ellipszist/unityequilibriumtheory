@@ -43,9 +43,6 @@ H0_SHOES = 73.04
 H0_SHOES_UNCERTAINTY = 1.04
 TENSION_SIGMA = 4.8
 SOURCE_LOCK_PATH = topic_path / "Data" / "03_Research" / "source_lock_manifest.json"
-SOURCE_EVIDENCE_INTAKE_PATH = topic_path / "Data" / "03_Research" / "source_evidence_intake_stub.json"
-SOURCE_EVIDENCE_READINESS_PATH = topic_path / "Data" / "03_Research" / "source_evidence_readiness_matrix.json"
-BRANCH_CLAIM_GATE_PATH = topic_path / "Data" / "03_Research" / "branch_claim_gate.json"
 
 
 def load_source_lock() -> dict:
@@ -57,11 +54,6 @@ def load_source_lock() -> dict:
             "derived_inputs": [],
         }
     return json.loads(SOURCE_LOCK_PATH.read_text(encoding="utf-8"))
-
-
-def write_json(path: Path, payload: dict) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
 def source_record_hashes(source_lock: dict) -> list[dict]:
@@ -76,301 +68,6 @@ def source_record_hashes(source_lock: dict) -> list[dict]:
             }
         )
     return hashes
-
-
-def build_source_evidence_intake_stub() -> dict:
-    return {
-        "schema_version": "1.0",
-        "topic": "0.3_Cosmology_Hubble_Tension",
-        "purpose": "Source evidence intake before claim upgrades across scalar H0, bridge, high-z, and dark-energy branches.",
-        "source_targets": [
-            {
-                "name": "Planck-SH0ES scalar H0 benchmark package",
-                "priority": "immediate",
-                "status_hint": "source_backed_ready",
-                "evidence_entries": [
-                    "planck_source_record",
-                    "shoes_source_record",
-                    "scalar_value_paths",
-                    "unit_basis",
-                    "benchmark_role",
-                    "extraction_note",
-                ],
-            },
-            {
-                "name": "Fine-structure bridge constant package",
-                "priority": "high",
-                "status_hint": "source_backed_constant_with_derivation_gap",
-                "evidence_entries": [
-                    "constant_source_record",
-                    "constant_surface",
-                    "bridge_rule_note",
-                    "unit_basis",
-                    "no_fit_policy",
-                    "upgrade_requirement",
-                ],
-            },
-            {
-                "name": "Redshift transition and high-z package",
-                "priority": "high",
-                "status_hint": "diagnostic_local_package",
-                "evidence_entries": [
-                    "jwst_local_path",
-                    "source_provenance_note",
-                    "z_crit_surface",
-                    "unit_basis",
-                    "diagnostic_role",
-                    "upgrade_requirement",
-                ],
-            },
-            {
-                "name": "Dark-energy or vacuum-energy branch package",
-                "priority": "medium",
-                "status_hint": "open_problem_branch",
-                "evidence_entries": [
-                    "research_script_paths",
-                    "failure_artifact_note",
-                    "observable_scope",
-                    "status_rule",
-                    "benchmark_requirement",
-                    "limitation_note",
-                ],
-            },
-            {
-                "name": "Full cosmology likelihood package",
-                "priority": "medium",
-                "status_hint": "not_implemented",
-                "evidence_entries": [
-                    "planck_chain_or_release_data",
-                    "shoes_covariance_package",
-                    "bao_sn_inputs",
-                    "likelihood_code_path",
-                    "artifact_path",
-                    "limitation_note",
-                ],
-            },
-        ],
-        "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself resolve the Hubble tension or full cosmology pipeline.",
-    }
-
-
-def build_source_evidence_readiness_matrix() -> dict:
-    rows = [
-        {
-            "name": "Planck-SH0ES scalar H0 benchmark package",
-            "priority": "immediate",
-            "fields_total": 6,
-            "fields_complete": 6,
-            "fields_pending": 0,
-            "pending_fields": [],
-            "ready_for_source_review": True,
-            "blocking_reason": None,
-        },
-        {
-            "name": "Fine-structure bridge constant package",
-            "priority": "high",
-            "fields_total": 6,
-            "fields_complete": 4,
-            "fields_pending": 2,
-            "pending_fields": [
-                "independent_derivation",
-                "upgrade_requirement",
-            ],
-            "ready_for_source_review": False,
-            "blocking_reason": "The constant is source-backed, but the sqrt(alpha_em) bridge still lacks an external derivation or constraint package.",
-        },
-        {
-            "name": "Redshift transition and high-z package",
-            "priority": "high",
-            "fields_total": 6,
-            "fields_complete": 2,
-            "fields_pending": 4,
-            "pending_fields": [
-                "source_provenance_note",
-                "z_crit_source_lock",
-                "diagnostic_role",
-                "upgrade_requirement",
-            ],
-            "ready_for_source_review": False,
-            "blocking_reason": "The high-z layer is still a local diagnostic package and the redshift-transition scale is not yet source-locked.",
-        },
-        {
-            "name": "Dark-energy or vacuum-energy branch package",
-            "priority": "medium",
-            "fields_total": 6,
-            "fields_complete": 2,
-            "fields_pending": 4,
-            "pending_fields": [
-                "failure_artifact_note",
-                "status_rule",
-                "benchmark_requirement",
-                "limitation_note",
-            ],
-            "ready_for_source_review": False,
-            "blocking_reason": "The dark-energy branch is still an open-problem lane and must stay separate from the scalar H0 benchmark.",
-        },
-        {
-            "name": "Full cosmology likelihood package",
-            "priority": "medium",
-            "fields_total": 6,
-            "fields_complete": 0,
-            "fields_pending": 6,
-            "pending_fields": [
-                "planck_chain_or_release_data",
-                "shoes_covariance_package",
-                "bao_sn_inputs",
-                "likelihood_code_path",
-                "artifact_path",
-                "limitation_note",
-            ],
-            "ready_for_source_review": False,
-            "blocking_reason": "A full observational likelihood package is not implemented in this topic.",
-        },
-    ]
-    ready_count = sum(1 for row in rows if row["ready_for_source_review"])
-    return {
-        "schema_version": "1.0",
-        "topic": "0.3_Cosmology_Hubble_Tension",
-        "purpose": "Readiness matrix for source-evidence review across cosmology benchmark and theory branches.",
-        "summary": {
-            "source_targets_total": len(rows),
-            "targets_ready_for_source_review": ready_count,
-            "targets_blocked_by_pending_evidence": len(rows) - ready_count,
-        },
-        "readiness_rows": rows,
-        "claim_boundary": "A ready row has enough provenance structure for source review. It does not itself upgrade a claim.",
-    }
-
-
-def build_branch_claim_gate() -> dict:
-    return {
-        "schema_version": "1.0",
-        "topic": "0.3_Cosmology_Hubble_Tension",
-        "purpose": "Claim gate for separate cosmology branches inside the topic.",
-        "summary": {
-            "branches_total": 5,
-            "accepted_now": 1,
-            "provisional_or_diagnostic": 1,
-            "blocked_for_strong_claims": 3,
-        },
-        "branches": [
-            {
-                "branch": "Scalar H0 benchmark branch",
-                "status": "accepted_source_backed_benchmark",
-                "allowed_usage_now": "Source-backed scalar Planck-SH0ES gap benchmark only.",
-                "blocker_to_stronger_claim": "Need uncertainty-aware likelihood or release-level data packaging before promotion beyond scalar benchmark status.",
-            },
-            {
-                "branch": "Frame-coupling bridge branch",
-                "status": "provisional_no_fit_bridge_with_derivation_gap",
-                "allowed_usage_now": "Diagnostic no-fit coupling lane for the current scalar benchmark.",
-                "blocker_to_stronger_claim": "Need derivation or independent external constraint for beta_frame = sqrt(alpha_em).",
-            },
-            {
-                "branch": "High-z or redshift-transition branch",
-                "status": "blocked_for_strong_claims",
-                "allowed_usage_now": "Diagnostic-only high-z lane.",
-                "blocker_to_stronger_claim": "Need source-locked JWST/high-z packaging and a verified transition-scale gate.",
-            },
-            {
-                "branch": "Dark-energy or vacuum-energy branch",
-                "status": "blocked_for_strong_claims",
-                "allowed_usage_now": "Open-problem lane only.",
-                "blocker_to_stronger_claim": "Need a separate artifact-backed benchmark or failure decomposition that does not piggyback on the H0 pass.",
-            },
-            {
-                "branch": "Full cosmology resolution claims",
-                "status": "blocked_for_strong_claims",
-                "allowed_usage_now": "Not supported by current evidence.",
-                "blocker_to_stronger_claim": "Need a full Planck/BAO/SN/SH0ES likelihood pipeline and broader cosmology consistency checks.",
-            },
-        ],
-        "claim_boundary": "This gate cannot raise the topic above the current internal scalar H0 benchmark package.",
-    }
-
-
-def build_hubble_claim_scope_gate(error: float, passed: bool, source_evidence_readiness_matrix: dict, branch_claim_gate: dict) -> dict:
-    readiness_summary = source_evidence_readiness_matrix["summary"]
-    branch_summary = branch_claim_gate["summary"]
-    return {
-        "schema_version": "1.0",
-        "topic": "0.3_Cosmology_Hubble_Tension",
-        "purpose": "Machine-readable controller separating scalar benchmark PASS from unresolved cosmology claims.",
-        "controller_status": "SCALAR_H0_BENCHMARK_ONLY" if passed else "SCALAR_H0_BENCHMARK_FAIL",
-        "controller_reason": (
-            "The scalar published-value H0 gap benchmark may pass, but bridge derivation, "
-            "full-likelihood, high-z, and dark-energy claims remain open."
-        ),
-        "claim_class": "C_internal_scalar_h0_published_value_benchmark",
-        "scalar_benchmark_gate": {
-            "status": "PASS" if passed else "FAIL",
-            "claim_class": "C - internal scalar published-value benchmark",
-            "metric": "relative_error_percent",
-            "value": float(error),
-            "threshold": 20.0,
-            "supports": "The fixed no-fit scalar H0 comparison lands inside the repository threshold.",
-            "does_not_support": "A Planck/SH0ES likelihood replication, high-z prediction, dark-energy model, or universal cosmology resolution.",
-        },
-        "bridge_derivation_gate": {
-            "status": "OPEN",
-            "claim_class": "D - exploratory mechanism hypothesis",
-            "controller_role": "blocks promotion of beta_frame = sqrt(alpha_em) from diagnostic bridge to derived cosmology relation",
-            "required_evidence": [
-                "derivation with units and assumptions",
-                "independent external constraint or baseline comparison",
-                "uncertainty-aware propagation through the H0 benchmark",
-            ],
-        },
-        "full_likelihood_gate": {
-            "status": "OPEN",
-            "controller_role": "blocks resolved-Hubble-tension or full-cosmology claims",
-            "required_inputs": [
-                "Planck release-level likelihood or chain package",
-                "SH0ES covariance or release-level likelihood package",
-                "BAO/SN consistency package",
-                "fixed model-vs-baseline threshold",
-            ],
-        },
-        "blocked_exports": [
-            "Hubble tension resolved",
-            "validated full cosmology model",
-            "dark-energy replacement",
-            "high-z prediction confirmed",
-            "derived beta_frame relation",
-        ],
-        "blocked_export_phrases": [
-            "Hubble tension resolved",
-            "full cosmology model validated",
-            "Planck SH0ES likelihood replicated",
-            "BAO SN CMB consistency validated",
-            "dark energy replaced",
-            "high-z prediction confirmed",
-            "beta_frame derived",
-            "cosmology solved",
-        ],
-        "machine_readable_next_blockers": [
-            "bridge_derivation_with_units_missing",
-            "full_planck_shoes_likelihood_pipeline_missing",
-            "bao_sn_cmb_consistency_package_missing",
-            "high_z_transition_verifier_missing",
-            "dark_energy_branch_artifact_missing",
-            "uncertainty_propagation_gate_missing",
-            "source_targets_still_blocked" if readiness_summary.get("targets_blocked_by_pending_evidence") else "source_targets_ready_for_review",
-        ],
-        "gate_inputs": {
-            "source_evidence_summary": readiness_summary,
-            "branch_claim_summary": branch_summary,
-        },
-        "promotion_rule": (
-            "Only the scalar published-value benchmark can pass in this artifact. Stronger cosmology claims require "
-            "a closed bridge derivation gate and a full likelihood/baseline gate."
-        ),
-        "claim_boundary": (
-            "0.3 may export only an internal scalar Planck-SH0ES H0-gap benchmark. It must not be used as a "
-            "resolved-Hubble-tension, full-cosmology, dark-energy, high-z prediction, or derived beta-frame claim "
-            "until dedicated derivation, likelihood, and branch gates close."
-        ),
-    }
 
 
 def run_test():
@@ -394,13 +91,6 @@ def run_test():
     error = abs(delta_h0_uet - observed_delta) / observed_delta * 100
     passed = error < 20
     source_lock = load_source_lock()
-    source_evidence_intake_stub = build_source_evidence_intake_stub()
-    source_evidence_readiness_matrix = build_source_evidence_readiness_matrix()
-    branch_claim_gate = build_branch_claim_gate()
-    hubble_claim_scope_gate = build_hubble_claim_scope_gate(error, passed, source_evidence_readiness_matrix, branch_claim_gate)
-    write_json(SOURCE_EVIDENCE_INTAKE_PATH, source_evidence_intake_stub)
-    write_json(SOURCE_EVIDENCE_READINESS_PATH, source_evidence_readiness_matrix)
-    write_json(BRANCH_CLAIM_GATE_PATH, branch_claim_gate)
 
     print(f"Planck 2018 (CMB): {H0_PLANCK} km/s/Mpc")
     print(f"SH0ES 2022 (local): {H0_SHOES} km/s/Mpc")
@@ -462,22 +152,13 @@ def run_test():
             "hubble_frame_beta_source": beta_source,
             "generic_solver_beta": solver_beta,
             "status": "PASS" if passed else "FAIL",
-            "source_evidence_readiness_summary": source_evidence_readiness_matrix["summary"],
-            "branch_claim_gate_summary": branch_claim_gate["summary"],
-            "hubble_claim_scope_status": hubble_claim_scope_gate["controller_status"],
         },
         config={
             "relative_error_threshold_percent": 20.0,
             "no_fitting_rule": "hubble_frame_beta is sqrt(ALPHA_EM), not optimized against H0 data",
             "source_lock_path": str(SOURCE_LOCK_PATH.relative_to(root_path)),
         },
-        metrics={
-        "relative_error_percent": float(error),
-        "source_targets_ready_for_review": source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
-        "source_targets_blocked": source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
-        "accepted_claim_branches": branch_claim_gate["summary"]["accepted_now"],
-        "provisional_or_diagnostic_branches": branch_claim_gate["summary"]["provisional_or_diagnostic"],
-    },
+        metrics={"relative_error_percent": float(error)},
         thresholds={"max_relative_error_percent": 20.0},
         notes="Internal scalar H0-gap comparison artifact using published H0 reference values and source-lock records.",
     )
@@ -489,35 +170,6 @@ def run_test():
         "path": str(SOURCE_LOCK_PATH.relative_to(root_path)),
         "derived_inputs": source_lock.get("derived_inputs", []),
     }
-    artifact["source_evidence_intake_stub"] = {
-        "path": str(SOURCE_EVIDENCE_INTAKE_PATH.relative_to(topic_path)).replace("\\", "/"),
-        "sha256": hash_file(SOURCE_EVIDENCE_INTAKE_PATH),
-        "source_targets": [row["name"] for row in source_evidence_intake_stub["source_targets"]],
-        "claim_boundary": source_evidence_intake_stub["claim_boundary"],
-    }
-    artifact["source_evidence_readiness_matrix"] = {
-        "path": str(SOURCE_EVIDENCE_READINESS_PATH.relative_to(topic_path)).replace("\\", "/"),
-        "sha256": hash_file(SOURCE_EVIDENCE_READINESS_PATH),
-        "summary": source_evidence_readiness_matrix["summary"],
-        "claim_boundary": source_evidence_readiness_matrix["claim_boundary"],
-    }
-    artifact["branch_claim_gate"] = {
-        "path": str(BRANCH_CLAIM_GATE_PATH.relative_to(topic_path)).replace("\\", "/"),
-        "sha256": hash_file(BRANCH_CLAIM_GATE_PATH),
-        "summary": branch_claim_gate["summary"],
-        "claim_boundary": branch_claim_gate["claim_boundary"],
-    }
-    artifact["hubble_claim_scope_gate"] = hubble_claim_scope_gate
-    artifact["interpretation"] = (
-        "This artifact supports a source-backed scalar H0 benchmark and a diagnostic no-fit frame-coupling bridge with a derivation gap. "
-        "It does not validate high-z, dark-energy, or full cosmology likelihood claims."
-    )
-    artifact["limitations"] = [
-        "The current pass is a scalar published-value benchmark, not a full cosmology pipeline replication.",
-        "The sqrt(alpha_em) bridge remains a no-fit hypothesis rather than a closed derivation.",
-        "High-z and dark-energy branches remain separate blocked lanes.",
-        "Full cosmology resolution claims remain unsupported by the current evidence package.",
-    ]
     artifact["claim_boundary"] = (
         "PASS means the scalar z=0 H0-gap benchmark is inside the fixed 20 percent gate; "
         "it is not a full Planck/SH0ES likelihood replication or a universal cosmology resolution."

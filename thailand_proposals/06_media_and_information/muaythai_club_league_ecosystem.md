@@ -11,20 +11,20 @@ graph TD
     %% การเปลี่ยนผ่านเชิงโครงสร้าง
     StreetFight["Amateur / Street Fight"] -->|สมัครผ่าน| OpenPlatform["Open Fight Platform (ค่ายมวย)"]
     OpenPlatform -->|คัดเลือกนักชก| ClubSystem["ระบบสโมสรมวยไทย (ค่ายมวยอาชีพ)"]
-    
+
     %% ลีกและรายได้
     ClubSystem -->|เข้าร่วม| League["ลีกมวยร่วมทุน (Co-ownership)"]
     Revenue["Central Revenue Pool (ลิขสิทธิ์/สปอนเซอร์)"] -->|ปันผลเท่าเทียม + โบนัส| ClubSystem
-    
+
     %% องค์ประกอบในสโมสร
     SportsScience["Performance Team (วิทยาศาสตร์การกีฬา)"] -->|ฟื้นฟู/พัฒนา| ClubSystem
     SportsScience -->|ผลิตข้อมูล / overlay| Broadcast["คอนเทนต์ถ่ายทอดสด / สื่อ"]
-    
+
     %% นอกสนามและเศรษฐกิจ
     League -->|จัดไฟต์| FightDistrict["Fight District (สนาม + เทศกาลอาหาร/ดนตรี)"]
     FightDistrict -->|ดึงดูด| Tourism["การท่องเที่ยวเชิงกีฬา (Phuket/Tourism)"]
     Tourism -->|เพิ่มดีมานด์| Revenue
-    
+
     %% การตัดสิน
     Judges["ระบบกรรมการโปร่งใส (VAR + Open Scoring)"] -->|สร้าง| ConsumerTrust["ความเชื่อมั่นของผู้บริโภค / นักลงทุน"]
     ConsumerTrust -->|สนับสนุน| League

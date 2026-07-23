@@ -33,7 +33,6 @@ This topic organizes UET gravity and GR bridge work into auditable lanes: source
 3. Compare engine `G` to CODATA `G`.
 4. Record Planck-unit metrics.
 5. Write artifact with hash, DOI, threshold, metrics, and limitations.
-6. Write `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json` so the constant checkpoint stays separate from GR-validation claims.
 
 ## Assumptions
 

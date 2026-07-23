@@ -1,96 +1,5 @@
 {
-  "branch_claim_gate": {
-    "claim_boundary": "This gate keeps the topic at qualitative cluster-diagnostic status, not dark-matter replacement closure.",
-    "path": "Data/03_Research/branch_claim_gate.json",
-    "sha256": "f8e591790aecd5eb5bb07b7cee6db994f37cc5851a8df1cc8dcced6075a3b9e1",
-    "summary": {
-      "accepted_now": 2,
-      "blocked_for_strong_claims": 4,
-      "branches_total": 6
-    }
-  },
   "claim_class": "D - qualitative diagnostic only",
-  "cluster_claim_scope_gate": {
-    "allowed_claims_now": [
-      {
-        "artifact_role": "qualitative sign diagnostic",
-        "claim": "The toy model reproduces the qualitative gas/halo separation direction for the local Bullet Cluster working copy.",
-        "metric": "offset_sign_match",
-        "metric_value": true,
-        "source_evidence_readiness": "working_copy_not_fully_archived",
-        "status": "WARN"
-      },
-      {
-        "artifact_role": "mechanism diagnostic branch",
-        "claim": "Cluster-scale information-field behavior may be discussed as a bounded mechanism diagnostic.",
-        "formula_role": "dimensionless toy drag, not calibrated kpc dynamics",
-        "source_evidence_readiness": "pending_dimensional_calibration",
-        "status": "DIAGNOSTIC_ONLY"
-      }
-    ],
-    "blocked_claims": [
-      {
-        "blocking_reason": "The current model-unit offset is not calibrated to the observed 480 kpc and 120 kpc offsets.",
-        "claim": "UET predicts the Bullet Cluster kpc offsets.",
-        "next_evidence_required": [
-          "kpc calibration artifact",
-          "numeric magnitude thresholds",
-          "uncertainty-aware observed-offset package"
-        ],
-        "status": "BLOCKED"
-      },
-      {
-        "blocking_reason": "No held-out multi-cluster suite or lensing-map comparison supports a replacement claim.",
-        "claim": "UET replaces dark matter at cluster scale.",
-        "next_evidence_required": [
-          "held-out multi-cluster benchmark",
-          "lensing-map comparison artifact",
-          "virial and mass-temperature source-locked artifacts"
-        ],
-        "status": "BLOCKED"
-      },
-      {
-        "blocking_reason": "JWST formation scripts are not the primary artifact and are not source-gated here.",
-        "claim": "UET resolves JWST early galaxy or cluster formation tensions.",
-        "next_evidence_required": [
-          "source-locked JWST candidate package",
-          "LCDM baseline definition",
-          "formation-rate uncertainty artifact"
-        ],
-        "status": "BLOCKED"
-      }
-    ],
-    "blocked_export_phrases": [
-      "Bullet Cluster solved",
-      "dark matter replaced",
-      "cluster virial discrepancy resolved",
-      "lensing mass map predicted",
-      "JWST age problem resolved"
-    ],
-    "branch_claim_gate_summary": {
-      "accepted_now": 2,
-      "blocked_for_strong_claims": 4,
-      "branches_total": 6
-    },
-    "claim_boundary": "A WARN artifact supports only qualitative Bullet Cluster separation-sign diagnostics and bounded mechanism discussion. It does not predict kpc offsets, replace dark matter, resolve virial discrepancies, or validate JWST formation claims.",
-    "claim_class": "D_qualitative_cluster_diagnostic_only",
-    "controller_reason": "The qualitative Bullet Cluster separation sign matches, but export remains WARN because the model has no kpc calibration, lensing-map comparison, or held-out multi-cluster gate.",
-    "controller_status": "WARN",
-    "machine_readable_next_blockers": [
-      "bullet_cluster_kpc_calibration_missing",
-      "lensing_map_comparison_missing",
-      "held_out_multi_cluster_suite_missing",
-      "virial_artifacts_not_primary_gated",
-      "jwst_formation_claim_not_primary_gated"
-    ],
-    "schema_version": "1.0",
-    "source_evidence_summary": {
-      "source_targets_total": 5,
-      "targets_blocked_by_pending_evidence": 5,
-      "targets_ready_for_source_review": 0
-    },
-    "topic": "0.15_Cluster_Dynamics"
-  },
   "command": "python docs/topics/0.15_Cluster_Dynamics/Code/03_Research/Research_BulletCluster_Offset.py",
   "environment": {
     "platform": "Windows-11-10.0.26200-SP0",
@@ -111,7 +20,6 @@
       "unit_system": "1 arcsec = 4.415 kpc"
     }
   ],
-  "interpretation": "This artifact supports a qualitative Bullet Cluster sign-match branch and a bounded cluster mechanism-diagnostic branch. It does not validate cluster-scale dark-matter replacement.",
   "limitations": [
     "The current collision model is one-dimensional and dimensionless.",
     "The artifact supports only a qualitative separation-sign diagnostic.",
@@ -119,17 +27,13 @@
     "It does not establish a dark-matter-free cluster theory."
   ],
   "metrics": {
-    "accepted_claim_branches": 2,
-    "blocked_claim_exports": 5,
     "dimensional_calibration_present": false,
     "model_offset_model_units": 20.000025131774805,
     "observed_offsets_kpc": {
       "main_cluster": 480,
       "sub_cluster_bullet": 120
     },
-    "offset_sign_match": true,
-    "source_targets_blocked": 5,
-    "source_targets_ready_for_review": 0
+    "offset_sign_match": true
   },
   "model": {
     "drag_gas": 0.05,
@@ -157,28 +61,6 @@
     }
   ],
   "schema_version": "1.1",
-  "source_evidence_intake_stub": {
-    "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself validate a dark-matter-free cluster theory.",
-    "path": "Data/03_Research/source_evidence_intake_stub.json",
-    "sha256": "1903361a163886845c66c1683698e70944a0ae3c02a0cfe856f6a1181eb212cd",
-    "source_targets": [
-      "Bullet Cluster offset benchmark package",
-      "Bullet Cluster dimensional calibration package",
-      "Virial and mass-temperature benchmark package",
-      "Information-halo grid engine package",
-      "Cluster dark-matter replacement package"
-    ]
-  },
-  "source_evidence_readiness_matrix": {
-    "claim_boundary": "A ready row has enough provenance structure for source review. It does not by itself upgrade cluster or dark-matter claims.",
-    "path": "Data/03_Research/source_evidence_readiness_matrix.json",
-    "sha256": "66b2183e067114959f53cb56da514dfa8ce9c6930e231426eda454394a842062",
-    "summary": {
-      "source_targets_total": 5,
-      "targets_blocked_by_pending_evidence": 5,
-      "targets_ready_for_source_review": 0
-    }
-  },
   "status": "WARN",
   "threshold": {
     "dimensional_kpc_calibration_required_for_PASS": true,

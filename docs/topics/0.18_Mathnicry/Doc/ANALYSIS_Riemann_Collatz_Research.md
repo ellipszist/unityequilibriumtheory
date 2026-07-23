@@ -1,12 +1,4 @@
 # 🔬 ANALYSIS: Riemann & Collatz Research (งานวิจัยเจาะลึกซีต้าและคอลลาตซ์)
-> [!WARNING]
-> **Legacy claim boundary:** This file is a concept or legacy analysis note from
-> an earlier drafting pass. It is not the topic status authority and must not be
-> used to claim theorem proof, Millennium Problem resolution, P-vs-NP/Riemann/
-> Collatz/BSD closure, external quantum validation, or formal proof
-> verification. Current allowed claims are controlled by `README.md`,
-> `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `DATA_MANIFEST.md`, and
-> `Result/artifacts/0_18_mathnicry_verification.json`.
 
 > **Files:** `Research_Riemann_Zeta_UET.py`, `Research_Riemann_Global_Stability.py`, `Research_Collatz_Unity.py`, `Research_Lyapunov_Collatz.py`, `Research_BSD_Elliptic_Unity.py`
 > **Role:** Research (Deep Mathematics)

@@ -79,7 +79,6 @@ Supporting standard files:
 | Data | Lattice-QCD working copy plus DOI source record and source-lock manifest | Source-backed working copy | Replace curated topic JSON with a reproducible upstream extraction table |
 | Formula | Curvature-gap, scale conversion, lattice conversion, sweep, and error formulas are registered | Structured | Separate fitted scale choices from candidate theory constants |
 | Verification | `Research_Mass_Gap.py` writes artifact hashes, threshold rule, residual, and status | Runnable | Promote from one-state scalar benchmark to multi-state spectrum validation |
-| Claim-scope gate | `yang_mills_claim_scope_gate` in artifact blocks proof/confinement overclaim | Export-controlled | Add constructive proof and multi-state spectrum gates before stronger claims |
 | Claim | Calibration-aware benchmark against selected glueball mass | Bounded | Add independent lattice rows before stronger physics wording |
 | Dependency | Feeds confinement/mass-generation discussions in the core map | Open | Mark downstream topics as inheriting the calibration limitation |
 
@@ -88,9 +87,6 @@ Supporting standard files:
 - The topic uses a calibration sweep and should say so plainly
 - Internal match to selected benchmark values does not establish a general mathematical proof
 - The local dataset package is topic-scoped rather than a full external replication kit
-- The artifact-level `yang_mills_claim_scope_gate` must block Clay/Millennium proof,
-  confinement, full-spectrum, and fixed-theory-constant claims until those branches have
-  separate artifacts.
 
 ## Reproducibility
 

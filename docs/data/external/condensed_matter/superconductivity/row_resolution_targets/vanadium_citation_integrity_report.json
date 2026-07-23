@@ -3,16 +3,9 @@
   "source_class": "external_citation_integrity_report",
   "source_role": "records the current state of the Vanadium page-range discrepancy and the bibliographic weight of the competing claims",
   "source_label": "Vanadium citation integrity report",
-  "checked_date": "2026-05-16",
+  "checked_date": "2026-05-11",
   "material": "Vanadium (V)",
   "observations": [
-    {
-      "source_layer": "APS harvest PDF",
-      "source_title_or_url": "https://harvest.aps.org/v2/journals/articles/10.1103/PhysRev.102.656/fulltext",
-      "reported_citation": "Physical Review 102(3), 656-661",
-      "page_claim": "656-661 confirmed from the DOI-routed PDF text extraction",
-      "weight": "primary page capture"
-    },
     {
       "source_layer": "APS issue listing",
       "source_title_or_url": "https://journals.aps.org/pr/issues/102/3",
@@ -35,7 +28,7 @@
       "weight": "course-reference chain only"
     }
   ],
-  "current_interpretation": "The APS harvest PDF, APS issue listing, and independent secondary bibliography support the 656-661 pagination. The MIT course-reference chain still reports 43-48, but that route is now outweighed for page identity by the primary DOI-routed PDF.",
-  "next_requirement": "Keep raw-PDF mirroring and row-patch review separate: page identity is now closed for Tc/Theta capture, while lambda_ep and mu_star convention review still blocks a row patch.",
-  "claim_boundary": "This report closes the page-identity conflict for the Vanadium primary capture. It does not source-lock lambda_ep or mu_star and does not authorize a topic-local row edit."
+  "current_interpretation": "The APS listing and an independent secondary bibliography both support the 656-661 pagination. The MIT course-reference chain still reports 43-48, so the discrepancy is narrowed but not fully cleared until a raw page or PDF capture confirms the primary article directly.",
+  "next_requirement": "Preserve the citation-integrity gate until a primary raw page, PDF, or equivalent archival capture confirms the page span from the article itself.",
+  "claim_boundary": "This report narrows the citation conflict but does not close it. Vanadium row extraction still requires direct page confirmation."
 }

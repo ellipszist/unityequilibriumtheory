@@ -1,8 +1,8 @@
 # ระเบียงรถไฟขนส่งชิ้นส่วนอวกาศและห่วงโซ่อุปทานเชื้อเพลิงไฮโดรเจนเหลว (Coastal Hydrogen Rail Link & Fueling Logistics)
 
-**Date Added:** 2026-05-28  
-**Status:** 💡 Idea (ไอเดียตั้งต้น) / 📝 Pending Research (รอการวิจัย)  
-**Category:** Logistics / Energy / Infrastructure / Aerospace  
+**Date Added:** 2026-05-28
+**Status:** 💡 Idea (ไอเดียตั้งต้น) / 📝 Pending Research (รอการวิจัย)
+**Category:** Logistics / Energy / Infrastructure / Aerospace
 
 ---
 

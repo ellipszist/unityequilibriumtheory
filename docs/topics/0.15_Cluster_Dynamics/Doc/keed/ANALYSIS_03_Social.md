@@ -1,5 +1,3 @@
-> [!WARNING]
-> **Legacy claim boundary:** This file is a legacy analysis, paper draft, research note, or bibliography note, not the topic status authority. It must not be used to claim Bullet Cluster solution, dark-matter replacement, virial-discrepancy closure, lensing-map prediction, calibrated cluster-scale gravity, JWST formation resolution, or general missing-mass theory proof. Current allowed claims are controlled by `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and `Result/artifacts/0_15_cluster_dynamics_verification.json`: qualitative Bullet Cluster separation-sign diagnostic and bounded mechanism exploration only.
 # 🔬 ANALYSIS: 0.14 Complex Systems (Social)
 
 > **File/Script:** `docs/topics/0.14_Complex_Systems/Code/03_Research/Research_Social.py`

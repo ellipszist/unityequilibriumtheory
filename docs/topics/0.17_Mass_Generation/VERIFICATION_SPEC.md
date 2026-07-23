@@ -9,16 +9,6 @@
   - `Data/03_Research/higgs_coupling_data.json`
   - `Data/03_Research/higgs_mass_combined.json`
   - `Data/03_Research/lepton_data.json`
-  - `Data/03_Research/source_lock_manifest.json`
-  - `docs/data/external/particle_physics/higgs/higgs_coupling_cms_2022_reference_package.json`
-  - `docs/data/external/particle_physics/higgs/higgs_mass_combined_atlas_cms_2015_reference_package.json`
-  - `docs/data/external/particle_physics/pdg/pdg_2024_leptons_reference_package.json`
-- Generated workflow artifacts:
-  - `Data/03_Research/source_evidence_intake_stub.json`
-  - `Data/03_Research/source_evidence_readiness_matrix.json`
-  - `Data/03_Research/branch_claim_gate.json`
-  - embedded `mass_generation_claim_scope_gate` in `Result/artifacts/0_17_mass_generation_verification.json`
-  - `mass_generation_claim_scope_gate.controller_status`, blocked export phrases, and machine-readable next blockers
 - Baseline:
   - Standard Model normalized coupling modifier baseline `kappa = 1.0` for the local Higgs-coupling dataset.
 - Reported metrics:
@@ -33,17 +23,13 @@
   - Result/artifacts/0_17_mass_generation_verification.json
 - Latest primary artifact identity:
   - Status: `PASS`
-  - Schema: `1.2`
+  - Timestamp: `2026-04-28T14:26:26.891147+00:00`
+  - Schema: `1.1`
   - Particle count: `6`
   - Average absolute `kappa` deviation: `0.040000000000000036`
   - Maximum absolute `kappa` deviation: `0.10000000000000009`
 - Interpretation:
   - Treat output as an internal Higgs-coupling consistency artifact only.
-  - Treat the external Higgs/lepton packages as extracted/source-referenced provenance anchors, not as proof that the raw upstream tables have been archived.
-  - Treat source-evidence and branch-claim gate outputs as workflow controls, not as branch validation.
-  - Treat `mass_generation_claim_scope_gate` as the artifact-level controller for what the PASS may export to integration topics.
-  - `mass_generation_claim_scope_gate.controller_status == HIGGS_KAPPA_BENCHMARK_ONLY` means the artifact can export only the internal SM-normalized Higgs kappa consistency benchmark.
-  - Mechanism, Higgs-replacement, hierarchy, Koide/tau, Planck-ansatz, and all-particle-mass wording remain blocked while uncertainty-aware fits, source-to-row mapping, raw Higgs table archive, and branch-specific verifiers are missing.
   - The verifier checks a topic-local SM-normalized `kappa` dataset; it does not prove a new mass-generation mechanism or replace the Higgs mechanism.
   - Koide/tau and Planck-exponential branches require separate verifier artifacts before supporting claims.
   - The UTF-8 environment variables are required on this Windows shell because logger/status output uses Unicode glyphs.

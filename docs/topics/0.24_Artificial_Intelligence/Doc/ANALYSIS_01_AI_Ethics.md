@@ -1,11 +1,4 @@
 # 🔬 ANALYSIS: AI Alignment & Ethics (Entropy Minimization)
-> [!WARNING]
-> **Legacy claim boundary:** This file is a concept note from an earlier
-> drafting pass. It is not the topic status authority and must not be used to
-> claim that ethics, alignment, or pro-social behavior has been proved as a
-> physical law. Current allowed claims are controlled by `README.md`,
-> `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, and
-> `Result/artifacts/0_24_artificial_intelligence_verification.json`.
 
 > **File/Script:** `docs/topics/0.24_Artificial_Intelligence/Code/03_Research/Research_Alignment_Equilibrium.py`
 > **Role:** Macro-Scale Verification (Axiom 2)

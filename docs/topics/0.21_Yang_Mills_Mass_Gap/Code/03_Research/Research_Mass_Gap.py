@@ -76,107 +76,6 @@ def path_hash_record(path_string: str) -> dict:
     }
 
 
-def build_yang_mills_claim_scope_gate(
-    status: str,
-    error_percent: float,
-    uncertainty_percent: float,
-    residual_mev: float,
-    source_lock: dict,
-) -> dict:
-    controller_status = "WARN" if status == "PASS" else status
-    return {
-        "schema_version": "1.0",
-        "topic": "0.21_Yang_Mills_Mass_Gap",
-        "controller_status": controller_status,
-        "controller_reason": (
-            "The selected scalar-glueball benchmark is inside the reference-row uncertainty, but export remains "
-            "warning-gated because the artifact uses a fitted alpha sweep and lacks a multi-state spectrum, "
-            "continuum-limit, and mathematical proof package."
-            if status == "PASS"
-            else "The verifier ran but the selected scalar-glueball residual exceeded the reference-row uncertainty."
-        ),
-        "claim_class": "C_calibration_benchmark_only",
-        "allowed_claims_now": [
-            {
-                "claim": "The fitted alpha-sweep benchmark can match the selected scalar glueball reference row within the declared status rule.",
-                "status": status,
-                "artifact_role": "calibration-aware scalar benchmark",
-                "metrics": {
-                    "relative_error_percent": error_percent,
-                    "reference_uncertainty_percent": uncertainty_percent,
-                    "residual_mev": residual_mev,
-                },
-                "source_evidence_readiness": "source_backed_topic_working_copy",
-            },
-            {
-                "claim": "The current engine can be discussed as an exploratory curvature-gap model.",
-                "status": "DIAGNOSTIC_ONLY",
-                "artifact_role": "mechanism diagnostic branch",
-                "formula_role": "fitted curvature parameter sweep, not fixed theory constant",
-                "source_evidence_readiness": "inherits_source_lock_manifest",
-            },
-        ],
-        "blocked_claims": [
-            {
-                "claim": "UET proves the Clay Yang-Mills existence and mass-gap problem.",
-                "status": "BLOCKED",
-                "blocking_reason": "The artifact is a numeric calibration benchmark, not a constructive mathematical proof.",
-                "next_evidence_required": [
-                    "formal theorem statement",
-                    "assumption registry",
-                    "constructive proof artifact",
-                    "independent mathematical review status",
-                ],
-            },
-            {
-                "claim": "UET validates the full glueball spectrum or confinement physics.",
-                "status": "BLOCKED",
-                "blocking_reason": "Only one selected scalar glueball row is primary-gated; tensor, pseudoscalar, and multi-state residuals are not gated.",
-                "next_evidence_required": [
-                    "multi-state glueball spectrum artifact",
-                    "held-out lattice rows",
-                    "continuum-limit and lattice-spacing checks",
-                ],
-            },
-            {
-                "claim": "The fitted alpha is a fixed UET theory constant.",
-                "status": "BLOCKED",
-                "blocking_reason": "The current verifier sweeps alpha as a best-fit calibration parameter.",
-                "next_evidence_required": [
-                    "fixed-parameter prediction protocol",
-                    "pre-registered threshold policy",
-                    "out-of-sample validation artifact",
-                ],
-            },
-        ],
-        "blocked_export_phrases": [
-            "Clay Yang-Mills problem solved",
-            "mass gap proven",
-            "confinement proven",
-            "full glueball spectrum validated",
-            "alpha is fixed by theory",
-            "Millennium problem supported",
-        ],
-        "source_lock_summary": {
-            "status": source_lock.get("status", "present"),
-            "external_source_records": len(source_lock.get("external_source_records", [])),
-            "derived_inputs": len(source_lock.get("derived_inputs", [])),
-        },
-        "machine_readable_next_blockers": [
-            "constructive_proof_package_missing",
-            "multi_state_glueball_artifact_missing",
-            "continuum_limit_check_missing",
-            "fixed_parameter_prediction_missing",
-            "independent_math_review_missing",
-        ],
-        "claim_boundary": (
-            "A PASS/WARN artifact supports only a calibration-aware selected scalar glueball benchmark. "
-            "It does not prove the Clay Yang-Mills mass-gap problem, validate confinement, validate the full "
-            "glueball spectrum, or establish alpha as a fixed theory constant."
-        ),
-    }
-
-
 def run_validation():
     print("=" * 60)
     print("UET YANG-MILLS: MASS GAP VALIDATION")
@@ -214,13 +113,6 @@ def run_validation():
     print(f"Best-fit alpha: {best_alpha:.3f}")
     print(f"Predicted mass: {best_prediction:.2f} MeV")
     print(f"Relative error: {error:.2f}%")
-    yang_mills_claim_scope_gate = build_yang_mills_claim_scope_gate(
-        status,
-        float(error),
-        float(uncertainty_percent),
-        float(residual_mev),
-        source_lock,
-    )
 
     result_dir = UETPathManager.get_result_dir("0.21", "Mass_Gap_Validation", category="showcase")
     UETMetricLogger("MassGap_Val", topic_id="0.21", category="showcase")
@@ -291,9 +183,6 @@ def run_validation():
         },
         notes="Calibration-aware internal benchmark artifact against selected lattice data; WARN is expected when best-fit residual exceeds the selected lattice-row uncertainty.",
     )
-    artifact["metrics"]["blocked_claim_exports"] = len(
-        yang_mills_claim_scope_gate["blocked_export_phrases"]
-    )
     artifact["input_hashes"] = {
         "source_lock_manifest": hash_file(source_lock_path) if source_lock_path.exists() else None,
         "lattice_working_copy": hash_file(topic_dir / "data" / "03_Research" / "lattice_qcd_spectrum.json"),
@@ -307,7 +196,6 @@ def run_validation():
         "WARN/PASS status applies only to a calibration-aware scalar glueball benchmark. "
         "It is not a proof of the Clay Yang-Mills mass-gap problem."
     )
-    artifact["yang_mills_claim_scope_gate"] = yang_mills_claim_scope_gate
     artifact_path = topic_dir / "Result" / "artifacts" / "mass_gap_validation.json"
     save_artifact(artifact, artifact_path)
     print(f"Artifact saved to {artifact_path}")

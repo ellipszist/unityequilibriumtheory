@@ -1,24 +1,4 @@
 {
-  "a15_candidate_patch_preview": {
-    "claim_boundary": "This is a blocked patch preview only. It explains why the A15 rows cannot be edited honestly yet without external row evidence.",
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\a15_candidate_patch_preview.json",
-    "sha256": "8f6b165af69f2f5a2a22d6b8981b3879644681cd3d4d3a69483db5858ced428e",
-    "status_summary": {
-      "rows_total": 2,
-      "shared_decision_gate": "External row resolution required before any normalization decision.",
-      "source_priority": "external_resolution_required"
-    }
-  },
-  "a15_external_resolution_packet": {
-    "claim_boundary": "This is a focused execution packet for the A15 blocker pair only. It does not certify either row without attached source evidence.",
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\a15_external_resolution_packet.json",
-    "sha256": "7dee631c9752c93163393a9595f957e025cb3217a1fc5a79bbbf3762a15c7577",
-    "status_summary": {
-      "rows_total": 2,
-      "shared_decision_gate": "External row resolution required before any normalization decision.",
-      "source_priority": "external_resolution_required"
-    }
-  },
   "blocker_class": "model-baseline failure",
   "branch_claim_gate": {
     "claim_boundary": "This gate cannot raise the topic above the current baseline-diagnostic status while the raw McMillan artifact remains FAIL.",
@@ -223,16 +203,9 @@
       "data_class": "topic-local working copy generated from in-script rows",
       "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\real_superconductor_data.json",
       "role": "raw McMillan superconductivity benchmark working copy",
-      "sha256": "eb1108ccf032ac52396a9d948c5f2317ca95cd51ce371bc24bd9c9cefe9a1628"
-    },
-    {
-      "data_class": "topic-local broader superconductivity package",
-      "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\comprehensive_superconductor_data.json",
-      "role": "cross-dataset provenance drift comparator",
-      "sha256": "08ddccdc33ba8c0abd4d72d58ad0e09b270e256c1c2569d3c8177b17d67c47df"
+      "sha256": "96861226b45409f72943c648fe67e492b6c53855e7359ea607da0539eb6e2b45"
     }
   ],
-  "interpretation": "This artifact supports a raw-baseline failure diagnostic only. It does not certify row-normalized conventional superconductivity prediction, Allen-Dynes/UET held-out performance, or universal superconductivity claims.",
   "limitations": [
     "This is a raw McMillan baseline check, not a UET first-principles prediction.",
     "Several lambda_ep and mu_star values are literature/curated working-copy inputs.",
@@ -240,15 +213,9 @@
     "The source-lock manifest records formula and dataset provenance targets, but raw NIMS MDR files are not yet mirrored."
   ],
   "metrics": {
-    "accepted_claim_branches": 2,
     "average_relative_error_percent": 62.41493526953724,
-    "branch_migration_candidates": 4,
-    "materials_excluded_from_raw_mcmillan_gate": 0,
-    "materials_skipped_from_raw_mcmillan_gate": 2,
     "materials_tested": 10,
-    "materials_within_20_percent": 1,
-    "source_targets_blocked": 5,
-    "source_targets_ready_for_review": 0
+    "materials_within_20_percent": 1
   },
   "model_gate_status": "FAIL",
   "next_model_hardening_tasks": [
@@ -301,425 +268,10 @@
     ],
     "rows_with_inverse_solution": 10
   },
-  "provisional_normalized_table": {
-    "claim_boundary": "This provisional evaluation is an internal sensitivity check only and must not replace the raw-gate artifact.",
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\provisional_normalized_superconductors.json",
-    "sensitivity_evaluation": {
-      "average_relative_error_percent": 16.0222880680328,
-      "materials_tested": 10,
-      "materials_within_20_percent": 7,
-      "rows": [
-        {
-          "Tc_mcmillan_K": 1.095191077802206,
-          "Tc_observed_K": 1.175,
-          "name": "Aluminum (Al)",
-          "relative_error_percent": 6.792248697684595,
-          "within_20_percent": true
-        },
-        {
-          "Tc_mcmillan_K": 4.149560080479962,
-          "Tc_observed_K": 4.15,
-          "name": "Mercury (Hg)",
-          "relative_error_percent": 0.010600470362360673,
-          "within_20_percent": true
-        },
-        {
-          "Tc_mcmillan_K": 6.826596942379001,
-          "Tc_observed_K": 7.19,
-          "name": "Lead (Pb)",
-          "relative_error_percent": 5.054284528803887,
-          "within_20_percent": true
-        },
-        {
-          "Tc_mcmillan_K": 6.4446770712024914,
-          "Tc_observed_K": 5.36,
-          "name": "Vanadium (V)",
-          "relative_error_percent": 20.236512522434534,
-          "within_20_percent": false
-        },
-        {
-          "Tc_mcmillan_K": 9.806467634613034,
-          "Tc_observed_K": 9.25,
-          "name": "Niobium (Nb)",
-          "relative_error_percent": 6.015866320140905,
-          "within_20_percent": true
-        },
-        {
-          "Tc_mcmillan_K": 3.7857658028263548,
-          "Tc_observed_K": 3.72,
-          "name": "Tin (Sn)",
-          "relative_error_percent": 1.767897925439639,
-          "within_20_percent": true
-        },
-        {
-          "Tc_mcmillan_K": 3.111373920481502,
-          "Tc_observed_K": 3.41,
-          "name": "Indium (In)",
-          "relative_error_percent": 8.75736303573308,
-          "within_20_percent": true
-        },
-        {
-          "Tc_mcmillan_K": 28.606033978393125,
-          "Tc_observed_K": 18.3,
-          "name": "Nb3Sn",
-          "relative_error_percent": 56.317125564989745,
-          "within_20_percent": false
-        },
-        {
-          "Tc_mcmillan_K": 34.53052965262681,
-          "Tc_observed_K": 23.2,
-          "name": "Nb3Ge",
-          "relative_error_percent": 48.83848988201212,
-          "within_20_percent": false
-        },
-        {
-          "Tc_mcmillan_K": 36.491328224236405,
-          "Tc_observed_K": 39.0,
-          "name": "MgB2",
-          "relative_error_percent": 6.432491732727168,
-          "within_20_percent": true
-        }
-      ],
-      "skipped": []
-    },
-    "sha256": "5829df1d6c1c4374dfbc2e5c03b6e9e610c806871c1ac8fd7f5a0eeab6e64309",
-    "summary": {
-      "internal_consensus_rows": 8,
-      "rows": 10,
-      "unresolved_rows": 2
-    }
-  },
-  "provisional_residual_blockers": {
-    "claim_boundary": "This residual-blocker map is a workflow decomposition only. It does not convert provisional substitutions into source-backed rows.",
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\provisional_residual_blockers.json",
-    "sha256": "bf92697f0eb02d2cac3335564734379e2cc4c46887c75f7353941ce993c25c03",
-    "summary": {
-      "rows_passing_after_provisional": 7,
-      "rows_requiring_external_resolution_after_provisional": 2,
-      "rows_still_blocking_after_provisional": 3,
-      "rows_total": 10
-    },
-    "top_rows": [
-      {
-        "candidate_basis": "needs_external_resolution",
-        "error_reduction_percent": 0.0,
-        "inverse_required_lambda_ep": 1.195237962969899,
-        "name": "Nb3Sn",
-        "next_gate": "External row resolution required before any normalization decision.",
-        "provisional_relative_error_percent": 56.317125564989745,
-        "raw_relative_error_percent": 56.317125564989745,
-        "recommended_lambda_ep": null,
-        "resolution_class": "residual_blocker_after_provisional",
-        "source": "Matthias 1954",
-        "type": "A15",
-        "within_20_percent_after_provisional": false
-      },
-      {
-        "candidate_basis": "needs_external_resolution",
-        "error_reduction_percent": 0.0,
-        "inverse_required_lambda_ep": 1.3630103124629445,
-        "name": "Nb3Ge",
-        "next_gate": "External row resolution required before any normalization decision.",
-        "provisional_relative_error_percent": 48.83848988201212,
-        "raw_relative_error_percent": 48.83848988201212,
-        "recommended_lambda_ep": null,
-        "resolution_class": "residual_blocker_after_provisional",
-        "source": "Gavaler 1973",
-        "type": "A15",
-        "within_20_percent_after_provisional": false
-      },
-      {
-        "candidate_basis": "internal_consensus_candidate",
-        "error_reduction_percent": 136.69863972252753,
-        "inverse_required_lambda_ep": 0.5679762566130324,
-        "name": "Vanadium (V)",
-        "next_gate": "Borderline residual; verify theta/omega proxy choice and source row.",
-        "provisional_relative_error_percent": 20.236512522434534,
-        "raw_relative_error_percent": 156.93515224496207,
-        "recommended_lambda_ep": 0.6,
-        "resolution_class": "residual_blocker_after_provisional",
-        "source": "MIT Junior Lab",
-        "type": "Type-II",
-        "within_20_percent_after_provisional": false
-      },
-      {
-        "candidate_basis": "internal_consensus_candidate",
-        "error_reduction_percent": 21.86637652220918,
-        "inverse_required_lambda_ep": 0.7165806528679126,
-        "name": "Indium (In)",
-        "next_gate": "Requires upstream row lock before raw table can be changed.",
-        "provisional_relative_error_percent": 8.75736303573308,
-        "raw_relative_error_percent": 30.623739557942258,
-        "recommended_lambda_ep": 0.69,
-        "resolution_class": "provisional_pass_only",
-        "source": "Kittel",
-        "type": "Type-I",
-        "within_20_percent_after_provisional": true
-      },
-      {
-        "candidate_basis": "internal_consensus_candidate",
-        "error_reduction_percent": 79.76017418296496,
-        "inverse_required_lambda_ep": 0.38435310902166275,
-        "name": "Aluminum (Al)",
-        "next_gate": "Requires upstream row lock before raw table can be changed.",
-        "provisional_relative_error_percent": 6.792248697684595,
-        "raw_relative_error_percent": 86.55242288064956,
-        "recommended_lambda_ep": 0.38,
-        "resolution_class": "provisional_pass_only",
-        "source": "McMillan 1968",
-        "type": "Type-I",
-        "within_20_percent_after_provisional": true
-      }
-    ]
-  },
-  "raw_mcmillan_row_eligibility_policy": {
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\raw_mcmillan_row_eligibility_policy.json",
-    "sha256": "cdf94b0b249ba00cc98afa6b3b8ac8ab305d8d3dc43851e3cb58e1be39d225db",
-    "status": "present"
-  },
-  "residual_blocker_field_lock_matrix": {
-    "claim_boundary": "This field-lock matrix is a workflow control layer only. It tracks unresolved fields but does not certify them as source-backed.",
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\residual_blocker_field_lock_matrix.json",
-    "sha256": "60fa50d26108762dd6634a8e8a446a279bfa13a391decccff3c31e76528adeb8",
-    "summary": {
-      "rows_requiring_external_row": 2,
-      "rows_total": 3,
-      "rows_with_internal_consensus_lambda_only": 1,
-      "rows_with_proxy_choice_open": 1
-    },
-    "top_rows": [
-      {
-        "current_values": {
-          "Tc_relative_error_percent": 56.317125564989745,
-          "candidate_lambda_ep": null,
-          "comparison_omega_log_K": 151,
-          "inverse_required_lambda_ep": 1.195237962969899,
-          "mu_star": 0.13,
-          "raw_lambda_ep": 1.8,
-          "theta_D_K": 280
-        },
-        "field_lock_status": {
-          "Tc_observed": "working_copy_cited_but_row_unlocked",
-          "lambda_ep": "requires_external_row",
-          "mu_star": "requires_external_row",
-          "phonon_proxy": "requires_external_row"
-        },
-        "name": "Nb3Sn",
-        "next_decision_gate": "External row resolution required before any normalization decision.",
-        "source_priority": "external_resolution_required",
-        "unlock_requirements": {
-          "Tc_observed": "Attach explicit upstream or literature row identity for the reported Tc value.",
-          "lambda_ep": "Attach cited row-level lambda_ep value and confirm it matches the chosen phonon proxy convention.",
-          "mu_star": "Either attach a row-level mu_star citation or declare the benchmark convention used for this material family.",
-          "phonon_proxy": "Confirm whether the retained phonon proxy for the benchmark row should be Debye temperature (Theta_D_K) or log-phonon frequency (omega_log_K) before touching lambda_ep."
-        }
-      },
-      {
-        "current_values": {
-          "Tc_relative_error_percent": 48.83848988201212,
-          "candidate_lambda_ep": null,
-          "comparison_omega_log_K": 169,
-          "inverse_required_lambda_ep": 1.3630103124629445,
-          "mu_star": 0.13,
-          "raw_lambda_ep": 2.1,
-          "theta_D_K": 300
-        },
-        "field_lock_status": {
-          "Tc_observed": "working_copy_cited_but_row_unlocked",
-          "lambda_ep": "requires_external_row",
-          "mu_star": "requires_external_row",
-          "phonon_proxy": "requires_external_row"
-        },
-        "name": "Nb3Ge",
-        "next_decision_gate": "External row resolution required before any normalization decision.",
-        "source_priority": "external_resolution_required",
-        "unlock_requirements": {
-          "Tc_observed": "Attach explicit upstream or literature row identity for the reported Tc value.",
-          "lambda_ep": "Attach cited row-level lambda_ep value and confirm it matches the chosen phonon proxy convention.",
-          "mu_star": "Either attach a row-level mu_star citation or declare the benchmark convention used for this material family.",
-          "phonon_proxy": "Confirm whether the retained phonon proxy for the benchmark row should be Debye temperature (Theta_D_K) or log-phonon frequency (omega_log_K) before touching lambda_ep."
-        }
-      },
-      {
-        "current_values": {
-          "Tc_relative_error_percent": 156.93515224496207,
-          "candidate_lambda_ep": 0.6,
-          "comparison_omega_log_K": 224,
-          "inverse_required_lambda_ep": 0.5679762566130324,
-          "mu_star": 0.11,
-          "raw_lambda_ep": 0.8,
-          "theta_D_K": 380
-        },
-        "field_lock_status": {
-          "Tc_observed": "working_copy_cited_but_row_unlocked",
-          "lambda_ep": "internal_consensus_only",
-          "mu_star": "working_copy_retained",
-          "phonon_proxy": "proxy_choice_open"
-        },
-        "name": "Vanadium (V)",
-        "next_decision_gate": "Borderline residual; verify theta/omega proxy choice and source row.",
-        "source_priority": "borderline_source_lock_required",
-        "unlock_requirements": {
-          "Tc_observed": "Attach explicit upstream or literature row identity for the reported Tc value.",
-          "lambda_ep": "Attach cited row-level lambda_ep value and confirm it matches the chosen phonon proxy convention.",
-          "mu_star": "Either attach a row-level mu_star citation or declare the benchmark convention used for this material family.",
-          "phonon_proxy": "Check whether Theta_D_K is the correct benchmark proxy for this row or whether omega_log_K should replace it in the source-normalized comparison."
-        }
-      }
-    ]
-  },
-  "residual_blocker_proxy_sensitivity": {
-    "claim_boundary": "This proxy-sensitivity layer is internal only. It does not decide the authoritative phonon proxy without source-backed row evidence.",
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\residual_blocker_proxy_sensitivity.json",
-    "sha256": "511ba4167b0f4f026acda49563de9b7e8784bd029fe47f87e9774fef0ff8ccd5",
-    "summary": {
-      "rows_compared": 1,
-      "rows_preferring_omega_log_K_under_internal_sensitivity": 0,
-      "rows_preferring_theta_D_K_under_internal_sensitivity": 1
-    },
-    "top_rows": [
-      {
-        "interpretation": "Internal-only proxy sensitivity check under the same lambda_ep and mu_star. This does not choose the authoritative proxy without source-backed row context.",
-        "mu_star": 0.11,
-        "name": "Vanadium (V)",
-        "omega_log_K": 224,
-        "omega_log_proxy_prediction_K": 3.7989675367088367,
-        "omega_log_proxy_relative_error_percent": 29.12373998677551,
-        "preferred_proxy_under_internal_sensitivity": "Theta_D_K",
-        "recommended_lambda_ep": 0.6,
-        "source_priority": "borderline_source_lock_required",
-        "tc_reference_from_inverse_required_K": 5.360000000000006,
-        "theta_D_K": 380,
-        "theta_proxy_prediction_K": 6.4446770712024914,
-        "theta_proxy_relative_error_percent": 20.236512522434417
-      }
-    ]
-  },
-  "residual_blocker_row_dossiers": {
-    "claim_boundary": "These row dossiers are execution packets only. They help focus source checks but do not authorize editing the raw benchmark rows without upstream evidence.",
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\residual_blocker_row_dossiers.json",
-    "sha256": "5d0076b74d9b86bd7dd4e5750235cb522e3550212ecd62044a8456eff81e56f0",
-    "summary": {
-      "borderline_source_lock_required": 1,
-      "dossiers_total": 3,
-      "external_resolution_required": 2
-    },
-    "top_rows": [
-      {
-        "blocker_family": "A15 unresolved strong-coupling row",
-        "claim_boundary": "This dossier is a row-resolution work packet. It narrows what must be checked next, but it does not certify any material row until an upstream or literature row is attached.",
-        "decision_gate": "External row resolution required before any normalization decision.",
-        "external_source_targets": [
-          "docs/data/external/condensed_matter/superconductivity/mcmillan_1968/source_record.json",
-          "docs/data/external/condensed_matter/superconductivity/allen_dynes_1975/source_record.json",
-          "docs/data/external/condensed_matter/superconductivity/nims_supercon/source_record.json"
-        ],
-        "internal_candidate_package": {
-          "comparison_lambda_ep": 1.67,
-          "comparison_mu_star": 0.13,
-          "comparison_omega_log_K": 151,
-          "provisional_relative_error_percent": 56.317125564989745,
-          "recommended_lambda_ep": null
-        },
-        "inverse_required_lambda_ep": 1.195237962969899,
-        "name": "Nb3Sn",
-        "raw_package": {
-          "lambda_ep": 1.8,
-          "mu_star": 0.13,
-          "relative_error_percent": 56.317125564989745,
-          "theta_D_K": 280
-        },
-        "required_row_fields": [
-          "Tc_K or Tc_exp_K with cited row source",
-          "phonon proxy field and unit basis (Theta_D_K or omega_log_K)",
-          "lambda_ep with row citation",
-          "mu_star with row citation or declared benchmark convention"
-        ],
-        "resolution_class": "residual_blocker_after_provisional",
-        "source_label": "Matthias 1954",
-        "source_priority": "external_resolution_required",
-        "type": "A15",
-        "unit_decision_question": "Confirm whether the retained phonon proxy for the benchmark row should be Debye temperature (Theta_D_K) or log-phonon frequency (omega_log_K) before touching lambda_ep."
-      },
-      {
-        "blocker_family": "A15 unresolved strong-coupling row",
-        "claim_boundary": "This dossier is a row-resolution work packet. It narrows what must be checked next, but it does not certify any material row until an upstream or literature row is attached.",
-        "decision_gate": "External row resolution required before any normalization decision.",
-        "external_source_targets": [
-          "docs/data/external/condensed_matter/superconductivity/mcmillan_1968/source_record.json",
-          "docs/data/external/condensed_matter/superconductivity/allen_dynes_1975/source_record.json",
-          "docs/data/external/condensed_matter/superconductivity/nims_supercon/source_record.json"
-        ],
-        "internal_candidate_package": {
-          "comparison_lambda_ep": 1.8,
-          "comparison_mu_star": 0.13,
-          "comparison_omega_log_K": 169,
-          "provisional_relative_error_percent": 48.83848988201212,
-          "recommended_lambda_ep": null
-        },
-        "inverse_required_lambda_ep": 1.3630103124629445,
-        "name": "Nb3Ge",
-        "raw_package": {
-          "lambda_ep": 2.1,
-          "mu_star": 0.13,
-          "relative_error_percent": 48.83848988201212,
-          "theta_D_K": 300
-        },
-        "required_row_fields": [
-          "Tc_K or Tc_exp_K with cited row source",
-          "phonon proxy field and unit basis (Theta_D_K or omega_log_K)",
-          "lambda_ep with row citation",
-          "mu_star with row citation or declared benchmark convention"
-        ],
-        "resolution_class": "residual_blocker_after_provisional",
-        "source_label": "Gavaler 1973",
-        "source_priority": "external_resolution_required",
-        "type": "A15",
-        "unit_decision_question": "Confirm whether the retained phonon proxy for the benchmark row should be Debye temperature (Theta_D_K) or log-phonon frequency (omega_log_K) before touching lambda_ep."
-      },
-      {
-        "blocker_family": "Borderline conventional row",
-        "claim_boundary": "This dossier is a row-resolution work packet. It narrows what must be checked next, but it does not certify any material row until an upstream or literature row is attached.",
-        "decision_gate": "Borderline residual; verify theta/omega proxy choice and source row.",
-        "external_source_targets": [
-          "docs/data/external/condensed_matter/superconductivity/mcmillan_1968/source_record.json",
-          "docs/data/external/condensed_matter/superconductivity/allen_dynes_1975/source_record.json",
-          "docs/data/external/condensed_matter/superconductivity/nims_supercon/source_record.json"
-        ],
-        "internal_candidate_package": {
-          "comparison_lambda_ep": 0.6,
-          "comparison_mu_star": 0.11,
-          "comparison_omega_log_K": 224,
-          "provisional_relative_error_percent": 20.236512522434534,
-          "recommended_lambda_ep": 0.6
-        },
-        "inverse_required_lambda_ep": 0.5679762566130324,
-        "name": "Vanadium (V)",
-        "raw_package": {
-          "lambda_ep": 0.8,
-          "mu_star": 0.11,
-          "relative_error_percent": 156.93515224496207,
-          "theta_D_K": 380
-        },
-        "required_row_fields": [
-          "Tc_K or Tc_exp_K with cited row source",
-          "phonon proxy field and unit basis (Theta_D_K or omega_log_K)",
-          "lambda_ep with row citation",
-          "mu_star with row citation or declared benchmark convention"
-        ],
-        "resolution_class": "residual_blocker_after_provisional",
-        "source_label": "MIT Junior Lab",
-        "source_priority": "borderline_source_lock_required",
-        "type": "Type-II",
-        "unit_decision_question": "Check whether Theta_D_K is the correct benchmark proxy for this row or whether omega_log_K should replace it in the source-normalized comparison."
-      }
-    ]
-  },
   "results": [
     {
       "Tc_mcmillan_K": 2.1919909688476324,
       "Tc_observed_K": 1.175,
-      "Theta_D_K": 428,
       "lambda_delta_vs_required": 0.04564689097833724,
       "lambda_ep": 0.43,
       "lambda_ratio_vs_required": 1.1187629029319612,
@@ -727,7 +279,6 @@
       "mu_star": 0.1,
       "name": "Aluminum (Al)",
       "relative_error_percent": 86.55242288064956,
-      "signed_error_percent": 86.55242288064956,
       "source": "McMillan 1968",
       "type": "Type-I",
       "within_20_percent": false
@@ -735,7 +286,6 @@
     {
       "Tc_mcmillan_K": 7.205013004046239,
       "Tc_observed_K": 4.15,
-      "Theta_D_K": 72,
       "lambda_delta_vs_required": 0.5999310333668366,
       "lambda_ep": 1.6,
       "lambda_ratio_vs_required": 1.5998896609966482,
@@ -743,7 +293,6 @@
       "mu_star": 0.1,
       "name": "Mercury (Hg)",
       "relative_error_percent": 73.61477118183707,
-      "signed_error_percent": 73.61477118183707,
       "source": "Onnes 1911 / Kittel",
       "type": "Type-I",
       "within_20_percent": false
@@ -751,7 +300,6 @@
     {
       "Tc_mcmillan_K": 9.632818605278459,
       "Tc_observed_K": 7.19,
-      "Theta_D_K": 105,
       "lambda_delta_vs_required": 0.35024734752009956,
       "lambda_ep": 1.55,
       "lambda_ratio_vs_required": 1.2919329636789174,
@@ -759,7 +307,6 @@
       "mu_star": 0.12,
       "name": "Lead (Pb)",
       "relative_error_percent": 33.975223995527934,
-      "signed_error_percent": 33.975223995527934,
       "source": "MIT Junior Lab",
       "type": "Type-I",
       "within_20_percent": false
@@ -767,7 +314,6 @@
     {
       "Tc_mcmillan_K": 13.771724160329969,
       "Tc_observed_K": 5.36,
-      "Theta_D_K": 380,
       "lambda_delta_vs_required": 0.23202374338696763,
       "lambda_ep": 0.8,
       "lambda_ratio_vs_required": 1.4085095823733484,
@@ -775,7 +321,6 @@
       "mu_star": 0.11,
       "name": "Vanadium (V)",
       "relative_error_percent": 156.93515224496207,
-      "signed_error_percent": 156.93515224496207,
       "source": "MIT Junior Lab",
       "type": "Type-II",
       "within_20_percent": false
@@ -783,7 +328,6 @@
     {
       "Tc_mcmillan_K": 15.292439198465104,
       "Tc_observed_K": 9.25,
-      "Theta_D_K": 275,
       "lambda_delta_vs_required": 0.24125976064824095,
       "lambda_ep": 1.04,
       "lambda_ratio_vs_required": 1.3020503397250178,
@@ -791,7 +335,6 @@
       "mu_star": 0.12,
       "name": "Niobium (Nb)",
       "relative_error_percent": 65.32366701043355,
-      "signed_error_percent": 65.32366701043355,
       "source": "Kittel / MIT",
       "type": "Type-II",
       "within_20_percent": false
@@ -799,7 +342,6 @@
     {
       "Tc_mcmillan_K": 6.157949193567621,
       "Tc_observed_K": 3.72,
-      "Theta_D_K": 200,
       "lambda_delta_vs_required": 0.12345264910096776,
       "lambda_ep": 0.72,
       "lambda_ratio_vs_required": 1.206945264135223,
@@ -807,7 +349,6 @@
       "mu_star": 0.1,
       "name": "Tin (Sn)",
       "relative_error_percent": 65.53626864429087,
-      "signed_error_percent": 65.53626864429087,
       "source": "Kittel",
       "type": "Type-I",
       "within_20_percent": false
@@ -815,7 +356,6 @@
     {
       "Tc_mcmillan_K": 4.454269518925831,
       "Tc_observed_K": 3.41,
-      "Theta_D_K": 112,
       "lambda_delta_vs_required": 0.09341934713208744,
       "lambda_ep": 0.81,
       "lambda_ratio_vs_required": 1.1303682240906208,
@@ -823,7 +363,6 @@
       "mu_star": 0.1,
       "name": "Indium (In)",
       "relative_error_percent": 30.623739557942258,
-      "signed_error_percent": 30.623739557942258,
       "source": "Kittel",
       "type": "Type-I",
       "within_20_percent": false
@@ -831,7 +370,6 @@
     {
       "Tc_mcmillan_K": 28.606033978393125,
       "Tc_observed_K": 18.3,
-      "Theta_D_K": 280,
       "lambda_delta_vs_required": 0.604762037030101,
       "lambda_ep": 1.8,
       "lambda_ratio_vs_required": 1.5059762622728303,
@@ -839,7 +377,6 @@
       "mu_star": 0.13,
       "name": "Nb3Sn",
       "relative_error_percent": 56.317125564989745,
-      "signed_error_percent": 56.317125564989745,
       "source": "Matthias 1954",
       "type": "A15",
       "within_20_percent": false
@@ -847,7 +384,6 @@
     {
       "Tc_mcmillan_K": 34.53052965262681,
       "Tc_observed_K": 23.2,
-      "Theta_D_K": 300,
       "lambda_delta_vs_required": 0.7369896875370556,
       "lambda_ep": 2.1,
       "lambda_ratio_vs_required": 1.5407073452036644,
@@ -855,7 +391,6 @@
       "mu_star": 0.13,
       "name": "Nb3Ge",
       "relative_error_percent": 48.83848988201212,
-      "signed_error_percent": 48.83848988201212,
       "source": "Gavaler 1973",
       "type": "A15",
       "within_20_percent": false
@@ -863,7 +398,6 @@
     {
       "Tc_mcmillan_K": 36.491328224236405,
       "Tc_observed_K": 39.0,
-      "Theta_D_K": 800,
       "lambda_delta_vs_required": -0.03294220453624008,
       "lambda_ep": 0.87,
       "lambda_ratio_vs_required": 0.9635168182739232,
@@ -871,1151 +405,13 @@
       "mu_star": 0.1,
       "name": "MgB2",
       "relative_error_percent": 6.432491732727168,
-      "signed_error_percent": -6.432491732727168,
       "source": "Nagamatsu 2001 Nature",
       "type": "Two-Gap",
       "within_20_percent": true
     }
   ],
-  "row_eligibility": {
-    "branch_migration_candidates": [
-      {
-        "candidate_status": "review_candidate_only",
-        "current_raw_gate_membership": "included",
-        "name": "Vanadium (V)",
-        "reason": "Formula-family or convention caveat exists, but no source-labeled alternate branch verifier has migrated this row.",
-        "type": "Type-II"
-      },
-      {
-        "candidate_status": "review_candidate_only",
-        "current_raw_gate_membership": "included",
-        "name": "Nb3Sn",
-        "reason": "Formula-family or convention caveat exists, but no source-labeled alternate branch verifier has migrated this row.",
-        "type": "A15"
-      },
-      {
-        "candidate_status": "review_candidate_only",
-        "current_raw_gate_membership": "included",
-        "name": "Nb3Ge",
-        "reason": "Formula-family or convention caveat exists, but no source-labeled alternate branch verifier has migrated this row.",
-        "type": "A15"
-      },
-      {
-        "candidate_status": "review_candidate_only",
-        "current_raw_gate_membership": "included",
-        "name": "MgB2",
-        "reason": "Formula-family or convention caveat exists, but no source-labeled alternate branch verifier has migrated this row.",
-        "type": "Two-Gap"
-      }
-    ],
-    "claim_boundary": "This report makes row membership auditable. It does not exclude rows, migrate rows, change raw-gate metrics, or upgrade claims.",
-    "excluded_rows": [],
-    "included_rows": [
-      {
-        "name": "Aluminum (Al)",
-        "policy_rule": "raw_inputs_present",
-        "raw_gate_status": "failed_threshold",
-        "relative_error_percent": 86.55242288064956,
-        "source": "McMillan 1968",
-        "type": "Type-I"
-      },
-      {
-        "name": "Mercury (Hg)",
-        "policy_rule": "raw_inputs_present",
-        "raw_gate_status": "failed_threshold",
-        "relative_error_percent": 73.61477118183707,
-        "source": "Onnes 1911 / Kittel",
-        "type": "Type-I"
-      },
-      {
-        "name": "Lead (Pb)",
-        "policy_rule": "raw_inputs_present",
-        "raw_gate_status": "failed_threshold",
-        "relative_error_percent": 33.975223995527934,
-        "source": "MIT Junior Lab",
-        "type": "Type-I"
-      },
-      {
-        "name": "Vanadium (V)",
-        "policy_rule": "raw_inputs_present",
-        "raw_gate_status": "failed_threshold",
-        "relative_error_percent": 156.93515224496207,
-        "source": "MIT Junior Lab",
-        "type": "Type-II"
-      },
-      {
-        "name": "Niobium (Nb)",
-        "policy_rule": "raw_inputs_present",
-        "raw_gate_status": "failed_threshold",
-        "relative_error_percent": 65.32366701043355,
-        "source": "Kittel / MIT",
-        "type": "Type-II"
-      },
-      {
-        "name": "Tin (Sn)",
-        "policy_rule": "raw_inputs_present",
-        "raw_gate_status": "failed_threshold",
-        "relative_error_percent": 65.53626864429087,
-        "source": "Kittel",
-        "type": "Type-I"
-      },
-      {
-        "name": "Indium (In)",
-        "policy_rule": "raw_inputs_present",
-        "raw_gate_status": "failed_threshold",
-        "relative_error_percent": 30.623739557942258,
-        "source": "Kittel",
-        "type": "Type-I"
-      },
-      {
-        "name": "Nb3Sn",
-        "policy_rule": "formula_family_caveat_is_not_exclusion",
-        "raw_gate_status": "failed_threshold",
-        "relative_error_percent": 56.317125564989745,
-        "source": "Matthias 1954",
-        "type": "A15"
-      },
-      {
-        "name": "Nb3Ge",
-        "policy_rule": "formula_family_caveat_is_not_exclusion",
-        "raw_gate_status": "failed_threshold",
-        "relative_error_percent": 48.83848988201212,
-        "source": "Gavaler 1973",
-        "type": "A15"
-      },
-      {
-        "name": "MgB2",
-        "policy_rule": "formula_family_caveat_is_not_exclusion",
-        "raw_gate_status": "within_threshold",
-        "relative_error_percent": 6.432491732727168,
-        "source": "Nagamatsu 2001 Nature",
-        "type": "Two-Gap"
-      }
-    ],
-    "policy": {
-      "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\raw_mcmillan_row_eligibility_policy.json",
-      "sha256": "cdf94b0b249ba00cc98afa6b3b8ac8ab305d8d3dc43851e3cb58e1be39d225db",
-      "status": "present"
-    },
-    "schema_version": "1.0",
-    "skipped_rows": [
-      {
-        "name": "YBCO (YBa2Cu3O7)",
-        "policy_rule": "missing_raw_coupling_inputs_or_declared_non_bcs",
-        "reason": "missing lambda_ep or non-BCS row for raw McMillan baseline",
-        "source": "Wu 1987 PRL",
-        "type": "High-Tc Cuprate"
-      },
-      {
-        "name": "BSCCO-2223",
-        "policy_rule": "missing_raw_coupling_inputs_or_declared_non_bcs",
-        "reason": "missing lambda_ep or non-BCS row for raw McMillan baseline",
-        "source": "Maeda 1988",
-        "type": "High-Tc Cuprate"
-      }
-    ],
-    "summary": {
-      "branch_migration_candidates": 4,
-      "excluded_rows": 0,
-      "included_rows": 10,
-      "metrics_changed_by_policy": false,
-      "policy_executable_in_this_artifact": true,
-      "skipped_rows": 2
-    }
-  },
-  "row_evidence_decision_gate": {
-    "claim_boundary": "This decision gate is a review-control layer only. It does not authorize a row patch or claim upgrade by itself.",
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\row_evidence_decision_gate.json",
-    "sha256": "8c547144da211afbcc49d6e766bc67dd67db6f906b6726f0a64da6c7582949e0",
-    "summary": {
-      "rows_blocked_pending_source_review": 3,
-      "rows_eligible_for_patch_review": 0,
-      "rows_total": 3,
-      "top_priority_row": "Vanadium (V)"
-    },
-    "top_rows": [
-      {
-        "claim_boundary": "This decision gate is a review-control layer only. It records what must be true before patch review can even begin.",
-        "current_decision": "blocked_pending_source_review",
-        "gate_questions": [
-          "Does one source row identify the observed Tc value unambiguously?",
-          "Does the same source family support Theta_D_K as the active phonon proxy for this row?",
-          "Is the cited lambda_ep compatible with that same proxy convention?",
-          "Can mu_star remain the working convention, or does the source row specify a different convention?"
-        ],
-        "name": "Vanadium (V)",
-        "queue_class": "borderline_single_row_source_lock",
-        "required_gate_status": {
-          "eligible_for_patch_review": false,
-          "field_compatibility_checked": false,
-          "proxy_convention_locked": false,
-          "row_identity_locked": false,
-          "unit_basis_checked": false
-        },
-        "source_priority": "borderline_source_lock_required"
-      },
-      {
-        "claim_boundary": "This decision gate is a review-control layer only. It records what must be true before patch review can even begin.",
-        "current_decision": "blocked_pending_source_review",
-        "gate_questions": [
-          "Does one source row identify the observed Tc value unambiguously?",
-          "Is the row benchmark based on Theta_D_K, omega_log_K, or another phonon proxy convention?",
-          "Is the cited lambda_ep extracted under the same proxy convention as the chosen row?",
-          "Is mu_star explicitly given, or must it be carried as a declared family convention?"
-        ],
-        "name": "Nb3Ge",
-        "queue_class": "a15_external_resolution_pair",
-        "required_gate_status": {
-          "eligible_for_patch_review": false,
-          "field_compatibility_checked": false,
-          "proxy_convention_locked": false,
-          "row_identity_locked": false,
-          "unit_basis_checked": false
-        },
-        "source_priority": "external_resolution_required"
-      }
-    ]
-  },
-  "row_evidence_execution_queue": {
-    "claim_boundary": "This execution queue sequences evidence collection only. It does not authorize working-copy edits.",
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\row_evidence_execution_queue.json",
-    "sha256": "e400858374c90f4171250036dc89fe9c5220d89fa94064bb1aea7e1dba6acb56",
-    "summary": {
-      "rows_ready_for_patch_review": 0,
-      "rows_total": 3,
-      "rows_with_working_context": 3,
-      "top_priority_row": "Vanadium (V)"
-    },
-    "top_rows": [
-      {
-        "candidate_source_packets": [
-          "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\vanadium_source_lock_packet.json"
-        ],
-        "claim_boundary": "This queue is for evidence collection sequencing only. It does not authorize a working-copy edit.",
-        "context_only_fields": [
-          "Tc_observed",
-          "Theta_D_K",
-          "lambda_ep",
-          "mu_star"
-        ],
-        "fields_complete": 0,
-        "fields_total": 4,
-        "fields_with_working_context": 4,
-        "name": "Vanadium (V)",
-        "next_action": "Attach Tc row identity plus Theta_D_K-backed lambda_ep citation from one compatible source row.",
-        "pending_fields": [
-          "Tc_observed",
-          "Theta_D_K",
-          "lambda_ep",
-          "mu_star"
-        ],
-        "primary_evidence_targets": [
-          "Tc_observed",
-          "Theta_D_K"
-        ],
-        "queue_class": "borderline_single_row_source_lock",
-        "ready_for_patch_review": false,
-        "source_priority": "borderline_source_lock_required"
-      },
-      {
-        "candidate_source_packets": [
-          "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\a15_external_resolution_packet.json"
-        ],
-        "claim_boundary": "This queue is for evidence collection sequencing only. It does not authorize a working-copy edit.",
-        "context_only_fields": [
-          "Tc_observed",
-          "Theta_D_K_or_omega_log_K",
-          "lambda_ep",
-          "mu_star"
-        ],
-        "fields_complete": 0,
-        "fields_total": 4,
-        "fields_with_working_context": 4,
-        "name": "Nb3Ge",
-        "next_action": "Resolve Tc row identity and phonon proxy convention before accepting any lambda_ep or mu_star patch.",
-        "pending_fields": [
-          "Tc_observed",
-          "Theta_D_K_or_omega_log_K",
-          "lambda_ep",
-          "mu_star"
-        ],
-        "primary_evidence_targets": [
-          "Tc_observed",
-          "Theta_D_K_or_omega_log_K"
-        ],
-        "queue_class": "a15_external_resolution_pair",
-        "ready_for_patch_review": false,
-        "source_priority": "external_resolution_required"
-      },
-      {
-        "candidate_source_packets": [
-          "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\a15_external_resolution_packet.json"
-        ],
-        "claim_boundary": "This queue is for evidence collection sequencing only. It does not authorize a working-copy edit.",
-        "context_only_fields": [
-          "Tc_observed",
-          "Theta_D_K_or_omega_log_K",
-          "lambda_ep",
-          "mu_star"
-        ],
-        "fields_complete": 0,
-        "fields_total": 4,
-        "fields_with_working_context": 4,
-        "name": "Nb3Sn",
-        "next_action": "Resolve Tc row identity and phonon proxy convention before accepting any lambda_ep or mu_star patch.",
-        "pending_fields": [
-          "Tc_observed",
-          "Theta_D_K_or_omega_log_K",
-          "lambda_ep",
-          "mu_star"
-        ],
-        "primary_evidence_targets": [
-          "Tc_observed",
-          "Theta_D_K_or_omega_log_K"
-        ],
-        "queue_class": "a15_external_resolution_pair",
-        "ready_for_patch_review": false,
-        "source_priority": "external_resolution_required"
-      }
-    ]
-  },
-  "row_evidence_intake_stub": {
-    "claim_boundary": "This intake stub is for evidence capture only. It does not authorize working-copy edits by itself.",
-    "materials": [
-      "Vanadium (V)",
-      "Nb3Sn",
-      "Nb3Ge"
-    ],
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\row_evidence_intake_stub.json",
-    "sha256": "ed3fb81e82f8071975f0c94970d01fb49b1f2b0090705e7c5e631f412fcc4fdf"
-  },
-  "row_evidence_readiness_matrix": {
-    "claim_boundary": "This readiness matrix is a workflow gate only. It tracks whether evidence fields are still pending before patch review.",
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\row_evidence_readiness_matrix.json",
-    "sha256": "c0e88306017ae26a20c936cc00ee2cb1e48ec83eca4979e08158d4c2e0d3eb34",
-    "summary": {
-      "rows_blocked_by_pending_evidence": 3,
-      "rows_ready_for_patch_review": 0,
-      "rows_total": 3
-    }
-  },
-  "row_evidence_source_review_packets": {
-    "claim_boundary": "These source-review packets are attachment templates only. They do not certify a field until a real source row is reviewed.",
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\row_evidence_source_review_packets.json",
-    "sha256": "57613afc41e795ecd157f16d0e7b5d71ebdea7b44f5e5162df617373f94e0102",
-    "summary": {
-      "fields_requiring_source_attachment": 12,
-      "rows_total": 3,
-      "top_priority_row": "Vanadium (V)"
-    },
-    "top_rows": [
-      {
-        "candidate_source_packets": [
-          "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\vanadium_source_lock_packet.json"
-        ],
-        "claim_boundary": "These review packets are structured attachment templates only. They do not certify any field until a real source row is attached and reviewed.",
-        "name": "Vanadium (V)",
-        "next_action": "Attach Tc row identity plus Theta_D_K-backed lambda_ep citation from one compatible source row.",
-        "primary_evidence_targets": [
-          "Tc_observed",
-          "Theta_D_K"
-        ],
-        "queue_class": "borderline_single_row_source_lock",
-        "source_priority": "borderline_source_lock_required",
-        "source_review_fields": [
-          {
-            "current_status": "working_copy_context_present",
-            "field": "Tc_observed",
-            "required_source_fields": [
-              "source_title_or_doi",
-              "table_or_figure_identifier",
-              "row_locator",
-              "extracted_value",
-              "unit_basis",
-              "compatibility_note_with_working_copy"
-            ],
-            "review_stub": {
-              "compatibility_note_with_working_copy": null,
-              "extracted_value": null,
-              "review_status": "pending_source_attachment",
-              "row_locator": null,
-              "source_title_or_doi": null,
-              "table_or_figure_identifier": null,
-              "unit_basis": null
-            },
-            "working_context_note": "Working-copy Tc is present in the Vanadium packet, but the cited upstream/literature row still needs to be attached.",
-            "working_context_value": 5.36
-          },
-          {
-            "current_status": "working_copy_context_present",
-            "field": "Theta_D_K",
-            "required_source_fields": [
-              "source_title_or_doi",
-              "table_or_figure_identifier",
-              "row_locator",
-              "extracted_value",
-              "unit_basis",
-              "compatibility_note_with_working_copy"
-            ],
-            "review_stub": {
-              "compatibility_note_with_working_copy": null,
-              "extracted_value": null,
-              "review_status": "pending_source_attachment",
-              "row_locator": null,
-              "source_title_or_doi": null,
-              "table_or_figure_identifier": null,
-              "unit_basis": null
-            },
-            "working_context_note": "Theta_D_K is present in the working row, but source review must confirm whether Debye temperature is the correct proxy for this material row.",
-            "working_context_value": 380
-          },
-          {
-            "current_status": "working_copy_context_present",
-            "field": "lambda_ep",
-            "required_source_fields": [
-              "source_title_or_doi",
-              "table_or_figure_identifier",
-              "row_locator",
-              "extracted_value",
-              "unit_basis",
-              "compatibility_note_with_working_copy"
-            ],
-            "review_stub": {
-              "compatibility_note_with_working_copy": null,
-              "extracted_value": null,
-              "review_status": "pending_source_attachment",
-              "row_locator": null,
-              "source_title_or_doi": null,
-              "table_or_figure_identifier": null,
-              "unit_basis": null
-            },
-            "working_context_note": "Internal packet narrows the likely lambda range, but the cited row value is not source-locked yet.",
-            "working_context_value": {
-              "candidate_lambda_ep": 0.6,
-              "inverse_required_lambda_ep": 0.5679762566130324,
-              "raw_lambda_ep": 0.8
-            }
-          },
-          {
-            "current_status": "working_copy_context_present",
-            "field": "mu_star",
-            "required_source_fields": [
-              "source_title_or_doi",
-              "table_or_figure_identifier",
-              "row_locator",
-              "extracted_value",
-              "unit_basis",
-              "compatibility_note_with_working_copy"
-            ],
-            "review_stub": {
-              "compatibility_note_with_working_copy": null,
-              "extracted_value": null,
-              "review_status": "pending_source_attachment",
-              "row_locator": null,
-              "source_title_or_doi": null,
-              "table_or_figure_identifier": null,
-              "unit_basis": null
-            },
-            "working_context_note": "Current packet retains mu_star as a working convention until a row-specific citation is attached.",
-            "working_context_value": 0.11
-          }
-        ]
-      },
-      {
-        "candidate_source_packets": [
-          "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\a15_external_resolution_packet.json"
-        ],
-        "claim_boundary": "These review packets are structured attachment templates only. They do not certify any field until a real source row is attached and reviewed.",
-        "name": "Nb3Ge",
-        "next_action": "Resolve Tc row identity and phonon proxy convention before accepting any lambda_ep or mu_star patch.",
-        "primary_evidence_targets": [
-          "Tc_observed",
-          "Theta_D_K_or_omega_log_K"
-        ],
-        "queue_class": "a15_external_resolution_pair",
-        "source_priority": "external_resolution_required",
-        "source_review_fields": [
-          {
-            "current_status": "working_copy_context_present",
-            "field": "Tc_observed",
-            "required_source_fields": [
-              "source_title_or_doi",
-              "table_or_figure_identifier",
-              "row_locator",
-              "extracted_value",
-              "unit_basis",
-              "compatibility_note_with_working_copy"
-            ],
-            "review_stub": {
-              "compatibility_note_with_working_copy": null,
-              "extracted_value": null,
-              "review_status": "pending_source_attachment",
-              "row_locator": null,
-              "source_title_or_doi": null,
-              "table_or_figure_identifier": null,
-              "unit_basis": null
-            },
-            "working_context_note": "Working-copy Tc is known, but the exact source row still needs to be attached before patch review.",
-            "working_context_value": 23.2
-          },
-          {
-            "current_status": "proxy_unresolved",
-            "field": "Theta_D_K_or_omega_log_K",
-            "required_source_fields": [
-              "source_title_or_doi",
-              "table_or_figure_identifier",
-              "row_locator",
-              "extracted_value",
-              "unit_basis",
-              "compatibility_note_with_working_copy"
-            ],
-            "review_stub": {
-              "compatibility_note_with_working_copy": null,
-              "extracted_value": null,
-              "review_status": "pending_source_attachment",
-              "row_locator": null,
-              "source_title_or_doi": null,
-              "table_or_figure_identifier": null,
-              "unit_basis": null
-            },
-            "working_context_note": "Both Debye and omega_log proxy candidates are known internally, but the source-backed proxy convention for Nb3Ge is unresolved.",
-            "working_context_value": {
-              "comparison_omega_log_K": 169,
-              "raw_theta_D_K": 300
-            }
-          },
-          {
-            "current_status": "working_copy_context_present",
-            "field": "lambda_ep",
-            "required_source_fields": [
-              "source_title_or_doi",
-              "table_or_figure_identifier",
-              "row_locator",
-              "extracted_value",
-              "unit_basis",
-              "compatibility_note_with_working_copy"
-            ],
-            "review_stub": {
-              "compatibility_note_with_working_copy": null,
-              "extracted_value": null,
-              "review_status": "pending_source_attachment",
-              "row_locator": null,
-              "source_title_or_doi": null,
-              "table_or_figure_identifier": null,
-              "unit_basis": null
-            },
-            "working_context_note": "Internal comparison narrows the disagreement, but no external row has yet certified the lambda value.",
-            "working_context_value": {
-              "comparison_lambda_ep": 1.8,
-              "inverse_required_lambda_ep": 1.3630103124629445,
-              "raw_lambda_ep": 2.1
-            }
-          },
-          {
-            "current_status": "working_copy_context_present",
-            "field": "mu_star",
-            "required_source_fields": [
-              "source_title_or_doi",
-              "table_or_figure_identifier",
-              "row_locator",
-              "extracted_value",
-              "unit_basis",
-              "compatibility_note_with_working_copy"
-            ],
-            "review_stub": {
-              "compatibility_note_with_working_copy": null,
-              "extracted_value": null,
-              "review_status": "pending_source_attachment",
-              "row_locator": null,
-              "source_title_or_doi": null,
-              "table_or_figure_identifier": null,
-              "unit_basis": null
-            },
-            "working_context_note": "Current A15 packet keeps mu_star as a working convention; a row-specific citation is still required.",
-            "working_context_value": 0.13
-          }
-        ]
-      }
-    ]
-  },
-  "row_normalization_candidates": {
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\row_normalization_candidates.json",
-    "sha256": "2a0eb1b46748609a00c4c6af0725aaeabb5c2e62d8b69deace66e4040fa0791b",
-    "summary": {
-      "internal_consensus_candidates": 8,
-      "rows_needing_external_resolution": 2,
-      "rows_total": 10,
-      "rows_with_insufficient_internal_overlap": 0
-    }
-  },
-  "row_normalization_queue": {
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\row_normalization_queue.json",
-    "sha256": "9baf021a658debc60c07861dc0fd28583f9d50164313a2defc55dcf1daa4ade8",
-    "summary": {
-      "high_rows": 4,
-      "immediate_rows": 5,
-      "medium_rows": 1,
-      "rows_in_queue": 10
-    },
-    "top_rows": [
-      {
-        "comprehensive_lambda_ep": 0.6,
-        "comprehensive_mu_star": 0.11,
-        "current_relative_error_percent": 156.93515224496207,
-        "error_delta_percent": -136.69863972252753,
-        "lambda_gap_raw_minus_comprehensive": 0.20000000000000007,
-        "lambda_gap_raw_minus_required": 0.23202374338696763,
-        "lambda_required_for_observed_tc": 0.5679762566130324,
-        "name": "Vanadium (V)",
-        "normalization_target": "Verify row-level lambda_ep, theta_D/phonon proxy, and mu_star against source-backed literature or upstream table.",
-        "priority_band": "immediate",
-        "priority_score": 293.6337919674896,
-        "raw_lambda_ep": 0.8,
-        "raw_mu_star": 0.11,
-        "raw_theta_D_K": 380,
-        "signed_error_percent": 156.93515224496207,
-        "source": "MIT Junior Lab",
-        "substituted_relative_error_percent": 20.236512522434534,
-        "type": "Type-II",
-        "why_this_row_first": "Large internal package drift and large projected error reduction under substitution."
-      },
-      {
-        "comprehensive_lambda_ep": 0.38,
-        "comprehensive_mu_star": 0.1,
-        "current_relative_error_percent": 86.55242288064956,
-        "error_delta_percent": -79.76017418296496,
-        "lambda_gap_raw_minus_comprehensive": 0.04999999999999999,
-        "lambda_gap_raw_minus_required": 0.04564689097833724,
-        "lambda_required_for_observed_tc": 0.38435310902166275,
-        "name": "Aluminum (Al)",
-        "normalization_target": "Verify row-level lambda_ep, theta_D/phonon proxy, and mu_star against source-backed literature or upstream table.",
-        "priority_band": "immediate",
-        "priority_score": 166.31259706361453,
-        "raw_lambda_ep": 0.43,
-        "raw_mu_star": 0.1,
-        "raw_theta_D_K": 428,
-        "signed_error_percent": 86.55242288064956,
-        "source": "McMillan 1968",
-        "substituted_relative_error_percent": 6.792248697684595,
-        "type": "Type-I",
-        "why_this_row_first": "Large internal package drift and large projected error reduction under substitution."
-      },
-      {
-        "comprehensive_lambda_ep": 1.0,
-        "comprehensive_mu_star": 0.1,
-        "current_relative_error_percent": 73.61477118183707,
-        "error_delta_percent": -73.60417071147471,
-        "lambda_gap_raw_minus_comprehensive": 0.6000000000000001,
-        "lambda_gap_raw_minus_required": 0.5999310333668366,
-        "lambda_required_for_observed_tc": 1.0000689666331635,
-        "name": "Mercury (Hg)",
-        "normalization_target": "Verify row-level lambda_ep, theta_D/phonon proxy, and mu_star against source-backed literature or upstream table.",
-        "priority_band": "immediate",
-        "priority_score": 147.21894189331178,
-        "raw_lambda_ep": 1.6,
-        "raw_mu_star": 0.1,
-        "raw_theta_D_K": 72,
-        "signed_error_percent": 73.61477118183707,
-        "source": "Onnes 1911 / Kittel",
-        "substituted_relative_error_percent": 0.010600470362360673,
-        "type": "Type-I",
-        "why_this_row_first": "Large internal package drift and large projected error reduction under substitution."
-      },
-      {
-        "comprehensive_lambda_ep": 0.6,
-        "comprehensive_mu_star": 0.1,
-        "current_relative_error_percent": 65.53626864429087,
-        "error_delta_percent": -63.76837071885123,
-        "lambda_gap_raw_minus_comprehensive": 0.12,
-        "lambda_gap_raw_minus_required": 0.12345264910096776,
-        "lambda_required_for_observed_tc": 0.5965473508990322,
-        "name": "Tin (Sn)",
-        "normalization_target": "Verify row-level lambda_ep, theta_D/phonon proxy, and mu_star against source-backed literature or upstream table.",
-        "priority_band": "immediate",
-        "priority_score": 129.3046393631421,
-        "raw_lambda_ep": 0.72,
-        "raw_mu_star": 0.1,
-        "raw_theta_D_K": 200,
-        "signed_error_percent": 65.53626864429087,
-        "source": "Kittel",
-        "substituted_relative_error_percent": 1.767897925439639,
-        "type": "Type-I",
-        "why_this_row_first": "Large internal package drift and large projected error reduction under substitution."
-      },
-      {
-        "comprehensive_lambda_ep": 0.82,
-        "comprehensive_mu_star": 0.12,
-        "current_relative_error_percent": 65.32366701043355,
-        "error_delta_percent": -59.30780069029265,
-        "lambda_gap_raw_minus_comprehensive": 0.22000000000000008,
-        "lambda_gap_raw_minus_required": 0.24125976064824095,
-        "lambda_required_for_observed_tc": 0.7987402393517591,
-        "name": "Niobium (Nb)",
-        "normalization_target": "Verify row-level lambda_ep, theta_D/phonon proxy, and mu_star against source-backed literature or upstream table.",
-        "priority_band": "immediate",
-        "priority_score": 124.6314677007262,
-        "raw_lambda_ep": 1.04,
-        "raw_mu_star": 0.12,
-        "raw_theta_D_K": 275,
-        "signed_error_percent": 65.32366701043355,
-        "source": "Kittel / MIT",
-        "substituted_relative_error_percent": 6.015866320140905,
-        "type": "Type-II",
-        "why_this_row_first": "Large internal package drift and large projected error reduction under substitution."
-      }
-    ]
-  },
-  "row_normalization_status": {
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\row_normalization_status.json",
-    "sha256": "bee2f57606c0c994115b2e03967e0b58b2fb811c66abe69a195bc0dac2e63f62",
-    "summary": {
-      "high_rows": 4,
-      "immediate_rows": 5,
-      "medium_rows": 1,
-      "rows_pending_external_row_check": 10
-    }
-  },
-  "row_provenance_manifest": {
-    "cross_dataset_comparison": {
-      "comprehensive_dataset_hash": "08ddccdc33ba8c0abd4d72d58ad0e09b270e256c1c2569d3c8177b17d67c47df",
-      "interpretation": "This comparison is an internal provenance drift check between the raw McMillan gate table and the topic's broader comprehensive package. Large lambda gaps identify rows that need source normalization before any stronger superconductivity claim.",
-      "matched_row_count": 10,
-      "matched_rows": [
-        {
-          "comprehensive_lambda_ep": 0.38,
-          "comprehensive_mu_star": 0.1,
-          "comprehensive_omega_log_K": 210,
-          "lambda_gap_raw_minus_comprehensive": 0.04999999999999999,
-          "mu_star_gap_raw_minus_comprehensive": 0.0,
-          "name": "Aluminum (Al)",
-          "raw_gate_source": "McMillan 1968",
-          "raw_gate_type": "Type-I",
-          "raw_lambda_ep": 0.43,
-          "raw_mu_star": 0.1,
-          "raw_theta_D_K": 428,
-          "relative_error_percent": 86.55242288064956
-        },
-        {
-          "comprehensive_lambda_ep": 1.0,
-          "comprehensive_mu_star": 0.1,
-          "comprehensive_omega_log_K": 29,
-          "lambda_gap_raw_minus_comprehensive": 0.6000000000000001,
-          "mu_star_gap_raw_minus_comprehensive": 0.0,
-          "name": "Mercury (Hg)",
-          "raw_gate_source": "Onnes 1911 / Kittel",
-          "raw_gate_type": "Type-I",
-          "raw_lambda_ep": 1.6,
-          "raw_mu_star": 0.1,
-          "raw_theta_D_K": 72,
-          "relative_error_percent": 73.61477118183707
-        },
-        {
-          "comprehensive_lambda_ep": 1.12,
-          "comprehensive_mu_star": 0.11,
-          "comprehensive_omega_log_K": 52,
-          "lambda_gap_raw_minus_comprehensive": 0.42999999999999994,
-          "mu_star_gap_raw_minus_comprehensive": 0.009999999999999995,
-          "name": "Lead (Pb)",
-          "raw_gate_source": "MIT Junior Lab",
-          "raw_gate_type": "Type-I",
-          "raw_lambda_ep": 1.55,
-          "raw_mu_star": 0.12,
-          "raw_theta_D_K": 105,
-          "relative_error_percent": 33.975223995527934
-        },
-        {
-          "comprehensive_lambda_ep": 0.6,
-          "comprehensive_mu_star": 0.11,
-          "comprehensive_omega_log_K": 224,
-          "lambda_gap_raw_minus_comprehensive": 0.20000000000000007,
-          "mu_star_gap_raw_minus_comprehensive": 0.0,
-          "name": "Vanadium (V)",
-          "raw_gate_source": "MIT Junior Lab",
-          "raw_gate_type": "Type-II",
-          "raw_lambda_ep": 0.8,
-          "raw_mu_star": 0.11,
-          "raw_theta_D_K": 380,
-          "relative_error_percent": 156.93515224496207
-        },
-        {
-          "comprehensive_lambda_ep": 0.82,
-          "comprehensive_mu_star": 0.12,
-          "comprehensive_omega_log_K": 141,
-          "lambda_gap_raw_minus_comprehensive": 0.22000000000000008,
-          "mu_star_gap_raw_minus_comprehensive": 0.0,
-          "name": "Niobium (Nb)",
-          "raw_gate_source": "Kittel / MIT",
-          "raw_gate_type": "Type-II",
-          "raw_lambda_ep": 1.04,
-          "raw_mu_star": 0.12,
-          "raw_theta_D_K": 275,
-          "relative_error_percent": 65.32366701043355
-        },
-        {
-          "comprehensive_lambda_ep": 0.6,
-          "comprehensive_mu_star": 0.1,
-          "comprehensive_omega_log_K": 128,
-          "lambda_gap_raw_minus_comprehensive": 0.12,
-          "mu_star_gap_raw_minus_comprehensive": 0.0,
-          "name": "Tin (Sn)",
-          "raw_gate_source": "Kittel",
-          "raw_gate_type": "Type-I",
-          "raw_lambda_ep": 0.72,
-          "raw_mu_star": 0.1,
-          "raw_theta_D_K": 200,
-          "relative_error_percent": 65.53626864429087
-        },
-        {
-          "comprehensive_lambda_ep": 0.69,
-          "comprehensive_mu_star": 0.1,
-          "comprehensive_omega_log_K": 62,
-          "lambda_gap_raw_minus_comprehensive": 0.1200000000000001,
-          "mu_star_gap_raw_minus_comprehensive": 0.0,
-          "name": "Indium (In)",
-          "raw_gate_source": "Kittel",
-          "raw_gate_type": "Type-I",
-          "raw_lambda_ep": 0.81,
-          "raw_mu_star": 0.1,
-          "raw_theta_D_K": 112,
-          "relative_error_percent": 30.623739557942258
-        },
-        {
-          "comprehensive_lambda_ep": 1.67,
-          "comprehensive_mu_star": 0.13,
-          "comprehensive_omega_log_K": 151,
-          "lambda_gap_raw_minus_comprehensive": 0.13000000000000012,
-          "mu_star_gap_raw_minus_comprehensive": 0.0,
-          "name": "Nb3Sn",
-          "raw_gate_source": "Matthias 1954",
-          "raw_gate_type": "A15",
-          "raw_lambda_ep": 1.8,
-          "raw_mu_star": 0.13,
-          "raw_theta_D_K": 280,
-          "relative_error_percent": 56.317125564989745
-        },
-        {
-          "comprehensive_lambda_ep": 1.8,
-          "comprehensive_mu_star": 0.13,
-          "comprehensive_omega_log_K": 169,
-          "lambda_gap_raw_minus_comprehensive": 0.30000000000000004,
-          "mu_star_gap_raw_minus_comprehensive": 0.0,
-          "name": "Nb3Ge",
-          "raw_gate_source": "Gavaler 1973",
-          "raw_gate_type": "A15",
-          "raw_lambda_ep": 2.1,
-          "raw_mu_star": 0.13,
-          "raw_theta_D_K": 300,
-          "relative_error_percent": 48.83848988201212
-        },
-        {
-          "comprehensive_lambda_ep": 0.87,
-          "comprehensive_mu_star": 0.1,
-          "comprehensive_omega_log_K": 604,
-          "lambda_gap_raw_minus_comprehensive": 0.0,
-          "mu_star_gap_raw_minus_comprehensive": 0.0,
-          "name": "MgB2",
-          "raw_gate_source": "Nagamatsu 2001 Nature",
-          "raw_gate_type": "Two-Gap",
-          "raw_lambda_ep": 0.87,
-          "raw_mu_star": 0.1,
-          "raw_theta_D_K": 800,
-          "relative_error_percent": 6.432491732727168
-        }
-      ],
-      "priority_rows": [
-        {
-          "comprehensive_lambda_ep": 1.0,
-          "comprehensive_mu_star": 0.1,
-          "comprehensive_omega_log_K": 29,
-          "lambda_gap_raw_minus_comprehensive": 0.6000000000000001,
-          "mu_star_gap_raw_minus_comprehensive": 0.0,
-          "name": "Mercury (Hg)",
-          "raw_gate_source": "Onnes 1911 / Kittel",
-          "raw_gate_type": "Type-I",
-          "raw_lambda_ep": 1.6,
-          "raw_mu_star": 0.1,
-          "raw_theta_D_K": 72,
-          "relative_error_percent": 73.61477118183707
-        },
-        {
-          "comprehensive_lambda_ep": 1.12,
-          "comprehensive_mu_star": 0.11,
-          "comprehensive_omega_log_K": 52,
-          "lambda_gap_raw_minus_comprehensive": 0.42999999999999994,
-          "mu_star_gap_raw_minus_comprehensive": 0.009999999999999995,
-          "name": "Lead (Pb)",
-          "raw_gate_source": "MIT Junior Lab",
-          "raw_gate_type": "Type-I",
-          "raw_lambda_ep": 1.55,
-          "raw_mu_star": 0.12,
-          "raw_theta_D_K": 105,
-          "relative_error_percent": 33.975223995527934
-        },
-        {
-          "comprehensive_lambda_ep": 1.8,
-          "comprehensive_mu_star": 0.13,
-          "comprehensive_omega_log_K": 169,
-          "lambda_gap_raw_minus_comprehensive": 0.30000000000000004,
-          "mu_star_gap_raw_minus_comprehensive": 0.0,
-          "name": "Nb3Ge",
-          "raw_gate_source": "Gavaler 1973",
-          "raw_gate_type": "A15",
-          "raw_lambda_ep": 2.1,
-          "raw_mu_star": 0.13,
-          "raw_theta_D_K": 300,
-          "relative_error_percent": 48.83848988201212
-        },
-        {
-          "comprehensive_lambda_ep": 0.82,
-          "comprehensive_mu_star": 0.12,
-          "comprehensive_omega_log_K": 141,
-          "lambda_gap_raw_minus_comprehensive": 0.22000000000000008,
-          "mu_star_gap_raw_minus_comprehensive": 0.0,
-          "name": "Niobium (Nb)",
-          "raw_gate_source": "Kittel / MIT",
-          "raw_gate_type": "Type-II",
-          "raw_lambda_ep": 1.04,
-          "raw_mu_star": 0.12,
-          "raw_theta_D_K": 275,
-          "relative_error_percent": 65.32366701043355
-        },
-        {
-          "comprehensive_lambda_ep": 0.6,
-          "comprehensive_mu_star": 0.11,
-          "comprehensive_omega_log_K": 224,
-          "lambda_gap_raw_minus_comprehensive": 0.20000000000000007,
-          "mu_star_gap_raw_minus_comprehensive": 0.0,
-          "name": "Vanadium (V)",
-          "raw_gate_source": "MIT Junior Lab",
-          "raw_gate_type": "Type-II",
-          "raw_lambda_ep": 0.8,
-          "raw_mu_star": 0.11,
-          "raw_theta_D_K": 380,
-          "relative_error_percent": 156.93515224496207
-        }
-      ],
-      "status": "matched"
-    },
-    "cross_package_lambda_substitution_audit": {
-      "audited_rows": [
-        {
-          "error_delta_percent": -79.76017418296496,
-          "interpretation": "Negative error_delta_percent means the comprehensive-package substitution improves the raw gate for this row under the same Theta_D_K.",
-          "name": "Aluminum (Al)",
-          "raw_lambda_ep": 0.43,
-          "raw_mu_star": 0.1,
-          "raw_relative_error_percent": 86.55242288064956,
-          "substituted_lambda_ep": 0.38,
-          "substituted_mu_star": 0.1,
-          "substituted_relative_error_percent": 6.792248697684595
-        },
-        {
-          "error_delta_percent": -73.60417071147471,
-          "interpretation": "Negative error_delta_percent means the comprehensive-package substitution improves the raw gate for this row under the same Theta_D_K.",
-          "name": "Mercury (Hg)",
-          "raw_lambda_ep": 1.6,
-          "raw_mu_star": 0.1,
-          "raw_relative_error_percent": 73.61477118183707,
-          "substituted_lambda_ep": 1.0,
-          "substituted_mu_star": 0.1,
-          "substituted_relative_error_percent": 0.010600470362360673
-        },
-        {
-          "error_delta_percent": -28.920939466724047,
-          "interpretation": "Negative error_delta_percent means the comprehensive-package substitution improves the raw gate for this row under the same Theta_D_K.",
-          "name": "Lead (Pb)",
-          "raw_lambda_ep": 1.55,
-          "raw_mu_star": 0.12,
-          "raw_relative_error_percent": 33.975223995527934,
-          "substituted_lambda_ep": 1.12,
-          "substituted_mu_star": 0.11,
-          "substituted_relative_error_percent": 5.054284528803887
-        },
-        {
-          "error_delta_percent": -136.69863972252753,
-          "interpretation": "Negative error_delta_percent means the comprehensive-package substitution improves the raw gate for this row under the same Theta_D_K.",
-          "name": "Vanadium (V)",
-          "raw_lambda_ep": 0.8,
-          "raw_mu_star": 0.11,
-          "raw_relative_error_percent": 156.93515224496207,
-          "substituted_lambda_ep": 0.6,
-          "substituted_mu_star": 0.11,
-          "substituted_relative_error_percent": 20.236512522434534
-        },
-        {
-          "error_delta_percent": -59.30780069029265,
-          "interpretation": "Negative error_delta_percent means the comprehensive-package substitution improves the raw gate for this row under the same Theta_D_K.",
-          "name": "Niobium (Nb)",
-          "raw_lambda_ep": 1.04,
-          "raw_mu_star": 0.12,
-          "raw_relative_error_percent": 65.32366701043355,
-          "substituted_lambda_ep": 0.82,
-          "substituted_mu_star": 0.12,
-          "substituted_relative_error_percent": 6.015866320140905
-        },
-        {
-          "error_delta_percent": -63.76837071885123,
-          "interpretation": "Negative error_delta_percent means the comprehensive-package substitution improves the raw gate for this row under the same Theta_D_K.",
-          "name": "Tin (Sn)",
-          "raw_lambda_ep": 0.72,
-          "raw_mu_star": 0.1,
-          "raw_relative_error_percent": 65.53626864429087,
-          "substituted_lambda_ep": 0.6,
-          "substituted_mu_star": 0.1,
-          "substituted_relative_error_percent": 1.767897925439639
-        },
-        {
-          "error_delta_percent": -21.86637652220918,
-          "interpretation": "Negative error_delta_percent means the comprehensive-package substitution improves the raw gate for this row under the same Theta_D_K.",
-          "name": "Indium (In)",
-          "raw_lambda_ep": 0.81,
-          "raw_mu_star": 0.1,
-          "raw_relative_error_percent": 30.623739557942258,
-          "substituted_lambda_ep": 0.69,
-          "substituted_mu_star": 0.1,
-          "substituted_relative_error_percent": 8.75736303573308
-        },
-        {
-          "error_delta_percent": -10.013401619283222,
-          "interpretation": "Negative error_delta_percent means the comprehensive-package substitution improves the raw gate for this row under the same Theta_D_K.",
-          "name": "Nb3Sn",
-          "raw_lambda_ep": 1.8,
-          "raw_mu_star": 0.13,
-          "raw_relative_error_percent": 56.317125564989745,
-          "substituted_lambda_ep": 1.67,
-          "substituted_mu_star": 0.13,
-          "substituted_relative_error_percent": 46.30372394570652
-        },
-        {
-          "error_delta_percent": -16.729342814309874,
-          "interpretation": "Negative error_delta_percent means the comprehensive-package substitution improves the raw gate for this row under the same Theta_D_K.",
-          "name": "Nb3Ge",
-          "raw_lambda_ep": 2.1,
-          "raw_mu_star": 0.13,
-          "raw_relative_error_percent": 48.83848988201212,
-          "substituted_lambda_ep": 1.8,
-          "substituted_mu_star": 0.13,
-          "substituted_relative_error_percent": 32.109147067702246
-        },
-        {
-          "error_delta_percent": 0.0,
-          "interpretation": "Negative error_delta_percent means the comprehensive-package substitution improves the raw gate for this row under the same Theta_D_K.",
-          "name": "MgB2",
-          "raw_lambda_ep": 0.87,
-          "raw_mu_star": 0.1,
-          "raw_relative_error_percent": 6.432491732727168,
-          "substituted_lambda_ep": 0.87,
-          "substituted_mu_star": 0.1,
-          "substituted_relative_error_percent": 6.432491732727168
-        }
-      ],
-      "claim_boundary": "This is an internal sensitivity diagnostic only. It does not prove that the comprehensive package is source-correct; it only tests whether row drift is a major part of the raw-gate failure.",
-      "largest_improvements": [
-        {
-          "error_delta_percent": -136.69863972252753,
-          "interpretation": "Negative error_delta_percent means the comprehensive-package substitution improves the raw gate for this row under the same Theta_D_K.",
-          "name": "Vanadium (V)",
-          "raw_lambda_ep": 0.8,
-          "raw_mu_star": 0.11,
-          "raw_relative_error_percent": 156.93515224496207,
-          "substituted_lambda_ep": 0.6,
-          "substituted_mu_star": 0.11,
-          "substituted_relative_error_percent": 20.236512522434534
-        },
-        {
-          "error_delta_percent": -79.76017418296496,
-          "interpretation": "Negative error_delta_percent means the comprehensive-package substitution improves the raw gate for this row under the same Theta_D_K.",
-          "name": "Aluminum (Al)",
-          "raw_lambda_ep": 0.43,
-          "raw_mu_star": 0.1,
-          "raw_relative_error_percent": 86.55242288064956,
-          "substituted_lambda_ep": 0.38,
-          "substituted_mu_star": 0.1,
-          "substituted_relative_error_percent": 6.792248697684595
-        },
-        {
-          "error_delta_percent": -73.60417071147471,
-          "interpretation": "Negative error_delta_percent means the comprehensive-package substitution improves the raw gate for this row under the same Theta_D_K.",
-          "name": "Mercury (Hg)",
-          "raw_lambda_ep": 1.6,
-          "raw_mu_star": 0.1,
-          "raw_relative_error_percent": 73.61477118183707,
-          "substituted_lambda_ep": 1.0,
-          "substituted_mu_star": 0.1,
-          "substituted_relative_error_percent": 0.010600470362360673
-        },
-        {
-          "error_delta_percent": -63.76837071885123,
-          "interpretation": "Negative error_delta_percent means the comprehensive-package substitution improves the raw gate for this row under the same Theta_D_K.",
-          "name": "Tin (Sn)",
-          "raw_lambda_ep": 0.72,
-          "raw_mu_star": 0.1,
-          "raw_relative_error_percent": 65.53626864429087,
-          "substituted_lambda_ep": 0.6,
-          "substituted_mu_star": 0.1,
-          "substituted_relative_error_percent": 1.767897925439639
-        },
-        {
-          "error_delta_percent": -59.30780069029265,
-          "interpretation": "Negative error_delta_percent means the comprehensive-package substitution improves the raw gate for this row under the same Theta_D_K.",
-          "name": "Niobium (Nb)",
-          "raw_lambda_ep": 1.04,
-          "raw_mu_star": 0.12,
-          "raw_relative_error_percent": 65.32366701043355,
-          "substituted_lambda_ep": 0.82,
-          "substituted_mu_star": 0.12,
-          "substituted_relative_error_percent": 6.015866320140905
-        }
-      ],
-      "largest_worsenings": [],
-      "matched_row_count": 10,
-      "raw_average_relative_error_percent": 62.41493526953724,
-      "rows_improved_by_substitution": 9,
-      "rows_worsened_by_substitution": 0,
-      "status": "matched",
-      "substituted_average_relative_error_percent": 13.348013624673493
-    },
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\row_provenance_manifest.json",
-    "sha256": "1305e80ca5e8f310c3366593bd857b1b1b6772b953a36de69548b23f83e1e030"
-  },
   "run_status": "PASS",
-  "schema_version": "1.4",
-  "skipped_rows": [
-    {
-      "name": "YBCO (YBa2Cu3O7)",
-      "reason": "missing lambda_ep or non-BCS row for raw McMillan baseline",
-      "source": "Wu 1987 PRL",
-      "type": "High-Tc Cuprate"
-    },
-    {
-      "name": "BSCCO-2223",
-      "reason": "missing lambda_ep or non-BCS row for raw McMillan baseline",
-      "source": "Maeda 1988",
-      "type": "High-Tc Cuprate"
-    }
-  ],
-  "source_evidence_intake_stub": {
-    "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself turn the superconductivity topic into a predictive theory.",
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\source_evidence_intake_stub.json",
-    "sha256": "ec10e6e277aa422c34f1be4cd4889bf7e53727f4d6718f495931a4c751566845",
-    "source_targets": [
-      "Raw McMillan benchmark package",
-      "Allen-Dynes or comprehensive parameter package",
-      "Conventional-row normalization evidence package",
-      "High-Tc and hydride benchmark package",
-      "UET coherence or relativistic correction package"
-    ]
-  },
-  "source_evidence_readiness_matrix": {
-    "claim_boundary": "A ready row has enough provenance structure for source review. It does not itself upgrade a claim.",
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\source_evidence_readiness_matrix.json",
-    "sha256": "ccd9f2ab671c60b1a699f518057b9d41859c59d0fd673dac826fa3bd2cc2d505",
-    "summary": {
-      "source_targets_total": 5,
-      "targets_blocked_by_pending_evidence": 5,
-      "targets_ready_for_source_review": 0
-    }
-  },
+  "schema_version": "1.2",
   "source_lock": {
     "derived_inputs": [
       {
@@ -2050,17 +446,17 @@
     "external_source_records": [
       {
         "path": "docs/data/external/condensed_matter/superconductivity/mcmillan_1968/source_record.json",
-        "sha256": "2c50db09f5a65659a9f81a8af658a08a58fee918943a4b830c9c53949a278ece",
+        "sha256": "49c49b4d79c700f2839092c1874d426adf73d67ebea78755ef280be55d494404",
         "status": "present"
       },
       {
         "path": "docs/data/external/condensed_matter/superconductivity/allen_dynes_1975/source_record.json",
-        "sha256": "999f61a80f6341549f7105d5ffb0fde9d7468665fbd0294a0ded293e952c0425",
+        "sha256": "8e48de1825e64c1c24b9db47d104a4004cd0763b05fb410eccc1b7a45a87bfe3",
         "status": "present"
       },
       {
         "path": "docs/data/external/condensed_matter/superconductivity/nims_supercon/source_record.json",
-        "sha256": "e6a84ef50271e8f220f0e44d1bab5438e31d557b3a3a25f18837bfddd9334b3a",
+        "sha256": "5e5f09a30595988c79387267bb75e3b5a848b271f103a433f7be1e24ca6928c5",
         "status": "present"
       },
       {
@@ -2479,13 +875,8 @@
         "status": "present"
       },
       {
-        "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_primary_page_capture_record_20260516.json",
-        "sha256": "524fffa9d4ebccc860097927460259836938ae3603cd4489e2362997591cb439",
-        "status": "present"
-      },
-      {
         "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_citation_integrity_report.json",
-        "sha256": "e10c73257ec9fb976bf2713641b9f77739eda13a2e0e4d2ac3d76b027eddd8dc",
+        "sha256": "3b4d6ef53f49762743076761b2c71c7299e9a285e4c86df8b9626e16b9779030",
         "status": "present"
       },
       {
@@ -2495,17 +886,17 @@
       },
       {
         "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium/source_record.json",
-        "sha256": "7ed8bf7c9b27233c9d2a8eb862b8ef253176baffbbb8e4a45a1132c99900fcf4",
+        "sha256": "1aefccd3c60e4388df3842bcd81ad89ffdb0366235b346d2d9a08049ef8865fc",
         "status": "present"
       },
       {
         "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium/tc_text_capture_record.json",
-        "sha256": "6e5d0ae2664d4708a44919937843e3f6775cf0f6f2b5312ec4fdb1d0029edb4c",
+        "sha256": "915dbda30e78a9dcbd0792bc2b30c78140a7cb39e1364433682b188a9ed692e6",
         "status": "present"
       },
       {
         "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium/theta_text_capture_record.json",
-        "sha256": "ef136e48f3fc7473116605345530cd454cc4198e0774fc48e59449e3903cf9c6",
+        "sha256": "71755a2ec16b0e43bb44f4081dfbc14a0e9d1bba25cc5cca23853ca02d3e3758",
         "status": "present"
       },
       {
@@ -2535,17 +926,17 @@
       },
       {
         "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_compatibility_review_packet.json",
-        "sha256": "1b188b5d893bfc9978b43245fe8018f6f76f1c3cb416da71cfc69f0d04b86bf9",
+        "sha256": "857d3d657bcec8e02529274ac80dcd2f158741a423bc4637195fd54941d5c48f",
         "status": "present"
       },
       {
         "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_patch_block_decision.json",
-        "sha256": "9de15cc18227082ac43763fd6256dce9208842cce030380f2c94bf22f234ddba",
+        "sha256": "6426e0cdc1787715ec2c900aa5dba6aae52f722be356315ce8563120ff00b237",
         "status": "present"
       },
       {
         "path": "docs/data/external/condensed_matter/superconductivity/row_resolution_targets/vanadium_primary_capture_requirement_packet.json",
-        "sha256": "4ff17c408e565744d60c0f019ef00077dec13f4ac97aba603ae8421faa9d635c",
+        "sha256": "3d31fc8cb0ef54f231150a98b275d69a690290947f5475cc9a6ad23b9309e23a",
         "status": "present"
       },
       {
@@ -2560,66 +951,8 @@
       }
     ],
     "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\source_lock_manifest.json",
-    "sha256": "ec9a7069c5c596ed876a6fb3a3f2a607c76991dbc10fcd72b58455efd242eec0"
+    "sha256": "b5351b859a0c7022ef6d024aa61518e6145d38a8fa9babdaaa023414d226b8d6"
   },
-  "source_summary": [
-    {
-      "average_relative_error_percent": 95.455188120245,
-      "materials_tested": 2,
-      "materials_within_20_percent": 0,
-      "mean_signed_error_percent": 95.455188120245,
-      "source": "MIT Junior Lab"
-    },
-    {
-      "average_relative_error_percent": 86.55242288064956,
-      "materials_tested": 1,
-      "materials_within_20_percent": 0,
-      "mean_signed_error_percent": 86.55242288064956,
-      "source": "McMillan 1968"
-    },
-    {
-      "average_relative_error_percent": 73.61477118183707,
-      "materials_tested": 1,
-      "materials_within_20_percent": 0,
-      "mean_signed_error_percent": 73.61477118183707,
-      "source": "Onnes 1911 / Kittel"
-    },
-    {
-      "average_relative_error_percent": 65.32366701043355,
-      "materials_tested": 1,
-      "materials_within_20_percent": 0,
-      "mean_signed_error_percent": 65.32366701043355,
-      "source": "Kittel / MIT"
-    },
-    {
-      "average_relative_error_percent": 56.317125564989745,
-      "materials_tested": 1,
-      "materials_within_20_percent": 0,
-      "mean_signed_error_percent": 56.317125564989745,
-      "source": "Matthias 1954"
-    },
-    {
-      "average_relative_error_percent": 48.83848988201212,
-      "materials_tested": 1,
-      "materials_within_20_percent": 0,
-      "mean_signed_error_percent": 48.83848988201212,
-      "source": "Gavaler 1973"
-    },
-    {
-      "average_relative_error_percent": 48.080004101116565,
-      "materials_tested": 2,
-      "materials_within_20_percent": 0,
-      "mean_signed_error_percent": 48.080004101116565,
-      "source": "Kittel"
-    },
-    {
-      "average_relative_error_percent": 6.432491732727168,
-      "materials_tested": 1,
-      "materials_within_20_percent": 1,
-      "mean_signed_error_percent": -6.432491732727168,
-      "source": "Nagamatsu 2001 Nature"
-    }
-  ],
   "status": "FAIL",
   "thresholds": {
     "average_relative_error_percent_max": 20.0,

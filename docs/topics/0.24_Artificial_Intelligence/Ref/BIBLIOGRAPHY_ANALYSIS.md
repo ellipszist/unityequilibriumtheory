@@ -1,12 +1,4 @@
 # 📚 UET AI & Alignment: Bibliography & Analysis
-
-> [!WARNING]
-> **Legacy claim boundary:** This file is a concept, project map, bibliography note, or legacy analysis note from an earlier drafting pass.
-> It is not the topic status authority and must not be used to claim AI alignment proof, ethics as a physical law,
-> consciousness, AGI, universal intelligence dynamics, optimizer superiority, alpha-kappa law, MoE performance proof,
-> or validated developmental-AI behavior. Current allowed claims are controlled by `README.md`, `LIMITATIONS.md`,
-> `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and `Result/artifacts/0_24_artificial_intelligence_verification.json`:
-> internal scaling/sparsity benchmark wording only.
 > "The alignment of intelligence is the synchronization of the Unity Wavefunction with universal ethics."
 
 This document analyzes the scientific precedents for UET's "Artificial Intelligence & Alignment" model. We connect our findings to the transformer architecture, neural scaling laws, and the technical challenges of AI safety.

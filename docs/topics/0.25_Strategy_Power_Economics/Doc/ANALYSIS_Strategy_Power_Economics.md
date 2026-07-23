@@ -1,14 +1,4 @@
 # 🔬 ANALYSIS: Strategy, Power & Economics (Social Equilibrium)
-> [!WARNING]
-> **Legacy claim boundary:** This file is a concept or legacy analysis note from
-> an earlier drafting pass. It is not the topic status authority and must not be
-> used to claim market prediction, policy causality, strategic superiority,
-> Nash-equilibrium improvement, social stabilization, historical-collapse proof,
-> geopolitical forecasting, 8-billion resonance validation, world-lease proof,
-> or economic-law confirmation. Current allowed claims are controlled by
-> `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`,
-> `DATA_MANIFEST.md`, and
-> `Result/artifacts/0_25_strategy_power_economics_verification.json`.
 
 > **File/Script:** `docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_Global_Market_Dynamics.py`
 > **Role:** Final Master Unification (Axiom 2 & 4)

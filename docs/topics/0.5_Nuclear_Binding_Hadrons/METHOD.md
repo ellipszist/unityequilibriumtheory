@@ -19,9 +19,6 @@ This topic studies whether current UET-inspired nuclear binding and hadron-scale
 - `Code/03_Research/Research_Nuclear_Binding_SourceLocked.py`
 - `Code/03_Research/Research_Proton_Radius.py`
 - `Code/03_Research/Research_QCD_Running.py`
-- `Data/03_Research/source_evidence_intake_stub.json`
-- `Data/03_Research/source_evidence_readiness_matrix.json`
-- `Data/03_Research/branch_claim_gate.json`
 
 ## Variable framing
 
@@ -33,7 +30,6 @@ This topic studies whether current UET-inspired nuclear binding and hadron-scale
 - The primary strict verifier now uses a source-backed AME2020 extracted subset and a source-backed proton-radius benchmark.
 - The topic now also maintains a separate full-table diagnostic layer for the parsed AME2020 coverage; that layer is descriptive and does not replace the strict subset gate.
 - Heavy nuclei and light nuclei should be interpreted differently because the liquid-drop-style branch is intended mainly for larger nuclei.
-- Hadron, QCD, and confinement branches should be interpreted separately from the heavy-nucleus binding gate until they have their own audit-grade verifiers.
 
 ## Domain of validity
 

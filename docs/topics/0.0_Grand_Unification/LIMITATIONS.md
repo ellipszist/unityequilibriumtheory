@@ -7,7 +7,5 @@
 - This topic delegates formulas, constants, and data to subordinate topics; it must inherit their blockers and limitations.
 - Current integration verification reads subordinate artifact PASS/WARN/FAIL statuses, but it still covers only the selected dependency manifest, not all possible `0.1-0.26` bridges.
 - A clean `0.0` run cannot promote a subordinate topic that is heuristic, benchmark-fed, warning, or failing.
-- `integration_claim_scope_gate` is the topic-level export controller. It can allow integration/governance wording, but it must block master-proof, Tier-A promotion, and theory-closure wording while subordinate statuses or claim gates remain blocked.
 - The symbolic master-equation sketch does not close units or prove equivalence to General Relativity, quantum mechanics, or mass generation by itself.
 - Beta sensitivity runs are diagnostic integration behavior, not evidence that all scales are governed by one verified parameter.
-- Topic-level source-evidence and branch-claim gates now make that boundary explicit: accepted evidence stops at integration run-contract and dependency governance, not grand-unification closure.

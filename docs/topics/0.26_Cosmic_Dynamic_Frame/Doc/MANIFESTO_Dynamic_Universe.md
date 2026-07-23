@@ -1,12 +1,4 @@
 # 🌌 The Dynamic Universe Manifesto
-> [!WARNING]
-> **Legacy claim boundary:** This file is a concept/hypothesis note from an
-> earlier drafting pass. It is not the topic status authority and must not be
-> used to claim dark-matter replacement, validated dynamic-frame cosmology,
-> Pioneer anomaly explanation, toroidal cosmology closure, or cosmic-fluid
-> proof. Current allowed claims are controlled by `README.md`, `LIMITATIONS.md`,
-> `VERIFICATION_SPEC.md`, and
-> `Result/artifacts/0_26_cosmic_dynamic_frame_verification.json`.
 > **"We are not standing still. We are falling."**
 
 ---

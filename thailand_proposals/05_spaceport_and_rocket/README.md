@@ -1,8 +1,8 @@
 # โครงการเมกะโปรเจกต์ท่าอวกาศยานชายฝั่งสงขลาและระบบวิศวกรรมจรวด (Songkhla Coastal Spaceport & Rocket Project)
 
-**Date Added:** 2026-05-28  
-**Status:** 💡 Idea (ไอเดียตั้งต้น) / 📝 Pending Research (รอการวิจัย)  
-**Category:** Infrastructure / Aerospace Logistics / Environmental Conservation / Geophysics  
+**Date Added:** 2026-05-28
+**Status:** 💡 Idea (ไอเดียตั้งต้น) / 📝 Pending Research (รอการวิจัย)
+**Category:** Infrastructure / Aerospace Logistics / Environmental Conservation / Geophysics
 
 ---
 

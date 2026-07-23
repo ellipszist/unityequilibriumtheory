@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "canonical_root": "uet_history/3_publish/books",
+  "rules": {
+    "existing_folder_wins": true,
+    "new_semantic_aliases_allowed": false,
+    "raw_directories_public_by_default": false,
+    "draft_directories": ["1_raw", "ch_drafts"]
+  },
+  "books": [
+    {
+      "book_id": "00_uet_core_theory",
+      "title": "Core UET Theory",
+      "canonical_source_path": "uet_history/3_publish/books/00_uet_core_theory",
+      "public_path": "uet_history/3_publish/books/00_uet_core_theory",
+      "state": "public_curated",
+      "public_files": ["README.md"]
+    },
+    {
+      "book_id": "0.1_origin_of_wealth",
+      "title": "The Origin of Wealth",
+      "canonical_source_path": "uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth",
+      "public_path": "uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth",
+      "state": "public_curated",
+      "public_files": ["README.md", "book_1_blueprint.md"],
+      "excluded_local_paths": ["1_raw/", "ch_drafts/"]
+    },
+    {
+      "book_id": "0.2_ai_and_the_divergence",
+      "title": "AI and the Divergence",
+      "canonical_source_path": "uet_history/3_publish/books/0.2 Econmi - AI and the Divergence",
+      "public_path": "uet_history/3_publish/books/0.2 Econmi - AI and the Divergence",
+      "state": "local_only",
+      "public_files": []
+    },
+    {
+      "book_id": "0.3_dynamic_energy_money",
+      "title": "Dynamic Energy Money",
+      "canonical_source_path": "uet_history/3_publish/books/0.3 Econmi - Dynamic Energy Money",
+      "public_path": "uet_history/3_publish/books/0.3 Econmi - Dynamic Energy Money",
+      "state": "local_only",
+      "public_files": []
+    },
+    {
+      "book_id": "01_bio",
+      "title": "Biology",
+      "canonical_source_path": "uet_history/3_publish/books/01 bio",
+      "public_path": "uet_history/3_publish/books/01 bio",
+      "state": "local_only",
+      "public_files": []
+    },
+    {
+      "book_id": "02_bio_psycho",
+      "title": "Biology and Psychology",
+      "canonical_source_path": "uet_history/3_publish/books/02 bio+psycho",
+      "public_path": "uet_history/3_publish/books/02 bio+psycho",
+      "state": "local_only",
+      "public_files": []
+    },
+    {
+      "book_id": "03_psy_econmi",
+      "title": "Psychology and Economics",
+      "canonical_source_path": "uet_history/3_publish/books/03 psy + Econmi",
+      "public_path": "uet_history/3_publish/books/03 psy + Econmi",
+      "state": "local_only",
+      "public_files": []
+    },
+    {
+      "book_id": "04_thai_politics",
+      "title": "Thai Politics",
+      "canonical_source_path": "uet_history/3_publish/books/04_thai_politics",
+      "public_path": "uet_history/3_publish/books/04_thai_politics",
+      "state": "local_only",
+      "public_files": []
+    },
+    {
+      "book_id": "05_reformation_of_the_mind",
+      "title": "Reformation of the Mind",
+      "canonical_source_path": "uet_history/3_publish/books/05_reformation_of_the_mind",
+      "public_path": "uet_history/3_publish/books/05_reformation_of_the_mind",
+      "state": "local_only",
+      "public_files": []
+    },
+    {
+      "book_id": "deprecated_origin_of_wealth_alias",
+      "title": "Retired duplicate alias",
+      "canonical_source_path": null,
+      "public_path": "uet_history/3_publish/books/origin_of_wealth_and_economics",
+      "state": "deprecated_alias",
+      "replacement_book_id": "0.1_origin_of_wealth",
+      "public_files": []
+    }
+  ]
+}

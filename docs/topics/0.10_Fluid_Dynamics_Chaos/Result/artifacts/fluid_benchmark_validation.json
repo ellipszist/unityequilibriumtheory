@@ -1,14 +1,4 @@
 {
-  "branch_claim_gate": {
-    "claim_boundary": "This gate cannot raise the topic above the current internal speed/stability benchmark package.",
-    "path": "Data/03_Research/branch_claim_gate.json",
-    "sha256": "8fb310883a9e42ae6d084c412e4d926013006e1a811d995927135df6d70068d3",
-    "summary": {
-      "accepted_now": 2,
-      "blocked_for_strong_claims": 3,
-      "branches_total": 5
-    }
-  },
   "claim_boundary": "PASS means the UET implementation beat the embedded simplified comparator under this grid/timing/stability gate. It does not establish external CFD accuracy or a Navier-Stokes theorem result.",
   "config": {
     "comparator": "SimplifiedNSSolver embedded in Proof_Turbulence_Benchmarks.py",
@@ -30,96 +20,11 @@
     "tensorflow_version": null,
     "torch_version": "2.10.0+cpu"
   },
-  "fluid_claim_scope_gate": {
-    "allowed_claims_now": [
-      {
-        "artifact_role": "primary internal benchmark gate",
-        "claim": "The current UET implementation passes the repository internal speed/stability benchmark against the embedded simplified comparator.",
-        "formula_role": "uses existing UET master-equation implementation; does not audit external CFD equations",
-        "source_evidence_readiness": "ready_for_internal_review",
-        "status": "PASS"
-      },
-      {
-        "artifact_role": "finite-output diagnostic",
-        "claim": "The stress-field run produced finite values under the declared synthetic stress diagnostic.",
-        "formula_role": "diagnostic stability check, not a global regularity proof",
-        "source_evidence_readiness": "ready_for_internal_review",
-        "status": "PASS"
-      }
-    ],
-    "blocked_claims": [
-      {
-        "blocking_reason": "No source-backed external CFD/turbulence validation dataset is packaged as a primary gate.",
-        "claim": "UET is externally validated as a CFD or turbulence solver.",
-        "next_evidence_required": [
-          "dataset identity and upstream source",
-          "case definition and unit basis",
-          "artifact-backed baseline comparison"
-        ],
-        "status": "BLOCKED"
-      },
-      {
-        "blocking_reason": "The current benchmark uses dimensionless internal fields rather than physical fluid-property cases.",
-        "claim": "UET establishes physical Reynolds-number fluid validation.",
-        "next_evidence_required": [
-          "fluid-property sources",
-          "boundary-condition package",
-          "declared Reynolds-number validation workflow"
-        ],
-        "status": "BLOCKED"
-      },
-      {
-        "blocking_reason": "The current script is a benchmark artifact, not an audit-grade theorem package.",
-        "claim": "UET solves or proves Navier-Stokes/Millennium-level regularity claims.",
-        "next_evidence_required": [
-          "assumption registry",
-          "formal theorem statement",
-          "proof artifact with independent review status"
-        ],
-        "status": "BLOCKED"
-      }
-    ],
-    "blocked_export_phrases": [
-      "Navier-Stokes Millennium problem solved",
-      "global smoothness proved",
-      "external CFD validated",
-      "turbulence closure established",
-      "production CFD replacement"
-    ],
-    "branch_claim_gate_summary": {
-      "accepted_now": 2,
-      "blocked_for_strong_claims": 3,
-      "branches_total": 5
-    },
-    "claim_boundary": "A PASS artifact supports only the declared internal implementation benchmark and finite-output diagnostic. External CFD, physical fluid validation, turbulence closure, and theorem-level claims remain blocked.",
-    "claim_class": "C_internal_benchmark_only",
-    "controller_reason": "The internal benchmark passed, but topic-level export remains warning-gated because external CFD validation, physical Reynolds-number cases, and theorem claims are not packaged.",
-    "controller_status": "WARN",
-    "machine_readable_next_blockers": [
-      "external_cfd_validation_dataset_missing",
-      "physical_reynolds_number_gate_missing",
-      "navier_stokes_theorem_package_missing"
-    ],
-    "schema_version": "1.0",
-    "source_evidence_summary": {
-      "source_targets_total": 5,
-      "targets_blocked_by_pending_evidence": 4,
-      "targets_ready_for_source_review": 1
-    },
-    "topic": "0.10_Fluid_Dynamics_Chaos"
-  },
   "input_hashes": {
-    "benchmark_script": "d530e4149fa5bbf042a92a080d81240a30d453931890c1831c0430b68600070c",
+    "benchmark_script": "4c5c011214563102e55fc7f7a7e5bf726612c4c888eaa54560ff93933f5b047c",
     "source_lock_manifest": "d65719d433e75fe2dd99ae9d37fcc9aedb7a3070dccaa1bbea54d103657ea17b",
     "uet_master_equation": "ef3acb139bc4d4768f92c5fe97b61c0837a0b25d31cde77306293953f28c3414"
   },
-  "interpretation": "This artifact supports an internal implementation speed benchmark and a finite-output stress diagnostic. It does not validate external CFD accuracy or theorem-level Navier-Stokes claims.",
-  "limitations": [
-    "The current comparator is simplified and internal to the repository.",
-    "Speedup is environment-sensitive and should not be treated as external solver superiority.",
-    "No external CFD validation dataset is currently part of the primary gate.",
-    "Theorem-level Navier-Stokes or Millennium claims remain blocked."
-  ],
   "metrics": {
     "accepted_claim_branches": 2,
     "blocked_claim_exports": 5,
@@ -162,28 +67,6 @@
     ]
   },
   "seed": 42,
-  "source_evidence_intake_stub": {
-    "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself validate CFD accuracy or theorem-level Navier-Stokes claims.",
-    "path": "Data/03_Research/source_evidence_intake_stub.json",
-    "sha256": "842ae12732e2b720b1934396b3eea36ce733a6b99f2804e3d06681a34d443e13",
-    "source_targets": [
-      "Embedded speed and stability benchmark package",
-      "UET master-equation implementation package",
-      "External CFD validation dataset package",
-      "Physical Reynolds-number validation package",
-      "Navier-Stokes theorem or proof package"
-    ]
-  },
-  "source_evidence_readiness_matrix": {
-    "claim_boundary": "A ready row has enough provenance structure for source review. It does not itself upgrade a claim.",
-    "path": "Data/03_Research/source_evidence_readiness_matrix.json",
-    "sha256": "9e6cb9544d0c8c38078ababeda7b03436c35f5f849635800d402df030773bbfb",
-    "summary": {
-      "source_targets_total": 5,
-      "targets_blocked_by_pending_evidence": 4,
-      "targets_ready_for_source_review": 1
-    }
-  },
   "thresholds": {
     "min_speedup": 2.0,
     "requires_stability": true

@@ -58,7 +58,6 @@ Expected artifact:
 - `Result/artifacts/0_19_gravity_gr_verification.json`
 
 The artifact records dataset hash, CODATA DOI, formula IDs, threshold, engine `G`, and Planck-unit metrics.
-It must also record `gravity_claim_scope_gate`, which allows only the constant checkpoint and derived-unit claims while blocking G derivation, GR validation, equivalence-principle proof, short-range gravity, singularity, and quantum-gravity claims.
 
 ## Core GR program dependency (candidate mathematics)
 
@@ -81,8 +80,5 @@ It must also record `gravity_claim_scope_gate`, which allows only the constant c
 - `UPDATE_LOG.md`: durable record of dependency hardening passes.
 - `METHOD.md`: evidence lanes and dependency policy.
 - `LIMITATIONS.md`: boundaries for GR, equivalence, and singularity claims.
-- `Data/03_Research/source_evidence_intake_stub.json`: provenance intake for constants and future GR lanes.
-- `Data/03_Research/source_evidence_readiness_matrix.json`: readiness gate for source review.
-- `Data/03_Research/branch_claim_gate.json`: branch-level claim ceiling.
 - `Code/01_Engine/Engine_Gravity_GR.py`: constant package and weak-field calculations.
 - `Code/03_Research/Research_G_Constant.py`: primary verifier.

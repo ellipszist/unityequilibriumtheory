@@ -5,6 +5,3 @@ uet_history/** linguist-documentation
 
 # Mark generated/vendored files
 *.lock linguist-generated
-
-# Preserve source-capture hashes for atomic external holdouts
-docs/topics/0.20_Atomic_Physics/Data/03_Research/external_holdouts/** text eol=lf

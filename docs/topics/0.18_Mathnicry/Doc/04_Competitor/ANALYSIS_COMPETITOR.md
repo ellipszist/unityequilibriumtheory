@@ -1,12 +1,4 @@
 # 🔬 ANALYSIS: 0.18 Competitor Benchmarks
-> [!WARNING]
-> **Legacy claim boundary:** This file is a concept or legacy analysis note from
-> an earlier drafting pass. It is not the topic status authority and must not be
-> used to claim theorem proof, Millennium Problem resolution, P-vs-NP/Riemann/
-> Collatz/BSD closure, external quantum validation, or formal proof
-> verification. Current allowed claims are controlled by `README.md`,
-> `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `DATA_MANIFEST.md`, and
-> `Result/artifacts/0_18_mathnicry_verification.json`.
 
 > **File/Script:** `docs/topics/0.18_Quantum_Computing/Doc/04_Competitor/`
 > **Role:** Competitor (Benchmarking & Comparison)

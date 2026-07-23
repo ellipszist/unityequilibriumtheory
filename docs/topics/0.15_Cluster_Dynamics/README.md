@@ -39,9 +39,6 @@ flowchart LR
 | Data | Real source referenced, mixed working copies | `Data/Bullet_Cluster_Coordinates.json`, `Data/03_Research/*.json` | Bullet Cluster and cluster-virial source labels are available locally. | Some files still need upstream URL/DOI normalization and transcription notes. |
 | Formula | Reviewed registry | `FORMULA_AUDIT.md` | Main virial, acceleration, Fisher-halo, and toy-drag formulas are mapped to code. | Several bridge constants remain heuristic or model-unit only. |
 | Verification | Runnable diagnostic artifact | `Code/03_Research/Research_BulletCluster_Offset.py` | Checks qualitative separation-sign agreement and records dataset hash. | Does not predict kpc offset magnitude or lensing mass map. |
-| Source evidence workflow | Structured provenance gate | `Data/03_Research/source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json` | source-review queue | Upstream archival capture, calibration, and multi-cluster packages are still missing. |
-| Branch claim gate | Structured claim ceiling | `Data/03_Research/branch_claim_gate.json` | diagnostic-only claim control | Cluster diagnostics do not promote dark-matter replacement claims. |
-| Claim-scope gate | Artifact export controller | `cluster_claim_scope_gate` in artifact | blocks cluster/dark-matter overclaim | Current `WARN` remains diagnostic until kpc calibration and lensing evidence exist. |
 | Claims | Bounded to diagnostic cluster benchmark | this README, `METHOD.md`, `LIMITATIONS.md` | Supports exploratory cluster-dynamics diagnostics. | Cannot claim closed missing-mass theory or dark-matter-free proof. |
 | Dependencies | Important but limited | `0.0`, `0.1`, `0.3`, `0.23`, `0.26` | May inform cross-topic structure only with inherited limitations. | Any downstream theory claim must wait for calibrated artifacts. |
 
@@ -56,7 +53,6 @@ Expected artifact:
 - `Result/artifacts/0_15_cluster_dynamics_verification.json`
 
 Current expected status is `WARN`, because the model can show qualitative separation but has no dimensional calibration to the observed kpc offsets.
-The artifact-level `cluster_claim_scope_gate` must block Bullet Cluster solution, dark-matter replacement, virial-resolution, lensing-map, and JWST formation claims until those branches have primary artifacts.
 
 ## Key Files
 
@@ -65,9 +61,6 @@ The artifact-level `cluster_claim_scope_gate` must block Bullet Cluster solution
 - `VERIFICATION_SPEC.md`: primary command, artifact contract, and current acceptance boundary.
 - `METHOD.md`: modeling lanes and dependency policy.
 - `LIMITATIONS.md`: explicit boundaries on cluster and dark-matter claims.
-- `Data/03_Research/source_evidence_intake_stub.json`: provenance intake for benchmark and bridge upgrades.
-- `Data/03_Research/source_evidence_readiness_matrix.json`: readiness gate for source review.
-- `Data/03_Research/branch_claim_gate.json`: branch-level claim ceiling.
 - `Code/01_Engine/cluster_solver.py`: virial and acceleration-bridge calculations.
 - `Code/01_Engine/Engine_Cluster_Dynamics.py`: grid information-halo engine.
 - `Code/03_Research/Research_BulletCluster_Offset.py`: primary diagnostic verifier.

@@ -1,7 +1,4 @@
 # 📚 UET Complex Systems: Bibliography & Analysis
-> [!WARNING]
-> **Legacy claim boundary:** This file is a legacy bibliography note, not the topic status authority. It must not be used to claim a universal complexity law, clinical HRV validation, SOC power-law verification, market prediction, climate proof, inequality/social system proof, or cross-domain unification. Current allowed claims are controlled by `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and `Result/artifacts/0_14_complex_systems_verification.json`: source-referenced derived-RR HRV run-contract evidence only.
-
 > "Complexity is the Unity Field expressing itself through infinite recursion."
 
 This document analyzes the scientific precedents for UET's "Complex Scale Unification". We connect our findings to emergence, network theory, and self-organization.

@@ -38,10 +38,10 @@ flowchart LR
 | Layer | Current status | Evidence path | What strengthens the theory next |
 | :-- | :-- | :-- | :-- |
 | Core mechanism | Dynamic information-fluid frame with drag/wake interpretation | `METHOD.md`, `FORMULA_AUDIT.md` | Derive drag, wake, and frame terms from explicit units and compare against baselines. |
-| Data | Laniakea/Cosmicflows/Pioneer source records plus local working copies; three lanes now mapped as partial | `DATA_MANIFEST.md`, `Data/03_Research/source_lock_manifest.json`, `Data/03_Research/source_evidence_intake_stub.json`, `Data/03_Research/source_evidence_readiness_matrix.json` | Archive raw tables, observer frames, distance calibration, preprocessing, and upstream hashes. |
+| Data | Laniakea/Cosmicflows/Pioneer source records plus local working copies | `DATA_MANIFEST.md`, `Data/03_Research/source_lock_manifest.json` | Archive raw tables, observer frames, distance calibration, preprocessing, and upstream hashes. |
 | Formula | Reviewed formula audit separates rotation, fluid correction, decay, Pioneer drag, viscosity analogy, and torus visuals | `FORMULA_AUDIT.md` | Link galaxy-fit claims to `0.1` artifacts and add uncertainty-aware residual metrics. |
-| Verification | Primary artifact hashes local inputs plus external source records, but remains visualization/provenance only | `VERIFICATION_SPEC.md`, `Result/artifacts/0_26_cosmic_dynamic_frame_verification.json`, `Data/03_Research/source_evidence_readiness_matrix.json` | Add numeric flow residual gates and model/baseline comparisons. |
-| Theory dependency | Candidate mechanism layer for galaxy rotation and integration claims | `0.1_Galaxy_Rotation_Problem`, `0.0_Grand_Unification`, `0.23_Unity_Scale_Link`, `Data/03_Research/dependency_claim_gate.json` | State which claims inherit the dynamic-frame limitations and which remain independent. |
+| Verification | Primary artifact hashes local inputs plus external source records, but remains visualization/provenance only | `VERIFICATION_SPEC.md`, `Result/artifacts/0_26_cosmic_dynamic_frame_verification.json` | Add numeric flow residual gates and model/baseline comparisons. |
+| Theory dependency | Candidate mechanism layer for galaxy rotation and integration claims | `0.1_Galaxy_Rotation_Problem`, `0.0_Grand_Unification`, `0.23_Unity_Scale_Link` | State which claims inherit the dynamic-frame limitations and which remain independent. |
 | Limitation | High conceptual importance, incomplete raw-data and baseline package | `LIMITATIONS.md` | Separate physical mechanism, empirical benchmark, analogy, and speculative topology. |
 
 ## Problem And Method
@@ -56,9 +56,8 @@ flowchart LR
 | :-- | :-- | :-- | :-- |
 | Laniakea flow map | Can the topic-local landmark package load and render? | Figure artifact written | WARN |
 | Source identity | Are Laniakea/Cosmicflows/Pioneer source records pinned? | Source records and hashes present | WARN |
-| Cosmicflows numeric gate | Are raw flow residuals tested? | Not yet; visualization/provenance is separated from numeric residual evidence | OPEN |
-| Baseline comparison | Is there a named comparator and residual threshold? | Not yet | OPEN |
-| Pioneer branch | Is a thermal-recoil competitor included? | Source record added; numeric residual package still absent | OPEN |
+| Cosmicflows numeric gate | Are raw flow residuals tested? | Not yet | OPEN |
+| Pioneer branch | Is a thermal-recoil competitor included? | Not yet | OPEN |
 | Dark-matter replacement | Is a full model comparison established? | Not yet | OPEN |
 | Toroidal cosmology | Is there an observable gate? | Not yet | OPEN |
 
@@ -97,16 +96,5 @@ outside the current claim boundary.
 - `VERIFICATION_SPEC.md`: command, inputs, threshold, artifact, and interpretation policy.
 - `LIMITATIONS.md`: claim boundaries and blockers before any paper-facing dynamic-frame claim.
 - `Code/03_Research/Research_Cosmic_Flows.py`: primary provenance/visualization verifier.
-- `Data/03_Research/source_evidence_intake_stub.json`: intake sheet for unresolved upstream raw tables, frame metadata, and Pioneer baseline evidence.
-- `Data/03_Research/source_evidence_readiness_matrix.json`: workflow gate showing which source packages are still blocked by missing evidence fields.
-- `Data/03_Research/dependency_claim_gate.json`: inherited-claim gate for `0.1`, `0.23`, and `0.0`.
-- `dynamic_frame_claim_gate` in the verification artifact: export controller for allowed visualization/provenance claims, blocked replacement claims, blocked export phrases, and next residual/source/dependency blockers.
 
-*Core hardening status: source records pinned, verifier-artifact enabled, source-evidence, dependency, and numeric-residual gates enabled, raw flow tables and model residual gates still open.*
-
-Current provenance snapshot:
-
-- Laniakea package: `5/6` fields complete, blocked only by missing original raw/reconstruction filename
-- Cosmicflows-3 subset package: `4/6` fields complete, blocked by missing original filename and subset-selection rule
-- Pioneer anomaly package: `5/6` fields complete, blocked only by missing original raw filename
-- Pioneer thermal-recoil competitor baseline: `0/6` fields complete, still fully open
+*Core hardening status: source records pinned, verifier-artifact enabled, raw flow tables and model residual gates still open.*

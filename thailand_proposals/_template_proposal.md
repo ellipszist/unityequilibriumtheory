@@ -1,8 +1,8 @@
 # [Idea / Policy Name]
 
-**Date Added:** YYYY-MM-DD  
-**Status:** 💡 Idea (ไอเดียตั้งต้น) / 📝 Pending Research (รอการวิจัย) / 🚀 Graduated (เลื่อนขั้นเป็น Topic แล้ว)  
-**Category:** Policy / Logistics / Geology / Disaster Management / Other  
+**Date Added:** YYYY-MM-DD
+**Status:** 💡 Idea (ไอเดียตั้งต้น) / 📝 Pending Research (รอการวิจัย) / 🚀 Graduated (เลื่อนขั้นเป็น Topic แล้ว)
+**Category:** Policy / Logistics / Geology / Disaster Management / Other
 
 ---
 

@@ -1,8 +1,8 @@
 # แผนโครงสร้างภูมิศาสตร์กายภาพและการออกแบบท่าปล่อยอวกาศยาน (Launchpad Geophysics & Orbital Corridor Design)
 
-**Date Added:** 2026-05-28  
-**Status:** 💡 Idea (ไอเดียตั้งต้น) / 📝 Pending Research (รอการวิจัย)  
-**Category:** Infrastructure / Geophysics / Space Engineering  
+**Date Added:** 2026-05-28
+**Status:** 💡 Idea (ไอเดียตั้งต้น) / 📝 Pending Research (รอการวิจัย)
+**Category:** Infrastructure / Geophysics / Space Engineering
 
 ---
 

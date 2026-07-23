@@ -1,8 +1,8 @@
 # นโยบายบริหารจัดการลุ่มน้ำทะเลสาบสงขลาแบบสามน้ำ และอุตสาหกรรมอาหารอวกาศ (Songkhla Lagoon Water Balancing & Space Food Policy)
 
-**Date Added:** 2026-05-28  
-**Status:** 💡 Idea (ไอเดียตั้งต้น) / 📝 Pending Research (รอการวิจัย)  
-**Category:** Policy / Disaster Management / Agriculture / Ecology  
+**Date Added:** 2026-05-28
+**Status:** 💡 Idea (ไอเดียตั้งต้น) / 📝 Pending Research (รอการวิจัย)
+**Category:** Policy / Disaster Management / Agriculture / Ecology
 
 ---
 

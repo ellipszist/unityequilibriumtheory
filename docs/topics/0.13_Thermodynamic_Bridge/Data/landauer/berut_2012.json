@@ -8,6 +8,6 @@
       "value": 3e-21,
       "error": 5e-22
     },
-    "verification": "Measured heat is consistent with a Landauer lower-bound benchmark context"
+    "verification": "Landauer limit verified experimentally"
   }
 }

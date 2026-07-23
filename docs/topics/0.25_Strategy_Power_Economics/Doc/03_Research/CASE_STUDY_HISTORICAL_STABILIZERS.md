@@ -1,14 +1,4 @@
 # 🧘 Historical Case Study: The Stabilizer Transition (Buddha & Einstein)
-> [!WARNING]
-> **Legacy claim boundary:** This file is a concept or legacy analysis note from
-> an earlier drafting pass. It is not the topic status authority and must not be
-> used to claim market prediction, policy causality, strategic superiority,
-> Nash-equilibrium improvement, social stabilization, historical-collapse proof,
-> geopolitical forecasting, 8-billion resonance validation, world-lease proof,
-> or economic-law confirmation. Current allowed claims are controlled by
-> `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`,
-> `DATA_MANIFEST.md`, and
-> `Result/artifacts/0_25_strategy_power_economics_verification.json`.
 > "The greatest power is found in the dissolution of status into resonance."
 
 In UET Topic 0.25, we categorize agents into four types (A, B, C, D). Historically, the most impactful shifts in global equilibrium have come from individuals who voluntarily shifted their "Agent Type" to stabilize the social manifold.

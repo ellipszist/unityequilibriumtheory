@@ -33,7 +33,6 @@ This topic investigates whether UET-style information-field terms can organize s
 3. Run a one-dimensional toy gas/halo drag simulation.
 4. Compare only the sign of separation, not the magnitude.
 5. Write artifact status `WARN` when qualitative sign matches but kpc calibration is absent.
-6. Write `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json` so the qualitative Bullet Cluster branch stays separate from virial and dark-matter replacement claims.
 
 ## Assumptions
 

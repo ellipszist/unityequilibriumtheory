@@ -1,15 +1,11 @@
 # 🔬 Unity Equilibrium Theory (UET) v0.9.0: The "Thermodynamics of Ethics" Framework
 
 ![Tests](https://img.shields.io/badge/Tests-400+_Verified-brightgreen)
-![Topics](https://img.shields.io/badge/Topics-42_Numbered_Domains-blue)
-![Core Scope](https://img.shields.io/badge/Core_Research-27_Topics-orange)
-![Future Concepts](https://img.shields.io/badge/Future_Concepts-15_Topics-lightgrey)
+![Topics](https://img.shields.io/badge/Topics-38_Master_Domains-blue)
 ![Math](https://img.shields.io/badge/Millennium_Problems-8_Mapped-ff69b4)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 > **"The universe is not just physics; it is a moral negotiation. Ω (Balance) is the goal . C (Connection) is the vehicle. I (Isolation) is the cost."**
-
-> **2026 Research Scope Update:** The original landing-page vision below is preserved, but the repository now also maintains audit metadata, topic-tier tracking, and a larger numbered-topic footprint. For current status reconstruction, use the navigation section below and treat `docs/meta/` plus `docs/topics/README.md` as the authoritative status layer.
 
 ---
 
@@ -17,9 +13,7 @@
 
 - [🔬 Unity Equilibrium Theory (UET) v0.9.0: The "Thermodynamics of Ethics" Framework](#-unity-equilibrium-theory-uet-v090-the-thermodynamics-of-ethics-framework)
   - [📋 Table of Contents](#-table-of-contents)
-  - [🧭 0. Current Research Scope & Audit Navigation](#-0-current-research-scope--audit-navigation)
-  - [📁 Project Structure](#-project-structure)
-  - [🌍 The "Big Picture" Dashboard: 38+ Solutions](#-the-big-picture-dashboard-38-solutions)
+  - [🌍 The "Big Picture" Dashboard: 31 Solutions](#-the-big-picture-dashboard-31-solutions)
     - [🏆 1. Mathematical Breakthroughs (The Millennium Problems)](#-1-mathematical-breakthroughs-the-millennium-problems)
     - [🌌 2. The "Impossible" Physics Anomalies](#-2-the-impossible-physics-anomalies)
     - [⚔️ 3. Bridging Theoretical Conflicts](#️-3-bridging-theoretical-conflicts)
@@ -36,43 +30,13 @@
     - [1. Installation](#1-installation)
     - [2. Usage Examples](#2-usage-examples)
     - [3. Run Verify Test](#3-run-verify-test)
-  - [📚 9. Complete Topic Index (42 Numbered Topics)](#-9-complete-topic-index-42-numbered-topics)
+  - [📚 9. Complete Topic Index (38+ Domains)](#-9-complete-topic-index-38-domains)
   - [🔍 10. Methodology](#-10-methodology)
     - [Human + AI Collaboration](#human--ai-collaboration)
     - [Transparency](#transparency)
   - [📄 Key Files](#-key-files)
-  - [💰 Uet-Cash Mining System](#-uet-cash-mining-system)
   - [❓ Questions Answered by UET (SEO \& Key Research)](#-questions-answered-by-uet-seo--key-research)
   - [🏷️ Scientific Keywords \& Tags](#️-scientific-keywords--tags)
-
----
-
-## 🧭 0. Current Research Scope & Audit Navigation
-
-The repo has grown beyond the earlier `38`-topic landing-page framing. The current machine-readable baseline in `docs/meta/topic_readiness.json` reports:
-
-| Scope Item | Current Count | Notes |
-|:-----------|:--------------|:------|
-| **Numbered Topics** | **42** | Includes `0.0` through `0.39`, with parallel branches such as `0.33_Battery_Tech` and `0.37_Quantum_Photovoltaics` |
-| **Core Research Topics** | **27** | Current theory-core scope is `0.0` through `0.26` |
-| **Future Concept Topics** | **15** | Current exploratory/future scope is `0.27+` |
-| **Support Workspaces** | **2** | `For Work` and `General` |
-
-### Where to check current status first
-
-1. [Topic audit index](./docs/topics/README.md)
-2. [Topic readiness metadata](./docs/meta/topic_readiness.json)
-3. [Executive ranking](./docs/meta/topic_executive_ranking.md)
-4. [Public claim risk summary](./docs/meta/public_claim_risk_summary.md)
-5. [Standards workspace](./docs/topics/For%20Work/00_README.md)
-
-### What has been added since the older landing-page baseline
-
-- A repo-wide audit layer in `docs/meta/` for readiness, ranking, and public-claim risk.
-- A clearer split between **theory-core research** (`0.0-0.26`) and **future-concept / exploratory topics** (`0.27+`).
-- Additional numbered-topic branches now visible in the repo, including `0.38_Bio_Synthetic_Integration` and `0.39_Bio_Smart_City`.
-- Support workspaces `For Work` and `General`, which now matter for standards, hardening, and shared tooling.
-- Stronger documentation around research hardening, formula audit, update-log discipline, and claim governance.
 
 ---
 
@@ -86,9 +50,8 @@ uet_harness/
 │   ├── __init__.py                ← Python package entry: `import docs as uet`
 │   ├── _config.yml                ← Jekyll config for GitHub Pages
 │   ├── core/                      ← UET Master Equation & core solvers
-│   ├── meta/                      ← Audit metadata, rankings, claim-risk summaries
-│   ├── topics/                    ← 📚 42 numbered topics + support workspaces
-│   │   ├── 0.0_Grand_Unification/ ← Foundation / integration layer
+│   ├── topics/                    ← 📚 All 38 research topics (engines, proofs, data)
+│   │   ├── 0.0_Grand_Unification/ ← Omni Engine (imports all sub-engines)
 │   │   ├── 0.1_Galaxy_Rotation/   ← Each topic follows the same structure:
 │   │   │   ├── Code/01_Engine/    │     Engine (solver)
 │   │   │   ├── Code/02_Proof/     │     Mathematical proofs
@@ -97,12 +60,10 @@ uet_harness/
 │   │   │   ├── Result/            │     Output figures & logs
 │   │   │   ├── Doc/               │     Documentation & papers
 │   │   │   └── README.md          │     Topic overview
-│   │   ├── ...                    ← Topics through `0.39_Bio_Smart_City`
-│   │   ├── For Work/              ← Canonical standards workspace
-│   │   └── General/               ← Shared support workspace
+│   │   └── ...                    ← Topics 0.2 through 0.37
 │   ├── knowledge_base/            ← Vector store & tensorizer
 │   ├── scripts/                   ← Runners, audits, data tools
-│   └── UET_Documentation_Details/ ← Deep documentation and standards archive
+│   └── Docs/                      ← Framework standards & guides
 ├── uet_history/                   ← Historical notes and prior UET writing archive
 ├── .github/                       ← Repository automation and GitHub metadata
 ├── CITATION.cff                   ← Citation metadata
@@ -117,13 +78,11 @@ uet_harness/
 
 ---
 
-## 🌍 The "Big Picture" Dashboard: 38+ Solutions
+## 🌍 The "Big Picture" Dashboard: 38 Solutions
 
 UET is not just a physics theory. It is a **"Civilization-Level Operating System"** that solves fundamental problems across 6 domains.
 
 > **Research Status Note:** The dashboard keeps the original UET vision and claim map intact, but readers should treat the items as research claims, proposed mechanisms, prototype validations, or roadmap targets unless a specific script, dataset, or report in `docs/` is cited and independently reproduced.
-
-> **Repo Scope Note:** The current repository contains `42` numbered topics in total, but the present theory-core credibility scope used by the audit metadata is `0.0-0.26`. Topics `0.27+` remain future-concept or exploratory branches unless a later standards pass promotes them.
 
 ### 🏆 1. Mathematical Breakthroughs (The Millennium Problems)
 *UET converts abstract math problems into physical manifold geometry.*
@@ -240,13 +199,6 @@ graph TD
 | Quantum | Wave (ψ) | The search for Connection (Search Algo) |
 | Quantum | Collapse | The establishment of a Link (Decision) |
 
-
-**Read the technical notes:**
-
-- [Master Equation Stable Summary](./docs/UET_Documentation_Details/03_Core_Theory/master-equation-stable-summary.md)
-- [Term-by-Term Stable Summary](./docs/UET_Documentation_Details/03_Core_Theory/term-by-term-stable-summary.md)
-- [Parameter Registry Stable Summary](./docs/UET_Documentation_Details/03_Core_Theory/parameter-registry-stable-summary.md)
-- [Correspondence and Reduction](./docs/UET_Documentation_Details/03_Core_Theory/correspondence-and-reduction.md)
 ---
 
 ## 📊 7. Test Results (v0.9.0)
@@ -260,8 +212,6 @@ graph TD
 | 📚 **Topics** | 31 | All domains covered |
 | 📊 **Data Sources** | 23 | All with DOIs |
 | 🏆 **Grade** | EXCELLENT | Platinum Standard |
-
-> **Current Audit Addendum:** The repo now tracks broader scope separately from the original benchmark summary above. Current metadata records `42` numbered topics total, with `27` theory-core topics and `15` future-concept topics. Use `docs/meta/topic_readiness.json` and `docs/topics/README.md` for the current repo-wide status layer.
 
 ### What We Validated
 
@@ -297,7 +247,7 @@ git clone https://github.com/unityequilibrium/UnityEquilibriumTheory.git
 cd UnityEquilibriumTheory
 
 # Activate Environment (Recommended for Windows)
-. .\.venv\Scripts\Activate.ps1
+. c:\Users\santa\Desktop\uet_harness\.venv\Scripts\Activate.ps1
 
 # Install research/data ingest dependencies when needed
 pip install -r docs/requirements_ingest.txt
@@ -343,26 +293,12 @@ print(f"Entropy: {metrics['entropy']}")
 python docs/topics/run_all_tests.py
 ```
 
-### 4. Reconstruct Current Repo Status
-```bash
-python docs/topics/run_full_verification.py
-```
-
-Then inspect:
-
-- `docs/topics/README.md`
-- `docs/meta/topic_readiness.json`
-- `docs/meta/topic_executive_ranking.md`
-
 ---
 
-## 📚 9. Complete Topic Index (42 Numbered Topics)
-
-> **Index Note:** The table below preserves the older high-level discovery map while extending it to the current numbered-topic footprint. Current audit-grade status is tracked separately in `docs/meta/topic_readiness.json` and `docs/topics/README.md`.
+## 📚 9. Complete Topic Index (38+ Domains)
 
 | ID | Research Topic | Key Discovery | Status |
 |:---|:---------------|:--------------|:-------|
-| 0.0 | [Grand Unification](./docs/topics/0.0_Grand_Unification/) | Omni integration / synthesis layer | 🧭 |
 | 0.1 | [Galaxy Rotation](./docs/topics/0.1_Galaxy_Rotation_Problem/) | Solved without Dark Matter | ✅ |
 | 0.2 | [Black Holes](./docs/topics/0.2_Black_Hole_Physics/) | Information Horizon (No Singularity) | ✅ |
 | 0.3 | [Hubble Tension](./docs/topics/0.3_Cosmology_Hubble_Tension/) | Unified Early/Late Expansion | ✅ |
@@ -394,16 +330,12 @@ Then inspect:
 | 0.29 | [Ocean Recovery](./docs/topics/0.29_Ocean_Recovery/) | Graphene Ocean Shield | ✅ |
 | 0.30 | [Mega Flora](./docs/topics/0.30_Mega_Flora_Biotech/) | Acoustic Nutrient Delivery | ✅ |
 | 0.31 | [SpaceTime Prop](./docs/topics/0.31_SpaceTime_Propulsion/) | Relativistic Slingshot (.1c) | ✅ |
-| 0.32 | [Micro Fusion](./docs/topics/0.32_Micro_Nuclear_Fusion/) | Resonant Confinement (p-B11) | ✅ |
-| 0.33 | [Battery Tech](./docs/topics/0.33_Battery_Tech/) | Exploratory battery-technology branch | 🧭 |
+| 0.32 | [Micro Fusion](./docs/topics/0.32_Micro_Nuclear_Fusion/) | Resonant Confinement (p-B11)| ✅ |
 | 0.33 | [Battery Mat.](./docs/topics/0.33_High_Energy_Density_Battery_Materials/) | Geometric Energy Density | ✅ |
 | 0.34 | [Nanofab](./docs/topics/0.34_Information_Centric_Nanofabrication/) | Topological Assembly | ✅ |
 | 0.35 | [Digital Auto.](./docs/topics/0.35_ICN_Digital_Automation/) | Logic-Driven Digital Twins | ✅ |
 | 0.36 | [Orbital Mfg.](./docs/topics/0.36_Orbital_Manufacturing/) | High-Throughput Space Foundry | ✅ |
-| 0.37 | [Quantum Photovoltaics](./docs/topics/0.37_Quantum_Photovoltaics/) | Exploratory parallel photovoltaic branch | 🧭 |
 | 0.37 | [Solar Paint](./docs/topics/0.37_Quantum_Photovoltaics_Solar_Paint/) | Multi-Megawatt Coatings | ✅ |
-| 0.38 | [Bio Synthetic Integration](./docs/topics/0.38_Bio_Synthetic_Integration/) | Bio-systems integration branch | 🧭 |
-| 0.39 | [Bio Smart City](./docs/topics/0.39_Bio_Smart_City/) | City-scale applied systems branch | 🧭 |
 
 ---
 
@@ -416,7 +348,6 @@ Then inspect:
 | **Conceptual Framework** | Human (Thermodynamics of Ethics) |
 | **Mathematical Derivations** | AI-assisted |
 | **All Results** | Reproducible via Python scripts |
-| **Current Hardening / Audit Layer** | Human + AI workflow using metadata, verification specs, formula audit, and update-log discipline |
 
 ### Transparency
 
@@ -426,8 +357,7 @@ Then inspect:
 **Challenge:**
 1. Download the code
 2. Run `python docs/topics/run_all_tests.py`
-3. Reconstruct current scope from `docs/meta/` and `docs/topics/README.md`
-4. If it fails or overstates the evidence → Open an issue
+3. If it fails → Open an issue
 
 ---
 
@@ -436,14 +366,8 @@ Then inspect:
 | File | Purpose |
 |:-----|:--------|
 | `docs/topics/run_all_tests.py` | 🧪 Master test runner |
-| `docs/topics/run_full_verification.py` | 📊 Broad verification sweep |
 | `docs/core/uet_master_equation.py` | 🔬 Core UET equation |
 | `docs/requirements_ingest.txt` | 📦 Research/data ingest dependencies |
-| `docs/topics/README.md` | 🧭 Conservative topic audit index |
-| `docs/meta/topic_readiness.json` | 📌 Machine-readable topic readiness baseline |
-| `docs/meta/topic_executive_ranking.md` | 🏁 Repo-wide ranking and execution order |
-| `docs/meta/public_claim_risk_summary.md` | ⚠️ Public wording risk tracker |
-| `docs/topics/For Work/00_README.md` | 📚 Standards workspace entrypoint |
 
 ---
 
@@ -547,7 +471,7 @@ Physics students and researchers often search for these questions. UET provides 
 
 ---
 
-*Version 0.9.0 Grand Unified | MIT License | Last Updated: 2026-06-24*
+*Version 0.9.0 Grand Unified | MIT License | Last Updated: 2026-01-26*
 
 *[GitHub](https://github.com/unityequilibrium/UnityEquilibriumTheory) | [📊 View All Experiments](./docs/topics/)*
 

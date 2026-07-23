@@ -26,7 +26,6 @@ observables and related weak-decay scales under a controlled benchmark workflow.
   weak-mixing-angle observable
 - An expanded benchmark package that adds a checked-local neutron-lifetime gate and keeps
   running-angle points in a diagnostic-only layer
-- Workflow gate files that separate accepted benchmark branches from blocked theory-closure branches
 - A dedicated `FORMULA_AUDIT.md` that labels derived relations, checked-local layers,
   source-locked constants, and heuristic bridges explicitly
 - Engine, proof, research, competitor, and visualization scripts for electroweak work
@@ -56,7 +55,6 @@ flowchart LR
 | Fermi constant | Checked-local reference package | `FORMULA_AUDIT.md`, artifact comparisons | unit-consistent benchmark |
 | Neutron lifetime | Checked-local expanded gate | `electroweak_expanded_benchmark.json` | secondary benchmark only |
 | Running-angle points | Diagnostic-only | expanded artifact diagnostic section | no pass/fail claim |
-| Workflow gates | Source evidence + branch claim files | `Data/03_Research/source_evidence_*`, `branch_claim_gate.json` | controls promotion ceiling |
 | Gauge-theory derivation | Not closed | `LIMITATIONS.md`, `FORMULA_AUDIT.md` | not a full electroweak proof |
 
 ## What this topic currently establishes
@@ -66,11 +64,6 @@ flowchart LR
 - The expanded benchmark also passes the current neutron-lifetime gate
 - The current repository workflow can reproduce these benchmark results through audit-grade
   scripts and saved artifacts
-- Branch gates now separate source-backed mass benchmarks, checked-local weak-angle/Fermi
-  benchmarks, secondary neutron checks, and blocked theory-closure claims
-- The expanded artifact carries `electroweak_claim_scope_gate`, which allows selected
-  benchmark agreement while keeping running-angle, gauge-derivation, all-observable, and
-  Standard Model replacement exports blocked.
 
 ## What this topic does not currently establish
 
@@ -80,8 +73,6 @@ flowchart LR
 - It does not yet provide a direct upstream PDG SQLite mapping for the weak-mixing-angle
   observable
 - It does not justify promoting the current running-angle layer beyond diagnostic status
-- It does not justify promoting the current gauge-theory or Standard Model replacement lane
-  beyond blocked status
 
 ## Data and evidence notes
 
@@ -92,8 +83,6 @@ flowchart LR
   the current PDG SQLite workflow
 - The neutron-lifetime gate is currently a checked-local benchmark, not a newly
   source-locked external package
-- The new readiness matrix marks only the PDG core mass package as source-review ready;
-  checked-local weak-angle, neutron, and running-angle layers remain caveated
 
 ## Verification notes
 
@@ -105,9 +94,6 @@ flowchart LR
 - `Result/artifacts/electroweak_pdg_validation.json`
 - `Result/artifacts/electroweak_expanded_benchmark.json`
 - `Data/03_Research/source_lock_manifest.json`
-- `Data/03_Research/source_evidence_intake_stub.json`
-- `Data/03_Research/source_evidence_readiness_matrix.json`
-- `Data/03_Research/branch_claim_gate.json`
 - `FORMULA_AUDIT.md`
 
 ## Reproducibility

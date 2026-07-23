@@ -1,28 +1,39 @@
-# UET Theory & History Management
+# UET History
 
-This directory contains the core theoretical components and development history of the Unified Excitable Theory (UET).
+`uet_history/` is the curated public history workspace for UET theory notes,
+book-development material, digests, and publishable narrative work.
 
-## 🏛️ Theory Repository (`theory/`)
-Theoretical content is organized by domain. This folder contains only the **pure conceptual frameworks** and axiomatic definitions.
-- **`00_foundation`**: Ontological basics, core axioms, and existence frameworks.
-- **`01_physics`**: Laws of Thermodynamics, Energy, Field equations, and Physical dynamics.
-- **`02_psychology`**: Mind, Perception, Frame of Reference, and Epistemology.
-- **... (03-10)**: Ethics, Law, Politics, Economics, Technology, Organization, Future.
+This folder no longer exposes the old legacy tree (`documents/`, `equations/`,
+`media/`, `obsolete/`, `research/`, `theory/`) as the current public structure.
+Those older paths were useful during recovery, but they mixed raw notes, media,
+experiments, and historical drafts in a way that made the repository hard to
+read.
 
-## 🕰️ Consolidated Archives (`archives/`)
-Historical backups and large data collections are merged here to minimize clutter.
-- **`backups/`**: Zipped snapshots of various development stages (e.g., `v0.8.6.zip`).
-- **`data_collections/`**: Dated subdirectories containing raw research data and previous environment states.
+## Current Public Structure
 
----
+```text
+uet_history/
+  2_digest/       # reviewed summaries, indexes, and structured digests
+  3_publish/      # publishable drafts, book structure, and public narrative work
+  PIPELINE.md     # raw -> digest -> publish workflow boundary
+  PUBLIC_MANIFEST.md
+  STATUS_REPORT.md
+```
 
-## 🔬 Development Activity (`research/` & `equations/`)
-Developmental details, experimental logs, and mathematical iterations are archived here, organized by **month** to track the evolution of the theory.
+## What Is Intentionally Excluded
 
-### 🔬 Research Archive (`research/`)
-Contains research topics, validation reports, data audits, and logic logs.
-- **Structure**: `research/[YYYY-MM]/` (e.g., `2026-01/`)
+Raw folders and private/local source material are not committed here by default.
+That includes chat exports, transcript dumps, large media, audio, PDFs, ZIPs,
+local archives, and old development snapshots.
 
-### ➗ Equation Archive (`equations/`)
-Contains technical specifications, parameter iterations, and formula development logs.
-- **Structure**: `equations/[YYYY-MM]/` (e.g., `2026-01/`)
+Excluded local areas include:
+
+- `uet_history/1_raw/`
+- `uet_history/_archive/`
+- `uet_history/Dev_history/`
+- any nested `1_raw/` folders inside publish work
+- large media, audio, video, PDF, ZIP, and cache-like files
+
+Use `PUBLIC_MANIFEST.md` to see what this public tree includes and excludes.
+
+The book-specific path map is 3_publish/books/BOOK_REGISTRY.json. It records canonical working folders, public paths, local-only tracks, and retired aliases so a book is not silently duplicated under a new name.

@@ -1,13 +1,4 @@
 # 🔬 ANALYSIS: Research_Alpha_Learning (การเรียนรู้กฎ Alpha-Law ด้วย AI)
-> [!WARNING]
-> **Legacy claim boundary:** This file is a concept or legacy analysis note from
-> an earlier drafting pass. It is not the topic status authority and must not be
-> used to claim dark-matter replacement, full SPARC replication, galaxy-rotation
-> problem solved, zero curve fitting, out-of-sample prediction validation,
-> MOND/dark-matter superiority, or galaxy-dynamics closure. Current allowed
-> claims are controlled by `README.md`, `LIMITATIONS.md`,
-> `VERIFICATION_SPEC.md`, `DATA_MANIFEST.md`, and
-> `Result/artifacts/galaxy_rotation_validation.json`.
 
 > **File/Script:** `docs/topics/0.1_Galaxy_Rotation_Problem/Code/03_Research/Research_Alpha_Learning.py`
 > **Role:** Research (Discovery Engine)

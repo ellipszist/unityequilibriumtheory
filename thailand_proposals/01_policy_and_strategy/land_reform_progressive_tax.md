@@ -1,7 +1,7 @@
 # นโยบายปฏิรูปโครงสร้างภาษีที่ดินเพื่อสกัดการเก็งกำไรและการจัดสรรสิทธิประโยชน์พัฒนาพื้นที่สาธารณะ (Land Ownership Reform, Progressive Per-Capita Taxation, & The Nominee Trap Policy)
 
-**Date Added:** 2026-05-28  
-**Status:** 💡 Idea (ไอเดียตั้งต้น)  
+**Date Added:** 2026-05-28
+**Status:** 💡 Idea (ไอเดียตั้งต้น)
 **Category:** Policy / Economics / Land Reform / Game Theory
 
 ---

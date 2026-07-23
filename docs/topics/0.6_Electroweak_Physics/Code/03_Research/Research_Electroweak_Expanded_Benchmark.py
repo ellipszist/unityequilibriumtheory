@@ -34,9 +34,6 @@ root_path = ROOT_PATH
 topic_path = root_path / "docs" / "topics" / "0.6_Electroweak_Physics"
 benchmark_package_json = root_path / "docs" / "data" / "external" / "particle_physics" / "pdg" / "electroweak_benchmark_package.json"
 source_lock_json = topic_path / "Data" / "03_Research" / "source_lock_manifest.json"
-source_evidence_intake_json = topic_path / "Data" / "03_Research" / "source_evidence_intake_stub.json"
-source_evidence_readiness_json = topic_path / "Data" / "03_Research" / "source_evidence_readiness_matrix.json"
-branch_claim_gate_json = topic_path / "Data" / "03_Research" / "branch_claim_gate.json"
 engine_path = topic_path / "Code" / "01_Engine"
 if str(engine_path) not in sys.path:
     sys.path.insert(0, str(engine_path))
@@ -46,11 +43,6 @@ from Engine_Electroweak import M_Z_GEV, UETElectroweakSolver
 
 def load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
-
-
-def write_json(path: Path, payload: dict) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
 def path_hash_record(path_string: str) -> dict:
@@ -88,303 +80,9 @@ def to_builtin(value):
     return value
 
 
-def build_source_evidence_intake_stub() -> dict:
-    return {
-        "schema_version": "1.0",
-        "topic": "0.6_Electroweak_Physics",
-        "purpose": "Source evidence intake before claim upgrades across the electroweak benchmark branches.",
-        "source_targets": [
-            {
-                "name": "PDG 2025 core electroweak mass package",
-                "priority": "immediate",
-                "status_hint": "source_backed_ready",
-                "evidence_entries": [
-                    "sqlite_source_path",
-                    "reference_package_path",
-                    "mapping_audit_path",
-                    "unit_basis",
-                    "benchmark_role",
-                    "extraction_note",
-                ],
-            },
-            {
-                "name": "Weak-mixing-angle and Fermi checked-local package",
-                "priority": "high",
-                "status_hint": "accepted_with_provenance_caveat",
-                "evidence_entries": [
-                    "checked_local_reference_path",
-                    "mapping_audit_status",
-                    "observable_scope",
-                    "unit_basis",
-                    "claim_boundary_note",
-                    "upgrade_requirement",
-                ],
-            },
-            {
-                "name": "Neutron lifetime benchmark package",
-                "priority": "high",
-                "status_hint": "checked_local_secondary_gate",
-                "evidence_entries": [
-                    "benchmark_source_path",
-                    "status_note",
-                    "observable_scope",
-                    "unit_basis",
-                    "comparison_role",
-                    "upgrade_requirement",
-                ],
-            },
-            {
-                "name": "Running-angle diagnostic package",
-                "priority": "medium",
-                "status_hint": "diagnostic_only_checked_local",
-                "evidence_entries": [
-                    "compiled_points_source",
-                    "status_note",
-                    "q_range_note",
-                    "unit_basis",
-                    "diagnostic_role",
-                    "upgrade_requirement",
-                ],
-            },
-            {
-                "name": "Gauge-theory derivation or proof package",
-                "priority": "medium",
-                "status_hint": "not_closed",
-                "evidence_entries": [
-                    "proof_script_path",
-                    "derivation_scope",
-                    "artifact_path",
-                    "status_rule",
-                    "benchmark_identity",
-                    "limitation_note",
-                ],
-            },
-        ],
-        "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself prove electroweak closure.",
-    }
-
-
-def build_source_evidence_readiness_matrix() -> dict:
-    rows = [
-        {
-            "name": "PDG 2025 core electroweak mass package",
-            "priority": "immediate",
-            "fields_total": 6,
-            "fields_complete": 6,
-            "fields_pending": 0,
-            "pending_fields": [],
-            "ready_for_source_review": True,
-            "blocking_reason": None,
-        },
-        {
-            "name": "Weak-mixing-angle and Fermi checked-local package",
-            "priority": "high",
-            "fields_total": 6,
-            "fields_complete": 4,
-            "fields_pending": 2,
-            "pending_fields": [
-                "direct_upstream_mapping",
-                "upgrade_requirement",
-            ],
-            "ready_for_source_review": False,
-            "blocking_reason": "The checked-local layer is organized and auditable, but direct upstream weak-angle mapping is still missing.",
-        },
-        {
-            "name": "Neutron lifetime benchmark package",
-            "priority": "high",
-            "fields_total": 6,
-            "fields_complete": 4,
-            "fields_pending": 2,
-            "pending_fields": [
-                "external_source_lock",
-                "upgrade_requirement",
-            ],
-            "ready_for_source_review": False,
-            "blocking_reason": "The neutron lane is a checked-local benchmark gate, not yet a source-locked external package.",
-        },
-        {
-            "name": "Running-angle diagnostic package",
-            "priority": "medium",
-            "fields_total": 6,
-            "fields_complete": 3,
-            "fields_pending": 3,
-            "pending_fields": [
-                "external_source_lock",
-                "pass_fail_rule",
-                "upgrade_requirement",
-            ],
-            "ready_for_source_review": False,
-            "blocking_reason": "Compiled running-angle points remain diagnostic-only and are not ready for benchmark-promotion review.",
-        },
-        {
-            "name": "Gauge-theory derivation or proof package",
-            "priority": "medium",
-            "fields_total": 6,
-            "fields_complete": 1,
-            "fields_pending": 5,
-            "pending_fields": [
-                "derivation_scope",
-                "artifact_path",
-                "status_rule",
-                "benchmark_identity",
-                "limitation_note",
-            ],
-            "ready_for_source_review": False,
-            "blocking_reason": "No audit-grade derivation or proof package currently closes the electroweak theory branch.",
-        },
-    ]
-    ready_count = sum(1 for row in rows if row["ready_for_source_review"])
-    return {
-        "schema_version": "1.0",
-        "topic": "0.6_Electroweak_Physics",
-        "purpose": "Readiness matrix for source-evidence review across electroweak benchmark branches.",
-        "summary": {
-            "source_targets_total": len(rows),
-            "targets_ready_for_source_review": ready_count,
-            "targets_blocked_by_pending_evidence": len(rows) - ready_count,
-        },
-        "readiness_rows": rows,
-        "claim_boundary": "A ready row has enough provenance structure for source review. It does not itself upgrade a claim.",
-    }
-
-
-def build_branch_claim_gate() -> dict:
-    return {
-        "schema_version": "1.0",
-        "topic": "0.6_Electroweak_Physics",
-        "purpose": "Claim gate for separate electroweak branches inside the topic.",
-        "summary": {
-            "branches_total": 6,
-            "accepted_now": 3,
-            "blocked_for_strong_claims": 3,
-        },
-        "branches": [
-            {
-                "branch": "Core PDG mass branch",
-                "status": "accepted_source_backed_benchmark",
-                "allowed_usage_now": "Source-backed benchmark for selected W, Z, and Higgs mass observables.",
-                "blocker_to_stronger_claim": "Need broader electroweak observable coverage before promoting beyond selected benchmark status.",
-            },
-            {
-                "branch": "Weak-mixing-angle and Fermi branch",
-                "status": "accepted_with_provenance_caveat",
-                "allowed_usage_now": "Accepted benchmark comparison with explicit checked-local caveat.",
-                "blocker_to_stronger_claim": "Need direct upstream weak-angle mapping and cleaner source lock for full manuscript-grade promotion.",
-            },
-            {
-                "branch": "Neutron lifetime branch",
-                "status": "accepted_secondary_checked_local",
-                "allowed_usage_now": "Secondary checked-local benchmark gate only.",
-                "blocker_to_stronger_claim": "Need a direct external source lock rather than a checked-local benchmark package.",
-            },
-            {
-                "branch": "Running-angle branch",
-                "status": "blocked_for_strong_claims",
-                "allowed_usage_now": "Diagnostic-only compiled-point lane.",
-                "blocker_to_stronger_claim": "Need source-backed running-angle data and a justified pass/fail rule.",
-            },
-            {
-                "branch": "Gauge-theory derivation branch",
-                "status": "blocked_for_strong_claims",
-                "allowed_usage_now": "Conceptual framing only.",
-                "blocker_to_stronger_claim": "Need an audit-grade derivation or proof artifact beyond numerical benchmark agreement.",
-            },
-            {
-                "branch": "Full Standard Model replacement claims",
-                "status": "blocked_for_strong_claims",
-                "allowed_usage_now": "Not supported by the current evidence package.",
-                "blocker_to_stronger_claim": "Need substantially wider source-backed observable coverage and theoretical closure.",
-            },
-        ],
-        "claim_boundary": "This gate cannot raise the topic above the current selected electroweak benchmark package.",
-    }
-
-
-def build_electroweak_claim_scope_gate(
-    passed: bool,
-    core_comparisons: dict,
-    running_average_error: float,
-    source_evidence_readiness_matrix: dict,
-    branch_claim_gate: dict,
-) -> dict:
-    max_core_error = max(v["relative_error_percent"] for v in core_comparisons.values())
-    return {
-        "schema_version": "1.0",
-        "topic": "0.6_Electroweak_Physics",
-        "purpose": "Machine-readable controller separating selected electroweak benchmark PASS from theory-closure claims.",
-        "controller_status": "WARN" if passed else "FAIL",
-        "selected_benchmark_gate": {
-            "status": "PASS" if passed else "FAIL",
-            "claim_class": "C - internal selected electroweak benchmark package",
-            "metric": "max_core_relative_error_percent",
-            "value": max_core_error,
-            "thresholds": {
-                "sin2_theta_W": 2.0,
-                "m_W_GeV": 2.0,
-                "m_H_GeV": 2.0,
-                "G_F_GeV_minus_2": 0.5,
-                "neutron_lifetime_s": 2.0,
-            },
-            "supports": "The selected core electroweak observables and checked-local neutron lifetime gate pass current repository thresholds.",
-            "does_not_support": "A full electroweak derivation, Standard Model replacement, source-locked running-angle law, or all-observable electroweak fit.",
-        },
-        "provenance_caveat_gate": {
-            "status": "OPEN",
-            "controller_role": "blocks manuscript-grade promotion of checked-local weak-angle, Fermi, and neutron lanes",
-            "required_evidence": [
-                "direct upstream weak-mixing-angle mapping",
-                "direct external source lock for the neutron lifetime lane",
-                "uncertainty-aware observable mapping for all promoted checked-local entries",
-            ],
-        },
-        "running_angle_gate": {
-            "status": "DIAGNOSTIC_ONLY",
-            "metric": "running_angle_average_error_percent",
-            "value": running_average_error,
-            "controller_role": "blocks running-angle pass/fail or prediction claims",
-            "required_evidence": [
-                "source-backed running-angle data package",
-                "predeclared pass/fail threshold",
-                "documented q-range and observable conventions",
-            ],
-        },
-        "theory_closure_gate": {
-            "status": "BLOCKED",
-            "controller_role": "blocks gauge-theory derivation and Standard Model replacement exports",
-            "required_evidence": [
-                "audit-grade derivation/proof artifact",
-                "broader electroweak observable coverage",
-                "baseline comparison against Standard Model fits",
-                "source-ready data packages for all promoted branches",
-            ],
-        },
-        "blocked_exports": [
-            "full electroweak-sector closure",
-            "Standard Model replacement",
-            "gauge-theory derivation proved",
-            "running weak-angle prediction validated",
-            "all electroweak observables source-locked and passed",
-        ],
-        "gate_inputs": {
-            "source_evidence_summary": source_evidence_readiness_matrix["summary"],
-            "branch_claim_summary": branch_claim_gate["summary"],
-        },
-        "promotion_rule": (
-            "Only selected benchmark agreement can pass in this artifact. Theory-closure, running-angle, and "
-            "Standard Model replacement claims require separate closed source, residual, and derivation gates."
-        ),
-    }
-
-
 def main() -> int:
     benchmark = load_json(benchmark_package_json)
     source_lock = load_json(source_lock_json) if source_lock_json.exists() else {"external_source_records": [], "derived_inputs": []}
-    source_evidence_intake_stub = build_source_evidence_intake_stub()
-    source_evidence_readiness_matrix = build_source_evidence_readiness_matrix()
-    branch_claim_gate = build_branch_claim_gate()
-    write_json(source_evidence_intake_json, source_evidence_intake_stub)
-    write_json(source_evidence_readiness_json, source_evidence_readiness_matrix)
-    write_json(branch_claim_gate_json, branch_claim_gate)
     solver = UETElectroweakSolver()
     result = solver.solve()
     core = benchmark["core_observables"]
@@ -443,13 +141,6 @@ def main() -> int:
         "neutron_lifetime_s": core_comparisons["neutron_lifetime_s"]["relative_error_percent"] < 2.0,
     }
     passed = all(gates.values())
-    electroweak_claim_scope_gate = build_electroweak_claim_scope_gate(
-        passed,
-        core_comparisons,
-        running_average_error,
-        source_evidence_readiness_matrix,
-        branch_claim_gate,
-    )
 
     artifact = generate_artifact(
         topic="0.6_Electroweak_Physics",
@@ -471,9 +162,6 @@ def main() -> int:
                 "running_angle_diagnostic": running_diagnostic,
                 "running_angle_diagnostic_status": benchmark["running_angle_diagnostic"]["status"],
                 "running_angle_average_error_percent": running_average_error,
-                "source_evidence_readiness_summary": source_evidence_readiness_matrix["summary"],
-                "branch_claim_gate_summary": branch_claim_gate["summary"],
-                "electroweak_claim_scope_status": electroweak_claim_scope_gate["controller_status"],
             }
         ),
         config={
@@ -486,10 +174,6 @@ def main() -> int:
             "max_core_relative_error_percent": max(v["relative_error_percent"] for v in core_comparisons.values()),
             "running_angle_average_error_percent": running_average_error,
             "neutron_lifetime_relative_error_percent": core_comparisons["neutron_lifetime_s"]["relative_error_percent"],
-            "source_targets_ready_for_review": source_evidence_readiness_matrix["summary"]["targets_ready_for_source_review"],
-            "source_targets_blocked": source_evidence_readiness_matrix["summary"]["targets_blocked_by_pending_evidence"],
-            "accepted_claim_branches": branch_claim_gate["summary"]["accepted_now"],
-            "claim_scope_controller_status": electroweak_claim_scope_gate["controller_status"],
         },
         thresholds={
             "sin2_theta_W_max_relative_error_percent": 2.0,
@@ -512,35 +196,6 @@ def main() -> int:
         "derived_inputs": source_lock.get("derived_inputs", []),
         "claim_boundary": source_lock.get("claim_boundary"),
     }
-    artifact["source_evidence_intake_stub"] = {
-        "path": str(source_evidence_intake_json.relative_to(topic_path)).replace("\\", "/"),
-        "sha256": hash_file(source_evidence_intake_json),
-        "source_targets": [row["name"] for row in source_evidence_intake_stub["source_targets"]],
-        "claim_boundary": source_evidence_intake_stub["claim_boundary"],
-    }
-    artifact["source_evidence_readiness_matrix"] = {
-        "path": str(source_evidence_readiness_json.relative_to(topic_path)).replace("\\", "/"),
-        "sha256": hash_file(source_evidence_readiness_json),
-        "summary": source_evidence_readiness_matrix["summary"],
-        "claim_boundary": source_evidence_readiness_matrix["claim_boundary"],
-    }
-    artifact["branch_claim_gate"] = {
-        "path": str(branch_claim_gate_json.relative_to(topic_path)).replace("\\", "/"),
-        "sha256": hash_file(branch_claim_gate_json),
-        "summary": branch_claim_gate["summary"],
-        "claim_boundary": branch_claim_gate["claim_boundary"],
-    }
-    artifact["electroweak_claim_scope_gate"] = electroweak_claim_scope_gate
-    artifact["interpretation"] = (
-        "This expanded artifact supports the selected core electroweak benchmark package and a secondary neutron benchmark. "
-        "Running-angle points remain diagnostic-only, and broader electroweak-theory replacement claims remain blocked."
-    )
-    artifact["limitations"] = [
-        "The current expanded artifact does not certify a full electroweak derivation.",
-        "Weak-mixing-angle and neutron layers still include checked-local provenance constraints.",
-        "Running-angle points remain diagnostic-only compiled benchmarks.",
-        "Standard Model replacement claims remain unsupported by the current evidence package.",
-    ]
     artifact_path = topic_path / "Result" / "artifacts" / "electroweak_expanded_benchmark.json"
     save_artifact(artifact, artifact_path)
 

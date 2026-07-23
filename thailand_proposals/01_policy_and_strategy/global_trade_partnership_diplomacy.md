@@ -1,8 +1,8 @@
 # ยุทธศาสตร์การทูตพึ่งพาเชิงสมดุลและการค้าต่างประเทศระยะยาว (Strategic Interdependence Statecraft & Long-Term Trade Policy)
 
-**Date Added:** 2026-05-28  
-**Status:** 💡 Idea (ไอเดียตั้งต้น) / 📝 Pending Research (รอการวิจัย)  
-**Category:** Policy / International Trade / Diplomacy / Energy  
+**Date Added:** 2026-05-28
+**Status:** 💡 Idea (ไอเดียตั้งต้น) / 📝 Pending Research (รอการวิจัย)
+**Category:** Policy / International Trade / Diplomacy / Energy
 
 ---
 

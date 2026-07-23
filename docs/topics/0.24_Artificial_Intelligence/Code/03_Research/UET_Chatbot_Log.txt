@@ -11,7 +11,7 @@ User: Equation
 UET: Equation processing UET
 --------------------
 User: Consciousness is
-UET: Consciousness is property.
+UET: Consciousness is standard
 --------------------
 User: Future of humanity
 UET: Future of humanity

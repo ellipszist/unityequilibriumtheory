@@ -1,12 +1,4 @@
 # 🔬 ANALYSIS: Quantum Computing Engines (เอนจินการประมวลผลควอนตัม)
-> [!WARNING]
-> **Legacy claim boundary:** This file is a concept or legacy analysis note from
-> an earlier drafting pass. It is not the topic status authority and must not be
-> used to claim theorem proof, Millennium Problem resolution, P-vs-NP/Riemann/
-> Collatz/BSD closure, external quantum validation, or formal proof
-> verification. Current allowed claims are controlled by `README.md`,
-> `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `DATA_MANIFEST.md`, and
-> `Result/artifacts/0_18_mathnicry_verification.json`.
 
 > **Files:** `Engine_Quantum_Logic.py`, `Engine_Quantum_LC_Unity.py`, `Research_Qubit_Mechanics.py`, `Verify_Quantum_Logic.py`
 > **Role:** Engine (Quantum Operations)

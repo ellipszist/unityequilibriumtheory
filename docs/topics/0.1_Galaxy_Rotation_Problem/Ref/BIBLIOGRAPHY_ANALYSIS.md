@@ -1,12 +1,4 @@
 # 📚 UET Galaxy Rotation: Bibliography & Analysis
-> [!WARNING]
-> **Legacy claim boundary:** This file is a bibliography analysis note, not the
-> topic status authority. It must not be used to claim dark-matter replacement,
-> full SPARC replication, galaxy-rotation problem solved, zero curve fitting,
-> out-of-sample prediction validation, MOND/dark-matter superiority, or
-> galaxy-dynamics closure. Current allowed claims are controlled by `README.md`,
-> `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `DATA_MANIFEST.md`, and
-> `Result/artifacts/galaxy_rotation_validation.json`.
 > "Dark Matter is an epicycle. The curve is real."
 
 This document analyzes the scientific precedents for UET's "Galaxy Rotation" solutions. We connect our findings to the SPARC dataset and the Radial Acceleration Relation (RAR).

@@ -1,17 +1,4 @@
 # 🔬 ANALYSIS: Competitor_Comparison_BAO (การเปรียบเทียบมาตรฐาน BAO)
-> [!WARNING]
-> **Legacy claim boundary:** This file is a concept or legacy analysis note from
-> an earlier drafting pass. It is not the topic status authority and must not be
-> used to claim the Hubble tension is resolved, full Planck/SH0ES likelihood
-> replication, full cosmology validation, Lambda-CDM replacement, dark-energy
-> replacement, high-z prediction confirmation, CMB/BAO/SN consistency closure,
-> beta-frame derivation, or cosmology solved. Current allowed claims are
-> controlled by `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`,
-> `DATA_MANIFEST.md`, and
-> `Result/artifacts/hubble_comparison_validation.json`.
->
-> **Current controller:** BAO/SN/CMB consistency closure is blocked until a dedicated
-> source-locked artifact and fixed threshold exist.
 
 > **File/Script:** `docs/topics/0.3_Cosmology_Hubble_Tension/Code/04_Competitor/Competitor_Comparison_BAO.py`
 > **Role:** Competitor (Standard Ruler Comparison)

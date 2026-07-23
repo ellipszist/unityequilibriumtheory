@@ -30,17 +30,6 @@ The reviewed proof-boundary formula registry is `FORMULA_AUDIT.md`.
 - Primary modeled quantities: theorem-target quantities, stability measures, spectral variables, and algorithmic-scaling diagnostics
 - Current verifier-backed quantities: surrogate BSD curve coefficients, local surrogate rank indicator, and `Omega(s=1)`.
 
-## Evidence matrix
-
-| Branch | Current implementation | Evidence class | Use in theory |
-|:--|:--|:--|:--|
-| BSD branch | Surrogate elliptic-curve demonstration | `D/C` | Run-contract only; not BSD proof. |
-| Riemann branch | Library-driven zero checks | `D` | Numerical sandbox only. |
-| Grover / P-vs-NP branch | Quantum-search scaling demos | `D` | Complexity sandbox only. |
-| Collatz branch | Bounded or heuristic iteration scripts | `D` | Search sandbox only. |
-| Quantum engine | Engine and proof-labeled scripts without full deterministic fixture package | `D/C` | Engine hardening lane only. |
-| Source / claim workflow | Intake, readiness, and branch-claim gates | `Workflow gate` | Prevents symbolic or surrogate branches from being mistaken for theorem closure. |
-
 ## Assumptions
 
 - The current topic is a proof-attempt workspace built from heuristics, symbolic reasoning, and bounded numerical experiments.
@@ -60,10 +49,3 @@ The reviewed proof-boundary formula registry is `FORMULA_AUDIT.md`.
 
 - Discretization choices, search bounds, and heuristic construction matter in the current scripts.
 - Surrogate formulas, precision thresholds, and library-provided known-zero inputs must be declared before any branch can support stronger claims.
-
-## Claim Workflow
-
-1. Run `Research_BSD_Elliptic_Unity.py` to regenerate the artifact and workflow files.
-2. Fill `Data/source_evidence_intake_stub.json` only with real branch-specific benchmark evidence.
-3. Use `Data/source_evidence_readiness_matrix.json` as the provenance gate before changing working-copy data or claim class.
-4. Check `Data/branch_claim_gate.json` before treating any theorem-inspired branch as evidence beyond the current surrogate run contract.

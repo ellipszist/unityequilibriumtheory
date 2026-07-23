@@ -1,0 +1,14 @@
+title: Unity Equilibrium Theory (UET)
+description: A research corpus for Unity Equilibrium Theory.
+
+markdown: kramdown
+highlighter: rouge
+
+exclude:
+  - .git
+  - .github
+  - .venv
+  - node_modules
+  - services_and_experiments
+  - target
+  - uet_history

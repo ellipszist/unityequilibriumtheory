@@ -33,9 +33,6 @@ python docs/topics/0.16_Heavy_Nuclei/Code/03_Research/Research_Fission.py
 ## Artifact Target
 
 - `Result/artifacts/0_16_heavy_nuclei_verification.json`
-- `Data/03_Research/source_evidence_intake_stub.json`
-- `Data/03_Research/source_evidence_readiness_matrix.json`
-- `Data/03_Research/branch_claim_gate.json`
 
 The artifact must record:
 
@@ -43,10 +40,7 @@ The artifact must record:
 - dataset path, DOI, and SHA256
 - formula IDs
 - U-235 binding checkpoint, fragment bridge estimates, energy release, gates, and limitations
-- machine-readable `heavy_nuclei_claim_scope_gate.controller_status`
 
 ## Interpretation
 
 The current artifact supports only an internal fission sanity-check claim. It does not validate the evaluated U-235 fission Q-value, the island of stability, or a first-principles UET nuclear binding theory.
-Topic-level source-evidence and branch-claim gates further limit this topic to checkpoint and sanity-diagnostic usage unless fragment and stability evidence is added.
-`heavy_nuclei_claim_scope_gate.controller_status == WARN` is expected when the U-235 checkpoint and exothermic sanity gates pass but fragment AME rows, evaluated Q-value baselines, broad heavy-binding rows, and stability artifacts remain open.

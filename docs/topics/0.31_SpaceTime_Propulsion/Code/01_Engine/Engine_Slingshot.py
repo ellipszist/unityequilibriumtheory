@@ -1,8 +1,5 @@
 import sys
 from pathlib import Path
-import numpy as np
-import json
-import math
 
 # --- ROBUST UET BOOTSTRAP ---
 def _bootstrap():
@@ -19,101 +16,122 @@ if not ROOT:
     print("CRITICAL: UET docs root not found!")
     sys.exit(1)
 
-from docs.core.uet_base_solver import UETBaseSolver
-from docs.core.uet_parameters import get_params, INTEGRITY_KILL_SWITCH, G, C, HBAR, K_B
+import math
+import os
+import sys
+import numpy as np
+from typing import List, Dict, Any
 
-# --- SPACE-TIME PROPULSION ENGINE ---
+# sys.path Fix for docs
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../"))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
 
-class UETSlingshotEngine(UETBaseSolver):
+from docs.core.uet_master_equation import UETMasterEquation
+from docs.core.uet_parameters import UETParameters, get_params, G, C, HBAR, K_B
+
+class SingularitySlingEngine:
     """
-    Simulates a Singularity Gravitational Slingshot (SGS).
-    Models relativistic acceleration, Hawking radiation decay, and bio-hull integrity.
+    UET Space-Time Engine: Singularity Gravitational Slingshot (SGS)
+    v0.9.4: Clean Hardened Revision
+    Objective: Integrate Core Relativistic Safeguards and Landauer Costs.
     """
-    def __init__(self, params=None, name="UET_Slingshot"):
-        if params is None:
-            params = get_params("0.31")
-            
-        super().__init__(
-            nx=1, ny=1, dt=0.01,
-            params=params, name=name,
-            topic="0.31_SpaceTime_Propulsion", pillar="01_Engine"
-        )
-        
-        # Physics Constants
+
+    def __init__(self, ship_mass=500000, initial_v=11000, omega_coupling=1e9, 
+                 tau_inertia=10.0, bio_resilience=0.0):
         self.G = G
         self.c = C
+        self.hbar = HBAR
+        self.k_b = K_B
         
-        # Ship & Environment
-        self.ship_mass = 500000.0  # kg
-        self.singularity_mass = 1e12 # kg
-        self.periapsis = 1e5       # m
+        self.ship_mass = ship_mass
+        self.v = initial_v
+        self.omega_coupling = omega_coupling 
         
-        # State
-        self.velocity = 11000.0    # m/s (Starting orbital velocity)
-        self.bio_integrity = 100.0 # Percent
-        self.energy_joules = 1e15  # 1 Petajoule
+        # SHIP ENERGY SYSTEM (Topic 0.33)
+        self.ship_energy = 1.0e15 # 1 Petajoule battery capacity
+        self.temp_k = 300.0 # Standard operating temperature
         
-        self.results_history = []
+        # BIOMIMETIC Stats
+        self.bio_integrity = 100.0 
+        self.bio_resilience = bio_resilience 
+        self.regeneration_rate = 0.05 
+        
+        # PROPULSION PARAMETERS (Axiomatic Standard)
+        # Note: tau_inertia > 0 ensures CORE LORENTZ CLAMP is active.
+        self.params = get_params(
+            "0.31", 
+            tau_inertia=tau_inertia,
+            origin="Topic 0.31 Clean Hardened"
+        )
+        self.solver = UETMasterEquation(self.params)
+        
+        # State Initialization
+        N = 5
+        self.C = np.ones(N)
+        self.V = np.full(N, initial_v)
+        self.I = np.zeros(N)
+
+    def calculate_evap_time(self, mass_kg):
+        return (5120 * math.pi * (self.G**2) * (mass_kg**3)) / (self.hbar * (self.c**4))
 
     def get_lorentz_factor(self):
-        beta = self.velocity / self.c
-        if beta >= 0.999999: return 1000.0
-        return 1.0 / np.sqrt(1.0 - beta**2)
+        """Relativistic Penalty: γ = 1 / sqrt(1 - v^2/c^2)"""
+        ratio = self.v / self.c
+        if ratio >= 0.999999: return 1000.0 # Numerical limit for penalty
+        return 1.0 / math.sqrt(1.0 - ratio**2)
 
-    def step(self, step_idx: int = 0):
-        if INTEGRITY_KILL_SWITCH or self.bio_integrity <= 0 or self.energy_joules <= 0:
-            self.results_history.append({"tick": step_idx, "status": "FAILED/KILLED"})
-            return
+    def simulate_sling(self, singularity_mass_kg, distance_m, duration_s) -> List[Dict[str, Any]]:
+        dt = 0.005 
+        steps = int(duration_s / dt)
+        results = []
+        
+        current_mass = singularity_mass_kg
+        evap_time = self.calculate_evap_time(singularity_mass_kg)
+        mass_decay_rate = singularity_mass_kg / evap_time if evap_time > 0 else 0
 
-        gamma = self.get_lorentz_factor()
-        
-        # 1. Gravitational Acceleration (Relativistic Correction)
-        # Accel drops as ship approaches c relative to singularity
-        accel_raw = (self.G * self.singularity_mass) / (self.periapsis**2)
-        accel_phys = accel_raw / (gamma**3) # Transverse/Radial acceleration scaling
-        
-        self.velocity += accel_phys * self.dt
-        
-        # 2. Hull Stress & Energy Drain
-        # Damage increases with gamma and acceleration
-        stress = (gamma - 1.0) * 0.1 + (accel_phys / 1e6) * 0.01
-        self.bio_integrity -= stress * self.dt
-        
-        # Active Repair Cost (Landauer Limit approx)
-        if self.bio_integrity < 95.0:
-            repair_rate = 0.5 # % per sec
-            repair_energy_cost = 1e12 * repair_rate # 1 Terajoule per %
-            self.bio_integrity += repair_rate * self.dt
-            self.energy_joules -= repair_energy_cost * self.dt
+        for s in range(steps):
+            if current_mass <= 1e-10 or self.bio_integrity <= 0.0 or self.ship_energy <= 0.0:
+                break
 
-        res = {
-            "tick": step_idx,
-            "velocity_ms": self.velocity,
-            "gamma": gamma,
-            "bio_integrity": self.bio_integrity,
-            "energy_petajoules": self.energy_joules / 1e15
-        }
-        self.results_history.append(res)
-        
-        if (step_idx + 1) % 100 == 0:
-            print(f"   [SLINGSHOT] Step {step_idx+1} | V: {self.velocity/1000:>6.1f} km/s | Gamma: {gamma:>6.3f} | Bio: {self.bio_integrity:>5.1f}%")
+            # 1. RELATIVISTIC ACCELERATION (γ-Scaling)
+            gamma = self.get_lorentz_factor()
+            accel_raw = (self.G * current_mass * self.omega_coupling) / (distance_m**2)
+            
+            # Acceleration drops as ship approaches c
+            accel_phys = accel_raw / (gamma**2)
+            j_in_pulse = np.full(5, accel_phys) 
+            
+            # 2. BIOMIMETIC SHIELD & LANDAUER COST
+            # Hull Damage increases with velocity gradient
+            damage = ( (self.v ** 2) / (self.c ** 2) * 5.0 ) + (accel_phys / 1e8)
+            real_damage = max(0, damage - self.bio_resilience)
+            self.bio_integrity -= real_damage
+            
+            # SELF-REPAIR (Costing Petajoules)
+            if self.bio_integrity < 100.0 and self.ship_energy > 0:
+                repair_units = self.regeneration_rate * self.bio_resilience
+                self.bio_integrity = min(100.0, self.bio_integrity + repair_units)
+                
+                # Energy Cost (Topic 0.13): Each 1% repair re-aligns 1e20 bits
+                # Cost = count * k_B * T * ln(2)
+                # Re-calibrated to petajoule scale
+                energy_cost = repair_units * 1e22 * self.k_b * self.temp_k * math.log(2)
+                self.ship_energy -= energy_cost
 
-    def save_results(self):
-        from docs.core.uet_glass_box import UETPathManager
-        result_dir = UETPathManager.get_result_dir(
-            topic_id="0.31_SpaceTime_Propulsion",
-            experiment_name=self.name,
-            pillar="01_Engine",
-            category="log",
-        )
-        out_file = result_dir / "Singularity_Slingshot.json"
-        with open(out_file, "w") as f:
-            json.dump(self.results_history, f, indent=2)
-        return str(out_file)
+            # Step UET Core (Core now enforces v < c internally)
+            res = self.solver.step(
+                C=self.C, V=self.V, I=self.I, 
+                J_in=j_in_pulse, J_out=np.zeros(5), 
+                dt=dt, dx=1.0
+            )
+            self.C, self.V, self.I = res
+            self.v = np.mean(self.V)
 
-if __name__ == "__main__":
-    print(f"\n[START] UET SLINGSHOT ENGINE: Simulating Relativistic Acceleration...")
-    engine = UETSlingshotEngine()
-    engine.run(steps=1000, verbose=True) # 10s of high-G maneuver
-    path = engine.save_results()
-    print(f"[SUCCESS] RESULTS SAVED: {path}\n")
+            if s % (max(1, steps // 5)) == 0:
+                results.append({
+                    "time": s * dt, "velocity": self.v,
+                    "bio_integrity": self.bio_integrity, "energy": self.ship_energy
+                })
+
+        return results

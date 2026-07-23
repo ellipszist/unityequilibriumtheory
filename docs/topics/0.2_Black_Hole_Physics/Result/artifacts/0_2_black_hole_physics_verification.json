@@ -1,100 +1,4 @@
 {
-  "black_hole_claim_scope_gate": {
-    "allowed_claims_now": [
-      {
-        "artifact_role": "primary EHT shadow-size benchmark",
-        "claim": "The compact 5.2 Rs shadow-size approximation matches the selected M87* and Sgr A* working-copy targets within the declared 2-sigma gates.",
-        "metrics": {
-          "all_targets_within_2sigma": true,
-          "max_relative_error_percent": 5.4315042998839305,
-          "target_count": 2
-        },
-        "source_evidence_readiness": "topic_working_copy_not_full_archive",
-        "status": "PASS"
-      },
-      {
-        "artifact_role": "black-hole geometry comparator",
-        "claim": "Schwarzschild radius and GR-style shadow geometry may be cited as comparator bookkeeping.",
-        "formula_role": "compact GR shadow approximation, not UET replacement dynamics",
-        "source_evidence_readiness": "inherits_eht_working_copy",
-        "status": "COMPARATOR_ONLY"
-      }
-    ],
-    "blocked_claims": [
-      {
-        "blocking_reason": "The saturation-core path is heuristic and lacks a locked physical core scale plus source-backed internal-structure artifact.",
-        "claim": "UET proves black-hole singularity resolution.",
-        "next_evidence_required": [
-          "physical core-scale definition",
-          "internal-structure artifact",
-          "independent mathematical or numerical stability review"
-        ],
-        "status": "BLOCKED"
-      },
-      {
-        "blocking_reason": "The primary gate is a compact angular-size benchmark, not image-domain ray tracing or a GR replacement test.",
-        "claim": "UET replaces GR for black holes or validates full black-hole imaging.",
-        "next_evidence_required": [
-          "ray-tracing artifact",
-          "image-domain EHT comparison",
-          "metric/baseline comparison against GR"
-        ],
-        "status": "BLOCKED"
-      },
-      {
-        "blocking_reason": "GW/ringdown and CCBH branches lack archived upstream data, thresholds, and primary verifier artifacts.",
-        "claim": "UET validates GW/ringdown or CCBH cosmological coupling.",
-        "next_evidence_required": [
-          "GW/ringdown source package and thresholds",
-          "archived Shen/Kormendy upstream files",
-          "runnable CCBH artifact in the repository"
-        ],
-        "status": "BLOCKED"
-      }
-    ],
-    "blocked_export_phrases": [
-      "black-hole singularity resolved",
-      "GR replacement validated",
-      "EHT image-domain validation",
-      "ringdown validated",
-      "CCBH cosmological coupling proven",
-      "black-hole information problem solved"
-    ],
-    "branch_claim_gate_summary": {
-      "accepted_now": 2,
-      "blocked_for_strong_claims": 4,
-      "branches_total": 6
-    },
-    "claim_boundary": "A PASS artifact supports only selected EHT shadow-size benchmarking and comparator geometry. It does not prove singularity resolution, replace GR, validate image-domain EHT data, validate GW/ringdown physics, prove CCBH coupling, or solve black-hole information problems.",
-    "claim_class": "C_eht_shadow_benchmark_only",
-    "controller_reason": "The compact EHT shadow-size benchmark passed, but export remains warning-gated because image-domain/ray-tracing, physical core-scale, GW/ringdown, CCBH, singularity, and GR-replacement branches are not primary-gated.",
-    "controller_status": "WARN",
-    "machine_readable_next_blockers": [
-      "eht_ray_tracing_artifact_missing",
-      "physical_core_scale_missing",
-      "internal_structure_artifact_missing",
-      "gw_ringdown_artifact_missing",
-      "ccbh_upstream_archive_missing",
-      "gr_replacement_theory_gate_missing"
-    ],
-    "schema_version": "1.0",
-    "source_evidence_summary": {
-      "source_targets_total": 5,
-      "targets_blocked_by_pending_evidence": 5,
-      "targets_ready_for_source_review": 0
-    },
-    "topic": "0.2_Black_Hole_Physics"
-  },
-  "branch_claim_gate": {
-    "claim_boundary": "This gate keeps the topic at EHT benchmark and comparator status, not black-hole theory closure.",
-    "path": "Data/03_Research/branch_claim_gate.json",
-    "sha256": "be8d59eeb5c7716ea6f99e30e4099ce5479372d7f4190849be6d92c751355d55",
-    "summary": {
-      "accepted_now": 2,
-      "blocked_for_strong_claims": 4,
-      "branches_total": 6
-    }
-  },
   "claim_class": "C internal benchmark",
   "command": "python docs/topics/0.2_Black_Hole_Physics/Code/03_Research/Research_EHT_Validation.py",
   "environment": {
@@ -109,19 +13,14 @@
       "sha256": "5a785571d04ce4c09758ca5d8ef925423c472e62c5e9487db4575f6bf50af85b"
     }
   ],
-  "interpretation": "This artifact supports an EHT shadow-size benchmark branch and a bounded black-hole geometry comparator branch. It does not validate singularity resolution, GR replacement, or CCBH cosmological coupling.",
   "limitations": [
     "Uses compact GR shadow diameter approximation D_shadow = 5.2 Rs.",
     "Topic-local EHT data package is a working copy, not a fully normalized upstream archive.",
     "This artifact does not prove singularity resolution or a GR replacement."
   ],
   "metrics": {
-    "accepted_claim_branches": 2,
     "all_targets_within_2sigma": true,
-    "blocked_claim_exports": 6,
     "passed_targets": 2,
-    "source_targets_blocked": 5,
-    "source_targets_ready_for_review": 0,
     "total_targets": 2
   },
   "results": [
@@ -147,28 +46,6 @@
     }
   ],
   "schema_version": "1.1",
-  "source_evidence_intake_stub": {
-    "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself validate singularity resolution, GR replacement, or CCBH cosmological coupling.",
-    "path": "Data/03_Research/source_evidence_intake_stub.json",
-    "sha256": "f7cfb6749cf147694fdcd200ee1bdb6f0e13ff5a9e821232a662dce3190e8b34",
-    "source_targets": [
-      "EHT shadow benchmark package",
-      "Image-domain and ray-tracing package",
-      "Saturation-core mechanism package",
-      "Gravitational-wave and ringdown package",
-      "CCBH cosmological coupling package"
-    ]
-  },
-  "source_evidence_readiness_matrix": {
-    "claim_boundary": "A ready row has enough provenance structure for source review. It does not by itself upgrade black-hole or GR claims.",
-    "path": "Data/03_Research/source_evidence_readiness_matrix.json",
-    "sha256": "fe1c37cb408d902485a3c3abb5baeab9b105576c576daf17a3d868bf957da176",
-    "summary": {
-      "source_targets_total": 5,
-      "targets_blocked_by_pending_evidence": 5,
-      "targets_ready_for_source_review": 0
-    }
-  },
   "status": "PASS",
   "thresholds": {
     "per_target": "abs(predicted_shadow_uas - observed_shadow_uas) <= 2 * observed_error_uas"

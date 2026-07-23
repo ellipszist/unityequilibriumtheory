@@ -1,14 +1,4 @@
 {
-  "branch_claim_gate": {
-    "claim_boundary": "This gate keeps the topic at heavy-nuclei checkpoint and sanity-diagnostic status, not first-principles nuclear closure.",
-    "path": "Data/03_Research/branch_claim_gate.json",
-    "sha256": "c6564b1d24dae84283d7f26bc62295efa9757ef4c336ba2fdcdd943d1cd05d79",
-    "summary": {
-      "accepted_now": 2,
-      "blocked_for_strong_claims": 4,
-      "branches_total": 6
-    }
-  },
   "claim_class": "C/D boundary - internal fission sanity check with missing fragment provenance",
   "command": "python docs/topics/0.16_Heavy_Nuclei/Code/03_Research/Research_Fission.py",
   "environment": {
@@ -115,15 +105,12 @@
       "source": "AME2020 heavy-nuclei working copy"
     }
   ],
-  "interpretation": "This artifact supports a U-235 checkpoint branch and a bounded exothermic fission sanity branch. It does not validate source-locked fragment energetics or heavy-nuclei stability theory.",
   "limitations": [
     "The verifier uses SEMF/UET-bridge fragment binding estimates, not source-locked AME fragment masses.",
     "The result supports an internal fission sanity check only.",
     "It does not validate the Island of Stability or a first-principles heavy-nuclei theory."
   ],
   "metrics": {
-    "accepted_claim_branches": 2,
-    "blocked_claim_exports": 5,
     "energy_release_mev": 165.86690321875176,
     "exothermic_gate": true,
     "fragment_ame_present": false,
@@ -144,35 +131,11 @@
       "Z": 92,
       "binding_energy_mev": 1796.4987738836571
     },
-    "source_targets_blocked": 4,
-    "source_targets_ready_for_review": 1,
     "u235_ame_binding_mev": 1783.871,
     "u235_binding_error_percent": 0.707886045776686,
     "u235_binding_gate": true
   },
   "schema_version": "1.1",
-  "source_evidence_intake_stub": {
-    "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself validate a first-principles heavy-nuclei theory.",
-    "path": "Data/03_Research/source_evidence_intake_stub.json",
-    "sha256": "fb350103073c1c449633eb69a32c052d46413479bf313aa77a47123e3850a859",
-    "source_targets": [
-      "AME2020 U-235 checkpoint package",
-      "Source-locked fragment mass package",
-      "Evaluated fission energy baseline package",
-      "Heavy-binding subset benchmark package",
-      "Stability valley and island-of-stability package"
-    ]
-  },
-  "source_evidence_readiness_matrix": {
-    "claim_boundary": "A ready row has enough provenance structure for source review. It does not by itself upgrade heavy-nuclei or stability claims.",
-    "path": "Data/03_Research/source_evidence_readiness_matrix.json",
-    "sha256": "159220c39adac503ce264ceca65a46c1898ef82a2883659ae0e57548613d9ce8",
-    "summary": {
-      "source_targets_total": 5,
-      "targets_blocked_by_pending_evidence": 4,
-      "targets_ready_for_source_review": 1
-    }
-  },
   "status": "WARN",
   "threshold": {
     "energy_release_mev_max": 250.0,

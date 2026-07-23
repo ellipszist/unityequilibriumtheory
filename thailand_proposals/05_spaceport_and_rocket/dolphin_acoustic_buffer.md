@@ -1,8 +1,8 @@
 # แผนการอนุรักษ์โลมาอิรวดีและระบบป้องกันภัยคลื่นเสียงใต้น้ำ (Bio-Acoustic Buffer & Dolphin Conservation)
 
-**Date Added:** 2026-05-28  
-**Status:** 💡 Idea (ไอเดียตั้งต้น) / 📝 Pending Research (รอการวิจัย)  
-**Category:** Environmental Conservation / Eco-Acoustics / Marine Biology / Space Logistics  
+**Date Added:** 2026-05-28
+**Status:** 💡 Idea (ไอเดียตั้งต้น) / 📝 Pending Research (รอการวิจัย)
+**Category:** Environmental Conservation / Eco-Acoustics / Marine Biology / Space Logistics
 
 ---
 

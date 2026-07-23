@@ -39,8 +39,6 @@ flowchart LR
 | :-- | :-- | :-- | :-- |
 | Embedded speed benchmark | Runnable internal gate | `Result/artifacts/fluid_benchmark_validation.json` | implementation speed comparison |
 | Stress finite-output check | Runnable internal gate | same artifact | stress-test diagnostic |
-| Workflow gates | Source evidence + branch claim files | `Data/03_Research/source_evidence_*`, `branch_claim_gate.json` | controls branch promotion |
-| Claim-scope gate | Machine-readable export controller | `fluid_claim_scope_gate` in artifact | blocks external CFD and theorem claims |
 | UET fluid formulas | Formula-audited | `FORMULA_AUDIT.md` | model/component description |
 | External CFD validation | Not yet packaged | `DATA_MANIFEST.md` | future validation target |
 | Millennium proof target | Not part of current gate | `LIMITATIONS.md` | no mathematical-proof claim |
@@ -49,7 +47,6 @@ flowchart LR
 
 - Canonical reference citation: Reynolds 1883 in [docs/references.bib](/C:/Users/santa/Desktop/uet_harness/docs/references.bib:1)
 - Topic benchmark configs and result folders under `Data/` and `Result/`
-- Workflow gate files under `Data/03_Research/` for source-evidence readiness and branch claim ceilings
 
 ## Method summary
 
@@ -77,11 +74,6 @@ Supporting standard files:
 - Internal metrics currently include runtime speedup and stability checks
 - `Proof_Turbulence_Benchmarks.py` uses an internal benchmark target of speedup greater
   than `2.0x` together with finite stress-test output
-- Branch gates now separate accepted internal benchmark behavior from blocked external-CFD
-  and formal-closure branches
-- The artifact-level `fluid_claim_scope_gate` must remain `WARN` for topic export even when
-  the internal benchmark passes, until external CFD validation, physical Reynolds-number
-  cases, and proof packages are separately source-backed.
 
 ## Baselines
 

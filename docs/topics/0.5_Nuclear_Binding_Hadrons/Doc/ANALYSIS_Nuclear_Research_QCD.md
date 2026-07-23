@@ -1,13 +1,5 @@
 # 🔬 ANALYSIS: Nuclear Research & QCD (งานวิจัยสรุปผลนิวเคลียร์และ QCD)
 
-> [!WARNING]
-> **Legacy claim boundary:** This file is a concept, paper draft, bibliography note, or legacy analysis note from an earlier drafting pass.
-> It is not the topic status authority and must not be used to claim QCD derivation, confinement proof,
-> full AME2020-table pass, hadron-mass validation, light-nuclei closure, independent proton-radius prediction,
-> complete strong-force theory, or Millennium-style closure. Current allowed claims are controlled by
-> `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and
-> `Result/artifacts/nuclear_binding_source_locked_validation.json`: selected heavy-nucleus subset and proton-radius benchmark-anchor checks only.
-
 > **Files:** `Research_Nuclear_Binding.py`, `Research_Proton_Radius.py`, `Research_QCD_Running.py`, `Research_Quark_Masses.py`, `Research_Strong_Force.py`
 > **Role:** Research (Cross-domain Verification)
 > **Status:** 🟢 REVIEWED

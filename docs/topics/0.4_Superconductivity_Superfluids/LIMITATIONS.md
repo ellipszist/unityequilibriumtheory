@@ -1,8 +1,6 @@
 ﻿# Limitations
 
 - The root baseline comparison now has a saved artifact, but the current raw McMillan model gate fails: average relative error is about 62.4 percent and only 1 of 10 rows is within 20 percent.
-- The current FAIL-cause gate classifies this as a mixed raw-McMillan model-family and row-source package blocker. There is no current evidence that the fixed 20 percent threshold or verifier run-contract separation is the bug.
-- The raw McMillan row-eligibility policy now has executable artifact support: the primary verifier emits included, skipped, excluded, and branch-migration row classes, but current metrics are unchanged because no row is newly excluded or migrated.
 - Current data posture is "real source referenced", which is below a fully normalized archival dataset package.
 - The topic still needs a clear separation between phenomenological fit behavior and stronger microscopic claims.
 - The raw McMillan baseline currently has high residuals and should be treated as a model/baseline blocker, not a successful UET prediction.
@@ -146,16 +144,7 @@
 - Even with open-fulltext numeric captures for `lambda_ep` and `mu_star`, the Vanadium row still cannot enter patch review until those captures pass compatibility review and `Tc` plus `Theta_D` are page-confirmed from a primary capture.
 - The new Vanadium compatibility packet now makes one blocker sharper: the captured `lambda` and `mu_star` values do not automatically support either the current working row or the older internal lambda-only patch preview.
 - The new Vanadium patch-block decision now turns that blocker into an explicit workflow stop: the older lambda-only preview is not safe to execute under the current evidence state.
-- The new Vanadium source-lock decision makes this stop machine-readable as `PATCH_BLOCKED`; the working row is intentionally unchanged until primary page confirmation and compatibility review clear together.
-- The Vanadium convention-impact gate now narrows the blocker further: the source-backed `lambda=0.91` and captured `mu_star` conventions still overpredict raw McMillan `Tc`, while the near-threshold `lambda=0.6` preview remains unsupported by current source captures.
-- The Vanadium benchmark-membership gate now prevents a cosmetic fix: Vanadium remains in the raw McMillan gate as a documented failure diagnostic until a uniform row-eligibility policy or source-labeled alternate branch verifier justifies exclusion or migration.
-- The raw McMillan row-eligibility policy generalizes that Vanadium decision: high error or metric improvement is not a valid row-exclusion reason by itself.
-- The Vanadium alternate-branch design packet is only a branch contract scaffold. It remains blocked because `omega_log/omega2` or an explicit Eliashberg equation contract, source compatibility, and Vanadium-specific evidence policy are not yet complete.
-- The Vanadium branch source-completeness gate now makes that stop condition explicit: `Tc` and Debye-proxy context are available for design, `lambda/mu*` are convention-pending, and `omega_log/omega2` or an Eliashberg equation contract are still missing.
-- The Vanadium branch source-capture target narrows the next action without changing the claim state: inspect `10.1007/s10948-017-4295-y` first for an explicit Eliashberg/Allen-Dynes equation or reproduction contract, then fall back to compatible `omega_log/omega2` capture and Vanadium-specific evidence policy.
 - The new Vanadium primary-capture requirement packet makes the final raw-source blocker more precise, but the row still remains blocked until someone actually satisfies that capture contract from the primary source.
-- The Vanadium primary-page capture requirement is now satisfied for `Tc_observed` and `Theta_D_K_or_proxy_context`: APS harvest PDF text confirms `Tc=5.03 K` and `Theta=338±5 K`. This narrows the blocker but does not authorize a row patch because `lambda_ep` and `mu_star` still conflict with the working-row convention.
 - The new residual extraction dashboard improves coordination only; it does not itself archive evidence or reduce the raw McMillan FAIL.
 - `Vanadium` still has an extra citation-integrity wrinkle: the current MIT OCW chain and APS bibliographic listing disagree on the page range, so direct page confirmation is still required before treating the row as stable.
 - The topic-level source-evidence and branch-claim gates now make the same point at a higher layer: the raw baseline FAIL can support blocker analysis, but it cannot be stretched into row-normalized prediction claims, Allen-Dynes/UET success claims, or universal-superconductivity claims.
-- The primary artifact now exposes `evidence_lanes`, but lane separation does not make the topic Tier A: the Allen-Dynes Nb3Sn branch can pass as a two-row smoke test while the raw McMillan topic gate remains `FAIL`.

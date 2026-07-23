@@ -1,5 +1,3 @@
-> [!WARNING]
-> **Legacy claim boundary:** This file is a legacy analysis or bibliography note, not the topic status authority. It must not be used to claim proved singularity resolution, GR replacement, image-domain EHT validation, GW/ringdown validation, CCBH cosmological coupling, black-hole information closure, or universal black-hole mechanism proof. Current allowed claims are controlled by `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and `Result/artifacts/0_2_black_hole_physics_verification.json`: selected internal EHT shadow-size benchmark plus heuristic saturation-core diagnostics only.
 # 🔬 ANALYSIS: 0.2 Black Hole Physics (CCBH Research)
 
 > **File/Script:** `docs/topics/0.2_Black_Hole_Physics/Code/03_Research/Research_CCBH_Analysis.py`

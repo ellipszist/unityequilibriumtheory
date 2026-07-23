@@ -1,12 +1,4 @@
 # 📚 UET Yang-Mills & Mass Gap: Bibliography & Analysis
-> [!WARNING]
-> **Legacy claim boundary:** This file is a bibliography analysis note, not the
-> topic status authority. It must not be used to claim Clay Yang-Mills solution,
-> mass-gap proof, confinement proof, full glueball-spectrum validation, fixed
-> theory alpha, Millennium problem support, or constructive mathematical proof.
-> Current allowed claims are controlled by `README.md`, `LIMITATIONS.md`,
-> `VERIFICATION_SPEC.md`, `DATA_MANIFEST.md`, and
-> `Result/artifacts/mass_gap_validation.json`.
 > "The mass gap is the fundamental resolution limit of the Unity Field."
 
 This document analyzes the scientific precedents for UET's "Yang-Mills Mass Gap" solution. We connect our findings to the existence of non-trivial quantum Yang-Mills theories and the emergence of a discrete mass spectrum.

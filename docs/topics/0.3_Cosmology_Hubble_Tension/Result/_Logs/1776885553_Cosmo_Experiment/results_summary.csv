@@ -1,4 +1,0 @@
-Metric,UET,Observed,Error_Pct,Status
-H0_Early,67.40,67.40,0.00,PASS
-H0_Late,69.14,73.04,5.34,PASS
-Tension_Gap,1.74,5.64,69.12,FAIL

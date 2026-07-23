@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.3",
+  "schema_version": "1.1",
   "topic": "0.17_Mass_Generation",
   "timestamp_utc": "2026-07-13T13:00:57.903064+00:00",
   "command": "python docs/topics/0.17_Mass_Generation/Code/03_Research/Research_Higgs_Coupling.py",
@@ -10,8 +10,8 @@
       "path": "Data/03_Research/higgs_coupling_data.json",
       "loaded_by_primary_script": true,
       "status": "present",
-      "bytes": 1648,
-      "sha256": "4f5e512e7e62d27ffe03d32f7874fe2c4a50d04535a42c9110678ce565590b9c"
+      "bytes": 1543,
+      "sha256": "3c19ef8264ce55638216dc39e726ac018d94c5c3794c964971197371853c12f5"
     },
     {
       "path": "Data/03_Research/higgs_mass_combined.json",
@@ -33,149 +33,12 @@
       "status": "present",
       "bytes": 826,
       "sha256": "75cd3477e6d37b1d9a987ac15adeba35311cee21d85c578d2be0d31cc8b3109e"
-    },
-    {
-      "path": "Data/03_Research/source_lock_manifest.json",
-      "loaded_by_primary_script": false,
-      "status": "present",
-      "bytes": 2388,
-      "sha256": "8437155bc8cb83020099fe0a50dab3f39b6cd6b7a2de13464ce021c7aee609b5"
-    },
-    {
-      "path": "docs/data/external/particle_physics/higgs/higgs_coupling_cms_2022_reference_package.json",
-      "loaded_by_primary_script": false,
-      "status": "present",
-      "bytes": 2289,
-      "sha256": "9db34a19496a54814361bc60020373c1e85623ee2775b0bb80313b2487557003"
-    },
-    {
-      "path": "docs/data/external/particle_physics/higgs/higgs_mass_combined_atlas_cms_2015_reference_package.json",
-      "loaded_by_primary_script": false,
-      "status": "present",
-      "bytes": 1133,
-      "sha256": "829b67bd2748513546653b61bf34086652907635684338fff6972c5447092a3d"
-    },
-    {
-      "path": "docs/data/external/particle_physics/pdg/pdg_2024_leptons_reference_package.json",
-      "loaded_by_primary_script": false,
-      "status": "present",
-      "bytes": 1480,
-      "sha256": "c75e9aac94a1390c3ec4fb17b40a84c854c1c6cb87395bd25b65c9fcf22c590b"
     }
   ],
-  "source_evidence_intake_stub": {
-    "path": "Data/03_Research/source_evidence_intake_stub.json",
-    "sha256": "414d3a57c3c43f8b865e113f216e718dab7e16aa5df3470cdcb65b246b16b920",
-    "source_targets": [
-      "Higgs coupling table source package",
-      "Combined Higgs mass reference package",
-      "Normative lepton mass dataset choice",
-      "Planck exponential ansatz parameter provenance"
-    ],
-    "claim_boundary": "This intake stub is for source evidence capture only. It does not authorize data or claim upgrades by itself."
-  },
-  "source_evidence_readiness_matrix": {
-    "path": "Data/03_Research/source_evidence_readiness_matrix.json",
-    "sha256": "933d34fc2f697b73e124592e44650ccacc003ddee967055a97ace453405eb601",
-    "summary": {
-      "source_targets_total": 4,
-      "targets_ready_for_source_review": 3,
-      "targets_blocked_by_pending_evidence": 1
-    },
-    "claim_boundary": "This readiness matrix is a workflow gate only. It tracks whether source evidence is still pending."
-  },
-  "branch_claim_gate": {
-    "path": "Data/03_Research/branch_claim_gate.json",
-    "sha256": "9dbc69b495ade51961d079c4f0ea773ac358f5952684c98e82be42e01a4ed41c",
-    "summary": {
-      "branches_total": 5,
-      "accepted_now": 1,
-      "blocked_for_strong_claims": 4
-    },
-    "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current Higgs-coupling run-contract evidence."
-  },
-  "mass_generation_claim_scope_gate": {
-    "schema_version": "1.0",
-    "topic": "0.17_Mass_Generation",
-    "purpose": "Machine-readable controller separating Higgs coupling benchmark PASS from mass-generation mechanism claims.",
-    "controller_status": "HIGGS_KAPPA_BENCHMARK_ONLY",
-    "controller_reason": "The Higgs-coupling smoke benchmark may pass, but uncertainty-aware Higgs validation, mechanism, hierarchy, Koide/tau, and Planck-ansatz exports remain blocked.",
-    "claim_class": "C_internal_higgs_kappa_consistency_benchmark",
-    "higgs_coupling_benchmark_gate": {
-      "status": "PASS",
-      "claim_class": "C - internal SM-normalized Higgs coupling consistency benchmark",
-      "metric": "average_abs_kappa_deviation",
-      "value": 0.040000000000000036,
-      "threshold": 0.2,
-      "supports": "The topic-local Higgs coupling working copy stays within the repository average-deviation threshold.",
-      "does_not_support": "A first-principles mass-generation mechanism, Higgs replacement, complete hierarchy derivation, or Koide proof."
-    },
-    "uncertainty_aware_fit_gate": {
-      "status": "OPEN",
-      "controller_role": "blocks promotion from average-deviation smoke test to physics-strength Higgs coupling validation",
-      "required_evidence": [
-        "source-to-row mapping for the upstream Higgs coupling table",
-        "uncertainty-aware pulls or chi-square metric",
-        "fixed acceptance threshold declared before rerun",
-        "baseline comparison against the Standard Model expectation with uncertainty bands"
-      ]
-    },
-    "mechanism_claim_gate": {
-      "status": "BLOCKED",
-      "controller_role": "blocks mass-generation mechanism, Higgs replacement, and hierarchy claims",
-      "required_evidence": [
-        "first-principles derivation with units and assumptions",
-        "independent predictive benchmark beyond the local kappa smoke test",
-        "separate verifier lanes for Koide/tau and hierarchy branches",
-        "external source package or raw archive for each promoted dataset"
-      ]
-    },
-    "blocked_exports": [
-      "new mass-generation mechanism validated",
-      "Higgs mechanism replaced",
-      "Standard Model mass hierarchy derived",
-      "Koide relation proved from UET",
-      "Planck exponential ansatz validated"
-    ],
-    "blocked_export_phrases": [
-      "new mass-generation mechanism validated",
-      "Higgs mechanism replaced",
-      "mass hierarchy derived",
-      "Koide relation proved",
-      "tau mass predicted from first principles",
-      "Planck exponential ansatz validated",
-      "UET explains all particle masses",
-      "Higgs sector solved"
-    ],
-    "machine_readable_next_blockers": [
-      "uncertainty_aware_higgs_fit_missing",
-      "source_to_row_mapping_incomplete",
-      "raw_higgs_table_archive_missing",
-      "mass_generation_mechanism_derivation_missing",
-      "koide_tau_verifier_missing",
-      "planck_ansatz_parameter_derivation_missing",
-      "mass_hierarchy_benchmark_missing"
-    ],
-    "gate_inputs": {
-      "source_evidence_summary": {
-        "source_targets_total": 4,
-        "targets_ready_for_source_review": 3,
-        "targets_blocked_by_pending_evidence": 1
-      },
-      "branch_claim_summary": {
-        "branches_total": 5,
-        "accepted_now": 1,
-        "blocked_for_strong_claims": 4
-      }
-    },
-    "promotion_rule": "Only the Higgs coupling consistency benchmark can pass in this artifact. Stronger mass-generation claims require an uncertainty-aware Higgs gate plus separate mechanism and branch verifier gates.",
-    "claim_boundary": "0.17 may export only an internal SM-normalized Higgs kappa consistency benchmark. It must not be used as a new mass-generation mechanism, Higgs replacement, mass-hierarchy derivation, Koide/tau proof, or Planck-ansatz validation until separate source-locked and uncertainty-aware gates exist."
-  },
   "metrics": {
     "particle_count": 6,
     "average_abs_kappa_deviation": 0.040000000000000036,
-    "max_abs_kappa_deviation": 0.10000000000000009,
-    "claim_scope_controller_status": "HIGGS_KAPPA_BENCHMARK_ONLY"
+    "max_abs_kappa_deviation": 0.10000000000000009
   },
   "thresholds": {
     "average_abs_kappa_deviation_max": 0.2,

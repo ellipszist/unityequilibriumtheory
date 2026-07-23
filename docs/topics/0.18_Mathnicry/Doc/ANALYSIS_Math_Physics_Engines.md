@@ -1,12 +1,4 @@
 # 🔬 ANALYSIS: Mathematical Physics Engines (เอนจินคณิตศาสตร์ฟิสิกส์)
-> [!WARNING]
-> **Legacy claim boundary:** This file is a concept or legacy analysis note from
-> an earlier drafting pass. It is not the topic status authority and must not be
-> used to claim theorem proof, Millennium Problem resolution, P-vs-NP/Riemann/
-> Collatz/BSD closure, external quantum validation, or formal proof
-> verification. Current allowed claims are controlled by `README.md`,
-> `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `DATA_MANIFEST.md`, and
-> `Result/artifacts/0_18_mathnicry_verification.json`.
 
 > **Files:** `Engine_Riemann_Field.py`, `Engine_Collatz_Field.py`, `Engine_Elliptic_Resonance.py`
 > **Role:** Engine (Number Theory Mapping)

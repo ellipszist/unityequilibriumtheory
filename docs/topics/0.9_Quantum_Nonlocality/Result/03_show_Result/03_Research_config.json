@@ -1,5 +1,4 @@
 {
-  "claim_boundary": "Legacy internal show-result config only. Current allowed claims are controlled by Result/artifacts/0_9_quantum_nonlocality_verification.json; this file does not prove UET nonlocality, reconstruct raw Bell counts, or validate adjacent quantum lanes.",
   "data_source": "Bell Tests + NIST CODATA",
   "method": "UET Bell Violation",
   "parameters": {

@@ -1,11 +1,4 @@
 # 📚 UET Neutrino Physics: Bibliography & Analysis
-
-> [!WARNING]
-> **Legacy claim boundary:** This bibliography analysis is not the topic status authority.
-> It must not be used to claim PMNS proof, neutrino mass-origin proof, hierarchy solution,
-> sterile-neutrino prediction, full neutrino-sector closure, or unification-strength evidence.
-> Current allowed claims are controlled by `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`,
-> `FORMULA_AUDIT.md`, and `Result/artifacts/nufit_6_0_validation.json`: NuFIT/KATRIN benchmark compatibility only.
 > "Neutrinos are the sound waves of the Unity Field."
 
 This document analyzes the scientific precedents for UET's "Neutrino Soliton" model. We connect our findings to the standard Neutrino Oscillation and Mass Measurement.

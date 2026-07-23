@@ -1,5 +1,3 @@
-> [!WARNING]
-> **Legacy claim boundary:** This file is a legacy analysis, paper draft, research note, or bibliography note, not the topic status authority. It must not be used to claim vacuum-catastrophe resolution, cosmological-constant solution, dark-energy derivation, Planck-scale cutoff proof, geometry-general Casimir validation, QED replacement, or theory-level vacuum-energy closure. Current allowed claims are controlled by `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `FORMULA_AUDIT.md`, and `Result/artifacts/0_12_vacuum_energy_casimir_verification.json`: source-backed internal sphere-plate Casimir benchmark only.
 # After: UET Vacuum Energy: The Casimir Effect
 
 ## 1. Problem Definition: The Weight of Nothing

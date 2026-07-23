@@ -1,8 +1,8 @@
 # นโยบายปฏิรูปราคาโปรตีน การโซนนิ่งเกษตรกรรม และการเลี้ยงสาหร่ายจิ๋วเพื่อความมั่นคงทางอาหารและพลังงาน (National Protein Reform, Agricultural Zoning, & Microalgae Biofuel Policy)
 
-**Date Added:** 2026-05-28  
-**Status:** 💡 Idea (ไอเดียตั้งต้น) / 📝 Pending Research (รอการวิจัย)  
-**Category:** Policy / Agriculture / Energy / Public Health  
+**Date Added:** 2026-05-28
+**Status:** 💡 Idea (ไอเดียตั้งต้น) / 📝 Pending Research (รอการวิจัย)
+**Category:** Policy / Agriculture / Energy / Public Health
 
 ---
 

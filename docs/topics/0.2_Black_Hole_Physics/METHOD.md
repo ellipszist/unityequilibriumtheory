@@ -40,7 +40,6 @@ This topic studies whether UET-style black-hole and sink-field models can reprod
 - Boundary-condition choices and calibration terms remain important in several scripts.
 - The primary verification gate is currently the EHT shadow-size comparison because its local working-copy inputs are present in the repository.
 - The CCBH path is methodologically important but blocked as a primary gate until the Shen/Kormendy upstream datasets are preserved in the repo external-data cache with hashes and preprocessing notes.
-- The primary verifier also writes `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json` so EHT benchmark compatibility stays separate from singularity and cosmological-coupling claims.
 
 ## Dependency policy
 

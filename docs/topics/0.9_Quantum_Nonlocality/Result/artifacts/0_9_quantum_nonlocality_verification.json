@@ -9,210 +9,57 @@
     "platform": "Windows-11-10.0.26200-SP0"
   },
   "claim_class": "C - source-referenced internal CHSH benchmark",
+  "command": "python docs/topics/0.9_Quantum_Nonlocality/Code/03_Research/Research_CHSH_Verification.py",
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.2"
+  },
   "formula_ids": [
     "QN09-CHSH-PARAMETER",
     "QN09-LOCAL-REALIST-BOUND",
     "QN09-TSIRELSON-BOUND",
     "QN09-PVALUE-GATE"
   ],
+  "generated_at_utc": "2026-04-30T06:51:42.619786+00:00",
   "inputs": [
     {
+      "doi": "10.1038/nature15759",
       "name": "bell_test_2015",
       "path": "docs/topics/0.9_Quantum_Nonlocality/Data/03_Research/bell_test_2015.json",
-      "source": "Hensen et al. 2015 - Loophole-free Bell Test",
-      "doi": "10.1038/nature15759",
-      "sha256": "7b0088a3e30c039fd7d605c6a7182c3d1589ca1367f6b58adda4d00fdee3acc6"
+      "sha256": "7b0088a3e30c039fd7d605c6a7182c3d1589ca1367f6b58adda4d00fdee3acc6",
+      "source": "Hensen et al. 2015 - Loophole-free Bell Test"
     },
     {
       "name": "bell_inequality_data",
       "path": "docs/topics/0.9_Quantum_Nonlocality/Data/03_Research/bell_inequality_data.json",
-      "source": "Hensen et al. 2015, Nature 526, 682",
-      "sha256": "8eadfad7a4251821da64ff7aeaeb23163c1563664477036b93e6a8c38cbc5ad6"
-    },
-    {
-      "name": "source_lock_manifest",
-      "path": "docs/topics/0.9_Quantum_Nonlocality/Data/03_Research/source_lock_manifest.json",
-      "sha256": "ab022ff4c2302f3dc56e7d23036c7e9cb10a91e1553ee4b7343c6f731f74079d"
-    },
-    {
-      "name": "hensen_2015_reference_package",
-      "path": "docs/data/external/quantum_nonlocality/hensen_2015_chsh_reference_package.json",
-      "sha256": "70d0e7d850af1dc330aaae5aa5dcbbe7184951aba56a115a22e6b04c2f14e61b"
-    },
-    {
-      "name": "hensen_2015_article_pdf_archive",
-      "path": "docs/topics/0.9_Quantum_Nonlocality/Ref/PDF_Downloads/Quantum_Hensen2015_Bell.pdf",
-      "sha256": "c4acd5fca880cdc64fd3273f6d80e0c7d3055954b4522f1aa89111891f212d06",
-      "source": "Hensen et al. 2015, Nature 526, 682-686",
-      "doi": "10.1038/nature15759"
-    },
-    {
-      "name": "bell_summary_reference_package",
-      "path": "docs/data/external/quantum_nonlocality/bell_inequality_summary_reference_package.json",
-      "sha256": "4e6217c13bbe631a77ccc9cf6a1ae5f09648f511e469ba7e2bbc7df598883ba3"
+      "sha256": "8eadfad7a4251821da64ff7aeaeb23163c1563664477036b93e6a8c38cbc5ad6",
+      "source": "Hensen et al. 2015, Nature 526, 682"
     }
   ],
-  "source_evidence_intake_stub": {
-    "path": "Data/03_Research/source_evidence_intake_stub.json",
-    "sha256": "faca03161ed8f2957f3c77bd3f9023cd89123ca6db6274e2f618a5e835f842d2",
-    "source_targets": [
-      "Hensen 2015 CHSH benchmark package",
-      "Raw Bell event-count or supplementary package",
-      "Secondary Bell summary file provenance",
-      "Qubit or adjacent quantum-lane source package"
-    ],
-    "claim_boundary": "This intake stub is for provenance capture only. It does not authorize upgrades to UET nonlocality or adjacent quantum-lane claims."
-  },
-  "source_evidence_readiness_matrix": {
-    "path": "Data/03_Research/source_evidence_readiness_matrix.json",
-    "sha256": "3bc7345fba294417f6218431ea9fdb6da67c1ee1aaed550306e409bf45b933c1",
-    "summary": {
-      "source_targets_total": 4,
-      "targets_ready_for_source_review": 2,
-      "targets_blocked_by_pending_evidence": 2
-    },
-    "claim_boundary": "A target marked ready still requires real source review. This gate does not itself upgrade a claim."
-  },
-  "branch_claim_gate": {
-    "path": "Data/03_Research/branch_claim_gate.json",
-    "sha256": "96e703a6fd676ea92954a95128783f18faac5d9585c2f5fb1b9f44a2ac1c71db",
-    "summary": {
-      "branches_total": 5,
-      "accepted_now": 1,
-      "blocked_for_strong_claims": 4
-    },
-    "claim_boundary": "This gate cannot raise the topic beyond the current CHSH run-contract evidence."
-  },
-  "chsh_evidence_gate": {
-    "schema_version": "1.0",
-    "topic": "0.9_Quantum_Nonlocality",
-    "purpose": "Separate CHSH summary benchmark success from raw-event reconstruction and UET mechanism claims.",
-    "controller_status": "SUMMARY_BENCHMARK_PASS_RAW_RECONSTRUCTION_OPEN",
-    "summary_benchmark_gate": {
-      "status": "PASS",
-      "claim_class": "C - source-referenced internal CHSH benchmark",
-      "supports": "The recorded Hensen 2015 CHSH summary clears the local-realist, p-value, DOI, and Tsirelson consistency checks.",
-      "does_not_support": "Raw event-count reconstruction, detector-event audit, or UET mechanism derivation."
-    },
-    "raw_event_reconstruction_gate": {
-      "status": "OPEN",
-      "claim_class_when_closed": "C - reconstructed experimental benchmark at most",
-      "pending_fields": [
-        "doi_or_url",
-        "local_path",
-        "supplement_or_table_identifier",
-        "retrieval_date",
-        "license_or_access_note",
-        "extraction_note"
-      ],
-      "blocker": "Raw Bell event counts or supplementary-table package is not locally archived and reconstructed."
-    },
-    "uet_mechanism_gate": {
-      "status": "BLOCKED",
-      "blocked_claims": [
-        "derived UET nonlocality mechanism",
-        "topological-filament explanation of CHSH correlations",
-        "replacement of standard quantum nonlocality framework",
-        "qubit/double-slit/tunneling inheritance from CHSH alone"
-      ],
-      "blocker": "No first-principles UET derivation maps the bridge to standard CHSH correlations with a dedicated verifier artifact."
-    },
-    "promotion_rule": "The PASS artifact may export only the CHSH summary benchmark. Raw reconstruction and UET-mechanism claims require separate closed gates and cannot inherit PASS from the summary benchmark."
-  },
-  "chsh_claim_scope_gate": {
-    "gate": "chsh_claim_scope_gate",
-    "controller_status": "CHSH_SUMMARY_ONLY_RAW_AND_MECHANISM_BLOCKED",
-    "controller_reason": "The CHSH summary benchmark passes, but raw event-count reconstruction and UET mechanism derivation remain open or blocked.",
-    "claim_class": "C_internal_chsh_summary_benchmark",
-    "allowed_claims_now": [
-      {
-        "claim": "The recorded Hensen 2015 CHSH summary violates the local-realist bound under the topic checks.",
-        "condition": "all CHSH summary checks pass",
-        "status": "allowed"
-      },
-      {
-        "claim": "The stored quantum benchmark is consistent with the rounded Tsirelson value.",
-        "condition": "tsirelson_reference_ok is true",
-        "status": "allowed"
-      }
-    ],
-    "blocked_claims": [
-      {
-        "claim": "Raw Bell event counts have been reconstructed locally.",
-        "blocker": "Raw Bell event counts or supplementary-table package is not locally archived and reconstructed."
-      },
-      {
-        "claim": "UET derives the CHSH correlations from first principles.",
-        "blocker": "No first-principles UET derivation maps the bridge to standard CHSH correlations with a dedicated verifier artifact."
-      },
-      {
-        "claim": "UET replaces the standard quantum nonlocality framework.",
-        "blocker": "Current evidence is a benchmark consistency check, not a replacement-theory comparison."
-      },
-      {
-        "claim": "Qubit, double-slit, tunneling, or LC-unity lanes inherit PASS from CHSH.",
-        "blocker": "Adjacent quantum lanes require separate source packages, formulas, and verifier artifacts."
-      }
-    ],
-    "blocked_export_phrases": [
-      "UET proves nonlocality",
-      "nonlocality solved",
-      "topological filament derivation verified",
-      "standard quantum framework replaced",
-      "raw Bell counts reconstructed",
-      "qubit claims inherit CHSH PASS",
-      "double-slit explained by CHSH",
-      "tunneling validated by CHSH",
-      "LC unity quantum mechanism proved"
-    ],
-    "machine_readable_next_blockers": [
-      "raw_bell_event_count_package_missing",
-      "raw_event_reconstruction_verifier_missing",
-      "uet_chsh_derivation_artifact_missing",
-      "replacement_theory_baseline_comparison_missing",
-      "adjacent_quantum_lane_source_packages_missing",
-      "adjacent_quantum_lane_verifiers_missing",
-      "source_targets_still_blocked"
-    ],
-    "gate_inputs": {
-      "chsh_evidence_controller_status": "SUMMARY_BENCHMARK_PASS_RAW_RECONSTRUCTION_OPEN",
-      "summary_benchmark_status": "PASS",
-      "raw_event_reconstruction_status": "OPEN",
-      "uet_mechanism_status": "BLOCKED",
-      "source_targets_blocked": 2
-    },
-    "claim_boundary": "0.9 may export only a source-referenced internal CHSH summary benchmark. It must not be used as raw experimental reconstruction, UET mechanism derivation, replacement-theory evidence, or evidence for adjacent quantum lanes until separate gates close."
-  },
-  "threshold": {
-    "s_value_must_exceed_local_bound": 2.0,
-    "lower_1sigma_must_exceed_local_bound": 2.0,
-    "p_value_max": 0.05,
-    "tsirelson_rounding_error_max": 0.001
-  },
-  "checks": {
-    "s_value_exceeds_local_bound": true,
-    "lower_1sigma_exceeds_local_bound": true,
-    "p_value_ok": true,
-    "tsirelson_reference_ok": true,
-    "source_has_doi": true
-  },
-  "blockers": [],
+  "limitations": [
+    "This artifact verifies a source-referenced CHSH benchmark and Tsirelson-bound consistency.",
+    "It does not derive the UET topological-filament explanation from first principles.",
+    "It does not reproduce raw event-count analysis from the Hensen et al. experiment.",
+    "Double-slit, tunneling, qubit T1, and LC-unity scripts are outside this primary verifier."
+  ],
   "metrics": {
-    "S_value": 2.42,
     "S_error": 0.2,
+    "S_value": 2.42,
     "local_realist_bound": 2.0,
-    "margin_over_local_bound": 0.41999999999999993,
     "lower_1sigma": 2.2199999999999998,
+    "margin_over_local_bound": 0.41999999999999993,
     "p_value": 0.039,
     "qm_max_recorded": 2.828,
     "tsirelson_exact": 2.8284271247461903,
     "tsirelson_rounding_gap": 0.0004271247461904437
   },
-  "interpretation": "Source-referenced internal CHSH benchmark only. This does not derive UET topology or replace the standard nonlocality framework.",
-  "limitations": [
-    "This artifact verifies a source-referenced CHSH benchmark and Tsirelson-bound consistency.",
-    "It does not derive the UET topological-filament explanation from first principles.",
-    "It does not reproduce raw event-count analysis from the Hensen et al. experiment.",
-    "Qubit, tunneling, double-slit, and LC-unity scripts are outside this primary verifier."
-  ]
+  "schema_version": "1.1",
+  "status": "PASS",
+  "threshold": {
+    "lower_1sigma_must_exceed_local_bound": 2.0,
+    "p_value_max": 0.05,
+    "s_value_must_exceed_local_bound": 2.0,
+    "tsirelson_rounding_error_max": 0.001
+  },
+  "topic": "0.9_Quantum_Nonlocality"
 }

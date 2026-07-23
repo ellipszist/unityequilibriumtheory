@@ -12,7 +12,6 @@
   - residual in MeV
   - reference-row uncertainty in MeV and percent
   - source-lock and script hashes
-  - machine-readable `yang_mills_claim_scope_gate.controller_status`
 - Status rule:
   - `PASS`: relative error is less than or equal to the selected scalar-glueball reference uncertainty percent
   - `WARN`: verifier ran and wrote an artifact, but the residual exceeds that uncertainty
@@ -21,6 +20,3 @@
 - Interpretation:
   - Treat output as a calibration-aware internal benchmark artifact
   - A `WARN` artifact is an explicit model-hardening blocker, not a hidden failure
-  - `yang_mills_claim_scope_gate.controller_status == WARN` is expected even when the
-    selected scalar benchmark passes, because Clay proof, confinement, full-spectrum,
-    continuum-limit, and fixed-parameter claims remain open.

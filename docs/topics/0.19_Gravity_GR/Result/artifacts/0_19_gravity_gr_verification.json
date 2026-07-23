@@ -1,14 +1,4 @@
 {
-  "branch_claim_gate": {
-    "claim_boundary": "This gate keeps the topic at source-constant checkpoint status, not general-relativity closure.",
-    "path": "Data/03_Research/branch_claim_gate.json",
-    "sha256": "0516c346c34a4ff0da7dfa04085e6973f7d7719ebd6c8eb677fd75d5bc33a5ee",
-    "summary": {
-      "accepted_now": 2,
-      "blocked_for_strong_claims": 4,
-      "branches_total": 6
-    }
-  },
   "claim_class": "C - source-constant internal checkpoint only",
   "command": "python docs/topics/0.19_Gravity_GR/Code/03_Research/Research_G_Constant.py",
   "environment": {
@@ -115,7 +105,6 @@
       "source": "NIST/CODATA"
     }
   ],
-  "interpretation": "This artifact supports a source-constant checkpoint branch and a Planck-unit definition branch. It does not validate weak-field tests, the equivalence principle, or general relativity as a whole.",
   "limitations": [
     "This verifies that the engine constant package matches the CODATA working copy.",
     "It does not derive G from UET first principles.",
@@ -124,38 +113,12 @@
   "metrics": {
     "G_codata": 6.6743e-11,
     "G_engine": 6.6743e-11,
-    "accepted_claim_branches": 2,
-    "blocked_claim_exports": 6,
     "planck_length_m": 1.61625502392855e-35,
     "planck_mass_kg": 2.176434342051127e-08,
     "planck_time_s": 5.391246446661944e-44,
-    "relative_error_percent": 0.0,
-    "source_targets_blocked": 4,
-    "source_targets_ready_for_review": 1
+    "relative_error_percent": 0.0
   },
   "schema_version": "1.1",
-  "source_evidence_intake_stub": {
-    "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself validate general relativity or quantum gravity.",
-    "path": "Data/03_Research/source_evidence_intake_stub.json",
-    "sha256": "ec6f723e4b4cff458378838292b8e785f224b2875c0f72e43c2021bb3e701415",
-    "source_targets": [
-      "CODATA constant checkpoint package",
-      "Weak-field validation package",
-      "Equivalence-principle package",
-      "Short-range gravity package",
-      "General-relativity closure package"
-    ]
-  },
-  "source_evidence_readiness_matrix": {
-    "claim_boundary": "A ready row has enough provenance structure for source review. It does not by itself upgrade GR or gravity claims.",
-    "path": "Data/03_Research/source_evidence_readiness_matrix.json",
-    "sha256": "572debab88db7a1aed7ece26bb5f3346a0f6c1f622cee1cc754cee75a1b46425",
-    "summary": {
-      "source_targets_total": 5,
-      "targets_blocked_by_pending_evidence": 4,
-      "targets_ready_for_source_review": 1
-    }
-  },
   "status": "PASS",
   "threshold": {
     "codata_relative_uncertainty_percent": 0.0022,

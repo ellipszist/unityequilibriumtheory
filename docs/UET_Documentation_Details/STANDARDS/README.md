@@ -10,7 +10,6 @@ Normative files for this release:
 - [verification_contract.md](./verification_contract.md)
 - [release_checklist.md](./release_checklist.md)
 - [UET_Framework_v1.0.md](./UET_Framework_v1.0.md)
-- [thailand_proposals_standard.md](../../../thailand_proposals/thailand_proposals_standard.md) (ข้อเสนอประเทศไทยเชิงระบบ)
 
 Scope of these standards:
 

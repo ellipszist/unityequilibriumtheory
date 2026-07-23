@@ -1,7 +1,5 @@
 import sys
 from pathlib import Path
-import numpy as np
-import json
 
 # --- ROBUST UET BOOTSTRAP ---
 def _bootstrap():
@@ -18,109 +16,105 @@ if not ROOT:
     print("CRITICAL: UET docs root not found!")
     sys.exit(1)
 
-from docs.core.uet_base_solver import UETBaseSolver
-from docs.core.uet_parameters import get_params, INTEGRITY_KILL_SWITCH
+# ==============================================================================
+#  UET PROPRIETARY ENGINE - CONFIDENTIAL IP
+# ==============================================================================
 
-# --- FLASH JOULE HEATING ENGINE ---
+import math
+import sys
+from pathlib import Path
 
-class UETFlashJouleEngine(UETBaseSolver):
-    """
-    Simulates a Flash Joule Heating (FJH) reactor for graphene synthesis.
-    Converts carbon waste into high-quality graphene via millisecond high-voltage discharge.
-    """
-    def __init__(self, params=None, name="UET_Flash_Joule"):
-        if params is None:
-            params = get_params("0.28")
-            
-        super().__init__(
-            nx=1, ny=1, dt=0.001, # 1ms steps
-            params=params, name=name,
-            topic="0.28_Material_Synthesis", pillar="01_Engine"
-        )
-        
-        # Reactor Hardware
-        self.voltage = 400.0        # Discharge voltage
-        self.capacitance = 0.06     # 60mF capacitor bank
-        self.resistance_ohm = 5.0   # Sample resistance
-        
-        # Material Properties (Carbon Black / Biochar)
-        self.specific_heat_carbon = 0.710  # J/g/K
-        self.graphitization_temp = 2800.0  # K
-        self.sublimation_point = 3000.0    # K (volatiles leave)
-        
-        # State
-        self.sample_mass_g = 0.5
-        self.temperature_k = 300.0
-        self.purity = 0.0
-        self.yield_percent = 0.0
-        
-        self.results_history = []
+# --- ROBUST PATH FINDER ---
 
-    def step(self, step_idx: int = 0):
-        if INTEGRITY_KILL_SWITCH:
-            self.results_history.append({"tick": step_idx, "status": "KILLED"})
-            return
 
-        # Discharge energy for the first 10ms (10 ticks)
-        energy_input_j = 0.0
-        if step_idx < 10:
-            # P = V^2 / R
-            power_w = (self.voltage ** 2) / self.resistance_ohm
-            energy_input_j = power_w * self.dt
-            
-            # Limit by capacitor bank capacity
-            total_energy_stored = 0.5 * self.capacitance * (self.voltage ** 2)
-            total_energy_used = sum([r.get("energy_j", 0) for r in self.results_history])
-            if total_energy_used + energy_input_j > total_energy_stored:
-                energy_input_j = max(0.0, total_energy_stored - total_energy_used)
+from docs.core.uet_parameters import get_params
 
-        # Thermodynamics: dT = Q / (m * c)
-        delta_t = energy_input_j / (self.sample_mass_g * self.specific_heat_carbon)
-        self.temperature_k += delta_t
-        
-        # Cooling: Simple radiative/conductive approximation
-        cooling_rate = 0.05 * (self.temperature_k - 300.0)
-        self.temperature_k -= cooling_rate * self.dt
-        
-        # Purity & Yield Tracking
-        if self.temperature_k > self.sublimation_point:
-            self.purity = 0.99
-        elif self.temperature_k > 2000.0:
-            self.purity = max(self.purity, 0.80)
-            
-        if self.temperature_k > self.graphitization_temp:
-            self.yield_percent = 0.95
-        elif self.temperature_k > 2000.0:
-            self.yield_percent = max(self.yield_percent, 0.30)
-            
-        res = {
-            "tick": step_idx,
-            "temp_k": self.temperature_k,
-            "energy_j": energy_input_j,
-            "purity": self.purity,
-            "yield_percent": self.yield_percent
+
+class FlashJouleReactor:
+    def __init__(self, voltage_volts=300, capacitor_farads=0.06, params=None):
+        """
+        Simulate a Flash Joule Heating Reactor Unit.
+        """
+        self.params = params if params else get_params("0.28")
+        self.voltage = voltage_volts
+        self.capacitance = capacitor_farads
+        self.bank_energy = 0.5 * self.capacitance * (self.voltage**2)  # E = 0.5 * C * V^2
+
+        # Material Properties (Approximate for Carbon Black / Biochar)
+        self.specific_heat_carbon = 0.710  # J/g/K (Graphite approx)
+        self.sublimation_point_impure = 3000.0  # K (Point where non-C volatiles leave)
+        self.graphitization_temp = 2800.0  # K (Point where C starts aligning)
+
+    def run_flash(self, sample_mass_g, resistance_ohm, pulse_duration_ms=100):
+        """
+        Execute a single flash pulse on a sample.
+        """
+        # 1. Energy Discharge Calculation
+        # Power P = V^2 / R
+        power_watts = (self.voltage**2) / resistance_ohm
+
+        # Energy Delivered (Joules) = Power * Time
+        time_seconds = pulse_duration_ms / 1000.0
+        energy_input_joules = power_watts * time_seconds
+
+        # Cap check (Cannot exceed capacitor bank storage)
+        if energy_input_joules > self.bank_energy:
+            energy_input_joules = self.bank_energy
+
+        # 2. Thermodynamic Temperature Rise
+        # Q = m * c * dT  =>  dT = Q / (m * c)
+        delta_temp = energy_input_joules / (sample_mass_g * self.specific_heat_carbon)
+
+        initial_temp = 300.0  # Kelvin (Room temp)
+        final_temp = initial_temp + delta_temp
+
+        # 3. Process Logic (Sublimation & Transformation)
+        purity_score = 0.0  # 0 to 1.0 (100% Pure)
+        yield_score = 0.0  # 0 to 1.0 (100% Conversion)
+        volatiles_removed = False
+
+        # A. Purification Phase (Sublimation)
+        if final_temp > self.sublimation_point_impure:
+            volatiles_removed = True
+            purity_score = 0.99  # Very high purity ("Pristine")
+        elif final_temp > 2000:
+            purity_score = 0.80  # Decent, but some junk left
+        else:
+            purity_score = 0.10  # Dirty carbon
+
+        # B. Graphitization Phase (Lattice Formation)
+        if final_temp > self.graphitization_temp:
+            # "Flash" Graphene (Turbostratic)
+            # Higher temp = better crystallinity up to a point
+            yield_score = 0.95  # High yield
+        elif final_temp > 2000:
+            yield_score = 0.30  # Amorphous carbon / some graphite
+        else:
+            yield_score = 0.0  # Still just waste
+
+        # 4. Energy Efficiency Metric
+        # kJ per gram of Graphene produced
+        if yield_score > 0:
+            maturity_mass = sample_mass_g * yield_score
+            if maturity_mass > 0:
+                energy_efficiency_kj_g = (energy_input_joules / 1000.0) / maturity_mass
+            else:
+                energy_efficiency_kj_g = float("inf")
+        else:
+            energy_efficiency_kj_g = float("inf")
+
+        return {
+            "peak_temp_k": final_temp,
+            "energy_used_kj": energy_input_joules / 1000.0,
+            "purity": purity_score,
+            "yield_percent": yield_score * 100.0,
+            "efficiency_kj_g": energy_efficiency_kj_g,
+            "success": (final_temp > 2800),
         }
-        self.results_history.append(res)
-        
-        if (step_idx + 1) % 10 == 0:
-            print(f"   [FLASH JOULE] Tick {step_idx+1} | Temp: {self.temperature_k:>6.1f} K | Yield: {self.yield_percent:>4.0%} | Purity: {self.purity:>4.0%}")
 
-    def save_results(self):
-        from docs.core.uet_glass_box import UETPathManager
-        result_dir = UETPathManager.get_result_dir(
-            topic_id="0.28_Material_Synthesis",
-            experiment_name=self.name,
-            pillar="01_Engine",
-            category="log",
-        )
-        out_file = result_dir / "Flash_Joule_Synthesis.json"
-        with open(out_file, "w") as f:
-            json.dump(self.results_history, f, indent=2)
-        return str(out_file)
 
 if __name__ == "__main__":
-    print(f"\n[START] UET FLASH JOULE ENGINE: Simulating Graphene Synthesis...")
-    engine = UETFlashJouleEngine()
-    engine.run(steps=50, verbose=True) # 50ms pulse/cool cycle
-    path = engine.save_results()
-    print(f"[SUCCESS] RESULTS SAVED: {path}\n")
+    # Test Run
+    reactor = FlashJouleReactor(voltage_volts=400)  # Increased voltage for test
+    result = reactor.run_flash(sample_mass_g=0.5, resistance_ohm=5.0, pulse_duration_ms=60)
+    print(f"Test Result: {result}")

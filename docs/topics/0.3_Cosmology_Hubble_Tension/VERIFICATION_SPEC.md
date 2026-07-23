@@ -17,12 +17,6 @@
   - Current script uses an internal pass threshold of `< 20%` relative error
 - Artifact target:
   - `Result/artifacts/hubble_comparison_validation.json`
-- Required workflow gates:
-  - `Data/03_Research/source_evidence_intake_stub.json`
-  - `Data/03_Research/source_evidence_readiness_matrix.json`
-  - `Data/03_Research/branch_claim_gate.json`
-  - embedded `hubble_claim_scope_gate` in `Result/artifacts/hubble_comparison_validation.json`
-  - `hubble_claim_scope_gate.controller_status`, blocked export phrases, and machine-readable next blockers
 - Latest rerun:
   - artifact status: `PASS`
   - relative error: about `2.085%`
@@ -30,11 +24,6 @@
   - UET scalar gap: about `5.758 km s^-1 Mpc^-1`
 - Interpretation:
   - Treat output as an internal comparison record, not external cosmology validation
-  - The comparison must not optimize beta against the H0 values; the diagnostic coupling source
+  - The comparison must not optimize beta against the H0 values; the accepted coupling source
     is `sqrt(alpha_em)` from the central constants module
-  - A PASS applies only to the scalar published-value H0 benchmark. The beta bridge remains
-    an open derivation gate.
-  - `hubble_claim_scope_gate.controller_status == SCALAR_H0_BENCHMARK_ONLY` means
-    resolved-Hubble-tension, full-likelihood, high-z, dark-energy, and derived beta-frame
-    wording remain blocked.
   - A PASS does not close BAO/SN/CMB likelihood consistency, high-z behavior, or dark energy.

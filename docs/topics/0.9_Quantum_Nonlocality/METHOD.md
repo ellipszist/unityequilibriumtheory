@@ -16,7 +16,6 @@ until a derivation artifact maps them to standard quantum correlations.
 | UET topological filament | README, analysis docs, engine concepts | heuristic bridge |
 | Qubit mechanics/T1 | `Research_Qubit_Mechanics.py` and data files | future verifier lane |
 | Double slit/tunneling | double-slit and tunneling scripts | separate quantum benchmark lanes |
-| Workflow gates | `source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, `branch_claim_gate.json` | provenance and claim control |
 
 ## Variables
 
@@ -36,12 +35,8 @@ until a derivation artifact maps them to standard quantum correlations.
 3. Check that p-value is below `0.05`.
 4. Check that the recorded quantum maximum is within rounding tolerance of
    `2*sqrt(2)`.
-5. Generate source-evidence intake and readiness files for Bell and adjacent
-   quantum lanes.
-6. Generate a branch claim gate that separates CHSH evidence from topology,
-   qubit, and tunneling branches.
-7. Record input hashes, workflow-gate hashes, DOI/source identity, metrics,
-   checks, blockers, and limitations in the artifact.
+5. Record input hashes, DOI/source identity, metrics, checks, blockers, and
+   limitations in the artifact.
 
 ## Domain of Validity
 

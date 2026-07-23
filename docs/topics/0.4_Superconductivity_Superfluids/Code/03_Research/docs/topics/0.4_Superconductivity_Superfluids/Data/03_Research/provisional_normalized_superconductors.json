@@ -1,7 +1,0 @@
-{
-  "schema_version": "1.0",
-  "topic": "0.4_Superconductivity_Superfluids",
-  "purpose": "Provisional normalized table for internal sensitivity testing only.",
-  "rows": [],
-  "claim_boundary": "This table is not a source-backed normalized dataset. It is an internal sensitivity package built from candidate rows to estimate how much the FAIL depends on row-level parameter drift."
-}

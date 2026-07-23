@@ -1,11 +1,4 @@
 # 🔬 ANALYSIS: Artificial Intelligence (Geometric Intelligence)
-> [!WARNING]
-> **Legacy claim boundary:** This file is a concept note from an earlier
-> drafting pass. It is not the topic status authority and must not be used to
-> claim AI alignment, AGI, universal intelligence, training-efficiency
-> superiority, or mathematical guarantee. Current allowed claims are controlled
-> by `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, and
-> `Result/artifacts/0_24_artificial_intelligence_verification.json`.
 
 > **File/Script:** `docs/topics/0.24_Artificial_Intelligence/Code/03_Research/Research_AI_Training_Efficiency.py`
 > **Role:** Master Scale Verification (Axiom 2)

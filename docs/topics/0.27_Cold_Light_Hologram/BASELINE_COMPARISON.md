@@ -1,2 +1,0 @@
-# 📊 Baseline Comparison
-Compared to VR/AR (Apple Vision/Meta Quest) which require headsets, this system is naked-eye visible and provides actual haptic feedback without gloves. Compared to Pepper's Ghost, this is a true volumetric 3D image.

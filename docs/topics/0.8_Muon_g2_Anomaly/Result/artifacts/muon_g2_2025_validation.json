@@ -1,16 +1,5 @@
 {
-  "branch_claim_gate": {
-    "claim_boundary": "This gate keeps the topic at benchmark-compatibility status and blocks anomaly-closure claims.",
-    "path": "Data/03_Research/branch_claim_gate.json",
-    "sha256": "a96731d32ff761c8e8c01ee00bdfb02aad8b54afca91a3d5ee52c347ed522149",
-    "summary": {
-      "accepted_now": 3,
-      "blocked_for_strong_claims": 3,
-      "branches_total": 6
-    }
-  },
   "config": {
-    "baseline_package": "docs\\data\\external\\particle_physics\\muon_g2\\theory\\muon_g2_baseline_package.json",
     "experimental_source_locked": "docs\\data\\external\\particle_physics\\muon_g2\\fermilab_muon_g2_2025_experiment.json",
     "theory_source_locked": "docs\\data\\external\\particle_physics\\muon_g2\\theory\\muon_g2_theory_2025_total_sm.json"
   },
@@ -26,107 +15,19 @@
     "tensorflow_version": null,
     "torch_version": "2.10.0+cpu"
   },
-  "interpretation": "This artifact supports a source-backed 2025 benchmark-compatibility claim and related sensitivity diagnostics. It does not resolve the muon g-2 anomaly or exclude alternate theory packages.",
-  "limitations": [
-    "The live engine remains a compact benchmark-compatible term rather than a fully closed first-principles derivation.",
-    "Historical local baselines remain diagnostic only and do not compete with the canonical 2025 source-locked package.",
-    "Alternate-theory exclusion and broader downstream particle-consistency claims remain blocked."
-  ],
   "metrics": {
-    "accepted_claim_branches": 3,
-    "claim_scope_controller_status": "WARN",
     "delta_a_mu_derived_times_1e9": 0.375000000019457,
     "engine_delta_times_1e9": 0.10456923670529253,
     "engine_z_score_2025": 0.42458622591845235,
     "legacy_reference_delta_times_1e9": 2.51,
     "legacy_reference_z_score_2025": 3.3520283758343954,
     "significance_sigma_derived": 0.588763766283173,
-    "source_targets_blocked": 2,
-    "source_targets_ready_for_review": 3,
     "z_score": 0.42458622591845235
-  },
-  "muon_g2_claim_scope_gate": {
-    "alternate_theory_gate": {
-      "controller_role": "blocks exclusion or preference claims versus other theory packages",
-      "required_evidence": [
-        "held-out alternate-theory comparator suite",
-        "predeclared comparison metric",
-        "sensitivity analysis that distinguishes benchmark shift from model preference"
-      ],
-      "status": "BLOCKED"
-    },
-    "anomaly_status_gate": {
-      "controller_role": "blocks treating compatibility with the current small 2025 gap as a solved anomaly claim",
-      "derived_significance_sigma": 0.588763766283173,
-      "status": "BENCHMARK_ONLY"
-    },
-    "benchmark_compatibility_gate": {
-      "claim_class": "C - source-locked internal benchmark compatibility",
-      "does_not_support": "Anomaly closure, alternate-theory exclusion, first-principles derivation, or downstream particle-sector support.",
-      "metric": "engine_z_score_2025",
-      "status": "PASS",
-      "supports": "The live engine anomaly term is numerically compatible with the source-locked 2025 experiment-theory gap.",
-      "threshold": 2.0,
-      "value": 0.42458622591845235
-    },
-    "blocked_exports": [
-      "muon g-2 anomaly resolved",
-      "Standard Model discrepancy closed",
-      "alternate explanations ruled out",
-      "new physics mechanism established",
-      "downstream particle-theory support"
-    ],
-    "controller_status": "WARN",
-    "derivation_gate": {
-      "controller_role": "blocks promotion from benchmark-compatible engine term to first-principles explanation",
-      "required_evidence": [
-        "derivation tying the engine term to hadronic and electroweak structure",
-        "parameter-origin audit beyond benchmark compatibility",
-        "uncertainty-aware propagation from source inputs to engine term"
-      ],
-      "status": "OPEN"
-    },
-    "downstream_particle_support_gate": {
-      "controller_role": "blocks using this artifact as broad support for electroweak, hadronic, mass-generation, or unification claims",
-      "required_evidence": [
-        "cross-topic dependency map",
-        "consistency gates with electroweak, hadronic, and mass-generation topics",
-        "integration artifact that preserves all branch blockers"
-      ],
-      "status": "BLOCKED"
-    },
-    "gate_inputs": {
-      "branch_claim_summary": {
-        "accepted_now": 3,
-        "blocked_for_strong_claims": 3,
-        "branches_total": 6
-      },
-      "source_evidence_summary": {
-        "source_targets_total": 5,
-        "targets_blocked_by_pending_evidence": 2,
-        "targets_ready_for_source_review": 3
-      }
-    },
-    "promotion_rule": "Only source-locked 2025 benchmark compatibility can pass in this artifact. Stronger anomaly-resolution claims require closed derivation, alternate-theory, and downstream-consistency gates.",
-    "purpose": "Machine-readable controller separating 2025 benchmark compatibility from anomaly-resolution claims.",
-    "schema_version": "1.0",
-    "topic": "0.8_Muon_g2_Anomaly"
   },
   "notes": "Both the experimental and theory comparator inputs are now source-locked to 2025 references. The UET comparator is taken from Engine_Muon_G2 rather than a topic-local hardcoded anomaly constant.",
   "results": {
     "a_mu_exp_2025": 0.001165920705,
     "a_mu_sm_wp25": 0.00116592033,
-    "baseline_package_summary": {
-      "baseline_count": 5,
-      "canonical_verification_baseline": "source_locked_2025_derived",
-      "path": "docs\\data\\external\\particle_physics\\muon_g2\\theory\\muon_g2_baseline_package.json"
-    },
-    "branch_claim_gate_summary": {
-      "accepted_now": 3,
-      "blocked_for_strong_claims": 3,
-      "branches_total": 6
-    },
-    "claim_class": "C source-backed internal benchmark",
     "delta_a_mu_derived": 3.75000000019457e-10,
     "delta_error_derived": 6.369277824055094e-10,
     "deviation": 2.7043076331416446e-10,
@@ -134,39 +35,11 @@
     "engine_z_score_2025": 0.42458622591845235,
     "legacy_reference_delta": 2.51e-09,
     "legacy_reference_z_score_2025": 3.3520283758343954,
-    "muon_g2_claim_scope_status": "WARN",
     "significance_sigma_derived": 0.588763766283173,
-    "source_evidence_readiness_summary": {
-      "source_targets_total": 5,
-      "targets_blocked_by_pending_evidence": 2,
-      "targets_ready_for_source_review": 3
-    },
     "status": "PASS",
     "z_score": 0.42458622591845235
   },
   "seed": 42,
-  "source_evidence_intake_stub": {
-    "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself resolve the muon g-2 anomaly.",
-    "path": "Data/03_Research/source_evidence_intake_stub.json",
-    "sha256": "1407cd6c82aaffc9b34516796fb606b32c16a4b6912cf1c059dbefab2b671a6c",
-    "source_targets": [
-      "2025 experiment package",
-      "2025 theory comparator package",
-      "Structured baseline package",
-      "Live engine anomaly derivation package",
-      "Alternate-theory and downstream particle-consistency package"
-    ]
-  },
-  "source_evidence_readiness_matrix": {
-    "claim_boundary": "A ready row has enough provenance structure for source review. It does not by itself upgrade anomaly-resolution claims.",
-    "path": "Data/03_Research/source_evidence_readiness_matrix.json",
-    "sha256": "95308fad575170b9f3433dfa6012f5a7768f141672f03d34d9acf396cdcdbf98",
-    "summary": {
-      "source_targets_total": 5,
-      "targets_blocked_by_pending_evidence": 2,
-      "targets_ready_for_source_review": 3
-    }
-  },
   "thresholds": {
     "max_compatibility_z_score": 2.0
   },

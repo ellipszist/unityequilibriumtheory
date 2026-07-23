@@ -1,13 +1,4 @@
 # 🔬 ANALYSIS: 0.21 Yang-Mills Mass Gap (The Origin of Mass)
-> [!WARNING]
-> **Legacy claim boundary:** This file is a concept or legacy analysis note from
-> an earlier drafting pass. It is not the topic status authority and must not be
-> used to claim the Clay Yang-Mills problem is solved, mass gap proven,
-> confinement proven, full glueball spectrum validated, alpha fixed by theory,
-> Millennium problem supported, or a constructive mathematical proof. Current
-> allowed claims are controlled by `README.md`, `LIMITATIONS.md`,
-> `VERIFICATION_SPEC.md`, `DATA_MANIFEST.md`, and
-> `Result/artifacts/mass_gap_validation.json`.
 
 > **File/Script:** `Code/03_Research/Research_Quantum_Vortex.py`
 > **Role:** Millennium Problem Solver

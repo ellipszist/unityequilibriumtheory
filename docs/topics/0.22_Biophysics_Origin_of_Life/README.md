@@ -53,10 +53,9 @@ flowchart LR
 | Homeostasis/origin-of-life | Entropy and Omega proxy simulations | `METHOD.md`, `FORMULA_AUDIT.md` | Add environment entropy ledger and real/prebiotic reaction data. |
 | EEG/neural dynamics | CHB-MIT/Bonn source records and local summaries exist, but primary verifier does not classify raw EEG | `DATA_MANIFEST.md`, `data/03_Research/source_lock_manifest.json` | Archive raw windows, preprocessing, exact record IDs, and classifier metrics. |
 | Biomarker | Seeded synthetic positive-control diagnostic | `Research_Biomarker_Identification.py`, verifier artifact | Replace synthetic matrix with real omics data and baseline statistics. |
-| Source evidence | Intake + readiness workflow gate; CHB-MIT row is review-ready, Bonn/TCGA remain partial | `data/03_Research/source_evidence_intake_stub.json`, `data/03_Research/source_evidence_readiness_matrix.json` | Close Bonn/TCGA field gaps and attach raw biomedical evidence before data rewrites or claim upgrades. |
 | Cancer/TCGA | TCGA/GDC source target exists, but current scripts include mock matrices | `FORMULA_AUDIT.md`, `LIMITATIONS.md`, `docs/data/external/biophysics/omics/tcga/source_record.json` | Add real TCGA-derived matrix, cohort, preprocessing, hashes, and baseline statistics. |
 | Protein/protocell | HP/proxy simulations | `FORMULA_AUDIT.md` | Add known benchmark optima, source data, deterministic artifacts. |
-| Dependency | Thermodynamic language depends on `0.13` | `METHOD.md`, `LIMITATIONS.md`, `data/03_Research/subclaim_gate.json` | Inherit `0.13` source-lock limitations until closed. |
+| Dependency | Thermodynamic language depends on `0.13` | `METHOD.md`, `LIMITATIONS.md` | Inherit `0.13` source-lock limitations until closed. |
 
 ---
 
@@ -93,18 +92,7 @@ flowchart LR
 - [VERIFICATION_SPEC.md](./VERIFICATION_SPEC.md): primary verifier command, thresholds, artifact target, and interpretation.
 - [METHOD.md](./METHOD.md): method map, evidence matrix, and dependency notes.
 - [LIMITATIONS.md](./LIMITATIONS.md): current claim boundaries and blockers.
-- [source_evidence_intake_stub.json](./data/03_Research/source_evidence_intake_stub.json): structured landing zone for missing EEG, omics, protein, and prebiotic source evidence.
-- [source_evidence_readiness_matrix.json](./data/03_Research/source_evidence_readiness_matrix.json): workflow gate for which biomedical source packages are still blocked by missing evidence fields.
-- [subclaim_gate.json](./data/03_Research/subclaim_gate.json): separated claim ceilings for biomarker, seizure, cancer, origin-of-life, protein, and cross-topic thermodynamic lanes.
-- `biophysics_claim_scope_gate` in the verification artifact: export controller that allows only synthetic diagnostic/source-governance wording and blocks origin-of-life, clinical, EEG, TCGA, protein, and theory-closure claims.
 
 ---
 
-*Core hardening status: formula-audited, synthetic verifier artifact enabled, biomedical source records pinned, source/subclaim gates enabled, raw biomedical data gates still open.*
-
-Current provenance gate snapshot:
-
-- CHB-MIT: `6/6` fields complete for the current source-referenced summary package, ready for source review
-- Bonn EEG: `4/6` fields complete, blocked by license and source sampling-rate metadata
-- TCGA: `3/6` fields complete, blocked by real cohort/assay identity and feature-filter metadata
-- HP protein and prebiotic chemistry: `0/6` fields complete, still target placeholders only
+*Core hardening status: formula-audited, synthetic verifier artifact enabled, biomedical source records pinned, raw biomedical data gates still open.*

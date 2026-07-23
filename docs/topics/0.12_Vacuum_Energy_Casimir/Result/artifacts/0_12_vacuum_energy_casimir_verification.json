@@ -1,14 +1,4 @@
 {
-  "branch_claim_gate": {
-    "claim_boundary": "This gate keeps the topic at Casimir benchmark and mechanism-diagnostic status, not vacuum-energy closure.",
-    "path": "Data/03_Research/branch_claim_gate.json",
-    "sha256": "306821579a8c4648af1e79e95c1b097243b03e95cf44a7905007a482ce5519f9",
-    "summary": {
-      "accepted_now": 2,
-      "blocked_for_strong_claims": 4,
-      "branches_total": 6
-    }
-  },
   "claim_class": "C - source-backed internal benchmark for Casimir force only",
   "command": "python docs/topics/0.12_Vacuum_Energy_Casimir/Code/03_Research/Research_Casimir.py",
   "environment": {
@@ -31,20 +21,15 @@
       "sphere_radius_um_model": 200.0
     }
   ],
-  "interpretation": "This artifact supports a Casimir benchmark branch and a bounded boundary-force mechanism branch. It does not validate a vacuum-energy bridge or solve the cosmological-constant problem.",
   "limitations": [
     "This artifact validates the topic-local sphere-plate Casimir benchmark only.",
     "It does not validate the dark-energy anchor or solve the cosmological-constant problem.",
     "The engine uses a clipped finite-conductivity correction and a 200 um model radius against a 196 um dataset radius."
   ],
   "metrics": {
-    "accepted_claim_branches": 2,
     "average_relative_error_percent": 2.0717683135574445,
-    "blocked_claim_exports": 5,
     "max_relative_error_percent": 8.663243595480283,
-    "point_count": 12,
-    "source_targets_blocked": 5,
-    "source_targets_ready_for_review": 0
+    "point_count": 12
   },
   "results": [
     {
@@ -133,119 +118,10 @@
     }
   ],
   "schema_version": "1.1",
-  "source_evidence_intake_stub": {
-    "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself validate a vacuum-energy or dark-energy theory.",
-    "path": "Data/03_Research/source_evidence_intake_stub.json",
-    "sha256": "ffc4659281ccba06db92b745c4e6b6eb61fd36241731a7ab7ca18dd14cb55adb",
-    "source_targets": [
-      "Mohideen/Roy primary benchmark package",
-      "Geometry and radius sensitivity package",
-      "Finite-conductivity correction package",
-      "Secondary Casimir dataset package",
-      "Vacuum-energy and cosmology bridge package"
-    ]
-  },
-  "source_evidence_readiness_matrix": {
-    "claim_boundary": "A ready row has enough provenance structure for source review. It does not by itself upgrade vacuum-energy claims.",
-    "path": "Data/03_Research/source_evidence_readiness_matrix.json",
-    "sha256": "82a8ede219a3aae0b1865f2b9e5e12ecf7a025094eecbabff7812fcb3822c4ce",
-    "summary": {
-      "source_targets_total": 5,
-      "targets_blocked_by_pending_evidence": 5,
-      "targets_ready_for_source_review": 0
-    }
-  },
   "status": "PASS",
   "threshold": {
     "average_relative_error_percent_max": 10.0,
     "max_relative_error_percent_max": 15.0
   },
-  "topic": "0.12_Vacuum_Energy_Casimir",
-  "vacuum_claim_scope_gate": {
-    "allowed_claims_now": [
-      {
-        "artifact_role": "primary Casimir benchmark gate",
-        "claim": "The current model matches the topic-local Mohideen/Roy sphere-plate Casimir working dataset under the declared residual thresholds.",
-        "metrics": {
-          "average_relative_error_percent": 2.0717683135574445,
-          "max_relative_error_percent": 8.663243595480283
-        },
-        "source_evidence_readiness": "working_copy_not_fully_archived",
-        "status": "PASS",
-        "thresholds": {
-          "average_relative_error_percent_max": 10.0,
-          "max_relative_error_percent_max": 15.0
-        }
-      },
-      {
-        "artifact_role": "supporting mechanism branch",
-        "claim": "The boundary-force mechanism branch can be cited as a bounded diagnostic for vacuum-boundary behavior.",
-        "formula_role": "sphere-plate PFA plus clipped finite-conductivity correction",
-        "source_evidence_readiness": "pending_geometry_material_sensitivity",
-        "status": "DIAGNOSTIC_ONLY"
-      }
-    ],
-    "blocked_claims": [
-      {
-        "blocking_reason": "No bridge derivation or cosmology-grade dataset artifact connects the Casimir residuals to dark energy.",
-        "claim": "The Casimir benchmark validates a vacuum-energy or dark-energy bridge.",
-        "next_evidence_required": [
-          "vacuum-energy bridge derivation",
-          "cosmology-grade dataset",
-          "baseline comparison artifact"
-        ],
-        "status": "BLOCKED"
-      },
-      {
-        "blocking_reason": "The observed-like dark-energy anchor is not derived from the Casimir benchmark.",
-        "claim": "UET solves the cosmological-constant problem.",
-        "next_evidence_required": [
-          "dedicated cosmology artifact",
-          "cross-topic dependency closure",
-          "uncertainty and baseline gates"
-        ],
-        "status": "BLOCKED"
-      },
-      {
-        "blocking_reason": "The primary gate uses one topic-local sphere-plate dataset with a tracked radius mismatch and clipped correction.",
-        "claim": "The current Casimir fit is geometry-general or material-general.",
-        "next_evidence_required": [
-          "radius sensitivity artifact",
-          "material sensitivity artifact",
-          "source-locked secondary datasets"
-        ],
-        "status": "BLOCKED"
-      }
-    ],
-    "blocked_export_phrases": [
-      "dark energy validated",
-      "vacuum-energy bridge proven",
-      "cosmological-constant problem solved",
-      "Planck-scale vacuum cutoff proved",
-      "geometry-general Casimir solver validated"
-    ],
-    "branch_claim_gate_summary": {
-      "accepted_now": 2,
-      "blocked_for_strong_claims": 4,
-      "branches_total": 6
-    },
-    "claim_boundary": "A PASS artifact supports the declared sphere-plate Casimir benchmark only. It does not validate dark energy, solve the cosmological-constant problem, prove a Planck-scale cutoff, or generalize the solver across geometries/materials.",
-    "claim_class": "C_casimir_benchmark_only",
-    "controller_reason": "The Casimir benchmark passed, but topic-level export remains warning-gated because source readiness, geometry sensitivity, secondary datasets, and cosmology bridge evidence are incomplete.",
-    "controller_status": "WARN",
-    "machine_readable_next_blockers": [
-      "mohideen_roy_source_archive_incomplete",
-      "geometry_radius_sensitivity_missing",
-      "finite_conductivity_sensitivity_missing",
-      "secondary_casimir_dataset_gate_missing",
-      "vacuum_energy_cosmology_bridge_missing"
-    ],
-    "schema_version": "1.0",
-    "source_evidence_summary": {
-      "source_targets_total": 5,
-      "targets_blocked_by_pending_evidence": 5,
-      "targets_ready_for_source_review": 0
-    },
-    "topic": "0.12_Vacuum_Energy_Casimir"
-  }
+  "topic": "0.12_Vacuum_Energy_Casimir"
 }

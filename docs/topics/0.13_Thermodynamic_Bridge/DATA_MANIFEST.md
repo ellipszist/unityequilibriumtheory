@@ -2,18 +2,13 @@
 
 Current data reality status: "real source referenced with topic-derived working copies"
 
-External-source audit status: `Berut/CODATA source records pinned; gravity and measured-constant provenance anchors added; raw experimental table archive still open`.
+External-source audit status: `Berut/CODATA source records pinned; raw experimental table archive still open`.
 
 Priority remediation:
 
 - Archive or machine-transcribe Berut 2012 experimental Landauer-principle raw/supplementary values.
 - Extend the CODATA/NIST constants record beyond exact SI constants if measured constants become acceptance gates.
 - Separate historical theoretical references from experimental datasets used in verification.
-- Use the new uncertainty-preprocessing manifest plus uncertainty-propagation summary to move from summary-value provenance toward fuller propagated uncertainty outputs.
-- Use the derivation-boundary files to keep imported identities, UET proxies, and open bridge-claim steps visibly separate.
-- Use the units-contract files to keep SI and proxy quantities from being mixed in topic summaries or future bridge claims.
-- Use the Landauer-UET mapping files to keep direct reuse of the standard lower bound from being misreported as a closed UET derivation.
-- Use the beta-role clarification files to keep symbol presence from being mistaken for a closed bridge coefficient.
 - See `docs/meta/core_data_external_source_audit.md` for the cross-topic data-hardening plan.
 
 | Item | Local path | Source | Unit convention | Bytes | SHA-256 | Benchmark role | Provenance status |
@@ -76,38 +71,14 @@ Priority remediation:
 
 | Source target | Required storage path | Current status |
 |:--|:--|:--|
-| Berut et al. 2012 Landauer data/supplement | `docs/data/external/thermodynamics/landauer/berut_2012/` | Source record stored; official Figure 3 PPT route captured, embedded raster candidates inventoried, and digitization protocol declared and automated panel-frame candidates captured; accepted tick mapping, point/curve selection, numeric transcription, or stronger source-data surface still open. |
-| Jun et al. 2014 feedback-trap erasure | `docs/data/external/thermodynamics/landauer/jun_2014/` | Source record stored; arXiv Table I/Figure 4 summary surface locally transcribed; final PRL parity/APS access still open, and the legacy `0.028 eV` runtime row remains demoted outside active Jun logic pending stronger source confirmation. |
-| Hong et al. 2016 nanomagnetic-memory candidate branch | `docs/data/external/thermodynamics/landauer/hong_2016/` | Candidate source record stored; Crossref DOI metadata anchor plus an accessible same-author preprint precursor are now visible, a provisional preferred target is now declared, but final-source confirmation and the legacy-row policy are still open. |
-| Peterson/quantum Landauer branch | `docs/data/external/thermodynamics/landauer/peterson_2018/` | Source-resolution record stored; local branch is now known to separate at least three incompatible candidate families, so the legacy `Peterson 2018` label is demoted until one exact upstream paper is chosen. |
+| Berut et al. 2012 Landauer data/supplement | `docs/data/external/thermodynamics/landauer/berut_2012/` | Source record stored; raw external file or machine-transcribed table still open. |
+| Jun et al. 2014 nanomagnetic bit erasure | `docs/data/external/thermodynamics/landauer/jun_2014/` | DOI recorded in data module; raw external file not yet stored. |
+| Peterson et al. 2018 quantum Landauer | `docs/data/external/thermodynamics/landauer/peterson_2018/` | DOI recorded in data module; raw external file not yet stored. |
 | LIGO/Virgo event masses used for area theorem checks | `docs/data/external/gravity/ligo_black_hole_mergers/` | Manual summary only; mass uncertainty propagation open. |
 | EHT black-hole mass observations | `docs/data/external/gravity/eht_black_hole_masses/` | Manual summary only; mass uncertainty propagation open. |
-| CODATA/NIST constants | `docs/data/external/constants/codata/` | Exact SI constants source record stored; measured-constant provenance anchor and direct G extract now stored; broader systematic uncertainty package still open. |
+| CODATA/NIST constants | `docs/data/external/constants/codata/` | Exact SI constants source record stored; measured-constant uncertainty record still open. |
 
 Repository note:
 
 - This manifest was created during the repo standards pass and should be tightened further in a later provenance-normalization wave.
-- Until raw/supplementary tables and systematic uncertainty records are frozen, treat the dataset package as a source-referenced internal benchmark rather than an archival release.
-- `source_evidence_intake_stub.json` and `source_evidence_readiness_matrix.json` are workflow artifacts that help control future provenance normalization; they are not substitute raw datasets.
-- `row_closure_matrix.json` now provides a row-by-row blocker map so provenance and uncertainty closure can proceed by specific benchmark row instead of by broad topic-level wording.
-- `landauer_row_contract.json` now further narrows the main benchmark lane to the three rows currently most worth closing first: `Berut`, `Jun`, and the staged `Hong` candidate branch.
-- `berut_2012_provenance_gap.json` now isolates the exact missing row-level provenance evidence for the `Berut` summary row.
-- `berut_2012_source_surface_note.json` now narrows the Berut blocker further: the currently visible Nature page behaves like a figure-level preview, so row closure may need supplementary capture, figure-level locator capture, or explicit transcription policy rather than a simple table pointer.
-- `berut_2012_transcription_policy_blocker.json`, `berut_2012_transcription_policy_decision.json`, `berut_2012_figure_locator_mapping.json`, `berut_2012_figure3_ppt_source_route.json`, `berut_2012_figure3_raster_asset_inventory.json`, `berut_2012_figure3_digitization_protocol.json`, `berut_2012_figure3_landmark_candidate_capture.json`, and `berut_2012_figure3_semantic_asset_review.json` now narrow the Berut blocker again: the repo selects `figure_level_locator_capture`, attaches the official `Figure 3` PPT route, binary identity, embedded raster candidates, digitization protocol, automated panel-frame candidates, and semantic asset review selecting `jpeg_2`, and now leaves selected-panel tick mapping, point/curve selection, or a stronger source-data surface as the remaining Berut controller.
-- `jun_2014_uncertainty_gap.json` now isolates final PRL parity/APS access for the locally transcribed Table I/Figure 4 fit target after the legacy `0.028 eV` row was demoted out of active Jun logic.
-- `jun_2014_runtime_mapping_conflict.json` now isolates a narrower Jun-side blocker: the pinned `Jun 2014` asymptotic-work summary (`0.71 +/- 0.03 kT`) is explicit, does not numerically match the legacy `0.028 eV` runtime row under the current `300 K` verifier baseline, and now depends on final PRL parity/APS access resolution rather than local source-summary identity or legacy-row policy choice.
-- `hong_2016_source_lineage_note.json` now isolates a further lineage risk: the same legacy `0.028 eV / 44% above limit` wording may reflect a later nanomagnetic-memory experiment branch rather than a clean `Jun 2014` row, and the accessible same-author preprint now makes that Hong-side lineage more concrete without closing it.
-- `docs/data/external/thermodynamics/landauer/hong_2016/source_record.json` now gives that possible later nanomagnetic-memory branch a local source-package anchor, the current search trail points to candidate identifiers `DOI 10.1126/sciadv.1501492`, `PMID 26998519`, `PMCID PMC4795654`, Crossref confirms the DOI metadata anchor, and an accessible same-author preprint precursor now exposes candidate dissipation values near `~0.026 eV` and `~0.038 eV`; current topic policy provisionally prefers the `4.2 +/- 0.9 zJ` target, but direct final-source archival is still access-blocked in the current environment.
-- `docs/data/external/thermodynamics/landauer/hong_2016/crossref_work_record.json` now archives the fetched Crossref work record locally, and the main `0.13` verifier now records that snapshot as a declared input, so the Hong DOI metadata anchor is no longer only an ephemeral terminal fetch.
-- `hong_2016_numeric_mismatch_note.json` now isolates a second Hong-side blocker: the accessible same-author preprint exposes both a temperature-series mean near `~0.0262 eV` and a room-temperature five-trial average near `~0.0380 eV`, the current verifier arithmetic still maps `44% above limit` to about `0.025804 eV`, and the local `0.028 eV` runtime row still lacks a declared keep/replace/remove policy.
-- `hong_2016_runtime_target_policy.json` now narrows that same Hong-side blocker one step further: the repo provisionally prefers the `4.2 +/- 0.9 zJ` temperature-series mean as the best current fit to the inherited `2016 / 44% above limit / ~0.026 eV` runtime narrative while still requiring final-source confirmation.
-- `hong_2016_source_acquisition_blocker.json` now isolates a third Hong-side blocker: the likely paper identity is visible, one primary-facing precursor surface is accessible, but the branch still lacks a final archived official article page inside the repo.
-- `peterson_2018_source_conflict.json` now isolates a narrower Peterson-side blocker: direct Crossref metadata checks show that the local runtime branch is composite, mixing a Nature Physics mesoscopic-entropy DOI with a different trapped-ion quantum-Landauer narrative.
-- `peterson_branch_identity_policy.json` now narrows that blocker further by separating the Peterson-led 2016 authorship cue from the trapped-ion PRL 2018 cue and from the Nature Physics 2018 DOI, so the legacy local `Peterson 2018` label is now explicitly demoted.
-- `measured_constant_uncertainty_package.json` now isolates the current runtime policy for `G` uncertainty and threads a direct CODATA 2022 G extract into gravity-context combined intervals.
-- The current verifier artifact now separates Landauer lower-bound, Bekenstein/Hawking formula-consistency, synthetic Cattaneo, and UET-bridge hypothesis lanes. Only the exact/lower-bound lane can pass while source-lock remains open.
-- The current verifier artifact and foundation gate now both export the active `Berut/Jun/Hong/Peterson` row-controller chain, so dependency inheritance and topic-level claim blocking point to the same machine-readable next controllers.
-- The current source-evidence readiness matrix now records `3/7` targets ready for source review (`LIGO/Virgo`, `EHT`, and measured-constant provenance anchors) and `4/7` still partial (`Berut`, `Jun`, `Hong`, `Peterson`), with the Hong row now carrying more partial evidence than before because preprint-level candidate values, intervals, and a provisional preferred target are visible even though final-source confirmation is still open.
-- The current uncertainty-propagation artifact records propagated intervals for `5/5` tracked rows; `Jun 2014` now carries a summary-layer interval tied to the pinned asymptotic-work quantity, with the legacy `0.028 eV` row demoted outside active Jun logic; the gravity-context rows expose both mass-only baselines and mass-plus-direct-CODATA-2022-`G` combined intervals and still exclude systematic terms.
-
-
+- Until raw/supplementary tables and measured-constant uncertainty records are frozen, treat the dataset package as a source-referenced internal benchmark rather than an archival release.

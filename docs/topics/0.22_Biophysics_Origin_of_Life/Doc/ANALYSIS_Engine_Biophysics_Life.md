@@ -1,13 +1,4 @@
 # 🔬 ANALYSIS: Biophysics & Life Engines (เอนจินชีวฟิสิกส์และจุดกำเนิดชีวิต)
-> [!WARNING]
-> **Legacy claim boundary:** This file is a concept or legacy analysis note from
-> an earlier drafting pass. It is not the topic status authority and must not be
-> used to claim origin-of-life proof, clinical biomarker validation, TCGA cancer
-> validation, EEG seizure prediction, protein-folding superiority, neural proof,
-> soul/consciousness survival, or biophysical theory closure. Current allowed
-> claims are controlled by `README.md`, `LIMITATIONS.md`,
-> `VERIFICATION_SPEC.md`, `DATA_MANIFEST.md`, and
-> `Result/artifacts/0_22_biophysics_origin_of_life_verification.json`.
 
 > **Files:** `Engine_Biophysics.py`, `Engine_Life_Entropy.py`, `Engine_Biophysics_Neural.py`
 > **Role:** Engine (Biological System Solver)

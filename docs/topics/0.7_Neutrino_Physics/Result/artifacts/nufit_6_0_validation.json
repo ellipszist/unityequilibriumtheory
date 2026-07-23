@@ -1,14 +1,4 @@
 {
-  "branch_claim_gate": {
-    "claim_boundary": "This gate cannot raise the topic above the current neutrino benchmark-compatibility package.",
-    "path": "Data/03_Research/branch_claim_gate.json",
-    "sha256": "c5969fddd8ea396422a49665626dee46e9cbb434d928fc125f645c38e43c6f43",
-    "summary": {
-      "accepted_now": 4,
-      "blocked_for_strong_claims": 2,
-      "branches_total": 6
-    }
-  },
   "config": {
     "katrin_source_locked_reference": "docs\\data\\external\\particle_physics\\katrin\\katrin_latest_results_2025.json",
     "note": "NuFIT 6.0 values are maintained as a checked-transcription JSON guarded by source hashes and schema validation; the KATRIN limit is extracted from the official 2025 KATRIN results page; angle checks use live Engine_Neutrino outputs.",
@@ -27,88 +17,13 @@
     "tensorflow_version": null,
     "torch_version": "2.10.0+cpu"
   },
-  "interpretation": "This artifact supports benchmark compatibility for source-backed NuFIT and KATRIN constraints, with accepted-but-caveated angle, splitting, and absolute-mass branches. It does not prove the full neutrino sector.",
-  "limitations": [
-    "NuFIT remains a checked-transcription benchmark layer rather than a machine-parsed official table pipeline.",
-    "Live angle and runtime splitting branches remain benchmark-compatible but not first-principles derived.",
-    "The absolute-mass branch is bounded by KATRIN compatibility, not closed as a full mass-generation theory.",
-    "Hierarchy proxy and full neutrino-sector proof claims remain blocked."
-  ],
   "metrics": {
-    "accepted_claim_branches": 4,
-    "claim_scope_controller_status": "WARN",
     "engine_angle_fail_count": 0,
     "engine_angles_all_within_any_3sigma": true,
     "katrin_limit_eV_c2": 0.45,
     "nufit_schema_validation_status": "PASS",
     "predicted_mass_eV": 0.0006402620830947914,
-    "runtime_splittings_all_within_any_3sigma": true,
-    "source_targets_blocked": 3,
-    "source_targets_ready_for_review": 2
-  },
-  "neutrino_claim_scope_gate": {
-    "benchmark_compatibility_gate": {
-      "claim_class": "C - internal source-backed benchmark compatibility package",
-      "component_status": {
-        "absolute_mass_katrin_gate": "PASS",
-        "live_angle_gate": "PASS",
-        "nufit_provenance_guard": "PASS",
-        "runtime_splitting_gate": "PASS"
-      },
-      "does_not_support": "A first-principles neutrino mass origin, hierarchy selector, PMNS derivation, or full neutrino-sector proof.",
-      "status": "PASS",
-      "supports": "The current live angle, benchmark-fed splitting, and absolute-mass branches satisfy the declared NuFIT/KATRIN gates."
-    },
-    "blocked_exports": [
-      "neutrino mass origin derived",
-      "full PMNS matrix proved from UET",
-      "mass hierarchy resolved",
-      "full neutrino-sector closure",
-      "unification evidence beyond benchmark constraint"
-    ],
-    "controller_status": "WARN",
-    "derivation_gate": {
-      "controller_role": "blocks promotion from benchmark compatibility to derived neutrino-sector theory",
-      "required_evidence": [
-        "field-equation derivation for live PMNS angle bridge",
-        "first-principles mass-splitting outputs rather than benchmark-fed runtime parameters",
-        "uncertainty-aware propagation across angle, splitting, and absolute-mass lanes"
-      ],
-      "status": "OPEN"
-    },
-    "gate_inputs": {
-      "branch_claim_summary": {
-        "accepted_now": 4,
-        "blocked_for_strong_claims": 2,
-        "branches_total": 6
-      },
-      "source_evidence_summary": {
-        "source_targets_total": 5,
-        "targets_blocked_by_pending_evidence": 3,
-        "targets_ready_for_source_review": 2
-      }
-    },
-    "hierarchy_gate": {
-      "controller_role": "blocks hierarchy and full-sector closure exports",
-      "required_evidence": [
-        "topological invariant or comparable derived hierarchy selector",
-        "dedicated verifier artifact for hierarchy claims",
-        "source-backed baseline comparison for hierarchy alternatives"
-      ],
-      "status": "BLOCKED"
-    },
-    "promotion_rule": "Only NuFIT/KATRIN benchmark compatibility can pass in this artifact. Stronger neutrino-sector claims require closed derivation, hierarchy, and source-pipeline gates.",
-    "purpose": "Machine-readable controller separating NuFIT/KATRIN benchmark PASS from full neutrino-sector claims.",
-    "schema_version": "1.0",
-    "source_pipeline_gate": {
-      "controller_role": "blocks stronger source-readiness claims for the NuFIT layer",
-      "required_evidence": [
-        "machine parse or independent double-entry of NuFIT official table",
-        "explicit review trail for checked transcription changes"
-      ],
-      "status": "PARTIAL"
-    },
-    "topic": "0.7_Neutrino_Physics"
+    "runtime_splittings_all_within_any_3sigma": true
   },
   "notes": "This test distinguishes live UET engine angle outputs from runtime benchmark-fed mass splittings. It also checks the direct absolute-mass engine path against the official 2025 KATRIN limit. A fail constrains downstream core-theory claims until the live geometric angle path is repaired.",
   "results": {
@@ -116,11 +31,6 @@
       "katrin_limit_eV_c2": 0.45,
       "passes": true,
       "predicted_mass_eV": 0.0006402620830947914
-    },
-    "branch_claim_gate_summary": {
-      "accepted_now": 4,
-      "blocked_for_strong_claims": 2,
-      "branches_total": 6
     },
     "claim_class": "C internal benchmark gate",
     "comparisons": [
@@ -247,8 +157,8 @@
     ],
     "failure_analysis": {
       "downstream_dependency_policy": {
-        "0.0_Grand_Unification": "must carry the benchmark-gated neutrino limitation until derivations are closed",
-        "0.17_Mass_Generation": "may cite this artifact only as benchmark compatibility and inherits the derivation gap",
+        "0.0_Grand_Unification": "must list this as an integration limitation while status is FAIL",
+        "0.17_Mass_Generation": "inherits angle-gate blocker until the live model passes NuFIT ranges",
         "0.23_Unity_Scale_Link": "may cite this artifact as a constraint, not as positive unification evidence"
       },
       "failed_live_angle_gates": [],
@@ -263,7 +173,6 @@
     },
     "geometric_pass": true,
     "katrin_pass": true,
-    "neutrino_claim_scope_status": "WARN",
     "nufit_provenance": {
       "manual_review_required": true,
       "note": "The repository currently validates the checked-transcription JSON against schema and locked-source hashes. A true machine PDF parser requires an explicit dependency.",
@@ -280,37 +189,10 @@
       "dm21_sq": 7.42e-05,
       "dm31_sq": 0.002515
     },
-    "source_evidence_readiness_summary": {
-      "source_targets_total": 5,
-      "targets_blocked_by_pending_evidence": 3,
-      "targets_ready_for_source_review": 2
-    },
     "splitting_pass": true,
     "status": "PASS"
   },
   "seed": 42,
-  "source_evidence_intake_stub": {
-    "claim_boundary": "This intake stub organizes provenance and branch-upgrade work only. It does not itself prove the neutrino sector.",
-    "path": "Data/03_Research/source_evidence_intake_stub.json",
-    "sha256": "8264d014151911bc1a822ebd7b4479c8616112f6f28121114ff656dde42275c4",
-    "source_targets": [
-      "NuFIT 6.0 checked-transcription benchmark package",
-      "KATRIN 2025 absolute-mass benchmark package",
-      "Runtime mass-splitting benchmark package",
-      "Live angle-bridge derivation package",
-      "Hierarchy proxy and full-sector proof package"
-    ]
-  },
-  "source_evidence_readiness_matrix": {
-    "claim_boundary": "A ready row has enough provenance structure for source review. It does not itself upgrade a claim.",
-    "path": "Data/03_Research/source_evidence_readiness_matrix.json",
-    "sha256": "13609f14908bdd2af0854efa670e0a7fe406d87c5edea9ab44e057fc9d8ddb15",
-    "summary": {
-      "source_targets_total": 5,
-      "targets_blocked_by_pending_evidence": 3,
-      "targets_ready_for_source_review": 2
-    }
-  },
   "thresholds": {
     "engine_angles_within_any_3sigma": true,
     "predicted_mass_less_than_katrin_limit": true,

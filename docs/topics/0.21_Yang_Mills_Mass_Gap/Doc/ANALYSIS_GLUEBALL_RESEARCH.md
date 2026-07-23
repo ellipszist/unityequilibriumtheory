@@ -1,13 +1,4 @@
 # 🔬 ANALYSIS: วิจัยอนุภาคกลูบอล (Glueball Research)
-> [!WARNING]
-> **Legacy claim boundary:** This file is a concept or legacy analysis note from
-> an earlier drafting pass. It is not the topic status authority and must not be
-> used to claim the Clay Yang-Mills problem is solved, mass gap proven,
-> confinement proven, full glueball spectrum validated, alpha fixed by theory,
-> Millennium problem supported, or a constructive mathematical proof. Current
-> allowed claims are controlled by `README.md`, `LIMITATIONS.md`,
-> `VERIFICATION_SPEC.md`, `DATA_MANIFEST.md`, and
-> `Result/artifacts/mass_gap_validation.json`.
 
 > **ไฟล์/สคริปต์:** `Code/03_Research/Research_Mass_Gap.py` & `Sweep`
 > **หน้าที่:** Research (ค้นหาค่าจริง)

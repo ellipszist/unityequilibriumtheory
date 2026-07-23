@@ -52,8 +52,6 @@ flowchart LR
 | Biomarker | Seeded synthetic expression matrix with known positive controls | `D` | Code-path diagnostic only. |
 | Cancer/TCGA | Mock expression matrices in scripts | `D` | Figure/metric sandbox only. |
 | Protein/protocell | HP/proxy simulations | `D/A` | Exploratory biophysical mechanism tests. |
-| Source evidence workflow | Intake stub plus readiness matrix for missing biomedical source packages | `Workflow gate` | Blocks data rewrites and claim upgrades until real evidence is attached. |
-| Subclaim gate | Separate lane controls for biomarker, seizure, cancer, origin-of-life, and protein claims | `Workflow gate` | Prevents blended umbrella claims from outrunning the evidence. |
 
 ## Assumptions
 
@@ -76,17 +74,3 @@ flowchart LR
 
 - Proxy choice and preprocessing strongly affect interpretation in the current package.
 - Any topic using `0.22` as support must inherit the synthetic/local-data limitations until source-locked sub-verifiers exist.
-
-## Claim Workflow
-
-1. Run `Research_Biomarker_Identification.py` to regenerate the artifact and workflow files.
-2. Read `data/03_Research/source_evidence_intake_stub.json` as a mixed state file: CHB-MIT is already populated from pinned source records and local summaries, Bonn and TCGA are partially populated, and protein/prebiotic remain empty.
-3. Use `data/03_Research/source_evidence_readiness_matrix.json` as the provenance gate before changing working-copy data or claim class.
-4. Check `data/03_Research/subclaim_gate.json` before treating any sub-lane as evidence beyond the current synthetic biomarker diagnostic.
-
-## Current provenance gate state
-
-- CHB-MIT: source-review-ready for the current summary-based working copy (`6/6` fields complete), but still not a raw EDF archive.
-- Bonn EEG: partial provenance only (`4/6` fields complete); license and source sampling-rate metadata are still missing.
-- TCGA: partial provenance only (`3/6` fields complete); no real cohort or assay matrix is archived.
-- Protein/prebiotic lanes: still placeholders with no pinned external package in the repo.

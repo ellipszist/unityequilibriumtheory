@@ -30,9 +30,6 @@ python docs/topics/0.19_Gravity_GR/Code/03_Research/Research_G_Constant.py
 ## Artifact Target
 
 - `Result/artifacts/0_19_gravity_gr_verification.json`
-- `Data/03_Research/source_evidence_intake_stub.json`
-- `Data/03_Research/source_evidence_readiness_matrix.json`
-- `Data/03_Research/branch_claim_gate.json`
 
 The artifact must record:
 
@@ -41,7 +38,6 @@ The artifact must record:
 - dataset path, SHA256, source, and DOI
 - formula IDs
 - threshold and metrics
-- machine-readable `gravity_claim_scope_gate.controller_status`
 - limitations
 
 ## Interpretation

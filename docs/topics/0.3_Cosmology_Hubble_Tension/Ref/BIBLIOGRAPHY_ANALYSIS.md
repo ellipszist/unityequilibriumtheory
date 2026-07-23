@@ -1,12 +1,4 @@
 # 📚 UET Cosmology: Bibliography & Analysis
-> [!WARNING]
-> **Legacy claim boundary:** This file is a bibliography analysis note, not the
-> topic status authority. It must not be used to claim Hubble-tension resolution,
-> full cosmology validation, Lambda-CDM replacement, dark-energy replacement,
-> high-z prediction confirmation, CMB/BAO/SN consistency closure, or cosmology
-> solved. Current allowed claims are controlled by `README.md`,
-> `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `DATA_MANIFEST.md`, and
-> `Result/artifacts/hubble_comparison_validation.json`.
 > "Two numbers, one universe, zero agreement."
 
 This document analyzes the scientific precedents for UET's resolution of the Hubble Tension. We connect our findings to Planck 2018 (CMB) and SH0ES (Supernovae).

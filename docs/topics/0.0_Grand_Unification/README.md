@@ -6,14 +6,9 @@ description: "Integration index and cross-topic dashboard for core UET research 
 
 # 0.0 Grand Unification
 
-Topic status: core foundation, integration index, and dependency-governance gate.
+Topic status: core foundation and integration index.
 
 This topic coordinates selected component engines from core topics and records an integration dashboard. It is not a master proof layer. Any claim made here inherits the data, formula, verifier, and limitation status of the subordinate topics it calls.
-
-The current hardening pass expands the dependency manifest to the full core scope
-`0.1-0.26`. The verifier may still complete its integration run-contract while the
-paper-readiness gate remains blocked by subordinate `WARN`, `FAIL`, source-incomplete,
-formula-open, or synthetic-only dependencies.
 
 ## Current Claim Class
 
@@ -21,9 +16,6 @@ formula-open, or synthetic-only dependencies.
 - Current verifier: `Code/03_Research/Verify_Omni.py`.
 - Current artifact: `Result/artifacts/0_0_grand_unification_verification.json`.
 - Data posture: integration artifact dependency manifest; metrics and evidence status are delegated from subordinate topics.
-- Governance workflow: `Data/03_Research/source_evidence_intake_stub.json`, `source_evidence_readiness_matrix.json`, and `branch_claim_gate.json`.
-- Paper-readiness workflow: `paper_readiness_gate` inside the verifier artifact blocks theory-level closure until every core dependency is cleanly supported.
-- Claim-scope workflow: `integration_claim_scope_gate` inside the verifier artifact blocks master-proof, Tier-A promotion, and theory-closure wording while subordinate statuses or claim gates remain blocked.
 
 ## Evidence Boundary
 
@@ -32,7 +24,6 @@ The repository can currently support conservative statements such as:
 - The Omni verifier runs selected component engines and records their metrics.
 - The dashboard can compare beta sensitivity for selected branches and record subordinate artifact PASS/WARN/FAIL status.
 - Integration output is useful for dependency mapping and limitation inheritance.
-- Integration governance now normalizes subordinate artifact status and claim-class capture before theory-facing interpretation.
 
 The current evidence package does not establish a Theory of Everything, a proof of GR/QM unification, a derivation of all universal constants, or closure of still-open subordinate-topic blockers.
 
@@ -58,10 +49,6 @@ Each component metric must be interpreted through that topic's own `DATA_MANIFES
 - `VERIFICATION_SPEC.md`: primary verifier command and artifact contract.
 - `METHOD.md`: integration method and excluded cases.
 - `LIMITATIONS.md`: limitation inheritance policy.
-- `Data/03_Research/source_evidence_intake_stub.json`: dependency-governance intake.
-- `Data/03_Research/source_evidence_readiness_matrix.json`: readiness gate for integration evidence.
-- `Data/03_Research/branch_claim_gate.json`: branch-level claim ceiling for integration versus closure claims.
-- `integration_claim_scope_gate` in the verification artifact: topic-level export controller for allowed integration/governance claims and blocked grand-unification claims.
 - `Code/03_Research/Verify_Omni.py`: primary integration verifier.
 
 ## Verification
@@ -76,6 +63,7 @@ A pass means selected component engines ran and the current integration gates we
 
 ## Next Hardening Tasks
 
-1. Close the subordinate `WARN`/`FAIL` dependencies recorded in `paper_readiness_gate`.
-2. Replace topic-level formula placeholders in the dependency manifest with exact formula IDs where each source topic has them.
-3. Keep paper-facing claims scoped to integration behavior unless every dependency has source-backed data, formula audit, runnable verifier, and limitations aligned.
+1. Expand the dependency manifest to all core topics `0.1-0.26`, not just the engines currently loaded.
+2. Map every dashboard metric to subordinate formula IDs and artifact IDs.
+3. Add a paper-readiness gate that blocks theory-level claims when any dependency is `WARN`, `FAIL`, bootstrap/open, or source-incomplete.
+4. Keep paper-facing claims scoped to integration behavior unless every dependency has source-backed data, formula audit, runnable verifier, and limitations aligned.
