@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "covariant_diffusive_current_verification",
-  "generated_at": "2026-07-22T12:07:19.476790+00:00",
+  "generated_at": "2026-07-23T03:32:55.810289+00:00",
   "audit_status": "PASS",
   "evidence_status": "PARTIAL",
   "claim_class": "B",
@@ -113,8 +113,8 @@
   },
   "source_hashes": {
     "docs\\core\\uet_covariant_diffusion.py": "a267b89e39db4a8dfac56e71a070539a9da05a55b8bb8b22216e7fd1b839bc53",
-    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "b8a03fa1c60140ba2becbeff8f1b15739d6cdf3bf8a52072a518e3d98307b21e",
-    "docs\\core\\artifacts\\covariant_matter_action_verification.json": "9034e5fc2b426f3fcf148e3c55d86b9aad28fca1104dc24b51d32e753c7789a2"
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "d15cc8e345a3df986f7608d48e3152134c4325dfa24e5dc9364b085fe37dd6c9",
+    "docs\\core\\artifacts\\covariant_matter_action_verification.json": "b02aaa543ae9945496a434fa308edefa85dd1c0ac004ae95f6219abb1c35fc9a"
   },
   "run_contract": {
     "seed": 190061,
@@ -156,7 +156,7 @@
       "url": "https://arxiv.org/abs/2408.03862"
     }
   ],
-  "next_controller": "noether_density_to_phase_field_order_parameter_map_missing",
+  "next_controller": "noether_charge_equation_of_state_and_covariant_transport_matching_missing",
   "downstream_hyperbolic_phase_field": {
     "artifact": "hyperbolic_phase_field_external_comparator_verification.json",
     "audit_status": "PASS",
@@ -167,5 +167,14 @@
     "fixed_light_cone_parameter_domain": "PASS_NORMALIZED_ANALYTIC",
     "uniform_subluminal_limit": "NO_GO_EXACT_PARABOLIC_LIMIT",
     "uet_derivation": "BLOCKED"
+  },
+  "downstream_noether_phase_field_state_map": {
+    "artifact": "noether_phase_field_state_map_verification.json",
+    "audit_status": "PASS",
+    "evidence_status": "PARTIAL_HYDRODYNAMIC_STATE_COORDINATE_MAP",
+    "role": "hydrodynamic_state_coordinate_map_not_microscopic_derivation",
+    "affine_fixed_scale_layer": "PASS",
+    "microscopic_reconstruction": "NO_GO_MANY_TO_ONE",
+    "equation_of_state_and_transport": "BLOCKED"
   }
 }

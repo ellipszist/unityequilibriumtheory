@@ -1,0 +1,281 @@
+{
+  "allowed_language": [
+    "Landauer lower-bound constraint",
+    "standard thermodynamic/gravity formula consistency",
+    "synthetic Cattaneo control benchmark",
+    "normalized internal thermal pilot with failed physical gates"
+  ],
+  "artifact": "0_13_core_thermodynamic_constraint_gate",
+  "benchmark_role": "CONSTRAINT_EXPORT_ONLY_NO_SIMULATION_RERUN",
+  "blocked_language": [
+    "0.13 derives the UET thermodynamic bridge",
+    "Landauer derives beta or the core EOS/transport coefficients",
+    "the thermal pilot is external second-sound validation",
+    "Phi or trace is measured temperature, heat flux, entropy, or information matter",
+    "0.13 closes the core entropy current or dissipative Bianchi identity",
+    "Topic 0.13 is externally validated or solved"
+  ],
+  "blocked_scope": [
+    "UET information-entropy-energy bridge proof",
+    "source-normalized Landauer dataset",
+    "external heat-transport or second-sound validation",
+    "dimensional Phi/R to temperature or heat-flux observable map",
+    "charge-density EOS, covariant transport, entropy current, and dissipative-Bianchi closure",
+    "beta or any core coefficient derived from Landauer by identity reuse",
+    "topic or core claim promotion"
+  ],
+  "canonical_topic_status": "Draft",
+  "canonical_topic_tier": "B",
+  "claim_boundary": "Topic 0.13 may constrain the core program with Landauer and standard identities and may provide synthetic control benchmarks. It does not derive the UET bridge, beta, EOS, transport, entropy current, or a dimensional Phi/trace observable, and it does not promote Topic 0.13 or the core program.",
+  "claim_class": "internal_dependency_boundary",
+  "command": "python docs/topics/0.13_Thermodynamic_Bridge/Code/03_Research/Research_Core_Thermodynamic_Constraint_Gate.py",
+  "completed_scope": [
+    "Landauer lower-bound export as a class-C constraint",
+    "standard Bekenstein/Unruh/Hawking formula constraints",
+    "synthetic Cattaneo analytical/control benchmark",
+    "explicit beta non-derivation and imported-constraint boundary",
+    "trace/Phi no-backreaction and non-observable boundary"
+  ],
+  "controlling_blocker": "topic_0_13_constraint_only_eos_transport_entropy_bridge_missing",
+  "core_program_controller": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing",
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.14.2"
+  },
+  "evidence_status": "THERMODYNAMIC_CONSTRAINT_EXPORTS_AVAILABLE_CORE_CLOSURE_NOT_DERIVED",
+  "foundation_claim_ceiling_unchanged": "C - formula/lower-bound consistency only",
+  "foundation_status_unchanged": "FOUNDATION_WARN",
+  "gates": {
+    "canonical_topic_status_gate": {
+      "required_condition": "Canonical Topic 0.13 status must remain unchanged by this constraint packet.",
+      "status": "PASS",
+      "status_after": "Draft",
+      "status_before": "Draft",
+      "tier_after": "B",
+      "tier_before": "B"
+    },
+    "cattaneo_simulation_control_gate": {
+      "checks": {
+        "all_control_gates_pass": true,
+        "analytical_residual_pass": true,
+        "causal_control_leakage_pass": true,
+        "external_validation_false": true,
+        "simulation_only": true
+      },
+      "required_condition": "The Cattaneo artifact may serve only as an analytical/synthetic control-system benchmark.",
+      "status": "PASS"
+    },
+    "core_eos_transport_entropy_gate": {
+      "checks": {
+        "core_eos_blocked": true,
+        "core_program_blocked": true,
+        "core_transport_blocked": true,
+        "entropy_current_blocked": true,
+        "trace_feedback_forbidden": true
+      },
+      "core_controller": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing",
+      "required_condition": "Topic 0.13 constraints do not derive the core charge EOS, covariant transport, entropy current, or dissipative-Bianchi completion.",
+      "status": "BLOCKED"
+    },
+    "foundation_constraint_export_gate": {
+      "accepted_export_ids": [
+        "T13_EXPORT_LANDAUER_LOWER_BOUND",
+        "T13_EXPORT_STANDARD_THERMO_GRAVITY_IDENTITIES"
+      ],
+      "checks": {
+        "cattaneo_external_export_not_allowed": true,
+        "claim_ceiling_is_C": true,
+        "foundation_warn": true,
+        "landauer_export_pass": true,
+        "source_dataset_export_blocked": true,
+        "standard_identity_export_pass": true,
+        "uet_bridge_export_blocked": true
+      },
+      "required_condition": "Only the Landauer lower bound and standard thermodynamic/gravity identities may be exported as class-C constraints.",
+      "status": "PASS"
+    },
+    "landauer_coefficient_non_derivation_gate": {
+      "beta_role_status": "beta_present_but_not_closed_as_derived_bridge_coefficient",
+      "landauer_mapping_status": "imported_constraint_not_noncircular_uet_derivation",
+      "required_condition": "Landauer k_B*T*ln(2) must remain an imported lower bound and may not derive beta, EOS, mobility, or a core coupling coefficient.",
+      "status": "PASS"
+    },
+    "row_controller_preservation_gate": {
+      "required_condition": "The four active Landauer source-row controllers remain independent of the core dependency lane.",
+      "row_controllers": [
+        {
+          "first_missing_requirement": "x_axis_tick_value_mapping_for_duration_tau",
+          "next_controller": "berut_author_heat_image_tick_mapping_and_official_parity_required",
+          "row_id": "berut_2012_summary_300K",
+          "source_closure_status": "author_page_heat_image_archived_official_parity_and_tick_mapping_open",
+          "uncertainty_status": "interval_present_topic_summary_only"
+        },
+        {
+          "first_missing_requirement": "final_prl_page_or_pdf_parity_for_arxiv_table_1_summary",
+          "next_controller": "jun_final_prl_parity_or_aps_access_resolution_required",
+          "row_id": "jun_2014_summary_300K",
+          "source_closure_status": "arxiv_table_1_summary_transcribed_final_prl_parity_open",
+          "uncertainty_status": "source_summary_interval_present_legacy_row_policy_declared"
+        },
+        {
+          "first_missing_requirement": "final published article page or equivalent final-source confirmation for the chosen quantity",
+          "next_controller": "final_source_confirmation_then_replace_or_remove_legacy_0p028_row",
+          "row_id": "hong_2016_candidate_nanometric_memory_branch",
+          "source_closure_status": "candidate_source_family_with_provisional_runtime_target_final_publisher_anchor_partial",
+          "uncertainty_status": "preprint_interval_present_provisional_runtime_target_selected"
+        },
+        {
+          "first_missing_requirement": "exact one-paper doi_or_url that matches the local narrative",
+          "next_controller": "exact_one_paper_identity_before_any_row_capture",
+          "row_id": "peterson_2018_quantum_landauer_branch",
+          "source_closure_status": "candidate_families_separated_local_peterson_label_demoted",
+          "uncertainty_status": "not_eligible_until_source_identity_fixed"
+        }
+      ],
+      "status": "PASS"
+    },
+    "thermal_pilot_physical_gate": {
+      "checks": {
+        "dependency_blocked": true,
+        "external_source_gate_failed": true,
+        "internal_gate_failed": true,
+        "no_external_numeric_data": true,
+        "prearrival_gate_failed": true,
+        "simulation_only": true,
+        "trace_no_backreaction": true
+      },
+      "controlling_blocker": "core_prearrival_leakage",
+      "failed_gates": [
+        "prearrival_leakage",
+        "external_source_ready"
+      ],
+      "required_condition": "Physical interpretation requires the pre-arrival leakage and external numeric-source gates to pass without changing thresholds after inspection.",
+      "status": "BLOCKED"
+    },
+    "topic_promotion_gate": {
+      "required_condition": "Constraint exports and synthetic controls cannot promote bridge proof, source-normalized validation, external heat transport, or the topic tier.",
+      "status": "BLOCKED"
+    },
+    "trace_phi_observable_separation_gate": {
+      "required_condition": "Normalized Phi and R must not be relabeled as temperature, heat flux, entropy, or feedback without a dimensional observable map.",
+      "status": "PASS"
+    },
+    "uet_bridge_derivation_gate": {
+      "checks": {
+        "beta_not_derived": true,
+        "claim_class_C": true,
+        "derivation_boundary_open": true,
+        "landauer_is_imported_constraint": true,
+        "primary_warn": true,
+        "units_contract_partial": true
+      },
+      "required_condition": "The UET-specific information-entropy-energy bridge requires a non-circular derivation and closed proxy-to-SI map.",
+      "status": "BLOCKED"
+    }
+  },
+  "generated_at": "2026-07-23T05:02:43+00:00",
+  "limitations": [
+    "No Landauer, Cattaneo, thermal pilot, or core solver is rerun.",
+    "The foundation gate remains WARN and exports only class-C constraints.",
+    "The thermal pilot retains failed causal and external-source gates.",
+    "The core EOS, transport, and entropy-current blockers remain open."
+  ],
+  "required_next_evidence": [
+    "close the four active Berut/Jun/Hong/Peterson source-row controllers",
+    "derive a non-circular UET bridge with a closed proxy-to-SI units contract",
+    "repair physical pre-arrival leakage under the locked causal threshold",
+    "add licensed dimensional heat-transport rows, uncertainty, preprocessing, locators, and hashes",
+    "derive or independently calibrate EOS/transport and construct entropy-current/dissipative-Bianchi closure"
+  ],
+  "row_controllers_unchanged": [
+    {
+      "first_missing_requirement": "x_axis_tick_value_mapping_for_duration_tau",
+      "next_controller": "berut_author_heat_image_tick_mapping_and_official_parity_required",
+      "row_id": "berut_2012_summary_300K",
+      "source_closure_status": "author_page_heat_image_archived_official_parity_and_tick_mapping_open",
+      "uncertainty_status": "interval_present_topic_summary_only"
+    },
+    {
+      "first_missing_requirement": "final_prl_page_or_pdf_parity_for_arxiv_table_1_summary",
+      "next_controller": "jun_final_prl_parity_or_aps_access_resolution_required",
+      "row_id": "jun_2014_summary_300K",
+      "source_closure_status": "arxiv_table_1_summary_transcribed_final_prl_parity_open",
+      "uncertainty_status": "source_summary_interval_present_legacy_row_policy_declared"
+    },
+    {
+      "first_missing_requirement": "final published article page or equivalent final-source confirmation for the chosen quantity",
+      "next_controller": "final_source_confirmation_then_replace_or_remove_legacy_0p028_row",
+      "row_id": "hong_2016_candidate_nanometric_memory_branch",
+      "source_closure_status": "candidate_source_family_with_provisional_runtime_target_final_publisher_anchor_partial",
+      "uncertainty_status": "preprint_interval_present_provisional_runtime_target_selected"
+    },
+    {
+      "first_missing_requirement": "exact one-paper doi_or_url that matches the local narrative",
+      "next_controller": "exact_one_paper_identity_before_any_row_capture",
+      "row_id": "peterson_2018_quantum_landauer_branch",
+      "source_closure_status": "candidate_families_separated_local_peterson_label_demoted",
+      "uncertainty_status": "not_eligible_until_source_identity_fixed"
+    }
+  ],
+  "schema_version": "1.0",
+  "scientific_inputs": [
+    {
+      "exists": true,
+      "hash_scope": "canonical_json_without_generated_at_generated_at_utc_timestamp_utc_or_environment",
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/0_13_thermodynamic_bridge_verification.json",
+      "role": "Topic 0.13 primary Landauer/formula artifact",
+      "scientific_payload_sha256": "5bd2c7385db0d7d651a96758b10deddfdd0f75f096b38adbc726917ffbee433e"
+    },
+    {
+      "exists": true,
+      "hash_scope": "canonical_json_without_generated_at_generated_at_utc_timestamp_utc_or_environment",
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json",
+      "role": "Topic 0.13 foundation export contract",
+      "scientific_payload_sha256": "fd3f2d7f2f2821e115178400607aab8316841a09e43a204545ba6f990fec307d"
+    },
+    {
+      "exists": true,
+      "hash_scope": "canonical_json_without_generated_at_generated_at_utc_timestamp_utc_or_environment",
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/cattaneo_benchmark_artifact.json",
+      "role": "Synthetic Cattaneo control artifact",
+      "scientific_payload_sha256": "70b29f8bf103991064d4641ecb19ede88548d54f6c98c35e27aacc879d2ca4a8"
+    },
+    {
+      "exists": true,
+      "hash_scope": "canonical_json_without_generated_at_generated_at_utc_timestamp_utc_or_environment",
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_control.json",
+      "role": "Matter-space thermal control pilot",
+      "scientific_payload_sha256": "fe24da0f5c77c4af2fc0cc94f4267431c2f32dca0ca4640fbf5e111310371769"
+    },
+    {
+      "exists": true,
+      "hash_scope": "canonical_json_without_generated_at_generated_at_utc_timestamp_utc_or_environment",
+      "path": "docs/core/artifacts/uet_gr_research_program_gate.json",
+      "role": "Current core GR response program gate",
+      "scientific_payload_sha256": "322028f177baa6717820f6b51c9ebe31c30ba5f518ea9a9ab4b86abb00b75eb7"
+    },
+    {
+      "exists": true,
+      "hash_scope": "canonical_json_without_generated_at_generated_at_utc_timestamp_utc_or_environment",
+      "path": "docs/core/artifacts/noether_phase_field_dependency_gate.json",
+      "role": "Core Noether/EOS/transport dependency gate",
+      "scientific_payload_sha256": "cbb9fc060f26b6fb638a0a3eff876539d6e563e556acda623b0c00cb0aaa27c0"
+    },
+    {
+      "exists": true,
+      "hash_scope": "canonical_json_without_generated_at_generated_at_utc_timestamp_utc_or_environment",
+      "path": "docs/meta/topic_readiness.json",
+      "role": "Canonical topic readiness metadata",
+      "scientific_payload_sha256": "7139f84494465af3dbc39cead00342374f0b602a3b31a351fcdca6adcd47c4a2"
+    }
+  ],
+  "status": "BLOCKED",
+  "thermal_pilot_failed_gates_unchanged": [
+    "prearrival_leakage",
+    "external_source_ready"
+  ],
+  "thermal_pilot_status_unchanged": "SIMULATION_ONLY",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "topic_status_impact": "NONE",
+  "version": "core_wave9_topic_constraint_v1"
+}

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "hyperbolic_phase_field_covariant_mapping_gate",
-  "generated_at": "2026-07-22T12:14:26+00:00",
+  "generated_at": "2026-07-23T03:34:48+00:00",
   "topic": "docs/core UET GR non-closed response",
   "version": "wave8_v1",
   "benchmark_role": "dependency_gate",
@@ -27,14 +27,19 @@
   "completed_layers": {
     "external_formula_transcription": "PASS",
     "fixed_light_cone_normalized_parameter_domain": "PASS",
-    "external_q_to_local_current_law": "PASS_MOBILITY_ONE"
+    "external_q_to_local_current_law": "PASS_MOBILITY_ONE",
+    "noether_charge_variable_declaration": "PASS_SIGNED_O2_CHARGE",
+    "coarse_density_to_phase_coordinate": "PASS_AFFINE_FIXED_SCALE"
   },
   "classical_covariant_lane": {
-    "noether_density_to_phase_field_order_parameter": "BLOCKED_CONTROLLING",
+    "noether_density_to_phase_field_order_parameter": "PASS_HYDRODYNAMIC_AFFINE_ONLY",
     "covariant_projected_current_law": "BLOCKED",
     "nonnegative_entropy_current_divergence": "BLOCKED",
     "stress_energy_exchange_and_bianchi_closure": "BLOCKED",
-    "curved_spacetime_well_posedness": "BLOCKED"
+    "curved_spacetime_well_posedness": "BLOCKED",
+    "equation_of_state_from_covariant_O2_action": "BLOCKED_CONTROLLING",
+    "covariant_coarse_graining_kernel": "BLOCKED",
+    "susceptibility_and_transport_matching": "BLOCKED"
   },
   "thermal_stochastic_lane": {
     "closed_time_path_action": "BLOCKED_DOWNSTREAM",
@@ -66,11 +71,31 @@
   },
   "topic_0_11_status_impact": "NONE",
   "topic_0_19_status_impact": "NONE",
-  "controlling_blocker": "noether_density_to_phase_field_order_parameter_map_missing",
+  "controlling_blocker": "noether_charge_equation_of_state_and_covariant_transport_matching_missing",
   "required_next_evidence": [
-    "declare whether the physical conserved variable is charge, mass, or another Noether density",
-    "derive an invertible coarse-graining/state map to the phase-field order parameter",
-    "show compatibility with continuity, equilibrium susceptibility, and the UET epsilon_nc=0 null branch",
-    "only then construct the covariant entropy-current constitutive lane"
-  ]
+    "derive or independently calibrate the signed-charge equation of state",
+    "map equilibrium susceptibility and transport coefficients to the covariant matter theory",
+    "specify a covariant coarse-graining or hydrodynamic matching prescription",
+    "then construct entropy-current and dissipative-Bianchi closure"
+  ],
+  "downstream_hyperbolic_phase_field": {
+    "artifact": "hyperbolic_phase_field_external_comparator_verification.json",
+    "audit_status": "PASS",
+    "evidence_status": "PARTIAL_EXTERNAL_COMPARATOR",
+    "role": "external_fixed_parameter_formula_comparator",
+    "causal_feasibility_artifact": "hyperbolic_phase_field_causal_feasibility.json",
+    "causal_feasibility_status": "PASS",
+    "fixed_light_cone_parameter_domain": "PASS_NORMALIZED_ANALYTIC",
+    "uniform_subluminal_limit": "NO_GO_EXACT_PARABOLIC_LIMIT",
+    "uet_derivation": "BLOCKED"
+  },
+  "downstream_noether_phase_field_state_map": {
+    "artifact": "noether_phase_field_state_map_verification.json",
+    "audit_status": "PASS",
+    "evidence_status": "PARTIAL_HYDRODYNAMIC_STATE_COORDINATE_MAP",
+    "role": "hydrodynamic_state_coordinate_map_not_microscopic_derivation",
+    "affine_fixed_scale_layer": "PASS",
+    "microscopic_reconstruction": "NO_GO_MANY_TO_ONE",
+    "equation_of_state_and_transport": "BLOCKED"
+  }
 }

@@ -111,10 +111,10 @@ def test_program_gate_advances_stage_without_promotion() -> None:
     program = _load("uet_gr_research_program_gate.json")
     assert program["status"] == "BLOCKED"
     assert program["program_stage"] == (
-        "FIXED_LIGHT_CONE_FEASIBILITY_AND_LOCAL_CURRENT_MAP_VERIFIED"
+        "O2_FINITE_DENSITY_EOS_AND_T0_SUPERFLUID_CONSTITUTIVE_VERIFIED"
     )
     assert program["controlling_blocker"] == (
-        "noether_density_to_phase_field_order_parameter_map_missing"
+        "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing"
     )
     assert program["sector_status"]["gradient_phase_field_causality"] == (
         "PASS_EXTERNAL_FIXED_PARAMETER_COMPARATOR_ONLY"

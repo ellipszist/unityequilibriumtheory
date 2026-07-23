@@ -50,18 +50,19 @@ def test_program_advances_without_topic_or_global_closure_promotion() -> None:
     artifact = _read("uet_gr_research_program_gate.json")
     assert artifact["status"] == "BLOCKED"
     assert artifact["program_stage"] == (
-        "FIXED_LIGHT_CONE_FEASIBILITY_AND_LOCAL_CURRENT_MAP_VERIFIED"
+        "O2_FINITE_DENSITY_EOS_AND_T0_SUPERFLUID_CONSTITUTIVE_VERIFIED"
     )
     assert artifact["sector_status"]["covariant_matter_action"] == "PASS_O2_SCALAR_PILOT"
     assert artifact["sector_status"]["reciprocal_coupling"] == "PASS_ACTION_LEVEL"
-    assert artifact["sector_status"]["matter_number_current"] == "PASS_ON_SHELL_O2"
+    assert artifact["sector_status"]["signed_O2_noether_current"] == "PASS_ON_SHELL"
+    assert "matter_number_current" not in artifact["sector_status"]
     assert artifact["sector_status"]["diffusive_matter_reduction"] == (
         "PARTIAL_CONSTITUTIVE_WITH_EXACT_MODEL_B_LIMIT"
     )
     assert artifact["sector_status"]["local_convex_matter_causality"] == "PASS_CONTROL"
     assert artifact["sector_status"]["gradient_phase_field_causality"] == "PASS_EXTERNAL_FIXED_PARAMETER_COMPARATOR_ONLY"
     assert artifact["controlling_blocker"] == (
-        "noether_density_to_phase_field_order_parameter_map_missing"
+        "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing"
     )
     assert artifact["topic_0_11_status_impact"] == "NONE"
     assert artifact["topic_0_19_status_impact"] == "NONE"

@@ -6,6 +6,41 @@
 > program without upgrading claims ahead of generated evidence.
 
 ## Entries
+### 2026-07-23 - Derive finite-density O(2) EOS and lock the T=0 Kubo boundary
+
+- Scope: homogeneous signed-charge EOS, canonical Legendre transform, response reciprocity, covariant T=0 pure-superfluid current/stress, and longitudinal Kubo/entropy/causal interface
+- Wave type: formula derivation, deterministic artifact pass, negative comparator gate, source-role packaging, claim-boundary pass, and monotonic-state repair
+- Added or changed: two core modules and public exports, one research spec, three new source records plus the existing Jain-Kovtun record, four generated Wave 10 artifacts plus the shared program gate, focused/alignment tests, and Wave 9/10 monotonic generator hooks
+- Verified with: strict Wave 10 audit; 26 focused EOS/transport/artifact tests; 64 GR/state-map monotonic regression tests
+- Final core regression: `384/386` passed; the two remaining failures are the pre-existing flattened time-dependent Noether shape mismatch (`1000` field values versus `100` coordinate values) already quarantined from proof use
+- Result: EOS audit `PASS`, transport audit `PASS`, formula audit `WARN`, transport contract/program gate `BLOCKED`; stationarity residual `3.55e-15`, maximum grand-canonical derivative residual `1.06e-9`, first-law residual `2.22e-11`, inverse-susceptibility finite-difference residual `3.18e-9`, Lorentz residual below `1e-10`, and non-negative synthetic entropy production
+- EOS layer: `q=Z*mu^2-m_eff^2>0` gives the tree-level condensed branch, stable signed canonical inversion, susceptibility, sound speed, and reciprocal fixed-`mu`/fixed-`n` response derivatives
+- Comparator result: the fixed `-1<=C<=1` exact-EOS versus symmetric-double-well relative residual is `1.0`, so the double well remains constitutive and is not accepted as action-derived
+- Transport layer: action-derived current/stress are restricted to the T=0 pure-superfluid sector; a finite-temperature normal component is not inferred
+- Dissipative boundary: Kubo records have no numerical defaults; synthetic controls require explicit opt-in and cannot count as physical coefficient evidence
+- Blocker narrowed: the broad EOS/transport-matching blocker is replaced by physical Kubo coefficient evidence, full finite-temperature/superfluid transport closure, covariant coarse graining, and curved 3+1 evolution
+- Still open: physical correlator extraction, finite-temperature normal component, complete superfluid transport tensor, SK/KMS derivation, gradient-EFT `kappa_C`, SI map, covariant coarse graining, curved 3+1 solver, and external physical validation
+- Next controller: `physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing`
+- Claim impact: class B retained; program remains `BLOCKED`; Topic 0.11 and Topic 0.19 receive no status promotion; global-universe closure remains `UNRESOLVED`
+- Provenance boundary: Son, Chapman-Hoyos-Oz, Jain-Kovtun, and Haehl-Loganayagam-Rangamani constrain EFT/Kubo/readiness roles only; they do not derive UET coefficients or validate UET
+
+### 2026-07-22 - Factor the Noether-charge to phase-field state map
+
+- Scope: signed O(2) Noether charge, frame-projected/coarse hydrodynamic variables, normalized phase-field coordinates, and the equation-of-state/transport dependency boundary
+- Wave type: ontology repair, exact coordinate derivation, non-invertibility falsification, primary-source provenance, formula audit, dependency-gate, and monotonic-state pass
+- Added or changed: state-map module and public exports, Cahn-Hilliard and Hohenberg-Halperin source records, strict verifier, three generated Wave 9 artifacts plus the shared program gate, focused/alignment tests, monotonic upstream logic, specification, update log, and work ledger
+- Verified with: nine strict audits in dependency order and a 309-test trace, matter-space/pilot, legacy-alignment, covariant, sourced-comparator, fixed-cone, and state-map regression suite
+- Result: audit `PASS`, evidence `PARTIAL_HYDRODYNAMIC_STATE_COORDINATE_MAP`, formula audit `WARN`, dependency/program gates `BLOCKED`; 64 random cases gave affine round-trip error `6.66e-16`, continuity-scaling error `3.55e-15`, external-coordinate round-trip error `7.11e-15`, free-energy derivative error `1.28e-9`, and polar-current identity error `5.55e-17`
+- Non-invertibility result: two distinct O(2) states produced the same current within `8.88e-16` while their state distance was `1.06`; two distinct sub-cell profiles produced exactly the same coarse averages while differing by `1.0`
+- Exact layer: at fixed declared scales, `C=(n_bar-n_ref)/n_scale` and `J=j_bar/(n_scale L/T)` are bijective and preserve the continuity residual exactly
+- Constitutive layer: `f=n_scale*mu_scale*(C^2-1)^2/4` gives `df/dn_bar=mu_scale*(C^3-C)` and normalized local coefficients `a=-1`, `b=+1`; this equation of state is not derived from the O(2) action
+- Blocker narrowed: microscopic inversion is rejected as a category error; the controlling unknown is now the signed-charge equation of state, covariant coarse-graining, susceptibility, and transport matching
+- Still open: equation of state from the covariant O(2) matter action, covariant hydrodynamic matching, entropy-current/dissipative-Bianchi closure, CTP/KMS completion, curved 3+1 solver, SI map, external numerical replication, and physical validation
+- Next controller: `noether_charge_equation_of_state_and_covariant_transport_matching_missing`
+- Claim impact: class B retained; program remains `BLOCKED`; Topic 0.11 and Topic 0.19 status remain unchanged; global-universe closure remains `UNRESOLVED`
+- Ontology boundary: the variable is signed O(2) charge, not established mass or particle number; external `varphi` is not UET `Phi`; trace is absent and cannot feed back
+- Provenance boundary: Cahn-Hilliard 1958 and Hohenberg-Halperin 1977 are metadata/full-text-inspection role sources only; neither derives the UET state map, matter equation of state, or transport coefficients
+
 ### 2026-07-22 - Derive fixed-light-cone feasibility and isolate the covariant state-map blocker
 
 - Scope: normalized analytic feasibility over `|C| <= 1.25`, exact local `J=q/tau` current-law mapping, and covariant/thermal transport readiness boundaries

@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "record_type": "external_dynamic_classification_source",
+  "title": "Theory of dynamic critical phenomena",
+  "authors": [
+    "P. C. Hohenberg",
+    "B. I. Halperin"
+  ],
+  "journal": "Reviews of Modern Physics",
+  "publication_year": 1977,
+  "volume": "49",
+  "issue": "3",
+  "pages": "435-479",
+  "doi": "10.1103/RevModPhys.49.435",
+  "doi_url": "https://doi.org/10.1103/RevModPhys.49.435",
+  "publisher_url": "https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.49.435",
+  "inspected_full_text_mirror": "https://courses.physics.ucsd.edu/2020/Winter/physics211b/GOODIES/HH77.pdf",
+  "accessed_at": "2026-07-22",
+  "local_path": null,
+  "local_copy_status": "NOT_DOWNLOADED_EXTERNAL_PDF_INSPECTION_ONLY",
+  "content_identity": {
+    "version": "published_article_external_mirror",
+    "hash_status": "NOT_APPLICABLE_NO_LOCAL_COPY"
+  },
+  "formula_locators": [
+    {
+      "id": "model_b_conserved_order_parameter",
+      "source_locator": "published article section IV.B, 'Conserved order parameter: Model B'",
+      "role": "supports the conserved-order-parameter dynamic classification"
+    }
+  ],
+  "unit_system": "dynamic critical phenomena conventions; no numerical coefficients are imported",
+  "benchmark_role": "EXTERNAL_MODEL_B_CLASSIFICATION_SOURCE_NOT_MICROSCOPIC_UET_MAP",
+  "topics_used": [
+    "docs/core",
+    "0.11_Phase_Transitions dependency gate"
+  ],
+  "known_access_limitations": [
+    "The APS abstract endpoint returned an access error during automated retrieval.",
+    "A university-hosted copy of the published article was inspected without creating a repository-local file or hash."
+  ],
+  "claim_boundary": [
+    "The source supports calling Model B a conserved-order-parameter dynamics class.",
+    "It does not say that every conserved order parameter is a microscopic Noether charge, and it does not derive the UET matter action or transport coefficients."
+  ]
+}

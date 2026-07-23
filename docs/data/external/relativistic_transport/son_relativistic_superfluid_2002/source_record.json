@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "record_type": "external_formula_and_readiness_source",
+  "title": "Low-Energy Quantum Effective Action for Relativistic Superfluids",
+  "authors": ["D. T. Son"],
+  "publication_year": 2002,
+  "arxiv_id": "hep-ph/0204199",
+  "arxiv_url": "https://arxiv.org/abs/hep-ph/0204199",
+  "local_path": null,
+  "local_copy_status": "NOT_INGESTED_URL_METADATA_ONLY",
+  "preprocessing_note": "No local paper copy is used by the verifier. The record locks source identity and conceptual role only.",
+  "formula_locators": [
+    {
+      "id": "goldstone_effective_action_from_equation_of_state",
+      "source_locator": "paper main low-energy effective-action construction",
+      "role": "external support for deriving the ideal Goldstone sector from P(X), not a UET derivation"
+    }
+  ],
+  "unit_system": "natural units",
+  "benchmark_role": "EXTERNAL_RELATIVISTIC_SUPERFLUID_EFT_ROLE_SOURCE_NOT_UET_DERIVATION",
+  "topics_used": ["docs/core", "0.19_Gravity_GR dependency gate"],
+  "claim_boundary": [
+    "The source supports the general P(X) low-energy organization of a relativistic superfluid Goldstone mode.",
+    "It does not derive the UET O(2) potential, response coupling, equation-of-state parameters, or transport coefficients."
+  ]
+}

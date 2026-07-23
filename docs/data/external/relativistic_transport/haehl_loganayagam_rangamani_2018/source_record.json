@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "record_type": "external_formula_and_readiness_source",
+  "title": "Effective Action for Relativistic Hydrodynamics: Fluctuations, Dissipation, and Entropy Inflow",
+  "authors": ["Felix M. Haehl", "R. Loganayagam", "Mukund Rangamani"],
+  "publication_year": 2018,
+  "arxiv_id": "1803.11155",
+  "arxiv_url": "https://arxiv.org/abs/1803.11155",
+  "local_path": null,
+  "local_copy_status": "NOT_INGESTED_URL_METADATA_ONLY",
+  "preprocessing_note": "No closed-time-path action is implemented in this wave. The record fixes the downstream dissipative-EFT readiness boundary.",
+  "formula_locators": [
+    {
+      "id": "schwinger_keldysh_entropy_and_kms_structure",
+      "source_locator": "paper Schwinger-Keldysh, KMS, fluctuation-dissipation, and entropy construction",
+      "role": "external readiness requirement for a future microscopic dissipative completion"
+    }
+  ],
+  "unit_system": "natural units",
+  "benchmark_role": "EXTERNAL_DISSIPATIVE_EFT_READINESS_SOURCE_NOT_UET_DERIVATION",
+  "topics_used": ["docs/core", "0.13_Thermodynamic_Bridge dependency gate"],
+  "claim_boundary": [
+    "The source supports the need for Schwinger-Keldysh doubling, KMS structure, and entropy consistency in a microscopic dissipative EFT.",
+    "This wave does not implement that completion and cannot claim first-principles UET dissipation."
+  ]
+}

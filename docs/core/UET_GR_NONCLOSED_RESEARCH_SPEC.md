@@ -466,17 +466,21 @@ external auxiliary varphi      != information or derived trace
 local q/tau current-law map    != covariant UET derivation
 ```
 
-The remaining map is split into two evidence lanes. The classical covariant
-lane must first:
+At Wave 8 the remaining map was split into two evidence lanes. The classical
+covariant lane had to:
 
 1. declare whether the conserved variable is charge, mass, or another Noether
    density;
-2. derive an invertible coarse-graining/state map from that density to the
-   phase-field order parameter;
+2. factor the coarse-graining/state map, identify every many-to-one layer, and
+   derive the exact invertible hydrodynamic coordinate layer;
 3. write the current law with a four-velocity and spatial projector;
 4. exhibit non-negative entropy-current divergence; and
 5. close stress-energy exchange with the dissipative Bianchi ledger in curved
    spacetime.
+
+Section 5.5 closes item 1 as signed O(2) charge and closes only the affine
+hydrodynamic part of item 2. It proves by counterexample that microscopic and
+non-trivial coarse-graining layers are many-to-one. Items 3--5 remain open.
 
 Only after that lane closes does a thermal stochastic claim additionally need
 a closed-time-path action, dynamical KMS symmetry, and fluctuation-dissipation
@@ -491,12 +495,198 @@ relativistic conserved-current/Maxwell-Cattaneo/entropy/SK-KMS comparator; the
 latter supplies the broader CTP/local-KMS dissipative-EFT architecture. Neither
 paper derives UET or identifies its variables.
 
-The controller is therefore narrowed to
+The Wave 8 controller was therefore narrowed to
 `noether_density_to_phase_field_order_parameter_map_missing`. The exact
+coordinate result in section 5.5 supersedes that controller without turning
+the compatibility declaration into a microscopic derivation. The exact
 `epsilon_nc = 0` GR response-null branch remains unchanged, but this does not
 decide whether the complete universe is open or closed. Global-universe
 closure remains `UNRESOLVED`; Topic 0.11 and Topic 0.19 receive no status
 promotion.
+
+### 5.5 Factorized Noether-charge to phase-field state map
+
+The state-map blocker is not one invertible microscopic transformation. It is
+a chain of maps with different mathematical status:
+
+```text
+microscopic O(2) fields
+    -> Noether current N^mu
+    -> frame density n=-u_mu N^mu and spatial current j^mu
+    -> declared coarse variables n_bar, j_bar
+    <-> normalized hydrodynamic coordinates C, J
+```
+
+For polar matter variables
+
+```text
+chi = (A cos(theta), A sin(theta)),
+N^mu = Z A^2 partial^mu(theta).
+```
+
+The microscopic map is many-to-one. A constant phase shift changes the
+microscopic field but not the current, and different amplitude/phase-gradient
+pairs can preserve the product `A^2 partial^mu(theta)`. A non-trivial cell
+average is also many-to-one because distinct sub-cell profiles can have the
+same average. Requiring `C` to reconstruct those discarded microscopic degrees
+of freedom is therefore a category error, not a missing invertible formula.
+
+The exact invertible layer begins only after a frame, coarse-graining rule,
+reference density, and positive scales are declared:
+
+```text
+C = (n_bar - n_ref) / n_scale
+J = j_bar / (n_scale L/T)
+
+n_bar = n_ref + n_scale C
+j_bar = (n_scale L/T) J.
+```
+
+At fixed scales, continuity is preserved exactly. With `t=T t_hat` and
+`x=L x_hat`, the residuals satisfy
+
+```text
+R_hat = partial_t_hat C + partial_x_hat J
+      = (T/n_scale) (partial_t n_bar + partial_x j_bar).
+```
+
+This closes a hydrodynamic state-coordinate map. It does not derive the
+coarse-graining kernel, select the local rest frame dynamically, or identify
+the signed O(2) charge with mass or particle number. Those interpretations
+remain forbidden shortcuts in this wave.
+
+The external hyperbolic phase-field comparator can now be connected at the
+same coordinate level if, and only if, its `C` is explicitly declared to be a
+normalized signed-charge coordinate and its local flux is declared by
+`J=q/tau`. This is a compatibility declaration, not a microscopic derivation.
+The external auxiliary `varphi` remains distinct from UET `Phi`, information,
+and derived trace.
+
+The symmetric double well also has an exact thermodynamic coordinate map. For
+
+```text
+g(C) = (C^2 - 1)^2 / 4
+f(n_bar) = n_scale mu_scale g(C),
+```
+
+the conjugate chemical potential is
+
+```text
+df/dn_bar = mu_scale (C^3 - C),
+```
+
+so the local normalized coefficients are `a_matter=-1` and `b_matter=+1`.
+This is a constitutive free-energy choice. The O(2) matter action has not yet
+derived this equation of state, its equilibrium susceptibility, the gradient
+coefficient, or the transport coefficients.
+
+The distinction follows the standard external roles used here: Cahn and
+Hilliard support a nonuniform composition/density free-energy functional
+([DOI 10.1063/1.1744102](https://doi.org/10.1063/1.1744102)), while Hohenberg
+and Halperin classify Model B as conserved-order-parameter dynamics
+([DOI 10.1103/RevModPhys.49.435](https://doi.org/10.1103/RevModPhys.49.435)).
+Neither source equates every conserved order parameter with a microscopic
+Noether charge or derives the UET matter action.
+
+The completed and open layers are therefore:
+
+```text
+signed O(2) conserved-variable declaration       PASS
+fixed-scale n_bar,j_bar <-> C,J affine map       PASS
+continuity/current scale map                     PASS
+microscopic reconstruction from C               NO-GO (many-to-one)
+external C as signed-charge coordinate           PASS only as declared role
+equation of state from covariant O(2) action     BLOCKED (controlling)
+covariant coarse-graining/hydrodynamic matching  BLOCKED
+susceptibility and transport matching            BLOCKED
+entropy-current/dissipative-Bianchi completion   BLOCKED
+```
+
+The controller is narrowed to
+`noether_charge_equation_of_state_and_covariant_transport_matching_missing`.
+Derived trace remains downstream-only and cannot alter this state map or the
+physical evolution. The exact `epsilon_nc=0` GR response-null branch is
+unchanged. Global-universe closure remains `UNRESOLVED`, and this coordinate
+result does not promote Topic 0.11 or Topic 0.19.
+
+### 5.6 Finite-density O(2) EOS and T=0 superfluid constitutive layer
+
+Wave 10 fixes the homogeneous finite-density branch of the existing O(2)
+matter action without replacing the normalized phase-field potential. With
+`chi=A exp(i theta)`, `theta=-mu*t`, and
+
+```text
+m_eff^2(Phi)=m^2-epsilon_nc*h*(Phi-Phi_*)
+q=Z*mu^2-m_eff^2,
+```
+
+the stable condensed branch `q>0` gives
+
+```text
+A_*^2=q/lambda
+p=q^2/(4*lambda)
+n=Z*mu*q/lambda
+epsilon=mu*n-p
+chi=Z*(3*Z*mu^2-m_eff^2)/lambda
+c_s^2=q/(3*Z*mu^2-m_eff^2).
+```
+
+The canonical free energy is obtained from `f=mu*n-p` by selecting the unique
+stable root of
+
+```text
+Z^2*mu^3-Z*m_eff^2*mu-lambda*n=0
+```
+
+with the sign of `mu` fixed by the signed O(2) charge. The `q=0` phase edge is
+reported separately because its derivatives are one-sided. The reciprocal
+response derivatives from the same action are
+
+```text
+(partial p/partial Phi)_mu=+epsilon_nc*h*A_*^2/2
+(partial f/partial Phi)_n=-epsilon_nc*h*A_*^2/2.
+```
+
+On the preregistered normalized comparison domain `-1<=C<=1`, the exact
+canonical EOS and the existing symmetric double well have relative residual
+`1.0`, above the acceptance threshold `1e-3`. The double well therefore
+remains a constitutive comparator; no fit or silent replacement is allowed.
+The homogeneous calculation also does not derive `kappa_C`.
+
+For `xi_mu=nabla_mu theta+A_mu` and `X=-xi_mu*xi^mu`, the T=0 action-derived
+ideal sector is
+
+```text
+f_s=Z*(Z*X-m_eff^2)/lambda
+N^mu=f_s*xi^mu
+T^{mu nu}=f_s*xi^mu*xi^nu+p*g^{mu nu}.
+```
+
+This is a pure-superfluid constitutive layer. It does not supply a
+finite-temperature normal component. The dissipative longitudinal control
+requires explicit Kubo records and checks a positive-semidefinite Onsager
+matrix together with `D=sigma_reg/chi` and `D/tau<=1`. Verifier coefficient
+values are opt-in synthetic controls only; physical runs have no defaults.
+
+The completed and open Wave 10 layers are:
+
+```text
+tree-level finite-density O(2) EOS              PASS
+stable signed canonical inversion               PASS
+response reciprocity                            PASS
+T=0 covariant pure-superfluid current/stress    PASS
+local longitudinal entropy/causal control       PASS (simulation-only)
+symmetric double-well reduction                 REJECTED as derived EOS
+physical Kubo coefficient evidence              BLOCKED (controlling)
+finite-temperature normal component             BLOCKED
+full superfluid transport and SK/KMS closure    BLOCKED
+covariant coarse graining and curved 3+1 solver BLOCKED
+```
+
+The controller is narrowed to
+`physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing`. This does
+not promote Topic 0.11, Topic 0.19, physical GR validation, or the unresolved
+global-universe closure question.
 
 ## 6. GR closed-limit contract
 

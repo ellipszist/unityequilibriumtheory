@@ -17,6 +17,9 @@ from docs.core.uet_hyperbolic_phase_field_bridge import (
 from docs.scripts.audit.audit_uet_hyperbolic_phase_field_bridge import (
     build_artifacts,
 )
+from docs.core.uet_noether_phase_field_map import (
+    NOETHER_PHASE_FIELD_MAP_CONTROLLER,
+)
 
 ROOT = Path(__file__).resolve().parents[3]
 ARTIFACTS = ROOT / "docs/core/artifacts"
@@ -91,12 +94,17 @@ def test_mapping_gate_has_one_proximal_controller() -> None:
         "external_formula_transcription": "PASS",
         "fixed_light_cone_normalized_parameter_domain": "PASS",
         "external_q_to_local_current_law": "PASS_MOBILITY_ONE",
+        "noether_charge_variable_declaration": "PASS_SIGNED_O2_CHARGE",
+        "coarse_density_to_phase_coordinate": "PASS_AFFINE_FIXED_SCALE",
     }
     assert gate["controlling_blocker"] == (
-        HYPERBOLIC_PHASE_FIELD_BRIDGE_CONTROLLER
+        NOETHER_PHASE_FIELD_MAP_CONTROLLER
     )
     assert gate["classical_covariant_lane"][
         "noether_density_to_phase_field_order_parameter"
+    ] == "PASS_HYDRODYNAMIC_AFFINE_ONLY"
+    assert gate["classical_covariant_lane"][
+        "equation_of_state_from_covariant_O2_action"
     ] == "BLOCKED_CONTROLLING"
     assert gate["thermal_stochastic_lane"]["dynamical_kms_symmetry"] == (
         "BLOCKED_DOWNSTREAM"
@@ -141,11 +149,11 @@ def test_program_advances_without_topic_or_global_promotion() -> None:
     program = _load("uet_gr_research_program_gate.json")
     assert program["status"] == "BLOCKED"
     assert program["topic"] == "docs/core UET GR non-closed response"
-    assert program["version"] == "wave8_v1"
+    assert program["version"] == "wave10_v1"
     assert program["benchmark_role"] == "program_gate"
     assert program["method_label"] == "monotonic_gr_research_stage_gate"
-    assert program["input_identity"]["covariant_mapping_gate"].endswith(
-        "hyperbolic_phase_field_covariant_mapping_gate.json"
+    assert program["input_identity"]["eos_verification"].endswith(
+        "o2_finite_density_eos_verification.json"
     )
     assert program["notes"]
     assert program["gr_null_model"] == {
@@ -154,10 +162,10 @@ def test_program_advances_without_topic_or_global_promotion() -> None:
         "verification_status": "PASS",
     }
     assert program["program_stage"] == (
-        "FIXED_LIGHT_CONE_FEASIBILITY_AND_LOCAL_CURRENT_MAP_VERIFIED"
+        "O2_FINITE_DENSITY_EOS_AND_T0_SUPERFLUID_CONSTITUTIVE_VERIFIED"
     )
     assert program["controlling_blocker"] == (
-        HYPERBOLIC_PHASE_FIELD_BRIDGE_CONTROLLER
+        "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing"
     )
     assert program["sector_status"]["fixed_light_cone_parameter_domain"] == (
         "PASS_NORMALIZED_ANALYTIC"
@@ -165,8 +173,11 @@ def test_program_advances_without_topic_or_global_promotion() -> None:
     assert program["sector_status"]["uniform_subluminal_phase_field_limit"] == (
         "NO_GO_FOR_EXACT_PARABOLIC_LIMIT"
     )
-    assert program["sector_status"]["uet_covariant_phase_field_mapping"] == (
-        "BLOCKED"
+    assert program["sector_status"]["hydrodynamic_state_coordinate_map"] == (
+        "PASS_AFFINE_FIXED_SCALE"
+)
+    assert program["sector_status"]["equation_of_state_from_matter_action"] == (
+        "PASS_TREE_LEVEL_T0"
     )
     assert program["global_universe_closure"] == "UNRESOLVED"
     assert program["topic_0_11_status_impact"] == "NONE"

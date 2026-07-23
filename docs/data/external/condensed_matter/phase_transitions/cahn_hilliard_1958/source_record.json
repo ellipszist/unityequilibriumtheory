@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "record_type": "external_formula_and_variable_role_source",
+  "title": "Free Energy of a Nonuniform System. I. Interfacial Free Energy",
+  "authors": [
+    "John W. Cahn",
+    "John E. Hilliard"
+  ],
+  "journal": "The Journal of Chemical Physics",
+  "publication_year": 1958,
+  "volume": "28",
+  "issue": "2",
+  "pages": "258-267",
+  "doi": "10.1063/1.1744102",
+  "doi_url": "https://doi.org/10.1063/1.1744102",
+  "publisher_url": "https://pubs.aip.org/aip/jcp/article/28/2/258/202924/Free-Energy-of-a-Nonuniform-System-I-Interfacial",
+  "accessed_at": "2026-07-22",
+  "local_path": null,
+  "local_copy_status": "NOT_DOWNLOADED_METADATA_AND_ABSTRACT_ONLY",
+  "content_identity": {
+    "version": "version_of_record_metadata_and_publisher_abstract",
+    "hash_status": "NOT_APPLICABLE_NO_LOCAL_COPY"
+  },
+  "formula_locators": [
+    {
+      "id": "nonuniform_density_or_composition_free_energy",
+      "source_locator": "publisher abstract, statement beginning 'It is shown that the free energy...'",
+      "role": "supports a free-energy functional of composition or density with a gradient penalty"
+    }
+  ],
+  "unit_system": "dimensional materials free energy; no coefficients are imported into the normalized UET lane",
+  "benchmark_role": "EXTERNAL_PHASE_FIELD_VARIABLE_ROLE_SOURCE_NOT_UET_DERIVATION",
+  "topics_used": [
+    "docs/core",
+    "0.11_Phase_Transitions dependency gate"
+  ],
+  "known_access_limitations": [
+    "The publisher page exposed bibliographic metadata and the abstract; the full article was not downloaded or parsed in this wave.",
+    "No equation number beyond the abstract-level functional statement is claimed."
+  ],
+  "claim_boundary": [
+    "The source supports using composition or density as a phase-field coordinate with a nonuniform free-energy functional.",
+    "It does not identify a conserved O(2) Noether charge with a material concentration, derive the UET coefficients, or supply a relativistic state map."
+  ]
+}

@@ -36,6 +36,9 @@ from docs.core.uet_hyperbolic_phase_field_bridge import (
     shifted_curvature_domain_bounds,
     subluminal_parameter_bounds,
 )
+from docs.scripts.audit.uet_gr_monotonic_stage import (
+    apply_latest_hyperbolic_phase_field_stage,
+)
 
 OUT = ROOT / "docs/core/artifacts"
 CORE = ROOT / "docs/core/uet_hyperbolic_phase_field_bridge.py"
@@ -661,6 +664,9 @@ def build_artifacts() -> tuple[dict[str, Any], ...]:
             "dissipative UET completion follows."
         ),
     }
+    apply_latest_hyperbolic_phase_field_stage(
+        OUT, verification, formula, mapping, program
+    )
     return verification, formula, mapping, program
 
 

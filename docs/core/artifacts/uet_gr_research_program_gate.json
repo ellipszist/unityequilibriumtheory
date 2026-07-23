@@ -1,21 +1,23 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_gr_research_program_gate",
-  "generated_at": "2026-07-22T12:14:26+00:00",
+  "generated_at": "2026-07-23T05:01:39.455726+00:00",
   "topic": "docs/core UET GR non-closed response",
-  "version": "wave8_v1",
+  "version": "wave10_v1",
   "benchmark_role": "program_gate",
   "method_label": "monotonic_gr_research_stage_gate",
   "input_identity": {
-    "causal_feasibility_artifact": "docs/core/artifacts/hyperbolic_phase_field_causal_feasibility.json",
-    "covariant_mapping_gate": "docs/core/artifacts/hyperbolic_phase_field_covariant_mapping_gate.json"
+    "eos_verification": "docs/core/artifacts/o2_finite_density_eos_verification.json",
+    "eos_formula_audit": "docs/core/artifacts/o2_eos_formula_audit.json",
+    "transport_verification": "docs/core/artifacts/covariant_superfluid_transport_verification.json",
+    "transport_contract": "docs/core/artifacts/covariant_superfluid_transport_contract.json"
   },
   "notes": [
-    "The controlling blocker is the physical density/order-parameter state map.",
-    "Thermal SK/KMS completion is downstream of the classical covariant lane."
+    "The EOS and ideal T=0 constitutive gates pass at tree level.",
+    "Physical Kubo coefficients and full two-fluid/curved evolution remain blocked."
   ],
   "status": "BLOCKED",
-  "program_stage": "FIXED_LIGHT_CONE_FEASIBILITY_AND_LOCAL_CURRENT_MAP_VERIFIED",
+  "program_stage": "O2_FINITE_DENSITY_EOS_AND_T0_SUPERFLUID_CONSTITUTIVE_VERIFIED",
   "current_claim_class": "B",
   "gr_null_model": {
     "parameter": "epsilon_nc",
@@ -32,21 +34,35 @@
     "weak_field_reduction": "PARTIAL_RESPONSE_ONLY",
     "covariant_matter_action": "PASS_O2_SCALAR_PILOT",
     "reciprocal_coupling": "PASS_ACTION_LEVEL",
-    "matter_number_current": "PASS_ON_SHELL_O2",
+    "signed_O2_noether_current": "PASS_ON_SHELL",
     "diffusive_matter_reduction": "PARTIAL_CONSTITUTIVE_WITH_EXACT_MODEL_B_LIMIT",
     "local_convex_matter_causality": "PASS_CONTROL",
     "gradient_phase_field_causality": "PASS_EXTERNAL_FIXED_PARAMETER_COMPARATOR_ONLY",
     "fixed_light_cone_parameter_domain": "PASS_NORMALIZED_ANALYTIC",
     "uniform_subluminal_phase_field_limit": "NO_GO_FOR_EXACT_PARABOLIC_LIMIT",
     "local_current_law_mapping": "PASS_ALGEBRAIC_MOBILITY_ONE",
-    "uet_covariant_phase_field_mapping": "BLOCKED",
-    "entropy_current_kms_completion": "BLOCKED",
+    "hydrodynamic_state_coordinate_map": "PASS_AFFINE_FIXED_SCALE",
+    "microscopic_state_reconstruction": "NO_GO_MANY_TO_ONE",
+    "external_C_noether_coordinate_map": "PASS_DECLARED_SIGNED_CHARGE_ONLY",
+    "equation_of_state_from_matter_action": "PASS_TREE_LEVEL_T0",
+    "canonical_charge_EOS": "PASS_STABLE_BRANCH",
+    "symmetric_double_well_reduction": "REJECTED_REMAINS_CONSTITUTIVE_COMPARATOR",
+    "covariant_T0_superfluid_constitutive": "PASS_PURE_SUPERFLUID",
+    "longitudinal_entropy_control": "PASS_SYNTHETIC_ONLY",
+    "Kubo_matching_interface": "PASS_NO_DEFAULTS",
+    "physical_Kubo_coefficients": "BLOCKED",
+    "finite_temperature_normal_component": "BLOCKED",
+    "full_superfluid_transport_tensor": "BLOCKED",
+    "Schwinger_Keldysh_KMS_completion": "BLOCKED",
+    "covariant_coarse_graining": "BLOCKED_DEFERRED",
+    "curved_3p1_solver": "BLOCKED",
+    "physical_GR_benchmarks": "NOT_STARTED",
     "physical_gr_benchmarks": "NOT_STARTED"
   },
   "global_universe_closure": "UNRESOLVED",
   "topic_0_11_status_impact": "NONE",
   "topic_0_19_status_impact": "NONE",
-  "controlling_blocker": "noether_density_to_phase_field_order_parameter_map_missing",
+  "controlling_blocker": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing",
   "claim_promotion": "BLOCKED",
-  "reason": "The normalized comparator now has exact fixed-cone feasibility bounds, an analytic no-common exact parabolic limit, and a local mobility-one current-law map. The physical order parameter has not been mapped to the conserved UET Noether density, so no covariant dissipative UET completion follows."
+  "reason": "The action-derived finite-density EOS and T=0 pure-superfluid current/stress pass internal formula gates. Dissipative values remain synthetic controls; physical Kubo evidence, a finite-T normal component, full SK/KMS closure, and curved 3+1 evolution are not implemented."
 }

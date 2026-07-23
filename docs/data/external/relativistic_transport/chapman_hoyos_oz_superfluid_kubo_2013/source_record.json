@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "record_type": "external_formula_and_readiness_source",
+  "title": "Superfluid Kubo Formulas from Partition Function",
+  "authors": ["Shira Chapman", "Carlos Hoyos", "Yaron Oz"],
+  "publication_year": 2013,
+  "arxiv_id": "1310.2247",
+  "arxiv_url": "https://arxiv.org/abs/1310.2247",
+  "local_path": null,
+  "local_copy_status": "NOT_INGESTED_URL_METADATA_ONLY",
+  "preprocessing_note": "No numerical coefficient or table is extracted. The record constrains the Kubo-interface role only.",
+  "formula_locators": [
+    {
+      "id": "superfluid_transport_kubo_relations",
+      "source_locator": "paper superfluid Kubo-formula construction",
+      "role": "external Kubo matching requirement for superfluid transport coefficients"
+    }
+  ],
+  "unit_system": "natural units",
+  "benchmark_role": "EXTERNAL_SUPERFLUID_KUBO_STRUCTURE_SOURCE_NOT_COEFFICIENT_DATA",
+  "topics_used": ["docs/core", "0.4_Superconductivity_Superfluids dependency gate"],
+  "claim_boundary": [
+    "The source supports defining transport through correlator-based Kubo relations.",
+    "It supplies no UET-specific coefficient values and is not an external validation dataset."
+  ]
+}

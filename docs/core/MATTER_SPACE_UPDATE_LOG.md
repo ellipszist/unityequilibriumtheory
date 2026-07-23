@@ -63,3 +63,17 @@
 - Next controller: repair or replace the physical-response discretization and generate a causal-discretization repair artifact.
 - Claim impact: no status upgrade; wording is consolidated at `candidate normalized effective model` with 0.13 simulation-only and 0.11 internal-diagnostic boundaries.
 - Workflow linkage: Wave 6 of the matter-space hardening plan; Topic 0.11 remains Draft/Tier B under its independent Wave 55 controller.
+
+### 2026-07-23 - Align the historical report through Wave 10 evidence
+
+- Scope: preserve the 2026-07-21 integrated report as a normalized matter-space snapshot while making later GR, Noether, O(2) EOS/superfluid, and Topic 0.11/0.19/0.13 evidence controlling through a separate addendum.
+- Wave type: claim-boundary pass and workflow-repair pass.
+- Added or changed: dated report addendum, deterministic alignment verifier, generated alignment gate, artifact-boundary tests, and this log entry; the historical report itself was not rewritten by this wave.
+- Files touched: `MATTER_SPACE_RESEARCH_REPORT_ADDENDUM_2026-07-23.md`, `artifacts/matter_space_report_alignment_gate.json`, `../scripts/audit/audit_matter_space_report_alignment.py`, `test/test_matter_space_report_alignment.py`, and this log.
+- Verified with: report-alignment audit (`WARN / PASS_WITH_HISTORICAL_BASE_REPORT_WARN`), focused tests, hash/marker/link checks, and the Wave 10 core/dependency regression chain.
+- Result: the base report remains valid for the 1D normalized lane and its `core_prearrival_leakage` controller; the addendum now controls post-Wave-10 use and records the extended controller `physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing`.
+- Blocker narrowed: report drift is no longer implicit; the tree-level O(2) EOS and T=0 ideal constitutive layer are distinguished from still-missing physical Kubo coefficients and curved 3+1 dynamics.
+- Still open: physical transport evidence, finite-temperature two-fluid closure, covariant coarse-graining, entropy-current/dissipative-Bianchi closure, curved 3+1 and physical GR tests, plus the independent normalized matter-space pre-arrival leakage failure.
+- Next controller: `physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing` for the extended program; `core_prearrival_leakage` remains simultaneous for the original 1D physical-response lane.
+- Claim impact: wording aligned only; no topic promotion, no GR validation, and no claim that the complete universe is open or closed.
+- Workflow linkage: closes the report-alignment packet after Wave 10 downstream dependency propagation; canonical Topic 0.11 is `Structured/B`, while the older `Draft/B` wording remains explicitly historical.

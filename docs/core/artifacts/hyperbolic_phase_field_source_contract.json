@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "hyperbolic_phase_field_source_contract",
-  "generated_at": "2026-07-22T12:07:37.365463+00:00",
+  "generated_at": "2026-07-23T03:34:38.333709+00:00",
   "provenance_status": "PASS",
   "status": "EXTERNAL_FORMULA_COMPARATOR_NOT_UET_DERIVATION",
   "source_doi": "10.1098/rspa.2024.0606",
@@ -30,7 +30,7 @@
   "uet_covariant_derivation": "BLOCKED",
   "topic_0_11_status_impact": "NONE",
   "topic_0_19_status_impact": "NONE",
-  "next_controller": "noether_density_to_phase_field_order_parameter_map_missing",
+  "next_controller": "noether_charge_equation_of_state_and_covariant_transport_matching_missing",
   "downstream_hyperbolic_phase_field": {
     "artifact": "hyperbolic_phase_field_external_comparator_verification.json",
     "audit_status": "PASS",
@@ -41,5 +41,14 @@
     "fixed_light_cone_parameter_domain": "PASS_NORMALIZED_ANALYTIC",
     "uniform_subluminal_limit": "NO_GO_EXACT_PARABOLIC_LIMIT",
     "uet_derivation": "BLOCKED"
+  },
+  "downstream_noether_phase_field_state_map": {
+    "artifact": "noether_phase_field_state_map_verification.json",
+    "audit_status": "PASS",
+    "evidence_status": "PARTIAL_HYDRODYNAMIC_STATE_COORDINATE_MAP",
+    "role": "hydrodynamic_state_coordinate_map_not_microscopic_derivation",
+    "affine_fixed_scale_layer": "PASS",
+    "microscopic_reconstruction": "NO_GO_MANY_TO_ONE",
+    "equation_of_state_and_transport": "BLOCKED"
   }
 }

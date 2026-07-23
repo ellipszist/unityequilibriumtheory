@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "causal_nonclosed_contract",
-  "generated_at": "2026-07-22T12:06:33.536599+00:00",
+  "generated_at": "2026-07-22T13:43:20.221610+00:00",
   "status": "CANDIDATE_RETARDED_CONSTITUTIVE_KERNEL_1P1D",
   "operator": "tau(u.nabla)^2 + (u.nabla) - D(e.nabla)^2 + lambda",
   "kernel_support": "retarded_1p1_local_rest_frame_cone",
@@ -44,5 +44,14 @@
     "fixed_light_cone_parameter_domain": "PASS_NORMALIZED_ANALYTIC",
     "uniform_subluminal_limit": "NO_GO_EXACT_PARABOLIC_LIMIT",
     "uet_derivation": "BLOCKED"
+  },
+  "downstream_noether_phase_field_state_map": {
+    "artifact": "noether_phase_field_state_map_verification.json",
+    "audit_status": "PASS",
+    "evidence_status": "PARTIAL_HYDRODYNAMIC_STATE_COORDINATE_MAP",
+    "role": "hydrodynamic_state_coordinate_map_not_microscopic_derivation",
+    "affine_fixed_scale_layer": "PASS",
+    "microscopic_reconstruction": "NO_GO_MANY_TO_ONE",
+    "equation_of_state_and_transport": "BLOCKED"
   }
 }

@@ -57,6 +57,8 @@ def test_program_gate_advances_model_class_without_promoting_gr_topic() -> None:
         "COVARIANT_MATTER_ACTION_RECIPROCITY_VERIFIED",
         "EXTERNAL_HYPERBOLIC_PHASE_FIELD_COMPARATOR_FORMULA_VERIFIED",
         "FIXED_LIGHT_CONE_FEASIBILITY_AND_LOCAL_CURRENT_MAP_VERIFIED",
+        "NOETHER_PHASE_FIELD_STATE_COORDINATE_MAP_VERIFIED",
+        "O2_FINITE_DENSITY_EOS_AND_T0_SUPERFLUID_CONSTITUTIVE_VERIFIED",
     }
     assert artifact["gr_null_model"]["verification_status"] == "PASS"
     assert artifact["topic_0_19_status_impact"] == "NONE"
@@ -70,6 +72,8 @@ def test_program_gate_advances_model_class_without_promoting_gr_topic() -> None:
         "regular_covariant_to_diffusive_matter_reduction_missing",
         "uniform_subluminal_hyperbolic_phase_field_and_covariant_mapping_missing",
         "noether_density_to_phase_field_order_parameter_map_missing",
+        "noether_charge_equation_of_state_and_covariant_transport_matching_missing",
+        "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing",
     }
 
 
