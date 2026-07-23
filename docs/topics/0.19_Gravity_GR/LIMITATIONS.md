@@ -11,3 +11,13 @@
 - The artifact-level `gravity_claim_scope_gate` is the export controller: constant PASS
   cannot be cited as first-principles G derivation, GR validation, equivalence-principle
   proof, short-range gravity validation, singularity resolution, or quantum-gravity closure.
+
+## Core GR program dependency boundary
+
+- The core `epsilon_nc = 0` result is an exact response-null of an implemented candidate evaluator, not a solved metric PDE or a derivation of Einstein equations.
+- The covariant balance result is local and exchange-completed; it is not a global conservation theorem or proof that the universe is open or closed.
+- The causal kernel is restricted to a flat local 1+1 constitutive lane, and the matter-space reduction covers only the response sector.
+- The Noether-to-phase-field result closes only a fixed-scale coarse coordinate layer; EOS, covariant coarse graining, susceptibility, transport/KMS, entropy current, and dissipative-Bianchi completion remain blocked.
+- Core candidate artifacts do not replace Topic 0.19 light-bending, perihelion, MICROSCOPE, Eot-Wash, metric/EFE, singularity, or quantum-gravity benchmark artifacts.
+- The Topic 0.19 CODATA PASS and Planck definitions remain a Claim Class C internal checkpoint with export controller `WARN`.
+- Topic status remains `Draft / Tier B`; no physical GR, global-universe, external-validation, or solved-theory claim is promoted.

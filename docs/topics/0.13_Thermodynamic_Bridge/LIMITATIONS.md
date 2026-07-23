@@ -46,3 +46,13 @@
 | Provenance workflow | Intake/readiness gate exists for missing source packages | Filled evidence entries, archived upstream files, and source-review closure. |
 | Dependent theory topics | May inherit lower-bound and standard-formula constraints from the foundation claim gate | UET bridge proof, source-normalized dataset closure, uncertainty propagation, and dependency proof. |
 
+## Core Thermodynamic Constraint Boundary
+
+- The Landauer quantity `k_B T ln(2)` is an imported lower-bound constraint. It does not derive the UET coefficient `beta`, an equation of state, mobility, or a core coupling coefficient.
+- Bekenstein, Unruh, Hawking, and related standard identities constrain candidate mappings but do not supply a UET entropy current, dissipative-Bianchi closure, or covariant transport law.
+- The Cattaneo artifact remains analytical and synthetic. Passing its control gates is not external heat-transport validation.
+- The matter-space thermal pilot remains `SIMULATION_ONLY / FAIL`: physical pre-arrival leakage and external numeric-source readiness remain failed gates.
+- Normalized `Phi` and derived trace `R` are not temperature, heat flux, entropy, information matter, or feedback variables without a separately justified dimensional observable map.
+- The four active Berut, Jun, Hong, and Peterson source-row controllers remain independent and unchanged.
+- The dependency packet cannot promote Topic `0.13` beyond `Draft / B`; it records what may be inherited and what remains blocked.
+

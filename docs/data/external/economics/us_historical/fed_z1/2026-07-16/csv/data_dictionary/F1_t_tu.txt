@@ -1,0 +1,10 @@
+FU893111305.Q	All sectors; SDRs; liability	Line 1	F1.t Monetary gold and special drawing rights (SDRs)	Millions of dollars; transactions, not seasonally adjusted
+FU313111303.Q	Federal government; special drawing rights (SDRs) allocations; liability	Line 2	F1.t Monetary gold and special drawing rights (SDRs)	Millions of dollars; transactions, not seasonally adjusted
+FU313011303.Q	Federal government; special drawing rights (SDRs) holdings; asset	Line 3	F1.t Monetary gold and special drawing rights (SDRs)	Millions of dollars; transactions, not seasonally adjusted
+FU893011105.Q	All sectors; monetary gold and SDRs; assets	Line 4	F1.t Monetary gold and special drawing rights (SDRs)	Millions of dollars; transactions, not seasonally adjusted
+FU313011105.Q	Federal government; monetary gold and SDRs; asset	Line 5	F1.t Monetary gold and special drawing rights (SDRs)	Millions of dollars; transactions, not seasonally adjusted
+FU313011203.Q	Federal government; monetary gold; asset	Line 6	F1.t Monetary gold and special drawing rights (SDRs)	Millions of dollars; transactions, not seasonally adjusted
+FU313011303.Q	Federal government; special drawing rights (SDRs) holdings; asset	Line 7	F1.t Monetary gold and special drawing rights (SDRs)	Millions of dollars; transactions, not seasonally adjusted
+FU263011105.Q	Rest of the world; monetary gold and SDRs; assets	Line 8	F1.t Monetary gold and special drawing rights (SDRs)	Millions of dollars; transactions, not seasonally adjusted
+FU263011205.Q	Rest of the world; monetary gold net transactions with U.S.	Line 9	F1.t Monetary gold and special drawing rights (SDRs)	Millions of dollars; transactions, not seasonally adjusted
+FU313111303.Q	Federal government; special drawing rights (SDRs) allocations; liability	Line 10	F1.t Monetary gold and special drawing rights (SDRs)	Millions of dollars; transactions, not seasonally adjusted

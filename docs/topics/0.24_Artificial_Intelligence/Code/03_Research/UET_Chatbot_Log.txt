@@ -2,13 +2,13 @@ UET-NanoGPT Conversation Log (Full Knowledge)
 =============================================
 
 User: UET is
-UET: UET is standard
+UET: UET is the
 --------------------
 User: The standard model
 UET: The standard model
 --------------------
 User: Equation
-UET: Equation property. unifies
+UET: Equation processing UET
 --------------------
 User: Consciousness is
 UET: Consciousness is property.
@@ -17,5 +17,5 @@ User: Future of humanity
 UET: Future of humanity
 --------------------
 User: Economic system
-UET: Economic system emergent
+UET: Economic system an
 --------------------

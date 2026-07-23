@@ -1,0 +1,32 @@
+FA476000105.Q	Credit unions; gross saving	Line 1	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA475013005.Q	Credit unions; gross fixed investment, nonresidential structures, equipment, and intellectual property products	Line 2	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA474090005.Q	Credit unions; total financial assets	Line 3	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA474010005.Q	Credit unions; interbank transactions; asset	Line 4	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA474022005.Q	Credit unions; debt securities; asset	Line 5	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA473069153.Q	Credit unions; commercial paper held by Corporate Credit Unions; asset	Line 6	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA473061105.Q	Credit unions; Treasury securities; asset	Line 7	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA473061705.Q	Credit unions; agency- and GSE-backed securities; asset	Line 8	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA473062005.Q	Credit unions; municipal securities; asset	Line 9	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA473063005.Q	Credit unions; corporate and foreign bonds; asset	Line 10	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA474035005.Q	Credit unions; total loans; asset	Line 11	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA472050053.Q	Credit unions; federal funds and security repurchase agreements held by Corporate Credit Unions (net of liabilities before 2002:Q4); asset	Line 12	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA473068005.Q	Credit unions; depository institution loans n.e.c.; asset	Line 13	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA473066000.Q	Credit unions; consumer credit; asset	Line 14	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA473065005.Q	Credit unions; total mortgages; asset	Line 15	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA473065100.Q	Credit unions; one-to-four-family residential mortgages; asset	Line 16	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA473065403.Q	Credit unions; multifamily mortgages; asset	Line 17	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA473065503.Q	Credit unions; commercial mortgages; asset	Line 18	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA473065603.Q	Credit unions; farm mortgages; asset	Line 19	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA473092403.Q	Credit unions; equity in FHLB; asset	Line 20	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA473064205.Q	Credit unions; mutual fund shares; asset	Line 21	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA473093005.Q	Credit unions; unidentified miscellaneous assets	Line 22	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA474190005.Q	Credit unions; total liabilities	Line 23	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA713068743.Q	Central bank; loans to credit unions under the Paycheck Protection Program Liquidity Facility (PPPLF), assets	Line 24	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA473127003.Q	Credit unions; checkable deposits; liability	Line 25	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA473130005.Q	Credit unions; total time and savings deposits; liability	Line 26	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA474141005.Q	Credit unions; short-term loans; liability	Line 27	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA472150053.Q	Credit unions; federal funds and security repurchase agreements held by Corporate Credit Unions; liability	Line 28	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA473169333.Q	Credit unions; FHLB advances; liability	Line 29	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA473193005.Q	Credit unions; unidentified miscellaneous liabilities	Line 30	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA477005005.Q	Credit unions; sector discrepancy	Line 31	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA473139103.Q	Credit unions; uninsured checkable and time and savings deposits; liability	Line 32	S122.4.t Credit unions	Millions of dollars; transactions at a seasonally adjusted annual rate

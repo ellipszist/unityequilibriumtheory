@@ -1,0 +1,133 @@
+FU796902505.Q	Domestic financial sectors; gross value added (IMA)	Line 1	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU796330081.Q	Domestic financial sectors; consumption of fixed capital, nonresidential structures, equipment, and intellectual property products, including noncorporate financial, current cost basis (IMA)	Line 2	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU796902605.Q	Domestic financial sectors; net value added (IMA)	Line 3	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU796025005.Q	Domestic financial sectors; compensation of employees paid (IMA)	Line 4	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU796240101.Q	Domestic financial sectors; taxes on production and imports less subsidies, payable (IMA)	Line 5	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU796402101.Q	Domestic financial sectors; operating surplus, net (IMA)	Line 6	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU796140005.Q	Domestic financial sectors; net national income/balance of primary incomes, net (IMA)	Line 7	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU796402101.Q	Domestic financial sectors; operating surplus, net (IMA)	Line 8	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU796150175.Q	Domestic financial sectors; property income received, net (IMA)	Line 9	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU796140005.Q	Domestic financial sectors; net national income/balance of primary incomes, net (IMA)	Line 10	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU796220001.Q	Domestic financial sectors; current taxes on income, wealth, etc. paid (IMA)	Line 11	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU796403005.Q	Domestic financial sectors; other current transfers paid (IMA)	Line 12	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU796012095.Q	Domestic financial sectors; disposable income, net; net saving including foreign earnings retained abroad and CCAdj (IMA)	Line 13	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU796012095.Q	Domestic financial sectors; disposable income, net; net saving including foreign earnings retained abroad and CCAdj (IMA)	Line 14	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU796006385.Q	Domestic financial sectors; net saving including foreign earnings retained abroad and CCAdj less net capital transfers paid (IMA)	Line 15	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU796012095.Q	Domestic financial sectors; disposable income, net; net saving including foreign earnings retained abroad and CCAdj (IMA)	Line 16	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU795440005.Q	Domestic financial sectors; net capital transfers paid	Line 17	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU795015085.Q	Domestic financial sectors; capital formation, net (IMA)	Line 18	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU795013005.Q	Domestic financial sectors; gross fixed investment, nonresidential structures, equipment, and intellectual property products	Line 19	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU796330081.Q	Domestic financial sectors; consumption of fixed capital, nonresidential structures, equipment, and intellectual property products, including noncorporate financial, current cost basis (IMA)	Line 20	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU795000995.Q	Domestic financial sectors; net lending (+) or borrowing (-) (capital account)	Line 21	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU795000995.Q	Domestic financial sectors; net lending (+) or borrowing (-) (capital account)	Line 22	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU794090005.Q	Domestic financial sectors; total financial assets 	Line 23	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU794000005.Q	Domestic financial sectors; total currency and deposits; asset 	Line 24	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU794022005.Q	Domestic financial sectors; debt securities; asset	Line 25	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU793069175.Q	Domestic financial sectors; open market paper; asset	Line 26	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU793061105.Q	Domestic financial sectors; Treasury securities; asset	Line 27	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU793061705.Q	Domestic financial sectors; agency- and GSE-backed securities; asset	Line 28	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU793062005.Q	Domestic financial sectors; municipal securities; asset	Line 29	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU793063005.Q	Domestic financial sectors; corporate and foreign bonds; asset	Line 30	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU794035005.Q	Domestic financial sectors; total loans; asset	Line 31	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU793081005.Q	Domestic financial sectors; equity and investment fund shares; asset (IMA)	Line 32	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU793064105.Q	Domestic financial sectors; corporate equities; asset	Line 33	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU793034005.Q	Domestic financial sectors; money market fund shares; asset	Line 34	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU793064205.Q	Domestic financial sectors; mutual fund shares; asset	Line 35	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU793092405.Q	Domestic financial sectors; equity in FHLB; asset	Line 36	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU793092105.Q	Domestic financial sectors; U.S. direct investment abroad: equity; asset (market value)	Line 37	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU713164003.Q	Central bank; Federal Reserve bank stock; liability	Line 38	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU793094605.Q	Domestic financial sectors; equity investment in own subsidiaries; asset	Line 39	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU793052005.Q	Domestic financial sectors; insurance, pension and standardized guarantee schemes; asset (IMA)	Line 40	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU793096005.Q	Domestic financial sectors; other accounts receivable; asset (IMA)	Line 41	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU794194005.Q	Domestic financial sectors; total liabilities and equity	Line 42	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU794100005.Q	Domestic financial sectors; total currency and deposits; liability	Line 43	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU794122005.Q	Domestic financial sectors; debt securities; liability 	Line 44	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU423161705.Q	GSEs and agency- and GSE-backed mortgage pools; U.S. government agency securities; liability	Line 45	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU793163005.Q	Domestic financial sectors; corporate and foreign bonds; liability	Line 46	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU793169175.Q	Domestic financial sectors; open market paper; liability	Line 47	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU794141005.Q	Domestic financial sectors; short-term loans; liability	Line 48	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU793181005.Q	Domestic financial sectors; equity and investment fund shares; liability (IMA)	Line 49	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU793164105.Q	Domestic financial sectors; corporate equities; liability	Line 50	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU634090005.Q	Money market funds; total financial assets	Line 51	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU653164205.Q	Mutual funds; mutual fund shares; liability	Line 52	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU403192405.Q	Government-sponsored enterprises; equity in government-sponsored enterprises (GSEs); liability	Line 53	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU793192105.Q	Domestic financial sectors; foreign direct investment in U.S.: equity; liability (market value	Line 54	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU662090003.Q	Security brokers and dealers; proprietors' equity in noncorporate business	Line 55	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU793194605.Q	Domestic financial sectors; equity investment by parent companies; liability 	Line 56	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU713164005.Q	Central bank; equity and investment fund shares; liability (SBS)	Line 57	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503194205.Q	Other financial business; Exchange Stabilization Fund Economic Recovery Programs Equity Investment in Federal Reserve credit facility LLCs; liability	Line 58	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU583152005.Q	Insurance companies and pension funds; insurance, pension and standardized guarantee schemes; liability (IMA)	Line 59	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU793196005.Q	Domestic financial sectors; other accounts payable; liability (IMA)	Line 60	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FU795000005.Q	Domestic financial sectors; net lending (+) or borrowing (-) (financial account)	Line 61	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FV798090185.Q	Domestic financial sectors; total other volume changes (IMA)	Line 62	S12.i.q Financial business	Millions of dollars; other changes in volume of assets
+FV795013865.Q	Domestic financial sectors; nonfinancial assets (does not include land)	Line 63	S12.i.q Financial business	Millions of dollars; other changes in volume of assets
+FV798090085.Q	Domestic financial sectors; other volume changes (IMA)	Line 64	S12.i.q Financial business	Millions of dollars; other changes in volume of assets
+FU797005045.Q	Domestic financial sectors; statistical discrepancy (IMA)	Line 65	S12.i.q Financial business	Millions of dollars; transactions, not seasonally adjusted
+FR795013865.Q	Domestic financial sectors; nonfinancial assets (does not include land)	Line 66	S12.i.q Financial business	Millions of dollars; revaluation
+FR795013665.Q	Domestic financial sectors; nonresidential structures, current cost basis	Line 67	S12.i.q Financial business	Millions of dollars; revaluation
+FR795013265.Q	Domestic financial sectors; nonresidential equipment, current cost basis	Line 68	S12.i.q Financial business	Millions of dollars; revaluation
+FR795013765.Q	Domestic financial sectors; nonresidential intellectual property products, current cost basis	Line 69	S12.i.q Financial business	Millions of dollars; revaluation
+FR794090005.Q	Domestic financial sectors; total financial assets 	Line 70	S12.i.q Financial business	Millions of dollars; revaluation
+FR794000005.Q	Domestic financial sectors; total currency and deposits; asset 	Line 71	S12.i.q Financial business	Millions of dollars; revaluation
+FR794022005.Q	Domestic financial sectors; debt securities; asset	Line 72	S12.i.q Financial business	Millions of dollars; revaluation
+FR794035005.Q	Domestic financial sectors; total loans; asset	Line 73	S12.i.q Financial business	Millions of dollars; revaluation
+FR793064105.Q	Domestic financial sectors; corporate equities; asset	Line 74	S12.i.q Financial business	Millions of dollars; revaluation
+FR793064205.Q	Domestic financial sectors; mutual fund shares; asset	Line 75	S12.i.q Financial business	Millions of dollars; revaluation
+FR793092105.Q	Domestic financial sectors; U.S. direct investment abroad: equity; asset (market value)	Line 76	S12.i.q Financial business	Millions of dollars; revaluation
+FR793052005.Q	Domestic financial sectors; insurance, pension and standardized guarantee schemes; asset (IMA)	Line 77	S12.i.q Financial business	Millions of dollars; revaluation
+FR793096005.Q	Domestic financial sectors; other accounts receivable; asset (IMA)	Line 78	S12.i.q Financial business	Millions of dollars; revaluation
+FR794194005.Q	Domestic financial sectors; total liabilities and equity	Line 79	S12.i.q Financial business	Millions of dollars; revaluation
+FR793164105.Q	Domestic financial sectors; corporate equities; liability	Line 80	S12.i.q Financial business	Millions of dollars; revaluation
+FR653164205.Q	Mutual funds; mutual fund shares; liability	Line 81	S12.i.q Financial business	Millions of dollars; revaluation
+FR793192105.Q	Domestic financial sectors; foreign direct investment in U.S.: equity; liability (market value	Line 82	S12.i.q Financial business	Millions of dollars; revaluation
+FR662090003.Q	Security brokers and dealers; proprietors' equity in noncorporate business	Line 83	S12.i.q Financial business	Millions of dollars; revaluation
+FR793194605.Q	Domestic financial sectors; equity investment by parent companies; liability 	Line 84	S12.i.q Financial business	Millions of dollars; revaluation
+FR583152005.Q	Insurance companies and pension funds; insurance, pension and standardized guarantee schemes; liability (IMA)	Line 85	S12.i.q Financial business	Millions of dollars; revaluation
+FR793196005.Q	Domestic financial sectors; other accounts payable; liability (IMA)	Line 86	S12.i.q Financial business	Millions of dollars; revaluation
+FR792090095.Q	Domestic financial sectors; net worth (IMA)	Line 87	S12.i.q Financial business	Millions of dollars; revaluation
+FC792090095.Q	Domestic financial sectors; net worth (IMA)	Line 88	S12.i.q Financial business	Millions of dollars; change in unadjusted amounts outstanding end of period
+FL792000095.Q	Domestic financial sectors; total assets (does not include land)	Line 89	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+LM795013865.Q	Domestic financial sectors; nonfinancial assets (does not include land)	Line 90	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+LM795013665.Q	Domestic financial sectors; nonresidential structures, current cost basis	Line 91	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+LM795013265.Q	Domestic financial sectors; nonresidential equipment, current cost basis	Line 92	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+LM795013765.Q	Domestic financial sectors; nonresidential intellectual property products, current cost basis	Line 93	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+FL794090005.Q	Domestic financial sectors; total financial assets 	Line 94	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL794000005.Q	Domestic financial sectors; total currency and deposits; asset 	Line 95	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL794022005.Q	Domestic financial sectors; debt securities; asset	Line 96	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL793069175.Q	Domestic financial sectors; open market paper; asset	Line 97	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL793061105.Q	Domestic financial sectors; Treasury securities; asset	Line 98	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL793061705.Q	Domestic financial sectors; agency- and GSE-backed securities; asset	Line 99	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL793062005.Q	Domestic financial sectors; municipal securities; asset	Line 100	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL793063005.Q	Domestic financial sectors; corporate and foreign bonds; asset	Line 101	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL794035005.Q	Domestic financial sectors; total loans; asset	Line 102	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL793081005.Q	Domestic financial sectors; equity and investment fund shares; asset (IMA)	Line 103	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+LM793064105.Q	Domestic financial sectors; corporate equities; asset	Line 104	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+FL793034005.Q	Domestic financial sectors; money market fund shares; asset	Line 105	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+LM793064205.Q	Domestic financial sectors; mutual fund shares; asset	Line 106	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+FL793092405.Q	Domestic financial sectors; equity in FHLB; asset	Line 107	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+LM793092105.Q	Domestic financial sectors; U.S. direct investment abroad: equity; asset (market value)	Line 108	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+FL713164003.Q	Central bank; Federal Reserve bank stock; liability	Line 109	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL793094605.Q	Domestic financial sectors; equity investment in own subsidiaries; asset	Line 110	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL793052005.Q	Domestic financial sectors; insurance, pension and standardized guarantee schemes; asset (IMA)	Line 111	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL793096005.Q	Domestic financial sectors; other accounts receivable; asset (IMA)	Line 112	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL792100005.Q	Domestic financial sectors; total liabilities and net worth (IMA)	Line 113	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL794194005.Q	Domestic financial sectors; total liabilities and equity	Line 114	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL794100005.Q	Domestic financial sectors; total currency and deposits; liability	Line 115	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL794122005.Q	Domestic financial sectors; debt securities; liability 	Line 116	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL423161705.Q	GSEs and agency- and GSE-backed mortgage pools; U.S. government agency securities; liability	Line 117	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL793163005.Q	Domestic financial sectors; corporate and foreign bonds; liability	Line 118	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL793169175.Q	Domestic financial sectors; open market paper; liability	Line 119	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL794141005.Q	Domestic financial sectors; short-term loans; liability	Line 120	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL793181005.Q	Domestic financial sectors; equity and investment fund shares; liability (IMA)	Line 121	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+LM793164105.Q	Domestic financial sectors; corporate equities; liability	Line 122	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+FL634090005.Q	Money market funds; total financial assets	Line 123	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+LM653164205.Q	Mutual funds; mutual fund shares; liability	Line 124	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+FL403192405.Q	Government-sponsored enterprises; equity in government-sponsored enterprises (GSEs); liability	Line 125	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+LM793192105.Q	Domestic financial sectors; foreign direct investment in U.S.: equity; liability (market value	Line 126	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+LM662090003.Q	Security brokers and dealers; proprietors' equity in noncorporate business	Line 127	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+FL793194605.Q	Domestic financial sectors; equity investment by parent companies; liability 	Line 128	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713164005.Q	Central bank; equity and investment fund shares; liability (SBS)	Line 129	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL503194205.Q	Other financial business; Exchange Stabilization Fund Economic Recovery Programs Equity Investment in Federal Reserve credit facility LLCs; liability	Line 130	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL583152005.Q	Insurance companies and pension funds; insurance, pension and standardized guarantee schemes; liability (IMA)	Line 131	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL793196005.Q	Domestic financial sectors; other accounts payable; liability (IMA)	Line 132	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL792090095.Q	Domestic financial sectors; net worth (IMA)	Line 133	S12.i.q Financial business	Millions of dollars; amounts outstanding end of period, not seasonally adjusted

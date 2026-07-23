@@ -60,3 +60,13 @@
 - Wave 53 permits amplitude-invariant `q_peak` inspection only as a shape-only diagnostic. Source `S(q)` amplitude, susceptibility normalization, source ensemble/time averaging, estimator replacement, and exponent rerun remain `BLOCKED`.
 - Wave 54 keeps current rows diagnostic-only for uncertainty: accepted multi-grid seed aggregation passes, but L24/L28 have only two accepted rows each, no source time-window/ensemble averaging policy is accepted, and no uncertainty interval propagation exists for exponent fits.
 - Wave 55 only chooses the next hardening path. It selects replicate/temporal acquisition because no replacement observable policy is accepted, but it creates no new rows, accepts no estimator, reruns no exponent gate, and upgrades no universality, material, RG, or Tier A claim.
+
+## Noether-phase-field dependency boundary
+
+- Core Wave 9 verifies an exact affine map only between an already declared coarse signed O(2) charge density/current and fixed normalized `C/J` coordinates.
+- The present Topic 0.11 `C` field is a normalized conserved-order diagnostic; no accepted artifact identifies it as the signed O(2) Noether charge.
+- Microscopic O(2) fields and coarse microstates cannot be reconstructed from `C`; both inverse steps are many-to-one by explicit counterexample.
+- The symmetric double well is an exact constitutive coordinate map, not an equation of state derived from the covariant O(2) action.
+- Covariant coarse graining, susceptibility, mobility, relaxation, gradient-coefficient, entropy-current, and system-specific SI matching remain blocked.
+- Matter-space `Phi` and derived trace `R` are excluded from this map and cannot supply hidden feedback or missing physical closure.
+- This dependency lane does not alter Wave 55, accept an estimator, rerun an exponent, or support universality, material, RG, GR, global-universe, external-validation, or solved-theory claims.

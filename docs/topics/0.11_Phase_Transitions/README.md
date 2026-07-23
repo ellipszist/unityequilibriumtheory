@@ -95,6 +95,7 @@ flowchart LR
 | Wave 54 CH finite-k source averaging/uncertainty policy gate | Uncertainty policy preflight | `Data/03_Research/structure_factor_ch_finite_k_source_averaging_uncertainty_policy.json`; `Result/artifacts/0_11_structure_factor_ch_finite_k_source_averaging_uncertainty_gate.json` | diagnostic aggregation passes; claim-bearing replicate floor, source time averaging, uncertainty intervals, estimator replacement, and exponent rerun remain blocked |
 | Wave 55 CH finite-k next-path decision gate | Next-path decision preflight | `Data/03_Research/structure_factor_ch_finite_k_next_path_decision.json`; `Result/artifacts/0_11_structure_factor_ch_finite_k_next_path_decision_gate.json` | replicate/temporal acquisition is selected because no replacement observable is accepted; estimator acceptance and exponent rerun remain blocked |
 | Matter-space coupling pilot | Isolated normalized diagnostic | `Result/artifacts/0_11_matter_space_coupled_diagnostic.json` | internal gates pass; core causal dependency blocked; no readiness or estimator impact |
+| Core Wave 9 Noether-phase-field dependency | Conditional coordinate compatibility / blocked | `NOETHER_PHASE_FIELD_DEPENDENCY_SPEC.md`; `Result/artifacts/0_11_noether_phase_field_dependency_gate.json` | fixed-scale affine charge-coordinate layer passes; Topic C identity, EOS, transport, estimator use, and claim promotion remain blocked |
 | Universal phase-transition theory | Not closed | limitations and formula audit | do not claim full proof |
 
 ## 5x4 Grid Structure
@@ -121,7 +122,17 @@ python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exp
 +- Artifact: [0_11_matter_space_coupled_diagnostic.json](./Result/artifacts/0_11_matter_space_coupled_diagnostic.json)
 +- Result: `INTERNAL_DIAGNOSTIC / PASS` for the locked internal gates, with matter drift `1.11e-15`, refined ledger closure `3.49e-7`, coupling/error ratio `1.36e5`, resolution-effect ratio `0.889`, exact trace-history physical invariance, and finest adiabatic error `4.81e-8`.
 +- Numerical disclosure: the locked run's maximum ledger residual was `3.49e-5`; amendment 001 reduced only the ledger-control `dt` fraction by ten, retained the original failure, and is not a blind confirmation.
-+- Dependency and claim boundary: the core pre-arrival leakage dependency remains `BLOCKED`; Topic 0.11 stays `Draft / Tier B`, and `ch_finite_k_replicate_temporal_acquisition_plan_defined_execution_open` remains the topic controller. Morphology outputs are not accepted structure-factor or correlation-length estimators.
++- Dependency and claim boundary: the core pre-arrival leakage dependency remains `BLOCKED`; canonical metadata records Topic 0.11 as `Structured / Tier B`, while the pilot artifact retains its historical `Draft` run snapshot. `ch_finite_k_replicate_temporal_acquisition_plan_defined_execution_open` remains the topic controller, and morphology outputs are not accepted structure-factor or correlation-length estimators.
+
+## Noether-phase-field dependency gate (core Wave 9 propagation)
+
+- Contract: [NOETHER_PHASE_FIELD_DEPENDENCY_SPEC.md](./NOETHER_PHASE_FIELD_DEPENDENCY_SPEC.md)
+- Runner: [Research_Noether_Phase_Field_Dependency_Gate.py](./Code/03_Research/Research_Noether_Phase_Field_Dependency_Gate.py)
+- Artifact: [0_11_noether_phase_field_dependency_gate.json](./Result/artifacts/0_11_noether_phase_field_dependency_gate.json)
+- Result: `BLOCKED / CONDITIONAL_HYDRODYNAMIC_COORDINATE_COMPATIBILITY`. The exact fixed-scale affine map is accepted only for a declared coarse signed O(2) charge coordinate.
+- Open physical map: the current Topic 0.11 `C` field has no accepted signed-charge mapping, covariant coarse-graining prescription, O(2)-derived equation of state, or transport-coefficient match.
+- Separation rule: microscopic reconstruction remains many-to-one; neither matter-space `Phi` nor derived trace `R` enters this map or changes the dynamics.
+- Status and controller: `topic_status_impact = NONE`; canonical status remains `Structured / Tier B`, and Wave 55 replicate/temporal acquisition remains the independent topic controller.
 
 ## Key Files
 

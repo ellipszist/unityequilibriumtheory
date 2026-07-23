@@ -13,23 +13,23 @@
       "baseline_nu_proxy": 0.020759694293519898,
       "claim_boundary": "A blocked gate means the current temperature/window/estimator does not expose critical correlation growth.",
       "required_condition": "spatial xi proxy grows toward Tc with xi_near/xi_far >= 1.5 and positive nu proxy",
-      "spatial_nu_proxy": 0.032381943972322795,
-      "spatial_xi_ratio_near_over_far": 1.0667839937584696,
+      "spatial_nu_proxy": 0.0323817629848926,
+      "spatial_xi_ratio_near_over_far": 1.0667847627860414,
       "status": "BLOCKED"
     },
     "estimator_adequacy_gate": {
       "nu_3d_ising_reference": 0.63,
       "required_condition": "correlation-length proxy must be monotonic enough and near the 3D Ising nu benchmark before beta claims are promoted",
-      "spatial_nu_proxy": 0.032381943972322795,
-      "spatial_nu_r_squared": 0.8028593393633822,
+      "spatial_nu_proxy": 0.0323817629848926,
+      "spatial_nu_r_squared": 0.8028438008842117,
       "status": "BLOCKED"
     },
     "operator_separation_gate": {
       "beta_3d_ising_reference": 0.3265,
       "required_condition": "spatial lane must shift beta toward 3D Ising and separate its xi proxy from baseline",
-      "spatial_beta": 0.5081333816628599,
-      "spatial_minus_ising_abs": 0.18163338166285992,
-      "spatial_nu_minus_baseline_nu_abs": 0.011622249678802897,
+      "spatial_beta": 0.5081838309557617,
+      "spatial_minus_ising_abs": 0.18168383095576168,
+      "spatial_nu_minus_baseline_nu_abs": 0.011622068691372701,
       "status": "BLOCKED"
     }
   },
@@ -37,7 +37,7 @@
     {
       "path": "docs/core/uet_master_equation.py",
       "role": "core candidate operator implementation",
-      "sha256": "4fff36213153cbae0a86fa936c8e904d40bd4007e6c654425af1a70ea5685072"
+      "sha256": "ef3acb139bc4d4768f92c5fe97b61c0837a0b25d31cde77306293953f28c3414"
     }
   ],
   "limitations": [
@@ -87,22 +87,22 @@
       },
       "spatial_coupled_v1": {
         "beta": {
-          "exponent": 0.5081333816628599,
-          "intercept": 0.012302388598164127,
-          "p_value": 9.46490463035213e-11,
-          "r_squared": 0.9993284903223745,
-          "slope": 0.5081333816628599,
-          "stderr": 0.005377421818245194
+          "exponent": 0.5081838309557617,
+          "intercept": 0.012365261011582085,
+          "p_value": 9.490150422403117e-11,
+          "r_squared": 0.9993278938620749,
+          "slope": 0.5081838309557617,
+          "stderr": 0.005380345235219621
         },
         "nu_proxy": {
-          "exponent": 0.032381943972322795,
-          "intercept": -0.24567240151630507,
-          "p_value": 0.0025956112301661802,
-          "r_squared": 0.8028593393633822,
-          "slope": -0.032381943972322795,
-          "stderr": 0.006550819962069965
+          "exponent": 0.0323817629848926,
+          "intercept": -0.2456688931836376,
+          "p_value": 0.00259624313081511,
+          "r_squared": 0.8028438008842117,
+          "slope": -0.0323817629848926,
+          "stderr": 0.006551104902510258
         },
-        "xi_ratio_near_over_far": 1.0667839937584696
+        "xi_ratio_near_over_far": 1.0667847627860414
       }
     },
     "stats_csv": "Result/gl_correlation_length_diagnostics_stats.csv"
@@ -128,7 +128,7 @@
   },
   "schema_version": "1.0",
   "status": "WARN",
-  "timestamp_utc": "2026-06-26T17:57:27.995529+00:00",
+  "timestamp_utc": "2026-07-13T12:49:52.742128+00:00",
   "topic": "0.11_Phase_Transitions",
   "wave": "Wave 7 correlation-length estimator diagnostic"
 }

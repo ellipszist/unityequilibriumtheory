@@ -153,7 +153,7 @@ Then choose the next standard by task.
 ### If the task is topic building or refactoring
 
 1. [`docs/topics/For Work/02_Project_Workflow_and_Lifecycle.md`](./docs/topics/For%20Work/02_Project_Workflow_and_Lifecycle.md)
-2. [`docs/topics/For Work/10_Topic_Architecture_5x4.md`](./docs/topics/For%20Work/10_Topic_Architecture_5x4.md)
+2. [`docs/topics/For Work/10_Topic_Architecture_5x5(+1).md`](./docs/topics/For%20Work/10_Topic_Architecture_5x5(+1).md)
 3. the relevant standards in `11-18`
 
 ### If the task is multi-wave hardening or progress reconstruction
@@ -356,6 +356,67 @@ Suggested commit cadence:
 3. stage only the intended files
 4. commit before starting the next distinct chunk
 
+### Repo work ledger and push checkpoints
+
+Use the repo work ledger for every major UET workspace, not only research. The
+ledger lives at `WORK_LEDGER/` because it records the operating history of the
+whole repository.
+
+Before starting a substantial section of work, classify it with
+`WORK_LEDGER/AREAS.md`. Common areas include:
+
+- `research-core` for numbered research topics under `docs/topics/`
+- `research-standards` for `docs/topics/For Work/` and research operating rules
+- `theory-history` for theory notes and archives under `uet_history/`
+- `book-writing` for long-form book or publishable narrative work
+- `thai-policy` for proposals under `thailand_proposals/`
+- `services-tools` for services, experiments, MCP, GraphQL, or automation tools
+- `repo-ops` for GitHub Actions, manifests, repository hygiene, and agent rules
+- `raw-private` for local-only source material that may be unsafe to publish
+
+Write one daily ledger file under `WORK_LEDGER/YYYY/`, such as
+`WORK_LEDGER/2026/2026-07-04.md`. The ledger is not a replacement for topic
+`UPDATE_LOG.md`; it is the repo-level trace that shows what moved that day and
+what still needs a commit, push, or PR.
+
+Add one ledger entry after each completed section of work. A section can be a
+research pass, theory/book drafting pass, history migration, policy proposal
+revision, service/tool change, documentation repair, result artifact review, or
+any coherent batch that a future reviewer should be able to reconstruct without
+reading the whole diff first.
+
+Each entry should record:
+
+- timestamp or short section label
+- area id from `WORK_LEDGER/AREAS.md`
+- workspace or topic touched
+- files or artifact groups changed
+- verifier, audit, or review actually run, if any
+- public-safety status: `safe`, `partial`, `private`, or `blocked`
+- what remains uncommitted, private, or unsafe to publish
+- next commit, push, PR, or manifest action
+
+Do not let ledger entries become another place for vague progress claims. Keep
+them short, factual, and tied to actual files or artifacts.
+
+Checkpoint rule:
+
+- if 10 ledger entries exist for the current unpushed work, stop expanding scope
+- inspect `git status` and stage only the intended files
+- commit the safe coherent unit
+- push the branch the same day whenever network and repository policy allow it
+- if the work is not ready for `main`, open or update a draft PR instead of
+  leaving the branch local-only
+- if files are unsafe to publish, commit a manifest or ledger note that names the
+  excluded class without publishing the raw/private content
+
+Do not start an eleventh ledger entry until the checkpoint decision is made. If
+a push is blocked, record the blocker and the exact next action in the daily
+ledger before continuing.
+
+Legacy location note: `docs/UET_Documentation_Details/WORK_LOG/` should point to
+`WORK_LEDGER/` instead of becoming a second competing log location.
+
 For multi-wave hardening, a good unit is:
 
 1. one blocker narrowed
@@ -396,7 +457,7 @@ required to explain the same hardening wave.
 - AI-generated wording needs review: open
   [`03_AI_Usage_and_Governance.md`](./docs/topics/For%20Work/03_AI_Usage_and_Governance.md)
 - Topic structure is messy: open
-  [`10_Topic_Architecture_5x4.md`](./docs/topics/For%20Work/10_Topic_Architecture_5x4.md)
+  [`10_Topic_Architecture_5x5(+1).md`](./docs/topics/For%20Work/10_Topic_Architecture_5x5(+1).md)
 - Data provenance is weak: open
   [`12_Data_Standard.md`](./docs/topics/For%20Work/12_Data_Standard.md)
 - Result artifacts are unclear: open

@@ -1,0 +1,30 @@
+FA616000105.Q	Finance companies; gross saving including foreign earnings retained abroad and CCAdj less net capital transfers paid	Line 1	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA615013005.Q	Finance companies; gross fixed investment, nonresidential structures, equipment, and intellectual property products excluding securitized equipment 	Line 2	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA614090005.Q	Finance companies; total financial assets	Line 3	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA613020003.Q	Finance companies; checkable deposits and currency; asset	Line 4	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA613030003.Q	Finance companies; total time and savings deposits; asset	Line 5	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA613063003.Q	Finance companies; corporate and foreign bonds; asset	Line 6	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA614035005.Q	Finance companies; loans; asset	Line 7	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA613066005.Q	Finance companies; consumer credit; asset	Line 8	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA613065000.Q	Finance companies; total mortgages; asset	Line 9	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA613069505.Q	Finance companies; nonfinancial business loans, including Paycheck Protection Program loans; asset	Line 10	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA613092103.Q	Finance companies; U.S. direct investment abroad: equity (market value)	Line 11	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA613092403.Q	Finance companies; equity in FHLB; asset	Line 12	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA613092305.Q	Finance companies; U.S. direct investment abroad: intercompany debt (market value)	Line 13	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA613090005.Q	Finance companies; total miscellaneous assets	Line 14	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA614194005.Q	Finance companies; total liabilities and equity	Line 15	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA614190005.Q	Finance companies; total liabilities 	Line 16	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA614122005.Q	Finance companies; debt securities; liability	Line 17	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA613169100.Q	Finance companies; commercial paper; liability	Line 18	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA613163005.Q	Finance companies; corporate and foreign bonds; liability	Line 19	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA614141005.Q	Finance companies; short-term loans; liability	Line 20	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA613168005.Q	Finance companies; depository institution loans n.e.c., including loans through the Paycheck Protection Program Liquidity Facility (PPPLF); liability	Line 21	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA613169005.Q	Finance companies; other loans and advances; liability	Line 22	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA613178005.Q	Finance companies; total taxes payable; liability	Line 23	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA613192305.Q	Finance companies; foreign direct investment in U.S.: intercompany debt; liability (market value)	Line 24	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA613190005.Q	Finance companies; total miscellaneous liabilities	Line 25	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA613194703.Q	Finance companies; other investment by parent companies; liability	Line 26	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA613193005.Q	Finance companies; unidentified miscellaneous liabilities	Line 27	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA613192103.Q	Finance companies; foreign direct investment in U.S.: equity; liability (market value)	Line 28	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA617005005.Q	Finance companies; sector discrepancy	Line 29	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA613066303.Q	Finance companies; consumer leases; asset	Line 30	S125s2.1.t Finance companies	Millions of dollars; transactions at a seasonally adjusted annual rate

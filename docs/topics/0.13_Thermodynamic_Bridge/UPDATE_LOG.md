@@ -656,3 +656,14 @@ Use this log when `0.13` changes in a way that narrows a provenance blocker, add
 - Still open: repair or replace the causal discretization/kernel under the unchanged cone gate; acquire a licensed numeric source package with locator, units, preprocessing, uncertainty, and hashes; define the dimensional observable map before any fit.
 - Claim impact: no upgrade. Status remains `SIMULATION_ONLY / FAIL`; no external validation, thermodynamic derivation, second-sound prediction, or Landauer derivation is claimed.
 - Workflow linkage: Wave 4 of the matter-space research plan; the main `0.13` verification artifact and Landauer controlling blocker were intentionally not rerun or changed.
+
+### 2026-07-22 - Core thermodynamic constraint dependency gate
+
+- Scope: expose exactly which Topic `0.13` results the core matter-space/GR program may inherit without converting thermodynamic constraints into a UET derivation.
+- Added or changed: dependency contract, deterministic gate generator, machine-readable artifact, and artifact-boundary tests; synchronized `README.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, and the canonical topic summary.
+- Verified with: `pytest docs/core/test/test_core_thermodynamic_topic_0_13_constraint.py -q` (`12 passed`) plus direct JSON/schema and scientific-input identity checks.
+- Result: the gate is `BLOCKED / THERMODYNAMIC_CONSTRAINT_EXPORTS_AVAILABLE_CORE_CLOSURE_NOT_DERIVED`; only the Landauer lower bound and standard thermodynamic/gravity identities export as class-C constraints, while Cattaneo remains simulation-only.
+- Controlling blocker: `topic_0_13_constraint_only_eos_transport_entropy_bridge_missing`.
+- Preserved state: the main foundation remains `FOUNDATION_WARN`, Topic `0.13` remains `Draft / B`, the four Berut/Jun/Hong/Peterson row controllers are unchanged, and the failed thermal-pilot gates remain visible.
+- Still open: non-circular bridge derivation, derived `beta`, charge EOS, covariant transport, entropy current and dissipative-Bianchi closure, dimensional `Phi/R` observable mapping, physical causal repair, and external numeric heat-transport evidence.
+- Claim impact: none. The packet is a dependency boundary, not validation or status promotion.

@@ -156,3 +156,9 @@ thailand_proposals/**/*.webp
 /uet_history/**/ch_drafts/
 /uet_history/**/raw/
 /uet_history/**/Raw/
+# Local-only path drift and generated outputs.
+/docs/topics/For_Work/
+docs/topics/**/Result/_Logs/
+/thailand_proposals/**/raw/
+/thailand_proposals/**/Raw/
+/.playwright-cli/

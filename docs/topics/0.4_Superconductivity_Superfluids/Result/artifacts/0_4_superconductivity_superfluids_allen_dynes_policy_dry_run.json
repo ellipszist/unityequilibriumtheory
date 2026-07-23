@@ -19,11 +19,11 @@
   "inputs": {
     "input_table": {
       "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\allen_dynes_source_labeled_inputs.json",
-      "sha256": "46c6eb8e0e1eb4513cc2c80edf25b53ffd6227e7e25e502776f4d5ddcc7ea531"
+      "sha256": "90c1fa7212a184673a694fbe4d0e7e3491d9243481fa8fe81da13b355fd22fe4"
     },
     "policy_request": {
       "path": "docs\\data\\external\\condensed_matter\\superconductivity\\row_resolution_targets\\nb3sn_physrevb_27_1568_unified_non_mirrored_policy_request_20260515.json",
-      "sha256": "b669e1d372b5a72ed21400a21b0757e08344956f473fa055f18f1e570a72d1d3"
+      "sha256": "31cc2b0efd094f461069c0aa25e5f7aa60f52b12519b79c3d78860b499b1ff28"
     },
     "transition_checklist": {
       "allowed_acceptance_values": [
@@ -31,7 +31,7 @@
         "accepted_for_topic_handoff_and_allen_dynes_strict_gate"
       ],
       "path": "docs\\data\\external\\condensed_matter\\superconductivity\\row_resolution_targets\\nb3sn_allen_dynes_policy_transition_checklist_20260515.json",
-      "sha256": "af09712d7f1c62ac7e336aa5ea61a01e9cc6a7c52cd3ef89a07884aa493fe9a2"
+      "sha256": "ccd6a28cbfe7d63dce7973458601d01fb491d02566758d015428439cc15cb839"
     }
   },
   "interpretation": "This dry run verifies that the policy-aware strict-gate logic would release the Nb3Sn smoke-test rows if the policy decision were accepted. It is not the current model gate.",
@@ -88,7 +88,7 @@
   ],
   "run_status": "PASS",
   "schema_version": "1.0",
-  "timestamp_utc": "2026-05-15T16:20:17.250407+00:00",
+  "timestamp_utc": "2026-07-13T13:19:21.691507+00:00",
   "topic": "0.4_Superconductivity_Superfluids",
   "verifier_branch": "Allen-Dynes policy-release dry run"
 }

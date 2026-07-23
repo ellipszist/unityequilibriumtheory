@@ -81,3 +81,31 @@
   - Treat `thermodynamic_claim_scope_gate` as the artifact export controller for integration topics and dashboards.
   - Do not upgrade claim language to "solved", "verified UET", or "exact bridge" until source-locked external data, uncertainty propagation, and cross-topic dependency proof are complete.
 
+## Core Thermodynamic Constraint Gate
+
+Run:
+
+```powershell
+.venv\Scripts\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Core_Thermodynamic_Constraint_Gate.py
+```
+
+Artifact:
+
+- `Result/artifacts/0_13_core_thermodynamic_constraint_gate.json`
+
+Required interpretation:
+
+- `foundation_constraint_export_gate`: only the Landauer lower bound and standard thermodynamic/gravity identities may pass as class-C constraints.
+- `landauer_coefficient_non_derivation_gate`: Landauer must remain an imported bound and must not be used to derive `beta` or core transport coefficients.
+- `cattaneo_simulation_control_gate`: the Cattaneo result must remain explicitly simulation-only and non-external.
+- `trace_phi_observable_separation_gate`: normalized `Phi` and `R` must not be relabeled as thermal observables or feedback without a dimensional map.
+- `row_controller_preservation_gate`: the Berut, Jun, Hong, and Peterson source-row blockers must remain unchanged by this dependency packet.
+- `uet_bridge_derivation_gate`: remains `BLOCKED` until a non-circular derivation and proxy-to-SI mapping exist.
+- `thermal_pilot_physical_gate`: remains `BLOCKED` while pre-arrival leakage or external-source readiness fails.
+- `core_eos_transport_entropy_gate`: remains `BLOCKED` until charge EOS, covariant transport, entropy current, and dissipative-Bianchi completion are derived.
+- `topic_promotion_gate`: remains `BLOCKED`; constraint exports and synthetic controls cannot promote the topic tier.
+
+Current controlling blocker:
+
+- `topic_0_13_constraint_only_eos_transport_entropy_bridge_missing`
+

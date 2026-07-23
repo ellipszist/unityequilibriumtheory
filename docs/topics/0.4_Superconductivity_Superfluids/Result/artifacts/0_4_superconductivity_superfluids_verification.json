@@ -23,7 +23,7 @@
   "branch_claim_gate": {
     "claim_boundary": "This gate cannot raise the topic above the current baseline-diagnostic status while the raw McMillan artifact remains FAIL.",
     "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\branch_claim_gate.json",
-    "sha256": "335c9f9a359d9cff9d1b4bacde57f7c07cfd54bdd1638391090f543fec25a1a3",
+    "sha256": "cb3dddf86149f84761f178d56119fb613a1617cf24dcf234f6b27e22fb370c6a",
     "summary": {
       "accepted_now": 2,
       "allen_dynes_branch_gate": "PASS",
@@ -48,7 +48,7 @@
   "evidence_lanes": {
     "allen_dynes_nb3sn_smoke_test": {
       "artifact_path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Result\\artifacts\\0_4_superconductivity_superfluids_allen_dynes_verification.json",
-      "artifact_sha256": "72427301b7729ce7f4ab1b8fec7522818d02e8f42bfbe18f2a95bef4be03f992",
+      "artifact_sha256": "10cd6ed975f3ab2e8222b5502c08785e833636dee1182aca4d4957bba25374fc",
       "claim_boundary": "This PASS, when present, is limited to the Nb3Sn Allen-Dynes smoke-test rows. It does not change the raw McMillan artifact or promote the full superconductivity topic.",
       "claim_class": "source-labeled branch smoke test",
       "lane_role": "separate branch gate",
@@ -2625,7 +2625,7 @@
     "average_relative_error_percent_max": 20.0,
     "per_material_relative_error_percent_max": 20.0
   },
-  "timestamp_utc": "2026-06-19T17:35:22.956530+00:00",
+  "timestamp_utc": "2026-07-13T13:19:23.637013+00:00",
   "topic": "0.4_Superconductivity_Superfluids",
   "type_summary": [
     {

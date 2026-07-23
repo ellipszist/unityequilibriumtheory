@@ -1,6 +1,6 @@
 {
   "claim_boundary": "This manifest records exact TeX formula fragments from localized source archives. It does not accept a conserved-order estimator policy, UET normalization mapping, finite-size admissibility rule, exponent result, RG closure, or universality claim.",
-  "created_utc": "2026-07-10T15:23:27.057095+00:00",
+  "created_utc": "2026-07-13T12:56:52.816376+00:00",
   "formula_fragment_decision": {
     "decision": "tex_formula_fragments_extracted_estimator_policy_open",
     "next_controller": "uet_normalization_mapping_and_estimator_policy_acceptance",

@@ -1,0 +1,50 @@
+FU706000105.Q	Private depository institutions; gross saving including foreign earnings retained abroad less net capital transfers paid	Line 1	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU705013005.Q	Private depository institutions; gross fixed investment, nonresidential structures, equipment, and intellectual property products	Line 2	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU705000005.Q	Private depository institutions; net lending (+) or borrowing (-) (financial account)	Line 3	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU704090005.Q	Private depository institutions; total financial assets	Line 4	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU704010005.Q	Private depository institutions; interbank transactions; asset	Line 5	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703025005.Q	Private depository institutions; vault cash; asset	Line 6	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU403197033.Q	Government-sponsored enterprises; U.S.-chartered depository institutions deposits at Federal Home Loan Banks; liability	Line 7	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU704022005.Q	Private depository institutions; debt securities; asset	Line 8	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703069175.Q	Private depository institutions; open market paper; asset	Line 9	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703061105.Q	Private depository institutions; Treasury securities; asset	Line 10	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703061705.Q	Private depository institutions; agency- and GSE-backed securities; asset	Line 11	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703062005.Q	Private depository institutions; municipal securities; asset	Line 12	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703063005.Q	Private depository institutions; corporate and foreign bonds; asset	Line 13	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU704035005.Q	Private depository institutions; total loans; asset	Line 14	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU702050005.Q	Private depository institutions; federal funds and security repurchase agreements; asset	Line 15	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703068005.Q	Private depository institutions; depository institution loans n.e.c.; asset 	Line 16	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703066005.Q	Private depository institutions; consumer credit; asset	Line 17	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703065005.Q	Private depository institutions; total mortgages; asset	Line 18	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703069005.Q	Private depository institutions; other loans and advances; asset	Line 19	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703064105.Q	Private depository institutions; corporate equities; asset	Line 20	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU763092100.Q	U.S.-chartered depository institutions; U.S. direct investment abroad: equity (market value)	Line 21	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703094905.Q	Private depository institutions; miscellaneous other equity; asset	Line 22	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703064205.Q	Private depository institutions; mutual fund shares; asset	Line 23	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU763040005.Q	U.S.-chartered depository institutions; life insurance reserves; asset       	Line 24	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU763092305.Q	U.S.-chartered depository institutions; U.S. direct investment abroad: intercompany debt (market value)	Line 25	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703090005.Q	Private depository institutions; miscellaneous assets	Line 26	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU704194005.Q	Private depository institutions; total liabilities and equity	Line 27	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU704190005.Q	Private depository institutions; total liabilities	Line 28	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU704110005.Q	Private depository institutions; interbank transactions; liability	Line 29	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703127005.Q	Private depository institutions; checkable deposits; liability	Line 30	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703130005.Q	Private depository institutions; total time and savings deposits; liability	Line 31	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU704122005.Q	Private depository institutions; debt securities; liability	Line 32	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703169175.Q	Private depository institutions; open market paper; liability	Line 33	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU763163005.Q	U.S.-chartered depository institutions; corporate and foreign bonds; liability	Line 34	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU704141005.Q	Private depository institutions; short-term loans; liability	Line 35	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU702150005.Q	Private depository institutions; federal funds and security repurchase agreements; liability	Line 36	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703169005.Q	Private depository institutions; other loans and advances; liability	Line 37	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU763178000.Q	U.S.-chartered depository institutions; total taxes payable (net); liability	Line 38	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU753192305.Q	Foreign banking offices in the U.S.; foreign direct investment in U.S.: intercompany debt; liability (market value)	Line 39	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703190005.Q	Private depository institutions; miscellaneous liabilities	Line 40	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU763194705.Q	U.S.-chartered depository institutions; other investment by holding company parent; liability	Line 41	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703193005.Q	Private depository institutions; unidentified miscellaneous liabilities	Line 42	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703181105.Q	Private depository institutions; equity and investment fund shares excluding mutual fund shares and money market fund shares; liability (IMA)	Line 43	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU763164105.Q	U.S.-chartered depository institutions; corporate equities; liability	Line 44	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU753192103.Q	Foreign banking offices in the U.S.; foreign direct investment in U.S.: equity; liability (market value)	Line 45	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU763194603.Q	U.S.-chartered depository institutions; equity investment by parent holding company; liability	Line 46	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU753194503.Q	Foreign banking offices in the U.S.; equity investment by funding corporations; liability	Line 47	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU707005005.Q	Private depository institutions; sector discrepancy	Line 48	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU763066303.Q	U.S.-chartered depository institutions; leases to households; asset (Call Report; consolidated)	Line 49	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted
+FU703139105.Q	Private depository institutions; uninsured checkable and time and savings deposits; liability	Line 50	S122.t Private depository institutions	Millions of dollars; transactions, not seasonally adjusted

@@ -1,0 +1,32 @@
+FU506006405.Q	Other financial business; undistributed corporate profits; net saving	Line 1	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU504090005.Q	Other financial business; total financial assets	Line 2	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503020005.Q	Other financial business; checkable deposits and currency; asset	Line 3	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU504022005.Q	Other financial business; debt securities; asset	Line 4	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503069105.Q	Other financial business; commercial paper; asset	Line 5	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503061123.Q	Other financial business; Treasury securities held by central clearing counterparties; asset	Line 6	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503063005.Q	Other financial business; corporate and foreign bonds, including financial stabilization programs; asset	Line 7	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503062003.Q	Other financial business; municipal securities held by COVID-19 Municipal Liquidity Facility (MLF); asset	Line 8	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU504041005.Q	Other financial business; short-term loans; asset	Line 9	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU502051005.Q	Other financial business; security repurchase agreements; asset	Line 10	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503069005.Q	Other financial business; other loans and advances; asset	Line 11	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503064105.Q	Other financial business; corporate equities; asset	Line 12	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503034005.Q	Other financial business; money market fund shares; asset	Line 13	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503094505.Q	Other financial business; equity investment in own subsidiaries; asset	Line 14	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503093023.Q	Other financial business; unidentified miscellaneous assets of central clearing counterparties	Line 15	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU504194005.Q	Other financial business; total liabilities and equity	Line 16	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU504190005.Q	Other financial business; total liabilities	Line 17	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU504122005.Q	Other financial business; debt securities; liability	Line 18	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503169105.Q	Other financial business; commercial paper; liability	Line 19	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503163003.Q	Other financial business; corporate and foreign bonds where the proceeds are down-streamed to broker-dealer subsidiaries by investment banks that are holding-company parents; liability	Line 20	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU504141005.Q	Other financial business; short-term loans; liability	Line 21	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU713068505.Q	Central bank; depository institution loans n.e.c. to other financial business; asset	Line 22	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503169005.Q	Other financial business; other loans and advances; liability	Line 23	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503192305.Q	Other financial business; foreign direct investment in U.S.: intercompany debt; liability (market value)	Line 24	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503190005.Q	Other financial business; total miscellaneous liabilities	Line 25	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU663070675.Q	Security brokers and dealers; securities borrowed (net); asset	Line 26	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503193005.Q	Other financial business; unidentified miscellaneous liabilities (net)	Line 27	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503181105.Q	Other financial business; equity and investment fund shares excluding mutual fund shares and money market fund shares; liability	Line 28	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503164105.Q	Other financial business; corporate equities; liability	Line 29	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503192103.Q	Other financial business; foreign direct investment in U.S.: equity; liability (market value)	Line 30	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503194305.Q	Other financial business; equity investment in funds associated with PPIP; liability	Line 31	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted
+FU503194205.Q	Other financial business; Exchange Stabilization Fund Economic Recovery Programs Equity Investment in Federal Reserve credit facility LLCs; liability	Line 32	S127.2.t Other financial business	Millions of dollars; transactions, not seasonally adjusted

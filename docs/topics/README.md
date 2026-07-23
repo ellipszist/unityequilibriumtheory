@@ -62,15 +62,15 @@ These topics determine the current scientific credibility of the repo.
 | [0.8](./0.8_Muon_g2_Anomaly/) | `Draft` | `B` | benchmark-oriented topic that still lacks manifest-backed verification framing |
 | [0.9](./0.9_Quantum_Nonlocality/) | `Draft` | `B` | has local materials, but not a standardized evidence contract |
 | [0.10](./0.10_Fluid_Dynamics_Chaos/) | `Structured` | `B` | structured package exists and latest run passed, but repeated-run speed-threshold stability is not yet demonstrated |
-| [0.11](./0.11_Phase_Transitions/) | `Draft` | `B` | Wave 55 selects replicate/temporal acquisition; execution, estimator acceptance, and exponent rerun remain blocked |
+| [0.11](./0.11_Phase_Transitions/) | `Structured` | `B` | Wave 55 replicate/temporal acquisition remains controlling; core Wave 9 adds only conditional charge-coordinate compatibility, with Topic C identity, EOS, transport, estimator acceptance, and exponent rerun blocked |
 | [0.12](./0.12_Vacuum_Energy_Casimir/) | `Draft` | `B` | topic has research assets, yet audit-grade verification remains absent |
-| [0.13](./0.13_Thermodynamic_Bridge/) | `Draft` | `B` | concept and data references exist, but data reality still looks partly manual |
+| [0.13](./0.13_Thermodynamic_Bridge/) | `Draft` | `B` | foundation remains WARN; only class-C lower-bound/standard-identity constraints export, while source rows, UET bridge, EOS/transport/entropy closure, and external heat-transport validation remain blocked |
 | [0.14](./0.14_Complex_Systems/) | `Draft` | `B` | substantial local material exists, but standards migration has not happened |
 | [0.15](./0.15_Cluster_Dynamics/) | `Draft` | `B` | real-source references are visible, but verification specs are missing |
 | [0.16](./0.16_Heavy_Nuclei/) | `Draft` | `B` | technically active topic, not yet packaged for auditability |
 | [0.17](./0.17_Mass_Generation/) | `Draft` | `B` | evidence exists, but claim wording is stronger than the current standards package |
 | [0.18](./0.18_Mathnicry/) | `Draft` | `B` | proof-focused foldering exists, but the proof boundary is undocumented |
-| [0.19](./0.19_Gravity_GR/) | `Draft` | `B` | research material exists, but no current standards-grade method package |
+| [0.19](./0.19_Gravity_GR/) | `Draft` | `B` | CODATA checkpoint remains primary; core candidate GR program adds an exact response-null and bounded local covariant infrastructure, while physical GR benchmarks and completion remain blocked |
 | [0.20](./0.20_Atomic_Physics/) | `Draft` | `B` | code/data exist, but verification and limitations are not normalized |
 | [0.21](./0.21_Yang_Mills_Mass_Gap/) | `Structured` | `A` | strongest math-facing standards candidate, but public wording still needs restraint |
 | [0.22](./0.22_Biophysics_Origin_of_Life/) | `Draft` | `B` | active topic with manual-or-placeholder data signals still present |

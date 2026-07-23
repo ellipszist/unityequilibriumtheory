@@ -1,6 +1,6 @@
 {
   "claim_boundary": "This manifest maps extracted source formulas to candidate estimator-policy lanes. It accepts no estimator policy, UET normalization mapping, exponent result, RG closure, material validation, universality shift, or Tier A upgrade.",
-  "created_utc": "2026-07-10T15:23:36.909457+00:00",
+  "created_utc": "2026-07-13T12:55:24.645575+00:00",
   "manifest_id": "structure_factor_estimator_normalization_map_wave46",
   "mapping_decision": {
     "accepted_policy_count": 0,

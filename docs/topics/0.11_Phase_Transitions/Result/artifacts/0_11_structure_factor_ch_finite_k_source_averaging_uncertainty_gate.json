@@ -84,14 +84,14 @@
       "exists": true,
       "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_ch_finite_k_shape_only_normalization_policy_gate.json",
       "role": "Wave 53 shape-only normalization policy gate",
-      "sha256": "f9ee114b896356600863e7d442c8feef92cef1c7bc313e87e01677e9e2bef51a",
+      "sha256": "a953b662169c5f9fde241fc33e09e8238cc6b676c3b3c83955a8c5b926fa13cc",
       "status": "WARN"
     },
     {
       "exists": true,
       "path": "docs/topics/0.11_Phase_Transitions/Data/03_Research/structure_factor_ch_finite_k_shape_only_normalization_policy.json",
       "role": "Wave 53 shape-only normalization policy manifest",
-      "sha256": "5899ecefe071fcafbb10c38a3ac6cd421ef85dac3f6a19b454e009b13668bbe8"
+      "sha256": "58b9cf51318132fa3e2d211021358642b6b5060f952f000e5518bef994eae092"
     }
   ],
   "limitations": [
@@ -153,7 +153,7 @@
   },
   "schema_version": "1.0",
   "status": "WARN",
-  "timestamp_utc": "2026-07-10T15:27:26.002156+00:00",
+  "timestamp_utc": "2026-07-13T12:54:09.928890+00:00",
   "topic": "0.11_Phase_Transitions",
   "uncertainty_policy": {
     "claim_bearing_replicate_policy": {

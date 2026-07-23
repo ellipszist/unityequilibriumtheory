@@ -159,6 +159,16 @@ Current uncertainty note: the propagated `1 sigma` interval for the topic-summar
 - Numerical disclosure: the locked `dt=2.5e-4` run failed the per-step ledger threshold; a post-diagnostic amendment reduced only `dt` to `5e-5`, retained the original failure, and passed the unchanged ledger threshold. This is a numerical repair, not a blind confirmation.
 - Claim boundary: `Phi` and `R` remain normalized internal variables, the trace has no backreaction, no map to measured temperature/TTG signal is closed, and Landauer remains an external lower-bound constraint only.
 
+## Core thermodynamic constraint export (dependency-only)
+
+- Contract: [CORE_THERMODYNAMIC_CONSTRAINT_SPEC.md](./CORE_THERMODYNAMIC_CONSTRAINT_SPEC.md)
+- Reproducible gate: [Research_Core_Thermodynamic_Constraint_Gate.py](./Code/03_Research/Research_Core_Thermodynamic_Constraint_Gate.py)
+- Machine-readable result: [0_13_core_thermodynamic_constraint_gate.json](./Result/artifacts/0_13_core_thermodynamic_constraint_gate.json)
+- Current result: `BLOCKED / THERMODYNAMIC_CONSTRAINT_EXPORTS_AVAILABLE_CORE_CLOSURE_NOT_DERIVED`.
+- Allowed inheritance: the Landauer lower bound and standard thermodynamic/gravity identities may be exported only as class-C constraints; the Cattaneo lane remains a synthetic control.
+- Still blocked: a non-circular UET bridge, a derived `beta`, charge equation of state, covariant transport and entropy-current closure, a dimensional map from `Phi` or `R` to measured thermal observables, and external heat-transport validation.
+- Status effect: none. Topic `0.13` remains `Draft / B`, its four source-row controllers remain unchanged, and this packet does not promote the foundation `WARN` state.
+
 ## Key Files
 
 - [Engine_Thermodynamics.py](./Code/01_Engine/Engine_Thermodynamics.py): microstate and thermodynamic helper engine.

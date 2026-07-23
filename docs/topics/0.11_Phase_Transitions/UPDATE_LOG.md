@@ -1314,3 +1314,29 @@
 **Current topic-level status after wave:**
 - Topic 0.11 remains `Draft / Tier B`. The pilot has `topic_status_impact = NONE` and supports only an internal normalized matter-space diagnostic.
 - No structure-factor estimator, critical exponent, universality, RG, material, spacetime, external-validation, or solved-phase-transition claim is upgraded.
+
+---
+
+## 2026-07-22 - Noether-Phase-Field Dependency Gate (core Wave 9 propagation)
+
+**What changed:**
+- Added `NOETHER_PHASE_FIELD_DEPENDENCY_SPEC.md`, a deterministic dependency verifier, generated artifact `0_11_noether_phase_field_dependency_gate.json`, and nine regression tests.
+- Connected the core Wave 9 state-coordinate result to Topic 0.11 while keeping the topic field, microscopic O(2) state, matter-space `Phi`, and derived trace `R` distinct.
+- Synced current narrative status to canonical `Structured / Tier B` without rewriting the earlier pilot artifact's historical `Draft` snapshot.
+
+**Which verifier was run:**
+- `.\.venv\Scripts\python.exe docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Noether_Phase_Field_Dependency_Gate.py`
+- `.\.venv\Scripts\python.exe -m pytest docs/core/test/test_noether_phase_field_topic_0_11_dependency.py -q` passed `9/9` tests.
+
+**Which blocker narrowed:**
+- The final coarse signed-charge-density/current to normalized `C/J` affine coordinate layer is accepted as exact at fixed declared scales.
+- Microscopic inversion and coarse-microstate reconstruction are explicitly rejected as many-to-one, and trace/Phi backreaction shortcuts are excluded.
+- The remaining dependency blocker is narrowed to `topic_0_11_signed_noether_charge_eos_transport_matching_missing`.
+
+**Next controlling blocker:**
+- For this dependency lane: declare and source the Topic 0.11 conserved signed-charge identity or reject it, then supply covariant coarse graining, equation-of-state, susceptibility, and transport matching.
+- For Topic 0.11: execute the independent Wave 55 replicate/temporal acquisition plan; `ch_finite_k_replicate_temporal_acquisition_plan_defined_execution_open` remains unchanged.
+
+**Current topic-level status after wave:**
+- Canonical status remains `Structured / Tier B`; `topic_status_impact = NONE` and the dependency artifact remains `BLOCKED`.
+- No estimator, exponent, universality, RG, material, matter-space, GR, global-universe, external-validation, or solved-phase-transition claim is upgraded.

@@ -1,0 +1,37 @@
+FU116300005.Q	Nonfinancial noncorporate business; consumption of fixed capital, structures, equipment, and intellectual property products, current cost basis (gross saving) (NIPA basis)	Line 1	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU116000105.Q	Nonfinancial noncorporate business; gross saving less net capital transfers paid	Line 2	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU116000105.Q	Nonfinancial noncorporate business; gross saving less net capital transfers paid	Line 3	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU115050005.Q	Nonfinancial noncorporate business; total capital expenditures	Line 4	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU115019005.Q	Nonfinancial noncorporate business; gross fixed investment	Line 5	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU115020005.Q	Nonfinancial noncorporate business; inventories 	Line 6	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU115000005.Q	Nonfinancial noncorporate business; net lending (+) or borrowing (-) (financial account)	Line 7	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU114090005.Q	Nonfinancial noncorporate business; total financial assets	Line 8	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU113020005.Q	Nonfinancial noncorporate business; checkable deposits and currency; asset 	Line 9	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU113030003.Q	Nonfinancial noncorporate business; total time and savings deposits; asset	Line 10	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU114022005.Q	Nonfinancial noncorporate business; debt securities; asset	Line 11	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU113061003.Q	Nonfinancial noncorporate business; total U.S. government securities; asset	Line 12	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU113062003.Q	Nonfinancial noncorporate business; municipal securities; asset	Line 13	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU114035005.Q	Nonfinancial noncorporate business; loans; asset	Line 14	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU113066003.Q	Nonfinancial noncorporate business; consumer credit; asset	Line 15	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU113065005.Q	Nonfinancial noncorporate business; total mortgages; asset	Line 16	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU113092405.Q	Nonfinancial noncorporate business; equity in Farm Credit System; asset	Line 17	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU113034003.Q	Nonfinancial noncorporate business; money market fund shares; asset	Line 18	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU113070003.Q	Nonfinancial noncorporate business; trade receivables; asset	Line 19	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU113090005.Q	Nonfinancial noncorporate business; total miscellaneous assets	Line 20	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU113076005.Q	Nonfinancial noncorporate business; insurance receivables due from property-casualty insurance companies; asset 	Line 21	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU113072003.Q	Nonfinancial noncorporate business; Paycheck Protection Program receivables due from federal government; asset	Line 22	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU113090603.Q	Nonfinancial noncorporate business; International Emergency Economic Powers Act tariff refund receivable; asset	Line 23	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU113093005.Q	Nonfinancial noncorporate business; unidentified miscellaneous assets	Line 24	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU114194005.Q	Nonfinancial noncorporate business; total liabilities and equity	Line 25	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU114190005.Q	Nonfinancial noncorporate business; total liabilities 	Line 26	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU114135005.Q	Nonfinancial noncorporate business; total loans; liability	Line 27	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU113168005.Q	Nonfinancial noncorporate business; depository institution loans n.e.c.; liability 	Line 28	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU113165005.Q	Nonfinancial noncorporate business; total mortgages; liability 	Line 29	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU113169005.Q	Nonfinancial noncorporate business; other loans and advances; liability	Line 30	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU113170005.Q	Nonfinancial noncorporate business; trade payables; liability	Line 31	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU113178003.Q	Nonfinancial noncorporate business; taxes payable; liability	Line 32	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU115114305.Q	Nonfinancial noncorporate business; foreign direct investment in U.S. real estate business: intercompany debt; liability (market value)	Line 33	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU113193003.Q	Nonfinancial noncorporate business; unidentified miscellaneous liabilities	Line 34	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU113181115.Q	Nonfinancial noncorporate business; equity and investment fund shares excluding mutual fund shares and money market fund shares; liability	Line 35	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU115114103.Q	Nonfinancial noncorporate business; foreign direct investment in U.S. real estate business: equity; liability (market value)	Line 36	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted
+FU112090205.Q	Nonfinancial noncorporate business; proprietors' equity in noncorporate business	Line 37	S11.2.t Nonfinancial noncorporate business	Millions of dollars; transactions, not seasonally adjusted

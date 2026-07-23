@@ -17,21 +17,21 @@
     },
     "v2_correlation_response_gate": {
       "max_baseline_xi_over_L": 0.07983928481022168,
-      "max_v1_xi_over_L": 0.08126371037974169,
-      "max_v2_xi_over_L": 0.07331298563124387,
+      "max_v1_xi_over_L": 0.08123778484000731,
+      "max_v2_xi_over_L": 0.07331153714932129,
       "required_condition": "v2 should produce connected-correlation growth with xi/L >= 0.20 before stronger finite-size claims",
       "status": "BLOCKED"
     },
     "v2_operator_separation_gate": {
       "required_condition": "v2 should separate from baseline by xi/L >= 0.05 and from v1 by xi/L >= 0.02",
       "status": "BLOCKED",
-      "v2_minus_baseline_xi_over_L": -0.006526299178977804,
-      "v2_minus_v1_xi_over_L": -0.007950724748497812
+      "v2_minus_baseline_xi_over_L": -0.00652774766090039,
+      "v2_minus_v1_xi_over_L": -0.00792624769068602
     },
     "v2_spatial_safety_gate": {
       "interface_activity_norm": 4.033366270143832,
-      "interface_game_force_norm": 0.00839947834229354,
-      "interface_game_force_sum": -1.734723475976807e-18,
+      "interface_game_force_norm": 0.006822496411670226,
+      "interface_game_force_sum": -4.336808689942018e-19,
       "interface_info_source_norm": 0.07130051601569491,
       "interface_memory_contrast_norm": 8.514004395274007,
       "required_condition": "v2 terms must be zero/reduced on uniform, C=0, and I=0 fields while remaining active and conserved at interfaces",
@@ -45,7 +45,7 @@
     },
     "v2_stability_gate": {
       "expected_case_count": 4,
-      "max_abs_c": 0.41003789582927014,
+      "max_abs_c": 0.41002881546231756,
       "required_condition": "all v2 temperature cases must remain finite under the diagnostic run",
       "stable_case_count": 4,
       "status": "PASS"
@@ -55,12 +55,12 @@
     {
       "path": "docs/core/uet_master_equation.py",
       "role": "core v2 candidate operator implementation",
-      "sha256": "548469efd9da9e81efcbc02d74ff2a1c3184dd028c4a0c656e6dc7b413392046"
+      "sha256": "ef3acb139bc4d4768f92c5fe97b61c0837a0b25d31cde77306293953f28c3414"
     },
     {
       "path": "docs/core/uet_parameters.py",
       "role": "candidate coefficient defaults",
-      "sha256": "a4d5243de616857422230ff9cd373a33c5ed072188f3eb521436a1ac2485b6c9"
+      "sha256": "71f5567fa75f5c9c30f37bdc2a5f13fe29d02c48f75a2fe1cae9a7aa6caaa69d"
     }
   ],
   "limitations": [
@@ -92,41 +92,41 @@
       },
       "spatial_coupled_v1": {
         "beta_fit": {
-          "exponent": 0.4990942800925761,
-          "intercept": -0.021559476443036543,
-          "r_squared": 0.997677910638957,
+          "exponent": 0.49980721437506775,
+          "intercept": -0.020252955908589595,
+          "r_squared": 0.9976846019728359,
           "status": "OK",
-          "stderr": 0.01702597066514625
+          "stderr": 0.017025650635349873
         },
-        "max_abs_c": 0.3926409451650019,
-        "max_xi_over_L": 0.08126371037974169,
-        "near_T_xi_over_L": 0.08126371037974169,
+        "max_abs_c": 0.3923995685365843,
+        "max_xi_over_L": 0.08123778484000731,
+        "near_T_xi_over_L": 0.08123778484000731,
         "nu_proxy_fit": {
-          "exponent": -0.046289786854777006,
-          "intercept": -0.30297418706365264,
-          "r_squared": 0.33385993314806295,
+          "exponent": -0.046067872870166435,
+          "intercept": -0.30217925108577076,
+          "r_squared": 0.3320306547712051,
           "status": "OK",
-          "stderr": 0.046234994501476445
+          "stderr": 0.04620322994220848
         },
         "stable_case_count": 4
       },
       "spatial_coupled_v2": {
         "beta_fit": {
-          "exponent": 0.5096547291180157,
-          "intercept": 0.03633689325440604,
-          "r_squared": 0.9977338264698709,
+          "exponent": 0.5096576398985453,
+          "intercept": 0.03634580936580648,
+          "r_squared": 0.997733676098886,
           "status": "OK",
-          "stderr": 0.017175140307228907
+          "stderr": 0.0171758095119408
         },
-        "max_abs_c": 0.41003789582927014,
-        "max_xi_over_L": 0.07331298563124387,
-        "near_T_xi_over_L": 0.07124019473663773,
+        "max_abs_c": 0.41002881546231756,
+        "max_xi_over_L": 0.07331153714932129,
+        "near_T_xi_over_L": 0.07123819130275078,
         "nu_proxy_fit": {
-          "exponent": -0.013414226690941002,
-          "intercept": -0.2016086383207852,
-          "r_squared": 0.1948285600744908,
+          "exponent": -0.01339640413933098,
+          "intercept": -0.20155281087328925,
+          "r_squared": 0.19445495862534135,
           "status": "OK",
-          "stderr": 0.019282729722037102
+          "stderr": 0.01928007176640751
         },
         "stable_case_count": 4
       }
@@ -155,7 +155,7 @@
   },
   "schema_version": "1.0",
   "status": "WARN",
-  "timestamp_utc": "2026-06-26T23:51:41.412000+00:00",
+  "timestamp_utc": "2026-07-13T12:51:13.408780+00:00",
   "topic": "0.11_Phase_Transitions",
   "wave": "Wave 11 spatial_coupled_v2 diagnostic"
 }

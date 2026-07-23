@@ -1,0 +1,57 @@
+FL714090005.Q	Central bank; total financial assets	Line 1	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL714010005.Q	Central bank; interbank transactions with all depository institutions; asset	Line 2	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713022003.Q	Central bank; Federal Reserve float; asset	Line 3	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713068705.Q	Central bank; loans to depository institutions, including AMLF, MMLF, and PPPLF; asset	Line 4	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713068703.Q	Central bank; loans to domestic banks through the discount window; asset	Line 5	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL763069143.Q	U.S.-chartered depository institutions; commercial paper funded by borrowing from the Asset-Backed Commercial Paper Money Market Mutual Fund Liquidity Facility (AMLF) and Money Market Mutual Fund Liquidity Facility (MMLF); asset	Line 6	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713068725.Q	Central bank; loans to depository institutions under the Paycheck Protection Program Liquidity Facility (PPPLF), assets	Line 7	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713068763.Q	Central bank; loans to domestic banks through the Bank Term Funding Program; asset	Line 8	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713068753.Q	Central bank; loans to domestic banks through other credit extensions; asset	Line 9	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713011515.Q	Central bank; other U.S. reserves, currency and deposits; asset	Line 10	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713091103.Q	Central bank; nonofficial foreign currencies (swap lines); asset	Line 11	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713012003.Q	Central bank; coin; asset	Line 12	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713011405.Q	Central bank; reserve position in IMF (net); asset	Line 13	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+LM714022005.Q	Central bank; debt securities; asset	Line 14	S121.s Central bank	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+FL713069603.Q	Central bank; bankers' acceptances; asset	Line 15	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+LM713061103.Q	Central bank; total Treasury securities; asset	Line 16	S121.s Central bank	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+LM713061113.Q	Central bank; Treasury bills; asset	Line 17	S121.s Central bank	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+LM713061125.Q	Central bank; other Treasury securities, excluding Treasury bills; asset	Line 18	S121.s Central bank	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+LM713061705.Q	Central bank; agency- and GSE-backed securities; asset	Line 19	S121.s Central bank	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+LM713061903.Q	Central bank; agency mortgage-backed securities; asset	Line 20	S121.s Central bank	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+LM713061703.Q	Central bank; agency- and GSE-backed securities other than MBS; asset	Line 21	S121.s Central bank	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+FL713011525.Q	Central bank; other U.S. reserves, foreign securities; asset	Line 22	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL714041005.Q	Central bank; short-term loans; asset	Line 23	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL712051005.Q	Central bank; security repurchase agreements, including other claims in official reserves; asset	Line 24	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713068005.Q	Central bank; depository institution loans n.e.c.; asset	Line 25	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713068813.Q	Central bank; depository institution loans n.e.c. to households under Term Asset-Backed Securities Loan Facility (TALF I); asset	Line 26	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713068665.Q	Central bank; loans to brokers and dealers; asset	Line 27	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713068863.Q	Central bank; loans to finance companies under the Paycheck Protection Program Liquidity Facility (PPPLF); asset	Line 28	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713068505.Q	Central bank; depository institution loans n.e.c. to other financial business; asset	Line 29	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713064103.Q	Central bank; corporate equities; asset	Line 30	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713090005.Q	Central bank; total miscellaneous assets	Line 31	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713011203.Q	Central bank; monetary gold certificates; asset	Line 32	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713014003.Q	Central bank; SDR certificates issued by federal government; asset	Line 33	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713093005.Q	Central bank; unidentified miscellaneous assets	Line 34	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL714194005.Q	Central bank; total liabilities and equity	Line 35	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL714190005.Q	Central bank; total liabilities	Line 36	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713113003.Q	Central bank; depository institution reserves, excluding FHLB deposits; liability	Line 37	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713120005.Q	Central bank; checkable deposits and currency; liability	Line 38	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713123005.Q	Central bank; checkable deposits due to the federal government; liability	Line 39	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713123023.Q	Central bank; Treasury cash holdings; liability	Line 40	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713123030.Q	Central bank; deposits in Treasury general deposit account; liability	Line 41	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713123043.Q	Central bank; deposits in Treasury temporary supplementary financing account; liability	Line 42	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713124005.Q	Central bank; checkable deposits due to government-sponsored enterprises, including FHLB deposits; liability	Line 43	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713129005.Q	Central bank; total checkable deposits due to other financial business; liability	Line 44	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713122605.Q	Central bank; checkable deposits due to rest of the world; liability	Line 45	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713125005.Q	Central bank; currency outside banks; liability	Line 46	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL703025005.Q	Private depository institutions; vault cash; asset	Line 47	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL712151003.Q	Central bank; security repurchase agreements; liability	Line 48	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL712151103.Q	Central bank; security repurchase agreements, reverse repurchase agreement operations; liability	Line 49	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL712151115.Q	Central bank; security repurchase agreements, excluding those in the reverse repurchase agreement operations; liability	Line 50	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713193005.Q	Central bank; unidentified miscellaneous liabilities	Line 51	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713164005.Q	Central bank; equity and investment fund shares; liability (SBS)	Line 52	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL313094213.Q	Federal government; Exchange Stabilization Fund Economic Recovery Programs investment in Money Market Mutual Fund Liquidity Facility (MMLF); asset	Line 53	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713164003.Q	Central bank; Federal Reserve bank stock; liability	Line 54	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL714022065.Q	Central bank; debt securities; asset (amortized cost)	Line 55	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713061163.Q	Central bank; Treasury securities; asset (amortized cost)	Line 56	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713061765.Q	Central bank; agency- and GSE-backed securities; asset (amortized cost)	Line 57	S121.s Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted

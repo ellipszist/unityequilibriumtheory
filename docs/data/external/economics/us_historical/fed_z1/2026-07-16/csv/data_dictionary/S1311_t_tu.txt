@@ -1,0 +1,63 @@
+FU316010105.Q	Federal government; current receipts, NIPA basis	Line 1	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU316210001.Q	Federal government; personal current taxes	Line 2	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU316240001.Q	Federal government; taxes on production and imports, receivable (IMA)	Line 3	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU316231001.Q	Federal government; taxes on corporate income (accrual basis)	Line 4	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU316231061.Q	Federal government; taxes from the rest of the world	Line 5	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU316601001.Q	Federal government; contributions for government social insurance received 	Line 6	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU316150105.Q	Federal government; property income (received) 	Line 7	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU316403105.Q	Federal government; other current transfers received	Line 8	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU316402101.Q	Federal government; operating surplus, net	Line 9	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU316900005.Q	Federal government; current expenditures	Line 10	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU316901001.Q	Federal government; consumption expenditures	Line 11	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU316404001.Q	Federal government; social contributions paid 	Line 12	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU316403001.Q	Federal government; other current transfers paid (IMA)	Line 13	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU316130001.Q	Federal government; interest paid (IMA)	Line 14	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU316402001.Q	Federal government; subsidies paid 	Line 15	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU316006005.Q	Federal government; net saving including net capital transfers paid, insurance and pension fund reserves adjustment and contributions for government social insurance for U.S. affiliated areas (NIPA)	Line 16	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU316300001.Q	Federal government; consumption of fixed capital, structures, equipment, and intellectual property products, current cost basis (NIPA basis)	Line 17	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313154015.Q	Federal government; life insurance and pension fund reserves, adjustment to convert NIPA to FOF savings; liability	Line 18	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU315440095.Q	Federal government; net capital transfers paid excluding payments under the financial stabilization program	Line 19	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU316000105.Q	Federal government; gross saving less net capital transfers paid (other than for financial stabilization program)	Line 20	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU315090005.Q	Federal government; gross investment	Line 21	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU315019001.Q	Federal government; gross fixed investment (NIPA basis)	Line 22	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU315420003.Q	Federal government; acquisition of nonproduced nonfinancial assets (net)	Line 23	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU315000005.Q	Federal government; net lending (+) or borrowing (-) (financial account)	Line 24	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU314090005.Q	Federal government; total financial assets	Line 25	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313011105.Q	Federal government; monetary gold and SDRs; asset	Line 26	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313020005.Q	Federal government; checkable deposits; asset	Line 27	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313030003.Q	Federal government; total time and savings deposits; asset	Line 28	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313030505.Q	Federal government; other deposits; asset	Line 29	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU314022005.Q	Federal government; debt securities; asset	Line 30	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313061703.Q	Federal government; agency- and GSE-backed securities; asset	Line 31	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313063005.Q	Federal government; corporate and foreign bonds; asset	Line 32	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU314035005.Q	Federal government; total loans; asset	Line 33	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313011545.Q	Federal government; other U.S. reserves, other claims (repurchase agreements); asset	Line 34	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313066220.Q	Federal government; consumer credit, student loans; asset	Line 35	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313065005.Q	Federal government; total mortgages; asset	Line 36	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313069005.Q	Federal government; other loans and advances; asset	Line 37	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313064105.Q	Federal government; corporate equities; asset	Line 38	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313081115.Q	Federal government; other equity; asset (IMA)	Line 39	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313070000.Q	Federal government; trade receivables; asset	Line 40	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313078000.Q	Federal government; total taxes receivable; asset	Line 41	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU314190005.Q	Federal government; total liabilities	Line 42	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313111303.Q	Federal government; special drawing rights (SDRs) allocations; liability	Line 43	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313125003.Q	Federal government; Treasury currency; liability	Line 44	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313131003.Q	Federal government; postal savings system deposits; liability	Line 45	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU314122005.Q	Federal government; debt securities; liability	Line 46	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313161105.Q	Federal government; total marketable Treasury securities; liability	Line 47	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313161705.Q	Federal government; budget agency securities; liability	Line 48	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU314135005.Q	Federal government; total loans; liability	Line 49	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313165403.Q	Federal government; multifamily residential mortgages; liability	Line 50	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313169005.Q	Federal government; other loans and advances; liability	Line 51	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313169205.Q	Federal government; total nonmarketable Treasury securities; liability	Line 52	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313140003.Q	Federal government; life insurance reserves; liability	Line 53	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313170005.Q	Federal government; trade payables; liability	Line 54	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313190005.Q	Federal government; total miscellaneous liabilities	Line 55	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU713011203.Q	Central bank; monetary gold certificates; asset	Line 56	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU713014003.Q	Central bank; SDR certificates issued by federal government; asset	Line 57	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU343073045.Q	Federal government defined benefit pension funds; claims of pension funds on sponsor; asset	Line 58	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313172003.Q	Federal government; Paycheck Protection Program payables; liability	Line 59	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313190605.Q	Federal government; Federal government; International Emergency Economic Powers Act tariff refund payable; liability 	Line 60	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU313190015.Q	Federal government; miscellaneous liabilities, excluding claims of pension funds	Line 61	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU317005005.Q	Federal government; sector discrepancy	Line 62	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted
+FU314000035.Q	Federal government; change in cash balance; asset	Line 63	S1311.t Federal government	Millions of dollars; transactions, not seasonally adjusted

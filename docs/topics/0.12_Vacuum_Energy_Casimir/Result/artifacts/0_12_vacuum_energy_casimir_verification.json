@@ -19,7 +19,7 @@
     "VAC-SPHERE-PFA",
     "VAC-FINITE-CONDUCTIVITY"
   ],
-  "generated_at_utc": "2026-06-18T13:37:35.875322+00:00",
+  "generated_at_utc": "2026-07-13T12:57:30.063763+00:00",
   "inputs": [
     {
       "geometry": "sphere-plate",

@@ -1,6 +1,6 @@
 {
   "claim_boundary": "This manifest records source-archive policy only. It preserves acquisition URLs, expected hashes, candidate repo paths, and formula-fragment linkage. It does not accept an estimator policy, UET normalization mapping, exponent result, RG closure, material validation, or universality claim.",
-  "created_utc": "2026-07-10T15:23:32.035409+00:00",
+  "created_utc": "2026-07-13T12:56:49.792674+00:00",
   "manifest_id": "0_11_structure_factor_source_archive_policy",
   "policy_decision": {
     "decision": "repo_archives_restored_estimator_policy_open",

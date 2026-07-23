@@ -20,14 +20,14 @@
   "dataset_hash": "d6f5d045222d0eca354ecf22d1b9b9bf1df24c49c31f46ccde7ed4a368555287",
   "environment": {
     "implementation": "CPython",
-    "matplotlib_version": null,
-    "numpy_version": "2.3.5",
-    "pandas_version": "3.0.1",
+    "matplotlib_version": "3.10.8",
+    "numpy_version": "2.4.0",
+    "pandas_version": "2.3.3",
     "platform": "Windows-11-10.0.26200-SP0",
-    "python_version": "3.12.13",
-    "scipy_version": null,
+    "python_version": "3.14.2",
+    "scipy_version": "1.16.3",
     "tensorflow_version": null,
-    "torch_version": null
+    "torch_version": "2.10.0+cpu"
   },
   "interpretation": "This artifact supports a source-backed heavy-nucleus subset benchmark and a proton-radius anchor-compatibility check. It does not validate light nuclei, hadron masses, QCD running, or confinement claims as audit-grade passes.",
   "limitations": [
@@ -431,7 +431,7 @@
     "heavy_nucleus_binding_error_percent_max": 15.0,
     "proton_radius_relative_error_percent_max": 5.0
   },
-  "timestamp_utc": "2026-06-18T23:49:49.547243+00:00",
+  "timestamp_utc": "2026-07-13T13:20:49.101882+00:00",
   "topic": "0.5_Nuclear_Binding_Hadrons",
   "uet_version": "0.9.0"
 }

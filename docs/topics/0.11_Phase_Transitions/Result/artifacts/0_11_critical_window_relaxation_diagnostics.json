@@ -11,21 +11,21 @@
   "gates": {
     "critical_window_extension_gate": {
       "max_baseline_xi_over_L": 0.07970869569582632,
-      "max_spatial_xi_over_L": 0.07373077045805763,
+      "max_spatial_xi_over_L": 0.07373216762802078,
       "required_condition": "closer-to-Tc and longer relaxation should lift spatial xi/L above 0.20",
       "status": "BLOCKED"
     },
     "operator_separation_gate": {
       "max_baseline_xi_over_L": 0.07970869569582632,
-      "max_spatial_xi_over_L": 0.07373077045805763,
+      "max_spatial_xi_over_L": 0.07373216762802078,
       "required_condition": "spatial lane should separate from baseline in xi/L by at least 0.05",
-      "spatial_minus_baseline": -0.005977925237768689,
+      "spatial_minus_baseline": -0.005976528067805548,
       "status": "BLOCKED"
     },
     "relaxation_sensitivity_gate": {
-      "near_T_long_steps_xi_over_L": 0.0692173572681824,
-      "near_T_short_steps_xi_over_L": 0.0715953399805613,
-      "relaxation_gain_near_T": -0.0023779827123789066,
+      "near_T_long_steps_xi_over_L": 0.06921719003216052,
+      "near_T_short_steps_xi_over_L": 0.07159615227062478,
+      "relaxation_gain_near_T": -0.0023789622384642606,
       "required_condition": "longer relaxation at the nearest-T point should increase xi/L by at least 0.05",
       "status": "BLOCKED"
     }
@@ -34,7 +34,7 @@
     {
       "path": "docs/core/uet_master_equation.py",
       "role": "core candidate operator implementation",
-      "sha256": "4fff36213153cbae0a86fa936c8e904d40bd4007e6c654425af1a70ea5685072"
+      "sha256": "ef3acb139bc4d4768f92c5fe97b61c0837a0b25d31cde77306293953f28c3414"
     }
   ],
   "limitations": [
@@ -46,18 +46,18 @@
     "by_steps": {
       "1400": {
         "max_baseline_xi_over_L": 0.07518761678663935,
-        "max_spatial_xi_over_L": 0.07358130128155148,
-        "near_T_spatial_xi_over_L": 0.07085293716737585
+        "max_spatial_xi_over_L": 0.07358107360603482,
+        "near_T_spatial_xi_over_L": 0.07085331338593596
       },
       "2800": {
         "max_baseline_xi_over_L": 0.07970869569582632,
-        "max_spatial_xi_over_L": 0.07373077045805763,
-        "near_T_spatial_xi_over_L": 0.0692173572681824
+        "max_spatial_xi_over_L": 0.07373216762802078,
+        "near_T_spatial_xi_over_L": 0.06921719003216052
       },
       "700": {
         "max_baseline_xi_over_L": 0.07320856370256669,
-        "max_spatial_xi_over_L": 0.07325255761669006,
-        "near_T_spatial_xi_over_L": 0.0715953399805613
+        "max_spatial_xi_over_L": 0.07325265514039829,
+        "near_T_spatial_xi_over_L": 0.07159615227062478
       }
     },
     "stats_csv": "Result/gl_critical_window_relaxation_diagnostics_stats.csv"
@@ -81,7 +81,7 @@
   },
   "schema_version": "1.0",
   "status": "WARN",
-  "timestamp_utc": "2026-06-26T18:18:27.349186+00:00",
+  "timestamp_utc": "2026-07-13T12:50:10.565985+00:00",
   "topic": "0.11_Phase_Transitions",
   "wave": "Wave 9 critical-window relaxation diagnostic"
 }

@@ -1,0 +1,86 @@
+FU716902505.A	Central bank; gross value added (IMA) 	Line 1	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716330085.A	Central bank; consumption of fixed capital, nonresidential structures, equipment, and intellectual property products, current cost basis (IMA)	Line 2	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716902605.A	Central bank; net value added (IMA)	Line 3	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716025005.A	Central bank; compensation of employees paid (IMA)	Line 4	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716020001.A	Central bank; wages and salaries paid (IMA) 	Line 5	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716401001.A	Central bank; employers' social contributions paid (IMA)	Line 6	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716240101.A	Central bank; taxes on production and imports less subsidies, payable (IMA) 	Line 7	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716402101.A	Central bank; operating surplus, net (IMA) 	Line 8	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716140005.A	Central bank; net national income/balance of primary incomes, net (IMA)	Line 9	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716402101.A	Central bank; operating surplus, net (IMA) 	Line 10	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716150105.A	Central bank; property income (received) (IMA)	Line 11	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716130101.A	Central bank; interest received (IMA) 	Line 12	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716121101.A	Central bank; dividends received (IMA) 	Line 13	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU713092281.A	Central bank; reinvested earnings on U.S. direct investment abroad; received (IMA)	Line 14	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716150005.A	Central bank; uses of property income (paid) (IMA)	Line 15	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716130001.A	Central bank; interest paid (IMA)  	Line 16	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716120005.A	Central bank; distributed income of corporations, paid (IMA)	Line 17	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716121001.A	Central bank; dividends paid (IMA) 	Line 18	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716122001.A	Central bank; withdrawals from income of quasi-corporations, paid (IMA) 	Line 19	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU713192281.A	Central bank; reinvested earnings on foreign direct investment in U.S.; paid (IMA)	Line 20	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716112001.A	Central bank; rents on land and natural resources paid (IMA) 	Line 21	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716140005.A	Central bank; net national income/balance of primary incomes, net (IMA)	Line 22	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716220001.A	Central bank; current taxes on income, wealth, etc. paid (IMA) 	Line 23	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716403001.A	Central bank; other current transfers paid (IMA)	Line 24	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716012005.A	Central bank; disposable income, net; net saving including foreign earnings retained abroad and CCAdj (IMA)	Line 25	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716012005.A	Central bank; disposable income, net; net saving including foreign earnings retained abroad and CCAdj (IMA)	Line 26	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716006385.A	Central bank; net saving including foreign earnings retained abroad and CCAdj less net capital transfers paid	Line 27	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716012005.A	Central bank; disposable income, net; net saving including foreign earnings retained abroad and CCAdj (IMA)	Line 28	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU715440083.A	Central bank; net capital transfers paid (IMA)	Line 29	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU715015085.A	Central bank; capital formation, net (IMA)	Line 30	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU715013085.A	Central bank; gross fixed investment, nonresidential structures, equipment, and intellectual property products (IMA)	Line 31	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU716330085.A	Central bank; consumption of fixed capital, nonresidential structures, equipment, and intellectual property products, current cost basis (IMA)	Line 32	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU715000995.A	Central bank; net lending (+) or borrowing (-) (capital account) (IMA)	Line 33	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU715000995.A	Central bank; net lending (+) or borrowing (-) (capital account) (IMA)	Line 34	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU714090005.A	Central bank; total financial assets	Line 35	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU714000005.A	Central bank; total currency and deposits; asset	Line 36	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU714022005.A	Central bank; debt securities; asset	Line 37	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU713069603.A	Central bank; bankers' acceptances; asset	Line 38	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU713061103.A	Central bank; total Treasury securities; asset	Line 39	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU713061705.A	Central bank; agency- and GSE-backed securities; asset	Line 40	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU713011525.A	Central bank; other U.S. reserves, foreign securities; asset	Line 41	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU714041005.A	Central bank; short-term loans; asset	Line 42	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU713064103.A	Central bank; corporate equities; asset	Line 43	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU713090005.A	Central bank; total miscellaneous assets	Line 44	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU714194005.A	Central bank; total liabilities and equity	Line 45	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU714100005.A	Central bank; total currency and deposits; liability	Line 46	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU712151003.A	Central bank; security repurchase agreements; liability	Line 47	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU713164005.A	Central bank; equity and investment fund shares; liability (SBS)	Line 48	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU713193005.A	Central bank; unidentified miscellaneous liabilities	Line 49	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FU715000005.A	Central bank; net lending (+) or borrowing (-) (financial account)	Line 50	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FV718090185.A	Central bank; total other volume changes (IMA)	Line 51	S121.i.a Central bank	Millions of dollars; other changes in volume of assets
+FV712010095.A	Central bank; nonfinancial assets (does not include land) 	Line 52	S121.i.a Central bank	Millions of dollars; other changes in volume of assets
+FV718090085.A	Central bank; other volume changes (IMA)	Line 53	S121.i.a Central bank	Millions of dollars; other changes in volume of assets
+FU717005045.A	Central bank; statistical discrepancy (IMA)	Line 54	S121.i.a Central bank	Millions of dollars; transactions, not seasonally adjusted
+FR712010095.A	Central bank; nonfinancial assets (does not include land) 	Line 55	S121.i.a Central bank	Millions of dollars; revaluation
+FR715013665.A	Central bank; nonresidential structures, current cost basis	Line 56	S121.i.a Central bank	Millions of dollars; revaluation
+FR715013265.A	Central bank; nonresidential equipment, current cost basis	Line 57	S121.i.a Central bank	Millions of dollars; revaluation
+FR715013765.A	Central bank; nonresidential intellectual property products, current cost basis	Line 58	S121.i.a Central bank	Millions of dollars; revaluation
+FR714090005.A	Central bank; total financial assets	Line 59	S121.i.a Central bank	Millions of dollars; revaluation
+FR714000005.A	Central bank; total currency and deposits; asset	Line 60	S121.i.a Central bank	Millions of dollars; revaluation
+FR714022005.A	Central bank; debt securities; asset	Line 61	S121.i.a Central bank	Millions of dollars; revaluation
+FR714041005.A	Central bank; short-term loans; asset	Line 62	S121.i.a Central bank	Millions of dollars; revaluation
+FR712000095.A	Central bank; total assets (does not include land)	Line 63	S121.i.a Central bank	Millions of dollars; revaluation
+FC712090095.A	Central bank; net worth (IMA)	Line 64	S121.i.a Central bank	Millions of dollars; change in unadjusted amounts outstanding end of period
+FL712000095.A	Central bank; total assets (does not include land)	Line 65	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+LM712010095.A	Central bank; nonfinancial assets (does not include land) 	Line 66	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+LM715013665.A	Central bank; nonresidential structures, current cost basis	Line 67	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+LM715013265.A	Central bank; nonresidential equipment, current cost basis	Line 68	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+LM715013765.A	Central bank; nonresidential intellectual property products, current cost basis	Line 69	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+FL714090005.A	Central bank; total financial assets	Line 70	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL714000005.A	Central bank; total currency and deposits; asset	Line 71	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+LM714022005.A	Central bank; debt securities; asset	Line 72	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+FL713069603.A	Central bank; bankers' acceptances; asset	Line 73	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+LM713061103.A	Central bank; total Treasury securities; asset	Line 74	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+LM713061705.A	Central bank; agency- and GSE-backed securities; asset	Line 75	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+LM713011525.A	Central bank; other U.S. reserves, foreign securities; asset	Line 76	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+FL714041005.A	Central bank; short-term loans; asset	Line 77	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713064103.A	Central bank; corporate equities; asset	Line 78	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713090005.A	Central bank; total miscellaneous assets	Line 79	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL712100005.A	Central bank; total liabilities and net worth (IMA)	Line 80	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL714194005.A	Central bank; total liabilities and equity	Line 81	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL714100005.A	Central bank; total currency and deposits; liability	Line 82	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL712151003.A	Central bank; security repurchase agreements; liability	Line 83	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713164005.A	Central bank; equity and investment fund shares; liability (SBS)	Line 84	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL713193005.A	Central bank; unidentified miscellaneous liabilities	Line 85	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL712090095.A	Central bank; net worth (IMA)	Line 86	S121.i.a Central bank	Millions of dollars; amounts outstanding end of period, not seasonally adjusted

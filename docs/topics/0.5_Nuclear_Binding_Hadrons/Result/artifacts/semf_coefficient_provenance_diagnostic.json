@@ -7,14 +7,14 @@
   "dataset_hash": "58fd0f5b8f0fe868ba609d5335f2c2557c1e23c51e25f9e5a8e75f14f7a5846d",
   "environment": {
     "implementation": "CPython",
-    "matplotlib_version": null,
-    "numpy_version": "2.3.5",
-    "pandas_version": "3.0.1",
+    "matplotlib_version": "3.10.8",
+    "numpy_version": "2.4.0",
+    "pandas_version": "2.3.3",
     "platform": "Windows-11-10.0.26200-SP0",
-    "python_version": "3.12.13",
-    "scipy_version": null,
+    "python_version": "3.14.2",
+    "scipy_version": "1.16.3",
     "tensorflow_version": null,
-    "torch_version": null
+    "torch_version": "2.10.0+cpu"
   },
   "metrics": {
     "correction_constants_extracted": 4,
@@ -117,7 +117,7 @@
     "required_gate_mismatch_count": 0,
     "required_source_record_locked": true
   },
-  "timestamp_utc": "2026-06-18T23:46:48.921705+00:00",
+  "timestamp_utc": "2026-07-13T13:21:31.611647+00:00",
   "topic": "0.5_Nuclear_Binding_Hadrons",
   "uet_version": "0.9.0"
 }

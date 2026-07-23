@@ -1,0 +1,106 @@
+FU216902505.Q	State and local governments; gross value added (IMA)	Line 1	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU216300001.Q	State and local governments; consumption of fixed capital, equipment, software, and structures, current cost basis (NIPA basis)	Line 2	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU216902605.Q	State and local governments; net value added (IMA)	Line 3	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU216025001.Q	State and local governments; compensation of employees paid (IMA)	Line 4	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU216402101.Q	State and local governments; operating surplus, net 	Line 5	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU216140005.Q	State and local governments; net national income/balance of primary incomes, net (IMA)	Line 6	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU216402101.Q	State and local governments; operating surplus, net 	Line 7	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU216240001.Q	State and local governments; taxes on production and imports, receivable (IMA)	Line 8	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU216402015.Q	State and local governments; subsidies paid (with negative sign) (IMA)	Line 9	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU216150175.Q	State and local governments; property income received, net (IMA)	Line 10	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU216140005.Q	State and local governments; net national income/balance of primary incomes, net (IMA)	Line 11	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU216220005.Q	State and local governments; current taxes on income, wealth, etc. received (IMA)	Line 12	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU216601001.Q	State and local governments; contributions for government social insurance received 	Line 13	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU216404001.Q	State and local governments; social contributions paid 	Line 14	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU216403105.Q	State and local governments; other current transfer received	Line 15	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU216403001.Q	State and local governments; other current transfer payments to the rest of the world	Line 16	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU216012005.Q	State and local governments; disposable income, net (IMA)	Line 17	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU216901001.Q	State and local governments; consumption expenditures	Line 18	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU216006095.Q	State and local governments; net saving including net capital transfers paid	Line 19	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU216006395.Q	State and local governments; net saving less net capital transfers paid	Line 20	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU216006095.Q	State and local governments; net saving including net capital transfers paid	Line 21	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU215440005.Q	State and local governments; net capital transfers paid 	Line 22	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU215050905.Q	State and local governments; capital formation, net (IMA)	Line 23	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU215019001.Q	State and local governments; gross fixed investment (NIPA basis)	Line 24	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU216300001.Q	State and local governments; consumption of fixed capital, equipment, software, and structures, current cost basis (NIPA basis)	Line 25	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU215420003.Q	State and local governments; acquisition of nonproduced nonfinancial assets (net)	Line 26	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU215000995.Q	State and local governments; net lending (+) or borrowing (-) (capital account)	Line 27	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU215000995.Q	State and local governments; net lending (+) or borrowing (-) (capital account)	Line 28	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU214090005.Q	State and local governments; total financial assets	Line 29	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU214000005.Q	State and local governments; total currency and deposits; asset	Line 30	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU213020005.Q	State and local governments; checkable deposits and currency; asset	Line 31	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU213030000.Q	State and local governments; total time and savings deposits; asset	Line 32	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU214022005.Q	State and local governments; debt securities; asset	Line 33	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU213069103.Q	State and local governments; commercial paper; asset	Line 34	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU213061103.Q	State and local governments; Treasury securities, excluding SLGS; asset	Line 35	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU213061703.Q	State and local governments; agency- and GSE-backed securities; asset	Line 36	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU213062003.Q	State and local governments; municipal securities; asset	Line 37	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU213063003.Q	State and local governments; corporate and foreign bonds; asset	Line 38	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU214035005.Q	State and local governments; total loans; asset	Line 39	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU214041005.Q	State and local governments; short-term loans; asset	Line 40	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU213065005.Q	State and local governments; total mortgages; asset	Line 41	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU213081005.Q	State and local governments; equity and investment fund shares; asset (IMA)	Line 42	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU213064103.Q	State and local governments; corporate equities; asset	Line 43	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU213034003.Q	State and local governments; money market fund shares; asset	Line 44	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU213064203.Q	State and local governments; mutual fund shares; asset	Line 45	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU213096005.Q	State and local governments; other accounts receivable; asset (IMA)	Line 46	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU213070003.Q	State and local governments; trade receivables; asset	Line 47	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU213078005.Q	State and local governments; taxes receivable; asset	Line 48	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU213093003.Q	State and local governments; unidentified miscellaneous assets	Line 49	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU214190005.Q	State and local governments; total liabilities	Line 50	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU213162005.Q	State and local governments; municipal securities; liability	Line 51	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU213162400.Q	State and local governments; short-term municipal securities; liability	Line 52	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU213162200.Q	State and local governments; long-term municipal securities; liability	Line 53	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU214141005.Q	State and local governments; short-term loans; liability	Line 54	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU223073045.Q	State and local government employee defined benefit pension funds; claims of pension fund on sponsor; asset	Line 55	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU213170003.Q	State and local governments; trade payables; liability	Line 56	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FU215000005.Q	State and local governments; net lending (+) or borrowing (-) (financial account)	Line 57	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FV218090185.Q	State and local governments; total other volume changes (IMA)	Line 58	S13M.i.q State and local governments	Millions of dollars; other changes in volume of assets
+FV212010095.Q	State and local governments; nonfinancial assets (does not include land)	Line 59	S13M.i.q State and local governments	Millions of dollars; other changes in volume of assets
+FV218090085.Q	State and local governments; other volume changes (IMA)	Line 60	S13M.i.q State and local governments	Millions of dollars; other changes in volume of assets
+FU217005045.Q	State and local governments; statistical discrepancy (IMA)	Line 61	S13M.i.q State and local governments	Millions of dollars; transactions, not seasonally adjusted
+FR212010095.Q	State and local governments; nonfinancial assets (does not include land)	Line 62	S13M.i.q State and local governments	Millions of dollars; revaluation
+FR215015605.Q	State and local governments; total residential and nonresidential structures	Line 63	S13M.i.q State and local governments	Millions of dollars; revaluation
+FR215013265.Q	State and local governments; nonresidential equipment, current cost basis	Line 64	S13M.i.q State and local governments	Millions of dollars; revaluation
+FR215013765.Q	State and local governments; nonresidential intellectual property products, current cost basis	Line 65	S13M.i.q State and local governments	Millions of dollars; revaluation
+FR214090005.Q	State and local governments; total financial assets	Line 66	S13M.i.q State and local governments	Millions of dollars; revaluation
+FR214022005.Q	State and local governments; debt securities; asset	Line 67	S13M.i.q State and local governments	Millions of dollars; revaluation
+FR213081005.Q	State and local governments; equity and investment fund shares; asset (IMA)	Line 68	S13M.i.q State and local governments	Millions of dollars; revaluation
+FR223073045.Q	State and local government employee defined benefit pension funds; claims of pension fund on sponsor; asset	Line 69	S13M.i.q State and local governments	Millions of dollars; revaluation
+FR212090095.Q	State and local governments; net worth (IMA)	Line 70	S13M.i.q State and local governments	Millions of dollars; revaluation
+FC212090095.Q	State and local governments; net worth (IMA)	Line 71	S13M.i.q State and local governments	Millions of dollars; change in unadjusted amounts outstanding end of period
+FL212000095.Q	State and local governments; total assets (does not include land)	Line 72	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+LM212010095.Q	State and local governments; nonfinancial assets (does not include land)	Line 73	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+LM215015605.Q	State and local governments; total residential and nonresidential structures	Line 74	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+LM215013265.Q	State and local governments; nonresidential equipment, current cost basis	Line 75	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+LM215013765.Q	State and local governments; nonresidential intellectual property products, current cost basis	Line 76	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+FL214090005.Q	State and local governments; total financial assets	Line 77	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL214000005.Q	State and local governments; total currency and deposits; asset	Line 78	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL213020005.Q	State and local governments; checkable deposits and currency; asset	Line 79	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL213030000.Q	State and local governments; total time and savings deposits; asset	Line 80	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL214022005.Q	State and local governments; debt securities; asset	Line 81	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL213069103.Q	State and local governments; commercial paper; asset	Line 82	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL213061103.Q	State and local governments; Treasury securities, excluding SLGS; asset	Line 83	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL213061703.Q	State and local governments; agency- and GSE-backed securities; asset	Line 84	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL213062003.Q	State and local governments; municipal securities; asset	Line 85	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL213063003.Q	State and local governments; corporate and foreign bonds; asset	Line 86	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL214035005.Q	State and local governments; total loans; asset	Line 87	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL214041005.Q	State and local governments; short-term loans; asset	Line 88	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL213065005.Q	State and local governments; total mortgages; asset	Line 89	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL213081005.Q	State and local governments; equity and investment fund shares; asset (IMA)	Line 90	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+LM213064103.Q	State and local governments; corporate equities; asset	Line 91	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+FL213034003.Q	State and local governments; money market fund shares; asset	Line 92	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+LM213064203.Q	State and local governments; mutual fund shares; asset	Line 93	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, market value, not seasonally adjusted
+FL213096005.Q	State and local governments; other accounts receivable; asset (IMA)	Line 94	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL213070003.Q	State and local governments; trade receivables; asset	Line 95	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL213078005.Q	State and local governments; taxes receivable; asset	Line 96	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL213093003.Q	State and local governments; unidentified miscellaneous assets	Line 97	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL212100005.Q	State and local governments; total liabilities and net worth (IMA)	Line 98	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL214190005.Q	State and local governments; total liabilities	Line 99	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL213162005.Q	State and local governments; municipal securities; liability	Line 100	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL213162400.Q	State and local governments; short-term municipal securities; liability	Line 101	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL213162200.Q	State and local governments; long-term municipal securities; liability	Line 102	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL214141005.Q	State and local governments; short-term loans; liability	Line 103	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL223073045.Q	State and local government employee defined benefit pension funds; claims of pension fund on sponsor; asset	Line 104	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL213170003.Q	State and local governments; trade payables; liability	Line 105	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted
+FL212090095.Q	State and local governments; net worth (IMA)	Line 106	S13M.i.q State and local governments	Millions of dollars; amounts outstanding end of period, not seasonally adjusted

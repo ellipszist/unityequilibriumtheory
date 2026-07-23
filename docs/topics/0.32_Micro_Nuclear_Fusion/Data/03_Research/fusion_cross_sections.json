@@ -2,7 +2,7 @@
     "_meta": {
         "source": "Approximations based on ENDF/B-VIII.0 and IAEA standard fusion data",
         "description": "Baseline fusion cross sections and Coulomb barriers for comparison with UET modifications.",
-        "date_generated": "2026-06-18",
+        "date_generated": "2026-07-13",
         "units": {
             "barrier": "eV (electron-volts)",
             "peak_cross_section": "barns (1e-28 m^2)",

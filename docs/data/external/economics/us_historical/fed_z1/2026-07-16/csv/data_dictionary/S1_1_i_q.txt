@@ -1,0 +1,37 @@
+FU896902505.Q	All sectors; gross value added (IMA)	Line 1	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU886300091.Q	All domestic sectors; consumption of fixed capital, equipment, software, and structures, current cost basis (IMA)	Line 2	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896902601.Q	All sectors; net value added (IMA)	Line 3	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896025001.Q	All sectors; compensation of employees paid (IMA)	Line 4	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896020001.Q	All sectors; wages and salaries paid (IMA)	Line 5	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896401001.Q	All sectors; employers' social contributions paid (IMA)	Line 6	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896240101.Q	All sectors; taxes on production and imports less subsidies, payable (IMA)	Line 7	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896402101.Q	All sectors; operating surplus, net (IMA)	Line 8	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU266904095.Q	Rest of the world; income payments to the U.S.	Line 9	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU266904195.Q	Rest of the world; income receipts from the U.S.	Line 10	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896140001.Q	All sectors; net national income/balance of primary incomes, net (IMA)	Line 11	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896402101.Q	All sectors; operating surplus, net (IMA)	Line 12	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU156025105.Q	Households and nonprofit organizations; compensation of employees received	Line 13	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU156020101.Q	Households and nonprofit organizations; wages and salaries received (IMA)	Line 14	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU156401101.Q	Households and nonprofit organizations; supplements to wages and salaries	Line 15	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896240001.Q	All sectors; taxes on production and imports, receivable (IMA)	Line 16	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU366402015.Q	General government; subsidies paid (with negative sign) (IMA)	Line 17	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896150175.Q	All sectors; property income received from rest of world (net) (IMA)	Line 18	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896120175.Q	All sectors; net distributed income of corporations, received (IMA)	Line 19	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896130175.Q	All sectors; interest (net) (IMA)	Line 20	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU893092275.Q	All sectors; reinvested earnings (net); received (IMA)	Line 21	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896112175.Q	All sectors; net rents on land and natural resources received (IMA)	Line 22	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896140001.Q	All sectors; net national income/balance of primary incomes, net (IMA)	Line 23	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896220001.Q	All sectors; current taxes on income, wealth, etc. received (IMA)	Line 24	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896220005.Q	All sectors; current taxes on income, wealth, etc. paid (IMA)	Line 25	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896404105.Q	All sectors; social benefits received (IMA)	Line 26	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896404005.Q	All sectors; social contributions paid (IMA)	Line 27	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896403105.Q	All sectors; other current transfers received (IMA)	Line 28	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896403005.Q	All sectors; other current transfers paid (IMA)	Line 29	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896012005.Q	All sectors; disposable income, net (IMA)	Line 30	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896901001.Q	All sectors; consumption expenditures (IMA) 	Line 31	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896006001.Q	All sectors; net saving including net capital transfers paid (IMA)	Line 32	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU896902505.Q	All sectors; gross value added (IMA)	Line 33	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU087005995.Q	Gross domestic product (GDP); statistical discrepancy (calculated from components) (IMA)	Line 34	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU086902005.Q	Gross domestic product (GDP); sum of pieces 	Line 35	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU086902203.Q	Average of GDP and GDI	Line 36	S1.1.i.q Total economy - current account	Millions of dollars; transactions, not seasonally adjusted
+FU087005086.Q	Gross domestic product (GDP); statistical discrepancy as a percentage of GDP 	Line 37	S1.1.i.q Total economy - current account	Percent Change

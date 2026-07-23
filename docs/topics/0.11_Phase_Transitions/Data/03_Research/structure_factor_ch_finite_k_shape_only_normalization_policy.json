@@ -7,20 +7,20 @@
       "exists": true,
       "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_ch_finite_k_field_normalization_decision_gate.json",
       "role": "Wave 52 field-normalization decision gate",
-      "sha256": "ee392387bbec00a0f9168ca06794156a6d839c6a149681b0b12b311e9663d553",
+      "sha256": "e31550d1031aa1fd280253f2a80002a2521395c59284e91466a42c0fbd983351",
       "status": "WARN"
     },
     {
       "exists": true,
       "path": "docs/topics/0.11_Phase_Transitions/Data/03_Research/structure_factor_ch_finite_k_field_normalization_decision.json",
       "role": "Wave 52 field-normalization decision manifest",
-      "sha256": "8d8b254d3180c35f47b2422f00cdf0cbf6e021bd18e6c7013a9b9717eeee20d3"
+      "sha256": "f3ee3d671f1d5d05806f35ae9b2bf571c168ea3bef9bcf8c39f1069502284217"
     },
     {
       "exists": true,
       "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_ch_finite_k_extended_grid_coverage_probe.json",
       "role": "Wave 50 accepted-row coverage artifact",
-      "sha256": "cd7250e838c61fb22c24d0e50c7527de76db1d4106f31d84f7f29d6851b2c342"
+      "sha256": "ab23a63b7c6eea9a60e3a03e0dbf6042e2964490791ba7529aeace4cb379b475"
     },
     {
       "exists": true,
@@ -108,7 +108,7 @@
       "status": "BLOCKED"
     }
   },
-  "timestamp_utc": "2026-07-10T15:27:17.391618+00:00",
+  "timestamp_utc": "2026-07-13T12:54:08.490538+00:00",
   "topic": "0.11_Phase_Transitions",
   "wave": "Wave 53 CH finite-k shape-only normalization policy gate"
 }

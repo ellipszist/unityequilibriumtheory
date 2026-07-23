@@ -111,7 +111,7 @@
   "input_hashes": {
     "benchmark_script": "d530e4149fa5bbf042a92a080d81240a30d453931890c1831c0430b68600070c",
     "source_lock_manifest": "d65719d433e75fe2dd99ae9d37fcc9aedb7a3070dccaa1bbea54d103657ea17b",
-    "uet_master_equation": "d9c6664cb7743e3fb6c222e04c22548c400a047a78023442296c269aa0e20054"
+    "uet_master_equation": "ef3acb139bc4d4768f92c5fe97b61c0837a0b25d31cde77306293953f28c3414"
   },
   "interpretation": "This artifact supports an internal implementation speed benchmark and a finite-output stress diagnostic. It does not validate external CFD accuracy or theorem-level Navier-Stokes claims.",
   "limitations": [
@@ -125,7 +125,7 @@
     "blocked_claim_exports": 5,
     "source_targets_blocked": 4,
     "source_targets_ready_for_review": 1,
-    "speedup": 3.118763128173069,
+    "speedup": 3.1270999040299556,
     "stable": true
   },
   "notes": "Internal implementation benchmark artifact using the repository comparator script; not an external CFD validation result.",
@@ -136,29 +136,29 @@
       "branches_total": 5
     },
     "fluid_claim_scope_gate_status": "WARN",
-    "navier_stokes_runtime_seconds": 0.1483342999999877,
+    "navier_stokes_runtime_seconds": 0.1284031000000141,
     "navier_stokes_runtime_trials_seconds": [
-      0.15054970001801848,
-      0.12683860000106506,
-      0.14190119999693707,
-      0.1483342999999877,
-      0.16017570000258274
+      0.12809829999969224,
+      0.1291535999998814,
+      0.12848159999975906,
+      0.1273221999999805,
+      0.1284031000000141
     ],
     "source_evidence_readiness_summary": {
       "source_targets_total": 5,
       "targets_blocked_by_pending_evidence": 4,
       "targets_ready_for_source_review": 1
     },
-    "speedup": 3.118763128173069,
+    "speedup": 3.1270999040299556,
     "stable": true,
     "status": "PASS",
-    "uet_runtime_seconds": 0.047561899991706014,
+    "uet_runtime_seconds": 0.04106140000021696,
     "uet_runtime_trials_seconds": [
-      0.05385630001546815,
-      0.047561899991706014,
-      0.04244600000674836,
-      0.04471170000033453,
-      0.05274949999875389
+      0.041632899999967776,
+      0.04106140000021696,
+      0.040471599999818864,
+      0.04056979999995747,
+      0.0414282000001549
     ]
   },
   "seed": 42,
@@ -188,7 +188,7 @@
     "min_speedup": 2.0,
     "requires_stability": true
   },
-  "timestamp_utc": "2026-06-18T13:32:56.886683+00:00",
+  "timestamp_utc": "2026-07-13T12:38:26.105755+00:00",
   "topic": "0.10_Fluid_Dynamics_Chaos",
   "uet_version": "0.9.0"
 }

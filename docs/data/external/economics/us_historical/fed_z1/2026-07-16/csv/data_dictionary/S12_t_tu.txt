@@ -1,0 +1,57 @@
+FU796000105.Q	Domestic financial sectors; gross saving including foreign earnings retained abroad and CCAdj less net capital transfers paid (other than for financial stabilization program)	Line 1	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU795090005.Q	Domestic financial sectors; gross investment	Line 2	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU795013005.Q	Domestic financial sectors; gross fixed investment, nonresidential structures, equipment, and intellectual property products	Line 3	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU795013005.Q	Domestic financial sectors; gross fixed investment, nonresidential structures, equipment, and intellectual property products	Line 4	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU795000005.Q	Domestic financial sectors; net lending (+) or borrowing (-) (financial account)	Line 5	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU794090005.Q	Domestic financial sectors; total financial assets 	Line 6	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU794010005.Q	Domestic financial sectors; interbank transactions; asset	Line 7	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793020005.Q	Domestic financial sectors; checkable deposits and currency; asset	Line 8	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793030005.Q	Domestic financial sectors; total time and savings deposits; asset	Line 9	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793030505.Q	Domestic financial sectors; other deposits; asset	Line 10	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU794022005.Q	Domestic financial sectors; debt securities; asset	Line 11	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793069175.Q	Domestic financial sectors; open market paper; asset	Line 12	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793061105.Q	Domestic financial sectors; Treasury securities; asset	Line 13	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793061705.Q	Domestic financial sectors; agency- and GSE-backed securities; asset	Line 14	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793062005.Q	Domestic financial sectors; municipal securities; asset	Line 15	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793063005.Q	Domestic financial sectors; corporate and foreign bonds; asset	Line 16	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU794035005.Q	Domestic financial sectors; total loans; asset	Line 17	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU792050005.Q	Domestic financial sectors; federal funds and security repurchase agreements; asset	Line 18	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793068005.Q	Domestic financial sectors; depository institution loans n.e.c.; asset	Line 19	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793066005.Q	Domestic financial sectors; consumer credit; asset	Line 20	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793065005.Q	Domestic financial sectors; total mortgages; asset	Line 21	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793069005.Q	Domestic financial sectors; other loans and advances; asset	Line 22	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793064105.Q	Domestic financial sectors; corporate equities; asset	Line 23	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793081115.Q	Domestic financial sectors; other equity; asset (IMA)	Line 24	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793034005.Q	Domestic financial sectors; money market fund shares; asset	Line 25	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793064205.Q	Domestic financial sectors; mutual fund shares; asset	Line 26	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793040005.Q	Domestic financial sectors; life insurance reserves; asset	Line 27	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU543050005.Q	Life insurance companies; pension entitlements reserve credit from reinsurers; asset	Line 28	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793070005.Q	Domestic financial sectors; trade receivables; asset	Line 29	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793092305.Q	Domestic financial sectors; U.S. direct investment abroad: intercompany debt; asset (market value)	Line 30	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793090005.Q	Domestic financial sectors; total miscellaneous assets	Line 31	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU794194005.Q	Domestic financial sectors; total liabilities and equity	Line 32	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU794190005.Q	Domestic financial sectors; total liabilities 	Line 33	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU794110005.Q	Domestic financial sectors; interbank transactions; liability	Line 34	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793120005.Q	Domestic financial sectors; checkable deposits and currency; liability	Line 35	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU703130005.Q	Private depository institutions; total time and savings deposits; liability	Line 36	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU403197033.Q	Government-sponsored enterprises; U.S.-chartered depository institutions deposits at Federal Home Loan Banks; liability	Line 37	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU794122005.Q	Domestic financial sectors; debt securities; liability 	Line 38	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793169175.Q	Domestic financial sectors; open market paper; liability	Line 39	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU423161705.Q	GSEs and agency- and GSE-backed mortgage pools; U.S. government agency securities; liability	Line 40	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793163005.Q	Domestic financial sectors; corporate and foreign bonds; liability	Line 41	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU794141005.Q	Domestic financial sectors; short-term loans; liability	Line 42	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU792150005.Q	Domestic financial sectors; federal funds and security repurchase agreements; liability	Line 43	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793168005.Q	Domestic financial sectors; depository institution loans n.e.c.; liability	Line 44	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793169005.Q	Domestic financial sectors; other loans and advances; liability	Line 45	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU634090005.Q	Money market funds; total financial assets	Line 46	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU653164205.Q	Mutual funds; mutual fund shares; liability	Line 47	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU543140005.Q	Life insurance companies; life insurance reserves; liability	Line 48	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU583150005.Q	Insurance companies and pension funds; pension entitlements; liability	Line 49	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793170005.Q	Domestic financial sectors; trade payables; liability	Line 50	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793178005.Q	Domestic financial sectors; taxes payable (net); liability	Line 51	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793192305.Q	Domestic financial sectors; foreign direct investment in U.S.: intercompany debt; liability (market value)	Line 52	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793190005.Q	Domestic financial sectors; total miscellaneous liabilities	Line 53	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793181105.Q	Domestic financial sectors; equity and investment fund shares excluding mutual fund shares and money market fund shares; liability (IMA)	Line 54	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793164105.Q	Domestic financial sectors; corporate equities; liability	Line 55	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU793181115.Q	Domestic financial sectors; other equity; liability (IMA)	Line 56	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted
+FU797005005.Q	Domestic financial sectors; sector discrepancy	Line 57	S12.t Domestic financial sectors	Millions of dollars; transactions, not seasonally adjusted

@@ -2,7 +2,7 @@
   "candidate_policy_lane": "cahn_hilliard_finite_k_structure_factor_candidate",
   "candidate_source_id": "longo_2021_cahn_hilliard_structure_factor",
   "claim_boundary": "This manifest is a normalization preflight only. It accepts no estimator policy, finite-size exponent rerun, material validation, RG closure, universality shift, or Tier A upgrade.",
-  "created_utc": "2026-07-10T15:23:41.783020+00:00",
+  "created_utc": "2026-07-13T12:54:07.076947+00:00",
   "manifest_id": "structure_factor_ch_finite_k_normalization_preflight_wave47",
   "preflight_decision": {
     "decision": "ch_finite_k_normalization_preflight_written_acceptance_blocked",

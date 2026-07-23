@@ -1471,3 +1471,41 @@
   - Replacement-observable policies remain unavailable for accepted use.
   - The next controller is execution of the acquisition plan: add at least two accepted L24 rows and two accepted L28 rows, plus temporal/ensemble averaging and uncertainty propagation, or accept a source-backed replacement observable.
   - Do not rerun exponent, universality, material, RG, or Tier A gates from this decision artifact alone.
+
+## Core Wave 9 Noether-Phase-Field Dependency Gate
+
+- Candidate command:
+  - `python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Noether_Phase_Field_Dependency_Gate.py`
+- Artifact target:
+  - `Result/artifacts/0_11_noether_phase_field_dependency_gate.json`
+- Regression command:
+  - `python -m pytest docs/core/test/test_noether_phase_field_topic_0_11_dependency.py -q`
+- Purpose:
+  - Propagate the core Wave 9 coordinate result into Topic 0.11 without identifying the current topic field with a microscopic O(2) state or signed charge by assumption.
+  - Preserve the independent Wave 55 estimator controller and the separation of Noether charge, matter-space `Phi`, and derived trace `R`.
+  - Detect historical `Draft` snapshots while taking current readiness from canonical metadata.
+- Required gates:
+  - `core_hydrodynamic_coordinate_gate.status == PASS`
+  - `microscopic_inverse_boundary_gate.status == PASS`
+  - `trace_and_space_separation_gate.status == PASS`
+  - `wave55_controller_preservation_gate.status == PASS`
+  - `canonical_topic_status_gate.status == PASS`
+  - `topic_C_signed_charge_identity_gate.status == PASS` before Topic 0.11 `C` may be called a signed O(2) charge coordinate.
+  - `equation_of_state_and_transport_gate.status == PASS` before the phase-field constitutive law may be called action-derived.
+  - `topic_promotion_gate.status == PASS` before any topic claim changes.
+- Current result:
+  - overall status `BLOCKED`
+  - evidence status `CONDITIONAL_HYDRODYNAMIC_COORDINATE_COMPATIBILITY`
+  - `core_hydrodynamic_coordinate_gate == PASS`
+  - `microscopic_inverse_boundary_gate == PASS`
+  - `trace_and_space_separation_gate == PASS`
+  - `wave55_controller_preservation_gate == PASS`
+  - `canonical_topic_status_gate == PASS` with `Structured / Tier B` before and after
+  - `historical_pilot_status_snapshot_gate == WARN` because the earlier pilot retains its run-time `Draft` snapshot
+  - `topic_C_signed_charge_identity_gate == BLOCKED`
+  - `equation_of_state_and_transport_gate == BLOCKED`
+  - `topic_promotion_gate == BLOCKED`
+- Interpretation:
+  - The final affine coordinate layer is exact only after physical charge identity, averaging, and scales are declared.
+  - Topic 0.11 still lacks the system-specific charge map, covariant coarse graining, EOS derivation/calibration, and transport match.
+  - `ch_finite_k_replicate_temporal_acquisition_plan_defined_execution_open` remains the topic controller; no simulation or estimator gate was rerun.

@@ -85,10 +85,10 @@
       "status": "WARN"
     },
     "inbox_chain_gate": {
-      "inbox_blocker_label": "inbox_claims_mapped_current_controller_multigrid_calibration",
+      "inbox_blocker_label": "inbox_claims_mapped_current_controller_tex_formula_fragment_gap",
       "inbox_status": "WARN",
       "required_condition": "The inbox alignment gate must point to multi-grid structure-factor calibration.",
-      "status": "PASS"
+      "status": "BLOCKED"
     },
     "multigrid_coverage_gate": {
       "case_count": 18,
@@ -533,7 +533,7 @@
     {
       "path": "docs/core/uet_master_equation.py",
       "role": "core spectral conserved-order implementation",
-      "sha256": "293a4edd8d9786ce545124eead4a0c8f8e260fef72143200959ec21c0d07b516"
+      "sha256": "ef3acb139bc4d4768f92c5fe97b61c0837a0b25d31cde77306293953f28c3414"
     },
     {
       "path": "docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_L16_Structure_Factor_Estimator.py",
@@ -543,12 +543,12 @@
     {
       "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_l16_structure_factor_estimator.json",
       "role": "Wave 24 structure-factor domain-scale controller",
-      "sha256": "d9718bf402942b38100016d94da6a6709bccba88e0d42c33780a061c4105bcd6"
+      "sha256": "69ab1f9986c39a81b090039ba3273677504dd2b3301b37a15fee1d316443258e"
     },
     {
       "path": "docs/core/artifacts/inbox_research_alignment_gate.json",
       "role": "inbox alignment controller pointing to multi-grid calibration",
-      "sha256": "a87c4daa5d636f78144458bab5c1ccc791323ab912cdfb7df58dec41a9629fe0"
+      "sha256": "c13fa8cc701b3961bb68bcedf9018b56c56a2668427d8f35d02142323cc67b3a"
     }
   ],
   "limitations": [
@@ -1040,7 +1040,7 @@
   },
   "schema_version": "1.0",
   "status": "WARN",
-  "timestamp_utc": "2026-06-28T18:02:32.311410+00:00",
+  "timestamp_utc": "2026-07-13T12:49:17.356584+00:00",
   "topic": "0.11_Phase_Transitions",
   "wave": "Wave 25 conserved_order_spectral_v1 structure-factor multi-grid calibration"
 }

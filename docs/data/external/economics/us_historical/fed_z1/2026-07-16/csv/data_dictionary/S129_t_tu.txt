@@ -1,0 +1,29 @@
+FU596000105.Q	Pension funds; gross saving less net capital transfers paid	Line 1	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU595013005.Q	Pension funds; gross fixed investment, nonresidential structures, equipment, and intellectual property products	Line 2	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU594090005.Q	Pension funds; total financial assets 	Line 3	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU593020005.Q	Pension funds; checkable deposits and currency; asset	Line 4	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU593030005.Q	Pension funds; total time and savings deposits; asset	Line 5	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU594022005.Q	Pension funds; debt securities; asset	Line 6	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU593069105.Q	Pension funds; commercial paper; asset	Line 7	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU593061105.Q	Pension funds; Treasury securities; asset	Line 8	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU593061705.Q	Pension funds; agency- and GSE-backed securities; asset	Line 9	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU593062045.Q	Pension funds; municipal securities; asset	Line 10	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU593063005.Q	Pension funds; corporate and foreign bonds; asset	Line 11	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU594035005.Q	Pension funds; total loans; asset	Line 12	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU592051005.Q	Pension funds; security repurchase agreements; asset	Line 13	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU343069005.Q	Federal government pension funds; other loans and advances; asset 	Line 14	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU593065005.Q	Pension funds; total mortgages; asset	Line 15	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU593064105.Q	Pension funds; corporate equities; asset	Line 16	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU593034005.Q	Pension funds; money market fund shares; asset	Line 17	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU593064205.Q	Pension funds; mutual fund shares; asset	Line 18	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU593090005.Q	Pension funds; total miscellaneous assets	Line 19	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU593095005.Q	Pension funds; unallocated insurance contracts; asset	Line 20	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU573074005.Q	Private pension funds; pension fund contributions receivable; asset	Line 21	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU593073005.Q	Pension funds; claims of pension fund on sponsor; asset	Line 22	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU593093005.Q	Pension funds; unidentified miscellaneous assets	Line 23	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU594190005.Q	Pension funds; total liabilities	Line 24	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU153050015.Q	Households and nonprofit organizations; retirement assets	Line 25	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU594190045.Q	Defined benefit pension funds; pension entitlements (total liabilities)	Line 26	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU594090055.Q	Defined contribution pension funds; total financial assets	Line 27	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU893131573.Q	All sectors; IRAs; liability	Line 28	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted
+FU543150015.Q	Life insurance companies; pension entitlements, excluding unallocated insurance contracts and IRAs; liability	Line 29	S129.t Private and public pension funds	Millions of dollars; transactions, not seasonally adjusted

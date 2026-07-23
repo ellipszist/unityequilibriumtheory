@@ -1,0 +1,62 @@
+FA894135005.Q	All sectors; total loans; liability	Line 1	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA892150005.Q	All sectors; federal funds and security repurchase agreements; liability	Line 2	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA793068005.Q	Domestic financial sectors; depository institution loans n.e.c.; asset	Line 3	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA893169005.Q	All sectors; other loans and advances; liability	Line 4	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA893065005.Q	All sectors; total mortgages; asset	Line 5	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA893065105.Q	All sectors; one-to-four-family residential mortgages; asset	Line 6	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA893065405.Q	All sectors; multifamily residential mortgages; asset	Line 7	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA893065505.Q	All sectors; commercial mortgages; asset	Line 8	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA893065603.Q	All sectors; farm mortgages; asset	Line 9	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA153166000.Q	Households and nonprofit organizations; consumer credit; liability	Line 10	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA894135005.Q	All sectors; total loans; liability	Line 11	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA384135005.Q	Domestic nonfinancial sectors; loans; liability	Line 12	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA154135005.Q	Households and nonprofit organizations; loans; liability	Line 13	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA104135005.Q	Nonfinancial corporate business; total loans; liability	Line 14	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA114135005.Q	Nonfinancial noncorporate business; total loans; liability	Line 15	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA314135005.Q	Federal government; total loans; liability	Line 16	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA214141005.Q	State and local governments; short-term loans; liability	Line 17	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA794141005.Q	Domestic financial sectors; short-term loans; liability	Line 18	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA712151003.Q	Central bank; security repurchase agreements; liability	Line 19	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA764141005.Q	U.S.-chartered depository institutions; short-term loans; liability	Line 20	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA752150005.Q	Foreign banking offices in the U.S., including IBFs; federal funds and security repurchase agreements; liability	Line 21	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA474141005.Q	Credit unions; short-term loans; liability	Line 22	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA514141005.Q	Property-casualty insurance companies; short-term loans; liability	Line 23	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA544141075.Q	Life insurance companies, general accounts; short-term loans; liability	Line 24	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA404141005.Q	Government-sponsored enterprises; short-term loans; liability	Line 25	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA672151003.Q	Issuers of asset-backed securities; security repurchase agreements; liability	Line 26	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA614141005.Q	Finance companies; short-term loans; liability	Line 27	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA644141005.Q	Mortgage real estate investment trusts; short-term loans; liability	Line 28	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA664141005.Q	Security brokers and dealers; short-term loans; liability	Line 29	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA732151003.Q	Holding companies; security repurchase agreements; liability	Line 30	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA504141005.Q	Other financial business; short-term loans; liability	Line 31	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA264141005.Q	Rest of the world; short-term loans; liability	Line 32	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA894035005.Q	All sectors; total loans; asset 	Line 33	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA384035005.Q	Domestic nonfinancial sectors; loans; asset	Line 34	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA154035005.Q	Households and nonprofit organizations; loans; asset	Line 35	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA104035005.Q	Nonfinancial corporate business; total loans; asset 	Line 36	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA114035005.Q	Nonfinancial noncorporate business; loans; asset	Line 37	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA314035005.Q	Federal government; total loans; asset	Line 38	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA214035005.Q	State and local governments; total loans; asset	Line 39	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA794035005.Q	Domestic financial sectors; total loans; asset	Line 40	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA714041005.Q	Central bank; short-term loans; asset	Line 41	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA764035005.Q	U.S.-chartered depository institutions; total loans; asset 	Line 42	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA754035005.Q	Foreign banking offices in the U.S.; total loans; asset	Line 43	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA744035003.Q	Banks in U.S.-affiliated areas; loans; asset	Line 44	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA474035005.Q	Credit unions; total loans; asset	Line 45	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA514035005.Q	Property-casualty insurance companies; total loans; asset 	Line 46	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA544035005.Q	Life insurance companies; total loans; asset 	Line 47	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA574035005.Q	Private pension funds; total loans; asset 	Line 48	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA343069005.Q	Federal government pension funds; other loans and advances; asset 	Line 49	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA224035045.Q	State and local government employee defined contribution pension funds; total loans; asset 	Line 50	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA632051000.Q	Money market funds; security repurchase agreements; asset	Line 51	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA654041005.Q	Mutual funds; short-term loans; asset	Line 52	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA404035005.Q	Government-sponsored enterprises; loans; asset	Line 53	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA413065005.Q	Agency-and GSE-backed mortgage pools; total mortgages; asset	Line 54	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA674035005.Q	Issuers of asset-backed securities; loans; asset	Line 55	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA614035005.Q	Finance companies; loans; asset	Line 56	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA643065075.Q	Mortgage real estate investment trusts; total mortgages; asset	Line 57	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA664041005.Q	Security brokers and dealers; short-term loans; asset	Line 58	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA734041005.Q	Holding companies; short-term loans; asset	Line 59	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA504041005.Q	Other financial business; short-term loans; asset	Line 60	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA264041005.Q	Rest of the world; short-term loans; asset	Line 61	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
+FA902050005.Q	Instrument discrepancies; federal funds and security repurchase agreements 	Line 62	F4.t Loans	Millions of dollars; transactions at a seasonally adjusted annual rate
