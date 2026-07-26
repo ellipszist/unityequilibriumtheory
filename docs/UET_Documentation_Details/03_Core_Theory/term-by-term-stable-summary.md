@@ -11,13 +11,18 @@ material.
 It focuses on what each term is *trying* to represent, not on claiming that every mapping is
 already closed mathematically in the present repository.
 
+Current ontology rule: `C` is an abstract relational variable for interaction and system
+behaviour. Mass, density, charge, energy, information, and order are lane-specific mappings;
+they are not universal meanings of `C`. See
+[C as a Relational Interaction Variable](./relational-C-and-physical-mapping.md).
+
 ## Summary table
 
 | Term | Formula element | Stable interpretation | Open caution |
 | :-- | :-- | :-- | :-- |
-| 1 | `V(C)` | baseline deviation-from-equilibrium cost | exact physical meaning depends on topic/domain |
-| 2 | `(\kappa / 2)|\nabla C|^2` | cost of sharp variation across space/state | scale-dependence of `\kappa` remains important |
-| 3 | `\beta C · I` | coupling between capacity-like and information-like quantities | the meaning of `I` must stay explicit per topic |
+| 1 | `V(C)` | baseline cost or preference over relational interaction structure | exact physical meaning and units depend on topic/domain |
+| 2 | `(\kappa / 2)|\nabla C|^2` | cost of sharp variation of the relational coordinate across space/state | not automatically kinetic energy or viscosity |
+| 3 | `\beta C · I` | coupling between the declared `C` sector and a second model sector | not a C-to-I conversion; the meaning of `I` must stay explicit |
 | 4 | `\gamma_J (J_in - J_out) · C` | openness, inflow/outflow, exchange | not all topics use this layer equally |
 | 5 | `W_N |\nabla \Omega|` | persistence or action-like drive toward a path | strongest conceptual term, weakest formal closure |
 | 6 | `\beta_U V_game` | strategic interaction / competition / cooperation | mostly a higher-level systems extension |
@@ -33,10 +38,10 @@ V(C)
 
 ### Stable interpretation
 
-This term acts like the cost of being away from a preferred or equilibrium configuration.
+This term acts like the cost of being away from a preferred or equilibrium configuration of the relational system state.
 
 It is the clearest place where UET overlaps with familiar energy-functional thinking such as
-Landau-Ginzburg style modeling.
+Landau-Ginzburg style modeling, but the physical realization and units of `C` remain lane-specific.
 
 ### Safe statement
 
@@ -52,7 +57,7 @@ Use this term when the topic needs a baseline energy / stability / disequilibriu
 
 ### Stable interpretation
 
-This term penalizes sharp gradients.
+This term penalizes sharp gradients of the relational interaction coordinate.
 
 In the legacy interpretation it carries ideas such as:
 
@@ -75,16 +80,15 @@ variation.
 
 ### Stable interpretation
 
-This is the main information-energy bridge in the project.
-
-The stable legacy point is not that “the universe is literally information” in a trivial
-sense, but that the project treats informational structure as physically coupled to
-capacity/energy-like structure.
+This is a coupling between the relational `C` sector and a second sector represented by `I`.
+If a topic defines that second sector as information, entropy, or an observer record, the
+coupling can be studied in that lane. The notation alone does not establish that `C` converts
+into `I`, that information is a substance, or that `beta` has Landauer units.
 
 ### Safe statement
 
-This term is one of the main reasons UET belongs to an information-thermodynamic research
-line.
+Use this term as a constitutive coupling only after the topic declares the meaning, units,
+and observable mapping of `I`.
 
 ## 4. Exchange term
 

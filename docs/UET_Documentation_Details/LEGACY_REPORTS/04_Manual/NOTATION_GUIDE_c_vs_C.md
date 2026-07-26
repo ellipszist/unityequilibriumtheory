@@ -1,6 +1,12 @@
 
 # On the Meaning of (c) and (C)
 
+> **Current ontology notice:** this file is a historical notation guide. Its useful distinction
+> between lowercase `c` and uppercase `C` is retained, but the current canonical meaning of
+> `C` is **relational interaction variable**. “Coordination/communication field” is a possible
+> lane description, not a universal physical identity. See
+> [C as a Relational Interaction Variable](../../03_Core_Theory/relational-C-and-physical-mapping.md).
+
 ## 1. Distinction Between (c) and (C)
 
 In this work, a strict distinction is maintained between the lowercase symbol (c) and the uppercase symbol (C).
@@ -45,7 +51,7 @@ C = C(x,t)
 
 ### Interpretation:
 
-* A system-level coordination / communication field
+* A system-level relational interaction field; coordination/communication is one possible lane interpretation
 * Possesses dynamics and spatial structure
 * May admit gradients, diffusion, or coupling terms
 * Participates explicitly in the system functional (\Omega)
@@ -117,7 +123,7 @@ Ambiguous use of (c) is strictly avoided.
 > **Notation Convention**
 >
 > * (c): reserved exclusively for the physical speed of light or maximal causal propagation constant.
-> * (C): denotes the UET coordination/communication field.
+> * (C): denotes the UET relational interaction variable; a lane may realize it as a coordination/communication field.
 > * Lowercase (c) is never used as a dynamical variable within UET.
 
 This convention is adopted throughout the paper.
@@ -128,7 +134,7 @@ This convention is adopted throughout the paper.
 
 * (c) and (C) belong to different conceptual layers.
 * (c) is inherited from established physics and remains fixed.
-* (C) is internal to UET and carries system dynamics.
+* (C) is internal to UET and carries relational system dynamics; its physical mapping must be declared per lane.
 * Maintaining this separation prevents semantic drift and uncontrolled model variation.
 
 ---

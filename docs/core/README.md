@@ -32,8 +32,9 @@ Current foundation artifacts:
 - [Machine-readable correspondence matrix](./artifacts/uet_foundation_correspondence_matrix.json)
 - [Machine-readable aggregate status](./artifacts/uet_foundation_status_aggregate.json)
 - [Thought experiment: observation as past behavior](./THOUGHT_EXPERIMENT_OBSERVATION_PAST_BEHAVIOR.md)
+- [Canonical C ontology and physical mapping](../UET_Documentation_Details/03_Core_Theory/relational-C-and-physical-mapping.md)
 
-> **The Physics Engine solving the Unity Equilibrium Master Equation**  
+> **Historical engine layer for candidate UET equation families**
 > **Version 0.9.0** | Last Updated: 2026-01-13
 
 ![Engine](https://img.shields.io/badge/Engine-UET_Master_Eq-blue)
@@ -78,16 +79,16 @@ $$
 
 | Symbol | Name | Mathematical Meaning | Physical Interpretation |
 |:------:|:-----|:---------------------|:------------------------|
-| **C** | Capacity / Conscious Field | State Vector C(x,t) | Legacy lane label; current work requires explicit physical mapping |
-| **I** | Information / Instinctive Field | Legacy entropy/stimulus notation | Legacy/comparator label; current work uses derived I_trace only when declared |
+| **C** | Relational interaction coordinate | State coordinate `C(x,t)` | Current ontology; physical realization is lane-specific |
+| **I** | Lane-declared second sector | Legacy `I` label or declared field | Must be explicitly defined; `I_trace` is derived when used |
 | **J** | Flux Field | J_in - J_out | Open system energy exchange |
-| **V(C)** | Potential | (α/2)C² + (γ/4)C⁴ | Cost of Existence (Higgs-like) |
-| **κ** | Gradient Cost | \|∇C\|² coefficient | Surface Tension, Space Memory |
-| **β** | Coupling | kT ln 2 | Landauer Limit (Info ↔ Energy) |
+| **V(C)** | Potential | legacy or lane-specific functional of `C` | Cost/comparator over relational structure; units are lane-specific |
+| **κ** | Gradient coefficient | coefficient of `\|∇C\|²` | Variation penalty; units must be closed per lane |
+| **β** | Coupling coefficient | coefficient of `C I` | Not automatically `kT ln 2`; Landauer is an external bound when applicable |
 | **Ω** | Equilibrium Functional | ∫[...] dx | Total disequilibrium (minimize this) |
 | **𝒱** | Value | -ΔΩ | Improvement per step |
 
-> 📖 **Full symbol definitions**: See [`SYMBOL_GLOSSARY.md`](./SYMBOL_GLOSSARY.md)
+> 📖 **Current C ontology**: See [C as a Relational Interaction Variable](../UET_Documentation_Details/03_Core_Theory/relational-C-and-physical-mapping.md). The nearby legacy table is retained for provenance.
 
 ---
 
@@ -95,7 +96,7 @@ $$
 
 | File | Role | Description |
 |:-----|:-----|:------------|
-| [`uet_master_equation.py`](./uet_master_equation.py) | **The Law** | Defines the Ω functional and `dynamics_step` (solver). **Single Source of Truth.** |
+| [`uet_master_equation.py`](./uet_master_equation.py) | **Legacy engine entry point** | Defines candidate Ω functionals and solver paths; not a universal physical law or single source of truth. |
 | [`uet_matrix_engine.py`](./uet_matrix_engine.py) | **The Solver** | Fast Tensor-based implementation for large-scale grids (3D Galaxies). |
 | [`uet_matrix_toolkit.py`](./uet_matrix_toolkit.py) | **The Tools** | Helper functions for visualization and matrix algebra. |
 | [`uet_4d_engine.py`](./uet_4d_engine.py) | **Relativity** | Extension for 4D spacetime metrics and tensor operations. |
@@ -114,11 +115,11 @@ C และ I มีความหมายต่างกันในแต่
 
 | Domain | C = | I = |
 |:-------|:----|:----|
-| **Physics** | Visible matter | Dark matter |
-| **Neuroscience** | Excitatory activity | Inhibitory state |
-| **Economics** | Market price | Intrinsic value |
-| **Biology** | Activator | Inhibitor |
-| **Machine Learning** | Observable features | Latent representation |
+| **Physics** | relational interaction coordinate; lane mapping required | lane-declared second sector; no universal dark-matter identity |
+| **Neuroscience** | lane-specific mapping from interaction structure | lane-specific second sector |
+| **Economics** | lane-specific mapping from interaction structure | lane-specific second sector |
+| **Biology** | lane-specific mapping from interaction structure | lane-specific second sector |
+| **Machine Learning** | lane-specific mapping from interaction structure | lane-specific second sector |
 
 > 📖 **Full domain mapping**: See [`../Doc/DOMAIN_MAPPING.md`](../Doc/DOMAIN_MAPPING.md)
 

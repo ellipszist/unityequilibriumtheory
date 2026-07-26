@@ -38,9 +38,13 @@ Read this as:
 
 where:
 
-- `C` = the main state variable or capacity-like variable
-- `I` = the information / entropy / structure variable
-- `J` = the inflow-outflow or exchange variable
+- `C` = the abstract relational interaction / system-behaviour coordinate
+- `I` = a second, lane-declared variable such as information, entropy, structure, or a comparator field
+- `J` = the inflow-outflow or exchange variable when a flux law is declared
+
+`C` is not universally mass, density, energy, or information. Each application must define a
+mapping from `C` to a standard physical quantity and then to an observable. See [C as a
+Relational Interaction Variable](../03_Core_Theory/relational-C-and-physical-mapping.md).
 
 ## What the terms mean in plain language
 
@@ -70,23 +74,24 @@ Examples:
 
 ### Step 2: define `C`
 
-`C` is the main state variable.
+`C` is the relational coordinate used to represent interaction and system behaviour at the
+chosen coarse-graining scale. It is not automatically a measurable substance.
 
-Examples:
+First define the interaction being represented. Then specify the lane mapping, for example:
 
-- mass density
-- velocity field
-- pressure field
-- capital or liquidity
-- population density
+- `C -> rho` only in a declared mass-density lane
+- `C -> n` only in a declared charge/Noether lane
+- `C ->` an order parameter in a phase-transition lane
+- `C ->` a relational observable in an observer lane
 
 Ask:
 
-**What quantity tells me what state the system is in?**
+**What relation or interaction does `C` represent, and what standard quantity will measure it?**
 
 ### Step 3: define `I`
 
-`I` is the information-like variable.
+`I` is the second model sector. It may be information, entropy, structure, or another field only
+when the lane defines it explicitly with units and an observable mapping.
 
 Examples:
 
@@ -165,8 +170,9 @@ If there is no observable, there is no usable application yet.
 
 ```text
 System: galaxy rotation
-C = baryonic mass density
-I = information or effective structure field
+C = relational interaction coordinate
+M_galaxy[C] = baryonic mass density only if the lane derives and validates that mapping
+I = lane-declared structure variable
 J = exchange with larger environment or background flow
 Equilibrium = stable rotational configuration
 Observable = velocity curve
@@ -176,7 +182,7 @@ Observable = velocity curve
 
 ```text
 System: pipe flow
-C = velocity or pressure field
+C = relational interaction coordinate; M_fluid[C] = velocity or pressure field only if the lane derives that map
 I = turbulence / disorder measure
 J = inlet-outlet flow
 Equilibrium = steady-state profile
@@ -187,7 +193,7 @@ Observable = velocity profile across radius
 
 ```text
 System: market or capital network
-C = liquidity / capacity
+C = relational interaction coordinate; M_market[C] = liquidity/capital only if the lane derives that map
 I = information or uncertainty field
 J = capital inflow and outflow
 Equilibrium = sustainable market balance

@@ -13,6 +13,17 @@ It is intentionally conservative.
 Its job is to state what the project is trying to use as its core equation structure,
 without importing the strongest historical wording unchanged.
 
+## Current ontology correction
+
+The symbol `C` must now be read first as an **abstract relational variable for interaction
+and system behaviour**. It is not universally mass, density, energy, information, or a
+substance. A mass-density, charge, order-parameter, heat, or observer lane may define an
+explicit mapping from `C` to a standard physical quantity, but that mapping is not supplied by
+the symbol itself.
+
+See [C as a Relational Interaction Variable](./relational-C-and-physical-mapping.md) for the
+current ontology, condition/constraint/necessity distinction, and physical-observable gates.
+
 ## Current promoted equation form
 
 The legacy core-theory notes repeatedly present UET around the following 7-term functional:
@@ -52,9 +63,9 @@ implementations.
 
 | Term | Symbol | Intended role | Legacy source language |
 | :-- | :-- | :-- | :-- |
-| Potential | `V(C)` | baseline energy or disequilibrium cost | Landau-Ginzburg style potential |
-| Gradient | `(\kappa / 2)|\nabla C|^2` | spatial memory / smoothing / inertia-like cost | Bekenstein-linked gradient penalty |
-| Coupling | `\beta C · I` | information-energy interaction | Landauer-linked coupling |
+| Potential | `V(C)` | cost or preference over relational interaction structure | Landau-Ginzburg-style comparator; units depend on lane |
+| Gradient | `(\kappa / 2)|\nabla C|^2` | penalty for sharp variation of the relational coordinate | gradient penalty; not automatically kinetic energy |
+| Coupling | `\beta C · I` | coupling between two declared model sectors | information interpretation is lane-specific; not a conversion law |
 | Exchange | `\gamma_J (J_in - J_out) · C` | semi-open system exchange | thermodynamic exchange |
 | Natural will | `W_N |\nabla \Omega|` | persistence / descent / action-like drive | action-principle-inspired term |
 | Game | `\beta_U V_game` | competition or coordination in multi-agent systems | Nash/game layer |
@@ -69,6 +80,8 @@ These points are stable enough to carry forward from legacy:
 - the project explicitly tried to combine thermodynamic, informational, geometric, and
   interaction terms in one structure
 - the 7-term view shaped the way later topic work was interpreted
+- the core variable was intended to describe system-level relations, even though older notes
+  used inconsistent capacity/mass/information labels
 
 ## What should still be treated cautiously
 
@@ -77,6 +90,8 @@ These points should **not** be overpromoted yet:
 - that every term has already been fully derived from first principles
 - that all parameter values in legacy notes remain canonical today
 - that every topic in the repo implements the full 7-term form directly
+- that `C` has one universal physical realization across all topics
+- that `\beta C I` means matter or interaction is converted into information
 
 The stable claim is weaker and safer:
 
@@ -86,6 +101,7 @@ The stable claim is weaker and safer:
 
 - [the-master-equation.md](./the-master-equation.md)
 - [term-by-term-stable-summary.md](./term-by-term-stable-summary.md)
+- [relational-C-and-physical-mapping.md](./relational-C-and-physical-mapping.md)
 - [parameter-registry-stable-summary.md](./parameter-registry-stable-summary.md)
 - [correspondence-and-reduction.md](./correspondence-and-reduction.md)
 

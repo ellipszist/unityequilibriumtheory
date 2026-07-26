@@ -30,7 +30,7 @@ Its purpose is simple:
 | `LEGACY_REPORTS/01_Core_Theory/KAPPA_GUIDE.md` | Archive-only | [03_Core_Theory/parameter-registry-stable-summary.md](./03_Core_Theory/parameter-registry-stable-summary.md) | Important background for `kappa`, but still better treated as historical support |
 | `LEGACY_REPORTS/01_Core_Theory/AXIOMATIC_BRIDGE.md` | Archive-only | [03_Core_Theory/axioms-and-principles.md](./03_Core_Theory/axioms-and-principles.md) | Conceptually related, but not yet rewritten as a stable promoted note |
 | `LEGACY_REPORTS/01_Core_Theory/MATH_SPECIFICATION.md` | Archive-only | none yet | Candidate source for a future formal math note |
-| `LEGACY_REPORTS/01_Core_Theory/SYMBOL_GLOSSARY.md` | Archive-only | none yet | Candidate source for a future glossary cleanup |
+| `LEGACY_REPORTS/01_Core_Theory/SYMBOL_GLOSSARY.md` | Archive-only / partially superseded | [03_Core_Theory/relational-C-and-physical-mapping.md](./03_Core_Theory/relational-C-and-physical-mapping.md) | Historical symbol mappings are retained for provenance; current `C` ontology and lane rules live in the new note |
 | `LEGACY_REPORTS/01_Core_Theory/SINGLE_SOURCE_OF_TRUTH.md` | Archive-only | none yet | Historical governance value, but not core theory-facing for new readers |
 
 ## Concept and origin files
