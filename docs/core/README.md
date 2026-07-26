@@ -35,6 +35,8 @@ Current foundation artifacts:
 - [Canonical C ontology and physical mapping](../UET_Documentation_Details/03_Core_Theory/relational-C-and-physical-mapping.md)
 - [Relational two-body baseline specification](./RELATIONAL_TWO_BODY_BASELINE_SPEC.md)
 - [Relational two-body baseline artifact](./artifacts/relational_two_body_baseline_verification.json)
+- [Mass-density correspondence specification](./MASS_DENSITY_CORRESPONDENCE_SPEC.md)
+- [Mass-density correspondence artifact](./artifacts/mass_density_correspondence_verification.json)
 
 > **Historical engine layer for candidate UET equation families**
 > **Version 0.9.0** | Last Updated: 2026-01-13

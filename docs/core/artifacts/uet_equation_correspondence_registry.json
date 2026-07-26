@@ -318,6 +318,40 @@
       "failure_mode": "geometry-only C is silently identified with mass or a normalized comparator is reported as a dimensional UET prediction",
       "next_hardening_step": "select one dimensional lane and test C-to-density or C-to-interaction mapping with a declared observable and holdout protocol"
     }
+,
+    {
+      "equation_id": "uet.mass_density.correspondence_identifiability",
+      "version": "mass-density-identifiability-v1",
+      "classification": "observable_definition",
+      "relation_or_code_path": "rho(x)=m_A W_epsilon(x-x_A)+m_B W_epsilon(x-x_B) tested against C_AB=-r_ref/r under common mass rescaling",
+      "variables": {
+        "C_AB": "dimensionless geometry-only relational interaction coordinate",
+        "rho": "kernel-smoothed normalized mass-density observable",
+        "m_A,m_B": "separate standard mass/amplitude inputs",
+        "epsilon": "declared smoothing width"
+      },
+      "mathematical_role": "identifiability gate for a candidate C-to-mass-density lane",
+      "standard_physics_counterpart": "kernel-smoothed point-mass density observable",
+      "observable_mapping": {
+        "status": "BLOCKED",
+        "proxy": "normalized density profile and integrated mass",
+        "reason": "same geometry-only C yields different density amplitude under mass rescaling"
+      },
+      "unit_lane": "normalized_code_mass_per_code_length",
+      "parameter_dimensions": "code-unit density and declared kernel width; SI map absent",
+      "source_or_origin": "standard density observable definition plus constructive identifiability diagnostic",
+      "assumptions": ["two point masses", "fixed geometry", "positive Gaussian kernel width", "common mass rescaling"],
+      "symmetry_and_conservation": "density integral recovers declared mass within grid tolerance; normalized shape is invariant under common mass rescaling",
+      "limiting_cases": ["same C with different density amplitude", "direct rho=f(C) is non-identifiable", "augmented amplitude/source map remains open"],
+      "implementation_paths": ["docs/core/mass_density_correspondence.py", "docs/core/MASS_DENSITY_CORRESPONDENCE_SPEC.md"],
+      "verifier_paths": ["docs/scripts/audit/audit_mass_density_correspondence.py", "docs/core/test/test_mass_density_correspondence.py", "docs/core/artifacts/mass_density_correspondence_verification.json"],
+      "evidence_class": "INTERNAL_CHECKED",
+      "proof_status": "checked local identifiability diagnostic; physical map open",
+      "downstream_dependencies": ["uet.relational.two_body_baseline", "uet.foundation.ontology", "uet.foundation.units", "uet.foundation.observable"],
+      "claim_boundary": "direct C-to-rho map blocked; synthetic diagnostic only",
+      "failure_mode": "density amplitude is silently identified with C or fitted from the same data",
+      "next_hardening_step": "declare an independent matter-amplitude/source state, dimensional map, and holdout observable before galaxy work"
+    }
 
   ]
 }
