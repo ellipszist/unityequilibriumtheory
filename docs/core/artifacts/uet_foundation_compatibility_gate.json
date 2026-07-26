@@ -5,8 +5,6 @@
   "audit_status": "PASS",
   "compatibility_status": "BLOCKED",
   "controlling_blockers": [
-    "legacy_information_operator",
-    "legacy_beta_unit_semantics",
     "matter_space_causal_response",
     "o2_to_legacy_double_well"
   ],
@@ -22,8 +20,7 @@
     "finding_count": 16,
     "status_counts": {
       "BLOCKED": 1,
-      "COMPATIBLE_CONDITIONAL": 6,
-      "CONFLICT": 2,
+      "COMPATIBLE_CONDITIONAL": 8,
       "NOT_ESTABLISHED": 6,
       "REJECTED_REDUCTION": 1
     },
@@ -110,41 +107,48 @@
         "legacy_comparator_source_sign": 1,
         "legacy_behavior_preserved": true
       },
-      "next_action": "Keep the legacy source sign out of variational claims and resolve the remaining information-operator equation separately."
+      "next_action": "Keep the legacy source sign out of variational claims; the normalized operator is audited separately below."
     },
     {
       "finding_id": "legacy_information_operator",
       "equation_family": "uet.legacy.information_field",
-      "status": "CONFLICT",
+      "status": "COMPATIBLE_CONDITIONAL",
       "severity": "high",
-      "declared_relation": "(box + m_I^2) I = beta C",
-      "observed_relation": "explicit first-order update dI/dt = laplacian - kappa_I*I + source with grid-specific boundary handling",
-      "interpretation": "The implementation is a parabolic numerical proxy, not the declared second-order/covariant box equation. The existing comment mentions a parabolic limit, but it does not specify a controlled derivation, scaling, or error bound.",
-      "old_theory_relation": "A standard diffusion or telegraph equation may be used as a separate constitutive lane, but it is not the same equation until the limiting map and units are declared.",
+      "declared_relation": "normalized canonical lane: dI/dt = Laplacian(I) - kappa_I*I - beta*C",
+      "observed_relation": "legacy_variational_v1 uses the periodic discrete Laplacian and the negative functional gradient; legacy_local keeps its historical boundary/update behavior",
+      "interpretation": "The historical box/wave relation is now explicitly a comparator. The canonical normalized lane has a matched periodic operator, functional gradient, source sign, and first-order update.",
+      "old_theory_relation": "This closes the scoped normalized operator contract, not a covariant box equation or a physical SI information field.",
       "evidence": [
         {
           "path": "docs/core/uet_master_equation.py",
           "kind": "source_contract",
           "details": {
-            "declared_box_equation": true,
+            "historical_box_equation_marked_comparator": true,
+            "canonical_gradient_flow_declared": true,
+            "canonical_periodic_laplacian_present": true,
+            "canonical_functional_gradient_present": true,
+            "canonical_negative_source_present": true,
             "first_order_update": true,
-            "one_dimensional_boundary_copy": true,
-            "declared_parabolic_qualification": true
+            "legacy_boundary_copy_preserved": true
           }
         }
       ],
-      "metrics": {},
-      "next_action": "Rename the legacy relation as a proxy or implement the declared operator; add a derivation, coefficient map, boundary contract, and convergence gate before physical interpretation."
+      "metrics": {
+        "canonical_operator_closed": true,
+        "legacy_behavior_preserved": true,
+        "historical_box_is_comparator": true
+      },
+      "next_action": "Keep the box/wave relation comparator-only; any covariant or dimensional information operator requires a separate derivation and units gate."
     },
     {
       "finding_id": "legacy_beta_unit_semantics",
       "equation_family": "uet.legacy.beta_landauer_bridge",
-      "status": "CONFLICT",
+      "status": "COMPATIBLE_CONDITIONAL",
       "severity": "high",
-      "declared_relation": "beta is sometimes described through Landauer energy",
-      "observed_relation": "the parameter contract declares beta dimensionless while the same module contains joule-labelled beta output/documentation",
-      "interpretation": "Landauer's k_B*T*ln(2) is a dimensional lower bound in joules. A normalized coupling proxy is a different quantity. The repository currently contains both labels in one parameter surface, so the identification is not unit-safe.",
-      "old_theory_relation": "The standard thermodynamic relation can remain an external constraint, but it cannot derive the normalized core beta without an explicit conversion and observable lane.",
+      "declared_relation": "beta_normalized is dimensionless; E_min = k_B*T*ln(2) is a separate SI lower bound",
+      "observed_relation": "public beta/beta_normalized compatibility API plus separate landauer_minimum_energy()",
+      "interpretation": "The normalized beta proxy and the joule-valued Landauer lower bound are now separate quantities in the parameter contract.",
+      "old_theory_relation": "No conversion from E_min to beta_normalized is claimed as a first-principles derivation; the conversion remains lane-specific and open.",
       "evidence": [
         {
           "path": "docs/core/uet_parameters.py",
@@ -152,13 +156,18 @@
           "details": {
             "normalized_beta_declared": true,
             "normalized_landauer_proxy_declared": true,
-            "joule_print_or_doc_claim_present": true,
-            "actual_landauer_function_present": true
+            "normalized_beta_property_present": true,
+            "separate_landauer_energy_present": true,
+            "joule_print_or_doc_claim_present": false,
+            "beta_unit_label_lines": []
           }
         }
       ],
-      "metrics": {},
-      "next_action": "Separate beta_normalized from landauer_energy_joule in the public API and remove or quarantine joule-labelled legacy output."
+      "metrics": {
+        "normalized_beta_contract_closed": true,
+        "stale_beta_unit_label_count": 0
+      },
+      "next_action": "Keep beta_normalized and E_min separate; add a topic-specific dimensional conversion only when its observable lane is declared."
     },
     {
       "finding_id": "legacy_energy_conservation_claim",
@@ -526,7 +535,7 @@
       "status": "NOT_ESTABLISHED",
       "severity": "medium",
       "declared_relation": "legacy verifier names heat-equation and Ginzburg-Landau limits",
-      "observed_relation": "the checks are spread/relaxation diagnostics and the remaining information-operator and unit conflicts remain unresolved",
+      "observed_relation": "the checks are spread/relaxation diagnostics and the canonical information operator and beta-unit contract are now scoped separately",
       "interpretation": "A limit label is not a proof of equation equivalence. The heat and GL diagnostics are useful internal comparators, but their residual, boundary, and exact operator maps are not yet sufficient to certify the old equations as special cases.",
       "old_theory_relation": "Standard heat/GL behavior can be used as benchmark baselines after an exact operator and boundary contract is declared.",
       "evidence": [
@@ -629,8 +638,8 @@
   ],
   "next_controller": "repair legacy variational/unit conflicts, complete foundation inventory, and repair matter-space causal leakage before downstream data tests",
   "source_hashes": {
-    "docs/core/uet_master_equation.py": "51abb35d74f837a1ae3f84bae20a7896b7a964579dfd08eeb8064a64adbb73b2",
-    "docs/core/uet_parameters.py": "d0311e96666ccb9999baf341f418a8d1954bff9c77c51c6cfef1a088ed5c2340",
+    "docs/core/uet_master_equation.py": "cd8429833a712ef23d36227988a62db4224621d9996e7a086580d5c42d8fe12d",
+    "docs/core/uet_parameters.py": "eff2fc6fe0fe35f18c49a032729e385c97b633a90e9a0bd3789be5051d316651",
     "docs/core/MATTER_SPACE_RESEARCH_SPEC.md": "3fca7d82e7f0c0c5e7904811eec7d81d772fe802492dbf2147b1ee95232fb2a4",
     "docs/core/UET_GR_NONCLOSED_RESEARCH_SPEC.md": "d15cc8e345a3df986f7608d48e3152134c4325dfa24e5dc9364b085fe37dd6c9",
     "docs/core/artifacts/uet_equation_correspondence_registry.json": "b2862e262fc808482cef7c05e5897fdd0401df351705962660e1e778e936a391",

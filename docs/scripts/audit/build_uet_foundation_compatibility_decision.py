@@ -99,7 +99,7 @@ def build_decision() -> dict[str, Any]:
             "mathematical_consistency": legacy_finding["status"],
             "standard_physics_correspondence": "BLOCKED",
             "old_theory_special_case": "NOT_ESTABLISHED",
-            "reason": "The canonical potential/derivative and information-source signs are closed conditionally in legacy_variational_v1; legacy_local remains a quarantined comparator, while the information operator and beta unit semantics still conflict.",
+            "reason": "The canonical potential/derivative, information operator/source, and normalized beta semantics are conditionally closed in legacy_variational_v1; legacy_local remains a quarantined comparator.",
             "evidence": [
                 rel(INPUTS["legacy_variational"]),
                 rel(INPUTS["compatibility"]),
@@ -175,7 +175,7 @@ def build_decision() -> dict[str, Any]:
             "mathematical_consistency": "UNIT_SEMANTICS_OPEN",
             "standard_physics_correspondence": "PARAMETER_POLICY_ONLY",
             "old_theory_special_case": "NOT_ESTABLISHED",
-            "reason": "The parameter registry mixes normalized, natural-unit, and SI lanes; beta cannot be promoted to Landauer energy without a conversion contract.",
+            "reason": "The parameter registry still mixes normalized, natural-unit, and SI lanes globally; the scoped beta_normalized/Landauer separation is closed, but cross-family conversion remains open.",
             "evidence": ["docs/core/artifacts/uet_foundation_compatibility_gate.json", "docs/core/uet_parameters.py"]
         },
         {
@@ -238,7 +238,7 @@ def build_decision() -> dict[str, Any]:
         {
             "principle_id": "P2_functional_derivative_closure",
             "verdict": "CANONICAL_PASS_LEGACY_COMPARATOR_QUARANTINED",
-            "meaning": "The canonical legacy_variational_v1 potential/source contract passes its scoped checks; legacy_local behavior is preserved as a non-variational comparator.",
+            "meaning": "The canonical legacy_variational_v1 C/I functional, information operator/source, and normalized beta contracts pass their scoped checks; legacy_local behavior is preserved as a non-variational comparator.",
             "evidence": [rel(INPUTS["legacy_variational"]), rel(INPUTS["matter_space"])],
         },
         {
@@ -295,28 +295,45 @@ def build_decision() -> dict[str, Any]:
             "canonical_mode": "legacy_variational_v1",
             "meaning": "The canonical information-source sign matches the declared positive coupling; the historical sign is comparator-only.",
         },
-    ]
-
-    hard_contradictions = [
         {
             "id": "legacy_information_operator",
             "status": legacy_info_finding["status"],
-            "meaning": "The declared box equation and the implemented first-order parabolic proxy are not the same equation without a derived limit and coefficient map.",
+            "canonical_mode": "legacy_variational_v1",
+            "meaning": "The normalized periodic I operator matches the declared functional gradient; historical box/wave wording is comparator-only.",
         },
         {
             "id": "legacy_beta_unit_semantics",
             "status": beta_finding["status"],
-            "meaning": "A dimensionless normalized coupling cannot be identified directly with Landauer energy in joules.",
+            "canonical_mode": "normalized_parameter_lane",
+            "meaning": "beta_normalized is dimensionless and E_min is a separate SI Landauer lower bound; no universal conversion is claimed.",
         },
     ]
 
+    hard_contradictions = []
+    remaining_dependency_blockers = [
+        {
+            "id": "matter_space_causal_response",
+            "status": "BLOCKED",
+            "meaning": "The full coupled matter-space candidate still fails its strict pre-arrival leakage/reference gate.",
+        },
+        {
+            "id": "foundation_inventory_and_correspondence",
+            "status": "BLOCKED",
+            "meaning": "The code-complete equation inventory, standard-physics correspondence, and global units gates remain open.",
+        },
+        {
+            "id": "o2_to_legacy_double_well",
+            "status": double_well_finding["status"],
+            "meaning": "The O(2)-to-legacy-double-well reduction remains comparator-only under its residual gate.",
+        },
+    ]
     return {
         "schema_version": "1.0",
         "artifact": "uet_foundation_compatibility_decision",
         "generated_at": date.today().isoformat(),
         "audit_status": "PASS",
         "decision": {
-            "mathematical_consistency": "BLOCKED_BY_REMAINING_LEGACY_OPERATOR_CONFLICT",
+            "mathematical_consistency": "CONDITIONAL_SCOPED_CANONICAL",
             "standard_physics_correspondence": "PARTIAL_CONDITIONAL_NOT_GLOBAL",
             "old_theory_nesting": "CONDITIONAL_ONLY",
             "global_uet_status": "FOUNDATION_NOT_CLOSED",
@@ -336,6 +353,7 @@ def build_decision() -> dict[str, Any]:
             "coverage_boundary": "The inventory is broad but not code-complete; code-only equations and full observable maps remain open.",
         },
         "hard_contradictions": hard_contradictions,
+        "remaining_dependency_blockers": remaining_dependency_blockers,
         "conditional_closures": conditional_closures,
         "family_matrix": family_rows,
         "principle_matrix": principle_rows,
@@ -346,8 +364,8 @@ def build_decision() -> dict[str, Any]:
             "matter_space_causal": "BLOCKED_FULL_CANDIDATE_REFERENCE_LANE_PASS",
             "global_open_universe": "NOT_ESTABLISHED",
         },
-        "claim_boundary": "The current repository evidence closes the potential/source contract only inside legacy_variational_v1, keeps legacy_local as a quarantined comparator, and retains declared operator/unit conflicts plus unresolved physical correspondences. It does not establish that all old theories are special cases of one UET equation, nor that UET is physically complete.",
-        "next_controller": "Resolve the remaining legacy information-operator and beta-unit conflicts, complete code-level F0-F3 correspondence and units, prove full coupled causal/energy behavior, then build observable and holdout tests before any universal or real-data claim.",
+        "claim_boundary": "The current repository evidence conditionally closes the normalized C/I operator and beta contract inside legacy_variational_v1, keeps legacy_local as a quarantined comparator, and retains unresolved standard-physics, causal, observable, and cross-family correspondence gates. It does not establish that all old theories are special cases of one UET equation, nor that UET is physically complete.",
+        "next_controller": "Complete code-level F0-F3 correspondence and units, prove full coupled causal/energy behavior, then build observable and holdout tests before any universal or real-data claim.",
         "evidence_inputs": {name: rel(path) for name, path in INPUTS.items()},
     }
 
@@ -368,9 +386,9 @@ def render_markdown(decision: dict[str, Any]) -> str:
         f"- Old-theory nesting: `{decision['decision']['old_theory_nesting']}`",
         f"- Overall foundation: `{decision['decision']['global_uet_status']}`",
         "",
-        "The current answer is therefore: the canonical legacy_variational_v1 potential/source contract",
-        "is conditionally closed, legacy_local remains a quarantined comparator, and remaining operator/unit",
-        "conflicts plus unresolved physical correspondences still block the foundation.",
+        "The current answer is therefore: the canonical legacy_variational_v1 C/I operator and normalized beta contract",
+        "is conditionally closed, legacy_local remains a quarantined comparator, and remaining dependency",
+        "gates still block global foundation promotion.",
         "",
         "## Conditional closures",
         "",
@@ -382,13 +400,24 @@ def render_markdown(decision: dict[str, Any]) -> str:
     lines.extend(
         [
             "",
-            "## Hard contradictions and conflicts",
+            "## Scoped contradictions",
             "",
             "| ID | Status | Meaning |",
             "|---|---|---|",
         ]
     )
     for item in decision["hard_contradictions"]:
+        lines.append(f"| `{item['id']}` | `{item['status']}` | {item['meaning']} |")
+    lines.extend(
+        [
+            "",
+            "## Remaining dependency blockers",
+            "",
+            "| ID | Status | Meaning |",
+            "|---|---|---|",
+        ]
+    )
+    for item in decision["remaining_dependency_blockers"]:
         lines.append(f"| `{item['id']}` | `{item['status']}` | {item['meaning']} |")
     lines.extend(
         [

@@ -74,7 +74,7 @@ def build_aggregate() -> dict[str, Any]:
             "name": "ontology",
             "status": "PASS_CONDITIONAL" if family_contract.get("coverage", {}).get("missing_core_paths") == [] else "BLOCKED",
             "evidence": ["family_contract", "compatibility"],
-            "controller": "lane-specific C mappings exist, but legacy semantics remain unresolved",
+            "controller": "lane-specific C mappings exist; universal physical identity remains disallowed",
         },
         {
             "id": "F2",
@@ -88,14 +88,14 @@ def build_aggregate() -> dict[str, Any]:
             "name": "units",
             "status": "BLOCKED",
             "evidence": ["family_contract", "compatibility"],
-            "controller": "normalized/natural/SI lanes and beta/Landauer semantics are not globally closed",
+            "controller": "normalized/natural/SI lanes remain mixed across families; the scoped beta/Landauer contract is separated",
         },
         {
             "id": "F4",
             "name": "derivation",
             "status": "BLOCKED" if compatibility.get("controlling_blockers") else "PASS_CONDITIONAL",
             "evidence": ["compatibility", "family_contract"],
-            "controller": "remaining information-operator/unit conflicts and open heuristic bridges remain",
+            "controller": "open heuristic bridges and family-specific correspondence remain",
         },
         {
             "id": "F5",
@@ -200,8 +200,7 @@ def build_aggregate() -> dict[str, Any]:
         "gate_summary": {"status_counts": status_counts, "gates": gates},
         "known_conflicts": [
             "legacy_local reaction is a quarantined non-variational comparator",
-            "legacy information box-equation declaration does not match its first-order grid proxy",
-            "normalized beta and SI Landauer energy are not the same quantity",
+            "canonical normalized C/I operator and beta semantics are conditionally closed in legacy_variational_v1",
             "matter-space causal response fails its pre-arrival leakage threshold",
             "current Heun/RK2 discrete domain-of-dependence is wider than the declared physical cone",
             "O2-to-legacy-double-well reduction fails its residual gate",

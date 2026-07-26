@@ -189,7 +189,7 @@ def evaluate_legacy_information_gradient_sign(master_text: str) -> dict[str, Any
         "The canonical source sign matches the negative gradient of the declared positive coupling. The historical sign is preserved only as a quarantined comparator.",
         "The source-sign contract is conditionally closed in the canonical lane, not globally for the historical implementation.",
         [{"path": rel(MASTER_PATH), "kind": "source_contract", "details": source_contract}],
-        "Keep the legacy source sign out of variational claims and resolve the remaining information-operator equation separately.",
+        "Keep the legacy source sign out of variational claims; the normalized operator is audited separately below.",
         metrics={
             "expected_canonical_source_sign": -1,
             "canonical_source_sign": -1,
@@ -241,49 +241,85 @@ def build_report() -> dict[str, Any]:
     findings = [evaluate_legacy_potential(master_text), evaluate_legacy_information_gradient_sign(master_text)]
 
     information_contract = {
-        "declared_box_equation": contains(master_text, "Implementing:")
-        and contains(master_text, "Information Field Equation of Motion"),
-        "first_order_update": contains(master_text, "dI_dt = laplacian - decay + source")
-        and contains(master_text, "return I + dt * dI_dt"),
-        "one_dimensional_boundary_copy": contains(master_text, "laplacian[0] = laplacian[1]"),
-        "declared_parabolic_qualification": contains(master_text, "Simplified for parabolic limit"),
+        "historical_box_equation_marked_comparator": contains(master_text, "historical box/wave relation") and contains(master_text, "comparator"),
+        "canonical_gradient_flow_declared": contains(master_text, "dI/dt = Laplacian(I) - kappa_I*I - beta*C"),
+        "canonical_periodic_laplacian_present": contains(master_text, "if mode == LEGACY_VARIATIONAL_OPERATOR_MODE") and contains(master_text, "laplacian = conserved_laplacian(I, dx)"),
+        "canonical_functional_gradient_present": contains(master_text, "periodic_gradient_energy(I, dx, 1.0)"),
+        "canonical_negative_source_present": contains(master_text, "source = -params.beta * C"),
+        "first_order_update": contains(master_text, "dI_dt = laplacian - decay + source") and contains(master_text, "return I + dt * dI_dt"),
+        "legacy_boundary_copy_preserved": contains(master_text, "laplacian[0] = laplacian[1]"),
     }
+    information_contract_closed = all(
+        information_contract[key]
+        for key in (
+            "historical_box_equation_marked_comparator",
+            "canonical_gradient_flow_declared",
+            "canonical_periodic_laplacian_present",
+            "canonical_functional_gradient_present",
+            "canonical_negative_source_present",
+            "first_order_update",
+        )
+    )
     findings.append(
         finding(
             "legacy_information_operator",
             "uet.legacy.information_field",
-            "CONFLICT" if information_contract["declared_box_equation"] and information_contract["first_order_update"] else "NOT_ESTABLISHED",
+            "COMPATIBLE_CONDITIONAL" if information_contract_closed else "CONFLICT",
             "high",
-            "(box + m_I^2) I = beta C",
-            "explicit first-order update dI/dt = laplacian - kappa_I*I + source with grid-specific boundary handling",
-            "The implementation is a parabolic numerical proxy, not the declared second-order/covariant box equation. The existing comment mentions a parabolic limit, but it does not specify a controlled derivation, scaling, or error bound.",
-            "A standard diffusion or telegraph equation may be used as a separate constitutive lane, but it is not the same equation until the limiting map and units are declared.",
+            "normalized canonical lane: dI/dt = Laplacian(I) - kappa_I*I - beta*C",
+            "legacy_variational_v1 uses the periodic discrete Laplacian and the negative functional gradient; legacy_local keeps its historical boundary/update behavior",
+            "The historical box/wave relation is now explicitly a comparator. The canonical normalized lane has a matched periodic operator, functional gradient, source sign, and first-order update.",
+            "This closes the scoped normalized operator contract, not a covariant box equation or a physical SI information field.",
             [{"path": rel(MASTER_PATH), "kind": "source_contract", "details": information_contract}],
-            "Rename the legacy relation as a proxy or implement the declared operator; add a derivation, coefficient map, boundary contract, and convergence gate before physical interpretation.",
+            "Keep the box/wave relation comparator-only; any covariant or dimensional information operator requires a separate derivation and units gate.",
+            metrics={
+                "canonical_operator_closed": information_contract_closed,
+                "legacy_behavior_preserved": information_contract["legacy_boundary_copy_preserved"],
+                "historical_box_is_comparator": information_contract["historical_box_equation_marked_comparator"],
+            },
         )
     )
+    beta_unit_label_lines = [
+        line.strip()
+        for line in parameters_text.splitlines()
+        if ("beta" in line.lower() or "β" in line)
+        and any(token in line for token in (" J", "[J]", "joule", "eV"))
+        and not any(marker in line.lower() for marker in ("not joule", "dimensionless", "normalized proxy"))
+    ]
 
     beta_contract = {
         "normalized_beta_declared": contains(parameters_text, "Dimensionless normalized coupling"),
         "normalized_landauer_proxy_declared": contains(parameters_text, "not the SI Landauer energy"),
-        "joule_print_or_doc_claim_present": contains(parameters_text, "J") and contains(parameters_text, "params.beta"),
-        "actual_landauer_function_present": contains(parameters_text, "def landauer_minimum_energy"),
+        "normalized_beta_property_present": contains(parameters_text, "def beta_normalized"),
+        "separate_landauer_energy_present": contains(parameters_text, "def landauer_minimum_energy") and contains(parameters_text, "E_min ="),
+        "joule_print_or_doc_claim_present": bool(beta_unit_label_lines),
+        "beta_unit_label_lines": beta_unit_label_lines,
     }
+    beta_contract_closed = (
+        beta_contract["normalized_beta_declared"]
+        and beta_contract["normalized_landauer_proxy_declared"]
+        and beta_contract["normalized_beta_property_present"]
+        and beta_contract["separate_landauer_energy_present"]
+        and not beta_contract["joule_print_or_doc_claim_present"]
+    )
     findings.append(
         finding(
             "legacy_beta_unit_semantics",
             "uet.legacy.beta_landauer_bridge",
-            "CONFLICT" if beta_contract["normalized_beta_declared"] and beta_contract["joule_print_or_doc_claim_present"] else "NOT_ESTABLISHED",
+            "COMPATIBLE_CONDITIONAL" if beta_contract_closed else "CONFLICT",
             "high",
-            "beta is sometimes described through Landauer energy",
-            "the parameter contract declares beta dimensionless while the same module contains joule-labelled beta output/documentation",
-            "Landauer's k_B*T*ln(2) is a dimensional lower bound in joules. A normalized coupling proxy is a different quantity. The repository currently contains both labels in one parameter surface, so the identification is not unit-safe.",
-            "The standard thermodynamic relation can remain an external constraint, but it cannot derive the normalized core beta without an explicit conversion and observable lane.",
+            "beta_normalized is dimensionless; E_min = k_B*T*ln(2) is a separate SI lower bound",
+            "public beta/beta_normalized compatibility API plus separate landauer_minimum_energy()",
+            "The normalized beta proxy and the joule-valued Landauer lower bound are now separate quantities in the parameter contract.",
+            "No conversion from E_min to beta_normalized is claimed as a first-principles derivation; the conversion remains lane-specific and open.",
             [{"path": rel(PARAMETERS_PATH), "kind": "source_contract", "details": beta_contract}],
-            "Separate beta_normalized from landauer_energy_joule in the public API and remove or quarantine joule-labelled legacy output.",
+            "Keep beta_normalized and E_min separate; add a topic-specific dimensional conversion only when its observable lane is declared.",
+            metrics={
+                "normalized_beta_contract_closed": beta_contract_closed,
+                "stale_beta_unit_label_count": len(beta_unit_label_lines),
+            },
         )
     )
-
     energy_contract = {
         "lyapunov_not_conservation_disclosed": contains(master_text, "not a proof of full energy conservation"),
         "gradient_descent_language": contains(master_text, "Free Energy Minimization"),
@@ -511,7 +547,7 @@ def build_report() -> dict[str, Any]:
             "NOT_ESTABLISHED",
             "medium",
             "legacy verifier names heat-equation and Ginzburg-Landau limits",
-            "the checks are spread/relaxation diagnostics and the remaining information-operator and unit conflicts remain unresolved",
+            "the checks are spread/relaxation diagnostics and the canonical information operator and beta-unit contract are now scoped separately",
             "A limit label is not a proof of equation equivalence. The heat and GL diagnostics are useful internal comparators, but their residual, boundary, and exact operator maps are not yet sufficient to certify the old equations as special cases.",
             "Standard heat/GL behavior can be used as benchmark baselines after an exact operator and boundary contract is declared.",
             [{"path": rel(MASTER_PATH), "kind": "legacy_verifier_names", "details": ["verify_heat_equation_limit", "verify_ginzburg_landau_limit"]}],

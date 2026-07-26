@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "artifact": "uet_legacy_variational_closure",
   "generated_at": "2026-07-26",
   "audit_status": "PASS",
@@ -8,10 +8,7 @@
   "canonical_mode": "legacy_variational_v1",
   "legacy_default_mode": "legacy_local",
   "legacy_behavior_preserved": true,
-  "unresolved_scope_conflicts": [
-    "legacy_information_operator_equation",
-    "legacy_beta_unit_semantics"
-  ],
+  "unresolved_scope_conflicts": [],
   "equation_family": "uet.legacy.master_functional",
   "evidence_inputs": {
     "master_equation": "docs/core/uet_master_equation.py"
@@ -65,8 +62,25 @@
         "reason": "Historical legacy_local source sign is retained for compatibility and is not claimed to be variational."
       },
       "claim_boundary": "Canonical I-source sign is closed only in legacy_variational_v1; legacy_local remains a historical comparator."
+    },
+    {
+      "finding_id": "legacy_information_operator",
+      "status": "COMPATIBLE_CONDITIONAL",
+      "declared_relation": "Omega_I=1/2|grad I|^2+1/2*kappa_I*I^2+beta*C*I in the normalized periodic lane",
+      "canonical_coded_relation": "dI/dt=Laplacian(I)-kappa_I*I-beta*C",
+      "legacy_comparator_relation": "legacy_local retains its historical first-order/boundary behavior",
+      "contract": {
+        "historical_box_is_comparator": true,
+        "canonical_gradient_flow_declared": true,
+        "periodic_laplacian": true,
+        "periodic_gradient_energy": true,
+        "canonical_source": true,
+        "first_order_update": true
+      },
+      "legacy_behavior_preserved": true,
+      "claim_boundary": "The normalized periodic I operator is conditionally closed; covariant box dynamics and SI interpretation remain outside this lane."
     }
   ],
   "principle": "A dynamics implementation is variational only when every coupled state equation is the negative derivative of the same declared functional in the same unit and boundary lane.",
-  "next_action": "Use legacy_variational_v1 for the closed potential/source contract; keep legacy_local quarantined and audit the remaining information-operator equation and beta units separately."
+  "next_action": "Use legacy_variational_v1 for the conditionally closed normalized C/I contract; keep legacy_local quarantined and route covariant, SI, and standard-physics correspondence questions through their own gates."
 }

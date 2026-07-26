@@ -18,7 +18,9 @@ def test_aggregate_is_generated_and_foundation_remains_blocked():
     assert "causal_discretization" in artifact["evidence_inputs"]
     assert "legacy_information_gradient_sign" not in artifact["controlling_blockers"]
     assert "legacy_potential_derivative_pair" not in artifact["controlling_blockers"]
-    assert "legacy_information_operator" in artifact["controlling_blockers"]
+    assert "legacy_information_operator" not in artifact["controlling_blockers"]
+    assert "legacy_beta_unit_semantics" not in artifact["controlling_blockers"]
+    assert "matter_space_causal_response" in artifact["controlling_blockers"]
 
 
 def test_all_f0_to_f8_gates_are_explicit():

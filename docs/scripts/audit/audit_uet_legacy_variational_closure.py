@@ -106,12 +106,35 @@ def information_gradient_sign(master_text: str) -> dict[str, Any]:
     }
 
 
+def information_operator_contract(master_text: str) -> dict[str, Any]:
+    """Check that the canonical I operator matches its declared normalized functional."""
+
+    contract = {
+        "historical_box_is_comparator": "historical box/wave relation" in master_text and "comparator" in master_text,
+        "canonical_gradient_flow_declared": "dI/dt = Laplacian(I) - kappa_I*I - beta*C" in master_text,
+        "periodic_laplacian": "laplacian = conserved_laplacian(I, dx)" in master_text,
+        "periodic_gradient_energy": "periodic_gradient_energy(I, dx, 1.0)" in master_text,
+        "canonical_source": "source = -params.beta * C" in master_text,
+        "first_order_update": "dI_dt = laplacian - decay + source" in master_text and "return I + dt * dI_dt" in master_text,
+    }
+    closed = all(contract.values())
+    return {
+        "finding_id": "legacy_information_operator",
+        "status": "COMPATIBLE_CONDITIONAL" if closed else "NOT_ESTABLISHED",
+        "declared_relation": "Omega_I=1/2|grad I|^2+1/2*kappa_I*I^2+beta*C*I in the normalized periodic lane",
+        "canonical_coded_relation": "dI/dt=Laplacian(I)-kappa_I*I-beta*C",
+        "legacy_comparator_relation": "legacy_local retains its historical first-order/boundary behavior",
+        "contract": contract,
+        "legacy_behavior_preserved": contract["historical_box_is_comparator"],
+        "claim_boundary": "The normalized periodic I operator is conditionally closed; covariant box dynamics and SI interpretation remain outside this lane.",
+    }
+
 def build_report() -> dict[str, Any]:
     master_text = MASTER_PATH.read_text(encoding="utf-8", errors="replace")
-    findings = [potential_pair(master_text), information_gradient_sign(master_text)]
+    findings = [potential_pair(master_text), information_gradient_sign(master_text), information_operator_contract(master_text)]
     blockers = [item["finding_id"] for item in findings if item["status"] == "CONTRADICTION"]
     return {
-        "schema_version": "1.1",
+        "schema_version": "1.2",
         "artifact": "uet_legacy_variational_closure",
         "generated_at": date.today().isoformat(),
         "audit_status": "PASS",
@@ -120,15 +143,12 @@ def build_report() -> dict[str, Any]:
         "canonical_mode": "legacy_variational_v1",
         "legacy_default_mode": "legacy_local",
         "legacy_behavior_preserved": True,
-        "unresolved_scope_conflicts": [
-            "legacy_information_operator_equation",
-            "legacy_beta_unit_semantics",
-        ],
+        "unresolved_scope_conflicts": [],
         "equation_family": "uet.legacy.master_functional",
         "evidence_inputs": {"master_equation": rel(MASTER_PATH)},
         "findings": findings,
         "principle": "A dynamics implementation is variational only when every coupled state equation is the negative derivative of the same declared functional in the same unit and boundary lane.",
-        "next_action": "Use legacy_variational_v1 for the closed potential/source contract; keep legacy_local quarantined and audit the remaining information-operator equation and beta units separately.",
+        "next_action": "Use legacy_variational_v1 for the conditionally closed normalized C/I contract; keep legacy_local quarantined and route covariant, SI, and standard-physics correspondence questions through their own gates.",
     }
 
 

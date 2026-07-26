@@ -163,6 +163,24 @@ def conserved_laplacian(field: np.ndarray, dx: float) -> np.ndarray:
     return lap
 
 
+def periodic_gradient_energy(
+    field: np.ndarray, dx: float, coefficient: float = 1.0
+) -> float:
+    """Return the periodic discrete gradient energy in the normalized lane."""
+    array = np.asarray(field, dtype=float)
+    if array.ndim == 0:
+        return 0.0
+    spacing = float(dx)
+    if not np.isfinite(spacing) or spacing <= 0.0:
+        raise ValueError("dx must be finite and positive")
+    gradient_sq = 0.0
+    for axis, size in enumerate(array.shape):
+        if size <= 1:
+            continue
+        face_gradient = (np.roll(array, -1, axis=axis) - array) / spacing
+        gradient_sq += float(np.sum(face_gradient**2))
+    return 0.5 * float(coefficient) * gradient_sq * _volume_element(array, spacing)
+
 def spectral_conserved_order_step(
     C: np.ndarray,
     non_gradient_force: np.ndarray,
@@ -371,27 +389,34 @@ def information_propagator_step(
     params: UETParameters,
     operator_mode: Optional[str] = None,
 ) -> np.ndarray:
-    """
-    NEW: Information Field Equation of Motion (EoM)
-    Implementing: (□ + m_I²) I = β C
+    """Advance the information field in the selected operator lane.
 
-    This solves the "Circular Logic" audit by giving I its own propagation dynamics.
-    Information is no longer just a function of mass; it travels as a field.
+    In ``legacy_variational_v1`` the normalized contract is the first-order
+    gradient flow
+
+        dI/dt = Laplacian(I) - kappa_I*I - beta*C,
+
+    which is the negative functional derivative of the declared I-sector
+    ``1/2|grad I|^2 + 1/2*kappa_I*I^2 + beta*C*I`` under periodic boundaries.
+    The historical box/wave relation is retained only as a comparator; it is
+    not silently presented as the equation implemented by this function.
     """
-    # Diffusion/Wave operator (Simplified for parabolic limit)
-    if I.ndim == 1:
+    mode = resolve_operator_mode(params, operator_mode)
+    if mode == LEGACY_VARIATIONAL_OPERATOR_MODE:
+        # The canonical normalized lane uses the periodic discrete operator
+        # whose adjoint is the gradient term in omega_functional_complete().
+        laplacian = conserved_laplacian(I, dx)
+    elif I.ndim == 1:
         laplacian = np.zeros_like(I)
         if len(I) > 2:
             laplacian[1:-1] = (I[2:] - 2 * I[1:-1] + I[:-2]) / dx**2
             laplacian[0] = laplacian[1]
             laplacian[-1] = laplacian[-2]
     else:
-        laplacian = conserved_laplacian(I, dx)  # periodic finite-difference Laplacian for 2D/3D
+        laplacian = conserved_laplacian(I, dx)
 
-    # Governing Equation: dI/dt = D∇²I - m_I²I + βC
-    # Where m_I is the "Information Decay" or "Forgetfulness" of Space
-    decay = params.kappa_I * I  # Reusing kappa as a dispersion/mass term proxy
-    mode = resolve_operator_mode(params, operator_mode)
+    # Legacy/default paths preserve their historical parabolic update.
+    decay = params.kappa_I * I
     if mode == SPATIAL_COUPLED_V2_OPERATOR_MODE:
         coeff = getattr(params, "spatial_v2_information_coupling", 1.0)
         activity = spatial_interface_activity(C, dx, params)
@@ -407,7 +432,6 @@ def information_propagator_step(
 
     dI_dt = laplacian - decay + source
     return I + dt * dI_dt
-
 
 # =============================================================================
 # AXIOM 3: SPACE = MEMORY - GRADIENT TERM
@@ -755,6 +779,10 @@ def omega_functional_complete(
     ]
 
     Provides a baseline functional plus opt-in candidate operators; it does not close all axioms.
+
+    In ``legacy_variational_v1`` the C/I sector is the scoped normalized
+    periodic gradient-flow contract. Exchange, game, inertia, and SI meaning
+    remain outside that contract.
     """
     if params is None:
         params = UETParameters()
@@ -762,6 +790,8 @@ def omega_functional_complete(
     # --- INTEGRITY KILL SWITCH ---
     if INTEGRITY_KILL_SWITCH:
         return 0.0  # Force zero energy / failure
+
+    mode = resolve_operator_mode(params, operator_mode)
 
     # === A1: Potential term ===
     V = potential_V(C, params)
@@ -771,15 +801,23 @@ def omega_functional_complete(
         potential_integral = np.sum(V) * dx**C.ndim
 
     # === A3: Gradient term ===
-    gradient_integral = gradient_term(C, dx, params)
+    gradient_integral = (
+        periodic_gradient_energy(C, dx, params.kappa)
+        if mode == LEGACY_VARIATIONAL_OPERATOR_MODE
+        else gradient_term(C, dx, params)
+    )
 
     # === A2: Information coupling ===
     if I is not None:
-        info_integral = information_coupling(C, I, dx, params, operator_mode=operator_mode)
+        info_integral = information_coupling(C, I, dx, params, operator_mode=mode)
         info_volume = _volume_element(I, dx)
         # The header's |grad I|² + m_I² I² terms are now explicit.  The
         # normalized core uses kappa_I as the candidate m_I² coefficient.
-        info_gradient_integral = 0.5 * np.sum(gradient_magnitude_squared(I, dx)) * info_volume
+        info_gradient_integral = (
+            periodic_gradient_energy(I, dx, 1.0)
+            if mode == LEGACY_VARIATIONAL_OPERATOR_MODE
+            else 0.5 * np.sum(gradient_magnitude_squared(I, dx)) * info_volume
+        )
         info_mass_integral = 0.5 * getattr(params, "kappa_I", 0.0) * np.sum(I**2) * info_volume
     else:
         info_integral = 0.0
@@ -1378,8 +1416,10 @@ def dynamics_step_complete(
     )
     reaction = -reaction_derivative(C, params)
 
-    # Diffusion term: κ∇²C
-    if C.ndim == 1:
+    # Diffusion term: kappa * periodic Laplacian in the canonical lane.
+    if mode == LEGACY_VARIATIONAL_OPERATOR_MODE:
+        laplacian = conserved_laplacian(C, dx)
+    elif C.ndim == 1:
         laplacian = np.zeros_like(C)
         if len(C) > 2:
             laplacian[1:-1] = (C[2:] - 2 * C[1:-1] + C[:-2]) / dx**2
@@ -1391,13 +1431,19 @@ def dynamics_step_complete(
         if C.shape[0] > 2 and C.shape[1] > 2:
             laplacian[1:-1, 1:-1] = (
                 C[2:, 1:-1] - 2 * C[1:-1, 1:-1] + C[:-2, 1:-1]
-            ) / dx**2 + (C[1:-1, 2:] - 2 * C[1:-1, 1:-1] + C[1:-1, :-2]) / dx**2
+            ) / dx**2 + (
+                C[1:-1, 2:] - 2 * C[1:-1, 1:-1] + C[1:-1, :-2]
+            ) / dx**2
         elif C.shape[1] > 2:  # 1xN case
-            laplacian[0, 1:-1] = (C[0, 2:] - 2 * C[0, 1:-1] + C[0, :-2]) / dx**2
+            laplacian[0, 1:-1] = (
+                C[0, 2:] - 2 * C[0, 1:-1] + C[0, :-2]
+            ) / dx**2
             laplacian[0, 0] = laplacian[0, 1]
             laplacian[0, -1] = laplacian[0, -2]
         elif C.shape[0] > 2:  # Nx1 case
-            laplacian[1:-1, 0] = (C[2:, 0] - 2 * C[1:-1, 0] + C[:-2, 0]) / dx**2
+            laplacian[1:-1, 0] = (
+                C[2:, 0] - 2 * C[1:-1, 0] + C[:-2, 0]
+            ) / dx**2
             laplacian[0, 0] = laplacian[1, 0]
             laplacian[-1, 0] = laplacian[-2, 0]
 

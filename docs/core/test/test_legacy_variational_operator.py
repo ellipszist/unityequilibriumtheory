@@ -10,8 +10,10 @@ from docs.core.uet_master_equation import (
     legacy_reaction_derivative,
     potential_V,
     potential_derivative,
+    conserved_laplacian,
+    omega_functional_complete,
 )
-from docs.core.uet_parameters import UETParameters
+from docs.core.uet_parameters import UETParameters, landauer_minimum_energy
 
 
 def _pure_params(**overrides):
@@ -83,3 +85,54 @@ def test_variational_mode_rejects_unclosed_legacy_forces():
             np.ones(4), dt=0.01, params=params,
             operator_mode=LEGACY_VARIATIONAL_OPERATOR_MODE,
         )
+
+def test_variational_information_operator_uses_periodic_laplacian():
+    params = _pure_params(beta=0.0, kappa_I=0.0)
+    I = np.array([0.0, 1.0, 0.0, 0.0, 0.0])
+    C = np.zeros_like(I)
+    updated = information_propagator_step(
+        I, C, dx=1.0, dt=0.1, params=params,
+        operator_mode=LEGACY_VARIATIONAL_OPERATOR_MODE,
+    )
+    expected = I + 0.1 * conserved_laplacian(I, 1.0)
+    np.testing.assert_allclose(updated, expected, rtol=0.0, atol=1.0e-14)
+    assert updated[0] > 0.0
+    assert updated[-1] == 0.0
+
+
+def test_canonical_functional_has_matching_C_and_I_directional_derivative():
+    params = _pure_params(
+        kappa=0.2,
+        beta=0.4,
+        kappa_I=0.3,
+    )
+    dx = 0.25
+    C = np.array([0.2, -0.1, 0.35, 0.05, -0.25, 0.15])
+    I = np.array([-0.3, 0.1, 0.2, -0.15, 0.05, 0.25])
+    dC = np.array([0.1, -0.2, 0.05, 0.3, -0.1, 0.15])
+    dI = np.array([-0.2, 0.1, 0.25, -0.05, 0.2, -0.1])
+    epsilon = 1.0e-6
+
+    def omega(c_field, i_field):
+        return omega_functional_complete(
+            c_field,
+            I=i_field,
+            dx=dx,
+            params=params,
+            operator_mode=LEGACY_VARIATIONAL_OPERATOR_MODE,
+        )
+
+    finite_difference = (omega(C + epsilon * dC, I + epsilon * dI) - omega(
+        C - epsilon * dC, I - epsilon * dI
+    )) / (2.0 * epsilon)
+    grad_C = potential_derivative(C, params) - params.kappa * conserved_laplacian(C, dx) + params.beta * I
+    grad_I = -conserved_laplacian(I, dx) + params.kappa_I * I + params.beta * C
+    directional = float(np.sum((grad_C * dC + grad_I * dI) * dx))
+    np.testing.assert_allclose(finite_difference, directional, rtol=1.0e-6, atol=1.0e-8)
+
+
+def test_beta_normalized_alias_is_not_the_SI_Landauer_energy():
+    params = _pure_params(beta=0.23)
+    assert params.beta_normalized == params.beta
+    assert landauer_minimum_energy(300.0) > 0.0
+    assert params.beta_normalized != landauer_minimum_energy(300.0)

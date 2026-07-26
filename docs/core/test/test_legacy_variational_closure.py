@@ -22,6 +22,7 @@ def test_legacy_variational_audit_is_generated_and_conditionally_closed():
     assert artifact["canonical_mode"] == "legacy_variational_v1"
     assert artifact["legacy_default_mode"] == "legacy_local"
     assert artifact["legacy_behavior_preserved"] is True
+    assert artifact["unresolved_scope_conflicts"] == []
 
 
 def test_canonical_potential_pair_passes_and_legacy_comparator_is_quarantined():
@@ -41,3 +42,10 @@ def test_canonical_information_source_sign_passes_and_legacy_comparator_is_quara
     assert finding["legacy_comparator_source_sign"] == 1
     assert finding["c_source_sign_matches"] is True
     assert finding["legacy_comparator"]["status"] == "QUARANTINED_COMPARATOR"
+
+def test_canonical_information_operator_is_conditionally_closed():
+    finding = findings_by_id(load_artifact())["legacy_information_operator"]
+    assert finding["status"] == "COMPATIBLE_CONDITIONAL"
+    assert finding["contract"]["periodic_laplacian"] is True
+    assert finding["contract"]["periodic_gradient_energy"] is True
+    assert finding["contract"]["historical_box_is_comparator"] is True

@@ -196,12 +196,12 @@ def calculate_scaling_ratio(scale_from: float, scale_to: float) -> float:
 
 def calculate_information_density(scale: float, temperature: float = 293.15) -> float:
     """
-    Derive Information Density ρ_info from the Scale Link.
-    ρ_info = β / κ
+    Derive Information Density ρ_info from the normalized scale link.
+    ρ_info = beta_normalized / κ
     """
-    beta = calculate_beta_landauer(temperature)
+    beta_normalized = calculate_beta_landauer(temperature)
     kappa = calculate_dynamic_kappa(scale)
-    return beta / kappa
+    return beta_normalized / kappa
 
 
 def derive_parameters_first_principles(
@@ -211,8 +211,8 @@ def derive_parameters_first_principles(
     **overrides
 ) -> UETParameters:
     """
-    Derive UET parameters from first principles using Landauer coupling.
-    Allows for optional field overrides for specific axiomatic requirements.
+    Derive normalized-lane UET parameters using a Landauer-derived proxy.
+    The SI Landauer lower bound remains a separate dimensional quantity.
     """
     # 1. Calculation from Scale Link (Structural Unity - A2/A3)
     # We default to the dynamic scale-link unless kappa is explicitly overridden.
@@ -225,15 +225,15 @@ def derive_parameters_first_principles(
         "beta": beta,
         "temperature": temperature,
         "scale": f"{scale:.2e}m",
-        "origin": "First-Principles (Landauer)",
+        "origin": "normalized Landauer proxy; SI lower bound kept separate",
         "sigma_interaction": 1.0,
         "tau_inertia": 0.01, # Standard Systemic Inertia
     }
 
     # Resolving Thermodynamic vs Field Coupling Beta
     # [AXIOMATIC PURGE]: Legacy scale-dependent beta overrides removed.
-    # All coupling parameters are now derived solely from Landauer Principle
-    # and the Dynamic Scale Link.
+    # The normalized proxy and dynamic scale link are compatibility inputs;
+    # they are not an SI-energy derivation of the core beta.
 
     # Apply Overrides (Final Pass)
     data.update(overrides)
@@ -315,6 +315,11 @@ class UETParameters:
     temperature: float = 293.15  # Kelvin
     scale: str = ""  # Scale name
     origin: str = ""  # Derivation source
+
+    @property
+    def beta_normalized(self) -> float:
+        """Dimensionless normalized coupling for the normalized core lane."""
+        return float(self.beta)
 
     def __post_init__(self):
         """Standard detections for sabotaged parameters."""
@@ -399,7 +404,7 @@ def get_params_first_principles(domain_name: str) -> UETParameters:
 
     Example:
         >>> params = get_params_first_principles("fluid")
-        >>> print(f"κ = {params.kappa:.4f}, β = {params.beta:.2e} J")
+        >>> print(f"kappa = {params.kappa:.4f}, beta_normalized = {params.beta:.2e}")
     """
     if domain_name not in _DOMAIN_PRESETS:
         available = list(_DOMAIN_PRESETS.keys())
@@ -491,8 +496,8 @@ PARAMETER_POLICY = """
 ║  Use derive_parameters_first_principles() or get_params_first_      ║
 ║  principles() for calculating parameters from physical laws:         ║
 ║                                                                      ║
-║    β = k_B * T * ln(2)           (Landauer Principle)                ║
-║    κ = β / ρ_info                (Information-Physical coupling)     ║
+║    E_min = k_B * T * ln(2) [J]   (SI lower bound only)              ║
+║    β_norm = normalize(E_min)     (dimensionless proxy, lane-specific)║
 ║                                                                      ║
 ║  Domain presets available: quantum, nuclear_binding, fluid,         ║
 ║  galactic, biological                                          ║
@@ -524,14 +529,15 @@ if __name__ == "__main__":
     print("FIRST-PRINCIPLES CALCULATION EXAMPLES")
     print("=" * 70)
 
-    # Example 1: Landauer Principle at room temperature
-    print("\n[1] Landauer Principle at 300K:")
-    beta_room = calculate_beta_landauer(300)
-    beta_ev = beta_room / E_CHARGE
-    print(f"    β = {beta_room:.4e} J = {beta_ev:.6f} eV")
-    print(f"    Expected: 0.017921 eV (Topic 0.13 validation)")
-    print(f"    Status: {'PASS' if abs(beta_ev - 0.017921) < 0.001 else 'FAIL'}")
-
+    # Example 1: Landauer lower bound and normalized proxy at 300K.
+    print("\n[1] Landauer lower bound at 300K:")
+    beta_normalized_room = calculate_beta_landauer(300)
+    landauer_energy_joule = landauer_minimum_energy(300)
+    landauer_energy_ev = landauer_energy_joule / E_CHARGE
+    print(f"    beta_normalized = {beta_normalized_room:.4e} [1]")
+    print(f"    E_min = {landauer_energy_joule:.4e} J = {landauer_energy_ev:.6f} eV")
+    print(f"    Expected energy = 0.017921 eV (Topic 0.13 comparator)")
+    print(f"    Status: {'PASS' if abs(landauer_energy_ev - 0.017921) < 0.001 else 'FAIL'}")
     # Example 2: Domain-specific parameters
     print("\n[2] Domain-Specific Parameters (First-Principles):")
     domains = ["quantum", "fluid", "galactic", "biological"]
@@ -539,7 +545,7 @@ if __name__ == "__main__":
         params = get_params_first_principles(domain)
         print(f"    {domain}:")
         print(f"        κ = {params.kappa:.6f}")
-        print(f"        β = {params.beta:.4e} J")
+        print(f"        beta_normalized = {params.beta:.4e} [1]")
         print(f"        scale = {params.scale}, origin = {params.origin}")
 
     # Example 3: Scaling between domains
