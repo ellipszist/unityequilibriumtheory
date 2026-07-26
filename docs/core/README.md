@@ -33,6 +33,8 @@ Current foundation artifacts:
 - [Machine-readable aggregate status](./artifacts/uet_foundation_status_aggregate.json)
 - [Thought experiment: observation as past behavior](./THOUGHT_EXPERIMENT_OBSERVATION_PAST_BEHAVIOR.md)
 - [Canonical C ontology and physical mapping](../UET_Documentation_Details/03_Core_Theory/relational-C-and-physical-mapping.md)
+- [Relational two-body baseline specification](./RELATIONAL_TWO_BODY_BASELINE_SPEC.md)
+- [Relational two-body baseline artifact](./artifacts/relational_two_body_baseline_verification.json)
 
 > **Historical engine layer for candidate UET equation families**
 > **Version 0.9.0** | Last Updated: 2026-01-13

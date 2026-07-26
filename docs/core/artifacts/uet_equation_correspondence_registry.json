@@ -282,6 +282,42 @@
       "claim_boundary": "closed-limit correspondence; global open-universe claim unresolved",
       "failure_mode": "a validated null model is treated as validation of the non-closed extension",
       "next_hardening_step": "complete physical stress-energy and benchmark correspondence"
+    },
+    {
+      "equation_id": "uet.relational.two_body_baseline",
+      "version": "relational-two-body-v1",
+      "classification": "baseline_or_comparator",
+      "relation_or_code_path": "C_AB=-r_ref/r, U_AB=-G*m_A*m_B/r=U_0*C_AB, F_A=-grad_xA U_AB, and t_o=t_e+|x_A(t_e)-x_O|/u",
+      "variables": {
+        "C_AB": "dimensionless geometry-only relational interaction coordinate",
+        "U_AB": "standard Newtonian pair potential in normalized comparator units",
+        "m_A,m_B": "separate standard inertial/amplitude parameters",
+        "F_A": "standard force on body A",
+        "t_e,t_o": "source-event and observer-arrival times",
+        "u": "declared finite comparator signal speed"
+      },
+      "mathematical_role": "standard two-body correspondence baseline and delayed-observation diagnostic",
+      "standard_physics_counterpart": "Newtonian two-body mechanics with a finite-signal observer record",
+      "observable_mapping": {
+        "status": "OPEN",
+        "proxy": "normalized interaction coordinate, force, acceleration, conserved quantities, and delayed source record",
+        "reason": "no dimensional or empirical lane is selected yet"
+      },
+      "unit_lane": "normalized_comparator",
+      "parameter_dimensions": "code-unit contract only; SI mapping not supplied",
+      "source_or_origin": "standard counterpart relation plus declared normalized C correspondence",
+      "assumptions": ["two point bodies", "Newtonian relative mechanics", "fixed observer in comparator", "finite positive signal speed"],
+      "symmetry_and_conservation": "equal-and-opposite force, momentum conservation, Galilean common-boost invariance of relative C, bounded Verlet energy drift",
+      "limiting_cases": ["mass rescaling leaves geometry-only C unchanged", "signal speed increase reduces delay", "zero UET interpretation leaves standard baseline unchanged"],
+      "implementation_paths": ["docs/core/relational_two_body_baseline.py", "docs/core/RELATIONAL_TWO_BODY_BASELINE_SPEC.md"],
+      "verifier_paths": ["docs/scripts/audit/audit_relational_two_body_baseline.py", "docs/core/test/test_relational_two_body_baseline.py", "docs/core/artifacts/relational_two_body_baseline_verification.json"],
+      "evidence_class": "INTERNAL_CHECKED",
+      "proof_status": "checked local comparator; UET mapping open",
+      "downstream_dependencies": ["uet.foundation.ontology", "uet.foundation.correspondence", "uet.foundation.units"],
+      "claim_boundary": "simulation-only standard comparator; does not derive mass, G, gravity, or galaxy dynamics",
+      "failure_mode": "geometry-only C is silently identified with mass or a normalized comparator is reported as a dimensional UET prediction",
+      "next_hardening_step": "select one dimensional lane and test C-to-density or C-to-interaction mapping with a declared observable and holdout protocol"
     }
+
   ]
 }
