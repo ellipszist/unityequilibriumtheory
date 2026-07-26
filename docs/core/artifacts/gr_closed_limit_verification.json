@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "gr_closed_limit_verification",
-  "generated_at": "2026-07-22T13:43:01.185768+00:00",
+  "generated_at": "2026-07-26T04:28:56.533581+00:00",
   "status": "PASS",
   "evidence_class": "B",
   "claim": "exact algebraic GR null limit of a candidate tensor-formula evaluator",
@@ -50,7 +50,7 @@
   },
   "source_hashes": {
     "docs\\core\\uet_covariant_response.py": "7fb4b7228afb8ede0ac4f1664d634346ef46cc7678c94ed7b55d73645590c0c2",
-    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "7762422a01348233ecbd532d166be6cc675ac94b8a11b1f960fd0fe0527a0ddb"
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "d15cc8e345a3df986f7608d48e3152134c4325dfa24e5dc9364b085fe37dd6c9"
   },
   "run_contract": {
     "seed": 190021,

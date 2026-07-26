@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "matter_space_dependency_gate",
-  "generated_at": "2026-07-20T14:18:45.506513+00:00",
+  "generated_at": "2026-07-26T04:29:04.102602+00:00",
   "status": "BLOCKED",
   "core_verification_status": "FAIL",
   "controlling_blocker": "prearrival_leakage",

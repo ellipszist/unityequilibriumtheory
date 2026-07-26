@@ -19,6 +19,14 @@ work, use this contract:
 | R / I_trace | derived causal/history observable with no feedback in the new mode |
 | mass, density, charge, stress-energy | separate standard-physics quantities or explicit lane mappings |
 
+Current foundation artifacts:
+
+- [Equation inventory](./UET_FOUNDATION_EQUATION_INVENTORY.md)
+- [Correspondence matrix](./UET_FOUNDATION_CORRESPONDENCE_MATRIX.md)
+- [Compatibility audit](./UET_FOUNDATION_COMPATIBILITY_AUDIT.md)
+- [Machine-readable inventory gate](./artifacts/uet_foundation_equation_inventory.json)
+- [Machine-readable correspondence matrix](./artifacts/uet_foundation_correspondence_matrix.json)
+
 > **The Physics Engine solving the Unity Equilibrium Master Equation**  
 > **Version 0.9.0** | Last Updated: 2026-01-13
 

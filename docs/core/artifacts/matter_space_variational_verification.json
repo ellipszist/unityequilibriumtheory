@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "matter_space_variational_verification",
-  "generated_at": "2026-07-20T14:18:45.506513+00:00",
+  "generated_at": "2026-07-26T04:29:04.102602+00:00",
   "status": "FAIL",
   "claim_status": "candidate_normalized_effective_model",
   "operator_mode": "matter_space_coupled_v1",

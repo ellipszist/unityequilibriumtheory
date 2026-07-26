@@ -14,11 +14,15 @@ Before editing an equation, parameter, operator, verifier, or core narrative, re
 6. `docs/topics/For Work/EQUATION_RESEARCH_AND_PHYSICAL_CORRESPONDENCE_STANDARD.md`
 7. `docs/core/artifacts/uet_foundation_dependency_gate.json`
 8. `docs/core/artifacts/uet_equation_correspondence_registry.json`
+9. `docs/core/artifacts/uet_foundation_equation_inventory.json`
+10. `docs/core/artifacts/uet_foundation_correspondence_matrix.json`
 
 The foundation gate and registry are the controlling status sources for new core work.
 Existing topic prose, old badges, and legacy validators do not override them.
 
 ## Mandatory workflow
+
+Before changing or adding a core equation, regenerate the F0 inventory with `docs/scripts/audit/build_uet_equation_inventory.py`; its `inventory_gate_status` must remain visible in the wave record.
 
 Every new equation or operator must complete the F0–F8 sequence in the equation research
 standard. A blocked upstream gate blocks physical interpretation and downstream promotion.
