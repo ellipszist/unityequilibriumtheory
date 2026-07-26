@@ -31,6 +31,7 @@ Current foundation artifacts:
 - [Machine-readable inventory gate](./artifacts/uet_foundation_equation_inventory.json)
 - [Machine-readable correspondence matrix](./artifacts/uet_foundation_correspondence_matrix.json)
 - [Machine-readable aggregate status](./artifacts/uet_foundation_status_aggregate.json)
+- [Thought experiment: observation as past behavior](./THOUGHT_EXPERIMENT_OBSERVATION_PAST_BEHAVIOR.md)
 
 > **The Physics Engine solving the Unity Equilibrium Master Equation**  
 > **Version 0.9.0** | Last Updated: 2026-01-13
