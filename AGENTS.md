@@ -188,6 +188,10 @@ Then choose the next standard by task.
 - Do not rewrite repository status using stale counts from older prose when canonical
   metadata exists.
 - Do not smooth uncertainty away just because a polished sentence sounds better.
+- Do not add or promote a core equation before its ontology, standard-physics correspondence,
+  units, derivation class, and observable mapping are recorded in the equation registry.
+- Do not treat a normalized effective ledger as SI energy, a lane-specific mapping as a
+  universal identity, or a derived trace as an independent physical substance.
 
 ## Claim discipline
 
