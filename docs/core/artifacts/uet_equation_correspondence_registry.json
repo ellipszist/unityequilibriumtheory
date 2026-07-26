@@ -386,7 +386,39 @@
       "claim_boundary": "simulation-only forward standard comparator; does not derive mass, gravity, or a UET extra force",
       "failure_mode": "independent matter amplitude is hidden, or standard force is presented as a UET prediction",
       "next_hardening_step": "define and audit a non-Newtonian constitutive response with units, observable map, and holdout policy"
+    },
+    {
+      "equation_id": "uet.persistence.energy_management_diagnostic",
+      "version": "persistence-energy-diagnostic-v1",
+      "classification": "constitutive_lane",
+      "relation_or_code_path": "P_C=eta_C*(dC/dt)^2 and E_available[n+1]=E_available[n]+(J_in-J_out-P_C)*dt",
+      "variables": {
+        "C": "dimensionless relational/organizational coordinate trajectory",
+        "P_C": "normalized path-cost rate under a Rayleigh-type constitutive ansatz",
+        "E_available": "separate normalized available-resource ledger",
+        "t_persist": "declared first threshold-crossing time"
+      },
+      "mathematical_role": "diagnostic path-cost and persistence ledger, not a force or mass equation",
+      "standard_physics_counterpart": "Rayleigh-type generalized-coordinate dissipation and explicit nonequilibrium resource bookkeeping",
+      "observable_mapping": {
+        "status": "OPEN",
+        "proxy": "prescribed C trajectory, path work, available-energy ledger, and threshold-crossing time",
+        "reason": "no physical work/heat/entropy measurement operator is selected"
+      },
+      "unit_lane": "normalized",
+      "parameter_dimensions": "normalized C, ledger energy, time, and path-cost coefficient; SI map absent",
+      "source_or_origin": "heuristic Rayleigh-type constitutive ansatz plus declared bookkeeping identity",
+      "assumptions": ["prescribed C trajectory", "non-negative quadratic path cost", "declared sustain threshold", "explicit input/output power"],
+      "symmetry_and_conservation": "ledger closure is checked by construction; no claim of total-energy conservation",
+      "limiting_cases": ["constant C gives zero path cost", "no input/output gives monotone available-energy decline", "same endpoints can have different integrated path cost"],
+      "implementation_paths": ["docs/core/persistence_energy_diagnostic.py", "docs/core/PERSISTENCE_ENERGY_DIAGNOSTIC_SPEC.md"],
+      "verifier_paths": ["docs/scripts/audit/audit_persistence_energy_diagnostic.py", "docs/core/test/test_persistence_energy_diagnostic.py", "docs/core/artifacts/persistence_energy_diagnostic_verification.json"],
+      "evidence_class": "INTERNAL_DIAGNOSTIC",
+      "proof_status": "open constitutive diagnostic; ledger identity checked locally",
+      "downstream_dependencies": ["uet.matter_space.energy_ledger", "uet.foundation.units", "uet.foundation.observable"],
+      "claim_boundary": "simulation-only diagnostic for organizational path cost; not a UET derivation or biological/cosmological persistence law",
+      "failure_mode": "path-cost ansatz or available energy is promoted to universal physical law",
+      "next_hardening_step": "map path cost to measured work, heat flux, or entropy production in one declared physical lane"
     }
-
   ]
 }

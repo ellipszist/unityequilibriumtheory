@@ -176,6 +176,13 @@ from .uet_o2_finite_density_eos import (
     o2_finite_density_eos_contract,
     o2_helmholtz_state,
 )
+from .persistence_energy_diagnostic import (
+    PATH_COST_ORIGIN,
+    PERSISTENCE_ENERGY_STATUS,
+    PersistenceEnergyConfig,
+    PersistenceEnergyResult,
+    simulate_persistence_energy,
+)
 from .matter_interaction_forward import (
     FORWARD_MAPPING_STATUS,
     UET_EXTRA_RESPONSE_STATUS,
@@ -360,6 +367,11 @@ __all__ = [
     "longitudinal_onsager_matrix",
     "spatial_projector",
     "superfluid_invariants",
+    "PATH_COST_ORIGIN",
+    "PERSISTENCE_ENERGY_STATUS",
+    "PersistenceEnergyConfig",
+    "PersistenceEnergyResult",
+    "simulate_persistence_energy",
     "FORWARD_MAPPING_STATUS",
     "UET_EXTRA_RESPONSE_STATUS",
     "MatterInteractionForwardConfig",

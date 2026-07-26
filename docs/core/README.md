@@ -39,6 +39,8 @@ Current foundation artifacts:
 - [Mass-density correspondence artifact](./artifacts/mass_density_correspondence_verification.json)
 - [Matter-to-interaction forward mapping specification](./MATTER_INTERACTION_FORWARD_SPEC.md)
 - [Matter-to-interaction forward mapping artifact](./artifacts/matter_interaction_forward_verification.json)
+- [Persistence-energy diagnostic specification](./PERSISTENCE_ENERGY_DIAGNOSTIC_SPEC.md)
+- [Persistence-energy diagnostic artifact](./artifacts/persistence_energy_diagnostic_verification.json)
 
 > **Historical engine layer for candidate UET equation families**
 > **Version 0.9.0** | Last Updated: 2026-01-13
