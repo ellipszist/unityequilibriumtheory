@@ -419,6 +419,41 @@
       "claim_boundary": "simulation-only diagnostic for organizational path cost; not a UET derivation or biological/cosmological persistence law",
       "failure_mode": "path-cost ansatz or available energy is promoted to universal physical law",
       "next_hardening_step": "map path cost to measured work, heat flux, or entropy production in one declared physical lane"
+    },
+{
+      "equation_id": "uet.thermal.observable_bridge",
+      "version": "thermal-observable-bridge-v1",
+      "classification": "observable_definition",
+      "relation_or_code_path": "T_norm=T0+alpha_T*C, q_F=-k*grad(T), tau_q*dq/dt+q=-k*grad(T), and sigma_F=q_F^2/(k*T^2)",
+      "variables": {
+        "C": "dimensionless relational/organizational trajectory",
+        "T_norm": "normalized temperature proxy under an explicit open gain",
+        "alpha_T": "open C-to-temperature mapping coefficient",
+        "q_F": "Fourier comparator heat flux",
+        "q": "Cattaneo delayed heat flux",
+        "sigma_F": "local normalized entropy-production proxy"
+      },
+      "mathematical_role": "synthetic observable-map and thermodynamic-sign diagnostic",
+      "standard_physics_counterpart": "Fourier/Cattaneo heat transport with a local entropy-production proxy",
+      "observable_mapping": {
+        "status": "BLOCKED",
+        "proxy": "normalized temperature, heat-flux, path-work, and entropy-production time series",
+        "reason": "alpha_T, SI units, physical measurement operator, and uncertainty are not closed"
+      },
+      "unit_lane": "normalized",
+      "parameter_dimensions": "normalized temperature, flux, conductivity, time, and entropy proxy; SI map absent",
+      "source_or_origin": "standard heat-transport comparator plus open heuristic C-to-T bridge",
+      "assumptions": ["prescribed periodic C trajectory", "positive normalized temperature", "declared alpha_T gain", "local entropy proxy used for diagnostic comparison"],
+      "symmetry_and_conservation": "Fourier source sign is non-negative by construction; Cattaneo analytic/numeric reference is checked locally",
+      "limiting_cases": ["alpha_T change leaves C path work invariant", "zero C amplitude removes thermal response", "C is not temperature or heat flux by default"],
+      "implementation_paths": ["docs/core/thermal_observable_bridge.py", "docs/core/THERMAL_OBSERVABLE_BRIDGE_SPEC.md"],
+      "verifier_paths": ["docs/scripts/audit/audit_thermal_observable_bridge.py", "docs/core/test/test_thermal_observable_bridge.py", "docs/core/artifacts/thermal_observable_bridge_verification.json"],
+      "evidence_class": "INTERNAL_DIAGNOSTIC",
+      "proof_status": "standard comparator checked locally; C-to-T correspondence open",
+      "downstream_dependencies": ["uet.persistence.energy_management_diagnostic", "uet.foundation.units", "uet.foundation.observable"],
+      "claim_boundary": "simulation-only normalized bridge; does not establish C as temperature, heat, entropy, or a UET thermodynamic law",
+      "failure_mode": "open gain or entropy proxy is presented as a derived physical constant or external validation",
+      "next_hardening_step": "derive/source-lock dimensional C-to-temperature/flux map and complete external thermal source package"
     }
   ]
 }

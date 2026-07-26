@@ -176,6 +176,13 @@ from .uet_o2_finite_density_eos import (
     o2_finite_density_eos_contract,
     o2_helmholtz_state,
 )
+from .thermal_observable_bridge import (
+    THERMAL_BRIDGE_STATUS,
+    THERMAL_MAPPING_STATUS,
+    ThermalObservableBridgeConfig,
+    ThermalObservableBridgeResult,
+    run_thermal_observable_bridge,
+)
 from .persistence_energy_diagnostic import (
     PATH_COST_ORIGIN,
     PERSISTENCE_ENERGY_STATUS,
@@ -367,6 +374,11 @@ __all__ = [
     "longitudinal_onsager_matrix",
     "spatial_projector",
     "superfluid_invariants",
+    "THERMAL_BRIDGE_STATUS",
+    "THERMAL_MAPPING_STATUS",
+    "ThermalObservableBridgeConfig",
+    "ThermalObservableBridgeResult",
+    "run_thermal_observable_bridge",
     "PATH_COST_ORIGIN",
     "PERSISTENCE_ENERGY_STATUS",
     "PersistenceEnergyConfig",

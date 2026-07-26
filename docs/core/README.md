@@ -41,6 +41,8 @@ Current foundation artifacts:
 - [Matter-to-interaction forward mapping artifact](./artifacts/matter_interaction_forward_verification.json)
 - [Persistence-energy diagnostic specification](./PERSISTENCE_ENERGY_DIAGNOSTIC_SPEC.md)
 - [Persistence-energy diagnostic artifact](./artifacts/persistence_energy_diagnostic_verification.json)
+- [Thermal observable bridge specification](./THERMAL_OBSERVABLE_BRIDGE_SPEC.md)
+- [Thermal observable bridge artifact](./artifacts/thermal_observable_bridge_verification.json)
 
 > **Historical engine layer for candidate UET equation families**
 > **Version 0.9.0** | Last Updated: 2026-01-13
