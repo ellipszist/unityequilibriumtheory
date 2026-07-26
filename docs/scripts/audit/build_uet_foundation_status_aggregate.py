@@ -26,6 +26,7 @@ INPUTS = {
     "trace": ROOT / "docs/core/artifacts/spacetime_trace_verification.json",
     "legacy_variational": ROOT / "docs/core/artifacts/uet_legacy_variational_closure.json",
     "causal_discretization": ROOT / "docs/core/artifacts/matter_space_causal_discretization_diagnostic.json",
+    "causal_reference": ROOT / "docs/core/artifacts/matter_space_causal_reference_verification.json",
 }
 
 
@@ -58,6 +59,7 @@ def build_aggregate() -> dict[str, Any]:
     trace = data["trace"]
     legacy_variational = data["legacy_variational"]
     causal_discretization = data["causal_discretization"]
+    causal_reference = data["causal_reference"]
 
     gates = [
         {
@@ -106,8 +108,8 @@ def build_aggregate() -> dict[str, Any]:
             "id": "F6",
             "name": "numerical_verification",
             "status": "BLOCKED" if matter.get("status") == "FAIL" else "PASS_CONDITIONAL",
-            "evidence": ["matter_space", "code_inventory", "causal_discretization"],
-            "controller": causal_discretization.get("classification", matter.get("controlling_blocker", "causal and code-surface checks")),
+            "evidence": ["matter_space", "code_inventory", "causal_discretization", "causal_reference"],
+            "controller": causal_discretization.get("classification", matter.get("controlling_blocker", "causal and code-surface checks")) + "; strict-CFL frozen-C reference lane=" + causal_reference.get("reference_status", "UNKNOWN") + "; full candidate remains blocked",
         },
         {
             "id": "F7",

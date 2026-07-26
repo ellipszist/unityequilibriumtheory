@@ -320,6 +320,67 @@ def _source_power(
     return matter_power, space_power
 
 
+def causal_linear_space_step(
+    state: MatterSpaceState,
+    previous_space_response: np.ndarray,
+    dt: float,
+    dx: float,
+    config: MatterSpaceConfig,
+    space_source: Optional[np.ndarray] = None,
+) -> Tuple[MatterSpaceState, np.ndarray]:
+    """Advance a strict-CFL linearized space-response control lane.
+
+    This is deliberately separate from ``matter_space_step``.  It evolves the
+    damped hyperbolic Phi sector with a centered second-order recurrence and a
+    nearest-neighbor finite-volume Laplacian.  The contract requires CFL=1,
+    so the discrete support cone advances by at most one cell per step.  C is
+    frozen and acts only as a local source; this is a causal control/reference,
+    not the full coupled matter-space operator.
+    """
+
+    step_size = float(dt)
+    spacing = validate_dx(dx)
+    if not np.isfinite(step_size) or step_size <= 0.0:
+        raise ValueError("dt must be finite and positive")
+    previous = validate_field_1d(previous_space_response, "previous_space_response")
+    if previous.shape != state.space_response.shape:
+        raise ValueError("previous_space_response must match state.space_response")
+    source = (
+        np.zeros_like(state.C)
+        if space_source is None
+        else validate_field_1d(space_source, "space_source")
+    )
+    if source.shape != state.C.shape:
+        raise ValueError("space_source must match the physical state shape")
+
+    speed = config.space_speed
+    cfl = speed * step_size / spacing
+    if not np.isclose(cfl, 1.0, rtol=1.0e-10, atol=1.0e-12):
+        raise ValueError(
+            "causal_linear_space_step requires CFL=1; "
+            f"received CFL={cfl:.12g}, recommended_dt={spacing / speed:.12g}"
+        )
+
+    phi = state.space_response
+    lap_phi = laplacian_1d(phi, spacing, config.boundary_condition)
+    local_force = -config.mobility_space * (
+        config.a_space * phi
+        + config.b_space * phi**3
+        - 0.5 * config.coupling_g * state.C**2
+    ) + source
+    tau = config.tau_space
+    half_damping = step_size / (2.0 * tau)
+    numerator = (
+        2.0 * phi
+        - (1.0 - half_damping) * previous
+        + (config.mobility_space * config.kappa_space * step_size**2 / tau) * lap_phi
+        + (step_size**2 / tau) * local_force
+    )
+    next_phi = numerator / (1.0 + half_damping)
+    next_pi = (next_phi - previous) / (2.0 * step_size)
+    updated = MatterSpaceState(state.C.copy(), next_phi, next_pi)
+    return updated, phi.copy()
+
 def matter_space_step(
     state: MatterSpaceState,
     dt: float,

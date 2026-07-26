@@ -88,9 +88,10 @@
         "evidence": [
           "matter_space",
           "code_inventory",
-          "causal_discretization"
+          "causal_discretization",
+          "causal_reference"
         ],
-        "controller": "NUMERICAL_DOMAIN_OF_DEPENDENCE_EXCEEDS_DECLARED_CONE"
+        "controller": "NUMERICAL_DOMAIN_OF_DEPENDENCE_EXCEEDS_DECLARED_CONE; strict-CFL frozen-C reference lane=PASS; full candidate remains blocked"
       },
       {
         "id": "F7",
@@ -184,7 +185,8 @@
     "o2_eos": "docs/core/artifacts/o2_finite_density_eos_verification.json",
     "trace": "docs/core/artifacts/spacetime_trace_verification.json",
     "legacy_variational": "docs/core/artifacts/uet_legacy_variational_closure.json",
-    "causal_discretization": "docs/core/artifacts/matter_space_causal_discretization_diagnostic.json"
+    "causal_discretization": "docs/core/artifacts/matter_space_causal_discretization_diagnostic.json",
+    "causal_reference": "docs/core/artifacts/matter_space_causal_reference_verification.json"
   },
   "next_controller": "close family-specific F1-F7 blockers before any new downstream physical claim"
 }

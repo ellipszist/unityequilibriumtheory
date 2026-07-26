@@ -25,6 +25,7 @@ The controlling blockers are not a single missing test. They span the declared w
 7. core observable/unit maps are not closed for physical data claims.
 8. the independent legacy variational audit finds an additional sign contradiction in the `+beta*C*I` information coupling.
 9. the current causal leakage is also classified as a numerical domain-of-dependence blocker: the continuum formula is not decided by that gate.
+10. a strict-CFL causal reference passes compact support only in a linearized frozen-C lane; this does not promote the full coupled candidate.
 
 ## What is conditionally compatible
 

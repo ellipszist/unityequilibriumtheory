@@ -40,6 +40,7 @@ from .uet_matter_space import (
     MatterSpaceConfig,
     MatterSpaceState,
     MatterSpaceStabilityError,
+    causal_linear_space_step,
     matter_space_step,
 )
 from .uet_covariant_response import (
