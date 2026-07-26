@@ -25,6 +25,8 @@ standard. A blocked upstream gate blocks physical interpretation and downstream 
 Exploratory work may continue only when it is explicitly labelled `DRAFT`, `CANDIDATE`,
 `INTERNAL`, or `SIMULATION_ONLY`.
 
+Before describing a standard theory as a special case, or describing two UET lanes as the same physical variable, run docs/scripts/audit/audit_uet_foundation_compatibility.py and read docs/core/UET_FOUNDATION_COMPATIBILITY_AUDIT.md. COMPATIBLE_CONDITIONAL is not a global physics proof; CONTRADICTION, CONFLICT, BLOCKED, and REJECTED_REDUCTION remain controlling blockers.
+
 Do not use topic numbers as a work queue. Follow the dependency graph.
 
 ## Core symbol rules
@@ -62,6 +64,7 @@ stable or physically validated.
 Before closing a wave:
 
 - run the equation-foundation audit
+- run the foundation compatibility audit when equation meaning, implementation, units, or limiting-case language changed
 - run the relevant scientific verifier only if evidence-producing state changed
 - check JSON parsing and dependency integrity
 - sync core docs and update logs to the controlling blocker
