@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "artifact": "uet_foundation_dependency_gate",
+  "generated_at": "2026-07-26",
+  "status": "BLOCKED",
+  "wave_type": "workflow_repair",
+  "controlling_blocker": "foundation_inventory_and_correspondence_registry_incomplete",
+  "claim_ceiling": "candidate normalized effective model and explicitly labelled internal diagnostics",
+  "authority": "docs/topics/For Work/EQUATION_RESEARCH_AND_PHYSICAL_CORRESPONDENCE_STANDARD.md",
+  "protocol": "docs/core/artifacts/uet_equation_research_protocol.json",
+  "registry": "docs/core/artifacts/uet_equation_correspondence_registry.json",
+  "gates": {
+    "F0_inventory": {
+      "status": "BLOCKED",
+      "reason": "The registry is an initial docs/core seed and does not yet cover all numbered topic equations or legacy paths.",
+      "required_next_artifact": "complete equation and operator inventory with dependency edges"
+    },
+    "F1_ontology": {
+      "status": "WARN",
+      "reason": "The new core contract separates C, Phi, Pi, and R, but legacy README and topic wording still require synchronization.",
+      "required_next_artifact": "ontology synchronization report and legacy wording inventory"
+    },
+    "F2_physical_correspondence": {
+      "status": "BLOCKED",
+      "reason": "Lane-specific mappings exist for selected matter-space and O(2) work, but there is no complete UET-to-standard-physics correspondence matrix.",
+      "required_next_artifact": "correspondence matrix covering core equation families and downstream observables"
+    },
+    "F3_units": {
+      "status": "BLOCKED",
+      "reason": "Normalized and natural-unit lanes are declared, but the core has no complete dimensional/SI contract for physical observables.",
+      "required_next_artifact": "unit closure register with conversion and observable contracts"
+    },
+    "F4_derivation": {
+      "status": "WARN",
+      "reason": "Several derivation classes are recorded, but full source and assumption coverage is not complete across the inventory.",
+      "required_next_artifact": "derivation-origin audit for every inventoried relation"
+    },
+    "F5_formal_verification": {
+      "status": "WARN",
+      "reason": "Local formula and variational checks exist, but they do not yet cover the complete registry.",
+      "required_next_artifact": "registry-linked formal verification matrix"
+    },
+    "F6_numerical_verification": {
+      "status": "BLOCKED",
+      "reason": "Existing matter-space verification reports pre-arrival leakage above threshold; no physical promotion is allowed.",
+      "evidence": "docs/core/artifacts/matter_space_variational_verification.json"
+    },
+    "F7_observable_mapping": {
+      "status": "BLOCKED",
+      "reason": "Most core quantities remain normalized/internal proxies without a measurement operator, units, and uncertainty contract.",
+      "required_next_artifact": "observable mapping registry for each active lane"
+    },
+    "F8_data_and_claim": {
+      "status": "BLOCKED",
+      "reason": "External data and holdout contracts are not complete for the foundation equations.",
+      "required_next_artifact": "source-locked data packages and preregistered holdout policy"
+    }
+  },
+  "known_legacy_conflicts": [
+    {
+      "path": "docs/core/README.md",
+      "issue": "Legacy wording presents C as mass/wavefunction/observable and I as a universal field.",
+      "required_action": "retain as legacy documentation but add foundation-first warning and synchronize claims"
+    },
+    {
+      "path": "docs/scripts/audit/validate_foundation.py",
+      "issue": "Legacy runner uses broad validation language and is not linked to the new foundation protocol.",
+      "required_action": "keep for compatibility; do not use as the controlling foundation gate"
+    },
+    {
+      "path": "docs/core/artifacts/uet_gr_research_program_gate.json",
+      "issue": "Existing program artifact has historical status complexity and requires duplicate-key/schema audit before promotion.",
+      "required_action": "validate JSON schema and reconcile status through the registry"
+    }
+  ],
+  "downstream_policy": {
+    "new_foundational_equations": "BLOCKED",
+    "new_core_operators": "BLOCKED",
+    "legacy_compatibility_repairs": "ALLOWED_WITH_REGISTRY_ENTRY",
+    "ontology_and_formula_audits": "ALLOWED",
+    "synthetic_diagnostics": "ALLOWED_WITH_SIMULATION_ONLY_LABEL",
+    "physical_data_claims": "BLOCKED",
+    "existing_downstream_topics": "retain current status; no promotion"
+  },
+  "current_downstream_ceiling": {
+    "0.11_Phase_Transitions": "INTERNAL_DIAGNOSTIC_ONLY",
+    "0.13_Thermodynamic_Bridge": "SIMULATION_ONLY",
+    "0.1_Galaxy_Rotation_Problem": "BLOCKED",
+    "0.26_Cosmic_Dynamic_Frame": "BLOCKED",
+    "particle_and_Dirac_program": "DEFERRED_NOT_ESTABLISHED"
+  },
+  "next_controller": "complete F0 inventory and F2 correspondence matrix before adding or promoting core physics"
+}

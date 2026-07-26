@@ -57,9 +57,10 @@ flowchart TD
 5. [13_Reference_Standard.md](./13_Reference_Standard.md)
 6. [14_Result_Standard.md](./14_Result_Standard.md)
 7. [17_Formula_Audit_Standard.md](./17_Formula_Audit_Standard.md)
-8. [20_TEMPLATE_README.md](./20_TEMPLATE_README.md)
-9. [21_TEMPLATE_ANALYSIS.md](./21_TEMPLATE_ANALYSIS.md)
-10. [23_TEMPLATE_FORMULA_AUDIT.md](./23_TEMPLATE_FORMULA_AUDIT.md)
+8. [EQUATION_RESEARCH_AND_PHYSICAL_CORRESPONDENCE_STANDARD.md](./EQUATION_RESEARCH_AND_PHYSICAL_CORRESPONDENCE_STANDARD.md)
+9. [20_TEMPLATE_README.md](./20_TEMPLATE_README.md)
+10. [21_TEMPLATE_ANALYSIS.md](./21_TEMPLATE_ANALYSIS.md)
+11. [23_TEMPLATE_FORMULA_AUDIT.md](./23_TEMPLATE_FORMULA_AUDIT.md)
 
 ### If you are fixing credibility or integrity issues
 
@@ -93,6 +94,7 @@ flowchart TD
 | `15_Paper_Standard.md` | manuscript readiness rules | repo work is being converted into a paper |
 | `16_Cinematic_Viz_Standard.md` | showcase visualization rules | creating presentation or social demo assets |
 | `17_Formula_Audit_Standard.md` | formula, unit, and proof-status control | formulas or constants need provenance and unit review |
+| EQUATION_RESEARCH_AND_PHYSICAL_CORRESPONDENCE_STANDARD.md | foundation-first equation workflow | equation meaning, standard-physics matching, units, derivation, verification, or observable mapping is being changed |
 | `20_TEMPLATE_README.md` | topic README template | starting or normalizing a topic root README |
 | `21_TEMPLATE_ANALYSIS.md` | analysis note template | creating structured technical analysis notes |
 | `22_UET_PAPER_TEMPLATE.tex` | manuscript starter | building a paper draft from a mature topic |
@@ -121,6 +123,7 @@ flowchart TD
 | topic is moving too slowly because blockers are vague | `18_Research_Hardening_Workflow.md` | `02_Project_Workflow_and_Lifecycle.md` |
 | many changes happened and progress is hard to track | `24_TEMPLATE_UPDATE_LOG.md` | `18_Research_Hardening_Workflow.md` |
 | repeated topic passes are consuming too many tokens | `25_Research_Throughput_Workflow.md` | `18_Research_Hardening_Workflow.md` |
+| equation or core operator work is starting before its physical correspondence is closed | EQUATION_RESEARCH_AND_PHYSICAL_CORRESPONDENCE_STANDARD.md | 17_Formula_Audit_Standard.md and the local docs/core/AGENTS.md |
 | AI agent needs the right skill or workflow | `27_AI_AGENT_ROUTING_MATRIX.md` | `26_AI_AGENT_SKILL_MAP.md` |
 | a new UET-specific Codex skill is being created | `28_AI_AGENT_SKILL_AUTHORING_STANDARD.md` | `29_TEMPLATE_AI_AGENT_SKILL_SPEC.md` |
 

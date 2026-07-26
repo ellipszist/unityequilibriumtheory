@@ -119,13 +119,14 @@ Minimum output:
 
 1. Start with problem definition.
 2. Declare assumptions before writing triumph language.
-3. Declare formulas, units, and variable meanings before writing high-confidence prose.
-4. Collect references and dataset provenance.
-5. Build or refactor code.
-6. Define metric and threshold before celebrating outcome.
-7. Compare against a baseline.
-8. Write limitations before writing summaries.
-9. Only then update public-facing wording.
+3. For equation work, complete F0-F4 in EQUATION_RESEARCH_AND_PHYSICAL_CORRESPONDENCE_STANDARD.md before implementation.
+4. Declare formulas, units, variable meanings, and standard-physics correspondence before writing high-confidence prose.
+5. Collect references and dataset provenance.
+6. Build or refactor code.
+7. Complete formal and numerical verification before observable mapping.
+8. Define the measurement operator, metric, threshold, uncertainty, baseline, and holdout policy before comparing against data.
+9. Write limitations before writing summaries.
+10. Only then update public-facing wording.
 
 ## Promotion rules
 

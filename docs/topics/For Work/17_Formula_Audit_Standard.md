@@ -25,6 +25,8 @@ Use this file when:
 - AI or humans are rewriting method sections
 - a bug suggests a unit mismatch or hidden assumption
 
+For foundational equations or code under docs/core/, also apply EQUATION_RESEARCH_AND_PHYSICAL_CORRESPONDENCE_STANDARD.md. Formula audit alone does not establish a standard-physics correspondence or an observable mapping.
+
 ## Workflow summary
 
 ```mermaid

@@ -1,0 +1,287 @@
+{
+  "schema_version": "1.0",
+  "artifact": "uet_equation_correspondence_registry",
+  "generated_at": "2026-07-26",
+  "status": "INITIAL_CORE_SEED_BLOCKED_FOR_FULL_INVENTORY",
+  "authority": "docs/topics/For Work/EQUATION_RESEARCH_AND_PHYSICAL_CORRESPONDENCE_STANDARD.md",
+  "coverage": {
+    "scope": "docs/core equation families and their declared downstream lanes",
+    "coverage_status": "INITIAL_SEED_NOT_EXHAUSTIVE",
+    "missing_scope": [
+      "all equations in numbered topic research folders",
+      "legacy equations outside docs/core",
+      "complete observable mappings for physical SI lanes"
+    ],
+    "rule": "missing inventory keeps the foundation dependency gate BLOCKED"
+  },
+  "status_vocabulary": [
+    "DRAFT",
+    "LEGACY",
+    "CANDIDATE",
+    "WARN",
+    "INTERNAL",
+    "SIMULATION_ONLY",
+    "EXTERNAL_COMPARISON",
+    "PASS",
+    "BLOCKED"
+  ],
+  "entries": [
+    {
+      "equation_id": "uet.legacy.master_functional",
+      "version": "legacy-readme-v0",
+      "classification": "legacy_or_comparator",
+      "relation_or_code_path": "Omega[C,I,J] legacy seven-term functional described in docs/core/README.md and uet_master_equation.py",
+      "variables": {
+        "C": "legacy state label; no universal physical identity",
+        "I": "legacy information/instinctive field label; semantics not closed",
+        "J": "legacy exchange notation",
+        "Omega": "legacy normalized functional claim"
+      },
+      "mathematical_role": "historical functional and compatibility surface",
+      "standard_physics_counterpart": "effective free-energy functional only after lane-specific matching",
+      "observable_mapping": {
+        "status": "BLOCKED",
+        "reason": "legacy C/I semantics and units are not a single physical measurement model"
+      },
+      "unit_lane": "normalized_or_undocumented_legacy",
+      "parameter_dimensions": "OPEN",
+      "source_or_origin": "legacy repository documentation and implementation",
+      "assumptions": ["legacy multi-domain interpretation", "effective functional language"],
+      "symmetry_and_conservation": "OPEN",
+      "limiting_cases": ["requires explicit baseline and closed-system limit"],
+      "implementation_paths": ["docs/core/uet_master_equation.py", "docs/core/README.md"],
+      "verifier_paths": ["docs/scripts/audit/audit_standards_v2.py"],
+      "evidence_class": "LEGACY",
+      "proof_status": "open",
+      "downstream_dependencies": ["uet.foundation.ontology", "uet.foundation.correspondence"],
+      "claim_boundary": "legacy comparator; not a closed physical theory",
+      "failure_mode": "C, I, units, or coupling terms are interpreted as universal physical identities",
+      "next_hardening_step": "complete inventory and correspondence record before any new legacy promotion"
+    },
+    {
+      "equation_id": "uet.matter_space.omega",
+      "version": "matter-space-v1",
+      "classification": "foundational_equation",
+      "relation_or_code_path": "Omega[C,Phi] coupled effective functional",
+      "variables": {
+        "C": "system-state coordinate; lane-dependent realization",
+        "Phi": "effective space-response variable",
+        "g": "coupling coefficient in normalized candidate lane",
+        "kappa_C": "C gradient coefficient",
+        "kappa_Phi": "Phi gradient coefficient"
+      },
+      "mathematical_role": "candidate variational functional",
+      "standard_physics_counterpart": "coupled Landau-Ginzburg/effective-field functional",
+      "observable_mapping": {
+        "status": "OPEN",
+        "proxy": "field profiles and derived ledger diagnostics"
+      },
+      "unit_lane": "normalized",
+      "parameter_dimensions": "declared only within normalized v1",
+      "source_or_origin": "matter-space candidate research specification",
+      "assumptions": ["bounded quartic coefficients", "periodic or zero-flux boundary", "effective response state"],
+      "symmetry_and_conservation": "conserved or nonconserved C lane selected explicitly; Phi is nonconserved response",
+      "limiting_cases": ["g=0 decoupled baselines", "Phi=0 ordered-space reference", "adiabatic Phi limit"],
+      "implementation_paths": ["docs/core/uet_matter_space.py", "docs/core/uet_spatial.py"],
+      "verifier_paths": ["docs/scripts/audit/audit_matter_space_core.py", "docs/core/artifacts/matter_space_variational_verification.json"],
+      "evidence_class": "INTERNAL",
+      "proof_status": "derived",
+      "downstream_dependencies": ["uet.foundation.inventory", "uet.foundation.correspondence", "uet.foundation.units"],
+      "claim_boundary": "candidate normalized effective model",
+      "failure_mode": "normalized functional is treated as dimensional physical energy without a lane contract",
+      "next_hardening_step": "complete cross-lane correspondence and observable mapping"
+    },
+    {
+      "equation_id": "uet.matter_space.physical_dynamics",
+      "version": "matter-space-v1",
+      "classification": "constitutive_lane",
+      "relation_or_code_path": "mu_C, mu_Phi and C/Phi/Pi evolution in matter_space_step",
+      "variables": {
+        "mu_C": "functional derivative with respect to C",
+        "mu_Phi": "functional derivative with respect to Phi",
+        "Pi": "space-response rate",
+        "J_C": "declared matter source",
+        "J_Phi": "declared space-response drive"
+      },
+      "mathematical_role": "candidate physical dynamics derived from the matter-space functional",
+      "standard_physics_counterpart": "gradient flow plus damped hyperbolic response",
+      "observable_mapping": {
+        "status": "OPEN",
+        "proxy": "field evolution, flux, and ledger outputs"
+      },
+      "unit_lane": "normalized",
+      "parameter_dimensions": "normalized contract only",
+      "source_or_origin": "variational matter-space specification",
+      "assumptions": ["finite-volume spatial operator", "explicit boundary condition", "source compatibility"],
+      "symmetry_and_conservation": "conserved C lane enforces zero-net source; Phi response is not a conserved density",
+      "limiting_cases": ["g=0", "no source", "closed boundary", "adiabatic response"],
+      "implementation_paths": ["docs/core/uet_matter_space.py", "docs/core/uet_spatial.py", "docs/core/uet_master_equation.py"],
+      "verifier_paths": ["docs/scripts/audit/audit_matter_space_core.py", "docs/core/artifacts/matter_space_dependency_gate.json"],
+      "evidence_class": "INTERNAL",
+      "proof_status": "derived",
+      "downstream_dependencies": ["uet.matter_space.omega", "uet.foundation.numerics"],
+      "claim_boundary": "opt-in normalized operator; not default UET law",
+      "failure_mode": "causal pre-arrival leakage or source ambiguity is hidden by clipping or fallback",
+      "next_hardening_step": "repair declared causal discretization before physical interpretation"
+    },
+    {
+      "equation_id": "uet.matter_space.energy_ledger",
+      "version": "matter-space-v1",
+      "classification": "observable_definition",
+      "relation_or_code_path": "E = Omega + tau_Phi/(2 M_Phi) integral Pi^2 and dissipation ledger",
+      "variables": {
+        "E": "extended normalized energy ledger",
+        "Omega": "matter-space functional",
+        "sigma_C": "C dissipation density",
+        "sigma_Phi": "Phi response dissipation density"
+      },
+      "mathematical_role": "internal Lyapunov/ledger relation",
+      "standard_physics_counterpart": "effective free-energy descent and entropy-production accounting",
+      "observable_mapping": {
+        "status": "OPEN",
+        "proxy": "ledger time series; not direct calorimetry"
+      },
+      "unit_lane": "normalized",
+      "parameter_dimensions": "normalized contract only",
+      "source_or_origin": "matter-space variational construction",
+      "assumptions": ["closed periodic or no-flux boundary for descent result"],
+      "symmetry_and_conservation": "ledger descent is not a full energy-conservation theorem",
+      "limiting_cases": ["closed system", "open drive with explicit source/boundary ledger"],
+      "implementation_paths": ["docs/core/uet_matter_space.py"],
+      "verifier_paths": ["docs/core/artifacts/matter_space_variational_verification.json"],
+      "evidence_class": "INTERNAL",
+      "proof_status": "derived",
+      "downstream_dependencies": ["uet.matter_space.physical_dynamics", "uet.foundation.units"],
+      "claim_boundary": "normalized internal ledger, not SI energy accounting",
+      "failure_mode": "ledger descent is reported as physical energy conservation or total-universe closure",
+      "next_hardening_step": "define a lane-specific dimensional energy/entropy map"
+    },
+    {
+      "equation_id": "uet.trace.derived_observable",
+      "version": "spacetime-trace-v1",
+      "classification": "observable_definition",
+      "relation_or_code_path": "R = I_trace = G_ret * (sigma_C + sigma_Phi)",
+      "variables": {
+        "R": "derived causal/history trace",
+        "G_ret": "retarded kernel",
+        "sigma": "dissipation or entropy-production source"
+      },
+      "mathematical_role": "one-way derived history functional",
+      "standard_physics_counterpart": "memory/convolution observable; no universal information substance asserted",
+      "observable_mapping": {
+        "status": "BLOCKED",
+        "reason": "kernel causal leakage gate fails and dimensional observable map is absent"
+      },
+      "unit_lane": "normalized",
+      "parameter_dimensions": "open for dimensional lanes",
+      "source_or_origin": "causal trace candidate specification",
+      "assumptions": ["retarded support", "no feedback from R to physical state"],
+      "symmetry_and_conservation": "history observable only; does not add energy or matter",
+      "limiting_cases": ["no source gives zero new trace", "zero-memory limit gives Markovian baseline"],
+      "implementation_paths": ["docs/core/uet_trace.py", "docs/core/uet_master_equation.py"],
+      "verifier_paths": ["docs/core/artifacts/spacetime_trace_verification.json", "docs/core/artifacts/trace_kernel_formula_audit.json"],
+      "evidence_class": "INTERNAL",
+      "proof_status": "heuristic",
+      "downstream_dependencies": ["uet.matter_space.energy_ledger", "uet.foundation.numerics"],
+      "claim_boundary": "derived causal observable candidate with no backreaction",
+      "failure_mode": "trace is treated as a new field, energy reservoir, or source of physical feedback",
+      "next_hardening_step": "repair causal compact support and define an observable/unit map"
+    },
+    {
+      "equation_id": "uet.o2.finite_density_eos",
+      "version": "o2-tree-level-v1",
+      "classification": "constitutive_lane",
+      "relation_or_code_path": "p=q^2/(4 lambda), n=Z mu q/lambda, epsilon=mu n-p, c_s^2=q/(3 Z mu^2-m_eff^2)",
+      "variables": {
+        "n": "signed O(2) Noether charge density",
+        "mu": "chemical potential",
+        "m_eff": "lane-specific effective mass parameter",
+        "Phi": "space-response input to m_eff"
+      },
+      "mathematical_role": "tree-level finite-density EOS derived in a declared O(2) realization",
+      "standard_physics_counterpart": "relativistic finite-density O(2) mean-field condensate",
+      "observable_mapping": {
+        "status": "OPEN",
+        "proxy": "charge-density or condensate observables after lane mapping"
+      },
+      "unit_lane": "natural_units",
+      "parameter_dimensions": "natural-unit contract in O2 spec",
+      "source_or_origin": "conservative O(2) action and grand-potential derivation",
+      "assumptions": ["homogeneous finite density", "tree level", "stable condensed branch q>0"],
+      "symmetry_and_conservation": "O(2) Noether charge symmetry in declared realization",
+      "limiting_cases": ["q<=0 normal branch", "epsilon_nc=0 removes Phi dependence", "zero-temperature limit"],
+      "implementation_paths": ["docs/core/uet_o2_finite_density_eos.py", "docs/core/O2_SUPERFLUID_EOS_TRANSPORT_SPEC.md"],
+      "verifier_paths": ["docs/scripts/audit/audit_uet_o2_superfluid_transport.py", "docs/core/artifacts/o2_finite_density_eos_verification.json"],
+      "evidence_class": "INTERNAL",
+      "proof_status": "derived",
+      "downstream_dependencies": ["uet.foundation.correspondence", "uet.foundation.units"],
+      "claim_boundary": "tree-level finite-density O(2) mean-field realization; not universal C ontology",
+      "failure_mode": "Noether charge is silently identified with mass or universal C",
+      "next_hardening_step": "complete cross-lane map and external observable provenance"
+    },
+    {
+      "equation_id": "uet.o2.covariant_t0_transport",
+      "version": "o2-t0-covariant-v1",
+      "classification": "constitutive_lane",
+      "relation_or_code_path": "N^mu=f_s xi^mu and T^munu=f_s xi^mu xi^nu+p g^munu in pure T=0 sector",
+      "variables": {
+        "N": "O(2) Noether current",
+        "T": "stress-energy tensor in declared covariant convention",
+        "xi": "Goldstone phase gradient",
+        "f_s": "superfluid stiffness from pressure derivative"
+      },
+      "mathematical_role": "ideal covariant constitutive relation",
+      "standard_physics_counterpart": "relativistic pure superfluid constitutive structure",
+      "observable_mapping": {
+        "status": "BLOCKED",
+        "reason": "physical Kubo coefficients, finite-temperature sector, and curved 3+1 solver are absent"
+      },
+      "unit_lane": "natural_units",
+      "parameter_dimensions": "natural-unit contract in O2 transport spec",
+      "source_or_origin": "O(2) action and pressure derivatives",
+      "assumptions": ["T=0", "pure superfluid", "flat or locally covariant constitutive sector"],
+      "symmetry_and_conservation": "Lorentz-covariant ideal constitutive relations in declared metric convention",
+      "limiting_cases": ["zero counterflow", "epsilon_nc=0 conservative limit"],
+      "implementation_paths": ["docs/core/uet_covariant_superfluid_transport.py"],
+      "verifier_paths": ["docs/scripts/audit/audit_uet_o2_superfluid_transport.py", "docs/core/artifacts/covariant_superfluid_transport_verification.json"],
+      "evidence_class": "INTERNAL",
+      "proof_status": "derived",
+      "downstream_dependencies": ["uet.o2.finite_density_eos", "uet.foundation.correspondence"],
+      "claim_boundary": "ideal covariant constitutive derivation; dissipative coefficients open",
+      "failure_mode": "synthetic transport coefficients are presented as microscopic derivation",
+      "next_hardening_step": "Kubo/source package and curved 3+1 verification"
+    },
+    {
+      "equation_id": "uet.gr.closed_limit",
+      "version": "gr-correspondence-v1",
+      "classification": "foundational_equation",
+      "relation_or_code_path": "epsilon_nc=0 closed-response limit and covariant balance relation",
+      "variables": {
+        "g_munu": "metric tensor in the GR realization",
+        "T_munu": "matter stress-energy tensor",
+        "epsilon_nc": "non-closed coupling parameter",
+        "Q_nu": "exchange current in non-closed extension"
+      },
+      "mathematical_role": "declared null-model and correspondence boundary",
+      "standard_physics_counterpart": "Einstein GR closed limit",
+      "observable_mapping": {
+        "status": "OPEN",
+        "proxy": "requires physical GR benchmark package"
+      },
+      "unit_lane": "covariant_normalized",
+      "parameter_dimensions": "partially declared; physical benchmark lane absent",
+      "source_or_origin": "covariant UET GR research specification",
+      "assumptions": ["declared metric convention", "closed limit epsilon_nc=0"],
+      "symmetry_and_conservation": "covariant balance and Bianchi compatibility in declared parent sector",
+      "limiting_cases": ["epsilon_nc=0 Einstein GR limit", "epsilon_nc!=0 candidate exchange sector"],
+      "implementation_paths": ["docs/core/uet_covariant_nonclosed.py", "docs/core/UET_GR_NONCLOSED_RESEARCH_SPEC.md"],
+      "verifier_paths": ["docs/scripts/audit/audit_uet_gr_closed_limit.py", "docs/core/artifacts/gr_closed_limit_verification.json", "docs/core/artifacts/uet_gr_research_program_gate.json"],
+      "evidence_class": "INTERNAL",
+      "proof_status": "derived",
+      "downstream_dependencies": ["uet.foundation.correspondence", "uet.foundation.units", "uet.foundation.data"],
+      "claim_boundary": "closed-limit correspondence; global open-universe claim unresolved",
+      "failure_mode": "a validated null model is treated as validation of the non-closed extension",
+      "next_hardening_step": "complete physical stress-energy and benchmark correspondence"
+    }
+  ]
+}

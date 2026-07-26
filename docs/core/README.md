@@ -1,11 +1,30 @@
 # ⚙️ Core — UET Mathematical Engine
 
+> Foundation-first status: This README contains historical/legacy engine wording and is
+> not the controlling claim source. Current equation status is controlled by
+> [docs/core/AGENTS.md](./AGENTS.md), the equation registry, and the foundation dependency gate.
+> The legacy statement that C universally means mass or that I is a universal physical field
+> is not accepted by the current research protocol.
+
+## Current foundation contract
+
+The legacy tables below are retained for historical compatibility. For current equation
+work, use this contract:
+
+| Symbol | Current status |
+| :-- | :-- |
+| C | system-state coordinate with lane-specific physical mapping; not universally mass |
+| Phi | effective space-response variable; not a metric or substance |
+| Pi | time derivative of Phi |
+| R / I_trace | derived causal/history observable with no feedback in the new mode |
+| mass, density, charge, stress-energy | separate standard-physics quantities or explicit lane mappings |
+
 > **The Physics Engine solving the Unity Equilibrium Master Equation**  
 > **Version 0.9.0** | Last Updated: 2026-01-13
 
 ![Engine](https://img.shields.io/badge/Engine-UET_Master_Eq-blue)
 ![Coverage](https://img.shields.io/badge/Axioms-12%2F12-brightgreen)
-![Status](https://img.shields.io/badge/Status-Production-green)
+![Status](https://img.shields.io/badge/Status-Legacy-Claim-Controlled-yellow)
 ![Tests](https://img.shields.io/badge/Tests-126_(98.4%25)-green)
 
 ---
@@ -23,9 +42,9 @@ This directory contains the **computational core** of the Unity Equilibrium Theo
 
 ---
 
-## 📐 The Master Equation (Complete Form)
+## Legacy master equation (historical form)
 
-The engine implements the full 7-term functional derived from the **12 Core Axioms**:
+The following seven-term functional is retained as a legacy candidate implementation; it is not a closed physical derivation:
 
 $$
 \Omega[C,I,J] = \int d^3x \left[ 
@@ -45,8 +64,8 @@ $$
 
 | Symbol | Name | Mathematical Meaning | Physical Interpretation |
 |:------:|:-----|:---------------------|:------------------------|
-| **C** | Capacity / Conscious Field | State Vector C(x,t) | Mass, Wavefunction, Observable state |
-| **I** | Information / Instinctive Field | Entropy / Stimulus | Hidden state, Structural complexity |
+| **C** | Capacity / Conscious Field | State Vector C(x,t) | Legacy lane label; current work requires explicit physical mapping |
+| **I** | Information / Instinctive Field | Legacy entropy/stimulus notation | Legacy/comparator label; current work uses derived I_trace only when declared |
 | **J** | Flux Field | J_in - J_out | Open system energy exchange |
 | **V(C)** | Potential | (α/2)C² + (γ/4)C⁴ | Cost of Existence (Higgs-like) |
 | **κ** | Gradient Cost | \|∇C\|² coefficient | Surface Tension, Space Memory |
