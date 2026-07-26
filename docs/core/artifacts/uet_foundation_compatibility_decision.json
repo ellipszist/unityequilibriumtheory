@@ -1,0 +1,245 @@
+{
+  "schema_version": "1.0",
+  "artifact": "uet_foundation_compatibility_decision",
+  "generated_at": "2026-07-26",
+  "audit_status": "PASS",
+  "decision": {
+    "mathematical_consistency": "BLOCKED_BY_LEGACY_CONTRADICTION",
+    "standard_physics_correspondence": "PARTIAL_CONDITIONAL_NOT_GLOBAL",
+    "old_theory_nesting": "CONDITIONAL_ONLY",
+    "global_uet_status": "FOUNDATION_NOT_CLOSED"
+  },
+  "decision_rule": {
+    "contradiction": "A declared relation and its implementation disagree; this blocks that equation family.",
+    "conditional_compatibility": "A lane passes only under explicit ontology, units, limit, residual, and evidence boundaries.",
+    "not_established": "Missing proof is not labelled false, but it cannot support a physical claim.",
+    "special_case": "A standard theory is a special case only when the same variables/units and a verified limit are shown."
+  },
+  "coverage": {
+    "core_family_count": 12,
+    "topic_formula_rows": 260,
+    "topic_formula_files": 27,
+    "inventory_gate_status": "BLOCKED",
+    "registry_coverage_status": "INITIAL_SEED_NOT_EXHAUSTIVE",
+    "coverage_boundary": "The inventory is broad but not code-complete; code-only equations and full observable maps remain open."
+  },
+  "hard_contradictions": [
+    {
+      "id": "legacy_potential_derivative_pair",
+      "status": "CONTRADICTION",
+      "residual": 13.674999999999999,
+      "threshold": 1e-10,
+      "meaning": "This is a real mathematical inconsistency in the legacy implementation, not a mere lack of physical evidence."
+    },
+    {
+      "id": "legacy_information_operator",
+      "status": "CONFLICT",
+      "meaning": "The declared box equation and the implemented first-order parabolic proxy are not the same equation without a derived limit and coefficient map."
+    },
+    {
+      "id": "legacy_beta_unit_semantics",
+      "status": "CONFLICT",
+      "meaning": "A dimensionless normalized coupling cannot be identified directly with Landauer energy in joules."
+    }
+  ],
+  "family_matrix": [
+    {
+      "family_id": "core.legacy_master",
+      "mathematical_consistency": "CONTRADICTION",
+      "standard_physics_correspondence": "BLOCKED",
+      "old_theory_special_case": "NOT_ESTABLISHED",
+      "reason": "The declared potential and coded derivative are not a matched pair; the information operator and beta unit semantics also conflict.",
+      "evidence": [
+        "docs/core/artifacts/uet_legacy_variational_closure.json",
+        "docs/core/artifacts/uet_foundation_compatibility_gate.json"
+      ]
+    },
+    {
+      "family_id": "core.matter_space",
+      "mathematical_consistency": "PARTIAL_INTERNAL_PASS",
+      "standard_physics_correspondence": "CONDITIONAL_AND_BLOCKED",
+      "old_theory_special_case": "CONDITIONAL_ONLY",
+      "reason": "Functional derivatives, conservation, ledger, and trace isolation pass in the normalized checks, but the full default causal gate fails.",
+      "evidence": [
+        "docs/core/artifacts/matter_space_variational_verification.json",
+        "docs/core/artifacts/matter_space_causal_reference_verification.json"
+      ],
+      "metrics": {
+        "local_derivative": {
+          "gate": "PASS",
+          "value": 2.708944180085382e-14,
+          "threshold": 1e-10
+        },
+        "ledger_closure": {
+          "gate": "PASS",
+          "value": 6.109274493290241e-09,
+          "threshold": 1e-06
+        },
+        "prearrival_leakage": {
+          "gate": "FAIL",
+          "value": 0.017639381271029236,
+          "threshold": 1e-06
+        },
+        "reference_status": "PASS"
+      }
+    },
+    {
+      "family_id": "core.trace",
+      "mathematical_consistency": "CONDITIONAL_PASS",
+      "standard_physics_correspondence": "DERIVED_OBSERVABLE_ONLY",
+      "old_theory_special_case": "MARKOVIAN_COMPARATOR_ONLY",
+      "reason": "The trace is derived from the dissipation history and does not feed back in the new mode; direct dimensional observability and physical backreaction remain open.",
+      "evidence": [
+        "docs/core/artifacts/spacetime_trace_verification.json"
+      ]
+    },
+    {
+      "family_id": "core.covariant_response",
+      "mathematical_consistency": "CONDITIONAL_PASS",
+      "standard_physics_correspondence": "CONDITIONAL_LOCAL",
+      "old_theory_special_case": "GR_NULL_LIMIT_ONLY",
+      "reason": "The local covariant evaluator passes its declared null/ordered limit, but this is not the Einstein field-equation system or a global closed-limit derivation.",
+      "evidence": [
+        "docs/core/artifacts/gr_closed_limit_verification.json"
+      ]
+    },
+    {
+      "family_id": "core.o2_superfluid",
+      "mathematical_consistency": "CONDITIONAL_PASS",
+      "standard_physics_correspondence": "CONDITIONAL_TREE_LEVEL",
+      "old_theory_special_case": "O2_LANE_ONLY",
+      "reason": "The finite-density O(2) EOS and ideal constitutive sector pass their natural-unit tree-level gates; transport provenance, SI, finite temperature, and universal C identity remain open.",
+      "evidence": [
+        "docs/core/artifacts/o2_finite_density_eos_verification.json",
+        "docs/core/artifacts/covariant_superfluid_transport_verification.json"
+      ]
+    },
+    {
+      "family_id": "core.legacy_double_well",
+      "mathematical_consistency": "COMPARATOR_ONLY",
+      "standard_physics_correspondence": "NOT_ESTABLISHED",
+      "old_theory_special_case": "REJECTED_REDUCTION",
+      "reason": "The preregistered reduction from the O(2) EOS to the legacy symmetric double well fails its residual gate.",
+      "evidence": [
+        "docs/core/artifacts/o2_finite_density_eos_verification.json",
+        "docs/core/artifacts/uet_foundation_compatibility_gate.json"
+      ]
+    },
+    {
+      "family_id": "core.covariant_transport",
+      "mathematical_consistency": "IDEAL_SECTOR_PASS",
+      "standard_physics_correspondence": "CONDITIONAL_TRANSPORT_INTERFACE",
+      "old_theory_special_case": "NOT_ESTABLISHED",
+      "reason": "Projector, ideal current/stress, Josephson, Lorentz, entropy-sign, and causal-control checks pass, while missing coefficient provenance blocks physical dissipative promotion.",
+      "evidence": [
+        "docs/core/artifacts/covariant_superfluid_transport_verification.json"
+      ]
+    },
+    {
+      "family_id": "core.open_system_interpretation",
+      "mathematical_consistency": "SUBSYSTEM_ANSATZ",
+      "standard_physics_correspondence": "CONDITIONAL_SUBSYSTEM_ONLY",
+      "old_theory_special_case": "GLOBAL_CLOSED_LIMIT_NOT_ESTABLISHED",
+      "reason": "Explicit source and exchange terms can describe an effective subsystem; they do not prove that the whole universe is open or that a closed universe must reduce to Einstein GR.",
+      "evidence": [
+        "docs/core/artifacts/uet_foundation_compatibility_gate.json"
+      ]
+    }
+  ],
+  "principle_matrix": [
+    {
+      "principle_id": "P1_state_response_trace_separation",
+      "verdict": "SUPPORTED_IN_NEW_MODE",
+      "meaning": "(C,Phi,Pi) are physical state variables and R/I_trace is derived history; no R feedback is allowed.",
+      "evidence": [
+        "docs/core/artifacts/matter_space_variational_verification.json",
+        "docs/core/artifacts/spacetime_trace_verification.json"
+      ]
+    },
+    {
+      "principle_id": "P2_functional_derivative_closure",
+      "verdict": "SPLIT_NEW_PASS_LEGACY_FAIL",
+      "meaning": "The new matter-space functional/derivative lane passes local checks, while the legacy potential/derivative pair is mathematically contradictory.",
+      "evidence": [
+        "docs/core/artifacts/uet_legacy_variational_closure.json",
+        "docs/core/artifacts/matter_space_variational_verification.json"
+      ]
+    },
+    {
+      "principle_id": "P3_lane_specific_correspondence",
+      "verdict": "SUPPORTED_AS_METHOD_NOT_UNIVERSAL_IDENTITY",
+      "meaning": "C may map to density, Noether charge, or order parameter only inside a declared lane with units and observables.",
+      "evidence": [
+        "docs/core/artifacts/uet_core_equation_family_contract.json",
+        "docs/core/artifacts/uet_foundation_equation_inventory.json"
+      ]
+    },
+    {
+      "principle_id": "P4_open_balance",
+      "verdict": "CONDITIONAL_SUBSYSTEM_ANSATZ",
+      "meaning": "Open-system accounting is valid for an explicitly bounded effective subsystem; global cosmic openness is not established.",
+      "evidence": [
+        "docs/core/artifacts/uet_foundation_compatibility_gate.json"
+      ]
+    },
+    {
+      "principle_id": "P5_nested_special_case",
+      "verdict": "CONDITIONAL_ONLY",
+      "meaning": "GR and O(2) have narrow verified limits, but the O(2)-to-legacy-double-well reduction is rejected and no universal nesting theorem exists.",
+      "evidence": [
+        "docs/core/artifacts/gr_closed_limit_verification.json",
+        "docs/core/artifacts/o2_finite_density_eos_verification.json",
+        "docs/core/artifacts/uet_foundation_compatibility_gate.json"
+      ]
+    },
+    {
+      "principle_id": "P6_energy_and_entropy_ledgers",
+      "verdict": "PARTIAL_NORMALIZED_ONLY",
+      "meaning": "The new normalized candidate has internal ledger checks; the legacy A1 energy-conservation label and SI energy meaning are not established.",
+      "evidence": [
+        "docs/core/artifacts/matter_space_variational_verification.json",
+        "docs/core/artifacts/uet_foundation_compatibility_gate.json"
+      ]
+    },
+    {
+      "principle_id": "P7_causal_response",
+      "verdict": "FULL_CANDIDATE_BLOCKED_REFERENCE_LANE_PASS",
+      "meaning": "The strict-CFL frozen-C reference has compact support, but the default coupled candidate still fails pre-arrival leakage.",
+      "evidence": [
+        "docs/core/artifacts/matter_space_causal_reference_verification.json",
+        "docs/core/artifacts/matter_space_variational_verification.json"
+      ]
+    },
+    {
+      "principle_id": "P8_observable_and_data_bridge",
+      "verdict": "BLOCKED",
+      "meaning": "A complete measurement operator, units, uncertainty, provenance, and holdout chain is not closed for the core theory.",
+      "evidence": [
+        "docs/core/artifacts/uet_foundation_status_aggregate.json",
+        "docs/core/artifacts/uet_foundation_equation_inventory.json"
+      ]
+    }
+  ],
+  "special_case_summary": {
+    "gr": "COMPATIBLE_CONDITIONAL_LOCAL_ALGEBRAIC_ONLY",
+    "o2_finite_density": "COMPATIBLE_CONDITIONAL_TREE_LEVEL_NATURAL_UNITS",
+    "legacy_double_well": "REJECTED_REDUCTION",
+    "matter_space_causal": "BLOCKED_FULL_CANDIDATE_REFERENCE_LANE_PASS",
+    "global_open_universe": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "The current repository evidence finds one actual legacy mathematical contradiction, several declared-equation/unit conflicts, and several unresolved physical correspondences. It also finds conditional compatibility in narrowly defined new lanes. It does not establish that all old theories are special cases of one UET equation, nor that UET is physically complete.",
+  "next_controller": "Repair or quarantine the legacy contradictions, complete code-level F0-F3 correspondence and units, prove full coupled causal/energy behavior, then build observable and holdout tests before any universal or real-data claim.",
+  "evidence_inputs": {
+    "compatibility": "docs/core/artifacts/uet_foundation_compatibility_gate.json",
+    "aggregate": "docs/core/artifacts/uet_foundation_status_aggregate.json",
+    "inventory": "docs/core/artifacts/uet_foundation_equation_inventory.json",
+    "family_contract": "docs/core/artifacts/uet_core_equation_family_contract.json",
+    "legacy_variational": "docs/core/artifacts/uet_legacy_variational_closure.json",
+    "matter_space": "docs/core/artifacts/matter_space_variational_verification.json",
+    "causal_reference": "docs/core/artifacts/matter_space_causal_reference_verification.json",
+    "trace": "docs/core/artifacts/spacetime_trace_verification.json",
+    "gr_closed_limit": "docs/core/artifacts/gr_closed_limit_verification.json",
+    "o2_eos": "docs/core/artifacts/o2_finite_density_eos_verification.json",
+    "transport": "docs/core/artifacts/covariant_superfluid_transport_verification.json"
+  }
+}
