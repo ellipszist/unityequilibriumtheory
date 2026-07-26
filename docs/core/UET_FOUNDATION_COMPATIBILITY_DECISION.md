@@ -6,20 +6,26 @@ to standard physics, and whether an older theory is actually recovered as a spec
 
 ## Decision
 
-- Mathematical consistency: `BLOCKED_BY_LEGACY_CONTRADICTION`
+- Mathematical consistency: `BLOCKED_BY_REMAINING_LEGACY_OPERATOR_CONFLICT`
 - Standard-physics correspondence: `PARTIAL_CONDITIONAL_NOT_GLOBAL`
 - Old-theory nesting: `CONDITIONAL_ONLY`
 - Overall foundation: `FOUNDATION_NOT_CLOSED`
 
-The current answer is therefore: the repository contains a real legacy mathematical
-contradiction, conditional compatibility in selected new lanes, and no evidence that
-all standard theories are special cases of one universal UET equation.
+The current answer is therefore: the canonical legacy_variational_v1 potential/source contract
+is conditionally closed, legacy_local remains a quarantined comparator, and remaining operator/unit
+conflicts plus unresolved physical correspondences still block the foundation.
+
+## Conditional closures
+
+| ID | Mode | Status | Meaning |
+|---|---|---|---|
+| `legacy_potential_derivative_pair` | `legacy_variational_v1` | `COMPATIBLE_CONDITIONAL` | The canonical radial derivative is closed conditionally; legacy_local remains explicitly non-variational. |
+| `legacy_information_gradient_sign` | `legacy_variational_v1` | `COMPATIBLE_CONDITIONAL` | The canonical information-source sign matches the declared positive coupling; the historical sign is comparator-only. |
 
 ## Hard contradictions and conflicts
 
 | ID | Status | Meaning |
 |---|---|---|
-| `legacy_potential_derivative_pair` | `CONTRADICTION` | This is a real mathematical inconsistency in the legacy implementation, not a mere lack of physical evidence. |
 | `legacy_information_operator` | `CONFLICT` | The declared box equation and the implemented first-order parabolic proxy are not the same equation without a derived limit and coefficient map. |
 | `legacy_beta_unit_semantics` | `CONFLICT` | A dimensionless normalized coupling cannot be identified directly with Landauer energy in joules. |
 
@@ -42,10 +48,10 @@ all standard theories are special cases of one universal UET equation.
 
 ## Claim boundary
 
-The current repository evidence finds one actual legacy mathematical contradiction, several declared-equation/unit conflicts, and several unresolved physical correspondences. It also finds conditional compatibility in narrowly defined new lanes. It does not establish that all old theories are special cases of one UET equation, nor that UET is physically complete.
+The current repository evidence closes the potential/source contract only inside legacy_variational_v1, keeps legacy_local as a quarantined comparator, and retains declared operator/unit conflicts plus unresolved physical correspondences. It does not establish that all old theories are special cases of one UET equation, nor that UET is physically complete.
 
 ## Next controller
 
-Repair or quarantine the legacy contradictions, complete code-level F0-F3 correspondence and units, prove full coupled causal/energy behavior, then build observable and holdout tests before any universal or real-data claim.
+Resolve the remaining legacy information-operator and beta-unit conflicts, complete code-level F0-F3 correspondence and units, prove full coupled causal/energy behavior, then build observable and holdout tests before any universal or real-data claim.
 
 Generated from `uet_foundation_compatibility_decision.json`; do not edit the generated result by hand.

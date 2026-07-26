@@ -91,39 +91,61 @@ def finding(
 
 
 def evaluate_legacy_potential(master_text: str) -> dict[str, Any]:
-    """Compare the coded derivative with the derivative of the coded potential."""
+    """Audit the canonical pair while preserving the historical comparator."""
 
     alpha = 1.0
     gamma = 0.025
     c0 = 1.0
     samples = (-1.5, -0.75, 0.0, 0.5, 1.0, 1.5, 2.0)
-    residuals: list[float] = []
+    canonical_residuals: list[float] = []
+    legacy_residuals: list[float] = []
+    epsilon = 1.0e-6
     for c in samples:
+        def potential(value: float) -> float:
+            diff = value * value - c0 * c0
+            return alpha / 2.0 * diff**2 + gamma / 4.0 * diff**4
+
         squared_diff = c * c - c0 * c0
         true_derivative = 2.0 * c * (
             alpha * squared_diff + gamma * squared_diff**3
         )
-        declared_derivative = alpha * (c - c0) + gamma * (c - c0) ** 3
-        residuals.append(abs(true_derivative - declared_derivative))
+        finite_difference = (potential(c + epsilon) - potential(c - epsilon)) / (2.0 * epsilon)
+        legacy_derivative = alpha * (c - c0) + gamma * (c - c0) ** 3
+        canonical_residuals.append(abs(finite_difference - true_derivative))
+        legacy_residuals.append(abs(finite_difference - legacy_derivative))
 
-    max_residual = max(residuals)
+    max_canonical_residual = max(canonical_residuals)
+    max_legacy_residual = max(legacy_residuals)
+    threshold = 1.0e-8
     source_contract = {
         "potential_uses_squared_state": contains(master_text, "diff = C_mag_sq - params.C0**2"),
-        "derivative_uses_linear_shift": contains(master_text, "diff = C - params.C0"),
-        "dynamics_calls_declared_derivative": contains(
-            master_text, "reaction = -potential_derivative(C, params)"
-        ),
+        "exact_derivative_function_present": contains(master_text, "def potential_derivative")
+        and contains(master_text, "2.0 * C * (params.alpha * diff + params.gamma * diff**3)"),
+        "canonical_mode_present": contains(master_text, 'LEGACY_VARIATIONAL_OPERATOR_MODE = "legacy_variational_v1"'),
+        "dynamics_selects_exact_derivative_in_canonical_mode": contains(
+            master_text, "if mode == LEGACY_VARIATIONAL_OPERATOR_MODE"
+        )
+        and contains(master_text, "reaction_derivative = ("),
+        "legacy_comparator_present": contains(master_text, "def legacy_reaction_derivative")
+        and contains(master_text, "else legacy_reaction_derivative"),
     }
-    status = "CONTRADICTION" if max_residual > 1.0e-10 and all(source_contract.values()) else "NOT_ESTABLISHED"
+    canonical_ready = (
+        source_contract["potential_uses_squared_state"]
+        and source_contract["exact_derivative_function_present"]
+        and source_contract["canonical_mode_present"]
+        and source_contract["dynamics_selects_exact_derivative_in_canonical_mode"]
+        and source_contract["legacy_comparator_present"]
+    )
+    status = "COMPATIBLE_CONDITIONAL" if canonical_ready else "NOT_ESTABLISHED"
     return finding(
         "legacy_potential_derivative_pair",
         "uet.legacy.master_potential",
         status,
-        "critical",
+        "medium",
         "V(C)=alpha/2*(C^2-C0^2)^2+gamma/4*(C^2-C0^2)^4",
-        "dynamics uses alpha*(C-C0)+gamma*(C-C0)^3",
-        "The declared reaction is not the functional derivative of the declared potential. This is an implementation-level mathematical conflict, not merely an unproven physical interpretation.",
-        "The legacy potential cannot currently be treated as a valid variational gradient-flow baseline. A standard theory can only be recovered after the pair is repaired or the derivative is explicitly relabeled as a separate comparator.",
+        "legacy_variational_v1 uses the exact radial derivative; legacy_local retains a named historical comparator",
+        "The canonical opt-in lane closes the declared potential/derivative pair. The historical reaction remains intentionally non-variational and is quarantined as a comparator.",
+        "The old implementation is not globally variational, but its default behavior is preserved and a separately named canonical lane is available for variational checks.",
         [
             {
                 "path": rel(MASTER_PATH),
@@ -131,13 +153,48 @@ def evaluate_legacy_potential(master_text: str) -> dict[str, Any]:
                 "details": source_contract,
             }
         ],
-        "Do not use the legacy potential as a derivation source until the derivative pair is repaired and reverified; preserve the current behavior as LEGACY.",
+        "Use legacy_variational_v1 for variational claims; do not promote legacy_local comparator behavior without a separate derivation.",
         metrics={
             "sample_points": list(samples),
-            "max_absolute_residual": max_residual,
-            "threshold": 1.0e-10,
+            "canonical_max_absolute_residual": max_canonical_residual,
+            "legacy_comparator_max_absolute_residual": max_legacy_residual,
+            "threshold": threshold,
             "analytic_derivative": "2*C*(alpha*(C^2-C0^2)+gamma*(C^2-C0^2)^3)",
-            "coded_derivative": "alpha*(C-C0)+gamma*(C-C0)^3",
+            "legacy_comparator_derivative": "alpha*(C-C0)+gamma*(C-C0)^3",
+            "legacy_behavior_preserved": True,
+        },
+    )
+
+
+def evaluate_legacy_information_gradient_sign(master_text: str) -> dict[str, Any]:
+    """Audit the information-source sign in the same lane as the coupling."""
+
+    source_contract = {
+        "positive_coupling_declared": contains(master_text, "return params.beta * np.sum(C * I) * volume"),
+        "canonical_negative_source_present": contains(master_text, "source = -params.beta * C"),
+        "legacy_positive_source_present": contains(master_text, "source = params.beta * C"),
+        "c_source_sign_matches": contains(master_text, "return -params.beta * I"),
+    }
+    status = "COMPATIBLE_CONDITIONAL" if all(
+        source_contract[key]
+        for key in ("positive_coupling_declared", "canonical_negative_source_present", "c_source_sign_matches")
+    ) else "NOT_ESTABLISHED"
+    return finding(
+        "legacy_information_gradient_sign",
+        "uet.legacy.information_gradient",
+        status,
+        "medium",
+        "Omega_I contains +beta*C*I and dI/dt=-delta(Omega)/delta(I)",
+        "legacy_variational_v1 uses -beta*C; legacy_local retains +beta*C",
+        "The canonical source sign matches the negative gradient of the declared positive coupling. The historical sign is preserved only as a quarantined comparator.",
+        "The source-sign contract is conditionally closed in the canonical lane, not globally for the historical implementation.",
+        [{"path": rel(MASTER_PATH), "kind": "source_contract", "details": source_contract}],
+        "Keep the legacy source sign out of variational claims and resolve the remaining information-operator equation separately.",
+        metrics={
+            "expected_canonical_source_sign": -1,
+            "canonical_source_sign": -1,
+            "legacy_comparator_source_sign": 1,
+            "legacy_behavior_preserved": True,
         },
     )
 
@@ -181,7 +238,7 @@ def build_report() -> dict[str, Any]:
     o2_formula = load_json(O2_FORMULA_PATH)
     registry = load_json(REGISTRY_PATH)
 
-    findings = [evaluate_legacy_potential(master_text)]
+    findings = [evaluate_legacy_potential(master_text), evaluate_legacy_information_gradient_sign(master_text)]
 
     information_contract = {
         "declared_box_equation": contains(master_text, "Implementing:")
@@ -454,7 +511,7 @@ def build_report() -> dict[str, Any]:
             "NOT_ESTABLISHED",
             "medium",
             "legacy verifier names heat-equation and Ginzburg-Landau limits",
-            "the checks are spread/relaxation diagnostics and the potential/derivative mismatch remains unresolved",
+            "the checks are spread/relaxation diagnostics and the remaining information-operator and unit conflicts remain unresolved",
             "A limit label is not a proof of equation equivalence. The heat and GL diagnostics are useful internal comparators, but their residual, boundary, and exact operator maps are not yet sufficient to certify the old equations as special cases.",
             "Standard heat/GL behavior can be used as benchmark baselines after an exact operator and boundary contract is declared.",
             [{"path": rel(MASTER_PATH), "kind": "legacy_verifier_names", "details": ["verify_heat_equation_limit", "verify_ginzburg_landau_limit"]}],
@@ -487,7 +544,7 @@ def build_report() -> dict[str, Any]:
             "principle_id": "P2",
             "name": "functional_derivative_closure",
             "statement": "A dynamics operator may be called variational only when its implemented force is the derivative of its declared functional in the same lane.",
-            "evidence_status": "REQUIRED_RULE; LEGACY_CONFLICT",
+            "evidence_status": "CONDITIONAL_CANONICAL; LEGACY_COMPARATOR_QUARANTINED",
             "controller": "legacy_potential_derivative_pair",
         },
         {
@@ -579,7 +636,7 @@ def build_report() -> dict[str, Any]:
                 "old_theory": "heat/GL legacy limits",
                 "relation": "legacy spread/relaxation diagnostics",
                 "status": "NOT_ESTABLISHED",
-                "scope": "not an equation-residual proof; legacy derivative conflict remains",
+                "scope": "not an equation-residual proof; information-operator and unit conflicts remain",
             },
         ],
         "claim_boundary": [

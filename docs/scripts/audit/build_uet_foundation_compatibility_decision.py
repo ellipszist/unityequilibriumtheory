@@ -99,7 +99,7 @@ def build_decision() -> dict[str, Any]:
             "mathematical_consistency": legacy_finding["status"],
             "standard_physics_correspondence": "BLOCKED",
             "old_theory_special_case": "NOT_ESTABLISHED",
-            "reason": "The declared potential and coded derivative are not a matched pair; the information operator and beta unit semantics also conflict.",
+            "reason": "The canonical potential/derivative and information-source signs are closed conditionally in legacy_variational_v1; legacy_local remains a quarantined comparator, while the information operator and beta unit semantics still conflict.",
             "evidence": [
                 rel(INPUTS["legacy_variational"]),
                 rel(INPUTS["compatibility"]),
@@ -237,8 +237,8 @@ def build_decision() -> dict[str, Any]:
         },
         {
             "principle_id": "P2_functional_derivative_closure",
-            "verdict": "SPLIT_NEW_PASS_LEGACY_FAIL",
-            "meaning": "The new matter-space functional/derivative lane passes local checks, while the legacy potential/derivative pair is mathematically contradictory.",
+            "verdict": "CANONICAL_PASS_LEGACY_COMPARATOR_QUARANTINED",
+            "meaning": "The canonical legacy_variational_v1 potential/source contract passes its scoped checks; legacy_local behavior is preserved as a non-variational comparator.",
             "evidence": [rel(INPUTS["legacy_variational"]), rel(INPUTS["matter_space"])],
         },
         {
@@ -279,14 +279,25 @@ def build_decision() -> dict[str, Any]:
         },
     ]
 
-    hard_contradictions = [
+    conditional_closures = [
         {
             "id": "legacy_potential_derivative_pair",
             "status": legacy_finding["status"],
-            "residual": legacy_finding.get("metrics", {}).get("max_absolute_residual"),
+            "canonical_mode": "legacy_variational_v1",
+            "canonical_residual": legacy_finding.get("metrics", {}).get("canonical_max_absolute_residual"),
+            "legacy_comparator_residual": legacy_finding.get("metrics", {}).get("legacy_comparator_max_absolute_residual"),
             "threshold": legacy_finding.get("metrics", {}).get("threshold"),
-            "meaning": "This is a real mathematical inconsistency in the legacy implementation, not a mere lack of physical evidence.",
+            "meaning": "The canonical radial derivative is closed conditionally; legacy_local remains explicitly non-variational.",
         },
+        {
+            "id": "legacy_information_gradient_sign",
+            "status": findings.get("legacy_information_gradient_sign", {}).get("status", "NOT_ESTABLISHED"),
+            "canonical_mode": "legacy_variational_v1",
+            "meaning": "The canonical information-source sign matches the declared positive coupling; the historical sign is comparator-only.",
+        },
+    ]
+
+    hard_contradictions = [
         {
             "id": "legacy_information_operator",
             "status": legacy_info_finding["status"],
@@ -305,7 +316,7 @@ def build_decision() -> dict[str, Any]:
         "generated_at": date.today().isoformat(),
         "audit_status": "PASS",
         "decision": {
-            "mathematical_consistency": "BLOCKED_BY_LEGACY_CONTRADICTION",
+            "mathematical_consistency": "BLOCKED_BY_REMAINING_LEGACY_OPERATOR_CONFLICT",
             "standard_physics_correspondence": "PARTIAL_CONDITIONAL_NOT_GLOBAL",
             "old_theory_nesting": "CONDITIONAL_ONLY",
             "global_uet_status": "FOUNDATION_NOT_CLOSED",
@@ -325,6 +336,7 @@ def build_decision() -> dict[str, Any]:
             "coverage_boundary": "The inventory is broad but not code-complete; code-only equations and full observable maps remain open.",
         },
         "hard_contradictions": hard_contradictions,
+        "conditional_closures": conditional_closures,
         "family_matrix": family_rows,
         "principle_matrix": principle_rows,
         "special_case_summary": {
@@ -334,8 +346,8 @@ def build_decision() -> dict[str, Any]:
             "matter_space_causal": "BLOCKED_FULL_CANDIDATE_REFERENCE_LANE_PASS",
             "global_open_universe": "NOT_ESTABLISHED",
         },
-        "claim_boundary": "The current repository evidence finds one actual legacy mathematical contradiction, several declared-equation/unit conflicts, and several unresolved physical correspondences. It also finds conditional compatibility in narrowly defined new lanes. It does not establish that all old theories are special cases of one UET equation, nor that UET is physically complete.",
-        "next_controller": "Repair or quarantine the legacy contradictions, complete code-level F0-F3 correspondence and units, prove full coupled causal/energy behavior, then build observable and holdout tests before any universal or real-data claim.",
+        "claim_boundary": "The current repository evidence closes the potential/source contract only inside legacy_variational_v1, keeps legacy_local as a quarantined comparator, and retains declared operator/unit conflicts plus unresolved physical correspondences. It does not establish that all old theories are special cases of one UET equation, nor that UET is physically complete.",
+        "next_controller": "Resolve the remaining legacy information-operator and beta-unit conflicts, complete code-level F0-F3 correspondence and units, prove full coupled causal/energy behavior, then build observable and holdout tests before any universal or real-data claim.",
         "evidence_inputs": {name: rel(path) for name, path in INPUTS.items()},
     }
 
@@ -356,15 +368,26 @@ def render_markdown(decision: dict[str, Any]) -> str:
         f"- Old-theory nesting: `{decision['decision']['old_theory_nesting']}`",
         f"- Overall foundation: `{decision['decision']['global_uet_status']}`",
         "",
-        "The current answer is therefore: the repository contains a real legacy mathematical",
-        "contradiction, conditional compatibility in selected new lanes, and no evidence that",
-        "all standard theories are special cases of one universal UET equation.",
+        "The current answer is therefore: the canonical legacy_variational_v1 potential/source contract",
+        "is conditionally closed, legacy_local remains a quarantined comparator, and remaining operator/unit",
+        "conflicts plus unresolved physical correspondences still block the foundation.",
         "",
-        "## Hard contradictions and conflicts",
+        "## Conditional closures",
         "",
-        "| ID | Status | Meaning |",
-        "|---|---|---|",
+        "| ID | Mode | Status | Meaning |",
+        "|---|---|---|---|",
     ]
+    for item in decision["conditional_closures"]:
+        lines.append(f"| `{item['id']}` | `{item['canonical_mode']}` | `{item['status']}` | {item['meaning']} |")
+    lines.extend(
+        [
+            "",
+            "## Hard contradictions and conflicts",
+            "",
+            "| ID | Status | Meaning |",
+            "|---|---|---|",
+        ]
+    )
     for item in decision["hard_contradictions"]:
         lines.append(f"| `{item['id']}` | `{item['status']}` | {item['meaning']} |")
     lines.extend(

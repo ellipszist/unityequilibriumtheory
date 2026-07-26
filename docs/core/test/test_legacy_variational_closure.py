@@ -10,27 +10,34 @@ def load_artifact():
     return json.loads(ARTIFACT.read_text(encoding="utf-8-sig"))
 
 
-def test_legacy_variational_audit_is_generated_and_blocked():
+def findings_by_id(artifact):
+    return {item["finding_id"]: item for item in artifact["findings"]}
+
+
+def test_legacy_variational_audit_is_generated_and_conditionally_closed():
     artifact = load_artifact()
     assert artifact["audit_status"] == "PASS"
-    assert artifact["closure_status"] == "BLOCKED"
-    assert artifact["controlling_blockers"] == [
-        "legacy_potential_derivative_pair",
-        "legacy_information_gradient_sign",
-    ]
+    assert artifact["closure_status"] == "PASS_CONDITIONAL"
+    assert artifact["controlling_blockers"] == []
+    assert artifact["canonical_mode"] == "legacy_variational_v1"
+    assert artifact["legacy_default_mode"] == "legacy_local"
+    assert artifact["legacy_behavior_preserved"] is True
 
 
-def test_potential_pair_has_large_finite_difference_residual():
-    artifact = load_artifact()
-    finding = next(item for item in artifact["findings"] if item["finding_id"] == "legacy_potential_derivative_pair")
-    assert finding["status"] == "CONTRADICTION"
-    assert finding["metrics"]["finite_difference_max_absolute_residual"] > finding["metrics"]["threshold"]
+def test_canonical_potential_pair_passes_and_legacy_comparator_is_quarantined():
+    finding = findings_by_id(load_artifact())["legacy_potential_derivative_pair"]
+    assert finding["status"] == "COMPATIBLE_CONDITIONAL"
+    assert finding["metrics"]["canonical_finite_difference_max_absolute_residual"] <= finding["metrics"]["threshold"]
+    assert finding["metrics"]["legacy_comparator_finite_difference_max_absolute_residual"] > finding["metrics"]["threshold"]
+    assert finding["legacy_comparator"]["status"] == "QUARANTINED_COMPARATOR"
+    assert finding["legacy_comparator"]["preserved"] is True
 
 
-def test_information_source_sign_is_explicitly_opposite():
-    artifact = load_artifact()
-    finding = next(item for item in artifact["findings"] if item["finding_id"] == "legacy_information_gradient_sign")
-    assert finding["status"] == "CONTRADICTION"
+def test_canonical_information_source_sign_passes_and_legacy_comparator_is_quarantined():
+    finding = findings_by_id(load_artifact())["legacy_information_gradient_sign"]
+    assert finding["status"] == "COMPATIBLE_CONDITIONAL"
     assert finding["expected_source_sign"] == -1
-    assert finding["coded_source_sign"] == 1
+    assert finding["canonical_source_sign"] == -1
+    assert finding["legacy_comparator_source_sign"] == 1
     assert finding["c_source_sign_matches"] is True
+    assert finding["legacy_comparator"]["status"] == "QUARANTINED_COMPARATOR"

@@ -1,8 +1,9 @@
-"""Audit exact variational closure of the legacy C/I implementation.
+"""Audit the scoped variational contract for the legacy C/I implementation.
 
-This audit does not change the legacy engine. It checks two implementation-level claims:
-the coded derivative of V(C), and the sign of the I source implied by the declared
-positive beta*C*I coupling under negative-gradient flow.
+The historical ``legacy_local`` path is intentionally preserved as a comparator.
+The opt-in ``legacy_variational_v1`` path is the canonical lane audited here. The
+artifact therefore reports canonical closure separately from legacy preservation;
+it must not turn preservation of the old path into a variational claim.
 """
 
 from __future__ import annotations
@@ -29,7 +30,11 @@ def rel(path: Path) -> str:
 
 
 def potential_pair(master_text: str) -> dict[str, Any]:
-    from docs.core.uet_master_equation import potential_V, potential_derivative
+    from docs.core.uet_master_equation import (
+        legacy_reaction_derivative,
+        potential_V,
+        potential_derivative,
+    )
     from docs.core.uet_parameters import UETParameters
 
     params = UETParameters(alpha=1.0, gamma=0.025, C0=1.0)
@@ -38,48 +43,66 @@ def potential_pair(master_text: str) -> dict[str, Any]:
     finite_difference = (
         potential_V(samples + epsilon, params) - potential_V(samples - epsilon, params)
     ) / (2.0 * epsilon)
-    coded = potential_derivative(samples, params)
-    residual = np.abs(finite_difference - coded)
-    source_contract = {
-        "potential_code": "diff = C_mag_sq - params.C0**2",
-        "derivative_code": "diff = C - params.C0",
-        "finite_difference_max_absolute_residual": float(np.max(residual)),
-        "threshold": 1.0e-8,
-        "samples": samples.tolist(),
-    }
-    status = "CONTRADICTION" if source_contract["finite_difference_max_absolute_residual"] > source_contract["threshold"] else "PASS"
+    canonical = potential_derivative(samples, params)
+    legacy = legacy_reaction_derivative(samples, params)
+    canonical_residual = np.abs(finite_difference - canonical)
+    legacy_residual = np.abs(finite_difference - legacy)
+    threshold = 1.0e-8
     return {
         "finding_id": "legacy_potential_derivative_pair",
-        "status": status,
+        "status": "COMPATIBLE_CONDITIONAL"
+        if float(np.max(canonical_residual)) <= threshold
+        else "CONTRADICTION",
         "declared_relation": "V(C)=alpha/2*(C^2-C0^2)^2+gamma/4*(C^2-C0^2)^4",
-        "coded_relation": "dynamics uses alpha*(C-C0)+gamma*(C-C0)^3",
+        "canonical_mode": "legacy_variational_v1",
+        "canonical_coded_relation": "dynamics uses the exact radial derivative of potential_V",
+        "legacy_comparator_relation": "legacy_local uses alpha*(C-C0)+gamma*(C-C0)^3",
         "analytic_derivative": "2*C*(alpha*(C^2-C0^2)+gamma*(C^2-C0^2)^3)",
-        "metrics": source_contract,
-        "claim_boundary": "legacy comparator; not a closed variational gradient flow",
+        "metrics": {
+            "canonical_finite_difference_max_absolute_residual": float(np.max(canonical_residual)),
+            "legacy_comparator_finite_difference_max_absolute_residual": float(np.max(legacy_residual)),
+            "threshold": threshold,
+            "samples": samples.tolist(),
+        },
+        "legacy_comparator": {
+            "status": "QUARANTINED_COMPARATOR",
+            "preserved": True,
+            "reason": "Historical legacy_local reaction is not the derivative of the declared radial potential.",
+        },
+        "claim_boundary": "Canonical potential/derivative closure is established only in legacy_variational_v1; legacy_local remains a non-variational comparator.",
     }
 
 
 def information_gradient_sign(master_text: str) -> dict[str, Any]:
     coupling_present = "return params.beta * np.sum(C * I) * volume" in master_text
-    source_present = "source = params.beta * C" in master_text
+    canonical_source_present = "source = -params.beta * C" in master_text
+    legacy_source_present = "source = params.beta * C" in master_text
     c_source_present = "return -params.beta * I" in master_text
     expected_i_source_sign = -1
-    coded_i_source_sign = 1
-    status = (
-        "CONTRADICTION"
-        if coupling_present and source_present and expected_i_source_sign != coded_i_source_sign
-        else "NOT_ESTABLISHED"
-    )
+    canonical_i_source_sign = -1
+    legacy_i_source_sign = 1
     return {
         "finding_id": "legacy_information_gradient_sign",
-        "status": status,
+        "status": "COMPATIBLE_CONDITIONAL"
+        if coupling_present and canonical_source_present
+        and expected_i_source_sign == canonical_i_source_sign
+        else "NOT_ESTABLISHED",
         "declared_relation": "Omega_I contains +beta*C*I and dI/dt=-delta(Omega)/delta(I)",
-        "coded_relation": "dI/dt=laplacian-kappa_I*I+beta*C",
+        "canonical_mode": "legacy_variational_v1",
+        "canonical_coded_relation": "dI/dt=laplacian-kappa_I*I-beta*C",
+        "legacy_comparator_relation": "legacy_local uses dI/dt=laplacian-kappa_I*I+beta*C",
         "expected_source_sign": expected_i_source_sign,
-        "coded_source_sign": coded_i_source_sign,
+        "canonical_source_sign": canonical_i_source_sign,
+        "legacy_comparator_source_sign": legacy_i_source_sign,
+        "canonical_source_present": canonical_source_present,
+        "legacy_source_present": legacy_source_present,
         "c_source_sign_matches": c_source_present,
-        "interpretation": "The I source sign is opposite to the negative functional gradient implied by the declared positive coupling. The C-side source has the opposite sign and therefore does not repair the I-side mismatch.",
-        "claim_boundary": "legacy I dynamics is not a closed gradient-flow pair with the declared information coupling",
+        "legacy_comparator": {
+            "status": "QUARANTINED_COMPARATOR",
+            "preserved": True,
+            "reason": "Historical legacy_local source sign is retained for compatibility and is not claimed to be variational.",
+        },
+        "claim_boundary": "Canonical I-source sign is closed only in legacy_variational_v1; legacy_local remains a historical comparator.",
     }
 
 
@@ -88,17 +111,24 @@ def build_report() -> dict[str, Any]:
     findings = [potential_pair(master_text), information_gradient_sign(master_text)]
     blockers = [item["finding_id"] for item in findings if item["status"] == "CONTRADICTION"]
     return {
-        "schema_version": "1.0",
+        "schema_version": "1.1",
         "artifact": "uet_legacy_variational_closure",
         "generated_at": date.today().isoformat(),
         "audit_status": "PASS",
         "closure_status": "BLOCKED" if blockers else "PASS_CONDITIONAL",
         "controlling_blockers": blockers,
+        "canonical_mode": "legacy_variational_v1",
+        "legacy_default_mode": "legacy_local",
+        "legacy_behavior_preserved": True,
+        "unresolved_scope_conflicts": [
+            "legacy_information_operator_equation",
+            "legacy_beta_unit_semantics",
+        ],
         "equation_family": "uet.legacy.master_functional",
         "evidence_inputs": {"master_equation": rel(MASTER_PATH)},
         "findings": findings,
         "principle": "A dynamics implementation is variational only when every coupled state equation is the negative derivative of the same declared functional in the same unit and boundary lane.",
-        "next_action": "Keep legacy behavior quarantined; either repair the functional/gradient pair or relabel the implementation as a non-variational comparator before using it as a foundation.",
+        "next_action": "Use legacy_variational_v1 for the closed potential/source contract; keep legacy_local quarantined and audit the remaining information-operator equation and beta units separately.",
     }
 
 

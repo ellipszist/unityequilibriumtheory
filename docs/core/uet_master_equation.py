@@ -92,6 +92,7 @@ from docs.core.uet_trace import (
     compute_spacetime_trace,
 )
 LEGACY_OPERATOR_MODE = "legacy_local"
+LEGACY_VARIATIONAL_OPERATOR_MODE = "legacy_variational_v1"
 SPATIAL_COUPLED_OPERATOR_MODE = "spatial_coupled_v1"
 SPATIAL_COUPLED_V2_OPERATOR_MODE = "spatial_coupled_v2"
 CONSERVED_ORDER_OPERATOR_MODE = "conserved_order_v1"
@@ -99,6 +100,7 @@ CONSERVED_ORDER_SPECTRAL_OPERATOR_MODE = "conserved_order_spectral_v1"
 SPACETIME_TRACE_OPERATOR_MODE = "spacetime_trace_v1"
 SUPPORTED_OPERATOR_MODES = {
     LEGACY_OPERATOR_MODE,
+    LEGACY_VARIATIONAL_OPERATOR_MODE,
     SPATIAL_COUPLED_OPERATOR_MODE,
     SPATIAL_COUPLED_V2_OPERATOR_MODE,
     CONSERVED_ORDER_OPERATOR_MODE,
@@ -286,14 +288,27 @@ def potential_V(C: np.ndarray, params: UETParameters) -> np.ndarray:
 
 
 def potential_derivative(C: Union[np.ndarray, Tuple], params: UETParameters) -> np.ndarray:
-    """Derivative dV/dC = α(C-C0) + γ(C-C0)³"""
-    # Robust unpacking if C is passed as a state tuple
+    """Exact derivative of potential_V in the radial C lane."""
     if isinstance(C, (tuple, list)):
         C = C[0]
 
+    diff = C**2 - params.C0**2
+    return 2.0 * C * (params.alpha * diff + params.gamma * diff**3)
+
+
+def legacy_reaction_derivative(
+    C: Union[np.ndarray, Tuple], params: UETParameters
+) -> np.ndarray:
+    """Historical shifted derivative retained only for legacy_local.
+
+    This relation is not the derivative of potential_V; it is kept as a named
+    comparator so preserving legacy numerical behavior cannot be mistaken for
+    a variational claim.
+    """
+    if isinstance(C, (tuple, list)):
+        C = C[0]
     diff = C - params.C0
     return params.alpha * diff + params.gamma * diff**3
-
 
 # =============================================================================
 # AXIOM 2: INFORMATION FROM IRREVERSIBILITY - βCI COUPLING
@@ -384,6 +399,9 @@ def information_propagator_step(
     elif mode == SPATIAL_COUPLED_OPERATOR_MODE:
         coeff = getattr(params, "spatial_information_coupling", 1.0)
         source = 0.5 * params.beta * coeff * C**2
+    elif mode == LEGACY_VARIATIONAL_OPERATOR_MODE:
+        # +beta*C*I in Omega requires -beta*C under negative gradient flow.
+        source = -params.beta * C
     else:
         source = params.beta * C
 
@@ -1253,6 +1271,25 @@ def dynamics_step_complete(
         params = UETParameters()
 
     mode = resolve_operator_mode(params, operator_mode)
+    if mode == LEGACY_VARIATIONAL_OPERATOR_MODE:
+        unsupported = []
+        if J_in is not None or J_out is not None:
+            unsupported.append("J_in/J_out")
+        if constraints is not None:
+            unsupported.append("constraints")
+        if density != 0.0:
+            unsupported.append("density")
+        if params.W_N != 0.0:
+            unsupported.append("W_N")
+        if params.a0_viscosity != 0.0:
+            unsupported.append("a0_viscosity")
+        if params.tau_inertia != 0.0:
+            unsupported.append("tau_inertia")
+        if unsupported:
+            raise ValueError(
+                "legacy_variational_v1 requires pure normalized gradient terms; "
+                "disable " + ", ".join(unsupported)
+            )
     if mode == MATTER_SPACE_OPERATOR_MODE:
         ambiguous = [
             name
@@ -1334,7 +1371,12 @@ def dynamics_step_complete(
             return nan_field
 
     # Reaction term: -V'(C)
-    reaction = -potential_derivative(C, params)
+    reaction_derivative = (
+        potential_derivative
+        if mode == LEGACY_VARIATIONAL_OPERATOR_MODE
+        else legacy_reaction_derivative
+    )
+    reaction = -reaction_derivative(C, params)
 
     # Diffusion term: κ∇²C
     if C.ndim == 1:

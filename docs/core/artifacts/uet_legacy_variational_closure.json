@@ -1,12 +1,16 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "artifact": "uet_legacy_variational_closure",
   "generated_at": "2026-07-26",
   "audit_status": "PASS",
-  "closure_status": "BLOCKED",
-  "controlling_blockers": [
-    "legacy_potential_derivative_pair",
-    "legacy_information_gradient_sign"
+  "closure_status": "PASS_CONDITIONAL",
+  "controlling_blockers": [],
+  "canonical_mode": "legacy_variational_v1",
+  "legacy_default_mode": "legacy_local",
+  "legacy_behavior_preserved": true,
+  "unresolved_scope_conflicts": [
+    "legacy_information_operator_equation",
+    "legacy_beta_unit_semantics"
   ],
   "equation_family": "uet.legacy.master_functional",
   "evidence_inputs": {
@@ -15,14 +19,15 @@
   "findings": [
     {
       "finding_id": "legacy_potential_derivative_pair",
-      "status": "CONTRADICTION",
+      "status": "COMPATIBLE_CONDITIONAL",
       "declared_relation": "V(C)=alpha/2*(C^2-C0^2)^2+gamma/4*(C^2-C0^2)^4",
-      "coded_relation": "dynamics uses alpha*(C-C0)+gamma*(C-C0)^3",
+      "canonical_mode": "legacy_variational_v1",
+      "canonical_coded_relation": "dynamics uses the exact radial derivative of potential_V",
+      "legacy_comparator_relation": "legacy_local uses alpha*(C-C0)+gamma*(C-C0)^3",
       "analytic_derivative": "2*C*(alpha*(C^2-C0^2)+gamma*(C^2-C0^2)^3)",
       "metrics": {
-        "potential_code": "diff = C_mag_sq - params.C0**2",
-        "derivative_code": "diff = C - params.C0",
-        "finite_difference_max_absolute_residual": 13.675000000367197,
+        "canonical_finite_difference_max_absolute_residual": 3.671978276997834e-10,
+        "legacy_comparator_finite_difference_max_absolute_residual": 13.675000000367197,
         "threshold": 1e-08,
         "samples": [
           -1.5,
@@ -34,20 +39,34 @@
           2.0
         ]
       },
-      "claim_boundary": "legacy comparator; not a closed variational gradient flow"
+      "legacy_comparator": {
+        "status": "QUARANTINED_COMPARATOR",
+        "preserved": true,
+        "reason": "Historical legacy_local reaction is not the derivative of the declared radial potential."
+      },
+      "claim_boundary": "Canonical potential/derivative closure is established only in legacy_variational_v1; legacy_local remains a non-variational comparator."
     },
     {
       "finding_id": "legacy_information_gradient_sign",
-      "status": "CONTRADICTION",
+      "status": "COMPATIBLE_CONDITIONAL",
       "declared_relation": "Omega_I contains +beta*C*I and dI/dt=-delta(Omega)/delta(I)",
-      "coded_relation": "dI/dt=laplacian-kappa_I*I+beta*C",
+      "canonical_mode": "legacy_variational_v1",
+      "canonical_coded_relation": "dI/dt=laplacian-kappa_I*I-beta*C",
+      "legacy_comparator_relation": "legacy_local uses dI/dt=laplacian-kappa_I*I+beta*C",
       "expected_source_sign": -1,
-      "coded_source_sign": 1,
+      "canonical_source_sign": -1,
+      "legacy_comparator_source_sign": 1,
+      "canonical_source_present": true,
+      "legacy_source_present": true,
       "c_source_sign_matches": true,
-      "interpretation": "The I source sign is opposite to the negative functional gradient implied by the declared positive coupling. The C-side source has the opposite sign and therefore does not repair the I-side mismatch.",
-      "claim_boundary": "legacy I dynamics is not a closed gradient-flow pair with the declared information coupling"
+      "legacy_comparator": {
+        "status": "QUARANTINED_COMPARATOR",
+        "preserved": true,
+        "reason": "Historical legacy_local source sign is retained for compatibility and is not claimed to be variational."
+      },
+      "claim_boundary": "Canonical I-source sign is closed only in legacy_variational_v1; legacy_local remains a historical comparator."
     }
   ],
   "principle": "A dynamics implementation is variational only when every coupled state equation is the negative derivative of the same declared functional in the same unit and boundary lane.",
-  "next_action": "Keep legacy behavior quarantined; either repair the functional/gradient pair or relabel the implementation as a non-variational comparator before using it as a foundation."
+  "next_action": "Use legacy_variational_v1 for the closed potential/source contract; keep legacy_local quarantined and audit the remaining information-operator equation and beta units separately."
 }

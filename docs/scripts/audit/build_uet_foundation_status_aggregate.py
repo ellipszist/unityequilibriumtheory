@@ -95,14 +95,14 @@ def build_aggregate() -> dict[str, Any]:
             "name": "derivation",
             "status": "BLOCKED" if compatibility.get("controlling_blockers") else "PASS_CONDITIONAL",
             "evidence": ["compatibility", "family_contract"],
-            "controller": "legacy functional conflict and open heuristic bridges remain",
+            "controller": "remaining information-operator/unit conflicts and open heuristic bridges remain",
         },
         {
             "id": "F5",
             "name": "formal_verification",
             "status": "BLOCKED" if legacy_variational.get("closure_status") == "BLOCKED" or "legacy_potential_derivative_pair" in compatibility.get("controlling_blockers", []) else "PASS_CONDITIONAL",
             "evidence": ["compatibility", "matter_space", "legacy_variational"],
-            "controller": "legacy variational closure remains blocked",
+            "controller": "canonical potential/source closure passes conditionally; legacy_local comparator remains quarantined",
         },
         {
             "id": "F6",
@@ -199,8 +199,7 @@ def build_aggregate() -> dict[str, Any]:
         "controlling_blockers": controlling_blockers,
         "gate_summary": {"status_counts": status_counts, "gates": gates},
         "known_conflicts": [
-            "legacy potential and derivative are not a matched functional pair",
-            "legacy information coupling and I-source sign are not a matched negative-gradient pair",
+            "legacy_local reaction is a quarantined non-variational comparator",
             "legacy information box-equation declaration does not match its first-order grid proxy",
             "normalized beta and SI Landauer energy are not the same quantity",
             "matter-space causal response fails its pre-arrival leakage threshold",

@@ -5,7 +5,6 @@
   "audit_status": "PASS",
   "compatibility_status": "BLOCKED",
   "controlling_blockers": [
-    "legacy_potential_derivative_pair",
     "legacy_information_operator",
     "legacy_beta_unit_semantics",
     "matter_space_causal_response",
@@ -20,12 +19,11 @@
     "legacy_heat_and_gl_limits"
   ],
   "summary": {
-    "finding_count": 15,
+    "finding_count": 16,
     "status_counts": {
       "BLOCKED": 1,
-      "COMPATIBLE_CONDITIONAL": 4,
+      "COMPATIBLE_CONDITIONAL": 6,
       "CONFLICT": 2,
-      "CONTRADICTION": 1,
       "NOT_ESTABLISHED": 6,
       "REJECTED_REDUCTION": 1
     },
@@ -47,20 +45,22 @@
     {
       "finding_id": "legacy_potential_derivative_pair",
       "equation_family": "uet.legacy.master_potential",
-      "status": "CONTRADICTION",
-      "severity": "critical",
+      "status": "COMPATIBLE_CONDITIONAL",
+      "severity": "medium",
       "declared_relation": "V(C)=alpha/2*(C^2-C0^2)^2+gamma/4*(C^2-C0^2)^4",
-      "observed_relation": "dynamics uses alpha*(C-C0)+gamma*(C-C0)^3",
-      "interpretation": "The declared reaction is not the functional derivative of the declared potential. This is an implementation-level mathematical conflict, not merely an unproven physical interpretation.",
-      "old_theory_relation": "The legacy potential cannot currently be treated as a valid variational gradient-flow baseline. A standard theory can only be recovered after the pair is repaired or the derivative is explicitly relabeled as a separate comparator.",
+      "observed_relation": "legacy_variational_v1 uses the exact radial derivative; legacy_local retains a named historical comparator",
+      "interpretation": "The canonical opt-in lane closes the declared potential/derivative pair. The historical reaction remains intentionally non-variational and is quarantined as a comparator.",
+      "old_theory_relation": "The old implementation is not globally variational, but its default behavior is preserved and a separately named canonical lane is available for variational checks.",
       "evidence": [
         {
           "path": "docs/core/uet_master_equation.py",
           "kind": "source_contract",
           "details": {
             "potential_uses_squared_state": true,
-            "derivative_uses_linear_shift": true,
-            "dynamics_calls_declared_derivative": true
+            "exact_derivative_function_present": true,
+            "canonical_mode_present": true,
+            "dynamics_selects_exact_derivative_in_canonical_mode": true,
+            "legacy_comparator_present": true
           }
         }
       ],
@@ -74,12 +74,43 @@
           1.5,
           2.0
         ],
-        "max_absolute_residual": 13.674999999999999,
-        "threshold": 1e-10,
+        "canonical_max_absolute_residual": 3.671978276997834e-10,
+        "legacy_comparator_max_absolute_residual": 13.675000000367197,
+        "threshold": 1e-08,
         "analytic_derivative": "2*C*(alpha*(C^2-C0^2)+gamma*(C^2-C0^2)^3)",
-        "coded_derivative": "alpha*(C-C0)+gamma*(C-C0)^3"
+        "legacy_comparator_derivative": "alpha*(C-C0)+gamma*(C-C0)^3",
+        "legacy_behavior_preserved": true
       },
-      "next_action": "Do not use the legacy potential as a derivation source until the derivative pair is repaired and reverified; preserve the current behavior as LEGACY."
+      "next_action": "Use legacy_variational_v1 for variational claims; do not promote legacy_local comparator behavior without a separate derivation."
+    },
+    {
+      "finding_id": "legacy_information_gradient_sign",
+      "equation_family": "uet.legacy.information_gradient",
+      "status": "COMPATIBLE_CONDITIONAL",
+      "severity": "medium",
+      "declared_relation": "Omega_I contains +beta*C*I and dI/dt=-delta(Omega)/delta(I)",
+      "observed_relation": "legacy_variational_v1 uses -beta*C; legacy_local retains +beta*C",
+      "interpretation": "The canonical source sign matches the negative gradient of the declared positive coupling. The historical sign is preserved only as a quarantined comparator.",
+      "old_theory_relation": "The source-sign contract is conditionally closed in the canonical lane, not globally for the historical implementation.",
+      "evidence": [
+        {
+          "path": "docs/core/uet_master_equation.py",
+          "kind": "source_contract",
+          "details": {
+            "positive_coupling_declared": true,
+            "canonical_negative_source_present": true,
+            "legacy_positive_source_present": true,
+            "c_source_sign_matches": true
+          }
+        }
+      ],
+      "metrics": {
+        "expected_canonical_source_sign": -1,
+        "canonical_source_sign": -1,
+        "legacy_comparator_source_sign": 1,
+        "legacy_behavior_preserved": true
+      },
+      "next_action": "Keep the legacy source sign out of variational claims and resolve the remaining information-operator equation separately."
     },
     {
       "finding_id": "legacy_information_operator",
@@ -495,7 +526,7 @@
       "status": "NOT_ESTABLISHED",
       "severity": "medium",
       "declared_relation": "legacy verifier names heat-equation and Ginzburg-Landau limits",
-      "observed_relation": "the checks are spread/relaxation diagnostics and the potential/derivative mismatch remains unresolved",
+      "observed_relation": "the checks are spread/relaxation diagnostics and the remaining information-operator and unit conflicts remain unresolved",
       "interpretation": "A limit label is not a proof of equation equivalence. The heat and GL diagnostics are useful internal comparators, but their residual, boundary, and exact operator maps are not yet sufficient to certify the old equations as special cases.",
       "old_theory_relation": "Standard heat/GL behavior can be used as benchmark baselines after an exact operator and boundary contract is declared.",
       "evidence": [
@@ -524,7 +555,7 @@
       "principle_id": "P2",
       "name": "functional_derivative_closure",
       "statement": "A dynamics operator may be called variational only when its implemented force is the derivative of its declared functional in the same lane.",
-      "evidence_status": "REQUIRED_RULE; LEGACY_CONFLICT",
+      "evidence_status": "CONDITIONAL_CANONICAL; LEGACY_COMPARATOR_QUARANTINED",
       "controller": "legacy_potential_derivative_pair"
     },
     {
@@ -586,7 +617,7 @@
       "old_theory": "heat/GL legacy limits",
       "relation": "legacy spread/relaxation diagnostics",
       "status": "NOT_ESTABLISHED",
-      "scope": "not an equation-residual proof; legacy derivative conflict remains"
+      "scope": "not an equation-residual proof; information-operator and unit conflicts remain"
     }
   ],
   "claim_boundary": [
@@ -598,7 +629,7 @@
   ],
   "next_controller": "repair legacy variational/unit conflicts, complete foundation inventory, and repair matter-space causal leakage before downstream data tests",
   "source_hashes": {
-    "docs/core/uet_master_equation.py": "fc05a844b6c22ca7755f3f18eaa9578c15959ae1ce5cdd0879267b7f080a6380",
+    "docs/core/uet_master_equation.py": "51abb35d74f837a1ae3f84bae20a7896b7a964579dfd08eeb8064a64adbb73b2",
     "docs/core/uet_parameters.py": "d0311e96666ccb9999baf341f418a8d1954bff9c77c51c6cfef1a088ed5c2340",
     "docs/core/MATTER_SPACE_RESEARCH_SPEC.md": "3fca7d82e7f0c0c5e7904811eec7d81d772fe802492dbf2147b1ee95232fb2a4",
     "docs/core/UET_GR_NONCLOSED_RESEARCH_SPEC.md": "d15cc8e345a3df986f7608d48e3152134c4325dfa24e5dc9364b085fe37dd6c9",

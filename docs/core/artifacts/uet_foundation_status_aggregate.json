@@ -5,20 +5,18 @@
   "audit_status": "PASS",
   "foundation_status": "BLOCKED",
   "controlling_blockers": [
-    "legacy_potential_derivative_pair",
     "legacy_information_operator",
     "legacy_beta_unit_semantics",
     "matter_space_causal_response",
     "o2_to_legacy_double_well",
-    "legacy_information_gradient_sign",
     "topic_formula_audits_not_code_complete_or_correspondence_incomplete",
     "code_only_equation_surfaces_require_F1_F2_F3_review",
     "prearrival_leakage"
   ],
   "gate_summary": {
     "status_counts": {
-      "BLOCKED": 8,
-      "PASS_CONDITIONAL": 1
+      "BLOCKED": 7,
+      "PASS_CONDITIONAL": 2
     },
     "gates": [
       {
@@ -68,18 +66,18 @@
           "compatibility",
           "family_contract"
         ],
-        "controller": "legacy functional conflict and open heuristic bridges remain"
+        "controller": "remaining information-operator/unit conflicts and open heuristic bridges remain"
       },
       {
         "id": "F5",
         "name": "formal_verification",
-        "status": "BLOCKED",
+        "status": "PASS_CONDITIONAL",
         "evidence": [
           "compatibility",
           "matter_space",
           "legacy_variational"
         ],
-        "controller": "legacy variational closure remains blocked"
+        "controller": "canonical potential/source closure passes conditionally; legacy_local comparator remains quarantined"
       },
       {
         "id": "F6",
@@ -116,8 +114,7 @@
     ]
   },
   "known_conflicts": [
-    "legacy potential and derivative are not a matched functional pair",
-    "legacy information coupling and I-source sign are not a matched negative-gradient pair",
+    "legacy_local reaction is a quarantined non-variational comparator",
     "legacy information box-equation declaration does not match its first-order grid proxy",
     "normalized beta and SI Landauer energy are not the same quantity",
     "matter-space causal response fails its pre-arrival leakage threshold",

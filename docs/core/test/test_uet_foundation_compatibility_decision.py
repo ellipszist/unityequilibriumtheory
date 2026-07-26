@@ -14,10 +14,14 @@ def test_decision_does_not_promote_global_mathematical_consistency():
     artifact = load_artifact()
     assert artifact["audit_status"] == "PASS"
     assert artifact["decision"]["mathematical_consistency"] == (
-        "BLOCKED_BY_LEGACY_CONTRADICTION"
+        "BLOCKED_BY_REMAINING_LEGACY_OPERATOR_CONFLICT"
     )
     contradiction_ids = {item["id"] for item in artifact["hard_contradictions"]}
-    assert "legacy_potential_derivative_pair" in contradiction_ids
+    assert "legacy_information_operator" in contradiction_ids
+    assert "legacy_beta_unit_semantics" in contradiction_ids
+    closure_ids = {item["id"] for item in artifact["conditional_closures"]}
+    assert "legacy_potential_derivative_pair" in closure_ids
+    assert "legacy_information_gradient_sign" in closure_ids
 
 
 def test_special_case_statuses_are_conditional_and_lane_specific():
