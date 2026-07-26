@@ -37,6 +37,8 @@ Current foundation artifacts:
 - [Relational two-body baseline artifact](./artifacts/relational_two_body_baseline_verification.json)
 - [Mass-density correspondence specification](./MASS_DENSITY_CORRESPONDENCE_SPEC.md)
 - [Mass-density correspondence artifact](./artifacts/mass_density_correspondence_verification.json)
+- [Matter-to-interaction forward mapping specification](./MATTER_INTERACTION_FORWARD_SPEC.md)
+- [Matter-to-interaction forward mapping artifact](./artifacts/matter_interaction_forward_verification.json)
 
 > **Historical engine layer for candidate UET equation families**
 > **Version 0.9.0** | Last Updated: 2026-01-13

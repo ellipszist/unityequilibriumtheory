@@ -351,6 +351,41 @@
       "claim_boundary": "direct C-to-rho map blocked; synthetic diagnostic only",
       "failure_mode": "density amplitude is silently identified with C or fitted from the same data",
       "next_hardening_step": "declare an independent matter-amplitude/source state, dimensional map, and holdout observable before galaxy work"
+    },
+    {
+      "equation_id": "uet.matter_interaction.forward_mapping",
+      "version": "matter-interaction-forward-v1",
+      "classification": "baseline_or_comparator",
+      "relation_or_code_path": "independent matter source -> rho_obs and C_AB -> U_N(C_AB) -> F_N -> a_N",
+      "variables": {
+        "source": "independent matter/amplitude input with m_A and m_B",
+        "rho_obs": "kernel-smoothed normalized density observable",
+        "C_AB": "dimensionless geometry-only relational interaction coordinate",
+        "U_N": "standard Newtonian pair potential",
+        "F_N": "standard force on body A",
+        "a_N": "standard acceleration of body A"
+      },
+      "mathematical_role": "forward correspondence that keeps source amplitude separate from relational C",
+      "standard_physics_counterpart": "Newtonian two-body mechanics plus a declared kernel-smoothed density observable",
+      "observable_mapping": {
+        "status": "OPEN",
+        "proxy": "normalized density profile, relational C, pair potential, force, and acceleration",
+        "reason": "no dimensional instrument map or empirical lane is selected"
+      },
+      "unit_lane": "normalized_comparator",
+      "parameter_dimensions": "code-unit masses, lengths, time, and density; SI map absent",
+      "source_or_origin": "standard counterpart relations plus declared normalized forward mapping",
+      "assumptions": ["two point-body matter source", "fixed two-body geometry", "positive Gaussian smoothing width", "common source rescaling diagnostic"],
+      "symmetry_and_conservation": "source amplitude is independent of C; standard equal-and-opposite force and acceleration scaling are retained",
+      "limiting_cases": ["common mass rescaling leaves C unchanged", "density scales linearly with source mass", "pair force scales with m_A*m_B", "extra UET response remains absent"],
+      "implementation_paths": ["docs/core/matter_interaction_forward.py", "docs/core/MATTER_INTERACTION_FORWARD_SPEC.md"],
+      "verifier_paths": ["docs/scripts/audit/audit_matter_interaction_forward.py", "docs/core/test/test_matter_interaction_forward.py", "docs/core/artifacts/matter_interaction_forward_verification.json"],
+      "evidence_class": "INTERNAL_CHECKED",
+      "proof_status": "checked local standard comparator; UET constitutive extension open",
+      "downstream_dependencies": ["uet.mass_density.correspondence_identifiability", "uet.relational.two_body_baseline", "uet.foundation.units", "uet.foundation.observable"],
+      "claim_boundary": "simulation-only forward standard comparator; does not derive mass, gravity, or a UET extra force",
+      "failure_mode": "independent matter amplitude is hidden, or standard force is presented as a UET prediction",
+      "next_hardening_step": "define and audit a non-Newtonian constitutive response with units, observable map, and holdout policy"
     }
 
   ]

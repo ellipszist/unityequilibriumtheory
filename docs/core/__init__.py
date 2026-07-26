@@ -176,6 +176,14 @@ from .uet_o2_finite_density_eos import (
     o2_finite_density_eos_contract,
     o2_helmholtz_state,
 )
+from .matter_interaction_forward import (
+    FORWARD_MAPPING_STATUS,
+    UET_EXTRA_RESPONSE_STATUS,
+    MatterInteractionForwardConfig,
+    MatterInteractionForwardResult,
+    MatterSource,
+    matter_to_interaction_forward,
+)
 from .uet_covariant_superfluid_transport import (
     O2_SUPERFLUID_TRANSPORT_CONTROLLER,
     O2_SUPERFLUID_TRANSPORT_OPERATOR_MODE,
@@ -352,6 +360,12 @@ __all__ = [
     "longitudinal_onsager_matrix",
     "spatial_projector",
     "superfluid_invariants",
+    "FORWARD_MAPPING_STATUS",
+    "UET_EXTRA_RESPONSE_STATUS",
+    "MatterInteractionForwardConfig",
+    "MatterInteractionForwardResult",
+    "MatterSource",
+    "matter_to_interaction_forward",
 
 ]
 __version__ = "0.9.0"
