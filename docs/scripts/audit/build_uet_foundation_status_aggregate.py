@@ -1,0 +1,230 @@
+"""Build the current UET foundation status aggregate and stopping criteria."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+from datetime import date
+from pathlib import Path
+from typing import Any
+
+
+ROOT = Path(__file__).resolve().parents[3]
+OUT = ROOT / "docs/core/artifacts/uet_foundation_status_aggregate.json"
+
+INPUTS = {
+    "foundation_gate": ROOT / "docs/core/artifacts/uet_foundation_dependency_gate.json",
+    "compatibility": ROOT / "docs/core/artifacts/uet_foundation_compatibility_gate.json",
+    "topic_inventory": ROOT / "docs/core/artifacts/uet_foundation_equation_inventory.json",
+    "code_inventory": ROOT / "docs/core/artifacts/uet_code_surface_inventory.json",
+    "family_contract": ROOT / "docs/core/artifacts/uet_core_equation_family_contract.json",
+    "correspondence_matrix": ROOT / "docs/core/artifacts/uet_foundation_correspondence_matrix.json",
+    "matter_space": ROOT / "docs/core/artifacts/matter_space_variational_verification.json",
+    "gr_closed_limit": ROOT / "docs/core/artifacts/gr_closed_limit_verification.json",
+    "o2_eos": ROOT / "docs/core/artifacts/o2_finite_density_eos_verification.json",
+    "trace": ROOT / "docs/core/artifacts/spacetime_trace_verification.json",
+}
+
+
+def load(path: Path) -> dict[str, Any]:
+    with path.open("r", encoding="utf-8-sig") as handle:
+        value = json.load(handle)
+    if not isinstance(value, dict):
+        raise ValueError(f"not an object: {path}")
+    return value
+
+
+def rel(path: Path) -> str:
+    return str(path.relative_to(ROOT)).replace("\\", "/")
+
+
+def build_aggregate() -> dict[str, Any]:
+    missing = [rel(path) for path in INPUTS.values() if not path.exists()]
+    if missing:
+        raise ValueError(f"missing aggregate inputs: {missing}")
+    data = {key: load(path) for key, path in INPUTS.items()}
+
+    compatibility = data["compatibility"]
+    topic_inventory = data["topic_inventory"]
+    code_inventory = data["code_inventory"]
+    family_contract = data["family_contract"]
+    matrix = data["correspondence_matrix"]
+    matter = data["matter_space"]
+    gr = data["gr_closed_limit"]
+    o2 = data["o2_eos"]
+    trace = data["trace"]
+
+    gates = [
+        {
+            "id": "F0",
+            "name": "inventory",
+            "status": "BLOCKED" if topic_inventory.get("inventory_gate_status") == "BLOCKED" or code_inventory.get("inventory_gate_status") == "BLOCKED" else "PASS",
+            "evidence": ["topic_inventory", "code_inventory"],
+            "controller": "code-only surfaces and topic registry gaps remain disclosed",
+        },
+        {
+            "id": "F1",
+            "name": "ontology",
+            "status": "PASS_CONDITIONAL" if family_contract.get("coverage", {}).get("missing_core_paths") == [] else "BLOCKED",
+            "evidence": ["family_contract", "compatibility"],
+            "controller": "lane-specific C mappings exist, but legacy semantics remain unresolved",
+        },
+        {
+            "id": "F2",
+            "name": "standard_physics_correspondence",
+            "status": "BLOCKED" if matrix.get("matrix_status") == "BLOCKED" else "PASS_CONDITIONAL",
+            "evidence": ["correspondence_matrix"],
+            "controller": "selected rows still contain open bridges and implementation conflicts",
+        },
+        {
+            "id": "F3",
+            "name": "units",
+            "status": "BLOCKED",
+            "evidence": ["family_contract", "compatibility"],
+            "controller": "normalized/natural/SI lanes and beta/Landauer semantics are not globally closed",
+        },
+        {
+            "id": "F4",
+            "name": "derivation",
+            "status": "BLOCKED" if compatibility.get("controlling_blockers") else "PASS_CONDITIONAL",
+            "evidence": ["compatibility", "family_contract"],
+            "controller": "legacy functional conflict and open heuristic bridges remain",
+        },
+        {
+            "id": "F5",
+            "name": "formal_verification",
+            "status": "BLOCKED" if "legacy_potential_derivative_pair" in compatibility.get("controlling_blockers", []) else "PASS_CONDITIONAL",
+            "evidence": ["compatibility", "matter_space"],
+            "controller": "legacy derivative pair contradiction remains",
+        },
+        {
+            "id": "F6",
+            "name": "numerical_verification",
+            "status": "BLOCKED" if matter.get("status") == "FAIL" else "PASS_CONDITIONAL",
+            "evidence": ["matter_space", "code_inventory"],
+            "controller": matter.get("controlling_blocker", "causal and code-surface checks"),
+        },
+        {
+            "id": "F7",
+            "name": "observable_mapping",
+            "status": "BLOCKED",
+            "evidence": ["family_contract", "compatibility"],
+            "controller": "measurement operator, SI map, uncertainty and resolution are not closed for core families",
+        },
+        {
+            "id": "F8",
+            "name": "data_and_claim",
+            "status": "BLOCKED",
+            "evidence": ["foundation_gate", "correspondence_matrix"],
+            "controller": "upstream foundation status blocks real-data promotion",
+        },
+    ]
+
+    status_counts: dict[str, int] = {}
+    for gate in gates:
+        status_counts[gate["status"]] = status_counts.get(gate["status"], 0) + 1
+
+    conditional_limits = [
+        {
+            "theory": "Einstein/GR",
+            "status": "COMPATIBLE_CONDITIONAL",
+            "what_is_verified": "algebraic/local closed-limit evaluator at epsilon_nc=0 and ordered reference",
+            "what_is_not_verified": "full Einstein field equations, Bianchi identity, metric PDE, physical GR validation",
+            "evidence": rel(INPUTS["gr_closed_limit"]),
+        },
+        {
+            "theory": "relativistic O(2) EOS",
+            "status": "COMPATIBLE_CONDITIONAL",
+            "what_is_verified": "tree-level natural-unit finite-density EOS and ideal T=0 constitutive sector",
+            "what_is_not_verified": "universal C ontology, full finite-temperature transport, SI and external physical validation",
+            "evidence": rel(INPUTS["o2_eos"]),
+        },
+        {
+            "theory": "Cahn-Hilliard/Markovian comparator",
+            "status": "COMPATIBLE_CONDITIONAL",
+            "what_is_verified": "selected normalized/internal relation and decoupled/adiabatic diagnostics",
+            "what_is_not_verified": "material-unit derivation, causal matter-space response and universal phase-transition claim",
+            "evidence": rel(INPUTS["matter_space"]),
+        },
+        {
+            "theory": "trace/Markovian memory limit",
+            "status": "COMPATIBLE_CONDITIONAL",
+            "what_is_verified": "derived trace-only comparator tests and no-backreaction contract",
+            "what_is_not_verified": "dimensional direct observable and any physical backreaction law",
+            "evidence": rel(INPUTS["trace"]),
+        },
+    ]
+
+    principles = [
+        "State variables, response variables, and derived traces must remain separate.",
+        "A dynamics force must be the derivative of its declared functional before it is called variational.",
+        "C has no universal physical identity; mass, density, charge and order parameter require lane-specific mappings.",
+        "Open-system language applies to an explicit effective subsystem balance, not automatically to the whole universe.",
+        "A standard theory is a special case only after an explicit limit, same ontology/units, and residual verification.",
+        "Free-energy descent, physical energy conservation, entropy production and open exchange are separate ledgers.",
+        "No real-data claim is allowed before an observable operator and uncertainty/provenance contract exist.",
+    ]
+
+    stopping_criteria = [
+        "No unresolved CONTRADICTION or CONFLICT remains in the declared core equation families.",
+        "F0 inventory is code-complete for core and topic dependencies, or every exclusion is explicitly quarantined.",
+        "F1-F3 ontology, standard counterpart and units are closed for each family used in a claim.",
+        "Every special-case claim has an explicit limit and residual/ convergence artifact.",
+        "F5-F6 formal and numerical gates pass without hidden clipping, fitting or fallback.",
+        "F7 measurement operator maps the family to a measured observable with units and uncertainty.",
+        "F8 holdout/external comparison is completed before promotion of a physical claim.",
+    ]
+
+    return {
+        "schema_version": "1.0",
+        "artifact": "uet_foundation_status_aggregate",
+        "generated_at": date.today().isoformat(),
+        "audit_status": "PASS",
+        "foundation_status": "BLOCKED",
+        "controlling_blockers": compatibility.get("controlling_blockers", []) + [
+            "topic_formula_audits_not_code_complete_or_correspondence_incomplete",
+            "code_only_equation_surfaces_require_F1_F2_F3_review",
+            "prearrival_leakage",
+        ],
+        "gate_summary": {"status_counts": status_counts, "gates": gates},
+        "known_conflicts": [
+            "legacy potential and derivative are not a matched functional pair",
+            "legacy information box-equation declaration does not match its first-order grid proxy",
+            "normalized beta and SI Landauer energy are not the same quantity",
+            "matter-space causal response fails its pre-arrival leakage threshold",
+            "O2-to-legacy-double-well reduction fails its residual gate",
+        ],
+        "conditional_special_cases": conditional_limits,
+        "principles": principles,
+        "stopping_criteria": stopping_criteria,
+        "evidence_inputs": {key: rel(path) for key, path in INPUTS.items()},
+        "next_controller": "close family-specific F1-F7 blockers before any new downstream physical claim",
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--json", action="store_true")
+    parser.add_argument("--no-write", action="store_true")
+    args = parser.parse_args()
+    try:
+        aggregate = build_aggregate()
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        print(f"audit_status=FAIL\nERROR: {exc}")
+        return 1
+    if not args.no_write:
+        OUT.parent.mkdir(parents=True, exist_ok=True)
+        OUT.write_text(json.dumps(aggregate, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    if args.json:
+        print(json.dumps(aggregate, indent=2, ensure_ascii=False))
+    else:
+        print(f"audit_status={aggregate['audit_status']}")
+        print(f"foundation_status={aggregate['foundation_status']}")
+        print(f"controlling_blocker_count={len(aggregate['controlling_blockers'])}")
+        print(f"gate_status_counts={aggregate['gate_summary']['status_counts']}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

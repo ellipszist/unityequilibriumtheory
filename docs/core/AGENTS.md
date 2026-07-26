@@ -18,9 +18,12 @@ Before editing an equation, parameter, operator, verifier, or core narrative, re
 10. `docs/core/artifacts/uet_foundation_correspondence_matrix.json`
 11. `docs/core/artifacts/uet_code_surface_inventory.json`
 12. `docs/core/artifacts/uet_core_equation_family_contract.json`
+13. `docs/core/artifacts/uet_foundation_status_aggregate.json`
 
 The foundation gate and registry are the controlling status sources for new core work.
 Existing topic prose, old badges, and legacy validators do not override them.
+The aggregate status is the cross-family stopping boundary: it may expose conditional
+compatibility, but it cannot promote a blocked foundation.
 
 ## Mandatory workflow
 

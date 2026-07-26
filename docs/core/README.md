@@ -24,8 +24,10 @@ Current foundation artifacts:
 - [Equation inventory](./UET_FOUNDATION_EQUATION_INVENTORY.md)
 - [Correspondence matrix](./UET_FOUNDATION_CORRESPONDENCE_MATRIX.md)
 - [Compatibility audit](./UET_FOUNDATION_COMPATIBILITY_AUDIT.md)
+- [Foundation status aggregate](./UET_FOUNDATION_STATUS_AGGREGATE.md)
 - [Machine-readable inventory gate](./artifacts/uet_foundation_equation_inventory.json)
 - [Machine-readable correspondence matrix](./artifacts/uet_foundation_correspondence_matrix.json)
+- [Machine-readable aggregate status](./artifacts/uet_foundation_status_aggregate.json)
 
 > **The Physics Engine solving the Unity Equilibrium Master Equation**  
 > **Version 0.9.0** | Last Updated: 2026-01-13
