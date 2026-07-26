@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "artifact": "matter_space_research_program_gate",
-  "generated_at": "2026-07-20T20:13:28.101317+00:00",
-  "source_snapshot_at": "2026-07-20T18:53:40.339593+00:00",
+  "generated_at": "2026-07-26T05:09:54.827776+00:00",
+  "source_snapshot_at": "2026-07-26T05:09:44.976742+00:00",
   "status": "BLOCKED",
   "program_state": "CANDIDATE_WITH_BLOCKED_PHYSICAL_INTERPRETATION",
   "controlling_blocker": "core_prearrival_leakage",
@@ -26,19 +26,19 @@
     },
     "core_verification": {
       "path": "docs/core/artifacts/matter_space_variational_verification.json",
-      "sha256": "a0a1d54212181ad3c3f88b479c5ef99fa0cb3d8ec7735c62020b163abd2a79c4",
+      "sha256": "e5ae26fb40ff6cd4a0d1d0c86576e91218294e683902bb60b6afb0b2596cc62c",
       "status": "FAIL",
       "controlling_blocker": "prearrival_leakage"
     },
     "core_dependency_gate": {
       "path": "docs/core/artifacts/matter_space_dependency_gate.json",
-      "sha256": "e244fa891c934ed826382760566be35fe38bb2e6e4b6b9ef3e24bb63f78e2dcc",
+      "sha256": "35f4680a36fad8a440500dab1303730a6a178f7d7c74d550356c121489d4b312",
       "status": "BLOCKED",
       "controlling_blocker": "prearrival_leakage"
     },
     "thermal_pilot": {
       "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_control.json",
-      "sha256": "2480561487165ce0a5c7f98ff5302d120cea23afb59679845cc7631c2b22f1d9",
+      "sha256": "9d429f2897944ce61c2ec903dba3d4dd2d20646255033a0368b2bfcfc9193e4c",
       "status": "SIMULATION_ONLY",
       "controlling_blocker": "core_prearrival_leakage"
     },
@@ -49,7 +49,7 @@
     },
     "phase_pilot": {
       "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_matter_space_coupled_diagnostic.json",
-      "sha256": "9c946959e53cea876bac870623c65860337664c1df03efcb509724460cc53d08",
+      "sha256": "16d575f69423cd4878705b5adb2f8a89b2116cd6a8720e55609dfdedda357085",
       "status": "INTERNAL_DIAGNOSTIC",
       "controlling_blocker": "inherited_core_prearrival_leakage"
     },
@@ -209,17 +209,17 @@
         {
           "consumer": "thermal_pilot",
           "path": "docs/core/artifacts/matter_space_variational_verification.json",
-          "expected_sha256": "a0a1d54212181ad3c3f88b479c5ef99fa0cb3d8ec7735c62020b163abd2a79c4",
+          "expected_sha256": "e5ae26fb40ff6cd4a0d1d0c86576e91218294e683902bb60b6afb0b2596cc62c",
           "exists": true,
-          "actual_sha256": "a0a1d54212181ad3c3f88b479c5ef99fa0cb3d8ec7735c62020b163abd2a79c4",
+          "actual_sha256": "e5ae26fb40ff6cd4a0d1d0c86576e91218294e683902bb60b6afb0b2596cc62c",
           "match": true
         },
         {
           "consumer": "phase_pilot",
           "path": "docs/core/artifacts/matter_space_variational_verification.json",
-          "expected_sha256": "a0a1d54212181ad3c3f88b479c5ef99fa0cb3d8ec7735c62020b163abd2a79c4",
+          "expected_sha256": "e5ae26fb40ff6cd4a0d1d0c86576e91218294e683902bb60b6afb0b2596cc62c",
           "exists": true,
-          "actual_sha256": "a0a1d54212181ad3c3f88b479c5ef99fa0cb3d8ec7735c62020b163abd2a79c4",
+          "actual_sha256": "e5ae26fb40ff6cd4a0d1d0c86576e91218294e683902bb60b6afb0b2596cc62c",
           "match": true
         },
         {

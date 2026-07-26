@@ -23,6 +23,7 @@ The controlling blockers are not a single missing test. They span the declared w
 6. topic and code inventories still contain explicitly disclosed correspondence and
    ontology gaps; and
 7. core observable/unit maps are not closed for physical data claims.
+8. the independent legacy variational audit finds an additional sign contradiction in the `+beta*C*I` information coupling.
 
 ## What is conditionally compatible
 

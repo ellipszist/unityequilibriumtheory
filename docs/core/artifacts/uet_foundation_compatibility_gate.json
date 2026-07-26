@@ -271,7 +271,7 @@
           "details": {
             "schema_version": "1.0",
             "artifact": "matter_space_dependency_gate",
-            "generated_at": "2026-07-26T04:29:04.102602+00:00",
+            "generated_at": "2026-07-26T05:05:10.868508+00:00",
             "status": "BLOCKED",
             "core_verification_status": "FAIL",
             "controlling_blocker": "prearrival_leakage",
@@ -602,14 +602,14 @@
     "docs/core/uet_parameters.py": "d0311e96666ccb9999baf341f418a8d1954bff9c77c51c6cfef1a088ed5c2340",
     "docs/core/MATTER_SPACE_RESEARCH_SPEC.md": "3fca7d82e7f0c0c5e7904811eec7d81d772fe802492dbf2147b1ee95232fb2a4",
     "docs/core/UET_GR_NONCLOSED_RESEARCH_SPEC.md": "d15cc8e345a3df986f7608d48e3152134c4325dfa24e5dc9364b085fe37dd6c9",
-    "docs/core/artifacts/uet_equation_correspondence_registry.json": "9d129c4ab48b5b819c88f735fbb29775b99a604d0fcecc05149a9344485064fc",
+    "docs/core/artifacts/uet_equation_correspondence_registry.json": "b2862e262fc808482cef7c05e5897fdd0401df351705962660e1e778e936a391",
     "docs/core/artifacts/master_equation_alignment_gate_v2.json": "b2184ce72accffcb1baf609bfb3db789247fc387b30413996f49a74a794a3515",
     "docs/core/artifacts/matter_space_formula_audit.json": "b601c8a92201660aee06c4f577521e4fe0b421d7f9b047616e23ca9dd846d0da",
-    "docs/core/artifacts/matter_space_variational_verification.json": "df7062e7547ae5400bf128f4d06e0c35836fbbc4f980933864b307d77f09e45c",
-    "docs/core/artifacts/matter_space_dependency_gate.json": "8d9b04a22462e9c3a0852f0858b83ef220eb1707db4148b822108ee864891f6f",
+    "docs/core/artifacts/matter_space_variational_verification.json": "e5ae26fb40ff6cd4a0d1d0c86576e91218294e683902bb60b6afb0b2596cc62c",
+    "docs/core/artifacts/matter_space_dependency_gate.json": "35f4680a36fad8a440500dab1303730a6a178f7d7c74d550356c121489d4b312",
     "docs/core/artifacts/spacetime_trace_verification.json": "1ba232f1d8d0e13e1492b7465e2afabd44639d7af5c88100a1d759ed53a75e27",
-    "docs/core/artifacts/gr_closed_limit_verification.json": "279317a68bbe37f42b4170375994f40ab97a2a7793317e950a911643aaee0f6b",
-    "docs/core/artifacts/o2_finite_density_eos_verification.json": "1421b0df709a88b7ca61c8570922177eb9b3b891d919b9af36b0aee2db74ad4c",
-    "docs/core/artifacts/o2_eos_formula_audit.json": "d6a740c34f176784ee27a26994e1456dd66d6082f20c1708d9da4f573100f8d4"
+    "docs/core/artifacts/gr_closed_limit_verification.json": "a04ed30ebbbcfe35d7c92791341b781e0f4d59c754c1647c829efb7633baa8dc",
+    "docs/core/artifacts/o2_finite_density_eos_verification.json": "57d64cd102ecb4da1683d98f6f6f3491ec93e07609d2fe5e317c930d80780d0a",
+    "docs/core/artifacts/o2_eos_formula_audit.json": "eedc57d060a57cd5497fb5aaf971fbeaedbcc9ad85cfd33bdefaa7b60d61b657"
   }
 }

@@ -24,6 +24,7 @@ INPUTS = {
     "gr_closed_limit": ROOT / "docs/core/artifacts/gr_closed_limit_verification.json",
     "o2_eos": ROOT / "docs/core/artifacts/o2_finite_density_eos_verification.json",
     "trace": ROOT / "docs/core/artifacts/spacetime_trace_verification.json",
+    "legacy_variational": ROOT / "docs/core/artifacts/uet_legacy_variational_closure.json",
 }
 
 
@@ -54,6 +55,7 @@ def build_aggregate() -> dict[str, Any]:
     gr = data["gr_closed_limit"]
     o2 = data["o2_eos"]
     trace = data["trace"]
+    legacy_variational = data["legacy_variational"]
 
     gates = [
         {
@@ -94,9 +96,9 @@ def build_aggregate() -> dict[str, Any]:
         {
             "id": "F5",
             "name": "formal_verification",
-            "status": "BLOCKED" if "legacy_potential_derivative_pair" in compatibility.get("controlling_blockers", []) else "PASS_CONDITIONAL",
-            "evidence": ["compatibility", "matter_space"],
-            "controller": "legacy derivative pair contradiction remains",
+            "status": "BLOCKED" if legacy_variational.get("closure_status") == "BLOCKED" or "legacy_potential_derivative_pair" in compatibility.get("controlling_blockers", []) else "PASS_CONDITIONAL",
+            "evidence": ["compatibility", "matter_space", "legacy_variational"],
+            "controller": "legacy variational closure remains blocked",
         },
         {
             "id": "F6",
@@ -159,6 +161,7 @@ def build_aggregate() -> dict[str, Any]:
     principles = [
         "State variables, response variables, and derived traces must remain separate.",
         "A dynamics force must be the derivative of its declared functional before it is called variational.",
+        "Every coupled state equation must use the same functional sign convention; matching only one field equation is insufficient.",
         "C has no universal physical identity; mass, density, charge and order parameter require lane-specific mappings.",
         "Open-system language applies to an explicit effective subsystem balance, not automatically to the whole universe.",
         "A standard theory is a special case only after an explicit limit, same ontology/units, and residual verification.",
@@ -176,20 +179,24 @@ def build_aggregate() -> dict[str, Any]:
         "F8 holdout/external comparison is completed before promotion of a physical claim.",
     ]
 
+    legacy_blockers = legacy_variational.get("controlling_blockers", [])
+    controlling_blockers = list(dict.fromkeys(compatibility.get("controlling_blockers", []) + legacy_blockers + [
+        "topic_formula_audits_not_code_complete_or_correspondence_incomplete",
+        "code_only_equation_surfaces_require_F1_F2_F3_review",
+        "prearrival_leakage",
+    ]))
+
     return {
         "schema_version": "1.0",
         "artifact": "uet_foundation_status_aggregate",
         "generated_at": date.today().isoformat(),
         "audit_status": "PASS",
         "foundation_status": "BLOCKED",
-        "controlling_blockers": compatibility.get("controlling_blockers", []) + [
-            "topic_formula_audits_not_code_complete_or_correspondence_incomplete",
-            "code_only_equation_surfaces_require_F1_F2_F3_review",
-            "prearrival_leakage",
-        ],
+        "controlling_blockers": controlling_blockers,
         "gate_summary": {"status_counts": status_counts, "gates": gates},
         "known_conflicts": [
             "legacy potential and derivative are not a matched functional pair",
+            "legacy information coupling and I-source sign are not a matched negative-gradient pair",
             "legacy information box-equation declaration does not match its first-order grid proxy",
             "normalized beta and SI Landauer energy are not the same quantity",
             "matter-space causal response fails its pre-arrival leakage threshold",

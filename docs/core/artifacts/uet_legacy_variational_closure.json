@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "artifact": "uet_legacy_variational_closure",
+  "generated_at": "2026-07-26",
+  "audit_status": "PASS",
+  "closure_status": "BLOCKED",
+  "controlling_blockers": [
+    "legacy_potential_derivative_pair",
+    "legacy_information_gradient_sign"
+  ],
+  "equation_family": "uet.legacy.master_functional",
+  "evidence_inputs": {
+    "master_equation": "docs/core/uet_master_equation.py"
+  },
+  "findings": [
+    {
+      "finding_id": "legacy_potential_derivative_pair",
+      "status": "CONTRADICTION",
+      "declared_relation": "V(C)=alpha/2*(C^2-C0^2)^2+gamma/4*(C^2-C0^2)^4",
+      "coded_relation": "dynamics uses alpha*(C-C0)+gamma*(C-C0)^3",
+      "analytic_derivative": "2*C*(alpha*(C^2-C0^2)+gamma*(C^2-C0^2)^3)",
+      "metrics": {
+        "potential_code": "diff = C_mag_sq - params.C0**2",
+        "derivative_code": "diff = C - params.C0",
+        "finite_difference_max_absolute_residual": 13.675000000367197,
+        "threshold": 1e-08,
+        "samples": [
+          -1.5,
+          -0.75,
+          0.0,
+          0.5,
+          1.0,
+          1.5,
+          2.0
+        ]
+      },
+      "claim_boundary": "legacy comparator; not a closed variational gradient flow"
+    },
+    {
+      "finding_id": "legacy_information_gradient_sign",
+      "status": "CONTRADICTION",
+      "declared_relation": "Omega_I contains +beta*C*I and dI/dt=-delta(Omega)/delta(I)",
+      "coded_relation": "dI/dt=laplacian-kappa_I*I+beta*C",
+      "expected_source_sign": -1,
+      "coded_source_sign": 1,
+      "c_source_sign_matches": true,
+      "interpretation": "The I source sign is opposite to the negative functional gradient implied by the declared positive coupling. The C-side source has the opposite sign and therefore does not repair the I-side mismatch.",
+      "claim_boundary": "legacy I dynamics is not a closed gradient-flow pair with the declared information coupling"
+    }
+  ],
+  "principle": "A dynamics implementation is variational only when every coupled state equation is the negative derivative of the same declared functional in the same unit and boundary lane.",
+  "next_action": "Keep legacy behavior quarantined; either repair the functional/gradient pair or relabel the implementation as a non-variational comparator before using it as a foundation."
+}

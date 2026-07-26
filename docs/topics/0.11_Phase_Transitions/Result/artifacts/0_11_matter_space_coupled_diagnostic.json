@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact": "0_11_matter_space_coupled_diagnostic",
   "topic": "0.11_Phase_Transitions",
-  "generated_at": "2026-07-20T18:53:40.339593+00:00",
+  "generated_at": "2026-07-26T05:09:44.976742+00:00",
   "status": "INTERNAL_DIAGNOSTIC",
   "internal_gate_status": "PASS",
   "dependency_status": "BLOCKED",
@@ -412,7 +412,7 @@
   "dependencies": {
     "matter_space_core": {
       "path": "docs/core/artifacts/matter_space_variational_verification.json",
-      "sha256": "a0a1d54212181ad3c3f88b479c5ef99fa0cb3d8ec7735c62020b163abd2a79c4",
+      "sha256": "e5ae26fb40ff6cd4a0d1d0c86576e91218294e683902bb60b6afb0b2596cc62c",
       "status": "FAIL",
       "controlling_blocker": "prearrival_leakage"
     },

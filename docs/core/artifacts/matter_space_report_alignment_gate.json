@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "artifact": "matter_space_report_alignment_gate",
-  "generated_at": "2026-07-23T05:04:41.477212+00:00",
-  "source_snapshot_at": "2026-07-23T05:02:53+00:00",
+  "generated_at": "2026-07-26T05:10:51.704888+00:00",
+  "source_snapshot_at": "2026-07-26T05:09:54.827776+00:00",
   "status": "WARN",
   "alignment_status": "PASS_WITH_HISTORICAL_BASE_REPORT_WARN",
   "evidence_status": "POST_WAVE10_ADDENDUM_ALIGNED_BASE_SNAPSHOT_RETAINED",
@@ -14,13 +14,13 @@
   "input_artifacts": {
     "matter_space_program": {
       "path": "docs/core/artifacts/matter_space_research_program_gate.json",
-      "sha256": "0cd794bf176a0fbb76e465a561f20d35afc7594655d2210cfea9024405fb03a2",
+      "sha256": "5dd66ac4b4fec2005b8d61cf8ca30dd2a4d0c678c46522b88dc591b8e6977405",
       "status": "BLOCKED",
       "controlling_blocker": "core_prearrival_leakage"
     },
     "gr_program": {
       "path": "docs/core/artifacts/uet_gr_research_program_gate.json",
-      "sha256": "fd27c742b4d9fb0265f917d7f8567bd1af430e55f0447dbab51c55e839572104",
+      "sha256": "38bfe3bcafb35880c1bfab61c67f3f4982a17e0fbd0f95f46da601bc496fc3d0",
       "status": "BLOCKED",
       "program_stage": "O2_FINITE_DENSITY_EOS_AND_T0_SUPERFLUID_CONSTITUTIVE_VERIFIED",
       "controlling_blocker": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing"
@@ -70,8 +70,8 @@
     },
     "topic_readiness": {
       "path": "docs/meta/topic_readiness.json",
-      "sha256": "9c2b347c3e5647559cc3d98cce98c2296182bd6e66f874fc57f8b7dcab20147f",
-      "bytes": 30485
+      "sha256": "c001c6b6e11bef6cb9a97ebe807b6ea550c3d5ff50c509bd2c7bd39a26ecd70b",
+      "bytes": 28248
     }
   },
   "canonical_topics": {

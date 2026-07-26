@@ -50,7 +50,7 @@
       "symmetry_and_conservation": "OPEN",
       "limiting_cases": ["requires explicit baseline and closed-system limit"],
       "implementation_paths": ["docs/core/uet_master_equation.py", "docs/core/README.md"],
-      "verifier_paths": ["docs/scripts/audit/audit_standards_v2.py"],
+      "verifier_paths": ["docs/scripts/audit/audit_standards_v2.py", "docs/scripts/audit/audit_uet_foundation_compatibility.py", "docs/scripts/audit/audit_uet_legacy_variational_closure.py"],
       "evidence_class": "LEGACY",
       "proof_status": "open",
       "downstream_dependencies": ["uet.foundation.ontology", "uet.foundation.correspondence"],

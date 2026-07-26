@@ -10,6 +10,7 @@
     "legacy_beta_unit_semantics",
     "matter_space_causal_response",
     "o2_to_legacy_double_well",
+    "legacy_information_gradient_sign",
     "topic_formula_audits_not_code_complete_or_correspondence_incomplete",
     "code_only_equation_surfaces_require_F1_F2_F3_review",
     "prearrival_leakage"
@@ -75,9 +76,10 @@
         "status": "BLOCKED",
         "evidence": [
           "compatibility",
-          "matter_space"
+          "matter_space",
+          "legacy_variational"
         ],
-        "controller": "legacy derivative pair contradiction remains"
+        "controller": "legacy variational closure remains blocked"
       },
       {
         "id": "F6",
@@ -113,6 +115,7 @@
   },
   "known_conflicts": [
     "legacy potential and derivative are not a matched functional pair",
+    "legacy information coupling and I-source sign are not a matched negative-gradient pair",
     "legacy information box-equation declaration does not match its first-order grid proxy",
     "normalized beta and SI Landauer energy are not the same quantity",
     "matter-space causal response fails its pre-arrival leakage threshold",
@@ -151,6 +154,7 @@
   "principles": [
     "State variables, response variables, and derived traces must remain separate.",
     "A dynamics force must be the derivative of its declared functional before it is called variational.",
+    "Every coupled state equation must use the same functional sign convention; matching only one field equation is insufficient.",
     "C has no universal physical identity; mass, density, charge and order parameter require lane-specific mappings.",
     "Open-system language applies to an explicit effective subsystem balance, not automatically to the whole universe.",
     "A standard theory is a special case only after an explicit limit, same ontology/units, and residual verification.",
@@ -176,7 +180,8 @@
     "matter_space": "docs/core/artifacts/matter_space_variational_verification.json",
     "gr_closed_limit": "docs/core/artifacts/gr_closed_limit_verification.json",
     "o2_eos": "docs/core/artifacts/o2_finite_density_eos_verification.json",
-    "trace": "docs/core/artifacts/spacetime_trace_verification.json"
+    "trace": "docs/core/artifacts/spacetime_trace_verification.json",
+    "legacy_variational": "docs/core/artifacts/uet_legacy_variational_closure.json"
   },
   "next_controller": "close family-specific F1-F7 blockers before any new downstream physical claim"
 }
