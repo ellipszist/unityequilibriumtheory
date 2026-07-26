@@ -25,6 +25,7 @@ Current foundation artifacts:
 - [Correspondence matrix](./UET_FOUNDATION_CORRESPONDENCE_MATRIX.md)
 - [Compatibility audit](./UET_FOUNDATION_COMPATIBILITY_AUDIT.md)
 - [Legacy variational closure audit](./artifacts/uet_legacy_variational_closure.json)
+- [Matter-space causal discretization diagnostic](./artifacts/matter_space_causal_discretization_diagnostic.json)
 - [Foundation status aggregate](./UET_FOUNDATION_STATUS_AGGREGATE.md)
 - [Machine-readable inventory gate](./artifacts/uet_foundation_equation_inventory.json)
 - [Machine-readable correspondence matrix](./artifacts/uet_foundation_correspondence_matrix.json)

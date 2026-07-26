@@ -25,6 +25,7 @@ INPUTS = {
     "o2_eos": ROOT / "docs/core/artifacts/o2_finite_density_eos_verification.json",
     "trace": ROOT / "docs/core/artifacts/spacetime_trace_verification.json",
     "legacy_variational": ROOT / "docs/core/artifacts/uet_legacy_variational_closure.json",
+    "causal_discretization": ROOT / "docs/core/artifacts/matter_space_causal_discretization_diagnostic.json",
 }
 
 
@@ -56,6 +57,7 @@ def build_aggregate() -> dict[str, Any]:
     o2 = data["o2_eos"]
     trace = data["trace"]
     legacy_variational = data["legacy_variational"]
+    causal_discretization = data["causal_discretization"]
 
     gates = [
         {
@@ -104,8 +106,8 @@ def build_aggregate() -> dict[str, Any]:
             "id": "F6",
             "name": "numerical_verification",
             "status": "BLOCKED" if matter.get("status") == "FAIL" else "PASS_CONDITIONAL",
-            "evidence": ["matter_space", "code_inventory"],
-            "controller": matter.get("controlling_blocker", "causal and code-surface checks"),
+            "evidence": ["matter_space", "code_inventory", "causal_discretization"],
+            "controller": causal_discretization.get("classification", matter.get("controlling_blocker", "causal and code-surface checks")),
         },
         {
             "id": "F7",
@@ -200,6 +202,7 @@ def build_aggregate() -> dict[str, Any]:
             "legacy information box-equation declaration does not match its first-order grid proxy",
             "normalized beta and SI Landauer energy are not the same quantity",
             "matter-space causal response fails its pre-arrival leakage threshold",
+            "current Heun/RK2 discrete domain-of-dependence is wider than the declared physical cone",
             "O2-to-legacy-double-well reduction fails its residual gate",
         ],
         "conditional_special_cases": conditional_limits,

@@ -87,9 +87,10 @@
         "status": "BLOCKED",
         "evidence": [
           "matter_space",
-          "code_inventory"
+          "code_inventory",
+          "causal_discretization"
         ],
-        "controller": "prearrival_leakage"
+        "controller": "NUMERICAL_DOMAIN_OF_DEPENDENCE_EXCEEDS_DECLARED_CONE"
       },
       {
         "id": "F7",
@@ -119,6 +120,7 @@
     "legacy information box-equation declaration does not match its first-order grid proxy",
     "normalized beta and SI Landauer energy are not the same quantity",
     "matter-space causal response fails its pre-arrival leakage threshold",
+    "current Heun/RK2 discrete domain-of-dependence is wider than the declared physical cone",
     "O2-to-legacy-double-well reduction fails its residual gate"
   ],
   "conditional_special_cases": [
@@ -181,7 +183,8 @@
     "gr_closed_limit": "docs/core/artifacts/gr_closed_limit_verification.json",
     "o2_eos": "docs/core/artifacts/o2_finite_density_eos_verification.json",
     "trace": "docs/core/artifacts/spacetime_trace_verification.json",
-    "legacy_variational": "docs/core/artifacts/uet_legacy_variational_closure.json"
+    "legacy_variational": "docs/core/artifacts/uet_legacy_variational_closure.json",
+    "causal_discretization": "docs/core/artifacts/matter_space_causal_discretization_diagnostic.json"
   },
   "next_controller": "close family-specific F1-F7 blockers before any new downstream physical claim"
 }

@@ -20,6 +20,7 @@ Before editing an equation, parameter, operator, verifier, or core narrative, re
 12. `docs/core/artifacts/uet_core_equation_family_contract.json`
 13. `docs/core/artifacts/uet_foundation_status_aggregate.json`
 14. `docs/core/artifacts/uet_legacy_variational_closure.json`
+15. `docs/core/artifacts/matter_space_causal_discretization_diagnostic.json`
 
 The foundation gate and registry are the controlling status sources for new core work.
 Existing topic prose, old badges, and legacy validators do not override them.

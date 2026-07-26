@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "artifact": "matter_space_causal_discretization_diagnostic",
+  "generated_at": "2026-07-26",
+  "audit_status": "PASS",
+  "causal_gate_status": "FAIL",
+  "interpretation_status": "BLOCKED_NUMERICAL_SUPPORT",
+  "continuum_formula_status": "NOT_TESTED_BY_THIS_GATE",
+  "classification": "NUMERICAL_DOMAIN_OF_DEPENDENCE_EXCEEDS_DECLARED_CONE",
+  "metrics": {
+    "dx": 0.0125,
+    "dt": 0.0010000000000000002,
+    "declared_physical_speed": 1.0,
+    "stencil_radius_cells_per_full_step": 2,
+    "numerical_domain_speed_upper_bound": 24.999999999999996,
+    "numerical_to_declared_speed_ratio": 24.999999999999996,
+    "prearrival_leakage_fraction": 0.017639381271029236,
+    "prearrival_threshold": 1e-06,
+    "leakage_gate_failed": true
+  },
+  "implementation_contract": {
+    "integrator_is_heun_rk2": true,
+    "predictor_stage_present": true,
+    "second_rhs_stage_present": true,
+    "nearest_neighbor_laplacian": true,
+    "stencil_radius_assumption_cells_per_full_step": 2
+  },
+  "inference_boundary": "The support-speed estimate is an implementation-level diagnostic, not a proof that every Heun/RK2 trajectory reaches the bound. It explains why the current leakage result cannot by itself distinguish a continuum-law contradiction from a numerical-cone failure.",
+  "required_repair": "Use a causality-preserving characteristic/staggered scheme or a separately proven discrete cone, then rerun the original prearrival gate without cone padding or clipping.",
+  "evidence_inputs": {
+    "core_source": "docs/core/uet_matter_space.py",
+    "verification_artifact": "docs/core/artifacts/matter_space_variational_verification.json"
+  }
+}
