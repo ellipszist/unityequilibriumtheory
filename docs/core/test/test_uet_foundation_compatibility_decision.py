@@ -47,3 +47,22 @@ def test_coverage_boundary_remains_visible():
     assert coverage["topic_formula_files"] == 27
     assert coverage["inventory_gate_status"] == "BLOCKED"
     assert coverage["registry_coverage_status"] == "INITIAL_SEED_NOT_EXHAUSTIVE"
+
+def test_family_matrix_covers_all_declared_core_families():
+    artifact = load_artifact()
+    declared = {
+        "core.legacy_master",
+        "core.matter_space",
+        "core.trace",
+        "core.covariant_response",
+        "core.covariant_diffusion",
+        "core.hyperbolic_phase",
+        "core.o2_superfluid",
+        "core.noether_mapping",
+        "core.lorentz",
+        "core.parameter_contract",
+        "core.observable_contract",
+        "core.support_and_adapters",
+    }
+    matrix_ids = {row["family_id"] for row in artifact["family_matrix"]}
+    assert declared <= matrix_ids

@@ -139,6 +139,62 @@ def build_decision() -> dict[str, Any]:
             "evidence": [rel(INPUTS["gr_closed_limit"])],
         },
         {
+            "family_id": "core.covariant_diffusion",
+            "mathematical_consistency": "CONDITIONAL_CONSTITUTIVE",
+            "standard_physics_correspondence": "CONDITIONAL_TRANSPORT",
+            "old_theory_special_case": "MARKOVIAN_COMPARATOR_ONLY",
+            "reason": "The covariant current lane is a constitutive Maxwell-Cattaneo/control interface; coefficient origin, Kubo matching, and dimensional observables remain open.",
+            "evidence": ["docs/core/artifacts/covariant_diffusion_formula_audit.json", "docs/core/artifacts/covariant_diffusive_current_verification.json"]
+        },
+        {
+            "family_id": "core.hyperbolic_phase",
+            "mathematical_consistency": "COMPATIBLE_COMPARATOR_ONLY",
+            "standard_physics_correspondence": "EXTERNAL_TELEGRAPH_COMPARATOR",
+            "old_theory_special_case": "NOT_ESTABLISHED",
+            "reason": "The hyperbolic phase-field path is a fixed-form external comparator; it is not derived from the UET action.",
+            "evidence": ["docs/core/artifacts/hyperbolic_phase_field_formula_audit.json", "docs/core/artifacts/hyperbolic_phase_field_covariant_mapping_gate.json"]
+        },
+        {
+            "family_id": "core.noether_mapping",
+            "mathematical_consistency": "CONDITIONAL_MANY_TO_ONE",
+            "standard_physics_correspondence": "CONDITIONAL_O2_NOETHER_MAP",
+            "old_theory_special_case": "NOT_ESTABLISHED",
+            "reason": "The action-level Noether current is compatible in its parent lane, but the coarse-grained C mapping is many-to-one and does not prove the legacy C field or microscopic dissipation.",
+            "evidence": ["docs/core/artifacts/noether_phase_field_map_formula_audit.json", "docs/core/artifacts/noether_phase_field_state_map_verification.json"]
+        },
+        {
+            "family_id": "core.lorentz",
+            "mathematical_consistency": "UTILITY_ONLY",
+            "standard_physics_correspondence": "NOT_ESTABLISHED_GLOBAL",
+            "old_theory_special_case": "NOT_ESTABLISHED",
+            "reason": "Lorentz transformation utilities and tests do not establish covariance of every physical operator or the legacy master dynamics.",
+            "evidence": ["docs/core/test/test_lorentz_noether_comprehensive.py", "docs/core/UET_FOUNDATION_COMPATIBILITY_AUDIT.md"]
+        },
+        {
+            "family_id": "core.parameter_contract",
+            "mathematical_consistency": "UNIT_SEMANTICS_OPEN",
+            "standard_physics_correspondence": "PARAMETER_POLICY_ONLY",
+            "old_theory_special_case": "NOT_ESTABLISHED",
+            "reason": "The parameter registry mixes normalized, natural-unit, and SI lanes; beta cannot be promoted to Landauer energy without a conversion contract.",
+            "evidence": ["docs/core/artifacts/uet_foundation_compatibility_gate.json", "docs/core/uet_parameters.py"]
+        },
+        {
+            "family_id": "core.observable_contract",
+            "mathematical_consistency": "OBSERVABLE_MAP_OPEN",
+            "standard_physics_correspondence": "BLOCKED",
+            "old_theory_special_case": "NOT_ESTABLISHED",
+            "reason": "A complete measurement operator with units, uncertainty, resolution, and nuisance parameters is not closed for the core families.",
+            "evidence": ["docs/core/artifacts/uet_foundation_dependency_gate.json", "docs/core/artifacts/uet_foundation_status_aggregate.json"]
+        },
+        {
+            "family_id": "core.support_and_adapters",
+            "mathematical_consistency": "NOT_AN_EQUATION_FAMILY",
+            "standard_physics_correspondence": "NOT_APPLICABLE",
+            "old_theory_special_case": "NOT_APPLICABLE",
+            "reason": "Support and adapter code cannot create a physical claim without an owning equation family.",
+            "evidence": ["docs/core/artifacts/uet_code_surface_inventory.json"]
+        },
+        {
             "family_id": "core.o2_superfluid",
             "mathematical_consistency": "CONDITIONAL_PASS",
             "standard_physics_correspondence": "CONDITIONAL_TREE_LEVEL",
