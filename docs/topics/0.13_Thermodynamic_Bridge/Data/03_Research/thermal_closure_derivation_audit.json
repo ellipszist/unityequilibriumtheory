@@ -1,0 +1,46 @@
+{
+  "schema_version": "thermal-closure-derivation-audit-v1",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "status": "DIMENSIONAL_THERMAL_CLOSURE_BLOCKED",
+  "current_functional": "normalized effective functional Omega_hat(C, Phi) with no explicit T argument",
+  "naive_helmholtz_test": {
+    "assumption": "temperature-independent coefficients and no dimensional free-energy scale",
+    "entropy_derivative": "s = -partial(f, T) = 0",
+    "interpretation": "diagnostic of missing thermal closure; not a physical entropy result"
+  },
+  "conditional_closure": {
+    "free_energy": "f_th(C,Phi,T) = e0 * f_hat(C,Phi; theta_1(T),...,theta_r(T))",
+    "entropy": "s = -e0 * sum_i(partial(f_hat,theta_i) * d(theta_i)/dT)",
+    "required_open_inputs": [
+      "dimensional free-energy-density scale e0",
+      "temperature-dependent coefficient functions",
+      "unit and volume convention",
+      "observable map to the measured thermal variable"
+    ]
+  },
+  "local_equilibrium_candidate": {
+    "assumed_temperature_dependent_coefficient": "a_Phi(T)",
+    "equilibrium": "a_Phi(T)*Phi_0 + b_Phi*Phi_0^3 - (g/2)*C_0^2 = 0",
+    "alpha_Phi_K_equilibrium": "-(a_Phi(T_0) + 3*b_Phi*Phi_0^2) / (a_Phi_prime(T_0)*Phi_0)",
+    "joint_C_Phi_response": "-((a_Phi + 3*b_Phi*Phi_0^2)*deltaPhi - g*C_0*deltaC) / (a_Phi_prime(T_0)*Phi_0)",
+    "derivation_class": "conditional implicit-function derivation",
+    "not_yet": "first-principles UET prediction"
+  },
+  "regularity_conditions": [
+    "a_Phi_prime(T_0) != 0",
+    "Phi_0 != 0",
+    "a_Phi(T_0) + 3*b_Phi*Phi_0^2 > 0",
+    "perturbation remains in local-equilibrium regime"
+  ],
+  "ledger_boundary": {
+    "normalized_dissipation": "ALLOWED_EFFECTIVE_OBSERVABLE",
+    "sigma_over_T_as_entropy_production": "BLOCKED_UNTIL_T_AND_ENERGY_SCALE_CLOSED",
+    "trace_R": "DERIVED_OBSERVABLE_ONLY"
+  },
+  "fit_policy": {
+    "alpha_Phi_K_fit_performed": false,
+    "target_data_used_to_choose_a_Phi_prime": false,
+    "2026_graphite_holdout_consumed": false
+  },
+  "next_controller": "derive_or_source_lock_e0_and_temperature_dependent_functional_coefficients_without_target-data_fit"
+}
