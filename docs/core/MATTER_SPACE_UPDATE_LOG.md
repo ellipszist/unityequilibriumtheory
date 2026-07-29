@@ -77,3 +77,12 @@
 - Next controller: `physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing` for the extended program; `core_prearrival_leakage` remains simultaneous for the original 1D physical-response lane.
 - Claim impact: wording aligned only; no topic promotion, no GR validation, and no claim that the complete universe is open or closed.
 - Workflow linkage: closes the report-alignment packet after Wave 10 downstream dependency propagation; canonical Topic 0.11 is `Structured/B`, while the older `Draft/B` wording remains explicitly historical.
+
+### 2026-07-29 - Foundation-first energy-ledger verification packet
+
+- Scope: Wave 2 alignment of the existing `matter_space_coupled_v1` verifier with the impact/effect ontology.
+- Added: focused `matter_space_energy_ledger_verification.json`, its deterministic generator, and artifact-boundary test.
+- Verified: ledger-focused artifact generation and 39 targeted matter-space/core tests passed.
+- Result: local ledger checks `PASS`; full matter-space verification remains `FAIL` only at `prearrival_leakage` (`1.76394e-2` versus `1e-6`), so the dependency gate remains `BLOCKED`.
+- Preserved: no clipping, no cone padding, no trace backreaction, no SI/Joule claim, and no change to legacy/default operators.
+- Next controller: repair or replace the causal-support discretization, then run the isolated 0.11 phase diagnostic as internal/simulation-only work.
