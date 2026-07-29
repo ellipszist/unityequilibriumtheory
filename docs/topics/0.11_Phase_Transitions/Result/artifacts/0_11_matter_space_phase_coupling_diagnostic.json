@@ -1,0 +1,589 @@
+{
+  "schema_version": "matter-space-phase-coupling-diagnostic-v1",
+  "artifact": "0_11_matter_space_phase_coupling_diagnostic",
+  "generated_at": "2026-07-30",
+  "status": "INTERNAL_DIAGNOSTIC",
+  "verification_status": "PASS",
+  "simulation_status": "SIMULATION_ONLY",
+  "dependency_status": "BLOCKED",
+  "topic_status_impact": "NONE",
+  "controller": "ch_finite_k_replicate_temporal_acquisition_plan_defined_execution_open",
+  "operator_mode": "matter_space_coupled_v1",
+  "unit_lane": "normalized",
+  "preregistration": {
+    "path": "docs/topics/0.11_Phase_Transitions/Data/03_Research/matter_space_phase_coupling.json",
+    "sha256": "0d71745205648228e7f5d3b2f1372a36f37ccb4f4f719e2c2c8a976e9d6d97cf",
+    "parameter_fitting": false,
+    "external_numeric_inputs": []
+  },
+  "parent_preregistration": {
+    "path": "docs/topics/0.11_Phase_Transitions/Data/03_Research/matter_space_coupled_preregistration.json",
+    "sha256": "85c459cf8580ee9d60ea962c118c1b52a612c9bb0200954767108cf3d36bae78"
+  },
+  "comparators": [
+    "standard_conserved_gradient_flow",
+    "legacy_instantaneous_comparator",
+    "C_plus_trace_only",
+    "coupled_C_Phi_Pi",
+    "coupled_receiver_effect",
+    "adiabatic_reduced_model"
+  ],
+  "initial_conditions": [
+    "uniform",
+    "localized",
+    "two_domain",
+    "spinodal_1101",
+    "spinodal_1102",
+    "spinodal_1103"
+  ],
+  "results": {
+    "uniform": {
+      "standard_conserved_gradient_flow": {
+        "metrics": {
+          "C_phase_persistence_proxy": 1.0,
+          "interface_width_proxy": 0.0,
+          "structure_factor_peak_q_diagnostic": 0.0,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.0,
+          "matter_relative_drift": 0.0,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 0.0,
+          "receiver_effect_response_proxy": 0.0,
+          "all_finite": true
+        },
+        "dt": 0.003472222222222222,
+        "steps": 72
+      },
+      "C_plus_trace_only": {
+        "metrics": {
+          "C_phase_persistence_proxy": 1.0,
+          "interface_width_proxy": 0.0,
+          "structure_factor_peak_q_diagnostic": 0.0,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.0,
+          "matter_relative_drift": 0.0,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 0.0,
+          "receiver_effect_response_proxy": 0.0,
+          "all_finite": true
+        },
+        "dt": 0.003472222222222222,
+        "steps": 72
+      },
+      "coupled_C_Phi_Pi": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.9953095414123315,
+          "interface_width_proxy": 0.0,
+          "structure_factor_peak_q_diagnostic": 0.0,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.00010204108488776065,
+          "matter_relative_drift": 0.0,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 0.003991880462900405,
+          "receiver_effect_response_proxy": 0.0,
+          "all_finite": true
+        },
+        "dt": 0.003472222222222222,
+        "steps": 72
+      },
+      "coupled_receiver_effect": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.9953095414123315,
+          "interface_width_proxy": 0.0,
+          "structure_factor_peak_q_diagnostic": 0.0,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.00010204108488776065,
+          "matter_relative_drift": 0.0,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 0.003991880462900405,
+          "receiver_effect_response_proxy": 3.3992048294014915e-05,
+          "all_finite": true
+        },
+        "dt": 0.003472222222222222,
+        "steps": 72
+      },
+      "adiabatic_reduced_model": {
+        "metrics": {
+          "all_finite": true,
+          "C_phase_persistence_proxy": 1.0,
+          "matter_relative_drift": 0.0
+        }
+      },
+      "legacy_instantaneous_comparator": {
+        "metrics": {
+          "all_finite": true,
+          "matter_relative_drift": 0.11871067489165933,
+          "final_rms": 0.30845126378791915
+        }
+      }
+    },
+    "localized": {
+      "standard_conserved_gradient_flow": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.999593705443043,
+          "interface_width_proxy": 3.33178195341034,
+          "structure_factor_peak_q_diagnostic": 0.19634954084936207,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.0005659057927322464,
+          "matter_relative_drift": 2.303387911197359e-16,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 4.083587383469169e-09,
+          "receiver_effect_response_proxy": 0.0,
+          "all_finite": true
+        },
+        "dt": 0.003125,
+        "steps": 80
+      },
+      "C_plus_trace_only": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.999593705443043,
+          "interface_width_proxy": 3.33178195341034,
+          "structure_factor_peak_q_diagnostic": 0.19634954084936207,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.0005659057927322464,
+          "matter_relative_drift": 2.303387911197359e-16,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 4.083587383469169e-09,
+          "receiver_effect_response_proxy": 0.0,
+          "all_finite": true
+        },
+        "dt": 0.003125,
+        "steps": 80
+      },
+      "coupled_C_Phi_Pi": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.9968179232400486,
+          "interface_width_proxy": 3.3317937933590334,
+          "structure_factor_peak_q_diagnostic": 0.19634954084936207,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.0006018404129679578,
+          "matter_relative_drift": 1.1516939555986796e-16,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 4.128635531613654e-06,
+          "receiver_effect_response_proxy": 0.0,
+          "all_finite": true
+        },
+        "dt": 0.003125,
+        "steps": 80
+      },
+      "coupled_receiver_effect": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.9968179232400486,
+          "interface_width_proxy": 3.3317937933590334,
+          "structure_factor_peak_q_diagnostic": 0.19634954084936207,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.0006018404129679578,
+          "matter_relative_drift": 1.1516939555986796e-16,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 4.128635531613654e-06,
+          "receiver_effect_response_proxy": 0.00016799716639657097,
+          "all_finite": true
+        },
+        "dt": 0.003125,
+        "steps": 80
+      },
+      "adiabatic_reduced_model": {
+        "metrics": {
+          "all_finite": true,
+          "C_phase_persistence_proxy": 0.9995962340881006,
+          "matter_relative_drift": 4.606775822394718e-16
+        }
+      },
+      "legacy_instantaneous_comparator": {
+        "metrics": {
+          "all_finite": true,
+          "matter_relative_drift": 0.11850035836531808,
+          "final_rms": 0.15703034771347352
+        }
+      }
+    },
+    "two_domain": {
+      "standard_conserved_gradient_flow": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.9972923888445845,
+          "interface_width_proxy": 2.1035167432023587,
+          "structure_factor_peak_q_diagnostic": 0.19634954084936207,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.005379918871612155,
+          "matter_relative_drift": 1.0547118733938987e-15,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 9.99390216532584e-08,
+          "receiver_effect_response_proxy": 0.0,
+          "all_finite": true
+        },
+        "dt": 0.0026595744680851063,
+        "steps": 94
+      },
+      "C_plus_trace_only": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.9972923888445845,
+          "interface_width_proxy": 2.1035167432023587,
+          "structure_factor_peak_q_diagnostic": 0.19634954084936207,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.005379918871612155,
+          "matter_relative_drift": 1.0547118733938987e-15,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 9.99390216532584e-08,
+          "receiver_effect_response_proxy": 0.0,
+          "all_finite": true
+        },
+        "dt": 0.0026595744680851063,
+        "steps": 94
+      },
+      "coupled_C_Phi_Pi": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.9803528685038135,
+          "interface_width_proxy": 2.1035472996634668,
+          "structure_factor_peak_q_diagnostic": 0.19634954084936207,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.006737906205463773,
+          "matter_relative_drift": 9.159339953157541e-16,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 8.606118223134062e-06,
+          "receiver_effect_response_proxy": 0.0,
+          "all_finite": true
+        },
+        "dt": 0.0026595744680851063,
+        "steps": 94
+      },
+      "coupled_receiver_effect": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.9803528685038135,
+          "interface_width_proxy": 2.1035472996634668,
+          "structure_factor_peak_q_diagnostic": 0.19634954084936207,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.006737906205463773,
+          "matter_relative_drift": 9.159339953157541e-16,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 8.606118223134062e-06,
+          "receiver_effect_response_proxy": 0.0021947276133270966,
+          "all_finite": true
+        },
+        "dt": 0.0026595744680851063,
+        "steps": 94
+      },
+      "adiabatic_reduced_model": {
+        "metrics": {
+          "all_finite": true,
+          "C_phase_persistence_proxy": 0.9974243446241049,
+          "matter_relative_drift": 5.551115123125783e-16
+        }
+      },
+      "legacy_instantaneous_comparator": {
+        "metrics": {
+          "all_finite": true,
+          "matter_relative_drift": 0.008278206779156722,
+          "final_rms": 0.572179046883216
+        }
+      }
+    },
+    "spinodal_1101": {
+      "standard_conserved_gradient_flow": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.9924853625743226,
+          "interface_width_proxy": 0.6108903411627269,
+          "structure_factor_peak_q_diagnostic": 0.19634954084936207,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.005294027813642724,
+          "matter_relative_drift": 4.163336342344337e-17,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 3.437192700319277e-05,
+          "receiver_effect_response_proxy": 0.0,
+          "all_finite": true
+        },
+        "dt": 0.0038461538461538464,
+        "steps": 65
+      },
+      "C_plus_trace_only": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.9924853625743226,
+          "interface_width_proxy": 0.6108903411627269,
+          "structure_factor_peak_q_diagnostic": 0.19634954084936207,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.005294027813642724,
+          "matter_relative_drift": 4.163336342344337e-17,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 3.437192700319277e-05,
+          "receiver_effect_response_proxy": 0.0,
+          "all_finite": true
+        },
+        "dt": 0.0038461538461538464,
+        "steps": 65
+      },
+      "coupled_C_Phi_Pi": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.9924273828267303,
+          "interface_width_proxy": 0.6108901493224406,
+          "structure_factor_peak_q_diagnostic": 0.19634954084936207,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.005294033879943622,
+          "matter_relative_drift": 5.551115123125783e-17,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 3.437068352005487e-05,
+          "receiver_effect_response_proxy": 0.0,
+          "all_finite": true
+        },
+        "dt": 0.0038461538461538464,
+        "steps": 65
+      },
+      "coupled_receiver_effect": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.9924273828267303,
+          "interface_width_proxy": 0.6108901493224406,
+          "structure_factor_peak_q_diagnostic": 0.19634954084936207,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.005294033879943622,
+          "matter_relative_drift": 5.551115123125783e-17,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 3.437068352005487e-05,
+          "receiver_effect_response_proxy": 0.0020417377212594,
+          "all_finite": true
+        },
+        "dt": 0.0038461538461538464,
+        "steps": 65
+      },
+      "adiabatic_reduced_model": {
+        "metrics": {
+          "all_finite": true,
+          "C_phase_persistence_proxy": 0.9924864892793999,
+          "matter_relative_drift": 2.7755575615628914e-17
+        }
+      },
+      "legacy_instantaneous_comparator": {
+        "metrics": {
+          "all_finite": true,
+          "matter_relative_drift": 0.003818635386466443,
+          "final_rms": 0.022550953582058428
+        }
+      }
+    },
+    "spinodal_1102": {
+      "standard_conserved_gradient_flow": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.9942260635569887,
+          "interface_width_proxy": 0.8598542939167237,
+          "structure_factor_peak_q_diagnostic": 2.1598449493429825,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.0031354522955884274,
+          "matter_relative_drift": 8.326672684688674e-17,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 3.389267084087231e-05,
+          "receiver_effect_response_proxy": 0.0,
+          "all_finite": true
+        },
+        "dt": 0.0038461538461538464,
+        "steps": 65
+      },
+      "C_plus_trace_only": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.9942260635569887,
+          "interface_width_proxy": 0.8598542939167237,
+          "structure_factor_peak_q_diagnostic": 2.1598449493429825,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.0031354522955884274,
+          "matter_relative_drift": 8.326672684688674e-17,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 3.389267084087231e-05,
+          "receiver_effect_response_proxy": 0.0,
+          "all_finite": true
+        },
+        "dt": 0.0038461538461538464,
+        "steps": 65
+      },
+      "coupled_C_Phi_Pi": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.9941828174578194,
+          "interface_width_proxy": 0.8598543851828996,
+          "structure_factor_peak_q_diagnostic": 2.1598449493429825,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.0031354568414184245,
+          "matter_relative_drift": 8.326672684688674e-17,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 3.3891846887475246e-05,
+          "receiver_effect_response_proxy": 0.0,
+          "all_finite": true
+        },
+        "dt": 0.0038461538461538464,
+        "steps": 65
+      },
+      "coupled_receiver_effect": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.9941828174578194,
+          "interface_width_proxy": 0.8598543851828996,
+          "structure_factor_peak_q_diagnostic": 2.1598449493429825,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.0031354568414184245,
+          "matter_relative_drift": 8.326672684688674e-17,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 3.3891846887475246e-05,
+          "receiver_effect_response_proxy": 0.0009433403396992602,
+          "all_finite": true
+        },
+        "dt": 0.0038461538461538464,
+        "steps": 65
+      },
+      "adiabatic_reduced_model": {
+        "metrics": {
+          "all_finite": true,
+          "C_phase_persistence_proxy": 0.9942266991704832,
+          "matter_relative_drift": 5.551115123125783e-17
+        }
+      },
+      "legacy_instantaneous_comparator": {
+        "metrics": {
+          "all_finite": true,
+          "matter_relative_drift": 0.02879270020064814,
+          "final_rms": 0.019622441630733737
+        }
+      }
+    },
+    "spinodal_1103": {
+      "standard_conserved_gradient_flow": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.9941599294612221,
+          "interface_width_proxy": 0.9430609924560052,
+          "structure_factor_peak_q_diagnostic": 2.552544031041707,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.0032524588008062388,
+          "matter_relative_drift": 5.551115123125783e-17,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 3.156384087635437e-05,
+          "receiver_effect_response_proxy": 0.0,
+          "all_finite": true
+        },
+        "dt": 0.0038461538461538464,
+        "steps": 65
+      },
+      "C_plus_trace_only": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.9941599294612221,
+          "interface_width_proxy": 0.9430609924560052,
+          "structure_factor_peak_q_diagnostic": 2.552544031041707,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.0032524588008062388,
+          "matter_relative_drift": 5.551115123125783e-17,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 3.156384087635437e-05,
+          "receiver_effect_response_proxy": 0.0,
+          "all_finite": true
+        },
+        "dt": 0.0038461538461538464,
+        "steps": 65
+      },
+      "coupled_C_Phi_Pi": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.9941065147678201,
+          "interface_width_proxy": 0.9430605441369437,
+          "structure_factor_peak_q_diagnostic": 2.552544031041707,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.0032524672643152817,
+          "matter_relative_drift": 3.469446951953614e-17,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 3.1562949912427824e-05,
+          "receiver_effect_response_proxy": 0.0,
+          "all_finite": true
+        },
+        "dt": 0.0038461538461538464,
+        "steps": 65
+      },
+      "coupled_receiver_effect": {
+        "metrics": {
+          "C_phase_persistence_proxy": 0.9941065147678201,
+          "interface_width_proxy": 0.9430605441369437,
+          "structure_factor_peak_q_diagnostic": 2.552544031041707,
+          "phase_transition_time_proxy": 0.25,
+          "persistence_time_proxy": 0.25,
+          "energy_dissipation_proxy": 0.0032524672643152817,
+          "matter_relative_drift": 3.469446951953614e-17,
+          "max_relative_energy_increase": 0.0,
+          "max_ledger_closure_relative": 3.1562949912427824e-05,
+          "receiver_effect_response_proxy": 0.0010104536135377602,
+          "all_finite": true
+        },
+        "dt": 0.0038461538461538464,
+        "steps": 65
+      },
+      "adiabatic_reduced_model": {
+        "metrics": {
+          "all_finite": true,
+          "C_phase_persistence_proxy": 0.9941606266226541,
+          "matter_relative_drift": 1.3183898417423734e-16
+        }
+      },
+      "legacy_instantaneous_comparator": {
+        "metrics": {
+          "all_finite": true,
+          "matter_relative_drift": 0.006791645654577835,
+          "final_rms": 0.021230969189565692
+        }
+      }
+    }
+  },
+  "same_C_different_space_state": {
+    "physical_difference": 0.05654775613577053
+  },
+  "same_complete_state_different_trace_history": {
+    "physical_difference": 0.0,
+    "trace_history_changes_physical_state": false
+  },
+  "resolution_control": {
+    "scalar_observables": {
+      "32": {
+        "mean_C": 0.12049892022399672,
+        "variance_C": 0.01748734339631909,
+        "energy_dissipation_proxy": 0.0002237698949918432
+      },
+      "64": {
+        "mean_C": 0.12049892022399677,
+        "variance_C": 0.017487604714908376,
+        "energy_dissipation_proxy": 0.000228720897147483
+      }
+    },
+    "max_scalar_difference": 2.6131858928482576e-07
+  },
+  "causal_arrival": {
+    "status": "INHERITED_BLOCKED_CORE_CONTROLLER",
+    "core_artifact": "docs/core/artifacts/matter_space_variational_verification.json",
+    "controller": "prearrival_leakage",
+    "new_causal_claim": false
+  },
+  "local_checks": {
+    "all_comparator_fields_finite": true,
+    "same_C_different_space_state_signal": true,
+    "same_complete_state_different_trace_history_invariant": true,
+    "receiver_effect_explicit_and_nonzero": true,
+    "resolution_scalar_difference_recorded": true,
+    "core_causal_dependency_not_hidden": true
+  },
+  "claim_boundary": [
+    "internal normalized diagnostic only",
+    "C_phase is a lane-specific persistence/compatibility proxy",
+    "morphology metrics are not accepted structure-factor estimators",
+    "no universality, mass, particle, GR, or cosmological claim"
+  ],
+  "falsification_state": "core_causal_support_and_topic_structure_factor_controllers_remain_blocking",
+  "next_controller": "repair inherited causal-support discretization and separately execute Topic 0.11 replicate/temporal acquisition"
+}

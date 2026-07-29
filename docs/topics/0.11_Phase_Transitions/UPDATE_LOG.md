@@ -1340,3 +1340,22 @@
 **Current topic-level status after wave:**
 - Canonical status remains `Structured / Tier B`; `topic_status_impact = NONE` and the dependency artifact remains `BLOCKED`.
 - No estimator, exponent, universality, RG, material, matter-space, GR, global-universe, external-validation, or solved-phase-transition claim is upgraded.
+
+## 2026-07-29 - Matter-space / phase coupling diagnostic (separate lane)
+
+**What changed:**
+- Added `MATTER_SPACE_PHASE_PILOT_SPEC.md`, a locked normalized preregistration, a six-comparator runner, and a generated phase-coupling artifact.
+- Compared standard conserved flow, legacy descriptive comparator, trace-only, coupled `(C, Phi, Pi)`, explicit receiver-effect coupling, and an adiabatic reduced model across uniform, localized, two-domain, and three locked spinodal seeds.
+- Added artifact tests for the internal/simulation-only and no-trace-backreaction boundaries.
+
+**Which verifier was run:**
+- `Research_Matter_Space_Phase_Coupling.py` returned `INTERNAL_DIAGNOSTIC / PASS / dependency BLOCKED`.
+- `pytest Code/03_Research/test_matter_space_phase_coupling.py -q` passed `3/3`.
+
+**Which blocker narrowed:**
+- The pilot now records same-`C`/different-`Phi,Pi` sensitivity, same-complete-state/different-trace-history invariance, explicit receiver response, and resolution diagnostics in one artifact.
+- The inherited core `prearrival_leakage` controller and the independent Wave 55 structure-factor controller remain unchanged.
+
+**Current topic-level status after this wave:**
+- Topic 0.11 remains `Structured / Tier B`; `topic_status_impact = NONE`.
+- No exponent, universality, mass, particle, GR, cosmological, or external-validation claim is promoted.

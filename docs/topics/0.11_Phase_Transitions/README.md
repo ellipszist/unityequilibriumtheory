@@ -201,3 +201,12 @@ python docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Critical_Exp
 - Wave 55 selects replicate/temporal acquisition as the next controller. `wave54_chain_gate`, `replicate_temporal_acquisition_plan_gate`, and `selected_next_path_gate` pass, while replacement-observable availability, estimator acceptance, exponent rerun, and next-path execution remain `BLOCKED`.
 
 *Status note: internal critical-exponent benchmark and formula-audit hardening gate.*
+
+## Matter-space / phase coupling diagnostic (isolated lane)
+
+- Spec: [`MATTER_SPACE_PHASE_PILOT_SPEC.md`](./MATTER_SPACE_PHASE_PILOT_SPEC.md)
+- Runner: [`Research_Matter_Space_Phase_Coupling.py`](./Code/03_Research/Research_Matter_Space_Phase_Coupling.py)
+- Artifact: [`0_11_matter_space_phase_coupling_diagnostic.json`](./Result/artifacts/0_11_matter_space_phase_coupling_diagnostic.json)
+- Status: `INTERNAL_DIAGNOSTIC / SIMULATION_ONLY / CORE_DEPENDENCY_BLOCKED`; this lane has `topic_status_impact = NONE`.
+- Scope: six comparator lanes, locked normalized initial conditions, `C_phase` persistence/compatibility proxy, explicit receiver-effect record, and trace-history invariance.
+- Boundary: morphology and persistence metrics are diagnostics only; they do not replace the structure-factor estimator or change the Wave 55 replicate/temporal controller.

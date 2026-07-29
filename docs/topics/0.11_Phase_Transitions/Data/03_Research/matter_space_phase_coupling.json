@@ -1,0 +1,53 @@
+{
+  "schema_version": "matter-space-phase-coupling-preregistration-v1",
+  "artifact": "matter_space_phase_coupling_preregistration",
+  "topic": "0.11_Phase_Transitions",
+  "status": "LOCKED_BEFORE_EXECUTION",
+  "parent_preregistration": "docs/topics/0.11_Phase_Transitions/Data/03_Research/matter_space_coupled_preregistration.json",
+  "unit_lane": "normalized",
+  "dimension": "1D",
+  "parameter_fitting": false,
+  "external_numeric_inputs": [],
+  "duration": 0.25,
+  "dt_fraction_of_preflight": 0.05,
+  "domain_length": 32.0,
+  "cells": 64,
+  "comparators": [
+    "standard_conserved_gradient_flow",
+    "legacy_instantaneous_comparator",
+    "C_plus_trace_only",
+    "coupled_C_Phi_Pi",
+    "coupled_receiver_effect",
+    "adiabatic_reduced_model"
+  ],
+  "initial_conditions": {
+    "uniform_C": 0.35,
+    "localized_mean": 0.05,
+    "localized_amplitude": 0.45,
+    "localized_sigma": 2.0,
+    "domain_amplitude": 0.7,
+    "domain_interface_width": 1.0,
+    "spinodal_noise_sigma": 0.03,
+    "spinodal_seeds": [1101, 1102, 1103],
+    "alternate_phi_amplitude": 0.08,
+    "alternate_pi_amplitude": 0.05
+  },
+  "thresholds": {
+    "matter_relative_drift_max": 1e-10,
+    "closed_energy_relative_increase_max": 1e-9,
+    "ledger_closure_relative_max": 1e-6,
+    "trace_history_physical_difference_max": 1e-12,
+    "same_C_space_signal_min": 1e-11,
+    "receiver_response_min": 1e-12,
+    "convergence_scalar_difference_max": 0.05
+  },
+  "claim_policy": {
+    "artifact_status": "INTERNAL_DIAGNOSTIC",
+    "simulation_status": "SIMULATION_ONLY",
+    "topic_status_impact": "NONE",
+    "structure_factor_gate_change_allowed": false,
+    "critical_universality_claim_allowed": false,
+    "trace_backreaction_allowed": false,
+    "particle_identity_claim_allowed": false
+  }
+}
