@@ -1,0 +1,62 @@
+{
+  "schema_version": "matter-space-causal-cone-compatibility-v1",
+  "artifact": "matter_space_causal_cone_compatibility",
+  "generated_at": "2026-07-30",
+  "audit_status": "BLOCKED",
+  "response_cone_status": "BLOCKED",
+  "shared_ledger_status": "PASS",
+  "full_candidate_status": "BLOCKED",
+  "structural_blocker": "conserved_C_gradient_term_has_unbounded_k4_characteristic_speed",
+  "discrete_probe": {
+    "n": 161,
+    "dx": 0.25,
+    "macro_dt": 0.6614378277661476,
+    "phi_declared_radius_cells": 1,
+    "observed_C_radius_cells": 17,
+    "observed_Phi_radius_cells": 7,
+    "matter_substeps": 11,
+    "observed_combined_radius_cells": 17,
+    "mass_relative_drift": 0.0,
+    "shared_ledger_residual": 3.966497156266237e-07,
+    "stencil_probe_status": "FAIL"
+  },
+  "continuum_diagnostic": {
+    "cattaneo_extension": {
+      "equation": "tau_C*C_tt + C_t = M_C*Laplacian(mu_C), mu_C=a_C*C-kappa_C*Laplacian(C)",
+      "M_C": 0.04,
+      "kappa_C": 0.02,
+      "tau_C": 0.7,
+      "a_C": 0.0,
+      "wave_numbers": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "group_speeds": [
+        0.0,
+        0.0,
+        0.0,
+        0.5730268819294487,
+        1.0855009581027089,
+        2.164055611740677
+      ],
+      "high_k_group_speed_is_unbounded": true,
+      "asymptotic_group_speed": "2*sqrt(M_C*kappa_C/tau_C)*k",
+      "interpretation": "A Cattaneo relaxation does not create a finite cone for conserved C when kappa_C>0 because the principal symbol remains k^4."
+    }
+  },
+  "decision_options": [
+    "keep C as a parabolic matter lane and restrict the causal cone claim to externally prescribed/frozen C",
+    "change the C realization to a non-conserved telegraph/order-parameter lane with a finite principal speed",
+    "introduce an explicit UV regularization or nonlocal constitutive law and derive its units/energy contract"
+  ],
+  "claim_boundary": "The split bridge shared ledger remains internally passing, but this audit does not establish a finite changing-C cone. It does not promote the full default operator, continuum causality, SI physics, or downstream topics.",
+  "evidence_class": "INTERNAL_STRUCTURAL_COMPATIBILITY_AUDIT",
+  "evidence_inputs": {
+    "implementation": "docs/core/uet_matter_space_split.py",
+    "implementation_sha256": "860e36aa41e471f2360afebd5694d3f0813cadd2fc0090feb68eb488afb6cd0d"
+  }
+}

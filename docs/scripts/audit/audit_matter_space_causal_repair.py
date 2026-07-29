@@ -23,6 +23,7 @@ OUTPUT = ROOT / "docs/core/artifacts/causal_discretization_repair_artifact.json"
 REFERENCE_ENERGY = ROOT / "docs/core/artifacts/matter_space_causal_reference_energy_verification.json"
 CAUSAL_DISCRETE_GRADIENT = ROOT / "docs/core/artifacts/matter_space_causal_discrete_gradient_verification.json"
 CAUSAL_SPLIT = ROOT / "docs/core/artifacts/matter_space_causal_split_verification.json"
+CAUSAL_CONE_COMPATIBILITY = ROOT / "docs/core/artifacts/matter_space_causal_cone_compatibility.json"
 
 
 def sha256(path: Path) -> str:
@@ -40,6 +41,7 @@ def build_artifact() -> dict[str, Any]:
     reference_energy = load(REFERENCE_ENERGY)
     causal_discrete_gradient = load(CAUSAL_DISCRETE_GRADIENT)
     causal_split = load(CAUSAL_SPLIT)
+    causal_cone = load(CAUSAL_CONE_COMPATIBILITY)
     reference_pass = (
         reference["status"] == "PASS"
         and reference["metrics"]["prearrival_max_outside_discrete_cone"] == 0.0
@@ -55,6 +57,7 @@ def build_artifact() -> dict[str, Any]:
         "reference_energy_ledger_closed": reference_energy["audit_status"] == "PASS",
         "causal_discrete_gradient_partial_closure": causal_discrete_gradient["partial_closure_status"] == "PASS",
         "causal_split_shared_ledger_pass": causal_split["shared_ledger_status"] == "PASS",
+        "causal_cone_structural_blocker_visible": causal_cone["response_cone_status"] == "BLOCKED",
         "full_coupled_integration_closed": False,
     }
     return {
@@ -62,12 +65,13 @@ def build_artifact() -> dict[str, Any]:
         "artifact": "causal_discretization_repair_artifact",
         "generated_at": date.today().isoformat(),
         "status": "BLOCKED",
-        "repair_status": "REFERENCE_AND_PHI_AND_SPLIT_LEDGER_PASS_RESPONSE_CONE_OPEN",
+        "repair_status": "REFERENCE_AND_PHI_AND_SPLIT_LEDGER_PASS_C_CONE_STRUCTURAL_BLOCKER_OPEN",
         "reference_status": "PASS" if reference_pass else "FAIL",
         "split_bridge_status": causal_split["split_bridge_status"],
+        "causal_cone_compatibility_status": causal_cone["response_cone_status"],
         "changing_C_causal_cone_status": causal_split["changing_C_causal_cone_status"],
         "default_full_candidate_status": "BLOCKED",
-        "controlling_blocker": "changing_C_response_cone_and_full_operator_integration_missing",
+        "controlling_blocker": "conserved_C_gradient_term_has_unbounded_k4_characteristic_speed",
         "checks": checks,
         "default_candidate": {
             "artifact": "docs/core/artifacts/matter_space_variational_verification.json",
@@ -85,10 +89,10 @@ def build_artifact() -> dict[str, Any]:
             "claim_boundary": "compact-support numerical control only; not full nonlinear matter-space verification",
         },
         "integration_requirements": [
-            "validate the changing-C response cone after the conserved parabolic subcycle",
-            "preserve conserved C dynamics without importing a parabolic infinite-speed claim into the response cone",
-            "separate the Phi carrier cone from the C matter lane and define the full-operator claim boundary",
-            "rerun full-candidate response-cone and shared-ledger tests without clipping or cone padding",
+            "resolve the finite-cone incompatibility of conserved C with kappa_C>0",
+            "choose between a restricted frozen-C cone claim, a non-conserved telegraph C lane, or an explicit UV/nonlocal regularization",
+            "derive units, energy and observable contracts for whichever C realization is selected",
+            "rerun the full-candidate gate only after the structural cone decision is closed",
             "rerun the original full-candidate prearrival gate without clipping or cone padding",
         ],
         "evidence_inputs": {
@@ -99,9 +103,10 @@ def build_artifact() -> dict[str, Any]:
             "reference_energy_verification": "docs/core/artifacts/matter_space_causal_reference_energy_verification.json",
             "causal_discrete_gradient_verification": "docs/core/artifacts/matter_space_causal_discrete_gradient_verification.json",
             "causal_split_verification": "docs/core/artifacts/matter_space_causal_split_verification.json",
+            "causal_cone_compatibility": "docs/core/artifacts/matter_space_causal_cone_compatibility.json",
         },
-        "claim_boundary": "The repair narrows the numerical blocker by validating the frozen-C Phi/Pi lane and the changing-C shared ledger; the changing-C response cone, full operator, continuum causality, SI physics, and downstream topics remain blocked.",
-        "next_controller": "validate the changing-C response cone and integrate the split bridge into the full default operator before changing the claim boundary",
+        "claim_boundary": "The repair closes the frozen-C Phi/Pi and changing-C shared-ledger diagnostics, but exposes a structural finite-cone incompatibility in conserved C with kappa_C>0; the full operator, continuum causality, SI physics, and downstream topics remain blocked.",
+        "next_controller": "resolve the conserved-C k4 finite-cone incompatibility or restrict the causal claim before integrating the full operator",
     }
 
 

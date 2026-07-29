@@ -121,3 +121,11 @@
 - Result: split bridge `PASS_WITHIN_DECLARED_TOLERANCE`; changing-C response cone remains `BLOCKED` because the conserved C lane is a parabolic subcycle.
 - Preserved: default operator unchanged, trace feedback disabled, no clipping or cone padding, normalized-only claim boundary, and no downstream promotion.
 - Next controller: validate the changing-C response cone and integrate the split bridge into the full operator before changing the claim boundary.
+### 2026-07-30 - Changing-C causal-cone compatibility audit
+
+- Scope: determine whether the changing-C split bridge can honestly carry the same finite response-cone claim as the causal Phi/Pi lane.
+- Added: deterministic discrete-stencil/continuum compatibility audit, artifact, focused tests, and repair-gate linkage.
+- Verified: localized C radius `17` cells and Phi response radius `7` cells in one macro-step while the Phi CFL cone is `1` cell; the conserved Cattaneo extension retains a k4 principal term with unbounded high-k group speed.
+- Result: shared ledger remains `PASS`, but finite changing-C cone is structurally `BLOCKED`; controller is `conserved_C_gradient_term_has_unbounded_k4_characteristic_speed`.
+- Decision boundary: choose a frozen-C/restricted cone claim, a non-conserved telegraph C realization, or an explicit UV/nonlocal regularization before full-operator integration.
+- Preserved: no parameter fitting, no clipping/cone padding, no default-operator change, normalized-only units, and no downstream promotion.
