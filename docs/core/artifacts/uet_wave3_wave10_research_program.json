@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_wave3_wave10_research_program",
-  "generated_at": "2026-07-29T19:40:27.159774+00:00",
+  "generated_at": "2026-07-29T19:50:04.898112+00:00",
   "program_scope": "UET Foundation-First Research Program Waves 0-10",
   "workflow": [
     "inventory",
@@ -173,11 +173,18 @@
       "claim_ceiling": "internal normalized diagnostic; no universality or mass-generation claim",
       "inputs": [
         {
-          "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_matter_space_coupled_diagnostic.json",
+          "path": "docs/core/artifacts/matter_space_phase_pilot.json",
           "exists": true,
-          "sha256": "16d575f69423cd4878705b5adb2f8a89b2116cd6a8720e55609dfdedda357085",
+          "sha256": "06eb4f686b3c436e345877acccacfc69c1f62c9fa1fa8f0e4d62c2f5381b119d",
           "status": "INTERNAL_DIAGNOSTIC",
-          "controller": "inherited_core_prearrival_leakage"
+          "controller": "repair inherited causal-support discretization and separately execute Topic 0.11 replicate/temporal acquisition"
+        },
+        {
+          "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_matter_space_phase_coupling_diagnostic.json",
+          "exists": true,
+          "sha256": "60603592d00c7a1bd857fda8e06531cd3bd0d70031400a943e5d3033df87f679",
+          "status": "INTERNAL_DIAGNOSTIC",
+          "controller": "repair inherited causal-support discretization and separately execute Topic 0.11 replicate/temporal acquisition"
         },
         {
           "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_noether_phase_field_dependency_gate.json",
@@ -300,6 +307,13 @@
       "controlling_blocker": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing",
       "claim_ceiling": "local covariant/closed-limit checks only; no GR derivation or global-open claim",
       "inputs": [
+        {
+          "path": "docs/core/artifacts/orbit_cosmology_correspondence_gate.json",
+          "exists": true,
+          "sha256": "49100a87890307f8ff8b82728d5a420d449ecd8fa7a0568f6f119611d3fd120b",
+          "status": "BLOCKED",
+          "controller": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing plus global boundary/observable closure"
+        },
         {
           "path": "docs/core/artifacts/gr_closed_limit_verification.json",
           "exists": true,

@@ -39,3 +39,11 @@
 - Next action: close the foundation registry/correspondence and then replace or
   rigorously restrict the full nonlinear causal discretization before any
   downstream physical-data promotion.
+## 2026-07-30 — Canonical artifact coverage for Waves 5 and 9
+
+- Scope: close the artifact-name gaps found by the completion audit without rerunning or relabelling the underlying physics results.
+- Added: provenance-preserving `matter_space_phase_pilot.json` export and `orbit_cosmology_correspondence_gate.json`, with deterministic generators and focused tests.
+- Linked: the Wave 3–10 program gate now references the canonical phase pilot and Wave 9 correspondence gate.
+- Verified: named-deliverable coverage passed `6/6`; phase export preserves `INTERNAL_DIAGNOSTIC / PASS / dependency BLOCKED`; Wave 9 gate is `BLOCKED` with all local checks true.
+- Claim impact: none. The phase pilot remains internal/simulation-only; the orbit/GR/cosmology package remains a correspondence gate, not an UET orbital law, GR derivation, or global-open proof.
+- Next controller: foundation correspondence/units and full nonlinear causal compact-support closure remain upstream of any physical-data promotion.
