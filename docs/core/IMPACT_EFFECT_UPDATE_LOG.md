@@ -28,3 +28,11 @@
 - Found: 650 legacy/ambiguous wording occurrences in the scoped docs/code inventory; no wording was rewritten automatically.
 - Claim boundary: foundation remains `BLOCKED`; impact/effect remains `CANDIDATE`; no particle identity, global-open-universe claim, or mass mapping was promoted.
 - Next controller: implement the explicit carrier-neutral receiver relation, then verify it without feeding observer records back into the physical core.
+## 2026-07-29 - Add carrier-neutral relation and explicit receiver feedback
+
+- Scope: Wave 1 implementation of the impact/effect/carrier boundary.
+- Added: `uet_impact_effect.py`, public dataclasses for impact/carrier/effect/receiver dynamics, targeted tests, and generated verification/dependency artifacts.
+- Verified: 6 focused impact/effect tests plus 13 matter-space alignment regressions passed; local verifier status `PASS`.
+- Semantics: an effect can exist with zero source-mass transfer; receiver state changes only in explicit `coupled_receiver_v1`; observer protocol changes `R_obs` without changing `R_gen` or core state.
+- Claim boundary: normalized carrier-neutral relation only; carrier identity, dimensional closure, detector maps, and transition physics remain open; dependency gate remains `BLOCKED`.
+- Next controller: extend matter-space core verification and add the isolated phase diagnostic without modifying the current 0.11 structure-factor controller.
