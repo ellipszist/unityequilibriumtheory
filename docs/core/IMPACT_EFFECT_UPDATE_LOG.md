@@ -19,3 +19,12 @@
 - Next controller: build a carrier-neutral photon/neutrino/matter-antimatter
   comparison with units, conservation, detector maps, and falsification gates.
 
+
+## 2026-07-29 - Foundation-first registry and legacy boundary synchronization
+
+- Scope: Wave 0 synchronization for the foundation-first matter/impact/effect/carrier program.
+- Added: central registry merge script, F0 inventory refresh, dependency graph, and legacy-wording audit.
+- Audited: 27 topic formula-audit files and 263 formula rows; registry now contains 15 entries including the impact/effect and cosmological addenda.
+- Found: 650 legacy/ambiguous wording occurrences in the scoped docs/code inventory; no wording was rewritten automatically.
+- Claim boundary: foundation remains `BLOCKED`; impact/effect remains `CANDIDATE`; no particle identity, global-open-universe claim, or mass mapping was promoted.
+- Next controller: implement the explicit carrier-neutral receiver relation, then verify it without feeding observer records back into the physical core.

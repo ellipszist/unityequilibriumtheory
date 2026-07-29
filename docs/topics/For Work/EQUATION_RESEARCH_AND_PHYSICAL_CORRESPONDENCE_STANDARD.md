@@ -323,3 +323,19 @@ Stop and mark `BLOCKED` when:
 - [17_Formula_Audit_Standard.md](./17_Formula_Audit_Standard.md)
 - [18_Research_Hardening_Workflow.md](./18_Research_Hardening_Workflow.md)
 - [24_TEMPLATE_UPDATE_LOG.md](./24_TEMPLATE_UPDATE_LOG.md)
+
+## Impact/effect/carrier extension
+
+The foundation program uses the following causal separation:
+
+```text
+{b_i} -> impact -> B_sys -> C -> (mu_C, mu_Phi) -> physical dynamics -> sigma -> R_gen -> carrier -> R_obs/effect
+```
+
+`impact` is a physical coupling. `carrier` is a declared propagation channel. `effect` is the receiver-side consequence of a carrier/detector interaction and is not an independent field. `information` is a state, correlation, or detector-computed payload; it is not automatically a new substance. `R_gen` and `R_obs` are distinct layers.
+
+The model may include receiver feedback only when it is implemented as an explicit receiver-dynamics source/input with a unit lane, conservation or ledger rule, detector map, and causal propagation law. The current `matter_space_coupled_v1` operator remains trace-only: `R_gen` is derived after physical dynamics and does not feed back into `C`, `Phi`, or `Pi`.
+
+A mass-bearing-to-carrier transition is a `CANDIDATE_TRANSITION_HYPOTHESIS`, not a universal particle identity. Photon, neutrino, positron, and gravitational-wave lanes require separate source, propagation, conservation, detector, observable, and falsification records.
+
+Global-universe openness, a photon/neutrino identity for `I_trace`, and a closed-limit derivation of Einstein/GR are blocked until their correspondence and observable gates pass.

@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_foundation_equation_inventory",
-  "generated_at": "2026-07-27",
+  "generated_at": "2026-07-29",
   "audit_status": "PASS_WITH_DISCLOSED_GAPS",
   "inventory_gate_status": "BLOCKED",
   "controlling_blocker": "topic_formula_audits_not_code_complete_or_correspondence_incomplete",
   "coverage": {
     "formula_audit_file_count": 27,
-    "parsed_formula_row_count": 260,
+    "parsed_formula_row_count": 263,
     "coverage_status": "TOPIC_FORMULA_AUDITS_INVENTORIED_NOT_CODE_COMPLETE",
     "missing_scope": [
       "equations defined only in Python code without a FORMULA_AUDIT row",
@@ -27,7 +27,7 @@
       "0.10": 8,
       "0.11": 53,
       "0.12": 7,
-      "0.13": 12,
+      "0.13": 15,
       "0.14": 9,
       "0.15": 7,
       "0.16": 7,
@@ -51,16 +51,16 @@
     },
     "evidence_class_counts": {
       "INTERNAL_CHECKED": 17,
-      "OPEN_OR_HEURISTIC": 88,
+      "OPEN_OR_HEURISTIC": 90,
       "REVIEW_REQUIRED": 85,
       "SCAFFOLD_BLOCKED": 10,
-      "STANDARD_OR_BENCHMARK": 60
+      "STANDARD_OR_BENCHMARK": 61
     },
     "correspondence_status_counts": {
       "LEGACY_OR_COMPARATOR": 9,
       "OPEN_CORRESPONDENCE_REVIEW": 96,
-      "STANDARD_COUNTERPART_NOT_UET_DERIVATION": 54,
-      "UET_BRIDGE_OPEN": 101
+      "STANDARD_COUNTERPART_NOT_UET_DERIVATION": 55,
+      "UET_BRIDGE_OPEN": 103
     },
     "duplicate_formula_ids": {}
   },
@@ -1984,6 +1984,72 @@
       "evidence_class": "STANDARD_OR_BENCHMARK",
       "correspondence_status": "STANDARD_COUNTERPART_NOT_UET_DERIVATION",
       "requires_manual_correspondence": false
+    },
+    {
+      "topic_id": "0.13",
+      "topic_folder": "0.13_Thermodynamic_Bridge",
+      "formula_id": "T13-013",
+      "relation": "`y_TTG=Delta_Tq(t;Lambda)/Delta_Tq(0;Lambda)`",
+      "code_surface": "`docs/core/thermal_source_observable_map.py`; `THERMAL_SOURCE_OBSERVABLE_MAPPING_SPEC.md`",
+      "variables_and_units": "`Delta_Tq` = quasi-temperature difference; raw K after calibration; `y_TTG` dimensionless; `Lambda` = m; `t` = s",
+      "constant_origin": "source-backed measurement-operator definition from graphite TTG papers",
+      "proof_status": "derived observable definition, not UET derivation",
+      "verification_role": "Locks the normalized external measurement target before numeric intake",
+      "failure_mode": "Quasi-temperature is not automatically equilibrium temperature; heat flux is not directly measured",
+      "next_hardening_step": "Archive source rows and run a pre-registered normalized comparison",
+      "source": {
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
+        "line": 23
+      },
+      "equation_class": "foundation_pilot_or_constitutive",
+      "topic_role": "active_foundation_pilot",
+      "evidence_class": "STANDARD_OR_BENCHMARK",
+      "correspondence_status": "STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+      "requires_manual_correspondence": false
+    },
+    {
+      "topic_id": "0.13",
+      "topic_folder": "0.13_Thermodynamic_Bridge",
+      "formula_id": "T13-014",
+      "relation": "`y_TTG^UET=Delta_Phi(t;Lambda)/Delta_Phi(0;Lambda)`",
+      "code_surface": "`docs/core/thermal_source_observable_map.py`; `docs/scripts/audit/audit_thermal_source_observable_mapping.py`",
+      "variables_and_units": "`Phi` = normalized UET response coordinate; `y_TTG^UET` dimensionless",
+      "constant_origin": "topic-derived measurement operator candidate",
+      "proof_status": "open calibration-dependent relation",
+      "verification_role": "Defines a falsifiable shape-comparison lane without assigning SI meaning to `Phi`",
+      "failure_mode": "A normalized shape match would not derive `alpha_Phi_K` or validate UET dynamics by itself",
+      "next_hardening_step": "Freeze parameters, archive source rows, and compare against holdout only after core gates",
+      "source": {
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
+        "line": 24
+      },
+      "equation_class": "foundation_pilot_or_constitutive",
+      "topic_role": "active_foundation_pilot",
+      "evidence_class": "OPEN_OR_HEURISTIC",
+      "correspondence_status": "UET_BRIDGE_OPEN",
+      "requires_manual_correspondence": true
+    },
+    {
+      "topic_id": "0.13",
+      "topic_folder": "0.13_Thermodynamic_Bridge",
+      "formula_id": "T13-015",
+      "relation": "`Delta_Tq=alpha_Phi_K*Delta_Phi`",
+      "code_surface": "`docs/core/thermal_source_observable_map.py`; `matter_space_thermal_source_review.json`",
+      "variables_and_units": "`alpha_Phi_K` = K per normalized `Phi`; `Delta_Tq` = K after calibration",
+      "constant_origin": "open placeholder / calibration bridge",
+      "proof_status": "open",
+      "verification_role": "Dimensional mapping blocker",
+      "failure_mode": "Hidden calibration or fitted scale can turn a comparator into an apparent prediction",
+      "next_hardening_step": "Derive or source-lock the scale with uncertainty and an independent calibration lane",
+      "source": {
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
+        "line": 25
+      },
+      "equation_class": "foundation_pilot_or_constitutive",
+      "topic_role": "active_foundation_pilot",
+      "evidence_class": "OPEN_OR_HEURISTIC",
+      "correspondence_status": "UET_BRIDGE_OPEN",
+      "requires_manual_correspondence": true
     },
     {
       "topic_id": "0.14",
