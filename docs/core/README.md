@@ -28,6 +28,7 @@ Current foundation artifacts:
 - [Legacy variational closure audit](./artifacts/uet_legacy_variational_closure.json)
 - [Matter-space causal discretization diagnostic](./artifacts/matter_space_causal_discretization_diagnostic.json)
 - [Causal discretization repair artifact](./artifacts/causal_discretization_repair_artifact.json)
+- [Causal reference energy verification](./artifacts/matter_space_causal_reference_energy_verification.json)
 - [Foundation status aggregate](./UET_FOUNDATION_STATUS_AGGREGATE.md)
 - [Machine-readable inventory gate](./artifacts/uet_foundation_equation_inventory.json)
 - [Machine-readable correspondence matrix](./artifacts/uet_foundation_correspondence_matrix.json)

@@ -33,6 +33,6 @@ def test_reference_has_compact_support_without_numerical_padding() -> None:
 def test_next_controller_is_full_coupled_energy_and_functional_integration() -> None:
     artifact = load()
     assert artifact["controlling_blocker"] == "full_coupled_causal_scheme_energy_and_functional_integration_missing"
-    assert artifact["checks"]["reference_energy_ledger_closed"] is False
+    assert artifact["checks"]["reference_energy_ledger_closed"] is True
     assert artifact["checks"]["full_coupled_integration_closed"] is False
     assert any("shared discrete energy/ledger relation" in item for item in artifact["integration_requirements"])

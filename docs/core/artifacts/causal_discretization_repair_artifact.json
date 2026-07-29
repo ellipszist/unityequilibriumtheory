@@ -13,7 +13,7 @@
     "default_full_candidate_remains_blocked": true,
     "old_diagnostic_classifies_numerical_domain_failure": true,
     "no_clipping_or_cone_padding": true,
-    "reference_energy_ledger_closed": false,
+    "reference_energy_ledger_closed": true,
     "full_coupled_integration_closed": false
   },
   "default_candidate": {
@@ -53,7 +53,7 @@
   "integration_requirements": [
     "couple the characteristic Phi/Pi update to the same functional derivatives",
     "preserve conserved C dynamics without importing a parabolic infinite-speed claim into the response cone",
-    "derive and verify a shared discrete energy/ledger relation",
+    "derive and verify a shared discrete energy/ledger relation for the full coupled scheme",
     "test nonlinear potential and explicit C-to-Phi source under the same cone",
     "rerun the original full-candidate prearrival gate without clipping or cone padding"
   ],
@@ -61,7 +61,8 @@
     "core_source": "docs/core/uet_matter_space.py",
     "core_source_sha256": "488db6aa26b99856e2eb82a2f46a9857f623f418ef8e537498fa71d5e4f633aa",
     "default_verification": "docs/core/artifacts/matter_space_variational_verification.json",
-    "causal_diagnostic": "docs/core/artifacts/matter_space_causal_discretization_diagnostic.json"
+    "causal_diagnostic": "docs/core/artifacts/matter_space_causal_discretization_diagnostic.json",
+    "reference_energy_verification": "docs/core/artifacts/matter_space_causal_reference_energy_verification.json"
   },
   "claim_boundary": "The repair narrows the numerical blocker by validating a strict-CFL reference lane; it does not promote the full coupled candidate, continuum causality, SI physics, or downstream topics.",
   "next_controller": "implement and verify a coupled characteristic/staggered Phi-Pi lane with energy closure before changing the default operator"

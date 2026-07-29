@@ -16,11 +16,11 @@ if str(ROOT) not in sys.path:
 
 from docs.scripts.audit.audit_matter_space_causal_reference import run_reference  # noqa: E402
 
-
 DEFAULT_VERIFICATION = ROOT / "docs/core/artifacts/matter_space_variational_verification.json"
 CAUSAL_DIAGNOSTIC = ROOT / "docs/core/artifacts/matter_space_causal_discretization_diagnostic.json"
 CORE_SOURCE = ROOT / "docs/core/uet_matter_space.py"
 OUTPUT = ROOT / "docs/core/artifacts/causal_discretization_repair_artifact.json"
+REFERENCE_ENERGY = ROOT / "docs/core/artifacts/matter_space_causal_reference_energy_verification.json"
 
 
 def sha256(path: Path) -> str:
@@ -35,6 +35,7 @@ def build_artifact() -> dict[str, Any]:
     default = load(DEFAULT_VERIFICATION)
     old_diagnostic = load(CAUSAL_DIAGNOSTIC)
     reference = run_reference()
+    reference_energy = load(REFERENCE_ENERGY)
     reference_pass = (
         reference["status"] == "PASS"
         and reference["metrics"]["prearrival_max_outside_discrete_cone"] == 0.0
@@ -47,7 +48,7 @@ def build_artifact() -> dict[str, Any]:
         "default_full_candidate_remains_blocked": default["metrics"]["prearrival_leakage"]["gate"] == "FAIL",
         "old_diagnostic_classifies_numerical_domain_failure": old_diagnostic["classification"] == "NUMERICAL_DOMAIN_OF_DEPENDENCE_EXCEEDS_DECLARED_CONE",
         "no_clipping_or_cone_padding": True,
-        "reference_energy_ledger_closed": False,
+        "reference_energy_ledger_closed": reference_energy["audit_status"] == "PASS",
         "full_coupled_integration_closed": False,
     }
     return {
@@ -78,7 +79,7 @@ def build_artifact() -> dict[str, Any]:
         "integration_requirements": [
             "couple the characteristic Phi/Pi update to the same functional derivatives",
             "preserve conserved C dynamics without importing a parabolic infinite-speed claim into the response cone",
-            "derive and verify a shared discrete energy/ledger relation",
+            "derive and verify a shared discrete energy/ledger relation for the full coupled scheme",
             "test nonlinear potential and explicit C-to-Phi source under the same cone",
             "rerun the original full-candidate prearrival gate without clipping or cone padding",
         ],
@@ -87,6 +88,7 @@ def build_artifact() -> dict[str, Any]:
             "core_source_sha256": sha256(CORE_SOURCE),
             "default_verification": "docs/core/artifacts/matter_space_variational_verification.json",
             "causal_diagnostic": "docs/core/artifacts/matter_space_causal_discretization_diagnostic.json",
+            "reference_energy_verification": "docs/core/artifacts/matter_space_causal_reference_energy_verification.json",
         },
         "claim_boundary": "The repair narrows the numerical blocker by validating a strict-CFL reference lane; it does not promote the full coupled candidate, continuum causality, SI physics, or downstream topics.",
         "next_controller": "implement and verify a coupled characteristic/staggered Phi-Pi lane with energy closure before changing the default operator",

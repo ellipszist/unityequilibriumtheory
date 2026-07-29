@@ -86,6 +86,7 @@
 - Result: local ledger checks `PASS`; full matter-space verification remains `FAIL` only at `prearrival_leakage` (`1.76394e-2` versus `1e-6`), so the dependency gate remains `BLOCKED`.
 - Preserved: no clipping, no cone padding, no trace backreaction, no SI/Joule claim, and no change to legacy/default operators.
 - Next controller: repair or replace the causal-support discretization, then run the isolated 0.11 phase diagnostic as internal/simulation-only work.
+
 ### 2026-07-30 - Causal discretization repair packet
 
 - Scope: narrow the `prearrival_leakage` blocker without changing `matter_space_coupled_v1` or its default operator.
@@ -94,3 +95,12 @@
 - Result: reference lane `PASS`; full nonlinear coupled candidate remains `BLOCKED` because shared functional coupling and discrete energy/ledger closure are not yet integrated into the characteristic scheme.
 - Preserved: original full-candidate leakage `1.76394e-2` and failure threshold `1e-6`; no clipping, cone padding, or status promotion.
 - Next controller: implement a coupled characteristic/staggered `Phi-Pi` lane with the same functional derivatives and a verified shared ledger, then rerun the original full-candidate gate.
+
+### 2026-07-30 - Causal reference ledger closure packet
+
+- Scope: close the discrete energy identity for the strict-CFL frozen-C reference lane without promoting the full coupled operator.
+- Added: `audit_matter_space_causal_reference_energy.py`, `matter_space_causal_reference_energy_verification.json`, and a focused artifact test.
+- Verified: cross-time quadratic energy identity residual `2.85118e-14` relative, zero energy-increase steps over 50 deterministic steps, and the existing compact-support causal test remains passing.
+- Result: reference energy ledger `PASS`; repair artifact now records that reference ledger closure is complete while full coupled functional/causal integration remains `BLOCKED`.
+- Preserved: original full-candidate pre-arrival leakage `1.76394e-2`, no clipping, no cone padding, no default-operator change, and normalized-only claim boundary.
+- Next controller: derive and implement the full coupled characteristic/staggered `Phi-Pi` scheme with the same functional derivatives, nonlinear/source handling, and shared ledger before rerunning the full-candidate gate.
