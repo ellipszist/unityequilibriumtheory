@@ -86,3 +86,11 @@
 - Result: local ledger checks `PASS`; full matter-space verification remains `FAIL` only at `prearrival_leakage` (`1.76394e-2` versus `1e-6`), so the dependency gate remains `BLOCKED`.
 - Preserved: no clipping, no cone padding, no trace backreaction, no SI/Joule claim, and no change to legacy/default operators.
 - Next controller: repair or replace the causal-support discretization, then run the isolated 0.11 phase diagnostic as internal/simulation-only work.
+### 2026-07-30 - Causal discretization repair packet
+
+- Scope: narrow the `prearrival_leakage` blocker without changing `matter_space_coupled_v1` or its default operator.
+- Added: `causal_discretization_repair_artifact.json`, deterministic repair audit, and three repair-boundary tests.
+- Verified: strict-CFL centered damped recurrence reference has compact support (`prearrival_leakage_fraction = 0`) and nonzero arrival; causal reference/discretization tests passed `9/9`.
+- Result: reference lane `PASS`; full nonlinear coupled candidate remains `BLOCKED` because shared functional coupling and discrete energy/ledger closure are not yet integrated into the characteristic scheme.
+- Preserved: original full-candidate leakage `1.76394e-2` and failure threshold `1e-6`; no clipping, cone padding, or status promotion.
+- Next controller: implement a coupled characteristic/staggered `Phi-Pi` lane with the same functional derivatives and a verified shared ledger, then rerun the original full-candidate gate.
