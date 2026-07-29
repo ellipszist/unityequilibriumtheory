@@ -36,3 +36,11 @@
 - Semantics: an effect can exist with zero source-mass transfer; receiver state changes only in explicit `coupled_receiver_v1`; observer protocol changes `R_obs` without changing `R_gen` or core state.
 - Claim boundary: normalized carrier-neutral relation only; carrier identity, dimensional closure, detector maps, and transition physics remain open; dependency gate remains `BLOCKED`.
 - Next controller: extend matter-space core verification and add the isolated phase diagnostic without modifying the current 0.11 structure-factor controller.
+## 2026-07-30 - Carrier-neutral photon/neutrino/reaction comparator contract
+
+- Scope: Wave 4 contract-only comparator after the phase pilot; no particle dynamics were added.
+- Added: `CARRIER_NEUTRAL_COMPARATOR_SPEC.md`, a generated three-lane contract artifact, verifier, and regression tests.
+- Verified: contract checks `PASS`, two boundary tests passed, dependency remains `BLOCKED`.
+- Clarified: photon is the massless signal-carrier baseline; neutrino is a standard massive weak-carrier benchmark candidate; positron is a mass-bearing reaction participant. None is identified with `I_trace`.
+- Claim boundary: no UET carrier identity, massless transition, detector map, or dimensional external validation is established.
+- Next controller: source-lock one carrier lane and close its units/conservation/detector map only after upstream phase/core gates.
