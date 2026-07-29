@@ -48,7 +48,17 @@ The pilot follows the one-way chain
 
 `(C, Phi, Pi) -> (mu_C, mu_Phi) -> dynamics -> energy/dissipation ledger -> R`.
 
-`R` has no arrow back into `C`, `Phi`, or `Pi`. The nonlinear homogeneous reduction is cross-checked against `matter_space_coupled_v1`, while Fourier and Cattaneo remain standard controls. The current artifact is still `SIMULATION_ONLY / FAIL`: its disclosed refined ledger passes, but the core physical pre-arrival leakage gate and external numeric-source gate fail. No map from normalized `Phi` to kelvin, heat flux, or a TTG signal has been established.
+`R` has no arrow back into `C`, `Phi`, or `Pi`. The nonlinear homogeneous reduction is cross-checked against `matter_space_coupled_v1`, while Fourier and Cattaneo remain standard controls. The current artifact is still `SIMULATION_ONLY / FAIL`: its disclosed refined ledger passes, but the core physical pre-arrival leakage gate and external numeric-source gate fail. No dimensional map from normalized `Phi` to kelvin, heat flux, or a source-normalized TTG signal has been established.
+
+The source review now defines a standard TTG measurement operator without promoting `Phi` to temperature:
+
+`Delta_Tq = Tq_peak - Tq_valley`, `y_TTG = Delta_Tq(t) / Delta_Tq(0)`
+
+and the candidate normalized UET operator:
+
+`y_TTG_UET = Delta_Phi(t) / Delta_Phi(0)`.
+
+This closes the observable definition layer only. The dimensional coefficient `alpha_Phi_K` remains open, and no heat-flux or entropy-production observable is directly available from the TTG signal.
 
 This diagnostic therefore tests internal constitutive behavior only. It does not derive Cattaneo transport, Landauer's lower bound, second sound, or a dimensional thermodynamic bridge from UET.
 
@@ -64,6 +74,8 @@ Still needed:
 - explicit symbol-to-unit contract
 - conversion path from proxy variables to observables
 - statement of where physical scaling enters and where it does not
+- source-normalized TTG rows with locator, preprocessing, uncertainty, and hash
+- independent calibration or derivation of `alpha_Phi_K`
 
 ### 2. Landauer-to-UET mapping
 

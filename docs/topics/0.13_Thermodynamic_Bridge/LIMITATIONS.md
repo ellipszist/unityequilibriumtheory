@@ -1,4 +1,4 @@
-﻿# Limitations
+﻿﻿# Limitations
 
 - The root baseline comparison is present, but numeric acceptance boundaries are still provisional until a saved artifact is generated and reviewed.
 - Current data posture is source-referenced but still below a fully normalized archival dataset package.
@@ -27,6 +27,9 @@
 - Bekenstein, Unruh, Hawking, and related standard identities constrain candidate mappings but do not supply a UET entropy current, dissipative-Bianchi closure, or covariant transport law.
 - The Cattaneo artifact remains analytical and synthetic. Passing its control gates is not external heat-transport validation.
 - The matter-space thermal pilot remains `SIMULATION_ONLY / FAIL`: physical pre-arrival leakage and external numeric-source readiness remain failed gates.
+- The thermal source review now closes only the standard normalized TTG measurement operator `Delta_Tq(t)/Delta_Tq(0)` and the candidate normalized UET operator `Delta_Phi(t)/Delta_Phi(0)`; it does not establish a dimensional map.
+- `alpha_Phi_K` remains an open calibration-dependent coefficient. Heat flux and entropy production are downstream derived quantities, not direct TTG observables in this package.
+- The 2026 graphite source declares source data provided with the study but remains a locked holdout and is not locally archived or consumed here; the 2022 source remains request-based.
 - Normalized `Phi` and derived trace `R` are not temperature, heat flux, entropy, information matter, or feedback variables without a separately justified dimensional observable map.
 - The four active Berut, Jun, Hong, and Peterson source-row controllers remain independent and unchanged.
 - The dependency packet cannot promote Topic `0.13` beyond `Draft / B`; it records what may be inherited and what remains blocked.

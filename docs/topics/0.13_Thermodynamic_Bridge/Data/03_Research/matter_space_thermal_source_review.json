@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "artifact": "matter_space_thermal_source_review",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "reviewed_on": "2026-07-29",
+  "review_type": "primary-source metadata and observable-map review",
+  "numeric_fitting_allowed": false,
+  "holdout_consumed": false,
+  "sources": [
+    {
+      "source_id": "ding_2022_graphite_over_200K",
+      "doi": "10.1038/s41467-021-27907-z",
+      "url": "https://www.nature.com/articles/s41467-021-27907-z",
+      "source_locator": [
+        "Results: Observation of second sound in graphite over 200 K",
+        "Eq. (7) damped temperature-wave equation",
+        "Eq. (11) thermal-wave velocity estimate",
+        "Data availability"
+      ],
+      "external_numeric_status": "available_from_corresponding_author_on_reasonable_request",
+      "local_numeric_path": null,
+      "local_numeric_hash": null,
+      "preprocessing": "none; metadata and measurement-operator review only",
+      "units_reviewed": ["K", "m", "s", "m/s"],
+      "benchmark_role": "primary source candidate; not consumed",
+      "status": "EXTERNAL_IDENTITY_AND_OPERATOR_REVIEWED_LOCAL_NUMERIC_PACKAGE_MISSING"
+    },
+    {
+      "source_id": "xie_2026_isotopically_pure_graphite_holdout",
+      "doi": "10.1038/s41467-026-70807-3",
+      "url": "https://www.nature.com/articles/s41467-026-70807-3",
+      "source_locator": [
+        "Methods: Transient thermal grating setup and its measuring principle",
+        "TTG quasi-temperature description",
+        "Data availability",
+        "Source data are provided with this study"
+      ],
+      "external_numeric_status": "source_data_declared_provided_with_study",
+      "local_numeric_path": null,
+      "local_numeric_hash": null,
+      "preprocessing": "none; holdout identity and measurement-operator review only",
+      "units_reviewed": ["K", "micrometre", "ps", "dimensionless normalized signal"],
+      "benchmark_role": "locked external holdout; prohibited for parameter selection or tuning",
+      "status": "HOLDOUT_EXTERNALLY_DECLARED_LOCAL_NUMERIC_PACKAGE_MISSING"
+    }
+  ],
+  "standard_observable_contract": {
+    "observable_id": "TTG-QTEMP-001",
+    "name": "normalized quasi-temperature difference",
+    "definition": "y_TTG(t;Lambda) = Delta_Tq(t;Lambda) / Delta_Tq(0;Lambda)",
+    "physical_quantity": "difference in quasi-temperature / collective phonon energy between grating peak and valley",
+    "raw_unit": "K after an independently calibrated temperature convention",
+    "normalized_unit": "dimensionless",
+    "directness": "measured TTG signal is a proxy for the quasi-temperature response; heat flux and entropy production are not directly measured",
+    "status": "SOURCE_BACKED_STANDARD_OBSERVABLE_DEFINITION"
+  },
+  "uet_map_contract": {
+    "normalized_operator": "y_TTG(t;Lambda) = Delta_Phi(t;Lambda) / Delta_Phi(0;Lambda)",
+    "dimensional_operator": "Delta_Tq(t;Lambda) = alpha_Phi_K * Delta_Phi(t;Lambda)",
+    "alpha_Phi_K_units": "K per normalized Phi",
+    "alpha_Phi_K_status": "OPEN_CALIBRATION_DEPENDENT",
+    "temperature_map_derivation_status": "NOT_DERIVED",
+    "heat_flux_map_status": "BLOCKED_REQUIRES_Tq_GRADIENT_AND_CONSTITUTIVE_COEFFICIENT",
+    "entropy_production_map_status": "BLOCKED_REQUIRES_Q_AND_Tq_UNITS",
+    "trace_R_direct_observable": false,
+    "claim_boundary": "The normalized TTG operator can be defined for a Phi lane, but this does not establish that Phi is quasi-temperature or that UET predicts a measured signal."
+  }
+}

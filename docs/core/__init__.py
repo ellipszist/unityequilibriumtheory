@@ -183,6 +183,13 @@ from .thermal_observable_bridge import (
     ThermalObservableBridgeResult,
     run_thermal_observable_bridge,
 )
+from .thermal_source_observable_map import (
+    NORMALIZED_TTG_OBSERVABLE,
+    THERMAL_SOURCE_MAP_SCHEMA_VERSION,
+    normalized_ttg_signal,
+    quasi_temperature_difference_from_phi,
+    ttg_wave_speed,
+)
 from .persistence_energy_diagnostic import (
     PATH_COST_ORIGIN,
     PERSISTENCE_ENERGY_STATUS,
@@ -379,6 +386,11 @@ __all__ = [
     "ThermalObservableBridgeConfig",
     "ThermalObservableBridgeResult",
     "run_thermal_observable_bridge",
+    "NORMALIZED_TTG_OBSERVABLE",
+    "THERMAL_SOURCE_MAP_SCHEMA_VERSION",
+    "normalized_ttg_signal",
+    "quasi_temperature_difference_from_phi",
+    "ttg_wave_speed",
     "PATH_COST_ORIGIN",
     "PERSISTENCE_ENERGY_STATUS",
     "PersistenceEnergyConfig",

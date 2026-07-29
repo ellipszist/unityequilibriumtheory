@@ -127,9 +127,13 @@ graph LR
 - Reproducible runner: [Research_Matter_Space_Thermal_Control.py](./Code/03_Research/Research_Matter_Space_Thermal_Control.py)
 - Machine-readable result: [matter_space_thermal_control.json](./Result/artifacts/matter_space_thermal_control.json)
 - External-source intake: [matter_space_second_sound_source_package.json](./Data/03_Research/matter_space_second_sound_source_package.json)
+- Source/observable review: [THERMAL_SOURCE_OBSERVABLE_MAPPING_SPEC.md](./THERMAL_SOURCE_OBSERVABLE_MAPPING_SPEC.md)
+- Readiness artifact: [matter_space_thermal_observable_map_readiness.json](./Result/artifacts/matter_space_thermal_observable_map_readiness.json)
 - Current result: `SIMULATION_ONLY / FAIL`; analytical Cattaneo controls, source sign, core cross-check, arrival-speed error, and the disclosed refined ledger pass, while physical pre-arrival leakage (`0.01764` versus `1e-6`) and the external numeric-source gate remain failed.
 - Numerical disclosure: the locked `dt=2.5e-4` run failed the per-step ledger threshold; a post-diagnostic amendment reduced only `dt` to `5e-5`, retained the original failure, and passed the unchanged ledger threshold. This is a numerical repair, not a blind confirmation.
-- Claim boundary: `Phi` and `R` remain normalized internal variables, the trace has no backreaction, no map to measured temperature/TTG signal is closed, and Landauer remains an external lower-bound constraint only.
+- Dimensional claim boundary: `Phi` and `R` remain normalized internal variables, the trace has no backreaction, no dimensional map to kelvin/heat flux/entropy is closed, and Landauer remains an external lower-bound constraint only.
+- New mapping result: the standard TTG observable is now locked as a normalized quasi-temperature difference, and the candidate UET operator is `Delta_Phi(t)/Delta_Phi(0)`; the dimensional `alpha_Phi_K`, local numeric source, heat-flux map, and entropy-production map remain blocked.
+- Claim boundary: `Phi` and `R` remain normalized internal variables, the trace has no backreaction, the normalized TTG operator is a definition rather than validation, and Landauer remains an external lower-bound constraint only.
 
 ## Core thermodynamic constraint export (dependency-only)
 

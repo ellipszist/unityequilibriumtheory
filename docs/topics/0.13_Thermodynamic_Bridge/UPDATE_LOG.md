@@ -667,3 +667,15 @@ Use this log when `0.13` changes in a way that narrows a provenance blocker, add
 - Preserved state: the main foundation remains `FOUNDATION_WARN`, Topic `0.13` remains `Draft / B`, the four Berut/Jun/Hong/Peterson row controllers are unchanged, and the failed thermal-pilot gates remain visible.
 - Still open: non-circular bridge derivation, derived `beta`, charge EOS, covariant transport, entropy current and dissipative-Bianchi closure, dimensional `Phi/R` observable mapping, physical causal repair, and external numeric heat-transport evidence.
 - Claim impact: none. The packet is a dependency boundary, not validation or status promotion.
+
+### 2026-07-29 - Thermal source observable-map closure pass
+
+- Scope: narrow the real-lane thermal blocker by separating the standard TTG measurement operator from the unresolved UET dimensional calibration.
+- Added or changed: `THERMAL_SOURCE_OBSERVABLE_MAPPING_SPEC.md`, `matter_space_thermal_source_review.json`, `thermal_source_observable_map.py`, `audit_thermal_source_observable_mapping.py`, `matter_space_thermal_observable_map_readiness.json`, and the synchronized formula/data/verification/limitation/README records.
+- Verified with: `.venv\\Scripts\\python.exe docs\\scripts\\audit\\audit_thermal_source_observable_mapping.py`; `.venv\\Scripts\\python.exe -m pytest docs\\core\\test\\test_thermal_source_observable_mapping.py docs\\core\\test\\test_thermal_observable_bridge.py docs\\core\\test\\test_persistence_energy_diagnostic.py docs\\core\\test\\test_matter_interaction_forward.py -q` (`15 passed`).
+- Result: `PASS_WITH_BLOCKED_DIMENSIONAL_AND_DATA_LANES`; source identities and unit contexts are complete, normalized quasi-temperature TTG and normalized `Phi` operators are explicit, and no holdout or fitting input was consumed.
+- Blocker narrowed: the previous generic “no observable map” blocker is now split into (1) missing local source-normalized numeric package, (2) open `alpha_Phi_K`, and (3) downstream heat-flux/entropy maps.
+- Still open: archive a licensed numeric source with locator, preprocessing, uncertainty, and hash; independently derive or calibrate `alpha_Phi_K`; repair the thermal pilot causal gate before any external comparison.
+- Next controller: `thermal_source_numeric_package_and_dimensional_calibration_missing`.
+- Claim impact: no upgrade; the normalized operator is a definition/measurement target, not validation or a UET thermodynamic derivation.
+- Workflow linkage: source pass plus observable-map gate pass under the UET formula-audit and data-provenance standards.

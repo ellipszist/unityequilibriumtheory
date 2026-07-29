@@ -1,4 +1,4 @@
-﻿# Verification Spec
+﻿﻿# Verification Spec
 
 - Primary command:
   - `.venv\Scripts\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
@@ -56,6 +56,8 @@ Required interpretation:
 - `row_controller_preservation_gate`: the Berut, Jun, Hong, and Peterson source-row blockers must remain unchanged by this dependency packet.
 - `uet_bridge_derivation_gate`: remains `BLOCKED` until a non-circular derivation and proxy-to-SI mapping exist.
 - `thermal_pilot_physical_gate`: remains `BLOCKED` while pre-arrival leakage or external-source readiness fails.
+- `thermal_source_observable_map_gate`: normalized quasi-temperature TTG operator must be defined while dimensional `alpha_Phi_K`, local numeric source, heat flux, and entropy-production maps remain explicitly blocked.
+- `thermal_holdout_integrity_gate`: the 2026 graphite source remains a locked holdout and cannot be used for parameter selection, fitting, or gate tuning.
 - `core_eos_transport_entropy_gate`: remains `BLOCKED` until charge EOS, covariant transport, entropy current, and dissipative-Bianchi completion are derived.
 - `topic_promotion_gate`: remains `BLOCKED`; constraint exports and synthetic controls cannot promote the topic tier.
 
