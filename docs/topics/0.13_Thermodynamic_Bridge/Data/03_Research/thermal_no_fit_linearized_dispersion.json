@@ -1,0 +1,35 @@
+{
+  "schema_version": "thermal-no-fit-linearized-dispersion-v1",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "status": "DERIVED_STRUCTURAL_RELATION_CONDITIONAL_ON_COEFFICIENT_PROVENANCE",
+  "assumptions": [
+    "homogeneous C background",
+    "homogeneous Phi equilibrium",
+    "closed space lane with no external space drive",
+    "linear perturbation around Phi_0",
+    "normalized TTG comparison uses a separately declared small-signal map",
+    "no trace feedback into physical dynamics"
+  ],
+  "equilibrium": "a_Phi*Phi_0 + b_Phi*Phi_0^3 - (g/2)*C_0^2 = 0",
+  "effective_curvature": "a_eff = a_Phi + 3*b_Phi*Phi_0^2",
+  "linearized_equation": "tau_Phi*d2(deltaPhi)/dt2 + d(deltaPhi)/dt + M_Phi*a_eff*deltaPhi - M_Phi*kappa_Phi*laplacian(deltaPhi) = 0",
+  "dispersion_relation": "tau_Phi*omega^2 + i*omega - M_Phi*(a_eff + kappa_Phi*k^2) = 0",
+  "oscillatory_condition": "4*tau_Phi*M_Phi*(a_eff + kappa_Phi*k^2) > 1",
+  "damping_rate": "1/(2*tau_Phi)",
+  "front_speed": "sqrt(M_Phi*kappa_Phi/tau_Phi)",
+  "ttg_wave_number": "2*pi/Lambda",
+  "observable_status": {
+    "normalized_response": "ALLOWED_STRUCTURAL_TARGET",
+    "alpha_Phi_K": "OPEN",
+    "kelvin_signal": "BLOCKED",
+    "heat_flux": "BLOCKED",
+    "entropy_production": "BLOCKED"
+  },
+  "parameter_policy": {
+    "target_data_fit_allowed_in_prediction_run": false,
+    "preregistered_parameter_envelope_allowed": true,
+    "best_curve_selection_from_target": "CALIBRATION_ONLY",
+    "2026_holdout_consumed": false
+  },
+  "claim_boundary": "equation-derived structural relation; not a numerical thermal prediction or external validation"
+}

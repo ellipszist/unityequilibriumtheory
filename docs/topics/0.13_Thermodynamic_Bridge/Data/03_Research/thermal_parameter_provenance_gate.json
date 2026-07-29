@@ -1,0 +1,46 @@
+{
+  "schema_version": "thermal-parameter-provenance-v1",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "purpose": "Separate equation-derived, independently supplied, and fitted parameters before thermal comparison.",
+  "policy": {
+    "fit_is_derivation": false,
+    "target_data_may_select_parameters_in_prediction_run": false,
+    "open_parameter_may_be_reported_as_derived": false,
+    "parameter_grid_is_allowed_without_fit": true,
+    "holdout_may_be_used_for_tuning": false
+  },
+  "classes": [
+    {
+      "id": "DERIVED",
+      "definition": "Follows from the declared UET equations, constants, conditions, and closed unit contract.",
+      "claim_level": "prediction_candidate"
+    },
+    {
+      "id": "EXTERNAL_INPUT",
+      "definition": "Measured or independently calculated before target comparison, with provenance and uncertainty.",
+      "claim_level": "conditional_comparison"
+    },
+    {
+      "id": "FITTED",
+      "definition": "Selected using target observations or a training subset.",
+      "claim_level": "calibration_only"
+    },
+    {
+      "id": "OPEN",
+      "definition": "Not derived or source-locked yet.",
+      "claim_level": "blocked_for_dimensional_prediction"
+    }
+  ],
+  "current_lane": {
+    "observable": "y_TTG(t;Lambda) = Delta_Tq(t;Lambda) / Delta_Tq(0;Lambda)",
+    "uet_candidate": "y_TTG_UET(t;Lambda) = Delta_Phi(t;Lambda) / Delta_Phi(0;Lambda)",
+    "linear_response_assumption": "Delta_Tq = alpha_Phi_K * Delta_Phi",
+    "alpha_Phi_K_status": "OPEN",
+    "heat_flux_status": "BLOCKED",
+    "entropy_status": "BLOCKED",
+    "2026_graphite_holdout_consumed": false,
+    "2022_graphite_numeric_package_local": false,
+    "parameter_fit_performed": false
+  },
+  "next_controller": "Derive or source-lock a thermal closure and dimensional observable map without using target data to choose coefficients."
+}
