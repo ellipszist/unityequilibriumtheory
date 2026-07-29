@@ -1,0 +1,59 @@
+{
+  "schema_version": "matter-collective-behavior-observation-v1",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "status": "ONTOLOGY_LOCK_CANDIDATE_DIMENSIONAL_AND_MICROPHYSICAL_MAPPING_OPEN",
+  "layers": {
+    "physical_state": "X = matter, fields, interactions, and current activity",
+    "individual_behavior": "b_i = B_i[m_i, local_state, interactions]",
+    "collective_behavior": "B_sys = A({b_i}, I)",
+    "system_coordinate": "C = C_map[B_sys]",
+    "space_response": "Phi = R_space(C, dC/dt, E_available, J_E)",
+    "response_rate": "Pi = dPhi/dt",
+    "derived_trace": "R = I_trace = retarded functional of completed dissipation",
+    "observer_record": "Y_O = M_O[X; observer_worldline, detector, protocol]"
+  },
+  "ontology_boundaries": {
+    "information_is_new_substance": false,
+    "C_is_universal_mass": false,
+    "C_is_individual_particle_behavior": false,
+    "C_is_collective_system_behavior_coordinate": true,
+    "Phi_is_I_trace": false,
+    "R_is_independent_material_field": false,
+    "observer_record_is_direct_current_state": false,
+    "observer_motion_changes_measurement_map": true
+  },
+  "persistence_layer": {
+    "reserve_equation": "dE_res/dt = J_E - P_behavior(B_sys,C) - P_maintenance(C) - P_loss",
+    "persistence_time": "tau_persist = inf{t >= 0 : E_res(t) <= E_min}",
+    "status": "CANDIDATE_ACCOUNTING_LAYER",
+    "is_new_time_coordinate": false,
+    "physical_energy_scale_closed": false,
+    "behavior_power_cost_closed": false
+  },
+  "causal_chain": [
+    "matter_behavior",
+    "interactions",
+    "collective_system_behavior",
+    "C",
+    "Phi_and_Pi",
+    "effective_energy_and_dissipation",
+    "derived_trace_R",
+    "observer_measurement_record_Y_O",
+    "reported_observable"
+  ],
+  "current_core_compatibility": {
+    "C_remains_system_state_coordinate": true,
+    "Phi_remains_effective_response_variable": true,
+    "R_remains_derived_no_feedback_observable": true,
+    "legacy_I_reinterpreted_silently": false,
+    "core_dynamics_changed": false
+  },
+  "open_closures": [
+    "coarse_graining map from matter behavior and interactions to C",
+    "collective behavior power-cost functional",
+    "Phi response source and sign under the collective-behavior interpretation",
+    "observer measurement operator for a concrete lane",
+    "dimensional energy, entropy, and temperature mapping"
+  ],
+  "claim_boundary": "ontology and causal-architecture candidate; not a derivation of physical information substance, temperature, lifetime, or spacetime geometry"
+}
