@@ -104,3 +104,12 @@
 - Result: reference energy ledger `PASS`; repair artifact now records that reference ledger closure is complete while full coupled functional/causal integration remains `BLOCKED`.
 - Preserved: original full-candidate pre-arrival leakage `1.76394e-2`, no clipping, no cone padding, no default-operator change, and normalized-only claim boundary.
 - Next controller: derive and implement the full coupled characteristic/staggered `Phi-Pi` scheme with the same functional derivatives, nonlinear/source handling, and shared ledger before rerunning the full-candidate gate.
+
+### 2026-07-30 - Causal Phi/Pi discrete-gradient closure packet
+
+- Scope: narrow the causal repair controller by integrating a characteristic/staggered Phi/Pi substep without changing the default operator.
+- Added: `uet_matter_space_causal.py`, its deterministic verifier, generated artifact, focused numerical tests, and opt-in core exports.
+- Verified: partial closure `PASS` for frozen-C nonlinear local potential, C-to-Phi coupling, explicit source ledger, CFL=1, and compact-support reference; causal wave regression suite passed `16/16`.
+- Result: repair status is `REFERENCE_AND_PHI_PASS_C_SHARED_INTEGRATION_OPEN`; the remaining controller is `matter_C_shared_ledger_integration_missing`.
+- Preserved: full changing-C operator remains `BLOCKED`; no trace feedback, clipping, cone padding, SI claim, default-operator change, or downstream claim promotion.
+- Next controller: integrate the changing-C matter step with the causal Phi/Pi substep under one shared functional/energy ledger, then rerun the original full-candidate leakage gate.

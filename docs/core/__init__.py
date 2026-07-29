@@ -434,3 +434,14 @@ __all__ += [
     "apply_receiver_effect",
     "impact_effect_contract",
 ]
+from .uet_matter_space_causal import (
+    CAUSAL_DISCRETE_GRADIENT_OPERATOR_MODE,
+    causal_space_discrete_energy,
+    causal_space_discrete_gradient_step,
+)
+
+__all__ += [
+    "CAUSAL_DISCRETE_GRADIENT_OPERATOR_MODE",
+    "causal_space_discrete_energy",
+    "causal_space_discrete_gradient_step",
+]
