@@ -445,3 +445,14 @@ __all__ += [
     "causal_space_discrete_energy",
     "causal_space_discrete_gradient_step",
 ]
+from .uet_matter_space_split import (
+    MATTER_SPACE_CAUSAL_SPLIT_OPERATOR_MODE,
+    causal_matter_space_split_step,
+    causal_split_energy,
+)
+
+__all__ += [
+    "MATTER_SPACE_CAUSAL_SPLIT_OPERATOR_MODE",
+    "causal_matter_space_split_step",
+    "causal_split_energy",
+]

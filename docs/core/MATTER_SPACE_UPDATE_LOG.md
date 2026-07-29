@@ -113,3 +113,11 @@
 - Result: repair status is `REFERENCE_AND_PHI_PASS_C_SHARED_INTEGRATION_OPEN`; the remaining controller is `matter_C_shared_ledger_integration_missing`.
 - Preserved: full changing-C operator remains `BLOCKED`; no trace feedback, clipping, cone padding, SI claim, default-operator change, or downstream claim promotion.
 - Next controller: integrate the changing-C matter step with the causal Phi/Pi substep under one shared functional/energy ledger, then rerun the original full-candidate leakage gate.
+### 2026-07-30 - Changing-C split ledger packet
+
+- Scope: integrate the conserved changing-C subcycle with the causal Phi/Pi step while keeping the response-cone claim separate.
+- Added: `uet_matter_space_split.py`, split verifier/artifact, focused tests, and opt-in public exports.
+- Verified: mass drift `0`, shared-ledger relative residual below `1e-15`, matter sub-ledger residual below `5e-9`, and source-free energy did not increase in the deterministic bridge run.
+- Result: split bridge `PASS_WITHIN_DECLARED_TOLERANCE`; changing-C response cone remains `BLOCKED` because the conserved C lane is a parabolic subcycle.
+- Preserved: default operator unchanged, trace feedback disabled, no clipping or cone padding, normalized-only claim boundary, and no downstream promotion.
+- Next controller: validate the changing-C response cone and integrate the split bridge into the full operator before changing the claim boundary.

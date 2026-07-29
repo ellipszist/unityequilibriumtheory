@@ -30,6 +30,7 @@ Current foundation artifacts:
 - [Causal discretization repair artifact](./artifacts/causal_discretization_repair_artifact.json)
 - [Causal reference energy verification](./artifacts/matter_space_causal_reference_energy_verification.json)
 - [Causal Phi/Pi discrete-gradient verification](./artifacts/matter_space_causal_discrete_gradient_verification.json)
+- [Changing-C shared-ledger split verification](./artifacts/matter_space_causal_split_verification.json)
 - [Foundation status aggregate](./UET_FOUNDATION_STATUS_AGGREGATE.md)
 - [Machine-readable inventory gate](./artifacts/uet_foundation_equation_inventory.json)
 - [Machine-readable correspondence matrix](./artifacts/uet_foundation_correspondence_matrix.json)
