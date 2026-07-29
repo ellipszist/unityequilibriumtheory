@@ -32,6 +32,8 @@ Current foundation artifacts:
 - [Causal Phi/Pi discrete-gradient verification](./artifacts/matter_space_causal_discrete_gradient_verification.json)
 - [Changing-C shared-ledger split verification](./artifacts/matter_space_causal_split_verification.json)
 - [Changing-C causal-cone compatibility audit](./artifacts/matter_space_causal_cone_compatibility.json)
+- [Finite-cone C candidate specification](./MATTER_SPACE_FINITE_CONE_C_SPEC.md)
+- [Finite-cone C lane comparison artifact](./artifacts/matter_space_causal_lane_comparison.json)
 - [Foundation status aggregate](./UET_FOUNDATION_STATUS_AGGREGATE.md)
 - [Machine-readable inventory gate](./artifacts/uet_foundation_equation_inventory.json)
 - [Machine-readable correspondence matrix](./artifacts/uet_foundation_correspondence_matrix.json)

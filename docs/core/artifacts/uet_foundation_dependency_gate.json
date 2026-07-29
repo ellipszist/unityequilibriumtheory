@@ -56,6 +56,15 @@
       "required_next_artifact": "source-locked data packages and preregistered holdout policy"
     }
   },
+  "finite_cone_C_lane": {
+    "status": "CANDIDATE_WITH_NUMERICAL_BLOCKER",
+    "operator_mode": "matter_space_finite_cone_c_v1",
+    "standard_counterpart": "damped hyperbolic non-conserved order-parameter dynamics",
+    "unit_lane": "normalized_only_v1",
+    "evidence": "docs/core/artifacts/matter_space_causal_lane_comparison.json",
+    "controller": "numerical_compact_support_not_yet_closed",
+    "claim_ceiling": "candidate normalized finite-cone collective-response lane; no mass/density/covariant/empirical claim"
+  },
   "known_legacy_conflicts": [
     {
       "path": "docs/core/README.md",

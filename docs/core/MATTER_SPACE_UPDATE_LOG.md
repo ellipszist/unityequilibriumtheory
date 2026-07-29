@@ -129,3 +129,12 @@
 - Result: shared ledger remains `PASS`, but finite changing-C cone is structurally `BLOCKED`; controller is `conserved_C_gradient_term_has_unbounded_k4_characteristic_speed`.
 - Decision boundary: choose a frozen-C/restricted cone claim, a non-conserved telegraph C realization, or an explicit UV/nonlocal regularization before full-operator integration.
 - Preserved: no parameter fitting, no clipping/cone padding, no default-operator change, normalized-only units, and no downstream promotion.
+### 2026-07-30 - Finite-cone C candidate lane
+
+- Scope: add an opt-in non-conserved telegraph realization of C without changing the conserved-C baseline or legacy operators.
+- Wave type: core implementation, formula-contract, and numerical gate pass.
+- Added: uet_matter_space_finite_cone.py, public/master/base-solver adapters, focused tests, deterministic verifier, finite-cone specification, registry entry, dependency-graph node, and machine-readable lane comparison artifact.
+- Verified: syntax/import smoke, five focused tests, functional directional derivative relative residual 2.16e-9, finite principal speeds 0.4472 in the normalized configuration, local ledger PASS, no trace backreaction, no clipping, and no parameter fitting.
+- Result: finite-cone C lane is CANDIDATE; overall lane artifact remains BLOCKED because numerical compact-support/pre-arrival leakage is not yet closed and SI/observable/covariant mappings remain open.
+- Preserved: conserved-C changing-response cone remains blocked by conserved_C_gradient_term_has_unbounded_k4_characteristic_speed; no mass, density, particle, GR, cosmological, or empirical claim was promoted.
+- Next controller: construct a characteristic/staggered or otherwise causal discrete integrator for the finite-cone candidate and rerun leakage without cone padding or clipping.

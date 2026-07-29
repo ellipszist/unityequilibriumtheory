@@ -37,6 +37,11 @@
       "controller": "carrier-specific conservation, units, and detector map"
     },
     {
+      "id": "matter_space.finite_cone_c_candidate",
+      "status": "CANDIDATE",
+      "controller": "numerical_compact_support_not_yet_closed; SI and observable mapping remain blocked"
+    },
+    {
       "id": "phase_pilot.0.11",
       "status": "BLOCKED",
       "controller": "internal diagnostic only; structure-factor replicate/temporal controller remains open"
@@ -85,8 +90,20 @@
       "to": "matter_space.core"
     },
     {
+      "from": "foundation.units",
+      "to": "matter_space.finite_cone_c_candidate"
+    },
+    {
       "from": "matter_space.core",
       "to": "impact_effect.relation"
+    },
+    {
+      "from": "matter_space.finite_cone_c_candidate",
+      "to": "phase_pilot.0.11"
+    },
+    {
+      "from": "matter_space.finite_cone_c_candidate",
+      "to": "thermal_pilot.0.13"
     },
     {
       "from": "matter_space.core",

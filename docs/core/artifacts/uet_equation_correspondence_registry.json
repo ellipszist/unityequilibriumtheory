@@ -805,6 +805,67 @@
       "claim_boundary": "candidate effective cosmological interpretation; no global open-universe proof, vacuum substance, Einstein replacement, or UET orbital derivation",
       "failure_mode": "observer data is treated as a new substance, free propagation is treated as continuous fuel consumption, or an effective non-closed lane is promoted to a global cosmological theorem",
       "next_hardening_step": "merge into the central registry after the foundation inventory and define a dimensional source-to-C, R_gen-to-observer, and closed-limit correspondence audit"
+    },
+    {
+      "equation_id": "uet.matter_space.finite_cone_C",
+      "version": "matter-space-finite-cone-C-v1",
+      "classification": "constitutive_lane",
+      "relation_or_code_path": "tau_C*C_tt + C_t = -M_C*mu_C + J_C; docs/core/uet_matter_space_finite_cone.py",
+      "variables": {
+        "C": "non-conserved collective system-behaviour/order coordinate in this lane",
+        "C_rate": "dC/dt",
+        "Phi": "effective space/system response",
+        "Pi": "dPhi/dt",
+        "mu_C": "functional derivative with respect to C",
+        "mu_Phi": "functional derivative with respect to Phi",
+        "J_C": "explicit normalized receiver/source input, not conserved mass flux"
+      },
+      "mathematical_role": "finite-cone candidate realization kept separate from conserved-C baseline",
+      "standard_physics_counterpart": "damped hyperbolic non-conserved order-parameter dynamics",
+      "observable_mapping": {
+        "status": "BLOCKED",
+        "proxy": "C response arrival, dispersion, relaxation, Phi/Pi response, and normalized ledger",
+        "reason": "no dimensional mass/density/charge map or physical measurement operator is closed"
+      },
+      "unit_lane": "normalized_only_v1",
+      "parameter_dimensions": "normalized coefficients; SI conversion is not defined",
+      "source_or_origin": "variational matter-space functional plus explicit telegraph constitutive candidate",
+      "assumptions": [
+        "C is a collective coordinate, not universal mass",
+        "C is non-conserved in this realization",
+        "b_C, kappa_C, M_C, tau_C, b_Phi, kappa_Phi, M_Phi, tau_Phi are positive",
+        "trace is derived after the physical step and has no backreaction"
+      ],
+      "symmetry_and_conservation": "energy/ledger is checked locally; mass conservation is not applicable to this non-conserved C lane",
+      "limiting_cases": [
+        "g=0 decouples C and Phi sectors",
+        "tau_C -> 0 gives an overdamped non-conserved order-parameter comparator",
+        "kappa_C -> 0 removes the C spatial principal-speed term",
+        "conserved-C Cahn-Hilliard behavior is a separate lane, not this limit"
+      ],
+      "implementation_paths": [
+        "docs/core/uet_matter_space_finite_cone.py",
+        "docs/core/uet_master_equation.py",
+        "docs/core/uet_base_solver.py"
+      ],
+      "verifier_paths": [
+        "docs/scripts/audit/audit_matter_space_finite_cone.py",
+        "docs/core/test/test_matter_space_finite_cone.py",
+        "docs/core/artifacts/matter_space_causal_lane_comparison.json"
+      ],
+      "evidence_class": "INTERNAL_CHECKED_CANDIDATE",
+      "proof_status": "local derivative/ledger/speed checks pass; numerical compact-support and covariant/physical closure remain blocked",
+      "downstream_dependencies": [
+        "uet.foundation.ontology",
+        "uet.foundation.correspondence",
+        "uet.foundation.units",
+        "uet.matter_space.core",
+        "uet.phase_pilot.0.11",
+        "uet.thermal_pilot.0.13"
+      ],
+      "claim_boundary": "candidate normalized finite-cone collective-response lane; not mass, density, particle identity, covariant transport, or empirical validation",
+      "failure_mode": "promoting non-conserved C to mass or treating finite principal speed as proof of a photon/carrier transition",
+      "next_hardening_step": "close characteristic/staggered numerical support and then define lane-specific observable and dimensional mapping"
     }
   ],
   "merge_history": {

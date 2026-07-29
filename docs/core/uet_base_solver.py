@@ -22,6 +22,7 @@ if str(root_dir) not in sys.path:
     sys.path.insert(0, str(root_dir))
 
 from docs.core.uet_master_equation import (
+    FINITE_CONE_C_OPERATOR_MODE,
     MATTER_SPACE_OPERATOR_MODE,
     SPACETIME_TRACE_OPERATOR_MODE,
     UETParameters,
@@ -107,6 +108,7 @@ class UETBaseSolver(ABC):
         self.trace_observable = np.zeros((ny, nx))
         self.space_response = np.zeros((ny, nx))
         self.space_rate = np.zeros((ny, nx))
+        self.matter_rate = np.zeros((ny, nx))
 
         # State Tracking
         self.time = 0.0
@@ -165,7 +167,7 @@ class UETBaseSolver(ABC):
             result = self.engine.step(
                 self.C, dt=self.dt, dx=self.dx, I=None, constraints=self.constraints
             )
-        elif active_mode == MATTER_SPACE_OPERATOR_MODE:
+        elif active_mode in {MATTER_SPACE_OPERATOR_MODE, FINITE_CONE_C_OPERATOR_MODE}:
             result = self.engine.step(
                 self.C,
                 dt=self.dt,
@@ -175,6 +177,8 @@ class UETBaseSolver(ABC):
                 operator_mode=active_mode,
                 space_response=self.space_response,
                 space_rate=self.space_rate,
+                matter_rate=self.matter_rate,
+                finite_cone_c_config=getattr(self.engine, "finite_cone_c_config", None),
             )
         else:
             result = self.engine.step(
@@ -192,6 +196,8 @@ class UETBaseSolver(ABC):
                 self.space_response = result.space_response
             if getattr(result, "space_rate", None) is not None:
                 self.space_rate = result.space_rate
+            if active_mode == FINITE_CONE_C_OPERATOR_MODE and getattr(result, "V", None) is not None:
+                self.matter_rate = result.V
             self.I = None
         elif isinstance(result, (tuple, list)):
             # Legacy core returns (C, V, I); keep that adapter explicit.
@@ -232,18 +238,20 @@ class UETBaseSolver(ABC):
         # Handle cases where Fields are coupled (Tuples)
         C_field = self.C[0] if isinstance(self.C, tuple) else self.C
         active_mode = getattr(self.params, "operator_mode", "legacy_local")
-        if active_mode in {SPACETIME_TRACE_OPERATOR_MODE, MATTER_SPACE_OPERATOR_MODE}:
+        if active_mode in {SPACETIME_TRACE_OPERATOR_MODE, MATTER_SPACE_OPERATOR_MODE, FINITE_CONE_C_OPERATOR_MODE}:
             I_field = np.zeros_like(C_field, dtype=float)
             if self.trace_observable is not None:
                 cell_volume = self.dx if C_field.ndim == 1 else self.dx * self.dy
                 self.metadata["trace_observable_integral"] = float(
                     np.sum(self.trace_observable) * cell_volume
                 )
-            if active_mode == MATTER_SPACE_OPERATOR_MODE:
+            if active_mode in {MATTER_SPACE_OPERATOR_MODE, FINITE_CONE_C_OPERATOR_MODE}:
                 self.metadata["space_response_norm"] = float(
                     np.linalg.norm(self.space_response)
                 )
                 self.metadata["space_rate_norm"] = float(np.linalg.norm(self.space_rate))
+            if active_mode == FINITE_CONE_C_OPERATOR_MODE:
+                self.metadata["matter_rate_norm"] = float(np.linalg.norm(self.matter_rate))
         else:
             I_field = self.I[0] if isinstance(self.I, tuple) else self.I
 

@@ -84,6 +84,12 @@ from docs.core.uet_matter_space import (
     MatterSpaceState,
     matter_space_step,
 )
+from docs.core.uet_matter_space_finite_cone import (
+    FINITE_CONE_C_OPERATOR_MODE,
+    FiniteConeCConfig,
+    FiniteConeCState,
+    finite_cone_c_step,
+)
 from docs.core.uet_trace import (
     TraceKernelConfig,
     UETStepResult,
@@ -107,6 +113,7 @@ SUPPORTED_OPERATOR_MODES = {
     CONSERVED_ORDER_SPECTRAL_OPERATOR_MODE,
     SPACETIME_TRACE_OPERATOR_MODE,
     MATTER_SPACE_OPERATOR_MODE,
+    FINITE_CONE_C_OPERATOR_MODE,
 }
 
 
@@ -940,7 +947,9 @@ class UETMasterEquation:
         self.trace_config: Optional[TraceKernelConfig] = None
         self.space_response = None
         self.space_rate = None
+        self.matter_rate = None
         self.matter_space_config: Optional[MatterSpaceConfig] = None
+        self.finite_cone_c_config: Optional[FiniteConeCConfig] = None
 
     def step_matter_space(
         self,
@@ -977,6 +986,42 @@ class UETMasterEquation:
             self.trace_history.append(np.asarray(source_snapshot, dtype=float).copy())
         return result
 
+    def step_finite_cone_c(
+        self,
+        state: FiniteConeCState,
+        dt: float,
+        dx: float,
+        config: FiniteConeCConfig,
+        matter_source: Optional[np.ndarray] = None,
+        space_source: Optional[np.ndarray] = None,
+        trace_config: Optional[TraceKernelConfig] = None,
+    ) -> UETStepResult:
+        """Advance the opt-in finite-cone collective-C candidate."""
+
+        result = finite_cone_c_step(
+            state=state,
+            dt=dt,
+            dx=dx,
+            config=config,
+            matter_source=matter_source,
+            space_source=space_source,
+            trace_history=self.trace_history,
+            trace_config=trace_config,
+        )
+        self.C = result.C
+        self.V = None
+        self.I = None
+        self.matter_rate = None if result.V is None else np.asarray(result.V).copy()
+        self.space_response = result.space_response
+        self.space_rate = result.space_rate
+        self.trace_observable = result.trace_observable
+        self.trace_config = trace_config
+        self.finite_cone_c_config = config
+        source_snapshot = result.diagnostics.get("source_snapshot")
+        if source_snapshot is not None:
+            self.trace_history.append(np.asarray(source_snapshot, dtype=float).copy())
+        return result
+
     def step(
         self,
         C: np.ndarray,
@@ -996,12 +1041,76 @@ class UETMasterEquation:
         space_rate: Optional[np.ndarray] = None,
         matter_source: Optional[np.ndarray] = None,
         space_source: Optional[np.ndarray] = None,
+        finite_cone_c_config: Optional[FiniteConeCConfig] = None,
+        finite_cone_c_state: Optional[FiniteConeCState] = None,
+        matter_rate: Optional[np.ndarray] = None,
     ) -> Union[Tuple[np.ndarray, ...], UETStepResult, np.ndarray]:
         """
         Execute one dynamics step with state management.
         If V or I are not provided, uses internal state.
         """
         mode = resolve_operator_mode(self.params, operator_mode)
+        if mode == FINITE_CONE_C_OPERATOR_MODE:
+            ambiguous = [
+                name
+                for name, value in (
+                    ("I", I),
+                    ("V", V),
+                    ("J_in", J_in),
+                    ("J_out", J_out),
+                    ("constraints", constraints),
+                )
+                if value is not None
+            ]
+            if ambiguous:
+                raise ValueError(
+                    "matter_space_finite_cone_c_v1 rejects ambiguous legacy inputs: "
+                    + ", ".join(ambiguous)
+                )
+            config = (
+                finite_cone_c_config
+                or self.finite_cone_c_config
+                or FiniteConeCConfig()
+            )
+            C_array = np.asarray(C, dtype=float)
+            if finite_cone_c_state is not None:
+                if not np.array_equal(C_array, finite_cone_c_state.C):
+                    raise ValueError(
+                        "C must match finite_cone_c_state.C in compatibility mode"
+                    )
+                state = finite_cone_c_state
+            else:
+                rate = matter_rate
+                if rate is None:
+                    rate = self.matter_rate
+                if rate is None or np.shape(rate) != C_array.shape:
+                    rate = np.zeros_like(C_array)
+                response = space_response
+                if response is None:
+                    response = self.space_response
+                if response is None or np.shape(response) != C_array.shape:
+                    response = np.zeros_like(C_array)
+                response_rate = space_rate
+                if response_rate is None:
+                    response_rate = self.space_rate
+                if response_rate is None or np.shape(response_rate) != C_array.shape:
+                    response_rate = np.zeros_like(C_array)
+                state = FiniteConeCState(
+                    C_array,
+                    np.asarray(rate, dtype=float),
+                    np.asarray(response, dtype=float),
+                    np.asarray(response_rate, dtype=float),
+                )
+            return self.step_finite_cone_c(
+                state=state,
+                dt=dt,
+                dx=dx,
+                config=config,
+                matter_source=matter_source,
+                space_source=space_source,
+                trace_config=trace_config,
+            )
+
         if mode == MATTER_SPACE_OPERATOR_MODE:
             ambiguous = [
                 name
@@ -1288,6 +1397,8 @@ def dynamics_step_complete(
     matter_space_config: Optional[MatterSpaceConfig] = None,
     matter_source: Optional[np.ndarray] = None,
     space_source: Optional[np.ndarray] = None,
+    finite_cone_c_state: Optional[FiniteConeCState] = None,
+    finite_cone_c_config: Optional[FiniteConeCConfig] = None,
 ) -> Union[np.ndarray, Tuple[np.ndarray, ...], UETStepResult]:
     """
     AXIOM 6/13/14: Dynamics as Inertial Constrained Optimization
@@ -1328,6 +1439,46 @@ def dynamics_step_complete(
                 "legacy_variational_v1 requires pure normalized gradient terms; "
                 "disable " + ", ".join(unsupported)
             )
+    if mode == FINITE_CONE_C_OPERATOR_MODE:
+        ambiguous = [
+            name
+            for name, value in (
+                ("I", I),
+                ("V", V),
+                ("J_in", J_in),
+                ("J_out", J_out),
+                ("constraints", constraints),
+            )
+            if value is not None
+        ]
+        if ambiguous:
+            raise ValueError(
+                "matter_space_finite_cone_c_v1 rejects ambiguous legacy inputs: "
+                + ", ".join(ambiguous)
+            )
+        C_field = C[0] if isinstance(C, (tuple, list)) else C
+        C_array = np.asarray(C_field, dtype=float)
+        state = finite_cone_c_state
+        if state is None:
+            state = FiniteConeCState(
+                C_array,
+                np.zeros_like(C_array),
+                np.zeros_like(C_array),
+                np.zeros_like(C_array),
+            )
+        elif not np.array_equal(C_array, state.C):
+            raise ValueError("C must match finite_cone_c_state.C in compatibility mode")
+        return finite_cone_c_step(
+            state=state,
+            dt=dt,
+            dx=dx,
+            config=finite_cone_c_config or FiniteConeCConfig(),
+            matter_source=matter_source,
+            space_source=space_source,
+            trace_history=trace_history,
+            trace_config=trace_config,
+        )
+
     if mode == MATTER_SPACE_OPERATOR_MODE:
         ambiguous = [
             name
