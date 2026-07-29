@@ -1,0 +1,140 @@
+{
+  "schema_version": "thermal-closure-source-inventory-v1",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "status": "ADJACENT_TEMPERATURE_LAWS_FOUND_CROSS_LANE_MAPPING_BLOCKED",
+  "audit_status": "PASS_WITH_CROSS_LANE_BLOCKER",
+  "records": [
+    {
+      "id": "pt_011_normalized_a_T_comparator",
+      "relation": "a_C(T) = a_0 * (T - T_c) / T_c",
+      "source_paths": [
+        "docs/topics/0.11_Phase_Transitions/Code/simulate_uet_scaling.py",
+        "docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Scaling.py"
+      ],
+      "native_variable": "C as phase/order parameter",
+      "unit_lane": "normalized",
+      "derivation_class": "standard Ginzburg-Landau/Cahn-Hilliard comparator in synthetic lane",
+      "status": "COMPARATOR_ONLY",
+      "can_define_a_Phi_T": false,
+      "reason": "No accepted correspondence maps the C/order-parameter lane to the matter-space Phi response.",
+      "source_rows": [
+        {
+          "path": "docs/topics/0.11_Phase_Transitions/Code/simulate_uet_scaling.py",
+          "exists": true,
+          "sha256": "b2b0acbf33a979ef478189537f494e0f4c66d6bae8472402510523c186222be1",
+          "required_markers": {
+            "a_T = 1.0 * (T - T_c) / T_c": true
+          },
+          "marker_gate": true
+        },
+        {
+          "path": "docs/topics/0.11_Phase_Transitions/Code/03_Research/Research_Conserved_Order_Spectral_Scaling.py",
+          "exists": true,
+          "sha256": "fd518daf9ed775a6a965462c68107db6f6a161d4d7b3460b28d7bd66ecab132a",
+          "required_markers": {
+            "alpha_t = temperature - critical_temperature": true
+          },
+          "marker_gate": true
+        }
+      ]
+    },
+    {
+      "id": "o2_finite_density_eos",
+      "relation": "tree-level finite-density O(2) equilibrium EOS",
+      "source_paths": [
+        "docs/core/uet_o2_finite_density_eos.py"
+      ],
+      "native_variable": "signed global O(2) Noether charge density",
+      "unit_lane": "natural",
+      "derivation_class": "tree-level equilibrium derivation",
+      "status": "FINITE_TEMPERATURE_LAYER_NOT_DERIVED",
+      "can_define_a_Phi_T": false,
+      "reason": "The contract explicitly marks the finite-temperature normal component as NOT_DERIVED.",
+      "source_rows": [
+        {
+          "path": "docs/core/uet_o2_finite_density_eos.py",
+          "exists": true,
+          "sha256": "ea744a8645f993600300fa9fd99a764e1f07b30fb272b47399c34aa114152c6d",
+          "required_markers": {
+            "\"finite_temperature_normal_component\": \"NOT_DERIVED\"": true,
+            "\"transport_coefficients\": \"NOT_DERIVED_FROM_CONSERVATIVE_ACTION\"": true
+          },
+          "marker_gate": true
+        }
+      ]
+    },
+    {
+      "id": "topic_013_temperature_proxy",
+      "relation": "T_proxy = 1 / ln(1 + N/E)",
+      "source_paths": [
+        "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
+        "docs/topics/0.13_Thermodynamic_Bridge/Code/01_Engine/Engine_Thermodynamics.py"
+      ],
+      "native_variable": "topic entropy-proxy variables E and N",
+      "unit_lane": "dimensionless",
+      "derivation_class": "derivative of topic-local entropy proxy",
+      "status": "PROXY_ONLY",
+      "can_define_a_Phi_T": false,
+      "reason": "No accepted map connects E,N proxy variables to Phi or TTG quasi-temperature.",
+      "source_rows": [
+        {
+          "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
+          "exists": true,
+          "sha256": "5533ad00b94b62f72d4158095b5c33d614e88cac66ece61502c61bd920d7b031",
+          "required_markers": {
+            "T13-002": true
+          },
+          "marker_gate": true
+        },
+        {
+          "path": "docs/topics/0.13_Thermodynamic_Bridge/Code/01_Engine/Engine_Thermodynamics.py",
+          "exists": true,
+          "sha256": "105af9ff76f69f9ff89f28c2871d8c07daee070d76b408b341bf10b3d9349d2a",
+          "required_markers": {
+            "def compute_temperature": true
+          },
+          "marker_gate": true
+        }
+      ]
+    },
+    {
+      "id": "matter_space_candidate_a_Phi_T",
+      "relation": "a_Phi(T) is required by the conditional local-equilibrium map",
+      "source_paths": [
+        "docs/topics/0.13_Thermodynamic_Bridge/THERMAL_CLOSURE_DERIVATION_AUDIT.md"
+      ],
+      "native_variable": "Phi as effective space-response variable",
+      "unit_lane": "not closed",
+      "derivation_class": "conditional closure",
+      "status": "OPEN",
+      "can_define_a_Phi_T": true,
+      "reason": "Requires an explicit temperature-dependent functional, dimensional scale, and provenance not obtained from target data.",
+      "source_rows": [
+        {
+          "path": "docs/topics/0.13_Thermodynamic_Bridge/THERMAL_CLOSURE_DERIVATION_AUDIT.md",
+          "exists": true,
+          "sha256": "0e1f8e52d8bbf4e89883efb2f8e545bc6a42d6d8bfe83e7555e439e8b8a1d7e4",
+          "required_markers": {
+            "dimensional free-energy-density scale": true,
+            "No `alpha_Phi_K` value is fitted": true
+          },
+          "marker_gate": true
+        }
+      ]
+    }
+  ],
+  "cross_lane_gate": {
+    "adjacent_temperature_relation_exists": true,
+    "accepted_C_to_Phi_correspondence": false,
+    "accepted_O2_finite_temperature_closure": false,
+    "accepted_Phi_to_kelvin_map": false,
+    "target_data_used_for_mapping": false,
+    "2026_holdout_consumed": false
+  },
+  "safe_reuse": {
+    "normalized_a_T_as_explicit_comparator": true,
+    "a_T_as_UET_derived_a_Phi_T": false,
+    "kelvin_prediction": false
+  },
+  "next_controller": "derive_or_source_lock_cross_lane_correspondence_for_Phi_and_temperature_before_dimensional_thermal_claims"
+}
