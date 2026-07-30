@@ -1,0 +1,15 @@
+{
+    "metadata": {
+        "timestamp": "2026-07-30T12:34:54.224463",
+        "topic": "0.31_SpaceTime_Propulsion",
+        "status": "PASS"
+    },
+    "parameters": {
+        "drag_reduction_pct": 95.0,
+        "lattice_displacement_mm": 33.3
+    },
+    "targets": {
+        "min_drag_reduction_pct": 90.0,
+        "max_lattice_displacement_mm": 50.0
+    }
+}

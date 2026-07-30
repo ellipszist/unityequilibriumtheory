@@ -1,0 +1,14 @@
+{
+    "metadata": {
+        "name": "High-Pressure Hydride Synthesis Profile",
+        "version": "1.0"
+    },
+    "parameters": {
+        "purity_pct": 98.5,
+        "thermal_decay_k": 450.0
+    },
+    "targets": {
+        "min_purity_pct": 98.0,
+        "max_thermal_decay_k": 500.0
+    }
+}

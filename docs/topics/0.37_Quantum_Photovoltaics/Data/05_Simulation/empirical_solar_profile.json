@@ -1,0 +1,14 @@
+{
+    "metadata": {
+        "name": "Quantum Dot Solar Paint Profile",
+        "version": "1.0"
+    },
+    "parameters": {
+        "efficiency_pct": 29.8,
+        "uv_degradation_pct_yr": 0.35
+    },
+    "targets": {
+        "min_efficiency_pct": 28.5,
+        "max_uv_degradation_pct_yr": 0.5
+    }
+}

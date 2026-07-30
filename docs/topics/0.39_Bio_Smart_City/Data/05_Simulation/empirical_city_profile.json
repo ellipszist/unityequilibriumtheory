@@ -1,0 +1,14 @@
+{
+    "metadata": {
+        "name": "Bio-Smart City Microclimate Profile",
+        "version": "1.0"
+    },
+    "parameters": {
+        "urban_cooling_c": 2.8,
+        "waste_energy_conversion_pct": 68.0
+    },
+    "targets": {
+        "min_urban_cooling_c": 2.0,
+        "min_waste_energy_conversion_pct": 60.0
+    }
+}

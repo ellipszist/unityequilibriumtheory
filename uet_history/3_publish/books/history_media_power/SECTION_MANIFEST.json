@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "section_id": "section_03_history_hegemony",
+  "title": "Section 3: History & Hegemony",
+  "profile": "THREE_BOOK_SECTION",
+  "status": "IN_PROGRESS",
+  "current_gate": "S04_VOLUME_ALLOCATION_MATRIX",
+  "blueprint_version": "section-03-v1",
+  "volume_count": 3,
+  "volume_ids": [
+    "03_1_history_media_and_cold_war",
+    "03_2_global_discourse_and_authoritarianism",
+    "03_3_reformation_of_the_mind"
+  ],
+  "canonical_path": "uet_history/3_publish/books/history_media_power",
+  "claim_boundary": "working Section architecture; not a publication or evidence-validation claim",
+  "controlling_blocker": "cross-volume ownership, dependency, and metadata normalization",
+  "next_controller": "S04",
+  "open_items": [
+    "complete the volume allocation matrix",
+    "normalize child README identity metadata",
+    "audit overlap with separately registered books 04_thai_politics and 05_reformation_of_the_mind"
+  ],
+  "artifacts": {
+    "blueprint": "SECTION_BLUEPRINT.md",
+    "volume_matrix": "VOLUME_MATRIX.md",
+    "dependency_map": "DEPENDENCY_MAP.md",
+    "shared_terms": "SHARED_TERMS.md",
+    "update_log": "SECTION_UPDATE_LOG.md"
+  }
+}

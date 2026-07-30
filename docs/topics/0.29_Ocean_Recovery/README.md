@@ -6,6 +6,14 @@ description: "Research module for Ocean Recovery within the Unity Equilibrium Th
 
 # 🌊 0.29 Ocean Recovery
 
+## Evidence boundary
+
+- Classification: `Tier D / Future Concept / Proposal Model`.
+- This README is an exploratory overview; internal simulation outputs are not external validation.
+- The control files are `FORMULA_AUDIT.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `Data/DATA_MANIFEST.md`, `Result/artifacts/`, and `UPDATE_LOG.md`.
+- Do not interpret proposal metrics as production readiness or theory-core evidence.
+
+
 <!-- 
 {
   "@context": "https://schema.org",
@@ -19,7 +27,7 @@ description: "Research module for Ocean Recovery within the Unity Equilibrium Th
 > [!NOTE]
 > **AI-Digest**: UET proposes the 'Ocean Shield'—a low-cost remediation system using Graphene derived from carbon waste. We demonstrate 99% microplastic filtration efficiency and ~12°C temperature reduction via passive radiative cooling. / UET นำเสนอ 'เกราะป้องกันมหาสมุทร' (Ocean Shield) ซึ่งเป็นระบบฟื้นฟูราคาประหยัดจากขยะคาร์บอน ช่วยกรองไมโครพลาสติกได้ 99% และลดอุณหภูมิน้ำได้ด้วยการแผ่รังสีความร้อนแบบพาสซีฟ
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
+![Status]()
 ![Standard](https://img.shields.io/badge/Standard-Graphene_Shield-blueviolet)
 ![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
 ![Scientific_Rigor](https://img.shields.io/badge/Rigor-DIY_Tech-orange)

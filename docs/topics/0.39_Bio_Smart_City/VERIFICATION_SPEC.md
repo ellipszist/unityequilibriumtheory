@@ -1,9 +1,19 @@
-# Verification Spec: Bio-Smart City
+# Verification Spec: 0.39_Bio_Smart_City
 
-## Objective
-Verify the thermodynamic consistency of the integrated city model.
+This document defines the strict engineering thresholds and verification gates for Bio-Smart City Systems & Ecological Microclimates.
 
-## Methods
-1. **Entropy Balance Check:** Ensure total entropy production matches the sum of individual topic models.
-2. **Resilience Simulation:** Test system recovery from simulated failures in energy or bio-synthetic nodes.
-3. **Interface Validation:** Verify that data and energy transfer between components (e.g., from Fusion to Bio-Structural) follows UET coupling constants.
+## 1. Status & Classification
+- **Classification:** Tier D / Future Concept / Proposal Model
+- **Theory Credibility Role:** Exploratory Concept (Not part of core theory evidence baseline)
+- **Domain:** Urban Ecology & Systems Engineering
+
+## 2. Engineering Verification Gates
+- **Primary Thresholds:** Urban Microclimate Cooling >= 2.0 °C, Bio-Waste Energy Conversion >= 60%
+- **Data Source Requirement:** Must ingest structured JSON profiles from `Data/05_Simulation/`.
+- **Verifier Script:** `Code/05_Simulation/Sim_*.py`
+
+## 3. Artifact Standard
+Verification runs must output standard JSON artifacts to `Result/artifacts/` containing:
+- `metadata.status`: `PASS` or `FAIL`
+- `metrics`: Quantitative simulation output vs target thresholds
+- `timestamp`: ISO-8601 execution time

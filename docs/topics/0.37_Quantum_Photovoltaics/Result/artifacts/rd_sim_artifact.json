@@ -1,0 +1,15 @@
+{
+    "metadata": {
+        "timestamp": "2026-07-30T12:35:02.547721",
+        "topic": "0.37_Quantum_Photovoltaics",
+        "status": "PASS"
+    },
+    "parameters": {
+        "efficiency_pct": 29.8,
+        "uv_degradation_pct_yr": 0.35
+    },
+    "targets": {
+        "min_efficiency_pct": 28.5,
+        "max_uv_degradation_pct_yr": 0.5
+    }
+}

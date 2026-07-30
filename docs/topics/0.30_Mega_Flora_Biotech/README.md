@@ -6,6 +6,14 @@ description: "Research module for Mega Flora Biotech within the Unity Equilibriu
 
 # 🌿 0.30 Mega Flora Biotech
 
+## Evidence boundary
+
+- Classification: `Tier D / Future Concept / Proposal Model`.
+- This README is an exploratory overview; internal simulation outputs are not external validation.
+- The control files are `FORMULA_AUDIT.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `Data/DATA_MANIFEST.md`, `Result/artifacts/`, and `UPDATE_LOG.md`.
+- Do not interpret proposal metrics as production readiness or theory-core evidence.
+
+
 <!-- 
 {
   "@context": "https://schema.org",
@@ -19,7 +27,7 @@ description: "Research module for Mega Flora Biotech within the Unity Equilibriu
 > [!NOTE]
 > **AI-Digest**: UET revolutionizes agriculture via 'Acoustic Nutrient Delivery' and 'Graphene Nano-Refining'. By modulating informational fields, we accelerate plant metabolism (57.5% faster growth) and achieve 98% purity in nutrient extraction, enabling post-scarcity bio-industrial logistics. / UET ปฏิวัติอุตสาหกรรมการเกษตรโดยใช้คลื่นเสียงจัดระเบียบสารอาหารและกราฟีนนาโนเพื่อสกัดสารบริสุทธิ์ 98% และเร่งการเติบโตได้เร็วขึ้น 57.5% มุ่งสู่ความมั่นคงทางอาหารระดับสากล
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
+![Status]()
 ![Standard](https://img.shields.io/badge/Standard-Acoustic_Growth-blueviolet)
 ![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
 ![Scientific_Rigor](https://img.shields.io/badge/Rigor-Metabolic_Hacking-orange)

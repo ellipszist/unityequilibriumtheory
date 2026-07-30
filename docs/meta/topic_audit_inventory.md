@@ -1,6 +1,6 @@
 # Topic Audit Inventory
 
-This inventory is the audit-facing scoreboard for all `40` numbered topic directories under
+This inventory is the audit-facing scoreboard for all `41` numbered topic directories under
 `docs/topics`.
 
 Legend:
@@ -49,17 +49,17 @@ Legend:
 | `0.30_Mega_Flora_Biotech` | `future` | `Draft` | `D` | 1 | 0 | 1 | 1 | 1 | 1 | `no data path` | code and concept exist, but this phase does not treat it as theory-core evidence | keep this topic explicitly exploratory until real datasets, standards docs, and verification outputs exist |
 | `0.31_SpaceTime_Propulsion` | `future` | `Draft` | `D` | 2 | 1 | 1 | 1 | 1 | 1 | `embedded local only` | future integration topic still lacks an evidence package appropriate for the current theory-core audit | keep this topic explicitly exploratory until real datasets, standards docs, and verification outputs exist |
 | `0.32_Micro_Nuclear_Fusion` | `future` | `Draft` | `D` | 2 | 2 | 1 | 1 | 1 | 1 | `real source referenced` | future engineering topic is outside the current theory-core credibility scope | keep this topic explicitly exploratory until real datasets, standards docs, and verification outputs exist |
-| `0.33_Battery_Tech` | `future` | `Draft` | `D` | 1 | 0 | 0 | 0 | 1 | 1 | `no data path` | duplicate-number future topic is not part of theory-core credibility and needs merge/rename review | keep this duplicate-number future topic explicitly exploratory until it is merged, renamed, or given a full standards package |
-| `0.33_High_Energy_Density_Battery_Materials` | `future` | `Draft` | `D` | 1 | 0 | 1 | 1 | 1 | 2 | `no data path` | sparse future topic shell with no current data path | keep this topic explicitly exploratory until real datasets, standards docs, and verification outputs exist |
+| `0.33_Battery_Tech` | `future` | `Draft` | `D` | 2 | 1 | 1 | 1 | 1 | 1 | `synthetic/local baseline` | standardized package exists, but no empirical dataset or external validation is present | keep this topic explicitly exploratory and separate it from theory-core credibility |
 | `0.34_Information_Centric_Nanofabrication` | `future` | `Draft` | `D` | 1 | 1 | 1 | 1 | 1 | 1 | `embedded local only` | future concept area still missing several core pillars and manifests | keep this topic explicitly exploratory until real datasets, standards docs, and verification outputs exist |
 | `0.35_ICN_Digital_Automation` | `future` | `Draft` | `D` | 1 | 0 | 1 | 0 | 1 | 3 | `no data path` | infrastructure shell with minimal research packaging | keep this topic explicitly exploratory until real datasets, standards docs, and verification outputs exist |
 | `0.36_Orbital_Manufacturing` | `future` | `Draft` | `D` | 1 | 0 | 0 | 1 | 1 | 1 | `no data path` | README-driven vision topic with no auditable verification path | keep this topic explicitly exploratory until real datasets, standards docs, and verification outputs exist |
-| `0.37_Quantum_Photovoltaics_Solar_Paint` | `future` | `Draft` | `D` | 1 | 0 | 1 | 0 | 1 | 3 | `no data path` | early shell topic with minimal evidence assets | keep this topic explicitly exploratory until real datasets, standards docs, and verification outputs exist |
+| `0.37_Quantum_Photovoltaics` | `future` | `Draft` | `D` | 1 | 0 | 1 | 0 | 1 | 3 | `no data path` | early shell topic with minimal evidence assets | keep this topic explicitly exploratory until real datasets, standards docs, and verification outputs exist |
 | `0.38_Bio_Synthetic_Integration` | `future` | `Draft` | `D` | 2 | 0 | 1 | 1 | 1 | 2 | `no data path` | application concept lacks manifested data and standardized proof boundaries | keep this topic explicitly exploratory until real datasets, standards docs, and verification outputs exist |
+| `0.39_Bio_Smart_City` | `future` | `Draft` | `D` | 2 | 1 | 1 | 1 | 1 | 1 | `synthetic/local baseline` | standardized local package exists, but city-scale claims lack empirical and external validation | keep this topic explicitly exploratory and outside theory-core credibility |
 
 ## Immediate conclusions
 
 - Only `3` topics currently qualify as `Tier A`: `0.1`, `0.21`, `0.25`
 - Most of the current theory-core (`0.0-0.26`) sits in `Tier B`, meaning research assets exist but the standards migration is unfinished
 - `0.0_Grand_Unification` remains the only `Tier C` topic inside the core scope because it is broad, theory-central, and under-packaged
-- All topics `0.27-0.38` are intentionally held in `Tier D` for this phase so they do not distort the credibility signal of the core theory audit
+- All topics `0.27-0.39` are intentionally held in `Tier D` for this phase so they do not distort the credibility signal of the core theory audit

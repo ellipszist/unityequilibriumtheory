@@ -109,7 +109,7 @@ $$\omega_{lock} = \sqrt{\frac{n_e \cdot e^2}{\epsilon_0 \cdot m_e}} \cdot \Phi_{
 
 ## 🔗 Cross-Links
 - ← [0.32: Resonant Information Barrier](../../0.32_Micro_Nuclear_Fusion/Doc/03_Research/paper/ANALYSIS_PLASMA_BARRIER.md) — แหล่งที่มาของแนวคิด Resonance
-- → [0.33: Structural Battery](../../0.33_High_Energy_Density_Battery_Materials/Doc/03_Research/theory/11_Fusion_Power_Flux_Management.md) — Pulse Energy Storage
+- → [0.33: Structural Battery](../../0.33_Battery_Tech/Doc/03_Research/theory/11_Fusion_Power_Flux_Management.md) — Pulse Energy Storage
 - ↔ [0.28: Plasma Deposition](../../0.28_Material_Synthesis/Doc/03_Research/materials/05_Plasma_Sheath_Deposition.md) — วัสดุผิวยานที่ต้องเข้ากันกับ RPL Field
 
 ---

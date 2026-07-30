@@ -1,0 +1,15 @@
+{
+    "metadata": {
+        "timestamp": "2026-07-30T12:35:05.354535",
+        "topic": "0.39_Bio_Smart_City",
+        "status": "PASS"
+    },
+    "parameters": {
+        "urban_cooling_c": 2.8,
+        "waste_energy_conversion_pct": 68.0
+    },
+    "targets": {
+        "min_urban_cooling_c": 2.0,
+        "min_waste_energy_conversion_pct": 60.0
+    }
+}

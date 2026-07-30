@@ -6,6 +6,14 @@ description: "Research module for Information Centric Nanofabrication within the
 
 # 🧪 0.34 Information-Centric Nanofabrication (ICN)
 
+## Evidence boundary
+
+- Classification: `Tier D / Future Concept / Proposal Model`.
+- This README is an exploratory overview; internal simulation outputs are not external validation.
+- The control files are `FORMULA_AUDIT.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `Data/DATA_MANIFEST.md`, `Result/artifacts/`, and `UPDATE_LOG.md`.
+- Do not interpret proposal metrics as production readiness or theory-core evidence.
+
+
 <!-- 
 {
   "@context": "https://schema.org",

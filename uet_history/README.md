@@ -15,6 +15,7 @@ read.
 uet_history/
   2_digest/       # reviewed summaries, indexes, and structured digests
   3_publish/      # publishable drafts, book structure, and public narrative work
+  BOOK_WORKFLOW.md # shared writing workflow for all books
   PIPELINE.md     # raw -> digest -> publish workflow boundary
   PUBLIC_MANIFEST.md
   STATUS_REPORT.md
@@ -37,3 +38,7 @@ Excluded local areas include:
 Use `PUBLIC_MANIFEST.md` to see what this public tree includes and excludes.
 
 The book-specific path map is 3_publish/books/BOOK_REGISTRY.json. It records canonical working folders, public paths, local-only tracks, and retired aliases so a book is not silently duplicated under a new name.
+
+The shared book writing lifecycle, reference workflow, review gates, and versioning rules are
+defined in [BOOK_WORKFLOW.md](./BOOK_WORKFLOW.md). The book-specific folder remains the source
+of truth for voice and chapter structure.

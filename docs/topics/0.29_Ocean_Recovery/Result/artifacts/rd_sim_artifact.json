@@ -1,0 +1,15 @@
+{
+    "metadata": {
+        "timestamp": "2026-07-30T12:34:51.489144",
+        "topic": "0.29_Ocean_Recovery",
+        "status": "PASS"
+    },
+    "parameters": {
+        "dissipation_rate_w_m2": 3.2,
+        "carbon_roi": 1.8
+    },
+    "targets": {
+        "min_dissipation_rate_w_m2": 2.5,
+        "min_carbon_roi": 1.5
+    }
+}

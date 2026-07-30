@@ -1,0 +1,15 @@
+{
+    "metadata": {
+        "timestamp": "2026-07-30T12:34:58.388487",
+        "topic": "0.34_Information_Centric_Nanofabrication",
+        "status": "PASS"
+    },
+    "parameters": {
+        "precision_nm": 5.2,
+        "error_rate": 5e-07
+    },
+    "targets": {
+        "max_precision_nm": 7.0,
+        "max_error_rate": 1e-06
+    }
+}

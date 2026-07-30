@@ -6,6 +6,14 @@ description: "Research module for SpaceTime Propulsion within the Unity Equilibr
 
 # 🚀 0.31 SpaceTime Propulsion & Logistics Network
 
+## Evidence boundary
+
+- Classification: `Tier D / Future Concept / Proposal Model`.
+- This README is an exploratory overview; internal simulation outputs are not external validation.
+- The control files are `FORMULA_AUDIT.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `Data/DATA_MANIFEST.md`, `Result/artifacts/`, and `UPDATE_LOG.md`.
+- Do not interpret proposal metrics as production readiness or theory-core evidence.
+
+
 <!-- 
 {
   "@context": "https://schema.org",
@@ -19,7 +27,7 @@ description: "Research module for SpaceTime Propulsion within the Unity Equilibr
 > [!NOTE]
 > **AI-Digest**: UET transforms space travel via 'Geodesic Surfing' and the 'Universal Transit Network' (UTN). By navigating the geodesics of the spacetime manifold, we enable fuel-less propulsion and high-speed 'Lattice-Locked Lightways' for interplanetary commerce. / UET ปฏิวัติการเดินทางในอวกาศผ่าน 'การโต้คลื่นภูมิมาตร' (Geodesic Surfing) และเครือข่ายขนส่งสากล (UTN) ซึ่งใช้ระนาบอวกาศเป็นทางด่วนที่ไร้เชื้อเพลิง ลดความล่าช้าในการสื่อสารและการขนส่งระดับกาแล็กซี
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
+![Status]()
 ![Department](https://img.shields.io/badge/Dept-Propulsion_Logistics-blue)
 ![Architecture](https://img.shields.io/badge/Standard-Universal_Transit_Network-blueviolet)
 

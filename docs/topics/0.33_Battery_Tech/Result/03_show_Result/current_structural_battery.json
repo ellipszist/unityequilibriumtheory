@@ -1,0 +1,57 @@
+{
+    "metadata": {
+        "timestamp": "2026-03-31T03:56:14.840101",
+        "topic": "0.33_Battery_Tech",
+        "category": "03_Research",
+        "script": "Research_Structural_Battery_Sim.py",
+        "constants_source": "CODATA 2018",
+        "parameter_fitting": false,
+        "physics": [
+            "Nernst Equation",
+            "Butler-Volmer Kinetics",
+            "Fick's Diffusion"
+        ]
+    },
+    "chemistry_comparison": [
+        {
+            "name": "Li-ion (Graphene/NMC811)",
+            "voltage_at_50pct_SOC_V": 3.7,
+            "voltage_at_10pct_SOC_V": 3.6435,
+            "voltage_at_90pct_SOC_V": 3.7565,
+            "energy_density_Whkg": 740.0,
+            "diffusion_time_s": 1000000.0,
+            "capacity_mAhg": 200
+        },
+        {
+            "name": "Na-ion (HC/NVP)",
+            "voltage_at_50pct_SOC_V": 3.3,
+            "voltage_at_10pct_SOC_V": 3.2435,
+            "voltage_at_90pct_SOC_V": 3.3565,
+            "energy_density_Whkg": 396.0,
+            "diffusion_time_s": 14400000.0,
+            "capacity_mAhg": 120
+        },
+        {
+            "name": "Structural Graphene Composite (Li+Na Hybrid)",
+            "voltage_at_50pct_SOC_V": 3.5,
+            "voltage_at_10pct_SOC_V": 3.4435,
+            "voltage_at_90pct_SOC_V": 3.5565,
+            "energy_density_Whkg": 525.0,
+            "diffusion_time_s": 8000000.0,
+            "capacity_mAhg": 150
+        }
+    ],
+    "charge_profile": {
+        "description": "Fusion Pulse → Supercap Buffer → Trickle Charge",
+        "final_soc": 0.06813939636096471,
+        "time_to_80pct_s": -1,
+        "data_points": 3600
+    },
+    "summary": {
+        "nernst_validation_error_V": 0.0,
+        "nernst_pass": "YES",
+        "structural_energy_density_Whkg": 525.0,
+        "time_to_80pct_s": "NOT_REACHED",
+        "conclusion": "PASS: Nernst voltage verified (error < 0.01V), Butler-Volmer kinetics valid"
+    }
+}

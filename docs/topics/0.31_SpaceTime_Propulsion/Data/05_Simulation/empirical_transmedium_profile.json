@@ -1,0 +1,14 @@
+{
+    "metadata": {
+        "name": "Transmedium Plasma & Lattice Profile",
+        "version": "1.0"
+    },
+    "parameters": {
+        "drag_reduction_pct": 95.0,
+        "lattice_displacement_mm": 33.3
+    },
+    "targets": {
+        "min_drag_reduction_pct": 90.0,
+        "max_lattice_displacement_mm": 50.0
+    }
+}

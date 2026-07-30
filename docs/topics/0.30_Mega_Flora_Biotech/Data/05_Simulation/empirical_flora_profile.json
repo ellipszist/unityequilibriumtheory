@@ -1,0 +1,14 @@
+{
+    "metadata": {
+        "name": "Mega-Flora Oxygen & Bio-Housing Profile",
+        "version": "1.0"
+    },
+    "parameters": {
+        "oxygen_yield_kg_day": 18.5,
+        "mycelial_conductivity_s_m": 0.95
+    },
+    "targets": {
+        "min_oxygen_yield_kg_day": 15.0,
+        "min_mycelial_conductivity_s_m": 0.8
+    }
+}

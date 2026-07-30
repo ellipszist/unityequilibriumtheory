@@ -7,6 +7,14 @@ description: "Research module for Material Synthesis within the Unity Equilibriu
 
 # 🧪 0.28 Material Synthesis (Graphene)
 
+## Evidence boundary
+
+- Classification: `Tier D / Future Concept / Proposal Model`.
+- This README is an exploratory overview; internal simulation outputs are not external validation.
+- The control files are `FORMULA_AUDIT.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `Data/DATA_MANIFEST.md`, `Result/artifacts/`, and `UPDATE_LOG.md`.
+- Do not interpret proposal metrics as production readiness or theory-core evidence.
+
+
 <!-- 
 {
   "@context": "https://schema.org",
@@ -20,7 +28,7 @@ description: "Research module for Material Synthesis within the Unity Equilibriu
 > [!NOTE]
 > **AI-Digest**: UET introduces 'Resonant Acoustic Guidance' to revolutionize CVD synthesis. By using sound to align lattices, we grow high-purity Graphene and Perovskite from agricultural waste, achieving 'Geometric Doping' without toxic metals. / UET ใช้ 'การนำทางด้วยคลื่นเสียงกังวาน' เพื่อจัดระเบียบโครงสร้างวัสดุในระดับอะตอม ทำให้ผลิตกราฟีนและเอนเนอร์จีพาวเวอร์จากวัสดุเหลือใช้ได้ในราคาถูกและมีความบริสุทธิ์สูง
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
+![Status]()
 ![Standard](https://img.shields.io/badge/Standard-Extreme_Simplicity-blueviolet)
 ![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
 ![Scientific_Rigor](https://img.shields.io/badge/Rigor-Zero_Curve_Fitting-orange)

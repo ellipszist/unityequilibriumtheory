@@ -6,6 +6,14 @@ description: "Research module for Micro Nuclear Fusion within the Unity Equilibr
 
 # ⚛️ 0.32 Micro-Nuclear Fusion
 
+## Evidence boundary
+
+- Classification: `Tier D / Future Concept / Proposal Model`.
+- This README is an exploratory overview; internal simulation outputs are not external validation.
+- The control files are `FORMULA_AUDIT.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `Data/DATA_MANIFEST.md`, `Result/artifacts/`, and `UPDATE_LOG.md`.
+- Do not interpret proposal metrics as production readiness or theory-core evidence.
+
+
 <!-- 
 {
   "@context": "https://schema.org",
@@ -19,7 +27,7 @@ description: "Research module for Micro Nuclear Fusion within the Unity Equilibr
 > [!NOTE]
 > **AI-Digest**: UET achieves 'Micro-Nuclear Fusion' by topologically reducing the Coulomb barrier via informational resonance. Using a solid-state Graphene-Perovskite lattice, we enable aneutronic Proton-Boron (p-B11) fusion that is radiation-free, self-quenching, and scalable from smartphone chips to interstellar engines. / UET บรรลุปฏิกิริยานิวเคลียร์ฟิวชันระดับไมโครโดยการลดกำแพงคูลอมบ์ผ่านการกำทอนข้อมูลภายในโครงสร้างกราฟีน-เพอรอฟสไกต์ ทำให้เกิดพลังงานสะอาดจากโปรตอน-โบรอน (p-B11) ที่ไร้รังสีและปลอดภัยสูงสุด
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
+![Status]()
 ![Standard](https://img.shields.io/badge/Standard-Axiomatic_Confinement-blueviolet)
 ![Architecture](https://img.shields.io/badge/Architecture-5x4_Scientific_Grid-blue)
 ![Scientific_Rigor](https://img.shields.io/badge/Rigor-p--B11_Verified-orange)

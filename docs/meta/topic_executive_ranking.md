@@ -6,7 +6,7 @@ This file summarizes the repo-wide audit into action-oriented tiers for the curr
 
 For this phase, `0.0-0.26` is the theory-core research scope.
 
-Topics `0.27-0.38` are future concepts or expansion proposals. They are intentionally kept
+Topics `0.27-0.39` are future concepts or expansion proposals. They are intentionally kept
 out of the current theory-credibility score and should remain exploratory until they have a
 full standards package.
 
@@ -56,12 +56,12 @@ phase:
 - `0.31_SpaceTime_Propulsion`
 - `0.32_Micro_Nuclear_Fusion`
 - `0.33_Battery_Tech`
-- `0.33_High_Energy_Density_Battery_Materials`
 - `0.34_Information_Centric_Nanofabrication`
 - `0.35_ICN_Digital_Automation`
 - `0.36_Orbital_Manufacturing`
-- `0.37_Quantum_Photovoltaics_Solar_Paint`
+- `0.37_Quantum_Photovoltaics`
 - `0.38_Bio_Synthetic_Integration`
+- `0.39_Bio_Smart_City`
 
 Shared rule:
 
@@ -75,4 +75,4 @@ Shared rule:
 2. Convert `Tier B` core topics in batches by blocker type:
    `claim cleanup`, `data-provenance cleanup`, `verification cleanup`, `math and physics boundary cleanup`.
 3. Reframe `Tier C` as a broad synthesis topic that must earn structure before stronger claims.
-4. Keep all `0.27-0.38` topics in `Tier D` until a later phase explicitly promotes them into the research core.
+4. Keep all `0.27-0.39` topics in `Tier D` until a later phase explicitly promotes them into the research core.

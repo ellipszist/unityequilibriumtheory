@@ -1,5 +1,11 @@
-# Limitations: Bio-Smart City
+# Physical & Engineering Limitations: 0.39_Bio_Smart_City
 
-- **Conceptual Maturity:** This topic is currently at Stage 1 (Idea/Draft).
-- **Dependent Reliability:** Errors in underlying topics (e.g., 0.32 or 0.38) will propagate here.
-- **Engineering Gap:** No current industrial process exists to implement these integrations at scale.
+This document outlines the known boundaries, physical assumptions, and experimental limitations of Bio-Smart City Systems & Ecological Microclimates.
+
+## 1. Physical Boundaries & Edge Cases
+- **Key Limitations:** Scalability constraints across urban zones, seasonal climate variations
+- **Model Scope:** Current models reflect early-stage exploratory simulations. They do not constitute peer-reviewed external lab validations.
+
+## 2. Claim Restraint
+- Do not upgrade model fits or theoretical simulations into production-ready claims.
+- All metrics are subject to empirical lab validation before commercial or engineering scaling.

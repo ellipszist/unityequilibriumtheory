@@ -137,6 +137,8 @@ Open these files first when you need repository-wide context:
 2. [`CONTRIBUTING.md`](./CONTRIBUTING.md)
 3. [`docs/topics/README.md`](./docs/topics/README.md)
 4. [`docs/topics/For Work/00_README.md`](./docs/topics/For%20Work/00_README.md)
+5. [`uet_history/README.md`](./uet_history/README.md)
+6. [`uet_history/BOOK_WORKFLOW.md`](./uet_history/BOOK_WORKFLOW.md)
 
 Then choose the next standard by task.
 
@@ -155,6 +157,18 @@ Then choose the next standard by task.
 1. [`docs/topics/For Work/02_Project_Workflow_and_Lifecycle.md`](./docs/topics/For%20Work/02_Project_Workflow_and_Lifecycle.md)
 2. [`docs/topics/For Work/10_Topic_Architecture_5x5(+1).md`](./docs/topics/For%20Work/10_Topic_Architecture_5x5(+1).md)
 3. the relevant standards in `11-18`
+
+### If the task is book writing or history publishing
+
+1. [`uet_history/BOOK_WORKFLOW.md`](./uet_history/BOOK_WORKFLOW.md)
+2. [`uet_history/PIPELINE.md`](./uet_history/PIPELINE.md)
+3. [`uet_history/3_publish/books/README.md`](./uet_history/3_publish/books/README.md)
+4. [`uet_history/3_publish/books/BOOK_REGISTRY.json`](./uet_history/3_publish/books/BOOK_REGISTRY.json)
+5. the existing canonical book folder and its local README, blueprint, source register,
+   claim map, verification spec, and update log when present
+
+The shared book workflow is reusable across titles. A book's local voice, chapter structure,
+and citation surface remain authoritative for that book.
 
 ### If the task is multi-wave hardening or progress reconstruction
 
@@ -440,9 +454,24 @@ required to explain the same hardening wave.
 ## Book workspace path discipline
 
 - `uet_history/3_publish/books/BOOK_REGISTRY.json` is the canonical map for book identity and paths.
+- `uet_history/BOOK_WORKFLOW.md` is the shared working standard for every book; do not invent a
+  separate title-specific lifecycle unless the reusable standard itself needs to change.
 - Before creating or publishing a book path, inspect the registry and existing `books/` folders.
 - An existing book folder is canonical. Do not create a semantic alias for the same book.
 - Keep raw and draft directories local unless the registry explicitly lists a reviewed public file.
+- If a book belongs to a three-book Section, inspect the parent Section Blueprint, Volume Matrix, and Dependency Map before changing the local Book Blueprint.
+- Use human-readable academic-domain labels for visible Section and book folders. The parent folder shows the Section grouping, so do not add a visible `section_` prefix or Section number to the parent folder; child book folders use a numeric volume prefix for reading order; keep stable `section_id`, `book_id`, and `volume_number` values in registries and manifests.
+- Treat `W00`-`W18` as separate gates. At minimum, keep research design, literature review,
+  source digest/provenance, claim map/blueprint lock, Draft 1, Draft 2, integrity check,
+  fact/citation audit, developmental review, line edit, copyedit, rights/ethics, proof,
+  publish, and maintenance distinguishable. A planned source is not yet a verified citation.
+- A literature review is not a source list: it must synthesize positions, uncertainty,
+  contrary evidence, limitations, and gaps before the blueprint is locked.
+- For in-place manuscript edits, run the W09 integrity check and preserve original
+  prose/structure unless the change request explicitly authorizes rewrite, deletion,
+  merge, or reorder.
+- Preserve one canonical working draft and use a local `UPDATE_LOG.md` to record each completed
+  writing wave when the book is developed across multiple passes.
 - A book update is complete only when the canonical source, registry state, scoped commit, and public `main` path agree.
 - If a public copy differs from the canonical working file, stop and record the drift before publishing another copy.
 ## Agent behavior expectations
@@ -463,6 +492,17 @@ required to explain the same hardening wave.
   docs, artifacts, and update logs in that order rather than relying on memory.
 
 ## Quick routing
+
+- Book workflow or repeatable writing gates: open [`uet_history/BOOK_WORKFLOW.md`](./uet_history/BOOK_WORKFLOW.md)
+- Book identity, paths, and public/local boundary: open [`uet_history/3_publish/books/README.md`](./uet_history/3_publish/books/README.md),
+  [`BOOK_REGISTRY.json`](./uet_history/3_publish/books/BOOK_REGISTRY.json), and [`PIPELINE.md`](./uet_history/PIPELINE.md)
+- Book source traceability: inspect the local `REFERENCE_REGISTER`, `CLAIM_MAP`, and `VERIFICATION_SPEC` before rewriting prose
+- Book research design and literature review: open `BOOK_WORKFLOW.md` and the local
+  research-design/literature-review records before drafting evidence-led chapters.
+- Manuscript integrity and in-place editing: inspect the W09 manifest or verification log
+  before trusting line counts, chapter boundaries, or preservation claims.
+- Section or three-book blueprint work: inspect the parent Section manifest and S00-S09 gate state,
+  Section Blueprint, Volume Matrix, and Dependency Map before drafting or revising a child book blueprint.
 
 - Claim sounds too strong: open
   [`04_Claim_and_Evidence_Rubric.md`](./docs/topics/For%20Work/04_Claim_and_Evidence_Rubric.md)

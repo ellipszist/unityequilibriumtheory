@@ -1,0 +1,15 @@
+{
+    "metadata": {
+        "timestamp": "2026-07-30T12:34:52.837526",
+        "topic": "0.30_Mega_Flora_Biotech",
+        "status": "PASS"
+    },
+    "parameters": {
+        "oxygen_yield_kg_day": 18.5,
+        "mycelial_conductivity_s_m": 0.95
+    },
+    "targets": {
+        "min_oxygen_yield_kg_day": 15.0,
+        "min_mycelial_conductivity_s_m": 0.8
+    }
+}

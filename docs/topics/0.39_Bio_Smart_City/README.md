@@ -1,5 +1,13 @@
 # Topic 0.39: Bio-Smart City - Water City Model (เมืองน้ำอัจฉริยะ)
 
+## Evidence boundary
+
+- Classification: `Tier D / Future Concept / Proposal Model`.
+- This README is an exploratory overview; internal simulation outputs are not external validation.
+- The control files are `FORMULA_AUDIT.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `Data/DATA_MANIFEST.md`, `Result/artifacts/`, and `UPDATE_LOG.md`.
+- Do not interpret proposal metrics as production readiness or theory-core evidence.
+
+
 ## Purpose
 
 To design a "Water City" model that addresses urban land density, flooding, and ecological scarcity. By integrating UET's Bio-Synthetic (0.38), Ocean Recovery (0.29), and Mega Flora (0.30) technologies, this topic aims to create floating or amphibious urban habitats that operate in harmony with water ecosystems while maximizing green space.

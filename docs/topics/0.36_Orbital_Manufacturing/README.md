@@ -6,6 +6,14 @@ description: "Research module for Orbital Manufacturing within the Unity Equilib
 
 # 🏗️ 0.36 UET Integrated Shipyard & Orbital Foundry
 
+## Evidence boundary
+
+- Classification: `Tier D / Future Concept / Proposal Model`.
+- This README is an exploratory overview; internal simulation outputs are not external validation.
+- The control files are `FORMULA_AUDIT.md`, `LIMITATIONS.md`, `VERIFICATION_SPEC.md`, `Data/DATA_MANIFEST.md`, `Result/artifacts/`, and `UPDATE_LOG.md`.
+- Do not interpret proposal metrics as production readiness or theory-core evidence.
+
+
 <!-- 
 {
   "@context": "https://schema.org",
@@ -19,7 +27,7 @@ description: "Research module for Orbital Manufacturing within the Unity Equilib
 > [!NOTE]
 > **AI-Digest**: Topic 0.36 coordinates the 'UET Integrated Shipyard', responsible for the heavy fabrication of spacecraft hulls (Stingray-class) and orbital infrastructure. Using Graphene-Perovskite composite matrices, the shipyard enables vacuum-based 10.8pm precision assembly for a solar-system-wide industrial base. / Topic 0.36 ควบคุม 'อู่ต่อเรือรวมศูนย์ UET' ทำหน้าที่ก่อสร้างโครงสร้างพื้นฐานในอวกาศและลำตัวยานอวกาศ (Stingray) ด้วยความแม่นยำระดับนาโนและวัสดุผสมกราฟีนที่ทนทานต่อสภาพแวดล้อมนอกโลก
 
-![Status](https://img.shields.io/badge/Status-100%25_PASS-brightgreen)
+![Status]()
 ![Department](https://img.shields.io/badge/Dept-Heavy_Construction-blue)
 ![Architecture](https://img.shields.io/badge/Standard-Integrated_Shipyard-blueviolet)
 

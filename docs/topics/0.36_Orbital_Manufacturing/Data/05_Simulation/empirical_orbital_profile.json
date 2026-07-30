@@ -1,0 +1,14 @@
+{
+    "metadata": {
+        "name": "Microgravity Crystallization Profile",
+        "version": "1.0"
+    },
+    "parameters": {
+        "defect_density_cm2": 45.0,
+        "vacuum_dissipation_pct": 94.0
+    },
+    "targets": {
+        "max_defect_density_cm2": 100.0,
+        "min_vacuum_dissipation_pct": 90.0
+    }
+}

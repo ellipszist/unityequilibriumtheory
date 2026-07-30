@@ -127,14 +127,13 @@ thailand_proposals/**/*.webp
 !/uet_history/3_publish/books/00_uet_core_theory/
 /uet_history/3_publish/books/00_uet_core_theory/*
 !/uet_history/3_publish/books/00_uet_core_theory/README.md
-!/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/
-/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/*
-!/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/README.md
-!/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/book_1_blueprint.md
+
+
 # Re-open only curated history files while keeping the rest of uet_history local-only.
 !/uet_history/
 /uet_history/*
 !/uet_history/README.md
+!/uet_history/BOOK_WORKFLOW.md
 !/uet_history/PUBLIC_MANIFEST.md
 !/uet_history/3_publish/
 /uet_history/3_publish/*
@@ -145,10 +144,8 @@ thailand_proposals/**/*.webp
 !/uet_history/3_publish/books/00_uet_core_theory/
 /uet_history/3_publish/books/00_uet_core_theory/*
 !/uet_history/3_publish/books/00_uet_core_theory/README.md
-!/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/
-/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/*
-!/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/README.md
-!/uet_history/3_publish/books/0.1 Econmi - The Origin of Wealth/book_1_blueprint.md
+
+
 
 # Explicit raw and draft guardrails: these inputs remain local-only.
 /uet_history/1_raw/
@@ -162,3 +159,76 @@ docs/topics/**/Result/_Logs/
 /thailand_proposals/**/raw/
 /thailand_proposals/**/Raw/
 /.playwright-cli/
+
+# Section 3 parent and book-control metadata. Raw, digest, and draft material remains local-only.
+!/uet_history/3_publish/books/SECTION_REGISTRY.json
+!/uet_history/3_publish/books/history_media_power/
+/uet_history/3_publish/books/history_media_power/*
+!/uet_history/3_publish/books/history_media_power/SECTION_MANIFEST.json
+!/uet_history/3_publish/books/history_media_power/SECTION_BLUEPRINT.md
+!/uet_history/3_publish/books/history_media_power/VOLUME_MATRIX.md
+!/uet_history/3_publish/books/history_media_power/DEPENDENCY_MAP.md
+!/uet_history/3_publish/books/history_media_power/SHARED_TERMS.md
+!/uet_history/3_publish/books/history_media_power/SECTION_UPDATE_LOG.md
+!/uet_history/3_publish/books/history_media_power/01_history_media/
+/uet_history/3_publish/books/history_media_power/01_history_media/*
+!/uet_history/3_publish/books/history_media_power/01_history_media/README.md
+!/uet_history/3_publish/books/history_media_power/01_history_media/book_blueprint.md
+!/uet_history/3_publish/books/history_media_power/01_history_media/BOOK_MANIFEST.json
+!/uet_history/3_publish/books/history_media_power/02_political_psychology/
+/uet_history/3_publish/books/history_media_power/02_political_psychology/*
+!/uet_history/3_publish/books/history_media_power/02_political_psychology/README.md
+!/uet_history/3_publish/books/history_media_power/02_political_psychology/book_blueprint.md
+!/uet_history/3_publish/books/history_media_power/02_political_psychology/BOOK_MANIFEST.json
+!/uet_history/3_publish/books/history_media_power/03_philosophy_governance/
+/uet_history/3_publish/books/history_media_power/03_philosophy_governance/*
+!/uet_history/3_publish/books/history_media_power/03_philosophy_governance/README.md
+!/uet_history/3_publish/books/history_media_power/03_philosophy_governance/book_blueprint.md
+!/uet_history/3_publish/books/history_media_power/03_philosophy_governance/BOOK_MANIFEST.json
+# Section parent packages for the Bio/Psychology and Economics/AI/Energy trilogies.
+!/uet_history/3_publish/books/biology_psychology_economics/
+/uet_history/3_publish/books/biology_psychology_economics/*
+!/uet_history/3_publish/books/biology_psychology_economics/SECTION_MANIFEST.json
+!/uet_history/3_publish/books/biology_psychology_economics/SECTION_BLUEPRINT.md
+!/uet_history/3_publish/books/biology_psychology_economics/VOLUME_MATRIX.md
+!/uet_history/3_publish/books/biology_psychology_economics/DEPENDENCY_MAP.md
+!/uet_history/3_publish/books/biology_psychology_economics/SHARED_TERMS.md
+!/uet_history/3_publish/books/biology_psychology_economics/SECTION_UPDATE_LOG.md
+!/uet_history/3_publish/books/biology_psychology_economics/01_biology/
+/uet_history/3_publish/books/biology_psychology_economics/01_biology/*
+!/uet_history/3_publish/books/biology_psychology_economics/01_biology/README.md
+!/uet_history/3_publish/books/biology_psychology_economics/01_biology/book_blueprint.md
+!/uet_history/3_publish/books/biology_psychology_economics/01_biology/BOOK_MANIFEST.json
+!/uet_history/3_publish/books/biology_psychology_economics/02_biology_psychology/
+/uet_history/3_publish/books/biology_psychology_economics/02_biology_psychology/*
+!/uet_history/3_publish/books/biology_psychology_economics/02_biology_psychology/README.md
+!/uet_history/3_publish/books/biology_psychology_economics/02_biology_psychology/book_blueprint.md
+!/uet_history/3_publish/books/biology_psychology_economics/02_biology_psychology/BOOK_MANIFEST.json
+!/uet_history/3_publish/books/biology_psychology_economics/03_psychology_economics/
+/uet_history/3_publish/books/biology_psychology_economics/03_psychology_economics/*
+!/uet_history/3_publish/books/biology_psychology_economics/03_psychology_economics/README.md
+!/uet_history/3_publish/books/biology_psychology_economics/03_psychology_economics/book_blueprint.md
+!/uet_history/3_publish/books/biology_psychology_economics/03_psychology_economics/BOOK_MANIFEST.json
+!/uet_history/3_publish/books/economics_ai_energy/
+/uet_history/3_publish/books/economics_ai_energy/*
+!/uet_history/3_publish/books/economics_ai_energy/SECTION_MANIFEST.json
+!/uet_history/3_publish/books/economics_ai_energy/SECTION_BLUEPRINT.md
+!/uet_history/3_publish/books/economics_ai_energy/VOLUME_MATRIX.md
+!/uet_history/3_publish/books/economics_ai_energy/DEPENDENCY_MAP.md
+!/uet_history/3_publish/books/economics_ai_energy/SHARED_TERMS.md
+!/uet_history/3_publish/books/economics_ai_energy/SECTION_UPDATE_LOG.md
+!/uet_history/3_publish/books/economics_ai_energy/01_economics/
+/uet_history/3_publish/books/economics_ai_energy/01_economics/*
+!/uet_history/3_publish/books/economics_ai_energy/01_economics/README.md
+!/uet_history/3_publish/books/economics_ai_energy/01_economics/book_1_blueprint.md
+!/uet_history/3_publish/books/economics_ai_energy/01_economics/BOOK_MANIFEST.json
+!/uet_history/3_publish/books/economics_ai_energy/02_economics_ai/
+/uet_history/3_publish/books/economics_ai_energy/02_economics_ai/*
+!/uet_history/3_publish/books/economics_ai_energy/02_economics_ai/README.md
+!/uet_history/3_publish/books/economics_ai_energy/02_economics_ai/book_2_blueprint.md
+!/uet_history/3_publish/books/economics_ai_energy/02_economics_ai/BOOK_MANIFEST.json
+!/uet_history/3_publish/books/economics_ai_energy/03_economics_energy/
+/uet_history/3_publish/books/economics_ai_energy/03_economics_energy/*
+!/uet_history/3_publish/books/economics_ai_energy/03_economics_energy/README.md
+!/uet_history/3_publish/books/economics_ai_energy/03_economics_energy/book_3_blueprint.md
+!/uet_history/3_publish/books/economics_ai_energy/03_economics_energy/BOOK_MANIFEST.json

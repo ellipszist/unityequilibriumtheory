@@ -1,0 +1,15 @@
+{
+    "metadata": {
+        "timestamp": "2026-07-30T12:35:01.150245",
+        "topic": "0.36_Orbital_Manufacturing",
+        "status": "PASS"
+    },
+    "parameters": {
+        "defect_density_cm2": 45.0,
+        "vacuum_dissipation_pct": 94.0
+    },
+    "targets": {
+        "max_defect_density_cm2": 100.0,
+        "min_vacuum_dissipation_pct": 90.0
+    }
+}

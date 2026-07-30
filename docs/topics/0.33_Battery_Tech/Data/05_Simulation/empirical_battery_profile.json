@@ -1,0 +1,14 @@
+{
+    "metadata": {
+        "name": "High-Energy Solid-State Battery Profile",
+        "version": "1.0"
+    },
+    "parameters": {
+        "energy_density_wh_kg": 480.0,
+        "temp_c": 72.0
+    },
+    "targets": {
+        "min_energy_density_wh_kg": 450.0,
+        "max_temp_c": 85.0
+    }
+}

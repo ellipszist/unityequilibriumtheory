@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "book_id": "0.1_origin_of_wealth",
+  "section_id": "section_economics_ai_energy",
+  "volume_number": 1,
+  "title": "The Origin of Wealth",
+  "status": "IN_PROGRESS",
+  "section_blueprint_version": "economics-ai-energy-v1",
+  "canonical_path": "uet_history/3_publish/books/economics_ai_energy/01_economics",
+  "blueprint_path": "book_1_blueprint.md",
+  "state": "public_curated",
+  "excluded_local_paths": ["1_raw/", "2_digest/", "ch_drafts/"]
+}

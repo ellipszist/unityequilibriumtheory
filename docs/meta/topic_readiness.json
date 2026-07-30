@@ -439,7 +439,19 @@
       "evidence_target": "Evidence Grade A",
       "research_architecture": "10 waves / 12 WARN gates",
       "strategy_social_claim_status": "QUARANTINED",
-      "current_controlling_gates": ["WARN_SOURCE", "WARN_REVISION", "WARN_LICENSE", "WARN_UNIT", "WARN_MEASUREMENT", "WARN_MISSINGNESS", "WARN_LEAKAGE", "WARN_BASELINE", "WARN_CAUSAL", "WARN_EXTERNAL", "WARN_PUBLICATION"]
+      "current_controlling_gates": [
+        "WARN_SOURCE",
+        "WARN_REVISION",
+        "WARN_LICENSE",
+        "WARN_UNIT",
+        "WARN_MEASUREMENT",
+        "WARN_MISSINGNESS",
+        "WARN_LEAKAGE",
+        "WARN_BASELINE",
+        "WARN_CAUSAL",
+        "WARN_EXTERNAL",
+        "WARN_PUBLICATION"
+      ]
     },
     {
       "name": "0.26_Cosmic_Dynamic_Frame",
@@ -547,34 +559,19 @@
       "recommended_next_action": "Keep this topic explicitly exploratory until real datasets, standards docs, and verification outputs exist."
     },
     {
-      "name": "0.33_High_Energy_Density_Battery_Materials",
-      "kind": "numbered_topic",
-      "scope_class": "future_concept",
-      "status": "Draft",
-      "audit_tier": "D",
-      "structure_score": 1,
-      "data_reality_score": 0,
-      "data_reality_status": "no data path",
-      "verification_score": 1,
-      "mathematical_rigor_score": 1,
-      "physical_rigor_score": 1,
-      "claim_integrity_score": 2,
-      "recommended_next_action": "Keep this topic explicitly exploratory until real datasets, standards docs, and verification outputs exist."
-    },
-    {
       "name": "0.33_Battery_Tech",
       "kind": "numbered_topic",
       "scope_class": "future_concept",
       "status": "Draft",
       "audit_tier": "D",
-      "structure_score": 1,
+      "structure_score": 2,
       "data_reality_score": 0,
-      "data_reality_status": "no data path",
-      "verification_score": 0,
-      "mathematical_rigor_score": 0,
+      "data_reality_status": "synthetic/local baseline",
+      "verification_score": 1,
+      "mathematical_rigor_score": 1,
       "physical_rigor_score": 1,
       "claim_integrity_score": 1,
-      "recommended_next_action": "Keep this duplicate-number future topic explicitly exploratory until it is merged, renamed, or given a full standards package."
+      "recommended_next_action": "Keep this topic explicitly exploratory; distinguish synthetic/local baselines from empirical data and do not use it as theory-core evidence."
     },
     {
       "name": "0.34_Information_Centric_Nanofabrication",
@@ -622,19 +619,19 @@
       "recommended_next_action": "Keep this topic explicitly exploratory until real datasets, standards docs, and verification outputs exist."
     },
     {
-      "name": "0.37_Quantum_Photovoltaics_Solar_Paint",
+      "name": "0.37_Quantum_Photovoltaics",
       "kind": "numbered_topic",
       "scope_class": "future_concept",
       "status": "Draft",
       "audit_tier": "D",
       "structure_score": 1,
       "data_reality_score": 0,
-      "data_reality_status": "no data path",
+      "data_reality_status": "synthetic/local baseline",
       "verification_score": 1,
       "mathematical_rigor_score": 0,
       "physical_rigor_score": 1,
       "claim_integrity_score": 3,
-      "recommended_next_action": "Keep this topic explicitly exploratory until real datasets, standards docs, and verification outputs exist."
+      "recommended_next_action": "Keep this topic explicitly exploratory; distinguish synthetic/local baselines from empirical data and do not use it as theory-core evidence."
     },
     {
       "name": "0.38_Bio_Synthetic_Integration",

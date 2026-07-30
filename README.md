@@ -60,7 +60,7 @@ uet_harness/
 │   │   │   ├── Result/            │     Output figures & logs
 │   │   │   ├── Doc/               │     Documentation & papers
 │   │   │   └── README.md          │     Topic overview
-│   │   └── ...                    ← Topics 0.2 through 0.37
+│   │   └── ...                    ← Topics 0.2 through 0.39
 │   ├── knowledge_base/            ← Vector store & tensorizer
 │   ├── scripts/                   ← Runners, audits, data tools
 │   └── Docs/                      ← Framework standards & guides
@@ -134,7 +134,7 @@ UET is not just a physics theory. It is a **"Civilization-Level Operating System
 | **Environment** | Ocean Shield | Reverse Ocean Acidification | [0.29 Ocean](./docs/topics/0.29_Ocean_Recovery/) |
 | **Agriculture** | Mega Flora | Acoustic Nutrient Injection | [0.30 Mega Flora](./docs/topics/0.30_Mega_Flora_Biotech/) |
 | **Space** | Warp Drive | Reach 0.1c via Singularities | [0.31 Propulsion](./docs/topics/0.31_SpaceTime_Propulsion/) |
-| **Energy** | Universal Capture| Quantum Solar Paint | [0.37 Solar Paint](./docs/topics/0.37_Quantum_Photovoltaics_Solar_Paint/) |
+| **Energy** | Universal Capture| Quantum Solar Paint | [0.37 Solar Paint](./docs/topics/0.37_Quantum_Photovoltaics/) |
 
 ---
 
@@ -331,11 +331,11 @@ python docs/topics/run_all_tests.py
 | 0.30 | [Mega Flora](./docs/topics/0.30_Mega_Flora_Biotech/) | Acoustic Nutrient Delivery | ✅ |
 | 0.31 | [SpaceTime Prop](./docs/topics/0.31_SpaceTime_Propulsion/) | Relativistic Slingshot (.1c) | ✅ |
 | 0.32 | [Micro Fusion](./docs/topics/0.32_Micro_Nuclear_Fusion/) | Resonant Confinement (p-B11)| ✅ |
-| 0.33 | [Battery Mat.](./docs/topics/0.33_High_Energy_Density_Battery_Materials/) | Geometric Energy Density | ✅ |
+| 0.33 | [Battery Mat.](./docs/topics/0.33_Battery_Tech/) | Geometric Energy Density | ✅ |
 | 0.34 | [Nanofab](./docs/topics/0.34_Information_Centric_Nanofabrication/) | Topological Assembly | ✅ |
 | 0.35 | [Digital Auto.](./docs/topics/0.35_ICN_Digital_Automation/) | Logic-Driven Digital Twins | ✅ |
 | 0.36 | [Orbital Mfg.](./docs/topics/0.36_Orbital_Manufacturing/) | High-Throughput Space Foundry | ✅ |
-| 0.37 | [Solar Paint](./docs/topics/0.37_Quantum_Photovoltaics_Solar_Paint/) | Multi-Megawatt Coatings | ✅ |
+| 0.37 | [Solar Paint](./docs/topics/0.37_Quantum_Photovoltaics/) | Multi-Megawatt Coatings | ✅ |
 
 ---
 

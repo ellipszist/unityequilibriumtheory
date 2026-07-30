@@ -9,19 +9,18 @@
 
 ## Scope note
 
-This directory currently contains future-facing battery-technology material and is not part
-of the theory-core evidence package. It also shares the `0.33` numeric prefix with
-`0.33_High_Energy_Density_Battery_Materials`, so a later cleanup pass should either merge,
-rename, or clearly separate the two directories.
+This directory is the canonical workspace for the future-facing battery-technology topic.
+The former `0.33_High_Energy_Density_Battery_Materials/` path was migrated here; do not
+create a second topic directory with the same numeric prefix.
 
 ## Evidence boundary
 
-- No topic-root standards package is currently present.
-- No canonical dataset path is locked.
-- No verification command or artifact contract is locked.
+- `Data/DATA_MANIFEST.md` is the canonical data and provenance entry point.
+- `VERIFICATION_SPEC.md` and `Result/artifacts/` define the current simulation boundary.
+- The topic remains exploratory and is not part of the theory-core evidence package.
 - Do not cite this topic as evidence for UET theory-core credibility.
 
 ## Next action
 
-Keep this topic explicitly exploratory until it is merged, renamed, or promoted through the
-same standards gate used for other topics.
+Keep this topic explicitly exploratory until its evidence, thresholds, and external validation
+support a stronger readiness state.

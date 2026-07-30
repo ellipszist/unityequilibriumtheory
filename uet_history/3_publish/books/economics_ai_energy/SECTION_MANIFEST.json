@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "section_id": "section_economics_ai_energy",
+  "title": "Economics, AI & Energy",
+  "profile": "THREE_BOOK_SECTION",
+  "status": "IN_PROGRESS",
+  "current_gate": "S00_SECTION_INTAKE_AND_BOUNDARY",
+  "blueprint_version": "economics-ai-energy-v1",
+  "volume_count": 3,
+  "volume_ids": ["0.1_origin_of_wealth", "0.2_ai_and_the_divergence", "0.3_dynamic_energy_money"],
+  "canonical_path": "uet_history/3_publish/books/economics_ai_energy",
+  "claim_boundary": "working Section architecture; not a publication or evidence-validation claim",
+  "controlling_blocker": "parent-level allocation, literature synthesis, and cross-book dependency review",
+  "next_controller": "S00",
+  "open_items": [
+    "complete the parent Section research design",
+    "map the relationship between wealth, AI divergence, and energy-backed money",
+    "review evidence ceilings before promoting any economic or technological proposal"
+  ],
+  "artifacts": {
+    "blueprint": "SECTION_BLUEPRINT.md",
+    "volume_matrix": "VOLUME_MATRIX.md",
+    "dependency_map": "DEPENDENCY_MAP.md",
+    "shared_terms": "SHARED_TERMS.md",
+    "update_log": "SECTION_UPDATE_LOG.md"
+  }
+}

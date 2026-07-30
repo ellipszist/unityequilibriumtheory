@@ -9,8 +9,8 @@ book manuscripts.
 - Work may happen at any time and should be recorded in the relevant ledger or source file.
 - Research receives a short weekly pulse check; a public post is optional unless there is a
   meaningful artifact, finding, or blocker change.
-- The four streams are reviewed together once per month:
-  `R` research, `P` policy / mega project, `T` core theory book, and `B` sub-book.
+- The five streams are reviewed together once per month:
+  `R` research, `P` policy / mega project, `S` Section / three-book series, `T` core theory book, and `B` sub-book.
 - If nothing materially changed, write `No material change` and retain the current stage.
 - Remove completed items from the active plan if desired, but keep the pack and source record.
 
@@ -18,6 +18,11 @@ book manuscripts.
 
 `INBOX` → `FRAMING` → `BLUEPRINT` → `DRAFT / BUILD` → `REVIEW` → `READY` → `PUBLISHED` → `MAINTENANCE`
 
+For book streams (`T` and `B`), use the shared book workflow in `uet_history/BOOK_WORKFLOW.md`
+for detailed W00-W18 gates, including research design, literature review, claim map,
+manuscript integrity, fact/citation, rights, proof, and maintenance. The monthly pack records the high-level stage and next controller;
+it does not replace the source register, claim map, verification spec, or update log.
+For the Section stream (`S`), use S00-S09 before or alongside the W00-W18 workflow of each child book.
 The stage describes where the work is in its process. It does not mean that the work is
 scientifically validated or publication-ready.
 
@@ -27,6 +32,7 @@ scientifically validated or publication-ready.
 | --- | --- | --- |
 | `R` | Research | `docs/topics/`, `docs/meta/` |
 | `P` | Policy / mega project | `thailand_proposals/` |
+| `S` | Section / three-book series | registered Section parent workspace |
 | `T` | Core theory book | `uet_history/3_publish/books/00_uet_core_theory/` |
 | `B` | Sub-book | `uet_history/3_publish/books/` other book folders |
 
@@ -60,6 +66,17 @@ Overall note: `[one sentence describing the month without inflating readiness]`
 - Claim boundary: `[concept / blueprint / draft proposal / ready for review]`
 - Tags: `#policy #[stage] #work-process`
 
+#### `S` Section / three-book series
+
+- Work item: `[Section and its three volumes]`
+- Current stage: `[S00-S09 stage]`
+- This month: `[one concrete parent-level change]`
+- Evidence / basis: `[Section Blueprint, Volume Matrix, Dependency Map, or update log]`
+- Still open: `[one controlling Section issue]`
+- Next gate: `[one Section gate or affected volume gate]`
+- Claim boundary: `[Section concept / blueprint / reviewed architecture / publication coordination]`
+- Tags: `#section #[stage] #writing-process`
+
 #### `T` Core theory book
 
 - Work item: `[chapter, section, or manuscript]`
@@ -88,6 +105,7 @@ Overall note: `[one sentence describing the month without inflating readiness]`
 - [ ] Each card names its current process stage.
 - [ ] Each card states what changed and what remains open.
 - [ ] Source links or file paths are included where available.
+- [ ] Book cards identify the source or review record that supports the current stage.
 - [ ] Research wording stays within its evidence layer.
 - [ ] No card claims completion merely because an update was posted.
 - [ ] The pack is retained after publication as the monthly history.

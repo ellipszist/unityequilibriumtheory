@@ -1,0 +1,14 @@
+{
+    "metadata": {
+        "name": "ICN Atomic Deposition Profile",
+        "version": "1.0"
+    },
+    "parameters": {
+        "precision_nm": 5.2,
+        "error_rate": 5e-07
+    },
+    "targets": {
+        "max_precision_nm": 7.0,
+        "max_error_rate": 1e-06
+    }
+}

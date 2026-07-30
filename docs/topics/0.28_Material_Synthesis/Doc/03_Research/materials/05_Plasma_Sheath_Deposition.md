@@ -107,7 +107,7 @@ $$d_{sheath} = \lambda_{De} \cdot \left(\frac{2V_s}{kT_e/e}\right)^{3/4} \cdot \
 ## 🔗 Cross-Links
 - → [0.31: Resonant Drag Shield](../../../0.31_SpaceTime_Propulsion/Doc/03_Research/03_Resonant_Drag_Shield.md) — วัสดุผิวยานที่สังเคราะห์ด้วย UCSD จะ Compatible กับ RPL Field มากกว่า
 - → [0.32: Plasma Barrier](../../../0.32_Micro_Nuclear_Fusion/Doc/03_Research/paper/ANALYSIS_PLASMA_BARRIER.md) — หลักการ Sheath Control เดียวกัน ต่างบริบท
-- → [0.33: Structural Battery](../../../0.33_High_Energy_Density_Battery_Materials/Doc/03_Research/theory/10_Structural_Energy_Integration.md) — Graphene Electrode คุณภาพสูงจาก UCSD ช่วยเพิ่ม Energy Density
+- → [0.33: Structural Battery](../../../0.33_Battery_Tech/Doc/03_Research/theory/10_Structural_Energy_Integration.md) — Graphene Electrode คุณภาพสูงจาก UCSD ช่วยเพิ่ม Energy Density
 
 ---
 *UET Research — Topic 0.28 | GAP Module Identified & Filed: 2026-03-31*

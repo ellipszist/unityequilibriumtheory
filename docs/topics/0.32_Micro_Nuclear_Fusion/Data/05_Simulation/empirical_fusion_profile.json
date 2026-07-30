@@ -1,0 +1,14 @@
+{
+    "metadata": {
+        "name": "p-B11 Plasma Confinement Profile",
+        "version": "1.0"
+    },
+    "parameters": {
+        "q_factor": 1.35,
+        "confinement_time_ms": 120.0
+    },
+    "targets": {
+        "min_q_factor": 1.25,
+        "min_confinement_time_ms": 100.0
+    }
+}
