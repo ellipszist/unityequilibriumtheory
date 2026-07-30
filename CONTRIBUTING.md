@@ -1,138 +1,299 @@
-# 🤝 Contributing to Unity Equilibrium Theory
+# Contributing to Unity Equilibrium Theory
 
-![Status](https://img.shields.io/badge/Tests-100%25_Green-brightgreen)
-![Standard](https://img.shields.io/badge/Standard-Triple_Green-success)
-![Rigor](https://img.shields.io/badge/Rigor-Zero_Curve_Fitting-orange)
+This repository contains research, theory history, book work, Thailand policy
+proposals, optional services, and repository operations. Contributions must keep
+each area understandable, traceable, and safe to publish.
 
-> **"Data is the final arbiter. If the math implies a parameter you cannot derive from first principles, it is wrong."**
+This file is the contribution entrypoint. It does not replace the detailed
+standards. The canonical research manual is
+[\`docs/topics/For Work/\`](docs/topics/For%20Work/). The root
+[\`AGENTS.md\`](AGENTS.md) defines the day-to-day agent workflow.
 
----
+## Source of truth and workspace routing
 
-## 📋 Table of Contents
+| Area | Canonical workspace | Use it for |
+| --- | --- | --- |
+| Research core | \`docs/core/\`, \`docs/topics/\` | equations, methods, experiments, evidence, topic status |
+| Research standards | \`docs/topics/For Work/\`, \`AGENTS.md\` | shared workflow and claim/data/formula/result rules |
+| Theory history | \`uet_history/\` | historical theory notes and archive structure |
+| Book writing | \`uet_history/3_publish/books/\` | canonical book identity, blueprints, reviewed public files |
+| Thailand policy | \`thailand_proposals/\` | policy and project proposals |
+| Services and tools | \`services_and_experiments/\` | optional KB, agents, API, GraphQL, Rust, and automation |
+| Repository operations | \`.github/\`, \`WORK_LEDGER/\`, root manifests | CI, checkpoints, publishing, and hygiene |
+| Raw or private work | ignored local paths | raw sources, private exports, large media, scratch work |
 
-- [🤝 Contributing to Unity Equilibrium Theory](#-contributing-to-unity-equilibrium-theory)
-  - [📋 Table of Contents](#-table-of-contents)
-  - [🌟 The "Triple-Green" Standard](#-the-triple-green-standard)
-  - [⚖️ Scientific Integrity Laws](#️-scientific-integrity-laws)
-    - [1. Zero Curve Fitting (The "Iron Rule")](#1-zero-curve-fitting-the-iron-rule)
-    - [2. No "Shadow Math"](#2-no-shadow-math)
-    - [3. Real Data Mandate](#3-real-data-mandate)
-  - [🏗️ The 5x4 Grid Architecture](#️-the-5x4-grid-architecture)
-  - [� Coding Standards (OpSec \& Portability)](#-coding-standards-opsec--portability)
-    - [1. Robust Path Finding (`UETPathManager`)](#1-robust-path-finding-uetpathmanager)
-    - [2. Robust Imports](#2-robust-imports)
-    - [3. Visual Evidence](#3-visual-evidence)
-  - [� Workflow: Adding a New Topic](#-workflow-adding-a-new-topic)
-  - [� Glass Box \& Logging](#-glass-box--logging)
+For path decisions, read [\`CONTEXT-MAP.md\`](CONTEXT-MAP.md). Existing
+canonical paths win. Do not create a second semantic folder because an old path
+is inconvenient. If a migration is needed, record the old path, replacement
+path, and public boundary first.
 
----
+## Read before editing
 
-## 🌟 The "Triple-Green" Standard
+Start with:
 
-Every Topic in UET (e.g., `0.1_Galaxy_Rotation`) MUST achieve 3 badges to be considered "Complete":
+1. [\`README.md\`](README.md)
+2. [\`AGENTS.md\`](AGENTS.md)
+3. [\`docs/topics/README.md\`](docs/topics/README.md)
+4. [\`docs/topics/For Work/00_README.md\`](docs/topics/For%20Work/00_README.md)
 
-1.  **[Status: PASS]** - All validation scripts pass with high accuracy vs real data.
-2.  **[Standard: Extreme Simplicity]** - Code is readable, minimal, and fully transparent.
-3.  **[Architecture: 5x4 Grid]** - File structure strictly follows the 5-layer model.
+Then read the narrowest relevant standard:
 
-If a PR breaks any of these, it will be rejected.
+- governance and AI: \`01_Project_Research_Constitution.md\`,
+  \`03_AI_Usage_and_Governance.md\`, \`04_Claim_and_Evidence_Rubric.md\`
+- topic lifecycle and structure: \`02_Project_Workflow_and_Lifecycle.md\`,
+  \`10_Topic_Architecture_5x5(+1).md\`
+- code, data, references, results, formulas: standards \`11\` through \`17\`
+- hardening and history: \`18_Research_Hardening_Workflow.md\`,
+  \`24_TEMPLATE_UPDATE_LOG.md\`
+- books: [\`uet_history/BOOK_WORKFLOW.md\`](uet_history/BOOK_WORKFLOW.md),
+  [\`uet_history/3_publish/books/README.md\`](uet_history/3_publish/books/README.md),
+  [\`BOOK_REGISTRY.json\`](uet_history/3_publish/books/BOOK_REGISTRY.json)
 
----
+For AI work, use
+[\`26_AI_AGENT_SKILL_MAP.md\`](docs/topics/For%20Work/26_AI_AGENT_SKILL_MAP.md)
+and [\`27_AI_AGENT_ROUTING_MATRIX.md\`](docs/topics/For%20Work/27_AI_AGENT_ROUTING_MATRIX.md).
+Skills are adapters, not sources of truth.
 
-## ⚖️ Scientific Integrity Laws
+## Evidence and claim discipline
 
-### 1. Zero Curve Fitting (The "Iron Rule")
-You are **FORBIDDEN** from introducing "tuned parameters" (e.g., `fudge_factor = 1.25`) to match data.
-*   **Allowed:** Constants derived from Physics (G, c, h) or UET Core (Kappa=0.05, Beta=0.1).
-*   **Prohibited:** Arbitrary multipliers used to fix errors for a specific dataset.
+The repository must preserve the difference between an idea, a model, an
+internal benchmark, and externally supported research.
 
-### 2. No "Shadow Math"
-*   **Definition:** Hiding physics calculations inside `helper.py` or obscure loops while the main script looks clean.
-*   **Rule:** All Physics Logic (The Master Equation) MUST be visible in `01_Engine` or the Main Research Script.
+- Do not let prose outrun the latest artifact, gate, manifest, or source record.
+- Keep theory separate from benchmark behavior, fitting separate from
+  prediction, and internal evidence separate from external evidence.
+- Record formula origin, variable meaning, units, derivation class, and proof
+  status before presenting a formula as established.
+- Record source identity, DOI or URL when available, terms, preprocessing,
+  units, local path, hash or version, and benchmark role for important data.
+- Treat \`solved\`, \`proved\`, \`verified\`, \`exact\`, and \`production grade\` as
+  restricted wording. Prefer \`hypothesis\`, \`proposal\`, \`model\`,
+  \`derived relation\`, \`reproduced internally\`, or
+  \`passes current internal benchmark\`.
+- If documents disagree with a stable artifact or machine-readable gate, use
+  the latest stable artifact or gate as controlling state and record the drift.
+- A folder existing, a script running once, or a polished figure is not proof
+  of a stronger readiness level.
 
-### 3. Real Data Mandate
-*   **Rule:** Every topic must validate against **EXTERNAL** peer-reviewed data (SPARC, LIGO, CERN).
-*   **Proof:** You must include the DOI reference in the `README.md` and the data file in `Data/`.
+See
+[\`04_Claim_and_Evidence_Rubric.md\`](docs/topics/For%20Work/04_Claim_and_Evidence_Rubric.md)
+and the [documentation style guide](docs/UET_Documentation_Details/STANDARDS/documentation_style_guide.md).
 
----
+## Standard work packages
 
-## 🏗️ The 5x4 Grid Architecture
+### Research topics
 
-Every Topic must follow this EXACT folder structure:
+Use the current \`5x5(+1)\` architecture and lifecycle in \`For Work\`; do not
+copy the retired 5x4 or Triple-Green rules. Required files depend on readiness
+stage. A serious structured topic normally exposes the relevant set of:
 
-```
-0.XX_Topic_Name/
-│
-├── Code/                   # The Logic Layer
-│   ├── 01_Engine/          # Core Physics Class (Reusable)
-│   ├── 02_Proof/           # Mathematical Derivations
-│   ├── 03_Research/        # Main Validation Scripts (Real Data)
-│   └── 04_Competitor/      # Comparison vs Standard Model
-│
-├── Data/                   # The Evidence Layer
-│   └── (CSV/JSON files from external sources)
-│
-├── Doc/                    # The Narrative Layer
-│   ├── ANALYSIS_Template.md
-│   └── (Theory explanations)
-│
-├── Ref/                    # The Citation Layer
-│   ├── References.bib      # DOIs and Metadata
-│   └── *.pdf               # Original Research Papers
-│
-└── Result/                 # The Proof Layer
-    └── (Generated PNG/PDFs from Code/)
-```
+- \`README.md\` with problem, scope, assumptions, method, evidence/status
+  matrix, conceptual diagram, limitations, reproducibility, and readiness
+- \`METHOD.md\` or an equivalent method record
+- \`DATA_MANIFEST.md\` for important inputs
+- \`FORMULA_AUDIT.md\` for formula origin, units, constants, proof status
+- \`VERIFICATION_SPEC.md\` for metrics, thresholds, baselines, and rerun rules
+- \`LIMITATIONS.md\` for boundaries and failure modes
+- scripts, inputs, and traceable result artifacts
+- \`UPDATE_LOG.md\` after repeated hardening or when durable reconstruction is needed
 
----
+Promote only when the evidence and artifacts for the next stage exist. Demote
+when provenance, reproducibility, or claim support weakens.
 
-## � Coding Standards (OpSec & Portability)
+### Books and theory history
 
-### 1. Robust Path Finding (`UETPathManager`)
-**NEVER** use hardcoded paths (e.g., `C:/Users/...`). Use the Glass Box Path Manager:
-```python
-from docs.core.uet_glass_box import UETPathManager
+\`BOOK_REGISTRY.json\` controls book identity, canonical paths, public paths, and
+publication state. Before creating or moving a book:
 
-# Correct way to save a result
-result_dir = UETPathManager.get_result_dir("0.1", "Experiment_Name")
-plt.savefig(result_dir / "Figure_1.png")
-```
+1. inspect the registry and existing folder
+2. update the canonical folder, never a semantic alias
+3. keep \`1_raw/\` and \`ch_drafts/\` local unless a reviewed public file is listed
+4. keep Section manifests, blueprint, volume matrix, dependency map, shared
+   terms, and update log aligned
+5. keep W00-W18 gates distinguishable; a planned source is not a citation
+6. preserve one canonical working source and record each writing wave locally
 
-### 2. Robust Imports
-Use dynamic imports where possible to avoid rigid folder dependencies.
-```python
-# Standard UET Import Block
-import sys
-from pathlib import Path
-root = Path(__file__).resolve().parents[3] # Adjust depth as needed
-sys.path.append(str(root))
-```
+A book update is complete only when source, registry, scoped commit, and public
+\`main\` path agree.
 
-### 3. Visual Evidence
-Every **Research Script** must output a **Visualization** (PNG) to `Result/`. 
-*   Text-only output is considered "Draft".
-*   "Silent Scripts" (no output) are considered "Broken".
+### Thailand policy and project proposals
 
----
+Use \`thailand_proposals/\` for proposal narratives, source-backed assumptions,
+budgets, implementation plans, and presentation inputs. Keep proposal claims
+separate from research-topic readiness. Large raw media and source files remain
+local and are named in a manifest when needed for provenance.
 
-## � Workflow: Adding a New Topic
+### Services, knowledge base, and platform experiments
 
-1.  **Scaffold**: Create the 5x4 Grid folders.
-2.  **Ingest**: Download real data to `Data/`.
-3.  **Engine**: Write `Engine_TopicName.py` implementing the Master Equation.
-4.  **Research**: Write `Research_TopicName.py` to run the Engine against Data.
-5.  **Visualize**: Plot specific graphs comparing `Prediction` vs `Observation`.
-6.  **Document**: Write `README.md` following the **Triple-Green Template**.
+Research must work when services are stopped. \`services_and_experiments/\` is
+an optional future platform layer:
 
----
+- \`uet_core\` may provide tested reusable code but does not own research status
+- \`uet_kb\` is an optional derived retrieval index
+- agents orchestrate work but do not decide claim or readiness status
+- API, GraphQL, MCP, and other interfaces need a real use case, stable
+  input/output schema, provenance, regeneration path, tests, and manageable cost
 
-## � Glass Box & Logging
+\`docs/knowledge_base/\` and vector, SQLite, LanceDB, or PostgreSQL indexes are
+derived retrieval layers. They must point to canonical sources and never
+control claims, status, or publication.
 
-The system uses a "Flight Recorder" called **Glass Box**.
-*   **Log Location**: `data_logs/` (at project root).
-*   **Usage**: Heavy simulations (Time-Series) automatically log here.
-*   **Policy**: Do not commit large log files to Git. (They are ignored via `.gitignore`).
+## The standard contribution loop
 
----
+Every substantial section of work follows this loop:
 
-> **By contributing to UET using these standards, you are helping build a verifiable, unified future for physics.**
+1. **Classify.** Choose the area id in \`WORK_LEDGER/AREAS.md\`, workspace, and
+   intended public boundary.
+2. **Inspect.** Check \`git status\`, canonical sources, artifacts, gates,
+   manifests, and update-log evidence.
+3. **Read.** Use the narrowest governing \`For Work\` or book guide.
+4. **Edit.** Change the canonical source, not a derived index, screenshot, copy,
+   or public alias.
+5. **Review.** Run the relevant verifier, formula audit, provenance audit,
+   artifact review, manuscript gate, test, or link check.
+6. **Synchronize.** Update topic/book \`UPDATE_LOG.md\` when a wave completes
+   and add one factual daily \`WORK_LEDGER/YYYY/\` entry.
+7. **Inspect scope.** Review \`git diff --stat\`, changed paths, ignored raw
+   paths, and claim wording. Keep standards and topic changes separate unless linked.
+8. **Commit.** Commit only a safe, coherent unit.
+9. **Publish.** Push the branch or open/update a draft PR the same day and
+   verify the remote points to the commit just made.
+
+These records are different:
+
+| Record | What it proves |
+| --- | --- |
+| \`WORK_LEDGER/\` | what work section happened and what remains |
+| commit | which files changed together |
+| push or PR | which change is visible remotely |
+| topic/book \`UPDATE_LOG.md\` | how a local wave changed its blocker or stage |
+| artifact, gate, or manifest | what was measured, checked, or sourced |
+
+A ledger entry never replaces an artifact, manifest, or gate.
+
+## Ledger checkpoint rule
+
+Each completed section gets a short entry containing:
+
+- timestamp or section label
+- area id and workspace or topic
+- files or artifact group changed
+- verifier, audit, or review actually run
+- public-safety status: \`safe\`, \`partial\`, \`private\`, or \`blocked\`
+- what remains uncommitted, private, or unsafe to publish
+- next commit, push, PR, or manifest action
+
+When 10 entries accumulate for current unpushed work:
+
+1. stop expanding scope
+2. inspect status and stage only the safe coherent unit
+3. commit it
+4. push or open a draft PR the same day
+5. record any blocker and exact next action before continuing
+
+Do not begin an eleventh entry without making that checkpoint decision.
+
+## Public boundary and file hygiene
+
+Do not commit secrets, credentials, \`.env\` files, private exports, build
+outputs, caches, compiled binaries, debug output, or unreviewed raw media.
+The \`.gitignore\` is the default boundary, but always review the staged list.
+
+- Raw sources belong in the appropriate ignored raw directory.
+- Book \`1_raw/\` and \`ch_drafts/\` remain local by default.
+- Large proposal media belongs in a manifest, not a normal documentation commit.
+- Generated indexes, caches, logs, and local databases are derived outputs.
+- Never use hardcoded paths such as \`C:/Users/...\`; use repo-relative paths and
+  path helpers.
+- When a raw input is needed to explain a public result, publish provenance and
+  regeneration instructions, not the raw asset by default.
+
+Do not rely on a broad \`git add\` when unrelated local work exists. Inspect the
+exact intended file list before staging.
+
+## Coding and reproducibility expectations
+
+- Keep derivation-critical logic visible; do not hide claim-producing behavior
+  behind vague helpers.
+- Give runnable scripts clear inputs, outputs, units, assumptions, and failure
+  conditions.
+- Make figures and reports traceable to scripts, inputs, configuration, metrics,
+  and thresholds.
+- Use existing path and import conventions instead of global aliases.
+- Add tests or validation at the boundary affected by the change.
+- Document only commands that were actually run. Do not claim the whole repo is
+  green because one script ran.
+
+## AI-assisted contributions
+
+AI may help with exploration, drafting, coding, auditing, summarizing, and
+presentation preparation. The contributor remains responsible for checking
+sources, evidence, code, and final claims.
+
+AI-assisted work must:
+
+- read \`AGENTS.md\` and the governing local standard before editing
+- distinguish repository facts from inference
+- preserve source, artifact, gate, manifest, and log boundaries
+- avoid upgrading evidence or readiness because wording sounds confident
+- leave a human-reviewable diff and name checks that actually ran
+- use the narrowest skill instead of creating a mega-skill
+
+See [\`03_AI_Usage_and_Governance.md\`](docs/topics/For%20Work/03_AI_Usage_and_Governance.md).
+
+## Validation checklist
+
+Before committing, confirm what applies:
+
+- [ ] canonical path and governing standard identified
+- [ ] no duplicate semantic path or stale alias created
+- [ ] claims match artifact, gate, manifest, and source evidence
+- [ ] formulas have origin, units, variable definitions, and proof status
+- [ ] data provenance and preprocessing recorded
+- [ ] result artifacts identify inputs, metrics, thresholds, and verifier
+- [ ] relevant verifier, test, audit, or manuscript gate actually ran
+- [ ] topic/book \`UPDATE_LOG.md\` updated when required
+- [ ] factual \`WORK_LEDGER\` entry added
+- [ ] raw, private, cache, build, binary, and secret files excluded
+- [ ] \`git diff --check\` clean
+- [ ] staged file list is the intended coherent unit
+- [ ] commit is pushed or draft PR remote state is verified
+
+## Branches, commits, and pull requests
+
+The normal path is a focused \`codex/...\` or feature branch plus a PR. Keep a
+PR small enough to identify source of truth, evidence boundary, validation, and
+remaining blockers.
+
+Each PR should state:
+
+- area and canonical workspace
+- reason for the change
+- files or artifact groups included
+- checks actually run and result
+- claim or readiness impact
+- raw/private files deliberately excluded
+- next blocker or follow-up action
+
+Use direct push to \`main\` only when the repository owner explicitly requests
+it and the unit is coherent, validated, and safe. Verify the remote \`main\` SHA
+after pushing. Otherwise use a draft PR when work or its public boundary is incomplete.
+
+Do not mix unrelated cleanup, generated output, or speculative architecture work
+into a research or book commit. If a shared standard must change to make a wave
+reproducible, link that change to the pilot in the relevant update log.
+
+## Useful entrypoints
+
+- Research standards: [\`docs/topics/For Work/00_README.md\`](docs/topics/For%20Work/00_README.md)
+- Topic index and status: [\`docs/topics/README.md\`](docs/topics/README.md)
+- Repository routing: [\`CONTEXT-MAP.md\`](CONTEXT-MAP.md)
+- Agent rules: [\`AGENTS.md\`](AGENTS.md)
+- Book workflow: [\`uet_history/BOOK_WORKFLOW.md\`](uet_history/BOOK_WORKFLOW.md)
+- Book identity and public boundary: [\`BOOK_REGISTRY.json\`](uet_history/3_publish/books/BOOK_REGISTRY.json)
+- Work history: [\`WORK_LEDGER/\`](WORK_LEDGER/)
+- AI skill routing: [\`27_AI_AGENT_ROUTING_MATRIX.md\`](docs/topics/For%20Work/27_AI_AGENT_ROUTING_MATRIX.md)
+
+The goal is not to make the repository look busy. It is to make each
+meaningful change understandable, reproducible within its stated boundary, and
+visible in the right history.
