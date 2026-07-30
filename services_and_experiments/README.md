@@ -1,6 +1,11 @@
 # Services and Experiments
 
-This folder keeps prototype service code that supports UET tooling experiments.
+This folder keeps source-only prototype service code for a future UET platform.
+
+The current UET execution path is research-first: work in docs/,
+uet_history/, and thailand_proposals/ must remain useful with these
+services stopped or unavailable. Read [SERVICE_STATUS.md](./SERVICE_STATUS.md)
+before changing or activating a component.
 
 It is source-only by default. Do not commit local runtime state, generated build
 outputs, compiled binaries, credentials, `.env` files, or machine-specific caches.
@@ -24,3 +29,7 @@ outputs, compiled binaries, credentials, `.env` files, or machine-specific cache
 - Treat these services as prototypes unless a later document says otherwise.
 - Keep generated artifacts out of Git and publish binaries through releases only.
 - Store real secrets outside the repository.
+- Do not make research topics depend on a service for status, claims, gates, or
+  provenance.
+- Keep service status changes separate from topic hardening unless the same
+  scoped decision requires both.

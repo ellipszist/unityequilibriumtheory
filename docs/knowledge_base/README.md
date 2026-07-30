@@ -28,7 +28,20 @@ The larger service plan is documented in:
 
 ---
 
-![Status](https://img.shields.io/badge/Status-ACTIVE-brightgreen)
+## Boundary
+
+This directory is a derived retrieval layer. Canonical research files,
+metadata, manifests, verifier artifacts, gates, and update logs remain the
+source of truth. SQLite, LanceDB, vector, MCP, and future PostgreSQL indexes
+must be regenerable from selected source files and must return source paths.
+
+The local helper is the supported personal-first path. The larger MCP,
+Postgres, and GraphQL design remains future platform work and must not block
+research, books, or policy work.
+
+---
+
+![Status](https://img.shields.io/badge/Status-FUTURE-blue)
 ![Client](https://img.shields.io/badge/Client-Python-blue)
 ![Integration](https://img.shields.io/badge/Integration-MCP_Bridge-orange)
 

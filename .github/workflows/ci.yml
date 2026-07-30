@@ -1,4 +1,4 @@
-name: UET Platform CI
+name: UET Research Corpus CI
 
 on:
   push:
@@ -105,7 +105,7 @@ jobs:
         NEXT_TELEMETRY_DISABLED: 1
         DATABASE_URL: "postgresql://fake:fake@localhost:5432/fake"
 
-  # ==================== Python Tests ====================
+  # ==================== Optional Python Service Checks ====================
   python-test:
     name: Python Tests
     runs-on: ubuntu-latest
@@ -126,17 +126,20 @@ jobs:
         python -m pip install --upgrade pip
         pip install pytest
     
-    - name: Run Python agent tests
+    - name: Run optional Python agent tests
       run: |
-        pytest uet_agents/ -v --tb=short || true
-      continue-on-error: true
+        if find services_and_experiments/uet_agents -type f \( -name 'test_*.py' -o -name '*_test.py' \) | grep -q .; then
+          pytest services_and_experiments/uet_agents/ -v --tb=short
+        else
+          echo "No service tests found; skipping optional agent checks."
+        fi
 
   # ==================== Docker Build ====================
   docker-build:
     name: Docker Build
     runs-on: ubuntu-latest
     needs: [rust-check, web-check]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: vars.UET_PLATFORM_DEPLOY == 'true' && github.event_name == 'push' && github.ref == 'refs/heads/main'
     
     steps:
     - uses: actions/checkout@v4
@@ -190,12 +193,12 @@ jobs:
         cache-from: type=gha
         cache-to: type=gha,mode=max
 
-  # ==================== Deploy to Railway ====================
+  # ==================== Optional future-platform deployment ====================
   deploy:
     name: Deploy to Railway
     runs-on: ubuntu-latest
     needs: [docker-build]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: vars.UET_PLATFORM_DEPLOY == 'true' && github.event_name == 'push' && github.ref == 'refs/heads/main'
     
     steps:
     - uses: actions/checkout@v4

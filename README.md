@@ -74,7 +74,7 @@ uet_harness/
 
 > **Note:** The `docs/` folder was previously named `research_uet/`. All internal paths have been updated. If you find outdated references, please open an issue.
 
-> **Current Repository Scope:** This repository is now kept as the main UET research corpus. Earlier platform/service prototypes such as `uet_core`, `uet_miner`, `uet_security`, `uet_agents`, `uet_api`, and `uet_platform` are not active root folders here anymore; they were archived outside this research repo so the theory, evidence, documentation, and reproducible research work stay clear. The design intent is preserved below as roadmap/prototype context rather than a claim that the full platform or mining network is live.
+> **Current Repository Scope:** This repository is the main UET research corpus. The source-only prototypes under services_and_experiments/ are retained as a future platform layer, but they are not required for research, books, or policy work and are not a live application, mining network, or production knowledge service. The design intent is preserved as roadmap/prototype context.
 
 ---
 
@@ -375,7 +375,7 @@ python docs/topics/run_all_tests.py
 
 **Status:** 🧭 Concept + archived prototype direction | 🚧 Not an active live network
 
-Uet-Cash is a proof-of-useful-work (PoUW) cryptocurrency concept where mining = solving or verifying useful UET equations. The section below preserves the original architecture intent and prototype notes, but the current research repository does not ship an active miner, token, chain, wallet, or production reward network. Earlier Rust/service experiments were moved out of the root repository and should be treated as archived prototype material until a separate implementation repo, security review, and economic/governance design are created.
+Uet-Cash is a proof-of-useful-work concept, not a live network. Source-only service experiments remain under services_and_experiments/ as future-platform material. A separate implementation repository, security review, and economic/governance design would be required before activation.
 
 ### Architecture
 

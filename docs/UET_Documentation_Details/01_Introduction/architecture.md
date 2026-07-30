@@ -1,68 +1,72 @@
 ---
-title: "Architecture"
-description: "สถาปัตยกรรมระบบของ UET Platform"
+title: "UET Repository Architecture"
+description: "Research-first architecture with an optional future platform layer"
 ---
 
-# Architecture Overview
+# UET Repository Architecture
 
-**UET Platform** ถูกออกแบบมาในรูปแบบ **Microservices** เพื่อให้สามารถรองรับการขยายขนาด (Scalability) และแยกระบบย่อยออกจากกันได้อย่างชัดเจน โดยแบ่งออกเป็น 3 ส่วนหลักๆ ดังนี้:
+## Current decision
 
-## 1. Web Frontend (`uet_web`)
+This repository is research-first. The canonical work is the research corpus,
+theory/history, books, Thailand proposals, evidence artifacts, manifests, gates,
+and work logs. The optional platform layer is retained for future use but does
+not control or block ordinary research work.
 
-ส่วนติดต่อผู้ใช้ (User Interface) ที่สร้างด้วยเทคโนโลยีเว็บสมัยใหม่ เพื่อให้ใช้งานได้รวดเร็วและรองรับ SEO
+The previous platform design is preserved in
+[`architecture_legacy.md`](./architecture_legacy.md). It is historical design
+context, not a statement that the web app, deployment, payment, or production
+knowledge service is active.
 
-- **Framework:** Next.js 14 (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS, Shadcn UI
-- **Internationalization (i18n):** รองรับภาษาไทย, อังกฤษ, จีน ผ่าน `next-intl`
-- **Features:** 
-  - ระบบบัญชีผู้ใช้และการจัดการ API Keys (Dashboard)
-  - หน้าแสดงเอกสาร Documentation (MDX/Markdown)
-  - ระบบถาม-ตอบ AI Knowledge Base (MCP Interface)
+## Layers
 
-## 2. Backend API (`uet_api`)
+| Layer | Canonical location | Responsibility | Dependency rule |
+| :-- | :-- | :-- | :-- |
+| Research | `docs/core/`, `docs/topics/` | equations, experiments, evidence, topic packages | independent of services |
+| Standards | `AGENTS.md`, `docs/topics/For Work/` | workflow, claim, data, formula, result, and publication rules | governs all research work |
+| History and books | `uet_history/` | theory history, book registry, blueprints, reviewed publish tree | uses its own book workflow |
+| Policy | `thailand_proposals/` | policy and project narratives | claims must link to evidence or be labeled proposal |
+| Repository operations | `WORK_LEDGER/`, `.github/`, manifests | checkpoints, CI, publishing, hygiene | records changes, not scientific truth |
+| Optional platform | `services_and_experiments/` | agents, retrieval, API, Rust experiments | source-only and non-blocking |
+| Derived retrieval | `docs/knowledge_base/`, future indexes | local search and selected retrieval copies | never source of truth |
 
-ส่วนประมวลผลหลัก ทำหน้าที่เป็นประตูเชื่อมระหว่าง Frontend กับฐานข้อมูลและระบบ AI 
-
-- **Framework:** Axum (Rust)
-- **Database ORM:** SQLx (PostgreSQL)
-- **Features:**
-  - **Authentication:** ระบบ Login/Register และ JWT (JSON Web Tokens)
-  - **MCP Server:** Model Context Protocol สำหรับเชื่อมต่อกับ LLMs
-  - **Vector Search:** ระบบค้นหาความหมาย (Semantic Search) ใน Knowledge Base โดยใช้ FastEmbed (BGE-M3) สำหรับแปลงข้อความเป็นเวกเตอร์
-  - **Rate Limiting & Quota:** ระบบจำกัดปริมาณการใช้งาน API สำหรับผู้ใช้แต่ละระดับ
-  - **Payment Integration:** เชื่อมต่อกับ Stripe สำหรับระบบ Subscription
-
-## 3. Database & Knowledge Base (`uetlab`)
-
-ระบบจัดเก็บข้อมูลทั้งหมดของแพลตฟอร์ม
-
-- **Database Engine:** PostgreSQL 16
-- **Vector Extension:** pgvector (สำหรับเก็บและค้นหา Embedding)
-- **Stored Data:**
-  - `users`, `plans`, `api_keys`: ข้อมูลผู้ใช้งานและสิทธิ์
-  - `mcp_kb_documents`, `mcp_kb_chunks`: ข้อมูลเอกสารฟิสิกส์ ทฤษฎี และสมการของ UET
-  - `mcp_query_logs`: ประวัติการค้นหาและการใช้งาน
-
-## 4. Model Context Protocol (MCP) Integration
-
-ระบบที่ทำให้ UET โดดเด่นคือการนำ **MCP** มาใช้เพื่อเปิดให้ AI Agents (เช่น Claude, ChatGPT, Cascade) สามารถดึงข้อมูลทฤษฎี UET ไปใช้คำนวณและวิเคราะห์ได้อย่างถูกต้อง
-
-- `GET /api/mcp/topics` - ดึงรายชื่อหัวข้อทั้งหมด (31 โดเมน)
-- `GET /api/mcp/equation/:name` - ดึงสมการเฉพาะเจาะจงและคำอธิบายตัวแปร
-- `POST /api/mcp/query` - ค้นหาแบบ Natural Language ด้วย Vector Search
-
-## 5. Deployment Architecture
-
-UET Platform สามารถรันได้ทั้งบน Local Machine และบน Cloud ผ่าน Docker
+## Data and control flow
 
 ```mermaid
-graph TD
-    User([User / Browser]) -->|HTTPS| Frontend[Next.js Frontend]
-    Frontend -->|REST API| Backend[Rust API / Axum]
-    Backend -->|SQL| Database[(PostgreSQL + pgvector)]
-    Backend -->|Embeddings| FastEmbed[FastEmbed BGE-M3]
-    AI_Agents([AI Agents via MCP]) -->|REST API| Backend
+flowchart LR
+    Sources["Research, books, and policy sources"] --> Evidence["Artifacts, gates, manifests, and logs"]
+    Evidence --> Public["Reviewed public outputs"]
+    Sources -. selected inputs .-> Index["Optional derived index"]
+    Index -. future access .-> Platform["MCP, agents, API, GraphQL"]
+    Platform -. must not control .-> Evidence
 ```
 
-*สถาปัตยกรรมนี้รองรับการนำไปติดตั้งบน Railway.app หรือ AWS/GCP ได้อย่างง่ายดายผ่าน `Dockerfile` ที่เตรียมไว้ให้*
+## Service roles
+
+- `uet_core/` is a future reusable Rust calculation library. It is not the
+  canonical implementation or status authority for `docs/core/`.
+- `uet_kb/` is a future retrieval/MCP implementation. Its index must be
+  regenerable from canonical files and must return source paths.
+- `uet_agents/` is optional orchestration and ingestion support. It cannot
+  promote claims, gates, verifier results, or publication status.
+- `uet_api/` and GraphQL are future access layers. They remain parked until a
+  stable client, schema, and concrete use case justify activation.
+- `uet_chain/`, `uet_security/`, `uet_miner/`, and unfinished modules remain
+  future or archived experiments, not a live network or security boundary.
+
+## Operating rules
+
+1. Edit the canonical source before updating any derived index.
+2. Keep research usable with all services stopped or unavailable.
+3. Record topic or book waves in their local update log when one exists.
+4. Record every coherent repo work section in `WORK_LEDGER/`.
+5. At ten ledger entries for unpushed work, stop expanding scope and checkpoint.
+6. Do not add GraphQL, public API, deployment, authentication, or embeddings
+   only because the legacy platform design mentions them.
+
+## Related records
+
+- [`CONTEXT-MAP.md`](../../../CONTEXT-MAP.md)
+- [`CONTEXT.md`](../../../CONTEXT.md)
+- [`SERVICE_STATUS.md`](../../../services_and_experiments/SERVICE_STATUS.md)
+- [`ADR 0001`](../../adr/0001-research-first-optional-platform.md)
+- [`knowledge-system-architecture.md`](./knowledge-system-architecture.md)
