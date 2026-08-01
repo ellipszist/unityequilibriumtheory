@@ -22,11 +22,11 @@ from datetime import UTC, datetime
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
-from economic_hardening_common import ARTIFACT_DIR, RAW_ROOT, ROOT, sha256, utc_now, write_json
+from economic_hardening_common import ARTIFACT_DIR, BLS_INDUSTRY_HOURS_RAW_DIR, BLS_INDUSTRY_HOURS_VINTAGE, RAW_ROOT, ROOT, sha256, utc_now, write_json
 
 
 ARTIFACT = ARTIFACT_DIR / "0_25_bls_industry_hours_source_package.json"
-RAW_DIR = RAW_ROOT / "bls_labor" / "2026-07-16"
+RAW_DIR = BLS_INDUSTRY_HOURS_RAW_DIR
 CONCORDANCE = RAW_ROOT / "bea_io" / "2026-07-16" / "BEA-Industry-and-Commodity-Codes-and-NAICS-Concordance.xlsx"
 NORMALIZED = ROOT / "docs" / "topics" / "0.25_Strategy_Power_Economics" / "Data" / "03_Research" / "bls_industry_hours_1987_2024.csv"
 MANIFEST = RAW_DIR / "source_manifest.json"
@@ -189,7 +189,7 @@ def main() -> int:
         "provider": "U.S. Bureau of Labor Statistics",
         "official_page": "https://www.bls.gov/productivity/technical-notes/industry-hours-and-employment.htm",
         "api_url": API_URL,
-        "retrieval_vintage": "2026-07-16",
+        "retrieval_vintage": BLS_INDUSTRY_HOURS_VINTAGE,
         "retrieval_mode": "refresh" if refresh else "frozen-archive-reuse",
         "terms": "BLS public API; retain provider attribution and follow current API usage policy.",
         "coverage": f"{len(returned_codes)} returned four-digit NAICS series from a {len(codes)}-code BEA concordance candidate set; {START_YEAR}-{END_YEAR}",

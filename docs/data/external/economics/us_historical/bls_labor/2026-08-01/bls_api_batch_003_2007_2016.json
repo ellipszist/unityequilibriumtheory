@@ -1,0 +1,1189 @@
+{
+  "error": null,
+  "provider": "U.S. Bureau of Labor Statistics",
+  "request": {
+    "endyear": "2016",
+    "seriesid": [
+      "IPUAN1111__L200000000",
+      "IPUAN1112__L200000000",
+      "IPUAN1113__L200000000",
+      "IPUAN1114__L200000000",
+      "IPUAN1119__L200000000",
+      "IPUAN1121__L200000000",
+      "IPUAN1122__L200000000",
+      "IPUAN1123__L200000000",
+      "IPUAN1124__L200000000",
+      "IPUAN1125__L200000000",
+      "IPUAN1129__L200000000",
+      "IPUAN2121__L200000000",
+      "IPUAN2122__L200000000",
+      "IPUAN2123__L200000000",
+      "IPUAN2131__L200000000",
+      "IPUAN2211__L200000000",
+      "IPUAN2212__L200000000",
+      "IPUAN2213__L200000000",
+      "IPUAN3111__L200000000",
+      "IPUAN3112__L200000000",
+      "IPUAN3113__L200000000",
+      "IPUAN3114__L200000000",
+      "IPUAN3115__L200000000",
+      "IPUAN3116__L200000000",
+      "IPUAN3117__L200000000",
+      "IPUAN3118__L200000000",
+      "IPUAN3119__L200000000",
+      "IPUAN3121__L200000000",
+      "IPUAN3122__L200000000",
+      "IPUAN3131__L200000000",
+      "IPUAN3132__L200000000",
+      "IPUAN3133__L200000000",
+      "IPUAN3141__L200000000",
+      "IPUAN3149__L200000000",
+      "IPUAN3211__L200000000",
+      "IPUAN3212__L200000000",
+      "IPUAN3219__L200000000",
+      "IPUAN3221__L200000000",
+      "IPUAN3222__L200000000",
+      "IPUAN3231__L200000000",
+      "IPUAN3241__L200000000",
+      "IPUAN3251__L200000000",
+      "IPUAN3252__L200000000",
+      "IPUAN3253__L200000000",
+      "IPUAN3254__L200000000",
+      "IPUAN3255__L200000000",
+      "IPUAN3256__L200000000",
+      "IPUAN3259__L200000000",
+      "IPUAN3261__L200000000",
+      "IPUAN3262__L200000000"
+    ],
+    "startyear": "2007"
+  },
+  "response": {
+    "Results": {
+      "series": [
+        {
+          "data": [
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "1087.703",
+              "year": "2016"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "1058.475",
+              "year": "2015"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "1116.569",
+              "year": "2014"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "1273.824",
+              "year": "2013"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "1167.996",
+              "year": "2012"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "1133.406",
+              "year": "2011"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "1068.403",
+              "year": "2010"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "1056.959",
+              "year": "2009"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "1027.966",
+              "year": "2008"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "989.742",
+              "year": "2007"
+            }
+          ],
+          "seriesID": "IPUAN1111__L200000000"
+        },
+        {
+          "data": [
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "218.932",
+              "year": "2016"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "271.829",
+              "year": "2015"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "254.373",
+              "year": "2014"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "318.566",
+              "year": "2013"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "255.169",
+              "year": "2012"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "272.347",
+              "year": "2011"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "265.737",
+              "year": "2010"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "253.419",
+              "year": "2009"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "248.254",
+              "year": "2008"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "240.948",
+              "year": "2007"
+            }
+          ],
+          "seriesID": "IPUAN1112__L200000000"
+        },
+        {
+          "data": [
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "460.725",
+              "year": "2016"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "485.803",
+              "year": "2015"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "460.577",
+              "year": "2014"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "505.660",
+              "year": "2013"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "492.476",
+              "year": "2012"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "446.094",
+              "year": "2011"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "455.495",
+              "year": "2010"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "464.195",
+              "year": "2009"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "497.207",
+              "year": "2008"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "476.192",
+              "year": "2007"
+            }
+          ],
+          "seriesID": "IPUAN1113__L200000000"
+        },
+        {
+          "data": [
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "267.872",
+              "year": "2016"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "314.445",
+              "year": "2015"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "298.918",
+              "year": "2014"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "316.326",
+              "year": "2013"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "302.023",
+              "year": "2012"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "335.586",
+              "year": "2011"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "321.839",
+              "year": "2010"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "318.054",
+              "year": "2009"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "354.392",
+              "year": "2008"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "348.782",
+              "year": "2007"
+            }
+          ],
+          "seriesID": "IPUAN1114__L200000000"
+        },
+        {
+          "data": [
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "811.342",
+              "year": "2016"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "828.907",
+              "year": "2015"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "879.077",
+              "year": "2014"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "1032.995",
+              "year": "2013"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "827.386",
+              "year": "2012"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "753.139",
+              "year": "2011"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "812.197",
+              "year": "2010"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "807.335",
+              "year": "2009"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "769.624",
+              "year": "2008"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "751.032",
+              "year": "2007"
+            }
+          ],
+          "seriesID": "IPUAN1119__L200000000"
+        },
+        {
+          "data": [
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "1719.208",
+              "year": "2016"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "1802.727",
+              "year": "2015"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "1878.648",
+              "year": "2014"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "2089.047",
+              "year": "2013"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "1610.616",
+              "year": "2012"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "1910.347",
+              "year": "2011"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "1830.928",
+              "year": "2010"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "1790.717",
+              "year": "2009"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "1847.063",
+              "year": "2008"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "1808.318",
+              "year": "2007"
+            }
+          ],
+          "seriesID": "IPUAN1121__L200000000"
+        },
+        {
+          "data": [
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "87.932",
+              "year": "2016"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "92.509",
+              "year": "2015"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "87.778",
+              "year": "2014"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "90.480",
+              "year": "2013"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "86.979",
+              "year": "2012"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "74.787",
+              "year": "2011"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "103.614",
+              "year": "2010"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "86.478",
+              "year": "2009"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "92.067",
+              "year": "2008"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "102.854",
+              "year": "2007"
+            }
+          ],
+          "seriesID": "IPUAN1122__L200000000"
+        },
+        {
+          "data": [
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "183.081",
+              "year": "2016"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "193.538",
+              "year": "2015"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "170.147",
+              "year": "2014"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "196.275",
+              "year": "2013"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "176.578",
+              "year": "2012"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "203.078",
+              "year": "2011"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "199.128",
+              "year": "2010"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "201.008",
+              "year": "2009"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "219.376",
+              "year": "2008"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "235.861",
+              "year": "2007"
+            }
+          ],
+          "seriesID": "IPUAN1123__L200000000"
+        },
+        {
+          "data": [
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "149.214",
+              "year": "2016"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "126.492",
+              "year": "2015"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "180.687",
+              "year": "2014"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "133.388",
+              "year": "2013"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "131.786",
+              "year": "2012"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "172.253",
+              "year": "2011"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "162.111",
+              "year": "2010"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "145.607",
+              "year": "2009"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "124.453",
+              "year": "2008"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "116.624",
+              "year": "2007"
+            }
+          ],
+          "seriesID": "IPUAN1124__L200000000"
+        },
+        {
+          "data": [
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "32.759",
+              "year": "2016"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "31.175",
+              "year": "2015"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "33.401",
+              "year": "2014"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "32.814",
+              "year": "2013"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "33.996",
+              "year": "2012"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "35.940",
+              "year": "2011"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "37.041",
+              "year": "2010"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "33.678",
+              "year": "2009"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "31.424",
+              "year": "2008"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "32.342",
+              "year": "2007"
+            }
+          ],
+          "seriesID": "IPUAN1125__L200000000"
+        },
+        {
+          "data": [
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "409.472",
+              "year": "2016"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "370.502",
+              "year": "2015"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "538.108",
+              "year": "2014"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "433.843",
+              "year": "2013"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "445.462",
+              "year": "2012"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "573.113",
+              "year": "2011"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "542.746",
+              "year": "2010"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "503.969",
+              "year": "2009"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "449.206",
+              "year": "2008"
+            },
+            {
+              "footnotes": [
+                {}
+              ],
+              "period": "A01",
+              "periodName": "Annual",
+              "value": "440.753",
+              "year": "2007"
+            }
+          ],
+          "seriesID": "IPUAN1129__L200000000"
+        },
+        {
+          "data": [],
+          "seriesID": "IPUAN2121__L200000000"
+        },
+        {
+          "data": [],
+          "seriesID": "IPUAN2122__L200000000"
+        },
+        {
+          "data": [],
+          "seriesID": "IPUAN2123__L200000000"
+        },
+        {
+          "data": [],
+          "seriesID": "IPUAN2131__L200000000"
+        },
+        {
+          "data": [],
+          "seriesID": "IPUAN2211__L200000000"
+        },
+        {
+          "data": [],
+          "seriesID": "IPUAN2212__L200000000"
+        },
+        {
+          "data": [],
+          "seriesID": "IPUAN2213__L200000000"
+        },
+        {
+          "data": [],
+          "seriesID": "IPUAN3111__L200000000"
+        },
+        {
+          "data": [],
+          "seriesID": "IPUAN3112__L200000000"
+        },
+        {
+          "data": [],
+          "seriesID": "IPUAN3113__L200000000"
+        },
+        {
+          "data": [],
+          "seriesID": "IPUAN3114__L200000000"
+        },
+        {
+          "data": [],
+          "seriesID": "IPUAN3115__L200000000"
+        },
+        {
+          "data": [],
+          "seriesID": "IPUAN3116__L200000000"
+        },
+        {
+          "data": [],
+          "seriesID": "IPUAN3117__L200000000"
+        }
+      ]
+    },
+    "message": [
+      "Requested Series list has been reduced to the system-allowed limit of 25 series.",
+      "Series does not exist for Series IPUAN2121__L200000000",
+      "Series does not exist for Series IPUAN2122__L200000000",
+      "Series does not exist for Series IPUAN2123__L200000000",
+      "Series does not exist for Series IPUAN2131__L200000000",
+      "Series does not exist for Series IPUAN2211__L200000000",
+      "Series does not exist for Series IPUAN2212__L200000000",
+      "Series does not exist for Series IPUAN2213__L200000000",
+      "Series does not exist for Series IPUAN3111__L200000000",
+      "Series does not exist for Series IPUAN3112__L200000000",
+      "Series does not exist for Series IPUAN3113__L200000000",
+      "Series does not exist for Series IPUAN3114__L200000000",
+      "Series does not exist for Series IPUAN3115__L200000000",
+      "Series does not exist for Series IPUAN3116__L200000000",
+      "Series does not exist for Series IPUAN3117__L200000000"
+    ],
+    "responseTime": 347,
+    "status": "REQUEST_SUCCEEDED"
+  },
+  "retrieval_timestamp_utc": "2026-08-01T06:15:16.559726+00:00",
+  "schema_version": "1.0",
+  "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/"
+}

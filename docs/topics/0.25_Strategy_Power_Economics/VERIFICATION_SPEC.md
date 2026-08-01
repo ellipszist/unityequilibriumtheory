@@ -110,6 +110,7 @@ per-capita growth. Pre/post regime summaries use 1959-1970 and 1974-2024, exclud
 - Research architecture: WARN; current package is Package Tier A, target is Evidence Grade A,
   and the 12-gate registry still contains open controlling gates. Strategy/social claims remain
   quarantined.
+- Payer-resource additions: USGS and SEC sub-artifacts are `PASS_WITH_BOUNDARY`; BLS industry-hours remains `WARN` for candidate-set coverage but its 11 returned series are complete for 1987-2024 (418 rows); the join gate reports this bounded labor subset as `PASS_WITH_BOUNDARY`, while the project payment ledger is `BLOCKED`.
 
 ## Interpretation boundary
 

@@ -4,7 +4,7 @@
   "formula_ids": [
     "EC25-UET-RESOURCE-ENGINE"
   ],
-  "generated_at_utc": "2026-07-16T14:23:06.728370+00:00",
+  "generated_at_utc": "2026-08-01T06:24:51.219382+00:00",
   "parameter_policy": {
     "candidate_signal_threshold": {
       "bootstrap_interval_requirement": "95 percent interval for squared-error difference lies below zero",

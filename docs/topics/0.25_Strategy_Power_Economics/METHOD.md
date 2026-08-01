@@ -109,8 +109,10 @@ indexed infrastructure proxy, not a dollar-valued capital stock.
 
 13. **Industry labor-hours:** query only the official BLS public API for predeclared four-digit
    NAICS candidates. Returned rows are annual hours worked (millions of hours), coverage is
-   recorded per code, and absent codes remain missing; this is an input to a future industry
-   join, not a complete labor ledger.
+   recorded per code, and absent codes remain missing. The current archive contains 418 rows for
+   11 returned series complete over 1987-2024; the source artifact remains `WARN` because the
+   202-code candidate universe was not fully returned. The join gate may use this bounded subset,
+   but it is not a complete labor ledger.
 14. **Physical materials:** parse source-locked USGS historical workbooks for declared
    commodities. Quantities are national production/consumption observations on the provider's
    commodity-specific basis. They are not allocated to BEA industries, firms, or projects.

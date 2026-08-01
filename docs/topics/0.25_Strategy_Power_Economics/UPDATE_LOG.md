@@ -5,6 +5,16 @@
 
 ## Entries
 
+### 2026-08-01 - BLS bounded labor coverage refresh
+
+- Scope: narrow the labor-hours component of the payer-resource join without converting partial candidate coverage into a full industry panel.
+- Added: targeted official BLS API windows for the 11 series already observed in the frozen archive, archived under retrieval vintage `2026-08-01` without mixing the prior `2026-07-16` directory; the normalized panel now has 418 rows and complete 1987-2024 coverage for those returned series. The join gate now records `candidate_set_complete=false`, `complete_series_count=11`, `no_imputation=true`, and a bounded labor status of `PASS_WITH_BOUNDARY` while the BLS source artifact remains `WARN`.
+- Verified with: targeted BLS refresh, cached source-package rebuild, py_compile, and payer-resource join gate. Join result is `BLOCKED` with one controlling component: `firm_project_payment_ledger`.
+- Blocker narrowed: labor observations are usable for a bounded returned-series diagnostic; the 202-code candidate universe and the payer/project transaction ledger remain unresolved. No funding-share or payer causality claim is enabled.
+- Next controller: acquire the missing candidate-series coverage only through a compliant BLS archive/API route, then obtain approved transaction/project payment evidence; Claim Class C and `DESCRIPTIVE_DIAGNOSTIC_ONLY` remain unchanged.
+- Claim impact: no upgrade; this wave changes join readiness only, not source grade or economic interpretation.
+
+
 ### 2026-07-16 - Labor, material, and public-firm funding provenance wave
 
 - Scope: add observable inputs for the chain `funding -> industry use -> labor -> physical material`, while keeping payer/project provenance separate.

@@ -17,6 +17,7 @@ from economic_hardening_common import (
     ARTIFACT_DIR,
     BEA_1997_IO_ARTIFACT,
     BLS_INDUSTRY_HOURS_ARTIFACT,
+    BLS_INDUSTRY_HOURS_RAW_DIR,
     USGS_MATERIAL_QUANTITY_ARTIFACT,
     SEC_PUBLIC_FIRM_PROXY_ARTIFACT,
     SEC_PUBLIC_FIRM_MIX_ARTIFACT,
@@ -74,6 +75,34 @@ def _artifact_status(path: Path) -> dict:
     }
 
 
+def _bounded_bls_hours(path: Path) -> tuple[dict, bool]:
+    """Allow a complete returned-series subset while preserving candidate-set WARN."""
+    record = _artifact_status(path)
+    if not record.get("exists"):
+        return record, False
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return record, False
+    coverage = payload.get("coverage", {})
+    complete_series = int(coverage.get("complete_series_count", 0) or 0)
+    rows = int(coverage.get("rows", 0) or 0)
+    incomplete = coverage.get("incomplete_series", payload.get("incomplete_series", {}))
+    bounded_ready = bool(coverage.get("no_imputation")) and complete_series > 0 and rows > 0 and not incomplete
+    record["bounded_coverage"] = {
+        "ready": bounded_ready,
+        "complete_series_count": complete_series,
+        "returned_naics4": coverage.get("returned_naics4"),
+        "requested_naics4": coverage.get("requested_bea_naics4"),
+        "rows": rows,
+        "years": coverage.get("years"),
+        "candidate_set_complete": bool(coverage.get("returned_naics4") == coverage.get("requested_bea_naics4")),
+        "request_failures": len(payload.get("request_failures", [])),
+        "no_imputation": bool(coverage.get("no_imputation")),
+    }
+    return record, bounded_ready
+
+
 def _xlsx_record(path: Path, role: str) -> dict:
     exists = path.is_file()
     sheets: list[str] = []
@@ -120,8 +149,7 @@ def main() -> int:
     concordance_path = RAW_ROOT / "bea_io" / "2026-07-16" / "BEA-Industry-and-Commodity-Codes-and-NAICS-Concordance.xlsx"
     bea_benchmark = _artifact_status(BEA_1997_IO_ARTIFACT)
     benchmark_ready = bea_benchmark.get("status") == "PASS_WITH_BOUNDARY"
-    bls_hours = _artifact_status(BLS_INDUSTRY_HOURS_ARTIFACT)
-    bls_hours_ready = bls_hours.get("status") == "PASS_WITH_BOUNDARY"
+    bls_hours, bls_hours_ready = _bounded_bls_hours(BLS_INDUSTRY_HOURS_ARTIFACT)
     usgs_materials = _artifact_status(USGS_MATERIAL_QUANTITY_ARTIFACT)
     usgs_materials_ready = usgs_materials.get("status") == "PASS_WITH_BOUNDARY"
     sec_funding_proxy = _artifact_status(SEC_PUBLIC_FIRM_PROXY_ARTIFACT)
@@ -166,8 +194,8 @@ def main() -> int:
         "labor_industry_hours": {
             "status": "PASS_WITH_BOUNDARY" if bls_hours_ready else "BLOCKED",
             "artifact": bls_hours,
-            "source": _glob_record(RAW_ROOT / "bls_labor" / "2026-07-16", "*.json", "BLS industry hours API responses"),
-            "boundary": "BLS annual hours are source-locked for returned four-digit NAICS series; coverage is partial and is not payment-level occupation or payer provenance.",
+            "source": _glob_record(BLS_INDUSTRY_HOURS_RAW_DIR, "*.json", "BLS industry hours API responses"),
+            "boundary": "The BLS source artifact remains WARN for the 202-code candidate set, but the returned 11 four-digit NAICS series are complete for 1987-2024 with no imputation. This bounded subset is not payment-level occupation or payer provenance.",
         },
         "energy_throughput": {
             "status": "PASS_WITH_BOUNDARY",
@@ -208,7 +236,12 @@ def main() -> int:
         "status": "BLOCKED" if blocking else "PASS_WITH_BOUNDARY",
         "controller_status": "PAYER_RESOURCE_JOIN_NOT_IDENTIFIED" if blocking else "PAYER_RESOURCE_JOIN_SOURCE_READY",
         "generated_at_utc": utc_now(),
-        "coverage": {"requested": "sectoral funding -> industry use -> labor hours -> physical resources -> output/innovation", "no_imputation": True},
+        "coverage": {
+            "requested": "sectoral funding -> industry use -> labor hours -> physical resources -> output/innovation",
+            "no_imputation": True,
+            "bounded_labor_subset_ready": bool(bls_hours_ready),
+            "bounded_labor_subset": evidence["labor_industry_hours"].get("artifact", {}).get("bounded_coverage"),
+        },
         "evidence": evidence,
         "blocking_components": blocking,
         "required_join": [
