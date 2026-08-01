@@ -42,6 +42,7 @@ def build_gate() -> dict[str, Any]:
     lane_contract_path = ROOT / "docs/core/artifacts/uet_active_lane_units_observable_register.json"
     coverage_path = ROOT / "docs/core/artifacts/uet_foundation_coverage_closure.json"
     correspondence_full_path = ROOT / "docs/core/artifacts/uet_full_correspondence_coverage.json"
+    correspondence_manifest_path = ROOT / "docs/core/artifacts/uet_topic_formula_correspondence_manifest.json"
     observable_path = ROOT / "docs/core/artifacts/matter_space_observable_verification.json"
     wording_path = ROOT / "docs/core/artifacts/impact_effect_legacy_wording_audit.json"
     inventory = load(inventory_path)
@@ -55,6 +56,7 @@ def build_gate() -> dict[str, Any]:
     lane_contract = load(lane_contract_path)
     coverage = load(coverage_path)
     correspondence_full = load(correspondence_full_path)
+    correspondence_manifest = load(correspondence_manifest_path)
     observable_map = load(observable_path)
     wording = load(wording_path)
 
@@ -98,9 +100,17 @@ def build_gate() -> dict[str, Any]:
         "F2_physical_correspondence": {
             "status": "BLOCKED_OPEN_CORRESPONDENCE_ROWS" if correspondence_full.get("matrix_status") == "BLOCKED_OPEN_CORRESPONDENCE_ROWS" else ("BLOCKED" if matrix_blocked else "PASS_CONDITIONAL"),
             "reason": "All inventoried topic rows now have an explicit correspondence record, but open standard-counterpart/derivation/observable mappings remain.",
-            "evidence": [rel(matrix_path), rel(correspondence_full_path), rel(registry_path)],
-            "metrics": {"topic_formula_rows": correspondence_full.get("coverage", {}).get("topic_formula_row_count"), "open_correspondence_rows": correspondence_full.get("coverage", {}).get("open_correspondence_row_count"), "central_registry_linked_rows": correspondence_full.get("coverage", {}).get("central_registry_linked_topic_rows")},
-            "required_next_artifact": "exhaustive lane correspondence and measurement-operator coverage manifest",
+            "evidence": [rel(matrix_path), rel(correspondence_full_path), rel(correspondence_manifest_path), rel(registry_path)],
+            "metrics": {
+                "topic_formula_rows": correspondence_full.get("coverage", {}).get("topic_formula_row_count"),
+                "open_correspondence_rows": correspondence_full.get("coverage", {}).get("open_correspondence_row_count"),
+                "central_registry_linked_rows": correspondence_full.get("coverage", {}).get("central_registry_linked_topic_rows"),
+                "manifest_rows": correspondence_manifest.get("coverage", {}).get("manifest_rows"),
+                "manifest_rows_missing": correspondence_manifest.get("coverage", {}).get("rows_missing_from_manifest"),
+                "measurement_operator_records": correspondence_manifest.get("coverage", {}).get("measurement_operator_records"),
+                "measurement_operator_open_rows": correspondence_manifest.get("coverage", {}).get("measurement_operator_open_rows"),
+            },
+            "required_next_artifact": "resolve the 152 open standard-counterpart rows, 263 open measurement-operator records, and 159 rows without a central-registry relation",
         },
         "F3_units": {
             "status": "BLOCKED",

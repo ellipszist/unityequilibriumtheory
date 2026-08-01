@@ -108,3 +108,10 @@ archive/legacy paths, code/test literals, canonical contract literals, and activ
 reported separately. The active controller is the 242-row active-prose review together with
 the still-open F2 correspondence and measurement-operator matrix. No downstream edge is
 promoted by this metadata repair.
+
+## Latest plan update - 2026-08-02 F2 row-complete manifest
+
+Wave 1 now has a generated manifest indexing all 263 topic formula rows. The dependency
+graph can distinguish lane/comparator relations from rows with no central relation, while
+all measurement-operator records remain explicitly open. The next edge is lane-specific
+correspondence closure, not a universal C-to-mass or trace-to-particle mapping.

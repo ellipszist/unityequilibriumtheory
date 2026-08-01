@@ -267,3 +267,15 @@ open for dimensional and external physical evidence.
 The disposition layer is a claim-boundary mechanism only. It does not make an active prose
 statement canonical, and it does not promote any mapping of C, R_gen, mass, vacuum, photon,
 neutrino, or positron.
+
+## Latest plan update - 2026-08-02 F2 row-complete manifest
+
+The F2 correspondence coverage now has a generated row-complete manifest for all 263
+topic formula rows. No row is missing from the index. The manifest separates 104
+lane-dependency/comparator relations from 159 rows with no central-registry relation,
+and records an explicit but still-open measurement-operator entry for every row.
+
+This closes a coverage/visibility gap, not the physical correspondence gate. F2 remains
+blocked by 152 open standard-counterpart rows and 263 unresolved measurement operators;
+F3 dimensional contracts, F4 derivation provenance, F7 observable maps, and F8 external
+physical evidence remain open.

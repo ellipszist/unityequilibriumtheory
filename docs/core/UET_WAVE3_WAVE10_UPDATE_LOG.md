@@ -121,3 +121,12 @@ The locked 2026 thermal source route was checked through publisher HTML and its
 supplementary-description PDF. The result narrows the blocker to missing local
 numeric source delivery/route capture; no data were imported and no claim
 ceiling changed.
+
+## 2026-08-02 - F2 row-complete correspondence manifest
+
+- Scope: Wave 1 foundation correspondence coverage.
+- Added: row-complete lane manifest and test; Wave 1 now includes the manifest as an evidence input.
+- Verified: 263 source rows indexed with zero missing rows; 30 targeted tests passed; foundation and downstream audits remain blocked by open mappings.
+- Result: missing-manifest ambiguity is closed; open counterpart, unit, derivation, and observable mappings remain visible.
+- Next controller: resolve 152 open counterpart rows and 263 open measurement-operator records, beginning with 0.11/0.13 pilot lanes.
+- Claim impact: no change.

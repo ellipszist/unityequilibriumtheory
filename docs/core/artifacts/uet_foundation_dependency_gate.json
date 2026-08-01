@@ -46,14 +46,19 @@
       "evidence": [
         "docs/core/artifacts/uet_foundation_correspondence_matrix.json",
         "docs/core/artifacts/uet_full_correspondence_coverage.json",
+        "docs/core/artifacts/uet_topic_formula_correspondence_manifest.json",
         "docs/core/artifacts/uet_equation_correspondence_registry.json"
       ],
       "metrics": {
         "topic_formula_rows": 263,
         "open_correspondence_rows": 152,
-        "central_registry_linked_rows": 0
+        "central_registry_linked_rows": 0,
+        "manifest_rows": 263,
+        "manifest_rows_missing": 0,
+        "measurement_operator_records": 263,
+        "measurement_operator_open_rows": 263
       },
-      "required_next_artifact": "exhaustive lane correspondence and measurement-operator coverage manifest"
+      "required_next_artifact": "resolve the 152 open standard-counterpart rows, 263 open measurement-operator records, and 159 rows without a central-registry relation"
     },
     "F3_units": {
       "status": "BLOCKED",

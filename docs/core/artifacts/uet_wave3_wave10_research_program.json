@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_wave3_wave10_research_program",
-  "generated_at": "2026-08-01T17:11:15.710633+00:00",
+  "generated_at": "2026-08-01T17:20:03.128172+00:00",
   "program_scope": "UET Foundation-First Research Program Waves 0-10",
   "workflow": [
     "inventory",
@@ -17,7 +17,7 @@
   ],
   "foundation_gate": {
     "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
-    "sha256": "19d6367569accbf9c1f3728dce96b0607805218fc81eb7114344bca0061c8eb6",
+    "sha256": "922a3f80837d2a013211ba1b14769764e993c500a27deb5990fb43119c930bb6",
     "status": "BLOCKED",
     "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
   },
@@ -36,7 +36,7 @@
         {
           "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
           "exists": true,
-          "sha256": "19d6367569accbf9c1f3728dce96b0607805218fc81eb7114344bca0061c8eb6",
+          "sha256": "922a3f80837d2a013211ba1b14769764e993c500a27deb5990fb43119c930bb6",
           "status": "BLOCKED",
           "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
         },
@@ -78,6 +78,13 @@
           "sha256": "060494ba01639612377972b5c63d7859490fd2cff95bb1d0dc2709c5798241d2",
           "status": "SCOPED_DISPOSITIONS_WITH_ACTIVE_PROSE_OPEN",
           "controller": "manually review ACTIVE_PROSE_MANUAL_REVIEW occurrences; canonical and archive routes are dispositioned but remain non-promotional"
+        },
+        {
+          "path": "docs/core/artifacts/uet_topic_formula_correspondence_manifest.json",
+          "exists": true,
+          "sha256": "8cf4cac4646ea08f51d6eca25829a15ac32f33904b40542c91d331e1ece497d5",
+          "status": "PASS_WITH_OPEN_ROW_MAPPINGS",
+          "controller": "resolve open standard counterparts, units, derivation origins, and physical measurement operators lane by lane; do not promote topic rows into central identities"
         }
       ]
     },

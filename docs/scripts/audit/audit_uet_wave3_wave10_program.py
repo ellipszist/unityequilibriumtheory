@@ -130,7 +130,7 @@ def build() -> dict[str, Any]:
             1,
             "Ontology and standard-physics correspondence",
             wording.get("next_controller", "active prose legacy wording review") + "; complete F2 lane matrix",
-            ["docs/core/artifacts/uet_equation_correspondence_registry.json", "docs/core/artifacts/matter_space_ontology_contract.json", "docs/core/artifacts/impact_effect_legacy_wording_audit.json"],
+            ["docs/core/artifacts/uet_equation_correspondence_registry.json", "docs/core/artifacts/matter_space_ontology_contract.json", "docs/core/artifacts/impact_effect_legacy_wording_audit.json", "docs/core/artifacts/uet_topic_formula_correspondence_manifest.json"],
             foundation.get("gates", {}).get("F2_physical_correspondence", {}).get("status", "BLOCKED"),
             "lane-specific correspondence; no universal identity",
             foundation_blocked,

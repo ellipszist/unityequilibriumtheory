@@ -247,3 +247,15 @@ supplementary-description level. The description PDF is hash-recorded and lists
 only the supplementary movie; no numeric source-data link was exposed in the
 captured HTML. The holdout stays metadata-only, and no UET thermal claim was
 promoted.
+
+### 2026-08-02 - F2 row-complete correspondence manifest
+
+- Scope: all 263 topic formula rows and central equation registry relation boundaries.
+- Wave type: artifact pass and gate pass.
+- Added or changed: `build_uet_topic_formula_correspondence_manifest.py`, `uet_topic_formula_correspondence_manifest.json`, and regression tests.
+- Verified with: manifest generator, foundation dependency gate, Wave 3-10 audit, all-wave audit, and 30 targeted regression tests.
+- Result: manifest coverage `263/263`, missing rows `0`, measurement-operator records `263`; foundation remains `BLOCKED`.
+- Blocker narrowed: 104 rows have lane dependency/comparator relations, 159 have no central-registry relation declared, and all 263 measurement operators remain explicitly open.
+- Still open: resolve 152 standard-counterpart rows, 263 physical measurement operators, units/derivation provenance, and external evidence.
+- Next controller: close rows lane by lane, starting with the active 0.11 and 0.13 pilots; no topic row is promoted into a central identity.
+- Claim impact: no readiness or physical-claim upgrade.
