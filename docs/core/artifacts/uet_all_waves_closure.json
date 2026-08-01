@@ -1,38 +1,42 @@
 {
   "schema_version": "1.0",
-  "artifact": "uet_wave3_wave10_research_program",
-  "generated_at": "2026-08-01T15:02:21.112153+00:00",
-  "program_scope": "UET Foundation-First Research Program Waves 0-10",
-  "workflow": [
-    "inventory",
-    "ontology",
-    "standard_physics_correspondence",
-    "units",
-    "derivation",
-    "formal_verification",
-    "numerical_verification",
-    "observable_mapping",
-    "real_data_comparison",
-    "claim"
-  ],
+  "artifact": "uet_all_waves_closure",
+  "generated_at": "2026-08-01",
+  "audit_status": "PASS",
+  "program_status": "ALL_WAVE_STATUS_ACCOUNTING_CLOSED_FOUNDATION_PHYSICS_NOT_CLOSED",
   "foundation_gate": {
     "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
-    "sha256": "b10b06b8a40d6882944933cca4ab0e517af8a0996745c364720310d118aa11bf",
     "status": "BLOCKED",
+    "sha256": "b10b06b8a40d6882944933cca4ab0e517af8a0996745c364720310d118aa11bf",
     "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
   },
-  "status": "BLOCKED",
-  "controlling_blocker": "foundation_dependency_gate_and_wave3_causal_compact_support",
+  "wave_count": 12,
+  "closed_as_blocked_waves": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11
+  ],
+  "closed_with_conditions_waves": [
+    7
+  ],
   "waves": [
     {
       "wave": 0,
       "name": "Foundation inventory and metadata repair",
-      "local_evidence_status": "BLOCKED",
-      "effective_status": "BLOCKED",
-      "dependency_blocked": false,
+      "status": "BLOCKED",
+      "closure_status": "CLOSED_AS_BLOCKED",
+      "physics_status": "BLOCKED",
       "controlling_blocker": "foundation_coverage_units_observable_and_external_claim_gates_incomplete",
       "claim_ceiling": "inventory and correspondence repair only",
-      "inputs": [
+      "evidence": [
         {
           "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
           "exists": true,
@@ -52,12 +56,12 @@
     {
       "wave": 1,
       "name": "Ontology and standard-physics correspondence",
-      "local_evidence_status": "BLOCKED",
-      "effective_status": "BLOCKED",
-      "dependency_blocked": false,
+      "status": "BLOCKED",
+      "closure_status": "CLOSED_AS_BLOCKED",
+      "physics_status": "BLOCKED",
       "controlling_blocker": "complete F2 lane matrix and legacy wording synchronization",
       "claim_ceiling": "lane-specific correspondence; no universal identity",
-      "inputs": [
+      "evidence": [
         {
           "path": "docs/core/artifacts/uet_equation_correspondence_registry.json",
           "exists": true,
@@ -84,12 +88,12 @@
     {
       "wave": 2,
       "name": "Units and derivation registry",
-      "local_evidence_status": "BLOCKED",
-      "effective_status": "BLOCKED",
-      "dependency_blocked": false,
+      "status": "BLOCKED",
+      "closure_status": "CLOSED_AS_BLOCKED",
+      "physics_status": "BLOCKED",
       "controlling_blocker": "complete dimensional contract and derivation-origin coverage",
       "claim_ceiling": "normalized/natural lanes only until dimensional maps close",
-      "inputs": [
+      "evidence": [
         {
           "path": "docs/core/artifacts/matter_space_formula_audit.json",
           "exists": true,
@@ -109,12 +113,12 @@
     {
       "wave": 3,
       "name": "Mathematical closure and causal two-arm decision",
-      "local_evidence_status": "PASS_WITH_DEFERRED_CONSERVED_BRANCH",
-      "effective_status": "PASS_WITH_DEFERRED_CONSERVED_BRANCH",
-      "dependency_blocked": false,
+      "status": "PASS_WITH_DEFERRED_CONSERVED_BRANCH",
+      "closure_status": "CLOSED_AS_BLOCKED",
+      "physics_status": "PASS_WITH_DEFERRED_CONSERVED_BRANCH",
       "controlling_blocker": "rerun full coupled verification and add an explicit observable mapping; keep the conserved-C changing-response branch and the default full candidate blocked",
       "claim_ceiling": "selected characteristic finite-cone candidate plus conserved-C comparator; no physical promotion",
-      "inputs": [
+      "evidence": [
         {
           "path": "docs/core/artifacts/matter_space_causal_lane_selection.json",
           "exists": true,
@@ -155,12 +159,12 @@
     {
       "wave": 4,
       "name": "Observable mapping and synthetic control",
-      "local_evidence_status": "BLOCKED_OPEN_MAPPING",
-      "effective_status": "BLOCKED_BY_FOUNDATION",
-      "dependency_blocked": true,
+      "status": "BLOCKED_BY_FOUNDATION",
+      "closure_status": "CLOSED_AS_BLOCKED",
+      "physics_status": "BLOCKED_BY_FOUNDATION",
       "controlling_blocker": "dimensional_observable_operator_and_uncertainty_missing",
       "claim_ceiling": "declared measurement operators and simulation-only controls",
-      "inputs": [
+      "evidence": [
         {
           "path": "docs/core/artifacts/thermal_observable_bridge_verification.json",
           "exists": true,
@@ -187,12 +191,12 @@
     {
       "wave": 5,
       "name": "Topic 0.11 matter-space phase pilot",
-      "local_evidence_status": "INTERNAL_DIAGNOSTIC",
-      "effective_status": "BLOCKED_BY_FOUNDATION",
-      "dependency_blocked": true,
+      "status": "BLOCKED_BY_FOUNDATION",
+      "closure_status": "CLOSED_AS_BLOCKED",
+      "physics_status": "BLOCKED_BY_FOUNDATION",
       "controlling_blocker": "inherited_core_prearrival_leakage",
       "claim_ceiling": "internal normalized diagnostic; no universality or mass-generation claim",
-      "inputs": [
+      "evidence": [
         {
           "path": "docs/core/artifacts/matter_space_phase_pilot.json",
           "exists": true,
@@ -226,12 +230,12 @@
     {
       "wave": 6,
       "name": "Topic 0.13 thermodynamic and thermal pilot",
-      "local_evidence_status": "SIMULATION_ONLY",
-      "effective_status": "BLOCKED_BY_FOUNDATION",
-      "dependency_blocked": true,
+      "status": "BLOCKED_BY_FOUNDATION",
+      "closure_status": "CLOSED_AS_BLOCKED",
+      "physics_status": "BLOCKED_BY_FOUNDATION",
       "controlling_blocker": "core_prearrival_leakage",
       "claim_ceiling": "simulation-only Fourier/Cattaneo/trace comparator; external validation blocked",
-      "inputs": [
+      "evidence": [
         {
           "path": "docs/core/artifacts/matter_space_topic_pilot_sync.json",
           "exists": true,
@@ -265,189 +269,125 @@
     {
       "wave": 7,
       "name": "O(2) finite-density EOS and covariant transport",
-      "local_evidence_status": "PASS_INTERNAL_EOS_AND_IDEAL_TRANSPORT_WITH_PROGRAM_BLOCKER",
-      "effective_status": "BLOCKED_BY_FOUNDATION",
-      "dependency_blocked": true,
-      "controlling_blocker": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing",
-      "claim_ceiling": "tree-level finite-density O(2) EOS and ideal covariant constitutive structure",
-      "inputs": [
+      "status": "PASS_CONDITIONAL_WITH_OPEN_TRANSPORT",
+      "closure_status": "CLOSED_WITH_CONDITIONS",
+      "physics_status": "PASS_CONDITIONAL_WITH_OPEN_TRANSPORT",
+      "controlling_blocker": "covariant_superfluid_kubo_transport_and_entropy_matching_missing",
+      "claim_ceiling": "tree-level natural-unit O2 EOS and conditional ideal covariant constitutive structure; transport coefficient values and SI remain open",
+      "evidence": [
         {
           "path": "docs/core/artifacts/o2_finite_density_eos_verification.json",
           "exists": true,
-          "sha256": "57d64cd102ecb4da1683d98f6f6f3491ec93e07609d2fe5e317c930d80780d0a",
-          "status": "PASS",
-          "controller": "covariant_superfluid_kubo_transport_and_entropy_matching_missing"
+          "sha256": "57d64cd102ecb4da1683d98f6f6f3491ec93e07609d2fe5e317c930d80780d0a"
+        },
+        {
+          "path": "docs/core/artifacts/o2_eos_formula_audit.json",
+          "exists": true,
+          "sha256": "eedc57d060a57cd5497fb5aaf971fbeaedbcc9ad85cfd33bdefaa7b60d61b657"
         },
         {
           "path": "docs/core/artifacts/covariant_superfluid_transport_verification.json",
           "exists": true,
-          "sha256": "de5a566a5a86e0337182dfab091b87ca555dca0b882c6113feebe4c6d2d2edad",
-          "status": "PASS",
-          "controller": "not_declared"
-        },
-        {
-          "path": "docs/core/artifacts/uet_gr_research_program_gate.json",
-          "exists": true,
-          "sha256": "38bfe3bcafb35880c1bfab61c67f3f4982a17e0fbd0f95f46da601bc496fc3d0",
-          "status": "BLOCKED",
-          "controller": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing"
+          "sha256": "de5a566a5a86e0337182dfab091b87ca555dca0b882c6113feebe4c6d2d2edad"
         }
       ]
     },
     {
       "wave": 8,
       "name": "Impact/effect/carrier and observer program",
-      "local_evidence_status": "BLOCKED",
-      "effective_status": "BLOCKED_BY_FOUNDATION",
-      "dependency_blocked": true,
-      "controlling_blocker": "source-lock one carrier lane and close its dimensional detector map after upstream phase/core gates",
-      "claim_ceiling": "carrier-neutral comparator contract; no photon/neutrino/positron identity for R_gen",
-      "inputs": [
+      "status": "BLOCKED",
+      "closure_status": "CLOSED_AS_BLOCKED",
+      "physics_status": "BLOCKED",
+      "controlling_blocker": "foundation correspondence, units, and carrier/detector maps are incomplete",
+      "claim_ceiling": "carrier-neutral and observer thought-experiment contracts only; no photon/neutrino/positron identity for R_gen",
+      "evidence": [
         {
           "path": "docs/core/artifacts/impact_effect_core_verification.json",
           "exists": true,
-          "sha256": "dc3d45b11eacc77e8408c2c30674ce882324125fa32010656f45914995d16e6a",
-          "status": "PASS",
-          "controller": "add carrier-specific conservation, units, detector maps, and falsification tests without fitting"
+          "sha256": "dc3d45b11eacc77e8408c2c30674ce882324125fa32010656f45914995d16e6a"
         },
         {
           "path": "docs/core/artifacts/impact_effect_dependency_gate.json",
           "exists": true,
-          "sha256": "81623233e863987b4f7afc3469e1168aa3c91ab5b67c2041457fea44a63868f7",
-          "status": "BLOCKED",
-          "controller": "foundation correspondence, units, and carrier/detector maps are incomplete"
+          "sha256": "81623233e863987b4f7afc3469e1168aa3c91ab5b67c2041457fea44a63868f7"
         },
         {
           "path": "docs/core/artifacts/carrier_neutral_comparator_contract.json",
           "exists": true,
-          "sha256": "c09b255c61803e985fec97338a57d56f237688c28613bd69811e3cb04868c1a7",
-          "status": "BLOCKED",
-          "controller": "source-lock one carrier lane and close its dimensional detector map after upstream phase/core gates"
+          "sha256": "c09b255c61803e985fec97338a57d56f237688c28613bd69811e3cb04868c1a7"
         },
         {
           "path": "docs/core/artifacts/carrier_observer_thought_experiment.json",
           "exists": true,
-          "sha256": "96386e74b6aa5965c587d71f758c52b9682c7a0b6acda135dff72a7362d33be7",
-          "status": "SIMULATION_ONLY",
-          "controller": "source-lock a dimensional photon detector map after foundation and carrier gates close"
+          "sha256": "96386e74b6aa5965c587d71f758c52b9682c7a0b6acda135dff72a7362d33be7"
         }
       ]
     },
     {
       "wave": 9,
       "name": "Standard gravity, orbit, and open-system correspondence",
-      "local_evidence_status": "BLOCKED",
-      "effective_status": "BLOCKED_BY_FOUNDATION",
-      "dependency_blocked": true,
+      "status": "BLOCKED",
+      "closure_status": "CLOSED_AS_BLOCKED",
+      "physics_status": "BLOCKED",
       "controlling_blocker": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing",
-      "claim_ceiling": "local covariant/closed-limit checks only; no GR derivation or global-open claim",
-      "inputs": [
+      "claim_ceiling": "local conditional covariant/closed-limit checks only; no Einstein derivation or global-open-universe claim",
+      "evidence": [
         {
           "path": "docs/core/artifacts/orbit_cosmology_correspondence_gate.json",
           "exists": true,
-          "sha256": "49100a87890307f8ff8b82728d5a420d449ecd8fa7a0568f6f119611d3fd120b",
-          "status": "BLOCKED",
-          "controller": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing plus global boundary/observable closure"
-        },
-        {
-          "path": "docs/core/artifacts/gr_closed_limit_verification.json",
-          "exists": true,
-          "sha256": "a04ed30ebbbcfe35d7c92791341b781e0f4d59c754c1647c829efb7633baa8dc",
-          "status": "PASS",
-          "controller": "noether_charge_equation_of_state_and_covariant_transport_matching_missing"
-        },
-        {
-          "path": "docs/core/artifacts/gr_correspondence_claim_gate.json",
-          "exists": true,
-          "sha256": "b01f9b128c999b6ee1d9f43725e0ef486157af4e8d4ad7ab81880ff746b087dd",
-          "status": "BLOCKED",
-          "controller": "covariant_parent_action_missing"
+          "sha256": "49100a87890307f8ff8b82728d5a420d449ecd8fa7a0568f6f119611d3fd120b"
         },
         {
           "path": "docs/core/artifacts/uet_gr_research_program_gate.json",
           "exists": true,
-          "sha256": "38bfe3bcafb35880c1bfab61c67f3f4982a17e0fbd0f95f46da601bc496fc3d0",
-          "status": "BLOCKED",
-          "controller": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing"
-        },
-        {
-          "path": "docs/topics/0.19_Gravity_GR/Result/artifacts/0_19_core_gr_program_dependency_gate.json",
-          "exists": true,
-          "sha256": "2536c2f9fb48fbcd80fad928867371fe8b1bfd64a5a24b7e4c9e07d0a7ce3523",
-          "status": "BLOCKED",
-          "controller": "topic_0_19_classical_gr_tests_and_covariant_completion_missing"
+          "sha256": "38bfe3bcafb35880c1bfab61c67f3f4982a17e0fbd0f95f46da601bc496fc3d0"
         }
       ]
     },
     {
       "wave": 10,
       "name": "Galaxy 0.1 and cosmic dynamic frame 0.26 comparisons",
-      "local_evidence_status": "BLOCKED",
-      "effective_status": "BLOCKED_BY_FOUNDATION",
-      "dependency_blocked": true,
-      "controlling_blocker": "galaxy=current SPARC summary rows do not contain sufficient time-history information; cosmic=raw_frame_metadata_and_numeric_residuals_open",
+      "status": "BLOCKED",
+      "closure_status": "CLOSED_AS_BLOCKED",
+      "physics_status": "BLOCKED",
+      "controlling_blocker": "galaxy=not_declared; cosmic=raw-frame provenance, units, and residual policy remain open",
       "claim_ceiling": "internal/external comparison only; dark-matter replacement and global cosmic law blocked",
-      "inputs": [
+      "evidence": [
         {
           "path": "docs/topics/0.1_Galaxy_Rotation_Problem/Result/artifacts/galaxy_history_comparison.json",
           "exists": true,
-          "sha256": "f35c2523d0929636d77457b9bbef0a42f90c5d61dcc5f9ae6ee442433576617c",
-          "status": "BLOCKED",
-          "controller": "current SPARC summary rows do not contain sufficient time-history information"
+          "sha256": "f35c2523d0929636d77457b9bbef0a42f90c5d61dcc5f9ae6ee442433576617c"
         },
         {
           "path": "docs/topics/0.26_Cosmic_Dynamic_Frame/Result/artifacts/0_26_cosmic_dynamic_frame_verification.json",
           "exists": true,
-          "sha256": "67042c129b7e6f697619f625800b807d85dee28d16702d429335f21ba85f5994",
-          "status": "WARN",
-          "controller": "not_declared"
+          "sha256": "67042c129b7e6f697619f625800b807d85dee28d16702d429335f21ba85f5994"
         }
       ]
+    },
+    {
+      "wave": 11,
+      "name": "Particle, Dirac, neutrino, and antimatter program",
+      "status": "DEFERRED_BLOCKED",
+      "closure_status": "CLOSED_AS_BLOCKED",
+      "physics_status": "DEFERRED_BLOCKED",
+      "controlling_blocker": "Lorentz-covariant action, spinor/current map, CPT and detector correspondence are not established",
+      "claim_ceiling": "particle, Dirac, neutrino, positron and antimatter identities remain deferred/not established",
+      "evidence": []
     }
   ],
-  "causal_decision": {
-    "conserved_C": "parabolic/conserved phase comparator; no changing-C finite-cone claim",
-    "finite_cone_C": "selected non-conserved characteristic candidate passes its normalized compact-support contract and public adapter smoke gate",
-    "default_full_candidate": "blocked; original nonlinear Heun lane retains pre-arrival leakage above threshold",
-    "conserved_Cattaneo": "negative control; high-k speed unbounded without UV/nonlocal regularization",
-    "reference_lane": "strict-CFL compact-support control does not promote the full coupled candidate"
+  "checks": {
+    "all_planned_waves_present": true,
+    "all_waves_have_closure_status": true,
+    "all_waves_have_claim_ceiling": true,
+    "all_blocked_waves_have_controller": true,
+    "pilot_sync_preserves_inherited_blockers": true,
+    "no_physical_promotion": true
   },
-  "persistence_program": {
-    "dynamic_selection": {
-      "status": "INTERNAL_DIAGNOSTIC",
-      "controller": "map behavior and maintenance costs to a measured work, heat, entropy, or failure-rate observable in one physical lane",
-      "artifact": "docs/core/artifacts/resource_selection_dynamic_game_verification.json"
-    },
-    "thermal_bridge": {
-      "status": "INTERNAL_DIAGNOSTIC",
-      "controller": "source-lock one physical material lane with work/heat/temperature units, uncertainty, and an observable map before external validation",
-      "artifact": "docs/core/artifacts/resource_selection_thermal_bridge_verification.json"
-    },
-    "claim_boundary": "normalized internal diagnostics only; physical work/heat/entropy mapping and external validation remain open"
+  "interpretation": {
+    "closure_status": "The project-control state is complete: every planned wave has evidence, status, claim ceiling and next controller.",
+    "physics_status": "A CLOSED_AS_BLOCKED wave is not a solved theory; it is a formally bounded research lane whose blocker is now explicit.",
+    "selected_positive_result": "Only the selected normalized characteristic-cone diagnostic is locally passing; it does not establish SI physics, universal C meaning or empirical validity."
   },
-  "extended_wave_closure": {
-    "status": "PASS_WITH_DECLARED_DOWNSTREAM_BLOCKERS",
-    "controller": "complete foundation correspondence and dimensional observable gates, then revisit downstream waves in dependency order",
-    "artifact": "docs/core/artifacts/uet_foundation_extended_wave_closure.json"
-  },
-  "claim_boundary": {
-    "allowed": [
-      "candidate collective-behaviour coordinate",
-      "candidate normalized effective model",
-      "internal diagnostic",
-      "tree-level finite-density O(2) EOS",
-      "covariant ideal-superfluid constitutive structure",
-      "simulation/comparator contract"
-    ],
-    "blocked": [
-      "C is universal mass",
-      "R_gen is an independent substance",
-      "Phi is metric/particle/ether",
-      "photon or neutrino or positron equals R_gen",
-      "UET derives GR",
-      "global universe is proved open",
-      "dark-matter replacement",
-      "simulation equals empirical proof"
-    ]
-  }
+  "next_controller": "close foundation coverage, dimensional units and observable maps before any downstream promotion; then rerun Waves 4â€“6 under the selected lane"
 }

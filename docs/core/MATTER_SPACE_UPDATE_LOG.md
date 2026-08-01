@@ -172,3 +172,10 @@
   physical proof.
 - Current controller: complete foundation correspondence and dimensional
   observable gates before revisiting downstream waves.
+### 2026-08-01 - All-wave status and active-lane contract closure
+
+- Added `uet_active_lane_units_observable_register.json` and its deterministic builder. It records unit lane, standard counterpart, observable operator, uncertainty boundary, evidence and open mapping for each active lane.
+- Rebuilt `uet_foundation_dependency_gate.json` from current artifacts. The selected characteristic lane is now recorded as `PASS_WITH_DEFERRED_CONSERVED_BRANCH`; F0/F2/F3/F7/F8 remain blocked for explicit coverage, dimensional, observable and data reasons.
+- Added `uet_all_waves_closure.json`. All planned Waves 0–11 now have a machine-readable status, evidence, claim ceiling and controller. This closes status accounting, not the underlying physics: Wave 7 is conditional, while Waves 0–6 and 8–11 retain their declared blockers.
+- Verification: lane-contract builder, foundation gate, aggregate, Wave 3–10 program audit, all-wave closure audit and Python compilation passed.
+- Next controller: close one source-locked dimensional thermal lane, then rerun the selected 0.11/0.13 pilots without relabelling legacy results.

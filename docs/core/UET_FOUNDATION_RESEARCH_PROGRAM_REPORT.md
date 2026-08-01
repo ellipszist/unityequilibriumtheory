@@ -124,3 +124,16 @@ Run the audit from the repository root:
 Then run the targeted test for the generated artifact. The artifact records
 the hashes, local statuses, and controllers of the inputs used in the
 decision.
+
+## All-wave closure and active-lane contract
+
+`uet_all_waves_closure.json` now enumerates Waves 0–11. Every wave has an evidence set, research status, claim ceiling and controlling blocker. The project-control layer is therefore closed for this planning cycle; the physics layer is not falsely marked complete.
+
+The active-lane register `uet_active_lane_units_observable_register.json` makes the remaining foundation gaps explicit:
+
+- the characteristic-cone, conserved-phase and persistence lanes are normalized internal diagnostics;
+- the O(2) lane is a natural-unit tree-level constitutive result with SI and transport values open;
+- the thermal lane has a normalized Fourier/Cattaneo observable proxy but no derived C/Phi-to-temperature or heat-flux map;
+- carrier/observer and gravity/cosmology lanes remain blocked until source, detector, covariance, units and provenance contracts close.
+
+The next research action is consequently one dimensional, source-locked thermal lane. It must close the measurement operator and uncertainty contract before any external fit or validation claim. The selected characteristic lane can be used as the numerical control, but it cannot be promoted to mass, SI causality, GR or empirical evidence.
