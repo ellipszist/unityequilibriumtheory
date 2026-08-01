@@ -33,8 +33,8 @@ remain a separate Claim Class C diagnostic lane. They are not used as primary in
 Book 1 historical tests.
 
 This wave also adds source-locked payer/resource inputs. BLS industry-hours, USGS physical
-material quantities, and SEC public-firm funding proxies are available only as bounded
-diagnostics. The project-level payment ledger remains blocked, so the package still cannot
+material quantities, SEC public-firm funding proxies, and a bounded USAspending federal-award
+ledger are available only as bounded diagnostics. The project-level payment ledger remains blocked, so the package still cannot
 say which payer funded a specific purchase or how that payment became a measured resource.
 
 ## Current claim boundary
@@ -82,6 +82,7 @@ flowchart LR
 | Industry labor-hours | Official BLS public API returned 418 annual hours rows for 11/202 predeclared NAICS4 candidates, complete for 1987-2024; 16 other candidate-batch requests remain quota-limited and are reported, not imputed | `0_25_bls_industry_hours_source_package.json` | bounded industry labor-input diagnostic |
 | Physical material quantities | USGS cement, copper, and gold workbooks yield national quantity rows; no industry/project allocation is asserted | `0_25_usgs_material_quantity_audit.json` | national material-throughput diagnostic only |
 | Public-firm funding proxy | SEC Company Facts for 10 predeclared nonfinancial firms, 2010-2024; profit, operating cash, capex, debt, and dividends are descriptive scale ratios | `0_25_sec_public_firm_funding_proxy.json`, `0_25_sec_public_firm_funding_mix_audit.json` | firm-level funding-scale diagnostic; shares `NOT_IDENTIFIED` |
+| Public federal award ledger | USAspending DOE FY2024 sample contains 500 source-locked award-transaction rows with recipient, agency, obligation, date, NAICS/PSC metadata; obligation is not settlement and financing source is not identified | `0_25_usaspending_federal_project_ledger.json` | bounded public payer/recipient diagnostic |
 | Project payment ledger | Public-data boundary records Census restricted-use ledger requirement; SEC public filings are not invoice/project ledgers | `0_25_project_payment_ledger_gate.json` | `BLOCKED`; no payer-to-purchase claim |
 | Funding mix audit | Fed Z.1 same-year/lead associations and payment-flow scale computed; gross earmarked shares not identified | `0_25_fed_z1_funding_mix_audit.json` | signed sector-level diagnostic only |
 | Payer-resource join readiness | BEA 1997 structure and bounded USGS/SEC inputs are present; the returned BLS labor subset is complete but the candidate universe is incomplete; only project-ledger provenance controls the join | `0_25_payer_resource_join_readiness.json` | join-readiness boundary only |
@@ -100,7 +101,7 @@ flowchart LR
   horizon; the 3-year median improvement versus that baseline is `-67.0%`.
 - Funding-source mapping: Fed Z.1 provides 66 complete annual nonfinancial-corporate flow rows (1959-2024), including wages, taxes, interest, dividends, net saving, capital formation, debt and equity transactions. The mapped capital-account identity is within `1` million dollars of published rounding, but counterparty/project provenance and physical resource links are absent.
 - Funding-mix audit: the Z.1 panel reports signed net-flow correlations and flow-to-GVA/capital-formation scale, but explicitly returns `NOT_IDENTIFIED` for gross funding shares because debt/equity flows can include refinancing, redemptions, or repurchases.
-- Payer-resource join: the frozen package now includes a validated, hashed BEA 1997 benchmark (511 code rows; make/use, direct-requirements, and total-requirements structures), a partial BLS annual industry-hours archive, and selected USGS material quantities. SEC public-firm ratios add a firm funding-scale view. BLS coverage is currently `WARN` because 11/202 candidate codes are observed and 16 other request batches remain quota-limited; the returned 11 series are complete for 1987-2024. The project payment ledger remains `BLOCKED`; therefore payer-to-purchase-to-resource provenance is still not identified.
+- Payer-resource join: the frozen package now includes a validated, hashed BEA 1997 benchmark (511 code rows; make/use, direct-requirements, and total-requirements structures), a partial BLS annual industry-hours archive, and selected USGS material quantities. SEC public-firm ratios add a firm funding-scale view. The USAspending lane adds 500 DOE FY2024 public award obligations with agency, recipient, amount, and NAICS/PSC metadata, but not cash settlement or financing source. BLS coverage is currently `WARN` because 11/202 candidate codes are observed and 16 other request batches remain quota-limited; the returned 11 series are complete for 1987-2024. The project payment ledger remains `BLOCKED`; therefore payer-to-purchase-to-resource provenance is still not identified.
 - Wage lane: the versioned EPI chart gives productivity growth `80.24%` and published total
   compensation growth `28.38%` for 1979-2021. The Book quote (`64.6%` and `17.3%`) is retained
   as a source/construction comparison. The BLS comparator gives `125.02%` and `56.64%`.

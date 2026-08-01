@@ -16,7 +16,7 @@
     ],
     "status": "BLOCKED"
   },
-  "generated_at_utc": "2026-08-01T06:24:54.193829+00:00",
+  "generated_at_utc": "2026-08-01T06:39:19.912127+00:00",
   "historical_energy_transition": {
     "blocker": "EIA historical 1776-1945 annual export is absent.",
     "status": "BLOCKED"

@@ -18,6 +18,7 @@ from economic_hardening_common import (
     BEA_1997_IO_ARTIFACT,
     BLS_INDUSTRY_HOURS_ARTIFACT,
     BLS_INDUSTRY_HOURS_RAW_DIR,
+    USASPENDING_LEDGER_ARTIFACT,
     USGS_MATERIAL_QUANTITY_ARTIFACT,
     SEC_PUBLIC_FIRM_PROXY_ARTIFACT,
     SEC_PUBLIC_FIRM_MIX_ARTIFACT,
@@ -155,6 +156,8 @@ def main() -> int:
     sec_funding_proxy = _artifact_status(SEC_PUBLIC_FIRM_PROXY_ARTIFACT)
     sec_funding_mix = _artifact_status(SEC_PUBLIC_FIRM_MIX_ARTIFACT)
     project_ledger_gate = _artifact_status(PROJECT_PAYMENT_LEDGER_ARTIFACT)
+    usaspending_ledger = _artifact_status(USASPENDING_LEDGER_ARTIFACT)
+    usaspending_ready = usaspending_ledger.get("status") == "PASS_WITH_BOUNDARY"
 
     evidence = {
         "funding_flows": {
@@ -213,6 +216,12 @@ def main() -> int:
             "artifact": {"source_package": sec_funding_proxy, "funding_mix": sec_funding_mix},
             "boundary": "Predeclared public-firm annual accounting channels can be compared descriptively; funding shares and invoice provenance remain unidentified.",
         },
+        "public_federal_award_ledger": {
+            "status": "PASS_WITH_BOUNDARY" if usaspending_ready else "BLOCKED",
+            "artifact": usaspending_ledger,
+            "source": _glob_record(RAW_ROOT / "usaspending" / "2026-08-01", "*.json", "USAspending.gov DOE FY2024 award transaction pages"),
+            "boundary": "The bounded USAspending sample links federal awarding/funding agency, recipient, award ID, obligation amount, action date, and NAICS/PSC metadata. It is not final cash settlement, a private invoice/payroll ledger, or transaction-level identification of tax, debt, or money-creation funding.",
+        },
         "firm_project_payment_ledger": {
             "status": "BLOCKED",
             "artifact": {"public_firm_funding_proxy": sec_funding_proxy, "public_firm_funding_mix": sec_funding_mix, "ledger_gate": project_ledger_gate},
@@ -240,6 +249,7 @@ def main() -> int:
             "requested": "sectoral funding -> industry use -> labor hours -> physical resources -> output/innovation",
             "no_imputation": True,
             "bounded_labor_subset_ready": bool(bls_hours_ready),
+            "public_federal_award_ledger_ready": bool(usaspending_ready),
             "bounded_labor_subset": evidence["labor_industry_hours"].get("artifact", {}).get("bounded_coverage"),
         },
         "evidence": evidence,

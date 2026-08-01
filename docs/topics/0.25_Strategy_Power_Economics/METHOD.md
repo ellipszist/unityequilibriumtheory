@@ -28,7 +28,8 @@ and Social Stabilization remain quarantined from core economics evidence.
 - Panel: `66` complete rows; no silent imputation.
 - Sources: FRED/H.6 and BLS series, BEA Fixed Assets Tables 1.2/2.8, EIA Table 1.3,
   a versioned EPI Data Library chart export, the BLS public industry-hours API, official USGS
-  mineral quantity workbooks, SEC Company Facts, and a restricted-data project-ledger gate.
+  mineral quantity workbooks, SEC Company Facts, the USAspending.gov public federal-award API,
+  and a restricted-data project-ledger gate.
 - Source identity: `Data/03_Research/uet_us_economics_source_manifest.json` and
   `uet_us_economics_transform_manifest.json`.
 
@@ -123,6 +124,13 @@ indexed infrastructure proxy, not a dollar-valued capital stock.
 16. **Project payment ledger gate:** record the public-data boundary and restricted-use route for
    invoice/transaction-level payer and purchase records. The gate is deliberately `BLOCKED` until
    approved microdata access and a reproducible ledger are available.
+
+17. **Public federal-award ledger:** archive a fixed five-page USAspending.gov query for
+   Department of Energy FY2024 contract awards. Normalized rows preserve award ID, recipient,
+   action date, obligation amount, awarding/funding agency, and NAICS/PSC fields. This supports
+   a bounded public payer/recipient diagnostic only: award obligation is not proof of bank
+   settlement or final supplier payment, and the API does not identify whether federal funds came
+   from taxes, borrowing, or money creation.
 
 ## Evaluation and uncertainty
 

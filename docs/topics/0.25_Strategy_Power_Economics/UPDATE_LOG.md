@@ -5,6 +5,16 @@
 
 ## Entries
 
+### 2026-08-01 - Public federal award ledger lane
+
+- Scope: add a source-locked public payer/recipient observation without treating federal award data as private settlement or financing-source proof.
+- Added: `Research_UET_USASpending_Federal_Award_Ledger.py`, five cached USAspending.gov API response wrappers, a normalized 500-row DOE FY2024 contract-award sample, source manifest, and aggregate/join/readiness integration.
+- Verified with: API refresh, cached rerun, py_compile, and source/hash checks. The public lane is `PASS_WITH_BOUNDARY`; the join remains `BLOCKED` only on `firm_project_payment_ledger`.
+- Blocker narrowed: agency-to-recipient award obligations are now observable for a bounded public sample; cash settlement, private invoices/payroll, and tax/debt/money-creation financing remain unidentified.
+- Next controller: obtain an approved project/invoice/payment ledger and concordant resource allocation; Claim Class C and `DESCRIPTIVE_DIAGNOSTIC_ONLY` remain unchanged.
+- Claim impact: no payer causality, profit-vs-debt attribution, money-creation claim, or payment-to-resource claim is enabled.
+
+
 ### 2026-08-01 - BLS bounded labor coverage refresh
 
 - Scope: narrow the labor-hours component of the payer-resource join without converting partial candidate coverage into a full industry panel.

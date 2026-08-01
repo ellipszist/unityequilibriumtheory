@@ -38,6 +38,7 @@ required file is absent or its hash does not match the manifest, the panel gate 
 | BLS industry hours API | https://api.bls.gov/publicAPI/v2/timeseries/data/ | `docs/data/external/economics/us_historical/bls_labor/2026-08-01/` plus `Data/03_Research/bls_industry_hours_1987_2024.csv` | annual hours worked, millions of hours | predeclared NAICS4 candidate query; 11/202 returned with complete 1987-2024 rows (418); 16 other candidate batches quota-limited; no imputation | bounded labor-input diagnostic |
 | USGS historical mineral statistics | https://www.usgs.gov/centers/national-minerals-information-center/historical-statistics-mineral-commodities-united | `docs/data/external/economics/us_historical/usgs_materials/2026-07-16/` plus `Data/03_Research/usgs_material_quantities_1900_2022.csv` | commodity-specific physical quantities | workbook XML extraction; national quantities only; no industry/project allocation | material-throughput diagnostic |
 | SEC Company Facts | https://www.sec.gov/edgar/sec-api-documentation | `docs/data/external/economics/us_historical/sec_xbrl/2026-07-16/` plus `Data/03_Research/sec_public_firm_funding_proxy_2010_2024.csv` | annual 10-K reported USD facts | predeclared 10-firm sample; tag/unit/date validation; no imputation | firm funding-scale proxy |
+| USAspending.gov federal awards | https://api.usaspending.gov/docs/endpoints | `docs/data/external/economics/us_historical/usaspending/2026-08-01/` plus `Data/03_Research/usaspending_doe_fy2024_transactions.csv` | current U.S. dollars; award obligations | fixed DOE FY2024 contract query, five pages/500 rows; no imputation; cached API wrappers and hashes | bounded public payer/recipient ledger; not settlement or financing-source evidence |
 | Project payment ledger boundary | https://www.census.gov/topics/research/guidance/restricted-use-microdata/economic-data.html | `Result/artifacts/0_25_project_payment_ledger_gate.json` | invoice/transaction-level payer and purchase identity | records public-data restriction and approved access route | blocked provenance link |
 
 The exact original filenames, bytes, SHA-256 hashes, retrieval vintage, per-input UTC retrieval
@@ -59,6 +60,9 @@ returns `WARN` on any mismatch.
 - `Result/artifacts/0_25_payer_resource_join_readiness.json`: source/hash/readiness status for
   every link needed to connect funding flows to industry use, labor, physical resources, and
   project/output records.
+- `Result/artifacts/0_25_usaspending_federal_project_ledger.json`: five-page DOE FY2024
+  public-award transaction sample with source hashes and explicit non-settlement/non-financing
+  boundary.
 
 ## Legacy working-copy lane
 
@@ -109,4 +113,5 @@ and PPP/exchange-rate policy are frozen.
 - BEA code concordance and the 1997 benchmark I-O archives are source-locked and validated for
   structural use. The BEA annual I-O flow export still requires API registration or an interactive
   export and has not entered the primary panel.
+- USAspending public-award lane is `PASS_WITH_BOUNDARY` for the fixed DOE FY2024 sample, but it does not identify bank settlement, private invoices, or tax/debt/money-creation financing.
 - Payer-resource join gate is `BLOCKED`: BLS and USGS inputs now exist as bounded source packages, but they do not form a common industry/project join; the project payment ledger remains unavailable.

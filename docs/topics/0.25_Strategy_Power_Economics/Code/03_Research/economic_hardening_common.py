@@ -74,6 +74,7 @@ FED_Z1_FUNDING_MIX_ARTIFACT = ARTIFACT_DIR / "0_25_fed_z1_funding_mix_audit.json
 PAYER_RESOURCE_JOIN_ARTIFACT = ARTIFACT_DIR / "0_25_payer_resource_join_readiness.json"
 BEA_1997_IO_ARTIFACT = ARTIFACT_DIR / "0_25_bea_1997_io_benchmark_audit.json"
 BLS_INDUSTRY_HOURS_ARTIFACT = ARTIFACT_DIR / "0_25_bls_industry_hours_source_package.json"
+USASPENDING_LEDGER_ARTIFACT = ARTIFACT_DIR / "0_25_usaspending_federal_project_ledger.json"
 USGS_MATERIAL_QUANTITY_ARTIFACT = ARTIFACT_DIR / "0_25_usgs_material_quantity_audit.json"
 SEC_PUBLIC_FIRM_PROXY_ARTIFACT = ARTIFACT_DIR / "0_25_sec_public_firm_funding_proxy.json"
 SEC_PUBLIC_FIRM_MIX_ARTIFACT = ARTIFACT_DIR / "0_25_sec_public_firm_funding_mix_audit.json"
