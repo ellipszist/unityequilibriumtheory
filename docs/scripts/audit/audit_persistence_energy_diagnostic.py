@@ -14,6 +14,10 @@ if str(ROOT.parent) not in sys.path:
 
 from docs.core.persistence_energy_diagnostic import (  # noqa: E402
     PATH_COST_ORIGIN,
+    PERSISTENCE_PRINCIPLE_ID,
+    PERSISTENCE_PRINCIPLE_NAME_EN,
+    PERSISTENCE_PRINCIPLE_NAME_TH,
+    PERSISTENCE_PRINCIPLE_STATUS,
     PersistenceEnergyConfig,
     simulate_persistence_energy,
 )
@@ -84,6 +88,23 @@ def build_artifact() -> dict:
     return {
         "schema_version": "1.0",
         "artifact": "persistence_energy_diagnostic_verification",
+        "principle": {
+            "id": PERSISTENCE_PRINCIPLE_ID,
+            "name_th": PERSISTENCE_PRINCIPLE_NAME_TH,
+            "name_en": PERSISTENCE_PRINCIPLE_NAME_EN,
+            "status": PERSISTENCE_PRINCIPLE_STATUS,
+            "statement": (
+                "Persistent system patterns can emerge when interacting components "
+                "allocate behavior-related resources in ways that reduce premature "
+                "loss of the system's persistence capacity; this is a result-based "
+                "selection hypothesis, not intentional optimization."
+            ),
+            "not_a_claim": [
+                "not a universal energy law",
+                "not an SI potential-energy identity",
+                "not an agent, intention, force, mass, or new substance",
+            ],
+        },
         "audit_status": "PASS_WITH_OPEN_CONSTITUTIVE_INTERPRETATION"
         if all(gates.values())
         else "FAIL",
@@ -157,6 +178,7 @@ def build_artifact() -> dict:
             "normalized ledger is not SI energy or entropy accounting",
             "no external data, fit, biological selection, galaxy model, or force law",
             "persistence threshold is an exploratory benchmark criterion",
+            "the named principle remains a candidate result-based selection hypothesis",
         ],
     }
 
@@ -166,6 +188,51 @@ def main() -> int:
     output = ROOT / "core" / "artifacts" / "persistence_energy_diagnostic_verification.json"
     output.write_text(
         json.dumps(artifact, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    principle_contract = {
+        "schema_version": "1.0",
+        "artifact": "resource_persistence_principle_contract",
+        "principle_id": PERSISTENCE_PRINCIPLE_ID,
+        "name_th": PERSISTENCE_PRINCIPLE_NAME_TH,
+        "name_en": PERSISTENCE_PRINCIPLE_NAME_EN,
+        "status": PERSISTENCE_PRINCIPLE_STATUS,
+        "unit_lane": "normalized_only",
+        "derivation_status": "open_derivation_target",
+        "current_operationalization": {
+            "path_cost": "P_C=eta_C*(dC/dt)^2 >= 0",
+            "resource_ledger": "dE_available/dt=J_in-J_out-P_C",
+            "persistence_criterion": "t_persist=inf{t:E_available<=E_sustain}",
+        },
+        "evidence": {
+            "source_artifact": "persistence_energy_diagnostic_verification",
+            "same_endpoint_path_gate": artifact["gates"][
+                "same_endpoints_le_1e-12"
+            ],
+            "path_cost_gate": artifact["gates"][
+                "high_activity_cost_gt_10x_low_activity"
+            ],
+            "ledger_closure_gate": artifact["gates"][
+                "high_path_ledger_closure_le_1e-12"
+            ],
+            "current_evidence_class": artifact["evidence_class"],
+        },
+        "controlling_blocker": (
+            "Map behavior-related path cost to measured work, heat, or "
+            "entropy production in one declared physical lane."
+        ),
+        "claim_boundary": [
+            "candidate resource-constrained collective dynamics",
+            "simulation-only operational diagnostic",
+            "not a universal potential-energy preservation law",
+        ],
+    }
+    contract_output = (
+        ROOT / "core" / "artifacts"
+        / "resource_persistence_principle_contract.json"
+    )
+    contract_output.write_text(
+        json.dumps(principle_contract, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
     )
     print(json.dumps(artifact, indent=2, ensure_ascii=False))

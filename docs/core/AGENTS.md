@@ -50,6 +50,9 @@ Do not use topic numbers as a work queue. Follow the dependency graph.
 - `Pi` is `∂t Phi`.
 - `R` / `I_trace` is a derived causal/history observable with no feedback in the new mode.
 - mass, density, charge, stress-energy, and physical energy require explicit lane mappings.
+- UET-PRINCIPLE-001 is a candidate result-based persistence principle, not an
+  intentional optimization law; its current path-cost implementation remains a
+  normalized constitutive diagnostic.
 - legacy `I`, `V`, `J_in`, and `J_out` must not be silently reinterpreted as `Phi`.
 
 ## Units and derivation rules

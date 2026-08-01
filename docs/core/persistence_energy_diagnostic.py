@@ -20,6 +20,14 @@ from typing import List, Optional, Sequence, Tuple
 
 PERSISTENCE_ENERGY_STATUS = "DIAGNOSTIC_ONLY"
 PATH_COST_ORIGIN = "RAYLEIGH_TYPE_CONSTITUTIVE_ANSATZ"
+PERSISTENCE_PRINCIPLE_ID = "UET-PRINCIPLE-001"
+PERSISTENCE_PRINCIPLE_NAME_TH = (
+    "หลักการจัดสรรพลังงานร่วมเพื่อการดำรงอยู่ของระบบ"
+)
+PERSISTENCE_PRINCIPLE_NAME_EN = (
+    "Cooperative Energy Allocation for System Persistence Principle"
+)
+PERSISTENCE_PRINCIPLE_STATUS = "CANDIDATE_PRINCIPLE"
 
 
 @dataclass(frozen=True)
@@ -150,6 +158,10 @@ def simulate_persistence_energy(
 __all__ = [
     "PATH_COST_ORIGIN",
     "PERSISTENCE_ENERGY_STATUS",
+    "PERSISTENCE_PRINCIPLE_ID",
+    "PERSISTENCE_PRINCIPLE_NAME_EN",
+    "PERSISTENCE_PRINCIPLE_NAME_TH",
+    "PERSISTENCE_PRINCIPLE_STATUS",
     "PersistenceEnergyConfig",
     "PersistenceEnergyResult",
     "simulate_persistence_energy",

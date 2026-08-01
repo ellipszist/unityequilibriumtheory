@@ -1,6 +1,9 @@
 # Relational Organization and Persistence-Energy Diagnostic
 
-Status: `INTERNAL_DIAGNOSTIC` / `SIMULATION_ONLY` / `CONSTITUTIVE_ANSATZ`
+Status: `CANDIDATE_PRINCIPLE` / `INTERNAL_DIAGNOSTIC` / `SIMULATION_ONLY` / `CONSTITUTIVE_ANSATZ`
+
+Canonical principle: UET-PRINCIPLE-001 ? หลักการจัดสรรพลังงานร่วมเพื่อการดำรงอยู่ของระบบ.
+See RESOURCE_PERSISTENCE_PRINCIPLE_SPEC.md for the named principle and claim boundary.
 
 ## Research question
 

@@ -2,12 +2,25 @@ import math
 import unittest
 
 from docs.core.persistence_energy_diagnostic import (
+    PERSISTENCE_PRINCIPLE_ID,
+    PERSISTENCE_PRINCIPLE_NAME_EN,
+    PERSISTENCE_PRINCIPLE_NAME_TH,
+    PERSISTENCE_PRINCIPLE_STATUS,
     PersistenceEnergyConfig,
     simulate_persistence_energy,
 )
 
 
 class PersistenceEnergyDiagnosticTests(unittest.TestCase):
+    def test_named_principle_contract_is_stable(self):
+        self.assertEqual(PERSISTENCE_PRINCIPLE_ID, "UET-PRINCIPLE-001")
+        self.assertEqual(PERSISTENCE_PRINCIPLE_NAME_TH, "หลักการจัดสรรพลังงานร่วมเพื่อการดำรงอยู่ของระบบ")
+        self.assertIn(
+            "Cooperative Energy Allocation",
+            PERSISTENCE_PRINCIPLE_NAME_EN,
+        )
+        self.assertEqual(PERSISTENCE_PRINCIPLE_STATUS, "CANDIDATE_PRINCIPLE")
+
     def test_same_endpoints_can_have_different_path_cost(self):
         steps = 1000
         horizon = 10.0

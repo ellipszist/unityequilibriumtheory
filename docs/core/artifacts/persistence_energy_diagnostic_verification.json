@@ -1,6 +1,18 @@
 {
   "schema_version": "1.0",
   "artifact": "persistence_energy_diagnostic_verification",
+  "principle": {
+    "id": "UET-PRINCIPLE-001",
+    "name_th": "หลักการจัดสรรพลังงานร่วมเพื่อการดำรงอยู่ของระบบ",
+    "name_en": "Cooperative Energy Allocation for System Persistence Principle",
+    "status": "CANDIDATE_PRINCIPLE",
+    "statement": "Persistent system patterns can emerge when interacting components allocate behavior-related resources in ways that reduce premature loss of the system's persistence capacity; this is a result-based selection hypothesis, not intentional optimization.",
+    "not_a_claim": [
+      "not a universal energy law",
+      "not an SI potential-energy identity",
+      "not an agent, intention, force, mass, or new substance"
+    ]
+  },
   "audit_status": "PASS_WITH_OPEN_CONSTITUTIVE_INTERPRETATION",
   "claim_status": "SIMULATION_ONLY",
   "evidence_class": "INTERNAL_DIAGNOSTIC",
@@ -80,6 +92,7 @@
     "Rayleigh-type path cost is a constitutive ansatz",
     "normalized ledger is not SI energy or entropy accounting",
     "no external data, fit, biological selection, galaxy model, or force law",
-    "persistence threshold is an exploratory benchmark criterion"
+    "persistence threshold is an exploratory benchmark criterion",
+    "the named principle remains a candidate result-based selection hypothesis"
   ]
 }
