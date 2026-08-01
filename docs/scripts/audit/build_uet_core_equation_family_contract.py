@@ -84,7 +84,7 @@ FAMILIES = [
     family(
         "core.matter_space",
         "Matter-space coupled state/response dynamics",
-        ["docs/core/uet_matter_space.py", "docs/core/uet_spatial.py"],
+        ["docs/core/uet_matter_space.py", "docs/core/uet_spatial.py", "docs/core/uet_matter_space_causal.py", "docs/core/uet_matter_space_split.py", "docs/core/uet_matter_space_finite_cone.py", "docs/core/uet_matter_space_characteristic.py"],
         {"C": "lane-specific matter/order state", "Phi": "effective space-response variable", "Pi": "d_t Phi", "sigma": "derived dissipation", "R": "derived trace, no feedback"},
         "coupled Landau-Ginzburg functional plus conserved/nonconserved gradient flow and damped response",
         "normalized_v1",
@@ -230,7 +230,7 @@ FAMILIES = [
             "docs/core/__init__.py", "docs/core/uet_base_solver.py", "docs/core/uet_lite_engine.py", "docs/core/uet_matrix_engine.py",
             "docs/core/uet_data_orchestrator.py", "docs/core/uet_glass_box.py", "docs/core/scientific_validation.py",
             "docs/core/uet_bug_hunter.py", "docs/core/truth_auditor.py", "docs/core/reproducibility.py", "docs/core/uet_references.py",
-            "docs/core/uet_viz.py", "docs/core/02_Proof/Proof_00_Master_Balance.py",
+            "docs/core/uet_viz.py", "docs/core/02_Proof/Proof_00_Master_Balance.py", "docs/core/mass_density_correspondence.py", "docs/core/matter_interaction_forward.py", "docs/core/persistence_energy_diagnostic.py", "docs/core/relational_two_body_baseline.py", "docs/core/resource_selection_thermal_bridge.py", "docs/core/thermal_observable_bridge.py", "docs/core/thermal_source_observable_map.py", "docs/core/uet_impact_effect.py", "docs/core/uet_resource_selection.py",
         ],
         {},
         "numerical implementation and audit support, not a unified physical equation",

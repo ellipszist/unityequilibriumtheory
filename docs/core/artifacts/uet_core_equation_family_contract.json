@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_core_equation_family_contract",
-  "generated_at": "2026-07-26",
+  "generated_at": "2026-08-01",
   "audit_status": "PASS",
   "contract_status": "BLOCKED",
   "controlling_blocker": "core_code_surface_classification_or_upstream_compatibility_incomplete",
   "coverage": {
-    "core_code_surface_file_count": 32,
-    "assigned_module_path_count": 32,
+    "core_code_surface_file_count": 45,
+    "assigned_module_path_count": 45,
     "missing_core_paths": [],
     "nonexistent_declared_paths": [],
     "equation_family_count": 9,
@@ -47,7 +47,7 @@
         "docs/core/artifacts/master_equation_alignment_gate_v2.json"
       ],
       "next_gate": "repair potential/derivative pair, information operator declaration, and beta unit surface",
-      "candidate_surface_count": 233,
+      "candidate_surface_count": 274,
       "module_paths_exist": true
     },
     {
@@ -55,7 +55,11 @@
       "name": "Matter-space coupled state/response dynamics",
       "module_paths": [
         "docs/core/uet_matter_space.py",
-        "docs/core/uet_spatial.py"
+        "docs/core/uet_spatial.py",
+        "docs/core/uet_matter_space_causal.py",
+        "docs/core/uet_matter_space_split.py",
+        "docs/core/uet_matter_space_finite_cone.py",
+        "docs/core/uet_matter_space_characteristic.py"
       ],
       "equation_family": true,
       "variables": {
@@ -76,7 +80,7 @@
         "docs/core/artifacts/matter_space_dependency_gate.json"
       ],
       "next_gate": "repair pre-arrival leakage and then define dimensional observable map",
-      "candidate_surface_count": 74,
+      "candidate_surface_count": 231,
       "module_paths_exist": true
     },
     {
@@ -300,7 +304,7 @@
         "docs/core/uet_parameters.py"
       ],
       "next_gate": "split normalized/SI APIs and close provenance for every physical coefficient",
-      "candidate_surface_count": 42,
+      "candidate_surface_count": 47,
       "module_paths_exist": true
     },
     {
@@ -344,7 +348,16 @@
         "docs/core/reproducibility.py",
         "docs/core/uet_references.py",
         "docs/core/uet_viz.py",
-        "docs/core/02_Proof/Proof_00_Master_Balance.py"
+        "docs/core/02_Proof/Proof_00_Master_Balance.py",
+        "docs/core/mass_density_correspondence.py",
+        "docs/core/matter_interaction_forward.py",
+        "docs/core/persistence_energy_diagnostic.py",
+        "docs/core/relational_two_body_baseline.py",
+        "docs/core/resource_selection_thermal_bridge.py",
+        "docs/core/thermal_observable_bridge.py",
+        "docs/core/thermal_source_observable_map.py",
+        "docs/core/uet_impact_effect.py",
+        "docs/core/uet_resource_selection.py"
       ],
       "equation_family": false,
       "variables": {},
@@ -358,7 +371,7 @@
         "docs/core/artifacts/uet_code_surface_inventory.json"
       ],
       "next_gate": "link formula-bearing support paths to an owning equation family or quarantine as legacy",
-      "candidate_surface_count": 259,
+      "candidate_surface_count": 449,
       "module_paths_exist": true
     }
   ],

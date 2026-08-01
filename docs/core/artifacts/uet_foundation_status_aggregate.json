@@ -7,25 +7,27 @@
   "controlling_blockers": [
     "matter_space_causal_response",
     "o2_to_legacy_double_well",
-    "topic_formula_audits_not_code_complete_or_correspondence_incomplete",
-    "code_only_equation_surfaces_require_F1_F2_F3_review",
+    "open_correspondence_rows_and_lane_mappings",
+    "active_lane_units_and_observable_contracts_remain_open",
     "prearrival_leakage"
   ],
   "gate_summary": {
     "status_counts": {
-      "BLOCKED": 7,
-      "PASS_CONDITIONAL": 2
+      "PASS_CONDITIONAL": 3,
+      "BLOCKED": 6
     },
     "gates": [
       {
         "id": "F0",
         "name": "inventory",
-        "status": "BLOCKED",
+        "status": "PASS_CONDITIONAL",
+        "status_detail": "PASS_CONDITIONAL_WITH_EXPLICIT_QUARANTINES",
         "evidence": [
           "topic_inventory",
-          "code_inventory"
+          "code_inventory",
+          "coverage_closure"
         ],
-        "controller": "code-only surfaces and topic registry gaps remain disclosed"
+        "controller": "all discovered surfaces are assigned or quarantined; open correspondence/units/observable gates remain separate"
       },
       {
         "id": "F1",
@@ -41,10 +43,12 @@
         "id": "F2",
         "name": "standard_physics_correspondence",
         "status": "BLOCKED",
+        "status_detail": "BLOCKED_OPEN_CORRESPONDENCE_ROWS",
         "evidence": [
-          "correspondence_matrix"
+          "correspondence_matrix",
+          "full_correspondence"
         ],
-        "controller": "selected rows still contain open bridges and implementation conflicts"
+        "controller": "all inventoried rows are recorded; open standard-counterpart and UET candidate mappings remain"
       },
       {
         "id": "F3",
@@ -172,6 +176,8 @@
     "compatibility": "docs/core/artifacts/uet_foundation_compatibility_gate.json",
     "topic_inventory": "docs/core/artifacts/uet_foundation_equation_inventory.json",
     "code_inventory": "docs/core/artifacts/uet_code_surface_inventory.json",
+    "coverage_closure": "docs/core/artifacts/uet_foundation_coverage_closure.json",
+    "full_correspondence": "docs/core/artifacts/uet_full_correspondence_coverage.json",
     "family_contract": "docs/core/artifacts/uet_core_equation_family_contract.json",
     "correspondence_matrix": "docs/core/artifacts/uet_foundation_correspondence_matrix.json",
     "matter_space": "docs/core/artifacts/matter_space_variational_verification.json",
@@ -182,5 +188,5 @@
     "causal_discretization": "docs/core/artifacts/matter_space_causal_discretization_diagnostic.json",
     "causal_reference": "docs/core/artifacts/matter_space_causal_reference_verification.json"
   },
-  "next_controller": "close family-specific F1-F7 blockers before any new downstream physical claim"
+  "next_controller": "F1-F7: close open active-lane correspondence, units and observable rows before any new downstream physical claim"
 }

@@ -179,3 +179,19 @@
 - Added `uet_all_waves_closure.json`. All planned Waves 0–11 now have a machine-readable status, evidence, claim ceiling and controller. This closes status accounting, not the underlying physics: Wave 7 is conditional, while Waves 0–6 and 8–11 retain their declared blockers.
 - Verification: lane-contract builder, foundation gate, aggregate, Wave 3–10 program audit, all-wave closure audit and Python compilation passed.
 - Next controller: close one source-locked dimensional thermal lane, then rerun the selected 0.11/0.13 pilots without relabelling legacy results.
+### 2026-08-01 - Selected-lane 0.11/0.13 rerun and observable-contract closure
+
+- Scope: execute the preregistered `matter_space_characteristic_cone_v1` lane for the two active pilots without relabelling the legacy pilot artifacts.
+- Added: lane-specific preregistrations, deterministic selected-lane audit, normalized observable operator verification, and pilot-sync linkage to the new artifacts.
+- Verified: both selected reruns returned `PASS`; compact-support radius, ledger gates, trace-toggle invariance, and emission-relative arrival speed passed with no external rows consumed.
+- Result: 0.11 is `INTERNAL_DIAGNOSTIC` and 0.13 is `SIMULATION_ONLY`; the selected numerical lane is now represented in both pilots, but the foundation remains `BLOCKED`.
+- Blocker narrowed: the missing rerun was closed as a reproducibility gap. Remaining blockers are SI/detector mapping, external thermal provenance, topic 0.11 acquisition/Noether gates, the original full-candidate leakage, and the conserved-C high-k causal obstruction.
+- Claim impact: no promotion to mass, temperature, heat flux, empirical validation, universality, GR, particle, galaxy, or cosmological claims.
+- Next controller: close one source-locked dimensional observable lane and keep selected normalized reruns as controls only.
+### 2026-08-01 - Registry ownership and aggregate compatibility repair
+
+- Scope: make the foundation registry and regression contracts reflect the expanded core surface discovered by the coverage audit.
+- Added or changed: matter-space ownership for causal/finite-cone modules, explicit support/quarantine ownership for auxiliary correspondence and persistence modules, and normalized F0/F2 aggregate status with preserved `status_detail`.
+- Verified: ownership builder reports `missing_core_paths=0`; aggregate and Wave 3–10 generators pass; scoped regression suite passes `15/15`; 13 generated JSON artifacts parse.
+- Result: coverage is now explicit rather than silently incomplete; foundation status remains `BLOCKED` because explicit coverage does not close units, correspondence, observable, or data gates.
+- Next controller: close one source-locked dimensional observable lane; do not treat ownership coverage as physical derivation.

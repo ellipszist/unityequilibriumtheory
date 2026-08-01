@@ -1,0 +1,241 @@
+{
+  "schema_version": "1.0",
+  "artifact": "matter_space_0_13_characteristic_thermal_lane_rerun",
+  "operator_mode": "matter_space_characteristic_cone_v1",
+  "unit_lane": "normalized",
+  "preregistration": {
+    "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_characteristic_thermal_lane_preregistration.json",
+    "sha256": "6c2e874add2eef8dabcde36166bae7165fc96ff14ffe9d81b9c513f6eae384e7",
+    "parameter_fitting": false,
+    "external_numeric_inputs": []
+  },
+  "claim_status": "SIMULATION_ONLY",
+  "physical_observable_status": "OPEN_SI_MAPPING",
+  "mass_density_mapping": "NOT_DEFINED",
+  "trace_backreaction": false,
+  "no_field_clipping": true,
+  "no_parameter_fitting": true,
+  "limitations": [
+    "strict CFL=1 compact support is a numerical control, not a covariant proof",
+    "C is a non-conserved collective candidate and is not mass density",
+    "the observable operator is normalized and detector-independent",
+    "no external thermal or phase-transition data are consumed"
+  ],
+  "topic": "0.13_Thermodynamic_Bridge",
+  "status": "SIMULATION_ONLY",
+  "verification_status": "PASS",
+  "controller": "open_SI_Phi_to_temperature_mapping_and_external_source_package",
+  "config": {
+    "n": 161,
+    "dx": 0.05,
+    "dt": 0.05,
+    "steps": 20,
+    "declared_cone_speed": 1.0,
+    "forcing": "normalized_center_source_sin(0.75*t)"
+  },
+  "metrics": {
+    "max_ledger_relative_residual": 2.6688567983636355e-10,
+    "max_closed_energy_increase": 6.867908673314507e-07,
+    "minimum_trace_source": 0.0,
+    "target_radius_cells": 5,
+    "emission_time": 0.05,
+    "expected_arrival_time": 0.3,
+    "measured_arrival_time": 0.30000000000000004,
+    "measured_speed": 0.9999999999999998
+  },
+  "gates": {
+    "all_finite": true,
+    "source_nonnegative_trace": true,
+    "ledger_gates_pass": true,
+    "causal_arrival_recorded": true,
+    "causal_arrival_within_five_percent": true,
+    "no_external_data_consumed": true
+  },
+  "observables": [
+    {
+      "step": 1,
+      "time": 0.05,
+      "radius_cells": 0,
+      "C_rms": 0.0,
+      "Phi_rms": 1.441327510700969e-06,
+      "ledger_gate": "PASS",
+      "trace_source": 0.0
+    },
+    {
+      "step": 2,
+      "time": 0.1,
+      "radius_cells": 1,
+      "C_rms": 0.0,
+      "Phi_rms": 3.500380831320838e-06,
+      "ledger_gate": "PASS",
+      "trace_source": 0.0
+    },
+    {
+      "step": 3,
+      "time": 0.15000000000000002,
+      "radius_cells": 2,
+      "C_rms": 0.0,
+      "Phi_rms": 7.205605565385353e-06,
+      "ledger_gate": "PASS",
+      "trace_source": 0.0
+    },
+    {
+      "step": 4,
+      "time": 0.2,
+      "radius_cells": 3,
+      "C_rms": 0.0,
+      "Phi_rms": 1.234077788884843e-05,
+      "ledger_gate": "PASS",
+      "trace_source": 0.0
+    },
+    {
+      "step": 5,
+      "time": 0.25,
+      "radius_cells": 4,
+      "C_rms": 0.0,
+      "Phi_rms": 1.9287641666956697e-05,
+      "ledger_gate": "PASS",
+      "trace_source": 0.0
+    },
+    {
+      "step": 6,
+      "time": 0.30000000000000004,
+      "radius_cells": 5,
+      "C_rms": 0.0,
+      "Phi_rms": 2.7979454894730812e-05,
+      "ledger_gate": "PASS",
+      "trace_source": 0.0
+    },
+    {
+      "step": 7,
+      "time": 0.35000000000000003,
+      "radius_cells": 6,
+      "C_rms": 0.0,
+      "Phi_rms": 3.86376972780053e-05,
+      "ledger_gate": "PASS",
+      "trace_source": 0.0
+    },
+    {
+      "step": 8,
+      "time": 0.4,
+      "radius_cells": 7,
+      "C_rms": 0.0,
+      "Phi_rms": 5.1228311496387384e-05,
+      "ledger_gate": "PASS",
+      "trace_source": 0.0
+    },
+    {
+      "step": 9,
+      "time": 0.45,
+      "radius_cells": 8,
+      "C_rms": 0.0,
+      "Phi_rms": 6.589252678743026e-05,
+      "ledger_gate": "PASS",
+      "trace_source": 0.0
+    },
+    {
+      "step": 10,
+      "time": 0.5,
+      "radius_cells": 9,
+      "C_rms": 0.0,
+      "Phi_rms": 8.260248855006877e-05,
+      "ledger_gate": "PASS",
+      "trace_source": 0.0
+    },
+    {
+      "step": 11,
+      "time": 0.55,
+      "radius_cells": 10,
+      "C_rms": 0.0,
+      "Phi_rms": 0.00010144954748154688,
+      "ledger_gate": "PASS",
+      "trace_source": 0.0
+    },
+    {
+      "step": 12,
+      "time": 0.6000000000000001,
+      "radius_cells": 11,
+      "C_rms": 0.0,
+      "Phi_rms": 0.00012240347882219583,
+      "ledger_gate": "PASS",
+      "trace_source": 0.0
+    },
+    {
+      "step": 13,
+      "time": 0.65,
+      "radius_cells": 12,
+      "C_rms": 0.0,
+      "Phi_rms": 0.00014552069989288277,
+      "ledger_gate": "PASS",
+      "trace_source": 0.0
+    },
+    {
+      "step": 14,
+      "time": 0.7000000000000001,
+      "radius_cells": 13,
+      "C_rms": 0.0,
+      "Phi_rms": 0.00017076543194839157,
+      "ledger_gate": "PASS",
+      "trace_source": 0.0
+    },
+    {
+      "step": 15,
+      "time": 0.75,
+      "radius_cells": 14,
+      "C_rms": 0.0,
+      "Phi_rms": 0.00019816773828602304,
+      "ledger_gate": "PASS",
+      "trace_source": 0.0
+    },
+    {
+      "step": 16,
+      "time": 0.8,
+      "radius_cells": 15,
+      "C_rms": 0.0,
+      "Phi_rms": 0.00022768512932172522,
+      "ledger_gate": "PASS",
+      "trace_source": 0.0
+    },
+    {
+      "step": 17,
+      "time": 0.8500000000000001,
+      "radius_cells": 16,
+      "C_rms": 0.0,
+      "Phi_rms": 0.00025932678346949836,
+      "ledger_gate": "PASS",
+      "trace_source": 0.0
+    },
+    {
+      "step": 18,
+      "time": 0.9,
+      "radius_cells": 17,
+      "C_rms": 0.0,
+      "Phi_rms": 0.0002930432155119411,
+      "ledger_gate": "PASS",
+      "trace_source": 0.0
+    },
+    {
+      "step": 19,
+      "time": 0.9500000000000001,
+      "radius_cells": 18,
+      "C_rms": 0.0,
+      "Phi_rms": 0.000328826487513656,
+      "ledger_gate": "PASS",
+      "trace_source": 0.0
+    },
+    {
+      "step": 20,
+      "time": 1.0,
+      "radius_cells": 19,
+      "C_rms": 0.0,
+      "Phi_rms": 0.0003666202442413579,
+      "ledger_gate": "PASS",
+      "trace_source": 0.0
+    }
+  ],
+  "external_validation": {
+    "status": "NOT_CONSUMED",
+    "rows": 0
+  },
+  "claim_boundary": "normalized causal control simulation only; no temperature identity, SI heat flux, or external validation"
+}

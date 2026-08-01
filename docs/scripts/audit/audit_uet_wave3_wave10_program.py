@@ -98,6 +98,7 @@ def build() -> dict[str, Any]:
     causal_selection = load(ROOT / "docs/core/artifacts/matter_space_causal_lane_selection.json")
     causal_status = status_of(causal_selection)
     thermal = load(ROOT / "docs/core/artifacts/thermal_observable_bridge_verification.json")
+    observable = load(ROOT / "docs/core/artifacts/matter_space_observable_verification.json")
     persistence_dynamic = load(ROOT / "docs/core/artifacts/resource_selection_dynamic_game_verification.json")
     persistence_thermal = load(ROOT / "docs/core/artifacts/resource_selection_thermal_bridge_verification.json")
     extended_closure = load(ROOT / "docs/core/artifacts/uet_foundation_extended_wave_closure.json")
@@ -107,6 +108,8 @@ def build() -> dict[str, Any]:
     carrier = load(ROOT / "docs/core/artifacts/carrier_neutral_comparator_contract.json")
     phase = load(ROOT / "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_matter_space_coupled_diagnostic.json")
     thermal_pilot = load(ROOT / "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_control.json")
+    phase_rerun = load(ROOT / "docs/topics/0.11_Phase_Transitions/Result/artifacts/matter_space_0_11_characteristic_lane_rerun.json")
+    thermal_rerun = load(ROOT / "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_0_13_characteristic_thermal_lane_rerun.json")
     galaxy = load(ROOT / "docs/topics/0.1_Galaxy_Rotation_Problem/Result/artifacts/galaxy_history_comparison.json")
     cosmic = load(ROOT / "docs/topics/0.26_Cosmic_Dynamic_Frame/Result/artifacts/0_26_cosmic_dynamic_frame_verification.json")
 
@@ -141,8 +144,8 @@ def build() -> dict[str, Any]:
         wave(
             3,
             "Mathematical closure and causal two-arm decision",
-            causal_selection.get("next_controller", controller_of(causal_selection)),
-            ["docs/core/artifacts/matter_space_causal_lane_selection.json", "docs/core/artifacts/matter_space_characteristic_cone_verification.json", "docs/core/artifacts/matter_space_causal_lane_comparison.json", "docs/core/artifacts/matter_space_causal_reference_verification.json", "docs/core/artifacts/matter_space_dependency_gate.json"],
+            causal_selection.get("next_controller", controller_of(causal_selection)) + "; normalized observable operator verified; SI mapping remains open",
+            ["docs/core/artifacts/matter_space_causal_lane_selection.json", "docs/core/artifacts/matter_space_characteristic_cone_verification.json", "docs/core/artifacts/matter_space_causal_lane_comparison.json", "docs/core/artifacts/matter_space_causal_reference_verification.json", "docs/core/artifacts/matter_space_dependency_gate.json", "docs/core/artifacts/matter_space_observable_verification.json"],
             causal_status,
             "selected characteristic finite-cone candidate plus conserved-C comparator; no physical promotion",
             foundation_blocked,
@@ -150,9 +153,9 @@ def build() -> dict[str, Any]:
         wave(
             4,
             "Observable mapping and synthetic control",
-            "dimensional_observable_operator_and_uncertainty_missing",
-            ["docs/core/artifacts/thermal_observable_bridge_verification.json", "docs/core/artifacts/resource_selection_thermal_bridge_verification.json", "docs/core/artifacts/matter_space_research_program_gate.json"],
-            status_of(thermal),
+            "normalized_observable_operator_passes; dimensional_observable_operator_and_uncertainty_missing",
+            ["docs/core/artifacts/thermal_observable_bridge_verification.json", "docs/core/artifacts/resource_selection_thermal_bridge_verification.json", "docs/core/artifacts/matter_space_research_program_gate.json", "docs/core/artifacts/matter_space_observable_verification.json"],
+            "PASS_WITH_OPEN_SI_MAPPING" if status_of(observable).startswith("PASS") else status_of(thermal),
             "declared measurement operators and simulation-only controls",
             foundation_blocked,
         ),
@@ -160,7 +163,7 @@ def build() -> dict[str, Any]:
             5,
             "Topic 0.11 matter-space phase pilot",
             phase.get("controlling_blocker", controller_of(phase)),
-            ["docs/core/artifacts/matter_space_phase_pilot.json", "docs/core/artifacts/matter_space_topic_pilot_sync.json", "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_matter_space_phase_coupling_diagnostic.json", "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_noether_phase_field_dependency_gate.json"],
+            ["docs/core/artifacts/matter_space_phase_pilot.json", "docs/core/artifacts/matter_space_topic_pilot_sync.json", "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_matter_space_phase_coupling_diagnostic.json", "docs/topics/0.11_Phase_Transitions/Result/artifacts/matter_space_0_11_characteristic_lane_rerun.json", "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_noether_phase_field_dependency_gate.json"],
             status_of(phase),
             "internal normalized diagnostic; no universality or mass-generation claim",
             foundation_blocked,
@@ -169,7 +172,7 @@ def build() -> dict[str, Any]:
             6,
             "Topic 0.13 thermodynamic and thermal pilot",
             thermal_pilot.get("controlling_blocker", controller_of(thermal_pilot)),
-            ["docs/core/artifacts/matter_space_topic_pilot_sync.json", "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_control.json", "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_second_sound_source_package.json", "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_observable_map_readiness.json"],
+            ["docs/core/artifacts/matter_space_topic_pilot_sync.json", "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_control.json", "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_0_13_characteristic_thermal_lane_rerun.json", "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_second_sound_source_package.json", "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_observable_map_readiness.json"],
             status_of(thermal_pilot),
             "simulation-only Fourier/Cattaneo/trace comparator; external validation blocked",
             foundation_blocked,
@@ -212,7 +215,7 @@ def build() -> dict[str, Any]:
         ),
     ]
 
-    blocked_waves = [entry["wave"] for entry in waves if entry["effective_status"] in {"BLOCKED", "BLOCKED_BY_FOUNDATION", "FAIL"}]
+    blocked_waves = [entry["wave"] for entry in waves if entry["effective_status"].startswith("BLOCKED") or entry["effective_status"] in {"BLOCKED_BY_FOUNDATION", "FAIL"}]
     return {
         "schema_version": "1.0",
         "artifact": "uet_wave3_wave10_research_program",
@@ -230,7 +233,7 @@ def build() -> dict[str, Any]:
         "waves": waves,
         "causal_decision": {
             "conserved_C": "parabolic/conserved phase comparator; no changing-C finite-cone claim",
-            "finite_cone_C": "selected non-conserved characteristic candidate passes its normalized compact-support contract and public adapter smoke gate",
+            "finite_cone_C": "selected non-conserved telegraph/characteristic candidate passes its normalized compact-support contract and public adapter smoke gate",
             "default_full_candidate": "blocked; original nonlinear Heun lane retains pre-arrival leakage above threshold",
             "conserved_Cattaneo": "negative control; high-k speed unbounded without UV/nonlocal regularization",
             "reference_lane": "strict-CFL compact-support control does not promote the full coupled candidate",

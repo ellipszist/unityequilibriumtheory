@@ -18,6 +18,8 @@ INPUTS = {
     "compatibility": ROOT / "docs/core/artifacts/uet_foundation_compatibility_gate.json",
     "topic_inventory": ROOT / "docs/core/artifacts/uet_foundation_equation_inventory.json",
     "code_inventory": ROOT / "docs/core/artifacts/uet_code_surface_inventory.json",
+    "coverage_closure": ROOT / "docs/core/artifacts/uet_foundation_coverage_closure.json",
+    "full_correspondence": ROOT / "docs/core/artifacts/uet_full_correspondence_coverage.json",
     "family_contract": ROOT / "docs/core/artifacts/uet_core_equation_family_contract.json",
     "correspondence_matrix": ROOT / "docs/core/artifacts/uet_foundation_correspondence_matrix.json",
     "matter_space": ROOT / "docs/core/artifacts/matter_space_variational_verification.json",
@@ -51,6 +53,8 @@ def build_aggregate() -> dict[str, Any]:
     compatibility = data["compatibility"]
     topic_inventory = data["topic_inventory"]
     code_inventory = data["code_inventory"]
+    coverage_closure = data["coverage_closure"]
+    full_correspondence = data["full_correspondence"]
     family_contract = data["family_contract"]
     matrix = data["correspondence_matrix"]
     matter = data["matter_space"]
@@ -65,9 +69,10 @@ def build_aggregate() -> dict[str, Any]:
         {
             "id": "F0",
             "name": "inventory",
-            "status": "BLOCKED" if topic_inventory.get("inventory_gate_status") == "BLOCKED" or code_inventory.get("inventory_gate_status") == "BLOCKED" else "PASS",
-            "evidence": ["topic_inventory", "code_inventory"],
-            "controller": "code-only surfaces and topic registry gaps remain disclosed",
+            "status": "PASS_CONDITIONAL" if coverage_closure.get("coverage_gate_status") == "PASS_WITH_EXPLICIT_QUARANTINES" else "BLOCKED",
+            "status_detail": "PASS_CONDITIONAL_WITH_EXPLICIT_QUARANTINES" if coverage_closure.get("coverage_gate_status") == "PASS_WITH_EXPLICIT_QUARANTINES" else "BLOCKED",
+            "evidence": ["topic_inventory", "code_inventory", "coverage_closure"],
+            "controller": "all discovered surfaces are assigned or quarantined; open correspondence/units/observable gates remain separate",
         },
         {
             "id": "F1",
@@ -79,9 +84,10 @@ def build_aggregate() -> dict[str, Any]:
         {
             "id": "F2",
             "name": "standard_physics_correspondence",
-            "status": "BLOCKED" if matrix.get("matrix_status") == "BLOCKED" else "PASS_CONDITIONAL",
-            "evidence": ["correspondence_matrix"],
-            "controller": "selected rows still contain open bridges and implementation conflicts",
+            "status": "BLOCKED" if full_correspondence.get("matrix_status") == "BLOCKED_OPEN_CORRESPONDENCE_ROWS" else ("BLOCKED" if matrix.get("matrix_status") == "BLOCKED" else "PASS_CONDITIONAL"),
+            "status_detail": "BLOCKED_OPEN_CORRESPONDENCE_ROWS" if full_correspondence.get("matrix_status") == "BLOCKED_OPEN_CORRESPONDENCE_ROWS" else ("BLOCKED" if matrix.get("matrix_status") == "BLOCKED" else "PASS_CONDITIONAL"),
+            "evidence": ["correspondence_matrix", "full_correspondence"],
+            "controller": "all inventoried rows are recorded; open standard-counterpart and UET candidate mappings remain",
         },
         {
             "id": "F3",
@@ -185,8 +191,8 @@ def build_aggregate() -> dict[str, Any]:
 
     legacy_blockers = legacy_variational.get("controlling_blockers", [])
     controlling_blockers = list(dict.fromkeys(compatibility.get("controlling_blockers", []) + legacy_blockers + [
-        "topic_formula_audits_not_code_complete_or_correspondence_incomplete",
-        "code_only_equation_surfaces_require_F1_F2_F3_review",
+        "open_correspondence_rows_and_lane_mappings",
+        "active_lane_units_and_observable_contracts_remain_open",
         "prearrival_leakage",
     ]))
 
@@ -209,7 +215,7 @@ def build_aggregate() -> dict[str, Any]:
         "principles": principles,
         "stopping_criteria": stopping_criteria,
         "evidence_inputs": {key: rel(path) for key, path in INPUTS.items()},
-        "next_controller": "close family-specific F1-F7 blockers before any new downstream physical claim",
+        "next_controller": "F1-F7: close open active-lane correspondence, units and observable rows before any new downstream physical claim",
     }
 
 

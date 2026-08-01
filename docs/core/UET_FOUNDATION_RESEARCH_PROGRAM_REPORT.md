@@ -137,3 +137,21 @@ The active-lane register `uet_active_lane_units_observable_register.json` makes 
 - carrier/observer and gravity/cosmology lanes remain blocked until source, detector, covariance, units and provenance contracts close.
 
 The next research action is consequently one dimensional, source-locked thermal lane. It must close the measurement operator and uncertainty contract before any external fit or validation claim. The selected characteristic lane can be used as the numerical control, but it cannot be promoted to mass, SI causality, GR or empirical evidence.
+## Latest execution update — 2026-08-01
+
+The selected normalized characteristic lane has now been executed in both active pilots under separate locked preregistrations:
+
+- Topic 0.11: `matter_space_0_11_characteristic_lane_rerun.json` — `PASS`, internal diagnostic only.
+- Topic 0.13: `matter_space_0_13_characteristic_thermal_lane_rerun.json` — `PASS`, simulation-only with open SI mapping.
+
+The reruns establish a reproducible numerical control: compact support follows the declared one-cell-per-macro-step contract, the normalized ledger gates pass, enabling/disabling the derived trace does not alter the physical state, and the thermal control's arrival speed is measured relative to the first source emission. They do not establish that `C` is mass, that `Phi` is temperature, or that the numerical cone is a relativistic physical cone.
+
+The plan is therefore updated from “rerun selected pilots” to “use the selected reruns as fixed controls while closing the dimensional observable and provenance layer.” The foundation dependency gate remains `BLOCKED`. The controlling open items are:
+
+1. a source-locked measurement operator and units for `Phi`/`R_gen` to temperature, heat flux, or entropy production;
+2. external source provenance and uncertainty for Topic 0.13;
+3. Topic 0.11 replicate/temporal acquisition and Noether/charge-sector dependencies;
+4. full nonlinear changing-`C` causal closure, while preserving the conserved-C high-k obstruction;
+5. downstream carrier, covariant transport, GR, galaxy, cosmology, and particle gates.
+
+No legacy artifact was relabelled, no parameter was fitted, and no empirical or physical claim was promoted.

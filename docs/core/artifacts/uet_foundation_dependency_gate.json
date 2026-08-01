@@ -12,20 +12,23 @@
   "registry": "docs/core/artifacts/uet_equation_correspondence_registry.json",
   "gates": {
     "F0_inventory": {
-      "status": "BLOCKED",
-      "reason": "Discovery inventory is current but explicitly non-exhaustive; code-only surfaces and scaffold/topic coverage remain open.",
+      "status": "PASS_CONDITIONAL_WITH_EXPLICIT_QUARANTINES",
+      "reason": "Every discovered code surface and formula-audit row is now assigned to a declared family or explicitly quarantined; correspondence and physical meaning remain separate gates.",
       "evidence": [
         "docs/core/artifacts/uet_foundation_equation_inventory.json",
-        "docs/core/artifacts/uet_code_surface_inventory.json"
+        "docs/core/artifacts/uet_code_surface_inventory.json",
+        "docs/core/artifacts/uet_foundation_coverage_closure.json"
       ],
       "metrics": {
         "formula_audit_files": 39,
         "formula_rows": 263,
         "core_python_files": 45,
         "candidate_code_surfaces": 1843,
-        "unlinked_core_files": 26
+        "unlinked_core_files": 26,
+        "coverage_gate_status": "PASS_WITH_EXPLICIT_QUARANTINES",
+        "explicit_quarantine_surface_count": 336
       },
-      "required_next_artifact": "coverage closure manifest mapping each discovered equation/code surface to a registry family or explicit quarantine"
+      "required_next_artifact": "full correspondence/unit/observable matrix for inventoried rows"
     },
     "F1_ontology": {
       "status": "PASS_CONDITIONAL",
@@ -37,12 +40,18 @@
       "required_next_artifact": "legacy wording synchronization and lane-level ontology closure"
     },
     "F2_physical_correspondence": {
-      "status": "BLOCKED",
-      "reason": "Focused correspondence rows exist, but the matrix is not exhaustive and observable maps remain open for several families.",
+      "status": "BLOCKED_OPEN_CORRESPONDENCE_ROWS",
+      "reason": "All inventoried topic rows now have an explicit correspondence record, but open standard-counterpart/derivation/observable mappings remain.",
       "evidence": [
         "docs/core/artifacts/uet_foundation_correspondence_matrix.json",
+        "docs/core/artifacts/uet_full_correspondence_coverage.json",
         "docs/core/artifacts/uet_equation_correspondence_registry.json"
       ],
+      "metrics": {
+        "topic_formula_rows": 263,
+        "open_correspondence_rows": 152,
+        "central_registry_linked_rows": 0
+      },
       "required_next_artifact": "exhaustive lane correspondence and measurement-operator coverage manifest"
     },
     "F3_units": {
@@ -97,6 +106,7 @@
       "evidence": [
         "docs/core/artifacts/matter_space_topic_pilot_sync.json",
         "docs/core/artifacts/uet_active_lane_units_observable_register.json",
+        "docs/core/artifacts/matter_space_observable_verification.json",
         "docs/core/artifacts/uet_equation_correspondence_registry.json"
       ],
       "metrics": {
@@ -143,7 +153,7 @@
     "inventory_missing_scope_count": 5,
     "code_unlinked_core_files": 26,
     "matrix_status": "BLOCKED",
-    "topic_rerun_open": true
+    "topic_rerun_open": false
   },
   "downstream_policy": {
     "new_foundational_equations": "BLOCKED",

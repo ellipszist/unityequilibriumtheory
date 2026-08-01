@@ -40,6 +40,9 @@ def build_gate() -> dict[str, Any]:
     causal_lane_path = ROOT / "docs/core/artifacts/matter_space_causal_lane_selection.json"
     pilot_sync_path = ROOT / "docs/core/artifacts/matter_space_topic_pilot_sync.json"
     lane_contract_path = ROOT / "docs/core/artifacts/uet_active_lane_units_observable_register.json"
+    coverage_path = ROOT / "docs/core/artifacts/uet_foundation_coverage_closure.json"
+    correspondence_full_path = ROOT / "docs/core/artifacts/uet_full_correspondence_coverage.json"
+    observable_path = ROOT / "docs/core/artifacts/matter_space_observable_verification.json"
     inventory = load(inventory_path)
     code = load(code_path)
     matrix = load(matrix_path)
@@ -49,6 +52,9 @@ def build_gate() -> dict[str, Any]:
     causal_lane = load(causal_lane_path)
     pilot_sync = load(pilot_sync_path)
     lane_contract = load(lane_contract_path)
+    coverage = load(coverage_path)
+    correspondence_full = load(correspondence_full_path)
+    observable_map = load(observable_path)
 
     characteristic_pass = characteristic.get("audit_status") == "PASS"
     selected_lane = causal_lane.get("selected_lane", {})
@@ -64,17 +70,19 @@ def build_gate() -> dict[str, Any]:
 
     gates = {
         "F0_inventory": {
-            "status": "BLOCKED" if inventory.get("inventory_gate_status") == "BLOCKED" or code.get("inventory_gate_status") == "BLOCKED" else "PASS",
-            "reason": "Discovery inventory is current but explicitly non-exhaustive; code-only surfaces and scaffold/topic coverage remain open.",
-            "evidence": [rel(inventory_path), rel(code_path)],
+            "status": "PASS_CONDITIONAL_WITH_EXPLICIT_QUARANTINES" if coverage.get("coverage_gate_status") == "PASS_WITH_EXPLICIT_QUARANTINES" else "BLOCKED",
+            "reason": "Every discovered code surface and formula-audit row is now assigned to a declared family or explicitly quarantined; correspondence and physical meaning remain separate gates.",
+            "evidence": [rel(inventory_path), rel(code_path), rel(coverage_path)],
             "metrics": {
                 "formula_audit_files": inventory.get("coverage", {}).get("formula_audit_file_count"),
                 "formula_rows": inventory.get("coverage", {}).get("parsed_formula_row_count"),
                 "core_python_files": code.get("coverage", {}).get("core_python_file_count"),
                 "candidate_code_surfaces": code.get("coverage", {}).get("candidate_surface_count"),
                 "unlinked_core_files": code_unlinked,
+                "coverage_gate_status": coverage.get("coverage_gate_status"),
+                "explicit_quarantine_surface_count": coverage.get("summary", {}).get("code_status_counts", {}).get("EXPLICITLY_QUARANTINED", 0),
             },
-            "required_next_artifact": "coverage closure manifest mapping each discovered equation/code surface to a registry family or explicit quarantine",
+            "required_next_artifact": "full correspondence/unit/observable matrix for inventoried rows",
         },
         "F1_ontology": {
             "status": "PASS_CONDITIONAL" if registry_entries else "BLOCKED",
@@ -83,9 +91,10 @@ def build_gate() -> dict[str, Any]:
             "required_next_artifact": "legacy wording synchronization and lane-level ontology closure",
         },
         "F2_physical_correspondence": {
-            "status": "BLOCKED" if matrix_blocked else "PASS_CONDITIONAL",
-            "reason": "Focused correspondence rows exist, but the matrix is not exhaustive and observable maps remain open for several families.",
-            "evidence": [rel(matrix_path), rel(registry_path)],
+            "status": "BLOCKED_OPEN_CORRESPONDENCE_ROWS" if correspondence_full.get("matrix_status") == "BLOCKED_OPEN_CORRESPONDENCE_ROWS" else ("BLOCKED" if matrix_blocked else "PASS_CONDITIONAL"),
+            "reason": "All inventoried topic rows now have an explicit correspondence record, but open standard-counterpart/derivation/observable mappings remain.",
+            "evidence": [rel(matrix_path), rel(correspondence_full_path), rel(registry_path)],
+            "metrics": {"topic_formula_rows": correspondence_full.get("coverage", {}).get("topic_formula_row_count"), "open_correspondence_rows": correspondence_full.get("coverage", {}).get("open_correspondence_row_count"), "central_registry_linked_rows": correspondence_full.get("coverage", {}).get("central_registry_linked_topic_rows")},
             "required_next_artifact": "exhaustive lane correspondence and measurement-operator coverage manifest",
         },
         "F3_units": {
@@ -122,7 +131,8 @@ def build_gate() -> dict[str, Any]:
         "F7_observable_mapping": {
             "status": "BLOCKED",
             "reason": "Internal normalized diagnostics exist, but physical measurement operators, dimensional maps and uncertainty contracts are incomplete.",
-            "evidence": [rel(pilot_sync_path), rel(lane_contract_path), rel(registry_path)],
+            "evidence": [rel(pilot_sync_path), rel(lane_contract_path), rel(observable_path), rel(registry_path)],
+            "metrics": {"normalized_operator_status": observable_map.get("audit_status"), "si_status": observable_map.get("measurement_operator", {}).get("SI_status")},
             "metrics": {"active_lane_count": lane_contract.get("lane_count"), "observable_status_counts": lane_contract.get("observable_status_counts", {})},
             "required_next_artifact": "observable mapping register with units, resolution and uncertainty for each active lane",
         },

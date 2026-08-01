@@ -545,3 +545,15 @@ __all__ += [
     "summarize_resource_thermal_ledger",
     "run_resource_selection_thermal_bridge",
 ]
+
+from .uet_matter_space_observable import (
+    MATTER_SPACE_OBSERVABLE_OPERATOR_MODE,
+    matter_space_observable_contract,
+    normalized_matter_space_observable,
+)
+
+__all__ += [
+    "MATTER_SPACE_OBSERVABLE_OPERATOR_MODE",
+    "matter_space_observable_contract",
+    "normalized_matter_space_observable",
+]
