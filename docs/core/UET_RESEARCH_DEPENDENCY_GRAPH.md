@@ -75,3 +75,10 @@ controller bookkeeping for the particle/Dirac wave without deriving a spinor,
 neutrino, positron, antimatter, or particle identity for `R_gen`.
 
 The all-wave artifact remains `ALL_WAVE_STATUS_ACCOUNTING_CLOSED_FOUNDATION_PHYSICS_NOT_CLOSED` with 12 planned waves. The next work is not a claim upgrade: it is to close the remaining foundation correspondence/units/observable gates and only then revisit the blocked application lanes.
+## Latest plan update — 2026-08-01 active-lane evidence synchronization
+
+The active carrier/observer lane now references the verified normalized photon
+source–propagation–detector comparator as a standard control. This is an
+evidence-chain repair only: the lane remains `SIMULATION_ONLY`, the foundation
+remains `BLOCKED`, and no `R_gen` particle identity or SI detector prediction
+is enabled.

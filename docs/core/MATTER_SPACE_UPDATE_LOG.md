@@ -203,3 +203,11 @@
 - Result: the standard measurement layer now exposes normalized signal, wavevector, arrival-speed, and propagation-length diagnostics with explicit unit/domain boundaries.
 - Preserved: `alpha_Phi_K` remains open, no local numeric package or holdout was consumed, normalized `Phi` is not temperature, and heat flux/entropy remain downstream maps.
 - Next controller: source-lock a licensed numeric TTG package and independently close the `Phi` dimensional calibration gate before any fit or validation claim.
+### 2026-08-01 - Photon control synchronized into active lane register
+
+- Scope: synchronize the carrier/observer active-lane register with the newly verified standard comparator.
+- Added: `standard_control` and the photon verifier artifact to `uet_active_lane_units_observable_register.json` through its deterministic builder.
+- Verified: active-lane builder returned `PASS_WITH_OPEN_LANES`; foundation dependency gate remained `PASS` as an audit with status `BLOCKED`.
+- Result: the carrier lane now has an explicit normalized standard control, while SI detector units, uncertainty, external provenance, and UET source-to-carrier mapping remain open.
+- Claim impact: none; `R_gen` remains a derived trace and is not identified with a photon.
+- Next controller: close one dimensional thermal lane or explicitly document why the source-data route remains locked before any external comparison.

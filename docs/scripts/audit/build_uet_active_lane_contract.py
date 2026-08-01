@@ -90,8 +90,9 @@ def build() -> dict[str, Any]:
             "observable_status": "SIMULATION_ONLY",
             "units_status": "BLOCKED_BY_CARRIER_MAP",
             "uncertainty_status": "DETECTOR_RESPONSE_AND_SOURCE_PROVENANCE_OPEN",
-            "open_items": ["R_gen is not photon/neutrino/positron", "no universal carrier identity"],
-            "evidence": ["docs/core/artifacts/impact_effect_core_verification.json", "docs/core/artifacts/carrier_observer_thought_experiment.json"],
+            "standard_control": "normalized standard-photon source-propagation-detector comparator",
+            "open_items": ["R_gen is not photon/neutrino/positron", "no universal carrier identity", "SI detector map and external provenance remain open"],
+            "evidence": ["docs/core/artifacts/impact_effect_core_verification.json", "docs/core/artifacts/carrier_observer_thought_experiment.json", "docs/core/artifacts/photon_observer_baseline_verification.json"],
         },
         {
             "lane_id": "gravity_orbit_cosmology",
