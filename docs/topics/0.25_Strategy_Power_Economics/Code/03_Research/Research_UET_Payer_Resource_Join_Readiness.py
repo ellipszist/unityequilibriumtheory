@@ -20,6 +20,7 @@ from economic_hardening_common import (
     BLS_INDUSTRY_HOURS_RAW_DIR,
     USASPENDING_LEDGER_ARTIFACT,
     TREASURY_FUNDING_SOURCE_ARTIFACT,
+    AWARD_OUTLAY_RECONCILIATION_ARTIFACT,
     USGS_MATERIAL_QUANTITY_ARTIFACT,
     SEC_PUBLIC_FIRM_PROXY_ARTIFACT,
     SEC_PUBLIC_FIRM_MIX_ARTIFACT,
@@ -161,6 +162,8 @@ def main() -> int:
     usaspending_ready = usaspending_ledger.get("status") == "PASS_WITH_BOUNDARY"
     treasury_funding = _artifact_status(TREASURY_FUNDING_SOURCE_ARTIFACT)
     treasury_funding_ready = treasury_funding.get("status") == "PASS_WITH_BOUNDARY"
+    award_outlay_reconciliation = _artifact_status(AWARD_OUTLAY_RECONCILIATION_ARTIFACT)
+    award_outlay_ready = award_outlay_reconciliation.get("status") == "PASS_WITH_BOUNDARY"
 
     evidence = {
         "funding_flows": {
@@ -219,6 +222,12 @@ def main() -> int:
             "artifact": {"source_package": sec_funding_proxy, "funding_mix": sec_funding_mix},
             "boundary": "Predeclared public-firm annual accounting channels can be compared descriptively; funding shares and invoice provenance remain unidentified.",
         },
+        "award_outlay_reconciliation": {
+            "status": "PASS_WITH_BOUNDARY" if award_outlay_ready else "BLOCKED",
+            "artifact": award_outlay_reconciliation,
+            "source": _glob_record(RAW_ROOT / "usaspending" / "2026-08-01", "federal_award_outlay_reconciliation_*.json", "USAspending grouped award and Treasury outlay reconciliation inputs"),
+            "boundary": "The fixed DOE FY2024 comparison measures grouped award obligations against Treasury program net outlays. It is a scale diagnostic with a NOT_ONE_TO_ONE result, not proof of payment settlement or financing-source attribution.",
+        },
         "treasury_aggregate_funding_source": {
             "status": "PASS_WITH_BOUNDARY" if treasury_funding_ready else "BLOCKED",
             "artifact": treasury_funding,
@@ -260,6 +269,7 @@ def main() -> int:
             "bounded_labor_subset_ready": bool(bls_hours_ready),
             "public_federal_award_ledger_ready": bool(usaspending_ready),
             "treasury_aggregate_funding_source_ready": bool(treasury_funding_ready),
+            "award_outlay_reconciliation_ready": bool(award_outlay_ready),
             "bounded_labor_subset": evidence["labor_industry_hours"].get("artifact", {}).get("bounded_coverage"),
         },
         "evidence": evidence,

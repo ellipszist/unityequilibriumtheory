@@ -1,0 +1,72 @@
+{
+  "claim_boundary": "This artifact does not identify which tax, borrowing, cash-balance, or other financing source funded a specific award, nor does it prove that an obligation was paid to a supplier or transformed into a measured physical resource.",
+  "controller_status": "AWARD_OUTLAY_RECONCILIATION_BOUNDARY",
+  "coverage": {
+    "agency": "Department of Energy",
+    "award_type_codes": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "end_date": "2024-09-30",
+    "fiscal_year": 2024,
+    "no_imputation": true,
+    "start_date": "2023-10-01"
+  },
+  "generated_at_utc": "2026-08-01T09:38:19.641153+00:00",
+  "limitations": [
+    "USAspending grouped result is a prime-award obligation total, not a bank settlement total.",
+    "Treasury MTS Department of Energy outlays cover agency programs and may include outlays not tied to the sampled award universe.",
+    "The comparison is one fiscal-year aggregate and cannot establish causal or transaction-level provenance."
+  ],
+  "observations": {
+    "obligation_minus_outlay_usd": -3271628833.199997,
+    "obligation_to_outlay_ratio": 0.9336591359556022,
+    "treasury_mts_total_department_of_energy_net_outlays_usd": 49315438988.11,
+    "treasury_row": {
+      "classification_desc": "Total--Department of Energy",
+      "classification_id": "54962623",
+      "current_fytd_app_rcpt_amt": "5642667065.14",
+      "current_fytd_gross_outly_amt": "54958106053.25",
+      "current_fytd_net_outly_amt": "49315438988.11",
+      "current_month_app_rcpt_amt": "-194219888.90",
+      "current_month_gross_outly_amt": "3902439667.70",
+      "current_month_net_outly_amt": "4096659556.60",
+      "data_type_cd": "T",
+      "line_code_nbr": "2680",
+      "parent_id": "54962597",
+      "print_order_nbr": "205",
+      "prior_fytd_app_rcpt_amt": "7390752695.77",
+      "prior_fytd_gross_outly_amt": "41814004627.10",
+      "prior_fytd_net_outly_amt": "34423251931.33",
+      "record_calendar_day": "30",
+      "record_calendar_month": "09",
+      "record_calendar_quarter": "3",
+      "record_calendar_year": "2024",
+      "record_date": "2024-09-30",
+      "record_fiscal_quarter": "4",
+      "record_fiscal_year": "2024",
+      "record_type_cd": "C",
+      "sequence_level_nbr": "2",
+      "sequence_number_cd": "7.9",
+      "src_line_nbr": "205",
+      "table_nbr": "5"
+    },
+    "usaspending_grouped_award_obligations_usd": 46043810154.91
+  },
+  "reconciliation": {
+    "interpretation": "The two measures are comparable only as bounded scale diagnostics. USAspending reports award obligations, while Treasury MTS reports government program outlays; timing, accounting scope, unlinked awards, intergovernmental flows, and non-award government costs prevent a payment-level reconciliation.",
+    "not_a_cash_settlement_match": true,
+    "status": "NOT_ONE_TO_ONE"
+  },
+  "request_failures": [],
+  "schema_version": "1.0",
+  "source_manifest": {
+    "path": "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_award_outlay_reconciliation_manifest.json",
+    "sha256": "e1a542d7c1003850d9160158c39cc1272b73f420f678c3bb2f7b450c57f738e6",
+    "status": "PASS_WITH_BOUNDARY"
+  },
+  "status": "PASS_WITH_BOUNDARY",
+  "topic": "0.25_Strategy_Power_Economics"
+}

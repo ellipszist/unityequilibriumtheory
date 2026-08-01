@@ -1,0 +1,36 @@
+{
+  "coverage": "DOE, FY2024, 2023-10-01 through 2024-09-30",
+  "no_imputation": true,
+  "normalized_panel": {
+    "local_path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/federal_award_outlay_reconciliation_2024.csv",
+    "rows": 1,
+    "sha256": "c39b9cb6accaf425f5ed48b86e220ddd5c2abab1575ca059d4af2f1f95fa0856"
+  },
+  "provider_pair": [
+    "USAspending.gov / U.S. Treasury",
+    "U.S. Department of the Treasury, Fiscal Service"
+  ],
+  "retrieval_vintage": "2026-08-01",
+  "schema_version": "1.0",
+  "sources": [
+    {
+      "benchmark_role": "award-obligation side; not settlement",
+      "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+      "local_path": "docs/data/external/economics/us_historical/usaspending/2026-08-01/usaspending_doe_fy2024_awarding_agency_summary.json",
+      "sha256": "fd6b72035a8b154c3a308c4125ff5b79cb856db4e46d850eca21a11d38f71368",
+      "source_id": "usaspending_doe_awarding_agency_summary",
+      "source_url": "https://api.usaspending.gov/api/v2/search/spending_by_category/awarding_agency/",
+      "units": "current U.S. dollars; grouped prime-award obligations"
+    },
+    {
+      "benchmark_role": "Treasury program-outlay side; not award settlement",
+      "documentation_url": "https://fiscaldata.treasury.gov/api-documentation/",
+      "local_path": "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/mts_table_5_2024-09-30.json",
+      "sha256": "63488f8cfc437f86e094d0758f28027ca930636da1287d5d53895526a0424f10",
+      "source_id": "treasury_doe_mts_table_5",
+      "source_url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/mts/mts_table_5?filter=record_date:eq:2024-09-30",
+      "units": "current U.S. dollars; FYTD net outlays"
+    }
+  ],
+  "status": "PASS_WITH_BOUNDARY"
+}

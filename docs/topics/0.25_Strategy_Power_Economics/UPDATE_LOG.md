@@ -5,6 +5,17 @@
 
 ## Entries
 
+### 2026-08-01 - Award-to-outlay reconciliation
+
+- Scope: test whether a public agency award obligation can be reconciled to a Treasury program outlay without calling the result a cash-payment match.
+- Added: `Research_UET_Federal_Award_Outlay_Reconciliation.py`, a cached grouped USAspending DOE FY2024 response, normalized one-row comparison, source manifest, aggregate/readiness/join integration, and synchronized docs.
+- Verified with: API refresh and cached rerun, py_compile, standalone join/readiness, aggregate verifier, and sub-artifact hash checks. Result is `PASS_WITH_BOUNDARY` / `NOT_ONE_TO_ONE`; aggregate remains `WARN` with no command failures.
+- Finding: USAspending grouped award obligations are `$46.044B`; Treasury DOE FYTD net outlays are `$49.315B`; ratio is approximately `0.934`. The difference is a scope/timing/accounting diagnostic, not unpaid cash or a funding-source share.
+- Blocker narrowed: the public evidence now distinguishes obligation scale from program outlay scale, but no award-to-bank settlement, private invoice, or resource transformation is observed.
+- Next controller: approved transaction/invoice settlement evidence and concordant resource allocation; Claim Class C and `DESCRIPTIVE_DIAGNOSTIC_ONLY` remain unchanged.
+- Claim impact: no profit-vs-debt attribution, money-creation claim, payer causality, or payment-to-resource claim is enabled.
+
+
 ### 2026-08-01 - Treasury aggregate funding-source lane
 
 - Scope: distinguish government-wide receipts, outlays, deficit financing, and debt from the source of an individual award payment.

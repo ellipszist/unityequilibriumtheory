@@ -138,6 +138,12 @@ indexed infrastructure proxy, not a dollar-valued capital stock.
    accounting bridge only; it does not identify which instrument funded an individual award,
    invoice, bank settlement, or resource transformation.
 
+19. **Award-to-outlay reconciliation:** compare the fixed DOE FY2024 USAspending grouped
+   prime-award obligation total with Treasury MTS Table 5 `Total--Department of Energy` FYTD
+   net outlays. Report the difference and ratio as a scale diagnostic only. The predeclared
+   result is `NOT_ONE_TO_ONE` because obligations, outlays, timing, program scope, unlinked
+   awards, and non-award government costs are not the same construct.
+
 ## Evaluation and uncertainty
 
 Rolling-origin forecasts start in 2000. Every transformation and coefficient is fitted only

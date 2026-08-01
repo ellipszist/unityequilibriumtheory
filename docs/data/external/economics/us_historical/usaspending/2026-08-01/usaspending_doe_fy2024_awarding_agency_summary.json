@@ -1,0 +1,59 @@
+{
+  "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+  "error": null,
+  "provider": "USAspending.gov / U.S. Treasury",
+  "request": {
+    "filters": {
+      "agencies": [
+        {
+          "name": "Department of Energy",
+          "tier": "toptier",
+          "type": "awarding"
+        }
+      ],
+      "award_type_codes": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "time_period": [
+        {
+          "end_date": "2024-09-30",
+          "start_date": "2023-10-01"
+        }
+      ]
+    },
+    "group": "awarding_agency"
+  },
+  "response": {
+    "category": "awarding_agency",
+    "limit": 10,
+    "messages": [
+      "For searches, time period start and end dates are currently limited to an earliest date of 2007-10-01.  For data going back to 2000-10-01, use either the Custom Award Download feature on the website or one of our download or bulk_download API endpoints as listed on https://api.usaspending.gov/docs/endpoints. ",
+      "'subawards' will be deprecated in the future. Set \u2018spending_level\u2019 to \u2018subawards\u2019 instead. See documentation for more information. "
+    ],
+    "page_metadata": {
+      "hasNext": false,
+      "hasPrevious": false,
+      "next": null,
+      "page": 1,
+      "previous": null
+    },
+    "results": [
+      {
+        "agency_slug": "department-of-energy",
+        "amount": 46043810154.91,
+        "code": "DOE",
+        "id": 930,
+        "name": "Department of Energy",
+        "total_outlays": null
+      }
+    ],
+    "spending_level": "transactions"
+  },
+  "retrieval_timestamp_utc": "2026-08-01T09:36:40.241708+00:00",
+  "retrieval_vintage": "2026-08-01",
+  "schema_version": "1.0",
+  "source_url": "https://api.usaspending.gov/api/v2/search/spending_by_category/awarding_agency/"
+}

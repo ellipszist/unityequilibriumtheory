@@ -1,7 +1,7 @@
 {
   "claim_boundary": "No payment-level payer, profit-vs-debt attribution, project-resource transformation, or innovation-causality claim is allowed from the current public package.",
   "controller_status": "PROJECT_PAYMENT_LEDGER_NOT_PUBLIC",
-  "generated_at_utc": "2026-08-01T09:31:59.593754+00:00",
+  "generated_at_utc": "2026-08-01T09:38:28.390359+00:00",
   "limitations": [
     "Aggregate financial accounts and public-firm filings cannot trace a particular payment to a physical resource.",
     "Restricted-use access would require a human-approved research project and secure output review; it is not an automatic source acquisition."

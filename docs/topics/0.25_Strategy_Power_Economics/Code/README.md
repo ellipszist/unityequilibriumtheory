@@ -56,6 +56,7 @@ current Claim Class C boundary.
 | Research_UET_BEA_1997_IO_Benchmark_Audit.py | validate the official 1997 BEA make/use and requirements benchmark without treating it as a time series | BEA benchmark structural artifact |
 | Research_UET_BLS_Industry_Hours_Source_Package.py | query the official BLS API for predeclared NAICS4 annual hours, archive responses, hash inputs, and report missing codes | BLS industry-hours source package |
 | Research_UET_USGS_Material_Quantity_Audit.py | parse source-locked USGS mineral workbooks into national physical-quantity rows without industry allocation | USGS material quantity artifact |
+| Research_UET_Federal_Award_Outlay_Reconciliation.py | compare fixed DOE FY2024 grouped USAspending award obligations with Treasury DOE net outlays and enforce the NOT_ONE_TO_ONE boundary | award/outlay reconciliation artifact |
 | Research_UET_Treasury_Funding_Source_Package.py | archive fixed Treasury MTS/debt FY2024 endpoints and normalize aggregate receipts, outlays, financing, and debt | Treasury funding-source artifact |
 | Research_UET_USASpending_Federal_Award_Ledger.py | archive a fixed USAspending.gov DOE FY2024 five-page award-transaction sample, hash raw responses, and normalize obligations | public federal-award ledger artifact |
 | Research_UET_SEC_Public_Firm_Funding_Proxy.py | archive SEC Company Facts for the predeclared nonfinancial-firm sample and extract annual profit/cash/capex/debt/dividend facts | SEC public-firm funding proxy |

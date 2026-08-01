@@ -3,7 +3,7 @@
   "claim_boundary": "Benchmark-descriptive only. Do not infer annual flow dynamics, payer provenance, resource causality, innovation causality, or fiat-money causality from this artifact.",
   "controller_status": "BEA_1997_BENCHMARK_ONLY",
   "formula_id": "EC25-PAYER-RESOURCE-JOIN",
-  "generated_at_utc": "2026-08-01T09:31:43.552418+00:00",
+  "generated_at_utc": "2026-08-01T09:38:13.824325+00:00",
   "limitations": [
     "BEA explicitly cautions that benchmark input-output tables are not suitable as a time series.",
     "Make/use dollar cells are producers-prices millions of dollars; requirements tables are dimensionless coefficients.",

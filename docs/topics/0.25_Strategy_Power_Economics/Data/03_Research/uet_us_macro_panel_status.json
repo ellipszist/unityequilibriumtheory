@@ -6,7 +6,7 @@
     "start_year": 1959
   },
   "formula_boundary": "R/N/K/I are dimensionless proxy constructs after the stated transformations; they are not a dimensional identity.",
-  "generated_at_utc": "2026-08-01T09:31:16.953677+00:00",
+  "generated_at_utc": "2026-08-01T09:37:48.010541+00:00",
   "input_hashes": [
     {
       "path": "docs/data/external/economics/us_historical/fred/2026-07-12/M2SL.csv",
