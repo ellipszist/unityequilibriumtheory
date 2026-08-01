@@ -35,9 +35,10 @@
       "reason": "Lane-specific C, Phi, Pi, R_gen and standard physical quantities are separated; universal identity remains prohibited.",
       "evidence": [
         "docs/core/artifacts/uet_equation_correspondence_registry.json",
-        "docs/core/artifacts/uet_foundation_compatibility_gate.json"
+        "docs/core/artifacts/uet_foundation_compatibility_gate.json",
+        "docs/core/artifacts/impact_effect_legacy_wording_audit.json"
       ],
-      "required_next_artifact": "legacy wording synchronization and lane-level ontology closure"
+      "required_next_artifact": "manually review ACTIVE_PROSE_MANUAL_REVIEW occurrences; canonical and archive routes are dispositioned but remain non-promotional; lane-level ontology closure remains required"
     },
     "F2_physical_correspondence": {
       "status": "BLOCKED_OPEN_CORRESPONDENCE_ROWS",

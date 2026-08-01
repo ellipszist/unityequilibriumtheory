@@ -254,3 +254,16 @@ description were checked and hash-recorded, but the captured publisher assets
 expose no numeric source table/curve package. This is an access/provenance
 blocker, not evidence that the source data do not exist. The 2026 holdout
 remains locked and cannot tune alpha_Phi_K or any other UET parameter.
+
+## Latest plan update - 2026-08-02 Wave 1 wording disposition
+
+The legacy-wording audit now routes every occurrence without changing source text. The
+current inventory contains 664 hits: 127 archive/legacy entries, 283 code/test literals,
+12 canonical-contract literals, and 242 active-prose entries requiring manual review.
+This narrows the wording controller but does not close the foundation gate. F2 still has
+open topic-to-standard correspondence and measurement-operator rows, and F3/F7/F8 remain
+open for dimensional and external physical evidence.
+
+The disposition layer is a claim-boundary mechanism only. It does not make an active prose
+statement canonical, and it does not promote any mapping of C, R_gen, mass, vacuum, photon,
+neutrino, or positron.

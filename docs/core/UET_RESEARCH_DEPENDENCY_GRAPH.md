@@ -100,3 +100,11 @@ The thermal source dependency now distinguishes a publisher data statement from
 a locally reproducible numeric package. The captured supplementary description
 is provenance evidence only; it does not satisfy the numeric-data or dimensional
 observable gates.
+
+## Latest plan update - 2026-08-02 Wave 1 wording disposition
+
+The wording audit is now a routed dependency rather than one undifferentiated review bucket:
+archive/legacy paths, code/test literals, canonical contract literals, and active prose are
+reported separately. The active controller is the 242-row active-prose review together with
+the still-open F2 correspondence and measurement-operator matrix. No downstream edge is
+promoted by this metadata repair.

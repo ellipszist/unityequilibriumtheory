@@ -7,7 +7,7 @@
   "foundation_gate": {
     "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
     "status": "BLOCKED",
-    "sha256": "bb4c8493fd4119308340d38017d85dd85e4b458faab82245c8f93490943c01a3",
+    "sha256": "19d6367569accbf9c1f3728dce96b0607805218fc81eb7114344bca0061c8eb6",
     "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
   },
   "wave_count": 12,
@@ -40,7 +40,7 @@
         {
           "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
           "exists": true,
-          "sha256": "bb4c8493fd4119308340d38017d85dd85e4b458faab82245c8f93490943c01a3",
+          "sha256": "19d6367569accbf9c1f3728dce96b0607805218fc81eb7114344bca0061c8eb6",
           "status": "BLOCKED",
           "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
         },
@@ -59,7 +59,7 @@
       "status": "BLOCKED_OPEN_CORRESPONDENCE_ROWS",
       "closure_status": "CLOSED_AS_BLOCKED",
       "physics_status": "BLOCKED_OPEN_CORRESPONDENCE_ROWS",
-      "controlling_blocker": "complete F2 lane matrix and legacy wording synchronization",
+      "controlling_blocker": "manually review ACTIVE_PROSE_MANUAL_REVIEW occurrences; canonical and archive routes are dispositioned but remain non-promotional; complete F2 lane matrix",
       "claim_ceiling": "lane-specific correspondence; no universal identity",
       "evidence": [
         {
@@ -79,9 +79,9 @@
         {
           "path": "docs/core/artifacts/impact_effect_legacy_wording_audit.json",
           "exists": true,
-          "sha256": "88cc5c2f5bdf12a1b42e8b58801ab8cfa7e5599f1c7fb52006d3c8fe1abe0e8c",
-          "status": "REVIEW_REQUIRED",
-          "controller": "review each occurrence against the central registry and mark canonical versus legacy wording before downstream promotion"
+          "sha256": "060494ba01639612377972b5c63d7859490fd2cff95bb1d0dc2709c5798241d2",
+          "status": "SCOPED_DISPOSITIONS_WITH_ACTIVE_PROSE_OPEN",
+          "controller": "manually review ACTIVE_PROSE_MANUAL_REVIEW occurrences; canonical and archive routes are dispositioned but remain non-promotional"
         }
       ]
     },

@@ -1,5 +1,18 @@
 # Impact–Effect Ontology Update Log
 
+## 2026-08-02 - Deterministic legacy-wording disposition
+
+- Scope: Wave 1 wording audit and foundation controller synchronization.
+- Wave type: claim-boundary pass and workflow-repair pass.
+- Added or changed: `audit_impact_effect_legacy_wording.py` now emits a disposition and basis for every occurrence without rewriting source text.
+- Verified with: wording audit plus schema assertions; 664 occurrences were classified as 127 `LEGACY_ARCHIVE_QUARANTINED`, 283 `CODE_OR_TEST_LITERAL`, 12 `CANONICAL_CONTRACT_LITERAL`, and 242 `ACTIVE_PROSE_MANUAL_REVIEW`.
+- Result: artifact status `SCOPED_DISPOSITIONS_WITH_ACTIVE_PROSE_OPEN`; foundation remains `BLOCKED`.
+- Blocker narrowed: archive/code/core-contract occurrences are routed deterministically; only active prose remains the manual wording controller, while F2 correspondence rows remain independently open.
+- Still open: manually review the 242 active-prose occurrences and close the exhaustive F2 lane correspondence/measurement-operator manifest.
+- Next controller: active-prose review plus F2 open-row closure; no wording promotion is implied.
+- Claim impact: no change; `C`, `R_gen`, mass, vacuum, photon, neutrino, and positron identities remain lane-specific or blocked.
+
+
 ## 2026-07-29 - Separate physical impact from informational effect
 
 - Scope: distinction between mass/energy-bearing interaction and receiver-side

@@ -90,7 +90,9 @@ def wave(
 
 def build() -> dict[str, Any]:
     foundation_path = ROOT / "docs/core/artifacts/uet_foundation_dependency_gate.json"
+    wording_path = ROOT / "docs/core/artifacts/impact_effect_legacy_wording_audit.json"
     foundation = load(foundation_path)
+    wording = load(wording_path)
     foundation_status = status_of(foundation)
     foundation_blocked = foundation_status in {"BLOCKED", "FAIL", "WARN"}
 
@@ -127,7 +129,7 @@ def build() -> dict[str, Any]:
         wave(
             1,
             "Ontology and standard-physics correspondence",
-            "complete F2 lane matrix and legacy wording synchronization",
+            wording.get("next_controller", "active prose legacy wording review") + "; complete F2 lane matrix",
             ["docs/core/artifacts/uet_equation_correspondence_registry.json", "docs/core/artifacts/matter_space_ontology_contract.json", "docs/core/artifacts/impact_effect_legacy_wording_audit.json"],
             foundation.get("gates", {}).get("F2_physical_correspondence", {}).get("status", "BLOCKED"),
             "lane-specific correspondence; no universal identity",

@@ -22,6 +22,51 @@ PATTERNS: tuple[tuple[str, re.Pattern[str], str], ...] = (
 )
 
 
+CANONICAL_CONTRACT_PATHS = {
+    "docs/core/AGENTS.md",
+    "docs/core/COSMOLOGICAL_OPEN_SYSTEM_AND_CAUSAL_TRACE_SPEC.md",
+    "docs/core/IMPACT_EFFECT_AND_INFORMATION_FLOW_SPEC.md",
+    "docs/core/MATTER_SPACE_RESEARCH_REPORT.md",
+    "docs/core/RELATIONAL_TWO_BODY_BASELINE_SPEC.md",
+    "docs/core/TRACE_RESEARCH_SPEC.md",
+    "docs/core/UET_FOUNDATION_COMPATIBILITY_AUDIT.md",
+    "docs/core/UET_GR_NONCLOSED_RESEARCH_SPEC.md",
+    "docs/core/UET_INFORMATION_FIELD_THERMODYNAMIC_TRACE_AUDIT.md",
+}
+
+
+def wording_disposition(rel: str) -> tuple[str, str]:
+    """Route an occurrence without changing the source wording."""
+    normalized = rel.replace("\\", "/")
+    lower = normalized.lower()
+    if normalized in CANONICAL_CONTRACT_PATHS:
+        return (
+            "CANONICAL_CONTRACT_LITERAL",
+            "canonical core contract; occurrence is retained as explicit boundary/legacy wording and is not a universal identity",
+        )
+    if (
+        "legacy_reports/" in lower
+        or "/legacy/" in lower
+        or "/keed/" in lower
+        or "/doc/03_legacy" in lower
+        or "/code/03_legacy" in lower
+        or "/code/03_legacy_opt" in lower
+    ):
+        return (
+            "LEGACY_ARCHIVE_QUARANTINED",
+            "legacy/archive path; retained for history and excluded from active claim promotion",
+        )
+    if normalized.endswith(".py"):
+        return (
+            "CODE_OR_TEST_LITERAL",
+            "implementation/test/audit literal; source code requires separate semantic review before any prose claim",
+        )
+    return (
+        "ACTIVE_PROSE_MANUAL_REVIEW",
+        "active topic or documentation prose; no automatic rewrite or promotion is permitted",
+    )
+
+
 def is_candidate(path: Path) -> bool:
     return path.suffix.lower() in TEXT_SUFFIXES and not any(part in EXCLUDED_PARTS for part in path.parts)
 
@@ -41,10 +86,13 @@ def scan() -> dict[str, Any]:
         for line_number, line in enumerate(lines, start=1):
             for marker, pattern, reason in PATTERNS:
                 if pattern.search(line):
+                    disposition, disposition_basis = wording_disposition(rel)
                     occurrences.append(
                         {
                             "marker": marker,
                             "status": "LEGACY_REVIEW_REQUIRED",
+                            "disposition": disposition,
+                            "disposition_basis": disposition_basis,
                             "reason": reason,
                             "path": rel,
                             "line": line_number,
@@ -56,21 +104,31 @@ def scan() -> dict[str, Any]:
     for item in occurrences:
         by_marker[item["marker"]] = by_marker.get(item["marker"], 0) + 1
         by_path[item["path"]] = by_path.get(item["path"], 0) + 1
+    by_disposition: dict[str, int] = {}
+    for item in occurrences:
+        disposition = item["disposition"]
+        by_disposition[disposition] = by_disposition.get(disposition, 0) + 1
     return {
-        "schema_version": "impact-effect-legacy-wording-audit-v1",
+        "schema_version": "impact-effect-legacy-wording-audit-v2",
         "artifact": "impact_effect_legacy_wording_audit",
         "generated_at": date.today().isoformat(),
-        "status": "REVIEW_REQUIRED" if occurrences else "NO_MARKERS_FOUND",
+        "status": "SCOPED_DISPOSITIONS_WITH_ACTIVE_PROSE_OPEN" if occurrences else "NO_MARKERS_FOUND",
         "scope": {
             "root": "docs/",
             "files_scanned": files_scanned,
             "excluded_directory_names": sorted(EXCLUDED_PARTS),
-            "rule": "inventory only; no legacy wording is rewritten automatically",
+            "rule": "inventory plus deterministic routing disposition; no legacy wording is rewritten or promoted automatically",
         },
-        "summary": {"occurrence_count": len(occurrences), "by_marker": by_marker, "by_path": by_path},
+        "summary": {
+            "occurrence_count": len(occurrences),
+            "by_marker": by_marker,
+            "by_path": by_path,
+            "by_disposition": by_disposition,
+            "active_prose_open": by_disposition.get("ACTIVE_PROSE_MANUAL_REVIEW", 0),
+        },
         "claim_boundary": "legacy/candidate wording is not evidence for a universal identity of C, I_trace, mass, vacuum, photon, neutrino, or positron",
         "occurrences": occurrences,
-        "next_controller": "review each occurrence against the central registry and mark canonical versus legacy wording before downstream promotion",
+        "next_controller": "manually review ACTIVE_PROSE_MANUAL_REVIEW occurrences; canonical and archive routes are dispositioned but remain non-promotional",
     }
 
 

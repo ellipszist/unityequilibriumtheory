@@ -43,6 +43,7 @@ def build_gate() -> dict[str, Any]:
     coverage_path = ROOT / "docs/core/artifacts/uet_foundation_coverage_closure.json"
     correspondence_full_path = ROOT / "docs/core/artifacts/uet_full_correspondence_coverage.json"
     observable_path = ROOT / "docs/core/artifacts/matter_space_observable_verification.json"
+    wording_path = ROOT / "docs/core/artifacts/impact_effect_legacy_wording_audit.json"
     inventory = load(inventory_path)
     code = load(code_path)
     matrix = load(matrix_path)
@@ -55,6 +56,7 @@ def build_gate() -> dict[str, Any]:
     coverage = load(coverage_path)
     correspondence_full = load(correspondence_full_path)
     observable_map = load(observable_path)
+    wording = load(wording_path)
 
     characteristic_pass = characteristic.get("audit_status") == "PASS"
     selected_lane = causal_lane.get("selected_lane", {})
@@ -87,8 +89,11 @@ def build_gate() -> dict[str, Any]:
         "F1_ontology": {
             "status": "PASS_CONDITIONAL" if registry_entries else "BLOCKED",
             "reason": "Lane-specific C, Phi, Pi, R_gen and standard physical quantities are separated; universal identity remains prohibited.",
-            "evidence": [rel(registry_path), rel(compat_path)],
-            "required_next_artifact": "legacy wording synchronization and lane-level ontology closure",
+            "evidence": [rel(registry_path), rel(compat_path), rel(wording_path)],
+            "required_next_artifact": (
+                wording.get("next_controller", "active prose legacy wording review")
+                + "; lane-level ontology closure remains required"
+            ),
         },
         "F2_physical_correspondence": {
             "status": "BLOCKED_OPEN_CORRESPONDENCE_ROWS" if correspondence_full.get("matrix_status") == "BLOCKED_OPEN_CORRESPONDENCE_ROWS" else ("BLOCKED" if matrix_blocked else "PASS_CONDITIONAL"),

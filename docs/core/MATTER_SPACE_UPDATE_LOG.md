@@ -6,6 +6,19 @@
 
 ## Entries
 
+### 2026-08-02 - Narrow Wave 1 legacy wording controller
+
+- Scope: central foundation report, impact/effect ontology, and wording audit.
+- Wave type: claim-boundary pass and workflow-repair pass.
+- Added or changed: deterministic disposition fields in `impact_effect_legacy_wording_audit.json`; foundation and Wave 3-10 generators now consume its next controller.
+- Verified with: `audit_impact_effect_legacy_wording.py`, `audit_uet_foundation_dependency_gate.py`, `audit_uet_foundation_extended_wave_closure.py`, `audit_uet_wave3_wave10_program.py`, and `audit_uet_all_waves_closure.py`.
+- Result: audit status `PASS` / foundation status `BLOCKED`; all-wave accounting remains `ALL_WAVE_STATUS_ACCOUNTING_CLOSED_FOUNDATION_PHYSICS_NOT_CLOSED`.
+- Blocker narrowed: 664 wording hits are no longer one undifferentiated review bucket; 242 active-prose hits remain open and are not silently promoted.
+- Still open: exhaustive F2 correspondence and measurement-operator coverage, dimensional contracts, and physical validation.
+- Next controller: manually review active prose while building the topic-row-to-central-registry correspondence manifest.
+- Claim impact: no readiness or physical-claim upgrade.
+
+
 ### 2026-07-20 - Ontology and formula-contract lock
 
 - Scope: matter-space candidate contract and legacy alignment boundary.

@@ -1,5 +1,14 @@
 # UET Wave 3–10 Program Update Log
 
+## 2026-08-02 - Wave 1 wording disposition and controller sync
+
+- Scope: foundation wording audit consumed by downstream wave accounting.
+- Added: per-occurrence disposition routing and controller wiring in the foundation and Wave 3-10 audit scripts.
+- Verified: foundation audit `PASS` with status `BLOCKED`; Wave 3-10 audit `BLOCKED` with 9 blocked waves; all-wave accounting audit `PASS` with physics still not closed.
+- Result: archive, code/test, and canonical-contract literals are separated from active prose; no downstream status was promoted.
+- Next controller: 242 active-prose wording rows plus the open F2 correspondence/measurement-operator matrix.
+- Claim impact: no change.
+
 ## 2026-07-30 — Wave 3–10 dependency package
 
 - Scope: connect the existing causal, observable, phase, thermal, EOS,
