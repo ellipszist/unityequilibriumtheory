@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "artifact": "uet_foundation_dependency_gate",
-  "generated_at": "2026-08-01",
+  "generated_at": "2026-08-02",
   "audit_status": "PASS",
   "status": "BLOCKED",
   "wave_type": "foundation_first_workflow",

@@ -707,3 +707,11 @@ Use this log when `0.13` changes in a way that narrows a provenance blocker, add
 - Still open: permitted local numeric TTG package, row-level provenance and uncertainty, independent alpha_Phi_K derivation/calibration, and downstream heat-flux/entropy maps.
 - Claim impact: no upgrade; Phi is not temperature, no source data were fitted, and the 2026 source remains a locked holdout.
 - Next controller: thermal_source_numeric_package_and_dimensional_calibration_missing.
+### 2026-08-01 - Publisher supplementary route audit
+
+- Scope: inspect the publisher HTML and supplementary-description route for the locked 2026 graphite holdout without consuming or tuning on it.
+- Added or changed: source-package and source-review provenance now record the captured supplementary asset inventory, the description-PDF URL/hash, its one-page Movie 1 description, and the absence of a numeric source-data asset link in the captured HTML.
+- Verified with: publisher article/HTML review, supplementary PDF extraction, SHA-256 provenance check, thermal source mapping audit, and aggregate foundation/all-wave reruns.
+- Result: the publisher data statement remains externally recorded, but the reproducible local numeric package is still not captured; the holdout remains metadata-only.
+- Claim impact: no upgrade; no digitization, fitting, or holdout consumption occurred.
+- Next controller: obtain a permitted numeric source package with row locator, units, preprocessing, uncertainty, and hash; otherwise retain this explicit access blocker.

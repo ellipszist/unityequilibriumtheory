@@ -94,3 +94,9 @@ The registry graph now treats impact/effect, cosmology, persistence/resource
 selection, and characteristic-wave addenda as merged candidate nodes. Their
 claim ceilings are unchanged, and every downstream edge remains blocked by the
 foundation correspondence, units, observable, or physical-source gates.
+## Latest plan update — 2026-08-01 publisher supplementary route audit
+
+The thermal source dependency now distinguishes a publisher data statement from
+a locally reproducible numeric package. The captured supplementary description
+is provenance evidence only; it does not satisfy the numeric-data or dimensional
+observable gates.

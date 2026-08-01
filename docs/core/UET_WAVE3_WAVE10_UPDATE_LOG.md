@@ -106,3 +106,9 @@ The central registry merge is now reproducible and addendum status is no longer
 stale. This makes the persistence/resource-selection candidate visible to the
 same dependency machinery as the other lanes. Registry and compatibility audits
 pass, while the foundation gate remains blocked and no claim ceiling changes.
+## Latest plan update — 2026-08-01 publisher supplementary route audit
+
+The locked 2026 thermal source route was checked through publisher HTML and its
+supplementary-description PDF. The result narrows the blocker to missing local
+numeric source delivery/route capture; no data were imported and no claim
+ceiling changed.

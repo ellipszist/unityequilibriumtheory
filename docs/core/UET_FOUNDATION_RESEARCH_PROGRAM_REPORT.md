@@ -247,3 +247,10 @@ merge state. The persistence/resource-selection principle is therefore recorded
 as a candidate equation entry rather than a pending sidecar. This repairs
 workflow metadata only: the normalized path-cost/resource ledger still lacks a
 dimensional work, heat, entropy, or failure-rate correspondence.
+## Latest plan update — 2026-08-01 publisher supplementary route audit
+
+The thermal data blocker is now narrower: the publisher route and supplementary
+description were checked and hash-recorded, but the captured publisher assets
+expose no numeric source table/curve package. This is an access/provenance
+blocker, not evidence that the source data do not exist. The 2026 holdout
+remains locked and cannot tune alpha_Phi_K or any other UET parameter.

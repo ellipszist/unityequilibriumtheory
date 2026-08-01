@@ -227,3 +227,10 @@ remain blocked. No physics claim was promoted.
 - Result: the persistence/resource-selection principle is now explicitly a candidate entry in the central registry, not a pending orphan addendum.
 - Claim impact: none; physical work/heat/entropy mapping remains open and no normalized resource quantity is promoted to SI energy.
 - Next controller: close active correspondence/unit/observable rows; the foundation gate remains blocked.
+### 2026-08-01 - Publisher supplementary route audit
+
+The 2026 TTG holdout route was checked at the publisher HTML and
+supplementary-description level. The description PDF is hash-recorded and lists
+only the supplementary movie; no numeric source-data link was exposed in the
+captured HTML. The holdout stays metadata-only, and no UET thermal claim was
+promoted.

@@ -114,6 +114,21 @@
     "publisher_data_statement": "source data are provided with this study",
     "direct_numeric_download_route_captured": false,
     "local_numeric_archive": false,
+    "supplementary_description_review": {
+      "publisher_html_assets_reviewed": [
+        "41467_2026_70807_MOESM1_ESM.pdf",
+        "41467_2026_70807_MOESM2_ESM.pdf",
+        "41467_2026_70807_MOESM3_ESM.mp4",
+        "41467_2026_70807_MOESM4_ESM.pdf"
+      ],
+      "description_pdf_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-026-70807-3/MediaObjects/41467_2026_70807_MOESM2_ESM.pdf",
+      "description_pdf_sha256": "6aacdc6827aa7bbee24c0247626063f66fc808b61d3effc838a317145b01abb5",
+      "description_pdf_bytes": 4918,
+      "description_pdf_content": "Description of Additional Supplementary Files; lists Supplementary Movie 1",
+      "numeric_source_asset_link_in_captured_html": false,
+      "numeric_source_route_status": "NOT_CAPTURED",
+      "interpretation": "The publisher statement says source data are provided, but the captured article HTML and supplementary-description PDF do not expose a numeric source filename or direct data route. Keep the holdout metadata-only."
+    },
     "holdout_policy": "metadata-only until normalized operator and parameter policy are frozen"
   },
   "claim_boundary": "source identities are externally anchored; no external numeric validation package exists"
