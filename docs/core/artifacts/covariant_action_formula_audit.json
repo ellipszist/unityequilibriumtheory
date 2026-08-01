@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "covariant_action_formula_audit",
-  "generated_at": "2026-07-26T05:05:16.997179+00:00",
+  "generated_at": "2026-08-01T16:27:48.277284+00:00",
   "status": "WARN",
   "implementation_status": "PRESENT",
   "model_status": "CANDIDATE_CONSERVATIVE_TENSOR_FORMULA_EVALUATOR",

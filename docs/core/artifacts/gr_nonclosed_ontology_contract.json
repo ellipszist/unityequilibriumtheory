@@ -57,7 +57,7 @@
   "current_implementation_boundary": {
     "matter_space_coupled_v1": "implemented one-dimensional normalized nonrelativistic prototype",
     "covariant_parent": "MISSING",
-    "gr_limit_verifier": "MISSING",
+    "gr_limit_verifier": "PRESENT_LOCAL_FORMULA_EVALUATOR_NOT_FULL_GR_DERIVATION",
     "bianchi_exchange_verifier": "MISSING",
     "global_open_system_proof": "NOT_ESTABLISHED"
   },

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_wave3_wave10_research_program",
-  "generated_at": "2026-08-01T16:09:05.866642+00:00",
+  "generated_at": "2026-08-01T16:25:42.800356+00:00",
   "program_scope": "UET Foundation-First Research Program Waves 0-10",
   "workflow": [
     "inventory",
@@ -325,10 +325,10 @@
     {
       "wave": 8,
       "name": "Impact/effect/carrier and observer program",
-      "local_evidence_status": "BLOCKED",
+      "local_evidence_status": "BLOCKED_WITH_NORMALIZED_PHOTON_BASELINE",
       "effective_status": "BLOCKED_BY_FOUNDATION",
       "dependency_blocked": true,
-      "controlling_blocker": "source-lock one carrier lane and close its dimensional detector map after upstream phase/core gates",
+      "controlling_blocker": "source-lock one carrier lane and close its dimensional detector map after upstream phase/core gates; photon=SI detector/observable map and UET source-to-carrier law remain open",
       "claim_ceiling": "carrier-neutral comparator contract; no photon/neutrino/positron identity for R_gen",
       "inputs": [
         {
@@ -358,6 +358,13 @@
           "sha256": "96386e74b6aa5965c587d71f758c52b9682c7a0b6acda135dff72a7362d33be7",
           "status": "SIMULATION_ONLY",
           "controller": "source-lock a dimensional photon detector map after foundation and carrier gates close"
+        },
+        {
+          "path": "docs/core/artifacts/photon_observer_baseline_verification.json",
+          "exists": true,
+          "sha256": "89297caab9742a91d69de44b52308d154245a51913c472cccaee9eef282cca3d",
+          "status": "PASS_WITH_OPEN_DIMENSIONAL_AND_UET_MAPPING",
+          "controller": "source-lock SI detector/observable package and separately derive or reject any UET source-to-carrier transition law"
         }
       ]
     },

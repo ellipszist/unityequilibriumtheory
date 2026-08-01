@@ -51,6 +51,8 @@ def build() -> dict[str, Any]:
     wave_program = load(wave_program_path)
     extended = load(extended_path)
     pilot_sync = load(pilot_sync_path)
+    particle_gate_path = ROOT / "docs/core/artifacts/particle_dirac_program_gate.json"
+    particle_gate = load(particle_gate_path)
 
     planned: list[dict[str, Any]] = []
     for item in wave_program.get("waves", []):
@@ -91,9 +93,9 @@ def build() -> dict[str, Any]:
             "status": "DEFERRED_BLOCKED",
             "closure_status": "CLOSED_AS_BLOCKED",
             "physics_status": "DEFERRED_BLOCKED",
-            "controlling_blocker": "Lorentz-covariant action, spinor/current map, CPT and detector correspondence are not established",
+            "controlling_blocker": particle_gate.get("controlling_blocker", "Lorentz-covariant action, spinor/current map, CPT and detector correspondence are not established"),
             "claim_ceiling": "particle, Dirac, neutrino, positron and antimatter identities remain deferred/not established",
-            "evidence": [],
+            "evidence": [evidence("docs/core/artifacts/particle_dirac_program_gate.json")],
         }
     )
     planned.sort(key=lambda item: item["wave"])

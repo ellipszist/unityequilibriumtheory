@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "orbit_cosmology_correspondence_gate",
-  "generated_at": "2026-07-29T19:50:04.669382+00:00",
+  "generated_at": "2026-08-01T16:27:50.032869+00:00",
   "status": "BLOCKED",
   "local_baseline_status": "PASS_WITH_BLOCKED_UPSTREAM_AND_CLAIM_BOUNDARY",
   "inputs": {
@@ -12,12 +12,12 @@
     },
     "gr_closed_limit": {
       "path": "docs/core/artifacts/gr_closed_limit_verification.json",
-      "sha256": "a04ed30ebbbcfe35d7c92791341b781e0f4d59c754c1647c829efb7633baa8dc",
+      "sha256": "f9b5f1e3e5df7424767ceefa2196b11056a1620452a4ef440a7ce1800c340d23",
       "status": "PASS"
     },
     "gr_program_gate": {
       "path": "docs/core/artifacts/uet_gr_research_program_gate.json",
-      "sha256": "38bfe3bcafb35880c1bfab61c67f3f4982a17e0fbd0f95f46da601bc496fc3d0",
+      "sha256": "55f822f280c824c0b03398a12626a2544d71437ec588907b44343023658a7309",
       "status": "BLOCKED"
     },
     "cosmological_contract": {

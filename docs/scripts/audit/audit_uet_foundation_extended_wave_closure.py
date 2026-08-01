@@ -38,10 +38,12 @@ def build() -> dict[str, Any]:
     impact_gate = load("docs/core/artifacts/impact_effect_dependency_gate.json")
     carrier = load("docs/core/artifacts/carrier_neutral_comparator_contract.json")
     observer = load("docs/core/artifacts/carrier_observer_thought_experiment.json")
+    photon = load("docs/core/artifacts/photon_observer_baseline_verification.json")
     orbit = load("docs/core/artifacts/orbit_cosmology_correspondence_gate.json")
     gr = load("docs/core/artifacts/uet_gr_research_program_gate.json")
     galaxy = load("docs/topics/0.1_Galaxy_Rotation_Problem/Result/artifacts/galaxy_history_comparison.json")
     cosmic = load("docs/topics/0.26_Cosmic_Dynamic_Frame/Result/artifacts/0_26_cosmic_dynamic_frame_verification.json")
+    particle = load("docs/core/artifacts/particle_dirac_program_gate.json")
 
     waves = [
         {
@@ -72,14 +74,18 @@ def build() -> dict[str, Any]:
                 "docs/core/artifacts/impact_effect_dependency_gate.json",
                 "docs/core/artifacts/carrier_neutral_comparator_contract.json",
                 "docs/core/artifacts/carrier_observer_thought_experiment.json",
+                "docs/core/artifacts/photon_observer_baseline_verification.json",
             ],
             "local_results": {
                 "impact_core": first_status(impact),
                 "impact_dependency": first_status(impact_gate),
                 "carrier": first_status(carrier),
                 "observer": first_status(observer),
+                "photon_baseline": photon.get("standard_comparator_verification", first_status(photon)),
+                "photon_baseline_status": first_status(photon),
+                "photon_uet_mapping": photon.get("dependency_status", "UNSPECIFIED"),
             },
-            "controller": controller(impact_gate),
+            "controller": controller(impact_gate) + "; photon=SI detector/observable map and UET source-to-carrier law remain open",
             "claim_boundary": "carrier-neutral and observer thought-experiment contracts only; no photon/neutrino/positron identity for R_gen",
         },
         {
@@ -119,7 +125,7 @@ def build() -> dict[str, Any]:
             "wave": 11,
             "name": "Particle, Dirac, neutrino, and antimatter program",
             "status": "DEFERRED_BLOCKED",
-            "evidence": [],
+            "evidence": ["docs/core/artifacts/particle_dirac_program_gate.json"],
             "local_results": {
                 "required_prerequisites": [
                     "Lorentz-covariant action",
@@ -131,7 +137,7 @@ def build() -> dict[str, Any]:
                 ],
                 "current_status": "not established as a closed UET derivation",
             },
-            "controller": "complete covariant foundation and particle correspondence prerequisites before particle claims",
+            "controller": particle.get("controlling_blocker", "complete covariant foundation and particle correspondence prerequisites before particle claims"),
             "claim_boundary": "photon, neutrino, positron, antimatter, and Dirac relations remain deferred/not established",
         },
     ]
@@ -150,6 +156,7 @@ def build() -> dict[str, Any]:
                 == "BLOCKED_NOT_PROVIDED"
             ),
             "carrier_dependency_blocked": waves[1]["status"] == "BLOCKED",
+            "photon_standard_comparator_verified": waves[1]["local_results"]["photon_baseline"] == "PASS",
             "global_open_claim_blocked": waves[2]["status"] == "BLOCKED",
             "galaxy_cosmic_claim_blocked": waves[3]["status"] == "BLOCKED",
             "particle_program_deferred": waves[4]["status"] == "DEFERRED_BLOCKED",

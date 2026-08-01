@@ -242,7 +242,7 @@
         {
           "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_noether_phase_field_dependency_gate.json",
           "exists": true,
-          "sha256": "fe36ca1f00cb88476be3fd92dc58b3d8202c7c149376482236cb0d448b9ea0ec",
+          "sha256": "862cea302261b32732a32fa2cb0bc8d897cff2d3197ca9230c5012e812bd8c3e",
           "status": "BLOCKED",
           "controller": "topic_0_11_signed_noether_charge_eos_transport_matching_missing"
         }
@@ -281,14 +281,14 @@
         {
           "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_second_sound_source_package.json",
           "exists": true,
-          "sha256": "118ddf77864d74fe1c662e447af41705e544cfae4a8523cbe802560b6d4279f6",
+          "sha256": "9cce98bc08349ca2eba1c21ee53cd4ce5907bf25098f9827f6523a70c0cb2e5b",
           "status": "BLOCKED",
           "controller": "not_declared"
         },
         {
           "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_observable_map_readiness.json",
           "exists": true,
-          "sha256": "c8e166fbf8c0955baef331e96a56f084cd8265e7dfb2d8a438f43cc76b78ec82",
+          "sha256": "eac2809b7cc467deed28a706d20fb057497c80f9c89e8db68a5daddbf0a57383",
           "status": "PASS_WITH_BLOCKED_DIMENSIONAL_AND_DATA_LANES",
           "controller": "not_declared"
         }
@@ -326,7 +326,7 @@
       "status": "BLOCKED",
       "closure_status": "CLOSED_AS_BLOCKED",
       "physics_status": "BLOCKED",
-      "controlling_blocker": "foundation correspondence, units, and carrier/detector maps are incomplete",
+      "controlling_blocker": "foundation correspondence, units, and carrier/detector maps are incomplete; photon=SI detector/observable map and UET source-to-carrier law remain open",
       "claim_ceiling": "carrier-neutral and observer thought-experiment contracts only; no photon/neutrino/positron identity for R_gen",
       "evidence": [
         {
@@ -348,6 +348,11 @@
           "path": "docs/core/artifacts/carrier_observer_thought_experiment.json",
           "exists": true,
           "sha256": "96386e74b6aa5965c587d71f758c52b9682c7a0b6acda135dff72a7362d33be7"
+        },
+        {
+          "path": "docs/core/artifacts/photon_observer_baseline_verification.json",
+          "exists": true,
+          "sha256": "89297caab9742a91d69de44b52308d154245a51913c472cccaee9eef282cca3d"
         }
       ]
     },
@@ -363,12 +368,12 @@
         {
           "path": "docs/core/artifacts/orbit_cosmology_correspondence_gate.json",
           "exists": true,
-          "sha256": "49100a87890307f8ff8b82728d5a420d449ecd8fa7a0568f6f119611d3fd120b"
+          "sha256": "35bb4ab350aee8f493c447facf1324e322a494dfc9dc0e5b38a0de0582aa78b2"
         },
         {
           "path": "docs/core/artifacts/uet_gr_research_program_gate.json",
           "exists": true,
-          "sha256": "38bfe3bcafb35880c1bfab61c67f3f4982a17e0fbd0f95f46da601bc496fc3d0"
+          "sha256": "55f822f280c824c0b03398a12626a2544d71437ec588907b44343023658a7309"
         }
       ]
     },
@@ -401,7 +406,13 @@
       "physics_status": "DEFERRED_BLOCKED",
       "controlling_blocker": "Lorentz-covariant action, spinor/current map, CPT and detector correspondence are not established",
       "claim_ceiling": "particle, Dirac, neutrino, positron and antimatter identities remain deferred/not established",
-      "evidence": []
+      "evidence": [
+        {
+          "path": "docs/core/artifacts/particle_dirac_program_gate.json",
+          "exists": true,
+          "sha256": "295a0f0a9873891240a6165d2a41710ef6995abce8c57e40de8aff7242378cf9"
+        }
+      ]
     }
   ],
   "checks": {

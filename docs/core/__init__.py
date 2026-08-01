@@ -561,3 +561,26 @@ __all__ += [
     "matter_space_observable_contract",
     "normalized_matter_space_observable",
 ]
+from .photon_observer_baseline import (
+    PHOTON_OBSERVER_BASELINE_MODE,
+    PhotonBaselineConfig,
+    PhotonEmissionEvent,
+    PhotonPropagationResult,
+    PhotonDetectorRecord,
+    photon_energy_momentum,
+    propagate_photon,
+    detect_photon,
+    photon_observer_contract,
+)
+
+__all__ += [
+    "PHOTON_OBSERVER_BASELINE_MODE",
+    "PhotonBaselineConfig",
+    "PhotonEmissionEvent",
+    "PhotonPropagationResult",
+    "PhotonDetectorRecord",
+    "photon_energy_momentum",
+    "propagate_photon",
+    "detect_photon",
+    "photon_observer_contract",
+]

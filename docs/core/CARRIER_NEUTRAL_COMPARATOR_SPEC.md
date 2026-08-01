@@ -45,3 +45,25 @@ failure, while the carrier-specific unit/detector maps are open, or while the
 Topic 0.11 phase pilot is only simulation-only. The next valid work is a
 source-locked comparator package, not parameter fitting or particle identity
 promotion.
+
+## Wave 8 normalized photon comparator
+
+The repository now contains a deliberately standard, normalized photon
+comparator in `photon_observer_baseline.py`. It closes the local bookkeeping
+relations for one declared source event:
+
+\[
+p_\gamma = E_\gamma \hat n,\qquad
+t_{\rm arrival}=t_{\rm emit}+L/c,
+\]
+
+with explicit source energy and momentum ledgers and a detector record that
+can be switched on or off without changing propagation. Its verifier artifact
+is `photon_observer_baseline_verification.json`.
+
+This is a standard comparator only. It uses normalized units, has no
+instrument response or uncertainty package, does not fit data, and does not
+derive a UET source-to-photon transition. The photon lane is therefore locally
+verified while the Wave 8 dependency remains blocked by dimensional detector
+mapping, external provenance, the neutrino/positron comparator packages, and
+the missing UET transition law.

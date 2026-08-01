@@ -106,6 +106,7 @@ def build() -> dict[str, Any]:
     transport = load(ROOT / "docs/core/artifacts/covariant_superfluid_transport_verification.json")
     gr = load(ROOT / "docs/core/artifacts/uet_gr_research_program_gate.json")
     carrier = load(ROOT / "docs/core/artifacts/carrier_neutral_comparator_contract.json")
+    photon = load(ROOT / "docs/core/artifacts/photon_observer_baseline_verification.json")
     phase = load(ROOT / "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_matter_space_coupled_diagnostic.json")
     thermal_pilot = load(ROOT / "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_control.json")
     phase_rerun = load(ROOT / "docs/topics/0.11_Phase_Transitions/Result/artifacts/matter_space_0_11_characteristic_lane_rerun.json")
@@ -189,9 +190,9 @@ def build() -> dict[str, Any]:
         wave(
             8,
             "Impact/effect/carrier and observer program",
-            carrier.get("next_controller", controller_of(carrier)),
-            ["docs/core/artifacts/impact_effect_core_verification.json", "docs/core/artifacts/impact_effect_dependency_gate.json", "docs/core/artifacts/carrier_neutral_comparator_contract.json", "docs/core/artifacts/carrier_observer_thought_experiment.json"],
-            status_of(carrier),
+            carrier.get("next_controller", controller_of(carrier)) + "; photon=SI detector/observable map and UET source-to-carrier law remain open",
+            ["docs/core/artifacts/impact_effect_core_verification.json", "docs/core/artifacts/impact_effect_dependency_gate.json", "docs/core/artifacts/carrier_neutral_comparator_contract.json", "docs/core/artifacts/carrier_observer_thought_experiment.json", "docs/core/artifacts/photon_observer_baseline_verification.json"],
+            "BLOCKED_WITH_NORMALIZED_PHOTON_BASELINE" if photon.get("standard_comparator_verification") == "PASS" else status_of(carrier),
             "carrier-neutral comparator contract; no photon/neutrino/positron identity for R_gen",
             foundation_blocked,
         ),

@@ -31,15 +31,19 @@
         "docs/core/artifacts/impact_effect_core_verification.json",
         "docs/core/artifacts/impact_effect_dependency_gate.json",
         "docs/core/artifacts/carrier_neutral_comparator_contract.json",
-        "docs/core/artifacts/carrier_observer_thought_experiment.json"
+        "docs/core/artifacts/carrier_observer_thought_experiment.json",
+        "docs/core/artifacts/photon_observer_baseline_verification.json"
       ],
       "local_results": {
         "impact_core": "PASS",
         "impact_dependency": "BLOCKED",
         "carrier": "BLOCKED",
-        "observer": "SIMULATION_ONLY"
+        "observer": "SIMULATION_ONLY",
+        "photon_baseline": "PASS",
+        "photon_baseline_status": "PASS_WITH_OPEN_DIMENSIONAL_AND_UET_MAPPING",
+        "photon_uet_mapping": "BLOCKED"
       },
-      "controller": "foundation correspondence, units, and carrier/detector maps are incomplete",
+      "controller": "foundation correspondence, units, and carrier/detector maps are incomplete; photon=SI detector/observable map and UET source-to-carrier law remain open",
       "claim_boundary": "carrier-neutral and observer thought-experiment contracts only; no photon/neutrino/positron identity for R_gen"
     },
     {
@@ -76,7 +80,9 @@
       "wave": 11,
       "name": "Particle, Dirac, neutrino, and antimatter program",
       "status": "DEFERRED_BLOCKED",
-      "evidence": [],
+      "evidence": [
+        "docs/core/artifacts/particle_dirac_program_gate.json"
+      ],
       "local_results": {
         "required_prerequisites": [
           "Lorentz-covariant action",
@@ -88,7 +94,7 @@
         ],
         "current_status": "not established as a closed UET derivation"
       },
-      "controller": "complete covariant foundation and particle correspondence prerequisites before particle claims",
+      "controller": "Lorentz-covariant action, spinor/current map, CPT and detector correspondence are not established",
       "claim_boundary": "photon, neutrino, positron, antimatter, and Dirac relations remain deferred/not established"
     }
   ],
@@ -97,6 +103,7 @@
     "no_downstream_pass_promoted_to_physical_claim": true,
     "o2_transport_open_boundary_disclosed": true,
     "carrier_dependency_blocked": true,
+    "photon_standard_comparator_verified": true,
     "global_open_claim_blocked": true,
     "galaxy_cosmic_claim_blocked": true,
     "particle_program_deferred": true
