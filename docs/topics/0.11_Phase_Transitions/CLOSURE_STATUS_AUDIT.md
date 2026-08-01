@@ -167,3 +167,11 @@ Wave 54 adds `Data/03_Research/structure_factor_ch_finite_k_source_averaging_unc
 ## Wave 55 Update
 
 Wave 55 adds `Data/03_Research/structure_factor_ch_finite_k_next_path_decision.json` and `Result/artifacts/0_11_structure_factor_ch_finite_k_next_path_decision_gate.json`. `wave54_chain_gate`, `replicate_temporal_acquisition_plan_gate`, and `selected_next_path_gate` pass. `replacement_observable_available_gate`, `estimator_acceptance_gate`, `exponent_rerun_gate`, and `next_path_gate` remain blocked. The selected controller is execution of the replicate/temporal acquisition plan, not claim promotion.
+
+## Wave 56 Update
+
+Wave 56 executes the selected finite-size replication plan with the locked `L=8,12,16` grids, two seed sets, three seeds per set, 18 total cases, and 4000 steps. The generated replication artifact reports `WARN`: all 18/18 cases are stable with positive spinodal margin, but the `L=16` grid passes only 4/6 cases and the fresh seed set passes 7/9 overall and 1/3 at `L=16`.
+
+The previous plan-defined execution blocker is therefore closed as an execution task. The controlling blocker is narrowed to `spectral_core_finite_size_replication_not_robust`. `grid_replication_gate`, `seed_set_generalization_gate`, and `exponent_claim_gate` remain `BLOCKED`; `claim_boundary_gate` remains `WARN`.
+
+This execution does not accept the estimator, rerun exponent gates, or promote universality, material, RG, external-validation, or Tier A claims. The next decision is either to improve robustness under the unchanged acceptance policy or to accept a source-backed replacement observable.

@@ -148,3 +148,9 @@ ceiling changed.
 - Result: normalized integration is closed as a candidate lane; full nonlinear causal physics remains blocked.
 - Next controller: dimensional mapping and causal discretization decision.
 - Claim impact: no change.
+
+## 2026-08-02 ? Wave 56 execution result propagated
+
+Wave 5 evidence now consumes the executed finite-size replication artifact rather than the older plan-defined execution state. The result is `WARN` with 18/18 stable positive-margin cases, but `grid_replication_gate` and `seed_set_generalization_gate` remain blocked (`L=16: 4/6`; fresh seed set: `7/9` overall, `1/3` at `L=16`). The controlling blocker is `spectral_core_finite_size_replication_not_robust`.
+
+This is a blocker-narrowing update only. Topic 0.11 remains internal diagnostic / foundation-blocked, and exponent, universality, material, RG, and external-validation claims remain closed.

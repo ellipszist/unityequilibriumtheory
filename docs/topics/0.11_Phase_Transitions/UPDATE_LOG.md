@@ -1379,3 +1379,27 @@
 **Current topic-level status after wave:**
 - Topic 0.11 remains `Structured / Tier B`; `topic_status_impact = NONE`.
 - No estimator, exponent, universality, material, RG, or external-validation claim is upgraded.
+
+## 2026-08-02 - Wave 56 finite-size replication execution
+
+**What changed:**
+- Executed `Research_Conserved_Order_Spectral_Finite_Size_Replication.py` at the locked settings: `L=8,12,16`, two seed sets, three seeds per set, 18 cases, and 4000 steps.
+- Regenerated `Result/artifacts/0_11_conserved_order_spectral_finite_size_replication.json` and `Result/gl_conserved_order_spectral_finite_size_replication_stats.csv`.
+
+**Which verifier was run:**
+- The replication artifact returned `WARN`.
+- `finite_size_coverage_gate == PASS`: all 18/18 cases were stable with positive spinodal margin.
+- `grid_replication_gate == BLOCKED`: the `L=16` grid passed 4/6 cases.
+- `seed_set_generalization_gate == BLOCKED`: the fresh seed set passed 7/9 overall and only 1/3 at `L=16`.
+- `exponent_claim_gate == BLOCKED` and `claim_boundary_gate == WARN`.
+
+**Which blocker narrowed:**
+- Plan-defined execution is no longer the blocker; the selected replication run completed.
+- The current controller is now `spectral_core_finite_size_replication_not_robust`.
+
+**Next controlling blocker:**
+- Improve `L=16` and fresh-seed robustness under the unchanged acceptance policy, or accept a source-backed replacement observable. Do not rerun or promote exponent/universality claims before that gate passes.
+
+**Current topic-level status after wave:**
+- Topic 0.11 remains `Structured / Tier B` and the result remains an internal diagnostic (`WARN`), not external validation.
+- No estimator, exponent, universality, material, RG, mass, particle, GR, cosmological, or solved-phase-transition claim is upgraded.

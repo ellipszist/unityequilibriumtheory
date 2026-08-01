@@ -283,3 +283,9 @@ promoted.
 - Still open: dimensional lane, full-candidate causal discretization, 0.11 acquisition, 0.13 source/temperature bridge, and external validation.
 - Next controller: derive one dimensional lane and separately repair or restrict the full nonlinear causal candidate.
 - Claim impact: no physical or readiness upgrade.
+
+## 2026-08-02 ? 0.11 replication execution synchronized
+
+The selected Topic 0.11 finite-size replication script was executed at its locked settings (`L=8,12,16`, two seed sets, three seeds per set, 18 cases, 4000 steps). The generated artifact returned `WARN`: all 18/18 cases were stable with positive spinodal margin, while `L=16` passed 4/6 cases and the fresh seed set passed 7/9 overall and 1/3 at `L=16`.
+
+This narrows the Topic 0.11 controller from plan-defined execution to `spectral_core_finite_size_replication_not_robust`. No estimator, exponent, universality, external-validation, or Tier A promotion is allowed. The core foundation and pre-arrival leakage blockers remain unchanged.

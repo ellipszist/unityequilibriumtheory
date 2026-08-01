@@ -127,3 +127,7 @@ through dimensional TTG mapping/source provenance before any data claim.
 Wave 3 now distinguishes the passing normalized characteristic integration from the failing
 full nonlinear candidate. The selected edge can feed pilot diagnostics, but it cannot bypass
 the full-candidate leakage, units, or external-observable gates.
+
+## 2026-08-02 dependency update ? Topic 0.11 execution result
+
+The dependency graph now treats Topic 0.11's finite-size replication execution as completed evidence with `WARN`, not as an unexecuted plan. Its active edge is `spectral_core_finite_size_replication_not_robust` (`L=16` 4/6; fresh seed set 7/9 overall and 1/3 at `L=16`). Estimator acceptance and exponent/universality promotion remain downstream-blocked. This edge does not alter the independent core pre-arrival leakage or foundation correspondence blockers.

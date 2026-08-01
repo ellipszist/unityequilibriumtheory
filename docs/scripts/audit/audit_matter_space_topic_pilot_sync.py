@@ -23,6 +23,7 @@ def build_artifact() -> dict[str, Any]:
     phase = load("docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_matter_space_phase_coupling_diagnostic.json")
     thermal = load("docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_control.json")
     phase_rerun = load("docs/topics/0.11_Phase_Transitions/Result/artifacts/matter_space_0_11_characteristic_lane_rerun.json")
+    phase_structure_factor_replication = load("docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_finite_size_replication.json")
     thermal_rerun = load("docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_0_13_characteristic_thermal_lane_rerun.json")
     observable = load("docs/core/artifacts/matter_space_observable_verification.json")
     thermal_map = load("docs/core/artifacts/thermal_observable_bridge_verification.json")
@@ -40,6 +41,14 @@ def build_artifact() -> dict[str, Any]:
         ),
         "phase_pilot_controller_preserved": bool(phase.get("controller")),
         "phase_selected_lane_rerun_passes": phase_rerun["verification_status"] == "PASS",
+        "phase_structure_factor_replication_executed": (
+            phase_structure_factor_replication.get("status") in {"WARN", "PASS"}
+            and phase_structure_factor_replication.get("gates", {}).get("finite_size_coverage_gate", {}).get("status") == "PASS"
+        ),
+        "phase_structure_factor_replication_remains_blocked": (
+            phase_structure_factor_replication.get("gates", {}).get("grid_replication_gate", {}).get("status") == "BLOCKED"
+            and phase_structure_factor_replication.get("gates", {}).get("seed_set_generalization_gate", {}).get("status") == "BLOCKED"
+        ),
         "thermal_pilot_remains_simulation_only": (
             thermal["status"] == "SIMULATION_ONLY"
             and thermal["dependency_status"] == "BLOCKED"
@@ -77,7 +86,9 @@ def build_artifact() -> dict[str, Any]:
             "selected_lane_available": True,
             "selected_lane_rerun_artifact": "docs/topics/0.11_Phase_Transitions/Result/artifacts/matter_space_0_11_characteristic_lane_rerun.json",
             "rerun_status": "RERUN_SELECTED_LANE_PASS_SIMULATION_ONLY",
-            "controller": phase["controller"],
+            "structure_factor_replication_artifact": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_finite_size_replication.json",
+            "structure_factor_replication_status": phase_structure_factor_replication.get("status"),
+            "controller": phase_structure_factor_replication.get("blocker_label", phase["controller"]),
             "claim_boundary": "normalized simulation-only diagnostic; no universality, mass-generation, particle, or empirical claim",
         },
         "topic_0_13": {
@@ -97,8 +108,9 @@ def build_artifact() -> dict[str, Any]:
         },
         "checks": checks,
         "next_controller": (
-            "preserve 0.11/0.13 selected-lane reruns as simulation-only; close SI "
-            "observable mapping and external-data gates before validation claims"
+            "0.11 finite-size replication executed but grid/seed robustness is blocked; "
+            "0.13 remains simulation-only; close SI observable mapping and external-data "
+            "gates before validation claims"
         ),
     }
 

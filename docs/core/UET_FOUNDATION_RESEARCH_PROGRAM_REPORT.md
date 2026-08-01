@@ -302,3 +302,9 @@ pre-arrival leakage remains `0.017639381271029236` against the `1e-6` gate.
 The result is therefore `PASS` only for a normalized selected-lane integration artifact.
 Dimensional units, mass-density mapping, full causal discretization, and empirical evidence
 remain blocked.
+
+## Latest plan update ? 2026-08-02
+
+The Topic 0.11 replication path has now been executed under the locked finite-size plan. The artifact reports `WARN`, with 18/18 cases stable and positive spinodal margin, but only 4/6 passes at `L=16` and 7/9 passes for the fresh seed set overall (1/3 at `L=16`). The controller is therefore narrowed to `spectral_core_finite_size_replication_not_robust`; the former plan-defined execution gap is closed as an execution task.
+
+This does not close the foundation program or promote any phase-transition, estimator, exponent, universality, or external-validation claim. The default matter-space verification still has a pre-arrival leakage failure, and the foundation correspondence/unit/observable gates remain open.

@@ -16,7 +16,9 @@
     "selected_lane_available": true,
     "selected_lane_rerun_artifact": "docs/topics/0.11_Phase_Transitions/Result/artifacts/matter_space_0_11_characteristic_lane_rerun.json",
     "rerun_status": "RERUN_SELECTED_LANE_PASS_SIMULATION_ONLY",
-    "controller": "ch_finite_k_replicate_temporal_acquisition_plan_defined_execution_open",
+    "structure_factor_replication_artifact": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_finite_size_replication.json",
+    "structure_factor_replication_status": "WARN",
+    "controller": "spectral_core_finite_size_replication_not_robust",
     "claim_boundary": "normalized simulation-only diagnostic; no universality, mass-generation, particle, or empirical claim"
   },
   "topic_0_13": {
@@ -39,6 +41,8 @@
     "phase_pilot_remains_internal_simulation_only": true,
     "phase_pilot_controller_preserved": true,
     "phase_selected_lane_rerun_passes": true,
+    "phase_structure_factor_replication_executed": true,
+    "phase_structure_factor_replication_remains_blocked": true,
     "thermal_pilot_remains_simulation_only": true,
     "thermal_prearrival_blocker_preserved": true,
     "thermal_mapping_boundary_preserved": true,
@@ -46,5 +50,5 @@
     "thermal_selected_lane_rerun_passes": true,
     "external_validation_not_claimed": true
   },
-  "next_controller": "preserve 0.11/0.13 selected-lane reruns as simulation-only; close SI observable mapping and external-data gates before validation claims"
+  "next_controller": "0.11 finite-size replication executed but grid/seed robustness is blocked; 0.13 remains simulation-only; close SI observable mapping and external-data gates before validation claims"
 }

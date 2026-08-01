@@ -41,7 +41,7 @@ def status_of(payload: dict[str, Any]) -> str:
 
 
 def controller_of(payload: dict[str, Any]) -> str:
-    for key in ("controlling_blocker", "next_controller", "controller"):
+    for key in ("controlling_blocker", "blocker_label", "next_controller", "controller"):
         value = payload.get(key)
         if isinstance(value, str) and value:
             return value
@@ -109,6 +109,7 @@ def build() -> dict[str, Any]:
     gr = load(ROOT / "docs/core/artifacts/uet_gr_research_program_gate.json")
     carrier = load(ROOT / "docs/core/artifacts/carrier_neutral_comparator_contract.json")
     photon = load(ROOT / "docs/core/artifacts/photon_observer_baseline_verification.json")
+    pilot_sync = load(ROOT / "docs/core/artifacts/matter_space_topic_pilot_sync.json")
     phase = load(ROOT / "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_matter_space_coupled_diagnostic.json")
     thermal_pilot = load(ROOT / "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_control.json")
     phase_rerun = load(ROOT / "docs/topics/0.11_Phase_Transitions/Result/artifacts/matter_space_0_11_characteristic_lane_rerun.json")
@@ -165,8 +166,8 @@ def build() -> dict[str, Any]:
         wave(
             5,
             "Topic 0.11 matter-space phase pilot",
-            phase.get("controlling_blocker", controller_of(phase)),
-            ["docs/core/artifacts/matter_space_phase_pilot.json", "docs/core/artifacts/matter_space_topic_pilot_sync.json", "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_matter_space_phase_coupling_diagnostic.json", "docs/topics/0.11_Phase_Transitions/Result/artifacts/matter_space_0_11_characteristic_lane_rerun.json", "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_noether_phase_field_dependency_gate.json"],
+            pilot_sync.get("topic_0_11", {}).get("controller", phase.get("controlling_blocker", controller_of(phase))),
+            ["docs/core/artifacts/matter_space_phase_pilot.json", "docs/core/artifacts/matter_space_topic_pilot_sync.json", "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_matter_space_phase_coupling_diagnostic.json", "docs/topics/0.11_Phase_Transitions/Result/artifacts/matter_space_0_11_characteristic_lane_rerun.json", "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_finite_size_replication.json", "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_noether_phase_field_dependency_gate.json"],
             status_of(phase),
             "internal normalized diagnostic; no universality or mass-generation claim",
             foundation_blocked,

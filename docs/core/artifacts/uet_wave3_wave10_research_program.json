@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_wave3_wave10_research_program",
-  "generated_at": "2026-08-01T17:31:49.280593+00:00",
+  "generated_at": "2026-08-01T17:44:46.802781+00:00",
   "program_scope": "UET Foundation-First Research Program Waves 0-10",
   "workflow": [
     "inventory",
@@ -218,7 +218,7 @@
       "local_evidence_status": "INTERNAL_DIAGNOSTIC",
       "effective_status": "BLOCKED_BY_FOUNDATION",
       "dependency_blocked": true,
-      "controlling_blocker": "inherited_core_prearrival_leakage",
+      "controlling_blocker": "spectral_core_finite_size_replication_not_robust",
       "claim_ceiling": "internal normalized diagnostic; no universality or mass-generation claim",
       "inputs": [
         {
@@ -231,9 +231,9 @@
         {
           "path": "docs/core/artifacts/matter_space_topic_pilot_sync.json",
           "exists": true,
-          "sha256": "27a25b85e0230a75008ef76892e73d0d0148225f2a2f48baa1964107f13bbd9a",
+          "sha256": "a557920e1bbad3028569a0209ed0a74e73407f2aea78635fe7403137c71d2227",
           "status": "PASS_WITH_INHERITED_BLOCKERS",
-          "controller": "preserve 0.11/0.13 selected-lane reruns as simulation-only; close SI observable mapping and external-data gates before validation claims"
+          "controller": "0.11 finite-size replication executed but grid/seed robustness is blocked; 0.13 remains simulation-only; close SI observable mapping and external-data gates before validation claims"
         },
         {
           "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_matter_space_phase_coupling_diagnostic.json",
@@ -248,6 +248,13 @@
           "sha256": "f032a6706ad0fbdc94aa2554bda51acee1ec778a1f03d5a577d9d420e032099e",
           "status": "INTERNAL_DIAGNOSTIC",
           "controller": "topic_structure_factor_replicate_temporal_acquisition_and_foundation_units"
+        },
+        {
+          "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_finite_size_replication.json",
+          "exists": true,
+          "sha256": "1f31ae14800700cc9c8bb71ea6b54d2a2a4a0510e6cf851a774f8f2da9ef062c",
+          "status": "WARN",
+          "controller": "spectral_core_finite_size_replication_not_robust"
         },
         {
           "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_noether_phase_field_dependency_gate.json",
@@ -270,9 +277,9 @@
         {
           "path": "docs/core/artifacts/matter_space_topic_pilot_sync.json",
           "exists": true,
-          "sha256": "27a25b85e0230a75008ef76892e73d0d0148225f2a2f48baa1964107f13bbd9a",
+          "sha256": "a557920e1bbad3028569a0209ed0a74e73407f2aea78635fe7403137c71d2227",
           "status": "PASS_WITH_INHERITED_BLOCKERS",
-          "controller": "preserve 0.11/0.13 selected-lane reruns as simulation-only; close SI observable mapping and external-data gates before validation claims"
+          "controller": "0.11 finite-size replication executed but grid/seed robustness is blocked; 0.13 remains simulation-only; close SI observable mapping and external-data gates before validation claims"
         },
         {
           "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_control.json",
