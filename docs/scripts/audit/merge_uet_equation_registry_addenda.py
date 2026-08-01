@@ -37,7 +37,8 @@ def main() -> int:
 
     for path in ADDENDA:
         addendum = read_json(path)
-        for entry in addendum.get("equation_entries", addendum.get("entries", [])):
+        addendum_entries = addendum.get("equation_entries", addendum.get("entries", []))
+        for entry in addendum_entries:
             equation_id = entry.get("equation_id")
             if not equation_id:
                 conflicts.append(f"{path.name}:missing_equation_id")
@@ -48,6 +49,15 @@ def main() -> int:
             entries.append(entry)
             known.add(equation_id)
             merged.append(equation_id)
+
+        addendum["status"] = "CANDIDATE_ENTRY_MERGED_INTO_CENTRAL_REGISTRY"
+        addendum["merge_metadata"] = {
+            "merged_into": str(REGISTRY.relative_to(ROOT)).replace("\\", "/"),
+            "merged_on": date.today().isoformat(),
+            "equation_ids": [entry.get("equation_id") for entry in addendum_entries],
+            "claim_promotion": False,
+        }
+        path.write_text(json.dumps(addendum, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     coverage = dict(registry.get("coverage", {}))
     missing_scope = list(coverage.get("missing_scope", []))

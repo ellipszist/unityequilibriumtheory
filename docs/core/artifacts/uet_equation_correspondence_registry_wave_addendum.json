@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact": "uet_equation_correspondence_registry_wave_addendum",
   "extends": "docs/core/artifacts/uet_equation_correspondence_registry.json",
-  "status": "CANDIDATE_ENTRY_PENDING_CENTRAL_REGISTRY_MERGE",
+  "status": "CANDIDATE_ENTRY_MERGED_INTO_CENTRAL_REGISTRY",
   "equation_entries": [
     {
       "equation_id": "uet.matter_space.characteristic_cone",
@@ -170,5 +170,15 @@
       "failure_mode": "proxy is called measured heat/entropy, or scale is fitted and presented as derived",
       "next_hardening_step": "source-lock a material experiment with units, uncertainty and measurement operator"
     }
-  ]
+  ],
+  "merge_metadata": {
+    "merged_into": "docs/core/artifacts/uet_equation_correspondence_registry.json",
+    "merged_on": "2026-08-01",
+    "equation_ids": [
+      "uet.matter_space.characteristic_cone",
+      "uet.persistence.resource_selection_dynamics",
+      "uet.persistence.resource_selection_thermal_bridge"
+    ],
+    "claim_promotion": false
+  }
 }

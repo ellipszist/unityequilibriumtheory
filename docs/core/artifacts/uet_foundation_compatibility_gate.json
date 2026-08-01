@@ -660,13 +660,13 @@
     "docs/core/uet_parameters.py": "eff2fc6fe0fe35f18c49a032729e385c97b633a90e9a0bd3789be5051d316651",
     "docs/core/MATTER_SPACE_RESEARCH_SPEC.md": "3fca7d82e7f0c0c5e7904811eec7d81d772fe802492dbf2147b1ee95232fb2a4",
     "docs/core/UET_GR_NONCLOSED_RESEARCH_SPEC.md": "d15cc8e345a3df986f7608d48e3152134c4325dfa24e5dc9364b085fe37dd6c9",
-    "docs/core/artifacts/uet_equation_correspondence_registry.json": "a8738405c493ea4d39ead7b91aceaec05ce1ecd1523a2337f33650969dc722b8",
+    "docs/core/artifacts/uet_equation_correspondence_registry.json": "1f4b3d18781eb4bfe4f4326db59e7553aa1463481b655fbe8c26ba8cf04810cf",
     "docs/core/artifacts/master_equation_alignment_gate_v2.json": "b2184ce72accffcb1baf609bfb3db789247fc387b30413996f49a74a794a3515",
     "docs/core/artifacts/matter_space_formula_audit.json": "b601c8a92201660aee06c4f577521e4fe0b421d7f9b047616e23ca9dd846d0da",
     "docs/core/artifacts/matter_space_variational_verification.json": "e5ae26fb40ff6cd4a0d1d0c86576e91218294e683902bb60b6afb0b2596cc62c",
     "docs/core/artifacts/matter_space_dependency_gate.json": "5af4debf7c189ac255d074eaaf1dbab7515721d480f200d6cb56c13b3a52ede5",
     "docs/core/artifacts/spacetime_trace_verification.json": "1ba232f1d8d0e13e1492b7465e2afabd44639d7af5c88100a1d759ed53a75e27",
-    "docs/core/artifacts/gr_closed_limit_verification.json": "a04ed30ebbbcfe35d7c92791341b781e0f4d59c754c1647c829efb7633baa8dc",
+    "docs/core/artifacts/gr_closed_limit_verification.json": "f9b5f1e3e5df7424767ceefa2196b11056a1620452a4ef440a7ce1800c340d23",
     "docs/core/artifacts/o2_finite_density_eos_verification.json": "57d64cd102ecb4da1683d98f6f6f3491ec93e07609d2fe5e317c930d80780d0a",
     "docs/core/artifacts/o2_eos_formula_audit.json": "eedc57d060a57cd5497fb5aaf971fbeaedbcc9ad85cfd33bdefaa7b60d61b657"
   }

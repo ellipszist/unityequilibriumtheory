@@ -219,3 +219,11 @@ y_TTG, and the source heat-capacity symbol c_v is explicitly distinct from
 the UET collective coordinate C. The source mapping audit and 20-test thermal
 regression pass, while dimensional Phi mapping and numeric source intake
 remain blocked. No physics claim was promoted.
+### 2026-08-01 - Central registry addenda status synchronization
+
+- Scope: remove metadata drift between the central equation registry and its reviewed addenda.
+- Added or changed: merge_uet_equation_registry_addenda.py now records merged status and merge metadata on each addendum without changing evidence or claim boundaries; all four addenda were rerun through the deterministic merge.
+- Verified with: registry audit PASS, correspondence coverage PASS_WITH_OPEN_ROWS (263 rows, 152 open), compatibility audit PASS with declared blockers, and foundation dependency audit PASS/BLOCKED.
+- Result: the persistence/resource-selection principle is now explicitly a candidate entry in the central registry, not a pending orphan addendum.
+- Claim impact: none; physical work/heat/entropy mapping remains open and no normalized resource quantity is promoted to SI energy.
+- Next controller: close active correspondence/unit/observable rows; the foundation gate remains blocked.

@@ -88,3 +88,9 @@ The thermal dependency now has an explicit standard source-equation node:
 g_n -> Delta_Tq -> y_TTG, with c_v kept distinct from UET C. This supports
 observable correspondence only. It does not create a Phi -> temperature identity,
 close the dimensional lane, or permit external fit/validation.
+## Latest plan update — 2026-08-01 central registry addenda synchronization
+
+The registry graph now treats impact/effect, cosmology, persistence/resource
+selection, and characteristic-wave addenda as merged candidate nodes. Their
+claim ceilings are unchanged, and every downstream edge remains blocked by the
+foundation correspondence, units, observable, or physical-source gates.

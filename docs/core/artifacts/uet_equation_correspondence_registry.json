@@ -1098,15 +1098,14 @@
     }
   ],
   "merge_history": {
-    "merged_equation_ids": [
-      "uet.matter_space.characteristic_cone",
-      "uet.persistence.resource_selection_dynamics",
-      "uet.persistence.resource_selection_thermal_bridge"
-    ],
+    "merged_equation_ids": [],
     "already_present": [
       "uet.impact_effect.information_flow",
       "uet.cosmological.open_system_trace",
-      "uet.persistence.resource_allocation_principle"
+      "uet.persistence.resource_allocation_principle",
+      "uet.matter_space.characteristic_cone",
+      "uet.persistence.resource_selection_dynamics",
+      "uet.persistence.resource_selection_thermal_bridge"
     ],
     "conflicts": [],
     "source_policy": "addenda are merged as candidate records; evidence and claim boundaries are preserved"

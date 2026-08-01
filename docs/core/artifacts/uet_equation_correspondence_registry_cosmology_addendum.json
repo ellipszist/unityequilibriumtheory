@@ -2,7 +2,7 @@
   "schema_version": "uet-equation-correspondence-registry-cosmology-addendum-v1",
   "artifact": "uet_equation_correspondence_registry_cosmology_addendum",
   "extends": "docs/core/artifacts/uet_equation_correspondence_registry.json",
-  "status": "CANDIDATE_ENTRY_PENDING_CENTRAL_REGISTRY_MERGE",
+  "status": "CANDIDATE_ENTRY_MERGED_INTO_CENTRAL_REGISTRY",
   "equation_entries": [
     {
       "equation_id": "uet.cosmological.open_system_trace",
@@ -63,5 +63,13 @@
       "failure_mode": "observer data is treated as a new substance, free propagation is treated as continuous fuel consumption, or an effective non-closed lane is promoted to a global cosmological theorem",
       "next_hardening_step": "merge into the central registry after the foundation inventory and define a dimensional source-to-C, R_gen-to-observer, and closed-limit correspondence audit"
     }
-  ]
+  ],
+  "merge_metadata": {
+    "merged_into": "docs/core/artifacts/uet_equation_correspondence_registry.json",
+    "merged_on": "2026-08-01",
+    "equation_ids": [
+      "uet.cosmological.open_system_trace"
+    ],
+    "claim_promotion": false
+  }
 }

@@ -100,3 +100,9 @@ registered in the thermal source review. This closes a notation/provenance
 ambiguity (c_v versus UET C) while keeping the source numeric package,
 dimensional Phi map, and external validation blocked. Thermal regression passed
 20/20; no claim ceiling changed.
+## Latest plan update — 2026-08-01 central registry addenda synchronization
+
+The central registry merge is now reproducible and addendum status is no longer
+stale. This makes the persistence/resource-selection candidate visible to the
+same dependency machinery as the other lanes. Registry and compatibility audits
+pass, while the foundation gate remains blocked and no claim ceiling changes.

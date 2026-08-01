@@ -240,3 +240,10 @@ regenerated pilot remains SIMULATION_ONLY / FAIL because its original
 pre-arrival leakage controller is still visible. The next controller is a
 permitted local numeric package plus an independently derived or calibrated
 alpha_Phi_K; no fitting or holdout consumption is allowed.
+## Latest plan update — 2026-08-01 central registry addenda synchronization
+
+The central equation registry and its four candidate addenda now report the same
+merge state. The persistence/resource-selection principle is therefore recorded
+as a candidate equation entry rather than a pending sidecar. This repairs
+workflow metadata only: the normalized path-cost/resource ledger still lacks a
+dimensional work, heat, entropy, or failure-rate correspondence.
