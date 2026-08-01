@@ -41,9 +41,9 @@ WAVE55_GATE = ARTIFACT_DIR / "0_11_structure_factor_ch_finite_k_next_path_decisi
 MATTER_SPACE_PILOT = ARTIFACT_DIR / "0_11_matter_space_coupled_diagnostic.json"
 READINESS_METADATA = ROOT / "docs" / "meta" / "topic_readiness.json"
 
-# This is deliberately absent in the present wave.  A future file at this path
-# must still satisfy the explicit acceptance contract below; mere existence is
-# not sufficient to promote the topic field.
+# A candidate manifest is now present at this path.  It must still satisfy the
+# explicit acceptance contract below; declaration alone is not sufficient to
+# promote the topic field.
 TOPIC_CHARGE_MAP = DATA_DIR / "noether_charge_coordinate_mapping.json"
 
 ARTIFACT_PATH = ARTIFACT_DIR / "0_11_noether_phase_field_dependency_gate.json"
@@ -292,6 +292,8 @@ def build_artifact() -> dict[str, Any]:
         (MATTER_SPACE_PILOT, "Topic 0.11 isolated matter-space pilot"),
         (READINESS_METADATA, "Canonical topic readiness metadata"),
     ]
+    if TOPIC_CHARGE_MAP.exists():
+        input_paths.append((TOPIC_CHARGE_MAP, "Topic 0.11 candidate signed-charge mapping manifest"))
 
     return {
         "schema_version": "1.0",
@@ -349,7 +351,7 @@ def build_artifact() -> dict[str, Any]:
         ],
         "limitations": [
             "No simulation, parameter fit, estimator rerun, or external-data comparison is performed.",
-            "The present Topic 0.11 field has no accepted signed-O2-charge mapping manifest.",
+            "The present Topic 0.11 field has only a declared candidate signed-O2-charge mapping manifest; acceptance remains blocked.",
             "The exact affine layer is a coordinate result, not a microscopic derivation or physical equation of state.",
             "The historical matter-space pilot retains its run-time Draft snapshot; canonical metadata now controls status.",
         ],

@@ -113,3 +113,11 @@ feedback, or fitted evaluation-set parameters.
 This lane does not validate an estimator, critical exponent, universality
 class, material model, renormalization-group result, spacetime interpretation,
 global universe closure, external benchmark, or solved phase-transition theory.
+
+## Candidate mapping manifest
+
+The repository now contains `Data/03_Research/noether_charge_coordinate_mapping.json`.
+It declares a testable `C_phase` lane, not an accepted identity for the current Topic
+0.11 field. Its status is `DECLARED_CANDIDATE_BLOCKED`: the affine coordinate form is
+available, while the system-specific coarse-graining kernel, equation of state,
+transport match, source package, and observable acceptance remain open.

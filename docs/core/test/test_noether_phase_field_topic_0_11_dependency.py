@@ -50,7 +50,11 @@ def test_coordinate_layer_passes_without_promoting_topic_C_identity() -> None:
     assert artifact["evidence_status"] == "CONDITIONAL_HYDRODYNAMIC_COORDINATE_COMPATIBILITY"
     assert gates["core_hydrodynamic_coordinate_gate"]["status"] == "PASS"
     assert gates["topic_C_signed_charge_identity_gate"]["status"] == "BLOCKED"
-    assert gates["topic_C_signed_charge_identity_gate"]["mapping_exists"] is False
+    assert gates["topic_C_signed_charge_identity_gate"]["mapping_exists"] is True
+    assert (
+        gates["topic_C_signed_charge_identity_gate"]["mapping_status"]
+        == "DECLARED_CANDIDATE_BLOCKED"
+    )
 
 
 def test_microscopic_inverse_remains_a_no_go_boundary() -> None:

@@ -1359,3 +1359,23 @@
 **Current topic-level status after this wave:**
 - Topic 0.11 remains `Structured / Tier B`; `topic_status_impact = NONE`.
 - No exponent, universality, mass, particle, GR, cosmological, or external-validation claim is promoted.
+## 2026-08-01 - Candidate C-phase signed-charge mapping manifest
+
+**What changed:**
+- Added `Data/03_Research/noether_charge_coordinate_mapping.json` as a machine-readable candidate manifest for the lane-specific `C_phase` interpretation.
+- Wired the manifest into `Research_Noether_Phase_Field_Dependency_Gate.py` and preserved the acceptance contract: the manifest is `DECLARED_CANDIDATE_BLOCKED`, not `ACCEPTED`.
+- Kept the current universal Topic 0.11 `C`, matter-space `Phi`, and derived trace `R` separate.
+
+**Which verifier was run:**
+- `Research_Noether_Phase_Field_Dependency_Gate.py` returned `BLOCKED` with `topic_C_signed_charge_identity_gate = BLOCKED` and `mapping_status = DECLARED_CANDIDATE_BLOCKED`.
+- Focused Noether/phase-field tests passed `33/33`.
+
+**Which blocker narrowed:**
+- The missing mapping-manifest gap is closed as a repository-control gap. The remaining physical blocker is now explicit: system-specific coarse graining, EOS, susceptibility/transport matching, source package, and acceptance of the Topic 0.11 identity are still missing.
+
+**Next controlling blocker:**
+- `topic_0.11_signed_noether_charge_eos_transport_matching_missing`; independent Wave 55 replicate/temporal acquisition remains unchanged.
+
+**Current topic-level status after wave:**
+- Topic 0.11 remains `Structured / Tier B`; `topic_status_impact = NONE`.
+- No estimator, exponent, universality, material, RG, or external-validation claim is upgraded.

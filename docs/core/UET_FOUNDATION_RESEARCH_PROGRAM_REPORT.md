@@ -174,3 +174,11 @@ The next execution order is:
 
 Current status remains `BLOCKED` at foundation level and `SIMULATION_ONLY` for the thermal pilot.
 The change closes a definition gap; it does not close the physical or empirical validation gap.
+## Topic 0.11 Noether correspondence update — 2026-08-01
+
+The Topic 0.11 Noether dependency lane now has a machine-readable candidate manifest
+for `C_phase` as a coarse signed O(2) charge coordinate. This closes the missing-manifest
+control gap without closing the physics: the verifier still reports `BLOCKED`, the current
+universal `C` identity remains unaccepted, and EOS, covariant coarse graining, transport,
+source, and estimator gates remain open. This is a correspondence-clarification wave,
+not a derivation or validation wave.
