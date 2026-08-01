@@ -166,6 +166,15 @@ indexed infrastructure proxy, not a dollar-valued capital stock.
    establishes account budget context only; it does not attribute an award to tax receipts,
    Treasury debt, cash balances, money creation, a bank settlement, or a physical resource.
 
+23. **Downstream subaward-recipient audit:** use the same ten fixed generated award IDs and
+   query the official subaward-count endpoint for all ten. For every positive reported count,
+   retrieve every paginated `/api/v2/subawards/` page using the award's internal ID and a
+   predeclared page limit of 100. Normalize subaward ID, number, action date, derived fiscal
+   year, reported amount, recipient name, and description; retain a primary FY2024-derived
+   descriptive slice and the complete all-year archive. A subaward is a prime-recipient
+   agreement with another entity, not proof of a bank transfer, invoice, payroll payment,
+   physical delivery, or ultimate financing source.
+
 ## Evaluation and uncertainty
 
 Rolling-origin forecasts start in 2000. Every transformation and coefficient is fitted only

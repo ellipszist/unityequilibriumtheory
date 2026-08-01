@@ -1,0 +1,829 @@
+{
+  "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+  "error": null,
+  "provider": "USAspending.gov / U.S. Treasury",
+  "request": {
+    "body": {
+      "award_id": 292026551,
+      "limit": 100,
+      "page": 2
+    },
+    "method": "POST",
+    "url": "https://api.usaspending.gov/api/v2/subawards/"
+  },
+  "response": {
+    "page_metadata": {
+      "hasNext": true,
+      "hasPrevious": true,
+      "next": 3,
+      "page": 2,
+      "previous": 1
+    },
+    "results": [
+      {
+        "action_date": "2026-03-30",
+        "amount": 101900.0,
+        "description": "SPECIALTY OPTICAL FIBER",
+        "id": 10369616,
+        "recipient_name": "VERRILLON, INC.",
+        "subaward_number": "203855"
+      },
+      {
+        "action_date": "2026-03-30",
+        "amount": 101900.0,
+        "description": "SPECIALTY OPTICAL FIBER",
+        "id": 10334322,
+        "recipient_name": "VERRILLON, INC.",
+        "subaward_number": "203855"
+      },
+      {
+        "action_date": "2026-03-30",
+        "amount": 41549.0,
+        "description": "PO 203853",
+        "id": 10368589,
+        "recipient_name": "TESCAN USA INC",
+        "subaward_number": "203853"
+      },
+      {
+        "action_date": "2026-03-30",
+        "amount": 194000.0,
+        "description": "FY26 ANACONDA SOFTWARE MAINTENANCE RENEWAL",
+        "id": 10369276,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "203852"
+      },
+      {
+        "action_date": "2026-03-30",
+        "amount": 48942.0,
+        "description": "CDL METTLER TOLEDO XPR36DR",
+        "id": 10369735,
+        "recipient_name": "METTLER-TOLEDO LLC",
+        "subaward_number": "203850"
+      },
+      {
+        "action_date": "2026-03-30",
+        "amount": 247965.0,
+        "description": "CIPT FLOW RESTRICTORS",
+        "id": 10368725,
+        "recipient_name": "PRECISION BUILD INTEGRATION LLC",
+        "subaward_number": "203849"
+      },
+      {
+        "action_date": "2026-03-29",
+        "amount": 2830.0,
+        "description": "PO 203839",
+        "id": 10368934,
+        "recipient_name": "ECKERT & ZIEGLER ANALYTICS, INC",
+        "subaward_number": "203839"
+      },
+      {
+        "action_date": "2026-03-30",
+        "amount": 103699.0,
+        "description": "TYPE ZH",
+        "id": 10368599,
+        "recipient_name": "HOTTINGER BRUEL & KJAER INC.",
+        "subaward_number": "203829"
+      },
+      {
+        "action_date": "2026-03-27",
+        "amount": 70256.0,
+        "description": "MACHINED PARTS",
+        "id": 10369204,
+        "recipient_name": "VANGURA TOOL, INC.",
+        "subaward_number": "203825"
+      },
+      {
+        "action_date": "2026-03-26",
+        "amount": 93998.0,
+        "description": "FY26 JMP SOFTWARE MAINTENANCE",
+        "id": 10369205,
+        "recipient_name": "EXECUTIVE INFORMATION SYSTEMS, L.L.C.",
+        "subaward_number": "203819"
+      },
+      {
+        "action_date": "2026-03-26",
+        "amount": 366.0,
+        "description": "SANDISK",
+        "id": 10369207,
+        "recipient_name": "SMGS, LLC",
+        "subaward_number": "203816"
+      },
+      {
+        "action_date": "2026-03-30",
+        "amount": 83630.0,
+        "description": "ALLIED METPREP FOR HIGH GAMMA RADIATION ENVIRONMENTS",
+        "id": 10334285,
+        "recipient_name": "ALLIED HIGH TECH PRODUCTS, INC.",
+        "subaward_number": "203813"
+      },
+      {
+        "action_date": "2026-03-30",
+        "amount": 110988.0,
+        "description": "MATERIALS TESTING",
+        "id": 10369275,
+        "recipient_name": "WESTMORELAND MECHANICAL TESTING & RESEARCH, INC.",
+        "subaward_number": "203806"
+      },
+      {
+        "action_date": "2026-03-25",
+        "amount": 36780.0,
+        "description": "FY25 ECKERT & ZIEGLER RADIOACTIVE SOURCES KS",
+        "id": 10368933,
+        "recipient_name": "ECKERT & ZIEGLER ANALYTICS, INC",
+        "subaward_number": "203805"
+      },
+      {
+        "action_date": "2026-03-25",
+        "amount": 17284.0,
+        "description": "PO 203801",
+        "id": 10369553,
+        "recipient_name": "CONSOLIDATED ELECTRICAL DISTRIBUTORS, INC.",
+        "subaward_number": "203801"
+      },
+      {
+        "action_date": "2026-03-25",
+        "amount": 280.0,
+        "description": "AGREEMENT 146716",
+        "id": 10369209,
+        "recipient_name": "TECHLAW CONSULTANTS INC",
+        "subaward_number": "203798"
+      },
+      {
+        "action_date": "2026-03-25",
+        "amount": 357.0,
+        "description": "FMP CLOTHING ORDER",
+        "id": 10368903,
+        "recipient_name": "IMAGE ONE UNIFORMS, INC.",
+        "subaward_number": "203792"
+      },
+      {
+        "action_date": "2026-03-25",
+        "amount": 12000.0,
+        "description": "BETTIS UNIVERSAL WASTE AND RECYCLING",
+        "id": 10368708,
+        "recipient_name": "ELOOP LLC",
+        "subaward_number": "203786"
+      },
+      {
+        "action_date": "2026-03-25",
+        "amount": 130990.0,
+        "description": "MAINTENANCE",
+        "id": 10334263,
+        "recipient_name": "CADIMENSIONS, INC.",
+        "subaward_number": "203785"
+      },
+      {
+        "action_date": "2026-03-25",
+        "amount": 39736.0,
+        "description": "TOA 14 REV 2",
+        "id": 10368615,
+        "recipient_name": "RAMBOLL AMERICAS ENGINEERING SOLUTIONS, INC.",
+        "subaward_number": "203780"
+      },
+      {
+        "action_date": "2026-03-25",
+        "amount": 259360.0,
+        "description": "BREATHING AIR COMPRESSORS",
+        "id": 10368641,
+        "recipient_name": "JEROME FIRE EQUIPMENT CO., INC.",
+        "subaward_number": "203779"
+      },
+      {
+        "action_date": "2026-03-24",
+        "amount": 25000.0,
+        "description": "PO 203777",
+        "id": 10369580,
+        "recipient_name": "AEROG, LLC",
+        "subaward_number": "203777"
+      },
+      {
+        "action_date": "2026-03-31",
+        "amount": 0.0,
+        "description": "TEMPERATURE AND PRESSURE CYCLE TESTING OF ISOLATION GASKETS",
+        "id": 10369265,
+        "recipient_name": "STRESS AEROSPACE AND DEFENSE, LLC",
+        "subaward_number": "203774"
+      },
+      {
+        "action_date": "2026-03-24",
+        "amount": 6490.0,
+        "description": "AMERICAN INDUSTRIAL HYGIENE ASSOCIATION (AIHA) PROFICIENCY ANALYTICAL TESTING (PAT) ANNUAL ASBESTOS IDENTIFICATION AND FIBER COUNTING TESTING SAMPLES.",
+        "id": 10369213,
+        "recipient_name": "AMERICAN INDUSTRIAL HYGIENE ASSOCIATION",
+        "subaward_number": "203765"
+      },
+      {
+        "action_date": "2026-03-25",
+        "amount": 2116.0,
+        "description": "HP PRINTER PROCUREMENT",
+        "id": 10369211,
+        "recipient_name": "STERLING COMPUTERS CORPORATION",
+        "subaward_number": "203759"
+      },
+      {
+        "action_date": "2026-03-24",
+        "amount": 33750.0,
+        "description": "DETECTACHEM SEEKERE EDK",
+        "id": 10369697,
+        "recipient_name": "DETECTACHEM INC.",
+        "subaward_number": "203753"
+      },
+      {
+        "action_date": "2026-03-24",
+        "amount": 13200.0,
+        "description": "CONEX BOXES",
+        "id": 10368860,
+        "recipient_name": "CONTAINER ALLIANCE CO",
+        "subaward_number": "203752"
+      },
+      {
+        "action_date": "2026-03-24",
+        "amount": 2899558.0,
+        "description": "FY26 LAN SMARTNET",
+        "id": 10369212,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "203751"
+      },
+      {
+        "action_date": "2026-03-24",
+        "amount": 2899558.07,
+        "description": "FY26 LAN SMARTNET",
+        "id": 10334296,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "203751"
+      },
+      {
+        "action_date": "2026-03-24",
+        "amount": 2769370.0,
+        "description": "KNOLLS AND KS REMOVAL OF SOLID WASTE AND RECYCLING",
+        "id": 10369722,
+        "recipient_name": "CASELLA MAJOR ACCOUNT SERVICES, LLC",
+        "subaward_number": "203750"
+      },
+      {
+        "action_date": "2026-03-24",
+        "amount": 2769370.01,
+        "description": "KNOLLS AND KS REMOVAL OF SOLID WASTE AND RECYCLING",
+        "id": 10334256,
+        "recipient_name": "CASELLA MAJOR ACCOUNT SERVICES, LLC",
+        "subaward_number": "203750"
+      },
+      {
+        "action_date": "2026-03-24",
+        "amount": 7669.0,
+        "description": "PENCO HEAVY DUTY FULLY FRAMED WELDED PATRIOT GEAR LOCKERS",
+        "id": 10369667,
+        "recipient_name": "PENCO PRODUCTS INC",
+        "subaward_number": "203744"
+      },
+      {
+        "action_date": "2026-03-24",
+        "amount": 4740.0,
+        "description": "FMP CLOTHING ORDER",
+        "id": 10368904,
+        "recipient_name": "IMAGE ONE UNIFORMS, INC.",
+        "subaward_number": "203743"
+      },
+      {
+        "action_date": "2026-03-24",
+        "amount": 66857.0,
+        "description": "TS",
+        "id": 10368773,
+        "recipient_name": "PCB PIEZOTRONICS, INC.",
+        "subaward_number": "203742"
+      },
+      {
+        "action_date": "2026-03-31",
+        "amount": 92871.0,
+        "description": "TOA #23",
+        "id": 10369273,
+        "recipient_name": "INFORMATION SYSTEMS LABORATORIES, INC.",
+        "subaward_number": "203738"
+      },
+      {
+        "action_date": "2026-03-23",
+        "amount": 17605.0,
+        "description": "PARKER ACR78C PALM CONTROLLERS",
+        "id": 10369216,
+        "recipient_name": "FABER ASSOCIATES INC",
+        "subaward_number": "203736"
+      },
+      {
+        "action_date": "2026-03-23",
+        "amount": 39420.0,
+        "description": "LOOP 84 FCV PARTS",
+        "id": 10368667,
+        "recipient_name": "A. BLAIR POWELL COMPANY, INC.",
+        "subaward_number": "203729"
+      },
+      {
+        "action_date": "2026-03-23",
+        "amount": 39419.75,
+        "description": "LOOP 84 FCV PARTS",
+        "id": 10334257,
+        "recipient_name": "A. BLAIR POWELL COMPANY, INC.",
+        "subaward_number": "203729"
+      },
+      {
+        "action_date": "2026-03-23",
+        "amount": 0.0,
+        "description": "PO 203728",
+        "id": 10368634,
+        "recipient_name": "TRI-LIFT INC",
+        "subaward_number": "203728"
+      },
+      {
+        "action_date": "2026-03-23",
+        "amount": 842.0,
+        "description": "TELESCOPE CALIBRATION",
+        "id": 10368590,
+        "recipient_name": "BRUNSON INSTRUMENT COMPANY",
+        "subaward_number": "203727"
+      },
+      {
+        "action_date": "2026-03-25",
+        "amount": 50250.0,
+        "description": "AEDS",
+        "id": 10369210,
+        "recipient_name": "CARDIO PARTNERS, INC.",
+        "subaward_number": "203725"
+      },
+      {
+        "action_date": "2026-03-25",
+        "amount": 50250.0,
+        "description": "AEDS",
+        "id": 10334232,
+        "recipient_name": "CARDIO PARTNERS, INC.",
+        "subaward_number": "203725"
+      },
+      {
+        "action_date": "2026-03-23",
+        "amount": 118880.0,
+        "description": "THERMOCOUPLE ASSEMBLIES",
+        "id": 10369217,
+        "recipient_name": "ARI INDUSTRIES INC",
+        "subaward_number": "203724"
+      },
+      {
+        "action_date": "2026-03-23",
+        "amount": 118880.0,
+        "description": "THERMOCOUPLE ASSEMBLIES",
+        "id": 10334327,
+        "recipient_name": "ARI INDUSTRIES INC",
+        "subaward_number": "203724"
+      },
+      {
+        "action_date": "2026-03-23",
+        "amount": 31705.0,
+        "description": "KNOLLS CENTER ROAD SOIL AND ROADBED FOR 3 ROLL OFFS.",
+        "id": 10369569,
+        "recipient_name": "CLEAN HARBORS ENVIRONMENTAL SERVICES INC",
+        "subaward_number": "203719"
+      },
+      {
+        "action_date": "2026-03-23",
+        "amount": 308550.0,
+        "description": "CLOUDERA TRAINING CREDITS",
+        "id": 10369218,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "203717"
+      },
+      {
+        "action_date": "2026-03-23",
+        "amount": 32283.0,
+        "description": "RELEASE 21 UNDER BLANKET AGREEMENT 150936 LLRW BETTIS",
+        "id": 10368838,
+        "recipient_name": "SAVANNAH RIVER NUCLEAR SOLUTIONS LLC",
+        "subaward_number": "203716"
+      },
+      {
+        "action_date": "2026-03-25",
+        "amount": 80634.0,
+        "description": "DIFFERENTIAL CELL PROCUREMENT",
+        "id": 10368707,
+        "recipient_name": "ROSEMOUNT INC.",
+        "subaward_number": "203703"
+      },
+      {
+        "action_date": "2026-03-19",
+        "amount": 360.0,
+        "description": "AGREEMENT 146716",
+        "id": 10369220,
+        "recipient_name": "TECHLAW CONSULTANTS INC",
+        "subaward_number": "203701"
+      },
+      {
+        "action_date": "2026-03-26",
+        "amount": 34300.0,
+        "description": "HEAT TREATMENT AND MACHINING SPECIMENS FROM ONE UNIT OF GMA",
+        "id": 10369208,
+        "recipient_name": "DEPENDABLE TOOL & DIE CO., INC.",
+        "subaward_number": "203700"
+      },
+      {
+        "action_date": "2026-03-19",
+        "amount": 11232.0,
+        "description": "PO 203698",
+        "id": 10368689,
+        "recipient_name": "METACOMP TECHNOLOGIES INC",
+        "subaward_number": "203698"
+      },
+      {
+        "action_date": "2026-03-23",
+        "amount": 109236.0,
+        "description": "IBM RATIONAL PRODUCTS ANNUAL MAINTENANCE",
+        "id": 10368577,
+        "recipient_name": "GHA TECHNOLOGIES INC",
+        "subaward_number": "203695"
+      },
+      {
+        "action_date": "2026-03-19",
+        "amount": 7864.0,
+        "description": "203853",
+        "id": 10368578,
+        "recipient_name": "GHA TECHNOLOGIES INC",
+        "subaward_number": "203693"
+      },
+      {
+        "action_date": "2026-03-23",
+        "amount": 240000.0,
+        "description": "THERMAL PROPERTY MEASUREMENTS OF CHROME COATINGS",
+        "id": 10369219,
+        "recipient_name": "LASER THERMAL ANALYSIS, INC",
+        "subaward_number": "203691"
+      },
+      {
+        "action_date": "2026-03-26",
+        "amount": 2613569.0,
+        "description": "FY26 LAN UPGRADES",
+        "id": 10369206,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "203684"
+      },
+      {
+        "action_date": "2026-03-23",
+        "amount": 4800.0,
+        "description": "NEAP AVIS PROTOTYPE CAMERA MIRROR",
+        "id": 10369215,
+        "recipient_name": "VALLEY DESIGN CORP",
+        "subaward_number": "203680"
+      },
+      {
+        "action_date": "2026-03-19",
+        "amount": 64332.0,
+        "description": "PO 203678",
+        "id": 10369223,
+        "recipient_name": "UNITED MACHINING NORTH AMERICA LLC",
+        "subaward_number": "203678"
+      },
+      {
+        "action_date": "2026-03-19",
+        "amount": 184922.0,
+        "description": "203728",
+        "id": 10369222,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "203677"
+      },
+      {
+        "action_date": "2026-03-24",
+        "amount": 361331.0,
+        "description": "FY26 ITP TIER 2 STORAGE HARDWARE (NETAPP)",
+        "id": 10369214,
+        "recipient_name": "CTG FEDERAL, LLC",
+        "subaward_number": "203670"
+      },
+      {
+        "action_date": "2026-03-18",
+        "amount": 18370.0,
+        "description": "MATHTYPE ANNUAL MAINTENANCE",
+        "id": 10369630,
+        "recipient_name": "DESIGN SCIENCE INC",
+        "subaward_number": "203661"
+      },
+      {
+        "action_date": "2026-03-19",
+        "amount": 36502.0,
+        "description": "203839",
+        "id": 10368659,
+        "recipient_name": "LABORATORY TESTING, LLC",
+        "subaward_number": "203659"
+      },
+      {
+        "action_date": "2026-03-18",
+        "amount": 19631.0,
+        "description": "APC UPS",
+        "id": 10369224,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "203654"
+      },
+      {
+        "action_date": "2026-03-19",
+        "amount": 508000.0,
+        "description": "203698",
+        "id": 10368924,
+        "recipient_name": "FACILITY SUPPORT SERVICES LLC",
+        "subaward_number": "203653"
+      },
+      {
+        "action_date": "2026-03-17",
+        "amount": 433964.0,
+        "description": "SERVES TO PROVIDE TRANSPORTATION & DISPOSAL OF (50) PFAS CONTAMINATED SOIL ROLL OFFS 50",
+        "id": 10369570,
+        "recipient_name": "CLEAN HARBORS ENVIRONMENTAL SERVICES INC",
+        "subaward_number": "203652"
+      },
+      {
+        "action_date": "2026-03-17",
+        "amount": 433963.52,
+        "description": "TRANSPORTATION & DISPOSAL OF (50) PFAS CONTAMINATED SOIL ROLL OFFS 50 - 100 FROM FIREHOUSE",
+        "id": 10334230,
+        "recipient_name": "CLEAN HARBORS ENVIRONMENTAL SERVICES INC",
+        "subaward_number": "203652"
+      },
+      {
+        "action_date": "2026-03-17",
+        "amount": 106084.0,
+        "description": "KESSELRING SITE PFAS GROUNDWATER INVESTIGATION SUPPORT FOR KS FIREHOUSE CONSTRUCTION TASK ORDER AUTHORIZATION #14A_R1",
+        "id": 10368616,
+        "recipient_name": "RAMBOLL AMERICAS ENGINEERING SOLUTIONS, INC.",
+        "subaward_number": "203650"
+      },
+      {
+        "action_date": "2026-03-17",
+        "amount": 49026.0,
+        "description": "GAS CHROMATOGRAPHY INSTRUMENT PURCHASE",
+        "id": 10369559,
+        "recipient_name": "THERMO ELECTRON NORTH AMERICA LLC",
+        "subaward_number": "203647"
+      },
+      {
+        "action_date": "2026-03-17",
+        "amount": 26552.0,
+        "description": "MIN",
+        "id": 10369228,
+        "recipient_name": "FABER ASSOCIATES INC",
+        "subaward_number": "203645"
+      },
+      {
+        "action_date": "2026-03-17",
+        "amount": 57400.0,
+        "description": "LUDLUM 177",
+        "id": 10368639,
+        "recipient_name": "LUDLUM MEASUREMENTS INC",
+        "subaward_number": "203642"
+      },
+      {
+        "action_date": "2026-03-17",
+        "amount": 49026.0,
+        "description": "GAS CHROMATOGRAPHY INSTRUMENT PURCHASE",
+        "id": 10369560,
+        "recipient_name": "THERMO FISHER SCIENTIFIC (ASHEVILLE) LLC",
+        "subaward_number": "203640"
+      },
+      {
+        "action_date": "2026-03-17",
+        "amount": 338191.0,
+        "description": "CISCO CATALYST CENTER APPLIANCES",
+        "id": 10369231,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "203632"
+      },
+      {
+        "action_date": "2026-03-17",
+        "amount": 76400.0,
+        "description": "ARTEC 3D SCANNER",
+        "id": 10369230,
+        "recipient_name": "DIRECT DIMENSIONS INC",
+        "subaward_number": "203628"
+      },
+      {
+        "action_date": "2026-03-17",
+        "amount": 42200.0,
+        "description": "2026 DOT TRAINING ADVANCED MIXED WASTE SHIPPING AND LOAD SECUREMENT",
+        "id": 10334336,
+        "recipient_name": "ATKINSREALIS NUCLEAR SECURED LLC",
+        "subaward_number": "203626"
+      },
+      {
+        "action_date": "2026-03-16",
+        "amount": 145437.0,
+        "description": "ARCTERA BACKUP EXEC 3",
+        "id": 10369165,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "203619"
+      },
+      {
+        "action_date": "2026-03-16",
+        "amount": 325207.0,
+        "description": "ZEISS CONTURA COORDINATE MEASURING MACHINE",
+        "id": 10369668,
+        "recipient_name": "CARL ZEISS INDUSTRIAL QUALITY SOLUTIONS LLC",
+        "subaward_number": "203617"
+      },
+      {
+        "action_date": "2026-03-16",
+        "amount": 325207.02,
+        "description": "ZEISS CONTURA COORDINATE MEASURING MACHINE",
+        "id": 10334213,
+        "recipient_name": "CARL ZEISS INDUSTRIAL QUALITY SOLUTIONS LLC",
+        "subaward_number": "203617"
+      },
+      {
+        "action_date": "2026-03-16",
+        "amount": 8657.0,
+        "description": "VACUUM DRYING SYSTEM 2 REPAIR/REPLACE",
+        "id": 10369166,
+        "recipient_name": "LEYBOLD USA INC.",
+        "subaward_number": "203614"
+      },
+      {
+        "action_date": "2026-03-16",
+        "amount": 17400.0,
+        "description": "QUSTOM APPS",
+        "id": 10369168,
+        "recipient_name": "QUSTOM APPS LLC",
+        "subaward_number": "203611"
+      },
+      {
+        "action_date": "2026-03-17",
+        "amount": 9660.0,
+        "description": "WA26HAW002 (RODRIGUEZ",
+        "id": 10369229,
+        "recipient_name": "DEPENDABLE TOOL & DIE CO., INC.",
+        "subaward_number": "203610"
+      },
+      {
+        "action_date": "2026-03-18",
+        "amount": 139320.0,
+        "description": "ENGINEERING SUPPORT FOR GAUGE LABORATORY: FIELD FOLLOW",
+        "id": 10368763,
+        "recipient_name": "CDM FEDERAL PROGRAMS CORPORATION",
+        "subaward_number": "203608"
+      },
+      {
+        "action_date": "2026-03-18",
+        "amount": 139319.99,
+        "description": "ENGINEERING SUPPORT FOR GAUGE LABORATORY: FIELD FOLLOW",
+        "id": 10334253,
+        "recipient_name": "CDM FEDERAL PROGRAMS CORPORATION",
+        "subaward_number": "203608"
+      },
+      {
+        "action_date": "2026-03-16",
+        "amount": 277859.0,
+        "description": "BETTIS RADIO SYSTEM PREVENTIVE AND CORRECTIVE MAINTENANCE",
+        "id": 10368712,
+        "recipient_name": "A. V. LAUTTAMUS COMMUNICATIONS, INC.",
+        "subaward_number": "203606"
+      },
+      {
+        "action_date": "2026-03-16",
+        "amount": 277858.93,
+        "description": "BETTIS RADIO SYSTEM PREVENTIVE AND CORRECTIVE MAINTENANCE",
+        "id": 10334291,
+        "recipient_name": "A. V. LAUTTAMUS COMMUNICATIONS, INC.",
+        "subaward_number": "203606"
+      },
+      {
+        "action_date": "2026-03-13",
+        "amount": 27986.0,
+        "description": "CAT TRAINING",
+        "id": 10369169,
+        "recipient_name": "ACADEMI TRAINING CENTER LLC",
+        "subaward_number": "203603"
+      },
+      {
+        "action_date": "2026-03-13",
+        "amount": 55971.66,
+        "description": "CAT TRAINING - 2026",
+        "id": 10334255,
+        "recipient_name": "ACADEMI TRAINING CENTER LLC",
+        "subaward_number": "203603"
+      },
+      {
+        "action_date": "2026-03-13",
+        "amount": 227866.0,
+        "description": "THE KESSELRING SITE IS IN NEED OF A NEW 938 LOADER FOR SNOW REMOVAL.",
+        "id": 10369634,
+        "recipient_name": "CATERPILLAR INC",
+        "subaward_number": "203598"
+      },
+      {
+        "action_date": "2026-03-13",
+        "amount": 227866.0,
+        "description": "THE KESSELRING SITE IS IN NEED OF A NEW 938 LOADER FOR SNOW REMOVAL.",
+        "id": 10334312,
+        "recipient_name": "CATERPILLAR INC",
+        "subaward_number": "203598"
+      },
+      {
+        "action_date": "2026-03-16",
+        "amount": 57666.0,
+        "description": "KNOLLS ASBESTOS HAZARDOUS AND NON",
+        "id": 10369571,
+        "recipient_name": "CLEAN HARBORS ENVIRONMENTAL SERVICES INC",
+        "subaward_number": "203592"
+      },
+      {
+        "action_date": "2026-03-16",
+        "amount": 57665.7,
+        "description": "KNOLLS ASBESTOS HAZARDOUS AND NON-HAZARDOUS PCB ROLL OFF RENTAL AND DISPOSAL.",
+        "id": 10334229,
+        "recipient_name": "CLEAN HARBORS ENVIRONMENTAL SERVICES INC",
+        "subaward_number": "203592"
+      },
+      {
+        "action_date": "2026-03-12",
+        "amount": 5425.0,
+        "description": "NEXTSCAN",
+        "id": 10368945,
+        "recipient_name": "DIGITAL CHECK CORP",
+        "subaward_number": "203582"
+      },
+      {
+        "action_date": "2026-03-12",
+        "amount": 20836.0,
+        "description": "MATERIAL HANDLING",
+        "id": 10369174,
+        "recipient_name": "V & H MATERIAL HANDLING, LLC",
+        "subaward_number": "203579"
+      },
+      {
+        "action_date": "2026-03-12",
+        "amount": 39300.0,
+        "description": "OEM CALIBRATION OF PANTHER INSTRUMENT: CAL",
+        "id": 10369175,
+        "recipient_name": "EDDYFI CORP",
+        "subaward_number": "203577"
+      },
+      {
+        "action_date": "2026-03-12",
+        "amount": 29792.0,
+        "description": "MINI CARGO VAN KNOLLS",
+        "id": 10368709,
+        "recipient_name": "BRAVO, INC.",
+        "subaward_number": "203576"
+      },
+      {
+        "action_date": "2026-03-12",
+        "amount": 5083.0,
+        "description": "ITGS",
+        "id": 10369176,
+        "recipient_name": "WESTWIND COMPUTER PRODUCTS, INC.",
+        "subaward_number": "203575"
+      },
+      {
+        "action_date": "2026-03-12",
+        "amount": 459500.0,
+        "description": "MACHINERY",
+        "id": 10334300,
+        "recipient_name": "ARNOLD MACHINERY CO",
+        "subaward_number": "203574"
+      },
+      {
+        "action_date": "2026-03-11",
+        "amount": 149280.0,
+        "description": "FY26 M",
+        "id": 10369177,
+        "recipient_name": "SOLUTION BENCH, LLC",
+        "subaward_number": "203572"
+      },
+      {
+        "action_date": "2026-03-11",
+        "amount": 67800.0,
+        "description": "A625 POWDER PROCUREMENT",
+        "id": 10368908,
+        "recipient_name": "6K ADDITIVE, INC.",
+        "subaward_number": "203569"
+      },
+      {
+        "action_date": "2026-03-11",
+        "amount": 67800.0,
+        "description": "A625 POWDER PROCUREMENT",
+        "id": 10334299,
+        "recipient_name": "6K ADDITIVE, INC.",
+        "subaward_number": "203569"
+      },
+      {
+        "action_date": "2026-03-11",
+        "amount": 12159.0,
+        "description": "AGREEMENT 152994",
+        "id": 10369178,
+        "recipient_name": "GEL LABORATORIES LLC",
+        "subaward_number": "203566"
+      },
+      {
+        "action_date": "2026-03-13",
+        "amount": 18120.0,
+        "description": "20",
+        "id": 10369170,
+        "recipient_name": "MHF PACKAGING SOLUTIONS, LLC",
+        "subaward_number": "203563"
+      }
+    ]
+  },
+  "retrieval_timestamp_utc": "2026-08-01T14:09:11.015251+00:00",
+  "retrieval_vintage": "2026-08-01",
+  "schema_version": "1.0",
+  "source_url": "https://api.usaspending.gov/api/v2/subawards/"
+}

@@ -1,0 +1,573 @@
+{
+  "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+  "error": null,
+  "provider": "USAspending.gov / U.S. Treasury",
+  "request": {
+    "body": {
+      "award_id": 292026551,
+      "limit": 100,
+      "page": 32
+    },
+    "method": "POST",
+    "url": "https://api.usaspending.gov/api/v2/subawards/"
+  },
+  "response": {
+    "page_metadata": {
+      "hasNext": false,
+      "hasPrevious": true,
+      "next": null,
+      "page": 32,
+      "previous": 31
+    },
+    "results": [
+      {
+        "action_date": "2022-02-15",
+        "amount": 68067.0,
+        "description": "LOW LEVEL RAD WASTE SHIPMENTS TO SRNS",
+        "id": 2308303,
+        "recipient_name": "SAVANNAH RIVER NUCLEAR SOLUTIONS LLC",
+        "subaward_number": "139919-0025"
+      },
+      {
+        "action_date": "2022-02-09",
+        "amount": 68067.0,
+        "description": "LOW LEVEL RAD WASTE SHIPMENTS TO SRNS",
+        "id": 2305440,
+        "recipient_name": "SAVANNAH RIVER NUCLEAR SOLUTIONS LLC",
+        "subaward_number": "139919-0024"
+      },
+      {
+        "action_date": "2022-02-02",
+        "amount": 39847.5,
+        "description": "LOW LEVEL RAD WASTE SHIPMENTS TO SRNS",
+        "id": 2309582,
+        "recipient_name": "SAVANNAH RIVER NUCLEAR SOLUTIONS LLC",
+        "subaward_number": "139919-0023"
+      },
+      {
+        "action_date": "2022-02-02",
+        "amount": 31412.5,
+        "description": "MASTER AGREEMENT FOR HAZARDOUS/NON-HAZARDOUS WASTE DISPOSAL",
+        "id": 2302406,
+        "recipient_name": "EQ INDUSTRIAL SERVICES, INC.",
+        "subaward_number": "139825-0029"
+      },
+      {
+        "action_date": "2022-02-02",
+        "amount": 31412.5,
+        "description": "MASTER AGREEMENT FOR HAZARDOUS/NON-HAZARDOUS WASTE DISPOSAL",
+        "id": 2303046,
+        "recipient_name": "EQ INDUSTRIAL SERVICES, INC.",
+        "subaward_number": "139825-0028"
+      },
+      {
+        "action_date": "2022-02-02",
+        "amount": 31412.25,
+        "description": "MASTER AGREEMENT FOR HAZARDOUS/NON-HAZARDOUS WASTE DISPOSAL",
+        "id": 2304038,
+        "recipient_name": "EQ INDUSTRIAL SERVICES, INC.",
+        "subaward_number": "139825-0027"
+      },
+      {
+        "action_date": "2022-11-15",
+        "amount": 70800.0,
+        "description": "MASTER AGREEMENT - WA22HAW057",
+        "id": 998942,
+        "recipient_name": "SCIAKY INC",
+        "subaward_number": "139678-0001"
+      },
+      {
+        "action_date": "2023-03-30",
+        "amount": 97560.0,
+        "description": "CONTRACT RESIDUAL STRESS MEASUREMENTS - HILL ENGINEERING",
+        "id": 2308598,
+        "recipient_name": "HILL ENGINEERING, LLC",
+        "subaward_number": "139287-0010"
+      },
+      {
+        "action_date": "2022-10-18",
+        "amount": 42960.0,
+        "description": "CONTRACT RESIDUAL STRESS MEASUREMENTS - HILL ENGINEERING",
+        "id": 2306637,
+        "recipient_name": "HILL ENGINEERING, LLC",
+        "subaward_number": "139287-0008"
+      },
+      {
+        "action_date": "2021-12-01",
+        "amount": 51840.0,
+        "description": "CONTRACT RESIDUAL STRESS MEASUREMENTS",
+        "id": 2304955,
+        "recipient_name": "HILL ENGINEERING, LLC",
+        "subaward_number": "139287-0006"
+      },
+      {
+        "action_date": "2021-12-01",
+        "amount": 86390.0,
+        "description": "CONTRACT RESIDUAL STRESS MEASUREMENTS",
+        "id": 2305458,
+        "recipient_name": "HILL ENGINEERING, LLC",
+        "subaward_number": "139287-0005"
+      },
+      {
+        "action_date": "2022-02-24",
+        "amount": 542713.73,
+        "description": "CHAMPION SUBTIER DIRECT PAYMENT UNDER GRANITE CONSTRUCTION PO #7018988 (CS 106A)",
+        "id": 992138,
+        "recipient_name": "CHAMPION, INC.",
+        "subaward_number": "139166"
+      },
+      {
+        "action_date": "2022-06-27",
+        "amount": 1857600.0,
+        "description": "CHAMPION SUBTIER DIRECT PAYMENT UNDER GRANITE CONSTRUCTION PO #7018988 (CS 106A)",
+        "id": 990420,
+        "recipient_name": "CHAMPION, INC.",
+        "subaward_number": "139166"
+      },
+      {
+        "action_date": "2022-04-06",
+        "amount": 39689785.86,
+        "description": "CHAMPION SUBTIER DIRECT PAYMENT UNDER GRANITE CONSTRUCTION PO #7018988 (CS 106A)",
+        "id": 989058,
+        "recipient_name": "CHAMPION, INC.",
+        "subaward_number": "139166"
+      },
+      {
+        "action_date": "2022-10-31",
+        "amount": 1745062.09,
+        "description": "CHAMPION SUBTIER DIRECT PAYMENT UNDER GRANITE CONSTRUCTION PO #7018988 (CS 106A)",
+        "id": 988863,
+        "recipient_name": "CHAMPION, INC.",
+        "subaward_number": "139166"
+      },
+      {
+        "action_date": "2022-01-12",
+        "amount": 1637698.11,
+        "description": "CHAMPION SUBTIER DIRECT PAYMENT UNDER GRANITE CONSTRUCTION PO #7018988 (CS 106A)",
+        "id": 987614,
+        "recipient_name": "CHAMPION, INC.",
+        "subaward_number": "139166"
+      },
+      {
+        "action_date": "2022-11-01",
+        "amount": 1206841.05,
+        "description": "CHAMPION SUBTIER DIRECT PAYMENT UNDER GRANITE CONSTRUCTION PO #7018988 (CS 106A)",
+        "id": 985018,
+        "recipient_name": "CHAMPION, INC.",
+        "subaward_number": "139166"
+      },
+      {
+        "action_date": "2021-12-08",
+        "amount": 3731820.27,
+        "description": "CHAMPION SUBTIER DIRECT PAYMENT UNDER GRANITE CONSTRUCTION PO #7018988 (CS 106A)",
+        "id": 984494,
+        "recipient_name": "CHAMPION, INC.",
+        "subaward_number": "139166"
+      },
+      {
+        "action_date": "2023-07-21",
+        "amount": 1450724.88,
+        "description": "CHAMPION SUBTIER DIRECT PAYMENT UNDER GRANITE CONSTRUCTION PO #7018988 (CS 106A)",
+        "id": 981102,
+        "recipient_name": "CHAMPION, INC.",
+        "subaward_number": "139166"
+      },
+      {
+        "action_date": "2023-03-27",
+        "amount": 923814.2,
+        "description": "CHAMPION SUBTIER DIRECT PAYMENT UNDER GRANITE CONSTRUCTION PO #7018988 (CS 106A)",
+        "id": 980602,
+        "recipient_name": "CHAMPION, INC.",
+        "subaward_number": "139166"
+      },
+      {
+        "action_date": "2022-11-15",
+        "amount": 36980.0,
+        "description": "WORK AUTHORIZATION MASTER AGREEMENT - WA22HAW074",
+        "id": 2304680,
+        "recipient_name": "CUSTOM TOOL & MODEL CORP",
+        "subaward_number": "138832-0002"
+      },
+      {
+        "action_date": "2022-01-21",
+        "amount": 39560.0,
+        "description": "WA MASTER AGREEMENT - INCORPORATE REV. 1 TO TECH SPEC",
+        "id": 991373,
+        "recipient_name": "VERMONT MOLD & TOOL CORPORATION",
+        "subaward_number": "138307-0013"
+      },
+      {
+        "action_date": "2022-01-05",
+        "amount": 300000.0,
+        "description": "MODULAR IN-CHAMBER ELECTRON BEAM WELDING",
+        "id": 2301733,
+        "recipient_name": "ELECTRIC POWER RESEARCH INSTITUTE INC",
+        "subaward_number": "138280"
+      },
+      {
+        "action_date": "2022-06-15",
+        "amount": 120362.32,
+        "description": "AIS SCRAPPING",
+        "id": 2301469,
+        "recipient_name": "WISETEK SOLUTIONS INC",
+        "subaward_number": "138177-0006"
+      },
+      {
+        "action_date": "2024-08-07",
+        "amount": 52800.0,
+        "description": "SERVICE MASTER AGREEMENT FOR DIESEL ENGINE PARTS",
+        "id": 999778,
+        "recipient_name": "ENGINE SYSTEMS, INC.",
+        "subaward_number": "137836-0011"
+      },
+      {
+        "action_date": "2024-08-07",
+        "amount": 96600.0,
+        "description": "SERVICE MASTER AGREEMENT FOR DIESEL ENGINE PARTS",
+        "id": 1000170,
+        "recipient_name": "ENGINE SYSTEMS, INC.",
+        "subaward_number": "137836-0010"
+      },
+      {
+        "action_date": "2022-04-27",
+        "amount": 31816.72,
+        "description": "PARTS (NON-INVENTORY) MASTER AGREEMENT FOR DIESEL ENGINE PARTS",
+        "id": 997926,
+        "recipient_name": "ENGINE SYSTEMS, INC.",
+        "subaward_number": "137834-0013"
+      },
+      {
+        "action_date": "2022-04-26",
+        "amount": 33148.42,
+        "description": "PARTS (NON-INVENTORY) MASTER AGREEMENT FOR DIESEL ENGINE PARTS",
+        "id": 997192,
+        "recipient_name": "ENGINE SYSTEMS, INC.",
+        "subaward_number": "137834-0012"
+      },
+      {
+        "action_date": "2022-03-29",
+        "amount": 38144.38,
+        "description": "UTILITY SCANNING AND VACUUM EXACATION",
+        "id": 991520,
+        "recipient_name": "BLOOD HOUND, LLC",
+        "subaward_number": "137650-0007"
+      },
+      {
+        "action_date": "2024-08-06",
+        "amount": 880703.83,
+        "description": "GENERAL ELECTRIC MASTER AGREEMENT IN ACCORDANCE TO TECHNICAL SPECIFICATION",
+        "id": 985785,
+        "recipient_name": "GE VERNOVA OPERATIONS LLC",
+        "subaward_number": "137088-0013"
+      },
+      {
+        "action_date": "2024-06-03",
+        "amount": 121896.0,
+        "description": "GENERAL ELECTRIC MASTER AGREEMENT IN ACCORDANCE TO TECHNICAL SPECIFICATION",
+        "id": 984557,
+        "recipient_name": "GE VERNOVA OPERATIONS LLC",
+        "subaward_number": "137088-0012"
+      },
+      {
+        "action_date": "2023-12-27",
+        "amount": 1710600.0,
+        "description": "GENERAL ELECTRIC MASTER AGREEMENT IN ACCORDANCE TO TECHNICAL SPECIFICATION",
+        "id": 10413934,
+        "recipient_name": "GE VERNOVA OPERATIONS LLC",
+        "subaward_number": "137088-0011"
+      },
+      {
+        "action_date": "2023-12-12",
+        "amount": 240000.0,
+        "description": "GENERAL ELECTRIC MASTER AGREEMENT IN ACCORDANCE TO TECHNICAL SPECIFICATION",
+        "id": 10413935,
+        "recipient_name": "GE VERNOVA OPERATIONS LLC",
+        "subaward_number": "137088-0010"
+      },
+      {
+        "action_date": "2025-04-28",
+        "amount": 1903850.14,
+        "description": "GENERAL ELECTRIC MASTER AGREEMENT IN ACCORDANCE TO TECHNICAL AGREEMENT",
+        "id": 10413932,
+        "recipient_name": "GE VERNOVA OPERATIONS LLC",
+        "subaward_number": "137088-0005"
+      },
+      {
+        "action_date": "2025-04-29",
+        "amount": 3749415.84,
+        "description": "GENERAL ELECTRIC MASTER AGREEMENT IN ACCORDANCE TO TECHNICAL SPECIFICATION",
+        "id": 10413933,
+        "recipient_name": "GE VERNOVA OPERATIONS LLC",
+        "subaward_number": "137088-0004"
+      },
+      {
+        "action_date": "2023-03-14",
+        "amount": 53447.89,
+        "description": "NAVAL REACTOR FACILITY 2020-2025 WASTE CHARACTERIZATION SAMPLING CONTRACT",
+        "id": 2302638,
+        "recipient_name": "GEL LABORATORIES LLC",
+        "subaward_number": "136981-0134"
+      },
+      {
+        "action_date": "2021-12-02",
+        "amount": 41358.81,
+        "description": "NAVAL REACTOR FACILITY 2020-2025 WASTE CHARACTERIZATION SAMPLING CONTRACT",
+        "id": 2304139,
+        "recipient_name": "GEL LABORATORIES LLC",
+        "subaward_number": "136981-0073"
+      },
+      {
+        "action_date": "2024-09-11",
+        "amount": 48290.0,
+        "description": "THIS PURCHASE ORDER IS FOR THE DISPOSAL OF VARIOUS EQUIPMENT.   THE SUPPLIER WIL",
+        "id": 2305632,
+        "recipient_name": "ALARON, LLC",
+        "subaward_number": "136775-0017"
+      },
+      {
+        "action_date": "2024-05-23",
+        "amount": 45900.0,
+        "description": "THIS PURCHASE ORDER IS FOR THE DISPOSAL OF VARIOUS EQUIPMENT.   THE SUPPLIER WIL",
+        "id": 2307859,
+        "recipient_name": "ALARON, LLC",
+        "subaward_number": "136775-0016"
+      },
+      {
+        "action_date": "2023-12-19",
+        "amount": 52500.0,
+        "description": "THIS PURCHASE ORDER IS FOR THE DISPOSAL OF VARIOUS EQUIPMENT.   THE SUPPLIER WIL",
+        "id": 2308218,
+        "recipient_name": "ALARON, LLC",
+        "subaward_number": "136775-0014"
+      },
+      {
+        "action_date": "2023-12-19",
+        "amount": 77889.4,
+        "description": "THIS PURCHASE ORDER IS FOR THE DISPOSAL OF VARIOUS EQUIPMENT.   THE SUPPLIER WIL",
+        "id": 2305245,
+        "recipient_name": "ALARON, LLC",
+        "subaward_number": "136775-0013"
+      },
+      {
+        "action_date": "2023-07-13",
+        "amount": 63350.0,
+        "description": "THIS PURCHASE ORDER IS FOR THE DISPOSAL OF VARIOUS EQUIPMENT.   THE SUPPLIER WIL",
+        "id": 2308377,
+        "recipient_name": "ALARON, LLC",
+        "subaward_number": "136775-0010"
+      },
+      {
+        "action_date": "2023-07-13",
+        "amount": 78500.0,
+        "description": "THIS PURCHASE ORDER IS FOR THE DISPOSAL OF VARIOUS EQUIPMENT.   THE SUPPLIER WIL",
+        "id": 2310221,
+        "recipient_name": "ALARON, LLC",
+        "subaward_number": "136775-0009"
+      },
+      {
+        "action_date": "2022-01-20",
+        "amount": 90805.0,
+        "description": "EUCLID US/UK SUPPORT CONTRACT",
+        "id": 2298004,
+        "recipient_name": "BWXT NUCLEAR OPERATIONS GROUP, INC.",
+        "subaward_number": "136240"
+      },
+      {
+        "action_date": "2022-03-03",
+        "amount": 331323.56,
+        "description": "TUCCELLI -IPT PRESSURE BOUNDARY MATERIAL -",
+        "id": 994037,
+        "recipient_name": "ENERGY & PROCESS CORP",
+        "subaward_number": "135823"
+      },
+      {
+        "action_date": "2022-03-16",
+        "amount": 66703.0,
+        "description": "GIS MASTER AGREEMENT",
+        "id": 2303667,
+        "recipient_name": "MJ ENGINEERING, ARCHITECTURE, LANDSCAPE ARCHITECTURE, AND LAND SURVEYING P.C.",
+        "subaward_number": "135300-0003"
+      },
+      {
+        "action_date": "2022-01-26",
+        "amount": 43200.0,
+        "description": "REIS - SCAMM STANDARDS",
+        "id": 1000818,
+        "recipient_name": "DIMENSIONAL MEASUREMENT INC.",
+        "subaward_number": "134029"
+      },
+      {
+        "action_date": "2022-03-30",
+        "amount": 1196316.0,
+        "description": "THE SOLE PURPOSE OF THIS PURCHASE ORDER IS TO OBLIGATE THE LEASE FUNDS PER YEAR",
+        "id": 2296223,
+        "recipient_name": "JMR DEVELOPMENT COMPANY LLC",
+        "subaward_number": "133988"
+      },
+      {
+        "action_date": "2022-04-12",
+        "amount": 70511.0,
+        "description": "PERFORM UNDERGROUND SYSTEMS REPAIRS WORK IN ACCORDANCE WITH TECHNICAL SPECIFICAT",
+        "id": 995483,
+        "recipient_name": "SNK ENTERPRISES INC",
+        "subaward_number": "133225-0045"
+      },
+      {
+        "action_date": "2022-03-31",
+        "amount": 44815.0,
+        "description": "PERFORM UNDERGROUND SYSTEMS REPAIRS WORK IN ACCORDANCE WITH TECHNICAL SPECIFICAT",
+        "id": 995227,
+        "recipient_name": "SNK ENTERPRISES INC",
+        "subaward_number": "133225-0044"
+      },
+      {
+        "action_date": "2022-01-05",
+        "amount": 35000.0,
+        "description": "PERFORM UNDERGROUND SYSTEMS REPAIRS WORK IN ACCORDANCE WITH TECHNICAL SPECIFICAT",
+        "id": 997576,
+        "recipient_name": "SNK ENTERPRISES INC",
+        "subaward_number": "133225-0040"
+      },
+      {
+        "action_date": "2022-02-02",
+        "amount": 31400.0,
+        "description": "CAVRAK - PV 4/5 CAGE ASSEMBLY AND HARDWARE",
+        "id": 997527,
+        "recipient_name": "VANGURA TOOL, INC.",
+        "subaward_number": "132933"
+      },
+      {
+        "action_date": "2022-06-13",
+        "amount": 151500.0,
+        "description": "BPMI FUNDS TRANSFER",
+        "id": 985141,
+        "recipient_name": "BECHTEL PLANT MACHINERY, INC.",
+        "subaward_number": "130684-0093"
+      },
+      {
+        "action_date": "2022-06-13",
+        "amount": 606000.0,
+        "description": "BPMI FUNDS TRANSFER",
+        "id": 991347,
+        "recipient_name": "BECHTEL PLANT MACHINERY, INC.",
+        "subaward_number": "130684-0092"
+      },
+      {
+        "action_date": "2022-06-09",
+        "amount": 187635.0,
+        "description": "BPMI FUNDS TRANSFER",
+        "id": 990973,
+        "recipient_name": "BECHTEL PLANT MACHINERY, INC.",
+        "subaward_number": "130684-0091"
+      },
+      {
+        "action_date": "2022-06-09",
+        "amount": 130444.0,
+        "description": "BPMI FUNDS TRANSFER",
+        "id": 982604,
+        "recipient_name": "BECHTEL PLANT MACHINERY, INC.",
+        "subaward_number": "130684-0090"
+      },
+      {
+        "action_date": "2022-09-27",
+        "amount": 80900.0,
+        "description": "2018 EARTHWORKS MASTER AGREEMENT",
+        "id": 2297340,
+        "recipient_name": "JAMES H. MALOY INC",
+        "subaward_number": "129672-0009"
+      },
+      {
+        "action_date": "2022-09-21",
+        "amount": 193500.0,
+        "description": "2018 EARTHWORKS MASTER AGREEMENT",
+        "id": 2296201,
+        "recipient_name": "JAMES H. MALOY INC",
+        "subaward_number": "129672-0008"
+      },
+      {
+        "action_date": "2022-09-21",
+        "amount": 148200.0,
+        "description": "2018 EARTHWORKS MASTER AGREEMENT",
+        "id": 2296810,
+        "recipient_name": "JAMES H. MALOY INC",
+        "subaward_number": "129672-0007"
+      },
+      {
+        "action_date": "2023-03-23",
+        "amount": 190129.0,
+        "description": "2018 EARTHWORKS MASTER AGREEMENT",
+        "id": 997029,
+        "recipient_name": "SNK ENTERPRISES INC",
+        "subaward_number": "129667-0005"
+      },
+      {
+        "action_date": "2022-03-04",
+        "amount": 74113.0,
+        "description": "PROVIDE MODULAR FURNITURE IN ACCORDANCE WITH BECHTEL MARINE PROPULSION CORPORATI",
+        "id": 999699,
+        "recipient_name": "DAVIES OFFICE REFURBISHING, INC.",
+        "subaward_number": "125793-0271"
+      },
+      {
+        "action_date": "2022-03-01",
+        "amount": 363901.9,
+        "description": "PROVIDE MODULAR FURNITURE IN ACCORDANCE WITH BECHTEL MARINE PROPULSION CORPORATI",
+        "id": 992581,
+        "recipient_name": "DAVIES OFFICE REFURBISHING, INC.",
+        "subaward_number": "125793-0268"
+      },
+      {
+        "action_date": "2022-02-14",
+        "amount": 58760.13,
+        "description": "PROVIDE MODULAR FURNITURE IN ACCORDANCE WITH BECHTEL MARINE PROPULSION CORPORATI",
+        "id": 1000986,
+        "recipient_name": "DAVIES OFFICE REFURBISHING, INC.",
+        "subaward_number": "125793-0266"
+      },
+      {
+        "action_date": "2022-02-01",
+        "amount": 1132568.2,
+        "description": "PROVIDE MODULAR FURNITURE IN ACCORDANCE WITH BECHTEL MARINE PROPULSION CORPORATI",
+        "id": 992197,
+        "recipient_name": "DAVIES OFFICE REFURBISHING, INC.",
+        "subaward_number": "125793-0264"
+      },
+      {
+        "action_date": "2022-01-12",
+        "amount": 45909.08,
+        "description": "PROVIDE MODULAR FURNITURE IN ACCORDANCE WITH BECHTEL MARINE PROPULSION CORPORATI",
+        "id": 1000201,
+        "recipient_name": "DAVIES OFFICE REFURBISHING, INC.",
+        "subaward_number": "125793-0263"
+      },
+      {
+        "action_date": "2022-10-11",
+        "amount": 76500.0,
+        "description": "CHARACTERIZATION AND/OR TESTING OF NUCLEAR MATERIALS",
+        "id": 2309192,
+        "recipient_name": "BATTELLE ENERGY ALLIANCE, LLC",
+        "subaward_number": "125349-0015"
+      },
+      {
+        "action_date": "2022-03-03",
+        "amount": 82000.0,
+        "description": "CHARACTERIZATION AND/OR TESTING OF NUCLEAR MATERIALS",
+        "id": 2306812,
+        "recipient_name": "BATTELLE ENERGY ALLIANCE, LLC",
+        "subaward_number": "125349-0012"
+      },
+      {
+        "action_date": "2021-12-09",
+        "amount": 226534.0,
+        "description": "RELEASE 4 - PHASE III A14",
+        "id": 2308070,
+        "recipient_name": "WASHINGTON MILLS ELECTRO MINERALS CORPORATION",
+        "subaward_number": "125052-0008"
+      }
+    ]
+  },
+  "retrieval_timestamp_utc": "2026-08-01T14:09:48.058380+00:00",
+  "retrieval_vintage": "2026-08-01",
+  "schema_version": "1.0",
+  "source_url": "https://api.usaspending.gov/api/v2/subawards/"
+}

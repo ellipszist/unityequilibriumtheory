@@ -1,0 +1,829 @@
+{
+  "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+  "error": null,
+  "provider": "USAspending.gov / U.S. Treasury",
+  "request": {
+    "body": {
+      "award_id": 292026551,
+      "limit": 100,
+      "page": 12
+    },
+    "method": "POST",
+    "url": "https://api.usaspending.gov/api/v2/subawards/"
+  },
+  "response": {
+    "page_metadata": {
+      "hasNext": true,
+      "hasPrevious": true,
+      "next": 13,
+      "page": 12,
+      "previous": 11
+    },
+    "results": [
+      {
+        "action_date": "2024-09-20",
+        "amount": 6784744.08,
+        "description": "FY24 TIER 2 ADDITIONAL GSS NODES",
+        "id": 983904,
+        "recipient_name": "CTG FEDERAL, LLC",
+        "subaward_number": "155101"
+      },
+      {
+        "action_date": "2024-10-31",
+        "amount": 441323.12,
+        "description": "OPENTEXT CONTENT MANAGER LICENSES",
+        "id": 998335,
+        "recipient_name": "WESTWIND COMPUTER PRODUCTS, INC.",
+        "subaward_number": "155099"
+      },
+      {
+        "action_date": "2024-09-23",
+        "amount": 30691.2,
+        "description": "CLASSIFIED ISLAND PARTS",
+        "id": 999747,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "155090"
+      },
+      {
+        "action_date": "2024-09-19",
+        "amount": 99795.0,
+        "description": "NTOP SOFTWARE LICENSES",
+        "id": 2310000,
+        "recipient_name": "NTOPOLOGY INC",
+        "subaward_number": "155084"
+      },
+      {
+        "action_date": "2024-09-17",
+        "amount": 52500.0,
+        "description": "SAFETY OBSERVATION APP",
+        "id": 2299536,
+        "recipient_name": "TOOLWATCH CORPORATION",
+        "subaward_number": "155083"
+      },
+      {
+        "action_date": "2024-10-16",
+        "amount": 33751.87,
+        "description": "SUPPLIER SHALL PROVIDE THE FOLLOWING ITEMS IN ACCORDANCE WITH THE ATTACHED ADMIN",
+        "id": 984372,
+        "recipient_name": "EASTERN POWER TECHNOLOGIES INC",
+        "subaward_number": "155075"
+      },
+      {
+        "action_date": "2024-09-12",
+        "amount": 224552.0,
+        "description": "FY24 MIRION CANBERRA AEGIS SPECTROMETER GC40, RDC MICROGE DETECTOR",
+        "id": 2297803,
+        "recipient_name": "MIRION TECHNOLOGIES (CANBERRA), INC.",
+        "subaward_number": "155074"
+      },
+      {
+        "action_date": "2025-04-29",
+        "amount": 189418.84,
+        "description": "GENERAL ELECTRIC MASTER AGREEMENT IN ACCORDANCE TO TECHNICAL SPECIFICATION",
+        "id": 10413931,
+        "recipient_name": "GE VERNOVA OPERATIONS LLC",
+        "subaward_number": "155070_WR1"
+      },
+      {
+        "action_date": "2024-09-17",
+        "amount": 58179.07,
+        "description": "NETWORK UPGRADES 2",
+        "id": 993073,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "155059"
+      },
+      {
+        "action_date": "2024-11-06",
+        "amount": 101708.0,
+        "description": "FFT FATIGUE MODELING",
+        "id": 1005077,
+        "recipient_name": "UNIVERSITY OF UTAH",
+        "subaward_number": "155056"
+      },
+      {
+        "action_date": "2024-09-27",
+        "amount": 69922.79,
+        "description": "FY24 NRPR 2452E",
+        "id": 2298526,
+        "recipient_name": "JOHNSON CONTROLS BUILDING AUTOMATION SYSTEMS, LLC",
+        "subaward_number": "155055"
+      },
+      {
+        "action_date": "2024-11-14",
+        "amount": 507900.0,
+        "description": "WINTER SALT PROCUREMENT",
+        "id": 986751,
+        "recipient_name": "APALACHEE, LLC",
+        "subaward_number": "155053"
+      },
+      {
+        "action_date": "2024-09-10",
+        "amount": 30672.36,
+        "description": "DOE CONTRACT ENERGYSOLUTIONS TREATMENT MLLW 9703-01-0022 AND OTHERS AND TRANSPOR",
+        "id": 2306208,
+        "recipient_name": "ENERGYSOLUTIONS FEDERAL SUPPORT LLC",
+        "subaward_number": "155042"
+      },
+      {
+        "action_date": "2024-10-28",
+        "amount": 205000.0,
+        "description": "UC BERKELEY EVENT CAMERA ATIP 2ND YEAR INDUSTRIAL SERVICES",
+        "id": 1002631,
+        "recipient_name": "REGENTS OF THE UNIVERSITY OF CALIFORNIA, THE",
+        "subaward_number": "155041"
+      },
+      {
+        "action_date": "2024-10-18",
+        "amount": 72425.0,
+        "description": "LIBURDI FIREVIEW 4",
+        "id": 996370,
+        "recipient_name": "LIBURDI DIMETRICS CORPORATION",
+        "subaward_number": "155039"
+      },
+      {
+        "action_date": "2024-11-20",
+        "amount": 284968.0,
+        "description": "CHEMICAL MANAGEMENT",
+        "id": 2302124,
+        "recipient_name": "MARCOM LLC",
+        "subaward_number": "155036"
+      },
+      {
+        "action_date": "2024-10-17",
+        "amount": 199367.68,
+        "description": "FY25 MULESOFT PROFESSIONAL SERVICES",
+        "id": 989184,
+        "recipient_name": "THUNDERCAT TECHNOLOGY, LLC",
+        "subaward_number": "155033"
+      },
+      {
+        "action_date": "2024-10-17",
+        "amount": 247482.14,
+        "description": "FY25 MULESOFT LICENSE RENEWAL",
+        "id": 986467,
+        "recipient_name": "THUNDERCAT TECHNOLOGY, LLC",
+        "subaward_number": "155032"
+      },
+      {
+        "action_date": "2024-09-09",
+        "amount": 776965.0,
+        "description": "ANSYS SOFTWARE SUITE LICENSES",
+        "id": 2306163,
+        "recipient_name": "DRD TECHNOLOGY CORP",
+        "subaward_number": "155026"
+      },
+      {
+        "action_date": "2024-10-02",
+        "amount": 45000.0,
+        "description": "VIEWPOINT SERVICE CONTRACT",
+        "id": 2303633,
+        "recipient_name": "VIEWPOINT SYSTEMS INC",
+        "subaward_number": "155022"
+      },
+      {
+        "action_date": "2024-09-12",
+        "amount": 35854.0,
+        "description": "SUPPLIER SHALL PROVIDE THE FOLLOWING ITEMS IN ACCORDANCE WITH THE ATTACHED ADMIN",
+        "id": 2304026,
+        "recipient_name": "COFFMAN ELECTRICAL EQUIPMENT CO.",
+        "subaward_number": "155019"
+      },
+      {
+        "action_date": "2024-09-25",
+        "amount": 31263.0,
+        "description": "Q2 CALIBRATION DRUMS (4)",
+        "id": 2297809,
+        "recipient_name": "MIRION TECHNOLOGIES (CANBERRA), INC.",
+        "subaward_number": "155017"
+      },
+      {
+        "action_date": "2024-10-07",
+        "amount": 158383.83,
+        "description": "DOE CONTRACT ENERGYSOLUTIONS BEAR CREEK TN RESIN PROCESSING TRANSPORTATION",
+        "id": 2306715,
+        "recipient_name": "ENERGYSOLUTIONS FEDERAL SUPPORT LLC",
+        "subaward_number": "155004"
+      },
+      {
+        "action_date": "2024-10-07",
+        "amount": 71879.6,
+        "description": "DOE CONTRACT ENERGYSOLUTIONS DISPOSAL LLW RESIN CWF UTAH",
+        "id": 2309842,
+        "recipient_name": "ENERGYSOLUTIONS FEDERAL SUPPORT LLC",
+        "subaward_number": "155003"
+      },
+      {
+        "action_date": "2024-10-09",
+        "amount": 35000.0,
+        "description": "RENEWAL OF KITWARE SOFTWARE LICENSE (2024)",
+        "id": 2301182,
+        "recipient_name": "KITWARE INC",
+        "subaward_number": "155002"
+      },
+      {
+        "action_date": "2024-09-09",
+        "amount": 65763.75,
+        "description": "VP8000 EMERGENCY RESPONSE PORTABLE RADIOS",
+        "id": 2297048,
+        "recipient_name": "A. V. LAUTTAMUS COMMUNICATIONS, INC.",
+        "subaward_number": "154999"
+      },
+      {
+        "action_date": "2024-12-16",
+        "amount": 165600.0,
+        "description": "SAP SUSTAINMENT SERVICES (FY25 - 29)",
+        "id": 2299412,
+        "recipient_name": "BLUE TECH INC.",
+        "subaward_number": "154998"
+      },
+      {
+        "action_date": "2024-09-17",
+        "amount": 54553.18,
+        "description": "ONE GRAPPLE INSTALL STAND AND TWO UF VACUUM STAND",
+        "id": 2308739,
+        "recipient_name": "CENTRAL VALLEY MACHINE INC",
+        "subaward_number": "154997"
+      },
+      {
+        "action_date": "2024-09-05",
+        "amount": 33204.18,
+        "description": "SOFTWARE SUPPORT FOR PURIFILE SOFTWARE AND ADDITIONAL TEST THREADS (LICENSE)",
+        "id": 982989,
+        "recipient_name": "STERLING COMPUTERS CORPORATION",
+        "subaward_number": "154991"
+      },
+      {
+        "action_date": "2024-09-16",
+        "amount": 41310.0,
+        "description": "EMERGENCY RESPONSE SHOWER SYSTEM",
+        "id": 991768,
+        "recipient_name": "QDCIP FIRE, LLC",
+        "subaward_number": "154972"
+      },
+      {
+        "action_date": "2024-09-09",
+        "amount": 464415.35,
+        "description": "ANSYS SOFTWARE SUITE LICENSES",
+        "id": 2305213,
+        "recipient_name": "DRD TECHNOLOGY CORP",
+        "subaward_number": "154970"
+      },
+      {
+        "action_date": "2024-09-11",
+        "amount": 46339.92,
+        "description": "CWS TEST PUMPS - STAUDT",
+        "id": 992494,
+        "recipient_name": "TOTAL EQUIPMENT COMPANY",
+        "subaward_number": "154968"
+      },
+      {
+        "action_date": "2024-10-07",
+        "amount": 164380.55,
+        "description": "FY25 TACLANES ENTERPRISE NETWORK EQUIPMENT",
+        "id": 992531,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "154964"
+      },
+      {
+        "action_date": "2024-09-09",
+        "amount": 351331.48,
+        "description": "FY24 UK TACLANES",
+        "id": 994838,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "154963"
+      },
+      {
+        "action_date": "2024-09-03",
+        "amount": 34440.0,
+        "description": "LOCKS AND DOOR BARS FOR INVENTORY",
+        "id": 2300820,
+        "recipient_name": "FRIED BROS INC",
+        "subaward_number": "154962"
+      },
+      {
+        "action_date": "2024-10-01",
+        "amount": 51349.0,
+        "description": "WOJNAR - SWAGELOK SPECIAL AUTOCLAVE FITTINGS",
+        "id": 980358,
+        "recipient_name": "PITTSBURGH FLUID SYSTEMS, LLC",
+        "subaward_number": "154945"
+      },
+      {
+        "action_date": "2024-08-28",
+        "amount": 44799.66,
+        "description": "DOE CONTRACT- WASTE TREATMENT AND TRANSIT OF MLLW-PCB AND MLLW AT ENERGY SOLUTIO",
+        "id": 2309939,
+        "recipient_name": "ENERGYSOLUTIONS FEDERAL SUPPORT LLC",
+        "subaward_number": "154944"
+      },
+      {
+        "action_date": "2024-09-10",
+        "amount": 41377.03,
+        "description": "THE SUPPLIER SHALL FURNISH THE NECESSARY LABOR, SUPERVISION, SERVICES, TOOLS, EQ",
+        "id": 988346,
+        "recipient_name": "COMMUNICATIONS CONSULTING, INC",
+        "subaward_number": "154927"
+      },
+      {
+        "action_date": "2024-09-19",
+        "amount": 6852838.35,
+        "description": "OUTFALLS 001 AND 008 CONSTRUCTION",
+        "id": 2309097,
+        "recipient_name": "TRUMBULL CORPORATION",
+        "subaward_number": "154921"
+      },
+      {
+        "action_date": "2024-09-04",
+        "amount": 62650.0,
+        "description": "PURCHASE OF HANDHELD FR-IR SPECTROMETER WITH INTEGRATED PUMP",
+        "id": 2303719,
+        "recipient_name": "908 DEVICES INC",
+        "subaward_number": "154917"
+      },
+      {
+        "action_date": "2024-10-17",
+        "amount": 948860.0,
+        "description": "CONVERSION OF LEGACY SOURCE TO DIGITAL FILE",
+        "id": 985628,
+        "recipient_name": "HEBCO, INC.",
+        "subaward_number": "154914"
+      },
+      {
+        "action_date": "2024-08-27",
+        "amount": 206135.0,
+        "description": "CCS COMMUNICATIONS SYSTEM ASTI EQUIPMENT PROCUREMENT",
+        "id": 982234,
+        "recipient_name": "ADVANCED SIMULATION TECHNOLOGY, INC.",
+        "subaward_number": "154913"
+      },
+      {
+        "action_date": "2024-10-16",
+        "amount": 1174638.4,
+        "description": "TYPE IV WASTE CANISTERS ORDER",
+        "id": 986646,
+        "recipient_name": "PETERSEN INCORPORATED",
+        "subaward_number": "154912"
+      },
+      {
+        "action_date": "2024-08-29",
+        "amount": 36255.14,
+        "description": "ESRI ARCGIS ENTERPRISE (ARCGIS FOR SERVER)",
+        "id": 2306201,
+        "recipient_name": "ENVIRONMENTAL SYSTEMS RESEARCH INSTITUTE, INC.",
+        "subaward_number": "154908"
+      },
+      {
+        "action_date": "2024-09-05",
+        "amount": 65751.0,
+        "description": "EDAX UPGRADE SOFTWARE",
+        "id": 2307178,
+        "recipient_name": "GATAN INC",
+        "subaward_number": "154906"
+      },
+      {
+        "action_date": "2024-10-03",
+        "amount": 77318.7,
+        "description": "M580 & M340 PLC SYSTEMS EQUIPMENT",
+        "id": 1002749,
+        "recipient_name": "CLAYTON ENGINEERING CO",
+        "subaward_number": "154902"
+      },
+      {
+        "action_date": "2024-08-15",
+        "amount": 194234.0,
+        "description": "NRF CAFETERIA SERVICE CONTRACT (REPLACES PO 154804)",
+        "id": 2300459,
+        "recipient_name": "WORLD DINING LLC",
+        "subaward_number": "154900"
+      },
+      {
+        "action_date": "2024-08-20",
+        "amount": 105465.0,
+        "description": "FY24 NR GARTNER RESEARCH",
+        "id": 2298047,
+        "recipient_name": "GARTNER, INC.",
+        "subaward_number": "154897"
+      },
+      {
+        "action_date": "2024-08-28",
+        "amount": 61588.0,
+        "description": "8/12 - 4FT ISO SHIPPING CONTAINER FROM MHF",
+        "id": 2303267,
+        "recipient_name": "MHF PACKAGING SOLUTIONS, LLC",
+        "subaward_number": "154893"
+      },
+      {
+        "action_date": "2024-12-04",
+        "amount": 9480000.0,
+        "description": "CRANES E1 AND E4 REPLACEMENT PROJECT",
+        "id": 981467,
+        "recipient_name": "AMERICAN CRANE & EQUIPMENT CORP",
+        "subaward_number": "154892"
+      },
+      {
+        "action_date": "2024-09-25",
+        "amount": 97200.0,
+        "description": "INSTRUMENTED CVN TESTING - TRDTKN20240701",
+        "id": 2303321,
+        "recipient_name": "MP MACHINERY & TESTING LLC",
+        "subaward_number": "154888"
+      },
+      {
+        "action_date": "2024-10-25",
+        "amount": 3104877.01,
+        "description": "FY25 SERVICENOW APPENGINE LICENSING RENEWAL - POP 10/29/24-10/28/25",
+        "id": 2300559,
+        "recipient_name": "V3GATE, LLC",
+        "subaward_number": "154887"
+      },
+      {
+        "action_date": "2024-09-05",
+        "amount": 54714.0,
+        "description": "DIGITAL FILTER SYSTEM, PFI INC 2024 FOR PUMP TEST",
+        "id": 997062,
+        "recipient_name": "PRECISION FILTERS, INC.",
+        "subaward_number": "154886"
+      },
+      {
+        "action_date": "2024-09-03",
+        "amount": 34412.0,
+        "description": "CURRENT TRANSDUCERS; DANISENSE 1200A WITH ACCESSORIES",
+        "id": 2302220,
+        "recipient_name": "GMW ASSOCIATES",
+        "subaward_number": "154884"
+      },
+      {
+        "action_date": "2024-10-28",
+        "amount": 473850.0,
+        "description": "FY25 2FA SUPPORT SMARTCARDS",
+        "id": 1001192,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "154882"
+      },
+      {
+        "action_date": "2024-08-20",
+        "amount": 36860.4,
+        "description": "NRPR 2464E - HP COLOR PRINTER",
+        "id": 987351,
+        "recipient_name": "STERLING COMPUTERS CORPORATION",
+        "subaward_number": "154878"
+      },
+      {
+        "action_date": "2024-09-03",
+        "amount": 379119.12,
+        "description": "FY24 PKI ENTRUST RENEWAL (9/1/2024-8/31/2025)",
+        "id": 1000604,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "154877"
+      },
+      {
+        "action_date": "2024-08-22",
+        "amount": 45885.0,
+        "description": "RINGGING GEAR REQUEST 1176",
+        "id": 984312,
+        "recipient_name": "MACHINERY WEST INC",
+        "subaward_number": "154876"
+      },
+      {
+        "action_date": "2024-08-21",
+        "amount": 43842.5,
+        "description": "VP8000 PORTABLE RADIOS",
+        "id": 2297537,
+        "recipient_name": "A. V. LAUTTAMUS COMMUNICATIONS, INC.",
+        "subaward_number": "154866"
+      },
+      {
+        "action_date": "2024-08-27",
+        "amount": 42920.0,
+        "description": "ECHART MAINTENANCE",
+        "id": 2308311,
+        "recipient_name": "TROY WEB CONSULTING LLC",
+        "subaward_number": "154865"
+      },
+      {
+        "action_date": "2024-10-30",
+        "amount": 280830.0,
+        "description": "CORITY SOFTWARE, INC. 5-YEAR MULTI-SITE CONTRACT",
+        "id": 995127,
+        "recipient_name": "CORITY SOFTWARE (USA) INC.",
+        "subaward_number": "154864"
+      },
+      {
+        "action_date": "2024-09-26",
+        "amount": 74087.0,
+        "description": "LINCOLN HELIX M4X SERVICE",
+        "id": 2299096,
+        "recipient_name": "WEST PENN LACO INC",
+        "subaward_number": "154861"
+      },
+      {
+        "action_date": "2024-09-12",
+        "amount": 92521.01,
+        "description": "MICROHARDNESS TESTER",
+        "id": 1004256,
+        "recipient_name": "ILLINOIS TOOL WORKS INC.",
+        "subaward_number": "154857"
+      },
+      {
+        "action_date": "2024-08-19",
+        "amount": 67500.0,
+        "description": "REDWAVE METER",
+        "id": 2303354,
+        "recipient_name": "908 DEVICES INC",
+        "subaward_number": "154853"
+      },
+      {
+        "action_date": "2024-08-15",
+        "amount": 203250.0,
+        "description": "BOSTON DYNAMICS SPOT ROBOT AND CHARGING STATION PURCHASE",
+        "id": 2306161,
+        "recipient_name": "BOSTON DYNAMICS, INC.",
+        "subaward_number": "154848"
+      },
+      {
+        "action_date": "2024-10-31",
+        "amount": 95000.0,
+        "description": "ELSEVIER EBOOK COLLECTIONS",
+        "id": 987230,
+        "recipient_name": "ELSEVIER INC.",
+        "subaward_number": "154839"
+      },
+      {
+        "action_date": "2024-09-27",
+        "amount": 38163.0,
+        "description": "3D SYSTEMS GEOMAGIC DESIGN X AND CONTROL X LICENSE",
+        "id": 996924,
+        "recipient_name": "CIMQUEST INC",
+        "subaward_number": "154838"
+      },
+      {
+        "action_date": "2024-08-27",
+        "amount": 47169.0,
+        "description": "SECURID SID700 HARDWARE TOKENS",
+        "id": 2309743,
+        "recipient_name": "BATTELLE ENERGY ALLIANCE, LLC",
+        "subaward_number": "154834"
+      },
+      {
+        "action_date": "2024-09-04",
+        "amount": 394560.0,
+        "description": "BETTIS SPARES - NGMTR ION COLUMNS (2024)",
+        "id": 994790,
+        "recipient_name": "ALL WATER SYSTEMS, INC.",
+        "subaward_number": "154831"
+      },
+      {
+        "action_date": "2024-08-14",
+        "amount": 101759.48,
+        "description": "FY24 TOAD ENTERPRISE LICENSING MAINTENANCE",
+        "id": 1002792,
+        "recipient_name": "AGSI, LLC",
+        "subaward_number": "154827"
+      },
+      {
+        "action_date": "2024-08-27",
+        "amount": 94997.5,
+        "description": "FY24 E9-100 PATCH PANEL HARDWARE",
+        "id": 984141,
+        "recipient_name": "CTG FEDERAL, LLC",
+        "subaward_number": "154826"
+      },
+      {
+        "action_date": "2024-08-20",
+        "amount": 35038.86,
+        "description": "FY24 COBALT STRIKE FOR PENETRATION TESTING",
+        "id": 992085,
+        "recipient_name": "STERLING COMPUTERS CORPORATION",
+        "subaward_number": "154824"
+      },
+      {
+        "action_date": "2024-09-06",
+        "amount": 45500.0,
+        "description": "FY24 LIGHTNING FORMS LICENSES",
+        "id": 2301432,
+        "recipient_name": "LOGISTICS365 INC",
+        "subaward_number": "154822"
+      },
+      {
+        "action_date": "2024-09-10",
+        "amount": 151932.0,
+        "description": "CALIBRATION OF VENTURIS",
+        "id": 2299230,
+        "recipient_name": "VERDANTAS LLC",
+        "subaward_number": "154821"
+      },
+      {
+        "action_date": "2024-09-05",
+        "amount": 101430.0,
+        "description": "ALPHA DETECTORS",
+        "id": 996075,
+        "recipient_name": "ALPHA SPECTRA, INC.",
+        "subaward_number": "154820"
+      },
+      {
+        "action_date": "2024-08-21",
+        "amount": 64830.0,
+        "description": "FY24 CWS CONTROL VALVES",
+        "id": 2307616,
+        "recipient_name": "DAVIS CONTROLS CORP",
+        "subaward_number": "154813"
+      },
+      {
+        "action_date": "2024-12-04",
+        "amount": 67420.05,
+        "description": "FY24 CWS TANKS",
+        "id": 2303364,
+        "recipient_name": "HARRINGTON INDUSTRIAL PLASTICS LLC",
+        "subaward_number": "154812"
+      },
+      {
+        "action_date": "2024-08-27",
+        "amount": 33327.0,
+        "description": "FY24 NTIS TRELLIX LICENSING PURCHASE",
+        "id": 998328,
+        "recipient_name": "FEDERAL RESOURCES CORPORATION",
+        "subaward_number": "154808"
+      },
+      {
+        "action_date": "2024-08-16",
+        "amount": 114349.84,
+        "description": "SUPPLIER SHALL PROVIDE THE FOLLOWING ITEMS IN ACCORDANCE WITH THE ATTACHED ADMIN",
+        "id": 1002273,
+        "recipient_name": "CLAYTON ENGINEERING CO",
+        "subaward_number": "154806"
+      },
+      {
+        "action_date": "2024-09-05",
+        "amount": 86400.0,
+        "description": "(ATIP - PITSCHMAN) RENEWAL OF MODELON SOFTWARE LICENSES",
+        "id": 2303833,
+        "recipient_name": "MODELON INC.",
+        "subaward_number": "154796"
+      },
+      {
+        "action_date": "2024-08-14",
+        "amount": 43272.22,
+        "description": "SUPPLIER SHALL PROVIDE THE FOLLOWING ITEMS IN ACCORDANCE WITH THE ATTACHED ADMIN",
+        "id": 2304658,
+        "recipient_name": "THERMO ELECTRON NORTH AMERICA LLC",
+        "subaward_number": "154794"
+      },
+      {
+        "action_date": "2024-09-12",
+        "amount": 91060.0,
+        "description": "KS S8G TILE REPLACEMENT (FY24)",
+        "id": 982178,
+        "recipient_name": "ENFIELD ENTERPRISES LLC",
+        "subaward_number": "154789"
+      },
+      {
+        "action_date": "2024-09-19",
+        "amount": 353500.0,
+        "description": "WHITE - INTERRUPTED PM-HIP A625 MACHINING AND TESTING",
+        "id": 2301263,
+        "recipient_name": "THE M&P LAB, INC.",
+        "subaward_number": "154787"
+      },
+      {
+        "action_date": "2024-11-11",
+        "amount": 396107.0,
+        "description": "RATTNER - A508 DEMONSTRATION PART TEST ARTICLE COMPLEX",
+        "id": 991189,
+        "recipient_name": "SYNERTECH PM INC.",
+        "subaward_number": "154784"
+      },
+      {
+        "action_date": "2024-08-15",
+        "amount": 47476.0,
+        "description": "OPENSHIFT PLATFORM PLUS",
+        "id": 994982,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "154778"
+      },
+      {
+        "action_date": "2024-09-05",
+        "amount": 57881.08,
+        "description": "CISCO 2024 REFRESH",
+        "id": 998726,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "154777"
+      },
+      {
+        "action_date": "2024-08-22",
+        "amount": 58920.0,
+        "description": "SHAKER PIEZO PARTS (FY24)",
+        "id": 979980,
+        "recipient_name": "PIEZOSYSTEM JENA, INC",
+        "subaward_number": "154775"
+      },
+      {
+        "action_date": "2024-09-05",
+        "amount": 81668.0,
+        "description": "DATA ACQUISITION SYSTEM (FY24)",
+        "id": 2306354,
+        "recipient_name": "HOTTINGER BRUEL & KJAER INC.",
+        "subaward_number": "154773"
+      },
+      {
+        "action_date": "2024-09-05",
+        "amount": 89588.0,
+        "description": "FY24 AUKUS HARDWARE",
+        "id": 996120,
+        "recipient_name": "WESTWIND COMPUTER PRODUCTS, INC.",
+        "subaward_number": "154771"
+      },
+      {
+        "action_date": "2024-08-14",
+        "amount": 74700.0,
+        "description": "ENDEVCO 2771C CHARGE CONVERTERS",
+        "id": 1002352,
+        "recipient_name": "PCB PIEZOTRONICS, INC.",
+        "subaward_number": "154770"
+      },
+      {
+        "action_date": "2024-09-19",
+        "amount": 862460.0,
+        "description": "RADIOACTIVE LIQUID WASTE (RLW) TANKER",
+        "id": 1004435,
+        "recipient_name": "FOURINOX, INC.",
+        "subaward_number": "154767"
+      },
+      {
+        "action_date": "2024-08-12",
+        "amount": 36512.0,
+        "description": "PANASONIC HARDWARE",
+        "id": 992976,
+        "recipient_name": "WESTWIND COMPUTER PRODUCTS, INC.",
+        "subaward_number": "154761"
+      },
+      {
+        "action_date": "2024-08-27",
+        "amount": 33313.56,
+        "description": "LAPTOPS FOR GAMMA-SPEC TRAINER",
+        "id": 987514,
+        "recipient_name": "STERLING COMPUTERS CORPORATION",
+        "subaward_number": "154757"
+      },
+      {
+        "action_date": "2024-08-12",
+        "amount": 78737.4,
+        "description": "SIMS AND RS - VIVE EQUIPMENT FOR CONVERSION FROM WIRELESS TO WIRED VR",
+        "id": 990133,
+        "recipient_name": "STERLING COMPUTERS CORPORATION",
+        "subaward_number": "154753"
+      },
+      {
+        "action_date": "2024-08-15",
+        "amount": 511983.4,
+        "description": "SIMEXEC 5.0 LICENSES",
+        "id": 2298139,
+        "recipient_name": "GSE PERFORMANCE SOLUTIONS, LLC",
+        "subaward_number": "154752"
+      },
+      {
+        "action_date": "2024-08-12",
+        "amount": 35550.0,
+        "description": "AGREEMENT FOR RETIREMENT MEMENTOS",
+        "id": 2305516,
+        "recipient_name": "CRONMILLER MARKETING",
+        "subaward_number": "154747"
+      },
+      {
+        "action_date": "2024-08-27",
+        "amount": 148399.0,
+        "description": "FABRICATE 1- BLUE CONTAINMENT BUCKET HANDLING TOOL, 3 - M-290 CONTAINMENT BUCKET",
+        "id": 2300370,
+        "recipient_name": "PRIME MACHINE, INC.",
+        "subaward_number": "154744"
+      },
+      {
+        "action_date": "2024-10-01",
+        "amount": 124698.0,
+        "description": "PETERMAN - CP TEST LOOP PUMP AND HX FOUNDATION & FSFL SMALL TEST BULKHEAD",
+        "id": 2298529,
+        "recipient_name": "CUSTOM ENGINEERING CO.",
+        "subaward_number": "154742"
+      },
+      {
+        "action_date": "2024-09-10",
+        "amount": 87435.0,
+        "description": "BURDETT - CP TEST LOOP IX/PF FOUNDATION",
+        "id": 2298789,
+        "recipient_name": "CUSTOM ENGINEERING CO.",
+        "subaward_number": "154740"
+      },
+      {
+        "action_date": "2024-08-24",
+        "amount": 44400.0,
+        "description": "SAPPHIRE WINDOWS",
+        "id": 1003525,
+        "recipient_name": "GAVISH INC.",
+        "subaward_number": "154735"
+      }
+    ]
+  },
+  "retrieval_timestamp_utc": "2026-08-01T14:09:23.137171+00:00",
+  "retrieval_vintage": "2026-08-01",
+  "schema_version": "1.0",
+  "source_url": "https://api.usaspending.gov/api/v2/subawards/"
+}

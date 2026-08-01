@@ -5,7 +5,7 @@
   "completed_sublanes": {
     "world_bank_wdi": "PASS"
   },
-  "generated_at_utc": "2026-08-01T13:59:31.002669+00:00",
+  "generated_at_utc": "2026-08-01T14:13:12.104546+00:00",
   "required_providers": {
     "World Bank WDI": "GDP, population, energy, poverty, macro indicators",
     "OECD": "productivity, income, compensation, investment, household accounts",

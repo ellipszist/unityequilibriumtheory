@@ -93,7 +93,7 @@
     "no_imputation": true,
     "normalized_rows": 1027
   },
-  "generated_at_utc": "2026-08-01T13:59:15.787652+00:00",
+  "generated_at_utc": "2026-08-01T14:12:56.779369+00:00",
   "limitations": [
     "Commodity workbooks have different update years and commodity-specific measurement bases.",
     "USGS notes that blank cells may mean unavailable or withheld data and are not zeros.",
@@ -104,7 +104,7 @@
   "schema_version": "1.0",
   "source_manifest": {
     "path": "docs/data/external/economics/us_historical/usgs_materials/2026-07-16/source_manifest.json",
-    "sha256": "94fb590a4e4140c925b83a9e5e3643db4d4d97637b1b149429b02f9c10a02ed1",
+    "sha256": "0906bb6c9a5fb2460954857506612ff938be3f9f17965717501a3ced74387f5e",
     "status": "PASS_WITH_BOUNDARY"
   },
   "status": "PASS_WITH_BOUNDARY",

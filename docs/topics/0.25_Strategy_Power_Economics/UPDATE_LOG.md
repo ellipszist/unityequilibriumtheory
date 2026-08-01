@@ -5,6 +5,15 @@
 
 ## Entries
 
+### 2026-08-01 - Downstream subaward-recipient audit
+
+- Scope: extend public award provenance from prime recipient/account fields to reported downstream subaward recipients and described work, without relabeling award reports as cash settlement.
+- Added: `Research_UET_USASpending_Subaward_Downstream_Recipient_Audit.py`, ten count responses, all 32 subaward pages for the one positive-count award, empty-page responses for the other nine, normalized 3,168-row archive, source manifest, aggregate/readiness/join integration, and synchronized docs.
+- Verified with: API/cache run, py_compile, standalone join/readiness, complete aggregate verifier, reported-count versus retrieved-row reconciliation, and cross-artifact SHA-256 checks. All ten awards are complete; one reports 3,168 subawards, producing 1,024 unique downstream recipients and 950 derived FY2024 rows.
+- Finding: downstream recipient names, action dates, amounts, and descriptions are now observable for the reported subaward chain. They remain award-reporting observations, not bank settlement, invoice, payroll, profit, debt, money-creation, or physical-delivery proof.
+- Blocker narrowed: public downstream-recipient visibility is source-locked for this nonrepresentative sample, but the controlling `firm_project_payment_ledger` blocker remains; payer-to-purchase-to-resource provenance is still unavailable.
+- Claim impact: Claim Class C and `DESCRIPTIVE_DIAGNOSTIC_ONLY` remain unchanged; no financing-source, payment-causality, or resource-conversion claim is enabled.
+
 ### 2026-08-01 - Federal-account budget-resource audit
 
 - Scope: extend the fixed award/account provenance chain to the federal account's budget authority, appropriations, obligations, outlays, and unobligated balance without treating budget data as a financing or cash-settlement trace.

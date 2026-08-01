@@ -1,0 +1,829 @@
+{
+  "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+  "error": null,
+  "provider": "USAspending.gov / U.S. Treasury",
+  "request": {
+    "body": {
+      "award_id": 292026551,
+      "limit": 100,
+      "page": 9
+    },
+    "method": "POST",
+    "url": "https://api.usaspending.gov/api/v2/subawards/"
+  },
+  "response": {
+    "page_metadata": {
+      "hasNext": true,
+      "hasPrevious": true,
+      "next": 10,
+      "page": 9,
+      "previous": 8
+    },
+    "results": [
+      {
+        "action_date": "2025-06-30",
+        "amount": 36036.0,
+        "description": "MRC REACH TOOLS",
+        "id": 10344969,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "200707"
+      },
+      {
+        "action_date": "2025-07-28",
+        "amount": 1395000.0,
+        "description": "FY25 ORACLE HARDWARE MAINTENANCE AND SUPPORT",
+        "id": 10369679,
+        "recipient_name": "DYNAMIC SYSTEMS INC",
+        "subaward_number": "200701"
+      },
+      {
+        "action_date": "2025-07-01",
+        "amount": 93392.0,
+        "description": "CTC SHUNTS",
+        "id": 10369287,
+        "recipient_name": "HUGHES CORP",
+        "subaward_number": "200700"
+      },
+      {
+        "action_date": "2025-07-07",
+        "amount": 33014.0,
+        "description": "PREVIOUSLY SOLICITED UNDER PO 155272",
+        "id": 10368869,
+        "recipient_name": "TRUSTEES OF THE UNIVERSITY OF PENNSYLVANIA, THE",
+        "subaward_number": "200697"
+      },
+      {
+        "action_date": "2025-06-30",
+        "amount": 38260.0,
+        "description": "PO ISSUED IN OFC FOR PO 152842 FOR LAST INVOICE TO BE PAID",
+        "id": 10369289,
+        "recipient_name": "REMOTE OCEAN SYSTEMS, INC.",
+        "subaward_number": "200695"
+      },
+      {
+        "action_date": "2025-07-30",
+        "amount": 534384.0,
+        "description": "1867-31 2025 BETTIS PAVING PROGRAM -PO 200640",
+        "id": 10369336,
+        "recipient_name": "MURN INCORPORATED",
+        "subaward_number": "200640"
+      },
+      {
+        "action_date": "2025-06-26",
+        "amount": 65850.0,
+        "description": "200635",
+        "id": 10369292,
+        "recipient_name": "V3GATE, LLC",
+        "subaward_number": "200635"
+      },
+      {
+        "action_date": "2025-07-01",
+        "amount": 33325.0,
+        "description": "200629",
+        "id": 10369288,
+        "recipient_name": "VIEWPOINT SYSTEMS INC",
+        "subaward_number": "200629"
+      },
+      {
+        "action_date": "2025-06-25",
+        "amount": 39999.0,
+        "description": "200620",
+        "id": 10369695,
+        "recipient_name": "SCHENCK USA CORP.",
+        "subaward_number": "200620"
+      },
+      {
+        "action_date": "2025-06-25",
+        "amount": 39999.0,
+        "description": "SCHENCK USA CORP.",
+        "id": 10344963,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "200620"
+      },
+      {
+        "action_date": "2025-06-24",
+        "amount": 34356.0,
+        "description": "200611",
+        "id": 10368967,
+        "recipient_name": "SIEMENS GOVERNMENT TECHNOLOGIES INC",
+        "subaward_number": "200611"
+      },
+      {
+        "action_date": "2025-06-27",
+        "amount": 86560.0,
+        "description": "RELEASE 18",
+        "id": 10368840,
+        "recipient_name": "SAVANNAH RIVER NUCLEAR SOLUTIONS LLC",
+        "subaward_number": "200609"
+      },
+      {
+        "action_date": "2025-06-27",
+        "amount": 86560.0,
+        "description": "RELEASE 18",
+        "id": 10344964,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "200609"
+      },
+      {
+        "action_date": "2025-06-24",
+        "amount": 50847.0,
+        "description": "200608",
+        "id": 10369294,
+        "recipient_name": "EASTERN POWER TECHNOLOGIES INC",
+        "subaward_number": "200608"
+      },
+      {
+        "action_date": "2025-06-24",
+        "amount": 59000.0,
+        "description": "200607",
+        "id": 10369293,
+        "recipient_name": "MIDWEST ENGINEERED SYSTEMS, INC.",
+        "subaward_number": "200607"
+      },
+      {
+        "action_date": "2025-06-24",
+        "amount": 68040.0,
+        "description": "UNIVERSAL ROTATING DECK ASSEMBLY VENT PIPE",
+        "id": 10369295,
+        "recipient_name": "CAMBRIDGE VALLEY MACHINING INC",
+        "subaward_number": "200598"
+      },
+      {
+        "action_date": "2025-06-24",
+        "amount": 68040.0,
+        "description": "UNIVERSAL ROTATING DECK ASSEMBLY VENT PIPE",
+        "id": 10345009,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "200598"
+      },
+      {
+        "action_date": "2025-07-03",
+        "amount": 868653.0,
+        "description": "RELEASE 19 - BWXT-NOG-L EXPANSION INDEPENDENT COST ESTIMATE(S)",
+        "id": 10368839,
+        "recipient_name": "FLUOR FEDERAL SERVICES INC",
+        "subaward_number": "200590"
+      },
+      {
+        "action_date": "2025-07-03",
+        "amount": 868653.0,
+        "description": "RELEASE 19 - BWXT-NOG-L EXPANSION",
+        "id": 10344974,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "200590"
+      },
+      {
+        "action_date": "2025-06-26",
+        "amount": 51191.0,
+        "description": "TOA-176 COMMISSIONING RADIO SYSTEM REPLACEMENT GPP",
+        "id": 10369291,
+        "recipient_name": "SAGE ENGINEERING ASSOCIATES, LLP",
+        "subaward_number": "200576"
+      },
+      {
+        "action_date": "2025-06-23",
+        "amount": 679725.0,
+        "description": "EXERCISE PHYSIOLOGIST FOR KNOLLS AND KS",
+        "id": 10368682,
+        "recipient_name": "FITNESS ARTIST, LLC",
+        "subaward_number": "200574"
+      },
+      {
+        "action_date": "2025-06-23",
+        "amount": 393314.0,
+        "description": "200572",
+        "id": 10369297,
+        "recipient_name": "STERLING COMPUTERS CORPORATION",
+        "subaward_number": "200572"
+      },
+      {
+        "action_date": "2025-06-19",
+        "amount": 40091.0,
+        "description": "TOA-175 COMMISSIONING SERVICES BUILDING Q3 OVERHEAD UTILITY REROUTES AT THE KNOLLS LABORATORY",
+        "id": 10369300,
+        "recipient_name": "SAGE ENGINEERING ASSOCIATES, LLP",
+        "subaward_number": "200554"
+      },
+      {
+        "action_date": "2025-06-23",
+        "amount": 1496600.0,
+        "description": "Q3- UTILITY REROUTE",
+        "id": 10368786,
+        "recipient_name": "O'CONNELL ELECTRIC COMPANY, INC.",
+        "subaward_number": "200537"
+      },
+      {
+        "action_date": "2025-06-18",
+        "amount": 52694.0,
+        "description": "CLEAN GAUGES FOR NTE",
+        "id": 10369301,
+        "recipient_name": "STANDARD CALIBRATIONS INC",
+        "subaward_number": "200520"
+      },
+      {
+        "action_date": "2025-06-18",
+        "amount": 52694.0,
+        "description": "CLEAN GAUGES FOR NTE",
+        "id": 10344962,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "200520"
+      },
+      {
+        "action_date": "2025-06-17",
+        "amount": 774815.0,
+        "description": "CONTAINERIZED NITROGEN GENERATION PROJECT",
+        "id": 10368831,
+        "recipient_name": "INTEGRATED SOLUTIONS FOR SYSTEMS, INC.",
+        "subaward_number": "200482"
+      },
+      {
+        "action_date": "2025-08-07",
+        "amount": 46000.0,
+        "description": "ESI 137836 - RELEASE 15",
+        "id": 10369706,
+        "recipient_name": "ENGINE SYSTEMS, INC.",
+        "subaward_number": "200455"
+      },
+      {
+        "action_date": "2025-06-18",
+        "amount": 30336.0,
+        "description": "200448",
+        "id": 10369554,
+        "recipient_name": "SUNBELT RENTALS, INC",
+        "subaward_number": "200448"
+      },
+      {
+        "action_date": "2025-06-13",
+        "amount": 56019.0,
+        "description": "200443",
+        "id": 10369305,
+        "recipient_name": "V3GATE, LLC",
+        "subaward_number": "200443"
+      },
+      {
+        "action_date": "2025-06-13",
+        "amount": 66645.0,
+        "description": "FY25 ITP ADDITIONAL SERVERS",
+        "id": 10369306,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "200442"
+      },
+      {
+        "action_date": "2025-06-13",
+        "amount": 66645.0,
+        "description": "FY25 ITP ADDITIONAL SERVERS",
+        "id": 10345002,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "200442"
+      },
+      {
+        "action_date": "2025-06-23",
+        "amount": 598875.0,
+        "description": "GES ENGINEER - RITTENHOUSE",
+        "id": 10369296,
+        "recipient_name": "NAVARRO RESEARCH AND ENGINEERING, INC.",
+        "subaward_number": "200441"
+      },
+      {
+        "action_date": "2025-06-25",
+        "amount": 89037.0,
+        "description": "MOTOROLA AVTEC ORDER",
+        "id": 10368965,
+        "recipient_name": "WILDFLOWER INTERNATIONAL, LTD.",
+        "subaward_number": "200436"
+      },
+      {
+        "action_date": "2025-06-12",
+        "amount": 46804.0,
+        "description": "DEGAUSSER SHREDDER",
+        "id": 10369307,
+        "recipient_name": "DATA SECURITY, INC",
+        "subaward_number": "200434"
+      },
+      {
+        "action_date": "2025-06-12",
+        "amount": 46804.0,
+        "description": "DEGAUSSER SHREDDER",
+        "id": 10344989,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "200434"
+      },
+      {
+        "action_date": "2025-09-09",
+        "amount": 182549.0,
+        "description": "200418",
+        "id": 10368608,
+        "recipient_name": "P.J. DICK INCORPORATED",
+        "subaward_number": "200418"
+      },
+      {
+        "action_date": "2025-06-23",
+        "amount": 180000.0,
+        "description": "GLOBAL QUANTUM INTELLIGENCE USER LICENSE (SUBSCRIPTION \ufffd 3 YEARS)",
+        "id": 10369299,
+        "recipient_name": "GLOBAL QUANTUM INTELLIGENCE, LLC",
+        "subaward_number": "200408"
+      },
+      {
+        "action_date": "2025-06-10",
+        "amount": 98219.0,
+        "description": "200387",
+        "id": 10369589,
+        "recipient_name": "OKOS SOLUTIONS, LLC",
+        "subaward_number": "200387"
+      },
+      {
+        "action_date": "2025-06-16",
+        "amount": 1422984.0,
+        "description": "1717-536 -J BUILDING CRANE ACCESS",
+        "id": 10369303,
+        "recipient_name": "GRM KONTRACTING LLC",
+        "subaward_number": "200384"
+      },
+      {
+        "action_date": "2025-06-09",
+        "amount": 137768.0,
+        "description": "KS DOOR REPLACEMENT WA NO. 9",
+        "id": 10369309,
+        "recipient_name": "MULTI-PHASE CONTRACTING CORP.",
+        "subaward_number": "200353"
+      },
+      {
+        "action_date": "2025-06-11",
+        "amount": 184640.0,
+        "description": "CRAFT 1 FACILITY PRECONSTRUCTION SERVICES",
+        "id": 10368865,
+        "recipient_name": "MASCARO CONSTRUCTION CO LP",
+        "subaward_number": "200346"
+      },
+      {
+        "action_date": "2025-06-11",
+        "amount": 184640.0,
+        "description": "CRAFT 1 FACILITY PRECONSTRUCTION SERVICES",
+        "id": 10344966,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "200346"
+      },
+      {
+        "action_date": "2025-06-10",
+        "amount": 78320.0,
+        "description": "SCT-014: SMR ASBESTOS ABATEMENT AWARD",
+        "id": 10368927,
+        "recipient_name": "FACILITY SUPPORT SERVICES LLC",
+        "subaward_number": "200344"
+      },
+      {
+        "action_date": "2025-06-10",
+        "amount": 78320.0,
+        "description": "SCT-014: SMR ASBESTOS ABATEMENT AWARD",
+        "id": 10344976,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "200344"
+      },
+      {
+        "action_date": "2025-07-30",
+        "amount": 167418.0,
+        "description": "FY25 ORACLE SERVER NODES",
+        "id": 10369678,
+        "recipient_name": "DYNAMIC SYSTEMS INC",
+        "subaward_number": "200340"
+      },
+      {
+        "action_date": "2025-06-16",
+        "amount": 387408.0,
+        "description": "RICKOVER FELLOWSHIP",
+        "id": 10369647,
+        "recipient_name": "GEORGIA TECH RESEARCH CORP",
+        "subaward_number": "200335"
+      },
+      {
+        "action_date": "2025-06-16",
+        "amount": 387408.0,
+        "description": "RICKOVER FELLOWSHIP",
+        "id": 10344972,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "200335"
+      },
+      {
+        "action_date": "2025-06-06",
+        "amount": 183926.0,
+        "description": "1717-541-A5, MBH, & H3 BUILDING AUTOMATION (BAS)",
+        "id": 10344968,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "200333"
+      },
+      {
+        "action_date": "2025-06-09",
+        "amount": 518136.0,
+        "description": "1717-531 MG COOLING TOWER REPLACEMENT",
+        "id": 10368925,
+        "recipient_name": "FACILITY SUPPORT SERVICES LLC",
+        "subaward_number": "200330"
+      },
+      {
+        "action_date": "2025-06-09",
+        "amount": 518136.0,
+        "description": "1717-531 MG COOLING TOWER REPLACEMENT",
+        "id": 10344977,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "200330"
+      },
+      {
+        "action_date": "2025-06-05",
+        "amount": 260431.0,
+        "description": "1717-535 FL CRANE RAIL REPLACEMENT",
+        "id": 10369235,
+        "recipient_name": "GRM KONTRACTING LLC",
+        "subaward_number": "200325"
+      },
+      {
+        "action_date": "2025-06-05",
+        "amount": 84500.0,
+        "description": "VSEC: CMS, PERPETUAL SYSTEM LICENSE - RENEWAL",
+        "id": 10369236,
+        "recipient_name": "LOGISTICS365 INC",
+        "subaward_number": "200324"
+      },
+      {
+        "action_date": "2025-09-17",
+        "amount": 32371.0,
+        "description": "R271 - DCNI BUILDING 87 EB INSTALL",
+        "id": 10368787,
+        "recipient_name": "O'CONNELL ELECTRIC COMPANY, INC.",
+        "subaward_number": "200321"
+      },
+      {
+        "action_date": "2025-06-04",
+        "amount": 49858.0,
+        "description": "200318",
+        "id": 10369238,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "200318"
+      },
+      {
+        "action_date": "2025-06-04",
+        "amount": 49858.0,
+        "description": "COLOSSAL CONTRACTING LLC",
+        "id": 10345000,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "200318"
+      },
+      {
+        "action_date": "2025-06-10",
+        "amount": 292882.0,
+        "description": "KS EARTHWORKS WA NO. 7",
+        "id": 10369710,
+        "recipient_name": "SNK ENTERPRISES INC",
+        "subaward_number": "200311"
+      },
+      {
+        "action_date": "2025-09-12",
+        "amount": 31803.0,
+        "description": "200308",
+        "id": 10369349,
+        "recipient_name": "CONNECTICUT TRAILERS, INC.",
+        "subaward_number": "200308"
+      },
+      {
+        "action_date": "2025-06-04",
+        "amount": 100262.0,
+        "description": "RAP 43 FOR MASTER PO 147000 - PO 200303",
+        "id": 10369585,
+        "recipient_name": "KINGSLEY ARMS, INC.",
+        "subaward_number": "200303"
+      },
+      {
+        "action_date": "2025-06-09",
+        "amount": 895000.0,
+        "description": "CDL FURNACE",
+        "id": 10368881,
+        "recipient_name": "THERMAL TECHNOLOGY LLC",
+        "subaward_number": "200295"
+      },
+      {
+        "action_date": "2025-06-04",
+        "amount": 722000.0,
+        "description": "KS BATHROOM & LACTATION REFURBISHMENT - WA-A",
+        "id": 10369239,
+        "recipient_name": "HOOSICK VALLEY CONTRACTORS, INC.",
+        "subaward_number": "200291"
+      },
+      {
+        "action_date": "2025-06-03",
+        "amount": 34843.0,
+        "description": "200272",
+        "id": 10369240,
+        "recipient_name": "GEL LABORATORIES LLC",
+        "subaward_number": "200272"
+      },
+      {
+        "action_date": "2025-06-03",
+        "amount": 34843.0,
+        "description": "GEL LABORATORIES LLC",
+        "id": 10344973,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "200272"
+      },
+      {
+        "action_date": "2025-06-04",
+        "amount": 128960.0,
+        "description": "FY25 E9-100 SM PATCH PANEL HARDWARE",
+        "id": 10369237,
+        "recipient_name": "CTG FEDERAL, LLC",
+        "subaward_number": "200271"
+      },
+      {
+        "action_date": "2025-06-02",
+        "amount": 223951.0,
+        "description": "TOA-13 COMMISSIONING STEAM MCP KNOLLS LABORATORY",
+        "id": 10369242,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "200264"
+      },
+      {
+        "action_date": "2025-06-02",
+        "amount": 893150.0,
+        "description": "2537E",
+        "id": 10368724,
+        "recipient_name": "JOHNSON CONTROLS BUILDING AUTOMATION SYSTEMS, LLC",
+        "subaward_number": "200233"
+      },
+      {
+        "action_date": "2025-09-23",
+        "amount": 30613546.0,
+        "description": "NRF MEDICAL SCIENCE COMPLEX",
+        "id": 10369410,
+        "recipient_name": "SYNERGY MODULAR, INC.",
+        "subaward_number": "200224"
+      },
+      {
+        "action_date": "2025-06-10",
+        "amount": 32728.0,
+        "description": "200218",
+        "id": 10369308,
+        "recipient_name": "OFFICEIMAGES INC",
+        "subaward_number": "200218"
+      },
+      {
+        "action_date": "2025-06-02",
+        "amount": 156000.0,
+        "description": "A506 GRADE 4N PM-HIP BILLETS",
+        "id": 10369243,
+        "recipient_name": "POWDERS ON DEMAND LLC",
+        "subaward_number": "200217"
+      },
+      {
+        "action_date": "2025-06-23",
+        "amount": 41661.0,
+        "description": "RELEASE 34: PARTS (NON-INVENTORY) MASTER AGREEMENT FOR DIESEL ENGINE PARTS",
+        "id": 10369704,
+        "recipient_name": "ENGINE SYSTEMS, INC.",
+        "subaward_number": "200209"
+      },
+      {
+        "action_date": "2025-06-13",
+        "amount": 516019.0,
+        "description": "LEGND STAND ASSEMBLY HARDWARE",
+        "id": 10369304,
+        "recipient_name": "PRIME MACHINE, INC.",
+        "subaward_number": "200199"
+      },
+      {
+        "action_date": "2025-05-29",
+        "amount": 285000.0,
+        "description": "VIDEO CONFERENCING MAINTENANCE",
+        "id": 10369248,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "200176"
+      },
+      {
+        "action_date": "2025-06-23",
+        "amount": 40785.0,
+        "description": "B111 PROJECT 3 CONSOLETTES",
+        "id": 10369298,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "200173"
+      },
+      {
+        "action_date": "2025-06-23",
+        "amount": 40785.0,
+        "description": "B111 PROJECT 3 CONSOLETTES",
+        "id": 10344998,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "200173"
+      },
+      {
+        "action_date": "2025-06-05",
+        "amount": 158995.0,
+        "description": "RIGGING GEAR REQUEST 1211",
+        "id": 10369575,
+        "recipient_name": "MACHINERY WEST INC",
+        "subaward_number": "200171"
+      },
+      {
+        "action_date": "2025-06-05",
+        "amount": 158995.0,
+        "description": "RIGGING GEAR REQUEST 1211",
+        "id": 10345011,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "200171"
+      },
+      {
+        "action_date": "2025-05-29",
+        "amount": 193720.0,
+        "description": "200166",
+        "id": 10368853,
+        "recipient_name": "VISION RESEARCH, INC",
+        "subaward_number": "200166"
+      },
+      {
+        "action_date": "2025-06-02",
+        "amount": 55825.0,
+        "description": "LEGND REFERENCE STANDARDS",
+        "id": 10369241,
+        "recipient_name": "ASTLEY PRECISION MACHINE COMPANY, INC.",
+        "subaward_number": "200165"
+      },
+      {
+        "action_date": "2025-06-02",
+        "amount": 55825.0,
+        "description": "LEGND REFERENCE STANDARDS",
+        "id": 10345022,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "200165"
+      },
+      {
+        "action_date": "2025-05-29",
+        "amount": 248596.0,
+        "description": "200164",
+        "id": 10369251,
+        "recipient_name": "SYNERTECH PM INC.",
+        "subaward_number": "200164"
+      },
+      {
+        "action_date": "2025-06-04",
+        "amount": 81900.0,
+        "description": "56 BIFOLD FIXED JIB",
+        "id": 10368675,
+        "recipient_name": "SHAWMUT EQUIPMENT COMPANY, INCORPORATED",
+        "subaward_number": "200163"
+      },
+      {
+        "action_date": "2025-05-28",
+        "amount": 43000.0,
+        "description": "TEST ARTICLE 28",
+        "id": 10369253,
+        "recipient_name": "CUSTOM TOOL & MODEL CORP.",
+        "subaward_number": "200161"
+      },
+      {
+        "action_date": "2025-05-29",
+        "amount": 55300.0,
+        "description": "TS-150B WINDOWS",
+        "id": 10369249,
+        "recipient_name": "RAINBOW RESEARCH OPTICS, LLC",
+        "subaward_number": "200157"
+      },
+      {
+        "action_date": "2025-05-09",
+        "amount": 96959439.0,
+        "description": "CS-111G",
+        "id": 10388522,
+        "recipient_name": "KIEWIT POWER CONSTRUCTORS CO",
+        "subaward_number": "200155"
+      },
+      {
+        "action_date": "2025-05-30",
+        "amount": 1154736350.0,
+        "description": "CONSTRUCTION SUBCONTRACT (CS)-111G BUILDING OUTFITTING",
+        "id": 10369246,
+        "recipient_name": "KIEWIT POWER CONSTRUCTORS CO",
+        "subaward_number": "200155"
+      },
+      {
+        "action_date": "2025-05-28",
+        "amount": 233278.0,
+        "description": "200151",
+        "id": 10369599,
+        "recipient_name": "BAKER AND ASSOCIATES",
+        "subaward_number": "200151"
+      },
+      {
+        "action_date": "2025-05-27",
+        "amount": 59371.0,
+        "description": "TS 150B COVERS",
+        "id": 10369256,
+        "recipient_name": "EXCELCO/NEWBROOK INC",
+        "subaward_number": "200149"
+      },
+      {
+        "action_date": "2025-06-02",
+        "amount": 384896.0,
+        "description": "IN-PILE TUBE PRESSURE BOUNDARY MATERIAL",
+        "id": 10369729,
+        "recipient_name": "ENERGY & PROCESS CORP",
+        "subaward_number": "200148"
+      },
+      {
+        "action_date": "2025-05-28",
+        "amount": 32845.0,
+        "description": "CHAUVIN \ufffd LDA MON. AIR SAMPLER \ufffd 3/7/25",
+        "id": 10369254,
+        "recipient_name": "HI-Q ENVIRONMENTAL PRODUCTS CO INC",
+        "subaward_number": "200147"
+      },
+      {
+        "action_date": "2025-05-28",
+        "amount": 127224.0,
+        "description": "GAS METAL ARC WELDING DEVELOPMENT",
+        "id": 10369255,
+        "recipient_name": "SOLVUS GLOBAL LLC",
+        "subaward_number": "200146"
+      },
+      {
+        "action_date": "2025-05-30",
+        "amount": 67540.0,
+        "description": "FY25 DOCAVE BACK UP AND RECOVERY MAINTENANCE RENEWAL",
+        "id": 10369245,
+        "recipient_name": "STERLING COMPUTERS CORPORATION",
+        "subaward_number": "200134"
+      },
+      {
+        "action_date": "2025-05-27",
+        "amount": 181500.0,
+        "description": "200133",
+        "id": 10369600,
+        "recipient_name": "BAKER AND ASSOCIATES",
+        "subaward_number": "200133"
+      },
+      {
+        "action_date": "2025-05-27",
+        "amount": 34511.0,
+        "description": "200122",
+        "id": 10368759,
+        "recipient_name": "APPLIED FLOW TECHNOLOGY LLC",
+        "subaward_number": "200122"
+      },
+      {
+        "action_date": "2025-06-05",
+        "amount": 201293.0,
+        "description": "DEMONSTRATION OF MICROSTRUCTURE IMPROVEMENT USING THERMOMECHANICAL WORK",
+        "id": 10369234,
+        "recipient_name": "FASTECH LLC",
+        "subaward_number": "200110"
+      },
+      {
+        "action_date": "2025-05-30",
+        "amount": 32430.0,
+        "description": "ALLOY 625 PLATS",
+        "id": 10369244,
+        "recipient_name": "NORTHERN SPECIALTY METALS, INC.",
+        "subaward_number": "200092"
+      },
+      {
+        "action_date": "2025-06-17",
+        "amount": 63508.0,
+        "description": "FLUKE ELECTRONIC DEADWEIGHT TESTER",
+        "id": 10369640,
+        "recipient_name": "FLUKE ELECTRONICS CORP",
+        "subaward_number": "200091"
+      },
+      {
+        "action_date": "2025-06-17",
+        "amount": 63508.0,
+        "description": "FLUKE ELECTRONIC DEADWEIGHT TESTER",
+        "id": 10344975,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "200091"
+      },
+      {
+        "action_date": "2025-05-27",
+        "amount": 60146.0,
+        "description": "FY25 ITP F5 LICENSE RENEWAL",
+        "id": 10369257,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "200089"
+      },
+      {
+        "action_date": "2025-05-22",
+        "amount": 81600.0,
+        "description": "SCT-013 - AWARD",
+        "id": 10368926,
+        "recipient_name": "FACILITY SUPPORT SERVICES LLC",
+        "subaward_number": "200083"
+      },
+      {
+        "action_date": "2025-05-22",
+        "amount": 265201.0,
+        "description": "PO FOR OUTSTANDING INVOICE ON OLD HW SUPPORT PO 138328 WHICH WAS CLOSED.",
+        "id": 10369258,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "200078"
+      }
+    ]
+  },
+  "retrieval_timestamp_utc": "2026-08-01T14:09:19.448156+00:00",
+  "retrieval_vintage": "2026-08-01",
+  "schema_version": "1.0",
+  "source_url": "https://api.usaspending.gov/api/v2/subawards/"
+}

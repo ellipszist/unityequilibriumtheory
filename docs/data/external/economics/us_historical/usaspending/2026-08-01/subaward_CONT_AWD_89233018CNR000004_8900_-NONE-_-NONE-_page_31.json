@@ -1,0 +1,829 @@
+{
+  "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+  "error": null,
+  "provider": "USAspending.gov / U.S. Treasury",
+  "request": {
+    "body": {
+      "award_id": 292026551,
+      "limit": 100,
+      "page": 31
+    },
+    "method": "POST",
+    "url": "https://api.usaspending.gov/api/v2/subawards/"
+  },
+  "response": {
+    "page_metadata": {
+      "hasNext": true,
+      "hasPrevious": true,
+      "next": 32,
+      "page": 31,
+      "previous": 30
+    },
+    "results": [
+      {
+        "action_date": "2021-12-16",
+        "amount": 129650.0,
+        "description": "MFX HARDWARE",
+        "id": 997692,
+        "recipient_name": "VANGURA TOOL, INC.",
+        "subaward_number": "144183"
+      },
+      {
+        "action_date": "2022-02-08",
+        "amount": 128492.0,
+        "description": "FRANZETTA - SECTIONED MOTOR GENERATOR DISPLAY",
+        "id": 2299906,
+        "recipient_name": "AMEE BAY, LLC",
+        "subaward_number": "144127"
+      },
+      {
+        "action_date": "2021-12-14",
+        "amount": 266000.0,
+        "description": "ADVANCED PLANT RESPONSE DEMONSTRATOR (APRD) SUBCONTRACTOR",
+        "id": 2298166,
+        "recipient_name": "MCFARLAND TECHNOLOGY INC",
+        "subaward_number": "144104"
+      },
+      {
+        "action_date": "2022-03-15",
+        "amount": 214510.0,
+        "description": "SOFTWARE DEVELOPER SUBCONTRACTOR FOR CORE ANALYSIS PROCESS PLANT SYSTEM (CAPS) P",
+        "id": 2308059,
+        "recipient_name": "GENESYS CONSULTING SERVICES, INC.",
+        "subaward_number": "144044"
+      },
+      {
+        "action_date": "2022-03-29",
+        "amount": 5620482.5,
+        "description": "FY22 HPC SYSTEM",
+        "id": 998698,
+        "recipient_name": "HOLMANS USA CORPORATION",
+        "subaward_number": "143960"
+      },
+      {
+        "action_date": "2021-12-15",
+        "amount": 58950.0,
+        "description": "SERVICE CONTRACT TO COVER THE SAF AND LUCIDEON-BASED NNL PRIMARY AUTOCLAVE TEST",
+        "id": 2301805,
+        "recipient_name": "VIEWPOINT SYSTEMS INC",
+        "subaward_number": "143932"
+      },
+      {
+        "action_date": "2021-12-16",
+        "amount": 1158077.0,
+        "description": "CMMI LABORATORY REARRANGEMENT",
+        "id": 2304432,
+        "recipient_name": "FACILITY SUPPORT SERVICES LLC",
+        "subaward_number": "143888"
+      },
+      {
+        "action_date": "2022-03-07",
+        "amount": 2001926.56,
+        "description": "ACQUISITION AND SUPPLY CHAIN MANAGEMENT (ASCM)",
+        "id": 996417,
+        "recipient_name": "DYNAMIC SYSTEMS INC",
+        "subaward_number": "143780"
+      },
+      {
+        "action_date": "2023-03-22",
+        "amount": 52350.0,
+        "description": "ENVIRONMENTAL INVESTIGATION,CHARACTERIZATION, AND REMEDIATION SERVICES MASTER CO",
+        "id": 990541,
+        "recipient_name": "LINDA M YATES",
+        "subaward_number": "143682-0008"
+      },
+      {
+        "action_date": "2022-02-07",
+        "amount": 81436.0,
+        "description": "ENVIRONMENTAL INVESTIGATION,CHARACTERIZATION, AND REMEDIATION SERVICES MASTER CO",
+        "id": 991036,
+        "recipient_name": "LINDA M YATES",
+        "subaward_number": "143682-0001"
+      },
+      {
+        "action_date": "2024-01-08",
+        "amount": 735415.0,
+        "description": "ASBESTOS ABATEMENT MASTER AGREEMENT (1)",
+        "id": 2297367,
+        "recipient_name": "ATLANTIC CONTRACTING & SPECIALTIES, LLC",
+        "subaward_number": "143661-0003"
+      },
+      {
+        "action_date": "2022-02-16",
+        "amount": 48825.0,
+        "description": "B. NEASE - CGM AND HOOPS SOFTWARE PACKAGES",
+        "id": 2301903,
+        "recipient_name": "DS GOVERNMENT SOLUTIONS CORP",
+        "subaward_number": "143629"
+      },
+      {
+        "action_date": "2021-12-29",
+        "amount": 1981942.0,
+        "description": "J-BUILDING CRYOGENIC TANKS AND CONCRETE PAD REPLACEMENT",
+        "id": 995470,
+        "recipient_name": "GRM KONTRACTING, LLC",
+        "subaward_number": "143488"
+      },
+      {
+        "action_date": "2022-04-29",
+        "amount": 378757.0,
+        "description": "BUSINESS SYSTEMS MAINTENANCE CONTRACT (PERIOD OF PERFORMANCE: 1 YEAR)",
+        "id": 994859,
+        "recipient_name": "DYNAMIC SYSTEMS INC",
+        "subaward_number": "143355"
+      },
+      {
+        "action_date": "2022-03-03",
+        "amount": 442250.0,
+        "description": "EPM - BPR MAINTENANCE SERVICES CONTRACT",
+        "id": 2301821,
+        "recipient_name": "GRANT THORNTON PUBLIC SECTOR LLC",
+        "subaward_number": "143354"
+      },
+      {
+        "action_date": "2022-04-28",
+        "amount": 4553268.0,
+        "description": "BWXT AT- EMERGING TECHNOLOGY",
+        "id": 2308953,
+        "recipient_name": "BWXT ADVANCED TECHNOLOGIES LLC",
+        "subaward_number": "143268"
+      },
+      {
+        "action_date": "2022-10-11",
+        "amount": 63038.0,
+        "description": "ROOF MAINTENANCE",
+        "id": 995354,
+        "recipient_name": "DESERT PEAK GENERAL CONTRACTORS LLC",
+        "subaward_number": "143224-0003"
+      },
+      {
+        "action_date": "2022-02-09",
+        "amount": 34570.0,
+        "description": "THE SUPPLIER SHALL FURNISH THE NECESSARY LABOR, SUPERVISION, SERVICES, TOOLS, EQ",
+        "id": 2303694,
+        "recipient_name": "SCHMIEDE CORPORATION",
+        "subaward_number": "143212"
+      },
+      {
+        "action_date": "2022-02-14",
+        "amount": 39792.5,
+        "description": "PROCUREMENT OF 10 NICKEL WELD CONSUMABLES",
+        "id": 987591,
+        "recipient_name": "CARPENTER TECHNOLOGY CORPORATION",
+        "subaward_number": "142990"
+      },
+      {
+        "action_date": "2022-01-20",
+        "amount": 98848.0,
+        "description": "ATIP - OPTICAL INSPECTION AND SORTING EVALUATION",
+        "id": 2296302,
+        "recipient_name": "THE JOHNS HOPKINS UNIVERSITY",
+        "subaward_number": "142980"
+      },
+      {
+        "action_date": "2022-10-17",
+        "amount": 2288755.2,
+        "description": "NAVAL TRAINING INFORMATION SYSTEMS (NTIS) SOFTWARE APPLICATION & NETWORK PERSONN",
+        "id": 998983,
+        "recipient_name": "MCFARLAND TECHNOLOGY INC",
+        "subaward_number": "142848"
+      },
+      {
+        "action_date": "2022-04-18",
+        "amount": 1728441.6,
+        "description": "NAVAL TRAINING INFORMATION SYSTEMS (NTIS) SOFTWARE APPLICATION & NETWORK PERSONN",
+        "id": 998186,
+        "recipient_name": "MCFARLAND TECHNOLOGY INC",
+        "subaward_number": "142848"
+      },
+      {
+        "action_date": "2022-01-26",
+        "amount": 84070.0,
+        "description": "TOO DRAFTING SERVICES CONTRACT",
+        "id": 2305500,
+        "recipient_name": "WALSH ENGINEERING SERVICES, PC",
+        "subaward_number": "142833-0010"
+      },
+      {
+        "action_date": "2022-01-12",
+        "amount": 188720.0,
+        "description": "TOO DRAFTING SERVICES CONTRACT",
+        "id": 2304703,
+        "recipient_name": "WALSH ENGINEERING SERVICES, PC",
+        "subaward_number": "142833-0009"
+      },
+      {
+        "action_date": "2022-01-13",
+        "amount": 867920.0,
+        "description": "FY22 IT HELP DESK SUBCONTRACT (PERIOD OF PERFORMANCE: 2/1/2022 - 1/31/2023)",
+        "id": 2301820,
+        "recipient_name": "INFORMATION MANAGEMENT GROUP INCORPORATED",
+        "subaward_number": "142732"
+      },
+      {
+        "action_date": "2022-03-24",
+        "amount": 108698.46,
+        "description": "SUPPORT DEVELOPMENT OF VIRTUAL TRAINING PRODUCTS FOR NTS AND RS",
+        "id": 996823,
+        "recipient_name": "ENGINEERING & COMPUTER SIMULATIONS, INC.",
+        "subaward_number": "142731"
+      },
+      {
+        "action_date": "2023-12-06",
+        "amount": 30125.0,
+        "description": "ANALYZE BIOASSAY SAMPLES",
+        "id": 2300178,
+        "recipient_name": "GEL LABORATORIES LLC",
+        "subaward_number": "141756-0083"
+      },
+      {
+        "action_date": "2022-06-16",
+        "amount": 40600.0,
+        "description": "ANALYZE BIOASSAY SAMPLES",
+        "id": 2303444,
+        "recipient_name": "GEL LABORATORIES LLC",
+        "subaward_number": "141756-0044"
+      },
+      {
+        "action_date": "2022-04-11",
+        "amount": 38225.0,
+        "description": "ANALYZE BIOASSAY SAMPLES",
+        "id": 2302275,
+        "recipient_name": "GEL LABORATORIES LLC",
+        "subaward_number": "141756-0036"
+      },
+      {
+        "action_date": "2022-02-03",
+        "amount": 32725.0,
+        "description": "ANALYZE BIOASSAY SAMPLES",
+        "id": 2304499,
+        "recipient_name": "GEL LABORATORIES LLC",
+        "subaward_number": "141756-0030"
+      },
+      {
+        "action_date": "2021-12-09",
+        "amount": 31225.0,
+        "description": "ANALYZE BIOASSAY SAMPLES",
+        "id": 2302445,
+        "recipient_name": "GEL LABORATORIES LLC",
+        "subaward_number": "141756-0027"
+      },
+      {
+        "action_date": "2022-02-03",
+        "amount": 43795.0,
+        "description": "RELEASE #8- RADIOLOGICAL SOURCE",
+        "id": 2306690,
+        "recipient_name": "ECKERT & ZIEGLER ANALYTICS, INC",
+        "subaward_number": "141446-0008"
+      },
+      {
+        "action_date": "2022-11-10",
+        "amount": 49750.0,
+        "description": "STONER _MODIFIED FLEX NUTS-",
+        "id": 995097,
+        "recipient_name": "VANGURA TOOL, INC.",
+        "subaward_number": "141414"
+      },
+      {
+        "action_date": "2023-07-11",
+        "amount": 37955.0,
+        "description": "WA23HAW012 - TESTING OF ZIRCALOY TENSILE SPECIMEN",
+        "id": 2305955,
+        "recipient_name": "WESTMORELAND MECHANICAL TESTING & RESEARCH, INC.",
+        "subaward_number": "141252-0001"
+      },
+      {
+        "action_date": "2021-12-13",
+        "amount": 8735661.0,
+        "description": "A8 MATERIAL PROCUREMENT",
+        "id": 2308791,
+        "recipient_name": "WASHINGTON MILLS ELECTRO MINERALS CORPORATION",
+        "subaward_number": "141113"
+      },
+      {
+        "action_date": "2024-12-03",
+        "amount": 36747.36,
+        "description": "WA24HAW028 - CHARPY & TENSILE SPECIMENS",
+        "id": 980046,
+        "recipient_name": "LABORATORY TESTING, LLC",
+        "subaward_number": "141056-0016"
+      },
+      {
+        "action_date": "2022-04-21",
+        "amount": 32605.0,
+        "description": "MASTER AGREEMENT FOR WORK AUTHORIZATIONS",
+        "id": 980410,
+        "recipient_name": "LABORATORY TESTING, LLC",
+        "subaward_number": "141056-0004"
+      },
+      {
+        "action_date": "2022-01-27",
+        "amount": 87275.0,
+        "description": "MASTER AGREEMENT FOR WORK AUTHORIZATIONS",
+        "id": 988786,
+        "recipient_name": "LABORATORY TESTING, LLC",
+        "subaward_number": "141056-0003"
+      },
+      {
+        "action_date": "2024-08-26",
+        "amount": 40824.0,
+        "description": "WA24HAW026",
+        "id": 2304465,
+        "recipient_name": "METAL IMPROVEMENT COMPANY, LLC",
+        "subaward_number": "141052-0013"
+      },
+      {
+        "action_date": "2024-08-19",
+        "amount": 124077.0,
+        "description": "WA24HAW026",
+        "id": 2304190,
+        "recipient_name": "METAL IMPROVEMENT COMPANY, LLC",
+        "subaward_number": "141052-0012"
+      },
+      {
+        "action_date": "2022-09-27",
+        "amount": 59170.02,
+        "description": "MASTER AGREEMENT FOR WORK AUTHORIZATIONS - WA22HAW064",
+        "id": 2301478,
+        "recipient_name": "METAL IMPROVEMENT COMPANY, LLC",
+        "subaward_number": "141052-0004"
+      },
+      {
+        "action_date": "2022-03-25",
+        "amount": 5633025.0,
+        "description": "HEATING, VENTILATION & AIR CONDITIONING PREVENTIVE AND CORRECTIVE",
+        "id": 2304796,
+        "recipient_name": "WALTERS CO. AIRCONDITIONING, INC., THE",
+        "subaward_number": "140912"
+      },
+      {
+        "action_date": "2024-11-14",
+        "amount": 105100.0,
+        "description": "MASTER AGREEMENT - WA24HAW011",
+        "id": 2303940,
+        "recipient_name": "THE M&P LAB, INC.",
+        "subaward_number": "140911-0024"
+      },
+      {
+        "action_date": "2024-07-31",
+        "amount": 89500.0,
+        "description": "MASTER AGREEMENT - WA24HAW011",
+        "id": 2303205,
+        "recipient_name": "THE M&P LAB, INC.",
+        "subaward_number": "140911-0021"
+      },
+      {
+        "action_date": "2024-05-20",
+        "amount": 61200.0,
+        "description": "MASTER AGREEMENT - WA24HAW024",
+        "id": 2303381,
+        "recipient_name": "THE M&P LAB, INC.",
+        "subaward_number": "140911-0020"
+      },
+      {
+        "action_date": "2024-05-06",
+        "amount": 57145.0,
+        "description": "MASTER AGREEMENT - WA24HAW022",
+        "id": 2303766,
+        "recipient_name": "THE M&P LAB, INC.",
+        "subaward_number": "140911-0019"
+      },
+      {
+        "action_date": "2023-12-28",
+        "amount": 97200.0,
+        "description": "MASTER AGREEMENT - WA23HAW049 CORROSION FATIGUE CRACK TESTING",
+        "id": 2300424,
+        "recipient_name": "THE M&P LAB, INC.",
+        "subaward_number": "140911-0016"
+      },
+      {
+        "action_date": "2022-09-02",
+        "amount": 85200.0,
+        "description": "MASTER AGREEMENT FOER WORK AUTHORIZATIONS",
+        "id": 2303377,
+        "recipient_name": "THE M&P LAB, INC.",
+        "subaward_number": "140911-0011"
+      },
+      {
+        "action_date": "2022-06-24",
+        "amount": 37600.0,
+        "description": "MASTER AGREEMENT FOER WORK AUTHORIZATIONS",
+        "id": 2302943,
+        "recipient_name": "THE M&P LAB, INC.",
+        "subaward_number": "140911-0008"
+      },
+      {
+        "action_date": "2022-06-23",
+        "amount": 37600.0,
+        "description": "MASTER AGREEMENT FOER WORK AUTHORIZATIONS",
+        "id": 2303796,
+        "recipient_name": "THE M&P LAB, INC.",
+        "subaward_number": "140911-0007"
+      },
+      {
+        "action_date": "2022-02-17",
+        "amount": 104000.0,
+        "description": "MASTER AGREEMENT FOER WORK AUTHORIZATIONS",
+        "id": 2302614,
+        "recipient_name": "THE M&P LAB, INC.",
+        "subaward_number": "140911-0005"
+      },
+      {
+        "action_date": "2022-04-25",
+        "amount": 2712954.0,
+        "description": "FY21/22 ACCESS DEVICE BLANKET ORDER",
+        "id": 1000775,
+        "recipient_name": "WESTWIND COMPUTER PRODUCTS, INC.",
+        "subaward_number": "140908-0007"
+      },
+      {
+        "action_date": "2022-02-17",
+        "amount": 77152.0,
+        "description": "WA22HAW007 (D. HILMAR) STRUCTURAL SUPPORT & HOUSING COVER",
+        "id": 2303780,
+        "recipient_name": "CAMBRIDGE VALLEY MACHINING INC",
+        "subaward_number": "140891-0005"
+      },
+      {
+        "action_date": "2022-03-07",
+        "amount": 50647.0,
+        "description": "MASTER AGREEMENT FOR WORK AUTHORIZATIONS",
+        "id": 992203,
+        "recipient_name": "EDISON WELDING INSTITUTE INC",
+        "subaward_number": "140877-0002"
+      },
+      {
+        "action_date": "2022-02-14",
+        "amount": 30000.0,
+        "description": "MASTER AGREEMENT FOR WORK AUTHORIZATIONS",
+        "id": 1001315,
+        "recipient_name": "EDISON WELDING INSTITUTE INC",
+        "subaward_number": "140877-0001"
+      },
+      {
+        "action_date": "2024-09-12",
+        "amount": 92200.0,
+        "description": "WA23HAW048 (M. DAWDY) CABINET BASES",
+        "id": 981175,
+        "recipient_name": "CBM FABRICATION INC",
+        "subaward_number": "140862-0037"
+      },
+      {
+        "action_date": "2024-12-18",
+        "amount": 40950.0,
+        "description": "WA24HAW016 - KNIFE EDGE & SPECIMEN BRACKET",
+        "id": 989226,
+        "recipient_name": "DEPENDABLE TOOL & DIE CO., INC.",
+        "subaward_number": "140859-0050"
+      },
+      {
+        "action_date": "2024-01-30",
+        "amount": 36960.0,
+        "description": "WA24HAW003 - BEND TUBE",
+        "id": 985235,
+        "recipient_name": "DEPENDABLE TOOL & DIE CO INC",
+        "subaward_number": "140859-0047"
+      },
+      {
+        "action_date": "2023-03-28",
+        "amount": 34020.0,
+        "description": "WA23HAW002",
+        "id": 982950,
+        "recipient_name": "DEPENDABLE TOOL & DIE CO INC",
+        "subaward_number": "140859-0036"
+      },
+      {
+        "action_date": "2023-03-23",
+        "amount": 34505.0,
+        "description": "WA23HAW007",
+        "id": 991052,
+        "recipient_name": "DEPENDABLE TOOL & DIE CO INC",
+        "subaward_number": "140859-0035"
+      },
+      {
+        "action_date": "2022-06-07",
+        "amount": 31500.0,
+        "description": "WA22HAW035 - SHIELD RINGS",
+        "id": 982065,
+        "recipient_name": "DEPENDABLE TOOL & DIE CO INC",
+        "subaward_number": "140859-0029"
+      },
+      {
+        "action_date": "2022-04-28",
+        "amount": 40105.0,
+        "description": "WA22HAW004 (S. GLENNON) LEDSH PROCUREMENT",
+        "id": 991095,
+        "recipient_name": "DEPENDABLE TOOL & DIE CO INC",
+        "subaward_number": "140859-0027"
+      },
+      {
+        "action_date": "2022-04-25",
+        "amount": 96575.0,
+        "description": "WA22HAW004 (S. GLENNON) LEDSH PROCUREMENT",
+        "id": 987587,
+        "recipient_name": "DEPENDABLE TOOL & DIE CO INC",
+        "subaward_number": "140859-0026"
+      },
+      {
+        "action_date": "2022-04-25",
+        "amount": 30194.0,
+        "description": "WA22HAW004 (S. GLENNON) LEDSH PROCUREMENT",
+        "id": 980685,
+        "recipient_name": "DEPENDABLE TOOL & DIE CO INC",
+        "subaward_number": "140859-0025"
+      },
+      {
+        "action_date": "2022-04-07",
+        "amount": 45350.0,
+        "description": "WA22HAW004 (S. GLENNON) LEDSH PROCUREMENT",
+        "id": 981625,
+        "recipient_name": "DEPENDABLE TOOL & DIE CO INC",
+        "subaward_number": "140859-0023"
+      },
+      {
+        "action_date": "2022-04-07",
+        "amount": 45000.0,
+        "description": "WA22HAW004 (S. GLENNON) LEDSH PROCUREMENT",
+        "id": 982086,
+        "recipient_name": "DEPENDABLE TOOL & DIE CO INC",
+        "subaward_number": "140859-0022"
+      },
+      {
+        "action_date": "2022-03-08",
+        "amount": 47400.0,
+        "description": "WA22HAW004 (S. GLENNON) LEDSH PROCUREMENT",
+        "id": 989687,
+        "recipient_name": "DEPENDABLE TOOL & DIE CO INC",
+        "subaward_number": "140859-0016"
+      },
+      {
+        "action_date": "2024-12-19",
+        "amount": 178121.6,
+        "description": "DATA COMMUNICATION NETWORK INFRASTRUCTURE FOR KNOLLS AND KESSELRING SITES",
+        "id": 2310161,
+        "recipient_name": "O'CONNELL ELECTRIC COMPANY, INC.",
+        "subaward_number": "140349-0251"
+      },
+      {
+        "action_date": "2024-12-11",
+        "amount": 42601.7,
+        "description": "DATA COMMUNICATION NETWORK INFRASTRUCTURE FOR KNOLLS AND KESSELRING SITES",
+        "id": 2305826,
+        "recipient_name": "O'CONNELL ELECTRIC COMPANY, INC.",
+        "subaward_number": "140349-0242"
+      },
+      {
+        "action_date": "2024-11-26",
+        "amount": 42398.4,
+        "description": "DATA COMMUNICATION NETWORK INFRASTRUCTURE FOR KNOLLS AND KESSELRING SITES",
+        "id": 2308630,
+        "recipient_name": "O'CONNELL ELECTRIC COMPANY, INC.",
+        "subaward_number": "140349-0235"
+      },
+      {
+        "action_date": "2024-08-26",
+        "amount": 69459.2,
+        "description": "DATA COMMUNICATION NETWORK INFRASTRUCTURE FOR KNOLLS AND KESSELRING SITES",
+        "id": 2307022,
+        "recipient_name": "O'CONNELL ELECTRIC COMPANY, INC.",
+        "subaward_number": "140349-0233"
+      },
+      {
+        "action_date": "2024-09-12",
+        "amount": 56705.7,
+        "description": "DATA COMMUNICATION NETWORK INFRASTRUCTURE FOR KNOLLS AND KESSELRING SITES",
+        "id": 2309279,
+        "recipient_name": "O'CONNELL ELECTRIC COMPANY, INC.",
+        "subaward_number": "140349-0228"
+      },
+      {
+        "action_date": "2024-07-01",
+        "amount": 64114.3,
+        "description": "DATA COMMUNICATION NETWORK INFRASTRUCTURE FOR KNOLLS AND KESSELRING SITES",
+        "id": 2305819,
+        "recipient_name": "O'CONNELL ELECTRIC COMPANY, INC.",
+        "subaward_number": "140349-0224"
+      },
+      {
+        "action_date": "2023-12-11",
+        "amount": 87085.0,
+        "description": "DATA COMMUNICATION NETWORK INFRASTRUCTURE FOR KNOLLS AND KESSELRING SITES",
+        "id": 2307928,
+        "recipient_name": "O'CONNELL ELECTRIC COMPANY, INC.",
+        "subaward_number": "140349-0188"
+      },
+      {
+        "action_date": "2023-12-12",
+        "amount": 61750.6,
+        "description": "DATA COMMUNICATION NETWORK INFRASTRUCTURE FOR KNOLLS AND KESSELRING SITES",
+        "id": 2309616,
+        "recipient_name": "O'CONNELL ELECTRIC COMPANY, INC.",
+        "subaward_number": "140349-0183"
+      },
+      {
+        "action_date": "2023-07-31",
+        "amount": 33541.11,
+        "description": "DATA COMMUNICATION NETWORK INFRASTRUCTURE FOR KNOLLS AND KESSELRING SITES",
+        "id": 2309647,
+        "recipient_name": "O'CONNELL ELECTRIC COMPANY, INC.",
+        "subaward_number": "140349-0146"
+      },
+      {
+        "action_date": "2023-03-07",
+        "amount": 34459.0,
+        "description": "DATA COMMUNICATION NETWORK INFRASTRUCTURE FOR KNOLLS AND KESSELRING SITES",
+        "id": 2307537,
+        "recipient_name": "O'CONNELL ELECTRIC COMPANY, INC.",
+        "subaward_number": "140349-0132"
+      },
+      {
+        "action_date": "2023-03-07",
+        "amount": 32167.6,
+        "description": "DATA COMMUNICATION NETWORK INFRASTRUCTURE FOR KNOLLS AND KESSELRING SITES",
+        "id": 2309225,
+        "recipient_name": "O'CONNELL ELECTRIC COMPANY, INC.",
+        "subaward_number": "140349-0130"
+      },
+      {
+        "action_date": "2022-09-20",
+        "amount": 50946.8,
+        "description": "DATA COMMUNICATION NETWORK INFRASTRUCTURE FOR KNOLLS AND KESSELRING SITES",
+        "id": 2308785,
+        "recipient_name": "O'CONNELL ELECTRIC COMPANY, INC.",
+        "subaward_number": "140349-0084"
+      },
+      {
+        "action_date": "2022-09-20",
+        "amount": 66306.3,
+        "description": "DATA COMMUNICATION NETWORK INFRASTRUCTURE FOR KNOLLS AND KESSELRING SITES",
+        "id": 2308485,
+        "recipient_name": "O'CONNELL ELECTRIC COMPANY, INC.",
+        "subaward_number": "140349-0083"
+      },
+      {
+        "action_date": "2022-09-14",
+        "amount": 122117.55,
+        "description": "DATA COMMUNICATION NETWORK INFRASTRUCTURE FOR KNOLLS AND KESSELRING SITES",
+        "id": 2305131,
+        "recipient_name": "O'CONNELL ELECTRIC COMPANY, INC.",
+        "subaward_number": "140349-0074"
+      },
+      {
+        "action_date": "2022-03-14",
+        "amount": 40974.6,
+        "description": "DATA COMMUNICATION NETWORK INFRASTRUCTURE FOR KNOLLS AND KESSELRING SITES",
+        "id": 2307601,
+        "recipient_name": "O'CONNELL ELECTRIC COMPANY, INC.",
+        "subaward_number": "140349-0055"
+      },
+      {
+        "action_date": "2022-03-23",
+        "amount": 62770.8,
+        "description": "DATA COMMUNICATION NETWORK INFRASTRUCTURE FOR KNOLLS AND KESSELRING SITES",
+        "id": 2307502,
+        "recipient_name": "O'CONNELL ELECTRIC COMPANY, INC.",
+        "subaward_number": "140349-0054"
+      },
+      {
+        "action_date": "2022-04-14",
+        "amount": 30040.19,
+        "description": "GSS MASTER AGREEMENT",
+        "id": 2296456,
+        "recipient_name": "DALE HUFFAKER TRUCK AND BACKHOE, L.L.C.",
+        "subaward_number": "140271-0008"
+      },
+      {
+        "action_date": "2022-03-30",
+        "amount": 42225.6,
+        "description": "GSS MASTER AGREEMENT",
+        "id": 2297971,
+        "recipient_name": "DALE HUFFAKER TRUCK AND BACKHOE, L.L.C.",
+        "subaward_number": "140271-0006"
+      },
+      {
+        "action_date": "2022-03-30",
+        "amount": 148669.14,
+        "description": "GSS MASTER AGREEMENT",
+        "id": 2296913,
+        "recipient_name": "DALE HUFFAKER TRUCK AND BACKHOE, L.L.C.",
+        "subaward_number": "140271-0005"
+      },
+      {
+        "action_date": "2022-10-24",
+        "amount": 104379.0,
+        "description": "GSS MASTER AGREEMENT",
+        "id": 2302140,
+        "recipient_name": "K & D ELECTRIC, INC.",
+        "subaward_number": "140268-0009"
+      },
+      {
+        "action_date": "2022-04-06",
+        "amount": 114969.0,
+        "description": "GSS MASTER AGREEMENT",
+        "id": 2304593,
+        "recipient_name": "K & D ELECTRIC, INC.",
+        "subaward_number": "140268-0006"
+      },
+      {
+        "action_date": "2023-07-06",
+        "amount": 86559.56,
+        "description": "LOW LEVEL RADIOACTIVE WASTE TO SRS",
+        "id": 2309056,
+        "recipient_name": "SAVANNAH RIVER NUCLEAR SOLUTIONS LLC",
+        "subaward_number": "139919-0071"
+      },
+      {
+        "action_date": "2023-07-06",
+        "amount": 60136.65,
+        "description": "LOW LEVEL RADIOACTIVE WASTE TO SRS",
+        "id": 2309154,
+        "recipient_name": "SAVANNAH RIVER NUCLEAR SOLUTIONS LLC",
+        "subaward_number": "139919-0070"
+      },
+      {
+        "action_date": "2022-11-02",
+        "amount": 42214.51,
+        "description": "LOW LEVEL RADIOACTIVE WASTE TO SRS",
+        "id": 2304662,
+        "recipient_name": "BATTELLE SAVANNAH RIVER ALLIANCE, LLC",
+        "subaward_number": "139919-0055"
+      },
+      {
+        "action_date": "2022-10-20",
+        "amount": 60646.51,
+        "description": "LOW LEVEL RADIOACTIVE WASTE TO SRS",
+        "id": 2307546,
+        "recipient_name": "SAVANNAH RIVER NUCLEAR SOLUTIONS LLC",
+        "subaward_number": "139919-0054"
+      },
+      {
+        "action_date": "2022-10-10",
+        "amount": 41202.0,
+        "description": "LOW LEVEL RADIOACTIVE WASTE TO SRS",
+        "id": 2307851,
+        "recipient_name": "SAVANNAH RIVER NUCLEAR SOLUTIONS LLC",
+        "subaward_number": "139919-0053"
+      },
+      {
+        "action_date": "2022-09-15",
+        "amount": 32850.0,
+        "description": "LOW LEVEL RADIOACTIVE WASTE TO SRS",
+        "id": 2310096,
+        "recipient_name": "BATTELLE SAVANNAH RIVER ALLIANCE, LLC",
+        "subaward_number": "139919-0052"
+      },
+      {
+        "action_date": "2022-04-19",
+        "amount": 60691.5,
+        "description": "LOW LEVEL RAD WASTE SHIPMENTS TO SRNS 22-RM-010 & 22-RM-013",
+        "id": 2305940,
+        "recipient_name": "SAVANNAH RIVER NUCLEAR SOLUTIONS LLC",
+        "subaward_number": "139919-0032"
+      },
+      {
+        "action_date": "2022-04-06",
+        "amount": 68067.0,
+        "description": "LOW LEVEL RAD WASTE SHIPMENTS TO SRNS BET-491 TO 494",
+        "id": 2308220,
+        "recipient_name": "SAVANNAH RIVER NUCLEAR SOLUTIONS LLC",
+        "subaward_number": "139919-0031"
+      },
+      {
+        "action_date": "2022-03-29",
+        "amount": 68067.0,
+        "description": "LOW LEVEL RAD WASTE SHIPMENTS TO SRNS KNO-072",
+        "id": 2306557,
+        "recipient_name": "SAVANNAH RIVER NUCLEAR SOLUTIONS LLC",
+        "subaward_number": "139919-0030"
+      },
+      {
+        "action_date": "2022-03-29",
+        "amount": 33412.5,
+        "description": "LOW LEVEL RAD WASTE SHIPMENTS TO SRNS KNO-072",
+        "id": 2306780,
+        "recipient_name": "SAVANNAH RIVER NUCLEAR SOLUTIONS LLC",
+        "subaward_number": "139919-0029"
+      },
+      {
+        "action_date": "2022-03-09",
+        "amount": 35775.0,
+        "description": "LOW LEVEL RAD WASTE SHIPMENTS TO SRNS BET-095",
+        "id": 2308561,
+        "recipient_name": "SAVANNAH RIVER NUCLEAR SOLUTIONS LLC",
+        "subaward_number": "139919-0027"
+      },
+      {
+        "action_date": "2022-02-24",
+        "amount": 85083.75,
+        "description": "LOW LEVEL RAD WASTE SHIPMENTS TO SRNS 'BET-482;483;484;485;486",
+        "id": 2306370,
+        "recipient_name": "SAVANNAH RIVER NUCLEAR SOLUTIONS LLC",
+        "subaward_number": "139919-0026"
+      }
+    ]
+  },
+  "retrieval_timestamp_utc": "2026-08-01T14:09:46.888253+00:00",
+  "retrieval_vintage": "2026-08-01",
+  "schema_version": "1.0",
+  "source_url": "https://api.usaspending.gov/api/v2/subawards/"
+}

@@ -1,0 +1,829 @@
+{
+  "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+  "error": null,
+  "provider": "USAspending.gov / U.S. Treasury",
+  "request": {
+    "body": {
+      "award_id": 292026551,
+      "limit": 100,
+      "page": 26
+    },
+    "method": "POST",
+    "url": "https://api.usaspending.gov/api/v2/subawards/"
+  },
+  "response": {
+    "page_metadata": {
+      "hasNext": true,
+      "hasPrevious": true,
+      "next": 27,
+      "page": 26,
+      "previous": 25
+    },
+    "results": [
+      {
+        "action_date": "2022-06-08",
+        "amount": 43700.0,
+        "description": "FY-22 LEICA SOFTWARE MAINTENANCE (KSO & NRF)",
+        "id": 990932,
+        "recipient_name": "RAND WORLDWIDE SUBSIDIARY INC",
+        "subaward_number": "146637"
+      },
+      {
+        "action_date": "2022-06-21",
+        "amount": 143471.96,
+        "description": "FY22 HCL ENDPOINT MANAGER (PATCHING) -BIGFIX",
+        "id": 985766,
+        "recipient_name": "STERLING COMPUTERS CORPORATION",
+        "subaward_number": "146634"
+      },
+      {
+        "action_date": "2022-06-08",
+        "amount": 127360.0,
+        "description": "FY22 MALWARE DETENTION SANDBOX SERVERS (FIREEYE X6500):",
+        "id": 998232,
+        "recipient_name": "ASSURANCE DATA INC",
+        "subaward_number": "146633"
+      },
+      {
+        "action_date": "2022-06-20",
+        "amount": 1709720.0,
+        "description": "FY22 HP ZBOOK FIREFLY G8 AND PERIPHERALS:",
+        "id": 1000335,
+        "recipient_name": "WESTWIND COMPUTER PRODUCTS, INC.",
+        "subaward_number": "146632"
+      },
+      {
+        "action_date": "2022-06-07",
+        "amount": 96462.65,
+        "description": "FY22 PURCHASE OF ISIGHT LICENSES",
+        "id": 2304128,
+        "recipient_name": "DS GOVERNMENT SOLUTIONS CORP",
+        "subaward_number": "146631"
+      },
+      {
+        "action_date": "2022-06-27",
+        "amount": 197177.15,
+        "description": "S6G NETWORK UPGRADES",
+        "id": 999989,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "146626"
+      },
+      {
+        "action_date": "2022-06-09",
+        "amount": 46057.9,
+        "description": "VIDEO GENERATOR/PROTOCOL ANALYZER",
+        "id": 2303669,
+        "recipient_name": "LOGISTICS365 INC",
+        "subaward_number": "146624"
+      },
+      {
+        "action_date": "2022-06-21",
+        "amount": 773228.36,
+        "description": "FY22 DELL EMC POWERSCALE (BE KS)",
+        "id": 982746,
+        "recipient_name": "STERLING COMPUTERS CORPORATION",
+        "subaward_number": "146623"
+      },
+      {
+        "action_date": "2022-06-07",
+        "amount": 45012.6,
+        "description": "KEYSIGHT DC POWER ANALYZERS",
+        "id": 989830,
+        "recipient_name": "TEVET LLC",
+        "subaward_number": "146621"
+      },
+      {
+        "action_date": "2022-06-22",
+        "amount": 990000.0,
+        "description": "TEXTUAL DATA MANAGEMENT SYSTEM",
+        "id": 998443,
+        "recipient_name": "MCFARLAND TECHNOLOGY INC",
+        "subaward_number": "146606"
+      },
+      {
+        "action_date": "2022-06-09",
+        "amount": 218750.0,
+        "description": "CLEANING PROBES",
+        "id": 983787,
+        "recipient_name": "DEPENDABLE TOOL & DIE CO INC",
+        "subaward_number": "146604"
+      },
+      {
+        "action_date": "2022-06-27",
+        "amount": 286790.42,
+        "description": "SUPPLIER SHALL PROVIDE THE FOLLOWING ITEMS IN ACCORDANCE WITH THE ATTACHED ADMIN",
+        "id": 2308199,
+        "recipient_name": "ORION TECHNOLOGIES, LLC",
+        "subaward_number": "146602"
+      },
+      {
+        "action_date": "2022-06-13",
+        "amount": 47094.56,
+        "description": "FY22 PTCS LAPTOP REFRESH",
+        "id": 2300123,
+        "recipient_name": "GHA TECHNOLOGIES INC",
+        "subaward_number": "146592"
+      },
+      {
+        "action_date": "2022-11-09",
+        "amount": 995800.0,
+        "description": "TELEMANIPULATORS",
+        "id": 1001182,
+        "recipient_name": "DOVER ENGINEERED PRODUCTS SEGMENT, INC.",
+        "subaward_number": "146591"
+      },
+      {
+        "action_date": "2022-06-21",
+        "amount": 39498.04,
+        "description": "EATON LITHIUM UPS",
+        "id": 989877,
+        "recipient_name": "STERLING COMPUTERS CORPORATION",
+        "subaward_number": "146585"
+      },
+      {
+        "action_date": "2022-06-10",
+        "amount": 38457.8,
+        "description": "LEM TRANSDUCER SPARES",
+        "id": 1002480,
+        "recipient_name": "CLAYTON ENGINEERING CO",
+        "subaward_number": "146566"
+      },
+      {
+        "action_date": "2022-06-02",
+        "amount": 39150.0,
+        "description": "TENSILE AND FRACTURE TOUGHNESS TESTS OF ZIRCONIUM ALLOYS.",
+        "id": 2304923,
+        "recipient_name": "WESTMORELAND MECHANICAL TESTING & RESEARCH, INC.",
+        "subaward_number": "146564"
+      },
+      {
+        "action_date": "2022-09-15",
+        "amount": 34000000.0,
+        "description": "ATR 2C CUBICLE REFURBISHMENT",
+        "id": 2304836,
+        "recipient_name": "BATTELLE ENERGY ALLIANCE, LLC",
+        "subaward_number": "146550"
+      },
+      {
+        "action_date": "2022-06-22",
+        "amount": 241303.44,
+        "description": "722423-4 FT. X 4 FT. X 6 FT. STEEL BOX WITH CLIPS, BRM MODEL COO90-ST/IP-1, PART",
+        "id": 2301227,
+        "recipient_name": "MHF PACKAGING SOLUTIONS, LLC",
+        "subaward_number": "146547"
+      },
+      {
+        "action_date": "2022-06-02",
+        "amount": 44000.0,
+        "description": "RENEWING SERVICE CONTRACTS FOR KAPL LECO INSTRUMENTS",
+        "id": 992825,
+        "recipient_name": "LECO CORP",
+        "subaward_number": "146530"
+      },
+      {
+        "action_date": "2022-09-14",
+        "amount": 312274.81,
+        "description": "S5G 2ND FLOOR CUBICLE REPLACEMENT",
+        "id": 2298159,
+        "recipient_name": "HB WORKPLACES, LLC",
+        "subaward_number": "146528"
+      },
+      {
+        "action_date": "2022-06-01",
+        "amount": 90592.0,
+        "description": "CHOMA - MOD E AND 4 TM PARTS",
+        "id": 997309,
+        "recipient_name": "DOVER ENGINEERED PRODUCTS SEGMENT, INC.",
+        "subaward_number": "146510"
+      },
+      {
+        "action_date": "2022-06-03",
+        "amount": 86278.32,
+        "description": "LEDONNE - PROCUREMENT OF ODS MO PLATE",
+        "id": 2306828,
+        "recipient_name": "ELMET EUCLID LLC",
+        "subaward_number": "146509"
+      },
+      {
+        "action_date": "2022-06-01",
+        "amount": 69355.6,
+        "description": "LAN UPS SUPPORT",
+        "id": 2301441,
+        "recipient_name": "GHA TECHNOLOGIES INC",
+        "subaward_number": "146503"
+      },
+      {
+        "action_date": "2022-06-02",
+        "amount": 32905.6,
+        "description": "EC OXYGEN SENSORS",
+        "id": 2301368,
+        "recipient_name": "HACH COMPANY",
+        "subaward_number": "146491"
+      },
+      {
+        "action_date": "2022-06-07",
+        "amount": 91912.24,
+        "description": "CISCO EQUIPMENT",
+        "id": 1000031,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "146440"
+      },
+      {
+        "action_date": "2022-06-30",
+        "amount": 235969.0,
+        "description": "FY22 COMMVAULT SOFTWARE LICENSES",
+        "id": 985919,
+        "recipient_name": "STERLING COMPUTERS CORPORATION",
+        "subaward_number": "146419"
+      },
+      {
+        "action_date": "2022-06-08",
+        "amount": 33999.99,
+        "description": "ORCAD MAINTENANCE",
+        "id": 2309231,
+        "recipient_name": "EMA DESIGN AUTOMATION, INC.",
+        "subaward_number": "146412"
+      },
+      {
+        "action_date": "2022-06-23",
+        "amount": 46000.0,
+        "description": "FY22 DOCAVE BACKUP AND RECOVERY MAINTENANCE RENEWAL - POP 7/1/22-6/30/23",
+        "id": 981448,
+        "recipient_name": "CARAHSOFT TECHNOLOGY CORP",
+        "subaward_number": "146401"
+      },
+      {
+        "action_date": "2022-04-28",
+        "amount": 460368.0,
+        "description": "AUKUS NNPP TECHNOLOGY EXCHANGE DEEP DIVE",
+        "id": 2298291,
+        "recipient_name": "BATTELLE SAVANNAH RIVER ALLIANCE, LLC",
+        "subaward_number": "146385"
+      },
+      {
+        "action_date": "2022-06-29",
+        "amount": 671213.14,
+        "description": "VTC - VIDEO CONFERENCING SYSTEM ANNUAL SUPPORT/MAINTENANCE",
+        "id": 992668,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "146377"
+      },
+      {
+        "action_date": "2022-06-23",
+        "amount": 1047788.17,
+        "description": "FY22 DFD CISCO SERVERS IN ACCORDANCE WITH ATTACHED TECHNICAL SPECIFICATION",
+        "id": 987118,
+        "recipient_name": "STERLING COMPUTERS CORPORATION",
+        "subaward_number": "146375"
+      },
+      {
+        "action_date": "2022-04-25",
+        "amount": 47700.0,
+        "description": "DIESEL FUEL NO. 1, DYED FOR EDG FUEL TANKS - NATHAN FUNK",
+        "id": 990233,
+        "recipient_name": "PARKLAND USA CORPORATION",
+        "subaward_number": "146368"
+      },
+      {
+        "action_date": "2022-06-29",
+        "amount": 108000.0,
+        "description": "HAWORTH DESIGN SURVEY",
+        "id": 991340,
+        "recipient_name": "HAWORTH INC",
+        "subaward_number": "146367"
+      },
+      {
+        "action_date": "2022-06-07",
+        "amount": 30345.51,
+        "description": "NETWORK EQUPMENT",
+        "id": 999617,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "146358"
+      },
+      {
+        "action_date": "2022-06-23",
+        "amount": 131306.0,
+        "description": "PURCHASE OF TWO (2) MTS LANDMARK TABLE TOP LOAD FRAMES.",
+        "id": 1001575,
+        "recipient_name": "MTS SYSTEMS CORPORATION",
+        "subaward_number": "146343"
+      },
+      {
+        "action_date": "2022-04-20",
+        "amount": 43890.0,
+        "description": "FUEL ORDER FOR BOILERS HEATING SEASON 2021-2022",
+        "id": 982489,
+        "recipient_name": "JOHN C. BERRY & SONS, INC.",
+        "subaward_number": "146330"
+      },
+      {
+        "action_date": "2022-06-06",
+        "amount": 41340.0,
+        "description": "GEOMAGIC SOFTWARE",
+        "id": 998126,
+        "recipient_name": "CIMQUEST INC",
+        "subaward_number": "146322"
+      },
+      {
+        "action_date": "2022-04-27",
+        "amount": 157000.0,
+        "description": "FY22 ENTERPRISE DOCKING STATIONS:",
+        "id": 999900,
+        "recipient_name": "WESTWIND COMPUTER PRODUCTS, INC.",
+        "subaward_number": "146320"
+      },
+      {
+        "action_date": "2022-05-19",
+        "amount": 97194.0,
+        "description": "FY22 SBIT COHESITY",
+        "id": 2297197,
+        "recipient_name": "CTG FEDERAL, LLC",
+        "subaward_number": "146315"
+      },
+      {
+        "action_date": "2022-04-26",
+        "amount": 33806.0,
+        "description": "PURCHASE COMMERCIAL OFF THE SHELF SOFTWARE FOR PERFORMING MODAL ANALYSIS. ONE CO",
+        "id": 992694,
+        "recipient_name": "SAGE TECHNOLOGIES CORPORATION",
+        "subaward_number": "146311"
+      },
+      {
+        "action_date": "2022-06-13",
+        "amount": 111506.09,
+        "description": "FY22 - FY20 HPC MAINTENANCE RENEWAL",
+        "id": 997003,
+        "recipient_name": "ABBA TECHNOLOGIES, INC.",
+        "subaward_number": "146298"
+      },
+      {
+        "action_date": "2022-04-21",
+        "amount": 48230.0,
+        "description": "ALUMINUM NITRIDE WAFERS",
+        "id": 2303722,
+        "recipient_name": "HEXATECH, INC",
+        "subaward_number": "146286"
+      },
+      {
+        "action_date": "2022-06-14",
+        "amount": 135525.78,
+        "description": "TURNOUT GEAR ES 5 YEAR SWAP",
+        "id": 2302528,
+        "recipient_name": "GARRISON FIRE & RESCUE CORP.",
+        "subaward_number": "146284"
+      },
+      {
+        "action_date": "2022-04-19",
+        "amount": 54943.95,
+        "description": "QUEST SOFTWARE UTILITIES",
+        "id": 2303968,
+        "recipient_name": "GOVSMART, INC.",
+        "subaward_number": "146274"
+      },
+      {
+        "action_date": "2022-06-09",
+        "amount": 95297.0,
+        "description": "TRANSITION SHIELD WATERFALL FEATURE COMPONENTS AND FABRICATION OF PIPING SYSTEM",
+        "id": 2309776,
+        "recipient_name": "AMERICAN FABRICATION INC",
+        "subaward_number": "146271"
+      },
+      {
+        "action_date": "2022-04-27",
+        "amount": 31179.06,
+        "description": "MATLAB SOFTWARE PROCUREMENT",
+        "id": 987236,
+        "recipient_name": "LYME COMPUTER SYSTEMS, INC.",
+        "subaward_number": "146262"
+      },
+      {
+        "action_date": "2024-05-10",
+        "amount": 241266.0,
+        "description": "KESSELRING SITE DOORS MASTER AGREEMENT",
+        "id": 981797,
+        "recipient_name": "ENFIELD ENTERPRISES LLC",
+        "subaward_number": "146260-0003"
+      },
+      {
+        "action_date": "2022-09-21",
+        "amount": 185192.0,
+        "description": "KESSELRING SITE DOORS MASTER AGREEMENT",
+        "id": 989954,
+        "recipient_name": "ENFIELD ENTERPRISES LLC",
+        "subaward_number": "146260-0001"
+      },
+      {
+        "action_date": "2024-02-26",
+        "amount": 191125.0,
+        "description": "KESSELRING SITE DOORS MASTER AGREEMENT",
+        "id": 2302800,
+        "recipient_name": "MULTI-PHASE CONTRACTING CORP.",
+        "subaward_number": "146259-0001"
+      },
+      {
+        "action_date": "2022-04-28",
+        "amount": 66786.1,
+        "description": "FY22 IDE BELKIN KVMS AND DELL MONITORS",
+        "id": 991648,
+        "recipient_name": "STERLING COMPUTERS CORPORATION",
+        "subaward_number": "146253"
+      },
+      {
+        "action_date": "2022-06-07",
+        "amount": 448329.74,
+        "description": "SFWST LINING",
+        "id": 990696,
+        "recipient_name": "ENFIELD ENTERPRISES LLC",
+        "subaward_number": "146247"
+      },
+      {
+        "action_date": "2022-04-27",
+        "amount": 255584.0,
+        "description": "MOBILE THREAT DEFENSE - LOOKOUT MAINTENANCE - POP 8/14/22-8/13/23",
+        "id": 983172,
+        "recipient_name": "CARAHSOFT TECHNOLOGY CORP",
+        "subaward_number": "146245"
+      },
+      {
+        "action_date": "2022-04-13",
+        "amount": 99915.63,
+        "description": "SERVER FOR CDR. AUDITING, MONITORING APPLICATION",
+        "id": 994064,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "146238"
+      },
+      {
+        "action_date": "2022-06-02",
+        "amount": 104664.0,
+        "description": "BOBCAT UTILITY VEHICLES (UW56 SERIES) TRADE-IN KESSELRING SITE - FY2022",
+        "id": 2300369,
+        "recipient_name": "DOOSAN BOBCAT NORTH AMERICA, INC.",
+        "subaward_number": "146229"
+      },
+      {
+        "action_date": "2022-04-26",
+        "amount": 57460.0,
+        "description": "FY-22 FS.PROJECT DEVELOPMENT SYSTEMS ENGINEERING EQUIPMENT",
+        "id": 992215,
+        "recipient_name": "WESTWIND COMPUTER PRODUCTS, INC.",
+        "subaward_number": "146206"
+      },
+      {
+        "action_date": "2022-04-18",
+        "amount": 216118.44,
+        "description": "DFP BALLISTIC PANELS",
+        "id": 992060,
+        "recipient_name": "DEFENSHIELD, INC.",
+        "subaward_number": "146203"
+      },
+      {
+        "action_date": "2022-04-19",
+        "amount": 32601.69,
+        "description": "FY22 NI DAS HARDWARE FOR WET DRY SENSOR TEST",
+        "id": 2299841,
+        "recipient_name": "IDEAL SYSTEM SOLUTIONS, INC.",
+        "subaward_number": "146200"
+      },
+      {
+        "action_date": "2022-04-25",
+        "amount": 51696.0,
+        "description": "UR16E UNIVERSAL ROBOT WITH ROBOTIQ FORCE COPILOT SOFTWARE",
+        "id": 990149,
+        "recipient_name": "NEFF EXPANSION NE LLC",
+        "subaward_number": "146197"
+      },
+      {
+        "action_date": "2022-04-25",
+        "amount": 77466.62,
+        "description": "NI CONTROLLER - JOSLIN",
+        "id": 987466,
+        "recipient_name": "TEVET LLC",
+        "subaward_number": "146193"
+      },
+      {
+        "action_date": "2022-04-21",
+        "amount": 35523.66,
+        "description": "NATIONAL INSTRUMENTS (LEONARD ANDERSON)",
+        "id": 2298123,
+        "recipient_name": "IDEAL SYSTEM SOLUTIONS, INC.",
+        "subaward_number": "146192"
+      },
+      {
+        "action_date": "2022-04-18",
+        "amount": 124477.72,
+        "description": "FY22 PLURALSIGHT LICENSE RENEWAL:",
+        "id": 999135,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "146185"
+      },
+      {
+        "action_date": "2022-04-15",
+        "amount": 217840.0,
+        "description": "MITSUBISHI MV2400ST WIRE EDM",
+        "id": 2307548,
+        "recipient_name": "MAEHR MACHINERY INC.",
+        "subaward_number": "146181"
+      },
+      {
+        "action_date": "2022-06-22",
+        "amount": 49265.0,
+        "description": "CHEMISTRY-RH HEALTH SOURCES",
+        "id": 2306157,
+        "recipient_name": "ECKERT & ZIEGLER ANALYTICS, INC",
+        "subaward_number": "146174"
+      },
+      {
+        "action_date": "2022-04-04",
+        "amount": 43990.0,
+        "description": "FUEL ORDER FOR BOILERS HEATING SEASON 2021-2022",
+        "id": 987449,
+        "recipient_name": "JOHN C. BERRY & SONS, INC.",
+        "subaward_number": "146173"
+      },
+      {
+        "action_date": "2022-04-07",
+        "amount": 94235.0,
+        "description": "DEWESOFT DAS",
+        "id": 981812,
+        "recipient_name": "DEWESOFT LLC",
+        "subaward_number": "146171"
+      },
+      {
+        "action_date": "2022-04-12",
+        "amount": 49560.0,
+        "description": "B-12 AND B-25 IP-1 SHIPPING CONTAINERS",
+        "id": 2308844,
+        "recipient_name": "CONTAINER PRODUCTS CORPORATION",
+        "subaward_number": "146170"
+      },
+      {
+        "action_date": "2022-06-08",
+        "amount": 44120.0,
+        "description": "FY22 LTO TAPE",
+        "id": 2304017,
+        "recipient_name": "DISK-O-TAPE INC",
+        "subaward_number": "146161"
+      },
+      {
+        "action_date": "2022-06-30",
+        "amount": 365869.26,
+        "description": "FY22 ORACLE HARDWARE",
+        "id": 1000313,
+        "recipient_name": "DYNAMIC SYSTEMS INC",
+        "subaward_number": "146160"
+      },
+      {
+        "action_date": "2022-04-22",
+        "amount": 125175.0,
+        "description": "FRIEWALD - 1 CUSTOM BUILT TRANSFER SWITCH CABINET PER SOW-SPTS-001",
+        "id": 997709,
+        "recipient_name": "PREMIER AUTOMATION LLC",
+        "subaward_number": "146159"
+      },
+      {
+        "action_date": "2022-04-26",
+        "amount": 65758.53,
+        "description": "MAMAVA PODS FROM MJL ENTERPRISES",
+        "id": 2308078,
+        "recipient_name": "MJL ENTERPRISES, LLC",
+        "subaward_number": "146146"
+      },
+      {
+        "action_date": "2022-04-21",
+        "amount": 42027.0,
+        "description": "BETTIS LOCK-ON CCTV HARDWARE & LICENSES",
+        "id": 2301534,
+        "recipient_name": "LOGISTICS365 INC",
+        "subaward_number": "146142"
+      },
+      {
+        "action_date": "2022-03-31",
+        "amount": 33000.0,
+        "description": "ACUSOLVE LICENSE RENEWAL FY22",
+        "id": 996182,
+        "recipient_name": "ALTAIR ENGINEERING INC.",
+        "subaward_number": "146139"
+      },
+      {
+        "action_date": "2023-12-07",
+        "amount": 250165.0,
+        "description": "1717 GENERAL CONSTRUCTION",
+        "id": 2303058,
+        "recipient_name": "DIMARCO CONSTRUCTION CO. INC.",
+        "subaward_number": "146136-0002"
+      },
+      {
+        "action_date": "2023-07-24",
+        "amount": 616470.0,
+        "description": "1717 GENERAL CONSTRUCTION",
+        "id": 998717,
+        "recipient_name": "GRM KONTRACTING LLC",
+        "subaward_number": "146135-0021"
+      },
+      {
+        "action_date": "2023-07-18",
+        "amount": 273661.0,
+        "description": "1717 GENERAL CONSTRUCTION",
+        "id": 999030,
+        "recipient_name": "GRM KONTRACTING LLC",
+        "subaward_number": "146135-0020"
+      },
+      {
+        "action_date": "2023-03-21",
+        "amount": 639048.0,
+        "description": "1717 GENERAL CONSTRUCTION",
+        "id": 992422,
+        "recipient_name": "GRM KONTRACTING, LLC",
+        "subaward_number": "146135-0014"
+      },
+      {
+        "action_date": "2022-09-21",
+        "amount": 1083900.0,
+        "description": "1717 GENERAL CONSTRUCTION",
+        "id": 996759,
+        "recipient_name": "GRM KONTRACTING, LLC",
+        "subaward_number": "146135-0010"
+      },
+      {
+        "action_date": "2022-11-04",
+        "amount": 1083899.0,
+        "description": "1717 GENERAL CONSTRUCTION",
+        "id": 995426,
+        "recipient_name": "GRM KONTRACTING, LLC",
+        "subaward_number": "146135-0010"
+      },
+      {
+        "action_date": "2022-06-16",
+        "amount": 649789.0,
+        "description": "1717 GENERAL CONSTRUCTION",
+        "id": 995146,
+        "recipient_name": "GRM KONTRACTING, LLC",
+        "subaward_number": "146135-0006"
+      },
+      {
+        "action_date": "2022-06-06",
+        "amount": 44615.0,
+        "description": "1717 GENERAL CONSTRUCTION",
+        "id": 998133,
+        "recipient_name": "GRM KONTRACTING, LLC",
+        "subaward_number": "146135-0005"
+      },
+      {
+        "action_date": "2022-04-20",
+        "amount": 134877.0,
+        "description": "1717 GENERAL CONSTRUCTION",
+        "id": 994562,
+        "recipient_name": "GRM KONTRACTING, LLC",
+        "subaward_number": "146135-0003"
+      },
+      {
+        "action_date": "2022-03-31",
+        "amount": 1728604.0,
+        "description": "1717 GENERAL CONSTRUCTION",
+        "id": 997225,
+        "recipient_name": "GRM KONTRACTING, LLC",
+        "subaward_number": "146135-0001"
+      },
+      {
+        "action_date": "2024-02-15",
+        "amount": 991060.0,
+        "description": "1717 GENERAL CONSTRUCTION",
+        "id": 2302911,
+        "recipient_name": "FACILITY SUPPORT SERVICES LLC",
+        "subaward_number": "146134-0011"
+      },
+      {
+        "action_date": "2023-12-20",
+        "amount": 1345782.0,
+        "description": "1717 GENERAL CONSTRUCTION",
+        "id": 2304212,
+        "recipient_name": "FACILITY SUPPORT SERVICES LLC",
+        "subaward_number": "146134-0010"
+      },
+      {
+        "action_date": "2023-12-20",
+        "amount": 650480.0,
+        "description": "1717 GENERAL CONSTRUCTION",
+        "id": 2302765,
+        "recipient_name": "FACILITY SUPPORT SERVICES LLC",
+        "subaward_number": "146134-0009"
+      },
+      {
+        "action_date": "2023-03-16",
+        "amount": 89403.0,
+        "description": "1717 GENERAL CONSTRUCTION",
+        "id": 2304210,
+        "recipient_name": "FACILITY SUPPORT SERVICES LLC",
+        "subaward_number": "146134-0004"
+      },
+      {
+        "action_date": "2022-06-21",
+        "amount": 271100.0,
+        "description": "1717 GENERAL CONSTRUCTION",
+        "id": 2303532,
+        "recipient_name": "FACILITY SUPPORT SERVICES LLC",
+        "subaward_number": "146134-0003"
+      },
+      {
+        "action_date": "2022-04-19",
+        "amount": 396830.0,
+        "description": "1717 GENERAL CONSTRUCTION",
+        "id": 2300491,
+        "recipient_name": "FACILITY SUPPORT SERVICES LLC",
+        "subaward_number": "146134-0002"
+      },
+      {
+        "action_date": "2022-04-22",
+        "amount": 271890.0,
+        "description": "DURICK - EAST LLW UNIVERSAL DRAWER DRUMS 2022 2",
+        "id": 1000325,
+        "recipient_name": "KIN-TECH MFG INC",
+        "subaward_number": "146133"
+      },
+      {
+        "action_date": "2022-04-04",
+        "amount": 47525.0,
+        "description": "SUPPLIER SHALL PROVIDE THE FOLLOWING ITEMS IN ACCORDANCE WITH THE ATTACHED ADMIN",
+        "id": 2306709,
+        "recipient_name": "PI PHYSIK INSTRUMENTE LP",
+        "subaward_number": "146129"
+      },
+      {
+        "action_date": "2022-04-18",
+        "amount": 86760.0,
+        "description": "FY22 ITP FIREWALLS AND SFP'S",
+        "id": 1001193,
+        "recipient_name": "WESTWIND COMPUTER PRODUCTS, INC.",
+        "subaward_number": "146128"
+      },
+      {
+        "action_date": "2022-04-19",
+        "amount": 107675.04,
+        "description": "S1B IO EPCP NETWORK SWITCHES",
+        "id": 980165,
+        "recipient_name": "STERLING COMPUTERS CORPORATION",
+        "subaward_number": "146123"
+      },
+      {
+        "action_date": "2024-02-05",
+        "amount": 357607.46,
+        "description": "INERT GAS BULK ARGON AND NITROGEN2",
+        "id": 2298905,
+        "recipient_name": "MESSER LLC",
+        "subaward_number": "146122-0007"
+      },
+      {
+        "action_date": "2022-04-21",
+        "amount": 332586.5,
+        "description": "INERT GAS BULK ARGON AND NITROGEN2",
+        "id": 2299489,
+        "recipient_name": "MESSER LLC",
+        "subaward_number": "146122-0001"
+      },
+      {
+        "action_date": "2022-04-19",
+        "amount": 344845.69,
+        "description": "SCAFFOLDING FOR OHCF",
+        "id": 2307795,
+        "recipient_name": "LAYHER INC",
+        "subaward_number": "146119"
+      },
+      {
+        "action_date": "2022-04-12",
+        "amount": 42000.0,
+        "description": "DESIGN AND DELIVER CUSTOM PAUT WEDGES FOR NOZZLE APPLICATIONS- FY22 ACTION BUT P",
+        "id": 2304561,
+        "recipient_name": "ELECTRIC POWER RESEARCH INSTITUTE INC",
+        "subaward_number": "146109"
+      },
+      {
+        "action_date": "2022-04-18",
+        "amount": 33203.16,
+        "description": "POLDAS PRODUCTION SYSTEM",
+        "id": 2298426,
+        "recipient_name": "IDEAL SYSTEM SOLUTIONS, INC.",
+        "subaward_number": "146096"
+      },
+      {
+        "action_date": "2022-04-13",
+        "amount": 100550.0,
+        "description": "DATA PHYSICS SOFTWARE MAINTENANCE",
+        "id": 979876,
+        "recipient_name": "DATA PHYSICS CORPORATION",
+        "subaward_number": "146092"
+      },
+      {
+        "action_date": "2022-04-05",
+        "amount": 55429.0,
+        "description": "PALLET JACK",
+        "id": 981700,
+        "recipient_name": "BURNS INDUSTRIAL EQUIPMENT, INC",
+        "subaward_number": "146089"
+      }
+    ]
+  },
+  "retrieval_timestamp_utc": "2026-08-01T14:09:40.788907+00:00",
+  "retrieval_vintage": "2026-08-01",
+  "schema_version": "1.0",
+  "source_url": "https://api.usaspending.gov/api/v2/subawards/"
+}

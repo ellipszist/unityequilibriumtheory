@@ -1,0 +1,28 @@
+{
+  "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+  "error": null,
+  "provider": "USAspending.gov / U.S. Treasury",
+  "request": {
+    "body": {
+      "award_id": 292026608,
+      "limit": 100,
+      "page": 1
+    },
+    "method": "POST",
+    "url": "https://api.usaspending.gov/api/v2/subawards/"
+  },
+  "response": {
+    "page_metadata": {
+      "hasNext": false,
+      "hasPrevious": false,
+      "next": null,
+      "page": 1,
+      "previous": null
+    },
+    "results": []
+  },
+  "retrieval_timestamp_utc": "2026-08-01T14:09:52.356458+00:00",
+  "retrieval_vintage": "2026-08-01",
+  "schema_version": "1.0",
+  "source_url": "https://api.usaspending.gov/api/v2/subawards/"
+}

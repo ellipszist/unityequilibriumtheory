@@ -1,0 +1,17 @@
+{
+  "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+  "error": null,
+  "provider": "USAspending.gov / U.S. Treasury",
+  "request": {
+    "body": null,
+    "method": "GET",
+    "url": "https://api.usaspending.gov/api/v2/awards/count/subaward/CONT_AWD_89233018CNR000004_8900_-NONE-_-NONE-/"
+  },
+  "response": {
+    "subawards": 3168
+  },
+  "retrieval_timestamp_utc": "2026-08-01T14:09:08.725060+00:00",
+  "retrieval_vintage": "2026-08-01",
+  "schema_version": "1.0",
+  "source_url": "https://api.usaspending.gov/api/v2/awards/count/subaward/CONT_AWD_89233018CNR000004_8900_-NONE-_-NONE-/"
+}

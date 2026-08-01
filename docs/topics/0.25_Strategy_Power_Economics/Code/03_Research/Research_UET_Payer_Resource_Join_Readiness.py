@@ -24,6 +24,7 @@ from economic_hardening_common import (
     AWARD_LEVEL_OUTLAY_ARTIFACT,
     AWARD_FUNDING_ACCOUNT_ARTIFACT,
     FEDERAL_ACCOUNT_BUDGET_RESOURCE_ARTIFACT,
+    SUBAWARD_DOWNSTREAM_ARTIFACT,
     USGS_MATERIAL_QUANTITY_ARTIFACT,
     SEC_PUBLIC_FIRM_PROXY_ARTIFACT,
     SEC_PUBLIC_FIRM_MIX_ARTIFACT,
@@ -185,6 +186,14 @@ def main() -> int:
         except (OSError, json.JSONDecodeError):
             federal_account_budget_payload = {}
     federal_account_budget_ready = federal_account_budget_resource.get("status") == "PASS_WITH_BOUNDARY"
+    subaward_downstream = _artifact_status(SUBAWARD_DOWNSTREAM_ARTIFACT)
+    subaward_downstream_ready = subaward_downstream.get("status") == "PASS_WITH_BOUNDARY"
+    subaward_downstream_payload = {}
+    if subaward_downstream.get("exists"):
+        try:
+            subaward_downstream_payload = json.loads(SUBAWARD_DOWNSTREAM_ARTIFACT.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            subaward_downstream_payload = {}
 
     evidence = {
         "funding_flows": {
@@ -264,6 +273,13 @@ def main() -> int:
             "source": _glob_record(RAW_ROOT / "usaspending" / "2026-08-01", "federal_account_*.json", "USAspending federal-account budget-resource responses"),
             "boundary": "FY2024 budget authority, appropriations, obligations, outlays, and unobligated balances are federal account-reporting quantities. They establish account budget context, not tax/debt/money-creation attribution, bank settlement, supplier invoices, or physical-resource conversion.",
         },
+        "subaward_downstream_recipient": {
+            "status": "PASS_WITH_BOUNDARY" if subaward_downstream_ready else "BLOCKED",
+            "artifact": subaward_downstream,
+            "coverage": subaward_downstream_payload.get("coverage"),
+            "source": _glob_record(RAW_ROOT / "usaspending" / "2026-08-01", "subaward_*.json", "USAspending subaward count and downstream-recipient responses"),
+            "boundary": "The fixed ten-award sample has complete reported subaward-page coverage; downstream recipient, amount, action date, and description fields are award-reporting observations, not bank settlement, invoice, payroll, or ultimate financing-source records.",
+        },
         "award_outlay_reconciliation": {
             "status": "PASS_WITH_BOUNDARY" if award_outlay_ready else "BLOCKED",
             "artifact": award_outlay_reconciliation,
@@ -315,6 +331,7 @@ def main() -> int:
             "award_level_account_outlay_ready": bool(award_level_ready),
             "award_federal_account_linkage_ready": bool(award_funding_bounded),
             "federal_account_budget_resource_ready": bool(federal_account_budget_ready),
+            "subaward_downstream_recipient_ready": bool(subaward_downstream_ready),
             "bounded_labor_subset": evidence["labor_industry_hours"].get("artifact", {}).get("bounded_coverage"),
         },
         "evidence": evidence,

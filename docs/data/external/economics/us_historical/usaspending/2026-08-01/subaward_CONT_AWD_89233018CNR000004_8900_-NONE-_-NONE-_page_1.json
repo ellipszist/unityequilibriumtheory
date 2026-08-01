@@ -1,0 +1,829 @@
+{
+  "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+  "error": null,
+  "provider": "USAspending.gov / U.S. Treasury",
+  "request": {
+    "body": {
+      "award_id": 292026551,
+      "limit": 100,
+      "page": 1
+    },
+    "method": "POST",
+    "url": "https://api.usaspending.gov/api/v2/subawards/"
+  },
+  "response": {
+    "page_metadata": {
+      "hasNext": true,
+      "hasPrevious": false,
+      "next": 2,
+      "page": 1,
+      "previous": null
+    },
+    "results": [
+      {
+        "action_date": "2024-12-18",
+        "amount": 123627.48,
+        "description": "TOA 417 ITEM 3 AE FIELD FOLLOW - JOB 1361 TRANSPORTER TRANSFER PATH PROJECT",
+        "id": 2298190,
+        "recipient_name": "BAKER AND ASSOCIATES",
+        "subaward_number": "7019481"
+      },
+      {
+        "action_date": "2024-11-21",
+        "amount": 101295.0,
+        "description": "FIELD FOLLOW AND COMMISSIONING FOR CCF E10-105 HPC FY25 RENOVATION",
+        "id": 2303034,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019480"
+      },
+      {
+        "action_date": "2024-12-04",
+        "amount": 39870.0,
+        "description": "WATER UTILITIES AS-BUILTS  TOA 406",
+        "id": 2298330,
+        "recipient_name": "BAKER AND ASSOCIATES",
+        "subaward_number": "7019478"
+      },
+      {
+        "action_date": "2024-12-10",
+        "amount": 311936.21,
+        "description": "TOA-174 KNOLLS FIREHOUSE PERFORMANCE SPECIFICATION AND GEOTECH",
+        "id": 2306832,
+        "recipient_name": "SAGE ENGINEERING ASSOCIATES, LLP",
+        "subaward_number": "7019476"
+      },
+      {
+        "action_date": "2024-12-12",
+        "amount": 490180.0,
+        "description": "TOA 52 - CLASSIFIED ISLANDS DETAIL DESIGN",
+        "id": 2301284,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019475"
+      },
+      {
+        "action_date": "2024-12-18",
+        "amount": 130677.89,
+        "description": "TOA-120 RML HVAC & SIDING STRUCTURAL ANALYSIS DETAIL DESIGN",
+        "id": 2309441,
+        "recipient_name": "SAGE ENGINEERING ASSOCIATES, LLP",
+        "subaward_number": "7019472"
+      },
+      {
+        "action_date": "2024-10-01",
+        "amount": 225400.0,
+        "description": "COOLING TOWER 5 REPLACEMENT (TASK ORDER AUTHORIZATION #112)",
+        "id": 2299086,
+        "recipient_name": "BAKER AND ASSOCIATES",
+        "subaward_number": "7019470"
+      },
+      {
+        "action_date": "2024-09-20",
+        "amount": 149575.0,
+        "description": "TOA 50 - ENGINEERING SERVICES FOR HAZARDOUS MATERIAL SURVEYS AND WASTE CHARACTER",
+        "id": 2301598,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019466"
+      },
+      {
+        "action_date": "2024-09-26",
+        "amount": 441389.0,
+        "description": "NRF HEAT CONVERSION GPPS (CONCEPTUAL DESIGNS)",
+        "id": 2299523,
+        "recipient_name": "WALSH ENGINEERING SERVICES, PC",
+        "subaward_number": "7019460"
+      },
+      {
+        "action_date": "2024-10-23",
+        "amount": 48472.0,
+        "description": "TOA #17 - Q3 OVERHEAD UTILITY REROUTES FIELD FOLLOW SERVICES",
+        "id": 2302459,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019459"
+      },
+      {
+        "action_date": "2024-09-12",
+        "amount": 43715.32,
+        "description": "TOA 170 - CENTER ROAD WATER LINES REPLACEMENT COMMISSIONING SERVICES",
+        "id": 2308970,
+        "recipient_name": "SAGE ENGINEERING ASSOCIATES, LLP",
+        "subaward_number": "7019458"
+      },
+      {
+        "action_date": "2024-10-23",
+        "amount": 190098.29,
+        "description": "TOA 168 - FUNCTIONAL REQUIREMENTS AND ESTIMATE FOR MLDF",
+        "id": 2310043,
+        "recipient_name": "SAGE ENGINEERING ASSOCIATES, LLP",
+        "subaward_number": "7019456"
+      },
+      {
+        "action_date": "2024-09-05",
+        "amount": 641420.0,
+        "description": "TOA 49 - CLASSIFIED ISLANDS",
+        "id": 2304301,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019455"
+      },
+      {
+        "action_date": "2024-10-11",
+        "amount": 36492.0,
+        "description": "TOA-27 CENTER ROAD WATER LINES REPLACEMENT",
+        "id": 2301593,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019450"
+      },
+      {
+        "action_date": "2024-07-22",
+        "amount": 313929.0,
+        "description": "TOA 430 - CSRF MODIFICATIONS PROJECT FINAL DESIGN",
+        "id": 2299789,
+        "recipient_name": "BAKER AND ASSOCIATES",
+        "subaward_number": "7019449"
+      },
+      {
+        "action_date": "2024-07-24",
+        "amount": 64739.55,
+        "description": "TOA 166 - KS SITE PERIMETER ROAD",
+        "id": 2305192,
+        "recipient_name": "SAGE ENGINEERING ASSOCIATES, LLP",
+        "subaward_number": "7019447"
+      },
+      {
+        "action_date": "2024-07-22",
+        "amount": 134470.0,
+        "description": "TOA 45 KNOLLS SITE SECURITY VEHICLE LIFT GATE REPLACEMENT",
+        "id": 2301467,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019446"
+      },
+      {
+        "action_date": "2024-07-01",
+        "amount": 30134.74,
+        "description": "TOA 164 - E6 RTU REPLACEMENT",
+        "id": 2306388,
+        "recipient_name": "SAGE ENGINEERING ASSOCIATES, LLP",
+        "subaward_number": "7019444"
+      },
+      {
+        "action_date": "2024-07-03",
+        "amount": 473273.0,
+        "description": "TOA 48 - Q34 DETAILED DESIGN",
+        "id": 2303553,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019443"
+      },
+      {
+        "action_date": "2024-05-15",
+        "amount": 383600.0,
+        "description": "BETTIS NORTH CAMPUS LAND DEVELOPMENT (TASK ORDER AUTHORIZATION #109)",
+        "id": 2299813,
+        "recipient_name": "BAKER AND ASSOCIATES",
+        "subaward_number": "7019442"
+      },
+      {
+        "action_date": "2024-06-06",
+        "amount": 228544.0,
+        "description": "DESIGN REVIEW SUPPORT SERVICES FOR NEAP CIPR (TOA 510)",
+        "id": 996165,
+        "recipient_name": "WALSH ENGINEERING SERVICES, PC",
+        "subaward_number": "7019440"
+      },
+      {
+        "action_date": "2024-06-27",
+        "amount": 478738.0,
+        "description": "TOA 46 P10 CONCEPT DESIGN KNOLLS LABORATORY",
+        "id": 2302056,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019437"
+      },
+      {
+        "action_date": "2024-06-17",
+        "amount": 499145.75,
+        "description": "CONCEPTUAL DESIGN FOR UTILITY EXPANSION PROJECT",
+        "id": 994261,
+        "recipient_name": "WALSH ENGINEERING SERVICES, PC",
+        "subaward_number": "7019430"
+      },
+      {
+        "action_date": "2024-08-07",
+        "amount": 30000.0,
+        "description": "FY24 INVENTORY AND INSPECTION AUDIT NRF,KESSELRING AND BETTIS",
+        "id": 2299345,
+        "recipient_name": "BAKER AND ASSOCIATES",
+        "subaward_number": "7019424"
+      },
+      {
+        "action_date": "2024-02-01",
+        "amount": 177141.0,
+        "description": "TOA-44 HIGH PERFORMANCE COMPUTING DESIGN DETAIL",
+        "id": 2301248,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019422"
+      },
+      {
+        "action_date": "2024-01-29",
+        "amount": 48753.0,
+        "description": "MEDICAL SCIENCE COMPLEX TOA429",
+        "id": 2298858,
+        "recipient_name": "BAKER AND ASSOCIATES",
+        "subaward_number": "7019421"
+      },
+      {
+        "action_date": "2024-01-10",
+        "amount": 71763.44,
+        "description": "TOA 142 -B87 HVAC RENOVATION FIELD FOLLOW AND COMMISSIONING",
+        "id": 2305515,
+        "recipient_name": "SAGE ENGINEERING ASSOCIATES, LLP",
+        "subaward_number": "7019420"
+      },
+      {
+        "action_date": "2024-01-18",
+        "amount": 131732.0,
+        "description": "TOA 042 BUILDING RECOMMISSIONING PROJECT",
+        "id": 2297804,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019419"
+      },
+      {
+        "action_date": "2024-01-10",
+        "amount": 78557.6,
+        "description": "TOA 159 - BUILDING RECOMMISSIONING ENERGY AUDIT",
+        "id": 2307313,
+        "recipient_name": "SAGE ENGINEERING ASSOCIATES, LLP",
+        "subaward_number": "7019418"
+      },
+      {
+        "action_date": "2024-01-11",
+        "amount": 69336.0,
+        "description": "NRF BACKUP POWER SUPPLY AE REDLINE MARKUP AS-BUILTS",
+        "id": 2299274,
+        "recipient_name": "BAKER AND ASSOCIATES",
+        "subaward_number": "7019417"
+      },
+      {
+        "action_date": "2023-12-19",
+        "amount": 214996.0,
+        "description": "TOA 23 - FIELD FOLLOW, COMMISSIONING, AS BUILTS",
+        "id": 2297645,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019416"
+      },
+      {
+        "action_date": "2023-12-14",
+        "amount": 149343.0,
+        "description": "ECF ROOF HATCH DESIGN",
+        "id": 2299738,
+        "recipient_name": "BAKER AND ASSOCIATES",
+        "subaward_number": "7019413"
+      },
+      {
+        "action_date": "2024-01-23",
+        "amount": 32272.0,
+        "description": "TOA 003 FIELD FOLLOW SERVICES FOR DATA CENTER",
+        "id": 2298063,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019399"
+      },
+      {
+        "action_date": "2024-09-17",
+        "amount": 5952822.82,
+        "description": "CS-111E5 HVAC EQUIPMENT NON-HEPA UNITS",
+        "id": 1001334,
+        "recipient_name": "TRANE U.S. INC.",
+        "subaward_number": "7019392"
+      },
+      {
+        "action_date": "2024-07-24",
+        "amount": 9674990.45,
+        "description": "CS-111E3 POOL FILTRATION MECHANICAL SKIDS",
+        "id": 991396,
+        "recipient_name": "AVANTECH, LLC",
+        "subaward_number": "7019390"
+      },
+      {
+        "action_date": "2024-05-16",
+        "amount": 4544530.06,
+        "description": "CS-111E2 STANDBY POWER SYSTEM",
+        "id": 2306957,
+        "recipient_name": "WHEELER MACHINERY CO",
+        "subaward_number": "7019389"
+      },
+      {
+        "action_date": "2024-02-15",
+        "amount": 14895643.93,
+        "description": "CS-111E1 ELECTRICAL EQUIPMENT",
+        "id": 2304107,
+        "recipient_name": "STANTON INDUSTRIAL ELECTRIC SUPPLY, INC",
+        "subaward_number": "7019388"
+      },
+      {
+        "action_date": "2024-01-12",
+        "amount": 199823.36,
+        "description": "TOA 113 - DATA CENTER POWER AND CAPACITY UPGRADES PROJECT",
+        "id": 2306436,
+        "recipient_name": "SAGE ENGINEERING ASSOCIATES, LLP",
+        "subaward_number": "7019387"
+      },
+      {
+        "action_date": "2024-06-07",
+        "amount": 300546.0,
+        "description": "TOA 4 - OUTFALL 006 REFURBISHMENT",
+        "id": 2304457,
+        "recipient_name": "FACILITY SUPPORT SERVICES LLC",
+        "subaward_number": "7019380"
+      },
+      {
+        "action_date": "2023-07-28",
+        "amount": 275779.46,
+        "description": "TOA 425 (LINE 5) - FY2023 INVENTORY AND INSPECTION AUDIT FOR KNOLLS LABORATORY",
+        "id": 2299615,
+        "recipient_name": "BAKER AND ASSOCIATES",
+        "subaward_number": "7019378"
+      },
+      {
+        "action_date": "2023-07-14",
+        "amount": 171617.0,
+        "description": "TOA # 34 - Q14 NDT LABORATORY RENOVATION DETAILED DESIGN",
+        "id": 2297277,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019370"
+      },
+      {
+        "action_date": "2023-07-06",
+        "amount": 24997979.0,
+        "description": "TASK ORDER NO. 1, IDIQ 7019318",
+        "id": 986928,
+        "recipient_name": "BWSR LLC",
+        "subaward_number": "7019361"
+      },
+      {
+        "action_date": "2023-03-31",
+        "amount": 61900.0,
+        "description": "ATHTF COOLING TOWER REPLACEMENT: PHASE 1 AND PHASE 2 (TASK ORDER AUTHORIZATION #",
+        "id": 2298960,
+        "recipient_name": "BAKER AND ASSOCIATES",
+        "subaward_number": "7019360"
+      },
+      {
+        "action_date": "2024-10-23",
+        "amount": 100000.0,
+        "description": "WASTE & SHIPPING - ENERGY SOLUTIONS",
+        "id": 2308597,
+        "recipient_name": "ENERGYSOLUTIONS FEDERAL SUPPORT LLC",
+        "subaward_number": "7019359"
+      },
+      {
+        "action_date": "2024-06-19",
+        "amount": 1960786.28,
+        "description": "WASTE & SHIPPING - ENERGY SOLUTIONS",
+        "id": 997252,
+        "recipient_name": "ALVAREZ LLC",
+        "subaward_number": "7019359"
+      },
+      {
+        "action_date": "2023-03-23",
+        "amount": 102691.0,
+        "description": "SPECIAL INSPECTIONS - TOA 37",
+        "id": 2297865,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019350"
+      },
+      {
+        "action_date": "2023-03-20",
+        "amount": 100426.04,
+        "description": "FIT OUT CONCEPT DESIGN - TOA 146",
+        "id": 2308506,
+        "recipient_name": "SAGE ENGINEERING ASSOCIATES, LLP",
+        "subaward_number": "7019347"
+      },
+      {
+        "action_date": "2023-03-15",
+        "amount": 362945.64,
+        "description": "TOA 114 KS FIRE SYSTEM UPGRADE",
+        "id": 2309041,
+        "recipient_name": "SAGE ENGINEERING ASSOCIATES, LLP",
+        "subaward_number": "7019343"
+      },
+      {
+        "action_date": "2023-03-08",
+        "amount": 165522.6,
+        "description": "TOA 144 LINE 3 - T3 CHEMISTRY BUILDING COMMISSIONING",
+        "id": 2304905,
+        "recipient_name": "SAGE ENGINEERING ASSOCIATES, LLP",
+        "subaward_number": "7019338"
+      },
+      {
+        "action_date": "2022-11-18",
+        "amount": 319055.0,
+        "description": "TOA 32 DETAIL DESING BUILDING 19-IDE FACILITY ALTERATIONS",
+        "id": 2304199,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019321"
+      },
+      {
+        "action_date": "2022-10-20",
+        "amount": 74823.12,
+        "description": "TOA 135 SOUTHWEST QUADRANT STORM WATER UPGRADES DETAILED DESIGN",
+        "id": 2310013,
+        "recipient_name": "SAGE ENGINEERING ASSOCIATES, LLP",
+        "subaward_number": "7019314"
+      },
+      {
+        "action_date": "2022-10-17",
+        "amount": 70455.0,
+        "description": "TOA 30 - L4 ROOF REPLACEMENT DETAILED DESIGN",
+        "id": 2303103,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019308"
+      },
+      {
+        "action_date": "2022-09-27",
+        "amount": 492834.88,
+        "description": "TOA 131_BLDG 28 MDR",
+        "id": 2307340,
+        "recipient_name": "SAGE ENGINEERING ASSOCIATES, LLP",
+        "subaward_number": "7019306"
+      },
+      {
+        "action_date": "2022-10-17",
+        "amount": 66391.9,
+        "description": "TOA 132 WASTE MATRIX SAMPLING FACILITY MATERIALS SUBCONTRACTED ABATEMENT SCOPE,",
+        "id": 2305593,
+        "recipient_name": "SAGE ENGINEERING ASSOCIATES, LLP",
+        "subaward_number": "7019303"
+      },
+      {
+        "action_date": "2022-09-22",
+        "amount": 59803.15,
+        "description": "AE DESIGN OF THE BLDG 6 FUNCTION RELOCATION TO BLDG 19",
+        "id": 2305892,
+        "recipient_name": "SAGE ENGINEERING ASSOCIATES, LLP",
+        "subaward_number": "7019296"
+      },
+      {
+        "action_date": "2022-04-28",
+        "amount": 1298013.0,
+        "description": "TOA-502 DECOMMISSION & DEMOLITION (D&D) OF A1W COMPLEX FINAL DESIGN",
+        "id": 2310102,
+        "recipient_name": "WALSH ENGINEERING SERVICES, PC",
+        "subaward_number": "7019276"
+      },
+      {
+        "action_date": "2022-04-21",
+        "amount": 341362.39,
+        "description": "N BUILDING UTILITY PIPE BRIDGE PROJECT (TASK ORDER AUTHORIZATION #021)",
+        "id": 2298308,
+        "recipient_name": "BAKER AND ASSOCIATES",
+        "subaward_number": "7019274"
+      },
+      {
+        "action_date": "2022-04-06",
+        "amount": 114210.0,
+        "description": "TOA-401 BPU TITLE III ENGINEERING SUPPORT",
+        "id": 2299765,
+        "recipient_name": "BAKER AND ASSOCIATES",
+        "subaward_number": "7019273"
+      },
+      {
+        "action_date": "2022-03-24",
+        "amount": 58675.0,
+        "description": "JOHN HOPFER TRAINING",
+        "id": 989999,
+        "recipient_name": "RAND WORLDWIDE SUBSIDIARY INC",
+        "subaward_number": "7019269"
+      },
+      {
+        "action_date": "2022-04-05",
+        "amount": 45543.0,
+        "description": "BUILDINGS A4/A6 FIRE WATER MODIFICATIONS",
+        "id": 2301091,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019268"
+      },
+      {
+        "action_date": "2022-10-31",
+        "amount": 51568.0,
+        "description": "TOA #7 SECURITY LIFT GATE REPLACEMENT FIELD FOLLOW AND COMMISSIONING SERVICES",
+        "id": 2303459,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019267"
+      },
+      {
+        "action_date": "2022-04-21",
+        "amount": 112436.0,
+        "description": "TOA 022 - HAZARDOUS MATERIAL SURVEYS AND WASTE CHARACTERIZATION FOR STEAM PIPING",
+        "id": 2301346,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019266"
+      },
+      {
+        "action_date": "2022-03-04",
+        "amount": 426227.0,
+        "description": "TOA 410 SWAB CONCEPTUAL DESIGN",
+        "id": 2298769,
+        "recipient_name": "BAKER AND ASSOCIATES",
+        "subaward_number": "7019265"
+      },
+      {
+        "action_date": "2022-03-23",
+        "amount": 118517.0,
+        "description": "AE",
+        "id": 2303920,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019264"
+      },
+      {
+        "action_date": "2022-04-12",
+        "amount": 150331.0,
+        "description": "FY22-27 IEC SITE SERVICES",
+        "id": 2305945,
+        "recipient_name": "IDAHO ENVIRONMENTAL COALITION LLC",
+        "subaward_number": "7019263"
+      },
+      {
+        "action_date": "2022-02-28",
+        "amount": 130597.0,
+        "description": "PPU SWITCH REPLACEMENTS",
+        "id": 980003,
+        "recipient_name": "CDM FEDERAL PROGRAMS CORPORATION",
+        "subaward_number": "7019259"
+      },
+      {
+        "action_date": "2022-02-21",
+        "amount": 408944.0,
+        "description": "TOA 001 - CAMERA INSPECTION OF EXISTING STORM AND SANITARY SEWER PIPING AT THE K",
+        "id": 990282,
+        "recipient_name": "CDM FEDERAL PROGRAMS CORPORATION",
+        "subaward_number": "7019255"
+      },
+      {
+        "action_date": "2022-01-16",
+        "amount": 107600.0,
+        "description": "KS BUILDING RECOMMISSIONING FY22 (TOA-125)",
+        "id": 2307333,
+        "recipient_name": "SAGE ENGINEERING ASSOCIATES, LLP",
+        "subaward_number": "7019253"
+      },
+      {
+        "action_date": "2021-12-17",
+        "amount": 83320.2,
+        "description": "(TOA 119) ITEM 3.1, CONSTRUCTION FIELD FOLLOW SERVICES & NACE INSPECTION SERVICE",
+        "id": 2307189,
+        "recipient_name": "SAGE ENGINEERING ASSOCIATES, LLP",
+        "subaward_number": "7019250"
+      },
+      {
+        "action_date": "2021-12-15",
+        "amount": 86952.3,
+        "description": "N-BUILDING WING 3 RIGHT (NW3R) ALTERATIONS PROJECT (TASK ORDER AUTHORIZATION #01",
+        "id": 2298419,
+        "recipient_name": "BAKER AND ASSOCIATES",
+        "subaward_number": "7019249"
+      },
+      {
+        "action_date": "2021-12-30",
+        "amount": 52140.0,
+        "description": "TOA #20 - COST ESTIMATING SERVICES FOR STEAM AND HILLSIDE ROAD",
+        "id": 2303509,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019242"
+      },
+      {
+        "action_date": "2021-12-17",
+        "amount": 148500.0,
+        "description": "TOA 18 WRE FEILD FOLLOW, COMMISSIONING, AND RECORDS DRAWINGS SERVICES",
+        "id": 2301985,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019236"
+      },
+      {
+        "action_date": "2021-12-14",
+        "amount": 67300.0,
+        "description": "TOA #19 - KNOLLS SITE ENTRANCE AREA UTILITY REPLACEMENT - CONCEPT",
+        "id": 2302310,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "7019234"
+      },
+      {
+        "action_date": "2022-02-02",
+        "amount": 1181971.0,
+        "description": "55 TON SCRAP CASK SHIPMENTS TO THE RHLLW FACILITY",
+        "id": 2310016,
+        "recipient_name": "BATTELLE ENERGY ALLIANCE, LLC",
+        "subaward_number": "7019212"
+      },
+      {
+        "action_date": "2022-04-04",
+        "amount": 198200.0,
+        "description": "0",
+        "id": 2299234,
+        "recipient_name": "BAKER AND ASSOCIATES",
+        "subaward_number": "7019208"
+      },
+      {
+        "action_date": "2022-02-02",
+        "amount": 100000.0,
+        "description": "JANITORIAL SUPPLIES",
+        "id": 2309531,
+        "recipient_name": "HANSON JANITORIAL SUPPLY INC",
+        "subaward_number": "7019153"
+      },
+      {
+        "action_date": "2022-04-28",
+        "amount": 604910.0,
+        "description": "JANITORIAL SUPPLIES",
+        "id": 2306328,
+        "recipient_name": "HANSON JANITORIAL SUPPLY INC",
+        "subaward_number": "7019153"
+      },
+      {
+        "action_date": "2024-03-24",
+        "amount": 98200.0,
+        "description": "TOA-7019179",
+        "id": 10368989,
+        "recipient_name": "MICHAEL BAKER INTERNATIONAL, INC.",
+        "subaward_number": "7019144"
+      },
+      {
+        "action_date": "2022-06-28",
+        "amount": 56971.28,
+        "description": "FY20-FY25 CHEMICAL MANGEMENT SERVICES, GARDNER, DAWSON, LAWSON",
+        "id": 2303769,
+        "recipient_name": "MARCOM LLC",
+        "subaward_number": "7019070"
+      },
+      {
+        "action_date": "2022-06-30",
+        "amount": 101370.56,
+        "description": "FY20-FY25 CHEMICAL MANGEMENT SERVICES, GARDNER, DAWSON, LAWSON",
+        "id": 2301712,
+        "recipient_name": "MARCOM LLC",
+        "subaward_number": "7019070"
+      },
+      {
+        "action_date": "2026-03-19",
+        "amount": 750000.0,
+        "description": "HII 7019016-100-8",
+        "id": 10349416,
+        "recipient_name": "HUNTINGTON INGALLS INC",
+        "subaward_number": "7019016"
+      },
+      {
+        "action_date": "2025-11-24",
+        "amount": 52150274.0,
+        "description": "CS-107",
+        "id": 10388521,
+        "recipient_name": "KIEWIT POWER CONSTRUCTORS CO",
+        "subaward_number": "7019009"
+      },
+      {
+        "action_date": "2024-06-27",
+        "amount": 62400.0,
+        "description": "INV 723501     ) LATEX GLOVES, ANTI-C, SIZE 9",
+        "id": 2300626,
+        "recipient_name": "THE LINCOLN ELECTRIC COMPANY",
+        "subaward_number": "41795314"
+      },
+      {
+        "action_date": "2024-06-14",
+        "amount": 59263.0,
+        "description": "NFAS-BM, DE LAVAL, LOP BOWL REPAIR (FSS)",
+        "id": 2303989,
+        "recipient_name": "THE LINCOLN ELECTRIC COMPANY",
+        "subaward_number": "41662301"
+      },
+      {
+        "action_date": "2025-11-07",
+        "amount": 24517939.4,
+        "description": "SFHP ER RECAPITALIZATION PROJECT",
+        "id": 10380302,
+        "recipient_name": "AMENTUM TECHNOLOGY, INC.",
+        "subaward_number": "3022084"
+      },
+      {
+        "action_date": "2026-05-05",
+        "amount": 5306000.0,
+        "description": "CAS/A5 RENOVATION",
+        "id": 10585986,
+        "recipient_name": "MASCARO CONSTRUCTION CO LP",
+        "subaward_number": "204338"
+      },
+      {
+        "action_date": "2025-05-05",
+        "amount": 5306000.0,
+        "description": "CAS / A5 RENOVATION",
+        "id": 10482079,
+        "recipient_name": "MASCARO CONSTRUCTION CO LP",
+        "subaward_number": "204338"
+      },
+      {
+        "action_date": "2026-03-31",
+        "amount": 1659.0,
+        "description": "AGREEMENT 148144",
+        "id": 10369268,
+        "recipient_name": "GEL LABORATORIES LLC",
+        "subaward_number": "203883"
+      },
+      {
+        "action_date": "2026-03-31",
+        "amount": 560.0,
+        "description": "AGREEMENT 146716",
+        "id": 10369269,
+        "recipient_name": "TECHLAW CONSULTANTS INC",
+        "subaward_number": "203877"
+      },
+      {
+        "action_date": "2026-03-31",
+        "amount": 48015.0,
+        "description": "R&D",
+        "id": 10334308,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "203876"
+      },
+      {
+        "action_date": "2026-03-31",
+        "amount": 1820.0,
+        "description": "HYPERSPECTRAL IMAGING EQUIPMENT TRAINING AND Q&A",
+        "id": 10369270,
+        "recipient_name": "RESONON, INC.",
+        "subaward_number": "203875"
+      },
+      {
+        "action_date": "2026-03-31",
+        "amount": 3000.0,
+        "description": "PO 203871",
+        "id": 10369660,
+        "recipient_name": "EXPORT BOXING & CRATING, INC.",
+        "subaward_number": "203871"
+      },
+      {
+        "action_date": "2026-03-31",
+        "amount": 1600.0,
+        "description": "PRIMES LASER",
+        "id": 10368808,
+        "recipient_name": "LASER MECHANISMS INC",
+        "subaward_number": "203870"
+      },
+      {
+        "action_date": "2026-03-31",
+        "amount": 18500.0,
+        "description": "FY26 ITP QUEST RENEWAL",
+        "id": 10369267,
+        "recipient_name": "STERLING COMPUTERS CORPORATION",
+        "subaward_number": "203867"
+      },
+      {
+        "action_date": "2026-03-31",
+        "amount": 25507.0,
+        "description": "SAT PHONE RENEWAL",
+        "id": 10369272,
+        "recipient_name": "GLOBAFONE INC",
+        "subaward_number": "203863"
+      },
+      {
+        "action_date": "2026-03-31",
+        "amount": 71748.0,
+        "description": "LAPTOPS",
+        "id": 10369266,
+        "recipient_name": "WESTWIND COMPUTER PRODUCTS, INC.",
+        "subaward_number": "203862"
+      },
+      {
+        "action_date": "2026-03-31",
+        "amount": 223332.0,
+        "description": "FY26 BRUKER G8 GALILEO",
+        "id": 10368706,
+        "recipient_name": "BRUKER AXS LLC",
+        "subaward_number": "203860"
+      },
+      {
+        "action_date": "2026-03-31",
+        "amount": 223331.8,
+        "description": "FY26 BRUKER G8 GALILEO",
+        "id": 10334287,
+        "recipient_name": "BRUKER AXS LLC",
+        "subaward_number": "203860"
+      },
+      {
+        "action_date": "2026-03-31",
+        "amount": 193450.0,
+        "description": "ACQUIRE/PANTHER2",
+        "id": 10369271,
+        "recipient_name": "EDDYFI CORP",
+        "subaward_number": "203859"
+      },
+      {
+        "action_date": "2026-03-31",
+        "amount": 26852.0,
+        "description": "FIREWALLS",
+        "id": 10369274,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "203858"
+      }
+    ]
+  },
+  "retrieval_timestamp_utc": "2026-08-01T14:09:09.867086+00:00",
+  "retrieval_vintage": "2026-08-01",
+  "schema_version": "1.0",
+  "source_url": "https://api.usaspending.gov/api/v2/subawards/"
+}

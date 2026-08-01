@@ -1,0 +1,829 @@
+{
+  "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+  "error": null,
+  "provider": "USAspending.gov / U.S. Treasury",
+  "request": {
+    "body": {
+      "award_id": 292026551,
+      "limit": 100,
+      "page": 7
+    },
+    "method": "POST",
+    "url": "https://api.usaspending.gov/api/v2/subawards/"
+  },
+  "response": {
+    "page_metadata": {
+      "hasNext": true,
+      "hasPrevious": true,
+      "next": 8,
+      "page": 7,
+      "previous": 6
+    },
+    "results": [
+      {
+        "action_date": "2025-09-11",
+        "amount": 82200.0,
+        "description": "ISO CARGO CONTAINER",
+        "id": 10369648,
+        "recipient_name": "CONTAINER PROVIDERS INC.",
+        "subaward_number": "201826"
+      },
+      {
+        "action_date": "2025-09-11",
+        "amount": 82200.0,
+        "description": "ISO CARGO CONTAINER",
+        "id": 10344994,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "201826"
+      },
+      {
+        "action_date": "2025-09-12",
+        "amount": 180240.0,
+        "description": "STAINLESS STEEL 316L HIP POWDER",
+        "id": 10368651,
+        "recipient_name": "CARPENTER TECHNOLOGY CORPORATION",
+        "subaward_number": "201824"
+      },
+      {
+        "action_date": "2025-09-12",
+        "amount": 180240.0,
+        "description": "STAINLESS STEEL 316L HIP POWDER",
+        "id": 10345008,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "201824"
+      },
+      {
+        "action_date": "2025-09-10",
+        "amount": 54936.0,
+        "description": "HYPERFIRE PACKAGE AND DIGITAL NOZZLE",
+        "id": 10369352,
+        "recipient_name": "LION FIRST RESPONDER PPE INC",
+        "subaward_number": "201822"
+      },
+      {
+        "action_date": "2025-09-10",
+        "amount": 112346.0,
+        "description": "201820",
+        "id": 10368803,
+        "recipient_name": "NEWARK ELECTRONICS CORPORATION",
+        "subaward_number": "201820"
+      },
+      {
+        "action_date": "2025-09-15",
+        "amount": 45226.0,
+        "description": "SONARQUBE SERVER ENTERPRISE EDITION",
+        "id": 10369348,
+        "recipient_name": "LOGISTICS365 INC",
+        "subaward_number": "201819"
+      },
+      {
+        "action_date": "2025-09-10",
+        "amount": 36184.0,
+        "description": "NEW HEATING MANTLES AND VESSELS",
+        "id": 10369351,
+        "recipient_name": "ACE GLASS INC",
+        "subaward_number": "201816"
+      },
+      {
+        "action_date": "2025-09-10",
+        "amount": 36184.0,
+        "description": "NEW HEATING MANTLES AND VESSELS",
+        "id": 10345043,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "201816"
+      },
+      {
+        "action_date": "2025-09-22",
+        "amount": 36399.0,
+        "description": "TOA- 58 ENGINEERING SERVICES WORK SCOPE HAZARDOUS MATERIAL SURVEYS AND WASTE CHARACTERIZATION AND LELM MOVE UPDATE FOR BUILDING T3 EQUIPMENT MOVE",
+        "id": 10369414,
+        "recipient_name": "BEARDSLEY DESIGN ASSOCIATES ARCHITECTURE, ENGINEERING, LANDSCAPE ARCHITECTURE, D.P.C.",
+        "subaward_number": "201806"
+      },
+      {
+        "action_date": "2025-09-22",
+        "amount": 36399.0,
+        "description": "TOA- 58 ENGINEERING SERVICES WORK SCOPE",
+        "id": 10345018,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "201806"
+      },
+      {
+        "action_date": "2025-09-09",
+        "amount": 38597.0,
+        "description": "SMART UPS (PR 25104)",
+        "id": 10369355,
+        "recipient_name": "STERLING COMPUTERS CORPORATION",
+        "subaward_number": "201798"
+      },
+      {
+        "action_date": "2025-09-10",
+        "amount": 240831.0,
+        "description": "FY25 TIER 3 STORAGE QUANTUM LTO9 DRIVES (FOR AFM)",
+        "id": 10369353,
+        "recipient_name": "STERLING COMPUTERS CORPORATION",
+        "subaward_number": "201797"
+      },
+      {
+        "action_date": "2025-09-09",
+        "amount": 203625.0,
+        "description": "201790",
+        "id": 10369356,
+        "recipient_name": "EDDYFI CORP",
+        "subaward_number": "201790"
+      },
+      {
+        "action_date": "2025-09-09",
+        "amount": 203625.0,
+        "description": "BDT",
+        "id": 10344982,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "201790"
+      },
+      {
+        "action_date": "2025-09-18",
+        "amount": 550000.0,
+        "description": "BRG ACTION",
+        "id": 10369420,
+        "recipient_name": "BRG MACHINERY CONSULTING, LLC",
+        "subaward_number": "201788"
+      },
+      {
+        "action_date": "2025-09-09",
+        "amount": 107828.0,
+        "description": "STRATUS EVERRUN ENTERPRISE SOFTWARE FOR 2 SOCKET SERVERS (EE0001) AND CUSTOMER SUPPORT",
+        "id": 10368968,
+        "recipient_name": "SIEMENS GOVERNMENT TECHNOLOGIES INC",
+        "subaward_number": "201781"
+      },
+      {
+        "action_date": "2025-09-08",
+        "amount": 191644.0,
+        "description": "AUKUS S9G FIDE IT EQUIPMENT",
+        "id": 10369360,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "201780"
+      },
+      {
+        "action_date": "2025-09-08",
+        "amount": 191644.0,
+        "description": "AUKUS S9G FIDE IT EQUIPMENT",
+        "id": 10345004,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "201780"
+      },
+      {
+        "action_date": "2025-09-09",
+        "amount": 151750.0,
+        "description": "MANUFACTURE OF A SECOND STEPPED CYLINDER TEST",
+        "id": 10369358,
+        "recipient_name": "SYNERTECH PM INC.",
+        "subaward_number": "201774"
+      },
+      {
+        "action_date": "2025-09-09",
+        "amount": 182152.0,
+        "description": "GATAN PIPSII ION MILL REPLACEMENT",
+        "id": 10369357,
+        "recipient_name": "GATAN INC",
+        "subaward_number": "201771"
+      },
+      {
+        "action_date": "2025-09-09",
+        "amount": 30274.0,
+        "description": "MODULAR FURNITURE",
+        "id": 10369359,
+        "recipient_name": "HB SPRAGUE, LLC",
+        "subaward_number": "201768"
+      },
+      {
+        "action_date": "2025-09-08",
+        "amount": 600000.0,
+        "description": "RAP 45- PO 201761-UNDER MASTER PO 147000",
+        "id": 10369586,
+        "recipient_name": "KINGSLEY ARMS, INC.",
+        "subaward_number": "201761"
+      },
+      {
+        "action_date": "2025-09-08",
+        "amount": 40720.0,
+        "description": "PALM CONTROL SYSTEM HARDWARE",
+        "id": 10369362,
+        "recipient_name": "FABER ASSOCIATES INC",
+        "subaward_number": "201760"
+      },
+      {
+        "action_date": "2025-09-10",
+        "amount": 420658.0,
+        "description": "LIFT PURCHASE",
+        "id": 10369354,
+        "recipient_name": "UNITED RENTALS, INC.",
+        "subaward_number": "201746"
+      },
+      {
+        "action_date": "2025-09-08",
+        "amount": 149096.0,
+        "description": "201739",
+        "id": 10369361,
+        "recipient_name": "CTG FEDERAL, LLC",
+        "subaward_number": "201739"
+      },
+      {
+        "action_date": "2025-09-04",
+        "amount": 101495.0,
+        "description": "HEAT TREATMENT AND TESTING",
+        "id": 10368660,
+        "recipient_name": "LABORATORY TESTING, LLC",
+        "subaward_number": "201734"
+      },
+      {
+        "action_date": "2025-09-04",
+        "amount": 126024.0,
+        "description": "LYNX II - DIGITAL SIGNAL ANALYZER",
+        "id": 10369746,
+        "recipient_name": "MIRION TECHNOLOGIES (CANBERRA), INC.",
+        "subaward_number": "201732"
+      },
+      {
+        "action_date": "2025-09-05",
+        "amount": 107250.0,
+        "description": "TYPE A INSTRUMENTATION",
+        "id": 10369363,
+        "recipient_name": "ALPHA SPECTRA, INC.",
+        "subaward_number": "201731"
+      },
+      {
+        "action_date": "2025-09-05",
+        "amount": 107250.0,
+        "description": "TYPE A INSTRUMENTATION",
+        "id": 10345030,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "201731"
+      },
+      {
+        "action_date": "2025-09-09",
+        "amount": 40277.0,
+        "description": "CABLE ASSEMBLY",
+        "id": 10368830,
+        "recipient_name": "GLENAIR, INC.",
+        "subaward_number": "201729"
+      },
+      {
+        "action_date": "2025-09-03",
+        "amount": 80048.0,
+        "description": "201714",
+        "id": 10369747,
+        "recipient_name": "MIRION TECHNOLOGIES (CANBERRA), INC.",
+        "subaward_number": "201714"
+      },
+      {
+        "action_date": "2025-09-04",
+        "amount": 491942.0,
+        "description": "202563POT156 DENNIS RUIZ MECHANICAL ENGINEER - POTTER",
+        "id": 10369365,
+        "recipient_name": "NAVARRO RESEARCH AND ENGINEERING, INC.",
+        "subaward_number": "201713"
+      },
+      {
+        "action_date": "2025-09-03",
+        "amount": 143310.0,
+        "description": "PROCUREMENT AND FABRICATION OF COPPER JUMPERS, CLAMPS, AND BUSHINGS FOR THE CTC RESISTOR RACKS",
+        "id": 10369366,
+        "recipient_name": "ASTLEY PRECISION MACHINE COMPANY, INC.",
+        "subaward_number": "201711"
+      },
+      {
+        "action_date": "2025-09-03",
+        "amount": 143310.0,
+        "description": "PROCUREMENT AND FABRICATION OF COPPER JUMPERS, CLAMPS, AND BUSHINGS FOR THE CTC RESISTOR RACKS",
+        "id": 10345023,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "201711"
+      },
+      {
+        "action_date": "2025-09-03",
+        "amount": 80395.0,
+        "description": "TRDTKN20250707: HEAT TREATMENT AND TESTING OF PM-HIP BILLETS",
+        "id": 10369656,
+        "recipient_name": "ELEMENT MATERIALS TECHNOLOGY CLEVELAND INC.",
+        "subaward_number": "201699"
+      },
+      {
+        "action_date": "2025-09-23",
+        "amount": 151326.0,
+        "description": "BETTIS ENERGYSOLUTIONS TREATMENT AND TRANSIT OF TREATED RECYCLE/REUSE METAL MELT OCTOBER 2025",
+        "id": 10369411,
+        "recipient_name": "ENERGYSOLUTIONS FEDERAL SUPPORT LLC",
+        "subaward_number": "201694"
+      },
+      {
+        "action_date": "2025-09-02",
+        "amount": 78020.0,
+        "description": "201682",
+        "id": 10368644,
+        "recipient_name": "ANIXTER INC.",
+        "subaward_number": "201682"
+      },
+      {
+        "action_date": "2025-09-03",
+        "amount": 59776.0,
+        "description": "ELBOW BEVELER",
+        "id": 10368748,
+        "recipient_name": "PROTEM USA, LIMITED LIABILITY CO",
+        "subaward_number": "201677"
+      },
+      {
+        "action_date": "2025-09-02",
+        "amount": 42570.0,
+        "description": "RAD HARD MOTORS AND RESOLVERS",
+        "id": 10369368,
+        "recipient_name": "EMPIRE MAGNETICS INC.",
+        "subaward_number": "201673"
+      },
+      {
+        "action_date": "2025-09-04",
+        "amount": 665123.0,
+        "description": "CAP-E ANTON PAAR JUSTIFICATION BY SUBMITTING REQUISITIONS IN XRD INSTRUMENT (DOSCH + OFC METZ)",
+        "id": 10369684,
+        "recipient_name": "ANTON PAAR USA, INC",
+        "subaward_number": "201668"
+      },
+      {
+        "action_date": "2025-09-04",
+        "amount": 665123.0,
+        "description": "CAP-E ANTON PAAR JUSTIFICATION",
+        "id": 10345026,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "201668"
+      },
+      {
+        "action_date": "2025-09-02",
+        "amount": 42920.0,
+        "description": "MAINTENANCE CONTRACT FOR CHART OF NUCLIDES APP",
+        "id": 10368623,
+        "recipient_name": "TROY WEB CONSULTING LLC",
+        "subaward_number": "201665"
+      },
+      {
+        "action_date": "2025-09-02",
+        "amount": 98642.0,
+        "description": "HEAT TREATMENT AND TESTING",
+        "id": 10369657,
+        "recipient_name": "ELEMENT MATERIALS TECHNOLOGY CLEVELAND INC.",
+        "subaward_number": "201662"
+      },
+      {
+        "action_date": "2025-09-04",
+        "amount": 245000.0,
+        "description": "ITP - HPE PROLIANT DL360 GEN12 8SFF NC",
+        "id": 10369364,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "201659"
+      },
+      {
+        "action_date": "2025-09-02",
+        "amount": 139350.0,
+        "description": "HEAT TREATMENT AND TESTING OF PM-HIP BILLETS",
+        "id": 10369369,
+        "recipient_name": "PRODUCT EVALUATION SYSTEMS, LLC.",
+        "subaward_number": "201657"
+      },
+      {
+        "action_date": "2025-08-29",
+        "amount": 63720.0,
+        "description": "AUKUS PCS",
+        "id": 10369370,
+        "recipient_name": "WESTWIND COMPUTER PRODUCTS, INC.",
+        "subaward_number": "201647"
+      },
+      {
+        "action_date": "2025-08-29",
+        "amount": 119655.0,
+        "description": "HPE STOREONE",
+        "id": 10369371,
+        "recipient_name": "STERLING COMPUTERS CORPORATION",
+        "subaward_number": "201646"
+      },
+      {
+        "action_date": "2025-08-28",
+        "amount": 256991.0,
+        "description": "OXFORD EBSD DETECTOR FOR HELIOS",
+        "id": 10369372,
+        "recipient_name": "OXFORD INSTRUMENTS AMERICA, INC.",
+        "subaward_number": "201639"
+      },
+      {
+        "action_date": "2025-09-02",
+        "amount": 33773.0,
+        "description": "PTC CARTS",
+        "id": 10368944,
+        "recipient_name": "ADVANCED PRECISION MACHINING, INC",
+        "subaward_number": "201638"
+      },
+      {
+        "action_date": "2025-09-02",
+        "amount": 33773.0,
+        "description": "PTC CARTS",
+        "id": 10345040,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "201638"
+      },
+      {
+        "action_date": "2025-08-28",
+        "amount": 41141.0,
+        "description": "BRAZING CONTRACT",
+        "id": 10368720,
+        "recipient_name": "WALL COLMONOY CORP",
+        "subaward_number": "201627"
+      },
+      {
+        "action_date": "2025-08-28",
+        "amount": 41141.0,
+        "description": "BRAZING CONTRACT",
+        "id": 10345038,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "201627"
+      },
+      {
+        "action_date": "2025-08-28",
+        "amount": 81998.0,
+        "description": "CAT GP45N2 - 9,000LB. CAPACITY LP PNEUMATIC TIRE LIFT TRUCK",
+        "id": 10368635,
+        "recipient_name": "TRI-LIFT INC",
+        "subaward_number": "201623"
+      },
+      {
+        "action_date": "2025-08-28",
+        "amount": 87095.0,
+        "description": "STACO SWITCHES AND PARTS",
+        "id": 10368936,
+        "recipient_name": "STACO SYSTEMS, INC.",
+        "subaward_number": "201608"
+      },
+      {
+        "action_date": "2025-08-28",
+        "amount": 77402.0,
+        "description": "RAP 44 WORK FOR MASTER PO 147000",
+        "id": 10369587,
+        "recipient_name": "KINGSLEY ARMS, INC.",
+        "subaward_number": "201595"
+      },
+      {
+        "action_date": "2025-08-27",
+        "amount": 50365.0,
+        "description": "TEST PROPS",
+        "id": 10368820,
+        "recipient_name": "PH TOOL, LLC",
+        "subaward_number": "201589"
+      },
+      {
+        "action_date": "2025-08-27",
+        "amount": 30000.0,
+        "description": "LEVEL 1 ELECTRICAL THERMOGRAPHY TRAINING",
+        "id": 10369374,
+        "recipient_name": "TELEDYNE FLIR COMMERCIAL SYSTEMS INC.",
+        "subaward_number": "201578"
+      },
+      {
+        "action_date": "2025-08-26",
+        "amount": 98439.0,
+        "description": "KEYENCE VR-6000 WIDE AREA MEASURMENT SYSTEM",
+        "id": 10369598,
+        "recipient_name": "KEYENCE CORPORATION OF AMERICA",
+        "subaward_number": "201572"
+      },
+      {
+        "action_date": "2025-08-28",
+        "amount": 417100.0,
+        "description": "FY25 PCA STORAGE",
+        "id": 10369373,
+        "recipient_name": "CTG FEDERAL, LLC",
+        "subaward_number": "201568"
+      },
+      {
+        "action_date": "2025-08-26",
+        "amount": 133348.0,
+        "description": "TELEMANIPULATOR INSTALL CART",
+        "id": 10369635,
+        "recipient_name": "NUVISION ENGINEERING, INC",
+        "subaward_number": "201567"
+      },
+      {
+        "action_date": "2025-08-26",
+        "amount": 51474.0,
+        "description": "TOA 21",
+        "id": 10369377,
+        "recipient_name": "INFORMATION SYSTEMS LABORATORIES, INC.",
+        "subaward_number": "201564"
+      },
+      {
+        "action_date": "2025-08-26",
+        "amount": 69594.0,
+        "description": "ROSEMOUNT 305 INTEGRAL MANIFOLD",
+        "id": 10369379,
+        "recipient_name": "EMERSON LLLP",
+        "subaward_number": "201558"
+      },
+      {
+        "action_date": "2025-08-26",
+        "amount": 605900.0,
+        "description": "CUSTOM EDDY CURRENT ARRAY PROBES AND CUSTOM CABLE ACCESSORIES",
+        "id": 10369378,
+        "recipient_name": "EDDYFI CORP",
+        "subaward_number": "201548"
+      },
+      {
+        "action_date": "2025-08-26",
+        "amount": 605900.0,
+        "description": "CUSTOM EDDY CURRENT ARRAY PROBES AND CUSTOM CABLE ACCESSORIES",
+        "id": 10344983,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "201548"
+      },
+      {
+        "action_date": "2025-08-26",
+        "amount": 276685.0,
+        "description": "EDAX (GATAN) WDS DETECTOR",
+        "id": 10369380,
+        "recipient_name": "GATAN INC",
+        "subaward_number": "201545"
+      },
+      {
+        "action_date": "2025-08-28",
+        "amount": 171376.0,
+        "description": "FY25 PHISTON MEDIA DISINTEGRATOR",
+        "id": 10369649,
+        "recipient_name": "PHISTON TECHNOLOGIES, INC",
+        "subaward_number": "201538"
+      },
+      {
+        "action_date": "2025-08-25",
+        "amount": 48800.0,
+        "description": "PALO ALTO FIREWALL",
+        "id": 10369381,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "201524"
+      },
+      {
+        "action_date": "2025-08-25",
+        "amount": 48800.0,
+        "description": "PALO ALTO FIREWALL",
+        "id": 10344999,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "201524"
+      },
+      {
+        "action_date": "2025-08-26",
+        "amount": 64460.0,
+        "description": "WA25HAW023 (NOLAN, TERRANCE) PERFORM HEAT TREATMENT, MACHINING",
+        "id": 10369375,
+        "recipient_name": "THE M&P LAB, INC.",
+        "subaward_number": "201519"
+      },
+      {
+        "action_date": "2025-08-25",
+        "amount": 158072.0,
+        "description": "CTC RESISTOR RACK FLOWMETERS",
+        "id": 10369382,
+        "recipient_name": "NEWARK CORPORATION",
+        "subaward_number": "201505"
+      },
+      {
+        "action_date": "2025-08-22",
+        "amount": 35603.0,
+        "description": "201502",
+        "id": 10368960,
+        "recipient_name": "B M KRAMER & COMPANY INC",
+        "subaward_number": "201502"
+      },
+      {
+        "action_date": "2025-08-22",
+        "amount": 32072.0,
+        "description": "TIER 2 STORAGE CABLES",
+        "id": 10369383,
+        "recipient_name": "CTG FEDERAL, LLC",
+        "subaward_number": "201500"
+      },
+      {
+        "action_date": "2025-08-22",
+        "amount": 305000.0,
+        "description": "TOXICOLOGY SERVICES AT KESSELRING SITE",
+        "id": 10369385,
+        "recipient_name": "ONTERRIS RESPONSE AND RECOVERY, LLC",
+        "subaward_number": "201499"
+      },
+      {
+        "action_date": "2025-08-22",
+        "amount": 52047.0,
+        "description": "FLOW CONTROL VALVES",
+        "id": 10368669,
+        "recipient_name": "A. BLAIR POWELL COMPANY, INC.",
+        "subaward_number": "201493"
+      },
+      {
+        "action_date": "2025-08-22",
+        "amount": 52047.0,
+        "description": "FLOW CONTROL VALVES",
+        "id": 10345044,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "201493"
+      },
+      {
+        "action_date": "2025-08-26",
+        "amount": 37945.0,
+        "description": "KS HAZARDOUS WASTE DISPOSAL SEPT 2025",
+        "id": 10369376,
+        "recipient_name": "ENERGYSOLUTIONS FEDERAL SUPPORT LLC",
+        "subaward_number": "201483"
+      },
+      {
+        "action_date": "2025-08-20",
+        "amount": 460734.0,
+        "description": "TOA437",
+        "id": 10369601,
+        "recipient_name": "BAKER AND ASSOCIATES",
+        "subaward_number": "201476"
+      },
+      {
+        "action_date": "2025-08-20",
+        "amount": 174719.0,
+        "description": "TEST VESSEL",
+        "id": 10368742,
+        "recipient_name": "SIMAKAS COMPANY, INC.",
+        "subaward_number": "201465"
+      },
+      {
+        "action_date": "2025-08-19",
+        "amount": 494250.0,
+        "description": "SERVICENOW APPLICATION DEVELOPERS.",
+        "id": 10369312,
+        "recipient_name": "CDW GOVERNMENT LLC",
+        "subaward_number": "201463"
+      },
+      {
+        "action_date": "2025-08-19",
+        "amount": 494250.0,
+        "description": "SERVICENOW APPLICATION DEVELOPERS.",
+        "id": 10345007,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "201463"
+      },
+      {
+        "action_date": "2025-08-19",
+        "amount": 118557.0,
+        "description": "201460",
+        "id": 10369313,
+        "recipient_name": "LOGISTICS365 INC",
+        "subaward_number": "201460"
+      },
+      {
+        "action_date": "2025-08-20",
+        "amount": 1429645.0,
+        "description": "201447",
+        "id": 10369311,
+        "recipient_name": "CTG FEDERAL, LLC",
+        "subaward_number": "201447"
+      },
+      {
+        "action_date": "2025-08-20",
+        "amount": 1429645.0,
+        "description": "CTG FEDERAL LLC",
+        "id": 10344992,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "201447"
+      },
+      {
+        "action_date": "2026-01-26",
+        "amount": 128450.0,
+        "description": "WELDING AND MACHINING TRAINING FOR ENGINEERS",
+        "id": 10369069,
+        "recipient_name": "HUDSON VALLEY COMMUNITY COLLEGE",
+        "subaward_number": "201446"
+      },
+      {
+        "action_date": "2025-08-20",
+        "amount": 118584.0,
+        "description": "REPLACEMENT FOR PO 156214",
+        "id": 10369310,
+        "recipient_name": "MHF PACKAGING SOLUTIONS, LLC",
+        "subaward_number": "201436"
+      },
+      {
+        "action_date": "2026-01-08",
+        "amount": 11720.0,
+        "description": "46030.65235",
+        "id": 10369748,
+        "recipient_name": "ECKERT & ZIEGLER ISOTOPE PRODUCTS, INC.",
+        "subaward_number": "201425"
+      },
+      {
+        "action_date": "2025-08-15",
+        "amount": 31000.0,
+        "description": "TS-92A CERAMIC PARTS",
+        "id": 10369315,
+        "recipient_name": "DEPENDABLE TOOL & DIE CO., INC.",
+        "subaward_number": "201421"
+      },
+      {
+        "action_date": "2025-08-15",
+        "amount": 88722.0,
+        "description": "NNTP PALO ALTO NETWORK FIREWALL",
+        "id": 10369316,
+        "recipient_name": "COLOSSAL CONTRACTING LLC",
+        "subaward_number": "201420"
+      },
+      {
+        "action_date": "2025-08-15",
+        "amount": 77819.0,
+        "description": "FY25 DFD DYNATRACE",
+        "id": 10369317,
+        "recipient_name": "CTG FEDERAL, LLC",
+        "subaward_number": "201418"
+      },
+      {
+        "action_date": "2025-08-15",
+        "amount": 56750.0,
+        "description": "PALM LIFTING ADAPTER SLEEVES",
+        "id": 10369318,
+        "recipient_name": "VANGURA TOOL, INC.",
+        "subaward_number": "201417"
+      },
+      {
+        "action_date": "2025-08-15",
+        "amount": 110770.0,
+        "description": "FY26 EARLY PURCHASES",
+        "id": 10345003,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "201414"
+      },
+      {
+        "action_date": "2025-08-14",
+        "amount": 77681.0,
+        "description": "PIPE FITTINGS",
+        "id": 10368959,
+        "recipient_name": "B M KRAMER & COMPANY INC",
+        "subaward_number": "201411"
+      },
+      {
+        "action_date": "2025-08-14",
+        "amount": 77681.0,
+        "description": "PIPE FITTINGS",
+        "id": 10345013,
+        "recipient_name": "FLUOR MARINE PROPULSION, LLC",
+        "subaward_number": "201411"
+      },
+      {
+        "action_date": "2025-08-22",
+        "amount": 848050.0,
+        "description": "MECHANICAL TESTING",
+        "id": 10369384,
+        "recipient_name": "THE M&P LAB, INC.",
+        "subaward_number": "201410"
+      },
+      {
+        "action_date": "2025-08-14",
+        "amount": 250000.0,
+        "description": "201397",
+        "id": 10369319,
+        "recipient_name": "DRD TECHNOLOGY CORP",
+        "subaward_number": "201397"
+      },
+      {
+        "action_date": "2025-09-18",
+        "amount": 22157327.0,
+        "description": "RECORDS DECLASSIFICATION REVIEW PROJECT",
+        "id": 10369417,
+        "recipient_name": "BART & ASSOCIATES, LLC",
+        "subaward_number": "201390"
+      },
+      {
+        "action_date": "2025-08-13",
+        "amount": 89857.0,
+        "description": "MK2 TO MK3 ICAM UPGRADE BOARD",
+        "id": 10369744,
+        "recipient_name": "MIRION TECHNOLOGIES (CANBERRA), INC.",
+        "subaward_number": "201387"
+      },
+      {
+        "action_date": "2025-09-26",
+        "amount": 65240.0,
+        "description": "201382",
+        "id": 10369403,
+        "recipient_name": "PROTEC DYNATRONIX LLC",
+        "subaward_number": "201382"
+      },
+      {
+        "action_date": "2025-08-13",
+        "amount": 409962.0,
+        "description": "201364",
+        "id": 10368696,
+        "recipient_name": "ENFIELD ENTERPRISES LLC",
+        "subaward_number": "201364"
+      }
+    ]
+  },
+  "retrieval_timestamp_utc": "2026-08-01T14:09:16.976797+00:00",
+  "retrieval_vintage": "2026-08-01",
+  "schema_version": "1.0",
+  "source_url": "https://api.usaspending.gov/api/v2/subawards/"
+}

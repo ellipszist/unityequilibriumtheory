@@ -80,6 +80,7 @@ AWARD_OUTLAY_RECONCILIATION_ARTIFACT = ARTIFACT_DIR / "0_25_federal_award_outlay
 AWARD_LEVEL_OUTLAY_ARTIFACT = ARTIFACT_DIR / "0_25_usaspending_award_level_outlay_audit.json"
 AWARD_FUNDING_ACCOUNT_ARTIFACT = ARTIFACT_DIR / "0_25_usaspending_award_funding_account_audit.json"
 FEDERAL_ACCOUNT_BUDGET_RESOURCE_ARTIFACT = ARTIFACT_DIR / "0_25_usaspending_federal_account_budget_resource_audit.json"
+SUBAWARD_DOWNSTREAM_ARTIFACT = ARTIFACT_DIR / "0_25_usaspending_subaward_downstream_recipient_audit.json"
 USGS_MATERIAL_QUANTITY_ARTIFACT = ARTIFACT_DIR / "0_25_usgs_material_quantity_audit.json"
 SEC_PUBLIC_FIRM_PROXY_ARTIFACT = ARTIFACT_DIR / "0_25_sec_public_firm_funding_proxy.json"
 SEC_PUBLIC_FIRM_MIX_ARTIFACT = ARTIFACT_DIR / "0_25_sec_public_firm_funding_mix_audit.json"
