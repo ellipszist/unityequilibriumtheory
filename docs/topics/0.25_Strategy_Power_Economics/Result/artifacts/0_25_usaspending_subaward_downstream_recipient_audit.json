@@ -10,7 +10,7 @@
     "requested_awards": 10,
     "unique_downstream_recipients": 1024
   },
-  "generated_at_utc": "2026-08-01T14:12:50.516803+00:00",
+  "generated_at_utc": "2026-08-01T14:34:27.559541+00:00",
   "interpretation": "USAspending subaward records identify agreements reported by a prime recipient with downstream entities and reported amounts/descriptions. They add downstream-recipient visibility but are not bank settlement, invoice, payroll, or ultimate financing-source observations.",
   "limitations": [
     "Subaward reporting is incomplete when primes do not report; the fixed sample is not representative.",

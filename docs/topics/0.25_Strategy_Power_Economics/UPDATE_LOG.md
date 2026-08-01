@@ -1,3 +1,12 @@
+### 2026-08-01 - SEC recipient funding concordance
+
+- Scope: connect the frozen prime/subaward recipient names to public issuer accounting channels while preserving the distinction between firm accounts and award-dollar payment provenance.
+- Added: `Research_UET_SEC_Recipient_Funding_Concordance.py`, official SEC company-ticker registry archive, exact-match/no-match concordance, current-vintage CIK Company Facts archives, normalized recipient/funding-channel CSVs, aggregate/readiness/join integration, and synchronized docs.
+- Verified with: SEC API/cache run, py_compile, standalone join/readiness, complete aggregate verifier, and cross-artifact SHA-256 checks. Coverage is 1,285 unique names, 17 exact unique matches, 15 CIKs, and 235 annual fact rows; 1,268 names remain explicit no-match and no values are imputed.
+- Finding: matched issuers expose annual net income, operating cash flow, capex, debt, dividends, and cash observations. These are descriptive firm-level accounting channels; exact identity does not show whether a government award dollar was paid from profit, borrowing, or cash, so `funding_share_identification` is `NOT_IDENTIFIED`.
+- Blocker narrowed: public recipient accounting context is source-locked for the exact-match subset, but the controlling `firm_project_payment_ledger` blocker remains; payer-to-invoice-to-resource provenance is unavailable.
+- Claim impact: Claim Class C and `DESCRIPTIVE_DIAGNOSTIC_ONLY` remain unchanged; no profit-vs-debt attribution, payment causality, money-creation, or resource-conversion claim is enabled.
+
 # UPDATE LOG: 0.25 Strategy Power Economics
 
 > **Scope:** `docs/topics/0.25_Strategy_Power_Economics`

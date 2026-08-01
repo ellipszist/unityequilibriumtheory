@@ -65,4 +65,5 @@ current Claim Class C boundary.
 | Research_UET_USASpending_Federal_Award_Ledger.py | archive a fixed USAspending.gov DOE FY2024 five-page award-transaction sample, hash raw responses, and normalize obligations | public federal-award ledger artifact |
 | Research_UET_SEC_Public_Firm_Funding_Proxy.py | archive SEC Company Facts for the predeclared nonfinancial-firm sample and extract annual profit/cash/capex/debt/dividend facts | SEC public-firm funding proxy |
 | Research_UET_SEC_Public_Firm_Funding_Mix_Audit.py | calculate descriptive firm-level funding-scale ratios while keeping gross funding shares unidentified | SEC funding-mix artifact |
+| Research_UET_SEC_Recipient_Funding_Concordance.py | exact-match prime/subaward recipient names to SEC issuers, archive Company Facts, and report annual profit/cash/capex/debt channels without assigning award-dollar funding shares | SEC recipient funding concordance artifact |
 | Research_UET_Project_Payment_Ledger_Gate.py | record the public-data boundary and restricted-use route for invoice/project payer identity | project payment ledger gate |

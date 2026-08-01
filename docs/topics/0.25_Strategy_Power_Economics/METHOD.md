@@ -175,6 +175,14 @@ indexed infrastructure proxy, not a dollar-valued capital stock.
    agreement with another entity, not proof of a bank transfer, invoice, payroll payment,
    physical delivery, or ultimate financing source.
 
+24. **Recipient public-firm funding concordance:** take every unique recipient name in the frozen
+   prime-award and downstream-subaward panels, normalize punctuation/case deterministically, and
+   match only an exact unique name in the official SEC company-ticker registry. Preserve every
+   ambiguous or unmatched name; do not fuzzy-match or choose a company after inspecting results.
+   For exact CIKs, archive current-vintage SEC Company Facts and extract annual 10-K USD fields for
+   net income, operating cash flow, capex, debt proceeds/repayments, dividends, and cash. Report
+   these as issuer accounting channels only: no award dollar is assigned to profit, cash, or debt,
+   and `funding_share_identification` remains `NOT_IDENTIFIED`.
 ## Evaluation and uncertainty
 
 Rolling-origin forecasts start in 2000. Every transformation and coefficient is fitted only

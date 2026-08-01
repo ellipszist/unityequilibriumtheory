@@ -84,6 +84,7 @@ SUBAWARD_DOWNSTREAM_ARTIFACT = ARTIFACT_DIR / "0_25_usaspending_subaward_downstr
 USGS_MATERIAL_QUANTITY_ARTIFACT = ARTIFACT_DIR / "0_25_usgs_material_quantity_audit.json"
 SEC_PUBLIC_FIRM_PROXY_ARTIFACT = ARTIFACT_DIR / "0_25_sec_public_firm_funding_proxy.json"
 SEC_PUBLIC_FIRM_MIX_ARTIFACT = ARTIFACT_DIR / "0_25_sec_public_firm_funding_mix_audit.json"
+SEC_RECIPIENT_FUNDING_CONCORDANCE_ARTIFACT = ARTIFACT_DIR / "0_25_sec_recipient_funding_concordance_audit.json"
 PROJECT_PAYMENT_LEDGER_ARTIFACT = ARTIFACT_DIR / "0_25_project_payment_ledger_gate.json"
 CAUSAL_GATE_ARTIFACT = ARTIFACT_DIR / "0_25_causal_identification_gate.json"
 REPLICATION_GATE_ARTIFACT = ARTIFACT_DIR / "0_25_independent_replication_gate.json"

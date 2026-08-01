@@ -1,0 +1,354 @@
+{
+  "claim_boundary": "This artifact supports a bounded exact-name recipient-to-public-firm accounting comparison only. It does not establish payment settlement, invoice funding, financing causality, profit funding, debt funding, or physical-resource transformation.",
+  "controller_status": "SEC_RECIPIENT_FUNDING_CONCORDANCE_BOUNDARY",
+  "coverage": {
+    "ambiguous_matches": 0,
+    "exact_unique_matches": 17,
+    "facts_rows": 235,
+    "no_exact_matches": 1268,
+    "no_imputation": true,
+    "unique_recipient_names": 1285,
+    "unique_sec_ciks": 15,
+    "years": [
+      2010,
+      2024
+    ]
+  },
+  "funding_share_identification": {
+    "reason": "SEC net income, operating cash flow, capex, debt, dividends, and cash are annual firm-accounting channels; exact recipient identity does not map any award dollar to a specific invoice or prove profit-versus-borrowing finance.",
+    "status": "NOT_IDENTIFIED"
+  },
+  "generated_at_utc": "2026-08-01T14:34:38.137625+00:00",
+  "limitations": [
+    "Exact-name matching excludes alternate legal names, subsidiaries, private firms, and non-reporting entities; no fuzzy match is used.",
+    "The fixed award panels are nonrepresentative and dominated by one downstream award.",
+    "SEC company-facts values are current-vintage annual 10-K observations; fiscal years and tag availability vary by issuer.",
+    "A firm-level accounting channel is not an earmarked source for a particular government award or subaward payment."
+  ],
+  "matched_companies": [
+    {
+      "available_tags": {
+        "capex_raw_usd": 15,
+        "cash_balance_usd": 15,
+        "common_dividends_raw_usd": 11,
+        "debt_proceeds_usd": 0,
+        "debt_repayments_raw_usd": 0,
+        "net_income_usd": 12,
+        "operating_cash_flow_usd": 13
+      },
+      "cik": "0000008858",
+      "matched_recipient_names": 1,
+      "rows": 15,
+      "status": "PASS_WITH_BOUNDARY",
+      "ticker": "AVT",
+      "title": "AVNET INC",
+      "years": [
+        2010,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 5,
+        "cash_balance_usd": 4,
+        "common_dividends_raw_usd": 15,
+        "debt_proceeds_usd": 0,
+        "debt_repayments_raw_usd": 0,
+        "net_income_usd": 1,
+        "operating_cash_flow_usd": 7
+      },
+      "cik": "0000018230",
+      "matched_recipient_names": 1,
+      "rows": 15,
+      "status": "PASS_WITH_BOUNDARY",
+      "ticker": "CAT",
+      "title": "CATERPILLAR INC",
+      "years": [
+        2010,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 15,
+        "cash_balance_usd": 15,
+        "common_dividends_raw_usd": 15,
+        "debt_proceeds_usd": 0,
+        "debt_repayments_raw_usd": 0,
+        "net_income_usd": 0,
+        "operating_cash_flow_usd": 15
+      },
+      "cik": "0000049826",
+      "matched_recipient_names": 3,
+      "rows": 15,
+      "status": "PASS_WITH_BOUNDARY",
+      "ticker": "ITW",
+      "title": "ILLINOIS TOOL WORKS INC",
+      "years": [
+        2010,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 14,
+        "cash_balance_usd": 15,
+        "common_dividends_raw_usd": 15,
+        "debt_proceeds_usd": 15,
+        "debt_repayments_raw_usd": 15,
+        "net_income_usd": 15,
+        "operating_cash_flow_usd": 15
+      },
+      "cik": "0000277135",
+      "matched_recipient_names": 1,
+      "rows": 15,
+      "status": "PASS_WITH_BOUNDARY",
+      "ticker": "GWW",
+      "title": "W.W. GRAINGER, INC.",
+      "years": [
+        2010,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 13,
+        "cash_balance_usd": 13,
+        "common_dividends_raw_usd": 13,
+        "debt_proceeds_usd": 5,
+        "debt_repayments_raw_usd": 5,
+        "net_income_usd": 13,
+        "operating_cash_flow_usd": 8
+      },
+      "cik": "0000716314",
+      "matched_recipient_names": 1,
+      "rows": 13,
+      "status": "PASS_WITH_BOUNDARY",
+      "ticker": "GHM",
+      "title": "GRAHAM CORP",
+      "years": [
+        2011,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 0,
+        "cash_balance_usd": 15,
+        "common_dividends_raw_usd": 0,
+        "debt_proceeds_usd": 14,
+        "debt_repayments_raw_usd": 15,
+        "net_income_usd": 15,
+        "operating_cash_flow_usd": 15
+      },
+      "cik": "0000749251",
+      "matched_recipient_names": 1,
+      "rows": 15,
+      "status": "PASS_WITH_BOUNDARY",
+      "ticker": "IT",
+      "title": "GARTNER INC",
+      "years": [
+        2010,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 15,
+        "cash_balance_usd": 15,
+        "common_dividends_raw_usd": 0,
+        "debt_proceeds_usd": 0,
+        "debt_repayments_raw_usd": 14,
+        "net_income_usd": 15,
+        "operating_cash_flow_usd": 9
+      },
+      "cik": "0000780571",
+      "matched_recipient_names": 1,
+      "rows": 15,
+      "status": "PASS_WITH_BOUNDARY",
+      "ticker": "ITRI",
+      "title": "ITRON, INC.",
+      "years": [
+        2010,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 15,
+        "cash_balance_usd": 15,
+        "common_dividends_raw_usd": 0,
+        "debt_proceeds_usd": 0,
+        "debt_repayments_raw_usd": 0,
+        "net_income_usd": 15,
+        "operating_cash_flow_usd": 15
+      },
+      "cik": "0000813672",
+      "matched_recipient_names": 1,
+      "rows": 15,
+      "status": "PASS_WITH_BOUNDARY",
+      "ticker": "CDNS",
+      "title": "CADENCE DESIGN SYSTEMS INC",
+      "years": [
+        2010,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 15,
+        "cash_balance_usd": 15,
+        "common_dividends_raw_usd": 11,
+        "debt_proceeds_usd": 0,
+        "debt_repayments_raw_usd": 3,
+        "net_income_usd": 0,
+        "operating_cash_flow_usd": 9
+      },
+      "cik": "0000831641",
+      "matched_recipient_names": 1,
+      "rows": 15,
+      "status": "PASS_WITH_BOUNDARY",
+      "ticker": "TTEK",
+      "title": "TETRA TECH INC",
+      "years": [
+        2010,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 14,
+        "cash_balance_usd": 14,
+        "common_dividends_raw_usd": 0,
+        "debt_proceeds_usd": 5,
+        "debt_repayments_raw_usd": 0,
+        "net_income_usd": 14,
+        "operating_cash_flow_usd": 10
+      },
+      "cik": "0001003078",
+      "matched_recipient_names": 1,
+      "rows": 14,
+      "status": "PASS_WITH_BOUNDARY",
+      "ticker": "MSM",
+      "title": "MSC INDUSTRIAL DIRECT CO INC",
+      "years": [
+        2011,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 15,
+        "cash_balance_usd": 9,
+        "common_dividends_raw_usd": 14,
+        "debt_proceeds_usd": 3,
+        "debt_repayments_raw_usd": 5,
+        "net_income_usd": 15,
+        "operating_cash_flow_usd": 11
+      },
+      "cik": "0001049502",
+      "matched_recipient_names": 1,
+      "rows": 15,
+      "status": "PASS_WITH_BOUNDARY",
+      "ticker": "MKSI",
+      "title": "MKS INC",
+      "years": [
+        2010,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 10,
+        "cash_balance_usd": 14,
+        "common_dividends_raw_usd": 0,
+        "debt_proceeds_usd": 0,
+        "debt_repayments_raw_usd": 0,
+        "net_income_usd": 14,
+        "operating_cash_flow_usd": 14
+      },
+      "cik": "0001067701",
+      "matched_recipient_names": 1,
+      "rows": 14,
+      "status": "PASS_WITH_BOUNDARY",
+      "ticker": "URI",
+      "title": "UNITED RENTALS, INC.",
+      "years": [
+        2011,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 15,
+        "cash_balance_usd": 15,
+        "common_dividends_raw_usd": 13,
+        "debt_proceeds_usd": 3,
+        "debt_repayments_raw_usd": 2,
+        "net_income_usd": 3,
+        "operating_cash_flow_usd": 15
+      },
+      "cik": "0001090872",
+      "matched_recipient_names": 1,
+      "rows": 15,
+      "status": "PASS_WITH_BOUNDARY",
+      "ticker": "A",
+      "title": "AGILENT TECHNOLOGIES, INC.",
+      "years": [
+        2010,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 4,
+        "cash_balance_usd": 4,
+        "common_dividends_raw_usd": 0,
+        "debt_proceeds_usd": 0,
+        "debt_repayments_raw_usd": 0,
+        "net_income_usd": 4,
+        "operating_cash_flow_usd": 4
+      },
+      "cik": "0001555279",
+      "matched_recipient_names": 1,
+      "rows": 4,
+      "status": "PASS_WITH_BOUNDARY",
+      "ticker": "MASS",
+      "title": "908 Devices Inc.",
+      "years": [
+        2021,
+        2024
+      ]
+    },
+    {
+      "available_tags": {
+        "capex_raw_usd": 10,
+        "cash_balance_usd": 10,
+        "common_dividends_raw_usd": 0,
+        "debt_proceeds_usd": 0,
+        "debt_repayments_raw_usd": 0,
+        "net_income_usd": 1,
+        "operating_cash_flow_usd": 10
+      },
+      "cik": "0001601046",
+      "matched_recipient_names": 1,
+      "rows": 10,
+      "status": "PASS_WITH_BOUNDARY",
+      "ticker": "KEYS",
+      "title": "Keysight Technologies, Inc.",
+      "years": [
+        2015,
+        2024
+      ]
+    }
+  ],
+  "request_failures": [],
+  "schema_version": "1.0",
+  "source_manifest": {
+    "path": "docs/data/external/economics/us_historical/sec_xbrl/2026-08-01/sec_recipient_funding_concordance_manifest.json",
+    "sha256": "6deab29c5be21f8e619a841f04a6d4a4cf14d2e876eb0a0a7f872f8a1fb4ef0b",
+    "status": "PASS_WITH_BOUNDARY"
+  },
+  "status": "PASS_WITH_BOUNDARY",
+  "topic": "0.25_Strategy_Power_Economics"
+}

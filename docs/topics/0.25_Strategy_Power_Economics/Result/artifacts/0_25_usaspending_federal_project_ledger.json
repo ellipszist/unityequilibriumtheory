@@ -24,7 +24,7 @@
     "boundary": "USAspending identifies federal awarding/funding agencies and obligations, not whether each obligation was financed by taxes, borrowing, or money creation.",
     "status": "NOT_IDENTIFIED"
   },
-  "generated_at_utc": "2026-08-01T14:12:44.387693+00:00",
+  "generated_at_utc": "2026-08-01T14:34:21.211271+00:00",
   "limitations": [
     "The sample is limited to the Department of Energy, FY2024, contract award codes, and five API pages.",
     "Award obligation is not the same as cash settlement or final supplier payment.",

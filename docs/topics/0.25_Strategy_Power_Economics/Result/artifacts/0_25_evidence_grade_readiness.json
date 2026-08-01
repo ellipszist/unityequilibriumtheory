@@ -32,6 +32,7 @@
     "usgs_material_quantities": "PASS_WITH_BOUNDARY",
     "sec_public_firm_funding_proxy": "PASS_WITH_BOUNDARY",
     "sec_public_firm_funding_mix": "PASS_WITH_BOUNDARY",
+    "sec_recipient_funding_concordance": "PASS_WITH_BOUNDARY",
     "project_payment_ledger": "BLOCKED"
   },
   "controlling_blockers": [
@@ -58,6 +59,7 @@
     "usgs_material_quantities",
     "sec_public_firm_funding_proxy",
     "sec_public_firm_funding_mix",
+    "sec_recipient_funding_concordance",
     "project_payment_ledger"
   ],
   "promotion_rule": "All critical source, measurement, causal, global, independent-replication, and publication checks must be PASS; no WARN/BLOCKED critical gate may be averaged away.",

@@ -28,6 +28,7 @@ from economic_hardening_common import (
     USGS_MATERIAL_QUANTITY_ARTIFACT,
     SEC_PUBLIC_FIRM_PROXY_ARTIFACT,
     SEC_PUBLIC_FIRM_MIX_ARTIFACT,
+    SEC_RECIPIENT_FUNDING_CONCORDANCE_ARTIFACT,
     PROJECT_PAYMENT_LEDGER_ARTIFACT,
     BLS_IO_SOURCE_GATE_ARTIFACT,
     FED_Z1_FUNDING_MAPPING_ARTIFACT,
@@ -161,6 +162,14 @@ def main() -> int:
     usgs_materials_ready = usgs_materials.get("status") == "PASS_WITH_BOUNDARY"
     sec_funding_proxy = _artifact_status(SEC_PUBLIC_FIRM_PROXY_ARTIFACT)
     sec_funding_mix = _artifact_status(SEC_PUBLIC_FIRM_MIX_ARTIFACT)
+    recipient_funding_concordance = _artifact_status(SEC_RECIPIENT_FUNDING_CONCORDANCE_ARTIFACT)
+    recipient_funding_ready = recipient_funding_concordance.get("status") == "PASS_WITH_BOUNDARY"
+    recipient_funding_payload = {}
+    if recipient_funding_concordance.get("exists"):
+        try:
+            recipient_funding_payload = json.loads(SEC_RECIPIENT_FUNDING_CONCORDANCE_ARTIFACT.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            recipient_funding_payload = {}
     project_ledger_gate = _artifact_status(PROJECT_PAYMENT_LEDGER_ARTIFACT)
     usaspending_ledger = _artifact_status(USASPENDING_LEDGER_ARTIFACT)
     usaspending_ready = usaspending_ledger.get("status") == "PASS_WITH_BOUNDARY"
@@ -252,6 +261,13 @@ def main() -> int:
             "artifact": {"source_package": sec_funding_proxy, "funding_mix": sec_funding_mix},
             "boundary": "Predeclared public-firm annual accounting channels can be compared descriptively; funding shares and invoice provenance remain unidentified.",
         },
+        "recipient_public_firm_funding_channels": {
+            "status": "PASS_WITH_BOUNDARY" if recipient_funding_ready else "BLOCKED",
+            "artifact": recipient_funding_concordance,
+            "coverage": recipient_funding_payload.get("coverage"),
+            "source": _glob_record(RAW_ROOT / "sec_xbrl" / "2026-08-01", "CIK*_recipient_companyfacts.json", "SEC company-facts annual recipient accounting responses"),
+            "boundary": "Exact unique recipient-name matches to SEC reporting issuers provide annual net-income, operating-cash-flow, capex, debt, dividends, and cash channels. They do not identify which award dollar was paid from profit, borrowing, or cash, and no fuzzy matching or share attribution is used.",
+        },
         "award_federal_account_linkage": {
             "status": "PASS_WITH_BOUNDARY" if award_funding_bounded else "BLOCKED",
             "artifact": award_funding_account,
@@ -332,6 +348,7 @@ def main() -> int:
             "award_federal_account_linkage_ready": bool(award_funding_bounded),
             "federal_account_budget_resource_ready": bool(federal_account_budget_ready),
             "subaward_downstream_recipient_ready": bool(subaward_downstream_ready),
+            "recipient_public_firm_funding_channels_ready": bool(recipient_funding_ready),
             "bounded_labor_subset": evidence["labor_industry_hours"].get("artifact", {}).get("bounded_coverage"),
         },
         "evidence": evidence,
