@@ -271,3 +271,15 @@ promoted.
 - Still open: 0.11 replicate/temporal acquisition and estimator gates; 0.13 alpha_Phi_K, numeric source package, and core causal leakage; all physical units/external validation.
 - Next controller: close one pilot operator's remaining acceptance gate at a time; do not fit the TTG bridge against holdout data.
 - Claim impact: no readiness or physical-claim upgrade.
+
+### 2026-08-02 - Selected finite-cone shared-ledger integration
+
+- Scope: selected `matter_space_characteristic_cone_v1` lane and its normalized ledger/observable/pilot dependencies.
+- Wave type: integration artifact and numerical claim-boundary pass.
+- Added or changed: `audit_matter_space_finite_cone_integration.py`, `matter_space_finite_cone_shared_ledger_integration.json`, regression test, and F6/Wave 3 evidence wiring.
+- Verified with: integration audit, foundation/Wave 3/all-wave audits, and 31 targeted tests.
+- Result: selected lane integration `PASS` in normalized-only scope; full default Heun/RK2 candidate remains `FAIL` on prearrival leakage.
+- Blocker narrowed: selected characteristic support, shared ledger, trace-toggle invariance, and pilot reruns are now one declared lane; SI and mass-density maps remain explicitly open.
+- Still open: dimensional lane, full-candidate causal discretization, 0.11 acquisition, 0.13 source/temperature bridge, and external validation.
+- Next controller: derive one dimensional lane and separately repair or restrict the full nonlinear causal candidate.
+- Claim impact: no physical or readiness upgrade.

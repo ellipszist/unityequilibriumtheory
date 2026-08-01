@@ -291,3 +291,14 @@ This is observable-definition progress, not physical validation. The seven recor
 remain `physical_closure=false`; 256 of 263 rows still have no declared operator. The
 0.11 replicate/temporal gate, 0.13 dimensional/source gate, causal leakage, and external
 evidence gates remain controlling.
+
+## Latest plan update - 2026-08-02 selected finite-cone integration
+
+The selected normalized characteristic lane is now joined to the shared ledger, normalized
+observable operator, and 0.11/0.13 selected-lane reruns. Its compact-support and no-clipping
+checks pass locally. This does not close the default full nonlinear Heun/RK2 candidate: its
+pre-arrival leakage remains `0.017639381271029236` against the `1e-6` gate.
+
+The result is therefore `PASS` only for a normalized selected-lane integration artifact.
+Dimensional units, mass-density mapping, full causal discretization, and empirical evidence
+remain blocked.

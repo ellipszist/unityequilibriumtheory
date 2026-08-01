@@ -139,3 +139,12 @@ ceiling changed.
 - Result: declared operator coverage increased from 0 to 7 records; 256 rows still lack an operator declaration and all 7 declared records remain non-physical/blocked.
 - Next controller: 0.11 replicate/temporal acquisition and 0.13 dimensional/source closure.
 - Claim impact: no change.
+
+## 2026-08-02 - Selected finite-cone shared-ledger integration
+
+- Scope: Wave 3 selected characteristic lane.
+- Added: shared-ledger integration artifact and F6/Wave 3 evidence wiring.
+- Verified: selected lane audit `PASS`; full default candidate remains `FAIL` at prearrival leakage `0.017639381271029236` versus `1e-6`; 31 targeted tests passed.
+- Result: normalized integration is closed as a candidate lane; full nonlinear causal physics remains blocked.
+- Next controller: dimensional mapping and causal discretization decision.
+- Claim impact: no change.

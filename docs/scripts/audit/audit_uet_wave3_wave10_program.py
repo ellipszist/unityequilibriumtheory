@@ -148,7 +148,7 @@ def build() -> dict[str, Any]:
             3,
             "Mathematical closure and causal two-arm decision",
             causal_selection.get("next_controller", controller_of(causal_selection)) + "; normalized observable operator verified; SI mapping remains open",
-            ["docs/core/artifacts/matter_space_causal_lane_selection.json", "docs/core/artifacts/matter_space_characteristic_cone_verification.json", "docs/core/artifacts/matter_space_causal_lane_comparison.json", "docs/core/artifacts/matter_space_causal_reference_verification.json", "docs/core/artifacts/matter_space_dependency_gate.json", "docs/core/artifacts/matter_space_observable_verification.json"],
+            ["docs/core/artifacts/matter_space_causal_lane_selection.json", "docs/core/artifacts/matter_space_characteristic_cone_verification.json", "docs/core/artifacts/matter_space_finite_cone_shared_ledger_integration.json", "docs/core/artifacts/matter_space_causal_lane_comparison.json", "docs/core/artifacts/matter_space_causal_reference_verification.json", "docs/core/artifacts/matter_space_dependency_gate.json", "docs/core/artifacts/matter_space_observable_verification.json"],
             causal_status,
             "selected characteristic finite-cone candidate plus conserved-C comparator; no physical promotion",
             foundation_blocked,

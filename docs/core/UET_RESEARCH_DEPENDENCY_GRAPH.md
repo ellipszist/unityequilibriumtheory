@@ -121,3 +121,9 @@ correspondence closure, not a universal C-to-mass or trace-to-particle mapping.
 The F2 edge now has seven named pilot operators, but all remain blocked from physical
 closure. The graph still routes 0.11 through replicate/temporal acquisition and 0.13
 through dimensional TTG mapping/source provenance before any data claim.
+
+## Latest plan update - 2026-08-02 selected finite-cone integration
+
+Wave 3 now distinguishes the passing normalized characteristic integration from the failing
+full nonlinear candidate. The selected edge can feed pilot diagnostics, but it cannot bypass
+the full-candidate leakage, units, or external-observable gates.

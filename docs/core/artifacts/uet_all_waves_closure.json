@@ -7,7 +7,7 @@
   "foundation_gate": {
     "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
     "status": "BLOCKED",
-    "sha256": "b4cbbd8751f2172d964a3eb60a11941ebaf8cc7c41af2a0e238d8ae770c6edc5",
+    "sha256": "4718e85ca7ff444d9f28fa92f6420d6930f3781cf316e288a378276f64a97b4a",
     "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
   },
   "wave_count": 12,
@@ -40,7 +40,7 @@
         {
           "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
           "exists": true,
-          "sha256": "b4cbbd8751f2172d964a3eb60a11941ebaf8cc7c41af2a0e238d8ae770c6edc5",
+          "sha256": "4718e85ca7ff444d9f28fa92f6420d6930f3781cf316e288a378276f64a97b4a",
           "status": "BLOCKED",
           "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
         },
@@ -139,6 +139,13 @@
           "sha256": "fcc79d5b7aaa981b6c4afe773bc31a6ed787772f6a51dd60384265fcfe0ed940",
           "status": "INTERNAL_CANDIDATE",
           "controller": "integrate the selected finite-cone lane into the shared matter-space ledger and derive its units/observable map"
+        },
+        {
+          "path": "docs/core/artifacts/matter_space_finite_cone_shared_ledger_integration.json",
+          "exists": true,
+          "sha256": "a2cd2e80c36b1749b8fa853e77ac2d226223db6503ee9b54ad7989ba33142657",
+          "status": "PASS_NORMALIZED_SHARED_LEDGER_WITH_OPEN_UNITS_AND_FULL_CANDIDATE_BLOCKED",
+          "controller": "derive a dimensional lane and close the full-candidate causal discretization separately without clipping or cone padding"
         },
         {
           "path": "docs/core/artifacts/matter_space_causal_lane_comparison.json",

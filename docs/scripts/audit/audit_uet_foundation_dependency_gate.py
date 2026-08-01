@@ -37,6 +37,7 @@ def build_gate() -> dict[str, Any]:
     registry_path = ROOT / "docs/core/artifacts/uet_equation_correspondence_registry.json"
     compat_path = ROOT / "docs/core/artifacts/uet_foundation_compatibility_gate.json"
     characteristic_path = ROOT / "docs/core/artifacts/matter_space_characteristic_cone_verification.json"
+    finite_cone_integration_path = ROOT / "docs/core/artifacts/matter_space_finite_cone_shared_ledger_integration.json"
     causal_lane_path = ROOT / "docs/core/artifacts/matter_space_causal_lane_selection.json"
     pilot_sync_path = ROOT / "docs/core/artifacts/matter_space_topic_pilot_sync.json"
     lane_contract_path = ROOT / "docs/core/artifacts/uet_active_lane_units_observable_register.json"
@@ -51,6 +52,7 @@ def build_gate() -> dict[str, Any]:
     registry = load(registry_path)
     compat = load(compat_path)
     characteristic = load(characteristic_path)
+    finite_cone_integration = load(finite_cone_integration_path)
     causal_lane = load(causal_lane_path)
     pilot_sync = load(pilot_sync_path)
     lane_contract = load(lane_contract_path)
@@ -140,14 +142,17 @@ def build_gate() -> dict[str, Any]:
         "F6_numerical_verification": {
             "status": "PASS_CONDITIONAL_SELECTED_LANE" if characteristic_pass else "BLOCKED",
             "reason": "The selected characteristic cone lane passes its normalized verifier; the old full coupled lane and changing conserved-C lane retain separate blockers.",
-            "evidence": [rel(characteristic_path), rel(causal_lane_path)],
+            "evidence": [rel(characteristic_path), rel(finite_cone_integration_path), rel(causal_lane_path)],
             "metrics": {
                 "selected_lane_audit": characteristic.get("audit_status"),
                 "selected_lane_status": selected_lane_status,
                 "selected_operator": selected_lane.get("operator_mode"),
                 "prearrival_leakage_fraction": characteristic.get("metrics", {}).get("prearrival_leakage_fraction"),
+                "shared_ledger_integration_status": finite_cone_integration.get("status"),
+                "integration_audit_status": finite_cone_integration.get("audit_status"),
+                "full_candidate_blocker_preserved": finite_cone_integration.get("checks", {}).get("full_default_candidate_blocker_preserved"),
             },
-            "required_next_artifact": "lane-specific topic reruns and a separately closed conserved/causal branch decision",
+            "required_next_artifact": finite_cone_integration.get("next_controller", "lane-specific topic reruns and a separately closed conserved/causal branch decision"),
         },
         "F7_observable_mapping": {
             "status": "BLOCKED",

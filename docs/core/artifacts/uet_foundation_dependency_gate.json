@@ -98,15 +98,19 @@
       "reason": "The selected characteristic cone lane passes its normalized verifier; the old full coupled lane and changing conserved-C lane retain separate blockers.",
       "evidence": [
         "docs/core/artifacts/matter_space_characteristic_cone_verification.json",
+        "docs/core/artifacts/matter_space_finite_cone_shared_ledger_integration.json",
         "docs/core/artifacts/matter_space_causal_lane_selection.json"
       ],
       "metrics": {
         "selected_lane_audit": "PASS",
         "selected_lane_status": "PASS_WITH_DEFERRED_CONSERVED_BRANCH",
         "selected_operator": "matter_space_characteristic_cone_v1",
-        "prearrival_leakage_fraction": 0.0
+        "prearrival_leakage_fraction": 0.0,
+        "shared_ledger_integration_status": "PASS_NORMALIZED_SHARED_LEDGER_WITH_OPEN_UNITS_AND_FULL_CANDIDATE_BLOCKED",
+        "integration_audit_status": "PASS",
+        "full_candidate_blocker_preserved": true
       },
-      "required_next_artifact": "lane-specific topic reruns and a separately closed conserved/causal branch decision"
+      "required_next_artifact": "derive a dimensional lane and close the full-candidate causal discretization separately without clipping or cone padding"
     },
     "F7_observable_mapping": {
       "status": "BLOCKED",
