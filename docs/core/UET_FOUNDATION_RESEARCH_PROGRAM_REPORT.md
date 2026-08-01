@@ -155,3 +155,22 @@ The plan is therefore updated from “rerun selected pilots” to “use the sel
 5. downstream carrier, covariant transport, GR, galaxy, cosmology, and particle gates.
 
 No legacy artifact was relabelled, no parameter was fitted, and no empirical or physical claim was promoted.
+## Latest plan update — 2026-08-01 thermal observable subgate
+
+The thermal branch has completed its standard observable-definition subgate. The plan now treats
+`q_TTG`, `v_TTG`, and `l_p` as source-backed diagnostics, while keeping the UET-specific map
+`Delta_Tq = alpha_Phi_K * Delta_Phi` explicitly open. This is a narrower and more useful blocker:
+we are no longer missing the definition of the standard TTG observables; we are missing the
+source-normalized numeric package and an independently derived or calibrated dimensional map.
+
+The next execution order is:
+
+1. preserve the normalized characteristic reruns as fixed simulation controls;
+2. obtain or package a permitted numeric TTG source with locator, units, preprocessing, uncertainty,
+   and hash;
+3. freeze the normalized comparison operator and parameter policy before using any external rows;
+4. treat `alpha_Phi_K` as a separate calibration/derivation gate, never as a fitted UET prediction;
+5. only after those gates pass, compare the UET lane with the source data and update the 0.13 pilot.
+
+Current status remains `BLOCKED` at foundation level and `SIMULATION_ONLY` for the thermal pilot.
+The change closes a definition gap; it does not close the physical or empirical validation gap.

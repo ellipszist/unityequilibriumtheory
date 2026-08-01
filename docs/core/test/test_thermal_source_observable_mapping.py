@@ -7,6 +7,8 @@ from docs.core.thermal_source_observable_map import (
     normalized_ttg_signal,
     quasi_temperature_difference_from_phi,
     ttg_wave_speed,
+    ttg_wavevector,
+    ttg_propagation_length,
 )
 from docs.scripts.audit.audit_thermal_source_observable_mapping import build_artifact
 
@@ -29,11 +31,23 @@ def test_ttg_wave_speed_uses_half_grating_period() -> None:
     assert ttg_wave_speed(2.0e-6, 1.0e-9) == pytest.approx(1000.0)
 
 
+def test_ttg_wavevector_and_propagation_length_are_source_diagnostics() -> None:
+    assert ttg_wavevector(2.0e-6) == pytest.approx(3.141592653589793e6)
+    assert ttg_propagation_length(2.0e-6, -0.5) == pytest.approx(1.4426950408889634e-6)
+
+
+def test_ttg_propagation_length_rejects_invalid_dip_domain() -> None:
+    with pytest.raises(ValueError, match="-1 < dip < 0"):
+        ttg_propagation_length(2.0e-6, 0.0)
+    with pytest.raises(ValueError, match="-1 < dip < 0"):
+        ttg_propagation_length(2.0e-6, -1.0)
+
 def test_source_readiness_artifact_exposes_blocked_lanes() -> None:
     artifact = build_artifact()
     assert artifact["audit_status"] == "PASS_WITH_BLOCKED_DIMENSIONAL_AND_DATA_LANES"
     assert artifact["mapping_status"].endswith("BLOCKED")
     assert artifact["gates"]["standard_normalized_ttg_operator_defined"]
+    assert artifact["gates"]["standard_ttg_diagnostic_relations_defined"]
     assert not artifact["gates"]["dimensional_phi_to_quasi_temperature_scale_defined"]
     assert not artifact["gates"]["local_numeric_source_package_present"]
     assert artifact["gates"]["holdout_data_not_consumed"]

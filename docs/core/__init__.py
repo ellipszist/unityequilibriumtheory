@@ -189,6 +189,8 @@ from .thermal_source_observable_map import (
     normalized_ttg_signal,
     quasi_temperature_difference_from_phi,
     ttg_wave_speed,
+    ttg_wavevector,
+    ttg_propagation_length,
 )
 from .persistence_energy_diagnostic import (
     PATH_COST_ORIGIN,
@@ -395,6 +397,8 @@ __all__ = [
     "normalized_ttg_signal",
     "quasi_temperature_difference_from_phi",
     "ttg_wave_speed",
+    "ttg_wavevector",
+    "ttg_propagation_length",
     "PATH_COST_ORIGIN",
     "PERSISTENCE_ENERGY_STATUS",
     "PERSISTENCE_PRINCIPLE_ID",

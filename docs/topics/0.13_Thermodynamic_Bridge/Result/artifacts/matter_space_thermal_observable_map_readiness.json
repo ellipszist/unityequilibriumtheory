@@ -15,7 +15,7 @@
     "source_package_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_second_sound_source_package.json",
     "source_package_sha256": "118ddf77864d74fe1c662e447af41705e544cfae4a8523cbe802560b6d4279f6",
     "source_review_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_thermal_source_review.json",
-    "source_review_sha256": "9a154eda881f777761328e2beaa170723ade2daf622ac25376a90ab1cb4ede8c"
+    "source_review_sha256": "2b3a2cbef3c25695ab2475e8be5a5568326e17c10ebe957074b351a59d3e62f9"
   },
   "source_rows": [
     {
@@ -69,6 +69,10 @@
   "standard_reference_relations": {
     "wave_speed": "v_TTG=Lambda/(2*t_d)",
     "wave_speed_example_m_per_s": 999.9999999999999,
+    "wavevector": "q_TTG=2*pi/Lambda",
+    "wavevector_example_m_inv": 3141592.6535897935,
+    "propagation_length": "l_p=Lambda/(-2*ln(-DeltaT_d))",
+    "propagation_length_example_m": 1.4426950408889634e-06,
     "fourier_flux": "q=-k*grad(Tq)",
     "entropy_production": "sigma=q^2/(k*Tq^2)"
   },
@@ -80,6 +84,7 @@
   "gates": {
     "source_identity_and_unit_context_present": true,
     "standard_normalized_ttg_operator_defined": true,
+    "standard_ttg_diagnostic_relations_defined": true,
     "normalized_phi_operator_is_explicit": true,
     "dimensional_phi_to_quasi_temperature_scale_defined": false,
     "local_numeric_source_package_present": false,

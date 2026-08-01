@@ -679,3 +679,13 @@ Use this log when `0.13` changes in a way that narrows a provenance blocker, add
 - Next controller: `thermal_source_numeric_package_and_dimensional_calibration_missing`.
 - Claim impact: no upgrade; the normalized operator is a definition/measurement target, not validation or a UET thermodynamic derivation.
 - Workflow linkage: source pass plus observable-map gate pass under the UET formula-audit and data-provenance standards.
+
+### 2026-08-01 - Source-backed TTG diagnostic contract pass
+
+- Scope: extend the normalized TTG observable contract with source-backed wavevector and propagation-length diagnostics without opening a dimensional UET calibration.
+- Added or changed: `ttg_wavevector`, `ttg_propagation_length`, public core exports, focused tests, source-review relation registry, generated readiness artifact, and this log/spec synchronization.
+- Verified with: `pytest` focused thermal suite (`14 passed`) and `audit_thermal_source_observable_mapping.py`; artifact remains `PASS_WITH_BLOCKED_DIMENSIONAL_AND_DATA_LANES`.
+- Result: `q_TTG=2*pi/Lambda`, `v_TTG=Lambda/(2*t_d)`, and `l_p=Lambda/(-2*ln(-DeltaT_d))` now have explicit units/domain checks and source-role metadata.
+- Still open: local numeric source package with row-level provenance, independent `alpha_Phi_K` derivation/calibration, heat-flux/entropy maps, and the locked 2026 holdout.
+- Claim impact: no upgrade; `Phi` is not identified with temperature and no external validation or fitting was performed.
+- Next controller: `thermal_source_numeric_package_and_dimensional_calibration_missing`.

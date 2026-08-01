@@ -8,7 +8,7 @@ calibration that would turn ``Phi`` into kelvin.
 
 from __future__ import annotations
 
-from math import isfinite
+from math import isfinite, log, pi
 
 
 THERMAL_SOURCE_MAP_SCHEMA_VERSION = "1.0"
@@ -73,10 +73,48 @@ def ttg_wave_speed(grating_period_m: float, dip_time_s: float) -> float:
     return float(grating_period_m) / (2.0 * float(dip_time_s))
 
 
+def ttg_wavevector(grating_period_m: float) -> float:
+    """Return the TTG spatial wavevector magnitude in inverse metres.
+
+    ``Lambda`` is the physical grating period. This is a source-backed
+    observable definition, not a UET parameter fit.
+    """
+
+    if not isfinite(float(grating_period_m)):
+        raise ValueError("grating period must be finite")
+    if grating_period_m <= 0.0:
+        raise ValueError("grating period must be positive")
+    return 2.0 * pi / float(grating_period_m)
+
+
+def ttg_propagation_length(
+    grating_period_m: float,
+    normalized_dip_signal: float,
+) -> float:
+    """Return the TTG propagation-length diagnostic in metres.
+
+    The source convention uses a negative normalized dip ``DeltaT_d`` and
+    ``l_p = Lambda / (-2 log(-DeltaT_d))``. The domain ``-1 < DeltaT_d < 0``
+    is enforced so the logarithm is finite and the diagnostic remains
+    physically interpretable. This relation does not calibrate ``Phi``.
+    """
+
+    values = (grating_period_m, normalized_dip_signal)
+    if not all(isfinite(float(value)) for value in values):
+        raise ValueError("grating period and dip signal must be finite")
+    if grating_period_m <= 0.0:
+        raise ValueError("grating period must be positive")
+    if not -1.0 < normalized_dip_signal < 0.0:
+        raise ValueError("normalized dip signal must satisfy -1 < dip < 0")
+    return float(grating_period_m) / (-2.0 * log(-float(normalized_dip_signal)))
+
+
 __all__ = [
     "NORMALIZED_TTG_OBSERVABLE",
     "THERMAL_SOURCE_MAP_SCHEMA_VERSION",
     "normalized_ttg_signal",
     "quasi_temperature_difference_from_phi",
     "ttg_wave_speed",
+    "ttg_wavevector",
+    "ttg_propagation_length",
 ]

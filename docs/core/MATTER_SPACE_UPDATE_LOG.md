@@ -195,3 +195,11 @@
 - Verified: ownership builder reports `missing_core_paths=0`; aggregate and Wave 3–10 generators pass; scoped regression suite passes `15/15`; 13 generated JSON artifacts parse.
 - Result: coverage is now explicit rather than silently incomplete; foundation status remains `BLOCKED` because explicit coverage does not close units, correspondence, observable, or data gates.
 - Next controller: close one source-locked dimensional observable lane; do not treat ownership coverage as physical derivation.
+### 2026-08-01 - Thermal observable diagnostic closure pass
+
+- Scope: close the standard TTG diagnostic-definition subgate while preserving the dimensional and external-data blockers.
+- Added: source-backed wavevector and propagation-length functions, public exports, source-review relation records, and focused regression coverage.
+- Verified: focused thermal suite `14 passed`; source mapping audit returned `PASS_WITH_BLOCKED_DIMENSIONAL_AND_DATA_LANES`.
+- Result: the standard measurement layer now exposes normalized signal, wavevector, arrival-speed, and propagation-length diagnostics with explicit unit/domain boundaries.
+- Preserved: `alpha_Phi_K` remains open, no local numeric package or holdout was consumed, normalized `Phi` is not temperature, and heat flux/entropy remain downstream maps.
+- Next controller: source-lock a licensed numeric TTG package and independently close the `Phi` dimensional calibration gate before any fit or validation claim.

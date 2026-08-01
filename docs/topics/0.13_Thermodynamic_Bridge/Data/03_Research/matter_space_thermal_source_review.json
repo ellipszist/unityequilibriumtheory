@@ -52,6 +52,24 @@
     "raw_unit": "K after an independently calibrated temperature convention",
     "normalized_unit": "dimensionless",
     "directness": "measured TTG signal is a proxy for the quasi-temperature response; heat flux and entropy production are not directly measured",
+    "source_backed_relations": [
+      {
+        "relation_id": "TTG-SPEED-001",
+        "formula": "v_TTG = Lambda / (2 * t_d)",
+        "source_ids": ["ding_2022_graphite_over_200K"],
+        "source_locator": "Results: thermal-wave velocity relation; Eq. (11)",
+        "units": "Lambda in m; t_d in s; v_TTG in m/s",
+        "status": "SOURCE_BACKED_DIAGNOSTIC_DEFINITION"
+      },
+      {
+        "relation_id": "TTG-LENGTH-001",
+        "formula": "l_p = Lambda / (-2 * ln(-DeltaT_d))",
+        "source_ids": ["ding_2022_graphite_over_200K"],
+        "source_locator": "Results: propagation-length relation; source-reported normalized dip",
+        "units": "Lambda and l_p in m; DeltaT_d dimensionless",
+        "status": "SOURCE_BACKED_DIAGNOSTIC_DEFINITION"
+      }
+    ],
     "status": "SOURCE_BACKED_STANDARD_OBSERVABLE_DEFINITION"
   },
   "uet_map_contract": {

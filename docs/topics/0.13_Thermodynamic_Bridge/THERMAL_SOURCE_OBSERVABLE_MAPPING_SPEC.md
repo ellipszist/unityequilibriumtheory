@@ -76,3 +76,23 @@ source are closed:
 See [matter_space_thermal_source_review.json](./Data/03_Research/matter_space_thermal_source_review.json),
 [matter_space_thermal_observable_map_readiness.json](./Result/artifacts/matter_space_thermal_observable_map_readiness.json),
 and [audit_thermal_source_observable_mapping.py](../../scripts/audit/audit_thermal_source_observable_mapping.py).
+
+## Additional source-backed diagnostics
+
+Once a source provides a grating period and a resolved TTG dip, the standard
+comparison can report diagnostics that do not require a `Phi` calibration:
+
+\[
+q_{\mathrm{TTG}}=\frac{2\pi}{\Lambda},
+\qquad
+v_{\mathrm{TTG}}=\frac{\Lambda}{2t_d},
+\qquad
+\ell_p=\frac{\Lambda}{-2\ln(-\Delta T_d)}.
+\]
+
+Here `q_TTG` is the spatial wavevector magnitude in `m^-1`, `v_TTG` is in
+`m/s`, `Lambda` and `ell_p` are in metres, and `Delta T_d` is the negative,
+dimensionless normalized dip used by the source convention. These are
+source-backed diagnostic definitions for a future comparison. They do not
+identify `Phi` with temperature, do not derive `alpha_Phi_K`, and do not close
+heat-flux or entropy-production mappings.

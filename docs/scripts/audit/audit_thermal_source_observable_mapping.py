@@ -18,6 +18,8 @@ from docs.core.thermal_source_observable_map import (  # noqa: E402
     normalized_ttg_signal,
     quasi_temperature_difference_from_phi,
     ttg_wave_speed,
+    ttg_wavevector,
+    ttg_propagation_length,
 )
 
 
@@ -60,12 +62,15 @@ def build_artifact() -> dict:
     normalized_example = normalized_ttg_signal(0.25, -0.25, 0.5)
     dimensional_example = quasi_temperature_difference_from_phi(0.25, -0.25, 4.0)
     wave_speed_example = ttg_wave_speed(2.0e-6, 1.0e-9)
+    wavevector_example = ttg_wavevector(2.0e-6)
+    propagation_length_example = ttg_propagation_length(2.0e-6, -2.0 ** -1.0)
     all_identity_complete = all(row["external_identity_complete"] for row in source_rows)
     local_numeric_ready = any(row["local_numeric_present"] for row in source_rows)
     holdout_consumed = bool(source_review.get("holdout_consumed"))
     gates = {
         "source_identity_and_unit_context_present": all_identity_complete,
         "standard_normalized_ttg_operator_defined": True,
+        "standard_ttg_diagnostic_relations_defined": True,
         "normalized_phi_operator_is_explicit": normalized_example == 1.0,
         "dimensional_phi_to_quasi_temperature_scale_defined": False,
         "local_numeric_source_package_present": local_numeric_ready,
@@ -81,6 +86,7 @@ def build_artifact() -> dict:
             for name in (
                 "source_identity_and_unit_context_present",
                 "standard_normalized_ttg_operator_defined",
+                "standard_ttg_diagnostic_relations_defined",
                 "normalized_phi_operator_is_explicit",
                 "holdout_data_not_consumed",
                 "no_parameter_fitting",
@@ -122,6 +128,10 @@ def build_artifact() -> dict:
         "standard_reference_relations": {
             "wave_speed": "v_TTG=Lambda/(2*t_d)",
             "wave_speed_example_m_per_s": wave_speed_example,
+            "wavevector": "q_TTG=2*pi/Lambda",
+            "wavevector_example_m_inv": wavevector_example,
+            "propagation_length": "l_p=Lambda/(-2*ln(-DeltaT_d))",
+            "propagation_length_example_m": propagation_length_example,
             "fourier_flux": "q=-k*grad(Tq)",
             "entropy_production": "sigma=q^2/(k*Tq^2)",
         },
