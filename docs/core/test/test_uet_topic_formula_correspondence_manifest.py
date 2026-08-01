@@ -28,6 +28,17 @@ def test_manifest_does_not_promote_lane_relations_or_observables() -> None:
     rows = artifact["rows"]
     coverage = artifact["coverage"]
     assert coverage["central_registry_exact_links"] == 0
-    assert coverage["measurement_operator_open_rows"] == len(rows)
+    assert coverage["measurement_operator_declared_rows"] == 7
+    assert coverage["measurement_operator_open_rows"] == len(rows) - 7
+    assert coverage["measurement_operator_blocked_rows"] == len(rows)
     assert all(not row["central_registry_relation"]["exact_identity"] for row in rows)
-    assert all(row["measurement_operator"]["status"] == "OPEN_UNRESOLVED" for row in rows)
+    mapped_ids = {row["formula_id"] for row in rows if row["measurement_operator"]["status"] != "OPEN_UNRESOLVED"}
+    assert mapped_ids == {
+        "PT-ORDER-PARAMETER",
+        "PT-CONSERVED-ORDER-SPECTRAL-L16-STRUCTURE-FACTOR-ESTIMATOR",
+        "PT-CONSERVED-ORDER-SPECTRAL-STRUCTURE-FACTOR-MULTIGRID",
+        "T13-010",
+        "T13-013",
+        "T13-014",
+        "T13-015",
+    }

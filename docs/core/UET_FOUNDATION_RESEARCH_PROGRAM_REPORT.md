@@ -279,3 +279,15 @@ This closes a coverage/visibility gap, not the physical correspondence gate. F2 
 blocked by 152 open standard-counterpart rows and 263 unresolved measurement operators;
 F3 dimensional contracts, F4 derivation provenance, F7 observable maps, and F8 external
 physical evidence remain open.
+
+## Latest plan update - 2026-08-02 pilot observable contracts
+
+The manifest now names seven existing pilot operators without promoting them: a 0.11
+persistence proxy, two structure-factor diagnostic declarations, a Cattaneo control, and
+three 0.13 TTG standard/candidate/bridge records. The operator records are source-linked
+and carry explicit normalized or open unit lanes.
+
+This is observable-definition progress, not physical validation. The seven records all
+remain `physical_closure=false`; 256 of 263 rows still have no declared operator. The
+0.11 replicate/temporal gate, 0.13 dimensional/source gate, causal leakage, and external
+evidence gates remain controlling.

@@ -108,9 +108,15 @@ def build_gate() -> dict[str, Any]:
                 "manifest_rows": correspondence_manifest.get("coverage", {}).get("manifest_rows"),
                 "manifest_rows_missing": correspondence_manifest.get("coverage", {}).get("rows_missing_from_manifest"),
                 "measurement_operator_records": correspondence_manifest.get("coverage", {}).get("measurement_operator_records"),
+                "measurement_operator_declared_rows": correspondence_manifest.get("coverage", {}).get("measurement_operator_declared_rows"),
                 "measurement_operator_open_rows": correspondence_manifest.get("coverage", {}).get("measurement_operator_open_rows"),
+                "measurement_operator_blocked_rows": correspondence_manifest.get("coverage", {}).get("measurement_operator_blocked_rows"),
             },
-            "required_next_artifact": "resolve the 152 open standard-counterpart rows, 263 open measurement-operator records, and 159 rows without a central-registry relation",
+            "required_next_artifact": (
+                f"resolve the {correspondence_full.get('coverage', {}).get('open_correspondence_row_count')} open standard-counterpart rows, "
+                f"close the {correspondence_manifest.get('coverage', {}).get('measurement_operator_open_rows')} undeclared operators, "
+                f"and unblock {correspondence_manifest.get('coverage', {}).get('measurement_operator_declared_rows')} declared pilot operators"
+            ),
         },
         "F3_units": {
             "status": "BLOCKED",

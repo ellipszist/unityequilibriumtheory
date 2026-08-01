@@ -7,7 +7,7 @@
   "foundation_gate": {
     "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
     "status": "BLOCKED",
-    "sha256": "922a3f80837d2a013211ba1b14769764e993c500a27deb5990fb43119c930bb6",
+    "sha256": "b4cbbd8751f2172d964a3eb60a11941ebaf8cc7c41af2a0e238d8ae770c6edc5",
     "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
   },
   "wave_count": 12,
@@ -40,7 +40,7 @@
         {
           "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
           "exists": true,
-          "sha256": "922a3f80837d2a013211ba1b14769764e993c500a27deb5990fb43119c930bb6",
+          "sha256": "b4cbbd8751f2172d964a3eb60a11941ebaf8cc7c41af2a0e238d8ae770c6edc5",
           "status": "BLOCKED",
           "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
         },
@@ -86,7 +86,7 @@
         {
           "path": "docs/core/artifacts/uet_topic_formula_correspondence_manifest.json",
           "exists": true,
-          "sha256": "8cf4cac4646ea08f51d6eca25829a15ac32f33904b40542c91d331e1ece497d5",
+          "sha256": "e95e3e7f204fa511a075bb30650330d630442cec598e411bc9c855c7300edbfd",
           "status": "PASS_WITH_OPEN_ROW_MAPPINGS",
           "controller": "resolve open standard counterparts, units, derivation origins, and physical measurement operators lane by lane; do not promote topic rows into central identities"
         }

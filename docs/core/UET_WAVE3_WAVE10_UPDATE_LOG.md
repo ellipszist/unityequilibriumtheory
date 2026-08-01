@@ -130,3 +130,12 @@ ceiling changed.
 - Result: missing-manifest ambiguity is closed; open counterpart, unit, derivation, and observable mappings remain visible.
 - Next controller: resolve 152 open counterpart rows and 263 open measurement-operator records, beginning with 0.11/0.13 pilot lanes.
 - Claim impact: no change.
+
+## 2026-08-02 - Pilot observable contracts declared without physical promotion
+
+- Scope: 0.11 and 0.13 rows in the F2 correspondence manifest.
+- Added: seven operator records tied to existing internal artifacts; statuses distinguish diagnostic proxy, normalized control, normalized candidate, and calibration-dependent bridge.
+- Verified: 30 targeted tests and all foundation/downstream accounting audits passed at audit level; physics gate remains blocked.
+- Result: declared operator coverage increased from 0 to 7 records; 256 rows still lack an operator declaration and all 7 declared records remain non-physical/blocked.
+- Next controller: 0.11 replicate/temporal acquisition and 0.13 dimensional/source closure.
+- Claim impact: no change.

@@ -259,3 +259,15 @@ promoted.
 - Still open: resolve 152 standard-counterpart rows, 263 physical measurement operators, units/derivation provenance, and external evidence.
 - Next controller: close rows lane by lane, starting with the active 0.11 and 0.13 pilots; no topic row is promoted into a central identity.
 - Claim impact: no readiness or physical-claim upgrade.
+
+### 2026-08-02 - Pilot observable contracts declared without physical promotion
+
+- Scope: 0.11 phase and 0.13 thermal rows in the F2 manifest.
+- Wave type: observable-mapping pass.
+- Added or changed: seven conservative operator records tied to existing pilot artifacts: one 0.11 persistence proxy, two 0.11 structure-factor diagnostic declarations, one Cattaneo control, and three TTG standard/candidate/bridge records.
+- Verified with: manifest generator, foundation gate, Wave 3-10 audit, all-wave audit, and the manifest regression test.
+- Result: 7 operator records are declared, 256 remain undeclared, and all 263 remain physically blocked (`physical_closure=false`); foundation remains `BLOCKED`.
+- Blocker narrowed: pilot observable definitions are now named and source-linked without being confused with SI measurement validation.
+- Still open: 0.11 replicate/temporal acquisition and estimator gates; 0.13 alpha_Phi_K, numeric source package, and core causal leakage; all physical units/external validation.
+- Next controller: close one pilot operator's remaining acceptance gate at a time; do not fit the TTG bridge against holdout data.
+- Claim impact: no readiness or physical-claim upgrade.

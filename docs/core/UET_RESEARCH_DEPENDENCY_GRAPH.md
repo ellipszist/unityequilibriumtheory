@@ -115,3 +115,9 @@ Wave 1 now has a generated manifest indexing all 263 topic formula rows. The dep
 graph can distinguish lane/comparator relations from rows with no central relation, while
 all measurement-operator records remain explicitly open. The next edge is lane-specific
 correspondence closure, not a universal C-to-mass or trace-to-particle mapping.
+
+## Latest plan update - 2026-08-02 pilot observable contracts
+
+The F2 edge now has seven named pilot operators, but all remain blocked from physical
+closure. The graph still routes 0.11 through replicate/temporal acquisition and 0.13
+through dimensional TTG mapping/source provenance before any data claim.

@@ -56,9 +56,11 @@
         "manifest_rows": 263,
         "manifest_rows_missing": 0,
         "measurement_operator_records": 263,
-        "measurement_operator_open_rows": 263
+        "measurement_operator_declared_rows": 7,
+        "measurement_operator_open_rows": 256,
+        "measurement_operator_blocked_rows": 263
       },
-      "required_next_artifact": "resolve the 152 open standard-counterpart rows, 263 open measurement-operator records, and 159 rows without a central-registry relation"
+      "required_next_artifact": "resolve the 152 open standard-counterpart rows, close the 256 undeclared operators, and unblock 7 declared pilot operators"
     },
     "F3_units": {
       "status": "BLOCKED",

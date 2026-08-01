@@ -15,7 +15,18 @@
     "lane_dependency_or_comparator_rows": 104,
     "rows_without_declared_central_relation": 159,
     "measurement_operator_records": 263,
-    "measurement_operator_open_rows": 263
+    "measurement_operator_declared_rows": 7,
+    "measurement_operator_open_rows": 256,
+    "measurement_operator_blocked_rows": 263,
+    "measurement_operator_status_counts": {
+      "OPEN_UNRESOLVED": 256,
+      "INTERNAL_DIAGNOSTIC_PROXY": 1,
+      "DECLARED_DIAGNOSTIC_OPERATOR_WITH_TOPIC_GATE_OPEN": 2,
+      "DECLARED_NORMALIZED_STANDARD_CONTROL": 1,
+      "DECLARED_NORMALIZED_STANDARD_OPERATOR": 1,
+      "CANDIDATE_NORMALIZED_UET_OPERATOR": 1,
+      "OPEN_CALIBRATION_DEPENDENT_BRIDGE": 1
+    }
   },
   "claim_boundary": "Lane relation is not variable identity; an indexed operator is not an observable validation; open rows cannot promote downstream claims.",
   "rows": [
@@ -50,6 +61,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -86,6 +98,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -122,6 +135,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -158,6 +172,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -194,6 +209,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -230,6 +246,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -266,6 +283,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -304,6 +322,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -342,6 +361,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -380,6 +400,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -418,6 +439,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -456,6 +478,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -494,6 +517,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -532,6 +556,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -570,6 +595,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -611,6 +637,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = field trajectory/order structure factor"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -652,6 +679,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = field profile and free-energy diagnostic"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -693,6 +721,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = chemical-potential field"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -734,6 +763,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = spectral mode trajectory"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -768,14 +798,16 @@
         "limiting_case_status": "OPEN_UNLESS_SEPARATELY_VERIFIED"
       },
       "measurement_operator": {
-        "operator_id": "O[PT-ORDER-PARAMETER]",
-        "status": "OPEN_UNRESOLVED",
-        "kind": "formula_row_observable_operator_not_yet_declared",
-        "declared_observable": {
-          "status": "OPEN_UNRESOLVED",
-          "operator": "O[C] = mean(|C|)"
-        },
-        "note": "A row index is present for audit completeness; this is not a physical measurement map."
+        "operator_id": "UET-0.11-C-PHASE-PERSISTENCE-PROXY",
+        "status": "INTERNAL_DIAGNOSTIC_PROXY",
+        "kind": "simulation_metric_proxy",
+        "expression": "C_phase_persistence_proxy",
+        "unit_lane": "normalized_only_v1",
+        "source_artifacts": [
+          "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_matter_space_phase_coupling_diagnostic.json"
+        ],
+        "physical_closure": false,
+        "note": "The artifact reports a lane-specific persistence/compatibility proxy, not a universal physical observable or mass map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -816,6 +848,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = zero-crossing count"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -857,6 +890,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[Tc] = transition-temperature estimate"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -898,6 +932,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "OPEN_MEASUREMENT_OPERATOR"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -939,6 +974,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[data] = relative error"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -980,6 +1016,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "OPEN_MEASUREMENT_OPERATOR"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1021,6 +1058,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "OPEN_MEASUREMENT_OPERATOR"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1062,6 +1100,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "OPEN_MEASUREMENT_OPERATOR"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1103,6 +1142,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[data] = fitted exponent/quality metric"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1144,6 +1184,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[data] = lane comparison under declared sweep"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1185,6 +1226,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = autocorrelation crossing proxy"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1226,6 +1268,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = xi/L and Binder-style proxy"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1267,6 +1310,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = relaxation/correlation proxy"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1308,6 +1352,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[artifact] = requirement/gate status"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1349,6 +1394,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "OPEN_MEASUREMENT_OPERATOR"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1390,6 +1436,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[data] = profile/xi comparison"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1431,6 +1478,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = conserved trajectory and structure factor"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1472,6 +1520,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "OPEN_MEASUREMENT_OPERATOR"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1513,6 +1562,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[config] = high-k stiffness proxy"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1554,6 +1604,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "OPEN_MEASUREMENT_OPERATOR"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1595,6 +1646,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1636,6 +1688,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1677,6 +1730,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1718,6 +1772,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1759,6 +1814,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1800,6 +1856,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1841,6 +1898,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1875,14 +1933,16 @@
         "limiting_case_status": "OPEN_UNLESS_SEPARATELY_VERIFIED"
       },
       "measurement_operator": {
-        "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-L16-STRUCTURE-FACTOR-ESTIMATOR]",
-        "status": "OPEN_UNRESOLVED",
-        "kind": "formula_row_observable_operator_not_yet_declared",
-        "declared_observable": {
-          "status": "OPEN_UNRESOLVED",
-          "operator": "O[C] = structure-factor or xi estimator"
-        },
-        "note": "A row index is present for audit completeness; this is not a physical measurement map."
+        "operator_id": "UET-0.11-STRUCTURE-FACTOR-XI-SF",
+        "status": "DECLARED_DIAGNOSTIC_OPERATOR_WITH_TOPIC_GATE_OPEN",
+        "kind": "formula_declared_structure_factor_diagnostic",
+        "expression": "xi_sf = 2*pi / sqrt(sum(S(k) k^2) / sum(S(k)))",
+        "unit_lane": "normalized_or_topic_specific",
+        "source_artifacts": [
+          "docs/topics/0.11_Phase_Transitions/FORMULA_AUDIT.md"
+        ],
+        "physical_closure": false,
+        "note": "The operator is indexed from the topic formula row; replicate, temporal-acquisition, and estimator acceptance gates remain open."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -1923,6 +1983,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[S(q)] = admissibility status"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1964,6 +2025,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[S(q)] = accepted-row coverage"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -1998,14 +2060,16 @@
         "limiting_case_status": "OPEN_UNLESS_SEPARATELY_VERIFIED"
       },
       "measurement_operator": {
-        "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-STRUCTURE-FACTOR-MULTIGRID]",
-        "status": "OPEN_UNRESOLVED",
-        "kind": "formula_row_observable_operator_not_yet_declared",
-        "declared_observable": {
-          "status": "OPEN_UNRESOLVED",
-          "operator": "O[C] = structure-factor or xi estimator"
-        },
-        "note": "A row index is present for audit completeness; this is not a physical measurement map."
+        "operator_id": "UET-0.11-STRUCTURE-FACTOR-XI-SF",
+        "status": "DECLARED_DIAGNOSTIC_OPERATOR_WITH_TOPIC_GATE_OPEN",
+        "kind": "formula_declared_structure_factor_diagnostic",
+        "expression": "xi_sf = 2*pi / sqrt(sum(S(k) k^2) / sum(S(k)))",
+        "unit_lane": "normalized_or_topic_specific",
+        "source_artifacts": [
+          "docs/topics/0.11_Phase_Transitions/FORMULA_AUDIT.md"
+        ],
+        "physical_closure": false,
+        "note": "The operator is indexed from the topic formula row; multi-grid/seed replication does not establish universality."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2046,6 +2110,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2087,6 +2152,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2128,6 +2194,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2169,6 +2236,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2210,6 +2278,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2251,6 +2320,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2292,6 +2362,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2333,6 +2404,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2374,6 +2446,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2415,6 +2488,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2456,6 +2530,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2497,6 +2572,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2538,6 +2614,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2579,6 +2656,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2620,6 +2698,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2661,6 +2740,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2702,6 +2782,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2743,6 +2824,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2779,6 +2861,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2815,6 +2898,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2851,6 +2935,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2887,6 +2972,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2923,6 +3009,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2959,6 +3046,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -2995,6 +3083,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -3036,6 +3125,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[E,N] = entropy proxy"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -3077,6 +3167,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[E,N] = temperature proxy"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -3118,6 +3209,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[E_A,N_A,E_B,N_B] = equilibrium ratio"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -3159,6 +3251,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[T] = lower-bound energy"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -3200,6 +3293,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[E] = unit conversion"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -3241,6 +3335,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[R,E] = entropy upper-bound comparator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -3282,6 +3377,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[A] = black-hole entropy comparator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -3323,6 +3419,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[a] = temperature comparator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -3364,6 +3461,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[M] = temperature comparator"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -3398,14 +3496,16 @@
         "limiting_case_status": "OPEN_UNLESS_SEPARATELY_VERIFIED"
       },
       "measurement_operator": {
-        "operator_id": "O[T13-010]",
-        "status": "OPEN_UNRESOLVED",
-        "kind": "formula_row_observable_operator_not_yet_declared",
-        "declared_observable": {
-          "status": "OPEN_UNRESOLVED",
-          "operator": "O[T,q] = lag/phase/arrival"
-        },
-        "note": "A row index is present for audit completeness; this is not a physical measurement map."
+        "operator_id": "STANDARD-CATTANEO-Q-001",
+        "status": "DECLARED_NORMALIZED_STANDARD_CONTROL",
+        "kind": "analytical_control_operator",
+        "expression": "tau*dq/dt + q = -k*grad(T)",
+        "unit_lane": "normalized_comparator",
+        "source_artifacts": [
+          "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_control.json"
+        ],
+        "physical_closure": false,
+        "note": "Analytical Cattaneo control passes its synthetic residual/lag/phase gates; it is not external UET validation."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -3446,6 +3546,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "OPEN_MEASUREMENT_OPERATOR"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -3487,6 +3588,7 @@
           "status": "OPEN_UNRESOLVED",
           "operator": "O[V,f] = voltage-frequency conversion"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -3521,14 +3623,16 @@
         "limiting_case_status": "OPEN_UNLESS_SEPARATELY_VERIFIED"
       },
       "measurement_operator": {
-        "operator_id": "O[T13-013]",
-        "status": "OPEN_UNRESOLVED",
-        "kind": "formula_row_observable_operator_not_yet_declared",
-        "declared_observable": {
-          "status": "OPEN_UNRESOLVED",
-          "operator": "O[TTG] = Delta_T(t;Lambda)/Delta_T(0;Lambda)"
-        },
-        "note": "A row index is present for audit completeness; this is not a physical measurement map."
+        "operator_id": "TTG-QTEMP-001",
+        "status": "DECLARED_NORMALIZED_STANDARD_OPERATOR",
+        "kind": "normalized_standard_observable",
+        "expression": "y_TTG(t;Lambda) = Delta_Tq(t;Lambda) / Delta_Tq(0;Lambda)",
+        "unit_lane": "dimensionless_observable",
+        "source_artifacts": [
+          "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_observable_map_readiness.json"
+        ],
+        "physical_closure": false,
+        "note": "The normalized standard operator is declared; local numeric source and dimensional UET bridge remain blocked."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -3562,14 +3666,16 @@
         "limiting_case_status": "OPEN_UNLESS_SEPARATELY_VERIFIED"
       },
       "measurement_operator": {
-        "operator_id": "O[T13-014]",
-        "status": "OPEN_UNRESOLVED",
-        "kind": "formula_row_observable_operator_not_yet_declared",
-        "declared_observable": {
-          "status": "OPEN_UNRESOLVED",
-          "operator": "OPEN_MEASUREMENT_OPERATOR"
-        },
-        "note": "A row index is present for audit completeness; this is not a physical measurement map."
+        "operator_id": "TTG-QTEMP-001",
+        "status": "CANDIDATE_NORMALIZED_UET_OPERATOR",
+        "kind": "normalized_candidate_observable",
+        "expression": "y_TTG^UET(t;Lambda) = Delta_Phi(t;Lambda) / Delta_Phi(0;Lambda)",
+        "unit_lane": "normalized_candidate_only",
+        "source_artifacts": [
+          "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_observable_map_readiness.json"
+        ],
+        "physical_closure": false,
+        "note": "Candidate Phi operator only; no Phi-to-temperature identity or external fit is established."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -3603,14 +3709,16 @@
         "limiting_case_status": "OPEN_UNLESS_SEPARATELY_VERIFIED"
       },
       "measurement_operator": {
-        "operator_id": "O[T13-015]",
-        "status": "OPEN_UNRESOLVED",
-        "kind": "formula_row_observable_operator_not_yet_declared",
-        "declared_observable": {
-          "status": "OPEN_UNRESOLVED",
-          "operator": "OPEN_MEASUREMENT_OPERATOR"
-        },
-        "note": "A row index is present for audit completeness; this is not a physical measurement map."
+        "operator_id": "TTG-PHI-TO-QTEMP-BRIDGE-001",
+        "status": "OPEN_CALIBRATION_DEPENDENT_BRIDGE",
+        "kind": "dimensional_bridge_target",
+        "expression": "Delta_Tq = alpha_Phi_K * Delta_Phi",
+        "unit_lane": "SI_target_open",
+        "source_artifacts": [
+          "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_observable_map_readiness.json"
+        ],
+        "physical_closure": false,
+        "note": "alpha_Phi_K remains calibration-dependent and cannot be fit from the same holdout used for validation."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -3646,6 +3754,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -3682,6 +3791,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -3718,6 +3828,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -3754,6 +3865,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -3790,6 +3902,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -3826,6 +3939,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -3862,6 +3976,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -3898,6 +4013,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -3934,6 +4050,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -3970,6 +4087,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4006,6 +4124,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4042,6 +4161,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4078,6 +4198,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4114,6 +4235,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4150,6 +4272,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4186,6 +4309,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4222,6 +4346,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4258,6 +4383,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4294,6 +4420,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4330,6 +4457,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4366,6 +4494,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4402,6 +4531,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4438,6 +4568,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4474,6 +4605,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4510,6 +4642,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4546,6 +4679,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4582,6 +4716,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4618,6 +4753,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4654,6 +4790,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4690,6 +4827,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4726,6 +4864,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4762,6 +4901,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4798,6 +4938,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4834,6 +4975,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4870,6 +5012,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4906,6 +5049,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4942,6 +5086,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -4980,6 +5125,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5018,6 +5164,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5056,6 +5203,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5094,6 +5242,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5132,6 +5281,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5170,6 +5320,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5208,6 +5359,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5246,6 +5398,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5285,6 +5438,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5324,6 +5478,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5363,6 +5518,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5402,6 +5558,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5441,6 +5598,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5480,6 +5638,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5519,6 +5678,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5558,6 +5718,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5597,6 +5758,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5636,6 +5798,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5672,6 +5835,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5708,6 +5872,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5744,6 +5909,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5780,6 +5946,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5816,6 +5983,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5852,6 +6020,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5888,6 +6057,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5924,6 +6094,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5960,6 +6131,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -5996,6 +6168,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6032,6 +6205,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6068,6 +6242,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6104,6 +6279,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6140,6 +6316,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6176,6 +6353,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6212,6 +6390,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6248,6 +6427,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6284,6 +6464,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6320,6 +6501,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6356,6 +6538,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6392,6 +6575,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6428,6 +6612,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6464,6 +6649,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6500,6 +6686,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6536,6 +6723,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6572,6 +6760,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6608,6 +6797,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6644,6 +6834,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6680,6 +6871,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6716,6 +6908,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6752,6 +6945,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6788,6 +6982,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6824,6 +7019,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6860,6 +7056,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6896,6 +7093,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6932,6 +7130,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -6968,6 +7167,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7004,6 +7204,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7040,6 +7241,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7076,6 +7278,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7112,6 +7315,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7148,6 +7352,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7184,6 +7389,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7220,6 +7426,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7259,6 +7466,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7298,6 +7506,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7337,6 +7546,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7376,6 +7586,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7415,6 +7626,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7454,6 +7666,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7493,6 +7706,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7532,6 +7746,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7571,6 +7786,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7610,6 +7826,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7646,6 +7863,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7682,6 +7900,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7718,6 +7937,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7754,6 +7974,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7790,6 +8011,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7826,6 +8048,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7862,6 +8085,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7898,6 +8122,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7934,6 +8159,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -7970,6 +8196,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8006,6 +8233,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8042,6 +8270,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8078,6 +8307,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8114,6 +8344,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8150,6 +8381,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8186,6 +8418,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8222,6 +8455,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8258,6 +8492,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8294,6 +8529,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8330,6 +8566,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8366,6 +8603,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8402,6 +8640,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8438,6 +8677,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8474,6 +8714,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8510,6 +8751,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8546,6 +8788,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8582,6 +8825,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8618,6 +8862,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8654,6 +8899,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8690,6 +8936,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8726,6 +8973,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8762,6 +9010,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8798,6 +9047,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8834,6 +9084,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8870,6 +9121,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8906,6 +9158,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8942,6 +9195,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -8978,6 +9232,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9014,6 +9269,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9050,6 +9306,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9086,6 +9343,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9122,6 +9380,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9158,6 +9417,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9194,6 +9454,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9230,6 +9491,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9266,6 +9528,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9302,6 +9565,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9338,6 +9602,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9374,6 +9639,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9410,6 +9676,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9446,6 +9713,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9482,6 +9750,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9518,6 +9787,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9554,6 +9824,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9590,6 +9861,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9626,6 +9898,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9662,6 +9935,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9698,6 +9972,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9734,6 +10009,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9770,6 +10046,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9806,6 +10083,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9842,6 +10120,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9878,6 +10157,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
@@ -9914,6 +10194,7 @@
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
+        "physical_closure": false,
         "note": "A row index is present for audit completeness; this is not a physical measurement map."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
