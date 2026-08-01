@@ -33,7 +33,7 @@
     ],
     "status": "AGGREGATE_ONLY"
   },
-  "generated_at_utc": "2026-08-01T09:38:18.214902+00:00",
+  "generated_at_utc": "2026-08-01T09:48:13.373037+00:00",
   "limitations": [
     "The snapshot is fixed to FY2024 record date 2024-09-30 and is not a real-time settlement ledger.",
     "MTS and debt data are government-wide aggregate accounting reports; individual award timing and settlement are not joined.",

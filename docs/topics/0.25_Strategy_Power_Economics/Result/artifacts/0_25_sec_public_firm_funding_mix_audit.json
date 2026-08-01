@@ -5,7 +5,7 @@
     "reason": "Profit, operating cash, and net debt are annual firm-accounting channels; their ratios to capex are scale diagnostics, not source-of-payment shares.",
     "status": "NOT_IDENTIFIED"
   },
-  "generated_at_utc": "2026-08-01T09:38:27.032686+00:00",
+  "generated_at_utc": "2026-08-01T09:48:23.511122+00:00",
   "limitations": [
     "The panel covers only ten predeclared public firms and current-vintage 10-K facts.",
     "Net debt flows can include refinancing, redemptions, and timing differences; cash pooling is unobserved.",
@@ -54,7 +54,7 @@
   },
   "source_artifact": {
     "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_sec_public_firm_funding_proxy.json",
-    "sha256": "cb87e2352330192dfedf67762e4a60bd5c0ea59aa19d81f6736b29018c9589ec"
+    "sha256": "adc30cd723f008addd537c43d5d0dda605ba273a53c08cf5f936c288f4fe7331"
   },
   "status": "PASS_WITH_BOUNDARY",
   "topic": "0.25_Strategy_Power_Economics"

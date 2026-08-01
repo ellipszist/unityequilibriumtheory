@@ -144,6 +144,12 @@ indexed infrastructure proxy, not a dollar-valued capital stock.
    result is `NOT_ONE_TO_ONE` because obligations, outlays, timing, program scope, unlinked
    awards, and non-award government costs are not the same construct.
 
+20. **Award-level account-outlay audit:** retrieve award-detail records for the first ten
+   unique generated award IDs sorted from the frozen DOE transaction archive. Preserve
+   `total_account_obligation` and `total_account_outlay`, calculate their difference and ratio,
+   and report the sample as nonrepresentative. These fields remain award-accounting totals,
+   not bank settlements, supplier invoices, or financing-source traces.
+
 ## Evaluation and uncertainty
 
 Rolling-origin forecasts start in 2000. Every transformation and coefficient is fitted only

@@ -1,0 +1,34 @@
+{
+  "claim_boundary": "This artifact does not establish that an award was paid to a supplier, identify whether payment came from profit/debt/taxes/money creation, or connect the award to a physical resource transformation.",
+  "controller_status": "AWARD_LEVEL_ACCOUNT_OUTLAY_BOUNDARY",
+  "coverage": {
+    "complete_account_obligation_rows": 10,
+    "complete_account_outlay_rows": 10,
+    "fiscal_year": 2024,
+    "no_imputation": true,
+    "rows_returned": 10,
+    "sample_size_requested": 10
+  },
+  "generated_at_utc": "2026-08-01T09:48:16.271446+00:00",
+  "interpretation": "Award-level account outlay and obligation fields are observable for the fixed sample, but they are accounting totals, not evidence of bank settlement, supplier invoice payment, or financing-source provenance.",
+  "limitations": [
+    "The ten-award sample is deterministic but nonrepresentative and must not be generalized to all DOE awards.",
+    "Account outlay is not a bank settlement ledger or invoice-level payment record.",
+    "Awards may have multiple transactions, modifications, de-obligations, and account-level adjustments."
+  ],
+  "request_failures": [],
+  "schema_version": "1.0",
+  "source_manifest": {
+    "path": "docs/data/external/economics/us_historical/usaspending/2026-08-01/award_level_outlay_manifest.json",
+    "sha256": "40deebcb1c441c4474dd588488495c5c4e7014b40051e46408804a417825fe71",
+    "status": "PASS_WITH_BOUNDARY"
+  },
+  "status": "PASS_WITH_BOUNDARY",
+  "summary": {
+    "account_obligation_total_usd": 11022086959.58,
+    "account_outlay_total_usd": 9696482861.12,
+    "median_outlay_to_obligation_ratio": 1.0842490159132885,
+    "outlay_minus_obligation_total_usd": -1325604098.4599993
+  },
+  "topic": "0.25_Strategy_Power_Economics"
+}

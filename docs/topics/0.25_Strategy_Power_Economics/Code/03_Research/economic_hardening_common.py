@@ -77,6 +77,7 @@ BLS_INDUSTRY_HOURS_ARTIFACT = ARTIFACT_DIR / "0_25_bls_industry_hours_source_pac
 USASPENDING_LEDGER_ARTIFACT = ARTIFACT_DIR / "0_25_usaspending_federal_project_ledger.json"
 TREASURY_FUNDING_SOURCE_ARTIFACT = ARTIFACT_DIR / "0_25_treasury_funding_source_audit.json"
 AWARD_OUTLAY_RECONCILIATION_ARTIFACT = ARTIFACT_DIR / "0_25_federal_award_outlay_reconciliation.json"
+AWARD_LEVEL_OUTLAY_ARTIFACT = ARTIFACT_DIR / "0_25_usaspending_award_level_outlay_audit.json"
 USGS_MATERIAL_QUANTITY_ARTIFACT = ARTIFACT_DIR / "0_25_usgs_material_quantity_audit.json"
 SEC_PUBLIC_FIRM_PROXY_ARTIFACT = ARTIFACT_DIR / "0_25_sec_public_firm_funding_proxy.json"
 SEC_PUBLIC_FIRM_MIX_ARTIFACT = ARTIFACT_DIR / "0_25_sec_public_firm_funding_mix_audit.json"

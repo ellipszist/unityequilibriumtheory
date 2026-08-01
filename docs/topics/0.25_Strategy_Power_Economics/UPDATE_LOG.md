@@ -5,6 +5,17 @@
 
 ## Entries
 
+### 2026-08-01 - Award-level account outlay audit
+
+- Scope: move one step closer to payment evidence by testing account-level outlay and obligation fields on individual public awards without relabeling them as bank payments.
+- Added: `Research_UET_USASpending_Award_Level_Outlay_Audit.py`, ten cached USAspending award-detail responses, normalized award-level panel, source manifest, aggregate/readiness/join integration, and synchronized docs.
+- Verified with: ten award-detail API refresh and cached rerun, py_compile, standalone join/readiness, aggregate verifier, and sub-artifact hash checks. Result is `PASS_WITH_BOUNDARY`; aggregate remains `WARN` with no command failures.
+- Finding: all 10 fixed awards have account obligation and account outlay fields; the nonrepresentative sample median outlay/obligation ratio is `1.084`, with a large award dominating the total.
+- Blocker narrowed: award-accounting fields are now observable, but they remain nonrepresentative and do not identify bank settlement, supplier invoices, financing source, or physical-resource transformation.
+- Next controller: approved transaction/invoice settlement evidence and concordant resource allocation; Claim Class C and `DESCRIPTIVE_DIAGNOSTIC_ONLY` remain unchanged.
+- Claim impact: no profit-vs-debt attribution, money-creation claim, payer causality, or payment-to-resource claim is enabled.
+
+
 ### 2026-08-01 - Award-to-outlay reconciliation
 
 - Scope: test whether a public agency award obligation can be reconciled to a Treasury program outlay without calling the result a cash-payment match.

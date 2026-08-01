@@ -1,0 +1,133 @@
+{
+  "coverage": "DOE FY2024 fixed award-detail sample; first 10 unique generated award IDs sorted lexicographically from frozen five-page transaction archive",
+  "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+  "no_imputation": true,
+  "normalized_panel": {
+    "local_path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/usaspending_award_level_outlay_2024.csv",
+    "rows": 10,
+    "sha256": "af43a3adf2ce5e5518eedcdb2599bf8c594371111a861323b5c24d842f3b6c6f"
+  },
+  "official_page": "https://api.usaspending.gov/",
+  "provider": "USAspending.gov / U.S. Treasury",
+  "retrieval_vintage": "2026-08-01",
+  "sample_policy": {
+    "representative": false,
+    "sample_size": 10,
+    "selection": "first ten unique generated_internal_id values sorted lexicographically",
+    "source_archive": "docs/data/external/economics/us_historical/usaspending/2026-08-01/usaspending_doe_fy2024_page_01.json through page_05.json"
+  },
+  "schema_version": "1.0",
+  "sources": [
+    {
+      "benchmark_role": "award-level accounting diagnostic; not bank settlement",
+      "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+      "local_path": "docs/data/external/economics/us_historical/usaspending/2026-08-01/award_detail_CONT_AWD_89233018CNR000004_8900_-NONE-_-NONE-.json",
+      "original_filename": "award_detail_CONT_AWD_89233018CNR000004_8900_-NONE-_-NONE-.json",
+      "retrieval_timestamp_utc": "2026-08-01T09:46:31.273314+00:00",
+      "sha256": "6c4873ed240618966dd6ece7e8322ea1af15d2ccb3b439a21918094c216ba127",
+      "source_id": "CONT_AWD_89233018CNR000004_8900_-NONE-_-NONE-",
+      "source_url": "https://api.usaspending.gov/api/v2/awards/CONT_AWD_89233018CNR000004_8900_-NONE-_-NONE-/",
+      "units": "current U.S. dollars; USAspending account-level obligation/outlay fields"
+    },
+    {
+      "benchmark_role": "award-level accounting diagnostic; not bank settlement",
+      "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+      "local_path": "docs/data/external/economics/us_historical/usaspending/2026-08-01/award_detail_CONT_AWD_89233023FNR400103_8900_GS02F004HA_4732.json",
+      "original_filename": "award_detail_CONT_AWD_89233023FNR400103_8900_GS02F004HA_4732.json",
+      "retrieval_timestamp_utc": "2026-08-01T09:46:32.363430+00:00",
+      "sha256": "04f1b98d42ab42d51c11cda37a72dda24bc18067900bed392dda64a05e939ed1",
+      "source_id": "CONT_AWD_89233023FNR400103_8900_GS02F004HA_4732",
+      "source_url": "https://api.usaspending.gov/api/v2/awards/CONT_AWD_89233023FNR400103_8900_GS02F004HA_4732/",
+      "units": "current U.S. dollars; USAspending account-level obligation/outlay fields"
+    },
+    {
+      "benchmark_role": "award-level accounting diagnostic; not bank settlement",
+      "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+      "local_path": "docs/data/external/economics/us_historical/usaspending/2026-08-01/award_detail_CONT_AWD_89233024FNR000025_8900_89303022AMA000041_8900.json",
+      "original_filename": "award_detail_CONT_AWD_89233024FNR000025_8900_89303022AMA000041_8900.json",
+      "retrieval_timestamp_utc": "2026-08-01T09:46:33.397687+00:00",
+      "sha256": "814b0c48534b5e1c6bf0fe134bb1da1b38addc896b93fb1835b248dd416c4947",
+      "source_id": "CONT_AWD_89233024FNR000025_8900_89303022AMA000041_8900",
+      "source_url": "https://api.usaspending.gov/api/v2/awards/CONT_AWD_89233024FNR000025_8900_89303022AMA000041_8900/",
+      "units": "current U.S. dollars; USAspending account-level obligation/outlay fields"
+    },
+    {
+      "benchmark_role": "award-level accounting diagnostic; not bank settlement",
+      "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+      "local_path": "docs/data/external/economics/us_historical/usaspending/2026-08-01/award_detail_CONT_AWD_89233024FNR000027_8900_89303022AMA000041_8900.json",
+      "original_filename": "award_detail_CONT_AWD_89233024FNR000027_8900_89303022AMA000041_8900.json",
+      "retrieval_timestamp_utc": "2026-08-01T09:46:34.484018+00:00",
+      "sha256": "c1adef26874f39660ecef83cc1628e79e5c1498043801a6948718302f34a5a2e",
+      "source_id": "CONT_AWD_89233024FNR000027_8900_89303022AMA000041_8900",
+      "source_url": "https://api.usaspending.gov/api/v2/awards/CONT_AWD_89233024FNR000027_8900_89303022AMA000041_8900/",
+      "units": "current U.S. dollars; USAspending account-level obligation/outlay fields"
+    },
+    {
+      "benchmark_role": "award-level accounting diagnostic; not bank settlement",
+      "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+      "local_path": "docs/data/external/economics/us_historical/usaspending/2026-08-01/award_detail_CONT_AWD_89233024PNR000112_8900_-NONE-_-NONE-.json",
+      "original_filename": "award_detail_CONT_AWD_89233024PNR000112_8900_-NONE-_-NONE-.json",
+      "retrieval_timestamp_utc": "2026-08-01T09:46:35.463125+00:00",
+      "sha256": "97e96848d3058223a5b74a02f6fd570ecc49795aab4d50c5fe98d0eb82246bfe",
+      "source_id": "CONT_AWD_89233024PNR000112_8900_-NONE-_-NONE-",
+      "source_url": "https://api.usaspending.gov/api/v2/awards/CONT_AWD_89233024PNR000112_8900_-NONE-_-NONE-/",
+      "units": "current U.S. dollars; USAspending account-level obligation/outlay fields"
+    },
+    {
+      "benchmark_role": "award-level accounting diagnostic; not bank settlement",
+      "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+      "local_path": "docs/data/external/economics/us_historical/usaspending/2026-08-01/award_detail_CONT_AWD_89233118FNA000019_8900_DEMA0011379_8900.json",
+      "original_filename": "award_detail_CONT_AWD_89233118FNA000019_8900_DEMA0011379_8900.json",
+      "retrieval_timestamp_utc": "2026-08-01T09:46:36.467943+00:00",
+      "sha256": "945102a7a460c735e778fd7f5a7a9e79f12e91a8da96c9dccf3e2baf9ce02dba",
+      "source_id": "CONT_AWD_89233118FNA000019_8900_DEMA0011379_8900",
+      "source_url": "https://api.usaspending.gov/api/v2/awards/CONT_AWD_89233118FNA000019_8900_DEMA0011379_8900/",
+      "units": "current U.S. dollars; USAspending account-level obligation/outlay fields"
+    },
+    {
+      "benchmark_role": "award-level accounting diagnostic; not bank settlement",
+      "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+      "local_path": "docs/data/external/economics/us_historical/usaspending/2026-08-01/award_detail_CONT_AWD_89233118FNA400114_8900_GS00F0004T_4730.json",
+      "original_filename": "award_detail_CONT_AWD_89233118FNA400114_8900_GS00F0004T_4730.json",
+      "retrieval_timestamp_utc": "2026-08-01T09:46:37.524731+00:00",
+      "sha256": "043878f5f7e6edc7185a17b851af4c6a7f6eaeed053bef3ea6337fc3bd419192",
+      "source_id": "CONT_AWD_89233118FNA400114_8900_GS00F0004T_4730",
+      "source_url": "https://api.usaspending.gov/api/v2/awards/CONT_AWD_89233118FNA400114_8900_GS00F0004T_4730/",
+      "units": "current U.S. dollars; USAspending account-level obligation/outlay fields"
+    },
+    {
+      "benchmark_role": "award-level accounting diagnostic; not bank settlement",
+      "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+      "local_path": "docs/data/external/economics/us_historical/usaspending/2026-08-01/award_detail_CONT_AWD_89233119CNA000083_8900_-NONE-_-NONE-.json",
+      "original_filename": "award_detail_CONT_AWD_89233119CNA000083_8900_-NONE-_-NONE-.json",
+      "retrieval_timestamp_utc": "2026-08-01T09:46:38.515455+00:00",
+      "sha256": "58c97098f3d313a66b079a9f101a1c024bf2e328a8b692027363fbaaf6d1c04b",
+      "source_id": "CONT_AWD_89233119CNA000083_8900_-NONE-_-NONE-",
+      "source_url": "https://api.usaspending.gov/api/v2/awards/CONT_AWD_89233119CNA000083_8900_-NONE-_-NONE-/",
+      "units": "current U.S. dollars; USAspending account-level obligation/outlay fields"
+    },
+    {
+      "benchmark_role": "award-level accounting diagnostic; not bank settlement",
+      "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+      "local_path": "docs/data/external/economics/us_historical/usaspending/2026-08-01/award_detail_CONT_AWD_89233119FNA000060_8900_DEMA0011379_8900.json",
+      "original_filename": "award_detail_CONT_AWD_89233119FNA000060_8900_DEMA0011379_8900.json",
+      "retrieval_timestamp_utc": "2026-08-01T09:46:39.606517+00:00",
+      "sha256": "841f8f6a7af331145273e686b29ff590de66c1fdc45eae0c9448cd02cbc544e8",
+      "source_id": "CONT_AWD_89233119FNA000060_8900_DEMA0011379_8900",
+      "source_url": "https://api.usaspending.gov/api/v2/awards/CONT_AWD_89233119FNA000060_8900_DEMA0011379_8900/",
+      "units": "current U.S. dollars; USAspending account-level obligation/outlay fields"
+    },
+    {
+      "benchmark_role": "award-level accounting diagnostic; not bank settlement",
+      "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+      "local_path": "docs/data/external/economics/us_historical/usaspending/2026-08-01/award_detail_CONT_AWD_89233119FNA400174_8900_GS02F013CA_4732.json",
+      "original_filename": "award_detail_CONT_AWD_89233119FNA400174_8900_GS02F013CA_4732.json",
+      "retrieval_timestamp_utc": "2026-08-01T09:46:40.656529+00:00",
+      "sha256": "acf49401a5d13a987317865564374b9fbe4811f2cb5930b4998bac76065c2156",
+      "source_id": "CONT_AWD_89233119FNA400174_8900_GS02F013CA_4732",
+      "source_url": "https://api.usaspending.gov/api/v2/awards/CONT_AWD_89233119FNA400174_8900_GS02F013CA_4732/",
+      "units": "current U.S. dollars; USAspending account-level obligation/outlay fields"
+    }
+  ],
+  "status": "PASS_WITH_BOUNDARY"
+}
