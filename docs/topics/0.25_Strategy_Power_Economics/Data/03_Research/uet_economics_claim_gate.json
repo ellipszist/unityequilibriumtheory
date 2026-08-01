@@ -31,6 +31,7 @@
     "WARN_SOURCE: WARN",
     "WARN_UNIT: WARN",
     "Z.1 current-release vintage is revised; historical-as-of vintages are still needed for real-time tests.",
+    "award_funding_account: WARN",
     "bls_industry_hours: WARN",
     "docs/topics/0.25_Strategy_Power_Economics/Doc/03_Research/ANALYSIS_POWER_DYNAMICS.md",
     "docs/topics/0.25_Strategy_Power_Economics/Doc/03_Research/CASE_STUDY_HISTORICAL_STABILIZERS.md",

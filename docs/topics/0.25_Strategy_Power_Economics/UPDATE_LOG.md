@@ -5,6 +5,15 @@
 
 ## Entries
 
+### 2026-08-01 - Award federal-account linkage
+
+- Scope: add a bounded reporting-account/program layer to the fixed public award sample so the audit distinguishes an award's federal account and funding agency from its ultimate financing source.
+- Added: `Research_UET_USASpending_Award_Funding_Account_Audit.py`, ten cached `/api/v2/awards/funding/` responses, a normalized FY2024 account panel, source manifest, verifier/join/readiness integration, and synchronized docs.
+- Verified with: API/cache rerun, py_compile, complete aggregate verifier, and cross-artifact SHA-256 checks. The source artifact is `WARN`: 4/10 awards return FY2024 funding rows and six awards are explicitly missing; the bounded join component is `PASS_WITH_BOUNDARY`.
+- Finding: returned rows identify federal accounts `089-0240`/`089-0314`, the Department of Energy funding agency, and object-class/program fields. They do not identify tax receipts, debt instruments, bank settlement, supplier invoices, profit, or physical-resource transformation.
+- Blocker narrowed: account/program provenance is now observable for a bounded subset, but the controlling `firm_project_payment_ledger` blocker remains; payer-to-purchase-to-resource provenance is still unavailable.
+- Claim impact: Claim Class C and `DESCRIPTIVE_DIAGNOSTIC_ONLY` remain unchanged; no financing-source, money-creation, payer causality, or resource-conversion claim is enabled.
+
 ### 2026-08-01 - Award-level account outlay audit
 
 - Scope: move one step closer to payment evidence by testing account-level outlay and obligation fields on individual public awards without relabeling them as bank payments.

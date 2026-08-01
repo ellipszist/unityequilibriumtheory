@@ -1,0 +1,64 @@
+{
+  "bounded_coverage": {
+    "awards_with_fy2024_rows": 4,
+    "missing_awards": [
+      "CONT_AWD_89233018CNR000004_8900_-NONE-_-NONE-",
+      "CONT_AWD_89233118FNA000019_8900_DEMA0011379_8900",
+      "CONT_AWD_89233118FNA400114_8900_GS00F0004T_4730",
+      "CONT_AWD_89233119CNA000083_8900_-NONE-_-NONE-",
+      "CONT_AWD_89233119FNA000060_8900_DEMA0011379_8900",
+      "CONT_AWD_89233119FNA400174_8900_GS02F013CA_4732"
+    ],
+    "no_imputation": true,
+    "ready": true,
+    "requested_awards": 10
+  },
+  "claim_boundary": "This artifact supports bounded federal-account and program provenance only. It does not establish tax-versus-debt-versus-money-creation funding, supplier payment, profit funding, or physical-resource transformation.",
+  "controller_status": "AWARD_FUNDING_ACCOUNT_GATE",
+  "coverage": {
+    "complete_federal_account_rows": 8,
+    "complete_funding_agency_rows": 8,
+    "fiscal_year": 2024,
+    "fy2024_rows": 8,
+    "no_imputation": true,
+    "sample_awards": 10
+  },
+  "funding_linkage": {
+    "funding_agencies": [
+      "Department of Energy"
+    ],
+    "fy2024_gross_outlay_total_usd": 279682.24,
+    "fy2024_transaction_obligated_total_usd": 258524.2,
+    "gross_outlay_minus_obligation_usd": 21158.03999999998,
+    "object_classes": [
+      "Advisory and assistance services",
+      "Other services from non-Federal sources"
+    ],
+    "unique_federal_accounts": [
+      "089-0240",
+      "089-0314"
+    ]
+  },
+  "generated_at_utc": "2026-08-01T13:46:59.662716+00:00",
+  "interpretation": "The public award-funding endpoint links the fixed awards to federal accounts, account titles, funding agencies, object classes, and reported gross outlays for FY2024. It does not identify the Treasury financing instrument or a bank settlement counterparty.",
+  "limitations": [
+    "The ten-award sample is deterministic but nonrepresentative.",
+    "Gross outlay and transaction obligation are USAspending accounting fields, not bank settlement or invoice records.",
+    "A federal account identifies an appropriations/reporting channel, not the ultimate financing source of each dollar."
+  ],
+  "request_failures": [
+    {
+      "award_id": "CONT_AWD_89233119CNA000083_8900_-NONE-_-NONE-",
+      "error": "empty award funding result",
+      "path": "docs/data/external/economics/us_historical/usaspending/2026-08-01/award_funding_CONT_AWD_89233119CNA000083_8900_-NONE-_-NONE-.json"
+    }
+  ],
+  "schema_version": "1.0",
+  "source_manifest": {
+    "path": "docs/data/external/economics/us_historical/usaspending/2026-08-01/award_funding_account_manifest.json",
+    "sha256": "50459a97caa3bfd297d6ce4c729e2d830e36068093e4cece923e80ec78397c2c",
+    "status": "WARN"
+  },
+  "status": "WARN",
+  "topic": "0.25_Strategy_Power_Economics"
+}

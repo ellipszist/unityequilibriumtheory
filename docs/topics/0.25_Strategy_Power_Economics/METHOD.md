@@ -150,6 +150,13 @@ indexed infrastructure proxy, not a dollar-valued capital stock.
    and report the sample as nonrepresentative. These fields remain award-accounting totals,
    not bank settlements, supplier invoices, or financing-source traces.
 
+21. **Award federal-account linkage:** retrieve the official USAspending `/api/v2/awards/funding/`
+   response for the same ten generated award IDs. Filter to FY2024 rows and preserve federal
+   account, account title, funding agency, awarding agency, object class, program activity,
+   transaction obligation, and gross outlay fields. Missing award-year rows remain explicit;
+   no imputation is allowed. A returned row links an award to a reporting account/program,
+   not to an ultimate tax/debt instrument, bank settlement, supplier invoice, or resource flow.
+
 ## Evaluation and uncertainty
 
 Rolling-origin forecasts start in 2000. Every transformation and coefficient is fitted only

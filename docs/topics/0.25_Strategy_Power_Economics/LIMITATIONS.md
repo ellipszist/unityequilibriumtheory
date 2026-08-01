@@ -34,6 +34,7 @@ presence and rerunnability of standards artifacts; it is not a theory confirmati
   refinancing or repayment, equity can be issuance or repurchase, and saving is not earmarked
   to a specific investment.
 - The ten-award account-outlay sample is deterministic but nonrepresentative. Even when account obligation and outlay fields are complete, they are not bank settlement or supplier-invoice observations.
+- The award funding-account probe links only the returned FY2024 subset (4/10 fixed awards) to federal account, agency, and object-class reporting fields. Six missing award-year rows remain `WARN` and un-imputed; an account/program label is not the ultimate financing source or bank settlement.
 - The award-to-outlay comparison reports DOE FY2024 grouped award obligations of about `$46.04B` versus Treasury DOE net outlays of about `$49.32B` (`NOT_ONE_TO_ONE`). This gap cannot be labeled unpaid awards, profit funding, debt funding, or money creation because the constructs and scopes differ.
 - Treasury Fiscal Data now supplies a fixed FY2024 aggregate bridge for receipts, outlays, deficit financing, and debt. It cannot determine whether a particular award was funded by tax receipts, borrowing, cash balances, or another aggregate category.
 - USAspending.gov now supplies a bounded DOE FY2024 award-obligation sample with agency, recipient, date, amount, and NAICS/PSC metadata. An award obligation is not necessarily a cash settlement or final supplier payment, and the federal financing source is not identified.

@@ -22,6 +22,7 @@ from economic_hardening_common import (
     TREASURY_FUNDING_SOURCE_ARTIFACT,
     AWARD_OUTLAY_RECONCILIATION_ARTIFACT,
     AWARD_LEVEL_OUTLAY_ARTIFACT,
+    AWARD_FUNDING_ACCOUNT_ARTIFACT,
     USGS_MATERIAL_QUANTITY_ARTIFACT,
     SEC_PUBLIC_FIRM_PROXY_ARTIFACT,
     SEC_PUBLIC_FIRM_MIX_ARTIFACT,
@@ -167,6 +168,14 @@ def main() -> int:
     award_outlay_ready = award_outlay_reconciliation.get("status") == "PASS_WITH_BOUNDARY"
     award_level_outlay = _artifact_status(AWARD_LEVEL_OUTLAY_ARTIFACT)
     award_level_ready = award_level_outlay.get("status") == "PASS_WITH_BOUNDARY"
+    award_funding_account = _artifact_status(AWARD_FUNDING_ACCOUNT_ARTIFACT)
+    award_funding_payload = {}
+    if award_funding_account.get("exists"):
+        try:
+            award_funding_payload = json.loads(AWARD_FUNDING_ACCOUNT_ARTIFACT.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            award_funding_payload = {}
+    award_funding_bounded = bool(award_funding_payload.get("bounded_coverage", {}).get("ready"))
 
     evidence = {
         "funding_flows": {
@@ -225,6 +234,13 @@ def main() -> int:
             "artifact": {"source_package": sec_funding_proxy, "funding_mix": sec_funding_mix},
             "boundary": "Predeclared public-firm annual accounting channels can be compared descriptively; funding shares and invoice provenance remain unidentified.",
         },
+        "award_federal_account_linkage": {
+            "status": "PASS_WITH_BOUNDARY" if award_funding_bounded else "BLOCKED",
+            "artifact": award_funding_account,
+            "bounded_coverage": award_funding_payload.get("bounded_coverage"),
+            "source": _glob_record(RAW_ROOT / "usaspending" / "2026-08-01", "award_funding_*.json", "USAspending award funding-account responses"),
+            "boundary": "USAspending links a bounded returned subset to federal accounts, account titles, funding agencies, object classes, and reported gross outlays. The source artifact remains WARN because several predeclared awards have no FY2024 funding rows; no ultimate financing instrument or bank settlement is observed.",
+        },
         "award_level_account_outlay": {
             "status": "PASS_WITH_BOUNDARY" if award_level_ready else "BLOCKED",
             "artifact": award_level_outlay,
@@ -280,6 +296,7 @@ def main() -> int:
             "treasury_aggregate_funding_source_ready": bool(treasury_funding_ready),
             "award_outlay_reconciliation_ready": bool(award_outlay_ready),
             "award_level_account_outlay_ready": bool(award_level_ready),
+            "award_federal_account_linkage_ready": bool(award_funding_bounded),
             "bounded_labor_subset": evidence["labor_industry_hours"].get("artifact", {}).get("bounded_coverage"),
         },
         "evidence": evidence,
