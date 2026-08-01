@@ -4,6 +4,7 @@
   "topic": "0.13_Thermodynamic_Bridge",
   "status": "BLOCKED",
   "created_on": "2026-07-21",
+  "reviewed_on": "2026-08-01",
   "usage_policy": {
     "numeric_fitting_allowed": false,
     "metadata_review_allowed": true,
@@ -106,5 +107,14 @@
       "status": "HOLDOUT_LOCKED_METADATA_ONLY"
     }
   ],
+  "source_access_audit": {
+    "reviewed_on": "2026-08-01",
+    "publisher_route": "https://www.nature.com/articles/s41467-026-70807-3",
+    "version_of_record_date": "2026-05-29",
+    "publisher_data_statement": "source data are provided with this study",
+    "direct_numeric_download_route_captured": false,
+    "local_numeric_archive": false,
+    "holdout_policy": "metadata-only until normalized operator and parameter policy are frozen"
+  },
   "claim_boundary": "source identities are externally anchored; no external numeric validation package exists"
 }

@@ -689,3 +689,12 @@ Use this log when `0.13` changes in a way that narrows a provenance blocker, add
 - Still open: local numeric source package with row-level provenance, independent `alpha_Phi_K` derivation/calibration, heat-flux/entropy maps, and the locked 2026 holdout.
 - Claim impact: no upgrade; `Phi` is not identified with temperature and no external validation or fitting was performed.
 - Next controller: `thermal_source_numeric_package_and_dimensional_calibration_missing`.
+### 2026-08-01 - Publisher data-availability provenance pass
+
+- Scope: inspect the current publisher-facing route for the 2026 isotopically pure graphite source without consuming the locked holdout.
+- Added or changed: source-package and source-review access-audit fields recording the version-of-record date, publisher data statement, absent captured numeric-download route, local-archive status, and holdout policy; regenerated readiness artifact hashes.
+- Verified with: publisher article metadata review, provenance JSON parse, and `audit_thermal_source_observable_mapping.py`; status remains `PASS_WITH_BLOCKED_DIMENSIONAL_AND_DATA_LANES`.
+- Result: the 2026 paper is now provenance-confirmed as publisher-declared source-data available, but no local numeric file, row locator, preprocessing record, uncertainty, or hash was imported.
+- Still open: capture a permitted numeric package through a reproducible route, keep it outside parameter selection until the comparison protocol is frozen, and close `alpha_Phi_K` independently.
+- Claim impact: no upgrade; the holdout remains metadata-only and no source curve was fitted or digitized.
+- Next controller: `thermal_source_numeric_package_and_dimensional_calibration_missing`.

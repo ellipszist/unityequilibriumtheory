@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact": "matter_space_thermal_source_review",
   "topic": "0.13_Thermodynamic_Bridge",
-  "reviewed_on": "2026-07-29",
+  "reviewed_on": "2026-08-01",
   "review_type": "primary-source metadata and observable-map review",
   "numeric_fitting_allowed": false,
   "holdout_consumed": false,
@@ -44,6 +44,14 @@
       "status": "HOLDOUT_EXTERNALLY_DECLARED_LOCAL_NUMERIC_PACKAGE_MISSING"
     }
   ],
+  "source_access_audit": {
+    "publisher_route": "https://www.nature.com/articles/s41467-026-70807-3",
+    "version_of_record_date": "2026-05-29",
+    "publisher_data_statement": "source data are provided with this study",
+    "direct_numeric_download_route_captured": false,
+    "local_numeric_archive": false,
+    "decision": "keep 2026 source locked as holdout metadata; do not fit or digitize from the article page"
+  },
   "standard_observable_contract": {
     "observable_id": "TTG-QTEMP-001",
     "name": "normalized quasi-temperature difference",
