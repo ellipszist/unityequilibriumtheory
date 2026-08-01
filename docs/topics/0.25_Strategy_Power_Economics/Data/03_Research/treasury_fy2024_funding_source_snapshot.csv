@@ -1,0 +1,960 @@
+endpoint,record_date,classification_desc,amount_field,amount_usd,fiscal_year
+debt_to_penny,2024-09-30,Total public debt,tot_pub_debt_out_amt,35464673929171.69,2024
+mts_table_1,2024-09-30,April,current_month_dfct_sur_amt,-209529306625.33,2024
+mts_table_1,2024-09-30,April,current_month_dfct_sur_amt,-176180790349.12,2024
+mts_table_1,2024-09-30,August,current_month_dfct_sur_amt,-89255572693.73,2024
+mts_table_1,2024-09-30,August,current_month_dfct_sur_amt,380080405434.5,2024
+mts_table_1,2024-09-30,December,current_month_dfct_sur_amt,85000736577.88,2024
+mts_table_1,2024-09-30,December,current_month_dfct_sur_amt,129354114564.24,2024
+mts_table_1,2024-09-30,FY 2023,,,2024
+mts_table_1,2024-09-30,FY 2024,,,2024
+mts_table_1,2024-09-30,February,current_month_dfct_sur_amt,296274651841.19,2024
+mts_table_1,2024-09-30,February,current_month_dfct_sur_amt,262433843194.23,2024
+mts_table_1,2024-09-30,January,current_month_dfct_sur_amt,21930352569.72,2024
+mts_table_1,2024-09-30,January,current_month_dfct_sur_amt,38783772139.22,2024
+mts_table_1,2024-09-30,July,current_month_dfct_sur_amt,243741087297.43,2024
+mts_table_1,2024-09-30,July,current_month_dfct_sur_amt,220782097353.6,2024
+mts_table_1,2024-09-30,June,current_month_dfct_sur_amt,70965292476.34,2024
+mts_table_1,2024-09-30,June,current_month_dfct_sur_amt,227768412538.05,2024
+mts_table_1,2024-09-30,March,current_month_dfct_sur_amt,236555953275.22,2024
+mts_table_1,2024-09-30,March,current_month_dfct_sur_amt,378435015173.86,2024
+mts_table_1,2024-09-30,May,current_month_dfct_sur_amt,347130893691.65,2024
+mts_table_1,2024-09-30,May,current_month_dfct_sur_amt,240348239658.37,2024
+mts_table_1,2024-09-30,November,current_month_dfct_sur_amt,248534880652.58,2024
+mts_table_1,2024-09-30,November,current_month_dfct_sur_amt,314012002287.09,2024
+mts_table_1,2024-09-30,October,current_month_dfct_sur_amt,87874164113.17,2024
+mts_table_1,2024-09-30,October,current_month_dfct_sur_amt,66563551129.73,2024
+mts_table_1,2024-09-30,September,current_month_dfct_sur_amt,170714937660.56,2024
+mts_table_1,2024-09-30,September,current_month_dfct_sur_amt,-64263008867.74,2024
+mts_table_1,2024-09-30,Year-to-Date,current_month_dfct_sur_amt,1695239736018.67,2024
+mts_table_1,2024-09-30,Year-to-Date,current_month_dfct_sur_amt,1832815989074.04,2024
+mts_table_2,2024-09-30,Borrowing from the Public,current_fytd_budget_amt,1959809451328.12,2024
+mts_table_2,2024-09-30,By Other Means,current_fytd_budget_amt,101842750421.51,2024
+mts_table_2,2024-09-30,Means of Financing:,,,2024
+mts_table_2,2024-09-30,Off-Budget Outlays,current_fytd_budget_amt,1320311462651.75,2024
+mts_table_2,2024-09-30,Off-Budget Receipts,current_fytd_budget_amt,1259882731356.88,2024
+mts_table_2,2024-09-30,Off-Budget Surplus (+) or Deficit (-),current_fytd_budget_amt,-60428731294.87,2024
+mts_table_2,2024-09-30,On-Budget Outlays,current_fytd_budget_amt,5431240171160.54,2024
+mts_table_2,2024-09-30,On-Budget Receipts,current_fytd_budget_amt,3658852913381.37,2024
+mts_table_2,2024-09-30,On-Budget Surplus (+) or Deficit (-),current_fytd_budget_amt,-1772387257779.17,2024
+mts_table_2,2024-09-30,"Reduction of Operating Cash, Increase (-)",current_fytd_budget_amt,-228836065771.59,2024
+mts_table_2,2024-09-30,Total On-Budget and Off-Budget Financing,current_fytd_budget_amt,1832815989074.04,2024
+mts_table_2,2024-09-30,Total On-Budget and Off-Budget Results:,,,2024
+mts_table_2,2024-09-30,Total Outlays,current_fytd_budget_amt,6751551633812.29,2024
+mts_table_2,2024-09-30,Total Receipts,current_fytd_budget_amt,4918735644738.25,2024
+mts_table_2,2024-09-30,Total Surplus (+) or Deficit (-),current_fytd_budget_amt,-1832815989074.04,2024
+mts_table_4,2024-09-30,Adjustments Attrbutable to Prior Years-SECA,current_fytd_net_rcpt_amt,2930581466.21,2024
+mts_table_4,2024-09-30,Adjustments Attributable to Prior Years-FICA,current_fytd_net_rcpt_amt,7204123829.09,2024
+mts_table_4,2024-09-30,Adjustments Attributable to Prior Years-FICA,current_fytd_net_rcpt_amt,22854040331.43,2024
+mts_table_4,2024-09-30,Adjustments Attributable to Prior Years-FICA,current_fytd_net_rcpt_amt,3886385576.39,2024
+mts_table_4,2024-09-30,Adjustments Attributable to Prior Years-SECA,current_fytd_net_rcpt_amt,2663322850.95,2024
+mts_table_4,2024-09-30,Adjustments Attributable to Prior Years-SECA,current_fytd_net_rcpt_amt,507467982.85,2024
+mts_table_4,2024-09-30,Airport and Airway Trust Fund,current_fytd_net_rcpt_amt,17549918017.04,2024
+mts_table_4,2024-09-30,All Other,current_fytd_net_rcpt_amt,31648401721.01,2024
+mts_table_4,2024-09-30,Black Lung Disability Trust Fund,current_fytd_net_rcpt_amt,270838975.0,2024
+mts_table_4,2024-09-30,Corporation Income Taxes,current_fytd_net_rcpt_amt,529866802637.57,2024
+mts_table_4,2024-09-30,Customs Duties,current_fytd_net_rcpt_amt,77036909944.89,2024
+mts_table_4,2024-09-30,"Deposit of Earnings, Federal Reserve System",current_fytd_net_rcpt_amt,3130982471.65,2024
+mts_table_4,2024-09-30,Deposits by States,current_fytd_net_rcpt_amt,40442945630.32,2024
+mts_table_4,2024-09-30,Employment and General Retirement:,,,2024
+mts_table_4,2024-09-30,Estate and Gift Taxes,current_fytd_net_rcpt_amt,31615876108.98,2024
+mts_table_4,2024-09-30,Excise Taxes:,,,2024
+mts_table_4,2024-09-30,Federal Disability Insurance Trust Fund:,,,2024
+mts_table_4,2024-09-30,Federal Employees' Retirement--Employee Share,current_fytd_net_rcpt_amt,7930737010.95,2024
+mts_table_4,2024-09-30,Federal Hospital Insurance Trust Fund:,,,2024
+mts_table_4,2024-09-30,Federal Insurance Contributions Act Taxes,current_fytd_net_rcpt_amt,169254892000.0,2024
+mts_table_4,2024-09-30,Federal Insurance Contributions Act Taxes,current_fytd_net_rcpt_amt,349848000000.0,2024
+mts_table_4,2024-09-30,Federal Insurance Contributions Act Taxes,current_fytd_net_rcpt_amt,996721364000.0,2024
+mts_table_4,2024-09-30,Federal Old-Age and Survivors Insurance Trust Fund:,,,2024
+mts_table_4,2024-09-30,Federal Unemployment Taxes,current_fytd_net_rcpt_amt,8005052647.93,2024
+mts_table_4,2024-09-30,Highway Trust Fund,current_fytd_net_rcpt_amt,42085523848.85,2024
+mts_table_4,2024-09-30,Individual Income Taxes,,,2024
+mts_table_4,2024-09-30,Miscellaneous Excise Taxes,current_fytd_net_rcpt_amt,41529045856.35,2024
+mts_table_4,2024-09-30,Miscellaneous Receipts:,,,2024
+mts_table_4,2024-09-30,Non-Federal Employees Retirement,current_fytd_net_rcpt_amt,23219041.77,2024
+mts_table_4,2024-09-30,Other,current_fytd_gross_rcpt_amt,959070921625.37,2024
+mts_table_4,2024-09-30,Other Retirement:,,,2024
+mts_table_4,2024-09-30,Presidential Election Campaign Fund,current_fytd_gross_rcpt_amt,21403197.0,2024
+mts_table_4,2024-09-30,Rail Pension and Supplemental Annuity,current_fytd_net_rcpt_amt,3682807429.73,2024
+mts_table_4,2024-09-30,Railroad Retirement:,,,2024
+mts_table_4,2024-09-30,Railroad Unemployment Taxes,current_fytd_net_rcpt_amt,158718628.69,2024
+mts_table_4,2024-09-30,Receipts from Railroad Retirement Board,current_fytd_net_rcpt_amt,645200000.0,2024
+mts_table_4,2024-09-30,Self-Employment Contributions Act Taxes,current_fytd_net_rcpt_amt,26497000000.0,2024
+mts_table_4,2024-09-30,Self-Employment Contributions Act Taxes,current_fytd_net_rcpt_amt,9250000000.0,2024
+mts_table_4,2024-09-30,Self-Employment Contributions Act Taxes,current_fytd_net_rcpt_amt,54478000000.0,2024
+mts_table_4,2024-09-30,Social Insurance and Retirement Receipts:,,,2024
+mts_table_4,2024-09-30,Social Security Equivalent Account,current_fytd_net_rcpt_amt,2574627010.09,2024
+mts_table_4,2024-09-30,Total -- Employment and General Retirement,current_fytd_net_rcpt_amt,1652997812476.74,2024
+mts_table_4,2024-09-30,Total -- Excise Taxes,current_fytd_net_rcpt_amt,101435326697.24,2024
+mts_table_4,2024-09-30,Total -- Federal Disability Insurance Trust Fund,current_fytd_net_rcpt_amt,182898745559.24,2024
+mts_table_4,2024-09-30,Total -- Federal Hospital Insurance Trust Fund,current_fytd_net_rcpt_amt,386857646680.04,2024
+mts_table_4,2024-09-30,Total -- Federal Old-Age and Survivors Insurance Trust Fund,current_fytd_net_rcpt_amt,1076983985797.64,2024
+mts_table_4,2024-09-30,Total -- Individual Income Taxes,current_fytd_net_rcpt_amt,2426066988325.89,2024
+mts_table_4,2024-09-30,Total -- Miscellaneous Receipts,current_fytd_net_rcpt_amt,43155255587.28,2024
+mts_table_4,2024-09-30,Total -- Off-Budget,current_fytd_net_rcpt_amt,1259882731356.88,2024
+mts_table_4,2024-09-30,Total -- On-Budget,current_fytd_net_rcpt_amt,3658852913381.37,2024
+mts_table_4,2024-09-30,Total -- Other Retirement,current_fytd_net_rcpt_amt,7953956052.72,2024
+mts_table_4,2024-09-30,Total -- Receipts,current_fytd_net_rcpt_amt,4918735644738.25,2024
+mts_table_4,2024-09-30,Total -- Social Insurance and Retirement Receipts,current_fytd_net_rcpt_amt,1709558485436.4,2024
+mts_table_4,2024-09-30,Total -- Unemployment Insurance,current_fytd_net_rcpt_amt,48606716906.94,2024
+mts_table_4,2024-09-30,Unemployment Insurance:,,,2024
+mts_table_4,2024-09-30,Universal Service Fund,current_fytd_net_rcpt_amt,8375871394.62,2024
+mts_table_4,2024-09-30,Withheld,current_fytd_gross_rcpt_amt,1766400509561.88,2024
+mts_table_5,2024-09-30,Accelerating Achievement and Ensuring Equity,current_fytd_net_outly_amt,18911824106.1,2024
+mts_table_5,2024-09-30,Administration for Children and Families:,,,2024
+mts_table_5,2024-09-30,Administration for Community Living,current_fytd_net_outly_amt,2791979601.16,2024
+mts_table_5,2024-09-30,Administration of Foreign Affairs:,,,2024
+mts_table_5,2024-09-30,Administrative Expenses,current_fytd_net_outly_amt,2519830931.03,2024
+mts_table_5,2024-09-30,Administrative Expenses,current_fytd_net_outly_amt,3954694899.44,2024
+mts_table_5,2024-09-30,Administrative Expenses,current_fytd_net_outly_amt,4754422487.94,2024
+mts_table_5,2024-09-30,Administrative Expenses,current_fytd_net_outly_amt,5736241307.32,2024
+mts_table_5,2024-09-30,Administrative Expenses,current_fytd_net_outly_amt,60788274.68,2024
+mts_table_5,2024-09-30,Administrative and Operating Expenses,current_fytd_net_outly_amt,77233980.55,2024
+mts_table_5,2024-09-30,Advanced Technology Vehicles Manufacturing Loan Program,current_fytd_net_outly_amt,67795138.25,2024
+mts_table_5,2024-09-30,Aeronautics,current_fytd_net_outly_amt,946527309.42,2024
+mts_table_5,2024-09-30,Agency for Healthcare Research and Quality,current_fytd_net_outly_amt,369106924.81,2024
+mts_table_5,2024-09-30,Agency for International Development:,,,2024
+mts_table_5,2024-09-30,Agricultural Credit Insurance Fund,current_fytd_net_outly_amt,1532617504.48,2024
+mts_table_5,2024-09-30,Agricultural Disaster Relief Fund,current_fytd_net_outly_amt,-155208.42,2024
+mts_table_5,2024-09-30,Agricultural Marketing Service,current_fytd_net_outly_amt,3351106273.4,2024
+mts_table_5,2024-09-30,Agricultural Research Service,current_fytd_net_outly_amt,1921000298.23,2024
+mts_table_5,2024-09-30,Air Carrier Worker Support,current_fytd_net_outly_amt,1227344.0,2024
+mts_table_5,2024-09-30,Airport and Airway Trust Fund,current_fytd_net_outly_amt,-492520123.58,2024
+mts_table_5,2024-09-30,Airport and Airway Trust Fund:,,,2024
+mts_table_5,2024-09-30,Alcohol and Tobacco Tax and Trade Bureau:,,,2024
+mts_table_5,2024-09-30,Andean Counterdrug Programs,current_fytd_net_outly_amt,-522.71,2024
+mts_table_5,2024-09-30,Animal and Plant Health Inspection Service,current_fytd_net_outly_amt,2392719328.84,2024
+mts_table_5,2024-09-30,Architect of the Capitol,current_fytd_net_outly_amt,823367894.23,2024
+mts_table_5,2024-09-30,Armed Forces Retirement Home,current_fytd_net_outly_amt,-10024184.25,2024
+mts_table_5,2024-09-30,Assets Forfeiture Fund,current_fytd_net_outly_amt,1659651768.91,2024
+mts_table_5,2024-09-30,"Assistance for Europe, Eurasia and Central Asia",current_fytd_net_outly_amt,890282460.46,2024
+mts_table_5,2024-09-30,Benefit Payments,current_fytd_net_outly_amt,153917545267.93,2024
+mts_table_5,2024-09-30,Benefit Payments,current_fytd_net_outly_amt,403423187940.61,2024
+mts_table_5,2024-09-30,Benefit Payments,current_fytd_net_outly_amt,519967835979.18,2024
+mts_table_5,2024-09-30,Benefit Payments,current_fytd_net_outly_amt,1293782491652.94,2024
+mts_table_5,2024-09-30,Benefit Payments,current_fytd_net_outly_amt,116946359672.91,2024
+mts_table_5,2024-09-30,Benefit Payments,current_fytd_net_outly_amt,8683251585.85,2024
+mts_table_5,2024-09-30,Benefit Payments,current_fytd_net_outly_amt,5775329458.3,2024
+mts_table_5,2024-09-30,Benefit Payments,current_fytd_net_outly_amt,59995808.21,2024
+mts_table_5,2024-09-30,Benefits Programs:,,,2024
+mts_table_5,2024-09-30,Black Lung Disability Trust Fund,current_fytd_net_outly_amt,440246712.69,2024
+mts_table_5,2024-09-30,"Build America Bond Payments, Recovery Act",current_fytd_net_outly_amt,2137579691.17,2024
+mts_table_5,2024-09-30,"Bureau of Alcohol, Tobacco, Firearms, and Explosives",current_fytd_net_outly_amt,1751314242.59,2024
+mts_table_5,2024-09-30,Bureau of Consumer Financial Protection,current_fytd_net_outly_amt,1201058347.27,2024
+mts_table_5,2024-09-30,Bureau of Engraving and Printing,current_fytd_net_outly_amt,-165208182.06,2024
+mts_table_5,2024-09-30,Bureau of Indian Affairs and Bureau of Indian Education,current_fytd_net_outly_amt,2781123224.03,2024
+mts_table_5,2024-09-30,Bureau of Labor Statistics,current_fytd_net_outly_amt,677591753.13,2024
+mts_table_5,2024-09-30,Bureau of Land Management:,,,2024
+mts_table_5,2024-09-30,Bureau of Ocean Energy Management,current_fytd_net_outly_amt,168681368.1,2024
+mts_table_5,2024-09-30,Bureau of Reclamation:,,,2024
+mts_table_5,2024-09-30,Bureau of the Census,current_fytd_net_outly_amt,1493160534.69,2024
+mts_table_5,2024-09-30,Bureau of the Fiscal Service:,,,2024
+mts_table_5,2024-09-30,Business Loans Program,current_fytd_net_outly_amt,544510636.03,2024
+mts_table_5,2024-09-30,Capital Improvement and Maintenance,current_fytd_net_outly_amt,298839672.19,2024
+mts_table_5,2024-09-30,Capital Investment Grants,current_fytd_net_outly_amt,2552815234.61,2024
+mts_table_5,2024-09-30,Capital and Debt Service Grants to the National Railroad Passenger Corporation,current_fytd_net_outly_amt,76352.23,2024
+mts_table_5,2024-09-30,Capitol Police,current_fytd_net_outly_amt,777783780.82,2024
+mts_table_5,2024-09-30,Centers for Disease Control and Prevention,current_fytd_net_outly_amt,12168373990.18,2024
+mts_table_5,2024-09-30,Centers for Medicare and Medicaid Services:,,,2024
+mts_table_5,2024-09-30,Central Utah Project,current_fytd_net_outly_amt,27371733.27,2024
+mts_table_5,2024-09-30,Child Care Entitlement to States,current_fytd_net_outly_amt,3565726398.3,2024
+mts_table_5,2024-09-30,Child Nutrition Programs,current_fytd_net_outly_amt,32732684349.3,2024
+mts_table_5,2024-09-30,Children and Families Services Programs,current_fytd_net_outly_amt,14804889188.0,2024
+mts_table_5,2024-09-30,Children's Health Insurance Fund,current_fytd_net_outly_amt,19448776714.6,2024
+mts_table_5,2024-09-30,Citizenship and Immigration Services,current_fytd_net_outly_amt,5859446261.52,2024
+mts_table_5,2024-09-30,Civil Service Retirement and Disability Fund,current_fytd_net_outly_amt,-54633375522.99,2024
+mts_table_5,2024-09-30,Civil Service Retirement and Disability Fund,current_fytd_net_outly_amt,-26596903063.43,2024
+mts_table_5,2024-09-30,Civil Service Retirement and Disability Fund,current_fytd_net_outly_amt,107734801237.49,2024
+mts_table_5,2024-09-30,Civil Service Retirement and Disability Fund:,,,2024
+mts_table_5,2024-09-30,"Claims, Judgements, and Relief Acts",current_fytd_net_outly_amt,1910700231.83,2024
+mts_table_5,2024-09-30,Commodity Credit Corporation,current_fytd_net_outly_amt,5524167117.4,2024
+mts_table_5,2024-09-30,Community Development Fund,current_fytd_net_outly_amt,9372870651.97,2024
+mts_table_5,2024-09-30,Community Oriented Policing Services,current_fytd_net_outly_amt,425245205.18,2024
+mts_table_5,2024-09-30,Community Planning and Development:,,,2024
+mts_table_5,2024-09-30,Community Service Employment for Older Americans,current_fytd_net_outly_amt,402181283.71,2024
+mts_table_5,2024-09-30,Compensation and Pensions,current_fytd_net_outly_amt,161231617435.7,2024
+mts_table_5,2024-09-30,Comptroller of the Currency,current_fytd_net_outly_amt,71061905.32,2024
+mts_table_5,2024-09-30,Congressional Budget Office,current_fytd_net_outly_amt,67825916.83,2024
+mts_table_5,2024-09-30,Conservation Operations,current_fytd_net_outly_amt,1141979848.44,2024
+mts_table_5,2024-09-30,Construction,current_fytd_net_outly_amt,882886666.8,2024
+mts_table_5,2024-09-30,Construction,current_fytd_net_outly_amt,3999012706.14,2024
+mts_table_5,2024-09-30,Contingency Fund,current_fytd_net_outly_amt,584120873.07,2024
+mts_table_5,2024-09-30,Contribution to the International Development Association,current_fytd_net_outly_amt,1630256000.0,2024
+mts_table_5,2024-09-30,Coronavirus Relief Fund,current_fytd_net_outly_amt,602240049.76,2024
+mts_table_5,2024-09-30,Corporation for National and Community Service,current_fytd_net_outly_amt,1246813117.51,2024
+mts_table_5,2024-09-30,Corporation for Public Broadcasting,current_fytd_net_outly_amt,585000000.0,2024
+mts_table_5,2024-09-30,Corps of Engineers,current_fytd_net_outly_amt,-601320378.87,2024
+mts_table_5,2024-09-30,Corps of Engineers:,,,2024
+mts_table_5,2024-09-30,Courts,current_fytd_net_outly_amt,364837871.0,2024
+mts_table_5,2024-09-30,"Courts of Appeals, District Courts, and Other Judicial Services",current_fytd_net_outly_amt,9666467780.69,2024
+mts_table_5,2024-09-30,Credit Accounts:,,,2024
+mts_table_5,2024-09-30,Crime Victims Fund,current_fytd_net_outly_amt,2112654858.83,2024
+mts_table_5,2024-09-30,Cross Agency Support,current_fytd_net_outly_amt,3099296944.08,2024
+mts_table_5,2024-09-30,Defense Agencies,,,2024
+mts_table_5,2024-09-30,Defense Agencies,current_fytd_net_outly_amt,-1971275580.38,2024
+mts_table_5,2024-09-30,Defense Agencies,current_fytd_net_outly_amt,34901210020.62,2024
+mts_table_5,2024-09-30,Defense Agencies,current_fytd_net_outly_amt,2935158511.03,2024
+mts_table_5,2024-09-30,Defense Agencies,current_fytd_net_outly_amt,100106139493.14,2024
+mts_table_5,2024-09-30,Defense Agencies,current_fytd_net_outly_amt,19874141000.0,2024
+mts_table_5,2024-09-30,Defense Agencies,current_fytd_net_outly_amt,579814692.13,2024
+mts_table_5,2024-09-30,Defense Agencies,current_fytd_net_outly_amt,8381829639.66,2024
+mts_table_5,2024-09-30,Defense Agencies,current_fytd_net_outly_amt,87812966.43,2024
+mts_table_5,2024-09-30,Defense Agencies,current_fytd_net_outly_amt,-7677591.36,2024
+mts_table_5,2024-09-30,Defense Agencies:,,,2024
+mts_table_5,2024-09-30,Defense Environmental Cleanup,current_fytd_net_outly_amt,7319730519.67,2024
+mts_table_5,2024-09-30,Defense Nuclear Nonproliferation,current_fytd_net_outly_amt,2752082325.35,2024
+mts_table_5,2024-09-30,Defense Nuclear Waste Disposal,current_fytd_net_outly_amt,359560.18,2024
+mts_table_5,2024-09-30,Department of Agriculture:,,,2024
+mts_table_5,2024-09-30,Department of Commerce:,,,2024
+mts_table_5,2024-09-30,Department of Defense Medicare-Eligible Retiree Health Care Fund,current_fytd_net_outly_amt,-10837263303.0,2024
+mts_table_5,2024-09-30,Department of Defense Medicare-Eligible Retiree Health Care Fund,current_fytd_net_outly_amt,12285876340.91,2024
+mts_table_5,2024-09-30,Department of Defense--Military Programs:,,,2024
+mts_table_5,2024-09-30,Department of Education:,,,2024
+mts_table_5,2024-09-30,Department of Energy:,,,2024
+mts_table_5,2024-09-30,Department of Health and Human Services:,,,2024
+mts_table_5,2024-09-30,Department of Health and Human Services:,,,2024
+mts_table_5,2024-09-30,Department of Health and Human Services:,,,2024
+mts_table_5,2024-09-30,Department of Homeland Security:,,,2024
+mts_table_5,2024-09-30,Department of Homeland Security:,,,2024
+mts_table_5,2024-09-30,Department of Housing and Urban Development:,,,2024
+mts_table_5,2024-09-30,Department of Justice:,,,2024
+mts_table_5,2024-09-30,Department of Labor:,,,2024
+mts_table_5,2024-09-30,Department of Labor:,,,2024
+mts_table_5,2024-09-30,Department of State:,,,2024
+mts_table_5,2024-09-30,Department of State:,,,2024
+mts_table_5,2024-09-30,Department of State:,,,2024
+mts_table_5,2024-09-30,Department of Transportation:,,,2024
+mts_table_5,2024-09-30,Department of Transportation:,,,2024
+mts_table_5,2024-09-30,Department of Veterans Affairs:,,,2024
+mts_table_5,2024-09-30,Department of Veterans Affairs:,,,2024
+mts_table_5,2024-09-30,Department of the Air Force,current_fytd_net_outly_amt,-174157256.13,2024
+mts_table_5,2024-09-30,Department of the Air Force,current_fytd_net_outly_amt,61931724969.57,2024
+mts_table_5,2024-09-30,Department of the Air Force,current_fytd_net_outly_amt,3665773724.74,2024
+mts_table_5,2024-09-30,Department of the Air Force,current_fytd_net_outly_amt,4294677.84,2024
+mts_table_5,2024-09-30,Department of the Air Force,current_fytd_net_outly_amt,76681817610.12,2024
+mts_table_5,2024-09-30,Department of the Air Force,current_fytd_net_outly_amt,45255860527.83,2024
+mts_table_5,2024-09-30,Department of the Air Force,current_fytd_net_outly_amt,55031643669.57,2024
+mts_table_5,2024-09-30,Department of the Air Force,current_fytd_net_outly_amt,387411032.4,2024
+mts_table_5,2024-09-30,Department of the Air Force,current_fytd_net_outly_amt,-28408179.66,2024
+mts_table_5,2024-09-30,Department of the Army,current_fytd_net_outly_amt,1681713744.61,2024
+mts_table_5,2024-09-30,Department of the Army,current_fytd_net_outly_amt,610337674.19,2024
+mts_table_5,2024-09-30,Department of the Army,current_fytd_net_outly_amt,14578823956.13,2024
+mts_table_5,2024-09-30,Department of the Army,current_fytd_net_outly_amt,28526897.55,2024
+mts_table_5,2024-09-30,Department of the Army,current_fytd_net_outly_amt,73665935467.06,2024
+mts_table_5,2024-09-30,Department of the Army,current_fytd_net_outly_amt,69342039807.94,2024
+mts_table_5,2024-09-30,Department of the Army,current_fytd_net_outly_amt,-319497519.9,2024
+mts_table_5,2024-09-30,Department of the Army,current_fytd_net_outly_amt,-82280689.37,2024
+mts_table_5,2024-09-30,Department of the Army,current_fytd_net_outly_amt,1616056.99,2024
+mts_table_5,2024-09-30,Department of the Army,current_fytd_net_outly_amt,25499774343.47,2024
+mts_table_5,2024-09-30,Department of the Army,current_fytd_net_outly_amt,-853565.04,2024
+mts_table_5,2024-09-30,Department of the Interior:,,,2024
+mts_table_5,2024-09-30,Department of the Navy,current_fytd_net_outly_amt,-161548868.69,2024
+mts_table_5,2024-09-30,Department of the Navy,current_fytd_net_outly_amt,3784953610.43,2024
+mts_table_5,2024-09-30,Department of the Navy,current_fytd_net_outly_amt,26548439375.36,2024
+mts_table_5,2024-09-30,Department of the Navy,current_fytd_net_outly_amt,29545345.74,2024
+mts_table_5,2024-09-30,Department of the Navy,current_fytd_net_outly_amt,81593061247.49,2024
+mts_table_5,2024-09-30,Department of the Navy,current_fytd_net_outly_amt,57473176463.02,2024
+mts_table_5,2024-09-30,Department of the Navy,current_fytd_net_outly_amt,24230613.03,2024
+mts_table_5,2024-09-30,Department of the Navy,current_fytd_net_outly_amt,63345779006.15,2024
+mts_table_5,2024-09-30,Department of the Navy,current_fytd_net_outly_amt,463240059.16,2024
+mts_table_5,2024-09-30,Department of the Navy,current_fytd_net_outly_amt,-76267094.44,2024
+mts_table_5,2024-09-30,Department of the Treasury:,,,2024
+mts_table_5,2024-09-30,Department-Wide Programs,current_fytd_net_outly_amt,2895029632.54,2024
+mts_table_5,2024-09-30,Departmental Administration,current_fytd_net_outly_amt,394598021.71,2024
+mts_table_5,2024-09-30,Departmental Administration:,,,2024
+mts_table_5,2024-09-30,Departmental Management,current_fytd_net_outly_amt,732194146.07,2024
+mts_table_5,2024-09-30,Departmental Management,current_fytd_net_outly_amt,690687904.6,2024
+mts_table_5,2024-09-30,Departmental Management,current_fytd_net_outly_amt,16399036717.22,2024
+mts_table_5,2024-09-30,Departmental Management and Operations,current_fytd_net_outly_amt,2665754958.45,2024
+mts_table_5,2024-09-30,Departmental Offices:,,,2024
+mts_table_5,2024-09-30,Departmental Offices:,,,2024
+mts_table_5,2024-09-30,Deposit Insurance Fund,current_fytd_net_outly_amt,37102073524.99,2024
+mts_table_5,2024-09-30,Development Assistance Program,current_fytd_net_outly_amt,3551017216.8,2024
+mts_table_5,2024-09-30,Diplomatic and Consular Programs,current_fytd_net_outly_amt,10453386246.49,2024
+mts_table_5,2024-09-30,Disaster Loans Program,current_fytd_net_outly_amt,34145925830.8,2024
+mts_table_5,2024-09-30,Disaster Relief,current_fytd_net_outly_amt,33274635423.36,2024
+mts_table_5,2024-09-30,District of Columbia:,,,2024
+mts_table_5,2024-09-30,Domestic Nuclear Detection Office,current_fytd_net_outly_amt,419871960.6,2024
+mts_table_5,2024-09-30,Drug Enforcement Administration,current_fytd_net_outly_amt,3239775504.09,2024
+mts_table_5,2024-09-30,ESF - Economic Stabilization Program,current_fytd_net_outly_amt,10433988.2,2024
+mts_table_5,2024-09-30,Economic Development Administration,current_fytd_net_outly_amt,1136807404.03,2024
+mts_table_5,2024-09-30,Economic Support Fund,current_fytd_net_outly_amt,9460920891.33,2024
+mts_table_5,2024-09-30,Education Improvement Programs,current_fytd_net_outly_amt,5972517831.76,2024
+mts_table_5,2024-09-30,Education and Human Resources,current_fytd_net_outly_amt,1348316762.49,2024
+mts_table_5,2024-09-30,Educational Benefits,current_fytd_net_outly_amt,159517974.3,2024
+mts_table_5,2024-09-30,Educational Benefits Fund,current_fytd_net_outly_amt,-23303067.41,2024
+mts_table_5,2024-09-30,Educational and Cultural Exchange Programs,current_fytd_net_outly_amt,811329156.72,2024
+mts_table_5,2024-09-30,"Embassy Security, Construction, and Maintenance",current_fytd_net_outly_amt,1810521202.82,2024
+mts_table_5,2024-09-30,Emergency Capital Investment Program,current_fytd_net_outly_amt,321211105.97,2024
+mts_table_5,2024-09-30,Emergency Rental Assistance,current_fytd_net_outly_amt,-385454162.29,2024
+mts_table_5,2024-09-30,Employees Life Insurance Fund,current_fytd_net_outly_amt,-2438996210.49,2024
+mts_table_5,2024-09-30,Employees and Retired Employees Health Benefits Fund,current_fytd_net_outly_amt,1803368658.51,2024
+mts_table_5,2024-09-30,"Employer Share, Employee Retirement:",,,2024
+mts_table_5,2024-09-30,Employment and Training Administration:,,,2024
+mts_table_5,2024-09-30,Energy Efficiency and Renewable Energy,current_fytd_net_outly_amt,3703702259.99,2024
+mts_table_5,2024-09-30,Energy Employees Occupational Illness Compensation Fund,current_fytd_net_outly_amt,2692762124.3,2024
+mts_table_5,2024-09-30,Energy Programs:,,,2024
+mts_table_5,2024-09-30,Energy Supply,current_fytd_net_outly_amt,2408399099.0,2024
+mts_table_5,2024-09-30,Enforcement,current_fytd_net_outly_amt,6501101166.78,2024
+mts_table_5,2024-09-30,Environmental Programs and Management,current_fytd_net_outly_amt,3211107779.16,2024
+mts_table_5,2024-09-30,Environmental Protection Agency,current_fytd_net_outly_amt,-681654944.11,2024
+mts_table_5,2024-09-30,Environmental Protection Agency:,,,2024
+mts_table_5,2024-09-30,Environmental and Other Defense Activities:,,,2024
+mts_table_5,2024-09-30,Equal Employment Opportunity Commission,current_fytd_net_outly_amt,463255494.72,2024
+mts_table_5,2024-09-30,Exchange Stabilization Fund,current_fytd_net_outly_amt,-1506490849.7,2024
+mts_table_5,2024-09-30,Executive Office of the President:,,,2024
+mts_table_5,2024-09-30,Exploration,current_fytd_net_outly_amt,7203254608.54,2024
+mts_table_5,2024-09-30,Export-Import Bank of the United States,current_fytd_net_outly_amt,-517137466.49,2024
+mts_table_5,2024-09-30,Extension Activities,current_fytd_net_outly_amt,637832056.18,2024
+mts_table_5,2024-09-30,FHA-General and Special Risk Fund,current_fytd_net_outly_amt,-2206725885.73,2024
+mts_table_5,2024-09-30,"FHA-General and Special Risk Fund, Liquidating Account",current_fytd_net_outly_amt,-49533264.03,2024
+mts_table_5,2024-09-30,"FHA-General and Special Risk Fund, Program Account",current_fytd_net_outly_amt,545928476.51,2024
+mts_table_5,2024-09-30,FHA-Mutual Mortgage Insurance Capital Reserve Account,current_fytd_net_outly_amt,-27414702866.95,2024
+mts_table_5,2024-09-30,"FHA-Mutual Mortgage Insurance Fund, Program Account",current_fytd_net_outly_amt,4322218855.8,2024
+mts_table_5,2024-09-30,"FHA-Mutual Mortgage and Cooperative Housing Insurance Fund, Liquidating Account",current_fytd_net_outly_amt,-780086.2,2024
+mts_table_5,2024-09-30,FSLIC Resolution Fund,current_fytd_net_outly_amt,-52338172.48,2024
+mts_table_5,2024-09-30,Facilities and Equipment,current_fytd_net_outly_amt,3086290946.54,2024
+mts_table_5,2024-09-30,Family Housing:,,,2024
+mts_table_5,2024-09-30,Farm Security and Rural Investment Programs,current_fytd_net_outly_amt,3911289898.13,2024
+mts_table_5,2024-09-30,Farm Service Agency:,,,2024
+mts_table_5,2024-09-30,Federal Additional Unemployment Compensation Program-Recovery Act,current_fytd_net_outly_amt,-2164130669.17,2024
+mts_table_5,2024-09-30,Federal Administrative Expenses,current_fytd_net_outly_amt,503171890.17,2024
+mts_table_5,2024-09-30,Federal Aviation Administration:,,,2024
+mts_table_5,2024-09-30,Federal Bureau of Investigation,current_fytd_net_outly_amt,11414461695.2,2024
+mts_table_5,2024-09-30,Federal Communications Commission:,,,2024
+mts_table_5,2024-09-30,Federal Crop Insurance Corporation Fund,current_fytd_net_outly_amt,9768288060.88,2024
+mts_table_5,2024-09-30,Federal Deposit Insurance Corporation:,,,2024
+mts_table_5,2024-09-30,Federal Direct Student Loans,current_fytd_net_outly_amt,110176072447.0,2024
+mts_table_5,2024-09-30,Federal Disability Insurance Trust Fund,current_fytd_net_outly_amt,-4529029338.31,2024
+mts_table_5,2024-09-30,Federal Disability Insurance Trust Fund (Off-Budget):,,,2024
+mts_table_5,2024-09-30,Federal Disability Insurance Trust Fund:,,,2024
+mts_table_5,2024-09-30,Federal Drug Control Programs,current_fytd_net_outly_amt,397804226.43,2024
+mts_table_5,2024-09-30,Federal Emergency Management Agency:,,,2024
+mts_table_5,2024-09-30,Federal Employer Contributions,current_fytd_net_outly_amt,-4873000000.0,2024
+mts_table_5,2024-09-30,Federal Employer Contributions,current_fytd_net_outly_amt,-19917000000.0,2024
+mts_table_5,2024-09-30,Federal Employer Contributions,current_fytd_net_outly_amt,-3382000000.0,2024
+mts_table_5,2024-09-30,Federal Family Education Loans,current_fytd_net_outly_amt,13270517763.13,2024
+mts_table_5,2024-09-30,Federal Financing Bank,current_fytd_net_outly_amt,-154982420.49,2024
+mts_table_5,2024-09-30,Federal Highway Administration:,,,2024
+mts_table_5,2024-09-30,Federal Hospital Insurance Trust Fund,current_fytd_net_outly_amt,-6074784120.45,2024
+mts_table_5,2024-09-30,Federal Hospital Insurance Trust Fund,current_fytd_net_outly_amt,-41189154024.61,2024
+mts_table_5,2024-09-30,Federal Hospital Insurance Trust Fund:,,,2024
+mts_table_5,2024-09-30,Federal Hospital Insurance Trust Fund:,,,2024
+mts_table_5,2024-09-30,Federal Housing Finance Agency,current_fytd_net_outly_amt,361915923.44,2024
+mts_table_5,2024-09-30,Federal Motor Carrier Safety Administration,current_fytd_net_outly_amt,891809244.99,2024
+mts_table_5,2024-09-30,Federal Old-Age and Survivors Insurance Trust Fund,current_fytd_net_outly_amt,-62890552530.25,2024
+mts_table_5,2024-09-30,Federal Old-Age and Survivors Insurance Trust Fund (Off-Budget):,,,2024
+mts_table_5,2024-09-30,Federal Old-Age and Survivors Insurance Trust Fund:,,,2024
+mts_table_5,2024-09-30,Federal Payments to the Railroad Retirement Accounts,current_fytd_net_outly_amt,962522079.33,2024
+mts_table_5,2024-09-30,Federal Prison System,current_fytd_net_outly_amt,9056112809.69,2024
+mts_table_5,2024-09-30,Federal Railroad Administration:,,,2024
+mts_table_5,2024-09-30,Federal Student Loan Reserve Fund,current_fytd_net_outly_amt,361513289.16,2024
+mts_table_5,2024-09-30,Federal Supplementary Medical Insurance Trust Fund,current_fytd_net_outly_amt,-4014998617.77,2024
+mts_table_5,2024-09-30,Federal Supplementary Medical Insurance Trust Fund,current_fytd_net_outly_amt,-478322656754.91,2024
+mts_table_5,2024-09-30,Federal Supplementary Medical Insurance Trust Fund:,,,2024
+mts_table_5,2024-09-30,Federal Transit Administration:,,,2024
+mts_table_5,2024-09-30,Federal Unemployment Benefits and Allowances,current_fytd_net_outly_amt,103874022.39,2024
+mts_table_5,2024-09-30,Federal Windfall Subsidy,current_fytd_net_outly_amt,6184048.01,2024
+mts_table_5,2024-09-30,Federal-Aid Highways,current_fytd_net_outly_amt,53665888798.13,2024
+mts_table_5,2024-09-30,Federal-State Unemployment Insurance:,,,2024
+mts_table_5,2024-09-30,Financial Agent Services,current_fytd_net_outly_amt,1336978007.19,2024
+mts_table_5,2024-09-30,Fish and Wildlife and Parks:,,,2024
+mts_table_5,2024-09-30,Flood Control and Coastal Emergencies,current_fytd_net_outly_amt,478167770.79,2024
+mts_table_5,2024-09-30,Food Safety and Inspection Service,current_fytd_net_outly_amt,1245589643.25,2024
+mts_table_5,2024-09-30,Food and Drug Administration,current_fytd_net_outly_amt,3867163323.54,2024
+mts_table_5,2024-09-30,Food and Nutrition Service:,,,2024
+mts_table_5,2024-09-30,Foreign Agricultural Service,current_fytd_net_outly_amt,1418660954.08,2024
+mts_table_5,2024-09-30,Foreign Military Financing Program,current_fytd_net_outly_amt,11581100363.66,2024
+mts_table_5,2024-09-30,Foreign Military Sales Trust Fund,current_fytd_net_outly_amt,48726085542.34,2024
+mts_table_5,2024-09-30,Foreign Service Retirement and Disability Fund,current_fytd_net_outly_amt,1188753572.64,2024
+mts_table_5,2024-09-30,Foreign Service Retirement and Disability Fund,current_fytd_net_outly_amt,-445453863.2,2024
+mts_table_5,2024-09-30,Foreign Service Retirement and Disability Fund,current_fytd_net_outly_amt,-602071309.27,2024
+mts_table_5,2024-09-30,Forest Service Permanent Appropriations,current_fytd_net_outly_amt,578073029.83,2024
+mts_table_5,2024-09-30,Forest Service:,,,2024
+mts_table_5,2024-09-30,Formula Grants,current_fytd_net_outly_amt,199650.0,2024
+mts_table_5,2024-09-30,Fossil Energy Research and Development,current_fytd_net_outly_amt,763461555.78,2024
+mts_table_5,2024-09-30,General Activities,current_fytd_net_outly_amt,306866082.22,2024
+mts_table_5,2024-09-30,General Administration,current_fytd_net_outly_amt,1435771053.9,2024
+mts_table_5,2024-09-30,General Fund Contributions,current_fytd_net_outly_amt,-53255231701.0,2024
+mts_table_5,2024-09-30,General Legal Activities,current_fytd_net_outly_amt,3592976573.83,2024
+mts_table_5,2024-09-30,General Operating Expenses,current_fytd_net_outly_amt,-397988.37,2024
+mts_table_5,2024-09-30,General Services Administration:,,,2024
+mts_table_5,2024-09-30,General and Special Payments,current_fytd_net_outly_amt,590078906.29,2024
+mts_table_5,2024-09-30,Global Health and Child Survival,current_fytd_net_outly_amt,10848212740.67,2024
+mts_table_5,2024-09-30,Government Accountability Office,current_fytd_net_outly_amt,866592439.13,2024
+mts_table_5,2024-09-30,Government National Mortgage Association:,,,2024
+mts_table_5,2024-09-30,"Government Payment for Annuitants, Employees Health and Life Insurance Benefits",current_fytd_net_outly_amt,15073937739.08,2024
+mts_table_5,2024-09-30,Government Publishing Office,current_fytd_net_outly_amt,93297479.06,2024
+mts_table_5,2024-09-30,Grants to States for Medicaid,current_fytd_net_outly_amt,617517219049.27,2024
+mts_table_5,2024-09-30,Grants-In-Aid for Airports,current_fytd_net_outly_amt,4068572092.05,2024
+mts_table_5,2024-09-30,Guarantees of Mortgage-Backed Securities,current_fytd_net_outly_amt,-1664667156.26,2024
+mts_table_5,2024-09-30,HUD Project-Based Rental Assistance,current_fytd_net_outly_amt,15634259761.27,2024
+mts_table_5,2024-09-30,Harbor Maintenance Trust Fund,current_fytd_net_outly_amt,2696586953.66,2024
+mts_table_5,2024-09-30,Hazardous Substance Superfund,current_fytd_net_outly_amt,2006448066.47,2024
+mts_table_5,2024-09-30,Health Care Fraud and Abuse Control,current_fytd_net_outly_amt,2647493394.62,2024
+mts_table_5,2024-09-30,Health Resources and Services Administration,current_fytd_net_outly_amt,14579900804.46,2024
+mts_table_5,2024-09-30,Higher Education,current_fytd_net_outly_amt,3191756236.94,2024
+mts_table_5,2024-09-30,Highway Trust Fund,current_fytd_net_outly_amt,-6062462578.02,2024
+mts_table_5,2024-09-30,Highway Trust Fund:,,,2024
+mts_table_5,2024-09-30,Home Investment Partnership Program,current_fytd_net_outly_amt,1464730612.71,2024
+mts_table_5,2024-09-30,Home Ownership Preservation Equity Fund,current_fytd_net_outly_amt,1195705.65,2024
+mts_table_5,2024-09-30,Homeless Assistance Grants,current_fytd_net_outly_amt,3220106434.56,2024
+mts_table_5,2024-09-30,House of Representatives,current_fytd_net_outly_amt,1958416912.89,2024
+mts_table_5,2024-09-30,Housing Accounts,current_fytd_net_outly_amt,-3274871.65,2024
+mts_table_5,2024-09-30,Housing Certificate Fund,current_fytd_net_outly_amt,57517892.59,2024
+mts_table_5,2024-09-30,Housing Opportunities for Persons with AIDS,current_fytd_net_outly_amt,489103575.97,2024
+mts_table_5,2024-09-30,Housing Programs:,,,2024
+mts_table_5,2024-09-30,Housing and Economic Recovery Programs,current_fytd_net_outly_amt,1258058.97,2024
+mts_table_5,2024-09-30,Housing for Persons with Disabilities,current_fytd_net_outly_amt,236534769.59,2024
+mts_table_5,2024-09-30,Housing for the Elderly,current_fytd_net_outly_amt,895759419.98,2024
+mts_table_5,2024-09-30,"Housing for the Elderly or Handicapped Fund, Liquidating Account",current_fytd_net_outly_amt,-69443000.52,2024
+mts_table_5,2024-09-30,Immigration and Customs Enforcement,current_fytd_net_outly_amt,9992094925.07,2024
+mts_table_5,2024-09-30,Impact Aid,current_fytd_net_outly_amt,1891089684.75,2024
+mts_table_5,2024-09-30,Independent Agencies,,,2024
+mts_table_5,2024-09-30,Independent Agencies:,,,2024
+mts_table_5,2024-09-30,Indian Affairs:,,,2024
+mts_table_5,2024-09-30,Indian Health Service,current_fytd_net_outly_amt,8523651083.4,2024
+mts_table_5,2024-09-30,Information Technology Systems,current_fytd_net_outly_amt,6111485412.13,2024
+mts_table_5,2024-09-30,Institute of Education Sciences,current_fytd_net_outly_amt,785920412.9,2024
+mts_table_5,2024-09-30,Institute of Museum and Library Services,current_fytd_net_outly_amt,281076251.72,2024
+mts_table_5,2024-09-30,Insular Affairs,current_fytd_net_outly_amt,1259862771.92,2024
+mts_table_5,2024-09-30,Insurance Funds:,,,2024
+mts_table_5,2024-09-30,Intelligence Community Management Account,current_fytd_net_outly_amt,515475321.1,2024
+mts_table_5,2024-09-30,Interest Paid to Credit Financing Accounts,current_fytd_net_outly_amt,10246777547.49,2024
+mts_table_5,2024-09-30,Interest Received by Trust Funds:,,,2024
+mts_table_5,2024-09-30,Interest on Treasury Debt Securities (Gross):,,,2024
+mts_table_5,2024-09-30,Interest on the Public Debt:,,,2024
+mts_table_5,2024-09-30,Internal Revenue Collections for Puerto Rico,current_fytd_net_outly_amt,393907569.58,2024
+mts_table_5,2024-09-30,Internal Revenue Service:,,,2024
+mts_table_5,2024-09-30,International Assistance Programs:,,,2024
+mts_table_5,2024-09-30,International Disaster Assistance,current_fytd_net_outly_amt,6390244571.34,2024
+mts_table_5,2024-09-30,International Narcotics Control and Law Enforcement,current_fytd_net_outly_amt,1850529772.37,2024
+mts_table_5,2024-09-30,International Organizations and Conferences,current_fytd_net_outly_amt,3365939630.31,2024
+mts_table_5,2024-09-30,International Reconstruction and Other Assistance:,,,2024
+mts_table_5,2024-09-30,International Security Assistance:,,,2024
+mts_table_5,2024-09-30,International Trade Administration,current_fytd_net_outly_amt,624691662.2,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,-14128741.73,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,-481738612.41,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,-1525458526.46,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,-7079751.24,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,-723020799.84,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,-7741980685.91,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,-70971674.28,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,-2217217306.55,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,-904073437.03,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,-534968165.38,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,-10561906.2,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,-8273854.46,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,-1038016677.18,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,-6274313.28,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,-3750346.29,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,-896588499.7,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,249731869.38,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,35452.52,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,-179813214251.62,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,-261483106.1,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,-18946835.36,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions,current_fytd_net_outly_amt,-1046792.91,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions:,,,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions:,,,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions:,,,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions:,,,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions:,,,2024
+mts_table_5,2024-09-30,Intrabudgetary Transactions:,,,2024
+mts_table_5,2024-09-30,Joint DOD-VA Medical Facility Demonstration Fund,current_fytd_net_outly_amt,679971096.95,2024
+mts_table_5,2024-09-30,Joint Items,current_fytd_net_outly_amt,22483311.44,2024
+mts_table_5,2024-09-30,Judicial Branch:,,,2024
+mts_table_5,2024-09-30,Judicial Branch:,,,2024
+mts_table_5,2024-09-30,Judicial Survivors Annuity Fund,current_fytd_net_outly_amt,-30618952.97,2024
+mts_table_5,2024-09-30,Land and Minerals Management:,,,2024
+mts_table_5,2024-09-30,Legal Activities and U.S. Marshals:,,,2024
+mts_table_5,2024-09-30,Legal Services Corporation,current_fytd_net_outly_amt,560000000.0,2024
+mts_table_5,2024-09-30,Legislative Branch:,,,2024
+mts_table_5,2024-09-30,Library of Congress,current_fytd_net_outly_amt,903597542.54,2024
+mts_table_5,2024-09-30,Low Income Home Energy Assistance,current_fytd_net_outly_amt,4980482525.12,2024
+mts_table_5,2024-09-30,Management and Administration,current_fytd_net_outly_amt,2355084977.16,2024
+mts_table_5,2024-09-30,Management of Lands and Resources,current_fytd_net_outly_amt,1406280555.61,2024
+mts_table_5,2024-09-30,Maritime Administration,current_fytd_net_outly_amt,1022068526.46,2024
+mts_table_5,2024-09-30,Medical Facilities,current_fytd_net_outly_amt,8884923963.57,2024
+mts_table_5,2024-09-30,Medical Services,current_fytd_net_outly_amt,101873568718.02,2024
+mts_table_5,2024-09-30,Medical Support and Compliance,current_fytd_net_outly_amt,10371792080.8,2024
+mts_table_5,2024-09-30,Medicare Prescription Drugs:,,,2024
+mts_table_5,2024-09-30,Migration and Refugee Assistance,current_fytd_net_outly_amt,6454966916.43,2024
+mts_table_5,2024-09-30,Military Construction:,,,2024
+mts_table_5,2024-09-30,Military Personnel:,,,2024
+mts_table_5,2024-09-30,Military Retirement Fund,current_fytd_net_outly_amt,72160308851.77,2024
+mts_table_5,2024-09-30,Military Retirement Fund,current_fytd_net_outly_amt,-44805542307.03,2024
+mts_table_5,2024-09-30,Military Retirement Fund,current_fytd_net_outly_amt,-67903910774.05,2024
+mts_table_5,2024-09-30,Military Retirement:,,,2024
+mts_table_5,2024-09-30,Military Sales Program:,,,2024
+mts_table_5,2024-09-30,Millennium Challenge Corporation,current_fytd_net_outly_amt,731335719.61,2024
+mts_table_5,2024-09-30,Mine Safety and Health Administration,current_fytd_net_outly_amt,395131038.01,2024
+mts_table_5,2024-09-30,Mineral Leasing and Associated Payments,current_fytd_net_outly_amt,3841534011.27,2024
+mts_table_5,2024-09-30,Multilateral Assistance:,,,2024
+mts_table_5,2024-09-30,National Aeronautics and Space Administration:,,,2024
+mts_table_5,2024-09-30,National Archives and Records Administration,current_fytd_net_outly_amt,499513708.02,2024
+mts_table_5,2024-09-30,National Credit Union Administration,current_fytd_net_outly_amt,-878266028.55,2024
+mts_table_5,2024-09-30,National Endowment for the Arts,current_fytd_net_outly_amt,220876458.38,2024
+mts_table_5,2024-09-30,National Endowment for the Humanities,current_fytd_net_outly_amt,205609033.42,2024
+mts_table_5,2024-09-30,National Flood Insurance Fund,current_fytd_net_outly_amt,-116901001.85,2024
+mts_table_5,2024-09-30,National Forest System,current_fytd_net_outly_amt,2559697265.83,2024
+mts_table_5,2024-09-30,National Highway Traffic Safety Administration,current_fytd_net_outly_amt,1378102294.16,2024
+mts_table_5,2024-09-30,National Institute of Food and Agriculture:,,,2024
+mts_table_5,2024-09-30,National Institute of Standards and Technology,current_fytd_net_outly_amt,2313077066.44,2024
+mts_table_5,2024-09-30,National Institutes of Health,current_fytd_net_outly_amt,48210120998.32,2024
+mts_table_5,2024-09-30,National Labor Relations Board,current_fytd_net_outly_amt,301361974.44,2024
+mts_table_5,2024-09-30,National Nuclear Security Administration:,,,2024
+mts_table_5,2024-09-30,National Oceanic and Atmospheric Administration,current_fytd_net_outly_amt,7649792447.34,2024
+mts_table_5,2024-09-30,National Park Service,current_fytd_net_outly_amt,4450115720.99,2024
+mts_table_5,2024-09-30,National Protection and Programs Directorate,current_fytd_net_outly_amt,2889062061.7,2024
+mts_table_5,2024-09-30,National Railroad Retirement Investment Trust:,,,2024
+mts_table_5,2024-09-30,National Science Foundation:,,,2024
+mts_table_5,2024-09-30,National Service Life,current_fytd_net_outly_amt,277941911.89,2024
+mts_table_5,2024-09-30,National Service Life,current_fytd_net_outly_amt,-9143736.3,2024
+mts_table_5,2024-09-30,National Service Life Insurance Fund,current_fytd_net_outly_amt,-19661974.04,2024
+mts_table_5,2024-09-30,National Telecommunications and Information Administration,current_fytd_net_outly_amt,662020210.51,2024
+mts_table_5,2024-09-30,Native American Housing Block Grant,current_fytd_net_outly_amt,1213341812.06,2024
+mts_table_5,2024-09-30,Natural Resources Conservation Service:,,,2024
+mts_table_5,2024-09-30,Naval Reactors,current_fytd_net_outly_amt,1869684656.65,2024
+mts_table_5,2024-09-30,Neighborhood Stabilization Program,current_fytd_net_outly_amt,1744989.76,2024
+mts_table_5,2024-09-30,Nuclear Regulatory Commission,current_fytd_net_outly_amt,159391537.89,2024
+mts_table_5,2024-09-30,OASDI Certifications,current_fytd_net_outly_amt,-2368004.81,2024
+mts_table_5,2024-09-30,Occupational Safety and Health Administration,current_fytd_net_outly_amt,663716000.48,2024
+mts_table_5,2024-09-30,Off-Budget,current_fytd_net_outly_amt,2618535.14,2024
+mts_table_5,2024-09-30,Off-Budget,current_fytd_net_outly_amt,-53764551264.24,2024
+mts_table_5,2024-09-30,Off-Budget:,,,2024
+mts_table_5,2024-09-30,Office of Elementary and Secondary Education:,,,2024
+mts_table_5,2024-09-30,Office of English Language Acquisition,current_fytd_net_outly_amt,912035879.45,2024
+mts_table_5,2024-09-30,Office of Federal Student Aid:,,,2024
+mts_table_5,2024-09-30,Office of Innovation and Improvement,current_fytd_net_outly_amt,1106610234.1,2024
+mts_table_5,2024-09-30,Office of Inspector General,current_fytd_net_outly_amt,47500000.0,2024
+mts_table_5,2024-09-30,Office of Job Corps,current_fytd_net_outly_amt,1862935113.08,2024
+mts_table_5,2024-09-30,Office of Justice Programs:,,,2024
+mts_table_5,2024-09-30,Office of Management and Budget,current_fytd_net_outly_amt,142597215.31,2024
+mts_table_5,2024-09-30,Office of Personnel Management:,,,2024
+mts_table_5,2024-09-30,Office of Personnel Management:,,,2024
+mts_table_5,2024-09-30,Office of Personnel Management:,,,2024
+mts_table_5,2024-09-30,Office of Postsecondary Education:,,,2024
+mts_table_5,2024-09-30,Office of Special Education and Rehabilitative Services:,,,2024
+mts_table_5,2024-09-30,Office of Surface Mining Reclamation and Enforcement,current_fytd_net_outly_amt,1925014008.03,2024
+mts_table_5,2024-09-30,Office of Vocational and Adult Education,current_fytd_net_outly_amt,2172086272.09,2024
+mts_table_5,2024-09-30,Office of Workers' Compensation Programs:,,,2024
+mts_table_5,2024-09-30,Office of the Secretary,current_fytd_net_outly_amt,3124650437.74,2024
+mts_table_5,2024-09-30,Office of the Special Trustee for American Indians,current_fytd_net_outly_amt,115520005.19,2024
+mts_table_5,2024-09-30,Offsetting Governmental Receipts,current_fytd_net_outly_amt,-14110221325.74,2024
+mts_table_5,2024-09-30,Offsetting Governmental Receipts,current_fytd_net_outly_amt,-20894012.84,2024
+mts_table_5,2024-09-30,Offsetting Governmental Receipts,current_fytd_net_outly_amt,-1521862.89,2024
+mts_table_5,2024-09-30,Offsetting Governmental Receipts,current_fytd_net_outly_amt,-189528309.73,2024
+mts_table_5,2024-09-30,Offsetting Governmental Receipts,current_fytd_net_outly_amt,-15680600.0,2024
+mts_table_5,2024-09-30,Offsetting Governmental Receipts,current_fytd_net_outly_amt,-860283962.04,2024
+mts_table_5,2024-09-30,Offsetting Governmental Receipts,current_fytd_net_outly_amt,-33064968.74,2024
+mts_table_5,2024-09-30,Offsetting Governmental Receipts:,,,2024
+mts_table_5,2024-09-30,Oil Spill Liability Trust Fund,current_fytd_net_outly_amt,-362284159.41,2024
+mts_table_5,2024-09-30,On-Budget,current_fytd_net_outly_amt,-3299128023.87,2024
+mts_table_5,2024-09-30,Operating Expenses,current_fytd_net_outly_amt,1838485162.28,2024
+mts_table_5,2024-09-30,Operation and Maintenance,current_fytd_net_outly_amt,2815105847.04,2024
+mts_table_5,2024-09-30,Operation and Maintenance:,,,2024
+mts_table_5,2024-09-30,Operations,current_fytd_net_outly_amt,947045787.09,2024
+mts_table_5,2024-09-30,Operations Support,current_fytd_net_outly_amt,6227975174.95,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,14882789.55,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,354802715.75,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,1348767417.09,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,-83687229.37,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,-435482035.26,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,333525391.71,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,531982305.63,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,395697332.4,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,2028960237.23,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,542537725.04,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,413729811.98,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,2619972683.15,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,5305560008.79,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,1721973645.73,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,6690183529.03,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,2035010940.85,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,1465587865.71,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,271201969.65,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,81450000.0,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,-86003967.13,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,438396179.16,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,-34958322.95,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,30320745.08,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,501026093.69,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,3535484193.74,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,-1455356072.08,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,3057056472.0,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,792576184.79,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,2750722681.82,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,631860485.52,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,3875214043.12,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,7175921795.28,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,188607899.91,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,12389293959.45,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,3253055095.92,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,-527931471.27,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,2534559.04,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,57357569.62,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,57828408.57,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,649453841.7,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,1586924473.52,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,233241186.62,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,1491858585.01,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,818777528.45,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,-66355440.31,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,20842190.64,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,-2145062822.73,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,1164555700.49,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,702561163.69,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,241572758.22,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,10402741643.68,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,2598112963.37,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,837362740.49,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,463453243.23,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,-1616142.44,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,-43087.3,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,3263037837.81,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,-5542364.01,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,41299778.42,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,-226969078.71,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,2807497.23,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,-46565865.82,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,422648018.7,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,9103900852.29,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,676525390.86,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,171852729.56,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,56215618545.49,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,317062526.01,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,666849904.36,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,-16154958.46,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,3086955330.02,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,24300962406.47,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,2785631017.84,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,-9400020294.19,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,1635457700.18,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,345598565.65,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,776612715.72,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,346806021.96,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,-8985353.75,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,345970411.75,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,1724296929.67,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,743935043.51,2024
+mts_table_5,2024-09-30,Other,current_fytd_net_outly_amt,194586110.54,2024
+mts_table_5,2024-09-30,Other Assisted Housing Programs,current_fytd_net_outly_amt,35206860.02,2024
+mts_table_5,2024-09-30,Other Defense Activities,current_fytd_net_outly_amt,1017149724.78,2024
+mts_table_5,2024-09-30,Other Defense Civil Programs:,,,2024
+mts_table_5,2024-09-30,Other Defense Civil Programs:,,,2024
+mts_table_5,2024-09-30,Other Defense Civil Programs:,,,2024
+mts_table_5,2024-09-30,Other Interest,current_fytd_net_outly_amt,-10515564.24,2024
+mts_table_5,2024-09-30,Other Legislative Branch Agencies,current_fytd_net_outly_amt,81222488.88,2024
+mts_table_5,2024-09-30,Other Programs,current_fytd_net_outly_amt,7454427185.05,2024
+mts_table_5,2024-09-30,Overseas Private Investment Corporation Accounts,current_fytd_net_outly_amt,497274.49,2024
+mts_table_5,2024-09-30,Overseas Private Investment Corporation:,,,2024
+mts_table_5,2024-09-30,Payment Where American Opportunity Tax Credit Exceeds Liability for Tax,current_fytd_net_outly_amt,2474111206.36,2024
+mts_table_5,2024-09-30,Payment Where Child Tax Credit Exceeds Liability for Tax,current_fytd_net_outly_amt,26246884478.8,2024
+mts_table_5,2024-09-30,Payment Where Earned Income Credit Exceeds Liability for Tax,current_fytd_net_outly_amt,60011006552.22,2024
+mts_table_5,2024-09-30,Payment to Civil Service Retirement and Disability Fund,current_fytd_net_outly_amt,53255231701.0,2024
+mts_table_5,2024-09-30,Payment to Department of Defense Medicare-Eligible Retiree Health Care Fund,current_fytd_net_outly_amt,9584000000.0,2024
+mts_table_5,2024-09-30,Payment to Foreign Service Retirement and Disability Fund,current_fytd_net_outly_amt,609200000.0,2024
+mts_table_5,2024-09-30,Payment to Military Retirement Fund,current_fytd_net_outly_amt,151521000000.0,2024
+mts_table_5,2024-09-30,Payment to Railroad Retirement Account,current_fytd_net_outly_amt,5859775000.0,2024
+mts_table_5,2024-09-30,Payment to Railroad Retirement Account,current_fytd_net_outly_amt,73686000.0,2024
+mts_table_5,2024-09-30,Payment to the Hazardous Substance Superfund,current_fytd_net_outly_amt,282699213.0,2024
+mts_table_5,2024-09-30,Payment to the Resolution Funding Corporation,current_fytd_net_outly_amt,919663271.33,2024
+mts_table_5,2024-09-30,Payments for Health Insurance for the Aged:,,,2024
+mts_table_5,2024-09-30,Payments for Tax and Other Credits:,,,2024
+mts_table_5,2024-09-30,Payments from Other Funds to the Railroad Retirement Trust Funds,current_fytd_net_outly_amt,-5933461000.0,2024
+mts_table_5,2024-09-30,Payments to Health Care Trust Funds,current_fytd_net_outly_amt,519483384076.72,2024
+mts_table_5,2024-09-30,Payments to Social Security Trust Funds,current_fytd_net_outly_amt,53767765290.53,2024
+mts_table_5,2024-09-30,Payments to States for Child Support Enforcement and Family Support Programs,current_fytd_net_outly_amt,4874583232.95,2024
+mts_table_5,2024-09-30,Payments to States for Foster Care and Adoption Assistance,current_fytd_net_outly_amt,10135425395.53,2024
+mts_table_5,2024-09-30,Payments to States for the Child Care and Development Block Grant,current_fytd_net_outly_amt,16298026805.53,2024
+mts_table_5,2024-09-30,Payments to the Unemployment Trust Fund,current_fytd_net_outly_amt,-2344986185.91,2024
+mts_table_5,2024-09-30,Peace Corps,current_fytd_net_outly_amt,485611837.89,2024
+mts_table_5,2024-09-30,Pension Benefit Guaranty Corporation,current_fytd_net_outly_amt,11949689250.03,2024
+mts_table_5,2024-09-30,Postal Service Contributions,current_fytd_net_outly_amt,-689478504.2,2024
+mts_table_5,2024-09-30,Postal Service Employer Contributions,current_fytd_net_outly_amt,-819000000.0,2024
+mts_table_5,2024-09-30,Postal Service Retiree Health Benefits Fund,current_fytd_net_outly_amt,4542567537.6,2024
+mts_table_5,2024-09-30,Postal Service:,,,2024
+mts_table_5,2024-09-30,Power Marketing Administration,current_fytd_net_outly_amt,1036244430.35,2024
+mts_table_5,2024-09-30,Procurement:,,,2024
+mts_table_5,2024-09-30,Program Administration,current_fytd_net_outly_amt,130071636.4,2024
+mts_table_5,2024-09-30,Proprietary Receipts,current_fytd_net_outly_amt,-1434348.03,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-467732.19,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-814782.6,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-11017611214.87,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-85453188.09,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-5590102433.45,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-2945020763.25,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-57143295141.33,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-5155721870.91,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-765519210.08,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-180195677948.34,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-412054912.21,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-29428321.88,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-399792857.31,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-3426171376.78,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-38316066.47,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-4868252855.32,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,122001412.99,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-808971290.54,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-928971869.65,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-1378635.77,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-118096157.88,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-1347667522.11,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-23043928.74,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-406683850.91,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-25318676.16,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-52078615506.23,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-3166028.39,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public,current_fytd_net_outly_amt,-46721610.87,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public:,,,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public:,,,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public:,,,2024
+mts_table_5,2024-09-30,Proprietary Receipts from the Public:,,,2024
+mts_table_5,2024-09-30,Public Enterprise Funds,current_fytd_net_outly_amt,3613023939.92,2024
+mts_table_5,2024-09-30,Public Enterprise Funds:,,,2024
+mts_table_5,2024-09-30,Public Housing Capital Fund,current_fytd_net_outly_amt,623838806.62,2024
+mts_table_5,2024-09-30,Public Housing Operating Fund,current_fytd_net_outly_amt,7878405860.34,2024
+mts_table_5,2024-09-30,Public Issues (Accrual Basis),current_fytd_net_outly_amt,896007033324.94,2024
+mts_table_5,2024-09-30,Public and Indian Housing Programs:,,,2024
+mts_table_5,2024-09-30,Rail Industry Pension Fund:,,,2024
+mts_table_5,2024-09-30,Railroad Retirement Board,current_fytd_net_outly_amt,-45740709.87,2024
+mts_table_5,2024-09-30,Railroad Retirement Board:,,,2024
+mts_table_5,2024-09-30,Railroad Social Security Equivalent Benefit Account:,,,2024
+mts_table_5,2024-09-30,Railroad Unemployment Insurance Trust Fund:,,,2024
+mts_table_5,2024-09-30,Readjustment Benefits,current_fytd_net_outly_amt,13400128592.6,2024
+mts_table_5,2024-09-30,Real Property Activities,current_fytd_net_outly_amt,-632939549.92,2024
+mts_table_5,2024-09-30,Refugee and Entrant Assistance,current_fytd_net_outly_amt,7101028418.22,2024
+mts_table_5,2024-09-30,Refundable Premium Tax Credits and Cost Sharing Reductions,current_fytd_net_outly_amt,110195256028.13,2024
+mts_table_5,2024-09-30,"Refunding Internal Revenue Collections, Interest",current_fytd_net_outly_amt,5308375954.03,2024
+mts_table_5,2024-09-30,Rehabilitation Services and Disability Research,current_fytd_net_outly_amt,4093530642.79,2024
+mts_table_5,2024-09-30,Rental Assistance Program,current_fytd_net_outly_amt,1579704789.05,2024
+mts_table_5,2024-09-30,Rents and Royalties on the Outer Continental Shelf Lands,current_fytd_net_outly_amt,-7020420978.65,2024
+mts_table_5,2024-09-30,Research and Education Activities,current_fytd_net_outly_amt,1081834067.27,2024
+mts_table_5,2024-09-30,Research and Related Activities,current_fytd_net_outly_amt,7345983060.93,2024
+mts_table_5,2024-09-30,"Research, Development, Test, and Evaluation:",,,2024
+mts_table_5,2024-09-30,"Research, Engineering, and Development",current_fytd_net_outly_amt,234660734.59,2024
+mts_table_5,2024-09-30,Retiree Health Care:,,,2024
+mts_table_5,2024-09-30,Revitalization of Severely Distressed Public Housing (Hope VI),current_fytd_net_outly_amt,2662026.83,2024
+mts_table_5,2024-09-30,Revolving and Management Funds:,,,2024
+mts_table_5,2024-09-30,Risk Management Agency:,,,2024
+mts_table_5,2024-09-30,Rivers and Harbors Contributed Funds,current_fytd_net_outly_amt,649282713.3,2024
+mts_table_5,2024-09-30,Rural Development,current_fytd_net_outly_amt,362099628.73,2024
+mts_table_5,2024-09-30,Rural Electrification and Telecommunications Fund,current_fytd_net_outly_amt,338854630.62,2024
+mts_table_5,2024-09-30,Rural Housing Insurance Fund,current_fytd_net_outly_amt,644478854.39,2024
+mts_table_5,2024-09-30,Rural Housing Service:,,,2024
+mts_table_5,2024-09-30,Rural Utilities Service:,,,2024
+mts_table_5,2024-09-30,Salaries and Expenses,current_fytd_net_outly_amt,151033500.99,2024
+mts_table_5,2024-09-30,Salaries and Expenses,current_fytd_net_outly_amt,1035544111.86,2024
+mts_table_5,2024-09-30,Salaries and Expenses,current_fytd_net_outly_amt,1263006317.6,2024
+mts_table_5,2024-09-30,Science,current_fytd_net_outly_amt,8083399449.99,2024
+mts_table_5,2024-09-30,Science,current_fytd_net_outly_amt,7705721173.21,2024
+mts_table_5,2024-09-30,Science and Technology,current_fytd_net_outly_amt,913026214.77,2024
+mts_table_5,2024-09-30,Science and Technology,current_fytd_net_outly_amt,808121644.27,2024
+mts_table_5,2024-09-30,Securities and Exchange Commission,current_fytd_net_outly_amt,725328357.13,2024
+mts_table_5,2024-09-30,Senate,current_fytd_net_outly_amt,1225117895.93,2024
+mts_table_5,2024-09-30,Small Business Administration:,,,2024
+mts_table_5,2024-09-30,Smithsonian Institution,current_fytd_net_outly_amt,1424829102.43,2024
+mts_table_5,2024-09-30,Social Security Administration:,,,2024
+mts_table_5,2024-09-30,Social Security Administration:,,,2024
+mts_table_5,2024-09-30,Social Security Administration:,,,2024
+mts_table_5,2024-09-30,Social Services Block Grant,current_fytd_net_outly_amt,1604323062.21,2024
+mts_table_5,2024-09-30,Space Operations,current_fytd_net_outly_amt,4339922873.86,2024
+mts_table_5,2024-09-30,Special Benefits,current_fytd_net_outly_amt,1144726675.96,2024
+mts_table_5,2024-09-30,Special Benefits for Disabled Coal Miners,current_fytd_net_outly_amt,40705992.23,2024
+mts_table_5,2024-09-30,Special Education,current_fytd_net_outly_amt,16273684543.45,2024
+mts_table_5,2024-09-30,Special Institutions for Persons with Disabilities,current_fytd_net_outly_amt,294490354.47,2024
+mts_table_5,2024-09-30,Special Issues (Cash Basis),current_fytd_net_outly_amt,237029856824.22,2024
+mts_table_5,2024-09-30,"Special Supplemental Nutrition Program for Women, Infants, and Children (WIC)",current_fytd_net_outly_amt,7256773620.08,2024
+mts_table_5,2024-09-30,State Administrative Expenses,current_fytd_net_outly_amt,4716838931.87,2024
+mts_table_5,2024-09-30,State Grants and Demonstrations,current_fytd_net_outly_amt,646890167.49,2024
+mts_table_5,2024-09-30,State Unemployment Benefits,current_fytd_net_outly_amt,36610532598.08,2024
+mts_table_5,2024-09-30,State Unemployment Insurance and Employment Service Operations,current_fytd_net_outly_amt,-521922849.69,2024
+mts_table_5,2024-09-30,State and Local Law Enforcement Assistance,current_fytd_net_outly_amt,1922721636.0,2024
+mts_table_5,2024-09-30,State and Tribal Assistance Grants,current_fytd_net_outly_amt,7315405905.68,2024
+mts_table_5,2024-09-30,Student Aid Administration,current_fytd_net_outly_amt,2107202445.71,2024
+mts_table_5,2024-09-30,Student Financial Assistance,current_fytd_net_outly_amt,34720659132.0,2024
+mts_table_5,2024-09-30,Substance Abuse and Mental Health Services Administration,current_fytd_net_outly_amt,8888240051.91,2024
+mts_table_5,2024-09-30,Supplemental Nutrition Assistance Program,current_fytd_net_outly_amt,106754491269.41,2024
+mts_table_5,2024-09-30,Supplemental Security Income Program,current_fytd_net_outly_amt,61930581636.68,2024
+mts_table_5,2024-09-30,Supply and Technology Activities,current_fytd_net_outly_amt,126205994.7,2024
+mts_table_5,2024-09-30,Supreme Court of the United States,current_fytd_net_outly_amt,151957324.82,2024
+mts_table_5,2024-09-30,Taxpayer Services,current_fytd_net_outly_amt,4192547856.5,2024
+mts_table_5,2024-09-30,Temporary Assistance for Needy Families,current_fytd_net_outly_amt,17640068729.87,2024
+mts_table_5,2024-09-30,Tenant Based Rental Assistance,current_fytd_net_outly_amt,33975619395.46,2024
+mts_table_5,2024-09-30,Tennessee Valley Authority,current_fytd_net_outly_amt,668597944.88,2024
+mts_table_5,2024-09-30,The White House,current_fytd_net_outly_amt,79662091.83,2024
+mts_table_5,2024-09-30,Title 17 Innovative Technology Loan Guarantee Program,current_fytd_net_outly_amt,96475462.08,2024
+mts_table_5,2024-09-30,Tobacco Trust Fund,current_fytd_net_outly_amt,8907205.29,2024
+mts_table_5,2024-09-30,Total Off-Budget,current_fytd_net_outly_amt,-60428731294.87,2024
+mts_table_5,2024-09-30,Total Off-Budget,current_fytd_net_outly_amt,1320311462651.75,2024
+mts_table_5,2024-09-30,Total On-Budget,current_fytd_net_outly_amt,5431240171160.54,2024
+mts_table_5,2024-09-30,Total On-Budget,current_fytd_net_outly_amt,-1772387257779.17,2024
+mts_table_5,2024-09-30,Total Outlays,current_fytd_net_outly_amt,6751551633812.29,2024
+mts_table_5,2024-09-30,Total Surplus (+) or Deficit (-),current_fytd_net_outly_amt,-1832815989074.04,2024
+mts_table_5,2024-09-30,Total--Administration for Children and Families,current_fytd_net_outly_amt,82238128470.5,2024
+mts_table_5,2024-09-30,Total--Administration of Foreign Affairs,current_fytd_net_outly_amt,20178750187.46,2024
+mts_table_5,2024-09-30,Total--Agency for International Development,current_fytd_net_outly_amt,12193319207.06,2024
+mts_table_5,2024-09-30,Total--Airport and Airway Trust Fund,current_fytd_net_outly_amt,19062398566.18,2024
+mts_table_5,2024-09-30,Total--Benefits Programs,current_fytd_net_outly_amt,200538302017.53,2024
+mts_table_5,2024-09-30,Total--Bureau of the Fiscal Service,current_fytd_net_outly_amt,16136092703.57,2024
+mts_table_5,2024-09-30,Total--Centers for Medicare and Medicaid Services,current_fytd_net_outly_amt,2222161377161.61,2024
+mts_table_5,2024-09-30,Total--Community Planning and Development,current_fytd_net_outly_amt,15080538570.6,2024
+mts_table_5,2024-09-30,Total--Corps of Engineers,current_fytd_net_outly_amt,11344677273.98,2024
+mts_table_5,2024-09-30,Total--Department of Agriculture,current_fytd_net_outly_amt,203401814756.04,2024
+mts_table_5,2024-09-30,Total--Department of Commerce,current_fytd_net_outly_amt,14831117302.52,2024
+mts_table_5,2024-09-30,Total--Department of Defense--Military Programs,current_fytd_net_outly_amt,826277202762.02,2024
+mts_table_5,2024-09-30,Total--Department of Education,current_fytd_net_outly_amt,268353372684.9,2024
+mts_table_5,2024-09-30,Total--Department of Energy,current_fytd_net_outly_amt,49315438988.11,2024
+mts_table_5,2024-09-30,Total--Department of Health and Human Services,current_fytd_net_outly_amt,1720621158800.69,2024
+mts_table_5,2024-09-30,Total--Department of Homeland Security,current_fytd_net_outly_amt,89290216220.96,2024
+mts_table_5,2024-09-30,Total--Department of Housing and Urban Development,current_fytd_net_outly_amt,51976383408.32,2024
+mts_table_5,2024-09-30,Total--Department of Justice,current_fytd_net_outly_amt,43995386584.96,2024
+mts_table_5,2024-09-30,Total--Department of Labor,current_fytd_net_outly_amt,65671621656.18,2024
+mts_table_5,2024-09-30,Total--Department of State,current_fytd_net_outly_amt,37017135976.76,2024
+mts_table_5,2024-09-30,Total--Department of Transportation,current_fytd_net_outly_amt,117389456147.83,2024
+mts_table_5,2024-09-30,Total--Department of Veterans Affairs,current_fytd_net_outly_amt,325003956976.46,2024
+mts_table_5,2024-09-30,Total--Department of the Interior,current_fytd_net_outly_amt,17088400064.55,2024
+mts_table_5,2024-09-30,Total--Department of the Treasury,current_fytd_net_outly_amt,1316852417119.61,2024
+mts_table_5,2024-09-30,Total--Departmental Offices,current_fytd_net_outly_amt,8904522605.71,2024
+mts_table_5,2024-09-30,"Total--Employer Share, Employee Retirement",current_fytd_net_outly_amt,-139718177360.23,2024
+mts_table_5,2024-09-30,Total--Employment and Training Administration,current_fytd_net_outly_amt,46413055664.16,2024
+mts_table_5,2024-09-30,Total--Energy Programs,current_fytd_net_outly_amt,19473863757.09,2024
+mts_table_5,2024-09-30,Total--Environmental Protection Agency,current_fytd_net_outly_amt,13699163398.55,2024
+mts_table_5,2024-09-30,Total--Executive Office of the President,current_fytd_net_outly_amt,606567066.14,2024
+mts_table_5,2024-09-30,Total--Farm Service Agency,current_fytd_net_outly_amt,8573945159.55,2024
+mts_table_5,2024-09-30,Total--Federal Aviation Administration,current_fytd_net_outly_amt,23096399683.29,2024
+mts_table_5,2024-09-30,Total--Federal Deposit Insurance Corporation,current_fytd_net_outly_amt,37097235352.51,2024
+mts_table_5,2024-09-30,Total--Federal Disability Insurance Trust Fund (Off-Budget),current_fytd_net_outly_amt,156511062198.96,2024
+mts_table_5,2024-09-30,Total--Federal Emergency Management Agency,current_fytd_net_outly_amt,36214790893.51,2024
+mts_table_5,2024-09-30,Total--Federal Highway Administration,current_fytd_net_outly_amt,61123123480.41,2024
+mts_table_5,2024-09-30,Total--Federal Hospital Insurance Trust Fund,current_fytd_net_outly_amt,407377882840.05,2024
+mts_table_5,2024-09-30,Total--Federal Old-Age and Survivors Insurance Trust Fund (Off-Budget),current_fytd_net_outly_amt,1304396689140.88,2024
+mts_table_5,2024-09-30,Total--Federal Railroad Administration,current_fytd_net_outly_amt,3875290395.35,2024
+mts_table_5,2024-09-30,Total--Federal Supplementary Medical Insurance Trust Fund,current_fytd_net_outly_amt,642650436959.41,2024
+mts_table_5,2024-09-30,Total--Federal Transit Administration,current_fytd_net_outly_amt,23414674584.91,2024
+mts_table_5,2024-09-30,Total--Fish and Wildlife and Parks,current_fytd_net_outly_amt,8167593410.21,2024
+mts_table_5,2024-09-30,Total--Food and Nutrition Service,current_fytd_net_outly_amt,147446510402.48,2024
+mts_table_5,2024-09-30,Total--Forest Service,current_fytd_net_outly_amt,11272368484.53,2024
+mts_table_5,2024-09-30,Total--General Services Administration,current_fytd_net_outly_amt,-244132984.52,2024
+mts_table_5,2024-09-30,Total--Housing Programs,current_fytd_net_outly_amt,-5822055590.46,2024
+mts_table_5,2024-09-30,Total--Independent Agencies,current_fytd_net_outly_amt,77793153994.91,2024
+mts_table_5,2024-09-30,Total--Indian Affairs,current_fytd_net_outly_amt,2781123224.03,2024
+mts_table_5,2024-09-30,Total--Interest Received by Trust Funds,current_fytd_net_outly_amt,-183822623125.32,2024
+mts_table_5,2024-09-30,Total--Interest on Treasury Debt Securities (Gross),current_fytd_net_outly_amt,1133036890149.16,2024
+mts_table_5,2024-09-30,Total--Interest on the Public Debt,current_fytd_net_outly_amt,1133036890149.16,2024
+mts_table_5,2024-09-30,Total--Internal Revenue Service,current_fytd_net_outly_amt,229985021637.97,2024
+mts_table_5,2024-09-30,Total--International Assistance Programs,current_fytd_net_outly_amt,35794149352.23,2024
+mts_table_5,2024-09-30,Total--International Security Assistance,current_fytd_net_outly_amt,22422155932.61,2024
+mts_table_5,2024-09-30,Total--Judicial Branch,current_fytd_net_outly_amt,9480265838.79,2024
+mts_table_5,2024-09-30,Total--Land and Minerals Management,current_fytd_net_outly_amt,3483820973.28,2024
+mts_table_5,2024-09-30,Total--Legislative Branch,current_fytd_net_outly_amt,6835068061.1,2024
+mts_table_5,2024-09-30,Total--Military Construction,current_fytd_net_outly_amt,12067599590.81,2024
+mts_table_5,2024-09-30,Total--Military Personnel,current_fytd_net_outly_amt,191945217798.79,2024
+mts_table_5,2024-09-30,Total--Multilateral Assistance,current_fytd_net_outly_amt,2978208634.49,2024
+mts_table_5,2024-09-30,Total--National Aeronautics and Space Administration,current_fytd_net_outly_amt,25014807017.48,2024
+mts_table_5,2024-09-30,Total--National Science Foundation,current_fytd_net_outly_amt,9391513256.06,2024
+mts_table_5,2024-09-30,Total--Office of Elementary and Secondary Education,current_fytd_net_outly_amt,82991050168.1,2024
+mts_table_5,2024-09-30,Total--Office of Federal Student Aid,current_fytd_net_outly_amt,160693322646.62,2024
+mts_table_5,2024-09-30,Total--Office of Personnel Management,current_fytd_net_outly_amt,126172842066.94,2024
+mts_table_5,2024-09-30,Total--Office of Postsecondary Education,current_fytd_net_outly_amt,3508818762.95,2024
+mts_table_5,2024-09-30,Total--Operation and Maintenance,current_fytd_net_outly_amt,332046953817.81,2024
+mts_table_5,2024-09-30,Total--Other Defense Civil Programs,current_fytd_net_outly_amt,66220043552.27,2024
+mts_table_5,2024-09-30,Total--Overseas Private Investment Corporation,current_fytd_net_outly_amt,497274.49,2024
+mts_table_5,2024-09-30,Total--Procurement,current_fytd_net_outly_amt,152259026658.85,2024
+mts_table_5,2024-09-30,Total--Public and Indian Housing Programs,current_fytd_net_outly_amt,44084911185.61,2024
+mts_table_5,2024-09-30,Total--Railroad Retirement Board,current_fytd_net_outly_amt,5384341712.44,2024
+mts_table_5,2024-09-30,"Total--Research, Development, Test, and Evaluation",current_fytd_net_outly_amt,137960198321.68,2024
+mts_table_5,2024-09-30,Total--Small Business Administration,current_fytd_net_outly_amt,33196528082.9,2024
+mts_table_5,2024-09-30,Total--Social Security Administration,current_fytd_net_outly_amt,1519733645413.99,2024
+mts_table_5,2024-09-30,Total--Undistributed Offsetting Receipts,current_fytd_net_outly_amt,-330571737028.44,2024
+mts_table_5,2024-09-30,Total--Unemployment Trust Fund,current_fytd_net_outly_amt,42373081145.16,2024
+mts_table_5,2024-09-30,Total--Water and Science,current_fytd_net_outly_amt,4265449355.42,2024
+mts_table_5,2024-09-30,Training and Employment Services,current_fytd_net_outly_amt,3951979485.04,2024
+mts_table_5,2024-09-30,Transfer To Administrative Funds,current_fytd_net_outly_amt,21907581.0,2024
+mts_table_5,2024-09-30,Transfer To Administrative Funds,current_fytd_net_outly_amt,22247817.0,2024
+mts_table_5,2024-09-30,Transfer to Administrative Funds,current_fytd_net_outly_amt,95844602.0,2024
+mts_table_5,2024-09-30,Transfers to the Railroad Retirement Trust Funds from the National Railroad Retirement Investment Trust,current_fytd_net_outly_amt,1180000000.0,2024
+mts_table_5,2024-09-30,Transit Formula Grants,current_fytd_net_outly_amt,13685737905.02,2024
+mts_table_5,2024-09-30,Transportation Security Administration,current_fytd_net_outly_amt,6974113061.93,2024
+mts_table_5,2024-09-30,Transportation Services,current_fytd_net_outly_amt,22508746.32,2024
+mts_table_5,2024-09-30,Troubled Asset Relief Program,,,2024
+mts_table_5,2024-09-30,Trust Fund Share of FAA Operations,current_fytd_net_outly_amt,11672874793.0,2024
+mts_table_5,2024-09-30,Trust Funds:,,,2024
+mts_table_5,2024-09-30,U.S. Customs and Border Protection,current_fytd_net_outly_amt,22425695858.92,2024
+mts_table_5,2024-09-30,USDA Supplemental Assistance,current_fytd_net_outly_amt,3829464.98,2024
+mts_table_5,2024-09-30,Unanticipated Needs,current_fytd_net_outly_amt,52098210.96,2024
+mts_table_5,2024-09-30,Undistributed Offsetting Receipts:,,,2024
+mts_table_5,2024-09-30,Unemployment Trust Fund,current_fytd_net_outly_amt,-2275576277.97,2024
+mts_table_5,2024-09-30,Unemployment Trust Fund:,,,2024
+mts_table_5,2024-09-30,United States Agency for Global Media,current_fytd_net_outly_amt,882719142.4,2024
+mts_table_5,2024-09-30,United States Attorneys,current_fytd_net_outly_amt,2668985737.74,2024
+mts_table_5,2024-09-30,United States Coast Guard,current_fytd_net_outly_amt,13251661504.17,2024
+mts_table_5,2024-09-30,United States Fish and Wildlife Service,current_fytd_net_outly_amt,3717477689.22,2024
+mts_table_5,2024-09-30,United States Geological Survey,current_fytd_net_outly_amt,1559537636.09,2024
+mts_table_5,2024-09-30,United States Government Life Insurance Fund,current_fytd_net_outly_amt,-32789.53,2024
+mts_table_5,2024-09-30,United States Marshals Service,current_fytd_net_outly_amt,1830769015.0,2024
+mts_table_5,2024-09-30,United States Mint,current_fytd_net_outly_amt,-50996083.89,2024
+mts_table_5,2024-09-30,United States Secret Service,current_fytd_net_outly_amt,2957476076.22,2024
+mts_table_5,2024-09-30,United States Tax Court,current_fytd_net_outly_amt,61952320.28,2024
+mts_table_5,2024-09-30,Universal Service Fund,current_fytd_net_outly_amt,8718823106.86,2024
+mts_table_5,2024-09-30,Uranium Enrichment Decontamination and Decommissioning Fund,current_fytd_net_outly_amt,815146598.26,2024
+mts_table_5,2024-09-30,"Veterans Choice Fund, Veterans Health Administration",current_fytd_net_outly_amt,215211.45,2024
+mts_table_5,2024-09-30,Veterans Health Administration:,,,2024
+mts_table_5,2024-09-30,Veterans Housing Benefit Program Fund,current_fytd_net_outly_amt,1713964301.64,2024
+mts_table_5,2024-09-30,Veterans Special Life,current_fytd_net_outly_amt,144893712.15,2024
+mts_table_5,2024-09-30,Wage and Hour Division,current_fytd_net_outly_amt,317666258.65,2024
+mts_table_5,2024-09-30,Water and Related Resources,current_fytd_net_outly_amt,2445298799.44,2024
+mts_table_5,2024-09-30,Water and Science:,,,2024
+mts_table_5,2024-09-30,Weapons Activities,current_fytd_net_outly_amt,17954330428.11,2024
+mts_table_5,2024-09-30,Wildland Fire Management,current_fytd_net_outly_amt,5237645553.31,2024
+mts_table_5,2024-09-30,Working Capital Fund,current_fytd_net_outly_amt,573022158.51,2024
+mts_table_6,2024-09-30,Accrued Interest Payable to the Public,fytd_net_txn_amt,17323013786.8,2024
+mts_table_6,2024-09-30,"Agency Securities, Issued Under Special Financing Authorities (See Schedule B; for Other Agency Borrowing, See Schedule C)",fytd_net_txn_amt,697739023.0,2024
+mts_table_6,2024-09-30,Allocations of Special Drawing Rights,fytd_net_txn_amt,4754133580.66,2024
+mts_table_6,2024-09-30,Asset Accounts (Deduct),,,2024
+mts_table_6,2024-09-30,Balance,fytd_net_txn_amt,-3237168839.98,2024
+mts_table_6,2024-09-30,Balance,fytd_net_txn_amt,228836065771.59,2024
+mts_table_6,2024-09-30,Balance,fytd_net_txn_amt,5837216627.72,2024
+mts_table_6,2024-09-30,Borrowing from the Public:,,,2024
+mts_table_6,2024-09-30,Cash and Monetary Assets:,,,2024
+mts_table_6,2024-09-30,Debt Held by the Public,fytd_net_txn_amt,1977169817587.95,2024
+mts_table_6,2024-09-30,Deduct:,,,2024
+mts_table_6,2024-09-30,Deposit Funds,fytd_net_txn_amt,3133596732.22,2024
+mts_table_6,2024-09-30,Direct Quota Payments,fytd_net_txn_amt,0.0,2024
+mts_table_6,2024-09-30,Dollar Deposits with the IMF,fytd_net_txn_amt,91242788.57,2024
+mts_table_6,2024-09-30,Excess of Liabilities (+) or Assets (-),fytd_net_txn_amt,1828405248939.66,2024
+mts_table_6,2024-09-30,Federal Reserve Account,fytd_net_txn_amt,228836065771.59,2024
+mts_table_6,2024-09-30,Federal Securities Held as Investments of Government Accounts (See Schedule D),fytd_net_txn_amt,321124171252.62,2024
+mts_table_6,2024-09-30,Intragovernmental Holdings,fytd_net_txn_amt,320170066857.47,2024
+mts_table_6,2024-09-30,Less Discount on Federal Securities Held as Investments of Government Accounts,fytd_net_txn_amt,39173688841.85,2024
+mts_table_6,2024-09-30,Less Discount on Treasury Securities,fytd_net_txn_amt,61132174453.48,2024
+mts_table_6,2024-09-30,Letter of Credit Issued to IMF,fytd_net_txn_amt,-2700778008.02,2024
+mts_table_6,2024-09-30,Liability Accounts:,,,2024
+mts_table_6,2024-09-30,Loans to International Monetary Fund,fytd_net_txn_amt,-79206205.29,2024
+mts_table_6,2024-09-30,Maintenance of Value Adjustments,fytd_net_txn_amt,3435586001.01,2024
+mts_table_6,2024-09-30,Miscellaneous Asset Accounts,fytd_net_txn_amt,-90535110.0,2024
+mts_table_6,2024-09-30,Miscellaneous Liability Accounts (Includes Checks Outstanding Etc.),fytd_net_txn_amt,9479282147.17,2024
+mts_table_6,2024-09-30,"Net Activity, Direct Loan Financing (See Schedule E)",fytd_net_txn_amt,-92449039857.37,2024
+mts_table_6,2024-09-30,"Net Activity, Guaranteed Loan Financing (See Schedule E)",fytd_net_txn_amt,27058147509.13,2024
+mts_table_6,2024-09-30,Net Federal Securities Held as Investments of Government Accounts,fytd_net_txn_amt,281950482410.77,2024
+mts_table_6,2024-09-30,Non-Federal Securities of the National Railroad Retirement Investment Trust,fytd_net_txn_amt,1661669166.97,2024
+mts_table_6,2024-09-30,Other Cash and Monetary Assets,fytd_net_txn_amt,-1442920427.46,2024
+mts_table_6,2024-09-30,Plus Premium on Treasury Securities,fytd_net_txn_amt,4854484723.95,2024
+mts_table_6,2024-09-30,Receivable/Payable (-) for Interim Maintenance of Value Adjustments,fytd_net_txn_amt,-4063219621.54,2024
+mts_table_6,2024-09-30,Reserve Position on the U.S. Quota in the IMF:,,,2024
+mts_table_6,2024-09-30,SDR Certificates Issued to Federal Reserve Banks,fytd_net_txn_amt,-5000000000.0,2024
+mts_table_6,2024-09-30,Special Drawing Rights:,,,2024
+mts_table_6,2024-09-30,Total Asset Accounts,fytd_net_txn_amt,166094228635.31,2024
+mts_table_6,2024-09-30,Total Borrowing from the Public,fytd_net_txn_amt,1959809451328.12,2024
+mts_table_6,2024-09-30,Total Budget and Off-Budget Federal Entities (Financing of Deficit (+) or Disposition of Surplus (-)),fytd_net_txn_amt,1832816135978.04,2024
+mts_table_6,2024-09-30,Total Cash and Monetary Assets,fytd_net_txn_amt,229913986926.58,2024
+mts_table_6,2024-09-30,Total Federal Securities,fytd_net_txn_amt,2241759933738.89,2024
+mts_table_6,2024-09-30,Total Holdings,fytd_net_txn_amt,10837216627.72,2024
+mts_table_6,2024-09-30,Total Liability Accounts,fytd_net_txn_amt,1994499477574.97,2024
+mts_table_6,2024-09-30,Total Treasury Securities Net of Premium and Discount,fytd_net_txn_amt,2241062194715.89,2024
+mts_table_6,2024-09-30,Total Treasury Securities Outstanding,fytd_net_txn_amt,2297339884445.42,2024
+mts_table_6,2024-09-30,Transactions Not Applied to Current Year's Surplus or Deficit (See Schedule A for Details),fytd_net_txn_amt,4410887038.38,2024
+mts_table_6,2024-09-30,"Treasury Securities, Issued Under General Financing Authorities:",,,2024
+mts_table_6,2024-09-30,U.S. Subscription to International Monetary Fund:,,,2024
+mts_table_6,2024-09-30,U.S. Treasury Operating Cash:,,,2024

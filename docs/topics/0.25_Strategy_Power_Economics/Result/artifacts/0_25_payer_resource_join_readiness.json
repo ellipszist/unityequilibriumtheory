@@ -22,7 +22,8 @@
     "bounded_labor_subset_ready": true,
     "no_imputation": true,
     "public_federal_award_ledger_ready": true,
-    "requested": "sectoral funding -> industry use -> labor hours -> physical resources -> output/innovation"
+    "requested": "sectoral funding -> industry use -> labor hours -> physical resources -> output/innovation",
+    "treasury_aggregate_funding_source_ready": true
   },
   "evidence": {
     "bea_industry_accounts": {
@@ -30,7 +31,7 @@
         "controller_status": "BEA_1997_BENCHMARK_ONLY",
         "exists": true,
         "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bea_1997_io_benchmark_audit.json",
-        "sha256": "5db2c74763fe6d2cb213869fe14109647b25896924ec94943399bb52393f868f",
+        "sha256": "52f50f6dceddf6223fcf47c732b3e917b49e6039ce1d6079835521c39ee6cbe0",
         "status": "PASS_WITH_BOUNDARY"
       },
       "boundary": "A source-locked 1997 benchmark is archived for structural validation; annual supply-use/input-output flow export still requires the BEA API or interactive application.",
@@ -81,21 +82,21 @@
           "controller_status": "PROJECT_PAYMENT_LEDGER_NOT_PUBLIC",
           "exists": true,
           "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_project_payment_ledger_gate.json",
-          "sha256": "02953372958ea1a39b80028d42bb3b408ab9f4e14bf61a92258392e3c2b80283",
+          "sha256": "607b4a1faa4ceda393140ff4feb6388ca6e8dd636a0a2e095f2fd90993e1aabf",
           "status": "BLOCKED"
         },
         "public_firm_funding_mix": {
           "controller_status": "SEC_PUBLIC_FIRM_FUNDING_MIX_DESCRIPTIVE_ONLY",
           "exists": true,
           "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_sec_public_firm_funding_mix_audit.json",
-          "sha256": "3bc61f9978c04f16d8eb7d1f59f167c1fc67ec5ee3fc84b43a5e3a9c729502ba",
+          "sha256": "6daf95baa96f7c5408a7b0daeedbca1a462be914e6e9ca682c520949e4d61862",
           "status": "PASS_WITH_BOUNDARY"
         },
         "public_firm_funding_proxy": {
           "controller_status": "SEC_PUBLIC_FIRM_PROXY_SOURCE_LOCKED",
           "exists": true,
           "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_sec_public_firm_funding_proxy.json",
-          "sha256": "3b5067e8f24b6159743acc49b46efe5996f8d271d73cd2a1adeb8403409bde1c",
+          "sha256": "ce2f7c2e0f09605a22bd2d7825cc2ce3747d084c1c7110ab5f6828b5db0a376a",
           "status": "PASS_WITH_BOUNDARY"
         }
       },
@@ -115,7 +116,7 @@
         "controller_status": "FUNDING_FLOW_MAPPING_DESCRIPTIVE_ONLY",
         "exists": true,
         "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_fed_z1_funding_mapping_probe.json",
-        "sha256": "340e0ab8edfd5a0137afcd1f4c6a2c89160acbb1852b725e1165ed307650c2ad",
+        "sha256": "e2662be529e2f0e8e0062b1e230e96c79fc294288fac25f32b7ec947e45bed79",
         "status": "WARN"
       },
       "boundary": "Aggregate sectoral channels and an accounting bridge are present; no payer-payee or project earmark is observed.",
@@ -154,14 +155,14 @@
           "controller_status": "BLS_IO_QUALITY_AND_ACCESS_GATE",
           "exists": true,
           "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bls_io_source_gate.json",
-          "sha256": "46275664ac551b22c098ee923257cfa0991cb41e0a946e7bb29fb7d3070565d9",
+          "sha256": "59dbaf22aa7efadedab15036911f90b07bf1d41df2a260dbfd5f32416c82358a",
           "status": "BLOCKED"
         },
         "benchmark": {
           "controller_status": "BEA_1997_BENCHMARK_ONLY",
           "exists": true,
           "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bea_1997_io_benchmark_audit.json",
-          "sha256": "5db2c74763fe6d2cb213869fe14109647b25896924ec94943399bb52393f868f",
+          "sha256": "52f50f6dceddf6223fcf47c732b3e917b49e6039ce1d6079835521c39ee6cbe0",
           "status": "PASS_WITH_BOUNDARY"
         }
       },
@@ -195,7 +196,7 @@
         "controller_status": "BLS_INDUSTRY_HOURS_SOURCE_GATE",
         "exists": true,
         "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bls_industry_hours_source_package.json",
-        "sha256": "c5c71f1261fc26bf26d4581d78a7800264c7ded036dcd32a2fb450c6a9609da3",
+        "sha256": "792144b834833dfae242f4bcbdccad6250ee1b90d99c9d880ccebd1b1463bff3",
         "status": "WARN"
       },
       "boundary": "The BLS source artifact remains WARN for the 202-code candidate set, but the returned 11 four-digit NAICS series are complete for 1987-2024 with no imputation. This bounded subset is not payment-level occupation or payer provenance.",
@@ -258,7 +259,7 @@
         "controller_status": "USGS_PHYSICAL_QUANTITY_SOURCE_LOCKED",
         "exists": true,
         "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_usgs_material_quantity_audit.json",
-        "sha256": "ac0ee00668affcfbb6c1ec6b1c4199f9f8448c2be0952ee30c1d39a02371e54c",
+        "sha256": "c9f951128a61a11ca1184acb8fa3be68a15ff1365073f35eff8430614ebfdc93",
         "status": "PASS_WITH_BOUNDARY"
       },
       "boundary": "USGS national commodity quantity series are source-locked for selected materials; no material-to-industry or project allocation is observed.",
@@ -285,7 +286,7 @@
         "controller_status": "USASPENDING_PUBLIC_AWARD_LEDGER_SOURCE_LOCKED",
         "exists": true,
         "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_usaspending_federal_project_ledger.json",
-        "sha256": "ca2501aeeb717a4c5fd43a55faae4a1828d908d855595e1ee8d80affce4d2d51",
+        "sha256": "bf19555e54bd8aa791ac80625ff7d2fcfc79a753a9878c7f22eea8e7a3144cc1",
         "status": "PASS_WITH_BOUNDARY"
       },
       "boundary": "The bounded USAspending sample links federal awarding/funding agency, recipient, award ID, obligation amount, action date, and NAICS/PSC metadata. It is not final cash settlement, a private invoice/payroll ledger, or transaction-level identification of tax, debt, or money-creation funding.",
@@ -319,22 +320,57 @@
           "controller_status": "SEC_PUBLIC_FIRM_FUNDING_MIX_DESCRIPTIVE_ONLY",
           "exists": true,
           "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_sec_public_firm_funding_mix_audit.json",
-          "sha256": "3bc61f9978c04f16d8eb7d1f59f167c1fc67ec5ee3fc84b43a5e3a9c729502ba",
+          "sha256": "6daf95baa96f7c5408a7b0daeedbca1a462be914e6e9ca682c520949e4d61862",
           "status": "PASS_WITH_BOUNDARY"
         },
         "source_package": {
           "controller_status": "SEC_PUBLIC_FIRM_PROXY_SOURCE_LOCKED",
           "exists": true,
           "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_sec_public_firm_funding_proxy.json",
-          "sha256": "3b5067e8f24b6159743acc49b46efe5996f8d271d73cd2a1adeb8403409bde1c",
+          "sha256": "ce2f7c2e0f09605a22bd2d7825cc2ce3747d084c1c7110ab5f6828b5db0a376a",
           "status": "PASS_WITH_BOUNDARY"
         }
       },
       "boundary": "Predeclared public-firm annual accounting channels can be compared descriptively; funding shares and invoice provenance remain unidentified.",
       "status": "PASS_WITH_BOUNDARY"
+    },
+    "treasury_aggregate_funding_source": {
+      "artifact": {
+        "controller_status": "TREASURY_AGGREGATE_FUNDING_SOURCE_LOCKED",
+        "exists": true,
+        "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_treasury_funding_source_audit.json",
+        "sha256": "dceee602b99769f1efb35a5eac8bc77df83e059e3db1a28359e155835304c242",
+        "status": "PASS_WITH_BOUNDARY"
+      },
+      "boundary": "Treasury records aggregate receipts, outlays, deficit financing, and public debt for FY2024. It does not assign a tax, borrowing, or cash-balance source to an individual USAspending award, invoice, bank settlement, or physical transformation.",
+      "source": {
+        "directory": "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01",
+        "files": [
+          "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/debt_to_penny_2024-09-30.json",
+          "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/mts_table_1_2024-09-30.json",
+          "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/mts_table_2_2024-09-30.json",
+          "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/mts_table_4_2024-09-30.json",
+          "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/mts_table_5_2024-09-30.json",
+          "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/mts_table_6_2024-09-30.json",
+          "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/source_manifest.json"
+        ],
+        "hashes": {
+          "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/debt_to_penny_2024-09-30.json": "91608ed8eb06ab1e474f3721b5ddf339ba4e7f420a93d1e1786d4b424eddc50c",
+          "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/mts_table_1_2024-09-30.json": "b6bf667606c0806054e5f0d2ca96588b3532679fe9b27f8c627bbedb48e2d5b3",
+          "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/mts_table_2_2024-09-30.json": "6e81c7f87dfde83f85b02f14d3ecb4c90adb452993248acec68b3496a41d09de",
+          "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/mts_table_4_2024-09-30.json": "b523f8513e8a520bca92586dc84249533543d260363988776a61f9b79bfcde4f",
+          "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/mts_table_5_2024-09-30.json": "63488f8cfc437f86e094d0758f28027ca930636da1287d5d53895526a0424f10",
+          "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/mts_table_6_2024-09-30.json": "c09d5c02fdc94ac14c285936f531369ce3330e1e614877827ccf677a311c67a7",
+          "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/source_manifest.json": "7abdf59b22975ee8db12dcb9e819b713f1cc925a2fb2fed3af443f1b87719a51"
+        },
+        "pattern": "*.json",
+        "role": "Treasury Fiscal Data MTS and debt API responses",
+        "status": "PASS"
+      },
+      "status": "PASS_WITH_BOUNDARY"
     }
   },
-  "generated_at_utc": "2026-08-01T06:39:11.574065+00:00",
+  "generated_at_utc": "2026-08-01T09:31:40.304569+00:00",
   "limitations": [
     "Operating surplus and net saving are accounting aggregates, not earmarked cash sources.",
     "Debt and equity liability transactions can include refinancing, redemptions, and repurchases.",

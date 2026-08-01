@@ -18,7 +18,7 @@
   ],
   "claim_boundary": "This gate establishes source identity and a quality/access blocker only. It does not provide payment-level flows, causal evidence, or a payer-resource result.",
   "controller_status": "BLS_IO_QUALITY_AND_ACCESS_GATE",
-  "generated_at_utc": "2026-08-01T06:39:10.916184+00:00",
+  "generated_at_utc": "2026-08-01T09:31:37.323103+00:00",
   "provider_quality_notice": {
     "effect": "No matrix result may be used until the replacement or researcher ZIP is independently checked against the notice and archived with a hash.",
     "notice_date": "2026-02-06",

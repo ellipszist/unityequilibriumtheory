@@ -1,0 +1,91 @@
+{
+  "coverage": "FY2024 final monthly Treasury Statement record date with MTS tables 1, 2, 4, 5, 6 and debt-to-the-penny snapshot",
+  "documentation_url": "https://fiscaldata.treasury.gov/api-documentation/",
+  "no_imputation": true,
+  "normalized_panel": {
+    "local_path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/treasury_fy2024_funding_source_snapshot.csv",
+    "rows": 959,
+    "sha256": "b8831e05079241ffb793264a0894427e512145660c30317c8062eb240ce55da7"
+  },
+  "official_page": "https://fiscaldata.treasury.gov/",
+  "provider": "U.S. Department of the Treasury, Fiscal Service",
+  "record_date": "2024-09-30",
+  "retrieval_vintage": "2026-08-01",
+  "schema_version": "1.0",
+  "sources": [
+    {
+      "benchmark_role": "aggregate federal receipts/outlays/financing/debt; not individual award settlement",
+      "coverage": "record date 2024-09-30; endpoint mts_table_1",
+      "documentation_url": "https://fiscaldata.treasury.gov/api-documentation/",
+      "local_path": "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/mts_table_1_2024-09-30.json",
+      "original_filename": "mts_table_1_2024-09-30.json",
+      "retrieval_timestamp_utc": "2026-08-01T06:45:26.214910+00:00",
+      "sha256": "b6bf667606c0806054e5f0d2ca96588b3532679fe9b27f8c627bbedb48e2d5b3",
+      "source_id": "mts_table_1",
+      "source_url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/mts/mts_table_1?filter=record_date%3Aeq%3A2024-09-30&page%5Bsize%5D=10000&format=json",
+      "units": "current U.S. dollars as reported by Treasury Fiscal Data"
+    },
+    {
+      "benchmark_role": "aggregate federal receipts/outlays/financing/debt; not individual award settlement",
+      "coverage": "record date 2024-09-30; endpoint mts_table_2",
+      "documentation_url": "https://fiscaldata.treasury.gov/api-documentation/",
+      "local_path": "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/mts_table_2_2024-09-30.json",
+      "original_filename": "mts_table_2_2024-09-30.json",
+      "retrieval_timestamp_utc": "2026-08-01T06:45:27.534375+00:00",
+      "sha256": "6e81c7f87dfde83f85b02f14d3ecb4c90adb452993248acec68b3496a41d09de",
+      "source_id": "mts_table_2",
+      "source_url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/mts/mts_table_2?filter=record_date%3Aeq%3A2024-09-30&page%5Bsize%5D=10000&format=json",
+      "units": "current U.S. dollars as reported by Treasury Fiscal Data"
+    },
+    {
+      "benchmark_role": "aggregate federal receipts/outlays/financing/debt; not individual award settlement",
+      "coverage": "record date 2024-09-30; endpoint mts_table_4",
+      "documentation_url": "https://fiscaldata.treasury.gov/api-documentation/",
+      "local_path": "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/mts_table_4_2024-09-30.json",
+      "original_filename": "mts_table_4_2024-09-30.json",
+      "retrieval_timestamp_utc": "2026-08-01T06:45:28.988412+00:00",
+      "sha256": "b523f8513e8a520bca92586dc84249533543d260363988776a61f9b79bfcde4f",
+      "source_id": "mts_table_4",
+      "source_url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/mts/mts_table_4?filter=record_date%3Aeq%3A2024-09-30&page%5Bsize%5D=10000&format=json",
+      "units": "current U.S. dollars as reported by Treasury Fiscal Data"
+    },
+    {
+      "benchmark_role": "aggregate federal receipts/outlays/financing/debt; not individual award settlement",
+      "coverage": "record date 2024-09-30; endpoint mts_table_5",
+      "documentation_url": "https://fiscaldata.treasury.gov/api-documentation/",
+      "local_path": "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/mts_table_5_2024-09-30.json",
+      "original_filename": "mts_table_5_2024-09-30.json",
+      "retrieval_timestamp_utc": "2026-08-01T06:45:32.881208+00:00",
+      "sha256": "63488f8cfc437f86e094d0758f28027ca930636da1287d5d53895526a0424f10",
+      "source_id": "mts_table_5",
+      "source_url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/mts/mts_table_5?filter=record_date%3Aeq%3A2024-09-30&page%5Bsize%5D=10000&format=json",
+      "units": "current U.S. dollars as reported by Treasury Fiscal Data"
+    },
+    {
+      "benchmark_role": "aggregate federal receipts/outlays/financing/debt; not individual award settlement",
+      "coverage": "record date 2024-09-30; endpoint mts_table_6",
+      "documentation_url": "https://fiscaldata.treasury.gov/api-documentation/",
+      "local_path": "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/mts_table_6_2024-09-30.json",
+      "original_filename": "mts_table_6_2024-09-30.json",
+      "retrieval_timestamp_utc": "2026-08-01T06:45:34.283707+00:00",
+      "sha256": "c09d5c02fdc94ac14c285936f531369ce3330e1e614877827ccf677a311c67a7",
+      "source_id": "mts_table_6",
+      "source_url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/mts/mts_table_6?filter=record_date%3Aeq%3A2024-09-30&page%5Bsize%5D=10000&format=json",
+      "units": "current U.S. dollars as reported by Treasury Fiscal Data"
+    },
+    {
+      "benchmark_role": "aggregate federal receipts/outlays/financing/debt; not individual award settlement",
+      "coverage": "record date 2024-09-30; endpoint debt_to_penny",
+      "documentation_url": "https://fiscaldata.treasury.gov/api-documentation/",
+      "local_path": "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/debt_to_penny_2024-09-30.json",
+      "original_filename": "debt_to_penny_2024-09-30.json",
+      "retrieval_timestamp_utc": "2026-08-01T06:45:35.580551+00:00",
+      "sha256": "91608ed8eb06ab1e474f3721b5ddf339ba4e7f420a93d1e1786d4b424eddc50c",
+      "source_id": "debt_to_penny",
+      "source_url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?filter=record_date%3Aeq%3A2024-09-30&page%5Bsize%5D=10000&format=json",
+      "units": "current U.S. dollars as reported by Treasury Fiscal Data"
+    }
+  ],
+  "status": "PASS_WITH_BOUNDARY",
+  "terms": "Public Treasury Fiscal Data API; retain provider attribution and API terms."
+}

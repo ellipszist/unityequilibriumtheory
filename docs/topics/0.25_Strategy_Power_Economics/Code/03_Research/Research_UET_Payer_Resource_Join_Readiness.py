@@ -19,6 +19,7 @@ from economic_hardening_common import (
     BLS_INDUSTRY_HOURS_ARTIFACT,
     BLS_INDUSTRY_HOURS_RAW_DIR,
     USASPENDING_LEDGER_ARTIFACT,
+    TREASURY_FUNDING_SOURCE_ARTIFACT,
     USGS_MATERIAL_QUANTITY_ARTIFACT,
     SEC_PUBLIC_FIRM_PROXY_ARTIFACT,
     SEC_PUBLIC_FIRM_MIX_ARTIFACT,
@@ -158,6 +159,8 @@ def main() -> int:
     project_ledger_gate = _artifact_status(PROJECT_PAYMENT_LEDGER_ARTIFACT)
     usaspending_ledger = _artifact_status(USASPENDING_LEDGER_ARTIFACT)
     usaspending_ready = usaspending_ledger.get("status") == "PASS_WITH_BOUNDARY"
+    treasury_funding = _artifact_status(TREASURY_FUNDING_SOURCE_ARTIFACT)
+    treasury_funding_ready = treasury_funding.get("status") == "PASS_WITH_BOUNDARY"
 
     evidence = {
         "funding_flows": {
@@ -216,6 +219,12 @@ def main() -> int:
             "artifact": {"source_package": sec_funding_proxy, "funding_mix": sec_funding_mix},
             "boundary": "Predeclared public-firm annual accounting channels can be compared descriptively; funding shares and invoice provenance remain unidentified.",
         },
+        "treasury_aggregate_funding_source": {
+            "status": "PASS_WITH_BOUNDARY" if treasury_funding_ready else "BLOCKED",
+            "artifact": treasury_funding,
+            "source": _glob_record(RAW_ROOT / "treasury_fiscal_data" / "2026-08-01", "*.json", "Treasury Fiscal Data MTS and debt API responses"),
+            "boundary": "Treasury records aggregate receipts, outlays, deficit financing, and public debt for FY2024. It does not assign a tax, borrowing, or cash-balance source to an individual USAspending award, invoice, bank settlement, or physical transformation.",
+        },
         "public_federal_award_ledger": {
             "status": "PASS_WITH_BOUNDARY" if usaspending_ready else "BLOCKED",
             "artifact": usaspending_ledger,
@@ -250,6 +259,7 @@ def main() -> int:
             "no_imputation": True,
             "bounded_labor_subset_ready": bool(bls_hours_ready),
             "public_federal_award_ledger_ready": bool(usaspending_ready),
+            "treasury_aggregate_funding_source_ready": bool(treasury_funding_ready),
             "bounded_labor_subset": evidence["labor_industry_hours"].get("artifact", {}).get("bounded_coverage"),
         },
         "evidence": evidence,

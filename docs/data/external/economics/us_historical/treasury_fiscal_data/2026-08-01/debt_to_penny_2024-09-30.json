@@ -1,0 +1,80 @@
+{
+  "documentation_url": "https://fiscaldata.treasury.gov/api-documentation/",
+  "endpoint": "debt_to_penny",
+  "error": null,
+  "provider": "U.S. Department of the Treasury, Fiscal Service",
+  "record_date": "2024-09-30",
+  "request_url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?filter=record_date%3Aeq%3A2024-09-30&page%5Bsize%5D=10000&format=json",
+  "response": {
+    "data": [
+      {
+        "debt_held_public_amt": "28307312290783.00",
+        "intragov_hold_amt": "7157361638388.69",
+        "record_calendar_day": "30",
+        "record_calendar_month": "09",
+        "record_calendar_quarter": "3",
+        "record_calendar_year": "2024",
+        "record_date": "2024-09-30",
+        "record_fiscal_quarter": "4",
+        "record_fiscal_year": "2024",
+        "src_line_nbr": "1",
+        "tot_pub_debt_out_amt": "35464673929171.69"
+      }
+    ],
+    "links": {
+      "first": "&page%5Bnumber%5D=1&page%5Bsize%5D=10000",
+      "last": "&page%5Bnumber%5D=1&page%5Bsize%5D=10000",
+      "next": null,
+      "prev": null,
+      "self": "&page%5Bnumber%5D=1&page%5Bsize%5D=10000"
+    },
+    "meta": {
+      "count": 1,
+      "dataFormats": {
+        "debt_held_public_amt": "$10.20",
+        "intragov_hold_amt": "$10.20",
+        "record_calendar_day": "DD",
+        "record_calendar_month": "MM",
+        "record_calendar_quarter": "Q",
+        "record_calendar_year": "YYYY",
+        "record_date": "YYYY-MM-DD",
+        "record_fiscal_quarter": "Q",
+        "record_fiscal_year": "YYYY",
+        "src_line_nbr": "10",
+        "tot_pub_debt_out_amt": "$10.20"
+      },
+      "dataTypes": {
+        "debt_held_public_amt": "CURRENCY",
+        "intragov_hold_amt": "CURRENCY",
+        "record_calendar_day": "DAY",
+        "record_calendar_month": "MONTH",
+        "record_calendar_quarter": "QUARTER",
+        "record_calendar_year": "YEAR",
+        "record_date": "DATE",
+        "record_fiscal_quarter": "QUARTER",
+        "record_fiscal_year": "YEAR",
+        "src_line_nbr": "INTEGER",
+        "tot_pub_debt_out_amt": "CURRENCY"
+      },
+      "labels": {
+        "debt_held_public_amt": "Debt Held by the Public",
+        "intragov_hold_amt": "Intragovernmental Holdings",
+        "record_calendar_day": "Calendar Day Number",
+        "record_calendar_month": "Calendar Month Number",
+        "record_calendar_quarter": "Calendar Quarter Number",
+        "record_calendar_year": "Calendar Year",
+        "record_date": "Record Date",
+        "record_fiscal_quarter": "Fiscal Quarter Number",
+        "record_fiscal_year": "Fiscal Year",
+        "src_line_nbr": "Source Line Number",
+        "tot_pub_debt_out_amt": "Total Public Debt Outstanding"
+      },
+      "total-count": 1,
+      "total-pages": 1
+    }
+  },
+  "retrieval_timestamp_utc": "2026-08-01T06:45:35.580551+00:00",
+  "retrieval_vintage": "2026-08-01",
+  "schema_version": "1.0",
+  "source_url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?filter=record_date%3Aeq%3A2024-09-30&page%5Bsize%5D=10000&format=json"
+}

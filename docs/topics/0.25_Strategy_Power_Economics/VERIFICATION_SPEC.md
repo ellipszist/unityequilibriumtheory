@@ -52,6 +52,7 @@ The legacy descriptive command is separate:
 - `0_25_usgs_material_quantity_audit.json`: raw workbook hashes, commodity/quantity-column mapping, coverage, and explicit no-industry/project-allocation boundary.
 - `0_25_sec_public_firm_funding_proxy.json` and `0_25_sec_public_firm_funding_mix_audit.json`: current-vintage 10-K fact hashes, tag/unit/date coverage, descriptive firm ratios, and `NOT_IDENTIFIED` funding-share status.
 - `0_25_usaspending_federal_project_ledger.json`: cached USAspending.gov request/response hashes, fixed DOE FY2024 five-page coverage, normalized obligation units, and explicit non-settlement/non-financing boundary.
+- `0_25_treasury_funding_source_audit.json`: Treasury Fiscal Data request/response hashes for MTS tables 1/2/4/5/6 and debt-to-the-penny at 2024-09-30, normalized current-dollar rows, aggregate summary, and explicit no-award-level-attribution boundary.
 - `0_25_project_payment_ledger_gate.json`: public-data restriction, approved restricted-use route, and controlling `PROJECT_PAYMENT_LEDGER_NOT_PUBLIC` blocker.
 - aggregate `execution_gate`: all verifier subcommands exit zero.
 - aggregate legacy_claim_quarantine: every legacy markdown note contains the required
@@ -111,7 +112,7 @@ per-capita growth. Pre/post regime summaries use 1959-1970 and 1974-2024, exclud
 - Research architecture: WARN; current package is Package Tier A, target is Evidence Grade A,
   and the 12-gate registry still contains open controlling gates. Strategy/social claims remain
   quarantined.
-- Payer-resource additions: USGS, SEC, and the fixed USAspending DOE FY2024 public-award sample are `PASS_WITH_BOUNDARY`; BLS industry-hours remains `WARN` for candidate-set coverage but its 11 returned series are complete for 1987-2024 (418 rows). The join gate reports bounded public inputs, while the private project payment ledger is still `BLOCKED`.
+- Payer-resource additions: USGS, SEC, the fixed USAspending DOE FY2024 public-award sample, and the Treasury aggregate funding-source snapshot are `PASS_WITH_BOUNDARY`; BLS industry-hours remains `WARN` for candidate-set coverage but its 11 returned series are complete for 1987-2024 (418 rows). The join gate reports bounded public inputs, while the private project payment ledger is still `BLOCKED`.
 
 ## Interpretation boundary
 

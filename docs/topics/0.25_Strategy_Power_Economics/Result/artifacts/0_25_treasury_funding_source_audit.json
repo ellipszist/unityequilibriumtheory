@@ -1,0 +1,51 @@
+{
+  "aggregate_summary": {
+    "deficit_fytd_usd": -1832815989074.04,
+    "total_financing_fytd_usd": 1832815989074.04,
+    "total_outlays_fytd_usd": 6751551633812.29,
+    "total_public_debt_outstanding_usd": 35464673929171.69,
+    "total_receipts_fytd_usd": 4918735644738.25
+  },
+  "claim_boundary": "This artifact is an aggregate federal funding-source diagnostic. It does not establish profit-versus-debt funding for a specific purchase and does not identify money creation at award level.",
+  "controller_status": "TREASURY_AGGREGATE_FUNDING_SOURCE_LOCKED",
+  "coverage": {
+    "endpoints": [
+      "mts_table_1",
+      "mts_table_2",
+      "mts_table_4",
+      "mts_table_5",
+      "mts_table_6",
+      "debt_to_penny"
+    ],
+    "fiscal_year": 2024,
+    "no_imputation": true,
+    "record_date": "2024-09-30",
+    "request_failures": [],
+    "rows": 959
+  },
+  "funding_source_identification": {
+    "boundary": "Treasury reports aggregate federal receipts, outlays, and financing. It cannot assign the source of a tax dollar, borrowed dollar, or cash-balance adjustment to an individual USAspending award, invoice, bank settlement, or physical transformation.",
+    "observed_categories": [
+      "tax and social-insurance receipts",
+      "federal outlays",
+      "public debt financing",
+      "operating-cash and other financing adjustments"
+    ],
+    "status": "AGGREGATE_ONLY"
+  },
+  "generated_at_utc": "2026-08-01T09:31:48.491517+00:00",
+  "limitations": [
+    "The snapshot is fixed to FY2024 record date 2024-09-30 and is not a real-time settlement ledger.",
+    "MTS and debt data are government-wide aggregate accounting reports; individual award timing and settlement are not joined.",
+    "USAspending award obligations can precede or differ from Treasury cash outlays.",
+    "Aggregate financing categories do not identify which instrument financed a particular project or recipient."
+  ],
+  "schema_version": "1.0",
+  "source_manifest": {
+    "path": "docs/data/external/economics/us_historical/treasury_fiscal_data/2026-08-01/source_manifest.json",
+    "sha256": "7abdf59b22975ee8db12dcb9e819b713f1cc925a2fb2fed3af443f1b87719a51",
+    "status": "PASS_WITH_BOUNDARY"
+  },
+  "status": "PASS_WITH_BOUNDARY",
+  "topic": "0.25_Strategy_Power_Economics"
+}

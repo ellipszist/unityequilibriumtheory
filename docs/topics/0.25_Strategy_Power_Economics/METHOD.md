@@ -132,6 +132,12 @@ indexed infrastructure proxy, not a dollar-valued capital stock.
    settlement or final supplier payment, and the API does not identify whether federal funds came
    from taxes, borrowing, or money creation.
 
+18. **Treasury aggregate funding-source lane:** archive FY2024 record-date snapshots from
+   MTS tables 1, 2, 4, 5, and 6 plus Debt to the Penny. The artifact reports government-wide
+   receipts, outlays, deficit financing, and debt in current dollars. It is an aggregate
+   accounting bridge only; it does not identify which instrument funded an individual award,
+   invoice, bank settlement, or resource transformation.
+
 ## Evaluation and uncertainty
 
 Rolling-origin forecasts start in 2000. Every transformation and coefficient is fitted only

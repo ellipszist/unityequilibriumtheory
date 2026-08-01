@@ -33,6 +33,7 @@ presence and rerunnability of standards artifacts; it is not a theory confirmati
 - Z.1 funding-mix ratios are signed net transactions, not gross financing shares: debt can be
   refinancing or repayment, equity can be issuance or repurchase, and saving is not earmarked
   to a specific investment.
+- Treasury Fiscal Data now supplies a fixed FY2024 aggregate bridge for receipts, outlays, deficit financing, and debt. It cannot determine whether a particular award was funded by tax receipts, borrowing, cash balances, or another aggregate category.
 - USAspending.gov now supplies a bounded DOE FY2024 award-obligation sample with agency, recipient, date, amount, and NAICS/PSC metadata. An award obligation is not necessarily a cash settlement or final supplier payment, and the federal financing source is not identified.
 - The payer-resource join gate is `BLOCKED`: the frozen package now validates a BEA 1997 benchmark make/use and requirements structure, a BLS public-API industry-hours sample, and selected USGS material quantities. Only 11 of 202 predeclared NAICS4 candidates returned BLS rows, but those 11 returned series are complete for 1987-2024 (418 rows); 16 other candidate-batch requests remain unavailable because of the provider daily quota. USGS quantities are national and not industry-mapped, and SEC public-firm ratios cover only 10 firms from current-vintage 10-K facts. A project payment ledger remains unavailable. Aggregate energy throughput is present but is not a complete physical-resource ledger.
 

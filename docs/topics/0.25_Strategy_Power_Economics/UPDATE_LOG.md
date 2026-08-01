@@ -5,6 +5,16 @@
 
 ## Entries
 
+### 2026-08-01 - Treasury aggregate funding-source lane
+
+- Scope: distinguish government-wide receipts, outlays, deficit financing, and debt from the source of an individual award payment.
+- Added: `Research_UET_Treasury_Funding_Source_Package.py`, six official Fiscal Data endpoint archives at record date `2024-09-30`, a 959-row normalized snapshot, aggregate/readiness/join integration, and synchronized docs.
+- Verified with: official API refresh and cached rerun, py_compile, and source/hash checks. Treasury lane is `PASS_WITH_BOUNDARY`; the payer-resource join remains `BLOCKED` only on `firm_project_payment_ledger`.
+- Blocker narrowed: aggregate government funding categories are now observable alongside public award obligations, but no tax/debt/cash source can be assigned to a specific award, invoice, or physical transformation.
+- Next controller: approved transaction/invoice settlement evidence and concordant resource allocation; Claim Class C and `DESCRIPTIVE_DIAGNOSTIC_ONLY` remain unchanged.
+- Claim impact: no profit-vs-debt attribution, money-creation claim, payer causality, or payment-to-resource claim is enabled.
+
+
 ### 2026-08-01 - Public federal award ledger lane
 
 - Scope: add a source-locked public payer/recipient observation without treating federal award data as private settlement or financing-source proof.
