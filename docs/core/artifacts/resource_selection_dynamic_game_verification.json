@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0",
+  "artifact": "resource_selection_dynamic_game_verification",
+  "operator_mode": "resource_selection_dynamic_game_v1",
+  "audit_status": "PASS_WITH_OPEN_PHYSICAL_MAPPING",
+  "status": "INTERNAL_DIAGNOSTIC",
+  "claim_status": "SIMULATION_ONLY",
+  "evidence_class": "INTERNAL_DIAGNOSTIC",
+  "unit_lane": "normalized",
+  "model_class": "non_agentic_replicator_style_interaction_selection",
+  "principle_id": "UET-PRINCIPLE-001",
+  "formula_audit": [
+    {
+      "formula_id": "SELECTION-STATE-001",
+      "relation": "dp_i/dt=p_i*(f_i-sum_j(p_j*f_j))",
+      "origin": "standard evolutionary-game comparator",
+      "status": "constitutive_comparator"
+    },
+    {
+      "formula_id": "SELECTION-C-002",
+      "relation": "C=sum_i,j(p_i*A_ij*p_j)",
+      "origin": "declared collective compatibility definition",
+      "status": "derived_from_interaction_state"
+    },
+    {
+      "formula_id": "SELECTION-LEDGER-003",
+      "relation": "dE_available/dt=J_in-J_out-P_behavior-P_maintenance",
+      "origin": "normalized resource bookkeeping identity",
+      "status": "locally_verified"
+    }
+  ],
+  "configurations": {
+    "cooperative": {
+      "interaction_matrix": [
+        [
+          0.9,
+          0.8
+        ],
+        [
+          0.8,
+          0.9
+        ]
+      ],
+      "behavior_cost": [
+        0.02,
+        0.03
+      ],
+      "maintenance_cost": [
+        0.01,
+        0.01
+      ],
+      "initial_probabilities": [
+        0.5,
+        0.5
+      ]
+    },
+    "conflict": {
+      "interaction_matrix": [
+        [
+          0.3,
+          -0.9
+        ],
+        [
+          -0.9,
+          0.3
+        ]
+      ],
+      "behavior_cost": [
+        0.12,
+        0.15
+      ],
+      "maintenance_cost": [
+        0.03,
+        0.04
+      ],
+      "initial_probabilities": [
+        0.5,
+        0.5
+      ]
+    },
+    "horizon": 10.0,
+    "dt": 0.001,
+    "parameters_fit": false
+  },
+  "metrics": {
+    "cooperative": {
+      "final_resource": 0.6506804062237634,
+      "persistence_time": null,
+      "behavior_work": 0.24931959377623183,
+      "maintenance_work": 0.1,
+      "ledger_closure_residual": -4.773959005888173e-15,
+      "probability_simplex_drift": 2.220446049250313e-16,
+      "minimum_probability": 0.4858029790650478,
+      "min_compatibility": 0.8500000000000001,
+      "max_compatibility": 0.8500403110806856
+    },
+    "conflict": {
+      "final_resource": -0.6741672775719176,
+      "persistence_time": 4.723,
+      "behavior_work": 1.3306254581789363,
+      "maintenance_work": 0.3435418193929788,
+      "ledger_closure_residual": -2.55351295663786e-15,
+      "probability_simplex_drift": 2.220446049250313e-16,
+      "minimum_probability": 0.2839702873160381,
+      "min_compatibility": -0.30000000000000004,
+      "max_compatibility": -0.18799479177044368
+    },
+    "final_resource_difference": 1.324847683795681
+  },
+  "gates": {
+    "simplex_drift_le_1e-12": true,
+    "minimum_probability_ge_minus_1e-14": true,
+    "ledger_closure_le_1e-12": true,
+    "nonnegative_resource_cost": true,
+    "cooperative_persists_longer": true,
+    "collective_C_is_interaction_derived": true,
+    "no_parameter_fitting": true,
+    "no_intentional_optimizer": true,
+    "deterministic_repeat": true
+  },
+  "limitations": [
+    "interaction matrix, cost vectors, and replicator law are constitutive comparator inputs",
+    "normalized resource is not SI energy",
+    "no physical mass, temperature, heat, entropy, particle, or cosmological mapping is supplied",
+    "the result supports only a simulation-level persistence ordering under the declared comparator"
+  ],
+  "next_controller": "map behavior and maintenance costs to a measured work, heat, entropy, or failure-rate observable in one physical lane"
+}

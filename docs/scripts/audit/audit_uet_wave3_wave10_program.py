@@ -95,8 +95,12 @@ def build() -> dict[str, Any]:
     foundation_blocked = foundation_status in {"BLOCKED", "FAIL", "WARN"}
 
     causal = load(ROOT / "docs/core/artifacts/matter_space_causal_lane_comparison.json")
-    causal_status = status_of(causal)
+    causal_selection = load(ROOT / "docs/core/artifacts/matter_space_causal_lane_selection.json")
+    causal_status = status_of(causal_selection)
     thermal = load(ROOT / "docs/core/artifacts/thermal_observable_bridge_verification.json")
+    persistence_dynamic = load(ROOT / "docs/core/artifacts/resource_selection_dynamic_game_verification.json")
+    persistence_thermal = load(ROOT / "docs/core/artifacts/resource_selection_thermal_bridge_verification.json")
+    extended_closure = load(ROOT / "docs/core/artifacts/uet_foundation_extended_wave_closure.json")
     eos = load(ROOT / "docs/core/artifacts/o2_finite_density_eos_verification.json")
     transport = load(ROOT / "docs/core/artifacts/covariant_superfluid_transport_verification.json")
     gr = load(ROOT / "docs/core/artifacts/uet_gr_research_program_gate.json")
@@ -137,17 +141,17 @@ def build() -> dict[str, Any]:
         wave(
             3,
             "Mathematical closure and causal two-arm decision",
-            causal.get("controlling_blocker", controller_of(causal)),
-            ["docs/core/artifacts/matter_space_causal_lane_comparison.json", "docs/core/artifacts/matter_space_causal_reference_verification.json", "docs/core/artifacts/matter_space_dependency_gate.json"],
+            causal_selection.get("next_controller", controller_of(causal_selection)),
+            ["docs/core/artifacts/matter_space_causal_lane_selection.json", "docs/core/artifacts/matter_space_characteristic_cone_verification.json", "docs/core/artifacts/matter_space_causal_lane_comparison.json", "docs/core/artifacts/matter_space_causal_reference_verification.json", "docs/core/artifacts/matter_space_dependency_gate.json"],
             causal_status,
-            "conserved-C comparator plus candidate non-conserved finite-cone C; no physical promotion",
+            "selected characteristic finite-cone candidate plus conserved-C comparator; no physical promotion",
             foundation_blocked,
         ),
         wave(
             4,
             "Observable mapping and synthetic control",
             "dimensional_observable_operator_and_uncertainty_missing",
-            ["docs/core/artifacts/thermal_observable_bridge_verification.json", "docs/core/artifacts/matter_space_research_program_gate.json"],
+            ["docs/core/artifacts/thermal_observable_bridge_verification.json", "docs/core/artifacts/resource_selection_thermal_bridge_verification.json", "docs/core/artifacts/matter_space_research_program_gate.json"],
             status_of(thermal),
             "declared measurement operators and simulation-only controls",
             foundation_blocked,
@@ -156,7 +160,7 @@ def build() -> dict[str, Any]:
             5,
             "Topic 0.11 matter-space phase pilot",
             phase.get("controlling_blocker", controller_of(phase)),
-            ["docs/core/artifacts/matter_space_phase_pilot.json", "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_matter_space_phase_coupling_diagnostic.json", "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_noether_phase_field_dependency_gate.json"],
+            ["docs/core/artifacts/matter_space_phase_pilot.json", "docs/core/artifacts/matter_space_topic_pilot_sync.json", "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_matter_space_phase_coupling_diagnostic.json", "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_noether_phase_field_dependency_gate.json"],
             status_of(phase),
             "internal normalized diagnostic; no universality or mass-generation claim",
             foundation_blocked,
@@ -165,7 +169,7 @@ def build() -> dict[str, Any]:
             6,
             "Topic 0.13 thermodynamic and thermal pilot",
             thermal_pilot.get("controlling_blocker", controller_of(thermal_pilot)),
-            ["docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_control.json", "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_second_sound_source_package.json", "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_observable_map_readiness.json"],
+            ["docs/core/artifacts/matter_space_topic_pilot_sync.json", "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_control.json", "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_second_sound_source_package.json", "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_observable_map_readiness.json"],
             status_of(thermal_pilot),
             "simulation-only Fourier/Cattaneo/trace comparator; external validation blocked",
             foundation_blocked,
@@ -226,9 +230,28 @@ def build() -> dict[str, Any]:
         "waves": waves,
         "causal_decision": {
             "conserved_C": "parabolic/conserved phase comparator; no changing-C finite-cone claim",
-            "finite_cone_C": "non-conserved telegraph candidate; numerical compact-support gate remains open",
+            "finite_cone_C": "selected non-conserved characteristic candidate passes its normalized compact-support contract and public adapter smoke gate",
+            "default_full_candidate": "blocked; original nonlinear Heun lane retains pre-arrival leakage above threshold",
             "conserved_Cattaneo": "negative control; high-k speed unbounded without UV/nonlocal regularization",
             "reference_lane": "strict-CFL compact-support control does not promote the full coupled candidate",
+        },
+        "persistence_program": {
+            "dynamic_selection": {
+                "status": status_of(persistence_dynamic),
+                "controller": controller_of(persistence_dynamic),
+                "artifact": "docs/core/artifacts/resource_selection_dynamic_game_verification.json",
+            },
+            "thermal_bridge": {
+                "status": status_of(persistence_thermal),
+                "controller": controller_of(persistence_thermal),
+                "artifact": "docs/core/artifacts/resource_selection_thermal_bridge_verification.json",
+            },
+            "claim_boundary": "normalized internal diagnostics only; physical work/heat/entropy mapping and external validation remain open",
+        },
+        "extended_wave_closure": {
+            "status": status_of(extended_closure),
+            "controller": controller_of(extended_closure),
+            "artifact": "docs/core/artifacts/uet_foundation_extended_wave_closure.json",
         },
         "claim_boundary": {
             "allowed": ["candidate collective-behaviour coordinate", "candidate normalized effective model", "internal diagnostic", "tree-level finite-density O(2) EOS", "covariant ideal-superfluid constitutive structure", "simulation/comparator contract"],

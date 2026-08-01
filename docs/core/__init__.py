@@ -490,3 +490,58 @@ __all__ += [
     "finite_cone_c_stability_limit",
     "finite_cone_c_step",
 ]
+from .uet_resource_selection import (
+    RESOURCE_SELECTION_OPERATOR_MODE,
+    RESOURCE_SELECTION_STATUS,
+    ResourceSelectionConfig,
+    ResourceSelectionResult,
+    ResourceSelectionStabilityError,
+    simulate_resource_selection,
+)
+
+__all__ += [
+    "RESOURCE_SELECTION_OPERATOR_MODE",
+    "RESOURCE_SELECTION_STATUS",
+    "ResourceSelectionConfig",
+    "ResourceSelectionResult",
+    "ResourceSelectionStabilityError",
+    "simulate_resource_selection",
+]
+
+from .uet_matter_space_characteristic import (
+    CHARACTERISTIC_CONE_OPERATOR_MODE,
+    CharacteristicConeStabilityError,
+    characteristic_cone_contract,
+    characteristic_cone_dt,
+    characteristic_cone_speed,
+    characteristic_cone_step,
+)
+
+__all__ += [
+    "CHARACTERISTIC_CONE_OPERATOR_MODE",
+    "CharacteristicConeStabilityError",
+    "characteristic_cone_contract",
+    "characteristic_cone_dt",
+    "characteristic_cone_speed",
+    "characteristic_cone_step",
+]
+
+from .resource_selection_thermal_bridge import (
+    RESOURCE_THERMAL_BRIDGE_MODE,
+    RESOURCE_THERMAL_BRIDGE_STATUS,
+    ResourceThermalBridgeConfig,
+    ResourceThermalSummary,
+    ResourceThermalBridgeResult,
+    summarize_resource_thermal_ledger,
+    run_resource_selection_thermal_bridge,
+)
+
+__all__ += [
+    "RESOURCE_THERMAL_BRIDGE_MODE",
+    "RESOURCE_THERMAL_BRIDGE_STATUS",
+    "ResourceThermalBridgeConfig",
+    "ResourceThermalSummary",
+    "ResourceThermalBridgeResult",
+    "summarize_resource_thermal_ledger",
+    "run_resource_selection_thermal_bridge",
+]

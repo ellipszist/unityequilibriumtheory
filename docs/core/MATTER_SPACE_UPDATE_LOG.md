@@ -138,3 +138,37 @@
 - Result: finite-cone C lane is CANDIDATE; overall lane artifact remains BLOCKED because numerical compact-support/pre-arrival leakage is not yet closed and SI/observable/covariant mappings remain open.
 - Preserved: conserved-C changing-response cone remains blocked by conserved_C_gradient_term_has_unbounded_k4_characteristic_speed; no mass, density, particle, GR, cosmological, or empirical claim was promoted.
 - Next controller: construct a characteristic/staggered or otherwise causal discrete integrator for the finite-cone candidate and rerun leakage without cone padding or clipping.
+### 2026-08-01 - Selected characteristic finite-cone adapter
+
+- Scope: close the selected non-conserved characteristic lane through the public
+  master-equation interface without changing the conserved-C baseline, default
+  operator, or legacy modes.
+- Added: uet_matter_space_characteristic.py, characteristic tests/audit,
+  matter_space_characteristic_cone_verification.json, causal lane-selection
+  gate, and the UETMasterEquation compatibility adapter.
+- Verified: characteristic unit tests and dynamic-selection/thermal bridge tests
+  passed; characteristic artifact reports zero pre-arrival leakage, zero observed
+  closed-energy increase, and maximum ledger residual 6.84134e-5; adapter smoke
+  returned UETStepResult with energy ledger and diagnostics.
+- Result: selected lane PASS_WITH_DEFERRED_CONSERVED_BRANCH at normalized
+  simulation scope. Conserved-C changing-response remains structurally blocked by
+  the unbounded high-k branch; the original default/full candidate retains its
+  1.76394e-2 pre-arrival leakage failure.
+- Claim impact: no physical causality, SI, covariant, mass, galaxy, or downstream
+  promotion.
+- Next controller: rerun full coupled convergence/observable mapping and keep the
+  conserved-C and default-full blockers explicit.
+### 2026-08-01 - Downstream foundation wave closure
+
+- Added the generated extended status artifact
+  uet_foundation_extended_wave_closure.json and linked it into the Wave 3-10
+  program artifact.
+- Wave 7 is recorded as conditional O2/EOS plus ideal covariant structure with
+  Kubo, finite-temperature, and SI blockers. Wave 8 is carrier/detector blocked.
+  Wave 9 is gravity/orbit/cosmology blocked. Wave 10 is galaxy/cosmic blocked or
+  warning-level. Wave 11 is deferred pending covariant particle prerequisites.
+- Verification: extended closure audit and the regenerated Wave 3-10 program
+  audit completed with explicit statuses; no downstream status was promoted to
+  physical proof.
+- Current controller: complete foundation correspondence and dimensional
+  observable gates before revisiting downstream waves.

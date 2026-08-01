@@ -1,12 +1,12 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_foundation_equation_inventory",
-  "generated_at": "2026-07-30",
+  "generated_at": "2026-08-01",
   "audit_status": "PASS_WITH_DISCLOSED_GAPS",
   "inventory_gate_status": "BLOCKED",
   "controlling_blocker": "topic_formula_audits_not_code_complete_or_correspondence_incomplete",
   "coverage": {
-    "formula_audit_file_count": 27,
+    "formula_audit_file_count": 39,
     "parsed_formula_row_count": 263,
     "coverage_status": "TOPIC_FORMULA_AUDITS_INVENTORIED_NOT_CODE_COMPLETE",
     "missing_scope": [

@@ -113,3 +113,11 @@ physical impact -> generated trace R_gen -> declared carrier -> receiver/detecto
 - A non-closed effective subsystem must not be promoted to a claim that the whole universe is globally open. A closed-limit correspondence to standard mechanics or GR remains a target gate, not an established result.
 
 The central registry and dependency graph are controlling. New impact/effect or carrier work must remain `CANDIDATE`, `INTERNAL`, `SIMULATION_ONLY`, or `BLOCKED` until F0-F8 are complete.
+## Additional lane rules recorded 2026-08-01
+
+- resource_selection_dynamic_game_v1 is a non-agentic interaction-selection
+  comparator: interaction/payoff and cost vectors are constitutive inputs, not
+  intent or a universal optimizer.
+- matter_space_characteristic_cone_v1 is a selected normalized finite-cone
+  candidate only. Its compact-support result does not promote the conserved-C
+  changing-response branch or the default full operator.

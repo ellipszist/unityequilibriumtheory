@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "matter_space_research_program_gate",
-  "generated_at": "2026-07-26T05:09:54.827776+00:00",
+  "generated_at": "2026-08-01T14:39:15.794140+00:00",
   "source_snapshot_at": "2026-07-26T05:09:44.976742+00:00",
   "status": "BLOCKED",
   "program_state": "CANDIDATE_WITH_BLOCKED_PHYSICAL_INTERPRETATION",
@@ -32,7 +32,7 @@
     },
     "core_dependency_gate": {
       "path": "docs/core/artifacts/matter_space_dependency_gate.json",
-      "sha256": "35f4680a36fad8a440500dab1303730a6a178f7d7c74d550356c121489d4b312",
+      "sha256": "5af4debf7c189ac255d074eaaf1dbab7515721d480f200d6cb56c13b3a52ede5",
       "status": "BLOCKED",
       "controlling_blocker": "prearrival_leakage"
     },

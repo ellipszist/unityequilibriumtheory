@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_wave3_wave10_research_program",
-  "generated_at": "2026-07-29T19:50:04.898112+00:00",
+  "generated_at": "2026-08-01T14:41:57.615637+00:00",
   "program_scope": "UET Foundation-First Research Program Waves 0-10",
   "workflow": [
     "inventory",
@@ -43,7 +43,7 @@
         {
           "path": "docs/core/artifacts/uet_foundation_equation_inventory.json",
           "exists": true,
-          "sha256": "378b777a19554dc96b1d58c26cd522fe9ddc45176bee87d14ecc6f24c646f143",
+          "sha256": "937162f9b3ca960334f72c261aa92bd042ae0d336988e224823b263e2678c702",
           "status": "PASS_WITH_DISCLOSED_GAPS",
           "controller": "topic_formula_audits_not_code_complete_or_correspondence_incomplete"
         }
@@ -61,8 +61,8 @@
         {
           "path": "docs/core/artifacts/uet_equation_correspondence_registry.json",
           "exists": true,
-          "sha256": "ee04478b3939c990aed31a5f00491d54359f6b398a1b2ff94ab06e47c4c05151",
-          "status": "INITIAL_SEED_PLUS_CANDIDATE_ADDENDA_BLOCKED",
+          "sha256": "a8738405c493ea4d39ead7b91aceaec05ce1ecd1523a2337f33650969dc722b8",
+          "status": "CENTRAL_REGISTRY_WITH_CANDIDATE_ADDENDA_BLOCKED",
           "controller": "not_declared"
         },
         {
@@ -109,12 +109,26 @@
     {
       "wave": 3,
       "name": "Mathematical closure and causal two-arm decision",
-      "local_evidence_status": "BLOCKED",
-      "effective_status": "BLOCKED",
+      "local_evidence_status": "PASS_WITH_DEFERRED_CONSERVED_BRANCH",
+      "effective_status": "PASS_WITH_DEFERRED_CONSERVED_BRANCH",
       "dependency_blocked": false,
-      "controlling_blocker": "construct a characteristic/staggered or otherwise causal discrete integrator and rerun pre-arrival leakage without cone padding or clipping",
-      "claim_ceiling": "conserved-C comparator plus candidate non-conserved finite-cone C; no physical promotion",
+      "controlling_blocker": "rerun full coupled verification and add an explicit observable mapping; keep the conserved-C changing-response branch and the default full candidate blocked",
+      "claim_ceiling": "selected characteristic finite-cone candidate plus conserved-C comparator; no physical promotion",
       "inputs": [
+        {
+          "path": "docs/core/artifacts/matter_space_causal_lane_selection.json",
+          "exists": true,
+          "sha256": "a3afa2d01c1a3676b1ba143c3bc8dbfa87b07f797832d01e9881c94b08a59dcd",
+          "status": "PASS_WITH_DEFERRED_CONSERVED_BRANCH",
+          "controller": "rerun full coupled verification and add an explicit observable mapping; keep the conserved-C changing-response branch and the default full candidate blocked"
+        },
+        {
+          "path": "docs/core/artifacts/matter_space_characteristic_cone_verification.json",
+          "exists": true,
+          "sha256": "fcc79d5b7aaa981b6c4afe773bc31a6ed787772f6a51dd60384265fcfe0ed940",
+          "status": "INTERNAL_CANDIDATE",
+          "controller": "integrate the selected finite-cone lane into the shared matter-space ledger and derive its units/observable map"
+        },
         {
           "path": "docs/core/artifacts/matter_space_causal_lane_comparison.json",
           "exists": true,
@@ -155,9 +169,16 @@
           "controller": "not_declared"
         },
         {
+          "path": "docs/core/artifacts/resource_selection_thermal_bridge_verification.json",
+          "exists": true,
+          "sha256": "93c69c13b0f9dc4bd84b5d16f112e89fb6ec5598fcc5497bea47a4676b96a41f",
+          "status": "INTERNAL_DIAGNOSTIC",
+          "controller": "source-lock one physical material lane with work/heat/temperature units, uncertainty, and an observable map before external validation"
+        },
+        {
           "path": "docs/core/artifacts/matter_space_research_program_gate.json",
           "exists": true,
-          "sha256": "5dd66ac4b4fec2005b8d61cf8ca30dd2a4d0c678c46522b88dc591b8e6977405",
+          "sha256": "a1e56f2440c94dfd73ce3010a324e6b0b73bf1164d72e2ddcbebaee2f255fe8c",
           "status": "BLOCKED",
           "controller": "core_prearrival_leakage"
         }
@@ -178,6 +199,13 @@
           "sha256": "06eb4f686b3c436e345877acccacfc69c1f62c9fa1fa8f0e4d62c2f5381b119d",
           "status": "INTERNAL_DIAGNOSTIC",
           "controller": "repair inherited causal-support discretization and separately execute Topic 0.11 replicate/temporal acquisition"
+        },
+        {
+          "path": "docs/core/artifacts/matter_space_topic_pilot_sync.json",
+          "exists": true,
+          "sha256": "491d6f0ec7af7687d113c75d410dcca3eb6dd0813e11dfd594e34c087a4644ab",
+          "status": "PASS_WITH_INHERITED_BLOCKERS",
+          "controller": "rerun 0.11 and 0.13 under the selected characteristic lane only after lane-specific preregistration and observable/units contracts are locked"
         },
         {
           "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_matter_space_phase_coupling_diagnostic.json",
@@ -204,6 +232,13 @@
       "controlling_blocker": "core_prearrival_leakage",
       "claim_ceiling": "simulation-only Fourier/Cattaneo/trace comparator; external validation blocked",
       "inputs": [
+        {
+          "path": "docs/core/artifacts/matter_space_topic_pilot_sync.json",
+          "exists": true,
+          "sha256": "491d6f0ec7af7687d113c75d410dcca3eb6dd0813e11dfd594e34c087a4644ab",
+          "status": "PASS_WITH_INHERITED_BLOCKERS",
+          "controller": "rerun 0.11 and 0.13 under the selected characteristic lane only after lane-specific preregistration and observable/units contracts are locked"
+        },
         {
           "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_control.json",
           "exists": true,
@@ -372,9 +407,28 @@
   ],
   "causal_decision": {
     "conserved_C": "parabolic/conserved phase comparator; no changing-C finite-cone claim",
-    "finite_cone_C": "non-conserved telegraph candidate; numerical compact-support gate remains open",
+    "finite_cone_C": "selected non-conserved characteristic candidate passes its normalized compact-support contract and public adapter smoke gate",
+    "default_full_candidate": "blocked; original nonlinear Heun lane retains pre-arrival leakage above threshold",
     "conserved_Cattaneo": "negative control; high-k speed unbounded without UV/nonlocal regularization",
     "reference_lane": "strict-CFL compact-support control does not promote the full coupled candidate"
+  },
+  "persistence_program": {
+    "dynamic_selection": {
+      "status": "INTERNAL_DIAGNOSTIC",
+      "controller": "map behavior and maintenance costs to a measured work, heat, entropy, or failure-rate observable in one physical lane",
+      "artifact": "docs/core/artifacts/resource_selection_dynamic_game_verification.json"
+    },
+    "thermal_bridge": {
+      "status": "INTERNAL_DIAGNOSTIC",
+      "controller": "source-lock one physical material lane with work/heat/temperature units, uncertainty, and an observable map before external validation",
+      "artifact": "docs/core/artifacts/resource_selection_thermal_bridge_verification.json"
+    },
+    "claim_boundary": "normalized internal diagnostics only; physical work/heat/entropy mapping and external validation remain open"
+  },
+  "extended_wave_closure": {
+    "status": "PASS_WITH_DECLARED_DOWNSTREAM_BLOCKERS",
+    "controller": "complete foundation correspondence and dimensional observable gates, then revisit downstream waves in dependency order",
+    "artifact": "docs/core/artifacts/uet_foundation_extended_wave_closure.json"
   },
   "claim_boundary": {
     "allowed": [

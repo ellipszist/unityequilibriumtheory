@@ -31,18 +31,22 @@ production in a declared lane.
 
 ## Current decision
 
-The program remains `BLOCKED`. This is a dependency result, not a statement
+The program remains BLOCKED. This is a dependency result, not a statement
 that every local calculation failed.
 
 - The conserved-C lane is retained as a normalized phase/order comparator. Its
   changing-C gradient dynamics must not be described as a finite-cone law.
-- The non-conserved telegraph lane is a separate finite-cone candidate. Its
-  declared principal speed is finite, but the current full nonlinear numerical
-  implementation has pre-arrival leakage above the registered threshold.
-- A strict-CFL reference recurrence has compact discrete support in its narrow
-  declared scope. That control does not promote the full coupled candidate.
-- Wave 4–10 work is therefore retained as diagnostic, comparator, or
-  dependency-gated research. A downstream local `PASS` cannot override a
+- The selected non-conserved characteristic lane now passes its declared
+  normalized compact-support and ledger contract, and is reachable through the
+  explicit UETMasterEquation adapter. This is still a simulation-only candidate,
+  not a physical causality proof.
+- The original default/full nonlinear candidate remains blocked: its recorded
+  pre-arrival leakage is 1.76394e-2 against the 1e-6 threshold.
+- The persistence dynamic-selection and normalized thermal bridge now close
+  internal resource/work ledgers, but their physical work/heat/temperature/
+  entropy mapping remains open.
+- Wave 4-10 work is therefore retained as diagnostic, comparator, or
+  dependency-gated research. A downstream local PASS cannot override a
   blocked foundation gate.
 
 ## Wave status boundary
@@ -61,6 +65,41 @@ that every local calculation failed.
 | 9 | GR/orbit/cosmology | correspondence target | no global GR/open-universe closure |
 | 10 | Galaxy/cosmic comparisons | blocked comparison | full curves, history, holdout, raw-frame map |
 
+## 2026-08-01 closure update
+
+The latest completed internal waves add two useful distinctions:
+
+1. matter_space_characteristic_cone_v1 is a separate non-conserved
+   C_telegraph_candidate lane. Its strict-CFL reference has compact support and
+   a closed normalized ledger under the declared contract, while conserved-C and
+   the original full candidate remain blocked.
+2. resource_selection_dynamic_game_v1 turns the persistence idea into a
+   deterministic non-agentic interaction-selection comparator. Its declared
+   costs can be mapped to a normalized dissipated-work and bath-entropy proxy,
+   but the map is an explicit input, not a fitted or derived SI conversion.
+
+These results narrow the research question from "find a universal identity for C"
+to "test which lane-specific physical realization and observable operator can
+carry the collective interaction coordinate." They do not establish that C is
+mass, that normalized resource is physical energy, or that the universe is
+globally open.
+## Downstream wave closure status
+
+The downstream program is now status-accounted in
+uet_foundation_extended_wave_closure.json:
+
+- Wave 7: conditional O(2) EOS and ideal covariant structure; physical Kubo
+  coefficients, finite-temperature completion, and SI remain open.
+- Wave 8: impact/effect core passes locally, but carrier and detector maps remain
+  blocked; the observer thought experiment is simulation-only.
+- Wave 9: gravity/orbit/cosmology remains blocked by covariant transport,
+  curved 3+1, and global-boundary/observable gaps.
+- Wave 10: galaxy and cosmic comparisons remain blocked or warning-level; no
+  dark-matter replacement or global cosmic-law claim is enabled.
+- Wave 11: particle/Dirac/neutrino/antimatter work is deferred until the
+  covariant action, spinor/current, CPT, and detector correspondence gates exist.
+
+This closes the accounting of planned waves, not the physics of those waves.
 ## Claim ceiling
 
 The current allowed language is `candidate collective-behaviour coordinate`,

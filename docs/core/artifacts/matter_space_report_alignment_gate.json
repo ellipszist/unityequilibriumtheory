@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "artifact": "matter_space_report_alignment_gate",
-  "generated_at": "2026-07-26T05:10:51.704888+00:00",
-  "source_snapshot_at": "2026-07-26T05:09:54.827776+00:00",
+  "generated_at": "2026-08-01T14:39:46.803827+00:00",
+  "source_snapshot_at": "2026-08-01T14:39:15.794140+00:00",
   "status": "WARN",
   "alignment_status": "PASS_WITH_HISTORICAL_BASE_REPORT_WARN",
   "evidence_status": "POST_WAVE10_ADDENDUM_ALIGNED_BASE_SNAPSHOT_RETAINED",
@@ -14,7 +14,7 @@
   "input_artifacts": {
     "matter_space_program": {
       "path": "docs/core/artifacts/matter_space_research_program_gate.json",
-      "sha256": "5dd66ac4b4fec2005b8d61cf8ca30dd2a4d0c678c46522b88dc591b8e6977405",
+      "sha256": "a1e56f2440c94dfd73ce3010a324e6b0b73bf1164d72e2ddcbebaee2f255fe8c",
       "status": "BLOCKED",
       "controlling_blocker": "core_prearrival_leakage"
     },
@@ -70,8 +70,8 @@
     },
     "topic_readiness": {
       "path": "docs/meta/topic_readiness.json",
-      "sha256": "c001c6b6e11bef6cb9a97ebe807b6ea550c3d5ff50c509bd2c7bd39a26ecd70b",
-      "bytes": 28248
+      "sha256": "faec88ebc61ff8cfe2ea097e81f9cf39142c6b5f51add9fe777e5c3c49b49fac",
+      "bytes": 27127
     }
   },
   "canonical_topics": {

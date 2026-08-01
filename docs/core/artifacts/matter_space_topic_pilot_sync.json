@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "artifact": "matter_space_topic_pilot_sync",
+  "audit_status": "PASS_WITH_INHERITED_BLOCKERS",
+  "claim_status": "INTERNAL_DIAGNOSTIC_ONLY",
+  "selected_core_lane": {
+    "operator_mode": "matter_space_characteristic_cone_v1",
+    "status": "CANDIDATE_NORMALIZED_FINITE_CONE",
+    "claim_status": "SIMULATION_ONLY",
+    "artifact": "docs/core/artifacts/matter_space_characteristic_cone_verification.json"
+  },
+  "topic_0_11": {
+    "status": "SYNCED_INTERNAL_DIAGNOSTIC",
+    "source_artifact": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_matter_space_phase_coupling_diagnostic.json",
+    "prior_operator_mode": "matter_space_coupled_v1",
+    "selected_lane_available": true,
+    "rerun_status": "NOT_RERUN; existing artifact is not relabelled as characteristic-lane evidence",
+    "controller": "ch_finite_k_replicate_temporal_acquisition_plan_defined_execution_open",
+    "claim_boundary": "normalized simulation-only diagnostic; no universality, mass-generation, particle, or empirical claim"
+  },
+  "topic_0_13": {
+    "status": "SYNCED_SIMULATION_ONLY",
+    "source_artifact": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_control.json",
+    "prior_operator_mode": "matter_space_coupled_v1_homogeneous_reduction_plus_spatial_causal_control",
+    "selected_lane_available": true,
+    "rerun_status": "NOT_RERUN; existing artifact keeps its prearrival and source-package blockers",
+    "controller": "core_prearrival_leakage",
+    "claim_boundary": "Fourier/Cattaneo/trace and normalized matter-space diagnostic; no external validation or SI C-to-T identity"
+  },
+  "new_internal_bridge": {
+    "artifact": "docs/core/artifacts/resource_selection_thermal_bridge_verification.json",
+    "status": "PASS_WITH_OPEN_THERMAL_MAPPING",
+    "claim_boundary": "The declared interaction costs can close a normalized dissipated-work and bath-entropy proxy ledger. This supports an internal observable bridge only; it does not derive physical work, heat, temperature, or entropy from UET."
+  },
+  "checks": {
+    "selected_characteristic_lane_passes": true,
+    "phase_pilot_remains_internal_simulation_only": true,
+    "phase_pilot_controller_preserved": true,
+    "thermal_pilot_remains_simulation_only": true,
+    "thermal_prearrival_blocker_preserved": true,
+    "thermal_mapping_boundary_preserved": true,
+    "external_validation_not_claimed": true
+  },
+  "next_controller": "rerun 0.11 and 0.13 under the selected characteristic lane only after lane-specific preregistration and observable/units contracts are locked"
+}

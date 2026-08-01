@@ -18,6 +18,8 @@ REGISTRY = ROOT / "docs/core/artifacts/uet_equation_correspondence_registry.json
 ADDENDA = (
     ROOT / "docs/core/artifacts/uet_equation_correspondence_registry_impact_effect_addendum.json",
     ROOT / "docs/core/artifacts/uet_equation_correspondence_registry_cosmology_addendum.json",
+    ROOT / "docs/core/artifacts/uet_equation_correspondence_registry_persistence_addendum.json",
+    ROOT / "docs/core/artifacts/uet_equation_correspondence_registry_wave_addendum.json",
 )
 
 
@@ -65,7 +67,7 @@ def main() -> int:
         {
             "schema_version": "1.1",
             "generated_at": date.today().isoformat(),
-            "status": "INITIAL_SEED_PLUS_CANDIDATE_ADDENDA_BLOCKED",
+            "status": "CENTRAL_REGISTRY_WITH_CANDIDATE_ADDENDA_BLOCKED",
             "coverage": coverage,
             "entries": entries,
             "merge_history": {

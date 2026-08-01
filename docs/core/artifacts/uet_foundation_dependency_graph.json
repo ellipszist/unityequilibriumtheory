@@ -1,7 +1,7 @@
 {
   "schema_version": "uet-foundation-dependency-graph-v1",
   "artifact": "uet_foundation_dependency_graph",
-  "generated_at": "2026-07-29",
+  "generated_at": "2026-08-01",
   "status": "BLOCKED",
   "claim_ceiling": "candidate normalized effective model, candidate collective-behaviour coordinate, derived history observable, and simulation-only diagnostics",
   "status_rule": "a blocked upstream node prevents downstream PASS or physical promotion",
@@ -35,11 +35,6 @@
       "id": "impact_effect.relation",
       "status": "CANDIDATE",
       "controller": "carrier-specific conservation, units, and detector map"
-    },
-    {
-      "id": "matter_space.finite_cone_c_candidate",
-      "status": "CANDIDATE",
-      "controller": "numerical_compact_support_not_yet_closed; SI and observable mapping remain blocked"
     },
     {
       "id": "phase_pilot.0.11",
@@ -90,20 +85,8 @@
       "to": "matter_space.core"
     },
     {
-      "from": "foundation.units",
-      "to": "matter_space.finite_cone_c_candidate"
-    },
-    {
       "from": "matter_space.core",
       "to": "impact_effect.relation"
-    },
-    {
-      "from": "matter_space.finite_cone_c_candidate",
-      "to": "phase_pilot.0.11"
-    },
-    {
-      "from": "matter_space.finite_cone_c_candidate",
-      "to": "thermal_pilot.0.13"
     },
     {
       "from": "matter_space.core",

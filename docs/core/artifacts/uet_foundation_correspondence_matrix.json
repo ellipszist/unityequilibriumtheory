@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_foundation_correspondence_matrix",
-  "generated_at": "2026-07-26",
+  "generated_at": "2026-08-01",
   "audit_status": "PASS",
   "matrix_status": "BLOCKED",
   "coverage": {
@@ -377,20 +377,22 @@
       "core_compatibility_finding": {
         "finding_id": "legacy_potential_derivative_pair",
         "equation_family": "uet.legacy.master_potential",
-        "status": "CONTRADICTION",
-        "severity": "critical",
+        "status": "COMPATIBLE_CONDITIONAL",
+        "severity": "medium",
         "declared_relation": "V(C)=alpha/2*(C^2-C0^2)^2+gamma/4*(C^2-C0^2)^4",
-        "observed_relation": "dynamics uses alpha*(C-C0)+gamma*(C-C0)^3",
-        "interpretation": "The declared reaction is not the functional derivative of the declared potential. This is an implementation-level mathematical conflict, not merely an unproven physical interpretation.",
-        "old_theory_relation": "The legacy potential cannot currently be treated as a valid variational gradient-flow baseline. A standard theory can only be recovered after the pair is repaired or the derivative is explicitly relabeled as a separate comparator.",
+        "observed_relation": "legacy_variational_v1 uses the exact radial derivative; legacy_local retains a named historical comparator",
+        "interpretation": "The canonical opt-in lane closes the declared potential/derivative pair. The historical reaction remains intentionally non-variational and is quarantined as a comparator.",
+        "old_theory_relation": "The old implementation is not globally variational, but its default behavior is preserved and a separately named canonical lane is available for variational checks.",
         "evidence": [
           {
             "path": "docs/core/uet_master_equation.py",
             "kind": "source_contract",
             "details": {
               "potential_uses_squared_state": true,
-              "derivative_uses_linear_shift": true,
-              "dynamics_calls_declared_derivative": true
+              "exact_derivative_function_present": true,
+              "canonical_mode_present": true,
+              "dynamics_selects_exact_derivative_in_canonical_mode": true,
+              "legacy_comparator_present": true
             }
           }
         ],
@@ -404,12 +406,14 @@
             1.5,
             2.0
           ],
-          "max_absolute_residual": 13.674999999999999,
-          "threshold": 1e-10,
+          "canonical_max_absolute_residual": 3.671978276997834e-10,
+          "legacy_comparator_max_absolute_residual": 13.675000000367197,
+          "threshold": 1e-08,
           "analytic_derivative": "2*C*(alpha*(C^2-C0^2)+gamma*(C^2-C0^2)^3)",
-          "coded_derivative": "alpha*(C-C0)+gamma*(C-C0)^3"
+          "legacy_comparator_derivative": "alpha*(C-C0)+gamma*(C-C0)^3",
+          "legacy_behavior_preserved": true
         },
-        "next_action": "Do not use the legacy potential as a derivation source until the derivative pair is repaired and reverified; preserve the current behavior as LEGACY."
+        "next_action": "Use legacy_variational_v1 for variational claims; do not promote legacy_local comparator behavior without a separate derivation."
       }
     },
     {
@@ -471,6 +475,24 @@
                 "0.17_Mass_Generation",
                 "0.20_Atomic_Physics"
               ],
+              "causal_lane_decision": {
+                "conserved_C_lane": {
+                  "status": "BLOCKED_FOR_CHANGING_C_FINITE_CONE",
+                  "controller": "conserved_C_gradient_term_has_unbounded_k4_characteristic_speed",
+                  "allowed_role": "normalized_conserved_phase_comparator"
+                },
+                "finite_cone_C_lane": {
+                  "status": "CANDIDATE",
+                  "operator_mode": "matter_space_finite_cone_c_v1",
+                  "controller": "numerical_compact_support_not_yet_closed",
+                  "allowed_role": "normalized_nonconserved_collective_response candidate"
+                },
+                "conserved_Cattaneo_branch": {
+                  "status": "BLOCKED",
+                  "controller": "high_k_group_speed_unbounded_when_kappa_C_positive",
+                  "allowed_role": "negative control until UV/nonlocal regularization"
+                }
+              },
               "blocked_claims": [
                 "space response as established spacetime geometry",
                 "antimatter, positron, neutrino, or Dirac derivation",

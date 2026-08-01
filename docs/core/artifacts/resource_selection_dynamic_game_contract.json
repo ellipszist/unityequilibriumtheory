@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "artifact": "resource_selection_dynamic_game_contract",
+  "operator_mode": "resource_selection_dynamic_game_v1",
+  "status": "INTERNAL_DIAGNOSTIC",
+  "principle_id": "UET-PRINCIPLE-001",
+  "unit_lane": "normalized",
+  "physical_mapping_status": "OPEN",
+  "formula_ids": [
+    "SELECTION-STATE-001",
+    "SELECTION-C-002",
+    "SELECTION-LEDGER-003"
+  ],
+  "verifier_artifact": "docs/core/artifacts/resource_selection_dynamic_game_verification.json",
+  "no_intentionality": true,
+  "no_parameter_fitting": true,
+  "claim_boundary": "candidate non-agentic interaction-selection comparator; simulation-only",
+  "next_controller": "map behavior and maintenance costs to a measured work, heat, entropy, or failure-rate observable in one physical lane"
+}
