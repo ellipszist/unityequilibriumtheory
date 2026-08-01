@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_wave3_wave10_research_program",
-  "generated_at": "2026-08-01T17:44:46.802781+00:00",
+  "generated_at": "2026-08-01T17:49:16.241713+00:00",
   "program_scope": "UET Foundation-First Research Program Waves 0-10",
   "workflow": [
     "inventory",
@@ -107,7 +107,7 @@
         {
           "path": "docs/core/artifacts/o2_eos_formula_audit.json",
           "exists": true,
-          "sha256": "eedc57d060a57cd5497fb5aaf971fbeaedbcc9ad85cfd33bdefaa7b60d61b657",
+          "sha256": "920ba94b69b59c01feacac02476233d59a04a8823a4e8c4f2af8aa9aa6a65975",
           "status": "WARN",
           "controller": "not_declared"
         }
@@ -323,21 +323,21 @@
         {
           "path": "docs/core/artifacts/o2_finite_density_eos_verification.json",
           "exists": true,
-          "sha256": "57d64cd102ecb4da1683d98f6f6f3491ec93e07609d2fe5e317c930d80780d0a",
+          "sha256": "9113d083f29ced8e5d61fad2eb0c2adcb89b5c78f3438cd0e83df08bea2cdc85",
           "status": "PASS",
           "controller": "covariant_superfluid_kubo_transport_and_entropy_matching_missing"
         },
         {
           "path": "docs/core/artifacts/covariant_superfluid_transport_verification.json",
           "exists": true,
-          "sha256": "de5a566a5a86e0337182dfab091b87ca555dca0b882c6113feebe4c6d2d2edad",
+          "sha256": "e690b0206e99504a95b1446a4efccd5422e0b97df9853f7baa0c975701c57fb8",
           "status": "PASS",
           "controller": "not_declared"
         },
         {
           "path": "docs/core/artifacts/uet_gr_research_program_gate.json",
           "exists": true,
-          "sha256": "55f822f280c824c0b03398a12626a2544d71437ec588907b44343023658a7309",
+          "sha256": "0f8d75c0f13278e9b4d78167c4db5ca6674872274bb0b162409aa34fe1a23bd1",
           "status": "BLOCKED",
           "controller": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing"
         }
@@ -355,35 +355,35 @@
         {
           "path": "docs/core/artifacts/impact_effect_core_verification.json",
           "exists": true,
-          "sha256": "dc3d45b11eacc77e8408c2c30674ce882324125fa32010656f45914995d16e6a",
+          "sha256": "51df8d9486965b8cc60556ea3e359b2ac16be8efe2d068a4b6a11bdbfd59cddf",
           "status": "PASS",
           "controller": "add carrier-specific conservation, units, detector maps, and falsification tests without fitting"
         },
         {
           "path": "docs/core/artifacts/impact_effect_dependency_gate.json",
           "exists": true,
-          "sha256": "81623233e863987b4f7afc3469e1168aa3c91ab5b67c2041457fea44a63868f7",
+          "sha256": "16bc5d47d7b747de4c832561a0301e902a9f48698743d34feac8bee3c7086ebf",
           "status": "BLOCKED",
           "controller": "foundation correspondence, units, and carrier/detector maps are incomplete"
         },
         {
           "path": "docs/core/artifacts/carrier_neutral_comparator_contract.json",
           "exists": true,
-          "sha256": "c09b255c61803e985fec97338a57d56f237688c28613bd69811e3cb04868c1a7",
+          "sha256": "04eba8402222af44fae00a0a2b78c56a81252c796d633c1a7c501c127f9e65e9",
           "status": "BLOCKED",
           "controller": "source-lock one carrier lane and close its dimensional detector map after upstream phase/core gates"
         },
         {
           "path": "docs/core/artifacts/carrier_observer_thought_experiment.json",
           "exists": true,
-          "sha256": "96386e74b6aa5965c587d71f758c52b9682c7a0b6acda135dff72a7362d33be7",
+          "sha256": "88bfaae9fddf91a46a0ff7d5c60c6820623a890b15f6915a20cd1011e5ce0c0a",
           "status": "SIMULATION_ONLY",
           "controller": "source-lock a dimensional photon detector map after foundation and carrier gates close"
         },
         {
           "path": "docs/core/artifacts/photon_observer_baseline_verification.json",
           "exists": true,
-          "sha256": "89297caab9742a91d69de44b52308d154245a51913c472cccaee9eef282cca3d",
+          "sha256": "6990cfd534dc6d3296b8ae891704c0a920b30a0b0436148ab6cd8eb4175fe82f",
           "status": "PASS_WITH_OPEN_DIMENSIONAL_AND_UET_MAPPING",
           "controller": "source-lock SI detector/observable package and separately derive or reject any UET source-to-carrier transition law"
         }
@@ -422,7 +422,7 @@
         {
           "path": "docs/core/artifacts/uet_gr_research_program_gate.json",
           "exists": true,
-          "sha256": "55f822f280c824c0b03398a12626a2544d71437ec588907b44343023658a7309",
+          "sha256": "0f8d75c0f13278e9b4d78167c4db5ca6674872274bb0b162409aa34fe1a23bd1",
           "status": "BLOCKED",
           "controller": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing"
         },

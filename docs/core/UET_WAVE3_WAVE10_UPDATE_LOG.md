@@ -154,3 +154,9 @@ ceiling changed.
 Wave 5 evidence now consumes the executed finite-size replication artifact rather than the older plan-defined execution state. The result is `WARN` with 18/18 stable positive-margin cases, but `grid_replication_gate` and `seed_set_generalization_gate` remain blocked (`L=16: 4/6`; fresh seed set: `7/9` overall, `1/3` at `L=16`). The controlling blocker is `spectral_core_finite_size_replication_not_robust`.
 
 This is a blocker-narrowing update only. Topic 0.11 remains internal diagnostic / foundation-blocked, and exponent, universality, material, RG, and external-validation claims remain closed.
+
+## 2026-08-02 ? Wave 7?8 verifier refresh
+
+The existing Wave 7?8 verifier suite was rerun. O(2) EOS remains a tree-level mean-field derivation with `audit_status=PASS`; ideal covariant/synthetic transport remains locally `PASS` but the Kubo/finite-temperature/curved-dynamics dependency is `BLOCKED`. Impact/effect core remains `PASS`; carrier-neutral and photon observer lanes retain their declared normalized-comparator boundaries, with dimensional detector and UET source-to-carrier mappings open.
+
+The 39 focused Wave 7?8 tests passed. This refresh changes no claim ceiling: no microscopic transport coefficient, photon/neutrino/positron identity, or UET carrier transition law is promoted.

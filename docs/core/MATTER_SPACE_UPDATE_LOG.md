@@ -289,3 +289,9 @@ promoted.
 The selected Topic 0.11 finite-size replication script was executed at its locked settings (`L=8,12,16`, two seed sets, three seeds per set, 18 cases, 4000 steps). The generated artifact returned `WARN`: all 18/18 cases were stable with positive spinodal margin, while `L=16` passed 4/6 cases and the fresh seed set passed 7/9 overall and 1/3 at `L=16`.
 
 This narrows the Topic 0.11 controller from plan-defined execution to `spectral_core_finite_size_replication_not_robust`. No estimator, exponent, universality, external-validation, or Tier A promotion is allowed. The core foundation and pre-arrival leakage blockers remain unchanged.
+
+## 2026-08-02 ? Wave 7?8 verifier refresh
+
+Reran the existing O(2) finite-density EOS, covariant-superfluid transport, impact/effect, carrier-neutral, photon-observer, and observer-thought-experiment verifiers. The EOS verification remains `PASS` with evidence class `TREE_LEVEL_MEAN_FIELD_DERIVATION`; the covariant transport verification remains `PASS` only for the declared ideal/synthetic control and its dependency remains `BLOCKED` for physical Kubo coefficients, finite-temperature completion, and curved 3+1 dynamics. Impact/effect core remains locally `PASS`, while carrier/detector and dimensional UET mappings remain blocked. The photon lane remains a `PASS_WITH_OPEN_DIMENSIONAL_AND_UET_MAPPING` normalized comparator.
+
+This is an evidence/provenance refresh with no claim promotion. The rerun confirms that Wave 7 and Wave 8 are internally accounted for but not physically closed.
