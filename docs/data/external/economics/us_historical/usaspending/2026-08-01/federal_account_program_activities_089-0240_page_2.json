@@ -1,0 +1,75 @@
+{
+  "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+  "error": null,
+  "provider": "USAspending.gov / U.S. Treasury",
+  "request": {
+    "url": "https://api.usaspending.gov/api/v2/federal_accounts/089-0240/program_activities/?page=2"
+  },
+  "response": {
+    "page_metadata": {
+      "hasNext": true,
+      "hasPrevious": true,
+      "limit": 10,
+      "next": 3,
+      "page": 2,
+      "previous": 1,
+      "total": 34
+    },
+    "results": [
+      {
+        "code": "0161",
+        "name": "COUNTERTERRORISM AND COUNTERPROLIFERATION",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0150",
+        "name": "NUCLEAR COUNTERTERRORISM INCIDENT RESPONSE",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0075",
+        "name": "NUCLEAR COUNTERTERRORISM AND INCIDENT RESPONSE",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0075",
+        "name": "NUCLEAR COUNTERTERRORISM INCIDENT RESPONSE",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0034",
+        "name": "SITE STEWARDSHIP",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0033",
+        "name": "LEGACY CONTRACTOR PENSIONS",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0032",
+        "name": "DEFENSE NUCLEAR SECURITY",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0031",
+        "name": "INFORMATION TECHNOLOGY AND CYBERSECURITY",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0030",
+        "name": "INFRASTRUCTURE AND OPERATIONS",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0029",
+        "name": "INFRASTRUCTURE AND SAFETY",
+        "type": "PAC/PAN"
+      }
+    ]
+  },
+  "retrieval_timestamp_utc": "2026-08-01T13:54:39.398500+00:00",
+  "retrieval_vintage": "2026-08-01",
+  "schema_version": "1.0",
+  "source_url": "https://api.usaspending.gov/api/v2/federal_accounts/089-0240/program_activities/?page=2"
+}

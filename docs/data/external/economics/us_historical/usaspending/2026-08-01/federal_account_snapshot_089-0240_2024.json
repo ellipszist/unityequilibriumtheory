@@ -1,0 +1,24 @@
+{
+  "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+  "error": null,
+  "provider": "USAspending.gov / U.S. Treasury",
+  "request": {
+    "url": "https://api.usaspending.gov/api/v2/federal_accounts/5787/fiscal_year_snapshot/2024/"
+  },
+  "response": {
+    "results": {
+      "appropriations": 19108000000.0,
+      "balance_brought_forward": 870972929.46,
+      "budget_authority": 24318422753.04,
+      "name": "Weapons Activities, National Nuclear Security Administration, Energy",
+      "obligated": 23637473396.0,
+      "other_budgetary_resources": 4339449823.58,
+      "outlay": 21572069455.21,
+      "unobligated": 680949357.04
+    }
+  },
+  "retrieval_timestamp_utc": "2026-08-01T13:54:35.820479+00:00",
+  "retrieval_vintage": "2026-08-01",
+  "schema_version": "1.0",
+  "source_url": "https://api.usaspending.gov/api/v2/federal_accounts/5787/fiscal_year_snapshot/2024/"
+}

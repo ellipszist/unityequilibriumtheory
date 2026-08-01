@@ -225,6 +225,16 @@
     {
       "command": [
         "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Code\\03_Research\\Research_UET_USASpending_Federal_Account_Budget_Resource_Audit.py"
+      ],
+      "exit_code": 0,
+      "script": "docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_UET_USASpending_Federal_Account_Budget_Resource_Audit.py",
+      "stderr_tail": "",
+      "stdout_tail": "USAspending federal-account budget-resource audit: PASS_WITH_BOUNDARY accounts 2 failures 0\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
         "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Code\\03_Research\\Research_UET_Payer_Resource_Join_Readiness.py"
       ],
       "exit_code": 0,
@@ -837,7 +847,7 @@
         "start_year": 1959
       },
       "formula_boundary": "R/N/K/I are dimensionless proxy constructs after the stated transformations; they are not a dimensional identity.",
-      "generated_at_utc": "2026-08-01T13:46:28.375954+00:00",
+      "generated_at_utc": "2026-08-01T13:58:37.985670+00:00",
       "input_hashes": [
         {
           "path": "docs/data/external/economics/us_historical/fred/2026-07-12/M2SL.csv",
@@ -1874,7 +1884,7 @@
             "089-0314"
           ]
         },
-        "generated_at_utc": "2026-08-01T13:46:59.662716+00:00",
+        "generated_at_utc": "2026-08-01T13:59:11.148585+00:00",
         "interpretation": "The public award-funding endpoint links the fixed awards to federal accounts, account titles, funding agencies, object classes, and reported gross outlays for FY2024. It does not identify the Treasury financing instrument or a bank settlement counterparty.",
         "limitations": [
           "The ten-award sample is deterministic but nonrepresentative.",
@@ -1908,7 +1918,7 @@
           "rows_returned": 10,
           "sample_size_requested": 10
         },
-        "generated_at_utc": "2026-08-01T13:46:58.229070+00:00",
+        "generated_at_utc": "2026-08-01T13:59:09.654316+00:00",
         "interpretation": "Award-level account outlay and obligation fields are observable for the fixed sample, but they are accounting totals, not evidence of bank settlement, supplier invoice payment, or financing-source provenance.",
         "limitations": [
           "The ten-award sample is deterministic but nonrepresentative and must not be generalized to all DOE awards.",
@@ -1947,7 +1957,7 @@
           "no_imputation": true,
           "start_date": "2023-10-01"
         },
-        "generated_at_utc": "2026-08-01T13:46:56.820770+00:00",
+        "generated_at_utc": "2026-08-01T13:59:08.147276+00:00",
         "limitations": [
           "USAspending grouped result is a prime-award obligation total, not a bank settlement total.",
           "Treasury MTS Department of Energy outlays cover agency programs and may include outlays not tied to the sampled award universe.",
@@ -2008,7 +2018,7 @@
         "claim_boundary": "Benchmark-descriptive only. Do not infer annual flow dynamics, payer provenance, resource causality, innovation causality, or fiat-money causality from this artifact.",
         "controller_status": "BEA_1997_BENCHMARK_ONLY",
         "formula_id": "EC25-PAYER-RESOURCE-JOIN",
-        "generated_at_utc": "2026-08-01T13:46:51.105531+00:00",
+        "generated_at_utc": "2026-08-01T13:59:02.150086+00:00",
         "limitations": [
           "BEA explicitly cautions that benchmark input-output tables are not suitable as a time series.",
           "Make/use dollar cells are producers-prices millions of dollars; requirements tables are dimensionless coefficients.",
@@ -2458,7 +2468,7 @@
             2024
           ]
         },
-        "generated_at_utc": "2026-08-01T13:46:52.513992+00:00",
+        "generated_at_utc": "2026-08-01T13:59:03.640084+00:00",
         "incomplete_series": {},
         "limitations": [
           "The four-digit NAICS set is a concordance candidate, not a one-to-one equivalence to every BEA 1997 I-O industry code.",
@@ -2628,7 +2638,7 @@
         ],
         "claim_boundary": "This gate establishes source identity and a quality/access blocker only. It does not provide payment-level flows, causal evidence, or a payer-resource result.",
         "controller_status": "BLS_IO_QUALITY_AND_ACCESS_GATE",
-        "generated_at_utc": "2026-08-01T13:46:46.875610+00:00",
+        "generated_at_utc": "2026-08-01T13:58:57.580358+00:00",
         "provider_quality_notice": {
           "effect": "No matrix result may be used until the replacement or researcher ZIP is independently checked against the notice and archived with a hash.",
           "notice_date": "2026-02-06",
@@ -2692,7 +2702,7 @@
           ],
           "status": "BLOCKED"
         },
-        "generated_at_utc": "2026-08-01T13:47:22.809808+00:00",
+        "generated_at_utc": "2026-08-01T13:59:35.651992+00:00",
         "historical_energy_transition": {
           "blocker": "EIA historical 1776-1945 annual export is absent.",
           "status": "BLOCKED"
@@ -2746,7 +2756,7 @@
           ],
           "rows": 66
         },
-        "generated_at_utc": "2026-08-01T13:46:45.514989+00:00",
+        "generated_at_utc": "2026-08-01T13:58:56.148608+00:00",
         "payer_and_source_visibility": {
           "not_observable_from_this_table": [
             "individual payer-payee identity or invoice-level exchange",
@@ -3129,7 +3139,7 @@
           ],
           "status": "NOT_IDENTIFIED"
         },
-        "generated_at_utc": "2026-08-01T13:46:48.237883+00:00",
+        "generated_at_utc": "2026-08-01T13:58:59.032774+00:00",
         "payment_flow_scale": {
           "capital_formation": {
             "interpretation": "sector-level flow scale, not a payer identity or earmarked use",
@@ -3299,6 +3309,85 @@
           "transaction_tables": 165
         },
         "zip_path": "docs/data/external/economics/us_historical/fed_z1/2026-07-16/z1_csv_files.zip"
+      },
+      "federal_account_budget_resource": {
+        "account_records": [
+          {
+            "account_title": "Weapons Activities, National Nuclear Security Administration, Energy",
+            "agency_identifier": "089",
+            "agency_name": "Department of Energy",
+            "appropriations_usd": 19108000000.0,
+            "balance_brought_forward_usd": 870972929.46,
+            "budget_authority_minus_obligation_minus_unobligated_usd": 0.0,
+            "budget_authority_usd": 24318422753.04,
+            "bureau_name": "National Nuclear Security Administration",
+            "federal_account": "089-0240",
+            "internal_account_id": 5787,
+            "obligated_usd": 23637473396.0,
+            "other_budgetary_resources_usd": 4339449823.58,
+            "outlay_usd": 21572069455.21,
+            "program_activity_rows": 34,
+            "snapshot_fiscal_year": 2024,
+            "tas_rows": 21,
+            "unobligated_usd": 680949357.04
+          },
+          {
+            "account_title": "Naval Reactors, National Nuclear Security Administration, Energy",
+            "agency_identifier": "089",
+            "agency_name": "Department of Energy",
+            "appropriations_usd": 1853200000.0,
+            "balance_brought_forward_usd": 33015385.32,
+            "budget_authority_minus_obligation_minus_unobligated_usd": -0.0,
+            "budget_authority_usd": 1886215385.32,
+            "bureau_name": "National Nuclear Security Administration",
+            "federal_account": "089-0314",
+            "internal_account_id": 5801,
+            "obligated_usd": 1859189504.77,
+            "other_budgetary_resources_usd": 0.0,
+            "outlay_usd": 1869684656.65,
+            "program_activity_rows": 12,
+            "snapshot_fiscal_year": 2024,
+            "tas_rows": 16,
+            "unobligated_usd": 27025880.55
+          }
+        ],
+        "accounting_identity_check": {
+          "formula": "budget_authority = obligated + unobligated",
+          "interpretation": "rounded account-reporting identity check; not a financing-source or settlement test",
+          "max_abs_residual_usd": 0.0,
+          "status": "PASS",
+          "tolerance_usd": 0.01
+        },
+        "claim_boundary": "This artifact supports bounded federal-account budget-resource provenance only. It does not establish tax-versus-debt-versus-money-creation funding, supplier payment, profit funding, or physical-resource transformation.",
+        "controller_status": "FEDERAL_ACCOUNT_BUDGET_RESOURCE_BOUNDARY",
+        "coverage": {
+          "accounts_with_profile_and_snapshot": 2,
+          "fiscal_year": 2024,
+          "no_imputation": true,
+          "requested_accounts": 2
+        },
+        "generated_at_utc": "2026-08-01T13:59:12.683989+00:00",
+        "interpretation": "USAspending account snapshots report budget authority, appropriations, other budgetary resources, obligations, outlays, and unobligated balances for federal reporting accounts. These are budget-accounting quantities, not bank settlement observations or ultimate financing-source allocations.",
+        "limitations": [
+          "The account set is inherited from a fixed ten-award sample and is not representative of all federal spending.",
+          "The API profile can expose a current/latest fiscal-year view; the primary values here are explicitly the FY2024 internal-ID snapshot.",
+          "Budget authority and appropriations are budgetary constructs and cannot be treated as cash settlement or a dollar-by-dollar financing trace.",
+          "The identity budget_authority = obligated + unobligated is an account reporting check, not proof of where funding originated."
+        ],
+        "normalized_panel": {
+          "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/usaspending_federal_account_budget_resource_2024.csv",
+          "rows": 2,
+          "sha256": "82392c6a35d0119fca032651cbeeb3366341c6445c2510b764418c17bf44d29f"
+        },
+        "request_failures": [],
+        "schema_version": "1.0",
+        "source_manifest": {
+          "path": "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_budget_resource_manifest.json",
+          "sha256": "b66df44d436e98d8865144575ed552b59970b7f02abc4fa6f6233be7167e0b54",
+          "status": "PASS_WITH_BOUNDARY"
+        },
+        "status": "PASS_WITH_BOUNDARY",
+        "topic": "0.25_Strategy_Power_Economics"
       },
       "funding_source_association": {
         "blockers": [
@@ -4124,7 +4213,7 @@
             "resource_exporter"
           ]
         },
-        "generated_at_utc": "2026-08-01T13:47:18.282065+00:00",
+        "generated_at_utc": "2026-08-01T13:59:31.002669+00:00",
         "required_providers": {
           "BIS": "credit, debt, financial conditions",
           "ILOSTAT": "productivity, earnings, hours, labor income",
@@ -4296,7 +4385,7 @@
             "R_standardized_additive"
           ]
         },
-        "generated_at_utc": "2026-08-01T13:46:29.769465+00:00",
+        "generated_at_utc": "2026-08-01T13:58:39.450183+00:00",
         "measurement_gates": {
           "R_family_stability": true,
           "at_least_three_declared_families": true,
@@ -5505,7 +5594,7 @@
             "n": 64
           }
         },
-        "generated_at_utc": "2026-08-01T13:46:32.406167+00:00",
+        "generated_at_utc": "2026-08-01T13:58:42.289580+00:00",
         "observations": [
           {
             "credit_to_gdp": 4.231706560198307,
@@ -6328,6 +6417,7 @@
             ]
           },
           "bounded_labor_subset_ready": true,
+          "federal_account_budget_resource_ready": true,
           "no_imputation": true,
           "public_federal_award_ledger_ready": true,
           "requested": "sectoral funding -> industry use -> labor hours -> physical resources -> output/innovation",
@@ -6339,7 +6429,7 @@
               "controller_status": "AWARD_FUNDING_ACCOUNT_GATE",
               "exists": true,
               "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_usaspending_award_funding_account_audit.json",
-              "sha256": "b7a86f75b3087ca2889971599017c5bcacb8e639e76dd3db2fd42e46d52e1cdc",
+              "sha256": "6321d966fd3ca17e00a39895fbfe00314a59b86c594eab937826606f17a84e7e",
               "status": "WARN"
             },
             "boundary": "USAspending links a bounded returned subset to federal accounts, account titles, funding agencies, object classes, and reported gross outlays. The source artifact remains WARN because several predeclared awards have no FY2024 funding rows; no ultimate financing instrument or bank settlement is observed.",
@@ -6396,7 +6486,7 @@
               "controller_status": "AWARD_LEVEL_ACCOUNT_OUTLAY_BOUNDARY",
               "exists": true,
               "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_usaspending_award_level_outlay_audit.json",
-              "sha256": "7f7a021671c44d089d6c3bf87f33c47ac287b59a081d9ce1e669e7b8e687ffd0",
+              "sha256": "bc595e172bb286415f10ae2b0e57ce8d3a1d65eea3e4539a6485df91d136502a",
               "status": "PASS_WITH_BOUNDARY"
             },
             "boundary": "A fixed nonrepresentative ten-award sample has complete account-level obligation and outlay fields. These are award accounting totals, not bank settlement, supplier invoices, or financing-source evidence.",
@@ -6437,7 +6527,7 @@
               "controller_status": "AWARD_OUTLAY_RECONCILIATION_BOUNDARY",
               "exists": true,
               "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_federal_award_outlay_reconciliation.json",
-              "sha256": "7b807e477ad9527da23c7a6a8dc186c7819b4465a4932b8619891826496dbe5f",
+              "sha256": "f7cee72810d51fc3e2ae1c2661f7c8ea519d22607bf2f31d6e7ded3b11f8ed4f",
               "status": "PASS_WITH_BOUNDARY"
             },
             "boundary": "The fixed DOE FY2024 comparison measures grouped award obligations against Treasury program net outlays. It is a scale diagnostic with a NOT_ONE_TO_ONE result, not proof of payment settlement or financing-source attribution.",
@@ -6460,7 +6550,7 @@
               "controller_status": "BEA_1997_BENCHMARK_ONLY",
               "exists": true,
               "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bea_1997_io_benchmark_audit.json",
-              "sha256": "f58ca3b36b84fe1b89afcaa1c715562b3bd0866114dd9c33fc6abc83d400fa41",
+              "sha256": "252d9dc43a80f4a75acd3754032cab92c563ab4ac7494125cadd83276fb7b5a9",
               "status": "PASS_WITH_BOUNDARY"
             },
             "boundary": "A source-locked 1997 benchmark is archived for structural validation; annual supply-use/input-output flow export still requires the BEA API or interactive application.",
@@ -6505,27 +6595,87 @@
             },
             "status": "PASS_WITH_BOUNDARY"
           },
+          "federal_account_budgetary_resources": {
+            "accounting_identity_check": {
+              "formula": "budget_authority = obligated + unobligated",
+              "interpretation": "rounded account-reporting identity check; not a financing-source or settlement test",
+              "max_abs_residual_usd": 0.0,
+              "status": "PASS",
+              "tolerance_usd": 0.01
+            },
+            "artifact": {
+              "controller_status": "FEDERAL_ACCOUNT_BUDGET_RESOURCE_BOUNDARY",
+              "exists": true,
+              "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_usaspending_federal_account_budget_resource_audit.json",
+              "sha256": "5d0c93444b0f90c6ba9e2253cfa06fa30f82f751a885f13c0c8d21e4bc5684b8",
+              "status": "PASS_WITH_BOUNDARY"
+            },
+            "boundary": "FY2024 budget authority, appropriations, obligations, outlays, and unobligated balances are federal account-reporting quantities. They establish account budget context, not tax/debt/money-creation attribution, bank settlement, supplier invoices, or physical-resource conversion.",
+            "coverage": {
+              "accounts_with_profile_and_snapshot": 2,
+              "fiscal_year": 2024,
+              "no_imputation": true,
+              "requested_accounts": 2
+            },
+            "source": {
+              "directory": "docs/data/external/economics/us_historical/usaspending/2026-08-01",
+              "files": [
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_budget_resource_manifest.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_profile_089-0240.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_profile_089-0314.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0240_page_1.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0240_page_2.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0240_page_3.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0240_page_4.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0314_page_1.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0314_page_2.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_snapshot_089-0240_2024.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_snapshot_089-0314_2024.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_tas_089-0240.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_tas_089-0314.json"
+              ],
+              "hashes": {
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_budget_resource_manifest.json": "b66df44d436e98d8865144575ed552b59970b7f02abc4fa6f6233be7167e0b54",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_profile_089-0240.json": "2d1dc490af9edb1e60e74f65725a0c375e6625307ddcceab6b4137c41739e5cb",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_profile_089-0314.json": "9774149baa6684d0edda53c9c0a7dfd06817ce1fd43ad7af87151053c5c5cdb4",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0240_page_1.json": "992d4a5adedaf9a9e774c304493698a1ea708e6c6547a55e637426f1939bbfda",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0240_page_2.json": "5bf6544417c0c3269fe1bacc07447bd254530265e73316331e9271822cd270d1",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0240_page_3.json": "f10ee15018c4fe208d2681be64393cddf83e91110ba3c47f22be45f65c4b21d7",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0240_page_4.json": "62ef69d2142b01fe172e974e09cd91ea57c65880f72b70b7fdcdaf3a45f3caea",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0314_page_1.json": "a393d9133449ee16abc32c1d6664139779b38cb5cfcc69946a0a7ab00fbbd304",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0314_page_2.json": "67d1630c41b926dd25d04c5678acc6d9806613b2a75285f492d60145a03fe14b",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_snapshot_089-0240_2024.json": "732910c80d2f5e7cd7153780a186255d76f19f3c6f34331cd3d7f0f752e978cf",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_snapshot_089-0314_2024.json": "b0b8940d1e5cf1f58007bf753142419a0c77d05e1d94284d750a6b18ffe5c3d9",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_tas_089-0240.json": "980ced8f71a152f8f36e9aa4007c346f50bd25fd4fde53d76b69401ee6cb6808",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_tas_089-0314.json": "7d27a553f5ea32dde69dd5aee21fa515f48d24b2ccad3d29494a4d4fb309966c"
+              },
+              "pattern": "federal_account_*.json",
+              "role": "USAspending federal-account budget-resource responses",
+              "status": "PASS"
+            },
+            "status": "PASS_WITH_BOUNDARY"
+          },
           "firm_project_payment_ledger": {
             "artifact": {
               "ledger_gate": {
                 "controller_status": "PROJECT_PAYMENT_LEDGER_NOT_PUBLIC",
                 "exists": true,
                 "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_project_payment_ledger_gate.json",
-                "sha256": "76efb6cb8233711c672f411ce7f588b29aae3f7eb764324184d40c19e8e05d79",
+                "sha256": "bc6960de3da3fcf7c523e8617837a25201945a4a482eadf92124d801f112c733",
                 "status": "BLOCKED"
               },
               "public_firm_funding_mix": {
                 "controller_status": "SEC_PUBLIC_FIRM_FUNDING_MIX_DESCRIPTIVE_ONLY",
                 "exists": true,
                 "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_sec_public_firm_funding_mix_audit.json",
-                "sha256": "d531702bd5e475b70c04f480040e3063e3fe015b30492e85be919ef8a1ded2ac",
+                "sha256": "7c77f1d9137a489373ccf1493ed283f189f6aa298169034fd19136c5741b9040",
                 "status": "PASS_WITH_BOUNDARY"
               },
               "public_firm_funding_proxy": {
                 "controller_status": "SEC_PUBLIC_FIRM_PROXY_SOURCE_LOCKED",
                 "exists": true,
                 "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_sec_public_firm_funding_proxy.json",
-                "sha256": "9ee69afba43451b1deb9728690befb046707ee6061c6d2a11cbe373dabd51738",
+                "sha256": "887ec51c135c0fb9e82cdbe8337a9335d207753dae61558469a32740e2bef77d",
                 "status": "PASS_WITH_BOUNDARY"
               }
             },
@@ -6545,7 +6695,7 @@
               "controller_status": "FUNDING_FLOW_MAPPING_DESCRIPTIVE_ONLY",
               "exists": true,
               "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_fed_z1_funding_mapping_probe.json",
-              "sha256": "2483525e428ccd581cc6c831e6660e35b4c3c5f43d34f420f41a31dcb3cbcaae",
+              "sha256": "e9359aaa4e92b7e0dfbd365c30a17b1d994b2419d04ab8f2171f4ad0f4312bc6",
               "status": "WARN"
             },
             "boundary": "Aggregate sectoral channels and an accounting bridge are present; no payer-payee or project earmark is observed.",
@@ -6584,14 +6734,14 @@
                 "controller_status": "BLS_IO_QUALITY_AND_ACCESS_GATE",
                 "exists": true,
                 "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bls_io_source_gate.json",
-                "sha256": "95d6f4f53dbe7e40674a73d7ab40ba6b982e4d9d2cd5f5966c6467a10819cd8b",
+                "sha256": "3a7e8ea0fecd9de56e196021f8a182efe0090b796f3fe419d0479edcdd3d684c",
                 "status": "BLOCKED"
               },
               "benchmark": {
                 "controller_status": "BEA_1997_BENCHMARK_ONLY",
                 "exists": true,
                 "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bea_1997_io_benchmark_audit.json",
-                "sha256": "f58ca3b36b84fe1b89afcaa1c715562b3bd0866114dd9c33fc6abc83d400fa41",
+                "sha256": "252d9dc43a80f4a75acd3754032cab92c563ab4ac7494125cadd83276fb7b5a9",
                 "status": "PASS_WITH_BOUNDARY"
               }
             },
@@ -6625,7 +6775,7 @@
               "controller_status": "BLS_INDUSTRY_HOURS_SOURCE_GATE",
               "exists": true,
               "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bls_industry_hours_source_package.json",
-              "sha256": "df4e559b53ca07be7e8c7d31c05ac4ca8d330ffec72ac63f745d77527f8cc86f",
+              "sha256": "75f3144ff68cd940ac106089a986598310180a4b152c8811916b8e55c6472b24",
               "status": "WARN"
             },
             "boundary": "The BLS source artifact remains WARN for the 202-code candidate set, but the returned 11 four-digit NAICS series are complete for 1987-2024 with no imputation. This bounded subset is not payment-level occupation or payer provenance.",
@@ -6688,7 +6838,7 @@
               "controller_status": "USGS_PHYSICAL_QUANTITY_SOURCE_LOCKED",
               "exists": true,
               "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_usgs_material_quantity_audit.json",
-              "sha256": "f2ab0b53985652d0b9c2c04ab9d944e6a1403f61279d949c96c4c0828fcc7168",
+              "sha256": "abda5b2658db378d9421f74f26904c89e70d688615deae4eba323ae668367f1d",
               "status": "PASS_WITH_BOUNDARY"
             },
             "boundary": "USGS national commodity quantity series are source-locked for selected materials; no material-to-industry or project allocation is observed.",
@@ -6715,7 +6865,7 @@
               "controller_status": "USASPENDING_PUBLIC_AWARD_LEDGER_SOURCE_LOCKED",
               "exists": true,
               "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_usaspending_federal_project_ledger.json",
-              "sha256": "51890faa667a4ffb1003b8a48466f665b3ab843d4e21eb3f08ee09cbdd311ad7",
+              "sha256": "908ac275faea9487b36d9067e91948fd03b3ecb0f7caae4e6415c184a7542764",
               "status": "PASS_WITH_BOUNDARY"
             },
             "boundary": "The bounded USAspending sample links federal awarding/funding agency, recipient, award ID, obligation amount, action date, and NAICS/PSC metadata. It is not final cash settlement, a private invoice/payroll ledger, or transaction-level identification of tax, debt, or money-creation funding.",
@@ -6744,6 +6894,19 @@
                 "docs/data/external/economics/us_historical/usaspending/2026-08-01/award_funding_CONT_AWD_89233119FNA000060_8900_DEMA0011379_8900.json",
                 "docs/data/external/economics/us_historical/usaspending/2026-08-01/award_funding_CONT_AWD_89233119FNA400174_8900_GS02F013CA_4732.json",
                 "docs/data/external/economics/us_historical/usaspending/2026-08-01/award_level_outlay_manifest.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_budget_resource_manifest.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_profile_089-0240.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_profile_089-0314.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0240_page_1.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0240_page_2.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0240_page_3.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0240_page_4.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0314_page_1.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0314_page_2.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_snapshot_089-0240_2024.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_snapshot_089-0314_2024.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_tas_089-0240.json",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_tas_089-0314.json",
                 "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_award_outlay_reconciliation_manifest.json",
                 "docs/data/external/economics/us_historical/usaspending/2026-08-01/source_manifest.json",
                 "docs/data/external/economics/us_historical/usaspending/2026-08-01/usaspending_doe_fy2024_awarding_agency_summary.json",
@@ -6776,6 +6939,19 @@
                 "docs/data/external/economics/us_historical/usaspending/2026-08-01/award_funding_CONT_AWD_89233119FNA400174_8900_GS02F013CA_4732.json": "5e1b3e60cf63738ded5d96f79c64c1d9fd6ed9af241958b8e01387e64c0877f9",
                 "docs/data/external/economics/us_historical/usaspending/2026-08-01/award_funding_account_manifest.json": "50459a97caa3bfd297d6ce4c729e2d830e36068093e4cece923e80ec78397c2c",
                 "docs/data/external/economics/us_historical/usaspending/2026-08-01/award_level_outlay_manifest.json": "40deebcb1c441c4474dd588488495c5c4e7014b40051e46408804a417825fe71",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_budget_resource_manifest.json": "b66df44d436e98d8865144575ed552b59970b7f02abc4fa6f6233be7167e0b54",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_profile_089-0240.json": "2d1dc490af9edb1e60e74f65725a0c375e6625307ddcceab6b4137c41739e5cb",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_profile_089-0314.json": "9774149baa6684d0edda53c9c0a7dfd06817ce1fd43ad7af87151053c5c5cdb4",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0240_page_1.json": "992d4a5adedaf9a9e774c304493698a1ea708e6c6547a55e637426f1939bbfda",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0240_page_2.json": "5bf6544417c0c3269fe1bacc07447bd254530265e73316331e9271822cd270d1",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0240_page_3.json": "f10ee15018c4fe208d2681be64393cddf83e91110ba3c47f22be45f65c4b21d7",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0240_page_4.json": "62ef69d2142b01fe172e974e09cd91ea57c65880f72b70b7fdcdaf3a45f3caea",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0314_page_1.json": "a393d9133449ee16abc32c1d6664139779b38cb5cfcc69946a0a7ab00fbbd304",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_program_activities_089-0314_page_2.json": "67d1630c41b926dd25d04c5678acc6d9806613b2a75285f492d60145a03fe14b",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_snapshot_089-0240_2024.json": "732910c80d2f5e7cd7153780a186255d76f19f3c6f34331cd3d7f0f752e978cf",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_snapshot_089-0314_2024.json": "b0b8940d1e5cf1f58007bf753142419a0c77d05e1d94284d750a6b18ffe5c3d9",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_tas_089-0240.json": "980ced8f71a152f8f36e9aa4007c346f50bd25fd4fde53d76b69401ee6cb6808",
+                "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_tas_089-0314.json": "7d27a553f5ea32dde69dd5aee21fa515f48d24b2ccad3d29494a4d4fb309966c",
                 "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_award_outlay_reconciliation_manifest.json": "e1a542d7c1003850d9160158c39cc1272b73f420f678c3bb2f7b450c57f738e6",
                 "docs/data/external/economics/us_historical/usaspending/2026-08-01/source_manifest.json": "bd0969c5743a1f42accb40c2f3cc8f9a899aec36b9e19745d4db5089672e5201",
                 "docs/data/external/economics/us_historical/usaspending/2026-08-01/usaspending_doe_fy2024_awarding_agency_summary.json": "fd6b72035a8b154c3a308c4125ff5b79cb856db4e46d850eca21a11d38f71368",
@@ -6797,14 +6973,14 @@
                 "controller_status": "SEC_PUBLIC_FIRM_FUNDING_MIX_DESCRIPTIVE_ONLY",
                 "exists": true,
                 "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_sec_public_firm_funding_mix_audit.json",
-                "sha256": "d531702bd5e475b70c04f480040e3063e3fe015b30492e85be919ef8a1ded2ac",
+                "sha256": "7c77f1d9137a489373ccf1493ed283f189f6aa298169034fd19136c5741b9040",
                 "status": "PASS_WITH_BOUNDARY"
               },
               "source_package": {
                 "controller_status": "SEC_PUBLIC_FIRM_PROXY_SOURCE_LOCKED",
                 "exists": true,
                 "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_sec_public_firm_funding_proxy.json",
-                "sha256": "9ee69afba43451b1deb9728690befb046707ee6061c6d2a11cbe373dabd51738",
+                "sha256": "887ec51c135c0fb9e82cdbe8337a9335d207753dae61558469a32740e2bef77d",
                 "status": "PASS_WITH_BOUNDARY"
               }
             },
@@ -6816,7 +6992,7 @@
               "controller_status": "TREASURY_AGGREGATE_FUNDING_SOURCE_LOCKED",
               "exists": true,
               "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_treasury_funding_source_audit.json",
-              "sha256": "b6d64c15ad9df344bd3fff336526089c6af9ba3163ae4a2f58459a178169d740",
+              "sha256": "ba3bbd94ed0dbdefdcd9d2be8d7a631de244b72f76d3669765010160db656a87",
               "status": "PASS_WITH_BOUNDARY"
             },
             "boundary": "Treasury records aggregate receipts, outlays, deficit financing, and public debt for FY2024. It does not assign a tax, borrowing, or cash-balance source to an individual USAspending award, invoice, bank settlement, or physical transformation.",
@@ -6847,7 +7023,7 @@
             "status": "PASS_WITH_BOUNDARY"
           }
         },
-        "generated_at_utc": "2026-08-01T13:47:01.215247+00:00",
+        "generated_at_utc": "2026-08-01T13:59:14.280333+00:00",
         "limitations": [
           "Operating surplus and net saving are accounting aggregates, not earmarked cash sources.",
           "Debt and equity liability transactions can include refinancing, redemptions, and repurchases.",
@@ -6867,7 +7043,7 @@
       "project_payment_ledger": {
         "claim_boundary": "No payment-level payer, profit-vs-debt attribution, project-resource transformation, or innovation-causality claim is allowed from the current public package.",
         "controller_status": "PROJECT_PAYMENT_LEDGER_NOT_PUBLIC",
-        "generated_at_utc": "2026-08-01T13:47:09.758626+00:00",
+        "generated_at_utc": "2026-08-01T13:59:23.108752+00:00",
         "limitations": [
           "Aggregate financial accounts and public-firm filings cannot trace a particular payment to a physical resource.",
           "Restricted-use access would require a human-approved research project and secure output review; it is not an automatic source acquisition."
@@ -6940,7 +7116,7 @@
         "formula_ids": [
           "EC25-UET-RESOURCE-ENGINE"
         ],
-        "generated_at_utc": "2026-08-01T13:47:19.885706+00:00",
+        "generated_at_utc": "2026-08-01T13:59:32.539825+00:00",
         "parameter_policy": {
           "candidate_signal_threshold": {
             "bootstrap_interval_requirement": "95 percent interval for squared-error difference lies below zero",
@@ -7293,7 +7469,7 @@
           "reason": "Profit, operating cash, and net debt are annual firm-accounting channels; their ratios to capex are scale diagnostics, not source-of-payment shares.",
           "status": "NOT_IDENTIFIED"
         },
-        "generated_at_utc": "2026-08-01T13:47:08.416482+00:00",
+        "generated_at_utc": "2026-08-01T13:59:21.708022+00:00",
         "limitations": [
           "The panel covers only ten predeclared public firms and current-vintage 10-K facts.",
           "Net debt flows can include refinancing, redemptions, and timing differences; cash pooling is unobserved.",
@@ -7342,7 +7518,7 @@
         },
         "source_artifact": {
           "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_sec_public_firm_funding_proxy.json",
-          "sha256": "887ec51c135c0fb9e82cdbe8337a9335d207753dae61558469a32740e2bef77d"
+          "sha256": "d7ddc4770cbe29da14a00f2d456aefd4624373edf2e46316365087d8eeecf91a"
         },
         "status": "PASS_WITH_BOUNDARY",
         "topic": "0.25_Strategy_Power_Economics"
@@ -7564,7 +7740,7 @@
           "reason": "Net income, debt proceeds, debt repayments, and capex are annual firm-accounting channels; they do not identify which dollar paid which invoice or prevent refinancing/working-capital overlap.",
           "status": "NOT_IDENTIFIED"
         },
-        "generated_at_utc": "2026-08-01T13:47:07.071575+00:00",
+        "generated_at_utc": "2026-08-01T13:59:20.317953+00:00",
         "limitations": [
           "SEC company facts cover public registrants only and are not representative of all firms.",
           "Annual 10-K facts are current-vintage observations, not historical-as-of releases.",
@@ -7592,7 +7768,7 @@
         "formula_ids": [
           "EC25-UET-MONETARY-RESOURCE-MISMATCH"
         ],
-        "generated_at_utc": "2026-08-01T13:47:21.464234+00:00",
+        "generated_at_utc": "2026-08-01T13:59:34.251355+00:00",
         "inflation_baseline_comparison": [
           {
             "acceptance_rule": "Candidate requires at least 10 percent lower median rolling-origin RMSE than every named baseline and a 95 percent block-bootstrap squared-error interval below zero.",
@@ -7983,7 +8159,7 @@
           ],
           "status": "AGGREGATE_ONLY"
         },
-        "generated_at_utc": "2026-08-01T13:46:55.426374+00:00",
+        "generated_at_utc": "2026-08-01T13:59:06.644389+00:00",
         "limitations": [
           "The snapshot is fixed to FY2024 record date 2024-09-30 and is not a real-time settlement ledger.",
           "MTS and debt data are government-wide aggregate accounting reports; individual award timing and settlement are not joined.",
@@ -8025,7 +8201,7 @@
           "boundary": "USAspending identifies federal awarding/funding agencies and obligations, not whether each obligation was financed by taxes, borrowing, or money creation.",
           "status": "NOT_IDENTIFIED"
         },
-        "generated_at_utc": "2026-08-01T13:46:53.961513+00:00",
+        "generated_at_utc": "2026-08-01T13:59:05.146358+00:00",
         "limitations": [
           "The sample is limited to the Department of Energy, FY2024, contract award codes, and five API pages.",
           "Award obligation is not the same as cash settlement or final supplier payment.",
@@ -8141,7 +8317,7 @@
           "no_imputation": true,
           "normalized_rows": 1027
         },
-        "generated_at_utc": "2026-08-01T13:47:02.636976+00:00",
+        "generated_at_utc": "2026-08-01T13:59:15.787652+00:00",
         "limitations": [
           "Commodity workbooks have different update years and commodity-specific measurement bases.",
           "USGS notes that blank cells may mean unavailable or withheld data and are not zeros.",
@@ -8152,7 +8328,7 @@
         "schema_version": "1.0",
         "source_manifest": {
           "path": "docs/data/external/economics/us_historical/usgs_materials/2026-07-16/source_manifest.json",
-          "sha256": "c726417acef30a5f331223e8962bb8c4c15176b2055be49abe3d5aec2ad70ed5",
+          "sha256": "94fb590a4e4140c925b83a9e5e3643db4d4d97637b1b149429b02f9c10a02ed1",
           "status": "PASS_WITH_BOUNDARY"
         },
         "status": "PASS_WITH_BOUNDARY",
@@ -8199,7 +8375,7 @@
         "formula_ids": [
           "EC25-UET-WAGE-PRODUCTIVITY-GAP"
         ],
-        "generated_at_utc": "2026-08-01T13:47:24.169848+00:00",
+        "generated_at_utc": "2026-08-01T13:59:37.090142+00:00",
         "schema_version": "1.0",
         "status": "DIAGNOSTIC_COMPLETE",
         "topic": "0.25_Strategy_Power_Economics"
@@ -8217,7 +8393,7 @@
           ],
           "rows": 40
         },
-        "generated_at_utc": "2026-08-01T13:46:31.104984+00:00",
+        "generated_at_utc": "2026-08-01T13:58:40.860914+00:00",
         "missing_sources": [],
         "no_imputation": true,
         "observations": [
@@ -9158,7 +9334,7 @@
     "EC25-UET-MONETARY-RESOURCE-MISMATCH",
     "EC25-UET-WAGE-PRODUCTIVITY-GAP"
   ],
-  "generated_at_utc": "2026-08-01T13:47:24.475728+00:00",
+  "generated_at_utc": "2026-08-01T13:59:37.367352+00:00",
   "holdout_policy": {
     "blockers": [],
     "controller_status": null,
@@ -9197,7 +9373,7 @@
     "controller_status": null,
     "exists": true,
     "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_us_macro_panel_status.json",
-    "sha256": "c796bb916ad745fc865c32a6b38e6882b3ae71723e6318ca430cc224fd774465",
+    "sha256": "2b45441f2f29d7a276a3969ae31e97ff1c75c0c741f57709a6df0bd3f5825457",
     "status": "PASS"
   },
   "parameter_policy": {
@@ -9528,7 +9704,7 @@
       "controller_status": "AWARD_FUNDING_ACCOUNT_GATE",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_usaspending_award_funding_account_audit.json",
-      "sha256": "b7a86f75b3087ca2889971599017c5bcacb8e639e76dd3db2fd42e46d52e1cdc",
+      "sha256": "6321d966fd3ca17e00a39895fbfe00314a59b86c594eab937826606f17a84e7e",
       "status": "WARN"
     },
     "award_level_outlay": {
@@ -9536,7 +9712,7 @@
       "controller_status": "AWARD_LEVEL_ACCOUNT_OUTLAY_BOUNDARY",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_usaspending_award_level_outlay_audit.json",
-      "sha256": "7f7a021671c44d089d6c3bf87f33c47ac287b59a081d9ce1e669e7b8e687ffd0",
+      "sha256": "bc595e172bb286415f10ae2b0e57ce8d3a1d65eea3e4539a6485df91d136502a",
       "status": "PASS_WITH_BOUNDARY"
     },
     "award_outlay_reconciliation": {
@@ -9544,7 +9720,7 @@
       "controller_status": "AWARD_OUTLAY_RECONCILIATION_BOUNDARY",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_federal_award_outlay_reconciliation.json",
-      "sha256": "7b807e477ad9527da23c7a6a8dc186c7819b4465a4932b8619891826496dbe5f",
+      "sha256": "f7cee72810d51fc3e2ae1c2661f7c8ea519d22607bf2f31d6e7ded3b11f8ed4f",
       "status": "PASS_WITH_BOUNDARY"
     },
     "bea_1997_io_benchmark": {
@@ -9552,7 +9728,7 @@
       "controller_status": "BEA_1997_BENCHMARK_ONLY",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bea_1997_io_benchmark_audit.json",
-      "sha256": "f58ca3b36b84fe1b89afcaa1c715562b3bd0866114dd9c33fc6abc83d400fa41",
+      "sha256": "252d9dc43a80f4a75acd3754032cab92c563ab4ac7494125cadd83276fb7b5a9",
       "status": "PASS_WITH_BOUNDARY"
     },
     "bls_industry_hours": {
@@ -9560,7 +9736,7 @@
       "controller_status": "BLS_INDUSTRY_HOURS_SOURCE_GATE",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bls_industry_hours_source_package.json",
-      "sha256": "df4e559b53ca07be7e8c7d31c05ac4ca8d330ffec72ac63f745d77527f8cc86f",
+      "sha256": "75f3144ff68cd940ac106089a986598310180a4b152c8811916b8e55c6472b24",
       "status": "WARN"
     },
     "bls_io_source_gate": {
@@ -9572,7 +9748,7 @@
       "controller_status": "BLS_IO_QUALITY_AND_ACCESS_GATE",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_bls_io_source_gate.json",
-      "sha256": "95d6f4f53dbe7e40674a73d7ab40ba6b982e4d9d2cd5f5966c6467a10819cd8b",
+      "sha256": "3a7e8ea0fecd9de56e196021f8a182efe0090b796f3fe419d0479edcdd3d684c",
       "status": "BLOCKED"
     },
     "causal_identification": {
@@ -9593,7 +9769,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_energy_density_audit.json",
-      "sha256": "a82aa330a8b464b2586293c72897d22e92326488cecd28f65174621dc3f5eedf",
+      "sha256": "fb94f41c782d976ff6b37c2c32ee063807f198be9cb60356c2ac0ce64a97d29f",
       "status": "WARN"
     },
     "fed_z1_funding_mapping": {
@@ -9605,7 +9781,7 @@
       "controller_status": "FUNDING_FLOW_MAPPING_DESCRIPTIVE_ONLY",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_fed_z1_funding_mapping_probe.json",
-      "sha256": "2483525e428ccd581cc6c831e6660e35b4c3c5f43d34f420f41a31dcb3cbcaae",
+      "sha256": "e9359aaa4e92b7e0dfbd365c30a17b1d994b2419d04ab8f2171f4ad0f4312bc6",
       "status": "WARN"
     },
     "fed_z1_funding_mix": {
@@ -9617,7 +9793,7 @@
       "controller_status": "FUNDING_MIX_ASSOCIATION_DESCRIPTIVE_ONLY",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_fed_z1_funding_mix_audit.json",
-      "sha256": "59d7db85139f6d1720d0f93b8baa87a16bb50323785f1046082c788807981f7c",
+      "sha256": "919358c777fd51e642cce1d654bae404428affce1702e2fc760c20293dfed805",
       "status": "WARN"
     },
     "fed_z1_source_probe": {
@@ -9630,6 +9806,14 @@
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_fed_z1_source_probe.json",
       "sha256": "46c9eae18dabdc4d5acc47b1e99ee58d9ed09d6dc26c274d0fd2aa9c13209aa9",
       "status": "PASS"
+    },
+    "federal_account_budget_resource": {
+      "blockers": [],
+      "controller_status": "FEDERAL_ACCOUNT_BUDGET_RESOURCE_BOUNDARY",
+      "exists": true,
+      "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_usaspending_federal_account_budget_resource_audit.json",
+      "sha256": "5d0c93444b0f90c6ba9e2253cfa06fa30f82f751a885f13c0c8d21e4bc5684b8",
+      "status": "PASS_WITH_BOUNDARY"
     },
     "funding_source_association": {
       "blockers": [
@@ -9683,7 +9867,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_global_replication_readiness.json",
-      "sha256": "08bb17a3065bf0a275cf9f0ef1bb44619e9b02d30555c44f870f17e8f8fa6c60",
+      "sha256": "611b57102115cdd71360f5c6abb72085097444baacbc596e24e3cb3c351982a1",
       "status": "PARTIAL_PASS"
     },
     "global_wdi_leave_one_out": {
@@ -9757,7 +9941,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_measurement_validity_audit.json",
-      "sha256": "77032449f2db8048391f64b45eacb918059e88bb5505c537c8c1c17d0be686bd",
+      "sha256": "651802ee8b0086837f38a3f968e20133e9f733aa0486d3621510bcf54abcedac",
       "status": "WARN"
     },
     "money_credit_inflation": {
@@ -9765,7 +9949,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_money_credit_inflation_audit.json",
-      "sha256": "e9d9f5879d597a43ebd3b430207286115def504d82d734f2f86dafa9871f97d7",
+      "sha256": "38962153840df13d7802b57c2a1ddf621395f298d279ff4d08306105fc3c396d",
       "status": "PASS"
     },
     "payer_resource_join": {
@@ -9773,7 +9957,7 @@
       "controller_status": "PAYER_RESOURCE_JOIN_NOT_IDENTIFIED",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_payer_resource_join_readiness.json",
-      "sha256": "ce26eeca0a5555a25f8b578bd9f56473ca55f2ceaf62dada153176790124839f",
+      "sha256": "dd8f8398945ca1961195e3cf863ca1b7c11da38dfa152f9d74c2bd4c6023dfc9",
       "status": "BLOCKED"
     },
     "project_payment_ledger": {
@@ -9781,7 +9965,7 @@
       "controller_status": "PROJECT_PAYMENT_LEDGER_NOT_PUBLIC",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_project_payment_ledger_gate.json",
-      "sha256": "bc6960de3da3fcf7c523e8617837a25201945a4a482eadf92124d801f112c733",
+      "sha256": "ad71c7086e7cf06ad328199e451f85df54f5d40f5a3e2898cd6ef8b22c8cd5a0",
       "status": "BLOCKED"
     },
     "publication_hardening": {
@@ -9801,7 +9985,7 @@
       "controller_status": "NO_PREDECLARED_CANDIDATE_SIGNAL",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_resource_equation_audit.json",
-      "sha256": "18e762fb4ff711f7ab18a3ba6399cbb1ddf634e67aad1a2b0dcf3f11fb84dd68",
+      "sha256": "0e2ab9e5be1c0c5fe35c33cf32a01e8d617aeb8a862cad479d9e772e4170d0f9",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "sec_public_firm_funding_mix": {
@@ -9809,7 +9993,7 @@
       "controller_status": "SEC_PUBLIC_FIRM_FUNDING_MIX_DESCRIPTIVE_ONLY",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_sec_public_firm_funding_mix_audit.json",
-      "sha256": "7c77f1d9137a489373ccf1493ed283f189f6aa298169034fd19136c5741b9040",
+      "sha256": "1355a0bf573f3b5ecf48e022cebe55fc62bbca44625b13d25d8e33ef58057fce",
       "status": "PASS_WITH_BOUNDARY"
     },
     "sec_public_firm_funding_proxy": {
@@ -9817,7 +10001,7 @@
       "controller_status": "SEC_PUBLIC_FIRM_PROXY_SOURCE_LOCKED",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_sec_public_firm_funding_proxy.json",
-      "sha256": "887ec51c135c0fb9e82cdbe8337a9335d207753dae61558469a32740e2bef77d",
+      "sha256": "d7ddc4770cbe29da14a00f2d456aefd4624373edf2e46316365087d8eeecf91a",
       "status": "PASS_WITH_BOUNDARY"
     },
     "stone_balloon": {
@@ -9825,7 +10009,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_stone_balloon_audit.json",
-      "sha256": "fa35cd168a21f9615318bda8976569f6c1140f5b7d0bac36c276fd02b3d510d7",
+      "sha256": "cada59c08a2c63483c6e6f1476a15f04d16fb91c09da9fd36081d0479603b6ac",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "treasury_funding_source": {
@@ -9833,7 +10017,7 @@
       "controller_status": "TREASURY_AGGREGATE_FUNDING_SOURCE_LOCKED",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_treasury_funding_source_audit.json",
-      "sha256": "b6d64c15ad9df344bd3fff336526089c6af9ba3163ae4a2f58459a178169d740",
+      "sha256": "ba3bbd94ed0dbdefdcd9d2be8d7a631de244b72f76d3669765010160db656a87",
       "status": "PASS_WITH_BOUNDARY"
     },
     "usaspending_federal_award_ledger": {
@@ -9841,7 +10025,7 @@
       "controller_status": "USASPENDING_PUBLIC_AWARD_LEDGER_SOURCE_LOCKED",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_usaspending_federal_project_ledger.json",
-      "sha256": "51890faa667a4ffb1003b8a48466f665b3ab843d4e21eb3f08ee09cbdd311ad7",
+      "sha256": "908ac275faea9487b36d9067e91948fd03b3ecb0f7caae4e6415c184a7542764",
       "status": "PASS_WITH_BOUNDARY"
     },
     "usgs_material_quantities": {
@@ -9849,7 +10033,7 @@
       "controller_status": "USGS_PHYSICAL_QUANTITY_SOURCE_LOCKED",
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_usgs_material_quantity_audit.json",
-      "sha256": "abda5b2658db378d9421f74f26904c89e70d688615deae4eba323ae668367f1d",
+      "sha256": "e503985ef6fea1dd897c7fd15cb6daf94c9159a2d555b001d10ecc8dccf0f124",
       "status": "PASS_WITH_BOUNDARY"
     },
     "wage_productivity": {
@@ -9857,7 +10041,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_wage_productivity_audit.json",
-      "sha256": "3e3587c84e66ad9402cefea261003644962d1669efb7033e84ff7e3c33f96f3a",
+      "sha256": "ee4336c57cbd82aeca364f6e8067f597957435a472f4e7c7022f5e51575a1b7e",
       "status": "DIAGNOSTIC_COMPLETE"
     },
     "welfare": {
@@ -9865,7 +10049,7 @@
       "controller_status": null,
       "exists": true,
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_welfare_audit.json",
-      "sha256": "98fac2aa05dc1ce10d7ed8e19157f4254c8bb2a5db2b7b4d85d72ea3aa862efd",
+      "sha256": "d95f81064bc7166afa954913a7d8f35eb52987c2ea63bbe18675488b18b91db1",
       "status": "PASS"
     }
   },

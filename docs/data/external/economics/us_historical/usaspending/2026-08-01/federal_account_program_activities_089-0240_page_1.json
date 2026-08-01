@@ -1,0 +1,75 @@
+{
+  "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+  "error": null,
+  "provider": "USAspending.gov / U.S. Treasury",
+  "request": {
+    "url": "https://api.usaspending.gov/api/v2/federal_accounts/089-0240/program_activities/"
+  },
+  "response": {
+    "page_metadata": {
+      "hasNext": true,
+      "hasPrevious": false,
+      "limit": 10,
+      "next": 2,
+      "page": 1,
+      "previous": null,
+      "total": 34
+    },
+    "results": [
+      {
+        "code": "5ZCQ8KJKKQM",
+        "name": "WEAPONS ACTIVITIES (REIMBURSABLE)",
+        "type": "PARK"
+      },
+      {
+        "code": "5UWPV21LNPR",
+        "name": "WEAPONS ACTIVITIES (DIRECT)",
+        "type": "PARK"
+      },
+      {
+        "code": "0810",
+        "name": "WEAPONS ACTIVITIES (REIMBURSABLE)",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0240",
+        "name": "WEAPONS ACTIVITIES",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0185",
+        "name": "DOMESTIC URANIUM RESEARCH, DEVELOPMENT AND DEMONSTRATION",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0183",
+        "name": "LEGACY CONTRACTOR PENSIONS",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0181",
+        "name": "CYBER SECURITY",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0180",
+        "name": "DEFENSE NUCLEAR SECURITY",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0179",
+        "name": "INFORMATION TECHNOLOGY AND CYBERSECURITY",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0170",
+        "name": "SITE STEWARDSHIP",
+        "type": "PAC/PAN"
+      }
+    ]
+  },
+  "retrieval_timestamp_utc": "2026-08-01T13:54:38.123443+00:00",
+  "retrieval_vintage": "2026-08-01",
+  "schema_version": "1.0",
+  "source_url": "https://api.usaspending.gov/api/v2/federal_accounts/089-0240/program_activities/"
+}

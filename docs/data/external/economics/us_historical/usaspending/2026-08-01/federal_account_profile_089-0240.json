@@ -1,0 +1,106 @@
+{
+  "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+  "error": null,
+  "provider": "USAspending.gov / U.S. Treasury",
+  "request": {
+    "url": "https://api.usaspending.gov/api/v2/federal_accounts/089-0240/"
+  },
+  "response": {
+    "account_title": "Weapons Activities, National Nuclear Security Administration, Energy",
+    "agency_identifier": "089",
+    "bureau_name": "National Nuclear Security Administration",
+    "bureau_slug": "national-nuclear-security-administration",
+    "children": [
+      {
+        "budgetary_resources_amount": 1892820.42,
+        "code": "089-2021/2022-0240-000",
+        "gross_outlay_amount": 322476.14,
+        "name": "Weapons Activities, National Nuclear Security Administration, Energy",
+        "obligated_amount": 0.0
+      },
+      {
+        "budgetary_resources_amount": 922722.64,
+        "code": "089-2022/2023-0240-000",
+        "gross_outlay_amount": 2506879.93,
+        "name": "Weapons Activities, National Nuclear Security Administration, Energy",
+        "obligated_amount": 0.0
+      },
+      {
+        "budgetary_resources_amount": 2547343.79,
+        "code": "089-2022/2026-0240-000",
+        "gross_outlay_amount": 117851135.85,
+        "name": "Weapons Activities, National Nuclear Security Administration, Energy",
+        "obligated_amount": 0.0
+      },
+      {
+        "budgetary_resources_amount": 456781.34,
+        "code": "089-2023/2024-0240-000",
+        "gross_outlay_amount": 41764241.5,
+        "name": "Weapons Activities, National Nuclear Security Administration, Energy",
+        "obligated_amount": 0.0
+      },
+      {
+        "budgetary_resources_amount": 1928244.19,
+        "code": "089-2023/2027-0240-000",
+        "gross_outlay_amount": 71856444.99,
+        "name": "Weapons Activities, National Nuclear Security Administration, Energy",
+        "obligated_amount": 0.0
+      },
+      {
+        "budgetary_resources_amount": 808837.61,
+        "code": "089-2024/2025-0240-000",
+        "gross_outlay_amount": 474670908.3,
+        "name": "Weapons Activities, National Nuclear Security Administration, Energy",
+        "obligated_amount": 0.0
+      },
+      {
+        "budgetary_resources_amount": 1177079115.0,
+        "code": "089-2024/2028-0240-000",
+        "gross_outlay_amount": 36991509.88,
+        "name": "Weapons Activities, National Nuclear Security Administration, Energy",
+        "obligated_amount": 202795741.71
+      },
+      {
+        "budgetary_resources_amount": 4094010218.64,
+        "code": "089-2025/2026-0240-000",
+        "gross_outlay_amount": 1018708225.63,
+        "name": "Weapons Activities, National Nuclear Security Administration, Energy",
+        "obligated_amount": 527712599.28
+      },
+      {
+        "budgetary_resources_amount": 3986902554.81,
+        "code": "089-2025/2029-0240-000",
+        "gross_outlay_amount": 1017849529.77,
+        "name": "Weapons Activities, National Nuclear Security Administration, Energy",
+        "obligated_amount": 3104940993.72
+      },
+      {
+        "budgetary_resources_amount": 4771520521.0,
+        "code": "089-2026/2027-0240-000",
+        "gross_outlay_amount": 474637893.5,
+        "name": "Weapons Activities, National Nuclear Security Administration, Energy",
+        "obligated_amount": 1509244790.19
+      },
+      {
+        "budgetary_resources_amount": 25641563088.44,
+        "code": "089-X-0240-000",
+        "gross_outlay_amount": 15632001620.7,
+        "name": "Weapons Activities, National Nuclear Security Administration, Energy",
+        "obligated_amount": 20821619888.54
+      }
+    ],
+    "federal_account_code": "089-0240",
+    "fiscal_year": 2026,
+    "id": 5787,
+    "main_account_code": "0240",
+    "parent_agency_name": "Department of Energy",
+    "parent_agency_toptier_code": "089",
+    "total_budgetary_resources": 39679632247.88,
+    "total_gross_outlay_amount": 18889160866.19,
+    "total_obligated_amount": 26166314013.44
+  },
+  "retrieval_timestamp_utc": "2026-08-01T13:54:34.722601+00:00",
+  "retrieval_vintage": "2026-08-01",
+  "schema_version": "1.0",
+  "source_url": "https://api.usaspending.gov/api/v2/federal_accounts/089-0240/"
+}

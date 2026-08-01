@@ -1,0 +1,35 @@
+{
+  "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+  "error": null,
+  "provider": "USAspending.gov / U.S. Treasury",
+  "request": {
+    "url": "https://api.usaspending.gov/api/v2/federal_accounts/089-0314/program_activities/?page=2"
+  },
+  "response": {
+    "page_metadata": {
+      "hasNext": false,
+      "hasPrevious": true,
+      "limit": 10,
+      "next": null,
+      "page": 2,
+      "previous": 1,
+      "total": 12
+    },
+    "results": [
+      {
+        "code": "0000",
+        "name": "UNKNOWN/OTHER",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0000",
+        "name": "UNKNOWN/OTHER",
+        "type": "PARK"
+      }
+    ]
+  },
+  "retrieval_timestamp_utc": "2026-08-01T13:54:47.335115+00:00",
+  "retrieval_vintage": "2026-08-01",
+  "schema_version": "1.0",
+  "source_url": "https://api.usaspending.gov/api/v2/federal_accounts/089-0314/program_activities/?page=2"
+}

@@ -157,6 +157,15 @@ indexed infrastructure proxy, not a dollar-valued capital stock.
    no imputation is allowed. A returned row links an award to a reporting account/program,
    not to an ultimate tax/debt instrument, bank settlement, supplier invoice, or resource flow.
 
+22. **Federal-account budget-resource audit:** take every unique federal account returned by
+   the frozen award funding-account sample and query the official account profile, internal-ID
+   FY2024 snapshot, Treasury Account Symbol tree, and paginated program-activity endpoints.
+   Normalize budget authority, appropriations, other budgetary resources, brought-forward balance,
+   obligations, outlays, and unobligated balances. Check the rounded reporting identity
+   `budget_authority = obligated + unobligated` with a predeclared `$0.01` tolerance. This
+   establishes account budget context only; it does not attribute an award to tax receipts,
+   Treasury debt, cash balances, money creation, a bank settlement, or a physical resource.
+
 ## Evaluation and uncertainty
 
 Rolling-origin forecasts start in 2000. Every transformation and coefficient is fitted only

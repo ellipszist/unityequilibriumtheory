@@ -54,6 +54,7 @@ The legacy descriptive command is separate:
 - `0_25_usaspending_federal_project_ledger.json`: cached USAspending.gov request/response hashes, fixed DOE FY2024 five-page coverage, normalized obligation units, and explicit non-settlement/non-financing boundary.
 - `0_25_usaspending_award_level_outlay_audit.json`: ten fixed award-detail response hashes, account-level obligation/outlay completeness, differences/ratios, nonrepresentative sample policy, and explicit non-settlement boundary.
 - `0_25_usaspending_award_funding_account_audit.json`: ten fixed `/awards/funding/` response hashes, FY2024 federal-account/agency/object-class fields, explicit six-award missingness, no-imputation coverage, and the source-WARN/bounded-join boundary.
+- `0_25_usaspending_federal_account_budget_resource_audit.json`: profile, internal-ID FY2024 snapshot, TAS-tree, and paginated program-activity response hashes for every unique account observed in the fixed award sample; normalized budget-resource fields; `$0.01` rounded authority identity gate; and explicit no-financing/no-settlement boundary.
 - `0_25_federal_award_outlay_reconciliation.json`: grouped USAspending DOE obligation response hash, Treasury DOE MTS Table 5 row hash, normalized comparison, obligation/outlay difference and ratio, and explicit `NOT_ONE_TO_ONE` settlement boundary.
 - `0_25_treasury_funding_source_audit.json`: Treasury Fiscal Data request/response hashes for MTS tables 1/2/4/5/6 and debt-to-the-penny at 2024-09-30, normalized current-dollar rows, aggregate summary, and explicit no-award-level-attribution boundary.
 - `0_25_project_payment_ledger_gate.json`: public-data restriction, approved restricted-use route, and controlling `PROJECT_PAYMENT_LEDGER_NOT_PUBLIC` blocker.
@@ -93,7 +94,7 @@ per-capita growth. Pre/post regime summaries use 1959-1970 and 1974-2024, exclud
   blocker;
 - funding-mix association rows, lag policy, signed-ratio definitions, and gross-share blocker;
 - payer-resource join component statuses, local input hashes, missing components, and join claim boundary;
-- BLS industry-hours, USGS material, SEC Company Facts, USAspending federal-award, Treasury funding-source, award-outlay reconciliation, award funding-account, and project-ledger artifact hashes, coverage, units, and bounded-join limitations;
+- BLS industry-hours, USGS material, SEC Company Facts, USAspending federal-award, Treasury funding-source, award-outlay reconciliation, award funding-account, federal-account budget-resource, and project-ledger artifact hashes, coverage, units, and bounded-join limitations;
 - command exit codes, legacy-claim quarantine result, and the current controller status;
 - a self-contained evidence_bundle containing source records/hashes, transform and panel
   payloads, formula/parameter/holdout contracts, research register, variable dictionary,
@@ -114,7 +115,7 @@ per-capita growth. Pre/post regime summaries use 1959-1970 and 1974-2024, exclud
 - Research architecture: WARN; current package is Package Tier A, target is Evidence Grade A,
   and the 12-gate registry still contains open controlling gates. Strategy/social claims remain
   quarantined.
-- Payer-resource additions: USGS, SEC, the fixed USAspending DOE FY2024 public-award sample, the Treasury aggregate funding-source snapshot, the award-outlay reconciliation, and the award-level account-outlay audit are `PASS_WITH_BOUNDARY`; the award funding-account source is `WARN` (4/10 fixed awards with FY2024 rows, six explicit missing awards) while its bounded join component is `PASS_WITH_BOUNDARY`; the reconciliation is explicitly `NOT_ONE_TO_ONE`. BLS industry-hours remains `WARN` for candidate-set coverage but its 11 returned series are complete for 1987-2024 (418 rows). The join gate reports bounded public inputs, while the private project payment ledger is still `BLOCKED`.
+- Payer-resource additions: USGS, SEC, the fixed USAspending DOE FY2024 public-award sample, the Treasury aggregate funding-source snapshot, the award-outlay reconciliation, and the award-level account-outlay audit are `PASS_WITH_BOUNDARY`; the award funding-account source is `WARN` (4/10 fixed awards with FY2024 rows, six explicit missing awards) while its bounded join component is `PASS_WITH_BOUNDARY`; the federal-account budget-resource lane is `PASS_WITH_BOUNDARY` for both observed accounts and its rounded identity gate passes; the reconciliation is explicitly `NOT_ONE_TO_ONE`. BLS industry-hours remains `WARN` for candidate-set coverage but its 11 returned series are complete for 1987-2024 (418 rows). The join gate reports bounded public inputs, while the private project payment ledger is still `BLOCKED`.
 
 ## Interpretation boundary
 

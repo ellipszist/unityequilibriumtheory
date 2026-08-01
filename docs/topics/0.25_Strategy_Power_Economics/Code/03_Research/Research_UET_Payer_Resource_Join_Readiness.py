@@ -23,6 +23,7 @@ from economic_hardening_common import (
     AWARD_OUTLAY_RECONCILIATION_ARTIFACT,
     AWARD_LEVEL_OUTLAY_ARTIFACT,
     AWARD_FUNDING_ACCOUNT_ARTIFACT,
+    FEDERAL_ACCOUNT_BUDGET_RESOURCE_ARTIFACT,
     USGS_MATERIAL_QUANTITY_ARTIFACT,
     SEC_PUBLIC_FIRM_PROXY_ARTIFACT,
     SEC_PUBLIC_FIRM_MIX_ARTIFACT,
@@ -176,6 +177,14 @@ def main() -> int:
         except (OSError, json.JSONDecodeError):
             award_funding_payload = {}
     award_funding_bounded = bool(award_funding_payload.get("bounded_coverage", {}).get("ready"))
+    federal_account_budget_resource = _artifact_status(FEDERAL_ACCOUNT_BUDGET_RESOURCE_ARTIFACT)
+    federal_account_budget_payload = {}
+    if federal_account_budget_resource.get("exists"):
+        try:
+            federal_account_budget_payload = json.loads(FEDERAL_ACCOUNT_BUDGET_RESOURCE_ARTIFACT.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            federal_account_budget_payload = {}
+    federal_account_budget_ready = federal_account_budget_resource.get("status") == "PASS_WITH_BOUNDARY"
 
     evidence = {
         "funding_flows": {
@@ -247,6 +256,14 @@ def main() -> int:
             "source": _glob_record(RAW_ROOT / "usaspending" / "2026-08-01", "award_detail_*.json", "USAspending award-detail account obligation/outlay responses"),
             "boundary": "A fixed nonrepresentative ten-award sample has complete account-level obligation and outlay fields. These are award accounting totals, not bank settlement, supplier invoices, or financing-source evidence.",
         },
+        "federal_account_budgetary_resources": {
+            "status": "PASS_WITH_BOUNDARY" if federal_account_budget_ready else "BLOCKED",
+            "artifact": federal_account_budget_resource,
+            "coverage": federal_account_budget_payload.get("coverage"),
+            "accounting_identity_check": federal_account_budget_payload.get("accounting_identity_check"),
+            "source": _glob_record(RAW_ROOT / "usaspending" / "2026-08-01", "federal_account_*.json", "USAspending federal-account budget-resource responses"),
+            "boundary": "FY2024 budget authority, appropriations, obligations, outlays, and unobligated balances are federal account-reporting quantities. They establish account budget context, not tax/debt/money-creation attribution, bank settlement, supplier invoices, or physical-resource conversion.",
+        },
         "award_outlay_reconciliation": {
             "status": "PASS_WITH_BOUNDARY" if award_outlay_ready else "BLOCKED",
             "artifact": award_outlay_reconciliation,
@@ -297,6 +314,7 @@ def main() -> int:
             "award_outlay_reconciliation_ready": bool(award_outlay_ready),
             "award_level_account_outlay_ready": bool(award_level_ready),
             "award_federal_account_linkage_ready": bool(award_funding_bounded),
+            "federal_account_budget_resource_ready": bool(federal_account_budget_ready),
             "bounded_labor_subset": evidence["labor_industry_hours"].get("artifact", {}).get("bounded_coverage"),
         },
         "evidence": evidence,

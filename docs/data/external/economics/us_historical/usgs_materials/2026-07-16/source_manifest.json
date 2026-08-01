@@ -8,7 +8,7 @@
   "official_page": "https://www.usgs.gov/centers/national-minerals-information-center/historical-statistics-mineral-commodities-united",
   "preprocessing": "Read worksheet rows by the Year header and declared quantity columns; retain missing cells as missing; no zero filling, unit conversion, or industry allocation.",
   "provider": "U.S. Geological Survey, National Minerals Information Center",
-  "retrieval_timestamp_utc": "2026-08-01T13:47:02.618371+00:00",
+  "retrieval_timestamp_utc": "2026-08-01T13:59:15.761771+00:00",
   "retrieval_vintage": "2026-07-16",
   "schema_version": "1.0",
   "sources": [

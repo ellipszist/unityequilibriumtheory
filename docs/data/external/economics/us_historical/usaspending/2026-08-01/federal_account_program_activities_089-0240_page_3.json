@@ -1,0 +1,75 @@
+{
+  "documentation_url": "https://api.usaspending.gov/docs/endpoints",
+  "error": null,
+  "provider": "USAspending.gov / U.S. Treasury",
+  "request": {
+    "url": "https://api.usaspending.gov/api/v2/federal_accounts/089-0240/program_activities/?page=3"
+  },
+  "response": {
+    "page_metadata": {
+      "hasNext": true,
+      "hasPrevious": true,
+      "limit": 10,
+      "next": 4,
+      "page": 3,
+      "previous": 2,
+      "total": 34
+    },
+    "results": [
+      {
+        "code": "0028",
+        "name": "ADVANCED MANUFACTURING DEVELOPMENT",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0027",
+        "name": "SECURE TRANSPORTATION ASSET",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0026",
+        "name": "READINESS IN TECHNICAL BASE AND FACILITIES",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0025",
+        "name": "READINESS CAMPAIGN",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0024",
+        "name": "ADVANCED SIMULATION AND COMPUTING",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0023",
+        "name": "INERTIAL CONFINEMENT FUSION IGNITION AND HIGH YIELD",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0022",
+        "name": "ENGINEERING",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0021",
+        "name": "SCIENCE",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0020",
+        "name": "DIRECTED STOCKPILE WORK",
+        "type": "PAC/PAN"
+      },
+      {
+        "code": "0014",
+        "name": "PROGRAM DIRECTION",
+        "type": "PAC/PAN"
+      }
+    ]
+  },
+  "retrieval_timestamp_utc": "2026-08-01T13:54:40.598409+00:00",
+  "retrieval_vintage": "2026-08-01",
+  "schema_version": "1.0",
+  "source_url": "https://api.usaspending.gov/api/v2/federal_accounts/089-0240/program_activities/?page=3"
+}

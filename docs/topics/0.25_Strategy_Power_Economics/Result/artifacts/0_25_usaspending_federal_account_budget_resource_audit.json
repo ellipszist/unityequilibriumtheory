@@ -1,0 +1,79 @@
+{
+  "account_records": [
+    {
+      "account_title": "Weapons Activities, National Nuclear Security Administration, Energy",
+      "agency_identifier": "089",
+      "agency_name": "Department of Energy",
+      "appropriations_usd": 19108000000.0,
+      "balance_brought_forward_usd": 870972929.46,
+      "budget_authority_minus_obligation_minus_unobligated_usd": 0.0,
+      "budget_authority_usd": 24318422753.04,
+      "bureau_name": "National Nuclear Security Administration",
+      "federal_account": "089-0240",
+      "internal_account_id": 5787,
+      "obligated_usd": 23637473396.0,
+      "other_budgetary_resources_usd": 4339449823.58,
+      "outlay_usd": 21572069455.21,
+      "program_activity_rows": 34,
+      "snapshot_fiscal_year": 2024,
+      "tas_rows": 21,
+      "unobligated_usd": 680949357.04
+    },
+    {
+      "account_title": "Naval Reactors, National Nuclear Security Administration, Energy",
+      "agency_identifier": "089",
+      "agency_name": "Department of Energy",
+      "appropriations_usd": 1853200000.0,
+      "balance_brought_forward_usd": 33015385.32,
+      "budget_authority_minus_obligation_minus_unobligated_usd": -0.0,
+      "budget_authority_usd": 1886215385.32,
+      "bureau_name": "National Nuclear Security Administration",
+      "federal_account": "089-0314",
+      "internal_account_id": 5801,
+      "obligated_usd": 1859189504.77,
+      "other_budgetary_resources_usd": 0.0,
+      "outlay_usd": 1869684656.65,
+      "program_activity_rows": 12,
+      "snapshot_fiscal_year": 2024,
+      "tas_rows": 16,
+      "unobligated_usd": 27025880.55
+    }
+  ],
+  "accounting_identity_check": {
+    "formula": "budget_authority = obligated + unobligated",
+    "interpretation": "rounded account-reporting identity check; not a financing-source or settlement test",
+    "max_abs_residual_usd": 0.0,
+    "status": "PASS",
+    "tolerance_usd": 0.01
+  },
+  "claim_boundary": "This artifact supports bounded federal-account budget-resource provenance only. It does not establish tax-versus-debt-versus-money-creation funding, supplier payment, profit funding, or physical-resource transformation.",
+  "controller_status": "FEDERAL_ACCOUNT_BUDGET_RESOURCE_BOUNDARY",
+  "coverage": {
+    "accounts_with_profile_and_snapshot": 2,
+    "fiscal_year": 2024,
+    "no_imputation": true,
+    "requested_accounts": 2
+  },
+  "generated_at_utc": "2026-08-01T13:59:12.683989+00:00",
+  "interpretation": "USAspending account snapshots report budget authority, appropriations, other budgetary resources, obligations, outlays, and unobligated balances for federal reporting accounts. These are budget-accounting quantities, not bank settlement observations or ultimate financing-source allocations.",
+  "limitations": [
+    "The account set is inherited from a fixed ten-award sample and is not representative of all federal spending.",
+    "The API profile can expose a current/latest fiscal-year view; the primary values here are explicitly the FY2024 internal-ID snapshot.",
+    "Budget authority and appropriations are budgetary constructs and cannot be treated as cash settlement or a dollar-by-dollar financing trace.",
+    "The identity budget_authority = obligated + unobligated is an account reporting check, not proof of where funding originated."
+  ],
+  "normalized_panel": {
+    "path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/usaspending_federal_account_budget_resource_2024.csv",
+    "rows": 2,
+    "sha256": "82392c6a35d0119fca032651cbeeb3366341c6445c2510b764418c17bf44d29f"
+  },
+  "request_failures": [],
+  "schema_version": "1.0",
+  "source_manifest": {
+    "path": "docs/data/external/economics/us_historical/usaspending/2026-08-01/federal_account_budget_resource_manifest.json",
+    "sha256": "b66df44d436e98d8865144575ed552b59970b7f02abc4fa6f6233be7167e0b54",
+    "status": "PASS_WITH_BOUNDARY"
+  },
+  "status": "PASS_WITH_BOUNDARY",
+  "topic": "0.25_Strategy_Power_Economics"
+}

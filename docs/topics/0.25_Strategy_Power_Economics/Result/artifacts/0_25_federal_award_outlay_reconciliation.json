@@ -14,7 +14,7 @@
     "no_imputation": true,
     "start_date": "2023-10-01"
   },
-  "generated_at_utc": "2026-08-01T13:46:56.820770+00:00",
+  "generated_at_utc": "2026-08-01T13:59:08.147276+00:00",
   "limitations": [
     "USAspending grouped result is a prime-award obligation total, not a bank settlement total.",
     "Treasury MTS Department of Energy outlays cover agency programs and may include outlays not tied to the sampled award universe.",

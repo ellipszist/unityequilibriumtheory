@@ -5,6 +5,15 @@
 
 ## Entries
 
+### 2026-08-01 - Federal-account budget-resource audit
+
+- Scope: extend the fixed award/account provenance chain to the federal account's budget authority, appropriations, obligations, outlays, and unobligated balance without treating budget data as a financing or cash-settlement trace.
+- Added: `Research_UET_USASpending_Federal_Account_Budget_Resource_Audit.py`, cached profile/snapshot/TAS/program-activity responses, normalized two-account FY2024 panel, source manifest, aggregate/readiness/join integration, and synchronized docs.
+- Verified with: official API cache run, py_compile, standalone join/readiness, complete aggregate verifier, and cross-artifact SHA-256 checks. Both observed accounts (`089-0240`, `089-0314`) have FY2024 snapshots; the rounded identity `budget_authority = obligated + unobligated` passes at `$0.01` tolerance.
+- Finding: FY2024 budget authority is `$24.318B` for `089-0240` and `$1.886B` for `089-0314`; appropriations and other budgetary resources are separately reported. These are account-budget quantities, not proof of tax/debt/cash funding, profit funding, supplier payment, or physical-resource transformation.
+- Blocker narrowed: federal-account budget context is now source-locked for the observed subset, but the controlling `firm_project_payment_ledger` blocker remains; payer-to-purchase-to-resource provenance is still unavailable.
+- Claim impact: Claim Class C and `DESCRIPTIVE_DIAGNOSTIC_ONLY` remain unchanged; no financing-source, money-creation, payer causality, or resource-conversion claim is enabled.
+
 ### 2026-08-01 - Award federal-account linkage
 
 - Scope: add a bounded reporting-account/program layer to the fixed public award sample so the audit distinguishes an award's federal account and funding agency from its ultimate financing source.
