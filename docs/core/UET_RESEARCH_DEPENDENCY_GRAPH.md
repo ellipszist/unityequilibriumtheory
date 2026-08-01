@@ -82,3 +82,9 @@ source–propagation–detector comparator as a standard control. This is an
 evidence-chain repair only: the lane remains `SIMULATION_ONLY`, the foundation
 remains `BLOCKED`, and no `R_gen` particle identity or SI detector prediction
 is enabled.
+## Latest plan update — 2026-08-01 TTG source equation layer
+
+The thermal dependency now has an explicit standard source-equation node:
+g_n -> Delta_Tq -> y_TTG, with c_v kept distinct from UET C. This supports
+observable correspondence only. It does not create a Phi -> temperature identity,
+close the dimensional lane, or permit external fit/validation.

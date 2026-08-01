@@ -267,7 +267,7 @@
         {
           "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_control.json",
           "exists": true,
-          "sha256": "9d429f2897944ce61c2ec903dba3d4dd2d20646255033a0368b2bfcfc9193e4c",
+          "sha256": "6ef2bb67dce62061c149d3a554c4532b13e278d85057f47f91dc126671f8e1f0",
           "status": "SIMULATION_ONLY",
           "controller": "core_prearrival_leakage"
         },
@@ -288,7 +288,7 @@
         {
           "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_observable_map_readiness.json",
           "exists": true,
-          "sha256": "eac2809b7cc467deed28a706d20fb057497c80f9c89e8db68a5daddbf0a57383",
+          "sha256": "26ef819c06c24dc51087dd70c2d98a65fe438d9bee006afeb370552224606d3a",
           "status": "PASS_WITH_BLOCKED_DIMENSIONAL_AND_DATA_LANES",
           "controller": "not_declared"
         }

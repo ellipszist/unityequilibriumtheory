@@ -80,6 +80,62 @@
     ],
     "status": "SOURCE_BACKED_STANDARD_OBSERVABLE_DEFINITION"
   },
+  "source_equation_registry": [
+    {
+      "equation_id": "TTG-SOURCE-EQ3",
+      "formula": "Delta_Tq = (1 / c_v) * sum_n(g_n)",
+      "meaning": "quasi-temperature response reconstructed from mode-resolved deviational phonon energy",
+      "standard_variables": {
+        "g_n": "mode-resolved deviational phonon energy density",
+        "c_v": "volumetric heat capacity; distinct from UET C"
+      },
+      "source_ids": ["xie_2026_isotopically_pure_graphite_holdout"],
+      "source_locator": "Methods, Eq. (3)",
+      "unit_lane": "dimensional source model; c_v in J m^-3 K^-1 when g_n is energy density",
+      "uet_mapping_status": "NO_DIRECT_PHI_IDENTITY"
+    },
+    {
+      "equation_id": "TTG-SOURCE-EQ5",
+      "formula": "Delta_Tq_tilde = Q_tilde * [sum_j(A^-1 p)_j] / [i * sum_j(A^-1 c_j(omega + q.v_j))]",
+      "meaning": "frequency-domain phonon Boltzmann response used as the microscopic standard comparator",
+      "standard_variables": {
+        "A": "linearized phonon scattering operator",
+        "p": "mode source vector",
+        "c_j": "mode heat-capacity weight",
+        "q": "thermal-grating wavevector"
+      },
+      "source_ids": ["xie_2026_isotopically_pure_graphite_holdout"],
+      "source_locator": "Methods, Eq. (5)",
+      "unit_lane": "dimensional source model; requires source-specific operator and calibration",
+      "uet_mapping_status": "STANDARD_PHONON_MODEL_ONLY"
+    },
+    {
+      "equation_id": "TTG-SIGNAL-EQ42",
+      "formula": "y_TTG(t) = exp(-t / tau_ss) * cos(omega * t)",
+      "meaning": "normalized damped standing-wave comparator for a thermal-grating signal",
+      "source_ids": ["xie_2026_isotopically_pure_graphite_holdout"],
+      "source_locator": "Methods, Eq. (42)",
+      "unit_lane": "normalized signal; dimensionless",
+      "uet_mapping_status": "COMPARATOR_ONLY"
+    },
+    {
+      "equation_id": "TTG-CONDUCTIVITY-EQ45",
+      "formula": "kappa_eff = c_v * Gamma / q^2",
+      "meaning": "effective conductivity inferred from exponential damping under the standard comparator",
+      "source_ids": ["xie_2026_isotopically_pure_graphite_holdout"],
+      "source_locator": "Methods, Eq. (45)",
+      "unit_lane": "SI only after c_v, Gamma and q are source-calibrated",
+      "uet_mapping_status": "REQUIRES_SOURCE_NUMERIC_AND_CALIBRATED_OPERATOR"
+    }
+  ],
+  "intermediate_observable_layer": {
+    "from": "mode-resolved phonon energy distribution g_n",
+    "to": "quasi-temperature difference Delta_Tq at grating peak and valley",
+    "then": "normalized TTG detector signal y_TTG",
+    "not": "direct Phi-to-temperature identity",
+    "uet_boundary": "UET Phi may be compared only after an independently specified measurement operator and dimensional scale"
+  },
+  "source_physics_boundary": "Full-scattering-matrix phonon Boltzmann transport is the microscopic standard comparator; Fourier and Cattaneo are control models, not a microscopic UET derivation.",
   "uet_map_contract": {
     "normalized_operator": "y_TTG(t;Lambda) = Delta_Phi(t;Lambda) / Delta_Phi(0;Lambda)",
     "dimensional_operator": "Delta_Tq(t;Lambda) = alpha_Phi_K * Delta_Phi(t;Lambda)",

@@ -84,3 +84,10 @@ Repository note:
 
 - This manifest was created during the repo standards pass and should be tightened further in a later provenance-normalization wave.
 - Until raw/supplementary tables and measured-constant uncertainty records are frozen, treat the dataset package as a source-referenced internal benchmark rather than an archival release.
+
+### 2026-08-01 source equation registry
+
+The thermal source review now includes a machine-readable registry for the
+standard TTG source equations and the intermediate g_n -> Delta_Tq ->
+y_TTG observable layer. This is provenance and correspondence control only;
+it does not add local numeric rows or close the dimensional Phi mapping.

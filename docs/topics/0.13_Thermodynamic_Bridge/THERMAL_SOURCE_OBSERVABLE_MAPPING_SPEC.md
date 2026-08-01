@@ -96,3 +96,23 @@ dimensionless normalized dip used by the source convention. These are
 source-backed diagnostic definitions for a future comparison. They do not
 identify `Phi` with temperature, do not derive `alpha_Phi_K`, and do not close
 heat-flux or entropy-production mappings.
+## Source equation layer
+
+The source contract now records the standard TTG equations as a separate layer
+from the UET operator. In particular, the source's c_v is volumetric heat
+capacity and is not the UET C coordinate. The intermediate measurement chain is:
+
+mode-resolved phonon energy g_n
+-> quasi-temperature difference Delta_Tq
+-> normalized TTG detector signal y_TTG
+
+The frequency-domain phonon Boltzmann response and the damped TTG comparator
+remain standard-physics controls. They do not derive Phi, do not assign
+Phi the meaning of temperature, and do not close alpha_Phi_K. The full
+scattering-matrix phonon model is the microscopic comparator; Fourier and
+Cattaneo remain control laws at this boundary.
+
+The machine-readable source equation registry is stored in
+Data/03_Research/matter_space_thermal_source_review.json. Its current
+status is source-backed definition only: no numeric source rows were imported,
+no parameter was fitted, and the 2026 source remains a locked holdout.

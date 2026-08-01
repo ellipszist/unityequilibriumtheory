@@ -698,3 +698,12 @@ Use this log when `0.13` changes in a way that narrows a provenance blocker, add
 - Still open: capture a permitted numeric package through a reproducible route, keep it outside parameter selection until the comparison protocol is frozen, and close `alpha_Phi_K` independently.
 - Claim impact: no upgrade; the holdout remains metadata-only and no source curve was fitted or digitized.
 - Next controller: `thermal_source_numeric_package_and_dimensional_calibration_missing`.
+### 2026-08-01 - TTG source equation and intermediate observable layer
+
+- Scope: distinguish the standard microscopic TTG source equations from the UET candidate operator and prevent the symbol C from being confused with source heat capacity c_v.
+- Added or changed: source_equation_registry and intermediate_observable_layer in matter_space_thermal_source_review.json; synchronized the thermal source/observable specification and data manifest; regenerated the thermal pilot artifact after repairing its stale source-package hash.
+- Verified with: source/observable mapping audit (PASS_WITH_BLOCKED_DIMENSIONAL_AND_DATA_LANES), thermal closure source inventory (PASS_WITH_CROSS_LANE_BLOCKER), and focused thermal regression suite (20 passed).
+- Result: the standard measurement chain is now explicit as g_n -> Delta_Tq -> y_TTG; the source-level c_v is recorded as volumetric heat capacity, distinct from UET C.
+- Still open: permitted local numeric TTG package, row-level provenance and uncertainty, independent alpha_Phi_K derivation/calibration, and downstream heat-flux/entropy maps.
+- Claim impact: no upgrade; Phi is not temperature, no source data were fitted, and the 2026 source remains a locked holdout.
+- Next controller: thermal_source_numeric_package_and_dimensional_calibration_missing.

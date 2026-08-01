@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_wave3_wave10_research_program",
-  "generated_at": "2026-08-01T16:25:42.800356+00:00",
+  "generated_at": "2026-08-01T16:48:16.631182+00:00",
   "program_scope": "UET Foundation-First Research Program Waves 0-10",
   "workflow": [
     "inventory",
@@ -263,7 +263,7 @@
         {
           "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_control.json",
           "exists": true,
-          "sha256": "9d429f2897944ce61c2ec903dba3d4dd2d20646255033a0368b2bfcfc9193e4c",
+          "sha256": "6ef2bb67dce62061c149d3a554c4532b13e278d85057f47f91dc126671f8e1f0",
           "status": "SIMULATION_ONLY",
           "controller": "core_prearrival_leakage"
         },
@@ -284,7 +284,7 @@
         {
           "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_observable_map_readiness.json",
           "exists": true,
-          "sha256": "eac2809b7cc467deed28a706d20fb057497c80f9c89e8db68a5daddbf0a57383",
+          "sha256": "26ef819c06c24dc51087dd70c2d98a65fe438d9bee006afeb370552224606d3a",
           "status": "PASS_WITH_BLOCKED_DIMENSIONAL_AND_DATA_LANES",
           "controller": "not_declared"
         }
@@ -316,7 +316,7 @@
         {
           "path": "docs/core/artifacts/uet_gr_research_program_gate.json",
           "exists": true,
-          "sha256": "38bfe3bcafb35880c1bfab61c67f3f4982a17e0fbd0f95f46da601bc496fc3d0",
+          "sha256": "55f822f280c824c0b03398a12626a2544d71437ec588907b44343023658a7309",
           "status": "BLOCKED",
           "controller": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing"
         }
@@ -380,28 +380,28 @@
         {
           "path": "docs/core/artifacts/orbit_cosmology_correspondence_gate.json",
           "exists": true,
-          "sha256": "49100a87890307f8ff8b82728d5a420d449ecd8fa7a0568f6f119611d3fd120b",
+          "sha256": "35bb4ab350aee8f493c447facf1324e322a494dfc9dc0e5b38a0de0582aa78b2",
           "status": "BLOCKED",
           "controller": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing plus global boundary/observable closure"
         },
         {
           "path": "docs/core/artifacts/gr_closed_limit_verification.json",
           "exists": true,
-          "sha256": "a04ed30ebbbcfe35d7c92791341b781e0f4d59c754c1647c829efb7633baa8dc",
+          "sha256": "f9b5f1e3e5df7424767ceefa2196b11056a1620452a4ef440a7ce1800c340d23",
           "status": "PASS",
           "controller": "noether_charge_equation_of_state_and_covariant_transport_matching_missing"
         },
         {
           "path": "docs/core/artifacts/gr_correspondence_claim_gate.json",
           "exists": true,
-          "sha256": "b01f9b128c999b6ee1d9f43725e0ef486157af4e8d4ad7ab81880ff746b087dd",
+          "sha256": "ce63bc17689ff9edb8b7930235a34f77e539c96af74406022ee7cb537ddd7531",
           "status": "BLOCKED",
           "controller": "covariant_parent_action_missing"
         },
         {
           "path": "docs/core/artifacts/uet_gr_research_program_gate.json",
           "exists": true,
-          "sha256": "38bfe3bcafb35880c1bfab61c67f3f4982a17e0fbd0f95f46da601bc496fc3d0",
+          "sha256": "55f822f280c824c0b03398a12626a2544d71437ec588907b44343023658a7309",
           "status": "BLOCKED",
           "controller": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing"
         },

@@ -227,3 +227,16 @@ source–propagation–detector comparator as a standard control. This is an
 evidence-chain repair only: the lane remains `SIMULATION_ONLY`, the foundation
 remains `BLOCKED`, and no `R_gen` particle identity or SI detector prediction
 is enabled.
+## Latest plan update — 2026-08-01 TTG source equation layer
+
+The thermal source contract now has an explicit standard-equation layer:
+mode-resolved phonon energy g_n is converted to quasi-temperature difference
+Delta_Tq, which is then represented by the normalized TTG detector signal
+y_TTG. The source heat-capacity symbol c_v is not the UET C coordinate. This
+removes a correspondence ambiguity, not a physical blocker.
+
+The thermal audit remains PASS_WITH_BLOCKED_DIMENSIONAL_AND_DATA_LANES; the
+regenerated pilot remains SIMULATION_ONLY / FAIL because its original
+pre-arrival leakage controller is still visible. The next controller is a
+permitted local numeric package plus an independently derived or calibrated
+alpha_Phi_K; no fitting or holdout consumption is allowed.

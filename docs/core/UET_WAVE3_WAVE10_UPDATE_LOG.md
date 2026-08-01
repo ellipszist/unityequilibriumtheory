@@ -93,3 +93,10 @@ source–propagation–detector comparator as a standard control. This is an
 evidence-chain repair only: the lane remains `SIMULATION_ONLY`, the foundation
 remains `BLOCKED`, and no `R_gen` particle identity or SI detector prediction
 is enabled.
+## Latest plan update — 2026-08-01 TTG source equation layer
+
+The standard TTG source equations and intermediate observable layer are now
+registered in the thermal source review. This closes a notation/provenance
+ambiguity (c_v versus UET C) while keeping the source numeric package,
+dimensional Phi map, and external validation blocked. Thermal regression passed
+20/20; no claim ceiling changed.

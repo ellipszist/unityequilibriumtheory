@@ -211,3 +211,11 @@
 - Result: the carrier lane now has an explicit normalized standard control, while SI detector units, uncertainty, external provenance, and UET source-to-carrier mapping remain open.
 - Claim impact: none; `R_gen` remains a derived trace and is not identified with a photon.
 - Next controller: close one dimensional thermal lane or explicitly document why the source-data route remains locked before any external comparison.
+### 2026-08-01 - TTG source equation boundary
+
+The thermal lane now separates source-standard phonon equations from the UET
+candidate map. Its intermediate observable chain is g_n -> Delta_Tq ->
+y_TTG, and the source heat-capacity symbol c_v is explicitly distinct from
+the UET collective coordinate C. The source mapping audit and 20-test thermal
+regression pass, while dimensional Phi mapping and numeric source intake
+remain blocked. No physics claim was promoted.
