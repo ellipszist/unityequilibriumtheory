@@ -7,7 +7,7 @@
   "foundation_gate": {
     "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
     "status": "BLOCKED",
-    "sha256": "2027e903b75c857e51f193ca8c6484e0fa6659d3338135a674a9adfa1e5e62d5",
+    "sha256": "6c09bff908e8fbc8c8c5e66ce10b14f8646300259b34929fbddc17076ffb7a6d",
     "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
   },
   "wave_count": 12,
@@ -449,5 +449,5 @@
     "physics_status": "A CLOSED_AS_BLOCKED wave is not a solved theory; it is a formally bounded research lane whose blocker is now explicit.",
     "selected_positive_result": "Only the selected normalized characteristic-cone diagnostic is locally passing; it does not establish SI physics, universal C meaning or empirical validity."
   },
-  "next_controller": "close foundation coverage, dimensional units and observable maps; run the source-locked thermal and augmented C-density lanes before any downstream promotion"
+  "next_controller": "close foundation coverage, dimensional units and observable maps; run the source-locked thermal and external 3D C-density lanes before any downstream promotion"
 }

@@ -67,6 +67,31 @@ def build() -> dict[str, Any]:
             "evidence": ["docs/core/artifacts/mass_density_correspondence_verification.json", "docs/core/artifacts/mass_density_amplitude_contract_verification.json", "docs/core/artifacts/mass_density_dimensional_contract_verification.json"],
         },
         {
+            "lane_id": "matter_density_3d_observable_operator",
+            "variables": {
+                "C_phase": "collective/relational coordinate; not a universal density amplitude",
+                "rho_hat": "unit-integral normalized cell-centred 3D code-space shape",
+                "A_m": "explicit source amplitude in kg",
+                "L_xyz": "three explicit coordinate scales in m",
+                "rho_3D": "volume-mass density observable in kg/m^3",
+            },
+            "unit_lane": "SI_3D_VOLUME_DENSITY_SYNTHETIC",
+            "standard_counterpart": "three-dimensional volume-mass density observable",
+            "observable_operator": "O[C_phase,geometry,rho_hat,A_m,L_xyz] = rho_3D",
+            "observable_status": "INTERNAL_CORRESPONDENCE_DIAGNOSTIC",
+            "units_status": "PASS_SYNTHETIC_SI_3D_ONLY",
+            "uncertainty_status": "DECLARED_SYNTHETIC_EXTERNAL_PROPAGATION_OPEN",
+            "open_items": [
+                "C-to-rho_hat derivation remains open",
+                "A_m is an explicit source input, not a UET derivation",
+                "external 3D source, calibration, propagated uncertainty, galaxy data, and holdout remain open",
+            ],
+            "evidence": [
+                "docs/core/artifacts/mass_density_3d_contract_verification.json",
+                "docs/core/artifacts/uet_equation_correspondence_registry.json",
+            ],
+        },
+        {
             "lane_id": "resource_selection_persistence",
             "variables": {"x": "normalized resource-allocation state", "E_available": "normalized available-resource ledger"},
             "unit_lane": "normalized",
@@ -147,7 +172,7 @@ def build() -> dict[str, Any]:
             "F7_observable_mapping": "BLOCKED_UNTIL_MEASUREMENT_OPERATOR_AND_UNCERTAINTY_CLOSURE",
             "claim_ceiling": "internal normalized/natural-unit diagnostics and conditional constitutive relations only",
         },
-        "next_controller": "close one dimensional thermal lane and separately source-lock the C-density amplitude contract before any external fit or physical claim",
+        "next_controller": "close one dimensional thermal lane and source-lock an external 3D density operator before any external fit or physical claim",
     }
 
 

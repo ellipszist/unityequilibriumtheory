@@ -243,3 +243,20 @@ Source-declared standard/comparator rows are now recorded as explicit blocked co
 - Result: regression compatibility repaired; no conservation, covariant, or physical foundation claim promoted.
 - Next controller: full-core rerun and remaining physical causal/units/observable gates.
 - Claim impact: no change.
+
+## 2026-08-08 - Synthetic SI 3D C-density operator
+
+- Scope: close the next dimensional subgate in the augmented C-density lane without promoting `C` to mass density.
+- Added: 3D cell-centred operator, source contract, deterministic artifact, focused tests, registry row, and active-lane status.
+- Verified: `rho_3D` integrates to the declared kg amplitude under anisotropic scale changes; focused suite `8/8`; artifact `PASS_WITH_BLOCKED_EXTERNAL_3D_MAPPING`.
+- Result: SI kg/m^3 bookkeeping and measurement-operator shape are explicit; C-to-shape derivation, external calibration, uncertainty propagation, and holdout remain blocked.
+- Next controller: external 3D source package and independent calibration/uncertainty policy before any galaxy comparison.
+- Claim impact: no change.
+
+## 2026-08-08 - F0 inventory coverage closure
+
+- Scope: synchronize the foundation coverage artifact with the current declared core-family contract.
+- Verified: `1,924` code surfaces inventoried, `1,849` assigned to declared families, `75` explicitly quarantined, `263` formula rows recorded, zero parse errors, and `28` unlinked core files exposed; foundation/all-wave audits remain `PASS`/`BLOCKED`.
+- Result: F0 inventory coverage is explicit; F2 standard correspondence, F3 dimensional units, F7 physical observables, and external claim gates remain open.
+- Next controller: close accepted lane-specific counterpart/measurement maps without relabelling normalized or synthetic operators as physical.
+- Claim impact: no change.

@@ -384,3 +384,13 @@ Verification: mass-density audit `PASS_WITH_BLOCKED_MAPPING`, direct-C non-ident
 - Verified: targeted Lorentz/Noether regression passed `3/3`; the module remains labelled legacy and `BLOCKED_FOR_CONSERVATION_PROOF_CLAIMS`.
 - Result: this is a shape-contract repair only; it does not turn the gradient-flow diagnostic into a Noether or conservation proof.
 - Next controller: full-core rerun, then physical causal/units/observable blockers.
+
+## 2026-08-08 - Synthetic SI 3D density-operator contract
+
+- Scope: advance the augmented C-density lane from a synthetic SI 1D line-density contract to a declared 3D volume-density measurement operator.
+- Added: `mass_density_3d.py`, deterministic 3D audit/artifact, focused operator and artifact tests, a registry row, and the active-lane record.
+- Verified: SI `rho_3D` finite-volume integral recovers the declared kg amplitude under anisotropic volume rescaling; focused 3D suite passed `8/8`; audit status is `PASS_WITH_BLOCKED_EXTERNAL_3D_MAPPING`.
+- Result: `rho_3D=A_m*rho_hat/(L_x L_y L_z)` is now a checked synthetic unit/operator contract. `C` still does not derive `rho_hat` or `A_m`; source calibration, external uncertainty propagation, and holdout remain open.
+- Foundation effect: active lanes `9`; F3 remains `BLOCKED` with `4` normalized/natural lanes and `5` dimensional/open lanes; F7 declares `9` internal operators but accepts `0` physical maps.
+- Next controller: source-lock an external 3D density operator with calibration, propagated uncertainty, and a locked holdout before galaxy comparison.
+- Claim impact: no mass derivation, galaxy, dark-matter, or empirical promotion.

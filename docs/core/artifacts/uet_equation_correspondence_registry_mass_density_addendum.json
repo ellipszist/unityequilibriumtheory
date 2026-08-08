@@ -106,6 +106,64 @@
       "claim_boundary": "synthetic SI 1D unit contract; not a physical 3D density map, galaxy prediction, or mass derivation",
       "failure_mode": "a 1D line density is reported as a 3D galaxy density or source amplitude is fitted on target data",
       "next_hardening_step": "source-lock a physical 3D density operator with provenance, uncertainty, calibration and holdout policy"
+    },
+    {
+      "equation_id": "uet.mass_density.si_3d_measurement_operator",
+      "version": "mass-density-si-3d-v1",
+      "classification": "observable_mapping_comparator",
+      "relation_or_code_path": "rho_3D=A_m*rho_hat(x_code)/(L_x*L_y*L_z) in docs/core/mass_density_3d.py",
+      "variables": {
+        "C_phase": "collective/relational coordinate; not used as universal density amplitude",
+        "rho_hat": "unit-integral normalized cell-centred 3D code-space shape",
+        "A_m": "explicit source amplitude in kg",
+        "L_x,L_y,L_z": "explicit coordinate scales in m",
+        "rho_3D": "volume-mass density observable in kg/m^3"
+      },
+      "mathematical_role": "synthetic SI 3D measurement-operator contract that separates source amplitude, geometry scales, and normalized shape",
+      "standard_physics_counterpart": "three-dimensional volume-mass density observable",
+      "observable_mapping": {
+        "status": "BLOCKED",
+        "operator": "O[C_phase,geometry,rho_hat,A_m,L_xyz] -> rho_3D",
+        "reason": "the SI operator closes for a declared synthetic shape, but C-to-shape derivation, external source provenance, calibration, uncertainty propagation, and holdout evidence remain open"
+      },
+      "unit_lane": "SI_3D_VOLUME_MASS_DENSITY_SYNTHETIC",
+      "parameter_dimensions": "A_m kg; L_x,L_y,L_z m; rho_hat inverse code volume; rho_3D kg/m^3",
+      "source_or_origin": "explicit finite-volume dimensional conversion contract from a declared synthetic source shape",
+      "assumptions": [
+        "non-negative rectangular cell-centred shape",
+        "unit-integral normalized code-space shape",
+        "positive declared kg amplitude",
+        "positive metre scales on all three axes",
+        "source locator/hash, uncertainty, calibration status and holdout policy are explicit",
+        "no target-data fitting in the verifier"
+      ],
+      "symmetry_and_conservation": "finite-volume integral of rho_3D recovers the declared source mass; common volume rescaling changes density scale but preserves total mass",
+      "limiting_cases": [
+        "volume rescaling preserves total kg and scales peak density inversely with physical volume",
+        "synthetic source remains simulation-only",
+        "C does not determine rho_hat or A_m in this lane"
+      ],
+      "implementation_paths": [
+        "docs/core/mass_density_3d.py",
+        "docs/scripts/audit/audit_mass_density_3d.py"
+      ],
+      "verifier_paths": [
+        "docs/core/artifacts/mass_density_3d_contract_verification.json",
+        "docs/core/test/test_mass_density_3d.py",
+        "docs/core/test/test_mass_density_3d_audit.py"
+      ],
+      "evidence_class": "INTERNAL_CHECKED_CORRESPONDENCE",
+      "proof_status": "checked local synthetic SI operator and integral closure; external physical mapping open",
+      "downstream_dependencies": [
+        "uet.mass_density.si_1d_amplitude_contract",
+        "uet.mass_density.augmented_amplitude_contract",
+        "uet.foundation.units",
+        "uet.foundation.observable_mapping",
+        "topic_0.1_galaxy_rotation"
+      ],
+      "claim_boundary": "synthetic SI 3D measurement-operator contract; not a C-to-mass derivation, external galaxy map, galaxy prediction, or dark-matter replacement",
+      "failure_mode": "synthetic rho_3D is reported as measured mass density, or A_m/shape/calibration is fitted on target data",
+      "next_hardening_step": "source-lock an external 3D density operator with calibration, propagated uncertainty, and holdout policy before galaxy comparison"
     }
   ],
   "merge_metadata": {
@@ -113,7 +171,8 @@
     "merged_on": "2026-08-08",
     "equation_ids": [
       "uet.mass_density.augmented_amplitude_contract",
-      "uet.mass_density.si_1d_amplitude_contract"
+      "uet.mass_density.si_1d_amplitude_contract",
+      "uet.mass_density.si_3d_measurement_operator"
     ],
     "claim_promotion": false
   }

@@ -468,3 +468,9 @@ Blocked now:
 - Formula audit: [`matter_space_formula_audit.json`](./artifacts/matter_space_formula_audit.json)
 - Program gate: [`matter_space_research_program_gate.json`](./artifacts/matter_space_research_program_gate.json)
 - Research specification: [`MATTER_SPACE_RESEARCH_SPEC.md`](./MATTER_SPACE_RESEARCH_SPEC.md)
+
+## Latest plan update - 2026-08-08 synthetic SI 3D density operator
+
+The augmented C-density lane now has a declared 3D volume-density operator, `rho_3D=A_m*rho_hat/(L_x L_y L_z)`, with explicit kg amplitude, three metre scales, finite-volume integral closure, declared source uncertainty, calibration status, and holdout policy. The deterministic artifact passes as `PASS_WITH_BLOCKED_EXTERNAL_3D_MAPPING`; volume rescaling preserves total kg and changes density scale as expected.
+
+This is a measurement/operator contract, not a derivation of mass from `C`: the synthetic shape is supplied independently, `A_m` is an explicit source input, no external calibration or data were used, and no galaxy fit or holdout was run. The next controller is an external 3D density source package with calibration and propagated uncertainty.

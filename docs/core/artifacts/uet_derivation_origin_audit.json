@@ -7,17 +7,17 @@
   "purpose": "classify relation origins and preserve the boundary between derivation, comparison, heuristic and physical closure",
   "registry": "docs/core/artifacts/uet_equation_correspondence_registry.json",
   "metrics": {
-    "registry_entry_count": 22,
+    "registry_entry_count": 23,
     "origin_family_counts": {
       "LEGACY_OR_COMPARATOR": 1,
       "DECLARED_RELATION_DERIVATION": 6,
       "HEURISTIC_OR_DIAGNOSTIC": 3,
-      "STANDARD_OR_INTERNAL_COMPARATOR": 7,
+      "STANDARD_OR_INTERNAL_COMPARATOR": 8,
       "CONCEPTUAL_CANDIDATE": 2,
       "CANDIDATE_WITH_LOCAL_CHECKS": 3
     },
     "declared_relation_derivations": 6,
-    "comparator_checked_relations": 7,
+    "comparator_checked_relations": 8,
     "open_or_candidate_relations": 9,
     "physical_promotions_allowed": 0
   },
@@ -305,6 +305,19 @@
       "proof_status": "checked local dimensional contract; physical 3D mapping open",
       "mathematical_role": "synthetic dimensional closure for the augmented C-density contract",
       "claim_boundary": "synthetic SI 1D unit contract; not a physical 3D density map, galaxy prediction, or mass derivation",
+      "physical_closure": false,
+      "physical_promotion_allowed": false
+    },
+    {
+      "equation_id": "uet.mass_density.si_3d_measurement_operator",
+      "classification": "observable_mapping_comparator",
+      "origin_family": "STANDARD_OR_INTERNAL_COMPARATOR",
+      "derivation_readiness": "COMPARATOR_CHECKED_UET_DERIVATION_OPEN",
+      "source_or_origin": "explicit finite-volume dimensional conversion contract from a declared synthetic source shape",
+      "evidence_class": "INTERNAL_CHECKED_CORRESPONDENCE",
+      "proof_status": "checked local synthetic SI operator and integral closure; external physical mapping open",
+      "mathematical_role": "synthetic SI 3D measurement-operator contract that separates source amplitude, geometry scales, and normalized shape",
+      "claim_boundary": "synthetic SI 3D measurement-operator contract; not a C-to-mass derivation, external galaxy map, galaxy prediction, or dark-matter replacement",
       "physical_closure": false,
       "physical_promotion_allowed": false
     }

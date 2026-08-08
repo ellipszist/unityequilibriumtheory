@@ -191,3 +191,7 @@ kg amplitude and metre coordinate scale produce a kg/m line-density observable
 with integral closure. The 3D physical density operator, source provenance,
 uncertainty, calibration, and holdout gates remain open. This is a unit-contract
 result, not a mass derivation or galaxy-ready observable.
+
+## 2026-08-08 dependency update - synthetic SI 3D density operator
+
+The C-density edge now has a checked synthetic 3D measurement/operator contract: `rho_3D=A_m*rho_hat/(L_x L_y L_z)` in `kg/m^3`, with finite-volume integral closure and explicit source metadata. This closes a unit/operator bookkeeping layer only. The shape is not derived from `C`, `A_m` is an explicit source input, and external source provenance, calibration, propagated uncertainty, and holdout remain open. The galaxy/dark-matter edges therefore remain blocked.

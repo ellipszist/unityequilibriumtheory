@@ -14,7 +14,7 @@ def test_derivation_origin_audit_is_complete_without_physical_promotion():
     report = json.loads(path.read_text(encoding="utf-8"))
     assert report["audit_status"] == "PASS"
     assert report["status"] == "PASS_WITH_DECLARED_OPEN_ORIGINS"
-    assert report["metrics"]["registry_entry_count"] == 22
+    assert report["metrics"]["registry_entry_count"] == 23
     assert report["metrics"]["open_or_candidate_relations"] > 0
     assert "UNCLASSIFIED_OPEN" not in report["metrics"]["origin_family_counts"]
     assert report["metrics"]["physical_promotions_allowed"] == 0

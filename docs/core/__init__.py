@@ -416,6 +416,24 @@ __all__ = [
     "matter_to_interaction_forward",
 
 ]
+from .mass_density_3d import (
+    MassDensity3DSource,
+    gaussian_shape_3d,
+    integrated_density_3d,
+    mass_from_si_volume_density,
+    normalized_shape_3d,
+    si_volume_density_from_shape,
+)
+
+__all__ += [
+    "MassDensity3DSource",
+    "gaussian_shape_3d",
+    "integrated_density_3d",
+    "mass_from_si_volume_density",
+    "normalized_shape_3d",
+    "si_volume_density_from_shape",
+]
+
 __version__ = "0.9.0"
 from .uet_impact_effect import (
     IMPACT_EFFECT_OPERATOR_MODE,

@@ -22,11 +22,11 @@
       "metrics": {
         "formula_audit_files": 39,
         "formula_rows": 263,
-        "core_python_files": 45,
-        "candidate_code_surfaces": 1843,
-        "unlinked_core_files": 26,
+        "core_python_files": 50,
+        "candidate_code_surfaces": 1924,
+        "unlinked_core_files": 28,
         "coverage_gate_status": "PASS_WITH_EXPLICIT_QUARANTINES",
-        "explicit_quarantine_surface_count": 336
+        "explicit_quarantine_surface_count": 75
       },
       "required_next_artifact": "full correspondence/unit/observable matrix for inventoried rows"
     },
@@ -74,10 +74,10 @@
         "docs/core/artifacts/uet_active_lane_units_observable_register.json"
       ],
       "metrics": {
-        "active_lane_count": 8,
+        "active_lane_count": 9,
         "units_contract_status": "BLOCKED_UNTIL_DIMENSIONAL_LANE_CLOSURE",
         "normalized_or_natural_contract_lanes": 4,
-        "open_dimensional_lanes": 4
+        "open_dimensional_lanes": 5
       },
       "normalized_subgate": {
         "status": "PASS_NORMALIZED_OR_NATURAL_ONLY",
@@ -97,9 +97,9 @@
       "metrics": {
         "origin_audit_status": "PASS",
         "origin_audit_state": "PASS_WITH_DECLARED_OPEN_ORIGINS",
-        "registry_entry_count": 22,
+        "registry_entry_count": 23,
         "declared_relation_derivations": 6,
-        "comparator_checked_relations": 7,
+        "comparator_checked_relations": 8,
         "open_or_candidate_relations": 9,
         "physical_promotions_allowed": 0
       },
@@ -143,25 +143,25 @@
         "docs/core/artifacts/uet_equation_correspondence_registry.json"
       ],
       "metrics": {
-        "active_lane_count": 8,
+        "active_lane_count": 9,
         "normalized_operator_status": "PASS_WITH_OPEN_SI_MAPPING",
         "si_status": "BLOCKED",
         "observable_status_counts": {
           "BLOCKED": 1,
           "FORMAL_CONSTITUTIVE_ONLY": 1,
-          "INTERNAL_CORRESPONDENCE_DIAGNOSTIC": 1,
+          "INTERNAL_CORRESPONDENCE_DIAGNOSTIC": 2,
           "INTERNAL_DIAGNOSTIC": 2,
           "INTERNAL_SIMULATION_ONLY": 1,
           "SIMULATION_ONLY": 1,
           "SIMULATION_ONLY_OPEN_DIMENSIONAL_MAP": 1
         },
-        "declared_observable_contract_lanes": 8,
+        "declared_observable_contract_lanes": 9,
         "accepted_physical_observable_lanes": 0
       },
       "normalized_subgate": {
         "status": "PASS_DECLARED_INTERNAL_OPERATORS_ONLY",
         "required_condition": "each active lane declares an internal operator while physical mapping remains separate",
-        "lane_count": 8
+        "lane_count": 9
       },
       "required_next_artifact": "observable mapping register with units, resolution and uncertainty for each active lane"
     },
@@ -192,9 +192,9 @@
     }
   },
   "coverage_snapshot": {
-    "registry_entry_count": 22,
+    "registry_entry_count": 23,
     "inventory_missing_scope_count": 5,
-    "code_unlinked_core_files": 26,
+    "code_unlinked_core_files": 28,
     "matrix_status": "BLOCKED",
     "topic_rerun_open": false
   },

@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_core_equation_family_contract",
-  "generated_at": "2026-08-01",
+  "generated_at": "2026-08-08",
   "audit_status": "PASS",
   "contract_status": "BLOCKED",
   "controlling_blocker": "core_code_surface_classification_or_upstream_compatibility_incomplete",
   "coverage": {
-    "core_code_surface_file_count": 45,
-    "assigned_module_path_count": 45,
+    "core_code_surface_file_count": 50,
+    "assigned_module_path_count": 50,
     "missing_core_paths": [],
     "nonexistent_declared_paths": [],
     "equation_family_count": 9,
@@ -252,7 +252,7 @@
         "docs/core/artifacts/noether_phase_field_state_map_verification.json"
       ],
       "next_gate": "derive coarse-graining/gradient EFT and prove observable map without many-to-one ambiguity",
-      "candidate_surface_count": 202,
+      "candidate_surface_count": 205,
       "module_paths_exist": true
     },
     {
@@ -357,7 +357,12 @@
         "docs/core/thermal_observable_bridge.py",
         "docs/core/thermal_source_observable_map.py",
         "docs/core/uet_impact_effect.py",
-        "docs/core/uet_resource_selection.py"
+        "docs/core/uet_resource_selection.py",
+        "docs/core/mass_density_3d.py",
+        "docs/core/mass_density_amplitude.py",
+        "docs/core/mass_density_dimensional.py",
+        "docs/core/photon_observer_baseline.py",
+        "docs/core/uet_matter_space_observable.py"
       ],
       "equation_family": false,
       "variables": {},
@@ -371,7 +376,7 @@
         "docs/core/artifacts/uet_code_surface_inventory.json"
       ],
       "next_gate": "link formula-bearing support paths to an owning equation family or quarantine as legacy",
-      "candidate_surface_count": 449,
+      "candidate_surface_count": 527,
       "module_paths_exist": true
     }
   ],
