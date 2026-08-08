@@ -65,7 +65,15 @@ def build() -> dict[str, Any]:
                 "physics_status": item.get("effective_status", "UNKNOWN"),
                 "controlling_blocker": item.get("controlling_blocker"),
                 "claim_ceiling": item.get("claim_ceiling"),
-                "evidence": [entry for entry in item.get("inputs", []) if entry.get("exists")],
+                "evidence": [
+                    {
+                        **evidence(entry.get("path")),
+                        "status": entry.get("status"),
+                        "controller": entry.get("controller"),
+                    }
+                    for entry in item.get("inputs", [])
+                    if entry.get("exists") and entry.get("path")
+                ],
             }
         )
 

@@ -499,3 +499,19 @@ cannot by itself establish `C=energy`; the two outputs remain separable after
 mapping. The result is still `TEST_ONLY`, so the research plan now requires a
 material heat/work measurement and independent cost-scale provenance before any
 physical comparison.
+
+## Latest plan update - 2026-08-08 strict all-wave completion audit
+
+The planned research program now has a machine-checked closure packet for all
+ twelve waves, from foundation inventory through particle/Dirac deferral. The
+completion audit verifies current evidence paths and hashes, JSON parseability,
+wave status/claim/controller boundaries, closure-log coverage, work-ledger and
+report presence, and the foundation promotion boundary. The full core
+regression is `545 passed`, `0 failed`, with `6` warnings.
+
+This closes project accounting and claim-boundary synchronization only. It does
+not close the physical foundation: the central gate remains `BLOCKED`, physical
+promotion remains disabled, and unresolved dimensional/observable, external
+source, transport, causal, gravity, galaxy, and particle dependencies remain
+explicit. The next work is source-locked evidence collection and reruns of the
+affected gates, not a new unconstrained equation or a stronger claim.

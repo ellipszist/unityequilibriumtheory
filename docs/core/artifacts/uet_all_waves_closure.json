@@ -40,14 +40,14 @@
         {
           "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
           "exists": true,
-          "sha256": "40643b89a08293d6670fcdbb1ca8036769821a6ad1889669f783669c733512c1",
+          "sha256": "cfd60ce816d801b1f00272bfb81816b14376b1d7cd51c4568e5814765d690c37",
           "status": "BLOCKED",
           "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
         },
         {
           "path": "docs/core/artifacts/uet_foundation_equation_inventory.json",
           "exists": true,
-          "sha256": "937162f9b3ca960334f72c261aa92bd042ae0d336988e224823b263e2678c702",
+          "sha256": "d7e26098c5454bbfeb598045265d3ae9fbf0294dd1c1fa18ea8971d3af776e02",
           "status": "PASS_WITH_DISCLOSED_GAPS",
           "controller": "topic_formula_audits_not_code_complete_or_correspondence_incomplete"
         }
@@ -65,7 +65,7 @@
         {
           "path": "docs/core/artifacts/uet_equation_correspondence_registry.json",
           "exists": true,
-          "sha256": "1f4b3d18781eb4bfe4f4326db59e7553aa1463481b655fbe8c26ba8cf04810cf",
+          "sha256": "55ef987fe12ff5725d5d27fc9c29435215f4b99f2d0c5021151ac951179f45d1",
           "status": "CENTRAL_REGISTRY_WITH_CANDIDATE_ADDENDA_BLOCKED",
           "controller": "not_declared"
         },
@@ -203,7 +203,7 @@
         {
           "path": "docs/core/artifacts/matter_space_research_program_gate.json",
           "exists": true,
-          "sha256": "a1e56f2440c94dfd73ce3010a324e6b0b73bf1164d72e2ddcbebaee2f255fe8c",
+          "sha256": "7ca30e369f68f8e3d2dd28c4fc1a9de5065020c4fc21952850a73a0752fb531d",
           "status": "BLOCKED",
           "controller": "core_prearrival_leakage"
         },

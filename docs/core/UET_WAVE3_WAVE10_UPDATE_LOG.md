@@ -357,3 +357,22 @@ Source-declared standard/comparator rows are now recorded as explicit blocked co
 - Next controller: replace fixture scales with independent material data,
   measurement operator, uncertainty, and holdout.
 - Claim impact: no promotion; status remains contract-only/simulation-only.
+
+## 2026-08-08 - Strict all-wave completion audit
+
+- Scope: close the planned Wave 0--11 project-control packet without
+  promoting blocked physics.
+- Changed: added the strict completion audit, refreshed closure evidence hashes
+  from the current files, added closure and completion regression tests, and
+  recorded one closure-log row for every planned wave.
+- Verified: `PASS_WITH_FOUNDATION_PHYSICS_BLOCKED`; all 12 waves are present,
+  evidence is present/parseable/current, no evidence artifact is failed, the
+  foundation gate remains `BLOCKED`, and the full core suite is `545 passed`,
+  `0 failed`, with `6` existing warnings.
+- Result: wave accounting is closed as a bounded research-control packet.
+  Waves with unresolved physics remain explicitly `CLOSED_AS_BLOCKED`, and
+  Wave 7 remains `CLOSED_WITH_CONDITIONS`.
+- Next controller: source-lock independent dimensional/observable evidence
+  for the thermal, cost, and density lanes, then rerun only the affected gates.
+- Claim impact: no promotion; no physics, SI, GR, particle, galaxy, or global
+  cosmology claim is established by this audit.
