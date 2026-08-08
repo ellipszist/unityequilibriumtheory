@@ -174,3 +174,7 @@ The Topic 0.19 dependency generator was rerun after restoring its tracked branch
 ## 2026-08-08 ? Wave 10 payload consistency repair
 
 The Wave 10 artifact generator was rerun with a shared timestamp so the persisted O(2), transport, contract, and GR program payloads match the deterministic generator contract. The former payload-consistency failure is closed; `88/88` combined targeted tests pass. No physical transport or GR claim is promoted.
+
+## 2026-08-08 ? F2 explicit row-disposition closure
+
+The foundation correspondence manifest now emits explicit blocked dispositions for all non-pilot rows. This removes the undeclared-operator ambiguity but leaves 152 standard-counterpart rows and all physical observable maps blocked. No downstream wave status or claim ceiling is promoted.

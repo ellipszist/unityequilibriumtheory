@@ -56,11 +56,14 @@
         "manifest_rows": 263,
         "manifest_rows_missing": 0,
         "measurement_operator_records": 263,
-        "measurement_operator_declared_rows": 7,
-        "measurement_operator_open_rows": 256,
+        "measurement_operator_declared_rows": 263,
+        "measurement_operator_open_rows": 0,
+        "measurement_operator_placeholder_rows": 256,
+        "measurement_operator_accepted_rows": 0,
+        "measurement_operator_pending_rows": 263,
         "measurement_operator_blocked_rows": 263
       },
-      "required_next_artifact": "resolve the 152 open standard-counterpart rows, close the 256 undeclared operators, and unblock 7 declared pilot operators"
+      "required_next_artifact": "resolve the 152 open standard-counterpart rows, replace the 256 explicit blocked operator dispositions, and accept lane-specific measurement maps (currently 0 accepted)"
     },
     "F3_units": {
       "status": "BLOCKED",

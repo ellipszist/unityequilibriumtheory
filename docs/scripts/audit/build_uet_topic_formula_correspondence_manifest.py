@@ -112,6 +112,29 @@ def load(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def explicit_blocked_operator(row: dict[str, Any]) -> dict[str, Any]:
+    counterpart_status = row.get("standard_counterpart_status")
+    if counterpart_status == "OPEN_MANUAL_CORRESPONDENCE_REVIEW":
+        disposition = "UNMATCHED_STANDARD_COUNTERPART_BLOCKED"
+        reason_code = "NO_ACCEPTED_STANDARD_COUNTERPART"
+    elif counterpart_status == "OPEN_UET_CANDIDATE_MAPPING":
+        disposition = "CANDIDATE_UET_MAPPING_BLOCKED"
+        reason_code = "UET_MAPPING_REQUIRES_LANE_DERIVATION"
+    else:
+        disposition = "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING"
+        reason_code = "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED"
+    return {
+        "operator_id": f"O[{row['formula_id']}]",
+        "status": "EXPLICITLY_DECLARED_BLOCKED",
+        "kind": "row_level_observable_contract_placeholder",
+        "declared_observable": row.get("observable_mapping"),
+        "physical_closure": False,
+        "disposition": disposition,
+        "reason_code": reason_code,
+        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map.",
+    }
+
+
 def lane_for(topic_id: str) -> dict[str, Any]:
     return LANES.get(topic_id, {"lane_id": f"topic_{topic_id}_specific", "role": "topic_specific", "registry": []})
 
@@ -132,14 +155,7 @@ def build() -> dict[str, Any]:
         else:
             relation_kind = "NO_CENTRAL_REGISTRY_RELATION_DECLARED"
         pilot_operator = PILOT_OPERATOR_MAP.get(row["formula_id"])
-        measurement_operator = pilot_operator or {
-            "operator_id": f"O[{row['formula_id']}]",
-            "status": "OPEN_UNRESOLVED",
-            "kind": "formula_row_observable_operator_not_yet_declared",
-            "declared_observable": row.get("observable_mapping"),
-            "physical_closure": False,
-            "note": "A row index is present for audit completeness; this is not a physical measurement map.",
-        }
+        measurement_operator = pilot_operator or explicit_blocked_operator(row)
         rows.append(
             {
                 "formula_id": row["formula_id"],
@@ -176,14 +192,23 @@ def build() -> dict[str, Any]:
         operator_status_counts[status] = operator_status_counts.get(status, 0) + 1
     operator_open = operator_status_counts.get("OPEN_UNRESOLVED", 0)
     operator_declared = len(rows) - operator_open
+    operator_placeholder = sum(item["measurement_operator"].get("kind") == "row_level_observable_contract_placeholder" for item in rows)
+    operator_accepted = sum(item["measurement_operator"].get("physical_closure", False) for item in rows)
+    operator_pending = len(rows) - operator_accepted
     operator_blocked = sum(not item["measurement_operator"].get("physical_closure", False) for item in rows)
     return {
         "schema_version": "1.0",
         "artifact": "uet_topic_formula_correspondence_manifest",
         "generated_at": date.today().isoformat(),
-        "audit_status": "PASS_WITH_OPEN_ROW_MAPPINGS",
-        "matrix_status": "COMPLETE_ROW_INDEX_OPEN_CORRESPONDENCE_AND_OBSERVABLES",
-        "purpose": "exhaustive F2 row index; lane routing and open mapping visibility, not derivation or physical validation",
+        "audit_status": "PASS_WITH_EXPLICIT_BLOCKED_DISPOSITIONS",
+        "matrix_status": "COMPLETE_ROW_INDEX_EXPLICIT_DISPOSITIONS_OPEN_PHYSICAL_MAPPING",
+        "purpose": "exhaustive F2 row index; every row has an explicit blocked disposition, while no row is promoted into a physical correspondence or accepted measurement operator",
+        "disposition_policy": {
+            "schema_version": "f2_row_disposition_v1",
+            "placeholder_status": "EXPLICITLY_DECLARED_BLOCKED",
+            "accepted_physical_operator_count": operator_accepted,
+            "rule": "Rows without an accepted lane-specific operator receive an explicit blocked disposition; the record is not a standard counterpart, derivation, or observable acceptance.",
+        },
         "source_artifact": str(SOURCE.relative_to(ROOT)).replace("\\", "/"),
         "central_registry": str(REGISTRY.relative_to(ROOT)).replace("\\", "/"),
         "coverage": {
@@ -196,12 +221,15 @@ def build() -> dict[str, Any]:
             "measurement_operator_records": len(rows),
             "measurement_operator_declared_rows": operator_declared,
             "measurement_operator_open_rows": operator_open,
+            "measurement_operator_placeholder_rows": operator_placeholder,
+            "measurement_operator_accepted_rows": operator_accepted,
+            "measurement_operator_pending_rows": operator_pending,
             "measurement_operator_blocked_rows": operator_blocked,
             "measurement_operator_status_counts": operator_status_counts,
         },
-        "claim_boundary": "Lane relation is not variable identity; an indexed operator is not an observable validation; open rows cannot promote downstream claims.",
+        "claim_boundary": "Lane relation is not variable identity; an explicit blocked disposition is not an observable validation; no row can promote downstream claims until its standard counterpart, units, derivation, and measurement operator are accepted.",
         "rows": rows,
-        "next_controller": "resolve open standard counterparts, units, derivation origins, and physical measurement operators lane by lane; do not promote topic rows into central identities",
+        "next_controller": "resolve the 152 open standard-counterpart rows and replace explicit blocked operator dispositions with accepted lane-specific measurement maps; do not promote topic rows into central identities",
     }
 
 
@@ -212,6 +240,7 @@ def main() -> int:
     print(f"source_rows={artifact['coverage']['source_rows']}")
     print(f"manifest_rows={artifact['coverage']['manifest_rows']}")
     print(f"open_measurement_rows={artifact['coverage']['measurement_operator_open_rows']}")
+    print(f"explicit_blocked_dispositions={artifact['coverage']['measurement_operator_placeholder_rows']}")
     return 0
 
 

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_wave3_wave10_research_program",
-  "generated_at": "2026-08-08T08:21:55.561327+00:00",
+  "generated_at": "2026-08-08T08:29:37.309123+00:00",
   "program_scope": "UET Foundation-First Research Program Waves 0-10",
   "workflow": [
     "inventory",
@@ -17,7 +17,7 @@
   ],
   "foundation_gate": {
     "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
-    "sha256": "12e4e4eaa5ead481496dadd4ea72bfab88e5cd956fd489b10f8c8a985d02fd1f",
+    "sha256": "f2b377c0f9e490763081355e24ea57e244b43d1dc277d800452ab34271699ea0",
     "status": "BLOCKED",
     "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
   },
@@ -36,7 +36,7 @@
         {
           "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
           "exists": true,
-          "sha256": "12e4e4eaa5ead481496dadd4ea72bfab88e5cd956fd489b10f8c8a985d02fd1f",
+          "sha256": "f2b377c0f9e490763081355e24ea57e244b43d1dc277d800452ab34271699ea0",
           "status": "BLOCKED",
           "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
         },
@@ -82,9 +82,9 @@
         {
           "path": "docs/core/artifacts/uet_topic_formula_correspondence_manifest.json",
           "exists": true,
-          "sha256": "e95e3e7f204fa511a075bb30650330d630442cec598e411bc9c855c7300edbfd",
-          "status": "PASS_WITH_OPEN_ROW_MAPPINGS",
-          "controller": "resolve open standard counterparts, units, derivation origins, and physical measurement operators lane by lane; do not promote topic rows into central identities"
+          "sha256": "96ef35498c9e58009e7aac3ae9aef0cf6457f45f44e859f214853c859a7cc243",
+          "status": "PASS_WITH_EXPLICIT_BLOCKED_DISPOSITIONS",
+          "controller": "resolve the 152 open standard-counterpart rows and replace explicit blocked operator dispositions with accepted lane-specific measurement maps; do not promote topic rows into central identities"
         }
       ]
     },
@@ -107,7 +107,7 @@
         {
           "path": "docs/core/artifacts/o2_eos_formula_audit.json",
           "exists": true,
-          "sha256": "920ba94b69b59c01feacac02476233d59a04a8823a4e8c4f2af8aa9aa6a65975",
+          "sha256": "8805c6820b1a7fe422ee91b35ed400dafd7d36367bb708854ea91f0ef055fe2e",
           "status": "WARN",
           "controller": "not_declared"
         }
@@ -323,21 +323,21 @@
         {
           "path": "docs/core/artifacts/o2_finite_density_eos_verification.json",
           "exists": true,
-          "sha256": "9113d083f29ced8e5d61fad2eb0c2adcb89b5c78f3438cd0e83df08bea2cdc85",
+          "sha256": "74dfbb8e3c4c2b74df1c2a3e026944441a80d891cfb89aa6d16d24350ba183aa",
           "status": "PASS",
           "controller": "covariant_superfluid_kubo_transport_and_entropy_matching_missing"
         },
         {
           "path": "docs/core/artifacts/covariant_superfluid_transport_verification.json",
           "exists": true,
-          "sha256": "e690b0206e99504a95b1446a4efccd5422e0b97df9853f7baa0c975701c57fb8",
+          "sha256": "54fdcced3a21ec10a2ed940f74e6915ab15f57658bbe786f1df884bde4ae426e",
           "status": "PASS",
           "controller": "not_declared"
         },
         {
           "path": "docs/core/artifacts/uet_gr_research_program_gate.json",
           "exists": true,
-          "sha256": "d4cb87e4736b0a31c87ffe183dac4052fa34225f5454fb564666efdcd48d7b95",
+          "sha256": "db98a62a9a5ea5acf61cff06cc9c1d846e97b1d6c927480bd9b7b49e5dec25ea",
           "status": "BLOCKED",
           "controller": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing"
         }
@@ -422,7 +422,7 @@
         {
           "path": "docs/core/artifacts/uet_gr_research_program_gate.json",
           "exists": true,
-          "sha256": "d4cb87e4736b0a31c87ffe183dac4052fa34225f5454fb564666efdcd48d7b95",
+          "sha256": "db98a62a9a5ea5acf61cff06cc9c1d846e97b1d6c927480bd9b7b49e5dec25ea",
           "status": "BLOCKED",
           "controller": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing"
         },

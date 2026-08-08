@@ -311,3 +311,11 @@ Restored the previously tracked Topic 0.19 `branch_claim_gate.json` input and re
 Regenerated the five Wave 10 O(2)/transport/GR program artifacts through `audit_uet_o2_superfluid_transport.py` with one shared `generated_at` value. This closed a persisted-payload consistency failure in `test_gr_o2_superfluid_alignment.py`; the scientific statuses and claim boundary are unchanged.
 
 Verification: the combined foundation, matter-space, O(2), carrier, GR, particle, and Wave 3?10 targeted suite passed `88/88`. Wave 10 remains `BLOCKED` at the physical Kubo/curved-dynamics controller.
+
+## 2026-08-08 ? F2 explicit row-disposition closure
+
+The row-complete correspondence generator now assigns every inventoried formula row an explicit disposition. The 256 previously `OPEN_UNRESOLVED` operator records are now `EXPLICITLY_DECLARED_BLOCKED` placeholders with reason codes; the seven existing pilot operators remain separate. This closes the repository ambiguity about whether a row has a record, without treating any placeholder as a standard counterpart or accepted physical measurement operator.
+
+Verification: manifest `PASS_WITH_EXPLICIT_BLOCKED_DISPOSITIONS`, 263/263 rows indexed, 0 open operator records, 256 explicit blocked placeholders, 0 accepted physical maps; foundation and all-wave audits reran and 7 F2/foundation tests passed.
+
+The foundation gate remains `BLOCKED_OPEN_CORRESPONDENCE_ROWS`. The next controller is to resolve 152 standard-counterpart rows and replace blocked placeholders with accepted lane-specific measurement maps.

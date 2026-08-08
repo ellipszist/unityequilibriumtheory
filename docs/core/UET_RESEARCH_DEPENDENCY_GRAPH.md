@@ -147,3 +147,7 @@ The 0.19 edge now has a reproducible branch-claim input and regenerated scientif
 ## 2026-08-08 dependency update ? Wave 10 payload consistency repair
 
 Wave 10's persisted artifact family now matches its deterministic generator under a shared timestamp. This removes repository payload drift only; the dependency edge remains blocked on physical transport coefficients, curved dynamics, and downstream correspondence.
+
+## 2026-08-08 dependency update ? F2 explicit row-disposition closure
+
+The F2 edge now has complete row-level disposition coverage: 263/263 rows are indexed, with 256 explicitly blocked placeholders and no accepted physical measurement maps. The remaining dependency is physical correspondence and lane-specific observable acceptance, not missing row records.
