@@ -324,3 +324,7 @@ The result closes downstream status accounting only. Foundation physics remains 
 ## Latest plan update ? 2026-08-08 0.19 dependency artifact repair
 
 A repository-consistency failure in the Topic 0.19 dependency gate was repaired by restoring the tracked branch-claim input and regenerating the artifact from its existing verifier. The targeted downstream suite passed `18/18`; the artifact remains `BLOCKED` for the same physical GR validation and covariant-completion reasons. This repair changes no foundation or downstream claim ceiling.
+
+## Latest plan update ? 2026-08-08 Wave 10 payload consistency repair
+
+A generated-payload timestamp drift in the Wave 10 O(2)/transport/GR artifact family was repaired by regenerating the complete family with one shared timestamp. The combined targeted verification suite now passes `88/88`; the physical Kubo/curved-dynamics blocker and all claim ceilings remain unchanged.

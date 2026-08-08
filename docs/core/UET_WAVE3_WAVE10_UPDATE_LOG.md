@@ -170,3 +170,7 @@ The GR closed/non-closed, particle/Dirac prerequisite, and extended downstream c
 ## 2026-08-08 ? 0.19 dependency artifact repair
 
 The Topic 0.19 dependency generator was rerun after restoring its tracked branch-claim input. The targeted downstream suite passed `18/18`. The repository consistency blocker is closed, while the physical GR/classical-test/covariant-completion blocker remains unchanged.
+
+## 2026-08-08 ? Wave 10 payload consistency repair
+
+The Wave 10 artifact generator was rerun with a shared timestamp so the persisted O(2), transport, contract, and GR program payloads match the deterministic generator contract. The former payload-consistency failure is closed; `88/88` combined targeted tests pass. No physical transport or GR claim is promoted.

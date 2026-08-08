@@ -143,3 +143,7 @@ Wave 9, Wave 10, and Wave 11 have been re-audited with explicit blockers. Wave 9
 ## 2026-08-08 dependency update ? 0.19 artifact consistency repair
 
 The 0.19 edge now has a reproducible branch-claim input and regenerated scientific-input hashes. Its physical dependency remains blocked on source-backed classical GR tests, curved covariant completion, and independent validation; the repair does not promote the GR or cosmology lane.
+
+## 2026-08-08 dependency update ? Wave 10 payload consistency repair
+
+Wave 10's persisted artifact family now matches its deterministic generator under a shared timestamp. This removes repository payload drift only; the dependency edge remains blocked on physical transport coefficients, curved dynamics, and downstream correspondence.

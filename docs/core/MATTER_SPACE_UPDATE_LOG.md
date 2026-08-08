@@ -305,3 +305,9 @@ The extended artifact reports `PASS_WITH_DECLARED_DOWNSTREAM_BLOCKERS`; this clo
 ## 2026-08-08 ? 0.19 dependency artifact repair
 
 Restored the previously tracked Topic 0.19 `branch_claim_gate.json` input and regenerated the core GR dependency artifact. The missing-input and stale scientific-hash consistency blocker is closed; the physical controller remains `topic_0_19_classical_gr_tests_and_covariant_completion_missing`. No GR, global-open-universe, galaxy, or particle claim is promoted.
+
+## 2026-08-08 ? Wave 10 payload consistency repair
+
+Regenerated the five Wave 10 O(2)/transport/GR program artifacts through `audit_uet_o2_superfluid_transport.py` with one shared `generated_at` value. This closed a persisted-payload consistency failure in `test_gr_o2_superfluid_alignment.py`; the scientific statuses and claim boundary are unchanged.
+
+Verification: the combined foundation, matter-space, O(2), carrier, GR, particle, and Wave 3?10 targeted suite passed `88/88`. Wave 10 remains `BLOCKED` at the physical Kubo/curved-dynamics controller.
