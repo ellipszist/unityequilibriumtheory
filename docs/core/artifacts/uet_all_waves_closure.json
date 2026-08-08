@@ -7,7 +7,7 @@
   "foundation_gate": {
     "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
     "status": "BLOCKED",
-    "sha256": "40643b89a08293d6670fcdbb1ca8036769821a6ad1889669f783669c733512c1",
+    "sha256": "120fc27706084cbd42c86a00bfe7bd683fdaa4e2cef38ed60be319d7818fc010",
     "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
   },
   "wave_count": 12,
@@ -415,7 +415,7 @@
         {
           "path": "docs/topics/0.26_Cosmic_Dynamic_Frame/Result/artifacts/0_26_cosmic_dynamic_frame_verification.json",
           "exists": true,
-          "sha256": "67042c129b7e6f697619f625800b807d85dee28d16702d429335f21ba85f5994"
+          "sha256": "9eaae04b464520c991e3b076774b8b9fd866e156cbdb581492802ce685a197e1"
         }
       ]
     },
@@ -449,5 +449,5 @@
     "physics_status": "A CLOSED_AS_BLOCKED wave is not a solved theory; it is a formally bounded research lane whose blocker is now explicit.",
     "selected_positive_result": "Only the selected normalized characteristic-cone diagnostic is locally passing; it does not establish SI physics, universal C meaning or empirical validity."
   },
-  "next_controller": "close foundation coverage, dimensional units and observable maps before any downstream promotion; then rerun Waves 4â€“6 under the selected lane"
+  "next_controller": "close foundation coverage, dimensional units and observable maps; run the source-locked thermal and augmented C-density lanes before any downstream promotion"
 }

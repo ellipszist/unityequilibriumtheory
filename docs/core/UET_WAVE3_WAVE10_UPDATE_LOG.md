@@ -214,3 +214,9 @@ Source-declared standard/comparator rows are now recorded as explicit blocked co
 - Result: direct `C -> rho` is formally non-identifiable in the current lane; an independent `A_m`/matter-source state is required.
 - Next controller: derive or source-lock the dimensional amplitude and measurement operator before any galaxy fit or holdout test.
 - Claim impact: no change; `C` is not universal mass density.
+
+### 2026-08-08 - augmented C-density amplitude/source contract
+
+- Added a candidate correspondence lane with explicit `rho=A_m*rho_hat`; the normalized shape is unit-integral and `A_m` is declared separately from `C`.
+- The verifier passes amplitude/integral scaling and no-fit gates, while dimensional source provenance, uncertainty, and holdout remain blocked.
+- Wave 10 galaxy/cosmic comparisons remain blocked; this lane does not promote `C` to mass density or enable a galaxy fit.

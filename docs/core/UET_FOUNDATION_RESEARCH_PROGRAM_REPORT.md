@@ -1,4 +1,4 @@
-# UET Foundation-First Research Program — Waves 0–10
+# UET Foundation-First Research Program ? Waves 0?11 and next gated lane
 
 ## Purpose
 
@@ -359,3 +359,17 @@ This improves the standard-physics correspondence but does not close UET mapping
 The mass lane now has a constructive negative result: `C` alone does not identify mass-density amplitude. A controlled synthetic rescaling keeps the geometry and `C` fixed while changing the density integral from approximately `2` to `4`; the normalized shape is unchanged. This is not a failure of the simulation. It identifies a missing physical degree of freedom.
 
 The research plan therefore separates `C_phase`/collective behaviour from `C_density` and requires a separate dimensional amplitude or matter-source state before galaxy application. The next permissible map is `rho=A_m*rho_hat(C,geometry,matter_source;theta)`, with `A_m` derived or source-locked before fitting. No direct `C=rho`, galaxy, or dark-matter claim is promoted.
+
+## Latest plan update - 2026-08-08 augmented C-density amplitude/source contract
+
+The next permitted research wave is now explicit rather than a request to find a
+better direct `C=rho` fit. `mass_density_amplitude.py` defines the normalized
+contract `rho=A_m*rho_hat`, where `rho_hat` is a unit-integral geometry/source
+shape and `A_m` is a separately declared matter-amplitude input. The verifier
+confirms unit-integral closure, amplitude scaling, and no same-data fitting.
+
+This closes only the identifiability response at the contract level. It does not
+derive `A_m`, convert it to SI, identify `C` with mass density, or enable galaxy
+data. The next controller is a dimensional/source package for `A_m` and the
+relative matter-source state, with uncertainty and holdout policy fixed before
+any galaxy comparison.

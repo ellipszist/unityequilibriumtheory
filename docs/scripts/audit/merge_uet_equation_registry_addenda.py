@@ -20,6 +20,7 @@ ADDENDA = (
     ROOT / "docs/core/artifacts/uet_equation_correspondence_registry_cosmology_addendum.json",
     ROOT / "docs/core/artifacts/uet_equation_correspondence_registry_persistence_addendum.json",
     ROOT / "docs/core/artifacts/uet_equation_correspondence_registry_wave_addendum.json",
+    ROOT / "docs/core/artifacts/uet_equation_correspondence_registry_mass_density_addendum.json",
 )
 
 

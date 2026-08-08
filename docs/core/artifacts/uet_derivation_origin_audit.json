@@ -7,17 +7,17 @@
   "purpose": "classify relation origins and preserve the boundary between derivation, comparison, heuristic and physical closure",
   "registry": "docs/core/artifacts/uet_equation_correspondence_registry.json",
   "metrics": {
-    "registry_entry_count": 20,
+    "registry_entry_count": 21,
     "origin_family_counts": {
       "LEGACY_OR_COMPARATOR": 1,
       "DECLARED_RELATION_DERIVATION": 6,
       "HEURISTIC_OR_DIAGNOSTIC": 3,
-      "STANDARD_OR_INTERNAL_COMPARATOR": 5,
+      "STANDARD_OR_INTERNAL_COMPARATOR": 6,
       "CONCEPTUAL_CANDIDATE": 2,
       "CANDIDATE_WITH_LOCAL_CHECKS": 3
     },
     "declared_relation_derivations": 6,
-    "comparator_checked_relations": 5,
+    "comparator_checked_relations": 6,
     "open_or_candidate_relations": 9,
     "physical_promotions_allowed": 0
   },
@@ -279,6 +279,19 @@
       "proof_status": "normalized ledger bridge passes deterministic internal checks; external physical mapping blocked",
       "mathematical_role": "explicit lane-specific observable bridge and ledger consistency diagnostic",
       "claim_boundary": "internal normalized observable bridge; not a derivation of SI heat, temperature or entropy production",
+      "physical_closure": false,
+      "physical_promotion_allowed": false
+    },
+    {
+      "equation_id": "uet.mass_density.augmented_amplitude_contract",
+      "classification": "observable_mapping_comparator",
+      "origin_family": "STANDARD_OR_INTERNAL_COMPARATOR",
+      "derivation_readiness": "COMPARATOR_CHECKED_UET_DERIVATION_OPEN",
+      "source_or_origin": "explicit source contract plus standard kernel observable definition",
+      "evidence_class": "INTERNAL_CHECKED_CORRESPONDENCE",
+      "proof_status": "checked local contract; physical mapping open",
+      "mathematical_role": "explicit augmented correspondence contract that exposes the missing amplitude degree of freedom",
+      "claim_boundary": "explicit normalized amplitude/source contract; not a derived mass mapping or galaxy prediction",
       "physical_closure": false,
       "physical_promotion_allowed": false
     }

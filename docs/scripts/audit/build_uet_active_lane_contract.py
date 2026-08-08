@@ -46,6 +46,26 @@ def build() -> dict[str, Any]:
             "evidence": ["docs/core/artifacts/matter_space_causal_lane_selection.json", "docs/core/artifacts/matter_space_phase_pilot.json"],
         },
         {
+            "lane_id": "matter_density_augmented_amplitude",
+            "variables": {
+                "C_phase": "collective/relational coordinate",
+                "rho_hat": "unit-integral normalized density shape",
+                "A_m": "explicit normalized matter-amplitude/source input",
+            },
+            "unit_lane": "normalized_code_mass_per_code_length",
+            "standard_counterpart": "kernel-smoothed density observable with separately declared total-mass amplitude",
+            "observable_operator": "O[C_phase,geometry,A_m] = rho = A_m * rho_hat",
+            "observable_status": "INTERNAL_CORRESPONDENCE_DIAGNOSTIC",
+            "units_status": "BLOCKED_DIMENSIONAL_AMPLITUDE",
+            "uncertainty_status": "SOURCE_PROVENANCE_AND_UNCERTAINTY_OPEN",
+            "open_items": [
+                "direct C-to-rho amplitude remains non-identifiable",
+                "A_m is explicit but not derived from UET",
+                "no SI source, uncertainty, galaxy data, or holdout",
+            ],
+            "evidence": ["docs/core/artifacts/mass_density_correspondence_verification.json", "docs/core/artifacts/mass_density_amplitude_contract_verification.json"],
+        },
+        {
             "lane_id": "resource_selection_persistence",
             "variables": {"x": "normalized resource-allocation state", "E_available": "normalized available-resource ledger"},
             "unit_lane": "normalized",
@@ -126,7 +146,7 @@ def build() -> dict[str, Any]:
             "F7_observable_mapping": "BLOCKED_UNTIL_MEASUREMENT_OPERATOR_AND_UNCERTAINTY_CLOSURE",
             "claim_ceiling": "internal normalized/natural-unit diagnostics and conditional constitutive relations only",
         },
-        "next_controller": "close one dimensional thermal lane with source-locked material data before any external fit or physical claim",
+        "next_controller": "close one dimensional thermal lane and separately source-lock the C-density amplitude contract before any external fit or physical claim",
     }
 
 

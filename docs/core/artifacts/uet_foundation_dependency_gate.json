@@ -74,10 +74,10 @@
         "docs/core/artifacts/uet_active_lane_units_observable_register.json"
       ],
       "metrics": {
-        "active_lane_count": 7,
+        "active_lane_count": 8,
         "units_contract_status": "BLOCKED_UNTIL_DIMENSIONAL_LANE_CLOSURE",
         "normalized_or_natural_contract_lanes": 4,
-        "open_dimensional_lanes": 3
+        "open_dimensional_lanes": 4
       },
       "normalized_subgate": {
         "status": "PASS_NORMALIZED_OR_NATURAL_ONLY",
@@ -97,9 +97,9 @@
       "metrics": {
         "origin_audit_status": "PASS",
         "origin_audit_state": "PASS_WITH_DECLARED_OPEN_ORIGINS",
-        "registry_entry_count": 20,
+        "registry_entry_count": 21,
         "declared_relation_derivations": 6,
-        "comparator_checked_relations": 5,
+        "comparator_checked_relations": 6,
         "open_or_candidate_relations": 9,
         "physical_promotions_allowed": 0
       },
@@ -143,24 +143,25 @@
         "docs/core/artifacts/uet_equation_correspondence_registry.json"
       ],
       "metrics": {
-        "active_lane_count": 7,
+        "active_lane_count": 8,
         "normalized_operator_status": "PASS_WITH_OPEN_SI_MAPPING",
         "si_status": "BLOCKED",
         "observable_status_counts": {
           "BLOCKED": 1,
           "FORMAL_CONSTITUTIVE_ONLY": 1,
+          "INTERNAL_CORRESPONDENCE_DIAGNOSTIC": 1,
           "INTERNAL_DIAGNOSTIC": 2,
           "INTERNAL_SIMULATION_ONLY": 1,
           "SIMULATION_ONLY": 1,
           "SIMULATION_ONLY_OPEN_DIMENSIONAL_MAP": 1
         },
-        "declared_observable_contract_lanes": 7,
+        "declared_observable_contract_lanes": 8,
         "accepted_physical_observable_lanes": 0
       },
       "normalized_subgate": {
         "status": "PASS_DECLARED_INTERNAL_OPERATORS_ONLY",
         "required_condition": "each active lane declares an internal operator while physical mapping remains separate",
-        "lane_count": 7
+        "lane_count": 8
       },
       "required_next_artifact": "observable mapping register with units, resolution and uncertainty for each active lane"
     },
@@ -191,7 +192,7 @@
     }
   },
   "coverage_snapshot": {
-    "registry_entry_count": 20,
+    "registry_entry_count": 21,
     "inventory_missing_scope_count": 5,
     "code_unlinked_core_files": 26,
     "matrix_status": "BLOCKED",

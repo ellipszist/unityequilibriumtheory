@@ -15,6 +15,8 @@ flowchart TD
   P11 --> A["Wave 10: galaxy and cosmic comparisons"]
   P13 --> A
   G --> A
+  F2 --> D["Next lane: augmented C-density amplitude/source contract"]
+  D --> A
 ```
 
 The graph is a dependency map, not a statement that every arrow is already
@@ -172,3 +174,12 @@ The 0.13 edge now records the standard observable as `Delta_Tq` / normalized `y_
 ## 2026-08-08 dependency update - C-to-mass-density identifiability
 
 The mass-density edge now has a reproducible constructive non-identifiability result: same geometry and same relational `C` admit different density amplitudes under mass rescaling. The dependency is therefore not “find a better direct C=rho fit”; it is “derive/source-lock a separate matter amplitude/source state and its units.” Galaxy and dark-matter edges remain blocked until that augmented lane has an observable operator and holdout policy.
+
+## 2026-08-08 dependency update - augmented C-density amplitude/source contract
+
+The augmented lane now exposes the missing degree of freedom as an explicit
+source contract: `rho=A_m*rho_hat`. The normalized shape has unit integral and
+the declared amplitude scales the density without changing the shape. The
+artifact is an internal correspondence diagnostic with no fitted parameter.
+The lane remains blocked for dimensional units, source provenance, uncertainty,
+and holdout policy; it does not promote `C` to mass density.

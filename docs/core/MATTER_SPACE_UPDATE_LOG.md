@@ -347,3 +347,19 @@ The existing mass-density correspondence diagnostic was rerun. With the same geo
 The admissible next candidate is an augmented map such as `rho = A_m * rho_hat(C, geometry, matter_source; theta)`, where `A_m` is a separately dimensional matter-amplitude/source state. It must be derived or source-locked before any galaxy fitting; it is not a fitted correction hidden inside `C`.
 
 Verification: mass-density audit `PASS_WITH_BLOCKED_MAPPING`, direct-C non-identifiability gate passed, no SI data or galaxy claim. Claim ceiling remains that `C` is a collective/relational coordinate, not universal mass density.
+
+### 2026-08-08 - Augmented C-density amplitude/source contract
+
+- Scope: make the missing density amplitude explicit without changing the
+  collective-coordinate ontology or opening a galaxy fit.
+- Added: `mass_density_amplitude.py`, its audit/test pair,
+  `mass_density_amplitude_contract_verification.json`, the active-lane record,
+  and a registry addendum.
+- Verified: normalized shape integral, declared-amplitude integral closure,
+  linear amplitude scaling, shape invariance, and no same-data fit.
+- Result: `PASS_WITH_BLOCKED_DIMENSIONAL_MAPPING`; `A_m` is an explicit source
+  input, not a UET-derived or fitted mass parameter.
+- Next controller: derive or source-lock dimensional `A_m` and relative
+  matter-source observables, including uncertainty and holdout policy.
+- Claim impact: none; direct `C -> rho`, galaxy, and dark-matter claims remain
+  blocked.

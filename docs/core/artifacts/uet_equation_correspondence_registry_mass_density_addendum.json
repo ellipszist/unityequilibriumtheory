@@ -1,0 +1,67 @@
+{
+  "schema_version": "mass-density-addendum-v1",
+  "artifact": "uet_equation_correspondence_registry_mass_density_addendum",
+  "status": "CANDIDATE_ENTRY_MERGED_INTO_CENTRAL_REGISTRY",
+  "equation_entries": [
+    {
+      "equation_id": "uet.mass_density.augmented_amplitude_contract",
+      "version": "mass-density-amplitude-v1",
+      "classification": "observable_mapping_comparator",
+      "relation_or_code_path": "rho=A_m*rho_hat(x|geometry,relative_source_state) in docs/core/mass_density_amplitude.py",
+      "variables": {
+        "C_phase": "collective/relational coordinate; not used as a universal density amplitude",
+        "rho_hat": "unit-integral normalized kernel shape",
+        "A_m": "explicit declared matter-amplitude/source quantity in normalized code-mass units",
+        "rho": "normalized code mass per code length observable"
+      },
+      "mathematical_role": "explicit augmented correspondence contract that exposes the missing amplitude degree of freedom",
+      "standard_physics_counterpart": "kernel-smoothed mass-density observable with separately declared total mass",
+      "observable_mapping": {
+        "status": "BLOCKED",
+        "operator": "O[C_phase,geometry,A_m] -> rho",
+        "reason": "A_m has no dimensional source/uncertainty contract and C alone remains non-identifying"
+      },
+      "unit_lane": "normalized_code_mass_per_code_length",
+      "parameter_dimensions": "A_m code mass; rho_hat inverse code length; SI dimensions open",
+      "source_or_origin": "explicit source contract plus standard kernel observable definition",
+      "assumptions": [
+        "positive declared amplitude",
+        "declared relative source state",
+        "unit-integral normalized shape",
+        "no target-data fitting in the verifier"
+      ],
+      "symmetry_and_conservation": "integral rho equals declared A_m in the normalized lane",
+      "limiting_cases": [
+        "amplitude rescaling changes rho but not normalized shape",
+        "C-only direct identity remains non-identifiable"
+      ],
+      "implementation_paths": [
+        "docs/core/mass_density_amplitude.py",
+        "docs/scripts/audit/audit_mass_density_amplitude.py"
+      ],
+      "verifier_paths": [
+        "docs/core/artifacts/mass_density_amplitude_contract_verification.json",
+        "docs/core/test/test_mass_density_amplitude.py",
+        "docs/core/test/test_mass_density_amplitude_audit.py"
+      ],
+      "evidence_class": "INTERNAL_CHECKED_CORRESPONDENCE",
+      "proof_status": "checked local contract; physical mapping open",
+      "downstream_dependencies": [
+        "uet.mass_density.correspondence_identifiability",
+        "uet.foundation.units",
+        "uet.foundation.observable_mapping"
+      ],
+      "claim_boundary": "explicit normalized amplitude/source contract; not a derived mass mapping or galaxy prediction",
+      "failure_mode": "A_m is hidden as a fit or C is re-labelled as universal mass density",
+      "next_hardening_step": "derive or source-lock dimensional amplitude, relative matter source, uncertainty, and holdout policy"
+    }
+  ],
+  "merge_metadata": {
+    "merged_into": "docs/core/artifacts/uet_equation_correspondence_registry.json",
+    "merged_on": "2026-08-08",
+    "equation_ids": [
+      "uet.mass_density.augmented_amplitude_contract"
+    ],
+    "claim_promotion": false
+  }
+}
