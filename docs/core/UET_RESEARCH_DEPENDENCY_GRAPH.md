@@ -183,3 +183,11 @@ the declared amplitude scales the density without changing the shape. The
 artifact is an internal correspondence diagnostic with no fitted parameter.
 The lane remains blocked for dimensional units, source provenance, uncertainty,
 and holdout policy; it does not promote `C` to mass density.
+
+## 2026-08-08 dependency update - synthetic SI 1D density-unit contract
+
+The augmented C-density lane now closes a limited unit conversion: an explicit
+kg amplitude and metre coordinate scale produce a kg/m line-density observable
+with integral closure. The 3D physical density operator, source provenance,
+uncertainty, calibration, and holdout gates remain open. This is a unit-contract
+result, not a mass derivation or galaxy-ready observable.

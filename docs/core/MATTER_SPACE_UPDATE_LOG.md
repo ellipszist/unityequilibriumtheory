@@ -363,3 +363,17 @@ Verification: mass-density audit `PASS_WITH_BLOCKED_MAPPING`, direct-C non-ident
   matter-source observables, including uncertainty and holdout policy.
 - Claim impact: none; direct `C -> rho`, galaxy, and dark-matter claims remain
   blocked.
+
+### 2026-08-08 - Synthetic SI 1D C-density unit contract
+
+- Scope: test dimensional closure after making the matter amplitude explicit.
+- Added: `mass_density_dimensional.py`, SI 1D verifier/artifact, tests, and
+  the registry/active-lane updates.
+- Verified: `A_m` in kg and `L_scale` in m produce `rho_1D` in kg/m; the
+  physical-coordinate integral equals the declared kg amplitude under length
+  rescaling; no fit is used.
+- Result: `PASS_WITH_BLOCKED_3D_PHYSICAL_MAPPING`; the result is synthetic and
+  one-dimensional only.
+- Next controller: source-lock a physical 3D density operator with provenance,
+  uncertainty, calibration, and holdout policy.
+- Claim impact: no direct `C -> rho`, galaxy, or dark-matter claim is enabled.

@@ -97,9 +97,9 @@
       "metrics": {
         "origin_audit_status": "PASS",
         "origin_audit_state": "PASS_WITH_DECLARED_OPEN_ORIGINS",
-        "registry_entry_count": 21,
+        "registry_entry_count": 22,
         "declared_relation_derivations": 6,
-        "comparator_checked_relations": 6,
+        "comparator_checked_relations": 7,
         "open_or_candidate_relations": 9,
         "physical_promotions_allowed": 0
       },
@@ -192,7 +192,7 @@
     }
   },
   "coverage_snapshot": {
-    "registry_entry_count": 21,
+    "registry_entry_count": 22,
     "inventory_missing_scope_count": 5,
     "code_unlinked_core_files": 26,
     "matrix_status": "BLOCKED",

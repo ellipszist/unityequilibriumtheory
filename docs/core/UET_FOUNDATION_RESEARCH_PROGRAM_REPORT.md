@@ -373,3 +373,15 @@ derive `A_m`, convert it to SI, identify `C` with mass density, or enable galaxy
 data. The next controller is a dimensional/source package for `A_m` and the
 relative matter-source state, with uncertainty and holdout policy fixed before
 any galaxy comparison.
+
+## Latest plan update - 2026-08-08 synthetic SI 1D density-unit contract
+
+The augmented C-density lane now has a narrow dimensional subgate. For a
+declared coordinate scale, `rho_1D=A_m*rho_hat/L_scale` closes the units as
+`kg/m` and preserves the declared total amplitude in `kg`. The verifier passes
+this conversion and explicitly records the source locator/hash fields.
+
+This is only a synthetic one-dimensional line-density contract. It does not
+provide a three-dimensional physical density operator, a galaxy source package,
+or an uncertainty/holdout policy. Therefore the foundation and Wave 10 gates
+remain blocked and `C` is still not mass density.

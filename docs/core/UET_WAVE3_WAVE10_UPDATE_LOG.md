@@ -220,3 +220,9 @@ Source-declared standard/comparator rows are now recorded as explicit blocked co
 - Added a candidate correspondence lane with explicit `rho=A_m*rho_hat`; the normalized shape is unit-integral and `A_m` is declared separately from `C`.
 - The verifier passes amplitude/integral scaling and no-fit gates, while dimensional source provenance, uncertainty, and holdout remain blocked.
 - Wave 10 galaxy/cosmic comparisons remain blocked; this lane does not promote `C` to mass density or enable a galaxy fit.
+
+### 2026-08-08 - synthetic SI 1D C-density unit contract
+
+- The augmented density lane now has a declared `kg` amplitude and `m` coordinate-scale contract yielding a `kg/m` line-density observable.
+- Integral closure passes under length rescaling, but the lane remains synthetic 1D and does not supply a physical 3D galaxy observable.
+- The Wave 10 controller remains source provenance, uncertainty, calibration, and holdout for a 3D density map.
