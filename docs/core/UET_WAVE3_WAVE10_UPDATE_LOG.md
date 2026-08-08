@@ -178,3 +178,7 @@ The Wave 10 artifact generator was rerun with a shared timestamp so the persiste
 ## 2026-08-08 ? F2 explicit row-disposition closure
 
 The foundation correspondence manifest now emits explicit blocked dispositions for all non-pilot rows. This removes the undeclared-operator ambiguity but leaves 152 standard-counterpart rows and all physical observable maps blocked. No downstream wave status or claim ceiling is promoted.
+
+## 2026-08-08 ? F2 standard-counterpart contract mapping
+
+Source-declared standard/comparator rows are now recorded as explicit blocked contracts rather than generic placeholders. This narrows F2 bookkeeping only; no physical correspondence or downstream status is promoted.

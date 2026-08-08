@@ -58,12 +58,13 @@
         "measurement_operator_records": 263,
         "measurement_operator_declared_rows": 263,
         "measurement_operator_open_rows": 0,
-        "measurement_operator_placeholder_rows": 256,
+        "measurement_operator_placeholder_rows": 150,
+        "measurement_operator_standard_counterpart_contract_rows": 106,
         "measurement_operator_accepted_rows": 0,
         "measurement_operator_pending_rows": 263,
         "measurement_operator_blocked_rows": 263
       },
-      "required_next_artifact": "resolve the 152 open standard-counterpart rows, replace the 256 explicit blocked operator dispositions, and accept lane-specific measurement maps (currently 0 accepted)"
+      "required_next_artifact": "resolve the 152 open standard-counterpart rows, replace the 150 unmatched blocked dispositions, close the 106 declared comparator contracts, and accept lane-specific measurement maps (currently 0 accepted)"
     },
     "F3_units": {
       "status": "BLOCKED",

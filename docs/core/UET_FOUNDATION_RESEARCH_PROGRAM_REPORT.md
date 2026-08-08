@@ -332,3 +332,7 @@ A generated-payload timestamp drift in the Wave 10 O(2)/transport/GR artifact fa
 ## Latest plan update ? 2026-08-08 F2 explicit row-disposition closure
 
 F2 now distinguishes repository coverage from physical acceptance: all 263 formula rows have explicit dispositions, 256 are explicitly blocked placeholders, and zero physical measurement maps are accepted. The foundation gate remains blocked on 152 standard-counterpart rows, units, derivation, and observable mapping. This is a metadata/claim-boundary hardening result, not a physics promotion.
+
+## Latest plan update ? 2026-08-08 F2 standard-counterpart contract mapping
+
+F2 now distinguishes 106 source-declared standard/comparator contracts from 150 genuinely unmatched or candidate rows. These contracts remain explicitly blocked and are not UET derivations or accepted physical observables; accepted physical maps remain zero. The foundation gate therefore remains blocked without changing downstream claim ceilings.

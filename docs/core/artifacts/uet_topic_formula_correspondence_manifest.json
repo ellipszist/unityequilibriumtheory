@@ -9,7 +9,8 @@
     "schema_version": "f2_row_disposition_v1",
     "placeholder_status": "EXPLICITLY_DECLARED_BLOCKED",
     "accepted_physical_operator_count": 0,
-    "rule": "Rows without an accepted lane-specific operator receive an explicit blocked disposition; the record is not a standard counterpart, derivation, or observable acceptance."
+    "standard_counterpart_contract_count": 106,
+    "rule": "Rows without an accepted lane-specific operator receive either a declared standard-comparator contract or an explicit unmatched blocked disposition; neither is physical acceptance."
   },
   "source_artifact": "docs/core/artifacts/uet_full_correspondence_coverage.json",
   "central_registry": "docs/core/artifacts/uet_equation_correspondence_registry.json",
@@ -23,12 +24,14 @@
     "measurement_operator_records": 263,
     "measurement_operator_declared_rows": 263,
     "measurement_operator_open_rows": 0,
-    "measurement_operator_placeholder_rows": 256,
+    "measurement_operator_placeholder_rows": 150,
+    "measurement_operator_standard_counterpart_contract_rows": 106,
     "measurement_operator_accepted_rows": 0,
     "measurement_operator_pending_rows": 263,
     "measurement_operator_blocked_rows": 263,
     "measurement_operator_status_counts": {
-      "EXPLICITLY_DECLARED_BLOCKED": 256,
+      "EXPLICITLY_DECLARED_BLOCKED": 150,
+      "DECLARED_STANDARD_COUNTERPART_BLOCKED": 106,
       "INTERNAL_DIAGNOSTIC_PROXY": 1,
       "DECLARED_DIAGNOSTIC_OPERATOR_WITH_TOPIC_GATE_OPEN": 2,
       "DECLARED_NORMALIZED_STANDARD_CONTROL": 1,
@@ -260,15 +263,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[T00-QUANTUM-006]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -340,15 +346,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[FD-NS-DIFFUSION]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "LEGACY_OR_COMPARATOR",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "LEGACY_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -381,15 +390,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[FD-NS-POISSON-JACOBI]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "LEGACY_OR_COMPARATOR",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "LEGACY_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -463,15 +475,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[FD-UET-FLUID-LAPLACIAN]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -545,15 +560,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[FD-PHYSICAL-KAPPA]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -586,15 +604,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[FD-STABILITY-GATE]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -670,16 +691,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CH-EVOLUTION]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "Cahn–Hilliard conserved gradient flow",
+        "source_counterpart_status": "STANDARD_COMPARATOR_CLOSED",
+        "unit_lane": "normalized_comparator",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = field trajectory/order structure factor"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -714,16 +738,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-FREE-ENERGY]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "Landau–Ginzburg/Cahn–Hilliard free-energy functional",
+        "source_counterpart_status": "STANDARD_COMPARATOR_CLOSED",
+        "unit_lane": "normalized_comparator",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = field profile and free-energy diagnostic"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -758,16 +785,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CHEM-POTENTIAL]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "functional derivative chemical potential δF/δC",
+        "source_counterpart_status": "STANDARD_COMPARATOR_CLOSED",
+        "unit_lane": "normalized_comparator",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = chemical-potential field"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -802,16 +832,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-SPECTRAL-UPDATE]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "semi-implicit Fourier discretization of conserved gradient flow",
+        "source_counterpart_status": "STANDARD_COMPARATOR_CLOSED",
+        "unit_lane": "normalized_numerical",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = spectral mode trajectory"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -889,16 +922,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-DOMAIN-COUNT]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "domain-wall/sign-domain diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = zero-crossing count"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -933,16 +969,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-BEC-TC]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "ideal Bose-gas critical-temperature relation",
+        "source_counterpart_status": "STANDARD_COMPARATOR_CLOSED",
+        "unit_lane": "natural_or_SI_after_constants",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[Tc] = transition-temperature estimate"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -1021,16 +1060,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-BETA-ERROR]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "relative-error comparison diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[data] = relative error"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -1197,16 +1239,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-SPATIAL-SCALING-GATE]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "finite-size/scaling regression diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[data] = fitted exponent/quality metric"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -1241,16 +1286,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-SPATIAL-COEFFICIENT-SENSITIVITY]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "parameter-sensitivity/ablation diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[data] = lane comparison under declared sweep"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -1285,16 +1333,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CORRELATION-LENGTH-DIAGNOSTIC]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "correlation-length estimator",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = autocorrelation crossing proxy"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -1329,16 +1380,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-FINITE-SIZE-SCALING-DIAGNOSTIC]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "finite-size scaling diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = xi/L and Binder-style proxy"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -1373,16 +1427,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CRITICAL-WINDOW-RELAXATION-DIAGNOSTIC]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "critical-window relaxation diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = relaxation/correlation proxy"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -1417,16 +1474,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-OPERATOR-FORM-REQUIREMENT-GATE]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "model-form acceptance gate",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[artifact] = requirement/gate status"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -1505,16 +1565,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-UET-SPATIAL-V2-ABLATION]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "model ablation comparison",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[data] = profile/xi comparison"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -1549,16 +1612,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-MODEL-C-CONSERVED-ORDER-DIAGNOSTIC]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "Cahn–Hilliard conserved order-parameter comparator",
+        "source_counterpart_status": "STANDARD_COMPARATOR_CLOSED",
+        "unit_lane": "normalized_comparator",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = conserved trajectory and structure factor"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -1637,16 +1703,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-NUMERICS-GAP]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "stiffness/numerical stability diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[config] = high-k stiffness proxy"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -1725,16 +1794,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-SCALING]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -1769,16 +1841,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-WINDOW-REPAIR]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -1813,16 +1888,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-SPINODAL-WINDOW]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -1857,16 +1935,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-SEED-MARGIN]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -1901,16 +1982,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-FINITE-SIZE-REPLICATION]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -1945,16 +2029,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-L16-RELAXATION-REPAIR]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -1989,16 +2076,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-L16-ESTIMATOR-SENSITIVITY]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2076,16 +2166,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CH-FINITE-K-ACCEPTANCE-POLICY]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "finite-k estimator acceptance policy",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[S(q)] = admissibility status"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2120,16 +2213,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CH-FINITE-K-EXTENDED-GRID-COVERAGE]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "finite-k grid coverage diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[S(q)] = accepted-row coverage"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2207,16 +2303,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-STRUCTURE-FACTOR-L20-PROBE]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2251,16 +2350,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-STRUCTURE-FACTOR-ACCEPTANCE-RULE]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2295,16 +2397,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-ESTIMATOR-RECONCILIATION]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2339,16 +2444,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-CALIBRATION-SOURCE-SUPPORT]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2383,16 +2491,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-SOURCE-MANIFEST]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2427,16 +2538,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-FORMULA-BOUNDARY]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2471,16 +2585,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-LOWEST-MODE-CANDIDATE]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2515,16 +2632,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-ENSEMBLE-SUSCEPTIBILITY-LANE]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2559,16 +2679,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-ESTIMATOR-POLICY-SOURCE]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2603,16 +2726,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-POLICY-SOURCE-CANDIDATES]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2647,16 +2773,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-POLICY-FORMULA-BOUNDARY]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2691,16 +2820,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-FULL-TEXT-FORMULA-READINESS]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2735,16 +2867,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-SOURCE-ARCHIVE-LOCALIZATION]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2779,16 +2914,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-TEX-FORMULA-FRAGMENTS]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2823,16 +2961,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-SOURCE-ARCHIVE-POLICY]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2867,16 +3008,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-ESTIMATOR-NORMALIZATION-MAP]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2911,16 +3055,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-CH-FINITE-K-PREFLIGHT]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2955,16 +3102,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[PT-CONSERVED-ORDER-SPECTRAL-CH-FINITE-K-ESTIMATOR-CANDIDATE]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "structure-factor/finite-size estimator diagnostic",
+        "source_counterpart_status": "STANDARD_DIAGNOSTIC_CLOSED",
+        "unit_lane": "normalized_or_topic_specific",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[C] = structure-factor or xi estimator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -2995,15 +3145,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[VAC-PP-CASIMIR]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -3034,15 +3187,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[VAC-SPHERE-PFA]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -3229,15 +3385,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[VAC-CASIMIR-SCALING]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -3272,16 +3431,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[T13-001]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "coarse-grained combinatorial entropy/Stirling comparator",
+        "source_counterpart_status": "STANDARD_COMPARATOR_CLOSED",
+        "unit_lane": "normalized_statistical",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[E,N] = entropy proxy"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -3316,16 +3478,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[T13-002]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "thermodynamic identity 1/T = ∂S/∂E in the declared normalized model",
+        "source_counterpart_status": "STANDARD_COMPARATOR_CLOSED",
+        "unit_lane": "normalized_statistical",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[E,N] = temperature proxy"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -3360,16 +3525,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[T13-003]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "equilibrium detailed-balance/contact condition",
+        "source_counterpart_status": "STANDARD_COMPARATOR_CLOSED",
+        "unit_lane": "normalized_statistical",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[E_A,N_A,E_B,N_B] = equilibrium ratio"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -3404,16 +3572,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[T13-004]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "Landauer minimum energy k_B T ln 2",
+        "source_counterpart_status": "STANDARD_COMPARATOR_CLOSED",
+        "unit_lane": "SI_after_constants",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[T] = lower-bound energy"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -3448,16 +3619,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[T13-005]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "joule/electron-volt conversion",
+        "source_counterpart_status": "STANDARD_COMPARATOR_CLOSED",
+        "unit_lane": "SI",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[E] = unit conversion"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -3492,16 +3666,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[T13-006]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "Bekenstein bound",
+        "source_counterpart_status": "STANDARD_COMPARATOR_CLOSED",
+        "unit_lane": "natural_or_SI_after_constants",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[R,E] = entropy upper-bound comparator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -3536,16 +3713,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[T13-007]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "Bekenstein–Hawking entropy",
+        "source_counterpart_status": "STANDARD_COMPARATOR_CLOSED",
+        "unit_lane": "natural_or_SI_after_constants",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[A] = black-hole entropy comparator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -3580,16 +3760,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[T13-008]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "Unruh temperature",
+        "source_counterpart_status": "STANDARD_COMPARATOR_CLOSED",
+        "unit_lane": "SI_after_constants",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[a] = temperature comparator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -3624,16 +3807,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[T13-009]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "Hawking temperature",
+        "source_counterpart_status": "STANDARD_COMPARATOR_CLOSED",
+        "unit_lane": "SI_after_constants",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[M] = temperature comparator"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -3755,16 +3941,19 @@
       },
       "measurement_operator": {
         "operator_id": "O[T13-012]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "Josephson constant K_J = 2e/h",
+        "source_counterpart_status": "STANDARD_COMPARATOR_CLOSED",
+        "unit_lane": "SI",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED",
           "operator": "O[V,f] = voltage-frequency conversion"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -4041,15 +4230,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[T14-HRV-004]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -4275,15 +4467,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[CL15-VIRIAL-MASS]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -4548,15 +4743,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[HN16-SEMF-BINDING]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -4743,15 +4941,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[HN16-SOLITON-LEGACY]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "LEGACY_OR_COMPARATOR",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "LEGACY_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -4899,15 +5100,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[T17-HIGGSKAPPA-003]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -4938,15 +5142,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[T17-HIGGSVEV-004]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -5172,15 +5379,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[T18-QUANTUM-004]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -5410,15 +5620,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[GR19-PLANCK-UNITS]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -5492,15 +5705,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[GR19-NEWTON-ACCELERATION]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -5533,15 +5749,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[GR19-SCHWARZSCHILD-RADIUS]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -5656,15 +5875,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[GR19-YUKAWA-SHORT-RANGE]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "LEGACY_OR_COMPARATOR",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "LEGACY_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -6076,15 +6298,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[T01-010]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "LEGACY_OR_COMPARATOR",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "LEGACY_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -6115,15 +6340,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[AT20-RYDBERG-WAVELENGTH]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -6193,15 +6421,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[AT20-SPECTRUM-RESIDUAL]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -6427,15 +6658,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[YM-SCALE-CONVERSION]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -6505,15 +6739,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[YM-ALPHA-SWEEP]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -7519,15 +7756,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[AI24-SCALING-POWER-LAW]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -7636,15 +7876,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[AI24-MOE-SPARSITY]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -7675,15 +7918,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[AI24-ACTIVATION-ENTROPY]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -7834,15 +8080,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[T26-001]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -8002,15 +8251,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[T26-005]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -8251,15 +8503,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[BH-RS-GR]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -8290,15 +8545,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[BH-SHADOW-DIAM]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -8329,15 +8587,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[BH-ANGULAR-SIZE]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -8368,15 +8629,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[BH-HORIZON-TEMP]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -8407,15 +8671,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[BH-ENTROPY-GR]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -8563,15 +8830,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[BH-CCBH-K]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "LEGACY_OR_COMPARATOR",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "LEGACY_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -8641,15 +8911,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[COS-H0-GAP]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -8914,15 +9187,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[SC-MCMILLAN-TC]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -8992,15 +9268,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[SC-ALLEN-DYNES-TC]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -9031,15 +9310,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[SC-F1-F2]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -9304,15 +9586,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[SF-VORTEX]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -9343,15 +9628,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[PLASMA-IPB98]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -9499,15 +9787,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[T05-PROTON-RADIUS-004]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -9538,15 +9829,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[T05-AME-GATE-005]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -9577,15 +9871,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[T05-FULLTABLE-006]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -9850,15 +10147,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[EW-02]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -9928,15 +10228,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[EW-04]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -10045,15 +10348,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[NUPMNS-MATRIX]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -10084,15 +10390,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[NUOSC-2FLAVOR]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -10123,15 +10432,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[NUMASS-SPLIT]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -10474,15 +10786,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[QN09-LOCAL-REALIST-BOUND]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -10513,15 +10828,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[QN09-TSIRELSON-BOUND]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "LEGACY_OR_COMPARATOR",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "LEGACY_COMPARATOR_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"
@@ -10591,15 +10909,18 @@
       },
       "measurement_operator": {
         "operator_id": "O[QN09-SINGLET-CORRELATION]",
-        "status": "EXPLICITLY_DECLARED_BLOCKED",
-        "kind": "row_level_observable_contract_placeholder",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": "UNRESOLVED—manual standard-physics correspondence required",
+        "source_counterpart_status": "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+        "unit_lane": "UNRESOLVED_FROM_TOPIC_ROW",
         "declared_observable": {
           "status": "OPEN_UNRESOLVED"
         },
         "physical_closure": false,
-        "disposition": "DECLARED_STANDARD_OR_COMPARATOR_OBSERVABLE_PENDING",
-        "reason_code": "COUNTERPART_DECLARED_BUT_OBSERVABLE_NOT_ACCEPTED",
-        "note": "Explicit disposition record only; this is not an accepted measurement operator, standard counterpart, or physical validation map."
+        "disposition": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity."
       },
       "claim_ceiling": "inventory/correspondence review only; no promotion from this artifact",
       "next_action": "close standard counterpart, units, derivation origin and measurement operator in the lane-specific package"

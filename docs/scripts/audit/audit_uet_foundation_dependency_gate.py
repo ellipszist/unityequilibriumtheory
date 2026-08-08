@@ -113,13 +113,15 @@ def build_gate() -> dict[str, Any]:
                 "measurement_operator_declared_rows": correspondence_manifest.get("coverage", {}).get("measurement_operator_declared_rows"),
                 "measurement_operator_open_rows": correspondence_manifest.get("coverage", {}).get("measurement_operator_open_rows"),
                 "measurement_operator_placeholder_rows": correspondence_manifest.get("coverage", {}).get("measurement_operator_placeholder_rows"),
+                "measurement_operator_standard_counterpart_contract_rows": correspondence_manifest.get("coverage", {}).get("measurement_operator_standard_counterpart_contract_rows"),
                 "measurement_operator_accepted_rows": correspondence_manifest.get("coverage", {}).get("measurement_operator_accepted_rows"),
                 "measurement_operator_pending_rows": correspondence_manifest.get("coverage", {}).get("measurement_operator_pending_rows"),
                 "measurement_operator_blocked_rows": correspondence_manifest.get("coverage", {}).get("measurement_operator_blocked_rows"),
             },
             "required_next_artifact": (
                 f"resolve the {correspondence_full.get('coverage', {}).get('open_correspondence_row_count')} open standard-counterpart rows, "
-                f"replace the {correspondence_manifest.get('coverage', {}).get('measurement_operator_placeholder_rows')} explicit blocked operator dispositions, "
+                f"replace the {correspondence_manifest.get('coverage', {}).get('measurement_operator_placeholder_rows')} unmatched blocked dispositions, "
+                f"close the {correspondence_manifest.get('coverage', {}).get('measurement_operator_standard_counterpart_contract_rows')} declared comparator contracts, "
                 f"and accept lane-specific measurement maps (currently {correspondence_manifest.get('coverage', {}).get('measurement_operator_accepted_rows')} accepted)"
             ),
         },

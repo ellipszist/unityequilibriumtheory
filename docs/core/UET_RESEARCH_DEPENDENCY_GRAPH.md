@@ -151,3 +151,7 @@ Wave 10's persisted artifact family now matches its deterministic generator unde
 ## 2026-08-08 dependency update ? F2 explicit row-disposition closure
 
 The F2 edge now has complete row-level disposition coverage: 263/263 rows are indexed, with 256 explicitly blocked placeholders and no accepted physical measurement maps. The remaining dependency is physical correspondence and lane-specific observable acceptance, not missing row records.
+
+## 2026-08-08 dependency update ? F2 standard-counterpart contract mapping
+
+The F2 edge now separates 106 declared standard/comparator contracts from 150 unmatched/candidate placeholders. Both classes remain downstream-blocked until lane-specific units, derivation, and measurement operators are accepted.

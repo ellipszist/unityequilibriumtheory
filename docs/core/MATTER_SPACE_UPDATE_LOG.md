@@ -319,3 +319,9 @@ The row-complete correspondence generator now assigns every inventoried formula 
 Verification: manifest `PASS_WITH_EXPLICIT_BLOCKED_DISPOSITIONS`, 263/263 rows indexed, 0 open operator records, 256 explicit blocked placeholders, 0 accepted physical maps; foundation and all-wave audits reran and 7 F2/foundation tests passed.
 
 The foundation gate remains `BLOCKED_OPEN_CORRESPONDENCE_ROWS`. The next controller is to resolve 152 standard-counterpart rows and replace blocked placeholders with accepted lane-specific measurement maps.
+
+## 2026-08-08 ? F2 standard-counterpart contract mapping
+
+The F2 generator now preserves source-declared standard diagnostic/comparator boundaries as explicit blocked contract records. Of the 263 inventoried rows, 106 non-pilot rows now carry `DECLARED_STANDARD_COUNTERPART_BLOCKED`; 150 remain explicit unmatched/candidate placeholders; the seven pilot records remain separate. No record has physical closure, and accepted physical measurement maps remain `0`.
+
+Verification: F2 manifest/gate/all-wave audit passed; the F2 regression subset passed `7/7`. The foundation gate remains blocked on physical correspondence, units, derivation, and accepted observables.

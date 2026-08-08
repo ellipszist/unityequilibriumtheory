@@ -7,7 +7,7 @@
   "foundation_gate": {
     "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
     "status": "BLOCKED",
-    "sha256": "f2b377c0f9e490763081355e24ea57e244b43d1dc277d800452ab34271699ea0",
+    "sha256": "7fd769e34a10e335a064d21e633450e232c5baacdffc526316ac2125afd3f39f",
     "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
   },
   "wave_count": 12,
@@ -40,7 +40,7 @@
         {
           "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
           "exists": true,
-          "sha256": "f2b377c0f9e490763081355e24ea57e244b43d1dc277d800452ab34271699ea0",
+          "sha256": "7fd769e34a10e335a064d21e633450e232c5baacdffc526316ac2125afd3f39f",
           "status": "BLOCKED",
           "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
         },
@@ -86,7 +86,7 @@
         {
           "path": "docs/core/artifacts/uet_topic_formula_correspondence_manifest.json",
           "exists": true,
-          "sha256": "96ef35498c9e58009e7aac3ae9aef0cf6457f45f44e859f214853c859a7cc243",
+          "sha256": "10e98844d19024f0b7d0378c2fcd9dd54f9151c9a580a6846671f4ddf8cb08a3",
           "status": "PASS_WITH_EXPLICIT_BLOCKED_DISPOSITIONS",
           "controller": "resolve the 152 open standard-counterpart rows and replace explicit blocked operator dispositions with accepted lane-specific measurement maps; do not promote topic rows into central identities"
         }

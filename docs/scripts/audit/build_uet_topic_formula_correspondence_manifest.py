@@ -112,6 +112,39 @@ def load(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+STANDARD_COUNTERPART_CONTRACT_STATUSES = {
+    "STANDARD_DIAGNOSTIC_CLOSED",
+    "STANDARD_COMPARATOR_CLOSED",
+    "DECLARED_STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+    "LEGACY_OR_COMPARATOR",
+}
+
+
+def declared_standard_counterpart_operator(row: dict[str, Any]) -> dict[str, Any]:
+    counterpart_status = row.get("standard_counterpart_status")
+    if counterpart_status == "STANDARD_DIAGNOSTIC_CLOSED":
+        disposition = "DECLARED_STANDARD_DIAGNOSTIC_BLOCKED"
+    elif counterpart_status == "STANDARD_COMPARATOR_CLOSED":
+        disposition = "DECLARED_STANDARD_COMPARATOR_BLOCKED"
+    elif counterpart_status == "LEGACY_OR_COMPARATOR":
+        disposition = "LEGACY_COMPARATOR_BLOCKED"
+    else:
+        disposition = "DECLARED_STANDARD_COUNTERPART_BLOCKED"
+    return {
+        "operator_id": f"O[{row['formula_id']}]",
+        "status": "DECLARED_STANDARD_COUNTERPART_BLOCKED",
+        "kind": "declared_standard_counterpart_contract",
+        "standard_counterpart": row.get("standard_counterpart"),
+        "source_counterpart_status": counterpart_status,
+        "unit_lane": row.get("unit_lane"),
+        "declared_observable": row.get("observable_mapping"),
+        "physical_closure": False,
+        "disposition": disposition,
+        "reason_code": "STANDARD_COMPARATOR_OR_DIAGNOSTIC_NOT_UET_DERIVATION",
+        "note": "The standard counterpart is declared as a comparator/diagnostic boundary; this record is not a UET derivation, accepted physical observable, or universal identity.",
+    }
+
+
 def explicit_blocked_operator(row: dict[str, Any]) -> dict[str, Any]:
     counterpart_status = row.get("standard_counterpart_status")
     if counterpart_status == "OPEN_MANUAL_CORRESPONDENCE_REVIEW":
@@ -155,7 +188,12 @@ def build() -> dict[str, Any]:
         else:
             relation_kind = "NO_CENTRAL_REGISTRY_RELATION_DECLARED"
         pilot_operator = PILOT_OPERATOR_MAP.get(row["formula_id"])
-        measurement_operator = pilot_operator or explicit_blocked_operator(row)
+        if pilot_operator:
+            measurement_operator = pilot_operator
+        elif row.get("standard_counterpart_status") in STANDARD_COUNTERPART_CONTRACT_STATUSES:
+            measurement_operator = declared_standard_counterpart_operator(row)
+        else:
+            measurement_operator = explicit_blocked_operator(row)
         rows.append(
             {
                 "formula_id": row["formula_id"],
@@ -193,6 +231,7 @@ def build() -> dict[str, Any]:
     operator_open = operator_status_counts.get("OPEN_UNRESOLVED", 0)
     operator_declared = len(rows) - operator_open
     operator_placeholder = sum(item["measurement_operator"].get("kind") == "row_level_observable_contract_placeholder" for item in rows)
+    operator_standard_contract = sum(item["measurement_operator"].get("kind") == "declared_standard_counterpart_contract" for item in rows)
     operator_accepted = sum(item["measurement_operator"].get("physical_closure", False) for item in rows)
     operator_pending = len(rows) - operator_accepted
     operator_blocked = sum(not item["measurement_operator"].get("physical_closure", False) for item in rows)
@@ -207,7 +246,8 @@ def build() -> dict[str, Any]:
             "schema_version": "f2_row_disposition_v1",
             "placeholder_status": "EXPLICITLY_DECLARED_BLOCKED",
             "accepted_physical_operator_count": operator_accepted,
-            "rule": "Rows without an accepted lane-specific operator receive an explicit blocked disposition; the record is not a standard counterpart, derivation, or observable acceptance.",
+            "standard_counterpart_contract_count": operator_standard_contract,
+            "rule": "Rows without an accepted lane-specific operator receive either a declared standard-comparator contract or an explicit unmatched blocked disposition; neither is physical acceptance.",
         },
         "source_artifact": str(SOURCE.relative_to(ROOT)).replace("\\", "/"),
         "central_registry": str(REGISTRY.relative_to(ROOT)).replace("\\", "/"),
@@ -222,6 +262,7 @@ def build() -> dict[str, Any]:
             "measurement_operator_declared_rows": operator_declared,
             "measurement_operator_open_rows": operator_open,
             "measurement_operator_placeholder_rows": operator_placeholder,
+            "measurement_operator_standard_counterpart_contract_rows": operator_standard_contract,
             "measurement_operator_accepted_rows": operator_accepted,
             "measurement_operator_pending_rows": operator_pending,
             "measurement_operator_blocked_rows": operator_blocked,
