@@ -22,11 +22,11 @@
       "metrics": {
         "formula_audit_files": 39,
         "formula_rows": 263,
-        "core_python_files": 50,
-        "candidate_code_surfaces": 1924,
+        "core_python_files": 51,
+        "candidate_code_surfaces": 1941,
         "unlinked_core_files": 28,
         "coverage_gate_status": "PASS_WITH_EXPLICIT_QUARANTINES",
-        "explicit_quarantine_surface_count": 75
+        "explicit_quarantine_surface_count": 13
       },
       "required_next_artifact": "full correspondence/unit/observable matrix for inventoried rows"
     },
@@ -99,10 +99,10 @@
       "metrics": {
         "origin_audit_status": "PASS",
         "origin_audit_state": "PASS_WITH_DECLARED_OPEN_ORIGINS",
-        "registry_entry_count": 23,
+        "registry_entry_count": 24,
         "declared_relation_derivations": 6,
         "comparator_checked_relations": 8,
-        "open_or_candidate_relations": 9,
+        "open_or_candidate_relations": 10,
         "physical_promotions_allowed": 0
       },
       "required_next_artifact": "manually close assumptions, limiting cases and physical correspondence for open rows; retain comparator and heuristic rows as non-derivational"
@@ -211,7 +211,7 @@
     "physical_promotion_allowed": false
   },
   "coverage_snapshot": {
-    "registry_entry_count": 23,
+    "registry_entry_count": 24,
     "inventory_missing_scope_count": 5,
     "code_unlinked_core_files": 28,
     "matrix_status": "BLOCKED",

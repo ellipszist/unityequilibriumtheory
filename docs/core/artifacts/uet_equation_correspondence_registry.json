@@ -1258,11 +1258,68 @@
       "claim_boundary": "synthetic SI 3D measurement-operator contract; not a C-to-mass derivation, external galaxy map, galaxy prediction, or dark-matter replacement",
       "failure_mode": "synthetic rho_3D is reported as measured mass density, or A_m/shape/calibration is fitted on target data",
       "next_hardening_step": "source-lock an external 3D density operator with calibration, propagated uncertainty, and holdout policy before galaxy comparison"
+    },
+    {
+      "equation_id": "uet.persistence.resource_selection_physical_cost_map",
+      "version": "resource-selection-physical-cost-map-v1",
+      "classification": "observable_mapping_contract",
+      "relation_or_code_path": "Q_J=alpha_b*W_behavior+alpha_m*W_maintenance; Delta_S_bath_J_per_K=Q_J/T_bath_K",
+      "variables": {
+        "W_behavior": "normalized integrated behavior cost",
+        "W_maintenance": "normalized integrated maintenance cost",
+        "alpha_b": "independent joule per normalized behavior-work scale",
+        "alpha_m": "independent joule per normalized maintenance-work scale",
+        "T_bath_K": "bath temperature in kelvin",
+        "Q_J": "integrated dissipated heat in joules",
+        "Delta_S_bath_J_per_K": "isothermal bath entropy proxy in joules per kelvin"
+      },
+      "mathematical_role": "explicit dimensional conversion contract; not a source of calibration values",
+      "standard_physics_counterpart": "work/heat accounting and isothermal entropy bookkeeping after independent calibration",
+      "observable_mapping": {
+        "status": "BLOCKED",
+        "proxy": "integrated heat or calorimetric/heat-flux observable plus bath temperature",
+        "reason": "independent alpha_b, alpha_m, uncertainty, detector operator, and source package are absent"
+      },
+      "unit_lane": "si_contract_only_v1",
+      "parameter_dimensions": "alpha_b, alpha_m: J per normalized work; T_bath_K: K; Q_J: J; Delta_S: J/K",
+      "source_or_origin": "docs/core/resource_selection_physical_cost_map.py and its contract verifier",
+      "assumptions": [
+        "normalized behavior and maintenance work are non-negative declared ledger components",
+        "alpha_b and alpha_m are independently derived or source-locked, never fitted to the target result",
+        "isothermal Delta_S=Q/T is a comparator and not a complete entropy-current derivation",
+        "C remains interaction-derived and is not identified with energy or temperature"
+      ],
+      "symmetry_and_conservation": "conversion preserves the declared normalized work decomposition; physical closure remains open",
+      "limiting_cases": [
+        "zero behavior and maintenance work gives zero mapped heat",
+        "missing or fitted scale is rejected before conversion",
+        "positive scale rescaling changes SI magnitude and is not identifiable without an external anchor"
+      ],
+      "implementation_paths": [
+        "docs/core/resource_selection_physical_cost_map.py",
+        "docs/core/resource_selection_thermal_bridge.py"
+      ],
+      "verifier_paths": [
+        "docs/scripts/audit/audit_resource_selection_physical_cost_map.py",
+        "docs/core/test/test_resource_selection_physical_cost_map.py",
+        "docs/core/artifacts/resource_selection_physical_cost_map_verification.json"
+      ],
+      "evidence_class": "INTERNAL_CONTRACT",
+      "proof_status": "contract behavior passes locally; independent dimensional calibration and physical measurement remain blocked",
+      "downstream_dependencies": [
+        "uet.persistence.resource_selection_dynamics",
+        "uet.foundation.units",
+        "uet.foundation.observable",
+        "uet.thermal_pilot.0.13"
+      ],
+      "claim_boundary": "SI conversion interface only; not physical heat/entropy evidence or a derivation of alpha scales",
+      "failure_mode": "fixture scales are presented as material calibration, or normalized C/work is called SI energy/temperature",
+      "next_hardening_step": "source-lock independent alpha_b and alpha_m with calorimetry or heat-flux data, uncertainty, detector operator, and holdout"
     }
   ],
   "merge_history": {
     "merged_equation_ids": [
-      "uet.mass_density.si_3d_measurement_operator"
+      "uet.persistence.resource_selection_physical_cost_map"
     ],
     "already_present": [
       "uet.impact_effect.information_flow",
@@ -1272,7 +1329,8 @@
       "uet.persistence.resource_selection_dynamics",
       "uet.persistence.resource_selection_thermal_bridge",
       "uet.mass_density.augmented_amplitude_contract",
-      "uet.mass_density.si_1d_amplitude_contract"
+      "uet.mass_density.si_1d_amplitude_contract",
+      "uet.mass_density.si_3d_measurement_operator"
     ],
     "conflicts": [],
     "source_policy": "addenda are merged as candidate records; evidence and claim boundaries are preserved"

@@ -314,3 +314,34 @@ Source-declared standard/comparator rows are now recorded as explicit blocked co
   costs to measured work, heat, entropy, transition rate, or failure rate.
 - Claim impact: no promotion; the lane remains normalized, internal, and
   simulation-only.
+
+## 2026-08-08 - Physical cost-map contract
+
+- Scope: dynamic-game cost observable feeding the thermal/persistence
+  correspondence.
+- Added: opt-in SI conversion interface, provenance-bearing record, anti-fit
+  validation, deterministic contract audit, registry entry, and focused tests.
+- Verified: `PASS_WITH_BLOCKED_INDEPENDENT_CALIBRATION`; incomplete and fitted
+  maps are rejected; the test-only fixture gives `0.8 J` and
+  `0.002666666666666667 J/K`.
+- Result: units and measurement-operator requirements are explicit, but no
+  physical calibration or external data are present.
+- Next controller: source-lock independent behavior/maintenance energy scales
+  in one material lane with calorimetry/heat flux, uncertainty, detector
+  operator, and holdout.
+- Claim impact: no promotion; normalized dynamic-game and thermal claims remain
+  internal/simulation-only.
+
+## 2026-08-08 - Physical-cost F0/F4 ownership sync
+
+- Scope: foundation inventory/derivation metadata for the new dynamic-game
+  physical-cost contract.
+- Verified: `51` core Python files and `1,941` candidate surfaces are visible;
+  core family ownership has zero missing module paths; registry count is `24`;
+  F4 has no `UNCLASSIFIED_OPEN` rows; full core suite passes `542/542`.
+- Result: traceability and origin classification are closed for this contract;
+  physical calibration, observable data, and external evidence remain blocked.
+- Next controller: source-lock independent `alpha_b`/`alpha_m` in one material
+  lane with calorimetry or heat flux, uncertainty, detector operator, and
+  holdout.
+- Claim impact: no physical promotion.

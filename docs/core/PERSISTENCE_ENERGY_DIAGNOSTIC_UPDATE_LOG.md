@@ -67,3 +67,19 @@
 - Controlling blocker: map behavior/maintenance costs to a measured work,
   heat, entropy, transition-rate, or failure-rate observable in one physical
   lane.
+
+## 2026-08-08 - Physical cost-map contract
+
+- Added an opt-in SI contract for `Q_J = alpha_b*W_behavior +
+  alpha_m*W_maintenance` and the isothermal entropy comparator
+  `Delta_S=Q_J/T_bath_K`.
+- Added provenance, uncertainty, measurement-operator, unit-lane, and
+  anti-fitting checks; incomplete and fitted maps are rejected before
+  conversion.
+- Verification: physical-cost contract audit
+  `PASS_WITH_BLOCKED_INDEPENDENT_CALIBRATION`; the `TEST_ONLY` fixture closes
+  the formula at `0.8 J` and `0.002666666666666667 J/K`.
+- Claim impact: this is a contract result only. It does not provide a material
+  calibration or turn normalized cost into SI energy.
+- Controlling blocker: source-lock independent `alpha_b` and `alpha_m` with
+  calorimetry or heat-flux data, uncertainty, detector operator, and holdout.

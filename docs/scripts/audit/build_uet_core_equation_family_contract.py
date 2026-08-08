@@ -231,6 +231,7 @@ FAMILIES = [
             "docs/core/uet_data_orchestrator.py", "docs/core/uet_glass_box.py", "docs/core/scientific_validation.py",
             "docs/core/uet_bug_hunter.py", "docs/core/truth_auditor.py", "docs/core/reproducibility.py", "docs/core/uet_references.py",
             "docs/core/uet_viz.py", "docs/core/02_Proof/Proof_00_Master_Balance.py", "docs/core/mass_density_correspondence.py", "docs/core/matter_interaction_forward.py", "docs/core/persistence_energy_diagnostic.py", "docs/core/relational_two_body_baseline.py", "docs/core/resource_selection_thermal_bridge.py", "docs/core/thermal_observable_bridge.py", "docs/core/thermal_source_observable_map.py", "docs/core/uet_impact_effect.py", "docs/core/uet_resource_selection.py", "docs/core/mass_density_3d.py", "docs/core/mass_density_amplitude.py", "docs/core/mass_density_dimensional.py", "docs/core/photon_observer_baseline.py", "docs/core/uet_matter_space_observable.py",
+            "docs/core/resource_selection_physical_cost_map.py",
         ],
         {},
         "numerical implementation and audit support, not a unified physical equation",

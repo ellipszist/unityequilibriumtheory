@@ -6,8 +6,8 @@
   "contract_status": "BLOCKED",
   "controlling_blocker": "core_code_surface_classification_or_upstream_compatibility_incomplete",
   "coverage": {
-    "core_code_surface_file_count": 50,
-    "assigned_module_path_count": 50,
+    "core_code_surface_file_count": 51,
+    "assigned_module_path_count": 51,
     "missing_core_paths": [],
     "nonexistent_declared_paths": [],
     "equation_family_count": 9,
@@ -362,7 +362,8 @@
         "docs/core/mass_density_amplitude.py",
         "docs/core/mass_density_dimensional.py",
         "docs/core/photon_observer_baseline.py",
-        "docs/core/uet_matter_space_observable.py"
+        "docs/core/uet_matter_space_observable.py",
+        "docs/core/resource_selection_physical_cost_map.py"
       ],
       "equation_family": false,
       "variables": {},
@@ -376,7 +377,7 @@
         "docs/core/artifacts/uet_code_surface_inventory.json"
       ],
       "next_gate": "link formula-bearing support paths to an owning equation family or quarantine as legacy",
-      "candidate_surface_count": 527,
+      "candidate_surface_count": 544,
       "module_paths_exist": true
     }
   ],

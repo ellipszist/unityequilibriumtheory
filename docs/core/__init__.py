@@ -610,3 +610,20 @@ __all__ += [
     "detect_photon",
     "photon_observer_contract",
 ]
+from .resource_selection_physical_cost_map import (
+    PHYSICAL_COST_MAP_OPERATOR_MODE,
+    PHYSICAL_COST_MAP_STATUS,
+    PhysicalCostMapValidationError,
+    PhysicalCostMapRecord,
+    PhysicalCostMapResult,
+    map_normalized_work_to_si,
+)
+
+__all__ += [
+    "PHYSICAL_COST_MAP_OPERATOR_MODE",
+    "PHYSICAL_COST_MAP_STATUS",
+    "PhysicalCostMapValidationError",
+    "PhysicalCostMapRecord",
+    "PhysicalCostMapResult",
+    "map_normalized_work_to_si",
+]

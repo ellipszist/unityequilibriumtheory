@@ -55,6 +55,8 @@ def _origin_family(entry: dict[str, Any]) -> str:
         return "CANDIDATE_WITH_LOCAL_CHECKS"
     if "CHECKED" in evidence or "checked" in proof:
         return "STANDARD_OR_INTERNAL_COMPARATOR"
+    if "CONTRACT" in evidence or "contract" in classification or "contract" in proof:
+        return "CONTRACT_OR_MAPPING"
     if proof == "derived" or "derived" in proof:
         return "DECLARED_RELATION_DERIVATION"
     if "DIAGNOSTIC" in evidence or "heuristic" in proof or "open" in proof:
@@ -73,6 +75,8 @@ def _derivation_readiness(entry: dict[str, Any], family: str) -> str:
         return "LEGACY_ORIGIN_RETAINED_NOT_PROMOTABLE"
     if family in {"CONCEPTUAL_CANDIDATE", "HEURISTIC_OR_DIAGNOSTIC"}:
         return "OPEN_HEURISTIC_OR_CONCEPTUAL_ORIGIN"
+    if family == "CONTRACT_OR_MAPPING":
+        return "OPEN_CONTRACT_MAPPING_NO_DERIVATION"
     return "UNCLASSIFIED_REQUIRES_REVIEW"
 
 

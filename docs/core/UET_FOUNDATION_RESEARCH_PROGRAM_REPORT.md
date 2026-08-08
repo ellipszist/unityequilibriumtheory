@@ -451,3 +451,37 @@ central foundation gate. The central controller still requires an independent
 Phi/energy anchor and source-normalized TTG data for the thermal lane, plus the
 locked Gaia 3D table and density calibration/uncertainty/holdout package for
 the mass-density lane. No physical promotion is made.
+
+## Latest plan update - 2026-08-08 physical cost-map contract
+
+The dynamic-game controller has been implemented as a strict opt-in dimensional
+contract. The allowed map is
+
+    Q_J = alpha_b*W_behavior + alpha_m*W_maintenance
+    Delta_S_bath_J_per_K = Q_J/T_bath_K
+
+The contract requires an independent or derived source for both energy scales,
+uncertainty, a measurement operator, and provenance. It rejects missing maps
+and fitted maps. A deterministic fixture closes the algebra only and is marked
+`TEST_ONLY`.
+
+This adds a concrete research step to the plan: source-lock a calorimetry or
+heat-flux lane first, then test the cost/C separation with fixed scales and an
+untouched holdout. It does not use the target result to choose `alpha_b` or
+`alpha_m`, does not identify `C` with temperature or energy, and does not close
+the existing Phi-to-kelvin or TTG source gates. The central foundation gate
+therefore remains blocked.
+
+## Latest plan update - 2026-08-08 physical-cost F0/F4 ownership sync
+
+The new physical-cost module is now visible to the foundation workflow rather
+than existing as an untracked research helper. F0 records `1,941` candidate
+surfaces across `51` core Python files; the core family contract has no missing
+module paths. The central registry has `24` entries, and F4 classifies the new
+record as an open contract/mapping rather than a derivation. The foundation and
+all-wave audits remain `PASS` for accounting with overall foundation status
+`BLOCKED`.
+
+This closes repository traceability for the contract only. It does not close
+its physical calibration, and it does not reduce the independent Phi/TTG or
+Gaia/density controllers.

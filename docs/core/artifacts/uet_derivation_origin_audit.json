@@ -7,18 +7,19 @@
   "purpose": "classify relation origins and preserve the boundary between derivation, comparison, heuristic and physical closure",
   "registry": "docs/core/artifacts/uet_equation_correspondence_registry.json",
   "metrics": {
-    "registry_entry_count": 23,
+    "registry_entry_count": 24,
     "origin_family_counts": {
       "LEGACY_OR_COMPARATOR": 1,
       "DECLARED_RELATION_DERIVATION": 6,
       "HEURISTIC_OR_DIAGNOSTIC": 3,
       "STANDARD_OR_INTERNAL_COMPARATOR": 8,
       "CONCEPTUAL_CANDIDATE": 2,
-      "CANDIDATE_WITH_LOCAL_CHECKS": 3
+      "CANDIDATE_WITH_LOCAL_CHECKS": 3,
+      "CONTRACT_OR_MAPPING": 1
     },
     "declared_relation_derivations": 6,
     "comparator_checked_relations": 8,
-    "open_or_candidate_relations": 9,
+    "open_or_candidate_relations": 10,
     "physical_promotions_allowed": 0
   },
   "entries": [
@@ -318,6 +319,19 @@
       "proof_status": "checked local synthetic SI operator and integral closure; external physical mapping open",
       "mathematical_role": "synthetic SI 3D measurement-operator contract that separates source amplitude, geometry scales, and normalized shape",
       "claim_boundary": "synthetic SI 3D measurement-operator contract; not a C-to-mass derivation, external galaxy map, galaxy prediction, or dark-matter replacement",
+      "physical_closure": false,
+      "physical_promotion_allowed": false
+    },
+    {
+      "equation_id": "uet.persistence.resource_selection_physical_cost_map",
+      "classification": "observable_mapping_contract",
+      "origin_family": "CONTRACT_OR_MAPPING",
+      "derivation_readiness": "OPEN_CONTRACT_MAPPING_NO_DERIVATION",
+      "source_or_origin": "docs/core/resource_selection_physical_cost_map.py and its contract verifier",
+      "evidence_class": "INTERNAL_CONTRACT",
+      "proof_status": "contract behavior passes locally; independent dimensional calibration and physical measurement remain blocked",
+      "mathematical_role": "explicit dimensional conversion contract; not a source of calibration values",
+      "claim_boundary": "SI conversion interface only; not physical heat/entropy evidence or a derivation of alpha scales",
       "physical_closure": false,
       "physical_promotion_allowed": false
     }

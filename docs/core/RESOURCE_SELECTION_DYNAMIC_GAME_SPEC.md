@@ -90,3 +90,22 @@ heat, entropy production, transition rate, or failure rate.
 The dynamic-game lane therefore remains `INTERNAL_DIAGNOSTIC` and
 `SIMULATION_ONLY`; no intentional optimizer, mass interpretation, SI energy
 claim, or universal Darwinian/cosmological law is introduced.
+
+## Physical-cost mapping contract - 2026-08-08
+
+The next lane is now an explicit opt-in interface:
+
+    Q_J = alpha_b*W_behavior + alpha_m*W_maintenance
+    Delta_S_bath_J_per_K = Q_J/T_bath_K
+
+`alpha_b` and `alpha_m` have units of joules per normalized work and must be
+independently derived or source-locked. The new contract rejects an incomplete
+record, a fitted record, or a record without uncertainty, provenance, and a
+measurement-operator identifier. Its deterministic fixture is marked
+`TEST_ONLY` and is not a material calibration.
+
+The current audit is `PASS_WITH_BLOCKED_INDEPENDENT_CALIBRATION`: the SI
+conversion interface and unit algebra are explicit, but no physical heat,
+calorimetry, heat-flux, entropy, or persistence prediction is promoted. The
+next experiment must supply one material lane and a holdout that was not used
+to choose either scale.

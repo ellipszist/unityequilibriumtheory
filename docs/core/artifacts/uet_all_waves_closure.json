@@ -7,7 +7,7 @@
   "foundation_gate": {
     "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
     "status": "BLOCKED",
-    "sha256": "e59b171cc3717c79a25547e7c5a820843f69a2d5f8cd0c451877adcf78dc0a57",
+    "sha256": "cfd60ce816d801b1f00272bfb81816b14376b1d7cd51c4568e5814765d690c37",
     "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
   },
   "wave_count": 12,

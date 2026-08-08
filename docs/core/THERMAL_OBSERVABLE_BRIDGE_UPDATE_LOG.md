@@ -30,3 +30,17 @@
 - Finding: the missing `alpha_Phi_K` is not merely an absent fitted number; it is structurally non-identifiable from the current normalized Phi lane. An absolute dimensional anchor must enter through the action/energy normalization or an independent calibration.
 - Claim boundary: no Phi-to-temperature, heat-flux, or entropy-production claim is promoted.
 - Next controller: derive/source-lock the dimensional anchor first, then intake TTG rows with uncertainty and untouched holdout.
+
+## 2026-08-08 - Dynamic-game physical-cost contract
+
+- Added a separate opt-in physical-cost map for the resource-selection thermal
+  bridge. It distinguishes normalized work from SI heat and requires
+  independent `alpha_b`/`alpha_m` provenance.
+- Verification: the contract audit passes with status
+  `PASS_WITH_BLOCKED_INDEPENDENT_CALIBRATION`; open records and fitted records
+  are rejected, while the numerical fixture is explicitly `TEST_ONLY`.
+- Result: the algebraic mapping is now reviewable, but no external heat or
+  entropy measurement is attached. This does not close the Phi-to-kelvin
+  identifiability blocker.
+- Next controller: source-lock one material calorimetry/heat-flux lane with
+  uncertainty, detector response, and holdout.
