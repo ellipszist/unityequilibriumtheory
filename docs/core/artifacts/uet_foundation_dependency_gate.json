@@ -71,7 +71,9 @@
       "reason": "Normalized and natural-unit contracts exist for selected lanes; complete SI/dimensional observable contracts are not closed.",
       "evidence": [
         "docs/core/artifacts/uet_equation_correspondence_registry.json",
-        "docs/core/artifacts/uet_active_lane_units_observable_register.json"
+        "docs/core/artifacts/uet_active_lane_units_observable_register.json",
+        "docs/core/artifacts/thermal_dimensional_calibration_contract.json",
+        "docs/core/artifacts/mass_density_3d_external_source_package.json"
       ],
       "metrics": {
         "active_lane_count": 9,
@@ -84,7 +86,7 @@
         "required_condition": "selected lane declares normalized or natural units without SI promotion",
         "lane_count": 4
       },
-      "required_next_artifact": "unit closure register for every active physical lane"
+      "required_next_artifact": "source-normalized thermal calibration/units package plus external 3D density source package; then close every remaining dimensional lane"
     },
     "F4_derivation": {
       "status": "BLOCKED",
@@ -140,7 +142,9 @@
         "docs/core/artifacts/matter_space_topic_pilot_sync.json",
         "docs/core/artifacts/uet_active_lane_units_observable_register.json",
         "docs/core/artifacts/matter_space_observable_verification.json",
-        "docs/core/artifacts/uet_equation_correspondence_registry.json"
+        "docs/core/artifacts/uet_equation_correspondence_registry.json",
+        "docs/core/artifacts/thermal_dimensional_calibration_contract.json",
+        "docs/core/artifacts/mass_density_3d_external_source_package.json"
       ],
       "metrics": {
         "active_lane_count": 9,
@@ -163,14 +167,16 @@
         "required_condition": "each active lane declares an internal operator while physical mapping remains separate",
         "lane_count": 9
       },
-      "required_next_artifact": "observable mapping register with units, resolution and uncertainty for each active lane"
+      "required_next_artifact": "source-normalized TTG measurement rows and external 3D density table with resolution, uncertainty, calibration and holdout records"
     },
     "F8_data_and_claim": {
       "status": "BLOCKED",
       "reason": "Downstream evidence is simulation/internal or dependency-blocked; no foundation claim can be promoted to external physical validation.",
       "evidence": [
         "docs/core/artifacts/matter_space_topic_pilot_sync.json",
-        "docs/core/artifacts/uet_foundation_extended_wave_closure.json"
+        "docs/core/artifacts/uet_foundation_extended_wave_closure.json",
+        "docs/core/artifacts/thermal_dimensional_calibration_contract.json",
+        "docs/core/artifacts/mass_density_3d_external_source_package.json"
       ],
       "required_next_artifact": "source-locked external data package plus preregistered holdout policy"
     }
@@ -191,6 +197,13 @@
       "legacy_full_coupled_operator": "BLOCKED_PREARRIVAL_OR_DOMAIN_OF_DEPENDENCE"
     }
   },
+  "source_and_calibration_snapshot": {
+    "thermal_calibration_contract_status": "PASS_WITH_BLOCKED_INDEPENDENT_CALIBRATION",
+    "thermal_claim_status": "CONTRACT_DEFINED_CALIBRATION_OPEN",
+    "external_3d_density_source_status": "PASS_WITH_BLOCKED_EXTERNAL_SOURCE_PACKAGE",
+    "external_3d_density_claim_status": "SOURCE_CANDIDATE_METADATA_ONLY",
+    "physical_promotion_allowed": false
+  },
   "coverage_snapshot": {
     "registry_entry_count": 23,
     "inventory_missing_scope_count": 5,
@@ -206,5 +219,5 @@
     "physical_data_claims": "BLOCKED",
     "existing_downstream_topics": "retain current status; no promotion"
   },
-  "next_controller": "resolve F2 correspondence rows; close derivation-origin assumptions and lane-specific dimensional/observable contracts; then rerun selected 0.11/0.13 lanes"
+  "next_controller": "source-normalize TTG rows and independent alpha_Phi_K evidence; archive a 3D density table and close selection/mass-calibration/uncertainty/holdout gates; then rerun selected 0.11/0.13 lanes"
 }

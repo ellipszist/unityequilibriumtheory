@@ -270,3 +270,12 @@ Source-declared standard/comparator rows are now recorded as explicit blocked co
 - Result: the missing step is now an explicit calibration/provenance gate rather than an implicit numeric argument. Normalized TTG remains allowed; Kelvin, heat-flux, and entropy claims remain blocked.
 - Next controller: package source-normalized TTG rows and independent `alpha_Phi_K` evidence with uncertainty and holdout.
 - Claim impact: no change.
+
+
+## 2026-08-08 - Canonical foundation controller sync
+
+- Scope: central F3/F7/F8 dependency accounting after the thermal calibration and external 3D source-package waves.
+- Changed: foundation gate generator now records both lane artifacts and exposes their statuses in `source_and_calibration_snapshot`; all-wave closure was regenerated from the updated gate.
+- Verified: equation-foundation audit `PASS`; dependency gate `PASS` with overall `BLOCKED`; all-wave closure `PASS` with 12 waves accounted for and no physical promotion.
+- Result: the central controller now names source-normalized TTG plus independent `alpha_Phi_K` evidence and a local 3D density table with selection/mass-calibration/uncertainty/holdout gates.
+- Claim impact: no change; physical foundation remains blocked.

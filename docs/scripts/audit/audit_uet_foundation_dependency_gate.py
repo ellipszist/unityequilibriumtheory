@@ -47,6 +47,8 @@ def build_gate() -> dict[str, Any]:
     observable_path = ROOT / "docs/core/artifacts/matter_space_observable_verification.json"
     wording_path = ROOT / "docs/core/artifacts/impact_effect_legacy_wording_audit.json"
     derivation_origin_path = ROOT / "docs/core/artifacts/uet_derivation_origin_audit.json"
+    thermal_calibration_path = ROOT / "docs/core/artifacts/thermal_dimensional_calibration_contract.json"
+    density_source_path = ROOT / "docs/core/artifacts/mass_density_3d_external_source_package.json"
     inventory = load(inventory_path)
     code = load(code_path)
     matrix = load(matrix_path)
@@ -63,6 +65,8 @@ def build_gate() -> dict[str, Any]:
     observable_map = load(observable_path)
     wording = load(wording_path)
     derivation_origin = load(derivation_origin_path)
+    thermal_calibration = load(thermal_calibration_path)
+    density_source = load(density_source_path)
 
     characteristic_pass = characteristic.get("audit_status") == "PASS"
     selected_lane = causal_lane.get("selected_lane", {})
@@ -139,7 +143,7 @@ def build_gate() -> dict[str, Any]:
         "F3_units": {
             "status": "BLOCKED",
             "reason": "Normalized and natural-unit contracts exist for selected lanes; complete SI/dimensional observable contracts are not closed.",
-            "evidence": [rel(registry_path), rel(lane_contract_path)],
+            "evidence": [rel(registry_path), rel(lane_contract_path), rel(thermal_calibration_path), rel(density_source_path)],
             "metrics": {
                 "active_lane_count": lane_contract.get("lane_count"),
                 "units_contract_status": lane_contract.get("foundation_effect", {}).get("F3_units"),
@@ -151,7 +155,7 @@ def build_gate() -> dict[str, Any]:
                 "required_condition": "selected lane declares normalized or natural units without SI promotion",
                 "lane_count": len(normalized_unit_lanes),
             },
-            "required_next_artifact": "unit closure register for every active physical lane",
+            "required_next_artifact": "source-normalized thermal calibration/units package plus external 3D density source package; then close every remaining dimensional lane",
         },
         "F4_derivation": {
             "status": "BLOCKED" if compat.get("controlling_blockers") else "PASS_CONDITIONAL",
@@ -192,7 +196,7 @@ def build_gate() -> dict[str, Any]:
         "F7_observable_mapping": {
             "status": "BLOCKED",
             "reason": "Internal normalized diagnostics exist, but physical measurement operators, dimensional maps and uncertainty contracts are incomplete.",
-            "evidence": [rel(pilot_sync_path), rel(lane_contract_path), rel(observable_path), rel(registry_path)],
+            "evidence": [rel(pilot_sync_path), rel(lane_contract_path), rel(observable_path), rel(registry_path), rel(thermal_calibration_path), rel(density_source_path)],
             "metrics": {
                 "active_lane_count": lane_contract.get("lane_count"),
                 "normalized_operator_status": observable_map.get("audit_status"),
@@ -206,12 +210,12 @@ def build_gate() -> dict[str, Any]:
                 "required_condition": "each active lane declares an internal operator while physical mapping remains separate",
                 "lane_count": len(observable_contract_lanes),
             },
-            "required_next_artifact": "observable mapping register with units, resolution and uncertainty for each active lane",
+            "required_next_artifact": "source-normalized TTG measurement rows and external 3D density table with resolution, uncertainty, calibration and holdout records",
         },
         "F8_data_and_claim": {
             "status": "BLOCKED",
             "reason": "Downstream evidence is simulation/internal or dependency-blocked; no foundation claim can be promoted to external physical validation.",
-            "evidence": [rel(pilot_sync_path), "docs/core/artifacts/uet_foundation_extended_wave_closure.json"],
+            "evidence": [rel(pilot_sync_path), "docs/core/artifacts/uet_foundation_extended_wave_closure.json", rel(thermal_calibration_path), rel(density_source_path)],
             "required_next_artifact": "source-locked external data package plus preregistered holdout policy",
         },
     }
@@ -243,6 +247,13 @@ def build_gate() -> dict[str, Any]:
                 "legacy_full_coupled_operator": "BLOCKED_PREARRIVAL_OR_DOMAIN_OF_DEPENDENCE",
             },
         },
+        "source_and_calibration_snapshot": {
+            "thermal_calibration_contract_status": thermal_calibration.get("audit_status"),
+            "thermal_claim_status": thermal_calibration.get("claim_status"),
+            "external_3d_density_source_status": density_source.get("audit_status"),
+            "external_3d_density_claim_status": density_source.get("claim_status"),
+            "physical_promotion_allowed": False,
+        },
         "coverage_snapshot": {
             "registry_entry_count": len(registry_entries),
             "inventory_missing_scope_count": len(missing_scope),
@@ -258,7 +269,7 @@ def build_gate() -> dict[str, Any]:
             "physical_data_claims": "BLOCKED",
             "existing_downstream_topics": "retain current status; no promotion",
         },
-        "next_controller": "resolve F2 correspondence rows; close derivation-origin assumptions and lane-specific dimensional/observable contracts; then rerun selected 0.11/0.13 lanes",
+        "next_controller": "source-normalize TTG rows and independent alpha_Phi_K evidence; archive a 3D density table and close selection/mass-calibration/uncertainty/holdout gates; then rerun selected 0.11/0.13 lanes",
     }
 
 

@@ -398,3 +398,17 @@ The augmented C-density lane now exposes a deterministic SI 3D volume-density op
 ## Latest plan update - 2026-08-08 F0 inventory coverage closure
 
 The foundation coverage artifact now records `1,924` discovered core code surfaces, with `1,849` assigned to declared families and `75` explicitly quarantined; all `263` formula rows are recorded, parse errors are zero, and `28` core files remain visibly unlinked for classification. This closes an inventory/metadata gap only: F2 still has open standard counterparts, F3 still has dimensional lanes open, F7 still accepts zero physical maps, and no physical claim is promoted.
+
+
+## Controller update ? 2026-08-08
+
+The foundation controller now distinguishes two concrete open evidence packages:
+
+1. thermal: source-normalized TTG rows plus an independently sourced or derived
+   `alpha_Phi_K` with uncertainty and holdout; and
+2. density: a local 3D source table plus selection/completeness, mass calibration,
+   uncertainty, and holdout records.
+
+Gaia EDR3/GCNS is currently only a metadata-only 3D stellar-structure candidate.
+It does not directly provide `rho_3D`, and therefore does not promote `C` to mass.
+The central gate remains `BLOCKED` and no external fit is allowed.
