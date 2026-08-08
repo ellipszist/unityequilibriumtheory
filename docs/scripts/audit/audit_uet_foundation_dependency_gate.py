@@ -49,6 +49,7 @@ def build_gate() -> dict[str, Any]:
     derivation_origin_path = ROOT / "docs/core/artifacts/uet_derivation_origin_audit.json"
     thermal_calibration_path = ROOT / "docs/core/artifacts/thermal_dimensional_calibration_contract.json"
     density_source_path = ROOT / "docs/core/artifacts/mass_density_3d_external_source_package.json"
+    query_manifest_path = ROOT / "docs/core/artifacts/gaia_3d_query_manifest_verification.json"
     inventory = load(inventory_path)
     code = load(code_path)
     matrix = load(matrix_path)
@@ -67,6 +68,7 @@ def build_gate() -> dict[str, Any]:
     derivation_origin = load(derivation_origin_path)
     thermal_calibration = load(thermal_calibration_path)
     density_source = load(density_source_path)
+    query_manifest = load(query_manifest_path)
 
     characteristic_pass = characteristic.get("audit_status") == "PASS"
     selected_lane = causal_lane.get("selected_lane", {})
@@ -196,7 +198,7 @@ def build_gate() -> dict[str, Any]:
         "F7_observable_mapping": {
             "status": "BLOCKED",
             "reason": "Internal normalized diagnostics exist, but physical measurement operators, dimensional maps and uncertainty contracts are incomplete.",
-            "evidence": [rel(pilot_sync_path), rel(lane_contract_path), rel(observable_path), rel(registry_path), rel(thermal_calibration_path), rel(density_source_path)],
+            "evidence": [rel(pilot_sync_path), rel(lane_contract_path), rel(observable_path), rel(registry_path), rel(thermal_calibration_path), rel(density_source_path), rel(query_manifest_path)],
             "metrics": {
                 "active_lane_count": lane_contract.get("lane_count"),
                 "normalized_operator_status": observable_map.get("audit_status"),
@@ -215,7 +217,7 @@ def build_gate() -> dict[str, Any]:
         "F8_data_and_claim": {
             "status": "BLOCKED",
             "reason": "Downstream evidence is simulation/internal or dependency-blocked; no foundation claim can be promoted to external physical validation.",
-            "evidence": [rel(pilot_sync_path), "docs/core/artifacts/uet_foundation_extended_wave_closure.json", rel(thermal_calibration_path), rel(density_source_path)],
+            "evidence": [rel(pilot_sync_path), "docs/core/artifacts/uet_foundation_extended_wave_closure.json", rel(thermal_calibration_path), rel(density_source_path), rel(query_manifest_path)],
             "required_next_artifact": "source-locked external data package plus preregistered holdout policy",
         },
     }
@@ -252,6 +254,9 @@ def build_gate() -> dict[str, Any]:
             "thermal_claim_status": thermal_calibration.get("claim_status"),
             "external_3d_density_source_status": density_source.get("audit_status"),
             "external_3d_density_claim_status": density_source.get("claim_status"),
+            "gaia_3d_query_manifest_status": query_manifest.get("audit_status"),
+            "gaia_3d_query_claim_status": query_manifest.get("claim_status"),
+            "gaia_3d_holdout_consumed": query_manifest.get("locked_design", {}).get("holdout_consumed"),
             "physical_promotion_allowed": False,
         },
         "coverage_snapshot": {
@@ -269,7 +274,7 @@ def build_gate() -> dict[str, Any]:
             "physical_data_claims": "BLOCKED",
             "existing_downstream_topics": "retain current status; no promotion",
         },
-        "next_controller": "source-normalize TTG rows and independent alpha_Phi_K evidence; archive a 3D density table and close selection/mass-calibration/uncertainty/holdout gates; then rerun selected 0.11/0.13 lanes",
+        "next_controller": "source-normalize TTG rows and independent alpha_Phi_K evidence; execute the locked Gaia query, archive and hash the returned 3D table, then close selection/mass-calibration/uncertainty/holdout gates before rerunning selected 0.11/0.13 lanes",
     }
 
 

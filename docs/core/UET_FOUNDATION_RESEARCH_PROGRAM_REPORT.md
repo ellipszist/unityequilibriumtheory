@@ -412,3 +412,9 @@ The foundation controller now distinguishes two concrete open evidence packages:
 Gaia EDR3/GCNS is currently only a metadata-only 3D stellar-structure candidate.
 It does not directly provide `rho_3D`, and therefore does not promote `C` to mass.
 The central gate remains `BLOCKED` and no external fit is allowed.
+
+## Latest plan update - 2026-08-08 Gaia 3D query and holdout preregistration
+
+The Gaia 3D lane now has a source-linked query protocol rather than only a catalogue citation. The manifest fixes the candidate table and requested fields, forbids a silent universal parallax correction or reciprocal-parallax default, records the required distance/selection/mass/uncertainty decisions, and locks a HEALPix calibration/holdout split before data intake.
+
+The query audit is `PASS_WITH_BLOCKED_DATA_INTAKE`, and the external source-package audit remains `PASS_WITH_BLOCKED_EXTERNAL_SOURCE_PACKAGE`. This is a reproducibility/control result, not a physical measurement: no local numeric table has been archived, source counts are not `rho_3D`, and `A_m`, selection completeness, uncertainty propagation, and the `C`-to-observable map remain open. The next controller is to execute and hash the locked table, then close those gates before any fit or galaxy comparison.

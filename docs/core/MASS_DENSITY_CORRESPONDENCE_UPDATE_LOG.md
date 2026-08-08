@@ -21,3 +21,11 @@
 - Research finding: 3D source positions do not equal `rho_3D`; distance treatment, selection/completeness, mass realization, uncertainty propagation, and holdout are separate physical gates.
 - Public-safety: `partial`; candidate source identity only, no C-to-mass derivation, galaxy validation, or dark-matter claim.
 - Next controller: archive or extract a licensed source table and close selection, mass calibration, uncertainty, and holdout before external comparison.
+
+### research-core / Gaia 3D query and holdout preregistration
+
+- Changed: added a source-linked query manifest for `gaiadr3.gaia_source`, explicit parallax-bias and distance policies, and a HEALPix calibration/holdout split locked before data intake.
+- Verification: query audit `PASS_WITH_BLOCKED_DATA_INTAKE`; source-package audit `PASS_WITH_BLOCKED_EXTERNAL_SOURCE_PACKAGE`; focused query/source tests `4/4`.
+- Research finding: locking the query and holdout makes the next empirical step reproducible, but it does not turn source counts into `rho_3D`; distance, selection, mass realization, uncertainty, and dimensional `A_m` remain open.
+- Public-safety: `partial`; no local numeric table, fit, calibration, or holdout row was consumed.
+- Next controller: execute the locked query, archive/hash the returned table, then close schema, selection, distance, mass, uncertainty, and holdout gates.

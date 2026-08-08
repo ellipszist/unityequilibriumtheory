@@ -17,6 +17,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[3]
 MANIFEST_PATH = ROOT / "docs/data/external/astronomy/gaia_edr3_gcns/2026-08-08/source_manifest.json"
 OPERATOR_PATH = ROOT / "docs/core/artifacts/mass_density_3d_contract_verification.json"
+QUERY_MANIFEST_PATH = ROOT / "docs/data/external/astronomy/gaia_edr3_gcns/2026-08-08/query_and_holdout_manifest.json"
 OUTPUT_PATH = ROOT / "docs/core/artifacts/mass_density_3d_external_source_package.json"
 
 
@@ -39,6 +40,7 @@ def _relative(path: Path) -> str:
 def build_artifact() -> dict[str, Any]:
     manifest = _load(MANIFEST_PATH)
     operator = _load(OPERATOR_PATH)
+    query_manifest = _load(QUERY_MANIFEST_PATH)
     identity = manifest.get("source_identity", {})
     units = manifest.get("unit_contract", {})
     selection = manifest.get("selection_function", {})
@@ -89,6 +91,11 @@ def build_artifact() -> dict[str, Any]:
             operator.get("audit_status") == "PASS_WITH_BLOCKED_EXTERNAL_3D_MAPPING"
             and operator.get("claim_status") == "SIMULATION_ONLY"
         ),
+        "query_and_holdout_manifest_is_present_and_blocked": (
+            query_manifest.get("status") == "QUERY_AND_HOLDOUT_MANIFEST_ONLY"
+            and query_manifest.get("fit_policy", {}).get("numeric_fitting_allowed") is False
+            and query_manifest.get("holdout_split", {}).get("holdout_consumed") is False
+        ),
     }
     structural_keys = (
         "source_identity_complete",
@@ -102,6 +109,7 @@ def build_artifact() -> dict[str, Any]:
         "holdout_policy_is_locked_before_comparison",
         "fit_and_parameter_tuning_are_blocked",
         "synthetic_operator_does_not_promote_physical_map",
+        "query_and_holdout_manifest_is_present_and_blocked",
     )
     audit_status = (
         "PASS_WITH_BLOCKED_EXTERNAL_SOURCE_PACKAGE"
@@ -120,6 +128,12 @@ def build_artifact() -> dict[str, Any]:
             "source_id": manifest.get("source_id"),
             "status": manifest.get("status"),
             "source_data_status": manifest.get("source_data_status"),
+        },
+        "query_manifest": {
+            "path": _relative(QUERY_MANIFEST_PATH),
+            "sha256": _sha256(QUERY_MANIFEST_PATH),
+            "status": query_manifest.get("status"),
+            "holdout_consumed": query_manifest.get("holdout_split", {}).get("holdout_consumed"),
         },
         "operator_dependency": {
             "path": _relative(OPERATOR_PATH),
@@ -143,6 +157,7 @@ def build_artifact() -> dict[str, Any]:
         "gates": gates,
         "blockers": [
             "no local raw/extracted Gaia table or dataset hash",
+            "query/holdout manifest is preregistered but no numeric intake has occurred",
             "selection/completeness and distance treatment are not frozen",
             "catalogue source counts do not close total baryonic mass calibration",
             "uncertainty propagation to volume density is open",

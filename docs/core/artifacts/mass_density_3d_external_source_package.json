@@ -6,10 +6,16 @@
   "evidence_class": "EXTERNAL_IDENTITY_WITHOUT_LOCAL_NUMERIC_ARCHIVE",
   "source_manifest": {
     "path": "docs/data/external/astronomy/gaia_edr3_gcns/2026-08-08/source_manifest.json",
-    "sha256": "e9def3bbd0c784628c7f0b48d55d08f472e1a66c8a6aa8bad2fbd04c31a91f31",
+    "sha256": "07d833f72d1ae8c4ae1f79467d994835a6a45248795b7fac8a3f6ee1d1d8bd3d",
     "source_id": "gaia_edr3_gcns_3d_stellar_structure_candidate",
     "status": "METADATA_ONLY_CANDIDATE",
     "source_data_status": "NOT_ARCHIVED"
+  },
+  "query_manifest": {
+    "path": "docs/data/external/astronomy/gaia_edr3_gcns/2026-08-08/query_and_holdout_manifest.json",
+    "sha256": "103ef046f515513183edd231f7b3dab30c20d73ff2e7264cd655f2e9da6017a1",
+    "status": "QUERY_AND_HOLDOUT_MANIFEST_ONLY",
+    "holdout_consumed": false
   },
   "operator_dependency": {
     "path": "docs/core/artifacts/mass_density_3d_contract_verification.json",
@@ -41,10 +47,12 @@
     "uncertainty_remains_open": true,
     "holdout_policy_is_locked_before_comparison": true,
     "fit_and_parameter_tuning_are_blocked": true,
-    "synthetic_operator_does_not_promote_physical_map": true
+    "synthetic_operator_does_not_promote_physical_map": true,
+    "query_and_holdout_manifest_is_present_and_blocked": true
   },
   "blockers": [
     "no local raw/extracted Gaia table or dataset hash",
+    "query/holdout manifest is preregistered but no numeric intake has occurred",
     "selection/completeness and distance treatment are not frozen",
     "catalogue source counts do not close total baryonic mass calibration",
     "uncertainty propagation to volume density is open",
@@ -55,5 +63,5 @@
     "use the metadata-only candidate as galaxy rotation validation",
     "promote the synthetic 3D operator to a physical mass derivation"
   ],
-  "next_controller": "archive a licensed/extractable local source table, then close selection, mass calibration, uncertainty, and holdout gates before any physical fit"
+  "next_controller": "execute the locked query, archive and hash the returned local source table, then close selection, mass calibration, uncertainty, and holdout gates before any physical fit"
 }

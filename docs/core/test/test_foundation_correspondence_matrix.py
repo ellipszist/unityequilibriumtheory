@@ -39,3 +39,5 @@ def test_foundation_gate_preserves_normalized_subgates_without_physical_promotio
     assert gate["gates"]["F7_observable_mapping"]["status"] == "BLOCKED"
     assert gate["gates"]["F7_observable_mapping"]["normalized_subgate"]["status"] == "PASS_DECLARED_INTERNAL_OPERATORS_ONLY"
     assert gate["gates"]["F7_observable_mapping"]["metrics"]["accepted_physical_observable_lanes"] == 0
+    assert gate["source_and_calibration_snapshot"]["gaia_3d_query_manifest_status"] == "PASS_WITH_BLOCKED_DATA_INTAKE"
+    assert gate["source_and_calibration_snapshot"]["gaia_3d_holdout_consumed"] is False

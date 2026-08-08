@@ -1,0 +1,157 @@
+{
+  "schema_version": "1.0",
+  "artifact": "gaia_3d_source_query_and_holdout_manifest",
+  "status": "QUERY_AND_HOLDOUT_MANIFEST_ONLY",
+  "source_id": "gaia_edr3_gcns_3d_stellar_structure_candidate",
+  "source_manifest_path": "docs/data/external/astronomy/gaia_edr3_gcns/2026-08-08/source_manifest.json",
+  "source_identity": {
+    "gaia_archive_url": "https://gea.esac.esa.int/archive/",
+    "gaia_documentation_url": "https://gea.esac.esa.int/archive/documentation/GDR3/",
+    "catalogue_data_doi": "10.26093/cds/vizier.36490006",
+    "catalogue_data_url": "https://doi.org/10.26093/cds/vizier.36490006",
+    "paper_doi": "10.1051/0004-6361/202039498"
+  },
+  "candidate_tables": [
+    {
+      "table": "gaiadr3.gaia_source",
+      "role": "primary astrometric/photometric source table",
+      "status": "QUERY_TARGET_CANDIDATE"
+    },
+    {
+      "table": "gaiadr3.astrophysical_parameters",
+      "role": "optional astrophysical-parameter cross-check; exact columns require schema inspection",
+      "status": "SCHEMA_INSPECTION_REQUIRED"
+    },
+    {
+      "table": "gaiadr3.binary_masses",
+      "role": "subset-only component-mass comparator; not a complete stellar-mass field",
+      "status": "COMPARATOR_ONLY"
+    }
+  ],
+  "requested_fields": [
+    {
+      "table": "gaiadr3.gaia_source",
+      "field": "source_id",
+      "unit": "dimensionless",
+      "role": "stable row identity"
+    },
+    {
+      "table": "gaiadr3.gaia_source",
+      "field": "ra",
+      "unit": "deg",
+      "role": "sky coordinate"
+    },
+    {
+      "table": "gaiadr3.gaia_source",
+      "field": "dec",
+      "unit": "deg",
+      "role": "sky coordinate"
+    },
+    {
+      "table": "gaiadr3.gaia_source",
+      "field": "parallax",
+      "unit": "mas",
+      "role": "distance input"
+    },
+    {
+      "table": "gaiadr3.gaia_source",
+      "field": "parallax_error",
+      "unit": "mas",
+      "role": "distance uncertainty"
+    },
+    {
+      "table": "gaiadr3.gaia_source",
+      "field": "ruwe",
+      "unit": "dimensionless",
+      "role": "astrometric quality filter"
+    },
+    {
+      "table": "gaiadr3.gaia_source",
+      "field": "phot_g_mean_mag",
+      "unit": "mag",
+      "role": "selection/bias covariate"
+    },
+    {
+      "table": "gaiadr3.gaia_source",
+      "field": "bp_rp",
+      "unit": "mag",
+      "role": "selection/bias covariate"
+    }
+  ],
+  "parallax_bias_policy": {
+    "status": "MUST_BE_APPLIED_OR_JUSTIFIED_BEFORE_DISTANCE_USE",
+    "documented_global_reference_bias_mas": -0.017,
+    "single_constant_correction_allowed": false,
+    "required_correction_inputs": [
+      "sky position",
+      "G magnitude",
+      "BP-RP colour"
+    ],
+    "source": "Gaia DR3 documentation; correction recipe is position/magnitude/colour dependent",
+    "raw_and_corrected_columns_required": true
+  },
+  "distance_policy": {
+    "status": "PRE_REGISTERED_POLICY_REQUIRED",
+    "forbidden_default": "do not silently use reciprocal parallax for all rows",
+    "required_record": [
+      "distance estimator",
+      "prior",
+      "negative/parallax-low-SNR policy",
+      "posterior uncertainty"
+    ],
+    "runtime_unit": "pc_then_m"
+  },
+  "coordinate_and_density_policy": {
+    "coordinate_transform": "sky coordinates plus declared distance estimator to Cartesian pc, then m",
+    "finite_volume_bin": "cell-centred 3D bins with declared edge convention",
+    "target_observable": "rho_3D in kg/m^3",
+    "mass_realization_status": "OPEN",
+    "source_counts_are_not_mass_density": true,
+    "operator_path": "O[C_phase, geometry, rho_hat, A_m, L_xyz] -> rho_3D"
+  },
+  "selection_policy": {
+    "status": "OPEN_BEFORE_DATA_INTAKE",
+    "candidate_volume": "GCNS nearby-star scope; source paper reports within 100 pc",
+    "required_items": [
+      "sky completeness",
+      "magnitude completeness",
+      "crowding/extinction",
+      "volume edges",
+      "binary/remnant treatment"
+    ]
+  },
+  "holdout_split": {
+    "status": "LOCKED_BEFORE_DATA_INTAKE",
+    "rule": "HEALPix nside=8 parity split on source sky cell",
+    "calibration_condition": "healpix_index % 2 == 0",
+    "holdout_condition": "healpix_index % 2 == 1",
+    "overlap_condition": "disjoint by construction if each row has one valid HEALPix index",
+    "holdout_consumed": false,
+    "split_caveat": "spatial selection non-uniformity must be reported; this split is a preregistered gate, not evidence of independence by itself"
+  },
+  "preprocessing_policy": {
+    "status": "NOT_STARTED",
+    "required_order": [
+      "query lock",
+      "raw archive/hash",
+      "schema validation",
+      "bias/distance transform",
+      "quality/selection filter",
+      "finite-volume binning",
+      "uncertainty propagation"
+    ]
+  },
+  "fit_policy": {
+    "numeric_fitting_allowed": false,
+    "parameter_tuning_allowed": false,
+    "C_to_shape_mapping_fitted_from_holdout": false,
+    "reason": "query and holdout are being locked before any numeric intake or model calibration"
+  },
+  "local_data": {
+    "raw_local_path": null,
+    "raw_dataset_sha256": null,
+    "status": "NOT_ARCHIVED"
+  },
+  "claim_boundary": "This manifest fixes a candidate query and split protocol only; it is not a 3D mass-density measurement and does not test C or galaxy dynamics.",
+  "next_controller": "execute the locked query, archive the returned table with hash, and close schema/selection/distance/uncertainty gates before using rho_3D"
+}

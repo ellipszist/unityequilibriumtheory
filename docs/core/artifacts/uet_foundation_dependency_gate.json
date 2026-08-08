@@ -144,7 +144,8 @@
         "docs/core/artifacts/matter_space_observable_verification.json",
         "docs/core/artifacts/uet_equation_correspondence_registry.json",
         "docs/core/artifacts/thermal_dimensional_calibration_contract.json",
-        "docs/core/artifacts/mass_density_3d_external_source_package.json"
+        "docs/core/artifacts/mass_density_3d_external_source_package.json",
+        "docs/core/artifacts/gaia_3d_query_manifest_verification.json"
       ],
       "metrics": {
         "active_lane_count": 9,
@@ -176,7 +177,8 @@
         "docs/core/artifacts/matter_space_topic_pilot_sync.json",
         "docs/core/artifacts/uet_foundation_extended_wave_closure.json",
         "docs/core/artifacts/thermal_dimensional_calibration_contract.json",
-        "docs/core/artifacts/mass_density_3d_external_source_package.json"
+        "docs/core/artifacts/mass_density_3d_external_source_package.json",
+        "docs/core/artifacts/gaia_3d_query_manifest_verification.json"
       ],
       "required_next_artifact": "source-locked external data package plus preregistered holdout policy"
     }
@@ -202,6 +204,9 @@
     "thermal_claim_status": "CONTRACT_DEFINED_CALIBRATION_OPEN",
     "external_3d_density_source_status": "PASS_WITH_BLOCKED_EXTERNAL_SOURCE_PACKAGE",
     "external_3d_density_claim_status": "SOURCE_CANDIDATE_METADATA_ONLY",
+    "gaia_3d_query_manifest_status": "PASS_WITH_BLOCKED_DATA_INTAKE",
+    "gaia_3d_query_claim_status": "PREREGISTERED_QUERY_AND_HOLDOUT_ONLY",
+    "gaia_3d_holdout_consumed": false,
     "physical_promotion_allowed": false
   },
   "coverage_snapshot": {
@@ -219,5 +224,5 @@
     "physical_data_claims": "BLOCKED",
     "existing_downstream_topics": "retain current status; no promotion"
   },
-  "next_controller": "source-normalize TTG rows and independent alpha_Phi_K evidence; archive a 3D density table and close selection/mass-calibration/uncertainty/holdout gates; then rerun selected 0.11/0.13 lanes"
+  "next_controller": "source-normalize TTG rows and independent alpha_Phi_K evidence; execute the locked Gaia query, archive and hash the returned 3D table, then close selection/mass-calibration/uncertainty/holdout gates before rerunning selected 0.11/0.13 lanes"
 }

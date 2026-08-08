@@ -134,7 +134,10 @@ def build() -> dict[str, Any]:
             "physics_status": "A CLOSED_AS_BLOCKED wave is not a solved theory; it is a formally bounded research lane whose blocker is now explicit.",
             "selected_positive_result": "Only the selected normalized characteristic-cone diagnostic is locally passing; it does not establish SI physics, universal C meaning or empirical validity.",
         },
-        "next_controller": "close foundation coverage, dimensional units and observable maps; run the source-locked thermal and external 3D C-density lanes before any downstream promotion",
+        "next_controller": foundation.get(
+            "next_controller",
+            "close foundation coverage, dimensional units and observable maps; run the source-locked thermal and external 3D C-density lanes before any downstream promotion",
+        ),
     }
 
 

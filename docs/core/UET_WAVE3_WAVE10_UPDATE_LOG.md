@@ -279,3 +279,12 @@ Source-declared standard/comparator rows are now recorded as explicit blocked co
 - Verified: equation-foundation audit `PASS`; dependency gate `PASS` with overall `BLOCKED`; all-wave closure `PASS` with 12 waves accounted for and no physical promotion.
 - Result: the central controller now names source-normalized TTG plus independent `alpha_Phi_K` evidence and a local 3D density table with selection/mass-calibration/uncertainty/holdout gates.
 - Claim impact: no change; physical foundation remains blocked.
+
+## 2026-08-08 - Gaia 3D query and holdout preregistration
+
+- Scope: Wave 10 C-density correspondence and F7/F8 external-data boundary.
+- Changed: added a source-linked Gaia query/holdout manifest, enforced it as a dependency of the 3D source-package audit, and exposed its status in the foundation controller.
+- Verified: query manifest `PASS_WITH_BLOCKED_DATA_INTAKE`; source-package `PASS_WITH_BLOCKED_EXTERNAL_SOURCE_PACKAGE`; focused tests `4/4`; all-wave closure `PASS`.
+- Result: the empirical path is now operationally specified before data intake: requested columns, parallax-bias covariates, distance-policy requirements, source-count/non-density distinction, and a pre-registered HEALPix split are explicit. No physical C-to-mass map is accepted.
+- Next controller: execute and hash the locked local table, then close selection/completeness, distance, mass calibration, uncertainty, and holdout before any fit.
+- Claim impact: no change; foundation remains `BLOCKED`, physical promotion remains disabled.

@@ -96,5 +96,6 @@
     ]
   },
   "claim_boundary": "Gaia/GCNS is a candidate 3D stellar-structure source; it does not close C-to-rho_3D, total-mass calibration, galaxy dynamics, or dark-matter claims.",
-  "next_controller": "archive a licensed/extractable local source table, then close selection, mass calibration, uncertainty, and holdout gates before any physical fit"
+  "next_controller": "execute the locked query, archive and hash the returned local source table, then close selection, mass calibration, uncertainty, and holdout gates before any physical fit",
+  "query_and_holdout_manifest_path": "docs/data/external/astronomy/gaia_edr3_gcns/2026-08-08/query_and_holdout_manifest.json"
 }
