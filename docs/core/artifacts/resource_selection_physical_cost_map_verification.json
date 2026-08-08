@@ -33,21 +33,33 @@
     "parameters_fit": false,
     "evidence_status": "TEST_ONLY"
   },
+  "control_mapping_metrics": {
+    "cost_control_C_residual": 0.0,
+    "cost_control_heat_difference_j": -7.2,
+    "same_cost_interaction_C_contrast": 1.1500000000000001,
+    "same_cost_heat_residual_j": 0.0,
+    "evidence_status": "TEST_ONLY"
+  },
   "gates": {
     "open_map_is_rejected": true,
     "fit_origin_is_rejected": true,
     "fixture_heat_formula_closes": true,
     "fixture_entropy_formula_closes": true,
     "no_default_physical_scale": true,
-    "measurement_operator_is_explicit": true
+    "measurement_operator_is_explicit": true,
+    "mapped_cost_control_keeps_C_invariant": true,
+    "mapped_cost_control_changes_heat": true,
+    "mapped_same_cost_interaction_changes_C": true,
+    "mapped_same_cost_keeps_heat_invariant": true
   },
   "limitations": [
     "the fixture is a contract test, not a material measurement",
     "no independent alpha_b or alpha_m source is supplied",
     "no calorimetry/heat-flux dataset, uncertainty distribution, or detector response is supplied",
     "normalized C and normalized work are not identified with temperature or SI energy",
+    "the mapped control result tests algebraic separation only; it is not physical validation",
     "a ready map must be derived or source-locked and cannot be fit to the target result"
   ],
-  "claim_boundary": "The SI conversion interface is explicit and blocks incomplete or fitted maps; no physical heat, entropy, or persistence prediction is promoted.",
+  "claim_boundary": "The SI conversion interface preserves the declared C/cost separation in a test fixture and blocks incomplete or fitted maps; no physical heat, entropy, or persistence prediction is promoted.",
   "next_controller": "source-lock independent alpha_b and alpha_m in one material lane with calorimetry or heat-flux measurement, uncertainty, detector operator, and holdout"
 }

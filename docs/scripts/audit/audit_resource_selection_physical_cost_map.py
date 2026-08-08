@@ -1,7 +1,9 @@
 """Audit the opt-in dimensional cost-map contract.
 
-The audit proves contract behavior and deliberate blocking.  It does not claim
-that a physical cost scale has been sourced or derived.
+The audit proves contract behavior and deliberate blocking. It also applies a
+TEST_ONLY SI fixture to the dynamic-game controls to check that the algebraic
+map does not collapse interaction-derived C into ledger depletion. It does not
+claim that a physical cost scale has been sourced or derived.
 """
 
 from __future__ import annotations
@@ -22,6 +24,27 @@ from docs.core.resource_selection_physical_cost_map import (
     PhysicalCostMapValidationError,
     map_normalized_work_to_si,
 )
+from docs.core.uet_resource_selection import (
+    ResourceSelectionConfig,
+    simulate_resource_selection,
+)
+
+
+HORIZON = 10.0
+DT = 0.001
+
+
+def selection(matrix, behavior_cost, maintenance_cost):
+    return simulate_resource_selection(
+        ResourceSelectionConfig(
+            interaction_matrix=matrix,
+            behavior_cost=behavior_cost,
+            maintenance_cost=maintenance_cost,
+            cost_weight=0.0,
+        ),
+        horizon=HORIZON,
+        dt=DT,
+    )
 
 
 def main() -> int:
@@ -66,6 +89,66 @@ def main() -> int:
         status="TEST_ONLY",
     )
     fixture_result = map_normalized_work_to_si(0.25, 0.1, fixture_record)
+
+    costless_low = selection(
+        ((0.9, 0.8), (0.8, 0.9)),
+        (0.02, 0.03),
+        (0.01, 0.01),
+    )
+    costless_high = selection(
+        ((0.9, 0.8), (0.8, 0.9)),
+        (0.2, 0.3),
+        (0.1, 0.1),
+    )
+    same_cost_cooperative = selection(
+        ((0.9, 0.8), (0.8, 0.9)),
+        (0.05, 0.05),
+        (0.02, 0.02),
+    )
+    same_cost_conflict = selection(
+        ((0.3, -0.9), (-0.9, 0.3)),
+        (0.05, 0.05),
+        (0.02, 0.02),
+    )
+    low_heat = map_normalized_work_to_si(
+        costless_low.behavior_work,
+        costless_low.maintenance_work,
+        fixture_record,
+    )
+    high_heat = map_normalized_work_to_si(
+        costless_high.behavior_work,
+        costless_high.maintenance_work,
+        fixture_record,
+    )
+    same_cost_cooperative_heat = map_normalized_work_to_si(
+        same_cost_cooperative.behavior_work,
+        same_cost_cooperative.maintenance_work,
+        fixture_record,
+    )
+    same_cost_conflict_heat = map_normalized_work_to_si(
+        same_cost_conflict.behavior_work,
+        same_cost_conflict.maintenance_work,
+        fixture_record,
+    )
+    mapped_cost_C_residual = max(
+        abs(a - b)
+        for a, b in zip(
+            costless_low.collective_compatibility,
+            costless_high.collective_compatibility,
+        )
+    )
+    mapped_same_cost_C_contrast = max(
+        abs(a - b)
+        for a, b in zip(
+            same_cost_cooperative.collective_compatibility,
+            same_cost_conflict.collective_compatibility,
+        )
+    )
+    mapped_cost_heat_difference_j = low_heat.heat_j - high_heat.heat_j
+    mapped_same_cost_heat_residual_j = (
+        same_cost_cooperative_heat.heat_j - same_cost_conflict_heat.heat_j
+    )
+
     gates = {
         "open_map_is_rejected": open_rejected,
         "fit_origin_is_rejected": fit_rejected,
@@ -82,6 +165,10 @@ def main() -> int:
         "measurement_operator_is_explicit": bool(
             fixture_result.measurement_operator_id
         ),
+        "mapped_cost_control_keeps_C_invariant": mapped_cost_C_residual <= 1e-12,
+        "mapped_cost_control_changes_heat": abs(mapped_cost_heat_difference_j) > 1e-6,
+        "mapped_same_cost_interaction_changes_C": mapped_same_cost_C_contrast > 1e-3,
+        "mapped_same_cost_keeps_heat_invariant": abs(mapped_same_cost_heat_residual_j) <= 1e-12,
     }
     artifact = {
         "schema_version": "1.0",
@@ -122,17 +209,26 @@ def main() -> int:
             "parameters_fit": False,
             "evidence_status": "TEST_ONLY",
         },
+        "control_mapping_metrics": {
+            "cost_control_C_residual": mapped_cost_C_residual,
+            "cost_control_heat_difference_j": mapped_cost_heat_difference_j,
+            "same_cost_interaction_C_contrast": mapped_same_cost_C_contrast,
+            "same_cost_heat_residual_j": mapped_same_cost_heat_residual_j,
+            "evidence_status": "TEST_ONLY",
+        },
         "gates": gates,
         "limitations": [
             "the fixture is a contract test, not a material measurement",
             "no independent alpha_b or alpha_m source is supplied",
             "no calorimetry/heat-flux dataset, uncertainty distribution, or detector response is supplied",
             "normalized C and normalized work are not identified with temperature or SI energy",
+            "the mapped control result tests algebraic separation only; it is not physical validation",
             "a ready map must be derived or source-locked and cannot be fit to the target result",
         ],
         "claim_boundary": (
-            "The SI conversion interface is explicit and blocks incomplete or fitted maps; "
-            "no physical heat, entropy, or persistence prediction is promoted."
+            "The SI conversion interface preserves the declared C/cost separation in a "
+            "test fixture and blocks incomplete or fitted maps; no physical heat, entropy, "
+            "or persistence prediction is promoted."
         ),
         "next_controller": (
             "source-lock independent alpha_b and alpha_m in one material lane with "

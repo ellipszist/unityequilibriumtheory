@@ -109,3 +109,16 @@ conversion interface and unit algebra are explicit, but no physical heat,
 calorimetry, heat-flux, entropy, or persistence prediction is promoted. The
 next experiment must supply one material lane and a holdout that was not used
 to choose either scale.
+
+## Mapped control result - 2026-08-08
+
+The dynamic-game controls were also passed through the `TEST_ONLY` dimensional
+map. With the same interaction and different declared costs, the `C` residual
+remains `0.0` and the mapped heat difference has magnitude `7.2 J` under the
+fixture scales. With the same costs and different interaction matrices, the
+`C` contrast is `1.15` while the mapped heat residual is `0.0`.
+
+This is an algebraic consistency result: the cost map preserves the separation
+between interaction-derived `C` and the ledger's declared cost channels. The
+fixture values are not material constants, not fitted values, and not external
+heat evidence.

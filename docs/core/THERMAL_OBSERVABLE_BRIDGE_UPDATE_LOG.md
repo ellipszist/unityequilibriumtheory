@@ -44,3 +44,15 @@
   identifiability blocker.
 - Next controller: source-lock one material calorimetry/heat-flux lane with
   uncertainty, detector response, and holdout.
+
+## 2026-08-08 - Mapped cost/C control
+
+- Passed the dynamic-game same-interaction/different-cost and same-cost/
+  different-interaction controls through the `TEST_ONLY` SI cost-map fixture.
+- Result: `C` residual `0.0` with mapped heat-difference magnitude `7.2 J`; `C`
+  contrast `1.15` with same-cost heat residual `0.0`.
+- Interpretation: the conversion contract does not merge interaction-derived
+  C with declared work channels. The result remains internal contract evidence,
+  not physical thermal validation.
+- Next controller: source-lock a material heat/work observable and independent
+  cost scales with uncertainty and holdout.

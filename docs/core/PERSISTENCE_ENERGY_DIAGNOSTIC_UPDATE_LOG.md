@@ -83,3 +83,14 @@
   calibration or turn normalized cost into SI energy.
 - Controlling blocker: source-lock independent `alpha_b` and `alpha_m` with
   calorimetry or heat-flux data, uncertainty, detector operator, and holdout.
+
+## 2026-08-08 - Mapped dynamic-game control
+
+- Applied the `TEST_ONLY` SI cost-map fixture to the dynamic-game controls.
+- Verification: same-interaction `C` residual `0.0` with mapped heat difference
+  magnitude `7.2 J`; same-cost interaction `C` contrast `1.15` with mapped heat
+  residual `0.0`; six physical-cost tests passed.
+- Finding: the algebraic mapping preserves C/cost separation. This is not a
+  material calibration, external heat measurement, or proof that C is energy.
+- Controlling blocker: replace the fixture with independently source-locked
+  cost scales, measurement operator, uncertainty, and untouched holdout.

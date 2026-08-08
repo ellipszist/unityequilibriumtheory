@@ -345,3 +345,15 @@ Source-declared standard/comparator rows are now recorded as explicit blocked co
   lane with calorimetry or heat flux, uncertainty, detector operator, and
   holdout.
 - Claim impact: no physical promotion.
+
+## 2026-08-08 - Mapped cost/C control
+
+- Scope: dynamic-game physical-cost mapping and thermal bridge.
+- Verified: the `TEST_ONLY` fixture preserves same-interaction `C` residual
+  `0.0` with heat-difference magnitude `7.2 J`, and same-cost interaction `C`
+  contrast `1.15` with heat residual `0.0`; physical-cost tests `6/6`.
+- Result: algebraic C/cost separation survives the declared conversion
+  interface; no physical calibration or external evidence is added.
+- Next controller: replace fixture scales with independent material data,
+  measurement operator, uncertainty, and holdout.
+- Claim impact: no promotion; status remains contract-only/simulation-only.

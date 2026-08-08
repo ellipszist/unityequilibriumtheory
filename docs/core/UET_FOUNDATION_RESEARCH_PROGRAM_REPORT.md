@@ -485,3 +485,17 @@ all-wave audits remain `PASS` for accounting with overall foundation status
 This closes repository traceability for the contract only. It does not close
 its physical calibration, and it does not reduce the independent Phi/TTG or
 Gaia/density controllers.
+
+## Latest plan update - 2026-08-08 mapped dynamic-game control
+
+The physical-cost contract was exercised on the dynamic-game control pairs,
+not only on an isolated formula fixture. Under the declared test scales, the
+same-interaction/different-cost pair keeps `C` identical (`0.0` residual) while
+changing mapped heat by `7.2 J` in magnitude. The same-cost/different-
+interaction pair changes `C` by `1.15` while leaving mapped heat identical.
+
+This adds a useful falsification boundary: a dimensional conversion interface
+cannot by itself establish `C=energy`; the two outputs remain separable after
+mapping. The result is still `TEST_ONLY`, so the research plan now requires a
+material heat/work measurement and independent cost-scale provenance before any
+physical comparison.
