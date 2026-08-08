@@ -50,3 +50,20 @@
   SIMULATION_ONLY. Scales are declared inputs and were not fitted.
 - Controlling blocker: source-lock one material lane with SI work/heat/temperature
   units, uncertainty, and a measurement operator before external comparison.
+
+## 2026-08-08 - Dynamic-game confounding control
+
+- Added deterministic controls to the interaction-selection verifier so the
+  original cooperative/conflict contrast is no longer interpreted in isolation.
+- Same interaction with different declared costs keeps `C` invariant while
+  changing the ledger; same costs with different interaction matrices changes
+  `C` while keeping the ledger invariant; zero costs keep the ledger constant.
+- Verification: all dynamic-game gates pass; `C` residual for the same-
+  interaction cost control is `0.0`, the same-cost interaction `C` contrast is
+  `1.15`, and the same-cost ledger residual is `0.0`.
+- Claim impact: the lane remains `PASS_WITH_OPEN_PHYSICAL_MAPPING`,
+  `INTERNAL_DIAGNOSTIC`, and `SIMULATION_ONLY`. No claim that `C` is energy,
+  mass, or a causal source of persistence is allowed.
+- Controlling blocker: map behavior/maintenance costs to a measured work,
+  heat, entropy, transition-rate, or failure-rate observable in one physical
+  lane.

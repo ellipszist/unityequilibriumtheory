@@ -117,3 +117,30 @@ Current controlling artifacts:
 
 - docs/core/artifacts/resource_persistence_principle_contract.json
 - docs/core/artifacts/persistence_energy_diagnostic_verification.json
+
+## Dynamic-selection control result ? 2026-08-08
+
+The interaction-selection realization now has a confounding control. The
+original cooperative/conflict pair changed both interaction structure and
+resource-cost inputs, so its persistence contrast could not be attributed to
+`C` alone.
+
+With the same interaction matrix and `cost_weight=0`, changing behavior and
+maintenance costs leaves the full interaction-derived `C` trajectory
+unchanged while changing the available-resource ledger. With the same cost
+vectors and `cost_weight=0`, changing the interaction matrix changes `C` while
+leaving the resource ledger unchanged. A zero-cost, zero-input control keeps
+the ledger constant.
+
+This supports the narrower statement:
+
+> The comparator contains two separable mechanisms: interaction-derived
+> collective compatibility and declared resource depletion. The current
+> evidence does not identify them as one physical quantity.
+
+The result strengthens falsifiability and prevents the principle from being
+used as an explanation of persistence merely because a cooperative example
+lasts longer. The next physical step is to source-lock one material lane in
+which behavior/maintenance costs can be measured as work, heat, entropy
+production, transition rate, or failure rate. Until that map exists, the
+principle remains a normalized, non-agentic, simulation-only comparator.

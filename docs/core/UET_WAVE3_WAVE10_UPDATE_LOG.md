@@ -297,3 +297,20 @@ Source-declared standard/comparator rows are now recorded as explicit blocked co
 - Result: the blocker is now classified as structural non-identifiability of normalized `Phi`, not just missing data. No target-data fitting can resolve the absolute K-per-Phi scale without an independent anchor.
 - Next controller: derive a dimensional Phi/energy anchor or independently source-lock `alpha_Phi_K` with uncertainty, then run source-normalized TTG intake.
 - Claim impact: no change; 0.13 remains simulation-only and the foundation remains blocked.
+
+## 2026-08-08 - Dynamic-game cost/C separation
+
+- Scope: persistence/resource-selection comparator feeding the foundation
+  correspondence and the 0.11/0.13 pilot dependencies.
+- Changed: added same-interaction/different-cost, zero-cost, and same-cost/
+  different-interaction controls to the deterministic verifier and contract.
+- Verified: all dynamic-game gates pass; same-interaction `C` residual is `0.0`,
+  same-cost interaction `C` contrast is `1.15`, and same-cost ledger residual is
+  `0.0`.
+- Result: the original cooperative/conflict persistence contrast is explicitly
+  marked cost-confounded. `C` and ledger depletion are separate outputs until a
+  physical cost map is supplied.
+- Next controller: source-lock one physical lane and map behavior/maintenance
+  costs to measured work, heat, entropy, transition rate, or failure rate.
+- Claim impact: no promotion; the lane remains normalized, internal, and
+  simulation-only.

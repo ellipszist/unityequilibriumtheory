@@ -14,6 +14,8 @@
   "verifier_artifact": "docs/core/artifacts/resource_selection_dynamic_game_verification.json",
   "no_intentionality": true,
   "no_parameter_fitting": true,
+  "control_experiment_status": "PASS_COST_AND_INTERACTION_SEPARATED",
+  "identifiability_boundary": "original cooperative/conflict contrast is cost-confounded; C and ledger depletion are not identified as the same quantity",
   "claim_boundary": "candidate non-agentic interaction-selection comparator; simulation-only",
   "next_controller": "map behavior and maintenance costs to a measured work, heat, entropy, or failure-rate observable in one physical lane"
 }

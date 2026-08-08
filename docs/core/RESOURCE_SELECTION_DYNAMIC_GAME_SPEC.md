@@ -60,3 +60,33 @@ Darwinian, biological, cosmological, or particle dynamics.
 - C is derived from interaction state, not relabelled mass
 - persistence ordering survives dt refinement
 - physical mapping to work, heat, or entropy remains open
+
+## 2026-08-08 - Control and identifiability result
+
+The original cooperative/conflict comparison changed the interaction matrix and
+both cost vectors at the same time. It therefore could show a persistence
+ordering in the declared comparator, but it could not identify whether the
+ordering came from collective compatibility `C`, declared resource costs, or
+both.
+
+The verifier now includes three controls:
+
+1. **Same interaction, different costs, zero selection-cost weight.** The
+   probability and `C` histories are identical, while the resource ledger
+   changes. The measured `C` residual is `0.0`; the low-cost and high-cost
+   final resources are approximately `0.65` and `-2.50`.
+2. **Same interaction, zero costs and zero net input.** The resource remains
+   constant with a range of `0.0`.
+3. **Same costs, different interaction matrices, zero selection-cost weight.**
+   `C` changes by `1.15`, while the final resource residual is `0.0`.
+
+All control gates pass in the deterministic normalized audit. The result is a
+separation of outputs, not a causal proof that `C` itself consumes energy or
+creates persistence. In this lane, `C` is interaction-derived and the ledger
+is depleted by explicitly declared behavior/maintenance costs. A physical
+interpretation requires a separate map from those costs to measured work,
+heat, entropy production, transition rate, or failure rate.
+
+The dynamic-game lane therefore remains `INTERNAL_DIAGNOSTIC` and
+`SIMULATION_ONLY`; no intentional optimizer, mass interpretation, SI energy
+claim, or universal Darwinian/cosmological law is introduced.

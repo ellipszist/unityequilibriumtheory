@@ -105,7 +105,16 @@
       "min_compatibility": -0.30000000000000004,
       "max_compatibility": -0.18799479177044368
     },
-    "final_resource_difference": 1.324847683795681
+    "final_resource_difference": 1.324847683795681,
+    "controls": {
+      "costless_selection_C_residual": 0.0,
+      "costless_low_final_resource": 0.6499999999999275,
+      "costless_high_final_resource": -2.5000000000002185,
+      "zero_cost_final_resource": 1.0,
+      "zero_cost_resource_range": 0.0,
+      "same_cost_interaction_C_contrast": 1.1500000000000001,
+      "same_cost_interaction_resource_residual": 0.0
+    }
   },
   "gates": {
     "simplex_drift_le_1e-12": true,
@@ -116,13 +125,20 @@
     "collective_C_is_interaction_derived": true,
     "no_parameter_fitting": true,
     "no_intentional_optimizer": true,
-    "deterministic_repeat": true
+    "deterministic_repeat": true,
+    "costless_interaction_keeps_C_invariant": true,
+    "costless_resource_changes_with_declared_cost": true,
+    "zero_cost_resource_is_constant": true,
+    "same_cost_interaction_changes_C": true,
+    "same_cost_interaction_does_not_change_ledger": true
   },
   "limitations": [
     "interaction matrix, cost vectors, and replicator law are constitutive comparator inputs",
     "normalized resource is not SI energy",
     "no physical mass, temperature, heat, entropy, particle, or cosmological mapping is supplied",
-    "the result supports only a simulation-level persistence ordering under the declared comparator"
+    "the result supports only a simulation-level persistence ordering under the declared comparator",
+    "the original cooperative/conflict comparison changes interaction and cost inputs together; it cannot attribute persistence to C alone",
+    "control experiments show that C and ledger depletion are separable outputs until a physical cost map is supplied"
   ],
   "next_controller": "map behavior and maintenance costs to a measured work, heat, entropy, or failure-rate observable in one physical lane"
 }

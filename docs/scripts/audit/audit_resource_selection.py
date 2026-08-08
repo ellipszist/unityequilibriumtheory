@@ -48,6 +48,80 @@ def build_artifact() -> dict:
     conflict_result = _run(conflict)
     deterministic_repeat = _run(cooperative)
 
+    # Controls separate the interaction-derived C signal from the cost vectors
+    # that directly drain the resource ledger.  The original cooperative vs
+    # conflict pair changes both at once, so it cannot attribute persistence
+    # ordering to C alone.
+    control_matrix = ((0.9, 0.8), (0.8, 0.9))
+    costless_low = _run(
+        ResourceSelectionConfig(
+            interaction_matrix=control_matrix,
+            behavior_cost=(0.02, 0.03),
+            maintenance_cost=(0.01, 0.01),
+            cost_weight=0.0,
+        )
+    )
+    costless_high = _run(
+        ResourceSelectionConfig(
+            interaction_matrix=control_matrix,
+            behavior_cost=(0.2, 0.3),
+            maintenance_cost=(0.1, 0.1),
+            cost_weight=0.0,
+        )
+    )
+    zero_cost = _run(
+        ResourceSelectionConfig(
+            interaction_matrix=control_matrix,
+            behavior_cost=(0.0, 0.0),
+            maintenance_cost=(0.0, 0.0),
+            cost_weight=0.0,
+        )
+    )
+    same_cost_cooperative = _run(
+        ResourceSelectionConfig(
+            interaction_matrix=((0.9, 0.8), (0.8, 0.9)),
+            behavior_cost=(0.05, 0.05),
+            maintenance_cost=(0.02, 0.02),
+            cost_weight=0.0,
+        )
+    )
+    same_cost_conflict = _run(
+        ResourceSelectionConfig(
+            interaction_matrix=((0.3, -0.9), (-0.9, 0.3)),
+            behavior_cost=(0.05, 0.05),
+            maintenance_cost=(0.02, 0.02),
+            cost_weight=0.0,
+        )
+    )
+    costless_C_residual = max(
+        abs(a - b)
+        for a, b in zip(
+            costless_low["result"].collective_compatibility,
+            costless_high["result"].collective_compatibility,
+        )
+    )
+    same_cost_C_contrast = max(
+        abs(a - b)
+        for a, b in zip(
+            same_cost_cooperative["result"].collective_compatibility,
+            same_cost_conflict["result"].collective_compatibility,
+        )
+    )
+    same_cost_resource_residual = abs(
+        same_cost_cooperative["final_resource"]
+        - same_cost_conflict["final_resource"]
+    )
+    controls = {
+        "costless_selection_C_residual": costless_C_residual,
+        "costless_low_final_resource": costless_low["final_resource"],
+        "costless_high_final_resource": costless_high["final_resource"],
+        "zero_cost_final_resource": zero_cost["final_resource"],
+        "zero_cost_resource_range": max(zero_cost["result"].available_resource)
+        - min(zero_cost["result"].available_resource),
+        "same_cost_interaction_C_contrast": same_cost_C_contrast,
+        "same_cost_interaction_resource_residual": same_cost_resource_residual,
+    }
+
     gates = {
         "simplex_drift_le_1e-12": max(
             coop["probability_simplex_drift"],
@@ -80,6 +154,16 @@ def build_artifact() -> dict:
         "deterministic_repeat": (
             coop["final_resource"] == deterministic_repeat["final_resource"]
             and coop["behavior_work"] == deterministic_repeat["behavior_work"]
+        ),
+        "costless_interaction_keeps_C_invariant": controls["costless_selection_C_residual"] <= 1e-12,
+        "costless_resource_changes_with_declared_cost": (
+            controls["costless_low_final_resource"]
+            > controls["costless_high_final_resource"]
+        ),
+        "zero_cost_resource_is_constant": controls["zero_cost_resource_range"] <= 1e-12,
+        "same_cost_interaction_changes_C": controls["same_cost_interaction_C_contrast"] >= 1e-3,
+        "same_cost_interaction_does_not_change_ledger": (
+            controls["same_cost_interaction_resource_residual"] <= 1e-12
         ),
     }
     artifact = {
@@ -134,6 +218,7 @@ def build_artifact() -> dict:
             "cooperative": {key: value for key, value in coop.items() if key != "result"},
             "conflict": {key: value for key, value in conflict_result.items() if key != "result"},
             "final_resource_difference": coop["final_resource"] - conflict_result["final_resource"],
+            "controls": controls,
         },
         "gates": gates,
         "limitations": [
@@ -141,6 +226,8 @@ def build_artifact() -> dict:
             "normalized resource is not SI energy",
             "no physical mass, temperature, heat, entropy, particle, or cosmological mapping is supplied",
             "the result supports only a simulation-level persistence ordering under the declared comparator",
+            "the original cooperative/conflict comparison changes interaction and cost inputs together; it cannot attribute persistence to C alone",
+            "control experiments show that C and ledger depletion are separable outputs until a physical cost map is supplied",
         ],
         "next_controller": "map behavior and maintenance costs to a measured work, heat, entropy, or failure-rate observable in one physical lane",
     }
@@ -163,6 +250,8 @@ def main() -> int:
         "verifier_artifact": "docs/core/artifacts/resource_selection_dynamic_game_verification.json",
         "no_intentionality": True,
         "no_parameter_fitting": True,
+        "control_experiment_status": "PASS_COST_AND_INTERACTION_SEPARATED",
+        "identifiability_boundary": "original cooperative/conflict contrast is cost-confounded; C and ledger depletion are not identified as the same quantity",
         "claim_boundary": "candidate non-agentic interaction-selection comparator; simulation-only",
         "next_controller": artifact["next_controller"],
     }

@@ -424,3 +424,30 @@ The query audit is `PASS_WITH_BLOCKED_DATA_INTAKE`, and the external source-pack
 The thermal calibration audit now contains a constructive algebraic result. For any positive scale `s`, replacing `Delta_Phi` by `s Delta_Phi` leaves `y_TTG = Delta_Phi/Delta_Phi_0` unchanged, while replacing `alpha_Phi_K` by `alpha_Phi_K/s` leaves `Delta_Tq = alpha_Phi_K Delta_Phi` unchanged. Both residuals are exactly zero in the deterministic witness.
 
 Therefore the current normalized UET lane cannot derive an absolute Kelvin scale from its own normalized dynamics. This is a structural identifiability blocker, not permission to fit `alpha_Phi_K` to the target data. The next valid step is an independently justified dimensional Phi/energy anchor or an external calibration with uncertainty and a locked holdout.
+
+## Latest plan update - 2026-08-08 dynamic-game cost/C separation
+
+The persistence principle now has an explicit identifiability control rather
+than relying on the cooperative/conflict example. The original pair changed
+interaction and cost inputs together. The new controls show that, in the
+normalized comparator, interaction-derived `C` can change without changing the
+ledger, and declared behavior/maintenance costs can change the ledger without
+changing `C`.
+
+This updates the research plan in one important way: the dynamic-game lane is
+not a route to derive energy from `C`. It is a non-agentic selection/comparator
+lane whose next gate is a physical cost observable. The next work package is:
+
+1. choose one material/system lane with a measurable work, heat, entropy,
+   transition, or failure observable;
+2. source-lock its units, boundary conditions, measurement operator,
+   uncertainty, and provenance before parameter fitting;
+3. map the declared cost terms to that observable and test whether the
+   separation survives dimensional calibration and holdout; and
+4. only then compare persistence predictions with data.
+
+The dynamic-game controls pass internally, but this lane cannot lift the
+central foundation gate. The central controller still requires an independent
+Phi/energy anchor and source-normalized TTG data for the thermal lane, plus the
+locked Gaia 3D table and density calibration/uncertainty/holdout package for
+the mass-density lane. No physical promotion is made.

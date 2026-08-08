@@ -48,6 +48,67 @@ class ResourceSelectionTests(unittest.TestCase):
         self.assertIsNone(coop_result.persistence_time)
         self.assertIsNotNone(conflict_result.persistence_time)
 
+    def test_cost_and_interaction_controls_are_separable(self):
+        matrix = ((0.9, 0.8), (0.8, 0.9))
+        low_cost = simulate_resource_selection(
+            ResourceSelectionConfig(
+                interaction_matrix=matrix,
+                behavior_cost=(0.02, 0.03),
+                maintenance_cost=(0.01, 0.01),
+                cost_weight=0.0,
+            ),
+            horizon=10.0,
+            dt=0.001,
+        )
+        high_cost = simulate_resource_selection(
+            ResourceSelectionConfig(
+                interaction_matrix=matrix,
+                behavior_cost=(0.2, 0.3),
+                maintenance_cost=(0.1, 0.1),
+                cost_weight=0.0,
+            ),
+            horizon=10.0,
+            dt=0.001,
+        )
+        self.assertEqual(low_cost.collective_compatibility, high_cost.collective_compatibility)
+        self.assertGreater(low_cost.available_resource[-1], high_cost.available_resource[-1])
+
+        same_cost_cooperative = simulate_resource_selection(
+            ResourceSelectionConfig(
+                interaction_matrix=((0.9, 0.8), (0.8, 0.9)),
+                behavior_cost=(0.05, 0.05),
+                maintenance_cost=(0.02, 0.02),
+                cost_weight=0.0,
+            ),
+            horizon=10.0,
+            dt=0.001,
+        )
+        same_cost_conflict = simulate_resource_selection(
+            ResourceSelectionConfig(
+                interaction_matrix=((0.3, -0.9), (-0.9, 0.3)),
+                behavior_cost=(0.05, 0.05),
+                maintenance_cost=(0.02, 0.02),
+                cost_weight=0.0,
+            ),
+            horizon=10.0,
+            dt=0.001,
+        )
+        self.assertGreater(
+            max(
+                abs(a - b)
+                for a, b in zip(
+                    same_cost_cooperative.collective_compatibility,
+                    same_cost_conflict.collective_compatibility,
+                )
+            ),
+            1e-3,
+        )
+        self.assertAlmostEqual(
+            same_cost_cooperative.available_resource[-1],
+            same_cost_conflict.available_resource[-1],
+            places=12,
+        )
+
     def test_no_fallback_for_unstable_step(self):
         with self.assertRaises(ResourceSelectionStabilityError):
             simulate_resource_selection(
