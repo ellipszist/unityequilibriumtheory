@@ -295,3 +295,13 @@ This narrows the Topic 0.11 controller from plan-defined execution to `spectral_
 Reran the existing O(2) finite-density EOS, covariant-superfluid transport, impact/effect, carrier-neutral, photon-observer, and observer-thought-experiment verifiers. The EOS verification remains `PASS` with evidence class `TREE_LEVEL_MEAN_FIELD_DERIVATION`; the covariant transport verification remains `PASS` only for the declared ideal/synthetic control and its dependency remains `BLOCKED` for physical Kubo coefficients, finite-temperature completion, and curved 3+1 dynamics. Impact/effect core remains locally `PASS`, while carrier/detector and dimensional UET mappings remain blocked. The photon lane remains a `PASS_WITH_OPEN_DIMENSIONAL_AND_UET_MAPPING` normalized comparator.
 
 This is an evidence/provenance refresh with no claim promotion. The rerun confirms that Wave 7 and Wave 8 are internally accounted for but not physically closed.
+
+## 2026-08-02 ? Wave 9?11 downstream audit
+
+Reran the GR closed/non-closed checks, particle/Dirac prerequisite gate, and extended downstream closure. Wave 9 remains `BLOCKED`: local closed-limit/covariant checks exist, but physical Kubo evidence and curved 3+1 dynamics are missing. Wave 10 remains `BLOCKED`: galaxy and cosmic lanes are limited to internal/external comparison with provenance, units, and residual-policy blockers. Wave 11 remains `DEFERRED_BLOCKED`: Lorentz-covariant action, spinor/current map, CPT, and detector correspondence are not established.
+
+The extended artifact reports `PASS_WITH_DECLARED_DOWNSTREAM_BLOCKERS`; this closes status accounting only and does not promote GR, global-open-universe, galaxy, dark-matter, particle, neutrino, positron, or Dirac claims.
+
+## 2026-08-08 ? 0.19 dependency artifact repair
+
+Restored the previously tracked Topic 0.19 `branch_claim_gate.json` input and regenerated the core GR dependency artifact. The missing-input and stale scientific-hash consistency blocker is closed; the physical controller remains `topic_0_19_classical_gr_tests_and_covariant_completion_missing`. No GR, global-open-universe, galaxy, or particle claim is promoted.

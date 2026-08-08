@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "causal_nonclosed_kernel_verification",
-  "generated_at": "2026-07-22T13:43:20.221610+00:00",
+  "generated_at": "2026-08-01T17:50:16.149199+00:00",
   "status": "PASS",
   "evidence_class": "B",
   "claim": "exact-support retarded 1+1 constitutive kernel on a declared local rest-frame slice",
@@ -61,7 +61,7 @@
   },
   "source_hashes": {
     "docs\\core\\uet_covariant_nonclosed.py": "eec206167657218b7ad093ca346290383ed43bac31f3a5b478c8fa3f30c857ff",
-    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "7762422a01348233ecbd532d166be6cc675ac94b8a11b1f960fd0fe0527a0ddb"
+    "docs\\core\\UET_GR_NONCLOSED_RESEARCH_SPEC.md": "d15cc8e345a3df986f7608d48e3152134c4325dfa24e5dc9364b085fe37dd6c9"
   },
   "run_contract": {
     "external_data": false,

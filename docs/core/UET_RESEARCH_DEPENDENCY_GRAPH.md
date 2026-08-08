@@ -135,3 +135,11 @@ The dependency graph now treats Topic 0.11's finite-size replication execution a
 ## 2026-08-02 dependency update ? Wave 7?8 verifier refresh
 
 Wave 7 is supported by an internally passing tree-level O(2) EOS and ideal/synthetic covariant transport control, but its physical Kubo/finite-temperature/curved-dynamics edge remains blocked. Wave 8 has a locally passing impact/effect core and normalized photon comparator, but carrier-specific conservation, SI detector mapping, and UET source-to-carrier derivation remain open. No downstream dependency is promoted by this rerun.
+
+## 2026-08-02 dependency update ? Wave 9?11 downstream audit
+
+Wave 9, Wave 10, and Wave 11 have been re-audited with explicit blockers. Wave 9 depends on physical transport and curved covariant dynamics; Wave 10 depends on source/provenance, units, and residual policies for galaxy/cosmic comparisons; Wave 11 depends on the full covariant particle/Dirac prerequisite chain. These edges remain downstream of the blocked foundation and cannot promote claims.
+
+## 2026-08-08 dependency update ? 0.19 artifact consistency repair
+
+The 0.19 edge now has a reproducible branch-claim input and regenerated scientific-input hashes. Its physical dependency remains blocked on source-backed classical GR tests, curved covariant completion, and independent validation; the repair does not promote the GR or cosmology lane.

@@ -314,3 +314,13 @@ This does not close the foundation program or promote any phase-transition, esti
 Wave 7?8 artifacts and focused tests were rerun. The O(2) finite-density EOS remains internally closed at the declared tree-level mean-field level, while physical dissipative transport remains open because Kubo coefficient provenance, finite-temperature two-fluid completion, and curved 3+1 dynamics are not supplied. The impact/effect core is locally verified, but the carrier-neutral and photon lanes remain normalized comparators with dimensional detector and UET source-to-carrier mappings open.
 
 The result is a status refresh, not a physics promotion. Wave 7 and Wave 8 remain downstream-blocked by foundation and physical correspondence requirements.
+
+## Latest plan update ? 2026-08-02 Wave 9?11 downstream audit
+
+The downstream audit is now refreshed from the current artifacts. Wave 9 remains a local conditional GR/covariant comparison with no Einstein derivation or global-open-universe claim. Wave 10 remains an internal/external comparison lane with galaxy and cosmic provenance/units/residual blockers. Wave 11 remains deferred because the required Lorentz-covariant action, spinor representation, conserved current, mass-eigenstate, CPT, and detector mapping are not established.
+
+The result closes downstream status accounting only. Foundation physics remains blocked and no downstream claim ceiling changes.
+
+## Latest plan update ? 2026-08-08 0.19 dependency artifact repair
+
+A repository-consistency failure in the Topic 0.19 dependency gate was repaired by restoring the tracked branch-claim input and regenerating the artifact from its existing verifier. The targeted downstream suite passed `18/18`; the artifact remains `BLOCKED` for the same physical GR validation and covariant-completion reasons. This repair changes no foundation or downstream claim ceiling.

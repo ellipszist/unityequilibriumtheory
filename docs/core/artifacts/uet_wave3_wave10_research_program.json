@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_wave3_wave10_research_program",
-  "generated_at": "2026-08-01T17:49:16.241713+00:00",
+  "generated_at": "2026-08-08T08:21:55.561327+00:00",
   "program_scope": "UET Foundation-First Research Program Waves 0-10",
   "workflow": [
     "inventory",
@@ -17,7 +17,7 @@
   ],
   "foundation_gate": {
     "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
-    "sha256": "4718e85ca7ff444d9f28fa92f6420d6930f3781cf316e288a378276f64a97b4a",
+    "sha256": "12e4e4eaa5ead481496dadd4ea72bfab88e5cd956fd489b10f8c8a985d02fd1f",
     "status": "BLOCKED",
     "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
   },
@@ -36,7 +36,7 @@
         {
           "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
           "exists": true,
-          "sha256": "4718e85ca7ff444d9f28fa92f6420d6930f3781cf316e288a378276f64a97b4a",
+          "sha256": "12e4e4eaa5ead481496dadd4ea72bfab88e5cd956fd489b10f8c8a985d02fd1f",
           "status": "BLOCKED",
           "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
         },
@@ -337,7 +337,7 @@
         {
           "path": "docs/core/artifacts/uet_gr_research_program_gate.json",
           "exists": true,
-          "sha256": "0f8d75c0f13278e9b4d78167c4db5ca6674872274bb0b162409aa34fe1a23bd1",
+          "sha256": "d4cb87e4736b0a31c87ffe183dac4052fa34225f5454fb564666efdcd48d7b95",
           "status": "BLOCKED",
           "controller": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing"
         }
@@ -408,7 +408,7 @@
         {
           "path": "docs/core/artifacts/gr_closed_limit_verification.json",
           "exists": true,
-          "sha256": "f9b5f1e3e5df7424767ceefa2196b11056a1620452a4ef440a7ce1800c340d23",
+          "sha256": "daecc68f691d897d58471e7bad65b4f4221648fcd00c9543695d3def092e32a4",
           "status": "PASS",
           "controller": "noether_charge_equation_of_state_and_covariant_transport_matching_missing"
         },
@@ -422,14 +422,14 @@
         {
           "path": "docs/core/artifacts/uet_gr_research_program_gate.json",
           "exists": true,
-          "sha256": "0f8d75c0f13278e9b4d78167c4db5ca6674872274bb0b162409aa34fe1a23bd1",
+          "sha256": "d4cb87e4736b0a31c87ffe183dac4052fa34225f5454fb564666efdcd48d7b95",
           "status": "BLOCKED",
           "controller": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing"
         },
         {
           "path": "docs/topics/0.19_Gravity_GR/Result/artifacts/0_19_core_gr_program_dependency_gate.json",
           "exists": true,
-          "sha256": "2536c2f9fb48fbcd80fad928867371fe8b1bfd64a5a24b7e4c9e07d0a7ce3523",
+          "sha256": "1549b696baa74aa94a2c953928e0ec740d3fbb04719f649d74cfb5af0fa0a383",
           "status": "BLOCKED",
           "controller": "topic_0_19_classical_gr_tests_and_covariant_completion_missing"
         }

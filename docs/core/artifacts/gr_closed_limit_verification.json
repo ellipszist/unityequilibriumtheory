@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "gr_closed_limit_verification",
-  "generated_at": "2026-08-01T16:27:48.277284+00:00",
+  "generated_at": "2026-08-01T17:50:08.844976+00:00",
   "status": "PASS",
   "evidence_class": "B",
   "claim": "exact algebraic GR null limit of a candidate tensor-formula evaluator",

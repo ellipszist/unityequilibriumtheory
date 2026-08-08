@@ -171,7 +171,7 @@
       "status": "BLOCKED"
     }
   },
-  "generated_at": "2026-07-23T05:02:31+00:00",
+  "generated_at": "2026-08-08T08:19:44+00:00",
   "global_universe_closure": "UNRESOLVED",
   "limitations": [
     "No Topic 0.19 simulation, physical-data comparison, metric PDE, or parameter fit is run.",
@@ -200,7 +200,7 @@
       "hash_scope": "canonical_json_without_generated_at_generated_at_utc_timestamp_utc_or_environment",
       "path": "docs/core/artifacts/gr_closed_limit_verification.json",
       "role": "Exact implemented GR response-null verification",
-      "scientific_payload_sha256": "9c6e9eafc6b02c2dd9ae435c01783ac20dae3df2626bda4fd59143ed55ff5a23"
+      "scientific_payload_sha256": "c58b0045435f68e3291285ca93bf87bc095cc354f7fc2b43041f62b200ac3705"
     },
     {
       "exists": true,
@@ -214,7 +214,7 @@
       "hash_scope": "canonical_json_without_generated_at_generated_at_utc_timestamp_utc_or_environment",
       "path": "docs/core/artifacts/causal_nonclosed_kernel_verification.json",
       "role": "Flat local 1+1 causal constitutive kernel",
-      "scientific_payload_sha256": "f571fed312fff548a75c2d2ab6e586135698736499f989accbbcd16e9d3308d3"
+      "scientific_payload_sha256": "d9b2c345abf543bf945ad56415feb471a9f7e4c02397144b3d96e0aaddd716ce"
     },
     {
       "exists": true,
@@ -235,7 +235,7 @@
       "hash_scope": "canonical_json_without_generated_at_generated_at_utc_timestamp_utc_or_environment",
       "path": "docs/topics/0.19_Gravity_GR/Result/artifacts/0_19_gravity_gr_verification.json",
       "role": "Topic 0.19 CODATA/Planck primary checkpoint",
-      "scientific_payload_sha256": "2b74802770efc4e86999c4e3abf3b192c1a5de4631b240e24d43b2ad9ab49dd1"
+      "scientific_payload_sha256": "730e52d950cb85b0655a2de81d63ed2e5cb697c488bfaed7f7159ed2bcf1d01d"
     },
     {
       "exists": true,
@@ -249,7 +249,7 @@
       "hash_scope": "canonical_json_without_generated_at_generated_at_utc_timestamp_utc_or_environment",
       "path": "docs/meta/topic_readiness.json",
       "role": "Canonical topic readiness metadata",
-      "scientific_payload_sha256": "7139f84494465af3dbc39cead00342374f0b602a3b31a351fcdca6adcd47c4a2"
+      "scientific_payload_sha256": "3b782cba65f854975e39b70b897e45cfb6441d3c5d73574e005468a334d93f15"
     }
   ],
   "status": "BLOCKED",

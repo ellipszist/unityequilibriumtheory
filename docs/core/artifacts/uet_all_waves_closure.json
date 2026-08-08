@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_all_waves_closure",
-  "generated_at": "2026-08-02",
+  "generated_at": "2026-08-08",
   "audit_status": "PASS",
   "program_status": "ALL_WAVE_STATUS_ACCOUNTING_CLOSED_FOUNDATION_PHYSICS_NOT_CLOSED",
   "foundation_gate": {
     "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
     "status": "BLOCKED",
-    "sha256": "4718e85ca7ff444d9f28fa92f6420d6930f3781cf316e288a378276f64a97b4a",
+    "sha256": "12e4e4eaa5ead481496dadd4ea72bfab88e5cd956fd489b10f8c8a985d02fd1f",
     "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
   },
   "wave_count": 12,
@@ -40,7 +40,7 @@
         {
           "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
           "exists": true,
-          "sha256": "4718e85ca7ff444d9f28fa92f6420d6930f3781cf316e288a378276f64a97b4a",
+          "sha256": "12e4e4eaa5ead481496dadd4ea72bfab88e5cd956fd489b10f8c8a985d02fd1f",
           "status": "BLOCKED",
           "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
         },
@@ -394,7 +394,7 @@
         {
           "path": "docs/core/artifacts/uet_gr_research_program_gate.json",
           "exists": true,
-          "sha256": "0f8d75c0f13278e9b4d78167c4db5ca6674872274bb0b162409aa34fe1a23bd1"
+          "sha256": "d4cb87e4736b0a31c87ffe183dac4052fa34225f5454fb564666efdcd48d7b95"
         }
       ]
     },
@@ -431,7 +431,7 @@
         {
           "path": "docs/core/artifacts/particle_dirac_program_gate.json",
           "exists": true,
-          "sha256": "295a0f0a9873891240a6165d2a41710ef6995abce8c57e40de8aff7242378cf9"
+          "sha256": "fecdd99d9052ac38ddc73f5764ab579d8823f50b23b0be48cee4b61249ef966a"
         }
       ]
     }

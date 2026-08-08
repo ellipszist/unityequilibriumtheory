@@ -160,3 +160,13 @@ This is a blocker-narrowing update only. Topic 0.11 remains internal diagnostic 
 The existing Wave 7?8 verifier suite was rerun. O(2) EOS remains a tree-level mean-field derivation with `audit_status=PASS`; ideal covariant/synthetic transport remains locally `PASS` but the Kubo/finite-temperature/curved-dynamics dependency is `BLOCKED`. Impact/effect core remains `PASS`; carrier-neutral and photon observer lanes retain their declared normalized-comparator boundaries, with dimensional detector and UET source-to-carrier mappings open.
 
 The 39 focused Wave 7?8 tests passed. This refresh changes no claim ceiling: no microscopic transport coefficient, photon/neutrino/positron identity, or UET carrier transition law is promoted.
+
+## 2026-08-02 ? Wave 9?11 downstream audit
+
+The GR closed/non-closed, particle/Dirac prerequisite, and extended downstream closure audits were rerun. Wave 9 is `BLOCKED` by physical transport/curved-dynamics prerequisites; Wave 10 is `BLOCKED` by galaxy/cosmic provenance, units, and residual-policy requirements; Wave 11 is `DEFERRED_BLOCKED` pending the covariant spinor/current/CPT/detector chain.
+
+`PASS_WITH_DECLARED_DOWNSTREAM_BLOCKERS` means the status map is explicit, not that downstream physics is closed.
+
+## 2026-08-08 ? 0.19 dependency artifact repair
+
+The Topic 0.19 dependency generator was rerun after restoring its tracked branch-claim input. The targeted downstream suite passed `18/18`. The repository consistency blocker is closed, while the physical GR/classical-test/covariant-completion blocker remains unchanged.
