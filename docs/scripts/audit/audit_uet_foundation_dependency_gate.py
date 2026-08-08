@@ -46,6 +46,7 @@ def build_gate() -> dict[str, Any]:
     correspondence_manifest_path = ROOT / "docs/core/artifacts/uet_topic_formula_correspondence_manifest.json"
     observable_path = ROOT / "docs/core/artifacts/matter_space_observable_verification.json"
     wording_path = ROOT / "docs/core/artifacts/impact_effect_legacy_wording_audit.json"
+    derivation_origin_path = ROOT / "docs/core/artifacts/uet_derivation_origin_audit.json"
     inventory = load(inventory_path)
     code = load(code_path)
     matrix = load(matrix_path)
@@ -61,6 +62,7 @@ def build_gate() -> dict[str, Any]:
     correspondence_manifest = load(correspondence_manifest_path)
     observable_map = load(observable_path)
     wording = load(wording_path)
+    derivation_origin = load(derivation_origin_path)
 
     characteristic_pass = characteristic.get("audit_status") == "PASS"
     selected_lane = causal_lane.get("selected_lane", {})
@@ -74,6 +76,15 @@ def build_gate() -> dict[str, Any]:
     code_unlinked = code.get("coverage", {}).get("unlinked_core_file_count", 0)
     matrix_blocked = matrix.get("matrix_status") == "BLOCKED"
 
+    active_lanes = lane_contract.get("lanes", [])
+    normalized_unit_lanes = [
+        lane for lane in active_lanes
+        if lane.get("units_status") in {"CLOSED_NORMALIZED_ONLY", "CLOSED_NATURAL_OPEN_SI"}
+    ]
+    observable_contract_lanes = [
+        lane for lane in active_lanes
+        if lane.get("observable_operator") and lane.get("observable_status")
+    ]
     gates = {
         "F0_inventory": {
             "status": "PASS_CONDITIONAL_WITH_EXPLICIT_QUARANTINES" if coverage.get("coverage_gate_status") == "PASS_WITH_EXPLICIT_QUARANTINES" else "BLOCKED",
@@ -129,14 +140,33 @@ def build_gate() -> dict[str, Any]:
             "status": "BLOCKED",
             "reason": "Normalized and natural-unit contracts exist for selected lanes; complete SI/dimensional observable contracts are not closed.",
             "evidence": [rel(registry_path), rel(lane_contract_path)],
-            "metrics": {"active_lane_count": lane_contract.get("lane_count"), "units_contract_status": lane_contract.get("foundation_effect", {}).get("F3_units")},
+            "metrics": {
+                "active_lane_count": lane_contract.get("lane_count"),
+                "units_contract_status": lane_contract.get("foundation_effect", {}).get("F3_units"),
+                "normalized_or_natural_contract_lanes": len(normalized_unit_lanes),
+                "open_dimensional_lanes": len(active_lanes) - len(normalized_unit_lanes),
+            },
+            "normalized_subgate": {
+                "status": "PASS_NORMALIZED_OR_NATURAL_ONLY" if normalized_unit_lanes else "BLOCKED",
+                "required_condition": "selected lane declares normalized or natural units without SI promotion",
+                "lane_count": len(normalized_unit_lanes),
+            },
             "required_next_artifact": "unit closure register for every active physical lane",
         },
         "F4_derivation": {
             "status": "BLOCKED" if compat.get("controlling_blockers") else "PASS_CONDITIONAL",
             "reason": "Canonical candidate relations and O(2) EOS derivation are recorded, while heuristic bridges and legacy conflicts remain open.",
-            "evidence": [rel(compat_path), rel(registry_path)],
-            "required_next_artifact": "derivation-origin audit covering every inventoried relation",
+            "evidence": [rel(compat_path), rel(registry_path), rel(derivation_origin_path)],
+            "metrics": {
+                "origin_audit_status": derivation_origin.get("audit_status"),
+                "origin_audit_state": derivation_origin.get("status"),
+                "registry_entry_count": derivation_origin.get("metrics", {}).get("registry_entry_count"),
+                "declared_relation_derivations": derivation_origin.get("metrics", {}).get("declared_relation_derivations"),
+                "comparator_checked_relations": derivation_origin.get("metrics", {}).get("comparator_checked_relations"),
+                "open_or_candidate_relations": derivation_origin.get("metrics", {}).get("open_or_candidate_relations"),
+                "physical_promotions_allowed": derivation_origin.get("metrics", {}).get("physical_promotions_allowed"),
+            },
+            "required_next_artifact": derivation_origin.get("next_controller", "manual derivation-origin review for open relations"),
         },
         "F5_formal_verification": {
             "status": "PASS_CONDITIONAL",
@@ -163,8 +193,19 @@ def build_gate() -> dict[str, Any]:
             "status": "BLOCKED",
             "reason": "Internal normalized diagnostics exist, but physical measurement operators, dimensional maps and uncertainty contracts are incomplete.",
             "evidence": [rel(pilot_sync_path), rel(lane_contract_path), rel(observable_path), rel(registry_path)],
-            "metrics": {"normalized_operator_status": observable_map.get("audit_status"), "si_status": observable_map.get("measurement_operator", {}).get("SI_status")},
-            "metrics": {"active_lane_count": lane_contract.get("lane_count"), "observable_status_counts": lane_contract.get("observable_status_counts", {})},
+            "metrics": {
+                "active_lane_count": lane_contract.get("lane_count"),
+                "normalized_operator_status": observable_map.get("audit_status"),
+                "si_status": observable_map.get("measurement_operator", {}).get("SI_status"),
+                "observable_status_counts": lane_contract.get("observable_status_counts", {}),
+                "declared_observable_contract_lanes": len(observable_contract_lanes),
+                "accepted_physical_observable_lanes": 0,
+            },
+            "normalized_subgate": {
+                "status": "PASS_DECLARED_INTERNAL_OPERATORS_ONLY" if len(observable_contract_lanes) == len(active_lanes) else "BLOCKED",
+                "required_condition": "each active lane declares an internal operator while physical mapping remains separate",
+                "lane_count": len(observable_contract_lanes),
+            },
             "required_next_artifact": "observable mapping register with units, resolution and uncertainty for each active lane",
         },
         "F8_data_and_claim": {
@@ -217,7 +258,7 @@ def build_gate() -> dict[str, Any]:
             "physical_data_claims": "BLOCKED",
             "existing_downstream_topics": "retain current status; no promotion",
         },
-        "next_controller": "close coverage closure manifest, units/observable register, then rerun selected 0.11/0.13 lanes",
+        "next_controller": "resolve F2 correspondence rows; close derivation-origin assumptions and lane-specific dimensional/observable contracts; then rerun selected 0.11/0.13 lanes",
     }
 
 

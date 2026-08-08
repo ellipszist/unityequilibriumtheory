@@ -29,3 +29,13 @@ def test_matrix_keeps_standard_baseline_open_bridge_and_conflict_distinct():
     assert rows["EW-01"]["uet_derivation_status"] == "NOT_ESTABLISHED"
     assert rows["uet.legacy.master_potential"]["compatibility_status"] == "CONTRADICTION"
     assert rows["T01-001"]["special_case_status"] == "NOT_TESTABLE"
+
+
+def test_foundation_gate_preserves_normalized_subgates_without_physical_promotion():
+    import json
+    gate = json.loads((ROOT / "core/artifacts/uet_foundation_dependency_gate.json").read_text(encoding="utf-8"))
+    assert gate["gates"]["F3_units"]["status"] == "BLOCKED"
+    assert gate["gates"]["F3_units"]["normalized_subgate"]["status"] == "PASS_NORMALIZED_OR_NATURAL_ONLY"
+    assert gate["gates"]["F7_observable_mapping"]["status"] == "BLOCKED"
+    assert gate["gates"]["F7_observable_mapping"]["normalized_subgate"]["status"] == "PASS_DECLARED_INTERNAL_OPERATORS_ONLY"
+    assert gate["gates"]["F7_observable_mapping"]["metrics"]["accepted_physical_observable_lanes"] == 0

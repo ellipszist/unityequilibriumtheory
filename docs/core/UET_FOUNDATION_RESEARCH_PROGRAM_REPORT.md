@@ -336,3 +336,16 @@ F2 now distinguishes repository coverage from physical acceptance: all 263 formu
 ## Latest plan update ? 2026-08-08 F2 standard-counterpart contract mapping
 
 F2 now distinguishes 106 source-declared standard/comparator contracts from 150 genuinely unmatched or candidate rows. These contracts remain explicitly blocked and are not UET derivations or accepted physical observables; accepted physical maps remain zero. The foundation gate therefore remains blocked without changing downstream claim ceilings.
+
+## Latest plan update - 2026-08-08 F3/F7 normalized subgates
+
+The foundation gate now exposes a defensible intermediate result: four of seven active lanes satisfy a declared normalized/natural-unit contract, and all seven declare internal observable operators. The parent F3/F7 gates remain blocked because dimensional SI closure, uncertainty, detector/material calibration, and accepted physical measurement maps are still absent.
+
+This separates “the simulation contract is explicit” from “the variable has a measured physical meaning.” The 89/89 combined regression suite passes, but no C-to-mass, Phi-to-temperature, trace-to-carrier, GR, particle, galaxy, or global-cosmology claim is promoted.
+
+The next hardening wave is derivation-origin provenance plus one source-locked dimensional thermal lane; calibration-dependent coefficients remain open rather than fitted.
+## Latest plan update - 2026-08-08 F4 derivation-origin audit
+
+F4 now has a generated artifact linked to the central registry. It reports 20/20 rows with explicit origin/proof labels: six declared relation derivations, five checked comparators, and nine open or candidate relations. This resolves the bookkeeping ambiguity between “derived relation,” “standard comparator,” and “heuristic/candidate.” It does not establish physical closure; all rows retain `physical_closure=false` and `physical_promotion_allowed=false`.
+
+The foundation gate remains `BLOCKED` on F2/F3/F7 and open derivation assumptions. The all-wave status remains accounting-closed but physics-not-closed.

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_wave3_wave10_research_program",
-  "generated_at": "2026-08-08T08:33:38.182130+00:00",
+  "generated_at": "2026-08-08T08:38:32.979483+00:00",
   "program_scope": "UET Foundation-First Research Program Waves 0-10",
   "workflow": [
     "inventory",
@@ -17,7 +17,7 @@
   ],
   "foundation_gate": {
     "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
-    "sha256": "7fd769e34a10e335a064d21e633450e232c5baacdffc526316ac2125afd3f39f",
+    "sha256": "c0934a35dfbe546107af928871434acb2b894b85a85b8d4a69ffa404131b35d6",
     "status": "BLOCKED",
     "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
   },
@@ -36,7 +36,7 @@
         {
           "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
           "exists": true,
-          "sha256": "7fd769e34a10e335a064d21e633450e232c5baacdffc526316ac2125afd3f39f",
+          "sha256": "c0934a35dfbe546107af928871434acb2b894b85a85b8d4a69ffa404131b35d6",
           "status": "BLOCKED",
           "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
         },

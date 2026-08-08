@@ -182,3 +182,20 @@ The foundation correspondence manifest now emits explicit blocked dispositions f
 ## 2026-08-08 ? F2 standard-counterpart contract mapping
 
 Source-declared standard/comparator rows are now recorded as explicit blocked contracts rather than generic placeholders. This narrows F2 bookkeeping only; no physical correspondence or downstream status is promoted.
+
+## 2026-08-08 - F3/F7 normalized subgate closure
+
+- Scope: foundation unit and observable contracts feeding Waves 3-10.
+- Added: explicit normalized/natural-unit and declared-internal-operator subgates in the foundation dependency artifact; duplicate F7 metrics key removed; regression path corrected.
+- Verified: foundation audit `PASS` with parent status `BLOCKED`; F3/F7 focused tests `2/2`; combined suite `89/89`.
+- Result: four normalized/natural lanes and seven internal operators are now machine-readable; zero physical observable maps are accepted.
+- Next controller: derivation provenance, dimensional thermal source package, and lane-specific uncertainty closure.
+- Claim impact: no change.
+## 2026-08-08 - F4 derivation-origin audit
+
+- Scope: foundation derivation registry feeding Waves 3-10.
+- Added: generated derivation-origin audit and F4 gate linkage; classifier distinguishes derivation, comparator, heuristic, conceptual, candidate, and legacy origins.
+- Verified: 20/20 registry rows classified; audit `PASS_WITH_DECLARED_OPEN_ORIGINS`; one regression test passed; foundation protocol audit remained `PASS` with foundation status `BLOCKED`.
+- Result: origin/proof bookkeeping is closed as a control artifact; physical derivation and correspondence remain open.
+- Next controller: close assumptions, limiting cases, dimensional maps, and accepted observables for open rows.
+- Claim impact: no change.

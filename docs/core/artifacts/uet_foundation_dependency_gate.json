@@ -75,7 +75,14 @@
       ],
       "metrics": {
         "active_lane_count": 7,
-        "units_contract_status": "BLOCKED_UNTIL_DIMENSIONAL_LANE_CLOSURE"
+        "units_contract_status": "BLOCKED_UNTIL_DIMENSIONAL_LANE_CLOSURE",
+        "normalized_or_natural_contract_lanes": 4,
+        "open_dimensional_lanes": 3
+      },
+      "normalized_subgate": {
+        "status": "PASS_NORMALIZED_OR_NATURAL_ONLY",
+        "required_condition": "selected lane declares normalized or natural units without SI promotion",
+        "lane_count": 4
       },
       "required_next_artifact": "unit closure register for every active physical lane"
     },
@@ -84,9 +91,19 @@
       "reason": "Canonical candidate relations and O(2) EOS derivation are recorded, while heuristic bridges and legacy conflicts remain open.",
       "evidence": [
         "docs/core/artifacts/uet_foundation_compatibility_gate.json",
-        "docs/core/artifacts/uet_equation_correspondence_registry.json"
+        "docs/core/artifacts/uet_equation_correspondence_registry.json",
+        "docs/core/artifacts/uet_derivation_origin_audit.json"
       ],
-      "required_next_artifact": "derivation-origin audit covering every inventoried relation"
+      "metrics": {
+        "origin_audit_status": "PASS",
+        "origin_audit_state": "PASS_WITH_DECLARED_OPEN_ORIGINS",
+        "registry_entry_count": 20,
+        "declared_relation_derivations": 6,
+        "comparator_checked_relations": 5,
+        "open_or_candidate_relations": 9,
+        "physical_promotions_allowed": 0
+      },
+      "required_next_artifact": "manually close assumptions, limiting cases and physical correspondence for open rows; retain comparator and heuristic rows as non-derivational"
     },
     "F5_formal_verification": {
       "status": "PASS_CONDITIONAL",
@@ -127,6 +144,8 @@
       ],
       "metrics": {
         "active_lane_count": 7,
+        "normalized_operator_status": "PASS_WITH_OPEN_SI_MAPPING",
+        "si_status": "BLOCKED",
         "observable_status_counts": {
           "BLOCKED": 1,
           "FORMAL_CONSTITUTIVE_ONLY": 1,
@@ -134,7 +153,14 @@
           "INTERNAL_SIMULATION_ONLY": 1,
           "SIMULATION_ONLY": 1,
           "SIMULATION_ONLY_OPEN_DIMENSIONAL_MAP": 1
-        }
+        },
+        "declared_observable_contract_lanes": 7,
+        "accepted_physical_observable_lanes": 0
+      },
+      "normalized_subgate": {
+        "status": "PASS_DECLARED_INTERNAL_OPERATORS_ONLY",
+        "required_condition": "each active lane declares an internal operator while physical mapping remains separate",
+        "lane_count": 7
       },
       "required_next_artifact": "observable mapping register with units, resolution and uncertainty for each active lane"
     },
@@ -179,5 +205,5 @@
     "physical_data_claims": "BLOCKED",
     "existing_downstream_topics": "retain current status; no promotion"
   },
-  "next_controller": "close coverage closure manifest, units/observable register, then rerun selected 0.11/0.13 lanes"
+  "next_controller": "resolve F2 correspondence rows; close derivation-origin assumptions and lane-specific dimensional/observable contracts; then rerun selected 0.11/0.13 lanes"
 }

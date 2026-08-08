@@ -155,3 +155,14 @@ The F2 edge now has complete row-level disposition coverage: 263/263 rows are in
 ## 2026-08-08 dependency update ? F2 standard-counterpart contract mapping
 
 The F2 edge now separates 106 declared standard/comparator contracts from 150 unmatched/candidate placeholders. Both classes remain downstream-blocked until lane-specific units, derivation, and measurement operators are accepted.
+
+## 2026-08-08 dependency update - F3/F7 normalized subgates
+
+The graph now distinguishes internal contract closure from physical closure. F3 records four normalized/natural-unit lanes with an explicit subgate, while three dimensional lanes remain open. F7 records seven declared internal observable operators with zero accepted physical maps. The foundation edge remains blocked and no downstream edge is promoted.
+
+Next edge: derivation-origin audit, followed by a source-locked dimensional thermal map with uncertainty and no target-data fitting.
+## 2026-08-08 dependency update - F4 derivation-origin audit
+
+The F4 edge now consumes `uet_derivation_origin_audit.json`. All 20 central registry rows have an explicit origin family and derivation-readiness label; six are declared relation derivations, five are checked comparators, and nine remain open/candidate. The edge is still blocked because relation-level derivation is not the same as dimensional correspondence or physical validation.
+
+Next edge: resolve assumptions/limiting cases for open rows and close lane-specific units and measurement operators.

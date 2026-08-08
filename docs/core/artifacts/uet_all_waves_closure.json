@@ -7,7 +7,7 @@
   "foundation_gate": {
     "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
     "status": "BLOCKED",
-    "sha256": "7fd769e34a10e335a064d21e633450e232c5baacdffc526316ac2125afd3f39f",
+    "sha256": "40643b89a08293d6670fcdbb1ca8036769821a6ad1889669f783669c733512c1",
     "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
   },
   "wave_count": 12,
@@ -40,7 +40,7 @@
         {
           "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
           "exists": true,
-          "sha256": "7fd769e34a10e335a064d21e633450e232c5baacdffc526316ac2125afd3f39f",
+          "sha256": "c0934a35dfbe546107af928871434acb2b894b85a85b8d4a69ffa404131b35d6",
           "status": "BLOCKED",
           "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
         },

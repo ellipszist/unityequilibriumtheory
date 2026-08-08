@@ -325,3 +325,18 @@ The foundation gate remains `BLOCKED_OPEN_CORRESPONDENCE_ROWS`. The next control
 The F2 generator now preserves source-declared standard diagnostic/comparator boundaries as explicit blocked contract records. Of the 263 inventoried rows, 106 non-pilot rows now carry `DECLARED_STANDARD_COUNTERPART_BLOCKED`; 150 remain explicit unmatched/candidate placeholders; the seven pilot records remain separate. No record has physical closure, and accepted physical measurement maps remain `0`.
 
 Verification: F2 manifest/gate/all-wave audit passed; the F2 regression subset passed `7/7`. The foundation gate remains blocked on physical correspondence, units, derivation, and accepted observables.
+
+## 2026-08-08 - F3/F7 normalized subgate closure
+
+The foundation dependency verifier now reports two explicit internal subgates without promoting the physical foundation: four active lanes have normalized or natural-unit contracts, and all seven active lanes declare an internal observable operator. The parent F3 and F7 gates remain `BLOCKED` because three lanes still lack dimensional closure and zero lanes have an accepted physical measurement map.
+
+Verification: foundation audit `PASS` with overall status `BLOCKED`; focused F3/F7 regression `2/2`; combined foundation, matter-space, O(2), carrier, GR, particle, and Wave 3-10 suite `89/89`. Claim ceiling is unchanged: normalized/natural internal diagnostics only.
+
+Next controller: close lane-specific derivation provenance, then source-lock one dimensional thermal lane without fitting `C -> T` or `Phi -> T`.
+## 2026-08-08 - F4 derivation-origin audit
+
+Added a registry-linked derivation-origin audit for all 20 central equation records. The audit distinguishes six declared relation-level derivations, five checked standard/internal comparators, three heuristic/diagnostic relations, two conceptual candidates, three candidate operators with local checks, and one legacy comparator. No record is marked as physically promotable.
+
+Verification: derivation-origin audit `PASS_WITH_DECLARED_OPEN_ORIGINS`; registry protocol audit `PASS`; the foundation gate remains `BLOCKED` because relation derivation does not close units, physical correspondence, or observable evidence.
+
+Next controller: manually close assumptions, limiting cases, and lane-specific correspondence for open rows; do not convert comparator or heuristic relations into derivations.
