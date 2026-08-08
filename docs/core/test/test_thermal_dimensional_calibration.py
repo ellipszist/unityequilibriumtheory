@@ -63,4 +63,8 @@ def test_calibration_contract_artifact_stays_blocked():
     assert artifact["audit_status"] == "PASS_WITH_BLOCKED_INDEPENDENT_CALIBRATION"
     assert artifact["claim_status"] == "CONTRACT_DEFINED_CALIBRATION_OPEN"
     assert artifact["gates"]["fitted_calibration_is_rejected"]
+    assert artifact["gates"]["normalized_observable_is_scale_invariant"]
+    assert artifact["gates"]["absolute_scale_and_calibration_are_degenerate"]
+    assert artifact["gates"]["identifiability_blocker_is_explicit"]
+    assert artifact["structural_identifiability"]["status"] == "NON_IDENTIFIABLE_FROM_NORMALIZED_PHI"
     assert artifact["gates"]["dimensional_map_remains_blocked"]

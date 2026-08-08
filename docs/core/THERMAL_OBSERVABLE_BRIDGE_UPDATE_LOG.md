@@ -22,3 +22,11 @@
 - Verification: calibration audit `PASS_WITH_BLOCKED_INDEPENDENT_CALIBRATION`; combined thermal mapping tests `11/11`.
 - Public-safety: `partial`; interface and anti-fitting rule are closed, but `alpha_Phi_K`, source-normalized TTG rows, heat flux, and entropy production remain blocked.
 - Next controller: source-normalized TTG package plus independent calibration/derivation with uncertainty and holdout.
+
+## 2026-08-08 - Phi-to-kelvin structural identifiability gate
+
+- Added an algebraic scale witness to the thermal calibration verifier: `Delta_Phi -> s Delta_Phi` leaves the normalized TTG signal unchanged while `alpha_Phi_K -> alpha_Phi_K/s` leaves the dimensional response unchanged.
+- Verified: normalized-signal residual `0.0`, dimensional-response residual `0.0`, fitted calibration rejection retained, focused thermal/query tests `5/5`.
+- Finding: the missing `alpha_Phi_K` is not merely an absent fitted number; it is structurally non-identifiable from the current normalized Phi lane. An absolute dimensional anchor must enter through the action/energy normalization or an independent calibration.
+- Claim boundary: no Phi-to-temperature, heat-flux, or entropy-production claim is promoted.
+- Next controller: derive/source-lock the dimensional anchor first, then intake TTG rows with uncertainty and untouched holdout.

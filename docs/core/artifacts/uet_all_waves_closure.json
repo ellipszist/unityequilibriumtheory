@@ -7,7 +7,7 @@
   "foundation_gate": {
     "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
     "status": "BLOCKED",
-    "sha256": "be24401a5902d616465eb75c0a5cdb1868c0b238a7a24295c40b7af8dd446bef",
+    "sha256": "e59b171cc3717c79a25547e7c5a820843f69a2d5f8cd0c451877adcf78dc0a57",
     "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
   },
   "wave_count": 12,
@@ -449,5 +449,5 @@
     "physics_status": "A CLOSED_AS_BLOCKED wave is not a solved theory; it is a formally bounded research lane whose blocker is now explicit.",
     "selected_positive_result": "Only the selected normalized characteristic-cone diagnostic is locally passing; it does not establish SI physics, universal C meaning or empirical validity."
   },
-  "next_controller": "source-normalize TTG rows and independent alpha_Phi_K evidence; execute the locked Gaia query, archive and hash the returned 3D table, then close selection/mass-calibration/uncertainty/holdout gates before rerunning selected 0.11/0.13 lanes"
+  "next_controller": "derive a dimensional Phi/energy anchor or source-lock independent alpha_Phi_K with uncertainty; source-normalize TTG rows; execute the locked Gaia query and archive/hash the returned 3D table; then close selection/mass-calibration/uncertainty/holdout gates before rerunning selected 0.11/0.13 lanes"
 }

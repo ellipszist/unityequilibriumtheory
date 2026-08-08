@@ -418,3 +418,9 @@ The central gate remains `BLOCKED` and no external fit is allowed.
 The Gaia 3D lane now has a source-linked query protocol rather than only a catalogue citation. The manifest fixes the candidate table and requested fields, forbids a silent universal parallax correction or reciprocal-parallax default, records the required distance/selection/mass/uncertainty decisions, and locks a HEALPix calibration/holdout split before data intake.
 
 The query audit is `PASS_WITH_BLOCKED_DATA_INTAKE`, and the external source-package audit remains `PASS_WITH_BLOCKED_EXTERNAL_SOURCE_PACKAGE`. This is a reproducibility/control result, not a physical measurement: no local numeric table has been archived, source counts are not `rho_3D`, and `A_m`, selection completeness, uncertainty propagation, and the `C`-to-observable map remain open. The next controller is to execute and hash the locked table, then close those gates before any fit or galaxy comparison.
+
+## Latest plan update - 2026-08-08 Phi-to-kelvin structural identifiability
+
+The thermal calibration audit now contains a constructive algebraic result. For any positive scale `s`, replacing `Delta_Phi` by `s Delta_Phi` leaves `y_TTG = Delta_Phi/Delta_Phi_0` unchanged, while replacing `alpha_Phi_K` by `alpha_Phi_K/s` leaves `Delta_Tq = alpha_Phi_K Delta_Phi` unchanged. Both residuals are exactly zero in the deterministic witness.
+
+Therefore the current normalized UET lane cannot derive an absolute Kelvin scale from its own normalized dynamics. This is a structural identifiability blocker, not permission to fit `alpha_Phi_K` to the target data. The next valid step is an independently justified dimensional Phi/energy anchor or an external calibration with uncertainty and a locked holdout.

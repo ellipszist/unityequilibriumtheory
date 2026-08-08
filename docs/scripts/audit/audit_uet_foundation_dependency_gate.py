@@ -252,6 +252,7 @@ def build_gate() -> dict[str, Any]:
         "source_and_calibration_snapshot": {
             "thermal_calibration_contract_status": thermal_calibration.get("audit_status"),
             "thermal_claim_status": thermal_calibration.get("claim_status"),
+            "thermal_scale_identifiability_status": thermal_calibration.get("structural_identifiability", {}).get("status"),
             "external_3d_density_source_status": density_source.get("audit_status"),
             "external_3d_density_claim_status": density_source.get("claim_status"),
             "gaia_3d_query_manifest_status": query_manifest.get("audit_status"),
@@ -274,7 +275,7 @@ def build_gate() -> dict[str, Any]:
             "physical_data_claims": "BLOCKED",
             "existing_downstream_topics": "retain current status; no promotion",
         },
-        "next_controller": "source-normalize TTG rows and independent alpha_Phi_K evidence; execute the locked Gaia query, archive and hash the returned 3D table, then close selection/mass-calibration/uncertainty/holdout gates before rerunning selected 0.11/0.13 lanes",
+        "next_controller": "derive a dimensional Phi/energy anchor or source-lock independent alpha_Phi_K with uncertainty; source-normalize TTG rows; execute the locked Gaia query and archive/hash the returned 3D table; then close selection/mass-calibration/uncertainty/holdout gates before rerunning selected 0.11/0.13 lanes",
     }
 
 

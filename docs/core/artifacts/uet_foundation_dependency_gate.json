@@ -202,6 +202,7 @@
   "source_and_calibration_snapshot": {
     "thermal_calibration_contract_status": "PASS_WITH_BLOCKED_INDEPENDENT_CALIBRATION",
     "thermal_claim_status": "CONTRACT_DEFINED_CALIBRATION_OPEN",
+    "thermal_scale_identifiability_status": "NON_IDENTIFIABLE_FROM_NORMALIZED_PHI",
     "external_3d_density_source_status": "PASS_WITH_BLOCKED_EXTERNAL_SOURCE_PACKAGE",
     "external_3d_density_claim_status": "SOURCE_CANDIDATE_METADATA_ONLY",
     "gaia_3d_query_manifest_status": "PASS_WITH_BLOCKED_DATA_INTAKE",
@@ -224,5 +225,5 @@
     "physical_data_claims": "BLOCKED",
     "existing_downstream_topics": "retain current status; no promotion"
   },
-  "next_controller": "source-normalize TTG rows and independent alpha_Phi_K evidence; execute the locked Gaia query, archive and hash the returned 3D table, then close selection/mass-calibration/uncertainty/holdout gates before rerunning selected 0.11/0.13 lanes"
+  "next_controller": "derive a dimensional Phi/energy anchor or source-lock independent alpha_Phi_K with uncertainty; source-normalize TTG rows; execute the locked Gaia query and archive/hash the returned 3D table; then close selection/mass-calibration/uncertainty/holdout gates before rerunning selected 0.11/0.13 lanes"
 }

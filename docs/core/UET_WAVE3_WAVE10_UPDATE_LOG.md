@@ -288,3 +288,12 @@ Source-declared standard/comparator rows are now recorded as explicit blocked co
 - Result: the empirical path is now operationally specified before data intake: requested columns, parallax-bias covariates, distance-policy requirements, source-count/non-density distinction, and a pre-registered HEALPix split are explicit. No physical C-to-mass map is accepted.
 - Next controller: execute and hash the locked local table, then close selection/completeness, distance, mass calibration, uncertainty, and holdout before any fit.
 - Claim impact: no change; foundation remains `BLOCKED`, physical promotion remains disabled.
+
+## 2026-08-08 - Thermal Phi-scale identifiability closure
+
+- Scope: F3/F7 thermal dimensional boundary.
+- Changed: extended the calibration artifact with a deterministic rescaling proof and regression assertions; synchronized the foundation controller with the result.
+- Verified: thermal calibration audit `PASS_WITH_BLOCKED_INDEPENDENT_CALIBRATION`; scale-invariance and degeneracy residuals are `0.0`; focused thermal/query tests `5/5`.
+- Result: the blocker is now classified as structural non-identifiability of normalized `Phi`, not just missing data. No target-data fitting can resolve the absolute K-per-Phi scale without an independent anchor.
+- Next controller: derive a dimensional Phi/energy anchor or independently source-lock `alpha_Phi_K` with uncertainty, then run source-normalized TTG intake.
+- Claim impact: no change; 0.13 remains simulation-only and the foundation remains blocked.
