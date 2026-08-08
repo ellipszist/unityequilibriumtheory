@@ -608,7 +608,7 @@
     "passed_count": 545,
     "failed_count": 0,
     "status": "PASS",
-    "tail": "  Did you mean to use `assert` instead of `return`?\n  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.\n    warnings.warn(\n\ndocs/core/test/test_parameter_engine.py::test_engine\n  C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Lib\\site-packages\\_pytest\\python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but docs/core/test/test_parameter_engine.py::test_engine returned <class 'bool'>.\n  Did you mean to use `assert` instead of `return`?\n  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.\n    warnings.warn(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n545 passed, 6 warnings in 31.82s"
+    "tail": "  Did you mean to use `assert` instead of `return`?\n  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.\n    warnings.warn(\n\ndocs/core/test/test_parameter_engine.py::test_engine\n  C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Lib\\site-packages\\_pytest\\python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but docs/core/test/test_parameter_engine.py::test_engine returned <class 'bool'>.\n  Did you mean to use `assert` instead of `return`?\n  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.\n    warnings.warn(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n545 passed, 6 warnings in <elapsed>"
   },
   "checks": {
     "closure_artifact_passes": true,

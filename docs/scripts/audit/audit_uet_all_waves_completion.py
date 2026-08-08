@@ -122,6 +122,7 @@ def run_core_regression() -> dict[str, Any]:
             check=False,
         )
         output = (result.stdout + "\n" + result.stderr).strip()
+        normalized_output = re.sub(r" in \d+(?:\.\d+)?s", " in <elapsed>", output)
         passed_match = re.search(r"(\d+) passed", output)
         failed_match = re.search(r"(\d+) failed", output)
         return {
@@ -130,7 +131,7 @@ def run_core_regression() -> dict[str, Any]:
             "passed_count": int(passed_match.group(1)) if passed_match else None,
             "failed_count": int(failed_match.group(1)) if failed_match else 0,
             "status": "PASS" if result.returncode == 0 and failed_match is None else "FAIL",
-            "tail": "\n".join(output.splitlines()[-12:]),
+            "tail": "\n".join(normalized_output.splitlines()[-12:]),
         }
     except subprocess.TimeoutExpired as exc:
         return {
