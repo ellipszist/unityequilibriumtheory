@@ -354,3 +354,8 @@ The foundation gate remains `BLOCKED` on F2/F3/F7 and open derivation assumption
 The thermal source lane is now more precise about the standard observable: the graphite TTG response is a quasi-temperature / collective-phonon-energy signal, so the permitted comparison target is `Delta_Tq` or normalized `y_TTG`, not equilibrium temperature by default. The external paper also reports a full-scattering-matrix phonon-Boltzmann comparison without fitted parameters in the reported simulation comparison.
 
 This improves the standard-physics correspondence but does not close UET mapping. `alpha_Phi_K` remains an independent calibration/derivation gate, no local numeric source package was imported, and the 2026 source remains holdout metadata. The deterministic thermal-control rerun remains `SIMULATION_ONLY` with `core_prearrival_leakage` and `external_source_ready` blocked; focused thermal tests pass `14/14`.
+## Latest plan update - 2026-08-08 C-to-mass-density identifiability
+
+The mass lane now has a constructive negative result: `C` alone does not identify mass-density amplitude. A controlled synthetic rescaling keeps the geometry and `C` fixed while changing the density integral from approximately `2` to `4`; the normalized shape is unchanged. This is not a failure of the simulation. It identifies a missing physical degree of freedom.
+
+The research plan therefore separates `C_phase`/collective behaviour from `C_density` and requires a separate dimensional amplitude or matter-source state before galaxy application. The next permissible map is `rho=A_m*rho_hat(C,geometry,matter_source;theta)`, with `A_m` derived or source-locked before fitting. No direct `C=rho`, galaxy, or dark-matter claim is promoted.

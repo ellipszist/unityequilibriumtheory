@@ -340,3 +340,10 @@ Added a registry-linked derivation-origin audit for all 20 central equation reco
 Verification: derivation-origin audit `PASS_WITH_DECLARED_OPEN_ORIGINS`; registry protocol audit `PASS`; the foundation gate remains `BLOCKED` because relation derivation does not close units, physical correspondence, or observable evidence.
 
 Next controller: manually close assumptions, limiting cases, and lane-specific correspondence for open rows; do not convert comparator or heuristic relations into derivations.
+## 2026-08-08 - C-to-mass-density identifiability boundary
+
+The existing mass-density correspondence diagnostic was rerun. With the same geometry-only `C`, rescaling the source mass by a factor of `2` leaves `C` unchanged while doubling the density integral; normalized density shape remains invariant and the maximum density difference is `2.659615202676218`. The direct `C -> rho` map is therefore non-identifiable in the current relational lane.
+
+The admissible next candidate is an augmented map such as `rho = A_m * rho_hat(C, geometry, matter_source; theta)`, where `A_m` is a separately dimensional matter-amplitude/source state. It must be derived or source-locked before any galaxy fitting; it is not a fitted correction hidden inside `C`.
+
+Verification: mass-density audit `PASS_WITH_BLOCKED_MAPPING`, direct-C non-identifiability gate passed, no SI data or galaxy claim. Claim ceiling remains that `C` is a collective/relational coordinate, not universal mass density.

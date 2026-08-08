@@ -207,3 +207,10 @@ Source-declared standard/comparator rows are now recorded as explicit blocked co
 - Result: standard measurement target is clearer; local numeric intake, `alpha_Phi_K`, and external comparison remain blocked.
 - Next controller: permitted source-data archive with row-level provenance plus independent dimensional calibration; core pre-arrival leakage remains separate.
 - Claim impact: no change.
+## 2026-08-08 - C-to-mass-density identifiability boundary
+
+- Scope: mass-density correspondence feeding Wave 10 galaxy comparison.
+- Verified: mass-density audit `PASS_WITH_BLOCKED_MAPPING`; same geometry/C with a mass-scale ratio of `2` changes density amplitude while leaving C unchanged; normalized shape remains invariant.
+- Result: direct `C -> rho` is formally non-identifiable in the current lane; an independent `A_m`/matter-source state is required.
+- Next controller: derive or source-lock the dimensional amplitude and measurement operator before any galaxy fit or holdout test.
+- Claim impact: no change; `C` is not universal mass density.
