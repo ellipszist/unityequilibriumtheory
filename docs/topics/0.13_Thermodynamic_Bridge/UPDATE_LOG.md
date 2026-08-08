@@ -724,3 +724,12 @@ Use this log when `0.13` changes in a way that narrows a provenance blocker, add
 - Still open: permitted local numeric source package, row-level locator/preprocessing/uncertainty/hash, and an independently derived or calibrated `alpha_Phi_K`.
 - Claim impact: no upgrade; the holdout remains metadata-only and no UET parameter was fitted.
 - Next controller: `thermal_source_numeric_package_and_dimensional_calibration_missing`.
+### 2026-08-08 - Core constraint provenance repair after aggregate schema drift
+
+- Scope: restore the missing Topic 0.13 foundation claim-gate input and make the core constraint verifier tolerate the reduced primary-artifact schema produced by an aggregate rerun without weakening the claim boundary.
+- Added or changed: restored `Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json` from the last committed source; updated `Research_Core_Thermodynamic_Constraint_Gate.py` to use the source claim gate for the four conservative derivation/unit/Landauer/beta boundary statuses when the primary artifact omits those fields; regenerated `Result/artifacts/0_13_core_thermodynamic_constraint_gate.json`.
+- Verified with: restored-source scientific payload hash `fd3f2d7f2f2821e115178400607aab8316841a09e43a204545ba6f990fec307d`; core constraint generator; focused regression `12 passed`.
+- Result: the constraint packet remains `BLOCKED`; the foundation export gate and Landauer non-derivation gate remain `PASS`, while UET bridge derivation, thermal physical interpretation, EOS/transport/entropy closure, and topic promotion remain blocked.
+- Controlling blocker: `topic_0_13_constraint_only_eos_transport_entropy_bridge_missing`.
+- Still open: source-normalized Landauer rows, non-circular bridge derivation, dimensional thermal map, causal repair, and core EOS/transport/entropy closure.
+- Claim impact: no upgrade; this is provenance/schema repair only.

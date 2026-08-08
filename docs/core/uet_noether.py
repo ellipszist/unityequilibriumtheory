@@ -727,20 +727,45 @@ class UETNoether:
     ) -> Dict:
         """
         Run comprehensive conservation check for time-dependent fields.
+
+        Legacy callers may provide a flattened ``(n_time, n_space)`` history.
+        The underlying diagnostics are one-spatial-state routines, so this
+        compatibility boundary selects the final spatial snapshot before
+        dispatching.  It prevents a shape mismatch without implying that this
+        legacy module proves conservation for the full history.
         """
+        x_array = np.asarray(x)
+        C_array = np.asarray(C)
+        if C_array.size != x_array.size:
+            if C_array.size % x_array.size:
+                raise ValueError(
+                    "time-dependent C history must contain an integer number "
+                    "of spatial snapshots"
+                )
+            C_array = C_array.reshape(-1, x_array.size)[-1]
+
+        I_array = np.asarray(I)
+        if I_array.size != C_array.size:
+            if I_array.size % C_array.size:
+                raise ValueError(
+                    "time-dependent I history must match the spatial snapshot "
+                    "or contain an integer number of snapshots"
+                )
+            I_array = I_array.reshape(-1, C_array.size)[-1]
+
         results = {}
 
         # 1. Energy conservation
-        results["energy"] = self.check_energy_conservation_time_dependent(C, dx)
+        results["energy"] = self.check_energy_conservation_time_dependent(C_array, dx)
 
         # 2. Momentum conservation
-        results["momentum"] = self.check_momentum_conservation_time_dependent(C, dx)
+        results["momentum"] = self.check_momentum_conservation_time_dependent(C_array, dx)
 
         # 3. Angular momentum conservation
-        results["angular_momentum"] = self.check_angular_momentum_conservation_time_dependent(C, x, dx)
+        results["angular_momentum"] = self.check_angular_momentum_conservation_time_dependent(C_array, x_array, dx)
 
         # 4. Charge conservation (same as original)
-        results["charge"] = self.check_charge_conservation(C, I, dx)
+        results["charge"] = self.check_charge_conservation(C_array, I_array, dx)
 
         # Summary
         passed = sum(1 for r in results.values() if r["is_conserved"])

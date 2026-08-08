@@ -102,6 +102,36 @@ def _input_record(path: Path, role: str) -> dict[str, Any]:
     }
 
 
+def _foundation_boundary_statuses(foundation: dict[str, Any]) -> dict[str, str]:
+    """Recover conservative boundary statuses from the source claim gate.
+
+    An older aggregate rerun may replace the Topic 0.13 primary artifact with
+    a reduced schema that omits the embedded derivation/unit/mapping fields.
+    The foundation claim gate remains authoritative for those blocked
+    boundaries, so consuming it does not promote a claim or invent a result.
+    """
+
+    blockers: list[str] = []
+    for export in foundation.get("blocked_foundation_exports", []):
+        for blocker in export.get("blockers", []):
+            if isinstance(blocker, str):
+                blockers.append(blocker)
+
+    prefixes = {
+        "derivation": "Bridge derivation map status: ",
+        "units": "Units contract status: ",
+        "landauer": "Landauer-UET mapping status: ",
+        "beta": "Beta role clarification status: ",
+    }
+    values: dict[str, str] = {}
+    for key, prefix in prefixes.items():
+        for blocker in blockers:
+            if blocker.startswith(prefix):
+                values[key] = blocker[len(prefix) :]
+                break
+    return values
+
+
 def build_artifact() -> dict[str, Any]:
     primary = load_json(TOPIC_PRIMARY)
     foundation = load_json(FOUNDATION_GATE)
@@ -110,6 +140,7 @@ def build_artifact() -> dict[str, Any]:
     core_program = load_json(CORE_PROGRAM)
     core_state = load_json(CORE_STATE_MAP)
     readiness = _readiness_topic(load_json(READINESS_METADATA))
+    foundation_boundary = _foundation_boundary_statuses(foundation)
 
     accepted_exports = {
         item.get("export_id"): item
@@ -150,18 +181,24 @@ def build_artifact() -> dict[str, Any]:
     derivation_checks = {
         "primary_warn": primary.get("status") == "WARN",
         "claim_class_C": primary.get("claim_class") == "C",
-        "derivation_boundary_open": primary.get("bridge_derivation_map", {}).get(
-            "status"
+        "derivation_boundary_open": (
+            primary.get("bridge_derivation_map", {}).get("status")
+            or foundation_boundary.get("derivation")
         )
         == "open_boundary_mapped_not_derived",
-        "units_contract_partial": primary.get("units_contract", {}).get("status")
+        "units_contract_partial": (
+            primary.get("units_contract", {}).get("status")
+            or foundation_boundary.get("units")
+        )
         == "partial_contract_dimensional_and_proxy_layers_separated",
-        "landauer_is_imported_constraint": primary.get(
-            "landauer_uet_mapping", {}
-        ).get("status")
+        "landauer_is_imported_constraint": (
+            primary.get("landauer_uet_mapping", {}).get("status")
+            or foundation_boundary.get("landauer")
+        )
         == "imported_constraint_not_noncircular_uet_derivation",
-        "beta_not_derived": primary.get("beta_role_clarification", {}).get(
-            "status"
+        "beta_not_derived": (
+            primary.get("beta_role_clarification", {}).get("status")
+            or foundation_boundary.get("beta")
         )
         == "beta_present_but_not_closed_as_derived_bridge_coefficient",
     }
@@ -246,11 +283,13 @@ def build_artifact() -> dict[str, Any]:
             and derivation_checks["beta_not_derived"]
             else "BLOCKED",
             "Landauer k_B*T*ln(2) must remain an imported lower bound and may not derive beta, EOS, mobility, or a core coupling coefficient.",
-            landauer_mapping_status=primary.get("landauer_uet_mapping", {}).get(
-                "status"
+            landauer_mapping_status=(
+                primary.get("landauer_uet_mapping", {}).get("status")
+                or foundation_boundary.get("landauer")
             ),
-            beta_role_status=primary.get("beta_role_clarification", {}).get(
-                "status"
+            beta_role_status=(
+                primary.get("beta_role_clarification", {}).get("status")
+                or foundation_boundary.get("beta")
             ),
         ),
         "cattaneo_simulation_control_gate": gate(

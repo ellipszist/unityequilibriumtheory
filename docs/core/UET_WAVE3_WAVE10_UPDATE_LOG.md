@@ -226,3 +226,20 @@ Source-declared standard/comparator rows are now recorded as explicit blocked co
 - The augmented density lane now has a declared `kg` amplitude and `m` coordinate-scale contract yielding a `kg/m` line-density observable.
 - Integral closure passes under length rescaling, but the lane remains synthetic 1D and does not supply a physical 3D galaxy observable.
 - The Wave 10 controller remains source provenance, uncertainty, calibration, and holdout for a 3D density map.
+
+## 2026-08-08 - Topic 0.13 constraint provenance repair
+
+- Scope: repair the missing source input and schema drift in the Wave 6 thermodynamic constraint dependency packet.
+- Changed: restored the exact historical `thermodynamic_bridge_foundation_claim_gate.json`; the core verifier now falls back to its explicit blocked boundary statuses when the aggregate-generated Topic 0.13 primary artifact omits embedded derivation/unit/mapping fields; regenerated the core constraint artifact.
+- Verified: generator returned `BLOCKED`; focused Topic 0.13 regression `12/12` passed; restored scientific payload hash matches the persisted input record.
+- Result: only repository provenance consistency was repaired. Landauer lower-bound and standard formula exports remain class-C constraints; UET bridge, physical thermal, EOS/transport/entropy, and promotion gates remain blocked.
+- Next controller: source-normalized thermal/Landauer evidence and non-circular dimensional/transport closure.
+- Claim impact: no change.
+## 2026-08-08 - Legacy Noether shape-contract repair
+
+- Scope: clear the last core regression without promoting the legacy Noether diagnostics.
+- Changed: flattened time-history inputs are normalized to the final spatial snapshot at the compatibility boundary; incompatible shapes are rejected explicitly.
+- Verified: targeted Lorentz/Noether suite `3/3` passed; legacy evidence status remains blocked for conservation-proof claims.
+- Result: regression compatibility repaired; no conservation, covariant, or physical foundation claim promoted.
+- Next controller: full-core rerun and remaining physical causal/units/observable gates.
+- Claim impact: no change.

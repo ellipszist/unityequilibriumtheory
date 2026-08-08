@@ -385,3 +385,10 @@ This is only a synthetic one-dimensional line-density contract. It does not
 provide a three-dimensional physical density operator, a galaxy source package,
 or an uncertainty/holdout policy. Therefore the foundation and Wave 10 gates
 remain blocked and `C` is still not mass density.
+## Latest plan update - 2026-08-08 Topic 0.13 constraint provenance repair
+
+The missing Topic 0.13 foundation claim-gate input was restored from its last committed source with the persisted scientific hash unchanged. The core constraint verifier now reads the four conservative derivation/unit/Landauer/beta boundary statuses from that source gate when an aggregate rerun leaves the primary artifact in a reduced schema. The focused 0.13 regression passes `12/12`.
+
+This closes a repository consistency blocker only. Topic 0.13 remains `BLOCKED`; the Landauer lower bound and standard formula identities remain class-C constraints, while the UET bridge, dimensional thermal mapping, physical causal gate, EOS/transport/entropy closure, and promotion remain blocked.## Latest plan update - 2026-08-08 legacy Noether shape-contract repair
+
+The final two full-core failures were isolated to the legacy Noether diagnostic: a flattened 10-by-100 time-history was being passed to a one-spatial-state angular-momentum routine. The compatibility boundary now selects the final spatial snapshot and rejects incompatible shapes; the targeted suite passes `3/3`. The module remains legacy and blocked for conservation-proof claims, so this changes regression health only and does not close the foundation physics gates.

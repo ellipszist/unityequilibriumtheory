@@ -377,3 +377,10 @@ Verification: mass-density audit `PASS_WITH_BLOCKED_MAPPING`, direct-C non-ident
 - Next controller: source-lock a physical 3D density operator with provenance,
   uncertainty, calibration, and holdout policy.
 - Claim impact: no direct `C -> rho`, galaxy, or dark-matter claim is enabled.
+## 2026-08-08 - Legacy Noether flattened-history compatibility repair
+
+- Scope: remove the final full-core regression caused by a legacy diagnostic receiving a flattened `(time, space)` field history while multiplying by a single spatial coordinate array.
+- Changed: `uet_noether.py` now selects the final spatial snapshot at the explicit compatibility boundary before dispatching its one-state diagnostics, and rejects non-factorable shapes.
+- Verified: targeted Lorentz/Noether regression passed `3/3`; the module remains labelled legacy and `BLOCKED_FOR_CONSERVATION_PROOF_CLAIMS`.
+- Result: this is a shape-contract repair only; it does not turn the gradient-flow diagnostic into a Noether or conservation proof.
+- Next controller: full-core rerun, then physical causal/units/observable blockers.
