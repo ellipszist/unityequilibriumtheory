@@ -260,3 +260,13 @@ Source-declared standard/comparator rows are now recorded as explicit blocked co
 - Result: F0 inventory coverage is explicit; F2 standard correspondence, F3 dimensional units, F7 physical observables, and external claim gates remain open.
 - Next controller: close accepted lane-specific counterpart/measurement maps without relabelling normalized or synthetic operators as physical.
 - Claim impact: no change.
+
+
+## 2026-08-08 - Explicit thermal Phi-to-kelvin calibration contract
+
+- Scope: Topic 0.13 thermal observable boundary and core source-map interface.
+- Changed: added `ThermalPhiCalibration`, a calibration-only Phi-to-kelvin path, an anti-fitting verifier/artifact, and regression tests; no gain value or external row was inserted.
+- Verified: calibration contract `PASS_WITH_BLOCKED_INDEPENDENT_CALIBRATION`; thermal mapping/calibration tests `11/11`; full core suite remains the controlling regression.
+- Result: the missing step is now an explicit calibration/provenance gate rather than an implicit numeric argument. Normalized TTG remains allowed; Kelvin, heat-flux, and entropy claims remain blocked.
+- Next controller: package source-normalized TTG rows and independent `alpha_Phi_K` evidence with uncertainty and holdout.
+- Claim impact: no change.

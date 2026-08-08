@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "artifact": "thermal_dimensional_calibration_contract",
+  "audit_status": "PASS_WITH_BLOCKED_INDEPENDENT_CALIBRATION",
+  "claim_status": "CONTRACT_DEFINED_CALIBRATION_OPEN",
+  "evidence_class": "INTERNAL_INTERFACE_AND_ANTI_FITTING_DIAGNOSTIC",
+  "formula_audit": {
+    "formula_id": "THERMAL-MAP-DIM-004",
+    "relation": "Delta_Tq = alpha_Phi_K * Delta_Phi",
+    "variables_and_units": "Delta_Phi normalized; Delta_Tq K; alpha_Phi_K K per normalized Phi",
+    "constant_origin": "calibration_dependent_relation",
+    "proof_status": "open",
+    "verification_role": "prevent normalized Phi from being reported as kelvin without an independent record",
+    "failure_mode": "a fitted or default gain is presented as a UET derivation",
+    "next_hardening_step": "source-lock or independently calibrate alpha_Phi_K with uncertainty and a holdout protocol"
+  },
+  "source_review": {
+    "path": "topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_thermal_source_review.json",
+    "sha256": "8cd9b5163f3a2accb3ac4e16219f45e1a55694ce45ad604a8ed1153e5236e945",
+    "numeric_fitting_allowed": false,
+    "holdout_consumed": false
+  },
+  "open_calibration_record": {
+    "status": "EXTERNAL_CALIBRATION_REQUIRED",
+    "temperature_scale_K_per_phi": null,
+    "uncertainty_K_per_phi": null,
+    "source_id": "open:phi-to-kelvin-calibration",
+    "source_locator": "not-yet-sourced",
+    "source_hash": "NOT_AVAILABLE",
+    "holdout_policy": "LOCK_BEFORE_EXTERNAL_COMPARISON",
+    "physical_mapping_ready": false
+  },
+  "gates": {
+    "calibration_record_schema_defined": true,
+    "open_record_has_explicit_status_and_units": true,
+    "open_record_does_not_emit_kelvin": true,
+    "physical_mapping_requires_independent_record": true,
+    "fitted_calibration_is_rejected": true,
+    "source_review_disallows_numeric_fitting": true,
+    "holdout_is_not_consumed": true,
+    "dimensional_map_remains_blocked": true
+  },
+  "blockers": [
+    "no independently calibrated alpha_Phi_K",
+    "no source-normalized local TTG numeric table with row-level uncertainty",
+    "no holdout comparison after parameter/calibration lock",
+    "heat flux and entropy production maps remain downstream of Tq closure"
+  ],
+  "claim_boundary": "The calibration interface is explicit and anti-fitting, but Phi is not temperature and no dimensional thermal claim is promoted.",
+  "next_controller": "package source-normalized TTG rows and an independent alpha_Phi_K calibration/derivation with uncertainty before using Kelvin, heat flux, or entropy-production claims"
+}

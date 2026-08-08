@@ -12,3 +12,13 @@
   thermal source or SI measurement claim is promoted.
 - Controlling blocker: derive or source-lock one dimensional observable map from
   a physical C realization to temperature/heat/entropy before calibration.
+
+
+## 2026-08-08 ? Explicit Phi-to-kelvin calibration contract
+
+- Added `ThermalPhiCalibration` and an explicit calibration-only application path.
+- Open calibration records validate their missing scale/uncertainty but return no Kelvin observable; fitted independent records are rejected.
+- Added `thermal_dimensional_calibration_contract.json`, its audit script, and regression tests.
+- Verification: calibration audit `PASS_WITH_BLOCKED_INDEPENDENT_CALIBRATION`; combined thermal mapping tests `11/11`.
+- Public-safety: `partial`; interface and anti-fitting rule are closed, but `alpha_Phi_K`, source-normalized TTG rows, heat flux, and entropy production remain blocked.
+- Next controller: source-normalized TTG package plus independent calibration/derivation with uncertainty and holdout.
