@@ -11,3 +11,13 @@
   `PASS_WITH_BLOCKED_MAPPING` and mapping status `BLOCKED_DIRECT_C_ONLY`.
 - Controlling blocker: a viable mass-density lane needs an independent matter-amplitude/source
   state and a dimensional observable map. No galaxy fit or mass claim is allowed yet.
+
+
+### research-core / external 3D source-package boundary
+
+- Area: `research-core`; workspace: C-density correspondence feeding Topic 0.1.
+- Changed: registered Gaia EDR3/GCNS as a metadata-only 3D stellar-structure candidate, added source manifest, provenance audit, machine-readable gate, and regression tests.
+- Verification: source-package audit `PASS_WITH_BLOCKED_EXTERNAL_SOURCE_PACKAGE`; focused tests `2/2`; no local raw numeric table, fit, or holdout consumed.
+- Research finding: 3D source positions do not equal `rho_3D`; distance treatment, selection/completeness, mass realization, uncertainty propagation, and holdout are separate physical gates.
+- Public-safety: `partial`; candidate source identity only, no C-to-mass derivation, galaxy validation, or dark-matter claim.
+- Next controller: archive or extract a licensed source table and close selection, mass calibration, uncertainty, and holdout before external comparison.

@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "artifact": "gaia_edr3_gcns_source_manifest",
+  "source_id": "gaia_edr3_gcns_3d_stellar_structure_candidate",
+  "title": "Gaia Early Data Release 3: The Gaia Catalogue of Nearby Stars",
+  "source_class": "EXTERNAL_CATALOG_METADATA_ONLY",
+  "status": "METADATA_ONLY_CANDIDATE",
+  "accessed_on": "2026-08-08",
+  "source_identity": {
+    "paper_doi": "10.1051/0004-6361/202039498",
+    "paper_url": "https://doi.org/10.1051/0004-6361/202039498",
+    "esa_data_doi": "10.5270/esa-1ugzkg7",
+    "esa_data_url": "https://doi.org/10.5270/esa-1ugzkg7",
+    "archive_url": "https://gea.esac.esa.int/archive/",
+    "documentation_url": "https://gea.esac.esa.int/archive/documentation/GDR3/",
+    "catalogue_scope": "Gaia EDR3 nearby-star catalogue, reported within 100 pc in the source paper"
+  },
+  "original_filename": null,
+  "local_raw_path": null,
+  "local_raw_sha256": null,
+  "source_data_status": "NOT_ARCHIVED",
+  "data_scope": {
+    "available_candidate_observables": [
+      "source identifier",
+      "astrometric parallax and related quality fields",
+      "sky position and derived three-dimensional position after distance treatment",
+      "photometric/astrophysical metadata where present"
+    ],
+    "not_directly_supplied_as_target": [
+      "complete baryonic mass density rho_3D in kg/m^3",
+      "universal mass per source for the selected volume",
+      "selection-function-corrected total mass field"
+    ],
+    "candidate_use": "3D stellar-structure source candidate for an explicit mass-realization operator"
+  },
+  "unit_contract": {
+    "parallax_source_unit": "mas",
+    "distance_runtime_unit": "pc_then_m",
+    "position_runtime_unit": "m",
+    "source_mass_unit": "not_closed_by_catalogue_package",
+    "target_density_unit": "kg/m^3",
+    "conversion_status": "OPEN_DISTANCE_SELECTION_AND_MASS_REALIZATION"
+  },
+  "preprocessing": {
+    "status": "NOT_STARTED",
+    "required_steps": [
+      "freeze catalogue query and column selection",
+      "record parallax-quality and distance treatment",
+      "record coordinate transform and finite-volume binning",
+      "record duplicate/binary/extinction handling",
+      "compute and hash the local extracted table"
+    ]
+  },
+  "selection_function": {
+    "status": "OPEN",
+    "required_items": [
+      "sky and magnitude completeness",
+      "parallax signal-to-noise policy",
+      "crowding/extinction policy",
+      "volume boundary and edge treatment"
+    ]
+  },
+  "mass_calibration": {
+    "status": "OPEN",
+    "reason": "a 3D stellar-position catalogue is not by itself a calibrated total mass-density field",
+    "required_items": [
+      "source-level or population-level stellar-mass realization",
+      "unseen/binary/remnant treatment",
+      "baryonic component scope",
+      "independent calibration or source-locked mass model"
+    ]
+  },
+  "uncertainty": {
+    "status": "OPEN",
+    "required_items": [
+      "parallax/distance uncertainty propagation",
+      "selection-function uncertainty",
+      "mass-realization uncertainty",
+      "finite-volume density uncertainty"
+    ]
+  },
+  "benchmark_role": "EXTERNAL_SOURCE_CANDIDATE_FOR_3D_STRUCTURE_ONLY",
+  "fit_policy": {
+    "numeric_fitting_allowed": false,
+    "parameter_tuning_allowed": false,
+    "reason": "metadata-only candidate with no local raw table, calibration, uncertainty, or holdout package"
+  },
+  "holdout_policy": {
+    "status": "LOCK_BEFORE_EXTERNAL_COMPARISON",
+    "holdout_not_consumed": true,
+    "required_before_unlock": [
+      "freeze observable operator and source query",
+      "freeze all model parameters or calibration policy",
+      "separate calibration and holdout source regions/rows",
+      "record external comparison protocol"
+    ]
+  },
+  "claim_boundary": "Gaia/GCNS is a candidate 3D stellar-structure source; it does not close C-to-rho_3D, total-mass calibration, galaxy dynamics, or dark-matter claims.",
+  "next_controller": "archive a licensed/extractable local source table, then close selection, mass calibration, uncertainty, and holdout gates before any physical fit"
+}
