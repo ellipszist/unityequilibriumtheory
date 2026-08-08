@@ -166,3 +166,6 @@ Next edge: derivation-origin audit, followed by a source-locked dimensional ther
 The F4 edge now consumes `uet_derivation_origin_audit.json`. All 20 central registry rows have an explicit origin family and derivation-readiness label; six are declared relation derivations, five are checked comparators, and nine remain open/candidate. The edge is still blocked because relation-level derivation is not the same as dimensional correspondence or physical validation.
 
 Next edge: resolve assumptions/limiting cases for open rows and close lane-specific units and measurement operators.
+## 2026-08-08 dependency update - 0.13 quasi-temperature source review
+
+The 0.13 edge now records the standard observable as `Delta_Tq` / normalized `y_TTG`, interpreted as a quasi-temperature or collective-phonon-energy response. This prevents an invalid direct `Phi = T` identification. The source-data statement is externally confirmed, but no permitted local numeric package or `alpha_Phi_K` map is available; the holdout and external-validation edge remain blocked.

@@ -199,3 +199,11 @@ Source-declared standard/comparator rows are now recorded as explicit blocked co
 - Result: origin/proof bookkeeping is closed as a control artifact; physical derivation and correspondence remain open.
 - Next controller: close assumptions, limiting cases, dimensional maps, and accepted observables for open rows.
 - Claim impact: no change.
+## 2026-08-08 - 0.13 quasi-temperature source review
+
+- Scope: Topic 0.13 source/observable correspondence and holdout boundary.
+- Added: source-review evidence distinguishing `Delta_Tq`/normalized TTG from equilibrium temperature and from UET `Phi`.
+- Verified: publisher source review, regenerated thermal map/readiness artifact, deterministic thermal-control rerun (`SIMULATION_ONLY`), and focused thermal tests `14/14`.
+- Result: standard measurement target is clearer; local numeric intake, `alpha_Phi_K`, and external comparison remain blocked.
+- Next controller: permitted source-data archive with row-level provenance plus independent dimensional calibration; core pre-arrival leakage remains separate.
+- Claim impact: no change.

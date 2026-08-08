@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact": "matter_space_thermal_source_review",
   "topic": "0.13_Thermodynamic_Bridge",
-  "reviewed_on": "2026-08-01",
+  "reviewed_on": "2026-08-08",
   "review_type": "primary-source metadata and observable-map review",
   "numeric_fitting_allowed": false,
   "holdout_consumed": false,
@@ -45,6 +45,13 @@
     }
   ],
   "source_access_audit": {
+    "external_review_evidence": {
+      "reviewed_on": "2026-08-08",
+      "publisher_data_statement_reconfirmed": true,
+      "ttg_observable_interpretation": "TTG reports a quasi-temperature difference associated with collective phonon energy; it is not an automatic identity with equilibrium temperature or UET Phi.",
+      "standard_comparator_note": "The source reports comparison with full-scattering-matrix phonon Boltzmann transport without fitted parameters in the reported simulation comparison.",
+      "uet_mapping_consequence": "The admissible target is a source-specific Delta_Tq or normalized y_TTG measurement operator; alpha_Phi_K remains an independent calibration or derivation gate."
+    },
     "publisher_route": "https://www.nature.com/articles/s41467-026-70807-3",
     "version_of_record_date": "2026-05-29",
     "publisher_data_statement": "source data are provided with this study",

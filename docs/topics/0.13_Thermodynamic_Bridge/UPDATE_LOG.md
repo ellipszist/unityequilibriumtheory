@@ -715,3 +715,12 @@ Use this log when `0.13` changes in a way that narrows a provenance blocker, add
 - Result: the publisher data statement remains externally recorded, but the reproducible local numeric package is still not captured; the holdout remains metadata-only.
 - Claim impact: no upgrade; no digitization, fitting, or holdout consumption occurred.
 - Next controller: obtain a permitted numeric source package with row locator, units, preprocessing, uncertainty, and hash; otherwise retain this explicit access blocker.
+### 2026-08-08 - Quasi-temperature correspondence clarification
+
+- Scope: source-backed interpretation of the locked 2026 graphite TTG lane.
+- Added or changed: source-package and source-review external-review evidence records.
+- Verified with: publisher article review; the source identifies the TTG response as a quasi-temperature/collective-phonon-energy signal and reports a full-scattering-matrix PBTE comparison without fitted parameters in the reported simulation comparison.
+- Result: the standard target is now explicitly `Delta_Tq` / normalized `y_TTG`, not equilibrium `T` by default and not `Phi` by identity.
+- Still open: permitted local numeric source package, row-level locator/preprocessing/uncertainty/hash, and an independently derived or calibrated `alpha_Phi_K`.
+- Claim impact: no upgrade; the holdout remains metadata-only and no UET parameter was fitted.
+- Next controller: `thermal_source_numeric_package_and_dimensional_calibration_missing`.

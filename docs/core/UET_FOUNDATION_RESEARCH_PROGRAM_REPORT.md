@@ -349,3 +349,8 @@ The next hardening wave is derivation-origin provenance plus one source-locked d
 F4 now has a generated artifact linked to the central registry. It reports 20/20 rows with explicit origin/proof labels: six declared relation derivations, five checked comparators, and nine open or candidate relations. This resolves the bookkeeping ambiguity between “derived relation,” “standard comparator,” and “heuristic/candidate.” It does not establish physical closure; all rows retain `physical_closure=false` and `physical_promotion_allowed=false`.
 
 The foundation gate remains `BLOCKED` on F2/F3/F7 and open derivation assumptions. The all-wave status remains accounting-closed but physics-not-closed.
+## Latest plan update - 2026-08-08 0.13 quasi-temperature source review
+
+The thermal source lane is now more precise about the standard observable: the graphite TTG response is a quasi-temperature / collective-phonon-energy signal, so the permitted comparison target is `Delta_Tq` or normalized `y_TTG`, not equilibrium temperature by default. The external paper also reports a full-scattering-matrix phonon-Boltzmann comparison without fitted parameters in the reported simulation comparison.
+
+This improves the standard-physics correspondence but does not close UET mapping. `alpha_Phi_K` remains an independent calibration/derivation gate, no local numeric source package was imported, and the 2026 source remains holdout metadata. The deterministic thermal-control rerun remains `SIMULATION_ONLY` with `core_prearrival_leakage` and `external_source_ready` blocked; focused thermal tests pass `14/14`.
