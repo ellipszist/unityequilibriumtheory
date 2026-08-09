@@ -23,7 +23,8 @@
       "docs/core/artifacts/uet_equation_correspondence_registry_main_theory_addendum.json",
       "docs/core/artifacts/uet_equation_correspondence_registry_coarse_graining_addendum.json",
       "docs/core/artifacts/uet_equation_correspondence_registry_open_system_addendum.json",
-      "docs/core/artifacts/uet_equation_correspondence_registry_theory_spine_addendum.json"
+      "docs/core/artifacts/uet_equation_correspondence_registry_theory_spine_addendum.json",
+      "docs/core/artifacts/uet_equation_correspondence_registry_quantum_measurement_addendum.json"
     ],
     "extension_status": "CANDIDATE_ADDENDA_MERGED_NOT_EXHAUSTIVE"
   },
@@ -1524,11 +1525,61 @@
       "claim_boundary": "causal numerical control, not a curved covariant solver",
       "failure_mode": "complex/incomplete characteristics, superluminal speed, constraint growth, or hidden stabilization",
       "next_hardening_step": "derive a 3+1 formulation with dynamical metric and GR constraint propagation"
+    },
+    {
+      "equation_id": "uet.main_theory.operational_quantum_measurement",
+      "version": "operational-qm-v1",
+      "classification": "standard_physics_interface",
+      "relation_or_code_path": "docs/core/uet_quantum_measurement.py",
+      "variables": {
+        "rho": "density operator",
+        "E_o": "POVM effect",
+        "K_r": "channel/instrument Kraus operator",
+        "p(o)": "Born probability",
+        "R_obs": "observer outcome record"
+      },
+      "mathematical_role": "preparation-channel-instrument-outcome interface",
+      "standard_physics_counterpart": "finite-dimensional operational quantum mechanics",
+      "observable_mapping": {
+        "status": "FORMAL",
+        "reason": "outcomes map to detector records; hardware-specific calibration remains lane dependent"
+      },
+      "unit_lane": "dimensionless_probability",
+      "parameter_dimensions": "finite-dimensional operators",
+      "source_or_origin": "standard operational QM imported as the UET quantum interface baseline",
+      "assumptions": [
+        "Born rule",
+        "CPTP channels",
+        "positive complete POVMs",
+        "declared detector interaction"
+      ],
+      "symmetry_and_conservation": "trace preservation, positivity, and no-signalling baseline",
+      "limiting_cases": [
+        "identity channel preserves preparation",
+        "projective instrument is a POVM special case"
+      ],
+      "implementation_paths": [
+        "docs/core/uet_quantum_measurement.py"
+      ],
+      "verifier_paths": [
+        "docs/scripts/audit/audit_uet_quantum_measurement.py",
+        "docs/core/artifacts/quantum_measurement_verification.json",
+        "docs/core/test/test_uet_quantum_measurement.py"
+      ],
+      "evidence_class": "STANDARD_THEORY_REPRODUCTION",
+      "proof_status": "finite-dimensional baseline tests pass",
+      "downstream_dependencies": [
+        "uet.main_theory.quantum_interpretations",
+        "uet.main_theory.detector_observables"
+      ],
+      "claim_boundary": "standard interface adopted by UET; not a UET derivation of quantum mechanics",
+      "failure_mode": "nonpositive state/POVM, non-CPTP channel, nonnormalized Born probabilities, or signalling",
+      "next_hardening_step": "verify interpretation invariance and connect physical carrier/detector lanes"
     }
   ],
   "merge_history": {
     "merged_equation_ids": [
-      "uet.main_theory.hyperbolic_spine_control"
+      "uet.main_theory.operational_quantum_measurement"
     ],
     "already_present": [
       "uet.impact_effect.information_flow",
@@ -1543,7 +1594,8 @@
       "uet.mass_density.si_3d_measurement_operator",
       "uet.main_theory.covariant_parent",
       "uet.main_theory.coarse_graining",
-      "uet.main_theory.open_system_linear_kms"
+      "uet.main_theory.open_system_linear_kms",
+      "uet.main_theory.hyperbolic_spine_control"
     ],
     "conflicts": [],
     "source_policy": "addenda are merged as candidate records; evidence and claim boundaries are preserved"

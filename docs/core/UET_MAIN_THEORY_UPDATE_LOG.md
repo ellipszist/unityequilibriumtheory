@@ -97,3 +97,18 @@
 - Claim impact: no curved-GR or physical promotion
 - Workflow linkage: Wave 5 depends on the Wave 4 physical-memory contract; operational quantum work may proceed as an independent parallel spine
 - Notes: the operator name reserves the parent integration lane, but v1 rejects every curved-background request
+
+### 2026-08-09 - Wave 6 operational quantum-measurement spine
+
+- Scope: density operators, CPTP channels, POVMs, instruments, Born probabilities, conditional outcomes, no-signalling, and CHSH/Tsirelson controls
+- Wave type: standard-physics interface, registry, verifier, and gate pass
+- Added or changed: finite-dimensional operational QM module, source/channel/detector/outcome separation, public exports, and one central-registry entry
+- Files touched: uet_quantum_measurement.py, audit_uet_quantum_measurement.py, Wave 6 artifacts/gate, registry merger, core exports, and focused tests
+- Verified with: Wave 6 verifier; equation-foundation audit; compatibility audit with --no-write; 15 integrated tests
+- Result: PASS_OPERATIONAL_QM_BASELINE_ONLY
+- Blocker narrowed: the theory now has a standard operational measurement rule without identifying C, Phi, or R_gen with a wavefunction or particle
+- Still open: interpretation adapters, hardware-specific detector calibration, relativistic QFT measurement, and any UET-native quantum derivation
+- Next controller: qbism_rqm_operational_interpretation_invariance_not_checked
+- Claim impact: no claim that UET derives quantum mechanics
+- Workflow linkage: Wave 6 follows the axiom gate and is independent of the curved 3+1 blocker
+- Notes: observer metadata creates a record only; physical state changes require a declared channel or detector instrument

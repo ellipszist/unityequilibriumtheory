@@ -731,3 +731,39 @@ __all__ += [
     "theory_spine_step",
     "theory_spine_contract",
 ]
+
+from .uet_quantum_measurement import (
+    QUANTUM_MEASUREMENT_STATUS,
+    DensityOperator,
+    QuantumChannel,
+    QuantumInstrument,
+    POVMRecord,
+    MeasurementContext,
+    QuantumOutcome,
+    ObserverQuantumRecord,
+    born_probabilities,
+    apply_quantum_channel,
+    conditional_state_update,
+    sample_or_record_outcome,
+    partial_trace_bipartite,
+    expectation,
+    quantum_measurement_contract,
+)
+
+__all__ += [
+    "QUANTUM_MEASUREMENT_STATUS",
+    "DensityOperator",
+    "QuantumChannel",
+    "QuantumInstrument",
+    "POVMRecord",
+    "MeasurementContext",
+    "QuantumOutcome",
+    "ObserverQuantumRecord",
+    "born_probabilities",
+    "apply_quantum_channel",
+    "conditional_state_update",
+    "sample_or_record_outcome",
+    "partial_trace_bipartite",
+    "expectation",
+    "quantum_measurement_contract",
+]

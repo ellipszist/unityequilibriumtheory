@@ -25,6 +25,7 @@ ADDENDA = (
     ROOT / "docs/core/artifacts/uet_equation_correspondence_registry_coarse_graining_addendum.json",
     ROOT / "docs/core/artifacts/uet_equation_correspondence_registry_open_system_addendum.json",
     ROOT / "docs/core/artifacts/uet_equation_correspondence_registry_theory_spine_addendum.json",
+    ROOT / "docs/core/artifacts/uet_equation_correspondence_registry_quantum_measurement_addendum.json",
 )
 
 

@@ -31,6 +31,7 @@ Before editing an equation, parameter, operator, verifier, or core narrative, re
 23. `docs/core/artifacts/uet_main_theory_wave3_gate.json`
 24. `docs/core/artifacts/uet_main_theory_wave4_gate.json`
 25. `docs/core/artifacts/uet_main_theory_wave5_gate.json`
+26. `docs/core/artifacts/uet_main_theory_wave6_gate.json`
 
 The foundation gate and registry are the controlling status sources for new core work.
 Existing topic prose, old badges, and legacy validators do not override them.
