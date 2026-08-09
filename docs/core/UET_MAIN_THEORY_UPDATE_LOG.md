@@ -36,3 +36,19 @@
 - Claim impact: no physical promotion
 - Workflow linkage: Wave 1 depends on the Wave 0 accounting gate
 - Notes: C remains multi-lane; operational QM is the baseline; QBism/RQM remain comparison adapters
+
+
+### 2026-08-09 - Wave 2 integrated conservative covariant parent
+
+- Scope: scalar-tensor response, O(2) matter, Noether current, stress-energy, reciprocal coupling, exchange balance, and GR null limit
+- Wave type: formula, implementation, registry, and gate pass
+- Added or changed: integrated parent composer, public exports, deterministic verifier, formula audit, central-registry entry, and focused tests
+- Files touched: uet_covariant_parent.py, audit_uet_covariant_parent.py, parent artifacts/gate, registry addendum/merge, core exports, and tests
+- Verified with: parent verifier; equation-foundation audit; foundation compatibility audit with --no-write; 42 focused covariant tests
+- Result: PASS_CONSERVATIVE_PARENT_ONLY
+- Blocker narrowed: existing response, matter, and balance modules are now callable under one natural-unit conservative parent contract
+- Still open: lane-specific covariant coarse-graining, dissipative SK/KMS sector, curved 3+1 evolution, SI observables, and external GR tests
+- Next controller: lane_specific_covariant_coarse_graining_not_closed
+- Claim impact: no physical promotion
+- Workflow linkage: Wave 2 depends on the Wave 1 ontology gate
+- Notes: foundation and compatibility statuses remain BLOCKED; the parent is a formula evaluator, not a metric PDE solver
