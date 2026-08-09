@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "artifact": "uet_equation_correspondence_registry",
-  "generated_at": "2026-08-08",
+  "generated_at": "2026-08-09",
   "status": "CENTRAL_REGISTRY_WITH_CANDIDATE_ADDENDA_BLOCKED",
   "authority": "docs/topics/For Work/EQUATION_RESEARCH_AND_PHYSICAL_CORRESPONDENCE_STANDARD.md",
   "coverage": {
@@ -19,7 +19,8 @@
       "docs/core/artifacts/uet_equation_correspondence_registry_cosmology_addendum.json",
       "docs/core/artifacts/uet_equation_correspondence_registry_persistence_addendum.json",
       "docs/core/artifacts/uet_equation_correspondence_registry_wave_addendum.json",
-      "docs/core/artifacts/uet_equation_correspondence_registry_mass_density_addendum.json"
+      "docs/core/artifacts/uet_equation_correspondence_registry_mass_density_addendum.json",
+      "docs/core/artifacts/uet_equation_correspondence_registry_main_theory_addendum.json"
     ],
     "extension_status": "CANDIDATE_ADDENDA_MERGED_NOT_EXHAUSTIVE"
   },
@@ -1315,11 +1316,65 @@
       "claim_boundary": "SI conversion interface only; not physical heat/entropy evidence or a derivation of alpha scales",
       "failure_mode": "fixture scales are presented as material calibration, or normalized C/work is called SI energy/temperature",
       "next_hardening_step": "source-lock independent alpha_b and alpha_m with calorimetry or heat-flux data, uncertainty, detector operator, and holdout"
+    },
+    {
+      "equation_id": "uet.main_theory.covariant_parent",
+      "version": "covariant-parent-v1",
+      "classification": "foundational_equation",
+      "relation_or_code_path": "docs/core/uet_covariant_parent.py",
+      "variables": {
+        "g_munu": "Lorentz metric",
+        "chi_A": "global O(2) scalar matter doublet",
+        "Phi": "candidate response scalar",
+        "epsilon_nc": "closed/non-closed nesting parameter"
+      },
+      "mathematical_role": "integrated conservative scalar-tensor and O2 parent formula evaluator",
+      "standard_physics_counterpart": "scalar-tensor effective action with global O2 matter",
+      "observable_mapping": {
+        "status": "OPEN",
+        "reason": "curved solver, SI map, detector map, and external benchmark are absent"
+      },
+      "unit_lane": "natural_only_v1",
+      "parameter_dimensions": "declared by covariant response and matter contracts",
+      "source_or_origin": "candidate UET conservative parent assembled from existing action-derived modules",
+      "assumptions": [
+        "four-dimensional Lorentz metric with signature (-,+,+,+)",
+        "global O2 scalar matter pilot",
+        "positive response kinetic and bounded quartic potentials",
+        "derived trace and observer state are absent"
+      ],
+      "symmetry_and_conservation": "diffeomorphism-compatible local tensor formulas, global O2 current, and exchange-completed total balance",
+      "limiting_cases": [
+        "epsilon_nc=0 gives exact algebraic Einstein-GR residual with scalar matter",
+        "response coupling zero decouples matter and Phi interaction"
+      ],
+      "implementation_paths": [
+        "docs/core/uet_covariant_parent.py",
+        "docs/core/uet_covariant_response.py",
+        "docs/core/uet_covariant_matter.py",
+        "docs/core/uet_covariant_balance.py"
+      ],
+      "verifier_paths": [
+        "docs/scripts/audit/audit_uet_covariant_parent.py",
+        "docs/core/artifacts/covariant_parent_verification.json",
+        "docs/core/test/test_uet_covariant_parent.py"
+      ],
+      "evidence_class": "INTERNAL_FORMAL",
+      "proof_status": "conservative formula identities pass locally; physical closure remains blocked",
+      "downstream_dependencies": [
+        "uet.main_theory.ontology",
+        "uet.main_theory.coarse_graining",
+        "uet.main_theory.open_system",
+        "uet.main_theory.curved_3p1"
+      ],
+      "claim_boundary": "candidate natural-unit conservative parent; not curved GR or empirical validation",
+      "failure_mode": "component equations drift from the parent action or closed limit requires manual equation deletion",
+      "next_hardening_step": "close lane-specific covariant coarse graining before dissipative and observable promotion"
     }
   ],
   "merge_history": {
     "merged_equation_ids": [
-      "uet.persistence.resource_selection_physical_cost_map"
+      "uet.main_theory.covariant_parent"
     ],
     "already_present": [
       "uet.impact_effect.information_flow",
@@ -1328,6 +1383,7 @@
       "uet.matter_space.characteristic_cone",
       "uet.persistence.resource_selection_dynamics",
       "uet.persistence.resource_selection_thermal_bridge",
+      "uet.persistence.resource_selection_physical_cost_map",
       "uet.mass_density.augmented_amplitude_contract",
       "uet.mass_density.si_1d_amplitude_contract",
       "uet.mass_density.si_3d_measurement_operator"

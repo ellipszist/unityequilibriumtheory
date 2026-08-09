@@ -627,3 +627,21 @@ __all__ += [
     "PhysicalCostMapResult",
     "map_normalized_work_to_si",
 ]
+
+from .uet_covariant_parent import (
+    COVARIANT_PARENT_STATUS,
+    CovariantParentConfig,
+    CovariantParentState,
+    CovariantParentResult,
+    evaluate_conservative_parent,
+    covariant_parent_contract,
+)
+
+__all__ += [
+    "COVARIANT_PARENT_STATUS",
+    "CovariantParentConfig",
+    "CovariantParentState",
+    "CovariantParentResult",
+    "evaluate_conservative_parent",
+    "covariant_parent_contract",
+]

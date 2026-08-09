@@ -21,6 +21,7 @@ ADDENDA = (
     ROOT / "docs/core/artifacts/uet_equation_correspondence_registry_persistence_addendum.json",
     ROOT / "docs/core/artifacts/uet_equation_correspondence_registry_wave_addendum.json",
     ROOT / "docs/core/artifacts/uet_equation_correspondence_registry_mass_density_addendum.json",
+    ROOT / "docs/core/artifacts/uet_equation_correspondence_registry_main_theory_addendum.json",
 )
 
 
@@ -38,6 +39,7 @@ def main() -> int:
 
     for path in ADDENDA:
         addendum = read_json(path)
+        newly_merged_for_addendum: list[str] = []
         addendum_entries = addendum.get("equation_entries", addendum.get("entries", []))
         for entry in addendum_entries:
             equation_id = entry.get("equation_id")
@@ -50,11 +52,20 @@ def main() -> int:
             entries.append(entry)
             known.add(equation_id)
             merged.append(equation_id)
+            newly_merged_for_addendum.append(equation_id)
+
+        previous_metadata = dict(addendum.get("merge_metadata", {}))
+        previous_date = previous_metadata.get("merged_on")
+        merged_on = (
+            previous_date
+            if previous_date and not newly_merged_for_addendum
+            else date.today().isoformat()
+        )
 
         addendum["status"] = "CANDIDATE_ENTRY_MERGED_INTO_CENTRAL_REGISTRY"
         addendum["merge_metadata"] = {
             "merged_into": str(REGISTRY.relative_to(ROOT)).replace("\\", "/"),
-            "merged_on": date.today().isoformat(),
+            "merged_on": merged_on,
             "equation_ids": [entry.get("equation_id") for entry in addendum_entries],
             "claim_promotion": False,
         }
