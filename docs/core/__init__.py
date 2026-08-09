@@ -793,3 +793,23 @@ __all__ += [
     "compare_empirical_predictions",
     "interpretation_contract",
 ]
+
+from .uet_gr_correspondence import (
+    GR_CORRESPONDENCE_STATUS,
+    GRBenchmarkRecord,
+    minkowski_null_control,
+    flat_flrw_control,
+    schwarzschild_exterior_null_control,
+    newtonian_poisson_residual,
+    gr_correspondence_contract,
+)
+
+__all__ += [
+    "GR_CORRESPONDENCE_STATUS",
+    "GRBenchmarkRecord",
+    "minkowski_null_control",
+    "flat_flrw_control",
+    "schwarzschild_exterior_null_control",
+    "newtonian_poisson_residual",
+    "gr_correspondence_contract",
+]

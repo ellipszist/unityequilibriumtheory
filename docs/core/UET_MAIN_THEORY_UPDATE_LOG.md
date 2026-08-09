@@ -142,3 +142,18 @@
 - Claim impact: no dimensional prediction or external validation
 - Workflow linkage: Wave 8 consumes Topic 0.13 artifacts read-only and preserves the 2026 holdout
 - Notes: source identities and hashes pass; zero local numeric rows were consumed and no parameter was fitted
+
+### 2026-08-09 - Wave 9 analytic GR correspondence controls
+
+- Scope: Minkowski null, flat FLRW perfect fluid, Schwarzschild exterior vacuum, Newtonian Poisson, parent GR null nesting, and linear propagation
+- Wave type: standard-physics correspondence implementation, registry, verifier, and gate pass
+- Added or changed: analytic tensor-input control module, public exports, deterministic verifier, and one central-registry entry
+- Files touched: uet_gr_correspondence.py, audit_uet_gr_correspondence.py, Wave 9 artifacts/gate, registry merger, core exports, and focused tests
+- Verified with: Wave 9 verifier; equation-foundation audit; compatibility audit with --no-write; 15 integrated tests
+- Result: PASS_ANALYTIC_CONTROLS_CURVED_NUMERICS_BLOCKED
+- Blocker narrowed: GR null and standard analytic controls are now explicit and machine checked without treating supplied Einstein tensors as computed curvature
+- Still open: curvature from metric, dynamical lapse/shift/spatial metric, GR constraint evolution, gauge-invariant observables, and external gravity comparisons
+- Next controller: curvature_from_metric_not_implemented plus dynamical_metric_constraint_evolution_not_implemented
+- Claim impact: no UET derivation of GR and no curved numerical validation
+- Workflow linkage: Wave 9 combines the conservative parent and fixed-background hyperbolic controls
+- Notes: FLRW and Schwarzschild are analytic tensor inputs, not outputs of a geometry solver
