@@ -187,3 +187,18 @@
 - Claim impact: no downstream physical promotion
 - Workflow linkage: Wave 11 reads Wave 8, Wave 9, fundamental-track, Topic 0.11, and Topic 0.13 gates
 - Notes: topic metadata cannot override a blocking evidence artifact
+
+### 2026-08-09 - Wave 12 final non-averaged closure audit
+
+- Scope: methodological, ontology, mathematical EFT, numerical, physical correspondence, dimensional observable, empirical, and fundamental-track closure
+- Wave type: final cross-gate audit, correspondence matrix, falsification register, and report
+- Added or changed: UET_MAIN_THEORY_CLOSURE_REPORT.md, final closure gate, standard-physics correspondence matrix v2, falsification register, deterministic generator, and tests
+- Files touched: audit_uet_main_theory_closure.py, four report/artifact outputs, focused tests, required-reading chain, update log, and work ledger
+- Verified with: final closure generator; 54 Wave 0-12 targeted tests; equation-foundation audit; compatibility audit with --no-write; compileall
+- Result: CANDIDATE_PARTIALLY_CLOSED_EFFECTIVE_THEORY / overall BLOCKED
+- Blocker narrowed: internal formula/control closure is separated from curved, dimensional, empirical, and fundamental blockers without averaging
+- Still open: full SK/KMS, curved 3+1 metric constraints, dimensional calibration, external holdout, and local gauge/spinor closure
+- Next controller: choose one named blocker for a new evidence-producing wave; thermal causal/data/calibration and curved 3+1 are independent branches
+- Claim impact: allows a disciplined candidate-EFT architecture claim only
+- Workflow linkage: Wave 12 hashes and reads every Wave 0-11 gate plus foundation registry/dependency state
+- Notes: foundation and compatibility remain BLOCKED; no application or fundamental claim was promoted
