@@ -22,7 +22,8 @@
       "docs/core/artifacts/uet_equation_correspondence_registry_mass_density_addendum.json",
       "docs/core/artifacts/uet_equation_correspondence_registry_main_theory_addendum.json",
       "docs/core/artifacts/uet_equation_correspondence_registry_coarse_graining_addendum.json",
-      "docs/core/artifacts/uet_equation_correspondence_registry_open_system_addendum.json"
+      "docs/core/artifacts/uet_equation_correspondence_registry_open_system_addendum.json",
+      "docs/core/artifacts/uet_equation_correspondence_registry_theory_spine_addendum.json"
     ],
     "extension_status": "CANDIDATE_ADDENDA_MERGED_NOT_EXHAUSTIVE"
   },
@@ -1473,11 +1474,61 @@
       "claim_boundary": "candidate constitutive bridge, not microscopic transport derivation",
       "failure_mode": "KMS/PSD/entropy failure or generated trace used as an input state",
       "next_hardening_step": "embed physical memory in a strongly-hyperbolic covariant 3+1 spine"
+    },
+    {
+      "equation_id": "uet.main_theory.hyperbolic_spine_control",
+      "version": "minkowski-1p1-spine-v1",
+      "classification": "numerical_implementation",
+      "relation_or_code_path": "docs/core/uet_covariant_theory_spine.py",
+      "variables": {
+        "phi": "sector coordinate",
+        "pi": "time derivative",
+        "psi": "declared spatial derivative",
+        "c": "characteristic speed"
+      },
+      "mathematical_role": "first-order strongly-hyperbolic fixed-background control",
+      "standard_physics_counterpart": "first-order reduction of damped relativistic wave/telegraph sectors",
+      "observable_mapping": {
+        "status": "OPEN",
+        "reason": "fixed-background control has no dimensional detector map"
+      },
+      "unit_lane": "natural_only_v1",
+      "parameter_dimensions": "natural-unit control parameters",
+      "source_or_origin": "UET Main-Theory Wave 5 numerical control",
+      "assumptions": [
+        "fixed Minkowski 1+1",
+        "periodic boundary",
+        "linear principal part",
+        "subluminal declared speeds"
+      ],
+      "symmetry_and_conservation": "periodic gradient constraint and damped energy ledger; no GR constraints",
+      "limiting_cases": [
+        "zero damping gives wave control",
+        "zero fields are exact fixed point"
+      ],
+      "implementation_paths": [
+        "docs/core/uet_covariant_theory_spine.py"
+      ],
+      "verifier_paths": [
+        "docs/scripts/audit/audit_uet_covariant_theory_spine.py",
+        "docs/core/artifacts/covariant_theory_spine_verification.json",
+        "docs/core/test/test_uet_covariant_theory_spine.py"
+      ],
+      "evidence_class": "INTERNAL_NUMERICAL",
+      "proof_status": "linear fixed-background hyperbolicity and convergence pass; curved 3+1 blocked",
+      "downstream_dependencies": [
+        "uet.main_theory.covariant_parent",
+        "uet.main_theory.open_system",
+        "uet.main_theory.gravity"
+      ],
+      "claim_boundary": "causal numerical control, not a curved covariant solver",
+      "failure_mode": "complex/incomplete characteristics, superluminal speed, constraint growth, or hidden stabilization",
+      "next_hardening_step": "derive a 3+1 formulation with dynamical metric and GR constraint propagation"
     }
   ],
   "merge_history": {
     "merged_equation_ids": [
-      "uet.main_theory.open_system_linear_kms"
+      "uet.main_theory.hyperbolic_spine_control"
     ],
     "already_present": [
       "uet.impact_effect.information_flow",
@@ -1491,7 +1542,8 @@
       "uet.mass_density.si_1d_amplitude_contract",
       "uet.mass_density.si_3d_measurement_operator",
       "uet.main_theory.covariant_parent",
-      "uet.main_theory.coarse_graining"
+      "uet.main_theory.coarse_graining",
+      "uet.main_theory.open_system_linear_kms"
     ],
     "conflicts": [],
     "source_policy": "addenda are merged as candidate records; evidence and claim boundaries are preserved"

@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "artifact": "uet_main_theory_wave5_gate",
+  "generated_at": "2026-08-09T03:51:07.282346+00:00",
+  "audit_status": "PASS",
+  "theory_spine_status": "PASS_MINKOWSKI_1P1_CONTROL_CURVED_BLOCKED",
+  "upstream_gate": "uet_main_theory_wave4_gate.json",
+  "checks": {
+    "strong_hyperbolicity": true,
+    "subluminal_characteristics": true,
+    "matter_constraint": true,
+    "response_constraint": true,
+    "temporal_convergence": true,
+    "no_clipping": true,
+    "fixed_background_disclosed": true,
+    "curved_claim_blocked": true
+  },
+  "controlling_blocker": "curved_3p1_dynamical_metric_and_gr_constraints_not_implemented",
+  "claim_promotion": false,
+  "parallel_next_controller": "implement the operational quantum measurement spine while curved 3+1 remains an explicit independent blocker"
+}

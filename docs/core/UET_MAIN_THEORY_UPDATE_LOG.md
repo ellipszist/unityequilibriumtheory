@@ -82,3 +82,18 @@
 - Claim impact: no physical promotion
 - Workflow linkage: Wave 4 depends on the Wave 3 coarse-graining contract and remains simulation-only
 - Notes: this is a linear classical constitutive control, not a full Schwinger-Keldysh derivation
+
+### 2026-08-09 - Wave 5 first-order hyperbolic theory-spine control
+
+- Scope: characteristic analysis, first-order reduction, CFL preflight, auxiliary gradient constraints, energy/dissipation ledger, and numerical convergence
+- Wave type: opt-in numerical control, formula audit, registry, verifier, and gate pass
+- Added or changed: covariant_theory_spine_v1 API on fixed Minkowski 1+1, public exports, deterministic convergence verifier, and one central-registry entry
+- Files touched: uet_covariant_theory_spine.py, audit_uet_covariant_theory_spine.py, Wave 5 artifacts/gate, registry merger, core exports, and focused tests
+- Verified with: Wave 5 verifier; equation-foundation audit; compatibility audit with --no-write; 18 integrated tests
+- Result: PASS_MINKOWSKI_1P1_CONTROL_CURVED_BLOCKED
+- Blocker narrowed: the linear matter/response principal sectors now have explicit real complete characteristics, subluminal speed, CFL policy, and constraint diagnostics
+- Still open: curved 3+1 variables, dynamical metric, lapse/shift, Hamiltonian and momentum constraints, curved boundaries, and parent-action coefficient matching
+- Next controller: curved_3p1_dynamical_metric_and_gr_constraints_not_implemented
+- Claim impact: no curved-GR or physical promotion
+- Workflow linkage: Wave 5 depends on the Wave 4 physical-memory contract; operational quantum work may proceed as an independent parallel spine
+- Notes: the operator name reserves the parent integration lane, but v1 rejects every curved-background request

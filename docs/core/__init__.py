@@ -705,3 +705,29 @@ __all__ += [
     "open_system_evolution",
     "open_system_contract",
 ]
+
+from .uet_covariant_theory_spine import (
+    THEORY_SPINE_OPERATOR_MODE,
+    THEORY_SPINE_STATUS,
+    TheorySpineConfig,
+    Covariant3p1State,
+    CovariantConstraintState,
+    TheoryStepResult,
+    characteristic_analysis,
+    recommended_max_dt,
+    theory_spine_step,
+    theory_spine_contract,
+)
+
+__all__ += [
+    "THEORY_SPINE_OPERATOR_MODE",
+    "THEORY_SPINE_STATUS",
+    "TheorySpineConfig",
+    "Covariant3p1State",
+    "CovariantConstraintState",
+    "TheoryStepResult",
+    "characteristic_analysis",
+    "recommended_max_dt",
+    "theory_spine_step",
+    "theory_spine_contract",
+]
