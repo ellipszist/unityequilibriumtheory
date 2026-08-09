@@ -23,6 +23,7 @@ ADDENDA = (
     ROOT / "docs/core/artifacts/uet_equation_correspondence_registry_mass_density_addendum.json",
     ROOT / "docs/core/artifacts/uet_equation_correspondence_registry_main_theory_addendum.json",
     ROOT / "docs/core/artifacts/uet_equation_correspondence_registry_coarse_graining_addendum.json",
+    ROOT / "docs/core/artifacts/uet_equation_correspondence_registry_open_system_addendum.json",
 )
 
 

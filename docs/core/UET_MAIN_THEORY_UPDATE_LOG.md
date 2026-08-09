@@ -67,3 +67,18 @@
 - Claim impact: no physical promotion
 - Workflow linkage: Wave 3 depends on the integrated conservative parent and remains below the blocked foundation gate
 - Notes: scale slopes are descriptive only; the density lane accepts an already-declared density field and does not derive mass from C
+
+### 2026-08-09 - Wave 4 linearized open-system and classical KMS bridge
+
+- Scope: retarded physical memory, Onsager response, classical fluctuation-dissipation, noise positivity, extended entropy accounting, and derived trace separation
+- Wave type: constitutive implementation, formula audit, registry, verifier, and gate pass
+- Added or changed: provenance-bearing coefficient records, exponential retarded kernel, classical KMS noise kernel, memory-storage ledger, public exports, and one central-registry entry
+- Files touched: uet_covariant_open_system.py, audit_uet_covariant_open_system.py, Wave 4 artifacts/gate, registry merger, core exports, and focused tests
+- Verified with: Wave 4 verifier; equation-foundation audit; compatibility audit with --no-write; 24 integrated foundation tests
+- Result: PASS_LINEAR_CLASSICAL_KMS_CONTROL_ONLY
+- Blocker narrowed: physical memory now acts before R_gen and irreversible memory dissipation is separated from reversible storage exchange
+- Still open: doubled-field SK action, dynamical KMS symmetry, microscopic influence functional, covariant entropy current, external Kubo coefficients, and curved 3+1 evolution
+- Next controller: strongly_hyperbolic_curved_3p1_theory_spine_not_implemented
+- Claim impact: no physical promotion
+- Workflow linkage: Wave 4 depends on the Wave 3 coarse-graining contract and remains simulation-only
+- Notes: this is a linear classical constitutive control, not a full Schwinger-Keldysh derivation
