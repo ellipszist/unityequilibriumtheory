@@ -20,3 +20,19 @@
 - Claim impact: no physical promotion
 - Workflow linkage: first wave of the UET Main-Theory Closure Program
 - Notes: the secondary fundamental-unification track is explicitly non-blocking for the primary effective-theory track
+
+
+### 2026-08-09 - Wave 1 minimal postulates and ontology lock
+
+- Scope: main-theory ontology, collective-coordinate lanes, quantum interpretation boundary, persistence, and closed/non-closed branch policy
+- Wave type: contract and gate pass
+- Added or changed: main-theory axioms specification, generated axiom registry, ontology gate, focused tests, and core required-reading linkage
+- Files touched: UET_MAIN_THEORY_AXIOMS_SPEC.md, audit_uet_main_theory_axioms.py, generated registry/gate, core AGENTS.md, and tests
+- Verified with: .venv\Scripts\python.exe docs\scripts\audit\audit_uet_main_theory_axioms.py; focused pytest
+- Result: PASS_CONTRACT_ONLY
+- Blocker narrowed: nine minimal postulates now have standard counterparts, falsification conditions, and prohibited inferences
+- Still open: one integrated conservative covariant parent contract
+- Next controller: covariant_parent_contract_not_integrated
+- Claim impact: no physical promotion
+- Workflow linkage: Wave 1 depends on the Wave 0 accounting gate
+- Notes: C remains multi-lane; operational QM is the baseline; QBism/RQM remain comparison adapters
