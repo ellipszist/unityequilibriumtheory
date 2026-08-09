@@ -172,3 +172,18 @@
 - Claim impact: no fundamental-unification or particle-identity promotion
 - Workflow linkage: this track is explicitly non-blocking for the primary EFT
 - Notes: R_gen remains a derived trace and is not photon, neutrino, positron, or antimatter
+
+### 2026-08-09 - Wave 11 downstream dependency unlock gate
+
+- Scope: thermal/phase pilots, fluid/vacuum/stress, gravity/orbit, galaxy/cosmology, and particle/Dirac unlock order
+- Wave type: cross-artifact dependency gate
+- Added or changed: deterministic downstream decision audit, machine-readable Wave 11 gate, and boundary tests
+- Files touched: audit_uet_downstream_unlock.py, two gate artifacts, tests, required-reading chain, update log, and work ledger
+- Verified with: Wave 11 audit; focused pytest; equation-foundation audit
+- Result: BLOCKED_EXCEPT_PHASE_INTERNAL_DIAGNOSTIC
+- Blocker narrowed: the phase matter-space pilot is visible as internal-only while every external, gravity, galaxy, cosmology, and particle promotion is tied to named upstream blockers
+- Still open: thermal dimensional/causal closure, phase replicate-temporal acquisition, curved GR, metric observables, and fundamental field/symmetry closure
+- Next controller: final closure audit with separate non-averaged status categories
+- Claim impact: no downstream physical promotion
+- Workflow linkage: Wave 11 reads Wave 8, Wave 9, fundamental-track, Topic 0.11, and Topic 0.13 gates
+- Notes: topic metadata cannot override a blocking evidence artifact
