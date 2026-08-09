@@ -24,7 +24,8 @@
       "docs/core/artifacts/uet_equation_correspondence_registry_coarse_graining_addendum.json",
       "docs/core/artifacts/uet_equation_correspondence_registry_open_system_addendum.json",
       "docs/core/artifacts/uet_equation_correspondence_registry_theory_spine_addendum.json",
-      "docs/core/artifacts/uet_equation_correspondence_registry_quantum_measurement_addendum.json"
+      "docs/core/artifacts/uet_equation_correspondence_registry_quantum_measurement_addendum.json",
+      "docs/core/artifacts/uet_equation_correspondence_registry_quantum_interpretations_addendum.json"
     ],
     "extension_status": "CANDIDATE_ADDENDA_MERGED_NOT_EXHAUSTIVE"
   },
@@ -1575,11 +1576,56 @@
       "claim_boundary": "standard interface adopted by UET; not a UET derivation of quantum mechanics",
       "failure_mode": "nonpositive state/POVM, non-CPTP channel, nonnormalized Born probabilities, or signalling",
       "next_hardening_step": "verify interpretation invariance and connect physical carrier/detector lanes"
+    },
+    {
+      "equation_id": "uet.main_theory.quantum_interpretation_adapters",
+      "version": "interpretation-adapters-v1",
+      "classification": "observable_definition",
+      "relation_or_code_path": "docs/core/uet_quantum_interpretations.py",
+      "variables": {
+        "rho_A": "agent-indexed probability assignment",
+        "relation_SR": "system-reference metadata",
+        "p_o": "shared operational Born probabilities"
+      },
+      "mathematical_role": "metadata views over one operational probability contract",
+      "standard_physics_counterpart": "QBism, relational QM, and operational QM comparison",
+      "observable_mapping": {
+        "status": "FORMAL",
+        "reason": "all views reference the same instrument outcomes"
+      },
+      "unit_lane": "dimensionless_probability",
+      "parameter_dimensions": "none",
+      "source_or_origin": "UET Main-Theory Wave 7 comparison layer",
+      "assumptions": [
+        "same preparation and instrument",
+        "interpretations add no dynamics"
+      ],
+      "symmetry_and_conservation": "empirical prediction invariance",
+      "limiting_cases": [
+        "changing agent or reference labels leaves probabilities unchanged"
+      ],
+      "implementation_paths": [
+        "docs/core/uet_quantum_interpretations.py"
+      ],
+      "verifier_paths": [
+        "docs/scripts/audit/audit_uet_quantum_interpretations.py",
+        "docs/core/artifacts/quantum_interpretation_invariance_verification.json",
+        "docs/core/test/test_uet_quantum_interpretations.py"
+      ],
+      "evidence_class": "INTERNAL_FORMAL",
+      "proof_status": "finite-dimensional invariance tests pass",
+      "downstream_dependencies": [
+        "uet.main_theory.operational_quantum_measurement",
+        "uet.main_theory.detector_observables"
+      ],
+      "claim_boundary": "interpretation comparison only; no new empirical prediction",
+      "failure_mode": "metadata changes physical state or probabilities without declared dynamics",
+      "next_hardening_step": "connect detector records to a dimensional physical observable lane"
     }
   ],
   "merge_history": {
     "merged_equation_ids": [
-      "uet.main_theory.operational_quantum_measurement"
+      "uet.main_theory.quantum_interpretation_adapters"
     ],
     "already_present": [
       "uet.impact_effect.information_flow",
@@ -1595,7 +1641,8 @@
       "uet.main_theory.covariant_parent",
       "uet.main_theory.coarse_graining",
       "uet.main_theory.open_system_linear_kms",
-      "uet.main_theory.hyperbolic_spine_control"
+      "uet.main_theory.hyperbolic_spine_control",
+      "uet.main_theory.operational_quantum_measurement"
     ],
     "conflicts": [],
     "source_policy": "addenda are merged as candidate records; evidence and claim boundaries are preserved"

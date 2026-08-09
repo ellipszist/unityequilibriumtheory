@@ -112,3 +112,18 @@
 - Claim impact: no claim that UET derives quantum mechanics
 - Workflow linkage: Wave 6 follows the axiom gate and is independent of the curved 3+1 blocker
 - Notes: observer metadata creates a record only; physical state changes require a declared channel or detector instrument
+
+### 2026-08-09 - Wave 7 QBism/RQM/operational comparison layer
+
+- Scope: agent-indexed QBist records, system-relative RQM records, operational records, and empirical prediction invariance
+- Wave type: interpretation-only implementation, registry, verifier, and gate pass
+- Added or changed: metadata adapters with no dynamics, public exports, deterministic invariance verifier, and one central-registry entry
+- Files touched: uet_quantum_interpretations.py, audit_uet_quantum_interpretations.py, Wave 7 artifacts/gate, registry merger, core exports, and focused tests
+- Verified with: Wave 7 verifier; equation-foundation audit; compatibility audit with --no-write; 9 quantum tests
+- Result: PASS_PREDICTION_INVARIANT_ADAPTERS
+- Blocker narrowed: QBism, RQM, and operational QM now share one Born-probability surface while agent/reference metadata cannot alter source state or R_gen
+- Still open: dimensional detector calibration, relativistic QFT measurement, and any interpretation-specific physical model that would make a new prediction
+- Next controller: dimensional_observable_mapping_and_external_holdout_incomplete
+- Claim impact: no new quantum prediction and no UET derivation of QBism or RQM
+- Workflow linkage: Wave 7 depends on the Wave 6 operational interface
+- Notes: an interpretation that changes predictions must be opened as a new physical model, not hidden in metadata
