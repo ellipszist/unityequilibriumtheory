@@ -157,3 +157,18 @@
 - Claim impact: no UET derivation of GR and no curved numerical validation
 - Workflow linkage: Wave 9 combines the conservative parent and fixed-background hyperbolic controls
 - Notes: FLRW and Schwarzschild are analytic tensor inputs, not outputs of a geometry solver
+
+### 2026-08-09 - Wave 10 fundamental-unification hypothesis gate
+
+- Scope: field content, local gauge symmetry, Dirac/spinor action, CPT, anomalies, unitarity, renormalization, mass generation, and particle identity
+- Wave type: hypothesis constitution, evidence inventory, and blocker gate
+- Added or changed: fundamental-track specification, machine-readable symmetry inventory, non-blocking gate, and boundary tests
+- Files touched: UET_FUNDAMENTAL_UNIFICATION_HYPOTHESIS_SPEC.md, audit_uet_fundamental_track.py, three gate/inventory artifacts, tests, required-reading chain, and work ledger
+- Verified with: Wave 10 audit; focused pytest; equation-foundation audit
+- Result: PASS_ACCOUNTING / HYPOTHESIS_TRACK_BLOCKED
+- Blocker narrowed: global O(2), scalar response, tree-level EOS, and photon baseline are separated from absent local gauge/spinor/anomaly/renormalization closure
+- Still open: local gauge group and representations, Dirac action, C/P/T/CPT conventions, anomaly cancellation, loop/power-counting policy, and Standard-Model mass mapping
+- Next controller: declare local symmetry and complete field representation before a gauge/Dirac parent action
+- Claim impact: no fundamental-unification or particle-identity promotion
+- Workflow linkage: this track is explicitly non-blocking for the primary EFT
+- Notes: R_gen remains a derived trace and is not photon, neutrino, positron, or antimatter
