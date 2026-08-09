@@ -21,14 +21,14 @@ claim language is upgraded. This report is an audit map, not a scientific proof.
 | Priority | Topic | Status | Tier | Data status | Formula audit | Artifact status | Missing docs | Overclaim signals | Next action |
 | --: | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
 | 12 | `0.4_Superconductivity_Superfluids` | Draft | B | real source referenced | present | FAIL present | - | solved | Treat verifier failure as blocker; document cause and fix model or threshold. |
-| 5 | `0.1_Galaxy_Rotation_Problem` | Structured | A | manifested real dataset | bootstrap/open | galaxy_rotation_validation.json:ran | - | - | Harden bootstrap formula audit entries into reviewed formula/constant/unit records. |
+| 5 | `0.1_Galaxy_Rotation_Problem` | Structured | A | manifested real dataset | bootstrap/open | galaxy_history_comparison.json:BLOCKED | - | - | Harden bootstrap formula audit entries into reviewed formula/constant/unit records. |
 | 4 | `0.9_Quantum_Nonlocality` | Draft | B | real source referenced | present | PASS present | - | - | Upgrade DATA_MANIFEST.md with source, local path, unit convention, and benchmark role. |
 | 4 | `0.14_Complex_Systems` | Draft | B | real source referenced | present | PASS present | - | - | Upgrade DATA_MANIFEST.md with source, local path, unit convention, and benchmark role. |
 | 4 | `0.17_Mass_Generation` | Draft | B | real source referenced | present | PASS present | - | - | Upgrade DATA_MANIFEST.md with source, local path, unit convention, and benchmark role. |
 | 4 | `0.18_Mathnicry` | Draft | B | real source referenced | present | 0_18_mathnicry_verification.json:WARN | - | - | Upgrade DATA_MANIFEST.md with source, local path, unit convention, and benchmark role. |
 | 4 | `0.22_Biophysics_Origin_of_Life` | Draft | B | real source referenced | present | 0_22_biophysics_origin_of_life_verification.json:WARN | - | - | Upgrade DATA_MANIFEST.md with source, local path, unit convention, and benchmark role. |
 | 4 | `0.24_Artificial_Intelligence` | Draft | B | real source referenced | present | 0_24_artificial_intelligence_verification.json:WARN | - | - | Upgrade DATA_MANIFEST.md with source, local path, unit convention, and benchmark role. |
-| 0 | 0.25_Strategy_Power_Economics | Structured | A | source-locked U.S. historical panel | present | 0_25_uet_economics_verification.json:WARN | - | - | Package Tier A only; 12-gate Evidence Grade A architecture is WARN and Claim Class C remains controlling. |
+| 4 | `0.25_Strategy_Power_Economics` | Structured | A | source-locked U.S. historical panel; legacy working copies remain partial | present | PASS present | - | - | Upgrade DATA_MANIFEST.md with source, local path, unit convention, and benchmark role. |
 | 4 | `0.26_Cosmic_Dynamic_Frame` | Draft | B | real source referenced | present | 0_26_cosmic_dynamic_frame_verification.json:WARN | - | - | Upgrade DATA_MANIFEST.md with source, local path, unit convention, and benchmark role. |
 | 3 | `0.3_Cosmology_Hubble_Tension` | Structured | B | manifested real dataset | present | PASS present | - | - | Run topic verifier and harden remaining limitations. |
 | 3 | `0.5_Nuclear_Binding_Hadrons` | Draft | B | manifested real dataset | present/open | PASS present | - | - | Close open formula-audit entries or keep matching limitations explicit. |
@@ -39,7 +39,7 @@ claim language is upgraded. This report is an audit map, not a scientific proof.
 | 0 | `0.10_Fluid_Dynamics_Chaos` | Structured | B | manifested real dataset | present | PASS present | - | - | Run topic verifier and harden remaining limitations. |
 | 0 | `0.11_Phase_Transitions` | Structured | B | manifested real dataset | present | PASS present | - | - | Run topic verifier and harden remaining limitations. |
 | 0 | `0.12_Vacuum_Energy_Casimir` | Structured | B | manifested real dataset | present | PASS present | - | - | Run topic verifier and harden remaining limitations. |
-| 0 | `0.13_Thermodynamic_Bridge` | Draft | B | manifested real dataset | present | 0_13_thermodynamic_bridge_verification.json:WARN | - | - | Run topic verifier and harden remaining limitations. |
+| 0 | `0.13_Thermodynamic_Bridge` | Draft | B | manifested real dataset | present | 0_13_core_thermodynamic_constraint_gate.json:BLOCKED; cattaneo_benchmark_artifact.json:SIMULATION_ONLY; matter_space_thermal_control.json:SIMULATION_ONLY | - | - | Run topic verifier and harden remaining limitations. |
 | 0 | `0.15_Cluster_Dynamics` | Draft | B | manifested real dataset | present | 0_15_cluster_dynamics_verification.json:WARN | - | - | Run topic verifier and harden remaining limitations. |
 | 0 | `0.16_Heavy_Nuclei` | Draft | B | manifested real dataset | present | 0_16_heavy_nuclei_verification.json:WARN | - | - | Run topic verifier and harden remaining limitations. |
 | 0 | `0.19_Gravity_GR` | Draft | B | manifested real dataset | present | PASS present | - | - | Run topic verifier and harden remaining limitations. |

@@ -1,164 +1,10 @@
 {
   "blocker_class": "model-baseline failure",
-  "branch_claim_gate": {
-    "claim_boundary": "This gate cannot raise the topic above the current baseline-diagnostic status while the raw McMillan artifact remains FAIL.",
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\branch_claim_gate.json",
-    "sha256": "cb3dddf86149f84761f178d56119fb613a1617cf24dcf234f6b27e22fb370c6a",
-    "summary": {
-      "accepted_now": 2,
-      "allen_dynes_branch_gate": "PASS",
-      "blocked_for_strong_claims": 4,
-      "branches_total": 6,
-      "raw_mcmillan_topic_gate": "controls_topic_level_status"
-    }
-  },
   "claim_class": "model-baseline blocker",
   "command": "python docs/topics/0.4_Superconductivity_Superfluids/Code/03_Research/Experiment_Superconductor_Data.py",
   "environment": {
     "platform": "Windows-11-10.0.26200-SP0",
     "python_version": "3.14.2"
-  },
-  "error_bias_audit": {
-    "interpretation": "Positive signed error means the raw McMillan package overpredicts Tc. A strong positive bias indicates the current lambda/theta/mu row package is systematically too hot.",
-    "mean_signed_error_percent": 61.128436922991796,
-    "median_signed_error_percent": 65.32366701043355,
-    "overpredicted_count": 9,
-    "underpredicted_count": 1
-  },
-  "evidence_lanes": {
-    "allen_dynes_nb3sn_smoke_test": {
-      "artifact_path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Result\\artifacts\\0_4_superconductivity_superfluids_allen_dynes_verification.json",
-      "artifact_sha256": "10cd6ed975f3ab2e8222b5502c08785e833636dee1182aca4d4957bba25374fc",
-      "claim_boundary": "This PASS, when present, is limited to the Nb3Sn Allen-Dynes smoke-test rows. It does not change the raw McMillan artifact or promote the full superconductivity topic.",
-      "claim_class": "source-labeled branch smoke test",
-      "lane_role": "separate branch gate",
-      "model_gate_status": "PASS",
-      "strict_source_locked_summary": {
-        "average_relative_error_percent": 2.0689059911914702,
-        "row_count": 2,
-        "rows_within_20_percent": 2
-      }
-    },
-    "provisional_normalized_sensitivity": {
-      "claim_boundary": "This lane can identify row-package drift, but it cannot replace or override the raw McMillan gate because its substitutions are not fully source-backed.",
-      "claim_class": "sensitivity analysis only",
-      "lane_role": "internal sensitivity only",
-      "metrics": {
-        "average_relative_error_percent": 16.0222880680328,
-        "materials_tested": 10,
-        "materials_within_20_percent": 7,
-        "rows": 10
-      },
-      "model_gate_status": "NON_GATING"
-    },
-    "raw_mcmillan_gate": {
-      "blocker_reason": "Raw McMillan benchmark exceeds the fixed average and per-material 20 percent error gates.",
-      "claim_boundary": "This lane controls the topic-level benchmark status. It remains FAIL until the fixed average and per-material gates are met without hiding rows.",
-      "claim_class": "model-baseline blocker",
-      "lane_role": "primary topic gate",
-      "metrics": {
-        "average_relative_error_percent": 62.41493526953724,
-        "failed_material_count": 9,
-        "materials_skipped_from_raw_mcmillan_gate": 2,
-        "materials_tested": 10,
-        "materials_within_20_percent": 1
-      },
-      "model_gate_status": "FAIL",
-      "row_eligibility_summary": {
-        "branch_migration_candidates": 4,
-        "excluded_rows": 0,
-        "included_rows": 10,
-        "metrics_changed_by_policy": false,
-        "policy_executable_in_this_artifact": true,
-        "skipped_rows": 2
-      },
-      "thresholds": {
-        "average_relative_error_percent_max": 20.0,
-        "per_material_relative_error_percent_max": 20.0
-      },
-      "worst_materials": [
-        {
-          "name": "Vanadium (V)",
-          "relative_error_percent": 156.93515224496207,
-          "source": "MIT Junior Lab",
-          "type": "Type-II"
-        },
-        {
-          "name": "Aluminum (Al)",
-          "relative_error_percent": 86.55242288064956,
-          "source": "McMillan 1968",
-          "type": "Type-I"
-        },
-        {
-          "name": "Mercury (Hg)",
-          "relative_error_percent": 73.61477118183707,
-          "source": "Onnes 1911 / Kittel",
-          "type": "Type-I"
-        },
-        {
-          "name": "Tin (Sn)",
-          "relative_error_percent": 65.53626864429087,
-          "source": "Kittel",
-          "type": "Type-I"
-        },
-        {
-          "name": "Niobium (Nb)",
-          "relative_error_percent": 65.32366701043355,
-          "source": "Kittel / MIT",
-          "type": "Type-II"
-        }
-      ]
-    },
-    "row_resolution_handoff": {
-      "claim_boundary": "This lane can authorize future review work only. No row patch is allowed until the decision gate changes from blocked to eligible.",
-      "lane_role": "source-lock and patch-review control",
-      "model_gate_status": "NON_GATING",
-      "next_priority": "Vanadium lambda_ep and mu_star convention review, then Nb3Ge source-lock pass.",
-      "next_priority_after_wave_2": "Vanadium lambda_ep/mu_star convention review; do not patch Tc/Theta alone without a coherent row package.",
-      "row_evidence_decision_summary": {
-        "rows_blocked_pending_source_review": 3,
-        "rows_eligible_for_patch_review": 0,
-        "rows_total": 3,
-        "top_priority_row": "Vanadium (V)"
-      },
-      "row_evidence_readiness_summary": {
-        "rows_blocked_by_pending_evidence": 3,
-        "rows_ready_for_patch_review": 0,
-        "rows_total": 3
-      },
-      "vanadium_decision": {
-        "decision": "PATCH_BLOCKED",
-        "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\vanadium_source_lock_decision.json",
-        "sha256": "d47ea48614c65c94c64bcb7f06dee8688712f85ff9ca91e0ed3bbfa97bb7ff41",
-        "source_lock_blockers": {
-          "blocked_preview_fields": [
-            "lambda_ep"
-          ],
-          "fields_primary_page_confirmed": [
-            "Tc_observed",
-            "Theta_D_K"
-          ],
-          "fields_requiring_convention_review": [
-            "lambda_ep",
-            "mu_star"
-          ],
-          "fields_requiring_primary_page_confirmation": [],
-          "pending_archive_fields": [
-            "lambda_ep",
-            "mu_star"
-          ],
-          "why_blocked": [
-            "The older preview assumes lambda_ep = 0.6 under fixed Theta_D_K = 380 and mu_star = 0.11.",
-            "Open-fulltext Vanadium captures now report lambda = 0.91 and mu_star values near 0.173 or 0.15 +- 0.03.",
-            "The external captures do not directly support the older internal lambda-only patch preview.",
-            "Tc and Theta_D are now primary-page confirmed as 5.03 K and Theta=338 +/- 5 K, but those values conflict with the current working row and do not rescue the older lambda-only preview.",
-            "lambda_ep and mu_star still require convention review before any coherent Vanadium row patch can be applied."
-          ]
-        },
-        "working_row_mutated": false
-      }
-    },
-    "schema_version": "1.0"
   },
   "failure_analysis": {
     "failed_material_count": 9,
@@ -446,17 +292,17 @@
     "external_source_records": [
       {
         "path": "docs/data/external/condensed_matter/superconductivity/mcmillan_1968/source_record.json",
-        "sha256": "49c49b4d79c700f2839092c1874d426adf73d67ebea78755ef280be55d494404",
+        "sha256": "2c50db09f5a65659a9f81a8af658a08a58fee918943a4b830c9c53949a278ece",
         "status": "present"
       },
       {
         "path": "docs/data/external/condensed_matter/superconductivity/allen_dynes_1975/source_record.json",
-        "sha256": "8e48de1825e64c1c24b9db47d104a4004cd0763b05fb410eccc1b7a45a87bfe3",
+        "sha256": "999f61a80f6341549f7105d5ffb0fde9d7468665fbd0294a0ded293e952c0425",
         "status": "present"
       },
       {
         "path": "docs/data/external/condensed_matter/superconductivity/nims_supercon/source_record.json",
-        "sha256": "5e5f09a30595988c79387267bb75e3b5a848b271f103a433f7be1e24ca6928c5",
+        "sha256": "e6a84ef50271e8f220f0e44d1bab5438e31d557b3a3a25f18837bfddd9334b3a",
         "status": "present"
       },
       {
@@ -958,95 +804,6 @@
     "average_relative_error_percent_max": 20.0,
     "per_material_relative_error_percent_max": 20.0
   },
-  "timestamp_utc": "2026-07-13T13:19:23.637013+00:00",
-  "topic": "0.4_Superconductivity_Superfluids",
-  "type_summary": [
-    {
-      "average_relative_error_percent": 111.12940962769781,
-      "materials_tested": 2,
-      "materials_within_20_percent": 0,
-      "mean_signed_error_percent": 111.12940962769781,
-      "type": "Type-II"
-    },
-    {
-      "average_relative_error_percent": 58.06048525204953,
-      "materials_tested": 5,
-      "materials_within_20_percent": 0,
-      "mean_signed_error_percent": 58.06048525204953,
-      "type": "Type-I"
-    },
-    {
-      "average_relative_error_percent": 52.57780772350093,
-      "materials_tested": 2,
-      "materials_within_20_percent": 0,
-      "mean_signed_error_percent": 52.57780772350093,
-      "type": "A15"
-    },
-    {
-      "average_relative_error_percent": 6.432491732727168,
-      "materials_tested": 1,
-      "materials_within_20_percent": 1,
-      "mean_signed_error_percent": -6.432491732727168,
-      "type": "Two-Gap"
-    }
-  ],
-  "vanadium_candidate_patch_preview": {
-    "claim_boundary": "This is a patch preview only. It does not authorize changing the working row without source confirmation.",
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\vanadium_candidate_patch_preview.json",
-    "projected_gate_impact": {
-      "preferred_proxy_under_internal_sensitivity": "Theta_D_K",
-      "projected_relative_error_percent": 20.236512522434534,
-      "raw_relative_error_percent": 156.93515224496207
-    },
-    "sha256": "5480554e0cf25b1741be92d51a35f75dfee5bacdd6eef3f89df50719166de100"
-  },
-  "vanadium_source_lock_decision": {
-    "claim_boundary": "This decision records why Vanadium cannot be patched yet. Primary Tc and Theta/proxy context are now confirmed, but lambda_ep and mu_star remain convention-conflicted. It does not authorize any working-row edit and does not reduce the raw McMillan FAIL.",
-    "decision": "PATCH_BLOCKED",
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\vanadium_source_lock_decision.json",
-    "raw_mcmillan_row_status": "unchanged_due_to_source_lock_blocker",
-    "sha256": "d47ea48614c65c94c64bcb7f06dee8688712f85ff9ca91e0ed3bbfa97bb7ff41",
-    "source_lock_blockers": {
-      "blocked_preview_fields": [
-        "lambda_ep"
-      ],
-      "fields_primary_page_confirmed": [
-        "Tc_observed",
-        "Theta_D_K"
-      ],
-      "fields_requiring_convention_review": [
-        "lambda_ep",
-        "mu_star"
-      ],
-      "fields_requiring_primary_page_confirmation": [],
-      "pending_archive_fields": [
-        "lambda_ep",
-        "mu_star"
-      ],
-      "why_blocked": [
-        "The older preview assumes lambda_ep = 0.6 under fixed Theta_D_K = 380 and mu_star = 0.11.",
-        "Open-fulltext Vanadium captures now report lambda = 0.91 and mu_star values near 0.173 or 0.15 +- 0.03.",
-        "The external captures do not directly support the older internal lambda-only patch preview.",
-        "Tc and Theta_D are now primary-page confirmed as 5.03 K and Theta=338 +/- 5 K, but those values conflict with the current working row and do not rescue the older lambda-only preview.",
-        "lambda_ep and mu_star still require convention review before any coherent Vanadium row patch can be applied."
-      ]
-    },
-    "working_row_mutated": false
-  },
-  "vanadium_source_lock_packet": {
-    "claim_boundary": "This is a focused execution packet for the Vanadium row only. It does not certify the row without attached source evidence.",
-    "path": "docs\\topics\\0.4_Superconductivity_Superfluids\\Data\\03_Research\\vanadium_source_lock_packet.json",
-    "proxy_sensitivity": {
-      "omega_log_proxy_relative_error_percent": 29.12373998677551,
-      "preferred_proxy_under_internal_sensitivity": "Theta_D_K",
-      "theta_proxy_relative_error_percent": 20.236512522434417
-    },
-    "sha256": "4ca3e7d5b5e64291d96dbe29e4234235706bb8b545788863209bd81e878134f2",
-    "status_summary": {
-      "decision_gate": "Borderline residual; verify theta/omega proxy choice and source row.",
-      "provisional_relative_error_percent": 20.236512522434534,
-      "raw_relative_error_percent": 156.93515224496207,
-      "source_priority": "borderline_source_lock_required"
-    }
-  }
+  "timestamp_utc": "2026-08-08T09:10:48.385039+00:00",
+  "topic": "0.4_Superconductivity_Superfluids"
 }

@@ -1,43 +1,39 @@
 {
   "schema_version": "1.0",
   "topic": "0.6_Electroweak_Physics",
-  "timestamp_utc": "2026-04-23T02:38:42.684776+00:00",
+  "timestamp_utc": "2026-08-08T09:11:03.387420+00:00",
   "repo_root": "C:\\Users\\santa\\Desktop\\uet_harness",
   "python_executable": "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
   "verification_spec": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.6_Electroweak_Physics\\VERIFICATION_SPEC.md",
-  "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.6_Electroweak_Physics\\Result\\artifacts\\0_6_electroweak_physics_verification.json",
+  "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.6_Electroweak_Physics\\Result\\artifacts\\electroweak_pdg_validation.json",
   "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_6_electroweak_physics_run_contract.json",
-  "command": "python docs/topics/0.6_Electroweak_Physics/Code/03_Research/Research_Alpha_Decay.py",
+  "command": "python docs/topics/0.6_Electroweak_Physics/Code/03_Research/Research_Electroweak_PDG_Comparison.py",
   "input_hashes": [
     {
-      "path": "Data/03_Research/__init__.py",
-      "status": "present",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "bytes": "0"
+      "path": "docs/data/external/particle_physics/pdg/electroweak_reference_package.json",
+      "status": "missing"
     },
     {
-      "path": "Data/03_Research/alpha_decay_data.txt",
-      "status": "present",
-      "sha256": "d7c59fb6074cea6105b7736ff463bdfc0762d63f84c218f3e8ed9fcdd2b9a492",
-      "bytes": "408"
+      "path": "docs/data/external/particle_physics/pdg/electroweak_benchmark_package.json",
+      "status": "missing"
     },
     {
-      "path": "Data/03_Research/beta_plus_data.py",
+      "path": "Data/03_Research/source_lock_manifest.json",
       "status": "present",
-      "sha256": "b7707bee6708bb2d2223e9c69a95436b88a09259f4f230edfc088107381dda82",
-      "bytes": "7613"
+      "sha256": "48e8c233f9f41e8c099e26f7ed2a91a38ee9c9dfbc0354a5c184533e94c6eabc",
+      "bytes": "2493"
     },
     {
-      "path": "Data/03_Research/Competitor_Standard_Model.json",
+      "path": "Code/01_Engine/Engine_Electroweak.py",
       "status": "present",
-      "sha256": "cfe390c76c0ac565c3f5e32d3000f5c9db7b7150206047270d5bd8f46fc39bb5",
-      "bytes": "1084"
+      "sha256": "ce3d65b024227b96e6367e3baf14f5ee48fd158031437f15e36deb7e2a342393",
+      "bytes": "8310"
     }
   ],
-  "timeout_seconds": 30,
+  "timeout_seconds": 120,
   "resolved_command": [
     "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
-    "docs/topics/0.6_Electroweak_Physics/Code/03_Research/Research_Alpha_Decay.py"
+    "docs/topics/0.6_Electroweak_Physics/Code/03_Research/Research_Electroweak_PDG_Comparison.py"
   ],
   "environment_overrides": {
     "PYTHONIOENCODING": "utf-8",
@@ -47,10 +43,10 @@
   "status": "ran",
   "exit_code": 0,
   "passed_run_contract": true,
-  "duration_seconds": 2.478,
-  "stdout_tail": "============================================================\n[NUCLEAR] UET REAL DATA TEST: ALPHA DECAY\n============================================================\n\u2705 Loaded 16 Real Data points WITH EXACT Z VALUES.\n\n\ud83d\udcca Statistical Validation:\n   Correlation (predicted vs real): 0.97632\n   \u2705 PASS: UET/Gamow scaling perfectly matches Real Data.\n\n\ud83d\udcf8 Validation Plot saved: C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.6_Electroweak_Physics\\Result\\01_Showcase/alpha_decay_fit.png\n",
+  "duration_seconds": 10.975,
+  "stdout_tail": "======================================================================\nUET ELECTROWEAK REAL-DATA TEST\nData: PDG 2025 SQLite + electroweak effective-angle snapshot\n======================================================================\n\ud83d\udd0d UET Glass Box: Logging (Streaming) to 'C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.6_Electroweak_Physics\\Result\\_Logs\\1786180267_ElectroweakSolver'\n\n[1] ELECTROWEAK OBSERVABLES\n----------------------------------------------------------------------\n| Observable | UET | PDG/reference | Rel. error |\n| :-- | --: | --: | --: |\n| sin2_theta_W | 0.231236 | 0.23121 | 0.011% |\n| m_W_GeV | 79.9525 | 80.377 | 0.528% |\n| m_H_GeV | 125.263 | 125.2 | 0.051% |\n| G_F_GeV_minus_2 | 1.16638e-05 | 1.16638e-05 | 0.000% |\n\n[2] INTERPRETATION\n----------------------------------------------------------------------\nThis test checks whether the UET electroweak engine lands near real upstream\nelectroweak scales and couplings. It does not prove the full gauge theory; it\ntests whether the numerical consequences of the engine are close to real PDG values.\n\n[3] PASS/FAIL GATES\n----------------------------------------------------------------------\n  sin2_theta_W: PASS\n  m_W_GeV: PASS\n  m_H_GeV: PASS\n  G_F_GeV_minus_2: PASS\n\nArtifact saved to C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.6_Electroweak_Physics\\Result\\artifacts\\electroweak_pdg_validation.json\n\nRESULT: PASS\n",
   "stderr_tail": "",
   "declared_scientific_artifact_exists": true,
-  "declared_scientific_artifact_sha256": "1284decd7f42292ea896c422cff730b6dfdffbe2cbe46e89cc558170356e9d33",
-  "declared_scientific_artifact_bytes": 2569
+  "declared_scientific_artifact_sha256": "fb9576481dd1639f813b2329286a3312c365426f45545428bf79e0c3a2f981dc",
+  "declared_scientific_artifact_bytes": 6713
 }

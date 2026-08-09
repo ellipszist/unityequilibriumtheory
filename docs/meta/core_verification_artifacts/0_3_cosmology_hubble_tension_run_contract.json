@@ -1,15 +1,26 @@
 {
   "schema_version": "1.0",
   "topic": "0.3_Cosmology_Hubble_Tension",
-  "timestamp_utc": "2026-04-23T02:38:34.749235+00:00",
+  "timestamp_utc": "2026-08-08T09:10:21.769542+00:00",
   "repo_root": "C:\\Users\\santa\\Desktop\\uet_harness",
   "python_executable": "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
   "verification_spec": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.3_Cosmology_Hubble_Tension\\VERIFICATION_SPEC.md",
   "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.3_Cosmology_Hubble_Tension\\Result\\artifacts\\hubble_comparison_validation.json",
   "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_3_cosmology_hubble_tension_run_contract.json",
   "command": "python docs/topics/0.3_Cosmology_Hubble_Tension/Code/03_Research/Research_Hubble_Comparison.py",
-  "input_hashes": [],
-  "timeout_seconds": 30,
+  "input_hashes": [
+    {
+      "path": "alpha_em",
+      "status": "missing"
+    },
+    {
+      "path": "Data/03_Research/source_lock_manifest.json",
+      "status": "present",
+      "sha256": "134cf5b7e584a2764ce8409636dc7c582676bdba16723a7632a32a8736fc891a",
+      "bytes": "1930"
+    }
+  ],
+  "timeout_seconds": 120,
   "resolved_command": [
     "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
     "docs/topics/0.3_Cosmology_Hubble_Tension/Code/03_Research/Research_Hubble_Comparison.py"
@@ -22,10 +33,10 @@
   "status": "ran",
   "exit_code": 0,
   "passed_run_contract": true,
-  "duration_seconds": 5.599,
-  "stdout_tail": "======================================================================\nUET COSMOLOGY - HUBBLE TENSION TEST\nData: Planck 2018 + SH0ES 2022\n======================================================================\n\ud83d\udd0d UET Glass Box: Logging (Streaming) to 'C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.3_Cosmology_Hubble_Tension\\Result\\_Logs\\1776911915_UET_Cosmology_Engine'\nPlanck 2018 (CMB): 67.4 km/s/Mpc\nSH0ES 2022 (local): 73.04 km/s/Mpc\nObserved Delta H0: 5.64 km/s/Mpc\nUET early value: 67.40 km/s/Mpc\nUET late value: 73.16 km/s/Mpc\nUET Delta H0: 5.76 km/s/Mpc\nHubble frame beta: 0.0854 (sqrt(ALPHA_EM))\nGeneric solver beta: 2.5839e-02\nRelative error: 2.1%\nStatus: PASS\nPlot saved to C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.3_Cosmology_Hubble_Tension\\Result\\artifacts\\hubble_tension_resolution.png\nArtifact saved to C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.3_Cosmology_Hubble_Tension\\Result\\artifacts\\hubble_comparison_validation.json\n",
+  "duration_seconds": 25.124,
+  "stdout_tail": "======================================================================\nUET COSMOLOGY - HUBBLE TENSION TEST\nData: Planck 2018 + SH0ES 2022\n======================================================================\n\ud83d\udd0d UET Glass Box: Logging (Streaming) to 'C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.3_Cosmology_Hubble_Tension\\Result\\_Logs\\1786180225_UET_Cosmology_Engine'\nPlanck 2018 (CMB): 67.4 km/s/Mpc\nSH0ES 2022 (local): 73.04 km/s/Mpc\nObserved Delta H0: 5.64 km/s/Mpc\nUET early value: 67.40 km/s/Mpc\nUET late value: 73.16 km/s/Mpc\nUET Delta H0: 5.76 km/s/Mpc\nHubble frame beta: 0.0854 (sqrt(ALPHA_EM))\nGeneric solver beta: 2.5839e-02\nRelative error: 2.1%\nStatus: PASS\nPlot saved to C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.3_Cosmology_Hubble_Tension\\Result\\artifacts\\hubble_tension_resolution.png\nArtifact saved to C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.3_Cosmology_Hubble_Tension\\Result\\artifacts\\hubble_comparison_validation.json\n",
   "stderr_tail": "",
   "declared_scientific_artifact_exists": true,
-  "declared_scientific_artifact_sha256": "4ebadf039212151b68f4ff7f330c06fe63507861c27465072253b28d53422fd7",
-  "declared_scientific_artifact_bytes": 1248
+  "declared_scientific_artifact_sha256": "aa2ecaf8f1914207905fe788b3527cec955c28617c29b11cd470be3514c3d7bf",
+  "declared_scientific_artifact_bytes": 4140
 }

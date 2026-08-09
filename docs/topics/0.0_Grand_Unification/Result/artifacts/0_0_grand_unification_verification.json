@@ -1,196 +1,70 @@
 {
   "schema_version": "1.1",
   "topic": "0.0_Grand_Unification",
-  "timestamp_utc": "2026-07-13T12:37:55.772326+00:00",
+  "timestamp_utc": "2026-08-08T09:10:10.789107+00:00",
   "command": "python docs/topics/0.0_Grand_Unification/Code/03_Research/Verify_Omni.py",
   "status": "WARN",
   "passed_run_contract": true,
   "input_hashes": [
     {
       "path": "docs/topics/0.0_Grand_Unification/Data/03_Research/integration_dependency_manifest.json",
-      "bytes": 2697,
-      "sha256": "5484e4472621cad6a2a9564b7b357d8f7f15d20df34f63a10ee9d4cda001959d",
+      "bytes": 2755,
+      "sha256": "d971758b0109fa138879021497ecab212f49d185b2ecb8d2d2b3d42b92ce3d08",
       "provenance_role": "integration_dependency_manifest"
     },
     {
       "path": "docs/topics/0.1_Galaxy_Rotation_Problem/Result/artifacts/galaxy_rotation_validation.json",
-      "bytes": 48470,
-      "sha256": "93d0bab522c570212bfb4160377a119e3d462c8ce49c106f606caabcfd41e52b",
+      "bytes": 1419,
+      "sha256": "3927cfd3992e748aebc6ab7a0efcf9f86d3eeb686fec91cdbefd56c29c49dd9e",
+      "provenance_role": "subordinate_artifact",
+      "status": "UNKNOWN"
+    },
+    {
+      "path": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/0_6_electroweak_physics_verification.json",
+      "bytes": 2569,
+      "sha256": "1284decd7f42292ea896c422cff730b6dfdffbe2cbe46e89cc558170356e9d33",
       "provenance_role": "subordinate_artifact",
       "status": "ran"
     },
     {
-      "path": "docs/topics/0.2_Black_Hole_Physics/Result/artifacts/0_2_black_hole_physics_verification.json",
-      "bytes": 7731,
-      "sha256": "1c21bd1dc126f6e54af0da3d7e5d47cf081567fe0ff3b7935a7337c5a5224be3",
-      "provenance_role": "subordinate_artifact",
-      "status": "PASS"
-    },
-    {
-      "path": "docs/topics/0.3_Cosmology_Hubble_Tension/Result/artifacts/hubble_comparison_validation.json",
-      "bytes": 10565,
-      "sha256": "a142e604312461fb6496c391fd8ca3db46022e1d830c51036c3af6e90d57df05",
-      "provenance_role": "subordinate_artifact",
-      "status": "PASS"
-    },
-    {
-      "path": "docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/0_4_superconductivity_superfluids_verification.json",
-      "bytes": 126146,
-      "sha256": "25faaa1c7b657cbaa8009224d17b26c4b2f6c36534e961b8c236285ff7301821",
-      "provenance_role": "subordinate_artifact",
-      "status": "FAIL"
-    },
-    {
-      "path": "docs/topics/0.5_Nuclear_Binding_Hadrons/Result/artifacts/0_5_nuclear_binding_hadrons_verification.json",
-      "bytes": 5029,
-      "sha256": "fbb29c6f4574476edc3f22af409dc22fd043fc5a87e1110f5556670d28b10797",
-      "provenance_role": "subordinate_artifact",
-      "status": "WARN"
-    },
-    {
-      "path": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/electroweak_expanded_benchmark.json",
-      "bytes": 13482,
-      "sha256": "11e5764f96d315e4f3baef714c127478808022b3c7a9ccf4b6a9daa4bec178c3",
-      "provenance_role": "subordinate_artifact",
-      "status": "PASS"
-    },
-    {
-      "path": "docs/topics/0.7_Neutrino_Physics/Result/artifacts/0_7_neutrino_physics_verification.json",
-      "bytes": 3861,
-      "sha256": "4453033099158c5cbd82e0ac900fb1b2f37afdf4896d509460d62ce336f89801",
-      "provenance_role": "subordinate_artifact",
-      "status": "WARN"
-    },
-    {
-      "path": "docs/topics/0.8_Muon_g2_Anomaly/Result/artifacts/0_8_muon_g2_anomaly_verification.json",
-      "bytes": 2637,
-      "sha256": "fa848138e74ad530670e6a621848cbf1f2cb750eb9cc2b944234cb1541364c16",
-      "provenance_role": "subordinate_artifact",
-      "status": "WARN"
-    },
-    {
-      "path": "docs/topics/0.9_Quantum_Nonlocality/Result/artifacts/0_9_quantum_nonlocality_verification.json",
-      "bytes": 9992,
-      "sha256": "91b02aa0f94bf889fa45353306678df785e4cb06aaba9414abb2730ecf43bc0a",
-      "provenance_role": "subordinate_artifact",
-      "status": "PASS"
-    },
-    {
       "path": "docs/topics/0.10_Fluid_Dynamics_Chaos/Result/artifacts/fluid_benchmark_validation.json",
-      "bytes": 8478,
-      "sha256": "a00184bd8565e3c8fafb3daeb8b518de59a38f3ec18d52d7386966637f9d2c95",
+      "bytes": 2800,
+      "sha256": "8737e75f8e7ad004217f5a3b9825bd9267c30dc39ca95e2e541e9142b68dcccb",
       "provenance_role": "subordinate_artifact",
-      "status": "PASS"
-    },
-    {
-      "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_phase_transitions_verification.json",
-      "bytes": 7301,
-      "sha256": "65d67c652ac167960114b905195d8bcd5ddcb8b8944dc43ef6b21ce9af5edfa7",
-      "provenance_role": "subordinate_artifact",
-      "status": "PASS"
-    },
-    {
-      "path": "docs/topics/0.12_Vacuum_Energy_Casimir/Result/artifacts/0_12_vacuum_energy_casimir_verification.json",
-      "bytes": 10282,
-      "sha256": "4e28ccd4fb8ae9e89eef3d6988bdae1fadefa1709832f3c7ff6a587df474a8c8",
-      "provenance_role": "subordinate_artifact",
-      "status": "PASS"
-    },
-    {
-      "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/0_13_thermodynamic_bridge_verification.json",
-      "bytes": 72056,
-      "sha256": "55242147cee5f4846a0b6d3e5bfb9f96e4a9b8f5447d8445f815eccf24016a3a",
-      "provenance_role": "subordinate_artifact",
-      "status": "WARN"
-    },
-    {
-      "path": "docs/topics/0.14_Complex_Systems/Result/artifacts/0_14_complex_systems_verification.json",
-      "bytes": 12038,
-      "sha256": "143c48bef81ab85c5b2263683652e139537301ac7da0c05ba7cdf7f5b2dcf986",
-      "provenance_role": "subordinate_artifact",
-      "status": "PASS"
-    },
-    {
-      "path": "docs/topics/0.15_Cluster_Dynamics/Result/artifacts/0_15_cluster_dynamics_verification.json",
-      "bytes": 7943,
-      "sha256": "1b7a27441a271fe6b277d7b744a54f658e050c2bfc51bca3e10f1158da26c1b3",
-      "provenance_role": "subordinate_artifact",
-      "status": "WARN"
-    },
-    {
-      "path": "docs/topics/0.16_Heavy_Nuclei/Result/artifacts/0_16_heavy_nuclei_verification.json",
-      "bytes": 7883,
-      "sha256": "12db48af09fd68f065a4285c4e43ae12b029ba7c683a7dd77a8909bc58c60a29",
-      "provenance_role": "subordinate_artifact",
-      "status": "WARN"
+      "status": "UNKNOWN"
     },
     {
       "path": "docs/topics/0.17_Mass_Generation/Result/artifacts/0_17_mass_generation_verification.json",
-      "bytes": 10017,
-      "sha256": "11f7e625ded103a0175865d1d9865657718f6f9adfc4508f1157909f9d440b92",
+      "bytes": 3330,
+      "sha256": "65f3b99a542522fca372e8f7c6ef0bc9b268b82d03b5059ddcffac526be3cdf1",
       "provenance_role": "subordinate_artifact",
       "status": "PASS"
     },
     {
       "path": "docs/topics/0.18_Mathnicry/Result/artifacts/0_18_mathnicry_verification.json",
-      "bytes": 7939,
-      "sha256": "c12cbf728e8ca58279976d4665b7148e4727cfdc3d0fc4546ba9678219f25e95",
+      "bytes": 1748,
+      "sha256": "47c3cc8e5d4600b4dd916c8928d02d71c521626f76a9b893e0ff1a0e967b1a55",
       "provenance_role": "subordinate_artifact",
       "status": "WARN"
-    },
-    {
-      "path": "docs/topics/0.19_Gravity_GR/Result/artifacts/0_19_gravity_gr_verification.json",
-      "bytes": 7091,
-      "sha256": "98221684ab28d5989cd64fbcdf7de2e1fdd0ba9b45cb73fb52f0746a8111caa7",
-      "provenance_role": "subordinate_artifact",
-      "status": "PASS"
     },
     {
       "path": "docs/topics/0.20_Atomic_Physics/Result/artifacts/0_20_atomic_physics_verification.json",
-      "bytes": 412794,
-      "sha256": "71ae185641dc2af9e93a45adf12195e44a420028631128109770c871cc70f843",
+      "bytes": 139449,
+      "sha256": "99925a726f651b6916fdbccf1d78bd7cf3c268fb57b20d2179ab80f0aa9d969a",
       "provenance_role": "subordinate_artifact",
       "status": "PASS"
     },
     {
-      "path": "docs/topics/0.21_Yang_Mills_Mass_Gap/Result/artifacts/mass_gap_validation.json",
-      "bytes": 6087,
-      "sha256": "11ac697160670d1ffc1c94970fbcf22acba963563449ce7b959efa898d6a5850",
-      "provenance_role": "subordinate_artifact",
-      "status": "WARN"
-    },
-    {
-      "path": "docs/topics/0.22_Biophysics_Origin_of_Life/Result/artifacts/0_22_biophysics_origin_of_life_verification.json",
-      "bytes": 10254,
-      "sha256": "ed6dac28a27a3fec2dcd550c702ca3fd628c337252c89546c62d7e94d44c0683",
-      "provenance_role": "subordinate_artifact",
-      "status": "WARN"
-    },
-    {
-      "path": "docs/topics/0.23_Unity_Scale_Link/Result/artifacts/0_23_unity_scale_link_verification.json",
-      "bytes": 18232,
-      "sha256": "12280888216c9744f92b134a79945f526222b8a4fa7baabe4daba40b2d4c0cd8",
-      "provenance_role": "subordinate_artifact",
-      "status": "WARN"
-    },
-    {
       "path": "docs/topics/0.24_Artificial_Intelligence/Result/artifacts/0_24_artificial_intelligence_verification.json",
-      "bytes": 10481,
-      "sha256": "ab05fe3c059282e6f98e6b460db49d1c95c71c2239383593ac944f8ca92ba710",
+      "bytes": 4383,
+      "sha256": "3aa2f52f246611a902af4d5af5d8fae148f61e5671066eb6fc597d8c6db9997d",
       "provenance_role": "subordinate_artifact",
       "status": "WARN"
     },
     {
       "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_strategy_power_economics_verification.json",
-      "bytes": 12753,
-      "sha256": "401e616df9e4683da31c4e589f4b6bdaab7634420cb52bed5eaeb0b70531d863",
-      "provenance_role": "subordinate_artifact",
-      "status": "WARN"
-    },
-    {
-      "path": "docs/topics/0.26_Cosmic_Dynamic_Frame/Result/artifacts/0_26_cosmic_dynamic_frame_verification.json",
-      "bytes": 10997,
-      "sha256": "f75aeab6f37be54e6212dc60e1148d85ebdbf562665c8fc3a051e2bacdaff70d",
+      "bytes": 7550,
+      "sha256": "401972654a72f4b72e5c5162b70790e907cf4646a475a7fa2bc571f610722334",
       "provenance_role": "subordinate_artifact",
       "status": "WARN"
     }
@@ -201,263 +75,24 @@
       "role": "galaxy/halo metric dependency",
       "metric_bridge": "galaxy_halo_ratio",
       "artifact": "docs/topics/0.1_Galaxy_Rotation_Problem/Result/artifacts/galaxy_rotation_validation.json",
-      "status": "WARN",
-      "claim_class": "C - internal benchmark",
-      "schema_version": null,
-      "timestamp_utc": "2026-06-18T13:42:25.793595+00:00",
-      "claim_gates": [
-        {
-          "gate": "galaxy_model_gate",
-          "status": "BLOCKED",
-          "run_contract_status": "PASS",
-          "summary_row_model_status": "FAIL",
-          "source_lock_status": "OPEN",
-          "baseline_comparison_status": "OPEN",
-          "blocked_claims": [
-            "dark-matter replacement",
-            "full SPARC replication",
-            "galaxy-rotation theory closure",
-            "out-of-sample prediction"
-          ],
-          "claim_boundary": "This gate lets the verifier run and residual model evidence diverge. A runnable artifact does not imply galaxy-model acceptance."
-        },
-        {
-          "gate": "galaxy_claim_scope_gate",
-          "status": "FAIL",
-          "claim_class": "C_summary_row_internal_benchmark_only",
-          "blocked_claims": [
-            "UET replaces dark matter for galaxy rotation curves.",
-            "UET replicates the full upstream SPARC rotation-curve archive.",
-            "UET closes galaxy-dynamics theory."
-          ],
-          "blocked_export_phrases": [
-            "dark matter replaced",
-            "full SPARC replication",
-            "galaxy rotation problem solved",
-            "zero curve fitting",
-            "out-of-sample prediction validated",
-            "galaxy dynamics closed"
-          ],
-          "next_blockers": [
-            "summary_row_model_gate_not_passed",
-            "source_lock_manifest_missing",
-            "row_semantics_radius_convention_open",
-            "competitor_baseline_artifact_missing",
-            "heuristic_bridge_sensitivity_missing",
-            "out_of_sample_validation_missing"
-          ],
-          "claim_boundary": "A runnable artifact supports only an internal summary-row benchmark over the repository working copy. It does not support dark-matter replacement, full SPARC replication, zero-fit claims, out-of-sample prediction, or galaxy-dynamics closure."
-        }
-      ],
-      "sha256": "93d0bab522c570212bfb4160377a119e3d462c8ce49c106f606caabcfd41e52b",
-      "bytes": 48470
-    },
-    {
-      "topic": "0.2_Black_Hole_Physics",
-      "role": "black-hole physics dependency",
-      "metric_bridge": "black_hole_gate",
-      "artifact": "docs/topics/0.2_Black_Hole_Physics/Result/artifacts/0_2_black_hole_physics_verification.json",
-      "status": "PASS",
-      "claim_class": "C internal benchmark",
-      "schema_version": "1.1",
-      "timestamp_utc": "2026-06-18T13:48:16.727281+00:00",
-      "claim_gates": [
-        {
-          "gate": "branch_claim_gate",
-          "status": "BLOCKED",
-          "accepted_now": 2,
-          "blocked_for_strong_claims": 4,
-          "claim_boundary": "This gate keeps the topic at EHT benchmark and comparator status, not black-hole theory closure."
-        }
-      ],
-      "sha256": "1c21bd1dc126f6e54af0da3d7e5d47cf081567fe0ff3b7935a7337c5a5224be3",
-      "bytes": 7731
-    },
-    {
-      "topic": "0.3_Cosmology_Hubble_Tension",
-      "role": "Hubble/cosmology dependency",
-      "metric_bridge": "hubble_gate",
-      "artifact": "docs/topics/0.3_Cosmology_Hubble_Tension/Result/artifacts/hubble_comparison_validation.json",
-      "status": "PASS",
-      "claim_class": null,
-      "schema_version": null,
-      "timestamp_utc": "2026-06-18T13:53:39.788820+00:00",
-      "claim_gates": [
-        {
-          "gate": "hubble_claim_scope_gate",
-          "status": "SCALAR_H0_BENCHMARK_ONLY",
-          "claim_class": "C_internal_scalar_h0_published_value_benchmark",
-          "blocked_exports": [
-            "Hubble tension resolved",
-            "validated full cosmology model",
-            "dark-energy replacement",
-            "high-z prediction confirmed",
-            "derived beta_frame relation"
-          ],
-          "blocked_export_phrases": [
-            "Hubble tension resolved",
-            "full cosmology model validated",
-            "Planck SH0ES likelihood replicated",
-            "BAO SN CMB consistency validated",
-            "dark energy replaced",
-            "high-z prediction confirmed",
-            "beta_frame derived",
-            "cosmology solved"
-          ],
-          "next_blockers": [
-            "bridge_derivation_with_units_missing",
-            "full_planck_shoes_likelihood_pipeline_missing",
-            "bao_sn_cmb_consistency_package_missing",
-            "high_z_transition_verifier_missing",
-            "dark_energy_branch_artifact_missing",
-            "uncertainty_propagation_gate_missing",
-            "source_targets_still_blocked"
-          ],
-          "claim_boundary": "0.3 may export only an internal scalar Planck-SH0ES H0-gap benchmark. It must not be used as a resolved-Hubble-tension, full-cosmology, dark-energy, high-z prediction, or derived beta-frame claim until dedicated derivation, likelihood, and branch gates close."
-        },
-        {
-          "gate": "branch_claim_gate",
-          "status": "BLOCKED",
-          "accepted_now": 1,
-          "blocked_for_strong_claims": 3,
-          "claim_boundary": "This gate cannot raise the topic above the current internal scalar H0 benchmark package."
-        }
-      ],
-      "sha256": "a142e604312461fb6496c391fd8ca3db46022e1d830c51036c3af6e90d57df05",
-      "bytes": 10565
-    },
-    {
-      "topic": "0.4_Superconductivity_Superfluids",
-      "role": "superconductivity model dependency",
-      "metric_bridge": "superconductivity_model_gate",
-      "artifact": "docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/0_4_superconductivity_superfluids_verification.json",
-      "status": "FAIL",
-      "claim_class": "model-baseline blocker",
-      "schema_version": "1.4",
-      "timestamp_utc": "2026-06-19T17:35:22.956530+00:00",
-      "claim_gates": [
-        {
-          "gate": "branch_claim_gate",
-          "status": "BLOCKED",
-          "accepted_now": 2,
-          "blocked_for_strong_claims": 4,
-          "claim_boundary": "This gate cannot raise the topic above the current baseline-diagnostic status while the raw McMillan artifact remains FAIL."
-        }
-      ],
-      "sha256": "25faaa1c7b657cbaa8009224d17b26c4b2f6c36534e961b8c236285ff7301821",
-      "bytes": 126146
-    },
-    {
-      "topic": "0.5_Nuclear_Binding_Hadrons",
-      "role": "nuclear-scale calibration dependency",
-      "metric_bridge": "nuclear_binding_gate",
-      "artifact": "docs/topics/0.5_Nuclear_Binding_Hadrons/Result/artifacts/0_5_nuclear_binding_hadrons_verification.json",
-      "status": "WARN",
+      "status": "UNKNOWN",
       "claim_class": null,
       "schema_version": "1.0",
-      "timestamp_utc": "2026-04-23T01:30:37.387917+00:00",
-      "sha256": "0f0d70a92f177a9f9e45f572a2e439110fffccb1263e16bd41cc349812a6a3c1",
-      "bytes": 24257
+      "timestamp_utc": "2026-07-13T13:04:38.508214+00:00",
+      "sha256": "3927cfd3992e748aebc6ab7a0efcf9f86d3eeb686fec91cdbefd56c29c49dd9e",
+      "bytes": 1419
     },
     {
       "topic": "0.6_Electroweak_Physics",
       "role": "Weinberg-angle metric dependency",
       "metric_bridge": "weinberg_angle",
-      "artifact": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/electroweak_expanded_benchmark.json",
-      "status": "PASS",
-      "claim_class": null,
-      "schema_version": null,
-      "timestamp_utc": "2026-06-18T13:55:50.536892+00:00",
-      "claim_gates": [
-        {
-          "gate": "branch_claim_gate",
-          "status": "BLOCKED",
-          "accepted_now": 3,
-          "blocked_for_strong_claims": 3,
-          "claim_boundary": "This gate cannot raise the topic above the current selected electroweak benchmark package."
-        }
-      ],
-      "sha256": "11e5764f96d315e4f3baef714c127478808022b3c7a9ccf4b6a9daa4bec178c3",
-      "bytes": 13482
-    },
-    {
-      "topic": "0.7_Neutrino_Physics",
-      "role": "neutrino benchmark dependency",
-      "metric_bridge": "neutrino_gate",
-      "artifact": "docs/topics/0.7_Neutrino_Physics/Result/artifacts/0_7_neutrino_physics_verification.json",
-      "status": "WARN",
+      "artifact": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/0_6_electroweak_physics_verification.json",
+      "status": "ran",
       "claim_class": null,
       "schema_version": "1.0",
-      "timestamp_utc": "2026-04-23T01:30:53.965910+00:00",
-      "claim_gates": [],
-      "sha256": "4453033099158c5cbd82e0ac900fb1b2f37afdf4896d509460d62ce336f89801",
-      "bytes": 3861
-    },
-    {
-      "topic": "0.8_Muon_g2_Anomaly",
-      "role": "muon g-2 benchmark dependency",
-      "metric_bridge": "muon_g2_gate",
-      "artifact": "docs/topics/0.8_Muon_g2_Anomaly/Result/artifacts/0_8_muon_g2_anomaly_verification.json",
-      "status": "WARN",
-      "claim_class": null,
-      "schema_version": "1.0",
-      "timestamp_utc": "2026-04-23T01:30:55.063139+00:00",
-      "claim_gates": [],
-      "sha256": "fa848138e74ad530670e6a621848cbf1f2cb750eb9cc2b944234cb1541364c16",
-      "bytes": 2637
-    },
-    {
-      "topic": "0.9_Quantum_Nonlocality",
-      "role": "quantum/nonlocality dependency",
-      "metric_bridge": "nonlocality_gate",
-      "artifact": "docs/topics/0.9_Quantum_Nonlocality/Result/artifacts/0_9_quantum_nonlocality_verification.json",
-      "status": "PASS",
-      "claim_class": "C - source-referenced internal CHSH benchmark",
-      "schema_version": "1.3",
-      "timestamp_utc": "2026-06-18T14:00:31.846287+00:00",
-      "claim_gates": [
-        {
-          "gate": "chsh_claim_scope_gate",
-          "status": "CHSH_SUMMARY_ONLY_RAW_AND_MECHANISM_BLOCKED",
-          "claim_class": "C_internal_chsh_summary_benchmark",
-          "blocked_claims": [
-            "Raw Bell event counts have been reconstructed locally.",
-            "UET derives the CHSH correlations from first principles.",
-            "UET replaces the standard quantum nonlocality framework.",
-            "Qubit, double-slit, tunneling, or LC-unity lanes inherit PASS from CHSH."
-          ],
-          "blocked_export_phrases": [
-            "UET proves nonlocality",
-            "nonlocality solved",
-            "topological filament derivation verified",
-            "standard quantum framework replaced",
-            "raw Bell counts reconstructed",
-            "qubit claims inherit CHSH PASS",
-            "double-slit explained by CHSH",
-            "tunneling validated by CHSH",
-            "LC unity quantum mechanism proved"
-          ],
-          "next_blockers": [
-            "raw_bell_event_count_package_missing",
-            "raw_event_reconstruction_verifier_missing",
-            "uet_chsh_derivation_artifact_missing",
-            "replacement_theory_baseline_comparison_missing",
-            "adjacent_quantum_lane_source_packages_missing",
-            "adjacent_quantum_lane_verifiers_missing",
-            "source_targets_still_blocked"
-          ],
-          "claim_boundary": "0.9 may export only a source-referenced internal CHSH summary benchmark. It must not be used as raw experimental reconstruction, UET mechanism derivation, replacement-theory evidence, or evidence for adjacent quantum lanes until separate gates close."
-        },
-        {
-          "gate": "branch_claim_gate",
-          "status": "BLOCKED",
-          "accepted_now": 1,
-          "blocked_for_strong_claims": 4,
-          "claim_boundary": "This gate cannot raise the topic beyond the current CHSH run-contract evidence."
-        }
-      ],
-      "sha256": "91b02aa0f94bf889fa45353306678df785e4cb06aaba9414abb2730ecf43bc0a",
-      "bytes": 9992
+      "timestamp_utc": "2026-04-23T01:30:51.380969+00:00",
+      "sha256": "1284decd7f42292ea896c422cff730b6dfdffbe2cbe46e89cc558170356e9d33",
+      "bytes": 2569
     },
     {
       "topic": "0.10_Fluid_Dynamics_Chaos",
@@ -467,260 +102,9 @@
       "status": "UNKNOWN",
       "claim_class": null,
       "schema_version": null,
-      "timestamp_utc": "2026-06-18T13:32:56.886683+00:00",
-      "claim_gates": [
-        {
-          "gate": "branch_claim_gate",
-          "status": "BLOCKED",
-          "accepted_now": 2,
-          "blocked_for_strong_claims": 3,
-          "claim_boundary": "This gate cannot raise the topic above the current internal speed/stability benchmark package."
-        }
-      ],
-      "sha256": "a00184bd8565e3c8fafb3daeb8b518de59a38f3ec18d52d7386966637f9d2c95",
-      "bytes": 8478
-    },
-    {
-      "topic": "0.11_Phase_Transitions",
-      "role": "phase-transition dependency",
-      "metric_bridge": "phase_transition_gate",
-      "artifact": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_phase_transitions_verification.json",
-      "status": "PASS",
-      "claim_class": "C internal benchmark",
-      "schema_version": "1.1",
-      "timestamp_utc": "2026-07-10T15:20:55.255976+00:00",
-      "claim_gates": [
-        {
-          "gate": "branch_claim_gate",
-          "status": "BLOCKED",
-          "accepted_now": 2,
-          "blocked_for_strong_claims": 4,
-          "claim_boundary": "This gate keeps the topic at selected-benchmark and mechanism-diagnostic status, not universal theory closure."
-        }
-      ],
-      "sha256": "65d67c652ac167960114b905195d8bcd5ddcb8b8944dc43ef6b21ce9af5edfa7",
-      "bytes": 7301
-    },
-    {
-      "topic": "0.12_Vacuum_Energy_Casimir",
-      "role": "vacuum/Casimir dependency",
-      "metric_bridge": "vacuum_energy_gate",
-      "artifact": "docs/topics/0.12_Vacuum_Energy_Casimir/Result/artifacts/0_12_vacuum_energy_casimir_verification.json",
-      "status": "PASS",
-      "claim_class": "C - source-backed internal benchmark for Casimir force only",
-      "schema_version": "1.1",
-      "timestamp_utc": "2026-06-18T13:37:35.875322+00:00",
-      "claim_gates": [
-        {
-          "gate": "branch_claim_gate",
-          "status": "BLOCKED",
-          "accepted_now": 2,
-          "blocked_for_strong_claims": 4,
-          "claim_boundary": "This gate keeps the topic at Casimir benchmark and mechanism-diagnostic status, not vacuum-energy closure."
-        }
-      ],
-      "sha256": "4e28ccd4fb8ae9e89eef3d6988bdae1fadefa1709832f3c7ff6a587df474a8c8",
-      "bytes": 10282
-    },
-    {
-      "topic": "0.13_Thermodynamic_Bridge",
-      "role": "information-energy bridge dependency",
-      "metric_bridge": "thermodynamic_bridge_gate",
-      "artifact": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/0_13_thermodynamic_bridge_verification.json",
-      "status": "WARN",
-      "claim_class": "C",
-      "schema_version": "1.3",
-      "timestamp_utc": "2026-06-22T15:41:14.116702+00:00",
-      "claim_gates": [
-        {
-          "gate": "thermodynamic_claim_scope_gate",
-          "status": "WARN",
-          "claim_class": "C_formula_lower_bound_only",
-          "blocked_claims": [
-            "0.13 proves the UET information-entropy-energy bridge.",
-            "The Landauer benchmark package is fully source-normalized.",
-            "The synthetic Cattaneo branch is external heat-transport validation."
-          ],
-          "blocked_export_phrases": [
-            "thermodynamic bridge proved",
-            "verified UET bridge",
-            "exact information energy equivalence",
-            "external thermodynamic validation",
-            "entropy energy unification solved",
-            "Tier A foundation complete"
-          ],
-          "next_blockers": [
-            "raw_landauer_numeric_tables_not_archived",
-            "landauer_uncertainty_status_partial_intervals_mass_plus_direct_2022_g_for_gravity_context",
-            "uet_bridge_derivation_status_open_boundary_mapped_not_derived",
-            "units_contract_status_partial_contract_dimensional_and_proxy_layers_separated",
-            "landauer_uet_mapping_status_imported_constraint_not_noncircular_uet_derivation",
-            "beta_role_clarification_status_beta_present_but_not_closed_as_derived_bridge_coefficient",
-            "synthetic_cattaneo_not_external_validation",
-            "foundation_claim_gate_not_passed"
-          ],
-          "claim_boundary": "0.13 may be used as a lower-bound and standard-formula constraint layer. It must not be exported as proof of the UET bridge, source-normalized Landauer validation, or external heat-transport validation until the blocked lanes close."
-        },
-        {
-          "gate": "foundation_claim_gate",
-          "status": "FOUNDATION_WARN",
-          "claim_ceiling": "C - formula/lower-bound consistency only",
-          "blocked_exports": [
-            "T13_EXPORT_UET_BRIDGE_PROOF",
-            "T13_EXPORT_SOURCE_NORMALIZED_LANDAUER_DATASET",
-            "T13_EXPORT_CATTANEO_EXTERNAL_VALIDATION"
-          ],
-          "claim_boundary": "0.13 is a priority foundation topic, but only its lower-bound and standard-formula lanes are currently usable by dependent theory topics."
-        },
-        {
-          "gate": "paper_readiness_gate",
-          "status": "BLOCKED",
-          "blocked_dependency_count": null,
-          "claim_boundary": "Subordinate paper-readiness gate is inherited by 0.0."
-        }
-      ],
-      "sha256": "55242147cee5f4846a0b6d3e5bfb9f96e4a9b8f5447d8445f815eccf24016a3a",
-      "bytes": 72056
-    },
-    {
-      "topic": "0.14_Complex_Systems",
-      "role": "complex-systems dependency",
-      "metric_bridge": "complex_systems_gate",
-      "artifact": "docs/topics/0.14_Complex_Systems/Result/artifacts/0_14_complex_systems_verification.json",
-      "status": "PASS",
-      "claim_class": null,
-      "schema_version": "1.2",
-      "timestamp_utc": "2026-06-18T13:38:20.228810+00:00",
-      "claim_gates": [
-        {
-          "gate": "complexity_claim_gate",
-          "status": "HRV_RUN_CONTRACT_ONLY",
-          "claim_class": "C_HRV_internal_benchmark_only",
-          "blocked_exports": [
-            "clinical_hrv_classifier",
-            "soc_avalanche_or_power_law_claim",
-            "econophysics_market_prediction_claim",
-            "climate_inequality_social_system_claim",
-            "universal_complexity_law"
-          ],
-          "blocked_export_phrases": [
-            "universal complexity law",
-            "clinical HRV classifier validated",
-            "market crash predictor",
-            "SOC power law verified",
-            "climate system proof",
-            "inequality dynamics solved",
-            "all complex systems unified"
-          ],
-          "next_blockers": [
-            "raw_physionet_archive_missing",
-            "hrv_extraction_workflow_missing",
-            "clinical_label_baseline_missing",
-            "soc_avalanche_artifact_missing",
-            "econophysics_source_locked_baseline_missing",
-            "climate_inequality_social_branch_artifacts_missing",
-            "universal_complexity_claim_blocked"
-          ],
-          "claim_boundary": "Broader complex-systems claims require a closed source/provenance gate, branch-specific baseline comparison, thresholded verifier artifact, and explicit limitation text for each branch."
-        },
-        {
-          "gate": "hrv_provenance_gate",
-          "status": "DERIVED_SOURCE_WARN",
-          "raw_archive_status": "OPEN",
-          "extraction_workflow_status": "OPEN",
-          "blocked_export_phrases": [
-            "raw PhysioNet archive complete",
-            "HRV extraction workflow frozen",
-            "clinical HRV classifier validated",
-            "HRV raw-source replication complete",
-            "HRV preprocessing fully source locked"
-          ],
-          "next_blockers": [
-            "raw_physionet_dat_hea_atr_archive_missing",
-            "rr_extraction_command_missing",
-            "rr_extraction_tool_version_missing",
-            "preprocessing_filter_script_missing",
-            "clinical_label_validation_missing"
-          ],
-          "claim_boundary": "HRV may be treated as source-referenced derived RR evidence only. Raw-source archival or clinical/classification claims remain blocked."
-        },
-        {
-          "gate": "branch_claim_gate",
-          "status": "BLOCKED",
-          "accepted_now": 1,
-          "blocked_for_strong_claims": 5,
-          "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current HRV run-contract evidence."
-        }
-      ],
-      "sha256": "143c48bef81ab85c5b2263683652e139537301ac7da0c05ba7cdf7f5b2dcf986",
-      "bytes": 12038
-    },
-    {
-      "topic": "0.15_Cluster_Dynamics",
-      "role": "cluster dynamics dependency",
-      "metric_bridge": "cluster_dynamics_gate",
-      "artifact": "docs/topics/0.15_Cluster_Dynamics/Result/artifacts/0_15_cluster_dynamics_verification.json",
-      "status": "WARN",
-      "claim_class": "D - qualitative diagnostic only",
-      "schema_version": "1.1",
-      "timestamp_utc": "2026-06-18T13:39:08.718660+00:00",
-      "claim_gates": [
-        {
-          "gate": "cluster_claim_scope_gate",
-          "status": "WARN",
-          "claim_class": "D_qualitative_cluster_diagnostic_only",
-          "blocked_claims": [
-            "UET predicts the Bullet Cluster kpc offsets.",
-            "UET replaces dark matter at cluster scale.",
-            "UET resolves JWST early galaxy or cluster formation tensions."
-          ],
-          "blocked_export_phrases": [
-            "Bullet Cluster solved",
-            "dark matter replaced",
-            "cluster virial discrepancy resolved",
-            "lensing mass map predicted",
-            "JWST age problem resolved"
-          ],
-          "next_blockers": [
-            "bullet_cluster_kpc_calibration_missing",
-            "lensing_map_comparison_missing",
-            "held_out_multi_cluster_suite_missing",
-            "virial_artifacts_not_primary_gated",
-            "jwst_formation_claim_not_primary_gated"
-          ],
-          "claim_boundary": "A WARN artifact supports only qualitative Bullet Cluster separation-sign diagnostics and bounded mechanism discussion. It does not predict kpc offsets, replace dark matter, resolve virial discrepancies, or validate JWST formation claims."
-        },
-        {
-          "gate": "branch_claim_gate",
-          "status": "BLOCKED",
-          "accepted_now": 2,
-          "blocked_for_strong_claims": 4,
-          "claim_boundary": "This gate keeps the topic at qualitative cluster-diagnostic status, not dark-matter replacement closure."
-        }
-      ],
-      "sha256": "1b7a27441a271fe6b277d7b744a54f658e050c2bfc51bca3e10f1158da26c1b3",
-      "bytes": 7943
-    },
-    {
-      "topic": "0.16_Heavy_Nuclei",
-      "role": "heavy-nuclei dependency",
-      "metric_bridge": "heavy_nuclei_gate",
-      "artifact": "docs/topics/0.16_Heavy_Nuclei/Result/artifacts/0_16_heavy_nuclei_verification.json",
-      "status": "WARN",
-      "claim_class": "C/D boundary - internal fission sanity check with missing fragment provenance",
-      "schema_version": "1.1",
-      "timestamp_utc": "2026-06-18T13:39:25.718974+00:00",
-      "claim_gates": [
-        {
-          "gate": "branch_claim_gate",
-          "status": "BLOCKED",
-          "accepted_now": 2,
-          "blocked_for_strong_claims": 4,
-          "claim_boundary": "This gate keeps the topic at heavy-nuclei checkpoint and sanity-diagnostic status, not first-principles nuclear closure."
-        }
-      ],
-      "sha256": "12db48af09fd68f065a4285c4e43ae12b029ba7c683a7dd77a8909bc58c60a29",
-      "bytes": 7883
+      "timestamp_utc": "2026-07-13T12:38:26.105755+00:00",
+      "sha256": "8737e75f8e7ad004217f5a3b9825bd9267c30dc39ca95e2e541e9142b68dcccb",
+      "bytes": 2800
     },
     {
       "topic": "0.17_Mass_Generation",
@@ -729,51 +113,10 @@
       "artifact": "docs/topics/0.17_Mass_Generation/Result/artifacts/0_17_mass_generation_verification.json",
       "status": "PASS",
       "claim_class": null,
-      "schema_version": "1.3",
-      "timestamp_utc": "2026-06-18T13:39:41.168630+00:00",
-      "claim_gates": [
-        {
-          "gate": "mass_generation_claim_scope_gate",
-          "status": "HIGGS_KAPPA_BENCHMARK_ONLY",
-          "claim_class": "C_internal_higgs_kappa_consistency_benchmark",
-          "blocked_exports": [
-            "new mass-generation mechanism validated",
-            "Higgs mechanism replaced",
-            "Standard Model mass hierarchy derived",
-            "Koide relation proved from UET",
-            "Planck exponential ansatz validated"
-          ],
-          "blocked_export_phrases": [
-            "new mass-generation mechanism validated",
-            "Higgs mechanism replaced",
-            "mass hierarchy derived",
-            "Koide relation proved",
-            "tau mass predicted from first principles",
-            "Planck exponential ansatz validated",
-            "UET explains all particle masses",
-            "Higgs sector solved"
-          ],
-          "next_blockers": [
-            "uncertainty_aware_higgs_fit_missing",
-            "source_to_row_mapping_incomplete",
-            "raw_higgs_table_archive_missing",
-            "mass_generation_mechanism_derivation_missing",
-            "koide_tau_verifier_missing",
-            "planck_ansatz_parameter_derivation_missing",
-            "mass_hierarchy_benchmark_missing"
-          ],
-          "claim_boundary": "0.17 may export only an internal SM-normalized Higgs kappa consistency benchmark. It must not be used as a new mass-generation mechanism, Higgs replacement, mass-hierarchy derivation, Koide/tau proof, or Planck-ansatz validation until separate source-locked and uncertainty-aware gates exist."
-        },
-        {
-          "gate": "branch_claim_gate",
-          "status": "BLOCKED",
-          "accepted_now": 1,
-          "blocked_for_strong_claims": 4,
-          "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current Higgs-coupling run-contract evidence."
-        }
-      ],
-      "sha256": "11f7e625ded103a0175865d1d9865657718f6f9adfc4508f1157909f9d440b92",
-      "bytes": 10017
+      "schema_version": "1.1",
+      "timestamp_utc": "2026-07-13T13:00:57.903064+00:00",
+      "sha256": "65f3b99a542522fca372e8f7c6ef0bc9b268b82d03b5059ddcffac526be3cdf1",
+      "bytes": 3330
     },
     {
       "topic": "0.18_Mathnicry",
@@ -782,97 +125,10 @@
       "artifact": "docs/topics/0.18_Mathnicry/Result/artifacts/0_18_mathnicry_verification.json",
       "status": "WARN",
       "claim_class": null,
-      "schema_version": "1.3",
-      "timestamp_utc": "2026-06-18T13:40:22.565829+00:00",
-      "claim_gates": [
-        {
-          "gate": "theorem_boundary_gate",
-          "status": "BLOCKED",
-          "theorem_status": "THEOREM_CLAIMS_BLOCKED",
-          "claim_class": "D_surrogate_run_contract_only",
-          "accepted_exports": [
-            "T18_EXPORT_BSD_SURROGATE_RUN_CONTRACT"
-          ],
-          "blocked_exports": [
-            "T18_EXPORT_BSD_PROOF",
-            "T18_EXPORT_RIEMANN_PROOF",
-            "T18_EXPORT_P_VS_NP_PROOF",
-            "T18_EXPORT_COLLATZ_PROOF",
-            "T18_EXPORT_QUANTUM_ENGINE_THEOREM"
-          ],
-          "blocked_export_phrases": [
-            "BSD proved",
-            "Riemann Hypothesis proved",
-            "P vs NP solved",
-            "Collatz proved",
-            "Hodge conjecture proved",
-            "theorem-level proof",
-            "formal proof verified"
-          ],
-          "next_blockers": [
-            "bsd_rank_l_function_source_package_missing",
-            "riemann_precision_and_off_line_exclusion_missing",
-            "p_vs_np_formal_reduction_missing",
-            "collatz_bounded_search_manifest_missing",
-            "quantum_engine_deterministic_fixtures_missing",
-            "all_theorem_source_targets_pending"
-          ],
-          "claim_boundary": "0.18 can currently export only surrogate/run-contract evidence. All theorem-level exports are blocked."
-        },
-        {
-          "gate": "data_posture_gate",
-          "status": "SURROGATE_ONLY",
-          "data_reality_status": "manual_or_placeholder",
-          "primary_verifier_input_class": "local_code_fixture_package",
-          "blocked_export_phrases": [
-            "source-backed theorem benchmark",
-            "external theorem validation",
-            "BSD data verified",
-            "L-function benchmark passed",
-            "real elliptic-curve rank computation",
-            "proof dataset complete"
-          ],
-          "next_blockers": [
-            "bsd_benchmark_source_package_missing",
-            "riemann_zero_source_package_missing",
-            "grover_complexity_benchmark_missing",
-            "collatz_bounded_search_manifest_missing",
-            "quantum_engine_fixture_package_missing",
-            "primary_verifier_uses_local_code_fixtures_only"
-          ],
-          "claim_boundary": "This gate allows only local surrogate/run-contract evidence. It blocks proof-level, theorem-level, and external-validation wording until source-backed benchmark packages and proof-boundary artifacts exist."
-        },
-        {
-          "gate": "branch_claim_gate",
-          "status": "BLOCKED",
-          "accepted_now": 1,
-          "blocked_for_strong_claims": 5,
-          "claim_boundary": "This gate records theorem-branch claim ceilings only. It cannot upgrade the topic beyond the current run-contract evidence."
-        }
-      ],
-      "sha256": "c12cbf728e8ca58279976d4665b7148e4727cfdc3d0fc4546ba9678219f25e95",
-      "bytes": 7939
-    },
-    {
-      "topic": "0.19_Gravity_GR",
-      "role": "gravity/GR dependency",
-      "metric_bridge": "gravity_gate",
-      "artifact": "docs/topics/0.19_Gravity_GR/Result/artifacts/0_19_gravity_gr_verification.json",
-      "status": "PASS",
-      "claim_class": "C - source-constant internal checkpoint only",
       "schema_version": "1.1",
-      "timestamp_utc": "2026-06-18T13:41:55.895831+00:00",
-      "claim_gates": [
-        {
-          "gate": "branch_claim_gate",
-          "status": "BLOCKED",
-          "accepted_now": 2,
-          "blocked_for_strong_claims": 4,
-          "claim_boundary": "This gate keeps the topic at source-constant checkpoint status, not general-relativity closure."
-        }
-      ],
-      "sha256": "98221684ab28d5989cd64fbcdf7de2e1fdd0ba9b45cb73fb52f0746a8111caa7",
-      "bytes": 7091
+      "timestamp_utc": "2026-07-13T13:02:04.396326+00:00",
+      "sha256": "47c3cc8e5d4600b4dd916c8928d02d71c521626f76a9b893e0ff1a0e967b1a55",
+      "bytes": 1748
     },
     {
       "topic": "0.20_Atomic_Physics",
@@ -881,123 +137,10 @@
       "artifact": "docs/topics/0.20_Atomic_Physics/Result/artifacts/0_20_atomic_physics_verification.json",
       "status": "PASS",
       "claim_class": "C - source-backed internal hydrogen spectrum benchmark",
-      "schema_version": "1.2",
-      "timestamp_utc": "2026-06-18T13:42:49.761746+00:00",
-      "claim_gates": [
-        {
-          "gate": "branch_claim_gate",
-          "status": "BLOCKED",
-          "accepted_now": 5,
-          "blocked_for_strong_claims": 4,
-          "claim_boundary": "This gate keeps the topic at hydrogen benchmark status, not full atomic-theory closure."
-        }
-      ],
-      "sha256": "71ae185641dc2af9e93a45adf12195e44a420028631128109770c871cc70f843",
-      "bytes": 412794
-    },
-    {
-      "topic": "0.21_Yang_Mills_Mass_Gap",
-      "role": "math-facing mass-gap dependency",
-      "metric_bridge": "mass_gap_gate",
-      "artifact": "docs/topics/0.21_Yang_Mills_Mass_Gap/Result/artifacts/mass_gap_validation.json",
-      "status": "WARN",
-      "claim_class": null,
-      "schema_version": null,
-      "timestamp_utc": "2026-06-18T13:42:59.382706+00:00",
-      "claim_gates": [],
-      "sha256": "11ac697160670d1ffc1c94970fbcf22acba963563449ce7b959efa898d6a5850",
-      "bytes": 6087
-    },
-    {
-      "topic": "0.22_Biophysics_Origin_of_Life",
-      "role": "biophysics dependency",
-      "metric_bridge": "biophysics_gate",
-      "artifact": "docs/topics/0.22_Biophysics_Origin_of_Life/Result/artifacts/0_22_biophysics_origin_of_life_verification.json",
-      "status": "WARN",
-      "claim_class": "D",
       "schema_version": "1.1",
-      "timestamp_utc": "2026-06-18T13:43:34.366466+00:00",
-      "claim_gates": [
-        {
-          "gate": "biophysics_claim_scope_gate",
-          "status": "SYNTHETIC_DIAGNOSTIC_ONLY",
-          "claim_class": "D_synthetic_diagnostic_only",
-          "blocked_claims": [
-            "UET explains the origin of life.",
-            "UET validates clinical biomarkers or TCGA cancer entropy.",
-            "UET validates EEG seizure prediction.",
-            "UET outperforms protein-folding or protocell benchmarks."
-          ],
-          "blocked_export_phrases": [
-            "origin of life solved",
-            "clinical biomarker validated",
-            "TCGA validation",
-            "EEG seizure prediction validated",
-            "protein folding superiority",
-            "protocell emergence proven",
-            "biophysical theory closure"
-          ],
-          "next_blockers": [
-            "primary_verifier_synthetic_only",
-            "real_omics_matrix_missing",
-            "raw_eeg_windows_missing",
-            "prebiotic_reaction_dataset_missing",
-            "protein_benchmark_optimum_missing",
-            "thermodynamic_bridge_dependency_not_closed"
-          ],
-          "claim_boundary": "0.22 currently exports only a synthetic biomarker diagnostic run-contract and source-governance map. It must not export origin-of-life, clinical, EEG, TCGA, protein-folding, or theory-closure claims."
-        }
-      ],
-      "sha256": "ed6dac28a27a3fec2dcd550c702ca3fd628c337252c89546c62d7e94d44c0683",
-      "bytes": 10254
-    },
-    {
-      "topic": "0.23_Unity_Scale_Link",
-      "role": "scale-link dependency gate",
-      "metric_bridge": "scale_link_gate",
-      "artifact": "docs/topics/0.23_Unity_Scale_Link/Result/artifacts/0_23_unity_scale_link_verification.json",
-      "status": "WARN",
-      "claim_class": "D",
-      "schema_version": "1.3",
-      "timestamp_utc": "2026-06-18T13:44:22.991857+00:00",
-      "claim_gates": [
-        {
-          "gate": "scale_claim_gate",
-          "status": "WARN",
-          "claim_class": "D_exploratory_structural_scale_link",
-          "thermodynamic_foundation_status": "FOUNDATION_WARN",
-          "blocked_exports": [
-            "T13_EXPORT_UET_BRIDGE_PROOF",
-            "T13_EXPORT_SOURCE_NORMALIZED_LANDAUER_DATASET",
-            "T13_EXPORT_CATTANEO_EXTERNAL_VALIDATION"
-          ],
-          "blocked_claims": [
-            "0.23 proves unity across domains.",
-            "One fixed kappa works universally.",
-            "The synthetic neural/galaxy transfer is external prediction.",
-            "0.23 inherits UET bridge proof from 0.13."
-          ],
-          "blocked_export_phrases": [
-            "unity across all scales proved",
-            "universal fixed kappa",
-            "external cross-domain prediction validated",
-            "grand unification demonstrated",
-            "UET bridge proof inherited",
-            "scale law solved"
-          ],
-          "next_blockers": [
-            "finance_query_logs_missing",
-            "real_eeg_source_package_missing",
-            "synthetic_neural_branch_simulation_only",
-            "fixed_universal_kappa_blocked",
-            "thermodynamic_foundation_gate_not_passed",
-            "held_out_cross_domain_validation_missing"
-          ],
-          "claim_boundary": "Scale-link branch remains exploratory unless source, EEG, and inherited 0.13 gates close."
-        }
-      ],
-      "sha256": "12280888216c9744f92b134a79945f526222b8a4fa7baabe4daba40b2d4c0cd8",
-      "bytes": 18232
+      "timestamp_utc": null,
+      "sha256": "99925a726f651b6916fdbccf1d78bd7cf3c268fb57b20d2179ab80f0aa9d969a",
+      "bytes": 139449
     },
     {
       "topic": "0.24_Artificial_Intelligence",
@@ -1007,39 +150,9 @@
       "status": "WARN",
       "claim_class": "C - internal scaling and sparsity benchmark",
       "schema_version": "1.1",
-      "timestamp_utc": "2026-06-18T13:44:44.032302+00:00",
-      "claim_gates": [
-        {
-          "gate": "ai_claim_scope_gate",
-          "status": "SCALING_SPARSITY_BENCHMARK_ONLY",
-          "claim_class": "C_internal_scaling_sparsity_benchmark",
-          "blocked_claims": [
-            "UET derives a universal AI scaling law or alpha-kappa identity.",
-            "MoE sparsity validates intelligence, efficiency, safety, or alignment.",
-            "UET proves AI alignment, ethics as physical law, consciousness, or developmental AI."
-          ],
-          "blocked_export_phrases": [
-            "AI alignment proved",
-            "ethics as physical law verified",
-            "machine consciousness validated",
-            "universal intelligence law",
-            "alpha equals kappa derived",
-            "MoE proves efficient intelligence",
-            "developmental AI solved"
-          ],
-          "next_blockers": [
-            "alpha_kappa_bridge_heuristic_open",
-            "scaling_source_archive_incomplete",
-            "model_metadata_source_normalization_incomplete",
-            "moe_sparsity_not_alignment_metric",
-            "alignment_ethics_consciousness_verifiers_missing",
-            "cross_topic_ai_detective_dependency_not_isolated"
-          ],
-          "claim_boundary": "0.24 may export only internal scaling/sparsity benchmark language. It must not export alignment, ethics, consciousness, universal-intelligence, alpha-kappa-law, or MoE-performance claims until separate gates close."
-        }
-      ],
-      "sha256": "ab05fe3c059282e6f98e6b460db49d1c95c71c2239383593ac944f8ca92ba710",
-      "bytes": 10481
+      "timestamp_utc": null,
+      "sha256": "3aa2f52f246611a902af4d5af5d8fae148f61e5671066eb6fc597d8c6db9997d",
+      "bytes": 4383
     },
     {
       "topic": "0.25_Strategy_Power_Economics",
@@ -1048,98 +161,10 @@
       "artifact": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_strategy_power_economics_verification.json",
       "status": "WARN",
       "claim_class": "C - internal economic data integrity and market diagnostics benchmark",
-      "schema_version": "1.2",
-      "timestamp_utc": "2026-06-18T13:45:04.875252+00:00",
-      "claim_gates": [
-        {
-          "gate": "economics_claim_scope_gate",
-          "status": "DESCRIPTIVE_DIAGNOSTIC_ONLY",
-          "claim_class": "C_internal_economic_data_diagnostic",
-          "blocked_claims": [
-            "UET predicts future market prices or macroeconomic outcomes.",
-            "The social power engine proves strategic superiority or Nash-equilibrium improvement.",
-            "The topic validates real-world policy causality or social stabilization.",
-            "Local gateway/economy working copies are archival macroeconomic evidence."
-          ],
-          "blocked_export_phrases": [
-            "UET predicts markets",
-            "strategic superiority proved",
-            "Nash equilibrium improved",
-            "policy causality verified",
-            "social stabilization achieved",
-            "8-billion resonance validated",
-            "world lease model proven",
-            "economic law confirmed"
-          ],
-          "next_blockers": [
-            "market_retrieval_dates_missing",
-            "global_economy_upstream_url_or_doi_missing",
-            "daily_snapshot_upstream_url_or_api_missing",
-            "forecast_baseline_protocol_missing",
-            "causal_policy_design_missing",
-            "social_power_engine_calibration_missing"
-          ],
-          "claim_boundary": "0.25 may be cited as an internal economic-data diagnostic and provenance-hardening topic only. It must not be exported as a market predictor, policy engine, or validated strategy framework until source locks, forecast baselines, causal design, and calibrated simulation comparators are present."
-        }
-      ],
-      "sha256": "401e616df9e4683da31c4e589f4b6bdaab7634420cb52bed5eaeb0b70531d863",
-      "bytes": 12753
-    },
-    {
-      "topic": "0.26_Cosmic_Dynamic_Frame",
-      "role": "dynamic-frame mechanism dependency",
-      "metric_bridge": "cosmic_dynamic_frame_gate",
-      "artifact": "docs/topics/0.26_Cosmic_Dynamic_Frame/Result/artifacts/0_26_cosmic_dynamic_frame_verification.json",
-      "status": "WARN",
-      "claim_class": "D",
-      "schema_version": "1.2",
-      "timestamp_utc": "2026-06-18T13:46:11.639732+00:00",
-      "claim_gates": [
-        {
-          "gate": "dynamic_frame_claim_gate",
-          "status": "BLOCKED",
-          "claim_class": "D_exploratory_mechanism_candidate",
-          "blocked_exports": [
-            "validated_dynamic_frame_model",
-            "dark_matter_or_cosmology_replacement",
-            "pioneer_anomaly_explanation",
-            "strong_inherited_unity_claim"
-          ],
-          "blocked_export_phrases": [
-            "dark matter replacement",
-            "validated dynamic-frame cosmology",
-            "Pioneer anomaly explained by UET",
-            "toroidal cosmology solved",
-            "cosmic flow model fit validated",
-            "dynamic frame proves unity"
-          ],
-          "next_blockers": [
-            "raw_laniakea_or_cosmicflows_tables_missing",
-            "observer_frame_metadata_incomplete",
-            "numeric_flow_residual_gate_open",
-            "baseline_comparison_gate_open",
-            "pioneer_thermal_recoil_competitor_open",
-            "upstream_dependency_warn_inherited"
-          ],
-          "claim_boundary": "Theory-level dynamic-frame claims require source evidence ready, numeric residual gate CLOSED_PASS, baseline comparison gate CLOSED_PASS, and no unresolved upstream WARN inherited as proof."
-        },
-        {
-          "gate": "numeric_residual_gate",
-          "status": "BLOCKED",
-          "visualization_status": "PASS",
-          "numeric_flow_residual_status": "OPEN",
-          "baseline_comparison_status": "OPEN",
-          "blocked_claims": [
-            "dark-matter replacement",
-            "validated dynamic-frame cosmology",
-            "Pioneer anomaly explanation by UET drag",
-            "toroidal cosmology observable closure"
-          ],
-          "claim_boundary": "Visualization/provenance does not close numeric residual or replacement-claim gates."
-        }
-      ],
-      "sha256": "f75aeab6f37be54e6212dc60e1148d85ebdbf562665c8fc3a051e2bacdaff70d",
-      "bytes": 10997
+      "schema_version": "1.1",
+      "timestamp_utc": null,
+      "sha256": "401972654a72f4b72e5c5162b70790e907cf4646a475a7fa2bc571f610722334",
+      "bytes": 7550
     }
   ],
   "metrics": {
@@ -1161,189 +186,63 @@
     "input_hashes": [
       {
         "path": "docs/topics/0.0_Grand_Unification/Data/03_Research/integration_dependency_manifest.json",
-        "bytes": 2697,
-        "sha256": "5484e4472621cad6a2a9564b7b357d8f7f15d20df34f63a10ee9d4cda001959d",
+        "bytes": 2755,
+        "sha256": "d971758b0109fa138879021497ecab212f49d185b2ecb8d2d2b3d42b92ce3d08",
         "provenance_role": "integration_dependency_manifest"
       },
       {
         "path": "docs/topics/0.1_Galaxy_Rotation_Problem/Result/artifacts/galaxy_rotation_validation.json",
-        "bytes": 48470,
-        "sha256": "93d0bab522c570212bfb4160377a119e3d462c8ce49c106f606caabcfd41e52b",
+        "bytes": 1419,
+        "sha256": "3927cfd3992e748aebc6ab7a0efcf9f86d3eeb686fec91cdbefd56c29c49dd9e",
+        "provenance_role": "subordinate_artifact",
+        "status": "UNKNOWN"
+      },
+      {
+        "path": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/0_6_electroweak_physics_verification.json",
+        "bytes": 2569,
+        "sha256": "1284decd7f42292ea896c422cff730b6dfdffbe2cbe46e89cc558170356e9d33",
         "provenance_role": "subordinate_artifact",
         "status": "ran"
       },
       {
-        "path": "docs/topics/0.2_Black_Hole_Physics/Result/artifacts/0_2_black_hole_physics_verification.json",
-        "bytes": 7731,
-        "sha256": "1c21bd1dc126f6e54af0da3d7e5d47cf081567fe0ff3b7935a7337c5a5224be3",
-        "provenance_role": "subordinate_artifact",
-        "status": "PASS"
-      },
-      {
-        "path": "docs/topics/0.3_Cosmology_Hubble_Tension/Result/artifacts/hubble_comparison_validation.json",
-        "bytes": 10565,
-        "sha256": "a142e604312461fb6496c391fd8ca3db46022e1d830c51036c3af6e90d57df05",
-        "provenance_role": "subordinate_artifact",
-        "status": "PASS"
-      },
-      {
-        "path": "docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/0_4_superconductivity_superfluids_verification.json",
-        "bytes": 126146,
-        "sha256": "25faaa1c7b657cbaa8009224d17b26c4b2f6c36534e961b8c236285ff7301821",
-        "provenance_role": "subordinate_artifact",
-        "status": "FAIL"
-      },
-      {
-        "path": "docs/topics/0.5_Nuclear_Binding_Hadrons/Result/artifacts/0_5_nuclear_binding_hadrons_verification.json",
-        "bytes": 5029,
-        "sha256": "fbb29c6f4574476edc3f22af409dc22fd043fc5a87e1110f5556670d28b10797",
-        "provenance_role": "subordinate_artifact",
-        "status": "WARN"
-      },
-      {
-        "path": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/electroweak_expanded_benchmark.json",
-        "bytes": 13482,
-        "sha256": "11e5764f96d315e4f3baef714c127478808022b3c7a9ccf4b6a9daa4bec178c3",
-        "provenance_role": "subordinate_artifact",
-        "status": "PASS"
-      },
-      {
-        "path": "docs/topics/0.7_Neutrino_Physics/Result/artifacts/0_7_neutrino_physics_verification.json",
-        "bytes": 3861,
-        "sha256": "4453033099158c5cbd82e0ac900fb1b2f37afdf4896d509460d62ce336f89801",
-        "provenance_role": "subordinate_artifact",
-        "status": "WARN"
-      },
-      {
-        "path": "docs/topics/0.8_Muon_g2_Anomaly/Result/artifacts/0_8_muon_g2_anomaly_verification.json",
-        "bytes": 2637,
-        "sha256": "fa848138e74ad530670e6a621848cbf1f2cb750eb9cc2b944234cb1541364c16",
-        "provenance_role": "subordinate_artifact",
-        "status": "WARN"
-      },
-      {
-        "path": "docs/topics/0.9_Quantum_Nonlocality/Result/artifacts/0_9_quantum_nonlocality_verification.json",
-        "bytes": 9992,
-        "sha256": "91b02aa0f94bf889fa45353306678df785e4cb06aaba9414abb2730ecf43bc0a",
-        "provenance_role": "subordinate_artifact",
-        "status": "PASS"
-      },
-      {
         "path": "docs/topics/0.10_Fluid_Dynamics_Chaos/Result/artifacts/fluid_benchmark_validation.json",
-        "bytes": 8478,
-        "sha256": "a00184bd8565e3c8fafb3daeb8b518de59a38f3ec18d52d7386966637f9d2c95",
+        "bytes": 2800,
+        "sha256": "8737e75f8e7ad004217f5a3b9825bd9267c30dc39ca95e2e541e9142b68dcccb",
         "provenance_role": "subordinate_artifact",
-        "status": "PASS"
-      },
-      {
-        "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_phase_transitions_verification.json",
-        "bytes": 7301,
-        "sha256": "65d67c652ac167960114b905195d8bcd5ddcb8b8944dc43ef6b21ce9af5edfa7",
-        "provenance_role": "subordinate_artifact",
-        "status": "PASS"
-      },
-      {
-        "path": "docs/topics/0.12_Vacuum_Energy_Casimir/Result/artifacts/0_12_vacuum_energy_casimir_verification.json",
-        "bytes": 10282,
-        "sha256": "4e28ccd4fb8ae9e89eef3d6988bdae1fadefa1709832f3c7ff6a587df474a8c8",
-        "provenance_role": "subordinate_artifact",
-        "status": "PASS"
-      },
-      {
-        "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/0_13_thermodynamic_bridge_verification.json",
-        "bytes": 72056,
-        "sha256": "55242147cee5f4846a0b6d3e5bfb9f96e4a9b8f5447d8445f815eccf24016a3a",
-        "provenance_role": "subordinate_artifact",
-        "status": "WARN"
-      },
-      {
-        "path": "docs/topics/0.14_Complex_Systems/Result/artifacts/0_14_complex_systems_verification.json",
-        "bytes": 12038,
-        "sha256": "143c48bef81ab85c5b2263683652e139537301ac7da0c05ba7cdf7f5b2dcf986",
-        "provenance_role": "subordinate_artifact",
-        "status": "PASS"
-      },
-      {
-        "path": "docs/topics/0.15_Cluster_Dynamics/Result/artifacts/0_15_cluster_dynamics_verification.json",
-        "bytes": 7943,
-        "sha256": "1b7a27441a271fe6b277d7b744a54f658e050c2bfc51bca3e10f1158da26c1b3",
-        "provenance_role": "subordinate_artifact",
-        "status": "WARN"
-      },
-      {
-        "path": "docs/topics/0.16_Heavy_Nuclei/Result/artifacts/0_16_heavy_nuclei_verification.json",
-        "bytes": 7883,
-        "sha256": "12db48af09fd68f065a4285c4e43ae12b029ba7c683a7dd77a8909bc58c60a29",
-        "provenance_role": "subordinate_artifact",
-        "status": "WARN"
+        "status": "UNKNOWN"
       },
       {
         "path": "docs/topics/0.17_Mass_Generation/Result/artifacts/0_17_mass_generation_verification.json",
-        "bytes": 10017,
-        "sha256": "11f7e625ded103a0175865d1d9865657718f6f9adfc4508f1157909f9d440b92",
+        "bytes": 3330,
+        "sha256": "65f3b99a542522fca372e8f7c6ef0bc9b268b82d03b5059ddcffac526be3cdf1",
         "provenance_role": "subordinate_artifact",
         "status": "PASS"
       },
       {
         "path": "docs/topics/0.18_Mathnicry/Result/artifacts/0_18_mathnicry_verification.json",
-        "bytes": 7939,
-        "sha256": "c12cbf728e8ca58279976d4665b7148e4727cfdc3d0fc4546ba9678219f25e95",
+        "bytes": 1748,
+        "sha256": "47c3cc8e5d4600b4dd916c8928d02d71c521626f76a9b893e0ff1a0e967b1a55",
         "provenance_role": "subordinate_artifact",
         "status": "WARN"
-      },
-      {
-        "path": "docs/topics/0.19_Gravity_GR/Result/artifacts/0_19_gravity_gr_verification.json",
-        "bytes": 7091,
-        "sha256": "98221684ab28d5989cd64fbcdf7de2e1fdd0ba9b45cb73fb52f0746a8111caa7",
-        "provenance_role": "subordinate_artifact",
-        "status": "PASS"
       },
       {
         "path": "docs/topics/0.20_Atomic_Physics/Result/artifacts/0_20_atomic_physics_verification.json",
-        "bytes": 412794,
-        "sha256": "71ae185641dc2af9e93a45adf12195e44a420028631128109770c871cc70f843",
+        "bytes": 139449,
+        "sha256": "99925a726f651b6916fdbccf1d78bd7cf3c268fb57b20d2179ab80f0aa9d969a",
         "provenance_role": "subordinate_artifact",
         "status": "PASS"
       },
       {
-        "path": "docs/topics/0.21_Yang_Mills_Mass_Gap/Result/artifacts/mass_gap_validation.json",
-        "bytes": 6087,
-        "sha256": "11ac697160670d1ffc1c94970fbcf22acba963563449ce7b959efa898d6a5850",
-        "provenance_role": "subordinate_artifact",
-        "status": "WARN"
-      },
-      {
-        "path": "docs/topics/0.22_Biophysics_Origin_of_Life/Result/artifacts/0_22_biophysics_origin_of_life_verification.json",
-        "bytes": 10254,
-        "sha256": "ed6dac28a27a3fec2dcd550c702ca3fd628c337252c89546c62d7e94d44c0683",
-        "provenance_role": "subordinate_artifact",
-        "status": "WARN"
-      },
-      {
-        "path": "docs/topics/0.23_Unity_Scale_Link/Result/artifacts/0_23_unity_scale_link_verification.json",
-        "bytes": 18232,
-        "sha256": "12280888216c9744f92b134a79945f526222b8a4fa7baabe4daba40b2d4c0cd8",
-        "provenance_role": "subordinate_artifact",
-        "status": "WARN"
-      },
-      {
         "path": "docs/topics/0.24_Artificial_Intelligence/Result/artifacts/0_24_artificial_intelligence_verification.json",
-        "bytes": 10481,
-        "sha256": "ab05fe3c059282e6f98e6b460db49d1c95c71c2239383593ac944f8ca92ba710",
+        "bytes": 4383,
+        "sha256": "3aa2f52f246611a902af4d5af5d8fae148f61e5671066eb6fc597d8c6db9997d",
         "provenance_role": "subordinate_artifact",
         "status": "WARN"
       },
       {
         "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_strategy_power_economics_verification.json",
-        "bytes": 12753,
-        "sha256": "401e616df9e4683da31c4e589f4b6bdaab7634420cb52bed5eaeb0b70531d863",
-        "provenance_role": "subordinate_artifact",
-        "status": "WARN"
-      },
-      {
-        "path": "docs/topics/0.26_Cosmic_Dynamic_Frame/Result/artifacts/0_26_cosmic_dynamic_frame_verification.json",
-        "bytes": 10997,
-        "sha256": "f75aeab6f37be54e6212dc60e1148d85ebdbf562665c8fc3a051e2bacdaff70d",
+        "bytes": 7550,
+        "sha256": "401972654a72f4b72e5c5162b70790e907cf4646a475a7fa2bc571f610722334",
         "provenance_role": "subordinate_artifact",
         "status": "WARN"
       }
@@ -1354,263 +253,24 @@
         "role": "galaxy/halo metric dependency",
         "metric_bridge": "galaxy_halo_ratio",
         "artifact": "docs/topics/0.1_Galaxy_Rotation_Problem/Result/artifacts/galaxy_rotation_validation.json",
-        "status": "WARN",
-        "claim_class": "C - internal benchmark",
-        "schema_version": null,
-        "timestamp_utc": "2026-06-18T13:42:25.793595+00:00",
-        "claim_gates": [
-          {
-            "gate": "galaxy_model_gate",
-            "status": "BLOCKED",
-            "run_contract_status": "PASS",
-            "summary_row_model_status": "FAIL",
-            "source_lock_status": "OPEN",
-            "baseline_comparison_status": "OPEN",
-            "blocked_claims": [
-              "dark-matter replacement",
-              "full SPARC replication",
-              "galaxy-rotation theory closure",
-              "out-of-sample prediction"
-            ],
-            "claim_boundary": "This gate lets the verifier run and residual model evidence diverge. A runnable artifact does not imply galaxy-model acceptance."
-          },
-          {
-            "gate": "galaxy_claim_scope_gate",
-            "status": "FAIL",
-            "claim_class": "C_summary_row_internal_benchmark_only",
-            "blocked_claims": [
-              "UET replaces dark matter for galaxy rotation curves.",
-              "UET replicates the full upstream SPARC rotation-curve archive.",
-              "UET closes galaxy-dynamics theory."
-            ],
-            "blocked_export_phrases": [
-              "dark matter replaced",
-              "full SPARC replication",
-              "galaxy rotation problem solved",
-              "zero curve fitting",
-              "out-of-sample prediction validated",
-              "galaxy dynamics closed"
-            ],
-            "next_blockers": [
-              "summary_row_model_gate_not_passed",
-              "source_lock_manifest_missing",
-              "row_semantics_radius_convention_open",
-              "competitor_baseline_artifact_missing",
-              "heuristic_bridge_sensitivity_missing",
-              "out_of_sample_validation_missing"
-            ],
-            "claim_boundary": "A runnable artifact supports only an internal summary-row benchmark over the repository working copy. It does not support dark-matter replacement, full SPARC replication, zero-fit claims, out-of-sample prediction, or galaxy-dynamics closure."
-          }
-        ],
-        "sha256": "93d0bab522c570212bfb4160377a119e3d462c8ce49c106f606caabcfd41e52b",
-        "bytes": 48470
-      },
-      {
-        "topic": "0.2_Black_Hole_Physics",
-        "role": "black-hole physics dependency",
-        "metric_bridge": "black_hole_gate",
-        "artifact": "docs/topics/0.2_Black_Hole_Physics/Result/artifacts/0_2_black_hole_physics_verification.json",
-        "status": "PASS",
-        "claim_class": "C internal benchmark",
-        "schema_version": "1.1",
-        "timestamp_utc": "2026-06-18T13:48:16.727281+00:00",
-        "claim_gates": [
-          {
-            "gate": "branch_claim_gate",
-            "status": "BLOCKED",
-            "accepted_now": 2,
-            "blocked_for_strong_claims": 4,
-            "claim_boundary": "This gate keeps the topic at EHT benchmark and comparator status, not black-hole theory closure."
-          }
-        ],
-        "sha256": "1c21bd1dc126f6e54af0da3d7e5d47cf081567fe0ff3b7935a7337c5a5224be3",
-        "bytes": 7731
-      },
-      {
-        "topic": "0.3_Cosmology_Hubble_Tension",
-        "role": "Hubble/cosmology dependency",
-        "metric_bridge": "hubble_gate",
-        "artifact": "docs/topics/0.3_Cosmology_Hubble_Tension/Result/artifacts/hubble_comparison_validation.json",
-        "status": "PASS",
-        "claim_class": null,
-        "schema_version": null,
-        "timestamp_utc": "2026-06-18T13:53:39.788820+00:00",
-        "claim_gates": [
-          {
-            "gate": "hubble_claim_scope_gate",
-            "status": "SCALAR_H0_BENCHMARK_ONLY",
-            "claim_class": "C_internal_scalar_h0_published_value_benchmark",
-            "blocked_exports": [
-              "Hubble tension resolved",
-              "validated full cosmology model",
-              "dark-energy replacement",
-              "high-z prediction confirmed",
-              "derived beta_frame relation"
-            ],
-            "blocked_export_phrases": [
-              "Hubble tension resolved",
-              "full cosmology model validated",
-              "Planck SH0ES likelihood replicated",
-              "BAO SN CMB consistency validated",
-              "dark energy replaced",
-              "high-z prediction confirmed",
-              "beta_frame derived",
-              "cosmology solved"
-            ],
-            "next_blockers": [
-              "bridge_derivation_with_units_missing",
-              "full_planck_shoes_likelihood_pipeline_missing",
-              "bao_sn_cmb_consistency_package_missing",
-              "high_z_transition_verifier_missing",
-              "dark_energy_branch_artifact_missing",
-              "uncertainty_propagation_gate_missing",
-              "source_targets_still_blocked"
-            ],
-            "claim_boundary": "0.3 may export only an internal scalar Planck-SH0ES H0-gap benchmark. It must not be used as a resolved-Hubble-tension, full-cosmology, dark-energy, high-z prediction, or derived beta-frame claim until dedicated derivation, likelihood, and branch gates close."
-          },
-          {
-            "gate": "branch_claim_gate",
-            "status": "BLOCKED",
-            "accepted_now": 1,
-            "blocked_for_strong_claims": 3,
-            "claim_boundary": "This gate cannot raise the topic above the current internal scalar H0 benchmark package."
-          }
-        ],
-        "sha256": "a142e604312461fb6496c391fd8ca3db46022e1d830c51036c3af6e90d57df05",
-        "bytes": 10565
-      },
-      {
-        "topic": "0.4_Superconductivity_Superfluids",
-        "role": "superconductivity model dependency",
-        "metric_bridge": "superconductivity_model_gate",
-        "artifact": "docs/topics/0.4_Superconductivity_Superfluids/Result/artifacts/0_4_superconductivity_superfluids_verification.json",
-        "status": "FAIL",
-        "claim_class": "model-baseline blocker",
-        "schema_version": "1.4",
-        "timestamp_utc": "2026-06-19T17:35:22.956530+00:00",
-        "claim_gates": [
-          {
-            "gate": "branch_claim_gate",
-            "status": "BLOCKED",
-            "accepted_now": 2,
-            "blocked_for_strong_claims": 4,
-            "claim_boundary": "This gate cannot raise the topic above the current baseline-diagnostic status while the raw McMillan artifact remains FAIL."
-          }
-        ],
-        "sha256": "25faaa1c7b657cbaa8009224d17b26c4b2f6c36534e961b8c236285ff7301821",
-        "bytes": 126146
-      },
-      {
-        "topic": "0.5_Nuclear_Binding_Hadrons",
-        "role": "nuclear-scale calibration dependency",
-        "metric_bridge": "nuclear_binding_gate",
-        "artifact": "docs/topics/0.5_Nuclear_Binding_Hadrons/Result/artifacts/0_5_nuclear_binding_hadrons_verification.json",
-        "status": "WARN",
+        "status": "UNKNOWN",
         "claim_class": null,
         "schema_version": "1.0",
-        "timestamp_utc": "2026-04-23T01:30:37.387917+00:00",
-        "sha256": "0f0d70a92f177a9f9e45f572a2e439110fffccb1263e16bd41cc349812a6a3c1",
-        "bytes": 24257
+        "timestamp_utc": "2026-07-13T13:04:38.508214+00:00",
+        "sha256": "3927cfd3992e748aebc6ab7a0efcf9f86d3eeb686fec91cdbefd56c29c49dd9e",
+        "bytes": 1419
       },
       {
         "topic": "0.6_Electroweak_Physics",
         "role": "Weinberg-angle metric dependency",
         "metric_bridge": "weinberg_angle",
-        "artifact": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/electroweak_expanded_benchmark.json",
-        "status": "PASS",
-        "claim_class": null,
-        "schema_version": null,
-        "timestamp_utc": "2026-06-18T13:55:50.536892+00:00",
-        "claim_gates": [
-          {
-            "gate": "branch_claim_gate",
-            "status": "BLOCKED",
-            "accepted_now": 3,
-            "blocked_for_strong_claims": 3,
-            "claim_boundary": "This gate cannot raise the topic above the current selected electroweak benchmark package."
-          }
-        ],
-        "sha256": "11e5764f96d315e4f3baef714c127478808022b3c7a9ccf4b6a9daa4bec178c3",
-        "bytes": 13482
-      },
-      {
-        "topic": "0.7_Neutrino_Physics",
-        "role": "neutrino benchmark dependency",
-        "metric_bridge": "neutrino_gate",
-        "artifact": "docs/topics/0.7_Neutrino_Physics/Result/artifacts/0_7_neutrino_physics_verification.json",
-        "status": "WARN",
+        "artifact": "docs/topics/0.6_Electroweak_Physics/Result/artifacts/0_6_electroweak_physics_verification.json",
+        "status": "ran",
         "claim_class": null,
         "schema_version": "1.0",
-        "timestamp_utc": "2026-04-23T01:30:53.965910+00:00",
-        "claim_gates": [],
-        "sha256": "4453033099158c5cbd82e0ac900fb1b2f37afdf4896d509460d62ce336f89801",
-        "bytes": 3861
-      },
-      {
-        "topic": "0.8_Muon_g2_Anomaly",
-        "role": "muon g-2 benchmark dependency",
-        "metric_bridge": "muon_g2_gate",
-        "artifact": "docs/topics/0.8_Muon_g2_Anomaly/Result/artifacts/0_8_muon_g2_anomaly_verification.json",
-        "status": "WARN",
-        "claim_class": null,
-        "schema_version": "1.0",
-        "timestamp_utc": "2026-04-23T01:30:55.063139+00:00",
-        "claim_gates": [],
-        "sha256": "fa848138e74ad530670e6a621848cbf1f2cb750eb9cc2b944234cb1541364c16",
-        "bytes": 2637
-      },
-      {
-        "topic": "0.9_Quantum_Nonlocality",
-        "role": "quantum/nonlocality dependency",
-        "metric_bridge": "nonlocality_gate",
-        "artifact": "docs/topics/0.9_Quantum_Nonlocality/Result/artifacts/0_9_quantum_nonlocality_verification.json",
-        "status": "PASS",
-        "claim_class": "C - source-referenced internal CHSH benchmark",
-        "schema_version": "1.3",
-        "timestamp_utc": "2026-06-18T14:00:31.846287+00:00",
-        "claim_gates": [
-          {
-            "gate": "chsh_claim_scope_gate",
-            "status": "CHSH_SUMMARY_ONLY_RAW_AND_MECHANISM_BLOCKED",
-            "claim_class": "C_internal_chsh_summary_benchmark",
-            "blocked_claims": [
-              "Raw Bell event counts have been reconstructed locally.",
-              "UET derives the CHSH correlations from first principles.",
-              "UET replaces the standard quantum nonlocality framework.",
-              "Qubit, double-slit, tunneling, or LC-unity lanes inherit PASS from CHSH."
-            ],
-            "blocked_export_phrases": [
-              "UET proves nonlocality",
-              "nonlocality solved",
-              "topological filament derivation verified",
-              "standard quantum framework replaced",
-              "raw Bell counts reconstructed",
-              "qubit claims inherit CHSH PASS",
-              "double-slit explained by CHSH",
-              "tunneling validated by CHSH",
-              "LC unity quantum mechanism proved"
-            ],
-            "next_blockers": [
-              "raw_bell_event_count_package_missing",
-              "raw_event_reconstruction_verifier_missing",
-              "uet_chsh_derivation_artifact_missing",
-              "replacement_theory_baseline_comparison_missing",
-              "adjacent_quantum_lane_source_packages_missing",
-              "adjacent_quantum_lane_verifiers_missing",
-              "source_targets_still_blocked"
-            ],
-            "claim_boundary": "0.9 may export only a source-referenced internal CHSH summary benchmark. It must not be used as raw experimental reconstruction, UET mechanism derivation, replacement-theory evidence, or evidence for adjacent quantum lanes until separate gates close."
-          },
-          {
-            "gate": "branch_claim_gate",
-            "status": "BLOCKED",
-            "accepted_now": 1,
-            "blocked_for_strong_claims": 4,
-            "claim_boundary": "This gate cannot raise the topic beyond the current CHSH run-contract evidence."
-          }
-        ],
-        "sha256": "91b02aa0f94bf889fa45353306678df785e4cb06aaba9414abb2730ecf43bc0a",
-        "bytes": 9992
+        "timestamp_utc": "2026-04-23T01:30:51.380969+00:00",
+        "sha256": "1284decd7f42292ea896c422cff730b6dfdffbe2cbe46e89cc558170356e9d33",
+        "bytes": 2569
       },
       {
         "topic": "0.10_Fluid_Dynamics_Chaos",
@@ -1620,260 +280,9 @@
         "status": "UNKNOWN",
         "claim_class": null,
         "schema_version": null,
-        "timestamp_utc": "2026-06-18T13:32:56.886683+00:00",
-        "claim_gates": [
-          {
-            "gate": "branch_claim_gate",
-            "status": "BLOCKED",
-            "accepted_now": 2,
-            "blocked_for_strong_claims": 3,
-            "claim_boundary": "This gate cannot raise the topic above the current internal speed/stability benchmark package."
-          }
-        ],
-        "sha256": "a00184bd8565e3c8fafb3daeb8b518de59a38f3ec18d52d7386966637f9d2c95",
-        "bytes": 8478
-      },
-      {
-        "topic": "0.11_Phase_Transitions",
-        "role": "phase-transition dependency",
-        "metric_bridge": "phase_transition_gate",
-        "artifact": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_phase_transitions_verification.json",
-        "status": "PASS",
-        "claim_class": "C internal benchmark",
-        "schema_version": "1.1",
-        "timestamp_utc": "2026-07-10T15:20:55.255976+00:00",
-        "claim_gates": [
-          {
-            "gate": "branch_claim_gate",
-            "status": "BLOCKED",
-            "accepted_now": 2,
-            "blocked_for_strong_claims": 4,
-            "claim_boundary": "This gate keeps the topic at selected-benchmark and mechanism-diagnostic status, not universal theory closure."
-          }
-        ],
-        "sha256": "65d67c652ac167960114b905195d8bcd5ddcb8b8944dc43ef6b21ce9af5edfa7",
-        "bytes": 7301
-      },
-      {
-        "topic": "0.12_Vacuum_Energy_Casimir",
-        "role": "vacuum/Casimir dependency",
-        "metric_bridge": "vacuum_energy_gate",
-        "artifact": "docs/topics/0.12_Vacuum_Energy_Casimir/Result/artifacts/0_12_vacuum_energy_casimir_verification.json",
-        "status": "PASS",
-        "claim_class": "C - source-backed internal benchmark for Casimir force only",
-        "schema_version": "1.1",
-        "timestamp_utc": "2026-06-18T13:37:35.875322+00:00",
-        "claim_gates": [
-          {
-            "gate": "branch_claim_gate",
-            "status": "BLOCKED",
-            "accepted_now": 2,
-            "blocked_for_strong_claims": 4,
-            "claim_boundary": "This gate keeps the topic at Casimir benchmark and mechanism-diagnostic status, not vacuum-energy closure."
-          }
-        ],
-        "sha256": "4e28ccd4fb8ae9e89eef3d6988bdae1fadefa1709832f3c7ff6a587df474a8c8",
-        "bytes": 10282
-      },
-      {
-        "topic": "0.13_Thermodynamic_Bridge",
-        "role": "information-energy bridge dependency",
-        "metric_bridge": "thermodynamic_bridge_gate",
-        "artifact": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/0_13_thermodynamic_bridge_verification.json",
-        "status": "WARN",
-        "claim_class": "C",
-        "schema_version": "1.3",
-        "timestamp_utc": "2026-06-22T15:41:14.116702+00:00",
-        "claim_gates": [
-          {
-            "gate": "thermodynamic_claim_scope_gate",
-            "status": "WARN",
-            "claim_class": "C_formula_lower_bound_only",
-            "blocked_claims": [
-              "0.13 proves the UET information-entropy-energy bridge.",
-              "The Landauer benchmark package is fully source-normalized.",
-              "The synthetic Cattaneo branch is external heat-transport validation."
-            ],
-            "blocked_export_phrases": [
-              "thermodynamic bridge proved",
-              "verified UET bridge",
-              "exact information energy equivalence",
-              "external thermodynamic validation",
-              "entropy energy unification solved",
-              "Tier A foundation complete"
-            ],
-            "next_blockers": [
-              "raw_landauer_numeric_tables_not_archived",
-              "landauer_uncertainty_status_partial_intervals_mass_plus_direct_2022_g_for_gravity_context",
-              "uet_bridge_derivation_status_open_boundary_mapped_not_derived",
-              "units_contract_status_partial_contract_dimensional_and_proxy_layers_separated",
-              "landauer_uet_mapping_status_imported_constraint_not_noncircular_uet_derivation",
-              "beta_role_clarification_status_beta_present_but_not_closed_as_derived_bridge_coefficient",
-              "synthetic_cattaneo_not_external_validation",
-              "foundation_claim_gate_not_passed"
-            ],
-            "claim_boundary": "0.13 may be used as a lower-bound and standard-formula constraint layer. It must not be exported as proof of the UET bridge, source-normalized Landauer validation, or external heat-transport validation until the blocked lanes close."
-          },
-          {
-            "gate": "foundation_claim_gate",
-            "status": "FOUNDATION_WARN",
-            "claim_ceiling": "C - formula/lower-bound consistency only",
-            "blocked_exports": [
-              "T13_EXPORT_UET_BRIDGE_PROOF",
-              "T13_EXPORT_SOURCE_NORMALIZED_LANDAUER_DATASET",
-              "T13_EXPORT_CATTANEO_EXTERNAL_VALIDATION"
-            ],
-            "claim_boundary": "0.13 is a priority foundation topic, but only its lower-bound and standard-formula lanes are currently usable by dependent theory topics."
-          },
-          {
-            "gate": "paper_readiness_gate",
-            "status": "BLOCKED",
-            "blocked_dependency_count": null,
-            "claim_boundary": "Subordinate paper-readiness gate is inherited by 0.0."
-          }
-        ],
-        "sha256": "55242147cee5f4846a0b6d3e5bfb9f96e4a9b8f5447d8445f815eccf24016a3a",
-        "bytes": 72056
-      },
-      {
-        "topic": "0.14_Complex_Systems",
-        "role": "complex-systems dependency",
-        "metric_bridge": "complex_systems_gate",
-        "artifact": "docs/topics/0.14_Complex_Systems/Result/artifacts/0_14_complex_systems_verification.json",
-        "status": "PASS",
-        "claim_class": null,
-        "schema_version": "1.2",
-        "timestamp_utc": "2026-06-18T13:38:20.228810+00:00",
-        "claim_gates": [
-          {
-            "gate": "complexity_claim_gate",
-            "status": "HRV_RUN_CONTRACT_ONLY",
-            "claim_class": "C_HRV_internal_benchmark_only",
-            "blocked_exports": [
-              "clinical_hrv_classifier",
-              "soc_avalanche_or_power_law_claim",
-              "econophysics_market_prediction_claim",
-              "climate_inequality_social_system_claim",
-              "universal_complexity_law"
-            ],
-            "blocked_export_phrases": [
-              "universal complexity law",
-              "clinical HRV classifier validated",
-              "market crash predictor",
-              "SOC power law verified",
-              "climate system proof",
-              "inequality dynamics solved",
-              "all complex systems unified"
-            ],
-            "next_blockers": [
-              "raw_physionet_archive_missing",
-              "hrv_extraction_workflow_missing",
-              "clinical_label_baseline_missing",
-              "soc_avalanche_artifact_missing",
-              "econophysics_source_locked_baseline_missing",
-              "climate_inequality_social_branch_artifacts_missing",
-              "universal_complexity_claim_blocked"
-            ],
-            "claim_boundary": "Broader complex-systems claims require a closed source/provenance gate, branch-specific baseline comparison, thresholded verifier artifact, and explicit limitation text for each branch."
-          },
-          {
-            "gate": "hrv_provenance_gate",
-            "status": "DERIVED_SOURCE_WARN",
-            "raw_archive_status": "OPEN",
-            "extraction_workflow_status": "OPEN",
-            "blocked_export_phrases": [
-              "raw PhysioNet archive complete",
-              "HRV extraction workflow frozen",
-              "clinical HRV classifier validated",
-              "HRV raw-source replication complete",
-              "HRV preprocessing fully source locked"
-            ],
-            "next_blockers": [
-              "raw_physionet_dat_hea_atr_archive_missing",
-              "rr_extraction_command_missing",
-              "rr_extraction_tool_version_missing",
-              "preprocessing_filter_script_missing",
-              "clinical_label_validation_missing"
-            ],
-            "claim_boundary": "HRV may be treated as source-referenced derived RR evidence only. Raw-source archival or clinical/classification claims remain blocked."
-          },
-          {
-            "gate": "branch_claim_gate",
-            "status": "BLOCKED",
-            "accepted_now": 1,
-            "blocked_for_strong_claims": 5,
-            "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current HRV run-contract evidence."
-          }
-        ],
-        "sha256": "143c48bef81ab85c5b2263683652e139537301ac7da0c05ba7cdf7f5b2dcf986",
-        "bytes": 12038
-      },
-      {
-        "topic": "0.15_Cluster_Dynamics",
-        "role": "cluster dynamics dependency",
-        "metric_bridge": "cluster_dynamics_gate",
-        "artifact": "docs/topics/0.15_Cluster_Dynamics/Result/artifacts/0_15_cluster_dynamics_verification.json",
-        "status": "WARN",
-        "claim_class": "D - qualitative diagnostic only",
-        "schema_version": "1.1",
-        "timestamp_utc": "2026-06-18T13:39:08.718660+00:00",
-        "claim_gates": [
-          {
-            "gate": "cluster_claim_scope_gate",
-            "status": "WARN",
-            "claim_class": "D_qualitative_cluster_diagnostic_only",
-            "blocked_claims": [
-              "UET predicts the Bullet Cluster kpc offsets.",
-              "UET replaces dark matter at cluster scale.",
-              "UET resolves JWST early galaxy or cluster formation tensions."
-            ],
-            "blocked_export_phrases": [
-              "Bullet Cluster solved",
-              "dark matter replaced",
-              "cluster virial discrepancy resolved",
-              "lensing mass map predicted",
-              "JWST age problem resolved"
-            ],
-            "next_blockers": [
-              "bullet_cluster_kpc_calibration_missing",
-              "lensing_map_comparison_missing",
-              "held_out_multi_cluster_suite_missing",
-              "virial_artifacts_not_primary_gated",
-              "jwst_formation_claim_not_primary_gated"
-            ],
-            "claim_boundary": "A WARN artifact supports only qualitative Bullet Cluster separation-sign diagnostics and bounded mechanism discussion. It does not predict kpc offsets, replace dark matter, resolve virial discrepancies, or validate JWST formation claims."
-          },
-          {
-            "gate": "branch_claim_gate",
-            "status": "BLOCKED",
-            "accepted_now": 2,
-            "blocked_for_strong_claims": 4,
-            "claim_boundary": "This gate keeps the topic at qualitative cluster-diagnostic status, not dark-matter replacement closure."
-          }
-        ],
-        "sha256": "1b7a27441a271fe6b277d7b744a54f658e050c2bfc51bca3e10f1158da26c1b3",
-        "bytes": 7943
-      },
-      {
-        "topic": "0.16_Heavy_Nuclei",
-        "role": "heavy-nuclei dependency",
-        "metric_bridge": "heavy_nuclei_gate",
-        "artifact": "docs/topics/0.16_Heavy_Nuclei/Result/artifacts/0_16_heavy_nuclei_verification.json",
-        "status": "WARN",
-        "claim_class": "C/D boundary - internal fission sanity check with missing fragment provenance",
-        "schema_version": "1.1",
-        "timestamp_utc": "2026-06-18T13:39:25.718974+00:00",
-        "claim_gates": [
-          {
-            "gate": "branch_claim_gate",
-            "status": "BLOCKED",
-            "accepted_now": 2,
-            "blocked_for_strong_claims": 4,
-            "claim_boundary": "This gate keeps the topic at heavy-nuclei checkpoint and sanity-diagnostic status, not first-principles nuclear closure."
-          }
-        ],
-        "sha256": "12db48af09fd68f065a4285c4e43ae12b029ba7c683a7dd77a8909bc58c60a29",
-        "bytes": 7883
+        "timestamp_utc": "2026-07-13T12:38:26.105755+00:00",
+        "sha256": "8737e75f8e7ad004217f5a3b9825bd9267c30dc39ca95e2e541e9142b68dcccb",
+        "bytes": 2800
       },
       {
         "topic": "0.17_Mass_Generation",
@@ -1882,51 +291,10 @@
         "artifact": "docs/topics/0.17_Mass_Generation/Result/artifacts/0_17_mass_generation_verification.json",
         "status": "PASS",
         "claim_class": null,
-        "schema_version": "1.3",
-        "timestamp_utc": "2026-06-18T13:39:41.168630+00:00",
-        "claim_gates": [
-          {
-            "gate": "mass_generation_claim_scope_gate",
-            "status": "HIGGS_KAPPA_BENCHMARK_ONLY",
-            "claim_class": "C_internal_higgs_kappa_consistency_benchmark",
-            "blocked_exports": [
-              "new mass-generation mechanism validated",
-              "Higgs mechanism replaced",
-              "Standard Model mass hierarchy derived",
-              "Koide relation proved from UET",
-              "Planck exponential ansatz validated"
-            ],
-            "blocked_export_phrases": [
-              "new mass-generation mechanism validated",
-              "Higgs mechanism replaced",
-              "mass hierarchy derived",
-              "Koide relation proved",
-              "tau mass predicted from first principles",
-              "Planck exponential ansatz validated",
-              "UET explains all particle masses",
-              "Higgs sector solved"
-            ],
-            "next_blockers": [
-              "uncertainty_aware_higgs_fit_missing",
-              "source_to_row_mapping_incomplete",
-              "raw_higgs_table_archive_missing",
-              "mass_generation_mechanism_derivation_missing",
-              "koide_tau_verifier_missing",
-              "planck_ansatz_parameter_derivation_missing",
-              "mass_hierarchy_benchmark_missing"
-            ],
-            "claim_boundary": "0.17 may export only an internal SM-normalized Higgs kappa consistency benchmark. It must not be used as a new mass-generation mechanism, Higgs replacement, mass-hierarchy derivation, Koide/tau proof, or Planck-ansatz validation until separate source-locked and uncertainty-aware gates exist."
-          },
-          {
-            "gate": "branch_claim_gate",
-            "status": "BLOCKED",
-            "accepted_now": 1,
-            "blocked_for_strong_claims": 4,
-            "claim_boundary": "This gate records branch-specific claim ceilings only. It cannot upgrade the topic beyond the current Higgs-coupling run-contract evidence."
-          }
-        ],
-        "sha256": "11f7e625ded103a0175865d1d9865657718f6f9adfc4508f1157909f9d440b92",
-        "bytes": 10017
+        "schema_version": "1.1",
+        "timestamp_utc": "2026-07-13T13:00:57.903064+00:00",
+        "sha256": "65f3b99a542522fca372e8f7c6ef0bc9b268b82d03b5059ddcffac526be3cdf1",
+        "bytes": 3330
       },
       {
         "topic": "0.18_Mathnicry",
@@ -1935,97 +303,10 @@
         "artifact": "docs/topics/0.18_Mathnicry/Result/artifacts/0_18_mathnicry_verification.json",
         "status": "WARN",
         "claim_class": null,
-        "schema_version": "1.3",
-        "timestamp_utc": "2026-06-18T13:40:22.565829+00:00",
-        "claim_gates": [
-          {
-            "gate": "theorem_boundary_gate",
-            "status": "BLOCKED",
-            "theorem_status": "THEOREM_CLAIMS_BLOCKED",
-            "claim_class": "D_surrogate_run_contract_only",
-            "accepted_exports": [
-              "T18_EXPORT_BSD_SURROGATE_RUN_CONTRACT"
-            ],
-            "blocked_exports": [
-              "T18_EXPORT_BSD_PROOF",
-              "T18_EXPORT_RIEMANN_PROOF",
-              "T18_EXPORT_P_VS_NP_PROOF",
-              "T18_EXPORT_COLLATZ_PROOF",
-              "T18_EXPORT_QUANTUM_ENGINE_THEOREM"
-            ],
-            "blocked_export_phrases": [
-              "BSD proved",
-              "Riemann Hypothesis proved",
-              "P vs NP solved",
-              "Collatz proved",
-              "Hodge conjecture proved",
-              "theorem-level proof",
-              "formal proof verified"
-            ],
-            "next_blockers": [
-              "bsd_rank_l_function_source_package_missing",
-              "riemann_precision_and_off_line_exclusion_missing",
-              "p_vs_np_formal_reduction_missing",
-              "collatz_bounded_search_manifest_missing",
-              "quantum_engine_deterministic_fixtures_missing",
-              "all_theorem_source_targets_pending"
-            ],
-            "claim_boundary": "0.18 can currently export only surrogate/run-contract evidence. All theorem-level exports are blocked."
-          },
-          {
-            "gate": "data_posture_gate",
-            "status": "SURROGATE_ONLY",
-            "data_reality_status": "manual_or_placeholder",
-            "primary_verifier_input_class": "local_code_fixture_package",
-            "blocked_export_phrases": [
-              "source-backed theorem benchmark",
-              "external theorem validation",
-              "BSD data verified",
-              "L-function benchmark passed",
-              "real elliptic-curve rank computation",
-              "proof dataset complete"
-            ],
-            "next_blockers": [
-              "bsd_benchmark_source_package_missing",
-              "riemann_zero_source_package_missing",
-              "grover_complexity_benchmark_missing",
-              "collatz_bounded_search_manifest_missing",
-              "quantum_engine_fixture_package_missing",
-              "primary_verifier_uses_local_code_fixtures_only"
-            ],
-            "claim_boundary": "This gate allows only local surrogate/run-contract evidence. It blocks proof-level, theorem-level, and external-validation wording until source-backed benchmark packages and proof-boundary artifacts exist."
-          },
-          {
-            "gate": "branch_claim_gate",
-            "status": "BLOCKED",
-            "accepted_now": 1,
-            "blocked_for_strong_claims": 5,
-            "claim_boundary": "This gate records theorem-branch claim ceilings only. It cannot upgrade the topic beyond the current run-contract evidence."
-          }
-        ],
-        "sha256": "c12cbf728e8ca58279976d4665b7148e4727cfdc3d0fc4546ba9678219f25e95",
-        "bytes": 7939
-      },
-      {
-        "topic": "0.19_Gravity_GR",
-        "role": "gravity/GR dependency",
-        "metric_bridge": "gravity_gate",
-        "artifact": "docs/topics/0.19_Gravity_GR/Result/artifacts/0_19_gravity_gr_verification.json",
-        "status": "PASS",
-        "claim_class": "C - source-constant internal checkpoint only",
         "schema_version": "1.1",
-        "timestamp_utc": "2026-06-18T13:41:55.895831+00:00",
-        "claim_gates": [
-          {
-            "gate": "branch_claim_gate",
-            "status": "BLOCKED",
-            "accepted_now": 2,
-            "blocked_for_strong_claims": 4,
-            "claim_boundary": "This gate keeps the topic at source-constant checkpoint status, not general-relativity closure."
-          }
-        ],
-        "sha256": "98221684ab28d5989cd64fbcdf7de2e1fdd0ba9b45cb73fb52f0746a8111caa7",
-        "bytes": 7091
+        "timestamp_utc": "2026-07-13T13:02:04.396326+00:00",
+        "sha256": "47c3cc8e5d4600b4dd916c8928d02d71c521626f76a9b893e0ff1a0e967b1a55",
+        "bytes": 1748
       },
       {
         "topic": "0.20_Atomic_Physics",
@@ -2034,123 +315,10 @@
         "artifact": "docs/topics/0.20_Atomic_Physics/Result/artifacts/0_20_atomic_physics_verification.json",
         "status": "PASS",
         "claim_class": "C - source-backed internal hydrogen spectrum benchmark",
-        "schema_version": "1.2",
-        "timestamp_utc": "2026-06-18T13:42:49.761746+00:00",
-        "claim_gates": [
-          {
-            "gate": "branch_claim_gate",
-            "status": "BLOCKED",
-            "accepted_now": 5,
-            "blocked_for_strong_claims": 4,
-            "claim_boundary": "This gate keeps the topic at hydrogen benchmark status, not full atomic-theory closure."
-          }
-        ],
-        "sha256": "71ae185641dc2af9e93a45adf12195e44a420028631128109770c871cc70f843",
-        "bytes": 412794
-      },
-      {
-        "topic": "0.21_Yang_Mills_Mass_Gap",
-        "role": "math-facing mass-gap dependency",
-        "metric_bridge": "mass_gap_gate",
-        "artifact": "docs/topics/0.21_Yang_Mills_Mass_Gap/Result/artifacts/mass_gap_validation.json",
-        "status": "WARN",
-        "claim_class": null,
-        "schema_version": null,
-        "timestamp_utc": "2026-06-18T13:42:59.382706+00:00",
-        "claim_gates": [],
-        "sha256": "11ac697160670d1ffc1c94970fbcf22acba963563449ce7b959efa898d6a5850",
-        "bytes": 6087
-      },
-      {
-        "topic": "0.22_Biophysics_Origin_of_Life",
-        "role": "biophysics dependency",
-        "metric_bridge": "biophysics_gate",
-        "artifact": "docs/topics/0.22_Biophysics_Origin_of_Life/Result/artifacts/0_22_biophysics_origin_of_life_verification.json",
-        "status": "WARN",
-        "claim_class": "D",
         "schema_version": "1.1",
-        "timestamp_utc": "2026-06-18T13:43:34.366466+00:00",
-        "claim_gates": [
-          {
-            "gate": "biophysics_claim_scope_gate",
-            "status": "SYNTHETIC_DIAGNOSTIC_ONLY",
-            "claim_class": "D_synthetic_diagnostic_only",
-            "blocked_claims": [
-              "UET explains the origin of life.",
-              "UET validates clinical biomarkers or TCGA cancer entropy.",
-              "UET validates EEG seizure prediction.",
-              "UET outperforms protein-folding or protocell benchmarks."
-            ],
-            "blocked_export_phrases": [
-              "origin of life solved",
-              "clinical biomarker validated",
-              "TCGA validation",
-              "EEG seizure prediction validated",
-              "protein folding superiority",
-              "protocell emergence proven",
-              "biophysical theory closure"
-            ],
-            "next_blockers": [
-              "primary_verifier_synthetic_only",
-              "real_omics_matrix_missing",
-              "raw_eeg_windows_missing",
-              "prebiotic_reaction_dataset_missing",
-              "protein_benchmark_optimum_missing",
-              "thermodynamic_bridge_dependency_not_closed"
-            ],
-            "claim_boundary": "0.22 currently exports only a synthetic biomarker diagnostic run-contract and source-governance map. It must not export origin-of-life, clinical, EEG, TCGA, protein-folding, or theory-closure claims."
-          }
-        ],
-        "sha256": "ed6dac28a27a3fec2dcd550c702ca3fd628c337252c89546c62d7e94d44c0683",
-        "bytes": 10254
-      },
-      {
-        "topic": "0.23_Unity_Scale_Link",
-        "role": "scale-link dependency gate",
-        "metric_bridge": "scale_link_gate",
-        "artifact": "docs/topics/0.23_Unity_Scale_Link/Result/artifacts/0_23_unity_scale_link_verification.json",
-        "status": "WARN",
-        "claim_class": "D",
-        "schema_version": "1.3",
-        "timestamp_utc": "2026-06-18T13:44:22.991857+00:00",
-        "claim_gates": [
-          {
-            "gate": "scale_claim_gate",
-            "status": "WARN",
-            "claim_class": "D_exploratory_structural_scale_link",
-            "thermodynamic_foundation_status": "FOUNDATION_WARN",
-            "blocked_exports": [
-              "T13_EXPORT_UET_BRIDGE_PROOF",
-              "T13_EXPORT_SOURCE_NORMALIZED_LANDAUER_DATASET",
-              "T13_EXPORT_CATTANEO_EXTERNAL_VALIDATION"
-            ],
-            "blocked_claims": [
-              "0.23 proves unity across domains.",
-              "One fixed kappa works universally.",
-              "The synthetic neural/galaxy transfer is external prediction.",
-              "0.23 inherits UET bridge proof from 0.13."
-            ],
-            "blocked_export_phrases": [
-              "unity across all scales proved",
-              "universal fixed kappa",
-              "external cross-domain prediction validated",
-              "grand unification demonstrated",
-              "UET bridge proof inherited",
-              "scale law solved"
-            ],
-            "next_blockers": [
-              "finance_query_logs_missing",
-              "real_eeg_source_package_missing",
-              "synthetic_neural_branch_simulation_only",
-              "fixed_universal_kappa_blocked",
-              "thermodynamic_foundation_gate_not_passed",
-              "held_out_cross_domain_validation_missing"
-            ],
-            "claim_boundary": "Scale-link branch remains exploratory unless source, EEG, and inherited 0.13 gates close."
-          }
-        ],
-        "sha256": "12280888216c9744f92b134a79945f526222b8a4fa7baabe4daba40b2d4c0cd8",
-        "bytes": 18232
+        "timestamp_utc": null,
+        "sha256": "99925a726f651b6916fdbccf1d78bd7cf3c268fb57b20d2179ab80f0aa9d969a",
+        "bytes": 139449
       },
       {
         "topic": "0.24_Artificial_Intelligence",
@@ -2160,39 +328,9 @@
         "status": "WARN",
         "claim_class": "C - internal scaling and sparsity benchmark",
         "schema_version": "1.1",
-        "timestamp_utc": "2026-06-18T13:44:44.032302+00:00",
-        "claim_gates": [
-          {
-            "gate": "ai_claim_scope_gate",
-            "status": "SCALING_SPARSITY_BENCHMARK_ONLY",
-            "claim_class": "C_internal_scaling_sparsity_benchmark",
-            "blocked_claims": [
-              "UET derives a universal AI scaling law or alpha-kappa identity.",
-              "MoE sparsity validates intelligence, efficiency, safety, or alignment.",
-              "UET proves AI alignment, ethics as physical law, consciousness, or developmental AI."
-            ],
-            "blocked_export_phrases": [
-              "AI alignment proved",
-              "ethics as physical law verified",
-              "machine consciousness validated",
-              "universal intelligence law",
-              "alpha equals kappa derived",
-              "MoE proves efficient intelligence",
-              "developmental AI solved"
-            ],
-            "next_blockers": [
-              "alpha_kappa_bridge_heuristic_open",
-              "scaling_source_archive_incomplete",
-              "model_metadata_source_normalization_incomplete",
-              "moe_sparsity_not_alignment_metric",
-              "alignment_ethics_consciousness_verifiers_missing",
-              "cross_topic_ai_detective_dependency_not_isolated"
-            ],
-            "claim_boundary": "0.24 may export only internal scaling/sparsity benchmark language. It must not export alignment, ethics, consciousness, universal-intelligence, alpha-kappa-law, or MoE-performance claims until separate gates close."
-          }
-        ],
-        "sha256": "ab05fe3c059282e6f98e6b460db49d1c95c71c2239383593ac944f8ca92ba710",
-        "bytes": 10481
+        "timestamp_utc": null,
+        "sha256": "3aa2f52f246611a902af4d5af5d8fae148f61e5671066eb6fc597d8c6db9997d",
+        "bytes": 4383
       },
       {
         "topic": "0.25_Strategy_Power_Economics",
@@ -2201,98 +339,10 @@
         "artifact": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_strategy_power_economics_verification.json",
         "status": "WARN",
         "claim_class": "C - internal economic data integrity and market diagnostics benchmark",
-        "schema_version": "1.2",
-        "timestamp_utc": "2026-06-18T13:45:04.875252+00:00",
-        "claim_gates": [
-          {
-            "gate": "economics_claim_scope_gate",
-            "status": "DESCRIPTIVE_DIAGNOSTIC_ONLY",
-            "claim_class": "C_internal_economic_data_diagnostic",
-            "blocked_claims": [
-              "UET predicts future market prices or macroeconomic outcomes.",
-              "The social power engine proves strategic superiority or Nash-equilibrium improvement.",
-              "The topic validates real-world policy causality or social stabilization.",
-              "Local gateway/economy working copies are archival macroeconomic evidence."
-            ],
-            "blocked_export_phrases": [
-              "UET predicts markets",
-              "strategic superiority proved",
-              "Nash equilibrium improved",
-              "policy causality verified",
-              "social stabilization achieved",
-              "8-billion resonance validated",
-              "world lease model proven",
-              "economic law confirmed"
-            ],
-            "next_blockers": [
-              "market_retrieval_dates_missing",
-              "global_economy_upstream_url_or_doi_missing",
-              "daily_snapshot_upstream_url_or_api_missing",
-              "forecast_baseline_protocol_missing",
-              "causal_policy_design_missing",
-              "social_power_engine_calibration_missing"
-            ],
-            "claim_boundary": "0.25 may be cited as an internal economic-data diagnostic and provenance-hardening topic only. It must not be exported as a market predictor, policy engine, or validated strategy framework until source locks, forecast baselines, causal design, and calibrated simulation comparators are present."
-          }
-        ],
-        "sha256": "401e616df9e4683da31c4e589f4b6bdaab7634420cb52bed5eaeb0b70531d863",
-        "bytes": 12753
-      },
-      {
-        "topic": "0.26_Cosmic_Dynamic_Frame",
-        "role": "dynamic-frame mechanism dependency",
-        "metric_bridge": "cosmic_dynamic_frame_gate",
-        "artifact": "docs/topics/0.26_Cosmic_Dynamic_Frame/Result/artifacts/0_26_cosmic_dynamic_frame_verification.json",
-        "status": "WARN",
-        "claim_class": "D",
-        "schema_version": "1.2",
-        "timestamp_utc": "2026-06-18T13:46:11.639732+00:00",
-        "claim_gates": [
-          {
-            "gate": "dynamic_frame_claim_gate",
-            "status": "BLOCKED",
-            "claim_class": "D_exploratory_mechanism_candidate",
-            "blocked_exports": [
-              "validated_dynamic_frame_model",
-              "dark_matter_or_cosmology_replacement",
-              "pioneer_anomaly_explanation",
-              "strong_inherited_unity_claim"
-            ],
-            "blocked_export_phrases": [
-              "dark matter replacement",
-              "validated dynamic-frame cosmology",
-              "Pioneer anomaly explained by UET",
-              "toroidal cosmology solved",
-              "cosmic flow model fit validated",
-              "dynamic frame proves unity"
-            ],
-            "next_blockers": [
-              "raw_laniakea_or_cosmicflows_tables_missing",
-              "observer_frame_metadata_incomplete",
-              "numeric_flow_residual_gate_open",
-              "baseline_comparison_gate_open",
-              "pioneer_thermal_recoil_competitor_open",
-              "upstream_dependency_warn_inherited"
-            ],
-            "claim_boundary": "Theory-level dynamic-frame claims require source evidence ready, numeric residual gate CLOSED_PASS, baseline comparison gate CLOSED_PASS, and no unresolved upstream WARN inherited as proof."
-          },
-          {
-            "gate": "numeric_residual_gate",
-            "status": "BLOCKED",
-            "visualization_status": "PASS",
-            "numeric_flow_residual_status": "OPEN",
-            "baseline_comparison_status": "OPEN",
-            "blocked_claims": [
-              "dark-matter replacement",
-              "validated dynamic-frame cosmology",
-              "Pioneer anomaly explanation by UET drag",
-              "toroidal cosmology observable closure"
-            ],
-            "claim_boundary": "Visualization/provenance does not close numeric residual or replacement-claim gates."
-          }
-        ],
-        "sha256": "f75aeab6f37be54e6212dc60e1148d85ebdbf562665c8fc3a051e2bacdaff70d",
-        "bytes": 10997
+        "schema_version": "1.1",
+        "timestamp_utc": null,
+        "sha256": "401972654a72f4b72e5c5162b70790e907cf4646a475a7fa2bc571f610722334",
+        "bytes": 7550
       }
     ],
     "component_scope": [
@@ -2316,7 +366,7 @@
           "reynolds_critical": 2261.946710584651,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 1.5021055509547234,
+          "ai_initial_loss": 0.4662053903364106,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
@@ -2341,7 +391,7 @@
           "reynolds_critical": 226.19467105846513,
           "tau_mass_MeV": 1776.994275018774,
           "entanglement_entropy": 1.0,
-          "ai_initial_loss": 0.6169524242361898,
+          "ai_initial_loss": 1.5180133198612102,
           "economic_omega": 5.0149674813302545e-08,
           "atomic_h_alpha_error_percent": 0.02942315467382364
         },
@@ -2365,7 +415,7 @@
     },
     "dependency_summary": {
       "statuses": [
-        "ran",
+        "UNKNOWN",
         "ran",
         "UNKNOWN",
         "PASS",

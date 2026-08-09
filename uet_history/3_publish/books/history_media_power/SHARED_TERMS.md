@@ -1,12 +1,34 @@
-# Section 3 Shared Terms
+# Section 3 Shared Terms & Controlled Definitions
 
-Status: `IN_PROGRESS`
-Definitions below are provisional and require Section-level review before publication.
+Status: `PASS`  
+Section Blueprint: `section-03-v1`  
 
-| Term | Working definition | Used by | Status |
-| --- | --- | --- | --- |
-| Discourse | The language, framing, and repeated representation through which a social reality is organized. | Books 1-3 | `NEEDS_REVIEW` |
-| Tradition | A repeated social pattern that becomes experienced as normal or unquestionable. | Books 1-3 | `NEEDS_REVIEW` |
-| Hegemony | A working label for durable power maintained through institutions, resources, force, and knowledge or meaning. | Books 1-3 | `NEEDS_REVIEW` |
-| Selective framing | A working label for choosing which facts, histories, or interpretations receive attention and which are excluded. | Books 1-2 | `NEEDS_REVIEW` |
-| Four-power model | The Section's proposed analytical frame; its relation to established scholarship must be recorded in the relevant claim map. | Book 1 and Section | `NEEDS_REVIEW` |
+---
+
+## 1. Controlled Terms Registry
+
+| Term (ภาษาไทย / English) | Canonical Working Definition | Used Primary Volumes | Academic / Theoretical Basis | Status |
+| :--- | :--- | :---: | :--- | :---: |
+| **วาทกรรม (Discourse)** | ระบบระเบียบการจัดระเบียบความจริงทางสังคม ที่กำหนดว่าอะไรคือความจริง ความดี ความถูกต้อง และอะไรควรถูกมองข้าม | Books 1, 2, 3 | Michel Foucault (*Power/Knowledge*) | `PASS` |
+| **การเลือกพูด (Selective Framing)** | กลไกการคัดเลือกนำเสนอเฉพาะบางมิติของปรากฏการณ์ เพื่อสร้างความชอบธรรมให้แก่โครงสร้างอำนาจของผู้สร้างเรื่องเล่า | Books 1, 3 | Entman, Goffman (*Framing Theory*) | `PASS` |
+| **กระบวนการไดอะเลกติก (Dialectical Process)** | วิวัฒนาการความรู้ผ่านความขัดแย้งของอุดมการณ์เดิม (Thesis) การโต้ตอบ (Antithesis) สู่การสังเคราะห์จารีต/วาทกรรมใหม่ (Synthesis) | Books 1, 2, 3 | Hegel, Schopenhauer, J.S. Mill, Buddhist Dialectics | `PASS` |
+| **ทฤษฎีอำนาจ 4 มิติ (4-Power Model)** | กรอบวิเคราะห์อำนาจ 4 ด้านที่ขับเคลื่อนวาทกรรม: (1) ชีวะ (2) เศรษฐศาสตร์ (3) กำลังรวมกฎหมาย (4) ความรู้รวมสื่อ | Books 1, 2, 3 | Foucault, Michael Mann (*IEMP*), Weber, Gramsci, อ.ติน/อาชญาวิทยาไทย | `PASS` |
+| **กลไกความปลอดภัยทางประสาทวิทยา (Neurobiological Safety Mechanism)** | การสร้างคำอธิบาย/วาทกรรมเพื่อลดความกลัวภัยคุกคามใน Amygdala เมื่อเจอความไม่รู้ และดึงร่างกายเข้าสู่ Parasympathetic | Books 1, 2 | Evolutionary Neuroscience (Locke-Neuro Synthesis) | `PASS` |
+| **การประหยัดพลังงานสมอง (Thermodynamic Brain Economy)** | ธรรมชาติทางวิวัฒนาการของสมองที่เลือกเสพคำอธิบายสำเร็จรูปชุ่ยๆ เพื่อประหยัดพลังงานแคลอรี สอดคล้องกับถ้ำของเพลโต | Books 1, 2 | Cognitive Neuroscience, Evolutionary Psychology | `PASS` |
+| **อำนาจทางชีวะ (Bio-Power)** | สัญชาตญาณการอยู่รอด กลไกสมอง ความกลัวเจ็บปวดจากการถูกกีดกันทางสังคม (Social Pain) สายเลือด อารมณ์ | Books 1, 2 | Foucault (*Biopolitics*), Evolutionary Criminology | `PASS` |
+| **อำนาจทางเศรษฐศาสตร์ (Economic Power)** | ทุน ทรัพยากรทางวัตถุ การควบคุมปัจจัยการผลิต เงินตรา ปากท้อง | Books 1, 2 | Michael Mann (*Economic Source*) | `PASS` |
+| **อำนาจทางกำลังรวมกฎหมาย (Coercive Power & Law)** | กำลังกายภาพ กองทัพ อาวุธ และกฎหมายในฐานะกลไกผูกขาดการใช้กำลังของรัฐ | Books 1, 2 | Max Weber (*Monopoly of Violence*), อ.ติน | `PASS` |
+| **อำนาจทางความรู้รวมสื่อ (Knowledge Power & Media)** | วาทกรรม สื่อมวลชน การศึกษา ศาสนา เรื่องเล่า ข้อมูลข่าวสาร | Books 1, 2, 3 | Foucault, Gramsci (*Cultural Hegemony*) | `PASS` |
+| **จารีต (Tradition)** | สภาวะดุลยภาพทางพฤติกรรมของระบบสังคมที่มีเอนโทรปีต่ำ เกิดจากวาทกรรมทำซ้ำจนกลายเป็นความปกติที่ไร้คำถาม | Books 1, 2, 3 | Hobsbawm (*Invention of Tradition*), Schmidt | `PASS` |
+| **การสมยอมเทียม (Pluralistic Ignorance)** | สภาวะที่คนส่วนใหญ่ต่างไม่เห็นด้วยกับจารีตในใจ แต่แสร้งทำเป็นปฏิบัติตามเพราะคิดว่าคนอื่นเชื่อจริงๆ | Books 2, 3 | Social Psychology (Katz, Allport, Centola) | `PASS` |
+| **การประมวลผลอัตโนมัติ (Neuro-Habituation)** | การเปลี่ยนการประมวลผลจาก Prefrontal Cortex (คิดวิเคราะห์) สู่ Basal Ganglia (ความเคยชิน) เมื่อทำซ้ำจารีต | Books 2, 3 | Cognitive Neuroscience | `PASS` |
+| **การเลือกพูดเชิงจริยธรรม (Ethical Selective Framing)** | การนำกลไกการเลือกพูดมาใช้เชิงจริยธรรม สกัดเอามุมที่ดีงามและปลดปล่อยมวลชนออกจากมรดกเดิม | Book 3 | UET Emancipatory Framework | `PASS` |
+| **การปกครองแบบไร้ตัวตน (Leaderless Governance)** | การออกแบบสถาปัตยกรรมสังคมที่ไร้ผู้ปกครองเบ็ดเสร็จเดี่ยว เพื่อสลายการผูกขาดอำนาจ | Book 3 | Lao Tzu (*Tao Te Ching*), Institutional Decentralization | `PASS` |
+| **เทคโนโลยีทางศีลธรรม-กฎหมาย (Moral-Legal Technology)** | สถาบัน กฎหมายนิติรัฐ ศาล และหลักการสิทธิมนุษยชนที่ถูกสร้างขึ้นเพื่อสถาปนาจารีตใหม่ที่ดีและยั่งยืน | Books 2, 3 | European Moral Evolution & Rule of Law | `PASS` |
+
+---
+
+## 2. Terminology Control Rules
+
+1. ห้ามใช้คำศัพท์ขัดแย้งกันข้ามเล่ม (เช่น ห้ามใช้ "จารีต" ในความหมายลอยๆ โดยไม่โยงกับวาทกรรมทำซ้ำ)
+2. ทุกการอ้างอิงคำศัพท์ทางวิชาการต้องอิงตามตาราง `SHARED_TERMS.md` นี้เป็นแหล่งความจริงเดียว (Single Source of Truth)

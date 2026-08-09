@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "topic": "0.17_Mass_Generation",
-  "timestamp_utc": "2026-04-23T02:39:12.961424+00:00",
+  "timestamp_utc": "2026-08-08T09:12:21.708855+00:00",
   "repo_root": "C:\\Users\\santa\\Desktop\\uet_harness",
   "python_executable": "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
   "verification_spec": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.17_Mass_Generation\\VERIFICATION_SPEC.md",
@@ -34,7 +34,7 @@
       "bytes": "666"
     }
   ],
-  "timeout_seconds": 30,
+  "timeout_seconds": 120,
   "resolved_command": [
     "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
     "docs/topics/0.17_Mass_Generation/Code/03_Research/Research_Higgs_Coupling.py"
@@ -47,10 +47,10 @@
   "status": "ran",
   "exit_code": 0,
   "passed_run_contract": true,
-  "duration_seconds": 2.626,
-  "stdout_tail": "============================================================\n\ud83e\uddca UET MASS GENERATION: HIGGS COUPLING CHECK\n============================================================\n\ud83d\udd0d UET Glass Box: Logging (Streaming) to 'C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.17_Mass_Generation\\Result\\01_Showcase'\n\ud83d\udcf8 Showcase Image Saved: C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.17_Mass_Generation\\Result\\01_Showcase\\Higgs_Coupling_Validation.png\n   Average Deviation from SM/UET: 0.040\n\u2705 PASS: Mass Generation is consistent with Linear Information Density (Higgs Field).\n",
+  "duration_seconds": 7.221,
+  "stdout_tail": "============================================================\n\ud83e\uddca UET MASS GENERATION: HIGGS COUPLING CHECK\n============================================================\n\ud83d\udd0d UET Glass Box: Logging (Streaming) to 'C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.17_Mass_Generation\\Result\\01_Showcase'\n\ud83d\udcf8 Showcase Image Saved: C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.17_Mass_Generation\\Result\\01_Showcase\\Higgs_Coupling_Validation.png\n   Average Deviation from SM/UET: 0.040\n   Artifact Saved: C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.17_Mass_Generation\\Result\\artifacts\\0_17_mass_generation_verification.json\n\u2705 PASS: Mass Generation is consistent with Linear Information Density (Higgs Field).\n",
   "stderr_tail": "",
   "declared_scientific_artifact_exists": true,
-  "declared_scientific_artifact_sha256": "486d33df4730d44ef524414ddcb9feaa7a2af4ba9796324d9273ba54c7ab195f",
-  "declared_scientific_artifact_bytes": 2655
+  "declared_scientific_artifact_sha256": "f36a3c567b3161c95f4dc478385760c0ed8e2263c48084d110a3ab1bbb0f801c",
+  "declared_scientific_artifact_bytes": 3330
 }

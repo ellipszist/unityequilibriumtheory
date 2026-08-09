@@ -10,43 +10,66 @@
 
 ---
 
-## 🗺️ แผนผังโครงสร้างทฤษฎีกายภาพ (Physical Intelligence Flow)
+## 🗺️ แผนผังการประมวลผลทางกายภาพและชีววิทยาแบบครบวงจร (Master Biological Mapping Diagram)
+
+แผนผังนี้แปลงจาก **ตาราง Research Audit Matrix** ทั้งหมดของเล่ม 1 ให้เห็นการไหลของสัญญาณกายภาพ สารเคมี ลำไส้ และสมอง เป็นระบบเนื้อเดียวกัน:
 
 ```mermaid
 graph TD
-    subgraph Foundation ["บทที่ 0-1: ฐานกายภาพและระบบประสาท"]
-        Survival["🛡️ กลไกเอาชีวิตรอด & ประหยัดพลังงาน<br/>(Energy Minimization)"]
-        DualBrain["🧠 สมองประมวลผล 2 ระบบ<br/>(System 1 & 2 / ซีกซ้าย-ขวา)"]
+    subgraph EnvLayer ["1. สิ่งแวดล้อมภายนอก & สิ่งกระตุ้นกายภาพ (บทที่ 5 & 6)"]
+        EnvNudge["🏛️ สถาปัตยกรรมสิ่งแวดล้อม & Nudge Theory<br/>(Affordance, Light, Noise, Choice Architecture)"]
+        ThreatCues["⚡ สัญญาณความไม่แน่นอน & ภัยคุกคาม<br/>(Evolutionary Mismatch & Stress Cues)"]
     end
 
-    subgraph Internal ["บทที่ 2-3: ระบบเคมีและระบบนิเวศภายใน"]
-        ChemLoop["🧪 สารเคมี & ฮอร์โมนบงการ<br/>(Dopamine, Serotonin, Cortisol)"]
-        GutAxis["🦠 ลำไส้คือสมองที่สอง<br/>(Gut-Brain Axis & Microbiome)"]
+    subgraph GutLayer ["2. ระบบนิเวศลำไส้ & สมองที่สอง (บทที่ 3)"]
+        Microbiome["🦠 จุลินทรีย์ลำไส้ (Microbiome)<br/>(กำหนดความอยากอาหาร & สารเคมี)"]
+        GutSerotonin["🧪 90% Serotonin & Enteric Nervous System (ENS)<br/>(สภาวะอารมณ์ & ฐานการย่อย)"]
     end
 
-    subgraph Response ["บทที่ 4-6: การตอบสนองและสิ่งแวดล้อม"]
-        Symptom["⚡ โรคยุคใหม่ & สัญญาณรอด<br/>(Burnout, Anxiety, Shutdown)"]
-        EnvNudge["🏛️ สิ่งแวดล้อมและบริบทบีบบังคับ<br/>(Choice Architecture & Stress Cues)"]
+    subgraph PeripheralNerves ["3. ทางเดินประสาทอัตโนมัติ & สารเคมี (บทที่ 2 & PNI)"]
+        VagusNerve["🔌 เส้นประสาทเวกัส (Vagus Nerve)<br/>(ส่งสัญญาณสองทาง Gut ↔ Brain)"]
+        HPAAxis["🧪 แกน HPA Axis & สารเคมี<br/>(Cortisol, Adrenaline, Dopamine Loop)"]
     end
 
-    Synthesis["👁️ บทที่ 7 & บทสรุป: การตื่นรู้และไม่โทษตัวเอง"]
-    Bridge2["🌉 ส่งไม้ต่อไปยัง เล่ม 2: จิตวิทยา + ไบโอ<br/>(0.2 bio+psycho)"]
+    subgraph BrainCore ["4. สมองประมวลผล & โครงสร้างพลังงาน (บทที่ 0, 1 & 4)"]
+        EnergyMin["⚡ กลไกประหยัดพลังงานระดับเซลล์<br/>(Energy Minimization Heuristic)"]
+        System1_2["🧠 สมอง 2 ระบบ (System 1 เร็ว/อารมณ์ ↔ System 2 ช้า/ตรรกะ)<br/>(DMN & Brain Lateralization)"]
+        Glymphatic["🌙 Glymphatic System<br/>(การชะล้างของเสียตอนนอนหลับ)"]
+    end
 
-    Survival --> DualBrain
-    DualBrain --> ChemLoop
-    ChemLoop --> GutAxis
-    GutAxis --> Symptom
-    Symptom --> EnvNudge
-    EnvNudge --> Synthesis
-    Synthesis --> Bridge2
+    subgraph SomaticOutcome ["5. ผลลัพธ์ทางกายภาพ & อาการทางสรีระ (บทที่ 4 & 7)"]
+        AllostaticLoad["🔥 ภาวะอักเสบเรื้อรัง & Allostatic Load<br/>(Burnout, Anxiety, Gut Spasm, Somatic Pain)"]
+        SelfCompassion["👁️ การตื่นรู้ & เลิกโทษตัวเอง<br/>(Systemic Awareness & Environmental Redesign)"]
+    end
 
-    classDef base fill:#1e293b,stroke:#475569,color:#fff;
-    classDef main fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#fff;
+    ToBook2["🌉 ส่งไม้ต่อไปยัง เล่ม 2: จิตวิทยา + ไบโอ (0.2 bio+psycho)<br/>(จากระบบกายภาพ ➔ สู่สถาปัตยกรรม 8 ฟังก์ชันของจิต)"]
+
+    %% Flow connections
+    EnvNudge & ThreatCues -->|บีบการรับรู้| System1_2
+    Microbiome -->|ผลิตสารเคมี| GutSerotonin
+    GutSerotonin -->|ส่งสัญญาณผ่าน| VagusNerve
+    ThreatCues -->|กระตุ้นเตือนภัย| HPAAxis
+    VagusNerve & HPAAxis -->|ป้อนข้อมูลเข้า| EnergyMin
+    EnergyMin -->|บังคับเลือกทางที่ง่าย| System1_2
+    System1_2 -->|สะสมความเครียด| AllostaticLoad
+    Glymphatic -->|ฟื้นฟูสมดุล| EnergyMin
+    AllostaticLoad -->|เมื่อเข้าใจระบบกายภาพ| SelfCompassion
+    SelfCompassion --> ToBook2
+
+    %% Styles
+    classDef env fill:#1e293b,stroke:#475569,color:#fff;
+    classDef gut fill:#14532d,stroke:#22c55e,color:#fff;
+    classDef nerve fill:#4c1d95,stroke:#a855f7,color:#fff;
+    classDef brain fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#fff;
+    classDef outcome fill:#701a75,stroke:#f0abfc,color:#fff;
     classDef bridge fill:#312e81,stroke:#818cf8,stroke-width:2px,color:#fff;
 
-    class Survival,DualBrain,ChemLoop,GutAxis,Symptom,EnvNudge base;
-    class Synthesis main;
-    class Bridge2 bridge;
+    class EnvNudge,ThreatCues env;
+    class Microbiome,GutSerotonin gut;
+    class VagusNerve,HPAAxis nerve;
+    class EnergyMin,System1_2,Glymphatic brain;
+    class AllostaticLoad,SelfCompassion outcome;
+    class ToBook2 bridge;
 ```
 
 ---

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_foundation_status_aggregate",
-  "generated_at": "2026-08-01",
+  "generated_at": "2026-08-08",
   "audit_status": "PASS",
   "foundation_status": "BLOCKED",
   "controlling_blockers": [

@@ -131,9 +131,9 @@
     }
   ],
   "formulas": {
-    "BCS_weak_coupling": "Tc = 1.13 * Theta_D * exp(-1/Î»)",
-    "McMillan_1968": "Tc = (Theta_D/1.45) * exp(-1.04*(1+Î»)/(Î»-Î¼*(1+0.62*Î»)))",
-    "Allen_Dynes": "Tc = (f1*f2*Ï‰_log/1.2) * exp(-1.04*(1+Î»)/(Î»-Î¼*(1+0.62*Î»)))",
+    "BCS_weak_coupling": "Tc = 1.13 * Theta_D * exp(-1/λ)",
+    "McMillan_1968": "Tc = (Theta_D/1.45) * exp(-1.04*(1+λ)/(λ-μ*(1+0.62*λ)))",
+    "Allen_Dynes": "Tc = (f1*f2*ω_log/1.2) * exp(-1.04*(1+λ)/(λ-μ*(1+0.62*λ)))",
     "UET_extension": "Pending - need Information field coupling"
   }
 }

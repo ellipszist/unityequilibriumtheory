@@ -21,7 +21,7 @@
     "torch_version": "2.10.0+cpu"
   },
   "input_hashes": {
-    "benchmark_script": "f2e005524477001ad9e0e6a9749ca2618a4160a5d31c50da7346dae5e8a03e45",
+    "benchmark_script": "220a86cfa23befc6eb08a7140043baa17975ba56475b9df69a3467f9e6d9cd38",
     "engine": "ead8ad9d567b62dea0c8d4c10c80e3f54fbfc62e7a166deaa6fe0c41d74db97e",
     "lattice_working_copy": "b6c8d4762d59f502686a8f35cebae852bd9a0bc54e29bcd302db9268358c9fbc",
     "source_lock_manifest": "f0e1ccc8d1ec7da9572545bc4fbcab749f041b21d68d55feb5a8fb1f869bcbc8",
@@ -52,7 +52,7 @@
     "reference_uncertainty_percent": 1.0989010989010988,
     "status_rule": "PASS only if residual is within selected lattice-row uncertainty; otherwise WARN unless the run fails."
   },
-  "timestamp_utc": "2026-07-13T13:05:30.697043+00:00",
+  "timestamp_utc": "2026-08-08T09:12:40.035194+00:00",
   "topic": "0.21_Yang_Mills_Mass_Gap",
   "uet_version": "0.9.0"
 }

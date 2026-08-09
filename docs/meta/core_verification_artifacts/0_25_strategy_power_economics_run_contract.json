@@ -1,56 +1,16 @@
 {
   "schema_version": "1.0",
   "topic": "0.25_Strategy_Power_Economics",
-  "timestamp_utc": "2026-04-23T02:39:29.197429+00:00",
+  "timestamp_utc": "2026-08-08T09:13:03.687487+00:00",
   "repo_root": "C:\\Users\\santa\\Desktop\\uet_harness",
   "python_executable": "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
   "verification_spec": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\VERIFICATION_SPEC.md",
-  "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Result\\artifacts\\0_25_strategy_power_economics_verification.json",
+  "declared_scientific_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Result\\artifacts\\0.25_strategy_power_economics_verification.json",
   "runner_artifact_path": "C:\\Users\\santa\\Desktop\\uet_harness\\docs\\meta\\core_verification_artifacts\\0_25_strategy_power_economics_run_contract.json",
-  "command": "python docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_8_Billion_Resonance.py",
-  "input_hashes": [
-    {
-      "path": "Data/03_Research/Bitcoin_yahoo_real.csv",
-      "status": "present",
-      "sha256": "62a93ec47ffe98f7908a8c8b29ba9fa5a070fa611bb3cde5ae22bfb23ff9617a",
-      "bytes": "323807"
-    },
-    {
-      "path": "Data/03_Research/daily_economic_snapshot.json",
-      "status": "present",
-      "sha256": "759bb4453906a92a47912ae390ac2af4bca75b26e8e669cbf7fd7725256687dd",
-      "bytes": "729"
-    },
-    {
-      "path": "Data/03_Research/Gold_yahoo_real.csv",
-      "status": "present",
-      "sha256": "c558881407ce03cdf4dda12e57d972f620447d37be9750e953224502f3b940ba",
-      "bytes": "294015"
-    },
-    {
-      "path": "Data/03_Research/SP500_yahoo_real.csv",
-      "status": "present",
-      "sha256": "bc85614da6993c0edcf87ceb5bfd623003bad18b7b78f9b010bd8582a6252eeb",
-      "bytes": "342186"
-    }
-  ],
-  "timeout_seconds": 30,
-  "resolved_command": [
-    "C:\\Users\\santa\\Desktop\\uet_harness\\.venv\\Scripts\\python.exe",
-    "docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Research_8_Billion_Resonance.py"
-  ],
-  "environment_overrides": {
-    "PYTHONIOENCODING": "utf-8",
-    "PYTHONUTF8": "1",
-    "PYTHONPATH_PREFIX": "C:\\Users\\santa\\Desktop\\uet_harness"
-  },
-  "status": "ran",
-  "exit_code": 0,
-  "passed_run_contract": true,
-  "duration_seconds": 1.058,
-  "stdout_tail": "\ud83c\udf0d UET 8.1 Billion Population Resonance Simulation\n\n\ud83d\udd34 Scenario A: Default Manifold (Pure Predator/Prey)\n\ud83d\udd0d UET Glass Box: Logging (Streaming) to 'C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Result\\_Logs\\1776911970_UET_Strategy_Core'\n   Final Omega: 30113150918.67\n\n\ud83d\udfe2 Scenario B: Enriched Manifold (8 Historical Stabilizers)\n\ud83d\udd0d UET Glass Box: Logging (Streaming) to 'C:\\Users\\santa\\Desktop\\uet_harness\\docs\\topics\\0.25_Strategy_Power_Economics\\Result\\_Logs\\1776911970_UET_Strategy_Core'\n   Final Omega: 30738322490.83\n\n==================================================\n\ud83d\udcca RESONANCE AUDIT RESULTS:\n   Wave Dissolution of Inequality: 0.0%\n   Stabilizer Efficiency: 1 Stabilizer Node balances 405 Million people.\n==================================================\n",
-  "stderr_tail": "",
-  "declared_scientific_artifact_exists": true,
-  "declared_scientific_artifact_sha256": "57a2b3a0dc60c526527349e518bce65d483f4f4e674008d82e77acbeeb6388bc",
-  "declared_scientific_artifact_bytes": 3002
+  "command": null,
+  "input_hashes": [],
+  "timeout_seconds": 120,
+  "status": "blocked",
+  "reason": "No primary command found in VERIFICATION_SPEC.md",
+  "duration_seconds": 0.0
 }

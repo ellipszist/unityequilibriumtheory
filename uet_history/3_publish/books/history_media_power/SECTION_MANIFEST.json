@@ -3,8 +3,8 @@
   "section_id": "section_03_history_hegemony",
   "title": "Section 3: History & Hegemony",
   "profile": "THREE_BOOK_SECTION",
-  "status": "IN_PROGRESS",
-  "current_gate": "S04_VOLUME_ALLOCATION_MATRIX",
+  "status": "PASS",
+  "current_gate": "S07_SECTION_BLUEPRINT_REVIEW_AND_LOCK",
   "blueprint_version": "section-03-v1",
   "volume_count": 3,
   "volume_ids": [
@@ -13,13 +13,12 @@
     "03_3_reformation_of_the_mind"
   ],
   "canonical_path": "uet_history/3_publish/books/history_media_power",
-  "claim_boundary": "working Section architecture; not a publication or evidence-validation claim",
-  "controlling_blocker": "cross-volume ownership, dependency, and metadata normalization",
-  "next_controller": "S04",
+  "claim_boundary": "working Section architecture; parent control package locked for child drafting",
+  "controlling_blocker": "none (Phase 1 Section Control Package completed; ready for Phase 2 child blueprint alignment)",
+  "next_controller": "W04_BOOK_BLUEPRINTS_DRAFT",
   "open_items": [
-    "complete the volume allocation matrix",
-    "normalize child README identity metadata",
-    "audit overlap with separately registered books 04_thai_politics and 05_reformation_of_the_mind"
+    "Phase 2: align Book 3.2 blueprint with neuroscience and political anatomy framework",
+    "Phase 2: align Book 3.3 blueprint with Ethical Selective Framing and Moral-Legal Technology"
   ],
   "artifacts": {
     "blueprint": "SECTION_BLUEPRINT.md",

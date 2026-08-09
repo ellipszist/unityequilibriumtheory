@@ -21,49 +21,34 @@
     "torch_version": "2.10.0+cpu"
   },
   "input_hashes": {
-    "benchmark_script": "4c5c011214563102e55fc7f7a7e5bf726612c4c888eaa54560ff93933f5b047c",
+    "benchmark_script": "a0f4ece625534996a66634bb179bca2651e19a5a59481d587e86e1a2635a7ec7",
     "source_lock_manifest": "d65719d433e75fe2dd99ae9d37fcc9aedb7a3070dccaa1bbea54d103657ea17b",
-    "uet_master_equation": "ef3acb139bc4d4768f92c5fe97b61c0837a0b25d31cde77306293953f28c3414"
+    "uet_master_equation": "dc06b67609725cfbec432a65c811e3da51f9cbbe2b91ea34f98d0a3a58486e8c"
   },
   "metrics": {
-    "accepted_claim_branches": 2,
-    "blocked_claim_exports": 5,
-    "source_targets_blocked": 4,
-    "source_targets_ready_for_review": 1,
-    "speedup": 3.1270999040299556,
+    "speedup": 2.364450563670453,
     "stable": true
   },
   "notes": "Internal implementation benchmark artifact using the repository comparator script; not an external CFD validation result.",
   "results": {
-    "branch_claim_gate_summary": {
-      "accepted_now": 2,
-      "blocked_for_strong_claims": 3,
-      "branches_total": 5
-    },
-    "fluid_claim_scope_gate_status": "WARN",
-    "navier_stokes_runtime_seconds": 0.1284031000000141,
+    "navier_stokes_runtime_seconds": 0.15784669993445277,
     "navier_stokes_runtime_trials_seconds": [
-      0.12809829999969224,
-      0.1291535999998814,
-      0.12848159999975906,
-      0.1273221999999805,
-      0.1284031000000141
+      0.15784669993445277,
+      0.18145060003735125,
+      0.1650971999624744,
+      0.13683529989793897,
+      0.13369240006431937
     ],
-    "source_evidence_readiness_summary": {
-      "source_targets_total": 5,
-      "targets_blocked_by_pending_evidence": 4,
-      "targets_ready_for_source_review": 1
-    },
-    "speedup": 3.1270999040299556,
+    "speedup": 2.364450563670453,
     "stable": true,
     "status": "PASS",
-    "uet_runtime_seconds": 0.04106140000021696,
+    "uet_runtime_seconds": 0.06675829994492233,
     "uet_runtime_trials_seconds": [
-      0.041632899999967776,
-      0.04106140000021696,
-      0.040471599999818864,
-      0.04056979999995747,
-      0.0414282000001549
+      0.06245820003096014,
+      0.06919519999064505,
+      0.06975420005619526,
+      0.06675829994492233,
+      0.06386350002139807
     ]
   },
   "seed": 42,
@@ -71,7 +56,7 @@
     "min_speedup": 2.0,
     "requires_stability": true
   },
-  "timestamp_utc": "2026-07-13T12:38:26.105755+00:00",
+  "timestamp_utc": "2026-08-08T09:11:46.516830+00:00",
   "topic": "0.10_Fluid_Dynamics_Chaos",
   "uet_version": "0.9.0"
 }
