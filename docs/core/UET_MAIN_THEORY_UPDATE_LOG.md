@@ -52,3 +52,18 @@
 - Claim impact: no physical promotion
 - Workflow linkage: Wave 2 depends on the Wave 1 ontology gate
 - Notes: foundation and compatibility statuses remain BLOCKED; the parent is a formula evaluator, not a metric PDE solver
+
+### 2026-08-09 - Wave 3 lane-specific coarse-graining contract
+
+- Scope: phase, charge, density, and telegraph collective-coordinate mappings
+- Wave type: implementation, registry, verifier, and gate pass
+- Added or changed: explicit many-to-one block-averaging API, provenance records, refinement and scale-dependence audits, public exports, and one central-registry entry
+- Files touched: uet_coarse_graining.py, audit_uet_coarse_graining.py, Wave 3 artifacts/gate, registry merger, core exports, and focused tests
+- Verified with: Wave 3 verifier; equation-foundation audit; compatibility audit with --no-write; 66 focused tests
+- Result: PASS_DECLARED_FIELD_TO_COLLECTIVE_COORDINATE_ONLY
+- Blocker narrowed: every active C lane now declares input type, scale, frame, units, information loss, and observable target without asserting a universal C identity
+- Still open: microscopic-to-field derivation, covariant averaging, RG beta functions, dimensional observable calibration, and physical open-system memory
+- Next controller: open_system_sk_kms_memory_not_derived
+- Claim impact: no physical promotion
+- Workflow linkage: Wave 3 depends on the integrated conservative parent and remains below the blocked foundation gate
+- Notes: scale slopes are descriptive only; the density lane accepts an already-declared density field and does not derive mass from C

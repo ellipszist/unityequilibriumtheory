@@ -20,7 +20,8 @@
       "docs/core/artifacts/uet_equation_correspondence_registry_persistence_addendum.json",
       "docs/core/artifacts/uet_equation_correspondence_registry_wave_addendum.json",
       "docs/core/artifacts/uet_equation_correspondence_registry_mass_density_addendum.json",
-      "docs/core/artifacts/uet_equation_correspondence_registry_main_theory_addendum.json"
+      "docs/core/artifacts/uet_equation_correspondence_registry_main_theory_addendum.json",
+      "docs/core/artifacts/uet_equation_correspondence_registry_coarse_graining_addendum.json"
     ],
     "extension_status": "CANDIDATE_ADDENDA_MERGED_NOT_EXHAUSTIVE"
   },
@@ -1370,11 +1371,60 @@
       "claim_boundary": "candidate natural-unit conservative parent; not curved GR or empirical validation",
       "failure_mode": "component equations drift from the parent action or closed limit requires manual equation deletion",
       "next_hardening_step": "close lane-specific covariant coarse graining before dissipative and observable promotion"
+    },
+    {
+      "equation_id": "uet.main_theory.coarse_graining",
+      "version": "lane-coarse-graining-v1",
+      "classification": "constitutive_lane_specific_equation",
+      "relation_or_code_path": "docs/core/uet_coarse_graining.py",
+      "variables": {
+        "X_lane": "declared lower-level lane field",
+        "C_lane": "lane-specific collective coordinate",
+        "ell": "phase, charge, density, or telegraph"
+      },
+      "mathematical_role": "many-to-one averaging and normalization map",
+      "standard_physics_counterpart": "block-spin, volume-average, charge-density, and continuum coarse graining",
+      "observable_mapping": {
+        "status": "PARTIAL",
+        "reason": "targets declared but material/catalog calibration remains open"
+      },
+      "unit_lane": "lane_specific",
+      "parameter_dimensions": "recorded per lane; C may be normalized",
+      "source_or_origin": "UET foundation Wave 3 constitutive contract",
+      "assumptions": [
+        "uniform block averaging v1",
+        "declared frame and boundary",
+        "many-to-one information loss",
+        "no universal identity among C lanes"
+      ],
+      "symmetry_and_conservation": "global mean preserved for equal-volume blocks",
+      "limiting_cases": [
+        "single-sample cell reproduces the lower-level field up to affine normalization",
+        "coarser blocks erase within-cell fluctuations"
+      ],
+      "implementation_paths": [
+        "docs/core/uet_coarse_graining.py"
+      ],
+      "verifier_paths": [
+        "docs/scripts/audit/audit_uet_coarse_graining.py",
+        "docs/core/artifacts/coarse_graining_verification.json",
+        "docs/core/test/test_uet_coarse_graining.py"
+      ],
+      "evidence_class": "INTERNAL_FORMAL",
+      "proof_status": "operator consistency verified; microscopic and observable closure open",
+      "downstream_dependencies": [
+        "uet.main_theory.covariant_parent",
+        "uet.main_theory.open_system",
+        "uet.main_theory.observables"
+      ],
+      "claim_boundary": "lane-specific candidate coarse coordinate; C is not mass, charge, or order universally",
+      "failure_mode": "mapping assumes desired observable or silently identifies distinct lane coordinates",
+      "next_hardening_step": "derive open-system memory and calibrate one dimensional observable lane"
     }
   ],
   "merge_history": {
     "merged_equation_ids": [
-      "uet.main_theory.covariant_parent"
+      "uet.main_theory.coarse_graining"
     ],
     "already_present": [
       "uet.impact_effect.information_flow",
@@ -1386,7 +1436,8 @@
       "uet.persistence.resource_selection_physical_cost_map",
       "uet.mass_density.augmented_amplitude_contract",
       "uet.mass_density.si_1d_amplitude_contract",
-      "uet.mass_density.si_3d_measurement_operator"
+      "uet.mass_density.si_3d_measurement_operator",
+      "uet.main_theory.covariant_parent"
     ],
     "conflicts": [],
     "source_policy": "addenda are merged as candidate records; evidence and claim boundaries are preserved"

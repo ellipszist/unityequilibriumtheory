@@ -645,3 +645,33 @@ __all__ += [
     "evaluate_conservative_parent",
     "covariant_parent_contract",
 ]
+
+from .uet_coarse_graining import (
+    COARSE_GRAINING_STATUS,
+    SUPPORTED_C_LANES,
+    CoarseGrainingRecord,
+    CollectiveCoordinateState,
+    CoarseGrainingConsistency,
+    ScaleDependenceResult,
+    CoarseGrainingOperator,
+    coarse_grain,
+    refine_coarse_graining,
+    coarse_graining_consistency,
+    scale_dependence_audit,
+    coarse_graining_contract,
+)
+
+__all__ += [
+    "COARSE_GRAINING_STATUS",
+    "SUPPORTED_C_LANES",
+    "CoarseGrainingRecord",
+    "CollectiveCoordinateState",
+    "CoarseGrainingConsistency",
+    "ScaleDependenceResult",
+    "CoarseGrainingOperator",
+    "coarse_grain",
+    "refine_coarse_graining",
+    "coarse_graining_consistency",
+    "scale_dependence_audit",
+    "coarse_graining_contract",
+]
