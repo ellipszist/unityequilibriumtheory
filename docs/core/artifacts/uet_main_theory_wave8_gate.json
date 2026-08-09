@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "artifact": "uet_main_theory_wave8_gate",
+  "generated_at": "2026-08-09T04:02:52.449389+00:00",
+  "audit_status": "PASS_ACCOUNTING",
+  "dimensional_observable_status": "BLOCKED",
+  "upstream_gate": "uet_main_theory_wave7_gate.json",
+  "checks": {
+    "source_identity_locked": true,
+    "normalized_operator_defined": true,
+    "numeric_source_package": false,
+    "independent_dimensional_calibration": false,
+    "heat_flux_observable": false,
+    "entropy_observable": false,
+    "causal_pilot": false,
+    "holdout_preserved": true,
+    "no_parameter_fitting": true
+  },
+  "controlling_blockers": [
+    "thermal_numeric_source_package_missing",
+    "alpha_phi_k_independent_calibration_missing",
+    "thermal_prearrival_leakage_gate_failed"
+  ],
+  "holdout_status": "LOCKED_UNCONSUMED",
+  "claim_promotion": false,
+  "next_controller": "obtain a permitted calibration package without consuming the locked holdout and independently close alpha_Phi_K after causal repair"
+}

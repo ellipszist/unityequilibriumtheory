@@ -127,3 +127,18 @@
 - Claim impact: no new quantum prediction and no UET derivation of QBism or RQM
 - Workflow linkage: Wave 7 depends on the Wave 6 operational interface
 - Notes: an interpretation that changes predictions must be opened as a new physical model, not hidden in metadata
+
+### 2026-08-09 - Wave 8 Topic 0.13 dimensional-observable closure audit
+
+- Scope: normalized TTG operator, Phi-to-quasi-temperature scale, numeric source package, causal pilot, holdout separation, and provenance hashes
+- Wave type: source/data/observable blocker audit
+- Added or changed: deterministic main-theory dimensional-observable audit, machine-readable Wave 8 gate, and boundary tests
+- Files touched: audit_uet_main_theory_dimensional_observable.py, Wave 8 audit/gate artifacts, focused tests, core required-reading chain, and work ledger
+- Verified with: Wave 8 audit; focused pytest; equation-foundation audit
+- Result: PASS_ACCOUNTING / BLOCKED dimensional closure
+- Blocker narrowed: the normalized TTG map is already defined; closure now depends specifically on numeric source rows, independent alpha_Phi_K, and causal leakage repair
+- Still open: permitted row-level calibration data, alpha_Phi_K derivation/calibration, heat-flux/entropy maps, and leakage 0.017639 versus 1e-6
+- Next controller: thermal_numeric_source_package_missing plus alpha_phi_k_independent_calibration_missing plus thermal_prearrival_leakage_gate_failed
+- Claim impact: no dimensional prediction or external validation
+- Workflow linkage: Wave 8 consumes Topic 0.13 artifacts read-only and preserves the 2026 holdout
+- Notes: source identities and hashes pass; zero local numeric rows were consumed and no parameter was fitted
