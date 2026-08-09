@@ -746,7 +746,6 @@ def build_artifacts(
             "Schwinger_Keldysh_KMS_completion": "BLOCKED",
             "covariant_coarse_graining": "BLOCKED_DEFERRED",
             "curved_3p1_solver": "BLOCKED",
-            "physical_GR_benchmarks": "NOT_STARTED",
             "physical_gr_benchmarks": "NOT_STARTED",
         },
         "global_universe_closure": "UNRESOLVED",
