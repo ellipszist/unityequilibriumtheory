@@ -54,7 +54,7 @@
     "no_imputation": true,
     "requested_accounts": 2
   },
-  "generated_at_utc": "2026-08-01T14:34:31.568122+00:00",
+  "generated_at_utc": "2026-08-10T19:01:11.176727+00:00",
   "interpretation": "USAspending account snapshots report budget authority, appropriations, other budgetary resources, obligations, outlays, and unobligated balances for federal reporting accounts. These are budget-accounting quantities, not bank settlement observations or ultimate financing-source allocations.",
   "limitations": [
     "The account set is inherited from a fixed ten-award sample and is not representative of all federal spending.",

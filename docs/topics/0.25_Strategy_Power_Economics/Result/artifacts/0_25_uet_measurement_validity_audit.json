@@ -2,7 +2,7 @@
   "blockers": [
     "K_patents_per_capita:USPTO/PatsView export not present in frozen panel"
   ],
-  "claim_boundary": "This artifact tests proxy sensitivity and measurement stability only. It does not establish construct validity, an economic law, or causal evidence.",
+  "claim_boundary": "This legacy R/N/K/I artifact tests proxy sensitivity only. The operationalizations do not yet constitute three independent measurement families, and BOOK-HEURISTIC-001 is retired as an identity.",
   "constructs": {
     "I": [
       "I_combined_per_employee",
@@ -25,12 +25,33 @@
       "R_standardized_additive"
     ]
   },
-  "generated_at_utc": "2026-08-01T14:33:54.243893+00:00",
+  "generated_at_utc": "2026-08-10T19:01:02.046065+00:00",
   "measurement_gates": {
     "R_family_stability": true,
-    "at_least_three_declared_families": true,
+    "at_least_three_available_operationalizations_per_construct": true,
+    "at_least_three_independent_measurement_families": false,
     "directional_coefficient_stability": false,
+    "independent_provenance_families": {
+      "I": [
+        "BEA_fixed_asset_quantity_family"
+      ],
+      "K": [
+        "BEA_IP_quantity_family"
+      ],
+      "N": [
+        "shared_BLS_macro_constraint_set"
+      ],
+      "R": [
+        "shared_BEA_BLS_EIA_component_set"
+      ]
+    },
     "no_silent_imputation": true,
+    "operationalization_counts": {
+      "I": 3,
+      "K": 3,
+      "N": 3,
+      "R": 3
+    },
     "pairwise_R_correlation_threshold": 0.8
   },
   "panel": {
@@ -47,7 +68,7 @@
     "R_core_geometric__R_standardized_additive": 0.9531339980083815,
     "R_no_energy_geometric__R_standardized_additive": 0.8945845033308103
   },
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "status": "WARN",
   "three_year_diagnostic_combinations": [
     {

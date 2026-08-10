@@ -11,6 +11,7 @@ import hashlib
 import json
 import math
 import platform
+import random
 import statistics
 import sys
 import urllib.request
@@ -255,31 +256,48 @@ def ols(features: list[list[float]], targets: list[float]) -> dict:
     }
 
 
-def moving_block_bootstrap_interval(deltas: list[float], block_size: int = 3, draws: int = 1000) -> dict:
-    """Deterministic moving-block bootstrap for forecast-error deltas.
+def moving_block_bootstrap_interval(
+    deltas: list[float], block_size: int = 3, draws: int = 1000, seed: int = 25025
+) -> dict:
+    """Moving-block bootstrap of the mean paired squared-error delta.
 
-    A negative interval means the first model has lower squared error than the
-    comparator.  This is a diagnostic interval, not causal inference.
+    Circular blocks are sampled with replacement. A negative interval means the
+    candidate has lower squared error than the comparator. This remains predictive
+    uncertainty, not causal inference.
     """
     if len(deltas) < block_size:
-        return {"status": "INSUFFICIENT_ROWS", "draws": 0, "lower": None, "upper": None, "mean": None}
+        return {
+            "status": "INSUFFICIENT_ROWS",
+            "draws": 0,
+            "seed": seed,
+            "lower": None,
+            "upper": None,
+            "mean": None,
+        }
+    rng = random.Random(seed)
     samples: list[float] = []
     n = len(deltas)
-    for draw in range(draws):
+    block_starts = list(range(n))
+    blocks_per_draw = math.ceil(n / block_size)
+    for _ in range(draws):
         picked: list[float] = []
-        cursor = (draw * 7 + 3) % n
-        while len(picked) < n:
-            for offset in range(block_size):
-                picked.append(deltas[(cursor + offset) % n])
-                if len(picked) == n:
-                    break
-            cursor = (cursor + block_size + 5) % n
-        samples.append(arithmetic_mean(picked))
+        for _block in range(blocks_per_draw):
+            start = rng.choice(block_starts)
+            picked.extend(deltas[(start + offset) % n] for offset in range(block_size))
+        samples.append(arithmetic_mean(picked[:n]))
     samples.sort()
-    lower = samples[max(0, int(0.025 * len(samples)) - 1)]
-    upper = samples[min(len(samples) - 1, int(0.975 * len(samples)))]
-    return {"status": "OK", "draws": draws, "block_size": block_size, "lower": lower, "upper": upper, "mean": arithmetic_mean(deltas)}
-
+    lower_index = max(0, math.floor(0.025 * (len(samples) - 1)))
+    upper_index = min(len(samples) - 1, math.ceil(0.975 * (len(samples) - 1)))
+    return {
+        "status": "OK",
+        "draws": draws,
+        "block_size": block_size,
+        "seed": seed,
+        "sampling": "circular_moving_blocks_with_replacement",
+        "lower": samples[lower_index],
+        "upper": samples[upper_index],
+        "mean": arithmetic_mean(deltas),
+    }
 
 def source_file_metadata(path: Path) -> dict:
     return {

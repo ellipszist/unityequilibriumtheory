@@ -1,11 +1,15 @@
 {
-  "schema_version": "1.0",
-  "status": "PASS",
-  "rows": 6091,
-  "countries": 246,
-  "ratio_median": 2.4630925627823026,
-  "ratio_min": 0.5839618365334659,
-  "ratio_max": 7.354453859074952,
-  "unit_policy": "PPP and constant-USD measures remain separate; no pooling in primary diagnostic",
-  "claim_boundary": "PPP comparison is a measurement robustness lane, not a causal or welfare conclusion."
+  "claim_boundary": "No global replication result may be exported from this superseded artifact.",
+  "generated_at_utc": "2026-08-10T19:01:03.241639+00:00",
+  "previous_artifact": {
+    "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_global_wdi_ppp_comparison.json",
+    "rows": null,
+    "sha256": "265ff24c685dc7fbc19783f52a8930aeb2f55c1aad9eb538f6e3a33ce3cd0666",
+    "status": "INVALID_SUPERSEDED"
+  },
+  "reason": "GLOBAL_COMPLETE_CASE_PANEL_UNAVAILABLE",
+  "schema_version": "2.0",
+  "status": "INVALID_SUPERSEDED",
+  "superseded_by": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_global_panel_integrity_gate.json",
+  "topic": "0.25_Strategy_Power_Economics"
 }

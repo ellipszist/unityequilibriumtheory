@@ -1,8 +1,68 @@
 {
-  "schema_version": "1.0",
-  "status": "PASS",
-  "rows": 1558,
-  "countries_with_20_plus_years": 57,
-  "panel_path": "C:/Users/santa/Desktop/uet_harness/docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_global_wdi_panel.csv",
-  "missingness_policy": "no imputation"
+  "blockers": [
+    "GLOBAL_COMPLETE_CASE_PANEL_UNAVAILABLE",
+    "Energy-use coverage does not overlap the other required indicators sufficiently in this frozen WDI vintage."
+  ],
+  "claim_boundary": "A panel PASS is source/panel readiness only, not global replication or measurement invariance.",
+  "complete_case_rows": 0,
+  "consecutive_common_years_by_country": {},
+  "controller": "GLOBAL_COMPLETE_CASE_PANEL_UNAVAILABLE",
+  "countries_in_complete_case_panel": 0,
+  "countries_with_20_plus_consecutive_common_years": 0,
+  "evidence_status": "INVALID_SUPERSEDED",
+  "excluded_world_bank_aggregates": 78,
+  "generated_at_utc": "2026-08-10T19:01:03.235509+00:00",
+  "missingness_policy": "Every required indicator must be non-null in an analysis row; no imputation.",
+  "panel_path": "docs/topics/0.25_Strategy_Power_Economics/Data/03_Research/uet_global_wdi_panel.csv",
+  "panel_sha256": "75725efe54eabbc20393d32012af3106abe3a6de4d65ae8bd9608e5779111d80",
+  "previous_artifact_sha256": "f23c0d0365762fc07091b40eab061a782e84343425cb407a266adb65d73c15b1",
+  "raw_hash_checks": [
+    {
+      "hash_matches": true,
+      "indicator": "NY.GDP.PCAP.KD",
+      "manifest_sha256": "1b37494e6bb89d6f2bf18b8e06a2f1216a403f1c380eaeab5475f5c5aa9f6e2b",
+      "path": "docs/data/external/economics/global/wdi/2026-07-16/NY.GDP.PCAP.KD.json",
+      "sha256": "1b37494e6bb89d6f2bf18b8e06a2f1216a403f1c380eaeab5475f5c5aa9f6e2b"
+    },
+    {
+      "hash_matches": true,
+      "indicator": "NY.GDP.PCAP.PP.KD",
+      "manifest_sha256": "24bb0ec3ddb5211f5f0ebc6d01087fd0d80eac6c3476537beddf534a1ef8ceb7",
+      "path": "docs/data/external/economics/global/wdi/2026-07-16/NY.GDP.PCAP.PP.KD.json",
+      "sha256": "24bb0ec3ddb5211f5f0ebc6d01087fd0d80eac6c3476537beddf534a1ef8ceb7"
+    },
+    {
+      "hash_matches": true,
+      "indicator": "SP.POP.TOTL",
+      "manifest_sha256": "5fc64f7fb228c32b03756967d43372aa8b7cef77fad617393b63f7b66f0356f3",
+      "path": "docs/data/external/economics/global/wdi/2026-07-16/SP.POP.TOTL.json",
+      "sha256": "5fc64f7fb228c32b03756967d43372aa8b7cef77fad617393b63f7b66f0356f3"
+    },
+    {
+      "hash_matches": true,
+      "indicator": "EG.USE.PCAP.KG.OE",
+      "manifest_sha256": "8263188e94f697c146e87d42925d3ca33710c9e0fc2c89d666cf8ec4de2b67ad",
+      "path": "docs/data/external/economics/global/wdi/2026-07-16/EG.USE.PCAP.KG.OE.json",
+      "sha256": "8263188e94f697c146e87d42925d3ca33710c9e0fc2c89d666cf8ec4de2b67ad"
+    }
+  ],
+  "raw_non_null_counts": {
+    "EG.USE.PCAP.KG.OE": 0,
+    "NY.GDP.PCAP.KD": 0,
+    "NY.GDP.PCAP.PP.KD": 0,
+    "SP.POP.TOTL": 0
+  },
+  "required_indicators": {
+    "EG.USE.PCAP.KG.OE": "energy_use_kg_oil_equivalent_per_capita",
+    "NY.GDP.PCAP.KD": "real_gdp_per_capita_usd_2015",
+    "NY.GDP.PCAP.PP.KD": "real_gdp_per_capita_ppp_constant_2021_intl_dollar",
+    "SP.POP.TOTL": "population"
+  },
+  "schema_version": "2.0",
+  "source_manifest": {
+    "path": "docs/data/external/economics/global/wdi/2026-07-16/source_manifest.json",
+    "sha256": "8f2a3645b1e0b6cea6fd6bd5b9d820fa4a29e09e110a60bcdc60da3590985f21"
+  },
+  "status": "BLOCKED",
+  "topic": "0.25_Strategy_Power_Economics"
 }

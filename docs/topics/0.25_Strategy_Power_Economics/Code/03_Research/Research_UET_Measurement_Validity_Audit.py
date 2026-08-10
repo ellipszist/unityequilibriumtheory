@@ -230,7 +230,7 @@ def run_combinations(rows: list[dict[str, float]], r_families: dict, n_families:
 def main() -> int:
     panel_status = load_json(PANEL_STATUS)
     if panel_status.get("status") != "PASS" or not PANEL_PATH.exists():
-        write_json(ARTIFACT, {"schema_version": "1.0", "topic": "0.25_Strategy_Power_Economics", "status": "WARN", "generated_at_utc": utc_now(), "blockers": ["panel_not_pass"]})
+        write_json(ARTIFACT, {"schema_version": "2.0", "topic": "0.25_Strategy_Power_Economics", "status": "WARN", "generated_at_utc": utc_now(), "blockers": ["panel_not_pass"]})
         return 0
     rows = load_rows()
     r_families, n_families, ki_families, blockers = build_families(rows)
@@ -246,9 +246,23 @@ def main() -> int:
     usable = [item for item in combinations if item.get("status") == "DIAGNOSTIC_COMPLETE"]
     sign_patterns = {tuple(item["coefficient_signs"]) for item in usable}
     directional_stability = len(sign_patterns) <= 1 and bool(usable)
-    status = "PASS" if stable_r and directional_stability and not blockers else "WARN"
+    operationalization_counts = {
+        "R": len(r_families),
+        "N": len(n_families),
+        "K": sum(name.startswith("K_") for name in ki_families),
+        "I": sum(name.startswith("I_") for name in ki_families),
+    }
+    at_least_three_available = all(count >= 3 for count in operationalization_counts.values())
+    independent_provenance_families = {
+        "R": ["shared_BEA_BLS_EIA_component_set"],
+        "N": ["shared_BLS_macro_constraint_set"],
+        "K": ["BEA_IP_quantity_family"],
+        "I": ["BEA_fixed_asset_quantity_family"],
+    }
+    at_least_three_independent = all(len(groups) >= 3 for groups in independent_provenance_families.values())
+    status = "PASS" if stable_r and directional_stability and at_least_three_available and at_least_three_independent and not blockers else "WARN"
     artifact = {
-        "schema_version": "1.0",
+        "schema_version": "2.0",
         "topic": "0.25_Strategy_Power_Economics",
         "status": status,
         "generated_at_utc": utc_now(),
@@ -257,14 +271,17 @@ def main() -> int:
         "proxy_family_correlations": correlations,
         "three_year_diagnostic_combinations": combinations,
         "measurement_gates": {
-            "at_least_three_declared_families": True,
+            "operationalization_counts": operationalization_counts,
+            "at_least_three_available_operationalizations_per_construct": at_least_three_available,
+            "independent_provenance_families": independent_provenance_families,
+            "at_least_three_independent_measurement_families": at_least_three_independent,
             "pairwise_R_correlation_threshold": 0.8,
             "R_family_stability": stable_r,
             "directional_coefficient_stability": directional_stability,
             "no_silent_imputation": True,
         },
         "blockers": sorted(set(blockers)),
-        "claim_boundary": "This artifact tests proxy sensitivity and measurement stability only. It does not establish construct validity, an economic law, or causal evidence.",
+        "claim_boundary": "This legacy R/N/K/I artifact tests proxy sensitivity only. The operationalizations do not yet constitute three independent measurement families, and BOOK-HEURISTIC-001 is retired as an identity.",
     }
     write_json(ARTIFACT, artifact)
     print(f"UET measurement-validity audit: {status}")

@@ -70,8 +70,15 @@ from economic_hardening_common import (
 
 
 ARTIFACT = ARTIFACT_DIR / "0_25_uet_economics_verification.json"
+BOOK_ALIGNMENT_ARTIFACT = ARTIFACT_DIR / "0_25_book_topic_alignment_gate.json"
+GLOBAL_PANEL_INTEGRITY_ARTIFACT = ARTIFACT_DIR / "0_25_global_panel_integrity_gate.json"
+BOOK_BLUEPRINT = ROOT / "uet_history/3_publish/books/economics_ai_energy/01_economics/book_1_blueprint.md"
+BOOK_RESEARCH_SPEC = ROOT / "uet_history/3_publish/books/economics_ai_energy/01_economics/RESEARCH_SPECIFICATION.md"
+BOOK_BLUEPRINT_VERSION = "book1-economics-v2-research-reset"
 HERE = Path(__file__).resolve().parent
 SUB_ARTIFACTS = {
+    "book_topic_alignment": BOOK_ALIGNMENT_ARTIFACT,
+    "global_panel_integrity": GLOBAL_PANEL_INTEGRITY_ARTIFACT,
     "measurement_validity": MEASUREMENT_ARTIFACT,
     "welfare": WELFARE_ARTIFACT,
     "money_credit_inflation": MONEY_CREDIT_ARTIFACT,
@@ -145,14 +152,25 @@ def run(script: str, arguments: list[str] | None = None) -> dict:
 
 
 def artifact_reference(path: Path) -> dict:
+    if not path.exists():
+        return {"path": relative(path), "exists": False, "sha256": None, "status": "MISSING", "controller_status": None, "blockers": []}
     payload = load_json(path)
+    return {
+        "path": relative(path),
+        "exists": True,
+        "sha256": sha256(path),
+        "status": payload.get("status", "PRESENT"),
+        "controller_status": payload.get("controller_status"),
+        "blockers": payload.get("blockers", []),
+    }
+
+
+def file_reference(path: Path) -> dict:
     return {
         "path": relative(path),
         "exists": path.exists(),
         "sha256": sha256(path) if path.exists() else None,
-        "status": payload.get("status", "PRESENT" if path.exists() else "MISSING"),
-        "controller_status": payload.get("controller_status"),
-        "blockers": payload.get("blockers", []),
+        "status": "PRESENT" if path.exists() else "MISSING",
     }
 
 
@@ -161,6 +179,7 @@ def main() -> int:
     parser.add_argument("--refresh-sources", action="store_true", help="Download public FRED source files before running the non-network diagnostics.")
     args = parser.parse_args()
     commands = []
+    commands.append(run("Research_UET_Book_Topic_Alignment_Gate.py"))
     if args.refresh_sources:
         commands.append(run("Research_UET_Economics_Source_Package.py", ["--refresh"]))
     elif not SOURCE_MANIFEST.exists():
@@ -172,9 +191,20 @@ def main() -> int:
             run("Research_UET_Welfare_Audit.py"),
             run("Research_UET_Money_Credit_Inflation_Audit.py"),
             run("Research_UET_Global_WDI_Panel.py"),
-            run("Research_UET_Global_WDI_Leave_One_Out.py"),
-            run("Research_UET_Global_WDI_Region_Leave_One_Out.py"),
-            run("Research_UET_IMF_WDI_Normalization.py"),
+        ]
+    )
+    global_panel = load_json(GLOBAL_WDI_PANEL_ARTIFACT)
+    if global_panel.get("status") == "PASS":
+        commands.extend(
+            [
+                run("Research_UET_Global_WDI_Leave_One_Out.py"),
+                run("Research_UET_Global_WDI_Region_Leave_One_Out.py"),
+                run("Research_UET_IMF_WDI_Normalization.py"),
+                run("Research_UET_Global_WDI_PPP_Comparison.py"),
+            ]
+        )
+    commands.extend(
+        [
             run("Research_UET_Funding_Source_Proxy_Panel.py"),
             run("Research_UET_Funding_Source_Association_Audit.py"),
             run("Research_UET_Funding_Source_Lag_Association.py"),
@@ -191,14 +221,13 @@ def main() -> int:
             run("Research_UET_USASpending_Subaward_Downstream_Recipient_Audit.py"),
             run("Research_UET_USASpending_Award_Funding_Account_Audit.py"),
             run("Research_UET_USASpending_Federal_Account_Budget_Resource_Audit.py"),
-            run("Research_UET_SEC_Recipient_Funding_Concordance.py"),
-            run("Research_UET_Payer_Resource_Join_Readiness.py"),
             run("Research_UET_USGS_Material_Quantity_Audit.py"),
             run("Research_UET_SEC_Public_Firm_Funding_Proxy.py"),
             run("Research_UET_SEC_Public_Firm_Funding_Mix_Audit.py"),
+            run("Research_UET_SEC_Recipient_Funding_Concordance.py"),
+            run("Research_UET_Payer_Resource_Join_Readiness.py"),
             run("Research_UET_Project_Payment_Ledger_Gate.py"),
             run("Research_UET_Funding_Source_Flow_Gate.py"),
-            run("Research_UET_Global_WDI_PPP_Comparison.py"),
             run("Research_UET_Causal_Identification_Gate.py"),
             run("Research_UET_Independent_Replication_Gate.py"),
             run("Research_UET_Publication_Hardening_Gate.py"),
@@ -243,13 +272,15 @@ def main() -> int:
     legacy_quarantine = legacy_claim_quarantine()
     source_ready = readiness.get("status") == "PASS"
     command_failures = [f"{item['script']}: exit_code={item['exit_code']}" for item in commands if item.get("exit_code") != 0]
+    non_pass_statuses = {"MISSING", "WARN", "BLOCKED", "INVALID_SUPERSEDED", "FAIL", "ERROR"}
     sub_complete = (
         not command_failures
         and legacy_quarantine["status"] == "PASS"
-        and all(item["status"] not in {"MISSING", "WARN"} for item in sub_artifacts.values())
+        and all(item["status"] not in non_pass_statuses for item in sub_artifacts.values())
     )
-    controller_status = "DESCRIPTIVE_DIAGNOSTIC_ONLY"
-    status = "DIAGNOSTIC_COMPLETE" if source_ready and sub_complete else "WARN"
+    alignment_payload = load_json(BOOK_ALIGNMENT_ARTIFACT)
+    controller_status = alignment_payload.get("controlling_blocker", "HYPOTHESIS_ONTOLOGY_AND_VERSION_NOT_LOCKED")
+    status = "DIAGNOSTIC_COMPLETE" if source_ready and sub_complete and not architecture_blockers else "WARN"
     next_blockers = list(readiness.get("blockers", []))
     next_blockers.extend(command_failures)
     if legacy_quarantine["status"] != "PASS":
@@ -258,41 +289,46 @@ def main() -> int:
     if not source_ready and not next_blockers:
         next_blockers.append("Source-readiness gate is absent or not PASS.")
     for name, item in sub_artifacts.items():
-        if item["status"] in {"MISSING", "WARN"}:
+        if item["status"] in non_pass_statuses:
             next_blockers.append(f"{name}: {item['status']}")
             next_blockers.extend(item.get("blockers", []))
     next_blockers.extend(architecture_blockers)
-    if architecture_blockers:
-        status = "WARN"
     claim_gate = {
-        "schema_version": "1.0",
+        "schema_version": "3.0",
         "topic": "0.25_Strategy_Power_Economics",
+        "book_blueprint_version": BOOK_BLUEPRINT_VERSION,
         "gate": "uet_book1_economics_claim_gate",
         "controller_status": controller_status,
         "allowed_claims_now": [
-            "The topic contains a source-gated U.S. historical diagnostic architecture.",
-            "A completed artifact may report its predeclared descriptive comparison results and failures.",
+            "The topic contains a version-locked, source-gated internal economics architecture.",
+            "A completed lane may report its predeclared descriptive comparison and negative results with its evidence level.",
+            "Purchasing power, exchange value, payment use, and store-of-value results are reported separately.",
         ],
         "blocked_claims": [
-            "R=N+K+I is a derived or confirmed economic law.",
+            "R=N+K+I is a derived or confirmed economic law; it is retired as an identity.",
+            "R/M is an observed or universal value of money.",
+            "A model-allocated supply-chain footprint is observed payment lineage.",
             "Fiat money causally created inflation, wage divergence, or wealth transfer.",
             "Gold or equities are validated scaling pegs or superior assets.",
             "A policy, strategy, social-stabilization, or Nash-equilibrium claim is validated.",
         ],
         "machine_readable_next_blockers": sorted(set(next_blockers)),
-        "claim_boundary": "All results remain internal, descriptive, and non-causal pending source completion, human review, causal design, and external replication.",
+        "claim_boundary": "All current results remain Claim Class C unless a lane independently passes its measurement, identification, external-replication, and publication gates.",
         "strategy_social_quarantine": "Strategy, power, Nash, and social-stabilization notes remain exploratory and excluded from core economics evidence.",
     }
     write_json(CLAIM_GATE, claim_gate)
     artifact = {
-        "schema_version": "1.1",
+        "schema_version": "2.0",
         "topic": "0.25_Strategy_Power_Economics",
+        "book_blueprint_version": BOOK_BLUEPRINT_VERSION,
+        "book_blueprint": file_reference(BOOK_BLUEPRINT),
+        "book_research_specification": file_reference(BOOK_RESEARCH_SPEC),
         "status": status,
         "generated_at_utc": utc_now(),
         "command": "python docs/topics/0.25_Strategy_Power_Economics/Code/03_Research/Verify_UET_Economics_Hardening.py",
         "environment": runtime_environment(),
         "claim_class": "C - internal economic data integrity and historical diagnostic benchmark",
-        "formula_ids": ["EC25-UET-RESOURCE-ENGINE", "EC25-UET-MONETARY-RESOURCE-MISMATCH", "EC25-UET-WAGE-PRODUCTIVITY-GAP"],
+        "formula_ids": ["BOOK-HEURISTIC-001", "EC25-PRODUCTION-KLEMS", "EC25-MONEY-PURCHASING-POWER", "EC25-MONEY-IDENTITY", "EC25-RESOURCE-COVERAGE-DIAGNOSTIC", "EC25-WAGE-PRODUCTIVITY-GAP"],
         "source_manifest": artifact_reference(SOURCE_MANIFEST),
         "welfare_source_manifest": artifact_reference(WELFARE_SOURCE_MANIFEST),
         "source_readiness": readiness,
@@ -308,7 +344,8 @@ def main() -> int:
             "target_evidence_grade": research_register_payload.get("target_evidence_grade", "Evidence Grade A"),
             "current_claim_class": research_register_payload.get("current_claim_class", "C"),
             "active_waves": [row for row in research_register_payload.get("waves", []) if row.get("status") == "IN_PROGRESS"],
-            "strategy_social_quarantine": research_register_payload.get("strategy_social_quarantine", {}),
+            "quarantined_lanes": research_register_payload.get("quarantined_lanes", []),
+            "evidence_levels": research_register_payload.get("evidence_levels", {}),
             "architecture_status": "PASS" if not architecture_blockers else "WARN",
             "controlling_gate_blockers": sorted(set(architecture_blockers)),
             "file_references": {name: artifact_reference(path) for name, path in architecture_files.items()},
@@ -334,7 +371,8 @@ def main() -> int:
         "commands": commands,
         "economics_claim_scope_gate": claim_gate,
         "limitations": [
-            "The Book 1 economic relations are operationalized as source-dependent proxies, not derivations.",
+            "BOOK-HEURISTIC-001 is retired as an identity; legacy R/N/K/I results are bounded proxy sensitivities only.",
+            "Money value is not represented by one scalar; purchasing power, exchange value, payment use, real returns, and resource coverage remain separate.",
             "The 1971 regime summaries are non-causal and exclude 1971-1973 from pre/post descriptive comparisons.",
             "An internal candidate signal cannot upgrade Claim Class C or support policy, asset-superiority, or strategic-superiority claims.",
         ],

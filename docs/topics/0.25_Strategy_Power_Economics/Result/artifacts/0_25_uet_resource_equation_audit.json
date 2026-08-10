@@ -1,10 +1,11 @@
 {
-  "claim_boundary": "The model measures temporal association in a U.S. proxy panel. It does not prove R=N+K+I, fiat causality, or an economic law.",
+  "claim_boundary": "This legacy proxy sensitivity is retained as a negative internal diagnostic. BOOK-HEURISTIC-001 is retired as an identity; the result does not establish causality or an economic law.",
   "controller_status": "NO_PREDECLARED_CANDIDATE_SIGNAL",
   "formula_ids": [
-    "EC25-UET-RESOURCE-ENGINE"
+    "BOOK-HEURISTIC-001",
+    "EC25-INNOVATION-CONSTRAINT"
   ],
-  "generated_at_utc": "2026-08-01T14:34:59.401782+00:00",
+  "generated_at_utc": "2026-08-10T19:01:23.951266+00:00",
   "parameter_policy": {
     "candidate_signal_threshold": {
       "bootstrap_interval_requirement": "95 percent interval for squared-error difference lies below zero",
@@ -65,7 +66,9 @@
   "results": [
     {
       "candidate_signal": false,
-      "global_fit": {
+      "horizon_years": 3,
+      "interpretation": "This legacy proxy sensitivity is retained as a bounded internal diagnostic. It is neither causal evidence nor a claim-class upgrade.",
+      "pre_holdout_fit": {
         "coefficient_labels": [
           "intercept",
           "necessity_constraint_proxy",
@@ -73,52 +76,55 @@
           "infrastructure_growth"
         ],
         "coefficients": [
-          0.03343942449037147,
-          -0.015365587281775266,
-          0.05236105660517627,
-          0.6481147444355005
+          0.04152719105974785,
+          -0.02292702878707413,
+          0.0010461482713010062,
+          1.404741763049144
         ],
-        "n": 62,
-        "r_squared": 0.18658832647593282,
-        "residual_rmse": 0.030804971935631538
+        "fit_window": "through_1999",
+        "n": 40,
+        "r_squared": 0.44769562855280787,
+        "residual_rmse": 0.027593040927004577
       },
-      "horizon_years": 3,
-      "interpretation": "A candidate signal is a predeclared internal diagnostic condition only. It is neither causal evidence nor a claim-class upgrade.",
       "rolling_origin": {
-        "acceptance_rule": "Candidate requires at least 10 percent lower median rolling-origin RMSE than every declared baseline and a 95 percent block-bootstrap squared-error interval below zero.",
+        "acceptance_rule": "Candidate requires at least 10 percent lower rolling-origin RMSE than every declared baseline and a 95 percent moving-block-bootstrap squared-error interval below zero.",
         "baseline_metrics": {
           "constant_growth": {
-            "aggregate_rmse_improvement": -0.3244051630308977,
-            "median_rmse_improvement": -0.14876428245070006,
-            "median_rolling_rmse": 0.023148850248467134,
-            "rmse": 0.02986883032126981,
+            "median_absolute_error": 0.023148850248467134,
+            "median_absolute_error_improvement": -0.14876428245070006,
+            "rmse_improvement": -0.3244051630308977,
+            "rolling_origin_rmse": 0.02986883032126981,
             "squared_error_delta_bootstrap": {
               "block_size": 3,
               "draws": 1000,
-              "lower": 0.0002120953985786207,
+              "lower": 6.0534922047215035e-05,
               "mean": 0.0006727226038688401,
+              "sampling": "circular_moving_blocks_with_replacement",
+              "seed": 25025,
               "status": "OK",
-              "upper": 0.0012418535896312243
+              "upper": 0.001380492556496605
             }
           },
           "zero_growth": {
-            "aggregate_rmse_improvement": -0.31871470947420755,
-            "median_rmse_improvement": -0.06371942093187233,
-            "median_rolling_rmse": 0.02499961157232855,
-            "rmse": 0.029997718844704584,
+            "median_absolute_error": 0.02499961157232855,
+            "median_absolute_error_improvement": -0.06371942093187233,
+            "rmse_improvement": -0.31871470947420755,
+            "rolling_origin_rmse": 0.029997718844704584,
             "squared_error_delta_bootstrap": {
               "block_size": 3,
               "draws": 1000,
-              "lower": 0.00017745053315552844,
+              "lower": -0.00040939114620818336,
               "mean": 0.0006650064927437021,
+              "sampling": "circular_moving_blocks_with_replacement",
+              "seed": 25025,
               "status": "OK",
-              "upper": 0.0012023193118791636
+              "upper": 0.0020315585787897884
             }
           }
         },
+        "constant_growth_baseline_median_absolute_error": 0.023148850248467134,
         "constant_growth_baseline_rmse": 0.02986883032126981,
-        "median_constant_growth_baseline_rmse": 0.023148850248467134,
-        "median_rmse_improvement": -0.14876428245070006,
+        "median_absolute_error_improvement": -0.14876428245070006,
         "origins": [
           2000,
           2001,
@@ -147,19 +153,23 @@
         "squared_error_delta_bootstrap": {
           "block_size": 3,
           "draws": 1000,
-          "lower": 0.0002120953985786207,
+          "lower": 6.0534922047215035e-05,
           "mean": 0.0006727226038688401,
+          "sampling": "circular_moving_blocks_with_replacement",
+          "seed": 25025,
           "status": "OK",
-          "upper": 0.0012418535896312243
+          "upper": 0.001380492556496605
         },
-        "uet_median_rolling_rmse": 0.026592572345239058,
+        "uet_median_absolute_error": 0.026592572345239058,
         "uet_rmse": 0.039558433091183565
       },
       "status": "DIAGNOSTIC_COMPLETE"
     },
     {
       "candidate_signal": false,
-      "global_fit": {
+      "horizon_years": 1,
+      "interpretation": "This legacy proxy sensitivity is retained as a bounded internal diagnostic. It is neither causal evidence nor a claim-class upgrade.",
+      "pre_holdout_fit": {
         "coefficient_labels": [
           "intercept",
           "necessity_constraint_proxy",
@@ -167,52 +177,55 @@
           "infrastructure_growth"
         ],
         "coefficients": [
-          0.011624873800020044,
-          -0.0065219231771876445,
-          0.0011689587551144461,
-          0.2928492153665018
+          0.015770606491558956,
+          -0.010186855200594485,
+          -0.022373820299307227,
+          0.4205109592454218
         ],
-        "n": 64,
-        "r_squared": 0.13891314220445738,
-        "residual_rmse": 0.01620414657159486
+        "fit_window": "through_1999",
+        "n": 40,
+        "r_squared": 0.2414380607899892,
+        "residual_rmse": 0.016074537618729387
       },
-      "horizon_years": 1,
-      "interpretation": "A candidate signal is a predeclared internal diagnostic condition only. It is neither causal evidence nor a claim-class upgrade.",
       "rolling_origin": {
-        "acceptance_rule": "Candidate requires at least 10 percent lower median rolling-origin RMSE than every declared baseline and a 95 percent block-bootstrap squared-error interval below zero.",
+        "acceptance_rule": "Candidate requires at least 10 percent lower rolling-origin RMSE than every declared baseline and a 95 percent moving-block-bootstrap squared-error interval below zero.",
         "baseline_metrics": {
           "constant_growth": {
-            "aggregate_rmse_improvement": -0.05362886654396015,
-            "median_rmse_improvement": 0.07260990740903805,
-            "median_rolling_rmse": 0.00873960129612069,
-            "rmse": 0.016008584618287452,
+            "median_absolute_error": 0.00873960129612069,
+            "median_absolute_error_improvement": 0.07260990740903805,
+            "rmse_improvement": -0.05362886654396015,
+            "rolling_origin_rmse": 0.016008584618287452,
             "squared_error_delta_bootstrap": {
               "block_size": 3,
               "draws": 1000,
-              "lower": -0.00010083607565110406,
+              "lower": -6.866297839384668e-05,
               "mean": 2.8224512559640167e-05,
+              "sampling": "circular_moving_blocks_with_replacement",
+              "seed": 25025,
               "status": "OK",
-              "upper": 0.00013279595954761235
+              "upper": 0.00010810162820068085
             }
           },
           "zero_growth": {
-            "aggregate_rmse_improvement": -0.051654473676547186,
-            "median_rmse_improvement": 0.2574459081302961,
-            "median_rolling_rmse": 0.010915056214705565,
-            "rmse": 0.01603863939015299,
+            "median_absolute_error": 0.010915056214705565,
+            "median_absolute_error_improvement": 0.2574459081302961,
+            "rmse_improvement": -0.051654473676547186,
+            "rolling_origin_rmse": 0.01603863939015299,
             "squared_error_delta_bootstrap": {
               "block_size": 3,
               "draws": 1000,
-              "lower": -0.00023914421511639567,
+              "lower": -0.00013991855067398333,
               "mean": 2.7261340553142634e-05,
+              "sampling": "circular_moving_blocks_with_replacement",
+              "seed": 25025,
               "status": "OK",
-              "upper": 0.000341747724399736
+              "upper": 0.00019678569326493918
             }
           }
         },
+        "constant_growth_baseline_median_absolute_error": 0.00873960129612069,
         "constant_growth_baseline_rmse": 0.016008584618287452,
-        "median_constant_growth_baseline_rmse": 0.00873960129612069,
-        "median_rmse_improvement": 0.07260990740903805,
+        "median_absolute_error_improvement": 0.07260990740903805,
         "origins": [
           2000,
           2001,
@@ -243,19 +256,23 @@
         "squared_error_delta_bootstrap": {
           "block_size": 3,
           "draws": 1000,
-          "lower": -0.00010083607565110406,
+          "lower": -6.866297839384668e-05,
           "mean": 2.8224512559640167e-05,
+          "sampling": "circular_moving_blocks_with_replacement",
+          "seed": 25025,
           "status": "OK",
-          "upper": 0.00013279595954761235
+          "upper": 0.00010810162820068085
         },
-        "uet_median_rolling_rmse": 0.008105019655217458,
+        "uet_median_absolute_error": 0.008105019655217458,
         "uet_rmse": 0.01686710686633928
       },
       "status": "DIAGNOSTIC_COMPLETE"
     },
     {
       "candidate_signal": false,
-      "global_fit": {
+      "horizon_years": 5,
+      "interpretation": "This legacy proxy sensitivity is retained as a bounded internal diagnostic. It is neither causal evidence nor a claim-class upgrade.",
+      "pre_holdout_fit": {
         "coefficient_labels": [
           "intercept",
           "necessity_constraint_proxy",
@@ -263,52 +280,55 @@
           "infrastructure_growth"
         ],
         "coefficients": [
-          0.04580717113302678,
-          -0.019947431100649466,
-          0.29095781032280765,
-          1.0273011241651608
+          0.06423826470246033,
+          -0.029265316427677716,
+          0.14330205536944887,
+          1.7850061964005064
         ],
-        "n": 60,
-        "r_squared": 0.19375836099083898,
-        "residual_rmse": 0.04220848591797405
+        "fit_window": "through_1999",
+        "n": 40,
+        "r_squared": 0.45155783281900064,
+        "residual_rmse": 0.035590634500301865
       },
-      "horizon_years": 5,
-      "interpretation": "A candidate signal is a predeclared internal diagnostic condition only. It is neither causal evidence nor a claim-class upgrade.",
       "rolling_origin": {
-        "acceptance_rule": "Candidate requires at least 10 percent lower median rolling-origin RMSE than every declared baseline and a 95 percent block-bootstrap squared-error interval below zero.",
+        "acceptance_rule": "Candidate requires at least 10 percent lower rolling-origin RMSE than every declared baseline and a 95 percent moving-block-bootstrap squared-error interval below zero.",
         "baseline_metrics": {
           "constant_growth": {
-            "aggregate_rmse_improvement": -0.21559570799693728,
-            "median_rmse_improvement": -0.42121752779324595,
-            "median_rolling_rmse": 0.035080679579327784,
-            "rmse": 0.0486671756934951,
+            "median_absolute_error": 0.035080679579327784,
+            "median_absolute_error_improvement": -0.42121752779324595,
+            "rmse_improvement": -0.21559570799693728,
+            "rolling_origin_rmse": 0.0486671756934951,
             "squared_error_delta_bootstrap": {
               "block_size": 3,
               "draws": 1000,
-              "lower": 0.0004518035398162749,
+              "lower": -8.508423844862074e-05,
               "mean": 0.0011313654527513035,
+              "sampling": "circular_moving_blocks_with_replacement",
+              "seed": 25025,
               "status": "OK",
-              "upper": 0.0019775960293615964
+              "upper": 0.0023726052916176995
             }
           },
           "zero_growth": {
-            "aggregate_rmse_improvement": -0.3755032678638983,
-            "median_rmse_improvement": -0.21327788416959526,
-            "median_rolling_rmse": 0.041093040065725006,
-            "rmse": 0.04300942882179991,
+            "median_absolute_error": 0.041093040065725006,
+            "median_absolute_error_improvement": -0.21327788416959526,
+            "rmse_improvement": -0.3755032678638983,
+            "rolling_origin_rmse": 0.04300942882179991,
             "squared_error_delta_bootstrap": {
               "block_size": 3,
               "draws": 1000,
-              "lower": 6.652673181005687e-05,
+              "lower": -0.0006248691651699007,
               "mean": 0.001650048475155351,
+              "sampling": "circular_moving_blocks_with_replacement",
+              "seed": 25025,
               "status": "OK",
-              "upper": 0.0029455287490681463
+              "upper": 0.004196150806861609
             }
           }
         },
+        "constant_growth_baseline_median_absolute_error": 0.035080679579327784,
         "constant_growth_baseline_rmse": 0.0486671756934951,
-        "median_constant_growth_baseline_rmse": 0.035080679579327784,
-        "median_rmse_improvement": -0.42121752779324595,
+        "median_absolute_error_improvement": -0.42121752779324595,
         "origins": [
           2000,
           2001,
@@ -335,18 +355,20 @@
         "squared_error_delta_bootstrap": {
           "block_size": 3,
           "draws": 1000,
-          "lower": 0.0004518035398162749,
+          "lower": -8.508423844862074e-05,
           "mean": 0.0011313654527513035,
+          "sampling": "circular_moving_blocks_with_replacement",
+          "seed": 25025,
           "status": "OK",
-          "upper": 0.0019775960293615964
+          "upper": 0.0023726052916176995
         },
-        "uet_median_rolling_rmse": 0.04985727670503924,
+        "uet_median_absolute_error": 0.04985727670503924,
         "uet_rmse": 0.05915960989334551
       },
       "status": "DIAGNOSTIC_COMPLETE"
     }
   ],
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "status": "DIAGNOSTIC_COMPLETE",
   "topic": "0.25_Strategy_Power_Economics"
 }

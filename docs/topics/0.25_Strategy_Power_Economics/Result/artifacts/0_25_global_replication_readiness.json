@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0",
   "topic": "0.25_Strategy_Power_Economics",
-  "status": "PARTIAL_PASS",
+  "status": "BLOCKED",
   "completed_sublanes": {
-    "world_bank_wdi": "PASS"
+    "world_bank_wdi": "BLOCKED"
   },
-  "generated_at_utc": "2026-08-01T14:34:57.687319+00:00",
+  "generated_at_utc": "2026-08-10T19:01:23.326921+00:00",
   "required_providers": {
     "World Bank WDI": "GDP, population, energy, poverty, macro indicators",
     "OECD": "productivity, income, compensation, investment, household accounts",

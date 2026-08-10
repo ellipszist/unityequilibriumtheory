@@ -9,7 +9,7 @@
     "rows_returned": 10,
     "sample_size_requested": 10
   },
-  "generated_at_utc": "2026-08-01T14:34:25.851303+00:00",
+  "generated_at_utc": "2026-08-10T19:01:09.797762+00:00",
   "interpretation": "Award-level account outlay and obligation fields are observable for the fixed sample, but they are accounting totals, not evidence of bank settlement, supplier invoice payment, or financing-source provenance.",
   "limitations": [
     "The ten-award sample is deterministic but nonrepresentative and must not be generalized to all DOE awards.",

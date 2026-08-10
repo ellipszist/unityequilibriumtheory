@@ -76,8 +76,14 @@ def run_horizon(rows_by_year: dict[int, dict[str, float]], horizon: int, rolling
     all_observations = source_rows(rows_by_year, horizon, max(rows_by_year))
     if len(all_observations) < 12:
         return {"horizon_years": horizon, "status": "INSUFFICIENT_ROWS", "n": len(all_observations)}
-    global_stats = n_stats(all_observations)
-    global_fit = ols([feature(row, global_stats) for row in all_observations], [row["target"] for row in all_observations])
+    pre_holdout_observations = [row for row in all_observations if int(row["year"]) < rolling_start]
+    if len(pre_holdout_observations) < 12:
+        return {"horizon_years": horizon, "status": "INSUFFICIENT_PRE_HOLDOUT_ROWS", "n": len(pre_holdout_observations)}
+    pre_holdout_stats = n_stats(pre_holdout_observations)
+    pre_holdout_fit = ols(
+        [feature(row, pre_holdout_stats) for row in pre_holdout_observations],
+        [row["target"] for row in pre_holdout_observations],
+    )
     origins: list[int] = []
     actual: list[float] = []
     uet_predictions: list[float] = []
@@ -100,53 +106,54 @@ def run_horizon(rows_by_year: dict[int, dict[str, float]], horizon: int, rolling
         baseline_predictions["zero_growth"].append(0.0)
 
     uet_rmse = rmse(actual, uet_predictions)
-    uet_median_rmse = median([abs(observed - predicted) for observed, predicted in zip(actual, uet_predictions)])
+    uet_median_absolute_error = median([abs(observed - predicted) for observed, predicted in zip(actual, uet_predictions)])
     baseline_metrics: dict[str, dict] = {}
     for name, predictions in baseline_predictions.items():
         baseline_rmse = rmse(actual, predictions)
-        baseline_median_rmse = median([abs(observed - predicted) for observed, predicted in zip(actual, predictions)])
+        baseline_median_absolute_error = median([abs(observed - predicted) for observed, predicted in zip(actual, predictions)])
         deltas = [(uet - observed) ** 2 - (baseline - observed) ** 2 for observed, uet, baseline in zip(actual, uet_predictions, predictions)]
         baseline_metrics[name] = {
-            "rmse": baseline_rmse,
-            "median_rolling_rmse": baseline_median_rmse,
-            "aggregate_rmse_improvement": None if not uet_rmse or not baseline_rmse else 1.0 - uet_rmse / baseline_rmse,
-            "median_rmse_improvement": None if uet_median_rmse is None or baseline_median_rmse is None else 1.0 - uet_median_rmse / baseline_median_rmse,
+            "rolling_origin_rmse": baseline_rmse,
+            "median_absolute_error": baseline_median_absolute_error,
+            "rmse_improvement": None if uet_rmse is None or baseline_rmse in {None, 0} else 1.0 - uet_rmse / baseline_rmse,
+            "median_absolute_error_improvement": None if uet_median_absolute_error is None or baseline_median_absolute_error in {None, 0} else 1.0 - uet_median_absolute_error / baseline_median_absolute_error,
             "squared_error_delta_bootstrap": moving_block_bootstrap_interval(deltas),
         }
     acceptance = all(
-        item["median_rmse_improvement"] is not None
-        and item["median_rmse_improvement"] >= 0.1
+        item["rmse_improvement"] is not None
+        and item["rmse_improvement"] >= 0.1
         and item["squared_error_delta_bootstrap"].get("upper") is not None
-        and item["squared_error_delta_bootstrap"].get("upper") < 0
+        and item["squared_error_delta_bootstrap"]["upper"] < 0
         for item in baseline_metrics.values()
     )
-    beta_n, beta_k, beta_i = global_fit["coefficients"][1:]
+    beta_n, beta_k, beta_i = pre_holdout_fit["coefficients"][1:]
     candidate_signal = bool(acceptance and beta_k > 0 and beta_i > 0)
     constant = baseline_metrics["constant_growth"]
     return {
         "horizon_years": horizon,
         "status": "DIAGNOSTIC_COMPLETE",
-        "global_fit": {
+        "pre_holdout_fit": {
             "coefficient_labels": ["intercept", "necessity_constraint_proxy", "knowledge_growth", "infrastructure_growth"],
-            "coefficients": global_fit["coefficients"],
-            "r_squared": global_fit["r_squared"],
-            "residual_rmse": global_fit["residual_rmse"],
-            "n": global_fit["n"],
+            "coefficients": pre_holdout_fit["coefficients"],
+            "r_squared": pre_holdout_fit["r_squared"],
+            "residual_rmse": pre_holdout_fit["residual_rmse"],
+            "n": pre_holdout_fit["n"],
+            "fit_window": f"through_{rolling_start - 1}",
         },
         "rolling_origin": {
             "origins": origins,
             "uet_rmse": uet_rmse,
-            "uet_median_rolling_rmse": uet_median_rmse,
-            "constant_growth_baseline_rmse": constant["rmse"],
-            "median_constant_growth_baseline_rmse": constant["median_rolling_rmse"],
-            "rmse_improvement": constant["aggregate_rmse_improvement"],
-            "median_rmse_improvement": constant["median_rmse_improvement"],
+            "uet_median_absolute_error": uet_median_absolute_error,
+            "constant_growth_baseline_rmse": constant["rolling_origin_rmse"],
+            "constant_growth_baseline_median_absolute_error": constant["median_absolute_error"],
+            "rmse_improvement": constant["rmse_improvement"],
+            "median_absolute_error_improvement": constant["median_absolute_error_improvement"],
             "squared_error_delta_bootstrap": constant["squared_error_delta_bootstrap"],
             "baseline_metrics": baseline_metrics,
-            "acceptance_rule": "Candidate requires at least 10 percent lower median rolling-origin RMSE than every declared baseline and a 95 percent block-bootstrap squared-error interval below zero.",
+            "acceptance_rule": "Candidate requires at least 10 percent lower rolling-origin RMSE than every declared baseline and a 95 percent moving-block-bootstrap squared-error interval below zero.",
         },
         "candidate_signal": candidate_signal,
-        "interpretation": "A candidate signal is a predeclared internal diagnostic condition only. It is neither causal evidence nor a claim-class upgrade.",
+        "interpretation": "This legacy proxy sensitivity is retained as a bounded internal diagnostic. It is neither causal evidence nor a claim-class upgrade.",
     }
 
 
@@ -155,11 +162,11 @@ def main() -> int:
     policy = load_json(PARAMETER_POLICY)
     if panel_status.get("status") != "PASS" or not PANEL_PATH.exists():
         artifact = {
-            "schema_version": "1.0",
+            "schema_version": "2.0",
             "topic": "0.25_Strategy_Power_Economics",
             "status": "WARN",
             "generated_at_utc": utc_now(),
-            "formula_ids": ["EC25-UET-RESOURCE-ENGINE"],
+            "formula_ids": ["BOOK-HEURISTIC-001", "EC25-INNOVATION-CONSTRAINT"],
             "blockers": panel_status.get("blockers", ["Normalized U.S. panel is absent."]),
             "claim_boundary": "The R/N/K/I diagnostic did not run because the source-locked panel is incomplete.",
         }
@@ -172,15 +179,15 @@ def main() -> int:
     results = [run_horizon(rows_by_year, int(horizon), int(load_json(__import__("economic_hardening_common").HOLDOUT_POLICY).get("rolling_origin_start", 2000))) for horizon in horizons]
     primary = next((item for item in results if item["horizon_years"] == policy.get("horizons", {}).get("primary", 3)), results[0])
     artifact = {
-        "schema_version": "1.0",
+        "schema_version": "2.0",
         "topic": "0.25_Strategy_Power_Economics",
         "status": "DIAGNOSTIC_COMPLETE",
         "generated_at_utc": utc_now(),
-        "formula_ids": ["EC25-UET-RESOURCE-ENGINE"],
+        "formula_ids": ["BOOK-HEURISTIC-001", "EC25-INNOVATION-CONSTRAINT"],
         "parameter_policy": policy,
         "results": results,
         "controller_status": "CANDIDATE_SIGNAL_INTERNAL_ONLY" if primary.get("candidate_signal") else "NO_PREDECLARED_CANDIDATE_SIGNAL",
-        "claim_boundary": "The model measures temporal association in a U.S. proxy panel. It does not prove R=N+K+I, fiat causality, or an economic law.",
+        "claim_boundary": "This legacy proxy sensitivity is retained as a negative internal diagnostic. BOOK-HEURISTIC-001 is retired as an identity; the result does not establish causality or an economic law.",
     }
     write_json(ARTIFACT, artifact)
     print(f"UET resource-equation audit: {artifact['controller_status']}")

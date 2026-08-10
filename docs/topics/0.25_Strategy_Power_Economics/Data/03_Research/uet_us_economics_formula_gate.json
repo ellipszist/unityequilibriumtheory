@@ -1,59 +1,120 @@
 {
-  "claim_boundary": "Formula entries are diagnostic operationalizations of Book 1 hypotheses; none is a derived economic law.",
+  "schema_version": "3.0",
+  "topic": "0.25_Strategy_Power_Economics",
+  "registry_id": "EC25-FORMULA-REGISTRY-V3",
+  "book_blueprint_version": "book1-economics-v2-research-reset",
+  "claim_boundary": "Formulae are definitions, accounting identities, benchmarks, or testable hypotheses. None is a confirmed economic law.",
   "formulae": [
     {
-      "constant_origin": "heuristic_bridge",
-      "conversion_steps": [
-        "source units to annual observations",
-        "per-capita/per-employee normalization",
-        "1959=100 rebasing",
-        "log changes",
-        "training-window standardization for N"
-      ],
-      "failure_mode": "A fitted proxy composite could be mistaken for a dimensional identity or causal mechanism.",
-      "formula_id": "EC25-UET-RESOURCE-ENGINE",
-      "next_hardening_step": "Add a source-locked patent robustness series and externally replicated panel before any stronger interpretation.",
-      "proof_status": "heuristic bridge",
-      "relation": "R = N + K + I (Book 1 conceptual expression); operational diagnostic uses delta ln(R[t+3]) = alpha + beta_N*N_t + beta_K*delta ln(K_t) + beta_I*delta ln(I_t) + epsilon_t.",
-      "unit_closure_status": "Proxy",
-      "variables": {
-        "I": "geometric mean of BEA chain-type fixed-asset quantity indexes (2017=100) divided by employees; indexed proxy",
-        "K": "BEA chain-type IP-product quantity index (2017=100) divided by employees; indexed proxy",
-        "N": "dimensionless constraint proxy",
-        "R": "dimensionless resource-capacity index"
-      },
-      "verification_role": "diagnostic-only temporal association"
+      "formula_id": "BOOK-HEURISTIC-001",
+      "relation": "R = N + K + I",
+      "status": "RETIRED_AS_IDENTITY",
+      "derivation_class": "narrative_mnemonic",
+      "proof_status": "not_derived",
+      "unit_closure_status": "FAIL",
+      "failure_mode": "R/N/K/I changed ontology and mixed stocks, flows, shocks, and dimensionless indexes.",
+      "allowed_use": "historical discussion of the original hypothesis only",
+      "blocked_use": "wealth equation, law, derived relation, or regression identity"
     },
     {
-      "constant_origin": "topic_derived_relation",
-      "failure_mode": "Endogeneity and omitted supply/demand factors make causal interpretation invalid.",
-      "formula_id": "EC25-UET-MONETARY-RESOURCE-MISMATCH",
-      "next_hardening_step": "Report baseline comparison and uncertainty; retain the non-causal claim boundary.",
-      "proof_status": "heuristic bridge",
-      "relation": "D_t = delta ln(M2_t) - delta ln(R_t)",
-      "unit_closure_status": "Closed after log transformation",
-      "variables": {
-        "D": "dimensionless mismatch",
-        "M2": "money stock",
-        "R": "resource-capacity proxy"
-      },
-      "verification_role": "inflation diagnostic comparator"
+      "formula_id": "EC25-PRODUCTION-KLEMS",
+      "relation": "dln(Q_i,t) = sum_x s_x,i,t dln(X_x,i,t) + dln(A_i,t)",
+      "status": "BENCHMARK",
+      "derivation_class": "standard_growth_accounting",
+      "proof_status": "source_and_method_dependent",
+      "unit_closure_status": "CLOSED_IN_LOG_CHANGES",
+      "variables": {"Q":"real output","X":"capital, labor, energy, materials, services","s":"declared cost shares","A":"multifactor productivity residual"},
+      "verification_role": "primary production benchmark"
     },
     {
-      "constant_origin": "source_locked_benchmark_input when the source export is present",
-      "failure_mode": "BLS and EPI series have different universes and deflators; they must not be silently interchanged.",
-      "formula_id": "EC25-UET-WAGE-PRODUCTIVITY-GAP",
-      "next_hardening_step": "Archive a versioned EPI export and report both constructions separately.",
-      "proof_status": "diagnostic",
-      "relation": "gap_t = ln(productivity_t) - ln(compensation_t)",
-      "unit_closure_status": "Closed after log transformation",
-      "variables": {
-        "compensation": "source-specific real compensation measure",
-        "productivity": "source-specific output-per-hour or EPI net-productivity measure"
-      },
-      "verification_role": "construction-specific replication and comparator"
+      "formula_id": "EC25-INNOVATION-CONSTRAINT",
+      "relation": "Innovation[t+h] = g(C[t], H[t], R&D[t], Kp[t], Finance[t], Institutions[t]) + epsilon[t+h]",
+      "status": "TESTABLE_HYPOTHESIS_FAMILY",
+      "derivation_class": "empirical_mechanism_candidate",
+      "proof_status": "open",
+      "unit_closure_status": "MODEL_SPECIFIC",
+      "restriction": "No required sign for the constraint/shock term C."
+    },
+    {
+      "formula_id": "EC25-MONEY-PURCHASING-POWER",
+      "relation": "PP[b,g,t] = P[b,g,0] / P[b,g,t]",
+      "status": "MEASUREMENT_DEFINITION",
+      "derivation_class": "index_ratio",
+      "proof_status": "definition",
+      "unit_closure_status": "CLOSED_DIMENSIONLESS",
+      "restriction": "Basket, group, geography, base, and price-index method are mandatory."
+    },
+    {
+      "formula_id": "EC25-MONEY-IDENTITY",
+      "relation": "M[t] V[t] = P[t] Y[t]",
+      "status": "ACCOUNTING_IDENTITY",
+      "derivation_class": "quantity_identity",
+      "proof_status": "identity_when_velocity_is_defined_residually",
+      "unit_closure_status": "CLOSED_IF_SCOPE_AND_PERIOD_MATCH",
+      "failure_mode": "Residual velocity or endogenous M2 cannot be interpreted as an exogenous causal shock."
+    },
+    {
+      "formula_id": "EC25-RESOURCE-COVERAGE-DIAGNOSTIC",
+      "relation": "D[t] = dln(M^j[t]) - dln(Y_or_capacity_proxy[t])",
+      "status": "DIAGNOSTIC_ONLY",
+      "derivation_class": "Book_inspired_comparator",
+      "proof_status": "heuristic",
+      "unit_closure_status": "CLOSED_AFTER_LOG_CHANGE",
+      "allowed_use": "forecast/baseline comparison with declared aggregate and capacity measure",
+      "blocked_use": "observed money value or fiat causality"
+    },
+    {
+      "formula_id": "EC25-IO-FOOTPRINT",
+      "relation": "x=(I-A)^-1 f; q=B(I-A)^-1 f",
+      "status": "BENCHMARK_MODEL",
+      "derivation_class": "input_output_accounting",
+      "proof_status": "modelled_average_link",
+      "unit_closure_status": "CLOSED_WITH_DECLARED_A_F_B",
+      "blocked_use": "individual transaction or marginal causal lineage"
+    },
+    {
+      "formula_id": "EC25-FIRM-SOURCES-USES",
+      "relation": "InternalCash + NetDebt + NetEquity + Transfers = Investment + WorkingCapital + Payouts + dCash + Residual",
+      "status": "ACCOUNTING_BRIDGE",
+      "derivation_class": "sources_and_uses_identity",
+      "proof_status": "source_definition_dependent",
+      "unit_closure_status": "CLOSED_CURRENCY_PER_PERIOD",
+      "restriction": "Profit and retained earnings are not treated as tagged cash."
+    },
+    {
+      "formula_id": "EC25-INFRASTRUCTURE-CAPITAL",
+      "relation": "Kp[t+1] = (1-delta) Kp[t] + I[t]",
+      "status": "BENCHMARK",
+      "derivation_class": "capital_accumulation",
+      "proof_status": "definition_with_measurement_assumptions",
+      "unit_closure_status": "CLOSED_REAL_CAPITAL_STOCK"
+    },
+    {
+      "formula_id": "EC25-INFRASTRUCTURE-SOCIAL-NPV",
+      "relation": "NPV = -CapEx + sum_h((Benefits-O&M-ExternalCosts)/(1+rho)^h) + ResidualValue/(1+rho)^T",
+      "status": "PROJECT_EVALUATION_BENCHMARK",
+      "derivation_class": "discounted_social_value",
+      "proof_status": "assumption_and_counterfactual_dependent",
+      "unit_closure_status": "CLOSED_PRESENT_VALUE_CURRENCY",
+      "restriction": "Fiscal NPV and debt service are reported separately."
+    },
+    {
+      "formula_id": "EC25-EXERGY-DESTRUCTION",
+      "relation": "B_destroyed = T0 * S_generated",
+      "status": "PHYSICAL_BENCHMARK",
+      "derivation_class": "standard_exergy_relation",
+      "proof_status": "boundary_and_reference_environment_dependent",
+      "unit_closure_status": "CLOSED_JOULE_IF_T0_K_AND_S_J_PER_K",
+      "restriction": "Not subtracted from accounting profit without an explicit valuation bridge."
+    },
+    {
+      "formula_id": "EC25-WAGE-PRODUCTIVITY-GAP",
+      "relation": "gap[t] = ln(productivity[t]) - ln(compensation[t])",
+      "status": "CONSTRUCTION_SPECIFIC_DIAGNOSTIC",
+      "derivation_class": "log_index_difference",
+      "proof_status": "definition",
+      "unit_closure_status": "CLOSED_AFTER_LOG_TRANSFORM",
+      "restriction": "Universe, deflator, mean/median, wages/compensation, and vintage must match or remain separate."
     }
-  ],
-  "schema_version": "1.0",
-  "topic": "0.25_Strategy_Power_Economics"
+  ]
 }

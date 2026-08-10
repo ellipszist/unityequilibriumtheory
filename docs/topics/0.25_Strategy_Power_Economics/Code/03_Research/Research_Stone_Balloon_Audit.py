@@ -90,26 +90,26 @@ def rolling_models(rows: dict[int, dict[str, float]], horizon: int, start: int =
             predictions[name].append(pending[name])
     metrics = {
         name: {
-            "rmse": rmse(actual, predicted),
-            "median_rolling_rmse": median([abs(observed - forecast) for observed, forecast in zip(actual, predicted)]),
+            "rolling_origin_rmse": rmse(actual, predicted),
+            "median_absolute_error": median([abs(observed - forecast) for observed, forecast in zip(actual, predicted)]),
         }
         for name, predicted in predictions.items()
     }
-    uet_rmse = metrics["uet_monetary_resource_mismatch"]["rmse"]
-    uet_median_rmse = metrics["uet_monetary_resource_mismatch"]["median_rolling_rmse"]
+    uet_rmse = metrics["uet_monetary_resource_mismatch"]["rolling_origin_rmse"]
+    uet_median_absolute_error = metrics["uet_monetary_resource_mismatch"]["median_absolute_error"]
     comparisons = {}
     for name in names[:-1]:
-        baseline_rmse = metrics[name]["rmse"]
-        baseline_median_rmse = metrics[name]["median_rolling_rmse"]
+        baseline_rmse = metrics[name]["rolling_origin_rmse"]
+        baseline_median_absolute_error = metrics[name]["median_absolute_error"]
         deltas = [(uet - observed) ** 2 - (baseline - observed) ** 2 for observed, uet, baseline in zip(actual, predictions["uet_monetary_resource_mismatch"], predictions[name])]
         comparisons[name] = {
-            "rmse_improvement": None if uet_rmse is None or baseline_rmse is None else 1.0 - uet_rmse / baseline_rmse,
-            "median_rmse_improvement": None if uet_median_rmse is None or baseline_median_rmse is None else 1.0 - uet_median_rmse / baseline_median_rmse,
+            "rmse_improvement": None if uet_rmse is None or baseline_rmse in {None, 0} else 1.0 - uet_rmse / baseline_rmse,
+            "median_absolute_error_improvement": None if uet_median_absolute_error is None or baseline_median_absolute_error in {None, 0} else 1.0 - uet_median_absolute_error / baseline_median_absolute_error,
             "squared_error_delta_bootstrap": moving_block_bootstrap_interval(deltas),
         }
     candidate_signal = bool(comparisons) and all(
-        item["median_rmse_improvement"] is not None
-        and item["median_rmse_improvement"] >= 0.1
+        item["rmse_improvement"] is not None
+        and item["rmse_improvement"] >= 0.1
         and item["squared_error_delta_bootstrap"].get("upper") is not None
         and item["squared_error_delta_bootstrap"]["upper"] < 0
         for item in comparisons.values()
@@ -120,7 +120,7 @@ def rolling_models(rows: dict[int, dict[str, float]], horizon: int, start: int =
         "actual_inflation": actual,
         "model_metrics": metrics,
         "uet_vs_baselines": comparisons,
-        "acceptance_rule": "Candidate requires at least 10 percent lower median rolling-origin RMSE than every named baseline and a 95 percent block-bootstrap squared-error interval below zero.",
+        "acceptance_rule": "Candidate requires at least 10 percent lower rolling-origin RMSE than every named baseline and a 95 percent block-bootstrap squared-error interval below zero.",
         "candidate_signal": candidate_signal,
     }
 
@@ -211,7 +211,7 @@ def asset_lane(rows: dict[int, dict[str, float]], manifest: dict) -> dict:
 def main() -> int:
     panel_status = load_json(PANEL_STATUS)
     if panel_status.get("status") != "PASS" or not PANEL_PATH.exists():
-        artifact = {"schema_version": "1.0", "topic": "0.25_Strategy_Power_Economics", "status": "WARN", "generated_at_utc": utc_now(), "formula_ids": ["EC25-UET-MONETARY-RESOURCE-MISMATCH"], "blockers": panel_status.get("blockers", ["Normalized panel is absent."]), "claim_boundary": "Stone-in-the-Balloon diagnostics did not run."}
+        artifact = {"schema_version": "2.0", "topic": "0.25_Strategy_Power_Economics", "status": "WARN", "generated_at_utc": utc_now(), "formula_ids": ["EC25-MONEY-IDENTITY", "EC25-RESOURCE-COVERAGE-DIAGNOSTIC"], "blockers": panel_status.get("blockers", ["Normalized panel is absent."]), "claim_boundary": "Stone-in-the-Balloon diagnostics did not run."}
         write_json(ARTIFACT, artifact)
         print("Stone-in-the-Balloon audit: WARN (panel blocked)")
         return 0
@@ -221,16 +221,16 @@ def main() -> int:
     inflation_results = [rolling_models(rows, int(horizon)) for horizon in horizons]
     manifest = load_json(SOURCE_MANIFEST)
     artifact = {
-        "schema_version": "1.0",
+        "schema_version": "2.0",
         "topic": "0.25_Strategy_Power_Economics",
         "status": "DIAGNOSTIC_COMPLETE",
         "generated_at_utc": utc_now(),
-        "formula_ids": ["EC25-UET-MONETARY-RESOURCE-MISMATCH"],
+        "formula_ids": ["EC25-MONEY-IDENTITY", "EC25-RESOURCE-COVERAGE-DIAGNOSTIC"],
         "inflation_baseline_comparison": inflation_results,
         "pre_1971_summary": regime_summary(rows, 1959, 1970),
         "post_1973_summary": regime_summary(rows, 1974, 2024),
         "asset_lane": asset_lane(rows, manifest),
-        "claim_boundary": "These are U.S. descriptive temporal comparisons. They do not identify a fiat-currency intervention effect or establish asset superiority.",
+        "claim_boundary": "This is a U.S. resource-coverage diagnostic, not observed money value. It does not identify a fiat-currency intervention effect or establish asset superiority.",
     }
     write_json(ARTIFACT, artifact)
     print("Stone-in-the-Balloon audit: DIAGNOSTIC_COMPLETE")

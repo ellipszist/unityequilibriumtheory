@@ -1,3 +1,22 @@
+# UPDATE LOG: 0.25 Strategy Power Economics
+
+> **Scope:** `docs/topics/0.25_Strategy_Power_Economics`
+> **Purpose:** Record auditable hardening waves for the economic diagnostic lane.
+
+## Entries
+
+### 2026-08-11 - Book 1 research reset and integrity repair
+
+- Scope: Waves 0–4 containment, ontology/claim-map reset, and verifier-integrity repair; this does not implement the long-horizon evidence program.
+- Added or changed: canonical Section/Book research controls, Book 1 eight-part Blueprint, controlled `Y/W/Kp/H/L/E/X/A/C/M/Cr/T/P/F` ontology, 15-wave register, 20 lane-scoped gates, Book–Topic alignment verifier, global-panel integrity gate, and focused regression tests.
+- Formula boundary: `R=N+K+I` is `BOOK-HEURISTIC-001 / RETIRED_AS_IDENTITY`; `R/M` is a resource-coverage diagnostic, while purchasing power, FX, payment use, and real returns remain separate.
+- Integrity repairs: rolling-origin RMSE is now true RMSE; median absolute error is separately named; coefficient/sign checks fit pre-holdout only; circular moving blocks are sampled with replacement using a recorded seed; producer scripts run before consumers.
+- Verified with: Python compilation, 5 focused regression tests, Book/Topic alignment, global-panel rebuild, and the full aggregate verifier. The final run executed 37 commands with zero failures and returned `WARN`.
+- Findings: the legacy resource proxy and Stone/resource-coverage proxy do not beat their declared baselines; measurement validity remains `WARN`. The frozen global panel has zero complete rows across GDP, PPP GDP, population, and energy, so six downstream artifacts are `INVALID_SUPERSEDED`.
+- Blocker narrowed: version/ontology alignment is `PASS_WITH_BOUNDARY`; false global replication coverage is contained.
+- Current controller: `SYSTEMATIC_LITERATURE_REVIEW_INCOMPLETE`; global replication separately remains blocked by `GLOBAL_COMPLETE_CASE_PANEL_UNAVAILABLE`.
+- Claim impact: remains Claim Class C / `DESCRIPTIVE_DIAGNOSTIC_ONLY`; no law, fiat-causal, validated-peg, policy-success, or transaction-lineage claim is enabled.
+
 ### 2026-08-01 - SEC recipient funding concordance
 
 - Scope: connect the frozen prime/subaward recipient names to public issuer accounting channels while preserving the distinction between firm accounts and award-dollar payment provenance.
@@ -6,13 +25,6 @@
 - Finding: matched issuers expose annual net income, operating cash flow, capex, debt, dividends, and cash observations. These are descriptive firm-level accounting channels; exact identity does not show whether a government award dollar was paid from profit, borrowing, or cash, so `funding_share_identification` is `NOT_IDENTIFIED`.
 - Blocker narrowed: public recipient accounting context is source-locked for the exact-match subset, but the controlling `firm_project_payment_ledger` blocker remains; payer-to-invoice-to-resource provenance is unavailable.
 - Claim impact: Claim Class C and `DESCRIPTIVE_DIAGNOSTIC_ONLY` remain unchanged; no profit-vs-debt attribution, payment causality, money-creation, or resource-conversion claim is enabled.
-
-# UPDATE LOG: 0.25 Strategy Power Economics
-
-> **Scope:** `docs/topics/0.25_Strategy_Power_Economics`
-> **Purpose:** Record auditable hardening waves for the economic diagnostic lane.
-
-## Entries
 
 ### 2026-08-01 - Downstream subaward-recipient audit
 

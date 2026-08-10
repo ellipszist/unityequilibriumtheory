@@ -1,0 +1,119 @@
+{
+  "blockers": [],
+  "book_blueprint": {
+    "exists": true,
+    "path": "uet_history/3_publish/books/economics_ai_energy/01_economics/book_1_blueprint.md",
+    "sha256": "f85a2a769d7b2d25ee668f17eabe678d84010073938a238ab535134dcfe930e8"
+  },
+  "book_blueprint_version": "book1-economics-v2-research-reset",
+  "checks": {
+    "all_required_control_files_exist": true,
+    "book_blueprint_version_matches": true,
+    "book_section_version_matches": true,
+    "claim_wording_contract_present": true,
+    "retired_identity_is_explicit": true,
+    "section_version_matches": true,
+    "topic_claim_matrix_version_matches": true,
+    "topic_formula_registry_version_matches": true,
+    "topic_register_version_matches": true,
+    "topic_warn_registry_version_matches": true,
+    "twenty_warn_gates_declared": true
+  },
+  "claim_boundary": "Version/ontology alignment does not validate any economic claim; S03/W03 literature review remains open.",
+  "controlling_blocker": "SYSTEMATIC_LITERATURE_REVIEW_INCOMPLETE",
+  "generated_at_utc": "2026-08-10T19:01:01.326685+00:00",
+  "literature_status": "IN_PROGRESS",
+  "previous_aggregate": {
+    "book_blueprint_version": "book1-economics-v2-research-reset",
+    "coverage_status": "CURRENT",
+    "generated_at_utc": "2026-08-10T18:59:09.814609+00:00",
+    "path": "docs/topics/0.25_Strategy_Power_Economics/Result/artifacts/0_25_uet_economics_verification.json",
+    "sha256": "83da3b3f3059118e920909a3e5a82e5f47ce8d0644bc97f297109e501287ecab"
+  },
+  "required_control_files": [
+    {
+      "exists": true,
+      "path": "uet_history/3_publish/books/economics_ai_energy/SECTION_MANIFEST.json",
+      "sha256": "0d47590f28f3b002f6d6490c386929f10805f6d592a57a92a5116b9474bb22f5"
+    },
+    {
+      "exists": true,
+      "path": "uet_history/3_publish/books/economics_ai_energy/SECTION_RESEARCH_DESIGN.md",
+      "sha256": "f040f7f3d88d405562c8ff23b295284440f88a5f481427755423dfc7b7fdc8e2"
+    },
+    {
+      "exists": true,
+      "path": "uet_history/3_publish/books/economics_ai_energy/SECTION_LITERATURE_REVIEW.md",
+      "sha256": "935edf4794253bc750edd8b2c2a2bcbf8243ec56dfe35bbdba3cf862eaab9e93"
+    },
+    {
+      "exists": true,
+      "path": "uet_history/3_publish/books/economics_ai_energy/SECTION_CLAIM_MAP.md",
+      "sha256": "2799a387dc82a3902488ec465b8bb2dca620c08d7bfb0452cf9d8a90abefedb0"
+    },
+    {
+      "exists": true,
+      "path": "uet_history/3_publish/books/economics_ai_energy/VOLUME_MATRIX.md",
+      "sha256": "9f14832ebd2f7818f8d88a8c4e28877eb3be8297733b32b957b5370eee821269"
+    },
+    {
+      "exists": true,
+      "path": "uet_history/3_publish/books/economics_ai_energy/DEPENDENCY_MAP.md",
+      "sha256": "71b576dc85cbd7ff127cc14115a720671077d3fa1d206fb710ad9612cccd50e9"
+    },
+    {
+      "exists": true,
+      "path": "uet_history/3_publish/books/economics_ai_energy/SHARED_TERMS.md",
+      "sha256": "becc77aa895a681be7ab8bb0adab848a60df9c12f55c5bf191e45606c3bb5fd4"
+    },
+    {
+      "exists": true,
+      "path": "uet_history/3_publish/books/economics_ai_energy/01_economics/BOOK_MANIFEST.json",
+      "sha256": "76189a1dd9d18450e155e5452d3d86e7ce2bcf857c42368a7cce58ac49f5bf09"
+    },
+    {
+      "exists": true,
+      "path": "uet_history/3_publish/books/economics_ai_energy/01_economics/book_1_blueprint.md",
+      "sha256": "f85a2a769d7b2d25ee668f17eabe678d84010073938a238ab535134dcfe930e8"
+    },
+    {
+      "exists": true,
+      "path": "uet_history/3_publish/books/economics_ai_energy/01_economics/RESEARCH_SPECIFICATION.md",
+      "sha256": "3a18a5f7f56e4f8f5b3f9d5e35242a68f9cb3615ba8364a0f429eb3ced789509"
+    },
+    {
+      "exists": true,
+      "path": "uet_history/3_publish/books/economics_ai_energy/01_economics/REFERENCE_REGISTER.md",
+      "sha256": "70efefd1912f83ce1a80f811fd9ff4835f06a246fbf5e235f4827adfe68b369e"
+    },
+    {
+      "exists": true,
+      "path": "uet_history/3_publish/books/economics_ai_energy/01_economics/SOURCE_DIGEST.md",
+      "sha256": "4344d1546ea3391ff2035faab8b16f4f88e985139405e1ac216e4aa0a673efce"
+    },
+    {
+      "exists": true,
+      "path": "uet_history/3_publish/books/economics_ai_energy/01_economics/CLAIM_MAP.md",
+      "sha256": "52f111071d6550898f6173ac44b2aba3a3e3cd6286df72a48c9e62cda9433e41"
+    },
+    {
+      "exists": true,
+      "path": "uet_history/3_publish/books/economics_ai_energy/01_economics/VERIFICATION_SPEC.md",
+      "sha256": "b60d9471ac51bc623320b1f1ff5c570a31af2e276324edc15ff7c76d0a8ba927"
+    },
+    {
+      "exists": true,
+      "path": "uet_history/3_publish/books/economics_ai_energy/01_economics/UPDATE_LOG.md",
+      "sha256": "3e5b64d5f119bbe431177eee318181edcf856a842e3e47e63d018ca56454ec47"
+    }
+  ],
+  "research_specification": {
+    "exists": true,
+    "path": "uet_history/3_publish/books/economics_ai_energy/01_economics/RESEARCH_SPECIFICATION.md",
+    "sha256": "3a18a5f7f56e4f8f5b3f9d5e35242a68f9cb3615ba8364a0f429eb3ced789509"
+  },
+  "schema_version": "1.0",
+  "section_version": "economics-ai-energy-v2-research-reset",
+  "status": "PASS_WITH_BOUNDARY",
+  "topic": "0.25_Strategy_Power_Economics"
+}

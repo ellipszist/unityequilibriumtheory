@@ -1,18 +1,21 @@
-# Claim Matrix — Topic 0.25 Economics
+# Claim Matrix — Topic 0.25
 
-The machine-readable matrix is
-[`uet_economics_claim_matrix.json`](Data/03_Research/uet_economics_claim_matrix.json).
+The canonical machine map is `Data/03_Research/uet_economics_claim_matrix.json`.
 
-| Claim family | Evidence class | Allowed now | Blocked wording |
-|---|---|---|---|
-| `R=N+K+I` | C internal diagnostic | “The predeclared proxy relation was/was not associated…” | law, proved, confirmed theory, causal |
-| Stone-in-the-Balloon | C internal diagnostic | “The mismatch did/did not beat named inflation baselines…” | fiat caused inflation, Nixon causal effect |
-| Welfare/cost of living | C measurement design | Report declared real welfare and burden indicators | GDP rise means people are better off; policy success |
-| Wage-productivity gap | C source comparison | Report EPI/BLS/ILOSTAT construction differences | fiat caused wage divergence; one construction is universal |
-| Energy | C descriptive history | Describe transition; keep literal density gated | density leap proved a macro law |
-| Assets | C asset diagnostic | Report purchasing-power retention in declared windows | validated peg; superior asset |
-| Strategy/social/Nash | Exploratory quarantined | Notes remain quarantined | strategic superiority, Nash improvement, stabilization validated |
+| Lane | Decision | Maximum current wording |
+| --- | --- | --- |
+| output/wealth/welfare | retain | constructs are distinct |
+| production/resources | benchmark/test | KLEMS/I-O accounting or modelled footprint |
+| constraint/innovation | rewrite | sign-ambiguous hypothesis; legacy identity retired |
+| money value | rewrite | purchasing power, FX, payment use, and returns separate |
+| Stone/inflation | diagnostic | did not outperform declared baselines |
+| funding/lineage | bounded | observed/inferred/modelled/unobserved label required |
+| wages/productivity | source specific | EPI/BLS construction-specific result |
+| welfare/distribution | test | basket/group-specific pattern |
+| SMEs/market power/time | test | country/year/design-specific finding |
+| energy/environment | rewrite | unit- and source-specific result |
+| historical origins | quarantine | competing hypothesis only |
+| Thailand/fertility policy | quarantine | separate rights-sensitive package |
+| Dynamic Energy Money | transfer Book 3 | design proposal and failure modes only |
 
-The aggregate verifier and claim gate are the controlling enforcement points. The target
-`Evidence Grade A` also requires independent replication and human review; this roadmap
-does not claim that target has been reached.
+Blocked wording includes `law`, `proved`, `fiat caused`, `observed lineage` without tags, `validated peg`, `inflation-free`, and policy or strategic superiority.

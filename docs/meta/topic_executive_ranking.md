@@ -19,7 +19,7 @@ These are the current template set for normalization of the theory-core:
 - `0.21_Yang_Mills_Mass_Gap`
   Strongest math-facing structured topic, but claim discipline remains especially important.
 - 0.25_Strategy_Power_Economics
-  Package Tier A source-locked internal economics package; Evidence Grade A target is governed by 10 waves and 12 WARN gates, with energy, asset, causal, global, and external-replication blockers remaining.
+  Package Tier A / Claim C economics package; the Book-aligned target now uses 15 waves and 20 lane-scoped gates, while corrected legacy proxies fail and the global complete-case panel is blocked.
 
 ## Tier B — Core topics with real research but incomplete standardization
 

@@ -1,336 +1,52 @@
 {
-  "schema_version": "1.0",
-  "register_id": "EC25-RESEARCH-REGISTER-V2",
+  "schema_version": "3.0",
+  "register_id": "EC25-RESEARCH-REGISTER-V3",
   "topic": "0.25_Strategy_Power_Economics",
+  "book_id": "0.1_origin_of_wealth",
+  "book_blueprint_version": "book1-economics-v2-research-reset",
   "status": "IN_PROGRESS",
   "current_package_tier": "Package Tier A",
-  "target_evidence_grade": "Evidence Grade A",
+  "target_evidence_grade": "Evidence Grade A by claim/lane",
   "current_claim_class": "C",
-  "current_controller": "DESCRIPTIVE_DIAGNOSTIC_ONLY",
-  "geography_policy": "U.S.-first; global replication only after U.S. measurement package is stable",
-  "primary_panel": {
-    "country": "United States",
-    "frequency": "annual",
-    "coverage": "1959-2024",
-    "freeze_vintage": "2026-07-12",
-    "subsequent_data_policy": "2025+ observations are a separate vintage and cannot be appended to the frozen baseline without a new register version"
+  "current_controller": "SYSTEMATIC_LITERATURE_REVIEW_INCOMPLETE",
+  "alignment_result": "PASS_WITH_BOUNDARY",
+  "geography_policy": "U.S.-first; global and Thailand are separate packages after U.S. measurement stability",
+  "evidence_levels": {
+    "L0":"official macro",
+    "L1":"sector accounting/network",
+    "L2":"public partial transactions",
+    "L3":"restricted matched microdata",
+    "L4":"tagged payment-invoice-resource ledger"
   },
-  "outcome_policy": {
-    "primary": [
-      "real_median_disposable_income",
-      "resource_capacity_index_R",
-      "CPI_U_annual_inflation"
-    ],
-    "secondary": [
-      "nonfarm_business_output_per_hour",
-      "housing_burden",
-      "real_median_hourly_wage",
-      "energy_per_capita",
-      "real_asset_purchasing_power_retention"
-    ],
-    "exploratory": [
-      "strategy_power_social_stabilization",
-      "Nash_equilibrium",
-      "policy_success",
-      "validated_scaling_peg"
-    ],
-    "multiple_testing": "Adjust within each predeclared hypothesis family; do not pool exploratory outcomes into primary evidence."
-  },
-  "hypotheses": [
-    {
-      "id": "H1_RESOURCE_ENGINE",
-      "class": "primary_diagnostic",
-      "statement": "Indexed resource capacity at t+3 is associated with predeclared necessity, knowledge, and infrastructure proxies at t.",
-      "formula_id": "EC25-UET-RESOURCE-ENGINE",
-      "required_gate_ids": [
-        "WARN_MEASUREMENT",
-        "WARN_UNIT",
-        "WARN_LEAKAGE",
-        "WARN_BASELINE"
-      ],
-      "causal_status": "blocked"
-    },
-    {
-      "id": "H2_MONETARY_RESOURCE_MISMATCH",
-      "class": "primary_diagnostic",
-      "statement": "The difference between monetary growth and measured resource-capacity growth is a diagnostic comparator for subsequent inflation, not a causal fiat-money claim.",
-      "formula_id": "EC25-UET-MONETARY-RESOURCE-MISMATCH",
-      "required_gate_ids": [
-        "WARN_SOURCE",
-        "WARN_REVISION",
-        "WARN_UNIT",
-        "WARN_BASELINE",
-        "WARN_CAUSAL"
-      ],
-      "causal_status": "blocked"
-    },
-    {
-      "id": "H3_WELFARE_COST_OF_LIVING",
-      "class": "secondary_diagnostic",
-      "statement": "Real household purchasing power and housing/food/energy burdens may diverge from aggregate GDP growth.",
-      "formula_id": "EC25-UET-WELFARE-INDEX",
-      "required_gate_ids": [
-        "WARN_MEASUREMENT",
-        "WARN_MISSINGNESS",
-        "WARN_UNIT"
-      ],
-      "causal_status": "not_yet_tested"
-    },
-    {
-      "id": "H4_WAGE_PRODUCTIVITY_CONSTRUCTION",
-      "class": "secondary_diagnostic",
-      "statement": "EPI, BLS, and international labor-statistics constructions can produce different wage-productivity gaps; differences are source/vintage findings.",
-      "formula_id": "EC25-UET-WAGE-PRODUCTIVITY-GAP",
-      "required_gate_ids": [
-        "WARN_SOURCE",
-        "WARN_REVISION",
-        "WARN_MEASUREMENT"
-      ],
-      "causal_status": "blocked"
-    },
-    {
-      "id": "H5_ENERGY_TRANSITION",
-      "class": "secondary_descriptive",
-      "statement": "Historical energy-source transitions and energy productivity can be described, but a literal density leap requires a common heat-content basis.",
-      "formula_id": "EC25-UET-ENERGY-DENSITY",
-      "required_gate_ids": [
-        "WARN_SOURCE",
-        "WARN_UNIT",
-        "WARN_MEASUREMENT"
-      ],
-      "causal_status": "blocked"
-    },
-    {
-      "id": "H6_ASSET_PURCHASING_POWER",
-      "class": "secondary_diagnostic",
-      "statement": "Gold, licensed total-return equities, Treasuries, cash, and housing can be compared for purchasing-power retention without declaring a validated peg.",
-      "formula_id": "EC25-UET-ASSET-PURCHASING-POWER",
-      "required_gate_ids": [
-        "WARN_LICENSE",
-        "WARN_UNIT",
-        "WARN_BASELINE",
-        "WARN_EXTERNAL"
-      ],
-      "causal_status": "blocked"
-    }
-  ],
-  "parameter_policy": {
-    "pre_registration": true,
-    "selection_after_holdout": false,
-    "horizons_years": {
-      "primary": 3,
-      "sensitivity": [
-        1,
-        5
-      ]
-    },
-    "rolling_origin": {
-      "start": 2000,
-      "end": 2024,
-      "fit_only_through_origin": true
-    },
-    "uncertainty": "HAC or block bootstrap predeclared by lane; no post-hoc interval selection",
-    "imputation": "No imputation in primary evidence; missingness is reported and may block a lane",
-    "structural_break_sensitivity": [
-      "1971-1973",
-      "1984",
-      "2008",
-      "2020"
-    ]
-  },
-  "strategy_social_quarantine": {
-    "status": "QUARANTINED",
-    "excluded_from_core_economics": true,
-    "reentry_requirements": [
-      "intervention_data",
-      "measured_outcome",
-      "predeclared_identification",
-      "independent_replication"
-    ]
-  },
+  "lineage_labels": ["OBSERVED","ACCOUNTING_INFERRED","MODEL_ALLOCATED","UNOBSERVED"],
+  "primary_core_lanes": ["production_resources","money_value","money_credit_fiscal","knowledge_infrastructure","wage_welfare_distribution","energy_materials"],
+  "quarantined_lanes": ["strategy_power_nash","balanced_market_policy","historical_speculation","nationality_based_labor_policy","validated_monetary_peg"],
   "waves": [
-    {
-      "wave": 0,
-      "name": "research_constitution_and_preregistration",
-      "status": "IN_PROGRESS",
-      "exit_gate": "No proxy or model selection after holdout results."
-    },
-    {
-      "wave": 1,
-      "name": "us_source_closure_and_vintage_control",
-      "status": "IN_PROGRESS",
-      "exit_gate": "Required source identity, release, terms, hash, coverage, and revision fields are complete."
-    },
-    {
-      "wave": 2,
-      "name": "measurement_validity_of_R_N_K_I",
-      "status": "PLANNED",
-      "exit_gate": "Direction is stable across at least three declared proxy families or instability is reported."
-    },
-    {
-      "wave": 3,
-      "name": "cost_of_living_and_household_welfare",
-      "status": "PLANNED",
-      "exit_gate": "Real welfare and burden outcomes are source-locked and separate from GDP."
-    },
-    {
-      "wave": 4,
-      "name": "money_credit_and_inflation",
-      "status": "PLANNED",
-      "exit_gate": "Money definitions, credit measures, baselines, and causal candidates are separated."
-    },
-    {
-      "wave": 5,
-      "name": "wage_productivity_and_distribution",
-      "status": "PLANNED",
-      "exit_gate": "EPI, BLS, and international constructions remain separate and decomposed."
-    },
-    {
-      "wave": 6,
-      "name": "energy_transition_and_literal_density",
-      "status": "PLANNED",
-      "exit_gate": "Heat-content basis, conversions, uncertainty, and source mix are locked."
-    },
-    {
-      "wave": 7,
-      "name": "markets_assets_and_purchasing_power",
-      "status": "PLANNED",
-      "exit_gate": "Licensed total-return and asset provenance gates close or lane is quarantined."
-    },
-    {
-      "wave": 8,
-      "name": "global_replication",
-      "status": "PLANNED",
-      "exit_gate": "30+ economies with common coverage, PPP policy, and leave-one-out checks."
-    },
-    {
-      "wave": 9,
-      "name": "causal_identification_external_replication_publication",
-      "status": "PLANNED",
-      "exit_gate": "Two independent causal designs, independent rerun, and human-reviewed package."
-    }
+    {"wave":0,"name":"containment_and_version_lock","status":"COMPLETED","exit_gate":"Blueprint/spec/artifact hashes and ontology align; stale global artifacts are superseded."},
+    {"wave":1,"name":"systematic_literature_review","status":"IN_PROGRESS","exit_gate":"Search, screening, appraisal, contrary evidence, and exact locators complete by claim family."},
+    {"wave":2,"name":"claim_map_ontology_formula_and_blueprint_rewrite","status":"COMPLETED_WITH_QUARANTINE","exit_gate":"Retain/rewrite/quarantine/transfer decisions and units agree across Book and Topic."},
+    {"wave":3,"name":"source_vintage_and_canonical_data","status":"PLANNED","exit_gate":"Provider identity, terms, release, vintage, hash, units, and coverage close by lane."},
+    {"wave":4,"name":"artifact_integrity_and_global_repair","status":"IN_PROGRESS","exit_gate":"Complete-case global panel, metrics, bootstrap, dependency hashes, and downstream counts reconcile."},
+    {"wave":5,"name":"production_and_resource_transformation","status":"PLANNED","exit_gate":"KLEMS/I-O baseline and physical-footprint sensitivity complete."},
+    {"wave":6,"name":"money_value_and_payment_behavior","status":"PLANNED","exit_gate":"Purchasing power, exchange value, payment use, and store-of-value results remain separate."},
+    {"wave":7,"name":"money_credit_fiscal_and_cantillon","status":"PLANNED","exit_gate":"Identified shocks, exposure, pre-trends, placebo, and negative controls complete."},
+    {"wave":8,"name":"payer_financing_and_lineage","status":"PLANNED","exit_gate":"Sources-and-uses and observed/inferred/modelled/unobserved boundaries are explicit."},
+    {"wave":9,"name":"knowledge_infrastructure_and_innovation","status":"PLANNED","exit_gate":"Independent proxy families and project/capital evaluation pass."},
+    {"wave":10,"name":"wages_welfare_market_power_and_time","status":"PLANNED","exit_gate":"Construction, distribution, firm-size, concentration, and time-use lanes are source-locked."},
+    {"wave":11,"name":"energy_exergy_and_natural_capital","status":"PLANNED","exit_gate":"Heat content, throughput, efficiency, exergy, EROI, emissions, and depletion remain distinct."},
+    {"wave":12,"name":"historical_and_intellectual_history","status":"PLANNED","exit_gate":"Specialist review and evidence tiers close or claims remain quarantined."},
+    {"wave":13,"name":"global_and_thailand_packages","status":"PLANNED","exit_gate":"30+ economy complete common panel and rights-reviewed Thailand package complete."},
+    {"wave":14,"name":"causal_synthesis_external_replication_publication","status":"PLANNED","exit_gate":"Two independent designs per causal claim, independent rerun, human review, and publication package."}
   ],
-  "prohibited_interpretations": [
-    "economic law confirmation",
-    "fiat-money causality",
-    "validated scaling peg",
-    "policy success or strategic superiority",
-    "Nash-equilibrium or social-stabilization validation"
-  ],
-  "source_families": [
-    {
-      "provider": "Federal Reserve H.6 / FRED",
-      "url": "https://fred.stlouisfed.org/series/M2SL",
-      "role": "M2, monetary aggregates, CPI/PCE, Treasury, credit and macro series",
-      "scope": "US"
-    },
-    {
-      "provider": "BEA",
-      "url": "https://www.bea.gov/data/gdp/gross-domestic-product",
-      "role": "real GDP, income, compensation, fixed assets, R&D and national accounts",
-      "scope": "US"
-    },
-    {
-      "provider": "BLS",
-      "url": "https://www.bls.gov/productivity/",
-      "role": "productivity, hours, CPI components, CPS/CE wage measures",
-      "scope": "US"
-    },
-    {
-      "provider": "EIA",
-      "url": "https://www.eia.gov/totalenergy/data/annual/",
-      "role": "primary energy, source mix, prices, emissions and historical energy tables",
-      "scope": "US"
-    },
-    {
-      "provider": "FHFA",
-      "url": "https://www.fhfa.gov/data/hpi",
-      "role": "house-price and housing-affordability lane",
-      "scope": "US"
-    },
-    {
-      "provider": "Census / Federal Reserve Z.1 and DFA",
-      "url": "https://www.federalreserve.gov/releases/z1/",
-      "role": "household balance sheets, wealth and distributional robustness",
-      "scope": "US"
-    },
-    {
-      "provider": "USPTO/PatsView",
-      "url": "https://www.uspto.gov/ip-policy/economic-research/patentsview",
-      "role": "utility patents and knowledge robustness proxy",
-      "scope": "US"
-    },
-    {
-      "provider": "BIS",
-      "url": "https://www.bis.org/statistics/dataportal/credit.htm",
-      "role": "credit-to-GDP gaps and debt-service ratios",
-      "scope": "global"
-    },
-    {
-      "provider": "IMF",
-      "url": "https://data.imf.org/Datasets/CPI",
-      "role": "CPI components, exchange rates and monetary/financial robustness",
-      "scope": "global"
-    },
-    {
-      "provider": "OECD",
-      "url": "https://www.oecd.org/en/data/datasets/gdp-and-non-financial-accounts.html",
-      "role": "productivity, income, compensation, investment and household accounts",
-      "scope": "global"
-    },
-    {
-      "provider": "ILOSTAT",
-      "url": "https://ilostat.ilo.org/topics/labour-productivity/",
-      "role": "labor productivity, earnings, hours and labor-income standards",
-      "scope": "global"
-    },
-    {
-      "provider": "World Bank WDI",
-      "url": "https://datahelpdesk.worldbank.org/knowledgebase/articles/889392",
-      "role": "GDP, population, energy, human capital, poverty and macro indicators",
-      "scope": "global"
-    },
-    {
-      "provider": "WID",
-      "url": "https://wid.world/methodology/",
-      "role": "income/wealth distribution and distributional national accounts",
-      "scope": "global"
-    },
-    {
-      "provider": "LBMA",
-      "url": "https://www.lbma.org.uk/prices-and-data",
-      "role": "licensed gold price and purchasing-power lane",
-      "scope": "global",
-      "license_required": true
-    },
-    {
-      "provider": "S&P Dow Jones / CRSP",
-      "url": "https://www.spglobal.com/spdji/en/",
-      "role": "licensed S&P total-return or academic-grade equity returns",
-      "scope": "US",
-      "license_required": true
-    }
-  ],
-  "global_replication_policy": {
-    "minimum_economies": 30,
-    "minimum_common_years_per_country": 20,
-    "grouping": [
-      "high_income",
-      "middle_income",
-      "low_income",
-      "resource_exporters"
-    ],
-    "currency_lanes": [
-      "PPP",
-      "market_exchange_rate"
-    ],
-    "robustness": [
-      "country_fixed_effects",
-      "year_effects",
-      "dynamic_panel",
-      "leave_one_country_out",
-      "leave_one_region_out"
-    ],
-    "pooling_gate": "Measurement invariance and country/variable missingness must pass before pooled global claims."
-  }
+  "evaluation_policy": {
+    "primary_panel":"United States annual 1959-2024; frozen baseline retained until a new version is declared",
+    "no_imputation":true,
+    "training_only_transformations":true,
+    "metric_contract":"RMSE, MAE, and median absolute error remain distinct",
+    "bootstrap":"random moving blocks with replacement; seed, block size, and draws recorded",
+    "multiple_testing":"adjust within each predeclared claim family",
+    "negative_results":"valid and retained"
+  },
+  "promotion_policy":"Evidence Grade A is evaluated by claim/lane first. No average may hide a controlling WARN/BLOCKED gate.",
+  "prohibited_interpretations":["economic law confirmation","fiat-money causality from aggregate association","observed transaction lineage without tagged evidence","validated scaling peg","policy success or strategic superiority"]
 }
