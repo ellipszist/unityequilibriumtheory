@@ -6,7 +6,7 @@
   "claim_promotion": false,
   "brief": {
     "path": "docs/core/UET_RESEARCH_ROOM_BRIEF.md",
-    "sha256": "dffb8044b560767f3a3417579b07f7cc248bfbd6d65269b383d24670e1970670"
+    "sha256": "dd072d118c74ef451e9842c928df39c9f39bda0c9e68acf561ac4b8e238058fb"
   },
   "required_mapping_fields": [
     "ontology",
@@ -33,7 +33,7 @@
         {
           "path": "docs/core/UET_RESEARCH_ROOM_BRIEF.md",
           "present": true,
-          "sha256": "dffb8044b560767f3a3417579b07f7cc248bfbd6d65269b383d24670e1970670",
+          "sha256": "dd072d118c74ef451e9842c928df39c9f39bda0c9e68acf561ac4b8e238058fb",
           "summary": {
             "required_report_headings_present": true
           }
@@ -424,5 +424,42 @@
     "foundation_gate_embeds_contract_hash": true,
     "contract_embeds_foundation_path_without_hash": true,
     "verification": "foundation.research_room_wave1.contract.sha256 is the controlling linkage; both JSON files are parsed and cross-linked"
+  },
+  "major_result_reporting": {
+    "contract": {
+      "path": "docs/core/artifacts/uet_major_result_closure_contract.json",
+      "sha256": "ab0e11918d9c939b43525568add030ff9b9321d954ce2d5b98f8de44b2901ff4",
+      "schema_version": "uet-major-result-closure-v1"
+    },
+    "register": {
+      "path": "docs/core/artifacts/uet_major_result_closure_register.json",
+      "sha256": "7ccaa634d30fac4a04c75b51e20f9a1aa9acf156bc95f615691dec8845a6f895",
+      "generated_at": "2026-08-10"
+    },
+    "required_fields": [
+      "major_result_id",
+      "topic",
+      "closure_level",
+      "what_is_closed",
+      "equation_or_mapping",
+      "units",
+      "derivation_class",
+      "observable",
+      "data_role",
+      "evidence_artifacts",
+      "verification_status",
+      "open_blockers",
+      "dependency_unlocked",
+      "claim_boundary"
+    ],
+    "closure_levels": [
+      "OPEN",
+      "PARTIAL",
+      "CLOSED_FOR_LANE",
+      "CLOSED_FOR_CORE",
+      "CLOSED_FOR_EXTERNAL_CLAIM"
+    ],
+    "claim_promotion": false,
+    "rule": "major result closure is progress evidence; PASS/WARN/BLOCKED remains verification state"
   }
 }

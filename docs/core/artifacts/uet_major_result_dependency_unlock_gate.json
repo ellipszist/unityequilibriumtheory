@@ -1,0 +1,77 @@
+{
+  "schema_version": "uet-major-result-dependency-unlock-v1",
+  "artifact": "uet_major_result_dependency_unlock_gate",
+  "generated_at": "2026-08-10",
+  "status": "BLOCKED_DOWNSTREAM_MAJOR_RESULTS",
+  "claim_promotion": false,
+  "register": {
+    "path": "docs/core/artifacts/uet_major_result_closure_register.json",
+    "sha256": "7ccaa634d30fac4a04c75b51e20f9a1aa9acf156bc95f615691dec8845a6f895"
+  },
+  "decisions": {
+    "CORE_CURVED_3P1_OBSERVABLE_PARENT_READY": {
+      "status": "BLOCKED_DEPENDENCY",
+      "depends_on": [
+        "T13_FULL_THERMODYNAMIC_BRIDGE"
+      ],
+      "unmet_dependencies": [
+        {
+          "result": "T13_FULL_THERMODYNAMIC_BRIDGE",
+          "current_level": "PARTIAL",
+          "required_level": "CLOSED_FOR_CORE"
+        }
+      ],
+      "claim_boundary": "curved 3+1 parent and constraint package only"
+    },
+    "GR_CLASSICAL_COMPATIBILITY_LANE": {
+      "status": "BLOCKED_DEPENDENCY",
+      "depends_on": [
+        "CORE_CURVED_3P1_OBSERVABLE_PARENT_READY"
+      ],
+      "unmet_dependencies": [
+        {
+          "result": "CORE_CURVED_3P1_OBSERVABLE_PARENT_READY",
+          "current_level": "OPEN",
+          "required_level": "CLOSED_FOR_CORE"
+        }
+      ],
+      "claim_boundary": "bounded classical GR compatibility; not Einstein-equation closure"
+    },
+    "CONSTITUTIVE_TRANSPORT_CORE_LANE": {
+      "status": "BLOCKED_DEPENDENCY",
+      "depends_on": [
+        "GR_CLASSICAL_COMPATIBILITY_LANE"
+      ],
+      "unmet_dependencies": [
+        {
+          "result": "GR_CLASSICAL_COMPATIBILITY_LANE",
+          "current_level": "OPEN",
+          "required_level": "CLOSED_FOR_CORE"
+        }
+      ],
+      "claim_boundary": "constitutive transport lane; not Navier-Stokes proof"
+    },
+    "GALAXY_COMPATIBILITY_TRACK": {
+      "status": "BLOCKED_DEPENDENCY",
+      "depends_on": [
+        "GR_CLASSICAL_COMPATIBILITY_LANE"
+      ],
+      "unmet_dependencies": [
+        {
+          "result": "GR_CLASSICAL_COMPATIBILITY_LANE",
+          "current_level": "OPEN",
+          "required_level": "CLOSED_FOR_CORE"
+        }
+      ],
+      "claim_boundary": "galaxy comparison track; not dark-matter elimination"
+    }
+  },
+  "unlock_order": [
+    "T13_FULL_THERMODYNAMIC_BRIDGE",
+    "CORE_CURVED_3P1_OBSERVABLE_PARENT_READY",
+    "GR_CLASSICAL_COMPATIBILITY_LANE",
+    "CONSTITUTIVE_TRANSPORT_CORE_LANE",
+    "GALAXY_COMPATIBILITY_TRACK"
+  ],
+  "claim_boundary": "Dependency decisions only; no downstream result is promoted by a checkpoint or comparator pass."
+}

@@ -249,7 +249,7 @@
     "claim_promotion": false,
     "contract": {
       "path": "docs/core/artifacts/uet_research_room_wave1_contract.json",
-      "sha256": "db1c2579c1debf4f24016370cfb0bb7cea7fa840be87f8d371bf0a5c7cc75527"
+      "sha256": "44f7b3e3654657fbcc77191c7e9137cca1e46e003d73913db562a7c354be012a"
     },
     "integration_gate": {
       "path": "docs/core/artifacts/uet_research_room_wave1_integration_gate.json",

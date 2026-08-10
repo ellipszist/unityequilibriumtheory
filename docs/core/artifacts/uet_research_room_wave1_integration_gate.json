@@ -6,11 +6,11 @@
   "claim_promotion": false,
   "brief": {
     "path": "docs/core/UET_RESEARCH_ROOM_BRIEF.md",
-    "sha256": "dffb8044b560767f3a3417579b07f7cc248bfbd6d65269b383d24670e1970670"
+    "sha256": "dd072d118c74ef451e9842c928df39c9f39bda0c9e68acf561ac4b8e238058fb"
   },
   "contract": {
     "path": "docs/core/artifacts/uet_research_room_wave1_contract.json",
-    "sha256": "db1c2579c1debf4f24016370cfb0bb7cea7fa840be87f8d371bf0a5c7cc75527"
+    "sha256": "44f7b3e3654657fbcc77191c7e9137cca1e46e003d73913db562a7c354be012a"
   },
   "registry": {
     "path": "docs/core/artifacts/uet_equation_correspondence_registry.json",
@@ -33,7 +33,7 @@
         {
           "path": "docs/core/UET_RESEARCH_ROOM_BRIEF.md",
           "present": true,
-          "sha256": "dffb8044b560767f3a3417579b07f7cc248bfbd6d65269b383d24670e1970670",
+          "sha256": "dd072d118c74ef451e9842c928df39c9f39bda0c9e68acf561ac4b8e238058fb",
           "summary": {
             "required_report_headings_present": true
           }
@@ -425,17 +425,15 @@
     "inbox_alignment": {
       "path": "docs/core/artifacts/inbox_research_alignment_drift_note.json",
       "sha256": "2b58f9cb214e6bf2519bc4ed81ff24e9e918e0825b1c344b9573655a833a4060",
-      "status": "BLOCKED_STALE_SOURCE_PATHS",
-      "claim_boundary": "housekeeping only; stale source-path drift remains blocked until the old artifact is rebuilt from current checkout paths"
+      "status": "BLOCKED_STALE_SOURCE_PATHS"
     },
     "topic_0_3_index": {
       "latest_scalar_artifact_path": "docs/topics/0.3_Cosmology_Hubble_Tension/Result/artifacts/hubble_comparison_validation.json",
       "latest_scalar_artifact_sha256": "aa2ecaf8f1914207905fe788b3527cec955c28617c29b11cd470be3514c3d7bf",
       "latest_scalar_artifact_status": null,
       "full_cosmology_claim": "BLOCKED_UNCHANGED",
-      "status": "SYNCED_SCALAR_PASS_FULL_COSMOLOGY_BLOCKED",
-      "claim_boundary": "scalar Hubble benchmark status is separate from full cosmology closure",
-      "index_sync_verified": true
+      "status": "REVIEW_REQUIRED",
+      "claim_boundary": "scalar Hubble benchmark status is separate from full cosmology closure"
     }
   },
   "next_action": "resolve the listed blockers in their owning rooms, then rerun this integration audit; do not start Gravity or full constitutive transport yet",

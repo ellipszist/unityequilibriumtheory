@@ -1,0 +1,208 @@
+{
+  "schema_version": "uet-major-result-closure-register-v1",
+  "artifact": "uet_major_result_closure_register",
+  "generated_at": "2026-08-10",
+  "contract": {
+    "path": "docs/core/artifacts/uet_major_result_closure_contract.json",
+    "sha256": "ab0e11918d9c939b43525568add030ff9b9321d954ce2d5b98f8de44b2901ff4"
+  },
+  "claim_promotion": false,
+  "closure_levels_are_progress_labels_not_readiness_labels": true,
+  "entries": [
+    {
+      "major_result_id": "CORE_ONTOLOGY_AND_RESEARCH_ROOM_CONTRACT",
+      "topic": "core",
+      "closure_level": "PARTIAL",
+      "what_is_closed": [
+        "lane-separated ontology contract",
+        "equation registry fields",
+        "dependency-gated room coordination"
+      ],
+      "equation_or_mapping": "C, Phi, R_gen, and R_obs remain distinct lane records",
+      "units": "normalized/natural lanes; complete SI mapping open",
+      "derivation_class": "workflow and registry contract",
+      "observable": "registry-linked observable/dependency records",
+      "data_role": "metadata and artifact integration",
+      "evidence_artifacts": [
+        {
+          "path": "docs/core/UET_RESEARCH_ROOM_BRIEF.md",
+          "sha256": "dd072d118c74ef451e9842c928df39c9f39bda0c9e68acf561ac4b8e238058fb",
+          "summary": {
+            "required_report_headings": true
+          }
+        }
+      ],
+      "verification_status": "PARTIAL_FOUNDATION_CONTRACT",
+      "open_blockers": [
+        "foundation correspondence, units, accepted physical observables, and external claim gates remain open"
+      ],
+      "dependency_unlocked": "parallel room hardening only",
+      "claim_boundary": "candidate effective theory; no global closure"
+    },
+    {
+      "major_result_id": "T13_FULL_THERMODYNAMIC_BRIDGE",
+      "topic": "0.13_Thermodynamic_Bridge",
+      "closure_level": "PARTIAL",
+      "what_is_closed": [
+        "standard TTG normalized measurement operator",
+        "normalized Phi response operator",
+        "frozen-C compact-support control branch",
+        "constraint-only Landauer and standard thermodynamic identities",
+        "scoped structural no-go assessment for the declared conserved-C local-gradient class"
+      ],
+      "equation_or_mapping": {
+        "standard": "y_TTG = Delta_Tq(t) / Delta_Tq(0)",
+        "uet_normalized": "y_TTG^UET = Delta_Phi(t) / Delta_Phi(0)",
+        "dimensional": "Delta_Tq = alpha_Phi_K * Delta_Phi"
+      },
+      "units": {
+        "y_TTG": "dimensionless",
+        "y_TTG_UET": "dimensionless",
+        "alpha_Phi_K": "K per normalized Phi; open until independent record exists"
+      },
+      "derivation_class": "standard observable definition plus blocked UET bridge derivation",
+      "observable": "source-defined quasi-temperature difference and normalized UET response",
+      "data_role": {
+        "source_package": "PROVISIONAL_NUMERIC_SOURCE_INTAKE",
+        "calibration": "OPEN",
+        "holdout": "Xie 2026 metadata-only locked holdout"
+      },
+      "evidence_artifacts": [
+        {
+          "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/topic13_full_thermodynamic_bridge_core_ready_gate.json",
+          "sha256": "c4258dcd491bb993011b481515e119aded48c9ff3b94a57af2301260285d090f",
+          "summary": {
+            "status": "BLOCKED_OPEN_T13_FULL_BRIDGE",
+            "controlling_blocker": "named_finite_cone_branch_or_explicit_regularization_missing"
+          }
+        }
+      ],
+      "verification_status": "BLOCKED_OPEN_T13_FULL_BRIDGE",
+      "open_blockers": [
+        "named finite-cone branch or explicit conserved-C regularization",
+        "ttg_numeric_source_package_is_provisional",
+        "alpha_Phi_K_independent_calibration_missing",
+        "non_circular_uet_bridge_and_beta_derivation_missing",
+        "eos_transport_kms_entropy_completion_missing",
+        "dimensional_phi_to_thermal_observable_map_missing"
+      ],
+      "dependency_unlocked": "Gravity/GR remains blocked until this full bridge and Core curved 3+1 gates pass",
+      "claim_boundary": "Full Topic 13 is not Core-ready; current evidence supports normalized/internal controls and constraint exports only. No temperature prediction, external validation, or global UET closure is claimed."
+    },
+    {
+      "major_result_id": "CORE_O2_TREE_LEVEL_EOS_LANE",
+      "topic": "core O(2)",
+      "closure_level": "PARTIAL",
+      "what_is_closed": [
+        "tree-level finite-density O(2) mean-field EOS",
+        "T=0 ideal constitutive identities"
+      ],
+      "equation_or_mapping": "P(X,Phi) -> N^mu and T^mu_nu in natural units",
+      "units": "natural units; SI and finite-temperature lanes open",
+      "derivation_class": "tree-level mean-field derivation",
+      "observable": "formal EOS and ideal constitutive control",
+      "data_role": "internal derivation and external structure references",
+      "evidence_artifacts": [
+        {
+          "path": "docs/core/artifacts/o2_finite_density_eos_verification.json",
+          "sha256": "8ab261c44f6f4f5840b52c681a0c7df5a181a33ea6ea8600c91228f393b2b239",
+          "summary": {
+            "audit_status": "PASS"
+          }
+        }
+      ],
+      "verification_status": "PASS_TREE_LEVEL_PARTIAL",
+      "open_blockers": [
+        "finite-temperature normal component",
+        "physical Kubo coefficients",
+        "full SK/KMS",
+        "curved 3+1",
+        "SI lane"
+      ],
+      "dependency_unlocked": "formal O(2) constraint inheritance only",
+      "claim_boundary": "no full two-fluid, physical transport, or GR closure"
+    },
+    {
+      "major_result_id": "TOPIC_0_10_STANDARD_FLUID_COMPARATOR",
+      "topic": "0.10_Fluid_Dynamics_Chaos",
+      "closure_level": "PARTIAL",
+      "what_is_closed": [
+        "standard-fluid comparator definition",
+        "formula audit boundary"
+      ],
+      "equation_or_mapping": "simplified comparator runtime/stability metrics",
+      "units": "declared benchmark units",
+      "derivation_class": "internal comparator",
+      "observable": "runtime, stability, and stress output",
+      "data_role": "internal benchmark only",
+      "evidence_artifacts": [
+        {
+          "path": "docs/topics/0.10_Fluid_Dynamics_Chaos/Result/artifacts/fluid_benchmark_validation.json",
+          "sha256": "5fc17bd8cf5af89dd62e89b3ead67d4265a6213425773f71c3a826809b5ffa8e",
+          "summary": {
+            "status": "FAIL"
+          }
+        }
+      ],
+      "verification_status": "FAIL_INTERNAL_BENCHMARK",
+      "open_blockers": [
+        "full UET constitutive transport is deferred and comparator speed threshold is not met"
+      ],
+      "dependency_unlocked": "none",
+      "claim_boundary": "not external CFD validation or Navier-Stokes proof"
+    },
+    {
+      "major_result_id": "TOPIC_0_19_CANDIDATE_GR_PARENT",
+      "topic": "0.19_Gravity_GR",
+      "closure_level": "PARTIAL",
+      "what_is_closed": [
+        "exact implemented epsilon_nc=0 response-null",
+        "local covariant balance",
+        "flat local 1+1 causal kernel"
+      ],
+      "equation_or_mapping": "candidate response parent -> bounded local GR dependency records",
+      "units": "candidate/natural lanes; curved SI mapping open",
+      "derivation_class": "candidate mathematical infrastructure",
+      "observable": "response-null and local balance diagnostics",
+      "data_role": "dependency artifact only; physical benchmarks not started",
+      "evidence_artifacts": [
+        {
+          "path": "docs/topics/0.19_Gravity_GR/Result/artifacts/0_19_core_gr_program_dependency_gate.json",
+          "sha256": "1549b696baa74aa94a2c953928e0ec740d3fbb04719f649d74cfb5af0fa0a383",
+          "summary": {
+            "status": "BLOCKED"
+          }
+        }
+      ],
+      "verification_status": "BLOCKED_PHYSICAL_GR_VALIDATION",
+      "open_blockers": [
+        "curved 3+1",
+        "classical GR tests",
+        "Kubo/transport completion",
+        "independent holdout comparison"
+      ],
+      "dependency_unlocked": "none until Core curved 3+1 gate",
+      "claim_boundary": "does not derive Einstein equations or validate GR"
+    },
+    {
+      "major_result_id": "TOPIC_0_1_GALAXY_COMPATIBILITY_TRACK",
+      "topic": "0.1_Galaxy_Rotation_Problem",
+      "closure_level": "OPEN",
+      "what_is_closed": [],
+      "equation_or_mapping": "metric/density-to-rotation map not accepted",
+      "units": "3D density and metric observable mapping open",
+      "derivation_class": "comparison track",
+      "observable": "rotation curve residuals after dependency closure",
+      "data_role": "legacy/internal comparison only",
+      "evidence_artifacts": [],
+      "verification_status": "BLOCKED_DEPENDENCY_ORDER",
+      "open_blockers": [
+        "Gravity/GR and external 3D density observable map"
+      ],
+      "dependency_unlocked": "none",
+      "claim_boundary": "not a dark-matter or universal galaxy claim"
+    }
+  ],
+  "next_major_result": "T13_FULL_THERMODYNAMIC_BRIDGE",
+  "claim_boundary": "This register reports closed or partial research results; it never promotes the global UET claim."
+}
