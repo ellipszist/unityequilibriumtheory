@@ -1,0 +1,428 @@
+{
+  "schema_version": "1.0",
+  "artifact": "uet_research_room_wave1_contract",
+  "generated_at": "2026-08-10",
+  "status": "PASS_WITH_BLOCKED_LANES",
+  "claim_promotion": false,
+  "brief": {
+    "path": "docs/core/UET_RESEARCH_ROOM_BRIEF.md",
+    "sha256": "dffb8044b560767f3a3417579b07f7cc248bfbd6d65269b383d24670e1970670"
+  },
+  "required_mapping_fields": [
+    "ontology",
+    "units",
+    "derivation_class",
+    "observable",
+    "data_role",
+    "verification_status",
+    "controlling_blocker",
+    "claim_boundary"
+  ],
+  "rooms": {
+    "core": {
+      "ontology": "central UET candidate effective theory; C, Phi, R_gen, and R_obs remain lane-separated",
+      "units": "registry-declared normalized/natural lanes with SI mapping incomplete",
+      "derivation_class": "foundation registry and dependency integration",
+      "observable": "central equation-to-observable mapping and dependency gates",
+      "data_role": "metadata and artifact integration; no new external claim",
+      "verification_status": "BLOCKED_FOUNDATION_GATE",
+      "controlling_blocker": "foundation_coverage_units_observable_and_external_claim_gates_incomplete",
+      "claim_boundary": "candidate effective theory; no global closure",
+      "next_action": "close open-system/SK-KMS, dimensional observable, and curved 3+1 dependency artifacts",
+      "evidence": [
+        {
+          "path": "docs/core/UET_RESEARCH_ROOM_BRIEF.md",
+          "present": true,
+          "sha256": "dffb8044b560767f3a3417579b07f7cc248bfbd6d65269b383d24670e1970670",
+          "summary": {
+            "required_report_headings_present": true
+          }
+        },
+        {
+          "path": "docs/core/artifacts/uet_equation_correspondence_registry.json",
+          "present": true,
+          "sha256": "62c81ddf9ca1b42ab00c1b6d4e5f690bb746c79980001b06e804e2e2431d37c3",
+          "summary": {
+            "status": "CENTRAL_REGISTRY_WITH_CANDIDATE_ADDENDA_BLOCKED",
+            "generated_at": "2026-08-10",
+            "coverage": {
+              "scope": "docs/core equation families and their declared downstream lanes",
+              "coverage_status": "INITIAL_SEED_NOT_EXHAUSTIVE",
+              "missing_scope": [
+                "all equations in numbered topic research folders",
+                "legacy equations outside docs/core",
+                "complete observable mappings for physical SI lanes",
+                "complete impact/effect/carrier and cosmological lane correspondence"
+              ],
+              "rule": "merged candidate addenda do not promote downstream claims while foundation gates remain blocked",
+              "addenda_merged": [
+                "docs/core/artifacts/uet_equation_correspondence_registry_impact_effect_addendum.json",
+                "docs/core/artifacts/uet_equation_correspondence_registry_cosmology_addendum.json",
+                "docs/core/artifacts/uet_equation_correspondence_registry_persistence_addendum.json",
+                "docs/core/artifacts/uet_equation_correspondence_registry_wave_addendum.json",
+                "docs/core/artifacts/uet_equation_correspondence_registry_mass_density_addendum.json",
+                "docs/core/artifacts/uet_equation_correspondence_registry_main_theory_addendum.json",
+                "docs/core/artifacts/uet_equation_correspondence_registry_coarse_graining_addendum.json",
+                "docs/core/artifacts/uet_equation_correspondence_registry_open_system_addendum.json",
+                "docs/core/artifacts/uet_equation_correspondence_registry_theory_spine_addendum.json",
+                "docs/core/artifacts/uet_equation_correspondence_registry_quantum_measurement_addendum.json",
+                "docs/core/artifacts/uet_equation_correspondence_registry_quantum_interpretations_addendum.json",
+                "docs/core/artifacts/uet_equation_correspondence_registry_gr_controls_addendum.json",
+                "docs/core/artifacts/uet_equation_correspondence_registry_wave1_research_rooms_addendum.json"
+              ],
+              "extension_status": "CANDIDATE_ADDENDA_MERGED_NOT_EXHAUSTIVE"
+            }
+          }
+        },
+        {
+          "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
+          "present": true,
+          "summary": {
+            "status": "BLOCKED",
+            "controlling_blocker": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
+          },
+          "hash_policy": "LINKED_AFTER_GENERATION; excluded from fixed hash comparison because foundation embeds contract hash"
+        }
+      ]
+    },
+    "topic_0_13": {
+      "ontology": "Phi is a normalized effective response; Delta_Tq is a source-defined quasi-temperature difference",
+      "units": "normalized y_TTG; alpha_Phi_K in K per normalized Phi remains open",
+      "derivation_class": "standard observable definition plus candidate lane mapping; alpha not derived",
+      "observable": "y_TTG=Delta_Tq(t)/Delta_Tq(0); y_TTG^UET=Delta_Phi(t)/Delta_Phi(0)",
+      "data_role": "provisional Ding 2022 figure intake for shape/provenance only; Xie 2026 locked holdout",
+      "verification_status": "PASS_WITH_BLOCKED_DIMENSIONAL_AND_FULL_CANDIDATE_LANES",
+      "controlling_blocker": "full_candidate_prearrival_leakage_and_open_alpha_Phi_K_calibration",
+      "claim_boundary": "simulation/internal control and provisional source intake; no temperature prediction or external validation",
+      "next_action": "independently derive or calibrate alpha_Phi_K with uncertainty and rerun the preregistered source comparison without holdout access",
+      "evidence": [
+        {
+          "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_control.json",
+          "present": true,
+          "sha256": "d4b16385daef64299bea3f542700ec8a8ebb42d01019f865e74f2551152ed59e",
+          "summary": {
+            "status": "SIMULATION_ONLY",
+            "internal_gate_status": "FAIL",
+            "controlling_blocker": "core_prearrival_leakage",
+            "failed_gates": [
+              "prearrival_leakage",
+              "external_source_ready"
+            ],
+            "gates": {
+              "cattaneo_analytical_residual": true,
+              "cattaneo_phase": true,
+              "cattaneo_lag": true,
+              "cattaneo_hysteresis": true,
+              "cattaneo_convergence": true,
+              "homogeneous_core_crosscheck": true,
+              "ledger_closure_refined": true,
+              "source_sign": true,
+              "trace_source_sign": true,
+              "causal_arrival_speed": true,
+              "prearrival_leakage": false,
+              "external_source_ready": false
+            }
+          }
+        },
+        {
+          "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/thermal_wave1_branch_gate.json",
+          "present": true,
+          "sha256": "23492993237ba8e6cb1377461120b234663a59d6e10fdee646e9c3feb6e45a2e",
+          "summary": {
+            "status": "PASS_WITH_BLOCKED_DIMENSIONAL_AND_FULL_CANDIDATE_LANES",
+            "controlling_blocker": "full_candidate_prearrival_leakage_and_open_alpha_Phi_K_calibration"
+          }
+        },
+        {
+          "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_observable_map_readiness.json",
+          "present": true,
+          "sha256": "1e173cd4bb524ef856ac0199661ad3562a42a984a7bd3d0063206347b3003022",
+          "summary": {
+            "audit_status": "PASS_WITH_BLOCKED_DIMENSIONAL_AND_DATA_LANES",
+            "mapping_status": "NORMALIZED_TTG_OPERATOR_DEFINED_DIMENSIONAL_UET_MAPPING_BLOCKED",
+            "gates": {
+              "source_identity_and_unit_context_present": true,
+              "standard_normalized_ttg_operator_defined": true,
+              "standard_ttg_diagnostic_relations_defined": true,
+              "normalized_phi_operator_is_explicit": true,
+              "dimensional_phi_to_quasi_temperature_scale_defined": false,
+              "local_numeric_source_package_present": true,
+              "heat_flux_observable_map_closed": false,
+              "entropy_production_observable_map_closed": false,
+              "holdout_data_not_consumed": true,
+              "no_parameter_fitting": true,
+              "source_package_provenance_complete": true
+            }
+          }
+        },
+        {
+          "path": "docs/core/artifacts/thermal_dimensional_calibration_contract.json",
+          "present": true,
+          "sha256": "ee6304031384ead113e1592fd36c522b7bb0ad6bfe727124a3a1a1e9cb39ecbb",
+          "summary": {
+            "audit_status": "PASS_WITH_BLOCKED_INDEPENDENT_CALIBRATION",
+            "claim_status": "CONTRACT_DEFINED_CALIBRATION_OPEN",
+            "gates": {
+              "calibration_record_schema_defined": true,
+              "open_record_has_explicit_status_and_units": true,
+              "open_record_does_not_emit_kelvin": true,
+              "physical_mapping_requires_independent_record": true,
+              "fitted_calibration_is_rejected": true,
+              "normalized_observable_is_scale_invariant": true,
+              "absolute_scale_and_calibration_are_degenerate": true,
+              "identifiability_blocker_is_explicit": true,
+              "source_review_disallows_numeric_fitting": true,
+              "holdout_is_not_consumed": true,
+              "dimensional_map_remains_blocked": true
+            }
+          }
+        },
+        {
+          "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_second_sound_source_package.json",
+          "present": true,
+          "sha256": "278ba3dab99823f8a001f0adf0d5aefe71f1a3d67569ea62a4fb7070cca2f63a",
+          "summary": {
+            "status": "PROVISIONAL_NUMERIC_SOURCE_INTAKE",
+            "usage_policy": {
+              "numeric_fitting_allowed": false,
+              "metadata_review_allowed": true,
+              "observable_map_status": "NORMALIZED_DEFINED_DIMENSIONAL_BLOCKED",
+              "local_numeric_source_status": "PROVISIONAL_DIGITIZED_FIGURE_PACKAGE",
+              "blocker": "figure-derived normalized intake is not raw author data; alpha_Phi_K and independent dimensional mapping remain open"
+            },
+            "source_access_audit": {
+              "external_review_evidence": {
+                "reviewed_on": "2026-08-08",
+                "publisher_data_statement_reconfirmed": true,
+                "ttg_observable_interpretation": "TTG reports a quasi-temperature difference associated with collective phonon energy; it is not an automatic identity with equilibrium temperature or UET Phi.",
+                "standard_comparator_note": "The source reports comparison with full-scattering-matrix phonon Boltzmann transport without fitted parameters in the reported simulation comparison.",
+                "uet_mapping_consequence": "The admissible target is a source-specific Delta_Tq or normalized y_TTG measurement operator; alpha_Phi_K remains an independent calibration or derivation gate."
+              },
+              "reviewed_on": "2026-08-08",
+              "publisher_route": "https://www.nature.com/articles/s41467-026-70807-3",
+              "version_of_record_date": "2026-05-29",
+              "publisher_data_statement": "source data are provided with this study",
+              "direct_numeric_download_route_captured": "figure_asset_route_captured",
+              "local_numeric_archive": true,
+              "supplementary_description_review": {
+                "publisher_html_assets_reviewed": [
+                  "41467_2026_70807_MOESM1_ESM.pdf",
+                  "41467_2026_70807_MOESM2_ESM.pdf",
+                  "41467_2026_70807_MOESM3_ESM.mp4",
+                  "41467_2026_70807_MOESM4_ESM.pdf"
+                ],
+                "description_pdf_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-026-70807-3/MediaObjects/41467_2026_70807_MOESM2_ESM.pdf",
+                "description_pdf_sha256": "6aacdc6827aa7bbee24c0247626063f66fc808b61d3effc838a317145b01abb5",
+                "description_pdf_bytes": 4918,
+                "description_pdf_content": "Description of Additional Supplementary Files; lists Supplementary Movie 1",
+                "numeric_source_asset_link_in_captured_html": false,
+                "numeric_source_route_status": "NOT_CAPTURED",
+                "interpretation": "The publisher statement says source data are provided, but the captured article HTML and supplementary-description PDF do not expose a numeric source filename or direct data route. Keep the holdout metadata-only."
+              },
+              "holdout_policy": "metadata-only until normalized operator and parameter policy are frozen",
+              "numeric_source_route_status": "PROVISIONAL_FIGURE_DIGITIZATION",
+              "figure_digitization_manifest": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/ding_2022_fig1d_digitized_manifest.json"
+            }
+          }
+        },
+        {
+          "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_thermal_source_review.json",
+          "present": true,
+          "sha256": "3e7585d6a6b5eaace8ce8337d58711558bd7bcbe4486f148239be42d1d376d13",
+          "summary": {
+            "numeric_fitting_allowed": false,
+            "holdout_consumed": false
+          }
+        }
+      ],
+      "selected_causal_branch": {
+        "verification_status": "PASS_WITH_BLOCKED_DIMENSIONAL_AND_FULL_CANDIDATE_LANES",
+        "prearrival_leakage_fraction": 0.0,
+        "threshold": 1e-06,
+        "full_candidate_gate_preserved": true,
+        "full_candidate_prearrival_leakage_fraction": 0.017639381271029236,
+        "claim_boundary": "compact-support normalized control only; not a full coupled physical causal law",
+        "evidence": [
+          {
+            "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/thermal_wave1_branch_gate.json",
+            "present": true,
+            "sha256": "23492993237ba8e6cb1377461120b234663a59d6e10fdee646e9c3feb6e45a2e",
+            "summary": {
+              "status": "PASS_WITH_BLOCKED_DIMENSIONAL_AND_FULL_CANDIDATE_LANES",
+              "gates": {
+                "selected_causal_reference_prearrival_leakage": true,
+                "selected_causal_reference_compact_support": true,
+                "full_candidate_prearrival_leakage": false,
+                "locked_threshold_unchanged": true,
+                "holdout_not_consumed": true,
+                "numeric_fitting_disabled": true,
+                "provisional_source_provenance_present": true,
+                "alpha_Phi_K_independent_calibration": false
+              }
+            }
+          }
+        ]
+      }
+    },
+    "topic_0_11": {
+      "ontology": "conserved phase/order coordinate with source-declared structure-factor observable",
+      "units": "normalized finite-size diagnostic; source-specific estimator dimensions open",
+      "derivation_class": "source archive and estimator policy; no universality derivation",
+      "observable": "finite-k structure factor and correlation length only after source/estimator acceptance",
+      "data_role": "source archive/formula fragments and internal finite-size replication; no holdout claim",
+      "verification_status": "BLOCKED_SOURCE_AND_ESTIMATOR_POLICY",
+      "controlling_blocker": "source_formula_extraction_and_accepted_estimator_policy_remain_blocked",
+      "claim_boundary": "diagnostic/replication lane; no exponent or universality promotion",
+      "next_action": "finish source-backed formula extraction, estimator acceptance, and temporal/replicate acquisition before any exponent rerun",
+      "evidence": [
+        {
+          "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_source_archive_policy_gate.json",
+          "present": true,
+          "sha256": "86c884ffee93a22c120e29dc4ce5ccccd95e25b570b45485cae344e734546408",
+          "summary": {
+            "status": "WARN"
+          }
+        },
+        {
+          "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_full_text_formula_readiness_gate.json",
+          "present": true,
+          "sha256": "d4e0d056879533d11195ca0a06c64f83ecda751b8de224e1fa492d7ca01bc994",
+          "summary": {
+            "status": "WARN"
+          }
+        },
+        {
+          "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_ch_finite_k_next_path_decision_gate.json",
+          "present": true,
+          "sha256": "70d3210879e688605324e9b87f633dc826ad3e0bd39be42ee1f25f5284c55b8e",
+          "summary": {
+            "status": "WARN"
+          }
+        },
+        {
+          "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_finite_size_replication.json",
+          "present": true,
+          "sha256": "1f31ae14800700cc9c8bb71ea6b54d2a2a4a0510e6cf851a774f8f2da9ef062c",
+          "summary": {
+            "status": "WARN"
+          }
+        }
+      ],
+      "current_artifact_statuses": [
+        "WARN",
+        "WARN",
+        "WARN",
+        "WARN"
+      ],
+      "current_blocker_text": [
+        "Wave 44 records source-archive policy and keeps source availability plus estimator policy blocked.",
+        "Wave 37 narrows the full-text formula blocker to local math source localization. It accepts no estimator replacement and does not rerun scaling gates.",
+        "Wave 55 selects replicate/temporal acquisition as the narrower next controller because no replacement observable policy is accepted. It does not create evidence rows, accept an estimator, rerun exponent gates, or upgrade claims.",
+        "Do not promote conserved_order_spectral_v1 scaling claims until finite-size replication and separate exponent/universality gates pass."
+      ]
+    },
+    "core_o2": {
+      "ontology": "existing global O(2) matter doublet; C remains a normalized coarse coordinate and Phi remains response scalar",
+      "units": "tree-level natural-unit EOS; SI, finite-temperature, Kubo, and curved transport lanes open",
+      "derivation_class": "tree-level mean-field EOS derivation and formal transport contract",
+      "observable": "finite-density EOS and formal transport coefficients; no accepted SI observable map",
+      "data_role": "external source metadata/comparator roles only",
+      "verification_status": "PASS",
+      "controlling_blocker": "finite_temperature_Kubo_SI_and_curved_transport_completion_open",
+      "claim_boundary": "formal natural-unit O(2) lane; no signed-O(2)-charge identity for C",
+      "next_action": "retain current lane and complete coefficient/transport mapping only after Core dependencies permit",
+      "evidence": [
+        {
+          "path": "docs/core/artifacts/o2_finite_density_eos_verification.json",
+          "present": true,
+          "sha256": "8ab261c44f6f4f5840b52c681a0c7df5a181a33ea6ea8600c91228f393b2b239",
+          "summary": {
+            "audit_status": "PASS",
+            "evidence_status": "TREE_LEVEL_MEAN_FIELD_DERIVATION",
+            "claim_boundary": {
+              "allowed": "tree-level finite-density O2 mean-field derivation",
+              "blocked": [
+                "finite-temperature equation of state",
+                "microscopic transport coefficient derivation",
+                "symmetric double well derived from the O2 action",
+                "physical validation"
+              ]
+            }
+          }
+        },
+        {
+          "path": "docs/core/artifacts/o2_eos_formula_audit.json",
+          "present": true,
+          "sha256": "e1437f821e9b7afdeb36dbf0df7154da05cfda1eedbd4b763e0d44519d96d1e3",
+          "summary": {
+            "status": "WARN"
+          }
+        }
+      ]
+    },
+    "topic_0_10_comparator": {
+      "ontology": "standard-fluid comparator variables are benchmark variables, not UET universal fields",
+      "units": "dimensionless benchmark units under the declared grid/timing contract",
+      "derivation_class": "formula audit and internal simplified comparator",
+      "observable": "runtime, stability, and declared comparator metrics",
+      "data_role": "internal benchmark only",
+      "verification_status": "FAIL_INTERNAL_SIMPLIFIED_BENCHMARK",
+      "controlling_blocker": "current simplified comparator result is below its internal speed threshold",
+      "claim_boundary": "internal simplified benchmark only; no external CFD validation",
+      "next_action": "keep comparator separate and defer full constitutive transport",
+      "evidence": [
+        {
+          "path": "docs/topics/0.10_Fluid_Dynamics_Chaos/Result/artifacts/fluid_benchmark_validation.json",
+          "present": true,
+          "sha256": "5fc17bd8cf5af89dd62e89b3ead67d4265a6213425773f71c3a826809b5ffa8e",
+          "summary": {
+            "status": "FAIL",
+            "speedup": 1.914085118079934,
+            "thresholds": {
+              "min_speedup": 2.0,
+              "requires_stability": true
+            }
+          }
+        },
+        {
+          "path": "docs/core/artifacts/topic_0_10_standard_comparator_formula_audit.json",
+          "present": true,
+          "sha256": "f2e8aa807601805ff2b0547326f0f8dc471c0cf7caee70c41d21d9b17a092fe5",
+          "summary": {
+            "status": "PASS_WITH_INTERNAL_BENCHMARK_BOUNDARY",
+            "benchmark_status": "FAIL"
+          }
+        }
+      ]
+    }
+  },
+  "phase_gates": {
+    "wave1_exit": "all room artifacts parse, blockers and next actions are explicit, and Topic 0.13/0.11 hashes are recorded",
+    "gravity_start": "BLOCKED until Wave 1 integration gate and Core observable/causal dependencies permit",
+    "galaxy_start": "BLOCKED until curved 3+1 parent and observable mapping permit",
+    "full_constitutive_transport": "BLOCKED until post-Gravity dependency gate"
+  },
+  "integration_blockers": [
+    "Core O(2) finite-temperature/Kubo/SI/curved lanes remain open",
+    "TTG source rows are provisional digitized intake, not raw author data",
+    "Topic 0.10 latest simplified comparator run is below its internal speed threshold",
+    "Topic 0.11 source/formula/estimator policy remains blocked",
+    "Xie 2026 remains locked holdout and was not consumed",
+    "alpha_Phi_K has no independent derivation or calibration with uncertainty",
+    "core full coupled pre-arrival leakage remains above the locked 1e-6 threshold",
+    "current simplified comparator result is below its internal speed threshold",
+    "full_candidate_prearrival_leakage_and_open_alpha_Phi_K_calibration"
+  ],
+  "claim_boundary": "Wave 1 closes coordination ambiguity only; UET remains a candidate effective theory with blocked foundation dependencies.",
+  "thermal_branch_gate": {
+    "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/thermal_wave1_branch_gate.json",
+    "sha256": "23492993237ba8e6cb1377461120b234663a59d6e10fdee646e9c3feb6e45a2e",
+    "status": "PASS_WITH_BLOCKED_DIMENSIONAL_AND_FULL_CANDIDATE_LANES"
+  },
+  "hash_cycle_policy": {
+    "status": "EXPLICIT_LINKED_GENERATION_CYCLE",
+    "foundation_gate_embeds_contract_hash": true,
+    "contract_embeds_foundation_path_without_hash": true,
+    "verification": "foundation.research_room_wave1.contract.sha256 is the controlling linkage; both JSON files are parsed and cross-linked"
+  }
+}
