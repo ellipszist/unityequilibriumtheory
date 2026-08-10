@@ -1,0 +1,189 @@
+{
+  "schema_version": "topic13-full-thermodynamic-bridge-core-ready-v1",
+  "artifact": "topic13_full_thermodynamic_bridge_core_ready_gate",
+  "generated_at": "2026-08-10",
+  "status": "BLOCKED_OPEN_T13_FULL_BRIDGE",
+  "claim_promotion": false,
+  "major_result": {
+    "major_result_id": "T13_FULL_THERMODYNAMIC_BRIDGE",
+    "closure_level": "PARTIAL",
+    "what_is_closed": [
+      "standard TTG normalized measurement operator",
+      "normalized Phi response operator",
+      "frozen-C compact-support control branch",
+      "constraint-only Landauer and standard thermodynamic identities",
+      "scoped structural no-go assessment for the declared conserved-C local-gradient class"
+    ],
+    "what_remains_open": [
+      "named finite-cone branch or explicit conserved-C regularization",
+      "ttg_numeric_source_package_is_provisional",
+      "alpha_Phi_K_independent_calibration_missing",
+      "non_circular_uet_bridge_and_beta_derivation_missing",
+      "eos_transport_kms_entropy_completion_missing",
+      "dimensional_phi_to_thermal_observable_map_missing"
+    ],
+    "dependency_unlocked": "Gravity/GR remains blocked until this full bridge and Core curved 3+1 gates pass"
+  },
+  "equation_or_mapping": {
+    "standard": "y_TTG = Delta_Tq(t) / Delta_Tq(0)",
+    "uet_normalized": "y_TTG^UET = Delta_Phi(t) / Delta_Phi(0)",
+    "dimensional": "Delta_Tq = alpha_Phi_K * Delta_Phi"
+  },
+  "units": {
+    "y_TTG": "dimensionless",
+    "y_TTG_UET": "dimensionless",
+    "alpha_Phi_K": "K per normalized Phi; open until independent record exists"
+  },
+  "derivation_class": "standard observable definition plus blocked UET bridge derivation",
+  "observable": "source-defined quasi-temperature difference and normalized UET response",
+  "data_role": {
+    "source_package": "PROVISIONAL_NUMERIC_SOURCE_INTAKE",
+    "calibration": "OPEN",
+    "holdout": "Xie 2026 metadata-only locked holdout"
+  },
+  "verification_status": {
+    "causal_full_candidate_or_formal_no_go_branch": {
+      "status": "BLOCKED",
+      "full_candidate_pass": false,
+      "selected_reference_pass": true,
+      "formal_no_go_recorded": true,
+      "structural_no_go_evidence_present": true,
+      "threshold": 1e-06,
+      "no_clipping_or_padding": true,
+      "controlling_blocker": "named_finite_cone_branch_or_explicit_regularization_missing",
+      "no_go_scope": "declared local conserved-C Cattaneo equation with mu_C=a_C*C-kappa_C*Laplacian(C)",
+      "no_go_artifact": {
+        "path": "docs/core/artifacts/conserved_c_finite_cone_no_go_assessment.json",
+        "sha256": "abbcd175f2d53bd80abc2a72ade733d730ef0167cb51f7cac54351a1c80bf2eb"
+      },
+      "named_finite_cone_branch_pass": false
+    },
+    "source_package": {
+      "status": "BLOCKED",
+      "source_status": "PROVISIONAL_NUMERIC_SOURCE_INTAKE",
+      "source_ready_for_full_closure": false,
+      "provisional_source_present": true,
+      "numeric_fitting_allowed": false,
+      "controlling_blocker": "ttg_numeric_source_package_is_provisional"
+    },
+    "alpha_Phi_K": {
+      "status": "BLOCKED",
+      "status_recorded": "OPEN_CALIBRATION_DEPENDENT",
+      "independent_calibration_or_derivation": false,
+      "uncertainty_status": "source digitization uncertainty is recorded; experimental uncertainty and alpha uncertainty remain open",
+      "controlling_blocker": "alpha_Phi_K_independent_calibration_missing"
+    },
+    "non_circular_bridge": {
+      "status": "BLOCKED",
+      "constraint_gate_status": "BLOCKED",
+      "landauer_non_derivation_gate": "PASS",
+      "controlling_blocker": "non_circular_uet_bridge_and_beta_derivation_missing"
+    },
+    "eos_transport_kms_entropy": {
+      "status": "BLOCKED",
+      "constraint_gate_status": "BLOCKED",
+      "transport_contract_status": "BLOCKED",
+      "physical_coefficient_evidence": "BLOCKED_NOT_PROVIDED",
+      "finite_temperature_completion": "BLOCKED",
+      "full_SK_KMS_completion": "BLOCKED",
+      "controlling_blocker": "eos_transport_kms_entropy_completion_missing"
+    },
+    "dimensional_observable_map": {
+      "status": "BLOCKED",
+      "relation": "Delta_Tq = alpha_Phi_K * Delta_Phi",
+      "physical_mapping_ready": false,
+      "calibration_status": "CONTRACT_DEFINED_CALIBRATION_OPEN",
+      "controlling_blocker": "dimensional_phi_to_thermal_observable_map_missing"
+    },
+    "holdout_integrity": {
+      "status": "PASS",
+      "holdout_consumed": false,
+      "numeric_fitting_disabled": true,
+      "xie_2026_policy": "locked_holdout_metadata_only"
+    }
+  },
+  "controlling_blocker": "named_finite_cone_branch_or_explicit_regularization_missing",
+  "next_action": "Close the causal branch/no-go record, independent alpha_Phi_K, source rows, non-circular bridge, and EOS/transport/KMS/entropy gates in order.",
+  "claim_boundary": "Full Topic 13 is not Core-ready; current evidence supports normalized/internal controls and constraint exports only. No temperature prediction, external validation, or global UET closure is claimed.",
+  "evidence_artifacts": [
+    {
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/thermal_wave1_branch_gate.json",
+      "sha256": "23492993237ba8e6cb1377461120b234663a59d6e10fdee646e9c3feb6e45a2e",
+      "summary": {
+        "status": "PASS_WITH_BLOCKED_DIMENSIONAL_AND_FULL_CANDIDATE_LANES",
+        "controlling_blocker": "full_candidate_prearrival_leakage_and_open_alpha_Phi_K_calibration"
+      }
+    },
+    {
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/thermal_parameter_provenance_gate.json",
+      "sha256": "d4bb3491d6e4285c3b136d61b5be6c30fe534782bfbeedf4056a95d1b5aedf93",
+      "summary": {
+        "alpha_Phi_K_status": "OPEN",
+        "holdout_consumed": false
+      }
+    },
+    {
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/0_13_core_thermodynamic_constraint_gate.json",
+      "sha256": "185876efa2374435c5f0f472e4e8f347202dff87938af3651e5fb6117e69a9cf",
+      "summary": {
+        "status": "BLOCKED",
+        "controlling_blocker": "topic_0_13_constraint_only_eos_transport_entropy_bridge_missing"
+      }
+    },
+    {
+      "path": "docs/core/artifacts/thermal_dimensional_calibration_contract.json",
+      "sha256": "ee6304031384ead113e1592fd36c522b7bb0ad6bfe727124a3a1a1e9cb39ecbb",
+      "summary": {
+        "audit_status": "PASS_WITH_BLOCKED_INDEPENDENT_CALIBRATION",
+        "claim_status": "CONTRACT_DEFINED_CALIBRATION_OPEN"
+      }
+    },
+    {
+      "path": "docs/core/artifacts/covariant_superfluid_transport_contract.json",
+      "sha256": "a24d96ce15bbda1bdc8b473b7dc2c9690a9482af29b98310bc20566506ef748c",
+      "summary": {
+        "status": "BLOCKED",
+        "next_controller": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing"
+      }
+    },
+    {
+      "path": "docs/core/artifacts/covariant_superfluid_transport_verification.json",
+      "sha256": "49fc1a047cfa84e8155940a491eb9c3fb3c3536ac707b010ba15b32298632ad1",
+      "summary": {
+        "physical_coefficient_evidence": "BLOCKED_NOT_PROVIDED",
+        "full_SK_KMS_completion": "BLOCKED"
+      }
+    },
+    {
+      "path": "docs/core/artifacts/o2_finite_density_eos_verification.json",
+      "sha256": "8ab261c44f6f4f5840b52c681a0c7df5a181a33ea6ea8600c91228f393b2b239",
+      "summary": {
+        "audit_status": "PASS",
+        "evidence_status": "TREE_LEVEL_MEAN_FIELD_DERIVATION"
+      }
+    },
+    {
+      "path": "docs/core/artifacts/matter_space_causal_cone_compatibility.json",
+      "sha256": "29c731e945a635eb5e2b0bbb3ab8d60aa0f65572af4a5433fcd314f402ad4d15",
+      "summary": {
+        "audit_status": "BLOCKED",
+        "structural_blocker": "conserved_C_gradient_term_has_unbounded_k4_characteristic_speed"
+      }
+    },
+    {
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_second_sound_source_package.json",
+      "sha256": "278ba3dab99823f8a001f0adf0d5aefe71f1a3d67569ea62a4fb7070cca2f63a",
+      "summary": {
+        "status": "PROVISIONAL_NUMERIC_SOURCE_INTAKE"
+      }
+    },
+    {
+      "path": "docs/core/artifacts/conserved_c_finite_cone_no_go_assessment.json",
+      "sha256": "abbcd175f2d53bd80abc2a72ade733d730ef0167cb51f7cac54351a1c80bf2eb",
+      "summary": {
+        "status": "NO_GO_FOR_DECLARED_CONSERVED_CATTANEO_LOCAL_GRADIENT_CLASS",
+        "proof_scope": "declared local conserved-C Cattaneo equation with mu_C=a_C*C-kappa_C*Laplacian(C)"
+      }
+    }
+  ]
+}
