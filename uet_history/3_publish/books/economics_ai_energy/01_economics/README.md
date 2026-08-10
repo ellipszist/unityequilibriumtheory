@@ -1,77 +1,31 @@
-# 📘 โครงสร้างแฟ้มเอกสาร (Blueprint): The Origin of Wealth
+# The Origin of Wealth — Book 1 Research Workspace
 
-เอกสารฉบับนี้คือแผนผังโครงสร้างของหนังสือ **The Origin of Wealth (ต้นกำเนิดความมั่งคั่งแห่งประชาชาติ)** ซึ่งอยู่ภายใต้จักรวาล UET (Unity Equilibrium Theory)
+Status: `IN_PROGRESS`
+Current gate: `W03_LITERATURE_REVIEW`
+Evidence boundary: research architecture and Claim Class C diagnostics only
 
----
+## Canonical purpose
 
-## 🏛️ กฎมาตรฐานโครงสร้างการเขียน (Hierarchy & Standard)
+Book 1 now develops a source-locked and testable account of production, wealth, money, credit, welfare, distribution, market power, energy, and bounded economic history. It does not present the original UET heuristics as established economic laws.
 
-หนังสือเล่มนี้ยึดตามมาตรฐานโครงสร้างแฟ้มเอกสารทฤษฎีศูนย์สมดุล ดังนี้:
-**หมวด (Category) $\rightarrow$ หน่วย (Unit) $\rightarrow$ บท (Chapter) $\rightarrow$ ตอน (Topic) $\rightarrow$ หน้า (Page) $\rightarrow$ หัวข้อ (Subtopic)**
+The canonical eight-part structure is in [book_1_blueprint.md](book_1_blueprint.md). The former `R=N+K+I` relation is retained only as `BOOK-HEURISTIC-001` with status `RETIRED_AS_IDENTITY`. Dynamic Energy Money and any monetary-system design proposal belong to Book 3.
 
-*   **กฎเหล็ก (The Golden Rule):** `1 ไฟล์เนื้อหา (ตอน/Topic) = 3 หน้า (Pages) = 7 หัวข้อย่อย (Subtopics)`
+## Research controls
 
----
+- [RESEARCH_SPECIFICATION.md](RESEARCH_SPECIFICATION.md) — ontology, benchmark equations, evidence levels, and analysis contract
+- [REFERENCE_REGISTER.md](REFERENCE_REGISTER.md) — source identity and review status
+- [SOURCE_DIGEST.md](SOURCE_DIGEST.md) — bounded summaries and contrary evidence
+- [CLAIM_MAP.md](CLAIM_MAP.md) — claim ownership, allowed wording, and blocked wording
+- [VERIFICATION_SPEC.md](VERIFICATION_SPEC.md) — gates, artifacts, and acceptance rules
+- [UPDATE_LOG.md](UPDATE_LOG.md) — completed research-hardening waves
+- [BOOK_MANIFEST.json](BOOK_MANIFEST.json) — machine-readable state
 
-## 📊 โครงสร้างโดยรวมของหนังสือเล่มนี้ (Book Structure)
+## Current blocker
 
-เมื่อนำโครงร่างปัจจุบันมาทาบกับกฎมาตรฐาน หนังสือเล่มนี้จะมีสเกลเนื้อหาดังนี้:
-*   **จำนวนบท (Chapter):** 7 บท (รวมบทนำ)
-*   **จำนวนตอน (Topic / ไฟล์):** รวมทั้งหมด **29 ตอน**
-*   **จำนวนหน้า (Page):** ความยาวเป้าหมายประมาณ **87 หน้า**
-*   **จำนวนหัวข้อ (Subtopic):** มีประเด็นย่อยทั้งหมด **203 หัวข้อ**
+The architecture and ontology are aligned, but the systematic literature review, exact source locators, study-quality appraisal, and specialist historical review remain incomplete. Drafting cannot outrun those gates.
 
----
+## Publication boundary
 
-## 🗂️ ลำดับบทและตอน (Chapter & Topic Breakdown)
+Allowed: describe the research questions, operational definitions, methods, negative findings, and source-locked diagnostics.
 
-*หมายเหตุ: โครงสร้างนี้อ้างอิงจาก `the_origin_of_wealth_book_blueprint.md` และเตรียมพร้อมสำหรับการแตกเป็นไฟล์ย่อย (Topic Files)*
-
-### 📌 บทนำ: ความย้อนแย้งเชิงระบบและความมั่งคั่งที่แท้จริง
-*   `0.0.1_ความย้อนแย้งของการประเมินคุณค่า`
-*   `0.0.2_การขโมยแรงงานและอนาคตผ่านระบบหนี้`
-
-### 📌 บทที่ 1: รากฐานอุณหเศรษฐศาสตร์ (The Root of Value)
-*   `1.1_สมการมูลค่าของเงิน`
-*   `1.2_สมการกำเนิดทรัพยากร_Knowledge_Resource_Engine`
-*   `1.3_การพิมพ์เงิน_เงินเฟียต_และทองคำ`
-*   `1.4_การประมวลผลและภาคบริการในฐานะผลผลิตจริง`
-*   `1.5_เอนโทรปีและระบบปิดซ้อนย่อย`
-
-### 📌 บทที่ 2: อุตสาหกรรมแรกและตรรกะแรกของมนุษยชาติ (The Firewood Economy)
-*   `2.1_วิกฤตภูมิอากาศในแอฟริกาและการควบคุมไฟ`
-*   `2.2_อุตสาหกรรมฟืน_ลอจิสติกส์แรก`
-*   `2.3_สมการพลังงานและความร้อน`
-*   `2.4_รัฐชาติแรกจากการจัดสรรไม้บรรทัด`
-
-### 📌 บทที่ 3: กำเนิดไม้บรรทัด - จากเรขาคณิตอียิปต์ถึงเลขศูนย์
-*   `3.1_เรขาคณิตและไม้บรรทัดกายภาพหลังน้ำท่วมไนล์`
-*   `3.2_สงครามครูเสดและการนำเข้าตัวเลขอารบิก`
-*   `3.3_กำเนิดเลขศูนย์และปรัชญาสุญญตาจากอินเดีย`
-
-### 📌 บทที่ 4: แคลคูลัส - ไม้บรรทัดโลกนามธรรม
-*   `4.1_แคลคูลัสและการวัดความสัมพันธ์เชิงระบบ`
-*   `4.2_ไม้บรรทัดนิวตันและฟิสิกส์คลาสสิก`
-
-### 📌 บทที่ 5: วิพากษ์ทฤษฎีกระแสหลัก - วิกฤตและการลัดวงจร
-*   `5.1_วิกฤตมาตรฐานทองคำและเงินฝืด`
-*   `5.2_Nixon_Shock_และกำเนิดเงินเฟียต`
-*   `5.3_กติการะบบกึ่งปิดและมายาของประชานิยม`
-*   `5.4_วงจรอุบาทว์ของการชำระหนี้`
-*   `5.5_การดึงพลังงานจากอนาคตและเอนโทรปีเชิงระบบ`
-*   `5.6_การฆ่าล้างเผ่าพันธุ์ทางอ้อม_Indirect_Genocide`
-
-### 📌 บทที่ 6: Dynamic Energy Money - ระบบสมดุลทางฟิสิกส์
-*   `6.1_ปฏิรูประบบเงินด้วยพลังงานและเทอร์โมไดนามิกส์`
-*   `6.2_การค้ำประกันสกุลเงินด้วยทรัพย์สินจริง`
-*   `6.3_การเปลี่ยนกรรมสิทธิ์ผูกขาดเป็นหุ้นโลก`
-*   `6.4_กติกาคานอำนาจแบบ_Polycentric_Governance`
-*   `6.5_เครื่องยนต์ขุดเหรียญด้วยฟิสิกส์_Computational_Mining`
-*   `6.6_สัจนิยมแห่งรัฐและดุลอำนาจ_4_มิติ`
-*   `6.7_ปฏิรูปโครงสร้างภาษีและค่าแรงแบบ_Win_Win`
-
----
-
-## 🔬 สถานะปัจจุบัน (Current Status)
-**Phase: Research & Validation (ช่วงค้นคว้าและตรวจสอบข้อมูล)**
-*   อยู่ระหว่างการระงับการเขียนเนื้อหาจริงชั่วคราว เพื่อทำการศึกษางานวิจัย (Research) และตรวจสอบความเป็นไปได้เชิงสถิติ/โครงสร้าง โดยเฉพาะในประเด็นเรื่อง **"นโยบายภาษี การเพิ่มค่าแรง และการจัดการทางเศรษฐศาสตร์"** ว่าสามารถทำงานได้จริงตามทฤษฎีในสเกลมหภาคหรือไม่ เพื่อให้เนื้อหาที่จะเขียนมีความแน่นหนาและมีหลักฐานอ้างอิงที่ครอบคลุมมากที่สุด
+Blocked: claim that UET has proved an economic law, that fiat money causes an outcome from correlation alone, that an asset is a validated peg, or that a historical motive is established without specialist evidence.
