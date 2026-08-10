@@ -16,7 +16,7 @@ physical framing, and public claim discipline.
 - Tier `C`: `1` topic
 - Tier `D`: `13` topics
 - Current `Structured` topics in metadata: `0.1`, `0.3`, `0.10`, `0.21`, `0.25`
-- Current run-contract pass count: 26/27 core topics; 0.3 currently fails its stated verification threshold
+- Current run-contract pass count: 26/27 core topics; the latest scalar Hubble artifact for 0.3 passes its stated benchmark threshold; full cosmology remains blocked
 - Topic 0.25 note: Tier A is Package Tier A readiness only; its Evidence Grade A target is governed by 10 waves and 12 WARN gates and is not yet reached.
 - `0.10` passed the latest run but showed threshold instability in the previous run, so it remains below Tier `A` until repeated-run stability is demonstrated
 
@@ -54,7 +54,7 @@ These topics determine the current scientific credibility of the repo.
 | [0.0](./0.0_Grand_Unification/) | `Draft` | `C` | broad synthesis topic with code and references, but no standards package or manifested data path |
 | [0.1](./0.1_Galaxy_Rotation_Problem/) | `Structured` | `A` | current normalization template with standards root docs and manifested dataset framing |
 | [0.2](./0.2_Black_Hole_Physics/) | `Draft` | `B` | has research scaffolding, but still needs verification and method boundary docs |
-| [0.3](./0.3_Cosmology_Hubble_Tension/) | `Structured` | `B` | structured package exists, but the current Hubble artifact fails its stated threshold |
+| [0.3](./0.3_Cosmology_Hubble_Tension/) | `Structured` | `B` | structured package exists, the latest scalar Hubble artifact passes its stated threshold; full cosmology remains blocked |
 | [0.4](./0.4_Superconductivity_Superfluids/) | `Draft` | `B` | evidence exists, yet the topic lacks a standards root package |
 | [0.5](./0.5_Nuclear_Binding_Hadrons/) | `Draft` | `B` | active topic with claim-risk and data-provenance cleanup still required |
 | [0.6](./0.6_Electroweak_Physics/) | `Draft` | `B` | references and code exist, but benchmark packaging is incomplete |

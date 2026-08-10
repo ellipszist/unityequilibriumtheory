@@ -26,29 +26,29 @@
     "uet_master_equation": "dc06b67609725cfbec432a65c811e3da51f9cbbe2b91ea34f98d0a3a58486e8c"
   },
   "metrics": {
-    "speedup": 2.364450563670453,
+    "speedup": 1.914085118079934,
     "stable": true
   },
   "notes": "Internal implementation benchmark artifact using the repository comparator script; not an external CFD validation result.",
   "results": {
-    "navier_stokes_runtime_seconds": 0.15784669993445277,
+    "navier_stokes_runtime_seconds": 0.12878959998488426,
     "navier_stokes_runtime_trials_seconds": [
-      0.15784669993445277,
-      0.18145060003735125,
-      0.1650971999624744,
-      0.13683529989793897,
-      0.13369240006431937
+      0.12070390000008047,
+      0.12317390006501228,
+      0.13399950007442385,
+      0.12878959998488426,
+      0.1370022000046447
     ],
-    "speedup": 2.364450563670453,
+    "speedup": 1.914085118079934,
     "stable": true,
-    "status": "PASS",
-    "uet_runtime_seconds": 0.06675829994492233,
+    "status": "FAIL",
+    "uet_runtime_seconds": 0.06728519999887794,
     "uet_runtime_trials_seconds": [
-      0.06245820003096014,
-      0.06919519999064505,
-      0.06975420005619526,
-      0.06675829994492233,
-      0.06386350002139807
+      0.06105280003976077,
+      0.06651189993135631,
+      0.06728519999887794,
+      0.09089960006531328,
+      0.1260541999945417
     ]
   },
   "seed": 42,
@@ -56,7 +56,7 @@
     "min_speedup": 2.0,
     "requires_stability": true
   },
-  "timestamp_utc": "2026-08-08T09:11:46.516830+00:00",
+  "timestamp_utc": "2026-08-10T06:32:27.393132+00:00",
   "topic": "0.10_Fluid_Dynamics_Chaos",
   "uet_version": "0.9.0"
 }
