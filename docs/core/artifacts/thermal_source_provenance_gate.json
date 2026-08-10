@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "artifact": "thermal_source_provenance_gate",
+  "generated_at": "2026-08-10",
+  "status": "PASS_WITH_PROVISIONAL_DIGITIZATION",
+  "source_package": {
+    "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_second_sound_source_package.json",
+    "sha256": "278ba3dab99823f8a001f0adf0d5aefe71f1a3d67569ea62a4fb7070cca2f63a"
+  },
+  "source_review": {
+    "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_thermal_source_review.json",
+    "sha256": "3e7585d6a6b5eaace8ce8337d58711558bd7bcbe4486f148239be42d1d376d13"
+  },
+  "rows": [
+    {
+      "source_id": "ding_2022_graphite_over_200K",
+      "local_numeric_path": null,
+      "local_numeric_present": false,
+      "local_numeric_sha256": null,
+      "declared_sha256": null,
+      "hash_matches": null,
+      "source_locator_present": false,
+      "preprocessing_present": true,
+      "uncertainty_present": false,
+      "row_identity_present": false,
+      "holdout": false,
+      "status": "BLOCKED_NO_LOCAL_NUMERIC_SOURCE"
+    },
+    {
+      "source_id": "ding_2022_fig1d_digitized",
+      "local_numeric_path": "Data/03_Research/ding_2022_fig1d_digitized.csv",
+      "local_numeric_present": true,
+      "local_numeric_sha256": "c4117bb4368f9085614fd24f994c7dc61fddf9c2eed00d151d350a6a5f90f19d",
+      "declared_sha256": "c4117bb4368f9085614fd24f994c7dc61fddf9c2eed00d151d350a6a5f90f19d",
+      "hash_matches": true,
+      "source_locator_present": true,
+      "preprocessing_present": true,
+      "uncertainty_present": true,
+      "row_identity_present": true,
+      "holdout": false,
+      "status": "PROVISIONAL_DIGITIZED_NUMERIC_PACKAGE"
+    },
+    {
+      "source_id": "huberman_2019_graphite_above_100K",
+      "local_numeric_path": null,
+      "local_numeric_present": false,
+      "local_numeric_sha256": null,
+      "declared_sha256": null,
+      "hash_matches": null,
+      "source_locator_present": false,
+      "preprocessing_present": true,
+      "uncertainty_present": false,
+      "row_identity_present": false,
+      "holdout": false,
+      "status": "METADATA_ONLY"
+    },
+    {
+      "source_id": "mcnelly_1970_NaF_heat_pulse",
+      "local_numeric_path": null,
+      "local_numeric_present": false,
+      "local_numeric_sha256": null,
+      "declared_sha256": null,
+      "hash_matches": null,
+      "source_locator_present": false,
+      "preprocessing_present": true,
+      "uncertainty_present": false,
+      "row_identity_present": false,
+      "holdout": false,
+      "status": "SEPARATE_FAMILY_METADATA_ONLY"
+    },
+    {
+      "source_id": "xie_2026_isotopically_pure_graphite_holdout",
+      "local_numeric_path": null,
+      "local_numeric_present": false,
+      "local_numeric_sha256": null,
+      "declared_sha256": null,
+      "hash_matches": null,
+      "source_locator_present": false,
+      "preprocessing_present": true,
+      "uncertainty_present": false,
+      "row_identity_present": false,
+      "holdout": true,
+      "status": "HOLDOUT_LOCKED_METADATA_ONLY"
+    }
+  ],
+  "metrics": {
+    "source_count": 5,
+    "local_numeric_count": 1,
+    "holdout_count": 1,
+    "holdout_consumed": false,
+    "provenance_complete": true
+  },
+  "gates": {
+    "source_locator": true,
+    "unit_context": true,
+    "preprocessing": true,
+    "uncertainty": true,
+    "row_identity": true,
+    "hash_match": true,
+    "holdout_locked": true,
+    "numeric_fitting_disabled": true
+  },
+  "controlling_blocker": "provisional figure intake is not raw author data and independent alpha_Phi_K remains open",
+  "next_action": "replace or supplement the provisional figure intake with an authorized numeric source or keep the dimensional/external gate blocked; do not digitize Xie 2026",
+  "claim_boundary": "provenance readiness for a provisional normalized source row only; no external validation or temperature prediction"
+}

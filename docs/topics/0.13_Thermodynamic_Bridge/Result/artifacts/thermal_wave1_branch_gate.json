@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "artifact": "thermal_wave1_branch_gate",
+  "generated_at": "2026-08-10",
+  "status": "PASS_WITH_BLOCKED_DIMENSIONAL_AND_FULL_CANDIDATE_LANES",
+  "claim_promotion": false,
+  "selected_causal_branch": {
+    "operator_mode": "causal_linear_space_reference_v1",
+    "scope": "frozen_C_linearized_Phi_Pi_normalized_control",
+    "prearrival_leakage_fraction": 0.0,
+    "arrival_target_abs": 0.9488839472937474,
+    "threshold": 1e-06,
+    "artifact": {
+      "path": "docs/core/artifacts/matter_space_causal_reference_verification.json",
+      "sha256": "e3cf52691e04b8adb9758d5bcb49d7a786bb92214935e33912aab5c1f5d7dc55"
+    },
+    "claim_boundary": "compact-support normalized control only; not a full coupled physical causal law"
+  },
+  "full_candidate_branch": {
+    "prearrival_leakage_fraction": 0.017639381271029236,
+    "threshold": 1e-06,
+    "gate": "FAIL",
+    "artifact": {
+      "path": "docs/core/artifacts/matter_space_variational_verification.json",
+      "sha256": "e5ae26fb40ff6cd4a0d1d0c86576e91218294e683902bb60b6afb0b2596cc62c"
+    },
+    "controlling_blocker": "conserved_C_gradient_term_has_unbounded_k4_characteristic_speed",
+    "claim_boundary": "full coupled candidate remains blocked; selected reference does not replace this gate"
+  },
+  "measurement_contract": {
+    "standard": "y_TTG = Delta_Tq(t) / Delta_Tq(0)",
+    "uet_normalized": "y_TTG^UET = Delta_Phi(t) / Delta_Phi(0)",
+    "dimensional": "Delta_Tq = alpha_Phi_K * Delta_Phi",
+    "alpha_Phi_K_status": "OPEN_CALIBRATION_DEPENDENT",
+    "uncertainty_status": "source digitization uncertainty is recorded; experimental uncertainty and alpha uncertainty remain open"
+  },
+  "source_contract": {
+    "package": {
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_second_sound_source_package.json",
+      "sha256": "278ba3dab99823f8a001f0adf0d5aefe71f1a3d67569ea62a4fb7070cca2f63a",
+      "status": "PROVISIONAL_NUMERIC_SOURCE_INTAKE"
+    },
+    "numeric_fitting_allowed": false,
+    "holdout_consumed": false,
+    "provisional_source_present": true,
+    "xie_2026_policy": "locked_holdout_metadata_only"
+  },
+  "gates": {
+    "selected_causal_reference_prearrival_leakage": true,
+    "selected_causal_reference_compact_support": true,
+    "full_candidate_prearrival_leakage": false,
+    "locked_threshold_unchanged": true,
+    "holdout_not_consumed": true,
+    "numeric_fitting_disabled": true,
+    "provisional_source_provenance_present": true,
+    "alpha_Phi_K_independent_calibration": false
+  },
+  "controlling_blocker": "full_candidate_prearrival_leakage_and_open_alpha_Phi_K_calibration",
+  "next_action": "derive or independently calibrate alpha_Phi_K with uncertainty, then run a preregistered normalized comparison using only non-holdout source rows",
+  "claim_boundary": "Wave 1 evidence-producing branch gate; no temperature prediction, external validation, fit-as-prediction, or UET closure"
+}

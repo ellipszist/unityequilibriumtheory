@@ -49,7 +49,7 @@ def test_source_readiness_artifact_exposes_blocked_lanes() -> None:
     assert artifact["gates"]["standard_normalized_ttg_operator_defined"]
     assert artifact["gates"]["standard_ttg_diagnostic_relations_defined"]
     assert not artifact["gates"]["dimensional_phi_to_quasi_temperature_scale_defined"]
-    assert not artifact["gates"]["local_numeric_source_package_present"]
+    assert artifact["gates"]["local_numeric_source_package_present"]
     assert artifact["gates"]["holdout_data_not_consumed"]
 
 
@@ -62,4 +62,7 @@ def test_source_review_records_external_identity_and_local_gap() -> None:
     assert payload["numeric_fitting_allowed"] is False
     assert payload["holdout_consumed"] is False
     assert all(row["doi"] and row["url"] for row in payload["sources"])
-    assert all(row["local_numeric_path"] is None for row in payload["sources"])
+    non_holdout = [row for row in payload["sources"] if "holdout" not in row["source_id"]]
+    assert any(row["local_numeric_path"] for row in non_holdout)
+    holdout = next(row for row in payload["sources"] if "holdout" in row["source_id"])
+    assert holdout["local_numeric_path"] is None

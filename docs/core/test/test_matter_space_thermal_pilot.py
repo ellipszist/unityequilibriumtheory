@@ -21,12 +21,13 @@ def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def test_source_package_is_metadata_only_and_holdout_locked() -> None:
+def test_source_package_is_provisional_intake_and_holdout_locked() -> None:
     package = _read(DATA / "matter_space_second_sound_source_package.json")
-    assert package["status"] == "BLOCKED"
+    assert package["status"] == "PROVISIONAL_NUMERIC_SOURCE_INTAKE"
     assert package["usage_policy"]["numeric_fitting_allowed"] is False
-    assert package["usage_policy"]["observable_map_status"] == "MISSING"
-    assert all(source["local_raw_path"] is None for source in package["sources"])
+    assert package["usage_policy"]["observable_map_status"] == "NORMALIZED_DEFINED_DIMENSIONAL_BLOCKED"
+    assert any(source.get("local_numeric_path") for source in package["sources"] if "holdout" not in source["source_id"])
+    assert all(source.get("local_numeric_path") is None for source in package["sources"] if "holdout" in source["source_id"])
     holdout = next(source for source in package["sources"] if "holdout" in source["source_id"])
     assert holdout["status"] == "HOLDOUT_LOCKED_METADATA_ONLY"
     assert "prohibited" in holdout["benchmark_role"]

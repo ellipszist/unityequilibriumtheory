@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "artifact": "ding_2022_fig1d_digitized_manifest",
+  "generated_on": "2026-08-10",
+  "status": "PROVISIONAL_DIGITIZED_NUMERIC_PACKAGE",
+  "input_assets": [
+    {
+      "path": "Data/03_Research/raw/ding_2022_fig1.png",
+      "sha256": "d88faf2f5d7050c07a2c1bd820a16bdffa836d3d887b4d88b6be7634eed36ac4",
+      "license_context": "CC BY 4.0 article figure asset"
+    }
+  ],
+  "output_path": "Data/03_Research/ding_2022_fig1d_digitized.csv",
+  "output_sha256": "c4117bb4368f9085614fd24f994c7dc61fddf9c2eed00d151d350a6a5f90f19d",
+  "row_count": 432,
+  "series": [
+    "blue_trace",
+    "green_trace",
+    "red_trace"
+  ],
+  "source_locator": "Nature Communications 13, 285 (2022), Fig. 1d",
+  "axes_box_pixels": {
+    "left": 379,
+    "right": 668,
+    "top": 271,
+    "bottom": 481
+  },
+  "axis_ranges": {
+    "time_ps": [
+      0.0,
+      1200.0
+    ],
+    "normalized_signal": [
+      -0.2,
+      1.0
+    ]
+  },
+  "preprocessing": "RGB color-mask selection, median y per pixel column, direct affine axis conversion; no smoothing or fitting",
+  "uncertainty_policy": {
+    "pixel_y_half_width": 2.0,
+    "normalized_signal_half_width": 0.011428571428571429,
+    "not_experimental_error_bar": true
+  },
+  "row_identity": "source_id + series_id + pixel_x",
+  "series_mapping_status": "OPEN_COLOR_TO_GRATING_PERIOD",
+  "holdout_policy": "No Xie 2026 bytes, curves, or figures were read or digitized.",
+  "claim_boundary": "provisional figure-derived normalized shape intake; not raw source data and not external validation"
+}

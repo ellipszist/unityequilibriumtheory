@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "matter_space_causal_reference_verification",
-  "generated_at": "2026-07-26",
+  "generated_at": "2026-08-10",
   "audit_status": "PASS",
   "reference_status": "PASS",
   "default_candidate_status": "BLOCKED",

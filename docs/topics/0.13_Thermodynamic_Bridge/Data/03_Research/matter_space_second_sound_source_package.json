@@ -2,15 +2,15 @@
   "schema_version": "1.0",
   "artifact": "matter_space_second_sound_source_package",
   "topic": "0.13_Thermodynamic_Bridge",
-  "status": "BLOCKED",
+  "status": "PROVISIONAL_NUMERIC_SOURCE_INTAKE",
   "created_on": "2026-07-21",
   "reviewed_on": "2026-08-08",
   "usage_policy": {
     "numeric_fitting_allowed": false,
     "metadata_review_allowed": true,
-    "observable_map_status": "MISSING",
-    "local_numeric_source_status": "MISSING",
-    "blocker": "no dimensional map from normalized Phi to a measured temperature or TTG signal, and no calibration-ready local numeric package"
+    "observable_map_status": "NORMALIZED_DEFINED_DIMENSIONAL_BLOCKED",
+    "local_numeric_source_status": "PROVISIONAL_DIGITIZED_FIGURE_PACKAGE",
+    "blocker": "figure-derived normalized intake is not raw author data; alpha_Phi_K and independent dimensional mapping remain open"
   },
   "sources": [
     {
@@ -36,6 +36,65 @@
       "extraction_uncertainty": null,
       "benchmark_role": "primary external source candidate after observable-map and raw-data closure",
       "status": "BLOCKED_NO_LOCAL_NUMERIC_SOURCE"
+    },
+    {
+      "source_id": "ding_2022_fig1d_digitized",
+      "title": "Provisional digitization of Ding 2022 Figure 1d",
+      "parent_source_id": "ding_2022_graphite_over_200K",
+      "doi": "10.1038/s41467-021-27907-z",
+      "url": "https://www.nature.com/articles/s41467-021-27907-z",
+      "license_or_terms": "CC BY 4.0 article; figure asset used for a labelled provisional digitization",
+      "upstream_data_availability": "open_access_figure_asset_not_raw_author_table",
+      "original_filename": "ding_2022_fig1.png",
+      "local_raw_path": "Data/03_Research/ding_2022_fig1d_digitized.csv",
+      "local_numeric_path": "Data/03_Research/ding_2022_fig1d_digitized.csv",
+      "local_record_path": "Data/03_Research/ding_2022_fig1d_digitized_manifest.json",
+      "preprocessing": "deterministic RGB color-mask digitization of the declared Fig. 1d axes box; one median pixel per x column; no interpolation beyond pixel-column sampling",
+      "source_locator": {
+        "figure": "Fig. 1d",
+        "axes_box_pixels": {
+          "left": 379,
+          "right": 668,
+          "top": 271,
+          "bottom": 481
+        },
+        "axis_ranges": {
+          "time_ps": [
+            0.0,
+            1200.0
+          ],
+          "normalized_signal": [
+            -0.2,
+            1.0
+          ]
+        },
+        "series_mapping_status": "OPEN_COLOR_TO_GRATING_PERIOD"
+      },
+      "reported_observable_family": "normalized transient thermal-grating temperature-response trace",
+      "reported_unit_context": [
+        "time ps",
+        "normalized signal dimensionless",
+        "figure temperature-response context K"
+      ],
+      "extraction_uncertainty": {
+        "pixel_y_half_width": 2.0,
+        "normalized_signal_half_width": 0.011428571428571429,
+        "status": "provisional_figure_digitization_uncertainty_not_experimental_error_bar"
+      },
+      "row_identity": {
+        "key": "source_id + series_id + pixel_x",
+        "row_count": 432
+      },
+      "benchmark_role": "training_source_candidate_for_normalized_shape_only; no fitting in current wave",
+      "status": "PROVISIONAL_DIGITIZED_NUMERIC_PACKAGE",
+      "input_assets": [
+        {
+          "path": "Data/03_Research/raw/ding_2022_fig1.png",
+          "sha256": "d88faf2f5d7050c07a2c1bd820a16bdffa836d3d887b4d88b6be7634eed36ac4",
+          "license_context": "CC BY 4.0 article figure asset"
+        }
+      ],
+      "output_hash": "c4117bb4368f9085614fd24f994c7dc61fddf9c2eed00d151d350a6a5f90f19d"
     },
     {
       "source_id": "huberman_2019_graphite_above_100K",
@@ -119,8 +178,8 @@
     "publisher_route": "https://www.nature.com/articles/s41467-026-70807-3",
     "version_of_record_date": "2026-05-29",
     "publisher_data_statement": "source data are provided with this study",
-    "direct_numeric_download_route_captured": false,
-    "local_numeric_archive": false,
+    "direct_numeric_download_route_captured": "figure_asset_route_captured",
+    "local_numeric_archive": true,
     "supplementary_description_review": {
       "publisher_html_assets_reviewed": [
         "41467_2026_70807_MOESM1_ESM.pdf",
@@ -136,7 +195,9 @@
       "numeric_source_route_status": "NOT_CAPTURED",
       "interpretation": "The publisher statement says source data are provided, but the captured article HTML and supplementary-description PDF do not expose a numeric source filename or direct data route. Keep the holdout metadata-only."
     },
-    "holdout_policy": "metadata-only until normalized operator and parameter policy are frozen"
+    "holdout_policy": "metadata-only until normalized operator and parameter policy are frozen",
+    "numeric_source_route_status": "PROVISIONAL_FIGURE_DIGITIZATION",
+    "figure_digitization_manifest": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/ding_2022_fig1d_digitized_manifest.json"
   },
-  "claim_boundary": "source identities are externally anchored; no external numeric validation package exists"
+  "claim_boundary": "Ding 2022 figure digitization is provisional normalized-shape intake; no external numeric validation, dimensional prediction, or holdout access"
 }
