@@ -465,6 +465,13 @@ required to explain the same hardening wave.
   source digest/provenance, claim map/blueprint lock, Draft 1, Draft 2, integrity check,
   fact/citation audit, developmental review, line edit, copyedit, rights/ethics, proof,
   publish, and maintenance distinguishable. A planned source is not yet a verified citation.
+- Start book-writing work with a planning pass, not with a request to choose or write an
+  episode. For a three-book Section, first expose the Section arc, the role of all three
+  books, the book-level plans, dependencies, handoffs, claim ownership, and reference tasks;
+  then wait for author review before selecting a downstream writing unit.
+- Treat uet_history/3_publish/books/โครงสร้างหนังสือ.md as the authoritative local writing
+  pattern. It controls the structure and citation surface of a chosen unit; it does not replace
+  the Section/Book planning pass or authorize the agent to invent a chapter or episode.
 - A literature review is not a source list: it must synthesize positions, uncertainty,
   contrary evidence, limitations, and gaps before the blueprint is locked.
 - For in-place manuscript edits, run the W09 integrity check and preserve original

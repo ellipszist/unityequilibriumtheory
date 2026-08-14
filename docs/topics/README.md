@@ -73,7 +73,7 @@ These topics determine the current scientific credibility of the repo.
 | [0.19](./0.19_Gravity_GR/) | `Draft` | `B` | CODATA checkpoint remains primary; core candidate GR program adds an exact response-null and bounded local covariant infrastructure, while physical GR benchmarks and completion remain blocked |
 | [0.20](./0.20_Atomic_Physics/) | `Draft` | `B` | code/data exist, but verification and limitations are not normalized |
 | [0.21](./0.21_Yang_Mills_Mass_Gap/) | `Structured` | `A` | strongest math-facing standards candidate, but public wording still needs restraint |
-| [0.22](./0.22_Biophysics_Origin_of_Life/) | `Draft` | `B` | active topic with manual-or-placeholder data signals still present |
+| [0.22](./0.22_Biophysics_Origin_of_Life/) | `Draft` | `B` | source-referenced context with synthetic primary WARN plus a separate class-C finite HP benchmark; raw-data, biological-correspondence, and external-replication blockers remain explicit |
 | [0.23](./0.23_Unity_Scale_Link/) | `Draft` | `B` | topic has local material, but evidence packaging is still incomplete |
 | [0.24](./0.24_Artificial_Intelligence/) | `Draft` | `B` | relatively conservative README, but verification framing remains weak |
 | [0.25](./0.25_Strategy_Power_Economics/) | Structured | A | Package Tier A / Claim C; Book-aligned 15-wave program, failed legacy proxy baselines, and blocked global complete-case panel |

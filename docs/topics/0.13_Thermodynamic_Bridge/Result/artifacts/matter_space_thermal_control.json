@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact": "matter_space_thermal_control",
   "topic": "0.13_Thermodynamic_Bridge",
-  "generated_at": "2026-08-10T06:37:21.532106+00:00",
+  "generated_at": "2026-08-14T08:24:16.331975+00:00",
   "status": "SIMULATION_ONLY",
   "internal_gate_status": "FAIL",
   "dependency_status": "BLOCKED",
@@ -187,8 +187,8 @@
   },
   "source_package": {
     "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_second_sound_source_package.json",
-    "sha256": "278ba3dab99823f8a001f0adf0d5aefe71f1a3d67569ea62a4fb7070cca2f63a",
-    "status": "PROVISIONAL_NUMERIC_SOURCE_INTAKE",
+    "sha256": "3754d54cdee639be211a308d893b994ca78f7dd11aaeb191278b9085e7923b96",
+    "status": "FIGURE_DERIVED_NORMALIZED_COMPARISON_READY_RAW_AUTHOR_C_SRC_OPEN",
     "numeric_rows_consumed": 0,
     "holdout_consumed": false
   },

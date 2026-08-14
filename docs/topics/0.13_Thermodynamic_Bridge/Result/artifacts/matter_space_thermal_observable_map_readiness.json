@@ -4,7 +4,7 @@
   "audit_status": "PASS_WITH_BLOCKED_DIMENSIONAL_AND_DATA_LANES",
   "mapping_status": "NORMALIZED_TTG_OPERATOR_DEFINED_DIMENSIONAL_UET_MAPPING_BLOCKED",
   "claim_status": "DEFINITION_ONLY / SIMULATION_ONLY",
-  "evidence_class": "SOURCE_BACKED_PROVISIONAL_NUMERIC_INTAKE_WITH_DIMENSIONAL_BLOCKER",
+  "evidence_class": "SOURCE_BACKED_OBSERVABLE_DEFINITION_WITH_BLOCKED_EXTERNAL_NUMERIC_INTAKE",
   "unit_lane": {
     "normalized_ttg_signal": "dimensionless",
     "quasi_temperature": "K only after independent calibration",
@@ -13,85 +13,55 @@
   },
   "input_identity": {
     "source_package_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_second_sound_source_package.json",
-    "source_package_sha256": "278ba3dab99823f8a001f0adf0d5aefe71f1a3d67569ea62a4fb7070cca2f63a",
+    "source_package_sha256": "3754d54cdee639be211a308d893b994ca78f7dd11aaeb191278b9085e7923b96",
     "source_review_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_thermal_source_review.json",
-    "source_review_sha256": "3e7585d6a6b5eaace8ce8337d58711558bd7bcbe4486f148239be42d1d376d13"
+    "source_review_sha256": "081dfda8f49939a4376d8cb27b05ed1500f39d8ead0b61e407d01c68049a3157"
   },
   "source_rows": [
     {
       "source_id": "ding_2022_graphite_over_200K",
+      "external_identity_complete": true,
+      "reported_units_present": true,
       "local_numeric_path": null,
       "local_numeric_present": false,
-      "local_numeric_sha256": null,
-      "declared_sha256": null,
-      "hash_matches": null,
-      "source_locator_present": false,
-      "preprocessing_present": true,
-      "uncertainty_present": false,
-      "row_identity_present": false,
-      "holdout": false,
-      "status": "BLOCKED_NO_LOCAL_NUMERIC_SOURCE",
-      "benchmark_role": "primary external source candidate after observable-map and raw-data closure"
+      "benchmark_role": "primary external source candidate after observable-map and raw-data closure",
+      "source_status": "BLOCKED_NO_LOCAL_NUMERIC_SOURCE"
     },
     {
       "source_id": "ding_2022_fig1d_digitized",
+      "external_identity_complete": true,
+      "reported_units_present": true,
       "local_numeric_path": "Data/03_Research/ding_2022_fig1d_digitized.csv",
       "local_numeric_present": true,
-      "local_numeric_sha256": "c4117bb4368f9085614fd24f994c7dc61fddf9c2eed00d151d350a6a5f90f19d",
-      "declared_sha256": "c4117bb4368f9085614fd24f994c7dc61fddf9c2eed00d151d350a6a5f90f19d",
-      "hash_matches": true,
-      "source_locator_present": true,
-      "preprocessing_present": true,
-      "uncertainty_present": true,
-      "row_identity_present": true,
-      "holdout": false,
-      "status": "PROVISIONAL_DIGITIZED_NUMERIC_PACKAGE",
-      "benchmark_role": "training_source_candidate_for_normalized_shape_only; no fitting in current wave"
+      "benchmark_role": "permitted training/comparison source for normalized shape only; no fitting in current wave",
+      "source_status": "FIGURE_DERIVED_NUMERIC_PACKAGE_WITH_CLOSED_MAPPING"
     },
     {
       "source_id": "huberman_2019_graphite_above_100K",
+      "external_identity_complete": true,
+      "reported_units_present": true,
       "local_numeric_path": null,
       "local_numeric_present": false,
-      "local_numeric_sha256": null,
-      "declared_sha256": null,
-      "hash_matches": null,
-      "source_locator_present": false,
-      "preprocessing_present": true,
-      "uncertainty_present": false,
-      "row_identity_present": false,
-      "holdout": false,
-      "status": "METADATA_ONLY",
-      "benchmark_role": "graphite-family comparator; not a calibration target"
+      "benchmark_role": "graphite-family comparator; not a calibration target",
+      "source_status": "METADATA_ONLY"
     },
     {
       "source_id": "mcnelly_1970_NaF_heat_pulse",
+      "external_identity_complete": true,
+      "reported_units_present": true,
       "local_numeric_path": null,
       "local_numeric_present": false,
-      "local_numeric_sha256": null,
-      "declared_sha256": null,
-      "hash_matches": null,
-      "source_locator_present": false,
-      "preprocessing_present": true,
-      "uncertainty_present": false,
-      "row_identity_present": false,
-      "holdout": false,
-      "status": "SEPARATE_FAMILY_METADATA_ONLY",
-      "benchmark_role": "separate material-family comparator; pooling with graphite is prohibited"
+      "benchmark_role": "separate material-family comparator; pooling with graphite is prohibited",
+      "source_status": "SEPARATE_FAMILY_METADATA_ONLY"
     },
     {
       "source_id": "xie_2026_isotopically_pure_graphite_holdout",
+      "external_identity_complete": true,
+      "reported_units_present": true,
       "local_numeric_path": null,
       "local_numeric_present": false,
-      "local_numeric_sha256": null,
-      "declared_sha256": null,
-      "hash_matches": null,
-      "source_locator_present": false,
-      "preprocessing_present": true,
-      "uncertainty_present": false,
-      "row_identity_present": false,
-      "holdout": true,
-      "status": "HOLDOUT_LOCKED_METADATA_ONLY",
-      "benchmark_role": "locked holdout; prohibited for parameter selection or tuning in this workstream"
+      "benchmark_role": "locked holdout; prohibited for parameter selection or tuning in this workstream",
+      "source_status": "HOLDOUT_LOCKED_METADATA_ONLY"
     }
   ],
   "measurement_operator": {
@@ -101,7 +71,7 @@
     "UET_candidate_definition": "y_TTG(t;Lambda)=Delta_Phi(t;Lambda)/Delta_Phi(0;Lambda)",
     "dimensional_bridge": "Delta_Tq=alpha_Phi_K*Delta_Phi",
     "alpha_Phi_K_status": "OPEN_CALIBRATION_DEPENDENT",
-    "raw_signal_status": "DING_2022_FIGURE_DIGITIZATION_LOCAL_PROVISIONAL; XIE_2026_HOLDOUT_METADATA_ONLY",
+    "raw_signal_status": "SOURCE_DATA_DECLARED_FOR_2026_HOLDOUT_BUT_NOT_LOCALLY_ARCHIVED",
     "heat_flux_status": "NOT_DIRECTLY_MEASURED_IN_TTG_OPERATOR",
     "entropy_status": "DERIVED_ONLY_AFTER_Tq_AND_q_UNITS_ARE_CLOSED"
   },
@@ -130,14 +100,13 @@
     "heat_flux_observable_map_closed": false,
     "entropy_production_observable_map_closed": false,
     "holdout_data_not_consumed": true,
-    "no_parameter_fitting": true,
-    "source_package_provenance_complete": true
+    "no_parameter_fitting": true
   },
   "blockers": [
-    "Ding 2022 numeric intake is a provisional figure digitization, not an author-provided raw table",
-    "alpha_Phi_K has no derivation or source-locked independent calibration with uncertainty",
+    "no locally archived numeric source package with row-level locator, preprocessing, uncertainty, and hash",
+    "alpha_Phi_K has no derivation or source-locked calibration",
     "heat flux and entropy production are not direct TTG observables",
     "2026 source remains a locked holdout and cannot tune parameters"
   ],
-  "next_required_artifact": "independent alpha_Phi_K calibration/derivation with uncertainty plus a preregistered normalized comparison using only non-holdout rows"
+  "next_required_artifact": "licensed local source-data package plus preregistered normalized TTG comparison; dimensional alpha_Phi_K remains a separate calibration gate"
 }

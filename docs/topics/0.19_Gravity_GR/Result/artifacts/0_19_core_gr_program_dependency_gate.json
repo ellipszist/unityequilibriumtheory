@@ -84,7 +84,6 @@
         "curved_3p1_solver": "BLOCKED",
         "finite_temperature_normal_component": "BLOCKED",
         "full_superfluid_transport_tensor": "BLOCKED",
-        "physical_GR_benchmarks": "NOT_STARTED",
         "physical_Kubo_coefficients": "BLOCKED",
         "physical_gr_benchmarks": "NOT_STARTED"
       },
@@ -171,7 +170,7 @@
       "status": "BLOCKED"
     }
   },
-  "generated_at": "2026-08-08T08:19:44+00:00",
+  "generated_at": "2026-08-14T12:25:53+00:00",
   "global_universe_closure": "UNRESOLVED",
   "limitations": [
     "No Topic 0.19 simulation, physical-data comparison, metric PDE, or parameter fit is run.",
@@ -193,7 +192,7 @@
       "hash_scope": "canonical_json_without_generated_at_generated_at_utc_timestamp_utc_or_environment",
       "path": "docs/core/artifacts/uet_gr_research_program_gate.json",
       "role": "Current core GR research-program gate",
-      "scientific_payload_sha256": "322028f177baa6717820f6b51c9ebe31c30ba5f518ea9a9ab4b86abb00b75eb7"
+      "scientific_payload_sha256": "6de328b881fcca261906372cc634b3653d85f79be1f247383079ec150be62680"
     },
     {
       "exists": true,
@@ -249,7 +248,7 @@
       "hash_scope": "canonical_json_without_generated_at_generated_at_utc_timestamp_utc_or_environment",
       "path": "docs/meta/topic_readiness.json",
       "role": "Canonical topic readiness metadata",
-      "scientific_payload_sha256": "3b782cba65f854975e39b70b897e45cfb6441d3c5d73574e005468a334d93f15"
+      "scientific_payload_sha256": "84176b02b26555f67c75c316cfd39c0d27c3c67162272b3897d39f0efc2a68dc"
     }
   ],
   "status": "BLOCKED",

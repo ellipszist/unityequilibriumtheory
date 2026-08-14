@@ -1,0 +1,143 @@
+{
+  "schema_version": "t13-calorine-pbte-csrc-run-v1",
+  "run_id": "t13_calorine_dim442_m663",
+  "source": {
+    "structure": {
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/calorine_zenodo_21198312/graphite-prim.xyz",
+      "size_bytes": 324,
+      "sha256": "87fdd172bd5b77e1aa5bd9b4d85c3f21eb5df6521089cc4b769e12d481a1aed0",
+      "locator": "https://zenodo.org/api/records/21198312/files/graphite-prim.xyz/content"
+    },
+    "potential": {
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/calorine_zenodo_21198312/nep-C.txt",
+      "size_bytes": 116974,
+      "sha256": "add6b3f64fdd3cecebb3aae511816fe4183e4c4a22b058f108f3f0ea1c531623",
+      "locator": "https://zenodo.org/api/records/21198312/files/nep-C.txt/content"
+    },
+    "software": {
+      "calorine": "3.5",
+      "phono3py": "4.4.0",
+      "phonopy": "4.4.0",
+      "ase": "3.29.0"
+    }
+  },
+  "run": {
+    "dim": [
+      4,
+      4,
+      2
+    ],
+    "mesh": [
+      6,
+      6,
+      3
+    ],
+    "temperatures_K": [
+      200.0,
+      250.0,
+      300.0
+    ],
+    "transport_solver": "RTA",
+    "isotope_scattering": false,
+    "holdout_accessed": false,
+    "target_curve_used": false,
+    "fit_performed": false,
+    "alpha_Phi_K_fit_performed": false
+  },
+  "unit_contract": {
+    "mode_heat_capacity_input": "eV K^-1 per mode per primitive cell",
+    "energy_conversion": "1 eV = 1.602176634e-19 J (exact SI)",
+    "primitive_volume_input": "A^3 from relaxed POSCAR",
+    "volume_conversion": "1 A^3 = 1e-30 m^3",
+    "aggregation": "C_src = sum_q w_q sum_mu c_qmu / (sum_q w_q V_primitive)",
+    "output": "J m^-3 K^-1"
+  },
+  "geometry": {
+    "primitive_atoms": 4,
+    "primitive_formula": "C4",
+    "primitive_volume_A3": 34.40911529816803,
+    "q_point_count": 14,
+    "q_weight_sum": 108.0,
+    "mode_count": 12,
+    "frequency_range_THz": [
+      -0.00045080856262931317,
+      45.55216603064537
+    ]
+  },
+  "c_src_rows": [
+    {
+      "temperature_K": 200.0,
+      "C_src_J_m^-3_K^-1": 942937.9257978568
+    },
+    {
+      "temperature_K": 250.0,
+      "C_src_J_m^-3_K^-1": 1306875.3048575553
+    },
+    {
+      "temperature_K": 300.0,
+      "C_src_J_m^-3_K^-1": 1660387.0635131628
+    }
+  ],
+  "transport_summary": {
+    "kappa_shape": [
+      3,
+      6
+    ],
+    "kappa_W_m^-1_K^-1": [
+      [
+        249.32616942112745,
+        249.3261694275257,
+        3.1717255098368495,
+        4.1617650378525186e-15,
+        3.822076560374259e-15,
+        1.1897540108856646e-13
+      ],
+      [
+        255.55395180395965,
+        255.55395181051756,
+        2.5569533937408577,
+        4.192646378614909e-15,
+        3.921635230987897e-15,
+        1.2257182941551573e-13
+      ],
+      [
+        249.91809519387147,
+        249.91809520028468,
+        2.1178486691037253,
+        4.056563854553605e-15,
+        3.836171273218663e-15,
+        1.2021310950026415e-13
+      ]
+    ]
+  },
+  "claim_boundary": "Candidate harmonic/RTA PBTE reproduction only; not accepted Ding C_src, not a UET Phi map, not alpha_Phi_K calibration, and not external validation.",
+  "force_constant_summary": {
+    "poscar": {
+      "path": "tmp/t13_calorine_dim442_m663/POSCAR",
+      "size_bytes": 503,
+      "sha256": "c673b66e7750fa4abe594e6117879e1ca779dccfe120ae84aa842a15fcab1de7",
+      "locator": null
+    },
+    "fc2": {
+      "path": "tmp/t13_calorine_dim442_m663/fc2.hdf5",
+      "size_bytes": 32706,
+      "sha256": "ea90e4790166ca54657d4f69a077f4d299d595dd27e107b82d96b4f9eeccad9c",
+      "locator": null
+    },
+    "fc3": {
+      "path": "tmp/t13_calorine_dim442_m663/fc3.hdf5",
+      "size_bytes": 9346643,
+      "sha256": "9d42c80e59757b783462aea57227d0d58f3becc2e3d145fbb370cb137a60b7e2",
+      "locator": null
+    },
+    "reused": true
+  },
+  "output_artifacts": {
+    "kappa_hdf5": {
+      "path": "tmp/t13_calorine_dim442_m663/kappa-m663.hdf5",
+      "size_bytes": 66569,
+      "sha256": "a5b82745148ff1cbd9307cb9a5bbaf079271ac2843fe8a26365c1778716f6060",
+      "locator": null
+    }
+  }
+}

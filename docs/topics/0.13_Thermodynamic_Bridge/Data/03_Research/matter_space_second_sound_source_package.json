@@ -2,15 +2,15 @@
   "schema_version": "1.0",
   "artifact": "matter_space_second_sound_source_package",
   "topic": "0.13_Thermodynamic_Bridge",
-  "status": "PROVISIONAL_NUMERIC_SOURCE_INTAKE",
+  "status": "FIGURE_DERIVED_NORMALIZED_COMPARISON_READY_RAW_AUTHOR_C_SRC_OPEN",
   "created_on": "2026-07-21",
   "reviewed_on": "2026-08-08",
   "usage_policy": {
     "numeric_fitting_allowed": false,
     "metadata_review_allowed": true,
     "observable_map_status": "NORMALIZED_DEFINED_DIMENSIONAL_BLOCKED",
-    "local_numeric_source_status": "PROVISIONAL_DIGITIZED_FIGURE_PACKAGE",
-    "blocker": "figure-derived normalized intake is not raw author data; alpha_Phi_K and independent dimensional mapping remain open"
+    "local_numeric_source_status": "FIGURE_DERIVED_MAPPING_CLOSED",
+    "blocker": "alpha_Phi_K and independent dimensional mapping remain open; raw author numeric route remains optional"
   },
   "sources": [
     {
@@ -68,7 +68,16 @@
             1.0
           ]
         },
-        "series_mapping_status": "OPEN_COLOR_TO_GRATING_PERIOD"
+        "series_mapping_status": "CLOSED_COLOR_TO_GRATING_PERIOD",
+        "series_mapping": {
+          "blue_trace": 2.0,
+          "red_trace": 3.0,
+          "green_trace": 4.0
+        },
+        "mapping_artifact": {
+          "path": "docs/core/artifacts/ding_2022_fig1d_series_mapping.json",
+          "sha256": "82bc0e9bb23e8deaf727ea300277e9b924846d14309addc73d8a2bcebe605537"
+        }
       },
       "reported_observable_family": "normalized transient thermal-grating temperature-response trace",
       "reported_unit_context": [
@@ -85,8 +94,8 @@
         "key": "source_id + series_id + pixel_x",
         "row_count": 432
       },
-      "benchmark_role": "training_source_candidate_for_normalized_shape_only; no fitting in current wave",
-      "status": "PROVISIONAL_DIGITIZED_NUMERIC_PACKAGE",
+      "benchmark_role": "permitted training/comparison source for normalized shape only; no fitting in current wave",
+      "status": "FIGURE_DERIVED_NUMERIC_PACKAGE_WITH_CLOSED_MAPPING",
       "input_assets": [
         {
           "path": "Data/03_Research/raw/ding_2022_fig1.png",
@@ -94,7 +103,7 @@
           "license_context": "CC BY 4.0 article figure asset"
         }
       ],
-      "output_hash": "c4117bb4368f9085614fd24f994c7dc61fddf9c2eed00d151d350a6a5f90f19d"
+      "output_hash": "6f468401d1f911e327b5e51f19f454cecdd0c2ecff933ef9522e67baae14a3a9"
     },
     {
       "source_id": "huberman_2019_graphite_above_100K",
@@ -196,8 +205,12 @@
       "interpretation": "The publisher statement says source data are provided, but the captured article HTML and supplementary-description PDF do not expose a numeric source filename or direct data route. Keep the holdout metadata-only."
     },
     "holdout_policy": "metadata-only until normalized operator and parameter policy are frozen",
-    "numeric_source_route_status": "PROVISIONAL_FIGURE_DIGITIZATION",
-    "figure_digitization_manifest": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/ding_2022_fig1d_digitized_manifest.json"
+    "numeric_source_route_status": "FIGURE_DIGITIZATION_MAPPING_CLOSED",
+    "figure_digitization_manifest": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/ding_2022_fig1d_digitized_manifest.json",
+    "figure_mapping_artifact": {
+      "path": "docs/core/artifacts/ding_2022_fig1d_series_mapping.json",
+      "sha256": "82bc0e9bb23e8deaf727ea300277e9b924846d14309addc73d8a2bcebe605537"
+    }
   },
-  "claim_boundary": "Ding 2022 figure digitization is provisional normalized-shape intake; no external numeric validation, dimensional prediction, or holdout access"
+  "claim_boundary": "Ding 2022 is a permitted CC BY figure-derived normalized-shape source with closed printed-legend mapping; the raw-author PBTE C_src(T) route remains open and no alpha_Phi_K calibration is emitted."
 }

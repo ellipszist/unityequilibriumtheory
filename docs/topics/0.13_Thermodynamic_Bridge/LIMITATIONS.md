@@ -34,3 +34,6 @@
 - The four active Berut, Jun, Hong, and Peterson source-row controllers remain independent and unchanged.
 - The dependency packet cannot promote Topic `0.13` beyond `Draft / B`; it records what may be inherited and what remains blocked.
 
+## Ding 2022 OA Numeric-Input Availability (2026-08-11)
+
+The complete captured official `PMC8755757.1/` prefix has no force constants, Phonopy/ShengBTE inputs, scattering matrix, mode-resolved heat-capacity data, or numeric `C_src(T)`. The article gives computational grid/supercell details but routes supporting data to a corresponding-author request. This closes only the current official-OA search route. It does not show that author-held data are unavailable and does not permit reconstruction of `C_src(T)` from normalized TTG curves.

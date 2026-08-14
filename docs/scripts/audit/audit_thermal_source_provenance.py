@@ -71,10 +71,22 @@ def main() -> int:
             }
         )
     local_rows = [row for row in rows if row["local_numeric_present"]]
+    normalized_rows = [
+        row for row in rows
+        if row["local_numeric_present"]
+        and row["source_id"] == "ding_2022_fig1d_digitized"
+        and row["status"] == "FIGURE_DERIVED_NUMERIC_PACKAGE_WITH_CLOSED_MAPPING"
+    ]
+    raw_author_rows = [
+        row for row in rows
+        if row["local_numeric_present"]
+        and row["source_id"] != "ding_2022_fig1d_digitized"
+        and row["status"] == "SOURCE_LOCKED_NUMERIC"
+    ]
     holdout_rows = [row for row in rows if row["holdout"]]
     holdout_consumed = bool(review.get("holdout_consumed")) or any(row["holdout"] and row["local_numeric_present"] for row in rows)
     provenance_complete = bool(local_rows) and not failures and all(row["hash_matches"] for row in local_rows)
-    mapping["evidence_class"] = "SOURCE_BACKED_PROVISIONAL_NUMERIC_INTAKE_WITH_DIMENSIONAL_BLOCKER"
+    mapping["evidence_class"] = "SOURCE_BACKED_FIGURE_DERIVED_NORMALIZED_COMPARISON_WITH_DIMENSIONAL_BLOCKER"
     mapping["source_rows"] = [
         {
             **row,
@@ -82,29 +94,31 @@ def main() -> int:
         }
         for row in rows
     ]
-    mapping["measurement_operator"]["raw_signal_status"] = "DING_2022_FIGURE_DIGITIZATION_LOCAL_PROVISIONAL; XIE_2026_HOLDOUT_METADATA_ONLY"
+    mapping["measurement_operator"]["raw_signal_status"] = "DING_2022_FIGURE_DIGITIZATION_LOCAL_NORMALIZED_COMPARISON; XIE_2026_HOLDOUT_METADATA_ONLY"
     mapping["gates"]["source_package_provenance_complete"] = provenance_complete
+    mapping["gates"]["normalized_comparison_route_ready"] = bool(normalized_rows) and not failures
+    mapping["gates"]["raw_author_numeric_route_ready"] = bool(raw_author_rows) and not failures
     mapping["gates"]["holdout_data_not_consumed"] = not holdout_consumed
     mapping["blockers"] = [
-        "Ding 2022 numeric intake is a provisional figure digitization, not an author-provided raw table",
+        "Ding 2022 raw-author PBTE C_src(T) is not captured; the permitted figure-derived normalized comparison route is separate and ready",
         "alpha_Phi_K has no derivation or source-locked independent calibration with uncertainty",
         "heat flux and entropy production are not direct TTG observables",
         "2026 source remains a locked holdout and cannot tune parameters",
     ]
-    mapping["next_required_artifact"] = "independent alpha_Phi_K calibration/derivation with uncertainty plus a preregistered normalized comparison using only non-holdout rows"
+    mapping["next_required_artifact"] = "raw-author or accepted independent PBTE C_src(T) reproduction plus independent alpha_Phi_K calibration/derivation with uncertainty; normalized comparison is already source-ready and must use only non-holdout rows"
     MAP.write_text(json.dumps(mapping, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     artifact = {
         "schema_version": "1.0",
         "artifact": "thermal_source_provenance_gate",
         "generated_at": date.today().isoformat(),
-        "status": "PASS_WITH_PROVISIONAL_DIGITIZATION" if provenance_complete and not holdout_consumed else "BLOCKED",
+        "status": "PASS_WITH_FIGURE_DERIVED_NORMALIZED_COMPARISON" if bool(normalized_rows) and not failures and not holdout_consumed else "BLOCKED",
         "source_package": {"path": str(PACKAGE.relative_to(ROOT)).replace("\\", "/"), "sha256": sha256(PACKAGE)},
         "source_review": {"path": str(REVIEW.relative_to(ROOT)).replace("\\", "/"), "sha256": sha256(REVIEW)},
         "rows": rows,
-        "metrics": {"source_count": len(rows), "local_numeric_count": len(local_rows), "holdout_count": len(holdout_rows), "holdout_consumed": holdout_consumed, "provenance_complete": provenance_complete},
+        "metrics": {"source_count": len(rows), "local_numeric_count": len(local_rows), "normalized_comparison_count": len(normalized_rows), "raw_author_numeric_count": len(raw_author_rows), "holdout_count": len(holdout_rows), "holdout_consumed": holdout_consumed, "provenance_complete": provenance_complete},
         "gates": {"source_locator": all(row["source_locator_present"] for row in local_rows), "unit_context": bool(local_rows), "preprocessing": all(row["preprocessing_present"] for row in local_rows), "uncertainty": all(row["uncertainty_present"] for row in local_rows), "row_identity": all(row["row_identity_present"] for row in local_rows), "hash_match": all(row["hash_matches"] for row in local_rows), "holdout_locked": not holdout_consumed, "numeric_fitting_disabled": not bool(review.get("numeric_fitting_allowed"))},
-        "controlling_blocker": "provisional figure intake is not raw author data and independent alpha_Phi_K remains open",
-        "next_action": "replace or supplement the provisional figure intake with an authorized numeric source or keep the dimensional/external gate blocked; do not digitize Xie 2026",
+        "controlling_blocker": "ding_pbte_C_src_numeric_or_accepted_independent_reproduction_missing; independent alpha_Phi_K remains open",
+        "next_action": "keep the normalized figure-derived route in comparison-only role; obtain raw-author or accepted independent PBTE C_src(T) and an independent alpha_Phi_K anchor without reading Xie 2026",
         "claim_boundary": "provenance readiness for a provisional normalized source row only; no external validation or temperature prediction",
     }
     OUT.write_text(json.dumps(artifact, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

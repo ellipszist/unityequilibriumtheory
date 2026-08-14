@@ -1,14 +1,12 @@
 """
 UET Biophysics: Synthetic Biomarker Diagnostic
 ==============================================
-Topic: 0.22 Biophysics & Origin of Life
-
-This verifier exercises the biomarker-stability calculation path with seeded
-synthetic positive controls. It is not a clinical or TCGA validation.
+This is an internal class-C diagnostic only. It is not clinical, TCGA, EEG,
+or origin-of-life validation.
 """
 
-import json
 import hashlib
+import json
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -33,42 +31,46 @@ DATA_INPUTS = [
 
 
 def _sha256(path: Path) -> str:
-    h = hashlib.sha256()
-    with path.open("rb") as f:
-        for chunk in iter(lambda: f.read(1024 * 1024), b""):
-            h.update(chunk)
-    return h.hexdigest()
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
 
 
-def _input_identity():
-    items = []
+def _input_identity() -> list[dict[str, object]]:
+    records = []
     for path in DATA_INPUTS:
-        rel = path.relative_to(ROOT).as_posix()
+        relative = path.relative_to(ROOT).as_posix()
         if path.exists():
-            items.append(
+            records.append(
                 {
-                    "path": rel,
+                    "path": relative,
                     "sha256": _sha256(path),
                     "size_bytes": path.stat().st_size,
+                    "data_role": "source_referenced_context_or_synthetic_placeholder",
                 }
             )
         else:
-            items.append({"path": rel, "missing": True})
-    return items
+            records.append({"path": relative, "missing": True})
+    return records
 
 
-def _write_artifact(results, threshold, seed):
+def _write_artifact(results: list[dict[str, object]], threshold: float, seed: int) -> dict:
     inputs = _input_identity()
-    missing_inputs = [item["path"] for item in inputs if item.get("missing")]
-    status = "WARN" if results and not missing_inputs else "FAIL"
-
+    missing = [item["path"] for item in inputs if item.get("missing")]
+    status = "WARN" if results and not missing else "FAIL"
     artifact = {
-        "schema_version": "1.1",
+        "schema_version": "1.2",
         "topic": "0.22_Biophysics_Origin_of_Life",
         "command": ".venv\\Scripts\\python.exe docs\\topics\\0.22_Biophysics_Origin_of_Life\\Code\\03_Research\\Research_Biomarker_Identification.py",
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "status": status,
-        "claim_class": "D",
+        "claim_class": "C",
+        "data_class": "synthetic",
+        "evidence_class": "internal_benchmark",
+        "claim_ceiling": "C",
+        "topic_status_impact": "NONE",
         "inputs": inputs,
         "metrics": {
             "synthetic_gene_count": 50,
@@ -83,44 +85,36 @@ def _write_artifact(results, threshold, seed):
         },
         "warnings": [
             "Biomarker data in this verifier is synthetic; it is not a clinical or TCGA validation.",
-            "EEG/TCGA source records and local EEG summaries are hashed for provenance but are not used by this biomarker verifier.",
-            "Origin-of-life, neural, cancer, and protein-folding subclaims require separate verifier gates.",
+            "EEG/TCGA records are hashed for provenance context but are not used as measurements.",
+            "This is an internal class-C diagnostic; no external replication is claimed.",
+            "Other topic lanes require separate verifier gates.",
         ],
         "interpretation": (
-            "This artifact validates the synthetic biomarker diagnostic path only. It supports code-path "
-            "hardening and formula auditing, not biomedical efficacy or origin-of-life proof."
+            "This artifact validates the synthetic biomarker diagnostic path only. "
+            "It supports code-path hardening and formula auditing, not biomedical efficacy "
+            "or origin-of-life evidence."
         ),
     }
-    if missing_inputs:
-        artifact["warnings"].append(f"Missing declared provenance inputs: {missing_inputs}")
-
+    if missing:
+        artifact["warnings"].append(f"Missing declared provenance inputs: {missing}")
     ARTIFACT_PATH.parent.mkdir(parents=True, exist_ok=True)
     ARTIFACT_PATH.write_text(json.dumps(artifact, indent=2), encoding="utf-8")
-    print(f"\n[Artifact] Verification artifact written: {ARTIFACT_PATH}")
     print(f"[Artifact] Status: {status}")
     return artifact
 
 
-def identify_biomarkers():
+def identify_biomarkers() -> bool:
     seed = 22022
     np.random.seed(seed)
-
-    print("UET BIOMARKER IDENTIFICATION: SYNTHETIC POSITIVE-CONTROL CHECK")
-    print("=" * 60)
-
-    gene_names = [f"GENE_{i:03d}" for i in range(50)]
-    samples = 100
-    data = np.random.normal(5, 0.5, (50, samples))
-
-    data[7] = np.random.normal(5, 2.5, samples)
-    data[23] = np.random.normal(5, 3.0, samples)
-
-    print(f"Analyzing {len(gene_names)} synthetic candidate genes across {samples} samples...")
+    gene_names = [f"GENE_{index:03d}" for index in range(50)]
+    data = np.random.normal(5, 0.5, (50, 100))
+    data[7] = np.random.normal(5, 2.5, 100)
+    data[23] = np.random.normal(5, 3.0, 100)
 
     results = []
     threshold = 0.5
-    for i, gene in enumerate(gene_names):
-        variance = float(np.var(data[i]))
+    for index, gene in enumerate(gene_names):
+        variance = float(np.var(data[index]))
         stability = 1.0 / (1.0 + variance)
         if stability < threshold:
             results.append(
@@ -131,17 +125,8 @@ def identify_biomarkers():
                     "status": "synthetic_positive_control_candidate",
                 }
             )
-
-    print("\n[Analysis Report]")
     if results:
         print(pd.DataFrame(results).to_string(index=False))
-    else:
-        print("No synthetic positive controls detected within current parameters.")
-
-    print("\n[Interpretation]")
-    print("Low stability flags high-variance synthetic controls; this is a diagnostic code-path check.")
-    print("It must not be read as clinical biomarker validation.")
-
     artifact = _write_artifact(results, threshold, seed)
     return artifact["status"] != "FAIL"
 

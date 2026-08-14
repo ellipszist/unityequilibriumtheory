@@ -141,7 +141,7 @@
       "topic_controller": "ch_finite_k_replicate_temporal_acquisition_plan_defined_execution_open"
     }
   },
-  "generated_at": "2026-08-01T16:07:51+00:00",
+  "generated_at": "2026-08-14T12:25:55+00:00",
   "global_universe_closure": "UNRESOLVED",
   "limitations": [
     "No simulation, parameter fit, estimator rerun, or external-data comparison is performed.",
@@ -184,14 +184,14 @@
       "hash_scope": "canonical_json_without_generated_at_timestamp_utc_or_environment",
       "path": "docs/core/artifacts/uet_gr_research_program_gate.json",
       "role": "Core GR research-program gate",
-      "scientific_payload_sha256": "322028f177baa6717820f6b51c9ebe31c30ba5f518ea9a9ab4b86abb00b75eb7"
+      "scientific_payload_sha256": "6de328b881fcca261906372cc634b3653d85f79be1f247383079ec150be62680"
     },
     {
       "exists": true,
       "hash_scope": "canonical_json_without_generated_at_timestamp_utc_or_environment",
       "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_ch_finite_k_next_path_decision_gate.json",
       "role": "Topic 0.11 accepted-estimator controller",
-      "scientific_payload_sha256": "306135f374f398199aba75101caeefba8f211b1f63474d0e518b5f6486f67442"
+      "scientific_payload_sha256": "2370fb95e0cf69969c3e9205dfde42c8a903676af60aa68f61d32ccdf63a7a2e"
     },
     {
       "exists": true,
@@ -205,7 +205,7 @@
       "hash_scope": "canonical_json_without_generated_at_timestamp_utc_or_environment",
       "path": "docs/meta/topic_readiness.json",
       "role": "Canonical topic readiness metadata",
-      "scientific_payload_sha256": "3b782cba65f854975e39b70b897e45cfb6441d3c5d73574e005468a334d93f15"
+      "scientific_payload_sha256": "84176b02b26555f67c75c316cfd39c0d27c3c67162272b3897d39f0efc2a68dc"
     },
     {
       "exists": true,

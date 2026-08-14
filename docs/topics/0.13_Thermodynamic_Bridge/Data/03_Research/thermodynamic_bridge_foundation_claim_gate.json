@@ -66,7 +66,9 @@
         {
           "source_target": "Quantum Landauer branch source identity (legacy Peterson 2018 label unresolved)",
           "next_controller": "exact_one_paper_identity_before_any_row_capture"
-        }
+        },
+        "berut_local_raw_or_permissioned_numeric_package_missing",
+        "Berut Figure 3 route is not a local numeric source package until binary/hash/ticks/transcription are archived"
       ]
     },
     {
@@ -122,10 +124,10 @@
   "row_controller_summary": [
     {
       "row_id": "berut_2012_summary_300K",
-      "source_closure_status": "author_page_heat_image_archived_official_parity_and_tick_mapping_open",
+      "source_closure_status": "publisher_surface_classified_local_raw_package_missing_figure_route_open",
       "uncertainty_status": "interval_present_topic_summary_only",
-      "next_controller": "berut_author_heat_image_tick_mapping_and_official_parity_required",
-      "first_missing_requirement": "x_axis_tick_value_mapping_for_duration_tau"
+      "next_controller": "berut_local_raw_or_permissioned_numeric_package_missing",
+      "first_missing_requirement": "archived official Figure 3 binary/hash or permitted numeric package, then tick mapping and transcription"
     },
     {
       "row_id": "jun_2014_summary_300K",
@@ -148,5 +150,16 @@
       "next_controller": "exact_one_paper_identity_before_any_row_capture",
       "first_missing_requirement": "exact one-paper doi_or_url that matches the local narrative"
     }
-  ]
+  ],
+  "berut_source_boundary_artifact": {
+    "path": "docs/core/artifacts/t13_berut_source_package_availability_boundary.json",
+    "sha256": "dfc032f2836f5efdd4260fa8f73917d4475d7ba2e27f0f65c0c9a7cad8e55a5c",
+    "summary": {
+      "status": "PASS_SCOPED_BERUT_SOURCE_PACKAGE_BOUNDARY",
+      "major_result_id": "T13_BERUT_SOURCE_PACKAGE_AVAILABILITY_BOUNDARY",
+      "closure_level": "CLOSED_FOR_LANE",
+      "numeric_rows_emitted": 0,
+      "full_core_unlock": false
+    }
+  }
 }

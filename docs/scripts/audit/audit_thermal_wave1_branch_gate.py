@@ -43,7 +43,16 @@ def main() -> int:
     holdout_consumed = bool(review.get("holdout_consumed"))
     numeric_fitting = bool(review.get("numeric_fitting_allowed"))
     source_rows = package.get("sources", [])
-    provisional_source = any(row.get("status") == "PROVISIONAL_DIGITIZED_NUMERIC_PACKAGE" for row in source_rows)
+    normalized_source_ready = any(
+        row.get("source_id") == "ding_2022_fig1d_digitized"
+        and row.get("status") == "FIGURE_DERIVED_NUMERIC_PACKAGE_WITH_CLOSED_MAPPING"
+        for row in source_rows
+    )
+    raw_author_source_ready = any(
+        row.get("status") == "SOURCE_LOCKED_NUMERIC"
+        and row.get("source_id") != "ding_2022_fig1d_digitized"
+        for row in source_rows
+    )
     gates = {
         "selected_causal_reference_prearrival_leakage": reference_leakage <= threshold,
         "selected_causal_reference_compact_support": reference.get("reference", {}).get("status") == "PASS",
@@ -51,14 +60,16 @@ def main() -> int:
         "locked_threshold_unchanged": threshold == 1.0e-6,
         "holdout_not_consumed": not holdout_consumed,
         "numeric_fitting_disabled": not numeric_fitting,
-        "provisional_source_provenance_present": provisional_source,
+        "normalized_comparison_route_ready": normalized_source_ready,
+        "raw_author_numeric_route_ready": raw_author_source_ready,
+        "provisional_source_provenance_present": not raw_author_source_ready,
         "alpha_Phi_K_independent_calibration": False,
     }
     artifact = {
         "schema_version": "1.0",
         "artifact": "thermal_wave1_branch_gate",
         "generated_at": date.today().isoformat(),
-        "status": "PASS_WITH_BLOCKED_DIMENSIONAL_AND_FULL_CANDIDATE_LANES" if all(gates[key] for key in ("selected_causal_reference_prearrival_leakage", "selected_causal_reference_compact_support", "locked_threshold_unchanged", "holdout_not_consumed", "numeric_fitting_disabled", "provisional_source_provenance_present")) else "BLOCKED",
+        "status": "PASS_WITH_BLOCKED_DIMENSIONAL_AND_FULL_CANDIDATE_LANES" if all(gates[key] for key in ("selected_causal_reference_prearrival_leakage", "selected_causal_reference_compact_support", "locked_threshold_unchanged", "holdout_not_consumed", "numeric_fitting_disabled", "normalized_comparison_route_ready")) else "BLOCKED",
         "claim_promotion": False,
         "selected_causal_branch": {
             "operator_mode": "causal_linear_space_reference_v1",
@@ -88,7 +99,9 @@ def main() -> int:
             "package": {"path": rel(PACKAGE), "sha256": sha256(PACKAGE), "status": package.get("status")},
             "numeric_fitting_allowed": numeric_fitting,
             "holdout_consumed": holdout_consumed,
-            "provisional_source_present": provisional_source,
+            "provisional_source_present": not raw_author_source_ready,
+            "normalized_comparison_route_ready": normalized_source_ready,
+            "raw_author_numeric_route_ready": raw_author_source_ready,
             "xie_2026_policy": "locked_holdout_metadata_only",
         },
         "gates": gates,

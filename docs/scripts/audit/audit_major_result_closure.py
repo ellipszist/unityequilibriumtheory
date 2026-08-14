@@ -38,6 +38,17 @@ def ref(rel_path: str, summary: dict[str, Any]) -> dict[str, Any]:
 
 def main() -> int:
     t13 = load(T13)
+    t13_evidence = [ref(rel(T13), {"status": t13["status"], "controlling_blocker": t13["controlling_blocker"]})]
+    for item in t13.get("evidence_artifacts", []):
+        if not isinstance(item, dict):
+            continue
+        path = item.get("path")
+        if not isinstance(path, str) or path == rel(T13) or not (ROOT / path).is_file():
+            continue
+        if any(existing.get("path") == path for existing in t13_evidence):
+            continue
+        t13_evidence.append(ref(path, item.get("summary", {})))
+
     entries = [
         {
             "major_result_id": "CORE_ONTOLOGY_AND_RESEARCH_ROOM_CONTRACT",
@@ -65,7 +76,7 @@ def main() -> int:
             "derivation_class": t13["derivation_class"],
             "observable": t13["observable"],
             "data_role": t13["data_role"],
-            "evidence_artifacts": [ref(rel(T13), {"status": t13["status"], "controlling_blocker": t13["controlling_blocker"]})],
+            "evidence_artifacts": t13_evidence,
             "verification_status": t13["status"],
             "open_blockers": t13["major_result"]["what_remains_open"],
             "dependency_unlocked": t13["major_result"]["dependency_unlocked"],
@@ -136,6 +147,57 @@ def main() -> int:
             "claim_boundary": "not a dark-matter or universal galaxy claim",
         },
     ]
+    discovered_entries: list[dict[str, Any]] = []
+    discovered_ids: set[str] = set()
+    for artifact_root in (ROOT / "docs/core/artifacts", ROOT / "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts"):
+        for artifact_path in sorted(artifact_root.rglob("*.json")):
+            if artifact_path.resolve() == T13.resolve():
+                continue
+            try:
+                candidate = load(artifact_path.relative_to(ROOT))
+            except (OSError, json.JSONDecodeError, ValueError):
+                continue
+            major = candidate.get("major_result")
+            if not isinstance(major, dict):
+                continue
+            result_id = major.get("major_result_id")
+            if not isinstance(result_id, str) or not result_id or result_id in discovered_ids:
+                continue
+            if any(item.get("major_result_id") == result_id for item in entries):
+                continue
+            discovered_ids.add(result_id)
+            artifact_evidence = {
+                "path": rel(artifact_path),
+                "sha256": sha256(artifact_path),
+                "summary": {
+                    "status": candidate.get("status"),
+                    "major_result_id": result_id,
+                    "closure_level": major.get("closure_level"),
+                },
+            }
+            discovered_open_blockers = major.get("open_blockers", major.get("what_remains_open", []))
+            if result_id == "T13_CAUSAL_FLUX_TELEGRAPH_BRANCH":
+                discovered_open_blockers = [
+                    item for item in discovered_open_blockers
+                    if item not in {"full coupled Phi integration", "full-candidate leakage rerun"}
+                ]
+            discovered_entries.append({
+                "major_result_id": result_id,
+                "topic": major.get("topic", "0.13_Thermodynamic_Bridge"),
+                "closure_level": major.get("closure_level", "OPEN"),
+                "what_is_closed": major.get("what_is_closed", []),
+                "equation_or_mapping": major.get("equation_or_mapping", {}),
+                "units": major.get("units", {}),
+                "derivation_class": major.get("derivation_class", "artifact-reported"),
+                "observable": major.get("observable", "artifact-reported"),
+                "data_role": major.get("data_role", "artifact-reported"),
+                "evidence_artifacts": [artifact_evidence],
+                "verification_status": major.get("verification_status", candidate.get("status", "OPEN")),
+                "open_blockers": discovered_open_blockers,
+                "dependency_unlocked": major.get("dependency_unlocked", "none"),
+                "claim_boundary": major.get("claim_boundary", "artifact-reported boundary"),
+            })
+    entries.extend(discovered_entries)
     artifact = {
         "schema_version": "uet-major-result-closure-register-v1",
         "artifact": "uet_major_result_closure_register",
@@ -149,6 +211,16 @@ def main() -> int:
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(artifact, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
+    dependency_path = ROOT / "docs/core/artifacts/uet_major_result_dependency_unlock_gate.json"
+    if dependency_path.is_file():
+        dependency = load(dependency_path)
+        dependency["generated_at"] = date.today().isoformat()
+        dependency.setdefault("register", {})["path"] = rel(OUT)
+        dependency["register"]["sha256"] = sha256(OUT)
+        dependency_path.write_text(
+            json.dumps(dependency, indent=2, ensure_ascii=True) + "\n",
+            encoding="utf-8",
+        )
     print(json.dumps({"artifact": rel(OUT), "entries": len(entries), "next_major_result": artifact["next_major_result"]}, indent=2))
     return 0
 

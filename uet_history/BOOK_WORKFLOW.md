@@ -229,6 +229,25 @@ Book Blueprint minimum fields:
 6. Run S08 after any change that may cross a book boundary and before declaring the Section coherent.
 7. Run S09 only when the Section version, all three book versions, registry records, and public boundaries agree.
 
+## Planning-first agent protocol
+
+The first interaction for a new book-writing task is a planning pass, not a request to choose an episode. The Section and book architecture must be visible before the manuscript is drafted.
+
+When the user asks to start, write, or continue a book and no approved execution plan has been named:
+
+1. Inspect the Section parent package first when the book belongs to a Section. Read the Section Blueprint, research design, literature review, claim map, Volume Matrix, Dependency Map, and current gate state.
+2. Inspect the canonical book folder, its Book Blueprint, research design, literature review, source register or digest, claim map, verification specification, and update log when present.
+3. Read uet_history/3_publish/books/โครงสร้างหนังสือ.md as the authoritative local writing pattern. This file controls how a chosen unit is written; it does not replace the Section/Book planning pass.
+4. Produce and show a planning package before drafting prose:
+   - the complete Section arc and the role of all three books, when applicable;
+   - the plan for each book, including promise, boundary, reader outcome, chapter or unit map, dependencies, evidence needs, and handoffs;
+   - the research and reference tasks mapped to the planned claims or units;
+   - the current S00-S09 and W00-W05 state, open decisions, and next controller.
+5. Stop for author review and approval of the plan. Do not silently select an episode, invent a chapter, or begin manuscript prose during this planning pass.
+6. After the relevant Section/Book plan and blueprint lock are approved, select an execution unit only as a downstream writing task. Apply the local structure exactly, complete the required review, and split into page or layout units only at the local structure's approved stage.
+
+Do not open a new task with "which episode should I write?" or "write episode X" unless the parent plan and the book blueprint are already approved and the user explicitly wants execution of that unit. Use the existing S00-S09 and W00-W18 gates; this protocol changes the order of interaction, not the gate model.
+
 ### Reopen and drift rules
 
 - If a Book change affects its role, promise, claim ownership, entry or exit condition, shared term, dependency, chronology, or handoff, reopen S04-S07 before continuing local drafting.
@@ -268,7 +287,9 @@ medical, historical, or policy claim has been externally validated.
 Each book may define its own chapter, episode, section, or page structure. The
 shared workflow does not replace or rename that local contract. Record the local
 structure in the book's README and blueprint, then use stable chapter/episode
-IDs when mapping sources and review results.
+IDs when mapping sources and review results. This per-unit contract applies only
+after the Section/Book planning pass and the relevant blueprint lock; it is not
+the starting command for a new book.
 
 For every writing unit, the normal order is:
 
@@ -657,8 +678,9 @@ For a new or existing book:
 2. preserve the book's current voice, structure, and filenames
 3. add the minimum workflow package where the book's policy allows it
 4. declare the current process stage, claim boundary, and controlling blocker
-5. run the workflow on one chapter or episode before applying it to the whole book
-6. promote public files only after the registry and public manifest agree
+5. if the Section/Book plan is not approved, produce the planning package first; do not begin by asking the author to select a chapter or episode
+6. after the plan and blueprint lock, run one approved chapter or episode as a controlled execution unit before applying the workflow to the whole book
+7. promote public files only after the registry and public manifest agree
 
 The workflow is reusable across books; the source register, claim map, and local
 chapter structure remain book-specific.

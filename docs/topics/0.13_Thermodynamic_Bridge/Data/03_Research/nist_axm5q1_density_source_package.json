@@ -1,0 +1,38 @@
+{
+  "source_id": "nist_srm_260_89_axm5q1_density",
+  "title": "Standard Reference Materials: A fine-grained, isotropic graphite for use as NBS thermophysical property RM's from 5 to 2500 K",
+  "publisher": "National Bureau of Standards / NIST",
+  "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nbsspecialpublication260-89.pdf",
+  "local_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/nist_sp260_89_graphite.pdf",
+  "sha256": "fbcde491cadf6b8105d8b22bd15145e48709926aaf1d4a24335af2a8984c71b2",
+  "material": "AXM-5Q1 fine-grained isotropic graphite",
+  "source_locators": [
+    "PDF p. 5, Section 2.2 Measurements: density measurements at approximately 20 C by hydrostatic weighing and estimated precision +/-0.1%",
+    "PDF p. 6, Table 1: AXM-5Q1 specimen 103 density row",
+    "PDF p. 74, Table 20: reference density input 1730 kg m^-3 is a separate calculated-property baseline and is not merged with specimen 103"
+  ],
+  "density_precision_statement": "NIST states density measurements are estimated precise to +/-0.1%; this artifact records it as a source precision boundary only.",
+  "rows": [
+    {
+      "source_row_id": "nist_sp260_89_axm5q1_specimen_103_density_20C",
+      "material": "AXM-5Q1 fine-grained isotropic graphite",
+      "specimen_id": "103",
+      "temperature_C_nominal": 20.0,
+      "temperature_K_nominal": 293.15,
+      "temperature_scope": "approximately 20 C as reported by NIST",
+      "density_g_per_cm3": 1.721,
+      "density_kg_per_m3": 1721.0,
+      "measurement_method": "hydrostatic weighing",
+      "source_locator": "PDF p. 5, Section 2.2 Measurements; PDF p. 6, Table 1, AXM-5Q1 specimen 103 row",
+      "uncertainty_boundary": {
+        "reported_relative_precision_bound": 0.001,
+        "reported_absolute_precision_bound_kg_per_m3": 1.721,
+        "reported_units": "relative fraction and kg m^-3",
+        "status": "SOURCE_ESTIMATED_PRECISION_NOT_STANDARD_UNCERTAINTY",
+        "do_not_use_as_standard_uncertainty": true
+      },
+      "data_role": "CALIBRATION_CANDIDATE_DENSITY_ONLY_NOT_CONSUMED"
+    }
+  ],
+  "preprocessing": "byte-preserving PDF archive; manual row transcription; explicit g cm^-3 to kg m^-3 conversion; no interpolation, fitting, curve digitization, or target access"
+}

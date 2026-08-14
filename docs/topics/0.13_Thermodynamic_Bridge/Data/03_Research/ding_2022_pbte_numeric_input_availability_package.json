@@ -1,0 +1,123 @@
+{
+  "schema_version": "t13-ding-pbte-numeric-input-availability-package-v1",
+  "artifact": "ding_2022_pbte_numeric_input_availability_package",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "created_on": "2026-08-11",
+  "reviewed_on": "2026-08-11",
+  "status": "OFFICIAL_OA_INVENTORY_LOCKED_REPRODUCTION_INPUTS_ABSENT",
+  "source_identity": {
+    "title": "Observation of Second Sound in Graphite over 200 K",
+    "doi": "10.1038/s41467-021-27907-z",
+    "pmcid": "PMC8755757",
+    "oa_record_url": "https://www.ncbi.nlm.nih.gov/pmc/utils/oa/oa.fcgi?id=PMC8755757",
+    "s3_inventory_url": "https://pmc-oa-opendata.s3.amazonaws.com/?list-type=2&prefix=PMC8755757.1/",
+    "s3_metadata_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC8755757.1/PMC8755757.1.json",
+    "s3_full_text_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC8755757.1/PMC8755757.1.txt",
+    "license": "CC BY",
+    "retracted": false
+  },
+  "archived_records": [
+    {
+      "role": "PMC_OA_API_RECORD",
+      "local_path": "Data/03_Research/raw/ding_2022_pmc_oa_record.xml",
+      "bytes": 445,
+      "sha256": "5948e8bf91a957955b765cfab77a8d790055cf6507039a22ccc2335657b6817d"
+    },
+    {
+      "role": "PMC_S3_PREFIX_INVENTORY",
+      "local_path": "Data/03_Research/raw/ding_2022_pmc_s3_inventory.xml",
+      "bytes": 3780,
+      "sha256": "6f86e82611321053b3afd9b548f6e4a314ef03fd753ab2706775e2bc8c551672"
+    },
+    {
+      "role": "PMC_OBJECT_METADATA",
+      "local_path": "Data/03_Research/raw/ding_2022_pmc_object_metadata.json",
+      "bytes": 1440,
+      "sha256": "c4940b8fda1139ce95429b4e00e4bf6185da46c0c2b534a1a85f4a8ed02dccbf"
+    },
+    {
+      "role": "PMC_FULL_TEXT",
+      "local_path": "Data/03_Research/raw/ding_2022_pmc_full_text.txt",
+      "bytes": 41581,
+      "sha256": "b1b029f2812586647077a7b8506c2f52aeb7261714395907f8f8d20868fe2874"
+    },
+    {
+      "role": "SUPPLEMENTARY_INFORMATION",
+      "local_path": "Data/03_Research/raw/ding_2022_supplementary_information.pdf",
+      "bytes": 1893976,
+      "sha256": "a50c1a6347775de72f705f4395507d3136cbf4e5cadfb6638caca2876c52b8f7"
+    }
+  ],
+  "official_object_inventory": {
+    "prefix": "PMC8755757.1/",
+    "object_count": 11,
+    "objects": [
+      "PMC8755757.1/41467_2021_27907_Fig1_HTML.jpg",
+      "PMC8755757.1/41467_2021_27907_Fig2_HTML.jpg",
+      "PMC8755757.1/41467_2021_27907_Fig3_HTML.jpg",
+      "PMC8755757.1/41467_2021_27907_Fig4_HTML.jpg",
+      "PMC8755757.1/41467_2021_27907_MOESM1_ESM.pdf",
+      "PMC8755757.1/41467_2021_27907_MOESM2_ESM.pdf",
+      "PMC8755757.1/41467_2021_27907_MOESM3_ESM.pdf",
+      "PMC8755757.1/PMC8755757.1.json",
+      "PMC8755757.1/PMC8755757.1.pdf",
+      "PMC8755757.1/PMC8755757.1.txt",
+      "PMC8755757.1/PMC8755757.1.xml"
+    ],
+    "media_payload_count": 7,
+    "media_payload_roles": "four article figures and three PDF supplementary/reporting files",
+    "numeric_or_reproduction_payload_count": 0
+  },
+  "published_computational_specification": {
+    "electronic_structure_code": "VASP",
+    "pseudopotential_family": "projector-augmented-wave; exact dataset identifier not supplied",
+    "exchange_correlation": "local density approximation plus optB88 nonlocal vdW functional",
+    "unit_cell_optimization_k_grid": "24 x 24 x 10",
+    "second_order_supercell": "5 x 5 x 2",
+    "third_order_supercell": "4 x 4 x 2",
+    "second_order_k_grid": "6 x 6 x 6",
+    "third_order_k_grid": "8 x 8 x 6",
+    "second_order_tool": "Phonopy",
+    "third_order_and_transport_tools": "thirdorder.py and ShengBTE",
+    "scattering_matrix_q_mesh": "16 x 16 x 8",
+    "source_locator": "PMC full text, Computational details paragraph"
+  },
+  "missing_reproduction_inputs": [
+    "relaxed lattice vectors and atomic coordinates used in the calculation",
+    "exact PAW dataset identifiers and VASP version/input files",
+    "plane-wave cutoff and electronic/ionic convergence thresholds",
+    "finite-displacement amplitudes and complete displacement metadata",
+    "second-order force constants or Phonopy FORCE_SETS/FORCE_CONSTANTS",
+    "third-order force constants or thirdorder.py outputs",
+    "ShengBTE CONTROL file and isotope/boundary-scattering settings",
+    "phonon scattering matrix",
+    "mode-resolved frequencies, eigenvectors, group velocities, and c_mu(T)",
+    "unit-cell volume tied to the published relaxed structure",
+    "numeric C_src(T)=sum_mu(c_mu) with convergence or uncertainty",
+    "machine-readable TTG simulation inputs and outputs"
+  ],
+  "availability_contract": {
+    "publisher_statement": "The supporting data are available from the corresponding author on reasonable request.",
+    "source_locator": "PMC full text, Data availability",
+    "direct_oa_numeric_route": "ABSENT_FROM_CAPTURED_OFFICIAL_PMC_OA_PREFIX",
+    "author_request_route": "OPEN_NOT_EXECUTED",
+    "independent_reproduction_route": "OPEN_INPUT_PACKAGE_NOT_BUILT",
+    "scope": "official PMC OA record and PMC8755757.1 object prefix captured on 2026-08-11"
+  },
+  "acquisition_decision": {
+    "preferred_route_a": "request the published relaxed structure, force constants, ShengBTE control/scattering outputs, and mode-resolved heat-capacity data from the corresponding authors",
+    "permitted_route_b": "build an independent open-source graphite phonon input package and label it independent reproduction rather than Ding source data",
+    "prohibited_routes": [
+      "infer C_src from the Ding normalized TTG curve",
+      "use Georgia Tech EMS-5000 k/D/c_p as Ding natural-graphite mode heat capacity",
+      "consume Xie 2026 holdout data",
+      "invent force constants, uncertainty, or C_src rows"
+    ]
+  },
+  "holdout_policy": {
+    "xie_2026_accessed": false,
+    "xie_2026_source_data_consumed": false,
+    "calibration_path_may_read_holdout": false
+  },
+  "claim_boundary": "This package establishes only that the captured official PMC OA distribution does not expose the numerical or first-principles payload needed to reproduce C_src(T). It does not prove that such data do not exist with the authors or elsewhere, and it does not close C_src, e0, alpha_Phi_K, or Topic 13."
+}

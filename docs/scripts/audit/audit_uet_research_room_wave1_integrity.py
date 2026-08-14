@@ -15,6 +15,7 @@ INTEGRATION = ROOT / "docs/core/artifacts/uet_research_room_wave1_integration_ga
 FOUNDATION = ROOT / "docs/core/artifacts/uet_foundation_dependency_gate.json"
 BRANCH = ROOT / "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/thermal_wave1_branch_gate.json"
 PROVENANCE = ROOT / "docs/core/artifacts/thermal_source_provenance_gate.json"
+HOLDOUT_AUDIT = ROOT / "docs/core/artifacts/t13_xie_2026_holdout_access_audit.json"
 REGISTRY = ROOT / "docs/core/artifacts/uet_equation_correspondence_registry.json"
 INDEX = ROOT / "docs/topics/README.md"
 OUT = ROOT / "docs/core/artifacts/uet_research_room_wave1_integrity.json"
@@ -38,6 +39,8 @@ def main() -> int:
     foundation = load(FOUNDATION)
     branch = load(BRANCH)
     provenance = load(PROVENANCE)
+    holdout_audit = load(HOLDOUT_AUDIT)
+    holdout_controls = holdout_audit.get("audit", {})
     registry = load(REGISTRY)
     required_ids = {
         "uet.thermal.ttg_normalized_observable",
@@ -51,6 +54,7 @@ def main() -> int:
         FOUNDATION,
         BRANCH,
         PROVENANCE,
+        HOLDOUT_AUDIT,
         ROOT / "docs/core/artifacts/matter_space_causal_reference_verification.json",
         ROOT / "docs/core/artifacts/matter_space_variational_verification.json",
         ROOT / "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_observable_map_readiness.json",
@@ -67,6 +71,8 @@ def main() -> int:
     hash_errors: list[str] = []
     for room in contract.get("rooms", {}).values():
         for evidence in room.get("evidence", []):
+            if "EXCLUDED" in str(evidence.get("hash_policy", "")).upper():
+                continue
             if evidence.get("present") and evidence.get("sha256"):
                 path = ROOT / evidence["path"]
                 if path.is_file() and digest(path) != evidence["sha256"]:
@@ -83,8 +89,8 @@ def main() -> int:
         "selected_reference_passes_locked_threshold": branch["gates"]["selected_causal_reference_prearrival_leakage"] and branch["selected_causal_branch"]["prearrival_leakage_fraction"] <= 1.0e-6,
         "full_candidate_gate_preserved_failed": branch["gates"]["full_candidate_prearrival_leakage"] is False and branch["full_candidate_branch"]["prearrival_leakage_fraction"] > 1.0e-6,
         "threshold_unchanged": branch["gates"]["locked_threshold_unchanged"] is True,
-        "provenance_passes": provenance.get("status") == "PASS_WITH_PROVISIONAL_DIGITIZATION",
-        "holdout_not_consumed": branch["source_contract"]["holdout_consumed"] is False and holdout.get("local_numeric_path") is None,
+        "provenance_passes": provenance.get("status") in {"PASS_WITH_PROVISIONAL_DIGITIZATION", "PASS_WITH_FIGURE_DERIVED_NORMALIZED_COMPARISON"} and provenance.get("metrics", {}).get("provenance_complete") is True,
+        "holdout_not_consumed": holdout_controls.get("numeric_payload_consumed") is False and holdout_controls.get("numeric_rows_consumed") is False and holdout_controls.get("used_for_fit") is False and holdout_controls.get("used_for_tuning") is False and holdout_controls.get("used_for_calibration") is False and holdout_controls.get("used_for_threshold_adjustment") is False and holdout_controls.get("locked_holdout_remains_unconsumed") is True,
         "foundation_link_matches": foundation.get("research_room_wave1", {}).get("contract", {}).get("sha256") == digest(CONTRACT),
         "topic_0_3_index_synced": "latest scalar Hubble artifact" in INDEX.read_text(encoding="utf-8") and "full cosmology remains blocked" in INDEX.read_text(encoding="utf-8"),
         "inbox_absent_is_explicit": not (ROOT / "docs/core/00_inbox").is_dir(),

@@ -1,0 +1,115 @@
+{
+  "schema_version": "t13-phonix-mp47-graphite-source-package-v1",
+  "artifact": "phonix_mp47_graphite_source_package",
+  "status": "SOURCE_LOCKED_COMPARATOR_ONLY",
+  "source": {
+    "provider": "Phonix database",
+    "dataset": "phonix-db/phonix-summary",
+    "dataset_revision": "284bddebbd144ae3e3f93474dc05e4658417d09f",
+    "revision_url": "https://huggingface.co/api/datasets/phonix-db/phonix-summary/revision/main",
+    "query_url": "https://datasets-server.huggingface.co/search?dataset=phonix-db%2Fphonix-summary&config=default&split=train&query=mp-47&offset=0&length=100",
+    "row_locator": {
+      "split": "train",
+      "mp_id": "mp-47",
+      "unique_id": "mp-47",
+      "formula": "C",
+      "space_group_number": 194
+    },
+    "local_raw_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/phonix_mp47_graphite_summary_row.json",
+    "local_raw_sha256": "cea9711b09f455375a5f9182c295588b98d498fb09af4660af6fb7dce4fdaff1",
+    "row_payload_sha256": "ddf97a7225754dcee2d05d16e11d5b45da9b892a816cc7aa662f5443ad8d813b",
+    "license": "CC BY 4.0"
+  },
+  "material": {
+    "formula": "C",
+    "space_group": "P6_3/mmc (No. 194)",
+    "primitive_atoms": 4.0,
+    "source_volume_A3": 22.553831,
+    "source_structure": {
+      "cell": [
+        [
+          2.500962431990252,
+          0.0,
+          0.0
+        ],
+        [
+          -1.250481215995126,
+          2.1658970000140694,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          4.16366086
+        ]
+      ],
+      "positions": [
+        [
+          0.3333333333333333,
+          0.6666666666666666,
+          0.06281362
+        ],
+        [
+          0.6666666666666667,
+          0.3333333333333333,
+          0.56281362
+        ],
+        [
+          0.6666666666666667,
+          0.3333333333333334,
+          0.9371863799999999
+        ],
+        [
+          0.3333333333333333,
+          0.6666666666666667,
+          0.43718638
+        ]
+      ],
+      "symbols": [
+        "C",
+        "C",
+        "C",
+        "C"
+      ],
+      "pbc": [
+        true,
+        true,
+        true
+      ]
+    },
+    "Ding_TTG_material_equivalence": "NOT_ESTABLISHED",
+    "regime_boundary": "ideal periodic graphite database row; not Ding natural-graphite TTG specimen"
+  },
+  "fields": {
+    "phfreq[cm^-1]": "source string encoding of frequency-bin centers",
+    "phdos[a.u.]": "source arbitrary-unit DOS values; normalization to modes per cm^-1 is not declared",
+    "volume[A^3]": "primitive-cell volume in cubic Angstrom",
+    "qmesh": "dimensionless reciprocal mesh label",
+    "fc2_error[%]": "force-constant fitting diagnostic percent, not a standard uncertainty",
+    "fc3_error[%]": "third-order force-constant fitting diagnostic percent, not a standard uncertainty",
+    "kappa[W/mK]": "reported thermal-conductivity output at the dataset declared temperature scope"
+  },
+  "preprocessing": {
+    "source_values_changed": false,
+    "row_selection": "select exact mp_id=mp-47 from the immutable source snapshot",
+    "array_decode": "JSON-decode phfreq[cm^-1] and phdos[a.u.] source strings only",
+    "derived_check": "trapezoid integration of the source DOS is reported in source units only",
+    "interpolation": false,
+    "curve_digitization": false,
+    "target_fit": false,
+    "alpha_fit": false
+  },
+  "uncertainty": {
+    "standard_uncertainty_available": false,
+    "measurement_uncertainty_available": false,
+    "reported_force_constant_fit_errors_are_uncertainty": false,
+    "epistemic_boundary": "No standard uncertainty is invented for DOS normalization, derived c_v, or Ding material equivalence."
+  },
+  "data_role": "TRAINING/COMPARISON",
+  "holdout_policy": {
+    "xie_2026_accessed": false,
+    "xie_2026_used_for_fit": false,
+    "xie_2026_used_for_tuning": false
+  },
+  "claim_boundary": "Source-locked Phonix graphite harmonic comparator only; not Ding PBTE C_src, not a volumetric c_v uncertainty source, not UET transport, and not alpha_Phi_K calibration."
+}

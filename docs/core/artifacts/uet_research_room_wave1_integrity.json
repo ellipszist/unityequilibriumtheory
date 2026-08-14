@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_research_room_wave1_integrity",
-  "generated_at": "2026-08-10",
+  "generated_at": "2026-08-14",
   "status": "PASS_WITH_BLOCKED_LANES",
   "checks": {
     "contract_status": true,
@@ -27,6 +27,7 @@
     "docs/core/artifacts/uet_foundation_dependency_gate.json",
     "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/thermal_wave1_branch_gate.json",
     "docs/core/artifacts/thermal_source_provenance_gate.json",
+    "docs/core/artifacts/t13_xie_2026_holdout_access_audit.json",
     "docs/core/artifacts/matter_space_causal_reference_verification.json",
     "docs/core/artifacts/matter_space_variational_verification.json",
     "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_observable_map_readiness.json",

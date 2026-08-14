@@ -1,0 +1,135 @@
+{
+  "schema_version": "t13-ding-alternate-public-dataset-discovery-v2",
+  "package_id": "T13_DING_ALTERNATE_PUBLIC_DATASET_DISCOVERY",
+  "generated_at": "2026-08-14",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "source_role": "SOURCE_DISCOVERY_CANDIDATE_NOT_IMPORTED",
+  "target_acceptance_contract": {
+    "observable": "C_src(T)=sum_mu c_mu(T) and Delta_Tq=Delta_u_ph/C_src(T)",
+    "required_units": "J m^-3 K^-1 for C_src(T); J m^-3 for Delta_u_ph; K for Delta_Tq",
+    "required_material_regime": "Ding 2022 natural graphite transient thermal grating PBTE regime",
+    "required_evidence": "mode-resolved numeric rows, material/state mapping, uncertainty, convergence, and permitted provenance"
+  },
+  "holdout_policy": {
+    "xie_2026_accessed": false,
+    "xie_2026_source_data_consumed": false,
+    "used_for_fit": false,
+    "used_for_tuning": false,
+    "used_for_calibration": false,
+    "used_for_threshold_adjustment": false
+  },
+  "ding_target_context": {
+    "source_id": "ding_2022_nature_communications_13_285",
+    "doi": "10.1038/s41467-021-27907-z",
+    "locator": "https://www.nature.com/articles/s41467-021-27907-z",
+    "local_availability_artifact": "docs/core/artifacts/t13_ding_pbte_numeric_input_availability_audit.json",
+    "local_public_supplementary_artifact": "docs/core/artifacts/t13_ding_public_supplementary_payload_boundary_audit.json",
+    "target_observable_is_not_relabelled": true
+  },
+  "candidates": [
+    {
+      "candidate_id": "stfc_isis_99714235",
+      "source_identity": {
+        "title": "Evaluation of Phonon Density of State (PDOS) and its correlation with thermoelectric performance in Bi2Te3/Graphite nanocomposites",
+        "publisher": "STFC ISIS Neutron and Muon Source",
+        "doi": "10.5286/ISIS.E.99714235",
+        "locator": "https://data.isis.stfc.ac.uk/doi/INVESTIGATION/99714235/",
+        "experiment": "RB1868011",
+        "public_release_date": "2022-02-13",
+        "license": "CC-BY-4.0"
+      },
+      "access_route": {
+        "public_metadata_observed": true,
+        "download_route_observed": true,
+        "format": "RAW/Nexus",
+        "local_payload_imported": false,
+        "remote_payload_hash": null
+      },
+      "compatibility": {
+        "material_matches_ding_natural_graphite": false,
+        "observable_matches_mode_resolved_C_src": false,
+        "regime_matches_Ding_TTG_PBTE": false,
+        "mode_resolved_c_src_present": false,
+        "unitful_C_src_present": false,
+        "source_grade_uncertainty_present_for_C_src": false,
+        "Ding_mapping_closed": false
+      },
+      "decision": "REJECTED_AS_DING_C_SRC_ROUTE",
+      "decision_reason": "The public route is a numeric PDOS dataset for a Bi2Te3/Graphite nanocomposite. It is not a mode-resolved natural-graphite TTG/PBTE C_src(T) package and was not imported or used for calibration."
+    },
+    {
+      "candidate_id": "caltech_c_axis_graphite_mfp_2016",
+      "source_identity": {
+        "title": "Temperature-Dependent Mean Free Path Spectra of Thermal Phonons Along the c-Axis of Graphite",
+        "publisher": "CaltechAUTHORS",
+        "doi": "10.1021/acs.nanolett.5b04499",
+        "locator": "https://authors.library.caltech.edu/records/tvmw7-gwc42",
+        "eprint": "1509.05092v2",
+        "publication_year": 2016
+      },
+      "access_route": {
+        "public_metadata_observed": true,
+        "supplementary_route_observed": true,
+        "local_payload_imported": false,
+        "remote_payload_hash": null
+      },
+      "compatibility": {
+        "material_matches_graphite": true,
+        "observable_matches_mode_resolved_C_src": false,
+        "regime_matches_Ding_TTG_PBTE": false,
+        "mode_resolved_c_src_present": false,
+        "unitful_C_src_present": false,
+        "source_grade_uncertainty_present_for_C_src": false,
+        "Ding_mapping_closed": false
+      },
+      "decision": "REJECTED_AS_DING_C_SRC_ROUTE",
+      "decision_reason": "The route concerns c-axis phonon mean-free-path spectra measured by time-domain thermoreflectance, not the mode-resolved volumetric heat-capacity input C_src(T) for Ding's natural-graphite TTG/PBTE geometry. It remains a possible comparator only."
+    },
+    {
+      "candidate_id": "nims_mdr_huang_2023_graphite_poiseuille",
+      "source_identity": {
+        "title": "Observation of phonon Poiseuille flow in isotopically purified graphite ribbons",
+        "publisher": "NIMS Materials Data Repository / Nature Communications",
+        "doi": "10.1038/s41467-023-37380-5",
+        "locator": "https://www.nature.com/articles/s41467-023-37380-5",
+        "repository_locator": "https://mdr.nims.go.jp/datasets/bf141c90-3911-4b2c-9fbc-274dad05d5d0",
+        "repository_id": "bf141c90-3911-4b2c-9fbc-274dad05d5d0",
+        "publication_year": 2023,
+        "license": "CC-BY-4.0"
+      },
+      "access_route": {
+        "public_metadata_observed": true,
+        "download_route_observed": true,
+        "format": "ARTICLE_PDF_ONLY",
+        "public_payload_file_names": [
+          "s41467-023-37380-5.pdf"
+        ],
+        "data_availability_route": "corresponding authors upon reasonable request",
+        "numeric_bte_payload_observed": false,
+        "local_payload_imported": false,
+        "remote_payload_hash": null
+      },
+      "compatibility": {
+        "material_matches_graphite": true,
+        "material_matches_ding_natural_graphite": false,
+        "observable_matches_mode_resolved_C_src": false,
+        "regime_matches_Ding_TTG_PBTE": false,
+        "mode_resolved_c_src_present": false,
+        "unitful_C_src_present": false,
+        "source_grade_uncertainty_present_for_C_src": false,
+        "Ding_mapping_closed": false
+      },
+      "decision": "REJECTED_AS_DING_C_SRC_ROUTE",
+      "decision_reason": "The public NIMS/MDR route exposes the article/PDF record for a graphite-ribbon Poiseuille-flow study, while the paper states that supporting data are available from the corresponding authors upon reasonable request. No machine-readable mode-resolved C_src(T), force constants, or TTG/PBTE response payload was observed or imported; the route remains comparison-only."
+    }
+  ],
+  "import_policy": {
+    "numeric_rows_imported": false,
+    "synthetic_replacement_created": false,
+    "figure_digitization_performed": false,
+    "alpha_Phi_K_fit_performed": false,
+    "target_curve_fit_performed": false,
+    "holdout_read": false
+  },
+  "claim_boundary": "This package records a bounded inventory of three public candidate routes and rejects them for the Ding C_src acceptance contract. It does not claim that no future source exists, does not produce C_src, does not calibrate alpha_Phi_K, and does not close Topic 13."
+}

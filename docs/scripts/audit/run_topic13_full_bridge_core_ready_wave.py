@@ -10,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 COMMANDS = [
     "docs/scripts/audit/run_topic13_full_bridge_wave.py",
+    "docs/scripts/audit/sync_uet_wave1_foundation_hash_cycle.py",
     "docs/scripts/audit/repair_wave1_major_result_hash_cycle.py",
     "docs/scripts/audit/audit_uet_research_room_wave1.py",
     "docs/scripts/audit/audit_uet_research_room_wave1_integrity.py",

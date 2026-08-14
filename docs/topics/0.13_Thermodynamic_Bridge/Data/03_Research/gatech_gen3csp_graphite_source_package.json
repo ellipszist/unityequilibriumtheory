@@ -1,0 +1,84 @@
+{
+  "schema_version": "t13-gatech-cp-source-package-v1",
+  "artifact": "gatech_gen3csp_graphite_source_package",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "created_on": "2026-08-10",
+  "reviewed_on": "2026-08-11",
+  "status": "RAW_ARCHIVED_CP_95CI_CV_OPEN",
+  "source": {
+    "source_id": "gatech_gen3csp_graphite",
+    "title": "Thermophysical Properties Database of Gen3 CSP Materials: Graphite",
+    "publisher": "George W. Woodruff School of Mechanical Engineering, Georgia Institute of Technology",
+    "landing_url": "https://gen3csp.gatech.edu/graphite/",
+    "data_url": "https://gen3csp.gatech.edu/wp-content/uploads/2020/12/Graphite.xlsx",
+    "uncertainty_method_url": "https://gen3csp.gatech.edu/uncertainty/",
+    "source_locator": [
+      "Graphite landing page: Specific Heat Capacity",
+      "Graphite.xlsx, Sheet1, row 3 / Excel range A3:G3",
+      "Graphite landing page: Thermal Conductivity relation and density note",
+      "Uncertainty Analysis: specific heat measurement, 95% confidence level",
+      "Uncertainty Analysis: thermal-conductivity propagation, k = diffusivity * c_p * rho"
+    ],
+    "retrieved_on": "2026-08-10",
+    "local_raw_path": "Data/03_Research/raw/gen3csp_graphite.xlsx",
+    "local_raw_sha256": "baa7f6181fa3d5521fc594cb2c832308927bc77dbac89c43b373bc304eaa6900",
+    "local_raw_bytes": 11234,
+    "license_or_terms": "Public download route provided by Georgia Tech; publication/reuse terms remain subject to source citation review",
+    "preprocessing": "local read-only extraction from workbook XML; Celsius-to-kelvin conversion uses exact offset +273.15; no additional interpolation, fitting, smoothing, or TTG curve access",
+    "publisher_preprocessing": {
+      "specific_heat_temperature_alignment": "SOURCE_PROVIDER_1D_LINEAR_INTERPOLATION_TO_DIFFUSIVITY_TEMPERATURES",
+      "thermal_conductivity_origin": "DERIVED_K_EQUALS_DIFFUSIVITY_TIMES_CP_TIMES_RHO",
+      "density_origin": "ASSUMED_CONSTANT_1P78_G_PER_CM3_FROM_PROVIDER_COMMUNICATION",
+      "density_uncertainty_treatment": "ASSUMED_NEGLIGIBLE_BY_SOURCE_METHOD"
+    },
+    "source_data_role": "independent calibration candidate; not consumed by target fitting"
+  },
+  "row_identity": {
+    "worksheet": "Sheet1",
+    "excel_range": "A3:G3",
+    "key": "source_id + worksheet + excel_row + temperature_C",
+    "temperature_C": 300.0,
+    "temperature_K": 573.15
+  },
+  "reported_values": {
+    "average_specific_heat_J_per_g_K": 1.25981694473522,
+    "uncertainty_95pct_J_per_g_K": 0.0698470681678102,
+    "uncertainty_confidence": "95%",
+    "average_thermal_conductivity_W_per_m_K": 74.0939625200673,
+    "uncertainty_thermal_conductivity_95pct_W_per_m_K": 5.52004525723003,
+    "average_thermal_diffusivity_mm2_per_s": 33.0411666666667,
+    "uncertainty_thermal_diffusivity_95pct_mm2_per_s": 1.92932827975038
+  },
+  "density_contract": {
+    "value_g_per_cm3": 1.78,
+    "status": "ASSUMED_CONSTANT_NO_SOURCE_UNCERTAINTY",
+    "origin": "landing-page note citing EMS-5000 graphite and vendor communication",
+    "required_for": "mass-specific-to-volumetric conversion",
+    "use_in_current_calibration": false
+  },
+  "property_origin_contract": {
+    "thermal_diffusivity": "MEASURED_INDEPENDENTLY_BY_LFA",
+    "specific_heat": "MEASURED_INDEPENDENTLY_BY_STA_THEN_SOURCE_INTERPOLATED_TO_DIFFUSIVITY_GRID",
+    "density": "ASSUMED_CONSTANT_NOT_MEASURED_IN_THIS_PACKAGE",
+    "thermal_conductivity": "DERIVED_FROM_DIFFUSIVITY_CP_AND_ASSUMED_DENSITY_NOT_AN_INDEPENDENT_MEASUREMENT",
+    "independence_consequence": "k divided by diffusivity and c_p recovers the assumed density algebraically and cannot source-lock density or volumetric heat capacity independently"
+  },
+  "required_quantity_contract": {
+    "source_quantity": "c_p mass-specific",
+    "source_units": "J g^-1 K^-1",
+    "standard_TTG_quantity": "volumetric c_v",
+    "standard_units": "J m^-3 K^-1",
+    "conversion_status": "OPEN_CP_TO_CV_AND_DENSITY_UNCERTAINTY",
+    "required_additional_inputs": [
+      "Cp-to-cv thermodynamic correction for the declared graphite regime",
+      "independently measured same-grade density with uncertainty or a direct volumetric heat-capacity source",
+      "material-regime correspondence to the declared TTG source"
+    ]
+  },
+  "holdout_policy": {
+    "xie_2026_accessed": false,
+    "xie_2026_source_data_consumed": false,
+    "calibration_path_may_read_holdout": false
+  },
+  "claim_boundary": "This package source-locks one independent c_p row and its 95% confidence interval at 573.15 K. Its reported thermal conductivity is derived from diffusivity, c_p, and an assumed density, so it cannot independently source-lock density or volumetric c_v. It does not derive e0, identify Phi with Phi_E, or calibrate alpha_Phi_K."
+}

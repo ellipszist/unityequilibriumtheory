@@ -3,7 +3,7 @@ Run core-topic verification commands and write transparent artifacts.
 
 This runner does not certify scientific correctness. It records what actually happened when
 the repository's current VERIFICATION_SPEC.md command is executed: exit code, timeout, output,
-input hashes, and environment details.
+input hashes, input-path resolution, and environment details.
 """
 
 from __future__ import annotations
@@ -51,7 +51,7 @@ def extract_next_backtick_value(lines: list[str], marker: str) -> str | None:
     for index, line in enumerate(lines):
         if marker in line:
             for candidate in lines[index + 1 : index + 6]:
-                match = re.search(r"`([^`]+)`", candidate)
+                match = re.search(r"\x60([^\x60]+)\x60", candidate)
                 if match:
                     return match.group(1).strip()
                 stripped = candidate.strip().lstrip("-").strip()
@@ -78,7 +78,7 @@ def extract_input_paths(lines: list[str]) -> list[str]:
         ):
             break
         if in_inputs:
-            for match in re.finditer(r"`([^`]+)`", line):
+            for match in re.finditer(r"\x60([^\x60]+)\x60", line):
                 value = match.group(1).strip()
                 if value and value not in input_paths:
                     input_paths.append(value)
@@ -114,22 +114,84 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
-def collect_input_hashes(topic_dir: Path, input_paths: list[str]) -> list[dict[str, str]]:
-    hashes: list[dict[str, str]] = []
-    for rel_path in input_paths:
-        path = topic_dir / rel_path
-        if not path.exists() or not path.is_file():
-            hashes.append({"path": rel_path, "status": "missing"})
-            continue
-        hashes.append(
-            {
-                "path": rel_path,
-                "status": "present",
-                "sha256": sha256_file(path),
-                "bytes": str(path.stat().st_size),
-            }
-        )
-    return hashes
+def _display_path(path: Path, repo_root: Path) -> str:
+    resolved = path.resolve()
+    try:
+        return resolved.relative_to(repo_root.resolve()).as_posix()
+    except ValueError:
+        return str(resolved)
+
+
+def resolve_input_path(
+    topic_dir: Path, input_path: str, repo_root: Path = REPO_ROOT
+) -> dict[str, object]:
+    """Resolve an input from topic_dir first, then repo_root.
+
+    If both candidates exist as different files, return ambiguous instead of
+    choosing silently. This keeps path drift visible in the run contract.
+    """
+
+    declared = Path(input_path)
+    if declared.is_absolute():
+        candidates = [(declared, "absolute")]
+    else:
+        candidates = [
+            (topic_dir / declared, "topic_dir"),
+            (repo_root / declared, "repo_root"),
+        ]
+
+    existing: list[tuple[Path, str]] = []
+    seen: set[Path] = set()
+    for candidate, base in candidates:
+        resolved = candidate.resolve()
+        if resolved.is_file() and resolved not in seen:
+            existing.append((resolved, base))
+            seen.add(resolved)
+
+    if len(existing) > 1:
+        return {
+            "path": input_path,
+            "status": "ambiguous",
+            "resolution_status": "ambiguous",
+            "candidates": [
+                {
+                    "path": _display_path(path, repo_root),
+                    "resolution_base": base,
+                }
+                for path, base in existing
+            ],
+        }
+
+    if not existing:
+        return {
+            "path": input_path,
+            "status": "missing",
+            "resolution_status": "missing",
+            "candidates": [
+                {
+                    "path": _display_path(path, repo_root),
+                    "resolution_base": base,
+                }
+                for path, base in candidates
+            ],
+        }
+
+    path, base = existing[0]
+    return {
+        "path": input_path,
+        "status": "present",
+        "resolution_status": "resolved",
+        "resolution_base": base,
+        "resolved_path": _display_path(path, repo_root),
+        "sha256": sha256_file(path),
+        "bytes": str(path.stat().st_size),
+    }
+
+
+def collect_input_hashes(
+    topic_dir: Path, input_paths: list[str], repo_root: Path = REPO_ROOT
+) -> list[dict[str, object]]:
+    return [resolve_input_path(topic_dir, path, repo_root) for path in input_paths]
 
 
 def trim_output(value: str) -> str:
@@ -152,8 +214,17 @@ def run_topic(topic_name: str, timeout: int) -> dict[str, object]:
     run_artifact_path.parent.mkdir(parents=True, exist_ok=True)
 
     started = time.monotonic()
+    input_hashes = collect_input_hashes(topic_dir, input_paths)
+    input_statuses = {record["status"] for record in input_hashes}
+    input_resolution_status = (
+        "BLOCKED"
+        if "ambiguous" in input_statuses
+        else "WARN"
+        if "missing" in input_statuses
+        else "PASS"
+    )
     result: dict[str, object] = {
-        "schema_version": "1.0",
+        "schema_version": "1.1",
         "topic": topic_name,
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "repo_root": str(REPO_ROOT),
@@ -162,7 +233,8 @@ def run_topic(topic_name: str, timeout: int) -> dict[str, object]:
         "declared_scientific_artifact_path": str(declared_artifact_path),
         "runner_artifact_path": str(run_artifact_path),
         "command": command,
-        "input_hashes": collect_input_hashes(topic_dir, input_paths),
+        "input_hashes": input_hashes,
+        "input_resolution_status": input_resolution_status,
         "timeout_seconds": timeout,
     }
 
@@ -171,6 +243,19 @@ def run_topic(topic_name: str, timeout: int) -> dict[str, object]:
             {
                 "status": "blocked",
                 "reason": "No primary command found in VERIFICATION_SPEC.md",
+                "passed_run_contract": False,
+                "duration_seconds": round(time.monotonic() - started, 3),
+            }
+        )
+        run_artifact_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
+        return result
+
+    if "ambiguous" in input_statuses:
+        result.update(
+            {
+                "status": "blocked",
+                "reason": "One or more declared inputs resolve to multiple different files.",
+                "passed_run_contract": False,
                 "duration_seconds": round(time.monotonic() - started, 3),
             }
         )
@@ -261,6 +346,7 @@ def main() -> int:
                 "status": result.get("status"),
                 "exit_code": result.get("exit_code"),
                 "passed_run_contract": result.get("passed_run_contract", False),
+                "input_resolution_status": result.get("input_resolution_status"),
                 "runner_artifact_path": result.get("runner_artifact_path"),
                 "declared_scientific_artifact_path": result.get(
                     "declared_scientific_artifact_path"
@@ -269,7 +355,9 @@ def main() -> int:
         )
         print(
             f"{topic}: status={result.get('status')} "
-            f"exit={result.get('exit_code')} pass={result.get('passed_run_contract', False)}"
+            f"exit={result.get('exit_code')} "
+            f"inputs={result.get('input_resolution_status')} "
+            f"pass={result.get('passed_run_contract', False)}"
         )
 
     summary_path = DOCS_ROOT / "meta" / "core_verification_run_summary.json"

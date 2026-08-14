@@ -389,7 +389,7 @@
       "mathematical_rigor_score": 2,
       "physical_rigor_score": 2,
       "claim_integrity_score": 3,
-      "recommended_next_action": "Archive raw CHB-MIT/Bonn EEG windows and real TCGA/omics matrices with preprocessing, record identifiers, and baseline metrics before upgrading beyond synthetic/source-referenced diagnostics."
+      "recommended_next_action": "Keep Draft/Tier B; the finite HP lane now has a class-C internal artifact, but the topic controller remains source-lock and artifact separation, with raw EEG windows, real TCGA/omics matrices, preprocessing, record identifiers, baseline metrics, and biological protein correspondence still required before any claim upgrade."
     },
     {
       "name": "0.23_Unity_Scale_Link",

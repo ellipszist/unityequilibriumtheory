@@ -22,10 +22,18 @@ def test_no_go_is_scoped_to_declared_conserved_c_class() -> None:
     assert "all UV regularizations" in artifact["not_claimed"][0]
 
 
-def test_topic13_gate_keeps_named_branch_open_after_no_go() -> None:
+def test_topic13_gate_keeps_original_baseline_blocked_after_no_go() -> None:
     gate = load(GATE)
     causal = gate["verification_status"]["causal_full_candidate_or_formal_no_go_branch"]
     assert causal["formal_no_go_recorded"] is True
-    assert causal["named_finite_cone_branch_pass"] is False
+    assert causal["named_finite_cone_branch_pass"] is True
+    assert causal["named_coupled_branch_pass"] is True
+    assert causal["full_candidate_pass"] is False
+    assert causal["baseline_status"] == "BLOCKED"
+    assert causal["structural_question_closure"] == "CLOSED_AS_NO_GO"
+    assert any("original conserved-C" in item for item in gate["major_result"]["baseline_open_items"])
     assert gate["status"] == "BLOCKED_OPEN_T13_FULL_BRIDGE"
-    assert gate["controlling_blocker"] == "named_finite_cone_branch_or_explicit_regularization_missing"
+    assert gate["controlling_blocker"] == (
+        "dimensional_phi_energy_anchor_or_independent_alpha_calibration_missing"
+    )
+    assert "original_conserved_c_gradient_baseline_blocked" not in gate["major_result"]["what_remains_open"]

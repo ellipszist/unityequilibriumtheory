@@ -38,9 +38,9 @@
         "Fig. 1d",
         "axes box and axis ranges recorded in digitization manifest"
       ],
-      "external_numeric_status": "figure_asset_digitized_locally_provisional",
+      "external_numeric_status": "figure_asset_digitized_locally_with_closed_mapping",
       "local_numeric_path": "Data/03_Research/ding_2022_fig1d_digitized.csv",
-      "local_numeric_hash": "c4117bb4368f9085614fd24f994c7dc61fddf9c2eed00d151d350a6a5f90f19d",
+      "local_numeric_hash": "6f468401d1f911e327b5e51f19f454cecdd0c2ecff933ef9522e67baae14a3a9",
       "preprocessing": "deterministic RGB color-mask digitization of the declared Fig. 1d axes box; one median pixel per x column; no interpolation beyond pixel-column sampling",
       "units_reviewed": [
         "ps",
@@ -55,8 +55,8 @@
         "key": "source_id + series_id + pixel_x",
         "row_count": 432
       },
-      "benchmark_role": "training_source_candidate_for_normalized_shape_only; no fitting in current wave",
-      "status": "PROVISIONAL_DIGITIZED_NUMERIC_PACKAGE"
+      "benchmark_role": "permitted training/comparison source for normalized shape only; no fitting in current wave",
+      "status": "FIGURE_DERIVED_NUMERIC_PACKAGE_WITH_CLOSED_MAPPING"
     },
     {
       "source_id": "xie_2026_isotopically_pure_graphite_holdout",
@@ -222,5 +222,6 @@
     "claim_boundary": "The normalized TTG operator can be defined for a Phi lane, but this does not establish that Phi is quasi-temperature or that UET predicts a measured signal."
   },
   "local_numeric_archive": true,
-  "claim_boundary": "Ding figure digitization is provisional intake only; Xie 2026 remains metadata-only locked holdout"
+  "claim_boundary": "Ding 2022 Figure 1d is ready for permitted normalized comparison with closed mapping; raw-author PBTE C_src(T), base Phi-to-energy mapping, and alpha_Phi_K remain open.",
+  "status": "FIGURE_DERIVED_NORMALIZED_COMPARISON_READY_RAW_AUTHOR_C_SRC_OPEN"
 }

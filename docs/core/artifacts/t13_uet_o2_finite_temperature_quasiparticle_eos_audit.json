@@ -1,0 +1,181 @@
+{
+  "schema_version": "t13-uet-o2-finite-temperature-quasiparticle-eos-v1",
+  "artifact": "t13_uet_o2_finite_temperature_quasiparticle_eos_audit",
+  "generated_at": "2026-08-13",
+  "status": "PASS_ACTION_DERIVED_TREE_CONDENSATE_THERMAL_QUASIPARTICLE_EOS",
+  "major_result": {
+    "major_result_id": "T13_UET_O2_FINITE_T_QUASIPARTICLE_EOS_LANE",
+    "topic": "0.13_Thermodynamic_Bridge",
+    "closure_level": "CLOSED_FOR_LANE",
+    "what_is_closed": [
+      "tree-level O(2) condensate branch and phase selection",
+      "finite-temperature normal and condensed quasiparticle pressure branches",
+      "gapless ideal Goldstone limit on the tree condensate branch",
+      "charge, entropy, energy, susceptibility, and Gibbs-Duhem checks for the declared approximate EOS",
+      "even/odd chemical-potential symmetry without relabeling C or Phi"
+    ],
+    "equation_or_mapping": {
+      "tree_grand_potential": "Omega_0=(m_eff^2-Z*mu^2)A^2/2+lambda*A^4/4",
+      "condensate": "A_*^2=(Z*mu^2-m_eff^2)/lambda for q>0",
+      "quasiparticles": "E_+/-^2=S +/- sqrt(4*Z*mu^2*B+4*lambda^2*A_*^4)",
+      "pressure": "p_2f=-Omega_0(A_*)+p_qp(T,mu,Phi)",
+      "thermodynamic_derivatives": "n=partial_mu p; s=partial_T p; epsilon=-p+T*s+mu*n"
+    },
+    "units": {
+      "unit_lane": "natural",
+      "T_mu_m_eff": "natural energy",
+      "p_epsilon": "natural energy density",
+      "n": "natural charge density",
+      "s": "natural entropy density",
+      "Phi": "action response input; not temperature",
+      "C": "not relabeled as charge density"
+    },
+    "derivation_class": "action-derived approximate tree-condensate plus thermal quasiparticle determinant",
+    "observable": "natural-unit pressure, charge, entropy, energy, and susceptibility",
+    "data_role": "ACTION_DERIVED_APPROXIMATE_EOS_NOT_TRANSPORT",
+    "evidence_artifacts": [
+      {
+        "path": "docs/core/uet_o2_finite_temperature_quasiparticle_eos.py",
+        "sha256": "2789ca3b4ec3f664e3059c76eec717dc5e0c49da59fad923a924b393548ca8e4"
+      }
+    ],
+    "verification_status": "PASS_ACTION_DERIVED_TREE_CONDENSATE_THERMAL_QUASIPARTICLE_EOS",
+    "open_blockers": [
+      "vacuum_counterterm_and_interacting_finite_temperature_self_energy_missing",
+      "full_condensate_normal_two_fluid_SK_KMS_matching_missing",
+      "physical_Kubo_coefficient_record_missing",
+      "dimensional_Phi_to_thermal_observable_map_missing",
+      "alpha_Phi_K_independent_calibration_missing"
+    ],
+    "dependency_unlocked": "finite-temperature approximate EOS lane only; no physical transport, SI, alpha, Core, Gravity, or external-validation unlock",
+    "claim_boundary": "This is an action-derived approximate finite-temperature EOS lane. It is not a complete interacting two-fluid theory, physical transport closure, SI calibration, or external validation."
+  },
+  "contract": {
+    "status": "PASS_ACTION_DERIVED_TREE_CONDENSATE_THERMAL_QUASIPARTICLE_EOS",
+    "equations": {
+      "tree_grand_potential": "Omega_0=(m_eff^2-Z*mu^2)A^2/2+lambda*A^4/4",
+      "condensate": "A_*^2=(Z*mu^2-m_eff^2)/lambda for q>0",
+      "quasiparticles": "E_+/-^2=S +/- sqrt(4*Z*mu^2*B+4*lambda^2*A_*^4)",
+      "pressure": "p_2f=-Omega_0(A_*)+p_qp(T,mu,Phi)",
+      "thermodynamic_derivatives": "n=partial_mu p; s=partial_T p; epsilon=-p+T*s+mu*n"
+    },
+    "unit_contract": {
+      "unit_lane": "natural",
+      "T_mu_m_eff": "natural energy",
+      "p_epsilon": "natural energy density",
+      "n": "natural charge density",
+      "s": "natural entropy density",
+      "Phi": "action response input; not temperature",
+      "C": "not relabeled as charge density"
+    },
+    "closed_scope": "tree condensate plus thermal quasiparticle thermodynamic lane with normal and condensed branches",
+    "excluded_scope": "vacuum counterterm completion, interacting thermal self-energy, physical Kubo/SK-KMS matching, heat flux, SI Phi map, alpha_Phi_K, and TTG validation",
+    "R_gen": "derived history trace only; not a state or feedback term",
+    "data_role": "ACTION_DERIVED_APPROXIMATE_EOS_NOT_TRANSPORT",
+    "claim_boundary": "This is an action-derived approximate finite-temperature EOS lane. It is not a complete interacting two-fluid theory, physical transport closure, SI calibration, or external validation."
+  },
+  "state_grid": {
+    "normal": [
+      {
+        "branch": "normal",
+        "temperature": 0.22,
+        "chemical_potential": 0.35,
+        "space_response": 0.15,
+        "effective_mass": 0.9969954864491614,
+        "condensate_amplitude": 0.0,
+        "pressure": 0.00011541104065116314,
+        "charge_density": 0.0004871367150300818,
+        "entropy_density": 0.0031073474100652295,
+        "energy_density": 0.0007387032398237161,
+        "susceptibility": 0.0024406628211108604,
+        "goldstone_energy_at_zero_momentum": NaN,
+        "data_role": "ACTION_DERIVED_APPROXIMATE_EOS_NOT_TRANSPORT"
+      },
+      {
+        "branch": "normal",
+        "temperature": 0.31,
+        "chemical_potential": 0.55,
+        "space_response": 0.2,
+        "effective_mass": 0.9959919678390986,
+        "condensate_amplitude": 0.0,
+        "pressure": 0.0014127050857428854,
+        "charge_density": 0.004479557549653956,
+        "entropy_density": 0.020588218343287664,
+        "energy_density": 0.007433399252985967,
+        "susceptibility": 0.016442126886352312,
+        "goldstone_energy_at_zero_momentum": NaN,
+        "data_role": "ACTION_DERIVED_APPROXIMATE_EOS_NOT_TRANSPORT"
+      }
+    ],
+    "condensed": [
+      {
+        "branch": "condensed",
+        "temperature": 0.12,
+        "chemical_potential": 1.18,
+        "space_response": 0.15,
+        "effective_mass": 0.9969954864491614,
+        "condensate_amplitude": 0.6311893535223799,
+        "pressure": 0.039840303584510905,
+        "charge_density": 0.4696635004236525,
+        "entropy_density": 0.004847217032720452,
+        "energy_density": 0.5149442929593255,
+        "susceptibility": 3.1868982858060346,
+        "goldstone_energy_at_zero_momentum": 0.0,
+        "data_role": "ACTION_DERIVED_APPROXIMATE_EOS_NOT_TRANSPORT"
+      },
+      {
+        "branch": "condensed",
+        "temperature": 0.2,
+        "chemical_potential": 1.28,
+        "space_response": 0.2,
+        "effective_mass": 0.9959919678390986,
+        "condensate_amplitude": 0.8039900496896712,
+        "pressure": 0.10530797105947856,
+        "charge_density": 0.8263430789671402,
+        "entropy_density": 0.015509612636133152,
+        "energy_density": 0.9555130925456875,
+        "susceptibility": 3.9285657846429247,
+        "goldstone_energy_at_zero_momentum": 0.0,
+        "data_role": "ACTION_DERIVED_APPROXIMATE_EOS_NOT_TRANSPORT"
+      }
+    ]
+  },
+  "representative_checks": {
+    "normal_charge_is_pressure_mu_derivative": true,
+    "normal_entropy_is_pressure_temperature_derivative": true,
+    "normal_gibbs_duhem_energy_identity": true,
+    "condensed_charge_is_pressure_mu_derivative": true,
+    "condensed_entropy_is_pressure_temperature_derivative": true,
+    "condensed_gibbs_duhem_energy_identity": true
+  },
+  "checks": {
+    "normal_branch_points_pass": true,
+    "condensed_branch_points_pass": true,
+    "normal_positivity_pass": true,
+    "condensed_positivity_pass": true,
+    "condensed_goldstone_limit_pass": true,
+    "quasiparticle_spectrum_finite_and_nonnegative": true,
+    "thermodynamic_derivative_checks_pass": true,
+    "gibbs_duhem_checks_pass": true,
+    "pressure_even_in_mu": true,
+    "charge_odd_in_mu": true,
+    "entropy_even_in_mu": true,
+    "C_not_relabelled_as_charge": true,
+    "Phi_not_relabelled_as_temperature": true,
+    "R_gen_not_state": true,
+    "no_physical_transport_emitted": false,
+    "no_SI_alpha_emitted": true,
+    "no_target_or_holdout": true
+  },
+  "failed_checks": [],
+  "numeric_beta_T13_emitted": false,
+  "numeric_e0_emitted": false,
+  "numeric_alpha_Phi_K_emitted": false,
+  "physical_transport_coefficients_emitted": false,
+  "parameter_fitting_performed": false,
+  "target_data_used": false,
+  "xie_2026_accessed": false,
+  "controlling_blocker": "interacting_finite_temperature_self_energy_and_full_two_fluid_transport_missing",
+  "next_controller": "Match the approximate EOS to a declared interacting finite-temperature action and state-specific Kubo/SK-KMS records without using TTG holdout data.",
+  "claim_promotion": false
+}

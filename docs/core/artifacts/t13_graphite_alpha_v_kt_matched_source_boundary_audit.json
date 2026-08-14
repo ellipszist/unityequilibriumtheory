@@ -1,0 +1,145 @@
+{
+  "schema_version": "t13-graphite-alpha-v-kt-matched-source-boundary-v1",
+  "artifact": "t13_graphite_alpha_v_kt_matched_source_boundary_audit",
+  "generated_at": "2026-08-13",
+  "status": "PASS_SCOPED_GRAPHITE_ALPHA_V_K_T_MATCHED_SOURCE_BOUNDARY_NO_GO",
+  "major_result": {
+    "major_result_id": "T13_GRAPHITE_ALPHA_V_K_T_MATCHED_SOURCE_BOUNDARY",
+    "topic": "0.13_Thermodynamic_Bridge",
+    "closure_level": "CLOSED_FOR_LANE",
+    "what_is_closed": "The current archived graphite source inventory cannot form a same-state, same-grade alpha_V/K_T pair with source-grade uncertainty for the Cp-to-Cv correction. The individual alpha_V and K_T comparator lanes remain separate.",
+    "equation_or_mapping": {
+      "cp_cv_correction": "c_p^V - c_v^V = T * alpha_V^2 * K_T",
+      "volumetric_conversion": "c_p^V = rho * c_p; c_v^V = c_p^V - T * alpha_V^2 * K_T"
+    },
+    "units": {
+      "alpha_V": "K^-1",
+      "K_T": "Pa",
+      "temperature": "K",
+      "volumetric_heat_capacity": "J m^-3 K^-1"
+    },
+    "derivation_class": "source compatibility and uncertainty-boundary audit; no UET derivation",
+    "observable": "same-state graphite alpha_V/K_T correction inputs",
+    "data_role": "SOURCE_PROVENANCE_BOUNDARY_NOT_CALIBRATION",
+    "evidence_artifacts": [
+      {
+        "role": "nist_alpha_v",
+        "path": "docs/core/artifacts/t13_nist_graphite_alpha_v_source_boundary_audit.json",
+        "sha256": "392bf8c98de925ea806a86392cbf440029a47e4e32173c2839cd04ff2cb553d5"
+      },
+      {
+        "role": "hanfland_kt",
+        "path": "docs/core/artifacts/t13_graphite_isothermal_kt_source_audit.json",
+        "sha256": "63f0518c78febda473f89f8a0c3927d14b9d98a102dc560277bcd2a9daf8c0c4"
+      },
+      {
+        "role": "bosak_elastic_bulk",
+        "path": "docs/core/artifacts/t13_graphite_elastic_bulk_modulus_source_audit.json",
+        "sha256": "65238edbfb66b57c6b3c0a06f95d8b3d28d6dc613df7b83d825332aff4a996af"
+      },
+      {
+        "role": "tpg_alpha_v",
+        "path": "docs/core/artifacts/t13_tpg_anisotropic_alpha_v_source_audit.json",
+        "sha256": "f8ed02677b5ef1aede683cc2b191538722bda56b520d1d6ba5af024638504c68"
+      },
+      {
+        "role": "nelson_riley_alpha_v",
+        "path": "docs/core/artifacts/t13_natural_graphite_nelson_riley_alpha_v_source_audit.json",
+        "sha256": "c20b42f64b9107459b555dfaddc5150028c39b5254e4791782161b2b9861b861"
+      },
+      {
+        "role": "nist_alpha_v",
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/nist_axm5q1_density_source_package.json",
+        "sha256": "9fa91225070b4b6091b0eb7c34295c5e0ab1a0316d282f26bd1f77df23269d5f"
+      },
+      {
+        "role": "hanfland_kt",
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/hanfland_1989_graphite_isothermal_kt_source_package.json",
+        "sha256": "5a5c380c972b4e83af14b2c3f361a27842e21bfaeced29f74ff75b1088b1bc53"
+      },
+      {
+        "role": "bosak_elastic_bulk",
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/bosak_2007_graphite_elastic_bulk_source_package.json",
+        "sha256": "c24c6bbb4aace7de2f2eaffd234336065a2f4e8f829d7c0cb9c1af3ae4f5f24c"
+      },
+      {
+        "role": "tpg_alpha_v",
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/ihep_2001_32_tpg_anisotropic_alpha_v_source_package.json",
+        "sha256": "601721924bdf89b0299b57f8220c9bb54633f895a024e3b500673dc4905f3ba7"
+      },
+      {
+        "role": "nelson_riley_alpha_v",
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/argonne_anl_5524_nelson_riley_alpha_v_source_package.json",
+        "sha256": "1acbb63f2bfa0f3b3bba707ca924cc0196ad9032b814c48d9087d4ff45c420d2"
+      }
+    ],
+    "verification_status": "PASS_SCOPED_GRAPHITE_ALPHA_V_K_T_MATCHED_SOURCE_BOUNDARY_NO_GO",
+    "open_blockers": [
+      "same_grade_alpha_V_and_K_T_missing",
+      "density_uncertainty_not_source_locked",
+      "material_regime_mapping_to_TTG_not_closed",
+      "c_v_source_uncertainty_not_closed",
+      "alpha_Phi_K_independent_calibration_missing"
+    ],
+    "dependency_unlocked": "Current alpha_V/K_T source-pair inventory boundary only; no Cp-to-Cv input closure, Ding C_src, alpha_Phi_K, Full Topic 13, Core, or Gravity unlock",
+    "claim_boundary": "This closes a route-level source compatibility boundary, not the existence of all possible future alpha_V/K_T data. It is not a same-state thermodynamic correction, Ding validation, UET calibration, TTG prediction, or external validation."
+  },
+  "source_pair_observations": {
+    "nist_alpha_v": {
+      "source_id": "nist_srm_260_89_axm_5q1_graphite",
+      "material": "AXM-5Q1 fine-grained isotropic graphite",
+      "alpha_V_rows": 4,
+      "K_T_emitted": false,
+      "source_sha256": "fbcde491cadf6b8105d8b22bd15145e48709926aaf1d4a24335af2a8984c71b2"
+    },
+    "hanfland_kt": {
+      "source_id": "hanfland_beister_syassen_1989_graphite_eos",
+      "material": "natural graphite powder prepared by grinding natural graphite flakes",
+      "temperature_K": 300.0,
+      "same_state_alpha_V_available": false,
+      "source_sha256": "300a6b03af667f71a27fc7c269e7a928af57d4b846bded25feaefa0e37b1089e"
+    },
+    "bosak_elastic_bulk": {
+      "source_id": "bosak_krisch_2007_graphite_ixs_elasticity",
+      "material": "kish graphite single-crystalline domains",
+      "temperature_scope": "room temperature; the source abstract and Table II do not provide a resolved temperature series",
+      "thermal_K_T_claimed": false,
+      "source_sha256": "5db6247c3dbf48dcbed70d749da96ca61816fe6fed480f32d80a947ead649d7d"
+    },
+    "tpg_alpha_v": {
+      "source_id": "ihep_2001_32_tpg_thermal_expansion",
+      "same_specimen_for_both_axes": false,
+      "same_temperature_point": false,
+      "same_state_K_T": false,
+      "source_sha256": "e9527b8dba9d3944a1a9298e9d516e501279b500586cf0179ec076b94fdd6f2e"
+    },
+    "nelson_riley_alpha_v": {
+      "source_id": "argonne_anl_5524_graphite_thermal_expansion_table",
+      "same_specimen_alpha_V": false,
+      "alpha_V_uncertainty_status": "NOT_AVAILABLE_IN_SOURCE",
+      "source_sha256": "7e334a4c380c130773f6c34a6238f25a9c28e15c3a9c0e1f9aa3769647e98561"
+    }
+  },
+  "checks": {
+    "nist_alpha_source_is_lane_locked": true,
+    "nist_alpha_has_rows": true,
+    "nist_is_axm_5q1": true,
+    "nist_does_not_emit_kt": true,
+    "hanfland_kt_source_is_lane_locked": true,
+    "hanfland_is_natural_graphite_powder": true,
+    "hanfland_same_state_alpha_is_missing": true,
+    "hanfland_ding_mapping_is_open": true,
+    "bosak_bulk_is_not_thermal_kt": true,
+    "bosak_ding_mapping_is_not_claimed": true,
+    "tpg_same_specimen_is_false": true,
+    "tpg_same_temperature_is_false": true,
+    "tpg_ding_mapping_is_open": true,
+    "nelson_uncertainty_is_not_row_level": true,
+    "nelson_same_specimen_is_false": true,
+    "all_current_pairs_fail_same_state_contract": true,
+    "holdout_is_unconsumed": true
+  },
+  "controlling_blocker": "same_grade_alpha_V_and_K_T_missing",
+  "next_controller": "Acquire a permitted same-specimen or explicitly state-matched alpha_V and isothermal K_T source with uncertainty and Ding-regime mapping; do not combine the current comparator values by assumption.",
+  "claim_boundary": "No numeric Cp-to-Cv correction, Ding C_src, alpha_Phi_K, TTG prediction, or Full Topic 13 closure is emitted."
+}

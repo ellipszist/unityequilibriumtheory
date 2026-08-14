@@ -21,9 +21,9 @@ def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def test_source_package_is_provisional_intake_and_holdout_locked() -> None:
+def test_source_package_exposes_figure_derived_comparison_and_holdout_boundary() -> None:
     package = _read(DATA / "matter_space_second_sound_source_package.json")
-    assert package["status"] == "PROVISIONAL_NUMERIC_SOURCE_INTAKE"
+    assert package["status"] == "FIGURE_DERIVED_NORMALIZED_COMPARISON_READY_RAW_AUTHOR_C_SRC_OPEN"
     assert package["usage_policy"]["numeric_fitting_allowed"] is False
     assert package["usage_policy"]["observable_map_status"] == "NORMALIZED_DEFINED_DIMENSIONAL_BLOCKED"
     assert any(source.get("local_numeric_path") for source in package["sources"] if "holdout" not in source["source_id"])

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_dimensional_observable_closure_audit",
-  "generated_at": "2026-08-09T04:02:52.449389+00:00",
+  "generated_at": "2026-08-14T08:23:41.737224+00:00",
   "audit_status": "PASS_ACCOUNTING",
   "closure_status": "BLOCKED",
   "topic": "0.13_Thermodynamic_Bridge",
@@ -18,7 +18,7 @@
   },
   "metrics": {
     "source_package_hash_matches_readiness": true,
-    "numeric_source_rows_present": 0,
+    "numeric_source_rows_present": 1,
     "alpha_phi_k_closed": false,
     "heat_flux_map_closed": false,
     "entropy_map_closed": false,
@@ -29,7 +29,7 @@
   "checks": {
     "source_identity_locked": true,
     "normalized_operator_defined": true,
-    "numeric_source_package": false,
+    "numeric_source_package": true,
     "independent_dimensional_calibration": false,
     "heat_flux_observable": false,
     "entropy_observable": false,
@@ -39,11 +39,11 @@
   },
   "input_identity": {
     "readiness_path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_observable_map_readiness.json",
-    "readiness_sha256": "4e60749cf9906a59c52dd1690571f7a64664cfcb0807944d009ceb55d447df39",
+    "readiness_sha256": "f64d0398c42ebcb8a501eee7c975eec6922cad681129fbf1d2c5ce462f7a0f58",
     "pilot_path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_control.json",
-    "pilot_sha256": "e0c5c507dcaa4545c02d06ab7b67d7d0d1d9b9b7ee7de395eb78048a5a08bdca",
+    "pilot_sha256": "6288321201e74c5d85bb0662f5b1d1ca5ea374927005d284cf4184058bdba0ab",
     "source_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_second_sound_source_package.json",
-    "source_sha256": "32ef012819c3630c9d8982bcbe93c796769a09b3b28356c0f54c78bb4f4dc243"
+    "source_sha256": "3754d54cdee639be211a308d893b994ca78f7dd11aaeb191278b9085e7923b96"
   },
   "provenance_gaps": [
     "no local numeric TTG rows with locator, preprocessing, uncertainty, and hash",

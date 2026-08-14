@@ -1,0 +1,77 @@
+{
+  "schema_version": "t13-ding-material-regime-boundary-source-package-v1",
+  "artifact": "ding_graphite_material_regime_boundary_source_package",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "created_on": "2026-08-13",
+  "status": "SOURCE_IDENTITY_LOCKED_EQUIVALENCE_NOT_ESTABLISHED",
+  "target": {
+    "source_id": "ding_2022_natural_graphite_ttg_pbte_lane",
+    "material_description": "natural graphite crystal used in the Ding 2022 TTG experiment and graphite PBTE lane",
+    "evidence_package": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/ding_2022_pbte_energy_temperature_source_package.json",
+    "supplementary_raw_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/ding_2022_supplementary_information.pdf",
+    "supplementary_sha256": "a50c1a6347775de72f705f4395507d3136cbf4e5cadfb6638caca2876c52b8f7",
+    "source_locator": "Supplementary Information p. 11, section 9, Fig. S11 caption and characterization text",
+    "reported_characterization": {
+      "average_grain_area_um2": 382.0,
+      "average_grain_area_uncertainty_um2": 270.0,
+      "typical_grain_size_statement": "larger than 20 um",
+      "largest_longer_axis_statement": "could be larger than 100 um"
+    }
+  },
+  "comparators": [
+    {
+      "source_id": "mp48",
+      "material": "ideal AB graphite, P6_3/mmc, primitive cell 4 atoms",
+      "evidence_package": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/mp48_independent_graphite_cv_source_package.json",
+      "source_identity": "Materials Project mp-48 harmonic phonon deposit",
+      "regime_difference": "ideal periodic harmonic crystal; no Ding specimen microstructure or PBTE scattering payload",
+      "equivalence_status": "NOT_ESTABLISHED"
+    },
+    {
+      "source_id": "nist_axm5q1",
+      "material": "AXM-5Q1 fine-grained isotropic graphite",
+      "evidence_package": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/nist_axm5q1_density_source_package.json",
+      "source_identity": "NIST SP 260-89 specimen 103 density package",
+      "regime_difference": "manufactured fine-grained isotropic grade; no equivalence to Ding natural crystal established",
+      "equivalence_status": "NOT_ESTABLISHED"
+    },
+    {
+      "source_id": "bipm_carbone_lorraine",
+      "material": "ultra-pure graphite block manufactured by Carbone Lorraine",
+      "evidence_package": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/bipm_2006_01_graphite_specific_heat_source_package.json",
+      "source_identity": "BIPM-2006/01 sample-H calorimetry",
+      "regime_difference": "ultra-pure manufactured graphite block and calorimeter specimen; no equivalence to Ding natural crystal established",
+      "equivalence_status": "NOT_ESTABLISHED"
+    },
+    {
+      "source_id": "iaea_manufactured_graphite",
+      "material": "manufactured graphite average curve",
+      "evidence_package": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/iaea_graphite_handbook_constant_volume_source_package.json",
+      "source_identity": "IAEA Graphite Engineering Handbook Table 4.11",
+      "regime_difference": "grade-averaged manufactured graphite with table-derived corrections; no specimen identity to Ding",
+      "equivalence_status": "NOT_ESTABLISHED"
+    },
+    {
+      "source_id": "huang_2023_graphite_ribbon",
+      "material": "isotopically purified graphite ribbon comparator",
+      "evidence_package": "docs/core/artifacts/t13_huang_2023_supplementary_payload_boundary_audit.json",
+      "source_identity": "Huang 2023 supplementary provenance boundary",
+      "regime_difference": "isotopically purified ribbon geometry and source lane; no equivalence to Ding natural crystal established",
+      "equivalence_status": "NOT_ESTABLISHED"
+    }
+  ],
+  "mapping_contract": {
+    "Ding_C_src": "source-defined volumetric modal heat-capacity sum in the PBTE response",
+    "comparator_cv": "source-specific c_v or c_p-derived quantity; cannot be relabeled Ding C_src without explicit material, state, and PBTE mapping",
+    "equivalence_rule": "material_regime_equivalent_to_Ding := material identity + morphology + isotope/defect state + temperature/state + source response contract all explicitly matched",
+    "equivalence_result": false
+  },
+  "holdout_policy": {
+    "xie_2026_accessed": false,
+    "xie_2026_source_data_consumed": false,
+    "calibration_path_may_read_holdout": false,
+    "target_curve_used": false,
+    "alpha_Phi_K_fit_used": false
+  },
+  "claim_boundary": "This package closes the evidence boundary that the archived comparator materials cannot be treated as equivalent to Ding's natural-graphite TTG/PBTE regime without a new explicit mapping. It does not close numeric Ding C_src, volumetric uncertainty, alpha_Phi_K, or Full Topic 13."
+}

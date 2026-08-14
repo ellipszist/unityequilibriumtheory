@@ -1,43 +1,58 @@
-# Data Manifest
+# Data Manifest: 0.22 Biophysics & Origin of Life
 
-Current data reality status: "real source referenced with synthetic primary verifier"
+Current data reality: source-referenced EEG/omics context, a synthetic primary biomarker verifier, a separate synthetic finite HP model input, and local synthetic_placeholder EEG mechanics files.
 
-External-source audit status: `CHB-MIT/Bonn/TCGA source records pinned; raw biomedical files and preprocessing still open`.
+The topic package contains provenance context, not an archival biomedical dataset. Source records identify intended upstream datasets; they do not make local summaries or placeholders into measurements.
 
-Priority remediation:
+| Input | Local path | Source identity | Data class | Units / preprocessing | Benchmark role | Status |
+| :-- | :-- | :-- | :-- | :-- | :-- | :-- |
+| Source-lock manifest | data/03_Research/source_lock_manifest.json | Topic manifest bound to three source records | source_referenced_context_plus_synthetic_benchmark | JSON metadata | Binds roles and limitations | Hash in run contract |
+| CHB-MIT reference | data/03_Research/chb_mit_reference.json | PhysioNet CHB-MIT, DOI 10.13026/C2K01R | source_referenced_only | Hz/seconds as declared; no raw EDF | Future EEG context | Raw recordings open |
+| CHB01 summary | data/03_Research/chb01_summary.txt | CHB-MIT source record | source_referenced_only | Local text summary | Discussion reference | Not raw data |
+| Seizure phase data | data/03_Research/seizure_phase_data.json | Derived from CHB-MIT | source_referenced_only | Dimensionless phase summaries | Discussion reference | Raw windows open |
+| Bonn Z sample | data/Bonn_EEG/Z.txt | Bonn source target, DOI 10.1103/PhysRevE.64.061907 | synthetic_placeholder | Repeated mechanics-test pattern | Future mechanics input | Not source-locked |
+| Bonn S sample | data/Bonn_EEG/S.txt | Bonn source target, DOI 10.1103/PhysRevE.64.061907 | synthetic_placeholder | Repeated mechanics-test pattern | Future mechanics input | Not source-locked |
+| CHB-MIT source record | docs/data/external/biophysics/eeg/chb_mit/source_record.json | PhysioNet source record | source_referenced_only | Metadata only | Provenance anchor | Raw data open |
+| Bonn source record | docs/data/external/biophysics/eeg/bonn/source_record.json | Bonn source target | source_referenced_only | Metadata only | Provenance anchor | Package/license open |
+| TCGA source record | docs/data/external/biophysics/omics/tcga/source_record.json | NCI GDC/TCGA target | source_target_only | No expression matrix | Future omics source | Matrix/cohort open |
+| Synthetic biomarker matrix | Generated in active verifier | Seeded local generator | synthetic | Arbitrary expression units | Current internal benchmark | Seed in artifact |
+| HP benchmark definition | data/03_Research/protein_folding_hp_benchmark.json | Topic-local historical H/P sequence and finite-model contract | synthetic | Integer 2-D lattice; dimensionless HP model units; no preprocessing | Protein lane internal algorithmic benchmark | SHA-256 in protein artifact |
 
-- Normalize CHB-MIT/PhysioNet provenance if seizure/phase datasets remain part of verification.
-- Split biomedical EEG, cancer/omics, protein-folding, and origin-of-life chemistry roles instead of treating them as one evidence source.
-- Add source URL, license, patient/record identifiers, preprocessing, and local raw hash for any biomedical dataset used in verification.
-- Keep synthetic biomarker and mock TCGA data labeled as synthetic until replaced by real source-backed inputs.
 
-| Item | Local path | Source | Unit convention | SHA-256 | Benchmark role | Provenance status |
-|:--|:--|:--|:--|:--|:--|:--|
-| Source-lock manifest | `data/03_Research/source_lock_manifest.json` | Topic-derived source-lock package | n/a | `3f3ff951d8b259907b75635637d9edca3bbc73860ce18e97a0626465d28738c0` | Binds local EEG summaries/samples and synthetic verifier role to source records | Present; upgrades provenance but not claim class. |
-| CHB-MIT source record | `docs/data/external/biophysics/eeg/chb_mit/source_record.json` | PhysioNet CHB-MIT v1.0.0, DOI `10.13026/C2K01R` | Hz and seconds; raw EDF signal units if archived later | `a3755e46d1d58c4fa720574d83a30ee2ff1511a510b79d09472beb533a4360ad` | Future real EEG seizure-window verifier source | Source record present; raw EDF files and exact windows not stored. |
-| Bonn EEG source record | `docs/data/external/biophysics/eeg/bonn/source_record.json` | Bonn-style EEG benchmark target; reference DOI `10.1103/PhysRevE.64.061907` | amplitude samples by index; sampling rate still open | `cceee6f66f3788a522562c206c85299b60406c00341e10a9c7b298f40b0e0410` | Future neural-Omega verifier source | Partial source target; official package URL/license/subset identity still open. |
-| TCGA/GDC source record | `docs/data/external/biophysics/omics/tcga/source_record.json` | NCI Genomic Data Commons / TCGA portal | expression units must be declared by assay if data are added | `5bf1b5af16b8f33f7e0e8806d4e9d740bae509659c251f313183e051eeea586c` | Future cancer/omics entropy verifier source | Source target only; no real TCGA matrix stored. |
-| CHB-MIT reference | `data/03_Research/chb_mit_reference.json` | CHB-MIT Scalp EEG Database, DOI `10.13026/C2K01R`, URL `https://physionet.org/content/chbmit/1.0.0/` | sampling rate Hz, channel count, seizure times seconds | `bec00ad1162ba67fd29f3190ba0ad8eb76523afad09154aa6ee58e0a155ed5d5` | EEG provenance reference | Source-labeled summary; raw EDF files not stored. |
-| CHB01 summary | `data/03_Research/chb01_summary.txt` | Topic-local CHB01 summary | seconds/record notes as text | `6a426dc080d337fcd95c00e247133e4ebac38ff3c30dee5988ed2005833fb34f` | EEG notes/reference | Local summary; preprocessing chain open. |
-| Seizure phase data | `data/03_Research/seizure_phase_data.json` | Derived local summary from CHB-MIT | band-power fractions, synchrony index, variance proxy | `9a444d0e275e5e977bf7aed40ce56d0a8b17027778d3dfa39344da0209f2a0dd` | Seizure phase reference | Derived working copy; raw window IDs/hashes open. |
-| Bonn EEG healthy sample | `data/Bonn_EEG/Z.txt` | Bonn EEG-style local text sample | amplitude samples, normalized in engine at runtime | `f06e7a3f5c327ca5add4731f5179ee98146acc0564e9a334b3c92b10fb2a4d55` | Neural Omega engine input | Local text copy; upstream source/license open. |
-| Bonn EEG seizure sample | `data/Bonn_EEG/S.txt` | Bonn EEG-style local text sample | amplitude samples, normalized in engine at runtime | `46782824ac34e3ce6e851294fbf15d9f86a5792a5ed6830504b81b3e511f8bd3` | Neural Omega engine input | Local text copy; upstream source/license open. |
-| Synthetic biomarker matrix | generated in `Code/03_Research/Research_Biomarker_Identification.py` | Seeded synthetic positive controls | arbitrary expression units; variance/stability dimensionless | generated per run, seed recorded in artifact | Primary verifier diagnostic | Not external biomedical data. |
+## Protein-folding dynamics Wave-0 data package
 
-## Path Cleanup Note
+The dynamic lane is source-referenced only. The target source identities and
+selection policy live in DYNAMICS_DATA_MANIFEST.json; no external raw file has
+been downloaded or frozen in this wave.
 
-Older manifests and wrapper artifacts referenced `Data/03_Research/...` and duplicated `03_Research/03_Research/...` paths. The repository files are under lowercase `data/`. New verifier artifacts record the lowercase path used by the current code.
+| Input/target | Local path | Data class | Unit/provenance contract | Benchmark role | Status |
+| :-- | :-- | :-- | :-- | :-- | :-- |
+| Dynamic data manifest | DYNAMICS_DATA_MANIFEST.json | source_referenced_only | Source URL/terms, local path, preprocessing, units, and SHA-256 fields are required before use | Cohort and source gate | Present; cohort empty |
+| KineticDB | no local copy | source_target_only | Preserve rate units and log-rate transformations | Folding/unfolding kinetics | Not downloaded |
+| PFD 2.0 | no local copy | source_target_only | Preserve temperature, denaturant, rate, and free-energy units | Conditions and kinetic cross-check | Not downloaded |
+| PFDB standardized | no local copy | source_target_only | Record temperature correction separately | Standardized kinetic cross-check | Not downloaded |
+| RCSB PDB | no local copy | source_target_only | Coordinate units and topology preparation must be recorded | Structure endpoint/chain identity | Not downloaded |
+| CASP | no local copy | source_target_only | Edition, target set, terms, and evaluation protocol required | Future holdout/reference | Not downloaded |
 
-## External Source Targets
+The first cohort is blocked until 12 protein-level records are source-locked:
+8 development and 4 holdout. Synthetic HP data is explicitly excluded from
+this cohort.
 
-| Source target | Required storage path | Current status |
-|:--|:--|:--|
-| CHB-MIT raw EDF records and exact seizure windows | `docs/data/external/biophysics/eeg/chb_mit/` | Source record stored; raw external files/window hashes not stored. |
-| Bonn EEG source package and license | `docs/data/external/biophysics/eeg/bonn/` | Partial source record stored; official package URL/license/subset identity still open. |
-| TCGA/omics matrix for cancer entropy work | `docs/data/external/biophysics/omics/tcga/` | Source target stored; no real matrix present; current TCGA script uses mock data. |
-| HP protein-folding benchmark sequence/optimum | `docs/data/external/biophysics/protein_hp/` | Not present; current sequence is topic-local. |
-| Prebiotic/protocell chemistry yields | `docs/data/external/biophysics/prebiotic/` | Not present or not connected to current verifier. |
+## Hash and identity rule
 
-Repository note:
+The primary verifier artifact and shared runner contract record SHA-256 and byte size for all nine declared context inputs. The protein artifact records the SHA-256 of its one synthetic model-definition input. A future source-backed gate must additionally record original filename, license/terms, exact record or cohort identity, preprocessing, units, and baseline configuration.
 
-- Until raw files, license terms, preprocessing notes, exact record/window identifiers, and raw hashes are frozen, treat the dataset package as source-referenced working copies plus a synthetic primary verifier rather than an archival biomedical release.
+## Archived duplicates and helpers
+
+- Exact duplicate data/03_Research/03_Research files are archived under data/legacy/duplicate_03_Research/ with preserved hashes.
+- Download helpers that can create convenience or placeholder files are archived under data/legacy/downloaders/ and are not part of the active path.
+- Lowercase data/ remains the canonical topic path for this wave; no Data/ path is treated as active.
+
+## Required next evidence
+
+1. Licensed raw CHB-MIT windows with record IDs, preprocessing, hashes, and held-out metrics.
+2. Authenticated Bonn package identity, license, subset identity, sampling rate, and raw-file hashes.
+3. A real TCGA/GDC matrix with assay units, cohort selection, preprocessing, hashes, and comparator statistics.
+4. A source-locked 12-protein dynamics cohort with 8 development and 4 holdout entries.
+5. Pinned OpenMM/MDTraj/openmmtools runtime, hashed AMBER ff14SB/TIP3P assets, and passing CPU/trajectory smoke tests.
+6. A source-backed protein structure benchmark such as a governed PDB/CASP package if the lane expands beyond the finite HP model; the current deterministic HP artifact does not require external data.

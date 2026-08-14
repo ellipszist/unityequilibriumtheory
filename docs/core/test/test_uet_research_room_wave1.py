@@ -38,7 +38,8 @@ def test_thermal_branch_keeps_reference_and_full_candidate_separate() -> None:
 
 def test_provenance_gate_matches_local_source_and_holdout_policy() -> None:
     provenance = read_json("core/artifacts/thermal_source_provenance_gate.json")
-    assert provenance["status"] == "PASS_WITH_PROVISIONAL_DIGITIZATION"
+    assert provenance["status"] in {"PASS_WITH_PROVISIONAL_DIGITIZATION", "PASS_WITH_FIGURE_DERIVED_NORMALIZED_COMPARISON"}
+    assert provenance["metrics"]["provenance_complete"] is True
     assert provenance["metrics"]["local_numeric_count"] >= 1
     assert provenance["metrics"]["holdout_consumed"] is False
     assert provenance["gates"]["hash_match"] is True

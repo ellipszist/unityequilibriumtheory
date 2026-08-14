@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact": "ding_2022_fig1d_digitized_manifest",
   "generated_on": "2026-08-10",
-  "status": "PROVISIONAL_DIGITIZED_NUMERIC_PACKAGE",
+  "status": "FIGURE_DERIVED_NUMERIC_PACKAGE_WITH_CLOSED_MAPPING",
   "input_assets": [
     {
       "path": "Data/03_Research/raw/ding_2022_fig1.png",
@@ -11,7 +11,7 @@
     }
   ],
   "output_path": "Data/03_Research/ding_2022_fig1d_digitized.csv",
-  "output_sha256": "c4117bb4368f9085614fd24f994c7dc61fddf9c2eed00d151d350a6a5f90f19d",
+  "output_sha256": "6f468401d1f911e327b5e51f19f454cecdd0c2ecff933ef9522e67baae14a3a9",
   "row_count": 432,
   "series": [
     "blue_trace",
@@ -42,7 +42,32 @@
     "not_experimental_error_bar": true
   },
   "row_identity": "source_id + series_id + pixel_x",
-  "series_mapping_status": "OPEN_COLOR_TO_GRATING_PERIOD",
+  "series_mapping_status": "CLOSED_COLOR_TO_GRATING_PERIOD",
   "holdout_policy": "No Xie 2026 bytes, curves, or figures were read or digitized.",
-  "claim_boundary": "provisional figure-derived normalized shape intake; not raw source data and not external validation"
+  "claim_boundary": "figure-derived normalized shape with printed-legend mapping; not raw author data or external validation",
+  "series_mapping": {
+    "mapping_artifact": "docs/core/artifacts/ding_2022_fig1d_series_mapping.json",
+    "mapping_sha256": "82bc0e9bb23e8deaf727ea300277e9b924846d14309addc73d8a2bcebe605537",
+    "series_to_grating_period_um": {
+      "blue_trace": 2.0,
+      "red_trace": 3.0,
+      "green_trace": 4.0
+    },
+    "method": "direct printed-legend alignment; no inferred color assignment from dip time or fitted curve"
+  },
+  "row_metadata_alignment": {
+    "status": "PASS_ROW_METADATA_ALIGNED_WITH_PRINTED_LEGEND_MAPPING",
+    "checked_row_count": 432,
+    "changed_fields": [
+      "source_locator",
+      "series_mapping_status"
+    ],
+    "source_locator": "Nature Communications 13, 285 (2022), Fig. 1d; printed-legend mapping artifact",
+    "series_mapping_status": "CLOSED_COLOR_TO_GRATING_PERIOD",
+    "pre_repair_sha256": "c4117bb4368f9085614fd24f994c7dc61fddf9c2eed00d151d350a6a5f90f19d",
+    "post_repair_sha256": "6f468401d1f911e327b5e51f19f454cecdd0c2ecff933ef9522e67baae14a3a9",
+    "repaired_on": "2026-08-12",
+    "numeric_values_changed": false,
+    "data_role": "FIGURE_DERIVED_NORMALIZED_COMPARISON_NOT_RAW_SOURCE"
+  }
 }

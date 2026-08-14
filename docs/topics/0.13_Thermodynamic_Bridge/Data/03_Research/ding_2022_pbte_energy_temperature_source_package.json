@@ -1,0 +1,140 @@
+{
+  "schema_version": "t13-ding-pbte-energy-temperature-source-package-v1",
+  "artifact": "ding_2022_pbte_energy_temperature_source_package",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "created_on": "2026-08-11",
+  "reviewed_on": "2026-08-11",
+  "status": "RAW_PDF_AND_FORMULA_MAPPING_LOCKED_NUMERIC_C_OPEN",
+  "source": {
+    "source_id": "ding_2022_pbte_temperature_response",
+    "title": "Observation of Second Sound in Graphite over 200 K",
+    "authors": "Zhiwei Ding, Ke Chen, Bai Song, Jungwoo Shin, Alexei A. Maznev, Keith A. Nelson, Gang Chen",
+    "publication": "Nature Communications 13, 285 (2022)",
+    "doi": "10.1038/s41467-021-27907-z",
+    "pmcid": "PMC8755757",
+    "publisher_url": "https://www.nature.com/articles/s41467-021-27907-z",
+    "pmc_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8755757/",
+    "official_supplement_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC8755757.1/41467_2021_27907_MOESM1_ESM.pdf",
+    "original_filename": "41467_2021_27907_MOESM1_ESM.pdf",
+    "local_raw_path": "Data/03_Research/raw/ding_2022_supplementary_information.pdf",
+    "local_raw_bytes": 1893976,
+    "local_raw_md5": "106d1238c617d1791aff2e8b04d7495d",
+    "local_raw_sha256": "a50c1a6347775de72f705f4395507d3136cbf4e5cadfb6638caca2876c52b8f7",
+    "official_metadata_md5": "106d1238c617d1791aff2e8b04d7495d",
+    "retrieved_on": "2026-08-11",
+    "license_or_terms": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    "source_locator": [
+      "Supplementary Information p.3, section 2, Eqs. S1-S5: PBTE and temperature-response derivation",
+      "Supplementary Information p.3, Eq. S2: deviational phonon energy density g_mu",
+      "Supplementary Information p.3, Eq. S4: Delta T_tilde = sum_mu(g_mu_tilde) / C",
+      "Supplementary Information p.5, section 3, Eqs. S7-S10: ballistic TTG temperature-difference observable"
+    ],
+    "preprocessing": "byte-preserving archival download from the official PMC Open Access S3 object; formula transcription from the full PDF; no digitization, interpolation, fitting, smoothing, numeric heat-capacity extraction, or target-curve access",
+    "source_data_role": "DERIVED_STANDARD_PHYSICS_MAPPING; no numeric calibration values consumed"
+  },
+  "formula_records": [
+    {
+      "formula_id": "DING_2022_S2_DEVIATIONAL_PHONON_ENERGY_DENSITY",
+      "locator": "Supplementary Information p.3, Eq. S2 definition immediately below the equation",
+      "source_notation": "g_mu = hbar*omega_mu/(N*v_cell) * [f_mu - f_mu^0(T0)]",
+      "canonical_notation": "g_mu := deviational phonon energy density of mode mu",
+      "units": "J m^-3",
+      "derivation_class": "SOURCE_DERIVED_PBTE_VARIABLE",
+      "status": "SOURCE_LOCKED_FORMULA"
+    },
+    {
+      "formula_id": "DING_2022_THERMAL_EXCITATION_WEIGHT",
+      "locator": "Supplementary Information p.3, paragraph after Eq. S2",
+      "source_notation": "p_mu = c_mu / C_src; C_src = sum_mu(c_mu)",
+      "canonical_notation": "p_mu := modal thermal excitation fraction; C_src := source-defined total modal heat capacity per volume",
+      "units": "p_mu dimensionless; c_mu and C_src in J m^-3 K^-1",
+      "derivation_class": "SOURCE_ASSUMPTION_THERMALLY_DISTRIBUTED_HEATING",
+      "status": "SOURCE_LOCKED_FORMULA"
+    },
+    {
+      "formula_id": "DING_2022_S4_ENERGY_TEMPERATURE_RESPONSE",
+      "locator": "Supplementary Information p.3, Eq. S4",
+      "source_notation": "Delta_T_tilde = sum_mu(g_mu_tilde) / C_src",
+      "canonical_notation": "Delta_u_ph_tilde := sum_mu(g_mu_tilde); Delta_T_tilde = Delta_u_ph_tilde / C_src",
+      "units": "(J m^-3) / (J m^-3 K^-1) = K",
+      "derivation_class": "SOURCE_DERIVED_LINEARIZED_PBTE_MAPPING",
+      "status": "CLOSED_FOR_LANE"
+    },
+    {
+      "formula_id": "DING_2022_S10_TTG_OBSERVABLE",
+      "locator": "Supplementary Information p.5, Eq. S10 and preceding sentence",
+      "source_notation": "Delta_T_TTG = T(x=0,t) - T(x=l/2,t); measured TTG signal is proportional to this temperature difference",
+      "canonical_notation": "Delta_Tq(t) := source TTG peak-to-null temperature-response difference",
+      "units": "K before normalization",
+      "derivation_class": "SOURCE_DEFINED_OBSERVABLE_MAPPING",
+      "status": "CLOSED_FOR_LANE"
+    }
+  ],
+  "ontology_contract": {
+    "C_src": "source-defined total modal heat capacity per volume in the Ding PBTE derivation",
+    "uet_C": "collective system-behaviour coordinate; not heat capacity",
+    "C_src_is_uet_C": false,
+    "g_mu": "source-derived deviational phonon energy density; not UET Phi",
+    "Phi": "base UET effective response variable; no identity with temperature or g_mu is asserted",
+    "Phi_E": "named dimensionless energy-response coordinate Delta_u_ph/e0",
+    "R_gen": "derived history trace; no new state or backreaction is introduced by this mapping",
+    "R_obs": "observer record remains separate from physical PBTE dynamics"
+  },
+  "mapping_contract": {
+    "source_energy_density": "Delta_u_ph := sum_mu(g_mu)",
+    "source_temperature_response": "Delta_Tq = Delta_u_ph / C_src",
+    "normalized_observable": "y_TTG = Delta_Tq(t) / Delta_Tq(0)",
+    "named_uet_energy_response": "Phi_E := Delta_u_ph / e0",
+    "conditional_named_bridge": "Delta_Tq = (e0/C_src) * Phi_E",
+    "conditional_alpha": "alpha_Phi_E_K := e0/C_src",
+    "base_Phi_identity": "NOT_ASSERTED",
+    "base_Phi_to_Delta_u_ph": "OPEN_DERIVATION_OR_INDEPENDENT_CALIBRATION",
+    "e0_status": "OPEN_NOT_SOURCE_LOCKED",
+    "numeric_C_src_status": "OPEN_NOT_PROVIDED_AS_A_NUMERIC_ROW_IN_THIS_PACKAGE"
+  },
+  "units_contract": {
+    "g_mu": "J m^-3",
+    "Delta_u_ph": "J m^-3",
+    "c_mu": "J m^-3 K^-1",
+    "C_src": "J m^-3 K^-1",
+    "Delta_Tq": "K",
+    "y_TTG": "dimensionless",
+    "e0": "J m^-3",
+    "Phi_E": "dimensionless",
+    "alpha_Phi_E_K": "K per normalized Phi_E",
+    "unit_closure": "PASS_FORMULA_ONLY"
+  },
+  "regime_contract": {
+    "source_material": "graphite in the Ding 2022 experimental and first-principles PBTE lane",
+    "response_regime": "linearized PBTE about T0 with thermally distributed initial heating",
+    "heat_capacity_interpretation": "C_src is volumetric modal heat capacity in the source response equation; this package does not promote it to an independently measured equilibrium c_v row",
+    "gatech_same_material_or_specimen": false,
+    "gatech_correspondence": "PROHIBITED_WITHOUT_EXPLICIT_MATERIAL_MAPPING; Georgia Tech EMS-5000 c_p and assumed density are not consumed",
+    "landauer_used": false
+  },
+  "numeric_input_contract": {
+    "numeric_C_src_value": null,
+    "numeric_C_src_uncertainty": null,
+    "mode_resolved_c_mu_package": null,
+    "unit_cell_volume_package": null,
+    "first_principles_reproduction_input_package": null,
+    "numeric_alpha_Phi_K": null,
+    "numeric_alpha_Phi_E_K": null,
+    "calibration_status": "NOT_EMITTED",
+    "required_next_inputs": [
+      "Ding-compatible mode-resolved c_mu(T) or a reproducible first-principles input/output package",
+      "source-locked unit-cell volume and temperature/regime identity",
+      "uncertainty or numerical-convergence contract for C_src(T)",
+      "independently derived UET energy-density scale e0",
+      "base Phi to Delta_u_ph derivation or independent calibration"
+    ]
+  },
+  "holdout_policy": {
+    "xie_2026_accessed": false,
+    "xie_2026_source_data_consumed": false,
+    "calibration_path_may_read_holdout": false,
+    "ding_2022_formula_role": "TRAINING_COMPARISON_SOURCE_FORMULA",
+    "ding_2022_digitized_curve_consumed_by_this_mapping": false
+  },
+  "claim_boundary": "This package source-locks the Ding PBTE formula mapping from mode-summed deviational phonon energy density to the source temperature response and TTG peak-to-null observable. It does not provide numeric C_src(T), identify C_src with UET C, identify g_mu or Phi_E with base Phi, derive e0, calibrate alpha_Phi_K, consume Xie 2026, or close Topic 13."
+}

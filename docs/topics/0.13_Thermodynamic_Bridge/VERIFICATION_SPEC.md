@@ -65,3 +65,30 @@ Current controlling blocker:
 
 - `topic_0_13_constraint_only_eos_transport_entropy_bridge_missing`
 
+## Ding PBTE Source-Formula Gate
+
+Run:
+
+```powershell
+.venv\Scripts\python.exe docs\scriptsuditudit_topic13_ding_pbte_energy_temperature_mapping.py
+```
+
+Artifact:
+
+- `docs/core/artifacts/t13_ding_pbte_energy_temperature_mapping_audit.json`
+
+Acceptance requires the official PDF hash/size/MD5, source identity, Eq. S4/S10 locators, kelvin unit closure, source-`C`/UET-`C` separation, absent numeric calibration, material non-pooling, and Xie 2026 non-access checks to pass. `PASS_SOURCE_FORMULA_MAPPING_NUMERIC_C_OPEN` closes only the source-formula lane; it does not close numeric `C_src(T)`, base `Phi`, `e0`, `alpha_Phi_K`, or Full Topic 13.
+
+## Ding PBTE Numeric-Input Availability Gate
+
+Run:
+
+```powershell
+.venv\Scripts\python.exe docs\scripts\audit\audit_topic13_ding_pbte_numeric_input_availability.py
+```
+
+Artifact:
+
+- `docs/core/artifacts/t13_ding_pbte_numeric_input_availability_audit.json`
+
+Acceptance requires archived hash/size parity, OA identity/license/retraction checks, a complete non-truncated 11-object prefix, media-role classification, absence of reproduction payload candidates, the author-request statement, published computational-detail locators, an explicit missing-input list, and holdout non-access. A pass closes only the captured official-OA source route.

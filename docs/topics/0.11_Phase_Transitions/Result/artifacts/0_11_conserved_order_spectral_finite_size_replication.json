@@ -461,7 +461,7 @@
   },
   "schema_version": "1.0",
   "status": "WARN",
-  "timestamp_utc": "2026-08-01T17:35:01.137876+00:00",
+  "timestamp_utc": "2026-08-14T08:25:40.860990+00:00",
   "topic": "0.11_Phase_Transitions",
   "wave": "Wave 21 conserved_order_spectral_v1 finite-size replication diagnostic"
 }

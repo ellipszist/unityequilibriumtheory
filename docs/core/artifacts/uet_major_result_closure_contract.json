@@ -6,6 +6,7 @@
   "closure_levels": [
     "OPEN",
     "PARTIAL",
+    "CLOSED_AS_NO_GO",
     "CLOSED_FOR_LANE",
     "CLOSED_FOR_CORE",
     "CLOSED_FOR_EXTERNAL_CLAIM"

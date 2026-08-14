@@ -1,0 +1,72 @@
+{
+  "schema_version": "t13-iaea-graphite-cv-source-package-v1",
+  "artifact": "iaea_graphite_handbook_constant_volume_source_package",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "created_on": "2026-08-13",
+  "status": "SOURCE_LOCKED_TABLE_CV_UNCERTAINTY_OPEN",
+  "source": {
+    "source_id": "iaea_graphite_engineering_handbook_table_4_11",
+    "title": "The Industrial Graphite Engineering Handbook",
+    "publisher": "International Atomic Energy Agency Graphite Knowledge Base",
+    "official_url": "https://nucleus.iaea.org/sites/graphiteknowledgebase/Meetings2/Old%20Meetings/2017/Background%20Info/GraphiteHandbook.pdf",
+    "source_locators": [
+      "Chapter 4, section 4-14: cp = cv + cw + ce definition",
+      "Chapter 4, section 4-15, Table 4.11: manufactured-graphite values at 300 K",
+      "Chapter 4, section 4-15: cv = cp - cw - ce and cw source-dependency discussion"
+    ],
+    "retrieved_on": "2026-08-13",
+    "local_raw_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/iaea_graphite_handbook_2017.pdf",
+    "local_raw_size_bytes": 34100266,
+    "local_raw_sha256": "91e9d84e5d1828ab1028bf0e5fec0743fe1fb49e416b9e6305edf2f71a30a28a",
+    "material": "manufactured graphite average curve; handbook does not identify Ding's TTG specimen",
+    "temperature_scope": "table row at 300 K",
+    "license_or_terms": "Official IAEA-hosted handbook archived for research provenance; publication terms remain subject to source owner"
+  },
+  "source_row": {
+    "source_row_id": "iaea_graphite_handbook_table_4_11_300K",
+    "temperature_K": 300.0,
+    "quantity": "manufactured-graphite lattice specific heat at constant volume",
+    "cp_cal_per_g_K": 0.1723,
+    "delta_cp_cal_per_g_K": 0.0017,
+    "cw_cal_per_g_K": 0.00069,
+    "ce_cal_per_g_K": 0.00009,
+    "cv_formula": "c_v = c_p - c_w - c_e",
+    "cv_cal_per_g_K": 0.17152,
+    "source_uncertainty_boundary": {
+      "delta_cp_meaning": "probable error for c_p such that most reliable individual measurements fall within c_p +/- delta_cp",
+      "cv_standard_uncertainty": null,
+      "cw_uncertainty": null,
+      "ce_uncertainty": null,
+      "status": "NOT_A_STANDARD_UNCERTAINTY_FOR_CV"
+    },
+    "source_locator": "Chapter 4, section 4-15, Table 4.11, 300 K row",
+    "data_role": "COMPARISON_ONLY_NOT_CALIBRATION",
+    "status": "SOURCE_LOCKED_TABLE_DERIVED_CV"
+  },
+  "derived_comparator": {
+    "calorie_to_joule_J_per_cal": 4.184,
+    "cv_mass_J_per_kg_K": 717.63968,
+    "cp_mass_J_per_kg_K": 720.9032,
+    "cp_minus_cv_mass_J_per_kg_K": 3.26352,
+    "cv_volumetric_emitted": false,
+    "cv_standard_uncertainty_J_per_kg_K": null,
+    "density_emitted": false,
+    "material_match_to_Ding_TTG": false
+  },
+  "required_quantity_contract": {
+    "Ding_required_quantity": "volumetric C_src or c_v with uncertainty",
+    "provided_quantity": "table-derived mass-specific lattice c_v",
+    "provided_units": "J kg^-1 K^-1 after declared calorie conversion",
+    "remaining_conversion": "c_v^V = rho*c_v; source-locked density and uncertainty are absent in this table lane",
+    "conversion_status": "OPEN_DENSITY_AND_CV_UNCERTAINTY",
+    "material_regime_status": "OPEN_NOT_EQUIVALENT_TO_DING_TTG"
+  },
+  "holdout_policy": {
+    "xie_2026_accessed": false,
+    "xie_2026_source_data_consumed": false,
+    "calibration_path_may_read_holdout": false,
+    "target_curve_used": false,
+    "alpha_Phi_K_fit_used": false
+  },
+  "claim_boundary": "Source-locked handbook table-derived manufactured-graphite mass-specific lattice c_v comparator only. It is not volumetric c_v, not a direct measurement uncertainty for c_v, not Ding/HOPG TTG C_src, not an alpha_Phi_K calibration, and not Full Topic 13 closure."
+}

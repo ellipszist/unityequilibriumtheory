@@ -1,0 +1,262 @@
+{
+  "schema_version": "t13-independent-graphite-cv-source-package-v1",
+  "artifact": "mp48_independent_graphite_cv_source_package",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "created_on": "2026-08-11",
+  "status": "SOURCE_LOCKED_INDEPENDENT_HARMONIC_CV_COMPARATOR",
+  "major_result": {
+    "major_result_id": "T13_MP48_INDEPENDENT_GRAPHITE_CV_REPRODUCTION",
+    "topic": "0.13_Thermodynamic_Bridge",
+    "closure_level": "CLOSED_FOR_LANE",
+    "what_is_closed": [
+      "permitted numeric harmonic phonon source for Materials Project mp-48 graphite",
+      "exact Zenodo archive and member byte locators for the extracted source files",
+      "source-file sizes, gzip-preserving extraction, and SHA-256 hashes",
+      "mp-48 material identity, primitive-cell atom count, stability metadata, and phonon grid identity",
+      "representative primitive-cell heat-capacity rows from 0 K through 1000 K",
+      "independent volumetric c_v comparator rows at the declared TTG temperature points",
+      "separate experimental graphite volume anchor and a non-statistical JANAF comparison envelope"
+    ],
+    "equation_or_mapping": "C_v^vol(T) = C_v^mol,cell(T) / V_mol,cell; Delta_Tq = Delta_u / C_v^vol",
+    "units": {
+      "source_heat_capacity": "J K^-1 mol^-1 primitive cell",
+      "experimental_volume": "A^3 per atom and m^3 mol^-1 primitive cell",
+      "derived_volumetric_heat_capacity": "J m^-3 K^-1",
+      "derived_mass_specific_heat_capacity": "J kg^-1 K^-1"
+    },
+    "derivation_class": "independent numeric source extraction plus declared unit conversion and comparator envelope",
+    "observable": "harmonic graphite primitive-cell heat capacity and derived volumetric c_v",
+    "data_role": "INDEPENDENT_REPRODUCTION_NOT_CALIBRATION",
+    "evidence_artifacts": [
+      "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/mp48_independent_graphite_cv_source_package.json",
+      "docs/core/artifacts/t13_mp48_independent_graphite_cv_audit.json"
+    ],
+    "verification_status": "PENDING_DETERMINISTIC_AUDIT",
+    "open_blockers": [
+      "Ding-specific PBTE mode-resolved C_src(T) and convergence contract remain open",
+      "base Phi-to-Delta_u_ph energy mapping and e0 remain open",
+      "independent alpha_Phi_K remains open",
+      "temperature-resolved graphite volume and material-grade mapping to Ding TTG remain open",
+      "EOS, covariant transport, SK/KMS, entropy current, and dissipative balance remain open"
+    ],
+    "dependency_unlocked": "independent harmonic c_v comparator route only; no alpha_Phi_K or Gravity unlock",
+    "claim_boundary": "This is a source-traceable independent harmonic graphite c_v reproduction/comparator. It is not Ding's PBTE C_src, not an alpha_Phi_K calibration, not a TTG prediction, and not external validation of UET."
+  },
+  "source": {
+    "source_id": "materials_project_phonon_database_v1_1_mp48",
+    "title": "Materials Project Phonon database v1.1 (26,413 compounds)",
+    "publisher": "Materials Project / Zenodo",
+    "doi": "10.5281/zenodo.20196565",
+    "record_url": "https://zenodo.org/records/20196565",
+    "archive_url": "https://zenodo.org/records/20196565/files/mp_0000001-0020000.tar",
+    "published_on": "2026-06-08",
+    "license_or_terms": "CC-BY-4.0",
+    "archive": {
+      "file_name": "mp_0000001-0020000.tar",
+      "size_bytes": 14454630400,
+      "manifest_range_start": 1,
+      "manifest_range_end": 20000,
+      "manifest_mp_id_count": 4252,
+      "manifest_reported_sha256": "40bfa3aa39cb54298e09825d19d07a8d1009a12952e58d2977e1533588ef129e",
+      "archive_hash_verification": "NOT_LOCALLY_VERIFIED_ARCHIVE_NOT_DOWNLOADED",
+      "retrieval_method": "HTTP byte-range requests; archive member data begins at tar header offset plus 512 bytes"
+    },
+    "manifest": {
+      "identity": "Zenodo v1.1 manifest.tsv",
+      "captured_local_path": "tmp/mp_phonon_v1_1_manifest.tsv",
+      "captured_bytes": 10127,
+      "captured_md5": "1d823421f74dcdab9980bce97a4c5e5d",
+      "captured_sha256": "287a964efd6f92853f8db8796a9ef646cd605329fc509d81374f6948ea3b8944",
+      "target_row": "mp_0000001-0020000.tar\t1\t20000\t4252\t14454630400\t40bfa3aa39cb54298e09825d19d07a8d1009a12952e58d2977e1533588ef129e",
+      "status": "SOURCE_MANIFEST_CAPTURED_TARGET_ROW_LOCKED"
+    },
+    "methodology_reference": {
+      "title": "A High-Throughput ab initio Database of Harmonic Phonon Properties for Inorganic Crystals",
+      "doi": "10.26434/chemrxiv.15004632/v1",
+      "url": "https://chemrxiv.org/doi/pdf/10.26434/chemrxiv.15004632/v1",
+      "method_summary": "PBEsol harmonic phonons with second-order force constants and symmetry/sum-rule processing; this package consumes the deposited mp-48 files only."
+    }
+  },
+  "archive_members": [
+    {
+      "member": "mp-48/FORCE_CONSTANTS.gz",
+      "local_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/mp48_FORCE_CONSTANTS.gz",
+      "tar_header_offset": 9415499776,
+      "data_offset": 9415500288,
+      "size_bytes": 1073751,
+      "sha256": "a410f36fd34e8603aec0dde48c1f8cb47fbf0a237ca911437f744fb7cbf02763"
+    },
+    {
+      "member": "mp-48/SPOSCAR.gz",
+      "local_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/mp48_SPOSCAR.gz",
+      "tar_header_offset": 9416652288,
+      "data_offset": 9416652800,
+      "size_bytes": 805,
+      "sha256": "2a1fc64e22bdd091bfa662cfe39031494bad54721593394ee6d404ed91d99bd5"
+    },
+    {
+      "member": "mp-48/phonopy.yaml.gz",
+      "local_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/mp48_phonopy.yaml.gz",
+      "tar_header_offset": 9416654848,
+      "data_offset": 9416655360,
+      "size_bytes": 1700,
+      "sha256": "00be787d0fbe986304ffdfa51a917b9aa0038deb6d31a563979afe42a7a2b5f8"
+    },
+    {
+      "member": "mp-48/summary.json.gz",
+      "local_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/mp48_summary.json.gz",
+      "tar_header_offset": 9416958464,
+      "data_offset": 9416958976,
+      "size_bytes": 656,
+      "sha256": "ca8bb269f1ba6140872141bda607be840479058cba2709419d922fce052d95c5"
+    },
+    {
+      "member": "mp-48/total_dos.dat.gz",
+      "local_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/mp48_total_dos.dat.gz",
+      "tar_header_offset": 9416965632,
+      "data_offset": 9416966144,
+      "size_bytes": 2737,
+      "sha256": "f8c0fe9013c36dc4861bfbfb27bdc64daf9739456d9523f5ace1b6d668fafeab"
+    },
+    {
+      "member": "mp-48/POSCAR.gz",
+      "local_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/mp48_POSCAR.gz",
+      "tar_header_offset": 9416996352,
+      "data_offset": 9416996864,
+      "size_bytes": 170,
+      "sha256": "dc42649aada5817cb6b94c561cf4bee632bb5cb6a208a762fd7ac36d8320da8a"
+    },
+    {
+      "member": "mp-48/thermal_properties.yaml.gz",
+      "local_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/mp48_thermal_properties.yaml.gz",
+      "tar_header_offset": 9416998400,
+      "data_offset": 9416998912,
+      "size_bytes": 6260,
+      "sha256": "5bb7ce9448f310a2133a648f40a92a63b8397d6ea7c3b571935146dade876902"
+    }
+  ],
+  "material": {
+    "mp_id": "mp-48",
+    "formula": "C",
+    "structure_label": "AB graphite",
+    "primitive_cell_atoms": 4,
+    "supercell_atoms": 200,
+    "space_group": "P6_3/mmc",
+    "space_group_number": 194,
+    "source_volume_A3": 37.09595476532483,
+    "source_density_g_per_cm3": 2.15055649288425,
+    "supercell_matrix": [5, 5, 2],
+    "phonon_stability": {
+      "min_frequency_THz": -8.273e-07,
+      "positivity_threshold_THz": -0.1,
+      "has_imaginary_modes": false,
+      "predicted_phonon_stable": true,
+      "debye_temperature_K": 1269.4565861125113
+    },
+    "source_volume_warning": "The PBEsol source cell volume is not used for the reported volumetric c_v because it differs from the independent room-temperature graphite volume anchor."
+  },
+  "unit_contract": {
+    "thermal_source_quantity": "phonopy heat_capacity",
+    "thermal_source_units": "J K^-1 mol^-1 primitive cell",
+    "unit_reference": "https://phonopy.github.io/phonopy/setting-tags.html",
+    "conversion": "C_v^vol(T) = C_v^mol,cell(T) / V_mol,cell",
+    "primitive_cell_formula_units": 1,
+    "primitive_cell_atoms_for_per_atom_comparison": 4,
+    "no_Cp_to_Cv_correction": true,
+    "no_UET_energy_anchor": true
+  },
+  "experimental_volume_anchor": {
+    "source_id": "wang_2012_graphite_room_temperature_volume",
+    "title": "Crystal structure of graphite under room-temperature compression and decompression",
+    "doi": "10.1038/srep00520",
+    "url": "https://www.nature.com/articles/srep00520",
+    "source_locator": "H-graphite zero-pressure row: volume per atom = 8.817(0.011) A^3",
+    "volume_per_atom_A3": 8.817,
+    "uncertainty_per_atom_A3": 0.011,
+    "primitive_cell_atoms": 4,
+    "volume_per_cell_A3": 35.268,
+    "uncertainty_per_cell_A3": 0.044,
+    "relative_uncertainty": 0.0012475898831802198,
+    "molar_primitive_cell_volume_m3_per_mol": 2.1238886032368e-05,
+    "implied_density_kg_per_m3": 2262.020707,
+    "temperature_scope": "room-temperature zero-pressure anchor; applying it at 100-300 K is an explicit comparator approximation",
+    "temperature_resolved_volume_status": "OPEN"
+  },
+  "representative_rows": [
+    {
+      "temperature_K": 100.0,
+      "row_identity": "source_grid",
+      "heat_capacity_J_per_mol_cell_K": 7.33043875459715,
+      "volumetric_cv_J_per_m3_K": 345142.3367226314
+    },
+    {
+      "temperature_K": 125.0,
+      "row_identity": "linear_interpolation_120_to_130_K",
+      "heat_capacity_J_per_mol_cell_K": 10.246335037051303,
+      "volumetric_cv_J_per_m3_K": 482432.78962163633
+    },
+    {
+      "temperature_K": 150.0,
+      "row_identity": "source_grid",
+      "heat_capacity_J_per_mol_cell_K": 13.49009543502857,
+      "volumetric_cv_J_per_m3_K": 635160.2157697773
+    },
+    {
+      "temperature_K": 200.0,
+      "row_identity": "source_grid",
+      "heat_capacity_J_per_mol_cell_K": 20.562698832644053,
+      "volumetric_cv_J_per_m3_K": 968162.7747004508
+    },
+    {
+      "temperature_K": 225.0,
+      "row_identity": "linear_interpolation_220_to_230_K",
+      "heat_capacity_J_per_mol_cell_K": 24.186962415718064,
+      "volumetric_cv_J_per_m3_K": 1138805.6030272588
+    },
+    {
+      "temperature_K": 250.0,
+      "row_identity": "source_grid",
+      "heat_capacity_J_per_mol_cell_K": 27.78828145778704,
+      "volumetric_cv_J_per_m3_K": 1308368.1232357374
+    },
+    {
+      "temperature_K": 300.0,
+      "row_identity": "source_grid",
+      "heat_capacity_J_per_mol_cell_K": 34.791236430507276,
+      "volumetric_cv_J_per_m3_K": 1638091.3941289356
+    }
+  ],
+  "independent_comparator": {
+    "source_id": "nist_janaf_graphite_C_002",
+    "title": "NIST-JANAF Thermochemical Tables: Carbon",
+    "url": "https://janaf.nist.gov/tables/C-002.html",
+    "quantity": "Cp of graphite, J K^-1 mol^-1 atom",
+    "role": "COMPARISON_ONLY",
+    "rows": [
+      {"temperature_K": 100.0, "nist_cp_J_per_mol_atom_K": 1.674, "mp48_cv_J_per_mol_atom_K": 1.8326096886492875, "relative_difference": 0.09474891795},
+      {"temperature_K": 200.0, "nist_cp_J_per_mol_atom_K": 5.006, "mp48_cv_J_per_mol_atom_K": 5.140674708161013, "relative_difference": 0.02690265844},
+      {"temperature_K": 250.0, "nist_cp_J_per_mol_atom_K": 6.816, "mp48_cv_J_per_mol_atom_K": 6.94707036444676, "relative_difference": 0.01922980699},
+      {"temperature_K": 300.0, "nist_cp_J_per_mol_atom_K": 8.581, "mp48_cv_J_per_mol_atom_K": 8.697809107626819, "relative_difference": 0.01361252857}
+    ],
+    "maximum_relative_difference": 0.09474891795,
+    "interpretation": "This is a conservative epistemic model-discrepancy envelope. JANAF reports Cp while the deposited harmonic source reports Cv; it is not a statistical source uncertainty and is not a Cp-Cv correction."
+  },
+  "uncertainty_contract": {
+    "source_statistical_uncertainty": "NOT_REPORTED_BY_DEPOSIT",
+    "volume_relative_uncertainty": 0.0012475898831802198,
+    "model_discrepancy_envelope_relative": 0.09474891795,
+    "combined_display_envelope_relative": 0.09475713130590353,
+    "combined_envelope_status": "NON_STATISTICAL_DISPLAY_ONLY",
+    "temperature_interpolation_status": "125 K and 225 K are linear interpolations on the deposited 10 K grid",
+    "temperature_volume_uncertainty_status": "OPEN"
+  },
+  "holdout_policy": {
+    "xie_2026_accessed": false,
+    "xie_2026_source_data_consumed": false,
+    "xie_2026_role": "locked external holdout",
+    "calibration_path_may_read_holdout": false,
+    "target_curve_used": false,
+    "alpha_fit_used": false
+  },
+  "claim_boundary": "The package closes an independent harmonic graphite c_v comparator lane with auditable provenance and explicit non-statistical uncertainty bounds. It does not close Ding-specific PBTE C_src(T), e0, base Phi-to-energy correspondence, alpha_Phi_K, EOS, transport, SK/KMS, entropy, external validation, or global UET closure."
+}

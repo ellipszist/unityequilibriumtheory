@@ -1,104 +1,17 @@
-# 📊 Real Data Source: Seizure Prediction
+# Data: 0.22 Biophysics & Origin of Life
 
-## CHB-MIT Scalp EEG Database
+This directory contains source-referenced context and explicitly labeled local placeholders. It is not an archival release of EEG, omics, clinical, protein, or prebiotic measurements.
 
-### Access Information
+## Active data roles
 
-| Field | Value |
-|:------|:------|
-| **URL** | https://physionet.org/content/chbmit/1.0.0/ |
-| **Size** | ~21 GB |
-| **Format** | EDF (European Data Format) |
-| **License** | Open Database License (ODbL) |
+- 03_Research/source_lock_manifest.json: source and role manifest.
+- 03_Research/protein_folding_hp_benchmark.json: synthetic topic-local HP model definition used by the deterministic protein lane; no external protein data.
+- 03_Research/chb_mit_reference.json: source-labeled CHB-MIT reference metadata.
+- 03_Research/chb01_summary.txt: local summary, not raw EDF.
+- 03_Research/seizure_phase_data.json: derived discussion summary, not raw windows.
+- Bonn_EEG/Z.txt and Bonn_EEG/S.txt: synthetic mechanics-test placeholders, not authenticated Bonn files.
+- protein_folding_hp_benchmark.json is dimensionless model input; its -1 contact term is a benchmark anchor, not SI energy or protein free energy.
 
-### Download Script
+The protein-folding dynamics source/runtime package is declared at the topic root in DYNAMICS_DATA_MANIFEST.json and DYNAMICS_RUNTIME_MANIFEST.json. It currently contains source targets only; no PDB, KineticDB, PFD, PFDB, or CASP raw package is present.
 
-```python
-#!/usr/bin/env python
-"""
-Download CHB-MIT EEG data from PhysioNet.
-
-Usage:
-    python download_chbmit.py --subjects 1,2,3 --output data/
-"""
-
-import os
-import urllib.request
-from pathlib import Path
-
-BASE_URL = "https://physionet.org/files/chbmit/1.0.0/"
-
-def download_subject(subject_id: int, output_dir: str = "data"):
-    """Download EEG files for one subject."""
-    output = Path(output_dir) / f"chb{subject_id:02d}"
-    output.mkdir(parents=True, exist_ok=True)
-    
-    # Download summary file
-    summary_url = f"{BASE_URL}chb{subject_id:02d}/chb{subject_id:02d}-summary.txt"
-    summary_path = output / f"chb{subject_id:02d}-summary.txt"
-    
-    print(f"Downloading summary for chb{subject_id:02d}...")
-    urllib.request.urlretrieve(summary_url, summary_path)
-    
-    print(f"✅ Downloaded to {output}")
-    return output
-
-if __name__ == "__main__":
-    import argparse
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--subjects", default="1", help="Comma-separated subject IDs")
-    parser.add_argument("--output", default="data", help="Output directory")
-    args = parser.parse_args()
-    
-    subjects = [int(s) for s in args.subjects.split(",")]
-    for subj in subjects:
-        download_subject(subj, args.output)
-```
-
-### Quick Access (Subset)
-
-For testing, use pre-processed subset:
-
-```bash
-# Download sample seizure recording (smaller file)
-wget https://physionet.org/files/chbmit/1.0.0/chb01/chb01_03.edf
-```
-
-### File Format
-
-EDF files contain:
-- 23 EEG channels at 256 Hz
-- Continuous recording
-- Seizure annotations in summary.txt
-
-### Seizure Annotations
-
-From `chb01-summary.txt`:
-```
-File Name: chb01_03.edf
-Number of Seizures in File: 1
-Seizure Start Time: 2996 seconds
-Seizure End Time: 3036 seconds
-```
-
----
-
-## How to Load Data
-
-```python
-import mne
-
-# Load EDF file
-raw = mne.io.read_raw_edf("chb01_03.edf", preload=True)
-
-# Get data
-data = raw.get_data()  # (n_channels, n_samples)
-sfreq = raw.info['sfreq']  # 256 Hz
-
-print(f"Shape: {data.shape}")
-print(f"Sampling rate: {sfreq} Hz")
-```
-
----
-
-*"Real data from real patients — not simulations."*
+Downloaders and duplicate paths are under data/legacy/ and are excluded from current evidence.

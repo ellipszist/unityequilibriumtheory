@@ -25,12 +25,20 @@ def main() -> int:
     foundation = json.loads(FOUNDATION.read_text(encoding="utf-8-sig"))
     brief_hash = digest(BRIEF)
     contract["brief"]["sha256"] = brief_hash
-    for evidence in contract.get("rooms", {}).get("core", {}).get("evidence", []):
-        if evidence.get("path") == "docs/core/UET_RESEARCH_ROOM_BRIEF.md":
-            evidence["sha256"] = brief_hash
     reporting = contract["major_result_reporting"]
     reporting["contract"]["sha256"] = digest(MAJOR_CONTRACT)
     reporting["register"]["sha256"] = digest(MAJOR_REGISTER)
+    for room in contract.get("rooms", {}).values():
+        for evidence in room.get("evidence", []):
+            path_text = evidence.get("path")
+            if not evidence.get("present") or not path_text:
+                continue
+            if "EXCLUDED" in str(evidence.get("hash_policy", "")).upper():
+                evidence.pop("sha256", None)
+                continue
+            path = ROOT / path_text
+            if path.is_file():
+                evidence["sha256"] = digest(path)
     contract["generated_at"] = date.today().isoformat()
     CONTRACT.write_text(json.dumps(contract, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
     foundation.setdefault("research_room_wave1", {}).setdefault("contract", {})["sha256"] = digest(CONTRACT)

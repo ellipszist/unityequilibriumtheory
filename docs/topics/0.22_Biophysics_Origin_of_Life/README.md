@@ -1,98 +1,103 @@
 ---
 layout: article
 title: "UET Topic 0.22: Biophysics Origin of Life"
-description: "Research module for biophysical complexity, neural entropy, and origin-of-life proxy tests within UET."
+description: "An evidence-disciplined umbrella for exploratory biophysical-complexity models, one synthetic biomarker diagnostic, one finite HP model benchmark, and a blocked protein-folding dynamics source/runtime preflight."
 ---
 
 # 0.22 Biophysics & Origin of Life
 
-> [!NOTE]
-> **AI-Digest**: This topic is a biophysical-complexity umbrella. It studies how UET-style entropy, coherence, and information-flow proxies might organize living-system, neural, biomarker, cancer, protein-folding, and protocell simulations. Current support is exploratory: the primary verifier is a seeded synthetic biomarker diagnostic, while EEG and origin-of-life evidence need separate source-locked gates.
+> Current boundary: Draft / Tier B / WARN. This umbrella contains separate lanes. The primary evidence-producing verifier is a seeded synthetic biomarker diagnostic; the protein lane has a separate finite 2-D HP benchmark and a source/runtime preflight for future dynamics. All current evidence remains internal.
 
-![Status](https://img.shields.io/badge/Status-WARN_Synthetic_Verifier-yellow)
-![Standard](https://img.shields.io/badge/Standard-Formula_Audited-blue)
-![Claim_Class](https://img.shields.io/badge/Claim-D_Exploratory-orange)
+![Status](https://img.shields.io/badge/Status-Draft%2FTier_B%2FWARN-yellow)
+![Evidence](https://img.shields.io/badge/Evidence-Synthetic_Internal_Benchmark-blue)
+![Claim ceiling](https://img.shields.io/badge/Claim_Ceiling-C-orange)
 
----
+## Purpose and scope
 
-## 1. 5x4 Grid Structure
+This topic records how UET-style entropy, coherence, information-flow, and complexity proxies may organize biological and neural research questions. It is an umbrella workspace, not one unified biomedical result.
 
-| Pillar | Purpose |
-| :--- | :--- |
-| **Doc/** | Analysis of biophysical complexity, neural dynamics, entropy, and origin-of-life hypotheses. |
-| **Ref/** | Schrodinger, Prigogine, EEG, cancer/omics, protein-folding, and prebiotic references. |
-| **data/** | Source-labeled EEG summaries, Bonn-style local EEG text files, and working research inputs. |
-| **Code/** | Engine, proof, research, competitor, and visualization scripts. |
-| **Result/** | Machine-readable verifier artifact and generated figures/logs. |
+The active package distinguishes:
 
----
+- conceptual hypotheses and normalized proxy models;
+- exploratory simulations for homeostasis, neural dynamics, protocells, and immune extensions;
+- one class-C synthetic biomarker diagnostic and one separate class-C finite HP model benchmark;
+- source-referenced EEG and omics context whose raw inputs and preprocessing remain open;
+- a class-B protein-folding dynamics design/preflight whose source and runtime gates must close independently;
+- future sub-gates that must be closed independently.
 
-## Theory Role Diagram
+## Canonical controller
+
+- RESEARCH_REGISTRY.json: active lane, script, formula, data, and artifact inventory.
+- Result/artifacts/0_22_biophysics_origin_of_life_claim_gate.json: claim boundary and promotion controller.
+- VERIFICATION_SPEC.md: current run contract.
+- DATA_MANIFEST.md: source identity and data reality.
+- FORMULA_AUDIT.md: formula ontology, units, and derivation status.
+- DYNAMICS_RESEARCH_SPEC.md plus DYNAMICS_DATA_MANIFEST.json and DYNAMICS_RUNTIME_MANIFEST.json: protein-folding dynamics contract and blockers.
+
+## Theory and dependency map
+
+0.13 thermodynamic dependency -> homeostasis proxy
+
+Source-referenced EEG context -> neural model sandbox
+
+Seeded synthetic matrix -> class-C biomarker diagnostic
+
+Future source-locked omics -> TCGA/omics sub-gate
+
+Future reaction-network data -> origin/protocell sub-gate
+
+PDB/KineticDB/PFD/PFDB/CASP source targets + runtime gate -> protein-folding dynamics sub-gate
+
+All lanes remain subordinate to the 0.22 umbrella and do not merge their evidence.
+
+## Evidence and dependency matrix
+
+| Lane | Current evidence | Claim ceiling | Controlling blocker |
+| :-- | :-- | :--: | :-- |
+| Homeostasis | Normalized proxy model | B | Environment entropy ledger and 0.13 dependency closure |
+| Origin of life | Simulation sandbox | B | Source-locked prebiotic reaction network and dedicated artifact |
+| EEG/neural | Source records and local summaries; no raw windows | B | Raw windows, preprocessing, record IDs, holdout metrics |
+| Synthetic biomarker | Seeded internal diagnostic artifact | C | Real omics matrix and independent baseline |
+| TCGA/omics | Mock matrix scripts archived as legacy | B | Real matrix, cohort, assay units, preprocessing, baseline |
+| Protein folding | Deterministic finite 2-D HP benchmark with exhaustive oracle and seeded comparators | C | Real structure correspondence, source-backed benchmark, and independent replication |
+| Protein-folding dynamics | Wave-0 source/runtime preflight; no atomistic result | B | Source-locked 12-protein cohort, pinned runtime, force-field assets, and smoke tests |
+| Immune/clinical | Virtual-subject exploratory extensions | B | Ethical clinical design and independent outcome validation |
+
+## Current claim boundary
+
+Supported now: an internal synthetic biomarker diagnostic path, a class-C finite HP model benchmark, a class-B protein-folding dynamics research design/preflight, documented normalized formulas, and an explicit provenance/blocker map.
+
+Not established: an origin-of-life mechanism, life thermodynamics, clinical biomarker usefulness, real TCGA analysis, EEG seizure prediction, real protein folding dynamics, cellular folding mechanism confirmation, AlphaFold replication, PDB/CASP validation, or external replication.
+
+## Reproduce the current benchmark
+
+    .venv\Scripts\python.exe docs\topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_Biomarker_Identification.py
+
+    .venv\Scripts\python.exe docs\topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_Protein_Folding_HP_Benchmark.py
+
+    .venv\Scripts\python.exe docs\topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_Protein_Folding_Dynamics_Gate.py
+
+The dynamics command is a source/runtime preflight only; a BLOCKED lane gate is expected until the cohort and runtime are frozen. The biomarker command remains WARN with `claim_class=C` and `data_class=synthetic`. The protein command emits `0_22_protein_folding_hp_benchmark.json` with `verification_status=PASS`, `claim_class=C`, and `data_class=synthetic`; this PASS is limited to the finite model mechanics contract.
+
+## Protein-folding dynamics map
 
 ```mermaid
 flowchart LR
-  T13["0.13 Thermodynamic Bridge"] --> ENT["Entropy / information-flow ledger"]
-  ENT --> LIFE["Life/homeostasis proxy"]
-  EEG["EEG references"] --> NEURAL["Neural synchrony checks"]
-  SYN["Seeded synthetic gene matrix"] --> BIO["Biomarker diagnostic"]
-  OMI["Future real omics"] --> CANCER["Cancer / TCGA entropy map"]
-  CHEM["Future prebiotic chemistry"] --> PROTO["Protocell emergence"]
-  LIFE --> TOPIC["0.22 Biophysical complexity"]
-  NEURAL --> TOPIC
-  BIO --> TOPIC
-  CANCER --> TOPIC
-  PROTO --> TOPIC
+    A["PDB + kinetic source targets"] --> B["Source-lock manifest"]
+    B --> C{"Runtime and cohort gate"}
+    C -->|blocked| D["No atomistic result"]
+    C -->|ready| E["H0 standard MD"]
+    E --> F["H1 UET readout"]
+    F --> G["H2 coupled candidate"]
+    G --> H["Intrinsic -> co-translational -> chaperone"]
 ```
 
----
+The current gate stops at source/runtime preflight. It does not download data or generate a molecular-dynamics trajectory.
 
-## Evidence And Dependency Matrix
+## Legacy boundary
 
-| Layer | Current status | Evidence path | What strengthens the theory next |
-| :-- | :-- | :-- | :-- |
-| Homeostasis/origin-of-life | Entropy and Omega proxy simulations | `METHOD.md`, `FORMULA_AUDIT.md` | Add environment entropy ledger and real/prebiotic reaction data. |
-| EEG/neural dynamics | CHB-MIT/Bonn source records and local summaries exist, but primary verifier does not classify raw EEG | `DATA_MANIFEST.md`, `data/03_Research/source_lock_manifest.json` | Archive raw windows, preprocessing, exact record IDs, and classifier metrics. |
-| Biomarker | Seeded synthetic positive-control diagnostic | `Research_Biomarker_Identification.py`, verifier artifact | Replace synthetic matrix with real omics data and baseline statistics. |
-| Cancer/TCGA | TCGA/GDC source target exists, but current scripts include mock matrices | `FORMULA_AUDIT.md`, `LIMITATIONS.md`, `docs/data/external/biophysics/omics/tcga/source_record.json` | Add real TCGA-derived matrix, cohort, preprocessing, hashes, and baseline statistics. |
-| Protein/protocell | HP/proxy simulations | `FORMULA_AUDIT.md` | Add known benchmark optima, source data, deterministic artifacts. |
-| Dependency | Thermodynamic language depends on `0.13` | `METHOD.md`, `LIMITATIONS.md` | Inherit `0.13` source-lock limitations until closed. |
+Historical analysis prose, non-gated scripts, and old figure assets remain under Doc/Legacy/, Code/Legacy/, data/legacy/, Ref/Legacy/, and Result/Legacy/. They are preserved for research history but excluded from current evidence and status decisions.
 
----
+## Next controller
 
-## Current Research Claim
-
-- **Supported now:** a runnable internal diagnostic for synthetic biomarker stability, plus mapped formulas and data provenance gaps.
-- **Not established yet:** origin-of-life mechanism, clinical biomarkers, external seizure prediction, real TCGA cancer entropy validation, or protein-folding superiority.
-- **Main value:** `0.22` should become a set of separated biophysical sub-gates, not one blended biomedical claim.
-
----
-
-## Test Results
-
-| Test | Question | Current result | Status |
-| :-- | :-- | :-- | :-- |
-| Synthetic biomarker | Can seeded high-variance controls be flagged by stability score? | Artifact-producing verifier | WARN |
-| EEG/seizure | Can UET classify real seizure windows? | Not primary-gated yet | OPEN |
-| Origin of life | Can entropy accounting support local order in an open system? | Proxy simulation only | OPEN |
-| Cancer/TCGA | Can real omics show coherence collapse? | Mock matrix currently | OPEN |
-| Protein/protocell | Can benchmark optima be reached reproducibly? | Sandbox scripts | OPEN |
-
----
-
-## Quick Start
-
-```powershell
-.venv\Scripts\python.exe docs\topics\0.22_Biophysics_Origin_of_Life\Code\03_Research\Research_Biomarker_Identification.py
-```
-
-## Key Files
-
-- [FORMULA_AUDIT.md](./FORMULA_AUDIT.md): formula registry with units, proof status, verifier role, and failure modes.
-- [DATA_MANIFEST.md](./DATA_MANIFEST.md): EEG/source references, synthetic verifier role, local hashes, and source-lock targets.
-- [VERIFICATION_SPEC.md](./VERIFICATION_SPEC.md): primary verifier command, thresholds, artifact target, and interpretation.
-- [METHOD.md](./METHOD.md): method map, evidence matrix, and dependency notes.
-- [LIMITATIONS.md](./LIMITATIONS.md): current claim boundaries and blockers.
-
----
-
-*Core hardening status: formula-audited, synthetic verifier artifact enabled, biomedical source records pinned, raw biomedical data gates still open.*
+The next controller is the protein-folding dynamics source/runtime gate: freeze the source-backed cohort, pin the atomistic runtime and force-field assets, and pass smoke tests. The existing HP benchmark remains a separate synthetic control.

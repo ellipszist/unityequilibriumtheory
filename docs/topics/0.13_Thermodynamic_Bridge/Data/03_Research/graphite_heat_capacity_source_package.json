@@ -1,0 +1,173 @@
+{
+  "schema_version": "t13-energy-response-source-package-v1",
+  "artifact": "graphite_heat_capacity_source_package",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "created_on": "2026-08-10",
+  "reviewed_on": "2026-08-10",
+  "status": "SOURCE_IDENTITY_READY_CV_UNCERTAINTY_OPEN",
+  "source": {
+    "source_id": "nist_srd69_graphite_cp",
+    "title": "NIST Chemistry WebBook, SRD 69: Graphite",
+    "publisher": "National Institute of Standards and Technology",
+    "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C7782425&Mask=FFFFFF&Units=CAL",
+    "source_locator": [
+      "Condensed phase thermochemistry data",
+      "Constant pressure heat capacity of solid",
+      "Table rows at 298.15 K and 300 K",
+      "References: Butland and Maddison 1973; DeSorbo and Tyler 1953/1957; Lutcov et al. 1970"
+    ],
+    "retrieved_on": "2026-08-10",
+    "source_identity": {
+      "material": "graphite",
+      "cas": "7782-42-5",
+      "database": "NIST Standard Reference Database 69"
+    },
+    "license_or_terms": "NIST SRD page; reuse and citation terms require source-level review before publication",
+    "local_raw_path": null,
+    "local_numeric_path": null,
+    "preprocessing": "manual transcription of table identity and reported values; no interpolation, fitting, smoothing, or target-curve access",
+    "source_hash": null,
+    "source_hash_status": "REMOTE_PAGE_HASH_NOT_ARCHIVED"
+  },
+  "additional_sources": [
+    {
+      "source_id": "nist_scd30_graphite_mcdonald_1965",
+      "title": "NIST Structural Ceramics Database, citation Z00448: Heat Content and Heat Capacity of an Extruded Graphite from 341 to 1723 K",
+      "publisher": "National Institute of Standards and Technology",
+      "url": "https://srdata.nist.gov/CeramicDataPortal/Scd/Z00448",
+      "source_locator": [
+        "Bibliographic Information, citation Z00448",
+        "General Materials Processing Notes: graphite specific density 1.90",
+        "Specific Heat table: 300 K row",
+        "Measurement Methods: drop calorimetry",
+        "Cautions: observed enthalpies within +/-0.4% of smoothed curve"
+      ],
+      "retrieved_on": "2026-08-10",
+      "local_raw_path": null,
+      "local_numeric_path": null,
+      "preprocessing": "manual transcription of the official table and locator; no interpolation, fitting, or target-curve access",
+      "source_hash": null,
+      "source_hash_status": "REMOTE_PAGE_HASH_NOT_ARCHIVED",
+      "status": "CANDIDATE_WITH_EVALUATED_DEVIATION_BOUND"
+    }
+  ],
+  "candidate_rows": [
+    {
+      "source_row_id": "nist_srd69_graphite_cp_butland_maddison_300K",
+      "reference": "Butland and Maddison 1973",
+      "temperature_K": 300.0,
+      "quantity": "Cp,solid",
+      "value": 2.0599,
+      "reported_units": "cal mol^-1 K^-1",
+      "source_locator": "Constant pressure heat capacity table, 300 K row",
+      "uncertainty": {
+        "value": null,
+        "reported_units": "cal mol^-1 K^-1",
+        "status": "NOT_REPORTED_IN_NIST_TABLE"
+      },
+      "data_role": "CALIBRATION_CANDIDATE_NOT_CONSUMED",
+      "status": "CANDIDATE_CP_ONLY"
+    },
+    {
+      "source_row_id": "nist_srd69_graphite_cp_isaacs_wang_300K",
+      "reference": "Isaacs and Wang 1981",
+      "temperature_K": 300.0,
+      "quantity": "Cp,solid",
+      "value": 2.402,
+      "reported_units": "cal mol^-1 K^-1",
+      "source_locator": "Constant pressure heat capacity table, 300 K row",
+      "uncertainty": {
+        "value": null,
+        "reported_units": "cal mol^-1 K^-1",
+        "status": "NOT_REPORTED_IN_NIST_TABLE"
+      },
+      "data_role": "COMPARISON_CANDIDATE_NOT_CONSUMED",
+      "status": "CANDIDATE_CP_ONLY"
+    },
+    {
+      "source_row_id": "nist_srd69_graphite_cp_taylor_groot_300K",
+      "reference": "Taylor and Groot 1980",
+      "temperature_K": 300.0,
+      "quantity": "Cp,solid",
+      "value": 2.01,
+      "reported_units": "cal mol^-1 K^-1",
+      "source_locator": "Constant pressure heat capacity table, 300 K row",
+      "uncertainty": {
+        "value": null,
+        "reported_units": "cal mol^-1 K^-1",
+        "status": "NOT_REPORTED_IN_NIST_TABLE"
+      },
+      "data_role": "COMPARISON_CANDIDATE_NOT_CONSUMED",
+      "status": "CANDIDATE_CP_ONLY"
+    },
+    {
+      "source_row_id": "nist_srd69_graphite_cp_mcdonald_300K",
+      "reference": "McDonald 1965",
+      "temperature_K": 300.0,
+      "quantity": "Cp,solid",
+      "value": 2.05,
+      "reported_units": "cal mol^-1 K^-1",
+      "source_locator": "Constant pressure heat capacity table, 300 K row",
+      "uncertainty": {
+        "value": null,
+        "reported_units": "cal mol^-1 K^-1",
+        "status": "NOT_REPORTED_IN_NIST_TABLE"
+      },
+      "data_role": "COMPARISON_CANDIDATE_NOT_CONSUMED",
+      "status": "CANDIDATE_CP_ONLY"
+    },
+    {
+      "source_row_id": "nist_scd30_graphite_mcdonald_1965_300K",
+      "reference": "McDonald 1965 via NIST SCD30 citation Z00448",
+      "temperature_K": 300.0,
+      "quantity": "specific heat and molar heat capacity candidate",
+      "value": {
+        "molar_heat_capacity_J_per_mol_K": 8.58,
+        "specific_heat_J_per_kg_K": 714.0,
+        "reported_specific_density_g_per_cm3": 1.90
+      },
+      "reported_units": "J mol^-1 K^-1; J kg^-1 K^-1; g cm^-3",
+      "source_locator": "Specific Heat table, 300 K row; General Materials Processing Notes",
+      "uncertainty": {
+        "value": 0.004,
+        "reported_units": "relative bound",
+        "status": "EVALUATED_DEVIATION_BOUND_NOT_MEASUREMENT_UNCERTAINTY",
+        "meaning": "NIST reports observed enthalpies within +/-0.4% of the smoothed curve; this is not a stated standard uncertainty for c_v"
+      },
+      "data_role": "CALIBRATION_CANDIDATE_NOT_CONSUMED",
+      "status": "CANDIDATE_SPECIFIC_HEAT_NOT_CV_LOCKED"
+    }
+  ],
+  "required_quantity_contract": {
+    "standard_relation": "Delta_Tq = Delta_u / c_v",
+    "required_quantity": "volumetric c_v",
+    "required_units": "J m^-3 K^-1",
+    "candidate_quantity": "molar Cp and mass-specific heat",
+    "candidate_units": "cal mol^-1 K^-1; J mol^-1 K^-1; J kg^-1 K^-1",
+    "conversion_status": "OPEN_CP_TO_CV_AND_MOLAR_TO_VOLUMETRIC",
+    "conversion_requirements": [
+      "source-locked Cp-to-cv thermodynamic relation for the declared material regime",
+      "source-locked mass/molar-to-volumetric conversion with density and uncertainty",
+      "unit convention for the reported calorie value",
+      "measurement uncertainty rather than an evaluated deviation bound"
+    ],
+    "uncertainty_status": "OPEN_REQUIRED_SOURCE_UNCERTAINTY"
+  },
+  "energy_scale_contract": {
+    "required_quantity": "e0",
+    "required_units": "J m^-3",
+    "status": "OPEN_NOT_SOURCE_LOCKED",
+    "allowed_origins": [
+      "derived from a declared dimensional UET action or free-energy density",
+      "independent source/calibration record with uncertainty"
+    ],
+    "fit_or_target_selection_allowed": false
+  },
+  "holdout_policy": {
+    "xie_2026_accessed": false,
+    "xie_2026_source_data_consumed": false,
+    "xie_2026_role": "locked external holdout",
+    "calibration_path_may_read_holdout": false
+  },
+  "claim_boundary": "NIST provides traceable graphite Cp and specific-heat candidate rows, but this package does not close volumetric cv, Cp-to-cv conversion, measurement uncertainty, e0, the base Phi-to-Phi_E mapping, or alpha_Phi_K. No numeric alpha is calibrated from these rows."
+}
