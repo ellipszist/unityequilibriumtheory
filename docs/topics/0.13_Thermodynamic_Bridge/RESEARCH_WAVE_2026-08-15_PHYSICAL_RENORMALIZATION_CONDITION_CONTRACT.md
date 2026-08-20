@@ -1,0 +1,15 @@
+# Physical Renormalization Condition Contract (2026-08-15)
+
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_UET_O2_PHYSICAL_RENORMALIZATION_CONDITION_CONTRACT`; Full Topic 13 remains `PARTIAL` and downstream remains blocked.
+WHAT_IS_ACTUALLY_CLOSED: A below-threshold on-shell pole/residue condition contract, the separation of mass-counterterm and wavefunction-counterterm units, and the acceptance schema for an independent physical pole/residue or microscopic renormalization record.
+WHAT_REMAINS_OPEN: `physical_anchor_supplied=false`; no physical scheme match, complete finite-temperature 1PI self-energy, physical Kubo coefficient, covariant entropy/heat-flux balance, dimensional `Phi` map, independent `alpha_Phi_K`, Ding-compatible numeric `C_src`, source uncertainty, or external validation.
+DEPENDENCY_UNLOCKED: Renormalization-condition acceptance protocol only. Topic 13 Core closure, curved 3+1, Gravity, constitutive transport, Galaxy, SI, alpha, source, and external-validation dependencies remain blocked.
+STATUS: `PASS_ON_SHELL_PHYSICAL_RENORMALIZATION_CONDITION_CONTRACT_OPEN_EXTERNAL_ANCHOR`; closure level `CLOSED_FOR_LANE`; `full_core_unlock=false`.
+WHAT_CHANGED: Added the action-compatible on-shell contract, machine-readable verifier/artifact, focused tests, full-gate registration, registry/dependency synchronization, and this report. The formal witness is not an external measurement and does not select a physical scheme.
+EQUATION_OR_MAPPING: `Gamma_R^(2)(s)=s-s_* - Sigma_R,sub(s;s_*)`; `Sigma_R,sub(s;s_*)=Sigma_R(s)-Sigma_R(s_*)-(s-s_*) dSigma_R/ds|s_*`; `Re Gamma_R^(2)(s_*)=0`; `d Re Gamma_R^(2)/ds|s_*=1`; `delta_m^2=Re Sigma_R(s_*)`; `delta_Z=-d Re Sigma_R/ds|s_*`. Real below-threshold domain: `0 < s_* < 9 m_internal^2`; above-threshold matching needs a complex-pole contract.
+VERIFICATION: Contract verifier zero failed checks; formal witness `m_internal^2=0.5`, `s_*=0.75`, threshold `4.5`; pole residual `0`; residue residual `0`; focused regression `3 passed`; full gate remains `BLOCKED_OPEN_T13_FULL_BRIDGE/PARTIAL`; dependency remains `BLOCKED_DOWNSTREAM_MAJOR_RESULTS`.
+CONTROLLING_BLOCKER: `external_physical_pole_or_residue_anchor_missing`, alongside `dimensional_phi_energy_anchor_or_independent_alpha_calibration_missing`, Ding numeric-source, beta/bridge, EOS/transport/KMS/entropy, and material-uncertainty blockers.
+NEXT_ACTION: Source-lock one independent physical pole/residue or microscopic renormalization-condition record with locator, units, uncertainty, state matching, independence statement, and hash; then evaluate the complete finite-temperature 1PI object without TTG target residuals or Xie 2026.
+CLAIM_BOUNDARY: This closes only the acceptance contract and formal algebraic witness. It does not claim a physical mass/residue, unique renormalization, complete 1PI, transport, entropy, SI `Phi` mapping, `alpha_Phi_K` calibration, TTG prediction, external validation, or Full Topic 13 closure.
+
+Evidence artifact: `docs/core/artifacts/t13_uet_o2_physical_renormalization_condition_contract.json`.

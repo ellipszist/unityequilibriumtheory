@@ -19,6 +19,10 @@ DING_RAW = ROOT / (
     "ding_2022_supplementary_information.pdf"
 )
 HUANG_AUDIT = ROOT / "docs/core/artifacts/t13_huang_2023_supplementary_payload_boundary_audit.json"
+CALORINE_PACKAGE = ROOT / (
+    "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/"
+    "t13_calorine_zenodo_nep_bte_reproduction_source_package.json"
+)
 
 
 def digest(path: Path) -> str:
@@ -33,6 +37,39 @@ def main() -> int:
     package = json.loads(PACKAGE.read_text(encoding="utf-8-sig"))
     target = package["target"]
     comparators = package["comparators"]
+    calorine = json.loads(CALORINE_PACKAGE.read_text(encoding="utf-8-sig"))
+    calorine_source = calorine["source"]
+    calorine_reproduction = calorine["reproduction"]
+    calorine_latest_mesh = calorine_reproduction["mesh_runs"][-1]
+    calorine_volume_A3 = float(calorine_latest_mesh["primitive_volume_A3"])
+    calorine_density_kg_per_m3 = (
+        4.0 * 12.011e-3
+        / (calorine_volume_A3 * 1.0e-30 * 6.02214076e23)
+    )
+    calorine_input_hashes_match = all(
+        (ROOT / item["path"]).is_file()
+        and digest(ROOT / item["path"]) == item["sha256"]
+        for item in calorine_source["inputs"]
+    )
+    calorine_rows_have_units = all(
+        float(row["C_src_J_m^-3_K^-1"]) > 0.0
+        and float(row["temperature_K"]) > 0.0
+        for row in calorine_reproduction["c_src_rows_latest_mesh"]
+    )
+    calorine_convergence_pass = bool(
+        calorine_reproduction["convergence"]["latest_pair_pass"]
+    )
+    calorine_state_boundary_explicit = (
+        calorine_source["source_state"]["equivalent_to_ding"] is False
+        and "periodic primitive" in calorine_source["source_state"]["morphology"]
+        and "not declared" in calorine_source["source_state"]["defect_state"]
+        and "not declared" in calorine_source["source_state"]["isotope_state"]
+    )
+    calorine_response_boundary_explicit = (
+        calorine_reproduction["transport_solver"] == "phono3py RTA"
+        and "not full source acceptance"
+        in calorine_reproduction["convergence"]["scope"]
+    )
     checks = {
         "package_target_identity_present": target["source_id"]
         == "ding_2022_natural_graphite_ttg_pbte_lane",
@@ -48,6 +85,18 @@ def main() -> int:
         "all_comparators_explicitly_not_equivalent": all(
             item.get("equivalence_status") == "NOT_ESTABLISHED" for item in comparators
         ),
+        "calorine_package_present": CALORINE_PACKAGE.is_file(),
+        "calorine_input_hashes_match": calorine_input_hashes_match,
+        "calorine_c4_volume_and_density_derived": calorine_volume_A3 > 0.0
+        and calorine_density_kg_per_m3 > 0.0,
+        "calorine_csrc_rows_have_si_units": calorine_rows_have_units,
+        "calorine_mesh_convergence_preflight_recorded": calorine_convergence_pass,
+        "calorine_state_boundary_explicit": calorine_state_boundary_explicit,
+        "calorine_response_boundary_explicit": calorine_response_boundary_explicit,
+        "calorine_source_grade_uncertainty_remains_open": calorine["uncertainty"][
+            "source_grade_statistical_or_systematic_uncertainty_present"
+        ] is False,
+        "calorine_not_accepted_as_ding_csrc": calorine["acceptance_for_full_topic13"] is False,
         "equivalence_rule_is_explicit": "material identity" in package[
             "mapping_contract"
         ]["equivalence_rule"],
@@ -76,6 +125,7 @@ def main() -> int:
             "what_is_closed": [
                 "Ding natural-graphite TTG specimen identity and supplementary grain characterization are source-locked",
                 "MP48, NIST AXM-5Q1, BIPM Carbone Lorraine, IAEA manufactured-graphite, and Huang ribbon comparator identities are listed",
+                "the Calorine/Zenodo NEP-RTA candidate is source-locked with its C4 volume, SI C_src rows, convergence preflight, and explicit non-equivalence boundary",
                 "none of the archived comparator lanes is treated as equivalent to the Ding TTG/PBTE regime",
                 "the material-equivalence rule is explicit and rejects silent comparator substitution",
             ],
@@ -97,6 +147,7 @@ def main() -> int:
                 {"path": rel(PACKAGE), "sha256": digest(PACKAGE)},
                 {"path": rel(DING_RAW), "sha256": digest(DING_RAW) if DING_RAW.is_file() else None},
                 {"path": rel(HUANG_AUDIT), "sha256": digest(HUANG_AUDIT) if HUANG_AUDIT.is_file() else None},
+                {"path": rel(CALORINE_PACKAGE), "sha256": digest(CALORINE_PACKAGE)},
             ],
             "verification_status": status,
             "open_blockers": [
@@ -112,6 +163,20 @@ def main() -> int:
         "source": {
             "target": target,
             "comparators": comparators,
+            "calorine_admission_boundary": {
+                "source_package_path": rel(CALORINE_PACKAGE),
+                "source_package_sha256": digest(CALORINE_PACKAGE),
+                "primitive_cell_atoms": 4,
+                "primitive_volume_A3": calorine_volume_A3,
+                "crystallographic_density_kg_per_m3": calorine_density_kg_per_m3,
+                "density_derivation": "4 carbon atoms and source primitive volume; Avogadro constant exact SI definition; comparator quantity only",
+                "ding_density_or_volume_match": "NOT_ESTABLISHED",
+                "morphology_match": "NOT_ESTABLISHED",
+                "isotope_defect_state_match": "NOT_ESTABLISHED",
+                "response_contract_match": "NOT_ESTABLISHED",
+                "accepted_as_ding_csrc": False,
+                "source_grade_uncertainty_present": False,
+            },
             "ding_raw_sha256_observed": digest(DING_RAW) if DING_RAW.is_file() else None,
             "package_path": rel(PACKAGE),
             "package_sha256": digest(PACKAGE),
@@ -126,7 +191,7 @@ def main() -> int:
         "claim_boundary": "Source-locked material-regime no-go boundary only; no numeric Ding C_src, no independent alpha_Phi_K, and no Full Topic 13 closure.",
     }
     OUT.write_text(json.dumps(result, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
-    print(json.dumps({"status": status, "artifact": rel(OUT), "comparator_count": len(comparators), "equivalence_result": package["mapping_contract"]["equivalence_result"]}, indent=2))
+    print(json.dumps({"status": status, "artifact": rel(OUT), "comparator_count": len(comparators), "equivalence_result": package["mapping_contract"]["equivalence_result"], "calorine_density_kg_per_m3": calorine_density_kg_per_m3}, indent=2))
     return 0 if passed else 1
 
 

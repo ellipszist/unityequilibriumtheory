@@ -1,5 +1,41 @@
 # Formula Audit: 0.13_Thermodynamic_Bridge
 
+## T13-094 - Condensed Dissipative Transport Identifiability Boundary
+
+MAJOR_RESULT_CLOSURE: CLOSED_AS_NO_GO for T13_UET_O2_CONDENSED_DISSIPATIVE_TRANSPORT_IDENTIFIABILITY_NO_GO; Full Topic 13 remains PARTIAL.
+WHAT_IS_ACTUALLY_CLOSED: The declared condensed static lane has zero condensate entropy in its tree-sector records and does not expose a relative-flow variable, collision kernel, or retarded correlator. Distinct positive-semidefinite matrices L_A=[[1,0],[0,1]] and L_B=[[2,0],[0,0.5]] both give zero entropy production at X_static=(0,0), but distinct responses at X_probe=(1,0).
+WHAT_REMAINS_OPEN: A microscopic condensed collision kernel, physical Kubo/Onsager coefficient, complete two-fluid constitutive tensor, SI Phi map, alpha calibration, source closure, and Full Topic 13.
+VERIFICATION: PASS_SCOPED_CONDENSED_DISSIPATIVE_TRANSPORT_IDENTIFIABILITY_NO_GO; 5 focused unit tests passed; static witnesses agree and probe responses differ; no source rows, fitting, target data, or holdout were used.
+CLAIM_BOUNDARY: Scoped identifiability no-go for the current condensed static lane only; no physical transport coefficient or complete two-fluid closure is emitted.
+EVIDENCE: docs/core/artifacts/t13_uet_o2_condensed_dissipative_transport_audit.json.
+
+## T13-093 - Current Continuum-Limit Boundary
+
+MAJOR_RESULT_CLOSURE: CLOSED_AS_NO_GO for T13_UET_O2_CONTINUUM_LIMIT_CURRENT_SCHEME_NO_GO; Full Topic 13 remains PARTIAL.
+WHAT_IS_ACTUALLY_CLOSED: Existing finite-cutoff radial/channel resolution sequence is source-linked; the unchanged repository controller max(relative change)<=1e-2 is applied; current maximum adjacent DC-response change is 0.47541462972440046, so continuum promotion is rejected and no extrapolated response is emitted.
+WHAT_REMAINS_OPEN: This is not a mathematical no-go for every future discretization. New basis/cutoff control or matched extrapolation, loop-renormalized vertex, microscopic SK/KMS, physical Kubo, SI map, alpha_Phi_K, Ding C_src, and Full Topic 13 remain open.
+VERIFICATION: PASS_SCOPED_CONTINUUM_LIMIT_CURRENT_SCHEME_NO_GO; sequence (0.47541462972440046, 0.2421143231506593, 0.04027765595323908); focused regression 4 passed.
+CLAIM_BOUNDARY: Scoped no-go for the declared current scheme only; no continuum proof, physical Kubo, SI calibration, alpha, TTG validation, or Full Topic 13 closure.
+EVIDENCE: docs/core/artifacts/t13_uet_o2_continuum_limit_boundary_audit.json.
+
+## T13-092 - Finite-Temperature Two-Fluid Static Response
+
+MAJOR_RESULT_CLOSURE: CLOSED_FOR_LANE for T13_UET_O2_FINITE_T_TWO_FLUID_STATIC_RESPONSE_LANE; Full Topic 13 remains PARTIAL.
+WHAT_IS_ACTUALLY_CLOSED: Action/EOS condensate-normal pressure, charge, entropy, energy, and susceptibility split; branch-resolved static normal response; condensed tree stiffness; normal-branch finite-cutoff covariant heat-flux and entropy balance interface.
+WHAT_REMAINS_OPEN: Static susceptibility is not a Landau normal density or retarded Kubo coefficient. Condensed dissipative transport, interacting self-energy, microscopic SK/KMS matching, SI map, alpha_Phi_K, Ding C_src, and Full Topic 13 remain open.
+VERIFICATION: PASS_ACTION_DERIVED_FINITE_T_TWO_FLUID_STATIC_RESPONSE_LANE; all checks passed; normal kappa_natural 257.3728668627025; focused regression 4 passed.
+CLAIM_BOUNDARY: Natural-unit action-derived static two-sector lane and normal-branch formal heat balance only; no physical Kubo, SI calibration, alpha, TTG validation, or Full Topic 13 closure.
+EVIDENCE: docs/core/artifacts/t13_uet_o2_finite_temperature_two_fluid_response_audit.json.
+
+## T13-091 - Action-Derived Natural Phi-to-Thermal Bridge
+
+MAJOR_RESULT_CLOSURE: CLOSED_FOR_LANE for T13_UET_O2_ACTION_NATURAL_PHI_THERMAL_BRIDGE_LANE; Full Topic 13 remains PARTIAL.
+WHAT_IS_ACTUALLY_CLOSED: epsilon=-p+T*partial_T p+mu*partial_mu p; Delta_epsilon^nat=(partial_Phi epsilon)_(T,mu)*Delta_Phi; C_epsilon_T^nat=(partial_T epsilon)_(mu,Phi); Delta_T_q^nat=Delta_epsilon^nat/C_epsilon_T^nat.
+WHAT_REMAINS_OPEN: C_epsilon_T is not source c_v; physical Phi SI anchor, alpha_Phi_K, Ding C_src, dimensional TTG map, physical transport, and Full Topic 13 remain open.
+VERIFICATION: PASS_ACTION_DERIVED_NATURAL_PHI_THERMAL_BRIDGE_LANE; identity residual 0; alpha_Phi_T^nat 0.0023138578447835533; linearization residual 3.321118889703099e-05; focused regression 4 passed.
+CLAIM_BOUNDARY: Natural action-derived bridge only; no SI Kelvin prediction, physical c_v relabeling, alpha calibration, TTG validation, or Full Topic 13 closure.
+EVIDENCE: docs/core/artifacts/t13_uet_o2_action_thermal_observable_bridge_audit.json.
+
 Audit status: reviewed registry, replacing the bootstrap scaffold.
 
 Scope note: this topic is a core bridge between information, entropy, energy cost, and gravity-adjacent thermodynamic identities. The audit below separates established physics identities from UET bridge hypotheses and from synthetic benchmark demos.
@@ -689,3 +725,264 @@ The KMS ratio is `24.523344352604553` against target `24.52334435260456`, with r
 
 
 The positive-affinity construction is an internal formal witness, not a measured gradient. It does not emit a covariant entropy current, physical heat-flux balance, physical Kubo coefficient, dimensional \`Phi\` map, \`alpha_Phi_K\`, TTG prediction, or Xie 2026 holdout result. Artifact SHA-256: \`7a21a03c87c0b39d619cb23bc459643a8c41b7ae792beed88425e0129996968d\`.
+## Formal Subtracted Sunset Dispersion Interface (2026-08-14)
+
+| formula_id | relation | code surface | variables and units | constant_origin | proof_status | verification_role | failure_mode | next_hardening_step |
+| :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
+| T13-081 | `s(omega,k)=omega^2+m_eff^2+2*omega*E_k`; `rho_cut=2*omega*(Gamma_>-Gamma_<)`; `N_cut=2*omega*(Gamma_>+Gamma_<)`; `Sigma_R^eta=integral_0^Omega dnu/pi*rho_cut(nu)*[1/(omega-nu+i*eta)-1/(omega+nu+i*eta)]`; `Sigma_R,sub(omega;omega_*)=Sigma_R^eta(omega)-Sigma_R^eta(omega_*)` | `docs/core/uet_o2_sunset_dispersion_interface.py`; `docs/core/uet_o2_sunset_dispersion_interface_verified.py`; `docs/scripts/audit/audit_topic13_uet_o2_sunset_dispersion_interface.py`; `docs/core/artifacts/t13_uet_o2_sunset_dispersion_interface_audit.json` | declared natural units; temperature, mass, momentum, energy, and regulator eta have energy units; `Phi` is not temperature; `C` is not mass or charge; `R_gen` is derived; `R_obs` is separate | action-derived neutral elastic cut extended to a finite-regulator formal off-shell rest-energy dispersion interface; no source rows, fitting, SI calibration, or holdout | CLOSED_FOR_LANE only; KMS, spectral/noise positivity, retarded sign, reference subtraction, on-shell matching, and composite-quadrature convergence pass | a formal dispersion interface can be mistaken for a full 1PI self-energy, physical renormalization, Kubo coefficient, or thermal observable | derive the full 1PI retarded self-energy, zero-regulator limit, microscopic off-shell matching, and physical Kubo/entropy/observable maps independently |
+
+The lane deliberately uses `eta=0.025` as a declared numerical regulator. Its interface status is not a physical zero-regulator self-energy and does not emit `alpha_Phi_K`, a TTG prediction, or an external validation claim.
+
+Artifact SHA-256: `f63e6a0fe32727dbf79652d70a3eff2c8cc96050181a32e1580a461ff10fbdd8`.
+## Action-Normalized O(2) Sunset Spectral Interface (2026-08-14)
+
+| formula_id | relation | code surface | variables and units | constant_origin | proof_status | verification_role | failure_mode | next_hardening_step |
+| :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
+| T13-082 | `W_int=lambda*(chi_a chi_a)^2/4`; `V_abcd=2*lambda*(delta_ab*delta_cd+delta_ac*delta_bd+delta_ad*delta_bc)`; `M2_action=sum_{b,c,d}|V_abcd|^2/(1+delta_cd)=28*lambda^2`; `sigma_action=M2_action/(16*pi*s)`; `Sigma_R,sub2=Sigma_R^eta(omega)-Sigma_R^eta(omega_*)-(omega^2-omega_*^2)*dSigma_R^eta/d(omega^2)|_omega_*` | `docs/core/uet_o2_action_sunset_1pi_spectral.py`; `docs/scripts/audit/audit_topic13_uet_o2_action_sunset_1pi_spectral.py`; `docs/core/test/test_topic13_uet_o2_action_sunset_1pi_spectral.py`; `docs/core/artifacts/t13_uet_o2_action_sunset_1pi_spectral_audit.json` | natural units; lambda and the contact matrix element are dimensionless; cross section has inverse-energy-squared units; cut rate has energy units; spectral density uses the declared natural-unit cut normalization; `Phi` is not temperature; `C` is not mass/charge; `R_gen` is derived; `R_obs` is separate | action-derived O(2) contact tensor with explicit species sum and identical-final-state symmetry factor, neutral thermal phase-space cut, and finite-regulator twice-subtracted interface; no source rows, fit, SI calibration, or holdout | CLOSED_FOR_LANE; vertex normalization, KMS, positivity, retarded sign, reference subtraction, derivative subtraction, on-shell comparator mapping, and quadrature convergence pass | an action-normalized spectral interface can be mistaken for a full physical 1PI self-energy, unique renormalization, Kubo coefficient, or TTG observable | derive the microscopic 1PI retarded self-energy and physical zero-regulator/renormalization match; then connect it to SK/KMS entropy-current and heat-flux balance while keeping alpha/source/holdout gates independent |
+
+The `28*lambda^2` result is an explicit normalization mapping, not a replacement of the old comparator. The lane remains natural-unit and internal; it emits no physical Kubo coefficient, SI map, `alpha_Phi_K`, TTG validation, or Xie 2026 holdout result. Artifact SHA-256: `5475be102f350094e24f5607dfed18a133b7e2dd35ada519fff36610c45d0be5`.
+
+The full gate remains `BLOCKED_OPEN_T13_FULL_BRIDGE` with `PARTIAL` closure; downstream major-result dependency audit remains blocked.
+## Action-Matched O(2) Sunset Zero-Eta and Subtraction Interface (2026-08-14)
+
+| formula_id | relation | code surface | variables and units | constant_origin | proof_status | verification_role | failure_mode | next_hardening_step |
+| :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
+| T13-077 | `1/(x+i0)=PV(1/x)-i*pi*delta(x)`; `K(s,nu)=1/(sqrt(s)-nu+i0)-1/(sqrt(s)+nu+i0)`; `Sigma_R,sub2(s)=integral dnu/pi*rho(nu)*[K(s,nu)-K(0,nu)-s*dK/ds(0,nu)]`; `K(0,nu)=-2/nu`; `dK/ds(0,nu)=-2/nu^3`; `Im Sigma_R,sub2(omega)=-rho(omega)` | `docs/core/uet_o2_action_sunset_zero_eta.py`; `docs/scripts/audit/audit_topic13_uet_o2_action_sunset_zero_eta.py`; `docs/core/test/test_topic13_uet_o2_action_sunset_zero_eta.py`; `docs/core/artifacts/t13_uet_o2_action_sunset_zero_eta_audit.json` | natural units; invariant `s` and the self-energy response have energy-squared units in the declared lane; the cut spectral density is in the declared action-normalized natural-unit convention; `Phi` is not temperature; `C` is not mass/charge; `R_gen` is derived; `R_obs` is separate | action-matched O(2) contact tensor, continuum thermal sunset cut, distributional retarded prescription, analytic principal-value pole treatment, and declared BPHZ-like invariant subtraction; no source rows, fit, SI calibration, or holdout | CLOSED_FOR_LANE; KMS, positivity, retarded imaginary sign, subtraction conditions, distributional cut match, and principal-value convergence pass | a zero-eta/subtracted interface can be mistaken for a unique physical renormalized 1PI self-energy, Kubo coefficient, or TTG observable | complete the microscopic off-shell 1PI action derivation and match its subtraction to SK/KMS and physical transport; keep dimensional, alpha, source, and holdout gates independent |
+
+This lane supplies an analytic principal-value control rather than an arbitrary finite pole-exclusion radius. It still emits no unique physical counterterm, physical Kubo coefficient, SI map, `alpha_Phi_K`, TTG validation, or Xie 2026 holdout result. Artifact SHA-256: `0d886b8c99cffbf1384779bbd4a75f1c31362051785ff95e3a12a83fc0a5609f`.
+
+The full gate remains `BLOCKED_OPEN_T13_FULL_BRIDGE` with `PARTIAL` closure; downstream unlock remains false.
+## Action-Derived O(2) 1PI Sunset Tensor Interface (2026-08-14)
+
+| formula_id | relation | code surface | variables and units | constant_origin | proof_status | verification_role | failure_mode | next_hardening_step |
+| :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
+| T13-078 | `V_abcd=2*lambda*(delta_ab*delta_cd+delta_ac*delta_bd+delta_ad*delta_bc)`; `S_ab=sum_ijk V_aijk V_bijk=12*(N+2)*lambda^2*delta_ab`; `Sigma_sunset,ab^(2)=S_ab/6*I3(p)=2*(N+2)*lambda^2*delta_ab*I3(p)`; `Sigma_R,ab(s)=Sigma_ab(s)-Sigma_ab(s_*)-(s-s_*)*dSigma_ab/ds|s_*`; `s=p^2=omega^2` | `docs/core/uet_o2_action_1pi_sunset_tensor.py`; `docs/scripts/audit/audit_topic13_uet_o2_action_1pi_sunset_tensor.py`; `docs/core/test/test_topic13_uet_o2_action_1pi_sunset_tensor.py`; `docs/core/artifacts/t13_uet_o2_action_1pi_sunset_tensor_audit.json` | natural 3+1 units; `lambda`, vertex tensor, `delta_Z`, and `delta_lambda` are dimensionless; `I3`, `Sigma`, and `delta_m2` have energy-squared units; `s` has energy-squared units; `Phi` is not temperature; `C` is not mass/charge; `R_gen` is derived; `R_obs` is separate | action-derived O(N) species contraction and explicit sunset symmetry factor; local two-point counterterm power-counting interface; no loop data, fit, SI calibration, or holdout | CLOSED_FOR_LANE; tensor contraction, O(2) diagonal/off-diagonal structure, `1/6` factor, counterterm basis, and invariant subtraction-variable match pass | tensor prefactor can be mistaken for the full off-shell loop or for a physical renormalization/transport coefficient | evaluate and regulate `I3(p)`, match its retarded continuation and subtraction to SK/KMS, then test physical Kubo/entropy and SI mappings independently |
+
+The `8*lambda^2` O(2) prefactor is the sunset 1PI tensor coefficient after the explicit `1/6` graph symmetry factor. The `28*lambda^2` action scattering sum remains a separate comparator and is not silently identified with the 1PI coefficient. Artifact SHA-256: `05faeda1a55c07aa0055b15fe0c1e3155f8fe4b0cef0f99ec1f037f0bf7dbdde`.
+
+The full gate remains `BLOCKED_OPEN_T13_FULL_BRIDGE` with `PARTIAL` closure; no downstream dependency is unlocked.
+## Regulated Euclidean Off-Shell O(2) 1PI Sunset (2026-08-14)
+
+| formula_id | relation | code surface | variables and units | constant_origin | proof_status | verification_role | failure_mode | next_hardening_step |
+| :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
+| T13-079 | `D=alpha*beta+alpha*gamma+beta*gamma`; `I3_E(s;Lambda)=1/(4*pi)^4*integral_{alpha_i>=Lambda^-2} d^3alpha D^-2 exp[-m^2*(alpha+beta+gamma)-s*alpha*beta*gamma/D]`; `Sigma_E,R,ab(s)=Sigma_E,ab(s)-Sigma_E,ab(s_*)-(s-s_*)*dSigma_E,ab/ds|s_*` | `docs/core/uet_o2_action_1pi_sunset_euclidean.py`; `docs/scripts/audit/audit_topic13_uet_o2_action_1pi_sunset_euclidean.py`; `docs/core/test/test_topic13_uet_o2_action_1pi_sunset_euclidean.py`; `docs/core/artifacts/t13_uet_o2_action_1pi_sunset_euclidean_audit.json` | natural Euclidean 3+1 units; `alpha,beta,gamma` have inverse-energy-squared units; `Lambda` has energy units; `I3_E` and `Sigma_E` have energy-squared units; `s` has energy-squared units; `Phi` is not temperature; `C` is not mass/charge; `R_gen` is derived; `R_obs` is separate | action-derived equal-mass sunset, symmetric proper-time cutoff, numerical log-Schwinger quadrature, and invariant BPHZ subtraction; no thermal source, fit, SI calibration, or holdout | CLOSED_FOR_LANE; finite off-shell Euclidean loop, subtraction conditions, nonzero response, cutoff sequence, and refined quadrature pass | Euclidean off-shell result can be mistaken for retarded continuation or unique physical renormalization | derive and verify retarded `i0` continuation/discontinuity, then match finite-T SK/KMS and physical transport/entropy independently |
+
+This is the first lane in the current wave that evaluates the off-shell loop integral itself rather than only its cut/tensor interface. It remains a regulated Euclidean result; the retarded and finite-temperature physical branches are not emitted. Artifact SHA-256: `fee12dfa1fea3ee455e45106f573c3fa841c0e2305fe4fa2391fa341856246e4`.
+
+The full gate remains `BLOCKED_OPEN_T13_FULL_BRIDGE` with `PARTIAL` closure; no downstream dependency is unlocked.
+## Vacuum Retarded O(2) Sunset Discontinuity Interface (2026-08-14)
+
+| formula_id | relation | code surface | variables and units | constant_origin | proof_status | verification_role | failure_mode | next_hardening_step |
+| :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
+| T13-080 | `s_th=9*m^2`; `Phi_3(s)=1/(128*pi^3*s)*integral ds12 sqrt(lambda(s,s12,m^2))*sqrt(lambda(s12,m^2,m^2))/s12`; `rho_disp=2*(N+2)*lambda^2*Phi_3/(2*pi)`; `Sigma_R(s)=integral_{s_th}^infty dsprime*rho_disp(sprime)/(sprime-s+i0)`; `Im Sigma_R=-pi*rho_disp` | `docs/core/uet_o2_action_1pi_sunset_retarded.py`; `docs/scripts/audit/audit_topic13_uet_o2_action_1pi_sunset_retarded.py`; `docs/core/test/test_topic13_uet_o2_action_1pi_sunset_retarded.py`; `docs/core/artifacts/t13_uet_o2_action_1pi_sunset_retarded_audit.json` | natural vacuum 3+1 units; `s`, mass squared, phase space, spectral measure, and self-energy have energy-squared units; `Phi` is not temperature; `C` is not mass/charge; `R_gen` is derived; `R_obs` is separate | action-derived equal-mass three-body cut, retarded `i0` convention, and subtracted spacelike dispersion; no thermal source, fit, SI calibration, or holdout | CLOSED_FOR_LANE; threshold support, negative imaginary sign, spacelike dispersion, Euclidean matching, and quadrature convergence pass | vacuum discontinuity can be mistaken for the full above-threshold principal-value real part or finite-temperature physical self-energy | evaluate the above-threshold PV real part, then perform finite-temperature SK/KMS and unique-renormalization matching |
+
+This lane supplies the retarded discontinuity that the finite proper-time Euclidean regulator cannot emit by itself. It remains a vacuum, lane-level result; the above-threshold PV real part and finite-temperature physical branches are not emitted. Artifact SHA-256: `651fd640f52a67f054ba56995b0f48be87bbb9fe5e302674f7573af41d4fce8b`.
+
+The full gate remains `BLOCKED_OPEN_T13_FULL_BRIDGE` with `PARTIAL` closure; no downstream dependency is unlocked.
+
+## T13-081 - Vacuum Retarded O(2) Sunset Principal-Value Real-Part Interface
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_UET_O2_VACUUM_RETARDED_SUNSET_DISCONTINUITY_LANE`; this does not close Full Topic 13.
+WHAT_IS_ACTUALLY_CLOSED: The above-threshold vacuum retarded real part is evaluated by subtracting the pole analytically and integrating the regularized spectral remainder with the action-derived O(2) measure.
+WHAT_REMAINS_OPEN: Finite-temperature retarded 1PI, SK/KMS, unique physical renormalization, Kubo/transport, entropy-current/heat-flux balance, SI mapping, independent `alpha_Phi_K`, source provenance, and external validation.
+DEPENDENCY_UNLOCKED: Vacuum PV real-part interface only; no Core, Gravity, full transport, Galaxy, SI, alpha, source, or external-validation dependency is unlocked.
+STATUS: `PASS_ACTION_DERIVED_O2_VACUUM_RETARDED_SUNSET_DISCONTINUITY_LANE`; full gate remains `BLOCKED_OPEN_T13_FULL_BRIDGE` with `PARTIAL` closure.
+WHAT_CHANGED: Added the analytic pole-subtraction equation, PV state/convergence fields, verifier checks, and full-gate/register integration. The branch remains natural-unit and action-derived.
+EQUATION_OR_MAPPING: `K_sub(sprime)=1/(sprime-s)-1/(sprime-r)-(s-r)/(sprime-r)^2`, `r=-s_*`; `PV Sigma_R^sub(s)=integral [rho_disp(sprime)-rho_disp(s)] K_sub(sprime) dsprime + rho_disp(s) A`; `A=ln((s_th-r)/abs(s_th-s))-(s-r)/(s_th-r)`.
+VERIFICATION: PV real part `0.0002769418930978005`; inner residual `1.7004689958380086e-06`; outer residual `2.788057860796576e-08`; Euclidean match residual `0.0013668039936996557`; retarded verifier and focused test pass.
+CONTROLLING_BLOCKER: `full_finite_temperature_retarded_1PI_SK_KMS_and_unique_physical_renormalization_missing`; `alpha_Phi_K` remains an independent open calibration gate.
+NEXT_ACTION: Derive the finite-temperature retarded/advanced/Keldysh continuation and SK/KMS match before emitting physical transport or entropy coefficients.
+CLAIM_BOUNDARY: Lane-level vacuum PV interface only; not full physical retarded self-energy, unique renormalization, transport, entropy-current closure, SI, `alpha_Phi_K`, TTG prediction, external validation, or Full Topic 13 closure.
+EVIDENCE_HASHES: module `faa8ebe67b6e816b66ad19f96f22242f88dc91aeba48c0cb2046fbcdb5b41932`; verifier `51d0ddc2dd3ac661f3089d22daf12ad5ea388b177df493c84393e2a2f64f939b`; artifact `fd1459deea427d60695e89631c68755444542c386199e695326a24f614b1ffca`; full gate `14880545c1a24ae79ad55c9e58f394f81bf74084b156734d9ac07ed5d0c5e030`; register `74101a54b8a74e337dbfb1fbdbf61452c3e8afbb1e014f8cf9082db0adf4077e`; dependency `a375552b4c940d6fc3496ff32e7c035a4adbd6f648e349f42914f4c4a9961f9e`.
+
+## T13-082 - Finite-Temperature O(2) Sunset 1<->3 SK/KMS Channel
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_UET_O2_FINITE_T_THREE_BODY_SUNSET_SK_KMS_LANE`; this does not close Full Topic 13.
+WHAT_IS_ACTUALLY_CLOSED: Bose-weighted finite-temperature greater/lesser measures on the action-derived equal-mass three-body phase space, channel KMS/FDT identities, retarded sign, and vacuum normalization.
+WHAT_REMAINS_OPEN: Other thermal cuts, full finite-temperature 1PI, real-part subtraction, unique renormalization, physical Kubo/transport, entropy-current/heat-flux balance, SI mapping, independent `alpha_Phi_K`, source provenance, and external validation.
+DEPENDENCY_UNLOCKED: Named thermal `1 <-> 3` channel only; no Core, Gravity, full transport, Galaxy, SI, alpha, source, or external-validation dependency is unlocked.
+STATUS: `PASS_ACTION_DERIVED_O2_FINITE_T_THREE_BODY_SUNSET_SK_KMS_LANE`; full gate remains `BLOCKED_OPEN_T13_FULL_BRIDGE` with `PARTIAL` closure.
+WHAT_CHANGED: Added explicit thermal phase-space integration retaining the pair-rest-frame angle, channel contract equations, verifier/artifact, regression tests, and registry/full-gate integration.
+EQUATION_OR_MAPPING: `rho_>=prefactor/(2*pi)*integral dPhi_3 prod(1+n_i)`; `rho_<=prefactor/(2*pi)*integral dPhi_3 prod(n_i)`; `log(rho_>/rho_<)=beta_th*sqrt(s)`; `N=(rho_>-rho_<)*coth(beta_th*sqrt(s)/2)`; `Im Sigma_R,T=-pi*(rho_>-rho_<)`.
+VERIFICATION: KMS log residual `1.7763568394002505e-15`; FDT residual `1.8151885566908842e-16`; normalization residual `1.3737469372946146e-06`; quadrature residuals `1.7221750251008046e-16` and `1.3746648594070555e-06`; verifier and focused regression pass.
+CONTROLLING_BLOCKER: `full_finite_temperature_1pi_all_channels_and_unique_physical_renormalization_missing`; `alpha_Phi_K` remains an independent open calibration gate.
+NEXT_ACTION: Derive the remaining finite-temperature cuts and complete retarded/advanced/Keldysh matching with a physical subtraction scheme.
+CLAIM_BOUNDARY: Lane-level finite-temperature `1 <-> 3` SK/KMS/FDT interface only; not full physical self-energy, unique renormalization, transport, entropy-current closure, SI, `alpha_Phi_K`, TTG prediction, external validation, or Full Topic 13 closure.
+EVIDENCE_HASHES: module `f005ee16fcd063753f03668bd3abf248320ab9b5ba509f2d0faa8251f99297e7`; verifier `fa92115f76a6e1a74b65105bc4c51bae629584fa538f453bbac05c3f4a36a180`; artifact `c55c0592a3e0d614f09bd622fc94a8285a37101e1898a259f86bc5ff4933035f`; full gate `6dd02ba9014a117b6b9e1af62d0e4d59b349a7d2328e0fe16e819e88823fa701`; register `eef8b5eea6c4fb463efd6befd793309421323df1a37c3e2802805cc418bc668a`; dependency `19c43b725b4cac4ebcc536a1240580519b074506bd1a28564b677833180c1774`.
+
+## T13-083 - Finite-Temperature Sunset Channel Pole-Subtracted Real Part
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_UET_O2_FINITE_T_THREE_BODY_SUNSET_SK_KMS_LANE`; no Full Topic 13 promotion.
+WHAT_IS_ACTUALLY_CLOSED: The declared natural-unit `1 <-> 3` thermal spectral channel has a pole-subtracted principal-value retarded real-part interface in addition to the previously checked KMS/FDT and retarded-sign relations.
+WHAT_REMAINS_OPEN: All other thermal cuts, full finite-temperature 1PI, all-channel real-part subtraction, unique physical renormalization, Kubo/transport, entropy-current balance, SI mapping, independent `alpha_Phi_K`, numeric source provenance, and external validation.
+DEPENDENCY_UNLOCKED: Thermal channel-level SK/KMS/FDT/PV interface only; no Core, Gravity, constitutive transport, Galaxy, SI, alpha, source, or external-validation unlock.
+STATUS: `PASS_ACTION_DERIVED_O2_FINITE_T_THREE_BODY_SUNSET_SK_KMS_LANE`; full gate `BLOCKED_OPEN_T13_FULL_BRIDGE/PARTIAL`.
+WHAT_CHANGED: Formula-audit entry `T13-083` records the thermal subtraction kernel, analytic pole term, unit lane, derivation class, observable, and machine-checked convergence fields.
+EQUATION_OR_MAPPING: `K_sub(S)=1/(S-s)-1/(S-r)-(s-r)/(S-r)^2`, `r=-s_E`; `Re Sigma_R,T^sub(s)=PV integral_[s_th,infty] [rho_T(S)-rho_T(s)]K_sub(S)dS + rho_T(s)A(s)`; `A(s)=ln((s_th-r)/abs(s_th-s))-(s-r)/(s_th-r)`. `rho_T` is the action-derived thermal spectral difference; no `Phi` to SI or temperature calibration is inferred.
+VERIFICATION: PV real part `0.000313708112388661`; inner residual `4.272571791753135e-07`; outer residual `1.841949608971285e-05`; KMS `1.7763568394002505e-15`; FDT `1.8151885566908842e-16`; verifier zero failed checks; focused regression `3 passed`.
+CONTROLLING_BLOCKER: `full_finite_temperature_1pi_all_channels_and_unique_physical_renormalization_missing`; independent `alpha_Phi_K` and source gates remain separate.
+NEXT_ACTION: Extend the same unit/derivation audit to remaining thermal cuts and match the complete retarded/advanced/Keldysh object to one declared physical subtraction scheme.
+CLAIM_BOUNDARY: Lane-level action-derived thermal PV interface only; not full retarded 1PI, unique renormalization, transport, entropy, SI mapping, `alpha_Phi_K`, TTG prediction, external validation, or Full Topic 13.
+EVIDENCE_HASHES: module `e9e2f057cbd16f37b8cc68013f7805ee3c9dba7f31ae4fecaa4741554e053aa2`; verifier `b86e20cc746426380ea3481db32c35828816bb2b31af67e905d25ef224810a99`; artifact `6d70f32ff2fb465e6932a5327be2e428d303b23f2a85f9ac68bd5fd1803936fc`; full gate `d71843ab712a8deba645056ef2cd851cebd53f5514a568911a6ca38e34228135`; register `3200812ba435008d6e9dcac793d4b1de6f20d2c3626ee475203a6de6305058e6`; dependency `f2a1ae5f3a16654fe0e261acbaa2779a2cf3f807d7f63c0fc2ba644bbc26f39a`.
+
+## T13-084 - Finite-Temperature Labeled 2<->2 Sunset Scattering Cut
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE`; full Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE/PARTIAL`.
+WHAT_IS_ACTUALLY_CLOSED: Action-derived labeled `2 <-> 2` sunset phase space, explicit `S_22=1/2`, greater/lesser Bose weights, channel KMS/FDT, retarded `i0` sign, and pole-subtracted channel PV real part.
+WHAT_REMAINS_OPEN: Other thermal cuts, full finite-temperature 1PI, all-channel subtraction, unique physical renormalization, physical Kubo, entropy/heat-flux balance, dimensional map, `alpha_Phi_K`, source provenance, uncertainty, and external validation.
+DEPENDENCY_UNLOCKED: Channel interface only; no Core or downstream dependency promotion.
+STATUS: `PASS_ACTION_DERIVED_O2_FINITE_T_SCATTERING_SUNSET_SK_KMS_LANE`.
+WHAT_CHANGED: Added the scattering module, verifier/artifact, test, full-gate mapping, registry/dependency sync, and machine-readable closure fields. It remains separate from the exact elastic transition-kernel lane.
+EQUATION_OR_MAPPING: `P+k3=k1+k2`; `Q^2=s+m^2+2*sqrt(s)*E3`; `rho_>/rho_<=exp(beta_th*sqrt(s))`; `N=rho_T*coth(beta_th*sqrt(s)/2)`; `Im Sigma_R=-pi*rho_T`; twice-subtracted `K_sub` controls the channel PV real part. Natural units; `Phi` remains an effective response variable.
+VERIFICATION: KMS/FDT residuals `0`; scattering inner/outer residuals `2.068736947527328e-16` and `1.141494787607428e-11`; PV inner/outer residuals `0.0015630214156617276` and `0.0009742158373661669`; verifier zero failed checks; focused regression `3 passed`.
+CONTROLLING_BLOCKER: `full_finite_temperature_1pi_all_channels_and_unique_physical_renormalization_missing`; `alpha_Phi_K` and source gates remain independent and open.
+NEXT_ACTION: Derive the remaining thermal cuts and complete the full retarded/advanced/Keldysh 1PI and physical subtraction match.
+CLAIM_BOUNDARY: Lane-level action-derived scattering result only; no full bridge, transport, entropy, SI, alpha, TTG, or external-validation promotion.
+EVIDENCE_HASHES: module `dbcd9212bf6738a71d6e1b550531adc98cdeaa966cc9875f9045709733dcea3a`; artifact `e4807a12749e6deaddfee7903d66f3b4c2f8cb4acbc1d127cb2ec0578d2554ec`; full gate `7b9d5510818281a9eb0fd41ce0a7427e337e5249dcb45092a128d40164789670`.
+
+## T13-085 - Declared Full Finite-Temperature Sunset Cut Composition
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_UET_O2_FINITE_T_DECLARED_FULL_SUNSET_SK_KMS_LANE`; Full Topic 13 remains `PARTIAL`.
+WHAT_IS_ACTUALLY_CLOSED: Matched composition of the declared timelike equal-mass order-lambda^2 `1 <-> 3` and labeled `2 <-> 2` action-derived sunset cuts.
+WHAT_REMAINS_OPEN: Complete off-shell 1PI, unique physical renormalization, transport/Kubo, entropy-current balance, dimensional map, independent `alpha_Phi_K`, source uncertainty, TTG, and external validation.
+DEPENDENCY_UNLOCKED: Lane-level summed thermal-cut SK/KMS/FDT/PV interface only.
+STATUS: `PASS_ACTION_DERIVED_O2_FINITE_T_DECLARED_FULL_SUNSET_SK_KMS_LANE`; zero failed checks; no Core unlock.
+WHAT_CHANGED: Added a composition state that calls both audited channels with identical `T`, `m^2`, `lambda`, species count, invariant `s`, action prefactor, and subtraction reference. The maximum component PV residual is used as a conservative aggregate witness.
+EQUATION_OR_MAPPING: `Sigma_R,T^declared=Sigma_R,T^13+Sigma_R,T^22`; `rho_>^declared=rho_>^13+rho_>^22`; `rho_<^declared=rho_<^13+rho_<^22`; `rho_T^declared=rho_>^declared-rho_<^declared`; `log(rho_>^declared/rho_<^declared)=beta_th*sqrt(s)`; `N_T^declared=rho_T^declared*coth(beta_th*sqrt(s)/2)`; `Im Sigma_R,T^declared=-pi*rho_T^declared`; `Re Sigma_R,T^declared,sub=Re Sigma_R,T,13^sub+Re Sigma_R,T,22^sub`.
+VERIFICATION: Combined KMS/FDT residuals `0.0`/`0.0`; retarded imaginary `-5.64672936156317e-05`; PV `0.00022637188369854333`; component/aggregate PV residuals below `2e-2`; focused regression `30 passed`.
+CONTROLLING_BLOCKER: Complete off-shell finite-temperature 1PI and unique physical renormalization are not yet derived; SI thermal mapping and independent calibration/source gates remain open.
+NEXT_ACTION: Construct the full retarded/advanced/Keldysh 1PI continuation and select a physical subtraction scheme before transport or entropy promotion.
+CLAIM_BOUNDARY: Composition closure is not complete 1PI, unique renormalization, physical transport, entropy balance, SI `Phi` map, `alpha_Phi_K`, TTG prediction, or Full Topic 13.
+EVIDENCE_HASHES: aggregate module `01caf81cb0a29ed5d01d291b91accf600cbf75e1cbeaaaa1e7ef5d6c50702e43`; verifier `872261e6d4aeb18dd83f945c84a41c67dc8ad492ede24ebebf33a0f348196475`; artifact `276410bcadbb2db67038c136425dab6ba9451017c87e3a5ef673c83133d0f7ec`; full gate `65aff596de275f57cd02f16d63bf9742a386b5e960c6821f55a1c768fca73fff`.
+
+## T13-086 - Finite-Temperature Sunset Vacuum-Limit Matching
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_UET_O2_FINITE_T_SUNSET_VACUUM_MATCH_LANE`; Full Topic 13 remains `PARTIAL`.
+WHAT_IS_ACTUALLY_CLOSED: Low-temperature finite-T spectral, retarded-sign, imaginary-part, and PV matching to the existing action-derived vacuum sunset.
+WHAT_REMAINS_OPEN: Physical renormalization selection, complete finite-T 1PI, transport/Kubo, entropy, dimensional map, independent `alpha_Phi_K`, source uncertainty, TTG, and external validation.
+DEPENDENCY_UNLOCKED: Consistency bridge only; no physical scheme or Core unlock.
+STATUS: `PASS_ACTION_DERIVED_O2_FINITE_T_SUNSET_VACUUM_MATCH_LANE`; zero failed checks.
+WHAT_CHANGED: Added an independent comparison state using the canonical vacuum retarded module and its Euclidean reference response, with matched invariant and action normalization.
+EQUATION_OR_MAPPING: `lim_(T->0+) rho_T^declared=rho_vacuum`; `lim_(T->0+) Im Sigma_R,T^declared=Im Sigma_R,vacuum`; `lim_(T->0+) Re Sigma_R,T^declared,sub=Re Sigma_R,vacuum,sub`; `rho_T^(2<->2)->0`.
+VERIFICATION: `T_low=0.05`; spectral residual `3.023525152150896e-06`; imaginary residual `3.0235251521003147e-06`; PV residual `2.3360451630664565e-05`; `2<->2` fraction `9.915909732624986e-07`; all checks passed.
+CONTROLLING_BLOCKER: `physical_renormalization_scheme_match_missing`; the match does not choose a physical counterterm prescription.
+NEXT_ACTION: Derive physical renormalization conditions and connect them to the complete finite-temperature SK/KMS 1PI object.
+CLAIM_BOUNDARY: Low-T consistency only; not a physical renormalization proof, complete 1PI, transport, entropy, SI `Phi` map, `alpha_Phi_K`, TTG prediction, or Full Topic 13.
+EVIDENCE_HASHES: module `5a428e64c5f50075d2cf2ae733366b99a1ffecae1ec83014eb82c9e0edb83ee5`; verifier `5d43586b1ab10d597c9d90a5af24c70b439b13cca4cd60f4a386703e4bd9b46d`; artifact `74f665736d6bbf49b248c7df0ffb4f9cb44bbaf59db00617747f57892260a7e9`; vacuum artifact hash is included in the machine-readable evidence list.
+
+## T13-087 - Finite-Temperature Sunset Renormalization Identifiability No-Go
+MAJOR_RESULT_CLOSURE: `CLOSED_AS_NO_GO` for `T13_UET_O2_FINITE_T_SUNSET_RENORMALIZATION_IDENTIFIABILITY_NO_GO`; physical renormalization remains open.
+WHAT_IS_ACTUALLY_CLOSED: A scoped reference-dependence witness for the PV real part under fixed spectral/KMS/FDT cuts.
+WHAT_REMAINS_OPEN: Independent physical conditions, complete finite-T 1PI, transport/Kubo, entropy, dimensional map, independent `alpha_Phi_K`, source uncertainty, TTG, and external validation.
+DEPENDENCY_UNLOCKED: No-go statement only; no physical scheme or Core unlock.
+STATUS: `PASS_ACTION_DERIVED_O2_FINITE_T_SUNSET_RENORMALIZATION_IDENTIFIABILITY_NO_GO`; zero failed checks.
+WHAT_CHANGED: Swept declared subtraction references `0.25`, `0.5`, and `0.8` while preserving the same action-derived thermal cut calculations and convergence controls.
+EQUATION_OR_MAPPING: `Re Sigma^sub(s;r1)-Re Sigma^sub(s;r2) != 0` while `rho_T(s;r1)=rho_T(s;r2)`, KMS, and FDT remain invariant.
+VERIFICATION: PV relative span `0.36357759907026227`; spectral invariance `0.0`; KMS invariance `0.0`; FDT invariance `1.8151642882300236e-16`; all no-go checks passed.
+CONTROLLING_BLOCKER: `physical_renormalization_scheme_selection_missing`.
+NEXT_ACTION: Obtain or derive an independent physical renormalization condition set before promoting any PV real part.
+CLAIM_BOUNDARY: No-go for current scheme identifiability only; not a physical renormalization proof or Full Topic 13 closure.
+EVIDENCE_HASHES: module `dc43fe6e2ebd1fc3bde7bb180f885cd30029ca587b496d4851a63c50c04974f3`; verifier `55147b3266779b0bcc56fa2389f71f10627a44cc329f8b17130cccce908a80a7`; artifact `eedf7dbc290e944cbbe5b5e2b2a23a688b3f7b25e30eb57446b9673ac89b576e`; full gate `dd543a33ee3016ba19fc55c54df5e56ac1064d89933376bb8f9c8c453028c183`.
+
+
+## T13-088 - Physical renormalization-condition contract
+
+| formula_id | relation | code surface | variables and units | constant_origin | proof_status | verification_role | failure_mode | next_hardening_step |
+| :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
+| `T13-088` | `Gamma_R^(2)(s)=s-s_*-Sigma_R,sub(s;s_*)`; `Sigma_R,sub=Sigma_R(s)-Sigma_R(s_*)-(s-s_*)Sigma_R'(s_*)`; `Gamma_R^(2)(s_*)=0`; `Gamma_R^(2)'(s_*)=1`; `delta_m^2=Re Sigma_R(s_*)`; `delta_Z=-Re Sigma_R'(s_*)` | `docs/core/uet_o2_physical_renormalization_condition_contract.py`; `docs/scripts/audit/audit_topic13_uet_o2_physical_renormalization_condition_contract.py`; `docs/core/artifacts/t13_uet_o2_physical_renormalization_condition_contract.json` | `s`, `s_*`, and self-energy have natural energy-squared units; self-energy derivative, residue, and `delta_Z` are dimensionless; `Phi` remains an effective response variable | on-shell Taylor-condition contract; formal witness only until an external physical anchor is source-locked | `CLOSED_FOR_LANE`; below-threshold pole/residue algebra and external-anchor acceptance fields pass | formal contract can be mistaken for a physical mass/residue measurement or unique finite-temperature scheme | source-lock an independent pole/residue or microscopic renormalization record, then evaluate the complete finite-temperature 1PI object |
+
+The witness uses `m_internal^2=0.5`, `s_*=0.75`, `s_th=9m_internal^2=4.5`, with zero pole and residue residuals. `physical_anchor_supplied=false`; no external scheme, numeric `alpha_Phi_K`, target curve, fit, or Xie 2026 holdout is used. Artifact SHA-256 is recorded in the machine-readable registry.
+
+## T13-089 - Covariant Entropy and Heat-Flux Balance
+
+| formula_id | relation | code surface | variables and units | constant_origin | proof_status | verification_role | failure_mode | next_hardening_step |
+| :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
+| `T13-089` | `h=(epsilon+p)/n`; `b_i=(E-h*q)(p_i/E)sqrt(w)`; `b_i^perp=P*b_i`; `K_ab=(b_a^perp)^T L_cont^+ b_b^perp`; `X_T^mu=-Delta^(mu nu)(nabla_nu T+T*a_nu)/T`; `q^mu=kappa_natural*X_T^mu`; `J_S^mu=s*u^mu+q^mu/T`; `sigma=X_T_mu*q^mu>=0`; `I_A^T L_cont delta_f=0` | `docs/core/uet_o2_covariant_entropy_heat_flux_balance.py`; `docs/scripts/audit/audit_topic13_uet_o2_covariant_entropy_heat_flux_balance.py`; `docs/core/test/test_topic13_uet_o2_covariant_entropy_heat_flux_balance.py`; `docs/core/artifacts/t13_uet_o2_covariant_entropy_heat_flux_balance_audit.json` | declared natural units; `T`, `mu`, `E`, and `h` are natural energies; `kappa_natural`, formal heat flux, and entropy current remain finite-cutoff natural moment quantities; no `W m^-1 K^-1`, SI heat flux, or `Phi` scale is emitted; `C`, `Phi`, `R_gen`, and `R_obs` retain their locked meanings | action-derived finite-temperature quasiparticle EOS plus finite-cutoff conservative collision operator, Landau moment subtraction, pseudoinverse response, and covariant projector lift; no source rows, fit, SI calibration, or holdout | `CLOSED_FOR_LANE`; positive response matrix, entropy identity, conserved charge/energy/momentum balance, local Lorentz lift, and equilibrium zero-flux controls pass | a formal natural-unit moment response can be mistaken for a physical Kubo coefficient, SI conductivity/heat flux, complete two-fluid transport, or `alpha_Phi_K` calibration | source-lock a state-matched microscopic retarded correlator or physical transport record with units/uncertainty; keep dimensional `Phi`, alpha, Ding source, and holdout gates independent |
+
+At the reference state `(T,mu,Phi)=(0.22,0.35,0.15)`, the declared normal branch gives `kappa_natural=257.37286696883626`, response isotropy residual `4.433922804155191e-11`, entropy-balance residual `1.1411259492888348e-08`, kinetic equation residual `5.1199485579650025e-17`, charge/energy/momentum balance residuals below `2e-19`, and Lorentz-lift residual `1.4210854715202004e-14`. The lane emits no physical Kubo coefficient, numeric `alpha_Phi_K`, SI map, fit, target-data result, or Xie 2026 holdout result.
+
+## T13-090 - Action-Derived Thermal Stiffness Beta
+
+| formula_id | relation | code surface | variables and units | constant_origin | proof_status | verification_role | failure_mode | next_hardening_step |
+| :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
+| `T13-090` | `f_qp(T,mu,Phi)=-p_qp(T,mu,Phi)`; `a_Phi^nat(T)=partial_Phi^2 f_qp|_(T,mu,Phi_ref)`; `beta_Phi^nat=T*partial_T a_Phi^nat`; symmetric Phi/temperature differences provide the numerical derivative | `docs/core/uet_o2_action_thermal_stiffness_beta.py`; `docs/scripts/audit/audit_topic13_uet_o2_action_thermal_stiffness_beta.py`; `docs/core/test/test_topic13_uet_o2_action_thermal_stiffness_beta.py`; `docs/core/artifacts/t13_uet_o2_action_thermal_stiffness_beta_audit.json` | natural units; `T`, `mu`, and effective mass are natural energies; `a_Phi^nat` is a normalization-dependent natural response free-energy curvature; `beta_Phi^nat` is `T*partial_T a_Phi^nat`; normalized `beta_T13`, `e0`, SI Phi scale, and `alpha_Phi_K` are not emitted | action-derived finite-temperature quasiparticle pressure with explicit nonzero response coupling; fixed-state response curvature and refined symmetric temperature stencil; no Landauer identity, source rows, fit, or holdout | `CLOSED_FOR_LANE`; normal branch remains fixed over the stencil, action beta is finite/nonzero, and curvature/beta refinement checks pass | natural action beta can be mistaken for the normalized beta contract, legacy core beta, a physical Kelvin coefficient, or an alpha calibration | source-lock an independent Phi normalization and physical temperature coefficient, then match this action lane to the dimensional/alpha bridge |
+
+At `(T,mu,Phi)=(0.22,0.35,0.15)` with `epsilon_nc=0.05` and response coupling `0.8`, the reference natural curvature is `-6.643796596856807e-07` and `beta_Phi^nat=-2.4271981641363002e-06`; the refined values are `-6.643888625292461e-07` and `-2.427707354265597e-06`. Relative refinement changes are `1.385159216892113e-05` and `2.0974174874360104e-04`. This is an action-origin lane only; it emits no normalized beta, `e0`, SI map, `alpha_Phi_K`, transport coefficient, TTG prediction, or holdout result.
+
+## Berut Figure 3c Figure-Derived Digitization
+
+MAJOR_RESULT_CLOSURE: CLOSED_FOR_LANE
+
+WHAT_IS_ACTUALLY_CLOSED: Panel 3c, visible axes and units, three marker-series
+identities, ten marker centers, pixel-to-axis transforms, and a digitization-only
+uncertainty envelope are recorded. The continuous fit curve and Landauer line are
+excluded from the rows.
+
+WHAT_REMAINS_OPEN: This is figure-derived rather than raw numeric data. The
+publisher-reported 1 s.d. measurement intervals were not numerically transcribed,
+and no permissioned raw table is archived.
+
+DEPENDENCY_UNLOCKED: Berut figure-derived comparison lane only. No Full Topic 13,
+Core, Gravity, constitutive transport, calibration, or external-validation
+dependency is unlocked.
+
+STATUS: `PASS_SCOPED_BERUT_FIGURE3_DIGITIZATION`
+
+WHAT_CHANGED: `docs/core/artifacts/t13_berut_figure3_digitization.json` and its source package record the official Figure 3c
+locator, embedded-raster hash, axis mapping, marker rows, preprocessing, and
+non-calibration boundary.
+
+EQUATION_OR_MAPPING: `<Q>_panel_c(tau)` is retained in source units `kT` versus
+`tau` in seconds. No SI heat or Phi mapping is emitted.
+
+VERIFICATION: `10` rows; three series; no curve digitization;
+no fit; no target or holdout access; no alpha calibration.
+
+CONTROLLING_BLOCKER: `berut_figure3_digitization_is_figure_derived_not_raw_numeric_source`
+
+NEXT_ACTION: Obtain a permitted raw or numeric source package, or obtain explicit
+permission to archive the binary and its numeric extraction, then transcribe the
+source-reported measurement uncertainty separately.
+
+CLAIM_BOUNDARY: Scoped figure-derived comparison only; not a raw source,
+calibration, prediction, UET proof, or external validation.
+
+## T13-111 - Thermodynamic Normal Component
+
+| formula_id | relation | code surface | variables and units | constant_origin | proof_status | verification_role | failure_mode | next_hardening_step |
+| :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
+| `T13-111` | `p_n=p_qp`; `n_n=partial_mu p_n`; `s_n=partial_T p_n`; `epsilon_n=-p_n+T*s_n+mu*n_n`; `chi_n=partial_mu n_n`; `Pi_n=(1/3) sum_a integral[d^3k/(2*pi)^3] k^2[-partial_E n_B(E_a)]` | `docs/core/uet_o2_finite_temperature_normal_component.py`; `docs/core/uet_o2_finite_temperature_two_fluid_response.py`; `docs/scripts/audit/audit_topic13_uet_o2_thermodynamic_normal_component.py`; `docs/core/artifacts/t13_uet_o2_thermodynamic_normal_component_audit.json` | natural-unit thermal pressure/charge/entropy/energy densities and static responses; `Phi` remains an effective response variable; no SI `Phi` scale or physical Kubo units are emitted | action-derived tree-condensate plus thermal-quasiparticle EOS and static Doppler response | `CLOSED_FOR_LANE`; branch, finite-value, stability, low-temperature, ontology, and no-fit checks pass | names the finite-temperature thermodynamic normal component without promoting static response to physical flow or retarded Kubo transport | a thermal pressure sector or static susceptibility can be mislabeled as a complete physical two-fluid transport theory | source-lock a state-matched physical normal-flow/retarded Kubo record with units and uncertainty; keep independent SI and `alpha_Phi_K` gates open |
+
+The lane is internal and natural-unit only. It does not derive a dimensional `Phi -> Delta_Tq` map, a physical normal-fluid coefficient, `alpha_Phi_K`, Ding `C_src`, a TTG prediction, or Full Topic 13 closure. Artifact status is `PASS_ACTION_DERIVED_THERMODYNAMIC_NORMAL_COMPONENT_LANE` with zero failed checks; no fit, target data, threshold adjustment, or Xie 2026 holdout access occurred.
+
+## T13-112 - Condensed Relative-Flow Collision Kernel
+
+| formula_id | relation | code surface | variables and units | constant_origin | proof_status | verification_role | failure_mode | next_hardening_step |
+| :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
+| `T13-112` | `A_*^2=(Z*mu^2-m_eff^2)/lambda`; `sigma_ab(s_med)=lambda^2/[16*pi*(s_med+m_H^2)]`; `L_rel=Gamma_rel*((1,-1),(-1,1))`; `G_R^rel(omega)=2*D_rel/(2*Gamma_rel-i*omega)` | `docs/core/uet_o2_condensed_relative_flow_collision.py`; `docs/scripts/audit/audit_topic13_uet_o2_condensed_relative_flow_collision.py`; `docs/core/artifacts/t13_uet_o2_condensed_relative_flow_collision_audit.json` | natural units; `s_med,m_H^2` are energy squared, `Gamma_rel` is energy, and the relative response is a natural-unit coefficient; no SI Phi scale is emitted | existing O(2) tree condensate scales plus a declared screened contact-channel and symmetric mode-space relaxation | `CLOSED_FOR_LANE`; positivity, common-flow conservation, retarded interface, KMS/FDT, entropy, and refinement checks pass | a finite natural-unit contact response can be mislabeled as a complete microscopic or physical Kubo transport coefficient | complete condensed microscopic vertices and continuum/renormalization matching, or source-lock a state-matched retarded correlator with units and uncertainty |
+
+The medium-frame invariant is explicit because the finite-density quasiparticle dispersions are not silently treated as vacuum Lorentz-invariant four-momenta. The lane emits no physical Kubo coefficient, SI map, alpha_Phi_K, TTG prediction, or holdout result.
+
+## T13-113 - Continuum Relative-Flow Kubo Lane
+
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE`
+WHAT_IS_ACTUALLY_CLOSED: The screened contact-channel response is evaluated with a compactified radial map over `k in [0,infinity)`. Radial-order, angular-order, and compactification-scale refinements pass the unchanged `1e-2` convergence controller.
+WHAT_REMAINS_OPEN: Loop-renormalized condensed vertex, complete scattering channels, physical Kubo units/uncertainty, complete two-fluid tensor, dimensional `Phi` map, independent calibration, Ding-compatible `C_src`, and Full Topic 13.
+DEPENDENCY_UNLOCKED: Continuum natural-unit thermal contact-response lane only.
+STATUS: `PASS_ACTION_DERIVED_CONTINUUM_RELATIVE_FLOW_KUBO_LANE`
+WHAT_CHANGED: Added the continuum integral module, audit, test, equation entry, and gate projection. The integration scale `Lambda` is a quadrature map scale, not a physical cutoff.
+EQUATION_OR_MAPPING: `k=Lambda*u/(1-u)` and `dk=Lambda/(1-u)^2 du`; `D_a=(1/3) integral[d^3k/(2*pi)^3] k^2 v_a^2[-partial_E n_a]`; `sigma_ab=lambda^2/[16*pi*(s_med+m_H^2)]`; `L_rel=Gamma_rel*((1,-1),(-1,1))`; `G_R^rel(omega)=2*D_rel/(2*Gamma_rel-i*omega)`.
+VERIFICATION: Radial maximum relative change `4.5662793172363093e-07`; angular refinement `2.06194987822215e-06`; scale refinement `1.6133063996982916e-09`; positivity, common-flow conservation, KMS/FDT, entropy, finite-value, no-fit, and holdout checks pass. Focused regression `2 passed`.
+CONTROLLING_BLOCKER: `loop_renormalized_condensed_vertex_and_physical_kubo_match_missing`.
+NEXT_ACTION: Derive/source-lock the loop-renormalized condensed vertex or a state-matched retarded correlator with units and uncertainty, then rerun physical Kubo admission.
+CLAIM_BOUNDARY: Natural-unit action-derived continuum thermal contact-response lane only; not a loop-renormalized physical Kubo coefficient, SI observable, alpha calibration, TTG prediction, external validation, or Full Topic 13 closure.
+
+## T13-114 - Condensed Loop-Renormalized Contact Vertex
+
+| formula_id | relation | code surface | variables and units | constant_origin | proof_status | verification_role | failure_mode | next_hardening_step |
+| :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
+| `T13-114` | `B_ab^th=(integral d^3k/(2*pi)^3)*(k/L)^2*(n_a+n_b)/(2 E_a E_b (E_a+E_b))`; `B_ab^R=B_ab^th(Phi)-B_ab^th(Phi_ref)`; `lambda_ab^R=lambda/(1+lambda B_ab^R)`; `G_R^rel(omega)=2*D_rel/(2*Gamma_rel-i*omega)` | `docs/core/uet_o2_condensed_loop_renormalized_vertex.py`; `docs/scripts/audit/audit_topic13_uet_o2_condensed_loop_renormalized_vertex.py`; `docs/core/test/test_topic13_uet_o2_condensed_loop_renormalized_vertex.py`; `docs/core/artifacts/t13_uet_o2_condensed_loop_renormalized_vertex_audit.json` | natural continuum 3+1; bubble and couplings dimensionless after declared `(k/L)^2` normalization; `Gamma_rel` is energy; response is natural-unit only; `Phi` is not temperature; `C` is not mass or charge | existing O(2) condensed quasiparticle dispersion and screened contact channel; internal reference subtraction; no external data, fit, or holdout | `CLOSED_FOR_LANE`; finite bubble, reference condition, positive coupling, order/scale refinement, PSD/conservation, KMS/FDT, and entropy checks pass | closes a loop-renormalized condensed contact-channel and state-matched retarded natural-unit interface without physical Kubo promotion | a channel-specific natural-unit loop can be mislabeled a full condensed 1PI vertex, physical Kubo coefficient, SI conductivity, or `alpha_Phi_K` | source-lock or microscopically match an independent state-matched physical vertex/Kubo record, then complete SK/KMS and all condensed scattering channels |
+
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE`.
+WHAT_IS_ACTUALLY_CLOSED: The declared finite thermal loop/contact channel and its state-matched natural retarded response.
+WHAT_REMAINS_OPEN: Physical Kubo admission, independent anchor/provenance, complete 1PI/scattering, SI, alpha, Ding `C_src`, and Full Topic 13.
+DEPENDENCY_UNLOCKED: Lane only; no downstream dependency unlock.
+STATUS: `PASS_ACTION_DERIVED_CONDENSED_LOOP_RENORMALIZED_CONTACT_VERTEX_LANE`.
+VERIFICATION: Numerical uncertainty bound `3.500054507989025e-06`; loop-bubble change `9.321205929180344e-13`; loop-coupling change `3.261235996489399e-14`; focused regression `2 passed`.
+CONTROLLING_BLOCKER: `physical_Kubo_coefficient_record_missing`.
+NEXT_ACTION: Obtain accepted state-matched physical Kubo/vertex provenance and uncertainty.
+CLAIM_BOUNDARY: This is not full 1PI, physical Kubo, SI, alpha, TTG, or Full Topic 13 closure.

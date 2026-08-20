@@ -1,0 +1,101 @@
+{
+  "schema_version": "t13-lowitzer-graphite-pvt-candidate-source-package-v1",
+  "artifact": "lowitzer_2006_graphite_pvt_candidate_source_package",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "created_on": "2026-08-17",
+  "status": "SOURCE_SCREENED_ABSTRACT_ONLY_NO_CLOSURE",
+  "major_result": {
+    "major_result_id": "T13_GRAPHITE_ALPHA_V_K_T_MATCHED_SOURCE_BOUNDARY",
+    "topic": "0.13_Thermodynamic_Bridge",
+    "closure_level": "CLOSED_FOR_LANE",
+    "what_is_closed": [
+      "the Lowitzer et al. graphite P-V-T publication is recorded as a same-study candidate source",
+      "the accessible publisher payload is limited to an abstract and bibliographic record",
+      "the candidate cannot be promoted to a source-grade alpha_V/K_T pair without the full payload and uncertainty contract"
+    ],
+    "equation_or_mapping": {
+      "cp_cv_correction": "c_p^V - c_v^V = T * alpha_V^2 * K_T",
+      "reported_bulk_modulus_relation": "K_T(T,P) = -V*(partial P/partial V)_T; the abstract reports a fitted B parameter but not a row-level K_T/alpha_V pair"
+    },
+    "units": {
+      "pressure": "GPa",
+      "temperature": "K",
+      "alpha_V": "K^-1",
+      "K_T": "Pa",
+      "volumetric_heat_capacity": "J m^-3 K^-1"
+    },
+    "derivation_class": "publisher abstract provenance screen; no source-row transcription and no UET derivation",
+    "observable": "availability of a same-study graphite P-V-T source for alpha_V/K_T correction inputs",
+    "data_role": "SOURCE_CANDIDATE_SCREEN_NOT_CALIBRATION",
+    "evidence_artifacts": [
+      "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/lowitzer_2006_graphite_pvt_candidate_source_package.json",
+      "docs/core/artifacts/t13_graphite_alpha_v_kt_matched_source_boundary_audit.json"
+    ],
+    "verification_status": "SOURCE_SCREENED_ABSTRACT_ONLY_NO_CLOSURE",
+    "open_blockers": [
+      "full_lowitzer_pvt_payload_not_archived",
+      "alpha_V_row_and_uncertainty_missing",
+      "K_T_row_level_uncertainty_missing",
+      "Ding_TTG_material_regime_mapping_not_closed",
+      "same_grade_alpha_V_and_K_T_missing"
+    ],
+    "dependency_unlocked": "Candidate-source screening only; no Cp-to-Cv, Ding C_src, alpha_Phi_K, transport, Core, Gravity, or Full Topic 13 dependency unlock",
+    "claim_boundary": "This is an abstract-level source screen. It is not a numeric P-V-T package, not a same-state alpha_V/K_T correction, not a Ding TTG material match, and not an external validation."
+  },
+  "source": {
+    "source_id": "lowitzer_winkler_tucker_2006_graphite_pvt",
+    "title": "Thermoelastic behavior of graphite from in situ high-pressure high-temperature neutron diffraction",
+    "authors": [
+      "S. Lowitzer",
+      "B. Winkler",
+      "M. Tucker"
+    ],
+    "publisher": "American Physical Society",
+    "journal": "Physical Review B 73, 214115 (2006)",
+    "doi": "10.1103/PhysRevB.73.214115",
+    "url": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.73.214115",
+    "source_locator": "Publisher abstract, accessed 2026-08-17",
+    "local_raw_path": null,
+    "local_raw_sha256": null,
+    "payload_state": "ABSTRACT_ONLY",
+    "reported_scope": {
+      "pressure_min_GPa": 0.0,
+      "pressure_max_GPa": 6.0,
+      "temperature_min_K": 0.0,
+      "temperature_max_K": 1250.0,
+      "measurement_method": "in situ neutron powder diffraction on PEARL/HiPr with a heatable Paris-Edinburgh cell",
+      "temperature_measurement": "neutron resonance absorption spectroscopy",
+      "pressure_standard": "internal MgO standard",
+      "fit_method": "Rietveld-refined data fitted with several equations of state"
+    },
+    "abstract_reported_fit_values": {
+      "B_GPa": 38.0,
+      "B_prime": 9.0,
+      "dB_dT_GPa_per_K": -0.002,
+      "uncertainty_reported_in_accessible_abstract": false
+    },
+    "access_boundary": [
+      "The accessible publisher record establishes the study scope and fitted summary values only.",
+      "No machine-readable P-V-T rows, lattice-parameter rows, alpha_V rows, or row-level uncertainty are archived in this package.",
+      "The abstract does not establish specimen morphology, isotope/defect state, or equivalence to the Ding TTG specimen."
+    ]
+  },
+  "pair_contract": {
+    "same_study_pvt_candidate": true,
+    "numeric_alpha_V_rows_available": false,
+    "numeric_K_T_rows_available": false,
+    "source_grade_uncertainty_available": false,
+    "same_state_alpha_V_and_K_T_pair_closed": false,
+    "Ding_material_regime_mapping_closed": false,
+    "numeric_cp_cv_correction_emitted": false
+  },
+  "holdout_policy": {
+    "xie_2026_accessed": false,
+    "xie_2026_source_data_consumed": false,
+    "calibration_path_may_read_holdout": false,
+    "target_curve_used": false,
+    "alpha_fit_used": false,
+    "used_for_calibration": false
+  },
+  "claim_boundary": "The candidate strengthens the source-search boundary only. A permitted full payload with specimen/state identity, numeric rows, units, and uncertainty is still required before the Cp-to-Cv correction route can close."
+}

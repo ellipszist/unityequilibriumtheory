@@ -13,7 +13,7 @@ Priority remediation:
 
 | Item | Local path | Source | Unit convention | Bytes | SHA-256 | Benchmark role | Provenance status |
 |:--|:--|:--|:--|--:|:--|:--|:--|
-| Ding 2022 PMC OA numeric-input availability | `Data/03_Research/ding_2022_pbte_numeric_input_availability_package.json`; `Data/03_Research/raw/ding_2022_pmc_s3_inventory.xml`; `docs/core/artifacts/t13_ding_pbte_numeric_input_availability_audit.json` | PMC OA API, complete `PMC8755757.1/` S3 prefix, object metadata, and full text captured 2026-08-11 | source inventory only; required `C_src` units J m^-3 K^-1 | 3780 inventory bytes | inventory `6f86e82611321053b3afd9b548f6e4a314ef03fd753ab2706775e2bc8c551672`; package `4112477b5b42e8724656452d9a66bb62366e205f9b996ba0276c8475628d60f2`; audit `5afc8eb41d78e6a23d343954cab18e284e8f53b3c7bbc149a0bf9f5bc55038bf` | Source acquisition decision; no calibration consumed | `PASS_SCOPED_OA_NUMERIC_INPUT_AVAILABILITY_NO_GO`; official OA route lacks reproducible PBTE numeric inputs, while author request or independent reproduction remains open. |
+| Ding 2022 PMC OA numeric-input availability | `Data/03_Research/ding_2022_pbte_numeric_input_availability_package.json`; `Data/03_Research/raw/ding_2022_pmc_s3_inventory.xml`; `Data/03_Research/raw/ding_2022_supplementary_information.pdf`; `Data/03_Research/raw/ding_2022_supplementary_materials_2.pdf`; `Data/03_Research/raw/ding_2022_supplementary_materials_3.pdf`; `docs/core/artifacts/t13_ding_pbte_numeric_input_availability_audit.json` | PMC OA API, complete `PMC8755757.1/` S3 prefix, object metadata, full text, and all three supplementary PDFs captured/reviewed 2026-08-15 | source inventory only; required `C_src` units J m^-3 K^-1 | 3780 inventory bytes | inventory `6f86e82611321053b3afd9b548f6e4a314ef03fd753ab2706775e2bc8c551672`; package `7d660de4a984e313b60df545642fa1743da8921cdedeaf5908297f6c13d8e961`; audit `2811cfd9ef4f0218cc5696a1a7ce5a4591a4a8012c28dad118a5b6171b3b67fa` | Source acquisition decision; no calibration consumed | `PASS_SCOPED_OA_NUMERIC_INPUT_AVAILABILITY_NO_GO`; all supplementary archive records are hash-verified, but the official OA route still lacks reproducible PBTE numeric inputs while author request or independent reproduction remains open. |
 | Ding 2022 PBTE energy-temperature source mapping | `Data/03_Research/ding_2022_pbte_energy_temperature_source_package.json`; `Data/03_Research/raw/ding_2022_supplementary_information.pdf`; `docs/core/artifacts/t13_ding_pbte_energy_temperature_mapping_audit.json` | Ding et al., Nature Communications 13, 285 (2022), Supplementary pp.3-5, Eqs. S1-S10; DOI `10.1038/s41467-021-27907-z`; PMC `PMC8755757` | `g_mu` and `Delta_u_ph` J m^-3; `C_src` J m^-3 K^-1; `Delta_Tq` K | 1893976 raw bytes | PDF `a50c1a6347775de72f705f4395507d3136cbf4e5cadfb6638caca2876c52b8f7`; package `9f6b8d31ba2d7a6e56d6a323581bc6aecb91c6d0e61064d62a3972ee0e2c0d6f`; audit `32d132bb695d62f52be337ce0cced4c57c43df13ea96b082c6f9ee416d0aed73` | Derived standard-PBTE formula and TTG-observable mapping; no numeric calibration or holdout consumption | `PASS_SOURCE_FORMULA_MAPPING_NUMERIC_C_OPEN`; numeric `C_src(T)`, convergence/uncertainty, `e0`, and base `Phi` mapping remain open. |
 | Georgia Tech graphite c_p source and dependency no-go | `Data/03_Research/gatech_gen3csp_graphite_source_package.json`; `docs/core/artifacts/t13_gatech_volumetric_cp_independence_audit.json` | Georgia Tech Gen3 CSP graphite page, uncertainty method, and archived `Graphite.xlsx` row A3:G3 | `c_p` J g^-1 K^-1; D mm^2 s^-1; k W m^-1 K^-1; assumed density g cm^-3 | 11234 raw bytes | raw `baa7f6181fa3d5521fc594cb2c832308927bc77dbac89c43b373bc304eaa6900`; package `2635be1d91f35c9be6fd36d14a9e4d04384f158dd90340b59c5d7fa3f277bd51`; audit `7e9e858548cac1843c6bf5d405aeb192226ea79ef69a7dd5c3dc1e55d3cf8c6e` | Independent `c_p` source anchor and source-dependency audit; no calibration consumed | `PASS_SOURCE_CP_95CI_CV_OPEN` plus `PASS_SCOPED_SOURCE_INDEPENDENCE_NO_GO`; reported k is derived from D, c_p, and assumed density, so direct volumetric `c_v` or independent same-grade inputs remain required. |
 | Matter-space second-sound source package | `Data/03_Research/matter_space_second_sound_source_package.json` | Metadata anchors: Ding et al. 2022 DOI `10.1038/s41467-021-27907-z`; Huberman et al. 2019 DOI `10.1126/science.aav3548`; McNelly et al. 1970 DOI `10.1103/PhysRevLett.24.100`; Xie et al. 2026 DOI `10.1038/s41467-026-70807-3` | Source-reported K, micrometre, time/TTG context; no local numeric rows | 5973 | `118ddf77864d74fe1c662e447af41705e544cfae4a8523cbe802560b6d4279f6` | Future external second-sound intake; 2026 graphite source locked as holdout | `BLOCKED`: metadata only, no local raw numeric source, extraction uncertainty, preprocessing, or dimensional `Phi` observable map; no fitting allowed. |
@@ -613,3 +613,118 @@ CONTROLLING_BLOCKER: ding_pbte_C_src_numeric_or_accepted_independent_reproductio
 NEXT_ACTION: Acquire an authorized Ding package or accepted same-regime PBTE reproduction with rows, units, state mapping, uncertainty, convergence, and permission.
 CLAIM_BOUNDARY: Source-discovery boundary only; not C_src evidence, alpha calibration, TTG prediction, external validation, or Full Topic 13 closure.
 EVIDENCE_HASHES: package e20e41acee2789b0705cd351df853b9a2790b1e2e1b03b70618dc6aa0af5b680; boundary 327957c98bdb9f2cfe4a26dd85c6f01feb182641e15e9a8f5656bd909111b9d1; full d11014f549e6493f968febc290c0993f60b7a18db6f72429a6cf479fc986d707.
+
+## Berut Figure 3c Figure-Derived Digitization
+
+The official publisher Figure 3c route is represented by a hash-pinned embedded
+raster identity and a ten-row, figure-derived marker table. The rows use `tau` in
+seconds and `<Q>` in `kT`; they are not raw experimental data and are not eligible
+for calibration. See `docs/core/artifacts/t13_berut_figure3_digitization.json`.
+## Lowitzer Graphite P-V-T Candidate Boundary (2026-08-17)
+
+MAJOR_RESULT_CLOSURE: CLOSED_FOR_LANE for T13_GRAPHITE_ALPHA_V_K_T_MATCHED_SOURCE_BOUNDARY.
+WHAT_IS_ACTUALLY_CLOSED: The Lowitzer et al. P-V-T publication is recorded as a relevant same-study candidate, but the accessible publisher record is abstract-only.
+WHAT_REMAINS_OPEN: Full P-V-T rows, alpha_V/K_T row uncertainty, density uncertainty, Ding material mapping, and Cp-to-Cv closure remain open.
+DEPENDENCY_UNLOCKED: Candidate-source screening only; no numeric correction, Ding C_src, alpha_Phi_K, transport, Core, Gravity, or Full Topic 13 unlock.
+STATUS: PASS_SCOPED_GRAPHITE_ALPHA_V_K_T_MATCHED_SOURCE_BOUNDARY_NO_GO; Full Topic 13 remains BLOCKED_OPEN_T13_FULL_BRIDGE.
+WHAT_CHANGED: Added the Lowitzer candidate package and extended the existing alpha_V/K_T source-compatibility audit.
+EQUATION_OR_MAPPING: c_p^V - c_v^V = T * alpha_V^2 * K_T; no numeric correction is emitted.
+VERIFICATION: Abstract scope is recorded; no machine-readable P-V-T rows, alpha_V rows, K_T rows, source-grade uncertainty, or Ding mapping are present; focused regression 2 passed.
+CONTROLLING_BLOCKER: same_grade_alpha_V_and_K_T_missing.
+NEXT_ACTION: Obtain the full permitted payload or retain the candidate as a source-search boundary.
+CLAIM_BOUNDARY: Abstract-only candidate screen; not source-grade thermodynamic correction, calibration, prediction, or external validation.
+SOURCE_PACKAGE: docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/lowitzer_2006_graphite_pvt_candidate_source_package.json
+SOURCE_HASH: ef5e46d19cee679196093df802e21187ca39d5a50910b9a74727f53bf4062225
+
+
+## Calorine-to-Ding Material-State Admission Boundary (2026-08-18)
+- Package: `docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/t13_calorine_zenodo_nep_bte_reproduction_source_package.json` (SHA-256 `fdca0fe6b387ecf7a731831f808b19504b9c58ebefe2d150261de37b4334f914`).
+- Controller: `docs/core/artifacts/t13_ding_material_regime_boundary_audit.json` (SHA-256 `700a1f8520521045d58717dc1be25390a783389c443af4e5507736ea0e5940d8`).
+- Result: Calorine C4 volume/density, SI C_src rows, input hashes, convergence preflight, and NEP/RTA boundary are source-checked; equivalence to Ding remains `NOT_ESTABLISHED`.
+- Boundary: no source-grade uncertainty, Ding C_src acceptance, Phi calibration, holdout access, or downstream unlock.
+
+## Tohei Graphite alpha_V/B0 Table Comparator (2026-08-18)
+
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_TOHEI_GRAPHITE_ALPHA_V_K_T_TABLE_COMPARATOR`.
+WHAT_IS_ACTUALLY_CLOSED: Tohei et al. Table I is recorded with a primary-paper locator. It gives a same-calculation QHA graphite comparator at 300 K (`alpha_V=19.8e-6 K^-1`, `B0=28.7 GPa`) and separately cited experimental table values (`21.9e-6 K^-1`, `33.8 GPa`).
+WHAT_REMAINS_OPEN: No row-level uncertainty is provided; the experimental values come from different cited references; Ding specimen/state equivalence and a source-grade Cp-to-Cv correction remain open.
+DEPENDENCY_UNLOCKED: Comparator lane only; no Ding C_src, Phi calibration, transport, Core, Gravity, or Full Topic 13 unlock.
+STATUS: `SOURCE_SCREENED_TABLE_COMPARATOR_NO_CLOSURE`.
+WHAT_CHANGED: Added `tohei_2006_graphite_alpha_v_kt_table_comparator_source_package.json` and projected it through the existing matched alpha_V/K_T boundary audit.
+EQUATION_OR_MAPPING: `c_p^V-c_v^V=T*alpha_V^2*K_T`; no numeric correction is emitted.
+VERIFICATION: Package hash `7a8dfafd8c06145e08194505aeca933b6f90c27e184cf4db45b56d9375b140c9`; audit hash `7f16734e1f78d29154c1652feb3784290ce16923e772fb42230237ea07ab03f1`; focused regression `2 passed`; no fit or holdout access.
+CONTROLLING_BLOCKER: `same_grade_alpha_V_and_K_T_missing`, specifically same-state uncertainty and Ding-regime mapping.
+NEXT_ACTION: Acquire a permitted full P-V-T payload or direct volumetric c_v/same-state Cp source with units, uncertainty, specimen identity, and state mapping.
+CLAIM_BOUNDARY: Source-traceable comparator only; not thermodynamic correction, Ding validation, UET calibration, TTG prediction, external validation, or Full Topic 13 closure.
+SOURCE_PACKAGE: `docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/tohei_2006_graphite_alpha_v_kt_table_comparator_source_package.json`
+SOURCE_HASH: `7a8dfafd8c06145e08194505aeca933b6f90c27e184cf4db45b56d9375b140c9`
+
+## Thermodynamic Normal Component Lane (2026-08-18)
+
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_UET_O2_THERMODYNAMIC_NORMAL_COMPONENT_LANE`.
+WHAT_IS_ACTUALLY_CLOSED: The action-derived finite-temperature quasiparticle sector is recorded as a named thermodynamic normal component with branch coverage, thermodynamic derivatives, static momentum response, low-temperature suppression, and total-state stability checks.
+WHAT_REMAINS_OPEN: Physical normal flow, retarded Kubo transport, SI `Phi` normalization, independent `alpha_Phi_K`, Ding-compatible `C_src`, and Full Topic 13 remain open.
+DEPENDENCY_UNLOCKED: Natural-unit thermodynamic normal-component lane only; no physical transport, calibration, Core, Gravity, or external-validation dependency unlock.
+STATUS: `PASS_ACTION_DERIVED_THERMODYNAMIC_NORMAL_COMPONENT_LANE`.
+WHAT_CHANGED: Added the source-role record for the action-derived lane and linked its module, inherited two-fluid implementation, audit artifact, and regression test.
+EQUATION_OR_MAPPING: `p_n=p_qp`; `n_n=partial_mu p_n`; `s_n=partial_T p_n`; `epsilon_n=-p_n+T*s_n+mu*n_n`; `chi_n=partial_mu n_n`; static response is not relabeled as physical Kubo data.
+VERIFICATION: Artifact status passes with zero failed checks; no external numeric source, fit, target data, alpha calibration, threshold change, or Xie 2026 holdout access.
+CONTROLLING_BLOCKER: `physical_normal_flow_component_or_retarded_kubo_match_missing`.
+NEXT_ACTION: Obtain a state-matched physical normal-flow/retarded Kubo record with units and uncertainty, while preserving the natural-unit boundary.
+CLAIM_BOUNDARY: Internal action-derived thermodynamic lane only; not a physical normal-fluid measurement, SI thermal observable, TTG prediction, external validation, or Full Topic 13 closure.
+
+EVIDENCE:
+- `docs/core/uet_o2_finite_temperature_normal_component.py`
+- `docs/core/uet_o2_finite_temperature_two_fluid_response.py`
+- `docs/core/artifacts/t13_uet_o2_thermodynamic_normal_component_audit.json`
+- `docs/scripts/audit/audit_topic13_uet_o2_thermodynamic_normal_component.py`
+- `docs/core/test/test_topic13_uet_o2_thermodynamic_normal_component.py`
+
+## Condensed Relative-Flow Collision Kernel (2026-08-18)
+
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_UET_O2_CONDENSED_RELATIVE_FLOW_COLLISION_KERNEL_LANE`.
+WHAT_IS_ACTUALLY_CLOSED: A screened action-derived condensate contact channel and a symmetric positive-semidefinite relative-flow operator with a conserved common-flow mode are now source-recorded as internal natural-unit evidence.
+WHAT_REMAINS_OPEN: Complete microscopic vertices, continuum-renormalized physical Kubo, complete two-fluid tensor, SI Phi map, alpha_Phi_K, Ding C_src, and Full Topic 13.
+DEPENDENCY_UNLOCKED: Condensed relative-flow kernel lane only; no physical transport or downstream unlock.
+STATUS: `PASS_ACTION_DERIVED_CONDENSED_RELATIVE_FLOW_COLLISION_LANE`.
+WHAT_CHANGED: Added the module, verifier, artifact, regression, equation addendum, full-gate projection, and closure-register synchronization.
+EQUATION_OR_MAPPING: `s_med=2*E_a*E_b*(1-cos(theta))`; `m_H^2=2*lambda*A_*^2`; `L_rel=Gamma_rel*((1,-1),(-1,1))`.
+VERIFICATION: Zero failed checks; refinement change `1.0049400415447205e-05`; no source rows, fit, calibration, target, threshold adjustment, or holdout access.
+CONTROLLING_BLOCKER: `continuum_renormalized_physical_Kubo_coefficient_missing`.
+NEXT_ACTION: Complete microscopic condensed-channel and continuum matching, or source-lock a state-matched retarded correlator.
+CLAIM_BOUNDARY: Internal natural-unit kernel only; not physical Kubo, SI calibration, TTG prediction, or Full Topic 13 closure.
+
+EVIDENCE:
+- `docs/core/uet_o2_condensed_relative_flow_collision.py` (SHA-256 `d311f7106787e92638ac6a8d3d48a5b4d0ea6dbd688d83a52b2be824dff82d21`)
+- `docs/core/artifacts/t13_uet_o2_condensed_relative_flow_collision_audit.json` (SHA-256 `87baac fcca4d df10be4c17d42c14a8ed98780eed340a0984294c3041bd18a369`)
+
+## Continuum Relative-Flow Kubo Lane (2026-08-18)
+
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE`
+WHAT_IS_ACTUALLY_CLOSED: The action-derived screened contact response is integrated over `k in [0,infinity)` using a compactified radial coordinate, with explicit order and scale refinement records.
+WHAT_REMAINS_OPEN: This lane has no external source rows. Loop-renormalized vertex provenance, physical Kubo units/uncertainty, SI `Phi` map, independent calibration, Ding `C_src`, and Full Topic 13 remain open.
+DEPENDENCY_UNLOCKED: Internal continuum thermal response lane only; no external-validation or downstream unlock.
+STATUS: `PASS_ACTION_DERIVED_CONTINUUM_RELATIVE_FLOW_KUBO_LANE`
+WHAT_CHANGED: Added the action/equation implementation and verifier artifact. This is derived internal evidence, not a source package or calibration record.
+EQUATION_OR_MAPPING: `k=Lambda*u/(1-u)`; `Lambda` is a natural-energy quadrature scale and is not a physical cutoff; the thermal Bose weights provide the convergent integration domain.
+VERIFICATION: Audit has zero failed checks; no source rows, target data, fitting, calibration, synthetic replacement, or Xie 2026 holdout was consumed.
+CONTROLLING_BLOCKER: `loop_renormalized_condensed_vertex_and_physical_kubo_match_missing`.
+NEXT_ACTION: Add a source-locked or microscopically derived retarded correlator with state, units, uncertainty, locator, and hash; retain this lane as internal action-derived evidence.
+CLAIM_BOUNDARY: No external data provenance is claimed by this lane, and no physical transport coefficient or `alpha_Phi_K` is emitted.
+EVIDENCE_PATHS: `docs/core/uet_o2_continuum_relative_flow_kubo.py`; `docs/core/artifacts/t13_uet_o2_continuum_relative_flow_kubo_audit.json`; `docs/core/test/test_topic13_uet_o2_continuum_relative_flow_kubo.py`.
+EVIDENCE_HASHES: module `70850509063f5adf4493a21ceea420c9f414e1605eea7220a00ce3549d0bca30`; audit `76b46ffe55399fa03b7ae0309352b1df5e6afb494397cecfa4b82a87e0d78813`.
+## T13-114 - Condensed Loop-Renormalized Contact Vertex
+
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE`.
+WHAT_IS_ACTUALLY_CLOSED: An action-derived finite thermal loop/contact-channel record and state-matched natural retarded response are archived with code and audit hashes.
+WHAT_REMAINS_OPEN: There is no external numeric source row, independent physical vertex/Kubo anchor, SI unit conversion, source-grade physical uncertainty, `alpha_Phi_K`, or Ding `C_src` payload in this lane.
+DEPENDENCY_UNLOCKED: Internal lane only; no physical Kubo, calibration, Core, Gravity, or external-validation dependency.
+STATUS: `PASS_ACTION_DERIVED_CONDENSED_LOOP_RENORMALIZED_CONTACT_VERTEX_LANE`.
+WHAT_CHANGED: Added `docs/core/uet_o2_condensed_loop_renormalized_vertex.py`, its audit artifact, focused test, and equation-registry addendum. The declared target/reference states and preprocessing are in the audit; no synthetic replacement data are used.
+EQUATION_OR_MAPPING: `B_ab^R=B_ab^th(T,mu,Phi)-B_ab^th(T,mu,Phi_ref)`; `lambda_ab^R=lambda/(1+lambda*B_ab^R)`; `K_rel^natural=lim_(omega->0) Re G_R^rel(omega)`.
+VERIFICATION: Code and artifact hashes are recorded in `RESEARCH_WAVE_2026-08-20_CONDENSED_LOOP_RENORMALIZED_VERTEX.md`; numerical uncertainty is quadrature-only (`3.500054507989025e-06`). Holdout access audit remains clean.
+CONTROLLING_BLOCKER: `physical_Kubo_coefficient_record_missing` and `independent_physical_condensed_vertex_anchor_missing`.
+NEXT_ACTION: Source-lock or microscopically derive an accepted state-matched coefficient record with units, locator, uncertainty, and hash; do not treat this internal record as external data.
+CLAIM_BOUNDARY: No external provenance, physical Kubo, SI observable, alpha calibration, TTG prediction, or Full Topic 13 closure is claimed.
+DATA_ROLE: `DERIVED` internal action-derived natural-unit result; not `CALIBRATION`, `TRAINING`, or `HOLDOUT` data.
+SOURCE_PROVENANCE: no external numeric source consumed; source/origin is the existing repository O(2) action and declared condensed dispersion.

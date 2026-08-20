@@ -37,6 +37,8 @@ def test_topic13_gate_records_coupled_lane_and_keeps_full_candidate_blocked() ->
     causal = gate["verification_status"]["causal_full_candidate_or_formal_no_go_branch"]
     assert causal["named_coupled_branch_pass"] is True
     assert causal["named_coupled_branch_closure_level"] == "CLOSED_FOR_LANE"
+    assert causal["lane_status"] == "PASS"
+    assert causal["lane_closure_level"] == "CLOSED_FOR_LANE"
     assert causal["full_candidate_pass"] is False
     assert gate["claim_promotion"] is False
     assert gate["controlling_blocker"] == (

@@ -3,7 +3,7 @@
   "artifact": "ding_2022_pbte_numeric_input_availability_package",
   "topic": "0.13_Thermodynamic_Bridge",
   "created_on": "2026-08-11",
-  "reviewed_on": "2026-08-11",
+  "reviewed_on": "2026-08-15",
   "status": "OFFICIAL_OA_INVENTORY_LOCKED_REPRODUCTION_INPUTS_ABSENT",
   "source_identity": {
     "title": "Observation of Second Sound in Graphite over 200 K",
@@ -46,6 +46,18 @@
       "local_path": "Data/03_Research/raw/ding_2022_supplementary_information.pdf",
       "bytes": 1893976,
       "sha256": "a50c1a6347775de72f705f4395507d3136cbf4e5cadfb6638caca2876c52b8f7"
+    },
+    {
+      "role": "SUPPLEMENTARY_MATERIALS_2",
+      "local_path": "Data/03_Research/raw/ding_2022_supplementary_materials_2.pdf",
+      "bytes": 4537623,
+      "sha256": "2f7d1d057df83b8d3408f65c833dad7542fca8b24aeec087e304842fa5aca6e7"
+    },
+    {
+      "role": "SUPPLEMENTARY_MATERIALS_3",
+      "local_path": "Data/03_Research/raw/ding_2022_supplementary_materials_3.pdf",
+      "bytes": 927333,
+      "sha256": "4405683b720a24437d64fe3429d409503fcc91bd33c1e8616a3252cc50d94c5f"
     }
   ],
   "official_object_inventory": {

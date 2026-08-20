@@ -27,6 +27,15 @@ PACKAGE_PATHS = {
     "nelson_riley_alpha_v": ROOT / "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/argonne_anl_5524_nelson_riley_alpha_v_source_package.json",
 }
 
+LOWITZER_CANDIDATE = ROOT / (
+    "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/"
+    "lowitzer_2006_graphite_pvt_candidate_source_package.json"
+)
+TOHEI_TABLE = ROOT / (
+    "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/"
+    "tohei_2006_graphite_alpha_v_kt_table_comparator_source_package.json"
+)
+
 
 def load_json(path: Path) -> dict:
     with path.open("r", encoding="utf-8-sig") as handle:
@@ -65,6 +74,8 @@ def all_holdout_locked(artifacts: dict[str, dict], packages: dict[str, dict]) ->
 def main() -> int:
     audits = {key: load_json(path) for key, path in AUDIT_PATHS.items()}
     packages = {key: load_json(path) for key, path in PACKAGE_PATHS.items()}
+    lowitzer = load_json(LOWITZER_CANDIDATE)
+    tohei = load_json(TOHEI_TABLE)
     nist = audits["nist_alpha_v"]
     hanfland = audits["hanfland_kt"]
     bosak = audits["bosak_elastic_bulk"]
@@ -119,7 +130,40 @@ def main() -> int:
         is False
         and tpg["derived_comparator"]["same_state_K_T"] is False
         and nelson["derived_comparator"]["same_state_K_T"] is False,
-        "holdout_is_unconsumed": all_holdout_locked(audits, packages),
+        "lowitzer_candidate_is_abstract_only": lowitzer["source"]["payload_state"] == "ABSTRACT_ONLY",
+        "lowitzer_has_no_numeric_alpha_rows": lowitzer["pair_contract"]["numeric_alpha_V_rows_available"] is False,
+        "lowitzer_has_no_numeric_kt_rows": lowitzer["pair_contract"]["numeric_K_T_rows_available"] is False,
+        "lowitzer_has_no_source_grade_uncertainty": lowitzer["pair_contract"]["source_grade_uncertainty_available"] is False,
+        "lowitzer_does_not_close_pair": lowitzer["pair_contract"]["same_state_alpha_V_and_K_T_pair_closed"] is False,
+        "lowitzer_ding_mapping_is_open": lowitzer["pair_contract"]["Ding_material_regime_mapping_closed"] is False,
+        "lowitzer_does_not_emit_correction": lowitzer["pair_contract"]["numeric_cp_cv_correction_emitted"] is False,
+        "tohei_is_a_primary_table_comparator": tohei["source"]["payload_state"]
+        == "REMOTE_PRIMARY_TABLE_LOCATOR_SCREENED",
+        "tohei_has_numeric_graphite_alpha_and_b0": tohei["pair_contract"][
+            "numeric_table_alpha_V_present"
+        ]
+        and tohei["pair_contract"]["numeric_table_K_T_or_B0_present"],
+        "tohei_same_calculation_pair_is_explicit": tohei["pair_contract"][
+            "same_calculation_alpha_V_and_B0_pair_present"
+        ],
+        "tohei_experimental_pair_is_not_same_specimen": tohei["pair_contract"][
+            "same_specimen_experimental_alpha_V_and_K_T_pair_established"
+        ]
+        is False,
+        "tohei_uncertainty_is_not_promoted": tohei["pair_contract"][
+            "source_grade_uncertainty_available"
+        ]
+        is False,
+        "tohei_ding_mapping_is_open": tohei["pair_contract"][
+            "Ding_material_regime_mapping_closed"
+        ]
+        is False,
+        "tohei_does_not_emit_correction": tohei["pair_contract"][
+            "numeric_cp_cv_correction_emitted"
+        ]
+        is False,
+        "holdout_is_unconsumed": all_holdout_locked(audits, packages)
+        and all_holdout_locked({"lowitzer": lowitzer, "tohei": tohei}, {}),
     }
     status = (
         "PASS_SCOPED_GRAPHITE_ALPHA_V_K_T_MATCHED_SOURCE_BOUNDARY_NO_GO"
@@ -128,7 +172,13 @@ def main() -> int:
     )
 
     evidence = []
-    for key, path in (*AUDIT_PATHS.items(), *PACKAGE_PATHS.items()):
+    evidence_paths = [
+        *AUDIT_PATHS.items(),
+        *PACKAGE_PATHS.items(),
+        ("lowitzer_candidate", LOWITZER_CANDIDATE),
+        ("tohei_table_comparator", TOHEI_TABLE),
+    ]
+    for key, path in evidence_paths:
         evidence.append(
             {
                 "role": key,
@@ -147,10 +197,14 @@ def main() -> int:
             "topic": "0.13_Thermodynamic_Bridge",
             "closure_level": "CLOSED_FOR_LANE" if status.startswith("PASS") else "OPEN",
             "what_is_closed": (
-                "The current archived graphite source inventory cannot form a "
-                "same-state, same-grade alpha_V/K_T pair with source-grade "
-                "uncertainty for the Cp-to-Cv correction. The individual "
-                "alpha_V and K_T comparator lanes remain separate."
+                "The current archived graphite source inventory, including the "
+                "screened Lowitzer P-V-T candidate and Tohei table comparator, "
+                "cannot form a same-state, same-grade alpha_V/K_T pair with "
+                "source-grade uncertainty for the Cp-to-Cv correction. The "
+                "individual alpha_V and K_T comparator lanes remain separate. "
+                "Tohei supplies a numeric same-calculation QHA pair and "
+                "separately sourced experimental table values, but neither "
+                "closes the source-grade correction contract."
             ),
             "equation_or_mapping": {
                 "cp_cv_correction": "c_p^V - c_v^V = T * alpha_V^2 * K_T",
@@ -180,10 +234,11 @@ def main() -> int:
                 "Core, or Gravity unlock"
             ),
             "claim_boundary": (
-                "This closes a route-level source compatibility boundary, not "
-                "the existence of all possible future alpha_V/K_T data. It is "
-                "not a same-state thermodynamic correction, Ding validation, "
-                "UET calibration, TTG prediction, or external validation."
+                "This closes a route-level source compatibility boundary, including "
+                "the screened abstract-only Lowitzer candidate, not the existence "
+                "of all possible future alpha_V/K_T data. It is not a same-state "
+                "thermodynamic correction, Ding validation, UET calibration, TTG "
+                "prediction, or external validation."
             ),
         },
         "source_pair_observations": {
@@ -231,14 +286,46 @@ def main() -> int:
                 ],
                 "source_sha256": nelson["source"]["sha256"],
             },
+            "lowitzer_pvt_candidate": {
+                "source_id": lowitzer["source"]["source_id"],
+                "payload_state": lowitzer["source"]["payload_state"],
+                "reported_scope": lowitzer["source"]["reported_scope"],
+                "abstract_reported_fit_values": lowitzer["source"]["abstract_reported_fit_values"],
+                "numeric_alpha_V_rows_available": lowitzer["pair_contract"]["numeric_alpha_V_rows_available"],
+                "numeric_K_T_rows_available": lowitzer["pair_contract"]["numeric_K_T_rows_available"],
+                "source_grade_uncertainty_available": lowitzer["pair_contract"]["source_grade_uncertainty_available"],
+                "same_state_alpha_V_and_K_T_pair_closed": lowitzer["pair_contract"]["same_state_alpha_V_and_K_T_pair_closed"],
+                "local_raw_sha256": lowitzer["source"]["local_raw_sha256"],
+            },
+            "tohei_table_comparator": {
+                "source_id": tohei["source"]["source_id"],
+                "payload_state": tohei["source"]["payload_state"],
+                "source_locator": tohei["source"]["source_locator"],
+                "calculated_graphite_pair": tohei["pair_contract"][
+                    "same_calculation_alpha_V_and_B0_pair_present"
+                ],
+                "experimental_same_specimen_pair": tohei["pair_contract"][
+                    "same_specimen_experimental_alpha_V_and_K_T_pair_established"
+                ],
+                "source_grade_uncertainty_available": tohei["pair_contract"][
+                    "source_grade_uncertainty_available"
+                ],
+                "Ding_material_regime_mapping_closed": tohei["pair_contract"][
+                    "Ding_material_regime_mapping_closed"
+                ],
+                "source_sha256": None,
+            },
         },
         "checks": checks,
         "controlling_blocker": "same_grade_alpha_V_and_K_T_missing",
         "next_controller": (
-            "Acquire a permitted same-specimen or explicitly state-matched "
-            "alpha_V and isothermal K_T source with uncertainty and Ding-regime "
-            "mapping; do not combine the current comparator values by assumption."
-        ),
+            "Acquire a permitted full Lowitzer P-V-T payload, a source-grade "
+            "same-specimen/state-matched alpha_V and isothermal K_T source "
+            "with uncertainty and Ding-regime mapping. The Tohei table may "
+            "remain a comparator, but its calculated pair and separately cited "
+            "experimental values must not be combined into a source-grade "
+            "correction by assumption."
+            ),
         "claim_boundary": (
             "No numeric Cp-to-Cv correction, Ding C_src, alpha_Phi_K, TTG "
             "prediction, or Full Topic 13 closure is emitted."

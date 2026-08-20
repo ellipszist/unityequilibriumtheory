@@ -194,6 +194,12 @@ def formal_two_sector_contract() -> dict[str, object]:
             "pressure_energy_density": "natural energy density",
             "charge_entropy_density": "natural density",
             "normal_density_label": "thermodynamic quasiparticle charge derivative, not Landau mass density",
+            "sector_derivative_sign_policy": (
+                "condensate and normal charge/energy entries are signed derivatives "
+                "of their declared grand-pressure sectors; positivity is required "
+                "for the total thermodynamic state and the static transverse response, "
+                "not for a residual sector label"
+            ),
             "Phi": "effective response input; not temperature",
             "C": "not relabeled as charge density",
             "R_gen": "derived history trace only; not a state or feedback term",

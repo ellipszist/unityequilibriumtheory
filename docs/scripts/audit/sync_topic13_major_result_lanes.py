@@ -63,14 +63,21 @@ LANES = (
     ("T13_UET_O2_FINITE_T_SCHEME_IDENTIFIABILITY_NO_GO", "uet_o2_finite_t_scheme_identifiability_no_go"),
     ("T13_UET_O2_FORMAL_TWO_SECTOR_THERMODYNAMIC_LANE", "uet_o2_formal_two_sector_thermodynamic_lane"),
     ("T13_UET_O2_FORMAL_TRANSVERSE_RESPONSE_LANE", "uet_o2_formal_transverse_response_lane"),
+    ("T13_UET_O2_THERMODYNAMIC_NORMAL_COMPONENT_LANE", "uet_o2_thermodynamic_normal_component_lane"),
+    ("T13_UET_O2_CONDENSED_RELATIVE_FLOW_COLLISION_KERNEL_LANE", "uet_o2_condensed_relative_flow_collision_kernel_lane"),
+    ("T13_UET_O2_CONTINUUM_RELATIVE_FLOW_KUBO_LANE", "uet_o2_continuum_relative_flow_kubo_lane"),
+    ("T13_UET_O2_CONDENSED_LOOP_RENORMALIZED_CONTACT_VERTEX_LANE", "uet_o2_condensed_loop_renormalized_contact_vertex_lane"),
+    ("T13_UET_O2_CONDENSED_RELATIVE_FLOW_KUBO_ADMISSION_LANE", "uet_o2_condensed_relative_flow_kubo_admission_lane"),
     ("T13_UET_O2_COLLISIONLESS_KUBO_NO_GO", "uet_o2_collisionless_kubo_no_go"),
     ("T13_UET_O2_HARTREE_NORMAL_STABILITY_BOUNDARY_LANE", "uet_o2_hartree_normal_stability_boundary_lane"),
     ("T13_UET_O2_RENORMALIZED_CONDENSATE_STATIONARITY_SCHEME_DEPENDENCE", "uet_o2_renormalized_condensate_stationarity_scheme_dependence"),
     ("T13_UET_O2_RENORMALIZED_HARTREE_NORMAL_LANE", "uet_o2_renormalized_hartree_normal_lane"),
     ("T13_UET_O2_CONDENSED_GOLDSTONE_WARD_NO_GO", "uet_o2_condensed_goldstone_ward_no_go"),
     ("T13_UET_O2_WARD_CONSTRAINED_CONDENSED_LANE", "uet_o2_ward_constrained_condensed_lane"),
+    ("T13_UET_O2_FINITE_T_OFFSHELL_1PI_FORMAL_LANE", "uet_o2_finite_t_offshell_1pi_formal_lane"),
     ("T13_UET_O2_WARD_CONSTRAINED_COEFFICIENT_STATE_DEPENDENCE_NO_GO", "uet_o2_ward_constrained_coefficient_state_dependence_no_go"),
     ("T13_UET_O2_AUXILIARY_FIELD_WARD_PRESERVING_CONDENSED_LANE", "uet_o2_auxiliary_field_ward_preserving_condensed_lane"),
+    ("T13_UET_O2_CONDENSED_RETARDED_DISSIPATION_NO_GO", "uet_o2_condensed_retarded_dissipation_no_go"),
 )
 
 

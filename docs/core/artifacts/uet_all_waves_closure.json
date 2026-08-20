@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_all_waves_closure",
-  "generated_at": "2026-08-14",
+  "generated_at": "2026-08-20",
   "audit_status": "PASS",
   "program_status": "ALL_WAVE_STATUS_ACCOUNTING_CLOSED_FOUNDATION_PHYSICS_NOT_CLOSED",
   "foundation_gate": {
     "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
     "status": "BLOCKED",
-    "sha256": "e417bc45d9e8ac1dc04c990995cac9165ade8c48016a64fad8b7cb116ba169d0",
+    "sha256": "e1d84c339e14a1673274559c259f8cdbeae7507d5b46832da10c06ff0ff4fa73",
     "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
   },
   "wave_count": 12,
@@ -40,14 +40,14 @@
         {
           "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
           "exists": true,
-          "sha256": "e417bc45d9e8ac1dc04c990995cac9165ade8c48016a64fad8b7cb116ba169d0",
+          "sha256": "e1d84c339e14a1673274559c259f8cdbeae7507d5b46832da10c06ff0ff4fa73",
           "status": "BLOCKED",
           "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
         },
         {
           "path": "docs/core/artifacts/uet_foundation_equation_inventory.json",
           "exists": true,
-          "sha256": "63e8a130be76d77a634305015dec8ae224c72c90aff86580a86265c06052c5d3",
+          "sha256": "5306d3d2010feae09ab8350e314e05d15c61a9a67ed1db077092bc403640b63a",
           "status": "PASS_WITH_DISCLOSED_GAPS",
           "controller": "topic_formula_audits_not_code_complete_or_correspondence_incomplete"
         }
@@ -65,7 +65,7 @@
         {
           "path": "docs/core/artifacts/uet_equation_correspondence_registry.json",
           "exists": true,
-          "sha256": "62c81ddf9ca1b42ab00c1b6d4e5f690bb746c79980001b06e804e2e2431d37c3",
+          "sha256": "ae143f9bd06738ae777415b46d39752c8fbb4a96b17f31de94eac3e563a7be44",
           "status": "CENTRAL_REGISTRY_WITH_CANDIDATE_ADDENDA_BLOCKED",
           "controller": "not_declared"
         },

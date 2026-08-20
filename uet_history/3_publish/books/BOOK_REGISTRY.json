@@ -17,6 +17,39 @@
       "public_files": ["README.md"]
     },
     {
+      "book_id": "00_1_terrain_and_daily_living",
+      "title": "Terrain & Daily Living",
+      "section_id": "section_00_earth_terrain_migration",
+      "volume_number": 1,
+      "canonical_source_path": "uet_history/3_publish/books/earth_terrain_migration/01_terrain_living",
+      "public_path": "uet_history/3_publish/books/earth_terrain_migration/01_terrain_living",
+      "state": "local_only",
+      "public_files": [],
+      "excluded_local_paths": ["1_raw/", "ch_drafts/"]
+    },
+    {
+      "book_id": "00_2_mobility_and_climate_shocks",
+      "title": "Mobility, Disasters & Climate Shocks",
+      "section_id": "section_00_earth_terrain_migration",
+      "volume_number": 2,
+      "canonical_source_path": "uet_history/3_publish/books/earth_terrain_migration/02_mobility_disasters",
+      "public_path": "uet_history/3_publish/books/earth_terrain_migration/02_mobility_disasters",
+      "state": "local_only",
+      "public_files": [],
+      "excluded_local_paths": ["1_raw/", "ch_drafts/"]
+    },
+    {
+      "book_id": "00_3_imprints_and_capital_genesis",
+      "title": "Genetic Imprints & Capital Genesis",
+      "section_id": "section_00_earth_terrain_migration",
+      "volume_number": 3,
+      "canonical_source_path": "uet_history/3_publish/books/earth_terrain_migration/03_imprints_capital",
+      "public_path": "uet_history/3_publish/books/earth_terrain_migration/03_imprints_capital",
+      "state": "local_only",
+      "public_files": [],
+      "excluded_local_paths": ["1_raw/", "ch_drafts/"]
+    },
+    {
       "book_id": "0.1_origin_of_wealth",
       "title": "The Origin of Wealth",
       "section_id": "section_economics_ai_energy",

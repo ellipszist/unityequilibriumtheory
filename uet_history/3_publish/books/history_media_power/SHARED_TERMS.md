@@ -25,6 +25,12 @@ Section Blueprint: `section-03-v1`
 | **การเลือกพูดเชิงจริยธรรม (Ethical Selective Framing)** | การนำกลไกการเลือกพูดมาใช้เชิงจริยธรรม สกัดเอามุมที่ดีงามและปลดปล่อยมวลชนออกจากมรดกเดิม | Book 3 | UET Emancipatory Framework | `PASS` |
 | **การปกครองแบบไร้ตัวตน (Leaderless Governance)** | การออกแบบสถาปัตยกรรมสังคมที่ไร้ผู้ปกครองเบ็ดเสร็จเดี่ยว เพื่อสลายการผูกขาดอำนาจ | Book 3 | Lao Tzu (*Tao Te Ching*), Institutional Decentralization | `PASS` |
 | **เทคโนโลยีทางศีลธรรม-กฎหมาย (Moral-Legal Technology)** | สถาบัน กฎหมายนิติรัฐ ศาล และหลักการสิทธิมนุษยชนที่ถูกสร้างขึ้นเพื่อสถาปนาจารีตใหม่ที่ดีและยั่งยืน | Books 2, 3 | European Moral Evolution & Rule of Law | `PASS` |
+| **การเมืองของไพรเมตและสมองสังคม (Primate Politics & Social Brain)** | วิวัฒนาการสมองมนุษย์ที่ถูกคัดเลือกมาเพื่อการเล่นเกมการเมือง การสร้างพันธมิตร และการรักษาสถานะในกลุ่มเพื่อเอาชีวิตรอด | Books 1, 2 | Frans de Waal (*Chimpanzee Politics*), Robin Dunbar | `PASS` |
+| **การคานอำนาจแบบกลับด้าน (Reverse Dominance Hierarchy)** | กลไกทางสังคมของชนเผ่าเท่าเทียม (เช่น ฮัดซา) ที่ร่วมกันล้อเลียน/คว่ำบาตรคนขี้อวดเพื่อป้องกันการผูกขาดอำนาจ | Books 2, 3 | Christopher Boehm (*Hierarchy in the Forest*) | `PASS` |
+| **สายตาสังคมและการควบคุมกลุ่ม (Sekentei & Social Conformity)** | จารีตที่เข้มงวดของสังคมรวมหมู่ (เช่น ญี่ปุ่น) ที่ใช้สายตาสังคมและการตัดขาด (Mura Hachibu) บีบให้ปัจเจกสยบยอม | Book 2 | Cultural Anthropology & Social Psychology | `PASS` |
+| **พรมแดนความคิด (Epistemic Horizon)** | ขอบเขตความรู้และข้อมูลที่ได้รับจากสื่อ ซึ่งกลายเป็นกรอบขังไม่ให้สมองมนุษย์คิดออกนอกขอบเขตที่มี | Books 1, 2 | Wittgenstein (*Tractatus*), Walter Lippmann | `PASS` |
+| **กลุ่มอาการโลกโหดร้าย (Mean World Syndrome)** | ภาวะทางจิตของปัจเจกที่เสพสื่ออาชญากรรม/ข่าวสารมากเกินไปจนมองโลกอันตรายเกินจริง กระตุ้นความกลัวใน Amygdala | Books 1, 2 | George Gerbner (*Cultivation Theory*) | `PASS` |
+| **เกลียวแห่งความเงียบ (Spiral of Silence)** | สภาวะที่ปัจเจกไม่กล้าแสดงความเห็นต่างเพราะกลัวการถูกกีดกันทางสังคม (Social Isolation) ทำให้กระแสหลักครอบงำ | Book 2 | Elisabeth Noelle-Neumann | `PASS` |
 
 ---
 

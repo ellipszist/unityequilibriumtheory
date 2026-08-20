@@ -3,12 +3,93 @@
 from __future__ import annotations
 
 import json
+import sys
+from dataclasses import replace
 from datetime import date
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from docs.core.uet_covariant_matter import CovariantMatterConfig  # noqa: E402
+from docs.core.uet_covariant_response import (  # noqa: E402
+    CovariantResponseConfig,
+    response_potential,
+    response_potential_derivative,
+)
+from docs.core.uet_o2_finite_density_eos import (  # noqa: E402
+    O2FiniteDensityEOSConfig,
+    effective_mass_sq,
+)
 OUT = ROOT / "docs/core/artifacts/t13_alpha_phi_k_identifiability_audit.json"
+
+
+def action_coordinate_reparameterization() -> dict[str, object]:
+    """Test the natural action under a pure response-coordinate reparameterization."""
+
+    scale = 7.0
+    phi = 0.37
+    phi_equilibrium = -0.11
+    response = CovariantResponseConfig(
+        epsilon_nc=0.4,
+        phi_equilibrium=phi_equilibrium,
+        response_kinetic=1.3,
+        response_mass_sq=0.8,
+        response_quartic=0.6,
+        equilibrium_density=0.2,
+    )
+    transformed_response = replace(
+        response,
+        phi_equilibrium=scale * response.phi_equilibrium,
+        response_kinetic=response.response_kinetic / scale**2,
+        response_mass_sq=response.response_mass_sq / scale**2,
+        response_quartic=response.response_quartic / scale**4,
+    )
+    potential = response_potential(phi, response)
+    transformed_potential = response_potential(scale * phi, transformed_response)
+    derivative = response_potential_derivative(phi, response)
+    transformed_derivative = response_potential_derivative(
+        scale * phi,
+        transformed_response,
+    )
+    matter = CovariantMatterConfig(
+        matter_kinetic=1.1,
+        matter_mass_sq=1.0,
+        matter_quartic=0.9,
+        response_coupling=0.9,
+    )
+    transformed_matter = replace(
+        matter,
+        response_coupling=matter.response_coupling / scale,
+    )
+    eos = O2FiniteDensityEOSConfig(matter=matter, response=response)
+    transformed_eos = replace(
+        eos,
+        matter=transformed_matter,
+        response=transformed_response,
+    )
+    mass_sq = effective_mass_sq(phi, eos)
+    transformed_mass_sq = effective_mass_sq(scale * phi, transformed_eos)
+    return {
+        "scale_s": scale,
+        "phi": phi,
+        "phi_prime": scale * phi,
+        "potential_original": potential,
+        "potential_reparameterized": transformed_potential,
+        "potential_residual": abs(potential - transformed_potential),
+        "derivative_original": derivative,
+        "derivative_reparameterized": transformed_derivative,
+        "derivative_covariance_residual": abs(
+            derivative - scale * transformed_derivative
+        ),
+        "effective_mass_sq_original": mass_sq,
+        "effective_mass_sq_reparameterized": transformed_mass_sq,
+        "effective_mass_sq_residual": abs(mass_sq - transformed_mass_sq),
+        "alpha_scale_rule": "alpha_Phi_prime_K=alpha_Phi_K/s",
+        "physical_observable_invariance": "Delta_Tq=alpha_Phi_K*Delta_Phi is unchanged",
+    }
 
 
 def main() -> int:
@@ -20,6 +101,7 @@ def main() -> int:
     normalized_scaled = (scale * delta_phi) / (scale * phi_initial)
     dimensional_original = alpha_witness * delta_phi
     dimensional_scaled = (alpha_witness / scale) * (scale * delta_phi)
+    action_scale = action_coordinate_reparameterization()
     checks = {
         "normalized_operator_invariant": abs(normalized_original - normalized_scaled) == 0.0,
         "dimensional_map_invariant_under_compensating_scale": abs(
@@ -30,6 +112,10 @@ def main() -> int:
         "target_data_not_used": True,
         "xie_2026_not_accessed": True,
         "landauer_not_used_to_derive_alpha": True,
+        "action_potential_is_invariant": action_scale["potential_residual"] <= 1.0e-15,
+        "action_response_force_transforms_covariantly": action_scale["derivative_covariance_residual"] <= 1.0e-15,
+        "matter_effective_mass_is_invariant": action_scale["effective_mass_sq_residual"] <= 1.0e-15,
+        "action_normalization_anchor_remains_open": True,
     }
     report = {
         "schema_version": "t13-alpha-phi-k-identifiability-v1",
@@ -72,11 +158,12 @@ def main() -> int:
             "normalized_scaled": normalized_scaled,
             "dimensional_original": dimensional_original,
             "dimensional_scaled": dimensional_scaled,
+            "action_coordinate_reparameterization": action_scale,
         },
         "checks": checks,
         "controlling_blocker": "dimensional_phi_energy_anchor_or_independent_alpha_calibration_missing",
         "next_controller": "derive a dimensional Phi/energy normalization or source-lock an independent calibration record with uncertainty; do not use TTG target residuals or Xie 2026 to choose it",
-        "claim_boundary": "This closes a structural no-go for the current normalized lane, not the thermal dimensional bridge or Full Topic 13.",
+        "claim_boundary": "This closes a structural no-go for the current normalized lane and the declared natural-action coordinate normalization. It does not exclude a future source-locked normalization anchor.",
     }
     OUT.write_text(json.dumps(report, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
     print(json.dumps({

@@ -7,6 +7,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 AUDIT_REL = "docs/core/artifacts/t13_graphite_alpha_v_kt_matched_source_boundary_audit.json"
+LOWITZER_REL = "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/lowitzer_2006_graphite_pvt_candidate_source_package.json"
+TOHEI_REL = "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/tohei_2006_graphite_alpha_v_kt_table_comparator_source_package.json"
 FULL_REL = "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/topic13_full_thermodynamic_bridge_core_ready_gate.json"
 REGISTER_REL = "docs/core/artifacts/uet_major_result_closure_register.json"
 DEPENDENCY_REL = "docs/core/artifacts/uet_major_result_dependency_unlock_gate.json"
@@ -31,6 +33,21 @@ def test_current_alpha_v_kt_inventory_is_closed_as_a_scoped_boundary() -> None:
     assert audit["source_pair_observations"]["bosak_elastic_bulk"]["thermal_K_T_claimed"] is False
     assert audit["source_pair_observations"]["tpg_alpha_v"]["same_specimen_for_both_axes"] is False
     assert audit["source_pair_observations"]["nelson_riley_alpha_v"]["same_specimen_alpha_V"] is False
+    lowitzer = load(LOWITZER_REL)
+    assert lowitzer["status"] == "SOURCE_SCREENED_ABSTRACT_ONLY_NO_CLOSURE"
+    assert lowitzer["source"]["payload_state"] == "ABSTRACT_ONLY"
+    assert audit["source_pair_observations"]["lowitzer_pvt_candidate"]["numeric_alpha_V_rows_available"] is False
+    assert audit["source_pair_observations"]["lowitzer_pvt_candidate"]["numeric_K_T_rows_available"] is False
+    assert audit["source_pair_observations"]["lowitzer_pvt_candidate"]["source_grade_uncertainty_available"] is False
+    tohei = load(TOHEI_REL)
+    assert tohei["status"] == "SOURCE_SCREENED_TABLE_COMPARATOR_NO_CLOSURE"
+    assert tohei["pair_contract"]["numeric_table_alpha_V_present"] is True
+    assert tohei["pair_contract"]["numeric_table_K_T_or_B0_present"] is True
+    assert tohei["pair_contract"]["same_calculation_alpha_V_and_B0_pair_present"] is True
+    assert tohei["pair_contract"]["same_specimen_experimental_alpha_V_and_K_T_pair_established"] is False
+    assert tohei["pair_contract"]["source_grade_uncertainty_available"] is False
+    assert audit["source_pair_observations"]["tohei_table_comparator"]["calculated_graphite_pair"] is True
+    assert audit["source_pair_observations"]["tohei_table_comparator"]["experimental_same_specimen_pair"] is False
 
 
 def test_alpha_v_kt_boundary_is_projected_without_full_topic13_promotion() -> None:

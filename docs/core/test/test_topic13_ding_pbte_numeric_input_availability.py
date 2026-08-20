@@ -31,6 +31,12 @@ def test_oa_package_inventory_is_explicit_and_scoped() -> None:
     assert package["availability_contract"]["author_request_route"] == (
         "OPEN_NOT_EXECUTED"
     )
+    roles = {item["role"] for item in package["archived_records"]}
+    assert {
+        "SUPPLEMENTARY_INFORMATION",
+        "SUPPLEMENTARY_MATERIALS_2",
+        "SUPPLEMENTARY_MATERIALS_3",
+    } <= roles
 
 
 def test_availability_audit_closes_only_the_oa_search_route() -> None:
@@ -39,6 +45,8 @@ def test_availability_audit_closes_only_the_oa_search_route() -> None:
     assert audit["major_result"]["closure_level"] == "CLOSED_FOR_LANE"
     assert all(audit["checks"].values())
     assert audit["inventory_witness"]["reproduction_payload_candidates"] == []
+    assert audit["checks"]["all_three_supplementary_pdfs_are_archived"] is True
+    assert len(audit["inventory_witness"]["supplementary_files"]) == 3
     assert "only to the captured official PMC OA distribution" in audit[
         "major_result"
     ]["claim_boundary"]

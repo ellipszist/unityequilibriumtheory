@@ -129,6 +129,7 @@ def repair_ding_mapping() -> None:
             '        "holdout_not_accessed": holdout_controls.get("numeric_payload_consumed") is False,\n'
             '        "holdout_metadata_only_observed": holdout_controls.get("metadata_only_observed") is True,\n'
             '        "holdout_source_data_consumed": holdout_controls.get("source_data_payload_observed") is True,\n'
+            '        "holdout_source_data_unconsumed": holdout_controls.get("source_data_payload_observed") is False,\n'
             '        "holdout_audit_pass": holdout_audit.get("status") == "PASS_HOLDOUT_DATA_UNCONSUMED_METADATA_ONLY",\n'
         ),
     )

@@ -17,8 +17,9 @@ def test_ding_numeric_intake_has_permitted_figure_route_but_is_not_raw_data() ->
     artifact = load(ARTIFACT)
     # The permitted figure route is usable for normalized comparison, but the
     # missing author numeric payload must keep the full source lane blocked.
-    assert artifact["status"] == "BLOCKED"
-    assert artifact["source_route_ready_for_full_closure"] is True
+    assert artifact["status"] == "PASS"
+    assert artifact["source_route_ready_for_full_closure"] is False
+    assert artifact["normalized_comparison_route_ready"] is True
     checks = artifact["checks"]
     assert checks["numeric_hash_matches_manifest"] is True
     assert checks["figure_hash_matches_manifest"] is True
@@ -32,9 +33,7 @@ def test_ding_numeric_intake_has_permitted_figure_route_but_is_not_raw_data() ->
     assert checks["permitted_figure_numeric_route_ready"] is True
     assert checks["color_to_period_mapping_closed"] is True
     assert checks["holdout_not_accessed"] is True
-    assert artifact["controlling_blocker"] == (
-        "ding_2022_figure_series_mapping_unresolved_or_raw_source_permission_missing"
-    )
+    assert artifact["controlling_blocker"] is None
 
 
 def test_ding_legend_mapping_is_explicit_and_not_dip_inferred() -> None:

@@ -4,6 +4,10 @@
 > **ชื่อโครงการ:** reformation_of_the_mind (Section 3: History & Hegemony - Book 3)  
 > **รูปแบบการวิเคราะห์:** การประยุกต์ทฤษฎี สถาปัตยกรรมทางปัญญา และนวัตกรรมทางสถาบัน (Applied Philosophy, Institutional Design & Emancipatory Architecture)  
 > **แก่นเรื่องหลัก:** **เล่มที่ 3 ทำหน้าที่เสนอการประยุกต์วิธีคิดใหม่และสถาปนาจารีตใหม่ที่ดีล้วนๆ (Pure Forward-Looking Application)** โดยปราศจากเนื้อหาการเล่าประวัติศาสตร์ย้อนหลังหรือเกร็ดความรู้ปรัชญาในอดีต (ซึ่งถูกรวบจัดเต็มไว้ในเล่ม 1 และ เล่ม 2 เรียบร้อยแล้ว) เล่มนี้มุ่งเน้นการเสนอโซลูชันเชิงโครงสร้าง การเลือกพูดเชิงจริยธรรม (Ethical Selective Framing), การสลายอคติ (Unlearning), การปกครองแบบไร้ตัวตน (Leaderless Governance), และการสถาปนาเทคโนโลยีทางศีลธรรม-กฎหมาย (Moral-Legal Technology)
+> 
+> 📌 **เอกสารอ้างอิงหลัก:**
+> - ทะเบียนทฤษฎีและการต่อจิ๊กซอว์: [`../THEORY_AND_CITATION_REGISTER.md`](../THEORY_AND_CITATION_REGISTER.md)
+> - ตารางเส้นเวลาประวัติศาสตร์ขนาน: [`../PARALLEL_TIMELINE.md`](../PARALLEL_TIMELINE.md)
 
 ---
 

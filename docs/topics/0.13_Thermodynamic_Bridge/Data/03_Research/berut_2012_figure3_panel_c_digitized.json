@@ -1,0 +1,65 @@
+{
+  "schema_version": "t13-berut-figure3-panel-c-digitization-v1",
+  "artifact": "berut_2012_figure3_panel_c_digitized",
+  "source": {
+    "title": "Experimental verification of Landauer's principle linking information and thermodynamics",
+    "authors": "Berut et al.",
+    "doi": "10.1038/nature10872",
+    "article_url": "https://www.nature.com/articles/nature10872",
+    "figure_locator": "Figure 3c: Erasure rate and approach to the Landauer limit",
+    "embedded_asset_id": "jpeg_1",
+    "embedded_asset_sha256": "95823a29ed7f979d3979eb6fa776bce7df8eaa4485632073347874b5c868b188",
+    "publisher_binary_sha256": "e4bab6be849a093b7578bc52ce6df9be95dc25d83d51ecb718b4f798a37d50fa",
+    "retrieval_scope": "publisher Figure 3 PowerPoint route; raster identity is hash-pinned but the external binary is not stored in this repository",
+    "caption_basis": "Panel c reports mean dissipated heat versus protocol duration for r >= 0.90 plus signs, r >= 0.85 crosses, and r >= 0.75 circles; error bars are 1 s.d."
+  },
+  "panel": {
+    "panel_id": "3c",
+    "observable": "mean dissipated heat per erasure cycle",
+    "x_label": "tau",
+    "x_unit": "s",
+    "y_label": "<Q>",
+    "y_unit": "kT",
+    "landauer_reference": "<Q>_Landauer = kT ln(2)",
+    "continuous_fit_curve_included": false,
+    "horizontal_landauer_line_included": false,
+    "pixel_coordinate_origin": "top_left",
+    "axis_mapping": {
+      "x": {
+        "model": "tau_s = 0.04800761484202776 * x_px - 4.3206507647684465",
+        "tick_pairs_px_value": [[298.0, 10.0], [507.0, 20.0], [715.0, 30.0], [923.0, 40.0]],
+        "inferred_zero_tick_px": 89.9992798847815,
+        "coordinate_uncertainty_px": 2.0
+      },
+      "y": {
+        "model": "heat_kT = -0.008598426850158929 * y_px + 13.692140830846105",
+        "tick_pairs_px_value": [[1592.0, 0.0], [1476.5, 1.0], [1360.0, 2.0], [1243.5, 3.0], [1127.0, 4.0]],
+        "coordinate_uncertainty_px": 2.0
+      }
+    }
+  },
+  "preprocessing": {
+    "method": "manual marker-center transcription from the hash-pinned embedded raster using linear axis calibration from visible ticks",
+    "fit_performed": false,
+    "curve_digitized": false,
+    "unit_conversion_performed": false,
+    "measurement_error_bars_transcribed": false,
+    "measurement_error_bar_basis": "Figure caption states 1 s.d.; numeric intervals are not accepted from the raster-only route",
+    "digitization_uncertainty": "propagated from a 2 px coordinate envelope; this is not the experiment's measurement uncertainty",
+    "holdout_accessed": false,
+    "xie_2026_accessed": false,
+    "target_data_used": false
+  },
+  "rows": [
+    {"row_id": "berut_figure3c_r090_tau_5", "series": "r_ge_0.90", "marker": "plus", "tau_s": 4.993, "mean_heat_kT": 3.632, "pixel_center": [194.0, 1170.0], "digitization_uncertainty": {"tau_s": 0.10, "mean_heat_kT": 0.02}},
+    {"row_id": "berut_figure3c_r090_tau_7", "series": "r_ge_0.90", "marker": "plus", "tau_s": 6.721, "mean_heat_kT": 2.686, "pixel_center": [230.0, 1280.0], "digitization_uncertainty": {"tau_s": 0.10, "mean_heat_kT": 0.02}},
+    {"row_id": "berut_figure3c_r090_tau_10", "series": "r_ge_0.90", "marker": "plus", "tau_s": 9.986, "mean_heat_kT": 1.706, "pixel_center": [298.0, 1394.0], "digitization_uncertainty": {"tau_s": 0.10, "mean_heat_kT": 0.02}},
+    {"row_id": "berut_figure3c_r090_tau_15", "series": "r_ge_0.90", "marker": "plus", "tau_s": 14.978, "mean_heat_kT": 1.328, "pixel_center": [402.0, 1438.0], "digitization_uncertainty": {"tau_s": 0.10, "mean_heat_kT": 0.02}},
+    {"row_id": "berut_figure3c_r090_tau_20", "series": "r_ge_0.90", "marker": "plus", "tau_s": 19.923, "mean_heat_kT": 1.001, "pixel_center": [505.0, 1476.0], "digitization_uncertainty": {"tau_s": 0.10, "mean_heat_kT": 0.02}},
+    {"row_id": "berut_figure3c_r085_tau_25", "series": "r_ge_0.85", "marker": "cross", "tau_s": 24.964, "mean_heat_kT": 0.872, "pixel_center": [610.0, 1491.0], "digitization_uncertainty": {"tau_s": 0.10, "mean_heat_kT": 0.02}},
+    {"row_id": "berut_figure3c_r090_tau_30", "series": "r_ge_0.90", "marker": "plus", "tau_s": 29.957, "mean_heat_kT": 1.052, "pixel_center": [714.0, 1470.0], "digitization_uncertainty": {"tau_s": 0.10, "mean_heat_kT": 0.02}},
+    {"row_id": "berut_figure3c_r085_tau_32", "series": "r_ge_0.85", "marker": "cross", "tau_s": 31.973, "mean_heat_kT": 0.760, "pixel_center": [756.0, 1504.0], "digitization_uncertainty": {"tau_s": 0.10, "mean_heat_kT": 0.02}},
+    {"row_id": "berut_figure3c_r085_tau_35", "series": "r_ge_0.85", "marker": "cross", "tau_s": 34.950, "mean_heat_kT": 0.949, "pixel_center": [818.0, 1482.0], "digitization_uncertainty": {"tau_s": 0.10, "mean_heat_kT": 0.02}},
+    {"row_id": "berut_figure3c_r075_tau_40", "series": "r_ge_0.75", "marker": "circle", "tau_s": 39.990, "mean_heat_kT": 0.605, "pixel_center": [923.0, 1522.0], "digitization_uncertainty": {"tau_s": 0.10, "mean_heat_kT": 0.02}}
+  ]
+}

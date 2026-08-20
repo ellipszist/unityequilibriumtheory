@@ -29,8 +29,15 @@ def test_topic13_gate_keeps_original_baseline_blocked_after_no_go() -> None:
     assert causal["named_finite_cone_branch_pass"] is True
     assert causal["named_coupled_branch_pass"] is True
     assert causal["full_candidate_pass"] is False
+    assert causal["status_role"] == "full_candidate_readiness_gate"
     assert causal["baseline_status"] == "BLOCKED"
+    assert causal["baseline_controlling_blocker"] == "original_conserved_c_gradient_baseline_blocked"
+    assert causal["lane_status"] == "PASS"
+    assert causal["lane_status_role"] == "scoped_named_branch_lane"
+    assert causal["lane_closure_level"] == "CLOSED_FOR_LANE"
     assert causal["structural_question_closure"] == "CLOSED_AS_NO_GO"
+    assert causal["baseline_replaced"] is False
+    assert causal["full_core_unlock"] is False
     assert any("original conserved-C" in item for item in gate["major_result"]["baseline_open_items"])
     assert gate["status"] == "BLOCKED_OPEN_T13_FULL_BRIDGE"
     assert gate["controlling_blocker"] == (

@@ -27,11 +27,17 @@ def test_ding_material_regime_boundary_rejects_silent_comparator_substitution() 
     assert lane["status"] == "PASS_SCOPED_DING_MATERIAL_REGIME_BOUNDARY_NO_GO"
     assert lane["major_result"]["closure_level"] == "CLOSED_FOR_LANE"
     assert lane["mapping_contract"]["equivalence_result"] is False
-    assert len(lane["source"]["comparators"]) == 5
+    assert len(lane["source"]["comparators"]) == 6
     assert all(
         item["equivalence_status"] == "NOT_ESTABLISHED"
         for item in lane["source"]["comparators"]
     )
+    calorine = lane["source"]["calorine_admission_boundary"]
+    assert calorine["primitive_cell_atoms"] == 4
+    assert calorine["primitive_volume_A3"] > 0.0
+    assert calorine["crystallographic_density_kg_per_m3"] > 0.0
+    assert calorine["accepted_as_ding_csrc"] is False
+    assert calorine["source_grade_uncertainty_present"] is False
     assert projected["major_result_id"] == "T13_DING_MATERIAL_REGIME_BOUNDARY"
     assert projected["closure_level"] == "CLOSED_FOR_LANE"
     assert projected["audit"]["sha256"]

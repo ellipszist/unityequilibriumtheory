@@ -4,56 +4,59 @@ Machine-readable authority: `docs/topics/0.13_Thermodynamic_Bridge/Result/artifa
 
 MAJOR_RESULT_CLOSURE: `PARTIAL`
 
-WHAT_IS_ACTUALLY_CLOSED: Topic 13 has lane-level causal selection, covariant
-field-normalization and beta-symbol no-gos, a named finite-temperature
-`beta_T13` functional, and a named collective-response EOS with explicit
-derivatives, reciprocity, and local stability conditions. The results close
-formula and ontology ambiguity, not physical material coefficients.
+WHAT_IS_ACTUALLY_CLOSED: Topic 13 now has lane-level causal selection,
+covariant field-normalization and beta-symbol no-gos, plus a named finite-
+temperature response functional where `beta_T13` has a declared action term,
+units, and entropy derivative. This avoids a Landauer shortcut without
+claiming the coefficient is physically derived.
 
-WHAT_REMAINS_OPEN: Source-backed finite-temperature coefficients, physical
-Phi normalization and SI energy-density anchor, correspondence to core or
-covariant coefficients, independent `alpha_Phi_K`, physical EOS observables,
+WHAT_REMAINS_OPEN: Source-backed `a_Phi(T)`/`beta_T13` provenance, physical
+Phi normalization and SI energy-density anchor, correspondence to a core or
+covariant coefficient, independent `alpha_Phi_K`, finite-temperature EOS,
 covariant transport, SK/KMS, entropy production, and dissipative balance.
 
-DEPENDENCY_UNLOCKED: A normalized response-EOS interface for later internal
-derivations only. No Core-ready, Gravity/GR, transport, Galaxy, external-
-validation, or global claim is unlocked.
+DEPENDENCY_UNLOCKED: A formula/unit interface for later EOS and entropy work
+only. No Core-ready, Gravity/GR, transport, Galaxy, external-validation, or
+global claim is unlocked.
 
 STATUS: `BLOCKED_OPEN_T13_FULL_BRIDGE`
 
-WHAT_CHANGED: `T13_COLLECTIVE_RESPONSE_EOS_STABILITY_CONTRACT` is
-`CLOSED_FOR_LANE`. `C` remains a collective coordinate and `Phi` an effective
-response; the named `mu_C` and `mu_Phi` are normalized derivatives, not
-measured chemical potentials or a charge EOS.
+WHAT_CHANGED: `T13_THERMAL_RESPONSE_BETA_CONTRACT` is
+`CLOSED_FOR_LANE`. The legacy `beta_core` remains a separate normalized
+coupling; it is not identified with `beta_T13`, `Phi`, or a physical thermal
+coefficient.
 
 EQUATION_OR_MAPPING:
 
 ```text
-f_hat = a_C C^2 / 2 + b_C C^4 / 4 + a_Phi(T) Phi^2 / 2
-      + b_Phi Phi^4 / 4 - g C^2 Phi / 2
-mu_C = a_C C + b_C C^3 - g C Phi
-mu_Phi = a_Phi(T) Phi + b_Phi Phi^3 - g C^2 / 2
-H_CPhi = H_PhiC = -g C
-local stability: H_CC > 0, H_PhiPhi > 0, det(H) > 0
+f_hat_T13(C, Phi, T) = a_Phi(T) Phi^2 / 2 + b_Phi Phi^4 / 4 - g C^2 Phi / 2
+beta_T13 = T0 * (da_Phi / dT)|T0
+a_Phi(T) = a_Phi(T0) + beta_T13 * (T - T0) / T0
+s = -partial_T(e0 f_hat_T13) = -e0 Phi^2 beta_T13 / (2 T0)
+
+y_TTG = Delta_Tq(t) / Delta_Tq(0)
+y_TTG^UET = Delta_Phi(t) / Delta_Phi(0)
+Delta_Tq = alpha_Phi_K * Delta_Phi
 ```
 
-VERIFICATION: Analytic first and second derivatives match a synthetic finite-
-difference witness; the Hessian is reciprocal and positive definite at the
-declared witness point. The functional does not use a Landauer identity, no
-fit, source row, target, or Xie 2026 holdout.
+VERIFICATION: Analytic and finite-difference entropy derivatives agree on a
+synthetic unit witness. `T0` is K, `da_Phi/dT` is K^-1, and `e0` is an
+external J m^-3 input. No Landauer term, fit, source row, target, or Xie 2026
+holdout was used.
 
-CONTROLLING_BLOCKER: `dimensional_phi_energy_anchor_or_independent_alpha_calibration_missing`. The EOS-lane controller
-is `source_backed_finite_temperature_EOS_coefficient_provenance_and_physical_Phi_SI_anchor_missing`.
+CONTROLLING_BLOCKER: `dimensional_phi_energy_anchor_or_independent_alpha_calibration_missing`. The beta-lane controller
+is `beta_T13_source_backed_temperature_coefficient_provenance_and_physical_Phi_SI_anchor_missing`.
 
-NEXT_ACTION: Source-lock coefficient provenance and the Phi/e0 SI observable
-anchor independently of TTG target fitting. Then extend this named lane to
-covariant transport, SK/KMS, entropy production, and dissipative balance.
+NEXT_ACTION: Source-lock a material-relevant temperature coefficient path and
+the Phi/e0 SI anchor independently of TTG target fitting. Then test finite-
+temperature EOS, transport, SK/KMS, entropy production, and dissipative
+balance under this named lane.
 
-CLAIM_BOUNDARY: UET remains a candidate effective theory. No physical charge
-EOS, mass/particle/information-field identification, transport coefficient,
-entropy-production law, external validation, full Topic 13 closure, or
-downstream unlock is claimed.
-
+CLAIM_BOUNDARY: UET remains a candidate effective theory. `C` remains a
+collective coordinate, `Phi` an effective response, and `R_gen` a derived
+history trace. No UET-wide beta, Kelvin prediction, physical entropy-
+production law, external validation, full Topic 13 closure, or downstream
+unlock is claimed.
 
 ## 2026-08-11 Causal Branch Selection Update
 
@@ -1908,3 +1911,18 @@ CONTROLLING_BLOCKER: \`covariant_continuum_entropy_current_and_heat_flux_balance
 NEXT_ACTION: Derive the covariant entropy current and heat-flux balance from the continuum retarded/KMS kernel; retain this finite-channel H-theorem as a formal lane and keep physical Kubo, dimensional, source, and holdout gates independent.
 CLAIM_BOUNDARY: This closes only a finite-channel formal entropy-production identity with a declared internal affinity. It is not a covariant entropy current, physical heat-flux balance, physical Kubo coefficient, SI observable, \`alpha_Phi_K\` calibration, TTG prediction, external validation, or Full Topic 13 closure.
 EVIDENCE_HASHES: module \`418247b1b61d23bdf0ee5212b5b4969216d1ced539636b741b04edd35e876f92\`; verifier \`821ae8f6b24f0f5b3dddbfa10aef92623461e1464c054033f666ddb8305aaeeb\`; regression \`fe703b73071d47668e18b8c619257409219fd91dd6bf521b79a9faa2dd1b374c\`; artifact \`7a21a03c87c0b39d619cb23bc459643a8c41b7ae792beed88425e0129996968d\`; full gate \`ecb6153b8e66dd7f8fed4f5c7f7898b3ff3a7bccbeb736fb389b9bf96c883fa7\`; register \`3f1e9b5550bc8a56b5d100126687c39c1f25314a81cef6a1416c8e879d55fb70\`; dependency \`3384957f4f439de2e22d213e76a6c6f332e25107d03941343b5beb06cd2b20f5\`.
+
+## Condensed Loop-Renormalized Contact Vertex (T13-114)
+
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_UET_O2_CONDENSED_LOOP_RENORMALIZED_CONTACT_VERTEX_LANE`.
+WHAT_IS_ACTUALLY_CLOSED: The condensed relative-flow contact channel now has a finite thermal derivative-channel loop bubble, explicit reference subtraction, positive effective coupling, and a state-matched natural-unit retarded response. Radial, angular, compactification-scale, positivity, conservation, KMS/FDT, and entropy checks pass.
+WHAT_REMAINS_OPEN: Complete condensed 1PI vertex and scattering channels, independent physical Kubo/vertex anchor and accepted provenance, complete two-fluid tensor, dimensional `Phi` map, independent calibration, Ding-compatible `C_src`, and Full Topic 13 remain open.
+DEPENDENCY_UNLOCKED: Loop-renormalized condensed contact-channel and state-matched natural retarded lane only; no physical Kubo, SI, alpha, Core, Gravity, or external-validation unlock.
+STATUS: `PASS_ACTION_DERIVED_CONDENSED_LOOP_RENORMALIZED_CONTACT_VERTEX_LANE`; full gate remains `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL`; `claim_promotion=false`.
+WHAT_CHANGED: Added the action-derived condensed thermal loop/contact implementation, audit, focused regression, equation addendum, full-gate projection, major-result register entry, dependency evidence, and wave record. No external numeric source, target data, fit, or Xie 2026 holdout was used.
+EQUATION_OR_MAPPING: `B_ab^R=B_ab^th(T,mu,Phi)-B_ab^th(T,mu,Phi_ref)`; `lambda_ab^R=lambda/(1+lambda*B_ab^R)`; `sigma_ab^R=(lambda_ab^R)^2/[16*pi*(s_med+2*lambda*A_*^2)]`; `L_rel=Gamma_rel*((1,-1),(-1,1))`; `G_R^rel(omega)=2*D_rel/(2*Gamma_rel-i*omega)`.
+VERIFICATION: Zero failed checks; numerical uncertainty bound `3.500054507989025e-06`; loop-bubble relative change `9.321205929180344e-13`; loop-coupling relative change `3.261235996489399e-14`; focused regression `2 passed`; KMS/FDT, entropy, positivity, and common-flow conservation pass.
+CONTROLLING_BLOCKER: `physical_Kubo_coefficient_record_missing`, with `independent_physical_condensed_vertex_anchor_missing` and `complete_condensed_1PI_vertex_and_scattering_channels_missing`.
+NEXT_ACTION: Source-lock or microscopically match one state-matched physical condensed Kubo/retarded record with units, locator, hash, evidence status, and uncertainty; then test full interacting SK/KMS and complete scattering-channel admission.
+CLAIM_BOUNDARY: Natural-unit loop-renormalized contact-channel lane only; not a full 1PI renormalization, physical Kubo coefficient, SI observable, `alpha_Phi_K` calibration, TTG prediction, external validation, or Full Topic 13 closure.
+EVIDENCE_HASHES: module `6384e8bc5553b696c17a079b93fd97df95b8f545475732b2a23f7133f03fe0dc`; audit `6a3b581978b4020648c5f2c9b9d38fef4aed501267190e5a8c5c2178e666737b`; registry `ae143f9bd06738ae777415b46d39752c8fbb4a96b17f31de94eac3e563a7be44`; full gate `3336e8e0ee0fa3e0d4f455f39010a3c9426af8583074d830c8143518dbc94c09`; register `fd0db3bd2358b0e66c480464ddf088e13fa37ccb8b0b1df0a542ec383740078d`; dependency `ec6199d171b0aea536c0f072e498c0bfd9988ae66612bedfac94d422b5462637`.

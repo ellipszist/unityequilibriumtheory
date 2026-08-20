@@ -1,7 +1,7 @@
 {
   "schema_version": "t13-oxford-tgs-numeric-rows-audit-v1",
   "artifact": "t13_oxford_tgs_numeric_rows_audit",
-  "generated_at": "2026-08-14",
+  "generated_at": "2026-08-20",
   "status": "PASS_OXFORD_TGS_NUMERIC_ROWS_SOURCE_LOCKED_COMPARATOR",
   "claim_promotion": false,
   "major_result": {
@@ -31,11 +31,11 @@
     "evidence_artifacts": [
       {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/oxford_tgs_figure1_numeric_rows_manifest.json",
-        "sha256": "50cf9a0d08322826669a2a8950e75ad6a70e2a410d22eda412f954144a8c2324"
+        "sha256": "13768a006822070b09e1256175befbae00bfeaeabbe77ba584f4c9a9f68d063a"
       },
       {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/oxford_tgs_figure1_numeric_rows.csv.gz",
-        "sha256": "6e91a0920981bfd5c1327aa411ae89475d87ce80861deb3cba964ab64b283463"
+        "sha256": "04729be6c8c191d057759cc60d0991f3c740ef2d54aef3209a5b36b8d973b399"
       },
       {
         "path": "docs/core/artifacts/t13_oxford_tgs_numeric_rows_audit.json"
@@ -94,7 +94,7 @@
     ],
     "derived_column": "y_delta_yy1_minus_yy_au = yy1_signal_au - yy_signal_au",
     "output_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/oxford_tgs_figure1_numeric_rows.csv.gz",
-    "output_sha256": "6e91a0920981bfd5c1327aa411ae89475d87ce80861deb3cba964ab64b283463"
+    "output_sha256": "04729be6c8c191d057759cc60d0991f3c740ef2d54aef3209a5b36b8d973b399"
   },
   "checks": {
     "manifest_status_is_source_locked": true,

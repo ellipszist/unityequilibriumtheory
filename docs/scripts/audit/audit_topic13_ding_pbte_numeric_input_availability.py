@@ -18,6 +18,13 @@ INVENTORY = TOPIC_DATA / "raw/ding_2022_pmc_s3_inventory.xml"
 METADATA = TOPIC_DATA / "raw/ding_2022_pmc_object_metadata.json"
 FULL_TEXT = TOPIC_DATA / "raw/ding_2022_pmc_full_text.txt"
 SUPPLEMENT = TOPIC_DATA / "raw/ding_2022_supplementary_information.pdf"
+SUPPLEMENTARY_FILES = {
+    "SUPPLEMENTARY_INFORMATION": SUPPLEMENT,
+    "SUPPLEMENTARY_MATERIALS_2": TOPIC_DATA
+    / "raw/ding_2022_supplementary_materials_2.pdf",
+    "SUPPLEMENTARY_MATERIALS_3": TOPIC_DATA
+    / "raw/ding_2022_supplementary_materials_3.pdf",
+}
 OUT = ROOT / "docs/core/artifacts/t13_ding_pbte_numeric_input_availability_audit.json"
 
 
@@ -89,7 +96,7 @@ def main() -> int:
         "PMC_S3_PREFIX_INVENTORY": INVENTORY,
         "PMC_OBJECT_METADATA": METADATA,
         "PMC_FULL_TEXT": FULL_TEXT,
-        "SUPPLEMENTARY_INFORMATION": SUPPLEMENT,
+        **SUPPLEMENTARY_FILES,
     }
     hashes_match = all(
         path.stat().st_size == archived[role]["bytes"]
@@ -113,6 +120,12 @@ def main() -> int:
         "media_payload_count_is_7": len(media_urls)
         == package["official_object_inventory"]["media_payload_count"]
         == 7,
+        "all_three_supplementary_pdfs_are_archived": all(
+            path.exists()
+            and path.stat().st_size == archived[role]["bytes"]
+            and sha256(path) == archived[role]["sha256"]
+            for role, path in SUPPLEMENTARY_FILES.items()
+        ),
         "media_payloads_are_figures_or_pdfs_only": media_suffixes == [".jpg", ".pdf"],
         "no_reproduction_payload_candidate_in_oa_prefix": candidate_payloads == [],
         "data_availability_is_author_request": (
@@ -173,6 +186,7 @@ def main() -> int:
                 "The captured official PMC OA prefix contains no mode heat-capacity, force-constant, scattering-matrix, or Phonopy/ShengBTE reproduction payload.",
                 "The publication gives a partial computational specification but routes supporting data to a corresponding-author request.",
                 "Further anonymous searching inside the same PMC OA package is closed as a non-productive source route.",
+                "All three supplementary PDF objects in the official OA inventory are archived locally with role-specific byte and SHA-256 checks.",
             ],
             "equation_or_mapping": "C_src(T)=sum_mu(c_mu(T)); the numeric c_mu or equivalent reproducible phonon payload is absent from the captured official OA distribution",
             "units": "required C_src: J m^-3 K^-1; no numeric value emitted",
@@ -203,13 +217,22 @@ def main() -> int:
             "media_suffixes": media_suffixes,
             "reproduction_payload_candidates": candidate_payloads,
             "data_availability_route": "corresponding author on reasonable request",
+            "supplementary_files": [
+                {
+                    "role": role,
+                    "path": rel(path),
+                    "bytes": path.stat().st_size if path.exists() else None,
+                    "sha256": sha256(path) if path.exists() else None,
+                }
+                for role, path in SUPPLEMENTARY_FILES.items()
+            ],
         },
         "published_specification_present": package[
             "published_computational_specification"
         ],
         "missing_reproduction_inputs": package["missing_reproduction_inputs"],
         "checks": checks,
-        "what_changed": "The Ding numeric-input source search now has an official, hashed OA inventory and a scoped no-go instead of an open-ended access assumption.",
+        "what_changed": "The Ding numeric-input source search now verifies the complete official OA inventory and all three locally archived supplementary PDFs with role-specific hashes before applying the scoped no-go.",
         "verification": "The PMC OA API identity, complete S3 prefix, object metadata, full-text availability statement, published computational details, archived hashes, and holdout non-access are checked.",
         "controlling_blocker": "ding_pbte_author_data_or_independent_reproduction_package_missing",
         "next_action": "Prepare a source-specific author request for relaxed structure, force constants, ShengBTE inputs/outputs, and c_mu(T), or source-lock an independent open graphite phonon package and label it independent reproduction; do not infer C_src from normalized TTG data.",

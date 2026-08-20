@@ -6,6 +6,24 @@ description: "Research module for Thermodynamic Bridge within the Unity Equilibr
 
 # 0.13 Thermodynamic Bridge
 
+Current hardening result: an action-derived natural-unit Phi-to-thermal bridge and non-Landauer natural beta slope are CLOSED_FOR_LANE. Full Topic 13 remains blocked by the physical Phi/SI anchor, independent alpha_Phi_K, source-backed c_v or Ding C_src, EOS/transport/KMS/entropy, and dimensional TTG gates. The natural fixed-(mu,Phi) C_epsilon_T is not relabeled as source c_v.
+
+Current hardening result T13-092: finite-temperature condensate/normal thermodynamic split, branch-resolved static quasiparticle response, condensed stiffness boundary, and the normal-branch formal heat-flux/entropy balance are CLOSED_FOR_LANE. The static susceptibility is not Landau density or retarded Kubo, condensed dissipative transport remains open, and physical Phi/SI, alpha_Phi_K, Ding C_src, and Full Topic 13 remain blocked.
+
+Machine-readable lane artifact: docs/core/artifacts/t13_uet_o2_finite_temperature_two_fluid_response_audit.json.
+
+Current hardening result T13-093: the declared finite-cutoff continuum-resolution sequence is CLOSED_AS_NO_GO for continuum promotion under the unchanged `1e-2` controller because its maximum adjacent response change is `0.47541462972440046`. This is scoped to the current discretization; no extrapolated continuum or physical Kubo claim is allowed.
+
+Machine-readable boundary artifact: docs/core/artifacts/t13_uet_o2_continuum_limit_boundary_audit.json.
+
+Current hardening result T13-094: condensed dissipative transport identifiability is CLOSED_AS_NO_GO for the current static lane. Two positive-semidefinite entropy-production witnesses agree on the declared static state but give different responses under a nonzero probe, so no unique condensed dissipative matrix can be inferred without a relative-flow/collision kernel or retarded correlator.
+
+Machine-readable boundary artifact: docs/core/artifacts/t13_uet_o2_condensed_dissipative_transport_audit.json.
+
+Source-route repair: the permitted Ding 2022 figure-derived normalized comparator now regenerates as PASS while raw author PBTE/C_src remains blocked; it is not a thermal prediction or calibration.
+
+Machine-readable current status: docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/topic13_full_thermodynamic_bridge_core_ready_gate.json.
+
 <!--
 {
   "@context": "https://schema.org",

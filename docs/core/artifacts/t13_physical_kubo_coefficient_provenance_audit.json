@@ -1,7 +1,7 @@
 {
   "schema_version": "t13-physical-kubo-coefficient-provenance-audit-v1",
   "artifact": "t13_physical_kubo_coefficient_provenance_audit",
-  "generated_at": "2026-08-12",
+  "generated_at": "2026-08-15",
   "status": "PASS_KUBO_PROVENANCE_GATE_OPEN_PHYSICAL_COEFFICIENT",
   "major_result": {
     "major_result_id": "T13_PHYSICAL_KUBO_COEFFICIENT_PROVENANCE_GATE",

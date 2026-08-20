@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_research_room_wave1_integration_gate",
-  "generated_at": "2026-08-13",
+  "generated_at": "2026-08-20",
   "status": "PASS_WITH_BLOCKED_LANES",
   "claim_promotion": false,
   "brief": {
@@ -10,11 +10,11 @@
   },
   "contract": {
     "path": "docs/core/artifacts/uet_research_room_wave1_contract.json",
-    "sha256": "a47720e472f94250d0657a03bcd714b31ad97fee1231427aa23e724e532c3247"
+    "sha256": "7a7512c9c460843649681383a68ee987020e965c319e9616392c72613f0749e8"
   },
   "registry": {
     "path": "docs/core/artifacts/uet_equation_correspondence_registry.json",
-    "sha256": "62c81ddf9ca1b42ab00c1b6d4e5f690bb746c79980001b06e804e2e2431d37c3",
+    "sha256": "ae143f9bd06738ae777415b46d39752c8fbb4a96b17f31de94eac3e563a7be44",
     "required_wave1_entries_present": true,
     "missing_wave1_entries": []
   },
@@ -41,7 +41,7 @@
         {
           "path": "docs/core/artifacts/uet_equation_correspondence_registry.json",
           "present": true,
-          "sha256": "62c81ddf9ca1b42ab00c1b6d4e5f690bb746c79980001b06e804e2e2431d37c3",
+          "sha256": "ae143f9bd06738ae777415b46d39752c8fbb4a96b17f31de94eac3e563a7be44",
           "summary": {
             "status": "CENTRAL_REGISTRY_WITH_CANDIDATE_ADDENDA_BLOCKED",
             "generated_at": "2026-08-10",
@@ -99,7 +99,7 @@
         {
           "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_control.json",
           "present": true,
-          "sha256": "d4b16385daef64299bea3f542700ec8a8ebb42d01019f865e74f2551152ed59e",
+          "sha256": "509746deb1fc74ef81ff04cf5fdda91055a7e73dbb2b3b6a5de804c3f8786596",
           "summary": {
             "status": "SIMULATION_ONLY",
             "internal_gate_status": "FAIL",
@@ -136,7 +136,7 @@
         {
           "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/matter_space_thermal_observable_map_readiness.json",
           "present": true,
-          "sha256": "074e006bb61119c40a071b5a7ea0805706e97af95f1b4f3f4b52fcd2fb0d47dd",
+          "sha256": "f64d0398c42ebcb8a501eee7c975eec6922cad681129fbf1d2c5ce462f7a0f58",
           "summary": {
             "audit_status": "PASS_WITH_BLOCKED_DIMENSIONAL_AND_DATA_LANES",
             "mapping_status": "NORMALIZED_TTG_OPERATOR_DEFINED_DIMENSIONAL_UET_MAPPING_BLOCKED",
@@ -158,7 +158,7 @@
         {
           "path": "docs/core/artifacts/thermal_dimensional_calibration_contract.json",
           "present": true,
-          "sha256": "ee6304031384ead113e1592fd36c522b7bb0ad6bfe727124a3a1a1e9cb39ecbb",
+          "sha256": "2e4117e7ac400cb4de4877b5750c1f16013f35c824122b16eb414f83719214b1",
           "summary": {
             "audit_status": "PASS_WITH_BLOCKED_INDEPENDENT_CALIBRATION",
             "claim_status": "CONTRACT_DEFINED_CALIBRATION_OPEN",
@@ -249,7 +249,7 @@
         {
           "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_structure_factor_full_text_formula_readiness_gate.json",
           "present": true,
-          "sha256": "d4e0d056879533d11195ca0a06c64f83ecda751b8de224e1fa492d7ca01bc994",
+          "sha256": "f0ee3f2c3ca74d6175e026d6b84e05bead091dbe84a23db808d52386cf0022a2",
           "summary": {
             "status": "WARN"
           }
@@ -265,7 +265,7 @@
         {
           "path": "docs/topics/0.11_Phase_Transitions/Result/artifacts/0_11_conserved_order_spectral_finite_size_replication.json",
           "present": true,
-          "sha256": "1f31ae14800700cc9c8bb71ea6b54d2a2a4a0510e6cf851a774f8f2da9ef062c",
+          "sha256": "eec047cfc3767c22889722747fa875eea3942dbdefb5cc3dea62a3c1c32cdf6e",
           "summary": {
             "status": "WARN"
           }
@@ -350,7 +350,7 @@
         {
           "path": "docs/core/artifacts/topic_0_10_standard_comparator_formula_audit.json",
           "present": true,
-          "sha256": "f2e8aa807601805ff2b0547326f0f8dc471c0cf7caee70c41d21d9b17a092fe5",
+          "sha256": "c9decacf861805da9e2de31bd3e760486319e2ab67f9b1eea38e4e257c86ffaa",
           "summary": {
             "status": "PASS_WITH_INTERNAL_BENCHMARK_BOUNDARY",
             "benchmark_status": "FAIL"
@@ -387,7 +387,7 @@
     },
     "inbox_alignment": {
       "path": "docs/core/artifacts/inbox_research_alignment_drift_note.json",
-      "sha256": "483a1918c8e7113cc80c574a11d2938331fc6ebbd2bfd4d2ab4a456c0ebf7ab9",
+      "sha256": "adb50db63d06d07e429496d4355b8e43ea0f7cd12e507a73ad5973a6b20d19a1",
       "status": "BLOCKED_STALE_SOURCE_PATHS"
     },
     "topic_0_3_index": {

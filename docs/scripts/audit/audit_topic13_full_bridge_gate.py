@@ -17,10 +17,17 @@ ROOT = Path(__file__).resolve().parents[3]
 OUT = ROOT / "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/topic13_full_thermodynamic_bridge_core_ready_gate.json"
 
 
-LANE_KEY_BY_ID = {'T13_ALPHA_PHI_K_NORMALIZED_SCALE_NO_GO': 'alpha_phi_k_normalized_scale_no_go', 'T13_ALPHA_PHI_K_PAIRED_RECORD_SEARCH': 'alpha_phi_k_paired_record_search', 'T13_BASE_PHI_INDEPENDENT_CALIBRATION_REQUIREMENT': 'base_phi_independent_calibration_requirement', 'T13_BETA_SYMBOL_SEPARATION_NONCIRCULARITY_NO_GO': 'beta_symbol_separation_non_circularity_no_go', 'T13_BETA_ACTION_NORMALIZED_CORRESPONDENCE_NO_GO': 'beta_action_normalized_correspondence_no_go', 'T13_CAUSAL_BRANCH_SELECTION': 'causal_branch_selection', 'T13_CAUSAL_THERMAL_BRANCH_SELECTION': 'causal_branch_selection', 'T13_CAUSAL_FLUX_PHI_COUPLED_LANE': 'causal_flux_phi_coupled_lane', 'T13_CAUSAL_FLUX_TELEGRAPH_BRANCH': 'causal_flux_telegraph_branch', 'T13_COLLECTIVE_RESPONSE_EOS_STABILITY_CONTRACT': 'collective_response_eos_stability_contract', 'T13_COVARIANT_ACTION_SI_ANCHOR_ROUTE': 'covariant_action_si_anchor_route', 'T13_COVARIANT_FIELD_NORMALIZATION_IDENTIFIABILITY_NO_GO': 'covariant_field_normalization_identifiability_no_go', 'T13_COVARIANT_TRANSPORT_IMPLEMENTATION_BOUNDARY': 'covariant_transport_implementation_boundary', 'T13_CP_CV_CORRECTION_CONTRACT': 'cp_cv_correction_contract', 'T13_ALPHA_PHI_K_CONDITIONAL_DERIVATION': 'alpha_phi_k_conditional_derivation', 'T13_DING_PBTE_AUTHOR_REQUEST_PACKAGE': 'ding_pbte_author_request_package', 'T13_DING_FIG1D_NORMALIZED_SOURCE_LANE': 'ding_fig1d_normalized_source_lane', 'T13_DING_C_SRC_INDEPENDENT_REPRODUCTION_BOUNDARY': 'ding_c_src_independent_reproduction_boundary', 'T13_DING_PUBLIC_SUPPLEMENTARY_PAYLOAD_BOUNDARY': 'ding_public_supplementary_payload_boundary', 'T13_DING_PBTE_ENERGY_TEMPERATURE_MAPPING': 'ding_pbte_energy_temperature_mapping', 'T13_DING_PBTE_OA_NUMERIC_INPUT_NO_GO': 'ding_pbte_oa_numeric_input_no_go', 'T13_GATECH_STANDARD_TRANSPORT_COMPARATOR': 'standard_graphite_transport_comparator', 'T13_GATECH_VOLUMETRIC_CP_INDEPENDENCE_NO_GO': 'gatech_volumetric_cp_independence_no_go', 'T13_MP48_INDEPENDENT_GRAPHITE_CV_REPRODUCTION': 'mp48_independent_graphite_cv_reproduction', 'T13_MP48_SPECTRAL_C_SRC_REPRODUCTION': 'mp48_spectral_csrc_reproduction', 'T13_MP48_FORCE_CONSTANT_HARMONIC_RECONSTRUCTION': 'mp48_force_constant_harmonic_reconstruction', 'T13_MP48_FORCE_CONSTANT_C_SRC_MESH_CONVERGENCE': 'mp48_force_constant_csrc_mesh_convergence', 'T13_HUANG_2023_SUPPLEMENTARY_PAYLOAD_BOUNDARY': 'huang_2023_supplementary_payload_boundary', 'T13_NIST_AXM5Q1_DENSITY_SOURCE_BOUNDARY': 'nist_axm5q1_density_source_boundary', 'T13_NIST_GRAPHITE_ALPHA_V_SOURCE_BOUNDARY': 'nist_graphite_alpha_v_source_boundary', 'T13_GRAPHITE_ELASTIC_BULK_MODULUS_SOURCE': 'graphite_elastic_bulk_modulus_source', 'T13_GRAPHITE_ISOTHERMAL_KT_SOURCE': 'graphite_isothermal_kt_source', 'T13_TPG_ANISOTROPIC_ALPHA_V_COMPARATOR': 'tpg_anisotropic_alpha_v_comparator', 'T13_NATURAL_GRAPHITE_NELSON_RILEY_ALPHA_V_COMPARATOR': 'natural_graphite_nelson_riley_alpha_v_comparator', 'T13_BIPM_SPECIFIC_HEAT_CP_COMPARATOR': 'bipm_specific_heat_cp_comparator', 'T13_IAEA_GRAPHITE_TABLE_CV_COMPARATOR': 'iaea_graphite_table_cv_comparator', 'T13_IAEA_CV_UNCERTAINTY_BOUNDARY': 'iaea_cv_uncertainty_boundary', 'T13_DING_MATERIAL_REGIME_BOUNDARY': 'ding_material_regime_boundary', 'T13_MP48_PHI_E_DIMENSIONAL_ANCHOR_COMPARATOR': 'mp48_phi_e_dimensional_anchor_comparator', 'T13_PHYSICAL_KUBO_COEFFICIENT_PROVENANCE_GATE': 'physical_kubo_coefficient_provenance', 'T13_PHI_E_REFERENCE_NORMALIZATION': 'phi_e_reference_normalization', 'T13_PHI_E_TTG_BRIDGE_CONDITIONAL': 'phi_e_ttg_bridge_conditional', 'T13_PHI_ENERGY_ANCHOR_IDENTIFIABILITY_NO_GO': 'phi_energy_anchor_identifiability_no_go', 'T13_SK_KMS_ENTROPY_INTERFACE_CONTRACT': 'sk_kms_entropy_interface_contract', 'T13_SOURCE_CP_95CI_ANCHOR': 'source_cp_95ci_anchor', 'T13_STANDARD_O2_FINITE_TEMPERATURE_NORMAL_COMPARATOR': 'standard_o2_finite_temperature_normal_comparator', 'T13_THERMAL_RESPONSE_BETA_CONTRACT': 'thermal_response_beta_contract', 'T13_FORMAL_NONCIRCULAR_BRIDGE_BOUNDARY': 'formal_non_circular_bridge_boundary', 'T13_UET_O2_CONDENSATE_FLUCTUATION_SPECTRUM': 'uet_o2_condensate_fluctuation_spectrum', 'T13_UET_O2_CONDENSATE_GAUSSIAN_FINITE_T_LANE': 'uet_o2_condensate_gaussian_finite_t_lane','T13_UET_O2_GAUSSIAN_OFFSHELL_BACKGROUND_BOUNDARY': 'uet_o2_gaussian_offshell_background_boundary','T13_TRANSPORT_COEFFICIENT_IDENTIFIABILITY_NO_GO': 'transport_coefficient_identifiability_no_go','T13_UET_O2_NORMAL_RESPONSE_CURVATURE_LANE': 'uet_o2_normal_response_curvature_lane','T13_UET_O2_RENORMALIZED_NORMAL_ONE_LOOP_LANE': 'uet_o2_renormalized_normal_one_loop_lane','T13_UET_O2_THERMAL_STABILITY_BOUNDARY': 'uet_o2_thermal_stability_boundary','T13_UET_O2_GAUSSIAN_THERMAL_STATIONARITY_NO_GO': 'uet_o2_gaussian_thermal_stationarity_no_go',       'T13_UET_O2_CONDENSATE_GOLDSTONE_IDEAL_LANE': 'uet_o2_condensate_goldstone_ideal_lane', 'T13_UET_O2_ONE_LOOP_CONVERGENCE': 'uet_o2_one_loop_convergence', 'T13_UET_O2_ONE_LOOP_NORMAL_BRANCH': 'uet_o2_one_loop_normal_branch', 'T13_UET_O2_ONE_LOOP_THERMAL_UV_BOUNDARY': 'uet_o2_one_loop_uv_boundary', 'T13_UET_O2_NORMAL_THERMODYNAMIC_CONSISTENCY': 'uet_o2_normal_thermodynamic_consistency', 'T13_BERUT_SOURCE_PACKAGE_AVAILABILITY_BOUNDARY': 'berut_source_package_availability_boundary', 'T13_BERUT_FIGURE3_REMOTE_BINARY_IDENTITY': 'berut_figure3_remote_binary_identity', 'T13_OXFORD_TGS_COMPARATOR_PROVENANCE': 'oxford_tgs_comparator_provenance', 'T13_PHONIX_MP47_GRAPHITE_HARMONIC_COMPARATOR': 'phonix_mp47_graphite_harmonic_comparator', 'T13_OXFORD_TGS_NUMERIC_ROWS_COMPARATOR': 'oxford_tgs_numeric_rows_comparator', 'T13_DESORBO_1955_CEYLON_GRAPHITE_CP_COMPARATOR': 'desorbo_1955_ceylon_graphite_cp_comparator', 'T13_UET_O2_FINITE_T_QUASIPARTICLE_EOS_LANE': 'uet_o2_finite_t_quasiparticle_eos_lane', 'T13_UET_O2_EQUILIBRIUM_KMS_LANE': 'uet_o2_equilibrium_kms_lane', 'T13_GRAPHITE_GREEN_KUBO_SOURCE_BOUNDARY': 'graphite_green_kubo_source_boundary', 'T13_UET_O2_OPEN_SYSTEM_SK_KMS_ENTROPY_LANE': 'uet_o2_open_system_sk_kms_entropy_lane', 'T13_INDEPENDENT_C_SRC_ACCEPTANCE_CONTRACT': 'independent_csrc_acceptance_contract', 'T13_CALORINE_ZENODO_NEP_BTE_CANDIDATE_BOUNDARY': 'calorine_zenodo_nep_bte_candidate_boundary', 'T13_NIMS_GRAPHITE_LTC_ROUTE_NO_GO': 'nims_graphite_ltc_route_no_go'}
+LANE_KEY_BY_ID = {'T13_ALPHA_PHI_K_NORMALIZED_SCALE_NO_GO': 'alpha_phi_k_normalized_scale_no_go', 'T13_ALPHA_PHI_K_PAIRED_RECORD_SEARCH': 'alpha_phi_k_paired_record_search', 'T13_BASE_PHI_INDEPENDENT_CALIBRATION_REQUIREMENT': 'base_phi_independent_calibration_requirement', 'T13_BETA_SYMBOL_SEPARATION_NONCIRCULARITY_NO_GO': 'beta_symbol_separation_non_circularity_no_go', 'T13_BETA_ACTION_NORMALIZED_CORRESPONDENCE_NO_GO': 'beta_action_normalized_correspondence_no_go', 'T13_CAUSAL_BRANCH_SELECTION': 'causal_branch_selection', 'T13_CAUSAL_THERMAL_BRANCH_SELECTION': 'causal_branch_selection', 'T13_CAUSAL_FLUX_PHI_COUPLED_LANE': 'causal_flux_phi_coupled_lane', 'T13_CAUSAL_FLUX_TELEGRAPH_BRANCH': 'causal_flux_telegraph_branch', 'T13_COLLECTIVE_RESPONSE_EOS_STABILITY_CONTRACT': 'collective_response_eos_stability_contract', 'T13_COVARIANT_ACTION_SI_ANCHOR_ROUTE': 'covariant_action_si_anchor_route', 'T13_COVARIANT_FIELD_NORMALIZATION_IDENTIFIABILITY_NO_GO': 'covariant_field_normalization_identifiability_no_go', 'T13_COVARIANT_TRANSPORT_IMPLEMENTATION_BOUNDARY': 'covariant_transport_implementation_boundary', 'T13_CP_CV_CORRECTION_CONTRACT': 'cp_cv_correction_contract', 'T13_ALPHA_PHI_K_CONDITIONAL_DERIVATION': 'alpha_phi_k_conditional_derivation', 'T13_DING_PBTE_AUTHOR_REQUEST_PACKAGE': 'ding_pbte_author_request_package', 'T13_DING_FIG1D_NORMALIZED_SOURCE_LANE': 'ding_fig1d_normalized_source_lane', 'T13_DING_C_SRC_INDEPENDENT_REPRODUCTION_BOUNDARY': 'ding_c_src_independent_reproduction_boundary', 'T13_DING_PUBLIC_SUPPLEMENTARY_PAYLOAD_BOUNDARY': 'ding_public_supplementary_payload_boundary', 'T13_DING_PBTE_ENERGY_TEMPERATURE_MAPPING': 'ding_pbte_energy_temperature_mapping', 'T13_DING_PBTE_OA_NUMERIC_INPUT_NO_GO': 'ding_pbte_oa_numeric_input_no_go', 'T13_GATECH_STANDARD_TRANSPORT_COMPARATOR': 'standard_graphite_transport_comparator', 'T13_GATECH_VOLUMETRIC_CP_INDEPENDENCE_NO_GO': 'gatech_volumetric_cp_independence_no_go', 'T13_MP48_INDEPENDENT_GRAPHITE_CV_REPRODUCTION': 'mp48_independent_graphite_cv_reproduction', 'T13_MP48_SPECTRAL_C_SRC_REPRODUCTION': 'mp48_spectral_csrc_reproduction', 'T13_MP48_FORCE_CONSTANT_HARMONIC_RECONSTRUCTION': 'mp48_force_constant_harmonic_reconstruction', 'T13_MP48_FORCE_CONSTANT_C_SRC_MESH_CONVERGENCE': 'mp48_force_constant_csrc_mesh_convergence', 'T13_HUANG_2023_SUPPLEMENTARY_PAYLOAD_BOUNDARY': 'huang_2023_supplementary_payload_boundary', 'T13_NIST_AXM5Q1_DENSITY_SOURCE_BOUNDARY': 'nist_axm5q1_density_source_boundary', 'T13_NIST_GRAPHITE_ALPHA_V_SOURCE_BOUNDARY': 'nist_graphite_alpha_v_source_boundary', 'T13_GRAPHITE_ELASTIC_BULK_MODULUS_SOURCE': 'graphite_elastic_bulk_modulus_source', 'T13_GRAPHITE_ISOTHERMAL_KT_SOURCE': 'graphite_isothermal_kt_source', 'T13_TPG_ANISOTROPIC_ALPHA_V_COMPARATOR': 'tpg_anisotropic_alpha_v_comparator', 'T13_NATURAL_GRAPHITE_NELSON_RILEY_ALPHA_V_COMPARATOR': 'natural_graphite_nelson_riley_alpha_v_comparator', 'T13_BIPM_SPECIFIC_HEAT_CP_COMPARATOR': 'bipm_specific_heat_cp_comparator', 'T13_IAEA_GRAPHITE_TABLE_CV_COMPARATOR': 'iaea_graphite_table_cv_comparator', 'T13_IAEA_CV_UNCERTAINTY_BOUNDARY': 'iaea_cv_uncertainty_boundary', 'T13_DING_MATERIAL_REGIME_BOUNDARY': 'ding_material_regime_boundary', 'T13_MP48_PHI_E_DIMENSIONAL_ANCHOR_COMPARATOR': 'mp48_phi_e_dimensional_anchor_comparator', 'T13_PHYSICAL_KUBO_COEFFICIENT_PROVENANCE_GATE': 'physical_kubo_coefficient_provenance', 'T13_PHI_E_REFERENCE_NORMALIZATION': 'phi_e_reference_normalization', 'T13_PHI_E_TTG_BRIDGE_CONDITIONAL': 'phi_e_ttg_bridge_conditional', 'T13_PHI_ENERGY_ANCHOR_IDENTIFIABILITY_NO_GO': 'phi_energy_anchor_identifiability_no_go', 'T13_SK_KMS_ENTROPY_INTERFACE_CONTRACT': 'sk_kms_entropy_interface_contract', 'T13_SOURCE_CP_95CI_ANCHOR': 'source_cp_95ci_anchor', 'T13_STANDARD_O2_FINITE_TEMPERATURE_NORMAL_COMPARATOR': 'standard_o2_finite_temperature_normal_comparator', 'T13_THERMAL_RESPONSE_BETA_CONTRACT': 'thermal_response_beta_contract', 'T13_FORMAL_NONCIRCULAR_BRIDGE_BOUNDARY': 'formal_non_circular_bridge_boundary', 'T13_UET_O2_CONDENSATE_FLUCTUATION_SPECTRUM': 'uet_o2_condensate_fluctuation_spectrum', 'T13_UET_O2_CONDENSATE_GAUSSIAN_FINITE_T_LANE': 'uet_o2_condensate_gaussian_finite_t_lane','T13_UET_O2_GAUSSIAN_OFFSHELL_BACKGROUND_BOUNDARY': 'uet_o2_gaussian_offshell_background_boundary','T13_TRANSPORT_COEFFICIENT_IDENTIFIABILITY_NO_GO': 'transport_coefficient_identifiability_no_go','T13_UET_O2_NORMAL_RESPONSE_CURVATURE_LANE': 'uet_o2_normal_response_curvature_lane','T13_UET_O2_RENORMALIZED_NORMAL_ONE_LOOP_LANE': 'uet_o2_renormalized_normal_one_loop_lane','T13_UET_O2_THERMAL_STABILITY_BOUNDARY': 'uet_o2_thermal_stability_boundary','T13_UET_O2_GAUSSIAN_THERMAL_STATIONARITY_NO_GO': 'uet_o2_gaussian_thermal_stationarity_no_go',       'T13_UET_O2_CONDENSATE_GOLDSTONE_IDEAL_LANE': 'uet_o2_condensate_goldstone_ideal_lane', 'T13_UET_O2_ONE_LOOP_CONVERGENCE': 'uet_o2_one_loop_convergence', 'T13_UET_O2_ONE_LOOP_NORMAL_BRANCH': 'uet_o2_one_loop_normal_branch', 'T13_UET_O2_ONE_LOOP_THERMAL_UV_BOUNDARY': 'uet_o2_one_loop_uv_boundary', 'T13_UET_O2_NORMAL_THERMODYNAMIC_CONSISTENCY': 'uet_o2_normal_thermodynamic_consistency', 'T13_BERUT_SOURCE_PACKAGE_AVAILABILITY_BOUNDARY': 'berut_source_package_availability_boundary', 'T13_BERUT_FIGURE3_REMOTE_BINARY_IDENTITY': 'berut_figure3_remote_binary_identity', 'T13_BERUT_FIGURE3_DIGITIZATION': 'berut_figure3_digitization', 'T13_OXFORD_TGS_COMPARATOR_PROVENANCE': 'oxford_tgs_comparator_provenance', 'T13_PHONIX_MP47_GRAPHITE_HARMONIC_COMPARATOR': 'phonix_mp47_graphite_harmonic_comparator', 'T13_OXFORD_TGS_NUMERIC_ROWS_COMPARATOR': 'oxford_tgs_numeric_rows_comparator', 'T13_DESORBO_1955_CEYLON_GRAPHITE_CP_COMPARATOR': 'desorbo_1955_ceylon_graphite_cp_comparator', 'T13_UET_O2_FINITE_T_QUASIPARTICLE_EOS_LANE': 'uet_o2_finite_t_quasiparticle_eos_lane', 'T13_UET_O2_EQUILIBRIUM_KMS_LANE': 'uet_o2_equilibrium_kms_lane', 'T13_GRAPHITE_GREEN_KUBO_SOURCE_BOUNDARY': 'graphite_green_kubo_source_boundary', 'T13_UET_O2_OPEN_SYSTEM_SK_KMS_ENTROPY_LANE': 'uet_o2_open_system_sk_kms_entropy_lane', 'T13_INDEPENDENT_C_SRC_ACCEPTANCE_CONTRACT': 'independent_csrc_acceptance_contract', 'T13_CALORINE_ZENODO_NEP_BTE_CANDIDATE_BOUNDARY': 'calorine_zenodo_nep_bte_candidate_boundary', 'T13_NIMS_GRAPHITE_LTC_ROUTE_NO_GO': 'nims_graphite_ltc_route_no_go'}
 
 LANE_KEY_BY_ID["T13_DING_2017_ACS_SUPPLEMENTARY_PAYLOAD_BOUNDARY"] = "ding_2017_acs_supplementary_payload_boundary"
 LANE_KEY_BY_ID["T13_PHI_SI_ANCHOR_PUBLIC_SOURCE_BOUNDARY"] = "phi_si_anchor_public_source_boundary"
+LANE_KEY_BY_ID["T13_UET_O2_MICROSCOPIC_FINITE_CUTOFF_KUBO_MATCH"] = "uet_o2_microscopic_finite_cutoff_kubo_match"
+LANE_KEY_BY_ID["T13_UET_O2_HEAT_CURRENT_KUBO_MATCH"] = "uet_o2_heat_current_kubo_match"
+LANE_KEY_BY_ID["T13_UET_O2_HEAT_CURRENT_KUBO_CONTINUUM_BOUNDARY"] = "uet_o2_heat_current_kubo_continuum_boundary"
+LANE_KEY_BY_ID["T13_UET_O2_CONDENSED_RELATIVE_FLOW_COLLISION_KERNEL_LANE"] = "uet_o2_condensed_relative_flow_collision_kernel_lane"
+LANE_KEY_BY_ID["T13_UET_O2_CONTINUUM_RELATIVE_FLOW_KUBO_LANE"] = "uet_o2_continuum_relative_flow_kubo_lane"
+LANE_KEY_BY_ID["T13_UET_O2_CONDENSED_LOOP_RENORMALIZED_CONTACT_VERTEX_LANE"] = "uet_o2_condensed_loop_renormalized_contact_vertex_lane"
+LANE_KEY_BY_ID["T13_UET_O2_CONDENSED_RELATIVE_FLOW_KUBO_ADMISSION_LANE"] = "uet_o2_condensed_relative_flow_kubo_admission_lane"
 LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_SELF_ENERGY_HARTREE_LANE"] = "uet_o2_finite_t_self_energy_hartree_lane"
 LANE_KEY_BY_ID["T13_UET_O2_HARTREE_EQUILIBRIUM_THERMODYNAMIC_LANE"] = "uet_o2_hartree_equilibrium_thermodynamic_lane"
 LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_SCHEME_IDENTIFIABILITY_NO_GO"] = "uet_o2_finite_t_scheme_identifiability_no_go"
@@ -46,8 +53,12 @@ LANE_KEY_BY_ID["T13_UET_O2_CHARGE_CONSERVING_LADDER_RESPONSE_LANE"] = "uet_o2_ch
 LANE_KEY_BY_ID["T13_UET_O2_MOMENTUM_LADDER_SK_KMS_INTERFACE_LANE"] = "uet_o2_momentum_ladder_sk_kms_interface_lane"
 LANE_KEY_BY_ID["T13_UET_O2_ENERGY_MOMENTUM_CONSERVING_BS_INTERFACE_LANE"] = "uet_o2_energy_momentum_conserving_bs_interface_lane"
 LANE_KEY_BY_ID["T13_UET_O2_EXACT_KINEMATIC_2TO2_TRANSITION_KERNEL_LANE"] = "uet_o2_exact_kinematic_2to2_transition_kernel_lane"
+LANE_KEY_BY_ID["T13_UET_O2_CONTACT_SK_TRANSITION_VERTEX_MATCH_LANE"] = "uet_o2_contact_sk_transition_vertex_match_lane"
+LANE_KEY_BY_ID["T13_UET_O2_CHARGED_CURRENT_CORRELATOR_LANE"] = "uet_o2_charged_current_correlator_lane"
+LANE_KEY_BY_ID["T13_UET_O2_TREE_LEVEL_CHARGED_WARD_VERTEX_LANE"] = "uet_o2_tree_level_charged_ward_vertex_lane"
 LANE_KEY_BY_ID["T13_UET_O2_CONSERVATIVE_CONTINUUM_COLLOCATION_LANE"] = "uet_o2_conservative_continuum_collocation_lane"
 LANE_KEY_BY_ID["T13_UET_O2_TREE_LEVEL_BS_SK_MATCH_INTERFACE_LANE"] = "uet_o2_tree_level_bs_sk_match_interface_lane"
+LANE_KEY_BY_ID["T13_UET_O2_CONTINUUM_LIMIT_CURRENT_SCHEME_NO_GO"] = "continuum_limit_current_scheme_no_go"
 LANE_KEY_BY_ID["T13_UET_O2_ONE_LOOP_VERTEX_UV_BOUNDARY"] = "uet_o2_one_loop_vertex_uv_boundary"
 LANE_KEY_BY_ID["T13_UET_O2_RENORMALIZED_VERTEX_SCHEME"] = "uet_o2_renormalized_vertex_scheme"
 LANE_KEY_BY_ID["T13_UET_O2_FINITE_DENSITY_CHARGED_VERTEX_SCHEME"] = "uet_o2_finite_density_charged_vertex_scheme"
@@ -58,11 +69,37 @@ LANE_KEY_BY_ID["T13_UET_O2_TWO_LOOP_SUNSET_CUT_LANE"] = "uet_o2_two_loop_sunset_
 LANE_KEY_BY_ID["T13_UET_O2_FINITE_CHANNEL_ENTROPY_BALANCE_LANE"] = "uet_o2_finite_channel_entropy_balance_lane"
 LANE_KEY_BY_ID["T13_UET_O2_COLLISIONLESS_KUBO_NO_GO"] = "uet_o2_collisionless_kubo_no_go"
 LANE_KEY_BY_ID["T13_UET_O2_FORMAL_TWO_SECTOR_THERMODYNAMIC_LANE"] = "uet_o2_formal_two_sector_thermodynamic_lane"
+LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_TWO_FLUID_STATIC_RESPONSE_LANE"] = "uet_o2_finite_t_two_fluid_static_response_lane"
+LANE_KEY_BY_ID["T13_UET_O2_THERMODYNAMIC_NORMAL_COMPONENT_LANE"] = "uet_o2_thermodynamic_normal_component_lane"
+LANE_KEY_BY_ID["T13_UET_O2_CONDENSED_DISSIPATIVE_TRANSPORT_IDENTIFIABILITY_NO_GO"] = "condensed_dissipative_transport_identifiability_no_go"
+LANE_KEY_BY_ID["T13_UET_O2_CONDENSED_RETARDED_DISSIPATION_NO_GO"] = "uet_o2_condensed_retarded_dissipation_no_go"
 def rel(path: Path) -> str:
     return path.relative_to(ROOT).as_posix()
 LANE_KEY_BY_ID["T13_UET_O2_CONTINUUM_SUNSET_CUT_LANE"] = "uet_o2_continuum_sunset_cut_lane"
+LANE_KEY_BY_ID["T13_UET_O2_SUBTRACTED_SUNSET_DISPERSION_INTERFACE_LANE"] = "uet_o2_subtracted_sunset_dispersion_interface_lane"
+LANE_KEY_BY_ID["T13_UET_O2_ACTION_NORMALIZED_SUNSET_SPECTRAL_INTERFACE_LANE"] = "uet_o2_action_normalized_sunset_spectral_interface_lane"
+LANE_KEY_BY_ID["T13_UET_O2_ACTION_MATCHED_ZERO_ETA_SUNSET_SUBTRACTION_INTERFACE_LANE"] = "uet_o2_action_matched_zero_eta_sunset_subtraction_interface_lane"
+LANE_KEY_BY_ID["T13_UET_O2_ACTION_1PI_SUNSET_TENSOR_INTERFACE_LANE"] = "uet_o2_action_1pi_sunset_tensor_interface_lane"
+LANE_KEY_BY_ID["T13_UET_O2_EUCLIDEAN_1PI_SUNSET_REGULATED_SUBTRACTION_LANE"] = "uet_o2_euclidean_1pi_sunset_regulated_subtraction_lane"
+LANE_KEY_BY_ID["T13_UET_O2_VACUUM_RETARDED_SUNSET_DISCONTINUITY_LANE"] = "uet_o2_vacuum_retarded_sunset_discontinuity_lane"
+LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_THREE_BODY_SUNSET_SK_KMS_LANE"] = "uet_o2_finite_t_three_body_sunset_sk_kms_lane"
 
+LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_SCATTERING_SUNSET_SK_KMS_LANE"] = "uet_o2_finite_t_scattering_sunset_sk_kms_lane"
 
+LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_DECLARED_FULL_SUNSET_SK_KMS_LANE"] = "uet_o2_finite_t_declared_full_sunset_sk_kms_lane"
+LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_OFFSHELL_1PI_FORMAL_LANE"] = "uet_o2_finite_t_offshell_1pi_formal_lane"
+
+LANE_KEY_BY_ID["T13_UET_O2_ON_SHELL_SUNSET_COLLISION_WIDTH_LANE"] = "uet_o2_on_shell_sunset_collision_width_lane"
+
+LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_SUNSET_VACUUM_MATCH_LANE"] = "uet_o2_finite_t_sunset_vacuum_match_lane"
+
+LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_SUNSET_RENORMALIZATION_IDENTIFIABILITY_NO_GO"] = "uet_o2_finite_t_sunset_renormalization_identifiability_no_go"
+
+LANE_KEY_BY_ID["T13_UET_O2_PHYSICAL_RENORMALIZATION_CONDITION_CONTRACT"] = "uet_o2_physical_renormalization_condition_contract"
+LANE_KEY_BY_ID["T13_UET_O2_COVARIANT_ENTROPY_HEAT_FLUX_BALANCE_LANE"] = "uet_o2_covariant_entropy_heat_flux_balance_lane"
+LANE_KEY_BY_ID["T13_UET_O2_ACTION_THERMAL_STIFFNESS_BETA_LANE"] = "uet_o2_action_thermal_stiffness_beta_lane"
+LANE_KEY_BY_ID["T13_UET_O2_ACTION_NATURAL_PHI_THERMAL_BRIDGE_LANE"] = "uet_o2_action_natural_phi_thermal_bridge_lane"
+LANE_KEY_BY_ID["T13_TRANSPORT_KMS_ENTROPY_STATUS_BOUNDARY"] = "transport_kms_entropy_status_boundary"
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -99,6 +136,27 @@ def main() -> int:
     transport_path, transport = load("docs/core/artifacts/covariant_superfluid_transport_contract.json")
     transport_verification_path, transport_verification = load(
         "docs/core/artifacts/covariant_superfluid_transport_verification.json"
+    )
+    entropy_heat_flux_path, entropy_heat_flux = load(
+        "docs/core/artifacts/t13_uet_o2_covariant_entropy_heat_flux_balance_audit.json"
+    )
+    on_shell_sunset_width_path, on_shell_sunset_width = load(
+        "docs/core/artifacts/t13_uet_o2_on_shell_sunset_width_audit.json"
+    )
+    contact_sk_transition_path, contact_sk_transition = load(
+        "docs/core/artifacts/t13_uet_o2_contact_sk_transition_vertex_match_audit.json"
+    )
+    charged_current_correlator_path, charged_current_correlator = load(
+        "docs/core/artifacts/t13_uet_o2_charged_current_correlator_audit.json"
+    )
+    tree_level_charged_ward_path, tree_level_charged_ward = load(
+        "docs/core/artifacts/t13_uet_o2_tree_level_charged_ward_vertex_audit.json"
+    )
+    action_beta_path, action_beta = load(
+        "docs/core/artifacts/t13_uet_o2_action_thermal_stiffness_beta_audit.json"
+    )
+    natural_bridge_path, natural_bridge = load(
+        "docs/core/artifacts/t13_uet_o2_action_thermal_observable_bridge_audit.json"
     )
     eos_path, eos = load("docs/core/artifacts/o2_finite_density_eos_verification.json")
     causal_path, causal = load("docs/core/artifacts/matter_space_causal_cone_compatibility.json")
@@ -287,6 +345,13 @@ def main() -> int:
     # accepted independent reproduction package.
     source_ready = raw_author_source_ready or independent_reproduction_ready
     alpha_ready = alpha_status in {"DERIVED", "EXTERNAL_INPUT"}
+    action_natural_bridge_pass = (
+        natural_bridge.get("status")
+        == "PASS_ACTION_DERIVED_NATURAL_PHI_THERMAL_BRIDGE_LANE"
+        and natural_bridge.get("major_result", {}).get("closure_level")
+        == "CLOSED_FOR_LANE"
+    )
+    # A natural-unit lane closure is not physical bridge closure.
     bridge_derived = constraint_gates.get("uet_bridge_derivation_gate", {}).get("status") == "PASS"
     eos_transport_entropy_ready = (
         constraint_gates.get("core_eos_transport_entropy_gate", {}).get("status") == "PASS"
@@ -358,8 +423,14 @@ def main() -> int:
             # The named lane may close without promoting the original
             # full-candidate causal gate.
             "status": "PASS" if full_candidate_pass else "BLOCKED",
+            "status_role": "full_candidate_readiness_gate",
             "baseline_status": "PASS" if full_candidate_pass else "BLOCKED",
+            "baseline_controlling_blocker": (
+                None if full_candidate_pass else "original_conserved_c_gradient_baseline_blocked"
+            ),
             "lane_status": "PASS" if causal_lane_pass else "BLOCKED",
+            "lane_status_role": "scoped_named_branch_lane",
+            "lane_closure_level": "CLOSED_FOR_LANE" if causal_lane_pass else "OPEN",
             "structural_question_closure": (
                 "CLOSED_AS_NO_GO" if causal_lane_pass else "OPEN"
             ),
@@ -376,6 +447,8 @@ def main() -> int:
             "named_coupled_branch_closure_level": coupled.get("major_result", {}).get("closure_level", "OPEN"),
             "no_go_scope": no_go.get("proof_scope"),
             "no_go_artifact": {"path": rel(no_go_path), "sha256": sha256(no_go_path)},
+            "baseline_replaced": False,
+            "full_core_unlock": False,
             "controlling_blocker": "original_conserved_c_gradient_baseline_blocked" if causal_lane_pass else "formal_conserved_C_no_go_or_explicit_regularization_missing",
         },
         "source_package": {
@@ -412,16 +485,22 @@ def main() -> int:
             "controlling_blocker": "alpha_Phi_K_independent_calibration_missing" if not alpha_ready else None,
         },
         "non_circular_bridge": {
-            # Formal boundary closure does not imply physical bridge closure.
+            # The action-derived natural map closes the formal bridge lane.
+            # Its SI/Phi normalization remains a separate physical gate.
             "status": "PASS" if bridge_derived else "BLOCKED",
             "constraint_gate_status": constraint_gates.get("uet_bridge_derivation_gate", {}).get("status"),
             "landauer_non_derivation_gate": constraint_gates.get("landauer_coefficient_non_derivation_gate", {}).get("status"),
             "formal_boundary_status": discovered_lane_integrations.get("formal_non_circular_bridge_boundary", {}).get("status", "OPEN"),
             "formal_boundary_closure_level": discovered_lane_integrations.get("formal_non_circular_bridge_boundary", {}).get("closure_level", "OPEN"),
             "formal_boundary_audit": discovered_lane_integrations.get("formal_non_circular_bridge_boundary", {}).get("audit"),
-            "physical_derivation_status": "PASS" if bridge_derived else "BLOCKED",
-            "physical_derivation_controlling_blocker": "non_circular_uet_bridge_and_beta_derivation_missing" if not bridge_derived else None,
-            "controlling_blocker": "non_circular_uet_bridge_and_beta_derivation_missing" if not bridge_derived else None,
+            "action_natural_bridge_status": natural_bridge.get("status"),
+            "action_natural_bridge_closure_level": natural_bridge.get("major_result", {}).get("closure_level"),
+            "action_natural_bridge_audit": {"path": rel(natural_bridge_path), "sha256": sha256(natural_bridge_path)},
+            "natural_action_derivation_status": "PASS" if action_natural_bridge_pass else "BLOCKED",
+            "physical_dimensional_bridge_status": "BLOCKED_PHI_SI_ANCHOR_OR_ALPHA_OPEN",
+            "physical_derivation_status": "PASS_NATURAL_UNIT_ONLY" if action_natural_bridge_pass else "BLOCKED",
+            "physical_derivation_controlling_blocker": None if action_natural_bridge_pass else "non_circular_uet_bridge_and_beta_derivation_missing",
+            "controlling_blocker": None if bridge_derived else "non_circular_uet_bridge_and_beta_derivation_missing",
         },
         "eos_transport_kms_entropy": {
             "status": "PASS" if eos_transport_entropy_ready else "BLOCKED",
@@ -472,6 +551,8 @@ def main() -> int:
             and causal_lane_pass
         )
     ]
+    if transport_verification.get("physical_coefficient_evidence") in {"BLOCKED_NOT_PROVIDED", "OPEN"}:
+        blockers.append("physical_Kubo_coefficient_record_missing")
     primary_blocker = (
         "dimensional_phi_energy_anchor_or_independent_alpha_calibration_missing"
         if not alpha_ready
@@ -530,6 +611,12 @@ def main() -> int:
             evidence(rel(calibration_path), calibration, {"audit_status": calibration.get("audit_status"), "claim_status": calibration.get("claim_status")}),
             evidence(rel(transport_path), transport, {"status": transport.get("status"), "next_controller": transport.get("next_controller")}),
             evidence(rel(transport_verification_path), transport_verification, {"physical_coefficient_evidence": transport_verification.get("physical_coefficient_evidence"), "full_SK_KMS_completion": transport_verification.get("full_SK_KMS_completion")}),
+            evidence(rel(entropy_heat_flux_path), entropy_heat_flux, {"status": entropy_heat_flux.get("status"), "closure_level": entropy_heat_flux.get("major_result", {}).get("closure_level"), "kappa_natural": entropy_heat_flux.get("state", {}).get("kappa_natural"), "full_core_unlock": entropy_heat_flux.get("full_core_unlock")}),
+            evidence(rel(on_shell_sunset_width_path), on_shell_sunset_width, {"status": on_shell_sunset_width.get("status"), "closure_level": on_shell_sunset_width.get("major_result", {}).get("closure_level"), "combined_collision_width": on_shell_sunset_width.get("state", {}).get("reference", {}).get("combined_collision_width"), "cut_convergence_bound": on_shell_sunset_width.get("state", {}).get("reference", {}).get("cut_convergence_bound")}),
+            evidence(rel(contact_sk_transition_path), contact_sk_transition, {"status": contact_sk_transition.get("status"), "closure_level": contact_sk_transition.get("major_result", {}).get("closure_level"), "cross_section_match_residual": contact_sk_transition.get("state", {}).get("reference", {}).get("cross_section_match_residual"), "max_channel_detailed_balance_residual": contact_sk_transition.get("state", {}).get("reference", {}).get("max_channel_detailed_balance_residual")}),
+            evidence(rel(charged_current_correlator_path), charged_current_correlator, {"status": charged_current_correlator.get("status"), "closure_level": charged_current_correlator.get("major_result", {}).get("closure_level"), "kms_ratio_max_residual": charged_current_correlator.get("state", {}).get("reference", {}).get("kms_ratio_max_residual"), "fdt_max_residual": charged_current_correlator.get("state", {}).get("reference", {}).get("fdt_max_residual")}),
+            evidence(rel(action_beta_path), action_beta, {"status": action_beta.get("status"), "closure_level": action_beta.get("major_result", {}).get("closure_level"), "beta_phi_natural": action_beta.get("state", {}).get("beta_phi_natural"), "normalized_beta_T13_emitted": action_beta.get("state", {}).get("normalized_beta_T13_emitted"), "full_core_unlock": action_beta.get("full_core_unlock")}),
+            evidence(rel(natural_bridge_path), natural_bridge, {"status": natural_bridge.get("status"), "closure_level": natural_bridge.get("major_result", {}).get("closure_level"), "alpha_phi_temperature_natural": natural_bridge.get("state", {}).get("alpha_phi_temperature_natural"), "numeric_alpha_phi_k_emitted": natural_bridge.get("state", {}).get("numeric_alpha_phi_k_emitted"), "full_core_unlock": natural_bridge.get("full_core_unlock")}),
             evidence(rel(eos_path), eos, {"audit_status": eos.get("audit_status"), "evidence_status": eos.get("evidence_status")}),
             evidence(rel(causal_path), causal, {"audit_status": causal.get("audit_status"), "structural_blocker": causal.get("structural_blocker")}),
             evidence(rel(source_package_path), source_package, {"status": source_package.get("status")}),
@@ -703,6 +790,35 @@ def main() -> int:
         ] = ding_2017_acs_supplementary_lane
         artifact["verification_status"]["eos_transport_kms_entropy"].pop(
             "ding_2017_acs_supplementary_payload_boundary", None
+        )
+    microscopic_finite_cutoff_kubo_lane = discovered_lane_integrations.get(
+        "uet_o2_microscopic_finite_cutoff_kubo_match"
+    )
+    if microscopic_finite_cutoff_kubo_lane:
+        artifact["verification_status"]["eos_transport_kms_entropy"][
+            "microscopic_finite_cutoff_kubo_match"
+        ] = microscopic_finite_cutoff_kubo_lane
+        artifact["verification_status"]["eos_transport_kms_entropy"].pop("uet_o2_microscopic_finite_cutoff_kubo_match", None)
+
+    heat_current_kubo_lane = discovered_lane_integrations.get(
+        "uet_o2_heat_current_kubo_match"
+    )
+    if heat_current_kubo_lane:
+        artifact["verification_status"]["eos_transport_kms_entropy"][
+            "heat_current_kubo_match"
+        ] = heat_current_kubo_lane
+        artifact["verification_status"]["eos_transport_kms_entropy"].pop(
+            "uet_o2_heat_current_kubo_match", None
+        )
+    heat_current_kubo_continuum_boundary_lane = discovered_lane_integrations.get(
+        "uet_o2_heat_current_kubo_continuum_boundary"
+    )
+    if heat_current_kubo_continuum_boundary_lane:
+        artifact["verification_status"]["eos_transport_kms_entropy"][
+            "heat_current_kubo_continuum_boundary"
+        ] = heat_current_kubo_continuum_boundary_lane
+        artifact["verification_status"]["eos_transport_kms_entropy"].pop(
+            "uet_o2_heat_current_kubo_continuum_boundary", None
         )
     phi_e_comparator_lane = discovered_lane_integrations.get(
         "mp48_phi_e_dimensional_anchor_comparator"
@@ -944,6 +1060,16 @@ def main() -> int:
             artifact["verification_status"]["eos_transport_kms_entropy"].pop(
                 "berut_figure3_remote_binary_identity", None
             )
+            digitization_lane = discovered_lane_integrations.get(
+                "berut_figure3_digitization"
+            )
+            if digitization_lane:
+                artifact["verification_status"]["source_package"][
+                    "berut_figure3_digitization"
+                ] = digitization_lane
+                artifact["verification_status"]["eos_transport_kms_entropy"].pop(
+                    "berut_figure3_digitization", None
+                )
     # Keep the historical top-level names as read-only aliases.  The canonical
     # lane payload remains nested above; aliases prevent downstream readers from
     # mistaking a schema migration for loss of evidence.
@@ -978,6 +1104,8 @@ def main() -> int:
     lane_closures = []
     if discovered_lane_integrations.get("formal_non_circular_bridge_boundary", {}).get("closure_level") == "CLOSED_FOR_LANE":
         lane_closures.append("formal non-circular bridge boundary is closed for lane; physical beta, base-Phi SI anchor, and transport provenance remain open")
+    if discovered_lane_integrations.get("uet_o2_action_natural_phi_thermal_bridge_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("action-derived natural Phi-to-thermal bridge is closed for lane; SI Phi normalization, alpha_Phi_K, source c_v, and physical transport remain open")
     if discovered_lane_integrations.get("mp48_independent_graphite_cv_reproduction", {}).get("closure_level") == "CLOSED_FOR_LANE":
         lane_closures.append("independent harmonic graphite c_v comparator (mp-48) is closed for lane without calibration promotion")
     if discovered_lane_integrations.get("mp48_spectral_csrc_reproduction", {}).get("closure_level") == "CLOSED_FOR_LANE":
@@ -1010,6 +1138,22 @@ def main() -> int:
         lane_closures.append("finite-temperature O(2) tree-condensate plus quasiparticle EOS is closed for lane without interacting self-energy, physical Kubo, SI, or alpha promotion")
     if discovered_lane_integrations.get("uet_o2_formal_two_sector_thermodynamic_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
         lane_closures.append("formal O(2) finite-temperature condensate/normal thermodynamic split is closed for lane; transverse normal current, physical Kubo, SI, alpha, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_finite_t_two_fluid_static_response_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("finite-temperature O(2) two-sector static response and normal-branch formal heat balance are closed for lane; condensed dissipative transport, retarded physical Kubo, SI, alpha, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_thermodynamic_normal_component_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("finite-temperature thermodynamic normal component is closed for lane; physical normal flow, retarded Kubo, SI, alpha, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_condensed_relative_flow_collision_kernel_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("condensed relative-flow collision kernel is closed for lane; continuum-renormalized physical Kubo, complete two-fluid tensor, SI, alpha, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_continuum_relative_flow_kubo_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("continuum thermal relative-flow contact response is closed for lane; loop-renormalized vertex, physical Kubo, complete two-fluid tensor, SI, alpha, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_condensed_loop_renormalized_contact_vertex_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("loop-renormalized condensed contact-channel vertex and state-matched natural retarded response are closed for lane; physical Kubo admission, complete condensed 1PI/scattering, SI, alpha, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_condensed_relative_flow_kubo_admission_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("state-matched Kubo coefficient admission is closed for the declared condensed relative-flow natural-unit channel; independent physical anchor, complete SK/KMS/1PI transport, SI, alpha, and external validation remain open")
+    if discovered_lane_integrations.get("condensed_dissipative_transport_identifiability_no_go", {}).get("closure_level") == "CLOSED_AS_NO_GO":
+        lane_closures.append("condensed dissipative transport identifiability is closed as a scoped no-go; the current static lane cannot identify a unique dissipative matrix without relative-flow/collision or retarded-correlator evidence")
+    if discovered_lane_integrations.get("uet_o2_condensed_retarded_dissipation_no_go", {}).get("closure_level") == "CLOSED_AS_NO_GO":
+        lane_closures.append("condensed conservative-action retarded dissipation is closed as a scoped no-go; the action fixes phase stiffness and Goldstone response but cannot select a unique dissipative kernel without SK/influence or matched retarded evidence")
     if discovered_lane_integrations.get("uet_o2_formal_transverse_response_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
         lane_closures.append("formal O(2) static transverse quasiparticle response is closed for lane; retarded Kubo, interacting self-energy, SI, alpha, and external validation remain open")
     if discovered_lane_integrations.get("uet_o2_collisionless_kubo_no_go", {}).get("closure_level") == "CLOSED_AS_NO_GO":
@@ -1028,10 +1172,26 @@ def main() -> int:
         lane_closures.append("finite-grid charge and four-momentum conserving response plus algebraic Bethe-Salpeter/KMS interface is closed for lane; microscopic two-to-two transition kernel, microscopic vertex/SK action matching, finite-cutoff limit, physical Kubo, SI, alpha, and external validation remain open")
     if discovered_lane_integrations.get("uet_o2_exact_kinematic_2to2_transition_kernel_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
         lane_closures.append("exact-kinematic action-derived two-to-two transition and detailed-balance response lane is closed for lane; connected continuum collision operator, microscopic Bethe-Salpeter vertex, SK action/KMS matching, finite-channel limit, physical Kubo, SI, alpha, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_contact_sk_transition_vertex_match_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("local contact SK vertex to charged transition-kernel normalization and detailed-balance interface is closed for lane; loop-renormalized off-shell self-energy, current-correlator Kubo, SI, alpha, TTG, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_charged_current_correlator_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("charged action-matched finite-cutoff current-correlator, Ward projection, KMS/FDT, and entropy interface are closed for lane; continuum limit, loop-renormalized off-shell self-energy, microscopic current vertex, physical Kubo, SI, alpha, TTG, and external validation remain open")
     if discovered_lane_integrations.get("uet_o2_conservative_continuum_collocation_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
         lane_closures.append("conservative finite-cutoff continuum-collocation operator and algebraic vertex/KMS interface are closed for lane; continuum limit, microscopic Bethe-Salpeter vertex, SK/KMS action matching, physical Kubo, SI, alpha, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_microscopic_finite_cutoff_kubo_match", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("finite-cutoff action-matched contact-SK, Bethe-Salpeter, charged-current KMS/FDT, and entropy response lane is closed without SI or continuum promotion")
+    if discovered_lane_integrations.get("uet_o2_heat_current_kubo_match", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("state-matched finite-cutoff retarded heat-current response matches the covariant natural moment lane; continuum, physical Kubo, SI, alpha, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_heat_current_kubo_continuum_boundary", {}).get("closure_level") == "CLOSED_AS_NO_GO":
+        lane_closures.append("declared heat-current cutoff/order sequence is closed as a scoped continuum no-go; no extrapolated or physical Kubo coefficient is promoted")
+    if discovered_lane_integrations.get("uet_o2_covariant_entropy_heat_flux_balance_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("action-derived Landau heat-current subtraction, positive finite-cutoff moment response, covariant entropy-current lift, and charge/energy/momentum dissipative balance are closed for lane; physical Kubo, SI heat flux, finite-temperature two-fluid completion, curved 3+1 transport, alpha, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_action_thermal_stiffness_beta_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("non-Landauer action-origin thermal response stiffness curvature and natural-unit T*partial_T a_Phi slope are closed for lane; normalized beta_T13, physical beta source, Phi SI normalization, alpha, transport, and external validation remain open")
     if discovered_lane_integrations.get("uet_o2_tree_level_bs_sk_match_interface_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
         lane_closures.append("tree-level action vertex normalization and formal SK/KMS/Bethe-Salpeter interface are closed for lane; continuum limit, loop-renormalized microscopic vertex, full interacting SK action, physical Kubo, SI, alpha, and external validation remain open")
+    if discovered_lane_integrations.get("continuum_limit_current_scheme_no_go", {}).get("closure_level") == "CLOSED_AS_NO_GO":
+        lane_closures.append("current finite-cutoff continuum-resolution controller is closed as a scoped no-go; the declared scheme remains nonconverged and no continuum or physical Kubo promotion is allowed")
     if discovered_lane_integrations.get("uet_o2_one_loop_vertex_uv_boundary", {}).get("closure_level") == "CLOSED_FOR_LANE":
         lane_closures.append("O(2) bare tensor, tree-level SK contour identity, and finite-cutoff one-loop vertex UV boundary are closed for lane; vacuum counterterm, renormalized microscopic vertex, finite-density charged propagator, full interacting SK action, physical Kubo, SI, alpha, and external validation remain open")
     if discovered_lane_integrations.get("uet_o2_renormalized_vertex_scheme", {}).get("closure_level") == "CLOSED_FOR_LANE":
@@ -1050,6 +1210,31 @@ def main() -> int:
         lane_closures.append("the action-derived finite-channel formal entropy-balance/H-theorem interface is closed for lane; covariant entropy current, heat-flux balance, physical Kubo, and SI mapping remain open")
     if discovered_lane_integrations.get("uet_o2_renormalized_condensate_stationarity_scheme_dependence", {}).get("closure_level") == "CLOSED_AS_NO_GO":
         lane_closures.append("finite-temperature condensed stationarity scheme-dependence is closed as a scoped no-go; no physical renormalization scheme or phase transition is selected")
+    if discovered_lane_integrations.get("uet_o2_action_normalized_sunset_spectral_interface_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("action-normalized O(2) sunset spectral interface is closed for lane; full physical 1PI self-energy, renormalization, Kubo, entropy, SI, alpha, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_action_matched_zero_eta_sunset_subtraction_interface_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("action-matched O(2) sunset zero-eta distributional and declared subtraction interface is closed for lane; full microscopic 1PI action derivation, unique renormalization, Kubo, entropy, SI, alpha, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_action_1pi_sunset_tensor_interface_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("action-derived O(2) 1PI sunset tensor, symmetry factor, local counterterm basis, and invariant subtraction-variable match are closed for lane; full off-shell loop, unique physical renormalization, SK/KMS, Kubo, entropy, SI, alpha, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_euclidean_1pi_sunset_regulated_subtraction_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("regulated Euclidean off-shell O(2) sunset loop and invariant subtraction interface are closed for lane; retarded continuation, unique physical renormalization, finite-temperature SK/KMS, Kubo, entropy, SI, alpha, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_vacuum_retarded_sunset_discontinuity_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("vacuum O(2) three-body sunset cut, retarded i0 discontinuity, spacelike dispersion match, and analytic above-threshold principal-value real-part interface are closed for lane; finite-temperature SK/KMS, unique physical renormalization, Kubo, entropy, SI, alpha, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_finite_t_three_body_sunset_sk_kms_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("action-derived finite-temperature O(2) 1<->3 sunset channel, thermal retarded sign, channel KMS/FDT, pole-subtracted channel retarded real part, and vacuum phase-space normalization are closed for lane; other thermal cuts, full finite-temperature 1PI, all-channel real-part subtraction, unique physical renormalization, Kubo, entropy, SI, alpha, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_finite_t_scattering_sunset_sk_kms_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("action-derived finite-temperature O(2) labeled 2<->2 scattering sunset cut, channel KMS/FDT, retarded sign, and pole-subtracted channel real part are closed for lane; other thermal cuts, full finite-temperature 1PI, all-channel real-part subtraction, unique physical renormalization, Kubo, entropy, SI, alpha, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_finite_t_declared_full_sunset_sk_kms_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("declared timelike equal-mass order-lambda^2 finite-temperature sunset cut composition is closed for lane: action-derived 1<->3 plus labeled 2<->2 summed KMS/FDT, retarded-sign, and compositional PV interface; complete off-shell 1PI, unique physical renormalization, Kubo, entropy, SI, alpha, TTG, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_finite_t_offshell_1pi_formal_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("formal finite-temperature off-shell O(2) 1PI object, all signed sunset cut assignments, retarded continuation, KMS, thermal-vacuum UV split, and local counterterm basis are closed for lane; a unique physical renormalization anchor, physical Kubo, entropy, SI, alpha, TTG, and external validation remain open")
+
+    if discovered_lane_integrations.get("uet_o2_on_shell_sunset_collision_width_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("neutral action-matched on-shell sunset collision-width witness is closed for lane; charged off-shell self-energy, current-correlator Kubo matching, SI, alpha, TTG, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_finite_t_sunset_vacuum_match_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("low-temperature finite-temperature sunset composition matches the action-derived vacuum spectral, retarded-sign, and PV interfaces for lane; physical renormalization, complete 1PI, transport, entropy, SI, alpha, TTG, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_finite_t_sunset_renormalization_identifiability_no_go", {}).get("closure_level") == "CLOSED_AS_NO_GO":
+        lane_closures.append("finite-temperature sunset physical-renormalization identifiability is closed as a scoped no-go: reference changes move the PV real part while spectral/KMS/FDT cuts remain invariant; no physical scheme is selected")
     if discovered_lane_integrations.get("uet_o2_renormalized_hartree_normal_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
         lane_closures.append("renormalized Hartree normal branch closes one declared vacuum-plus-thermal interacting normal functional; condensed/two-fluid, physical Kubo, SI, alpha, and external validation remain open")
     if discovered_lane_integrations.get("uet_o2_condensed_goldstone_ward_no_go", {}).get("closure_level") == "CLOSED_AS_NO_GO":
@@ -1068,10 +1253,14 @@ def main() -> int:
         lane_closures.append("public graphite/graphene Green-Kubo source boundary is closed as comparator evidence without UET space-response, Ding state, physical Kubo, or alpha promotion")
     if discovered_lane_integrations.get("uet_o2_open_system_sk_kms_entropy_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
         lane_closures.append("formal open-system SK/KMS, FDT, retardedness, and entropy-positivity lane is closed without promoting formal gamma/noise to physical Kubo, SI, alpha, or TTG evidence")
+    if discovered_lane_integrations.get("transport_kms_entropy_status_boundary", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("transport/KMS/entropy structural and formal status boundary is closed for lane; physical Kubo, finite-temperature normal sector, dimensional Phi map, and curved 3+1 transport remain open")
     if discovered_lane_integrations.get("iaea_cv_uncertainty_boundary", {}).get("closure_level") == "CLOSED_FOR_LANE":
         lane_closures.append("IAEA Table 4.11 uncertainty-grade volumetric c_v route is closed as a scoped no-go; probable error is not promoted to c_v uncertainty")
     if discovered_lane_integrations.get("mp48_temperature_volume_uncertainty_boundary", {}).get("closure_level") == "CLOSED_FOR_LANE":
         lane_closures.append("MP48 temperature-resolved volumetric c_v uncertainty boundary is closed as a scoped no-go; the room-temperature fixed-volume comparator and non-statistical envelope cannot substitute for source-grade C_v^vol(T)")
+    if discovered_lane_integrations.get("berut_figure3_digitization", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("Berut Figure 3c marker transcription and figure-derived comparison boundary are closed for lane; raw numeric source, source-grade error bars, SI mapping, alpha, and external validation remain open")
     if discovered_lane_integrations.get("ding_material_regime_boundary", {}).get("closure_level") == "CLOSED_FOR_LANE":
         lane_closures.append("Ding/comparator material-regime equivalence is closed as a scoped no-go; comparator c_v and c_p lanes cannot substitute for Ding C_src")
     if discovered_lane_integrations.get("graphite_alpha_v_kt_matched_source_boundary", {}).get("closure_level") == "CLOSED_FOR_LANE":

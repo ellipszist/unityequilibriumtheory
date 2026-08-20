@@ -59,7 +59,10 @@ def main() -> int:
         "claim_boundary": action["claim_boundary"],
     }
     append_unique(full.setdefault("evidence_artifacts", []), evidence(ACTION_REL, {"status": action["status"], "data_role": action["major_result"]["data_role"]}))
-    append_unique(full["major_result"]["what_remains_open"], action["controlling_blocker"])
+    # Keep the named-lane controller nested in verification_status. The full
+    # result already exposes the dimensional-map blocker that owns this
+    # dependency, so copying the lane wording into what_remains_open would
+    # double-count the same unresolved requirement.
     (ROOT / FULL_REL).write_text(json.dumps(full, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
 
     register = load(REGISTER_REL)

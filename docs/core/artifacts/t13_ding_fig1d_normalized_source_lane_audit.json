@@ -1,7 +1,7 @@
 {
   "schema_version": "t13-ding-fig1d-normalized-source-lane-v1",
   "artifact": "t13_ding_fig1d_normalized_source_lane_audit",
-  "generated_at": "2026-08-12",
+  "generated_at": "2026-08-17",
   "status": "PASS_DING_FIGURE_DERIVED_NORMALIZED_SOURCE_LANE",
   "major_result": {
     "major_result_id": "T13_DING_FIG1D_NORMALIZED_SOURCE_LANE",
@@ -32,7 +32,7 @@
     "evidence_artifacts": [
       {
         "path": "docs/core/artifacts/ding_2022_source_mapping_audit.json",
-        "sha256": "0c17a25a3b6c871b2362281f847620acef4f02f9e1c6123846234f6617a193ec",
+        "sha256": "45aa63abf5951afe55f7aad86ef2a971e7a856f2158caf3a1c5ee20500eb1b23",
         "summary": {
           "status": "PASS",
           "row_count": 432
@@ -75,7 +75,7 @@
       },
       {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/matter_space_second_sound_source_package.json",
-        "sha256": "736cf13b7a20f15432c2c5958da138f45f143698c19f74826ed4b75fc61fdd05",
+        "sha256": "3754d54cdee639be211a308d893b994ca78f7dd11aaeb191278b9085e7923b96",
         "summary": {
           "source_id": "ding_2022_fig1d_digitized",
           "status": "FIGURE_DERIVED_NUMERIC_PACKAGE_WITH_CLOSED_MAPPING"

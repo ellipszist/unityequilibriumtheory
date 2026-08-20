@@ -135,6 +135,7 @@ def build_report() -> dict[str, Any]:
         "holdout_not_accessed": holdout_controls.get("numeric_payload_consumed") is False,
         "holdout_metadata_only_observed": holdout_controls.get("metadata_only_observed") is True,
         "holdout_source_data_consumed": holdout_controls.get("source_data_payload_observed") is True,
+        "holdout_source_data_unconsumed": holdout_controls.get("source_data_payload_observed") is False,
         "holdout_audit_pass": holdout_audit.get("status") == "PASS_HOLDOUT_DATA_UNCONSUMED_METADATA_ONLY",
         "numeric_fitting_disabled": package["usage_policy"]["numeric_fitting_allowed"] is False,
     }
@@ -144,12 +145,13 @@ def build_report() -> dict[str, Any]:
         if key
         not in {
             "raw_author_numeric_source_present",
+            "holdout_source_data_consumed",
         }
     ]
     status = "PASS" if all(checks[key] for key in required_checks) else "BLOCKED"
-    source_ready = checks["raw_author_numeric_source_present"] or checks[
-        "permitted_figure_numeric_route_ready"
-    ]
+    # The figure route is valid for normalized comparison only. It is not the
+    # raw PBTE/C_src package required by the full Topic 13 source gate.
+    source_ready = checks["raw_author_numeric_source_present"]
     dip_diagnostic = _permutation_diagnostic(_dip_times(rows))
     return {
         "schema_version": "ding-2022-source-mapping-audit-v2",
@@ -159,6 +161,9 @@ def build_report() -> dict[str, Any]:
         "source_id": "ding_2022_fig1d_digitized",
         "source_locator": "Nature Communications 13, 285 (2022), Fig. 1d",
         "source_route_ready_for_full_closure": source_ready,
+        "normalized_comparison_route_ready": checks[
+            "permitted_figure_numeric_route_ready"
+        ],
         "source_policy": {
             "permitted_figure_asset": "CC BY 4.0 article figure asset",
             "raw_author_data_status": (

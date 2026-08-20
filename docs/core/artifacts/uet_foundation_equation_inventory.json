@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_foundation_equation_inventory",
-  "generated_at": "2026-08-14",
+  "generated_at": "2026-08-20",
   "audit_status": "PASS_WITH_DISCLOSED_GAPS",
   "inventory_gate_status": "BLOCKED",
   "controlling_blocker": "topic_formula_audits_not_code_complete_or_correspondence_incomplete",
   "coverage": {
     "formula_audit_file_count": 39,
-    "parsed_formula_row_count": 322,
+    "parsed_formula_row_count": 333,
     "coverage_status": "TOPIC_FORMULA_AUDITS_INVENTORIED_NOT_CODE_COMPLETE",
     "missing_scope": [
       "equations defined only in Python code without a FORMULA_AUDIT row",
@@ -27,7 +27,7 @@
       "0.10": 8,
       "0.11": 53,
       "0.12": 7,
-      "0.13": 74,
+      "0.13": 85,
       "0.14": 9,
       "0.15": 7,
       "0.16": 7,
@@ -52,14 +52,14 @@
     "evidence_class_counts": {
       "INTERNAL_CHECKED": 17,
       "OPEN_OR_HEURISTIC": 106,
-      "REVIEW_REQUIRED": 121,
+      "REVIEW_REQUIRED": 130,
       "SCAFFOLD_BLOCKED": 10,
-      "STANDARD_OR_BENCHMARK": 68
+      "STANDARD_OR_BENCHMARK": 70
     },
     "correspondence_status_counts": {
       "LEGACY_OR_COMPARATOR": 22,
-      "OPEN_CORRESPONDENCE_REVIEW": 126,
-      "STANDARD_COUNTERPART_NOT_UET_DERIVATION": 61,
+      "OPEN_CORRESPONDENCE_REVIEW": 135,
+      "STANDARD_COUNTERPART_NOT_UET_DERIVATION": 63,
       "UET_BRIDGE_OPEN": 113
     },
     "duplicate_formula_ids": {}
@@ -1735,7 +1735,7 @@
       "next_hardening_step": "Add exact combinatorial baseline for small `E,N`; record seed and monotonicity threshold in verifier",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 11
+        "line": 47
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -1757,7 +1757,7 @@
       "next_hardening_step": "Rename/report as `T_proxy` in future outputs or add conversion convention if a physical scale is introduced",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 12
+        "line": 48
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -1779,7 +1779,7 @@
       "next_hardening_step": "Add seeded ensemble runs with mean/variance and acceptance band against equipartition",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 13
+        "line": 49
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -1801,7 +1801,7 @@
       "next_hardening_step": "Source-lock Berut/Jun/Peterson values under `docs/data/external/...` with DOI and preprocessing notes",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 14
+        "line": 50
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -1823,7 +1823,7 @@
       "next_hardening_step": "Audit duplicate eV conversions in non-primary scripts",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 15
+        "line": 51
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -1845,7 +1845,7 @@
       "next_hardening_step": "Add citation/source table and distinguish illustrative examples from validation datasets",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 16
+        "line": 52
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -1867,7 +1867,7 @@
       "next_hardening_step": "Source-lock LIGO/EHT mass tables and propagate mass uncertainty to entropy ratio",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 17
+        "line": 53
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -1889,7 +1889,7 @@
       "next_hardening_step": "Keep as theory-link formula; do not promote to empirical bridge without an explicit observable",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 18
+        "line": 54
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -1911,7 +1911,7 @@
       "next_hardening_step": "Add uncertainty propagation and mark as computed theoretical observable in manifest",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 19
+        "line": 55
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -1933,7 +1933,7 @@
       "next_hardening_step": "Replace with sourced second-sound/heat-pulse dataset or declare as simulation-only in README",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 20
+        "line": 56
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -1955,7 +1955,7 @@
       "next_hardening_step": "Reframe as hypothesis sandbox; require physical mechanism and conservation accounting before core use",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 21
+        "line": 57
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -1977,7 +1977,7 @@
       "next_hardening_step": "Keep as constants sanity check only or move to a constants/metrology appendix",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 22
+        "line": 58
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -1999,7 +1999,7 @@
       "next_hardening_step": "Archive source rows and run a pre-registered normalized comparison",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 23
+        "line": 59
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2021,7 +2021,7 @@
       "next_hardening_step": "Freeze parameters, archive source rows, and compare against holdout only after core gates",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 24
+        "line": 60
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2043,7 +2043,7 @@
       "next_hardening_step": "Derive or source-lock the scale with uncertainty and an independent calibration lane",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 25
+        "line": 61
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2065,7 +2065,7 @@
       "next_hardening_step": "source-lock a covariant field normalization plus system-specific SI energy-density contract, or an independent non-TTG alpha calibration; then derive base `Phi -> Phi_E`",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 62
+        "line": 98
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2087,7 +2087,7 @@
       "next_hardening_step": "declare one `beta_UET` with an action term, units, finite-temperature coefficient provenance, and an observable/SI contract independent of Landauer; then audit the derivation",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 71
+        "line": 107
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2109,7 +2109,7 @@
       "next_hardening_step": "source-lock e0 and coefficient provenance, resolve base Phi correspondence, then test finite-temperature EOS/transport/KMS/entropy contracts",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 85
+        "line": 121
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2131,7 +2131,7 @@
       "next_hardening_step": "source-lock coefficients and Phi/e0 mapping, then test physical EOS and nonequilibrium closures",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 96
+        "line": 132
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2153,7 +2153,7 @@
       "next_hardening_step": "obtain the paired record with locator, units, uncertainty, preprocessing, row identity, hash, and independence statement; then rerun the locked calibration audit",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 106
+        "line": 142
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2175,7 +2175,7 @@
       "next_hardening_step": "source-lock or microscopically match coefficients, complete finite-temperature normal sector and curved 3+1, then rerun with physical units and provenance",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 116
+        "line": 152
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2197,7 +2197,7 @@
       "next_hardening_step": "if authorized, send the request; hash and audit any returned payload before changing state",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 126
+        "line": 162
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2219,7 +2219,7 @@
       "next_hardening_step": "acquire one state-matched coefficient record and rerun transport/state/unit checks",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 136
+        "line": 172
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2241,7 +2241,7 @@
       "next_hardening_step": "source-lock density/c_v regime or acquire a state-matched UET Kubo coefficient and base-Phi SI anchor",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 145
+        "line": 181
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2263,7 +2263,7 @@
       "next_hardening_step": "acquire state-matched Kubo record, derive normal component, and construct SI observable map",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 156
+        "line": 192
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2285,7 +2285,7 @@
       "next_hardening_step": "derive/source-lock UET finite-temperature action and two-fluid sector, then match Kubo/SI observables",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 165
+        "line": 201
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2307,7 +2307,7 @@
       "next_hardening_step": "close renormalization and interacting finite-T action, then derive condensate/normal sector and match Kubo/SI observables",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 175
+        "line": 211
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2329,7 +2329,7 @@
       "next_hardening_step": "keep reference baseline fixed and separately close renormalization/interacting finite-T response",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 184
+        "line": 220
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2351,7 +2351,7 @@
       "next_hardening_step": "derive a source-backed counterterm/renormalization contract or retain the thermal-only boundary explicitly",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 193
+        "line": 229
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2373,7 +2373,7 @@
       "next_hardening_step": "derive/source-lock the finite-temperature normal sector and acquire state-matched physical Kubo records; retain SI Phi and renormalization blockers",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 203
+        "line": 239
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2395,7 +2395,7 @@
       "next_hardening_step": "source-lock/derive finite-T self-energy and normal response; retain SI and renormalization blockers",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 212
+        "line": 248
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2417,7 +2417,7 @@
       "next_hardening_step": "close renormalized/interacting and condensate/two-fluid sectors, then match physical Kubo and SI observables",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 222
+        "line": 258
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2439,7 +2439,7 @@
       "next_hardening_step": "derive thermal background backreaction/self-consistent phase boundary and match physical normal/Kubo/SK/KMS sectors",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 304
+        "line": 340
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2461,7 +2461,7 @@
       "next_hardening_step": "declare/derive thermal self-energy and vacuum renormalization, then solve a self-consistent finite-T phase boundary",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 313
+        "line": 349
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2483,7 +2483,7 @@
       "next_hardening_step": "add a matched retarded correlator/source record or a declared microscopic open-system/SK collision-noise derivation",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 321
+        "line": 357
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2505,7 +2505,7 @@
       "next_hardening_step": "provide a declared normalized beta functional or independent source-backed coefficient, then close renormalization and SI Phi mapping",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 329
+        "line": 365
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2527,7 +2527,7 @@
       "next_hardening_step": "derive/source-lock the missing scale map and beta coefficient independently of target fitting and Xie 2026",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 337
+        "line": 373
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2549,7 +2549,7 @@
       "next_hardening_step": "derive finite-T self-energy/counterterm matching and then connect to physical Kubo, SK/KMS, entropy, SI map, and alpha",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 345
+        "line": 381
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2571,7 +2571,7 @@
       "next_hardening_step": "derive/source-lock thermal self-energy and solve the self-consistent stationary boundary before any phase-transition claim",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 353
+        "line": 389
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2593,7 +2593,7 @@
       "next_hardening_step": "",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 366
+        "line": 402
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2615,7 +2615,7 @@
       "next_hardening_step": "derive/source-lock the named renormalized interacting branch before phase-boundary promotion",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 377
+        "line": 413
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2637,7 +2637,7 @@
       "next_hardening_step": "obtain Ding-compatible mode-resolved PBTE inputs or an accepted same-regime independent reproduction with convergence and uncertainty; keep base-Phi SI anchor and alpha open",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 385
+        "line": 421
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2659,7 +2659,7 @@
       "next_hardening_step": "derive/source-lock `Phi_base -> Phi_E` with units and uncertainty or acquire a paired base-Phi/SI record; keep `alpha_Phi_K` blocked",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 399
+        "line": 435
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2681,7 +2681,7 @@
       "next_hardening_step": "obtain Ding-compatible mode-resolved PBTE inputs or an accepted same-regime reproduction with convergence and uncertainty; keep base-Phi SI anchor and alpha open",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 409
+        "line": 445
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2703,7 +2703,7 @@
       "next_hardening_step": "source-lock `K_T` and material-state correspondence with uncertainty; keep alpha and base-Phi calibration separate",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 421
+        "line": 457
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2725,7 +2725,7 @@
       "next_hardening_step": "source-lock same-state isothermal `K_T`, or derive a permitted dynamic-to-thermal conversion with matched `Cp/Cv` and uncertainty",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 429
+        "line": 465
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2747,7 +2747,7 @@
       "next_hardening_step": "map the K_T state to Ding, source-lock same-state alpha_V/density/Cp/Cv, then run Cp-to-Cv with uncertainty",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 437
+        "line": 473
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2769,7 +2769,7 @@
       "next_hardening_step": "source-lock a same-specimen/same-state alpha_V and K_T pair or permitted direct volumetric heat-capacity route",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 445
+        "line": 481
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2791,7 +2791,7 @@
       "next_hardening_step": "source-lock same-specimen/same-state alpha_V and K_T with uncertainty or direct volumetric heat-capacity evidence",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 453
+        "line": 489
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2813,7 +2813,7 @@
       "next_hardening_step": "close the microscopic finite-temperature scheme and physical Kubo/SK-KMS interfaces without relabeling this lane as transport",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 461
+        "line": 497
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2835,7 +2835,7 @@
       "next_hardening_step": "close the named renormalized finite-temperature scheme, then match physical Kubo/SK-KMS and dimensional observables",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 468
+        "line": 504
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2857,7 +2857,7 @@
       "next_hardening_step": "declare/source-lock a physical scheme and match it microscopically",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 476
+        "line": 512
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2879,7 +2879,7 @@
       "next_hardening_step": "derive/source-lock a renormalized condensed branch, resolve the finite-temperature scheme, then match physical Kubo/SK/KMS and SI observables",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 485
+        "line": 521
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2901,7 +2901,7 @@
       "next_hardening_step": "select/source-lock a physical finite-temperature scheme by independent microscopic matching",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 493
+        "line": 529
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2923,7 +2923,7 @@
       "next_hardening_step": "extend to the self-consistent condensed branch and match state-matched retarded Kubo/SK-KMS coefficients without promoting this lane",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 501
+        "line": 537
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2945,7 +2945,7 @@
       "next_hardening_step": "implement a Ward-preserving symmetry-improved 2PI or controlled 1/N branch and rerun EOS/Kubo/SK-KMS gates",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 510
+        "line": 546
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2967,7 +2967,7 @@
       "next_hardening_step": "replace with source-backed/microscopic symmetry-improved 2PI or controlled 1/N branch, then derive full EOS and match Kubo/SK-KMS",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 520
+        "line": 556
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -2989,7 +2989,7 @@
       "next_hardening_step": "construct a state-independent microscopic or symmetry-improved finite-temperature scheme, then rerun condensed EOS and retarded Kubo/SK-KMS gates",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 533
+        "line": 569
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -3011,7 +3011,7 @@
       "next_hardening_step": "match to a microscopic symmetry-preserving 2PI or controlled 1/N construction, then rerun condensed EOS and retarded Kubo/SK-KMS gates",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 541
+        "line": 577
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -3033,7 +3033,7 @@
       "next_hardening_step": "derive a matched retarded/ladder response and SK/KMS relation, then rerun heat-flux and entropy gates",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 549
+        "line": 585
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -3055,7 +3055,7 @@
       "next_hardening_step": "",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 556
+        "line": 592
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -3077,7 +3077,7 @@
       "next_hardening_step": "",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 566
+        "line": 602
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -3099,7 +3099,7 @@
       "next_hardening_step": "",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 576
+        "line": 612
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -3121,7 +3121,7 @@
       "next_hardening_step": "",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 586
+        "line": 622
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -3143,7 +3143,7 @@
       "next_hardening_step": "",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 596
+        "line": 632
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -3165,7 +3165,7 @@
       "next_hardening_step": "derive the loop-renormalized microscopic vertex and full interacting SK/KMS action match, then test continuum-limit convergence without consuming Xie 2026",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 604
+        "line": 640
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -3187,7 +3187,7 @@
       "next_hardening_step": "",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 616
+        "line": 652
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -3209,7 +3209,7 @@
       "next_hardening_step": "match the charged sector to a full interacting SK/KMS action and a declared physical renormalization; then close condensed/two-fluid and transport gates independently",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 626
+        "line": 662
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -3231,7 +3231,7 @@
       "next_hardening_step": "derive the nonlocal SK influence functional and physical retarded/dissipative kernel, then close entropy-current and Kubo mappings independently",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 636
+        "line": 672
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -3253,7 +3253,7 @@
       "next_hardening_step": "obtain a state-matched microscopic retarded self-energy and entropy-current kernel; keep physical Kubo and SI/alpha mappings separate",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 646
+        "line": 682
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -3275,7 +3275,7 @@
       "next_hardening_step": "derive the two-loop sunset self-energy or obtain a source-locked microscopic retarded correlator; keep the zero one-loop spectral result as a no-go, not a transport prediction",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 656
+        "line": 692
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -3297,7 +3297,7 @@
       "next_hardening_step": "derive the continuum 1PI sunset integral with explicit regulator/subtraction and match its retarded KMS/entropy kernel; keep physical Kubo, dimensional \\`Phi\\`, alpha, and source gates independent",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 666
+        "line": 702
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -3319,7 +3319,7 @@
       "next_hardening_step": "",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 676
+        "line": 712
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",
@@ -3341,7 +3341,249 @@
       "next_hardening_step": "",
       "source": {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
-        "line": 684
+        "line": 720
+      },
+      "equation_class": "foundation_pilot_or_constitutive",
+      "topic_role": "active_foundation_pilot",
+      "evidence_class": "REVIEW_REQUIRED",
+      "correspondence_status": "OPEN_CORRESPONDENCE_REVIEW",
+      "requires_manual_correspondence": true
+    },
+    {
+      "topic_id": "0.13",
+      "topic_folder": "0.13_Thermodynamic_Bridge",
+      "formula_id": "T13-081",
+      "relation": "`s(omega,k)=omega^2+m_eff^2+2*omega*E_k`; `rho_cut=2*omega*(Gamma_>-Gamma_<)`; `N_cut=2*omega*(Gamma_>+Gamma_<)`; `Sigma_R^eta=integral_0^Omega dnu/pi*rho_cut(nu)*[1/(omega-nu+i*eta)-1/(omega+nu+i*eta)]`; `Sigma_R,sub(omega;omega_*)=Sigma_R^eta(omega)-Sigma_R^eta(omega_*)`",
+      "code_surface": "`docs/core/uet_o2_sunset_dispersion_interface.py`; `docs/core/uet_o2_sunset_dispersion_interface_verified.py`; `docs/scripts/audit/audit_topic13_uet_o2_sunset_dispersion_interface.py`; `docs/core/artifacts/t13_uet_o2_sunset_dispersion_interface_audit.json`",
+      "variables_and_units": "declared natural units; temperature, mass, momentum, energy, and regulator eta have energy units; `Phi` is not temperature; `C` is not mass or charge; `R_gen` is derived; `R_obs` is separate",
+      "constant_origin": "action-derived neutral elastic cut extended to a finite-regulator formal off-shell rest-energy dispersion interface; no source rows, fitting, SI calibration, or holdout",
+      "proof_status": "CLOSED_FOR_LANE only; KMS, spectral/noise positivity, retarded sign, reference subtraction, on-shell matching, and composite-quadrature convergence pass",
+      "verification_role": "a formal dispersion interface can be mistaken for a full 1PI self-energy, physical renormalization, Kubo coefficient, or thermal observable",
+      "failure_mode": "derive the full 1PI retarded self-energy, zero-regulator limit, microscopic off-shell matching, and physical Kubo/entropy/observable maps independently",
+      "next_hardening_step": "",
+      "source": {
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
+        "line": 732
+      },
+      "equation_class": "foundation_pilot_or_constitutive",
+      "topic_role": "active_foundation_pilot",
+      "evidence_class": "REVIEW_REQUIRED",
+      "correspondence_status": "OPEN_CORRESPONDENCE_REVIEW",
+      "requires_manual_correspondence": true
+    },
+    {
+      "topic_id": "0.13",
+      "topic_folder": "0.13_Thermodynamic_Bridge",
+      "formula_id": "T13-082",
+      "relation": "`W_int=lambda*(chi_a chi_a)^2/4`; `V_abcd=2*lambda*(delta_ab*delta_cd+delta_ac*delta_bd+delta_ad*delta_bc)`; `M2_action=sum_{b,c,d} | V_abcd | ^2/(1+delta_cd)=28*lambda^2`; `sigma_action=M2_action/(16*pi*s)`; `Sigma_R,sub2=Sigma_R^eta(omega)-Sigma_R^eta(omega_*)-(omega^2-omega_*^2)*dSigma_R^eta/d(omega^2)",
+      "code_surface": "_omega_*`",
+      "variables_and_units": "`docs/core/uet_o2_action_sunset_1pi_spectral.py`; `docs/scripts/audit/audit_topic13_uet_o2_action_sunset_1pi_spectral.py`; `docs/core/test/test_topic13_uet_o2_action_sunset_1pi_spectral.py`; `docs/core/artifacts/t13_uet_o2_action_sunset_1pi_spectral_audit.json`",
+      "constant_origin": "natural units; lambda and the contact matrix element are dimensionless; cross section has inverse-energy-squared units; cut rate has energy units; spectral density uses the declared natural-unit cut normalization; `Phi` is not temperature; `C` is not mass/charge; `R_gen` is derived; `R_obs` is separate",
+      "proof_status": "action-derived O(2) contact tensor with explicit species sum and identical-final-state symmetry factor, neutral thermal phase-space cut, and finite-regulator twice-subtracted interface; no source rows, fit, SI calibration, or holdout",
+      "verification_role": "CLOSED_FOR_LANE; vertex normalization, KMS, positivity, retarded sign, reference subtraction, derivative subtraction, on-shell comparator mapping, and quadrature convergence pass",
+      "failure_mode": "an action-normalized spectral interface can be mistaken for a full physical 1PI self-energy, unique renormalization, Kubo coefficient, or TTG observable",
+      "next_hardening_step": "derive the microscopic 1PI retarded self-energy and physical zero-regulator/renormalization match; then connect it to SK/KMS entropy-current and heat-flux balance while keeping alpha/source/holdout gates independent",
+      "source": {
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
+        "line": 741
+      },
+      "equation_class": "foundation_pilot_or_constitutive",
+      "topic_role": "active_foundation_pilot",
+      "evidence_class": "REVIEW_REQUIRED",
+      "correspondence_status": "OPEN_CORRESPONDENCE_REVIEW",
+      "requires_manual_correspondence": true
+    },
+    {
+      "topic_id": "0.13",
+      "topic_folder": "0.13_Thermodynamic_Bridge",
+      "formula_id": "T13-077",
+      "relation": "`1/(x+i0)=PV(1/x)-i*pi*delta(x)`; `K(s,nu)=1/(sqrt(s)-nu+i0)-1/(sqrt(s)+nu+i0)`; `Sigma_R,sub2(s)=integral dnu/pi*rho(nu)*[K(s,nu)-K(0,nu)-s*dK/ds(0,nu)]`; `K(0,nu)=-2/nu`; `dK/ds(0,nu)=-2/nu^3`; `Im Sigma_R,sub2(omega)=-rho(omega)`",
+      "code_surface": "`docs/core/uet_o2_action_sunset_zero_eta.py`; `docs/scripts/audit/audit_topic13_uet_o2_action_sunset_zero_eta.py`; `docs/core/test/test_topic13_uet_o2_action_sunset_zero_eta.py`; `docs/core/artifacts/t13_uet_o2_action_sunset_zero_eta_audit.json`",
+      "variables_and_units": "natural units; invariant `s` and the self-energy response have energy-squared units in the declared lane; the cut spectral density is in the declared action-normalized natural-unit convention; `Phi` is not temperature; `C` is not mass/charge; `R_gen` is derived; `R_obs` is separate",
+      "constant_origin": "action-matched O(2) contact tensor, continuum thermal sunset cut, distributional retarded prescription, analytic principal-value pole treatment, and declared BPHZ-like invariant subtraction; no source rows, fit, SI calibration, or holdout",
+      "proof_status": "CLOSED_FOR_LANE; KMS, positivity, retarded imaginary sign, subtraction conditions, distributional cut match, and principal-value convergence pass",
+      "verification_role": "a zero-eta/subtracted interface can be mistaken for a unique physical renormalized 1PI self-energy, Kubo coefficient, or TTG observable",
+      "failure_mode": "complete the microscopic off-shell 1PI action derivation and match its subtraction to SK/KMS and physical transport; keep dimensional, alpha, source, and holdout gates independent",
+      "next_hardening_step": "",
+      "source": {
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
+        "line": 750
+      },
+      "equation_class": "foundation_pilot_or_constitutive",
+      "topic_role": "active_foundation_pilot",
+      "evidence_class": "REVIEW_REQUIRED",
+      "correspondence_status": "OPEN_CORRESPONDENCE_REVIEW",
+      "requires_manual_correspondence": true
+    },
+    {
+      "topic_id": "0.13",
+      "topic_folder": "0.13_Thermodynamic_Bridge",
+      "formula_id": "T13-078",
+      "relation": "`V_abcd=2*lambda*(delta_ab*delta_cd+delta_ac*delta_bd+delta_ad*delta_bc)`; `S_ab=sum_ijk V_aijk V_bijk=12*(N+2)*lambda^2*delta_ab`; `Sigma_sunset,ab^(2)=S_ab/6*I3(p)=2*(N+2)*lambda^2*delta_ab*I3(p)`; `Sigma_R,ab(s)=Sigma_ab(s)-Sigma_ab(s_*)-(s-s_*)*dSigma_ab/ds",
+      "code_surface": "s_*`; `s=p^2=omega^2`",
+      "variables_and_units": "`docs/core/uet_o2_action_1pi_sunset_tensor.py`; `docs/scripts/audit/audit_topic13_uet_o2_action_1pi_sunset_tensor.py`; `docs/core/test/test_topic13_uet_o2_action_1pi_sunset_tensor.py`; `docs/core/artifacts/t13_uet_o2_action_1pi_sunset_tensor_audit.json`",
+      "constant_origin": "natural 3+1 units; `lambda`, vertex tensor, `delta_Z`, and `delta_lambda` are dimensionless; `I3`, `Sigma`, and `delta_m2` have energy-squared units; `s` has energy-squared units; `Phi` is not temperature; `C` is not mass/charge; `R_gen` is derived; `R_obs` is separate",
+      "proof_status": "action-derived O(N) species contraction and explicit sunset symmetry factor; local two-point counterterm power-counting interface; no loop data, fit, SI calibration, or holdout",
+      "verification_role": "CLOSED_FOR_LANE; tensor contraction, O(2) diagonal/off-diagonal structure, `1/6` factor, counterterm basis, and invariant subtraction-variable match pass",
+      "failure_mode": "tensor prefactor can be mistaken for the full off-shell loop or for a physical renormalization/transport coefficient",
+      "next_hardening_step": "evaluate and regulate `I3(p)`, match its retarded continuation and subtraction to SK/KMS, then test physical Kubo/entropy and SI mappings independently",
+      "source": {
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
+        "line": 759
+      },
+      "equation_class": "foundation_pilot_or_constitutive",
+      "topic_role": "active_foundation_pilot",
+      "evidence_class": "REVIEW_REQUIRED",
+      "correspondence_status": "OPEN_CORRESPONDENCE_REVIEW",
+      "requires_manual_correspondence": true
+    },
+    {
+      "topic_id": "0.13",
+      "topic_folder": "0.13_Thermodynamic_Bridge",
+      "formula_id": "T13-079",
+      "relation": "`D=alpha*beta+alpha*gamma+beta*gamma`; `I3_E(s;Lambda)=1/(4*pi)^4*integral_{alpha_i>=Lambda^-2} d^3alpha D^-2 exp[-m^2*(alpha+beta+gamma)-s*alpha*beta*gamma/D]`; `Sigma_E,R,ab(s)=Sigma_E,ab(s)-Sigma_E,ab(s_*)-(s-s_*)*dSigma_E,ab/ds",
+      "code_surface": "s_*`",
+      "variables_and_units": "`docs/core/uet_o2_action_1pi_sunset_euclidean.py`; `docs/scripts/audit/audit_topic13_uet_o2_action_1pi_sunset_euclidean.py`; `docs/core/test/test_topic13_uet_o2_action_1pi_sunset_euclidean.py`; `docs/core/artifacts/t13_uet_o2_action_1pi_sunset_euclidean_audit.json`",
+      "constant_origin": "natural Euclidean 3+1 units; `alpha,beta,gamma` have inverse-energy-squared units; `Lambda` has energy units; `I3_E` and `Sigma_E` have energy-squared units; `s` has energy-squared units; `Phi` is not temperature; `C` is not mass/charge; `R_gen` is derived; `R_obs` is separate",
+      "proof_status": "action-derived equal-mass sunset, symmetric proper-time cutoff, numerical log-Schwinger quadrature, and invariant BPHZ subtraction; no thermal source, fit, SI calibration, or holdout",
+      "verification_role": "CLOSED_FOR_LANE; finite off-shell Euclidean loop, subtraction conditions, nonzero response, cutoff sequence, and refined quadrature pass",
+      "failure_mode": "Euclidean off-shell result can be mistaken for retarded continuation or unique physical renormalization",
+      "next_hardening_step": "derive and verify retarded `i0` continuation/discontinuity, then match finite-T SK/KMS and physical transport/entropy independently",
+      "source": {
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
+        "line": 768
+      },
+      "equation_class": "foundation_pilot_or_constitutive",
+      "topic_role": "active_foundation_pilot",
+      "evidence_class": "REVIEW_REQUIRED",
+      "correspondence_status": "OPEN_CORRESPONDENCE_REVIEW",
+      "requires_manual_correspondence": true
+    },
+    {
+      "topic_id": "0.13",
+      "topic_folder": "0.13_Thermodynamic_Bridge",
+      "formula_id": "T13-080",
+      "relation": "`s_th=9*m^2`; `Phi_3(s)=1/(128*pi^3*s)*integral ds12 sqrt(lambda(s,s12,m^2))*sqrt(lambda(s12,m^2,m^2))/s12`; `rho_disp=2*(N+2)*lambda^2*Phi_3/(2*pi)`; `Sigma_R(s)=integral_{s_th}^infty dsprime*rho_disp(sprime)/(sprime-s+i0)`; `Im Sigma_R=-pi*rho_disp`",
+      "code_surface": "`docs/core/uet_o2_action_1pi_sunset_retarded.py`; `docs/scripts/audit/audit_topic13_uet_o2_action_1pi_sunset_retarded.py`; `docs/core/test/test_topic13_uet_o2_action_1pi_sunset_retarded.py`; `docs/core/artifacts/t13_uet_o2_action_1pi_sunset_retarded_audit.json`",
+      "variables_and_units": "natural vacuum 3+1 units; `s`, mass squared, phase space, spectral measure, and self-energy have energy-squared units; `Phi` is not temperature; `C` is not mass/charge; `R_gen` is derived; `R_obs` is separate",
+      "constant_origin": "action-derived equal-mass three-body cut, retarded `i0` convention, and subtracted spacelike dispersion; no thermal source, fit, SI calibration, or holdout",
+      "proof_status": "CLOSED_FOR_LANE; threshold support, negative imaginary sign, spacelike dispersion, Euclidean matching, and quadrature convergence pass",
+      "verification_role": "vacuum discontinuity can be mistaken for the full above-threshold principal-value real part or finite-temperature physical self-energy",
+      "failure_mode": "evaluate the above-threshold PV real part, then perform finite-temperature SK/KMS and unique-renormalization matching",
+      "next_hardening_step": "",
+      "source": {
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
+        "line": 777
+      },
+      "equation_class": "foundation_pilot_or_constitutive",
+      "topic_role": "active_foundation_pilot",
+      "evidence_class": "REVIEW_REQUIRED",
+      "correspondence_status": "OPEN_CORRESPONDENCE_REVIEW",
+      "requires_manual_correspondence": true
+    },
+    {
+      "topic_id": "0.13",
+      "topic_folder": "0.13_Thermodynamic_Bridge",
+      "formula_id": "T13-088",
+      "relation": "`Gamma_R^(2)(s)=s-s_*-Sigma_R,sub(s;s_*)`; `Sigma_R,sub=Sigma_R(s)-Sigma_R(s_*)-(s-s_*)Sigma_R'(s_*)`; `Gamma_R^(2)(s_*)=0`; `Gamma_R^(2)'(s_*)=1`; `delta_m^2=Re Sigma_R(s_*)`; `delta_Z=-Re Sigma_R'(s_*)`",
+      "code_surface": "`docs/core/uet_o2_physical_renormalization_condition_contract.py`; `docs/scripts/audit/audit_topic13_uet_o2_physical_renormalization_condition_contract.py`; `docs/core/artifacts/t13_uet_o2_physical_renormalization_condition_contract.json`",
+      "variables_and_units": "`s`, `s_*`, and self-energy have natural energy-squared units; self-energy derivative, residue, and `delta_Z` are dimensionless; `Phi` remains an effective response variable",
+      "constant_origin": "on-shell Taylor-condition contract; formal witness only until an external physical anchor is source-locked",
+      "proof_status": "`CLOSED_FOR_LANE`; below-threshold pole/residue algebra and external-anchor acceptance fields pass",
+      "verification_role": "formal contract can be mistaken for a physical mass/residue measurement or unique finite-temperature scheme",
+      "failure_mode": "source-lock an independent pole/residue or microscopic renormalization record, then evaluate the complete finite-temperature 1PI object",
+      "next_hardening_step": "",
+      "source": {
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
+        "line": 886
+      },
+      "equation_class": "foundation_pilot_or_constitutive",
+      "topic_role": "active_foundation_pilot",
+      "evidence_class": "REVIEW_REQUIRED",
+      "correspondence_status": "OPEN_CORRESPONDENCE_REVIEW",
+      "requires_manual_correspondence": true
+    },
+    {
+      "topic_id": "0.13",
+      "topic_folder": "0.13_Thermodynamic_Bridge",
+      "formula_id": "T13-089",
+      "relation": "`h=(epsilon+p)/n`; `b_i=(E-h*q)(p_i/E)sqrt(w)`; `b_i^perp=P*b_i`; `K_ab=(b_a^perp)^T L_cont^+ b_b^perp`; `X_T^mu=-Delta^(mu nu)(nabla_nu T+T*a_nu)/T`; `q^mu=kappa_natural*X_T^mu`; `J_S^mu=s*u^mu+q^mu/T`; `sigma=X_T_mu*q^mu>=0`; `I_A^T L_cont delta_f=0`",
+      "code_surface": "`docs/core/uet_o2_covariant_entropy_heat_flux_balance.py`; `docs/scripts/audit/audit_topic13_uet_o2_covariant_entropy_heat_flux_balance.py`; `docs/core/test/test_topic13_uet_o2_covariant_entropy_heat_flux_balance.py`; `docs/core/artifacts/t13_uet_o2_covariant_entropy_heat_flux_balance_audit.json`",
+      "variables_and_units": "declared natural units; `T`, `mu`, `E`, and `h` are natural energies; `kappa_natural`, formal heat flux, and entropy current remain finite-cutoff natural moment quantities; no `W m^-1 K^-1`, SI heat flux, or `Phi` scale is emitted; `C`, `Phi`, `R_gen`, and `R_obs` retain their locked meanings",
+      "constant_origin": "action-derived finite-temperature quasiparticle EOS plus finite-cutoff conservative collision operator, Landau moment subtraction, pseudoinverse response, and covariant projector lift; no source rows, fit, SI calibration, or holdout",
+      "proof_status": "`CLOSED_FOR_LANE`; positive response matrix, entropy identity, conserved charge/energy/momentum balance, local Lorentz lift, and equilibrium zero-flux controls pass",
+      "verification_role": "a formal natural-unit moment response can be mistaken for a physical Kubo coefficient, SI conductivity/heat flux, complete two-fluid transport, or `alpha_Phi_K` calibration",
+      "failure_mode": "source-lock a state-matched microscopic retarded correlator or physical transport record with units/uncertainty; keep dimensional `Phi`, alpha, Ding source, and holdout gates independent",
+      "next_hardening_step": "",
+      "source": {
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
+        "line": 894
+      },
+      "equation_class": "foundation_pilot_or_constitutive",
+      "topic_role": "active_foundation_pilot",
+      "evidence_class": "STANDARD_OR_BENCHMARK",
+      "correspondence_status": "STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+      "requires_manual_correspondence": false
+    },
+    {
+      "topic_id": "0.13",
+      "topic_folder": "0.13_Thermodynamic_Bridge",
+      "formula_id": "T13-090",
+      "relation": "`f_qp(T,mu,Phi)=-p_qp(T,mu,Phi)`; `a_Phi^nat(T)=partial_Phi^2 f_qp",
+      "code_surface": "_(T,mu,Phi_ref)`; `beta_Phi^nat=T*partial_T a_Phi^nat`; symmetric Phi/temperature differences provide the numerical derivative",
+      "variables_and_units": "`docs/core/uet_o2_action_thermal_stiffness_beta.py`; `docs/scripts/audit/audit_topic13_uet_o2_action_thermal_stiffness_beta.py`; `docs/core/test/test_topic13_uet_o2_action_thermal_stiffness_beta.py`; `docs/core/artifacts/t13_uet_o2_action_thermal_stiffness_beta_audit.json`",
+      "constant_origin": "natural units; `T`, `mu`, and effective mass are natural energies; `a_Phi^nat` is a normalization-dependent natural response free-energy curvature; `beta_Phi^nat` is `T*partial_T a_Phi^nat`; normalized `beta_T13`, `e0`, SI Phi scale, and `alpha_Phi_K` are not emitted",
+      "proof_status": "action-derived finite-temperature quasiparticle pressure with explicit nonzero response coupling; fixed-state response curvature and refined symmetric temperature stencil; no Landauer identity, source rows, fit, or holdout",
+      "verification_role": "`CLOSED_FOR_LANE`; normal branch remains fixed over the stencil, action beta is finite/nonzero, and curvature/beta refinement checks pass",
+      "failure_mode": "natural action beta can be mistaken for the normalized beta contract, legacy core beta, a physical Kelvin coefficient, or an alpha calibration",
+      "next_hardening_step": "source-lock an independent Phi normalization and physical temperature coefficient, then match this action lane to the dimensional/alpha bridge",
+      "source": {
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
+        "line": 902
+      },
+      "equation_class": "foundation_pilot_or_constitutive",
+      "topic_role": "active_foundation_pilot",
+      "evidence_class": "STANDARD_OR_BENCHMARK",
+      "correspondence_status": "STANDARD_COUNTERPART_NOT_UET_DERIVATION",
+      "requires_manual_correspondence": false
+    },
+    {
+      "topic_id": "0.13",
+      "topic_folder": "0.13_Thermodynamic_Bridge",
+      "formula_id": "T13-111",
+      "relation": "`p_n=p_qp`; `n_n=partial_mu p_n`; `s_n=partial_T p_n`; `epsilon_n=-p_n+T*s_n+mu*n_n`; `chi_n=partial_mu n_n`; `Pi_n=(1/3) sum_a integral[d^3k/(2*pi)^3] k^2[-partial_E n_B(E_a)]`",
+      "code_surface": "`docs/core/uet_o2_finite_temperature_normal_component.py`; `docs/core/uet_o2_finite_temperature_two_fluid_response.py`; `docs/scripts/audit/audit_topic13_uet_o2_thermodynamic_normal_component.py`; `docs/core/artifacts/t13_uet_o2_thermodynamic_normal_component_audit.json`",
+      "variables_and_units": "natural-unit thermal pressure/charge/entropy/energy densities and static responses; `Phi` remains an effective response variable; no SI `Phi` scale or physical Kubo units are emitted",
+      "constant_origin": "action-derived tree-condensate plus thermal-quasiparticle EOS and static Doppler response",
+      "proof_status": "`CLOSED_FOR_LANE`; branch, finite-value, stability, low-temperature, ontology, and no-fit checks pass",
+      "verification_role": "names the finite-temperature thermodynamic normal component without promoting static response to physical flow or retarded Kubo transport",
+      "failure_mode": "a thermal pressure sector or static susceptibility can be mislabeled as a complete physical two-fluid transport theory",
+      "next_hardening_step": "source-lock a state-matched physical normal-flow/retarded Kubo record with units and uncertainty; keep independent SI and `alpha_Phi_K` gates open",
+      "source": {
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
+        "line": 948
+      },
+      "equation_class": "foundation_pilot_or_constitutive",
+      "topic_role": "active_foundation_pilot",
+      "evidence_class": "REVIEW_REQUIRED",
+      "correspondence_status": "OPEN_CORRESPONDENCE_REVIEW",
+      "requires_manual_correspondence": true
+    },
+    {
+      "topic_id": "0.13",
+      "topic_folder": "0.13_Thermodynamic_Bridge",
+      "formula_id": "T13-112",
+      "relation": "`A_*^2=(Z*mu^2-m_eff^2)/lambda`; `sigma_ab(s_med)=lambda^2/[16*pi*(s_med+m_H^2)]`; `L_rel=Gamma_rel*((1,-1),(-1,1))`; `G_R^rel(omega)=2*D_rel/(2*Gamma_rel-i*omega)`",
+      "code_surface": "`docs/core/uet_o2_condensed_relative_flow_collision.py`; `docs/scripts/audit/audit_topic13_uet_o2_condensed_relative_flow_collision.py`; `docs/core/artifacts/t13_uet_o2_condensed_relative_flow_collision_audit.json`",
+      "variables_and_units": "natural units; `s_med,m_H^2` are energy squared, `Gamma_rel` is energy, and the relative response is a natural-unit coefficient; no SI Phi scale is emitted",
+      "constant_origin": "existing O(2) tree condensate scales plus a declared screened contact-channel and symmetric mode-space relaxation",
+      "proof_status": "`CLOSED_FOR_LANE`; positivity, common-flow conservation, retarded interface, KMS/FDT, entropy, and refinement checks pass",
+      "verification_role": "a finite natural-unit contact response can be mislabeled as a complete microscopic or physical Kubo transport coefficient",
+      "failure_mode": "complete condensed microscopic vertices and continuum/renormalization matching, or source-lock a state-matched retarded correlator with units and uncertainty",
+      "next_hardening_step": "",
+      "source": {
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md",
+        "line": 956
       },
       "equation_class": "foundation_pilot_or_constitutive",
       "topic_role": "active_foundation_pilot",

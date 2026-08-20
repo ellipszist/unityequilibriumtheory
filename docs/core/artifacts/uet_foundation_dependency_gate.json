@@ -217,12 +217,11 @@
     "research_room_wave1_claim_promotion": false,
     "research_room_wave1_blockers": [
       "Core O(2) finite-temperature/Kubo/SI/curved lanes remain open",
-      "TTG source rows are provisional digitized intake, not raw author data",
       "Topic 0.10 latest simplified comparator run is below its internal speed threshold",
       "Topic 0.11 source/formula/estimator policy remains blocked",
       "Xie 2026 remains locked holdout and was not consumed",
       "alpha_Phi_K has no independent derivation or calibration with uncertainty",
-      "core full coupled pre-arrival leakage remains above the locked 1e-6 threshold",
+      "full original conserved-C candidate remains blocked; named coupled C/Phi lane passes the locked normalized causal checks",
       "current simplified comparator result is below its internal speed threshold",
       "full_candidate_prearrival_leakage_and_open_alpha_Phi_K_calibration"
     ]
@@ -249,11 +248,11 @@
     "claim_promotion": false,
     "contract": {
       "path": "docs/core/artifacts/uet_research_room_wave1_contract.json",
-      "sha256": "ab5b81517d8ea564857e316c31fdd7d8349cecb272c9f54e1ddc9e937df7597f"
+      "sha256": "de17402ae12472837da0dcabdab5f27663b4e57330d465d4312b24483a6a660d"
     },
     "integration_gate": {
       "path": "docs/core/artifacts/uet_research_room_wave1_integration_gate.json",
-      "sha256": "dee2e0cf874955fee5f96101fe55ccf9ac07aad5a4928852113f17568054c8cb"
+      "sha256": "68bb0110d8c0f4e72e3dfaed1abe047e199b45f7cf520f5994a7809ef0a5691d"
     },
     "required_mapping_fields": [
       "ontology",
@@ -273,10 +272,10 @@
         "claim_boundary": "candidate effective theory; no global closure"
       },
       "topic_0_13": {
-        "verification_status": "PASS_WITH_BLOCKED_DIMENSIONAL_AND_FULL_CANDIDATE_LANES",
-        "controlling_blocker": "full_candidate_prearrival_leakage_and_open_alpha_Phi_K_calibration",
-        "next_action": "independently derive or calibrate alpha_Phi_K with uncertainty and rerun the preregistered source comparison without holdout access",
-        "claim_boundary": "simulation/internal control and provisional source intake; no temperature prediction or external validation"
+        "verification_status": "SOURCE_ROUTE_PASS_ALPHA_OPEN",
+        "controlling_blocker": "alpha_Phi_K_independent_calibration_missing",
+        "next_action": "derive or independently calibrate alpha_Phi_K with uncertainty using training/calibration data only; do not read or tune on Xie 2026",
+        "claim_boundary": "permitted figure-derived source route and normalized internal controls; not raw author data, temperature prediction, external validation, or global closure"
       },
       "topic_0_11": {
         "verification_status": "BLOCKED_SOURCE_AND_ESTIMATOR_POLICY",
@@ -299,12 +298,11 @@
     },
     "controlling_blockers": [
       "Core O(2) finite-temperature/Kubo/SI/curved lanes remain open",
-      "TTG source rows are provisional digitized intake, not raw author data",
       "Topic 0.10 latest simplified comparator run is below its internal speed threshold",
       "Topic 0.11 source/formula/estimator policy remains blocked",
       "Xie 2026 remains locked holdout and was not consumed",
       "alpha_Phi_K has no independent derivation or calibration with uncertainty",
-      "core full coupled pre-arrival leakage remains above the locked 1e-6 threshold",
+      "full original conserved-C candidate remains blocked; named coupled C/Phi lane passes the locked normalized causal checks",
       "current simplified comparator result is below its internal speed threshold",
       "full_candidate_prearrival_leakage_and_open_alpha_Phi_K_calibration"
     ],
