@@ -7,6 +7,7 @@ infer thermal diffusivity, or emit a UET calibration coefficient.
 from __future__ import annotations
 
 import csv
+import io
 import gzip
 import hashlib
 import json
@@ -100,31 +101,33 @@ def main() -> int:
         "y_delta_yy1_minus_yy_au",
     ]
     row_count = 0
-    with gzip.open(CSV_GZ, "wt", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
-        writer.writeheader()
-        for trace in range(trace_count):
-            for sample in range(sample_count):
-                xx = float(matlab_arrays["xx"][m, k, trace, sample])
-                xx1 = float(matlab_arrays["xx1"][m, k, trace, sample])
-                yy = float(matlab_arrays["yy"][m, k, trace, sample])
-                yy1 = float(matlab_arrays["yy1"][m, k, trace, sample])
-                writer.writerow(
-                    {
-                        "horizontal_index_1based": MATLAB_MAP_HORIZONTAL_INDEX,
-                        "vertical_index_1based": MATLAB_MAP_VERTICAL_INDEX,
-                        "trace_index_1based": trace + 1,
-                        "sample_index_1based": sample + 1,
-                        "ph_source_value": repr(float(ph[m])),
-                        "pv_source_value": repr(float(pv[k])),
-                        "xx_time_s": repr(xx),
-                        "xx1_time_s": repr(xx1),
-                        "yy_signal_au": repr(yy),
-                        "yy1_signal_au": repr(yy1),
-                        "y_delta_yy1_minus_yy_au": repr(yy1 - yy),
-                    }
-                )
-                row_count += 1
+    with CSV_GZ.open("wb") as raw_handle:
+        with gzip.GzipFile(fileobj=raw_handle, mode="wb", mtime=0) as compressed_handle:
+            with io.TextIOWrapper(compressed_handle, encoding="utf-8", newline="") as handle:
+                writer = csv.DictWriter(handle, fieldnames=fieldnames)
+                writer.writeheader()
+                for trace in range(trace_count):
+                    for sample in range(sample_count):
+                        xx = float(matlab_arrays["xx"][m, k, trace, sample])
+                        xx1 = float(matlab_arrays["xx1"][m, k, trace, sample])
+                        yy = float(matlab_arrays["yy"][m, k, trace, sample])
+                        yy1 = float(matlab_arrays["yy1"][m, k, trace, sample])
+                        writer.writerow(
+                            {
+                                "horizontal_index_1based": MATLAB_MAP_HORIZONTAL_INDEX,
+                                "vertical_index_1based": MATLAB_MAP_VERTICAL_INDEX,
+                                "trace_index_1based": trace + 1,
+                                "sample_index_1based": sample + 1,
+                                "ph_source_value": repr(float(ph[m])),
+                                "pv_source_value": repr(float(pv[k])),
+                                "xx_time_s": repr(xx),
+                                "xx1_time_s": repr(xx1),
+                                "yy_signal_au": repr(yy),
+                                "yy1_signal_au": repr(yy1),
+                                "y_delta_yy1_minus_yy_au": repr(yy1 - yy),
+                            }
+                        )
+                        row_count += 1
 
     raw_record = next(
         record

@@ -46,7 +46,7 @@
     ],
     "derived_column": "y_delta_yy1_minus_yy_au = yy1_signal_au - yy_signal_au",
     "output_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/oxford_tgs_figure1_numeric_rows.csv.gz",
-    "output_sha256": "b0a44186d1dfb74c58fe8de42c6a95686781f979201b5a4e4cfd0da553d4ff89"
+    "output_sha256": "e5a6ee943166051f6dec99ced97306c381be0b2746113b5ff4cc4418be53e336"
   },
   "units": {
     "xx_time_s": "s (source processing axis label)",
